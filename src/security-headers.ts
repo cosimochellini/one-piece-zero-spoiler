@@ -22,9 +22,14 @@ export function createSecurityHeaders(
       // keyword is kept only so CSP Level 2 browsers, which do not understand
       // nonces, still load the page instead of blocking hydration.
       scriptSrc(nonce),
-      // No stylesheet exists yet. The keyword is kept because Vite injects CSS
-      // as an inline <style> element in dev, and React's `style` prop needs it
-      // the moment a component uses one.
+      // Unlike `script-src`, this one stays on blanket 'unsafe-inline' on
+      // purpose. A nonce here would be counter-productive: nonces cannot be
+      // attached to a `style` attribute, so `style-src-attr` inherits this
+      // directive and, once a nonce is present, CSP Level 3 ignores
+      // 'unsafe-inline' and blocks React's `style` prop outright. Vite also
+      // injects CSS as script-created <style> elements in dev, and it has no
+      // way to learn our per-request nonce. Neither is exercised today - the
+      // app ships no CSS - but both break the moment one is added.
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self' data:",
