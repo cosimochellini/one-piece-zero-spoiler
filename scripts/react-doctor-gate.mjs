@@ -127,18 +127,39 @@ function readDiagnostics(report) {
   return report.diagnostics.filter(isObject)
 }
 
-function assertAnalysisComplete(report) {
+function assertNoToolError(report) {
   // react-doctor surfaces its own internal errors as a populated `error`.
   if (report.error)
     fail(
       `react-doctor reported an internal error: ${JSON.stringify(report.error)}`,
     )
+  // Projects that were selected but never started, e.g. reason "max-duration".
+  const never = report.skippedProjects ?? []
+  if (never.length > 0) {
+    fail(`react-doctor never started ${never.length} selected project(s)`)
+  }
+}
+
+// The gate passes --max-duration, so a scan can truncate mid-run and still
+// report partial results. `complete` is the broader signal: react-doctor sets
+// it to false when analyzedFileCount !== scannedFileCount as well as when a
+// whole check was skipped, so it also catches lint-batch truncation that
+// leaves skippedChecks empty.
+function assertAnalysisComplete(report) {
   const skipped = report.projects.flatMap(
     (project) => project.skippedChecks ?? [],
   )
   if (skipped.length > 0) {
     fail(
       `analysis was incomplete, skipped checks: ${[...new Set(skipped)].join(', ')}`,
+    )
+  }
+  const partial = report.projects.filter(
+    (project) => project.complete === false,
+  )
+  if (partial.length > 0) {
+    fail(
+      `${partial.length} project(s) were only partially analysed, so the findings are incomplete`,
     )
   }
 }
@@ -164,6 +185,7 @@ function main() {
 
   const report = readReport()
   assertReportShape(report)
+  assertNoToolError(report)
   assertAnalysisComplete(report)
 
   const diagnostics = readDiagnostics(report)

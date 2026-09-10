@@ -18,7 +18,7 @@
  * to error for that run and would override the config's severity policy.
  */
 import { spawnSync } from 'node:child_process'
-import { existsSync } from 'node:fs'
+import { existsSync, mkdirSync, rmSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
@@ -30,13 +30,26 @@ const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
 const local = join(repoRoot, 'node_modules', '.bin', 'fallow')
 const command = existsSync(local) ? local : 'fallow'
 
+const sarifPath = join(repoRoot, '.gate', 'fallow.sarif')
+mkdirSync(dirname(sarifPath), { recursive: true })
+// A stale report must never survive a failed run.
+rmSync(sarifPath, { force: true })
+
 const child = spawnSync(
   command,
-  // --format human is the default, passed explicitly for two reasons: a stray
-  // FALLOW_FORMAT in the environment cannot change what this gate prints, and
-  // `--format json` exits 0 even when the health pass reports critical
-  // findings, so it cannot be used to gate.
-  ['--quiet', '--format', 'human'],
+  [
+    '--quiet',
+    // --format human is the default, passed explicitly for two reasons: a
+    // stray FALLOW_FORMAT in the environment cannot change what this gate
+    // prints, and `--format json` exits 0 even when the health pass reports
+    // critical findings, so it cannot be used to gate.
+    '--format',
+    'human',
+    // Written in addition to the primary format, so a red CI step leaves a
+    // machine-readable report behind in the uploaded artifact.
+    '--sarif-file',
+    sarifPath,
+  ],
   { cwd: repoRoot, stdio: 'inherit' },
 )
 

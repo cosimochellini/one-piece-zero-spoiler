@@ -19,6 +19,7 @@ env:
   REACT_DOCTOR_NO_COLOR: '1'
   NPM_CONFIG_FUND: 'false'
   NPM_CONFIG_AUDIT: 'false'
+  COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
 
 jobs:
   check:
@@ -39,6 +40,14 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: npm
+
+      # setup-node pins Node only. package.json pins npm through
+      # `packageManager`, and corepack is what actually enforces it, so
+      # without this step CI runs whichever npm ships with the Node build.
+      - name: Pin npm
+        run: |
+          corepack enable npm
+          npm --version
 
       # Never add --omit=optional: fallow ships its binary through
       # optionalDependencies and bin/fallow resolves it at runtime.

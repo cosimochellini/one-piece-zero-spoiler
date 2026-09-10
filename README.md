@@ -81,6 +81,10 @@ Both gates block, locally and in CI.
   3+ = analyzer failure. Note that `fallow --format json` exits 0 even with
   critical health findings, so the gate uses the human format.
 
+Both gates write a machine-readable report under `.gate/`
+(`react-doctor.json`, `fallow.sarif`), which CI uploads as the `gate-reports`
+artifact on every run, red or green.
+
 Two entries in `.fallowrc.json` deserve an explanation:
 
 - `entry` lists the route modules, `src/router.tsx` and `scripts/*.mjs`.
