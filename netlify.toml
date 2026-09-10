@@ -1,0 +1,19 @@
+[build]
+  command = "npm run build"
+  publish = "dist/client"
+
+[build.environment]
+  # Mirrors .nvmrc, which Netlify also reads. Declared explicitly so the
+  # runtime is visible in the deploy config itself.
+  NODE_VERSION = "24.18.0"
+
+# Vite content-hashes every client asset, so they are safe to cache forever.
+# These files are served from Netlify's CDN rather than the SSR function, which
+# is why headers declared here reach them. Security headers for HTML documents
+# cannot live here: Netlify does not apply netlify.toml headers to responses
+# produced by a function, and every HTML document is rendered by the SSR
+# function. They are set in src/routes/__root.tsx instead.
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

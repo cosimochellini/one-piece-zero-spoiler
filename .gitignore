@@ -4,6 +4,7 @@ node_modules
 dist
 .output
 .nitro
+.netlify
 
 # TanStack Start temp dir
 .tanstack
