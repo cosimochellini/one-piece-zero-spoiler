@@ -22,6 +22,15 @@ export default defineConfig({
     // `preferStatic: true`) that forwards to `dist/server/server.js`. In
     // `vite dev` it emulates the Netlify platform locally. Deliberately absent
     // from vitest.config.ts, which runs no server build.
-    netlify(),
+    netlify({
+      // The local emulator provisions an embedded Postgres under
+      // `.netlify/db` (26 MB) and a blobs store the project does not use.
+      // Everything else stays on, so headers, redirects, static file serving
+      // and linked-site env vars still behave like production in dev.
+      dev: {
+        blobs: { enabled: false },
+        database: { enabled: false },
+      },
+    }),
   ],
 })
