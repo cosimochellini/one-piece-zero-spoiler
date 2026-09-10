@@ -1,0 +1,26 @@
+node_modules
+
+# builds
+dist
+.output
+.nitro
+
+# TanStack Start temp dir
+.tanstack
+
+# quality gate reports
+.gate
+
+# test and tooling caches
+coverage
+.eslintcache
+.vite
+
+# env
+.env
+.env.*
+!.env.example
+
+# os / editor
+.DS_Store
+*.log

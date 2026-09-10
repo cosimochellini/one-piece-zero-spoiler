@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/fallow/schema.json",
+  "entry": [
+    "src/routes/**/*.ts",
+    "src/routes/**/*.tsx",
+    "src/router.tsx",
+    "scripts/*.mjs"
+  ],
+  "ignorePatterns": [
+    "src/routeTree.gen.ts",
+    ".output/**",
+    ".nitro/**",
+    ".tanstack/**",
+    ".gate/**"
+  ],
+  "ignoreDependencies": ["react-doctor", "@tanstack/react-start"],
+  "rules": {
+    "boundary-violation": "off",
+    "policy-violation": "off"
+  }
+}
