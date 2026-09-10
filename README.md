@@ -92,3 +92,10 @@ Two entries in `.fallowrc.json` deserve an explanation:
   imported only by `vite.config.ts`, which fallow classifies as non-production;
   it is a genuine runtime dependency and the entry can be dropped once a route
   imports it).
+- `rules` turns off `boundary-violation` and `policy-violation`. There is no
+  `boundaries` preset and no rule pack to enforce yet, so fallow reports both
+  as "not configured, nothing was measured" and asks to either configure them
+  or state that the check is not wanted. Turn them back on together with a
+  `boundaries` preset once `src/` grows a module structure worth enforcing —
+  until then a `fallow gate: PASSED` says nothing about architecture
+  boundaries.
