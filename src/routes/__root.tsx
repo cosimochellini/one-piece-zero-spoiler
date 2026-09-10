@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-router'
 import type { ReactNode } from 'react'
 
-import { securityHeaders } from '~/security-headers'
+import { createSecurityHeaders } from '~/security-headers'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -19,7 +19,7 @@ export const Route = createRootRoute({
   // Netlify does not apply netlify.toml headers to function responses, and
   // every document here is server-rendered by the SSR function, so the
   // security headers have to be part of the response the app itself returns.
-  headers: () => securityHeaders,
+  headers: ({ ssr }) => createSecurityHeaders(ssr?.nonce),
   component: RootComponent,
 })
 
