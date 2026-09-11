@@ -3,9 +3,16 @@ name: CI
 on:
   push:
     branches: [main]
+  # `edited` is not a default activity type, and without it a title changed
+  # after the first green run would never be re-validated: the pr-title check
+  # would stay green for a title semantic-release cannot read.
   pull_request:
+    types: [opened, synchronize, reopened, edited]
 
 concurrency:
+  # On push the group collapses to a single constant, so releases on main are
+  # serialized: a second merge waits for the first one's tag instead of racing
+  # it. Pull request runs are keyed per pull request and stay independent.
   group: ci-${{ github.event.pull_request.number || github.ref }}
   # Only pull request runs are disposable. A push to main can be carrying a
   # release, and cancelling that mid-flight would leave a tag without its
@@ -122,12 +129,6 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
-
-    # Never cancelled, and never overlapping: two merges in quick succession
-    # queue instead of racing for the same tag.
-    concurrency:
-      group: release-main
-      cancel-in-progress: false
 
     permissions:
       contents: write # push the version commit, create the tag

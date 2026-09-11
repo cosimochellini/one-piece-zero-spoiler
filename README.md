@@ -70,13 +70,26 @@ What happens on a merge to `main`:
 There is no `CHANGELOG.md`: the GitHub Releases page is the changelog. Nothing
 is published to npm — the package is `private`.
 
-Two details worth knowing before changing any of this:
+If the `release` job dies between tagging and publishing — the tag and the
+version commit land, the GitHub Release does not — the next merge will not
+backfill it, because the tag already exists and the commits are already
+released. Recreate it by hand:
+
+```bash
+gh release create vX.Y.Z --generate-notes
+```
+
+Three details worth knowing before changing any of this:
 
 - **`scripts/validate-pr-title.mjs` and `.releaserc.json` must agree.** A type
   the validator accepts but the release rules ignore would merge cleanly and
   then release nothing. `scripts/validate-pr-title.test.mjs` reads
   `.releaserc.json` and asserts the two maps are identical, so the drift fails
   the test run rather than a release.
+- **`revert` needs two release rules.** `{ revert: true }` only matches the
+  body `git revert` writes (`This reverts commit <sha>.`), which a squashed
+  pull request never carries because the squash body is blank. The
+  `{ type: 'revert' }` rule is what actually matches a `revert:` title.
 - **semantic-release is installed by pinned `npx`, not by `devDependencies`.**
   It pulls roughly 250 packages that no other job and no local install needs.
   If plugin resolution through `npx -p` ever breaks, the fallback is to pin the

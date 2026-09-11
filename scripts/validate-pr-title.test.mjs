@@ -6,8 +6,10 @@
 // `describe` / `it` / `expect` are imported rather than taken from
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
+import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
+import process from 'node:process'
 
 import { describe, expect, it } from 'vitest'
 
@@ -88,6 +90,9 @@ describe('validatePrTitle', () => {
     ['an uppercase type', 'Feat: add stuff'],
     ['an empty scope', 'feat(): add stuff'],
     ['an uppercase scope', 'feat(API): add stuff'],
+    ['a mixed-case scope', 'feat(fooBar): add stuff'],
+    ['a doubled breaking marker', 'feat!!: add stuff'],
+    ['nested scopes', 'fix(a)(b): add stuff'],
     ['leading whitespace', ' feat: add stuff'],
     ['an empty title', ''],
     ['a whitespace-only title', '   '],
@@ -131,17 +136,64 @@ describe('validatePrTitle', () => {
         .map((rule) => [rule.type, rule.release]),
     )
 
-    // `revert` is expressed as `{ revert: true }` in the config, because a
-    // revert is detected from the commit body, not from the subject type. The
-    // script still has to accept `revert:` as a subject, so it is compared
-    // against that rule instead of against a `type` rule.
-    const { revert: revertBump, ...typeBumps } = TYPE_BUMPS
+    expect(configuredBumps).toEqual(TYPE_BUMPS)
 
-    expect(configuredBumps).toEqual(typeBumps)
-    expect(rules).toContainEqual({ revert: true, release: revertBump })
+    // `revert` needs both rules. `{ revert: true }` matches the body that
+    // `git revert` generates ("This reverts commit <sha>."), which a squashed
+    // pull request never carries because the squash body is blank; the
+    // `{ type: 'revert' }` rule is what actually matches a `revert:` subject.
+    expect(rules).toContainEqual({ revert: true, release: TYPE_BUMPS.revert })
 
     // The breaking rule must come first, or `feat!:` would match the later
     // `{ type: 'feat' }` rule and release a minor instead of a major.
     expect(rules[0]).toEqual({ breaking: true, release: 'major' })
+  })
+})
+
+// The workflow runs the file, it does not import it. `main()` is skipped
+// entirely under `import`, so the exit codes CI reacts to are only reachable
+// through a real child process.
+describe('the command line entry point', () => {
+  const SCRIPT = path.join(import.meta.dirname, 'validate-pr-title.mjs')
+
+  /** @param {Record<string, string>} env */
+  const run = (env) =>
+    spawnSync(process.execPath, [SCRIPT], {
+      encoding: 'utf8',
+      // A bare env: inheriting the real one would leak a PR_TITLE set by the
+      // shell into the "missing variable" case.
+      env,
+    })
+
+  it('exits 0 and reports the release for a valid title', () => {
+    const result = run({ PR_TITLE: 'feat: add a chapter filter' })
+
+    expect(result.status).toBe(0)
+    expect(result.stdout).toContain('PASSED')
+    expect(result.stdout).toContain('release: minor')
+  })
+
+  it('exits 1 and prints the accepted types for an invalid title', () => {
+    const result = run({ PR_TITLE: 'add stuff' })
+
+    expect(result.status).toBe(1)
+    expect(result.stderr).toContain('FAILED')
+    expect(result.stderr).toContain('feat')
+    expect(result.stderr).toContain('minor')
+  })
+
+  it('exits 2 when PR_TITLE is not set at all', () => {
+    const result = run({})
+
+    expect(result.status).toBe(2)
+    expect(result.stderr).toContain('PR_TITLE is not set')
+  })
+
+  it('exits 1 rather than 2 when PR_TITLE is set but empty', () => {
+    // An unset variable means the workflow is wired wrong; an empty one means
+    // the pull request has no title. They must not collapse into one code.
+    const result = run({ PR_TITLE: '' })
+
+    expect(result.status).toBe(1)
   })
 })
