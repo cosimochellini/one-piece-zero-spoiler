@@ -41,8 +41,10 @@ produced entirely by CI. Nobody edits `version` in `package.json` by hand.
 **The pull request title is the version bump.** Merges to `main` are squashed
 into a single commit whose subject is the PR title, and
 [semantic-release](https://semantic-release.gitbook.io) reads that subject to
-decide what to release. The `pr-title` check enforces the format on every pull
-request, so a malformed title cannot reach `main`.
+decide what to release. The `pr-title` check validates the format on every pull
+request, so a malformed title is visible before the merge button — though see
+the note on branch protection below for why it is a warning rather than a
+hard block.
 
 ```
 type(optional-scope): subject

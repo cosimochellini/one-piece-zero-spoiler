@@ -48,6 +48,13 @@ describe('validatePrTitle', () => {
     })
   })
 
+  it('accepts a scope that starts with a digit', () => {
+    expect(validatePrTitle('fix(2fa): accept recovery codes')).toMatchObject({
+      ok: true,
+      release: 'patch',
+    })
+  })
+
   it('promotes any type to major when the breaking marker is present', () => {
     expect(validatePrTitle('chore!: drop Node 22')).toEqual({
       ok: true,
@@ -93,6 +100,8 @@ describe('validatePrTitle', () => {
     ['a mixed-case scope', 'feat(fooBar): add stuff'],
     ['a doubled breaking marker', 'feat!!: add stuff'],
     ['nested scopes', 'fix(a)(b): add stuff'],
+    ['a doubled space after the colon', 'feat:  add stuff'],
+    ['a trailing space', 'feat: add stuff '],
     ['leading whitespace', ' feat: add stuff'],
     ['an empty title', ''],
     ['a whitespace-only title', '   '],

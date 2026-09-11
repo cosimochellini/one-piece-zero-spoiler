@@ -83,8 +83,19 @@ export function validatePrTitle(title) {
 
   const [, type, , bang, subject] = match
 
-  if (subject === undefined || subject.trim() === '') {
-    return { ok: false, reason: 'the subject after the colon is empty' }
+  // The pattern already guarantees at least one character after `: `, so an
+  // empty subject cannot reach here — but a whitespace-only one can, and so
+  // can padding around a real subject. The title becomes a commit subject
+  // verbatim, so it has to be exactly what the author meant to write.
+  if (subject.trim() === '') {
+    return { ok: false, reason: 'the subject after the colon is blank' }
+  }
+
+  if (subject !== subject.trim()) {
+    return {
+      ok: false,
+      reason: 'the subject has leading or trailing whitespace',
+    }
   }
 
   // `type` is always defined when the pattern matches; the index access is
