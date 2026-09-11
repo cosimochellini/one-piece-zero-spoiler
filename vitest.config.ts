@@ -59,7 +59,9 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    // scripts/ holds the CI gate scripts as plain .mjs, outside the TS
+    // program. They still need tests, so the glob covers them too.
+    include: ['src/**/*.{test,spec}.{ts,tsx}', 'scripts/**/*.{test,spec}.mjs'],
     restoreMocks: true,
     coverage: {
       provider: 'v8',

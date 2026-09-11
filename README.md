@@ -33,6 +33,55 @@ The dev server listens on http://localhost:3000.
 
 `npm run check` is what CI runs. Run it before pushing.
 
+## Versioning and releases
+
+The project is versioned with [SemVer](https://semver.org), and the version is
+produced entirely by CI. Nobody edits `version` in `package.json` by hand.
+
+**The pull request title is the version bump.** Merges to `main` are squashed
+into a single commit whose subject is the PR title, and
+[semantic-release](https://semantic-release.gitbook.io) reads that subject to
+decide what to release. The `pr-title` check enforces the format on every pull
+request, so a malformed title cannot reach `main`.
+
+```
+type(optional-scope): subject
+type(optional-scope)!: subject   # breaking change, releases a major
+```
+
+| Title type                                                                  | Release |
+| --------------------------------------------------------------------------- | ------- |
+| any type with `!`, or a `BREAKING CHANGE:` footer                           | major   |
+| `feat`                                                                      | minor   |
+| `fix` `perf` `revert` `refactor` `docs` `style` `test` `build` `ci` `chore` | patch   |
+
+Every type maps to a release, on purpose: a merged pull request always produces
+a version. That is configured through `releaseRules` in `.releaserc.json`, which
+overrides semantic-release's default of releasing nothing for `chore` and
+friends.
+
+What happens on a merge to `main`:
+
+1. The `check` job runs the full gate. A red build releases nothing.
+2. The `release` job bumps `package.json` and `package-lock.json`, commits them
+   back as `chore(release): x.y.z [skip ci]`, creates the `vx.y.z` tag, and
+   publishes a GitHub Release with notes generated from the commits.
+
+There is no `CHANGELOG.md`: the GitHub Releases page is the changelog. Nothing
+is published to npm — the package is `private`.
+
+Two details worth knowing before changing any of this:
+
+- **`scripts/validate-pr-title.mjs` and `.releaserc.json` must agree.** A type
+  the validator accepts but the release rules ignore would merge cleanly and
+  then release nothing. `scripts/validate-pr-title.test.mjs` reads
+  `.releaserc.json` and asserts the two maps are identical, so the drift fails
+  the test run rather than a release.
+- **semantic-release is installed by pinned `npx`, not by `devDependencies`.**
+  It pulls roughly 250 packages that no other job and no local install needs.
+  If plugin resolution through `npx -p` ever breaks, the fallback is to pin the
+  same versions in `devDependencies` and run it through `npm ci`.
+
 ## Architecture notes
 
 **Two Vite configs, on purpose.** `vitest.config.ts` deliberately omits
