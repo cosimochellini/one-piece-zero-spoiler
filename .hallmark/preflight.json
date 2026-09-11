@@ -1,0 +1,18 @@
+{
+  "scannedAt": "2026-09-11",
+  "framework": "TanStack Start 1.168 (React 19), StyleX 0.19, Vitest",
+  "fonts": "Bricolage Grotesque 800 (display) · Instrument Sans (body) · JetBrains Mono (outlier), self-hosted in public/fonts, declared in src/styles/global.css @layer fonts",
+  "palette": "OKLCH via stylex.defineVars in src/styles/tokens.stylex.ts — custom 'Sea Chart': paper oklch(13% 0.025 250), accent oklch(84% 0.16 88), 19-hue tint set for drawings",
+  "motion": "motion-cut (no framer-motion/gsap/motion); one orchestrated entrance per page, opacity+transform only",
+  "spacing": "4pt scale space.xs3…xl4 in tokens.stylex.ts",
+  "preserve": [
+    "font stack",
+    "palette",
+    "spacing scale",
+    "N9 bar",
+    "Ft4 colophon",
+    "SpoilerVeil contract",
+    "ChartArt drawing rules"
+  ],
+  "note": "tokens.stylex.ts is the locked design system; rotation applies to macrostructures only, never to theme."
+}

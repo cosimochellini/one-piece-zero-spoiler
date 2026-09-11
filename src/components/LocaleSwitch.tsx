@@ -34,6 +34,10 @@ function remember(next: Locale): void {
  * be opened in a new tab, shared, and crawled. The click also writes the
  * locale cookie, which is what lets a later visit to `/` land on the same
  * language without asking again.
+ *
+ * `to="."` is the current route with only the locale param swapped, so a
+ * reader on a character's page gets the same page in the other language and
+ * not the landing.
  */
 export function LocaleSwitch() {
   const { locale, t } = useLocale()
@@ -47,13 +51,11 @@ export function LocaleSwitch() {
           return (
             <li key={candidate}>
               <Link
-                to="/$locale"
-                params={{ locale: candidate }}
+                to="."
+                params={(previous) => ({ ...previous, locale: candidate })}
                 hrefLang={candidate}
-                // The active item is marked for assistive technology as well
-                // as with the accent rule, because colour alone is not a
-                // signal.
-                aria-current={current ? 'true' : undefined}
+                // `Link` sets `aria-current="page"` on the active item by
+                // itself, so the accent rule is never the only signal.
                 onClick={() => {
                   remember(candidate)
                 }}

@@ -193,6 +193,38 @@ orientation column (headline, dial, legend) is `position: sticky` from 60rem so
 moving the dial moves the horizon in view. The stamp at the top of
 `tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
 
+**The characters pages are the signal book.** `/$locale/characters` lists
+the twenty characters named in `FEATURED_CHARACTER_IDS`
+(`src/data/characters.ts`, an editorial ranking; the page draws them in route
+order) as one uniform grid of crests, Hallmark's Catalogue macrostructure.
+`/$locale/characters/$id` is a page for any character record, listed or not,
+shaped as Split Studio: crest beside dossier, then the record's place on the
+route beside a strip of the whole route (`RouteStrip.tsx`), then the listed
+characters filed nearest by episode. `src/data/characters.ts` also holds the
+roles, written to the same "safe at the threshold" rule as the summaries:
+Franky is a ship dismantler there, not what he turns out to be.
+
+The search on the list page is the spoiler rule applied to a text field. It
+filters the open characters only; the fogged ones sit in a band of their own
+that never changes, because a covered card that appeared when its name was
+typed would confirm the name. Both locales' names are searched (an Italian
+reader who knows him as Luffy still finds Rufy), and the match is marked only
+in the name that is shown. The character page decides its document title in
+the route `loader`, from the bookmark the root route read, so a covered
+character's `<title>` is "A character under fog" and never the name; the page
+body then follows the live dial. `SpoilerVeil` gained a `compact` density for
+the cards (the verb alone, centred, a drawing's blur), and the language switch
+now uses `to="."` so it keeps the reader on the same page.
+
+**Every character has a crest, and it is the site's own mark.**
+`src/components/CharacterCrest.tsx` sets the character's existing line drawing
+inside a seal: a ring in the character's tint, a dashed inner ring, thirty-two
+bezel ticks with the four cardinal ones in the tint, like a compass card. The
+seal is identical for everyone and only the object and the colour change,
+which is what makes twenty-six emblems read as one set. No faces and no
+official Jolly Rogers appear; `ChartArt.tsx` exports `ArtStrokes` so the same
+strokes can be nested in the crest's `<svg>` without a second copy.
+
 **Every picture is a line drawing made here; no photographs, no official
 artwork.** Toei and Shueisha own every frame of the anime and every panel of
 the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`,
