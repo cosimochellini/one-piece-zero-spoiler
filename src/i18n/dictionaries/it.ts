@@ -15,7 +15,6 @@ export const itDictionary: Dictionary = {
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
   'nav.label': 'Pagine',
-  'nav.home': 'Zero Spoiler, pagina iniziale',
 
   'hero.headline': 'La wiki si ferma dove sei tu',
   'hero.lede':
@@ -76,7 +75,6 @@ export const itDictionary: Dictionary = {
     'Venti personaggi di One Piece, ciascuno archiviato all’episodio che lo introduce e coperto finché non ci arrivi.',
 
   'character.opensAt': 'Compare per la prima volta nell’episodio {episode}',
-  'character.foggedName': 'Un personaggio nella nebbia',
   'character.foggedTitle': 'Un personaggio nella nebbia — Zero Spoiler',
   'character.foggedDescription':
     'Un personaggio di One Piece archiviato all’episodio {episode}. Imposta l’episodio a cui sei arrivato per leggere la pagina.',

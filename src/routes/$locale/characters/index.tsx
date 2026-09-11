@@ -10,6 +10,7 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 
 import { CharacterGrid } from '~/components/CharacterGrid'
+import { EpisodeDial } from '~/components/EpisodeDial'
 import { featuredCharacters } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
@@ -68,6 +69,9 @@ function CharactersPage() {
         <p {...stylex.props(styles.count)}>
           {t('characters.count', { count: featuredCharacters.length })}
         </p>
+        <div {...stylex.props(styles.dial)}>
+          <EpisodeDial />
+        </div>
       </header>
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
@@ -106,6 +110,12 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '58ch',
+  },
+  // The dial lives here too, so a reader who lands on this page directly can
+  // open the fog without going back to the chart. Same control, same cookie.
+  dial: {
+    marginBlockStart: space.sm,
+    maxWidth: '36rem',
   },
 
   enter: {

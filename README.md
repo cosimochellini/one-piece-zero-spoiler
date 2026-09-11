@@ -221,7 +221,7 @@ now uses `to="."` so it keeps the reader on the same page.
 inside a seal: a ring in the character's tint, a dashed inner ring, thirty-two
 bezel ticks with the four cardinal ones in the tint, like a compass card. The
 seal is identical for everyone and only the object and the colour change,
-which is what makes twenty-six emblems read as one set. No faces and no
+which is what makes twenty-five emblems read as one set. No faces and no
 official Jolly Rogers appear; `ChartArt.tsx` exports `ArtStrokes` so the same
 strokes can be nested in the crest's `<svg>` without a second copy.
 

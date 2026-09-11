@@ -22,7 +22,6 @@ export const enDictionary = {
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',
   'nav.label': 'Pages',
-  'nav.home': 'Zero Spoiler, home',
 
   'hero.headline': 'The wiki stops where you stopped',
   'hero.lede':
@@ -81,7 +80,6 @@ export const enDictionary = {
     'Twenty One Piece characters, each filed at the episode that introduces them and covered until you get there.',
 
   'character.opensAt': 'First appears in episode {episode}',
-  'character.foggedName': 'A character under fog',
   'character.foggedTitle': 'A character under fog — Zero Spoiler',
   'character.foggedDescription':
     'A One Piece character filed at episode {episode}. Set the episode you have reached to read the page.',

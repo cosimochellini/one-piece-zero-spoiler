@@ -7,8 +7,8 @@ import { color, rule } from '~/styles/tokens.stylex'
 /**
  * A character's crest: the drawing that stands for them, set inside a seal.
  *
- * The seal is what makes twenty-six drawings read as one set of emblems
- * rather than twenty-six illustrations. It is the same for everyone — a ring
+ * The seal is what makes twenty-five drawings read as one set of emblems
+ * rather than twenty-five illustrations. It is the same for everyone — a ring
  * in the character's colour, a dashed inner ring, thirty-two bezel ticks with
  * the four cardinal ones in colour, like a compass card — and only the object
  * in the middle and the one colour change. Nothing here is a face and nothing
@@ -59,10 +59,13 @@ const n = (value: number) => String(Math.round(value * 100) / 100)
 const ring = (cx: number, cy: number, r: number) =>
   `M${n(cx - r)} ${n(cy)} a${n(r)} ${n(r)} 0 1 0 ${n(2 * r)} 0 a${n(r)} ${n(r)} 0 1 0 ${n(-2 * r)} 0`
 
-/** One radial tick per step, between two radii, as a single path. */
-function ticks(count: number, inner: number, outer: number, skip: number) {
+/**
+ * One radial tick per step, between two radii, as a single path. `skip`
+ * drops every n-th tick (index 0 included); `0` draws them all.
+ */
+function ticks(count: number, inner: number, outer: number, skip = 0) {
   return Array.from({ length: count }, (_, i) => {
-    if (i % skip === 0) return ''
+    if (skip > 0 && i % skip === 0) return ''
     const a = -Math.PI / 2 + (i * 2 * Math.PI) / count
     const cos = Math.cos(a)
     const sin = Math.sin(a)
@@ -75,7 +78,7 @@ function ticks(count: number, inner: number, outer: number, skip: number) {
 // Thirty-two ticks; the four cardinal ones are drawn separately, longer and in
 // the character's colour, so the seal reads as a compass card.
 const BEZEL_MINOR = ticks(32, 86, 90, 8)
-const BEZEL_CARDINAL = ticks(4, 84, 92, Number.MAX_SAFE_INTEGER)
+const BEZEL_CARDINAL = ticks(4, 84, 92)
 
 const styles = stylex.create({
   svg: {

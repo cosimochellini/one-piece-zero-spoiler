@@ -22,6 +22,20 @@ describe('CharacterCrest', () => {
     }
   })
 
+  it('draws all four cardinal ticks and twenty-eight minor ones', () => {
+    const { container } = render(
+      <CharacterCrest visual={{ art: 'nami', tint: 'orange' }} />,
+    )
+    const paths = container.querySelectorAll(':scope svg > path')
+    const segments = (path: Element | undefined) =>
+      (path?.getAttribute('d')?.match(/M/g) ?? []).length
+    const minor = paths[2]
+    const cardinal = paths[3]
+
+    expect(segments(minor)).toBe(28)
+    expect(segments(cardinal)).toBe(4)
+  })
+
   it('keeps every stroke at the same width whatever size it is drawn at', () => {
     const { container } = render(
       <CharacterCrest visual={{ art: 'nami', tint: 'orange' }} />,
