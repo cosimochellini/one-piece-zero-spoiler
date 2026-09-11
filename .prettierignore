@@ -7,4 +7,8 @@ coverage
 .netlify
 .gate
 package-lock.json
+# Vendored agent skills. skills-lock.json pins their content hash, so
+# reformatting them would invalidate the lockfile.
+.agents
+.claude/skills
 src/routeTree.gen.ts
