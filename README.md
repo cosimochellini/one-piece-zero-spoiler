@@ -70,6 +70,15 @@ What happens on a merge to `main`:
 There is no `CHANGELOG.md`: the GitHub Releases page is the changelog. Nothing
 is published to npm — the package is `private`.
 
+`main` carries no branch protection, and that is a decision rather than an
+omission. A ruleset requiring a pull request would also reject the
+`chore(release)` commit the release job pushes, and the usual escape hatch —
+adding `github-actions` to the ruleset's bypass list — is rejected on a
+personal repository with `Actor GitHub Actions integration must be part of
+the ruleset source or owner organization`. Protecting the branch therefore
+costs either a deploy key held as a secret, or giving up the `package.json`
+bump. Both checks still run on every pull request; they are simply advisory.
+
 If the `release` job dies between tagging and publishing — the tag and the
 version commit land, the GitHub Release does not — the next merge will not
 backfill it, because the tag already exists and the commits are already
