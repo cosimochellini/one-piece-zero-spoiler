@@ -151,7 +151,8 @@ readers, and `user-select: none` keeps it out of a drag-select, but browser
 find-in-page and devtools can still surface it. The character pages pass a
 `placeholder` instead, so a covered name, role or summary is absent from the
 served HTML and only mounts on the client once the fog is lifted. A fogged
-catalogue card also has no link, because the slug would spell the name.
+crest is a bare seal with no drawing and no colour, and a fogged catalogue card
+has no link, because the slug would spell the name.
 
 **Locales are route prefixes.** Every page lives under `/$locale`
 (`src/routes/$locale.tsx`), so the same page in two languages is two

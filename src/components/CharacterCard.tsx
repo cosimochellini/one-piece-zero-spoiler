@@ -49,13 +49,13 @@ export function CharacterCard({
         revealedAtEpisode={entity.revealedAtEpisode}
         revealed={revealed}
         density="compact"
-        strength="media"
-        // A fogged card has no link and no name in the DOM: the slug in the
-        // href would spell the name a blur is meant to hide.
+        // A fogged card has no link, no name and no drawing in the DOM: the
+        // slug in the href would spell the name a blur is meant to hide, and
+        // the drawing and its colour would say as much.
         placeholder={
           <span {...stylex.props(styles.link)}>
             <span {...stylex.props(styles.frame)}>
-              <CharacterCrest visual={entity.visual} />
+              <CharacterCrest />
             </span>
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>

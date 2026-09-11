@@ -17,16 +17,20 @@ import { color, rule } from '~/styles/tokens.stylex'
  *
  * The same 2px non-scaling stroke as every other drawing, so a crest on a
  * 7rem card and a crest filling half a page are drawn with the same pen.
+ *
+ * With no `visual` the seal is bare: rings and ticks in the ambient ink, and
+ * nothing in the middle. That is what stands in for a fogged character, so
+ * the served HTML carries neither their drawing nor their colour.
  */
-export function CharacterCrest({ visual }: { readonly visual: Visual }) {
-  const hue = tintOf(visual.tint)
+export function CharacterCrest({ visual }: { readonly visual?: Visual }) {
+  const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (
     <svg aria-hidden="true" viewBox="0 0 200 200" {...stylex.props(styles.svg)}>
       <path
         d={ring(100, 100, 94)}
         vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.tinted(hue))}
+        {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
       />
       <path
         d={ring(100, 100, 82)}
@@ -41,15 +45,17 @@ export function CharacterCrest({ visual }: { readonly visual: Visual }) {
       <path
         d={BEZEL_CARDINAL}
         vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.tinted(hue))}
+        {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
       />
       {/*
         The drawing's 4:5 box, inscribed in the inner ring: a 100x125 box has
         a half-diagonal of 80, inside the 82 of the dashed ring.
       */}
-      <svg x="50" y="37.5" width="100" height="125" viewBox={ART_VIEWBOX}>
-        <ArtStrokes art={visual.art} tint={visual.tint} />
-      </svg>
+      {visual === undefined ? null : (
+        <svg x="50" y="37.5" width="100" height="125" viewBox={ART_VIEWBOX}>
+          <ArtStrokes art={visual.art} tint={visual.tint} />
+        </svg>
+      )}
     </svg>
   )
 }

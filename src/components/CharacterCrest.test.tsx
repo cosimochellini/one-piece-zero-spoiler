@@ -36,6 +36,14 @@ describe('CharacterCrest', () => {
     expect(segments(cardinal)).toBe(4)
   })
 
+  it('draws a bare seal with no drawing and no tint when given no visual', () => {
+    const { container } = render(<CharacterCrest />)
+    const svg = container.querySelector('svg')
+
+    expect(svg?.querySelectorAll(':scope > path')).toHaveLength(4)
+    expect(svg?.querySelector('svg')).toBeNull()
+  })
+
   it('keeps every stroke at the same width whatever size it is drawn at', () => {
     const { container } = render(
       <CharacterCrest visual={{ art: 'nami', tint: 'orange' }} />,

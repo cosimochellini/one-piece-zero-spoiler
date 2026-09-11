@@ -154,6 +154,13 @@ function CharacterPage() {
           revealedAtEpisode={entity.revealedAtEpisode}
           revealed={revealed}
           strength="media"
+          // A bare seal under fog: the drawing and its colour stay out of
+          // the served HTML along with the name.
+          placeholder={
+            <div {...stylex.props(styles.plate)}>
+              <CharacterCrest />
+            </div>
+          }
         >
           <div {...stylex.props(styles.plate)}>
             <CharacterCrest visual={entity.visual} />
@@ -305,9 +312,7 @@ function Neighbour({
               density="inline"
               placeholder={
                 <span {...stylex.props(styles.neighbourCard)}>
-                  <span {...stylex.props(styles.neighbourFrame)}>
-                    <ChartArt art={entry.visual.art} tint={entry.visual.tint} />
-                  </span>
+                  <span {...stylex.props(styles.neighbourFrame)} />
                   <span {...stylex.props(styles.neighbourName)}>
                     {t('veil.placeholder')}
                   </span>

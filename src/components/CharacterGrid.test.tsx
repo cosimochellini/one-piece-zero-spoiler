@@ -55,6 +55,7 @@ describe('CharacterGrid', () => {
     // The covered name is not in the DOM at all, only its episode is.
     expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
     expect(within(fogBand()).getByText('Spoiler')).toBeInTheDocument()
+    expect(fogBand().querySelectorAll('svg svg')).toHaveLength(0)
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
