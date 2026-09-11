@@ -4,6 +4,7 @@ coverage
 .tanstack
 .output
 .nitro
+.netlify
 .gate
 package-lock.json
 src/routeTree.gen.ts

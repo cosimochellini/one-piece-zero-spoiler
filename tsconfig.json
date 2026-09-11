@@ -6,6 +6,7 @@
     "coverage",
     ".tanstack",
     ".output",
+    ".netlify",
     ".gate"
   ],
   "compilerOptions": {
