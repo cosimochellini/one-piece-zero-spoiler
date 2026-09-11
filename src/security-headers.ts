@@ -28,8 +28,10 @@ export function createSecurityHeaders(
       // directive and, once a nonce is present, CSP Level 3 ignores
       // 'unsafe-inline' and blocks React's `style` prop outright. Vite also
       // injects CSS as script-created <style> elements in dev, and it has no
-      // way to learn our per-request nonce. Neither is exercised today - the
-      // app ships no CSS - but both break the moment one is added.
+      // way to learn our per-request nonce. The second case is live: the app
+      // now ships CSS. StyleX compiles to an external same-origin stylesheet,
+      // which 'self' already covers in production, but the dev server still
+      // injects style elements from script, so the keyword has to stay.
       "style-src 'self' 'unsafe-inline'",
       "img-src 'self' data:",
       "font-src 'self' data:",

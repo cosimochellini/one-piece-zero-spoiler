@@ -56,6 +56,30 @@ the native compiler.
 (`stylisticTypeChecked` is deliberately not enabled) and
 `eslint-config-prettier` is applied last, so the two tools cannot disagree.
 
+**Styling is StyleX.** Every visual rule is authored with
+`@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which appends the
+generated CSS to `src/styles/global.css` — the single same-origin stylesheet
+the SSR manifest links on every document. That is why `default-src 'self'`
+needs no new source, and why the design uses no web fonts and no images.
+`src/styles/tokens.stylex.ts` holds the design tokens and must keep its
+`.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
+`*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong
+and are commented where they live: the root route imports the stylesheet as a
+plain side-effect import rather than `?url` (Vite treats `url` as
+side-effect-free, so a `?url` import reaches neither the route manifest nor
+Start's dev style collector); the reset in `global.css` sits in `@layer reset`,
+because unlayered CSS beats layered CSS and StyleX output is layered; and the
+plugin has to be registered in `vitest.config.ts` too, since `stylex.create`
+throws at runtime when it has not been compiled. Generated class names are
+content hashes, so tests never assert on them.
+
+**`@stylexjs/unplugin` runs against `unplugin` 3.x.** Its declared peer range
+is `^2.3.11`, but `@tanstack/router-plugin` already depends on `unplugin@3.3.0`
+and it is hoisted to the root. `npm ls unplugin` therefore prints `invalid`.
+Pinning a second, nested copy of `unplugin` is the worse trade: it duplicates
+the package for a plugin that works on 3.x, so the peer warning is accepted
+instead.
+
 **`src/routeTree.gen.ts` is committed.** It carries the `Register` module
 augmentation that gives the whole project its router types, so a fresh clone
 would fail `typecheck` and `lint` without it. It is marked

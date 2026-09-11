@@ -27,4 +27,10 @@ describe('SpoilerBadge', () => {
 
     expect(onReveal).toHaveBeenCalledTimes(1)
   })
+
+  it('drops the reveal button once revealed', () => {
+    render(<SpoilerBadge label="Chapter 1150" revealed onReveal={vi.fn()} />)
+
+    expect(screen.queryByRole('button')).not.toBeInTheDocument()
+  })
 })
