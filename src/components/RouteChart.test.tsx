@@ -158,4 +158,14 @@ describe('RouteChart', () => {
       screen.queryByRole('link', { name: 'Opening Saga' }),
     ).not.toBeInTheDocument()
   })
+
+  it('gives a covered character no link, so the slug stays out of the HTML', () => {
+    const { container } = renderWithProviders(
+      <RouteChart entries={entries} progress={100} />,
+      { progress: 100 },
+    )
+
+    expect(container.querySelector('a[href*="/characters/"]')).toBeNull()
+    expect(screen.getByText('Middle Face')).toBeInTheDocument()
+  })
 })

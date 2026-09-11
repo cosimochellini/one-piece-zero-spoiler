@@ -79,14 +79,18 @@ export function CharacterGrid({ entries, progress }: CharacterGridProps) {
           />
           {/*
             The slot is always there, so the field does not change width when
-            a query appears. `hidden` rather than unmounting keeps the row's
-            geometry identical in both states.
+            a query appears. The button stays mounted and is hidden with
+            `visibility`, which keeps the row's geometry identical in both
+            states and takes it out of the tab order. The `hidden` attribute
+            alone would not: the button's own `display` wins over the user
+            agent's `[hidden]` rule.
           */}
           <span {...stylex.props(styles.clearSlot)}>
             <Button
               variant="quiet"
               aria-label={t('characters.searchClear')}
               hidden={trimmed === ''}
+              sx={trimmed === '' ? styles.clearHidden : undefined}
               onClick={() => {
                 setQuery('')
               }}
@@ -234,6 +238,9 @@ const styles = stylex.create({
     display: 'inline-flex',
     flexShrink: 0,
     minWidth: '44px',
+  },
+  clearHidden: {
+    visibility: 'hidden',
   },
   status: {
     color: color.muted,

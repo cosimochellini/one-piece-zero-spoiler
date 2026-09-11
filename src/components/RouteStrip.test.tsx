@@ -32,6 +32,36 @@ describe('RouteStrip', () => {
     expect(strip.querySelectorAll('circle')).toHaveLength(5)
   })
 
+  it('rings a covered record in the ambient ink, not its own colour', () => {
+    const current = entries[3]
+    if (current === undefined) throw new Error('fixture')
+    const { container, unmount } = renderWithProviders(
+      <RouteStrip
+        entries={entries}
+        current={current}
+        progress={500}
+        label="Waypoint 4 of 4"
+      />,
+    )
+    const coveredRing = container.querySelector('circle[r="7.5"]')?.className
+    unmount()
+
+    renderWithProviders(
+      <RouteStrip
+        entries={entries}
+        current={current}
+        progress={1000}
+        label="Waypoint 4 of 4"
+      />,
+    )
+    const openRing = screen
+      .getByRole('img')
+      .querySelector('circle[r="7.5"]')?.className
+
+    expect(coveredRing).toBeDefined()
+    expect(coveredRing).not.toBe(openRing)
+  })
+
   it('draws no open stretch when nothing is open', () => {
     const current = entries[0]
     if (current === undefined) throw new Error('fixture')

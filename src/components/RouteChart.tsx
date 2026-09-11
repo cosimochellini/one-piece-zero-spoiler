@@ -125,7 +125,11 @@ function Waypoint({ entry, index, open }: WaypointProps) {
             <Picture visual={entry.visual} />
             <div {...stylex.props(styles.words)}>
               <h3 {...stylex.props(styles.name)}>
-                {entry.kind === 'character' ? (
+                {/*
+                  Only an open character is a link: a covered card's href
+                  would spell out, in the page source, the name a blur hides.
+                */}
+                {entry.kind === 'character' && open ? (
                   <Link
                     to="/$locale/characters/$id"
                     params={{ locale, id: entry.id }}

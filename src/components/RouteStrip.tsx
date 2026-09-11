@@ -38,6 +38,11 @@ export function RouteStrip({
   const openCount = entries.filter((entry) =>
     isRevealed(entry, progress),
   ).length
+  // The ring takes the record's colour only once the reader has reached it;
+  // under fog it is drawn in the ambient ink, so the colour is not in the HTML.
+  const ringHue = isRevealed(current, progress)
+    ? tintOf(current.visual.tint)
+    : null
   const width = PAD * 2 + STEP * (entries.length - 1)
   const x = (index: number) => PAD + STEP * index
   // Between the last open mark and the first covered one; before the first
@@ -87,7 +92,7 @@ export function RouteStrip({
                 vectorEffect="non-scaling-stroke"
                 {...stylex.props(
                   styles.line,
-                  styles.ring(tintOf(current.visual.tint)),
+                  ringHue === null ? styles.ringCovered : styles.ring(ringHue),
                 )}
               />
             )}
@@ -128,6 +133,9 @@ const styles = stylex.create({
     strokeDasharray: '3 6',
   },
   ring: (hue: string) => ({ stroke: hue }),
+  ringCovered: {
+    stroke: color.ink2,
+  },
   mark: {
     strokeWidth: rule.fine,
   },
