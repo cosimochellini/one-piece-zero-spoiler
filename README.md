@@ -145,13 +145,13 @@ moves the dial, the server never trusts it for anything but choosing what to
 render, and a round trip would put network latency between a keystroke and the
 page reacting.
 
-`SpoilerVeil` currently implements one mode, `blur`. The covered text is in the
+`SpoilerVeil` blurs by default. On the landing chart the covered text is in the
 DOM: `inert` and `aria-hidden` keep it away from the keyboard and from screen
 readers, and `user-select: none` keeps it out of a drag-select, but browser
-find-in-page and devtools can still surface it. Entity pages will need the
-`deferred` mode noted in the component — a placeholder that fetches the real
-text through a server function on reveal — so the covered words never leave the
-server.
+find-in-page and devtools can still surface it. The character pages pass a
+`placeholder` instead, so a covered name, role or summary is absent from the
+served HTML and only mounts on the client once the fog is lifted. A fogged
+catalogue card also has no link, because the slug would spell the name.
 
 **Locales are route prefixes.** Every page lives under `/$locale`
 (`src/routes/$locale.tsx`), so the same page in two languages is two
