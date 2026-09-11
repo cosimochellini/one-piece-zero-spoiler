@@ -228,8 +228,8 @@ strokes can be nested in the crest's `<svg>` without a second copy.
 
 **Every picture is a line drawing made here; no photographs, no official
 artwork.** Toei and Shueisha own every frame of the anime and every panel of
-the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`,
-so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
+the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`
+with a nonce-only `script-src`, so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
 drawings, one per record, as lists of SVG path strokes rendered by one
 component: a 160x200 box, a uniform 2px stroke kept at 2px through
 `vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
@@ -248,7 +248,10 @@ widening both `style-src` and `font-src` for five files. Each has a
 metric-matched fallback face — `size-adjust` equalises x-height against Arial,
 then the ascent and descent overrides are the real font's `hhea` values divided
 by that adjustment — so the `font-display: swap` handover does not reflow the
-page. The metrics used are written down beside the declarations.
+page. The metrics used are written down beside the declarations. The site
+icon is `public/icon.svg`, the compass star from the chart on a night-sea
+tile; `scripts/make-icons.mjs` renders it into `favicon.ico` and
+`apple-touch-icon.png`, both committed so the build never needs librsvg.
 `src/styles/tokens.stylex.ts` holds the design tokens and must keep its
 `.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
 `*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong

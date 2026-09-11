@@ -23,10 +23,11 @@ describe('createSecurityHeaders', () => {
     expect(csp).toContain("frame-ancestors 'none'")
   })
 
-  it('enforces the request nonce on scripts', () => {
-    expect(createSecurityHeaders(NONCE)['Content-Security-Policy']).toContain(
-      `script-src 'self' 'nonce-${NONCE}' 'unsafe-inline'`,
-    )
+  it('enforces the request nonce on scripts without unsafe-inline', () => {
+    const csp = createSecurityHeaders(NONCE)['Content-Security-Policy']
+
+    expect(csp).toContain(`script-src 'self' 'nonce-${NONCE}'`)
+    expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/)
   })
 
   it('falls back to unsafe-inline when no nonce is available', () => {
