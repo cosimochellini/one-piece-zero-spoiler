@@ -30,6 +30,7 @@
     }
   },
   "dependencies": {
+    "@stylexjs/stylex": "0.19.0",
     "@tanstack/react-router": "1.170.35",
     "@tanstack/react-start": "1.168.52",
     "react": "19.3.0",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@eslint/js": "10.0.1",
     "@netlify/vite-plugin-tanstack-start": "1.3.19",
+    "@stylexjs/unplugin": "0.19.0",
     "@tanstack/eslint-plugin-router": "1.162.0",
     "@testing-library/dom": "10.4.1",
     "@testing-library/jest-dom": "7.0.1",
@@ -59,5 +61,8 @@
     "typescript-eslint": "8.70.0",
     "vite": "8.3.0",
     "vitest": "5.0.0"
+  },
+  "overrides": {
+    "unplugin": "3.3.0"
   }
 }

@@ -1,0 +1,30 @@
+/*
+ * Global stylesheet. It exists for two reasons, and the reset is the smaller
+ * one.
+ *
+ * The load-bearing reason: `@stylexjs/unplugin` emits no CSS asset of its own.
+ * It finds an already-emitted CSS asset in the bundle and appends the compiled
+ * StyleX rules to it. Without a real `.css` file in the client entry graph
+ * there is no such asset, and the plugin silently writes an
+ * `assets/stylex.css` that nothing ever links. `src/routes/__root.tsx` imports
+ * this file for exactly that purpose.
+ *
+ * Everything here is wrapped in a layer on purpose. Unlayered CSS always beats
+ * layered CSS, whatever the order, and StyleX output is layered
+ * (`useCSSLayers: true`) and appended below these rules. An unlayered reset
+ * would therefore win against every StyleX rule, which is the opposite of what
+ * a reset is for.
+ *
+ * The reset deliberately sets no colours and no fonts. Those are declared by
+ * StyleX on `<main>` in `src/routes/index.tsx` and inherit down, which keeps
+ * every design token in `src/styles/tokens.stylex.ts` and out of plain CSS.
+ */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+  }
+}

@@ -56,6 +56,33 @@ the native compiler.
 (`stylisticTypeChecked` is deliberately not enabled) and
 `eslint-config-prettier` is applied last, so the two tools cannot disagree.
 
+**Styling is StyleX.** Every visual rule is authored with
+`@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which appends the
+generated CSS to `src/styles/global.css` — the single same-origin stylesheet
+the SSR manifest links on every document. That is why `default-src 'self'`
+needs no new source, and why the design uses no web fonts and no images.
+`src/styles/tokens.stylex.ts` holds the design tokens and must keep its
+`.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
+`*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong
+and are commented where they live: the root route imports the stylesheet as a
+plain side-effect import rather than `?url` (Vite treats `url` as
+side-effect-free, so a `?url` import reaches neither the route manifest nor
+Start's dev style collector); the reset in `global.css` sits in `@layer reset`,
+because unlayered CSS beats layered CSS and StyleX output is layered; and the
+plugin has to be registered in `vitest.config.ts` too, since `stylex.create`
+throws at runtime when it has not been compiled. Generated class names are
+content hashes, so tests never assert on them.
+
+**`unplugin` is pinned by an override.** `@stylexjs/unplugin` declares a peer
+range of `unplugin@^2.3.11`, while `@tanstack/router-plugin` depends on
+`unplugin@^3.3.0`. Those ranges are disjoint, so a clean `npm install` or
+`npm ci` fails with `ERESOLVE could not resolve` — which is how it first
+showed up, as a red CI install step and a failed Netlify deploy, not as a
+local failure. The `overrides` entry pins every `unplugin` to `3.3.0`, the
+version TanStack already requires; StyleX's plugin works on it. The
+alternative, a second nested copy for StyleX alone, duplicates the package
+without fixing anything. Drop the override once StyleX widens its peer range.
+
 **`src/routeTree.gen.ts` is committed.** It carries the `Register` module
 augmentation that gives the whole project its router types, so a fresh clone
 would fail `typecheck` and `lint` without it. It is marked
