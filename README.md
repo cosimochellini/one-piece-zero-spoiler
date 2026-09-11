@@ -1,6 +1,7 @@
 # one-piece-zero-spoiler
 
-A [TanStack Start](https://tanstack.com/start) (React) application.
+A [TanStack Start](https://tanstack.com/start) (React) application: a One Piece
+wiki that hides every entry filed after the episode the reader has reached.
 
 ## Requirements
 
@@ -129,11 +130,62 @@ the native compiler.
 (`stylisticTypeChecked` is deliberately not enabled) and
 `eslint-config-prettier` is applied last, so the two tools cannot disagree.
 
-**Styling is StyleX.** Every visual rule is authored with
-`@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which appends the
-generated CSS to `src/styles/global.css` — the single same-origin stylesheet
-the SSR manifest links on every document. That is why `default-src 'self'`
-needs no new source, and why the design uses no web fonts and no images.
+**Spoiler gating is decided on the server.** The reader's episode lives in the
+`opzs_ep` cookie, and `src/lib/progress/readProgress.ts` reads it through
+`createIsomorphicFn` — the server branch before the first byte of HTML, the
+client branch from `document.cookie` on a navigation. The decision is made once
+by `isRevealed` in `src/lib/progress/spoiler.ts` and it fails closed: a missing
+cookie, a corrupt one, or a value outside `1 … EPISODE_CEILING` hides
+everything rather than revealing it. That is what makes the first paint already
+correct; reading the cookie in an effect would paint the uncovered page and
+cover it one frame later, which is a spoiler.
+
+The cookie is not `HttpOnly`. It is written by the browser when the reader
+moves the dial, the server never trusts it for anything but choosing what to
+render, and a round trip would put network latency between a keystroke and the
+page reacting.
+
+`SpoilerVeil` currently implements one mode, `blur`. The covered text is in the
+DOM: `inert` and `aria-hidden` keep it away from the keyboard and from screen
+readers, and `user-select: none` keeps it out of a drag-select, but browser
+find-in-page and devtools can still surface it. Entity pages will need the
+`deferred` mode noted in the component — a placeholder that fetches the real
+text through a server function on reveal — so the covered words never leave the
+server.
+
+**Locales are route prefixes.** Every page lives under `/$locale`
+(`src/routes/$locale.tsx`), so the same page in two languages is two
+addresses. `/` negotiates once — cookie, then `Accept-Language`, then Italian —
+and redirects with a 302, never a 301. An unrecognised prefix is a 404 rather
+than a silent redirect to the default language. `src/i18n/dictionaries/en.ts`
+is the source of truth for the key set; `it.ts` is annotated `Dictionary`, so a
+missing key fails `typecheck`. The pair is exported as `enDictionary` and
+`itDictionary` because Vitest puts `it` in global scope and a dictionary named
+`it` shadows it in every test file.
+
+**Styling is StyleX, and the design system is Hallmark's.** Every visual rule
+is authored with `@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which
+appends the generated CSS to `src/styles/global.css` — the single same-origin
+stylesheet the SSR manifest links on every document. That is why
+`default-src 'self'` needs no new source.
+
+The tokens in `src/styles/tokens.stylex.ts` follow the naming Hallmark uses
+(`paper` / `ink` / `rule` / `muted` / `accent` / `accentInk` / `focus`, a 4pt
+space scale, named easings and durations). Hallmark normally emits a
+`tokens.css` full of `:root { --color-ink: … }`; this project does not, because
+`defineVars` compiles to exactly those custom properties. There is one source
+of truth, and it is the TypeScript module. `accentInk` is a contract: any
+surface painted `accent` that carries text sets its colour to `accentInk`,
+never to a hardcoded white.
+
+**Fonts are self-hosted.** Tanker (Fontshare), Newsreader and JetBrains Mono
+(Google Fonts) live in `public/fonts` as woff2, declared in `@layer fonts` at
+the top of `global.css`. Pulling them from a CDN would mean widening both
+`style-src` and `font-src` for three files. Each has a metric-matched fallback
+face — `size-adjust` equalises x-height, then the ascent and descent overrides
+are the real font's `hhea` values divided by that adjustment — so the
+`font-display: swap` handover does not reflow the page. The metrics used are
+written down beside the declarations.
 `src/styles/tokens.stylex.ts` holds the design tokens and must keep its
 `.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
 `*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong

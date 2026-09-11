@@ -1,6 +1,6 @@
 /*
- * Global stylesheet. It exists for two reasons, and the reset is the smaller
- * one.
+ * Global stylesheet. It exists for three reasons, and the reset is the
+ * smallest one.
  *
  * The load-bearing reason: `@stylexjs/unplugin` emits no CSS asset of its own.
  * It finds an already-emitted CSS asset in the bundle and appends the compiled
@@ -9,16 +9,107 @@
  * `assets/stylex.css` that nothing ever links. `src/routes/__root.tsx` imports
  * this file for exactly that purpose.
  *
- * Everything here is wrapped in a layer on purpose. Unlayered CSS always beats
- * layered CSS, whatever the order, and StyleX output is layered
+ * The second reason is `@font-face`. StyleX has no way to declare one, so the
+ * three self-hosted families have to live in plain CSS.
+ *
+ * Everything else here is wrapped in a layer on purpose. Unlayered CSS always
+ * beats layered CSS, whatever the order, and StyleX output is layered
  * (`useCSSLayers: true`) and appended below these rules. An unlayered reset
  * would therefore win against every StyleX rule, which is the opposite of what
- * a reset is for.
+ * a reset is for. Declaring `fonts` before `reset` here also fixes their order
+ * relative to the `priority*` layers StyleX appends afterwards.
  *
- * The reset deliberately sets no colours and no fonts. Those are declared by
- * StyleX on `<main>` in `src/routes/index.tsx` and inherit down, which keeps
- * every design token in `src/styles/tokens.stylex.ts` and out of plain CSS.
+ * The reset deliberately sets no colours and no font families. Those are
+ * declared by StyleX on the document shell and inherit down, which keeps every
+ * design token in `src/styles/tokens.stylex.ts` and out of plain CSS.
  */
+
+@layer fonts {
+  /*
+   * Self-hosted rather than pulled from Google Fonts or api.fontshare.com.
+   * `src/security-headers.ts` ships `default-src 'self'`, and a third-party
+   * font host would mean widening both `style-src` and `font-src` for three
+   * files totalling 269 kB. Downloading them costs one commit and nothing at
+   * runtime.
+   */
+
+  /* Tanker 400 (Fontshare). Poster display face, used uppercase and never
+     below `text.displayS`. One weight is the whole family. */
+  @font-face {
+    font-family: 'Tanker';
+    src: url('/fonts/tanker-400.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Newsreader (Google Fonts), the variable cut: weight 400-700 on a 6-72
+     optical-size axis. Two subsets so a page of Italian never downloads the
+     86 kB of Latin Extended it does not use. */
+  @font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/newsreader-var-latin.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range:
+      U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+      U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+      U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: 'Newsreader';
+    src: url('/fonts/newsreader-var-latin-ext.woff2') format('woff2');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+    unicode-range:
+      U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
+      U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+      U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  }
+
+  /* JetBrains Mono (Google Fonts), variable 500-700. The outlier family,
+     confined to episode numbers and the masthead edition line. No
+     `unicode-range`: there is only one file for this family, so gating it on a
+     subset would buy nothing and only repeat the range above. */
+  @font-face {
+    font-family: 'JetBrains Mono';
+    src: url('/fonts/jetbrains-mono-var-latin.woff2') format('woff2');
+    font-weight: 500 700;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /*
+   * Metric-matched fallbacks. `font-display: swap` means the first paint uses
+   * a local face, and without these the swap reflows the page. Both are
+   * derived from the real metrics: `size-adjust` equalises x-height, then the
+   * ascent/descent overrides are the webfont's own hhea values divided by that
+   * adjustment, so the line box is identical before and after the swap.
+   *
+   *   Newsreader  upm 2000  asc 73.5%  desc 26.5%  x-height 852
+   *   Georgia     upm 2048                          x-height 986
+   *   Tanker      upm 1000  asc 100%   desc 26%    gap 9%  x-height 750
+   *   Impact      upm 2048                          x-height 1062
+   */
+  @font-face {
+    font-family: 'Newsreader Fallback';
+    src: local('Georgia'), local('Times New Roman');
+    size-adjust: 88.48%;
+    ascent-override: 83.07%;
+    descent-override: 29.95%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: 'Tanker Fallback';
+    src: local('Impact'), local('Haettenschweiler'), local('Arial Narrow');
+    size-adjust: 144.63%;
+    ascent-override: 69.14%;
+    descent-override: 17.98%;
+    line-gap-override: 6.22%;
+  }
+}
 
 @layer reset {
   *,
@@ -26,5 +117,34 @@
   *::after {
     box-sizing: border-box;
     margin: 0;
+  }
+
+  /*
+   * The bounty poster is allowed to bleed past a column edge; the document is
+   * not allowed to scroll sideways because of it. `clip` rather than `hidden`
+   * on purpose: `hidden` creates a scroll container, which breaks
+   * `position: sticky` on descendants and can trap focus inside an
+   * overflowing control. Both elements are set because older Safari only
+   * honours it on `body`.
+   */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  /*
+   * Functional motion (a spinner, a progress bar) still runs under reduced
+   * motion, just shorter. Spatial motion is collapsed to a crossfade by each
+   * component's own reduced-motion branch; this is the blanket floor.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 150ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 150ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
