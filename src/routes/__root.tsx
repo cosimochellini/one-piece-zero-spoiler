@@ -33,11 +33,20 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     links: [
+      // The .ico comes first so Safari, which ignores SVG icons, still finds
+      // a bitmap; Chromium and Firefox prefer the SVG that follows. All three
+      // are generated from public/icon.svg by scripts/make-icons.mjs.
+      { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
+      { rel: 'icon', href: '/icon.svg', type: 'image/svg+xml' },
+      { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
       // The display and body faces are needed by the wordmark and the first
       // paragraph, so they are fetched in parallel with the stylesheet rather
       // than after it. The mono face is not preloaded: it sets episode
       // numerals and the horizon label, and arriving a moment late costs
-      // nothing.
+      // nothing. Firefox logs these two as "preloaded but not used" even when
+      // its network panel shows one request per font, served from the
+      // preload; Chromium does not. The attributes below are the ones the
+      // spec asks for, so the warning is noise, not a mismatch.
       {
         rel: 'preload',
         href: '/fonts/bricolage-grotesque-var-latin.woff2',

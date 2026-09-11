@@ -26,15 +26,24 @@ export type SpoilerVeilProps = {
   /**
    * `block` is the default: the curtain stacks its notice above its action and
    * covers a paragraph or more. `inline` puts both on one line for a table
-   * cell, where a two-line curtain would set the row height.
+   * cell, where a two-line curtain would set the row height. `compact` is for
+   * a small card: the verb alone, centred, with the threshold left to the
+   * card's own meta line and to the control's accessible name.
    */
-  readonly density?: 'block' | 'inline'
+  readonly density?: 'block' | 'inline' | 'compact'
   /**
    * How hard to blur. `text` is enough for a line of words; a photograph
    * needs `media`, because a face survives a half-rem blur and a fogged
    * waypoint must not give its subject away.
    */
   readonly strength?: 'text' | 'media'
+  /**
+   * What to render under the fog instead of `children`. With a placeholder
+   * the covered words are not in the served HTML or the DOM at all; the real
+   * children mount only once the fog is lifted. Entity pages use this, since
+   * a page about one record must not carry that record's name in its source.
+   */
+  readonly placeholder?: ReactNode
   readonly children: ReactNode
 }
 
@@ -52,25 +61,25 @@ export type SpoilerVeilProps = {
  * covered content, so a screen reader or a Tab press can never walk into a
  * spoiler that the eye cannot see.
  *
- * Known limit, and the reason `mode` will exist here later: in this form the
- * real text is present in the DOM, so browser find-in-page and devtools can
- * still surface it. That is the cost of a blur, and it is acceptable for a
- * landing page. Entity pages will need a deferred mode that renders a
- * placeholder and fetches the real text through a server function on reveal,
- * so the covered words never leave the server.
+ * Known limit: without a `placeholder` the real text is present in the DOM,
+ * so browser find-in-page and devtools can still surface it. That is the
+ * cost of a blur, and it is acceptable for the landing chart. Entity pages
+ * pass a `placeholder`, so the covered words are absent from the served HTML
+ * and only mount on the client once the fog is lifted.
  */
 export function SpoilerVeil({
   revealedAtEpisode,
   revealed,
   density = 'block',
   strength = 'text',
+  placeholder,
   children,
 }: SpoilerVeilProps) {
   const t = useT()
   const [uncovered, setUncovered] = useState(false)
   const visible = revealed || uncovered
   const notice = t('veil.locked', { episode: revealedAtEpisode })
-  const inline = density === 'inline'
+  const verbOnly = density !== 'block'
 
   // A block body: `no-confusing-void-expression` rejects an arrow that
   // implicitly returns the void result of a state setter.
@@ -86,39 +95,54 @@ export function SpoilerVeil({
         // if the covered state were still being managed once it is not.
         aria-hidden={visible ? undefined : true}
         inert={!visible}
-        {...stylex.props(
-          styles.content,
-          !visible &&
-            (inline
-              ? styles.coveredTight
-              : strength === 'media'
-                ? styles.coveredMedia
-                : styles.covered),
-        )}
+        {...stylex.props(styles.content, !visible && fogFor(density, strength))}
       >
-        {children}
+        {!visible && placeholder !== undefined ? placeholder : children}
       </div>
 
       <button
         type="button"
         onClick={handleUncover}
-        // Block density reads its name off the visible notice. Inline density
-        // shows the verb alone — the threshold already sits in its own column
-        // beside it — so the sentence has to be supplied here instead.
-        aria-label={inline ? `${notice} — ${t('veil.reveal')}` : undefined}
+        // Block density reads its name off the visible notice. The verb-only
+        // densities show the verb alone — the threshold already sits in its
+        // own line beside them — so the sentence has to be supplied here.
+        aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
         {...stylex.props(
           styles.curtain,
-          inline && styles.curtainInline,
+          curtainFor(density),
           visible && styles.curtainLifted,
         )}
       >
-        {inline ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
+        {verbOnly ? null : (
+          <span {...stylex.props(styles.notice)}>{notice}</span>
+        )}
         <span {...stylex.props(styles.action)}>
-          {inline ? t('veil.revealShort') : t('veil.reveal')}
+          {verbOnly ? t('veil.revealShort') : t('veil.reveal')}
         </span>
       </button>
     </div>
   )
+}
+
+type Density = NonNullable<SpoilerVeilProps['density']>
+type Strength = NonNullable<SpoilerVeilProps['strength']>
+
+/**
+ * How thick the fog is. A table cell is one line tall, so its blur is the
+ * smallest; a card is a drawing and a name at once, so its blur is a
+ * drawing's; a block follows the strength its caller asked for.
+ */
+function fogFor(density: Density, strength: Strength) {
+  if (density === 'inline') return styles.coveredTight
+  if (density === 'compact') return styles.coveredCompact
+  return strength === 'media' ? styles.coveredMedia : styles.covered
+}
+
+/** The curtain's layout per density; `block` adds nothing to the base. */
+function curtainFor(density: Density) {
+  if (density === 'inline') return styles.curtainInline
+  if (density === 'compact') return styles.curtainCompact
+  return null
 }
 
 const styles = stylex.create({
@@ -151,6 +175,12 @@ const styles = stylex.create({
   // on a single line smears into the rows above and below.
   coveredTight: {
     filter: 'blur(0.3rem)',
+    userSelect: 'none',
+  },
+  // A crest on a card is a drawing and a name at once, so the fog is thick
+  // enough for a drawing, and the card is clipped by its own frame.
+  coveredCompact: {
+    filter: 'blur(1rem)',
     userSelect: 'none',
   },
 
@@ -187,6 +217,11 @@ const styles = stylex.create({
     justifyContent: 'start',
     paddingBlock: 0,
     paddingInline: 0,
+  },
+  curtainCompact: {
+    alignContent: 'center',
+    justifyItems: 'center',
+    padding: space.xs,
   },
   curtainLifted: {
     opacity: 0,

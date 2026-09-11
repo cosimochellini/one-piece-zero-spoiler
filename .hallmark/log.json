@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-09-11",
+    "macrostructure": "Catalogue (characters index) + Split Studio (character page)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: CharacterCrest seal (ring in the character's tint, dashed inner ring, 32 bezel ticks) around each existing drawing; RouteStrip",
+    "nav": "N9 edge-aligned (shared bar, gains one page link)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "index: inventory head · search with reserved clear slot and settled live count · 5-across crest grid · fog band that never answers a search — page: C3 back link · crest | dossier diptych · position | route strip diptych (reversed) · nearby crests row",
+    "brief": "Characters page with the 20 most important characters and a search, plus a page per character, each with an SVG emblem, in the same Sea Chart system. Autonomous run: audience / use / tone inferred from the locked design system and disclosed."
+  },
+  {
+    "date": "2026-09-11",
     "macrostructure": "Map / Diagram with illustrated fold",
     "theme": "custom (bespoke): Sea Chart",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",

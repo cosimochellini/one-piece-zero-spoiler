@@ -20,6 +20,8 @@ export const enDictionary = {
     'A One Piece wiki that hides every character, arc and island filed after the episode you have reached.',
 
   'nav.skip': 'Skip to content',
+  'nav.characters': 'Characters',
+  'nav.label': 'Pages',
 
   'hero.headline': 'The wiki stops where you stopped',
   'hero.lede':
@@ -60,6 +62,44 @@ export const enDictionary = {
   'footer.lead': 'Nobody should learn the ending before they get there.',
   'footer.colophon':
     'Zero Spoiler is a One Piece wiki drawn as a sea chart: the route is the archive sorted by the episode each entry opens at, and the horizon line is yours to move. Thresholds count anime episodes. Your bookmark is a cookie on this device and is read on the server. Every picture is a line drawing made for this site; no official artwork appears. Set in Bricolage Grotesque, Instrument Sans and JetBrains Mono. MIT licence.',
+
+  'characters.title': 'The signal book',
+  'characters.count':
+    '{count} characters, in the order the anime meets them. The fog does not answer a search.',
+  'characters.searchLabel': 'Find a character',
+  'characters.searchClear': 'Clear the search',
+  'characters.shown': '{count} of {total} open characters shown',
+  'characters.noMatch': 'No open character is called “{query}”.',
+  'characters.foggedTitle': '{count} under fog',
+  'characters.foggedHint':
+    'Their names are covered, so they do not answer a search. Move the dial to open them.',
+  'characters.foggedTitleOne': '1 under fog',
+  'characters.allOpen': 'Nothing is under fog. Every character is open to you.',
+  'characters.pageTitle': 'Characters — Zero Spoiler',
+  'characters.pageDescription':
+    'Twenty One Piece characters, each filed at the episode that introduces them and covered until you get there.',
+
+  'character.opensAt': 'First appears in episode {episode}',
+  'character.foggedName': 'A character under fog',
+  'character.foggedTitle': 'A character under fog — Zero Spoiler',
+  'character.foggedDescription':
+    'A One Piece character filed at episode {episode}. Set the episode you have reached to read the page.',
+  'character.pageTitle': '{name} — Zero Spoiler',
+  'character.back': 'All characters',
+  'character.routeTitle': 'On the route',
+  'character.position': 'Waypoint {index} of {total}',
+  'character.positionLede':
+    'Where this entry sits among everything the archive has filed, and what is filed either side of it.',
+  'character.before': 'Filed before',
+  'character.after': 'Filed after',
+  'character.routeStart': 'Nothing. This is where the route begins.',
+  'character.routeEnd': 'Nothing yet. This is the last entry filed.',
+  'character.nearbyTitle': 'Sailing nearby',
+  'character.nearbyLede':
+    'The listed characters filed closest to this one, by episode.',
+  'character.notFoundTitle': 'No such character',
+  'character.notFoundBody':
+    'Nothing is filed under that address. The signal book lists everyone who is.',
 
   'kind.character': 'Character',
   'kind.arc': 'Arc',

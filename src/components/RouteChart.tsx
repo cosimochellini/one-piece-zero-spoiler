@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { Link } from '@tanstack/react-router'
 
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -123,7 +124,23 @@ function Waypoint({ entry, index, open }: WaypointProps) {
           <div {...stylex.props(styles.card)}>
             <Picture visual={entry.visual} />
             <div {...stylex.props(styles.words)}>
-              <h3 {...stylex.props(styles.name)}>{entry.name[locale]}</h3>
+              <h3 {...stylex.props(styles.name)}>
+                {/*
+                  Only an open character is a link: a covered card's href
+                  would spell out, in the page source, the name a blur hides.
+                */}
+                {entry.kind === 'character' && open ? (
+                  <Link
+                    to="/$locale/characters/$id"
+                    params={{ locale, id: entry.id }}
+                    {...stylex.props(styles.nameLink)}
+                  >
+                    {entry.name[locale]}
+                  </Link>
+                ) : (
+                  entry.name[locale]
+                )}
+              </h3>
               <p {...stylex.props(styles.summary)}>{entry.summary[locale]}</p>
             </div>
           </div>
@@ -405,6 +422,27 @@ const styles = stylex.create({
     lineHeight: leading.heading,
     minWidth: 0,
     overflowWrap: 'anywhere',
+  },
+  // A character's name is the way to its page. Same ink as the name at
+  // rest, the accent rule on hover, so the route does not turn into a column
+  // of blue links.
+  nameLink: {
+    color: {
+      default: 'inherit',
+      ':hover': color.accent,
+      ':active': color.ink2,
+    },
+    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineOffset: space.xs3,
+    outlineStyle: 'solid',
+    outlineWidth: rule.fine,
+    textDecorationColor: { default: 'transparent', ':hover': color.accent },
+    textDecorationLine: 'underline',
+    textDecorationThickness: rule.fine,
+    textUnderlineOffset: '4px',
+    transitionDuration: dur.micro,
+    transitionProperty: 'color, text-decoration-color',
+    transitionTimingFunction: ease.out,
   },
   summary: {
     color: color.ink2,

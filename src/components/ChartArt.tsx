@@ -29,31 +29,47 @@ type Stroke = {
   readonly transform?: string
 }
 
-export function ChartArt({
-  art,
-  tint: hue,
-}: {
+export type ArtProps = {
   readonly art: ArtId
   readonly tint: TintId
-}) {
+}
+
+/** The box every drawing is composed in. A host `<svg>` uses it as its viewBox. */
+export const ART_VIEWBOX = '0 0 160 200'
+
+/**
+ * The strokes of one drawing, with no `<svg>` of their own, so the same
+ * drawing can be set inside another composition: the crest on a character
+ * page nests it in a seal.
+ */
+export function ArtStrokes({ art, tint: hue }: ArtProps) {
+  return DRAWINGS[art].map((stroke, index) => (
+    <path
+      key={index}
+      d={stroke.d}
+      transform={stroke.transform}
+      vectorEffect="non-scaling-stroke"
+      {...stylex.props(
+        styles.line,
+        stroke.role === 'ambient' && styles.ambient,
+        stroke.role === 'accent' && styles.accent(TINT_VAR[hue]),
+        stroke.dashed === true && styles.dashed,
+      )}
+    />
+  ))
+}
+
+export function ChartArt(props: ArtProps) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 160 200" {...stylex.props(styles.svg)}>
-      {DRAWINGS[art].map((stroke, index) => (
-        <path
-          key={index}
-          d={stroke.d}
-          transform={stroke.transform}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(
-            styles.line,
-            stroke.role === 'ambient' && styles.ambient,
-            stroke.role === 'accent' && styles.accent(TINT_VAR[hue]),
-            stroke.dashed === true && styles.dashed,
-          )}
-        />
-      ))}
+    <svg aria-hidden="true" viewBox={ART_VIEWBOX} {...stylex.props(styles.svg)}>
+      <ArtStrokes {...props} />
     </svg>
   )
+}
+
+/** The CSS colour a tint id resolves to, for compositions outside the drawings. */
+export function tintOf(hue: TintId): string {
+  return TINT_VAR[hue]
 }
 
 /** `ivory` is the second ink itself: a drawing with no colour of its own. */

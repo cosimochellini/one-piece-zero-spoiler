@@ -13,6 +13,8 @@ export const itDictionary: Dictionary = {
     'Una wiki di One Piece che nasconde ogni personaggio, saga e isola archiviati dopo l’episodio a cui sei arrivato.',
 
   'nav.skip': 'Vai al contenuto',
+  'nav.characters': 'Personaggi',
+  'nav.label': 'Pagine',
 
   'hero.headline': 'La wiki si ferma dove sei tu',
   'hero.lede':
@@ -54,6 +56,45 @@ export const itDictionary: Dictionary = {
   'footer.lead': 'Nessuno dovrebbe sapere come va a finire prima di arrivarci.',
   'footer.colophon':
     'Zero Spoiler è una wiki di One Piece disegnata come una carta nautica: la rotta è l’archivio ordinato per l’episodio da cui ogni voce si apre, e la linea dell’orizzonte la sposti tu. Le soglie contano episodi dell’anime. Il tuo segnalibro è un cookie su questo dispositivo e viene letto dal server. Ogni immagine è un disegno a tratto fatto per questo sito; non compare nessuna immagine ufficiale. Composto in Bricolage Grotesque, Instrument Sans e JetBrains Mono. Licenza MIT.',
+
+  'characters.title': 'Il libro dei segnali',
+  'characters.count':
+    '{count} personaggi, nell’ordine in cui l’anime li incontra. La nebbia non risponde alle ricerche.',
+  'characters.searchLabel': 'Trova un personaggio',
+  'characters.searchClear': 'Cancella la ricerca',
+  'characters.shown': '{count} personaggi aperti su {total} mostrati',
+  'characters.noMatch': 'Nessun personaggio aperto si chiama “{query}”.',
+  'characters.foggedTitle': '{count} nella nebbia',
+  'characters.foggedHint':
+    'I loro nomi sono coperti, quindi non rispondono a una ricerca. Sposta il segnalibro per aprirli.',
+  'characters.foggedTitleOne': '1 nella nebbia',
+  'characters.allOpen':
+    'Niente è nella nebbia. Ogni personaggio è aperto per te.',
+  'characters.pageTitle': 'Personaggi — Zero Spoiler',
+  'characters.pageDescription':
+    'Venti personaggi di One Piece, ciascuno archiviato all’episodio che lo introduce e coperto finché non ci arrivi.',
+
+  'character.opensAt': 'Compare per la prima volta nell’episodio {episode}',
+  'character.foggedName': 'Un personaggio nella nebbia',
+  'character.foggedTitle': 'Un personaggio nella nebbia — Zero Spoiler',
+  'character.foggedDescription':
+    'Un personaggio di One Piece archiviato all’episodio {episode}. Imposta l’episodio a cui sei arrivato per leggere la pagina.',
+  'character.pageTitle': '{name} — Zero Spoiler',
+  'character.back': 'Tutti i personaggi',
+  'character.routeTitle': 'Sulla rotta',
+  'character.position': 'Tappa {index} di {total}',
+  'character.positionLede':
+    'Dove sta questa voce tra tutto quello che l’archivio ha catalogato, e cosa c’è archiviato prima e dopo.',
+  'character.before': 'Archiviato prima',
+  'character.after': 'Archiviato dopo',
+  'character.routeStart': 'Niente. La rotta comincia qui.',
+  'character.routeEnd': 'Ancora niente. Questa è l’ultima voce archiviata.',
+  'character.nearbyTitle': 'Navigano vicino',
+  'character.nearbyLede':
+    'I personaggi in elenco archiviati più vicino a questo, per episodio.',
+  'character.notFoundTitle': 'Nessun personaggio così',
+  'character.notFoundBody':
+    'Non c’è niente archiviato a questo indirizzo. Il libro dei segnali elenca tutti quelli che ci sono.',
 
   'kind.character': 'Personaggio',
   'kind.arc': 'Saga',

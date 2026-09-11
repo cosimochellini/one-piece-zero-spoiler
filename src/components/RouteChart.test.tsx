@@ -37,12 +37,14 @@ const entries: readonly Entity[] = [
 // an `aria-hidden` wrapper and has no accessible role by design.
 
 /**
- * The wrapper the veil marks `inert`, found from the waypoint name inside it:
- * name → words → card → the veil's content wrapper.
+ * The wrapper the veil marks `inert`, found from the waypoint's heading:
+ * heading → words → card → the veil's content wrapper. From the heading
+ * rather than the text node, because a character's name is a link inside it.
  */
 function veilAround(name: string): HTMLElement {
   const wrapper =
-    screen.getByText(name).parentElement?.parentElement?.parentElement ?? null
+    waypointOf(name).querySelector('h3')?.parentElement?.parentElement
+      ?.parentElement ?? null
   if (wrapper === null) throw new Error(`no veil wrapper around "${name}"`)
 
   return wrapper
@@ -141,5 +143,29 @@ describe('RouteChart', () => {
 
     expect(screen.getByText('Saga')).toBeInTheDocument()
     expect(screen.getByText('Sei qui · episodio 1200')).toBeInTheDocument()
+  })
+
+  it('makes a character a link to their page and leaves the rest as names', () => {
+    renderWithProviders(<RouteChart entries={entries} progress={1200} />, {
+      progress: 1200,
+    })
+
+    expect(screen.getByRole('link', { name: 'Middle Face' })).toHaveAttribute(
+      'href',
+      '/en/characters/middle',
+    )
+    expect(
+      screen.queryByRole('link', { name: 'Opening Saga' }),
+    ).not.toBeInTheDocument()
+  })
+
+  it('gives a covered character no link, so the slug stays out of the HTML', () => {
+    const { container } = renderWithProviders(
+      <RouteChart entries={entries} progress={100} />,
+      { progress: 100 },
+    )
+
+    expect(container.querySelector('a[href*="/characters/"]')).toBeNull()
+    expect(screen.getByText('Middle Face')).toBeInTheDocument()
   })
 })

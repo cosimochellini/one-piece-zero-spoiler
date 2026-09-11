@@ -145,13 +145,14 @@ moves the dial, the server never trusts it for anything but choosing what to
 render, and a round trip would put network latency between a keystroke and the
 page reacting.
 
-`SpoilerVeil` currently implements one mode, `blur`. The covered text is in the
+`SpoilerVeil` blurs by default. On the landing chart the covered text is in the
 DOM: `inert` and `aria-hidden` keep it away from the keyboard and from screen
 readers, and `user-select: none` keeps it out of a drag-select, but browser
-find-in-page and devtools can still surface it. Entity pages will need the
-`deferred` mode noted in the component — a placeholder that fetches the real
-text through a server function on reveal — so the covered words never leave the
-server.
+find-in-page and devtools can still surface it. The character pages pass a
+`placeholder` instead, so a covered name, role or summary is absent from the
+served HTML and only mounts on the client once the fog is lifted. A fogged
+crest is a bare seal with no drawing and no colour, and a fogged catalogue card
+has no link, because the slug would spell the name.
 
 **Locales are route prefixes.** Every page lives under `/$locale`
 (`src/routes/$locale.tsx`), so the same page in two languages is two
@@ -193,10 +194,43 @@ orientation column (headline, dial, legend) is `position: sticky` from 60rem so
 moving the dial moves the horizon in view. The stamp at the top of
 `tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
 
+**The characters pages are the signal book.** `/$locale/characters` lists
+the twenty characters named in `FEATURED_CHARACTER_IDS`
+(`src/data/characters.ts`, an editorial ranking; the page draws them in route
+order) as one uniform grid of crests, Hallmark's Catalogue macrostructure.
+`/$locale/characters/$id` is a page for any character record, listed or not,
+shaped as Split Studio: crest beside dossier, then the record's place on the
+route beside a strip of the whole route (`RouteStrip.tsx`), then the listed
+characters filed nearest by episode. `src/data/characters.ts` also holds the
+roles, written to the same "safe at the threshold" rule as the summaries:
+Franky is a ship dismantler there, not what he turns out to be.
+
+The search on the list page is the spoiler rule applied to a text field. It
+filters the open characters only; the fogged ones sit in a band of their own
+that never changes, because a covered card that appeared when its name was
+typed would confirm the name. Both locales' names are searched (an Italian
+reader who knows him as Luffy still finds Rufy), and the match is marked only
+in the name that is shown. The character page decides its document title in
+the route's `head`, from the reveal state its `loader` computed from the
+bookmark the root route read, so a covered character's `<title>` is "A
+character under fog" and never the name; the page body then follows the live
+dial. `SpoilerVeil` gained a `compact` density for
+the cards (the verb alone, centred, a drawing's blur), and the language switch
+now uses `to="."` so it keeps the reader on the same page.
+
+**Every character has a crest, and it is the site's own mark.**
+`src/components/CharacterCrest.tsx` sets the character's existing line drawing
+inside a seal: a ring in the character's tint, a dashed inner ring, thirty-two
+bezel ticks with the four cardinal ones in the tint, like a compass card. The
+seal is identical for everyone and only the object and the colour change,
+which is what makes twenty-five emblems read as one set. No faces and no
+official Jolly Rogers appear; `ChartArt.tsx` exports `ArtStrokes` so the same
+strokes can be nested in the crest's `<svg>` without a second copy.
+
 **Every picture is a line drawing made here; no photographs, no official
 artwork.** Toei and Shueisha own every frame of the anime and every panel of
-the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`,
-so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
+the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`
+with a nonce-only `script-src`, so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
 drawings, one per record, as lists of SVG path strokes rendered by one
 component: a 160x200 box, a uniform 2px stroke kept at 2px through
 `vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
@@ -215,7 +249,10 @@ widening both `style-src` and `font-src` for five files. Each has a
 metric-matched fallback face — `size-adjust` equalises x-height against Arial,
 then the ascent and descent overrides are the real font's `hhea` values divided
 by that adjustment — so the `font-display: swap` handover does not reflow the
-page. The metrics used are written down beside the declarations.
+page. The metrics used are written down beside the declarations. The site
+icon is `public/icon.svg`, the compass star from the chart on a night-sea
+tile; `scripts/make-icons.mjs` renders it into `favicon.ico` and
+`apple-touch-icon.png`, both committed so the build never needs librsvg.
 `src/styles/tokens.stylex.ts` holds the design tokens and must keep its
 `.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
 `*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong

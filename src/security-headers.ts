@@ -17,10 +17,11 @@ export function createSecurityHeaders(
     'Content-Security-Policy': [
       "default-src 'self'",
       // The nonce is generated per request in src/router.tsx and applied by
-      // `<Scripts>` to every script tag it renders, inline ones included. CSP
-      // Level 3 browsers enforce the nonce and ignore 'unsafe-inline'; the
-      // keyword is kept only so CSP Level 2 browsers, which do not understand
-      // nonces, still load the page instead of blocking hydration.
+      // `<Scripts>` to every script tag it renders, inline ones included. The
+      // directive is nonce-only: every browser that understands nonces ignores
+      // 'unsafe-inline' next to one and logs a warning for it, and browsers
+      // without nonce support are no longer a target. The keyword survives
+      // only in the fallback below, for a render that has no nonce at all.
       scriptSrc(nonce),
       // Unlike `script-src`, this one stays on blanket 'unsafe-inline' on
       // purpose. A nonce here would be counter-productive: nonces cannot be
@@ -56,5 +57,5 @@ function scriptSrc(nonce: string | undefined): string {
     return "script-src 'self' 'unsafe-inline'"
   }
 
-  return `script-src 'self' 'nonce-${nonce}' 'unsafe-inline'`
+  return `script-src 'self' 'nonce-${nonce}'`
 }

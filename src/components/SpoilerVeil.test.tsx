@@ -52,6 +52,27 @@ describe('SpoilerVeil', () => {
     expect(wrapper).not.toHaveAttribute('inert')
   })
 
+  it('keeps the covered words out of the DOM when given a placeholder', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(
+      <SpoilerVeil
+        revealedAtEpisode={1089}
+        revealed={false}
+        placeholder={<p>Spoiler</p>}
+      >
+        {covered}
+      </SpoilerVeil>,
+    )
+
+    expect(screen.queryByTestId('secret')).not.toBeInTheDocument()
+    expect(screen.getByText('Spoiler')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button'))
+
+    expect(screen.getByTestId('secret')).toBeInTheDocument()
+    expect(screen.queryByText('Spoiler')).not.toBeInTheDocument()
+  })
+
   it('shows the content outright when the reader is already past it', () => {
     renderWithProviders(
       <SpoilerVeil revealedAtEpisode={1} revealed>
