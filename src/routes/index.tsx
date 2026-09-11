@@ -1,8 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import { useState } from 'react'
 
-import { SpoilerBadge } from '~/components/SpoilerBadge'
+import { LatestChapter } from '~/components/LatestChapter'
 import { border, colors, space, text } from '~/styles/tokens.stylex'
 
 export const Route = createFileRoute('/')({
@@ -10,15 +9,6 @@ export const Route = createFileRoute('/')({
 })
 
 function Home() {
-  const [revealed, setRevealed] = useState(false)
-
-  // A block body, not a concise one: `no-confusing-void-expression` is part of
-  // typescript-eslint's strictTypeChecked set and rejects an arrow that
-  // implicitly returns the void result of a state setter.
-  const handleReveal = () => {
-    setRevealed(true)
-  }
-
   return (
     <main {...stylex.props(styles.page)}>
       <div {...stylex.props(styles.column)}>
@@ -27,11 +17,7 @@ function Home() {
         <p {...stylex.props(styles.lede)}>
           Nothing on this page reveals itself until you ask it to.
         </p>
-        <SpoilerBadge
-          label="Latest chapter"
-          revealed={revealed}
-          onReveal={handleReveal}
-        />
+        <LatestChapter />
       </div>
     </main>
   )
