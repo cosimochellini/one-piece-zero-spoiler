@@ -211,9 +211,10 @@ that never changes, because a covered card that appeared when its name was
 typed would confirm the name. Both locales' names are searched (an Italian
 reader who knows him as Luffy still finds Rufy), and the match is marked only
 in the name that is shown. The character page decides its document title in
-the route `loader`, from the bookmark the root route read, so a covered
-character's `<title>` is "A character under fog" and never the name; the page
-body then follows the live dial. `SpoilerVeil` gained a `compact` density for
+the route's `head`, from the reveal state its `loader` computed from the
+bookmark the root route read, so a covered character's `<title>` is "A
+character under fog" and never the name; the page body then follows the live
+dial. `SpoilerVeil` gained a `compact` density for
 the cards (the verb alone, centred, a drawing's blur), and the language switch
 now uses `to="."` so it keeps the reader on the same page.
 
