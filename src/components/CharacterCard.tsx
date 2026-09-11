@@ -50,6 +50,16 @@ export function CharacterCard({
         revealed={revealed}
         density="compact"
         strength="media"
+        // A fogged card has no link and no name in the DOM: the slug in the
+        // href would spell the name a blur is meant to hide.
+        placeholder={
+          <span {...stylex.props(styles.link)}>
+            <span {...stylex.props(styles.frame)}>
+              <CharacterCrest visual={entity.visual} />
+            </span>
+            <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
+          </span>
+        }
       >
         <Link
           to="/$locale/characters/$id"

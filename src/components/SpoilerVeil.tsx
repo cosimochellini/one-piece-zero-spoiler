@@ -37,6 +37,13 @@ export type SpoilerVeilProps = {
    * waypoint must not give its subject away.
    */
   readonly strength?: 'text' | 'media'
+  /**
+   * What to render under the fog instead of `children`. With a placeholder
+   * the covered words are not in the served HTML or the DOM at all; the real
+   * children mount only once the fog is lifted. Entity pages use this, since
+   * a page about one record must not carry that record's name in its source.
+   */
+  readonly placeholder?: ReactNode
   readonly children: ReactNode
 }
 
@@ -54,18 +61,18 @@ export type SpoilerVeilProps = {
  * covered content, so a screen reader or a Tab press can never walk into a
  * spoiler that the eye cannot see.
  *
- * Known limit, and the reason `mode` will exist here later: in this form the
- * real text is present in the DOM, so browser find-in-page and devtools can
- * still surface it. That is the cost of a blur, and it is acceptable for a
- * landing page. Entity pages will need a deferred mode that renders a
- * placeholder and fetches the real text through a server function on reveal,
- * so the covered words never leave the server.
+ * Known limit: without a `placeholder` the real text is present in the DOM,
+ * so browser find-in-page and devtools can still surface it. That is the
+ * cost of a blur, and it is acceptable for the landing chart. Entity pages
+ * pass a `placeholder`, so the covered words are absent from the served HTML
+ * and only mount on the client once the fog is lifted.
  */
 export function SpoilerVeil({
   revealedAtEpisode,
   revealed,
   density = 'block',
   strength = 'text',
+  placeholder,
   children,
 }: SpoilerVeilProps) {
   const t = useT()
@@ -90,7 +97,7 @@ export function SpoilerVeil({
         inert={!visible}
         {...stylex.props(styles.content, !visible && fogFor(density, strength))}
       >
-        {children}
+        {!visible && placeholder !== undefined ? placeholder : children}
       </div>
 
       <button

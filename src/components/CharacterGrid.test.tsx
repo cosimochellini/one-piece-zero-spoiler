@@ -52,7 +52,9 @@ describe('CharacterGrid', () => {
       screen.queryByRole('link', { name: /Nico Robin/u }),
     ).not.toBeInTheDocument()
     expect(fogBand()).toHaveTextContent('1 under fog')
-    expect(within(fogBand()).getByText('Nico Robin')).toBeInTheDocument()
+    // The covered name is not in the DOM at all, only its episode is.
+    expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
+    expect(within(fogBand()).getByText('Spoiler')).toBeInTheDocument()
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
@@ -81,7 +83,7 @@ describe('CharacterGrid', () => {
 
     // The covered card is still there and unchanged; the open results are
     // empty, and the page says so in the reader's words.
-    expect(within(fogBand()).getByText('Nico Robin')).toBeInTheDocument()
+    expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
     expect(fogBand()).toHaveTextContent('1 under fog')
     expect(
       await screen.findByText('No open character is called “robin”.'),

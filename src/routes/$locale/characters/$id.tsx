@@ -173,6 +173,21 @@ function CharacterPage() {
           <SpoilerVeil
             revealedAtEpisode={entity.revealedAtEpisode}
             revealed={revealed}
+            // Under fog the served HTML carries no name, role or summary:
+            // this is a page about one record, so a blur alone would leave
+            // the answer in the page source.
+            placeholder={
+              <div {...stylex.props(styles.words)}>
+                <h1 {...stylex.props(styles.name)}>
+                  {t('character.foggedName')}
+                </h1>
+                <p {...stylex.props(styles.summary)}>
+                  {t('character.foggedDescription', {
+                    episode: entity.revealedAtEpisode,
+                  })}
+                </p>
+              </div>
+            }
           >
             <div {...stylex.props(styles.words)}>
               <h1 {...stylex.props(styles.name)}>{entity.name[locale]}</h1>
@@ -288,6 +303,16 @@ function Neighbour({
               revealedAtEpisode={entry.revealedAtEpisode}
               revealed={isRevealed(entry, progress)}
               density="inline"
+              placeholder={
+                <span {...stylex.props(styles.neighbourCard)}>
+                  <span {...stylex.props(styles.neighbourFrame)}>
+                    <ChartArt art={entry.visual.art} tint={entry.visual.tint} />
+                  </span>
+                  <span {...stylex.props(styles.neighbourName)}>
+                    {t('veil.placeholder')}
+                  </span>
+                </span>
+              }
             >
               <span {...stylex.props(styles.neighbourCard)}>
                 <span {...stylex.props(styles.neighbourFrame)}>

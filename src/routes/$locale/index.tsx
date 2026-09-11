@@ -1,12 +1,11 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import { useMemo } from 'react'
 
 import { EpisodeDial } from '~/components/EpisodeDial'
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
-import { entities } from '~/data/entities'
+import { route } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { useEpisode } from '~/lib/progress/EpisodeContext'
 import { isRevealed } from '~/lib/progress/spoiler'
@@ -80,13 +79,9 @@ function Landing() {
   const t = useT()
   const { progress } = useEpisode()
 
-  // Sorted by threshold so the route runs in the order the anime reaches each
-  // waypoint, and the horizon falls at a single point along it.
-  const ordered = useMemo(
-    () =>
-      [...entities].sort((a, b) => a.revealedAtEpisode - b.revealedAtEpisode),
-    [],
-  )
+  // In threshold order, so the route runs in the order the anime reaches each
+  // waypoint and the horizon falls at a single point along it.
+  const ordered = route
   const open = ordered.filter((entry) => isRevealed(entry, progress)).length
 
   return (
