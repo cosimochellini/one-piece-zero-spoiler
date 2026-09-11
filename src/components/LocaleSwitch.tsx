@@ -82,11 +82,15 @@ const styles = stylex.create({
   link: {
     alignItems: 'center',
     borderRadius: radius.pill,
-    color: { default: color.muted, ':hover': color.accent },
+    color: {
+      default: color.muted,
+      ':hover': color.accent,
+      ':active': color.ink,
+    },
     display: 'inline-flex',
-    fontFamily: font.mono,
+    fontFamily: font.body,
     fontSize: text.xs,
-    fontWeight: 500,
+    fontWeight: 600,
     letterSpacing: '0.08em',
     minHeight: '44px',
     outlineColor: { default: 'transparent', ':focus-visible': color.focus },

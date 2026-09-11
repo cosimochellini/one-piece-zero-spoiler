@@ -23,6 +23,12 @@ export type SpoilerVeilProps = {
    * server, for every record on the page.
    */
   readonly revealed: boolean
+  /**
+   * `block` is the default: the curtain stacks its notice above its action and
+   * covers a paragraph or more. `inline` puts both on one line for a table
+   * cell, where a two-line curtain would set the row height.
+   */
+  readonly density?: 'block' | 'inline'
   readonly children: ReactNode
 }
 
@@ -50,11 +56,14 @@ export type SpoilerVeilProps = {
 export function SpoilerVeil({
   revealedAtEpisode,
   revealed,
+  density = 'block',
   children,
 }: SpoilerVeilProps) {
   const t = useT()
   const [uncovered, setUncovered] = useState(false)
   const visible = revealed || uncovered
+  const notice = t('veil.locked', { episode: revealedAtEpisode })
+  const inline = density === 'inline'
 
   // A block body: `no-confusing-void-expression` rejects an arrow that
   // implicitly returns the void result of a state setter.
@@ -70,7 +79,10 @@ export function SpoilerVeil({
         // if the covered state were still being managed once it is not.
         aria-hidden={visible ? undefined : true}
         inert={!visible}
-        {...stylex.props(styles.content, !visible && styles.contentCovered)}
+        {...stylex.props(
+          styles.content,
+          !visible && (inline ? styles.coveredTight : styles.covered),
+        )}
       >
         {children}
       </div>
@@ -78,12 +90,20 @@ export function SpoilerVeil({
       <button
         type="button"
         onClick={handleUncover}
-        {...stylex.props(styles.curtain, visible && styles.curtainLifted)}
+        // Block density reads its name off the visible notice. Inline density
+        // shows the verb alone — the threshold already sits in its own column
+        // beside it — so the sentence has to be supplied here instead.
+        aria-label={inline ? `${notice} — ${t('veil.reveal')}` : undefined}
+        {...stylex.props(
+          styles.curtain,
+          inline && styles.curtainInline,
+          visible && styles.curtainLifted,
+        )}
       >
-        <span {...stylex.props(styles.notice)}>
-          {t('veil.locked', { episode: revealedAtEpisode })}
+        {inline ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
+        <span {...stylex.props(styles.action)}>
+          {inline ? t('veil.revealShort') : t('veil.reveal')}
         </span>
-        <span {...stylex.props(styles.action)}>{t('veil.reveal')}</span>
       </button>
     </div>
   )
@@ -102,10 +122,16 @@ const styles = stylex.create({
     filter: 'none',
     userSelect: 'auto',
   },
-  contentCovered: {
+  covered: {
     filter: 'blur(0.55rem)',
     // Without this the covered words can still be swept up by a drag-select
     // and pasted somewhere legible.
+    userSelect: 'none',
+  },
+  // A table cell is one line tall, so the blur radius drops with it: 0.55rem
+  // on a single line smears into the rows above and below.
+  coveredTight: {
+    filter: 'blur(0.3rem)',
     userSelect: 'none',
   },
 
@@ -135,6 +161,14 @@ const styles = stylex.create({
     visibility: 'visible',
     width: '100%',
   },
+  curtainInline: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: space.xs,
+    justifyContent: 'start',
+    paddingBlock: 0,
+    paddingInline: 0,
+  },
   curtainLifted: {
     opacity: 0,
     pointerEvents: 'none',
@@ -159,12 +193,18 @@ const styles = stylex.create({
   },
   action: {
     backgroundColor: color.paper,
-    color: color.accent,
+    color: {
+      default: color.accent,
+      ':is(button:hover) > &': color.ink,
+      ':is(button:active) > &': color.ink,
+    },
     fontFamily: font.body,
     fontSize: text.base,
     fontWeight: 700,
     paddingInline: space.xs2,
     textDecorationLine: 'underline',
     textUnderlineOffset: '2px',
+    // A verb in a table cell is one line or it is broken.
+    whiteSpace: 'nowrap',
   },
 })

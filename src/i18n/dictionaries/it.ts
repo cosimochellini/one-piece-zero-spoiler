@@ -30,25 +30,36 @@ export const itDictionary: Dictionary = {
 
   'veil.locked': 'Coperto fino all’episodio {episode}',
   'veil.reveal': 'Scopri comunque',
+  'veil.revealShort': 'Scopri',
   'veil.placeholder': 'Spoiler',
 
-  'tile.veil.title': 'Prova il velo',
-  'tile.veil.body':
-    'Questa voce è archiviata all’episodio {episode}. Sposta il quadrante oltre quel punto, oppure scoprila a mano.',
-  'tile.kinds.title': 'Cosa viene archiviato',
-  'tile.kinds.body':
-    'Personaggi, saghe, episodi, luoghi e i legami fra loro. Ogni scheda porta scritto l’episodio da cui si può leggere.',
-  'tile.number.title': 'Un numero, non una lista',
-  'tile.number.body': 'Dici al sito un solo episodio. Al resto pensa lui.',
-  'tile.bookmark.title': 'Il segnalibro resta nel tuo browser',
-  'tile.bookmark.body':
-    'Il tuo episodio sta in un cookie su questo dispositivo e viene letto dal server prima che la pagina sia disegnata, così niente sfugge nell’istante prima che parta lo script. Nessun account, nessun tracciamento.',
-  'tile.anime.title': 'Anime, non manga',
-  'tile.anime.body':
-    'Ogni soglia conta episodi dell’anime. Chi legge il manga è più avanti; qui si aspetta la messa in onda.',
-  'tile.reveal.title': 'Scoprire è una tua scelta',
-  'tile.reveal.body':
-    'Niente resta chiuso per sempre. Un passaggio coperto è sempre a un clic voluto dall’essere letto.',
+  'hero.figureNote': 'episodi visti',
+  'hero.figureNoteUnset': 'nessun episodio impostato',
+  'hero.figureUnset': '—',
+
+  'ledger.title': 'L’archivio, com’è adesso per te',
+  'ledger.colEntry': 'Voce',
+  'ledger.colKind': 'Tipo',
+  'ledger.colFrom': 'Aperta da',
+  'ledger.colStatus': 'Stato',
+  'ledger.statusOpen': 'Aperta',
+  'ledger.statusCovered': 'Coperta',
+  'ledger.caption':
+    '{count} voci, ordinate per l’episodio da cui ciascuna si apre. La riga si sposta insieme a te.',
+
+  'tally.open': 'aperte per te',
+  'tally.covered': 'ancora coperte',
+  'tally.filed': 'archiviate finora',
+
+  'colophon.animeLead': 'Anime, non manga.',
+  'colophon.animeBody':
+    'Ogni soglia conta episodi dell’anime, e quando è incerta viene arrotondata per eccesso: una soglia troppo bassa scopre una voce in anticipo, ed è l’unico errore che qui conta davvero.',
+  'colophon.bookmarkLead': 'Il segnalibro resta con te.',
+  'colophon.bookmarkBody':
+    'Il tuo episodio vive in un cookie su questo dispositivo e viene letto dal server prima che la pagina sia disegnata, così niente sfugge nell’istante prima che parta lo script. Nessun account, nessun tracciamento.',
+  'colophon.revealLead': 'Scoprire è una tua scelta.',
+  'colophon.revealBody':
+    'Niente resta chiuso per sempre. Una voce coperta è sempre a un clic voluto dall’essere letta, e la pagina non si ricorderà che hai guardato.',
 
   'kind.character': 'Personaggio',
   'kind.arc': 'Saga',

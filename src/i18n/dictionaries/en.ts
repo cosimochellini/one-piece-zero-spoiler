@@ -37,26 +37,36 @@ export const enDictionary = {
 
   'veil.locked': 'Covered until episode {episode}',
   'veil.reveal': 'Uncover anyway',
+  'veil.revealShort': 'Uncover',
   'veil.placeholder': 'Spoiler',
 
-  'tile.veil.title': 'Try the veil',
-  'tile.veil.body':
-    'This entry is filed at episode {episode}. Move the dial past it, or uncover it by hand.',
-  'tile.kinds.title': 'What gets filed',
-  'tile.kinds.body':
-    'Characters, arcs, episodes, places, and the ties between them. Every record carries the episode it becomes safe to read.',
-  'tile.number.title': 'One number, not a checklist',
-  'tile.number.body':
-    'You tell the site a single episode. It works out the rest.',
-  'tile.bookmark.title': 'The bookmark lives in your browser',
-  'tile.bookmark.body':
-    'Your episode is kept in a cookie on this device and read on the server before the page is drawn, so nothing slips out in the moment before the script loads. No account, no tracking.',
-  'tile.anime.title': 'Anime, not manga',
-  'tile.anime.body':
-    'Every threshold counts anime episodes. Manga readers are further along; this site waits for the broadcast.',
-  'tile.reveal.title': 'Uncovering is your call',
-  'tile.reveal.body':
-    'Nothing is shut away for good. A covered passage is always one deliberate click from being read.',
+  'hero.figureNote': 'episodes in',
+  'hero.figureNoteUnset': 'no episode set',
+  'hero.figureUnset': '—',
+
+  'ledger.title': 'The archive, as it stands for you',
+  'ledger.colEntry': 'Entry',
+  'ledger.colKind': 'Kind',
+  'ledger.colFrom': 'Open from',
+  'ledger.colStatus': 'Status',
+  'ledger.statusOpen': 'Open',
+  'ledger.statusCovered': 'Covered',
+  'ledger.caption':
+    '{count} entries, sorted by the episode each one opens at. The line moves when you do.',
+
+  'tally.open': 'open to you',
+  'tally.covered': 'still covered',
+  'tally.filed': 'filed so far',
+
+  'colophon.animeLead': 'Anime, not manga.',
+  'colophon.animeBody':
+    'Every threshold counts anime episodes, and an uncertain one is rounded up — a threshold set too low uncovers a record early, which is the only bug here that matters.',
+  'colophon.bookmarkLead': 'The bookmark stays with you.',
+  'colophon.bookmarkBody':
+    'Your episode lives in a cookie on this device and is read on the server before the page is drawn, so nothing slips out in the moment before the script loads. No account, no tracking.',
+  'colophon.revealLead': 'Uncovering is your call.',
+  'colophon.revealBody':
+    'Nothing is shut away for good. A covered entry is always one deliberate click from being read, and the page will not remember that you looked.',
 
   'kind.character': 'Character',
   'kind.arc': 'Arc',

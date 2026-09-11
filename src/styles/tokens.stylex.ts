@@ -1,15 +1,19 @@
-/* Hallmark · genre: editorial · macrostructure: Bento Grid · theme: custom "Bounty Bulletin"
- * · enrichment: none (typography only) · nav: N6 newspaper masthead · footer: Ft5 statement
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V5 */
+/* Hallmark · genre: editorial · macrostructure: Stat-Led · theme: custom "Bounty Bulletin"
+ * · enrichment: none (typography only) · polish: none · nav: N6 newspaper masthead
+ * · footer: Ft5 statement · sections: H4 figure · T4 tally · F3 ledger · S4 inline heads
  * · vibe: a bounty bulletin printed on parchment
  * · paper: oklch(96.5% 0.015 85) · accent: oklch(52% 0.128 55)
- * · display: Tanker · body: Newsreader · outlier: JetBrains Mono
+ * · display: Tanker · body: Newsreader · outlier: JetBrains Mono (numerals + edition line)
  * · axes: paper light · display display-heavy · accent warm (55°)
- * · contrast: pass (ink 16.4:1 · muted 7.7:1 · accent 5.2:1 on paper)
- * · type sizes on the landing: 5
- * · mobile 320/375/414/768: NOT verified — no browser was available in the
- *   session that wrote this; the layout is structurally safe (minmax(0, 1fr)
- *   tracks, overflow-x: clip on html and body, no fixed min-widths) but nobody
- *   has looked at it yet */
+ * · contrast: pass (40-41) — ink 16.4:1 · muted 7.7:1 · accent 5.2:1 on paper
+ * · honest: pass (46) — the hero figure is the reader's own bookmark and the
+ *   tally is counted from the archive; no number on the page is asserted
+ * · slop: pass (42-45) · chrome: pass (47) · tokens: pass (48) · icons: pass (30)
+ * · type: 3 families, outlier in 2 registers (gates 37-38)
+ * · mobile 320/375/414/768: NOT verified — no browser was reachable from the
+ *   session that wrote this, so gates 34 and 49-57 are argued from the code,
+ *   not observed. Someone still has to look at it. */
 import * as stylex from '@stylexjs/stylex'
 
 /**

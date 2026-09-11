@@ -1,17 +1,25 @@
 [
   {
     "date": "2026-09-11",
-    "macrostructure": "Bento Grid",
+    "macrostructure": "Stat-Led",
     "theme": "custom: Bounty Bulletin",
-    "theme_axes": {
-      "paper": "light",
-      "display": "display-heavy",
-      "accent": "warm (55°)"
-    },
+    "theme_axes": "light / display-heavy / warm (55°)",
     "vibe": "a bounty bulletin printed on parchment",
     "enrichment": "none (typography only)",
     "nav": "N6 newspaper masthead",
     "footer": "Ft5 statement",
-    "brief": "Landing for a One Piece wiki that covers every entry filed after the episode the reader has reached. Audience: anime watchers mid-series. Tone: adventurous, printed, readable at length."
+    "sections": "H4 figure · T4 tally · F3 ledger · S4 inline heads",
+    "brief": "Redesign of the landing after the Bento build read as a feature grid. The reader's own episode is the hero figure; the archive is a ledger whose covered/open line moves with the dial."
+  },
+  {
+    "date": "2026-09-11",
+    "macrostructure": "Bento Grid",
+    "theme": "custom: Bounty Bulletin",
+    "theme_axes": "light / display-heavy / warm (55°)",
+    "vibe": "a bounty bulletin printed on parchment",
+    "enrichment": "none (typography only)",
+    "nav": "N6 newspaper masthead",
+    "footer": "Ft5 statement",
+    "brief": "First landing build. Superseded: six tiles all shaped title + paragraph, which is the three-column feature grid wearing a bento. Step 4 and Step 7 were never run."
   }
 ]

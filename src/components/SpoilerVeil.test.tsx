@@ -92,3 +92,23 @@ describe('SpoilerVeil', () => {
     ).toBeInTheDocument()
   })
 })
+
+describe('SpoilerVeil at inline density', () => {
+  it('shows the verb alone but still names the threshold to a screen reader', () => {
+    // In a table cell the threshold already has its own column, and the full
+    // sentence plus the verb wraps to two lines below ~40rem — which reads as
+    // a broken control.
+    renderWithProviders(
+      <SpoilerVeil revealedAtEpisode={1089} revealed={false} density="inline">
+        {covered}
+      </SpoilerVeil>,
+    )
+
+    const button = screen.getByRole('button')
+    expect(button).toHaveTextContent('Uncover')
+    expect(button).not.toHaveTextContent('Covered until episode 1089')
+    expect(button).toHaveAccessibleName(
+      'Covered until episode 1089 — Uncover anyway',
+    )
+  })
+})

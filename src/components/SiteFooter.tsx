@@ -41,6 +41,8 @@ const styles = stylex.create({
     fontWeight: 700,
     letterSpacing: '-0.015em',
     lineHeight: leading.heading,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
     // A closing line is read, not scanned, so it keeps a measure.
     maxWidth: '24ch',
   },
@@ -58,10 +60,10 @@ const styles = stylex.create({
   },
   wordmark: {
     color: color.ink2,
-    fontFamily: font.mono,
+    fontFamily: font.body,
     fontSize: text.xs,
     fontWeight: 700,
-    letterSpacing: '0.14em',
+    letterSpacing: '0.12em',
     textTransform: 'uppercase',
   },
   note: {

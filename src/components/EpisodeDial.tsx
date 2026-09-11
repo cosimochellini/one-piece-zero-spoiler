@@ -167,7 +167,11 @@ const styles = stylex.create({
     backgroundColor: color.paper,
     // Same width in every state, so an invalid field does not nudge the
     // steppers sideways.
-    borderColor: { default: color.rule2, ':focus': color.ink },
+    borderColor: {
+      default: color.rule2,
+      ':hover': color.ink2,
+      ':focus': color.ink,
+    },
     borderRadius: radius.input,
     borderStyle: 'solid',
     borderWidth: rule.fine,
@@ -183,6 +187,8 @@ const styles = stylex.create({
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
+    cursor: { default: 'auto', ':disabled': 'not-allowed' },
+    opacity: { default: 1, ':disabled': 0.55 },
     paddingBlock: space.xs2,
     paddingInline: space.xs,
     textAlign: 'center',

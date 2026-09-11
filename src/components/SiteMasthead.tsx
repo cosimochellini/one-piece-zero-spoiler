@@ -63,10 +63,13 @@ const styles = stylex.create({
     fontSize: text.displayS,
     letterSpacing: '0.01em',
     lineHeight: leading.display,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
     textTransform: 'uppercase',
   },
 
   controls: {
+    alignItems: 'center',
     display: 'flex',
     gap: space.md,
   },

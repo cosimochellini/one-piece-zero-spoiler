@@ -62,7 +62,6 @@ const styles = stylex.create({
     alignItems: 'center',
     backgroundColor: {
       default: 'transparent',
-      ':hover:not(:disabled)': color.paper3,
       ':active:not(:disabled)': color.paper3,
     },
     borderColor: {
@@ -101,6 +100,8 @@ const styles = stylex.create({
   chip: {
     fontSize: text.base,
     letterSpacing: '0.02em',
+    // A button label that wraps reads as a styling error, never as intent.
+    whiteSpace: 'nowrap',
     paddingBlock: space.xs,
     paddingInline: space.md,
   },
