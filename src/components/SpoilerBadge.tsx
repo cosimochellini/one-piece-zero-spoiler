@@ -92,7 +92,7 @@ const styles = stylex.create({
     borderRadius: border.radius,
     borderStyle: 'solid',
     borderWidth: border.thin,
-    // Paper white reads at 15.9:1 on ink and 4.8:1 on the accent red, so the
+    // Paper white reads at 18.9:1 on ink and 4.8:1 on the accent red, so the
     // hover state still clears AA for small bold text.
     color: colors.paper,
     cursor: 'pointer',

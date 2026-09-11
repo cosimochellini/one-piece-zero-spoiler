@@ -36,6 +36,7 @@ export default defineConfig({
       // Required, not cosmetic: the plugin only records rules for the CSS
       // endpoint when runtime injection is off, and an SSR app must not
       // depend on a client-side style injector.
+      runtimeInjection: false,
       // The StyleX compiler resolves `defineVars` imports itself and knows
       // nothing about tsconfig `paths`, so the `~/` alias has to be repeated
       // here or every `~/styles/tokens.stylex` import fails to compile with
@@ -43,7 +44,6 @@ export default defineConfig({
       aliases: {
         '~/*': [path.join(import.meta.dirname, 'src', '*')],
       },
-      runtimeInjection: false,
     }),
     tanstackStart(),
     // React's Vite plugin MUST come after Start's Vite plugin. Start no longer
