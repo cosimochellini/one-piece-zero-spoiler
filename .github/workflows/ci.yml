@@ -61,10 +61,12 @@ jobs:
 
   check:
     name: check
-    # An `edited` event is a title or description change, never a code change,
-    # and the pr-title job above is the only one that needs to see it. Running
-    # the full gate again would cost minutes to re-prove an unchanged tree.
-    if: github.event_name != 'pull_request' || github.event.action != 'edited'
+    # Deliberately not filtered to skip `edited`. An edit cancels the run
+    # already in flight for the same commit (cancel-in-progress), so a job
+    # that skips on `edited` leaves the commit with no gate result at all,
+    # and the pull request then reports `check` as skipped rather than as the
+    # pass it earned. Re-running the gate on a title edit is the cheaper
+    # mistake.
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
