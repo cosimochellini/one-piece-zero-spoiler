@@ -73,12 +73,15 @@ plugin has to be registered in `vitest.config.ts` too, since `stylex.create`
 throws at runtime when it has not been compiled. Generated class names are
 content hashes, so tests never assert on them.
 
-**`@stylexjs/unplugin` runs against `unplugin` 3.x.** Its declared peer range
-is `^2.3.11`, but `@tanstack/router-plugin` already depends on `unplugin@3.3.0`
-and it is hoisted to the root. `npm ls unplugin` therefore prints `invalid`.
-Pinning a second, nested copy of `unplugin` is the worse trade: it duplicates
-the package for a plugin that works on 3.x, so the peer warning is accepted
-instead.
+**`unplugin` is pinned by an override.** `@stylexjs/unplugin` declares a peer
+range of `unplugin@^2.3.11`, while `@tanstack/router-plugin` depends on
+`unplugin@^3.3.0`. Those ranges are disjoint, so a clean `npm install` or
+`npm ci` fails with `ERESOLVE could not resolve` — which is how it first
+showed up, as a red CI install step and a failed Netlify deploy, not as a
+local failure. The `overrides` entry pins every `unplugin` to `3.3.0`, the
+version TanStack already requires; StyleX's plugin works on it. The
+alternative, a second nested copy for StyleX alone, duplicates the package
+without fixing anything. Drop the override once StyleX widens its peer range.
 
 **`src/routeTree.gen.ts` is committed.** It carries the `Register` module
 augmentation that gives the whole project its router types, so a fresh clone
