@@ -2,10 +2,10 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 import { useMemo } from 'react'
 
-import { ArchiveLedger } from '~/components/ArchiveLedger'
-import { ArchiveTally } from '~/components/ArchiveTally'
 import { EpisodeDial } from '~/components/EpisodeDial'
-import { EpisodeFigure } from '~/components/EpisodeFigure'
+import { RouteChart } from '~/components/RouteChart'
+import { RouteLegend } from '~/components/RouteLegend'
+import { SeaChartHero } from '~/components/SeaChartHero'
 import { entities } from '~/data/entities'
 import { useT } from '~/i18n/LocaleContext'
 import { useEpisode } from '~/lib/progress/EpisodeContext'
@@ -16,6 +16,7 @@ import {
   ease,
   font,
   leading,
+  radius,
   rule,
   space,
   text,
@@ -53,24 +54,34 @@ export const Route = createFileRoute('/$locale/')({
   component: Landing,
 })
 
+const FAQ = [
+  { q: 'faq.animeQ', a: 'faq.animeA' },
+  { q: 'faq.bookmarkQ', a: 'faq.bookmarkA' },
+  { q: 'faq.peekQ', a: 'faq.peekA' },
+] as const
+
 /**
- * The landing page (Hallmark macrostructure 04, Stat-Led).
+ * The landing page (Hallmark macrostructure 19, Map / Diagram, with an
+ * illustrated fold).
  *
- * The giant figure is the reader's own episode, so the page's headline number
- * is the one number on it that cannot be invented. Everything below qualifies
- * it: the ledger shows where the line currently falls, the tally counts the two
- * sides of that line, and the colophon explains the rules in running prose.
+ * The fold is one line drawing — a night sea, a small caravel, a route running
+ * into fog — with the headline set into its lower edge. Under it the page is
+ * one composition: the archive drawn as a sea route, every waypoint with its
+ * own drawing, and the reader's episode as a horizon line across it. The
+ * orientation column on the left holds the lede, the one control and the
+ * legend, and on a wide screen it stays put while the route scrolls, so moving
+ * the dial moves the line in view. That is the demonstration; nothing on the
+ * page describes it instead.
  *
- * Four sections, four different archetypes — H4 figure, F3 ledger, T4 tally,
- * S4 inline heads in the colophon — because a page whose every section is the
- * same shape reads as a template no matter what the shapes contain.
+ * Below the chart, three questions answered plainly. They are the rules of the
+ * site, written as a conversation rather than as a row of cards.
  */
 function Landing() {
   const t = useT()
   const { progress } = useEpisode()
 
-  // Sorted by threshold so the boundary between open and covered is a single
-  // line across the table rather than a scatter.
+  // Sorted by threshold so the route runs in the order the anime reaches each
+  // waypoint, and the horizon falls at a single point along it.
   const ordered = useMemo(
     () =>
       [...entities].sort((a, b) => a.revealedAtEpisode - b.revealedAtEpisode),
@@ -80,53 +91,42 @@ function Landing() {
 
   return (
     <main id="content" {...stylex.props(styles.page)}>
-      <section {...stylex.props(styles.hero, enter.band, enter.at(0))}>
-        <EpisodeFigure />
+      <section {...stylex.props(styles.fold, enter.band, enter.at(0))}>
+        <div {...stylex.props(styles.foldFigure)}>
+          <SeaChartHero />
+        </div>
         <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
-        <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
-        <EpisodeDial />
       </section>
 
-      <section {...stylex.props(styles.tallyBand, enter.band, enter.at(1))}>
-        <ArchiveTally
-          open={open}
-          covered={ordered.length - open}
-          filed={ordered.length}
-        />
-      </section>
+      <div {...stylex.props(styles.chart)}>
+        <section {...stylex.props(styles.orientation, enter.band, enter.at(1))}>
+          <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
+          <EpisodeDial />
+          <RouteLegend
+            open={open}
+            covered={ordered.length - open}
+            filed={ordered.length}
+          />
+        </section>
 
-      {/*
-        Bottom-anchored section head (Hallmark S5): the ledger is the act and
-        the label is a footnote to it. It also keeps the page free of the
-        uppercase eyebrow that would otherwise open every section.
-      */}
-      <section {...stylex.props(styles.ledgerBand, enter.band, enter.at(2))}>
-        <h2 {...stylex.props(styles.ledgerTitle)}>{t('ledger.title')}</h2>
-        <ArchiveLedger entries={ordered} progress={progress} />
-        <p {...stylex.props(styles.caption)}>
-          {t('ledger.caption', { count: ordered.length })}
-        </p>
-      </section>
+        <section
+          aria-labelledby="route-title"
+          {...stylex.props(styles.routeBand, enter.band, enter.at(2))}
+        >
+          <h2 id="route-title" {...stylex.props(styles.routeTitle)}>
+            {t('chart.title')}
+          </h2>
+          <RouteChart entries={ordered} progress={progress} />
+        </section>
+      </div>
 
-      {/*
-        The rules, as running prose with inline lead-ins (Hallmark S4) rather
-        than as a row of cards. Three short paragraphs say the same thing four
-        tiles were saying, and they read like a colophon instead of a feature
-        grid.
-      */}
-      <section {...stylex.props(styles.colophon, enter.band, enter.at(3))}>
-        <p {...stylex.props(styles.note)}>
-          <b {...stylex.props(styles.lead)}>{t('colophon.animeLead')}</b>{' '}
-          {t('colophon.animeBody')}
-        </p>
-        <p {...stylex.props(styles.note)}>
-          <b {...stylex.props(styles.lead)}>{t('colophon.bookmarkLead')}</b>{' '}
-          {t('colophon.bookmarkBody')}
-        </p>
-        <p {...stylex.props(styles.note)}>
-          <b {...stylex.props(styles.lead)}>{t('colophon.revealLead')}</b>{' '}
-          {t('colophon.revealBody')}
-        </p>
+      <section {...stylex.props(styles.faq, enter.band, enter.at(3))}>
+        {FAQ.map(({ q, a }) => (
+          <div key={q} {...stylex.props(styles.qa)}>
+            <h2 {...stylex.props(styles.question)}>{t(q)}</h2>
+            <p {...stylex.props(styles.answer)}>{t(a)}</p>
+          </div>
+        ))}
       </section>
     </main>
   )
@@ -138,88 +138,141 @@ const styles = stylex.create({
     paddingInline: space.md,
   },
 
-  // Left-biased, no `min-height: 100vh`, and the bottom padding is 1.6x the
-  // top so the hero sits into the page instead of floating between two equal
-  // gaps.
-  hero: {
+  // The illustrated fold: the drawing is the height of its frame, not of the
+  // viewport, and the headline is set into its lower-left corner on a scrim
+  // that darkens toward the paper so the type reads over the sea.
+  fold: {
     display: 'grid',
-    gap: space.md,
-    justifyItems: 'start',
-    paddingBlockEnd: space.xl2,
-    paddingBlockStart: space.lg,
+    paddingBlockStart: space.xs,
+    position: 'relative',
   },
+  foldFigure: {
+    aspectRatio: {
+      default: '16 / 9',
+      '@media (min-width: 40rem)': '16 / 8',
+      '@media (min-width: 60rem)': '16 / 7',
+    },
+    backgroundColor: color.paper2,
+    borderRadius: radius.card,
+    overflow: 'hidden',
+    position: 'relative',
+  },
+  // Two columns from 60rem: the orientation column is narrower than the
+  // route, and pinned, so the dial is in view for the whole length of the
+  // chart. Below that the two stack, dial first.
+  chart: {
+    columnGap: space.xl2,
+    display: 'grid',
+    gridTemplateColumns: {
+      default: 'minmax(0, 1fr)',
+      '@media (min-width: 60rem)': 'minmax(0, 5fr) minmax(0, 7fr)',
+    },
+    paddingBlockStart: space.lg,
+    rowGap: space.xl,
+  },
+  orientation: {
+    alignSelf: 'start',
+    display: 'grid',
+    gap: space.lg,
+    insetBlockStart: space.lg,
+    justifyItems: 'start',
+    position: {
+      default: 'static',
+      '@media (min-width: 60rem)': 'sticky',
+    },
+  },
+  // On a phone the headline sits under the drawing, in the page; from 40rem
+  // it is set into the drawing's lower-left corner on a scrim that darkens
+  // toward the paper, so the type reads over the sea and the ship stays clear.
   headline: {
+    backgroundImage: {
+      default: 'none',
+      '@media (min-width: 40rem)': `linear-gradient(to top, ${color.paper} 0%, ${color.paper} 18%, transparent 100%)`,
+    },
     color: color.ink,
-    fontFamily: font.body,
-    fontSize: text.xl,
-    fontWeight: 700,
-    letterSpacing: '-0.015em',
-    lineHeight: leading.heading,
-    maxWidth: '18ch',
+    fontFamily: font.display,
+    fontSize: text.display,
+    fontWeight: 800,
+    insetBlockEnd: 0,
+    insetInlineStart: 0,
+    letterSpacing: '-0.035em',
+    lineHeight: leading.display,
+    maxWidth: '16ch',
+    // Display type needs an explicit last-resort break or a long unbroken
+    // string walks off a 320px viewport.
     minWidth: 0,
     overflowWrap: 'anywhere',
+    paddingBlockEnd: { default: 0, '@media (min-width: 40rem)': space.xs },
+    paddingBlockStart: {
+      default: space.lg,
+      '@media (min-width: 40rem)': space.xl2,
+    },
+    paddingInlineEnd: { default: 0, '@media (min-width: 40rem)': space.xl },
+    paddingInlineStart: { default: 0, '@media (min-width: 40rem)': space.md },
+    position: { default: 'static', '@media (min-width: 40rem)': 'absolute' },
   },
+
   lede: {
     color: color.ink2,
     fontSize: text.base,
     lineHeight: leading.body,
-    maxWidth: '52ch',
+    maxWidth: '44ch',
   },
 
-  // Tighter than the hero above it and the ledger below it. Uniform section
-  // padding is what makes a page read as a template.
-  tallyBand: {
+  routeBand: {
+    display: 'grid',
+    gap: space.md,
+    minWidth: 0,
+  },
+  // A small orientation phrase, as the macrostructure asks: the chart is the
+  // heading, this only says what it is.
+  routeTitle: {
+    color: color.muted,
+    fontFamily: font.body,
+    fontSize: text.base,
+    fontWeight: 600,
+    lineHeight: leading.body,
+    paddingInlineStart: {
+      default: 0,
+      // Lines up with the waypoint text, past the 4rem rail and its gap.
+      '@media (min-width: 40rem)': 'calc(4rem + 1rem)',
+    },
+  },
+
+  // Tighter above than below, and a wider top margin than any other band:
+  // the questions are an appendix to the chart, not a second act.
+  faq: {
+    display: 'grid',
+    marginBlockStart: space.xl3,
+    paddingBlockEnd: space.xl2,
+  },
+  qa: {
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
-    paddingBlock: space.lg,
-  },
-
-  ledgerBand: {
+    columnGap: space.xl,
     display: 'grid',
-    gap: space.md,
-    paddingBlockEnd: space.xl,
-    paddingBlockStart: space.xl,
+    gridTemplateColumns: {
+      default: 'minmax(0, 1fr)',
+      '@media (min-width: 40rem)': 'minmax(0, 18rem) minmax(0, 1fr)',
+    },
+    paddingBlock: space.lg,
+    rowGap: space.xs,
   },
-  ledgerTitle: {
+  question: {
     color: color.ink,
-    fontFamily: font.body,
+    fontFamily: font.display,
     fontSize: text.lg,
-    fontWeight: 700,
-    letterSpacing: '-0.01em',
+    fontWeight: 800,
+    letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    maxWidth: '22ch',
     minWidth: 0,
     overflowWrap: 'anywhere',
   },
-  caption: {
-    color: color.muted,
-    fontFamily: font.body,
-    fontSize: text.xs,
-    fontStyle: 'italic',
-    lineHeight: leading.body,
-    maxWidth: '56ch',
-  },
-
-  // A wide left margin on the widest screens: the colophon is an aside, and
-  // indenting it says so without a label.
-  colophon: {
-    display: 'grid',
-    gap: space.md,
-    marginInlineStart: { default: 0, '@media (min-width: 60rem)': space.xl4 },
-    paddingBlockEnd: space.xl2,
-    paddingBlockStart: space.lg,
-  },
-  note: {
+  answer: {
     color: color.ink2,
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '58ch',
-  },
-  // The lead-in emerges inside the paragraph rather than sitting above it as a
-  // heading, which is what keeps this section from becoming three more cards.
-  lead: {
-    color: color.ink,
-    fontWeight: 700,
   },
 })

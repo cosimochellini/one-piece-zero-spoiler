@@ -31,6 +31,16 @@ describe('the seed archive', () => {
   })
 })
 
+describe('the archive drawings', () => {
+  it('gives every record the drawing made for it', () => {
+    // The drawing ids are the record ids on purpose: a record pointing at
+    // another record's drawing would put the wrong object beside a name.
+    for (const entity of entities) {
+      expect(entity.visual.art).toBe(entity.id)
+    }
+  })
+})
+
 describe('getEntity', () => {
   it('finds a record by id', () => {
     expect(getEntity('egghead')?.revealedAtEpisode).toBe(1089)

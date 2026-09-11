@@ -1,6 +1,18 @@
 [
   {
     "date": "2026-09-11",
+    "macrostructure": "Map / Diagram with illustrated fold",
+    "theme": "custom (bespoke): Sea Chart",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "vibe": "night sea, lantern gold, hand-drawn chart",
+    "enrichment": "Tier B hand-built SVG: 35 line drawings (object-symbol per record, 2px stroke, one tint each) + line-drawn fold chart",
+    "nav": "N9 edge-aligned minimal",
+    "footer": "Ft4 dense colophon",
+    "sections": "line-drawn fold · sticky orientation column (lede · dial · legend) · route of waypoints with framed drawings and horizon line · FAQ rows · Ft4 colophon",
+    "brief": "Third landing build after the user asked for something cool and eye-catching and allowed the design system to be rewritten. The archive is drawn as a sea route; the reader's episode is a horizon line the dial moves, and everything below it is under fog. Fourth pass after the user asked for a page full of images went to CC photographs; fifth pass replaced every photograph with a curated line drawing at the user's request: uniform 2px stroke, no fills, an object that stands for each character (no faces, no logos), a scene for each place, one colour per drawing from a 19-hue tint set."
+  },
+  {
+    "date": "2026-09-11",
     "macrostructure": "Stat-Led",
     "theme": "custom: Bounty Bulletin",
     "theme_axes": "light / display-heavy / warm (55°)",

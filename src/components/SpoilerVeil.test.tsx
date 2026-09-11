@@ -32,7 +32,7 @@ describe('SpoilerVeil', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Covered until episode 1089.*Uncover anyway/su,
+        name: /Under fog until episode 1089.*Lift the fog anyway/su,
       }),
     ).toBeInTheDocument()
   })
@@ -88,7 +88,9 @@ describe('SpoilerVeil', () => {
     )
 
     expect(
-      screen.getByRole('button', { name: /Coperto fino all’episodio 890/u }),
+      screen.getByRole('button', {
+        name: /Nella nebbia fino all’episodio 890/u,
+      }),
     ).toBeInTheDocument()
   })
 })
@@ -105,10 +107,10 @@ describe('SpoilerVeil at inline density', () => {
     )
 
     const button = screen.getByRole('button')
-    expect(button).toHaveTextContent('Uncover')
-    expect(button).not.toHaveTextContent('Covered until episode 1089')
+    expect(button).toHaveTextContent('Lift')
+    expect(button).not.toHaveTextContent('Under fog until episode 1089')
     expect(button).toHaveAccessibleName(
-      'Covered until episode 1089 — Uncover anyway',
+      'Under fog until episode 1089 — Lift the fog anyway',
     )
   })
 })

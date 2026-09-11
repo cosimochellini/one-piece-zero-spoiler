@@ -4,71 +4,46 @@ import { useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**
- * The footer (Hallmark Ft5).
+ * The footer (Hallmark Ft4, dense colophon).
  *
- * A closing sentence, not a sitemap: four columns of links and a row of social
- * icons is the footer every generated page ships, and this site has nothing to
- * put in them. The statement restates the argument the page just made.
+ * One block of small type that says what the page is made of and how it
+ * behaves, the way a colophon closes a book. Four columns of links and a row of
+ * social icons is the footer every generated page ships, and this site has
+ * nothing to put in them. The lead sentence is the one the whole page argues.
  */
 export function SiteFooter() {
   const t = useT()
 
   return (
     <footer {...stylex.props(styles.footer)}>
-      <p {...stylex.props(styles.statement)}>{t('footer.statement')}</p>
-
-      <div {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.wordmark)}>{t('site.name')}</span>
-        <span {...stylex.props(styles.note)}>{t('footer.note')}</span>
-      </div>
+      <p {...stylex.props(styles.colophon)}>
+        <b {...stylex.props(styles.lead)}>{t('footer.lead')}</b>{' '}
+        {t('footer.colophon')}
+      </p>
     </footer>
   )
 }
 
 const styles = stylex.create({
   footer: {
-    display: 'grid',
-    gap: space.lg,
-    paddingBlockEnd: space.xl,
-    paddingBlockStart: space.xl2,
-    paddingInline: space.md,
-  },
-
-  statement: {
-    color: color.ink,
-    fontFamily: font.body,
-    fontSize: text.displayS,
-    fontWeight: 700,
-    letterSpacing: '-0.015em',
-    lineHeight: leading.heading,
-    minWidth: 0,
-    overflowWrap: 'anywhere',
-    // A closing line is read, not scanned, so it keeps a measure.
-    maxWidth: '24ch',
-  },
-
-  meta: {
-    alignItems: 'baseline',
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: space.sm,
-    justifyContent: 'space-between',
-    paddingBlockStart: space.sm,
+    paddingBlockEnd: space.xl,
+    paddingBlockStart: space.lg,
+    paddingInline: space.md,
   },
-  wordmark: {
-    color: color.ink2,
-    fontFamily: font.body,
-    fontSize: text.xs,
-    fontWeight: 700,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-  },
-  note: {
+
+  // A colophon is read once, slowly, so it keeps a measure.
+  colophon: {
     color: color.muted,
     fontFamily: font.body,
-    fontSize: text.xs,
+    fontSize: text.base,
+    lineHeight: leading.body,
+    maxWidth: '72ch',
+  },
+  lead: {
+    color: color.ink2,
+    fontWeight: 700,
   },
 })

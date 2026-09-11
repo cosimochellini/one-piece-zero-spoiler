@@ -178,14 +178,44 @@ of truth, and it is the TypeScript module. `accentInk` is a contract: any
 surface painted `accent` that carries text sets its colour to `accentInk`,
 never to a hardcoded white.
 
-**Fonts are self-hosted.** Tanker (Fontshare), Newsreader and JetBrains Mono
-(Google Fonts) live in `public/fonts` as woff2, declared in `@layer fonts` at
-the top of `global.css`. Pulling them from a CDN would mean widening both
-`style-src` and `font-src` for three files. Each has a metric-matched fallback
-face — `size-adjust` equalises x-height, then the ascent and descent overrides
-are the real font's `hhea` values divided by that adjustment — so the
-`font-display: swap` handover does not reflow the page. The metrics used are
-written down beside the declarations.
+**The landing is a sea chart.** The Hallmark run that produced it picked the
+Map / Diagram macrostructure: the archive is drawn as one vertical route
+(`src/components/RouteChart.tsx`), every entry a waypoint in the order the anime
+reaches it, and the reader's episode is a horizon line across the route. Rows
+above it are open and drawn in gold; rows below are under fog, their names
+behind a `SpoilerVeil` and their stretch of route dashed. Because the entries
+are sorted by threshold and `isRevealed` is monotone, the open rows are always a
+prefix of the list, so the horizon is a single `<li aria-current="step">`
+between two runs rather than a marker interpolated along a path. Each row draws
+its own SVG segment with `preserveAspectRatio="none"` and `non-scaling-stroke`,
+which is how the line follows whatever height the row's text needs. The
+orientation column (headline, dial, legend) is `position: sticky` from 60rem so
+moving the dial moves the horizon in view. The stamp at the top of
+`tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
+
+**Every picture is a line drawing made here; no photographs, no official
+artwork.** Toei and Shueisha own every frame of the anime and every panel of
+the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`,
+so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
+drawings, one per record, as lists of SVG path strokes rendered by one
+component: a 160x200 box, a uniform 2px stroke kept at 2px through
+`vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
+character is an object that stands for them (a straw hat, three sheathed
+swords, a violin), never a face or a logo; each place is the place. A drawing
+takes exactly one colour for its main stroke, from the nineteen-hue `tint`
+token set in `tokens.stylex.ts`, and leaves every other line in `ink2`, which
+is what keeps thirty-five illustrations reading as one set. The record's
+`visual` names its drawing and its tint; `ChartArt.test.tsx` renders all of
+them. The fold is `SeaChartHero.tsx`, the same line at 1600x560.
+
+**Fonts are self-hosted.** Bricolage Grotesque, Instrument Sans and JetBrains
+Mono (all Google Fonts, variable cuts) live in `public/fonts` as woff2, declared
+in `@layer fonts` at the top of `global.css`. Pulling them from a CDN would mean
+widening both `style-src` and `font-src` for five files. Each has a
+metric-matched fallback face — `size-adjust` equalises x-height against Arial,
+then the ascent and descent overrides are the real font's `hhea` values divided
+by that adjustment — so the `font-display: swap` handover does not reflow the
+page. The metrics used are written down beside the declarations.
 `src/styles/tokens.stylex.ts` holds the design tokens and must keep its
 `.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
 `*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong

@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
 
 import { SiteFooter } from '~/components/SiteFooter'
-import { SiteMasthead } from '~/components/SiteMasthead'
+import { SiteBar } from '~/components/SiteBar'
 import { LocaleProvider } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
@@ -57,7 +57,7 @@ function LocaleLayout() {
       </a>
 
       <div {...stylex.props(styles.shell)}>
-        <SiteMasthead />
+        <SiteBar />
         <Outlet />
         <SiteFooter />
       </div>
@@ -72,7 +72,7 @@ const styles = stylex.create({
     // `min-height: 100vh` hero, which is its own tell.
     gridTemplateRows: 'auto 1fr auto',
     marginInline: 'auto',
-    maxWidth: '72rem',
+    maxWidth: '76rem',
     minHeight: '100dvh',
     width: '100%',
   },

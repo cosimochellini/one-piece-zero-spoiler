@@ -29,6 +29,12 @@ export type SpoilerVeilProps = {
    * cell, where a two-line curtain would set the row height.
    */
   readonly density?: 'block' | 'inline'
+  /**
+   * How hard to blur. `text` is enough for a line of words; a photograph
+   * needs `media`, because a face survives a half-rem blur and a fogged
+   * waypoint must not give its subject away.
+   */
+  readonly strength?: 'text' | 'media'
   readonly children: ReactNode
 }
 
@@ -57,6 +63,7 @@ export function SpoilerVeil({
   revealedAtEpisode,
   revealed,
   density = 'block',
+  strength = 'text',
   children,
 }: SpoilerVeilProps) {
   const t = useT()
@@ -81,7 +88,12 @@ export function SpoilerVeil({
         inert={!visible}
         {...stylex.props(
           styles.content,
-          !visible && (inline ? styles.coveredTight : styles.covered),
+          !visible &&
+            (inline
+              ? styles.coveredTight
+              : strength === 'media'
+                ? styles.coveredMedia
+                : styles.covered),
         )}
       >
         {children}
@@ -126,6 +138,13 @@ const styles = stylex.create({
     filter: 'blur(0.55rem)',
     // Without this the covered words can still be swept up by a drag-select
     // and pasted somewhere legible.
+    userSelect: 'none',
+  },
+  // A block with a photograph in it. The radius is set by what it takes to
+  // make a face unreadable at card size, and the content is clipped by the
+  // frame so the blur cannot bleed a halo past the card edge.
+  coveredMedia: {
+    filter: 'blur(1.4rem)',
     userSelect: 'none',
   },
   // A table cell is one line tall, so the blur radius drops with it: 0.55rem

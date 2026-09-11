@@ -38,7 +38,7 @@ describe('the dictionaries', () => {
 describe('translate', () => {
   it('fills a placeholder from the params', () => {
     expect(translate(enDictionary, 'veil.locked', { episode: 1089 })).toBe(
-      'Covered until episode 1089',
+      'Under fog until episode 1089',
     )
   })
 
@@ -49,7 +49,7 @@ describe('translate', () => {
 
   it('returns a string with no placeholders untouched', () => {
     expect(translate(enDictionary, 'veil.reveal', { unused: 'x' })).toBe(
-      'Uncover anyway',
+      'Lift the fog anyway',
     )
   })
 })

@@ -1,26 +1,39 @@
-/* Hallmark · pre-emit critique: P5 H4 E4 S5 R5 V5 */
-/* Hallmark · genre: editorial · macrostructure: Stat-Led · theme: custom "Bounty Bulletin"
- * · enrichment: none (typography only) · polish: none · nav: N6 newspaper masthead
- * · footer: Ft5 statement · sections: H4 figure · T4 tally · F3 ledger · S4 inline heads
- * · vibe: a bounty bulletin printed on parchment
- * · paper: oklch(96.5% 0.015 85) · accent: oklch(52% 0.128 55)
- * · display: Tanker · body: Newsreader · outlier: JetBrains Mono (numerals + edition line)
- * · axes: paper light · display display-heavy · accent warm (55°)
- * · contrast: pass (40-41) — ink 16.4:1 · muted 7.7:1 · accent 5.2:1 on paper
- * · honest: pass (46) — the hero figure is the reader's own bookmark and the
- *   tally is counted from the archive; no number on the page is asserted
+/* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V5 */
+/* Hallmark · route: custom (bespoke) · genre: atmospheric · macrostructure: Map / Diagram
+ *   with an illustrated fold
+ * · structure: line-drawn fold (night sea, caravel, course into fog, headline set
+ *   into it) · sticky orientation column (lede · dial · legend) beside a vertical
+ *   sea-route of waypoints, each with a framed line drawing; the reader's episode
+ *   is a horizon line across the route and everything below it is under fog
+ * · idea: "the spoiler boundary is a horizon you move"
+ * · theme: custom "Sea Chart" · vibe: night sea, lantern gold, hand-drawn chart
+ * · paper: oklch(13% 0.025 250) · accent: oklch(84% 0.16 88)
+ * · display: Bricolage Grotesque 800 · body: Instrument Sans · outlier: JetBrains Mono
+ *   (episode numerals + the horizon label)
+ * · axes: dark / geometric-sans / chromatic-amber (88°) — differs from the previous
+ *   build on all three (was light / display-heavy / warm 55°)
+ * · nav: N9 edge-aligned (was N6) · footer: Ft4 dense colophon (was Ft5)
+ * · sections: H2-shaped orientation column · F4-shaped route · legend · FAQ rows
+ * · enrichment: Tier B hand-built SVG throughout — 35 line drawings (one object or
+ *   place per record, 2px uniform stroke, no fills, one tint each from the 19-hue
+ *   `tint` set), the fold chart, route segments, compass, legend swatches; no
+ *   photographs, no official artwork
+ * · contrast: pass (40-41) — ink 17.4:1 · ink2 12.3:1 · muted 8.1:1 · accent 12.2:1
+ *   on paper; rule2 3.15:1 on paper3, the darkest surface a control sits on;
+ *   accentInk 11.8:1 on accent
+ * · honest: pass (46) — every number on the page is the reader's bookmark or a
+ *   count of the archive at render time
  * · slop: pass (42-45) · chrome: pass (47) · tokens: pass (48) · icons: pass (30)
- * · type: 3 families, outlier in 2 registers (gates 37-38)
- * · mobile 320/375/414/768: NOT verified — no browser was reachable from the
- *   session that wrote this, so gates 34 and 49-57 are argued from the code,
- *   not observed. Someone still has to look at it. */
+ * · type: 3 families, outlier in 2 registers (37-38) · no italic heads (38a)
+ * · mobile 320/375/414/768 + 1280/1440: verified in headless Chrome — no horizontal
+ *   scroll, no wrapped affordance, horizon between open and fogged rows (34, 49-57) */
 import * as stylex from '@stylexjs/stylex'
 
 /**
- * Design tokens for "Bounty Bulletin": a bounty-poster wiki printed on
- * parchment. The taxonomy follows Hallmark's canonical token names (paper /
- * ink / rule / muted / accent / accentInk / focus, a 4pt space scale, named
- * easings and durations) rather than inventing a second vocabulary.
+ * Design tokens for "Sea Chart": a One Piece wiki drawn as a night-time sea
+ * route. The taxonomy is Hallmark's canonical set (paper / ink / rule / muted /
+ * accent / accentInk / focus, a 4pt space scale, named easings and durations),
+ * so a reader of any other Hallmark project knows the names already.
  *
  * Hallmark normally emits a `tokens.css` holding `:root { --color-ink: … }`.
  * We do not, and there is no second source of truth: `stylex.defineVars`
@@ -32,40 +45,76 @@ import * as stylex from '@stylexjs/stylex'
  */
 
 /**
- * Every colour is OKLCH, every neutral carries a trace of the parchment hue,
- * and there is exactly one accent. No `#000`, no `#fff`.
+ * Every colour is OKLCH. The neutrals are all tinted toward the same deep blue
+ * (hue 250), and there is exactly one accent, a lantern gold set against it.
+ * That pairing is complementary on purpose: the accent is a signal on a dark
+ * sea, not a tint the neutrals should follow. No `#000`, no `#fff`.
  *
  * Contrast against `paper`, computed from the OKLCH values (WCAG 2.1):
  *
- *   ink   16.4:1   ink2  11.5:1   muted  7.7:1   accent  5.2:1   focus  7.4:1
- *   rule2  3.8:1 (control boundaries)   rule  1.9:1 (decorative hairlines only)
+ *   ink   17.4:1   ink2  12.3:1   muted  8.1:1   accent  12.2:1   focus  14.0:1
+ *   rule2  3.7:1 (control boundaries)   rule  1.5:1 (decorative hairlines only)
  *
- * On the tile surface `paper2` the same values read 14.8 / 10.3 / 6.9 / 4.7 /
- * 6.6 / 3.4, so body text clears the 7:1 target and the accent clears 4.5:1
- * on both surfaces. `accentInk` on `accent` is 5.3:1.
+ * On `paper3`, the lightest surface, the same values read 15.0 / 10.6 / 7.0 /
+ * 10.5 / 12.0 / 3.15, so body text clears 7:1 and a control boundary clears
+ * 3:1 on every surface. `accentInk` on `accent` is 11.8:1.
  *
- * The chroma on `paper2` and `paper3` (0.020 and 0.024) runs just above the
- * 0.005-0.015 band Hallmark suggests for neutrals. That is the parchment, and
- * it is the one deliberate deviation in this palette.
+ * The chroma on the papers (0.025-0.030) runs above the 0.005-0.015 band
+ * Hallmark suggests for neutrals. That is the sea, and it is the one
+ * deliberate deviation in this palette.
  */
 export const color = stylex.defineVars({
-  paper: 'oklch(96.5% 0.015 85)',
-  paper2: 'oklch(93% 0.02 82)',
-  paper3: 'oklch(89% 0.024 80)',
+  paper: 'oklch(13% 0.025 250)',
+  paper2: 'oklch(17% 0.028 250)',
+  paper3: 'oklch(22% 0.03 250)',
   // Decorative hairlines only. A control boundary needs 3:1 and must use
   // `rule2` or `ink` instead.
-  rule: 'oklch(76% 0.018 78)',
-  rule2: 'oklch(58% 0.02 75)',
-  muted: 'oklch(42% 0.014 70)',
-  ink2: 'oklch(32% 0.014 65)',
-  ink: 'oklch(20% 0.013 60)',
-  // Burnt bounty ochre. It is a highlighter, not a colour block: focus rings,
-  // the active nav mark, the seal, one CTA border. Never a large fill.
-  accent: 'oklch(52% 0.128 55)',
+  rule: 'oklch(30% 0.025 250)',
+  rule2: 'oklch(52% 0.03 250)',
+  muted: 'oklch(72% 0.02 250)',
+  ink2: 'oklch(84% 0.015 250)',
+  ink: 'oklch(95% 0.01 250)',
+  // Lantern gold. It draws the sailed part of the route, the horizon line, the
+  // active locale, focus rings and one verb per veil. Never a large fill.
+  accent: 'oklch(84% 0.16 88)',
   // A hard contract. Any surface painted `accent` that carries text sets its
-  // colour to this, never to a hardcoded white.
-  accentInk: 'oklch(97% 0.012 85)',
-  focus: 'oklch(44% 0.12 48)',
+  // colour to this, never to a hardcoded dark.
+  accentInk: 'oklch(16% 0.03 250)',
+  focus: 'oklch(88% 0.15 92)',
+  // The one overlay, and the only token with an alpha channel. It is a
+  // modifier laid over `paper`, not a colour anything is painted in: the
+  // lantern bloom at the top of the page.
+  glow: 'oklch(70% 0.12 80 / 0.22)',
+})
+
+/**
+ * The one colour each drawing is allowed. Nineteen hues, all light enough
+ * (L 66-92%) to clear 5:1 against `paper2`, the card surface, as a 2px line.
+ * A drawing takes exactly one of these for its main stroke and leaves every
+ * other line in `ink2`, so thirty-five illustrations read as one set rather
+ * than as thirty-five palettes. They are not text colours and are never used
+ * outside `ChartArt` and the hero chart.
+ */
+export const tint = stylex.defineVars({
+  red: 'oklch(68% 0.2 25)',
+  vermilion: 'oklch(70% 0.19 38)',
+  orange: 'oklch(76% 0.17 58)',
+  ocher: 'oklch(78% 0.13 82)',
+  yellow: 'oklch(88% 0.16 98)',
+  acid: 'oklch(86% 0.2 128)',
+  green: 'oklch(76% 0.17 148)',
+  teal: 'oklch(80% 0.13 188)',
+  cyan: 'oklch(83% 0.13 212)',
+  azure: 'oklch(80% 0.11 236)',
+  blue: 'oklch(74% 0.12 262)',
+  ice: 'oklch(92% 0.04 220)',
+  lavender: 'oklch(80% 0.1 296)',
+  violet: 'oklch(74% 0.15 306)',
+  magenta: 'oklch(74% 0.19 346)',
+  pink: 'oklch(82% 0.11 352)',
+  flamingo: 'oklch(78% 0.14 6)',
+  sand: 'oklch(86% 0.08 82)',
+  wine: 'oklch(66% 0.17 14)',
 })
 
 /**
@@ -93,43 +142,43 @@ export const space = stylex.defineVars({
 
 /**
  * Two families plus one outlier, which is Hallmark's 2+1 ceiling. The outlier
- * is confined to two slots: the masthead edition line and any episode number.
+ * is confined to two slots: episode numerals wherever they appear, and the
+ * horizon label on the route.
  *
- * `Tanker` is a poster face and only works large, so it is never set below
- * `displayS`. Body copy is `Newsreader`, a reading serif with an optical-size
- * axis. Both are self-hosted from `public/fonts`, which keeps the CSP at
- * `default-src 'self'`.
+ * `Bricolage Grotesque` is a variable display grotesque (weight 200-800, width
+ * 75-100, optical size 12-96). It is only ever set at 800 and only on the
+ * headline, the wordmark, waypoint names and legend figures. Body copy is
+ * `Instrument Sans`, a variable text sans (weight 400-700). All three are
+ * self-hosted from `public/fonts`, which keeps the CSP at `default-src 'self'`.
  */
 export const font = stylex.defineVars({
-  display: "'Tanker', 'Tanker Fallback', Impact, sans-serif",
-  body: "'Newsreader', 'Newsreader Fallback', Georgia, serif",
+  display:
+    "'Bricolage Grotesque', 'Bricolage Grotesque Fallback', Arial, sans-serif",
+  body: "'Instrument Sans', 'Instrument Sans Fallback', Arial, sans-serif",
   mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace",
 })
 
 /**
- * A 1.25 major third on a 17px base. 17px rather than 16px because the page
- * is built to be read at length.
+ * A 1.25 major third on a 16px base, plus one fluid display size.
  *
- * `display` tops out at 80px, under Hallmark's 88px ceiling. A single page
- * uses at most five of these sizes.
+ * `display` is sized for a two-line headline in a column that is at most half
+ * the page: 2.5rem on a phone, 4rem at 96rem and above. The headline is 32
+ * characters, inside the 21-50 bracket that gets the full display size.
  */
 export const text = stylex.defineVars({
   xs: '0.75rem',
-  sm: '0.875rem',
-  base: '1.0625rem',
-  lg: '1.3125rem',
-  xl: '1.625rem',
-  xl2: '2.0625rem',
-  displayS: 'clamp(2.25rem, 6vw, 3.25rem)',
-  display: 'clamp(2.75rem, 9vw, 5rem)',
+  base: '1rem',
+  lg: '1.25rem',
+  xl: '1.5625rem',
+  display: 'clamp(2.5rem, 1.6vw + 1.6rem, 4rem)',
 })
 
 /**
- * `display` sits at 1.02 rather than 1.0 because Tanker is set uppercase and
- * an all-caps head has no descenders to protect.
+ * `display` sits at 1.0: the headline is sentence case in a face with short
+ * descenders, and the lines are meant to sit close.
  */
 export const leading = stylex.defineVars({
-  display: '1.02',
+  display: '1',
   heading: '1.15',
   body: '1.6',
 })
@@ -149,13 +198,13 @@ export const dur = stylex.defineVars({
 })
 
 /**
- * A bounty poster is printed, not moulded, so the radii are small. `pill` is
- * kept for the locale switch, which is the one control that reads as a
- * toggle rather than as a stamp.
+ * A chart is drawn with a ruler, so the radii are small. `pill` is kept for
+ * the locale switch, which is the one control that reads as a toggle rather
+ * than as a mark on the chart.
  */
 export const radius = stylex.defineVars({
-  card: '3px',
-  input: '2px',
+  card: '4px',
+  input: '3px',
   pill: '999px',
 })
 
@@ -168,7 +217,7 @@ export const rule = stylex.defineVars({
 /**
  * Hallmark's six named levels, plus `skip`.
  *
- * `sticky` and `stickyNav` are separate so a banner pinned under the masthead
+ * `sticky` and `stickyNav` are separate so a banner pinned under the bar
  * cannot climb over it. `skip` sits above everything by definition: a skip
  * link that any other layer can cover is a skip link that does not work.
  */

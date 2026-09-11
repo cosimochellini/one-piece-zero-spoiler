@@ -33,20 +33,21 @@ export const Route = createRootRoute({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
     links: [
-      // The display and body faces are needed by the masthead and the first
+      // The display and body faces are needed by the wordmark and the first
       // paragraph, so they are fetched in parallel with the stylesheet rather
-      // than after it. The mono face is not preloaded: it sets a stamp and an
-      // edition line, and arriving a moment late costs nothing.
+      // than after it. The mono face is not preloaded: it sets episode
+      // numerals and the horizon label, and arriving a moment late costs
+      // nothing.
       {
         rel: 'preload',
-        href: '/fonts/tanker-400.woff2',
+        href: '/fonts/bricolage-grotesque-var-latin.woff2',
         as: 'font',
         type: 'font/woff2',
         crossOrigin: 'anonymous',
       },
       {
         rel: 'preload',
-        href: '/fonts/newsreader-var-latin.woff2',
+        href: '/fonts/instrument-sans-var-latin.woff2',
         as: 'font',
         type: 'font/woff2',
         crossOrigin: 'anonymous',
@@ -123,12 +124,19 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 const styles = stylex.create({
   body: {
     backgroundColor: color.paper,
+    // The two blooms the genre allows, and the only decoration on the canvas:
+    // a lantern glow high on the right where the page begins, and a paler
+    // patch of sea low on the left where it ends. Both are two-stop radial
+    // gradients that resolve against the document, so they sit where the
+    // page sits and never repaint on scroll.
+    backgroundImage: `radial-gradient(60rem 36rem at 88% -6%, ${color.glow}, transparent 62%), radial-gradient(70rem 30rem at 8% 102%, ${color.paper3}, transparent 70%)`,
+    backgroundRepeat: 'no-repeat',
     color: color.ink,
     fontFamily: font.body,
     fontSize: text.base,
     lineHeight: leading.body,
-    // Hinting off is wrong for a serif at reading size; optical sizing on is
-    // what makes Newsreader's variable `opsz` axis do its job.
+    // Optical sizing on is what makes Bricolage Grotesque's `opsz` axis open
+    // up its counters when it is set small, as on the legend figures.
     fontOpticalSizing: 'auto',
     textRendering: 'optimizeLegibility',
   },
