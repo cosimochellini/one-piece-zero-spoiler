@@ -158,6 +158,13 @@ jobs:
       # semantic-release itself. The `conventionalcommits` preset does not
       # (commit-analyzer only depends on conventional-changelog-angular), and
       # neither does the git plugin, so both are listed.
+      #
+      # The preset is held at 9.x on purpose. 10.x requires
+      # conventional-changelog-writer@9, while release-notes-generator@14
+      # still depends on ^8, and the mismatch only surfaces at release time as
+      # `Missing helper: "conventional-changelog-conventionalcommits requires
+      # conventional-changelog-writer@9 or newer"`. Raise it once
+      # release-notes-generator ships a writer@9 dependency.
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -169,5 +176,5 @@ jobs:
           npx --yes \
             -p semantic-release@25.0.9 \
             -p @semantic-release/git@11.0.1 \
-            -p conventional-changelog-conventionalcommits@10.4.0 \
+            -p conventional-changelog-conventionalcommits@9.3.1 \
             semantic-release
