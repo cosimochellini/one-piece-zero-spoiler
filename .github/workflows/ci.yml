@@ -3,11 +3,21 @@ name: CI
 on:
   push:
     branches: [main]
+  # `edited` is not a default activity type, and without it a title changed
+  # after the first green run would never be re-validated: the pr-title check
+  # would stay green for a title semantic-release cannot read.
   pull_request:
+    types: [opened, synchronize, reopened, edited]
 
 concurrency:
+  # On push the group collapses to a single constant, so releases on main are
+  # serialized: a second merge waits for the first one's tag instead of racing
+  # it. Pull request runs are keyed per pull request and stay independent.
   group: ci-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  # Only pull request runs are disposable. A push to main can be carrying a
+  # release, and cancelling that mid-flight would leave a tag without its
+  # package.json bump, so those runs always finish.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -22,8 +32,41 @@ env:
   COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
 
 jobs:
+  # The pull request title is the only input to the version bump: GitHub
+  # squashes the branch into one commit on main whose subject is that title,
+  # and semantic-release reads it to pick patch / minor / major. This job runs
+  # without `npm ci` because the validator has no dependencies.
+  pr-title:
+    name: pr-title
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # The title goes through `env`, never through `${{ }}` inside the shell
+      # script: a PR title is attacker-controlled and would be interpolated
+      # before the shell ever sees it as data.
+      - name: Validate PR title
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: node scripts/validate-pr-title.mjs
+
   check:
     name: check
+    # Deliberately not filtered to skip `edited`. An edit cancels the run
+    # already in flight for the same commit (cancel-in-progress), so a job
+    # that skips on `edited` leaves the commit with no gate result at all,
+    # and the pull request then reports `check` as skipped rather than as the
+    # pass it earned. Re-running the gate on a title edit is the cheaper
+    # mistake.
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -83,3 +126,62 @@ jobs:
           path: .gate/
           if-no-files-found: ignore
           retention-days: 7
+
+  # Cuts the release for every push to main, which in practice means every
+  # squashed pull request. Gated on `check` so a red build never tags.
+  release:
+    name: release
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write # push the version commit, create the tag
+      issues: write # comment on issues closed by the release
+      pull-requests: write # comment on the released pull requests
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          # semantic-release walks the full history and every tag to work out
+          # the previous version.
+          fetch-depth: 0
+          # @semantic-release/git pushes the version commit back with these
+          # credentials.
+          persist-credentials: true
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+
+      # Installed through npx rather than devDependencies: this pulls ~250
+      # packages that no other job, and no local `npm install`, has any use
+      # for. Versions are pinned, so the run stays reproducible.
+      #
+      # commit-analyzer, release-notes-generator, npm and github ship inside
+      # semantic-release itself. The `conventionalcommits` preset does not
+      # (commit-analyzer only depends on conventional-changelog-angular), and
+      # neither does the git plugin, so both are listed.
+      #
+      # The preset is held at 9.x on purpose. 10.x requires
+      # conventional-changelog-writer@9, while release-notes-generator@14
+      # still depends on ^8, and the mismatch only surfaces at release time as
+      # `Missing helper: "conventional-changelog-conventionalcommits requires
+      # conventional-changelog-writer@9 or newer"`. Raise it once
+      # release-notes-generator ships a writer@9 dependency.
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GIT_AUTHOR_NAME: github-actions[bot]
+          GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+          GIT_COMMITTER_NAME: github-actions[bot]
+          GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+        run: |
+          npx --yes \
+            -p semantic-release@25.0.9 \
+            -p @semantic-release/git@11.0.1 \
+            -p conventional-changelog-conventionalcommits@9.3.1 \
+            semantic-release
