@@ -44,6 +44,18 @@ export default tseslint.config(
   // The router plugin exposes `configs['flat/recommended']` as an array.
   ...tanstackRouter.configs['flat/recommended'],
 
+  // TanStack Router signals a redirect and a not-found by throwing a plain
+  // object that the router catches and turns into a response. It is control
+  // flow, not an error, and `only-throw-error` has no way to tell the two
+  // apart, so the rule is switched off where route modules live rather than
+  // silenced with a comment at each of the handful of call sites.
+  {
+    files: ['src/routes/**/*.tsx'],
+    rules: {
+      '@typescript-eslint/only-throw-error': 'off',
+    },
+  },
+
   // This file and the gate scripts are not part of the TS program.
   {
     files: ['**/*.{js,mjs,cjs}'],

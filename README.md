@@ -1,6 +1,7 @@
 # one-piece-zero-spoiler
 
-A [TanStack Start](https://tanstack.com/start) (React) application.
+A [TanStack Start](https://tanstack.com/start) (React) application: a One Piece
+wiki that hides every entry filed after the episode the reader has reached.
 
 ## Requirements
 
@@ -129,11 +130,92 @@ the native compiler.
 (`stylisticTypeChecked` is deliberately not enabled) and
 `eslint-config-prettier` is applied last, so the two tools cannot disagree.
 
-**Styling is StyleX.** Every visual rule is authored with
-`@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which appends the
-generated CSS to `src/styles/global.css` — the single same-origin stylesheet
-the SSR manifest links on every document. That is why `default-src 'self'`
-needs no new source, and why the design uses no web fonts and no images.
+**Spoiler gating is decided on the server.** The reader's episode lives in the
+`opzs_ep` cookie, and `src/lib/progress/readProgress.ts` reads it through
+`createIsomorphicFn` — the server branch before the first byte of HTML, the
+client branch from `document.cookie` on a navigation. The decision is made once
+by `isRevealed` in `src/lib/progress/spoiler.ts` and it fails closed: a missing
+cookie, a corrupt one, or a value outside `1 … EPISODE_CEILING` hides
+everything rather than revealing it. That is what makes the first paint already
+correct; reading the cookie in an effect would paint the uncovered page and
+cover it one frame later, which is a spoiler.
+
+The cookie is not `HttpOnly`. It is written by the browser when the reader
+moves the dial, the server never trusts it for anything but choosing what to
+render, and a round trip would put network latency between a keystroke and the
+page reacting.
+
+`SpoilerVeil` currently implements one mode, `blur`. The covered text is in the
+DOM: `inert` and `aria-hidden` keep it away from the keyboard and from screen
+readers, and `user-select: none` keeps it out of a drag-select, but browser
+find-in-page and devtools can still surface it. Entity pages will need the
+`deferred` mode noted in the component — a placeholder that fetches the real
+text through a server function on reveal — so the covered words never leave the
+server.
+
+**Locales are route prefixes.** Every page lives under `/$locale`
+(`src/routes/$locale.tsx`), so the same page in two languages is two
+addresses. `/` negotiates once — cookie, then `Accept-Language`, then Italian —
+and redirects with a 302, never a 301. An unrecognised prefix is a 404 rather
+than a silent redirect to the default language. `src/i18n/dictionaries/en.ts`
+is the source of truth for the key set; `it.ts` is annotated `Dictionary`, so a
+missing key fails `typecheck`. The pair is exported as `enDictionary` and
+`itDictionary` because Vitest puts `it` in global scope and a dictionary named
+`it` shadows it in every test file.
+
+**Styling is StyleX, and the design system is Hallmark's.** Every visual rule
+is authored with `@stylexjs/stylex` and compiled by `@stylexjs/unplugin`, which
+appends the generated CSS to `src/styles/global.css` — the single same-origin
+stylesheet the SSR manifest links on every document. That is why
+`default-src 'self'` needs no new source.
+
+The tokens in `src/styles/tokens.stylex.ts` follow the naming Hallmark uses
+(`paper` / `ink` / `rule` / `muted` / `accent` / `accentInk` / `focus`, a 4pt
+space scale, named easings and durations). Hallmark normally emits a
+`tokens.css` full of `:root { --color-ink: … }`; this project does not, because
+`defineVars` compiles to exactly those custom properties. There is one source
+of truth, and it is the TypeScript module. `accentInk` is a contract: any
+surface painted `accent` that carries text sets its colour to `accentInk`,
+never to a hardcoded white.
+
+**The landing is a sea chart.** The Hallmark run that produced it picked the
+Map / Diagram macrostructure: the archive is drawn as one vertical route
+(`src/components/RouteChart.tsx`), every entry a waypoint in the order the anime
+reaches it, and the reader's episode is a horizon line across the route. Rows
+above it are open and drawn in gold; rows below are under fog, their names
+behind a `SpoilerVeil` and their stretch of route dashed. Because the entries
+are sorted by threshold and `isRevealed` is monotone, the open rows are always a
+prefix of the list, so the horizon is a single `<li aria-current="step">`
+between two runs rather than a marker interpolated along a path. Each row draws
+its own SVG segment with `preserveAspectRatio="none"` and `non-scaling-stroke`,
+which is how the line follows whatever height the row's text needs. The
+orientation column (headline, dial, legend) is `position: sticky` from 60rem so
+moving the dial moves the horizon in view. The stamp at the top of
+`tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
+
+**Every picture is a line drawing made here; no photographs, no official
+artwork.** Toei and Shueisha own every frame of the anime and every panel of
+the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`,
+so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
+drawings, one per record, as lists of SVG path strokes rendered by one
+component: a 160x200 box, a uniform 2px stroke kept at 2px through
+`vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
+character is an object that stands for them (a straw hat, three sheathed
+swords, a violin), never a face or a logo; each place is the place. A drawing
+takes exactly one colour for its main stroke, from the nineteen-hue `tint`
+token set in `tokens.stylex.ts`, and leaves every other line in `ink2`, which
+is what keeps thirty-five illustrations reading as one set. The record's
+`visual` names its drawing and its tint; `ChartArt.test.tsx` renders all of
+them. The fold is `SeaChartHero.tsx`, the same line at 1600x560.
+
+**Fonts are self-hosted.** Bricolage Grotesque, Instrument Sans and JetBrains
+Mono (all Google Fonts, variable cuts) live in `public/fonts` as woff2, declared
+in `@layer fonts` at the top of `global.css`. Pulling them from a CDN would mean
+widening both `style-src` and `font-src` for five files. Each has a
+metric-matched fallback face — `size-adjust` equalises x-height against Arial,
+then the ascent and descent overrides are the real font's `hhea` values divided
+by that adjustment — so the `font-display: swap` handover does not reflow the
+page. The metrics used are written down beside the declarations.
 `src/styles/tokens.stylex.ts` holds the design tokens and must keep its
 `.stylex.ts` suffix, because the compiler only evaluates `defineVars` in a
 `*.stylex.{js,ts}` module. Three things about the setup are easy to get wrong
