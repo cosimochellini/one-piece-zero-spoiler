@@ -7,10 +7,13 @@ import type { Entity } from './types'
  * record at build time and the compiler inlines the data, so there is no parse
  * step and no schema library to keep in sync.
  *
- * Every threshold below is an anime episode number taken from the episode that
- * introduces the record. Where a threshold was not certain, the record was
- * left out rather than guessed — a wrong threshold in this file is a spoiler,
- * which is the one bug this project cannot ship.
+ * Every record carries two thresholds: `revealedAtEpisode`, the anime episode
+ * that introduces it, and `revealedAtChapter`, the manga chapter that does.
+ * Where a threshold was not certain, the record was left out rather than
+ * guessed — a wrong threshold in this file is a spoiler, which is the one bug
+ * this project cannot ship. The chapter numbers were filed from memory of the
+ * manga and are marked for a check against a source before the wiki is
+ * published; the episode numbers came first and the chapters follow them.
  *
  * The error is not symmetric, and the editing rule follows from that: a
  * threshold set too low uncovers a record early, which is the bug; one set too
@@ -64,6 +67,7 @@ export const entities: readonly Entity[] = [
     id: 'east-blue',
     kind: 'arc',
     revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
     summary: {
       it: 'Il mare più debole dei quattro. Qui la ciurma si forma, una persona per isola.',
@@ -75,6 +79,7 @@ export const entities: readonly Entity[] = [
     id: 'monkey-d-luffy',
     kind: 'character',
     revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     name: LUFFY,
     summary: {
       it: 'Il ragazzo che salpa da solo su una barca a remi e annuncia che diventerà il Re dei Pirati.',
@@ -86,6 +91,7 @@ export const entities: readonly Entity[] = [
     id: 'roronoa-zoro',
     kind: 'character',
     revealedAtEpisode: 2,
+    revealedAtChapter: 3,
     name: ZORO,
     summary: {
       it: 'Cacciatore di pirati legato a un palo in un cortile della Marina, e primo nome sulla lista di una ciurma che ancora non esiste.',
@@ -97,6 +103,7 @@ export const entities: readonly Entity[] = [
     id: 'shells-town',
     kind: 'place',
     revealedAtEpisode: 2,
+    revealedAtChapter: 3,
     name: { it: 'Shells Town', en: 'Shells Town' },
     summary: {
       it: 'Una cittadina dell’East Blue cresciuta attorno a una base della Marina, con un cacciatore di pirati legato a un palo nel cortile.',
@@ -108,6 +115,7 @@ export const entities: readonly Entity[] = [
     id: 'shanks',
     kind: 'character',
     revealedAtEpisode: 4,
+    revealedAtChapter: 1,
     name: SHANKS,
     summary: {
       it: 'Il pirata dai capelli rossi che passava le giornate nella taverna di un villaggio, e che lasciò lì il suo cappello di paglia.',
@@ -119,6 +127,7 @@ export const entities: readonly Entity[] = [
     id: 'foosha-village',
     kind: 'place',
     revealedAtEpisode: 4,
+    revealedAtChapter: 1,
     name: { it: 'Villaggio Fuschia', en: 'Foosha Village' },
     summary: {
       it: 'Un villaggio di mulini a vento sull’isola da cui Rufy è salpato, con una taverna dove una ciurma pirata è stata di casa per un anno.',
@@ -130,6 +139,7 @@ export const entities: readonly Entity[] = [
     id: 'buggy',
     kind: 'character',
     revealedAtEpisode: 5,
+    revealedAtChapter: 9,
     name: BUGGY,
     summary: {
       it: 'Un capitano pirata col naso da clown, molto suscettibile sull’argomento, che tiene una città intera sotto il tiro dei suoi cannoni.',
@@ -141,6 +151,7 @@ export const entities: readonly Entity[] = [
     id: 'nami',
     kind: 'character',
     revealedAtEpisode: 5,
+    revealedAtChapter: 8,
     name: NAMI,
     summary: {
       it: 'Una ladra che ruba solo ai pirati, e che sa leggere una carta nautica meglio di chiunque abbia incontrato.',
@@ -152,6 +163,7 @@ export const entities: readonly Entity[] = [
     id: 'orange-town',
     kind: 'place',
     revealedAtEpisode: 5,
+    revealedAtChapter: 8,
     name: { it: 'Orange Town', en: 'Orange Town' },
     summary: {
       it: 'Una cittadina dell’East Blue svuotata dai suoi abitanti, occupata da una ciurma di pirati con un tendone da circo e i cannoni puntati sui tetti.',
@@ -163,6 +175,7 @@ export const entities: readonly Entity[] = [
     id: 'usopp',
     kind: 'character',
     revealedAtEpisode: 9,
+    revealedAtChapter: 23,
     name: USOPP,
     summary: {
       it: 'Il bugiardo del villaggio, che ogni mattina corre in spiaggia a gridare che i pirati stanno arrivando.',
@@ -174,6 +187,7 @@ export const entities: readonly Entity[] = [
     id: 'syrup-village',
     kind: 'place',
     revealedAtEpisode: 9,
+    revealedAtChapter: 23,
     name: { it: 'Villaggio di Syrup', en: 'Syrup Village' },
     summary: {
       it: 'Un villaggio tranquillo delle isole Gecko, con una villa sulla collina e un ragazzo che ogni mattina grida che i pirati stanno arrivando.',
@@ -185,6 +199,7 @@ export const entities: readonly Entity[] = [
     id: 'going-merry',
     kind: 'ship',
     revealedAtEpisode: 18,
+    revealedAtChapter: 41,
     name: { it: 'Going Merry', en: 'Going Merry' },
     summary: {
       it: 'Una caravella con una testa di pecora a prua, regalata a una ciurma di quattro persone che non aveva ancora una nave.',
@@ -196,6 +211,7 @@ export const entities: readonly Entity[] = [
     id: 'sanji',
     kind: 'character',
     revealedAtEpisode: 20,
+    revealedAtChapter: 43,
     name: SANJI,
     summary: {
       it: 'Il vice-cuoco di un ristorante galleggiante, che dà da mangiare a chiunque abbia fame e combatte solo con le gambe.',
@@ -207,6 +223,7 @@ export const entities: readonly Entity[] = [
     id: 'baratie',
     kind: 'place',
     revealedAtEpisode: 20,
+    revealedAtChapter: 43,
     name: { it: 'Baratie', en: 'Baratie' },
     summary: {
       it: 'Un ristorante galleggiante a forma di pesce, in mare aperto, dove i cuochi prendono a calci i clienti che non pagano.',
@@ -218,6 +235,7 @@ export const entities: readonly Entity[] = [
     id: 'dracule-mihawk',
     kind: 'character',
     revealedAtEpisode: 24,
+    revealedAtChapter: 50,
     name: MIHAWK,
     summary: {
       it: 'Lo spadaccino più forte del mondo, che arriva su una barca a forma di bara e taglia un galeone in due per passare il tempo.',
@@ -229,6 +247,7 @@ export const entities: readonly Entity[] = [
     id: 'smoker',
     kind: 'character',
     revealedAtEpisode: 49,
+    revealedAtChapter: 97,
     name: SMOKER,
     summary: {
       it: 'Un capitano della Marina con due sigari accesi e una giacca piena di altri, che non ha mai lasciato scappare un pirata dalla sua città.',
@@ -240,6 +259,7 @@ export const entities: readonly Entity[] = [
     id: 'nefertari-vivi',
     kind: 'character',
     revealedAtEpisode: 67,
+    revealedAtChapter: 114,
     name: VIVI,
     summary: {
       it: 'Una principessa che si è infiltrata in un’organizzazione criminale per scoprire chi vuole rovesciare il suo regno.',
@@ -251,6 +271,7 @@ export const entities: readonly Entity[] = [
     id: 'tony-tony-chopper',
     kind: 'character',
     revealedAtEpisode: 83,
+    revealedAtChapter: 134,
     name: CHOPPER,
     summary: {
       it: 'Una renna dal naso blu che ha mangiato un frutto del diavolo e ha imparato la medicina da una dottoressa di 139 anni.',
@@ -264,6 +285,7 @@ export const entities: readonly Entity[] = [
     id: 'alabasta',
     kind: 'arc',
     revealedAtEpisode: 92,
+    revealedAtChapter: 155,
     name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
     summary: {
       it: 'Un regno del deserto sull’orlo della guerra civile, e la prima volta che la ciurma si oppone a un’organizzazione invece che a un pirata.',
@@ -275,6 +297,7 @@ export const entities: readonly Entity[] = [
     id: 'crocodile',
     kind: 'character',
     revealedAtEpisode: 92,
+    revealedAtChapter: 155,
     name: CROCODILE,
     summary: {
       it: 'Un pirata autorizzato dal Governo che ad Alabasta viene acclamato come un eroe, e che dirige l’organizzazione che il regno teme.',
@@ -286,6 +309,7 @@ export const entities: readonly Entity[] = [
     id: 'portgas-d-ace',
     kind: 'character',
     revealedAtEpisode: 95,
+    revealedAtChapter: 154,
     name: ACE,
     summary: {
       it: 'Il fratello maggiore di Rufy, comandante in una ciurma famosa, che attraversa il deserto sulle tracce di un traditore.',
@@ -297,6 +321,7 @@ export const entities: readonly Entity[] = [
     id: 'nico-robin',
     kind: 'character',
     revealedAtEpisode: 130,
+    revealedAtChapter: 218,
     name: ROBIN,
     summary: {
       it: 'La vicepresidente di un’organizzazione criminale, archeologa, e l’unica persona al mondo che sa leggere una certa scrittura antica.',
@@ -310,6 +335,7 @@ export const entities: readonly Entity[] = [
     id: 'skypiea',
     kind: 'arc',
     revealedAtEpisode: 144,
+    revealedAtChapter: 219,
     name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
     summary: {
       it: 'Un’isola sospesa sopra il mare, raggiunta da una corrente che spara le navi verso l’alto.',
@@ -321,6 +347,7 @@ export const entities: readonly Entity[] = [
     id: 'jaya',
     kind: 'place',
     revealedAtEpisode: 144,
+    revealedAtChapter: 222,
     name: { it: 'Jaya', en: 'Jaya' },
     summary: {
       it: 'Un’isola della Rotta Maggiore con una città di pirati senza legge da una parte e un uomo che ride dei sogni dall’altra.',
@@ -332,6 +359,7 @@ export const entities: readonly Entity[] = [
     id: 'edward-newgate',
     kind: 'character',
     revealedAtEpisode: 152,
+    revealedAtChapter: 234,
     name: WHITEBEARD,
     summary: {
       it: 'Barbabianca: l’uomo più vicino al trono dei pirati da vent’anni, con una flotta che chiama i suoi uomini figli.',
@@ -343,6 +371,7 @@ export const entities: readonly Entity[] = [
     id: 'donquixote-doflamingo',
     kind: 'character',
     revealedAtEpisode: 152,
+    revealedAtChapter: 233,
     name: DOFLAMINGO,
     summary: {
       it: 'Un membro della Flotta dei Sette con un cappotto di piume rosa, che si presenta alle riunioni del Governo Mondiale per divertimento.',
@@ -356,6 +385,7 @@ export const entities: readonly Entity[] = [
     id: 'water-seven',
     kind: 'arc',
     revealedAtEpisode: 229,
+    revealedAtChapter: 322,
     name: { it: 'Saga di Water Seven', en: 'Water Seven Saga' },
     summary: {
       it: 'Una città d’acqua di maestri d’ascia, dove la ciurma si scopre meno compatta di quanto credeva.',
@@ -367,6 +397,7 @@ export const entities: readonly Entity[] = [
     id: 'franky',
     kind: 'character',
     revealedAtEpisode: 235,
+    revealedAtChapter: 329,
     name: FRANKY,
     summary: {
       it: 'Un cyborg in mutande e camicia hawaiana che smonta navi per vivere e le ricostruisce per passione.',
@@ -380,6 +411,7 @@ export const entities: readonly Entity[] = [
     id: 'brook',
     kind: 'character',
     revealedAtEpisode: 339,
+    revealedAtChapter: 443,
     name: BROOK,
     summary: {
       it: 'Uno scheletro con la permanente afro che suona il violino e chiede alle signore di mostrargli le mutandine, cinquant’anni dopo essere morto.',
@@ -391,6 +423,7 @@ export const entities: readonly Entity[] = [
     id: 'perona',
     kind: 'character',
     revealedAtEpisode: 340,
+    revealedAtChapter: 449,
     name: PERONA,
     summary: {
       it: 'La principessa fantasma di una nave-isola, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
@@ -404,6 +437,7 @@ export const entities: readonly Entity[] = [
     id: 'trafalgar-law',
     kind: 'character',
     revealedAtEpisode: 392,
+    revealedAtChapter: 498,
     name: LAW,
     summary: {
       it: 'Un capitano-chirurgo con un orso polare in tuta nella ciurma, arrivato all’arcipelago con una taglia da duecento milioni.',
@@ -415,6 +449,7 @@ export const entities: readonly Entity[] = [
     id: 'eustass-kid',
     kind: 'character',
     revealedAtEpisode: 392,
+    revealedAtChapter: 498,
     name: KID,
     summary: {
       it: 'Un capitano dai capelli rossi con una taglia più alta di quella di Rufy, che attira il metallo e non sopporta di essere guardato dall’alto.',
@@ -426,6 +461,7 @@ export const entities: readonly Entity[] = [
     id: 'boa-hancock',
     kind: 'character',
     revealedAtEpisode: 410,
+    revealedAtChapter: 516,
     name: HANCOCK,
     summary: {
       it: 'L’imperatrice di un’isola di sole donne, la più bella del mondo per sua stessa ammissione, che trasforma in pietra chi la desidera.',
@@ -437,6 +473,7 @@ export const entities: readonly Entity[] = [
     id: 'jinbe',
     kind: 'character',
     revealedAtEpisode: 430,
+    revealedAtChapter: 528,
     name: JINBE,
     summary: {
       it: 'Un uomo-pesce della Flotta dei Sette rinchiuso nella prigione più profonda del mondo per aver rifiutato di combattere una guerra.',
@@ -450,6 +487,7 @@ export const entities: readonly Entity[] = [
     id: 'marineford',
     kind: 'arc',
     revealedAtEpisode: 457,
+    revealedAtChapter: 550,
     name: { it: 'Saga di Marineford', en: 'Marineford Saga' },
     summary: {
       it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',
@@ -463,6 +501,7 @@ export const entities: readonly Entity[] = [
     id: 'bartolomeo',
     kind: 'character',
     revealedAtEpisode: 632,
+    revealedAtChapter: 705,
     name: BARTOLOMEO,
     summary: {
       it: 'Un pirata dalla cresta verde e i modi da teppista che si iscrive a un torneo nel colosseo di Dressrosa.',
@@ -476,6 +515,7 @@ export const entities: readonly Entity[] = [
     id: 'wano',
     kind: 'arc',
     revealedAtEpisode: 890,
+    revealedAtChapter: 909,
     name: { it: 'Saga del Paese di Wano', en: 'Wano Country Saga' },
     summary: {
       it: 'Un paese chiuso al resto del mondo, con le sue regole, i suoi spadaccini e i suoi conti in sospeso.',
@@ -487,6 +527,7 @@ export const entities: readonly Entity[] = [
     id: 'yamato',
     kind: 'character',
     revealedAtEpisode: 992,
+    revealedAtChapter: 983,
     name: YAMATO,
     summary: {
       it: 'Il figlio dell’imperatore che governa Wano, incatenato sull’isola da vent’anni, che si presenta con il nome di un samurai morto.',
@@ -500,6 +541,7 @@ export const entities: readonly Entity[] = [
     id: 'egghead',
     kind: 'arc',
     revealedAtEpisode: 1089,
+    revealedAtChapter: 1061,
     name: { it: 'Saga di Egghead', en: 'Egghead Saga' },
     summary: {
       it: 'La ciurma approda su un’isola che vive centinaia di anni nel futuro, costruita attorno al laboratorio di uno scienziato del Governo Mondiale.',
@@ -511,6 +553,7 @@ export const entities: readonly Entity[] = [
     id: 'egghead-island',
     kind: 'place',
     revealedAtEpisode: 1089,
+    revealedAtChapter: 1061,
     name: { it: 'Isola di Egghead', en: 'Egghead Island' },
     summary: {
       it: 'Un’isola-laboratorio nel Nuovo Mondo, tenuta calda da un vulcano sottomarino e piena di macchine che non dovrebbero esistere ancora.',

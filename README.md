@@ -130,20 +130,53 @@ the native compiler.
 (`stylisticTypeChecked` is deliberately not enabled) and
 `eslint-config-prettier` is applied last, so the two tools cannot disagree.
 
-**Spoiler gating is decided on the server.** The reader's episode lives in the
-`opzs_ep` cookie, and `src/lib/progress/readProgress.ts` reads it through
+**Spoiler gating is decided on the server.** The reader's bookmark lives in
+the `opzs_ep` cookie, and `src/lib/progress/readBookmark.ts` reads it through
 `createIsomorphicFn` — the server branch before the first byte of HTML, the
-client branch from `document.cookie` on a navigation. The decision is made once
-by `isRevealed` in `src/lib/progress/spoiler.ts` and it fails closed: a missing
-cookie, a corrupt one, or a value outside `1 … EPISODE_CEILING` hides
-everything rather than revealing it. That is what makes the first paint already
-correct; reading the cookie in an effect would paint the uncovered page and
-cover it one frame later, which is a spoiler.
+client branch from `document.cookie` on a navigation. The cookie has three
+grammars, one per way of counting: a bare integer is an anime episode (which is
+also what the site wrote before it counted anything else, so an old bookmark
+still works), `s2e3` is a season and an episode within it, and `c1044` is a
+manga chapter. `parseBookmark` in `src/lib/progress/episode.ts` fails closed:
+a missing cookie, a corrupt one, or a value outside the form range hides
+everything rather than revealing it. The decision is then made once by
+`isRevealed` in `src/lib/progress/spoiler.ts`: every record carries both a
+`revealedAtEpisode` and a `revealedAtChapter`, a chapter bookmark is read
+against the chapter and everything else against the episode, and a season
+bookmark is turned into an absolute episode through the table in
+`src/data/seasons.ts` (Wikipedia's 22 seasons, the last one open-ended to the
+ceiling). There is no conversion between the units, on purpose: a reader picks
+one, and every threshold on the site — a waypoint's "Episode 130", the veil's
+"Under fog until chapter 218", the character page's `<title>` description — is
+then said in that unit through `describeThreshold`. That is what makes the
+first paint already correct; reading the cookie in an effect would paint the
+uncovered page and cover it one frame later, which is a spoiler.
 
 The cookie is not `HttpOnly`. It is written by the browser when the reader
-moves the dial, the server never trusts it for anything but choosing what to
-render, and a round trip would put network latency between a keystroke and the
+saves the dialog, the server never trusts it for anything but choosing what to
+render, and a round trip would put network latency between a click and the
 page reacting.
+
+**The bookmark is set from the bar, and only from the bar.** The one gold
+thing in `SiteBar` is a mark showing the bookmark as it stands — `EP 650`,
+`S02E03`, `CH 1044`, or the invitation to set one — and pressing it opens
+`BookmarkDialog`, a native `<dialog>` opened with `showModal()`: the browser
+puts it in the top layer, makes the page behind it inert, closes it on Escape
+and hands focus back to the mark. The dialog is a three-way choice of unit,
+then the number (a `<select>` of seasons first, in season mode); switching the
+unit empties the field rather than converting it, and nothing is written until
+Save. The dialog is mounted only while it is open, so every opening starts from
+the bookmark as it stands and none of it is in the served HTML. jsdom does not
+implement `showModal`, so `src/test/setup.ts` carries a small stand-in.
+
+Because the anime and the manga do not introduce every record in the same
+order (Shanks is on the first page of the manga and in the fourth episode of
+the anime), the chart, the log and the strip are handed the archive sorted by
+the unit the reader counts in (`orderByMode` in `src/data/order.ts`). That is
+what keeps the open rows a prefix of the list in every unit, which the horizon
+construction below relies on. The chapter numbers in `src/data/entities.ts`
+were filed from memory of the manga and are marked for a check against a
+source before the wiki is published.
 
 `SpoilerVeil` blurs by default. On the landing chart the covered text is in the
 DOM: `inert` and `aria-hidden` keep it away from the keyboard and from screen
@@ -190,8 +223,8 @@ prefix of the list, so the horizon is a single `<li aria-current="step">`
 between two runs rather than a marker interpolated along a path. Each row draws
 its own SVG segment with `preserveAspectRatio="none"` and `non-scaling-stroke`,
 which is how the line follows whatever height the row's text needs. The
-orientation column (headline, dial, legend) is `position: sticky` from 60rem so
-moving the dial moves the horizon in view. The stamp at the top of
+orientation column (headline, lede, legend) is `position: sticky` from 60rem so
+saving a new bookmark from the bar moves the horizon in view. The stamp at the top of
 `tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
 
 **The characters pages are the signal book.** `/$locale/characters` lists
@@ -214,7 +247,7 @@ in the name that is shown. The character page decides its document title in
 the route's `head`, from the reveal state its `loader` computed from the
 bookmark the root route read, so a covered character's `<title>` is "A
 character under fog" and never the name; the page body then follows the live
-dial. `SpoilerVeil` gained a `compact` density for
+bookmark. `SpoilerVeil` gained a `compact` density for
 the cards (the verb alone, centred, a drawing's blur), and the language switch
 now uses `to="."` so it keeps the reader on the same page.
 

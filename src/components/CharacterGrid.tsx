@@ -6,7 +6,7 @@ import { Button } from '~/components/ui/Button'
 import { matchName } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { Progress } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
   color,
@@ -23,7 +23,7 @@ import {
 export type CharacterGridProps = {
   /** The characters to list, in route order. */
   readonly entries: readonly Entity[]
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 /**
@@ -39,13 +39,13 @@ export type CharacterGridProps = {
  * announcement to a screen reader waits, 250ms after the last keystroke, so a
  * reader typing "Nami" hears one count and not four.
  */
-export function CharacterGrid({ entries, progress }: CharacterGridProps) {
+export function CharacterGrid({ entries, bookmark }: CharacterGridProps) {
   const { locale, t } = useLocale()
   const fieldId = useId()
   const [query, setQuery] = useState('')
 
-  const open = entries.filter((entry) => isRevealed(entry, progress))
-  const covered = entries.filter((entry) => !isRevealed(entry, progress))
+  const open = entries.filter((entry) => isRevealed(entry, bookmark))
+  const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
 
   const matches = open
     .map((entry) => ({ entry, match: matchName(entry, query, locale) }))

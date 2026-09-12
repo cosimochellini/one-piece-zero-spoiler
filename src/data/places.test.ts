@@ -50,6 +50,9 @@ describe('the ship’s log', () => {
       expect(arc?.revealedAtEpisode).toBeLessThanOrEqual(
         place.revealedAtEpisode,
       )
+      expect(arc?.revealedAtChapter).toBeLessThanOrEqual(
+        place.revealedAtChapter,
+      )
     }
   })
 

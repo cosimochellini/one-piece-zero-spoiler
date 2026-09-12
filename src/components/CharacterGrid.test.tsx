@@ -2,7 +2,7 @@ import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import type { Entity } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterGrid } from './CharacterGrid'
 
@@ -11,6 +11,7 @@ const entries: readonly Entity[] = [
     id: 'monkey-d-luffy',
     kind: 'character',
     revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     name: { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'monkey-d-luffy', tint: 'red' },
@@ -19,6 +20,7 @@ const entries: readonly Entity[] = [
     id: 'nami',
     kind: 'character',
     revealedAtEpisode: 5,
+    revealedAtChapter: 8,
     name: { it: 'Nami', en: 'Nami' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'nami', tint: 'orange' },
@@ -27,6 +29,7 @@ const entries: readonly Entity[] = [
     id: 'nico-robin',
     kind: 'character',
     revealedAtEpisode: 130,
+    revealedAtChapter: 218,
     name: { it: 'Nico Robin', en: 'Nico Robin' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'nico-robin', tint: 'violet' },
@@ -39,8 +42,8 @@ function fogBand(): HTMLElement {
 
 describe('CharacterGrid', () => {
   it('lists the open characters as links to their pages and fogs the rest', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={ep(10)} />, {
+      bookmark: ep(10),
     })
 
     expect(
@@ -61,8 +64,8 @@ describe('CharacterGrid', () => {
 
   it('filters the open characters as the reader types, and marks the match', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={ep(10)} />, {
+      bookmark: ep(10),
     })
 
     await user.type(screen.getByRole('searchbox'), 'nam')
@@ -76,8 +79,8 @@ describe('CharacterGrid', () => {
 
   it('never lets the fog answer a search', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={ep(10)} />, {
+      bookmark: ep(10),
     })
 
     await user.type(screen.getByRole('searchbox'), 'robin')
@@ -93,8 +96,8 @@ describe('CharacterGrid', () => {
 
   it('announces the count once the typing has settled', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={ep(10)} />, {
+      bookmark: ep(10),
     })
 
     await user.type(screen.getByRole('searchbox'), 'na')
@@ -109,8 +112,8 @@ describe('CharacterGrid', () => {
 
   it('clears the search from the button beside the field', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={ep(10)} />, {
+      bookmark: ep(10),
     })
 
     const field = screen.getByRole('searchbox')
@@ -126,9 +129,12 @@ describe('CharacterGrid', () => {
   })
 
   it('says so when nothing is under fog', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={1200} />, {
-      progress: 1200,
-    })
+    renderWithProviders(
+      <CharacterGrid entries={entries} bookmark={ep(1200)} />,
+      {
+        bookmark: ep(1200),
+      },
+    )
 
     expect(
       screen.getByText('Nothing is under fog. Every character is open to you.'),
@@ -136,7 +142,7 @@ describe('CharacterGrid', () => {
   })
 
   it('speaks the active locale', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={null} />, {
+    renderWithProviders(<CharacterGrid entries={entries} bookmark={null} />, {
       locale: 'it',
     })
 

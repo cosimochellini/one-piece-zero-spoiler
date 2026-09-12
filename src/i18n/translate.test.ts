@@ -23,7 +23,7 @@ describe('the dictionaries', () => {
   })
 
   it('carries the same placeholders in both languages', () => {
-    // A translation that drops `{episode}` silently renders a sentence with a
+    // A translation that drops `{threshold}` silently renders a sentence with a
     // hole in it, and nothing else would notice.
     for (const key of Object.keys(enDictionary) as Array<
       keyof typeof enDictionary
@@ -37,14 +37,18 @@ describe('the dictionaries', () => {
 
 describe('translate', () => {
   it('fills a placeholder from the params', () => {
-    expect(translate(enDictionary, 'veil.locked', { episode: 1089 })).toBe(
-      'Under fog until episode 1089',
-    )
+    expect(
+      translate(enDictionary, 'veil.locked.episode', { threshold: 1089 }),
+    ).toBe('Under fog until episode 1089')
   })
 
   it('leaves an unfilled placeholder visible rather than blanking it', () => {
-    expect(translate(enDictionary, 'veil.locked')).toContain('{episode}')
-    expect(translate(enDictionary, 'veil.locked', {})).toContain('{episode}')
+    expect(translate(enDictionary, 'veil.locked.episode')).toContain(
+      '{threshold}',
+    )
+    expect(translate(enDictionary, 'veil.locked.episode', {})).toContain(
+      '{threshold}',
+    )
   })
 
   it('returns a string with no placeholders untouched', () => {

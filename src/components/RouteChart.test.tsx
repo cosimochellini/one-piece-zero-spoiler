@@ -2,7 +2,7 @@ import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import type { Entity } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { RouteChart } from './RouteChart'
 
@@ -11,6 +11,7 @@ const entries: readonly Entity[] = [
     id: 'early',
     kind: 'arc',
     revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     name: { it: 'Saga iniziale', en: 'Opening Saga' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'east-blue', tint: 'ivory' },
@@ -19,6 +20,7 @@ const entries: readonly Entity[] = [
     id: 'middle',
     kind: 'character',
     revealedAtEpisode: 457,
+    revealedAtChapter: 550,
     name: { it: 'Volto di mezzo', en: 'Middle Face' },
     summary: { it: 'y', en: 'y' },
     visual: { art: 'monkey-d-luffy', tint: 'red' },
@@ -27,6 +29,7 @@ const entries: readonly Entity[] = [
     id: 'late',
     kind: 'place',
     revealedAtEpisode: 1089,
+    revealedAtChapter: 1061,
     name: { it: 'Isola tarda', en: 'Late Island' },
     summary: { it: 'z', en: 'z' },
     visual: { art: 'egghead-island', tint: 'orange' },
@@ -68,8 +71,8 @@ function horizon(): HTMLElement {
 
 describe('RouteChart', () => {
   it('opens the waypoints the reader has reached and fogs the rest', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={500} />, {
-      progress: 500,
+    renderWithProviders(<RouteChart entries={entries} bookmark={ep(500)} />, {
+      bookmark: ep(500),
     })
 
     expect(veilAround('Opening Saga')).not.toHaveAttribute('inert')
@@ -78,8 +81,8 @@ describe('RouteChart', () => {
   })
 
   it('draws the horizon between the last open waypoint and the first fogged one', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={500} />, {
-      progress: 500,
+    renderWithProviders(<RouteChart entries={entries} bookmark={ep(500)} />, {
+      bookmark: ep(500),
     })
 
     const items = screen.getAllByRole('listitem')
@@ -93,8 +96,8 @@ describe('RouteChart', () => {
     // "Something opens at episode 1089" is the promise the page makes. Hiding
     // it would leave the reader with a blurred waypoint and no way to tell how
     // far away it is.
-    renderWithProviders(<RouteChart entries={entries} progress={500} />, {
-      progress: 500,
+    renderWithProviders(<RouteChart entries={entries} bookmark={ep(500)} />, {
+      bookmark: ep(500),
     })
 
     expect(
@@ -103,11 +106,11 @@ describe('RouteChart', () => {
   })
 
   it('puts the horizon at the very top and fogs everything when no bookmark is set', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={null} />)
+    renderWithProviders(<RouteChart entries={entries} bookmark={null} />)
 
     expect(screen.getAllByRole('listitem').indexOf(horizon())).toBe(0)
     expect(horizon()).toHaveTextContent(
-      'No episode set · the whole route is under fog',
+      'No bookmark set · the whole route is under fog',
     )
     expect(veilAround('Opening Saga')).toHaveAttribute('inert')
     expect(veilAround('Late Island')).toHaveAttribute('inert')
@@ -115,7 +118,7 @@ describe('RouteChart', () => {
 
   it('lifts the fog on one waypoint without touching the others', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<RouteChart entries={entries} progress={null} />)
+    renderWithProviders(<RouteChart entries={entries} bookmark={null} />)
 
     await user.click(
       within(waypointOf('Opening Saga')).getByRole('button', {
@@ -128,7 +131,7 @@ describe('RouteChart', () => {
   })
 
   it('puts the drawing under the same fog as the words', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={null} />)
+    renderWithProviders(<RouteChart entries={entries} bookmark={null} />)
 
     const wrapper = veilAround('Middle Face')
     expect(wrapper.querySelector('svg')).not.toBeNull()
@@ -136,9 +139,9 @@ describe('RouteChart', () => {
   })
 
   it('labels the waypoints in the active locale', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={1200} />, {
+    renderWithProviders(<RouteChart entries={entries} bookmark={ep(1200)} />, {
       locale: 'it',
-      progress: 1200,
+      bookmark: ep(1200),
     })
 
     expect(screen.getByText('Saga')).toBeInTheDocument()
@@ -146,8 +149,8 @@ describe('RouteChart', () => {
   })
 
   it('links a character to their page and a place to the log, and leaves an arc as a name', () => {
-    renderWithProviders(<RouteChart entries={entries} progress={1200} />, {
-      progress: 1200,
+    renderWithProviders(<RouteChart entries={entries} bookmark={ep(1200)} />, {
+      bookmark: ep(1200),
     })
 
     expect(screen.getByRole('link', { name: 'Middle Face' })).toHaveAttribute(
@@ -165,8 +168,8 @@ describe('RouteChart', () => {
 
   it('gives a covered character no link, so the slug stays out of the HTML', () => {
     const { container } = renderWithProviders(
-      <RouteChart entries={entries} progress={100} />,
-      { progress: 100 },
+      <RouteChart entries={entries} bookmark={ep(100)} />,
+      { bookmark: ep(100) },
     )
 
     expect(container.querySelector('a[href*="/characters/"]')).toBeNull()

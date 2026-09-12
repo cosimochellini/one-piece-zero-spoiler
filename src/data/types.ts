@@ -91,10 +91,17 @@ export type Visual = {
 /**
  * One archive record.
  *
- * `revealedAtEpisode` is the whole spoiler system: the earliest anime episode
- * from which this record is safe to read. It is inclusive, and it is stored on
- * the record rather than derived, because "when does this become safe" is an
- * editorial judgement, not something a script can work out.
+ * `revealedAtEpisode` and `revealedAtChapter` are the whole spoiler system:
+ * the earliest anime episode, and the earliest manga chapter, from which this
+ * record is safe to read. Both are inclusive, and both are stored on the
+ * record rather than derived, because "when does this become safe" is an
+ * editorial judgement, not something a script can work out. A reader who
+ * counts in seasons is filed at an absolute episode through
+ * `~/data/seasons`, so no third threshold is kept.
+ *
+ * The two thresholds are independent: the anime and the manga do not always
+ * introduce a record in the same order, so a list is sorted by whichever
+ * one the reader counts in (`orderByMode` in `~/data/characters`).
  *
  * The shape satisfies `Gated` from `~/lib/progress/spoiler` structurally, so
  * entities can be passed straight to `isRevealed`.
@@ -103,6 +110,7 @@ export type Entity = {
   readonly id: string
   readonly kind: EntityKind
   readonly revealedAtEpisode: number
+  readonly revealedAtChapter: number
   readonly name: LocalizedText
   readonly summary: LocalizedText
   readonly visual: Visual

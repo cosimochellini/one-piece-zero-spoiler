@@ -1,16 +1,19 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { SpoilerVeil } from './SpoilerVeil'
 
 const covered = <p data-testid="secret">Spoiler body</p>
 
+/** A record filed at the same number in both units, for tests that read one. */
+const at = (n: number) => ({ revealedAtEpisode: n, revealedAtChapter: n })
+
 describe('SpoilerVeil', () => {
   it('hides the content from assistive technology while it is covered', () => {
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1089} revealed={false}>
+      <SpoilerVeil gated={at(1089)} revealed={false}>
         {covered}
       </SpoilerVeil>,
     )
@@ -25,7 +28,7 @@ describe('SpoilerVeil', () => {
 
   it('names the threshold on the uncover control', () => {
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1089} revealed={false}>
+      <SpoilerVeil gated={at(1089)} revealed={false}>
         {covered}
       </SpoilerVeil>,
     )
@@ -40,7 +43,7 @@ describe('SpoilerVeil', () => {
   it('uncovers the content when the control is used', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1089} revealed={false}>
+      <SpoilerVeil gated={at(1089)} revealed={false}>
         {covered}
       </SpoilerVeil>,
     )
@@ -56,7 +59,7 @@ describe('SpoilerVeil', () => {
     const user = userEvent.setup()
     renderWithProviders(
       <SpoilerVeil
-        revealedAtEpisode={1089}
+        gated={at(1089)}
         revealed={false}
         placeholder={<p>Spoiler</p>}
       >
@@ -75,7 +78,7 @@ describe('SpoilerVeil', () => {
 
   it('shows the content outright when the reader is already past it', () => {
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1} revealed>
+      <SpoilerVeil gated={at(1)} revealed>
         {covered}
       </SpoilerVeil>,
     )
@@ -87,7 +90,7 @@ describe('SpoilerVeil', () => {
   it('keeps the curtain mounted after a reveal so the fade can run', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1089} revealed={false}>
+      <SpoilerVeil gated={at(1089)} revealed={false}>
         {covered}
       </SpoilerVeil>,
     )
@@ -102,7 +105,7 @@ describe('SpoilerVeil', () => {
 
   it('translates the control into the active locale', () => {
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={890} revealed={false}>
+      <SpoilerVeil gated={at(890)} revealed={false}>
         {covered}
       </SpoilerVeil>,
       { locale: 'it' },
@@ -116,13 +119,63 @@ describe('SpoilerVeil', () => {
   })
 })
 
+describe('SpoilerVeil in the other units', () => {
+  it('names the chapter to a manga reader', () => {
+    renderWithProviders(
+      <SpoilerVeil
+        gated={{ revealedAtEpisode: 130, revealedAtChapter: 218 }}
+        revealed={false}
+      >
+        {covered}
+      </SpoilerVeil>,
+      { bookmark: { mode: 'chapter', chapter: 100 } },
+    )
+
+    expect(
+      screen.getByRole('button', { name: /Under fog until chapter 218/u }),
+    ).toBeInTheDocument()
+  })
+
+  it('names the season code to a reader who counts in seasons', () => {
+    renderWithProviders(
+      <SpoilerVeil
+        gated={{ revealedAtEpisode: 130, revealedAtChapter: 218 }}
+        revealed={false}
+      >
+        {covered}
+      </SpoilerVeil>,
+      { bookmark: { mode: 'season', season: 1, episode: 5 } },
+    )
+
+    expect(
+      screen.getByRole('button', { name: /Under fog until S04E38/u }),
+    ).toBeInTheDocument()
+  })
+
+  it('counts in episodes for a reader with an episode bookmark', () => {
+    renderWithProviders(
+      <SpoilerVeil
+        gated={{ revealedAtEpisode: 130, revealedAtChapter: 218 }}
+        revealed={false}
+      >
+        {covered}
+      </SpoilerVeil>,
+      { bookmark: ep(5) },
+    )
+
+    expect(
+      screen.getByRole('button', { name: /Under fog until episode 130/u }),
+    ).toBeInTheDocument()
+  })
+})
+
 describe('SpoilerVeil at inline density', () => {
   it('shows the verb alone but still names the threshold to a screen reader', () => {
     // In a table cell the threshold already has its own column, and the full
     // sentence plus the verb wraps to two lines below ~40rem — which reads as
     // a broken control.
     renderWithProviders(
-      <SpoilerVeil revealedAtEpisode={1089} revealed={false} density="inline">
+      <SpoilerVeil gated={at(1089)} revealed={false} density="inline">
         {covered}
       </SpoilerVeil>,
     )

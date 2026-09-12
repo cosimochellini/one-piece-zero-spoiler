@@ -26,25 +26,53 @@ export const enDictionary = {
 
   'hero.headline': 'The wiki stops where you stopped',
   'hero.lede':
-    'Set the episode you have reached. Every character, arc and island filed after it stays under fog until you decide otherwise.',
+    'Set your bookmark in the bar above: the anime episode, the season and episode, or the manga chapter you have reached. Every character, arc and island filed after it stays under fog until you decide otherwise.',
 
-  'dial.label': 'Episode you have reached',
-  'dial.hint': 'Between 1 and {max}.',
-  'dial.errorRange': 'Enter a number between 1 and {max}.',
-  'dial.errorEmpty': 'Enter the episode you have reached.',
-  'dial.decrease': 'One episode back',
-  'dial.increase': 'One episode forward',
-  'dial.clear': 'Forget my episode',
+  'mark.unset': 'Set episode',
+  'mark.episode': 'EP {threshold}',
+  'mark.season': '{threshold}',
+  'mark.chapter': 'CH {threshold}',
+  'mark.change': 'Change your bookmark, {threshold}',
 
-  'veil.locked': 'Under fog until episode {episode}',
+  'dialog.title': 'Where have you got to?',
+  'dialog.lede':
+    'Choose how you count, then the number. Everything filed after it stays under fog.',
+  'dialog.modeLabel': 'Count by',
+  'dialog.modeEpisode': 'Anime episode',
+  'dialog.modeSeason': 'Season and episode',
+  'dialog.modeChapter': 'Manga chapter',
+  'dialog.episodeLabel': 'Episode you have reached',
+  'dialog.chapterLabel': 'Chapter you have reached',
+  'dialog.seasonLabel': 'Season',
+  'dialog.seasonPlaceholder': 'Choose a season',
+  'dialog.seasonOption': 'Season {season} · episodes {first}–{last}',
+  'dialog.seasonOptionOpen': 'Season {season} · from episode {first}',
+  'dialog.seasonEpisodeLabel': 'Episode within the season',
+  'dialog.hint': 'Between 1 and {max}.',
+  'dialog.errorEmpty': 'Enter a number.',
+  'dialog.errorRange': 'Enter a number between 1 and {max}.',
+  'dialog.errorSeason': 'Choose a season first.',
+  'dialog.decrease': 'One back',
+  'dialog.increase': 'One forward',
+  'dialog.save': 'Save',
+  'dialog.forget': 'Forget my bookmark',
+  'dialog.cancel': 'Cancel',
+
+  'veil.locked.episode': 'Under fog until episode {threshold}',
+  'veil.locked.season': 'Under fog until {threshold}',
+  'veil.locked.chapter': 'Under fog until chapter {threshold}',
   'veil.reveal': 'Lift the fog anyway',
   'veil.revealShort': 'Lift',
   'veil.placeholder': 'Spoiler',
 
   'chart.title': 'The route, as far as you have sailed',
-  'chart.opensAt': 'Episode {episode}',
-  'chart.hereSet': 'You are here · episode {episode}',
-  'chart.hereUnset': 'No episode set · the whole route is under fog',
+  'chart.opensAt.episode': 'Episode {threshold}',
+  'chart.opensAt.season': '{threshold}',
+  'chart.opensAt.chapter': 'Chapter {threshold}',
+  'chart.hereSet.episode': 'You are here · episode {threshold}',
+  'chart.hereSet.season': 'You are here · {threshold}',
+  'chart.hereSet.chapter': 'You are here · chapter {threshold}',
+  'chart.hereUnset': 'No bookmark set · the whole route is under fog',
 
   'legend.open': 'open to you',
   'legend.covered': 'under fog',
@@ -52,8 +80,8 @@ export const enDictionary = {
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
-    'Anime. Every threshold counts anime episodes, and an uncertain one is rounded up — a threshold set too low lifts the fog early, which is the only bug here that matters.',
-  'faq.bookmarkQ': 'Where does my episode live?',
+    'Either. Count by anime episode, by season and episode, or by manga chapter: every record carries an episode threshold and a chapter one, and an uncertain threshold is rounded up — one set too low lifts the fog early, which is the only bug here that matters.',
+  'faq.bookmarkQ': 'Where does my bookmark live?',
   'faq.bookmarkA':
     'In a cookie on this device. The server reads it before the page is drawn, so nothing slips out in the moment before the script loads. No account, no tracking.',
   'faq.peekQ': 'Can I look anyway?',
@@ -62,7 +90,7 @@ export const enDictionary = {
 
   'footer.lead': 'Nobody should learn the ending before they get there.',
   'footer.colophon':
-    'Zero Spoiler is a One Piece wiki drawn as a sea chart: the route is the archive sorted by the episode each entry opens at, and the horizon line is yours to move. Thresholds count anime episodes. Your bookmark is a cookie on this device and is read on the server. Every picture is a line drawing made for this site; no official artwork appears. Set in Bricolage Grotesque, Instrument Sans and JetBrains Mono. MIT licence.',
+    'Zero Spoiler is a One Piece wiki drawn as a sea chart: the route is the archive sorted by the episode each entry opens at, and the horizon line is yours to move. Thresholds count anime episodes or manga chapters, whichever you pick. Your bookmark is a cookie on this device and is read on the server. Every picture is a line drawing made for this site; no official artwork appears. Set in Bricolage Grotesque, Instrument Sans and JetBrains Mono. MIT licence.',
 
   'characters.title': 'The signal book',
   'characters.count':
@@ -73,18 +101,24 @@ export const enDictionary = {
   'characters.noMatch': 'No open character is called “{query}”.',
   'characters.foggedTitle': '{count} under fog',
   'characters.foggedHint':
-    'Their names are covered, so they do not answer a search. Move the dial to open them.',
+    'Their names are covered, so they do not answer a search. Move your bookmark in the bar to open them.',
   'characters.foggedTitleOne': '1 under fog',
   'characters.allOpen': 'Nothing is under fog. Every character is open to you.',
   'characters.pageTitle': 'Characters — Zero Spoiler',
   'characters.pageDescription':
     'Twenty One Piece characters, each filed at the episode that introduces them and covered until you get there.',
 
-  'character.opensAt': 'First appears in episode {episode}',
+  'character.opensAt.episode': 'First appears in episode {threshold}',
+  'character.opensAt.season': 'First appears in {threshold}',
+  'character.opensAt.chapter': 'First appears in chapter {threshold}',
   'character.foggedName': 'A character under fog',
   'character.foggedTitle': 'A character under fog — Zero Spoiler',
-  'character.foggedDescription':
-    'A One Piece character filed at episode {episode}. Set the episode you have reached to read the page.',
+  'character.foggedDescription.episode':
+    'A One Piece character filed at episode {threshold}. Set your bookmark to read the page.',
+  'character.foggedDescription.season':
+    'A One Piece character filed at {threshold}. Set your bookmark to read the page.',
+  'character.foggedDescription.chapter':
+    'A One Piece character filed at chapter {threshold}. Set your bookmark to read the page.',
   'character.pageTitle': '{name} — Zero Spoiler',
   'character.back': 'All characters',
   'character.routeTitle': 'On the route',
@@ -97,7 +131,7 @@ export const enDictionary = {
   'character.routeEnd': 'Nothing yet. This is the last entry filed.',
   'character.nearbyTitle': 'Sailing nearby',
   'character.nearbyLede':
-    'The listed characters filed closest to this one, by episode.',
+    'The listed characters filed closest to this one on the route.',
   'character.notFoundTitle': 'No such character',
   'character.notFoundBody':
     'Nothing is filed under that address. The signal book lists everyone who is.',
@@ -110,9 +144,15 @@ export const enDictionary = {
     'The places of One Piece as ports of call, each filed at the episode that first shows it and covered until you get there.',
   'places.stage': 'Port of call {index} of {total}',
   'places.foggedName': 'A place under fog',
-  'places.foggedDescription':
-    'A One Piece place filed at episode {episode}. Set the episode you have reached to read its entry in the log.',
-  'places.firstSeen': 'First seen in episode {episode}',
+  'places.foggedDescription.episode':
+    'A One Piece place filed at episode {threshold}. Set your bookmark to read its entry in the log.',
+  'places.foggedDescription.season':
+    'A One Piece place filed at {threshold}. Set your bookmark to read its entry in the log.',
+  'places.foggedDescription.chapter':
+    'A One Piece place filed at chapter {threshold}. Set your bookmark to read its entry in the log.',
+  'places.firstSeen.episode': 'First seen in episode {threshold}',
+  'places.firstSeen.season': 'First seen in {threshold}',
+  'places.firstSeen.chapter': 'First seen in chapter {threshold}',
   'places.sea': 'Sea',
   'places.form': 'What it is',
   'places.arc': 'Arc',

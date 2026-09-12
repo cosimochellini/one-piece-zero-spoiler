@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 
+import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
 import { useLocale } from '~/i18n/LocaleContext'
 import {
@@ -19,9 +20,11 @@ import {
  *
  * Wordmark hard-left, the controls hard-right, and nothing in between. The
  * site has three pages and two languages, so the right edge carries two
- * links and the language switch and no more. The reader's bookmark is not repeated
- * here either: it is drawn on the route as the horizon line, which is where
- * the eye goes for it.
+ * links, the reader's bookmark and the language switch, and no more. The
+ * bookmark is the one control the whole site turns on, so it lives here, on
+ * every page, as a single mark that opens the dialog where it is set; the
+ * route still draws it as the horizon line, which is where the eye goes to
+ * see what it did.
  */
 export function SiteBar() {
   const { locale, t } = useLocale()
@@ -55,6 +58,7 @@ export function SiteBar() {
             {t('nav.places')}
           </Link>
         </nav>
+        <EpisodeMark />
         <LocaleSwitch />
       </div>
     </header>
@@ -77,8 +81,8 @@ const styles = stylex.create({
     rowGap: 0,
   },
 
-  // Two page links and the language switch. They may wrap too, on a 320px
-  // phone, where the switch drops under the page links.
+  // Two page links, the bookmark and the language switch. They may wrap too,
+  // on a 320px phone, where the switch drops under the page links.
   controls: {
     alignItems: 'center',
     columnGap: { default: space.xs, '@media (min-width: 40rem)': space.lg },

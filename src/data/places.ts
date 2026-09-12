@@ -1,4 +1,5 @@
 import { entities } from './entities'
+import { orderByMode } from './order'
 import type { Entity, LocalizedText } from './types'
 
 /**
@@ -123,9 +124,10 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
 }
 
 /** Every place record, in the order the ship puts in at them. */
-export const places: readonly Entity[] = [...entities]
-  .filter((entity) => entity.kind === 'place')
-  .sort((a, b) => a.revealedAtEpisode - b.revealedAtEpisode)
+export const places: readonly Entity[] = orderByMode(
+  entities.filter((entity) => entity.kind === 'place'),
+  'episode',
+)
 
 /**
  * Looks a place up by id. A record that exists but is not a place is

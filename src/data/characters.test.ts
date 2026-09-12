@@ -13,6 +13,7 @@ import {
   routePositionOf,
 } from './characters'
 import { entities } from './entities'
+import { orderByMode } from './order'
 
 describe('the featured twenty', () => {
   it('lists exactly twenty distinct characters that all exist', () => {
@@ -80,6 +81,20 @@ describe('routePositionOf', () => {
     expect(position.previous?.id).toBe('going-merry')
     expect(position.next?.id).toBe('baratie')
   })
+
+  it('counts along whatever order it is handed', () => {
+    const shanks = getCharacter('shanks')
+    if (shanks === undefined) throw new Error('no shanks')
+
+    // Fourth episode of the anime, first chapter of the manga: on the manga's
+    // route only the saga and Luffy, filed at chapter 1 and episode 1, come
+    // before him.
+    const byEpisode = routePositionOf(shanks).index
+    const byChapter = routePositionOf(shanks, orderByMode(route, 'chapter'))
+    expect(byChapter.index).toBe(2)
+    expect(byChapter.index).toBeLessThan(byEpisode)
+    expect(byChapter.total).toBe(route.length)
+  })
 })
 
 describe('nearbyCharacters', () => {
@@ -88,7 +103,9 @@ describe('nearbyCharacters', () => {
     if (luffy === undefined) throw new Error('no luffy')
     const near = nearbyCharacters(luffy, 3).map((c) => c.id)
 
-    expect(near).toEqual(['roronoa-zoro', 'shanks', 'buggy'])
+    // Nami and Buggy are both four episodes away; Nami is first on the route
+    // because her chapter comes first.
+    expect(near).toEqual(['roronoa-zoro', 'shanks', 'nami'])
     expect(near).not.toContain('monkey-d-luffy')
   })
 

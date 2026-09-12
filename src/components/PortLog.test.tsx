@@ -1,7 +1,7 @@
 import { screen, within } from '@testing-library/react'
 
 import { places } from '~/data/places'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { PortLog } from './PortLog'
 
@@ -10,8 +10,8 @@ const entries = places
 
 describe('PortLog', () => {
   it('numbers every port in the order the ship reaches them', () => {
-    renderWithProviders(<PortLog entries={entries} progress={20} />, {
-      progress: 20,
+    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
+      bookmark: ep(20),
     })
 
     const stages = screen.getAllByText(/^Port of call \d of 7$/u)
@@ -22,8 +22,8 @@ describe('PortLog', () => {
 
   it('opens the ports the reader has reached with their dossier, and fogs the rest', () => {
     const { container } = renderWithProviders(
-      <PortLog entries={entries} progress={20} />,
-      { progress: 20 },
+      <PortLog entries={entries} bookmark={ep(20)} />,
+      { bookmark: ep(20) },
     )
 
     // Baratie is open at 20: name, facts, log entry, and an anchor to land on.
@@ -45,8 +45,8 @@ describe('PortLog', () => {
   })
 
   it('files the records met at a port, each behind its own fog', () => {
-    renderWithProviders(<PortLog entries={entries} progress={20} />, {
-      progress: 20,
+    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
+      bookmark: ep(20),
     })
 
     const baratie = screen
@@ -65,8 +65,8 @@ describe('PortLog', () => {
   })
 
   it('draws the horizon where the reader is', () => {
-    renderWithProviders(<PortLog entries={entries} progress={20} />, {
-      progress: 20,
+    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
+      bookmark: ep(20),
     })
 
     const horizon = screen.getByText('You are here · episode 20').closest('li')
@@ -79,10 +79,10 @@ describe('PortLog', () => {
   })
 
   it('puts the horizon first and fogs everything with no bookmark', () => {
-    renderWithProviders(<PortLog entries={entries} progress={null} />)
+    renderWithProviders(<PortLog entries={entries} bookmark={null} />)
 
     expect(
-      screen.getByText('No episode set · the whole route is under fog'),
+      screen.getByText('No bookmark set · the whole route is under fog'),
     ).toBeInTheDocument()
     expect(screen.getAllByText('A place under fog')).toHaveLength(
       entries.length,
