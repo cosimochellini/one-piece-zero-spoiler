@@ -196,8 +196,9 @@ const styles = stylex.create({
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
     // 5ch holds the ceiling plus a digit of headroom without the field
-    // stretching to fill the row.
-    width: '5ch',
+    // stretching to fill the row. The padding and the border are added on
+    // top: the width is the border box, and '5ch' alone clipped '1100'.
+    width: `calc(5ch + ${space.md} + ${space.xs2})`,
   },
   fieldInvalid: {
     borderColor: color.accent,

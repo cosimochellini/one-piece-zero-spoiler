@@ -193,6 +193,9 @@ const styles = stylex.create({
     cursor: 'pointer',
     display: 'grid',
     gap: space.xs,
+    // Explicit rather than the implicit `minmax(auto, 1fr)`, whose floor is
+    // the notice's min-content and can push the curtain past its frame.
+    gridTemplateColumns: 'minmax(0, 1fr)',
     inset: 0,
     justifyItems: 'start',
     opacity: 1,
@@ -241,6 +244,8 @@ const styles = stylex.create({
     fontSize: text.xs,
     fontWeight: 500,
     letterSpacing: '0.08em',
+    minWidth: 0,
+    overflowWrap: 'anywhere',
     paddingBlock: space.xs3,
     paddingInline: space.xs,
     textTransform: 'uppercase',
