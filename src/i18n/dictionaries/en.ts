@@ -78,7 +78,17 @@ export const enDictionary = {
   'characters.allOpen': 'Nothing is under fog. Every character is open to you.',
   'characters.pageTitle': 'Characters — Zero Spoiler',
   'characters.pageDescription':
-    'Twenty One Piece characters, each filed at the episode that introduces them and covered until you get there.',
+    'The characters of One Piece, each filed at the episode that introduces them and covered until you get there.',
+  'characters.featuredTitle': 'Featured',
+  'characters.featuredLede':
+    'The characters the chart draws: the crew, and the people the story turns on.',
+  'characters.bookTitle': 'The whole book',
+  'characters.bookLede':
+    'Everyone the archive has filed, shelved by the arc that introduces them.',
+  'characters.sectionOpensAt': 'From episode {episode}',
+  'characters.sectionCount': '{count} characters',
+  'characters.sectionCountOne': '1 character',
+  'characters.sectionFogged': 'An arc under fog',
 
   'character.opensAt': 'First appears in episode {episode}',
   'character.foggedName': 'A character under fog',
@@ -90,7 +100,14 @@ export const enDictionary = {
   'character.routeTitle': 'On the route',
   'character.position': 'Waypoint {index} of {total}',
   'character.positionLede':
-    'Where this entry sits among everything the archive has filed, and what is filed either side of it.',
+    'Where this entry sits on the chart, and what is filed either side of it.',
+  'character.epithet': 'Epithet',
+  'character.affiliation': 'Affiliation',
+  'character.origin': 'Origin',
+  'character.devilFruit': 'Devil fruit',
+  'character.bounty': 'Bounty',
+  'character.bountyValue': '{amount} Berry',
+  'character.factsLabel': 'What is known so far',
   'character.before': 'Filed before',
   'character.after': 'Filed after',
   'character.routeStart': 'Nothing. This is where the route begins.',

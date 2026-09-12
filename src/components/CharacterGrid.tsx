@@ -2,8 +2,10 @@ import * as stylex from '@stylexjs/stylex'
 import { useEffect, useId, useState, type ReactNode } from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
+import { CharacterTile } from '~/components/CharacterTile'
+import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
-import { matchName } from '~/data/characters'
+import { matchName, type BookSection, type NameMatch } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Progress } from '~/lib/progress/episode'
@@ -21,44 +23,65 @@ import {
 } from '~/styles/tokens.stylex'
 
 export type CharacterGridProps = {
-  /** The characters to list, in route order. */
-  readonly entries: readonly Entity[]
+  /** The characters in evidence, in route order: the ones drawn as crests. */
+  readonly featured: readonly Entity[]
+  /** The whole book, shelved by arc, in route order. */
+  readonly sections: readonly BookSection[]
   readonly progress: Progress
 }
 
+type Match = { readonly entry: Entity; readonly match: NameMatch }
+
 /**
- * The signal book: every listed character as a crest on one uniform grid,
- * with a search that only the open ones answer.
+ * The signal book: the featured characters as crests on one uniform grid,
+ * then everyone the archive has filed as tiles on shelves, one shelf per
+ * arc, with a search that only the open ones answer.
  *
  * That last rule is the spoiler system applied to a search box. A covered
  * character whose card appeared when its name was typed would confirm the
- * name, so the fogged cards sit in their own band below the results and never
- * move: typing filters the open pages and leaves the fog exactly as it was.
+ * name, so the fogged cards sit in a band of their own below the crests, and
+ * the fogged tiles stay on their shelves, and neither ever moves: typing
+ * filters the open pages and leaves the fog exactly as it was.
  *
- * Filtering is instant, because it is twenty names in memory. Only the
+ * Filtering is a few hundred names in memory and is instant. Only the
  * announcement to a screen reader waits, 250ms after the last keystroke, so a
  * reader typing "Nami" hears one count and not four.
  */
-export function CharacterGrid({ entries, progress }: CharacterGridProps) {
+export function CharacterGrid({
+  featured,
+  sections,
+  progress,
+}: CharacterGridProps) {
   const { locale, t } = useLocale()
   const fieldId = useId()
   const [query, setQuery] = useState('')
 
-  const open = entries.filter((entry) => isRevealed(entry, progress))
-  const covered = entries.filter((entry) => !isRevealed(entry, progress))
+  const everyone = sections.flatMap((section) => section.characters)
+  const open = everyone.filter((entry) => isRevealed(entry, progress))
+  const matched = new Map<string, Match>(
+    open
+      .map((entry) => ({
+        entry,
+        match: matchName(entry, query, locale, progress),
+      }))
+      .filter(({ match }) => match.matches)
+      .map((match) => [match.entry.id, match]),
+  )
+  const matchOf = (entry: Entity) => matched.get(entry.id)
 
-  const matches = open
-    .map((entry) => ({
-      entry,
-      match: matchName(entry, query, locale, progress),
-    }))
-    .filter(({ match }) => match.matches)
+  const featuredOpen = featured.filter((entry) => isRevealed(entry, progress))
+  const featuredCovered = featured.filter(
+    (entry) => !isRevealed(entry, progress),
+  )
+  const featuredMatches = featuredOpen
+    .map(matchOf)
+    .filter((match): match is Match => match !== undefined)
 
   const trimmed = query.trim()
   const status =
-    trimmed !== '' && matches.length === 0
+    trimmed !== '' && matched.size === 0
       ? t('characters.noMatch', { query: trimmed })
-      : t('characters.shown', { count: matches.length, total: open.length })
+      : t('characters.shown', { count: matched.size, total: open.length })
   const announced = useSettled(status, 250)
 
   return (
@@ -106,48 +129,173 @@ export function CharacterGrid({ entries, progress }: CharacterGridProps) {
           aria-live="polite"
           {...stylex.props(
             styles.status,
-            trimmed !== '' && matches.length === 0 && styles.statusEmpty,
+            trimmed !== '' && matched.size === 0 && styles.statusEmpty,
           )}
         >
           {announced}
         </p>
       </div>
 
-      {matches.length === 0 ? null : (
-        <CharacterCardList>
-          {matches.map(({ entry, match }) => (
-            <CharacterCard
-              key={entry.id}
-              entity={entry}
-              revealed
-              highlight={match.highlight}
-            />
-          ))}
-        </CharacterCardList>
-      )}
+      <section
+        aria-labelledby={`${fieldId}-featured`}
+        {...stylex.props(styles.part)}
+      >
+        <div {...stylex.props(styles.partHead)}>
+          <h2 id={`${fieldId}-featured`} {...stylex.props(styles.partTitle)}>
+            {t('characters.featuredTitle')}
+          </h2>
+          <p {...stylex.props(styles.partLede)}>
+            {t('characters.featuredLede')}
+          </p>
+        </div>
 
-      <section aria-labelledby={`${fieldId}-fog`} {...stylex.props(styles.fog)}>
-        <h2 id={`${fieldId}-fog`} {...stylex.props(styles.fogTitle)}>
-          {covered.length === 0
-            ? t('characters.allOpen')
-            : covered.length === 1
-              ? t('characters.foggedTitleOne')
-              : t('characters.foggedTitle', { count: covered.length })}
-        </h2>
-        {covered.length === 0 ? null : (
-          <>
-            <p {...stylex.props(styles.fogHint)}>
-              {t('characters.foggedHint')}
-            </p>
-            <CharacterCardList>
-              {covered.map((entry) => (
-                <CharacterCard key={entry.id} entity={entry} revealed={false} />
-              ))}
-            </CharacterCardList>
-          </>
+        {featuredMatches.length === 0 ? null : (
+          <CharacterCardList>
+            {featuredMatches.map(({ entry, match }) => (
+              <CharacterCard
+                key={entry.id}
+                entity={entry}
+                revealed
+                highlight={match.highlight}
+              />
+            ))}
+          </CharacterCardList>
         )}
+
+        <section
+          aria-labelledby={`${fieldId}-fog`}
+          {...stylex.props(styles.fog)}
+        >
+          <h3 id={`${fieldId}-fog`} {...stylex.props(styles.fogTitle)}>
+            {featuredCovered.length === 0
+              ? t('characters.allOpen')
+              : featuredCovered.length === 1
+                ? t('characters.foggedTitleOne')
+                : t('characters.foggedTitle', {
+                    count: featuredCovered.length,
+                  })}
+          </h3>
+          {featuredCovered.length === 0 ? null : (
+            <>
+              <p {...stylex.props(styles.fogHint)}>
+                {t('characters.foggedHint')}
+              </p>
+              <CharacterCardList>
+                {featuredCovered.map((entry) => (
+                  <CharacterCard
+                    key={entry.id}
+                    entity={entry}
+                    revealed={false}
+                  />
+                ))}
+              </CharacterCardList>
+            </>
+          )}
+        </section>
+      </section>
+
+      <section
+        aria-labelledby={`${fieldId}-book`}
+        {...stylex.props(styles.part)}
+      >
+        <div {...stylex.props(styles.partHead)}>
+          <h2 id={`${fieldId}-book`} {...stylex.props(styles.partTitle)}>
+            {t('characters.bookTitle')}
+          </h2>
+          <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
+        </div>
+
+        {sections.map((section) => (
+          <Shelf
+            key={section.arc.id}
+            section={section}
+            progress={progress}
+            headingId={`${fieldId}-${section.arc.id}`}
+            matchOf={matchOf}
+            searching={trimmed !== ''}
+          />
+        ))}
       </section>
     </div>
+  )
+}
+
+/**
+ * One shelf: the arc's name as a heading, the episode it opens on and how
+ * many characters it holds, then the open tiles that answer the search and
+ * every covered tile, in that order. The heading is veiled when the arc is
+ * covered, which by construction only happens when every tile on the shelf
+ * is covered too. A shelf with nothing to show during a search is left out;
+ * with no search every shelf is on the page.
+ */
+function Shelf({
+  section,
+  progress,
+  headingId,
+  matchOf,
+  searching,
+}: {
+  readonly section: BookSection
+  readonly progress: Progress
+  readonly headingId: string
+  readonly matchOf: (entry: Entity) => Match | undefined
+  readonly searching: boolean
+}) {
+  const { locale, t } = useLocale()
+  const { arc, characters } = section
+  const arcOpen = isRevealed(arc, progress)
+
+  const shown = characters
+    .filter((entry) => isRevealed(entry, progress))
+    .map(matchOf)
+    .filter((match): match is Match => match !== undefined)
+  const covered = characters.filter((entry) => !isRevealed(entry, progress))
+
+  if (searching && shown.length === 0 && covered.length === 0) return null
+
+  return (
+    <section aria-labelledby={headingId} {...stylex.props(styles.shelf)}>
+      <div {...stylex.props(styles.shelfHead)}>
+        <SpoilerVeil
+          revealedAtEpisode={arc.revealedAtEpisode}
+          revealed={arcOpen}
+          density="inline"
+          placeholder={
+            <h3 id={headingId} {...stylex.props(styles.shelfTitle)}>
+              {t('characters.sectionFogged')}
+            </h3>
+          }
+        >
+          <h3 id={headingId} {...stylex.props(styles.shelfTitle)}>
+            {arc.name[locale]}
+          </h3>
+        </SpoilerVeil>
+        <p {...stylex.props(styles.shelfMeta)}>
+          <span {...stylex.props(styles.shelfEpisode)}>
+            {t('characters.sectionOpensAt', { episode: arc.revealedAtEpisode })}
+          </span>
+          <span>
+            {characters.length === 1
+              ? t('characters.sectionCountOne')
+              : t('characters.sectionCount', { count: characters.length })}
+          </span>
+        </p>
+      </div>
+
+      <ul {...stylex.props(styles.tiles)}>
+        {shown.map(({ entry, match }) => (
+          <CharacterTile
+            key={entry.id}
+            entity={entry}
+            revealed
+            highlight={match.highlight}
+          />
+        ))}
+        {covered.map((entry) => (
+          <CharacterTile key={entry.id} entity={entry} revealed={false} />
+        ))}
+      </ul>
+    </section>
   )
 }
 
@@ -184,7 +332,7 @@ function useSettled<T>(value: T, delay: number): T {
 const styles = stylex.create({
   book: {
     display: 'grid',
-    gap: space.xl,
+    gap: space.xl2,
   },
 
   search: {
@@ -256,6 +404,33 @@ const styles = stylex.create({
     color: color.ink2,
   },
 
+  // The two parts of the book, each with an inventory heading: the crests,
+  // then the shelves.
+  part: {
+    display: 'grid',
+    gap: space.lg,
+  },
+  partHead: {
+    display: 'grid',
+    gap: space.xs2,
+  },
+  partTitle: {
+    color: color.ink,
+    fontFamily: font.display,
+    fontSize: text.xl,
+    fontWeight: 800,
+    letterSpacing: '-0.02em',
+    lineHeight: leading.heading,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
+  },
+  partLede: {
+    color: color.muted,
+    fontSize: text.base,
+    lineHeight: leading.body,
+    maxWidth: '58ch',
+  },
+
   grid: {
     columnGap: space.md,
     display: 'grid',
@@ -293,6 +468,66 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     marginBlockStart: `calc(-1 * ${space.xs})`,
-    maxWidth: '52ch',
+    maxWidth: '58ch',
+  },
+
+  // A shelf: a hairline above, the arc's name and its two facts, then the
+  // tiles four across on a wide page and one across on a phone. Long shelves
+  // far down the page are skipped by the renderer until they scroll near.
+  shelf: {
+    borderBlockStartColor: color.rule,
+    borderBlockStartStyle: 'solid',
+    borderBlockStartWidth: rule.hair,
+    containIntrinsicSize: 'auto 24rem',
+    contentVisibility: 'auto',
+    display: 'grid',
+    gap: space.md,
+    paddingBlockStart: space.md,
+  },
+  shelfHead: {
+    alignItems: 'baseline',
+    columnGap: space.md,
+    display: 'flex',
+    flexWrap: 'wrap',
+    rowGap: space.xs2,
+  },
+  shelfTitle: {
+    color: color.ink,
+    fontFamily: font.display,
+    fontSize: text.lg,
+    fontWeight: 800,
+    letterSpacing: '-0.02em',
+    lineHeight: leading.heading,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
+  },
+  shelfMeta: {
+    color: color.muted,
+    columnGap: space.sm,
+    display: 'flex',
+    flexWrap: 'wrap',
+    fontSize: text.xs,
+    letterSpacing: '0.08em',
+    lineHeight: leading.body,
+    textTransform: 'uppercase',
+  },
+  shelfEpisode: {
+    color: color.ink2,
+    fontFamily: font.mono,
+    fontVariantNumeric: 'tabular-nums',
+    fontWeight: 600,
+  },
+  tiles: {
+    columnGap: space.lg,
+    display: 'grid',
+    gridTemplateColumns: {
+      default: 'minmax(0, 1fr)',
+      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
+      '@media (min-width: 60rem)': 'repeat(3, minmax(0, 1fr))',
+      '@media (min-width: 76rem)': 'repeat(4, minmax(0, 1fr))',
+    },
+    listStyleType: 'none',
+    paddingInlineStart: 0,
+    rowGap: space.md,
   },
 })

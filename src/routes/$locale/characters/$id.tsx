@@ -11,14 +11,15 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
 import { CharacterCrest } from '~/components/CharacterCrest'
+import { CharacterFacts } from '~/components/CharacterFacts'
 import { RecordTile } from '~/components/RecordTile'
 import { RouteStrip } from '~/components/RouteStrip'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import {
   chartWith,
+  dossierOf,
   getCharacter,
   nearbyCharacters,
-  roleOf,
   routePositionOf,
 } from '~/data/characters'
 import type { Entity, EntityKind } from '~/data/types'
@@ -111,7 +112,8 @@ const settle = stylex.keyframes({
  *
  * Three diptychs down the page, alternating sides. The first is the crest
  * beside the dossier: kind and episode in mono, the name as the only display
- * line, the role, the summary. The second is the record's place on the route
+ * line, the role, the summary, then the facts as the reader's dial knows
+ * them and the log entry. The second is the record's place on the route
  * beside a strip of the whole route with this waypoint ringed, and the two
  * records filed either side of it. The third is one row of the listed
  * characters filed nearest by episode.
@@ -130,7 +132,8 @@ function CharacterPage() {
   if (entity === undefined) return null
 
   const revealed = isRevealed(entity, progress)
-  const role = roleOf(entity)
+  const dossier = dossierOf(entity)
+  const role = dossier?.role
   const position = routePositionOf(entity)
   const positionLabel = t('character.position', {
     index: position.index + 1,
@@ -202,6 +205,12 @@ function CharacterPage() {
                 <p {...stylex.props(styles.role)}>{role[locale]}</p>
               )}
               <p {...stylex.props(styles.summary)}>{entity.summary[locale]}</p>
+              {dossier === undefined ? null : (
+                <>
+                  <CharacterFacts dossier={dossier} progress={progress} />
+                  <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
+                </>
+              )}
             </div>
           </SpoilerVeil>
         </div>
@@ -449,6 +458,15 @@ const styles = stylex.create({
     fontSize: text.lg,
     lineHeight: leading.body,
     maxWidth: '52ch',
+  },
+  // The log entry proper, after the facts: body size, a measure that holds
+  // three sentences without a wall.
+  entry: {
+    color: color.ink2,
+    fontSize: text.base,
+    lineHeight: leading.body,
+    marginBlockStart: space.xs,
+    maxWidth: '60ch',
   },
 
   sectionTitle: {

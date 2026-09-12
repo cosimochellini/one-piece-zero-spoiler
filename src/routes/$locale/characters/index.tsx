@@ -11,7 +11,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { CharacterGrid } from '~/components/CharacterGrid'
 import { EpisodeDial } from '~/components/EpisodeDial'
-import { featuredCharacters } from '~/data/characters'
+import { bookSections, characters, featuredCharacters } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
@@ -52,11 +52,11 @@ const settle = stylex.keyframes({
 /**
  * The characters page (Hallmark macrostructure 11, Catalogue).
  *
- * A signal book: the brand line and a count, then twenty crests on one
- * uniform grid, in the order the anime meets them. No hero, no display
- * headline; the crests are the page. The search above the grid filters the
- * open characters, and the fogged ones sit in a band of their own that a
- * search never touches, which is the spoiler rule applied to a text field.
+ * A signal book: the brand line and a count, then the featured crests on one
+ * uniform grid and the whole cast on shelves by arc, in the order the anime
+ * meets them. No hero, no display headline; the crests are the page. The
+ * search above the grid filters the open characters, and the fogged ones sit
+ * where they were, which is the spoiler rule applied to a text field.
  */
 function CharactersPage() {
   const t = useT()
@@ -67,7 +67,7 @@ function CharactersPage() {
       <header {...stylex.props(styles.head, styles.enter, styles.at(0))}>
         <h1 {...stylex.props(styles.title)}>{t('characters.title')}</h1>
         <p {...stylex.props(styles.count)}>
-          {t('characters.count', { count: featuredCharacters.length })}
+          {t('characters.count', { count: characters.length })}
         </p>
         <div {...stylex.props(styles.dial)}>
           <EpisodeDial />
@@ -75,7 +75,11 @@ function CharactersPage() {
       </header>
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
-        <CharacterGrid entries={featuredCharacters} progress={progress} />
+        <CharacterGrid
+          featured={featuredCharacters}
+          sections={bookSections}
+          progress={progress}
+        />
       </div>
     </main>
   )

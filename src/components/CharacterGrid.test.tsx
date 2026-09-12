@@ -1,6 +1,7 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
+import type { BookSection } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import { renderWithProviders } from '~/test/providers'
 
@@ -33,20 +34,60 @@ const entries: readonly Entity[] = [
   },
 ]
 
+const arc: Entity = {
+  id: 'east-blue',
+  kind: 'arc',
+  revealedAtEpisode: 1,
+  name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
+  summary: { it: 'x', en: 'x' },
+  visual: { art: 'east-blue', tint: 'ivory' },
+}
+
+const lateArc: Entity = {
+  id: 'alabasta',
+  kind: 'arc',
+  revealedAtEpisode: 92,
+  name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
+  summary: { it: 'x', en: 'x' },
+  visual: { art: 'alabasta', tint: 'sand' },
+}
+
+// Luffy and Nami on the first shelf, Robin alone on a covered one.
+const sections: readonly BookSection[] = [
+  { arc, characters: entries.slice(0, 2) },
+  { arc: lateArc, characters: entries.slice(2) },
+]
+
+function book(progress: number | null, locale: 'en' | 'it' = 'en') {
+  return renderWithProviders(
+    <CharacterGrid
+      featured={entries}
+      sections={sections}
+      progress={progress}
+    />,
+    { progress, locale },
+  )
+}
+
 function fogBand(): HTMLElement {
-  return screen.getByRole('region', { name: /under fog/u })
+  return screen.getByRole('region', { name: /^\d+ under fog$/u })
+}
+
+function shelf(name: RegExp): HTMLElement {
+  return screen.getByRole('region', { name })
 }
 
 describe('CharacterGrid', () => {
   it('lists the open characters as links to their pages and fogs the rest', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
-    })
+    book(10)
 
-    expect(
-      screen.getByRole('link', { name: /Monkey D\. Luffy/u }),
-    ).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
-    expect(screen.getByRole('link', { name: /Nami/u })).toBeInTheDocument()
+    // Once as a crest and once as a tile on the East Blue shelf.
+    for (const link of screen.getAllByRole('link', {
+      name: /Monkey D\. Luffy/u,
+    })) {
+      expect(link).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
+    }
+    expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(2)
     // Robin is under fog: no link a keyboard can reach, one card in the band.
     expect(
       screen.queryByRole('link', { name: /Nico Robin/u }),
@@ -59,33 +100,54 @@ describe('CharacterGrid', () => {
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
+  it('shelves the tiles by arc and veils the heading of a covered shelf', () => {
+    book(10)
+
+    const eastBlue = shelf(/East Blue Saga/u)
+    expect(within(eastBlue).getByText('From episode 1')).toBeVisible()
+    expect(within(eastBlue).getByText('2 characters')).toBeVisible()
+    expect(within(eastBlue).getAllByRole('link')).toHaveLength(2)
+
+    // The Alabasta shelf is covered with everyone on it: no arc name, no
+    // link, no drawing, and its one tile says only the episode.
+    const covered = shelf(/An arc under fog/u)
+    expect(screen.queryByText('Alabasta Saga')).not.toBeInTheDocument()
+    expect(within(covered).queryByRole('link')).not.toBeInTheDocument()
+    expect(covered.querySelectorAll('path')).toHaveLength(0)
+    expect(within(covered).getByText('Episode 130')).toBeVisible()
+  })
+
   it('filters the open characters as the reader types, and marks the match', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
-    })
+    book(10)
 
     await user.type(screen.getByRole('searchbox'), 'nam')
 
-    expect(screen.getByRole('link', { name: /Nami/u })).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(2)
     expect(
       screen.queryByRole('link', { name: /Luffy/u }),
     ).not.toBeInTheDocument()
-    expect(screen.getByText('Nam').tagName).toBe('MARK')
+    for (const mark of screen.getAllByText('Nam')) {
+      expect(mark.tagName).toBe('MARK')
+    }
   })
 
   it('never lets the fog answer a search', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
-    })
+    book(10)
 
     await user.type(screen.getByRole('searchbox'), 'robin')
 
-    // The covered card is still there and unchanged; the open results are
-    // empty, and the page says so in the reader's words.
+    // The covered card and the covered shelf are still there and unchanged;
+    // the open results are empty, and the page says so in the reader's words.
     expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
     expect(fogBand()).toHaveTextContent('1 under fog')
+    expect(shelf(/An arc under fog/u)).toBeInTheDocument()
+    // The East Blue shelf has nothing open that matches and nothing covered,
+    // so during a search it is left out rather than shown empty.
+    expect(
+      screen.queryByRole('region', { name: /East Blue Saga/u }),
+    ).not.toBeInTheDocument()
     expect(
       await screen.findByText('No open character is called “robin”.'),
     ).toBeInTheDocument()
@@ -93,9 +155,7 @@ describe('CharacterGrid', () => {
 
   it('announces the count once the typing has settled', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
-    })
+    book(10)
 
     await user.type(screen.getByRole('searchbox'), 'na')
     // Not yet: the announcement waits 250ms after the last keystroke, so a
@@ -109,9 +169,7 @@ describe('CharacterGrid', () => {
 
   it('clears the search from the button beside the field', async () => {
     const user = userEvent.setup()
-    renderWithProviders(<CharacterGrid entries={entries} progress={10} />, {
-      progress: 10,
-    })
+    book(10)
 
     const field = screen.getByRole('searchbox')
     // Hidden until there is something to clear, but its slot is reserved.
@@ -122,13 +180,11 @@ describe('CharacterGrid', () => {
     await user.click(screen.getByRole('button', { name: 'Clear the search' }))
 
     expect(field).toHaveValue('')
-    expect(screen.getByRole('link', { name: /Luffy/u })).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: /Luffy/u })).toHaveLength(2)
   })
 
   it('says so when nothing is under fog', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={1200} />, {
-      progress: 1200,
-    })
+    book(1200)
 
     expect(
       screen.getByText('Nothing is under fog. Every character is open to you.'),
@@ -136,9 +192,7 @@ describe('CharacterGrid', () => {
   })
 
   it('speaks the active locale', () => {
-    renderWithProviders(<CharacterGrid entries={entries} progress={null} />, {
-      locale: 'it',
-    })
+    book(null, 'it')
 
     expect(screen.getByLabelText('Trova un personaggio')).toBeInTheDocument()
     expect(screen.getByText('3 nella nebbia')).toBeInTheDocument()
