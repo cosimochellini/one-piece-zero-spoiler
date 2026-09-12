@@ -57,16 +57,26 @@ export const eastBlueArt = {
   ],
   // An iron club, the spikes ringing its head.
   alvida: [
-    { d: 'M72 186 h16' },
-    { d: 'M74 184 V132 M86 184 V132' },
-    { d: 'M74 132 C66 112 64 90 72 70 M86 132 C94 112 96 90 88 70' },
-    { d: ellipse(80, 58, 34, 32) },
+    { d: 'M76 188 h12 M78 186 V116 M86 186 V116' },
+    { d: 'M74 116 h16 l4 -8 h-24z' },
+    { d: circle(82, 74, 30) },
     {
-      d: 'M80 18 L72 32 L88 32Z M34 52 L48 44 L48 62Z M126 52 L112 44 L112 62Z',
+      d: 'M82 44 l-4 -12 l8 0z M82 104 l-4 12 l8 0z M52 74 l-12 -4 l0 8z M112 74 l12 -4 l0 8z',
       role: 'accent',
     },
-    { d: 'M52 24 L64 34 L54 44Z M108 24 L96 34 L106 44Z', role: 'accent' },
-    shadow(80, 192, 30),
+    {
+      d: 'M61 53 l-11 -6 l5 11z M103 53 l11 -6 l-5 11z M61 95 l-11 6 l5 -11z M103 95 l11 6 l-5 -11z',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [72, 66],
+        [92, 66],
+        [82, 84],
+      ]),
+      role: 'soft',
+    },
+    shadow(82, 194, 26),
   ],
   // An execution scaffold: two uprights, the crossbeam, the platform.
   'gold-roger': [
@@ -187,13 +197,15 @@ export const eastBlueArt = {
   ],
   // A joint of meat, the bone knuckled at both ends.
   'lucky-roux': [
-    { d: ellipse(80, 104, 36, 30), role: 'accent' },
-    { d: 'M50 94 q12 -10 24 0 q12 10 24 0 q8 -6 10 2', role: 'accent' },
-    { d: 'M44 104 H26 M116 104 H134' },
-    { d: `${circle(24, 96, 7)} ${circle(24, 112, 7)}` },
-    { d: `${circle(136, 96, 7)} ${circle(136, 112, 7)}` },
-    { d: 'M62 108 q18 8 36 0 M66 120 q14 6 28 0', role: 'soft' },
-    shadow(80, 150, 44),
+    {
+      d: 'M40 132 C36 100 58 72 92 70 C120 70 132 92 126 116 C120 140 92 152 66 146 C50 142 42 138 40 132z',
+      role: 'accent',
+    },
+    { d: 'M126 116 L146 104 M132 128 L150 122' },
+    { d: `${circle(148, 100, 6)} ${circle(152, 124, 6)}` },
+    { d: 'M62 96 q14 -10 30 -2', role: 'soft' },
+    { d: 'M56 118 q10 12 26 12', role: 'soft', dashed: true },
+    shadow(88, 170, 44),
   ],
   // A flintlock pistol and the coin its shot went through.
   yasopp: [
