@@ -126,13 +126,23 @@ function Waypoint({ entry, index, open }: WaypointProps) {
             <div {...stylex.props(styles.words)}>
               <h3 {...stylex.props(styles.name)}>
                 {/*
-                  Only an open character is a link: a covered card's href
-                  would spell out, in the page source, the name a blur hides.
+                  Only an open character or place is a link: a covered
+                  card's href would spell out, in the page source, the name
+                  a blur hides.
                 */}
                 {entry.kind === 'character' && open ? (
                   <Link
                     to="/$locale/characters/$id"
                     params={{ locale, id: entry.id }}
+                    {...stylex.props(styles.nameLink)}
+                  >
+                    {entry.name[locale]}
+                  </Link>
+                ) : entry.kind === 'place' && open ? (
+                  <Link
+                    to="/$locale/places"
+                    params={{ locale }}
+                    hash={entry.id}
                     {...stylex.props(styles.nameLink)}
                   >
                     {entry.name[locale]}
@@ -449,6 +459,10 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '52ch',
+    // At 320px the words column is under 100px wide, and one long word
+    // ("vice-president,") would otherwise widen the column past the page.
+    minWidth: 0,
+    overflowWrap: 'anywhere',
   },
 
   // No `align-items: center` here: the rail cell has to stretch to the row's

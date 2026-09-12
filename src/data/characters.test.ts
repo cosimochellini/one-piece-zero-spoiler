@@ -76,8 +76,9 @@ describe('routePositionOf', () => {
     if (sanji === undefined) throw new Error('no sanji')
     const position = routePositionOf(sanji)
 
+    // Baratie is filed at the same episode as Sanji, right after him.
     expect(position.previous?.id).toBe('going-merry')
-    expect(position.next?.id).toBe('dracule-mihawk')
+    expect(position.next?.id).toBe('baratie')
   })
 })
 

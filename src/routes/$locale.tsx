@@ -68,6 +68,13 @@ function LocaleLayout() {
 const styles = stylex.create({
   shell: {
     display: 'grid',
+    // One explicit column with a zero minimum. Left implicit, the column is
+    // `auto`, whose minimum is the widest child's min-content, and a page
+    // whose grid resolves `1fr` against indefinite space reports its
+    // max-content as that minimum: at 375px the shell grew to 521px and the
+    // root's `overflow-x: clip` hid the fact. With the minimum pinned to 0
+    // the column is the viewport, and every page wraps inside it.
+    gridTemplateColumns: 'minmax(0, 1fr)',
     // The footer is pushed to the bottom on a short page without a
     // `min-height: 100vh` hero, which is its own tell.
     gridTemplateRows: 'auto 1fr auto',

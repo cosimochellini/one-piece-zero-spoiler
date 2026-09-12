@@ -26,6 +26,10 @@ import type { Entity } from './types'
  * has a line drawing of an object or a place that stands for it, drawn in
  * `~/components/ChartArt`, and one colour for its main stroke. No faces, no
  * logos: a straw hat for the captain, three sheathed swords for the swordsman.
+ *
+ * Places are filed at the episode that first shows them, and the ship's log
+ * (`./places.ts`) adds the rest of what is known about each one at that
+ * episode: the sea, what kind of place it is, the arc, and who is met there.
  */
 
 const LUFFY = { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' }
@@ -90,6 +94,17 @@ export const entities: readonly Entity[] = [
     visual: { art: 'roronoa-zoro', tint: 'green' },
   },
   {
+    id: 'shells-town',
+    kind: 'place',
+    revealedAtEpisode: 2,
+    name: { it: 'Shells Town', en: 'Shells Town' },
+    summary: {
+      it: 'Una cittadina dell’East Blue cresciuta attorno a una base della Marina, con un cacciatore di pirati legato a un palo nel cortile.',
+      en: 'An East Blue town grown up around a Marine base, with a pirate hunter tied to a post in the yard.',
+    },
+    visual: { art: 'shells-town', tint: 'azure' },
+  },
+  {
     id: 'shanks',
     kind: 'character',
     revealedAtEpisode: 4,
@@ -99,6 +114,17 @@ export const entities: readonly Entity[] = [
       en: 'The red-haired pirate who spent his days in a village tavern, and left his straw hat there.',
     },
     visual: { art: 'shanks', tint: 'red' },
+  },
+  {
+    id: 'foosha-village',
+    kind: 'place',
+    revealedAtEpisode: 4,
+    name: { it: 'Villaggio Fuschia', en: 'Foosha Village' },
+    summary: {
+      it: 'Un villaggio di mulini a vento sull’isola da cui Rufy è salpato, con una taverna dove una ciurma pirata è stata di casa per un anno.',
+      en: 'A windmill village on the island Luffy sailed from, with a tavern where a pirate crew made itself at home for a year.',
+    },
+    visual: { art: 'foosha-village', tint: 'green' },
   },
   {
     id: 'buggy',
@@ -123,6 +149,17 @@ export const entities: readonly Entity[] = [
     visual: { art: 'nami', tint: 'orange' },
   },
   {
+    id: 'orange-town',
+    kind: 'place',
+    revealedAtEpisode: 5,
+    name: { it: 'Orange Town', en: 'Orange Town' },
+    summary: {
+      it: 'Una cittadina dell’East Blue svuotata dai suoi abitanti, occupata da una ciurma di pirati con un tendone da circo e i cannoni puntati sui tetti.',
+      en: 'An East Blue town its people have fled, occupied by a pirate crew with a circus tent and cannons trained on the roofs.',
+    },
+    visual: { art: 'orange-town', tint: 'orange' },
+  },
+  {
     id: 'usopp',
     kind: 'character',
     revealedAtEpisode: 9,
@@ -132,6 +169,17 @@ export const entities: readonly Entity[] = [
       en: 'The village liar, who runs to the shore every morning shouting that pirates are coming.',
     },
     visual: { art: 'usopp', tint: 'ocher' },
+  },
+  {
+    id: 'syrup-village',
+    kind: 'place',
+    revealedAtEpisode: 9,
+    name: { it: 'Villaggio di Syrup', en: 'Syrup Village' },
+    summary: {
+      it: 'Un villaggio tranquillo delle isole Gecko, con una villa sulla collina e un ragazzo che ogni mattina grida che i pirati stanno arrivando.',
+      en: 'A quiet village in the Gecko Islands, with a mansion on the hill and a boy who shouts every morning that pirates are coming.',
+    },
+    visual: { art: 'syrup-village', tint: 'yellow' },
   },
   {
     id: 'going-merry',
@@ -154,6 +202,17 @@ export const entities: readonly Entity[] = [
       en: 'The sous-chef of a floating restaurant, who feeds anyone who is hungry and fights only with his legs.',
     },
     visual: { art: 'sanji', tint: 'blue' },
+  },
+  {
+    id: 'baratie',
+    kind: 'place',
+    revealedAtEpisode: 20,
+    name: { it: 'Baratie', en: 'Baratie' },
+    summary: {
+      it: 'Un ristorante galleggiante a forma di pesce, in mare aperto, dove i cuochi prendono a calci i clienti che non pagano.',
+      en: 'A floating restaurant shaped like a fish, in open sea, where the cooks kick the customers who do not pay.',
+    },
+    visual: { art: 'baratie', tint: 'cyan' },
   },
   {
     id: 'dracule-mihawk',

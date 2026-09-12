@@ -11,7 +11,7 @@ import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
 import { CharacterCrest } from '~/components/CharacterCrest'
-import { ChartArt } from '~/components/ChartArt'
+import { RecordTile } from '~/components/RecordTile'
 import { RouteStrip } from '~/components/RouteStrip'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import {
@@ -273,9 +273,9 @@ function CharacterPage() {
 }
 
 /**
- * One of the two records filed beside this one. Whatever its kind, it is
- * shown as a small plate and a name, and a character's name is a link. Under
- * fog the plate and the name go together and the episode stays.
+ * One of the two records filed beside this one, as a tile: whatever its
+ * kind, a small plate and a name, with a character's or a place's name a
+ * link. Under fog the plate and the name go together and the episode stays.
  */
 function Neighbour({
   label,
@@ -288,8 +288,6 @@ function Neighbour({
   readonly empty: string
   readonly progress: number | null
 }) {
-  const { locale, t } = useLocale()
-
   return (
     <div {...stylex.props(styles.neighbour)}>
       <dt {...stylex.props(styles.neighbourLabel)}>{label}</dt>
@@ -297,51 +295,7 @@ function Neighbour({
         {entry === undefined ? (
           <span {...stylex.props(styles.lede)}>{empty}</span>
         ) : (
-          <>
-            <span {...stylex.props(styles.meta)}>
-              <span {...stylex.props(styles.kind)}>
-                {t(KIND_KEY[entry.kind])}
-              </span>
-              <span {...stylex.props(styles.episode)}>
-                {t('chart.opensAt', { episode: entry.revealedAtEpisode })}
-              </span>
-            </span>
-            <SpoilerVeil
-              revealedAtEpisode={entry.revealedAtEpisode}
-              revealed={isRevealed(entry, progress)}
-              density="inline"
-              placeholder={
-                <span {...stylex.props(styles.neighbourCard)}>
-                  <span {...stylex.props(styles.neighbourFrame)} />
-                  <span {...stylex.props(styles.neighbourName)}>
-                    {t('veil.placeholder')}
-                  </span>
-                </span>
-              }
-            >
-              <span {...stylex.props(styles.neighbourCard)}>
-                <span {...stylex.props(styles.neighbourFrame)}>
-                  <ChartArt art={entry.visual.art} tint={entry.visual.tint} />
-                </span>
-                {entry.kind === 'character' ? (
-                  <Link
-                    to="/$locale/characters/$id"
-                    params={{ locale, id: entry.id }}
-                    {...stylex.props(
-                      styles.neighbourName,
-                      styles.neighbourLink,
-                    )}
-                  >
-                    {entry.name[locale]}
-                  </Link>
-                ) : (
-                  <span {...stylex.props(styles.neighbourName)}>
-                    {entry.name[locale]}
-                  </span>
-                )}
-              </span>
-            </SpoilerVeil>
-          </>
+          <RecordTile entry={entry} progress={progress} />
         )}
       </dd>
     </div>
@@ -561,51 +515,6 @@ const styles = stylex.create({
     marginInlineStart: 0,
     minWidth: 0,
   },
-  neighbourCard: {
-    alignItems: 'center',
-    columnGap: space.sm,
-    display: 'grid',
-    gridTemplateColumns: '3.5rem minmax(0, 1fr)',
-  },
-  neighbourFrame: {
-    aspectRatio: '4 / 5',
-    backgroundColor: color.paper2,
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    display: 'block',
-    overflow: 'hidden',
-  },
-  neighbourName: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.lg,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    minWidth: 0,
-    overflowWrap: 'anywhere',
-  },
-  neighbourLink: {
-    color: {
-      default: color.ink,
-      ':hover': color.accent,
-      ':active': color.ink2,
-    },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationColor: { default: 'transparent', ':hover': color.accent },
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.fine,
-    textUnderlineOffset: '4px',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color, text-decoration-color',
-    transitionTimingFunction: ease.out,
-  },
-
   nearby: {
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',

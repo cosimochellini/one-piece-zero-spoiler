@@ -21,6 +21,7 @@ export const enDictionary = {
 
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',
+  'nav.places': 'Places',
   'nav.label': 'Pages',
 
   'hero.headline': 'The wiki stops where you stopped',
@@ -100,6 +101,33 @@ export const enDictionary = {
   'character.notFoundTitle': 'No such character',
   'character.notFoundBody':
     'Nothing is filed under that address. The signal book lists everyone who is.',
+
+  'places.title': 'The ship’s log',
+  'places.count':
+    '{count} places, in the order the ship puts in at them. Each one is filed at the episode that first shows it.',
+  'places.pageTitle': 'Places — Zero Spoiler',
+  'places.pageDescription':
+    'The places of One Piece as ports of call, each filed at the episode that first shows it and covered until you get there.',
+  'places.stage': 'Port of call {index} of {total}',
+  'places.foggedName': 'A place under fog',
+  'places.foggedDescription':
+    'A One Piece place filed at episode {episode}. Set the episode you have reached to read its entry in the log.',
+  'places.firstSeen': 'First seen in episode {episode}',
+  'places.sea': 'Sea',
+  'places.form': 'What it is',
+  'places.arc': 'Arc',
+  'places.landmark': 'Landmark',
+  'places.filedHere': 'Filed here',
+  'places.filedNone': 'Nothing in the archive is filed here yet.',
+
+  'sea.east-blue': 'East Blue',
+  'sea.grand-line': 'Grand Line',
+  'sea.new-world': 'New World',
+
+  'form.village': 'Village',
+  'form.town': 'Town',
+  'form.restaurant': 'Floating restaurant',
+  'form.island': 'Island',
 
   'kind.character': 'Character',
   'kind.arc': 'Arc',

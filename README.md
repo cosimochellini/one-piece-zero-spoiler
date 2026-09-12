@@ -218,6 +218,36 @@ dial. `SpoilerVeil` gained a `compact` density for
 the cards (the verb alone, centred, a drawing's blur), and the language switch
 now uses `to="."` so it keeps the reader on the same page.
 
+**The places page is the ship's log.** `/$locale/places` lists every `place`
+record (`src/data/places.ts`, in the order the ship reaches them) as numbered
+ports of call down one spine, Hallmark's Narrative Workflow macrostructure.
+Each port is a plate beside a dossier: the name, the summary, four facts
+(sea, what it is, arc, landmark), a longer log entry, and the records the
+archive files there (`filedHere`: the characters met at that port, the ship
+received there), each as a `RecordTile` behind its own fog. The reader's
+episode is a horizon on the spine, gold above and dashed below, and a fogged
+port keeps its number and episode while its name, drawing and colour stay out
+of the served HTML; its `id` anchor is set only once it is open, because a
+slug spells a name. Every dossier field obeys the same "safe at the threshold"
+rule as the summaries. An arc is named directly rather than veiled, because
+`places.test.ts` holds that an arc opens no later than any place filed under
+it. `RecordTile` is shared with the character page's neighbours; a place's
+name links to its entry in the log, on the route chart too.
+
+**Every place has a plate, every character a crest, and both are the site's
+own marks.** `src/components/PortPlate.tsx` sets a place's drawing inside a
+rectangular chart frame: a rule in the place's tint, a dashed inner rule,
+graticule ticks along all four edges, corner brackets and a north mark. A
+character's crest is round, a place's plate is square, and the fogged version
+of each is bare.
+
+**The locale shell pins its column to `minmax(0, 1fr)`.** Left implicit the
+column is `auto`, whose minimum is the widest child's min-content, and a page
+grid that resolves `1fr` against indefinite space reports its max-content as
+that minimum: at 375px the shell grew to 521px, and the root's
+`overflow-x: clip` hid it (no horizontal scrollbar, text cut at the edge).
+Check mobile by measuring element rects, not `scrollWidth`.
+
 **Every character has a crest, and it is the site's own mark.**
 `src/components/CharacterCrest.tsx` sets the character's existing line drawing
 inside a seal: a ring in the character's tint, a dashed inner ring, thirty-two
@@ -230,7 +260,7 @@ strokes can be nested in the crest's `<svg>` without a second copy.
 **Every picture is a line drawing made here; no photographs, no official
 artwork.** Toei and Shueisha own every frame of the anime and every panel of
 the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`
-with a nonce-only `script-src`, so nothing is hotlinked either. `src/components/ChartArt.tsx` holds thirty-five
+with a nonce-only `script-src`, so nothing is hotlinked either. `src/components/ChartArt.tsx` holds forty
 drawings, one per record, as lists of SVG path strokes rendered by one
 component: a 160x200 box, a uniform 2px stroke kept at 2px through
 `vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
@@ -238,7 +268,7 @@ character is an object that stands for them (a straw hat, three sheathed
 swords, a violin), never a face or a logo; each place is the place. A drawing
 takes exactly one colour for its main stroke, from the nineteen-hue `tint`
 token set in `tokens.stylex.ts`, and leaves every other line in `ink2`, which
-is what keeps thirty-five illustrations reading as one set. The record's
+is what keeps forty illustrations reading as one set. The record's
 `visual` names its drawing and its tint; `ChartArt.test.tsx` renders all of
 them. The fold is `SeaChartHero.tsx`, the same line at 1600x560.
 

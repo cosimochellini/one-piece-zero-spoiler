@@ -145,7 +145,7 @@ describe('RouteChart', () => {
     expect(screen.getByText('Sei qui · episodio 1200')).toBeInTheDocument()
   })
 
-  it('makes a character a link to their page and leaves the rest as names', () => {
+  it('links a character to their page and a place to the log, and leaves an arc as a name', () => {
     renderWithProviders(<RouteChart entries={entries} progress={1200} />, {
       progress: 1200,
     })
@@ -153,6 +153,10 @@ describe('RouteChart', () => {
     expect(screen.getByRole('link', { name: 'Middle Face' })).toHaveAttribute(
       'href',
       '/en/characters/middle',
+    )
+    expect(screen.getByRole('link', { name: 'Late Island' })).toHaveAttribute(
+      'href',
+      '/en/places#late',
     )
     expect(
       screen.queryByRole('link', { name: 'Opening Saga' }),
@@ -166,6 +170,7 @@ describe('RouteChart', () => {
     )
 
     expect(container.querySelector('a[href*="/characters/"]')).toBeNull()
+    expect(container.querySelector('a[href*="/places"]')).toBeNull()
     expect(screen.getByText('Middle Face')).toBeInTheDocument()
   })
 })
