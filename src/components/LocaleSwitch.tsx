@@ -59,9 +59,17 @@ export function LocaleSwitch() {
                 onClick={() => {
                   remember(candidate)
                 }}
+                // The accessible name is always the full language name; only
+                // what is painted changes with the width.
+                aria-label={t(LABEL_KEY[candidate])}
                 {...stylex.props(styles.link, current && styles.linkCurrent)}
               >
-                {t(LABEL_KEY[candidate])}
+                <span aria-hidden="true" {...stylex.props(styles.full)}>
+                  {t(LABEL_KEY[candidate])}
+                </span>
+                <span aria-hidden="true" {...stylex.props(styles.code)}>
+                  {candidate}
+                </span>
               </Link>
             </li>
           )
@@ -95,16 +103,29 @@ const styles = stylex.create({
     fontWeight: 600,
     letterSpacing: '0.08em',
     minHeight: '44px',
+    minWidth: { default: '44px', '@media (min-width: 40rem)': 0 },
+    justifyContent: 'center',
     outlineColor: { default: 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingInline: space.xs,
+    paddingInline: {
+      default: space.xs2,
+      '@media (min-width: 40rem)': space.xs,
+    },
     textDecorationLine: 'none',
     textTransform: 'uppercase',
     transitionDuration: dur.micro,
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+  },
+  // A phone bar has room for the wordmark, one page link and two language
+  // codes, not two language names: 'Italiano English' alone is 158px.
+  full: {
+    display: { default: 'none', '@media (min-width: 40rem)': 'inline' },
+  },
+  code: {
+    display: { default: 'inline', '@media (min-width: 40rem)': 'none' },
   },
   linkCurrent: {
     color: color.ink,

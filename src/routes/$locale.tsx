@@ -68,6 +68,11 @@ function LocaleLayout() {
 const styles = stylex.create({
   shell: {
     display: 'grid',
+    // `minmax(0, 1fr)` rather than the implicit `1fr`. An implicit column is
+    // `minmax(auto, 1fr)`, whose floor is the widest child's min-content:
+    // one `white-space: nowrap` bar row and the whole shell is wider than a
+    // phone, every page along with it.
+    gridTemplateColumns: 'minmax(0, 1fr)',
     // The footer is pushed to the bottom on a short page without a
     // `min-height: 100vh` hero, which is its own tell.
     gridTemplateRows: 'auto 1fr auto',

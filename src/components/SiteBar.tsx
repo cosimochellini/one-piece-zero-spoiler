@@ -57,16 +57,22 @@ const styles = stylex.create({
   bar: {
     alignItems: 'center',
     display: 'flex',
-    gap: space.md,
+    // The bar may wrap on a narrow phone; it may never widen the page. The
+    // controls keep the right edge when they drop to a second line.
+    flexWrap: 'wrap',
+    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
+    rowGap: 0,
     justifyContent: 'space-between',
-    paddingBlock: space.md,
+    minWidth: 0,
+    paddingBlock: { default: space.sm, '@media (min-width: 40rem)': space.md },
     paddingInline: space.md,
   },
 
   controls: {
     alignItems: 'center',
     display: 'flex',
-    gap: { default: space.sm, '@media (min-width: 40rem)': space.lg },
+    gap: { default: space.xs, '@media (min-width: 40rem)': space.lg },
+    marginInlineStart: 'auto',
   },
 
   wordmark: {
@@ -77,7 +83,7 @@ const styles = stylex.create({
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     textDecorationLine: 'none',
-    fontSize: text.lg,
+    fontSize: { default: text.base, '@media (min-width: 40rem)': text.lg },
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
