@@ -1,6 +1,17 @@
 [
   {
     "date": "2026-09-12",
+    "macrostructure": "Catalogue + grouped inventory (characters index: crests, then shelves by arc) · Split Studio (character page, dossier added)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: one line drawing per record for the whole canonical cast up to Egghead (some three hundred new drawings, filed by saga in src/data/art), fourteen new arc scenes and the Thousand Sunny; CharacterTile plain frame for the shelves",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "index: inventory head · search · 'Featured' crest grid (36) with its fog band · 'The whole book' as shelves, one per arc, heading veiled when the arc is covered, tiles: drawing | name · role, episode beneath — page: crest | dossier (kind · episode · name · role · summary · facts ledger as the dial knows them · log entry) · chart position | strip · nearby crests",
+    "brief": "Add the whole One Piece cast and rewrite every existing copy. Decisions taken with the user: extended canonical cast (~300) up to Egghead, unique drawing each, dossier with per-episode timelines for epithet, affiliation, origin, devil fruit and bounty (the page shows the latest entry the reader has reached), featured list widened to 36, landing chart limited to arcs, places, ships and the featured, shelves grouped by the arc that opens no later than the character."
+  },
+  {
+    "date": "2026-09-12",
     "macrostructure": "Narrative Workflow (places page: the ship's log)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
     "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
