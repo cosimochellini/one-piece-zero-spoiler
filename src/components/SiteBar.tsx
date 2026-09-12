@@ -18,8 +18,8 @@ import {
  * The bar (Hallmark N9, edge-aligned).
  *
  * Wordmark hard-left, the controls hard-right, and nothing in between. The
- * site has two pages and two languages, so the right edge carries one link
- * and the language switch and no more. The reader's bookmark is not repeated
+ * site has three pages and two languages, so the right edge carries two
+ * links and the language switch and no more. The reader's bookmark is not repeated
  * here either: it is drawn on the route as the horizon line, which is where
  * the eye goes for it.
  */
@@ -37,7 +37,7 @@ export function SiteBar() {
       </Link>
 
       <div {...stylex.props(styles.controls)}>
-        <nav aria-label={t('nav.label')}>
+        <nav aria-label={t('nav.label')} {...stylex.props(styles.pages)}>
           <Link
             to="/$locale/characters"
             params={{ locale }}
@@ -45,6 +45,14 @@ export function SiteBar() {
             {...stylex.props(styles.link)}
           >
             {t('nav.characters')}
+          </Link>
+          <Link
+            to="/$locale/places"
+            params={{ locale }}
+            activeProps={{ 'aria-current': 'page' }}
+            {...stylex.props(styles.link)}
+          >
+            {t('nav.places')}
           </Link>
         </nav>
         <LocaleSwitch />
@@ -54,25 +62,36 @@ export function SiteBar() {
 }
 
 const styles = stylex.create({
+  // The wordmark and the controls are two flex items that may wrap: on a
+  // phone the controls drop under the wordmark and keep the right edge, so
+  // the bar is never narrower than its own words and never widens the page.
   bar: {
     alignItems: 'center',
-    display: 'flex',
-    // The bar may wrap on a narrow phone; it may never widen the page. The
-    // controls keep the right edge when they drop to a second line.
-    flexWrap: 'wrap',
     columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
-    rowGap: 0,
+    display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     minWidth: 0,
     paddingBlock: { default: space.sm, '@media (min-width: 40rem)': space.md },
     paddingInline: space.md,
+    rowGap: 0,
   },
 
+  // Two page links and the language switch. They may wrap too, on a 320px
+  // phone, where the switch drops under the page links.
   controls: {
     alignItems: 'center',
+    columnGap: { default: space.xs, '@media (min-width: 40rem)': space.lg },
     display: 'flex',
-    gap: { default: space.xs, '@media (min-width: 40rem)': space.lg },
+    flexWrap: 'wrap',
+    justifyContent: 'flex-end',
     marginInlineStart: 'auto',
+    rowGap: 0,
+  },
+  pages: {
+    alignItems: 'center',
+    display: 'flex',
+    gap: { default: space.xs2, '@media (min-width: 40rem)': space.sm },
   },
 
   wordmark: {

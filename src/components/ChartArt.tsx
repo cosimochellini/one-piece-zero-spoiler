@@ -4,7 +4,7 @@ import type { ArtId, TintId } from '~/data/types'
 import { color, rule, tint } from '~/styles/tokens.stylex'
 
 /**
- * Thirty-five line drawings, one per record, in one file.
+ * Forty line drawings, one per record, in one file.
  *
  * The rules they all obey: a 160x200 box; a single uniform 2px stroke with
  * round caps and joins, kept at 2px whatever size the card is drawn at
@@ -201,6 +201,16 @@ const cup = (x: number, role: Role): Stroke => ({
   d: `M${n(x)} 146 h20 l-3 12 h-14z`,
   role,
 })
+
+/**
+ * One arm of a windmill with its sail, hub at (80, 80), pointing up and to
+ * the right. The other three are the same stroke rotated about the hub.
+ */
+const BLADE = 'M80 80 L104 56 M84.2 75.8 L101.2 58.8 L106.2 63.7 L89.2 80.7 Z'
+
+/** A house front: walls, a pitched roof, a door. */
+const house = (x: number, w: number, top: number, ridge: number) =>
+  `M${n(x)} 150 V${n(top)} h${n(w)} V150 M${n(x - 4)} ${n(top)} L${n(x + w / 2)} ${n(ridge)} L${n(x + w + 4)} ${n(top)} M${n(x + w / 2 - 4)} 150 V${n(top + 16)} h8 V150`
 
 /** A hexagonal cell of the lattice behind the dome. */
 const cell = (x: number, y: number) =>
@@ -639,6 +649,86 @@ const DRAWINGS: Readonly<Record<ArtId, readonly Stroke[]>> = {
       d: `${circle(22, 146, 4)} M22 150 V180 M8 172 Q22 190 36 172 M12 156 h20`,
     },
     ...SEA.slice(1),
+  ],
+
+  // A Marine base: a crenellated tower with its pennant, and the post in the
+  // yard that a pirate hunter was tied to.
+  'shells-town': [
+    { d: 'M56 150 V66 H104 V150' },
+    { d: 'M52 66 h56 M56 66 v-8 h8 v8 M76 66 v-8 h8 v8 M96 66 v-8 h8 v8' },
+    { d: 'M72 84 h16 v10 h-16z M72 106 h16 v10 h-16z' },
+    { d: 'M74 150 V132 a6 6 0 0 1 12 0 V150' },
+    { d: 'M80 58 V22' },
+    { d: 'M80 22 l26 8 l-26 8z', role: 'accent' },
+    { d: 'M12 150 V130 H48' },
+    { d: 'M130 150 V96 M120 108 h20', role: 'accent' },
+    { d: 'M126 118 h8 M126 124 h8' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(1),
+  ],
+
+  // A windmill on a hill, a house beside it, a fence along the road.
+  'foosha-village': [
+    { d: 'M-4 150 C40 118 100 118 164 150' },
+    { d: 'M62 140 L68 88 M92 88 L98 140 M68 88 H92' },
+    { d: 'M66 88 Q80 70 94 88' },
+    { d: BLADE, role: 'accent' },
+    { d: BLADE, role: 'accent', transform: 'rotate(90 80 80)' },
+    { d: BLADE, role: 'accent', transform: 'rotate(180 80 80)' },
+    { d: BLADE, role: 'accent', transform: 'rotate(270 80 80)' },
+    { d: circle(80, 80, 3), role: 'accent' },
+    { d: house(110, 28, 126, 110) },
+    { d: 'M14 146 V136 M26 148 V138 M38 150 V140 M14 141 L38 145' },
+    ...SEA.slice(1),
+  ],
+
+  // A row of house fronts, one roof already broken by a cannonball, and the
+  // pirates' big top rising behind them.
+  'orange-town': [
+    { d: 'M80 40 L26 118 H134z', role: 'accent' },
+    { d: 'M80 40 V26 l12 4 l-12 4', role: 'accent' },
+    { d: 'M62 66 L50 118 M80 40 V118 M98 66 L110 118', role: 'ambient' },
+    { d: house(18, 28, 112, 96) },
+    { d: 'M58 150 V118 h28 V150 M54 118 L64 108 L70 114 L78 102 L90 118' },
+    { d: house(100, 32, 110, 92) },
+    { d: 'M26 126 h10 v10 h-10z M108 122 h8 v8 h-8z M120 122 h8 v8 h-8z' },
+    { d: circle(76, 145, 5) },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(2),
+  ],
+
+  // A mansion on a hill, its gate at the foot, a path down to the shore.
+  'syrup-village': [
+    { d: 'M-4 156 C50 112 110 112 164 156' },
+    { d: 'M50 116 V80 H110 V116 M46 80 L80 60 L114 80' },
+    {
+      d: 'M34 116 V92 H50 M110 92 H126 V116 M30 92 L42 82 L54 92 M106 92 L118 82 L130 92',
+    },
+    { d: 'M60 90 h10 v12 h-10z M90 90 h10 v12 h-10z M76 116 V100 h8 V116' },
+    { d: 'M96 68 V56 h8 V72' },
+    { d: 'M62 150 V128 M98 150 V128 M62 128 Q80 112 98 128', role: 'accent' },
+    { d: 'M70 150 V132 M80 150 V126 M90 150 V132', role: 'accent' },
+    { d: 'M80 150 q-16 12 -40 14', role: 'ambient', dashed: true },
+    ...SEA.slice(2),
+  ],
+
+  // A restaurant that is also a ship: a hull with portholes, the dining
+  // deck and its chimney, and a fish's head for a prow.
+  baratie: [
+    { d: 'M14 126 Q80 122 146 126 L136 154 H24z' },
+    { d: `${circle(60, 140, 3)} ${circle(80, 140, 3)} ${circle(100, 140, 3)}` },
+    { d: 'M50 126 V96 H120 V126 M46 96 H124' },
+    { d: 'M58 104 h10 v10 h-10z M76 104 h10 v10 h-10z M94 104 h10 v10 h-10z' },
+    { d: 'M104 96 V78 h8 V96' },
+    { d: 'M108 74 q-6 -8 0 -16 q6 -8 0 -16', role: 'ambient', dashed: true },
+    { d: 'M40 126 C10 126 -2 104 10 88 C20 76 40 78 46 90', role: 'accent' },
+    { d: circle(26, 94, 3), role: 'accent' },
+    { d: 'M10 100 L28 104 M12 106 l4 4 l4 -4 l4 4 l4 -4', role: 'accent' },
+    {
+      d: 'M144 126 l14 -16 l-2 16 l2 16z M76 96 L86 78 L96 96',
+      role: 'accent',
+    },
+    ...SEA,
   ],
 
   // Arches over the water, a tower behind, a gondola underneath.

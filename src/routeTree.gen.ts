@@ -14,6 +14,7 @@ import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
 import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
+import { Route as LocalePlacesIndexRouteImport } from './routes/$locale/places/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -40,6 +41,11 @@ const LocaleCharactersIdRoute = LocaleCharactersIdRouteImport.update({
   path: '/characters/$id',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocalePlacesIndexRoute = LocalePlacesIndexRouteImport.update({
+  id: '/places/',
+  path: '/places/',
+  getParentRoute: () => LocaleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -47,12 +53,14 @@ export interface FileRoutesByFullPath {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
+  '/$locale/places/': typeof LocalePlacesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/characters': typeof LocaleCharactersIndexRoute
+  '/$locale/places': typeof LocalePlacesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -61,6 +69,7 @@ export interface FileRoutesById {
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
+  '/$locale/places/': typeof LocalePlacesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -70,8 +79,14 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/characters/'
+    | '/$locale/places/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/$locale' | '/$locale/characters/$id' | '/$locale/characters'
+  to:
+    | '/'
+    | '/$locale'
+    | '/$locale/characters/$id'
+    | '/$locale/characters'
+    | '/$locale/places'
   id:
     | '__root__'
     | '/'
@@ -79,6 +94,7 @@ export interface FileRouteTypes {
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/characters/'
+    | '/$locale/places/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -123,6 +139,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleCharactersIdRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/places/': {
+      id: '/$locale/places/'
+      path: '/places'
+      fullPath: '/$locale/places/'
+      preLoaderRoute: typeof LocalePlacesIndexRouteImport
+      parentRoute: typeof LocaleRoute
+    }
   }
 }
 
@@ -130,12 +153,14 @@ interface LocaleRouteChildren {
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
   LocaleCharactersIndexRoute: typeof LocaleCharactersIndexRoute
+  LocalePlacesIndexRoute: typeof LocalePlacesIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,
   LocaleCharactersIndexRoute: LocaleCharactersIndexRoute,
+  LocalePlacesIndexRoute: LocalePlacesIndexRoute,
 }
 
 const LocaleRouteWithChildren =

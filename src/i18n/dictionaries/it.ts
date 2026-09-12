@@ -14,6 +14,7 @@ export const itDictionary: Dictionary = {
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
+  'nav.places': 'Luoghi',
   'nav.label': 'Pagine',
 
   'hero.headline': 'La wiki si ferma dove sei tu',
@@ -95,6 +96,33 @@ export const itDictionary: Dictionary = {
   'character.notFoundTitle': 'Nessun personaggio così',
   'character.notFoundBody':
     'Non c’è niente archiviato a questo indirizzo. Il libro dei segnali elenca tutti quelli che ci sono.',
+
+  'places.title': 'Il giornale di bordo',
+  'places.count':
+    '{count} luoghi, nell’ordine in cui la nave vi fa scalo. Ognuno è archiviato all’episodio che lo mostra per la prima volta.',
+  'places.pageTitle': 'Luoghi — Zero Spoiler',
+  'places.pageDescription':
+    'I luoghi di One Piece come scali di una rotta, ciascuno archiviato all’episodio che lo mostra per la prima volta e coperto finché non ci arrivi.',
+  'places.stage': 'Scalo {index} di {total}',
+  'places.foggedName': 'Un luogo nella nebbia',
+  'places.foggedDescription':
+    'Un luogo di One Piece archiviato all’episodio {episode}. Imposta l’episodio a cui sei arrivato per leggere la sua voce nel giornale.',
+  'places.firstSeen': 'Compare per la prima volta nell’episodio {episode}',
+  'places.sea': 'Mare',
+  'places.form': 'Che cos’è',
+  'places.arc': 'Saga',
+  'places.landmark': 'Punto di riferimento',
+  'places.filedHere': 'Archiviati qui',
+  'places.filedNone': 'Niente dell’archivio è ancora archiviato qui.',
+
+  'sea.east-blue': 'East Blue',
+  'sea.grand-line': 'Rotta Maggiore',
+  'sea.new-world': 'Nuovo Mondo',
+
+  'form.village': 'Villaggio',
+  'form.town': 'Cittadina',
+  'form.restaurant': 'Ristorante galleggiante',
+  'form.island': 'Isola',
 
   'kind.character': 'Personaggio',
   'kind.arc': 'Saga',

@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-12",
+    "macrostructure": "Narrative Workflow (places page: the ship's log)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: PortPlate chart frame (tinted rule, dashed inner rule, graticule ticks, corner brackets, north mark) around each place drawing; five new place drawings (Shells Town, Foosha Village, Orange Town, Syrup Village, Baratie)",
+    "nav": "N9 edge-aligned (shared bar, gains a second page link and wraps on a phone)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "log head (title · count · dial) · numbered ports of call down one spine, each a plate | dossier spread (name · sentence · four facts · log entry · records filed here as tiles) · the reader's episode as a horizon on the spine · fogged ports keep number and episode only",
+    "brief": "Places page with the first five places as worked examples, all useful data per place, and the assets to make the page good to look at and useful. Autonomous run: audience / use / tone inferred from the locked design system and disclosed. Also fixed the locale shell's implicit auto column, which let every page grow past a phone viewport under the root's overflow clip."
+  },
+  {
     "date": "2026-09-11",
     "macrostructure": "Catalogue (characters index) + Split Studio (character page)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",

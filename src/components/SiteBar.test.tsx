@@ -10,7 +10,7 @@ vi.mock('~/components/LocaleSwitch', () => ({
 }))
 
 describe('SiteBar', () => {
-  it('carries the wordmark, one page link and the language control, and nothing else', () => {
+  it('carries the wordmark, two page links and the language control, and nothing else', () => {
     renderWithProviders(<SiteBar />)
 
     const banner = screen.getByRole('banner')
@@ -24,10 +24,13 @@ describe('SiteBar', () => {
       within(banner).getByRole('link', { name: 'Characters' }),
     ).toHaveAttribute('href', '/en/characters')
     expect(
+      within(banner).getByRole('link', { name: 'Places' }),
+    ).toHaveAttribute('href', '/en/places')
+    expect(
       within(banner).getByRole('navigation', { name: 'Language' }),
     ).toBeInTheDocument()
     // No link row filling the middle: the space is the design.
-    expect(within(banner).getAllByRole('link')).toHaveLength(2)
+    expect(within(banner).getAllByRole('link')).toHaveLength(3)
   })
 
   it('marks the characters link as the current page when the reader is on it', () => {
@@ -39,12 +42,27 @@ describe('SiteBar', () => {
     )
   })
 
-  it('does not mark the characters link on the landing', () => {
+  it('marks the places link as the current page when the reader is on it', () => {
+    renderWithProviders(<SiteBar />, { path: '/en/places' })
+
+    expect(screen.getByRole('link', { name: 'Places' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(
+      screen.getByRole('link', { name: 'Characters' }),
+    ).not.toHaveAttribute('aria-current')
+  })
+
+  it('does not mark either page link on the landing', () => {
     renderWithProviders(<SiteBar />, { path: '/en' })
 
     expect(
       screen.getByRole('link', { name: 'Characters' }),
     ).not.toHaveAttribute('aria-current')
+    expect(screen.getByRole('link', { name: 'Places' })).not.toHaveAttribute(
+      'aria-current',
+    )
   })
 
   it('links in the active locale', () => {
@@ -53,6 +71,10 @@ describe('SiteBar', () => {
     expect(screen.getByRole('link', { name: 'Personaggi' })).toHaveAttribute(
       'href',
       '/it/characters',
+    )
+    expect(screen.getByRole('link', { name: 'Luoghi' })).toHaveAttribute(
+      'href',
+      '/it/places',
     )
   })
 })
