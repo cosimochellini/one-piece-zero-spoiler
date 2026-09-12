@@ -171,16 +171,18 @@ export const dressrosaArt = {
 
   // A round body with a propeller spinning over it.
   buffalo: [
-    { d: circle(80, 118, 38) },
-    { d: circle(80, 54, 6) },
-    { d: 'M74 54 C52 46 30 48 26 56 C30 64 52 64 74 58 Z', role: 'accent' },
+    { d: 'M48 96 V166 a32 8 0 0 0 64 0 V96' },
+    { d: ellipse(80, 96, 32, 8) },
+    { d: 'M48 118 h64 M48 144 h64', role: 'soft' },
+    { d: 'M80 88 V64' },
+    { d: circle(80, 60, 5) },
+    { d: 'M75 58 C56 48 34 50 28 60 C34 68 56 66 75 62 Z', role: 'accent' },
     {
-      d: 'M86 54 C108 46 130 48 134 56 C130 64 108 64 86 58 Z',
+      d: 'M85 58 C104 48 126 50 132 60 C126 68 104 66 85 62 Z',
       role: 'accent',
     },
-    { d: 'M30 36 q50 -12 100 0', role: 'ambient', dashed: true },
-    { d: 'M56 110 q24 12 48 0', role: 'soft' },
-    shadow(80, 164, 34),
+    { d: 'M34 40 q46 -14 92 0', role: 'ambient', dashed: true },
+    shadow(80, 184, 40),
   ],
 
   // A colosseum with a wooden soldier standing at the gate.
@@ -686,17 +688,17 @@ export const dressrosaArt = {
 
   // A spiked club and a sake gourd set down beside it.
   kaido: [
-    { d: 'M70 186 V140 h20 V186' },
-    { d: 'M62 140 V72 a18 18 0 0 1 36 0 v68 z' },
+    { d: 'M22 150 L60 112' },
+    { d: 'M56 108 L120 44 a10 10 0 0 1 14 14 L70 122 a10 10 0 0 1 -14 -14 z' },
     {
-      d: 'M62 86 l-10 -4 M62 102 l-10 -4 M62 118 l-10 -4 M98 86 l10 -4 M98 102 l10 -4 M98 118 l10 -4',
+      d: 'M78 96 l-6 -12 M92 82 l-6 -12 M106 68 l-6 -12 M86 112 l12 6 M100 98 l12 6 M114 84 l12 6',
       role: 'accent',
     },
-    { d: 'M70 64 l-6 -10 M80 58 v-12 M90 64 l6 -10', role: 'accent' },
+    { d: 'M124 40 l8 -8', role: 'accent' },
     {
-      d: 'M124 124 a10 10 0 1 0 14 0 c6 6 8 12 8 20 a15 15 0 0 1 -30 0 c0 -8 2 -14 8 -20 z',
+      d: 'M40 158 a8 8 0 1 0 12 0 c6 6 8 12 8 20 a14 14 0 0 1 -28 0 c0 -8 2 -14 8 -20 z',
     },
-    { d: 'M126 120 h10 v-8 h-10 z' },
-    shadow(80, 192, 44),
+    { d: 'M42 154 h8 v-8 h-8 z' },
+    shadow(80, 194, 48),
   ],
 } satisfies Drawings
