@@ -1,13 +1,14 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 
-import { EpisodeDial } from '~/components/EpisodeDial'
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
 import { route } from '~/data/characters'
+import { orderByMode } from '~/data/order'
 import { useT } from '~/i18n/LocaleContext'
-import { useEpisode } from '~/lib/progress/EpisodeContext'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
   color,
@@ -66,10 +67,10 @@ const FAQ = [
  * The fold is one line drawing — a night sea, a small caravel, a route running
  * into fog — with the headline set into its lower edge. Under it the page is
  * one composition: the archive drawn as a sea route, every waypoint with its
- * own drawing, and the reader's episode as a horizon line across it. The
- * orientation column on the left holds the lede, the one control and the
- * legend, and on a wide screen it stays put while the route scrolls, so moving
- * the dial moves the line in view. That is the demonstration; nothing on the
+ * own drawing, and the reader's bookmark as a horizon line across it. The
+ * orientation column on the left holds the lede and the legend, and on a wide
+ * screen it stays put while the route scrolls, so saving a new bookmark from
+ * the bar moves the line in view. That is the demonstration; nothing on the
  * page describes it instead.
  *
  * Below the chart, three questions answered plainly. They are the rules of the
@@ -77,12 +78,13 @@ const FAQ = [
  */
 function Landing() {
   const t = useT()
-  const { progress } = useEpisode()
+  const { bookmark } = useBookmark()
 
-  // In threshold order, so the route runs in the order the anime reaches each
-  // waypoint and the horizon falls at a single point along it.
-  const ordered = route
-  const open = ordered.filter((entry) => isRevealed(entry, progress)).length
+  // In the order of the threshold the reader counts in, so the route runs in
+  // the order their unit reaches each waypoint and the horizon falls at a
+  // single point along it.
+  const ordered = orderByMode(route, modeOf(bookmark))
+  const open = ordered.filter((entry) => isRevealed(entry, bookmark)).length
 
   return (
     <main id="content" {...stylex.props(styles.page)}>
@@ -96,7 +98,6 @@ function Landing() {
       <div {...stylex.props(styles.chart)}>
         <section {...stylex.props(styles.orientation, enter.band, enter.at(1))}>
           <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
-          <EpisodeDial />
           <RouteLegend
             open={open}
             covered={ordered.length - open}
@@ -111,7 +112,7 @@ function Landing() {
           <h2 id="route-title" {...stylex.props(styles.routeTitle)}>
             {t('chart.title')}
           </h2>
-          <RouteChart entries={ordered} progress={progress} />
+          <RouteChart entries={ordered} bookmark={bookmark} />
         </section>
       </div>
 
@@ -153,8 +154,8 @@ const styles = stylex.create({
     position: 'relative',
   },
   // Two columns from 60rem: the orientation column is narrower than the
-  // route, and pinned, so the dial is in view for the whole length of the
-  // chart. Below that the two stack, dial first.
+  // route, and pinned, so the legend is in view for the whole length of the
+  // chart. Below that the two stack, lede first.
   chart: {
     columnGap: space.xl2,
     display: 'grid',

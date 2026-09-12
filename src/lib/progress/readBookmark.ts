@@ -3,7 +3,7 @@ import { getCookie } from '@tanstack/react-start/server'
 
 import { parseCookieHeader } from '~/lib/cookies'
 
-import { EPISODE_COOKIE, parseEpisode, type Progress } from './episode'
+import { EPISODE_COOKIE, parseBookmark, type Bookmark } from './episode'
 
 /**
  * Reads the bookmark on whichever side is asking.
@@ -17,8 +17,8 @@ import { EPISODE_COOKIE, parseEpisode, type Progress } from './episode'
  * HTML, so a covered record is already covered in the markup. A reader with
  * scripts disabled, or on a slow connection, never sees an uncovered flash.
  */
-export const readProgress: () => Progress = createIsomorphicFn()
-  .server((): Progress => parseEpisode(getCookie(EPISODE_COOKIE)))
-  .client((): Progress =>
-    parseEpisode(parseCookieHeader(document.cookie).get(EPISODE_COOKIE)),
+export const readBookmark: () => Bookmark = createIsomorphicFn()
+  .server((): Bookmark => parseBookmark(getCookie(EPISODE_COOKIE)))
+  .client((): Bookmark =>
+    parseBookmark(parseCookieHeader(document.cookie).get(EPISODE_COOKIE)),
   )

@@ -19,26 +19,54 @@ export const itDictionary: Dictionary = {
 
   'hero.headline': 'La wiki si ferma dove sei tu',
   'hero.lede':
-    'Imposta l’episodio a cui sei arrivato. Ogni personaggio, saga e isola archiviati dopo quel punto restano nella nebbia, finché non decidi tu.',
+    'Imposta il segnalibro nella barra qui sopra: l’episodio dell’anime, la stagione e l’episodio, o il capitolo del manga a cui sei arrivato. Ogni personaggio, saga e isola archiviati dopo quel punto restano nella nebbia, finché non decidi tu.',
 
-  'dial.label': 'Episodio a cui sei arrivato',
-  'dial.hint': 'Da 1 a {max}.',
-  'dial.errorRange': 'Scrivi un numero tra 1 e {max}.',
-  'dial.errorEmpty': 'Scrivi l’episodio a cui sei arrivato.',
-  'dial.decrease': 'Un episodio indietro',
-  'dial.increase': 'Un episodio avanti',
-  'dial.clear': 'Dimentica il mio episodio',
+  'mark.unset': 'Imposta episodio',
+  'mark.episode': 'EP {threshold}',
+  'mark.season': '{threshold}',
+  'mark.chapter': 'CH {threshold}',
+  'mark.change': 'Cambia il tuo segnalibro, {threshold}',
 
-  'veil.locked': 'Nella nebbia fino all’episodio {episode}',
+  'dialog.title': 'Dove sei arrivato?',
+  'dialog.lede':
+    'Scegli come conti, poi il numero. Tutto ciò che è archiviato dopo resta nella nebbia.',
+  'dialog.modeLabel': 'Conta per',
+  'dialog.modeEpisode': 'Episodio dell’anime',
+  'dialog.modeSeason': 'Stagione ed episodio',
+  'dialog.modeChapter': 'Capitolo del manga',
+  'dialog.episodeLabel': 'Episodio a cui sei arrivato',
+  'dialog.chapterLabel': 'Capitolo a cui sei arrivato',
+  'dialog.seasonLabel': 'Stagione',
+  'dialog.seasonPlaceholder': 'Scegli una stagione',
+  'dialog.seasonOption': 'Stagione {season} · episodi {first}–{last}',
+  'dialog.seasonOptionOpen': 'Stagione {season} · dall’episodio {first}',
+  'dialog.seasonEpisodeLabel': 'Episodio nella stagione',
+  'dialog.hint': 'Da 1 a {max}.',
+  'dialog.errorEmpty': 'Scrivi un numero.',
+  'dialog.errorRange': 'Scrivi un numero tra 1 e {max}.',
+  'dialog.errorSeason': 'Prima scegli una stagione.',
+  'dialog.decrease': 'Uno indietro',
+  'dialog.increase': 'Uno avanti',
+  'dialog.save': 'Salva',
+  'dialog.forget': 'Dimentica il mio segnalibro',
+  'dialog.cancel': 'Annulla',
+
+  'veil.locked.episode': 'Nella nebbia fino all’episodio {threshold}',
+  'veil.locked.season': 'Nella nebbia fino a {threshold}',
+  'veil.locked.chapter': 'Nella nebbia fino al capitolo {threshold}',
   'veil.reveal': 'Dirada la nebbia comunque',
   'veil.revealShort': 'Dirada',
   'veil.placeholder': 'Spoiler',
 
   'chart.title': 'La rotta, fin dove hai navigato',
-  'chart.opensAt': 'Episodio {episode}',
-  'chart.hereSet': 'Sei qui · episodio {episode}',
+  'chart.opensAt.episode': 'Episodio {threshold}',
+  'chart.opensAt.season': '{threshold}',
+  'chart.opensAt.chapter': 'Capitolo {threshold}',
+  'chart.hereSet.episode': 'Sei qui · episodio {threshold}',
+  'chart.hereSet.season': 'Sei qui · {threshold}',
+  'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
   'chart.hereUnset':
-    'Nessun episodio impostato · tutta la rotta è nella nebbia',
+    'Nessun segnalibro impostato · tutta la rotta è nella nebbia',
 
   'legend.open': 'aperte per te',
   'legend.covered': 'nella nebbia',
@@ -46,8 +74,8 @@ export const itDictionary: Dictionary = {
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
-    'Anime. Ogni soglia conta episodi dell’anime, e quando è incerta viene arrotondata per eccesso: una soglia troppo bassa dirada la nebbia in anticipo, ed è l’unico errore che qui conta davvero.',
-  'faq.bookmarkQ': 'Dove vive il mio episodio?',
+    'Entrambi. Conta per episodio dell’anime, per stagione ed episodio, o per capitolo del manga: ogni voce ha una soglia in episodi e una in capitoli, e quando è incerta viene arrotondata per eccesso. Una soglia troppo bassa dirada la nebbia in anticipo, ed è l’unico errore che qui conta davvero.',
+  'faq.bookmarkQ': 'Dove vive il mio segnalibro?',
   'faq.bookmarkA':
     'In un cookie su questo dispositivo. Il server lo legge prima che la pagina sia disegnata, così niente sfugge nell’istante prima che parta lo script. Nessun account, nessun tracciamento.',
   'faq.peekQ': 'Posso guardare comunque?',
@@ -56,7 +84,7 @@ export const itDictionary: Dictionary = {
 
   'footer.lead': 'Nessuno dovrebbe sapere come va a finire prima di arrivarci.',
   'footer.colophon':
-    'Zero Spoiler è una wiki di One Piece disegnata come una carta nautica: la rotta è l’archivio ordinato per l’episodio da cui ogni voce si apre, e la linea dell’orizzonte la sposti tu. Le soglie contano episodi dell’anime. Il tuo segnalibro è un cookie su questo dispositivo e viene letto dal server. Ogni immagine è un disegno a tratto fatto per questo sito; non compare nessuna immagine ufficiale. Composto in Bricolage Grotesque, Instrument Sans e JetBrains Mono. Licenza MIT.',
+    'Zero Spoiler è una wiki di One Piece disegnata come una carta nautica: la rotta è l’archivio ordinato per l’episodio da cui ogni voce si apre, e la linea dell’orizzonte la sposti tu. Le soglie contano episodi dell’anime o capitoli del manga, a tua scelta. Il tuo segnalibro è un cookie su questo dispositivo e viene letto dal server. Ogni immagine è un disegno a tratto fatto per questo sito; non compare nessuna immagine ufficiale. Composto in Bricolage Grotesque, Instrument Sans e JetBrains Mono. Licenza MIT.',
 
   'characters.title': 'Il libro dei segnali',
   'characters.count':
@@ -67,7 +95,7 @@ export const itDictionary: Dictionary = {
   'characters.noMatch': 'Nessun personaggio aperto si chiama “{query}”.',
   'characters.foggedTitle': '{count} nella nebbia',
   'characters.foggedHint':
-    'I loro nomi sono coperti, quindi non rispondono a una ricerca. Sposta il segnalibro per aprirli.',
+    'I loro nomi sono coperti, quindi non rispondono a una ricerca. Sposta il segnalibro nella barra per aprirli.',
   'characters.foggedTitleOne': '1 nella nebbia',
   'characters.allOpen':
     'Niente è nella nebbia. Ogni personaggio è aperto per te.',
@@ -75,11 +103,19 @@ export const itDictionary: Dictionary = {
   'characters.pageDescription':
     'Venti personaggi di One Piece, ciascuno archiviato all’episodio che lo introduce e coperto finché non ci arrivi.',
 
-  'character.opensAt': 'Compare per la prima volta nell’episodio {episode}',
+  'character.opensAt.episode':
+    'Compare per la prima volta nell’episodio {threshold}',
+  'character.opensAt.season': 'Compare per la prima volta in {threshold}',
+  'character.opensAt.chapter':
+    'Compare per la prima volta nel capitolo {threshold}',
   'character.foggedName': 'Un personaggio nella nebbia',
   'character.foggedTitle': 'Un personaggio nella nebbia — Zero Spoiler',
-  'character.foggedDescription':
-    'Un personaggio di One Piece archiviato all’episodio {episode}. Imposta l’episodio a cui sei arrivato per leggere la pagina.',
+  'character.foggedDescription.episode':
+    'Un personaggio di One Piece archiviato all’episodio {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
+  'character.foggedDescription.season':
+    'Un personaggio di One Piece archiviato a {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
+  'character.foggedDescription.chapter':
+    'Un personaggio di One Piece archiviato al capitolo {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
   'character.pageTitle': '{name} — Zero Spoiler',
   'character.back': 'Tutti i personaggi',
   'character.routeTitle': 'Sulla rotta',
@@ -92,7 +128,7 @@ export const itDictionary: Dictionary = {
   'character.routeEnd': 'Ancora niente. Questa è l’ultima voce archiviata.',
   'character.nearbyTitle': 'Navigano vicino',
   'character.nearbyLede':
-    'I personaggi in elenco archiviati più vicino a questo, per episodio.',
+    'I personaggi in elenco archiviati più vicino a questo sulla rotta.',
   'character.notFoundTitle': 'Nessun personaggio così',
   'character.notFoundBody':
     'Non c’è niente archiviato a questo indirizzo. Il libro dei segnali elenca tutti quelli che ci sono.',
@@ -105,9 +141,17 @@ export const itDictionary: Dictionary = {
     'I luoghi di One Piece come scali di una rotta, ciascuno archiviato all’episodio che lo mostra per la prima volta e coperto finché non ci arrivi.',
   'places.stage': 'Scalo {index} di {total}',
   'places.foggedName': 'Un luogo nella nebbia',
-  'places.foggedDescription':
-    'Un luogo di One Piece archiviato all’episodio {episode}. Imposta l’episodio a cui sei arrivato per leggere la sua voce nel giornale.',
-  'places.firstSeen': 'Compare per la prima volta nell’episodio {episode}',
+  'places.foggedDescription.episode':
+    'Un luogo di One Piece archiviato all’episodio {threshold}. Imposta il tuo segnalibro per leggere la sua voce nel giornale.',
+  'places.foggedDescription.season':
+    'Un luogo di One Piece archiviato a {threshold}. Imposta il tuo segnalibro per leggere la sua voce nel giornale.',
+  'places.foggedDescription.chapter':
+    'Un luogo di One Piece archiviato al capitolo {threshold}. Imposta il tuo segnalibro per leggere la sua voce nel giornale.',
+  'places.firstSeen.episode':
+    'Compare per la prima volta nell’episodio {threshold}',
+  'places.firstSeen.season': 'Compare per la prima volta in {threshold}',
+  'places.firstSeen.chapter':
+    'Compare per la prima volta nel capitolo {threshold}',
   'places.sea': 'Mare',
   'places.form': 'Che cos’è',
   'places.arc': 'Saga',

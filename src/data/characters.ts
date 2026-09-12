@@ -1,6 +1,7 @@
 import type { Locale } from '~/i18n/locales'
 
 import { entities } from './entities'
+import { orderByMode } from './order'
 import type { Entity, LocalizedText } from './types'
 
 /**
@@ -107,9 +108,7 @@ export const CHARACTER_ROLES: Readonly<Record<string, LocalizedText>> = {
 }
 
 /** The whole archive in the order the anime reaches it. */
-export const route: readonly Entity[] = [...entities].sort(
-  (a, b) => a.revealedAtEpisode - b.revealedAtEpisode,
-)
+export const route: readonly Entity[] = orderByMode(entities, 'episode')
 
 /** Every character record, in route order. */
 export const characters: readonly Entity[] = route.filter(
@@ -147,20 +146,25 @@ export type RoutePosition = {
   readonly next: Entity | undefined
 }
 
-export function routePositionOf(entity: Entity): RoutePosition {
-  const index = route.findIndex((candidate) => candidate.id === entity.id)
+export function routePositionOf(
+  entity: Entity,
+  ordered: readonly Entity[] = route,
+): RoutePosition {
+  const index = ordered.findIndex((candidate) => candidate.id === entity.id)
 
   return {
     index,
-    total: route.length,
-    previous: index > 0 ? route[index - 1] : undefined,
-    next: route[index + 1],
+    total: ordered.length,
+    previous: index > 0 ? ordered[index - 1] : undefined,
+    next: ordered[index + 1],
   }
 }
 
 /**
- * The featured characters filed closest to this one, by threshold, this one
- * excluded. Ties go to whoever comes first on the route.
+ * The featured characters filed closest to this one, by anime episode, this
+ * one excluded. Ties go to whoever comes first on the route. The distance is
+ * always measured in episodes, whatever the reader counts in: the route is
+ * the anime's order and "nearby" means nearby on it.
  */
 export function nearbyCharacters(entity: Entity, count: number): Entity[] {
   return featuredCharacters
