@@ -63,27 +63,30 @@ export function SiteBar() {
 
 const styles = stylex.create({
   // The wordmark and the controls are two flex items that may wrap: on a
-  // phone the controls drop under the wordmark and keep to the right edge,
-  // so nothing in the bar is ever narrower than its own words.
+  // phone the controls drop under the wordmark and keep the right edge, so
+  // the bar is never narrower than its own words and never widens the page.
   bar: {
     alignItems: 'center',
-    columnGap: space.md,
+    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
-    paddingBlock: space.md,
+    minWidth: 0,
+    paddingBlock: { default: space.sm, '@media (min-width: 40rem)': space.md },
     paddingInline: space.md,
-    rowGap: space.xs,
+    rowGap: 0,
   },
 
+  // Two page links and the language switch. They may wrap too, on a 320px
+  // phone, where the switch drops under the page links.
   controls: {
     alignItems: 'center',
-    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.lg },
+    columnGap: { default: space.xs, '@media (min-width: 40rem)': space.lg },
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
     marginInlineStart: 'auto',
-    rowGap: space.xs2,
+    rowGap: 0,
   },
   pages: {
     alignItems: 'center',
@@ -99,7 +102,7 @@ const styles = stylex.create({
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     textDecorationLine: 'none',
-    fontSize: text.lg,
+    fontSize: { default: text.base, '@media (min-width: 40rem)': text.lg },
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,

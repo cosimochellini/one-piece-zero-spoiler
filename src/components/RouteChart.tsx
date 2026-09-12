@@ -305,13 +305,18 @@ const styles = stylex.create({
     paddingInlineStart: 0,
   },
 
-  // The rail is a fixed 4rem so consecutive segments line up; the body takes
-  // the rest and may shrink to zero, which is what lets a long unbroken name
-  // wrap instead of pushing the page sideways.
+  // The rail is a fixed width so consecutive segments line up; the body
+  // takes the rest and may shrink to zero, which is what lets a long
+  // unbroken name wrap instead of pushing the page sideways. On a phone the
+  // rail is 2.5rem: the compass is 2rem, and every rem the rail keeps is a
+  // rem the words lose on a 320px screen.
   row: {
-    columnGap: space.md,
+    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
     display: 'grid',
-    gridTemplateColumns: '4rem minmax(0, 1fr)',
+    gridTemplateColumns: {
+      default: '2.5rem minmax(0, 1fr)',
+      '@media (min-width: 40rem)': '4rem minmax(0, 1fr)',
+    },
   },
   rail: {
     position: 'relative',
@@ -395,25 +400,34 @@ const styles = stylex.create({
     fontFamily: font.body,
     fontWeight: 600,
   },
-  // Picture beside words at every width. 7rem of frame on a phone still
-  // leaves the words 55% of a 320px row; from 60rem the picture is the
+  // Picture above words on a phone, beside them from 40rem. A 320px row
+  // has about 230px left after the rail; a 7rem picture beside that left
+  // the words 80px and split names mid-word. From 60rem the picture is the
   // larger half of the card, because the pictures are the point.
   card: {
-    columnGap: { default: space.md, '@media (min-width: 40rem)': space.lg },
+    columnGap: { default: 0, '@media (min-width: 40rem)': space.lg },
     display: 'grid',
     gridTemplateColumns: {
-      default: '7rem minmax(0, 1fr)',
+      default: 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': '11rem minmax(0, 1fr)',
       '@media (min-width: 60rem)': '14rem minmax(0, 1fr)',
     },
+    rowGap: { default: space.sm, '@media (min-width: 40rem)': 0 },
   },
   words: {
+    // Packed to the top: with the default `stretch` the two rows share the
+    // picture's height and the summary floats halfway down the card.
+    alignContent: 'start',
     display: 'grid',
     gap: space.xs2,
     minWidth: 0,
   },
   frame: {
     aspectRatio: '4 / 5',
+    // Stacked on a phone the picture keeps the size it has beside the
+    // words on a tablet, not the full row: a route of 35 full-width
+    // drawings is a feed, not a chart.
+    maxWidth: { default: '9rem', '@media (min-width: 40rem)': 'none' },
     backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
@@ -426,7 +440,7 @@ const styles = stylex.create({
   name: {
     color: color.ink,
     fontFamily: font.display,
-    fontSize: text.xl,
+    fontSize: { default: text.lg, '@media (min-width: 40rem)': text.xl },
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
