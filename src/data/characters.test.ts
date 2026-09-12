@@ -1,27 +1,38 @@
 import { LOCALES } from '~/i18n/locales'
+import { EPISODE_CEILING } from '~/lib/progress/episode'
 
 import {
-  CHARACTER_ROLES,
+  bookSections,
+  CHARACTER_DOSSIERS,
   characters,
+  chart,
+  chartWith,
+  dossierOf,
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
   foldName,
   getCharacter,
   matchName,
   nearbyCharacters,
-  route,
   routePositionOf,
 } from './characters'
 import { entities } from './entities'
+import type { Entity, LocalizedText, Timeline } from './types'
 
-describe('the featured twenty', () => {
-  it('lists exactly twenty distinct characters that all exist', () => {
-    expect(FEATURED_CHARACTER_IDS).toHaveLength(20)
-    expect(new Set(FEATURED_CHARACTER_IDS).size).toBe(20)
+function must(id: string): Entity {
+  const entity = getCharacter(id)
+  if (entity === undefined) throw new Error(`no character ${id}`)
+  return entity
+}
+
+describe('the featured list', () => {
+  it('lists exactly thirty-six distinct characters that all exist', () => {
+    expect(FEATURED_CHARACTER_IDS).toHaveLength(36)
+    expect(new Set(FEATURED_CHARACTER_IDS).size).toBe(36)
     for (const id of FEATURED_CHARACTER_IDS) {
-      expect(getCharacter(id)?.kind).toBe('character')
+      expect(getCharacter(id)?.kind, id).toBe('character')
     }
-    expect(featuredCharacters).toHaveLength(20)
+    expect(featuredCharacters).toHaveLength(36)
   })
 
   it('keeps them in route order, not in ranking order', () => {
@@ -31,21 +42,76 @@ describe('the featured twenty', () => {
   })
 })
 
-describe('the dossier', () => {
-  it('gives every character a role in every locale', () => {
+describe('the dossiers', () => {
+  it('give every character a dossier with a role and a log in every locale', () => {
     for (const character of characters) {
-      const role = CHARACTER_ROLES[character.id]
-      expect(role, character.id).toBeDefined()
+      const dossier = dossierOf(character)
+      expect(dossier, character.id).toBeDefined()
       for (const locale of LOCALES) {
-        expect(role?.[locale].length).toBeGreaterThan(0)
+        expect(dossier?.role[locale].length, character.id).toBeGreaterThan(0)
+        expect(dossier?.log[locale].length, character.id).toBeGreaterThan(0)
       }
     }
   })
 
-  it('has no role for a record that is not a character', () => {
-    const others = entities.filter((e) => e.kind !== 'character')
-    for (const other of others) {
-      expect(CHARACTER_ROLES[other.id]).toBeUndefined()
+  it('has no dossier for a record that is not a character', () => {
+    for (const other of entities.filter((e) => e.kind !== 'character')) {
+      expect(CHARACTER_DOSSIERS[other.id]).toBeUndefined()
+    }
+    for (const id of Object.keys(CHARACTER_DOSSIERS)) {
+      expect(getCharacter(id), id).toBeDefined()
+    }
+  })
+
+  it('files every timeline in order, from the threshold on, within the dial', () => {
+    const check = (
+      character: Entity,
+      field: string,
+      timeline: Timeline<unknown> | undefined,
+    ) => {
+      if (timeline === undefined) return
+      const label = `${character.id}.${field}`
+      expect(timeline.length, label).toBeGreaterThan(0)
+      for (const [index, entry] of timeline.entries()) {
+        expect(Number.isInteger(entry.episode), label).toBe(true)
+        expect(entry.episode, label).toBeGreaterThanOrEqual(
+          character.revealedAtEpisode,
+        )
+        expect(entry.episode, label).toBeLessThanOrEqual(EPISODE_CEILING)
+        const previous = timeline[index - 1]
+        if (previous !== undefined) {
+          expect(entry.episode, label).toBeGreaterThan(previous.episode)
+        }
+      }
+    }
+    const text = (
+      character: Entity,
+      field: string,
+      timeline: Timeline<LocalizedText> | undefined,
+    ) => {
+      check(character, field, timeline)
+      for (const entry of timeline ?? []) {
+        for (const locale of LOCALES) {
+          expect(
+            entry.value[locale].length,
+            `${character.id}.${field}`,
+          ).toBeGreaterThan(0)
+        }
+      }
+    }
+
+    for (const character of characters) {
+      const dossier = dossierOf(character)
+      if (dossier === undefined) continue
+      text(character, 'affiliation', dossier.affiliation)
+      text(character, 'origin', dossier.origin)
+      text(character, 'epithet', dossier.epithet)
+      text(character, 'devilFruit', dossier.devilFruit)
+      check(character, 'bounty', dossier.bounty)
+      for (const entry of dossier.bounty ?? []) {
+        expect(Number.isInteger(entry.value), character.id).toBe(true)
+        expect(entry.value, character.id).toBeGreaterThan(0)
+      }
     }
   })
 })
@@ -59,53 +125,115 @@ describe('getCharacter', () => {
   })
 })
 
+describe('the chart', () => {
+  it('draws every arc, place and ship and only the featured characters', () => {
+    const others = entities.filter((e) => e.kind !== 'character')
+    for (const other of others) {
+      expect(chart.map((e) => e.id)).toContain(other.id)
+    }
+    const drawn = chart.filter((e) => e.kind === 'character')
+    expect(drawn.map((e) => e.id).sort()).toEqual(
+      [...FEATURED_CHARACTER_IDS].sort(),
+    )
+  })
+
+  it('is in threshold order', () => {
+    const thresholds = chart.map((e) => e.revealedAtEpisode)
+    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+  })
+
+  it('is itself for a record already drawn', () => {
+    expect(chartWith(must('nami'))).toBe(chart)
+  })
+
+  it('sets an undrawn record in at its threshold, after its contemporaries', () => {
+    const perona = must('perona')
+    expect(chart.map((e) => e.id)).not.toContain('perona')
+
+    const drawn = chartWith(perona)
+    const index = drawn.findIndex((e) => e.id === 'perona')
+    expect(drawn).toHaveLength(chart.length + 1)
+    expect(drawn[index - 1]?.revealedAtEpisode).toBeLessThanOrEqual(340)
+    expect(drawn[index + 1]?.revealedAtEpisode).toBeGreaterThan(340)
+    // Brook is filed at 339, one episode before her, so he comes first.
+    expect(drawn[index - 1]?.id).toBe('brook')
+  })
+})
+
+describe('the shelves', () => {
+  it('shelve every character exactly once, in route order', () => {
+    const shelved = bookSections.flatMap((s) => s.characters.map((c) => c.id))
+    expect(shelved.sort()).toEqual(characters.map((c) => c.id).sort())
+
+    const opens = bookSections.map((s) => s.arc.revealedAtEpisode)
+    expect(opens).toEqual([...opens].sort((a, b) => a - b))
+  })
+
+  it('never puts a character under a heading that opens after them', () => {
+    for (const section of bookSections) {
+      expect(section.arc.kind).toBe('arc')
+      for (const character of section.characters) {
+        expect(section.arc.revealedAtEpisode, character.id).toBeLessThanOrEqual(
+          character.revealedAtEpisode,
+        )
+      }
+    }
+  })
+
+  it('shelves the East Blue crew under the East Blue saga', () => {
+    const eastBlue = bookSections.find((s) => s.arc.id === 'east-blue')
+    expect(eastBlue?.characters.map((c) => c.id)).toContain('monkey-d-luffy')
+    expect(eastBlue?.characters.map((c) => c.id)).toContain('smoker')
+    expect(eastBlue?.characters.map((c) => c.id)).not.toContain('crocodile')
+  })
+})
+
 describe('routePositionOf', () => {
   it('places the first record at the start with nothing before it', () => {
-    const first = route[0]
-    if (first === undefined) throw new Error('empty route')
+    const first = chart[0]
+    if (first === undefined) throw new Error('empty chart')
     const position = routePositionOf(first)
 
     expect(position.index).toBe(0)
-    expect(position.total).toBe(entities.length)
+    expect(position.total).toBe(chart.length)
     expect(position.previous).toBeUndefined()
-    expect(position.next).toBe(route[1])
+    expect(position.next).toBe(chart[1])
   })
 
   it('names the records either side of a waypoint in route order', () => {
-    const sanji = getCharacter('sanji')
-    if (sanji === undefined) throw new Error('no sanji')
-    const position = routePositionOf(sanji)
+    const position = routePositionOf(must('sanji'))
 
     // Baratie is filed at the same episode as Sanji, right after him.
     expect(position.previous?.id).toBe('going-merry')
     expect(position.next?.id).toBe('baratie')
   })
+
+  it('counts an undrawn character among the chart it is set into', () => {
+    const position = routePositionOf(must('perona'))
+
+    expect(position.total).toBe(chart.length + 1)
+    expect(position.previous?.id).toBe('brook')
+  })
 })
 
 describe('nearbyCharacters', () => {
   it('returns the closest listed characters by episode, never the character itself', () => {
-    const luffy = getCharacter('monkey-d-luffy')
-    if (luffy === undefined) throw new Error('no luffy')
-    const near = nearbyCharacters(luffy, 3).map((c) => c.id)
+    const near = nearbyCharacters(must('monkey-d-luffy'), 3).map((c) => c.id)
 
-    expect(near).toEqual(['roronoa-zoro', 'shanks', 'buggy'])
+    expect(near).toEqual(['koby', 'roronoa-zoro', 'shanks'])
     expect(near).not.toContain('monkey-d-luffy')
   })
 
   it('leaves out characters that are not listed', () => {
-    const law = getCharacter('trafalgar-law')
-    if (law === undefined) throw new Error('no law')
-
-    // Kid is filed at the same episode as Law but is not one of the twenty.
-    expect(nearbyCharacters(law, 20).map((c) => c.id)).not.toContain(
-      'eustass-kid',
-    )
+    // Kid is filed at the same episode as Law but is not featured.
+    expect(
+      nearbyCharacters(must('trafalgar-law'), 36).map((c) => c.id),
+    ).not.toContain('eustass-kid')
   })
 })
 
 describe('search', () => {
-  const luffy = getCharacter('monkey-d-luffy')
-  if (luffy === undefined) throw new Error('no luffy')
+  const luffy = must('monkey-d-luffy')
 
   it('folds case and diacritics', () => {
     expect(foldName('Rùfy')).toBe('rufy')
@@ -113,14 +241,14 @@ describe('search', () => {
   })
 
   it('matches everything on an empty query and marks nothing', () => {
-    expect(matchName(luffy, '   ', 'en')).toEqual({
+    expect(matchName(luffy, '   ', 'en', 1)).toEqual({
       matches: true,
       highlight: null,
     })
   })
 
   it('finds a name in the shown locale and says where to mark it', () => {
-    expect(matchName(luffy, 'luf', 'en')).toEqual({
+    expect(matchName(luffy, 'luf', 'en', 1)).toEqual({
       matches: true,
       highlight: [10, 13],
     })
@@ -128,13 +256,22 @@ describe('search', () => {
 
   it('finds a name written in the other locale but marks nothing', () => {
     // An Italian reader who knows him as Luffy still finds Rufy.
-    expect(matchName(luffy, 'luffy', 'it')).toEqual({
+    expect(matchName(luffy, 'luffy', 'it', 1)).toEqual({
       matches: true,
       highlight: null,
     })
   })
 
   it('does not match a name that is not there', () => {
-    expect(matchName(luffy, 'zoro', 'en').matches).toBe(false)
+    expect(matchName(luffy, 'zoro', 'en', 1).matches).toBe(false)
+  })
+
+  it('finds an epithet only once the reader has reached it', () => {
+    const newgate = must('edward-newgate')
+
+    expect(matchName(newgate, 'barbabianca', 'en', 152).matches).toBe(true)
+    expect(matchName(newgate, 'whitebeard', 'it', 1200).matches).toBe(true)
+    expect(matchName(newgate, 'whitebeard', 'en', 151).matches).toBe(false)
+    expect(matchName(newgate, 'whitebeard', 'en', null).matches).toBe(false)
   })
 })

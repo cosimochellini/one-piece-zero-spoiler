@@ -48,7 +48,10 @@ export function CharacterGrid({ entries, progress }: CharacterGridProps) {
   const covered = entries.filter((entry) => !isRevealed(entry, progress))
 
   const matches = open
-    .map((entry) => ({ entry, match: matchName(entry, query, locale) }))
+    .map((entry) => ({
+      entry,
+      match: matchName(entry, query, locale, progress),
+    }))
     .filter(({ match }) => match.matches)
 
   const trimmed = query.trim()

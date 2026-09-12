@@ -21,3 +21,32 @@ export function isRevealed(gated: Gated, progress: Progress): boolean {
 
   return progress >= gated.revealedAtEpisode
 }
+
+/**
+ * One entry of a timeline: a fact as it stands from `episode` on. Structurally
+ * the same as `Dated<T>` in `~/data/types`; declared here so the spoiler
+ * module owes the data module nothing.
+ */
+export type DatedEntry<T> = {
+  readonly episode: number
+  readonly value: T
+}
+
+/**
+ * The latest fact the reader has reached, or `undefined` when they have
+ * reached none. Same asymmetry as `isRevealed`: a `null` progress knows
+ * nothing. Entries are expected in ascending episode order.
+ */
+export function latestAt<T>(
+  timeline: readonly DatedEntry<T>[],
+  progress: Progress,
+): T | undefined {
+  if (progress === null) return undefined
+
+  let latest: T | undefined
+  for (const entry of timeline) {
+    if (entry.episode > progress) break
+    latest = entry.value
+  }
+  return latest
+}

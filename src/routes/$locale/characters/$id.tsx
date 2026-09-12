@@ -15,10 +15,10 @@ import { RecordTile } from '~/components/RecordTile'
 import { RouteStrip } from '~/components/RouteStrip'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import {
+  chartWith,
   getCharacter,
   nearbyCharacters,
   roleOf,
-  route as archiveRoute,
   routePositionOf,
 } from '~/data/characters'
 import type { Entity, EntityKind } from '~/data/types'
@@ -240,7 +240,7 @@ function CharacterPage() {
         </div>
         <div {...stylex.props(styles.stripBand)}>
           <RouteStrip
-            entries={archiveRoute}
+            entries={chartWith(entity)}
             current={entity}
             progress={progress}
             label={positionLabel}

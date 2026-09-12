@@ -5,7 +5,7 @@ import { EpisodeDial } from '~/components/EpisodeDial'
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
-import { route } from '~/data/characters'
+import { chart } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { useEpisode } from '~/lib/progress/EpisodeContext'
 import { isRevealed } from '~/lib/progress/spoiler'
@@ -80,8 +80,10 @@ function Landing() {
   const { progress } = useEpisode()
 
   // In threshold order, so the route runs in the order the anime reaches each
-  // waypoint and the horizon falls at a single point along it.
-  const ordered = route
+  // waypoint and the horizon falls at a single point along it. The chart
+  // draws the arcs, the places, the ships and the featured characters; the
+  // rest of the cast is in the signal book.
+  const ordered = chart
   const open = ordered.filter((entry) => isRevealed(entry, progress)).length
 
   return (
