@@ -14,27 +14,57 @@ const robin = { revealedAtEpisode: 130, revealedAtChapter: 218 }
 
 describe('describeThreshold', () => {
   it('names the threshold in the reader’s unit', () => {
-    expect(describeThreshold(en, 'veil.locked', robin, 'episode')).toBe(
-      'Under fog until episode 130',
-    )
-    expect(describeThreshold(en, 'veil.locked', robin, 'season')).toBe(
-      'Under fog until S04E38',
-    )
-    expect(describeThreshold(en, 'veil.locked', robin, 'chapter')).toBe(
-      'Under fog until chapter 218',
-    )
+    expect(
+      describeThreshold({
+        gated: robin,
+        mode: 'episode',
+        sentence: 'veil.locked',
+        t: en,
+      }),
+    ).toBe('Under fog until episode 130')
+    expect(
+      describeThreshold({
+        gated: robin,
+        mode: 'season',
+        sentence: 'veil.locked',
+        t: en,
+      }),
+    ).toBe('Under fog until S04E38')
+    expect(
+      describeThreshold({
+        gated: robin,
+        mode: 'chapter',
+        sentence: 'veil.locked',
+        t: en,
+      }),
+    ).toBe('Under fog until chapter 218')
   })
 
   it('bends the grammar per unit in Italian', () => {
     expect(
-      describeThreshold(inItalian, 'character.opensAt', robin, 'episode'),
+      describeThreshold({
+        gated: robin,
+        mode: 'episode',
+        sentence: 'character.opensAt',
+        t: inItalian,
+      }),
     ).toBe('Compare per la prima volta nell’episodio 130')
     expect(
-      describeThreshold(inItalian, 'character.opensAt', robin, 'chapter'),
+      describeThreshold({
+        gated: robin,
+        mode: 'chapter',
+        sentence: 'character.opensAt',
+        t: inItalian,
+      }),
     ).toBe('Compare per la prima volta nel capitolo 218')
-    expect(describeThreshold(inItalian, 'chart.opensAt', robin, 'season')).toBe(
-      'S04E38',
-    )
+    expect(
+      describeThreshold({
+        gated: robin,
+        mode: 'season',
+        sentence: 'chart.opensAt',
+        t: inItalian,
+      }),
+    ).toBe('S04E38')
   })
 })
 

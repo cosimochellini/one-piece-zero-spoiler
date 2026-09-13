@@ -5,6 +5,19 @@ import { itDictionary } from './dictionaries/it'
 import { LOCALES } from './locales'
 import { getDictionary, translate } from './translate'
 
+type DictionaryKey = keyof typeof enDictionary
+
+/**
+ * `Object.keys` widens to `string[]`, which loses the only thing that makes
+ * the loops below type-check against a dictionary. The guard narrows back
+ * without an assertion.
+ */
+function dictionaryKeys(): DictionaryKey[] {
+  return Object.keys(enDictionary).filter((key): key is DictionaryKey =>
+    Object.hasOwn(enDictionary, key),
+  )
+}
+
 describe('the dictionaries', () => {
   it('publishes one dictionary per locale', () => {
     for (const locale of LOCALES) {
@@ -18,8 +31,8 @@ describe('the dictionaries', () => {
     for (const locale of LOCALES) {
       const dictionary = getDictionary(locale)
 
-      for (const key of Object.keys(enDictionary)) {
-        expect(dictionary[key as keyof typeof enDictionary].trim()).not.toBe('')
+      for (const key of dictionaryKeys()) {
+        expect(dictionary[key].trim()).not.toBe('')
       }
     }
   })
@@ -27,10 +40,8 @@ describe('the dictionaries', () => {
   it('carries the same placeholders in both languages', () => {
     // A translation that drops `{threshold}` silently renders a sentence with a
     // hole in it, and nothing else would notice.
-    for (const key of Object.keys(
-      enDictionary,
-    ) as (keyof typeof enDictionary)[]) {
-      expect(placeholdersIn(itDictionary[key])).toEqual(
+    for (const key of dictionaryKeys()) {
+      expect(placeholdersIn(itDictionary[key]), key).toStrictEqual(
         placeholdersIn(enDictionary[key]),
       )
     }
@@ -61,7 +72,8 @@ describe('translate', () => {
 })
 
 function placeholdersIn(value: string): string[] {
-  return [...value.matchAll(/\{(\w+)\}/gu)]
-    .map((match) => match[1] ?? '')
-    .sort()
+  return Array.from(
+    value.matchAll(/\{(?<name>\w+)\}/gu),
+    (match) => match.groups?.['name'] ?? '',
+  ).toSorted((a, b) => a.localeCompare(b))
 }

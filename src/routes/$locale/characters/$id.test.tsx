@@ -17,25 +17,68 @@ type Meta = {
   readonly title?: string
 }
 
-// The route options are typed against the whole generated tree. The two
-// functions under test are pure, so they are called here through the narrow
-// shape they actually read.
-const head = Route.options.head as unknown as (input: {
+type Head = (input: {
   readonly loaderData: LoaderData
   readonly params: Params
 }) => { readonly meta?: readonly Meta[] }
 
-const loader = Route.options.loader as unknown as (input: {
+type Loader = (input: {
   readonly context: { readonly initialBookmark: Bookmark }
   readonly params: Params
 }) => LoaderData
+
+/**
+ * The route options are typed against the whole generated tree, whose context
+ * no test can stand up. Both functions under test are pure and read only the
+ * fields declared above, so they are reached through a guard over `unknown`
+ * rather than through an assertion on the real option type.
+ */
+function isHead(value: unknown): value is Head {
+  return typeof value === 'function'
+}
+
+function isLoader(value: unknown): value is Loader {
+  return typeof value === 'function'
+}
+
+function routeHead(): Head {
+  const head: unknown = Route.options.head
+  if (!isHead(head)) {
+    throw new TypeError('the character route defines no head')
+  }
+
+  return head
+}
+
+function routeLoader(): Loader {
+  const loader: unknown = Route.options.loader
+  if (!isLoader(loader)) {
+    throw new TypeError('the character route defines no loader')
+  }
+
+  return loader
+}
+
+/**
+ * What a call threw, so a test can look at it without a `try`/`catch` of its
+ * own around the assertion.
+ */
+function thrownBy(run: () => unknown): unknown {
+  try {
+    run()
+  } catch (error) {
+    return error
+  }
+
+  throw new Error('nothing was thrown')
+}
 
 function headFor(
   id: string,
   revealed: boolean,
   mode: BookmarkMode = 'episode',
-) {
-  const { meta } = head({
+): string {
+  const { meta } = routeHead()({
     params: { locale: 'en', id },
     loaderData: { id, revealed, mode },
   })
@@ -43,11 +86,18 @@ function headFor(
   return JSON.stringify(meta ?? [])
 }
 
-function loaderFor(id: string, initialBookmark: Bookmark) {
-  return loader({ params: { locale: 'en', id }, context: { initialBookmark } })
+function loaderFor(id: string, initialBookmark: Bookmark): LoaderData {
+  return routeLoader()({
+    params: { locale: 'en', id },
+    context: { initialBookmark },
+  })
 }
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+const chapterAt = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
+function seasonFour(episode: number): Bookmark {
+  return { mode: 'season', season: 4, episode }
+}
 
 describe('character route head', () => {
   it('keeps a covered name out of the title and description', () => {
@@ -77,29 +127,20 @@ describe('character route loader', () => {
   })
 
   it('reads a chapter bookmark against the chapter threshold', () => {
-    const chapter = (n: number): Bookmark => ({ mode: 'chapter', chapter: n })
-
-    expect(loaderFor('nico-robin', chapter(217)).revealed).toBe(false)
-    expect(loaderFor('nico-robin', chapter(218)).revealed).toBe(true)
-    expect(loaderFor('nico-robin', chapter(218)).mode).toBe('chapter')
+    expect(loaderFor('nico-robin', chapterAt(217)).revealed).toBe(false)
+    expect(loaderFor('nico-robin', chapterAt(218)).revealed).toBe(true)
+    expect(loaderFor('nico-robin', chapterAt(218)).mode).toBe('chapter')
   })
 
   it('resolves a season bookmark to its absolute episode', () => {
     // S04E38 is episode 130, where Robin is filed; S04E37 is one short.
-    const season = (episode: number): Bookmark => {
-      return { mode: 'season', season: 4, episode }
-    }
-
-    expect(loaderFor('nico-robin', season(37)).revealed).toBe(false)
-    expect(loaderFor('nico-robin', season(38)).revealed).toBe(true)
+    expect(loaderFor('nico-robin', seasonFour(37)).revealed).toBe(false)
+    expect(loaderFor('nico-robin', seasonFour(38)).revealed).toBe(true)
   })
 
   it('throws not found for an unknown id', () => {
-    try {
-      loaderFor('nobody', ep(1000))
-      throw new Error('expected notFound')
-    } catch (error) {
-      expect(isNotFound(error)).toBe(true)
-    }
+    const thrown = thrownBy(() => loaderFor('nobody', ep(1000)))
+
+    expect(isNotFound(thrown)).toBe(true)
   })
 })

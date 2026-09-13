@@ -6,7 +6,7 @@ import {
   RouterContextProvider,
   RouterProvider,
 } from '@tanstack/react-router'
-import { render } from '@testing-library/react'
+import { render, type RenderResult } from '@testing-library/react'
 import type { ReactElement } from 'react'
 
 import { LocaleProvider } from '~/i18n/LocaleProvider'
@@ -42,7 +42,7 @@ export type RenderOptions = {
 export function renderWithProviders(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path }: RenderOptions = {},
-) {
+): RenderResult {
   const router = createRouter({
     routeTree: createRootRoute(),
     history: createMemoryHistory({ initialEntries: [path ?? `/${locale}`] }),
@@ -70,16 +70,18 @@ export type RouteRenderOptions = RenderOptions & {
 export async function renderOnRoute(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path, pattern }: RouteRenderOptions,
-) {
+): Promise<RenderResult> {
   const rootRoute = createRootRoute()
   const page = createRoute({
     getParentRoute: () => rootRoute,
     path: pattern,
-    component: () => (
-      <LocaleProvider locale={locale}>
-        <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
-      </LocaleProvider>
-    ),
+    component: (): ReactElement => {
+      return (
+        <LocaleProvider locale={locale}>
+          <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
+        </LocaleProvider>
+      )
+    },
   })
   const router = createRouter({
     routeTree: rootRoute.addChildren([page]),

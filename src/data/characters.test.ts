@@ -32,10 +32,71 @@ function must(id: string): Entity {
   return entity
 }
 
+/** One dossier timeline, named by the character and the field it came from. */
+type TimelineCase<T> = {
+  readonly character: Entity
+  readonly label: string
+  readonly timeline: Timeline<T>
+}
+
+/**
+ * Most dossier fields are optional, so the flattening has to drop the ones a
+ * character does not carry. Done here rather than inside a test, where the
+ * guard would sit between `expect` and the reader.
+ */
+function timelineCases<T>(
+  character: Entity,
+  field: string,
+  timeline: Timeline<T> | undefined,
+): TimelineCase<T>[] {
+  return timeline === undefined ?
+      []
+    : [{ character, label: `${character.id}.${field}`, timeline }]
+}
+
+const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] =
+  characters.flatMap((character) => {
+    const dossier = dossierOf(character)
+
+    return dossier === undefined ?
+        []
+      : [
+          ...timelineCases(character, 'affiliation', dossier.affiliation),
+          ...timelineCases(character, 'origin', dossier.origin),
+          ...timelineCases(character, 'epithet', dossier.epithet),
+          ...timelineCases(character, 'devilFruit', dossier.devilFruit),
+        ]
+  })
+
+const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
+  (character) =>
+    timelineCases(character, 'bounty', dossierOf(character)?.bounty),
+)
+
+const ALL_TIMELINES: readonly TimelineCase<unknown>[] = [
+  ...TEXT_TIMELINES,
+  ...BOUNTY_TIMELINES,
+]
+
+/** The first record on the chart, which the route tests read either side of. */
+const FIRST_CHARTED = chart[0]
+if (FIRST_CHARTED === undefined) {
+  throw new Error('empty chart')
+}
+
+const NOT_CHARACTERS = entities.filter((entity) => entity.kind !== 'character')
+
+/** A stable alphabetical order, so two id lists can be compared as sets. */
+function byName(a: string, b: string): number {
+  return a.localeCompare(b)
+}
+
 describe('the featured list', () => {
   it('lists exactly thirty-six distinct characters that all exist', () => {
+    const distinct = new Set(FEATURED_CHARACTER_IDS)
+
     expect(FEATURED_CHARACTER_IDS).toHaveLength(36)
-    expect(new Set(FEATURED_CHARACTER_IDS).size).toBe(36)
+    expect(distinct.size).toBe(36)
 
     for (const id of FEATURED_CHARACTER_IDS) {
       expect(getCharacter(id)?.kind, id).toBe('character')
@@ -45,9 +106,11 @@ describe('the featured list', () => {
   })
 
   it('keeps them in route order, not in ranking order', () => {
-    const thresholds = featuredCharacters.map((c) => c.revealedAtEpisode)
+    const thresholds = featuredCharacters.map(
+      (character) => character.revealedAtEpisode,
+    )
 
-    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
   })
 })
 
@@ -77,7 +140,7 @@ describe('the dossiers', () => {
   })
 
   it('has no dossier for a record that is not a character', () => {
-    for (const other of entities.filter((e) => e.kind !== 'character')) {
+    for (const other of NOT_CHARACTERS) {
       expect(CHARACTER_DOSSIERS[other.id]).toBeUndefined()
     }
     for (const id of Object.keys(CHARACTER_DOSSIERS)) {
@@ -86,64 +149,41 @@ describe('the dossiers', () => {
   })
 
   it('files every timeline in order, from the threshold on, within the dial', () => {
-    const check = (
-      character: Entity,
-      field: string,
-      timeline: Timeline<unknown> | undefined,
-    ) => {
-      if (timeline === undefined) {
-        return
-      }
-      const label = `${character.id}.${field}`
+    for (const { character, label, timeline } of ALL_TIMELINES) {
+      const episodes = timeline.map((entry) => entry.episode)
+      const distinct = new Set(episodes)
 
-      expect(timeline.length, label).toBeGreaterThan(0)
+      expect(episodes.length, label).toBeGreaterThan(0)
+      // Sorted and all distinct is the same statement as strictly ascending,
+      // without a look back at the previous entry inside the loop.
+      expect(episodes, label).toStrictEqual(episodes.toSorted((a, b) => a - b))
+      expect(distinct.size, label).toBe(episodes.length)
 
-      for (const [index, entry] of timeline.entries()) {
-        expect(Number.isInteger(entry.episode), label).toBe(true)
-        expect(entry.episode, label).toBeGreaterThanOrEqual(
+      for (const episode of episodes) {
+        expect(Number.isSafeInteger(episode), label).toBe(true)
+        expect(episode, label).toBeGreaterThanOrEqual(
           character.revealedAtEpisode,
         )
-        expect(entry.episode, label).toBeLessThanOrEqual(EPISODE_CEILING)
+        expect(episode, label).toBeLessThanOrEqual(EPISODE_CEILING)
+      }
+    }
+  })
 
-        const previous = timeline[index - 1]
-        if (previous !== undefined) {
-          expect(entry.episode, label).toBeGreaterThan(previous.episode)
+  it('writes every dated text in every locale', () => {
+    for (const { label, timeline } of TEXT_TIMELINES) {
+      for (const entry of timeline) {
+        for (const locale of LOCALES) {
+          expect(entry.value[locale].length, label).toBeGreaterThan(0)
         }
       }
     }
-    const text = (
-      character: Entity,
-      field: string,
-      timeline: Timeline<LocalizedText> | undefined,
-    ) => {
-      check(character, field, timeline)
-      if (timeline != null) {
-        for (const entry of timeline) {
-          for (const locale of LOCALES) {
-            expect(
-              entry.value[locale].length,
-              `${character.id}.${field}`,
-            ).toBeGreaterThan(0)
-          }
-        }
-      }
-    }
+  })
 
-    for (const character of characters) {
-      const dossier = dossierOf(character)
-      if (dossier === undefined) {
-        continue
-      }
-      text(character, 'affiliation', dossier.affiliation)
-      text(character, 'origin', dossier.origin)
-      text(character, 'epithet', dossier.epithet)
-      text(character, 'devilFruit', dossier.devilFruit)
-      check(character, 'bounty', dossier.bounty)
-      if (dossier.bounty != null) {
-        for (const entry of dossier.bounty) {
-          expect(Number.isInteger(entry.value), character.id).toBe(true)
-          expect(entry.value, character.id).toBeGreaterThan(0)
-        }
+  it('files every bounty as a whole number of Berry above zero', () => {
+    for (const { label, timeline } of BOUNTY_TIMELINES) {
+      for (const entry of timeline) {
+        expect(Number.isSafeInteger(entry.value), label).toBe(true)
+        expect(entry.value, label).toBeGreaterThan(0)
       }
     }
   })
@@ -160,21 +200,25 @@ describe('getCharacter', () => {
 
 describe('the chart', () => {
   it('draws every arc, place and ship and only the featured characters', () => {
-    const others = entities.filter((e) => e.kind !== 'character')
-    for (const other of others) {
-      expect(chart.map((e) => e.id)).toContain(other.id)
-    }
-    const drawn = chart.filter((e) => e.kind === 'character')
+    const chartedIds = chart.map((entity) => entity.id)
 
-    expect(drawn.map((e) => e.id).sort()).toEqual(
-      [...FEATURED_CHARACTER_IDS].sort(),
+    for (const other of NOT_CHARACTERS) {
+      expect(chartedIds, other.id).toContain(other.id)
+    }
+
+    const drawn = chart
+      .filter((entity) => entity.kind === 'character')
+      .map((entity) => entity.id)
+
+    expect(drawn.toSorted(byName)).toStrictEqual(
+      FEATURED_CHARACTER_IDS.toSorted(byName),
     )
   })
 
   it('is in threshold order', () => {
-    const thresholds = chart.map((e) => e.revealedAtEpisode)
+    const thresholds = chart.map((entity) => entity.revealedAtEpisode)
 
-    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
   })
 
   it('is itself for a record already drawn', () => {
@@ -183,19 +227,19 @@ describe('the chart', () => {
 
   it('orders the chart by chapter when asked', () => {
     const byChapter = chartWith(must('nami'), 'chapter')
-    const chapters = byChapter.map((e) => e.revealedAtChapter)
+    const chapters = byChapter.map((entity) => entity.revealedAtChapter)
 
-    expect(chapters).toEqual([...chapters].sort((a, b) => a - b))
+    expect(chapters).toStrictEqual(chapters.toSorted((a, b) => a - b))
     expect(byChapter).toHaveLength(chart.length)
   })
 
   it('sets an undrawn record in at its threshold, after its contemporaries', () => {
     const perona = must('perona')
 
-    expect(chart.map((e) => e.id)).not.toContain('perona')
+    expect(chart.map((entity) => entity.id)).not.toContain('perona')
 
     const drawn = chartWith(perona)
-    const index = drawn.findIndex((e) => e.id === 'perona')
+    const index = drawn.findIndex((entity) => entity.id === 'perona')
 
     expect(drawn).toHaveLength(chart.length + 1)
     expect(drawn[index - 1]?.revealedAtEpisode).toBeLessThanOrEqual(340)
@@ -207,13 +251,17 @@ describe('the chart', () => {
 
 describe('the shelves', () => {
   it('shelve every character exactly once, in route order', () => {
-    const shelved = bookSections.flatMap((s) => s.characters.map((c) => c.id))
+    const shelved = bookSections
+      .flatMap((section) => section.characters)
+      .map((character) => character.id)
 
-    expect(shelved.sort()).toEqual(characters.map((c) => c.id).sort())
+    expect(shelved.toSorted(byName)).toStrictEqual(
+      characters.map((character) => character.id).toSorted(byName),
+    )
 
-    const opens = bookSections.map((s) => s.arc.revealedAtEpisode)
+    const opens = bookSections.map((section) => section.arc.revealedAtEpisode)
 
-    expect(opens).toEqual([...opens].sort((a, b) => a - b))
+    expect(opens).toStrictEqual(opens.toSorted((a, b) => a - b))
   })
 
   it('never puts a character under a heading that opens after them, in either unit', () => {
@@ -235,21 +283,20 @@ describe('the shelves', () => {
   })
 
   it('shelves the East Blue crew under the East Blue saga', () => {
-    const eastBlue = bookSections.find((s) => s.arc.id === 'east-blue')
+    const eastBlue = bookSections.find(
+      (section) => section.arc.id === 'east-blue',
+    )
+    const shelved = eastBlue?.characters.map((character) => character.id)
 
-    expect(eastBlue?.characters.map((c) => c.id)).toContain('monkey-d-luffy')
-    expect(eastBlue?.characters.map((c) => c.id)).toContain('smoker')
-    expect(eastBlue?.characters.map((c) => c.id)).not.toContain('crocodile')
+    expect(shelved).toContain('monkey-d-luffy')
+    expect(shelved).toContain('smoker')
+    expect(shelved).not.toContain('crocodile')
   })
 })
 
 describe('routePositionOf', () => {
   it('places the first record at the start with nothing before it', () => {
-    const first = chart[0]
-    if (first === undefined) {
-      throw new Error('empty chart')
-    }
-    const position = routePositionOf(first)
+    const position = routePositionOf(FIRST_CHARTED)
 
     expect(position.index).toBe(0)
     expect(position.total).toBe(chart.length)
@@ -294,16 +341,20 @@ describe('routePositionOf', () => {
 
 describe('nearbyCharacters', () => {
   it('returns the closest listed characters by episode, never the character itself', () => {
-    const near = nearbyCharacters(must('monkey-d-luffy'), 3).map((c) => c.id)
+    const near = nearbyCharacters(must('monkey-d-luffy'), 3).map(
+      (character) => character.id,
+    )
 
-    expect(near).toEqual(['koby', 'roronoa-zoro', 'shanks'])
+    expect(near).toStrictEqual(['koby', 'roronoa-zoro', 'shanks'])
     expect(near).not.toContain('monkey-d-luffy')
   })
 
   it('leaves out characters that are not listed', () => {
     // Kid is filed at the same episode as Law but is not featured.
     expect(
-      nearbyCharacters(must('trafalgar-law'), 36).map((c) => c.id),
+      nearbyCharacters(must('trafalgar-law'), 36).map(
+        (character) => character.id,
+      ),
     ).not.toContain('eustass-kid')
   })
 })
@@ -317,40 +368,92 @@ describe('search', () => {
   })
 
   it('matches everything on an empty query and marks nothing', () => {
-    expect(matchName(luffy, ' '.repeat(3), 'en', ep(1))).toEqual({
-      matches: true,
-      highlight: null,
-    })
+    expect(
+      matchName({
+        bookmark: ep(1),
+        entity: luffy,
+        locale: 'en',
+        query: ' '.repeat(3),
+      }),
+    ).toStrictEqual({ matches: true, highlight: null })
   })
 
   it('finds a name in the shown locale and says where to mark it', () => {
-    expect(matchName(luffy, 'luf', 'en', ep(1))).toEqual({
-      matches: true,
-      highlight: [10, 13],
-    })
+    expect(
+      matchName({ bookmark: ep(1), entity: luffy, locale: 'en', query: 'luf' }),
+    ).toStrictEqual({ matches: true, highlight: [10, 13] })
   })
 
   it('finds a name written in the other locale but marks nothing', () => {
     // An Italian reader who knows him as Luffy still finds Rufy.
-    expect(matchName(luffy, 'luffy', 'it', ep(1))).toEqual({
-      matches: true,
-      highlight: null,
-    })
+    expect(
+      matchName({
+        bookmark: ep(1),
+        entity: luffy,
+        locale: 'it',
+        query: 'luffy',
+      }),
+    ).toStrictEqual({ matches: true, highlight: null })
   })
 
   it('does not match a name that is not there', () => {
-    expect(matchName(luffy, 'zoro', 'en', ep(1)).matches).toBe(false)
+    expect(
+      matchName({ bookmark: ep(1), entity: luffy, locale: 'en', query: 'zoro' })
+        .matches,
+    ).toBe(false)
   })
 
   it('finds an epithet only once the reader has reached it', () => {
     const newgate = must('edward-newgate')
 
-    expect(matchName(newgate, 'barbabianca', 'en', ep(152)).matches).toBe(true)
-    expect(matchName(newgate, 'whitebeard', 'it', ep(1200)).matches).toBe(true)
-    expect(matchName(newgate, 'whitebeard', 'en', ep(151)).matches).toBe(false)
-    expect(matchName(newgate, 'whitebeard', 'en', null).matches).toBe(false)
+    expect(
+      matchName({
+        bookmark: ep(152),
+        entity: newgate,
+        locale: 'en',
+        query: 'barbabianca',
+      }).matches,
+    ).toBe(true)
+    expect(
+      matchName({
+        bookmark: ep(1200),
+        entity: newgate,
+        locale: 'it',
+        query: 'whitebeard',
+      }).matches,
+    ).toBe(true)
+    expect(
+      matchName({
+        bookmark: ep(151),
+        entity: newgate,
+        locale: 'en',
+        query: 'whitebeard',
+      }).matches,
+    ).toBe(false)
+    expect(
+      matchName({
+        bookmark: null,
+        entity: newgate,
+        locale: 'en',
+        query: 'whitebeard',
+      }).matches,
+    ).toBe(false)
     // Epithets are dated in episodes: a chapter bookmark searches names only.
-    expect(matchName(newgate, 'whitebeard', 'en', ch(1000)).matches).toBe(false)
-    expect(matchName(newgate, 'newgate', 'en', ch(1000)).matches).toBe(true)
+    expect(
+      matchName({
+        bookmark: ch(1000),
+        entity: newgate,
+        locale: 'en',
+        query: 'whitebeard',
+      }).matches,
+    ).toBe(false)
+    expect(
+      matchName({
+        bookmark: ch(1000),
+        entity: newgate,
+        locale: 'en',
+        query: 'newgate',
+      }).matches,
+    ).toBe(true)
   })
 })

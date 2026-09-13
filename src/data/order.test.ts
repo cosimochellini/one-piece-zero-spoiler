@@ -12,7 +12,7 @@ describe('orderByMode', () => {
         (entity) => entity.revealedAtEpisode,
       )
 
-      expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+      expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
     }
   })
 
@@ -21,7 +21,7 @@ describe('orderByMode', () => {
       (entity) => entity.revealedAtChapter,
     )
 
-    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
   })
 
   it('keeps the open rows a prefix of the list in every unit', () => {
@@ -47,6 +47,6 @@ describe('orderByMode', () => {
     const before = entities.map((entity) => entity.id)
     orderByMode(entities, 'chapter')
 
-    expect(entities.map((entity) => entity.id)).toEqual(before)
+    expect(entities.map((entity) => entity.id)).toStrictEqual(before)
   })
 })

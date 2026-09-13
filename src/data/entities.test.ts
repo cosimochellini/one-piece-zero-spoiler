@@ -13,8 +13,9 @@ import { entities, getEntity } from './entities'
 describe('the seed archive', () => {
   it('gives every record a unique id', () => {
     const ids = entities.map((entity) => entity.id)
+    const unique = new Set(ids)
 
-    expect(new Set(ids).size).toBe(ids.length)
+    expect(unique.size).toBe(ids.length)
   })
 
   it('files every record at an episode the dialog can actually reach', () => {
@@ -24,7 +25,7 @@ describe('the seed archive', () => {
     for (const entity of entities) {
       expect(entity.revealedAtEpisode).toBeGreaterThanOrEqual(FIRST_EPISODE)
       expect(entity.revealedAtEpisode).toBeLessThanOrEqual(EPISODE_CEILING)
-      expect(Number.isInteger(entity.revealedAtEpisode)).toBe(true)
+      expect(Number.isSafeInteger(entity.revealedAtEpisode)).toBe(true)
     }
   })
 
@@ -32,7 +33,7 @@ describe('the seed archive', () => {
     for (const entity of entities) {
       expect(entity.revealedAtChapter).toBeGreaterThanOrEqual(FIRST_CHAPTER)
       expect(entity.revealedAtChapter).toBeLessThanOrEqual(CHAPTER_CEILING)
-      expect(Number.isInteger(entity.revealedAtChapter)).toBe(true)
+      expect(Number.isSafeInteger(entity.revealedAtChapter)).toBe(true)
     }
   })
 

@@ -1,14 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
 import type { Bookmark } from './episode'
-import { episodeOf, isRevealed, latestAt } from './spoiler'
+import { episodeOf, type Gated, isRevealed, latestAt } from './spoiler'
 
-const filedAt = (revealedAtEpisode: number, revealedAtChapter: number) => {
+function filedAt(revealedAtEpisode: number, revealedAtChapter: number): Gated {
   return { revealedAtEpisode, revealedAtChapter }
 }
+
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
-const se = (season: number, episode: number): Bookmark => {
+function se(season: number, episode: number): Bookmark {
   return { mode: 'season', season, episode }
 }
 

@@ -6,6 +6,7 @@
 // `describe` / `it` / `expect` are imported rather than taken from
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
+/** @import { SpawnSyncReturns } from 'node:child_process' */
 import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
@@ -165,7 +166,15 @@ describe('validatePrTitle', () => {
 describe('the command line entry point', () => {
   const SCRIPT = path.join(import.meta.dirname, 'validate-pr-title.mjs')
 
-  /** @param {Record<string, string>} env */
+  /**
+   * Runs the gate in a real child process, which is the only place the exit
+   * codes CI reads are produced.
+   * @param {Record<string, string>} env The complete environment the script
+   *   runs under. Nothing is inherited, so a variable left out of this object
+   *   is genuinely unset for the run.
+   * @returns {SpawnSyncReturns<string>} The finished process, with its status
+   *   and its two streams already decoded as text.
+   */
   const run = (env) =>
     spawnSync(process.execPath, [SCRIPT], {
       encoding: 'utf8',

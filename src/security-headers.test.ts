@@ -6,7 +6,9 @@ const NONCE = 'test-nonce-value'
 
 describe('createSecurityHeaders', () => {
   it('gives every header a non-empty value', () => {
-    for (const [name, value] of Object.entries(createSecurityHeaders(NONCE))) {
+    const headers = Object.entries(createSecurityHeaders(NONCE))
+
+    for (const [name, value] of headers) {
       expect(value, name).not.toBe('')
     }
   })

@@ -1,14 +1,10 @@
-import { cleanup } from '@testing-library/react'
 import '@testing-library/jest-dom/vitest'
 // Registers the jest-dom matchers on Vitest's `expect` and augments the
 // matcher types via `declare module 'vitest'`.
-import { afterEach } from 'vitest'
 
-// `globals: true` already enables RTL auto-cleanup. Doing it explicitly is
-// idempotent and keeps the suite independent of that detection.
-afterEach(() => {
-  cleanup()
-})
+// No explicit `afterEach(cleanup)` here on purpose. Vitest runs with
+// `globals: true`, so Testing Library registers its own auto-cleanup, and a
+// second manual one would only be a duplicate of it.
 
 /**
  * jsdom 30 ships `HTMLDialogElement` without `showModal` and `close`, and the

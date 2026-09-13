@@ -12,15 +12,17 @@ describe('the ship’s log', () => {
       .map((entity) => entity.id)
 
     expect(places.map((place) => place.id)).toHaveLength(placeIds.length)
-    expect(new Set(places.map((place) => place.id))).toEqual(new Set(placeIds))
+    expect(new Set(places.map((place) => place.id))).toStrictEqual(
+      new Set(placeIds),
+    )
 
     const thresholds = places.map((place) => place.revealedAtEpisode)
 
-    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
   })
 
   it('opens with the five East Blue ports of call', () => {
-    expect(places.slice(0, 5).map((place) => place.id)).toEqual([
+    expect(places.slice(0, 5).map((place) => place.id)).toStrictEqual([
       'shells-town',
       'foosha-village',
       'orange-town',
@@ -64,7 +66,9 @@ describe('the ship’s log', () => {
 
   it('files here only records the archive holds, none of them places', () => {
     for (const place of places) {
-      for (const id of dossierOf(place)?.filedHere ?? []) {
+      const filedHere = dossierOf(place)?.filedHere ?? []
+
+      for (const id of filedHere) {
         const record = getEntity(id)
 
         expect(record, `${place.id} → ${id}`).toBeDefined()
