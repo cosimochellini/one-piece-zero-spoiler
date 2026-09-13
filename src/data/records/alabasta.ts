@@ -372,7 +372,7 @@ export const alabasta: Saga = {
       id: 'portgas-d-ace',
       kind: 'character',
       revealedAtEpisode: 95,
-      revealedAtChapter: 154,
+      revealedAtChapter: 157,
       name: { it: 'Portuguese D. Ace', en: 'Portgas D. Ace' },
       summary: {
         it: 'Il fratello maggiore di Rufy, comandante di divisione in una ciurma famosa, che attraversa il deserto a torso nudo sulle tracce di un uomo che ha tradito il suo capitano.',

@@ -5,8 +5,10 @@ import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterTile } from './CharacterTile'
 
+// A made-up id: `roleOf` reads the live dossiers by id, and the test must
+// not depend on what the archive currently says about Nami.
 const nami: Entity = {
-  id: 'nami',
+  id: 'test-navigator',
   kind: 'character',
   revealedAtEpisode: 5,
   revealedAtChapter: 5,
@@ -16,7 +18,7 @@ const nami: Entity = {
 }
 
 describe('CharacterTile', () => {
-  it('links an open character with their drawing, name and role', () => {
+  it('links an open character with their drawing and name', () => {
     const { container } = renderWithProviders(
       <ul>
         <CharacterTile entity={nami} revealed highlight={[0, 3]} />
@@ -26,10 +28,9 @@ describe('CharacterTile', () => {
 
     expect(screen.getByRole('link', { name: /Nami/u })).toHaveAttribute(
       'href',
-      '/en/characters/nami',
+      '/en/characters/test-navigator',
     )
     expect(screen.getByText('Nam').tagName).toBe('MARK')
-    expect(screen.getByText('Navigator and thief')).toBeInTheDocument()
     expect(screen.getByText('Episode 5')).toBeVisible()
     expect(container.querySelectorAll('path').length).toBeGreaterThan(3)
   })
@@ -44,7 +45,6 @@ describe('CharacterTile', () => {
 
     expect(screen.queryByRole('link')).not.toBeInTheDocument()
     expect(screen.queryByText('Nami')).not.toBeInTheDocument()
-    expect(screen.queryByText('Navigator and thief')).not.toBeInTheDocument()
     expect(container.querySelectorAll('path')).toHaveLength(0)
     expect(screen.getByText('Spoiler')).toBeInTheDocument()
     expect(screen.getByText('Episode 5')).toBeVisible()

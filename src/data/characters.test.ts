@@ -179,12 +179,18 @@ describe('the shelves', () => {
     expect(opens).toEqual([...opens].sort((a, b) => a - b))
   })
 
-  it('never puts a character under a heading that opens after them', () => {
+  it('never puts a character under a heading that opens after them, in either unit', () => {
+    // Shelving goes by episode; a reader who counts in chapters gates the
+    // heading by chapter, so the chapter order has to agree or a tile could
+    // sit open under a veiled heading.
     for (const section of bookSections) {
       expect(section.arc.kind).toBe('arc')
       for (const character of section.characters) {
         expect(section.arc.revealedAtEpisode, character.id).toBeLessThanOrEqual(
           character.revealedAtEpisode,
+        )
+        expect(section.arc.revealedAtChapter, character.id).toBeLessThanOrEqual(
+          character.revealedAtChapter,
         )
       }
     }
