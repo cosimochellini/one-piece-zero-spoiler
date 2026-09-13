@@ -227,29 +227,64 @@ orientation column (headline, lede, legend) is `position: sticky` from 60rem so
 saving a new bookmark from the bar moves the horizon in view. The stamp at the top of
 `tokens.stylex.ts` records the picks; `.hallmark/log.json` records the history.
 
-**The characters pages are the signal book.** `/$locale/characters` lists
-the twenty characters named in `FEATURED_CHARACTER_IDS`
+**The characters pages are the signal book.** `/$locale/characters` opens
+with the thirty-six characters named in `FEATURED_CHARACTER_IDS`
 (`src/data/characters.ts`, an editorial ranking; the page draws them in route
-order) as one uniform grid of crests, Hallmark's Catalogue macrostructure.
-`/$locale/characters/$id` is a page for any character record, listed or not,
-shaped as Split Studio: crest beside dossier, then the record's place on the
-route beside a strip of the whole route (`RouteStrip.tsx`), then the listed
-characters filed nearest by episode. `src/data/characters.ts` also holds the
-roles, written to the same "safe at the threshold" rule as the summaries:
-Franky is a ship dismantler there, not what he turns out to be.
+order) as one uniform grid of crests, Hallmark's Catalogue macrostructure,
+and continues with the whole cast as compact tiles on one shelf per arc
+(`bookSections`: a character is shelved under the arc with the greatest
+threshold no later than their own, so a shelf's heading is open whenever any
+tile on it is). `/$locale/characters/$id` is a page for any character record,
+listed or not, shaped as Split Studio: crest beside dossier, then the record's
+place on the chart beside a strip of the chart (`RouteStrip.tsx`), then the
+featured characters filed nearest by episode.
+
+The archive is filed by saga. `src/data/records/<saga>.ts` holds the records
+of one stretch of the route and the dossiers of the characters it introduces;
+`src/data/entities.ts` is their concatenation. A dossier
+(`CharacterDossier` in `src/data/types.ts`) is a role and a log entry, both
+written to the same "safe at the threshold" rule as the summaries, plus five
+timelines: affiliation, origin, epithet, devil fruit and bounty, each a list
+of `{ episode, value }`. The page shows the latest entry the reader has
+reached (`latestAt` in `src/lib/progress/spoiler.ts`) and no row at all for a
+fact with no entry yet, so Robin's affiliation changes when she changes it
+and a bounty above the reader's episode is never in the DOM. The data tests
+hold that every timeline is ascending and starts no earlier than the record's
+threshold. Thresholds follow one rule, written at the top of `entities.ts`:
+the first canonical episode where the viewer knows the character by name and
+by sight, rounded up when in doubt; the hooded man at Loguetown is filed at
+the episode that names him. Italian names are the Italian dub's.
 
 The search on the list page is the spoiler rule applied to a text field. It
-filters the open characters only; the fogged ones sit in a band of their own
-that never changes, because a covered card that appeared when its name was
+filters the open characters only, crests and tiles alike; the fogged crests
+sit in a band of their own and the fogged tiles stay on their shelves, and
+neither ever changes, because a covered card that appeared when its name was
 typed would confirm the name. Both locales' names are searched (an Italian
-reader who knows him as Luffy still finds Rufy), and the match is marked only
-in the name that is shown. The character page decides its document title in
-the route's `head`, from the reveal state its `loader` computed from the
-bookmark the root route read, so a covered character's `<title>` is "A
-character under fog" and never the name; the page body then follows the live
-bookmark. `SpoilerVeil` gained a `compact` density for
-the cards (the verb alone, centred, a drawing's blur), and the language switch
-now uses `to="."` so it keeps the reader on the same page.
+reader who knows him as Luffy still finds Rufy), and so are the epithets the
+reader has reached and only those, so "Barbabianca" finds Edward Newgate
+after episode 152 and not before. The match is marked only in the name that
+is shown. The character page decides its document title in the route's
+`head`, from the reveal state its `loader` computed from the bookmark the
+root route read, so a covered character's `<title>` is "A character under
+fog" and never the name; the page body then follows the live bookmark.
+`SpoilerVeil` has a `compact` density for the cards and tiles (the verb
+alone, centred, a drawing's blur), and the language switch uses `to="."` so
+it keeps the reader on the same page.
+
+**The landing chart draws the chart route, not the whole archive.** `chart`
+in `src/data/characters.ts` is every arc, place and ship plus the featured
+characters; the rest of the cast is in the signal book. A character page
+draws its route position against `chartWith(entity, mode)`, the chart with
+that record set in when it is not already drawn, sorted by the threshold the
+reader counts in, so an unlisted character still has a waypoint number while
+the reader is looking at them.
+
+**The dossier timelines count in anime episodes only.** A record carries two
+thresholds because a reader may count in episodes, seasons or chapters, but
+the facts inside a dossier are dated once, in episodes: `latestAt` resolves a
+season bookmark to its absolute episode and knows nothing for a chapter one,
+so a chapter reader sees a note in place of the facts rather than a fact
+they may not have reached. The same goes for the epithet search.
 
 **The places page is the ship's log.** `/$locale/places` lists every `place`
 record (`src/data/places.ts`, in the order the ship reaches them) as numbered
@@ -286,24 +321,31 @@ Check mobile by measuring element rects, not `scrollWidth`.
 inside a seal: a ring in the character's tint, a dashed inner ring, thirty-two
 bezel ticks with the four cardinal ones in the tint, like a compass card. The
 seal is identical for everyone and only the object and the colour change,
-which is what makes twenty-five emblems read as one set. No faces and no
-official Jolly Rogers appear; `ChartArt.tsx` exports `ArtStrokes` so the same
-strokes can be nested in the crest's `<svg>` without a second copy.
+which is what makes the featured emblems read as one set. On the shelves the
+same drawing sits in a plain frame (`CharacterTile.tsx`): a shelf holds
+hundreds, and a seal apiece would put thousands of ticks in the HTML. No
+faces and no official Jolly Rogers appear; `ChartArt.tsx` exports
+`ArtStrokes` so the same strokes can be nested in the crest's `<svg>` without
+a second copy.
 
 **Every picture is a line drawing made here; no photographs, no official
 artwork.** Toei and Shueisha own every frame of the anime and every panel of
 the manga, so nothing of theirs appears, and the CSP is `default-src 'self'`
-with a nonce-only `script-src`, so nothing is hotlinked either. `src/components/ChartArt.tsx` holds forty
-drawings, one per record, as lists of SVG path strokes rendered by one
-component: a 160x200 box, a uniform 2px stroke kept at 2px through
-`vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
-character is an object that stands for them (a straw hat, three sheathed
-swords, a violin), never a face or a logo; each place is the place. A drawing
-takes exactly one colour for its main stroke, from the nineteen-hue `tint`
-token set in `tokens.stylex.ts`, and leaves every other line in `ink2`, which
-is what keeps forty illustrations reading as one set. The record's
-`visual` names its drawing and its tint; `ChartArt.test.tsx` renders all of
-them. The fold is `SeaChartHero.tsx`, the same line at 1600x560.
+with a nonce-only `script-src`, so nothing is hotlinked either. The drawings
+live in `src/data/art`, one module per saga beside the records they stand
+for, as lists of SVG path strokes; `src/data/art/index.ts` merges them and
+derives `ArtId` from their keys, so a record cannot name a drawing that does
+not exist and `art/index.test.ts` holds that no drawing is left without a
+record. `src/components/ChartArt.tsx` is the one renderer: a 160x200 box, a
+uniform 2px stroke kept at 2px through `vector-effect: non-scaling-stroke`,
+round caps and joins, no fills. Each character is an object that stands for
+them (a straw hat, three sheathed swords, a violin), never a face or a logo;
+each place is the place. A drawing takes exactly one colour for its main
+stroke, from the nineteen-hue `tint` token set in `tokens.stylex.ts`, and
+leaves every other line in `ink2`, which is what keeps several hundred
+illustrations reading as one set. The record's `visual` names its drawing and
+its tint; `ChartArt.test.tsx` renders all of them. The fold is
+`SeaChartHero.tsx`, the same line at 1600x560.
 
 **Fonts are self-hosted.** Bricolage Grotesque, Instrument Sans and JetBrains
 Mono (all Google Fonts, variable cuts) live in `public/fonts` as woff2, declared

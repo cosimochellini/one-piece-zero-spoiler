@@ -4,7 +4,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
-import { route } from '~/data/characters'
+import { chart } from '~/data/characters'
 import { orderByMode } from '~/data/order'
 import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
@@ -83,7 +83,9 @@ function Landing() {
   // In the order of the threshold the reader counts in, so the route runs in
   // the order their unit reaches each waypoint and the horizon falls at a
   // single point along it.
-  const ordered = orderByMode(route, modeOf(bookmark))
+  // The chart draws the arcs, the places, the ships and the featured
+  // characters; the rest of the cast is in the signal book.
+  const ordered = orderByMode(chart, modeOf(bookmark))
   const open = ordered.filter((entry) => isRevealed(entry, bookmark)).length
 
   return (

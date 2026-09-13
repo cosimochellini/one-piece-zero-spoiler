@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 
-import { CharacterCrest } from '~/components/CharacterCrest'
+import { Marked } from '~/components/CharacterCard'
+import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { roleOf } from '~/data/characters'
 import type { Entity } from '~/data/types'
@@ -19,7 +20,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-export type CharacterCardProps = {
+export type CharacterTileProps = {
   readonly entity: Entity
   readonly revealed: boolean
   /** A span of the name to mark, from a search match. */
@@ -27,56 +28,57 @@ export type CharacterCardProps = {
 }
 
 /**
- * One page of the signal book: a crest, a name, a role, and the episode the
- * character first appears in. Every card is the same shape, because the
- * rhythm of a catalogue comes from the things in it and not from the layout.
+ * One line of the signal book's shelves: a small plate with the character's
+ * drawing, the name, the role, and the threshold they first appear at. The
+ * crest is for the featured few; a shelf holds hundreds, so a tile is the
+ * drawing alone in a plain frame.
  *
- * Under fog the crest, the name and the role are covered together; the
- * episode stays legible beneath, because "someone opens at episode 392" is
- * the promise and not the spoiler.
+ * Under fog the tile has no link, no name and no drawing in the DOM, for the
+ * same reason a card does not: the slug would spell the name and the drawing
+ * would say as much. The episode stays, because it is the promise.
  */
-export function CharacterCard({
+export function CharacterTile({
   entity,
   revealed,
   highlight = null,
-}: CharacterCardProps) {
+}: CharacterTileProps) {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
   const role = roleOf(entity)
-  const name = entity.name[locale]
 
   return (
-    <li {...stylex.props(styles.card)}>
+    <li {...stylex.props(styles.tile)}>
       <SpoilerVeil
         gated={entity}
         revealed={revealed}
         density="compact"
-        // A fogged card has no link, no name and no drawing in the DOM: the
-        // slug in the href would spell the name a blur is meant to hide, and
-        // the drawing and its colour would say as much.
         placeholder={
-          <span {...stylex.props(styles.link)}>
-            <span {...stylex.props(styles.frame)}>
-              <CharacterCrest />
+          <span {...stylex.props(styles.row)}>
+            <span {...stylex.props(styles.frame)} />
+            <span {...stylex.props(styles.words)}>
+              <span {...stylex.props(styles.name)}>
+                {t('veil.placeholder')}
+              </span>
             </span>
-            <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
       >
         <Link
           to="/$locale/characters/$id"
           params={{ locale, id: entity.id }}
-          {...stylex.props(styles.link)}
+          {...stylex.props(styles.row, styles.link)}
         >
           <span {...stylex.props(styles.frame)}>
-            <CharacterCrest visual={entity.visual} />
+            <ChartArt art={entity.visual.art} tint={entity.visual.tint} />
           </span>
-          <span {...stylex.props(styles.name)}>
-            <Marked text={name} span={highlight} />
+          <span {...stylex.props(styles.words)}>
+            <span {...stylex.props(styles.name)}>
+              <Marked text={entity.name[locale]} span={highlight} />
+            </span>
+            {role === undefined ? null : (
+              <span {...stylex.props(styles.role)}>{role[locale]}</span>
+            )}
           </span>
-          {role === undefined ? null : (
-            <span {...stylex.props(styles.role)}>{role[locale]}</span>
-          )}
         </Link>
       </SpoilerVeil>
       <p {...stylex.props(styles.episode)}>
@@ -86,38 +88,21 @@ export function CharacterCard({
   )
 }
 
-/** The name with the matched letters in a `<mark>`, or the name alone. */
-export function Marked({
-  text: value,
-  span,
-}: {
-  readonly text: string
-  readonly span: readonly [number, number] | null
-}) {
-  if (span === null) return value
-
-  const [from, to] = span
-  return (
-    <>
-      {value.slice(0, from)}
-      <mark {...stylex.props(styles.mark)}>{value.slice(from, to)}</mark>
-      {value.slice(to)}
-    </>
-  )
-}
-
 const styles = stylex.create({
-  card: {
+  tile: {
     display: 'grid',
-    gap: space.xs,
+    gap: space.xs2,
     minWidth: 0,
   },
-  // The whole card is the link; the crest frame is the one container signal.
+  row: {
+    alignItems: 'center',
+    columnGap: space.sm,
+    display: 'grid',
+    gridTemplateColumns: '3.5rem minmax(0, 1fr)',
+  },
   link: {
     borderRadius: radius.card,
     color: color.ink,
-    display: 'grid',
-    gap: space.xs2,
     outlineColor: { default: 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
@@ -125,7 +110,7 @@ const styles = stylex.create({
     textDecorationLine: 'none',
   },
   frame: {
-    aspectRatio: '1',
+    aspectRatio: '4 / 5',
     backgroundColor: color.paper2,
     borderColor: {
       default: color.rule,
@@ -136,23 +121,27 @@ const styles = stylex.create({
     borderStyle: 'solid',
     borderWidth: rule.hair,
     display: 'block',
-    marginBlockEnd: space.xs,
     overflow: 'hidden',
-    padding: space.sm,
+    padding: space.xs2,
     transitionDuration: dur.micro,
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
   },
+  words: {
+    display: 'grid',
+    gap: space.xs3,
+    minWidth: 0,
+  },
   name: {
     color: {
       default: color.ink,
-      ':is(a:hover) > &': color.accent,
-      ':is(a:focus-visible) > &': color.accent,
-      ':is(a:active) > &': color.ink2,
+      ':is(a:hover) > * > &': color.accent,
+      ':is(a:focus-visible) > * > &': color.accent,
+      ':is(a:active) > * > &': color.ink2,
     },
     display: 'block',
     fontFamily: font.display,
-    fontSize: text.lg,
+    fontSize: text.base,
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
@@ -165,8 +154,10 @@ const styles = stylex.create({
   role: {
     color: color.muted,
     display: 'block',
-    fontSize: text.base,
+    fontSize: text.xs,
     lineHeight: leading.body,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
   },
   episode: {
     color: color.ink2,
@@ -176,16 +167,9 @@ const styles = stylex.create({
     fontWeight: 600,
     letterSpacing: '0.08em',
     lineHeight: leading.body,
+    // Under the plate, so the fact sits beside the frame rather than under
+    // the words.
+    paddingInlineStart: `calc(3.5rem + ${space.sm})`,
     textTransform: 'uppercase',
-  },
-  // A match is marked with the accent as an underline, not a highlighter
-  // block: a yellow slab behind display type on a dark page is a tell.
-  mark: {
-    backgroundColor: 'transparent',
-    color: 'inherit',
-    textDecorationColor: color.accent,
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.fine,
-    textUnderlineOffset: '3px',
   },
 })

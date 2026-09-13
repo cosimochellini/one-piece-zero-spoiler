@@ -7,8 +7,8 @@ import { color, rule } from '~/styles/tokens.stylex'
 /**
  * A character's crest: the drawing that stands for them, set inside a seal.
  *
- * The seal is what makes twenty-five drawings read as one set of emblems
- * rather than twenty-five illustrations. It is the same for everyone — a ring
+ * The seal is what makes the featured drawings read as one set of emblems
+ * rather than a row of illustrations. It is the same for everyone — a ring
  * in the character's colour, a dashed inner ring, thirty-two bezel ticks with
  * the four cardinal ones in colour, like a compass card — and only the object
  * in the middle and the one colour change. Nothing here is a face and nothing

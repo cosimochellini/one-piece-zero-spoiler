@@ -10,13 +10,11 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 
 import { CharacterGrid } from '~/components/CharacterGrid'
-import { featuredCharacters } from '~/data/characters'
-import { orderByMode } from '~/data/order'
+import { bookSections, characters, featuredCharacters } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { modeOf } from '~/lib/progress/episode'
 import {
   color,
   dur,
@@ -53,11 +51,11 @@ const settle = stylex.keyframes({
 /**
  * The characters page (Hallmark macrostructure 11, Catalogue).
  *
- * A signal book: the brand line and a count, then twenty crests on one
- * uniform grid, in the order the anime meets them. No hero, no display
- * headline; the crests are the page. The search above the grid filters the
- * open characters, and the fogged ones sit in a band of their own that a
- * search never touches, which is the spoiler rule applied to a text field.
+ * A signal book: the brand line and a count, then the featured crests on one
+ * uniform grid and the whole cast on shelves by arc, in the order the reader's
+ * unit meets them. No hero, no display headline; the crests are the page. The
+ * search above the grid filters the open characters, and the fogged ones sit
+ * where they were, which is the spoiler rule applied to a text field.
  */
 function CharactersPage() {
   const t = useT()
@@ -68,13 +66,14 @@ function CharactersPage() {
       <header {...stylex.props(styles.head, styles.enter, styles.at(0))}>
         <h1 {...stylex.props(styles.title)}>{t('characters.title')}</h1>
         <p {...stylex.props(styles.count)}>
-          {t('characters.count', { count: featuredCharacters.length })}
+          {t('characters.count', { count: characters.length })}
         </p>
       </header>
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
         <CharacterGrid
-          entries={orderByMode(featuredCharacters, modeOf(bookmark))}
+          featured={featuredCharacters}
+          sections={bookSections}
           bookmark={bookmark}
         />
       </div>

@@ -30,3 +30,45 @@ export function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
   const episode = absoluteEpisodeOf(bookmark)
   return episode !== null && episode >= gated.revealedAtEpisode
 }
+
+/**
+ * One entry of a timeline: a fact as it stands from `episode` on. Structurally
+ * the same as `Dated<T>` in `~/data/types`; declared here so the spoiler
+ * module owes the data module nothing.
+ */
+export type DatedEntry<T> = {
+  readonly episode: number
+  readonly value: T
+}
+
+/**
+ * The anime episode a bookmark stands at, or `null` when it stands nowhere
+ * the timelines can measure: no bookmark, a season code the table cannot
+ * resolve, or a chapter. Timelines count in episodes only, so a reader who
+ * counts in chapters reaches none of their entries; that fails closed, which
+ * is the safe direction.
+ */
+export function episodeOf(bookmark: Bookmark): number | null {
+  return bookmark === null ? null : absoluteEpisodeOf(bookmark)
+}
+
+/**
+ * The latest fact the reader has reached, or `undefined` when they have
+ * reached none. Same asymmetry as `isRevealed`: a `null` bookmark knows
+ * nothing, and so does a chapter one. Entries are expected in ascending
+ * episode order.
+ */
+export function latestAt<T>(
+  timeline: readonly DatedEntry<T>[],
+  bookmark: Bookmark,
+): T | undefined {
+  const progress = episodeOf(bookmark)
+  if (progress === null) return undefined
+
+  let latest: T | undefined
+  for (const entry of timeline) {
+    if (entry.episode > progress) break
+    latest = entry.value
+  }
+  return latest
+}

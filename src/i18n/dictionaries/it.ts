@@ -101,7 +101,19 @@ export const itDictionary: Dictionary = {
     'Niente è nella nebbia. Ogni personaggio è aperto per te.',
   'characters.pageTitle': 'Personaggi — Zero Spoiler',
   'characters.pageDescription':
-    'Venti personaggi di One Piece, ciascuno archiviato all’episodio che lo introduce e coperto finché non ci arrivi.',
+    'I personaggi di One Piece, ognuno archiviato all’episodio che lo introduce e coperto finché non ci arrivi.',
+  'characters.featuredTitle': 'In evidenza',
+  'characters.featuredLede':
+    'I personaggi che la carta disegna: la ciurma, e le persone attorno a cui gira la storia.',
+  'characters.bookTitle': 'Tutto il libro',
+  'characters.bookLede':
+    'Tutti quelli che l’archivio ha registrato, ordinati per l’arco che li introduce.',
+  'characters.sectionOpensAt.episode': 'Dall’episodio {threshold}',
+  'characters.sectionOpensAt.season': 'Da {threshold}',
+  'characters.sectionOpensAt.chapter': 'Dal capitolo {threshold}',
+  'characters.sectionCount': '{count} personaggi',
+  'characters.sectionCountOne': '1 personaggio',
+  'characters.sectionFogged': 'Un arco nella nebbia',
 
   'character.opensAt.episode':
     'Compare per la prima volta nell’episodio {threshold}',
@@ -121,7 +133,16 @@ export const itDictionary: Dictionary = {
   'character.routeTitle': 'Sulla rotta',
   'character.position': 'Tappa {index} di {total}',
   'character.positionLede':
-    'Dove sta questa voce tra tutto quello che l’archivio ha catalogato, e cosa c’è archiviato prima e dopo.',
+    'Dove questa voce sta sulla carta, e cosa è archiviato ai suoi lati.',
+  'character.epithet': 'Epiteto',
+  'character.affiliation': 'Affiliazione',
+  'character.origin': 'Origine',
+  'character.devilFruit': 'Frutto del diavolo',
+  'character.bounty': 'Taglia',
+  'character.bountyValue': '{amount} Berry',
+  'character.factsLabel': 'Quello che si sa finora',
+  'character.factsInEpisodes':
+    'I fatti di un dossier contano in episodi dell’anime. Imposta un segnalibro a episodi o a stagioni per leggerli; con un segnalibro a capitoli restano coperti.',
   'character.before': 'Archiviato prima',
   'character.after': 'Archiviato dopo',
   'character.routeStart': 'Niente. La rotta comincia qui.',

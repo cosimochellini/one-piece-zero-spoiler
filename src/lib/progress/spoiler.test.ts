@@ -1,5 +1,5 @@
 import type { Bookmark } from './episode'
-import { isRevealed } from './spoiler'
+import { episodeOf, isRevealed, latestAt } from './spoiler'
 
 const filedAt = (revealedAtEpisode: number, revealedAtChapter: number) => ({
   revealedAtEpisode,
@@ -50,5 +50,59 @@ describe('isRevealed', () => {
 
   it('fails closed on a season bookmark the table cannot resolve', () => {
     expect(isRevealed(filedAt(1, 1), se(99, 1))).toBe(false)
+  })
+})
+
+describe('episodeOf', () => {
+  it('reads an episode bookmark and resolves a season one', () => {
+    expect(episodeOf(ep(130))).toBe(130)
+    expect(episodeOf(se(4, 38))).toBe(130)
+  })
+
+  it('knows no episode for a chapter bookmark or none at all', () => {
+    expect(episodeOf(ch(218))).toBeNull()
+    expect(episodeOf(null)).toBeNull()
+  })
+})
+
+describe('latestAt', () => {
+  const bounty = [
+    { episode: 45, value: 30_000_000 },
+    { episode: 130, value: 100_000_000 },
+    { episode: 320, value: 300_000_000 },
+  ]
+
+  it('knows nothing when no bookmark has been set', () => {
+    expect(latestAt(bounty, null)).toBeUndefined()
+  })
+
+  it('knows nothing for a chapter bookmark, because timelines count in episodes', () => {
+    expect(latestAt(bounty, ch(1000))).toBeUndefined()
+  })
+
+  it('knows nothing before the first entry', () => {
+    expect(latestAt(bounty, ep(44))).toBeUndefined()
+  })
+
+  it('treats an entry as reached on its own episode', () => {
+    expect(latestAt(bounty, ep(45))).toBe(30_000_000)
+    expect(latestAt(bounty, ep(130))).toBe(100_000_000)
+  })
+
+  it('holds the last entry reached between two entries', () => {
+    expect(latestAt(bounty, ep(200))).toBe(100_000_000)
+  })
+
+  it('keeps the last entry past the end of the timeline', () => {
+    expect(latestAt(bounty, ep(1200))).toBe(300_000_000)
+  })
+
+  it('resolves a season bookmark before reading the timeline', () => {
+    // S04E38 is episode 130.
+    expect(latestAt(bounty, se(4, 38))).toBe(100_000_000)
+  })
+
+  it('is empty for an empty timeline', () => {
+    expect(latestAt([], ep(500))).toBeUndefined()
   })
 })

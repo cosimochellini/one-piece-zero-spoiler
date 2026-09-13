@@ -1,24 +1,32 @@
 import type { Locale } from '~/i18n/locales'
+import type { Bookmark, BookmarkMode } from '~/lib/progress/episode'
+import { episodeOf } from '~/lib/progress/spoiler'
 
-import { entities } from './entities'
+import { entities, sagas } from './entities'
 import { orderByMode } from './order'
-import type { Entity, LocalizedText } from './types'
+import type { CharacterDossier, Entity, LocalizedText } from './types'
 
 /**
  * The character layer of the archive: which records are characters, which
- * twenty the characters page shows, what each one does, and how a name is
+ * ones the signal book puts in evidence and draws on the chart, what the
+ * archive knows about each, how the book is shelved, and how a name is
  * searched.
  *
  * Kept beside `entities.ts` rather than inside it because none of this is a
- * property of a record. The featured list is an editorial ranking, the roles
- * are a dossier written to the same "safe at the threshold" rule as the
- * summaries, and search is a page concern that happens to need the data.
+ * property of a record. The featured list is an editorial ranking, the
+ * dossiers are filed with their sagas and merged here, and search is a page
+ * concern that happens to need the data.
  */
 
 /**
- * The twenty characters the signal book shows, most important first. The
- * page itself draws them in route order; this order only decides who is in.
- * Every character keeps a page of its own whether or not it is listed here.
+ * The characters the signal book puts in evidence and the landing chart
+ * draws, most important first. The pages themselves draw them in route
+ * order; this order only decides who is in. Every character keeps a page of
+ * its own whether or not it is listed here.
+ *
+ * The first twenty are the crew and the figures the story turns on up to the
+ * war; the sixteen after them are the Emperors, the admirals, the Warlords
+ * and the family that shape everything from Sabaody onward.
  */
 export const FEATURED_CHARACTER_IDS = [
   'monkey-d-luffy',
@@ -41,74 +49,35 @@ export const FEATURED_CHARACTER_IDS = [
   'nefertari-vivi',
   'smoker',
   'buggy',
+  'sabo',
+  'koby',
+  'silvers-rayleigh',
+  'marshall-d-teach',
+  'kaido',
+  'charlotte-linlin',
+  'sakazuki',
+  'kuzan',
+  'borsalino',
+  'monkey-d-garp',
+  'sengoku',
+  'monkey-d-dragon',
+  'bartholomew-kuma',
+  'rob-lucci',
+  'enel',
+  'gecko-moria',
 ] as const
 
 /**
- * What each character does, as a viewer at the threshold episode would put
- * it. Same rule as the summaries: a role learned later than the threshold is
- * a spoiler, so Franky is a ship dismantler here and not what he turns out
- * to be, and Mihawk is a swordsman rather than the title he also holds.
+ * Every character's dossier, merged from the sagas. Each saga files the
+ * dossiers of the characters it introduces, beside their records, so the two
+ * are written and reviewed together; the data tests hold that every
+ * character has exactly one.
  */
-export const CHARACTER_ROLES: Readonly<Record<string, LocalizedText>> = {
-  'monkey-d-luffy': { it: 'Capitano', en: 'Captain' },
-  'roronoa-zoro': {
-    it: 'Spadaccino, cacciatore di pirati',
-    en: 'Swordsman, pirate hunter',
-  },
-  shanks: { it: 'Capitano pirata', en: 'Pirate captain' },
-  buggy: {
-    it: 'Capitano dei Pirati di Bagy',
-    en: 'Captain of the Buggy Pirates',
-  },
-  nami: { it: 'Navigatrice e ladra', en: 'Navigator and thief' },
-  usopp: { it: 'Tiratore', en: 'Marksman' },
-  sanji: { it: 'Cuoco', en: 'Cook' },
-  'dracule-mihawk': {
-    it: 'Lo spadaccino più forte del mondo',
-    en: 'The strongest swordsman in the world',
-  },
-  smoker: { it: 'Capitano della Marina', en: 'Marine captain' },
-  'nefertari-vivi': {
-    it: 'Principessa di Alabasta',
-    en: 'Princess of Alabasta',
-  },
-  'tony-tony-chopper': { it: 'Medico', en: 'Doctor' },
-  crocodile: {
-    it: 'Membro della Flotta dei Sette',
-    en: 'One of the Seven Warlords',
-  },
-  'portgas-d-ace': { it: 'Comandante di divisione', en: 'Division commander' },
-  'nico-robin': { it: 'Archeologa', en: 'Archaeologist' },
-  'edward-newgate': {
-    it: 'Capitano dei Pirati di Barbabianca',
-    en: 'Captain of the Whitebeard Pirates',
-  },
-  'donquixote-doflamingo': {
-    it: 'Membro della Flotta dei Sette',
-    en: 'One of the Seven Warlords',
-  },
-  franky: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
-  brook: { it: 'Musicista', en: 'Musician' },
-  perona: { it: 'Principessa fantasma', en: 'Ghost princess' },
-  'trafalgar-law': { it: 'Capitano e chirurgo', en: 'Captain and surgeon' },
-  'eustass-kid': {
-    it: 'Capitano dei Pirati di Kid',
-    en: 'Captain of the Kid Pirates',
-  },
-  'boa-hancock': {
-    it: 'Imperatrice di Amazon Lily',
-    en: 'Empress of Amazon Lily',
-  },
-  jinbe: {
-    it: 'Uomo-pesce della Flotta dei Sette',
-    en: 'Fish-man of the Seven Warlords',
-  },
-  bartolomeo: { it: 'Capitano pirata', en: 'Pirate captain' },
-  yamato: { it: 'Figlio di Kaido', en: 'Kaido’s child' },
-}
+export const CHARACTER_DOSSIERS: Readonly<Record<string, CharacterDossier>> =
+  Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))
 
 /** The whole archive in the order the anime reaches it. */
-export const route: readonly Entity[] = orderByMode(entities, 'episode')
+const route: readonly Entity[] = orderByMode(entities, 'episode')
 
 /** Every character record, in route order. */
 export const characters: readonly Entity[] = route.filter(
@@ -117,26 +86,92 @@ export const characters: readonly Entity[] = route.filter(
 
 const FEATURED = new Set<string>(FEATURED_CHARACTER_IDS)
 
-/** The twenty listed characters, in route order. */
+/** The featured characters, in route order. */
 export const featuredCharacters: readonly Entity[] = characters.filter(
   (entity) => FEATURED.has(entity.id),
 )
+
+/**
+ * The route as the landing chart draws it: every arc, place and ship, and
+ * the featured characters. The other characters are in the signal book but
+ * not on the chart, which would otherwise run to several hundred waypoints.
+ */
+export const chart: readonly Entity[] = route.filter(
+  (entity) => entity.kind !== 'character' || FEATURED.has(entity.id),
+)
+
+const ON_CHART = new Set(chart.map((entity) => entity.id))
+
+/**
+ * The chart with this record on it, in the order of the threshold the reader
+ * counts in: the chart itself when the record is already drawn, otherwise a
+ * copy with the record set in at its place. A character's page shows its
+ * route position against this, so an unlisted character still has a place on
+ * the chart when the reader is looking at it.
+ */
+export function chartWith(
+  entity: Entity,
+  mode: BookmarkMode = 'episode',
+): readonly Entity[] {
+  const drawn = ON_CHART.has(entity.id)
+  if (drawn && mode === 'episode') return chart
+
+  return orderByMode(drawn ? chart : [...chart, entity], mode)
+}
+
+const CHARACTER_BY_ID = new Map(characters.map((entity) => [entity.id, entity]))
 
 /**
  * Looks a character up by id. A record that exists but is not a character
  * is `undefined` here too: `/characters/alabasta` is not a page.
  */
 export function getCharacter(id: string): Entity | undefined {
-  const entity = characters.find((candidate) => candidate.id === id)
-  return entity
+  return CHARACTER_BY_ID.get(id)
+}
+
+export function dossierOf(entity: Entity): CharacterDossier | undefined {
+  return CHARACTER_DOSSIERS[entity.id]
 }
 
 export function roleOf(entity: Entity): LocalizedText | undefined {
-  return CHARACTER_ROLES[entity.id]
+  return dossierOf(entity)?.role
 }
 
 /**
- * Where a record sits on the route, and what lies either side of it.
+ * One shelf of the signal book: an arc and the characters first met along
+ * it. A character is shelved under the arc with the greatest threshold no
+ * later than its own, so a shelf's heading is always open whenever any
+ * character on it is — the heading never has to be veiled above an open
+ * name.
+ */
+export type BookSection = {
+  readonly arc: Entity
+  readonly characters: readonly Entity[]
+}
+
+const arcs = route.filter((entity) => entity.kind === 'arc')
+
+function shelfOf(character: Entity): Entity | undefined {
+  let shelf: Entity | undefined
+  for (const arc of arcs) {
+    if (arc.revealedAtEpisode > character.revealedAtEpisode) break
+    shelf = arc
+  }
+  return shelf
+}
+
+/** The signal book shelved by arc, in route order, empty shelves left out. */
+export const bookSections: readonly BookSection[] = arcs
+  .map((arc) => ({
+    arc,
+    characters: characters.filter(
+      (character) => shelfOf(character)?.id === arc.id,
+    ),
+  }))
+  .filter((section) => section.characters.length > 0)
+
+/**
+ * Where a record sits on the chart, and what lies either side of it.
  * `index` is zero-based; the page prints it plus one.
  */
 export type RoutePosition = {
@@ -148,23 +183,21 @@ export type RoutePosition = {
 
 export function routePositionOf(
   entity: Entity,
-  ordered: readonly Entity[] = route,
+  drawn: readonly Entity[] = chartWith(entity),
 ): RoutePosition {
-  const index = ordered.findIndex((candidate) => candidate.id === entity.id)
+  const index = drawn.findIndex((candidate) => candidate.id === entity.id)
 
   return {
     index,
-    total: ordered.length,
-    previous: index > 0 ? ordered[index - 1] : undefined,
-    next: ordered[index + 1],
+    total: drawn.length,
+    previous: index > 0 ? drawn[index - 1] : undefined,
+    next: drawn[index + 1],
   }
 }
 
 /**
- * The featured characters filed closest to this one, by anime episode, this
- * one excluded. Ties go to whoever comes first on the route. The distance is
- * always measured in episodes, whatever the reader counts in: the route is
- * the anime's order and "nearby" means nearby on it.
+ * The featured characters filed closest to this one, by threshold, this one
+ * excluded. Ties go to whoever comes first on the route.
  */
 export function nearbyCharacters(entity: Entity, count: number): Entity[] {
   return featuredCharacters
@@ -204,11 +237,17 @@ export type NameMatch = {
  * character as Luffy should still find Rufy, but the highlight is only
  * returned for the name that is actually shown, and only when folding did
  * not change its length, so the indices still point at the right letters.
+ *
+ * The epithets the reader has reached are searched too — "Barbabianca" finds
+ * Edward Newgate — and only those: an epithet learned later than the
+ * reader's episode would confirm a name the fog is meant to hide. Epithets
+ * are dated in episodes, so a chapter bookmark searches names only.
  */
 export function matchName(
   entity: Entity,
   query: string,
   locale: Locale,
+  bookmark: Bookmark,
 ): NameMatch {
   const needle = foldName(query.trim())
   if (needle === '') return { matches: true, highlight: null }
@@ -225,8 +264,20 @@ export function matchName(
     }
   }
 
-  const elsewhere = Object.values(entity.name).some((name) =>
+  const otherName = Object.values(entity.name).some((name) =>
     foldName(name).includes(needle),
   )
-  return { matches: elsewhere, highlight: null }
+  if (otherName) return { matches: true, highlight: null }
+
+  const progress = episodeOf(bookmark)
+  const epithets = dossierOf(entity)?.epithet ?? []
+  const known = epithets.some(
+    (entry) =>
+      progress !== null &&
+      entry.episode <= progress &&
+      Object.values(entry.value).some((epithet) =>
+        foldName(epithet).includes(needle),
+      ),
+  )
+  return { matches: known, highlight: null }
 }
