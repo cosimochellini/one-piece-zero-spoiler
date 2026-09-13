@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { tintOf } from '~/components/ChartArt'
+import { tintOf } from '~/components/drawing'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'

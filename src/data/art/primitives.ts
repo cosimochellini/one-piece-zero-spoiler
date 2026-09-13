@@ -61,9 +61,10 @@ export function sheath(dx: number, role: Role): readonly Stroke[] {
   const b = { x: 100 + dx, y: 46 }
   // Perpendicular offset for the sheath's width.
   const o = { x: 4.6, y: 2 }
-  const at = (t: number) => {
-    return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }
-  }
+  const at = (t: number) => ({
+    x: a.x + (b.x - a.x) * t,
+    y: a.y + (b.y - a.y) * t,
+  })
   const guard = at(0.3)
   const wrap1 = at(0.1)
   const wrap2 = at(0.19)
@@ -106,9 +107,10 @@ export const ghost = (x: number, y: number, role: Role): readonly Stroke[] => {
 }
 
 /** A sake cup, seen from the side. */
-export const cup = (x: number, role: Role): Stroke => {
-  return { d: `M${n(x)} 146 h20 l-3 12 h-14z`, role }
-}
+export const cup = (x: number, role: Role): Stroke => ({
+  d: `M${n(x)} 146 h20 l-3 12 h-14z`,
+  role,
+})
 
 /**
  * One arm of a windmill with its sail, hub at (80, 80), pointing up and to

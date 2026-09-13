@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 
+import { ART_VIEWBOX, type ArtProps, tintOf } from '~/components/drawing'
 import { DRAWINGS, type Stroke } from '~/data/art'
-import type { ArtId, TintId } from '~/data/types'
-import { color, rule, tint } from '~/styles/tokens.stylex'
+import { color, rule } from '~/styles/tokens.stylex'
 
 /**
  * The renderer for every line drawing in the archive. The drawings
@@ -21,11 +21,6 @@ import { color, rule, tint } from '~/styles/tokens.stylex'
  * the waypoint beside them already carries the name, so every drawing is
  * `aria-hidden`.
  */
-
-export type ArtProps = { readonly art: ArtId; readonly tint: TintId }
-
-/** The box every drawing is composed in. A host `<svg>` uses it as its viewBox. */
-export const ART_VIEWBOX = '0 0 160 200'
 
 /**
  * The strokes of one drawing, with no `<svg>` of their own, so the same
@@ -47,7 +42,7 @@ export function ArtStrokes({ art, tint: hue }: ArtProps) {
         {...stylex.props(
           styles.line,
           stroke.role === 'ambient' && styles.ambient,
-          stroke.role === 'accent' && styles.accent(TINT_VAR[hue]),
+          stroke.role === 'accent' && styles.accent(tintOf(hue)),
           stroke.dashed === true && styles.dashed,
         )}
       />
@@ -65,35 +60,6 @@ export function ChartArt(props: ArtProps) {
       <ArtStrokes {...props} />
     </svg>
   )
-}
-
-/** The CSS colour a tint id resolves to, for compositions outside the drawings. */
-export function tintOf(hue: TintId): string {
-  return TINT_VAR[hue]
-}
-
-/** `ivory` is the second ink itself: a drawing with no colour of its own. */
-const TINT_VAR: Readonly<Record<TintId, string>> = {
-  red: tint.red,
-  vermilion: tint.vermilion,
-  orange: tint.orange,
-  ocher: tint.ocher,
-  yellow: tint.yellow,
-  acid: tint.acid,
-  green: tint.green,
-  teal: tint.teal,
-  cyan: tint.cyan,
-  azure: tint.azure,
-  blue: tint.blue,
-  ice: tint.ice,
-  lavender: tint.lavender,
-  violet: tint.violet,
-  magenta: tint.magenta,
-  pink: tint.pink,
-  flamingo: tint.flamingo,
-  sand: tint.sand,
-  wine: tint.wine,
-  ivory: color.ink2,
 }
 
 const styles = stylex.create({

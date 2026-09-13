@@ -3,9 +3,9 @@ import { useState } from 'react'
 
 import { BookmarkDialog } from '~/components/BookmarkDialog'
 import { Button } from '~/components/ui/Button'
-import { useT } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useT } from '~/i18n/useLocale'
 import { describeBookmark } from '~/lib/progress/threshold'
+import { useBookmark } from '~/lib/progress/useBookmark'
 import { color, font, space, text } from '~/styles/tokens.stylex'
 
 /**

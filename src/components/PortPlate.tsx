@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { ART_VIEWBOX, ArtStrokes, tintOf } from '~/components/ChartArt'
+import { ArtStrokes } from '~/components/ChartArt'
+import { ART_VIEWBOX, tintOf } from '~/components/drawing'
 import type { Visual } from '~/data/types'
 import { color, rule } from '~/styles/tokens.stylex'
 

@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 
 import type { CharacterDossier, LocalizedText, Timeline } from '~/data/types'
-import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
+import { useLocale } from '~/i18n/useLocale'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { latestAt } from '~/lib/progress/spoiler'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'

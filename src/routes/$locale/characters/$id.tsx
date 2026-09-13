@@ -23,11 +23,10 @@ import {
   routePositionOf,
 } from '~/data/characters'
 import type { Entity, EntityKind } from '~/data/types'
-import { useLocale } from '~/i18n/LocaleContext'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
-import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
+import { useLocale } from '~/i18n/useLocale'
 import {
   type Bookmark,
   type BookmarkMode,
@@ -35,6 +34,7 @@ import {
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeThreshold } from '~/lib/progress/threshold'
+import { useBookmark, useThreshold } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

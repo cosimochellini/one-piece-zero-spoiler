@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
-import { useT } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/useLocale'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 /**

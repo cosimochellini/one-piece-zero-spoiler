@@ -4,11 +4,11 @@ import { Link } from '@tanstack/react-router'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import type { Entity, EntityKind } from '~/data/types'
-import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useLocale } from '~/i18n/useLocale'
 import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { useThreshold } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

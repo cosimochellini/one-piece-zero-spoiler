@@ -11,9 +11,8 @@ import {
 
 import { Button } from '~/components/ui/Button'
 import { type Season, SEASONS } from '~/data/seasons'
-import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useT } from '~/i18n/useLocale'
 import {
   type BookmarkMode,
   type Draft,
@@ -22,6 +21,7 @@ import {
   gradeDraft,
   stepperOf,
 } from '~/lib/progress/episode'
+import { useBookmark } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

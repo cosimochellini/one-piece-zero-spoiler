@@ -13,11 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 import { PortLog } from '~/components/PortLog'
 import { orderByMode } from '~/data/order'
 import { places } from '~/data/places'
-import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useT } from '~/i18n/useLocale'
 import { modeOf } from '~/lib/progress/episode'
+import { useBookmark } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

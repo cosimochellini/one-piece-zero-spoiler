@@ -86,9 +86,11 @@ describe('character route loader', () => {
 
   it('resolves a season bookmark to its absolute episode', () => {
     // S04E38 is episode 130, where Robin is filed; S04E37 is one short.
-    const season = (episode: number): Bookmark => {
-      return { mode: 'season', season: 4, episode }
-    }
+    const season = (episode: number): Bookmark => ({
+      mode: 'season',
+      season: 4,
+      episode,
+    })
 
     expect(loaderFor('nico-robin', season(37)).revealed).toBe(false)
     expect(loaderFor('nico-robin', season(38)).revealed).toBe(true)

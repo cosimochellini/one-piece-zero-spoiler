@@ -2,33 +2,25 @@ import {
   createContext,
   type ReactNode,
   useCallback,
-  useContext,
   useMemo,
   useState,
 } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
 import {
   COOKIE_MAX_AGE_SECONDS,
   expireCookie,
   writeCookie,
 } from '~/lib/cookies'
 
-import {
-  type Bookmark,
-  EPISODE_COOKIE,
-  modeOf,
-  serialiseBookmark,
-} from './episode'
-import type { Gated } from './spoiler'
-import { describeThreshold, type ThresholdSentence } from './threshold'
+import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
 
-type BookmarkContextValue = {
+/** What the provider puts on the context: the bookmark, and how to move it. */
+export type BookmarkContextValue = {
   readonly bookmark: Bookmark
   readonly setBookmark: (next: Bookmark) => void
 }
 
-const BookmarkContext = createContext<BookmarkContextValue | null>(null)
+export const BookmarkContext = createContext<BookmarkContextValue | null>(null)
 
 export type BookmarkProviderProps = {
   /**
@@ -41,6 +33,10 @@ export type BookmarkProviderProps = {
   readonly initialBookmark: Bookmark
 }
 
+/**
+ * Holds the reader's bookmark for the whole page and writes it back to the
+ * cookie whenever it moves.
+ */
 export function BookmarkProvider({
   initialBookmark,
   children,
@@ -70,32 +66,4 @@ export function BookmarkProvider({
   )
 
   return <BookmarkContext value={value}>{children}</BookmarkContext>
-}
-
-export function useBookmark(): BookmarkContextValue {
-  const value = useContext(BookmarkContext)
-
-  if (value === null) {
-    throw new Error('useBookmark must be used inside a BookmarkProvider')
-  }
-
-  return value
-}
-
-/**
- * Names a record's threshold in the unit the reader counts in, so a card
- * says "Chapter 218" to a manga reader and "Episode 130" to everyone else.
- */
-export function useThreshold(): (
-  sentence: ThresholdSentence,
-  gated: Gated,
-) => string {
-  const t = useT()
-  const mode = modeOf(useBookmark().bookmark)
-
-  return useCallback(
-    (sentence: ThresholdSentence, gated: Gated) =>
-      describeThreshold(t, sentence, gated, mode),
-    [t, mode],
-  )
 }

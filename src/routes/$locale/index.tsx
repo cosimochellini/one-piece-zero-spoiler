@@ -6,10 +6,10 @@ import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
 import { chart } from '~/data/characters'
 import { orderByMode } from '~/data/order'
-import { useT } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { useT } from '~/i18n/useLocale'
 import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { useBookmark } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

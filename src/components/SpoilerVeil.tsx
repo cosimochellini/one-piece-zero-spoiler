@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactNode, useState } from 'react'
 
-import { useT } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useT } from '~/i18n/useLocale'
 import type { Gated } from '~/lib/progress/spoiler'
+import { useThreshold } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,

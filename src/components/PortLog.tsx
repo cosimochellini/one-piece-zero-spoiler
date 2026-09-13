@@ -14,11 +14,11 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { getEntity } from '~/data/entities'
 import { dossierOf, type PlaceDossier } from '~/data/places'
 import type { Entity } from '~/data/types'
-import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useLocale } from '~/i18n/useLocale'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
+import { useThreshold } from '~/lib/progress/useBookmark'
 import {
   color,
   font,
