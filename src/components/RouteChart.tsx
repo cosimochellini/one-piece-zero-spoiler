@@ -6,8 +6,10 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import type { Entity, EntityKind, Visual } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import type { Progress } from '~/lib/progress/episode'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { serialiseBookmark, type Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { describeBookmark } from '~/lib/progress/threshold'
 import {
   color,
   dur,
@@ -28,16 +30,16 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
 }
 
 export type RouteChartProps = {
-  /** The archive, sorted by `revealedAtEpisode` ascending. */
+  /** The archive, sorted by the threshold the bookmark counts in. */
   readonly entries: readonly Entity[]
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 /**
  * The archive as a sea route (the page's Map / Diagram).
  *
- * Every entry is a waypoint on one vertical route, in the order the anime
- * reaches them. The reader's own episode is drawn across the route as a
+ * Every entry is a waypoint on one vertical route, in the order the reader's
+ * unit reaches them. The reader's own episode is drawn across the route as a
  * horizon line, and it is the only thing on the chart that moves: waypoints
  * above it are open and drawn in gold, waypoints below it are under fog, their
  * names covered and their stretch of route dashed. That line is the product; a
@@ -53,9 +55,9 @@ export type RouteChartProps = {
  * the horizon be a single element between two runs rather than a marker that
  * has to be interpolated along the route.
  */
-export function RouteChart({ entries, progress }: RouteChartProps) {
-  const open = entries.filter((entry) => isRevealed(entry, progress))
-  const covered = entries.filter((entry) => !isRevealed(entry, progress))
+export function RouteChart({ entries, bookmark }: RouteChartProps) {
+  const open = entries.filter((entry) => isRevealed(entry, bookmark))
+  const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
 
   return (
     <ol {...stylex.props(styles.route)}>
@@ -67,8 +69,8 @@ export function RouteChart({ entries, progress }: RouteChartProps) {
         // Re-mounted when the bookmark changes, so the line surfaces at its
         // new position instead of being a static element that happened to
         // move.
-        key={progress ?? 'unset'}
-        progress={progress}
+        key={bookmark === null ? 'unset' : serialiseBookmark(bookmark)}
+        bookmark={bookmark}
       />
 
       {covered.map((entry, index) => (
@@ -92,6 +94,7 @@ type WaypointProps = {
 
 function Waypoint({ entry, index, open }: WaypointProps) {
   const { locale, t } = useLocale()
+  const threshold = useThreshold()
   const bow = index % 2 === 0 ? 'left' : 'right'
 
   return (
@@ -111,16 +114,13 @@ function Waypoint({ entry, index, open }: WaypointProps) {
       <div {...stylex.props(styles.body)}>
         <p {...stylex.props(styles.meta)}>
           <span {...stylex.props(styles.episode)}>
-            {t('chart.opensAt', { episode: entry.revealedAtEpisode })}
+            {threshold('chart.opensAt', entry)}
           </span>
           <span {...stylex.props(styles.kind)}>{t(KIND_KEY[entry.kind])}</span>
         </p>
 
         {/* The drawing is inside the veil with the words: under fog, both go. */}
-        <SpoilerVeil
-          revealedAtEpisode={entry.revealedAtEpisode}
-          revealed={open}
-        >
+        <SpoilerVeil gated={entry} revealed={open}>
           <div {...stylex.props(styles.card)}>
             <Picture visual={entry.visual} />
             <div {...stylex.props(styles.words)}>
@@ -218,9 +218,9 @@ function Segment({
  * With no bookmark the horizon sits at the very top, everything is under fog,
  * and the label says so rather than pretending the reader is at episode 0.
  */
-function Horizon({ progress }: { readonly progress: Progress }) {
+function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
   const { t } = useLocale()
-  const set = progress !== null
+  const set = bookmark !== null
 
   return (
     <li aria-current="step" {...stylex.props(styles.row, styles.horizon)}>
@@ -255,9 +255,9 @@ function Horizon({ progress }: { readonly progress: Progress }) {
             set ? styles.horizonSet : styles.horizonUnset,
           )}
         >
-          {set
-            ? t('chart.hereSet', { episode: progress })
-            : t('chart.hereUnset')}
+          {bookmark === null
+            ? t('chart.hereUnset')
+            : describeBookmark(t, 'chart.hereSet', bookmark)}
         </span>
         <span
           aria-hidden="true"

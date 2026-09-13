@@ -1,7 +1,9 @@
 import type { Locale } from '~/i18n/locales'
-import type { Progress } from '~/lib/progress/episode'
+import type { Bookmark, BookmarkMode } from '~/lib/progress/episode'
+import { episodeOf } from '~/lib/progress/spoiler'
 
 import { entities, sagas } from './entities'
+import { orderByMode } from './order'
 import type { CharacterDossier, Entity, LocalizedText } from './types'
 
 /**
@@ -75,9 +77,7 @@ export const CHARACTER_DOSSIERS: Readonly<Record<string, CharacterDossier>> =
   Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))
 
 /** The whole archive in the order the anime reaches it. */
-const route: readonly Entity[] = [...entities].sort(
-  (a, b) => a.revealedAtEpisode - b.revealedAtEpisode,
-)
+const route: readonly Entity[] = orderByMode(entities, 'episode')
 
 /** Every character record, in route order. */
 export const characters: readonly Entity[] = route.filter(
@@ -103,21 +103,20 @@ export const chart: readonly Entity[] = route.filter(
 const ON_CHART = new Set(chart.map((entity) => entity.id))
 
 /**
- * The chart with this record on it: the chart itself when the record is
- * already drawn, otherwise a copy with the record set in at its threshold,
- * after everything filed at the same or an earlier episode. A character's
- * page shows its route position against this, so an unlisted character still
- * has a place on the chart when the reader is looking at it.
+ * The chart with this record on it, in the order of the threshold the reader
+ * counts in: the chart itself when the record is already drawn, otherwise a
+ * copy with the record set in at its place. A character's page shows its
+ * route position against this, so an unlisted character still has a place on
+ * the chart when the reader is looking at it.
  */
-export function chartWith(entity: Entity): readonly Entity[] {
-  if (ON_CHART.has(entity.id)) return chart
+export function chartWith(
+  entity: Entity,
+  mode: BookmarkMode = 'episode',
+): readonly Entity[] {
+  const drawn = ON_CHART.has(entity.id)
+  if (drawn && mode === 'episode') return chart
 
-  const at = chart.findIndex(
-    (candidate) => candidate.revealedAtEpisode > entity.revealedAtEpisode,
-  )
-  const index = at === -1 ? chart.length : at
-
-  return [...chart.slice(0, index), entity, ...chart.slice(index)]
+  return orderByMode(drawn ? chart : [...chart, entity], mode)
 }
 
 const CHARACTER_BY_ID = new Map(characters.map((entity) => [entity.id, entity]))
@@ -182,8 +181,10 @@ export type RoutePosition = {
   readonly next: Entity | undefined
 }
 
-export function routePositionOf(entity: Entity): RoutePosition {
-  const drawn = chartWith(entity)
+export function routePositionOf(
+  entity: Entity,
+  drawn: readonly Entity[] = chartWith(entity),
+): RoutePosition {
   const index = drawn.findIndex((candidate) => candidate.id === entity.id)
 
   return {
@@ -239,13 +240,14 @@ export type NameMatch = {
  *
  * The epithets the reader has reached are searched too — "Barbabianca" finds
  * Edward Newgate — and only those: an epithet learned later than the
- * reader's episode would confirm a name the fog is meant to hide.
+ * reader's episode would confirm a name the fog is meant to hide. Epithets
+ * are dated in episodes, so a chapter bookmark searches names only.
  */
 export function matchName(
   entity: Entity,
   query: string,
   locale: Locale,
-  progress: Progress,
+  bookmark: Bookmark,
 ): NameMatch {
   const needle = foldName(query.trim())
   if (needle === '') return { matches: true, highlight: null }
@@ -267,6 +269,7 @@ export function matchName(
   )
   if (otherName) return { matches: true, highlight: null }
 
+  const progress = episodeOf(bookmark)
   const epithets = dossierOf(entity)?.epithet ?? []
   const known = epithets.some(
     (entry) =>

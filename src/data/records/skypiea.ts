@@ -20,6 +20,7 @@ export const skypiea: Saga = {
       id: 'skypiea',
       kind: 'arc',
       revealedAtEpisode: 144,
+      revealedAtChapter: 219,
       name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
       summary: {
         it: 'Un’isola sospesa sopra il mare, raggiunta da una corrente che spara le navi verso l’alto.',
@@ -31,6 +32,7 @@ export const skypiea: Saga = {
       id: 'jaya',
       kind: 'place',
       revealedAtEpisode: 144,
+      revealedAtChapter: 222,
       name: { it: 'Jaya', en: 'Jaya' },
       summary: {
         it: 'Un’isola della Rotta Maggiore con una città di pirati senza legge da una parte e un uomo che ride dei sogni dall’altra.',
@@ -42,6 +44,7 @@ export const skypiea: Saga = {
       id: 'masira',
       kind: 'character',
       revealedAtEpisode: 144,
+      revealedAtChapter: 222,
       name: { it: 'Masira', en: 'Masira' },
       summary: {
         it: 'Il Re dei Recuperi: un gigante con il casco da palombaro che tira su dal fondo del mare i relitti affondati, cantando a squarciagola.',
@@ -53,6 +56,7 @@ export const skypiea: Saga = {
       id: 'shoujou',
       kind: 'character',
       revealedAtEpisode: 145,
+      revealedAtChapter: 226,
       name: { it: 'Shojo', en: 'Shoujou' },
       summary: {
         it: 'Il Re del Sonar: un colosso che ascolta il fondo del mare con le onde sonore e beve rum dalla botte mentre la sua nave batte le secche di Jaya.',
@@ -64,6 +68,7 @@ export const skypiea: Saga = {
       id: 'bellamy',
       kind: 'character',
       revealedAtEpisode: 146,
+      revealedAtChapter: 224,
       name: { it: 'Bellamy', en: 'Bellamy' },
       summary: {
         it: 'Il pirata che tiene Mock Town in pugno: ha delle molle al posto delle gambe, rimbalza sui tetti e ride di chiunque parli ancora di isole d’oro.',
@@ -75,6 +80,7 @@ export const skypiea: Saga = {
       id: 'montblanc-cricket',
       kind: 'character',
       revealedAtEpisode: 148,
+      revealedAtChapter: 229,
       name: { it: 'Montblanc Cricket', en: 'Montblanc Cricket' },
       summary: {
         it: 'Un sub che vive da solo su Jaya in una casa piena di reperti, con i capelli a forma di castagna, e che si immerge ogni giorno per il nome di un antenato.',
@@ -86,6 +92,7 @@ export const skypiea: Saga = {
       id: 'marshall-d-teach',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 234,
       name: { it: 'Marshall D. Teach', en: 'Marshall D. Teach' },
       summary: {
         it: 'L’uomo che a Mock Town rideva davanti a una torta di ciliegie dicendo che i sogni degli uomini non finiscono mai, e che un tempo navigava con Barbabianca.',
@@ -97,6 +104,7 @@ export const skypiea: Saga = {
       id: 'bartholomew-kuma',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 233,
       name: { it: 'Orso Bartholomew', en: 'Bartholomew Kuma' },
       summary: {
         it: 'Un gigante silenzioso della Flotta dei Sette, seduto alla riunione con una bibbia aperta in mano mentre tutti gli altri si punzecchiano.',
@@ -108,6 +116,7 @@ export const skypiea: Saga = {
       id: 'sengoku',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 233,
       name: { it: 'Sengoku', en: 'Sengoku' },
       summary: {
         it: 'Il grand’ammiraglio della Marina, che presiede la riunione della Flotta dei Sette con una capra al fianco che si mangia i documenti.',
@@ -119,6 +128,7 @@ export const skypiea: Saga = {
       id: 'edward-newgate',
       kind: 'character',
       revealedAtEpisode: 152,
+      revealedAtChapter: 234,
       name: { it: 'Edward Newgate', en: 'Edward Newgate' },
       summary: {
         it: 'Barbabianca: un gigante attaccato alle flebo che beve sakè dalla botte, l’uomo più vicino al trono dei pirati da vent’anni, con una ciurma che chiama i suoi uomini figli.',
@@ -130,6 +140,7 @@ export const skypiea: Saga = {
       id: 'donquixote-doflamingo',
       kind: 'character',
       revealedAtEpisode: 152,
+      revealedAtChapter: 233,
       name: { it: 'Donquijote Do Flamingo', en: 'Donquixote Doflamingo' },
       summary: {
         it: 'Un membro della Flotta dei Sette con un cappotto di piume rosa e occhiali da sole, che si presenta alle riunioni del Governo Mondiale per divertimento e fa muovere gli altri come marionette.',
@@ -141,6 +152,7 @@ export const skypiea: Saga = {
       id: 'marco',
       kind: 'character',
       revealedAtEpisode: 152,
+      revealedAtChapter: 234,
       name: { it: 'Marco', en: 'Marco' },
       summary: {
         it: 'Un comandante dei Pirati di Barbabianca, il primo a parlare quando il vecchio alza la voce, con l’aria di chi si annoia anche in mezzo a una tempesta.',
@@ -152,6 +164,7 @@ export const skypiea: Saga = {
       id: 'gan-fall',
       kind: 'character',
       revealedAtEpisode: 153,
+      revealedAtChapter: 241,
       name: { it: 'Gan Fall', en: 'Gan Fall' },
       summary: {
         it: 'Un vecchio cavaliere che gira le nuvole con una lancia e un elmo a forma di zucca, in sella a un cavallo alato, e soccorre chi trova nei guai.',
@@ -163,6 +176,7 @@ export const skypiea: Saga = {
       id: 'wyper',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 245,
       name: { it: 'Wiper', en: 'Wyper' },
       summary: {
         it: 'Il capo dei guerrieri shandia, che piomba sulle nuvole con i pattini ai piedi e un bazooka che brucia, e non tratta con nessuno.',
@@ -174,6 +188,7 @@ export const skypiea: Saga = {
       id: 'kamakiri',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 280,
       name: { it: 'Kamakiri', en: 'Kamakiri' },
       summary: {
         it: 'Un guerriero shandia dalla cresta alta, che attraversa la foresta di nuvole con una lama che brucia, tenuta bassa come un insetto in agguato.',
@@ -185,6 +200,7 @@ export const skypiea: Saga = {
       id: 'braham',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 280,
       name: { it: 'Braham', en: 'Braham' },
       summary: {
         it: 'Un guerriero shandia con gli occhiali calati sugli occhi, che apre il fuoco con due pistole capaci di accecare chiunque le guardi.',
@@ -196,6 +212,7 @@ export const skypiea: Saga = {
       id: 'genbo',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 280,
       name: { it: 'Genbo', en: 'Genbo' },
       summary: {
         it: 'Un guerriero shandia grosso il doppio dei suoi compagni, che si carica sulle spalle un bazooka incendiario e lo maneggia come un fucile.',
@@ -207,6 +224,7 @@ export const skypiea: Saga = {
       id: 'laki',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 280,
       name: { it: 'Laki', en: 'Laki' },
       summary: {
         it: 'Una guerriera shandia che tiene il fucile puntato da lontano, con una piuma infilata nella canna e l’occhio fermo sul mirino.',
@@ -218,6 +236,7 @@ export const skypiea: Saga = {
       id: 'aisa',
       kind: 'character',
       revealedAtEpisode: 154,
+      revealedAtChapter: 250,
       name: { it: 'Aisa', en: 'Aisa' },
       summary: {
         it: 'Una bambina shandia che sente le voci di tutto ciò che vive, e sa dire quante persone ci sono su un’isola senza averle mai viste.',
@@ -229,6 +248,7 @@ export const skypiea: Saga = {
       id: 'conis',
       kind: 'character',
       revealedAtEpisode: 155,
+      revealedAtChapter: 242,
       name: { it: 'Conis', en: 'Conis' },
       summary: {
         it: 'Una ragazza con le ali di Angel Beach, che accoglie gli stranieri con un’arpa e una volpe delle nuvole addormentata ai suoi piedi.',
@@ -240,6 +260,7 @@ export const skypiea: Saga = {
       id: 'pagaya',
       kind: 'character',
       revealedAtEpisode: 155,
+      revealedAtChapter: 242,
       name: { it: 'Pagaya', en: 'Pagaya' },
       summary: {
         it: 'Il padre di Conis, un artigiano mite che monta conchiglie a un banco da lavoro e ne ricava barche, lampade e tutto il resto.',
@@ -251,6 +272,7 @@ export const skypiea: Saga = {
       id: 'enel',
       kind: 'character',
       revealedAtEpisode: 158,
+      revealedAtChapter: 256,
       name: { it: 'Ener', en: 'Enel' },
       summary: {
         it: 'Il Dio di Skypiea, seduto sopra un tamburo d’oro con altri quattro alle spalle, che sa che cosa dicono i suoi sudditi senza doverli ascoltare.',
@@ -262,6 +284,7 @@ export const skypiea: Saga = {
       id: 'satori',
       kind: 'character',
       revealedAtEpisode: 160,
+      revealedAtChapter: 252,
       name: { it: 'Satori', en: 'Satori' },
       summary: {
         it: 'Un sacerdote di Ener che aspetta gli intrusi in mezzo a sfere di nuvola identiche fra loro, una delle quali nasconde sempre qualcosa.',
@@ -273,6 +296,7 @@ export const skypiea: Saga = {
       id: 'shura',
       kind: 'character',
       revealedAtEpisode: 162,
+      revealedAtChapter: 260,
       name: { it: 'Shura', en: 'Shura' },
       summary: {
         it: 'Un sacerdote di Ener che pattuglia il cielo in sella a un uccello in fiamme, con una lancia che scalda l’aria attorno alla punta.',
@@ -284,6 +308,7 @@ export const skypiea: Saga = {
       id: 'gedatsu',
       kind: 'character',
       revealedAtEpisode: 166,
+      revealedAtChapter: 266,
       name: { it: 'Gedatsu', en: 'Gedatsu' },
       summary: {
         it: 'Un sacerdote di Ener che apre una nuvola di palude sotto i piedi degli intrusi, e nel frattempo dimentica regolarmente quello che stava facendo.',
@@ -295,6 +320,7 @@ export const skypiea: Saga = {
       id: 'ohm',
       kind: 'character',
       revealedAtEpisode: 169,
+      revealedAtChapter: 272,
       name: { it: 'Om', en: 'Ohm' },
       summary: {
         it: 'Un sacerdote di Ener che combatte con una spada capace di indurire la nuvola in ferro, con un enorme cane bianco al fianco.',
@@ -306,6 +332,7 @@ export const skypiea: Saga = {
       id: 'montblanc-noland',
       kind: 'character',
       revealedAtEpisode: 187,
+      revealedAtChapter: 292,
       name: { it: 'Montblanc Noland', en: 'Montblanc Noland' },
       summary: {
         it: 'L’esploratore che quattrocento anni fa torna dal mare parlando di una città d’oro e finisce giustiziato come bugiardo perché non sa mostrarla.',
@@ -317,6 +344,7 @@ export const skypiea: Saga = {
       id: 'kalgara',
       kind: 'character',
       revealedAtEpisode: 187,
+      revealedAtChapter: 292,
       name: { it: 'Kalgara', en: 'Kalgara' },
       summary: {
         it: 'Il capo dei guerrieri shandia di quattrocento anni fa, che difende la sua città con una lancia più alta di lui e la voce di una grande campana.',

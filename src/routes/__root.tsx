@@ -9,8 +9,8 @@ import {
 import { useEffect, type ReactNode } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
-import { EpisodeProvider } from '~/lib/progress/EpisodeContext'
-import { readProgress } from '~/lib/progress/readProgress'
+import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import { readBookmark } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
 import { color, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
@@ -24,9 +24,9 @@ import '~/styles/global.css'
 
 export const Route = createRootRoute({
   // Runs on the server for a document request and on the client for a
-  // navigation, and `readProgress` has a branch for each. Reading the bookmark
+  // navigation, and `readBookmark` has a branch for each. Reading the bookmark
   // this early is what makes the first painted HTML already correct.
-  beforeLoad: () => ({ initialProgress: readProgress() }),
+  beforeLoad: () => ({ initialBookmark: readBookmark() }),
   head: () => ({
     meta: [
       { charSet: 'utf-8' },
@@ -79,13 +79,13 @@ export const Route = createRootRoute({
 })
 
 function RootComponent() {
-  const { initialProgress } = Route.useRouteContext()
+  const { initialBookmark } = Route.useRouteContext()
 
   return (
     <RootDocument>
-      <EpisodeProvider initialProgress={initialProgress}>
+      <BookmarkProvider initialBookmark={initialBookmark}>
         <Outlet />
-      </EpisodeProvider>
+      </BookmarkProvider>
     </RootDocument>
   )
 }

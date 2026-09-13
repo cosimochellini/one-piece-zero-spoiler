@@ -36,6 +36,7 @@ export const alabasta: Saga = {
       id: 'laboon',
       kind: 'character',
       revealedAtEpisode: 62,
+      revealedAtChapter: 105,
       name: { it: 'Labon', en: 'Laboon' },
       summary: {
         it: 'Una balena grande come un’isola che aspetta davanti alla Montagna Inversa, con la fronte piena di cicatrici perché la sbatte contro la scogliera.',
@@ -47,6 +48,7 @@ export const alabasta: Saga = {
       id: 'crocus',
       kind: 'character',
       revealedAtEpisode: 62,
+      revealedAtChapter: 105,
       name: { it: 'Crocus', en: 'Crocus' },
       summary: {
         it: 'Il guardiano del faro di Capo Gemello, un vecchio con la camicia a fiori che vive dentro la balena di cui si prende cura.',
@@ -58,6 +60,7 @@ export const alabasta: Saga = {
       id: 'mr-9',
       kind: 'character',
       revealedAtEpisode: 63,
+      revealedAtChapter: 107,
       name: { it: 'Mister 9', en: 'Mr. 9' },
       summary: {
         it: 'Un agente con la corona in testa e due mazze d’acciaio alla cintura, che parla come un attore e non dice mai per chi lavora.',
@@ -69,6 +72,7 @@ export const alabasta: Saga = {
       id: 'whisky-peak',
       kind: 'arc',
       revealedAtEpisode: 64,
+      revealedAtChapter: 106,
       name: { it: 'Whisky Peak', en: 'Whisky Peak' },
       summary: {
         it: 'Una città della Rotta Maggiore fatta di rocce a forma di cactus, dove cento abitanti accolgono ogni pirata con un banchetto e un brindisi.',
@@ -80,6 +84,7 @@ export const alabasta: Saga = {
       id: 'igaram',
       kind: 'character',
       revealedAtEpisode: 64,
+      revealedAtChapter: 114,
       name: { it: 'Igaram', en: 'Igaram' },
       summary: {
         it: 'Il capo di una città che accoglie i pirati a braccia aperte, con i bigodini in testa e un sassofono che spara pallottole.',
@@ -91,6 +96,7 @@ export const alabasta: Saga = {
       id: 'miss-monday',
       kind: 'character',
       revealedAtEpisode: 64,
+      revealedAtChapter: 114,
       name: { it: 'Miss Monday', en: 'Miss Monday' },
       summary: {
         it: 'Un’agente vestita da suora che serve da bere ai pirati durante il banchetto e poi li solleva da terra con una mano sola.',
@@ -102,6 +108,7 @@ export const alabasta: Saga = {
       id: 'karoo',
       kind: 'character',
       revealedAtEpisode: 64,
+      revealedAtChapter: 114,
       name: { it: 'Carue', en: 'Karoo' },
       summary: {
         it: 'Un’anatra da corsa con la sella sul dorso e la borraccia al collo, che porta la sua padrona più veloce di un cavallo.',
@@ -113,6 +120,7 @@ export const alabasta: Saga = {
       id: 'mr-5',
       kind: 'character',
       revealedAtEpisode: 66,
+      revealedAtChapter: 114,
       name: { it: 'Mister 5', en: 'Mr. 5' },
       summary: {
         it: 'Un agente il cui corpo è esplosivo: si stacca di dosso un pezzetto qualsiasi e lo lancia come una pallottola che scoppia.',
@@ -124,6 +132,7 @@ export const alabasta: Saga = {
       id: 'miss-valentine',
       kind: 'character',
       revealedAtEpisode: 66,
+      revealedAtChapter: 114,
       name: { it: 'Miss Valentine', en: 'Miss Valentine' },
       summary: {
         it: 'Un’agente che scende dal cielo ridendo appesa a un ombrello giallo limone, e che cambia peso per schiacciare chi sta sotto.',
@@ -135,6 +144,7 @@ export const alabasta: Saga = {
       id: 'nefertari-vivi',
       kind: 'character',
       revealedAtEpisode: 67,
+      revealedAtChapter: 114,
       name: { it: 'Nefertari Bibi', en: 'Nefertari Vivi' },
       summary: {
         it: 'Una principessa che si è infiltrata sotto falso nome in un’organizzazione criminale per scoprire chi vuole rovesciare il suo regno, e che ora quell’organizzazione vuole morta.',
@@ -146,6 +156,7 @@ export const alabasta: Saga = {
       id: 'little-garden',
       kind: 'arc',
       revealedAtEpisode: 70,
+      revealedAtChapter: 115,
       name: { it: 'Little Garden', en: 'Little Garden' },
       summary: {
         it: 'Un’isola preistorica della Rotta Maggiore, con due vulcani che fumano sopra le felci e ossa di dinosauro grandi come una nave.',
@@ -157,6 +168,7 @@ export const alabasta: Saga = {
       id: 'mr-3',
       kind: 'character',
       revealedAtEpisode: 70,
+      revealedAtChapter: 120,
       name: { it: 'Mister 3', en: 'Mr. 3' },
       summary: {
         it: 'Un agente con i capelli a forma di tre che produce cera dal corpo e la indurisce, costruendo trappole e statue attorno alle sue prede.',
@@ -168,6 +180,7 @@ export const alabasta: Saga = {
       id: 'miss-goldenweek',
       kind: 'character',
       revealedAtEpisode: 70,
+      revealedAtChapter: 120,
       name: { it: 'Miss Goldenweek', en: 'Miss Goldenweek' },
       summary: {
         it: 'Una ragazzina che si siede a dipingere in mezzo al combattimento, con la tavolozza sulle ginocchia e un biscotto di riso in bocca.',
@@ -179,6 +192,7 @@ export const alabasta: Saga = {
       id: 'dorry',
       kind: 'character',
       revealedAtEpisode: 70,
+      revealedAtChapter: 120,
       name: { it: 'Dorry', en: 'Dorry' },
       summary: {
         it: 'Un gigante alto quanto una torre che vive a Little Garden, con uno scudo rotondo e una spada, e duella da cento anni con un vecchio amico.',
@@ -190,6 +204,7 @@ export const alabasta: Saga = {
       id: 'brogy',
       kind: 'character',
       revealedAtEpisode: 70,
+      revealedAtChapter: 120,
       name: { it: 'Broggy', en: 'Brogy' },
       summary: {
         it: 'Un gigante dalla barba rossa che ride fino a scuotere la terra, con un’ascia enorme e un duello che va avanti da cento anni.',
@@ -201,6 +216,7 @@ export const alabasta: Saga = {
       id: 'drum-island',
       kind: 'arc',
       revealedAtEpisode: 78,
+      revealedAtChapter: 130,
       name: { it: 'Isola di Drum', en: 'Drum Island' },
       summary: {
         it: 'Un’isola sepolta dalla neve, con un castello issato in cima a una vetta a forma di tamburo e un paese rimasto senza medici.',
@@ -212,6 +228,7 @@ export const alabasta: Saga = {
       id: 'wapol',
       kind: 'character',
       revealedAtEpisode: 78,
+      revealedAtChapter: 133,
       name: { it: 'Wapol', en: 'Wapol' },
       summary: {
         it: 'Un re tornato a reclamare un’isola che aveva abbandonato, con la corona storta e una bocca capace di mordere e inghiottire il metallo.',
@@ -223,6 +240,7 @@ export const alabasta: Saga = {
       id: 'bon-clay',
       kind: 'character',
       revealedAtEpisode: 78,
+      revealedAtChapter: 133,
       name: { it: 'Mister 2 Von Clay', en: 'Bon Clay' },
       summary: {
         it: 'Un ballerino con il cappotto da cigno e le scarpe a punta, che copia il volto di chiunque tocchi e lo indossa come una maschera.',
@@ -234,6 +252,7 @@ export const alabasta: Saga = {
       id: 'dalton',
       kind: 'character',
       revealedAtEpisode: 79,
+      revealedAtChapter: 135,
       name: { it: 'Dalton', en: 'Dalton' },
       summary: {
         it: 'L’ex capo delle guardie di Drum, un uomo enorme con il mantello pesante e la scure, che difende i villaggi dal re tornato a riprenderseli.',
@@ -245,6 +264,7 @@ export const alabasta: Saga = {
       id: 'kureha',
       kind: 'character',
       revealedAtEpisode: 82,
+      revealedAtChapter: 136,
       name: { it: 'Kureha', en: 'Kureha' },
       summary: {
         it: 'Una dottoressa di centotrentanove anni che vive nel castello sulla vetta, beve vino di prugne e si fa pagare rubando ai ricchi.',
@@ -256,6 +276,7 @@ export const alabasta: Saga = {
       id: 'tony-tony-chopper',
       kind: 'character',
       revealedAtEpisode: 83,
+      revealedAtChapter: 134,
       name: { it: 'Tony Tony Chopper', en: 'Tony Tony Chopper' },
       summary: {
         it: 'Una renna dal naso blu che ha mangiato un frutto del diavolo, parla, cammina su due zampe e ha imparato la medicina da una dottoressa di 139 anni.',
@@ -267,6 +288,7 @@ export const alabasta: Saga = {
       id: 'hiluluk',
       kind: 'character',
       revealedAtEpisode: 85,
+      revealedAtChapter: 145,
       name: { it: 'Hiluluk', en: 'Hiluluk' },
       summary: {
         it: 'Un ciarlatano con la bandiera dei pirati cucita sulla giacca, convinto che nessuna malattia sia incurabile, che ha raccolto una renna e le ha dato un nome.',
@@ -278,6 +300,7 @@ export const alabasta: Saga = {
       id: 'alabasta',
       kind: 'arc',
       revealedAtEpisode: 92,
+      revealedAtChapter: 155,
       name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
       summary: {
         it: 'Un regno del deserto sull’orlo della guerra civile, e la prima volta che la ciurma si oppone a un’organizzazione invece che a un pirata.',
@@ -289,6 +312,7 @@ export const alabasta: Saga = {
       id: 'crocodile',
       kind: 'character',
       revealedAtEpisode: 92,
+      revealedAtChapter: 155,
       name: { it: 'Crocodile', en: 'Crocodile' },
       summary: {
         it: 'Un pirata autorizzato dal Governo, con un uncino d’oro al posto della mano sinistra, che ad Alabasta viene acclamato come un eroe e dirige in segreto l’organizzazione che il regno teme.',
@@ -300,6 +324,7 @@ export const alabasta: Saga = {
       id: 'nefertari-cobra',
       kind: 'character',
       revealedAtEpisode: 93,
+      revealedAtChapter: 160,
       name: { it: 'Nefertari Cobra', en: 'Nefertari Cobra' },
       summary: {
         it: 'Il re di Alabasta, un uomo che metà del suo popolo accusa di aver rubato la pioggia, e che continua a ricevere chiunque bussi al palazzo.',
@@ -311,6 +336,7 @@ export const alabasta: Saga = {
       id: 'kohza',
       kind: 'character',
       revealedAtEpisode: 93,
+      revealedAtChapter: 162,
       name: { it: 'Kosa', en: 'Kohza' },
       summary: {
         it: 'Il capo dell’esercito ribelle, un uomo con gli occhialoni sulla fronte che da bambino giocava con la principessa che ora combatte.',
@@ -322,6 +348,7 @@ export const alabasta: Saga = {
       id: 'pell',
       kind: 'character',
       revealedAtEpisode: 93,
+      revealedAtChapter: 162,
       name: { it: 'Pell', en: 'Pell' },
       summary: {
         it: 'Una guardia reale di Alabasta che si trasforma in falco e sorveglia il deserto dall’alto, con la maschera a becco e la sciabola al fianco.',
@@ -333,6 +360,7 @@ export const alabasta: Saga = {
       id: 'chaka',
       kind: 'character',
       revealedAtEpisode: 93,
+      revealedAtChapter: 162,
       name: { it: 'Chaka', en: 'Chaka' },
       summary: {
         it: 'Una guardia reale di Alabasta che diventa uno sciacallo, fedele al re e incaricato di proteggere la principessa tornata a casa.',
@@ -344,6 +372,7 @@ export const alabasta: Saga = {
       id: 'portgas-d-ace',
       kind: 'character',
       revealedAtEpisode: 95,
+      revealedAtChapter: 154,
       name: { it: 'Portuguese D. Ace', en: 'Portgas D. Ace' },
       summary: {
         it: 'Il fratello maggiore di Rufy, comandante di divisione in una ciurma famosa, che attraversa il deserto a torso nudo sulle tracce di un uomo che ha tradito il suo capitano.',
@@ -355,6 +384,7 @@ export const alabasta: Saga = {
       id: 'mr-1',
       kind: 'character',
       revealedAtEpisode: 100,
+      revealedAtChapter: 170,
       name: { it: 'Mister 1', en: 'Mr. 1' },
       summary: {
         it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso il cui corpo diventa acciaio e le cui braccia si aprono in lame.',
@@ -366,6 +396,7 @@ export const alabasta: Saga = {
       id: 'miss-doublefinger',
       kind: 'character',
       revealedAtEpisode: 100,
+      revealedAtChapter: 170,
       name: { it: 'Miss Doublefinger', en: 'Miss Doublefinger' },
       summary: {
         it: 'Un’agente elegante che fa spuntare spine d’acciaio da qualunque punto del corpo, e le usa come trampoli per camminare più in alto.',
@@ -377,6 +408,7 @@ export const alabasta: Saga = {
       id: 'mr-4',
       kind: 'character',
       revealedAtEpisode: 100,
+      revealedAtChapter: 170,
       name: { it: 'Mister 4', en: 'Mr. 4' },
       summary: {
         it: 'Un agente lentissimo con una mazza da baseball, affiancato da un cane-fucile che sputa una palla esplosiva ogni quattro minuti.',
@@ -388,6 +420,7 @@ export const alabasta: Saga = {
       id: 'miss-merry-christmas',
       kind: 'character',
       revealedAtEpisode: 100,
+      revealedAtChapter: 170,
       name: { it: 'Miss Merry Christmas', en: 'Miss Merry Christmas' },
       summary: {
         it: 'Un’agente anziana che si trasforma in talpa e scava gallerie sotto la città, comparendo alle spalle di chi la cerca in superficie.',
@@ -399,6 +432,7 @@ export const alabasta: Saga = {
       id: 'hina',
       kind: 'character',
       revealedAtEpisode: 128,
+      revealedAtChapter: 217,
       name: { it: 'Hina', en: 'Hina' },
       summary: {
         it: 'Un capitano della Marina che fuma senza fretta e lascia che i pirati le passino attraverso il corpo, ritrovandosi in catene.',
@@ -410,6 +444,7 @@ export const alabasta: Saga = {
       id: 'nico-robin',
       kind: 'character',
       revealedAtEpisode: 130,
+      revealedAtChapter: 218,
       name: { it: 'Nico Robin', en: 'Nico Robin' },
       summary: {
         it: 'Un’archeologa con una taglia sulla testa da quando aveva otto anni, l’unica persona al mondo che sa leggere una certa scrittura antica, che si imbarca su una nave che non l’ha invitata.',

@@ -54,6 +54,7 @@ export const wholeCake: Saga = {
       id: 'zou',
       kind: 'arc',
       revealedAtEpisode: 751,
+      revealedAtChapter: 802,
       name: { it: 'Zou', en: 'Zou' },
       summary: {
         it: 'Un elefante alto un chilometro che cammina sul mare da mille anni, con una foresta e una città fortificata in cima alla schiena.',
@@ -65,6 +66,7 @@ export const wholeCake: Saga = {
       id: 'jack',
       kind: 'character',
       revealedAtEpisode: 751,
+      revealedAtChapter: 802,
       name: { it: 'Jack', en: 'Jack' },
       summary: {
         it: 'Un pirata delle Cento Bestie che arriva a Zou con una flotta e diventa un mammut alto quanto una nave per avere un uomo solo.',
@@ -76,6 +78,7 @@ export const wholeCake: Saga = {
       id: 'wanda',
       kind: 'character',
       revealedAtEpisode: 752,
+      revealedAtChapter: 806,
       name: { it: 'Wanda', en: 'Wanda' },
       summary: {
         it: 'Una mink dal pelo bianco che accompagna i nuovi arrivati tra le rovine di Zou in sella a una cavalcatura a forma di coccodrillo.',
@@ -87,6 +90,7 @@ export const wholeCake: Saga = {
       id: 'carrot',
       kind: 'character',
       revealedAtEpisode: 753,
+      revealedAtChapter: 807,
       name: { it: 'Carrot', en: 'Carrot' },
       summary: {
         it: 'Una giovane mink coniglio che salta più in alto di chiunque e fa scoccare scintille dalle mani quando toccano i suoi amici.',
@@ -98,6 +102,7 @@ export const wholeCake: Saga = {
       id: 'inuarashi',
       kind: 'character',
       revealedAtEpisode: 754,
+      revealedAtChapter: 808,
       name: { it: 'Inuarashi', en: 'Inuarashi' },
       summary: {
         it: 'Il duca cane di Zou, che regna soltanto di giorno, con una gamba sola rimasta dopo l’assalto e la spada ancora tenuta dritta.',
@@ -109,6 +114,7 @@ export const wholeCake: Saga = {
       id: 'pedro',
       kind: 'character',
       revealedAtEpisode: 757,
+      revealedAtChapter: 810,
       name: { it: 'Pedro', en: 'Pedro' },
       summary: {
         it: 'Un mink giaguaro con una cicatrice che gli taglia il volto, a capo delle Guardie di Zou, con i candelotti di dinamite alla cintura.',
@@ -120,6 +126,7 @@ export const wholeCake: Saga = {
       id: 'nekomamushi',
       kind: 'character',
       revealedAtEpisode: 761,
+      revealedAtChapter: 813,
       name: { it: 'Nekomamushi', en: 'Nekomamushi' },
       summary: {
         it: 'Il signore della notte di Zou, un enorme mink gatto che si sveglia al tramonto e ride mentre gli portano notizie di guerra.',
@@ -131,6 +138,7 @@ export const wholeCake: Saga = {
       id: 'raizo',
       kind: 'character',
       revealedAtEpisode: 764,
+      revealedAtChapter: 824,
       name: { it: 'Raizo', en: 'Raizo' },
       summary: {
         it: 'Il ninja di Wano nascosto da anni dentro il ducato dei mink, che riappare sano e salvo con un rotolo in spalla e molte scuse.',
@@ -142,6 +150,7 @@ export const wholeCake: Saga = {
       id: 'whole-cake-island',
       kind: 'arc',
       revealedAtEpisode: 783,
+      revealedAtChapter: 825,
       name: { it: 'Whole Cake Island', en: 'Whole Cake Island' },
       summary: {
         it: 'Un’isola di Totto Land fatta di dolci, con alberi di caramello e un castello a piani sopra una torta, dove regna un Imperatore.',
@@ -153,6 +162,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-reiju',
       kind: 'character',
       revealedAtEpisode: 784,
+      revealedAtChapter: 829,
       name: { it: 'Vinsmoke Reiju', en: 'Vinsmoke Reiju' },
       summary: {
         it: 'Una donna dai capelli rosa in mantello, della famiglia reale del Germa, che succhia via il veleno dalle ferite senza subirne nulla.',
@@ -164,6 +174,7 @@ export const wholeCake: Saga = {
       id: 'vito',
       kind: 'character',
       revealedAtEpisode: 785,
+      revealedAtChapter: 830,
       name: { it: 'Vito', en: 'Vito' },
       summary: {
         it: 'Un uomo in gessato e cappello a tesa larga, della ciurma di Bege, che tiene due pistole sotto la giacca e le sfodera ridendo.',
@@ -175,6 +186,7 @@ export const wholeCake: Saga = {
       id: 'praline',
       kind: 'character',
       revealedAtEpisode: 785,
+      revealedAtChapter: 830,
       name: { it: 'Praline', en: 'Praline' },
       summary: {
         it: 'Una sirena con la coda da squalo, figlia di Big Mom e moglie di un uomo-pesce dei Pirati del Sole, con il pettine tra i capelli.',
@@ -186,6 +198,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-pudding',
       kind: 'character',
       revealedAtEpisode: 786,
+      revealedAtChapter: 831,
       name: { it: 'Charlotte Pudding', en: 'Charlotte Pudding' },
       summary: {
         it: 'La ministra del cioccolato di Totto Land, promessa sposa in un matrimonio combinato, che accoglie gli ospiti con una torta e un sorriso.',
@@ -197,6 +210,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-linlin',
       kind: 'character',
       revealedAtEpisode: 786,
+      revealedAtChapter: 831,
       name: { it: 'Charlotte Linlin', en: 'Charlotte Linlin' },
       summary: {
         it: 'L’Imperatore che regna su Totto Land, una donna alta come una casa che pretende dolci a ogni ora e toglie anni di vita a chi la contraria.',
@@ -208,6 +222,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-perospero',
       kind: 'character',
       revealedAtEpisode: 787,
+      revealedAtChapter: 832,
       name: { it: 'Charlotte Perospero', en: 'Charlotte Perospero' },
       summary: {
         it: 'Il primogenito di Big Mom, ministro delle caramelle, che strascica le parole e alza muri di zucchero leccando un bastone a spirale.',
@@ -219,6 +234,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-cracker',
       kind: 'character',
       revealedAtEpisode: 789,
+      revealedAtChapter: 834,
       name: { it: 'Charlotte Cracker', en: 'Charlotte Cracker' },
       summary: {
         it: 'Uno Sweet Commander di Big Mom che sforna eserciti di soldati di biscotto, ognuno con lo scudo e la spada seghettata.',
@@ -230,6 +246,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-brulee',
       kind: 'character',
       revealedAtEpisode: 790,
+      revealedAtChapter: 834,
       name: { it: 'Charlotte Brûlée', en: 'Charlotte Brûlée' },
       summary: {
         it: 'Una figlia di Big Mom dal volto segnato, che vive dentro gli specchi e tira dentro chi passa davanti a una cornice senza accorgersene.',
@@ -241,6 +258,7 @@ export const wholeCake: Saga = {
       id: 'stussy',
       kind: 'character',
       revealedAtEpisode: 792,
+      revealedAtChapter: 836,
       name: { it: 'Stussy', en: 'Stussy' },
       summary: {
         it: 'La regina del quartiere dei piaceri, invitata alle nozze tra i pezzi grossi della malavita, con il bocchino sempre acceso tra le dita.',
@@ -252,6 +270,7 @@ export const wholeCake: Saga = {
       id: 'morgans',
       kind: 'character',
       revealedAtEpisode: 792,
+      revealedAtChapter: 836,
       name: { it: 'Morgans', en: 'Morgans' },
       summary: {
         it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro convinto che una bella storia valga più della verità.',
@@ -263,6 +282,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-judge',
       kind: 'character',
       revealedAtEpisode: 793,
+      revealedAtChapter: 837,
       name: { it: 'Vinsmoke Judge', en: 'Vinsmoke Judge' },
       summary: {
         it: 'Il re del Regno di Germa, che comanda un esercito di soldati identici e parla dei propri figli come dei pezzi di un progetto.',
@@ -274,6 +294,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-ichiji',
       kind: 'character',
       revealedAtEpisode: 795,
+      revealedAtChapter: 839,
       name: { it: 'Vinsmoke Ichiji', en: 'Vinsmoke Ichiji' },
       summary: {
         it: 'Il primogenito dei Vinsmoke, in tuta da combattimento rossa e mantello, che guarda chiunque dall’alto senza cambiare espressione.',
@@ -285,6 +306,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-niji',
       kind: 'character',
       revealedAtEpisode: 795,
+      revealedAtChapter: 839,
       name: { it: 'Vinsmoke Niji', en: 'Vinsmoke Niji' },
       summary: {
         it: 'Il secondogenito dei Vinsmoke, in tuta blu, che si sposta più in fretta di quanto l’occhio riesca a seguire e se ne diverte.',
@@ -296,6 +318,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-yonji',
       kind: 'character',
       revealedAtEpisode: 795,
+      revealedAtChapter: 839,
       name: { it: 'Vinsmoke Yonji', en: 'Vinsmoke Yonji' },
       summary: {
         it: 'Il più giovane dei fratelli Vinsmoke, in tuta verde, con le braccia che si aprono come argani e la faccia di chi cerca rissa.',
@@ -307,6 +330,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-katakuri',
       kind: 'character',
       revealedAtEpisode: 796,
+      revealedAtChapter: 840,
       name: { it: 'Charlotte Katakuri', en: 'Charlotte Katakuri' },
       summary: {
         it: 'Lo Sweet Commander più forte di Big Mom, un uomo altissimo con la sciarpa tirata fino agli occhi e un tridente sempre in mano.',
@@ -318,6 +342,7 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-sora',
       kind: 'character',
       revealedAtEpisode: 799,
+      revealedAtChapter: 842,
       name: { it: 'Vinsmoke Sora', en: 'Vinsmoke Sora' },
       summary: {
         it: 'La regina del Germa vista nel ricordo di un bambino, distesa in un letto d’ospedale con un pranzo al sacco preparato per il figlio.',
@@ -329,6 +354,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-chiffon',
       kind: 'character',
       revealedAtEpisode: 808,
+      revealedAtChapter: 849,
       name: { it: 'Charlotte Chiffon', en: 'Charlotte Chiffon' },
       summary: {
         it: 'Una figlia di Big Mom sposata al capo dei Fire Tank, con un bambino piccolo in braccio e nessuna voglia di tornare dalla madre.',
@@ -340,6 +366,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-smoothie',
       kind: 'character',
       revealedAtEpisode: 810,
+      revealedAtChapter: 854,
       name: { it: 'Charlotte Smoothie', en: 'Charlotte Smoothie' },
       summary: {
         it: 'Una Sweet Commander altissima di Totto Land, che strizza un frutto sopra un bicchiere e se lo beve come se fosse niente.',
@@ -351,6 +378,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-oven',
       kind: 'character',
       revealedAtEpisode: 811,
+      revealedAtChapter: 855,
       name: { it: 'Charlotte Oven', en: 'Charlotte Oven' },
       summary: {
         it: 'Il ministro della doratura di Totto Land, che scalda le mani a tal punto da far bollire il mare tutto intorno alla costa.',
@@ -362,6 +390,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-daifuku',
       kind: 'character',
       revealedAtEpisode: 811,
+      revealedAtChapter: 855,
       name: { it: 'Charlotte Daifuku', en: 'Charlotte Daifuku' },
       summary: {
         it: 'Il ministro dei fagioli di Totto Land, che si strofina la pancia come una lampada e ne fa uscire un genio di fumo armato.',
@@ -373,6 +402,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-mont-dor',
       kind: 'character',
       revealedAtEpisode: 811,
+      revealedAtChapter: 855,
       name: { it: 'Charlotte Mont-d’Or', en: 'Charlotte Mont-d’Or' },
       summary: {
         it: 'Il ministro del formaggio di Totto Land, che rinchiude nemici e stanze intere dentro i libri e li tiene impilati sulla scrivania.',
@@ -384,6 +414,7 @@ export const wholeCake: Saga = {
       id: 'streusen',
       kind: 'character',
       revealedAtEpisode: 830,
+      revealedAtChapter: 867,
       name: { it: 'Streusen', en: 'Streusen' },
       summary: {
         it: 'Il capocuoco di Totto Land, un vecchio in divisa bianca che affetta il muro di un castello e lo serve come fosse una torta.',
@@ -395,6 +426,7 @@ export const wholeCake: Saga = {
       id: 'carmel',
       kind: 'character',
       revealedAtEpisode: 836,
+      revealedAtChapter: 872,
       name: { it: 'Carmel', en: 'Carmel' },
       summary: {
         it: 'Una suora dal velo bianco che in un ricordo lontano raccoglie bambini abbandonati a Elbaf e offre caramelle a chi ha paura.',
@@ -406,6 +438,7 @@ export const wholeCake: Saga = {
       id: 'donquixote-mjosgard',
       kind: 'character',
       revealedAtEpisode: 877,
+      revealedAtChapter: 908,
       name: { it: 'Donquijote Mjosgard', en: 'Donquixote Mjosgard' },
       summary: {
         it: 'Un Nobile Mondiale con il casco a bolla incrinato, che a Mary Geoise tende la mano a una famiglia di uomini-pesce invece di alzare la pistola.',
@@ -417,6 +450,7 @@ export const wholeCake: Saga = {
       id: 'reverie',
       kind: 'arc',
       revealedAtEpisode: 878,
+      revealedAtChapter: 903,
       name: { it: 'Reverie', en: 'Reverie' },
       summary: {
         it: 'Il consiglio che ogni quattro anni raduna a Mary Geoise i re dei paesi aderenti, attorno a un tavolo rotondo sotto le bandiere.',
@@ -428,6 +462,7 @@ export const wholeCake: Saga = {
       id: 'belo-betty',
       kind: 'character',
       revealedAtEpisode: 879,
+      revealedAtChapter: 905,
       name: { it: 'Belo Betty', en: 'Belo Betty' },
       summary: {
         it: 'La comandante dell’armata dell’Est dei rivoluzionari, che pianta una bandiera rossa e con un grido tira fuori il coraggio dalla gente.',
@@ -439,6 +474,7 @@ export const wholeCake: Saga = {
       id: 'morley',
       kind: 'character',
       revealedAtEpisode: 879,
+      revealedAtChapter: 905,
       name: { it: 'Morley', en: 'Morley' },
       summary: {
         it: 'Il comandante dell’armata dell’Ovest dei rivoluzionari, un gigante con il fiocco tra i capelli che rimodella la terra come pasta.',
@@ -450,6 +486,7 @@ export const wholeCake: Saga = {
       id: 'karasu',
       kind: 'character',
       revealedAtEpisode: 879,
+      revealedAtChapter: 905,
       name: { it: 'Karasu', en: 'Karasu' },
       summary: {
         it: 'Il comandante dell’armata del Nord dei rivoluzionari, un uomo mascherato che si disfa in uno stormo di corvi per spostarsi.',
@@ -461,6 +498,7 @@ export const wholeCake: Saga = {
       id: 'lindbergh',
       kind: 'character',
       revealedAtEpisode: 879,
+      revealedAtChapter: 905,
       name: { it: 'Lindbergh', en: 'Lindbergh' },
       summary: {
         it: 'Il comandante dell’armata del Sud dei rivoluzionari, un mink gatto con gli occhialoni che si porta dietro gli arnesi che ha inventato.',
@@ -472,6 +510,7 @@ export const wholeCake: Saga = {
       id: 'sterry',
       kind: 'character',
       revealedAtEpisode: 880,
+      revealedAtChapter: 906,
       name: { it: 'Sterry', en: 'Sterry' },
       summary: {
         it: 'Il giovane re del Regno di Goa, arrivato alla Reverie con una corona troppo grande e la boria di chi non ha fatto nulla per averla.',
@@ -483,6 +522,7 @@ export const wholeCake: Saga = {
       id: 'im',
       kind: 'character',
       revealedAtEpisode: 885,
+      revealedAtChapter: 908,
       name: { it: 'Im', en: 'Im' },
       summary: {
         it: 'Una figura seduta sul Trono Vuoto di Mary Geoise, davanti alla quale i Cinque Astri di Saggezza si inginocchiano e abbassano la voce.',
@@ -494,6 +534,7 @@ export const wholeCake: Saga = {
       id: 'aramaki',
       kind: 'character',
       revealedAtEpisode: 1077,
+      revealedAtChapter: 1057,
       name: { it: 'Aramaki', en: 'Aramaki' },
       summary: {
         it: 'Un ammiraglio della Marina che scende scalzo su un’isola e la copre di radici, dicendo di non mangiare nulla da tre anni.',

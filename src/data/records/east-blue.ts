@@ -38,6 +38,7 @@ export const eastBlue: Saga = {
       id: 'east-blue',
       kind: 'arc',
       revealedAtEpisode: 1,
+      revealedAtChapter: 1,
       name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
       summary: {
         it: 'Il mare più debole dei quattro. Qui la ciurma si forma, una persona per isola.',
@@ -49,6 +50,7 @@ export const eastBlue: Saga = {
       id: 'monkey-d-luffy',
       kind: 'character',
       revealedAtEpisode: 1,
+      revealedAtChapter: 1,
       name: { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' },
       summary: {
         it: 'Un ragazzo di gomma che salpa da solo dentro una botte, con un cappello di paglia che non è suo, e annuncia al primo che incontra che diventerà il Re dei Pirati.',
@@ -60,6 +62,7 @@ export const eastBlue: Saga = {
       id: 'koby',
       kind: 'character',
       revealedAtEpisode: 1,
+      revealedAtChapter: 1,
       name: { it: 'Kobi', en: 'Koby' },
       summary: {
         it: 'Un mozzo tondo e spaventato che lucida da due anni il ponte di una nave pirata, salito a bordo per sbaglio e rimasto per paura.',
@@ -71,6 +74,7 @@ export const eastBlue: Saga = {
       id: 'alvida',
       kind: 'character',
       revealedAtEpisode: 1,
+      revealedAtChapter: 1,
       name: { it: 'Alvida', en: 'Alvida' },
       summary: {
         it: 'La piratessa più temuta delle acque intorno, con una mazza di ferro chiodata sulla spalla e una ciurma che non la contraddice mai.',
@@ -82,6 +86,7 @@ export const eastBlue: Saga = {
       id: 'gold-roger',
       kind: 'character',
       revealedAtEpisode: 1,
+      revealedAtChapter: 1,
       name: { it: 'Gold Roger', en: 'Gold Roger' },
       summary: {
         it: 'L’uomo che aveva tutto e che muore sul patibolo di una piazza gremita, dicendo al mondo che il suo tesoro è là fuori per chi lo troverà.',
@@ -93,6 +98,7 @@ export const eastBlue: Saga = {
       id: 'roronoa-zoro',
       kind: 'character',
       revealedAtEpisode: 2,
+      revealedAtChapter: 3,
       name: { it: 'Roronoa Zoro', en: 'Roronoa Zoro' },
       summary: {
         it: 'Un cacciatore di pirati legato a un palo nel cortile di una base della Marina, che resiste da nove giorni senza mangiare per una promessa fatta a una bambina.',
@@ -104,6 +110,7 @@ export const eastBlue: Saga = {
       id: 'shells-town',
       kind: 'place',
       revealedAtEpisode: 2,
+      revealedAtChapter: 3,
       name: { it: 'Shells Town', en: 'Shells Town' },
       summary: {
         it: 'Una cittadina dell’East Blue cresciuta attorno a una base della Marina, con un cacciatore di pirati legato a un palo nel cortile.',
@@ -115,6 +122,7 @@ export const eastBlue: Saga = {
       id: 'helmeppo',
       kind: 'character',
       revealedAtEpisode: 2,
+      revealedAtChapter: 3,
       name: { it: 'Hermeppo', en: 'Helmeppo' },
       summary: {
         it: 'Il figlio del capitano della base, che gira la città con due guardie alle spalle e schiaccia sotto il tacco il pranzo di chi lo infastidisce.',
@@ -126,6 +134,7 @@ export const eastBlue: Saga = {
       id: 'morgan',
       kind: 'character',
       revealedAtEpisode: 2,
+      revealedAtChapter: 4,
       name: { it: 'Morgan', en: 'Morgan' },
       summary: {
         it: 'Il capitano della base di Shells Town, con un’ascia al posto della mano destra e una mascella d’acciaio, temuto dai suoi più dei pirati.',
@@ -137,6 +146,7 @@ export const eastBlue: Saga = {
       id: 'shanks',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Shanks', en: 'Shanks' },
       summary: {
         it: 'Il capitano dai capelli rossi che per un anno ha fatto della taverna di un villaggio la sua casa, e che ripartendo ha lasciato il suo cappello di paglia a un bambino.',
@@ -148,6 +158,7 @@ export const eastBlue: Saga = {
       id: 'foosha-village',
       kind: 'place',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Villaggio Fuschia', en: 'Foosha Village' },
       summary: {
         it: 'Un villaggio di mulini a vento sull’isola da cui Rufy è salpato, con una taverna dove una ciurma pirata è stata di casa per un anno.',
@@ -159,6 +170,7 @@ export const eastBlue: Saga = {
       id: 'makino',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Makino', en: 'Makino' },
       summary: {
         it: 'La proprietaria della taverna del Villaggio Fuschia, che versa da bere ai pirati come a chiunque altro e tiene d’occhio il bambino del paese.',
@@ -170,6 +182,7 @@ export const eastBlue: Saga = {
       id: 'benn-beckman',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Benn Beckman', en: 'Benn Beckman' },
       summary: {
         it: 'Il secondo della ciurma del Rosso, un uomo alto con un fucile a tracolla che chiude una rissa senza sparare un colpo.',
@@ -181,6 +194,7 @@ export const eastBlue: Saga = {
       id: 'lucky-roux',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Lucky Roux', en: 'Lucky Roux' },
       summary: {
         it: 'Un pirata rotondo della ciurma del Rosso che non smette mai di mordere un cosciotto di carne, nemmeno mentre spara.',
@@ -192,6 +206,7 @@ export const eastBlue: Saga = {
       id: 'yasopp',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 41,
       name: { it: 'Yasop', en: 'Yasopp' },
       summary: {
         it: 'Il tiratore della ciurma del Rosso, capace di colpire una formica a cento passi, che parla del figlio lasciato a casa a chiunque passi.',
@@ -203,6 +218,7 @@ export const eastBlue: Saga = {
       id: 'higuma',
       kind: 'character',
       revealedAtEpisode: 4,
+      revealedAtChapter: 1,
       name: { it: 'Higuma', en: 'Higuma' },
       summary: {
         it: 'Il capo dei banditi di montagna, con una taglia di otto milioni sulla testa, che entra in taverna e versa il vino in testa a un pirata.',
@@ -214,6 +230,7 @@ export const eastBlue: Saga = {
       id: 'buggy',
       kind: 'character',
       revealedAtEpisode: 5,
+      revealedAtChapter: 9,
       name: { it: 'Bagy', en: 'Buggy' },
       summary: {
         it: 'Un capitano pirata con il naso rosso da clown, pronto a far saltare in aria chiunque lo nomini, che tiene una città svuotata sotto il tiro dei suoi cannoni.',
@@ -225,6 +242,7 @@ export const eastBlue: Saga = {
       id: 'nami',
       kind: 'character',
       revealedAtEpisode: 5,
+      revealedAtChapter: 8,
       name: { it: 'Nami', en: 'Nami' },
       summary: {
         it: 'Una ladra che ruba solo ai pirati, appena scappata con la carta nautica di un capitano, e che sa leggere una mappa meglio di chiunque abbia mai incontrato.',
@@ -236,6 +254,7 @@ export const eastBlue: Saga = {
       id: 'orange-town',
       kind: 'place',
       revealedAtEpisode: 5,
+      revealedAtChapter: 8,
       name: { it: 'Orange Town', en: 'Orange Town' },
       summary: {
         it: 'Una cittadina dell’East Blue svuotata dai suoi abitanti, occupata da una ciurma di pirati con un tendone da circo e i cannoni puntati sui tetti.',
@@ -247,6 +266,7 @@ export const eastBlue: Saga = {
       id: 'mohji',
       kind: 'character',
       revealedAtEpisode: 6,
+      revealedAtChapter: 21,
       name: { it: 'Mohji', en: 'Mohji' },
       summary: {
         it: 'Il domatore dei Pirati di Bagy, che perlustra Orange Town in groppa a un leone e comanda ogni animale che incontra.',
@@ -258,6 +278,7 @@ export const eastBlue: Saga = {
       id: 'cabaji',
       kind: 'character',
       revealedAtEpisode: 7,
+      revealedAtChapter: 21,
       name: { it: 'Cabaji', en: 'Cabaji' },
       summary: {
         it: 'L’acrobata dei Pirati di Bagy, che combatte in equilibrio su un monociclo e sputa fuoco fra un colpo di sciabola e l’altro.',
@@ -269,6 +290,7 @@ export const eastBlue: Saga = {
       id: 'usopp',
       kind: 'character',
       revealedAtEpisode: 9,
+      revealedAtChapter: 23,
       name: { it: 'Usop', en: 'Usopp' },
       summary: {
         it: 'Il bugiardo del villaggio, con un naso lungo e una fionda, che ogni mattina corre in spiaggia a gridare che i pirati stanno arrivando.',
@@ -280,6 +302,7 @@ export const eastBlue: Saga = {
       id: 'syrup-village',
       kind: 'place',
       revealedAtEpisode: 9,
+      revealedAtChapter: 23,
       name: { it: 'Villaggio di Syrup', en: 'Syrup Village' },
       summary: {
         it: 'Un villaggio tranquillo delle isole Gecko, con una villa sulla collina e un ragazzo che ogni mattina grida che i pirati stanno arrivando.',
@@ -291,6 +314,7 @@ export const eastBlue: Saga = {
       id: 'kaya',
       kind: 'character',
       revealedAtEpisode: 9,
+      revealedAtChapter: 41,
       name: { it: 'Kaya', en: 'Kaya' },
       summary: {
         it: 'La ragazza malata della villa sulla collina, sola da quando i genitori sono morti, che ogni mattina ascolta le bugie di un ragazzo dal naso lungo.',
@@ -302,6 +326,7 @@ export const eastBlue: Saga = {
       id: 'kuro',
       kind: 'character',
       revealedAtEpisode: 9,
+      revealedAtChapter: 41,
       name: { it: 'Kuro', en: 'Kuro' },
       summary: {
         it: 'Un maggiordomo impeccabile con gli occhiali sempre storti, che di notte infila la mano in un guanto con cinque lame lunghe come dita.',
@@ -313,6 +338,7 @@ export const eastBlue: Saga = {
       id: 'jango',
       kind: 'character',
       revealedAtEpisode: 9,
+      revealedAtChapter: 41,
       name: { it: 'Jango', en: 'Jango' },
       summary: {
         it: 'Un ipnotizzatore con gli occhiali a forma di cuore, che fa oscillare un anello davanti agli occhi di chiunque e spesso addormenta anche sé stesso.',
@@ -324,6 +350,7 @@ export const eastBlue: Saga = {
       id: 'merry',
       kind: 'character',
       revealedAtEpisode: 9,
+      revealedAtChapter: 41,
       name: { it: 'Merry', en: 'Merry' },
       summary: {
         it: 'Il maggiordomo della villa, con un vassoio sempre in mano e una testa a forma di pecora, che tiene i conti della famiglia da una vita.',
@@ -335,6 +362,7 @@ export const eastBlue: Saga = {
       id: 'going-merry',
       kind: 'ship',
       revealedAtEpisode: 18,
+      revealedAtChapter: 41,
       name: { it: 'Going Merry', en: 'Going Merry' },
       summary: {
         it: 'Una caravella con una testa di pecora a prua, regalata a una ciurma di quattro persone che non aveva ancora una nave.',
@@ -346,6 +374,7 @@ export const eastBlue: Saga = {
       id: 'gaimon',
       kind: 'character',
       revealedAtEpisode: 18,
+      revealedAtChapter: 22,
       name: { it: 'Gaimon', en: 'Gaimon' },
       summary: {
         it: 'Un uomo incastrato da vent’anni dentro un baule del tesoro, con un cespuglio in testa, che fa la guardia a un’isola di animali impossibili.',
@@ -357,6 +386,7 @@ export const eastBlue: Saga = {
       id: 'kuina',
       kind: 'character',
       revealedAtEpisode: 19,
+      revealedAtChapter: 53,
       name: { it: 'Kuina', en: 'Kuina' },
       summary: {
         it: 'La figlia del maestro di un dojo dell’East Blue, l’unica spadaccina che un bambino testardo non riesce a battere in duemila duelli.',
@@ -368,6 +398,7 @@ export const eastBlue: Saga = {
       id: 'johnny',
       kind: 'character',
       revealedAtEpisode: 19,
+      revealedAtChapter: 43,
       name: { it: 'Johnny', en: 'Johnny' },
       summary: {
         it: 'Un cacciatore di taglie magro con gli occhiali scuri, che batte l’East Blue insieme a un socio e a un fascio di manifesti arrotolati.',
@@ -379,6 +410,7 @@ export const eastBlue: Saga = {
       id: 'yosaku',
       kind: 'character',
       revealedAtEpisode: 19,
+      revealedAtChapter: 43,
       name: { it: 'Yosaku', en: 'Yosaku' },
       summary: {
         it: 'Un cacciatore di taglie robusto con la bandana, che crolla sul ponte con i denti che si muovono e le vecchie ferite riaperte.',
@@ -390,6 +422,7 @@ export const eastBlue: Saga = {
       id: 'sanji',
       kind: 'character',
       revealedAtEpisode: 20,
+      revealedAtChapter: 43,
       name: { it: 'Sanji', en: 'Sanji' },
       summary: {
         it: 'Il vice-cuoco di un ristorante galleggiante, con una sigaretta accesa e un sopracciglio a spirale, che dà da mangiare a chiunque abbia fame e combatte solo con le gambe.',
@@ -401,6 +434,7 @@ export const eastBlue: Saga = {
       id: 'baratie',
       kind: 'place',
       revealedAtEpisode: 20,
+      revealedAtChapter: 43,
       name: { it: 'Baratie', en: 'Baratie' },
       summary: {
         it: 'Un ristorante galleggiante a forma di pesce, in mare aperto, dove i cuochi prendono a calci i clienti che non pagano.',
@@ -412,6 +446,7 @@ export const eastBlue: Saga = {
       id: 'zeff',
       kind: 'character',
       revealedAtEpisode: 20,
+      revealedAtChapter: 46,
       name: { it: 'Zeff', en: 'Zeff' },
       summary: {
         it: 'Il proprietario del Baratie, un vecchio con una gamba di legno e un cappello altissimo, che prende a calci i suoi cuochi dentro la cucina.',
@@ -423,6 +458,7 @@ export const eastBlue: Saga = {
       id: 'gin',
       kind: 'character',
       revealedAtEpisode: 20,
+      revealedAtChapter: 47,
       name: { it: 'Gin', en: 'Gin' },
       summary: {
         it: 'Un naufrago che si trascina dentro il Baratie con la pistola in pugno e chiede da mangiare, e poi piange davanti al piatto.',
@@ -434,6 +470,7 @@ export const eastBlue: Saga = {
       id: 'don-krieg',
       kind: 'character',
       revealedAtEpisode: 22,
+      revealedAtChapter: 50,
       name: { it: 'Don Creek', en: 'Don Krieg' },
       summary: {
         it: 'Il capo di una flotta di cinquanta navi tornato dalla Rotta Maggiore con una sola, che sale sul Baratie in armatura dorata a chiedere da mangiare.',
@@ -445,6 +482,7 @@ export const eastBlue: Saga = {
       id: 'pearl',
       kind: 'character',
       revealedAtEpisode: 23,
+      revealedAtChapter: 58,
       name: { it: 'Pearl', en: 'Pearl' },
       summary: {
         it: 'Un pirata coperto di piastre d’acciaio che dice di non aver mai sanguinato, e che al primo graffio prende fuoco per il panico.',
@@ -456,6 +494,7 @@ export const eastBlue: Saga = {
       id: 'dracule-mihawk',
       kind: 'character',
       revealedAtEpisode: 24,
+      revealedAtChapter: 50,
       name: { it: 'Drakul Mihawk', en: 'Dracule Mihawk' },
       summary: {
         it: 'Lo spadaccino più forte del mondo, arrivato su una barca a forma di bara con una spada nera larga quanto lui, che taglia un galeone in due per passare il tempo.',
@@ -467,6 +506,7 @@ export const eastBlue: Saga = {
       id: 'arlong',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 70,
       name: { it: 'Arlong', en: 'Arlong' },
       summary: {
         it: 'Un uomo-pesce squalo che tiene un intero villaggio a tributo, con una spada seghettata sulla schiena e un naso lungo come una lama.',
@@ -478,6 +518,7 @@ export const eastBlue: Saga = {
       id: 'hatchan',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 74,
       name: { it: 'Octy', en: 'Hatchan' },
       summary: {
         it: 'Un uomo-pesce polpo con sei braccia e sei spade, che combatte come se ballasse e si distrae ogni volta che qualcuno nomina il cibo.',
@@ -489,6 +530,7 @@ export const eastBlue: Saga = {
       id: 'kuroobi',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 74,
       name: { it: 'Kuroobi', en: 'Kuroobi' },
       summary: {
         it: 'Un uomo-pesce razza che combatte a mani nude con il karate degli uomini-pesce, la cintura nera annodata stretta sopra la veste.',
@@ -500,6 +542,7 @@ export const eastBlue: Saga = {
       id: 'chew',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 74,
       name: { it: 'Chu', en: 'Chew' },
       summary: {
         it: 'Un uomo-pesce dalle labbra enormi, che si riempie la bocca d’acqua e la sputa attraverso i muri come una cannonata.',
@@ -511,6 +554,7 @@ export const eastBlue: Saga = {
       id: 'nojiko',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 77,
       name: { it: 'Nojiko', en: 'Nojiko' },
       summary: {
         it: 'Una coltivatrice di mandarini con i capelli azzurri e un tatuaggio sulla spalla, che cura il frutteto di famiglia e non nomina mai sua sorella.',
@@ -522,6 +566,7 @@ export const eastBlue: Saga = {
       id: 'genzo',
       kind: 'character',
       revealedAtEpisode: 31,
+      revealedAtChapter: 77,
       name: { it: 'Genzo', en: 'Genzo' },
       summary: {
         it: 'Il poliziotto del villaggio, con una girandola infilata nel cappello, che ha giurato di non impugnare mai più un’arma contro gli uomini-pesce.',
@@ -533,6 +578,7 @@ export const eastBlue: Saga = {
       id: 'bell-mere',
       kind: 'character',
       revealedAtEpisode: 34,
+      revealedAtChapter: 80,
       name: { it: 'Bellemere', en: 'Bell-mère' },
       summary: {
         it: 'Un’ex soldatessa della Marina che coltiva mandarini e cresce due bambine trovate su un campo di battaglia, con una sigaretta sempre accesa.',
@@ -544,6 +590,7 @@ export const eastBlue: Saga = {
       id: 'nezumi',
       kind: 'character',
       revealedAtEpisode: 36,
+      revealedAtChapter: 84,
       name: { it: 'Nezumi', en: 'Nezumi' },
       summary: {
         it: 'Un capitano della Marina con i baffi da topo, che arriva a Cocoyashi per requisire il denaro del villaggio e riparte con le tasche piene.',
@@ -555,6 +602,7 @@ export const eastBlue: Saga = {
       id: 'smoker',
       kind: 'character',
       revealedAtEpisode: 49,
+      revealedAtChapter: 97,
       name: { it: 'Smoker', en: 'Smoker' },
       summary: {
         it: 'Un capitano della Marina con due sigari accesi e una giacca piena di ricambi, che non ha mai lasciato scappare un pirata dalla sua città e si scioglie in fumo quando lo colpiscono.',
@@ -566,6 +614,7 @@ export const eastBlue: Saga = {
       id: 'tashigi',
       kind: 'character',
       revealedAtEpisode: 49,
+      revealedAtChapter: 99,
       name: { it: 'Tashigi', en: 'Tashigi' },
       summary: {
         it: 'Un sergente della Marina con gli occhiali e una katana, che inciampa ovunque e conosce a memoria ogni spada pregiata del mondo.',
@@ -577,6 +626,7 @@ export const eastBlue: Saga = {
       id: 'monkey-d-dragon',
       kind: 'character',
       revealedAtEpisode: 314,
+      revealedAtChapter: 432,
       name: { it: 'Monkey D. Dragon', en: 'Monkey D. Dragon' },
       summary: {
         it: 'Il rivoluzionario più pericoloso del mondo e il padre di Rufy, un nome che Garp pronuncia una volta sola e controvoglia.',

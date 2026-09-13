@@ -30,6 +30,7 @@ export const dressrosa: Saga = {
       id: 'koala',
       kind: 'character',
       revealedAtEpisode: 541,
+      revealedAtChapter: 622,
       name: { it: 'Koala', en: 'Koala' },
       summary: {
         it: 'Una bambina liberata dalla schiavitù dai Pirati del Sole, che gli uomini-pesce riportano al suo villaggio con il marchio ancora impresso sulla schiena.',
@@ -41,6 +42,7 @@ export const dressrosa: Saga = {
       id: 'punk-hazard',
       kind: 'arc',
       revealedAtEpisode: 579,
+      revealedAtChapter: 654,
       name: { it: 'Punk Hazard', en: 'Punk Hazard' },
       summary: {
         it: 'Un’isola divisa in due da una linea netta, metà in fiamme e metà sepolta nel ghiaccio, su cui il Governo Mondiale vieta di sbarcare.',
@@ -52,6 +54,7 @@ export const dressrosa: Saga = {
       id: 'kinemon',
       kind: 'character',
       revealedAtEpisode: 579,
+      revealedAtChapter: 657,
       name: { it: 'Kinemon', en: 'Kin’emon' },
       summary: {
         it: 'Un samurai tagliato in pezzi che continua a parlare, trovato nella metà ghiacciata dell’isola mentre cerca il resto del proprio corpo e suo figlio.',
@@ -63,6 +66,7 @@ export const dressrosa: Saga = {
       id: 'brownbeard',
       kind: 'character',
       revealedAtEpisode: 580,
+      revealedAtChapter: 658,
       name: { it: 'Barbabruna', en: 'Brownbeard' },
       summary: {
         it: 'Un pirata innestato sul corpo di un coccodrillo, che pattuglia la metà in fiamme dell’isola a capo di una banda di centauri.',
@@ -74,6 +78,7 @@ export const dressrosa: Saga = {
       id: 'caesar-clown',
       kind: 'character',
       revealedAtEpisode: 584,
+      revealedAtChapter: 662,
       name: { it: 'Caesar Clown', en: 'Caesar Clown' },
       summary: {
         it: 'Uno scienziato con le corna e la pelle blu che ride a scatti e si scioglie in gas velenoso, padrone di un laboratorio su un’isola vietata.',
@@ -85,6 +90,7 @@ export const dressrosa: Saga = {
       id: 'monet',
       kind: 'character',
       revealedAtEpisode: 586,
+      revealedAtChapter: 664,
       name: { it: 'Monet', en: 'Monet' },
       summary: {
         it: 'Una donna con le ali e le zampe da uccello che tiene i registri del laboratorio, e che si sfalda in neve quando qualcuno prova a colpirla.',
@@ -96,6 +102,7 @@ export const dressrosa: Saga = {
       id: 'vergo',
       kind: 'character',
       revealedAtEpisode: 589,
+      revealedAtChapter: 666,
       name: { it: 'Vergo', en: 'Vergo' },
       summary: {
         it: 'Un viceammiraglio della Marina con un pezzo di cibo sempre incollato alla guancia, che arriva sull’isola e non lascia capire da che parte stia.',
@@ -107,6 +114,7 @@ export const dressrosa: Saga = {
       id: 'momonosuke',
       kind: 'character',
       revealedAtEpisode: 590,
+      revealedAtChapter: 667,
       name: { it: 'Momonosuke', en: 'Momonosuke' },
       summary: {
         it: 'Un bambino trovato nel laboratorio insieme agli altri rapiti, trasformato in un piccolo drago rosa che non riesce a capire come si vola.',
@@ -118,6 +126,7 @@ export const dressrosa: Saga = {
       id: 'baby-5',
       kind: 'character',
       revealedAtEpisode: 591,
+      revealedAtChapter: 668,
       name: { it: 'Baby 5', en: 'Baby 5' },
       summary: {
         it: 'Una ragazza che non sa dire di no a nessuno e che trasforma le proprie braccia in armi da fuoco per rendersi utile a chi glielo chiede.',
@@ -129,6 +138,7 @@ export const dressrosa: Saga = {
       id: 'buffalo',
       kind: 'character',
       revealedAtEpisode: 591,
+      revealedAtChapter: 668,
       name: { it: 'Buffalo', en: 'Buffalo' },
       summary: {
         it: 'Un uomo tondo come una palla che si mette a girare su sé stesso come un’elica e decolla portandosi dietro la compagna di viaggio.',
@@ -140,6 +150,7 @@ export const dressrosa: Saga = {
       id: 'dressrosa',
       kind: 'arc',
       revealedAtEpisode: 629,
+      revealedAtChapter: 700,
       name: { it: 'Dressrosa', en: 'Dressrosa' },
       summary: {
         it: 'Un regno di fiori e giocattoli viventi, con un colosseo al centro e un soldatino di legno con una gamba sola fermo davanti al cancello.',
@@ -151,6 +162,7 @@ export const dressrosa: Saga = {
       id: 'rebecca',
       kind: 'character',
       revealedAtEpisode: 630,
+      revealedAtChapter: 706,
       name: { it: 'Rebecca', en: 'Rebecca' },
       summary: {
         it: 'Una gladiatrice del colosseo con l’armatura leggera e una lunga treccia, che vince ogni incontro senza ferire nessuno e per questo viene fischiata.',
@@ -162,6 +174,7 @@ export const dressrosa: Saga = {
       id: 'issho',
       kind: 'character',
       revealedAtEpisode: 630,
+      revealedAtChapter: 706,
       name: { it: 'Issho', en: 'Issho' },
       summary: {
         it: 'Un ammiraglio della Marina cieco che gioca a dadi in una bisca e lascia decidere a un lancio se intervenire o no.',
@@ -173,6 +186,7 @@ export const dressrosa: Saga = {
       id: 'bartolomeo',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 705,
       name: { it: 'Bartolomeo', en: 'Bartolomeo' },
       summary: {
         it: 'Un pirata con la cresta verde e i modi da teppista, che si iscrive a un torneo nel colosseo di Dressrosa e getta il pubblico nel panico solo salendo sul ring.',
@@ -184,6 +198,7 @@ export const dressrosa: Saga = {
       id: 'riku-doldo-iii',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Riku Doldo III', en: 'Riku Doldo III' },
       summary: {
         it: 'Il vecchio re di Dressrosa, cacciato dal trono dieci anni fa, che ora gira per il colosseo con la barba lunga e un altro nome.',
@@ -195,6 +210,7 @@ export const dressrosa: Saga = {
       id: 'trebol',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Trebol', en: 'Trebol' },
       summary: {
         it: 'Un uomo enorme e appiccicoso che sghignazza alle spalle del re di Dressrosa e lascia muco ovunque si sieda.',
@@ -206,6 +222,7 @@ export const dressrosa: Saga = {
       id: 'cavendish',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Cavendish', en: 'Cavendish' },
       summary: {
         it: 'Un capitano bellissimo e vanitoso che arriva al colosseo con la spada in una mano e la criniera del suo cavallo bianco nell’altra.',
@@ -217,6 +234,7 @@ export const dressrosa: Saga = {
       id: 'sai',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Sai', en: 'Sai' },
       summary: {
         it: 'Il giovane erede della Flotta Happo, che arriva al colosseo con la naginata sulla spalla e il vecchio capo che gli grida dietro.',
@@ -228,6 +246,7 @@ export const dressrosa: Saga = {
       id: 'don-chinjao',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Don Chinjao', en: 'Don Chinjao' },
       summary: {
         it: 'Un vecchio pirata con il cranio a punta come una trivella, che si iscrive al torneo del colosseo per chiudere un conto rimasto aperto.',
@@ -239,6 +258,7 @@ export const dressrosa: Saga = {
       id: 'ideo',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Ideo', en: 'Ideo' },
       summary: {
         it: 'Un pugile con le braccia lunghe e sottili che chiama cannonate i propri colpi, e nel colosseo non sbaglia un bersaglio.',
@@ -250,6 +270,7 @@ export const dressrosa: Saga = {
       id: 'blue-gilly',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Blue Gilly', en: 'Blue Gilly' },
       summary: {
         it: 'Un combattente dalle gambe lunghissime che nel colosseo usa soltanto i calci, e si muove più in alto della testa degli avversari.',
@@ -261,6 +282,7 @@ export const dressrosa: Saga = {
       id: 'elizabello-ii',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Elizabello II', en: 'Elizabello II' },
       summary: {
         it: 'Un re che combatte di persona nel colosseo e passa l’intero incontro a caricare un solo pugno, mentre i suoi sudditi lo proteggono.',
@@ -272,6 +294,7 @@ export const dressrosa: Saga = {
       id: 'hajrudin',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Hajrudin', en: 'Hajrudin' },
       summary: {
         it: 'Un gigante mercenario alto quanto la tribuna, che si presenta al colosseo con l’elmo cornuto e guarda gli avversari dall’alto.',
@@ -283,6 +306,7 @@ export const dressrosa: Saga = {
       id: 'bastille',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Bastille', en: 'Bastille' },
       summary: {
         it: 'Un viceammiraglio con una maschera da squalo e una spada più alta di lui, che guarda il colosseo da fuori aspettando un ordine.',
@@ -294,6 +318,7 @@ export const dressrosa: Saga = {
       id: 'maynard',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Maynard', en: 'Maynard' },
       summary: {
         it: 'Un viceammiraglio che si iscrive al torneo del colosseo sotto falso nome, per vedere da vicino chi combatte davvero a Dressrosa.',
@@ -305,6 +330,7 @@ export const dressrosa: Saga = {
       id: 'hack',
       kind: 'character',
       revealedAtEpisode: 632,
+      revealedAtChapter: 708,
       name: { it: 'Hack', en: 'Hack' },
       summary: {
         it: 'Un uomo-pesce che nel colosseo combatte con il karate degli uomini-pesce, colpendo l’acqua nell’aria invece del corpo dell’avversario.',
@@ -316,6 +342,7 @@ export const dressrosa: Saga = {
       id: 'viola',
       kind: 'character',
       revealedAtEpisode: 633,
+      revealedAtChapter: 709,
       name: { it: 'Viola', en: 'Viola' },
       summary: {
         it: 'Una ballerina con il ventaglio che lavora per il re di Dressrosa e vede quello che succede in ogni angolo dell’isola senza muoversi.',
@@ -327,6 +354,7 @@ export const dressrosa: Saga = {
       id: 'sugar',
       kind: 'character',
       revealedAtEpisode: 633,
+      revealedAtChapter: 709,
       name: { it: 'Sugar', en: 'Sugar' },
       summary: {
         it: 'Una bambina che mangia acini d’uva seduta in un salotto del palazzo, e che con un tocco trasforma chiunque in un giocattolo.',
@@ -338,6 +366,7 @@ export const dressrosa: Saga = {
       id: 'diamante',
       kind: 'character',
       revealedAtEpisode: 633,
+      revealedAtChapter: 709,
       name: { it: 'Diamante', en: 'Diamante' },
       summary: {
         it: 'L’organizzatore del torneo del colosseo, un uomo in piume e cappello che rende molle il proprio corpo e la spada un drappo.',
@@ -349,6 +378,7 @@ export const dressrosa: Saga = {
       id: 'pica',
       kind: 'character',
       revealedAtEpisode: 633,
+      revealedAtChapter: 709,
       name: { it: 'Pica', en: 'Pica' },
       summary: {
         it: 'Un gigante muscoloso con una voce acuta che stona con il suo corpo, capace di fondersi nella pietra e muovere l’isola come un braccio.',
@@ -360,6 +390,7 @@ export const dressrosa: Saga = {
       id: 'senor-pink',
       kind: 'character',
       revealedAtEpisode: 635,
+      revealedAtChapter: 711,
       name: { it: 'Señor Pink', en: 'Señor Pink' },
       summary: {
         it: 'Un gangster in giacca e cravatta che gira con la cuffietta da neonato e il ciuccio, e nuota nella pietra come fosse acqua.',
@@ -371,6 +402,7 @@ export const dressrosa: Saga = {
       id: 'dellinger',
       kind: 'character',
       revealedAtEpisode: 635,
+      revealedAtChapter: 711,
       name: { it: 'Dellinger', en: 'Dellinger' },
       summary: {
         it: 'Un ragazzino con i tacchi alti e i denti aguzzi, che parla come un bambino capriccioso e combatte come una bestia.',
@@ -382,6 +414,7 @@ export const dressrosa: Saga = {
       id: 'lao-g',
       kind: 'character',
       revealedAtEpisode: 635,
+      revealedAtChapter: 711,
       name: { it: 'Lao G', en: 'Lao G' },
       summary: {
         it: 'Un vecchio curvo che sembra sul punto di cadere a pezzi e che si raddrizza di colpo quando qualcuno mette in dubbio le arti marziali.',
@@ -393,6 +426,7 @@ export const dressrosa: Saga = {
       id: 'machvise',
       kind: 'character',
       revealedAtEpisode: 635,
+      revealedAtChapter: 711,
       name: { it: 'Machvise', en: 'Machvise' },
       summary: {
         it: 'Un uomo enorme e tondo che salta in aria e ricade sugli avversari facendo pesare il proprio corpo quanto una casa.',
@@ -404,6 +438,7 @@ export const dressrosa: Saga = {
       id: 'jora',
       kind: 'character',
       revealedAtEpisode: 635,
+      revealedAtChapter: 711,
       name: { it: 'Jora', en: 'Jora' },
       summary: {
         it: 'Una donna con il pennello che trasforma navi e persone in sculture sghembe e chiama arte moderna quello che ne resta.',
@@ -415,6 +450,7 @@ export const dressrosa: Saga = {
       id: 'orlumbus',
       kind: 'character',
       revealedAtEpisode: 636,
+      revealedAtChapter: 712,
       name: { it: 'Orlumbus', en: 'Orlumbus' },
       summary: {
         it: 'Un esploratore con il mantello da ammiraglio che ha lasciato in rada una flotta di cinquantasei navi per combattere nel colosseo.',
@@ -426,6 +462,7 @@ export const dressrosa: Saga = {
       id: 'gladius',
       kind: 'character',
       revealedAtEpisode: 640,
+      revealedAtChapter: 716,
       name: { it: 'Gladius', en: 'Gladius' },
       summary: {
         it: 'Un uomo con la maschera e il cappello a punta che fa gonfiare ed esplodere tutto quello che tocca, chiodi della sua giacca compresi.',
@@ -437,6 +474,7 @@ export const dressrosa: Saga = {
       id: 'leo',
       kind: 'character',
       revealedAtEpisode: 640,
+      revealedAtChapter: 716,
       name: { it: 'Leo', en: 'Leo' },
       summary: {
         it: 'Un ometto alto un palmo con le ali sulla schiena, a capo di una squadra che cuce insieme qualsiasi cosa con ago e filo.',
@@ -448,6 +486,7 @@ export const dressrosa: Saga = {
       id: 'kyros',
       kind: 'character',
       revealedAtEpisode: 674,
+      revealedAtChapter: 742,
       name: { it: 'Kyros', en: 'Kyros' },
       summary: {
         it: 'Il soldatino di legno con una gamba sola che guida la rivolta contro il re, e che a Dressrosa aveva un nome che nessuno ricorda più.',
@@ -459,6 +498,7 @@ export const dressrosa: Saga = {
       id: 'mansherry',
       kind: 'character',
       revealedAtEpisode: 675,
+      revealedAtChapter: 746,
       name: { it: 'Mansherry', en: 'Mansherry' },
       summary: {
         it: 'La principessa minuscola del popolo del bosco, chiusa in una gabbia perché le sue lacrime rimettono in sesto qualunque ferita.',
@@ -470,6 +510,7 @@ export const dressrosa: Saga = {
       id: 'kanjuro',
       kind: 'character',
       revealedAtEpisode: 676,
+      revealedAtChapter: 747,
       name: { it: 'Kanjuro', en: 'Kanjuro' },
       summary: {
         it: 'Un samurai con il pennello al posto della spada, che disegna male qualunque cosa e poi la fa uscire dalla carta.',
@@ -481,6 +522,7 @@ export const dressrosa: Saga = {
       id: 'donquixote-rosinante',
       kind: 'character',
       revealedAtEpisode: 700,
+      revealedAtChapter: 768,
       name: { it: 'Donquijote Rosinante', en: 'Donquixote Rosinante' },
       summary: {
         it: 'Un uomo altissimo travestito da clown che non parla mai, e che sotto il costume nasconde il cappotto di un ufficiale della Marina.',
@@ -492,6 +534,7 @@ export const dressrosa: Saga = {
       id: 'kaido',
       kind: 'character',
       revealedAtEpisode: 739,
+      revealedAtChapter: 795,
       name: { it: 'Kaido', en: 'Kaido' },
       summary: {
         it: 'Un Imperatore che cade dal cielo sopra una base pirata e si rialza intatto, perché nessuno al mondo è ancora riuscito a ucciderlo.',

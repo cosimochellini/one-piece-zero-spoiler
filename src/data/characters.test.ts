@@ -1,5 +1,5 @@
 import { LOCALES } from '~/i18n/locales'
-import { EPISODE_CEILING } from '~/lib/progress/episode'
+import { EPISODE_CEILING, type Bookmark } from '~/lib/progress/episode'
 
 import {
   bookSections,
@@ -18,6 +18,9 @@ import {
 } from './characters'
 import { entities } from './entities'
 import type { Entity, LocalizedText, Timeline } from './types'
+
+const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
 
 function must(id: string): Entity {
   const entity = getCharacter(id)
@@ -146,6 +149,13 @@ describe('the chart', () => {
     expect(chartWith(must('nami'))).toBe(chart)
   })
 
+  it('orders the chart by chapter when asked', () => {
+    const byChapter = chartWith(must('nami'), 'chapter')
+    const chapters = byChapter.map((e) => e.revealedAtChapter)
+    expect(chapters).toEqual([...chapters].sort((a, b) => a - b))
+    expect(byChapter).toHaveLength(chart.length)
+  })
+
   it('sets an undrawn record in at its threshold, after its contemporaries', () => {
     const perona = must('perona')
     expect(chart.map((e) => e.id)).not.toContain('perona')
@@ -214,6 +224,23 @@ describe('routePositionOf', () => {
     expect(position.total).toBe(chart.length + 1)
     expect(position.previous?.id).toBe('brook')
   })
+
+  it('counts along whatever order it is handed', () => {
+    const shanks = must('shanks')
+
+    // Fourth episode of the anime, first chapter of the manga: on the manga's
+    // route only records filed at chapter 1 come before or beside him.
+    const byEpisode = routePositionOf(shanks).index
+    const byChapter = routePositionOf(shanks, chartWith(shanks, 'chapter'))
+    expect(byChapter.index).toBeLessThan(byEpisode)
+    expect(byChapter.total).toBe(chart.length)
+    for (const before of chartWith(shanks, 'chapter').slice(
+      0,
+      byChapter.index,
+    )) {
+      expect(before.revealedAtChapter).toBeLessThanOrEqual(1)
+    }
+  })
 })
 
 describe('nearbyCharacters', () => {
@@ -241,14 +268,14 @@ describe('search', () => {
   })
 
   it('matches everything on an empty query and marks nothing', () => {
-    expect(matchName(luffy, '   ', 'en', 1)).toEqual({
+    expect(matchName(luffy, '   ', 'en', ep(1))).toEqual({
       matches: true,
       highlight: null,
     })
   })
 
   it('finds a name in the shown locale and says where to mark it', () => {
-    expect(matchName(luffy, 'luf', 'en', 1)).toEqual({
+    expect(matchName(luffy, 'luf', 'en', ep(1))).toEqual({
       matches: true,
       highlight: [10, 13],
     })
@@ -256,22 +283,25 @@ describe('search', () => {
 
   it('finds a name written in the other locale but marks nothing', () => {
     // An Italian reader who knows him as Luffy still finds Rufy.
-    expect(matchName(luffy, 'luffy', 'it', 1)).toEqual({
+    expect(matchName(luffy, 'luffy', 'it', ep(1))).toEqual({
       matches: true,
       highlight: null,
     })
   })
 
   it('does not match a name that is not there', () => {
-    expect(matchName(luffy, 'zoro', 'en', 1).matches).toBe(false)
+    expect(matchName(luffy, 'zoro', 'en', ep(1)).matches).toBe(false)
   })
 
   it('finds an epithet only once the reader has reached it', () => {
     const newgate = must('edward-newgate')
 
-    expect(matchName(newgate, 'barbabianca', 'en', 152).matches).toBe(true)
-    expect(matchName(newgate, 'whitebeard', 'it', 1200).matches).toBe(true)
-    expect(matchName(newgate, 'whitebeard', 'en', 151).matches).toBe(false)
+    expect(matchName(newgate, 'barbabianca', 'en', ep(152)).matches).toBe(true)
+    expect(matchName(newgate, 'whitebeard', 'it', ep(1200)).matches).toBe(true)
+    expect(matchName(newgate, 'whitebeard', 'en', ep(151)).matches).toBe(false)
     expect(matchName(newgate, 'whitebeard', 'en', null).matches).toBe(false)
+    // Epithets are dated in episodes: a chapter bookmark searches names only.
+    expect(matchName(newgate, 'whitebeard', 'en', ch(1000)).matches).toBe(false)
+    expect(matchName(newgate, 'newgate', 'en', ch(1000)).matches).toBe(true)
   })
 })

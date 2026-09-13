@@ -15,8 +15,10 @@ import { getEntity } from '~/data/entities'
 import { dossierOf, type PlaceDossier } from '~/data/places'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { Progress } from '~/lib/progress/episode'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { serialiseBookmark, type Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { describeBookmark } from '~/lib/progress/threshold'
 import {
   color,
   font,
@@ -30,7 +32,7 @@ import {
 export type PortLogProps = {
   /** The places, in the order the ship reaches them. */
   readonly entries: readonly Entity[]
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 /**
@@ -49,9 +51,9 @@ export type PortLogProps = {
  * the open ports are a prefix, and the horizon is one element between two
  * runs, the same construction as the route on the landing page.
  */
-export function PortLog({ entries, progress }: PortLogProps) {
-  const open = entries.filter((entry) => isRevealed(entry, progress))
-  const covered = entries.filter((entry) => !isRevealed(entry, progress))
+export function PortLog({ entries, bookmark }: PortLogProps) {
+  const open = entries.filter((entry) => isRevealed(entry, bookmark))
+  const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
 
   return (
     <ol {...stylex.props(styles.log)}>
@@ -61,12 +63,15 @@ export function PortLog({ entries, progress }: PortLogProps) {
           entry={entry}
           index={index}
           total={entries.length}
-          progress={progress}
+          bookmark={bookmark}
           open
         />
       ))}
 
-      <Horizon key={progress ?? 'unset'} progress={progress} />
+      <Horizon
+        key={bookmark === null ? 'unset' : serialiseBookmark(bookmark)}
+        bookmark={bookmark}
+      />
 
       {covered.map((entry, index) => (
         <Port
@@ -74,7 +79,7 @@ export function PortLog({ entries, progress }: PortLogProps) {
           entry={entry}
           index={open.length + index}
           total={entries.length}
-          progress={progress}
+          bookmark={bookmark}
           open={false}
         />
       ))}
@@ -87,12 +92,13 @@ type PortProps = {
   /** Zero-based position among the places; the page prints it plus one. */
   readonly index: number
   readonly total: number
-  readonly progress: Progress
+  readonly bookmark: Bookmark
   readonly open: boolean
 }
 
-function Port({ entry, index, total, progress, open }: PortProps) {
+function Port({ entry, index, total, bookmark, open }: PortProps) {
   const { t } = useLocale()
+  const threshold = useThreshold()
   const number = String(index + 1).padStart(2, '0')
 
   return (
@@ -136,12 +142,12 @@ function Port({ entry, index, total, progress, open }: PortProps) {
             {t('places.stage', { index: index + 1, total })}
           </span>
           <span {...stylex.props(styles.stageEpisode)}>
-            {t('places.firstSeen', { episode: entry.revealedAtEpisode })}
+            {threshold('places.firstSeen', entry)}
           </span>
         </p>
 
         <SpoilerVeil
-          revealedAtEpisode={entry.revealedAtEpisode}
+          gated={entry}
           revealed={open}
           strength="media"
           // Under fog the served HTML carries no name, no drawing and no
@@ -154,15 +160,13 @@ function Port({ entry, index, total, progress, open }: PortProps) {
               <div {...stylex.props(styles.dossier)}>
                 <h2 {...stylex.props(styles.name)}>{t('places.foggedName')}</h2>
                 <p {...stylex.props(styles.summary)}>
-                  {t('places.foggedDescription', {
-                    episode: entry.revealedAtEpisode,
-                  })}
+                  {threshold('places.foggedDescription', entry)}
                 </p>
               </div>
             </div>
           }
         >
-          <Spread entry={entry} progress={progress} />
+          <Spread entry={entry} bookmark={bookmark} />
         </SpoilerVeil>
       </div>
     </li>
@@ -172,10 +176,10 @@ function Port({ entry, index, total, progress, open }: PortProps) {
 /** An open port: the plate beside the dossier. */
 function Spread({
   entry,
-  progress,
+  bookmark,
 }: {
   readonly entry: Entity
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }) {
   const { locale } = useLocale()
   const dossier = dossierOf(entry)
@@ -194,7 +198,7 @@ function Spread({
           <>
             <Facts dossier={dossier} />
             <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
-            <FiledHere ids={dossier.filedHere} progress={progress} />
+            <FiledHere ids={dossier.filedHere} bookmark={bookmark} />
           </>
         )}
       </div>
@@ -245,10 +249,10 @@ function Fact({
  */
 function FiledHere({
   ids,
-  progress,
+  bookmark,
 }: {
   readonly ids: readonly string[]
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }) {
   const { t } = useLocale()
   const records = ids
@@ -264,7 +268,7 @@ function FiledHere({
         <ul {...stylex.props(styles.crew)}>
           {records.map((record) => (
             <li key={record.id} {...stylex.props(styles.crewItem)}>
-              <RecordTile entry={record} progress={progress} />
+              <RecordTile entry={record} bookmark={bookmark} />
             </li>
           ))}
         </ul>
@@ -277,9 +281,9 @@ function FiledHere({
  * The reader's position on the spine: a gold tick and a line across the
  * body, labelled. With no bookmark it sits above the first port and says so.
  */
-function Horizon({ progress }: { readonly progress: Progress }) {
+function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
   const { t } = useLocale()
-  const set = progress !== null
+  const set = bookmark !== null
 
   return (
     <li aria-current="step" {...stylex.props(styles.row, styles.horizonRow)}>
@@ -302,7 +306,9 @@ function Horizon({ progress }: { readonly progress: Progress }) {
           set ? styles.horizonSet : styles.horizonUnset,
         )}
       >
-        {set ? t('chart.hereSet', { episode: progress }) : t('chart.hereUnset')}
+        {bookmark === null
+          ? t('chart.hereUnset')
+          : describeBookmark(t, 'chart.hereSet', bookmark)}
       </p>
     </li>
   )

@@ -27,8 +27,14 @@ import { useLocale } from '~/i18n/LocaleContext'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
-import { useEpisode } from '~/lib/progress/EpisodeContext'
+import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
+import {
+  modeOf,
+  type Bookmark,
+  type BookmarkMode,
+} from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { describeThreshold } from '~/lib/progress/threshold'
 import {
   color,
   dur,
@@ -58,7 +64,10 @@ export const Route = createFileRoute('/$locale/characters/$id')({
 
     return {
       id: entity.id,
-      revealed: isRevealed(entity, context.initialProgress),
+      revealed: isRevealed(entity, context.initialBookmark),
+      // The unit the fogged description counts in; the head has no hook to
+      // ask, so the loader carries it.
+      mode: modeOf(context.initialBookmark),
     }
   },
   head: ({ params, loaderData }) => {
@@ -66,7 +75,14 @@ export const Route = createFileRoute('/$locale/characters/$id')({
     const entity = getCharacter(loaderData.id)
     if (entity === undefined) return {}
 
-    return { meta: describe(params.locale, entity, loaderData.revealed) }
+    return {
+      meta: describe(
+        params.locale,
+        entity,
+        loaderData.revealed,
+        loaderData.mode,
+      ),
+    }
   },
   component: CharacterPage,
   notFoundComponent: CharacterNotFound,
@@ -77,7 +93,12 @@ export const Route = createFileRoute('/$locale/characters/$id')({
  * set before any component runs, so this is the one place a covered name
  * could leak, and it must not.
  */
-function describe(locale: Locale, entity: Entity, revealed: boolean) {
+function describe(
+  locale: Locale,
+  entity: Entity,
+  revealed: boolean,
+  mode: BookmarkMode,
+) {
   const dictionary = getDictionary(locale)
 
   if (!revealed) {
@@ -85,9 +106,12 @@ function describe(locale: Locale, entity: Entity, revealed: boolean) {
       { title: translate(dictionary, 'character.foggedTitle') },
       {
         name: 'description',
-        content: translate(dictionary, 'character.foggedDescription', {
-          episode: entity.revealedAtEpisode,
-        }),
+        content: describeThreshold(
+          (key, params) => translate(dictionary, key, params),
+          'character.foggedDescription',
+          entity,
+          mode,
+        ),
       },
     ]
   }
@@ -112,11 +136,11 @@ const settle = stylex.keyframes({
  *
  * Three diptychs down the page, alternating sides. The first is the crest
  * beside the dossier: kind and episode in mono, the name as the only display
- * line, the role, the summary, then the facts as the reader's dial knows
+ * line, the role, the summary, then the facts as the reader's bookmark knows
  * them and the log entry. The second is the record's place on the route
  * beside a strip of the whole route with this waypoint ringed, and the two
  * records filed either side of it. The third is one row of the listed
- * characters filed nearest by episode.
+ * characters filed nearest on the route.
  *
  * Under fog the crest and the dossier are covered together and the title is
  * generic; the strip still shows where on the route the page sits, because
@@ -125,16 +149,21 @@ const settle = stylex.keyframes({
 function CharacterPage() {
   const { id } = Route.useLoaderData()
   const { locale, t } = useLocale()
-  const { progress } = useEpisode()
+  const threshold = useThreshold()
+  const { bookmark } = useBookmark()
 
   // Cannot be undefined: the loader threw `notFound` for any id that is.
   const entity = getCharacter(id)
   if (entity === undefined) return null
 
-  const revealed = isRevealed(entity, progress)
+  const revealed = isRevealed(entity, bookmark)
   const dossier = dossierOf(entity)
   const role = dossier?.role
-  const position = routePositionOf(entity)
+  // The chart with this record on it, in the reader's unit, so the strip's
+  // open marks are a prefix and "waypoint 23 of 66" counts the way the
+  // reader does.
+  const ordered = chartWith(entity, modeOf(bookmark))
+  const position = routePositionOf(entity, ordered)
   const positionLabel = t('character.position', {
     index: position.index + 1,
     total: position.total,
@@ -154,7 +183,7 @@ function CharacterPage() {
 
       <section {...stylex.props(styles.diptych, styles.enter, styles.at(0))}>
         <SpoilerVeil
-          revealedAtEpisode={entity.revealedAtEpisode}
+          gated={entity}
           revealed={revealed}
           strength="media"
           // A bare seal under fog: the drawing and its colour stay out of
@@ -176,12 +205,12 @@ function CharacterPage() {
               {t(KIND_KEY[entity.kind])}
             </span>
             <span {...stylex.props(styles.episode)}>
-              {t('character.opensAt', { episode: entity.revealedAtEpisode })}
+              {threshold('character.opensAt', entity)}
             </span>
           </p>
 
           <SpoilerVeil
-            revealedAtEpisode={entity.revealedAtEpisode}
+            gated={entity}
             revealed={revealed}
             // Under fog the served HTML carries no name, role or summary:
             // this is a page about one record, so a blur alone would leave
@@ -192,9 +221,7 @@ function CharacterPage() {
                   {t('character.foggedName')}
                 </h1>
                 <p {...stylex.props(styles.summary)}>
-                  {t('character.foggedDescription', {
-                    episode: entity.revealedAtEpisode,
-                  })}
+                  {threshold('character.foggedDescription', entity)}
                 </p>
               </div>
             }
@@ -207,7 +234,7 @@ function CharacterPage() {
               <p {...stylex.props(styles.summary)}>{entity.summary[locale]}</p>
               {dossier === undefined ? null : (
                 <>
-                  <CharacterFacts dossier={dossier} progress={progress} />
+                  <CharacterFacts dossier={dossier} bookmark={bookmark} />
                   <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
                 </>
               )}
@@ -237,21 +264,21 @@ function CharacterPage() {
               label={t('character.before')}
               entry={position.previous}
               empty={t('character.routeStart')}
-              progress={progress}
+              bookmark={bookmark}
             />
             <Neighbour
               label={t('character.after')}
               entry={position.next}
               empty={t('character.routeEnd')}
-              progress={progress}
+              bookmark={bookmark}
             />
           </dl>
         </div>
         <div {...stylex.props(styles.stripBand)}>
           <RouteStrip
-            entries={chartWith(entity)}
+            entries={ordered}
             current={entity}
-            progress={progress}
+            bookmark={bookmark}
             label={positionLabel}
           />
         </div>
@@ -272,7 +299,7 @@ function CharacterPage() {
             <CharacterCard
               key={near.id}
               entity={near}
-              revealed={isRevealed(near, progress)}
+              revealed={isRevealed(near, bookmark)}
             />
           ))}
         </CharacterCardList>
@@ -290,12 +317,12 @@ function Neighbour({
   label,
   entry,
   empty,
-  progress,
+  bookmark,
 }: {
   readonly label: string
   readonly entry: Entity | undefined
   readonly empty: string
-  readonly progress: number | null
+  readonly bookmark: Bookmark
 }) {
   return (
     <div {...stylex.props(styles.neighbour)}>
@@ -304,7 +331,7 @@ function Neighbour({
         {entry === undefined ? (
           <span {...stylex.props(styles.lede)}>{empty}</span>
         ) : (
-          <RecordTile entry={entry} progress={progress} />
+          <RecordTile entry={entry} bookmark={bookmark} />
         )}
       </dd>
     </div>

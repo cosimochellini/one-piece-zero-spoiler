@@ -7,6 +7,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { roleOf } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,
@@ -28,7 +29,7 @@ export type CharacterTileProps = {
 
 /**
  * One line of the signal book's shelves: a small plate with the character's
- * drawing, the name, the role, and the episode they first appear in. The
+ * drawing, the name, the role, and the threshold they first appear at. The
  * crest is for the featured few; a shelf holds hundreds, so a tile is the
  * drawing alone in a plain frame.
  *
@@ -42,12 +43,13 @@ export function CharacterTile({
   highlight = null,
 }: CharacterTileProps) {
   const { locale, t } = useLocale()
+  const threshold = useThreshold()
   const role = roleOf(entity)
 
   return (
     <li {...stylex.props(styles.tile)}>
       <SpoilerVeil
-        revealedAtEpisode={entity.revealedAtEpisode}
+        gated={entity}
         revealed={revealed}
         density="compact"
         placeholder={
@@ -80,7 +82,7 @@ export function CharacterTile({
         </Link>
       </SpoilerVeil>
       <p {...stylex.props(styles.episode)}>
-        {t('chart.opensAt', { episode: entity.revealedAtEpisode })}
+        {threshold('chart.opensAt', entity)}
       </p>
     </li>
   )

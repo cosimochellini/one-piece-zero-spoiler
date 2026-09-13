@@ -6,9 +6,11 @@ import { CharacterTile } from '~/components/CharacterTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
 import { matchName, type BookSection, type NameMatch } from '~/data/characters'
+import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { Progress } from '~/lib/progress/episode'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { modeOf, type Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
   color,
@@ -27,7 +29,7 @@ export type CharacterGridProps = {
   readonly featured: readonly Entity[]
   /** The whole book, shelved by arc, in route order. */
   readonly sections: readonly BookSection[]
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 type Match = { readonly entry: Entity; readonly match: NameMatch }
@@ -50,28 +52,32 @@ type Match = { readonly entry: Entity; readonly match: NameMatch }
 export function CharacterGrid({
   featured,
   sections,
-  progress,
+  bookmark,
 }: CharacterGridProps) {
   const { locale, t } = useLocale()
   const fieldId = useId()
   const [query, setQuery] = useState('')
+  // Crests and tiles run in the order of the threshold the reader counts in,
+  // so the open ones are always a prefix of each list.
+  const mode = modeOf(bookmark)
 
   const everyone = sections.flatMap((section) => section.characters)
-  const open = everyone.filter((entry) => isRevealed(entry, progress))
+  const open = everyone.filter((entry) => isRevealed(entry, bookmark))
   const matched = new Map<string, Match>(
     open
       .map((entry) => ({
         entry,
-        match: matchName(entry, query, locale, progress),
+        match: matchName(entry, query, locale, bookmark),
       }))
       .filter(({ match }) => match.matches)
       .map((match) => [match.entry.id, match]),
   )
   const matchOf = (entry: Entity) => matched.get(entry.id)
 
-  const featuredOpen = featured.filter((entry) => isRevealed(entry, progress))
-  const featuredCovered = featured.filter(
-    (entry) => !isRevealed(entry, progress),
+  const ordered = orderByMode(featured, mode)
+  const featuredOpen = ordered.filter((entry) => isRevealed(entry, bookmark))
+  const featuredCovered = ordered.filter(
+    (entry) => !isRevealed(entry, bookmark),
   )
   const featuredMatches = featuredOpen
     .map(matchOf)
@@ -209,7 +215,7 @@ export function CharacterGrid({
           <Shelf
             key={section.arc.id}
             section={section}
-            progress={progress}
+            bookmark={bookmark}
             headingId={`${fieldId}-${section.arc.id}`}
             matchOf={matchOf}
             searching={trimmed !== ''}
@@ -221,35 +227,37 @@ export function CharacterGrid({
 }
 
 /**
- * One shelf: the arc's name as a heading, the episode it opens on and how
+ * One shelf: the arc's name as a heading, the threshold it opens on and how
  * many characters it holds, then the open tiles that answer the search and
  * every covered tile, in that order. The heading is veiled when the arc is
- * covered, which by construction only happens when every tile on the shelf
- * is covered too. A shelf with nothing to show during a search is left out;
+ * covered, which for a reader counting in episodes only happens when every
+ * tile on the shelf is covered too. A shelf with nothing to show during a search is left out;
  * with no search every shelf is on the page.
  */
 function Shelf({
   section,
-  progress,
+  bookmark,
   headingId,
   matchOf,
   searching,
 }: {
   readonly section: BookSection
-  readonly progress: Progress
+  readonly bookmark: Bookmark
   readonly headingId: string
   readonly matchOf: (entry: Entity) => Match | undefined
   readonly searching: boolean
 }) {
   const { locale, t } = useLocale()
-  const { arc, characters } = section
-  const arcOpen = isRevealed(arc, progress)
+  const threshold = useThreshold()
+  const { arc } = section
+  const characters = orderByMode(section.characters, modeOf(bookmark))
+  const arcOpen = isRevealed(arc, bookmark)
 
   const shown = characters
-    .filter((entry) => isRevealed(entry, progress))
+    .filter((entry) => isRevealed(entry, bookmark))
     .map(matchOf)
     .filter((match): match is Match => match !== undefined)
-  const covered = characters.filter((entry) => !isRevealed(entry, progress))
+  const covered = characters.filter((entry) => !isRevealed(entry, bookmark))
 
   if (searching && shown.length === 0 && covered.length === 0) return null
 
@@ -257,7 +265,7 @@ function Shelf({
     <section aria-labelledby={headingId} {...stylex.props(styles.shelf)}>
       <div {...stylex.props(styles.shelfHead)}>
         <SpoilerVeil
-          revealedAtEpisode={arc.revealedAtEpisode}
+          gated={arc}
           revealed={arcOpen}
           density="inline"
           placeholder={
@@ -272,7 +280,7 @@ function Shelf({
         </SpoilerVeil>
         <p {...stylex.props(styles.shelfMeta)}>
           <span {...stylex.props(styles.shelfEpisode)}>
-            {t('characters.sectionOpensAt', { episode: arc.revealedAtEpisode })}
+            {threshold('characters.sectionOpensAt', arc)}
           </span>
           <span>
             {characters.length === 1

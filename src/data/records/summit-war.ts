@@ -31,6 +31,7 @@ export const summitWar: Saga = {
       id: 'trafalgar-law',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Trafalgar Law', en: 'Trafalgar Law' },
       summary: {
         it: 'Un capitano-chirurgo con un cappello a macchie e un orso polare in tuta nella ciurma, arrivato all’arcipelago con una taglia da duecento milioni e nessuna fretta.',
@@ -42,6 +43,7 @@ export const summitWar: Saga = {
       id: 'eustass-kid',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Eustass Kid', en: 'Eustass Kid' },
       summary: {
         it: 'Un capitano dai capelli rossi con una taglia più alta di quella di Rufy, che attira il metallo verso di sé e non sopporta di essere guardato dall’alto.',
@@ -53,6 +55,7 @@ export const summitWar: Saga = {
       id: 'boa-hancock',
       kind: 'character',
       revealedAtEpisode: 410,
+      revealedAtChapter: 516,
       name: { it: 'Boa Hancock', en: 'Boa Hancock' },
       summary: {
         it: 'L’imperatrice di un’isola di sole donne, la più bella del mondo per sua stessa ammissione, che trasforma in pietra chi la desidera e viene perdonata di tutto perché è bella.',
@@ -64,6 +67,7 @@ export const summitWar: Saga = {
       id: 'jinbe',
       kind: 'character',
       revealedAtEpisode: 430,
+      revealedAtChapter: 528,
       name: { it: 'Jinbe', en: 'Jinbe' },
       summary: {
         it: 'Un uomo-pesce della Flotta dei Sette, incatenato al livello più profondo della prigione più profonda del mondo per aver rifiutato di combattere una guerra contro Barbabianca.',
@@ -75,6 +79,7 @@ export const summitWar: Saga = {
       id: 'marineford',
       kind: 'arc',
       revealedAtEpisode: 457,
+      revealedAtChapter: 550,
       name: { it: 'Saga di Marineford', en: 'Marineford Saga' },
       summary: {
         it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',
@@ -86,6 +91,7 @@ export const summitWar: Saga = {
       id: 'sabaody',
       kind: 'arc',
       revealedAtEpisode: 385,
+      revealedAtChapter: 490,
       name: { it: 'Arcipelago Sabaody', en: 'Sabaody Archipelago' },
       summary: {
         it: 'Un arcipelago di mangrovie giganti da cui salgono bolle di sapone, ultima tappa prima che la rotta scenda sotto il mare.',
@@ -97,6 +103,7 @@ export const summitWar: Saga = {
       id: 'amazon-lily',
       kind: 'arc',
       revealedAtEpisode: 408,
+      revealedAtChapter: 514,
       name: { it: 'Amazon Lily', en: 'Amazon Lily' },
       summary: {
         it: 'Un’isola di giungla chiusa da un portale a forma di serpente, dove vive un popolo di sole donne e nessun uomo può sbarcare.',
@@ -108,6 +115,7 @@ export const summitWar: Saga = {
       id: 'impel-down',
       kind: 'arc',
       revealedAtEpisode: 422,
+      revealedAtChapter: 525,
       name: { it: 'Impel Down', en: 'Impel Down' },
       summary: {
         it: 'La prigione del Governo Mondiale, una torre che scende nel mare di livello in livello e da cui non è mai uscito nessuno.',
@@ -119,6 +127,7 @@ export const summitWar: Saga = {
       id: 'camie',
       kind: 'character',
       revealedAtEpisode: 385,
+      revealedAtChapter: 493,
       name: { it: 'Kaimi', en: 'Camie' },
       summary: {
         it: 'Una sirena dalla coda verde che serve takoyaki al banco di un vecchio amico e parla con i pesci come si parla ai vicini di casa.',
@@ -130,6 +139,7 @@ export const summitWar: Saga = {
       id: 'pappag',
       kind: 'character',
       revealedAtEpisode: 385,
+      revealedAtChapter: 493,
       name: { it: 'Pappag', en: 'Pappag' },
       summary: {
         it: 'Una stella marina che parla, con un cappellino in testa, convinta di essere il padrone della sirena che se la porta in giro.',
@@ -141,6 +151,7 @@ export const summitWar: Saga = {
       id: 'duval',
       kind: 'character',
       revealedAtEpisode: 388,
+      revealedAtChapter: 497,
       name: { it: 'Duval', en: 'Duval' },
       summary: {
         it: 'Il capo dei Cavalieri del Pesce Volante, chiuso in una maschera di ferro, che dà la caccia alla ciurma per colpa di una faccia non sua.',
@@ -152,6 +163,7 @@ export const summitWar: Saga = {
       id: 'shakky',
       kind: 'character',
       revealedAtEpisode: 391,
+      revealedAtChapter: 498,
       name: { it: 'Shakky', en: 'Shakky' },
       summary: {
         it: 'La padrona di un bar dell’arcipelago, sigaretta accesa e conti da rapina, che sa già tutto quello che succede fra le mangrovie.',
@@ -163,6 +175,7 @@ export const summitWar: Saga = {
       id: 'silvers-rayleigh',
       kind: 'character',
       revealedAtEpisode: 396,
+      revealedAtChapter: 504,
       name: { it: 'Silvers Rayleigh', en: 'Silvers Rayleigh' },
       summary: {
         it: 'Un vecchio artigiano del rivestimento, calmo davanti a un bicchiere, che stende una sala intera di uomini armati senza toccarne uno.',
@@ -174,6 +187,7 @@ export const summitWar: Saga = {
       id: 'killer',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Killer', en: 'Killer' },
       summary: {
         it: 'Il secondo dei Pirati di Kid, con un casco che gli copre tutta la testa e due lame lunghe e ricurve fissate ai guanti.',
@@ -185,6 +199,7 @@ export const summitWar: Saga = {
       id: 'bepo',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Bepo', en: 'Bepo' },
       summary: {
         it: 'Un orso polare in tuta arancione che sta in piedi come un uomo, naviga per i Pirati Heart e si scusa a ogni rimprovero.',
@@ -196,6 +211,7 @@ export const summitWar: Saga = {
       id: 'scratchmen-apoo',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Scratchmen Apoo', en: 'Scratchmen Apoo' },
       summary: {
         it: 'Un capitano dalle braccia lunghissime che arriva a Sabaody suonando, con le cuffie al collo e il ritmo sempre in bocca.',
@@ -207,6 +223,7 @@ export const summitWar: Saga = {
       id: 'basil-hawkins',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Basil Hawkins', en: 'Basil Hawkins' },
       summary: {
         it: 'Un capitano che decide le sue mosse girando una carta dei tarocchi e annuncia ad alta voce le probabilità di sopravvivenza degli altri.',
@@ -218,6 +235,7 @@ export const summitWar: Saga = {
       id: 'x-drake',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'X Drake', en: 'X Drake' },
       summary: {
         it: 'Un capitano con il cappotto da pirata e un passato nella Marina, arrivato a Sabaody con una taglia da duecentoventidue milioni.',
@@ -229,6 +247,7 @@ export const summitWar: Saga = {
       id: 'urouge',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Urouge', en: 'Urouge' },
       summary: {
         it: 'Un monaco enorme che viaggia sorridendo, con un pilastro di ferro sulla spalla e le isole del cielo alle spalle.',
@@ -240,6 +259,7 @@ export const summitWar: Saga = {
       id: 'capone-bege',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Capone Bege', en: 'Capone Bege' },
       summary: {
         it: 'Un capitano in gessato che parla come un padrino e tratta la ciurma come una famiglia, sigaro acceso e cappello calato sugli occhi.',
@@ -251,6 +271,7 @@ export const summitWar: Saga = {
       id: 'jewelry-bonney',
       kind: 'character',
       revealedAtEpisode: 392,
+      revealedAtChapter: 498,
       name: { it: 'Jewelry Bonney', en: 'Jewelry Bonney' },
       summary: {
         it: 'Una capitana che mangia per tre mentre parla, con una taglia da centoquaranta milioni e nessun riguardo per chi la sta guardando.',
@@ -262,6 +283,7 @@ export const summitWar: Saga = {
       id: 'saint-charloss',
       kind: 'character',
       revealedAtEpisode: 395,
+      revealedAtChapter: 502,
       name: { it: 'Sant Charloss', en: 'Saint Charloss' },
       summary: {
         it: 'Un Nobile Mondiale con una bolla di vetro sulla testa, che spara ai passanti e compra le persone perché nessuno può toccarlo.',
@@ -273,6 +295,7 @@ export const summitWar: Saga = {
       id: 'borsalino',
       kind: 'character',
       revealedAtEpisode: 401,
+      revealedAtChapter: 510,
       name: { it: 'Borsalino', en: 'Borsalino' },
       summary: {
         it: 'Un ammiraglio della Marina che arriva sull’arcipelago come un raggio di luce, con gli occhiali storti e la voce di chi non ha fretta.',
@@ -284,6 +307,7 @@ export const summitWar: Saga = {
       id: 'sentomaru',
       kind: 'character',
       revealedAtEpisode: 401,
+      revealedAtChapter: 508,
       name: { it: 'Sentomaru', en: 'Sentomaru' },
       summary: {
         it: 'La guardia del corpo di uno scienziato del Governo, con un’ascia enorme sulla schiena e una cintura da lottatore in vita.',
@@ -295,6 +319,7 @@ export const summitWar: Saga = {
       id: 'boa-sandersonia',
       kind: 'character',
       revealedAtEpisode: 410,
+      revealedAtChapter: 521,
       name: { it: 'Boa Sandersonia', en: 'Boa Sandersonia' },
       summary: {
         it: 'Una delle due sorelle dell’imperatrice, altissima e magra, che nell’arena si allunga in un serpente verde e stringe.',
@@ -306,6 +331,7 @@ export const summitWar: Saga = {
       id: 'boa-marigold',
       kind: 'character',
       revealedAtEpisode: 410,
+      revealedAtChapter: 521,
       name: { it: 'Boa Marigold', en: 'Boa Marigold' },
       summary: {
         it: 'L’altra sorella dell’imperatrice, enorme e pesante, che nell’arena diventa un serpente arancione e soffia fuoco.',
@@ -317,6 +343,7 @@ export const summitWar: Saga = {
       id: 'marguerite',
       kind: 'character',
       revealedAtEpisode: 408,
+      revealedAtChapter: 518,
       name: { it: 'Marguerite', en: 'Marguerite' },
       summary: {
         it: 'Una guerriera kuja con un arco più alto di lei, la prima a trovare un uomo svenuto nella foresta e a non ucciderlo subito.',
@@ -328,6 +355,7 @@ export const summitWar: Saga = {
       id: 'nyon',
       kind: 'character',
       revealedAtEpisode: 412,
+      revealedAtChapter: 522,
       name: { it: 'Nyon', en: 'Nyon' },
       summary: {
         it: 'L’anziana dell’isola delle donne, piccola e curva, che legge i giornali del mondo e discute con l’imperatrice senza abbassare gli occhi.',
@@ -339,6 +367,7 @@ export const summitWar: Saga = {
       id: 'magellan',
       kind: 'character',
       revealedAtEpisode: 424,
+      revealedAtChapter: 530,
       name: { it: 'Magellan', en: 'Magellan' },
       summary: {
         it: 'Il direttore di Impel Down, un uomo enorme e cornuto che gronda veleno da ogni dito e passa in bagno più tempo che in ufficio.',
@@ -350,6 +379,7 @@ export const summitWar: Saga = {
       id: 'hannyabal',
       kind: 'character',
       revealedAtEpisode: 423,
+      revealedAtChapter: 530,
       name: { it: 'Hannyabal', en: 'Hannyabal' },
       summary: {
         it: 'Il vicedirettore di Impel Down, con un copricapo da faraone e una lancia a due lame, che sogna a voce alta il posto del suo capo.',
@@ -361,6 +391,7 @@ export const summitWar: Saga = {
       id: 'emporio-ivankov',
       kind: 'character',
       revealedAtEpisode: 438,
+      revealedAtChapter: 540,
       name: { it: 'Emporio Ivankov', en: 'Emporio Ivankov' },
       summary: {
         it: 'Il sovrano di un livello nascosto della prigione, con una corona di capelli viola, che cambia il corpo di chiunque con un ago.',
@@ -372,6 +403,7 @@ export const summitWar: Saga = {
       id: 'inazuma',
       kind: 'character',
       revealedAtEpisode: 438,
+      revealedAtChapter: 541,
       name: { it: 'Inazuma', en: 'Inazuma' },
       summary: {
         it: 'Un braccio destro con il taglio di capelli a forbice, che ritaglia il pavimento di pietra come fosse carta e lo ripiega.',
@@ -383,6 +415,7 @@ export const summitWar: Saga = {
       id: 'shiryu',
       kind: 'character',
       revealedAtEpisode: 445,
+      revealedAtChapter: 549,
       name: { it: 'Shiryu', en: 'Shiryu' },
       summary: {
         it: 'L’ex capo dei secondini di Impel Down, rinchiuso nella sua stessa prigione per aver ucciso troppi detenuti, con una lama lunghissima.',
@@ -394,6 +427,7 @@ export const summitWar: Saga = {
       id: 'jesus-burgess',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 234,
       name: { it: 'Jesus Burgess', en: 'Jesus Burgess' },
       summary: {
         it: 'Un gigante in calzamaglia che a Mock Town sfida i passanti a braccio di ferro e ride più forte di tutti al tavolo di Barbanera.',
@@ -405,6 +439,7 @@ export const summitWar: Saga = {
       id: 'van-augur',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 234,
       name: { it: 'Van Augur', en: 'Van Augur' },
       summary: {
         it: 'Il tiratore della ciurma di Barbanera, altissimo e silenzioso, che a Mock Town tiene il fucile sulle ginocchia e guarda lontano.',
@@ -416,6 +451,7 @@ export const summitWar: Saga = {
       id: 'doc-q',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 234,
       name: { it: 'Doc Q', en: 'Doc Q' },
       summary: {
         it: 'Il medico di Barbanera, così malato da reggersi a fatica, che gira su un cavallo magro quanto lui e offre mele a chi passa.',
@@ -427,6 +463,7 @@ export const summitWar: Saga = {
       id: 'laffitte',
       kind: 'character',
       revealedAtEpisode: 151,
+      revealedAtChapter: 234,
       name: { it: 'Laffitte', en: 'Laffitte' },
       summary: {
         it: 'Un uomo pallido in cilindro e bastone che entra dalla finestra alla riunione della Flotta dei Sette e propone il nome del suo capitano.',
@@ -438,6 +475,7 @@ export const summitWar: Saga = {
       id: 'catarina-devon',
       kind: 'character',
       revealedAtEpisode: 450,
+      revealedAtChapter: 577,
       name: { it: 'Catarina Devon', en: 'Catarina Devon' },
       summary: {
         it: 'Una prigioniera del sesto livello di Impel Down, rinchiusa laggiù da anni, che ride piano quando le celle si aprono.',
@@ -449,6 +487,7 @@ export const summitWar: Saga = {
       id: 'vasco-shot',
       kind: 'character',
       revealedAtEpisode: 450,
+      revealedAtChapter: 577,
       name: { it: 'Vasco Shot', en: 'Vasco Shot' },
       summary: {
         it: 'Un prigioniero del sesto livello con una zucca di liquore sempre in mano, che beve anche mentre le celle vengono aperte.',
@@ -460,6 +499,7 @@ export const summitWar: Saga = {
       id: 'san-juan-wolf',
       kind: 'character',
       revealedAtEpisode: 450,
+      revealedAtChapter: 577,
       name: { it: 'San Juan Wolf', en: 'San Juan Wolf' },
       summary: {
         it: 'Un gigante troppo grande perfino per il sesto livello, incatenato a un muro che gli arriva appena alle ginocchia.',
@@ -471,6 +511,7 @@ export const summitWar: Saga = {
       id: 'avalo-pizarro',
       kind: 'character',
       revealedAtEpisode: 450,
+      revealedAtChapter: 577,
       name: { it: 'Avalo Pizarro', en: 'Avalo Pizarro' },
       summary: {
         it: 'Un prigioniero del sesto livello con la testa cornuta e la voce di chi comandava, chiuso nella cella più profonda della prigione.',
@@ -482,6 +523,7 @@ export const summitWar: Saga = {
       id: 'sakazuki',
       kind: 'character',
       revealedAtEpisode: 463,
+      revealedAtChapter: 556,
       name: { it: 'Sakazuki', en: 'Sakazuki' },
       summary: {
         it: 'Un ammiraglio della Marina che fuma dal cappello e considera la giustizia una faccenda da chiudere, non da discutere.',
@@ -493,6 +535,7 @@ export const summitWar: Saga = {
       id: 'jozu',
       kind: 'character',
       revealedAtEpisode: 461,
+      revealedAtChapter: 556,
       name: { it: 'Jozu', en: 'Jozu' },
       summary: {
         it: 'Un comandante di Barbabianca largo quanto una porta, che si copre il corpo di diamante e incassa un colpo senza spostare i piedi.',
@@ -504,6 +547,7 @@ export const summitWar: Saga = {
       id: 'vista',
       kind: 'character',
       revealedAtEpisode: 461,
+      revealedAtChapter: 556,
       name: { it: 'Vista', en: 'Vista' },
       summary: {
         it: 'Un comandante di Barbabianca con i baffi all’insù e due spade, che incrocia la lama del migliore spadaccino del mondo senza cedere.',
@@ -515,6 +559,7 @@ export const summitWar: Saga = {
       id: 'squard',
       kind: 'character',
       revealedAtEpisode: 462,
+      revealedAtChapter: 558,
       name: { it: 'Squardo', en: 'Squard' },
       summary: {
         it: 'Il capitano di una ciurma alleata di Barbabianca, che chiama padre il vecchio e porta la sua nave in prima fila nella baia.',
@@ -526,6 +571,7 @@ export const summitWar: Saga = {
       id: 'little-oars-jr',
       kind: 'character',
       revealedAtEpisode: 466,
+      revealedAtChapter: 560,
       name: { it: 'Piccolo Oz Jr.', en: 'Little Oars Jr.' },
       summary: {
         it: 'Un gigante alto quanto una torre, con un cappello di paglia intrecciata in testa, che avanza da solo verso la baia della Marina.',
@@ -537,6 +583,7 @@ export const summitWar: Saga = {
       id: 'tsuru',
       kind: 'character',
       revealedAtEpisode: 461,
+      revealedAtChapter: 556,
       name: { it: 'Tsuru', en: 'Tsuru' },
       summary: {
         it: 'Un viceammiraglio anziano che siede fra gli ammiragli, unica donna al tavolo, e parla con la calma di chi non deve alzare la voce.',
@@ -548,6 +595,7 @@ export const summitWar: Saga = {
       id: 'momonga',
       kind: 'character',
       revealedAtEpisode: 410,
+      revealedAtChapter: 523,
       name: { it: 'Momonga', en: 'Momonga' },
       summary: {
         it: 'Un viceammiraglio della Marina che sbarca sull’isola delle donne per consegnare una convocazione e non alza mai gli occhi.',
@@ -559,6 +607,7 @@ export const summitWar: Saga = {
       id: 'curly-dadan',
       kind: 'character',
       revealedAtEpisode: 493,
+      revealedAtChapter: 582,
       name: { it: 'Curly Dadan', en: 'Curly Dadan' },
       summary: {
         it: 'La capa di una banda di briganti di montagna, capelli enormi e sigaretta in bocca, a cui la Marina ha affidato due bambini.',
@@ -570,6 +619,7 @@ export const summitWar: Saga = {
       id: 'sabo',
       kind: 'character',
       revealedAtEpisode: 495,
+      revealedAtChapter: 583,
       name: { it: 'Sabo', en: 'Sabo' },
       summary: {
         it: 'Un bambino in cilindro e occhialoni che vive fra i rottami della città, fratello giurato di Rufy e Ace davanti a tre tazze di sakè.',
@@ -581,6 +631,7 @@ export const summitWar: Saga = {
       id: 'portgas-d-rouge',
       kind: 'character',
       revealedAtEpisode: 493,
+      revealedAtChapter: 550,
       name: { it: 'Portuguese D. Rouge', en: 'Portgas D. Rouge' },
       summary: {
         it: 'La madre di Ace, che ha tenuto il figlio in grembo venti mesi per sottrarlo alla Marina e non è sopravvissuta al parto.',

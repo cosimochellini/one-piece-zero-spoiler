@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event'
 
 import type { BookSection } from '~/data/characters'
 import type { Entity } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterGrid } from './CharacterGrid'
 
@@ -12,6 +12,7 @@ const entries: readonly Entity[] = [
     id: 'monkey-d-luffy',
     kind: 'character',
     revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     name: { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'monkey-d-luffy', tint: 'red' },
@@ -20,6 +21,7 @@ const entries: readonly Entity[] = [
     id: 'nami',
     kind: 'character',
     revealedAtEpisode: 5,
+    revealedAtChapter: 5,
     name: { it: 'Nami', en: 'Nami' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'nami', tint: 'orange' },
@@ -28,6 +30,7 @@ const entries: readonly Entity[] = [
     id: 'nico-robin',
     kind: 'character',
     revealedAtEpisode: 130,
+    revealedAtChapter: 130,
     name: { it: 'Nico Robin', en: 'Nico Robin' },
     summary: { it: 'x', en: 'x' },
     visual: { art: 'nico-robin', tint: 'violet' },
@@ -38,6 +41,7 @@ const arc: Entity = {
   id: 'east-blue',
   kind: 'arc',
   revealedAtEpisode: 1,
+  revealedAtChapter: 1,
   name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
   summary: { it: 'x', en: 'x' },
   visual: { art: 'east-blue', tint: 'ivory' },
@@ -47,6 +51,7 @@ const lateArc: Entity = {
   id: 'alabasta',
   kind: 'arc',
   revealedAtEpisode: 92,
+  revealedAtChapter: 92,
   name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
   summary: { it: 'x', en: 'x' },
   visual: { art: 'alabasta', tint: 'sand' },
@@ -58,14 +63,15 @@ const sections: readonly BookSection[] = [
   { arc: lateArc, characters: entries.slice(2) },
 ]
 
-function book(progress: number | null, locale: 'en' | 'it' = 'en') {
+function book(episode: number | null, locale: 'en' | 'it' = 'en') {
+  const bookmark = episode === null ? null : ep(episode)
   return renderWithProviders(
     <CharacterGrid
       featured={entries}
       sections={sections}
-      progress={progress}
+      bookmark={bookmark}
     />,
-    { progress, locale },
+    { bookmark, locale },
   )
 }
 

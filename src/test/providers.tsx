@@ -11,12 +11,17 @@ import type { ReactElement } from 'react'
 
 import { LocaleProvider } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
-import { EpisodeProvider } from '~/lib/progress/EpisodeContext'
-import type { Progress } from '~/lib/progress/episode'
+import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import type { Bookmark } from '~/lib/progress/episode'
+
+/** An anime-episode bookmark, the case most tests need. */
+export function ep(episode: number): Bookmark {
+  return { mode: 'episode', episode }
+}
 
 export type RenderOptions = {
   readonly locale?: Locale
-  readonly progress?: Progress
+  readonly bookmark?: Bookmark
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   readonly path?: string
 }
@@ -24,7 +29,7 @@ export type RenderOptions = {
 /**
  * Renders a component inside the three contexts every part of the UI assumes.
  *
- * `progress` stands in for what the server read out of the cookie, which is
+ * `bookmark` stands in for what the server read out of the cookie, which is
  * the only way a test can reproduce the first paint faithfully.
  *
  * The router is context only, not a match: a `<Link>` needs `useRouter` to
@@ -36,7 +41,7 @@ export type RenderOptions = {
  */
 export function renderWithProviders(
   ui: ReactElement,
-  { locale = 'en', progress = null, path }: RenderOptions = {},
+  { locale = 'en', bookmark = null, path }: RenderOptions = {},
 ) {
   const router = createRouter({
     routeTree: createRootRoute(),
@@ -46,7 +51,7 @@ export function renderWithProviders(
   return render(
     <RouterContextProvider router={router}>
       <LocaleProvider locale={locale}>
-        <EpisodeProvider initialProgress={progress}>{ui}</EpisodeProvider>
+        <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
       </LocaleProvider>
     </RouterContextProvider>,
   )
@@ -64,7 +69,7 @@ export type RouteRenderOptions = RenderOptions & {
  */
 export async function renderOnRoute(
   ui: ReactElement,
-  { locale = 'en', progress = null, path, pattern }: RouteRenderOptions,
+  { locale = 'en', bookmark = null, path, pattern }: RouteRenderOptions,
 ) {
   const rootRoute = createRootRoute()
   const page = createRoute({
@@ -72,7 +77,7 @@ export async function renderOnRoute(
     path: pattern,
     component: () => (
       <LocaleProvider locale={locale}>
-        <EpisodeProvider initialProgress={progress}>{ui}</EpisodeProvider>
+        <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
       </LocaleProvider>
     ),
   })

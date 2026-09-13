@@ -3,6 +3,8 @@ import { useState } from 'react'
 import type { ReactNode } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { Gated } from '~/lib/progress/spoiler'
 import {
   color,
   dur,
@@ -15,8 +17,8 @@ import {
 } from '~/styles/tokens.stylex'
 
 export type SpoilerVeilProps = {
-  /** The episode from which the wrapped content is safe to read. */
-  readonly revealedAtEpisode: number
+  /** The record's thresholds, for the notice that names the one in force. */
+  readonly gated: Gated
   /**
    * Whether the reader's bookmark already clears the threshold. Computed by
    * the caller with `isRevealed` so the same decision is made once, on the
@@ -68,7 +70,7 @@ export type SpoilerVeilProps = {
  * and only mount on the client once the fog is lifted.
  */
 export function SpoilerVeil({
-  revealedAtEpisode,
+  gated,
   revealed,
   density = 'block',
   strength = 'text',
@@ -76,9 +78,10 @@ export function SpoilerVeil({
   children,
 }: SpoilerVeilProps) {
   const t = useT()
+  const threshold = useThreshold()
   const [uncovered, setUncovered] = useState(false)
   const visible = revealed || uncovered
-  const notice = t('veil.locked', { episode: revealedAtEpisode })
+  const notice = threshold('veil.locked', gated)
   const verbOnly = density !== 'block'
 
   // A block body: `no-confusing-void-expression` rejects an arrow that

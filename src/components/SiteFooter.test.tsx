@@ -12,7 +12,7 @@ describe('SiteFooter', () => {
       screen.getByText('Nobody should learn the ending before they get there.'),
     ).toBeInTheDocument()
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
-      'Thresholds count anime episodes.',
+      'Thresholds count anime episodes or manga chapters, whichever you pick.',
     )
     expect(screen.queryAllByRole('link')).toHaveLength(0)
   })

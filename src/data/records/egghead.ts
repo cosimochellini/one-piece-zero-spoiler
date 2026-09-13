@@ -29,6 +29,7 @@ export const egghead: Saga = {
       id: 'egghead',
       kind: 'arc',
       revealedAtEpisode: 1089,
+      revealedAtChapter: 1061,
       name: { it: 'Saga di Egghead', en: 'Egghead Saga' },
       summary: {
         it: 'La ciurma approda su un’isola che vive centinaia di anni nel futuro, costruita attorno al laboratorio di uno scienziato del Governo Mondiale.',
@@ -40,6 +41,7 @@ export const egghead: Saga = {
       id: 'egghead-island',
       kind: 'place',
       revealedAtEpisode: 1089,
+      revealedAtChapter: 1061,
       name: { it: 'Isola di Egghead', en: 'Egghead Island' },
       summary: {
         it: 'Un’isola-laboratorio nel Nuovo Mondo, tenuta calda da un vulcano sottomarino e piena di macchine che non dovrebbero esistere ancora.',
@@ -51,6 +53,7 @@ export const egghead: Saga = {
       id: 'vegapunk',
       kind: 'character',
       revealedAtEpisode: 1090,
+      revealedAtChapter: 1068,
       name: { it: 'Vegapunk', en: 'Vegapunk' },
       summary: {
         it: 'Lo scienziato che il mondo insegue da cinquecento anni, un vecchio dalla testa enorme a forma di lampadina che vive dentro il suo laboratorio.',
@@ -62,6 +65,7 @@ export const egghead: Saga = {
       id: 'shaka',
       kind: 'character',
       revealedAtEpisode: 1091,
+      revealedAtChapter: 1065,
       name: { it: 'Shaka', en: 'Shaka' },
       summary: {
         it: 'Il primo dei satelliti di Vegapunk, un uomo in tuta corazzata e elmo a cupola, che parla piano e decide per tutto il laboratorio.',
@@ -73,6 +77,7 @@ export const egghead: Saga = {
       id: 'lilith',
       kind: 'character',
       revealedAtEpisode: 1091,
+      revealedAtChapter: 1065,
       name: { it: 'Lilith', en: 'Lilith' },
       summary: {
         it: 'Il satellite che rappresenta il male, una donna con le corna e un fucile laser, che spara agli ospiti prima ancora di chiedere un nome.',
@@ -84,6 +89,7 @@ export const egghead: Saga = {
       id: 's-snake',
       kind: 'character',
       revealedAtEpisode: 1092,
+      revealedAtChapter: 1071,
       name: { it: 'S-Snake', en: 'S-Snake' },
       summary: {
         it: 'Un’arma del Governo Mondiale con l’aspetto di una bambina, ali alla schiena e berretto della Marina, che pietrifica chi la guarda troppo.',
@@ -95,6 +101,7 @@ export const egghead: Saga = {
       id: 's-hawk',
       kind: 'character',
       revealedAtEpisode: 1092,
+      revealedAtChapter: 1071,
       name: { it: 'S-Hawk', en: 'S-Hawk' },
       summary: {
         it: 'Un serafino dal volto di bambino, con una spada nera enorme sulla schiena, costruito sul modello del più grande spadaccino del mondo.',
@@ -106,6 +113,7 @@ export const egghead: Saga = {
       id: 's-bear',
       kind: 'character',
       revealedAtEpisode: 1092,
+      revealedAtChapter: 1071,
       name: { it: 'S-Bear', en: 'S-Bear' },
       summary: {
         it: 'Un serafino costruito sul modello di Bartholomew Kuma, con i cuscinetti sui palmi che respingono qualsiasi cosa li tocchi.',
@@ -117,6 +125,7 @@ export const egghead: Saga = {
       id: 's-shark',
       kind: 'character',
       revealedAtEpisode: 1092,
+      revealedAtChapter: 1071,
       name: { it: 'S-Shark', en: 'S-Shark' },
       summary: {
         it: 'Un serafino dai tratti di uomo-pesce, che solleva l’acqua intorno a Egghead e la usa come una frusta contro chi difende il laboratorio.',
@@ -128,6 +137,7 @@ export const egghead: Saga = {
       id: 'edison',
       kind: 'character',
       revealedAtEpisode: 1094,
+      revealedAtChapter: 1070,
       name: { it: 'Edison', en: 'Edison' },
       summary: {
         it: 'Il satellite che pensa, un uomo enorme con una lampadina accesa al posto della testa, che invita gli ospiti a sedersi e continua a progettare.',
@@ -139,6 +149,7 @@ export const egghead: Saga = {
       id: 'pythagoras',
       kind: 'character',
       revealedAtEpisode: 1094,
+      revealedAtChapter: 1070,
       name: { it: 'Pythagoras', en: 'Pythagoras' },
       summary: {
         it: 'Il satellite che sa, una testa geometrica con uno schermo al posto del viso, che tiene sotto controllo ogni misura del laboratorio.',
@@ -150,6 +161,7 @@ export const egghead: Saga = {
       id: 'atlas',
       kind: 'character',
       revealedAtEpisode: 1094,
+      revealedAtChapter: 1070,
       name: { it: 'Atlas', en: 'Atlas' },
       summary: {
         it: 'Il satellite della forza, una donna che si infila due guanti d’acciaio grandi quanto lei e apre le porte a pugni invece che con la chiave.',
@@ -161,6 +173,7 @@ export const egghead: Saga = {
       id: 'york',
       kind: 'character',
       revealedAtEpisode: 1094,
+      revealedAtChapter: 1070,
       name: { it: 'York', en: 'York' },
       summary: {
         it: 'Il satellite dell’avidità, una donna che dorme, mangia e si fa servire, e che si occupa delle scorte dell’isola quando le va di alzarsi.',
@@ -172,6 +185,7 @@ export const egghead: Saga = {
       id: 'jaygarcia-saturn',
       kind: 'character',
       revealedAtEpisode: 1105,
+      revealedAtChapter: 1095,
       name: { it: 'Jaygarcia Saturn', en: 'Jaygarcia Saturn' },
       summary: {
         it: 'Uno dei cinque uomini che stanno sopra il Governo Mondiale, arrivato su Egghead di persona, con il cilindro in testa e il bastone in mano.',
@@ -183,6 +197,7 @@ export const egghead: Saga = {
       id: 'ginny',
       kind: 'character',
       revealedAtEpisode: 1112,
+      revealedAtChapter: 1102,
       name: { it: 'Ginny', en: 'Ginny' },
       summary: {
         it: 'Una ragazzina del Regno di Sorbet cresciuta accanto a Kuma, che canta per i malati della chiesa e porta un fazzoletto annodato sui capelli.',
@@ -194,6 +209,7 @@ export const egghead: Saga = {
       id: 'marcus-mars',
       kind: 'character',
       revealedAtEpisode: 1122,
+      revealedAtChapter: 1125,
       name: { it: 'Marcus Mars', en: 'Marcus Mars' },
       summary: {
         it: 'Uno dei cinque che comandano il Governo Mondiale, sceso su Egghead con gli altri e capace di aprirsi in una forma enorme e piumata.',
@@ -205,6 +221,7 @@ export const egghead: Saga = {
       id: 'topman-warcury',
       kind: 'character',
       revealedAtEpisode: 1122,
+      revealedAtChapter: 1125,
       name: { it: 'Topman Warcury', en: 'Topman Warcury' },
       summary: {
         it: 'Uno dei Cinque Astri di Saggezza, arrivato su Egghead con l’elmo allacciato sotto il mento e una forma che sfonda i muri come un cinghiale.',
@@ -216,6 +233,7 @@ export const egghead: Saga = {
       id: 'ethanbaron-v-nusjuro',
       kind: 'character',
       revealedAtEpisode: 1122,
+      revealedAtChapter: 1125,
       name: { it: 'Ethanbaron V. Nusjuro', en: 'Ethanbaron V. Nusjuro' },
       summary: {
         it: 'Uno dei Cinque Astri di Saggezza, sbarcato su Egghead con una katana lunghissima che taglia quello che ha davanti quasi senza muoversi.',
@@ -227,6 +245,7 @@ export const egghead: Saga = {
       id: 'shepherd-ju-peter',
       kind: 'character',
       revealedAtEpisode: 1122,
+      revealedAtChapter: 1125,
       name: { it: 'Shepherd Ju Peter', en: 'Shepherd Ju Peter' },
       summary: {
         it: 'Uno dei Cinque Astri di Saggezza, sceso su Egghead con un cappello a tesa larga e una forma che scava nel terreno e inghiotte ciò che trova.',

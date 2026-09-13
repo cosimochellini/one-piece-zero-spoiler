@@ -6,7 +6,8 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import type { Entity, EntityKind } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
-import type { Progress } from '~/lib/progress/episode'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
   color,
@@ -29,7 +30,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
 
 export type RecordTileProps = {
   readonly entry: Entity
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 /**
@@ -42,20 +43,21 @@ export type RecordTileProps = {
  * Used wherever a page points at the records filed beside the one it is
  * about: the two neighbours on a character page, the crew a port files.
  */
-export function RecordTile({ entry, progress }: RecordTileProps) {
+export function RecordTile({ entry, bookmark }: RecordTileProps) {
   const { t } = useLocale()
+  const threshold = useThreshold()
 
   return (
     <span {...stylex.props(styles.tile)}>
       <span {...stylex.props(styles.meta)}>
         <span {...stylex.props(styles.kind)}>{t(KIND_KEY[entry.kind])}</span>
         <span {...stylex.props(styles.episode)}>
-          {t('chart.opensAt', { episode: entry.revealedAtEpisode })}
+          {threshold('chart.opensAt', entry)}
         </span>
       </span>
       <SpoilerVeil
-        revealedAtEpisode={entry.revealedAtEpisode}
-        revealed={isRevealed(entry, progress)}
+        gated={entry}
+        revealed={isRevealed(entry, bookmark)}
         density="inline"
         placeholder={
           <span {...stylex.props(styles.card)}>

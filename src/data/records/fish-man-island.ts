@@ -21,6 +21,7 @@ export const fishManIsland: Saga = {
       id: 'fish-man-island',
       kind: 'arc',
       revealedAtEpisode: 517,
+      revealedAtChapter: 598,
       name: {
         it: 'Saga dell’Isola degli Uomini-Pesce',
         en: 'Fish-Man Island Saga',
@@ -35,6 +36,7 @@ export const fishManIsland: Saga = {
       id: 'caribou',
       kind: 'character',
       revealedAtEpisode: 517,
+      revealedAtChapter: 602,
       name: { it: 'Caribou', en: 'Caribou' },
       summary: {
         it: 'Un pirata dai capelli bagnati che si inginocchia e implora pietà, poi taglia la gola ai marine con la falce e li fa seppellire al fratello.',
@@ -46,6 +48,7 @@ export const fishManIsland: Saga = {
       id: 'coribou',
       kind: 'character',
       revealedAtEpisode: 517,
+      revealedAtChapter: 602,
       name: { it: 'Coribou', en: 'Coribou' },
       summary: {
         it: 'Un gigante con la vanga in spalla che scava una fossa dietro l’altra e pianta una croce su ognuna, mentre il fratello capitano continua a parlare.',
@@ -57,6 +60,7 @@ export const fishManIsland: Saga = {
       id: 'hammond',
       kind: 'character',
       revealedAtEpisode: 523,
+      revealedAtChapter: 610,
       name: { it: 'Hammond', en: 'Hammond' },
       summary: {
         it: 'Un uomo-pesce con un arpione uncinato che ferma i nuovi arrivati all’ingresso dell’isola e li invita a schierarsi o a tornare da dove sono venuti.',
@@ -68,6 +72,7 @@ export const fishManIsland: Saga = {
       id: 'shyarly',
       kind: 'character',
       revealedAtEpisode: 524,
+      revealedAtChapter: 612,
       name: { it: 'Sharley', en: 'Shyarly' },
       summary: {
         it: 'La proprietaria del Caffè delle Sirene, una sirena con la coda da squalo che legge il futuro in una sfera di cristallo e non ha mai sbagliato.',
@@ -79,6 +84,7 @@ export const fishManIsland: Saga = {
       id: 'vander-decken-ix',
       kind: 'character',
       revealedAtEpisode: 526,
+      revealedAtChapter: 615,
       name: { it: 'Vander Decken IX', en: 'Vander Decken IX' },
       summary: {
         it: 'Il capitano dei Pirati Volanti, che tocca un bersaglio una volta sola e da quel momento qualunque cosa lanci lo insegue finché non lo colpisce.',
@@ -90,6 +96,7 @@ export const fishManIsland: Saga = {
       id: 'hody-jones',
       kind: 'character',
       revealedAtEpisode: 527,
+      revealedAtChapter: 615,
       name: { it: 'Hody Jones', en: 'Hody Jones' },
       summary: {
         it: 'Un uomo-pesce squalo bianco con un tridente, capitano dei Nuovi Pirati Uomini-Pesce, che promette di prendersi l’isola e di strappare la pace firmata con gli umani.',
@@ -101,6 +108,7 @@ export const fishManIsland: Saga = {
       id: 'neptune',
       kind: 'character',
       revealedAtEpisode: 528,
+      revealedAtChapter: 615,
       name: { it: 'Nettuno', en: 'Neptune' },
       summary: {
         it: 'Il re del Regno di Ryugu, un tritone enorme con la barba bianca e un tridente, che governa dal palazzo di corallo in fondo all’isola.',
@@ -112,6 +120,7 @@ export const fishManIsland: Saga = {
       id: 'fukaboshi',
       kind: 'character',
       revealedAtEpisode: 529,
+      revealedAtChapter: 616,
       name: { it: 'Fukaboshi', en: 'Fukaboshi' },
       summary: {
         it: 'Il primogenito di Nettuno, un tritone squalo che comanda l’armata del regno con una lancia e parla a nome del padre.',
@@ -123,6 +132,7 @@ export const fishManIsland: Saga = {
       id: 'ryuboshi',
       kind: 'character',
       revealedAtEpisode: 529,
+      revealedAtChapter: 616,
       name: { it: 'Ryuboshi', en: 'Ryuboshi' },
       summary: {
         it: 'Il secondo dei principi di Ryugu, un tritone che canta in lirica la metà di quello che dice e tiene la sciabola al fianco.',
@@ -134,6 +144,7 @@ export const fishManIsland: Saga = {
       id: 'manboshi',
       kind: 'character',
       revealedAtEpisode: 529,
+      revealedAtChapter: 616,
       name: { it: 'Manboshi', en: 'Manboshi' },
       summary: {
         it: 'Il terzo principe di Ryugu, un tritone pesce luna che balla mentre parla e impugna la sciabola senza mai smettere di muoversi.',
@@ -145,6 +156,7 @@ export const fishManIsland: Saga = {
       id: 'shirahoshi',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 618,
       name: { it: 'Shirahoshi', en: 'Shirahoshi' },
       summary: {
         it: 'La principessa sirena del Regno di Ryugu, alta quanto una torre e spaventata da tutto, chiusa nella stessa stanza da dieci anni.',
@@ -156,6 +168,7 @@ export const fishManIsland: Saga = {
       id: 'hyouzou',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 620,
       name: { it: 'Hyouzou', en: 'Hyouzou' },
       summary: {
         it: 'Un uomo-pesce polpo con una sciabola avvelenata in ognuna delle otto braccia, venduto ai Nuovi Pirati Uomini-Pesce come spadaccino.',
@@ -167,6 +180,7 @@ export const fishManIsland: Saga = {
       id: 'zeo',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 620,
       name: { it: 'Zeo', en: 'Zeo' },
       summary: {
         it: 'Un ufficiale dei Nuovi Pirati Uomini-Pesce che si confonde con il corallo e con la pietra finché non è troppo tardi per accorgersene.',
@@ -178,6 +192,7 @@ export const fishManIsland: Saga = {
       id: 'daruma',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 620,
       name: { it: 'Daruma', en: 'Daruma' },
       summary: {
         it: 'Il più piccolo degli ufficiali dei Nuovi Pirati Uomini-Pesce, un pesce dai denti a sega che scava sotto il pavimento e morde da sotto.',
@@ -189,6 +204,7 @@ export const fishManIsland: Saga = {
       id: 'ikaros-much',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 620,
       name: { it: 'Ikaros Much', en: 'Ikaros Much' },
       summary: {
         it: 'Un ufficiale calamaro alto il doppio degli altri, che tiene in ogni braccio una lancia a forma di calamaro messo a seccare.',
@@ -200,6 +216,7 @@ export const fishManIsland: Saga = {
       id: 'dosun',
       kind: 'character',
       revealedAtEpisode: 530,
+      revealedAtChapter: 620,
       name: { it: 'Dosun', en: 'Dosun' },
       summary: {
         it: 'Un ufficiale dalla testa a martello che scandisce ogni frase con una mazza più alta di un uomo e rompe il pavimento per farsi capire.',
@@ -211,6 +228,7 @@ export const fishManIsland: Saga = {
       id: 'den',
       kind: 'character',
       revealedAtEpisode: 531,
+      revealedAtChapter: 620,
       name: { it: 'Den', en: 'Den' },
       summary: {
         it: 'Il carpentiere dell’Isola degli Uomini-Pesce, che rimette a posto gli scafi scesi dalla superficie e dice di essere il fratello minore di Tom.',
@@ -222,6 +240,7 @@ export const fishManIsland: Saga = {
       id: 'otohime',
       kind: 'character',
       revealedAtEpisode: 539,
+      revealedAtChapter: 626,
       name: { it: 'Otohime', en: 'Otohime' },
       summary: {
         it: 'La regina del Regno di Ryugu, che gira l’isola con un foglio di firme per chiedere al mondo di lasciare la sua gente uscire al sole.',
@@ -233,6 +252,7 @@ export const fishManIsland: Saga = {
       id: 'fisher-tiger',
       kind: 'character',
       revealedAtEpisode: 539,
+      revealedAtChapter: 626,
       name: { it: 'Fisher Tiger', en: 'Fisher Tiger' },
       summary: {
         it: 'Un uomo-pesce che scala la Red Line fino alla città dei Nobili Mondiali, apre le celle degli schiavi e li riporta giù dietro di sé.',
@@ -244,6 +264,7 @@ export const fishManIsland: Saga = {
       id: 'aladine',
       kind: 'character',
       revealedAtEpisode: 541,
+      revealedAtChapter: 628,
       name: { it: 'Aladine', en: 'Aladine' },
       summary: {
         it: 'Il medico dei Pirati del Sole, un uomo-pesce squalo che tiene in piedi con la borsa da dottore una ciurma nata da una liberazione di schiavi.',
@@ -255,6 +276,7 @@ export const fishManIsland: Saga = {
       id: 'pekoms',
       kind: 'character',
       revealedAtEpisode: 571,
+      revealedAtChapter: 653,
       name: { it: 'Pekoms', en: 'Pekoms' },
       summary: {
         it: 'Un pirata con gli occhiali scuri e la criniera da leone, che scende sull’isola per ritirare le caramelle dovute ogni mese a Big Mom.',
@@ -266,6 +288,7 @@ export const fishManIsland: Saga = {
       id: 'baron-tamago',
       kind: 'character',
       revealedAtEpisode: 571,
+      revealedAtChapter: 653,
       name: { it: 'Baron Tamago', en: 'Baron Tamago' },
       summary: {
         it: 'Un cavaliere con il corpo a forma di uovo, cilindro e bastone, che accompagna il ritiro delle caramelle e misura ogni cosa in minuti.',

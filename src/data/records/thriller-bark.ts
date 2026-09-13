@@ -16,6 +16,7 @@ export const thrillerBark: Saga = {
       id: 'thriller-bark',
       kind: 'arc',
       revealedAtEpisode: 337,
+      revealedAtChapter: 442,
       name: { it: 'Thriller Bark', en: 'Thriller Bark' },
       summary: {
         it: 'Una nave grande quanto un’isola, con una villa e alberi secchi sul ponte, ferma in una nebbia dove la luna non tramonta mai.',
@@ -27,6 +28,7 @@ export const thrillerBark: Saga = {
       id: 'brook',
       kind: 'character',
       revealedAtEpisode: 339,
+      revealedAtChapter: 443,
       name: { it: 'Brook', en: 'Brook' },
       summary: {
         it: 'Uno scheletro con la permanente afro che suona il violino, chiede alle signore di mostrargli le mutandine e beve il tè con le buone maniere, cinquant’anni dopo essere morto.',
@@ -38,6 +40,7 @@ export const thrillerBark: Saga = {
       id: 'perona',
       kind: 'character',
       revealedAtEpisode: 340,
+      revealedAtChapter: 449,
       name: { it: 'Perona', en: 'Perona' },
       summary: {
         it: 'La principessa fantasma di una nave-isola, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
@@ -49,6 +52,7 @@ export const thrillerBark: Saga = {
       id: 'lola',
       kind: 'character',
       revealedAtEpisode: 340,
+      revealedAtChapter: 455,
       name: { it: 'Lola', en: 'Lola' },
       summary: {
         it: 'Una sposa zombie con il velo impigliato nelle zanne di un cinghiale, che insegue chiunque passi per chiedergli di sposarla.',
@@ -60,6 +64,7 @@ export const thrillerBark: Saga = {
       id: 'gecko-moria',
       kind: 'character',
       revealedAtEpisode: 343,
+      revealedAtChapter: 455,
       name: { it: 'Gekko Moria', en: 'Gecko Moria' },
       summary: {
         it: 'Il padrone di Thriller Bark, un gigante pallido con un sorriso cucito, che taglia l’ombra a chi perde contro di lui e se la tiene.',
@@ -71,6 +76,7 @@ export const thrillerBark: Saga = {
       id: 'absalom',
       kind: 'character',
       revealedAtEpisode: 341,
+      revealedAtChapter: 455,
       name: { it: 'Absalom', en: 'Absalom' },
       summary: {
         it: 'Un uomo che sparisce a comando, tradito soltanto dal cappotto e dal bazooka che porta al braccio, e che entra dove gli pare.',
@@ -82,6 +88,7 @@ export const thrillerBark: Saga = {
       id: 'hogback',
       kind: 'character',
       revealedAtEpisode: 340,
+      revealedAtChapter: 452,
       name: { it: 'Hogback', en: 'Hogback' },
       summary: {
         it: 'Un chirurgo celebre che ha lasciato il mondo dei vivi per cucire insieme i cadaveri, e ride ammirando il lavoro delle proprie mani.',
@@ -93,6 +100,7 @@ export const thrillerBark: Saga = {
       id: 'victoria-cindry',
       kind: 'character',
       revealedAtEpisode: 340,
+      revealedAtChapter: 452,
       name: { it: 'Victoria Cindry', en: 'Victoria Cindry' },
       summary: {
         it: 'Una cameriera zombie dal viso cucito, che serve senza dire una parola di troppo e lascia cadere un piatto dopo l’altro.',
@@ -104,6 +112,7 @@ export const thrillerBark: Saga = {
       id: 'ryuma',
       kind: 'character',
       revealedAtEpisode: 345,
+      revealedAtChapter: 462,
       name: { it: 'Ryuma', en: 'Ryuma' },
       summary: {
         it: 'Uno zombie in armatura da samurai con una lama nera al fianco, che si inchina prima di sguainarla e taglia tutto ciò che gli sta davanti.',
@@ -115,6 +124,7 @@ export const thrillerBark: Saga = {
       id: 'oars',
       kind: 'character',
       revealedAtEpisode: 358,
+      revealedAtChapter: 472,
       name: { it: 'Oz', en: 'Oars' },
       summary: {
         it: 'Il cadavere di un gigante antico, alto quanto la villa e con due corna sull’elmo, che si rialza appena gli cuciono dentro un’ombra nuova.',
@@ -126,6 +136,7 @@ export const thrillerBark: Saga = {
       id: 'yorki',
       kind: 'character',
       revealedAtEpisode: 380,
+      revealedAtChapter: 489,
       name: { it: 'Yorki', en: 'Yorki' },
       summary: {
         it: 'Il capitano che cinquant’anni fa portò nella Rotta Maggiore una ciurma di musicisti, e teneva il tempo cantando mentre gli altri sparavano.',

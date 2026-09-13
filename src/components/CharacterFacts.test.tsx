@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import type { CharacterDossier } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterFacts } from './CharacterFacts'
 
@@ -29,8 +29,8 @@ const dossier: CharacterDossier = {
 
 describe('CharacterFacts', () => {
   it('shows each fact as the reader knows it, and no fact not yet learned', () => {
-    renderWithProviders(<CharacterFacts dossier={dossier} progress={3} />, {
-      progress: 3,
+    renderWithProviders(<CharacterFacts dossier={dossier} bookmark={ep(3)} />, {
+      bookmark: ep(3),
     })
 
     expect(screen.getByText('Affiliation')).toBeInTheDocument()
@@ -45,19 +45,20 @@ describe('CharacterFacts', () => {
   })
 
   it('shows the latest bounty reached and never a later one', () => {
-    renderWithProviders(<CharacterFacts dossier={dossier} progress={100} />, {
-      progress: 100,
-    })
+    renderWithProviders(
+      <CharacterFacts dossier={dossier} bookmark={ep(100)} />,
+      { bookmark: ep(100) },
+    )
 
     expect(screen.getByText('30,000,000 Berry')).toBeInTheDocument()
     expect(screen.queryByText(/100,000,000/u)).not.toBeInTheDocument()
   })
 
   it('groups digits the Italian way in Italian', () => {
-    renderWithProviders(<CharacterFacts dossier={dossier} progress={130} />, {
-      progress: 130,
-      locale: 'it',
-    })
+    renderWithProviders(
+      <CharacterFacts dossier={dossier} bookmark={ep(130)} />,
+      { bookmark: ep(130), locale: 'it' },
+    )
 
     expect(screen.getByText('Taglia')).toBeInTheDocument()
     expect(screen.getByText('100.000.000 Berry')).toBeInTheDocument()
@@ -66,7 +67,7 @@ describe('CharacterFacts', () => {
 
   it('renders nothing at all when the reader has reached no fact', () => {
     const { container } = renderWithProviders(
-      <CharacterFacts dossier={dossier} progress={null} />,
+      <CharacterFacts dossier={dossier} bookmark={null} />,
     )
 
     expect(container).toBeEmptyDOMElement()

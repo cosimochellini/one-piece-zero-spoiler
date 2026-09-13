@@ -81,10 +81,12 @@ export const color = stylex.defineVars({
   // colour to this, never to a hardcoded dark.
   accentInk: 'oklch(16% 0.03 250)',
   focus: 'oklch(88% 0.15 92)',
-  // The one overlay, and the only token with an alpha channel. It is a
-  // modifier laid over `paper`, not a colour anything is painted in: the
-  // lantern bloom at the top of the page.
+  // The two overlays, and the only tokens with an alpha channel. Both are
+  // modifiers laid over `paper`, not colours anything is painted in: the
+  // lantern bloom at the top of the page, and the sea that darkens the page
+  // behind the bookmark dialog.
   glow: 'oklch(70% 0.12 80 / 0.22)',
+  scrim: 'oklch(13% 0.025 250 / 0.72)',
 })
 
 /**

@@ -1,5 +1,10 @@
 import { LOCALES } from '~/i18n/locales'
-import { EPISODE_CEILING, FIRST_EPISODE } from '~/lib/progress/episode'
+import {
+  CHAPTER_CEILING,
+  EPISODE_CEILING,
+  FIRST_CHAPTER,
+  FIRST_EPISODE,
+} from '~/lib/progress/episode'
 
 import { entities, getEntity } from './entities'
 
@@ -10,7 +15,7 @@ describe('the seed archive', () => {
     expect(new Set(ids).size).toBe(ids.length)
   })
 
-  it('files every record at an episode the dial can actually reach', () => {
+  it('files every record at an episode the dialog can actually reach', () => {
     // A record filed above the ceiling could never be revealed, and one filed
     // below the first episode would be revealed to a reader who has seen
     // nothing.
@@ -18,6 +23,14 @@ describe('the seed archive', () => {
       expect(entity.revealedAtEpisode).toBeGreaterThanOrEqual(FIRST_EPISODE)
       expect(entity.revealedAtEpisode).toBeLessThanOrEqual(EPISODE_CEILING)
       expect(Number.isInteger(entity.revealedAtEpisode)).toBe(true)
+    }
+  })
+
+  it('files every record at a chapter the dialog can actually reach', () => {
+    for (const entity of entities) {
+      expect(entity.revealedAtChapter).toBeGreaterThanOrEqual(FIRST_CHAPTER)
+      expect(entity.revealedAtChapter).toBeLessThanOrEqual(CHAPTER_CEILING)
+      expect(Number.isInteger(entity.revealedAtChapter)).toBe(true)
     }
   })
 

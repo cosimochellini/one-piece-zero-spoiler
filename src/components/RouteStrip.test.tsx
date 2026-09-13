@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import type { Entity } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { RouteStrip } from './RouteStrip'
 
@@ -9,6 +9,7 @@ const entries: readonly Entity[] = [1, 50, 400, 1000].map((episode, i) => ({
   id: `e${String(i)}`,
   kind: 'character',
   revealedAtEpisode: episode,
+  revealedAtChapter: episode,
   name: { it: `n${String(i)}`, en: `n${String(i)}` },
   summary: { it: 'x', en: 'x' },
   visual: { art: 'nami', tint: 'orange' },
@@ -22,7 +23,7 @@ describe('RouteStrip', () => {
       <RouteStrip
         entries={entries}
         current={current}
-        progress={500}
+        bookmark={ep(500)}
         label="Waypoint 3 of 4"
       />,
     )
@@ -39,7 +40,7 @@ describe('RouteStrip', () => {
       <RouteStrip
         entries={entries}
         current={current}
-        progress={500}
+        bookmark={ep(500)}
         label="Waypoint 4 of 4"
       />,
     )
@@ -50,7 +51,7 @@ describe('RouteStrip', () => {
       <RouteStrip
         entries={entries}
         current={current}
-        progress={1000}
+        bookmark={ep(1000)}
         label="Waypoint 4 of 4"
       />,
     )
@@ -69,7 +70,7 @@ describe('RouteStrip', () => {
       <RouteStrip
         entries={entries}
         current={current}
-        progress={null}
+        bookmark={null}
         label="Waypoint 1 of 4"
       />,
     )

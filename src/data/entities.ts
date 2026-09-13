@@ -21,13 +21,17 @@ import type { Entity } from './types'
  * `./records`, one module per stretch of the route, each with the dossiers of
  * the characters it files; this module is the concatenation.
  *
- * Every threshold is an anime episode number: the first canonical episode from
- * which the viewer knows the record by name and by sight. A character seen but
- * not named is not yet a record — the hooded man at Loguetown is filed at the
- * episode that names him, not the one that shows him. Filler, films and
- * specials do not count. Where a threshold was not certain, it was rounded up
- * rather than guessed — a wrong threshold in this file is a spoiler, which is
- * the one bug this project cannot ship.
+ * Every record carries two thresholds: `revealedAtEpisode`, the first
+ * canonical anime episode from which the viewer knows the record by name and
+ * by sight, and `revealedAtChapter`, the first manga chapter that does the
+ * same. A character seen but not named is not yet a record — the hooded man
+ * at Loguetown is filed at the episode that names him, not the one that shows
+ * him. Filler, films and specials do not count. Where a threshold was not
+ * certain, it was rounded up rather than guessed — a wrong threshold in this
+ * file is a spoiler, which is the one bug this project cannot ship. The
+ * chapter numbers were filed from memory of the manga and are marked for a
+ * check against a source before the wiki is published; the episode numbers
+ * came first and the chapters follow them.
  *
  * The error is not symmetric, and the editing rule follows from that: a
  * threshold set too low uncovers a record early, which is the bug; one set too

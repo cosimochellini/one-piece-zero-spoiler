@@ -32,6 +32,7 @@ export const waterSeven: Saga = {
       id: 'long-ring-long-land',
       kind: 'arc',
       revealedAtEpisode: 207,
+      revealedAtChapter: 303,
       name: { it: 'Long Ring Long Land', en: 'Long Ring Long Land' },
       summary: {
         it: 'Un’isola lunghissima e sottile, dove alberi e animali sono stirati per il lungo e una ciurma sfida chi approda a una gara con gli uomini in palio.',
@@ -43,6 +44,7 @@ export const waterSeven: Saga = {
       id: 'foxy',
       kind: 'character',
       revealedAtEpisode: 207,
+      revealedAtChapter: 307,
       name: { it: 'Foxy', en: 'Foxy' },
       summary: {
         it: 'Un capitano dal mento smisurato che sfida le ciurme di passaggio a una gara in tre prove, e a ogni prova vinta si prende un uomo dell’avversario.',
@@ -54,6 +56,7 @@ export const waterSeven: Saga = {
       id: 'porche',
       kind: 'character',
       revealedAtEpisode: 207,
+      revealedAtChapter: 315,
       name: { it: 'Porche', en: 'Porche' },
       summary: {
         it: 'L’idolo dei Pirati di Foxy, che entra in scena roteando un bastone con un nastro e si fa applaudire dalla ciurma prima ancora di gareggiare.',
@@ -65,6 +68,7 @@ export const waterSeven: Saga = {
       id: 'hamburg',
       kind: 'character',
       revealedAtEpisode: 207,
+      revealedAtChapter: 315,
       name: { it: 'Hamburg', en: 'Hamburg' },
       summary: {
         it: 'Un gigante della ciurma di Foxy con due guantoni pesanti, che gioca la prima prova in piedi sulla sua barca e butta in mare chi gli passa accanto.',
@@ -76,6 +80,7 @@ export const waterSeven: Saga = {
       id: 'kuzan',
       kind: 'character',
       revealedAtEpisode: 227,
+      revealedAtChapter: 321,
       name: { it: 'Kuzan', en: 'Kuzan' },
       summary: {
         it: 'Un ammiraglio della Marina che arriva pedalando su una bicicletta sul mare ghiacciato, si presenta sbadigliando e congela l’acqua sotto i piedi di chi ha davanti.',
@@ -87,6 +92,7 @@ export const waterSeven: Saga = {
       id: 'water-seven',
       kind: 'arc',
       revealedAtEpisode: 229,
+      revealedAtChapter: 322,
       name: { it: 'Saga di Water Seven', en: 'Water Seven Saga' },
       summary: {
         it: 'Una città d’acqua di maestri d’ascia, dove la ciurma si scopre meno compatta di quanto credeva.',
@@ -98,6 +104,7 @@ export const waterSeven: Saga = {
       id: 'iceburg',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 327,
       name: { it: 'Iceburg', en: 'Iceburg' },
       summary: {
         it: 'Il sindaco di Water Seven e presidente della più grande compagnia di costruttori navali della città, che gira con un topolino nella tasca della giacca.',
@@ -109,6 +116,7 @@ export const waterSeven: Saga = {
       id: 'paulie',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 326,
       name: { it: 'Paulie', en: 'Paulie' },
       summary: {
         it: 'Un caposquadra della Galley-La che combatte con le corde e si scandalizza per qualunque cosa gli sembri indecente, mentre i creditori lo inseguono per la città.',
@@ -120,6 +128,7 @@ export const waterSeven: Saga = {
       id: 'kokoro',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 325,
       name: { it: 'Kokoro', en: 'Kokoro' },
       summary: {
         it: 'La capostazione del treno del mare, che tiene una bottiglia sulla scrivania e conosce a memoria l’unico binario che esce da Water Seven.',
@@ -131,6 +140,7 @@ export const waterSeven: Saga = {
       id: 'chimney',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 325,
       name: { it: 'Chimney', en: 'Chimney' },
       summary: {
         it: 'Una bambina che vive alla stazione del treno del mare con la nonna e con un animaletto che sembra insieme un gatto e un coniglio.',
@@ -142,6 +152,7 @@ export const waterSeven: Saga = {
       id: 'kaku',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 326,
       name: { it: 'Kaku', en: 'Kaku' },
       summary: {
         it: 'Un caposquadra della Galley-La con il naso squadrato e lunghissimo, che sale sui tetti di Water Seven con la stessa facilità con cui gli altri camminano.',
@@ -153,6 +164,7 @@ export const waterSeven: Saga = {
       id: 'rob-lucci',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 326,
       name: { it: 'Rob Lucci', en: 'Rob Lucci' },
       summary: {
         it: 'Un caposquadra della Galley-La che non apre mai bocca e lascia parlare il piccione posato sul suo cilindro, come se le parole fossero dell’uccello.',
@@ -164,6 +176,7 @@ export const waterSeven: Saga = {
       id: 'kalifa',
       kind: 'character',
       revealedAtEpisode: 230,
+      revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
         it: 'La segretaria del presidente della Galley-La, occhiali e taccuino sempre in mano, che liquida ogni domanda scomoda definendola una molestia.',
@@ -175,6 +188,7 @@ export const waterSeven: Saga = {
       id: 'blueno',
       kind: 'character',
       revealedAtEpisode: 232,
+      revealedAtChapter: 333,
       name: { it: 'Blueno', en: 'Blueno' },
       summary: {
         it: 'Il barista di un locale di Water Seven, con la barba intrecciata e un bancone dove chi ha bevuto troppo finisce per raccontare tutto.',
@@ -186,6 +200,7 @@ export const waterSeven: Saga = {
       id: 'kiwi-and-mozu',
       kind: 'character',
       revealedAtEpisode: 233,
+      revealedAtChapter: 335,
       name: { it: 'Kiwi e Mozu', en: 'Kiwi and Mozu' },
       summary: {
         it: 'Due sorelle della Franky Family con la stessa pettinatura squadrata e due spade dalla punta tagliata di netto, che parlano quasi sempre all’unisono.',
@@ -197,6 +212,7 @@ export const waterSeven: Saga = {
       id: 'zambai',
       kind: 'character',
       revealedAtEpisode: 233,
+      revealedAtChapter: 335,
       name: { it: 'Zambai', en: 'Zambai' },
       summary: {
         it: 'Il vice della Franky Family, con la bandana calata sugli occhi e un lanciarazzi in spalla, che guida gli smantellatori quando il capo non c’è.',
@@ -208,6 +224,7 @@ export const waterSeven: Saga = {
       id: 'franky',
       kind: 'character',
       revealedAtEpisode: 235,
+      revealedAtChapter: 329,
       name: { it: 'Franky', en: 'Franky' },
       summary: {
         it: 'Un cyborg in mutande e camicia hawaiana, con il ciuffo a pompadour, che smonta navi per vivere e le ricostruisce per passione, e che ha appena rapinato Usop.',
@@ -219,6 +236,7 @@ export const waterSeven: Saga = {
       id: 'tom',
       kind: 'character',
       revealedAtEpisode: 246,
+      revealedAtChapter: 357,
       name: { it: 'Tom', en: 'Tom' },
       summary: {
         it: 'Un maestro d’ascia uomo-pesce, enorme e con il mazzuolo sempre in spalla, che a Water Seven insegnava a costruire navi di cui non doversi vergognare.',
@@ -230,6 +248,7 @@ export const waterSeven: Saga = {
       id: 'spandam',
       kind: 'character',
       revealedAtEpisode: 248,
+      revealedAtChapter: 360,
       name: { it: 'Spandam', en: 'Spandam' },
       summary: {
         it: 'Il capo di un’unità segreta del Governo Mondiale, che dà ordini da una lumaca telefonica dorata e porta una spada con la testa di elefante.',
@@ -241,6 +260,7 @@ export const waterSeven: Saga = {
       id: 'jabra',
       kind: 'character',
       revealedAtEpisode: 264,
+      revealedAtChapter: 385,
       name: { it: 'Jabra', en: 'Jabra' },
       summary: {
         it: 'Un agente del Cipher Pol 9 che litiga con i colleghi più volentieri che con i nemici, e piange a comando per far abbassare la guardia a chi ha davanti.',
@@ -252,6 +272,7 @@ export const waterSeven: Saga = {
       id: 'kumadori',
       kind: 'character',
       revealedAtEpisode: 264,
+      revealedAtChapter: 385,
       name: { it: 'Kumadori', en: 'Kumadori' },
       summary: {
         it: 'Un agente del Cipher Pol 9 vestito da attore kabuki, con una chioma rosa lunghissima, che recita ogni frase come se fosse in scena a teatro.',
@@ -263,6 +284,7 @@ export const waterSeven: Saga = {
       id: 'fukurou',
       kind: 'character',
       revealedAtEpisode: 264,
+      revealedAtChapter: 385,
       name: { it: 'Fukuro', en: 'Fukurou' },
       summary: {
         it: 'Un agente del Cipher Pol 9 tondo come un gufo, con una cerniera al posto della bocca, che dice di saper mantenere i segreti e non ne mantiene nessuno.',
@@ -274,6 +296,7 @@ export const waterSeven: Saga = {
       id: 'oimo-and-kashi',
       kind: 'character',
       revealedAtEpisode: 265,
+      revealedAtChapter: 385,
       name: { it: 'Oimo e Kashi', en: 'Oimo and Kashi' },
       summary: {
         it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, con le clave appoggiate al muro e la convinzione di star salvando i vecchi compagni.',
@@ -285,6 +308,7 @@ export const waterSeven: Saga = {
       id: 'monkey-d-garp',
       kind: 'character',
       revealedAtEpisode: 313,
+      revealedAtChapter: 431,
       name: { it: 'Monkey D. Garp', en: 'Monkey D. Garp' },
       summary: {
         it: 'Un viceammiraglio che sale a bordo sbriciolando biscotti di riso e lancia palle di cannone a mano, e che dice di essere il nonno di Rufy.',
@@ -296,6 +320,7 @@ export const waterSeven: Saga = {
       id: 'thousand-sunny',
       kind: 'ship',
       revealedAtEpisode: 321,
+      revealedAtChapter: 439,
       name: { it: 'Thousand Sunny', en: 'Thousand Sunny' },
       summary: {
         it: 'Un brigantino con una testa di leone a prua, costruito di nascosto con un legno rarissimo e varato per una ciurma che aveva appena perso la sua nave.',

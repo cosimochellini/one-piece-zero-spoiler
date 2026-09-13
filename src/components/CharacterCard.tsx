@@ -6,6 +6,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { roleOf } from '~/data/characters'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,
@@ -40,13 +41,14 @@ export function CharacterCard({
   highlight = null,
 }: CharacterCardProps) {
   const { locale, t } = useLocale()
+  const threshold = useThreshold()
   const role = roleOf(entity)
   const name = entity.name[locale]
 
   return (
     <li {...stylex.props(styles.card)}>
       <SpoilerVeil
-        revealedAtEpisode={entity.revealedAtEpisode}
+        gated={entity}
         revealed={revealed}
         density="compact"
         // A fogged card has no link, no name and no drawing in the DOM: the
@@ -78,7 +80,7 @@ export function CharacterCard({
         </Link>
       </SpoilerVeil>
       <p {...stylex.props(styles.episode)}>
-        {t('chart.opensAt', { episode: entity.revealedAtEpisode })}
+        {threshold('chart.opensAt', entity)}
       </p>
     </li>
   )

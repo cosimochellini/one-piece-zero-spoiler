@@ -25,6 +25,7 @@ export const wano: Saga = {
       id: 'wano',
       kind: 'arc',
       revealedAtEpisode: 890,
+      revealedAtChapter: 909,
       name: { it: 'Saga del Paese di Wano', en: 'Wano Country Saga' },
       summary: {
         it: 'Un paese chiuso al resto del mondo, con le sue regole, i suoi spadaccini e i suoi conti in sospeso.',
@@ -36,6 +37,7 @@ export const wano: Saga = {
       id: 'tama',
       kind: 'character',
       revealedAtEpisode: 892,
+      revealedAtChapter: 912,
       name: { it: 'O-Tama', en: 'Tama' },
       summary: {
         it: 'Una bambina affamata del villaggio di Amigasa che divide la sua unica scodella di zuppa di fagioli rossi con uno sconosciuto.',
@@ -47,6 +49,7 @@ export const wano: Saga = {
       id: 'tenguyama-hitetsu',
       kind: 'character',
       revealedAtEpisode: 894,
+      revealedAtChapter: 913,
       name: { it: 'Tenguyama Hitetsu', en: 'Tenguyama Hitetsu' },
       summary: {
         it: 'Il vecchio armaiolo del villaggio di Amigasa, con una maschera da tengu appesa in bottega e un carattere che non ammette visite.',
@@ -58,6 +61,7 @@ export const wano: Saga = {
       id: 'kikunojo',
       kind: 'character',
       revealedAtEpisode: 897,
+      revealedAtChapter: 917,
       name: { it: 'Kikunojo', en: 'Kikunojo' },
       summary: {
         it: 'La cameriera alta e gentile della casa da tè di Okobore, che serve con un inchino e tiene una lama sotto il kimono.',
@@ -69,6 +73,7 @@ export const wano: Saga = {
       id: 'ashura-doji',
       kind: 'character',
       revealedAtEpisode: 898,
+      revealedAtChapter: 919,
       name: { it: 'Ashura Doji', en: 'Ashura Doji' },
       summary: {
         it: 'Il capo dei briganti del monte Atama, con una lama larga e una fascia rossa, temuto anche dai pirati che saccheggiano Wano.',
@@ -80,6 +85,7 @@ export const wano: Saga = {
       id: 'page-one',
       kind: 'character',
       revealedAtEpisode: 906,
+      revealedAtChapter: 923,
       name: { it: 'Page One', en: 'Page One' },
       summary: {
         it: 'Un ragazzo in giacca di pelle al servizio dell’Imperatore, che davanti a una scodella di soba diventa uno spinosauro e sfonda il locale.',
@@ -91,6 +97,7 @@ export const wano: Saga = {
       id: 'kurozumi-orochi',
       kind: 'character',
       revealedAtEpisode: 908,
+      revealedAtChapter: 926,
       name: { it: 'Kurozumi Orochi', en: 'Kurozumi Orochi' },
       summary: {
         it: 'Lo shogun del Paese di Wano, un uomo pallido che ride sempre, protetto dall’Imperatore e odiato da ogni contadino che paga le sue tasse.',
@@ -102,6 +109,7 @@ export const wano: Saga = {
       id: 'shinobu',
       kind: 'character',
       revealedAtEpisode: 912,
+      revealedAtChapter: 930,
       name: { it: 'Shinobu', en: 'Shinobu' },
       summary: {
         it: 'Una kunoichi che un tempo serviva la guardia segreta dello shogun e ora lavora per i Kozuki, capace di far maturare tutto ciò che tocca.',
@@ -113,6 +121,7 @@ export const wano: Saga = {
       id: 'hyogoro',
       kind: 'character',
       revealedAtEpisode: 917,
+      revealedAtChapter: 933,
       name: { it: 'Hyogoro', en: 'Hyogoro' },
       summary: {
         it: 'Un vecchio prigioniero del campo di Udon, rispettato da ogni detenuto, che un tempo comandava tutta la yakuza di Wano.',
@@ -124,6 +133,7 @@ export const wano: Saga = {
       id: 'queen',
       kind: 'character',
       revealedAtEpisode: 917,
+      revealedAtChapter: 933,
       name: { it: 'Queen', en: 'Queen' },
       summary: {
         it: 'Il direttore del campo di prigionia di Udon, un gigante che canta al microfono e si trasforma in un brachiosauro corazzato di ferro.',
@@ -135,6 +145,7 @@ export const wano: Saga = {
       id: 'king',
       kind: 'character',
       revealedAtEpisode: 919,
+      revealedAtChapter: 935,
       name: { it: 'King', en: 'King' },
       summary: {
         it: 'Il braccio destro dell’Imperatore, un uomo mascherato che vola su ali di fuoco e piomba dal cielo come uno pteranodonte.',
@@ -146,6 +157,7 @@ export const wano: Saga = {
       id: 'komurasaki',
       kind: 'character',
       revealedAtEpisode: 921,
+      revealedAtChapter: 933,
       name: { it: 'Komurasaki', en: 'Komurasaki' },
       summary: {
         it: 'La cortigiana più famosa della Capitale dei Fiori, che sfila tra la folla con gli spilloni d’oro tra i capelli e rifiuta chiunque.',
@@ -157,6 +169,7 @@ export const wano: Saga = {
       id: 'toko',
       kind: 'character',
       revealedAtEpisode: 921,
+      revealedAtChapter: 933,
       name: { it: 'O-Toko', en: 'Toko' },
       summary: {
         it: 'La bambina che accompagna l’oiran della Capitale dei Fiori, con un ventaglio di carta in mano, e che ride anche quando nessuno ride.',
@@ -168,6 +181,7 @@ export const wano: Saga = {
       id: 'kyoshiro',
       kind: 'character',
       revealedAtEpisode: 921,
+      revealedAtChapter: 933,
       name: { it: 'Kyoshiro', en: 'Kyoshiro' },
       summary: {
         it: 'Il boss yakuza che tiene la Capitale dei Fiori e cambia il denaro dello shogun, con una sciabola alla cintura e un sorriso di circostanza.',
@@ -179,6 +193,7 @@ export const wano: Saga = {
       id: 'shimotsuki-yasuie',
       kind: 'character',
       revealedAtEpisode: 934,
+      revealedAtChapter: 943,
       name: { it: 'Shimotsuki Yasuie', en: 'Shimotsuki Yasuie' },
       summary: {
         it: 'Un vecchio scalzo del quartiere di Ebisu, che tutti chiamano Tonoyasu e amano come un padre, e che un tempo era il daimyo di Hakumai.',
@@ -190,6 +205,7 @@ export const wano: Saga = {
       id: 'gyukimaru',
       kind: 'character',
       revealedAtEpisode: 934,
+      revealedAtChapter: 943,
       name: { it: 'Gyukimaru', en: 'Gyukimaru' },
       summary: {
         it: 'Un monaco incappucciato che presidia il ponte di Oihagi con una naginata e ruba l’arma a chiunque provi ad attraversarlo.',
@@ -201,6 +217,7 @@ export const wano: Saga = {
       id: 'fukurokuju',
       kind: 'character',
       revealedAtEpisode: 934,
+      revealedAtChapter: 943,
       name: { it: 'Fukurokuju', en: 'Fukurokuju' },
       summary: {
         it: 'Il capo della guardia segreta dello shogun, un ninja dalla fronte lunghissima che compare alle spalle di chiunque parli troppo.',
@@ -212,6 +229,7 @@ export const wano: Saga = {
       id: 'kawamatsu',
       kind: 'character',
       revealedAtEpisode: 936,
+      revealedAtChapter: 946,
       name: { it: 'Kawamatsu', en: 'Kawamatsu' },
       summary: {
         it: 'Un prigioniero enorme del campo di Udon, chiuso in una gabbia in fondo alla prigione, che tutti chiamano il kappa.',
@@ -223,6 +241,7 @@ export const wano: Saga = {
       id: 'rocks-d-xebec',
       kind: 'character',
       revealedAtEpisode: 958,
+      revealedAtChapter: 957,
       name: { it: 'Rocks D. Xebec', en: 'Rocks D. Xebec' },
       summary: {
         it: 'Il capitano che quarant’anni fa riunì i pirati più pericolosi del mondo su una nave sola, e di cui il Governo ha cancellato il nome.',
@@ -234,6 +253,7 @@ export const wano: Saga = {
       id: 'kozuki-oden',
       kind: 'character',
       revealedAtEpisode: 960,
+      revealedAtChapter: 960,
       name: { it: 'Kozuki Oden', en: 'Kozuki Oden' },
       summary: {
         it: 'Il daimyo di Kuri, un uomo enorme e sregolato che lasciò Wano per il mare e che vent’anni fa fu giustiziato davanti al suo paese.',
@@ -245,6 +265,7 @@ export const wano: Saga = {
       id: 'kozuki-toki',
       kind: 'character',
       revealedAtEpisode: 962,
+      revealedAtChapter: 966,
       name: { it: 'Kozuki Toki', en: 'Kozuki Toki' },
       summary: {
         it: 'La donna venuta da un tempo lontanissimo che sposò il daimyo di Kuri, capace di mandare avanti negli anni chiunque tocchi.',
@@ -256,6 +277,7 @@ export const wano: Saga = {
       id: 'kurozumi-higurashi',
       kind: 'character',
       revealedAtEpisode: 963,
+      revealedAtChapter: 972,
       name: { it: 'Kurozumi Higurashi', en: 'Kurozumi Higurashi' },
       summary: {
         it: 'Una vecchia della famiglia Kurozumi che, dietro una maschera da volpe e un frutto del diavolo, può prendere il volto di chiunque.',
@@ -267,6 +289,7 @@ export const wano: Saga = {
       id: 'kurozumi-semimaru',
       kind: 'character',
       revealedAtEpisode: 963,
+      revealedAtChapter: 972,
       name: { it: 'Kurozumi Semimaru', en: 'Kurozumi Semimaru' },
       summary: {
         it: 'Un Kurozumi silenzioso che alza intorno a sé una cupola invisibile contro cui le lame si fermano a mezz’aria.',
@@ -278,6 +301,7 @@ export const wano: Saga = {
       id: 'izo',
       kind: 'character',
       revealedAtEpisode: 970,
+      revealedAtChapter: 971,
       name: { it: 'Izo', en: 'Izo' },
       summary: {
         it: 'Un tiratore di Wano vestito da geisha, comandante di una divisione dei Pirati di Barbabianca, che non sbaglia un colpo con due pistole.',
@@ -289,6 +313,7 @@ export const wano: Saga = {
       id: 'ulti',
       kind: 'character',
       revealedAtEpisode: 982,
+      revealedAtChapter: 980,
       name: { it: 'Ulti', en: 'Ulti' },
       summary: {
         it: 'Una ragazza con due corna tra i capelli che, trasformata in pachicefalosauro, abbatte chiunque a testate senza pensarci due volte.',
@@ -300,6 +325,7 @@ export const wano: Saga = {
       id: 'whos-who',
       kind: 'character',
       revealedAtEpisode: 982,
+      revealedAtChapter: 980,
       name: { it: 'Who’s-Who', en: 'Who’s-Who' },
       summary: {
         it: 'Un uomo mascherato dell’Imperatore, con una zanna sull’elmo, che prima di diventare pirata lavorava per il Governo Mondiale.',
@@ -311,6 +337,7 @@ export const wano: Saga = {
       id: 'black-maria',
       kind: 'character',
       revealedAtEpisode: 982,
+      revealedAtChapter: 980,
       name: { it: 'Black Maria', en: 'Black Maria' },
       summary: {
         it: 'Una donna altissima che riceve gli ospiti in kimono con la pipa in mano e cala su di loro da una ragnatela tesa fino al soffitto.',
@@ -322,6 +349,7 @@ export const wano: Saga = {
       id: 'sasaki',
       kind: 'character',
       revealedAtEpisode: 982,
+      revealedAtChapter: 980,
       name: { it: 'Sasaki', en: 'Sasaki' },
       summary: {
         it: 'Il capo della fanteria corazzata dell’Imperatore, con una sciabola alla cintura, che si trasforma in un triceratopo e carica a testa bassa.',
@@ -333,6 +361,7 @@ export const wano: Saga = {
       id: 'yamato',
       kind: 'character',
       revealedAtEpisode: 992,
+      revealedAtChapter: 983,
       name: { it: 'Yamato', en: 'Yamato' },
       summary: {
         it: 'Il figlio dell’Imperatore che governa Wano, con una mazza chiodata e manette esplosive ai polsi, incatenato sull’isola da vent’anni, che si presenta con il nome di un samurai morto.',
@@ -344,6 +373,7 @@ export const wano: Saga = {
       id: 'bao-huang',
       kind: 'character',
       revealedAtEpisode: 995,
+      revealedAtChapter: 995,
       name: { it: 'Bao Huang', en: 'Bao Huang' },
       summary: {
         it: 'Una donna dell’equipaggio dell’Imperatore che vede attraverso i muri di Onigashima e racconta a tutta la fortezza quello che trova.',

@@ -10,13 +10,14 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 
-import { EpisodeDial } from '~/components/EpisodeDial'
 import { PortLog } from '~/components/PortLog'
+import { orderByMode } from '~/data/order'
 import { places } from '~/data/places'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
-import { useEpisode } from '~/lib/progress/EpisodeContext'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { modeOf } from '~/lib/progress/episode'
 import {
   color,
   dur,
@@ -53,7 +54,7 @@ const settle = stylex.keyframes({
 /**
  * The places page (Hallmark macrostructure 14, Narrative Workflow).
  *
- * A ship's log: the brand line and a count, the dial, then every place as a
+ * A ship's log: the brand line and a count, then every place as a
  * numbered port of call down one spine, in the order the ship puts in at
  * them. No hero and no display headline; the log is the page. The reader's
  * episode is drawn as a horizon on the spine, and every port below it keeps
@@ -62,7 +63,7 @@ const settle = stylex.keyframes({
  */
 function PlacesPage() {
   const t = useT()
-  const { progress } = useEpisode()
+  const { bookmark } = useBookmark()
 
   return (
     <main id="content" {...stylex.props(styles.page)}>
@@ -71,13 +72,13 @@ function PlacesPage() {
         <p {...stylex.props(styles.count)}>
           {t('places.count', { count: places.length })}
         </p>
-        <div {...stylex.props(styles.dial)}>
-          <EpisodeDial />
-        </div>
       </header>
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
-        <PortLog entries={places} progress={progress} />
+        <PortLog
+          entries={orderByMode(places, modeOf(bookmark))}
+          bookmark={bookmark}
+        />
       </div>
     </main>
   )
@@ -113,13 +114,6 @@ const styles = stylex.create({
     lineHeight: leading.body,
     maxWidth: '58ch',
   },
-  // The same dial as the chart and the signal book, so a reader who lands
-  // here directly can move the horizon without leaving the page.
-  dial: {
-    marginBlockStart: space.sm,
-    maxWidth: '36rem',
-  },
-
   enter: {
     animationDuration: dur.long,
     animationFillMode: 'forwards',

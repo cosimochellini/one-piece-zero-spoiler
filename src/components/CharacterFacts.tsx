@@ -4,13 +4,13 @@ import type { CharacterDossier, LocalizedText, Timeline } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import type { Progress } from '~/lib/progress/episode'
+import { modeOf, type Bookmark } from '~/lib/progress/episode'
 import { latestAt } from '~/lib/progress/spoiler'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 export type CharacterFactsProps = {
   readonly dossier: CharacterDossier
-  readonly progress: Progress
+  readonly bookmark: Bookmark
 }
 
 /**
@@ -21,13 +21,13 @@ export type CharacterFactsProps = {
  * reached, so Robin's affiliation changes when she changes it and a bounty is
  * the one on the poster the reader has seen. A fact with no entry yet is not
  * a row: an empty "Bounty" line would say that a bounty is coming, which is
- * itself a spoiler. Computed at render from the live dial, so an entry above
- * the reader's episode is never in the DOM.
+ * itself a spoiler. Computed at render from the live bookmark, so an entry
+ * above the reader's episode is never in the DOM.
  */
-export function CharacterFacts({ dossier, progress }: CharacterFactsProps) {
+export function CharacterFacts({ dossier, bookmark }: CharacterFactsProps) {
   const { locale, t } = useLocale()
   const known = <T,>(timeline: Timeline<T> | undefined) =>
-    timeline === undefined ? undefined : latestAt(timeline, progress)
+    timeline === undefined ? undefined : latestAt(timeline, bookmark)
   const words = (value: LocalizedText | undefined) => value?.[locale]
 
   const rows: readonly (readonly [string, string | undefined])[] = [
@@ -40,6 +40,14 @@ export function CharacterFacts({ dossier, progress }: CharacterFactsProps) {
   const shown = rows.filter(
     (row): row is readonly [string, string] => row[1] !== undefined,
   )
+
+  // The timelines count in anime episodes. A reader who counts in chapters
+  // reaches none of their entries, and is told why instead of shown nothing.
+  if (modeOf(bookmark) === 'chapter') {
+    return (
+      <p {...stylex.props(styles.note)}>{t('character.factsInEpisodes')}</p>
+    )
+  }
 
   if (shown.length === 0) return null
 
@@ -115,5 +123,11 @@ const styles = stylex.create({
     marginInlineStart: 0,
     minWidth: 0,
     overflowWrap: 'anywhere',
+  },
+  note: {
+    color: color.muted,
+    fontSize: text.base,
+    lineHeight: leading.body,
+    maxWidth: '52ch',
   },
 })

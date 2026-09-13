@@ -10,12 +10,11 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
 
 import { CharacterGrid } from '~/components/CharacterGrid'
-import { EpisodeDial } from '~/components/EpisodeDial'
 import { bookSections, characters, featuredCharacters } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
-import { useEpisode } from '~/lib/progress/EpisodeContext'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,
@@ -53,14 +52,14 @@ const settle = stylex.keyframes({
  * The characters page (Hallmark macrostructure 11, Catalogue).
  *
  * A signal book: the brand line and a count, then the featured crests on one
- * uniform grid and the whole cast on shelves by arc, in the order the anime
- * meets them. No hero, no display headline; the crests are the page. The
+ * uniform grid and the whole cast on shelves by arc, in the order the reader's
+ * unit meets them. No hero, no display headline; the crests are the page. The
  * search above the grid filters the open characters, and the fogged ones sit
  * where they were, which is the spoiler rule applied to a text field.
  */
 function CharactersPage() {
   const t = useT()
-  const { progress } = useEpisode()
+  const { bookmark } = useBookmark()
 
   return (
     <main id="content" {...stylex.props(styles.page)}>
@@ -69,16 +68,13 @@ function CharactersPage() {
         <p {...stylex.props(styles.count)}>
           {t('characters.count', { count: characters.length })}
         </p>
-        <div {...stylex.props(styles.dial)}>
-          <EpisodeDial />
-        </div>
       </header>
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
         <CharacterGrid
           featured={featuredCharacters}
           sections={bookSections}
-          progress={progress}
+          bookmark={bookmark}
         />
       </div>
     </main>
@@ -115,13 +111,6 @@ const styles = stylex.create({
     lineHeight: leading.body,
     maxWidth: '58ch',
   },
-  // The dial lives here too, so a reader who lands on this page directly can
-  // open the fog without going back to the chart. Same control, same cookie.
-  dial: {
-    marginBlockStart: space.sm,
-    maxWidth: '36rem',
-  },
-
   enter: {
     animationDuration: dur.long,
     animationFillMode: 'forwards',

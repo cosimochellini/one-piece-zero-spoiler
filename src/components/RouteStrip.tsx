@@ -2,16 +2,16 @@ import * as stylex from '@stylexjs/stylex'
 
 import { tintOf } from '~/components/ChartArt'
 import type { Entity } from '~/data/types'
-import type { Progress } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { color, rule } from '~/styles/tokens.stylex'
 
 export type RouteStripProps = {
-  /** The whole archive in route order. */
+  /** The whole archive, sorted by the threshold the bookmark counts in. */
   readonly entries: readonly Entity[]
   /** The record this strip is about. */
   readonly current: Entity
-  readonly progress: Progress
+  readonly bookmark: Bookmark
   /** What a screen reader hears instead of the dots. */
   readonly label: string
 }
@@ -32,15 +32,15 @@ const Y = 16
 export function RouteStrip({
   entries,
   current,
-  progress,
+  bookmark,
   label,
 }: RouteStripProps) {
   const openCount = entries.filter((entry) =>
-    isRevealed(entry, progress),
+    isRevealed(entry, bookmark),
   ).length
   // The ring takes the record's colour only once the reader has reached it;
   // under fog it is drawn in the ambient ink, so the colour is not in the HTML.
-  const ringHue = isRevealed(current, progress)
+  const ringHue = isRevealed(current, bookmark)
     ? tintOf(current.visual.tint)
     : null
   const width = PAD * 2 + STEP * (entries.length - 1)

@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import type { Entity } from '~/data/types'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterTile } from './CharacterTile'
 
@@ -9,6 +9,7 @@ const nami: Entity = {
   id: 'nami',
   kind: 'character',
   revealedAtEpisode: 5,
+  revealedAtChapter: 5,
   name: { it: 'Nami', en: 'Nami' },
   summary: { it: 'x', en: 'x' },
   visual: { art: 'nami', tint: 'orange' },
@@ -20,7 +21,7 @@ describe('CharacterTile', () => {
       <ul>
         <CharacterTile entity={nami} revealed highlight={[0, 3]} />
       </ul>,
-      { progress: 10 },
+      { bookmark: ep(10) },
     )
 
     expect(screen.getByRole('link', { name: /Nami/u })).toHaveAttribute(
@@ -38,7 +39,7 @@ describe('CharacterTile', () => {
       <ul>
         <CharacterTile entity={nami} revealed={false} />
       </ul>,
-      { progress: 1 },
+      { bookmark: ep(1) },
     )
 
     expect(screen.queryByRole('link')).not.toBeInTheDocument()

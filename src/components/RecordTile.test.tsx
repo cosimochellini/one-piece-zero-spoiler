@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import { getEntity } from '~/data/entities'
-import { renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders } from '~/test/providers'
 
 import { RecordTile } from './RecordTile'
 
@@ -13,7 +13,9 @@ function record(id: string) {
 
 describe('RecordTile', () => {
   it('links an open character to their page', () => {
-    renderWithProviders(<RecordTile entry={record('sanji')} progress={20} />)
+    renderWithProviders(
+      <RecordTile entry={record('sanji')} bookmark={ep(20)} />,
+    )
 
     expect(screen.getByRole('link', { name: 'Sanji' })).toHaveAttribute(
       'href',
@@ -23,7 +25,9 @@ describe('RecordTile', () => {
   })
 
   it('links an open place to its entry in the log', () => {
-    renderWithProviders(<RecordTile entry={record('baratie')} progress={20} />)
+    renderWithProviders(
+      <RecordTile entry={record('baratie')} bookmark={ep(20)} />,
+    )
 
     expect(screen.getByRole('link', { name: 'Baratie' })).toHaveAttribute(
       'href',
@@ -33,7 +37,7 @@ describe('RecordTile', () => {
 
   it('leaves a ship as a name', () => {
     renderWithProviders(
-      <RecordTile entry={record('going-merry')} progress={20} />,
+      <RecordTile entry={record('going-merry')} bookmark={ep(20)} />,
     )
 
     expect(screen.getByText('Going Merry')).toBeInTheDocument()
@@ -42,7 +46,7 @@ describe('RecordTile', () => {
 
   it('keeps a covered record’s name, drawing and slug out of the DOM', () => {
     const { container } = renderWithProviders(
-      <RecordTile entry={record('sanji')} progress={5} />,
+      <RecordTile entry={record('sanji')} bookmark={ep(5)} />,
     )
 
     expect(screen.queryByText('Sanji')).not.toBeInTheDocument()
