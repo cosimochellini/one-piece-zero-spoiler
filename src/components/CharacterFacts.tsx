@@ -4,13 +4,13 @@ import type { CharacterDossier, LocalizedText, Timeline } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import { modeOf, type Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { latestAt } from '~/lib/progress/spoiler'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 export type CharacterFactsProps = {
-  readonly dossier: CharacterDossier
   readonly bookmark: Bookmark
+  readonly dossier: CharacterDossier
 }
 
 /**
@@ -49,7 +49,9 @@ export function CharacterFacts({ dossier, bookmark }: CharacterFactsProps) {
     )
   }
 
-  if (shown.length === 0) return null
+  if (shown.length === 0) {
+    return null
+  }
 
   return (
     <dl
@@ -78,7 +80,9 @@ function formatBounty(
   locale: Locale,
   t: Translate,
 ): string | undefined {
-  if (amount === undefined) return undefined
+  if (amount === undefined) {
+    return undefined
+  }
 
   const grouped = new Intl.NumberFormat(
     locale === 'it' ? 'it-IT' : 'en-GB',
@@ -90,15 +94,16 @@ const styles = stylex.create({
   // The same ledger as a port's facts: a label in small caps, the value in
   // body type, a hairline between rows.
   facts: {
+    marginBlock: 0,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     display: 'grid',
-    marginBlock: 0,
     marginBlockStart: space.xs,
     minWidth: 0,
   },
   fact: {
+    paddingBlock: space.xs,
     alignItems: 'baseline',
     borderBlockEndColor: color.rule,
     borderBlockEndStyle: 'solid',
@@ -109,9 +114,8 @@ const styles = stylex.create({
       'default': 'minmax(0, 1fr)',
       '@media (min-width: 30rem)': 'minmax(7rem, 9rem) minmax(0, 1fr)',
     },
-    minWidth: 0,
-    paddingBlock: space.xs,
     rowGap: space.xs3,
+    minWidth: 0,
   },
   label: {
     color: color.muted,
@@ -127,8 +131,8 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     marginInlineStart: 0,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   note: {
     color: color.muted,

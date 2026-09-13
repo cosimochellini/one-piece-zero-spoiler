@@ -102,9 +102,9 @@ function Landing() {
         <section {...stylex.props(styles.orientation, enter.band, enter.at(1))}>
           <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
           <RouteLegend
-            open={open}
             covered={ordered.length - open}
             filed={ordered.length}
+            open={open}
           />
         </section>
 
@@ -119,8 +119,8 @@ function Landing() {
             {t('chart.title')}
           </h2>
           <RouteChart
-            entries={ordered}
             bookmark={bookmark}
+            entries={ordered}
           />
         </section>
       </div>
@@ -141,21 +141,21 @@ function Landing() {
 }
 
 const styles = stylex.create({
-  page: { display: 'grid', paddingInline: space.md },
+  page: { paddingInline: space.md, display: 'grid' },
 
   // The illustrated fold: the drawing is the height of its frame, not of the
   // viewport, and the headline is set into its lower-left corner on a scrim
   // that darkens toward the paper so the type reads over the sea.
   fold: { display: 'grid', paddingBlockStart: space.xs, position: 'relative' },
   foldFigure: {
+    borderRadius: radius.card,
+    overflow: 'hidden',
     aspectRatio: {
       'default': '16 / 9',
       '@media (min-width: 40rem)': '16 / 8',
       '@media (min-width: 60rem)': '16 / 7',
     },
     backgroundColor: color.paper2,
-    borderRadius: radius.card,
-    overflow: 'hidden',
     position: 'relative',
   },
   // Two columns from 60rem: the orientation column is narrower than the
@@ -172,9 +172,9 @@ const styles = stylex.create({
     rowGap: space.xl,
   },
   orientation: {
+    gap: space.lg,
     alignSelf: 'start',
     display: 'grid',
-    gap: space.lg,
     insetBlockStart: space.lg,
     justifyItems: 'start',
     position: { 'default': 'static', '@media (min-width: 60rem)': 'sticky' },
@@ -195,10 +195,6 @@ const styles = stylex.create({
     insetInlineStart: 0,
     letterSpacing: '-0.035em',
     lineHeight: leading.display,
-    maxWidth: '16ch',
-    // Display type needs an explicit last-resort break or a long unbroken
-    // string walks off a 320px viewport.
-    minWidth: 0,
     overflowWrap: 'anywhere',
     paddingBlockEnd: { 'default': 0, '@media (min-width: 40rem)': space.xs },
     paddingBlockStart: {
@@ -208,6 +204,10 @@ const styles = stylex.create({
     paddingInlineEnd: { 'default': 0, '@media (min-width: 40rem)': space.xl },
     paddingInlineStart: { 'default': 0, '@media (min-width: 40rem)': space.md },
     position: { 'default': 'static', '@media (min-width: 40rem)': 'absolute' },
+    maxWidth: '16ch',
+    // Display type needs an explicit last-resort break or a long unbroken
+    // string walks off a 320px viewport.
+    minWidth: 0,
   },
 
   lede: {
@@ -217,7 +217,7 @@ const styles = stylex.create({
     maxWidth: '44ch',
   },
 
-  routeBand: { display: 'grid', gap: space.md, minWidth: 0 },
+  routeBand: { gap: space.md, display: 'grid', minWidth: 0 },
   // A small orientation phrase, as the macrostructure asks: the chart is the
   // heading, this only says what it is.
   routeTitle: {
@@ -241,6 +241,7 @@ const styles = stylex.create({
     paddingBlockEnd: space.xl2,
   },
   qa: {
+    paddingBlock: space.lg,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
@@ -250,7 +251,6 @@ const styles = stylex.create({
       'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'minmax(0, 18rem) minmax(0, 1fr)',
     },
-    paddingBlock: space.lg,
     rowGap: space.xs,
   },
   question: {
@@ -260,8 +260,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   answer: {
     color: color.ink2,

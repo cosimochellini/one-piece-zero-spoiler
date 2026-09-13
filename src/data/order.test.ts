@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { isRevealed } from '~/lib/progress/spoiler'
 
 import { entities } from './entities'
@@ -9,6 +11,7 @@ describe('orderByMode', () => {
       const thresholds = orderByMode(entities, mode).map(
         (entity) => entity.revealedAtEpisode,
       )
+
       expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
     }
   })
@@ -17,6 +20,7 @@ describe('orderByMode', () => {
     const thresholds = orderByMode(entities, 'chapter').map(
       (entity) => entity.revealedAtChapter,
     )
+
     expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
   })
 
@@ -34,6 +38,7 @@ describe('orderByMode', () => {
         isRevealed(entity, bookmark),
       )
       const firstCovered = flags.indexOf(false)
+
       expect(flags.slice(firstCovered)).not.toContain(true)
     }
   })
@@ -41,6 +46,7 @@ describe('orderByMode', () => {
   it('does not change the archive itself', () => {
     const before = entities.map((entity) => entity.id)
     orderByMode(entities, 'chapter')
+
     expect(entities.map((entity) => entity.id)).toEqual(before)
   })
 })

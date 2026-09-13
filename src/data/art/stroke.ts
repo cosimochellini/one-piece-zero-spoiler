@@ -6,12 +6,12 @@
  * things that are merely there. `dashed` is for the ambient lines that mark
  * a course or a shadow.
  */
-export type Role = 'accent' | 'soft' | 'ambient'
+export type Role = 'accent' | 'ambient' | 'soft'
 
 export type Stroke = {
   readonly d: string
-  readonly role?: Role
   readonly dashed?: boolean
+  readonly role?: Role
   readonly transform?: string
 }
 

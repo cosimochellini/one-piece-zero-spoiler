@@ -27,7 +27,9 @@ import {
 
 export const Route = createFileRoute('/$locale/characters/')({
   head: ({ params }) => {
-    if (!isLocale(params.locale)) return {}
+    if (!isLocale(params.locale)) {
+      return {}
+    }
     const dictionary = getDictionary(params.locale)
 
     return {
@@ -75,9 +77,9 @@ function CharactersPage() {
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
         <CharacterGrid
+          bookmark={bookmark}
           featured={featuredCharacters}
           sections={bookSections}
-          bookmark={bookmark}
         />
       </div>
     </main>
@@ -86,15 +88,15 @@ function CharactersPage() {
 
 const styles = stylex.create({
   page: {
-    display: 'grid',
     gap: space.xl,
+    paddingInline: space.md,
+    display: 'grid',
     paddingBlockEnd: space.xl3,
     paddingBlockStart: space.lg,
-    paddingInline: space.md,
   },
   // Wordmark-sized, not display-sized: a catalogue's heading is an inventory
   // header, and the count under it is a fact about the page.
-  head: { display: 'grid', gap: space.xs },
+  head: { gap: space.xs, display: 'grid' },
   title: {
     color: color.ink,
     fontFamily: font.display,
@@ -102,8 +104,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   count: {
     color: color.muted,

@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { enDictionary } from './dictionaries/en'
 import { itDictionary } from './dictionaries/it'
 import { LOCALES } from './locales'
@@ -25,9 +27,9 @@ describe('the dictionaries', () => {
   it('carries the same placeholders in both languages', () => {
     // A translation that drops `{threshold}` silently renders a sentence with a
     // hole in it, and nothing else would notice.
-    for (const key of Object.keys(enDictionary) as Array<
-      keyof typeof enDictionary
-    >) {
+    for (const key of Object.keys(
+      enDictionary,
+    ) as (keyof typeof enDictionary)[]) {
       expect(placeholdersIn(itDictionary[key])).toEqual(
         placeholdersIn(enDictionary[key]),
       )
@@ -58,7 +60,7 @@ describe('translate', () => {
   })
 })
 
-function placeholdersIn(value: string): Array<string> {
+function placeholdersIn(value: string): string[] {
   return [...value.matchAll(/\{(\w+)\}/gu)]
     .map((match) => match[1] ?? '')
     .sort()

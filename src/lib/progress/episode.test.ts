@@ -1,8 +1,11 @@
+import { describe, expect, it } from 'vitest'
+
 import {
   absoluteEpisodeOf,
+  type Bookmark,
   bookmarkValue,
-  CHAPTER_CEILING,
   ceilingOf,
+  CHAPTER_CEILING,
   clampIndex,
   draftOf,
   EPISODE_CEILING,
@@ -13,7 +16,6 @@ import {
   serialiseBookmark,
   stepperOf,
   thresholdValue,
-  type Bookmark,
 } from './episode'
 
 describe('parseBookmark', () => {
@@ -54,7 +56,7 @@ describe('parseBookmark', () => {
     expect(parseBookmark(undefined)).toBeNull()
     expect(parseBookmark(null)).toBeNull()
     expect(parseBookmark('')).toBeNull()
-    expect(parseBookmark('   ')).toBeNull()
+    expect(parseBookmark(' '.repeat(3))).toBeNull()
   })
 
   it('fails closed on anything that is not in the grammar', () => {
@@ -156,7 +158,7 @@ describe('clampIndex', () => {
 
   it('truncates a fraction and survives a non-finite number', () => {
     expect(clampIndex(12.9, 100)).toBe(12)
-    expect(clampIndex(Number.NaN, 100)).toBe(1)
+    expect(clampIndex(NaN, 100)).toBe(1)
   })
 })
 
@@ -277,6 +279,7 @@ describe('stepperOf', () => {
 
   it('has no range, and does not step, before a season is chosen', () => {
     const stepper = stepperOf({ mode: 'season', season: '', number: '' })
+
     expect(stepper.ceiling).toBeNull()
     expect(stepper.stepped(1)).toBe('')
     expect(

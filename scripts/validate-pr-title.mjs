@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Conventional Commits gate for pull request titles.
  *
@@ -52,7 +51,7 @@ const TYPES = Object.keys(TYPE_BUMPS)
 // `type(optional-scope)!: subject`. The `!` is the breaking-change marker and
 // promotes any type to major.
 const TITLE_PATTERN = new RegExp(
-  `^(${TYPES.join('|')})(\\([a-z0-9][a-z0-9._-]*\\))?(!)?: (.+)$`,
+  String.raw`^(${TYPES.join('|')})(\([a-z0-9][a-z0-9._-]*\))?(!)?: (.+)$`,
 )
 
 /**
@@ -157,6 +156,6 @@ function main() {
   process.exit(EXIT_INVALID)
 }
 
-if (process.argv[1] === fileURLToPath(import.meta.url)) {
+if (process.argv[1] === import.meta.filename) {
   main()
 }

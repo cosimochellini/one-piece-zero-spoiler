@@ -22,7 +22,7 @@ export function createSecurityHeaders(
       // 'unsafe-inline' next to one and logs a warning for it, and browsers
       // without nonce support are no longer a target. The keyword survives
       // only in the fallback below, for a render that has no nonce at all.
-      scriptSrc(nonce),
+      scriptSource(nonce),
       // Unlike `script-src`, this one stays on blanket 'unsafe-inline' on
       // purpose. A nonce here would be counter-productive: nonces cannot be
       // attached to a `style` attribute, so `style-src-attr` inherits this
@@ -52,7 +52,7 @@ export function createSecurityHeaders(
   }
 }
 
-function scriptSrc(nonce: string | undefined): string {
+function scriptSource(nonce: string | undefined): string {
   if (nonce === undefined) {
     return "script-src 'self' 'unsafe-inline'"
   }

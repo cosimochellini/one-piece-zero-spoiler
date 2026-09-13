@@ -1,4 +1,4 @@
-import { circle, ellipse, dot, dots, SEA, shadow } from './primitives'
+import { circle, dot, dots, ellipse, SEA, shadow } from './primitives'
 import type { Drawings, Stroke } from './stroke'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
@@ -598,11 +598,13 @@ export const alabastaArt = {
     },
     { d: 'M80 104 V64' },
     { d: 'M80 84 q-12 -2 -14 -12' },
-    ...[0, 72, 144, 216, 288].map((angle): Stroke => ({
-      d: 'M80 64 q-9 -12 0 -22 q9 10 0 22',
-      role: 'accent',
-      transform: `rotate(${String(angle)} 80 64)`,
-    })),
+    ...[0, 72, 144, 216, 288].map((angle): Stroke => {
+      return {
+        d: 'M80 64 q-9 -12 0 -22 q9 10 0 22',
+        role: 'accent',
+        transform: `rotate(${String(angle)} 80 64)`,
+      }
+    }),
     { d: dot(80, 64), role: 'accent' },
   ],
 } satisfies Drawings

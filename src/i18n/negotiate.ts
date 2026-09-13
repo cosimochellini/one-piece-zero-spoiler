@@ -1,7 +1,12 @@
 import { parseCookieHeader } from '~/lib/cookies'
 
-import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE, LOCALES } from './locales'
-import type { Locale } from './locales'
+import {
+  DEFAULT_LOCALE,
+  isLocale,
+  type Locale,
+  LOCALE_COOKIE,
+  LOCALES,
+} from './locales'
 
 /**
  * Picks the locale for a request that did not name one in its path.
@@ -12,11 +17,13 @@ import type { Locale } from './locales'
  * site default apply.
  */
 export function negotiateLocale(
-  cookieHeader: string | null | undefined,
-  acceptLanguage: string | null | undefined,
+  cookieHeader: null | string | undefined,
+  acceptLanguage: null | string | undefined,
 ): Locale {
   const fromCookie = parseCookieHeader(cookieHeader).get(LOCALE_COOKIE)
-  if (isLocale(fromCookie)) return fromCookie
+  if (isLocale(fromCookie)) {
+    return fromCookie
+  }
 
   return parseAcceptLanguage(acceptLanguage) ?? DEFAULT_LOCALE
 }
@@ -30,9 +37,11 @@ export function negotiateLocale(
  * than throwing.
  */
 export function parseAcceptLanguage(
-  header: string | null | undefined,
+  header: null | string | undefined,
 ): Locale | undefined {
-  if (header === null || header === undefined || header === '') return undefined
+  if (header === null || header === undefined || header === '') {
+    return undefined
+  }
 
   const ranked = header
     .split(',')
@@ -47,7 +56,7 @@ export function parseAcceptLanguage(
       const parsed = quality === undefined ? 1 : Number(quality[1])
 
       return {
-        language: (tag.trim().split('-')[0] ?? '').toLowerCase(),
+        language: (tag.trim().split('-', 1)[0] ?? '').toLowerCase(),
         quality: Number.isFinite(parsed) ? parsed : 0,
       }
     })

@@ -21,11 +21,11 @@ import type { Entity, LocalizedText } from './types'
 export type Sea = 'east-blue' | 'grand-line' | 'new-world'
 
 /** What kind of place a record is, as the log would put it. */
-export type PlaceForm = 'village' | 'town' | 'restaurant' | 'island'
+export type PlaceForm = 'island' | 'restaurant' | 'town' | 'village'
 
 export type PlaceDossier = {
-  readonly sea: Sea
   readonly form: PlaceForm
+  readonly sea: Sea
   /** The arc the place belongs to: an `arc` record's id. */
   readonly arc: string
   /** The one thing the drawing shows and the eye would look for. */

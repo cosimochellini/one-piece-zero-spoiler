@@ -1,5 +1,6 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, it } from 'vitest'
 
 import { ep, renderWithProviders } from '~/test/providers'
 
@@ -25,6 +26,7 @@ describe('SpoilerVeil', () => {
     // screen reader reading the spoiler out loud and a Tab press landing
     // inside it.
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).toHaveAttribute('aria-hidden', 'true')
     expect(wrapper).toHaveAttribute('inert')
   })
@@ -60,6 +62,7 @@ describe('SpoilerVeil', () => {
     await user.click(screen.getByRole('button'))
 
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).not.toHaveAttribute('aria-hidden')
     expect(wrapper).not.toHaveAttribute('inert')
   })
@@ -69,8 +72,8 @@ describe('SpoilerVeil', () => {
     renderWithProviders(
       <SpoilerVeil
         gated={at(1089)}
-        revealed={false}
         placeholder={<p>Spoiler</p>}
+        revealed={false}
       >
         {covered}
       </SpoilerVeil>,
@@ -96,6 +99,7 @@ describe('SpoilerVeil', () => {
     )
 
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).not.toHaveAttribute('aria-hidden')
   })
 
@@ -194,15 +198,16 @@ describe('SpoilerVeil at inline density', () => {
     // a broken control.
     renderWithProviders(
       <SpoilerVeil
+        density="inline"
         gated={at(1089)}
         revealed={false}
-        density="inline"
       >
         {covered}
       </SpoilerVeil>,
     )
 
     const button = screen.getByRole('button')
+
     expect(button).toHaveTextContent('Lift')
     expect(button).not.toHaveTextContent('Under fog until episode 1089')
     expect(button).toHaveAccessibleName(

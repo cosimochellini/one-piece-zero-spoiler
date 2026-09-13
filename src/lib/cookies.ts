@@ -14,17 +14,23 @@
  * someone else's bug, and it must not take the page down with it.
  */
 export function parseCookieHeader(
-  header: string | null | undefined,
+  header: null | string | undefined,
 ): ReadonlyMap<string, string> {
   const jar = new Map<string, string>()
-  if (header === null || header === undefined || header === '') return jar
+  if (header === null || header === undefined || header === '') {
+    return jar
+  }
 
   for (const pair of header.split(';')) {
     const eq = pair.indexOf('=')
-    if (eq < 1) continue
+    if (eq < 1) {
+      continue
+    }
 
     const name = pair.slice(0, eq).trim()
-    if (name === '') continue
+    if (name === '') {
+      continue
+    }
 
     jar.set(name, decodeCookieValue(pair.slice(eq + 1).trim()))
   }
@@ -66,7 +72,9 @@ export function writeCookie(
   value: string,
   maxAgeSeconds: number,
 ): void {
-  if (typeof document === 'undefined') return
+  if (typeof document === 'undefined') {
+    return
+  }
 
   document.cookie = serializeCookie(name, value, maxAgeSeconds)
 }

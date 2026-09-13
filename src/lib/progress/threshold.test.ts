@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { enDictionary } from '~/i18n/dictionaries/en'
 import { itDictionary } from '~/i18n/dictionaries/it'
 import { translate } from '~/i18n/translate'

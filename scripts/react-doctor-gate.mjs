@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Blocking react-doctor gate.
  *
@@ -31,7 +30,7 @@ const TIMEOUT_MS = 900_000
 const MAX_DURATION_SECONDS = 600
 const MAX_PRINTED = 50
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const repoRoot = resolve(import.meta.dirname, '..')
 const reportPath = join(repoRoot, '.gate', 'react-doctor.json')
 
 function fail(headline) {
@@ -57,7 +56,9 @@ function resolveCli() {
     'bin',
     'react-doctor.js',
   )
-  if (existsSync(local)) return { command: process.execPath, args: [local] }
+  if (existsSync(local)) {
+    return { command: process.execPath, args: [local] }
+  }
   return { command: 'react-doctor', args: [] }
 }
 
@@ -91,9 +92,12 @@ function runDoctor() {
 }
 
 function assertChildSucceeded(child) {
-  if (child.error) fail(`could not run react-doctor: ${child.error.message}`)
-  if (child.signal)
+  if (child.error) {
+    fail(`could not run react-doctor: ${child.error.message}`)
+  }
+  if (child.signal) {
     fail(`react-doctor was terminated by signal ${child.signal}`)
+  }
   // Under --blocking none, findings cannot set a non-zero status.
   if (child.status !== 0) {
     fail(
@@ -103,8 +107,9 @@ function assertChildSucceeded(child) {
 }
 
 function readReport() {
-  if (!existsSync(reportPath))
+  if (!existsSync(reportPath)) {
     fail(`no report was written to ${relative(repoRoot, reportPath)}`)
+  }
   try {
     return JSON.parse(readFileSync(reportPath, 'utf8'))
   } catch (error) {
@@ -115,24 +120,31 @@ function readReport() {
 }
 
 function assertReportShape(report) {
-  if (!isObject(report))
+  if (!isObject(report)) {
     fail(`report root is ${typeof report}, expected an object`)
-  if (!Array.isArray(report.projects)) fail('report has no `projects` array')
-  if (report.projects.length === 0) fail('react-doctor scanned zero projects')
+  }
+  if (!Array.isArray(report.projects)) {
+    fail('report has no `projects` array')
+  }
+  if (report.projects.length === 0) {
+    fail('react-doctor scanned zero projects')
+  }
 }
 
 function readDiagnostics(report) {
-  if (!Array.isArray(report.diagnostics))
+  if (!Array.isArray(report.diagnostics)) {
     fail('report has no `diagnostics` array')
+  }
   return report.diagnostics.filter(isObject)
 }
 
 function assertNoToolError(report) {
   // react-doctor surfaces its own internal errors as a populated `error`.
-  if (report.error)
+  if (report.error) {
     fail(
       `react-doctor reported an internal error: ${JSON.stringify(report.error)}`,
     )
+  }
   // Projects that were selected but never started, e.g. reason "max-duration".
   const never = report.skippedProjects ?? []
   if (never.length > 0) {
@@ -164,7 +176,10 @@ function assertAnalysisComplete(report) {
   }
 }
 
-/** Anything whose severity cannot be read is counted as an error, never as harmless. */
+/**
+ * Anything whose severity cannot be read is counted as an error, never as harmless.
+ * @param diagnostic
+ */
 function isBlocking(diagnostic) {
   return diagnostic.severity !== 'warning'
 }

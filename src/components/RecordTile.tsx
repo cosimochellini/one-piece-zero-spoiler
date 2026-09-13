@@ -29,8 +29,8 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
 }
 
 export type RecordTileProps = {
-  readonly entry: Entity
   readonly bookmark: Bookmark
+  readonly entry: Entity
 }
 
 /**
@@ -56,15 +56,15 @@ export function RecordTile({ entry, bookmark }: RecordTileProps) {
         </span>
       </span>
       <SpoilerVeil
-        gated={entry}
-        revealed={isRevealed(entry, bookmark)}
         density="inline"
+        gated={entry}
         placeholder={
           <span {...stylex.props(styles.card)}>
             <span {...stylex.props(styles.frame)} />
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
+        revealed={isRevealed(entry, bookmark)}
       >
         <span {...stylex.props(styles.card)}>
           <span {...stylex.props(styles.frame)}>
@@ -87,8 +87,8 @@ function Name({ entry }: { readonly entry: Entity }) {
   if (entry.kind === 'character') {
     return (
       <Link
-        to="/$locale/characters/$id"
         params={{ locale, id: entry.id }}
+        to="/$locale/characters/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -99,9 +99,9 @@ function Name({ entry }: { readonly entry: Entity }) {
   if (entry.kind === 'place') {
     return (
       <Link
-        to="/$locale/places"
-        params={{ locale }}
         hash={entry.id}
+        params={{ locale }}
+        to="/$locale/places"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -113,7 +113,7 @@ function Name({ entry }: { readonly entry: Entity }) {
 }
 
 const styles = stylex.create({
-  tile: { display: 'grid', gap: space.xs, minWidth: 0 },
+  tile: { gap: space.xs, display: 'grid', minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -139,14 +139,14 @@ const styles = stylex.create({
     gridTemplateColumns: '3.5rem minmax(0, 1fr)',
   },
   frame: {
-    aspectRatio: '4 / 5',
-    backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    display: 'block',
     overflow: 'hidden',
+    aspectRatio: '4 / 5',
+    backgroundColor: color.paper2,
+    display: 'block',
   },
   name: {
     color: color.ink,
@@ -155,8 +155,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   link: {
     color: {

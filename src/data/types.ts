@@ -7,7 +7,7 @@ import type { ArtId } from './art'
  * `kind` exists so a generic list can label a record without a lookup table
  * per page.
  */
-export type EntityKind = 'character' | 'arc' | 'place' | 'ship'
+export type EntityKind = 'arc' | 'character' | 'place' | 'ship'
 
 export type LocalizedText = Readonly<Record<Locale, string>>
 
@@ -19,6 +19,7 @@ export type LocalizedText = Readonly<Record<Locale, string>>
  */
 export type { ArtId } from './art'
 
+/* eslint-disable perfectionist/sort-union-types -- the hue wheel is the order `tint` is written in, and it is the point: alphabetising hides which hues sit next to each other. */
 /** The hue a drawing's main stroke takes. One per record, from `tint` in the tokens. */
 export type TintId =
   | 'red'
@@ -41,6 +42,7 @@ export type TintId =
   | 'sand'
   | 'wine'
   | 'ivory'
+/* eslint-enable perfectionist/sort-union-types -- back to alphabetical for every other union. */
 
 /**
  * What a record shows: a line drawing and the one colour its main stroke
@@ -69,9 +71,9 @@ export type Visual = { readonly art: ArtId; readonly tint: TintId }
 export type Entity = {
   readonly id: string
   readonly kind: EntityKind
-  readonly revealedAtEpisode: number
-  readonly revealedAtChapter: number
   readonly name: LocalizedText
+  readonly revealedAtChapter: number
+  readonly revealedAtEpisode: number
   readonly summary: LocalizedText
   readonly visual: Visual
 }
@@ -97,12 +99,12 @@ export type Timeline<T> = readonly Dated<T>[]
  * A fact with no entry yet is simply not on the page.
  */
 export type CharacterDossier = {
-  readonly role: LocalizedText
-  readonly log: LocalizedText
   readonly affiliation: Timeline<LocalizedText>
-  readonly origin?: Timeline<LocalizedText>
-  readonly epithet?: Timeline<LocalizedText>
   readonly devilFruit?: Timeline<LocalizedText>
+  readonly epithet?: Timeline<LocalizedText>
+  readonly log: LocalizedText
+  readonly origin?: Timeline<LocalizedText>
+  readonly role: LocalizedText
   /** In Berry. */
   readonly bounty?: Timeline<number>
 }

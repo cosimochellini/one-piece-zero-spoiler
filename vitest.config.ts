@@ -1,8 +1,6 @@
-import path from 'node:path'
-
-import stylex from '@stylexjs/unplugin'
-import type { UserOptions } from '@stylexjs/unplugin'
+import stylex, { type UserOptions } from '@stylexjs/unplugin'
 import viteReact from '@vitejs/plugin-react'
+import path from 'node:path'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vitest/config'
 

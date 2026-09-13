@@ -32,8 +32,8 @@ export function SiteBar() {
   return (
     <header {...stylex.props(styles.bar)}>
       <Link
-        to="/$locale"
         params={{ locale }}
+        to="/$locale"
         {...stylex.props(styles.wordmark)}
       >
         {t('site.name')}
@@ -45,17 +45,17 @@ export function SiteBar() {
           {...stylex.props(styles.pages)}
         >
           <Link
-            to="/$locale/characters"
-            params={{ locale }}
             activeProps={{ 'aria-current': 'page' }}
+            params={{ locale }}
+            to="/$locale/characters"
             {...stylex.props(styles.link)}
           >
             {t('nav.characters')}
           </Link>
           <Link
-            to="/$locale/places"
-            params={{ locale }}
             activeProps={{ 'aria-current': 'page' }}
+            params={{ locale }}
+            to="/$locale/places"
             {...stylex.props(styles.link)}
           >
             {t('nav.places')}
@@ -73,18 +73,18 @@ const styles = stylex.create({
   // phone the controls drop under the wordmark and keep the right edge, so
   // the bar is never narrower than its own words and never widens the page.
   bar: {
-    alignItems: 'center',
-    columnGap: { 'default': space.sm, '@media (min-width: 40rem)': space.md },
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-    minWidth: 0,
     paddingBlock: {
       'default': space.sm,
       '@media (min-width: 40rem)': space.md,
     },
     paddingInline: space.md,
+    alignItems: 'center',
+    columnGap: { 'default': space.sm, '@media (min-width: 40rem)': space.md },
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     rowGap: 0,
+    minWidth: 0,
   },
 
   // Two page links, the bookmark and the language switch. They may wrap too,
@@ -99,23 +99,23 @@ const styles = stylex.create({
     rowGap: 0,
   },
   pages: {
+    gap: { 'default': space.xs2, '@media (min-width: 40rem)': space.sm },
     alignItems: 'center',
     display: 'flex',
-    gap: { 'default': space.xs2, '@media (min-width: 40rem)': space.sm },
   },
 
   wordmark: {
     color: color.ink,
     fontFamily: font.display,
+    fontSize: { 'default': text.base, '@media (min-width: 40rem)': text.lg },
+    fontWeight: 800,
+    letterSpacing: '-0.02em',
+    lineHeight: leading.heading,
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     textDecorationLine: 'none',
-    fontSize: { 'default': text.base, '@media (min-width: 40rem)': text.lg },
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
     textTransform: 'uppercase',
     // A wordmark is one line or it is not a wordmark.
     whiteSpace: 'nowrap',
@@ -124,23 +124,22 @@ const styles = stylex.create({
   // The same voice as the language switch beside it; the current page is
   // marked with the accent rule and `aria-current`, never with colour alone.
   link: {
+    paddingInline: space.xs,
     alignItems: 'center',
     color: {
       'default': color.ink2,
+      ':is([aria-current="page"])': color.ink,
       ':hover': color.accent,
       ':active': color.ink,
-      ':is([aria-current="page"])': color.ink,
     },
     display: 'inline-flex',
     fontFamily: font.body,
     fontSize: text.base,
     fontWeight: 600,
-    minHeight: '44px',
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingInline: space.xs,
     textDecorationColor: {
       'default': 'transparent',
       ':is([aria-current="page"])': color.accent,
@@ -152,5 +151,6 @@ const styles = stylex.create({
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
     whiteSpace: 'nowrap',
+    minHeight: '44px',
   },
 })

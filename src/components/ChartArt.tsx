@@ -37,20 +37,22 @@ export function ArtStrokes({ art, tint: hue }: ArtProps) {
   // are written, and the renderer only needs to know they are strokes.
   const strokes: readonly Stroke[] = DRAWINGS[art]
 
-  return strokes.map((stroke, index) => (
-    <path
-      key={index}
-      d={stroke.d}
-      transform={stroke.transform}
-      vectorEffect="non-scaling-stroke"
-      {...stylex.props(
-        styles.line,
-        stroke.role === 'ambient' && styles.ambient,
-        stroke.role === 'accent' && styles.accent(TINT_VAR[hue]),
-        stroke.dashed === true && styles.dashed,
-      )}
-    />
-  ))
+  return strokes.map((stroke, index) => {
+    return (
+      <path
+        key={index}
+        d={stroke.d}
+        transform={stroke.transform}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          stroke.role === 'ambient' && styles.ambient,
+          stroke.role === 'accent' && styles.accent(TINT_VAR[hue]),
+          stroke.dashed === true && styles.dashed,
+        )}
+      />
+    )
+  })
 }
 
 export function ChartArt(props: ArtProps) {

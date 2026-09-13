@@ -114,7 +114,9 @@ export function chartWith(
   mode: BookmarkMode = 'episode',
 ): readonly Entity[] {
   const drawn = ON_CHART.has(entity.id)
-  if (drawn && mode === 'episode') return chart
+  if (drawn && mode === 'episode') {
+    return chart
+  }
 
   return orderByMode(drawn ? chart : [...chart, entity], mode)
 }
@@ -154,7 +156,9 @@ const arcs = route.filter((entity) => entity.kind === 'arc')
 function shelfOf(character: Entity): Entity | undefined {
   let shelf: Entity | undefined
   for (const arc of arcs) {
-    if (arc.revealedAtEpisode > character.revealedAtEpisode) break
+    if (arc.revealedAtEpisode > character.revealedAtEpisode) {
+      break
+    }
     shelf = arc
   }
   return shelf
@@ -162,12 +166,14 @@ function shelfOf(character: Entity): Entity | undefined {
 
 /** The signal book shelved by arc, in route order, empty shelves left out. */
 export const bookSections: readonly BookSection[] = arcs
-  .map((arc) => ({
-    arc,
-    characters: characters.filter(
-      (character) => shelfOf(character)?.id === arc.id,
-    ),
-  }))
+  .map((arc) => {
+    return {
+      arc,
+      characters: characters.filter(
+        (character) => shelfOf(character)?.id === arc.id,
+      ),
+    }
+  })
   .filter((section) => section.characters.length > 0)
 
 /**
@@ -176,9 +182,9 @@ export const bookSections: readonly BookSection[] = arcs
  */
 export type RoutePosition = {
   readonly index: number
-  readonly total: number
-  readonly previous: Entity | undefined
   readonly next: Entity | undefined
+  readonly previous: Entity | undefined
+  readonly total: number
 }
 
 export function routePositionOf(
@@ -202,13 +208,15 @@ export function routePositionOf(
 export function nearbyCharacters(entity: Entity, count: number): Entity[] {
   return featuredCharacters
     .filter((candidate) => candidate.id !== entity.id)
-    .map((candidate, order) => ({
-      candidate,
-      order,
-      distance: Math.abs(
-        candidate.revealedAtEpisode - entity.revealedAtEpisode,
-      ),
-    }))
+    .map((candidate, order) => {
+      return {
+        candidate,
+        order,
+        distance: Math.abs(
+          candidate.revealedAtEpisode - entity.revealedAtEpisode,
+        ),
+      }
+    })
     .sort((a, b) => a.distance - b.distance || a.order - b.order)
     .slice(0, count)
     .map(({ candidate }) => candidate)
@@ -220,13 +228,13 @@ export function nearbyCharacters(entity: Entity, count: number): Entity[] {
  * has no combining marks, which is what lets a match be highlighted by index.
  */
 export function foldName(value: string): string {
-  return value.normalize('NFD').replace(/[̀-ͯ]/gu, '').toLowerCase()
+  return value.normalize('NFD').replaceAll(/[̀-ͯ]/gu, '').toLowerCase()
 }
 
 export type NameMatch = {
   readonly matches: boolean
   /** The span of the displayed name to mark, when it can be found by index. */
-  readonly highlight: readonly [number, number] | null
+  readonly highlight: null | readonly [number, number]
 }
 
 /**
@@ -250,7 +258,9 @@ export function matchName(
   bookmark: Bookmark,
 ): NameMatch {
   const needle = foldName(query.trim())
-  if (needle === '') return { matches: true, highlight: null }
+  if (needle === '') {
+    return { matches: true, highlight: null }
+  }
 
   const shown = entity.name[locale]
   const folded = foldName(shown)
@@ -267,17 +277,20 @@ export function matchName(
   const otherName = Object.values(entity.name).some((name) =>
     foldName(name).includes(needle),
   )
-  if (otherName) return { matches: true, highlight: null }
+  if (otherName) {
+    return { matches: true, highlight: null }
+  }
 
   const progress = episodeOf(bookmark)
   const epithets = dossierOf(entity)?.epithet ?? []
-  const known = epithets.some(
-    (entry) =>
+  const known = epithets.some((entry) => {
+    return (
       progress !== null
       && entry.episode <= progress
       && Object.values(entry.value).some((epithet) =>
         foldName(epithet).includes(needle),
-      ),
-  )
+      )
+    )
+  })
   return { matches: known, highlight: null }
 }

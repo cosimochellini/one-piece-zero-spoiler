@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
 
-import { SiteFooter } from '~/components/SiteFooter'
 import { SiteBar } from '~/components/SiteBar'
+import { SiteFooter } from '~/components/SiteFooter'
 import { LocaleProvider } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
@@ -19,12 +19,16 @@ import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
  */
 export const Route = createFileRoute('/$locale')({
   beforeLoad: ({ params }) => {
-    if (!isLocale(params.locale)) throw notFound()
+    if (!isLocale(params.locale)) {
+      throw notFound()
+    }
 
     return { locale: params.locale }
   },
   head: ({ params }) => {
-    if (!isLocale(params.locale)) return {}
+    if (!isLocale(params.locale)) {
+      return {}
+    }
 
     const dictionary = getDictionary(params.locale)
 
@@ -70,6 +74,7 @@ function LocaleLayout() {
 
 const styles = stylex.create({
   shell: {
+    marginInline: 'auto',
     display: 'grid',
     // `minmax(0, 1fr)` rather than the implicit `1fr`. An implicit column is
     // `minmax(auto, 1fr)`, whose floor is the widest child's min-content:
@@ -79,17 +84,18 @@ const styles = stylex.create({
     // The footer is pushed to the bottom on a short page without a
     // `min-height: 100vh` hero, which is its own tell.
     gridTemplateRows: 'auto 1fr auto',
-    marginInline: 'auto',
     maxWidth: '76rem',
     minHeight: '100dvh',
     width: '100%',
   },
 
   skip: {
-    backgroundColor: color.paper,
     borderColor: color.ink,
     borderStyle: 'solid',
     borderWidth: rule.fine,
+    paddingBlock: space.xs,
+    paddingInline: space.sm,
+    backgroundColor: color.paper,
     color: color.ink,
     fontFamily: font.body,
     fontSize: text.base,
@@ -100,8 +106,6 @@ const styles = stylex.create({
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingBlock: space.xs,
-    paddingInline: space.sm,
     // Off-screen rather than `display: none`, so it stays focusable.
     position: 'fixed',
     transform: { 'default': 'translateY(-150%)', ':focus': 'none' },

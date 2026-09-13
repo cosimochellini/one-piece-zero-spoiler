@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { renderWithProviders } from '~/test/providers'
 
@@ -8,9 +9,9 @@ describe('RouteLegend', () => {
   it('pairs each figure with what it counts', () => {
     renderWithProviders(
       <RouteLegend
-        open={4}
         covered={6}
         filed={10}
+        open={4}
       />,
     )
 
@@ -23,9 +24,9 @@ describe('RouteLegend', () => {
   it('follows the active locale', () => {
     renderWithProviders(
       <RouteLegend
-        open={0}
         covered={10}
         filed={10}
+        open={0}
       />,
       { locale: 'it' },
     )

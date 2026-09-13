@@ -1,5 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, it } from 'vitest'
 
 import type { Entity } from '~/data/types'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -48,14 +49,18 @@ function veilAround(name: string): HTMLElement {
   const wrapper =
     waypointOf(name).querySelector('h3')?.parentElement?.parentElement
       ?.parentElement ?? null
-  if (wrapper === null) throw new Error(`no veil wrapper around "${name}"`)
+  if (wrapper === null) {
+    throw new Error(`no veil wrapper around "${name}"`)
+  }
 
   return wrapper
 }
 
 function waypointOf(name: string): HTMLElement {
   const item = screen.getByText(name).closest('li')
-  if (item === null) throw new Error(`no waypoint for "${name}"`)
+  if (item === null) {
+    throw new Error(`no waypoint for "${name}"`)
+  }
 
   return item
 }
@@ -64,7 +69,9 @@ function horizon(): HTMLElement {
   const item = screen
     .getAllByRole('listitem')
     .find((li) => li.getAttribute('aria-current') === 'step')
-  if (item === undefined) throw new Error('no horizon on the route')
+  if (item === undefined) {
+    throw new Error('no horizon on the route')
+  }
 
   return item
 }
@@ -73,8 +80,8 @@ describe('RouteChart', () => {
   it('opens the waypoints the reader has reached and fogs the rest', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(500)}
+        entries={entries}
       />,
       { bookmark: ep(500) },
     )
@@ -87,13 +94,14 @@ describe('RouteChart', () => {
   it('draws the horizon between the last open waypoint and the first fogged one', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(500)}
+        entries={entries}
       />,
       { bookmark: ep(500) },
     )
 
     const items = screen.getAllByRole('listitem')
+
     expect(items.indexOf(horizon())).toBe(2)
     expect(items.indexOf(waypointOf('Middle Face'))).toBe(1)
     expect(items.indexOf(waypointOf('Late Island'))).toBe(3)
@@ -106,8 +114,8 @@ describe('RouteChart', () => {
     // far away it is.
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(500)}
+        entries={entries}
       />,
       { bookmark: ep(500) },
     )
@@ -120,8 +128,8 @@ describe('RouteChart', () => {
   it('puts the horizon at the very top and fogs everything when no bookmark is set', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={null}
+        entries={entries}
       />,
     )
 
@@ -137,14 +145,14 @@ describe('RouteChart', () => {
     const user = userEvent.setup()
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={null}
+        entries={entries}
       />,
     )
 
     await user.click(
       within(waypointOf('Opening Saga')).getByRole('button', {
-        name: /Lift the fog anyway/,
+        name: /Lift the fog anyway/u,
       }),
     )
 
@@ -155,12 +163,13 @@ describe('RouteChart', () => {
   it('puts the drawing under the same fog as the words', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={null}
+        entries={entries}
       />,
     )
 
     const wrapper = veilAround('Middle Face')
+
     expect(wrapper.querySelector('svg')).not.toBeNull()
     expect(wrapper).toHaveAttribute('inert')
   })
@@ -168,8 +177,8 @@ describe('RouteChart', () => {
   it('labels the waypoints in the active locale', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(1200)}
+        entries={entries}
       />,
       { locale: 'it', bookmark: ep(1200) },
     )
@@ -181,8 +190,8 @@ describe('RouteChart', () => {
   it('links a character to their page and a place to the log, and leaves an arc as a name', () => {
     renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(1200)}
+        entries={entries}
       />,
       { bookmark: ep(1200) },
     )
@@ -203,8 +212,8 @@ describe('RouteChart', () => {
   it('gives a covered character no link, so the slug stays out of the HTML', () => {
     const { container } = renderWithProviders(
       <RouteChart
-        entries={entries}
         bookmark={ep(100)}
+        entries={entries}
       />,
       { bookmark: ep(100) },
     )

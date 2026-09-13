@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { LOCALES } from '~/i18n/locales'
 import {
   CHAPTER_CEILING,

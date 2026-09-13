@@ -1,4 +1,4 @@
-import { circle, ellipse, dots, star, SEA, shadow } from './primitives'
+import { circle, dots, ellipse, SEA, shadow, star } from './primitives'
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the water seven stretch of the route. */

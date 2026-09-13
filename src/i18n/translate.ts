@@ -20,9 +20,11 @@ export function getDictionary(locale: Locale): Dictionary {
  * silent gap is a bug nobody notices.
  */
 function format(template: string, params?: TranslationParams): string {
-  if (params === undefined) return template
+  if (params === undefined) {
+    return template
+  }
 
-  return template.replace(/\{(\w+)\}/gu, (match, name: string) => {
+  return template.replaceAll(/\{(\w+)\}/gu, (match, name: string) => {
     const value = params[name]
     return value === undefined ? match : String(value)
   })

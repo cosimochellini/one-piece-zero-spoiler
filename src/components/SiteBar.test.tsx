@@ -1,19 +1,21 @@
 import { screen, within } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SiteBar } from './SiteBar'
 
 // The switch is two <Link>s with their own test; here it is only a landmark.
-vi.mock('~/components/LocaleSwitch', () => ({
-  LocaleSwitch: () => <nav aria-label="Language" />,
-}))
+vi.mock(import('~/components/LocaleSwitch'), () => {
+  return { LocaleSwitch: () => <nav aria-label="Language" /> }
+})
 
 describe('SiteBar', () => {
   it('carries the wordmark, two page links, the bookmark and the language control, and nothing else', () => {
     renderWithProviders(<SiteBar />)
 
     const banner = screen.getByRole('banner')
+
     expect(
       within(banner).getByRole('link', { name: 'Zero Spoiler' }),
     ).toHaveAttribute('href', '/en')
@@ -39,20 +41,25 @@ describe('SiteBar', () => {
 
   it('shows the bookmark as one mark, in the unit the reader counts in', () => {
     const { unmount } = renderWithProviders(<SiteBar />, { bookmark: ep(650) })
+
     expect(
       screen.getByRole('button', { name: 'Change your bookmark, EP 650' }),
     ).toHaveTextContent('EP 650')
+
     unmount()
 
     const second = renderWithProviders(<SiteBar />, {
       bookmark: { mode: 'season', season: 2, episode: 3 },
     })
+
     expect(screen.getByRole('button')).toHaveTextContent('S02E03')
+
     second.unmount()
 
     renderWithProviders(<SiteBar />, {
       bookmark: { mode: 'chapter', chapter: 1044 },
     })
+
     expect(screen.getByRole('button')).toHaveTextContent('CH 1044')
   })
 

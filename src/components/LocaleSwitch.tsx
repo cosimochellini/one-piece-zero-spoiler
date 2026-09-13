@@ -2,8 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 
 import { useLocale } from '~/i18n/LocaleContext'
-import { LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
-import type { Locale } from '~/i18n/locales'
+import { type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
 import { COOKIE_MAX_AGE_SECONDS, writeCookie } from '~/lib/cookies'
 import {
   color,
@@ -54,17 +53,17 @@ export function LocaleSwitch() {
           return (
             <li key={candidate}>
               <Link
-                to="."
-                params={(previous) => ({ ...previous, locale: candidate })}
+                // The accessible name is always the full language name; only
+                // what is painted changes with the width.
+                aria-label={t(LABEL_KEY[candidate])}
                 hrefLang={candidate}
                 // `Link` sets `aria-current="page"` on the active item by
                 // itself, so the accent rule is never the only signal.
                 onClick={() => {
                   remember(candidate)
                 }}
-                // The accessible name is always the full language name; only
-                // what is painted changes with the width.
-                aria-label={t(LABEL_KEY[candidate])}
+                params={(previous) => ({ ...previous, locale: candidate })}
+                to="."
                 {...stylex.props(styles.link, current && styles.linkCurrent)}
               >
                 <span
@@ -91,14 +90,18 @@ export function LocaleSwitch() {
 const styles = stylex.create({
   nav: { display: 'inline-flex' },
   list: {
-    display: 'inline-flex',
     gap: space.xs2,
-    listStyleType: 'none',
     paddingInline: 0,
+    display: 'inline-flex',
+    listStyleType: 'none',
   },
   link: {
-    alignItems: 'center',
     borderRadius: radius.pill,
+    paddingInline: {
+      'default': space.xs2,
+      '@media (min-width: 40rem)': space.xs,
+    },
+    alignItems: 'center',
     color: {
       'default': color.muted,
       ':hover': color.accent,
@@ -108,23 +111,19 @@ const styles = stylex.create({
     fontFamily: font.body,
     fontSize: text.xs,
     fontWeight: 600,
-    letterSpacing: '0.08em',
-    minHeight: '44px',
-    minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
     justifyContent: 'center',
+    letterSpacing: '0.08em',
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingInline: {
-      'default': space.xs2,
-      '@media (min-width: 40rem)': space.xs,
-    },
     textDecorationLine: 'none',
     textTransform: 'uppercase',
     transitionDuration: dur.micro,
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+    minHeight: '44px',
+    minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
   },
   // A phone bar has room for the wordmark, one page link and two language
   // codes, not two language names: 'Italiano English' alone is 158px.

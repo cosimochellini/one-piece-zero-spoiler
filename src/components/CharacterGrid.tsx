@@ -1,19 +1,19 @@
 import * as stylex from '@stylexjs/stylex'
-import { useEffect, useId, useState, type ReactNode } from 'react'
+import { type ReactNode, useEffect, useId, useState } from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterTile } from '~/components/CharacterTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { Button } from '~/components/ui/Button'
-import { matchName, type BookSection, type NameMatch } from '~/data/characters'
+import { type BookSection, matchName, type NameMatch } from '~/data/characters'
 import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import {
-  modeOf,
   type Bookmark,
   type BookmarkMode,
+  modeOf,
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
@@ -32,8 +32,8 @@ export type CharacterGridProps = {
   /** The characters in evidence, in route order: the ones drawn as crests. */
   readonly featured: readonly Entity[]
   /** The whole book, shelved by arc, in route order. */
-  readonly sections: readonly BookSection[]
   readonly bookmark: Bookmark
+  readonly sections: readonly BookSection[]
 }
 
 type Match = { readonly entry: Entity; readonly match: NameMatch }
@@ -69,10 +69,9 @@ export function CharacterGrid({
   const open = everyone.filter((entry) => isRevealed(entry, bookmark))
   const matched = new Map<string, Match>(
     open
-      .map((entry) => ({
-        entry,
-        match: matchName(entry, query, locale, bookmark),
-      }))
+      .map((entry) => {
+        return { entry, match: matchName(entry, query, locale, bookmark) }
+      })
       .filter(({ match }) => match.matches)
       .map((match) => [match.entry.id, match]),
   )
@@ -108,15 +107,15 @@ export function CharacterGrid({
         </label>
         <div {...stylex.props(styles.fieldRow)}>
           <input
-            id={fieldId}
-            type="search"
             autoComplete="off"
-            spellCheck={false}
-            value={query}
-            placeholder="Nami"
+            id={fieldId}
             onChange={(event) => {
               setQuery(event.target.value)
             }}
+            placeholder="Nami"
+            spellCheck={false}
+            type="search"
+            value={query}
             {...stylex.props(styles.field)}
           />
           {/*
@@ -129,13 +128,13 @@ export function CharacterGrid({
           */}
           <span {...stylex.props(styles.clearSlot)}>
             <Button
-              variant="quiet"
               aria-label={t('characters.searchClear')}
               hidden={trimmed === ''}
-              sx={trimmed === '' ? styles.clearHidden : undefined}
               onClick={() => {
                 setQuery('')
               }}
+              sx={trimmed === '' ? styles.clearHidden : undefined}
+              variant="quiet"
             >
               ×
             </Button>
@@ -170,14 +169,16 @@ export function CharacterGrid({
 
         {featuredMatches.length === 0 ? null : (
           <CharacterCardList>
-            {featuredMatches.map(({ entry, match }) => (
-              <CharacterCard
-                key={entry.id}
-                entity={entry}
-                revealed
-                highlight={match.highlight}
-              />
-            ))}
+            {featuredMatches.map(({ entry, match }) => {
+              return (
+                <CharacterCard
+                  key={entry.id}
+                  entity={entry}
+                  highlight={match.highlight}
+                  revealed
+                />
+              )
+            })}
           </CharacterCardList>
         )}
 
@@ -201,13 +202,15 @@ export function CharacterGrid({
                 {t('characters.foggedHint')}
               </p>
               <CharacterCardList>
-                {featuredCovered.map((entry) => (
-                  <CharacterCard
-                    key={entry.id}
-                    entity={entry}
-                    revealed={false}
-                  />
-                ))}
+                {featuredCovered.map((entry) => {
+                  return (
+                    <CharacterCard
+                      key={entry.id}
+                      entity={entry}
+                      revealed={false}
+                    />
+                  )
+                })}
               </CharacterCardList>
             </>
           )}
@@ -228,16 +231,18 @@ export function CharacterGrid({
           <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
         </div>
 
-        {shelvesInOrder(sections, mode).map((section) => (
-          <Shelf
-            key={section.arc.id}
-            section={section}
-            bookmark={bookmark}
-            headingId={`${fieldId}-${section.arc.id}`}
-            matchOf={matchOf}
-            searching={trimmed !== ''}
-          />
-        ))}
+        {shelvesInOrder(sections, mode).map((section) => {
+          return (
+            <Shelf
+              key={section.arc.id}
+              bookmark={bookmark}
+              headingId={`${fieldId}-${section.arc.id}`}
+              matchOf={matchOf}
+              searching={trimmed !== ''}
+              section={section}
+            />
+          )
+        })}
       </section>
     </div>
   )
@@ -278,11 +283,11 @@ function Shelf({
   matchOf,
   searching,
 }: {
-  readonly section: BookSection
   readonly bookmark: Bookmark
   readonly headingId: string
   readonly matchOf: (entry: Entity) => Match | undefined
   readonly searching: boolean
+  readonly section: BookSection
 }) {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
@@ -296,7 +301,9 @@ function Shelf({
     .filter((match): match is Match => match !== undefined)
   const covered = characters.filter((entry) => !isRevealed(entry, bookmark))
 
-  if (searching && shown.length === 0 && covered.length === 0) return null
+  if (searching && shown.length === 0 && covered.length === 0) {
+    return null
+  }
 
   return (
     <section
@@ -305,9 +312,8 @@ function Shelf({
     >
       <div {...stylex.props(styles.shelfHead)}>
         <SpoilerVeil
-          gated={arc}
-          revealed={arcOpen}
           density="inline"
+          gated={arc}
           placeholder={
             <h3
               id={headingId}
@@ -316,6 +322,7 @@ function Shelf({
               {t('characters.sectionFogged')}
             </h3>
           }
+          revealed={arcOpen}
         >
           <h3
             id={headingId}
@@ -337,21 +344,25 @@ function Shelf({
       </div>
 
       <ul {...stylex.props(styles.tiles)}>
-        {shown.map(({ entry, match }) => (
-          <CharacterTile
-            key={entry.id}
-            entity={entry}
-            revealed
-            highlight={match.highlight}
-          />
-        ))}
-        {covered.map((entry) => (
-          <CharacterTile
-            key={entry.id}
-            entity={entry}
-            revealed={false}
-          />
-        ))}
+        {shown.map(({ entry, match }) => {
+          return (
+            <CharacterTile
+              key={entry.id}
+              entity={entry}
+              highlight={match.highlight}
+              revealed
+            />
+          )
+        })}
+        {covered.map((entry) => {
+          return (
+            <CharacterTile
+              key={entry.id}
+              entity={entry}
+              revealed={false}
+            />
+          )
+        })}
       </ul>
     </section>
   )
@@ -388,9 +399,9 @@ function useSettled<T>(value: T, delay: number): T {
 }
 
 const styles = stylex.create({
-  book: { display: 'grid', gap: space.xl2 },
+  book: { gap: space.xl2, display: 'grid' },
 
-  search: { display: 'grid', gap: space.xs, justifyItems: 'start' },
+  search: { gap: space.xs, display: 'grid', justifyItems: 'start' },
   label: {
     color: color.ink2,
     fontFamily: font.body,
@@ -398,38 +409,38 @@ const styles = stylex.create({
     fontWeight: 600,
   },
   fieldRow: {
+    gap: space.xs,
     alignItems: 'center',
     display: 'flex',
-    gap: space.xs,
     maxWidth: '100%',
   },
   field: {
-    'appearance': 'textfield',
-    'backgroundColor': { 'default': color.paper, ':hover': color.paper2 },
     'borderColor': { 'default': color.rule2, ':focus': color.ink },
     'borderRadius': radius.input,
     'borderStyle': 'solid',
     // Constant in every state; the outline carries focus.
     'borderWidth': rule.fine,
+    'paddingBlock': space.xs2,
+    'paddingInline': space.sm,
+    'appearance': 'textfield',
+    'backgroundColor': { 'default': color.paper, ':hover': color.paper2 },
     'color': color.ink,
     'fontFamily': font.body,
     'fontSize': text.lg,
     'fontWeight': 600,
-    // The same 44px as every button on the site.
-    'minHeight': '44px',
-    'minWidth': 0,
     'outlineColor': { 'default': 'transparent', ':focus-visible': color.focus },
     'outlineOffset': space.xs3,
     'outlineStyle': 'solid',
     'outlineWidth': rule.fine,
-    'paddingBlock': space.xs2,
-    'paddingInline': space.sm,
     'transitionDuration': dur.micro,
     'transitionProperty': 'background-color, border-color',
     'transitionTimingFunction': ease.out,
+    // The same 44px as every button on the site.
+    'minHeight': '44px',
+    'minWidth': 0,
     'width': 'min(100%, 22rem)',
-    '::placeholder': { color: color.muted, fontWeight: 400 },
     '::-webkit-search-cancel-button': { appearance: 'none' },
+    '::placeholder': { color: color.muted, fontWeight: 400 },
   },
   clearSlot: { display: 'inline-flex', flexShrink: 0, minWidth: '44px' },
   clearHidden: { visibility: 'hidden' },
@@ -444,8 +455,8 @@ const styles = stylex.create({
 
   // The two parts of the book, each with an inventory heading: the crests,
   // then the shelves.
-  part: { display: 'grid', gap: space.lg },
-  partHead: { display: 'grid', gap: space.xs2 },
+  part: { gap: space.lg, display: 'grid' },
+  partHead: { gap: space.xs2, display: 'grid' },
   partTitle: {
     color: color.ink,
     fontFamily: font.display,
@@ -453,8 +464,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   partLede: {
     color: color.muted,
@@ -480,11 +491,11 @@ const styles = stylex.create({
   // The fog band is set apart by a dashed rule, the same mark the route uses
   // for the stretch the reader has not sailed.
   fog: {
+    gap: space.md,
     borderBlockStartColor: color.rule2,
     borderBlockStartStyle: 'dashed',
     borderBlockStartWidth: rule.hair,
     display: 'grid',
-    gap: space.md,
     paddingBlockStart: space.lg,
   },
   fogTitle: {
@@ -507,13 +518,13 @@ const styles = stylex.create({
   // tiles four across on a wide page and one across on a phone. Long shelves
   // far down the page are skipped by the renderer until they scroll near.
   shelf: {
+    containIntrinsicSize: 'auto 24rem',
+    gap: space.md,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
-    containIntrinsicSize: 'auto 24rem',
     contentVisibility: 'auto',
     display: 'grid',
-    gap: space.md,
     paddingBlockStart: space.md,
   },
   shelfHead: {
@@ -530,8 +541,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   shelfMeta: {
     color: color.muted,

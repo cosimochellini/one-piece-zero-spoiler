@@ -1,7 +1,8 @@
+import { cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/vitest'
 // Registers the jest-dom matchers on Vitest's `expect` and augments the
 // matcher types via `declare module 'vitest'`.
-import '@testing-library/jest-dom/vitest'
-import { cleanup } from '@testing-library/react'
+import { afterEach } from 'vitest'
 
 // `globals: true` already enables RTL auto-cleanup. Doing it explicitly is
 // idempotent and keeps the suite independent of that detection.
@@ -40,17 +41,27 @@ if (
     this: HTMLDialogElement,
     returnValue?: string,
   ) {
-    if (!this.hasAttribute('open')) return
+    if (!this.hasAttribute('open')) {
+      return
+    }
     this.removeAttribute('open')
-    if (returnValue !== undefined) this.returnValue = returnValue
+    if (returnValue !== undefined) {
+      this.returnValue = returnValue
+    }
     this.dispatchEvent(new Event('close'))
   }
 
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return
+    if (event.key !== 'Escape') {
+      return
+    }
     const dialog = document.querySelector<HTMLDialogElement>('dialog[open]')
-    if (dialog === null) return
+    if (dialog === null) {
+      return
+    }
     const cancel = new Event('cancel', { cancelable: true })
-    if (dialog.dispatchEvent(cancel)) dialog.close()
+    if (dialog.dispatchEvent(cancel)) {
+      dialog.close()
+    }
   })
 }

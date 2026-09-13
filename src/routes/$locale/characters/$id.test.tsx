@@ -1,32 +1,33 @@
 import { isNotFound } from '@tanstack/react-router'
+import { describe, expect, it } from 'vitest'
 
 import type { Bookmark, BookmarkMode } from '~/lib/progress/episode'
 
 import { Route } from './$id'
 
-type Params = { readonly locale: string; readonly id: string }
+type Params = { readonly id: string; readonly locale: string }
 type LoaderData = {
   readonly id: string
-  readonly revealed: boolean
   readonly mode: BookmarkMode
+  readonly revealed: boolean
 }
 type Meta = {
-  readonly title?: string
-  readonly name?: string
   readonly content?: string
+  readonly name?: string
+  readonly title?: string
 }
 
 // The route options are typed against the whole generated tree. The two
 // functions under test are pure, so they are called here through the narrow
 // shape they actually read.
 const head = Route.options.head as unknown as (input: {
-  readonly params: Params
   readonly loaderData: LoaderData
+  readonly params: Params
 }) => { readonly meta?: readonly Meta[] }
 
 const loader = Route.options.loader as unknown as (input: {
-  readonly params: Params
   readonly context: { readonly initialBookmark: Bookmark }
+  readonly params: Params
 }) => LoaderData
 
 function headFor(
@@ -77,6 +78,7 @@ describe('character route loader', () => {
 
   it('reads a chapter bookmark against the chapter threshold', () => {
     const chapter = (n: number): Bookmark => ({ mode: 'chapter', chapter: n })
+
     expect(loaderFor('nico-robin', chapter(217)).revealed).toBe(false)
     expect(loaderFor('nico-robin', chapter(218)).revealed).toBe(true)
     expect(loaderFor('nico-robin', chapter(218)).mode).toBe('chapter')
@@ -84,11 +86,10 @@ describe('character route loader', () => {
 
   it('resolves a season bookmark to its absolute episode', () => {
     // S04E38 is episode 130, where Robin is filed; S04E37 is one short.
-    const season = (episode: number): Bookmark => ({
-      mode: 'season',
-      season: 4,
-      episode,
-    })
+    const season = (episode: number): Bookmark => {
+      return { mode: 'season', season: 4, episode }
+    }
+
     expect(loaderFor('nico-robin', season(37)).revealed).toBe(false)
     expect(loaderFor('nico-robin', season(38)).revealed).toBe(true)
   })

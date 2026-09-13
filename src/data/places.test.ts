@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { LOCALES } from '~/i18n/locales'
 
 import { entities, getEntity } from './entities'
@@ -13,6 +15,7 @@ describe('the ship’s log', () => {
     expect(new Set(places.map((place) => place.id))).toEqual(new Set(placeIds))
 
     const thresholds = places.map((place) => place.revealedAtEpisode)
+
     expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
   })
 
@@ -29,7 +32,9 @@ describe('the ship’s log', () => {
   it('gives every place a dossier in every locale, and nothing else one', () => {
     for (const place of places) {
       const dossier = dossierOf(place)
+
       expect(dossier, place.id).toBeDefined()
+
       for (const locale of LOCALES) {
         expect(dossier?.landmark[locale].length).toBeGreaterThan(0)
         expect(dossier?.log[locale].length).toBeGreaterThan(0)
@@ -46,6 +51,7 @@ describe('the ship’s log', () => {
     // the arc itself is still under fog.
     for (const place of places) {
       const arc = getEntity(dossierOf(place)?.arc ?? '')
+
       expect(arc?.kind, place.id).toBe('arc')
       expect(arc?.revealedAtEpisode).toBeLessThanOrEqual(
         place.revealedAtEpisode,
@@ -60,6 +66,7 @@ describe('the ship’s log', () => {
     for (const place of places) {
       for (const id of dossierOf(place)?.filedHere ?? []) {
         const record = getEntity(id)
+
         expect(record, `${place.id} → ${id}`).toBeDefined()
         expect(record?.kind).not.toBe('place')
       }

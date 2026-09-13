@@ -1,4 +1,5 @@
 import { screen, within } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { places } from '~/data/places'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -12,29 +13,31 @@ describe('PortLog', () => {
   it('numbers every port in the order the ship reaches them', () => {
     renderWithProviders(
       <PortLog
-        entries={entries}
         bookmark={ep(20)}
+        entries={entries}
       />,
       { bookmark: ep(20) },
     )
 
     const stages = screen.getAllByText(/^Port of call \d of 7$/u)
+
     expect(stages.map((node) => node.textContent)).toEqual(
-      entries.map((_, i) => `Port of call ${String(i + 1)} of 7`),
+      entries.map((_, index) => `Port of call ${String(index + 1)} of 7`),
     )
   })
 
   it('opens the ports the reader has reached with their dossier, and fogs the rest', () => {
     const { container } = renderWithProviders(
       <PortLog
-        entries={entries}
         bookmark={ep(20)}
+        entries={entries}
       />,
       { bookmark: ep(20) },
     )
 
     // Baratie is open at 20: name, facts, log entry, and an anchor to land on.
     const baratie = screen.getByRole('heading', { level: 2, name: 'Baratie' })
+
     expect(baratie.closest('li')).toHaveAttribute('id', 'baratie')
     expect(screen.getByText('Floating restaurant')).toBeInTheDocument()
     expect(screen.getByText('The fish-head prow')).toBeInTheDocument()
@@ -54,8 +57,8 @@ describe('PortLog', () => {
   it('files the records met at a port, each behind its own fog', () => {
     renderWithProviders(
       <PortLog
-        entries={entries}
         bookmark={ep(20)}
+        entries={entries}
       />,
       { bookmark: ep(20) },
     )
@@ -63,7 +66,9 @@ describe('PortLog', () => {
     const baratie = screen
       .getByRole('heading', { level: 2, name: 'Baratie' })
       .closest('li')
-    if (baratie === null) throw new Error('no Baratie row')
+    if (baratie === null) {
+      throw new Error('no Baratie row')
+    }
 
     // Sanji is met at 20 and is a link; Mihawk arrives at 24 and is covered.
     expect(
@@ -78,26 +83,29 @@ describe('PortLog', () => {
   it('draws the horizon where the reader is', () => {
     renderWithProviders(
       <PortLog
-        entries={entries}
         bookmark={ep(20)}
+        entries={entries}
       />,
       { bookmark: ep(20) },
     )
 
     const horizon = screen.getByText('You are here · episode 20').closest('li')
+
     expect(horizon).toHaveAttribute('aria-current', 'step')
+
     // Five open ports above the horizon, two covered below it.
     const rows = screen
       .getAllByRole('listitem')
       .filter((item) => item.parentElement?.tagName === 'OL')
+
     expect(rows.indexOf(horizon as HTMLLIElement)).toBe(5)
   })
 
   it('puts the horizon first and fogs everything with no bookmark', () => {
     renderWithProviders(
       <PortLog
-        entries={entries}
         bookmark={null}
+        entries={entries}
       />,
     )
 

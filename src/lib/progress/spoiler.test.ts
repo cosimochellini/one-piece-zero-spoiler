@@ -1,17 +1,16 @@
+import { describe, expect, it } from 'vitest'
+
 import type { Bookmark } from './episode'
 import { episodeOf, isRevealed, latestAt } from './spoiler'
 
-const filedAt = (revealedAtEpisode: number, revealedAtChapter: number) => ({
-  revealedAtEpisode,
-  revealedAtChapter,
-})
+const filedAt = (revealedAtEpisode: number, revealedAtChapter: number) => {
+  return { revealedAtEpisode, revealedAtChapter }
+}
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
-const se = (season: number, episode: number): Bookmark => ({
-  mode: 'season',
-  season,
-  episode,
-})
+const se = (season: number, episode: number): Bookmark => {
+  return { mode: 'season', season, episode }
+}
 
 describe('isRevealed', () => {
   it('hides everything when no bookmark has been set', () => {
@@ -34,6 +33,7 @@ describe('isRevealed', () => {
   it('reads a chapter bookmark against the chapter threshold only', () => {
     // Shanks: fourth episode of the anime, first chapter of the manga.
     const shanks = filedAt(4, 1)
+
     expect(isRevealed(shanks, ch(1))).toBe(true)
     expect(isRevealed(shanks, ep(1))).toBe(false)
     // Robin: episode 130, chapter 218.

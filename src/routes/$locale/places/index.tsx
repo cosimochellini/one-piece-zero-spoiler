@@ -30,7 +30,9 @@ import {
 
 export const Route = createFileRoute('/$locale/places/')({
   head: ({ params }) => {
-    if (!isLocale(params.locale)) return {}
+    if (!isLocale(params.locale)) {
+      return {}
+    }
     const dictionary = getDictionary(params.locale)
 
     return {
@@ -79,8 +81,8 @@ function PlacesPage() {
 
       <div {...stylex.props(styles.enter, styles.at(1))}>
         <PortLog
-          entries={orderByMode(places, modeOf(bookmark))}
           bookmark={bookmark}
+          entries={orderByMode(places, modeOf(bookmark))}
         />
       </div>
     </main>
@@ -89,15 +91,15 @@ function PlacesPage() {
 
 const styles = stylex.create({
   page: {
-    display: 'grid',
     gap: space.xl,
+    paddingInline: space.md,
+    display: 'grid',
     paddingBlockEnd: space.xl3,
     paddingBlockStart: space.lg,
-    paddingInline: space.md,
   },
   // Wordmark-sized, as on the signal book: a log's heading is the name of
   // the book, and the count under it is a fact about the page.
-  head: { display: 'grid', gap: space.xs },
+  head: { gap: space.xs, display: 'grid' },
   title: {
     color: color.ink,
     fontFamily: font.display,
@@ -105,8 +107,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   count: {
     color: color.muted,

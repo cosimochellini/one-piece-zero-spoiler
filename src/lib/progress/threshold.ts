@@ -1,10 +1,10 @@
 import type { Translate } from '~/i18n/types'
 
 import {
-  bookmarkValue,
-  thresholdValue,
   type Bookmark,
   type BookmarkMode,
+  bookmarkValue,
+  thresholdValue,
 } from './episode'
 import type { Gated } from './spoiler'
 
@@ -15,13 +15,13 @@ import type { Gated } from './spoiler'
  * and a season code stands on its own.
  */
 export type ThresholdSentence =
-  | 'veil.locked'
-  | 'chart.opensAt'
-  | 'character.opensAt'
   | 'character.foggedDescription'
+  | 'character.opensAt'
   | 'characters.sectionOpensAt'
+  | 'chart.opensAt'
   | 'places.firstSeen'
   | 'places.foggedDescription'
+  | 'veil.locked'
 
 /** A record's threshold, said in the reader's unit. */
 export function describeThreshold(
@@ -34,7 +34,7 @@ export function describeThreshold(
 }
 
 /** The sentences that name the reader's own bookmark. */
-export type BookmarkSentence = 'mark' | 'chart.hereSet'
+export type BookmarkSentence = 'chart.hereSet' | 'mark'
 
 /** The reader's bookmark, said in its own unit. */
 export function describeBookmark(

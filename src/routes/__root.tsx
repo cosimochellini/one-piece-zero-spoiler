@@ -6,7 +6,7 @@ import {
   Scripts,
   useParams,
 } from '@tanstack/react-router'
-import { useEffect, type ReactNode } from 'react'
+import { type ReactNode, useEffect } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
@@ -108,7 +108,9 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   // `devMode: 'css-only'` the plugin resolves this one and never
   // `virtual:stylex:runtime`.
   useEffect(() => {
-    if (!import.meta.env.DEV) return
+    if (!import.meta.env.DEV) {
+      return
+    }
     void import('virtual:stylex:css-only')
   }, [])
 
@@ -142,11 +144,11 @@ const styles = stylex.create({
     backgroundRepeat: 'no-repeat',
     color: color.ink,
     fontFamily: font.body,
-    fontSize: text.base,
-    lineHeight: leading.body,
     // Optical sizing on is what makes Bricolage Grotesque's `opsz` axis open
     // up its counters when it is set small, as on the legend figures.
     fontOpticalSizing: 'auto',
+    fontSize: text.base,
+    lineHeight: leading.body,
     textRendering: 'optimizeLegibility',
   },
 })

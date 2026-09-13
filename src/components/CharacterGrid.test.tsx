@@ -1,5 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, it } from 'vitest'
 
 import type { BookSection } from '~/data/characters'
 import type { Entity } from '~/data/types'
@@ -63,13 +64,13 @@ const sections: readonly BookSection[] = [
   { arc: lateArc, characters: entries.slice(2) },
 ]
 
-function book(episode: number | null, locale: 'en' | 'it' = 'en') {
+function book(episode: null | number, locale: 'en' | 'it' = 'en') {
   const bookmark = episode === null ? null : ep(episode)
   return renderWithProviders(
     <CharacterGrid
+      bookmark={bookmark}
       featured={entries}
       sections={sections}
-      bookmark={bookmark}
     />,
     { bookmark, locale },
   )
@@ -93,6 +94,7 @@ describe('CharacterGrid', () => {
     })) {
       expect(link).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
     }
+
     expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(2)
     // Robin is under fog: no link a keyboard can reach, one card in the band.
     expect(
@@ -112,9 +114,9 @@ describe('CharacterGrid', () => {
     const chapter = { mode: 'chapter', chapter: 200 } as const
     renderWithProviders(
       <CharacterGrid
+        bookmark={chapter}
         featured={entries}
         sections={sections}
-        bookmark={chapter}
       />,
       { bookmark: chapter },
     )
@@ -122,6 +124,7 @@ describe('CharacterGrid', () => {
     const headings = screen
       .getAllByRole('heading', { level: 3 })
       .map((heading) => heading.textContent)
+
     expect(headings.indexOf('East Blue Saga')).toBeLessThan(
       headings.indexOf('Alabasta Saga'),
     )
@@ -131,6 +134,7 @@ describe('CharacterGrid', () => {
     book(10)
 
     const eastBlue = shelf(/East Blue Saga/u)
+
     expect(within(eastBlue).getByText('From episode 1')).toBeVisible()
     expect(within(eastBlue).getByText('2 characters')).toBeVisible()
     expect(within(eastBlue).getAllByRole('link')).toHaveLength(2)
@@ -138,6 +142,7 @@ describe('CharacterGrid', () => {
     // The Alabasta shelf is covered with everyone on it: no arc name, no
     // link, no drawing, and its one tile says only the episode.
     const covered = shelf(/An arc under fog/u)
+
     expect(screen.queryByText('Alabasta Saga')).not.toBeInTheDocument()
     expect(within(covered).queryByRole('link')).not.toBeInTheDocument()
     expect(covered.querySelectorAll('path')).toHaveLength(0)
@@ -154,6 +159,7 @@ describe('CharacterGrid', () => {
     expect(
       screen.queryByRole('link', { name: /Luffy/u }),
     ).not.toBeInTheDocument()
+
     for (const mark of screen.getAllByText('Nam')) {
       expect(mark.tagName).toBe('MARK')
     }
@@ -175,9 +181,9 @@ describe('CharacterGrid', () => {
     expect(
       screen.queryByRole('region', { name: /East Blue Saga/u }),
     ).not.toBeInTheDocument()
-    expect(
-      await screen.findByText('No open character is called “robin”.'),
-    ).toBeInTheDocument()
+    await expect(
+      screen.findByText('No open character is called “robin”.'),
+    ).resolves.toBeInTheDocument()
   })
 
   it('announces the count once the typing has settled', async () => {
@@ -185,13 +191,14 @@ describe('CharacterGrid', () => {
     book(10)
 
     await user.type(screen.getByRole('searchbox'), 'na')
+
     // Not yet: the announcement waits 250ms after the last keystroke, so a
     // screen reader hears one count and not one per letter.
     expect(screen.getByText('2 of 2 open characters shown')).toBeVisible()
 
-    expect(
-      await screen.findByText('1 of 2 open characters shown'),
-    ).toBeVisible()
+    await expect(
+      screen.findByText('1 of 2 open characters shown'),
+    ).resolves.toBeVisible()
   })
 
   it('clears the search from the button beside the field', async () => {
@@ -199,10 +206,12 @@ describe('CharacterGrid', () => {
     book(10)
 
     const field = screen.getByRole('searchbox')
+
     // Hidden until there is something to clear, but its slot is reserved.
     expect(
       screen.queryByRole('button', { name: 'Clear the search' }),
     ).not.toBeInTheDocument()
+
     await user.type(field, 'nami')
     await user.click(screen.getByRole('button', { name: 'Clear the search' }))
 

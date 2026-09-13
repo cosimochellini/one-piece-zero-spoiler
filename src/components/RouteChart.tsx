@@ -7,7 +7,7 @@ import type { Entity, EntityKind, Visual } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import { serialiseBookmark, type Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
 import {
@@ -31,8 +31,8 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
 
 export type RouteChartProps = {
   /** The archive, sorted by the threshold the bookmark counts in. */
-  readonly entries: readonly Entity[]
   readonly bookmark: Bookmark
+  readonly entries: readonly Entity[]
 }
 
 /**
@@ -61,14 +61,16 @@ export function RouteChart({ entries, bookmark }: RouteChartProps) {
 
   return (
     <ol {...stylex.props(styles.route)}>
-      {open.map((entry, index) => (
-        <Waypoint
-          key={entry.id}
-          entry={entry}
-          index={index}
-          open
-        />
-      ))}
+      {open.map((entry, index) => {
+        return (
+          <Waypoint
+            key={entry.id}
+            entry={entry}
+            index={index}
+            open
+          />
+        )
+      })}
 
       <Horizon
         // Re-mounted when the bookmark changes, so the line surfaces at its
@@ -78,14 +80,16 @@ export function RouteChart({ entries, bookmark }: RouteChartProps) {
         bookmark={bookmark}
       />
 
-      {covered.map((entry, index) => (
-        <Waypoint
-          key={entry.id}
-          entry={entry}
-          index={open.length + 1 + index}
-          open={false}
-        />
-      ))}
+      {covered.map((entry, index) => {
+        return (
+          <Waypoint
+            key={entry.id}
+            entry={entry}
+            index={open.length + 1 + index}
+            open={false}
+          />
+        )
+      })}
     </ol>
   )
 }
@@ -143,17 +147,17 @@ function Waypoint({ entry, index, open }: WaypointProps) {
                 */}
                 {entry.kind === 'character' && open ?
                   <Link
-                    to="/$locale/characters/$id"
                     params={{ locale, id: entry.id }}
+                    to="/$locale/characters/$id"
                     {...stylex.props(styles.nameLink)}
                   >
                     {entry.name[locale]}
                   </Link>
                 : entry.kind === 'place' && open ?
                   <Link
-                    to="/$locale/places"
-                    params={{ locale }}
                     hash={entry.id}
+                    params={{ locale }}
+                    to="/$locale/places"
                     {...stylex.props(styles.nameLink)}
                   >
                     {entry.name[locale]}
@@ -209,8 +213,8 @@ function Segment({
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 64 100"
       preserveAspectRatio="none"
+      viewBox="0 0 64 100"
       {...stylex.props(styles.segment)}
     >
       <path
@@ -242,8 +246,8 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
       <div {...stylex.props(styles.rail)}>
         <svg
           aria-hidden="true"
-          viewBox="0 0 64 100"
           preserveAspectRatio="none"
+          viewBox="0 0 64 100"
           {...stylex.props(styles.segment)}
         >
           <path
@@ -333,11 +337,11 @@ const styles = stylex.create({
   },
   rail: { position: 'relative' },
   segment: {
-    display: 'block',
-    height: '100%',
     inset: 0,
     overflow: 'visible',
+    display: 'block',
     position: 'absolute',
+    height: '100%',
     width: '100%',
   },
   stroke: {
@@ -355,22 +359,22 @@ const styles = stylex.create({
     borderRadius: radius.pill,
     borderStyle: 'solid',
     borderWidth: rule.fine,
-    height: '0.875rem',
     insetBlockStart: '50%',
     position: 'absolute',
     transform: 'translate(-50%, -50%)',
     transitionDuration: dur.short,
     transitionProperty: 'background-color, border-color',
     transitionTimingFunction: ease.out,
+    height: '0.875rem',
     width: '0.875rem',
   },
   // 14/64 and 50/64: where the two bows of the segment path sit.
   nodeLeft: { insetInlineStart: '21.875%' },
   nodeRight: { insetInlineStart: '78.125%' },
-  nodeOpen: { backgroundColor: color.accent, borderColor: color.accent },
-  nodeCovered: { backgroundColor: color.paper, borderColor: color.rule2 },
+  nodeOpen: { borderColor: color.accent, backgroundColor: color.accent },
+  nodeCovered: { borderColor: color.rule2, backgroundColor: color.paper },
 
-  body: { display: 'grid', gap: space.xs, minWidth: 0, paddingBlock: space.lg },
+  body: { gap: space.xs, paddingBlock: space.lg, display: 'grid', minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -407,20 +411,14 @@ const styles = stylex.create({
     rowGap: { 'default': space.sm, '@media (min-width: 40rem)': 0 },
   },
   words: {
+    gap: space.xs2,
     // Packed to the top: with the default `stretch` the two rows share the
     // picture's height and the summary floats halfway down the card.
     alignContent: 'start',
     display: 'grid',
-    gap: space.xs2,
     minWidth: 0,
   },
   frame: {
-    aspectRatio: '4 / 5',
-    // Stacked on a phone the picture keeps the size it has beside the
-    // words on a tablet, not the full row: a route of 35 full-width
-    // drawings is a feed, not a chart.
-    maxWidth: { 'default': '9rem', '@media (min-width: 40rem)': 'none' },
-    backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
@@ -428,6 +426,12 @@ const styles = stylex.create({
     // Clips the blur of a fogged drawing to its own frame, so the fog stays
     // on the card and does not smear into the words beside it.
     overflow: 'hidden',
+    aspectRatio: '4 / 5',
+    backgroundColor: color.paper2,
+    // Stacked on a phone the picture keeps the size it has beside the
+    // words on a tablet, not the full row: a route of 35 full-width
+    // drawings is a feed, not a chart.
+    maxWidth: { 'default': '9rem', '@media (min-width: 40rem)': 'none' },
   },
   name: {
     color: color.ink,
@@ -436,8 +440,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   // A character's name is the way to its page. Same ink as the name at
   // rest, the accent rule on hover, so the route does not turn into a column
@@ -464,11 +468,11 @@ const styles = stylex.create({
     color: color.ink2,
     fontSize: text.base,
     lineHeight: leading.body,
+    overflowWrap: 'anywhere',
     maxWidth: '52ch',
     // At 320px the words column is under 100px wide, and one long word
     // ("vice-president,") would otherwise widen the column past the page.
     minWidth: 0,
-    overflowWrap: 'anywhere',
   },
 
   // No `align-items: center` here: the rail cell has to stretch to the row's
@@ -482,11 +486,11 @@ const styles = stylex.create({
     animationTimingFunction: ease.out,
   },
   compass: {
-    height: '2rem',
     insetBlockStart: '50%',
     insetInlineStart: '50%',
     position: 'absolute',
     transform: 'translate(-50%, -50%)',
+    height: '2rem',
     width: '2rem',
   },
   compassSet: { color: color.accent },
@@ -498,11 +502,11 @@ const styles = stylex.create({
   },
   compassStar: { fill: 'currentColor' },
   horizonBody: {
+    gap: space.sm,
+    paddingBlock: space.md,
     alignItems: 'center',
     display: 'flex',
-    gap: space.sm,
     minWidth: 0,
-    paddingBlock: space.md,
   },
   horizonLabel: {
     fontFamily: font.mono,
@@ -511,8 +515,8 @@ const styles = stylex.create({
     fontWeight: 700,
     letterSpacing: '0.1em',
     lineHeight: leading.body,
-    minWidth: 0,
     textTransform: 'uppercase',
+    minWidth: 0,
   },
   horizonSet: { color: color.accent },
   horizonUnset: { color: color.muted },

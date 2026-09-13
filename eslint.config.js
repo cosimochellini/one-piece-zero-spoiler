@@ -165,7 +165,7 @@ export default defineConfig(
         {
           patterns: [
             {
-              regex: '^\\.\\./',
+              regex: String.raw`^\.\./`,
               message:
                 'Import through the `~/` alias instead of a parent-relative path.',
             },
@@ -716,7 +716,7 @@ export default defineConfig(
   // Gate scripts: Node CLIs whose contract with CI is an exit code and a line
   // on stdout, and whose job is to run other CLIs over paths they compute.
   // That is exactly what the child-process and filesystem rules exist to flag
-  // in application code. JSDoc tags are the only types these files have, so
+  // in app code. JSDoc tags are the only types these files have, so
   // the typescript-flavor preset applies instead of `no-types`.
   {
     files: SCRIPTS,

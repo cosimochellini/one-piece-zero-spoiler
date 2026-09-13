@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
-import type { ReactNode } from 'react'
+import { type ReactNode, useState } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -32,21 +31,21 @@ export type SpoilerVeilProps = {
    * a small card: the verb alone, centred, with the threshold left to the
    * card's own meta line and to the control's accessible name.
    */
-  readonly density?: 'block' | 'inline' | 'compact'
+  readonly density?: 'block' | 'compact' | 'inline'
   /**
    * How hard to blur. `text` is enough for a line of words; a photograph
    * needs `media`, because a face survives a half-rem blur and a fogged
    * waypoint must not give its subject away.
    */
-  readonly strength?: 'text' | 'media'
+  readonly strength?: 'media' | 'text'
   /**
    * What to render under the fog instead of `children`. With a placeholder
    * the covered words are not in the served HTML or the DOM at all; the real
    * children mount only once the fog is lifted. Entity pages use this, since
    * a page about one record must not carry that record's name in its source.
    */
-  readonly placeholder?: ReactNode
   readonly children: ReactNode
+  readonly placeholder?: ReactNode
 }
 
 /**
@@ -104,12 +103,12 @@ export function SpoilerVeil({
       </div>
 
       <button
-        type="button"
-        onClick={handleUncover}
         // Block density reads its name off the visible notice. The verb-only
         // densities show the verb alone — the threshold already sits in its
         // own line beside them — so the sentence has to be supplied here.
         aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
+        onClick={handleUncover}
+        type="button"
         {...stylex.props(
           styles.curtain,
           curtainFor(density),
@@ -136,15 +135,23 @@ type Strength = NonNullable<SpoilerVeilProps['strength']>
  * drawing's; a block follows the strength its caller asked for.
  */
 function fogFor(density: Density, strength: Strength) {
-  if (density === 'inline') return styles.coveredTight
-  if (density === 'compact') return styles.coveredCompact
+  if (density === 'inline') {
+    return styles.coveredTight
+  }
+  if (density === 'compact') {
+    return styles.coveredCompact
+  }
   return strength === 'media' ? styles.coveredMedia : styles.covered
 }
 
 /** The curtain's layout per density; `block` adds nothing to the base. */
 function curtainFor(density: Density) {
-  if (density === 'inline') return styles.curtainInline
-  if (density === 'compact') return styles.curtainCompact
+  if (density === 'inline') {
+    return styles.curtainInline
+  }
+  if (density === 'compact') {
+    return styles.curtainCompact
+  }
   return null
 }
 
@@ -176,25 +183,25 @@ const styles = stylex.create({
   coveredCompact: { filter: 'blur(1rem)', userSelect: 'none' },
 
   curtain: {
+    inset: 0,
+    padding: space.md,
+    borderRadius: radius.card,
+    borderStyle: 'none',
+    gap: space.xs,
     alignContent: 'center',
     backgroundColor: 'transparent',
-    borderStyle: 'none',
-    borderRadius: radius.card,
     color: color.ink2,
     cursor: 'pointer',
     display: 'grid',
-    gap: space.xs,
     // Explicit rather than the implicit `minmax(auto, 1fr)`, whose floor is
     // the notice's min-content and can push the curtain past its frame.
     gridTemplateColumns: 'minmax(0, 1fr)',
-    inset: 0,
     justifyItems: 'start',
     opacity: 1,
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    padding: space.md,
     pointerEvents: 'auto',
     position: 'absolute',
     textAlign: 'start',
@@ -205,17 +212,17 @@ const styles = stylex.create({
     width: '100%',
   },
   curtainInline: {
-    alignItems: 'center',
-    display: 'flex',
     gap: space.xs,
-    justifyContent: 'start',
     paddingBlock: 0,
     paddingInline: 0,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'start',
   },
   curtainCompact: {
+    padding: space.xs,
     alignContent: 'center',
     justifyItems: 'center',
-    padding: space.xs,
   },
   curtainLifted: {
     opacity: 0,
@@ -227,31 +234,31 @@ const styles = stylex.create({
   },
 
   notice: {
-    backgroundColor: color.paper,
     borderColor: color.rule2,
     borderStyle: 'solid',
     borderWidth: rule.hair,
+    paddingBlock: space.xs3,
+    paddingInline: space.xs,
+    backgroundColor: color.paper,
     fontFamily: font.mono,
     fontSize: text.xs,
     fontWeight: 500,
     letterSpacing: '0.08em',
-    minWidth: 0,
     overflowWrap: 'anywhere',
-    paddingBlock: space.xs3,
-    paddingInline: space.xs,
     textTransform: 'uppercase',
+    minWidth: 0,
   },
   action: {
+    paddingInline: space.xs2,
     backgroundColor: color.paper,
     color: {
       'default': color.accent,
-      ':is(button:hover) > &': color.ink,
       ':is(button:active) > &': color.ink,
+      ':is(button:hover) > &': color.ink,
     },
     fontFamily: font.body,
     fontSize: text.base,
     fontWeight: 700,
-    paddingInline: space.xs2,
     textDecorationLine: 'underline',
     textUnderlineOffset: '2px',
     // A verb in a table cell is one line or it is broken.

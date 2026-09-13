@@ -1,14 +1,14 @@
 import {
+  BLADE,
   circle,
-  ellipse,
+  cup,
   dots,
-  star,
+  ellipse,
+  house,
   SEA,
   shadow,
   sheath,
-  cup,
-  BLADE,
-  house,
+  star,
 } from './primitives'
 import type { Drawings } from './stroke'
 
@@ -383,7 +383,7 @@ export const eastBlueArt = {
     { d: 'M74 146 h12 v14 h-12 Z' },
     shadow(80, 182, 50),
   ],
-  // The ship: hull, deck, one mast, one sail, and the ram's head at the prow.
+  // The ship: hull, deck, one mast, one sail, and the RAM's head at the prow.
   'going-merry': [
     { d: 'M22 122 L32 154 Q80 172 128 154 L138 122' },
     { d: 'M22 122 H138' },

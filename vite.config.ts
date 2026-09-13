@@ -1,10 +1,8 @@
-import path from 'node:path'
-
 import netlify from '@netlify/vite-plugin-tanstack-start'
-import stylex from '@stylexjs/unplugin'
-import type { UserOptions } from '@stylexjs/unplugin'
+import stylex, { type UserOptions } from '@stylexjs/unplugin'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
+import path from 'node:path'
 import { defineConfig, type Plugin } from 'vite'
 
 // @stylexjs/unplugin declares every bundler factory as `(options?) => any`, so

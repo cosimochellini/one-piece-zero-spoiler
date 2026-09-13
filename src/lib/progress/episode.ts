@@ -15,8 +15,8 @@ import {
 
 export {
   CHAPTER_CEILING,
-  EPISODE_COOKIE,
   EPISODE_CEILING,
+  EPISODE_COOKIE,
   FIRST_CHAPTER,
   FIRST_EPISODE,
 } from './bounds'
@@ -26,7 +26,7 @@ export {
  * conversion between them: a reader picks one, and every threshold on the
  * site is then read in that unit.
  */
-export type BookmarkMode = 'episode' | 'season' | 'chapter'
+export type BookmarkMode = 'chapter' | 'episode' | 'season'
 
 /**
  * The reader's bookmark. `null` means none has been set, and it is not the
@@ -38,14 +38,14 @@ export type BookmarkMode = 'episode' | 'season' | 'chapter'
  * stands for is derived through `~/data/seasons` when the fog is decided.
  */
 export type Bookmark =
-  | { readonly mode: 'episode'; readonly episode: number }
+  | null
+  | { readonly chapter: number; readonly mode: 'chapter' }
+  | { readonly episode: number; readonly mode: 'episode' }
   | {
+      readonly episode: number
       readonly mode: 'season'
       readonly season: number
-      readonly episode: number
     }
-  | { readonly mode: 'chapter'; readonly chapter: number }
-  | null
 
 /**
  * The cookie grammar. A bare integer is an anime episode — that is what the
@@ -62,8 +62,10 @@ function within(value: number, first: number, ceiling: number): boolean {
 }
 
 /** Parses a raw cookie value into a valid bookmark, or `null`. */
-export function parseBookmark(raw: string | null | undefined): Bookmark {
-  if (raw === null || raw === undefined) return null
+export function parseBookmark(raw: null | string | undefined): Bookmark {
+  if (raw === null || raw === undefined) {
+    return null
+  }
 
   const episode = EPISODE_FORM.exec(raw)
   if (episode !== null) {
@@ -96,12 +98,15 @@ export function parseBookmark(raw: string | null | undefined): Bookmark {
 /** The cookie value for a bookmark; `parseBookmark` reads it back. */
 export function serialiseBookmark(bookmark: NonNullable<Bookmark>): string {
   switch (bookmark.mode) {
-    case 'episode':
-      return String(bookmark.episode)
-    case 'season':
-      return `s${String(bookmark.season)}e${String(bookmark.episode)}`
-    case 'chapter':
+    case 'chapter': {
       return `c${String(bookmark.chapter)}`
+    }
+    case 'episode': {
+      return String(bookmark.episode)
+    }
+    case 'season': {
+      return `s${String(bookmark.season)}e${String(bookmark.episode)}`
+    }
   }
 }
 
@@ -111,14 +116,17 @@ export function serialiseBookmark(bookmark: NonNullable<Bookmark>): string {
  */
 export function absoluteEpisodeOf(
   bookmark: NonNullable<Bookmark>,
-): number | null {
+): null | number {
   switch (bookmark.mode) {
-    case 'episode':
-      return bookmark.episode
-    case 'season':
-      return resolveEpisode(bookmark.season, bookmark.episode)
-    case 'chapter':
+    case 'chapter': {
       return null
+    }
+    case 'episode': {
+      return bookmark.episode
+    }
+    case 'season': {
+      return resolveEpisode(bookmark.season, bookmark.episode)
+    }
   }
 }
 
@@ -130,12 +138,15 @@ export function modeOf(bookmark: Bookmark): BookmarkMode {
 /** `650`, `S02E03` or `1044`: the bookmark as the chip shows it. */
 export function bookmarkValue(bookmark: NonNullable<Bookmark>): string {
   switch (bookmark.mode) {
-    case 'episode':
-      return String(bookmark.episode)
-    case 'season':
-      return formatSeasonCode(bookmark.season, bookmark.episode)
-    case 'chapter':
+    case 'chapter': {
       return String(bookmark.chapter)
+    }
+    case 'episode': {
+      return String(bookmark.episode)
+    }
+    case 'season': {
+      return formatSeasonCode(bookmark.season, bookmark.episode)
+    }
   }
 }
 
@@ -146,16 +157,18 @@ export function bookmarkValue(bookmark: NonNullable<Bookmark>): string {
  */
 export function thresholdValue(
   gated: {
-    readonly revealedAtEpisode: number
     readonly revealedAtChapter: number
+    readonly revealedAtEpisode: number
   },
   mode: BookmarkMode,
 ): string {
   switch (mode) {
-    case 'episode':
-      return String(gated.revealedAtEpisode)
-    case 'chapter':
+    case 'chapter': {
       return String(gated.revealedAtChapter)
+    }
+    case 'episode': {
+      return String(gated.revealedAtEpisode)
+    }
     case 'season': {
       const at = locateEpisode(gated.revealedAtEpisode)
       return at === null ?
@@ -167,7 +180,9 @@ export function thresholdValue(
 
 /** Pulls a number into `1 … ceiling`. */
 export function clampIndex(value: number, ceiling: number): number {
-  if (!Number.isFinite(value)) return 1
+  if (!Number.isFinite(value)) {
+    return 1
+  }
 
   return Math.min(ceiling, Math.max(1, Math.trunc(value)))
 }
@@ -178,8 +193,8 @@ export function clampIndex(value: number, ceiling: number): number {
  */
 export type Draft = {
   readonly mode: BookmarkMode
-  readonly season: string
   readonly number: string
+  readonly season: string
 }
 
 /** Why a draft is not usable yet. `season` means no season has been chosen. */
@@ -192,29 +207,36 @@ export type GradedDraft = {
 
 /** The draft a dialog opens with: the current bookmark, spelled back out. */
 export function draftOf(bookmark: Bookmark): Draft {
-  if (bookmark === null) return { mode: 'episode', season: '', number: '' }
+  if (bookmark === null) {
+    return { mode: 'episode', season: '', number: '' }
+  }
 
   switch (bookmark.mode) {
-    case 'episode':
+    case 'chapter': {
+      return { mode: 'chapter', season: '', number: String(bookmark.chapter) }
+    }
+    case 'episode': {
       return { mode: 'episode', season: '', number: String(bookmark.episode) }
-    case 'season':
+    }
+    case 'season': {
       return {
         mode: 'season',
         season: String(bookmark.season),
         number: String(bookmark.episode),
       }
-    case 'chapter':
-      return { mode: 'chapter', season: '', number: String(bookmark.chapter) }
+    }
   }
 }
 
 /** The largest number the draft's field accepts, given its mode and season. */
-export function ceilingOf(draft: Draft): number | null {
+export function ceilingOf(draft: Draft): null | number {
   switch (draft.mode) {
-    case 'episode':
-      return EPISODE_CEILING
-    case 'chapter':
+    case 'chapter': {
       return CHAPTER_CEILING
+    }
+    case 'episode': {
+      return EPISODE_CEILING
+    }
     case 'season': {
       const season = getSeason(Number(draft.season))
       return season === undefined ? null : seasonLength(season)
@@ -229,9 +251,9 @@ export function ceilingOf(draft: Draft): number | null {
  * 1 rather than on NaN.
  */
 export type Stepper = {
-  readonly ceiling: number | null
-  readonly atFloor: boolean
   readonly atCeiling: boolean
+  readonly atFloor: boolean
+  readonly ceiling: null | number
   readonly stepped: (delta: number) => string
 }
 
@@ -244,15 +266,18 @@ export function stepperOf(draft: Draft): Stepper {
     ceiling,
     atFloor: current !== null && current <= 1,
     atCeiling: ceiling !== null && current !== null && current >= ceiling,
-    stepped: (delta) =>
-      ceiling === null ?
-        draft.number
-      : String(clampIndex(base + delta, ceiling)),
+    stepped: (delta) => {
+      return ceiling === null ?
+          draft.number
+        : String(clampIndex(base + delta, ceiling))
+    },
   }
 }
 
-function parseWhole(raw: string): number | null {
-  if (raw.trim() === '') return null
+function parseWhole(raw: string): null | number {
+  if (raw.trim() === '') {
+    return null
+  }
   const value = Number(raw)
   return Number.isInteger(value) ? value : null
 }
@@ -264,9 +289,13 @@ function parseWhole(raw: string): number | null {
  */
 export function gradeDraft(draft: Draft): GradedDraft {
   const ceiling = ceilingOf(draft)
-  if (ceiling === null) return { bookmark: null, problem: 'season' }
+  if (ceiling === null) {
+    return { bookmark: null, problem: 'season' }
+  }
 
-  if (draft.number.trim() === '') return { bookmark: null, problem: 'empty' }
+  if (draft.number.trim() === '') {
+    return { bookmark: null, problem: 'empty' }
+  }
 
   const value = parseWhole(draft.number)
   if (value === null || !within(value, 1, ceiling)) {
@@ -274,11 +303,13 @@ export function gradeDraft(draft: Draft): GradedDraft {
   }
 
   switch (draft.mode) {
-    case 'episode':
-      return { bookmark: { mode: 'episode', episode: value }, problem: null }
-    case 'chapter':
+    case 'chapter': {
       return { bookmark: { mode: 'chapter', chapter: value }, problem: null }
-    case 'season':
+    }
+    case 'episode': {
+      return { bookmark: { mode: 'episode', episode: value }, problem: null }
+    }
+    case 'season': {
       return {
         bookmark: {
           mode: 'season',
@@ -287,5 +318,6 @@ export function gradeDraft(draft: Draft): GradedDraft {
         },
         problem: null,
       }
+    }
   }
 }

@@ -7,6 +7,6 @@ import type { CharacterDossier, Entity } from '../types'
  * records and its dossiers are read and reviewed together.
  */
 export type Saga = {
-  readonly entries: readonly Entity[]
   readonly dossiers: Readonly<Record<string, CharacterDossier>>
+  readonly entries: readonly Entity[]
 }

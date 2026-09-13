@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Blocking fallow gate.
  *
@@ -23,7 +22,7 @@ import { dirname, join, resolve } from 'node:path'
 import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const repoRoot = resolve(import.meta.dirname, '..')
 
 // bin/fallow is a Node shim that require.resolve()s the platform package from
 // optionalDependencies, so never install with --omit=optional.

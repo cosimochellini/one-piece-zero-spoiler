@@ -24,7 +24,7 @@ export type CharacterTileProps = {
   readonly entity: Entity
   readonly revealed: boolean
   /** A span of the name to mark, from a search match. */
-  readonly highlight?: readonly [number, number] | null
+  readonly highlight?: null | readonly [number, number]
 }
 
 /**
@@ -49,9 +49,8 @@ export function CharacterTile({
   return (
     <li {...stylex.props(styles.tile)}>
       <SpoilerVeil
-        gated={entity}
-        revealed={revealed}
         density="compact"
+        gated={entity}
         placeholder={
           <span {...stylex.props(styles.row)}>
             <span {...stylex.props(styles.frame)} />
@@ -62,10 +61,11 @@ export function CharacterTile({
             </span>
           </span>
         }
+        revealed={revealed}
       >
         <Link
-          to="/$locale/characters/$id"
           params={{ locale, id: entity.id }}
+          to="/$locale/characters/$id"
           {...stylex.props(styles.row, styles.link)}
         >
           <span {...stylex.props(styles.frame)}>
@@ -77,8 +77,8 @@ export function CharacterTile({
           <span {...stylex.props(styles.words)}>
             <span {...stylex.props(styles.name)}>
               <Marked
-                text={entity.name[locale]}
                 span={highlight}
+                text={entity.name[locale]}
               />
             </span>
             {role === undefined ? null : (
@@ -95,7 +95,7 @@ export function CharacterTile({
 }
 
 const styles = stylex.create({
-  tile: { display: 'grid', gap: space.xs2, minWidth: 0 },
+  tile: { gap: space.xs2, display: 'grid', minWidth: 0 },
   row: {
     alignItems: 'center',
     columnGap: space.sm,
@@ -112,30 +112,30 @@ const styles = stylex.create({
     textDecorationLine: 'none',
   },
   frame: {
-    aspectRatio: '4 / 5',
-    backgroundColor: color.paper2,
+    padding: space.xs2,
     borderColor: {
       'default': color.rule,
-      ':is(a:hover) > &': color.rule2,
       ':is(a:focus-visible) > &': color.rule2,
+      ':is(a:hover) > &': color.rule2,
     },
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    display: 'block',
     overflow: 'hidden',
-    padding: space.xs2,
+    aspectRatio: '4 / 5',
+    backgroundColor: color.paper2,
+    display: 'block',
     transitionDuration: dur.micro,
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
   },
-  words: { display: 'grid', gap: space.xs3, minWidth: 0 },
+  words: { gap: space.xs3, display: 'grid', minWidth: 0 },
   name: {
     color: {
       'default': color.ink,
-      ':is(a:hover) > * > &': color.accent,
-      ':is(a:focus-visible) > * > &': color.accent,
       ':is(a:active) > * > &': color.ink2,
+      ':is(a:focus-visible) > * > &': color.accent,
+      ':is(a:hover) > * > &': color.accent,
     },
     display: 'block',
     fontFamily: font.display,
@@ -143,19 +143,19 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
     transitionDuration: dur.micro,
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+    minWidth: 0,
   },
   role: {
     color: color.muted,
     display: 'block',
     fontSize: text.xs,
     lineHeight: leading.body,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   episode: {
     color: color.ink2,

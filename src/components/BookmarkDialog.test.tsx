@@ -1,14 +1,17 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { beforeEach, describe, expect, it } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { serialiseBookmark, type Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { EpisodeMark } from './EpisodeMark'
 
-/** Reports what the rest of the app would see, so the dialog can be tested by
- *  its effect rather than by its internals. */
+/**
+ * Reports what the rest of the app would see, so the dialog can be tested by
+ *  its effect rather than by its internals.
+ */
 function BookmarkProbe() {
   const { bookmark } = useBookmark()
 
@@ -99,6 +102,7 @@ describe('EpisodeMark', () => {
 
     await open(user)
     await user.click(screen.getByRole('radio', { name: 'Season and episode' }))
+
     // No season yet: the field waits, and so does Save.
     expect(field('Episode within the season')).toBeDisabled()
     expect(dialog()).toHaveTextContent('Choose a season first.')
@@ -130,6 +134,7 @@ describe('EpisodeMark', () => {
     renderMark(ep(650))
 
     await open(user)
+
     expect(field('Episode you have reached')).toHaveValue('650')
 
     await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
@@ -158,6 +163,7 @@ describe('EpisodeMark', () => {
 
     await open(user)
     await user.type(field('Episode you have reached'), '99999')
+
     expect(screen.queryByRole('alert')).not.toBeInTheDocument()
 
     await user.tab()

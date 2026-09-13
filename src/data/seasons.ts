@@ -17,7 +17,7 @@ export type Season = {
   /** The absolute number of the season's first episode. */
   readonly first: number
   /** The absolute number of its last episode, or `null` while it is airing. */
-  readonly last: number | null
+  readonly last: null | number
 }
 
 export const SEASONS: readonly Season[] = [
@@ -66,11 +66,17 @@ export function seasonLength(season: Season): number {
 export function resolveEpisode(
   seasonNumber: number,
   episode: number,
-): number | null {
+): null | number {
   const season = getSeason(seasonNumber)
-  if (season === undefined) return null
-  if (!Number.isInteger(episode)) return null
-  if (episode < 1 || episode > seasonLength(season)) return null
+  if (season === undefined) {
+    return null
+  }
+  if (!Number.isInteger(episode)) {
+    return null
+  }
+  if (episode < 1 || episode > seasonLength(season)) {
+    return null
+  }
 
   return season.first + episode - 1
 }
@@ -82,14 +88,18 @@ export type SeasonPosition = {
 }
 
 /** The season an absolute episode falls in, and its number within it. */
-export function locateEpisode(absolute: number): SeasonPosition | null {
-  if (!Number.isInteger(absolute) || absolute < FIRST_EPISODE) return null
+export function locateEpisode(absolute: number): null | SeasonPosition {
+  if (!Number.isInteger(absolute) || absolute < FIRST_EPISODE) {
+    return null
+  }
 
   const season = SEASONS.find(
     (candidate) =>
       absolute >= candidate.first && absolute <= lastEpisodeOf(candidate),
   )
-  if (season === undefined) return null
+  if (season === undefined) {
+    return null
+  }
 
   return { season: season.number, episode: absolute - season.first + 1 }
 }

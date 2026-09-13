@@ -3,7 +3,7 @@ import { getCookie } from '@tanstack/react-start/server'
 
 import { parseCookieHeader } from '~/lib/cookies'
 
-import { EPISODE_COOKIE, parseBookmark, type Bookmark } from './episode'
+import { type Bookmark, EPISODE_COOKIE, parseBookmark } from './episode'
 
 /**
  * Reads the bookmark on whichever side is asking.

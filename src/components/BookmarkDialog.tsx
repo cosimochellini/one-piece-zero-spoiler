@@ -1,20 +1,26 @@
 import * as stylex from '@stylexjs/stylex'
 import { useRouter } from '@tanstack/react-router'
-import { useEffect, useId, useRef, useState } from 'react'
-import type { MouseEvent, SyntheticEvent } from 'react'
+import {
+  type MouseEvent,
+  type SyntheticEvent,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from 'react'
 
 import { Button } from '~/components/ui/Button'
-import { SEASONS, type Season } from '~/data/seasons'
+import { type Season, SEASONS } from '~/data/seasons'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
-  draftOf,
-  gradeDraft,
-  stepperOf,
   type BookmarkMode,
   type Draft,
+  draftOf,
   type DraftProblem,
+  gradeDraft,
+  stepperOf,
 } from '~/lib/progress/episode'
 import {
   color,
@@ -104,7 +110,9 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps) {
 
   const save = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault()
-    if (graded.bookmark === null) return
+    if (graded.bookmark === null) {
+      return
+    }
     setBookmark(graded.bookmark)
     // The root route read the old cookie for this document; a fresh load
     // lets a page whose <head> depends on it (a character's title) catch up.
@@ -119,16 +127,18 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps) {
   }
 
   const onBackdrop = (event: MouseEvent<HTMLDialogElement>) => {
-    if (event.target === event.currentTarget) close()
+    if (event.target === event.currentTarget) {
+      close()
+    }
   }
 
   return (
     <dialog
-      ref={dialogRef}
-      aria-labelledby={titleId}
       aria-describedby={ledeId}
-      onClose={onClose}
+      aria-labelledby={titleId}
       onClick={onBackdrop}
+      onClose={onClose}
+      ref={dialogRef}
       {...stylex.props(styles.dialog)}
     >
       <form
@@ -157,32 +167,32 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps) {
 
         {draft.mode === 'season' && (
           <SeasonPicker
-            season={draft.season}
             onChoose={chooseSeason}
+            season={draft.season}
           />
         )}
 
         <NumberField
           draft={draft}
-          problem={problem}
-          onChange={(number) => {
-            setDraft({ ...draft, number })
-          }}
           onBlur={() => {
             setTouched(true)
           }}
+          onChange={(number) => {
+            setDraft({ ...draft, number })
+          }}
+          problem={problem}
         />
 
         <div {...stylex.props(styles.actions)}>
           <Button
-            type="submit"
             disabled={graded.bookmark === null}
+            type="submit"
           >
             {t('dialog.save')}
           </Button>
           <Button
-            onClick={forget}
             disabled={bookmark === null}
+            onClick={forget}
           >
             {t('dialog.forget')}
           </Button>
@@ -223,13 +233,13 @@ function ModeChooser({
             {...stylex.props(styles.mode)}
           >
             <input
-              type="radio"
-              name={name}
-              value={candidate}
               checked={mode === candidate}
+              name={name}
               onChange={() => {
                 onChoose(candidate)
               }}
+              type="radio"
+              value={candidate}
               {...stylex.props(styles.radio)}
             />
             <span {...stylex.props(styles.modeLabel)}>
@@ -247,8 +257,8 @@ function SeasonPicker({
   season,
   onChoose,
 }: {
-  readonly season: string
   readonly onChoose: (season: string) => void
+  readonly season: string
 }) {
   const t = useT()
   const id = useId()
@@ -263,10 +273,10 @@ function SeasonPicker({
       </label>
       <select
         id={id}
-        value={season}
         onChange={(event) => {
           onChoose(event.target.value)
         }}
+        value={season}
         {...stylex.props(styles.field, styles.select)}
       >
         <option value="">{t('dialog.seasonPlaceholder')}</option>
@@ -296,9 +306,9 @@ function NumberField({
   onBlur,
 }: {
   readonly draft: Draft
-  readonly problem: DraftProblem | null
-  readonly onChange: (number: string) => void
   readonly onBlur: () => void
+  readonly onChange: (number: string) => void
+  readonly problem: DraftProblem | null
 }) {
   const t = useT()
   const id = useId()
@@ -317,28 +327,28 @@ function NumberField({
       </label>
       <div {...stylex.props(styles.row)}>
         <Button
-          variant="quiet"
           aria-label={t('dialog.decrease')}
           disabled={disabled || atFloor}
           onClick={() => {
             onChange(stepped(-1))
           }}
+          variant="quiet"
         >
           −
         </Button>
         <input
-          id={id}
-          inputMode="numeric"
-          autoComplete="off"
-          type="text"
-          value={draft.number}
-          disabled={disabled}
           aria-describedby={messageId}
           aria-invalid={error !== null}
+          autoComplete="off"
+          disabled={disabled}
+          id={id}
+          inputMode="numeric"
+          onBlur={onBlur}
           onChange={(event) => {
             onChange(event.target.value)
           }}
-          onBlur={onBlur}
+          type="text"
+          value={draft.number}
           {...stylex.props(
             styles.field,
             styles.number,
@@ -346,12 +356,12 @@ function NumberField({
           )}
         />
         <Button
-          variant="quiet"
           aria-label={t('dialog.increase')}
           disabled={disabled || atCeiling}
           onClick={() => {
             onChange(stepped(1))
           }}
+          variant="quiet"
         >
           +
         </Button>
@@ -375,11 +385,15 @@ function NumberField({
 /** The hint when nothing is wrong, the error when something is. */
 function messageFor(
   t: Translate,
-  error: TranslationKey | null,
-  ceiling: number | null,
+  error: null | TranslationKey,
+  ceiling: null | number,
 ): string {
-  if (error !== null) return t(error, { max: ceiling ?? 0 })
-  if (ceiling === null) return t('dialog.errorSeason')
+  if (error !== null) {
+    return t(error, { max: ceiling ?? 0 })
+  }
+  if (ceiling === null) {
+    return t('dialog.errorSeason')
+  }
 
   return t('dialog.hint', { max: ceiling })
 }
@@ -409,7 +423,14 @@ const styles = stylex.create({
   // inset-zero box centres it, and `height: fit-content` keeps it from
   // stretching to the viewport. The top layer ignores `z-index`.
   dialog: {
-    '::backdrop': { backgroundColor: color.scrim },
+    'inset': 0,
+    'margin': 'auto',
+    'padding': 0,
+    'borderColor': color.rule2,
+    'borderRadius': radius.card,
+    'borderStyle': 'solid',
+    'borderWidth': rule.fine,
+    'overflow': 'auto',
     'animationDuration': dur.short,
     'animationName': {
       'default': 'none',
@@ -417,28 +438,21 @@ const styles = stylex.create({
     },
     'animationTimingFunction': ease.out,
     'backgroundColor': color.paper2,
-    'borderColor': color.rule2,
-    'borderRadius': radius.card,
-    'borderStyle': 'solid',
-    'borderWidth': rule.fine,
     'color': color.ink,
-    'height': 'fit-content',
-    'inset': 0,
-    'margin': 'auto',
-    'maxHeight': 'min(80dvh, 40rem)',
-    'overflow': 'auto',
-    'padding': 0,
     'position': 'fixed',
+    'height': 'fit-content',
+    'maxHeight': 'min(80dvh, 40rem)',
     'width': 'min(calc(100% - 2rem), 28rem)',
+    '::backdrop': { backgroundColor: color.scrim },
   },
   // Tighter on a phone, where 80dvh is not much taller than the form: every
   // rem of padding is a rem the actions lose before the box has to scroll.
   form: {
-    display: 'grid',
-    gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
     padding: { 'default': space.md, '@media (min-width: 40rem)': space.xl },
+    gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
+    display: 'grid',
   },
-  head: { display: 'grid', gap: space.xs },
+  head: { gap: space.xs, display: 'grid' },
   title: {
     color: color.ink,
     fontFamily: font.display,
@@ -450,16 +464,16 @@ const styles = stylex.create({
   lede: { color: color.muted, fontSize: text.base, lineHeight: leading.body },
 
   modes: {
-    borderStyle: 'none',
-    display: 'grid',
-    gap: space.xs,
     margin: 0,
-    minWidth: 0,
     padding: 0,
+    borderStyle: 'none',
+    gap: space.xs,
+    display: 'grid',
+    minWidth: 0,
   },
   modeRow: {
-    display: 'grid',
     gap: space.xs2,
+    display: 'grid',
     gridTemplateColumns: {
       'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'repeat(3, minmax(0, 1fr))',
@@ -469,15 +483,14 @@ const styles = stylex.create({
   // The input is present for the keyboard and the screen reader and drawn
   // by its sibling: the checked and focused states are read off it there.
   radio: {
-    height: '1px',
     inset: 0,
     margin: 0,
     opacity: 0,
     position: 'absolute',
+    height: '1px',
     width: '1px',
   },
   modeLabel: {
-    alignItems: 'center',
     borderColor: {
       'default': color.rule2,
       ':is(input:checked + &)': color.accent,
@@ -487,6 +500,9 @@ const styles = stylex.create({
     borderRadius: radius.input,
     borderStyle: 'solid',
     borderWidth: rule.fine,
+    paddingBlock: space.xs,
+    paddingInline: space.sm,
+    alignItems: 'center',
     color: { 'default': color.ink2, ':is(input:checked + &)': color.ink },
     cursor: 'pointer',
     display: 'flex',
@@ -494,7 +510,6 @@ const styles = stylex.create({
     fontWeight: 600,
     justifyContent: 'center',
     lineHeight: leading.heading,
-    minHeight: '44px',
     outlineColor: {
       'default': 'transparent',
       ':is(input:focus-visible + &)': color.focus,
@@ -502,30 +517,28 @@ const styles = stylex.create({
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingBlock: space.xs,
-    paddingInline: space.sm,
     textAlign: 'center',
     transitionDuration: dur.micro,
     transitionProperty: 'color, border-color',
     transitionTimingFunction: ease.out,
+    minHeight: '44px',
   },
 
-  group: { display: 'grid', gap: space.xs, justifyItems: 'start' },
+  group: { gap: space.xs, display: 'grid', justifyItems: 'start' },
   label: {
+    padding: 0,
     color: color.ink2,
     fontFamily: font.body,
     fontSize: text.base,
     fontWeight: 600,
-    padding: 0,
   },
   row: {
+    gap: space.xs,
     alignItems: 'center',
     display: 'flex',
     flexWrap: 'wrap',
-    gap: space.xs,
   },
   field: {
-    backgroundColor: color.paper,
     borderColor: {
       'default': color.rule2,
       ':hover': color.ink2,
@@ -534,25 +547,26 @@ const styles = stylex.create({
     borderRadius: radius.input,
     borderStyle: 'solid',
     borderWidth: rule.fine,
+    paddingBlock: space.xs2,
+    paddingInline: space.xs,
+    backgroundColor: color.paper,
     color: color.ink,
     cursor: { 'default': 'auto', ':disabled': 'not-allowed' },
     fontFamily: font.mono,
     fontSize: text.lg,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 700,
-    // Matches the 44px button height exactly; a field shorter than the
-    // controls beside it reads as an afterthought.
-    minHeight: '44px',
     opacity: { 'default': 1, ':disabled': 0.55 },
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingBlock: space.xs2,
-    paddingInline: space.xs,
     transitionDuration: dur.micro,
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
+    // Matches the 44px button height exactly; a field shorter than the
+    // controls beside it reads as an afterthought.
+    minHeight: '44px',
   },
   select: {
     fontFamily: font.body,
@@ -579,7 +593,7 @@ const styles = stylex.create({
   },
   messageError: { color: color.accent, fontWeight: 600 },
 
-  actions: { display: 'flex', flexWrap: 'wrap', gap: space.xs },
+  actions: { gap: space.xs, display: 'flex', flexWrap: 'wrap' },
   cancel: {
     marginInlineStart: { 'default': 0, '@media (min-width: 40rem)': 'auto' },
   },

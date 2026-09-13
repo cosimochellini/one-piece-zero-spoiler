@@ -23,7 +23,7 @@ export type CharacterCardProps = {
   readonly entity: Entity
   readonly revealed: boolean
   /** A span of the name to mark, from a search match. */
-  readonly highlight?: readonly [number, number] | null
+  readonly highlight?: null | readonly [number, number]
 }
 
 /**
@@ -48,9 +48,8 @@ export function CharacterCard({
   return (
     <li {...stylex.props(styles.card)}>
       <SpoilerVeil
-        gated={entity}
-        revealed={revealed}
         density="compact"
+        gated={entity}
         // A fogged card has no link, no name and no drawing in the DOM: the
         // slug in the href would spell the name a blur is meant to hide, and
         // the drawing and its colour would say as much.
@@ -62,10 +61,11 @@ export function CharacterCard({
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
+        revealed={revealed}
       >
         <Link
-          to="/$locale/characters/$id"
           params={{ locale, id: entity.id }}
+          to="/$locale/characters/$id"
           {...stylex.props(styles.link)}
         >
           <span {...stylex.props(styles.frame)}>
@@ -73,8 +73,8 @@ export function CharacterCard({
           </span>
           <span {...stylex.props(styles.name)}>
             <Marked
-              text={name}
               span={highlight}
+              text={name}
             />
           </span>
           {role === undefined ? null : (
@@ -94,10 +94,12 @@ export function Marked({
   text: value,
   span,
 }: {
+  readonly span: null | readonly [number, number]
   readonly text: string
-  readonly span: readonly [number, number] | null
 }) {
-  if (span === null) return value
+  if (span === null) {
+    return value
+  }
 
   const [from, to] = span
   return (
@@ -110,13 +112,13 @@ export function Marked({
 }
 
 const styles = stylex.create({
-  card: { display: 'grid', gap: space.xs, minWidth: 0 },
+  card: { gap: space.xs, display: 'grid', minWidth: 0 },
   // The whole card is the link; the crest frame is the one container signal.
   link: {
     borderRadius: radius.card,
+    gap: space.xs2,
     color: color.ink,
     display: 'grid',
-    gap: space.xs2,
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
@@ -124,20 +126,20 @@ const styles = stylex.create({
     textDecorationLine: 'none',
   },
   frame: {
-    aspectRatio: '1',
-    backgroundColor: color.paper2,
+    padding: space.sm,
     borderColor: {
       'default': color.rule,
-      ':is(a:hover) > &': color.rule2,
       ':is(a:focus-visible) > &': color.rule2,
+      ':is(a:hover) > &': color.rule2,
     },
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
+    overflow: 'hidden',
+    aspectRatio: '1',
+    backgroundColor: color.paper2,
     display: 'block',
     marginBlockEnd: space.xs,
-    overflow: 'hidden',
-    padding: space.sm,
     transitionDuration: dur.micro,
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
@@ -145,9 +147,9 @@ const styles = stylex.create({
   name: {
     color: {
       'default': color.ink,
-      ':is(a:hover) > &': color.accent,
-      ':is(a:focus-visible) > &': color.accent,
       ':is(a:active) > &': color.ink2,
+      ':is(a:focus-visible) > &': color.accent,
+      ':is(a:hover) > &': color.accent,
     },
     display: 'block',
     fontFamily: font.display,
@@ -155,11 +157,11 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
     transitionDuration: dur.micro,
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+    minWidth: 0,
   },
   role: {
     color: color.muted,

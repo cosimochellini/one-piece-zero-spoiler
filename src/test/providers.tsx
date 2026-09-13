@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react'
 import {
   createMemoryHistory,
   createRootRoute,
@@ -7,6 +6,7 @@ import {
   RouterContextProvider,
   RouterProvider,
 } from '@tanstack/react-router'
+import { render } from '@testing-library/react'
 import type { ReactElement } from 'react'
 
 import { LocaleProvider } from '~/i18n/LocaleContext'
@@ -20,8 +20,8 @@ export function ep(episode: number): Bookmark {
 }
 
 export type RenderOptions = {
-  readonly locale?: Locale
   readonly bookmark?: Bookmark
+  readonly locale?: Locale
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   readonly path?: string
 }

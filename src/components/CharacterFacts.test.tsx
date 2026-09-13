@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import type { CharacterDossier } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -32,8 +33,8 @@ describe('CharacterFacts', () => {
   it('shows each fact as the reader knows it, and no fact not yet learned', () => {
     renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={ep(3)}
+        dossier={dossier}
       />,
       { bookmark: ep(3) },
     )
@@ -52,8 +53,8 @@ describe('CharacterFacts', () => {
   it('shows the latest bounty reached and never a later one', () => {
     renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={ep(100)}
+        dossier={dossier}
       />,
       { bookmark: ep(100) },
     )
@@ -65,8 +66,8 @@ describe('CharacterFacts', () => {
   it('groups digits the Italian way in Italian', () => {
     renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={ep(130)}
+        dossier={dossier}
       />,
       { bookmark: ep(130), locale: 'it' },
     )
@@ -81,8 +82,8 @@ describe('CharacterFacts', () => {
     const season: Bookmark = { mode: 'season', season: 4, episode: 38 }
     renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={season}
+        dossier={dossier}
       />,
       { bookmark: season },
     )
@@ -95,8 +96,8 @@ describe('CharacterFacts', () => {
     const chapter: Bookmark = { mode: 'chapter', chapter: 1000 }
     renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={chapter}
+        dossier={dossier}
       />,
       { bookmark: chapter },
     )
@@ -109,8 +110,8 @@ describe('CharacterFacts', () => {
   it('renders nothing at all when the reader has reached no fact', () => {
     const { container } = renderWithProviders(
       <CharacterFacts
-        dossier={dossier}
         bookmark={null}
+        dossier={dossier}
       />,
     )
 

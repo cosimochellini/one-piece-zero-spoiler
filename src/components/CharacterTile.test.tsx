@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import type { Entity } from '~/data/types'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -23,8 +24,8 @@ describe('CharacterTile', () => {
       <ul>
         <CharacterTile
           entity={nami}
-          revealed
           highlight={[0, 3]}
+          revealed
         />
       </ul>,
       { bookmark: ep(10) },

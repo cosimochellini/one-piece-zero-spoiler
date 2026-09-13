@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { characters } from '~/data/characters'
 
@@ -15,9 +16,12 @@ describe('CharacterCrest', () => {
       expect(svg).toHaveAttribute('aria-hidden', 'true')
       // Two rings and two bezel paths, then the drawing in a nested box.
       expect(svg?.querySelectorAll(':scope > path')).toHaveLength(4)
+
       const nested = svg?.querySelector('svg')
+
       expect(nested).toHaveAttribute('viewBox', '0 0 160 200')
       expect(nested?.querySelectorAll('path').length).toBeGreaterThan(0)
+
       unmount()
     }
   })
@@ -28,7 +32,7 @@ describe('CharacterCrest', () => {
     )
     const paths = container.querySelectorAll(':scope svg > path')
     const segments = (path: Element | undefined) =>
-      (path?.getAttribute('d')?.match(/M/g) ?? []).length
+      (path?.getAttribute('d')?.match(/M/gu) ?? []).length
     const minor = paths[2]
     const cardinal = paths[3]
 

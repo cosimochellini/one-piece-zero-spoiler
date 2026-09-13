@@ -1,5 +1,4 @@
-import { createContext, useContext, useMemo } from 'react'
-import type { ReactNode } from 'react'
+import { createContext, type ReactNode, useContext, useMemo } from 'react'
 
 import type { Locale } from './locales'
 import { getDictionary, translate } from './translate'
@@ -10,8 +9,8 @@ type LocaleContextValue = { readonly locale: Locale; readonly t: Translate }
 const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 export type LocaleProviderProps = {
-  readonly locale: Locale
   readonly children: ReactNode
+  readonly locale: Locale
 }
 
 export function LocaleProvider({ locale, children }: LocaleProviderProps) {

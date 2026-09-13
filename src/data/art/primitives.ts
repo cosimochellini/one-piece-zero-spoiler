@@ -20,17 +20,17 @@ export const dots = (points: readonly (readonly [number, number])[]) =>
   points.map(([x, y]) => dot(x, y)).join(' ')
 
 export function polygon(cx: number, cy: number, r: number, sides: number) {
-  const points = Array.from({ length: sides }, (_, i) => {
-    const a = -Math.PI / 2 + (i * 2 * Math.PI) / sides
+  const points = Array.from({ length: sides }, (_, index) => {
+    const a = -Math.PI / 2 + (index * 2 * Math.PI) / sides
     return `${n(cx + r * Math.cos(a))} ${n(cy + r * Math.sin(a))}`
   })
   return `M${points.join(' L')} Z`
 }
 
 export function star(cx: number, cy: number, outer: number, inner: number) {
-  const points = Array.from({ length: 10 }, (_, i) => {
-    const r = i % 2 === 0 ? outer : inner
-    const a = -Math.PI / 2 + (i * Math.PI) / 5
+  const points = Array.from({ length: 10 }, (_, index) => {
+    const r = index % 2 === 0 ? outer : inner
+    const a = -Math.PI / 2 + (index * Math.PI) / 5
     return `${n(cx + r * Math.cos(a))} ${n(cy + r * Math.sin(a))}`
   })
   return `M${points.join(' L')} Z`
@@ -47,11 +47,13 @@ export const SEA: readonly Stroke[] = [
 ]
 
 /** The soft ellipse an object throws on the table it sits on. */
-export const shadow = (cx: number, cy: number, rx: number): Stroke => ({
-  d: `M${n(cx - rx)} ${n(cy)} q${n(rx)} 6 ${n(2 * rx)} 0`,
-  role: 'ambient',
-  dashed: true,
-})
+export const shadow = (cx: number, cy: number, rx: number): Stroke => {
+  return {
+    d: `M${n(cx - rx)} ${n(cy)} q${n(rx)} 6 ${n(2 * rx)} 0`,
+    role: 'ambient',
+    dashed: true,
+  }
+}
 
 /** A sheathed sword lying at the same angle as its two companions. */
 export function sheath(dx: number, role: Role): readonly Stroke[] {
@@ -59,10 +61,9 @@ export function sheath(dx: number, role: Role): readonly Stroke[] {
   const b = { x: 100 + dx, y: 46 }
   // Perpendicular offset for the sheath's width.
   const o = { x: 4.6, y: 2 }
-  const at = (t: number) => ({
-    x: a.x + (b.x - a.x) * t,
-    y: a.y + (b.y - a.y) * t,
-  })
+  const at = (t: number) => {
+    return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }
+  }
   const guard = at(0.3)
   const wrap1 = at(0.1)
   const wrap2 = at(0.19)
@@ -88,25 +89,26 @@ export function sheath(dx: number, role: Role): readonly Stroke[] {
 }
 
 /** A small ghost, the kind that follows an umbrella. */
-export const ghost = (x: number, y: number, role: Role): readonly Stroke[] => [
-  {
-    d: `M${n(x)} ${n(y)} c0 -16 10 -22 16 -22 c6 0 16 6 16 22 v12 c-5 -4 -11 -4 -16 0 c-5 -4 -11 -4 -16 0z`,
-    role,
-  },
-  {
-    d: dots([
-      [x + 11, y - 8],
-      [x + 21, y - 8],
-    ]),
-    role,
-  },
-]
+export const ghost = (x: number, y: number, role: Role): readonly Stroke[] => {
+  return [
+    {
+      d: `M${n(x)} ${n(y)} c0 -16 10 -22 16 -22 c6 0 16 6 16 22 v12 c-5 -4 -11 -4 -16 0 c-5 -4 -11 -4 -16 0z`,
+      role,
+    },
+    {
+      d: dots([
+        [x + 11, y - 8],
+        [x + 21, y - 8],
+      ]),
+      role,
+    },
+  ]
+}
 
 /** A sake cup, seen from the side. */
-export const cup = (x: number, role: Role): Stroke => ({
-  d: `M${n(x)} 146 h20 l-3 12 h-14z`,
-  role,
-})
+export const cup = (x: number, role: Role): Stroke => {
+  return { d: `M${n(x)} 146 h20 l-3 12 h-14z`, role }
+}
 
 /**
  * One arm of a windmill with its sail, hub at (80, 80), pointing up and to

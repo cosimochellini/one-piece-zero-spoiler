@@ -10,7 +10,6 @@ import { spawnSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
-
 import { describe, expect, it } from 'vitest'
 
 import {
@@ -104,7 +103,7 @@ describe('validatePrTitle', () => {
     ['a trailing space', 'feat: add stuff '],
     ['leading whitespace', ' feat: add stuff'],
     ['an empty title', ''],
-    ['a whitespace-only title', '   '],
+    ['a whitespace-only title', ' '.repeat(3)],
   ])('rejects %s', (_label, title) => {
     expect(validatePrTitle(title)).toMatchObject({ ok: false })
   })
@@ -118,7 +117,7 @@ describe('validatePrTitle', () => {
   })
 
   it('rejects a non-string title', () => {
-    expect(validatePrTitle(undefined)).toMatchObject({ ok: false })
+    expect(validatePrTitle()).toMatchObject({ ok: false })
   })
 
   it('maps every type exactly as .releaserc.json does', () => {
@@ -132,11 +131,12 @@ describe('validatePrTitle', () => {
       ),
     )
 
-    const commitAnalyzer = config.plugins.find(
-      (plugin) =>
+    const commitAnalyzer = config.plugins.find((plugin) => {
+      return (
         Array.isArray(plugin)
-        && plugin[0] === '@semantic-release/commit-analyzer',
-    )
+        && plugin[0] === '@semantic-release/commit-analyzer'
+      )
+    })
     const rules = commitAnalyzer[1].releaseRules
 
     const configuredBumps = Object.fromEntries(

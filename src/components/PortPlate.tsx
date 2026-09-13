@@ -66,11 +66,11 @@ export function PortPlate({ visual }: { readonly visual?: Visual }) {
       */}
       {visual === undefined ? null : (
         <svg
-          x="44"
-          y="30"
-          width="112"
           height="140"
           viewBox={ART_VIEWBOX}
+          width="112"
+          x="44"
+          y="30"
         >
           <ArtStrokes
             art={visual.art}
@@ -94,7 +94,7 @@ const INNER = `M${String(INSET)} ${String(INSET)} H${String(200 - INSET)} V${Str
  * margin is divided into minutes of arc. One path for all four sides.
  */
 function graticule(): string {
-  const stops = Array.from({ length: 10 }, (_, i) => 28 + i * 16)
+  const stops = Array.from({ length: 10 }, (_, index) => 28 + index * 16)
   return stops
     .map(
       (at) =>

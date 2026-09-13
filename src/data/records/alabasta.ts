@@ -832,7 +832,7 @@ export const alabasta: Saga = {
       bounty: [
         { episode: 320, value: 50 },
         { episode: 746, value: 100 },
-        { episode: 1086, value: 1_000 },
+        { episode: 1086, value: 1000 },
       ],
     },
     'hiluluk': {

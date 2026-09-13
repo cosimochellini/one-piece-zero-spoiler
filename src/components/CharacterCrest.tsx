@@ -57,11 +57,11 @@ export function CharacterCrest({ visual }: { readonly visual?: Visual }) {
       */}
       {visual === undefined ? null : (
         <svg
-          x="50"
-          y="37.5"
-          width="100"
           height="125"
           viewBox={ART_VIEWBOX}
+          width="100"
+          x="50"
+          y="37.5"
         >
           <ArtStrokes
             art={visual.art}
@@ -83,9 +83,11 @@ const ring = (cx: number, cy: number, r: number) =>
  * drops every n-th tick (index 0 included); `0` draws them all.
  */
 function ticks(count: number, inner: number, outer: number, skip = 0) {
-  return Array.from({ length: count }, (_, i) => {
-    if (skip > 0 && i % skip === 0) return ''
-    const a = -Math.PI / 2 + (i * 2 * Math.PI) / count
+  return Array.from({ length: count }, (_, index) => {
+    if (skip > 0 && index % skip === 0) {
+      return ''
+    }
+    const a = -Math.PI / 2 + (index * 2 * Math.PI) / count
     const cos = Math.cos(a)
     const sin = Math.sin(a)
     return `M${n(100 + inner * cos)} ${n(100 + inner * sin)} L${n(100 + outer * cos)} ${n(100 + outer * sin)}`

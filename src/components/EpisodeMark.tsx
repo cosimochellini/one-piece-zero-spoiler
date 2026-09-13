@@ -28,8 +28,8 @@ export function EpisodeMark() {
   return (
     <>
       <Button
-        aria-haspopup="dialog"
         aria-expanded={open}
+        aria-haspopup="dialog"
         aria-label={
           bookmark === null ? undefined : t('mark.change', { threshold: label })
         }
@@ -61,13 +61,13 @@ const styles = stylex.create({
       'default': color.rule2,
       ':hover:not(:disabled)': color.accent,
     },
+    paddingInline: space.sm,
     color: { 'default': color.accent, ':hover:not(:disabled)': color.ink },
     fontFamily: font.mono,
     fontSize: text.xs,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 700,
     letterSpacing: '0.1em',
-    paddingInline: space.sm,
     textTransform: 'uppercase',
   },
   // No bookmark yet: the dashed rule of the fogged stretch of route, in the

@@ -11,7 +11,7 @@ export type TranslationKey = keyof typeof enDictionary
 export type Dictionary = Readonly<Record<TranslationKey, string>>
 
 /** Values a `{placeholder}` may be filled with. */
-export type TranslationParams = Readonly<Record<string, string | number>>
+export type TranslationParams = Readonly<Record<string, number | string>>
 
 /** Translates a key, filling any `{placeholder}` from `params`. */
 export type Translate = (

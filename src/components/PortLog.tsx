@@ -16,7 +16,7 @@ import { dossierOf, type PlaceDossier } from '~/data/places'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import { serialiseBookmark, type Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
 import {
@@ -31,8 +31,8 @@ import {
 
 export type PortLogProps = {
   /** The places, in the order the ship reaches them. */
-  readonly entries: readonly Entity[]
   readonly bookmark: Bookmark
+  readonly entries: readonly Entity[]
 }
 
 /**
@@ -57,32 +57,36 @@ export function PortLog({ entries, bookmark }: PortLogProps) {
 
   return (
     <ol {...stylex.props(styles.log)}>
-      {open.map((entry, index) => (
-        <Port
-          key={entry.id}
-          entry={entry}
-          index={index}
-          total={entries.length}
-          bookmark={bookmark}
-          open
-        />
-      ))}
+      {open.map((entry, index) => {
+        return (
+          <Port
+            key={entry.id}
+            bookmark={bookmark}
+            entry={entry}
+            index={index}
+            open
+            total={entries.length}
+          />
+        )
+      })}
 
       <Horizon
         key={bookmark === null ? 'unset' : serialiseBookmark(bookmark)}
         bookmark={bookmark}
       />
 
-      {covered.map((entry, index) => (
-        <Port
-          key={entry.id}
-          entry={entry}
-          index={open.length + index}
-          total={entries.length}
-          bookmark={bookmark}
-          open={false}
-        />
-      ))}
+      {covered.map((entry, index) => {
+        return (
+          <Port
+            key={entry.id}
+            bookmark={bookmark}
+            entry={entry}
+            index={open.length + index}
+            open={false}
+            total={entries.length}
+          />
+        )
+      })}
     </ol>
   )
 }
@@ -90,10 +94,10 @@ export function PortLog({ entries, bookmark }: PortLogProps) {
 type PortProps = {
   readonly entry: Entity
   /** Zero-based position among the places; the page prints it plus one. */
-  readonly index: number
-  readonly total: number
   readonly bookmark: Bookmark
+  readonly index: number
   readonly open: boolean
+  readonly total: number
 }
 
 function Port({ entry, index, total, bookmark, open }: PortProps) {
@@ -151,8 +155,6 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
 
         <SpoilerVeil
           gated={entry}
-          revealed={open}
-          strength="media"
           // Under fog the served HTML carries no name, no drawing and no
           // colour: a bare plate and a generic line stand in for the entry.
           placeholder={
@@ -168,10 +170,12 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
               </div>
             </div>
           }
+          revealed={open}
+          strength="media"
         >
           <Spread
-            entry={entry}
             bookmark={bookmark}
+            entry={entry}
           />
         </SpoilerVeil>
       </div>
@@ -184,8 +188,8 @@ function Spread({
   entry,
   bookmark,
 }: {
-  readonly entry: Entity
   readonly bookmark: Bookmark
+  readonly entry: Entity
 }) {
   const { locale } = useLocale()
   const dossier = dossierOf(entry)
@@ -205,8 +209,8 @@ function Spread({
             <Facts dossier={dossier} />
             <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
             <FiledHere
-              ids={dossier.filedHere}
               bookmark={bookmark}
+              ids={dossier.filedHere}
             />
           </>
         )}
@@ -272,8 +276,8 @@ function FiledHere({
   ids,
   bookmark,
 }: {
-  readonly ids: readonly string[]
   readonly bookmark: Bookmark
+  readonly ids: readonly string[]
 }) {
   const { t } = useLocale()
   const records = ids
@@ -292,8 +296,8 @@ function FiledHere({
               {...stylex.props(styles.crewItem)}
             >
               <RecordTile
-                entry={record}
                 bookmark={bookmark}
+                entry={record}
               />
             </li>
           ))}
@@ -379,30 +383,30 @@ const styles = stylex.create({
   // The port number in a ring: the numbered stage label the macrostructure
   // asks for, drawn as a mark on the spine rather than set in the margin.
   marker: {
-    alignItems: 'center',
-    backgroundColor: color.paper,
     borderRadius: radius.pill,
     borderStyle: 'solid',
     borderWidth: rule.fine,
+    alignItems: 'center',
+    backgroundColor: color.paper,
     display: 'grid',
     fontFamily: font.mono,
     fontSize: text.base,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 700,
-    height: '2.75rem',
     justifyContent: 'center',
     lineHeight: 1,
+    height: '2.75rem',
     width: '2.75rem',
   },
   markerOpen: { borderColor: color.accent, color: color.ink },
   markerCovered: { borderColor: color.rule2, color: color.muted },
 
   body: {
-    display: 'grid',
     gap: space.md,
-    minWidth: 0,
+    display: 'grid',
     paddingBlockEnd: space.xl2,
     paddingBlockStart: space.lg,
+    minWidth: 0,
   },
   // Sits level with the marker: one line, the stage and the episode, and
   // the only thing besides the number that a covered port says about itself.
@@ -412,8 +416,8 @@ const styles = stylex.create({
     display: 'flex',
     flexWrap: 'wrap',
     lineHeight: leading.body,
-    minHeight: '2.75rem',
     rowGap: space.xs3,
+    minHeight: '2.75rem',
   },
   stageLabel: {
     fontFamily: font.mono,
@@ -439,18 +443,18 @@ const styles = stylex.create({
     rowGap: space.lg,
   },
   plate: {
-    aspectRatio: '1',
-    backgroundColor: color.paper2,
+    padding: space.sm,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    maxWidth: '22rem',
     overflow: 'hidden',
-    padding: space.sm,
+    aspectRatio: '1',
+    backgroundColor: color.paper2,
+    maxWidth: '22rem',
     width: '100%',
   },
-  dossier: { display: 'grid', gap: space.md, minWidth: 0 },
+  dossier: { gap: space.md, display: 'grid', minWidth: 0 },
   name: {
     color: color.ink,
     fontFamily: font.display,
@@ -458,8 +462,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.025em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   summary: {
     color: color.ink2,
@@ -469,8 +473,9 @@ const styles = stylex.create({
   },
 
   facts: {
-    borderBlockColor: color.rule,
     borderBlockStyle: 'solid',
+    paddingBlock: space.md,
+    borderBlockColor: color.rule,
     borderBlockWidth: rule.hair,
     columnGap: space.lg,
     display: 'grid',
@@ -478,10 +483,9 @@ const styles = stylex.create({
       'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
     },
-    paddingBlock: space.md,
     rowGap: space.sm,
   },
-  fact: { display: 'grid', gap: space.xs3, minWidth: 0 },
+  fact: { gap: space.xs3, display: 'grid', minWidth: 0 },
   factLabel: {
     color: color.muted,
     fontSize: text.xs,
@@ -496,8 +500,8 @@ const styles = stylex.create({
     fontWeight: 600,
     lineHeight: leading.body,
     marginInlineStart: 0,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   entry: {
     color: color.ink2,
@@ -506,7 +510,7 @@ const styles = stylex.create({
     maxWidth: '60ch',
   },
 
-  filed: { display: 'grid', gap: space.sm },
+  filed: { gap: space.sm, display: 'grid' },
   filedTitle: {
     color: color.ink2,
     fontFamily: font.body,
@@ -520,8 +524,8 @@ const styles = stylex.create({
     lineHeight: leading.body,
   },
   crew: {
-    display: 'grid',
     gap: space.md,
+    display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 14rem), 1fr))',
     listStyleType: 'none',
     paddingInlineStart: 0,
@@ -545,6 +549,7 @@ const styles = stylex.create({
   tickSet: { borderBlockStartColor: color.accent },
   tickUnset: { borderBlockStartColor: color.rule2 },
   horizonLabel: {
+    marginBlock: space.md,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.fine,
     fontFamily: font.mono,
@@ -553,7 +558,6 @@ const styles = stylex.create({
     fontWeight: 700,
     letterSpacing: '0.1em',
     lineHeight: leading.body,
-    marginBlock: space.md,
     paddingBlockStart: space.xs,
     textTransform: 'uppercase',
   },

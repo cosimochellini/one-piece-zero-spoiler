@@ -23,8 +23,8 @@ export type ButtonProps = NativeButtonProps & {
    * square control used by the episode stepper, where the label is an icon
    * glyph and the accessible name comes from `aria-label`.
    */
-  readonly variant?: 'chip' | 'quiet'
   readonly sx?: stylex.StyleXStyles
+  readonly variant?: 'chip' | 'quiet'
 }
 
 /**
@@ -59,25 +59,24 @@ export function Button({ variant = 'chip', sx, type, ...rest }: ButtonProps) {
 
 const styles = stylex.create({
   base: {
-    alignItems: 'center',
-    backgroundColor: {
-      'default': 'transparent',
-      ':active:not(:disabled)': color.paper3,
-    },
     borderColor: { 'default': color.rule2, ':hover:not(:disabled)': color.ink },
     borderRadius: radius.input,
     borderStyle: 'solid',
     // Constant across every state. The hover and focus styles change colour,
     // never width.
     borderWidth: rule.fine,
+    gap: space.xs,
+    alignItems: 'center',
+    backgroundColor: {
+      'default': 'transparent',
+      ':active:not(:disabled)': color.paper3,
+    },
     color: { 'default': color.ink, ':hover:not(:disabled)': color.accent },
     cursor: { 'default': 'pointer', ':disabled': 'not-allowed' },
     display: 'inline-flex',
     fontFamily: font.body,
     fontWeight: 600,
-    gap: space.xs,
     justifyContent: 'center',
-    minHeight: '44px',
     opacity: { 'default': 1, ':disabled': 0.55 },
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
@@ -92,23 +91,24 @@ const styles = stylex.create({
     transitionDuration: dur.micro,
     transitionProperty: 'color, border-color, background-color, transform',
     transitionTimingFunction: ease.out,
+    minHeight: '44px',
   },
 
   chip: {
+    paddingBlock: space.xs,
+    paddingInline: space.md,
     fontSize: text.base,
     letterSpacing: '0.02em',
     // A button label that wraps reads as a styling error, never as intent.
     whiteSpace: 'nowrap',
-    paddingBlock: space.xs,
-    paddingInline: space.md,
   },
 
   quiet: {
+    paddingBlock: space.xs,
+    paddingInline: space.xs,
     fontFamily: font.mono,
     fontSize: text.base,
     lineHeight: 1,
     minWidth: '44px',
-    paddingBlock: space.xs,
-    paddingInline: space.xs,
   },
 })

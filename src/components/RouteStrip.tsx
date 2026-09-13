@@ -10,8 +10,8 @@ export type RouteStripProps = {
   /** The whole archive, sorted by the threshold the bookmark counts in. */
   readonly entries: readonly Entity[]
   /** The record this strip is about. */
-  readonly current: Entity
   readonly bookmark: Bookmark
+  readonly current: Entity
   /** What a screen reader hears instead of the dots. */
   readonly label: string
 }
@@ -51,8 +51,8 @@ export function RouteStrip({
 
   return (
     <svg
-      role="img"
       aria-label={label}
+      role="img"
       viewBox={`0 0 ${String(width)} 32`}
       {...stylex.props(styles.svg)}
     >
@@ -113,7 +113,7 @@ export function RouteStrip({
 }
 
 const styles = stylex.create({
-  svg: { display: 'block', height: 'auto', overflow: 'visible', width: '100%' },
+  svg: { overflow: 'visible', display: 'block', height: 'auto', width: '100%' },
   line: { fill: 'none', strokeLinecap: 'round', strokeWidth: rule.fine },
   lineOpen: { stroke: color.accent },
   lineCovered: { stroke: color.rule2, strokeDasharray: '3 6' },

@@ -1,11 +1,11 @@
 import {
   createContext,
+  type ReactNode,
   useCallback,
   useContext,
   useMemo,
   useState,
 } from 'react'
-import type { ReactNode } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import {
@@ -15,10 +15,10 @@ import {
 } from '~/lib/cookies'
 
 import {
+  type Bookmark,
   EPISODE_COOKIE,
   modeOf,
   serialiseBookmark,
-  type Bookmark,
 } from './episode'
 import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
@@ -37,8 +37,8 @@ export type BookmarkProviderProps = {
    * HTML correct — an effect would paint the uncovered page first and cover it
    * a frame later, which is a spoiler.
    */
-  readonly initialBookmark: Bookmark
   readonly children: ReactNode
+  readonly initialBookmark: Bookmark
 }
 
 export function BookmarkProvider({
@@ -53,8 +53,9 @@ export function BookmarkProvider({
     // server never trusts this value for anything but choosing what to render,
     // and a round trip would put a network delay between a click and the
     // page reacting to it.
-    if (next === null) expireCookie(EPISODE_COOKIE)
-    else {
+    if (next === null) {
+      expireCookie(EPISODE_COOKIE)
+    } else {
       writeCookie(
         EPISODE_COOKIE,
         serialiseBookmark(next),

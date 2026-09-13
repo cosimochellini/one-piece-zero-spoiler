@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { entities } from '~/data/entities'
 
@@ -15,10 +16,12 @@ describe('ChartArt', () => {
       )
 
       const svg = container.querySelector('svg')
+
       expect(svg).not.toBeNull()
       expect(svg).toHaveAttribute('aria-hidden', 'true')
       // Fewer than four strokes is an icon, not a drawing.
       expect(container.querySelectorAll('path').length).toBeGreaterThan(3)
+
       unmount()
     }
   })
@@ -33,7 +36,7 @@ describe('ChartArt', () => {
 
     for (const path of container.querySelectorAll('path')) {
       expect(path).toHaveAttribute('vector-effect', 'non-scaling-stroke')
-      expect(path.getAttribute('d')).toBeTruthy()
+      expect(path).toHaveAttribute('d')
     }
   })
 })

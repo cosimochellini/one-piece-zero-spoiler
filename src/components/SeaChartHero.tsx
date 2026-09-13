@@ -18,8 +18,8 @@ export function SeaChartHero() {
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 1600 560"
       preserveAspectRatio="xMidYMid slice"
+      viewBox="0 0 1600 560"
       {...stylex.props(styles.svg)}
     >
       <defs>
@@ -103,11 +103,11 @@ export function SeaChartHero() {
         {...stylex.props(styles.line, styles.gold, styles.dotted)}
       />
       <rect
+        fill="url(#sea-chart-fog)"
+        height="560"
+        width="600"
         x="1000"
         y="0"
-        width="600"
-        height="560"
-        fill="url(#sea-chart-fog)"
       />
     </svg>
   )
@@ -134,11 +134,12 @@ const STARS = [
   .join(' ')
 
 const WAVES = [420, 462, 508]
-  .map(
-    (y, i) =>
-      `M${String(-40 + i * 30)} ${String(y)} `
-      + Array.from({ length: 30 }, () => 'q30 -10 60 0').join(' '),
-  )
+  .map((y, index) => {
+    return `M${String(-40 + index * 30)} ${String(y)} ${Array.from(
+      { length: 30 },
+      () => 'q30 -10 60 0',
+    ).join(' ')}`
+  })
   .join(' ')
 
 const styles = stylex.create({

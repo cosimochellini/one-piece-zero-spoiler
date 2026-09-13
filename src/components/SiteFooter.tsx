@@ -26,12 +26,12 @@ export function SiteFooter() {
 
 const styles = stylex.create({
   footer: {
+    paddingInline: space.md,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     paddingBlockEnd: space.xl,
     paddingBlockStart: space.lg,
-    paddingInline: space.md,
   },
 
   // A colophon is read once, slowly, so it keeps a measure.

@@ -9,9 +9,9 @@ import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
 
 import { CharacterCard } from '~/components/CharacterCard'
-import { CharacterCardList } from '~/components/CharacterGrid'
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { CharacterFacts } from '~/components/CharacterFacts'
+import { CharacterCardList } from '~/components/CharacterGrid'
 import { RecordTile } from '~/components/RecordTile'
 import { RouteStrip } from '~/components/RouteStrip'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -29,9 +29,9 @@ import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
 import {
-  modeOf,
   type Bookmark,
   type BookmarkMode,
+  modeOf,
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeThreshold } from '~/lib/progress/threshold'
@@ -60,7 +60,9 @@ export const Route = createFileRoute('/$locale/characters/$id')({
   // the reader has not reached, and a title is set before any component runs.
   loader: ({ params, context }) => {
     const entity = getCharacter(params.id)
-    if (entity === undefined) throw notFound()
+    if (entity === undefined) {
+      throw notFound()
+    }
 
     return {
       id: entity.id,
@@ -71,9 +73,13 @@ export const Route = createFileRoute('/$locale/characters/$id')({
     }
   },
   head: ({ params, loaderData }) => {
-    if (!isLocale(params.locale) || loaderData === undefined) return {}
+    if (!isLocale(params.locale) || loaderData === undefined) {
+      return {}
+    }
     const entity = getCharacter(loaderData.id)
-    if (entity === undefined) return {}
+    if (entity === undefined) {
+      return {}
+    }
 
     return {
       meta: describe(
@@ -154,7 +160,9 @@ function CharacterPage() {
 
   // Cannot be undefined: the loader threw `notFound` for any id that is.
   const entity = getCharacter(id)
-  if (entity === undefined) return null
+  if (entity === undefined) {
+    return null
+  }
 
   const revealed = isRevealed(entity, bookmark)
   const dossier = dossierOf(entity)
@@ -176,8 +184,8 @@ function CharacterPage() {
     >
       <p {...stylex.props(styles.back, styles.enter, styles.at(0))}>
         <Link
-          to="/$locale/characters"
           params={{ locale }}
+          to="/$locale/characters"
           {...stylex.props(styles.backLink)}
         >
           ← {t('character.back')}
@@ -187,8 +195,6 @@ function CharacterPage() {
       <section {...stylex.props(styles.diptych, styles.enter, styles.at(0))}>
         <SpoilerVeil
           gated={entity}
-          revealed={revealed}
-          strength="media"
           // A bare seal under fog: the drawing and its colour stay out of
           // the served HTML along with the name.
           placeholder={
@@ -196,6 +202,8 @@ function CharacterPage() {
               <CharacterCrest />
             </div>
           }
+          revealed={revealed}
+          strength="media"
         >
           <div {...stylex.props(styles.plate)}>
             <CharacterCrest visual={entity.visual} />
@@ -214,7 +222,6 @@ function CharacterPage() {
 
           <SpoilerVeil
             gated={entity}
-            revealed={revealed}
             // Under fog the served HTML carries no name, role or summary:
             // this is a page about one record, so a blur alone would leave
             // the answer in the page source.
@@ -228,6 +235,7 @@ function CharacterPage() {
                 </p>
               </div>
             }
+            revealed={revealed}
           >
             <div {...stylex.props(styles.words)}>
               <h1 {...stylex.props(styles.name)}>{entity.name[locale]}</h1>
@@ -238,8 +246,8 @@ function CharacterPage() {
               {dossier === undefined ? null : (
                 <>
                   <CharacterFacts
-                    dossier={dossier}
                     bookmark={bookmark}
+                    dossier={dossier}
                   />
                   <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
                 </>
@@ -270,24 +278,24 @@ function CharacterPage() {
 
           <dl {...stylex.props(styles.neighbours)}>
             <Neighbour
-              label={t('character.before')}
-              entry={position.previous}
-              empty={t('character.routeStart')}
               bookmark={bookmark}
+              empty={t('character.routeStart')}
+              entry={position.previous}
+              label={t('character.before')}
             />
             <Neighbour
-              label={t('character.after')}
-              entry={position.next}
-              empty={t('character.routeEnd')}
               bookmark={bookmark}
+              empty={t('character.routeEnd')}
+              entry={position.next}
+              label={t('character.after')}
             />
           </dl>
         </div>
         <div {...stylex.props(styles.stripBand)}>
           <RouteStrip
-            entries={ordered}
-            current={entity}
             bookmark={bookmark}
+            current={entity}
+            entries={ordered}
             label={positionLabel}
           />
         </div>
@@ -307,13 +315,15 @@ function CharacterPage() {
           <p {...stylex.props(styles.lede)}>{t('character.nearbyLede')}</p>
         </div>
         <CharacterCardList>
-          {nearbyCharacters(entity, 5).map((near) => (
-            <CharacterCard
-              key={near.id}
-              entity={near}
-              revealed={isRevealed(near, bookmark)}
-            />
-          ))}
+          {nearbyCharacters(entity, 5).map((near) => {
+            return (
+              <CharacterCard
+                key={near.id}
+                entity={near}
+                revealed={isRevealed(near, bookmark)}
+              />
+            )
+          })}
         </CharacterCardList>
       </section>
     </main>
@@ -331,10 +341,10 @@ function Neighbour({
   empty,
   bookmark,
 }: {
-  readonly label: string
-  readonly entry: Entity | undefined
-  readonly empty: string
   readonly bookmark: Bookmark
+  readonly empty: string
+  readonly entry: Entity | undefined
+  readonly label: string
 }) {
   return (
     <div {...stylex.props(styles.neighbour)}>
@@ -343,8 +353,8 @@ function Neighbour({
         {entry === undefined ?
           <span {...stylex.props(styles.lede)}>{empty}</span>
         : <RecordTile
-            entry={entry}
             bookmark={bookmark}
+            entry={entry}
           />
         }
       </dd>
@@ -366,8 +376,8 @@ function CharacterNotFound() {
         <p {...stylex.props(styles.summary)}>{t('character.notFoundBody')}</p>
         <p>
           <Link
-            to="/$locale/characters"
             params={{ locale }}
+            to="/$locale/characters"
             {...stylex.props(styles.backLink)}
           >
             ← {t('character.back')}
@@ -380,11 +390,11 @@ function CharacterNotFound() {
 
 const styles = stylex.create({
   page: {
-    display: 'grid',
     gap: space.xl2,
+    paddingInline: space.md,
+    display: 'grid',
     paddingBlockEnd: space.xl3,
     paddingBlockStart: space.lg,
-    paddingInline: space.md,
   },
 
   back: { marginBlockEnd: `calc(-1 * ${space.xl})` },
@@ -433,20 +443,20 @@ const styles = stylex.create({
     },
   },
   plate: {
-    aspectRatio: '1',
-    backgroundColor: color.paper2,
+    padding: space.lg,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
     marginInline: { 'default': 'auto', '@media (min-width: 60rem)': 0 },
-    maxWidth: '26rem',
     overflow: 'hidden',
-    padding: space.lg,
+    aspectRatio: '1',
+    backgroundColor: color.paper2,
+    maxWidth: '26rem',
     width: '100%',
   },
-  dossier: { display: 'grid', gap: space.md, minWidth: 0 },
-  words: { display: 'grid', gap: space.sm, minWidth: 0 },
+  dossier: { gap: space.md, display: 'grid', minWidth: 0 },
+  words: { gap: space.sm, display: 'grid', minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -474,8 +484,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.035em',
     lineHeight: leading.display,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   role: {
     color: color.ink2,
@@ -507,8 +517,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   position: {
     color: color.accent,
@@ -527,14 +537,14 @@ const styles = stylex.create({
     maxWidth: '52ch',
   },
   stripBand: {
-    alignSelf: 'center',
-    backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
     paddingBlock: space.lg,
     paddingInline: space.md,
+    alignSelf: 'center',
+    backgroundColor: color.paper2,
   },
 
   neighbours: {
@@ -547,7 +557,7 @@ const styles = stylex.create({
     marginBlockStart: space.xs,
     rowGap: space.md,
   },
-  neighbour: { display: 'grid', gap: space.xs, minWidth: 0 },
+  neighbour: { gap: space.xs, display: 'grid', minWidth: 0 },
   neighbourLabel: {
     color: color.ink2,
     fontSize: text.base,
@@ -555,20 +565,20 @@ const styles = stylex.create({
     lineHeight: leading.body,
   },
   neighbourBody: {
-    display: 'grid',
     gap: space.xs,
+    display: 'grid',
     marginInlineStart: 0,
     minWidth: 0,
   },
   nearby: {
+    gap: space.lg,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     display: 'grid',
-    gap: space.lg,
     paddingBlockStart: space.xl,
   },
-  nearbyHead: { display: 'grid', gap: space.xs },
+  nearbyHead: { gap: space.xs, display: 'grid' },
 
   enter: {
     animationDuration: dur.long,

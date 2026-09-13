@@ -16,11 +16,11 @@ export function orderByMode(
   entries: readonly Entity[],
   mode: BookmarkMode,
 ): readonly Entity[] {
-  return [...entries].sort((a, b) =>
-    mode === 'chapter' ?
-      a.revealedAtChapter - b.revealedAtChapter
-      || a.revealedAtEpisode - b.revealedAtEpisode
-    : a.revealedAtEpisode - b.revealedAtEpisode
-      || a.revealedAtChapter - b.revealedAtChapter,
-  )
+  return [...entries].sort((a, b) => {
+    return mode === 'chapter' ?
+        a.revealedAtChapter - b.revealedAtChapter
+          || a.revealedAtEpisode - b.revealedAtEpisode
+      : a.revealedAtEpisode - b.revealedAtEpisode
+          || a.revealedAtChapter - b.revealedAtChapter
+  })
 }
