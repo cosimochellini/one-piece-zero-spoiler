@@ -679,10 +679,11 @@ export default defineConfig(
     files: ROUTES,
     rules: {
       '@typescript-eslint/only-throw-error': 'off',
-      'react-refresh/only-export-components': [
-        'error',
-        { allowConstantExport: true, allowExportNames: ['Route'] },
-      ],
+      // A file route exports one `Route` object and keeps its component local,
+      // because that is what createFileRoute takes. There is no component
+      // export for Fast Refresh to anchor to, and the router's own plugin
+      // handles refreshing routes, so the rule has nothing to say here.
+      'react-refresh/only-export-components': 'off',
       'jsdoc/require-jsdoc': 'off',
     },
   },
@@ -700,12 +701,23 @@ export default defineConfig(
   },
   { files: TOKENS, rules: { '@typescript-eslint/no-magic-numbers': 'off' } },
 
+  // The drawing primitives. A shape is a centre and two or three scalars:
+  // `polygon(cx, cy, r, sides)` reads as geometry, and the options object the
+  // three-parameter ceiling would force reads as bookkeeping.
+  {
+    files: ['src/data/art/primitives.ts'],
+    rules: { '@typescript-eslint/max-params': ['error', { max: 4 }] },
+  },
+
   // Config files: the tool that reads each one expects a default export.
   {
     files: CONFIGS,
     rules: {
       'import-x/no-default-export': 'off',
       'jsdoc/require-jsdoc': 'off',
+      // A configuration file is a list. Splitting it to satisfy a line count
+      // would scatter decisions that belong together in one place.
+      'max-lines': 'off',
     },
   },
 
