@@ -265,14 +265,15 @@ export const summitWarArt = {
   // A three-toed footprint with a Marine cap left inside it.
   'x-drake': [
     {
-      d: 'M62 158 C50 138 50 120 60 112 C54 92 60 76 70 76 C77 76 80 86 80 96 C80 86 86 74 94 76 C105 79 106 96 100 112 C110 122 108 142 96 158 C86 168 70 168 62 158z',
+      d: 'M52 96 C40 108 38 130 48 150 C60 166 100 166 112 150 C122 130 120 108 108 96 C96 88 64 88 52 96z',
       role: 'accent',
     },
-    { d: 'M60 138 C60 124 100 124 100 138z' },
-    { d: 'M54 138 h52' },
-    { d: 'M100 138 q10 4 12 12 l-14 -4z' },
-    { d: 'M74 126 q6 -6 12 0', role: 'soft' },
-    shadow(80, 178, 42),
+    { d: 'M52 96 C44 80 46 60 56 58 C64 58 66 76 64 92', role: 'accent' },
+    { d: 'M80 88 C76 70 78 48 84 46 C92 46 92 68 88 88', role: 'accent' },
+    { d: 'M108 96 C116 80 114 60 104 58 C96 58 94 76 96 92', role: 'accent' },
+    { d: 'M60 132 h40 v-14 q-20 -10 -40 0z' },
+    { d: 'M56 132 h48' },
+    shadow(80, 182, 44),
   ],
 
   // A monk's iron pillar, rings and all.
@@ -562,9 +563,9 @@ export const summitWarArt = {
       role: 'accent',
     },
     { d: 'M68 40 h24 v8 h-24z' },
-    { d: 'M64 72 q16 8 32 0', role: 'soft' },
-    { d: 'M50 110 q30 14 60 0', role: 'soft' },
+    { d: 'M46 96 C60 90 100 90 114 96', role: 'soft', dashed: true },
     { d: 'M54 66 C40 58 34 66 40 74 M106 66 c14 -8 20 0 14 8' },
+    { d: 'M124 150 q6 -12 12 0 q-6 14 -12 0z M130 150 v18', role: 'soft' },
     shadow(80, 184, 42),
   ],
 
