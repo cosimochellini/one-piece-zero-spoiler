@@ -761,6 +761,9 @@ export default defineConfig(
     languageOptions: { globals: globals.node },
     rules: {
       'no-console': 'off',
+      // The `~/` alias covers src and nothing else, so a script reaching a
+      // configuration file at the repository root has only the relative path.
+      'no-restricted-imports': 'off',
       'n/no-process-exit': 'off',
       'unicorn/no-process-exit': 'off',
       'security/detect-child-process': 'off',
