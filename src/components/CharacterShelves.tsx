@@ -11,6 +11,7 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterView,
   CoveredRecord,
+  RecordView,
   ShelfView,
   Slot,
 } from '~/lib/view/records'
@@ -211,10 +212,13 @@ function ShelfHead({
   headingId,
   peek,
 }: {
-  readonly arc: Slot<CharacterView>
+  // An arc, not a character: it has a name and a drawing and no role. The
+  // peek is the page's one closure either way, and a character view is a
+  // record view with a role on it, so it satisfies this.
+  readonly arc: Slot<RecordView>
   readonly count: number
   readonly headingId: string
-  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly peek: (handle: string) => Promise<RecordView>
 }): ReactElement {
   const t = useT()
   const threshold = useThreshold()
