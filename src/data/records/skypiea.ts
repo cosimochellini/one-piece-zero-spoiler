@@ -9,10 +9,7 @@ const SHANDIA = { it: 'Guerrieri shandia', en: 'Shandia warriors' }
 const SHANDIA_WARRIOR = { it: 'Guerriero shandia', en: 'Shandia warrior' }
 const SKY_ISLAND = { it: 'Skypiea', en: 'Skypiea' }
 const ENEL_PRIESTS = { it: 'Sacerdoti di Ener', en: 'Enel’s priests' }
-const ENEL_PRIEST = {
-  it: 'Sacerdote di Ener',
-  en: 'One of Enel’s priests',
-}
+const ENEL_PRIEST = { it: 'Sacerdote di Ener', en: 'One of Enel’s priests' }
 
 export const skypiea: Saga = {
   entries: [
@@ -355,7 +352,7 @@ export const skypiea: Saga = {
   ],
 
   dossiers: {
-    masira: {
+    'masira': {
       role: {
         it: 'Capitano e recuperatore di relitti',
         en: 'Captain and salvager',
@@ -380,7 +377,7 @@ export const skypiea: Saga = {
         },
       ],
     },
-    shoujou: {
+    'shoujou': {
       role: {
         it: 'Capitano e cercatore dei fondali',
         en: 'Captain and sea searcher',
@@ -402,7 +399,7 @@ export const skypiea: Saga = {
         { episode: 145, value: { it: 'Il Re del Sonar', en: 'Sonar King' } },
       ],
     },
-    bellamy: {
+    'bellamy': {
       role: {
         it: 'Capitano dei Pirati di Bellamy',
         en: 'Captain of the Bellamy Pirates',
@@ -543,7 +540,7 @@ export const skypiea: Saga = {
       ],
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
-    sengoku: {
+    'sengoku': {
       role: {
         it: 'Grand’ammiraglio della Marina',
         en: 'Fleet admiral of the Marines',
@@ -652,7 +649,7 @@ export const skypiea: Saga = {
       ],
       bounty: [{ episode: 700, value: 340_000_000 }],
     },
-    marco: {
+    'marco': {
       role: {
         it: 'Comandante della prima divisione',
         en: 'First division commander',
@@ -725,7 +722,7 @@ export const skypiea: Saga = {
         },
       ],
     },
-    wyper: {
+    'wyper': {
       role: {
         it: 'Capo dei guerrieri shandia',
         en: 'Leader of the Shandia warriors',
@@ -753,7 +750,7 @@ export const skypiea: Saga = {
         { episode: 154, value: { it: 'Il Berserker', en: 'the Berserker' } },
       ],
     },
-    kamakiri: {
+    'kamakiri': {
       role: SHANDIA_WARRIOR,
       log: {
         it: 'Combatte accanto a Wiper e porta una lama che lascia il segno sul cielo stesso. È fra i primi a passare la frontiera di Dio e fra i pochi che dopo l’assalto vengono contati ancora vivi. Dei quattro stranieri saliti dal mare azzurro non sa cosa pensare, e per prudenza li tratta da nemici.',
@@ -762,7 +759,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 154, value: SHANDIA }],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
-    braham: {
+    'braham': {
       role: SHANDIA_WARRIOR,
       log: {
         it: 'Copre l’avanzata dei suoi con due pistole a lampo che non feriscono nessuno ma tolgono la vista, e nella foresta di nuvole questo basta a vincere. Si muove veloce, parla poco e si fida solo di chi è cresciuto con lui. La guerra per quella terra dura da più tempo di quanto chiunque a Skypiea abbia voglia di raccontare.',
@@ -771,7 +768,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 154, value: SHANDIA }],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
-    genbo: {
+    'genbo': {
       role: SHANDIA_WARRIOR,
       log: {
         it: 'Porta da solo l’arma più pesante della banda e apre la strada agli altri fra le nuvole. Nell’assalto alla terra del cielo è la voce che chiama i compagni per nome e li tiene insieme. Della gente di Skypiea non vuole sapere niente: per lui quel suolo ha un solo proprietario, e non è chi ci abita adesso.',
@@ -780,7 +777,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 154, value: SHANDIA }],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
-    laki: {
+    'laki': {
       role: { it: 'Guerriera shandia', en: 'Shandia warrior' },
       log: {
         it: 'Resta indietro rispetto agli altri e colpisce da lontano, e nella foresta di nuvole è la prima ad accorgersi di chi si avvicina. Combatte per la stessa terra per cui combattono tutti i suoi, e non ne parla mai. Quando un assalto finisce, conta i sopravvissuti a voce alta perché nessuno se ne dimentichi.',
@@ -789,7 +786,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 154, value: SHANDIA }],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
-    aisa: {
+    'aisa': {
       role: { it: 'Bambina shandia', en: 'Shandia child' },
       log: {
         it: 'Vive al villaggio con gli altri bambini ma non sta ferma un momento: scappa verso la guerra ogni volta che può, perché dice di sentire quello che succede laggiù. Sente le vite accendersi e spegnersi una a una, e nessuno degli adulti sa come consolarla. Dei guerrieri parla come si parla dei fratelli maggiori.',
@@ -806,7 +803,7 @@ export const skypiea: Saga = {
       ],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
-    conis: {
+    'conis': {
       role: { it: 'Abitante di Angel Beach', en: 'Resident of Angel Beach' },
       log: {
         it: 'Vive con il padre in una casetta sulla spiaggia degli angeli e dà da mangiare a quattro sconosciuti saliti dal mare azzurro come se li aspettasse da sempre. Spiega con pazienza come funziona il cielo: le nuvole su cui si cammina, le conchiglie che fanno ogni cosa, il denaro che qui si chiama extol. Quando il discorso arriva a Dio, la voce le si incrina.',
@@ -828,7 +825,7 @@ export const skypiea: Saga = {
         },
       ],
     },
-    pagaya: {
+    'pagaya': {
       role: { it: 'Artigiano di dial', en: 'Dial craftsman' },
       log: {
         it: 'Costruisce e ripara i dial, le conchiglie in cui resta chiuso un pezzo di cielo: una soffia vento, una scalda, una restituisce il suono che ha sentito. Accoglie in casa quattro pirati e serve loro il pranzo senza fare domande. Dell’isola parla volentieri, di Dio il meno possibile.',
@@ -853,17 +850,14 @@ export const skypiea: Saga = {
         },
       ],
     },
-    enel: {
+    'enel': {
       role: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
       log: {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',
         en: 'He rules the clouds as a god and has the manner of one: he speaks softly, never lifts his head and decides who lives without explaining himself. He hears every voice on the island wherever it is, and anyone who speaks his name badly finds out too late. The priests who serve him keep the ordeals that almost nobody gets past.',
       },
       affiliation: [
-        {
-          episode: 158,
-          value: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
-        },
+        { episode: 158, value: { it: 'Dio di Skypiea', en: 'God of Skypiea' } },
         {
           episode: 193,
           value: { it: 'Fuggito sulla luna', en: 'Fled to the moon' },
@@ -883,7 +877,7 @@ export const skypiea: Saga = {
         },
       ],
     },
-    satori: {
+    'satori': {
       role: ENEL_PRIEST,
       log: {
         it: 'Tiene la prova delle sfere, dove ogni nuvola può contenere un premio o una bestia, e ride mentre chi è entrato deve scegliere. Prevede i colpi prima che partano, come se leggesse le intenzioni nell’aria. Dice che nessuno degli stranieri arrivati fin lassù ha mai raggiunto l’altare.',
@@ -892,7 +886,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 160, value: ENEL_PRIESTS }],
       origin: [{ episode: 160, value: SKY_ISLAND }],
     },
-    shura: {
+    'shura': {
       role: ENEL_PRIEST,
       log: {
         it: 'Tiene la prova del filo, dove un passo fuori dalla nuvola giusta vale la caduta e nient’altro. Vola su un uccello di fuoco e brucia quello che trova, comprese le case di chi non c’entra niente. Della gente di Skypiea parla come di roba di Dio, sua da amministrare.',
@@ -901,7 +895,7 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 162, value: ENEL_PRIESTS }],
       origin: [{ episode: 162, value: SKY_ISLAND }],
     },
-    gedatsu: {
+    'gedatsu': {
       role: ENEL_PRIEST,
       log: {
         it: 'Tiene la prova della palude, dove il cielo si apre e chi ci cade dentro non torna su. Ha una forza spaventosa nelle braccia e una distrazione che gli fa perdere il filo a metà di ogni frase. I suoi stessi sottoposti aspettano in silenzio che si ricordi di dare un ordine.',
@@ -919,7 +913,7 @@ export const skypiea: Saga = {
       ],
       origin: [{ episode: 166, value: SKY_ISLAND }],
     },
-    ohm: {
+    'ohm': {
       role: ENEL_PRIEST,
       log: {
         it: 'Tiene la prova del ferro, la più dura delle quattro, e la considera un atto di misericordia verso chi non dovrebbe trovarsi lassù. La sua spada trasforma la nuvola in una frusta di metallo lunga quanto vuole lui. Combatte insieme a un cane enorme che porta un’armatura come la sua.',
@@ -957,7 +951,7 @@ export const skypiea: Saga = {
       ],
       epithet: [{ episode: 187, value: { it: 'Il Bugiardo', en: 'the Liar' } }],
     },
-    kalgara: {
+    'kalgara': {
       role: {
         it: 'Capo dei guerrieri shandia',
         en: 'Chief of the Shandia warriors',

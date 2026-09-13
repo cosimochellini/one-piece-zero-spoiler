@@ -170,7 +170,10 @@ function CharacterPage() {
   })
 
   return (
-    <main id="content" {...stylex.props(styles.page)}>
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
       <p {...stylex.props(styles.back, styles.enter, styles.at(0))}>
         <Link
           to="/$locale/characters"
@@ -234,7 +237,10 @@ function CharacterPage() {
               <p {...stylex.props(styles.summary)}>{entity.summary[locale]}</p>
               {dossier === undefined ? null : (
                 <>
-                  <CharacterFacts dossier={dossier} bookmark={bookmark} />
+                  <CharacterFacts
+                    dossier={dossier}
+                    bookmark={bookmark}
+                  />
                   <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
                 </>
               )}
@@ -253,7 +259,10 @@ function CharacterPage() {
         )}
       >
         <div {...stylex.props(styles.dossier)}>
-          <h2 id="route-position" {...stylex.props(styles.sectionTitle)}>
+          <h2
+            id="route-position"
+            {...stylex.props(styles.sectionTitle)}
+          >
             {t('character.routeTitle')}
           </h2>
           <p {...stylex.props(styles.position)}>{positionLabel}</p>
@@ -289,7 +298,10 @@ function CharacterPage() {
         {...stylex.props(styles.nearby, styles.enter, styles.at(2))}
       >
         <div {...stylex.props(styles.nearbyHead)}>
-          <h2 id="nearby" {...stylex.props(styles.sectionTitle)}>
+          <h2
+            id="nearby"
+            {...stylex.props(styles.sectionTitle)}
+          >
             {t('character.nearbyTitle')}
           </h2>
           <p {...stylex.props(styles.lede)}>{t('character.nearbyLede')}</p>
@@ -328,11 +340,13 @@ function Neighbour({
     <div {...stylex.props(styles.neighbour)}>
       <dt {...stylex.props(styles.neighbourLabel)}>{label}</dt>
       <dd {...stylex.props(styles.neighbourBody)}>
-        {entry === undefined ? (
+        {entry === undefined ?
           <span {...stylex.props(styles.lede)}>{empty}</span>
-        ) : (
-          <RecordTile entry={entry} bookmark={bookmark} />
-        )}
+        : <RecordTile
+            entry={entry}
+            bookmark={bookmark}
+          />
+        }
       </dd>
     </div>
   )
@@ -343,7 +357,10 @@ function CharacterNotFound() {
   const { locale, t } = useLocale()
 
   return (
-    <main id="content" {...stylex.props(styles.page)}>
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
       <div {...stylex.props(styles.words)}>
         <h1 {...stylex.props(styles.name)}>{t('character.notFoundTitle')}</h1>
         <p {...stylex.props(styles.summary)}>{t('character.notFoundBody')}</p>
@@ -370,23 +387,21 @@ const styles = stylex.create({
     paddingInline: space.md,
   },
 
-  back: {
-    marginBlockEnd: `calc(-1 * ${space.xl})`,
-  },
+  back: { marginBlockEnd: `calc(-1 * ${space.xl})` },
   // Hallmark C3: a word, an arrow, a rule. It is the page's one way back.
   backLink: {
     color: {
-      default: color.ink2,
+      'default': color.ink2,
       ':hover': color.accent,
       ':active': color.ink,
     },
     fontSize: text.base,
     fontWeight: 600,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    textDecorationColor: { default: color.rule2, ':hover': color.accent },
+    textDecorationColor: { 'default': color.rule2, ':hover': color.accent },
     textDecorationLine: 'underline',
     textDecorationThickness: rule.hair,
     textUnderlineOffset: '4px',
@@ -403,7 +418,7 @@ const styles = stylex.create({
     columnGap: space.xl2,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 60rem)': 'minmax(0, 5fr) minmax(0, 7fr)',
     },
     rowGap: space.lg,
@@ -413,7 +428,7 @@ const styles = stylex.create({
   // words come first and the strip follows.
   reversed: {
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 60rem)': 'minmax(0, 7fr) minmax(0, 5fr)',
     },
   },
@@ -424,22 +439,14 @@ const styles = stylex.create({
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    marginInline: { default: 'auto', '@media (min-width: 60rem)': 0 },
+    marginInline: { 'default': 'auto', '@media (min-width: 60rem)': 0 },
     maxWidth: '26rem',
     overflow: 'hidden',
     padding: space.lg,
     width: '100%',
   },
-  dossier: {
-    display: 'grid',
-    gap: space.md,
-    minWidth: 0,
-  },
-  words: {
-    display: 'grid',
-    gap: space.sm,
-    minWidth: 0,
-  },
+  dossier: { display: 'grid', gap: space.md, minWidth: 0 },
+  words: { display: 'grid', gap: space.sm, minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -451,10 +458,7 @@ const styles = stylex.create({
     lineHeight: leading.body,
     textTransform: 'uppercase',
   },
-  kind: {
-    fontFamily: font.body,
-    fontWeight: 600,
-  },
+  kind: { fontFamily: font.body, fontWeight: 600 },
   episode: {
     color: color.ink2,
     fontFamily: font.mono,
@@ -537,17 +541,13 @@ const styles = stylex.create({
     columnGap: space.lg,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
     },
     marginBlockStart: space.xs,
     rowGap: space.md,
   },
-  neighbour: {
-    display: 'grid',
-    gap: space.xs,
-    minWidth: 0,
-  },
+  neighbour: { display: 'grid', gap: space.xs, minWidth: 0 },
   neighbourLabel: {
     color: color.ink2,
     fontSize: text.base,
@@ -568,21 +568,18 @@ const styles = stylex.create({
     gap: space.lg,
     paddingBlockStart: space.xl,
   },
-  nearbyHead: {
-    display: 'grid',
-    gap: space.xs,
-  },
+  nearbyHead: { display: 'grid', gap: space.xs },
 
   enter: {
     animationDuration: dur.long,
     animationFillMode: 'forwards',
     animationName: {
-      default: 'none',
+      'default': 'none',
       '@media (prefers-reduced-motion: no-preference)': settle,
     },
     animationTimingFunction: ease.out,
     opacity: {
-      default: 1,
+      'default': 1,
       '@media (prefers-reduced-motion: no-preference)': 0,
     },
   },

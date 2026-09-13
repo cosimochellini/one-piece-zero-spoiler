@@ -22,9 +22,21 @@ export function RouteLegend({ open, covered, filed }: RouteLegendProps) {
 
   return (
     <dl {...stylex.props(styles.legend)}>
-      <Entry swatch="open" value={open} label={t('legend.open')} />
-      <Entry swatch="covered" value={covered} label={t('legend.covered')} />
-      <Entry swatch="filed" value={filed} label={t('legend.filed')} />
+      <Entry
+        swatch="open"
+        value={open}
+        label={t('legend.open')}
+      />
+      <Entry
+        swatch="covered"
+        value={covered}
+        label={t('legend.covered')}
+      />
+      <Entry
+        swatch="filed"
+        value={filed}
+        label={t('legend.filed')}
+      />
     </dl>
   )
 }
@@ -77,7 +89,12 @@ function SwatchMark({ kind }: { readonly kind: Swatch }) {
             y2="6"
             {...stylex.props(styles.lineOpen)}
           />
-          <circle cx="20" cy="6" r="4" {...stylex.props(styles.markOpen)} />
+          <circle
+            cx="20"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markOpen)}
+          />
         </>
       )}
       {kind === 'covered' && (
@@ -89,13 +106,28 @@ function SwatchMark({ kind }: { readonly kind: Swatch }) {
             y2="6"
             {...stylex.props(styles.lineCovered)}
           />
-          <circle cx="20" cy="6" r="4" {...stylex.props(styles.markCovered)} />
+          <circle
+            cx="20"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markCovered)}
+          />
         </>
       )}
       {kind === 'filed' && (
         <>
-          <circle cx="12" cy="6" r="4" {...stylex.props(styles.markOpen)} />
-          <circle cx="28" cy="6" r="4" {...stylex.props(styles.markCovered)} />
+          <circle
+            cx="12"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markOpen)}
+          />
+          <circle
+            cx="28"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markCovered)}
+          />
         </>
       )}
     </svg>
@@ -103,10 +135,7 @@ function SwatchMark({ kind }: { readonly kind: Swatch }) {
 }
 
 const styles = stylex.create({
-  legend: {
-    display: 'grid',
-    gap: space.xs,
-  },
+  legend: { display: 'grid', gap: space.xs },
   entry: {
     alignItems: 'baseline',
     columnGap: space.sm,
@@ -144,19 +173,14 @@ const styles = stylex.create({
     overflow: 'visible',
     width: '2.5rem',
   },
-  lineOpen: {
-    stroke: color.accent,
-    strokeWidth: rule.fine,
-  },
+  lineOpen: { stroke: color.accent, strokeWidth: rule.fine },
   lineCovered: {
     stroke: color.rule2,
     strokeDasharray: '3 5',
     strokeLinecap: 'round',
     strokeWidth: rule.fine,
   },
-  markOpen: {
-    fill: color.accent,
-  },
+  markOpen: { fill: color.accent },
   markCovered: {
     fill: color.paper,
     stroke: color.rule2,

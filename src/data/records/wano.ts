@@ -384,7 +384,7 @@ export const wano: Saga = {
   ],
 
   dossiers: {
-    tama: {
+    'tama': {
       role: {
         it: 'Bambina del villaggio di Amigasa',
         en: 'Child of Amigasa Village',
@@ -441,7 +441,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 894, value: WANO }],
     },
-    kikunojo: {
+    'kikunojo': {
       role: { it: 'Cameriera e spadaccina', en: 'Waitress and swordswoman' },
       log: {
         it: 'Serve il tè nella locanda di Okobore, dove i contadini mangiano gli avanzi della capitale, e tratta i clienti con una gentilezza che in quel paese non si vede spesso. Quando i pirati dell’Imperatore alzano le mani sui vecchi del villaggio si scopre che sotto il kimono porta una lama, e che sa usarla meglio di loro. Si presenta con il nome di O-Kiku.',
@@ -536,7 +536,7 @@ export const wano: Saga = {
         },
       ],
     },
-    shinobu: {
+    'shinobu': {
       role: {
         it: 'Kunoichi dell’alleanza Kozuki',
         en: 'Kozuki alliance kunoichi',
@@ -562,7 +562,7 @@ export const wano: Saga = {
         },
       ],
     },
-    hyogoro: {
+    'hyogoro': {
       role: { it: 'Vecchio capo della yakuza', en: 'Old yakuza boss' },
       log: {
         it: 'Nel campo di lavoro di Udon spacca pietre come tutti gli altri, ma quando parla i detenuti abbassano la voce. Per quarant’anni ha tenuto insieme le famiglie della yakuza del paese e non ha mai piegato la testa davanti allo shogun. Divide la sua ciotola di zuppa con un ragazzo appena arrivato che non ha ancora capito dove si trova.',
@@ -589,7 +589,7 @@ export const wano: Saga = {
         },
       ],
     },
-    queen: {
+    'queen': {
       role: {
         it: 'All-Star dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates All-Star',
@@ -624,7 +624,7 @@ export const wano: Saga = {
       ],
       bounty: [{ episode: 917, value: 1_320_000_000 }],
     },
-    king: {
+    'king': {
       role: {
         it: 'All-Star dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates All-Star',
@@ -665,7 +665,7 @@ export const wano: Saga = {
       ],
       bounty: [{ episode: 923, value: 1_390_000_000 }],
     },
-    komurasaki: {
+    'komurasaki': {
       role: {
         it: 'Oiran della Capitale dei Fiori',
         en: 'Oiran of the Flower Capital',
@@ -692,7 +692,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 921, value: WANO }],
     },
-    toko: {
+    'toko': {
       role: { it: 'Kamuro di Komurasaki', en: 'Komurasaki’s kamuro' },
       log: {
         it: 'Fa da paggio alla cortigiana più famosa della capitale e la segue dovunque, portandole i sandali e i dolci. Ride in continuazione, per strada, davanti allo shogun e nei momenti peggiori, e a Wano ridere davanti alla persona sbagliata può costare la testa. Nessuno in città sa spiegare perché lo faccia.',
@@ -713,7 +713,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 921, value: WANO }],
     },
-    kyoshiro: {
+    'kyoshiro': {
       role: {
         it: 'Capo della famiglia Kyoshiro',
         en: 'Boss of the Kyoshiro Family',
@@ -760,7 +760,7 @@ export const wano: Saga = {
       origin: [{ episode: 938, value: WANO }],
       epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
     },
-    gyukimaru: {
+    'gyukimaru': {
       role: { it: 'Ladro di spade', en: 'Sword thief' },
       log: {
         it: 'Sta in piedi sul ponte di Oihagi con una naginata e il cappuccio calato, e lascia passare soltanto chi gli consegna la spada. Alle sue spalle si è accumulata una montagna di lame prese a samurai, banditi e viandanti. Combatte bene, parla poco e non dice a nessuno che cosa se ne faccia di tutto quel ferro.',
@@ -777,7 +777,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 934, value: WANO }],
     },
-    fukurokuju: {
+    'fukurokuju': {
       role: { it: 'Capo dell’Oniwabanshu', en: 'Leader of the Oniwabanshu' },
       log: {
         it: 'Comanda i ninja che sorvegliano la capitale per conto dello shogun e decidono chi arriva vivo al mattino. Si muove senza rumore, ascolta dietro le porte e riferisce ogni cosa al suo padrone, che lo tiene a un passo dal trono. Quando serve esegue di persona: un ordine dello shogun non passa mai per un tribunale.',
@@ -794,7 +794,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 934, value: WANO }],
     },
-    kawamatsu: {
+    'kawamatsu': {
       role: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
       log: {
         it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. I carcerieri sanno che è più pericoloso di quanto sembri, e nessuno gli passa vicino.',
@@ -935,7 +935,7 @@ export const wano: Saga = {
         },
       ],
     },
-    izo: {
+    'izo': {
       role: {
         it: 'Comandante della sedicesima divisione',
         en: 'Sixteenth division commander',
@@ -955,7 +955,7 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 970, value: WANO }],
     },
-    ulti: {
+    'ulti': {
       role: TOBIROPPO_ROLE,
       log: {
         it: 'Fa parte dei sei ufficiali di punta dell’Imperatore e gira per Onigashima insieme al fratello, con cui litiga di continuo. Quando si arrabbia la testa le si copre di una calotta ossea e carica come un ariete, e chi la prende in pieno attraversa una parete. Non sopporta che qualcuno parli male del suo capitano.',
@@ -1014,7 +1014,7 @@ export const wano: Saga = {
         },
       ],
     },
-    sasaki: {
+    'sasaki': {
       role: TOBIROPPO_ROLE,
       log: {
         it: 'Comanda la fanteria corazzata dell’Imperatore ed è uno dei sei ufficiali di punta della ciurma, con una reputazione da uomo tutto d’un pezzo. Trasformato è un triceratopo che carica a testa bassa e non si ferma davanti a un muro. Tratta i suoi uomini con rispetto e pretende che nessuno di loro scappi.',
@@ -1031,7 +1031,7 @@ export const wano: Saga = {
         },
       ],
     },
-    yamato: {
+    'yamato': {
       role: { it: 'Figlio di Kaido', en: 'Kaido’s child' },
       log: {
         it: 'Dice di essere Kozuki Oden, il samurai che vent’anni fa sfidò Kaido e perse, e ne porta il diario e le abitudini. Suo padre lo tiene a Onigashima con due manette che esplodono se lascia l’isola. Aspettava Ace, che gli aveva promesso di tornare; al suo posto arriva il fratello di Ace, e per Yamato è abbastanza.',

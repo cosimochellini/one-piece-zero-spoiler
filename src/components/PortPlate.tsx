@@ -27,7 +27,11 @@ export function PortPlate({ visual }: { readonly visual?: Visual }) {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (
-    <svg aria-hidden="true" viewBox="0 0 200 200" {...stylex.props(styles.svg)}>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 200 200"
+      {...stylex.props(styles.svg)}
+    >
       <path
         d={FRAME}
         vectorEffect="non-scaling-stroke"
@@ -61,8 +65,17 @@ export function PortPlate({ visual }: { readonly visual?: Visual }) {
         drawing stop short of the frame.
       */}
       {visual === undefined ? null : (
-        <svg x="44" y="30" width="112" height="140" viewBox={ART_VIEWBOX}>
-          <ArtStrokes art={visual.art} tint={visual.tint} />
+        <svg
+          x="44"
+          y="30"
+          width="112"
+          height="140"
+          viewBox={ART_VIEWBOX}
+        >
+          <ArtStrokes
+            art={visual.art}
+            tint={visual.tint}
+          />
         </svg>
       )}
     </svg>
@@ -101,11 +114,7 @@ const CORNERS =
 const NORTH = 'M170 40 V24 M166 29 L170 24 L174 29'
 
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: '100%',
-    width: '100%',
-  },
+  svg: { display: 'block', height: '100%', width: '100%' },
   line: {
     fill: 'none',
     stroke: color.ink2,
@@ -113,11 +122,7 @@ const styles = stylex.create({
     strokeLinejoin: 'round',
     strokeWidth: rule.fine,
   },
-  ambient: {
-    stroke: color.rule2,
-  },
+  ambient: { stroke: color.rule2 },
   tinted: (hue: string) => ({ stroke: hue }),
-  dashed: {
-    strokeDasharray: '3 6',
-  },
+  dashed: { strokeDasharray: '3 6' },
 })

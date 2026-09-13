@@ -26,7 +26,11 @@ export function CharacterCrest({ visual }: { readonly visual?: Visual }) {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (
-    <svg aria-hidden="true" viewBox="0 0 200 200" {...stylex.props(styles.svg)}>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 200 200"
+      {...stylex.props(styles.svg)}
+    >
       <path
         d={ring(100, 100, 94)}
         vectorEffect="non-scaling-stroke"
@@ -52,8 +56,17 @@ export function CharacterCrest({ visual }: { readonly visual?: Visual }) {
         a half-diagonal of 80, inside the 82 of the dashed ring.
       */}
       {visual === undefined ? null : (
-        <svg x="50" y="37.5" width="100" height="125" viewBox={ART_VIEWBOX}>
-          <ArtStrokes art={visual.art} tint={visual.tint} />
+        <svg
+          x="50"
+          y="37.5"
+          width="100"
+          height="125"
+          viewBox={ART_VIEWBOX}
+        >
+          <ArtStrokes
+            art={visual.art}
+            tint={visual.tint}
+          />
         </svg>
       )}
     </svg>
@@ -87,11 +100,7 @@ const BEZEL_MINOR = ticks(32, 86, 90, 8)
 const BEZEL_CARDINAL = ticks(4, 84, 92)
 
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: '100%',
-    width: '100%',
-  },
+  svg: { display: 'block', height: '100%', width: '100%' },
   line: {
     fill: 'none',
     stroke: color.ink2,
@@ -99,11 +108,7 @@ const styles = stylex.create({
     strokeLinejoin: 'round',
     strokeWidth: rule.fine,
   },
-  ambient: {
-    stroke: color.rule2,
-  },
+  ambient: { stroke: color.rule2 },
   tinted: (hue: string) => ({ stroke: hue }),
-  dashed: {
-    strokeDasharray: '3 6',
-  },
+  dashed: { strokeDasharray: '3 6' },
 })

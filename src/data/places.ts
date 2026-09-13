@@ -88,7 +88,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
     },
     filedHere: ['usopp', 'going-merry'],
   },
-  baratie: {
+  'baratie': {
     sea: 'east-blue',
     form: 'restaurant',
     arc: 'east-blue',
@@ -99,7 +99,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
     },
     filedHere: ['sanji', 'dracule-mihawk'],
   },
-  jaya: {
+  'jaya': {
     sea: 'grand-line',
     form: 'island',
     arc: 'skypiea',

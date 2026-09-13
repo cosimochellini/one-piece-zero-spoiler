@@ -57,7 +57,7 @@ export const summitWarArt = {
   ],
 
   // One great wave, the way a print draws it.
-  jinbe: [
+  'jinbe': [
     {
       d: 'M18 160 C26 110 60 84 88 84 C110 84 118 66 126 46 C124 74 110 90 96 96 C110 92 122 82 132 66 C128 100 100 116 72 122 C50 126 30 142 18 160z',
       role: 'accent',
@@ -75,7 +75,7 @@ export const summitWarArt = {
   ],
 
   // A fortress in a crescent bay, gate to the sea.
-  marineford: [
+  'marineford': [
     { d: 'M-6 152 C34 100 126 100 166 152' },
     {
       d: 'M28 122 V82 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 V122z',
@@ -86,7 +86,7 @@ export const summitWarArt = {
     ...SEA.slice(1),
   ],
   // A mangrove on its stilt roots, with soap bubbles going up from the bark.
-  sabaody: [
+  'sabaody': [
     { d: 'M72 148 V64 M88 148 V64' },
     { d: ellipse(80, 56, 42, 22) },
     {
@@ -133,7 +133,7 @@ export const summitWarArt = {
   ],
 
   // A tray of takoyaki on their skewers, and a scale beside it.
-  camie: [
+  'camie': [
     { d: 'M32 122 h96 v34 h-96z' },
     { d: 'M32 138 h96', role: 'soft' },
     { d: circle(56, 112, 11), role: 'accent' },
@@ -146,7 +146,7 @@ export const summitWarArt = {
   ],
 
   // A starfish wearing a hat much too small for it.
-  pappag: [
+  'pappag': [
     { d: star(80, 118, 44, 20) },
     {
       d: dots([
@@ -169,7 +169,7 @@ export const summitWarArt = {
   ],
 
   // An iron mask with its rivets, in front of a printed sheet.
-  duval: [
+  'duval': [
     { d: 'M50 50 h60 v66 a30 30 0 0 1 -60 0z' },
     { d: 'M58 74 h44 M58 86 h44 M58 98 h44', role: 'accent' },
     {
@@ -186,7 +186,7 @@ export const summitWarArt = {
   ],
 
   // A bar counter, an ashtray and a cigarette still going.
-  shakky: [
+  'shakky': [
     { d: 'M20 120 h120 v10 h-120z' },
     { d: 'M28 130 V166 M132 130 V166' },
     { d: 'M20 148 h120', role: 'soft' },
@@ -210,7 +210,7 @@ export const summitWarArt = {
   ],
 
   // Two long blades, one on each gauntlet.
-  killer: [
+  'killer': [
     { d: 'M40 128 h30 v26 h-30z' },
     { d: 'M92 128 h30 v26 h-30z' },
     { d: 'M40 140 h30 M92 140 h30', role: 'soft' },
@@ -220,7 +220,7 @@ export const summitWarArt = {
   ],
 
   // A boiler suit on its hanger, with a paw print across the chest.
-  bepo: [
+  'bepo': [
     { d: 'M58 48 C58 40 102 40 102 48 V150 h-18 V104 h-8 v46 h-18z' },
     { d: 'M58 56 L36 94 l14 10 L64 84' },
     { d: 'M102 56 L124 94 l-14 10 L96 84' },
@@ -277,7 +277,7 @@ export const summitWarArt = {
   ],
 
   // A monk's iron pillar, rings and all.
-  urouge: [
+  'urouge': [
     { d: 'M64 40 h32 v140 h-32z' },
     { d: 'M60 64 h40 M60 92 h40 M60 120 h40 M60 148 h40', role: 'soft' },
     { d: 'M56 40 h48 v-12 h-48z', role: 'accent' },
@@ -330,7 +330,7 @@ export const summitWarArt = {
   ],
 
   // A pair of spectacles with the light coming straight through them.
-  borsalino: [
+  'borsalino': [
     { d: circle(56, 92, 22) },
     { d: circle(112, 92, 22) },
     { d: 'M78 92 q8 -8 16 0' },
@@ -341,7 +341,7 @@ export const summitWarArt = {
   ],
 
   // A broadaxe standing in a wrestler's belt.
-  sentomaru: [
+  'sentomaru': [
     { d: 'M76 56 V180 h8 V56z' },
     {
       d: 'M84 62 C110 62 126 78 128 96 C126 116 110 128 84 128z',
@@ -386,7 +386,7 @@ export const summitWarArt = {
   ],
 
   // A bow whose string is a snake.
-  marguerite: [
+  'marguerite': [
     { d: 'M100 30 C56 60 56 140 100 170', role: 'accent' },
     { d: 'M100 30 c6 4 6 8 4 12 M100 170 c6 -4 6 -8 4 -12' },
     {
@@ -400,7 +400,7 @@ export const summitWarArt = {
   ],
 
   // A crystal ball resting on the papers it is read beside.
-  nyon: [
+  'nyon': [
     { d: circle(80, 78, 32), role: 'accent' },
     { d: 'M58 58 q10 -10 22 -12', role: 'accent' },
     { d: 'M64 110 h32 l8 12 h-48z' },
@@ -412,7 +412,7 @@ export const summitWarArt = {
   ],
 
   // A warden's cap, with what comes off it.
-  magellan: [
+  'magellan': [
     { d: 'M40 104 C40 74 120 74 120 104z' },
     { d: 'M32 104 h96' },
     { d: 'M36 104 q44 18 88 2' },
@@ -424,15 +424,12 @@ export const summitWarArt = {
   ],
 
   // A pharaoh's headdress, and the two-bladed pole beside it.
-  hannyabal: [
+  'hannyabal': [
     { d: 'M34 66 C34 40 92 40 92 66 V126 l-12 14 h-34 l-12 -14z' },
     { d: 'M34 74 h58 M34 88 h58 M34 102 h58', role: 'soft' },
     { d: 'M126 56 V150' },
     { d: 'M126 56 c0 -18 -6 -26 -14 -30 c4 12 6 22 14 30z', role: 'accent' },
-    {
-      d: 'M126 150 c0 18 6 26 14 30 c-4 -12 -6 -22 -14 -30z',
-      role: 'accent',
-    },
+    { d: 'M126 150 c0 18 6 26 14 30 c-4 -12 -6 -22 -14 -30z', role: 'accent' },
     { d: 'M120 92 h12 M120 112 h12', role: 'soft' },
     shadow(64, 180, 36),
   ],
@@ -450,7 +447,7 @@ export const summitWarArt = {
   ],
 
   // Giant scissors, and the floor they have been through.
-  inazuma: [
+  'inazuma': [
     { d: 'M80 100 L42 30 l10 -6 L90 94z', role: 'accent' },
     { d: 'M80 100 L118 30 l-10 -6 L70 94z', role: 'accent' },
     { d: circle(60, 130, 16) },
@@ -461,7 +458,7 @@ export const summitWarArt = {
   ],
 
   // A long blade laid down, the rain still on it.
-  shiryu: [
+  'shiryu': [
     { d: 'M30 174 L120 40 M38 179 L128 45 M120 40 L128 45' },
     { d: 'M54 152 l10 6' },
     { d: 'M30 174 L16 184 M38 179 L24 189 M16 184 L24 189' },
@@ -521,17 +518,14 @@ export const summitWarArt = {
     { d: circle(50, 110, 11) },
     { d: circle(74, 108, 11) },
     { d: circle(96, 112, 11), role: 'accent' },
-    {
-      d: 'M96 101 c4 -10 12 -14 18 -10 c-6 6 -8 12 -8 18',
-      role: 'accent',
-    },
+    { d: 'M96 101 c4 -10 12 -14 18 -10 c-6 6 -8 12 -8 18', role: 'accent' },
     { d: 'M112 142 c10 -16 28 -16 34 0 c-6 10 -28 10 -34 0z' },
     { d: 'M118 152 v14 M142 152 v14', role: 'soft' },
     shadow(72, 176, 46),
   ],
 
   // A top hat and a cane, left on the floor of a dance hall.
-  laffitte: [
+  'laffitte': [
     { d: 'M56 108 V54 h48 v54' },
     { d: ellipse(80, 108, 40, 10) },
     { d: 'M56 92 h48', role: 'accent' },
@@ -574,10 +568,7 @@ export const summitWarArt = {
     { d: 'M30 28 h100 M30 182 h100' },
     { d: 'M40 28 V182 M120 28 V182' },
     { d: 'M60 28 V182' },
-    {
-      d: 'M80 28 C80 68 50 86 50 108 C50 134 80 146 80 182',
-      role: 'accent',
-    },
+    { d: 'M80 28 C80 68 50 86 50 108 C50 134 80 146 80 182', role: 'accent' },
     {
       d: 'M100 28 C100 72 118 90 110 112 C104 132 100 154 100 182',
       role: 'accent',
@@ -602,7 +593,7 @@ export const summitWarArt = {
   ],
 
   // A Marine cap with a fist burned through it.
-  sakazuki: [
+  'sakazuki': [
     { d: 'M36 118 C36 78 124 78 124 118z' },
     { d: 'M28 118 h104' },
     { d: 'M32 128 q48 16 96 0 M28 118 v10 M132 118 v10' },
@@ -616,7 +607,7 @@ export const summitWarArt = {
   ],
 
   // A diamond the size of a shoulder plate.
-  jozu: [
+  'jozu': [
     { d: 'M80 36 L128 88 L80 164 L32 88z', role: 'accent' },
     { d: 'M32 88 h96', role: 'accent' },
     { d: 'M56 62 L68 88 L80 164 M104 62 L92 88', role: 'soft' },
@@ -627,7 +618,7 @@ export const summitWarArt = {
   ],
 
   // Two rapiers crossed above a rose.
-  vista: [
+  'vista': [
     { d: 'M26 28 L118 120' },
     { d: 'M134 28 L42 120' },
     { d: 'M118 120 l12 10 M42 120 l-12 10' },
@@ -642,7 +633,7 @@ export const summitWarArt = {
   ],
 
   // A flag torn along its edge, and the dagger under it.
-  squard: [
+  'squard': [
     { d: 'M40 20 V186' },
     {
       d: 'M40 34 h82 v52 l-14 -8 l-12 10 l-14 -10 l-16 10 l-16 -8z',
@@ -668,7 +659,7 @@ export const summitWarArt = {
   ],
 
   // A washing line with two coats on it, and a cloth wrung out below.
-  tsuru: [
+  'tsuru': [
     { d: 'M8 46 C60 62 100 62 152 46', role: 'ambient' },
     {
       d: 'M34 58 l-12 20 l8 4 l4 -8 v44 h28 v-44 l4 8 l8 -4 l-12 -20z',
@@ -692,7 +683,7 @@ export const summitWarArt = {
   ],
 
   // A cap set on a sword laid across the rail.
-  momonga: [
+  'momonga': [
     { d: 'M18 142 h124' },
     { d: 'M18 150 h124', role: 'soft' },
     { d: 'M34 150 V182 M126 150 V182' },
@@ -723,16 +714,13 @@ export const summitWarArt = {
   ],
 
   // A top hat with goggles on the brim, and a pipe beside it.
-  sabo: [
+  'sabo': [
     { d: 'M54 106 V52 h46 v54' },
     { d: ellipse(77, 106, 38, 10) },
     { d: 'M54 52 q23 -8 46 0' },
     { d: circle(64, 94, 11), role: 'accent' },
     { d: circle(90, 94, 11), role: 'accent' },
-    {
-      d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6',
-      role: 'accent',
-    },
+    { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
     { d: 'M124 44 V172 M134 44 V172' },
     { d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0' },
     shadow(78, 170, 42),

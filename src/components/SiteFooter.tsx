@@ -42,8 +42,5 @@ const styles = stylex.create({
     lineHeight: leading.body,
     maxWidth: '72ch',
   },
-  lead: {
-    color: color.ink2,
-    fontWeight: 700,
-  },
+  lead: { color: color.ink2, fontWeight: 700 },
 })

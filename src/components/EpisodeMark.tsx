@@ -58,13 +58,10 @@ const styles = stylex.create({
   // border on hover, never a fill.
   mark: {
     borderColor: {
-      default: color.rule2,
+      'default': color.rule2,
       ':hover:not(:disabled)': color.accent,
     },
-    color: {
-      default: color.accent,
-      ':hover:not(:disabled)': color.ink,
-    },
+    color: { 'default': color.accent, ':hover:not(:disabled)': color.ink },
     fontFamily: font.mono,
     fontSize: text.xs,
     fontVariantNumeric: 'tabular-nums',
@@ -77,9 +74,6 @@ const styles = stylex.create({
   // ambient ink, so the unset state reads as "still under fog".
   markUnset: {
     borderStyle: 'dashed',
-    color: {
-      default: color.ink2,
-      ':hover:not(:disabled)': color.accent,
-    },
+    color: { 'default': color.ink2, ':hover:not(:disabled)': color.accent },
   },
 })

@@ -72,7 +72,10 @@ export function CharacterCard({
             <CharacterCrest visual={entity.visual} />
           </span>
           <span {...stylex.props(styles.name)}>
-            <Marked text={name} span={highlight} />
+            <Marked
+              text={name}
+              span={highlight}
+            />
           </span>
           {role === undefined ? null : (
             <span {...stylex.props(styles.role)}>{role[locale]}</span>
@@ -107,18 +110,14 @@ export function Marked({
 }
 
 const styles = stylex.create({
-  card: {
-    display: 'grid',
-    gap: space.xs,
-    minWidth: 0,
-  },
+  card: { display: 'grid', gap: space.xs, minWidth: 0 },
   // The whole card is the link; the crest frame is the one container signal.
   link: {
     borderRadius: radius.card,
     color: color.ink,
     display: 'grid',
     gap: space.xs2,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
@@ -128,7 +127,7 @@ const styles = stylex.create({
     aspectRatio: '1',
     backgroundColor: color.paper2,
     borderColor: {
-      default: color.rule,
+      'default': color.rule,
       ':is(a:hover) > &': color.rule2,
       ':is(a:focus-visible) > &': color.rule2,
     },
@@ -145,7 +144,7 @@ const styles = stylex.create({
   },
   name: {
     color: {
-      default: color.ink,
+      'default': color.ink,
       ':is(a:hover) > &': color.accent,
       ':is(a:focus-visible) > &': color.accent,
       ':is(a:active) > &': color.ink2,

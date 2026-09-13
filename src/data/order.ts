@@ -17,10 +17,10 @@ export function orderByMode(
   mode: BookmarkMode,
 ): readonly Entity[] {
   return [...entries].sort((a, b) =>
-    mode === 'chapter'
-      ? a.revealedAtChapter - b.revealedAtChapter ||
-        a.revealedAtEpisode - b.revealedAtEpisode
-      : a.revealedAtEpisode - b.revealedAtEpisode ||
-        a.revealedAtChapter - b.revealedAtChapter,
+    mode === 'chapter' ?
+      a.revealedAtChapter - b.revealedAtChapter
+      || a.revealedAtEpisode - b.revealedAtEpisode
+    : a.revealedAtEpisode - b.revealedAtEpisode
+      || a.revealedAtChapter - b.revealedAtChapter,
   )
 }

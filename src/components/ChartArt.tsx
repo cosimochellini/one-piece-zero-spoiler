@@ -22,10 +22,7 @@ import { color, rule, tint } from '~/styles/tokens.stylex'
  * `aria-hidden`.
  */
 
-export type ArtProps = {
-  readonly art: ArtId
-  readonly tint: TintId
-}
+export type ArtProps = { readonly art: ArtId; readonly tint: TintId }
 
 /** The box every drawing is composed in. A host `<svg>` uses it as its viewBox. */
 export const ART_VIEWBOX = '0 0 160 200'
@@ -58,7 +55,11 @@ export function ArtStrokes({ art, tint: hue }: ArtProps) {
 
 export function ChartArt(props: ArtProps) {
   return (
-    <svg aria-hidden="true" viewBox={ART_VIEWBOX} {...stylex.props(styles.svg)}>
+    <svg
+      aria-hidden="true"
+      viewBox={ART_VIEWBOX}
+      {...stylex.props(styles.svg)}
+    >
       <ArtStrokes {...props} />
     </svg>
   )
@@ -94,11 +95,7 @@ const TINT_VAR: Readonly<Record<TintId, string>> = {
 }
 
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: '100%',
-    width: '100%',
-  },
+  svg: { display: 'block', height: '100%', width: '100%' },
   line: {
     fill: 'none',
     stroke: color.ink2,
@@ -106,11 +103,7 @@ const styles = stylex.create({
     strokeLinejoin: 'round',
     strokeWidth: rule.fine,
   },
-  ambient: {
-    stroke: color.rule2,
-  },
+  ambient: { stroke: color.rule2 },
   accent: (hue: string) => ({ stroke: hue }),
-  dashed: {
-    strokeDasharray: '3 6',
-  },
+  dashed: { strokeDasharray: '3 6' },
 })

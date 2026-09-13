@@ -40,9 +40,7 @@ const stylexPlugin = stylexVite({
   // nothing about tsconfig `paths`, so the `~/` alias has to be repeated here
   // or every `~/styles/tokens.stylex` import fails to compile with
   // "Could not resolve the path to the imported file".
-  aliases: {
-    '~/*': [path.join(import.meta.dirname, 'src', '*')],
-  },
+  aliases: { '~/*': [path.join(import.meta.dirname, 'src', '*')] },
 })
 
 export default defineConfig({

@@ -2,36 +2,29 @@
   "name": "one-piece-zero-spoiler",
   "version": "0.6.0",
   "private": true,
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cosimochellini/one-piece-zero-spoiler.git"
   },
-  "packageManager": "npm@11.16.0",
-  "engines": {
-    "node": ">=24.18.0",
-    "npm": ">=11.16.0"
-  },
+  "type": "module",
   "scripts": {
-    "dev": "vite dev",
     "build": "vite build",
-    "start": "vite preview",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint . --max-warnings=0",
-    "lint:fix": "eslint . --fix",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow",
+    "dev": "vite dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
-    "gate:react-doctor": "node scripts/react-doctor-gate.mjs",
     "gate:fallow": "node scripts/fallow-gate.mjs",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow"
+    "gate:react-doctor": "node scripts/react-doctor-gate.mjs",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
+    "start": "vite preview",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
-  "reactDoctor": {
-    "supplyChain": {
-      "enabled": false
-    }
+  "overrides": {
+    "unplugin": "3.3.0"
   },
   "dependencies": {
     "@stylexjs/stylex": "0.19.0",
@@ -93,7 +86,14 @@
     "vite": "8.3.0",
     "vitest": "5.0.0"
   },
-  "overrides": {
-    "unplugin": "3.3.0"
+  "packageManager": "npm@11.16.0",
+  "engines": {
+    "node": ">=24.18.0",
+    "npm": ">=11.16.0"
+  },
+  "reactDoctor": {
+    "supplyChain": {
+      "enabled": false
+    }
   }
 }

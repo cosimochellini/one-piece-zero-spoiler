@@ -759,7 +759,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    jinbe: {
+    'jinbe': {
       role: {
         it: 'Uomo-pesce della Flotta dei Sette',
         en: 'Fish-man of the Seven Warlords',
@@ -793,7 +793,7 @@ export const summitWar: Saga = {
       ],
       bounty: [{ episode: 1086, value: 1_100_000_000 }],
     },
-    camie: {
+    'camie': {
       role: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
       log: {
         it: 'Viene inseguita per mare da una banda a cavallo di pesci volanti e se la cava perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
@@ -822,7 +822,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    pappag: {
+    'pappag': {
       role: { it: 'Stella marina parlante', en: 'Talking starfish' },
       log: {
         it: 'Sta appollaiato sulla testa di Kaimi e sostiene di esserne il padrone, anche se è lei a portarlo in giro e a dargli da mangiare. Parla senza fermarsi mai, distribuisce consigli che nessuno gli ha chiesto e si offende se qualcuno lo scambia per un cappello. Quando la sirena sparisce è il primo a correre da chiunque possa aiutarla.',
@@ -845,7 +845,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    duval: {
+    'duval': {
       role: {
         it: 'Capo dei Cavalieri del Pesce Volante',
         en: 'Boss of the Flying Fish Riders',
@@ -865,7 +865,7 @@ export const summitWar: Saga = {
       ],
       epithet: [{ episode: 391, value: { it: 'il Bello', en: 'Handsome' } }],
     },
-    shakky: {
+    'shakky': {
       role: { it: 'Padrona del bar', en: 'Bar owner' },
       log: {
         it: 'Tiene un locale fra le mangrovie dove il conto è sempre più alto di quanto dovrebbe, e l’insegna lo ammette apertamente. Conosce per nome ogni pirata sbarcato sull’arcipelago e ne segue le taglie sui giornali come altri seguono il tempo. Sa dove si trova l’uomo capace di rivestire una nave, e non spiega a nessuno come faccia a saperlo.',
@@ -900,7 +900,7 @@ export const summitWar: Saga = {
         { episode: 398, value: { it: 'Re Oscuro', en: 'the Dark King' } },
       ],
     },
-    killer: {
+    'killer': {
       role: {
         it: 'Secondo dei Pirati di Kid',
         en: 'First mate of the Kid Pirates',
@@ -930,7 +930,7 @@ export const summitWar: Saga = {
         { episode: 517, value: 200_000_000 },
       ],
     },
-    bepo: {
+    'bepo': {
       role: {
         it: 'Navigatore dei Pirati Heart',
         en: 'Navigator of the Heart Pirates',
@@ -1062,7 +1062,7 @@ export const summitWar: Saga = {
       ],
       bounty: [{ episode: 392, value: 222_000_000 }],
     },
-    urouge: {
+    'urouge': {
       role: {
         it: 'Capitano dei Pirati del Monaco Decaduto',
         en: 'Captain of the Fallen Monk Pirates',
@@ -1191,7 +1191,7 @@ export const summitWar: Saga = {
         { episode: 395, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
       ],
     },
-    borsalino: {
+    'borsalino': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Arriva sull’arcipelago in un lampo e attraversa le mangrovie alla velocità della luce, senza per questo smettere di parlare lento. Prende a calci chi gli sta davanti con una gamba che scotta e sembra sempre un po’ annoiato da quello che deve fare. Non ha bisogno di alzare la voce: davanti a lui i pirati smettono di correre.',
@@ -1211,7 +1211,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    sentomaru: {
+    'sentomaru': {
       role: { it: 'Guardia del corpo', en: 'Bodyguard' },
       log: {
         it: 'Si presenta come la guardia del corpo dello scienziato del Governo e si vanta di avere la difesa più solida del mondo. Porta un’ascia enorme sulla schiena e una cintura da lottatore, e risponde alle domande con una scortesia che sembra studiata. Comanda i giganti corazzati che camminano fra le mangrovie, e li chiama con un ordine secco.',
@@ -1274,7 +1274,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    marguerite: {
+    'marguerite': {
       role: { it: 'Guerriera kuja', en: 'Kuja warrior' },
       log: {
         it: 'Trova un uomo svenuto nella foresta, il primo che vede in vita sua, e invece di ucciderlo lo porta al villaggio e lo nasconde. Caccia con un arco più alto di lei e tira frecce che colpiscono molto più forte di quanto il legno lasci immaginare. Fa domande su tutto quello che sta fuori dall’isola, e non ha mai potuto farle a nessuno.',
@@ -1288,7 +1288,7 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 408, value: AMAZON_LILY }],
     },
-    nyon: {
+    'nyon': {
       role: { it: 'Anziana di Amazon Lily', en: 'Elder of Amazon Lily' },
       log: {
         it: 'Vive in una casa in cima al villaggio e legge i giornali che arrivano dal mondo, cosa che sull’isola non fa nessun altro. È stata imperatrice prima di quella attuale, e oggi le due si trattano male in pubblico e si cercano in privato. Da giovane ha lasciato l’isola ed è tornata, e di quegli anni parla poco e malvolentieri.',
@@ -1306,11 +1306,8 @@ export const summitWar: Saga = {
       origin: [{ episode: 412, value: AMAZON_LILY }],
       epithet: [{ episode: 412, value: { it: 'Gloriosa', en: 'Gloriosa' } }],
     },
-    magellan: {
-      role: {
-        it: 'Direttore di Impel Down',
-        en: 'Chief warden of Impel Down',
-      },
+    'magellan': {
+      role: { it: 'Direttore di Impel Down', en: 'Chief warden of Impel Down' },
       log: {
         it: 'Dirige la prigione più profonda del mondo e ne conosce ogni livello, ogni cella e ogni detenuto per nome. Il suo corpo produce veleno senza sosta: gli cola dalle mani, gli esce dalla bocca e non gli serve altro per fermare un evaso. Quello stesso veleno lo tiene chiuso in bagno per ore, e in quelle ore la prigione va avanti da sola.',
         en: 'He runs the deepest prison in the world and knows every level, every cell and every inmate by name. His own body makes poison without pause: it runs off his hands, it comes out of his mouth, and he needs nothing else to stop a man escaping. That same poison keeps him in the lavatory for hours, and in those hours the prison runs itself.',
@@ -1338,7 +1335,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    hannyabal: {
+    'hannyabal': {
       role: {
         it: 'Vicedirettore di Impel Down',
         en: 'Vice chief warden of Impel Down',
@@ -1398,7 +1395,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    inazuma: {
+    'inazuma': {
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
       log: {
         it: 'Sta accanto al sovrano del livello nascosto e parla al posto suo quando serve una risposta seria. Ha le mani che diventano forbici e ritaglia la pietra come si ritaglia la carta, poi piega il pezzo e lo rimette dove gli serve. Di sé non dice nulla a nessuno, e dentro la prigione nessuno glielo chiede.',
@@ -1420,7 +1417,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    shiryu: {
+    'shiryu': {
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
       log: {
         it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Siede nella cella con la spada che gli hanno lasciato accanto, e i guardiani passano davanti senza guardarlo. Il direttore lo considera l’unico detenuto che non vorrebbe mai vedere fuori.',
@@ -1531,7 +1528,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    laffitte: {
+    'laffitte': {
       role: {
         it: 'Navigatore dei Pirati di Barbanera',
         en: 'Navigator of the Blackbeard Pirates',
@@ -1628,10 +1625,7 @@ export const summitWar: Saga = {
       epithet: [
         {
           episode: 450,
-          value: {
-            it: 'Nave da Guerra Colossale',
-            en: 'Colossal Battleship',
-          },
+          value: { it: 'Nave da Guerra Colossale', en: 'Colossal Battleship' },
         },
       ],
       devilFruit: [
@@ -1661,7 +1655,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    sakazuki: {
+    'sakazuki': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Siede al quartier generale fra gli altri due ammiragli e non discute mai l’ordine che ha ricevuto: lo esegue fino in fondo. Il suo corpo diventa magma, e quando si muove il cappello e le spalline fumano ancora prima del colpo. Della giustizia ha una sola idea e non ammette che esistano casi particolari.',
@@ -1688,7 +1682,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    jozu: {
+    'jozu': {
       role: {
         it: 'Comandante della terza divisione',
         en: 'Third division commander',
@@ -1714,10 +1708,7 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [
-        {
-          episode: 461,
-          value: { it: 'Jozu il Diamante', en: 'Diamond Jozu' },
-        },
+        { episode: 461, value: { it: 'Jozu il Diamante', en: 'Diamond Jozu' } },
       ],
       devilFruit: [
         {
@@ -1726,7 +1717,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    vista: {
+    'vista': {
       role: {
         it: 'Comandante della quinta divisione',
         en: 'Fifth division commander',
@@ -1748,7 +1739,7 @@ export const summitWar: Saga = {
         { episode: 461, value: { it: 'Spada Fiorita', en: 'Flower Sword' } },
       ],
     },
-    squard: {
+    'squard': {
       role: {
         it: 'Capitano alleato di Barbabianca',
         en: 'Captain allied to Whitebeard',
@@ -1793,7 +1784,7 @@ export const summitWar: Saga = {
       ],
       bounty: [{ episode: 466, value: 550_000_000 }],
     },
-    tsuru: {
+    'tsuru': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Siede nella sala del quartier generale fra il grand’ammiraglio e i tre ammiragli, unica donna al tavolo, e nessuno le parla sopra. Ha l’età per essere la nonna di chiunque nella stanza e l’autorità di chi comanda una flotta. Le sue mani strizzano un uomo come si strizza un panno bagnato, e poi lo stendono ad asciugare.',
@@ -1821,7 +1812,7 @@ export const summitWar: Saga = {
         },
       ],
     },
-    momonga: {
+    'momonga': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Sbarca su un’isola dove agli uomini è vietato mettere piede, con l’ordine di consegnare una convocazione all’imperatrice e nessuna voglia di discutere. Tiene gli occhi bassi per tutto il tempo, e quando lo sguardo di lei lo raggiunge si conficca una lama nella gamba per non cedere. Aspetta la risposta e riparte senza aggiungere altro.',
@@ -1863,7 +1854,7 @@ export const summitWar: Saga = {
       ],
       bounty: [{ episode: 493, value: 7_800_000 }],
     },
-    sabo: {
+    'sabo': {
       role: {
         it: 'Fratello giurato di Rufy e Ace',
         en: 'Sworn brother of Luffy and Ace',

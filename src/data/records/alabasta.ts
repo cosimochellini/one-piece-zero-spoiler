@@ -455,7 +455,7 @@ export const alabasta: Saga = {
   ],
 
   dossiers: {
-    laboon: {
+    'laboon': {
       role: {
         it: 'Balena della Montagna Inversa',
         en: 'Whale of Reverse Mountain',
@@ -475,7 +475,7 @@ export const alabasta: Saga = {
       ],
       origin: [{ episode: 62, value: { it: 'West Blue', en: 'West Blue' } }],
     },
-    crocus: {
+    'crocus': {
       role: { it: 'Guardiano del faro', en: 'Lighthouse keeper' },
       log: {
         it: 'Vive dentro la balena che sorveglia, in una casa costruita nel suo stomaco, e la cura da cinquant’anni perché non si uccida contro la roccia. Porta una camicia a fiori, un fiore in testa e l’aria di chi ha già visto tutto quello che c’era da vedere. Del proprio passato non racconta niente, e nessuno glielo chiede.',
@@ -514,7 +514,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    igaram: {
+    'igaram': {
       role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
       log: {
         it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mister 8 comanda cento agenti travestiti da cittadini ospitali.',
@@ -523,10 +523,7 @@ export const alabasta: Saga = {
       affiliation: [
         {
           episode: 64,
-          value: {
-            it: 'Baroque Works, Mister 8',
-            en: 'Baroque Works, Mr. 8',
-          },
+          value: { it: 'Baroque Works, Mister 8', en: 'Baroque Works, Mr. 8' },
         },
         {
           episode: 67,
@@ -554,7 +551,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    karoo: {
+    'karoo': {
       role: { it: 'Anatra da corsa', en: 'Racing duck' },
       log: {
         it: 'È un’anatra grande quanto un uomo, con la sella sul dorso e la borraccia al collo, e corre più veloce di un cavallo quando la sua padrona glielo chiede. Capisce tutto quello che gli si dice e risponde a gesti, e beve dalla borraccia molto più di quanto dovrebbe. Quando lei è in pericolo si mette davanti senza pensarci.',
@@ -645,7 +642,7 @@ export const alabasta: Saga = {
       },
       affiliation: [{ episode: 70, value: BW_OFFICER }],
     },
-    dorry: {
+    'dorry': {
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaf' },
       log: {
         it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni duella ogni giorno con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo. Tra un duello e l’altro brindano insieme.',
@@ -664,7 +661,7 @@ export const alabasta: Saga = {
       epithet: [{ episode: 70, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
       bounty: [{ episode: 70, value: 100_000_000 }],
     },
-    brogy: {
+    'brogy': {
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaf' },
       log: {
         it: 'Ha la barba rossa e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta il suo vecchio amico, come fa da cento anni. Dice che il duello è l’unica cosa che li tiene vivi tutti e due.',
@@ -683,7 +680,7 @@ export const alabasta: Saga = {
       epithet: [{ episode: 70, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
       bounty: [{ episode: 70, value: 100_000_000 }],
     },
-    wapol: {
+    'wapol': {
       role: { it: 'Re in esilio', en: 'King in exile' },
       log: {
         it: 'È tornato su un’isola che aveva lasciato quando i pirati sono arrivati, e pretende che gli venga restituita. La sua bocca può mordere e inghiottire qualunque cosa, metallo compreso, e quello che mangia gli esce di nuovo trasformato in altro. Dell’isola parla come di una proprietà, e di chi ci vive come di gente che gli deve ancora qualcosa.',
@@ -741,7 +738,7 @@ export const alabasta: Saga = {
       ],
       bounty: [{ episode: 78, value: 32_000_000 }],
     },
-    dalton: {
+    'dalton': {
       role: {
         it: 'Ex capo della guardia di Drum',
         en: 'Former captain of Drum’s guard',
@@ -760,10 +757,7 @@ export const alabasta: Saga = {
         },
         {
           episode: 91,
-          value: {
-            it: 'Capo eletto di Drum',
-            en: 'Drum’s elected leader',
-          },
+          value: { it: 'Capo eletto di Drum', en: 'Drum’s elected leader' },
         },
       ],
       origin: [{ episode: 79, value: DRUM_ISLAND }],
@@ -777,7 +771,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    kureha: {
+    'kureha': {
       role: { it: 'Dottoressa di Drum', en: 'Doctor of Drum' },
       log: {
         it: 'Ha centotrentanove anni, li dichiara a voce alta e ne va fiera. Vive nel castello in cima alla vetta, è l’unico medico rimasto sull’isola e scende in paese solo quando le va. Si fa pagare portando via ai ricchi quello che le serve, beve vino di prugne durante le visite e chiama vecchi quelli che hanno la metà dei suoi anni.',
@@ -841,7 +835,7 @@ export const alabasta: Saga = {
         { episode: 1086, value: 1_000 },
       ],
     },
-    hiluluk: {
+    'hiluluk': {
       role: { it: 'Ciarlatano', en: 'Quack doctor' },
       log: {
         it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Portava una bandiera dei pirati cucita sulla giacca e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco, l’ha chiamata Chopper e le ha insegnato a fare il medico.',
@@ -858,7 +852,7 @@ export const alabasta: Saga = {
       ],
       origin: [{ episode: 85, value: DRUM_ISLAND }],
     },
-    crocodile: {
+    'crocodile': {
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -917,7 +911,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    kohza: {
+    'kohza': {
       role: {
         it: 'Capo dell’esercito ribelle',
         en: 'Leader of the rebel army',
@@ -946,7 +940,7 @@ export const alabasta: Saga = {
         { episode: 93, value: { it: 'Yuba, Alabasta', en: 'Yuba, Alabasta' } },
       ],
     },
-    pell: {
+    'pell': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
         it: 'Vola sopra il deserto sotto forma di falco e riporta al palazzo quello che vede, il che lo rende l’uomo più informato del regno. Porta una maschera a becco e una sciabola ricurva, e parla poco. Ha giurato di proteggere la famiglia reale e considera la principessa una bambina che ha visto crescere.',
@@ -975,7 +969,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    chaka: {
+    'chaka': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
         it: 'Si trasforma in sciacallo e combatte con una spada che tiene fra i denti, ed è l’ufficiale a cui il re affida gli ordini che contano. È l’unico al palazzo che discuta ancora con il sovrano invece di limitarsi a obbedire. Del popolo in rivolta parla senza rancore: dice che hanno ragione a essere arrabbiati.',
@@ -1094,7 +1088,7 @@ export const alabasta: Saga = {
         },
       ],
     },
-    hina: {
+    'hina': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda una nave della Marina e parla di sé in terza persona, con la stessa calma con cui accende una sigaretta. Chi le passa attraverso il corpo ne esce con le braccia chiuse in anelli di ferro che non si aprono. Conosce Smoker da quando erano allievi e lo tratta come un collega che si ostina a sbagliare.',
@@ -1107,10 +1101,7 @@ export const alabasta: Saga = {
         },
         {
           episode: 517,
-          value: {
-            it: 'Marina, contrammiraglio',
-            en: 'Marines, rear admiral',
-          },
+          value: { it: 'Marina, contrammiraglio', en: 'Marines, rear admiral' },
         },
       ],
       epithet: [

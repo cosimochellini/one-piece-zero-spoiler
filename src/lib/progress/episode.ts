@@ -68,8 +68,8 @@ export function parseBookmark(raw: string | null | undefined): Bookmark {
   const episode = EPISODE_FORM.exec(raw)
   if (episode !== null) {
     const value = Number(episode[1])
-    return within(value, FIRST_EPISODE, EPISODE_CEILING)
-      ? { mode: 'episode', episode: value }
+    return within(value, FIRST_EPISODE, EPISODE_CEILING) ?
+        { mode: 'episode', episode: value }
       : null
   }
 
@@ -77,16 +77,16 @@ export function parseBookmark(raw: string | null | undefined): Bookmark {
   if (season !== null) {
     const number = Number(season[1])
     const value = Number(season[2])
-    return resolveEpisode(number, value) === null
-      ? null
-      : { mode: 'season', season: number, episode: value }
+    return resolveEpisode(number, value) === null ? null : (
+        { mode: 'season', season: number, episode: value }
+      )
   }
 
   const chapter = CHAPTER_FORM.exec(raw)
   if (chapter !== null) {
     const value = Number(chapter[1])
-    return within(value, FIRST_CHAPTER, CHAPTER_CEILING)
-      ? { mode: 'chapter', chapter: value }
+    return within(value, FIRST_CHAPTER, CHAPTER_CEILING) ?
+        { mode: 'chapter', chapter: value }
       : null
   }
 
@@ -158,8 +158,8 @@ export function thresholdValue(
       return String(gated.revealedAtChapter)
     case 'season': {
       const at = locateEpisode(gated.revealedAtEpisode)
-      return at === null
-        ? String(gated.revealedAtEpisode)
+      return at === null ?
+          String(gated.revealedAtEpisode)
         : formatSeasonCode(at.season, at.episode)
     }
   }
@@ -245,9 +245,9 @@ export function stepperOf(draft: Draft): Stepper {
     atFloor: current !== null && current <= 1,
     atCeiling: ceiling !== null && current !== null && current >= ceiling,
     stepped: (delta) =>
-      ceiling === null
-        ? draft.number
-        : String(clampIndex(base + delta, ceiling)),
+      ceiling === null ?
+        draft.number
+      : String(clampIndex(base + delta, ceiling)),
   }
 }
 

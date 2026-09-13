@@ -36,10 +36,7 @@ export default tseslint.config(
   },
 
   // react-hooks v7 exposes `configs.flat.recommended` as a single object.
-  {
-    files: ['**/*.{ts,tsx}'],
-    ...reactHooks.configs.flat.recommended,
-  },
+  { files: ['**/*.{ts,tsx}'], ...reactHooks.configs.flat.recommended },
 
   // The router plugin exposes `configs['flat/recommended']` as an array.
   ...tanstackRouter.configs['flat/recommended'],
@@ -51,9 +48,7 @@ export default tseslint.config(
   // silenced with a comment at each of the handful of call sites.
   {
     files: ['src/routes/**/*.tsx'],
-    rules: {
-      '@typescript-eslint/only-throw-error': 'off',
-    },
+    rules: { '@typescript-eslint/only-throw-error': 'off' },
   },
 
   // This file and the gate scripts are not part of the TS program.

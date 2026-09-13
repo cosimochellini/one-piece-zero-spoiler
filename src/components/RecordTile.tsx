@@ -68,7 +68,10 @@ export function RecordTile({ entry, bookmark }: RecordTileProps) {
       >
         <span {...stylex.props(styles.card)}>
           <span {...stylex.props(styles.frame)}>
-            <ChartArt art={entry.visual.art} tint={entry.visual.tint} />
+            <ChartArt
+              art={entry.visual.art}
+              tint={entry.visual.tint}
+            />
           </span>
           <Name entry={entry} />
         </span>
@@ -110,11 +113,7 @@ function Name({ entry }: { readonly entry: Entity }) {
 }
 
 const styles = stylex.create({
-  tile: {
-    display: 'grid',
-    gap: space.xs,
-    minWidth: 0,
-  },
+  tile: { display: 'grid', gap: space.xs, minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -126,10 +125,7 @@ const styles = stylex.create({
     lineHeight: leading.body,
     textTransform: 'uppercase',
   },
-  kind: {
-    fontFamily: font.body,
-    fontWeight: 600,
-  },
+  kind: { fontFamily: font.body, fontWeight: 600 },
   episode: {
     color: color.ink2,
     fontFamily: font.mono,
@@ -164,15 +160,15 @@ const styles = stylex.create({
   },
   link: {
     color: {
-      default: color.ink,
+      'default': color.ink,
       ':hover': color.accent,
       ':active': color.ink2,
     },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    textDecorationColor: { default: 'transparent', ':hover': color.accent },
+    textDecorationColor: { 'default': 'transparent', ':hover': color.accent },
     textDecorationLine: 'underline',
     textDecorationThickness: rule.fine,
     textUnderlineOffset: '4px',

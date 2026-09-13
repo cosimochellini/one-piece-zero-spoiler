@@ -4,7 +4,7 @@ import type { Drawings } from './stroke'
 /** The drawings of the records filed in the whole cake stretch of the route. */
 export const wholeCakeArt = {
   // An elephant seen from the sea, a walled city riding on its back.
-  zou: [
+  'zou': [
     { d: 'M18 132 C18 92 46 74 80 74 C114 74 142 92 142 132' },
     { d: 'M40 132 V152 M70 132 V158 M98 132 V158 M126 132 V152' },
     { d: 'M18 118 C4 124 6 148 16 152' },
@@ -17,7 +17,7 @@ export const wholeCakeArt = {
   ],
 
   // A mammoth's tusk mounted on the prow of a ship.
-  jack: [
+  'jack': [
     { d: 'M28 154 L132 108 L140 124 C120 150 70 162 28 154 Z' },
     { d: 'M36 132 L134 112', role: 'soft' },
     { d: 'M44 144 L138 120', role: 'soft' },
@@ -28,7 +28,7 @@ export const wholeCakeArt = {
   ],
 
   // A mink's sabre laid across a crocodile-shaped saddle.
-  wanda: [
+  'wanda': [
     {
       d: 'M124 44 C96 74 62 110 38 148 L48 156 C74 122 108 84 132 54 Z',
       role: 'accent',
@@ -43,7 +43,7 @@ export const wholeCakeArt = {
   ],
 
   // A carrot beside a mitten crackling with electro.
-  carrot: [
+  'carrot': [
     {
       d: 'M56 64 C74 74 86 102 88 142 C72 148 58 140 52 122 C46 100 46 78 56 64 Z',
       role: 'accent',
@@ -60,7 +60,7 @@ export const wholeCakeArt = {
   ],
 
   // A duke's cloak hung behind a sword held point down.
-  inuarashi: [
+  'inuarashi': [
     {
       d: 'M40 66 C30 96 30 130 38 156 L80 148 L122 156 C130 130 130 96 120 66',
     },
@@ -74,7 +74,7 @@ export const wholeCakeArt = {
   ],
 
   // A jaguar's spotted cloak and a stick of dynamite.
-  pedro: [
+  'pedro': [
     { d: 'M44 58 C32 92 32 130 42 158 L118 158 C128 130 128 92 116 58' },
     { d: 'M44 58 q36 -16 72 0' },
     { d: 'M80 42 q-14 4 -20 16 M80 42 q14 4 20 16' },
@@ -99,7 +99,7 @@ export const wholeCakeArt = {
   ],
 
   // A naginata under a full moon.
-  nekomamushi: [
+  'nekomamushi': [
     { d: circle(112, 48, 26) },
     {
       d: dots([
@@ -120,7 +120,7 @@ export const wholeCakeArt = {
   ],
 
   // A ninja scroll half unrolled, a throwing star above it.
-  raizo: [
+  'raizo': [
     { d: ellipse(34, 110, 10, 18) },
     { d: ellipse(126, 110, 10, 18) },
     { d: 'M34 92 H126 M34 128 H126' },
@@ -163,7 +163,7 @@ export const wholeCakeArt = {
   ],
 
   // A fedora set over two crossed pistols.
-  vito: [
+  'vito': [
     { d: 'M50 104 C50 66 110 66 110 104' },
     { d: 'M64 78 q16 -10 32 0', role: 'soft' },
     { d: ellipse(80, 106, 52, 14) },
@@ -174,7 +174,7 @@ export const wholeCakeArt = {
   ],
 
   // A comb whose back is shaped like a shark's tail.
-  praline: [
+  'praline': [
     { d: 'M34 60 H126 V84 H34 Z' },
     { d: 'M34 72 H126', role: 'soft' },
     {
@@ -268,7 +268,7 @@ export const wholeCakeArt = {
   ],
 
   // A cigarette holder laid across a poker chip.
-  stussy: [
+  'stussy': [
     { d: circle(80, 128, 42) },
     { d: circle(80, 128, 31), role: 'soft' },
     {
@@ -282,7 +282,7 @@ export const wholeCakeArt = {
   ],
 
   // A newspaper sheet with a quill pen laid over it.
-  morgans: [
+  'morgans': [
     { d: 'M28 78 H132 V150 H28 Z' },
     { d: 'M80 78 V150', role: 'soft' },
     { d: 'M36 88 H124' },
@@ -466,7 +466,7 @@ export const wholeCakeArt = {
   ],
 
   // A knife slicing a castle wall into cake.
-  streusen: [
+  'streusen': [
     { d: 'M26 76 H128 L134 88 H26 Z', role: 'accent' },
     { d: 'M26 88 H128', role: 'accent' },
     { d: 'M128 76 H152 V88 H134' },
@@ -485,7 +485,7 @@ export const wholeCakeArt = {
   ],
 
   // A nun's veil and a bag of sweets beside it.
-  carmel: [
+  'carmel': [
     {
       d: 'M34 58 C34 34 98 34 98 58 C106 94 108 126 104 148 L28 148 C24 126 26 94 34 58 Z',
     },
@@ -520,7 +520,7 @@ export const wholeCakeArt = {
   ],
 
   // A round council table ringed with empty thrones, under a banner.
-  reverie: [
+  'reverie': [
     { d: ellipse(80, 132, 54, 18) },
     { d: 'M26 132 v8 a54 18 0 0 0 108 0 v-8' },
     { d: 'M32 116 v-22 h14 v22 M114 116 v-22 h14 v22' },
@@ -546,7 +546,7 @@ export const wholeCakeArt = {
   ],
 
   // A giant's trident with a broad ribbon tied to the shaft.
-  morley: [
+  'morley': [
     { d: 'M80 178 V62' },
     { d: 'M46 62 H114' },
     { d: 'M80 62 V16' },
@@ -563,7 +563,7 @@ export const wholeCakeArt = {
   ],
 
   // A crow's feather laid over a gas mask.
-  karasu: [
+  'karasu': [
     {
       d: 'M46 86 C46 66 114 66 114 86 C114 112 102 128 80 136 C58 128 46 112 46 86 Z',
     },
@@ -581,7 +581,7 @@ export const wholeCakeArt = {
   ],
 
   // A wrench and a pair of goggles with cat ears, on a gadget.
-  lindbergh: [
+  'lindbergh': [
     { d: 'M30 112 H130 V162 H30 Z' },
     { d: 'M30 126 H130', role: 'soft' },
     { d: `${circle(50, 144, 8)} ${circle(72, 144, 8)}`, role: 'soft' },
@@ -595,7 +595,7 @@ export const wholeCakeArt = {
   ],
 
   // A small crown left on an oversized throne.
-  sterry: [
+  'sterry': [
     { d: 'M40 146 V40 H120 V146' },
     { d: 'M40 40 q40 -16 80 0' },
     { d: 'M40 110 H22 V146 M120 110 H138 V146' },
@@ -611,7 +611,7 @@ export const wholeCakeArt = {
   ],
 
   // An empty throne with weapons laid at its base.
-  im: [
+  'im': [
     { d: 'M54 150 V44 H106 V150' },
     { d: 'M54 44 q26 -20 52 0' },
     { d: 'M54 118 H40 V150 M106 118 H120 V150' },
@@ -623,7 +623,7 @@ export const wholeCakeArt = {
   ],
 
   // A bull's horns wreathed in vines, roots hanging under them.
-  aramaki: [
+  'aramaki': [
     {
       d: 'M78 76 C56 78 36 68 28 48 C24 36 32 26 42 30 C56 36 62 58 78 62 Z',
       role: 'accent',

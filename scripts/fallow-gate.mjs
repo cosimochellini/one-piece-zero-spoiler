@@ -74,17 +74,17 @@ const status = child.status ?? 3
 const label = {
   0: 'fallow gate: PASSED',
   1:
-    'fallow gate: FAILED with error-severity findings, listed above. ' +
-    'Severity policy lives in .fallowrc.json.',
+    'fallow gate: FAILED with error-severity findings, listed above. '
+    + 'Severity policy lives in .fallowrc.json.',
   2:
-    'fallow gate: exit 2, invalid config or input. This is NOT a code ' +
-    'finding: check .fallowrc.json.',
+    'fallow gate: exit 2, invalid config or input. This is NOT a code '
+    + 'finding: check .fallowrc.json.',
 }[status]
 
 const message =
-  label ??
-  `fallow gate: exit ${status}, analyzer failure. This is NOT a code ` +
-    'finding: see `fallow schema.exit_codes`.'
+  label
+  ?? `fallow gate: exit ${status}, analyzer failure. This is NOT a code `
+    + 'finding: see `fallow schema.exit_codes`.'
 
 if (status === 0) {
   process.stdout.write(`\n${message}\n`)

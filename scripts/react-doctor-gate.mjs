@@ -36,9 +36,9 @@ const reportPath = join(repoRoot, '.gate', 'react-doctor.json')
 
 function fail(headline) {
   process.stderr.write(
-    `\nreact-doctor gate: TOOL FAILURE\n  ${headline}\n\n` +
-      '  This is not a code finding: react-doctor did not produce a report\n' +
-      '  that can be trusted, so the gate refuses to pass.\n',
+    `\nreact-doctor gate: TOOL FAILURE\n  ${headline}\n\n`
+      + '  This is not a code finding: react-doctor did not produce a report\n'
+      + '  that can be trusted, so the gate refuses to pass.\n',
   )
   process.exit(EXIT_TOOL_FAILURE)
 }
@@ -192,8 +192,8 @@ function main() {
   const blocking = diagnostics.filter(isBlocking)
 
   process.stdout.write(
-    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), ` +
-      `${blocking.length} blocking\n  report: ${relative(repoRoot, reportPath)}\n`,
+    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `
+      + `${blocking.length} blocking\n  report: ${relative(repoRoot, reportPath)}\n`,
   )
 
   if (blocking.length === 0) {

@@ -545,7 +545,7 @@ export const dressrosa: Saga = {
   ],
 
   dossiers: {
-    koala: {
+    'koala': {
       role: {
         it: 'Bambina liberata dalla schiavitù',
         en: 'Child freed from slavery',
@@ -580,7 +580,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    kinemon: {
+    'kinemon': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
         it: 'Ha la testa e il busto separati dalle gambe, e le insegue per l’isola come se fosse una seccatura passeggera. Taglia con la spada anche le fiamme, e non tollera che qualcuno tocchi la sua katana. Dice di essere arrivato dal mare con un bambino e di non ripartire senza di lui, ma di sé e del suo paese non racconta quasi nulla.',
@@ -613,7 +613,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    brownbeard: {
+    'brownbeard': {
       role: {
         it: 'Capo delle guardie di Punk Hazard',
         en: 'Punk Hazard guard captain',
@@ -640,10 +640,7 @@ export const dressrosa: Saga = {
       ],
     },
     'caesar-clown': {
-      role: {
-        it: 'Scienziato di Punk Hazard',
-        en: 'Scientist of Punk Hazard',
-      },
+      role: { it: 'Scienziato di Punk Hazard', en: 'Scientist of Punk Hazard' },
       log: {
         it: 'Tiene decine di bambini rapiti in una stanza piena di dolci e li chiama i suoi ospiti, mentre nell’aria dell’isola cresce qualcosa che non dovrebbe esserci. Il suo corpo diventa gas quando vuole, quindi colpirlo non serve a niente, e lui lo sa benissimo. Si vanta di lavorare per sé, ma prende ordini da qualcuno che non nomina mai per intero.',
         en: 'He keeps dozens of stolen children in a room full of sweets and calls them his guests, while something that should not exist grows in the island’s air. His body turns to gas whenever he likes, so hitting him achieves nothing, and he knows it perfectly well. He boasts of working for himself, yet takes orders from someone whose name he never says in full.',
@@ -656,16 +653,10 @@ export const dressrosa: Saga = {
             en: 'Punk Hazard, master of the laboratory; Doflamingo’s employee',
           },
         },
-        {
-          episode: 625,
-          value: { it: 'Ostaggio di Law', en: 'Law’s hostage' },
-        },
+        { episode: 625, value: { it: 'Ostaggio di Law', en: 'Law’s hostage' } },
         {
           episode: 795,
-          value: {
-            it: 'Prigioniero di Big Mom',
-            en: 'Big Mom’s prisoner',
-          },
+          value: { it: 'Prigioniero di Big Mom', en: 'Big Mom’s prisoner' },
         },
       ],
       epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
@@ -677,7 +668,7 @@ export const dressrosa: Saga = {
       ],
       bounty: [{ episode: 584, value: 300_000_000 }],
     },
-    monet: {
+    'monet': {
       role: {
         it: 'Segretaria del laboratorio',
         en: 'Secretary of the laboratory',
@@ -702,7 +693,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    vergo: {
+    'vergo': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Comanda la base G-5 e i suoi uomini lo temono più del nemico. Ha sempre qualcosa attaccato in faccia, un chicco di riso o una foglia di insalata, e nessuno osa dirglielo. Arriva a Punk Hazard con una calma che non somiglia a quella di un ispettore, e la prima cosa che fa è mettersi fra i prigionieri e chi vorrebbe liberarli.',
@@ -725,7 +716,7 @@ export const dressrosa: Saga = {
         { episode: 589, value: { it: 'Bambù Demoniaco', en: 'Demon Bamboo' } },
       ],
     },
-    momonosuke: {
+    'momonosuke': {
       role: { it: 'Bambino di Wano', en: 'Child from Wano' },
       log: {
         it: 'Lo trovano nel laboratorio, fra bambini giganti tenuti buoni con i dolci, e lui divide il cibo con chi ha più fame. Un frutto artificiale lo ha trasformato in un dragoncello rosa e non sa come tornare indietro. Dice di chiamarsi Momonosuke e di essere il figlio del samurai che gira l’isola cercandolo, e non aggiunge altro.',
@@ -790,7 +781,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    buffalo: {
+    'buffalo': {
       role: {
         it: 'Ufficiale dei Pirati di Donquijote',
         en: 'Donquixote Pirates officer',
@@ -815,7 +806,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    rebecca: {
+    'rebecca': {
       role: { it: 'Gladiatrice del colosseo', en: 'Colosseum gladiator' },
       log: {
         it: 'Scende nell’arena con una spada che non usa mai per colpire, e schiva finché l’avversario non cade da solo. Gli spalti la fischiano e le tirano addosso di tutto, e lei continua a combattere lo stesso. Del premio in palio non parla, ma il modo in cui guarda il tabellone dice che non è lì per la gloria.',
@@ -848,7 +839,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    issho: {
+    'issho': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Si presenta come il nuovo ammiraglio con un bastone da passeggio che è anche una spada, e gira senza scorta. Non ci vede, e dice che è meglio così, perché al mondo ci sono cose che preferisce non guardare. Con un gesto fa cadere a terra tutto quello che gli sta intorno, come se il peso delle cose obbedisse a lui.',
@@ -868,7 +859,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    bartolomeo: {
+    'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Il pubblico lo fischia e lui risponde con la lingua di fuori. Nel blocco B del torneo nessun colpo lo raggiunge: qualcosa di invisibile li ferma tutti a un palmo da lui. Combatte per il premio del colosseo come tutti gli altri, ma quello che vuole davvero è un’altra cosa, e la tiene per sé.',
@@ -929,7 +920,7 @@ export const dressrosa: Saga = {
       origin: [{ episode: 662, value: DRESSROSA }],
       epithet: [{ episode: 662, value: { it: 'Ricky', en: 'Ricky' } }],
     },
-    trebol: {
+    'trebol': {
       role: DONQUIXOTE_ELITE_ROLE,
       log: {
         it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri ufficiali della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
@@ -951,7 +942,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    cavendish: {
+    'cavendish': {
       role: {
         it: 'Capitano dei Pirati Beautiful',
         en: 'Captain of the Beautiful Pirates',
@@ -987,7 +978,7 @@ export const dressrosa: Saga = {
       ],
       bounty: [{ episode: 632, value: 280_000_000 }],
     },
-    sai: {
+    'sai': {
       role: { it: 'Erede della Flotta Happo', en: 'Heir of the Happo Navy' },
       log: {
         it: 'Porta la naginata di famiglia e il nome di una flotta che comanda ottomila uomini. Parla poco e si inchina prima di combattere, anche quando l’avversario non se lo merita. È stato scelto come tredicesimo capo mentre il dodicesimo è ancora vivo e in forma, e la cosa lo mette più a disagio di qualunque incontro nell’arena.',
@@ -1004,10 +995,7 @@ export const dressrosa: Saga = {
         { episode: 746, value: GRAND_FLEET },
       ],
       origin: [
-        {
-          episode: 632,
-          value: { it: 'Paese di Kano', en: 'Kano Country' },
-        },
+        { episode: 632, value: { it: 'Paese di Kano', en: 'Kano Country' } },
       ],
     },
     'don-chinjao': {
@@ -1029,17 +1017,14 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        {
-          episode: 632,
-          value: { it: 'Paese di Kano', en: 'Kano Country' },
-        },
+        { episode: 632, value: { it: 'Paese di Kano', en: 'Kano Country' } },
       ],
       epithet: [
         { episode: 632, value: { it: 'La Trivella', en: 'the Drill' } },
       ],
       bounty: [{ episode: 632, value: 500_000_000 }],
     },
-    ideo: {
+    'ideo': {
       role: { it: 'Pugile del colosseo', en: 'Colosseum boxer' },
       log: {
         it: 'Viene da una palestra che ha fatto delle arti marziali un affare di famiglia, e ha imparato a caricare i pugni come si carica un pezzo d’artiglieria. Nel colosseo parla poco e osserva gli avversari uno per uno, calcolando la distanza. Quando colpisce, quello che aveva davanti non è più al suo posto.',
@@ -1116,7 +1101,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    hajrudin: {
+    'hajrudin': {
       role: { it: 'Mercenario gigante', en: 'Giant mercenary' },
       log: {
         it: 'Viene dall’isola dei giganti e si guadagna da vivere combattendo per chi paga, cosa che al suo paese non è motivo di orgoglio. Nel colosseo la sua ascia arriva dove gli altri non arrivano nemmeno saltando. Dice di volere il premio per una ragione che riguarda la sua gente, e non la spiega a nessuno.',
@@ -1125,10 +1110,7 @@ export const dressrosa: Saga = {
       affiliation: [
         {
           episode: 632,
-          value: {
-            it: 'Gladiatore del colosseo',
-            en: 'Colosseum gladiator',
-          },
+          value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
         },
         {
           episode: 746,
@@ -1140,7 +1122,7 @@ export const dressrosa: Saga = {
       ],
       origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaf' } }],
     },
-    bastille: {
+    'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Arriva a Dressrosa al seguito del nuovo ammiraglio e passa il tempo a ricordargli che la Marina ha delle regole. Porta una maschera che gli copre tutta la testa e una spada enorme che non sguaina quasi mai. Sull’isola non può fare nulla senza il permesso del re, e la cosa lo fa infuriare.',
@@ -1156,7 +1138,7 @@ export const dressrosa: Saga = {
         { episode: 632, value: { it: 'Tagliasqualo', en: 'Shark Cutter' } },
       ],
     },
-    maynard: {
+    'maynard': {
       role: {
         it: 'Viceammiraglio sotto copertura',
         en: 'Vice admiral undercover',
@@ -1178,7 +1160,7 @@ export const dressrosa: Saga = {
         { episode: 632, value: { it: 'Il Cacciatore', en: 'the Pursuer' } },
       ],
     },
-    hack: {
+    'hack': {
       role: {
         it: 'Maestro di karate degli uomini-pesce',
         en: 'Fish-man karate master',
@@ -1199,14 +1181,11 @@ export const dressrosa: Saga = {
       origin: [
         {
           episode: 632,
-          value: {
-            it: 'Isola degli Uomini-Pesce',
-            en: 'Fish-Man Island',
-          },
+          value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],
     },
-    viola: {
+    'viola': {
       role: { it: 'Ballerina e informatrice', en: 'Dancer and informant' },
       log: {
         it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano, dai porti alle stanze chiuse a chiave. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
@@ -1237,11 +1216,8 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    sugar: {
-      role: {
-        it: 'Ufficiale dell’Armata Trebol',
-        en: 'Trebol Army officer',
-      },
+    'sugar': {
+      role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
       log: {
         it: 'Sta quasi sempre seduta con una ciotola d’uva in mano e parla agli adulti come si parla alla servitù. Chi tocca diventa un giocattolo che obbedisce, e da quel momento nessuno ricorda più chi fosse prima, nemmeno i suoi familiari. La famiglia che comanda l’isola la tratta con un riguardo che non riserva a nessun altro.',
         en: 'She sits almost all day with a bowl of grapes in her hand and speaks to grown men the way one speaks to servants. Whoever she touches becomes an obedient toy, and from that moment nobody remembers who they were before, not even their own family. The family that runs the island treats her with a care they show to nobody else.',
@@ -1262,7 +1238,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    diamante: {
+    'diamante': {
       role: DONQUIXOTE_ELITE_ROLE,
       log: {
         it: 'Presenta gli incontri dagli spalti e decide chi combatte contro chi, con un gusto per lo spettacolo per cui il pubblico gli perdona tutto. Rende molle qualsiasi cosa tocchi, sé stesso compreso, così i colpi lo attraversano come vento in un lenzuolo. A Dressrosa lo chiamano l’eroe del colosseo, e lui si comporta come se fosse vero.',
@@ -1290,7 +1266,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    pica: {
+    'pica': {
       role: DONQUIXOTE_ELITE_ROLE,
       log: {
         it: 'Sta in piedi dietro il suo capo senza dire quasi niente, e quando parla la sua voce fa ridere chiunque lo senta la prima volta. Entra nella roccia e ne esce dove vuole, e i muri e le strade di Dressrosa si muovono con lui. Chi ride di quella voce di solito non ha il tempo di scusarsi.',
@@ -1329,7 +1305,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    dellinger: {
+    'dellinger': {
       role: {
         it: 'Ufficiale dell’Armata Diamante',
         en: 'Diamante Army officer',
@@ -1348,7 +1324,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
     },
-    machvise: {
+    'machvise': {
       role: {
         it: 'Ufficiale dell’Armata Diamante',
         en: 'Diamante Army officer',
@@ -1359,17 +1335,11 @@ export const dressrosa: Saga = {
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
       devilFruit: [
-        {
-          episode: 635,
-          value: { it: 'Frutto Ton Ton', en: 'Ton-Ton Fruit' },
-        },
+        { episode: 635, value: { it: 'Frutto Ton Ton', en: 'Ton-Ton Fruit' } },
       ],
     },
-    jora: {
-      role: {
-        it: 'Ufficiale dell’Armata Trebol',
-        en: 'Trebol Army officer',
-      },
+    'jora': {
+      role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
       log: {
         it: 'Si muove come una signora a una mostra, con il pennello in mano e un gusto tutto suo per le forme. Quello che tocca si deforma in un groviglio di colori e di angoli, e chi ci finisce dentro non riesce più a muoversi come prima. Sostiene che le sue vittime dovrebbero ringraziarla, perché nessuna di loro era bella quanto adesso.',
         en: 'She moves like a lady at a private view, brush in hand, with a taste in shapes entirely her own. Whatever she touches warps into a tangle of colour and angles, and whoever ends up inside one can no longer move as they did. She holds that her victims ought to thank her, since not one of them was as beautiful before.',
@@ -1384,13 +1354,10 @@ export const dressrosa: Saga = {
         },
       ],
       devilFruit: [
-        {
-          episode: 635,
-          value: { it: 'Frutto Ato Ato', en: 'Art-Art Fruit' },
-        },
+        { episode: 635, value: { it: 'Frutto Ato Ato', en: 'Art-Art Fruit' } },
       ],
     },
-    orlumbus: {
+    'orlumbus': {
       role: {
         it: 'Ammiraglio della Flotta Yonta Maria',
         en: 'Yonta Maria Grand Fleet admiral',
@@ -1417,7 +1384,7 @@ export const dressrosa: Saga = {
       ],
       bounty: [{ episode: 636, value: 148_000_000 }],
     },
-    gladius: {
+    'gladius': {
       role: { it: 'Ufficiale dell’Armata Pica', en: 'Pica Army officer' },
       log: {
         it: 'Sorveglia il palazzo per conto dell’uomo di pietra e parla poco, salvo quando qualcosa lo irrita: allora la sua testa si gonfia e le parole gli escono come uno scoppio. Fa esplodere sassi, pallottole e pezzi della propria armatura, e li usa come una gragnuola. Non discute mai un ordine e non chiede mai a cosa serva.',
@@ -1439,11 +1406,8 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    leo: {
-      role: {
-        it: 'Capo del Corpo Tonta',
-        en: 'Leader of the Tonta Corps',
-      },
+    'leo': {
+      role: { it: 'Capo del Corpo Tonta', en: 'Leader of the Tonta Corps' },
       log: {
         it: 'Appartiene a un popolo minuscolo che vive nel bosco e di cui quasi nessuno a Dressrosa sospetta l’esistenza. Con ago e filo cuce insieme oggetti, vestiti e persone, e la sua squadra si muove così in fretta che gli umani non la vedono passare. Comanda i suoi come un generale in miniatura, e ha una guerra tutta sua da combattere.',
         en: 'He belongs to a tiny people who live in the wood, whose existence almost nobody in Dressrosa suspects. With a needle and thread he sews together objects, clothes and people, and his squad moves so fast that humans never see it pass. He commands his men like a general in miniature, and has a war of his own to fight.',
@@ -1471,7 +1435,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    kyros: {
+    'kyros': {
       role: {
         it: 'Soldatino di legno di Dressrosa',
         en: 'Wooden soldier of Dressrosa',
@@ -1494,7 +1458,7 @@ export const dressrosa: Saga = {
         { episode: 674, value: { it: 'Soldatino', en: 'Thunder Soldier' } },
       ],
     },
-    mansherry: {
+    'mansherry': {
       role: {
         it: 'Principessa del Regno di Tontatta',
         en: 'Princess of the Tontatta Kingdom',
@@ -1525,7 +1489,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    kanjuro: {
+    'kanjuro': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
         it: 'Compare a Dressrosa insieme al samurai che cerca suo figlio, e si presenta con un pennello grande quanto un remo. Quello che disegna prende vita e si muove, anche se i suoi disegni fanno ridere chiunque li guardi. Parla poco, si commuove facilmente e non racconta quasi nulla del paese da cui viene.',
@@ -1591,10 +1555,7 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        {
-          episode: 704,
-          value: { it: 'Mary Geoise', en: 'Mary Geoise' },
-        },
+        { episode: 704, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
       ],
       epithet: [{ episode: 704, value: { it: 'Corazon', en: 'Corazon' } }],
       devilFruit: [
@@ -1604,7 +1565,7 @@ export const dressrosa: Saga = {
         },
       ],
     },
-    kaido: {
+    'kaido': {
       role: {
         it: 'Imperatore del Nuovo Mondo',
         en: 'Emperor of the New World',

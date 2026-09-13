@@ -62,7 +62,12 @@ export function RouteChart({ entries, bookmark }: RouteChartProps) {
   return (
     <ol {...stylex.props(styles.route)}>
       {open.map((entry, index) => (
-        <Waypoint key={entry.id} entry={entry} index={index} open />
+        <Waypoint
+          key={entry.id}
+          entry={entry}
+          index={index}
+          open
+        />
       ))}
 
       <Horizon
@@ -100,7 +105,10 @@ function Waypoint({ entry, index, open }: WaypointProps) {
   return (
     <li {...stylex.props(styles.row)}>
       <div {...stylex.props(styles.rail)}>
-        <Segment bow={bow} open={open} />
+        <Segment
+          bow={bow}
+          open={open}
+        />
         <span
           aria-hidden="true"
           {...stylex.props(
@@ -120,7 +128,10 @@ function Waypoint({ entry, index, open }: WaypointProps) {
         </p>
 
         {/* The drawing is inside the veil with the words: under fog, both go. */}
-        <SpoilerVeil gated={entry} revealed={open}>
+        <SpoilerVeil
+          gated={entry}
+          revealed={open}
+        >
           <div {...stylex.props(styles.card)}>
             <Picture visual={entry.visual} />
             <div {...stylex.props(styles.words)}>
@@ -130,7 +141,7 @@ function Waypoint({ entry, index, open }: WaypointProps) {
                   card's href would spell out, in the page source, the name
                   a blur hides.
                 */}
-                {entry.kind === 'character' && open ? (
+                {entry.kind === 'character' && open ?
                   <Link
                     to="/$locale/characters/$id"
                     params={{ locale, id: entry.id }}
@@ -138,7 +149,7 @@ function Waypoint({ entry, index, open }: WaypointProps) {
                   >
                     {entry.name[locale]}
                   </Link>
-                ) : entry.kind === 'place' && open ? (
+                : entry.kind === 'place' && open ?
                   <Link
                     to="/$locale/places"
                     params={{ locale }}
@@ -147,9 +158,7 @@ function Waypoint({ entry, index, open }: WaypointProps) {
                   >
                     {entry.name[locale]}
                   </Link>
-                ) : (
-                  entry.name[locale]
-                )}
+                : entry.name[locale]}
               </h3>
               <p {...stylex.props(styles.summary)}>{entry.summary[locale]}</p>
             </div>
@@ -168,7 +177,10 @@ function Waypoint({ entry, index, open }: WaypointProps) {
 function Picture({ visual }: { readonly visual: Visual }) {
   return (
     <div {...stylex.props(styles.frame)}>
-      <ChartArt art={visual.art} tint={visual.tint} />
+      <ChartArt
+        art={visual.art}
+        tint={visual.tint}
+      />
     </div>
   )
 }
@@ -223,7 +235,10 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
   const set = bookmark !== null
 
   return (
-    <li aria-current="step" {...stylex.props(styles.row, styles.horizon)}>
+    <li
+      aria-current="step"
+      {...stylex.props(styles.row, styles.horizon)}
+    >
       <div {...stylex.props(styles.rail)}>
         <svg
           aria-hidden="true"
@@ -255,9 +270,9 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
             set ? styles.horizonSet : styles.horizonUnset,
           )}
         >
-          {bookmark === null
-            ? t('chart.hereUnset')
-            : describeBookmark(t, 'chart.hereSet', bookmark)}
+          {bookmark === null ?
+            t('chart.hereUnset')
+          : describeBookmark(t, 'chart.hereSet', bookmark)}
         </span>
         <span
           aria-hidden="true"
@@ -282,7 +297,12 @@ function Compass({ set }: { readonly set: boolean }) {
         set ? styles.compassSet : styles.compassUnset,
       )}
     >
-      <circle cx="16" cy="16" r="13" {...stylex.props(styles.compassRing)} />
+      <circle
+        cx="16"
+        cy="16"
+        r="13"
+        {...stylex.props(styles.compassRing)}
+      />
       <path
         d="M16 4 L18.4 13.6 L28 16 L18.4 18.4 L16 28 L13.6 18.4 L4 16 L13.6 13.6 Z"
         {...stylex.props(styles.compassStar)}
@@ -293,17 +313,10 @@ function Compass({ set }: { readonly set: boolean }) {
 
 // The horizon surfaces where it has just moved to: a short fade, `opacity`
 // only, so it composites. Guarded rather than overridden under reduced motion.
-const surface = stylex.keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-})
+const surface = stylex.keyframes({ from: { opacity: 0 }, to: { opacity: 1 } })
 
 const styles = stylex.create({
-  route: {
-    display: 'grid',
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-  },
+  route: { display: 'grid', listStyleType: 'none', paddingInlineStart: 0 },
 
   // The rail is a fixed width so consecutive segments line up; the body
   // takes the rest and may shrink to zero, which is what lets a long
@@ -311,16 +324,14 @@ const styles = stylex.create({
   // rail is 2.5rem: the compass is 2rem, and every rem the rail keeps is a
   // rem the words lose on a 320px screen.
   row: {
-    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
+    columnGap: { 'default': space.sm, '@media (min-width: 40rem)': space.md },
     display: 'grid',
     gridTemplateColumns: {
-      default: '2.5rem minmax(0, 1fr)',
+      'default': '2.5rem minmax(0, 1fr)',
       '@media (min-width: 40rem)': '4rem minmax(0, 1fr)',
     },
   },
-  rail: {
-    position: 'relative',
-  },
+  rail: { position: 'relative' },
   segment: {
     display: 'block',
     height: '100%',
@@ -337,13 +348,8 @@ const styles = stylex.create({
     transitionProperty: 'stroke',
     transitionTimingFunction: ease.out,
   },
-  strokeOpen: {
-    stroke: color.accent,
-  },
-  strokeCovered: {
-    stroke: color.rule2,
-    strokeDasharray: '3 8',
-  },
+  strokeOpen: { stroke: color.accent },
+  strokeCovered: { stroke: color.rule2, strokeDasharray: '3 8' },
 
   node: {
     borderRadius: radius.pill,
@@ -361,21 +367,10 @@ const styles = stylex.create({
   // 14/64 and 50/64: where the two bows of the segment path sit.
   nodeLeft: { insetInlineStart: '21.875%' },
   nodeRight: { insetInlineStart: '78.125%' },
-  nodeOpen: {
-    backgroundColor: color.accent,
-    borderColor: color.accent,
-  },
-  nodeCovered: {
-    backgroundColor: color.paper,
-    borderColor: color.rule2,
-  },
+  nodeOpen: { backgroundColor: color.accent, borderColor: color.accent },
+  nodeCovered: { backgroundColor: color.paper, borderColor: color.rule2 },
 
-  body: {
-    display: 'grid',
-    gap: space.xs,
-    minWidth: 0,
-    paddingBlock: space.lg,
-  },
+  body: { display: 'grid', gap: space.xs, minWidth: 0, paddingBlock: space.lg },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -396,23 +391,20 @@ const styles = stylex.create({
     fontWeight: 600,
     whiteSpace: 'nowrap',
   },
-  kind: {
-    fontFamily: font.body,
-    fontWeight: 600,
-  },
+  kind: { fontFamily: font.body, fontWeight: 600 },
   // Picture above words on a phone, beside them from 40rem. A 320px row
   // has about 230px left after the rail; a 7rem picture beside that left
   // the words 80px and split names mid-word. From 60rem the picture is the
   // larger half of the card, because the pictures are the point.
   card: {
-    columnGap: { default: 0, '@media (min-width: 40rem)': space.lg },
+    columnGap: { 'default': 0, '@media (min-width: 40rem)': space.lg },
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': '11rem minmax(0, 1fr)',
       '@media (min-width: 60rem)': '14rem minmax(0, 1fr)',
     },
-    rowGap: { default: space.sm, '@media (min-width: 40rem)': 0 },
+    rowGap: { 'default': space.sm, '@media (min-width: 40rem)': 0 },
   },
   words: {
     // Packed to the top: with the default `stretch` the two rows share the
@@ -427,7 +419,7 @@ const styles = stylex.create({
     // Stacked on a phone the picture keeps the size it has beside the
     // words on a tablet, not the full row: a route of 35 full-width
     // drawings is a feed, not a chart.
-    maxWidth: { default: '9rem', '@media (min-width: 40rem)': 'none' },
+    maxWidth: { 'default': '9rem', '@media (min-width: 40rem)': 'none' },
     backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
@@ -440,7 +432,7 @@ const styles = stylex.create({
   name: {
     color: color.ink,
     fontFamily: font.display,
-    fontSize: { default: text.lg, '@media (min-width: 40rem)': text.xl },
+    fontSize: { 'default': text.lg, '@media (min-width: 40rem)': text.xl },
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
@@ -452,15 +444,15 @@ const styles = stylex.create({
   // of blue links.
   nameLink: {
     color: {
-      default: 'inherit',
+      'default': 'inherit',
       ':hover': color.accent,
       ':active': color.ink2,
     },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    textDecorationColor: { default: 'transparent', ':hover': color.accent },
+    textDecorationColor: { 'default': 'transparent', ':hover': color.accent },
     textDecorationLine: 'underline',
     textDecorationThickness: rule.fine,
     textUnderlineOffset: '4px',
@@ -484,7 +476,7 @@ const styles = stylex.create({
   horizon: {
     animationDuration: dur.short,
     animationName: {
-      default: 'none',
+      'default': 'none',
       '@media (prefers-reduced-motion: no-preference)': surface,
     },
     animationTimingFunction: ease.out,
@@ -504,9 +496,7 @@ const styles = stylex.create({
     stroke: 'currentColor',
     strokeWidth: rule.fine,
   },
-  compassStar: {
-    fill: 'currentColor',
-  },
+  compassStar: { fill: 'currentColor' },
   horizonBody: {
     alignItems: 'center',
     display: 'flex',
@@ -529,11 +519,7 @@ const styles = stylex.create({
   // The line runs from the label to the edge of the chart. It is the one
   // element that reads as a rule and is drawn in the accent, because it is
   // the reader's own position and not a divider.
-  horizonLine: {
-    flexGrow: 1,
-    height: rule.fine,
-    minWidth: '1.5rem',
-  },
+  horizonLine: { flexGrow: 1, height: rule.fine, minWidth: '1.5rem' },
   horizonLineSet: { backgroundColor: color.accent },
   horizonLineUnset: { backgroundColor: color.rule2 },
 })

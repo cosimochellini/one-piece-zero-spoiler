@@ -3,5 +3,14 @@
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 80,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "bracketSameLine": false,
+  "singleAttributePerLine": true,
+  "quoteProps": "consistent",
+  "objectWrap": "collapse",
+  "proseWrap": "always",
+  "experimentalTernaries": true,
+  "experimentalOperatorPosition": "start",
+  "plugins": ["prettier-plugin-packagejson"]
 }

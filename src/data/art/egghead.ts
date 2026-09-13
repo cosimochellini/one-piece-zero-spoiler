@@ -4,7 +4,7 @@ import type { Drawings } from './stroke'
 /** The drawings of the records filed in the egghead stretch of the route. */
 export const eggheadArt = {
   // A dome on a platform, a lattice of the future behind it.
-  egghead: [
+  'egghead': [
     {
       d: [
         cell(30, 60),
@@ -40,7 +40,7 @@ export const eggheadArt = {
   ],
 
   // A bulb-shaped dome, the stem and the leaf still on top of it.
-  vegapunk: [
+  'vegapunk': [
     { d: circle(80, 116, 48) },
     { d: 'M68 70 V54 M92 70 V54' },
     { d: 'M66 54 h28' },
@@ -52,7 +52,7 @@ export const eggheadArt = {
   ],
 
   // A domed helmet, a leaf growing out of its crown.
-  shaka: [
+  'shaka': [
     { d: 'M30 152 a50 56 0 0 1 100 0' },
     { d: 'M24 152 h112 v12 h-112z' },
     { d: 'M80 96 C58 112 52 132 52 152', role: 'soft' },
@@ -63,7 +63,7 @@ export const eggheadArt = {
   ],
 
   // A laser rifle, the grip opening into a bat's wing.
-  lilith: [
+  'lilith': [
     { d: 'M34 56 L126 152' },
     { d: 'M42 50 L134 146' },
     { d: 'M34 56 L42 50 M126 152 L134 146' },
@@ -148,7 +148,7 @@ export const eggheadArt = {
   ],
 
   // A light bulb with the filament lit, a switch thrown beside it.
-  edison: [
+  'edison': [
     { d: circle(76, 84, 40) },
     { d: 'M60 116 q16 12 32 0' },
     { d: 'M60 118 h32 v28 h-32z' },
@@ -161,7 +161,7 @@ export const eggheadArt = {
   ],
 
   // A right triangle held on a screen, a small arm working beside it.
-  pythagoras: [
+  'pythagoras': [
     { d: 'M30 48 h100 v80 h-100z' },
     { d: 'M38 56 h84 v64 h-84z', role: 'soft' },
     { d: 'M50 110 H108 L50 66 Z', role: 'accent' },
@@ -175,7 +175,7 @@ export const eggheadArt = {
   ],
 
   // A pair of iron gauntlets, the rockets on their backs firing.
-  atlas: [
+  'atlas': [
     { d: 'M20 76 h50 v48 C70 140 58 148 45 148 C32 148 20 140 20 124 Z' },
     { d: 'M20 98 h50', role: 'soft' },
     { d: 'M33 124 v22 M45 124 v24 M57 124 v22', role: 'soft' },
@@ -193,7 +193,7 @@ export const eggheadArt = {
   ],
 
   // A heaped plate, a syringe standing next to it.
-  york: [
+  'york': [
     { d: ellipse(62, 132, 46, 14) },
     { d: ellipse(62, 130, 34, 9), role: 'soft' },
     { d: 'M32 126 C40 92 84 92 92 126', role: 'accent' },
@@ -228,7 +228,7 @@ export const eggheadArt = {
   ],
 
   // A Den Den Mushi with its receiver, a knotted kerchief beside it.
-  ginny: [
+  'ginny': [
     { d: circle(92, 108, 34) },
     { d: 'M92 90 a18 18 0 1 1 -17 20 a10 10 0 1 0 12 -12', role: 'soft' },
     { d: 'M30 144 C26 126 38 114 52 110 C58 100 68 94 80 92' },
@@ -247,10 +247,7 @@ export const eggheadArt = {
   // A crown of feathers with a bird's talon gripping its band.
   'marcus-mars': [
     { d: 'M24 148 h112 v18 h-112z' },
-    {
-      d: 'M42 148 C32 126 38 102 52 92 C60 114 54 132 56 148 Z',
-      role: 'soft',
-    },
+    { d: 'M42 148 C32 126 38 102 52 92 C60 114 54 132 56 148 Z', role: 'soft' },
     { d: 'M70 148 C62 120 70 92 80 82 C92 96 94 124 92 148 Z', role: 'soft' },
     {
       d: 'M106 148 C110 122 118 100 130 90 C130 118 122 134 120 148 Z',

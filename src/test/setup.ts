@@ -20,8 +20,8 @@ afterEach(() => {
  * gate scripts' tests ask for.
  */
 if (
-  typeof HTMLDialogElement !== 'undefined' &&
-  typeof HTMLDialogElement.prototype.showModal !== 'function'
+  typeof HTMLDialogElement !== 'undefined'
+  && typeof HTMLDialogElement.prototype.showModal !== 'function'
 ) {
   HTMLDialogElement.prototype.showModal = function showModal(
     this: HTMLDialogElement,

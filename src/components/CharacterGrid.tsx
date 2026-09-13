@@ -89,15 +89,21 @@ export function CharacterGrid({
 
   const trimmed = query.trim()
   const status =
-    trimmed !== '' && matched.size === 0
-      ? t('characters.noMatch', { query: trimmed })
-      : t('characters.shown', { count: matched.size, total: open.length })
+    trimmed !== '' && matched.size === 0 ?
+      t('characters.noMatch', { query: trimmed })
+    : t('characters.shown', { count: matched.size, total: open.length })
   const announced = useSettled(status, 250)
 
   return (
     <div {...stylex.props(styles.book)}>
-      <div role="search" {...stylex.props(styles.search)}>
-        <label htmlFor={fieldId} {...stylex.props(styles.label)}>
+      <div
+        role="search"
+        {...stylex.props(styles.search)}
+      >
+        <label
+          htmlFor={fieldId}
+          {...stylex.props(styles.label)}
+        >
           {t('characters.searchLabel')}
         </label>
         <div {...stylex.props(styles.fieldRow)}>
@@ -151,7 +157,10 @@ export function CharacterGrid({
         {...stylex.props(styles.part)}
       >
         <div {...stylex.props(styles.partHead)}>
-          <h2 id={`${fieldId}-featured`} {...stylex.props(styles.partTitle)}>
+          <h2
+            id={`${fieldId}-featured`}
+            {...stylex.props(styles.partTitle)}
+          >
             {t('characters.featuredTitle')}
           </h2>
           <p {...stylex.props(styles.partLede)}>
@@ -176,14 +185,15 @@ export function CharacterGrid({
           aria-labelledby={`${fieldId}-fog`}
           {...stylex.props(styles.fog)}
         >
-          <h3 id={`${fieldId}-fog`} {...stylex.props(styles.fogTitle)}>
-            {featuredCovered.length === 0
-              ? t('characters.allOpen')
-              : featuredCovered.length === 1
-                ? t('characters.foggedTitleOne')
-                : t('characters.foggedTitle', {
-                    count: featuredCovered.length,
-                  })}
+          <h3
+            id={`${fieldId}-fog`}
+            {...stylex.props(styles.fogTitle)}
+          >
+            {featuredCovered.length === 0 ?
+              t('characters.allOpen')
+            : featuredCovered.length === 1 ?
+              t('characters.foggedTitleOne')
+            : t('characters.foggedTitle', { count: featuredCovered.length })}
           </h3>
           {featuredCovered.length === 0 ? null : (
             <>
@@ -209,7 +219,10 @@ export function CharacterGrid({
         {...stylex.props(styles.part)}
       >
         <div {...stylex.props(styles.partHead)}>
-          <h2 id={`${fieldId}-book`} {...stylex.props(styles.partTitle)}>
+          <h2
+            id={`${fieldId}-book`}
+            {...stylex.props(styles.partTitle)}
+          >
             {t('characters.bookTitle')}
           </h2>
           <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
@@ -286,19 +299,28 @@ function Shelf({
   if (searching && shown.length === 0 && covered.length === 0) return null
 
   return (
-    <section aria-labelledby={headingId} {...stylex.props(styles.shelf)}>
+    <section
+      aria-labelledby={headingId}
+      {...stylex.props(styles.shelf)}
+    >
       <div {...stylex.props(styles.shelfHead)}>
         <SpoilerVeil
           gated={arc}
           revealed={arcOpen}
           density="inline"
           placeholder={
-            <h3 id={headingId} {...stylex.props(styles.shelfTitle)}>
+            <h3
+              id={headingId}
+              {...stylex.props(styles.shelfTitle)}
+            >
               {t('characters.sectionFogged')}
             </h3>
           }
         >
-          <h3 id={headingId} {...stylex.props(styles.shelfTitle)}>
+          <h3
+            id={headingId}
+            {...stylex.props(styles.shelfTitle)}
+          >
             {arc.name[locale]}
           </h3>
         </SpoilerVeil>
@@ -307,9 +329,9 @@ function Shelf({
             {threshold('characters.sectionOpensAt', arc)}
           </span>
           <span>
-            {characters.length === 1
-              ? t('characters.sectionCountOne')
-              : t('characters.sectionCount', { count: characters.length })}
+            {characters.length === 1 ?
+              t('characters.sectionCountOne')
+            : t('characters.sectionCount', { count: characters.length })}
           </span>
         </p>
       </div>
@@ -324,7 +346,11 @@ function Shelf({
           />
         ))}
         {covered.map((entry) => (
-          <CharacterTile key={entry.id} entity={entry} revealed={false} />
+          <CharacterTile
+            key={entry.id}
+            entity={entry}
+            revealed={false}
+          />
         ))}
       </ul>
     </section>
@@ -362,16 +388,9 @@ function useSettled<T>(value: T, delay: number): T {
 }
 
 const styles = stylex.create({
-  book: {
-    display: 'grid',
-    gap: space.xl2,
-  },
+  book: { display: 'grid', gap: space.xl2 },
 
-  search: {
-    display: 'grid',
-    gap: space.xs,
-    justifyItems: 'start',
-  },
+  search: { display: 'grid', gap: space.xs, justifyItems: 'start' },
   label: {
     color: color.ink2,
     fontFamily: font.body,
@@ -385,46 +404,35 @@ const styles = stylex.create({
     maxWidth: '100%',
   },
   field: {
-    appearance: 'textfield',
-    backgroundColor: { default: color.paper, ':hover': color.paper2 },
-    borderColor: { default: color.rule2, ':focus': color.ink },
-    borderRadius: radius.input,
-    borderStyle: 'solid',
+    'appearance': 'textfield',
+    'backgroundColor': { 'default': color.paper, ':hover': color.paper2 },
+    'borderColor': { 'default': color.rule2, ':focus': color.ink },
+    'borderRadius': radius.input,
+    'borderStyle': 'solid',
     // Constant in every state; the outline carries focus.
-    borderWidth: rule.fine,
-    color: color.ink,
-    fontFamily: font.body,
-    fontSize: text.lg,
-    fontWeight: 600,
+    'borderWidth': rule.fine,
+    'color': color.ink,
+    'fontFamily': font.body,
+    'fontSize': text.lg,
+    'fontWeight': 600,
     // The same 44px as every button on the site.
-    minHeight: '44px',
-    minWidth: 0,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    paddingBlock: space.xs2,
-    paddingInline: space.sm,
-    transitionDuration: dur.micro,
-    transitionProperty: 'background-color, border-color',
-    transitionTimingFunction: ease.out,
-    width: 'min(100%, 22rem)',
-    '::placeholder': {
-      color: color.muted,
-      fontWeight: 400,
-    },
-    '::-webkit-search-cancel-button': {
-      appearance: 'none',
-    },
+    'minHeight': '44px',
+    'minWidth': 0,
+    'outlineColor': { 'default': 'transparent', ':focus-visible': color.focus },
+    'outlineOffset': space.xs3,
+    'outlineStyle': 'solid',
+    'outlineWidth': rule.fine,
+    'paddingBlock': space.xs2,
+    'paddingInline': space.sm,
+    'transitionDuration': dur.micro,
+    'transitionProperty': 'background-color, border-color',
+    'transitionTimingFunction': ease.out,
+    'width': 'min(100%, 22rem)',
+    '::placeholder': { color: color.muted, fontWeight: 400 },
+    '::-webkit-search-cancel-button': { appearance: 'none' },
   },
-  clearSlot: {
-    display: 'inline-flex',
-    flexShrink: 0,
-    minWidth: '44px',
-  },
-  clearHidden: {
-    visibility: 'hidden',
-  },
+  clearSlot: { display: 'inline-flex', flexShrink: 0, minWidth: '44px' },
+  clearHidden: { visibility: 'hidden' },
   status: {
     color: color.muted,
     fontSize: text.base,
@@ -432,20 +440,12 @@ const styles = stylex.create({
     // Reserved whether or not there is anything to say.
     minHeight: '1lh',
   },
-  statusEmpty: {
-    color: color.ink2,
-  },
+  statusEmpty: { color: color.ink2 },
 
   // The two parts of the book, each with an inventory heading: the crests,
   // then the shelves.
-  part: {
-    display: 'grid',
-    gap: space.lg,
-  },
-  partHead: {
-    display: 'grid',
-    gap: space.xs2,
-  },
+  part: { display: 'grid', gap: space.lg },
+  partHead: { display: 'grid', gap: space.xs2 },
   partTitle: {
     color: color.ink,
     fontFamily: font.display,
@@ -467,7 +467,7 @@ const styles = stylex.create({
     columnGap: space.md,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'repeat(2, minmax(0, 1fr))',
+      'default': 'repeat(2, minmax(0, 1fr))',
       '@media (min-width: 40rem)': 'repeat(3, minmax(0, 1fr))',
       '@media (min-width: 60rem)': 'repeat(4, minmax(0, 1fr))',
       '@media (min-width: 76rem)': 'repeat(5, minmax(0, 1fr))',
@@ -553,7 +553,7 @@ const styles = stylex.create({
     columnGap: space.lg,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
       '@media (min-width: 60rem)': 'repeat(3, minmax(0, 1fr))',
       '@media (min-width: 76rem)': 'repeat(4, minmax(0, 1fr))',

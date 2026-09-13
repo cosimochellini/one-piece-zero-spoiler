@@ -61,37 +61,34 @@ const styles = stylex.create({
   base: {
     alignItems: 'center',
     backgroundColor: {
-      default: 'transparent',
+      'default': 'transparent',
       ':active:not(:disabled)': color.paper3,
     },
-    borderColor: {
-      default: color.rule2,
-      ':hover:not(:disabled)': color.ink,
-    },
+    borderColor: { 'default': color.rule2, ':hover:not(:disabled)': color.ink },
     borderRadius: radius.input,
     borderStyle: 'solid',
     // Constant across every state. The hover and focus styles change colour,
     // never width.
     borderWidth: rule.fine,
-    color: {
-      default: color.ink,
-      ':hover:not(:disabled)': color.accent,
-    },
-    cursor: { default: 'pointer', ':disabled': 'not-allowed' },
+    color: { 'default': color.ink, ':hover:not(:disabled)': color.accent },
+    cursor: { 'default': 'pointer', ':disabled': 'not-allowed' },
     display: 'inline-flex',
     fontFamily: font.body,
     fontWeight: 600,
     gap: space.xs,
     justifyContent: 'center',
     minHeight: '44px',
-    opacity: { default: 1, ':disabled': 0.55 },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    opacity: { 'default': 1, ':disabled': 0.55 },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     // Reserved at rest, not added on focus, so the ring costs no layout.
     outlineWidth: rule.fine,
     // A press moves the control, which is a transform, so it composites.
-    transform: { default: 'none', ':active:not(:disabled)': 'translateY(1px)' },
+    transform: {
+      'default': 'none',
+      ':active:not(:disabled)': 'translateY(1px)',
+    },
     transitionDuration: dur.micro,
     transitionProperty: 'color, border-color, background-color, transform',
     transitionTimingFunction: ease.out,

@@ -273,9 +273,9 @@ export function matchName(
   const epithets = dossierOf(entity)?.epithet ?? []
   const known = epithets.some(
     (entry) =>
-      progress !== null &&
-      entry.episode <= progress &&
-      Object.values(entry.value).some((epithet) =>
+      progress !== null
+      && entry.episode <= progress
+      && Object.values(entry.value).some((epithet) =>
         foldName(epithet).includes(needle),
       ),
   )

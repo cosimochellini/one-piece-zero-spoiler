@@ -66,7 +66,10 @@ function PlacesPage() {
   const { bookmark } = useBookmark()
 
   return (
-    <main id="content" {...stylex.props(styles.page)}>
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
       <header {...stylex.props(styles.head, styles.enter, styles.at(0))}>
         <h1 {...stylex.props(styles.title)}>{t('places.title')}</h1>
         <p {...stylex.props(styles.count)}>
@@ -94,10 +97,7 @@ const styles = stylex.create({
   },
   // Wordmark-sized, as on the signal book: a log's heading is the name of
   // the book, and the count under it is a fact about the page.
-  head: {
-    display: 'grid',
-    gap: space.xs,
-  },
+  head: { display: 'grid', gap: space.xs },
   title: {
     color: color.ink,
     fontFamily: font.display,
@@ -118,12 +118,12 @@ const styles = stylex.create({
     animationDuration: dur.long,
     animationFillMode: 'forwards',
     animationName: {
-      default: 'none',
+      'default': 'none',
       '@media (prefers-reduced-motion: no-preference)': settle,
     },
     animationTimingFunction: ease.out,
     opacity: {
-      default: 1,
+      'default': 1,
       '@media (prefers-reduced-motion: no-preference)': 0,
     },
   },

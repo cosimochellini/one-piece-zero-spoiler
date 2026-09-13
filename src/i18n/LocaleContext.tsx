@@ -5,10 +5,7 @@ import type { Locale } from './locales'
 import { getDictionary, translate } from './translate'
 import type { Translate } from './types'
 
-type LocaleContextValue = {
-  readonly locale: Locale
-  readonly t: Translate
-}
+type LocaleContextValue = { readonly locale: Locale; readonly t: Translate }
 
 const LocaleContext = createContext<LocaleContextValue | null>(null)
 
@@ -21,10 +18,7 @@ export function LocaleProvider({ locale, children }: LocaleProviderProps) {
   const value = useMemo<LocaleContextValue>(() => {
     const dictionary = getDictionary(locale)
 
-    return {
-      locale,
-      t: (key, params) => translate(dictionary, key, params),
-    }
+    return { locale, t: (key, params) => translate(dictionary, key, params) }
   }, [locale])
 
   return <LocaleContext value={value}>{children}</LocaleContext>

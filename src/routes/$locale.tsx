@@ -52,7 +52,10 @@ function LocaleLayout() {
         gets past the masthead without tabbing through the language switch on
         every page.
       */}
-      <a href="#content" {...stylex.props(styles.skip)}>
+      <a
+        href="#content"
+        {...stylex.props(styles.skip)}
+      >
         {translate(dictionary, 'nav.skip')}
       </a>
 
@@ -101,7 +104,7 @@ const styles = stylex.create({
     paddingInline: space.sm,
     // Off-screen rather than `display: none`, so it stays focusable.
     position: 'fixed',
-    transform: { default: 'translateY(-150%)', ':focus': 'none' },
+    transform: { 'default': 'translateY(-150%)', ':focus': 'none' },
     zIndex: z.skip,
   },
 })

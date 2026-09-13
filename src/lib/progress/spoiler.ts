@@ -36,10 +36,7 @@ export function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
  * the same as `Dated<T>` in `~/data/types`; declared here so the spoiler
  * module owes the data module nothing.
  */
-export type DatedEntry<T> = {
-  readonly episode: number
-  readonly value: T
-}
+export type DatedEntry<T> = { readonly episode: number; readonly value: T }
 
 /**
  * The anime episode a bookmark stands at, or `null` when it stands nowhere

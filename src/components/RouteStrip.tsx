@@ -40,9 +40,8 @@ export function RouteStrip({
   ).length
   // The ring takes the record's colour only once the reader has reached it;
   // under fog it is drawn in the ambient ink, so the colour is not in the HTML.
-  const ringHue = isRevealed(current, bookmark)
-    ? tintOf(current.visual.tint)
-    : null
+  const ringHue =
+    isRevealed(current, bookmark) ? tintOf(current.visual.tint) : null
   const width = PAD * 2 + STEP * (entries.length - 1)
   const x = (index: number) => PAD + STEP * index
   // Between the last open mark and the first covered one; before the first
@@ -114,37 +113,13 @@ export function RouteStrip({
 }
 
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: 'auto',
-    overflow: 'visible',
-    width: '100%',
-  },
-  line: {
-    fill: 'none',
-    strokeLinecap: 'round',
-    strokeWidth: rule.fine,
-  },
-  lineOpen: {
-    stroke: color.accent,
-  },
-  lineCovered: {
-    stroke: color.rule2,
-    strokeDasharray: '3 6',
-  },
+  svg: { display: 'block', height: 'auto', overflow: 'visible', width: '100%' },
+  line: { fill: 'none', strokeLinecap: 'round', strokeWidth: rule.fine },
+  lineOpen: { stroke: color.accent },
+  lineCovered: { stroke: color.rule2, strokeDasharray: '3 6' },
   ring: (hue: string) => ({ stroke: hue }),
-  ringCovered: {
-    stroke: color.ink2,
-  },
-  mark: {
-    strokeWidth: rule.fine,
-  },
-  markOpen: {
-    fill: color.accent,
-    stroke: color.accent,
-  },
-  markCovered: {
-    fill: color.paper,
-    stroke: color.rule2,
-  },
+  ringCovered: { stroke: color.ink2 },
+  mark: { strokeWidth: rule.fine },
+  markOpen: { fill: color.accent, stroke: color.accent },
+  markCovered: { fill: color.paper, stroke: color.rule2 },
 })

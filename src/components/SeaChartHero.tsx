@@ -23,9 +23,21 @@ export function SeaChartHero() {
       {...stylex.props(styles.svg)}
     >
       <defs>
-        <linearGradient id="sea-chart-fog" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0" {...stylex.props(styles.fogStart)} />
-          <stop offset="1" {...stylex.props(styles.fogEnd)} />
+        <linearGradient
+          id="sea-chart-fog"
+          x1="0"
+          x2="1"
+          y1="0"
+          y2="0"
+        >
+          <stop
+            offset="0"
+            {...stylex.props(styles.fogStart)}
+          />
+          <stop
+            offset="1"
+            {...stylex.props(styles.fogEnd)}
+          />
         </linearGradient>
       </defs>
 
@@ -124,17 +136,13 @@ const STARS = [
 const WAVES = [420, 462, 508]
   .map(
     (y, i) =>
-      `M${String(-40 + i * 30)} ${String(y)} ` +
-      Array.from({ length: 30 }, () => 'q30 -10 60 0').join(' '),
+      `M${String(-40 + i * 30)} ${String(y)} `
+      + Array.from({ length: 30 }, () => 'q30 -10 60 0').join(' '),
   )
   .join(' ')
 
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: '100%',
-    width: '100%',
-  },
+  svg: { display: 'block', height: '100%', width: '100%' },
   line: {
     fill: 'none',
     stroke: color.ink2,
@@ -142,23 +150,11 @@ const styles = stylex.create({
     strokeLinejoin: 'round',
     strokeWidth: rule.fine,
   },
-  gold: {
-    stroke: color.accent,
-  },
-  ambient: {
-    stroke: color.rule2,
-  },
-  dotted: {
-    strokeDasharray: '2 10',
-  },
+  gold: { stroke: color.accent },
+  ambient: { stroke: color.rule2 },
+  dotted: { strokeDasharray: '2 10' },
   // The fog is the card surface itself, rising from nothing to solid across
   // the right third, so the course visibly disappears into it.
-  fogStart: {
-    stopColor: color.paper2,
-    stopOpacity: 0,
-  },
-  fogEnd: {
-    stopColor: color.paper2,
-    stopOpacity: 0.96,
-  },
+  fogStart: { stopColor: color.paper2, stopOpacity: 0 },
+  fogEnd: { stopColor: color.paper2, stopOpacity: 0.96 },
 })

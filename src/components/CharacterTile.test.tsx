@@ -21,7 +21,11 @@ describe('CharacterTile', () => {
   it('links an open character with their drawing and name', () => {
     const { container } = renderWithProviders(
       <ul>
-        <CharacterTile entity={nami} revealed highlight={[0, 3]} />
+        <CharacterTile
+          entity={nami}
+          revealed
+          highlight={[0, 3]}
+        />
       </ul>,
       { bookmark: ep(10) },
     )
@@ -38,7 +42,10 @@ describe('CharacterTile', () => {
   it('keeps a covered character out of the DOM but for the episode', () => {
     const { container } = renderWithProviders(
       <ul>
-        <CharacterTile entity={nami} revealed={false} />
+        <CharacterTile
+          entity={nami}
+          revealed={false}
+        />
       </ul>,
       { bookmark: ep(1) },
     )

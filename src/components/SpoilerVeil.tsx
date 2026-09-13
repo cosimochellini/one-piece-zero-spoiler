@@ -149,10 +149,7 @@ function curtainFor(density: Density) {
 }
 
 const styles = stylex.create({
-  frame: {
-    display: 'grid',
-    position: 'relative',
-  },
+  frame: { display: 'grid', position: 'relative' },
 
   content: {
     // The blur is dropped in one frame. It is never transitioned: `filter` is
@@ -170,22 +167,13 @@ const styles = stylex.create({
   // A block with a photograph in it. The radius is set by what it takes to
   // make a face unreadable at card size, and the content is clipped by the
   // frame so the blur cannot bleed a halo past the card edge.
-  coveredMedia: {
-    filter: 'blur(1.4rem)',
-    userSelect: 'none',
-  },
+  coveredMedia: { filter: 'blur(1.4rem)', userSelect: 'none' },
   // A table cell is one line tall, so the blur radius drops with it: 0.55rem
   // on a single line smears into the rows above and below.
-  coveredTight: {
-    filter: 'blur(0.3rem)',
-    userSelect: 'none',
-  },
+  coveredTight: { filter: 'blur(0.3rem)', userSelect: 'none' },
   // A crest on a card is a drawing and a name at once, so the fog is thick
   // enough for a drawing, and the card is clipped by its own frame.
-  coveredCompact: {
-    filter: 'blur(1rem)',
-    userSelect: 'none',
-  },
+  coveredCompact: { filter: 'blur(1rem)', userSelect: 'none' },
 
   curtain: {
     alignContent: 'center',
@@ -202,7 +190,7 @@ const styles = stylex.create({
     inset: 0,
     justifyItems: 'start',
     opacity: 1,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
@@ -256,7 +244,7 @@ const styles = stylex.create({
   action: {
     backgroundColor: color.paper,
     color: {
-      default: color.accent,
+      'default': color.accent,
       ':is(button:hover) > &': color.ink,
       ':is(button:active) > &': color.ink,
     },

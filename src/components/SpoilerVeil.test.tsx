@@ -13,7 +13,10 @@ const at = (n: number) => ({ revealedAtEpisode: n, revealedAtChapter: n })
 describe('SpoilerVeil', () => {
   it('hides the content from assistive technology while it is covered', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -28,7 +31,10 @@ describe('SpoilerVeil', () => {
 
   it('names the threshold on the uncover control', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -43,7 +49,10 @@ describe('SpoilerVeil', () => {
   it('uncovers the content when the control is used', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -78,7 +87,10 @@ describe('SpoilerVeil', () => {
 
   it('shows the content outright when the reader is already past it', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1)} revealed>
+      <SpoilerVeil
+        gated={at(1)}
+        revealed
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -90,7 +102,10 @@ describe('SpoilerVeil', () => {
   it('keeps the curtain mounted after a reveal so the fade can run', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -105,7 +120,10 @@ describe('SpoilerVeil', () => {
 
   it('translates the control into the active locale', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(890)} revealed={false}>
+      <SpoilerVeil
+        gated={at(890)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
       { locale: 'it' },
@@ -175,7 +193,11 @@ describe('SpoilerVeil at inline density', () => {
     // sentence plus the verb wraps to two lines below ~40rem — which reads as
     // a broken control.
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false} density="inline">
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+        density="inline"
+      >
         {covered}
       </SpoilerVeil>,
     )

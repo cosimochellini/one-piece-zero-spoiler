@@ -43,7 +43,10 @@ export function LocaleSwitch() {
   const { locale, t } = useLocale()
 
   return (
-    <nav aria-label={t('locale.label')} {...stylex.props(styles.nav)}>
+    <nav
+      aria-label={t('locale.label')}
+      {...stylex.props(styles.nav)}
+    >
       <ul {...stylex.props(styles.list)}>
         {LOCALES.map((candidate) => {
           const current = candidate === locale
@@ -64,10 +67,16 @@ export function LocaleSwitch() {
                 aria-label={t(LABEL_KEY[candidate])}
                 {...stylex.props(styles.link, current && styles.linkCurrent)}
               >
-                <span aria-hidden="true" {...stylex.props(styles.full)}>
+                <span
+                  aria-hidden="true"
+                  {...stylex.props(styles.full)}
+                >
                   {t(LABEL_KEY[candidate])}
                 </span>
-                <span aria-hidden="true" {...stylex.props(styles.code)}>
+                <span
+                  aria-hidden="true"
+                  {...stylex.props(styles.code)}
+                >
                   {candidate}
                 </span>
               </Link>
@@ -80,9 +89,7 @@ export function LocaleSwitch() {
 }
 
 const styles = stylex.create({
-  nav: {
-    display: 'inline-flex',
-  },
+  nav: { display: 'inline-flex' },
   list: {
     display: 'inline-flex',
     gap: space.xs2,
@@ -93,7 +100,7 @@ const styles = stylex.create({
     alignItems: 'center',
     borderRadius: radius.pill,
     color: {
-      default: color.muted,
+      'default': color.muted,
       ':hover': color.accent,
       ':active': color.ink,
     },
@@ -103,14 +110,14 @@ const styles = stylex.create({
     fontWeight: 600,
     letterSpacing: '0.08em',
     minHeight: '44px',
-    minWidth: { default: '44px', '@media (min-width: 40rem)': 0 },
+    minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
     justifyContent: 'center',
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     paddingInline: {
-      default: space.xs2,
+      'default': space.xs2,
       '@media (min-width: 40rem)': space.xs,
     },
     textDecorationLine: 'none',
@@ -122,10 +129,10 @@ const styles = stylex.create({
   // A phone bar has room for the wordmark, one page link and two language
   // codes, not two language names: 'Italiano English' alone is 158px.
   full: {
-    display: { default: 'none', '@media (min-width: 40rem)': 'inline' },
+    display: { 'default': 'none', '@media (min-width: 40rem)': 'inline' },
   },
   code: {
-    display: { default: 'inline', '@media (min-width: 40rem)': 'none' },
+    display: { 'default': 'inline', '@media (min-width: 40rem)': 'none' },
   },
   linkCurrent: {
     color: color.ink,

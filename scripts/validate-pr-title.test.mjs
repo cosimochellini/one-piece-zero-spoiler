@@ -134,8 +134,8 @@ describe('validatePrTitle', () => {
 
     const commitAnalyzer = config.plugins.find(
       (plugin) =>
-        Array.isArray(plugin) &&
-        plugin[0] === '@semantic-release/commit-analyzer',
+        Array.isArray(plugin)
+        && plugin[0] === '@semantic-release/commit-analyzer',
     )
     const rules = commitAnalyzer[1].releaseRules
 

@@ -66,9 +66,9 @@ export const Route = createRootRoute({
       // `import.meta.env.DEV` is replaced with `false` so this entry is dead
       // code. In dev the plugin serves the aggregated sheet from an in-memory
       // middleware instead, because nothing has been emitted to disk yet.
-      ...(import.meta.env.DEV
-        ? [{ rel: 'stylesheet', href: '/virtual:stylex.css' }]
-        : []),
+      ...(import.meta.env.DEV ?
+        [{ rel: 'stylesheet', href: '/virtual:stylex.css' }]
+      : []),
     ],
   }),
   // Netlify does not apply netlify.toml headers to function responses, and

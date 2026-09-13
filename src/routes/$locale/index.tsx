@@ -38,21 +38,19 @@ const enter = stylex.create({
     // sections are simply present, and nothing depends on an animation having
     // run.
     animationName: {
-      default: 'none',
+      'default': 'none',
       '@media (prefers-reduced-motion: no-preference)': settle,
     },
     animationTimingFunction: ease.out,
     opacity: {
-      default: 1,
+      'default': 1,
       '@media (prefers-reduced-motion: no-preference)': 0,
     },
   },
   at: (index: number) => ({ animationDelay: `${String(index * 70)}ms` }),
 })
 
-export const Route = createFileRoute('/$locale/')({
-  component: Landing,
-})
+export const Route = createFileRoute('/$locale/')({ component: Landing })
 
 const FAQ = [
   { q: 'faq.animeQ', a: 'faq.animeA' },
@@ -89,7 +87,10 @@ function Landing() {
   const open = ordered.filter((entry) => isRevealed(entry, bookmark)).length
 
   return (
-    <main id="content" {...stylex.props(styles.page)}>
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
       <section {...stylex.props(styles.fold, enter.band, enter.at(0))}>
         <div {...stylex.props(styles.foldFigure)}>
           <SeaChartHero />
@@ -111,16 +112,25 @@ function Landing() {
           aria-labelledby="route-title"
           {...stylex.props(styles.routeBand, enter.band, enter.at(2))}
         >
-          <h2 id="route-title" {...stylex.props(styles.routeTitle)}>
+          <h2
+            id="route-title"
+            {...stylex.props(styles.routeTitle)}
+          >
             {t('chart.title')}
           </h2>
-          <RouteChart entries={ordered} bookmark={bookmark} />
+          <RouteChart
+            entries={ordered}
+            bookmark={bookmark}
+          />
         </section>
       </div>
 
       <section {...stylex.props(styles.faq, enter.band, enter.at(3))}>
         {FAQ.map(({ q, a }) => (
-          <div key={q} {...stylex.props(styles.qa)}>
+          <div
+            key={q}
+            {...stylex.props(styles.qa)}
+          >
             <h2 {...stylex.props(styles.question)}>{t(q)}</h2>
             <p {...stylex.props(styles.answer)}>{t(a)}</p>
           </div>
@@ -131,22 +141,15 @@ function Landing() {
 }
 
 const styles = stylex.create({
-  page: {
-    display: 'grid',
-    paddingInline: space.md,
-  },
+  page: { display: 'grid', paddingInline: space.md },
 
   // The illustrated fold: the drawing is the height of its frame, not of the
   // viewport, and the headline is set into its lower-left corner on a scrim
   // that darkens toward the paper so the type reads over the sea.
-  fold: {
-    display: 'grid',
-    paddingBlockStart: space.xs,
-    position: 'relative',
-  },
+  fold: { display: 'grid', paddingBlockStart: space.xs, position: 'relative' },
   foldFigure: {
     aspectRatio: {
-      default: '16 / 9',
+      'default': '16 / 9',
       '@media (min-width: 40rem)': '16 / 8',
       '@media (min-width: 60rem)': '16 / 7',
     },
@@ -162,7 +165,7 @@ const styles = stylex.create({
     columnGap: space.xl2,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 60rem)': 'minmax(0, 5fr) minmax(0, 7fr)',
     },
     paddingBlockStart: space.lg,
@@ -174,17 +177,14 @@ const styles = stylex.create({
     gap: space.lg,
     insetBlockStart: space.lg,
     justifyItems: 'start',
-    position: {
-      default: 'static',
-      '@media (min-width: 60rem)': 'sticky',
-    },
+    position: { 'default': 'static', '@media (min-width: 60rem)': 'sticky' },
   },
   // On a phone the headline sits under the drawing, in the page; from 40rem
   // it is set into the drawing's lower-left corner on a scrim that darkens
   // toward the paper, so the type reads over the sea and the ship stays clear.
   headline: {
     backgroundImage: {
-      default: 'none',
+      'default': 'none',
       '@media (min-width: 40rem)': `linear-gradient(to top, ${color.paper} 0%, ${color.paper} 18%, transparent 100%)`,
     },
     color: color.ink,
@@ -200,14 +200,14 @@ const styles = stylex.create({
     // string walks off a 320px viewport.
     minWidth: 0,
     overflowWrap: 'anywhere',
-    paddingBlockEnd: { default: 0, '@media (min-width: 40rem)': space.xs },
+    paddingBlockEnd: { 'default': 0, '@media (min-width: 40rem)': space.xs },
     paddingBlockStart: {
-      default: space.lg,
+      'default': space.lg,
       '@media (min-width: 40rem)': space.xl2,
     },
-    paddingInlineEnd: { default: 0, '@media (min-width: 40rem)': space.xl },
-    paddingInlineStart: { default: 0, '@media (min-width: 40rem)': space.md },
-    position: { default: 'static', '@media (min-width: 40rem)': 'absolute' },
+    paddingInlineEnd: { 'default': 0, '@media (min-width: 40rem)': space.xl },
+    paddingInlineStart: { 'default': 0, '@media (min-width: 40rem)': space.md },
+    position: { 'default': 'static', '@media (min-width: 40rem)': 'absolute' },
   },
 
   lede: {
@@ -217,11 +217,7 @@ const styles = stylex.create({
     maxWidth: '44ch',
   },
 
-  routeBand: {
-    display: 'grid',
-    gap: space.md,
-    minWidth: 0,
-  },
+  routeBand: { display: 'grid', gap: space.md, minWidth: 0 },
   // A small orientation phrase, as the macrostructure asks: the chart is the
   // heading, this only says what it is.
   routeTitle: {
@@ -231,7 +227,7 @@ const styles = stylex.create({
     fontWeight: 600,
     lineHeight: leading.body,
     paddingInlineStart: {
-      default: 0,
+      'default': 0,
       // Lines up with the waypoint text, past the 4rem rail and its gap.
       '@media (min-width: 40rem)': 'calc(4rem + 1rem)',
     },
@@ -251,7 +247,7 @@ const styles = stylex.create({
     columnGap: space.xl,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'minmax(0, 18rem) minmax(0, 1fr)',
     },
     paddingBlock: space.lg,

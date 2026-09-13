@@ -544,7 +544,7 @@ export const wholeCake: Saga = {
     },
   ],
   dossiers: {
-    jack: {
+    'jack': {
       role: {
         it: 'All-Star dei Pirati delle Cento Bestie',
         en: 'Beasts Pirates All-Star',
@@ -576,7 +576,7 @@ export const wholeCake: Saga = {
       ],
       bounty: [{ episode: 757, value: 1_000_000_000 }],
     },
-    wanda: {
+    'wanda': {
       role: MUSKETEER_ROLE,
       log: {
         it: 'Accompagna gli sbarcati su per la zampa dell’elefante e dentro una città ancora piena di macerie, raccontando con calma quello che è successo mentre tiene la sciabola a portata di mano. È una guerriera dei Moschettieri del ducato e non si fida di nessuno finché non ha una ragione per farlo. Chiama i propri compagni per nome uno a uno, e sono moltissimi.',
@@ -585,7 +585,7 @@ export const wholeCake: Saga = {
       affiliation: [{ episode: 752, value: MOKOMO_MUSKETEERS }],
       origin: [{ episode: 752, value: ZOU }],
     },
-    carrot: {
+    'carrot': {
       role: MUSKETEER_ROLE,
       log: {
         it: 'Ha orecchie lunghe, un sorriso che non sta mai fermo e una curiosità che la porta a infilarsi dappertutto, compresi i posti in cui le hanno detto di non andare. Come ogni mink sa usare l’elettro, la scarica che il suo popolo accumula nel pelo e libera con un colpo solo. Sotto l’allegria c’è una guerriera che ha visto bruciare la propria città.',
@@ -603,7 +603,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 753, value: ZOU }],
     },
-    inuarashi: {
+    'inuarashi': {
       role: {
         it: 'Sovrano del giorno di Mokomo',
         en: 'Ruler of the day of Mokomo',
@@ -631,7 +631,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 754, value: ZOU }],
     },
-    pedro: {
+    'pedro': {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
       log: {
         it: 'Parla poco, si muove di notte e i mink lo ascoltano anche quando dice cose che nessuno ha voglia di sentire. Porta una cicatrice che gli taglia un occhio e non racconta a nessuno come se l’è fatta. Difende il ducato con i candelotti alla cintura e la convinzione che certe cose valgano più della propria pelle.',
@@ -649,7 +649,7 @@ export const wholeCake: Saga = {
       origin: [{ episode: 757, value: ZOU }],
       bounty: [{ episode: 757, value: 382_000_000 }],
     },
-    nekomamushi: {
+    'nekomamushi': {
       role: {
         it: 'Sovrano della notte di Mokomo',
         en: 'Ruler of the night of Mokomo',
@@ -670,7 +670,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 761, value: ZOU }],
     },
-    raizo: {
+    'raizo': {
       role: { it: 'Ninja del Paese di Wano', en: 'Ninja of Wano Country' },
       log: {
         it: 'I mink hanno lasciato bruciare la propria città piuttosto che dire dove fosse, e lui era lì sotto per tutto il tempo. Viene da Wano, porta la fronte fasciata e un rotolo a tracolla, e quando finalmente si mostra si inchina e chiede scusa per il disturbo. Dentro quel rotolo può far sparire quello che vuole e tirarlo fuori quando serve.',
@@ -722,7 +722,7 @@ export const wholeCake: Saga = {
         { episode: 784, value: { it: 'Poison Pink', en: 'Poison Pink' } },
       ],
     },
-    vito: {
+    'vito': {
       role: { it: 'Pirata dei Fire Tank', en: 'Fire Tank Pirates crewman' },
       log: {
         it: 'Fa parte della ciurma di Capone Bege e si muove come un gangster di città, con il cappello calato sugli occhi e il sigaro tra i denti. Parla in fretta, si esalta per pochissimo e adora raccontare a chiunque le storie che ha letto. Quando il capo dice di sparare spara, e quando il capo tace resta comunque il più rumoroso della stanza.',
@@ -735,7 +735,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    praline: {
+    'praline': {
       role: BIG_MOM_DAUGHTER,
       log: {
         it: 'È nata a Totto Land come una dei tantissimi figli di Big Mom, e la madre l’ha data in moglie a un uomo-pesce per legare a sé i Pirati del Sole. La coda le viene dallo squalo e i modi dal quartiere: tratta il marito con dolcezza e chiunque altro con la stessa franchezza. In casa sua si parla molto, e lei ascolta più di quanto sembri.',
@@ -789,10 +789,7 @@ export const wholeCake: Saga = {
             en: 'Big Mom Pirates, captain; Emperor',
           },
         },
-        {
-          episode: 1085,
-          value: { it: 'Caduta a Wano', en: 'Fell at Wano' },
-        },
+        { episode: 1085, value: { it: 'Caduta a Wano', en: 'Fell at Wano' } },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
       epithet: [{ episode: 786, value: { it: 'Big Mom', en: 'Big Mom' } }],
@@ -867,7 +864,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    stussy: {
+    'stussy': {
       role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
       log: {
         it: 'Nella malavita la chiamano regina, e il titolo le basta per avere un posto a tavola accanto agli imperatori del crimine. Arriva a Totto Land in abito da sera, con il bocchino tra le dita, e saluta per nome gente che preferirebbe non essere riconosciuta. Sorride molto, beve pochissimo e ricorda tutto quello che viene detto intorno a lei.',
@@ -881,10 +878,7 @@ export const wholeCake: Saga = {
             en: 'Underworld, queen of the pleasure district',
           },
         },
-        {
-          episode: 806,
-          value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' },
-        },
+        { episode: 806, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
         {
           episode: 1108,
           value: {
@@ -903,7 +897,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    morgans: {
+    'morgans': {
       role: {
         it: 'Presidente del World Economy News Paper',
         en: 'World Economy News Paper president',
@@ -1150,7 +1144,7 @@ export const wholeCake: Saga = {
       ],
       bounty: [{ episode: 811, value: 120_000_000 }],
     },
-    streusen: {
+    'streusen': {
       role: { it: 'Capocuoco di Totto Land', en: 'Head chef of Totto Land' },
       log: {
         it: 'Cucina per Big Mom da moltissimo tempo, e da allora porta la stessa divisa bianca e lo stesso coltello. Tutto quello che tocca diventa cibo: una roccia diventa pane, una parete diventa torta, e in cucina non gli serve altro. Parla poco ai figli della sua padrona e li chiama ancora con i nomi che avevano da piccoli.',
@@ -1173,7 +1167,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    carmel: {
+    'carmel': {
       role: {
         it: 'Madre della Casa delle Pecore',
         en: 'Mother of the Sheep’s House',
@@ -1247,7 +1241,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    morley: {
+    'morley': {
       role: {
         it: 'Comandante dell’armata dell’Ovest',
         en: 'Commander of the West Army',
@@ -1272,7 +1266,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    karasu: {
+    'karasu': {
       role: {
         it: 'Comandante dell’armata del Nord',
         en: 'Commander of the North Army',
@@ -1297,7 +1291,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    lindbergh: {
+    'lindbergh': {
       role: {
         it: 'Comandante dell’armata del Sud',
         en: 'Commander of the South Army',
@@ -1316,7 +1310,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    sterry: {
+    'sterry': {
       role: { it: 'Re del Regno di Goa', en: 'King of the Goa Kingdom' },
       log: {
         it: 'Ha preso il trono di un regno dell’East Blue senza esserci nato dentro, adottato da una famiglia nobile che cercava un erede. Alla Reverie si lamenta del viaggio, guarda gli altri sovrani dall’alto in basso e tratta la propria scorta come servitù. Della propria corona parla molto più che del proprio regno.',
@@ -1338,7 +1332,7 @@ export const wholeCake: Saga = {
         },
       ],
     },
-    im: {
+    'im': {
       role: {
         it: 'Occupante del Trono Vuoto',
         en: 'Occupant of the Empty Throne',
@@ -1358,7 +1352,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 885, value: MARY_GEOISE }],
     },
-    aramaki: {
+    'aramaki': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'È uno degli ammiragli, arriva da solo e si muove scalzo, con una benda sugli occhi e i capelli lunghi sulle spalle. Dal suo corpo escono radici e rami che attraversano un’isola intera e prosciugano tutto quello che toccano, terra e persone comprese. Dice di non aver mangiato nulla da tre anni e di cavarsela benissimo lo stesso.',

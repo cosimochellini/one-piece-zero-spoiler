@@ -331,7 +331,7 @@ export const waterSeven: Saga = {
   ],
 
   dossiers: {
-    foxy: {
+    'foxy': {
       role: {
         it: 'Capitano dei Pirati di Foxy',
         en: 'Captain of the Foxy Pirates',
@@ -360,7 +360,7 @@ export const waterSeven: Saga = {
       ],
       bounty: [{ episode: 207, value: 24_000_000 }],
     },
-    porche: {
+    'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
       log: {
         it: 'Si presenta come l’idolo della ciurma e si comporta di conseguenza: nastro, sorriso e un pubblico che urla il suo nome a ogni gesto. Nella prima prova del Davy Back Fight gioca in acqua, dove è più veloce di chiunque altro, e non ha la minima intenzione di giocare pulito. Chi la guarda troppo a lungo si dimentica di correre.',
@@ -370,7 +370,7 @@ export const waterSeven: Saga = {
         { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
     },
-    hamburg: {
+    'hamburg': {
       role: {
         it: 'Combattente dei Pirati di Foxy',
         en: 'Fighter of the Foxy Pirates',
@@ -383,7 +383,7 @@ export const waterSeven: Saga = {
         { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
     },
-    kuzan: {
+    'kuzan': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Compare su Long Ring Long Land senza scorta, in bicicletta, e passa più tempo a dormire in piedi che a parlare. Congela il mare e ci cammina sopra, e per lui una ciurma di pirati è una pratica da sbrigare subito o da rimandare, a seconda dell’umore. Chiama pigra la sua idea di giustizia, e nessuno capisce se sia un avvertimento.',
@@ -414,7 +414,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    iceburg: {
+    'iceburg': {
       role: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
       log: {
         it: 'Guida la Galley-La Company, che costruisce le navi migliori del mare, e la città intera lo tratta come una cosa propria. Riceve i clienti con calma, chiama tutti per nome e tiene un topolino di nome Tyrannosaurus nella tasca della giacca. Quando gli chiedono di valutare una caravella malridotta, risponde senza addolcire nulla.',
@@ -431,7 +431,7 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 230, value: WATER_SEVEN }],
     },
-    paulie: {
+    'paulie': {
       role: DOCK_ONE,
       log: {
         it: 'Dirige gli operai del Dock 1 con un sigaro in bocca e una matassa di corda alla cintura, e nessuno in cantiere lavora più in fretta di lui. Ha debiti di gioco in mezza città e passa metà della giornata a scappare da chi li riscuote. Basta una gonna corta perché gridi all’oscenità e si copra gli occhi.',
@@ -440,7 +440,7 @@ export const waterSeven: Saga = {
       affiliation: [{ episode: 230, value: GALLEY_LA_DOCK_ONE }],
       origin: [{ episode: 230, value: WATER_SEVEN }],
     },
-    kokoro: {
+    'kokoro': {
       role: {
         it: 'Capostazione del treno del mare',
         en: 'Station master of the sea train',
@@ -460,7 +460,7 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 230, value: WATER_SEVEN }],
     },
-    chimney: {
+    'chimney': {
       role: {
         it: 'Nipote della capostazione',
         en: 'The station master’s granddaughter',
@@ -480,7 +480,7 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 230, value: WATER_SEVEN }],
     },
-    kaku: {
+    'kaku': {
       role: DOCK_ONE,
       log: {
         it: 'Lavora al Dock 1 insieme a Paulie e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
@@ -528,7 +528,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    kalifa: {
+    'kalifa': {
       role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
       log: {
         it: 'Tiene l’agenda del presidente della Galley-La e decide chi arriva a parlargli e chi no, con un tono che non ammette repliche. Prende appunti su tutto, corregge gli orari di chiunque e non alza mai la voce. Gli operai del cantiere la temono più dei caposquadra, e nessun cliente è mai riuscito a farsi spostare un appuntamento.',
@@ -551,7 +551,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    blueno: {
+    'blueno': {
       role: { it: 'Barista', en: 'Barkeeper' },
       log: {
         it: 'Tiene un bar vicino al canale, asciuga i bicchieri e ascolta senza interrompere mai nessuno. Ha la barba intrecciata, due corna di capelli e una voce così piatta che i clienti non si accorgono di quanto stiano parlando. Sa dove abita ogni persona di Water Seven, perché prima o poi si siedono tutti al suo bancone.',
@@ -588,7 +588,7 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 233, value: WATER_SEVEN }],
     },
-    zambai: {
+    'zambai': {
       role: {
         it: 'Vice della Franky Family',
         en: 'Franky Family second in command',
@@ -608,7 +608,7 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 233, value: WATER_SEVEN }],
     },
-    franky: {
+    'franky': {
       role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
       log: {
         it: 'Comanda la Franky Family, una banda di smantellatori che vive sotto un ponte di Water Seven e ruba a chi capita. Si è ricostruito il corpo da solo con pezzi di ferro, e funziona a cola: quando è scarico gli cambiano l’acconciatura e l’umore. Sa cosa vuol dire perdere una nave, e non lo racconta.',
@@ -629,7 +629,7 @@ export const waterSeven: Saga = {
         { episode: 1086, value: 394_000_000 },
       ],
     },
-    tom: {
+    'tom': {
       role: { it: 'Maestro d’ascia', en: 'Master shipwright' },
       log: {
         it: 'Aveva un cantiere sull’acqua, due allievi e una regola sola: un costruttore deve essere fiero di ogni nave che vara. Era un uomo-pesce arrivato da lontano, enorme e allegro, e non tutti a Water Seven lo vedevano di buon occhio. Sulla sua testa pendeva già un processo, e lui continuava a lavorare come se non lo riguardasse.',
@@ -654,7 +654,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    spandam: {
+    'spandam': {
       role: { it: 'Capo del Cipher Pol 9', en: 'Chief of Cipher Pol 9' },
       log: {
         it: 'Comanda un’unità segreta del Governo Mondiale e non ha mai vinto niente da solo: manda avanti gli agenti e si prende i meriti al telefono. Ha una maschera che gli copre metà faccia e una voce che sale di tono a ogni contrattempo. Del lavoro sporco fatto a Water Seven anni fa non ha mai dovuto rispondere a nessuno.',
@@ -674,7 +674,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    jabra: {
+    'jabra': {
       role: CP9_AGENT,
       log: {
         it: 'Passa più tempo a prendere in giro gli altri agenti che a lavorare, e con uno di loro in particolare finisce sempre a mani alzate. Racconta storie strappalacrime nel mezzo di uno scontro per far esitare l’avversario, e gli riesce. Sotto la divisa porta una fascia da combattimento, e il suo livello nell’unità è tra i più alti.',
@@ -691,7 +691,7 @@ export const waterSeven: Saga = {
         },
       ],
     },
-    kumadori: {
+    'kumadori': {
       role: CP9_AGENT,
       log: {
         it: 'Entra in scena declamando, chiama in causa la madre a ogni occasione e piange sul proprio destino davanti a chiunque. Combatte con un bastone e con i capelli, che manovra come due braccia in più. Quando ritiene di avere fallito tenta subito di togliersi la vita, senza mai riuscirci, e riprende a recitare.',
@@ -699,7 +699,7 @@ export const waterSeven: Saga = {
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
-    fukurou: {
+    'fukurou': {
       role: CP9_AGENT,
       log: {
         it: 'Ha una cerniera sulla bocca che apre e chiude di continuo, e ogni volta che la apre racconta qualcosa che avrebbe dovuto tenere per sé. Ride con un verso tutto suo, ripetuto a ogni battuta, e nonostante la stazza si muove più in fretta di quanto chiunque si aspetti. Sa a memoria i numeri e i livelli di tutti gli agenti dell’unità.',

@@ -108,7 +108,10 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
       id={open ? entry.id : undefined}
       {...stylex.props(styles.row)}
     >
-      <div aria-hidden="true" {...stylex.props(styles.rail)}>
+      <div
+        aria-hidden="true"
+        {...stylex.props(styles.rail)}
+      >
         <span
           {...stylex.props(
             styles.spine,
@@ -166,7 +169,10 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
             </div>
           }
         >
-          <Spread entry={entry} bookmark={bookmark} />
+          <Spread
+            entry={entry}
+            bookmark={bookmark}
+          />
         </SpoilerVeil>
       </div>
     </li>
@@ -198,7 +204,10 @@ function Spread({
           <>
             <Facts dossier={dossier} />
             <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
-            <FiledHere ids={dossier.filedHere} bookmark={bookmark} />
+            <FiledHere
+              ids={dossier.filedHere}
+              bookmark={bookmark}
+            />
           </>
         )}
       </div>
@@ -217,12 +226,24 @@ function Facts({ dossier }: { readonly dossier: PlaceDossier }) {
 
   return (
     <dl {...stylex.props(styles.facts)}>
-      <Fact label={t('places.sea')} value={t(`sea.${dossier.sea}`)} />
-      <Fact label={t('places.form')} value={t(`form.${dossier.form}`)} />
+      <Fact
+        label={t('places.sea')}
+        value={t(`sea.${dossier.sea}`)}
+      />
+      <Fact
+        label={t('places.form')}
+        value={t(`form.${dossier.form}`)}
+      />
       {arc === undefined ? null : (
-        <Fact label={t('places.arc')} value={arc.name[locale]} />
+        <Fact
+          label={t('places.arc')}
+          value={arc.name[locale]}
+        />
       )}
-      <Fact label={t('places.landmark')} value={dossier.landmark[locale]} />
+      <Fact
+        label={t('places.landmark')}
+        value={dossier.landmark[locale]}
+      />
     </dl>
   )
 }
@@ -262,17 +283,22 @@ function FiledHere({
   return (
     <div {...stylex.props(styles.filed)}>
       <h3 {...stylex.props(styles.filedTitle)}>{t('places.filedHere')}</h3>
-      {records.length === 0 ? (
+      {records.length === 0 ?
         <p {...stylex.props(styles.filedNone)}>{t('places.filedNone')}</p>
-      ) : (
-        <ul {...stylex.props(styles.crew)}>
+      : <ul {...stylex.props(styles.crew)}>
           {records.map((record) => (
-            <li key={record.id} {...stylex.props(styles.crewItem)}>
-              <RecordTile entry={record} bookmark={bookmark} />
+            <li
+              key={record.id}
+              {...stylex.props(styles.crewItem)}
+            >
+              <RecordTile
+                entry={record}
+                bookmark={bookmark}
+              />
             </li>
           ))}
         </ul>
-      )}
+      }
     </div>
   )
 }
@@ -286,7 +312,10 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
   const set = bookmark !== null
 
   return (
-    <li aria-current="step" {...stylex.props(styles.row, styles.horizonRow)}>
+    <li
+      aria-current="step"
+      {...stylex.props(styles.row, styles.horizonRow)}
+    >
       <div
         aria-hidden="true"
         {...stylex.props(styles.rail, styles.horizonRail)}
@@ -306,28 +335,24 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
           set ? styles.horizonSet : styles.horizonUnset,
         )}
       >
-        {bookmark === null
-          ? t('chart.hereUnset')
-          : describeBookmark(t, 'chart.hereSet', bookmark)}
+        {bookmark === null ?
+          t('chart.hereUnset')
+        : describeBookmark(t, 'chart.hereSet', bookmark)}
       </p>
     </li>
   )
 }
 
 const styles = stylex.create({
-  log: {
-    display: 'grid',
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-  },
+  log: { display: 'grid', listStyleType: 'none', paddingInlineStart: 0 },
 
   // The rail is a narrow first column; the body takes the rest. Rows have no
   // gap of their own, so the spine runs unbroken from one port to the next.
   row: {
-    columnGap: { default: space.md, '@media (min-width: 40rem)': space.lg },
+    columnGap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
     display: 'grid',
     gridTemplateColumns: {
-      default: '2.75rem minmax(0, 1fr)',
+      'default': '2.75rem minmax(0, 1fr)',
       '@media (min-width: 40rem)': '3.5rem minmax(0, 1fr)',
     },
     scrollMarginBlockStart: space.xl,
@@ -346,9 +371,7 @@ const styles = stylex.create({
     height: '100%',
     width: 0,
   },
-  spineOpen: {
-    borderInlineStartColor: color.accent,
-  },
+  spineOpen: { borderInlineStartColor: color.accent },
   spineCovered: {
     borderInlineStartColor: color.rule2,
     borderInlineStartStyle: 'dashed',
@@ -371,14 +394,8 @@ const styles = stylex.create({
     lineHeight: 1,
     width: '2.75rem',
   },
-  markerOpen: {
-    borderColor: color.accent,
-    color: color.ink,
-  },
-  markerCovered: {
-    borderColor: color.rule2,
-    color: color.muted,
-  },
+  markerOpen: { borderColor: color.accent, color: color.ink },
+  markerCovered: { borderColor: color.rule2, color: color.muted },
 
   body: {
     display: 'grid',
@@ -406,16 +423,9 @@ const styles = stylex.create({
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
   },
-  stageOpen: {
-    color: color.accent,
-  },
-  stageCovered: {
-    color: color.muted,
-  },
-  stageEpisode: {
-    color: color.ink2,
-    fontSize: text.base,
-  },
+  stageOpen: { color: color.accent },
+  stageCovered: { color: color.muted },
+  stageEpisode: { color: color.ink2, fontSize: text.base },
 
   // The spread: plate beside dossier from 60rem, stacked below it.
   spread: {
@@ -423,7 +433,7 @@ const styles = stylex.create({
     columnGap: space.xl,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 60rem)': 'minmax(0, 4fr) minmax(0, 8fr)',
     },
     rowGap: space.lg,
@@ -440,11 +450,7 @@ const styles = stylex.create({
     padding: space.sm,
     width: '100%',
   },
-  dossier: {
-    display: 'grid',
-    gap: space.md,
-    minWidth: 0,
-  },
+  dossier: { display: 'grid', gap: space.md, minWidth: 0 },
   name: {
     color: color.ink,
     fontFamily: font.display,
@@ -469,17 +475,13 @@ const styles = stylex.create({
     columnGap: space.lg,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
     },
     paddingBlock: space.md,
     rowGap: space.sm,
   },
-  fact: {
-    display: 'grid',
-    gap: space.xs3,
-    minWidth: 0,
-  },
+  fact: { display: 'grid', gap: space.xs3, minWidth: 0 },
   factLabel: {
     color: color.muted,
     fontSize: text.xs,
@@ -504,10 +506,7 @@ const styles = stylex.create({
     maxWidth: '60ch',
   },
 
-  filed: {
-    display: 'grid',
-    gap: space.sm,
-  },
+  filed: { display: 'grid', gap: space.sm },
   filedTitle: {
     color: color.ink2,
     fontFamily: font.body,
@@ -527,15 +526,11 @@ const styles = stylex.create({
     listStyleType: 'none',
     paddingInlineStart: 0,
   },
-  crewItem: {
-    minWidth: 0,
-  },
+  crewItem: { minWidth: 0 },
 
   // The horizon: a short row, the tick on the spine, the line across the
   // body and its label.
-  horizonRow: {
-    alignItems: 'center',
-  },
+  horizonRow: { alignItems: 'center' },
   horizonRail: {
     gridTemplateRows: 'minmax(0, 1fr) auto minmax(0, 1fr)',
     height: '100%',
@@ -547,12 +542,8 @@ const styles = stylex.create({
     height: 0,
     width: '1.25rem',
   },
-  tickSet: {
-    borderBlockStartColor: color.accent,
-  },
-  tickUnset: {
-    borderBlockStartColor: color.rule2,
-  },
+  tickSet: { borderBlockStartColor: color.accent },
+  tickUnset: { borderBlockStartColor: color.rule2 },
   horizonLabel: {
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.fine,
@@ -566,10 +557,7 @@ const styles = stylex.create({
     paddingBlockStart: space.xs,
     textTransform: 'uppercase',
   },
-  horizonSet: {
-    borderBlockStartColor: color.accent,
-    color: color.accent,
-  },
+  horizonSet: { borderBlockStartColor: color.accent, color: color.accent },
   horizonUnset: {
     borderBlockStartColor: color.rule2,
     borderBlockStartStyle: 'dashed',

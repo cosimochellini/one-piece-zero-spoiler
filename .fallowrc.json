@@ -15,8 +15,5 @@
     ".gate/**"
   ],
   "ignoreDependencies": ["react-doctor", "@tanstack/react-start"],
-  "rules": {
-    "boundary-violation": "off",
-    "policy-violation": "off"
-  }
+  "rules": { "boundary-violation": "off", "policy-violation": "off" }
 }

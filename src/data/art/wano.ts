@@ -4,7 +4,7 @@ import type { Drawings } from './stroke'
 /** The drawings of the records filed in the wano stretch of the route. */
 export const wanoArt = {
   // A closed country: one mountain, layered cloud, roofs at its foot.
-  wano: [
+  'wano': [
     { d: 'M20 130 L80 34 L140 130', role: 'accent' },
     { d: 'M62 64 q10 8 18 0 q8 8 18 0', role: 'accent' },
     {
@@ -15,7 +15,7 @@ export const wanoArt = {
   ],
 
   // A bowl of red bean soup, and the dango skewer laid beside it.
-  tama: [
+  'tama': [
     { d: 'M30 118 C34 152 50 170 72 170 C94 170 110 152 114 118 Z' },
     { d: ellipse(72, 118, 42, 9) },
     { d: ellipse(72, 120, 33, 6), role: 'accent' },
@@ -51,7 +51,7 @@ export const wanoArt = {
   ],
 
   // A katana with a chrysanthemum for a guard.
-  kikunojo: [
+  'kikunojo': [
     { d: 'M114 34 L58 126 M122 40 L66 132' },
     { d: 'M114 34 L122 40' },
     { d: circle(62, 133, 16), role: 'accent' },
@@ -124,7 +124,7 @@ export const wanoArt = {
   ],
 
   // A kunai, and the fruit ripening beside it.
-  shinobu: [
+  'shinobu': [
     { d: 'M112 26 L100 56 L112 100 L124 56 Z' },
     { d: 'M112 34 V96', role: 'soft' },
     { d: 'M108 100 h8 V140 h-8 Z' },
@@ -138,7 +138,7 @@ export const wanoArt = {
   ],
 
   // A paper lantern with the flower crest of the old yakuza.
-  hyogoro: [
+  'hyogoro': [
     { d: 'M54 58 C38 78 38 130 54 150 H106 C122 130 122 78 106 58 Z' },
     { d: 'M60 58 h40 v-8 h-40 Z' },
     { d: 'M80 50 V30' },
@@ -154,7 +154,7 @@ export const wanoArt = {
   ],
 
   // A microphone with a long tail coiled round it.
-  queen: [
+  'queen': [
     { d: circle(80, 50, 22) },
     { d: 'M62 42 h36 M60 50 h40 M62 58 h36', role: 'soft' },
     { d: 'M68 70 L70 96 h20 L92 70' },
@@ -168,7 +168,7 @@ export const wanoArt = {
   ],
 
   // A pteranodon's wing with fire along its edge, and the mask below it.
-  king: [
+  'king': [
     {
       d: 'M24 116 C36 70 74 40 122 36 C128 48 128 62 122 74 C96 96 60 112 24 116 Z',
     },
@@ -187,23 +187,20 @@ export const wanoArt = {
   ],
 
   // A shamisen, and the hairpin left lying by it.
-  komurasaki: [
+  'komurasaki': [
     { d: 'M30 138 L56 112 L90 146 L64 172 Z' },
     { d: 'M40 138 L58 156', role: 'soft' },
     { d: 'M56 112 L124 44 M64 120 L132 52' },
     { d: 'M124 44 L132 52' },
     { d: 'M118 38 l10 -8 M128 48 l10 -8' },
-    {
-      d: 'M60 154 L120 46 M64 157 L124 49 M68 160 L128 52',
-      role: 'accent',
-    },
+    { d: 'M60 154 L120 46 M64 157 L124 49 M68 160 L128 52', role: 'accent' },
     { d: 'M18 42 L34 100' },
     { d: circle(16, 34, 9), role: 'accent' },
     shadow(70, 182, 44),
   ],
 
   // A round paper fan and a plate of dango.
-  toko: [
+  'toko': [
     { d: circle(54, 70, 30) },
     { d: 'M54 100 L34 48 M54 100 V44 M54 100 L74 48', role: 'soft' },
     { d: 'M50 98 L38 138 M58 100 L46 140' },
@@ -219,7 +216,7 @@ export const wanoArt = {
   ],
 
   // A yakuza's sabre over the money box.
-  kyoshiro: [
+  'kyoshiro': [
     { d: 'M20 84 C56 60 104 44 146 38', role: 'accent' },
     { d: 'M24 96 C58 74 104 58 144 50', role: 'accent' },
     { d: 'M146 38 C152 40 150 48 144 50', role: 'accent' },
@@ -247,7 +244,7 @@ export const wanoArt = {
   ],
 
   // A naginata on the bridge, the stolen swords piled at its foot.
-  gyukimaru: [
+  'gyukimaru': [
     { d: 'M8 148 C40 106 120 106 152 148' },
     { d: 'M8 158 C40 118 120 118 152 158' },
     { d: 'M22 118 C52 96 108 96 138 118' },
@@ -263,7 +260,7 @@ export const wanoArt = {
   ],
 
   // A ninja's scroll with its crest, and the kunai laid across it.
-  fukurokuju: [
+  'fukurokuju': [
     { d: 'M28 72 C22 78 22 130 28 136 H126 C132 130 132 78 126 72 Z' },
     { d: 'M28 72 C34 78 34 130 28 136', role: 'soft' },
     { d: 'M126 72 C120 78 120 130 126 136', role: 'soft' },
@@ -276,7 +273,7 @@ export const wanoArt = {
   ],
 
   // A kappa's straw hat over a sword.
-  kawamatsu: [
+  'kawamatsu': [
     { d: 'M22 124 C38 70 122 70 138 124 Z' },
     { d: 'M22 124 q58 16 116 0' },
     { d: 'M80 86 L44 120 M80 86 V126 M80 86 L116 120', role: 'soft' },
@@ -369,7 +366,7 @@ export const wanoArt = {
   ],
 
   // Two flintlock pistols, and a hairpin standing between them.
-  izo: [
+  'izo': [
     {
       d: 'M12 48 L48 84 L54 78 L18 42 Z M48 84 L54 78 C60 94 58 116 50 128 L36 120 C44 108 48 96 46 88 Z',
     },
@@ -392,7 +389,7 @@ export const wanoArt = {
   ],
 
   // A horned headpiece with the thick dome of a pachycephalosaur.
-  ulti: [
+  'ulti': [
     { d: 'M28 128 C28 66 132 66 132 128' },
     { d: 'M28 128 C60 142 100 142 132 128' },
     { d: 'M36 140 C62 150 98 150 124 140', role: 'soft' },
@@ -452,21 +449,18 @@ export const wanoArt = {
   ],
 
   // A triceratops horn over a sabre.
-  sasaki: [
+  'sasaki': [
     { d: 'M16 152 C54 136 92 134 120 140 L120 150 C92 144 54 146 16 160 Z' },
     { d: 'M118 132 V158' },
     { d: 'M124 138 L150 132 L152 142 L126 148 Z' },
-    {
-      d: 'M56 128 C52 92 66 56 96 32 C102 60 92 104 78 130 Z',
-      role: 'accent',
-    },
+    { d: 'M56 128 C52 92 66 56 96 32 C102 60 92 104 78 130 Z', role: 'accent' },
     { d: 'M70 126 C68 94 78 62 94 36', role: 'accent' },
     { d: 'M60 106 q12 6 21 0 M64 82 q10 6 18 0', role: 'soft' },
     { d: 'M4 184 H156', role: 'ambient' },
   ],
 
   // A studded club, and the chain it broke.
-  yamato: [
+  'yamato': [
     { d: 'M44 178 L66 134 M52 182 L74 138' },
     { d: 'M66 134 L84 142 L118 52 L104 42z', role: 'accent' },
     {
@@ -494,9 +488,7 @@ export const wanoArt = {
     { d: `${circle(56, 80, 15)} ${circle(112, 80, 15)}`, role: 'soft' },
     { d: 'M76 72 h16 v16 h-16 Z' },
     { d: 'M32 72 h-8 v16 h8 M136 72 h8 v16 h-8' },
-    {
-      d: 'M19.4 143 A70 70 0 0 1 140.6 143 L97.3 168 A20 20 0 0 0 62.7 168 Z',
-    },
+    { d: 'M19.4 143 A70 70 0 0 1 140.6 143 L97.3 168 A20 20 0 0 0 62.7 168 Z' },
     {
       d: 'M70 160.7 L45 117.4 M80 158 V108 M90 160.7 L115 117.4',
       role: 'soft',

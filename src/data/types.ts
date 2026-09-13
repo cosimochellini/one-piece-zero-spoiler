@@ -46,10 +46,7 @@ export type TintId =
  * What a record shows: a line drawing and the one colour its main stroke
  * takes. No photographs and no official artwork appear anywhere on the site.
  */
-export type Visual = {
-  readonly art: ArtId
-  readonly tint: TintId
-}
+export type Visual = { readonly art: ArtId; readonly tint: TintId }
 
 /**
  * One archive record.
@@ -84,10 +81,7 @@ export type Entity = {
  * dossier field holds: the reader's dial picks the last entry it has reached,
  * so a bounty raised at episode 500 is not on the page of a reader at 300.
  */
-export type Dated<T> = {
-  readonly episode: number
-  readonly value: T
-}
+export type Dated<T> = { readonly episode: number; readonly value: T }
 
 /** Entries in ascending episode order; the first no earlier than the record's threshold. */
 export type Timeline<T> = readonly Dated<T>[]

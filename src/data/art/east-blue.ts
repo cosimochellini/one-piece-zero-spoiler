@@ -44,7 +44,7 @@ export const eastBlueArt = {
   ],
 
   // A mop and a wooden bucket: the deck of a ship the boy did not choose.
-  koby: [
+  'koby': [
     { d: 'M104 26 L64 122' },
     { d: 'M58 118 L74 128' },
     { d: 'M58 120 C50 140 52 158 48 172', role: 'accent' },
@@ -56,7 +56,7 @@ export const eastBlueArt = {
     shadow(84, 182, 44),
   ],
   // An iron club, the spikes ringing its head.
-  alvida: [
+  'alvida': [
     { d: 'M76 188 h12 M78 186 V116 M86 186 V116' },
     { d: 'M74 116 h16 l4 -8 h-24z' },
     { d: circle(82, 74, 30) },
@@ -114,7 +114,7 @@ export const eastBlueArt = {
   ],
 
   // A boot coming down on a rice ball, and the plate under it.
-  helmeppo: [
+  'helmeppo': [
     { d: 'M60 42 H110 V66' },
     { d: 'M52 66 H118 q10 0 10 12 v26 q0 14 -14 14 H52 Z' },
     { d: 'M52 96 H128', role: 'soft' },
@@ -129,7 +129,7 @@ export const eastBlueArt = {
     shadow(80, 178, 52),
   ],
   // A great axe: the haft, the crescent blade, the rivets of a steel jaw.
-  morgan: [
+  'morgan': [
     { d: 'M76 188 V50 M88 188 V50' },
     { d: 'M74 190 h16' },
     { d: 'M76 62 h12 M76 76 h12', role: 'soft' },
@@ -150,7 +150,7 @@ export const eastBlueArt = {
     shadow(82, 194, 26),
   ],
   // A sake bottle and three cups: the pledge of brothers.
-  shanks: [
+  'shanks': [
     { d: 'M40 152 V96 q0 -8 6 -12 V70 h16 V84 q6 4 6 12 V152z' },
     { d: 'M40 112 h28 M40 132 h28', role: 'ambient' },
     cup(84, 'accent'),
@@ -175,7 +175,7 @@ export const eastBlueArt = {
   ],
 
   // A tavern mug with its head of foam, standing on a tray.
-  makino: [
+  'makino': [
     { d: 'M54 78 L60 148 H100 L106 78 Z' },
     { d: 'M56 98 H104 M58 124 H102', role: 'soft' },
     { d: 'M106 90 C128 96 128 132 106 138' },
@@ -208,7 +208,7 @@ export const eastBlueArt = {
     shadow(88, 170, 44),
   ],
   // A flintlock pistol and the coin its shot went through.
-  yasopp: [
+  'yasopp': [
     { d: 'M30 96 H118 V108 H30 Z' },
     { d: 'M52 92 H84 L88 112 H50 Z' },
     { d: 'M50 110 C44 128 40 142 32 156 L52 160 C62 142 66 124 68 112 Z' },
@@ -220,7 +220,7 @@ export const eastBlueArt = {
     shadow(58, 170, 34),
   ],
   // A bandit's sabre and a sack with the coins running out of it.
-  higuma: [
+  'higuma': [
     { d: 'M126 30 C108 56 84 84 62 108' },
     { d: 'M136 40 C118 66 94 94 72 118' },
     { d: 'M126 30 L136 40' },
@@ -237,7 +237,7 @@ export const eastBlueArt = {
     shadow(74, 192, 44),
   ],
   // A cannonball with its fuse lit.
-  buggy: [
+  'buggy': [
     { d: circle(76, 118, 34), role: 'accent' },
     { d: 'M56 104 q6 -14 20 -18', role: 'ambient' },
     { d: 'M100 92 C106 72 116 66 130 66' },
@@ -249,7 +249,7 @@ export const eastBlueArt = {
   ],
 
   // Three mandarins on a branch, the fruit in orange.
-  nami: [
+  'nami': [
     { d: 'M34 154 C40 120 70 96 122 70' },
     { d: 'M64 112 q-2 -16 14 -18 q-4 14 -14 18z' },
     { d: 'M100 86 q14 -10 22 2 q-12 6 -22 -2z' },
@@ -282,7 +282,7 @@ export const eastBlueArt = {
   ],
 
   // A tamer's whip, the lash still travelling.
-  mohji: [
+  'mohji': [
     { d: 'M22 32 L48 54 M16 40 L42 62' },
     { d: 'M16 40 L22 32 M42 62 L48 54' },
     { d: 'M22 42 l8 6 M28 50 l8 6', role: 'soft' },
@@ -294,7 +294,7 @@ export const eastBlueArt = {
     shadow(88, 176, 44),
   ],
   // A unicycle and a sabre: the whole act in two objects.
-  cabaji: [
+  'cabaji': [
     { d: circle(66, 134, 38), role: 'accent' },
     { d: circle(66, 134, 5), role: 'accent' },
     { d: 'M40 120 L92 148 M40 148 L92 120 M66 96 V172', role: 'soft' },
@@ -307,7 +307,7 @@ export const eastBlueArt = {
     { d: 'M100 178 L116 186' },
   ],
   // A slingshot, the band drawn taut around a star-shaped pellet.
-  usopp: [
+  'usopp': [
     { d: 'M80 176 V126' },
     { d: 'M80 126 C78 100 62 92 56 70' },
     { d: 'M80 126 C82 100 98 92 104 70' },
@@ -333,7 +333,7 @@ export const eastBlueArt = {
   ],
 
   // A mansion window, and the glass of medicine left on the sill.
-  kaya: [
+  'kaya': [
     { d: 'M36 152 V76 C36 44 124 44 124 76 V152' },
     { d: 'M80 152 V46', role: 'soft' },
     { d: 'M36 104 H124', role: 'soft' },
@@ -344,7 +344,7 @@ export const eastBlueArt = {
     shadow(80, 172, 56),
   ],
   // A glove with five blades where the fingers should be.
-  kuro: [
+  'kuro': [
     { d: 'M62 112 L22 36 L32 32 L70 108 Z', role: 'accent' },
     { d: 'M76 106 L52 20 L62 18 L84 104 Z', role: 'accent' },
     { d: 'M90 104 L86 14 L96 14 L98 104 Z', role: 'accent' },
@@ -357,7 +357,7 @@ export const eastBlueArt = {
     shadow(84, 174, 40),
   ],
   // A hypnotist's ring on its string, and the heart-shaped glasses below.
-  jango: [
+  'jango': [
     { d: 'M80 14 C86 40 74 60 80 82', role: 'soft' },
     { d: circle(80, 100, 18), role: 'accent' },
     { d: circle(80, 100, 12), role: 'accent' },
@@ -372,7 +372,7 @@ export const eastBlueArt = {
     shadow(80, 182, 50),
   ],
   // A teacup on a silver tray, the bow tie laid beside it.
-  merry: [
+  'merry': [
     { d: 'M62 62 L66 90 h24 L94 62 Z', role: 'accent' },
     { d: 'M58 62 h40', role: 'accent' },
     { d: 'M94 66 q18 2 16 13 q-2 9 -16 9', role: 'accent' },
@@ -400,7 +400,7 @@ export const eastBlueArt = {
   ],
 
   // A treasure chest with a shrub growing out of the lid.
-  gaimon: [
+  'gaimon': [
     { d: 'M26 178 H134 V112 H26 Z' },
     { d: 'M26 112 C26 80 134 80 134 112' },
     { d: 'M68 112 H92 V134 H68 Z' },
@@ -412,7 +412,7 @@ export const eastBlueArt = {
     shadow(80, 186, 56),
   ],
   // A wooden practice sword and a katana, crossed.
-  kuina: [
+  'kuina': [
     { d: 'M26 170 L120 44 M32 175 L126 49' },
     { d: 'M26 170 L32 175 M120 44 L126 49' },
     { d: 'M36 46 L112 147 M42 41 L118 142' },
@@ -425,7 +425,7 @@ export const eastBlueArt = {
     shadow(84, 192, 48),
   ],
   // A bundle of wanted posters, roped crosswise.
-  johnny: [
+  'johnny': [
     { d: 'M44 48 H136 V132' },
     { d: 'M36 56 H128 V140' },
     { d: 'M26 64 H120 V150 H26 Z' },
@@ -437,7 +437,7 @@ export const eastBlueArt = {
     shadow(76, 166, 54),
   ],
   // A crate of limes with one cut open on the top.
-  yosaku: [
+  'yosaku': [
     { d: 'M30 118 H130 V176 H30 Z' },
     { d: 'M30 136 H130 M30 156 H130', role: 'soft' },
     { d: 'M44 118 V176 M116 118 V176', role: 'soft' },
@@ -451,7 +451,7 @@ export const eastBlueArt = {
     shadow(80, 184, 56),
   ],
   // A chef's knife with a flame off its point.
-  sanji: [
+  'sanji': [
     { d: 'M28 170 L54 144 M38 178 L64 152' },
     { d: 'M54 144 L64 152' },
     { d: 'M54 144 L122 76' },
@@ -466,7 +466,7 @@ export const eastBlueArt = {
 
   // A restaurant that is also a ship: a hull with portholes, the dining
   // deck and its chimney, and a fish's head for a prow.
-  baratie: [
+  'baratie': [
     { d: 'M14 126 Q80 122 146 126 L136 154 H24z' },
     { d: `${circle(60, 140, 3)} ${circle(80, 140, 3)} ${circle(100, 140, 3)}` },
     { d: 'M50 126 V96 H120 V126 M46 96 H124' },
@@ -484,7 +484,7 @@ export const eastBlueArt = {
   ],
 
   // A chef's hat, the band braided.
-  zeff: [
+  'zeff': [
     { d: 'M44 122 H116 V156 H44 Z' },
     {
       d: 'M44 122 C28 112 28 86 44 78 C38 58 60 44 76 54 C90 38 114 44 116 64 C134 70 134 100 116 106 C120 114 118 120 116 122',
@@ -499,7 +499,7 @@ export const eastBlueArt = {
     shadow(80, 168, 44),
   ],
   // Two tonfa, each with an iron ball hung at the end.
-  gin: [
+  'gin': [
     { d: 'M32 38 H46 V134 H32 Z' },
     { d: 'M46 60 H72 V76 H46' },
     { d: 'M114 38 H128 V134 H114 Z' },
@@ -530,7 +530,7 @@ export const eastBlueArt = {
     { d: 'M14 180 H88', role: 'ambient', dashed: true },
   ],
   // A round iron shield, cracked across.
-  pearl: [
+  'pearl': [
     { d: circle(80, 104, 56) },
     { d: circle(80, 104, 44), role: 'soft' },
     { d: circle(80, 104, 10) },
@@ -560,7 +560,7 @@ export const eastBlueArt = {
   ],
 
   // A saw-toothed sword, laid over on the diagonal.
-  arlong: [
+  'arlong': [
     { d: 'M80 20 L64 48 V150', transform: 'rotate(-28 80 106)' },
     { d: 'M80 20 L94 48', transform: 'rotate(-28 80 106)' },
     {
@@ -569,10 +569,7 @@ export const eastBlueArt = {
       transform: 'rotate(-28 80 106)',
     },
     { d: 'M54 150 H106 V162 H54 Z', transform: 'rotate(-28 80 106)' },
-    {
-      d: 'M66 162 V188 H94 V162 M62 188 H98',
-      transform: 'rotate(-28 80 106)',
-    },
+    { d: 'M66 162 V188 H94 V162 M62 188 H98', transform: 'rotate(-28 80 106)' },
     {
       d: 'M66 170 H94 M66 178 H94',
       role: 'soft',
@@ -580,7 +577,7 @@ export const eastBlueArt = {
     },
   ],
   // Six swords fanned out in a ring, one for each arm.
-  hatchan: [
+  'hatchan': [
     { d: 'M84 84 L80 44 L76 84 Z' },
     { d: 'M101.1 98.5 L133.7 75 L97.1 91.5 Z' },
     { d: 'M97.1 120.5 L133.7 137 L101.1 113.5 Z' },
@@ -591,13 +588,9 @@ export const eastBlueArt = {
     { d: circle(80, 106, 10), role: 'soft' },
   ],
   // A black belt, tied, the two ends hanging.
-  kuroobi: [
-    {
-      d: 'M16 86 C44 72 62 74 68 86 L68 114 C58 100 38 100 16 110 Z',
-    },
-    {
-      d: 'M144 86 C116 72 98 74 92 86 L92 114 C102 100 122 100 144 110 Z',
-    },
+  'kuroobi': [
+    { d: 'M16 86 C44 72 62 74 68 86 L68 114 C58 100 38 100 16 110 Z' },
+    { d: 'M144 86 C116 72 98 74 92 86 L92 114 C102 100 122 100 144 110 Z' },
     { d: 'M22 96 C44 86 58 88 66 96', role: 'soft' },
     { d: 'M68 84 H92 V116 H68 Z', role: 'accent' },
     { d: 'M72 90 C78 98 82 98 88 90', role: 'accent' },
@@ -605,7 +598,7 @@ export const eastBlueArt = {
     { d: 'M92 116 C98 142 102 164 108 186 L94 190 C88 166 84 142 82 116 Z' },
   ],
   // A jug with a jet of water already out of it.
-  chew: [
+  'chew': [
     {
       d: 'M46 110 C38 130 40 160 54 170 C68 180 98 178 108 166 C120 152 118 128 110 108 Z',
     },
@@ -625,7 +618,7 @@ export const eastBlueArt = {
     shadow(80, 184, 42),
   ],
   // A watering can standing among the mandarin trees.
-  nojiko: [
+  'nojiko': [
     { d: 'M22 176 V144' },
     { d: circle(22, 124, 20) },
     {
@@ -651,7 +644,7 @@ export const eastBlueArt = {
     { d: 'M4 176 H156', role: 'ambient' },
   ],
   // A pinwheel turning on the brim of a cap.
-  genzo: [
+  'genzo': [
     { d: 'M40 146 C36 110 58 88 82 88 C108 88 126 110 122 146 Z' },
     { d: 'M36 146 H126 V158 H36 Z' },
     { d: 'M126 150 C146 150 152 158 150 164 H126' },
@@ -682,7 +675,7 @@ export const eastBlueArt = {
     shadow(80, 180, 46),
   ],
   // A purse tipped over, the coins running out of the mouth.
-  nezumi: [
+  'nezumi': [
     {
       d: 'M34 106 C16 126 20 158 44 170 C70 182 100 168 102 142 C104 120 92 104 72 98 Z',
     },
@@ -704,7 +697,7 @@ export const eastBlueArt = {
     shadow(70, 186, 48),
   ],
   // A jitte, and the smoke that goes with its owner.
-  smoker: [
+  'smoker': [
     { d: 'M52 174 L112 46' },
     { d: 'M112 46 l4 -8' },
     { d: 'M100 72 l18 6' },
@@ -714,7 +707,7 @@ export const eastBlueArt = {
     shadow(84, 182, 30),
   ],
   // A pair of glasses left resting on a sheathed katana.
-  tashigi: [
+  'tashigi': [
     { d: 'M14 140 L146 110 M16 151 L148 121' },
     { d: 'M14 140 L16 151' },
     { d: 'M146 110 C153 112 153 119 148 121' },

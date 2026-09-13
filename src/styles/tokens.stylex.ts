@@ -211,10 +211,7 @@ export const radius = stylex.defineVars({
 })
 
 /** Two widths. `fine` is the interactive boundary, `hair` is the hairline. */
-export const rule = stylex.defineVars({
-  hair: '1px',
-  fine: '2px',
-})
+export const rule = stylex.defineVars({ hair: '1px', fine: '2px' })
 
 /**
  * Hallmark's six named levels, plus `skip`.

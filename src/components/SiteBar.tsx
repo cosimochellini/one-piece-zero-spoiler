@@ -40,7 +40,10 @@ export function SiteBar() {
       </Link>
 
       <div {...stylex.props(styles.controls)}>
-        <nav aria-label={t('nav.label')} {...stylex.props(styles.pages)}>
+        <nav
+          aria-label={t('nav.label')}
+          {...stylex.props(styles.pages)}
+        >
           <Link
             to="/$locale/characters"
             params={{ locale }}
@@ -71,12 +74,15 @@ const styles = stylex.create({
   // the bar is never narrower than its own words and never widens the page.
   bar: {
     alignItems: 'center',
-    columnGap: { default: space.sm, '@media (min-width: 40rem)': space.md },
+    columnGap: { 'default': space.sm, '@media (min-width: 40rem)': space.md },
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'space-between',
     minWidth: 0,
-    paddingBlock: { default: space.sm, '@media (min-width: 40rem)': space.md },
+    paddingBlock: {
+      'default': space.sm,
+      '@media (min-width: 40rem)': space.md,
+    },
     paddingInline: space.md,
     rowGap: 0,
   },
@@ -85,7 +91,7 @@ const styles = stylex.create({
   // on a 320px phone, where the switch drops under the page links.
   controls: {
     alignItems: 'center',
-    columnGap: { default: space.xs, '@media (min-width: 40rem)': space.lg },
+    columnGap: { 'default': space.xs, '@media (min-width: 40rem)': space.lg },
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
@@ -95,18 +101,18 @@ const styles = stylex.create({
   pages: {
     alignItems: 'center',
     display: 'flex',
-    gap: { default: space.xs2, '@media (min-width: 40rem)': space.sm },
+    gap: { 'default': space.xs2, '@media (min-width: 40rem)': space.sm },
   },
 
   wordmark: {
     color: color.ink,
     fontFamily: font.display,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     textDecorationLine: 'none',
-    fontSize: { default: text.base, '@media (min-width: 40rem)': text.lg },
+    fontSize: { 'default': text.base, '@media (min-width: 40rem)': text.lg },
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
@@ -120,7 +126,7 @@ const styles = stylex.create({
   link: {
     alignItems: 'center',
     color: {
-      default: color.ink2,
+      'default': color.ink2,
       ':hover': color.accent,
       ':active': color.ink,
       ':is([aria-current="page"])': color.ink,
@@ -130,13 +136,13 @@ const styles = stylex.create({
     fontSize: text.base,
     fontWeight: 600,
     minHeight: '44px',
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
     paddingInline: space.xs,
     textDecorationColor: {
-      default: 'transparent',
+      'default': 'transparent',
       ':is([aria-current="page"])': color.accent,
     },
     textDecorationLine: 'underline',

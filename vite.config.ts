@@ -48,9 +48,7 @@ export default defineConfig({
       // nothing about tsconfig `paths`, so the `~/` alias has to be repeated
       // here or every `~/styles/tokens.stylex` import fails to compile with
       // "Could not resolve the path to the imported file".
-      aliases: {
-        '~/*': [path.join(import.meta.dirname, 'src', '*')],
-      },
+      aliases: { '~/*': [path.join(import.meta.dirname, 'src', '*')] },
     }),
     tanstackStart(),
     // React's Vite plugin MUST come after Start's Vite plugin. Start no longer
@@ -58,10 +56,7 @@ export default defineConfig({
     // option no longer exists.
     viteReact(),
     netlify({
-      dev: {
-        blobs: { enabled: false },
-        database: { enabled: false },
-      },
+      dev: { blobs: { enabled: false }, database: { enabled: false } },
     }),
   ],
 })

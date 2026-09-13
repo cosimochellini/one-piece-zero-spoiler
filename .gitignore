@@ -12,6 +12,9 @@ dist
 # quality gate reports
 .gate
 
+# fallow's analysis cache (it also ships a .gitignore of its own)
+.fallow
+
 # test and tooling caches
 coverage
 .eslintcache

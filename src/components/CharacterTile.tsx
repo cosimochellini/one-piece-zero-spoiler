@@ -69,11 +69,17 @@ export function CharacterTile({
           {...stylex.props(styles.row, styles.link)}
         >
           <span {...stylex.props(styles.frame)}>
-            <ChartArt art={entity.visual.art} tint={entity.visual.tint} />
+            <ChartArt
+              art={entity.visual.art}
+              tint={entity.visual.tint}
+            />
           </span>
           <span {...stylex.props(styles.words)}>
             <span {...stylex.props(styles.name)}>
-              <Marked text={entity.name[locale]} span={highlight} />
+              <Marked
+                text={entity.name[locale]}
+                span={highlight}
+              />
             </span>
             {role === undefined ? null : (
               <span {...stylex.props(styles.role)}>{role[locale]}</span>
@@ -89,11 +95,7 @@ export function CharacterTile({
 }
 
 const styles = stylex.create({
-  tile: {
-    display: 'grid',
-    gap: space.xs2,
-    minWidth: 0,
-  },
+  tile: { display: 'grid', gap: space.xs2, minWidth: 0 },
   row: {
     alignItems: 'center',
     columnGap: space.sm,
@@ -103,7 +105,7 @@ const styles = stylex.create({
   link: {
     borderRadius: radius.card,
     color: color.ink,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs2,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
@@ -113,7 +115,7 @@ const styles = stylex.create({
     aspectRatio: '4 / 5',
     backgroundColor: color.paper2,
     borderColor: {
-      default: color.rule,
+      'default': color.rule,
       ':is(a:hover) > &': color.rule2,
       ':is(a:focus-visible) > &': color.rule2,
     },
@@ -127,14 +129,10 @@ const styles = stylex.create({
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
   },
-  words: {
-    display: 'grid',
-    gap: space.xs3,
-    minWidth: 0,
-  },
+  words: { display: 'grid', gap: space.xs3, minWidth: 0 },
   name: {
     color: {
-      default: color.ink,
+      'default': color.ink,
       ':is(a:hover) > * > &': color.accent,
       ':is(a:focus-visible) > * > &': color.accent,
       ':is(a:active) > * > &': color.ink2,

@@ -4,7 +4,7 @@ import type { Drawings } from './stroke'
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
   // An island resting on a cloud, a giant beanstalk climbing to it.
-  skypiea: [
+  'skypiea': [
     {
       d: 'M30 120 q-14 0 -10 -14 q0 -14 16 -12 q4 -18 24 -14 q10 -12 28 -4 q18 -6 24 12 q16 2 12 16 q6 14 -12 14z',
     },
@@ -19,7 +19,7 @@ export const skypieaArt = {
   ],
 
   // Huts on stilts over the water, an anchor dropped beside them.
-  jaya: [
+  'jaya': [
     { d: 'M24 118 H136' },
     { d: 'M40 118 V166 M72 118 V166 M104 118 V166 M136 118 V160' },
     { d: 'M40 140 L72 166 M72 140 L104 166', role: 'ambient' },
@@ -32,7 +32,7 @@ export const skypieaArt = {
   ],
 
   // A diver's helmet with its faceplate, and a salvage hook on its chain.
-  masira: [
+  'masira': [
     { d: 'M44 132 V96 a36 34 0 0 1 72 0 V132z' },
     { d: 'M36 132 H124 V146 H36z' },
     { d: circle(80, 106, 19), role: 'accent' },
@@ -51,7 +51,7 @@ export const skypieaArt = {
   ],
 
   // A sonar dish on its post, and the sound going out from it.
-  shoujou: [
+  'shoujou': [
     { d: 'M98 44 C40 62 40 130 98 148' },
     { d: 'M98 44 V148', role: 'ambient' },
     { d: 'M70 96 H104' },
@@ -63,7 +63,7 @@ export const skypieaArt = {
   ],
 
   // A coiled spring between its plates, and the bounce either side of it.
-  bellamy: [
+  'bellamy': [
     {
       d: `${ellipse(80, 70, 32, 10)} ${ellipse(80, 92, 32, 10)} ${ellipse(80, 114, 32, 10)} ${ellipse(80, 136, 32, 10)}`,
       role: 'accent',
@@ -131,7 +131,7 @@ export const skypieaArt = {
   ],
 
   // A Marine cap with its braid, and the goat that follows the man wearing it.
-  sengoku: [
+  'sengoku': [
     { d: 'M14 102 C14 66 34 54 55 54 C76 54 96 66 96 102z' },
     { d: 'M10 102 H100 V116 H10z', role: 'accent' },
     { d: 'M10 116 C0 120 0 132 12 136 H62 C78 134 88 126 88 116' },
@@ -148,10 +148,7 @@ export const skypieaArt = {
   'edward-newgate': [
     { d: 'M28 178 L118 42' },
     { d: 'M36 166 l8 6 M44 154 l8 6', role: 'ambient' },
-    {
-      d: 'M118 42 C132 34 142 20 138 4 C136 22 126 32 114 38',
-      role: 'accent',
-    },
+    { d: 'M118 42 C132 34 142 20 138 4 C136 22 126 32 114 38', role: 'accent' },
     { d: 'M108 48 l14 10' },
     { d: 'M112 178 V150 q0 -6 4 -8 V130 h10 V142 q4 2 4 8 V178z' },
     shadow(90, 186, 40),
@@ -174,19 +171,13 @@ export const skypieaArt = {
   ],
 
   // A long feather with flame coming off its edge.
-  marco: [
+  'marco': [
     { d: 'M66 172 C74 120 82 72 88 32' },
     { d: 'M88 32 C58 62 50 116 66 172' },
     { d: 'M88 32 C120 64 122 120 68 168' },
     { d: 'M76 80 l16 -10 M72 104 l22 -12 M70 128 l24 -12', role: 'soft' },
-    {
-      d: 'M112 92 c10 -14 2 -26 -4 -34 c12 6 20 22 10 36z',
-      role: 'accent',
-    },
-    {
-      d: 'M108 132 c12 -12 6 -26 0 -32 c14 8 18 26 6 36z',
-      role: 'accent',
-    },
+    { d: 'M112 92 c10 -14 2 -26 -4 -34 c12 6 20 22 10 36z', role: 'accent' },
+    { d: 'M108 132 c12 -12 6 -26 0 -32 c14 8 18 26 6 36z', role: 'accent' },
     { d: 'M92 30 c8 -10 4 -20 -2 -26 c2 10 -4 14 -4 22z', role: 'accent' },
   ],
 
@@ -197,16 +188,13 @@ export const skypieaArt = {
     { d: 'M36 84 H60 L56 70 H40z' },
     { d: 'M42 130 H54 M42 140 H54 M42 150 H54', role: 'ambient' },
     { d: ellipse(110, 120, 32, 30) },
-    {
-      d: 'M110 90 V150 M96 92 q-6 28 0 56 M124 92 q6 28 0 56',
-      role: 'accent',
-    },
+    { d: 'M110 90 V150 M96 92 q-6 28 0 56 M124 92 q6 28 0 56', role: 'accent' },
     { d: 'M110 90 q2 -12 12 -14' },
     shadow(110, 158, 32),
   ],
 
   // A burn bazooka above a pair of skates.
-  wyper: [
+  'wyper': [
     { d: 'M28 92 H118 V114 H28z' },
     { d: 'M118 86 L136 78 V128 L118 120z', role: 'accent' },
     { d: 'M28 92 L18 84 V122 L28 114' },
@@ -218,7 +206,7 @@ export const skypieaArt = {
   ],
 
   // A curved burn blade, held low like a mantis foreleg.
-  kamakiri: [
+  'kamakiri': [
     { d: 'M40 154 C54 104 84 62 130 30' },
     { d: 'M40 154 C68 124 98 88 130 30' },
     {
@@ -232,18 +220,14 @@ export const skypieaArt = {
   ],
 
   // Two flash pistols, each firing its blinding light.
-  braham: [
-    {
-      d: 'M22 46 H86 V60 H54 L50 92 q-2 6 -10 6 q-8 0 -6 -8 L38 60 H22z',
-    },
+  'braham': [
+    { d: 'M22 46 H86 V60 H54 L50 92 q-2 6 -10 6 q-8 0 -6 -8 L38 60 H22z' },
     { d: 'M52 60 q7 10 -2 14 q-7 2 -9 -3' },
     {
       d: 'M90 53 H106 M88 44 L100 36 M88 62 L100 70 M92 48 L102 45 M92 58 L102 61',
       role: 'accent',
     },
-    {
-      d: 'M138 116 H74 V130 H106 L110 162 q2 6 10 6 q8 0 6 -8 L122 130 H138z',
-    },
+    { d: 'M138 116 H74 V130 H106 L110 162 q2 6 10 6 q8 0 6 -8 L122 130 H138z' },
     { d: 'M108 130 q-7 10 2 14 q7 2 9 -3' },
     {
       d: 'M70 123 H54 M72 114 L60 106 M72 132 L60 140 M68 118 L58 115 M68 128 L58 131',
@@ -252,7 +236,7 @@ export const skypieaArt = {
   ],
 
   // A bazooka too big for one man, with the flare at its mouth.
-  genbo: [
+  'genbo': [
     { d: 'M16 150 L124 46 L140 62 L32 166z' },
     { d: 'M124 46 L131 30 L156 56 L140 62z', role: 'accent' },
     { d: 'M56 116 L67 127 M83 90 L94 101' },
@@ -262,7 +246,7 @@ export const skypieaArt = {
   ],
 
   // A rifle with its scope, a feather tucked into the stock.
-  laki: [
+  'laki': [
     { d: 'M142 44 L66 120 L74 128 L150 52z' },
     { d: 'M66 120 L38 148 q-10 10 -2 18 q10 8 18 -2 L76 130z' },
     { d: 'M80 116 q-10 10 -2 16 q8 4 12 -4' },
@@ -274,7 +258,7 @@ export const skypieaArt = {
   ],
 
   // A bag of pumpkins with a sky shell set down beside it.
-  aisa: [
+  'aisa': [
     { d: 'M44 172 C34 142 40 116 54 104 H106 c14 12 20 38 10 68z' },
     { d: 'M54 104 q26 -12 52 0' },
     { d: ellipse(64, 88, 18, 14), role: 'accent' },
@@ -288,7 +272,7 @@ export const skypieaArt = {
   ],
 
   // A harp, with a cloud fox curled up at its foot.
-  conis: [
+  'conis': [
     { d: 'M44 148 L88 26' },
     { d: 'M88 26 C108 36 118 52 120 72' },
     { d: 'M120 72 L104 148' },
@@ -306,13 +290,10 @@ export const skypieaArt = {
   ],
 
   // A dial shell on a workbench, with the tools that shaped it.
-  pagaya: [
+  'pagaya': [
     { d: 'M16 128 H144 V138 H16z' },
     { d: 'M28 138 V176 M132 138 V176 M28 162 H132' },
-    {
-      d: 'M48 126 C48 90 62 70 80 70 C98 70 112 90 112 126z',
-      role: 'accent',
-    },
+    { d: 'M48 126 C48 90 62 70 80 70 C98 70 112 90 112 126z', role: 'accent' },
     {
       d: 'M80 70 V126 M66 74 L58 126 M94 74 L102 126 M72 71 L68 126 M88 71 L92 126',
       role: 'accent',
@@ -323,7 +304,7 @@ export const skypieaArt = {
   ],
 
   // A god's staff standing in a ring of drums.
-  enel: [
+  'enel': [
     {
       d: `${circle(30, 98, 16)} ${circle(54, 66, 16)} ${circle(106, 66, 16)} ${circle(130, 98, 16)}`,
     },
@@ -338,7 +319,7 @@ export const skypieaArt = {
   ],
 
   // A cloud ball, something dashed hidden inside it, the surprise going off.
-  satori: [
+  'satori': [
     { d: circle(80, 104, 42) },
     {
       d: 'M50 74 q6 -16 22 -12 M110 74 q16 6 12 22 M110 134 q-6 16 -22 12 M50 134 q-16 -6 -12 -22',
@@ -365,35 +346,25 @@ export const skypieaArt = {
   ],
 
   // A heat lance, and the firebird that carries its owner.
-  shura: [
+  'shura': [
     { d: 'M20 172 L100 66' },
     { d: 'M94 62 L106 71 L118 44z' },
     { d: 'M30 152 l12 9 M40 139 l12 9', role: 'ambient' },
     { d: 'M122 56 q12 -10 2 -20 M132 68 q14 -12 2 -24', role: 'accent' },
     { d: 'M18 74 C30 58 44 56 54 66 C64 56 78 58 86 70' },
     { d: 'M54 66 C52 80 54 92 60 102', role: 'soft' },
-    {
-      d: 'M26 86 c-10 8 -6 20 4 22 c-4 -10 4 -14 8 -20z',
-      role: 'accent',
-    },
-    {
-      d: 'M80 82 c10 8 6 20 -4 22 c4 -10 -4 -14 -8 -20z',
-      role: 'accent',
-    },
+    { d: 'M26 86 c-10 8 -6 20 4 22 c-4 -10 4 -14 8 -20z', role: 'accent' },
+    { d: 'M80 82 c10 8 6 20 -4 22 c4 -10 -4 -14 -8 -20z', role: 'accent' },
   ],
 
   // A swamp cloud with a pair of boots going down into it.
-  gedatsu: [
+  'gedatsu': [
     {
       d: 'M22 118 q-12 -18 8 -24 q0 -22 24 -18 q10 -16 30 -8 q22 -10 30 10 q20 0 18 18 q10 12 -6 22z',
     },
     { d: ellipse(80, 112, 26, 10), role: 'accent' },
-    {
-      d: 'M58 112 V86 c0 -10 -8 -14 -18 -14 c-8 0 -10 10 -2 13 l8 3 v24z',
-    },
-    {
-      d: 'M102 112 V86 c0 -10 8 -14 18 -14 c8 0 10 10 2 13 l-8 3 v24z',
-    },
+    { d: 'M58 112 V86 c0 -10 -8 -14 -18 -14 c-8 0 -10 10 -2 13 l8 3 v24z' },
+    { d: 'M102 112 V86 c0 -10 8 -14 18 -14 c8 0 10 10 2 13 l-8 3 v24z' },
     { d: 'M42 92 H58 M102 92 H118', role: 'soft' },
     {
       d: 'M60 138 V152 M80 144 V160 M100 138 V152',
@@ -403,7 +374,7 @@ export const skypieaArt = {
   ],
 
   // An iron-cloud sword, and the collar of the dog that fights beside it.
-  ohm: [
+  'ohm': [
     { d: 'M72 150 V52 L80 36 L88 52 V150z', role: 'accent' },
     { d: 'M80 140 V50', role: 'ambient' },
     { d: 'M52 150 H108' },
@@ -439,7 +410,7 @@ export const skypieaArt = {
   ],
 
   // A war spear with its feathers, and the rope of a great bell.
-  kalgara: [
+  'kalgara': [
     { d: 'M60 184 V50 H68 V184z' },
     { d: 'M64 18 C52 34 52 46 60 50 H68 C76 46 76 34 64 18z', role: 'accent' },
     { d: 'M56 58 H72 M56 64 H72' },

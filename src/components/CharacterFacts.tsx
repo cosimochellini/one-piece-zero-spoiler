@@ -52,9 +52,15 @@ export function CharacterFacts({ dossier, bookmark }: CharacterFactsProps) {
   if (shown.length === 0) return null
 
   return (
-    <dl aria-label={t('character.factsLabel')} {...stylex.props(styles.facts)}>
+    <dl
+      aria-label={t('character.factsLabel')}
+      {...stylex.props(styles.facts)}
+    >
       {shown.map(([label, value]) => (
-        <div key={label} {...stylex.props(styles.fact)}>
+        <div
+          key={label}
+          {...stylex.props(styles.fact)}
+        >
           <dt {...stylex.props(styles.label)}>{label}</dt>
           <dd {...stylex.props(styles.value)}>{value}</dd>
         </div>
@@ -100,7 +106,7 @@ const styles = stylex.create({
     columnGap: space.md,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 30rem)': 'minmax(7rem, 9rem) minmax(0, 1fr)',
     },
     minWidth: 0,

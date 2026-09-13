@@ -8,7 +8,10 @@ describe('ChartArt', () => {
   it('has a drawing for every record, and every drawing has strokes', () => {
     for (const entity of entities) {
       const { container, unmount } = render(
-        <ChartArt art={entity.visual.art} tint={entity.visual.tint} />,
+        <ChartArt
+          art={entity.visual.art}
+          tint={entity.visual.tint}
+        />,
       )
 
       const svg = container.querySelector('svg')
@@ -21,7 +24,12 @@ describe('ChartArt', () => {
   })
 
   it('never fills a shape and never scales a stroke', () => {
-    const { container } = render(<ChartArt art="monkey-d-luffy" tint="red" />)
+    const { container } = render(
+      <ChartArt
+        art="monkey-d-luffy"
+        tint="red"
+      />,
+    )
 
     for (const path of container.querySelectorAll('path')) {
       expect(path).toHaveAttribute('vector-effect', 'non-scaling-stroke')
