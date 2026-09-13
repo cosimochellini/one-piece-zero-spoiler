@@ -2,48 +2,57 @@ import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
-import type { Entity } from '~/data/types'
-import { ep, renderWithProviders } from '~/test/providers'
+import {
+  at,
+  coveredRecord,
+  peekPending,
+  peekTo,
+  spyPeek,
+  waypoint,
+} from '~/test/fixtures'
+import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { RouteChart } from './RouteChart'
 
-const entries: readonly Entity[] = [
-  {
-    id: 'early',
-    kind: 'arc',
-    revealedAtEpisode: 1,
-    revealedAtChapter: 1,
-    name: { it: 'Saga iniziale', en: 'Opening Saga' },
-    summary: { it: 'x', en: 'x' },
-    visual: { art: 'east-blue', tint: 'ivory' },
-  },
-  {
-    id: 'middle',
-    kind: 'character',
-    revealedAtEpisode: 457,
-    revealedAtChapter: 550,
-    name: { it: 'Volto di mezzo', en: 'Middle Face' },
-    summary: { it: 'y', en: 'y' },
-    visual: { art: 'monkey-d-luffy', tint: 'red' },
-  },
-  {
-    id: 'late',
-    kind: 'place',
-    revealedAtEpisode: 1089,
-    revealedAtChapter: 1061,
-    name: { it: 'Isola tarda', en: 'Late Island' },
-    summary: { it: 'z', en: 'z' },
-    visual: { art: 'egghead-island', tint: 'orange' },
-  },
-]
+const opening = waypoint({
+  id: 'early',
+  kind: 'arc',
+  name: 'Opening Saga',
+  ...at(1),
+})
+const middle = waypoint({
+  id: 'middle',
+  kind: 'character',
+  name: 'Middle Face',
+  revealedAtEpisode: 457,
+  revealedAtChapter: 550,
+})
+const late = waypoint({
+  id: 'late',
+  kind: 'place',
+  name: 'Late Island',
+  revealedAtEpisode: 1089,
+  revealedAtChapter: 1061,
+})
 
-// Waypoint names are looked up by text, not by role: a fogged name sits inside
-// an `aria-hidden` wrapper and has no accessible role by design.
+const lateCovered = coveredRecord({
+  kind: 'place',
+  revealedAtEpisode: 1089,
+  revealedAtChapter: 1061,
+})
+
+function waypointOf(name: string): HTMLElement {
+  const item = screen.getAllByText(name)[0]?.closest('li') ?? null
+  if (item === null) {
+    throw new Error(`no waypoint for "${name}"`)
+  }
+
+  return item
+}
 
 /**
- * The wrapper the veil marks `inert`, found from the waypoint's heading:
- * heading → words → card → the veil's content wrapper. From the heading
- * rather than the text node, because a character's name is a link inside it.
+ * The wrapper the veil marks `inert`, found from a waypoint's heading:
+ * heading → words → card → the veil's content wrapper.
  */
 function veilAround(name: string): HTMLElement {
   const wrapper =
@@ -56,13 +65,13 @@ function veilAround(name: string): HTMLElement {
   return wrapper
 }
 
-function waypointOf(name: string): HTMLElement {
-  const item = screen.getByText(name).closest('li')
-  if (item === null) {
-    throw new Error(`no waypoint for "${name}"`)
-  }
-
-  return item
+/** Every attribute value on the tree, bar the generated class names. */
+function attributesOf(root: HTMLElement): readonly string[] {
+  return [...root.querySelectorAll(':scope *')].flatMap((node) => {
+    return [...node.attributes]
+      .filter((attribute) => attribute.name !== 'class')
+      .map((attribute) => attribute.value)
+  })
 }
 
 function horizon(): HTMLElement {
@@ -77,25 +86,32 @@ function horizon(): HTMLElement {
 }
 
 describe('RouteChart', () => {
-  it('opens the waypoints the reader has reached and fogs the rest', () => {
+  it('draws the reached waypoints and stands in for the rest', () => {
     renderWithProviders(
       <RouteChart
         bookmark={ep(500)}
-        entries={entries}
+        covered={[lateCovered]}
+        open={[opening, middle]}
+        peek={peekPending()}
       />,
       { bookmark: ep(500) },
     )
 
     expect(veilAround('Opening Saga')).not.toHaveAttribute('inert')
     expect(veilAround('Middle Face')).not.toHaveAttribute('inert')
-    expect(veilAround('Late Island')).toHaveAttribute('inert')
+    expect(veilAround('Spoiler')).toHaveAttribute('inert')
+    // The covered waypoint's name is not in the document at all — not under a
+    // blur, where find-in-page used to walk straight through it.
+    expect(screen.queryByText('Late Island')).not.toBeInTheDocument()
   })
 
   it('draws the horizon between the last open waypoint and the first fogged one', () => {
     renderWithProviders(
       <RouteChart
         bookmark={ep(500)}
-        entries={entries}
+        covered={[lateCovered]}
+        open={[opening, middle]}
+        peek={peekPending()}
       />,
       { bookmark: ep(500) },
     )
@@ -104,7 +120,7 @@ describe('RouteChart', () => {
 
     expect(items.indexOf(horizon())).toBe(2)
     expect(items.indexOf(waypointOf('Middle Face'))).toBe(1)
-    expect(items.indexOf(waypointOf('Late Island'))).toBe(3)
+    expect(items.indexOf(waypointOf('Spoiler'))).toBe(3)
     expect(horizon()).toHaveTextContent('You are here · episode 500')
   })
 
@@ -115,21 +131,25 @@ describe('RouteChart', () => {
     renderWithProviders(
       <RouteChart
         bookmark={ep(500)}
-        entries={entries}
+        covered={[lateCovered]}
+        open={[opening, middle]}
+        peek={peekPending()}
       />,
       { bookmark: ep(500) },
     )
 
     expect(
-      within(waypointOf('Late Island')).getByText('Episode 1089'),
+      within(waypointOf('Spoiler')).getByText('Episode 1089'),
     ).toBeVisible()
   })
 
-  it('puts the horizon at the very top and fogs everything when no bookmark is set', () => {
+  it('puts the horizon at the very top when no bookmark is set', () => {
     renderWithProviders(
       <RouteChart
         bookmark={null}
-        entries={entries}
+        covered={[coveredRecord({ kind: 'arc' }), lateCovered]}
+        open={[]}
+        peek={peekPending()}
       />,
     )
 
@@ -137,48 +157,55 @@ describe('RouteChart', () => {
     expect(horizon()).toHaveTextContent(
       'No bookmark set · the whole route is under fog',
     )
-    expect(veilAround('Opening Saga')).toHaveAttribute('inert')
-    expect(veilAround('Late Island')).toHaveAttribute('inert')
+    expect(screen.getAllByText('Spoiler')).toHaveLength(2)
   })
 
   it('lifts the fog on one waypoint without touching the others', async () => {
     const user = userEvent.setup()
+    const first = coveredRecord({ kind: 'arc', handle: 'a1' })
+    const { asked, peek } = spyPeek(opening)
     renderWithProviders(
       <RouteChart
         bookmark={null}
-        entries={entries}
+        covered={[first, lateCovered]}
+        open={[]}
+        peek={peek}
       />,
     )
 
+    const target = waypointOf('Spoiler')
     await user.click(
-      within(waypointOf('Opening Saga')).getByRole('button', {
-        name: /Lift the fog anyway/u,
-      }),
+      within(target).getByRole('button', { name: /Lift the fog anyway/u }),
     )
+    await settle()
 
-    expect(veilAround('Opening Saga')).not.toHaveAttribute('inert')
-    expect(veilAround('Middle Face')).toHaveAttribute('inert')
+    // The opaque handle went out; the name came back, and only here.
+    expect(asked).toStrictEqual(['a1'])
+    expect(screen.getByText('Opening Saga')).toBeInTheDocument()
+    expect(screen.getAllByText('Spoiler')).toHaveLength(1)
   })
 
-  it('puts the drawing under the same fog as the words', () => {
-    renderWithProviders(
+  it('draws no record’s drawing under the fog', () => {
+    const { container } = renderWithProviders(
       <RouteChart
         bookmark={null}
-        entries={entries}
+        covered={[lateCovered]}
+        open={[]}
+        peek={peekPending()}
       />,
     )
 
-    const wrapper = veilAround('Middle Face')
-
-    expect(wrapper.querySelector('svg')).not.toBeNull()
-    expect(wrapper).toHaveAttribute('inert')
+    // The bare plate a fogged place stands behind has no nested drawing.
+    expect(container.querySelectorAll(':scope svg svg')).toHaveLength(0)
   })
 
   it('labels the waypoints in the active locale', () => {
     renderWithProviders(
       <RouteChart
         bookmark={ep(1200)}
-        entries={entries}
+        covered={[]}
+        open={[opening, middle, late]}
+        peek={peekPending()}
       />,
       { locale: 'it', bookmark: ep(1200) },
     )
@@ -191,7 +218,9 @@ describe('RouteChart', () => {
     renderWithProviders(
       <RouteChart
         bookmark={ep(1200)}
-        entries={entries}
+        covered={[]}
+        open={[opening, middle, late]}
+        peek={peekPending()}
       />,
       { bookmark: ep(1200) },
     )
@@ -209,17 +238,21 @@ describe('RouteChart', () => {
     ).not.toBeInTheDocument()
   })
 
-  it('gives a covered character no link, so the slug stays out of the HTML', () => {
+  it('keeps every slug and every handle out of the markup under fog', () => {
     const { container } = renderWithProviders(
       <RouteChart
         bookmark={ep(100)}
-        entries={entries}
+        covered={[coveredRecord({ handle: 'h9' })]}
+        open={[]}
+        peek={peekTo(middle)}
       />,
       { bookmark: ep(100) },
     )
 
-    expect(container.querySelector('a[href*="/characters/"]')).toBeNull()
-    expect(container.querySelector('a[href*="/places"]')).toBeNull()
-    expect(screen.getByText('Middle Face')).toBeInTheDocument()
+    expect(container.querySelector('a')).toBeNull()
+    // A React key never reaches the DOM, and the handle is only ever a key.
+    // Checked over the attributes rather than the raw HTML, because StyleX's
+    // generated class names are arbitrary short strings and would collide.
+    expect(attributesOf(container)).not.toContain('h9')
   })
 })

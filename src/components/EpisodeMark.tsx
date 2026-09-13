@@ -19,7 +19,7 @@ import { color, font, space, text } from '~/styles/tokens.stylex'
  */
 export function EpisodeMark(): ReactElement {
   const t = useT()
-  const { bookmark } = useBookmark()
+  const { bookmark, pending } = useBookmark()
   const [open, setOpen] = useState(false)
 
   const label =
@@ -28,6 +28,10 @@ export function EpisodeMark(): ReactElement {
   return (
     <>
       <Button
+        // The records come from the server now, so a new bookmark takes a
+        // round trip. The mark says so rather than looking inert; it is not
+        // `disabled`, which would drop focus and the announcement with it.
+        aria-busy={pending}
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={

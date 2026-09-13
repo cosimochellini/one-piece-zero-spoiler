@@ -1,6 +1,6 @@
 /**
  * The chart frame a place's drawing is set into. Characters get a round seal
- * (`~/data/art/crest`); a place on a chart is a plate, so it gets a rectangle,
+ * (`~/components/chrome/crest`); a place on a chart is a plate, so it gets a rectangle,
  * a graticule and a north mark. `PortPlate` owns the `<svg>` and the ink;
  * which line goes where is here.
  *

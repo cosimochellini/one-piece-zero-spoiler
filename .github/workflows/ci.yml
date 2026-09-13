@@ -122,6 +122,10 @@ jobs:
       - name: fallow gate
         run: npm run gate:fallow
 
+      # Reads the built client chunks, so it has to follow the build.
+      - name: archive gate
+        run: npm run gate:archive
+
       - name: Upload gate reports
         if: always()
         uses: actions/upload-artifact@v7

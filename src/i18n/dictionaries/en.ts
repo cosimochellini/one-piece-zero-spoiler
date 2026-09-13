@@ -63,12 +63,20 @@ export const enDictionary = {
   'veil.locked.chapter': 'Under fog until chapter {threshold}',
   'veil.reveal': 'Lift the fog anyway',
   'veil.revealShort': 'Lift',
+  'veil.revealing': 'Lifting…',
+  'veil.peekFailed': 'Could not lift it — try again',
   'veil.placeholder': 'Spoiler',
 
   'chart.title': 'The route, as far as you have sailed',
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',
+  'chart.foggedDescription.episode':
+    'A record filed at episode {threshold}, ahead of your bookmark.',
+  'chart.foggedDescription.season':
+    'A record filed at {threshold}, ahead of your bookmark.',
+  'chart.foggedDescription.chapter':
+    'A record filed at chapter {threshold}, ahead of your bookmark.',
   'chart.hereSet.episode': 'You are here · episode {threshold}',
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
@@ -111,6 +119,7 @@ export const enDictionary = {
   'characters.featuredLede':
     'The characters the chart draws: the crew, and the people the story turns on.',
   'characters.bookTitle': 'The whole book',
+  'characters.loading': 'The shelves are on their way…',
   'characters.bookLede':
     'Everyone the archive has filed, shelved by the arc that introduces them.',
   'characters.sectionOpensAt.episode': 'From episode {threshold}',
@@ -151,6 +160,7 @@ export const enDictionary = {
   'character.routeStart': 'Nothing. This is where the route begins.',
   'character.routeEnd': 'Nothing yet. This is the last entry filed.',
   'character.nearbyTitle': 'Sailing nearby',
+  'character.nearbyLoading': 'Reading the route…',
   'character.nearbyLede':
     'The listed characters filed closest to this one on the route.',
   'character.notFoundTitle': 'No such character',

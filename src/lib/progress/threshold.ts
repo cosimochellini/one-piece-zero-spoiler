@@ -18,6 +18,7 @@ export type ThresholdSentence =
   | 'character.foggedDescription'
   | 'character.opensAt'
   | 'characters.sectionOpensAt'
+  | 'chart.foggedDescription'
   | 'chart.opensAt'
   | 'places.firstSeen'
   | 'places.foggedDescription'

@@ -1,4 +1,4 @@
-import type { Role, Stroke } from './stroke'
+import type { Stroke, StrokeRole } from '~/lib/view/records'
 
 /**
  * The shapes every drawing is built from. Everything is a path, so a dot is a
@@ -79,7 +79,7 @@ export const shadow = (cx: number, cy: number, rx: number): Stroke => {
 }
 
 /** A sheathed sword lying at the same angle as its two companions. */
-export function sheath(dx: number, role: Role): readonly Stroke[] {
+export function sheath(dx: number, role: StrokeRole): readonly Stroke[] {
   const a = { x: 50 + dx, y: 158 }
   const b = { x: 100 + dx, y: 46 }
   // Perpendicular offset for the sheath's width.
@@ -112,7 +112,11 @@ export function sheath(dx: number, role: Role): readonly Stroke[] {
 }
 
 /** A small ghost, the kind that follows an umbrella. */
-export const ghost = (x: number, y: number, role: Role): readonly Stroke[] => {
+export const ghost = (
+  x: number,
+  y: number,
+  role: StrokeRole,
+): readonly Stroke[] => {
   return [
     {
       d: `M${n(x)} ${n(y)} c0 -16 10 -22 16 -22 c6 0 16 6 16 22 v12 c-5 -4 -11 -4 -16 0 c-5 -4 -11 -4 -16 0z`,
@@ -129,7 +133,7 @@ export const ghost = (x: number, y: number, role: Role): readonly Stroke[] => {
 }
 
 /** A sake cup, seen from the side. */
-export function cup(x: number, role: Role): Stroke {
+export function cup(x: number, role: StrokeRole): Stroke {
   return { d: `M${n(x)} 146 h20 l-3 12 h-14z`, role }
 }
 

@@ -1,13 +1,13 @@
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
+import { drawing } from '~/test/fixtures'
+
 import { PortPlate } from './PortPlate'
 
 describe('PortPlate', () => {
   it('frames the drawing inside a chart plate with a north mark', () => {
-    const { container } = render(
-      <PortPlate visual={{ art: 'baratie', tint: 'cyan' }} />,
-    )
+    const { container } = render(<PortPlate visual={drawing('cyan')} />)
 
     const outer = container.querySelector('svg')
 

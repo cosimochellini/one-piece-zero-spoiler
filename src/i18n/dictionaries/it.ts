@@ -56,12 +56,20 @@ export const itDictionary: Dictionary = {
   'veil.locked.chapter': 'Nella nebbia fino al capitolo {threshold}',
   'veil.reveal': 'Dirada la nebbia comunque',
   'veil.revealShort': 'Dirada',
+  'veil.revealing': 'Dirado…',
+  'veil.peekFailed': 'Non è riuscito — riprova',
   'veil.placeholder': 'Spoiler',
 
   'chart.title': 'La rotta, fin dove hai navigato',
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
+  'chart.foggedDescription.episode':
+    'Una voce archiviata all’episodio {threshold}, oltre il tuo segnalibro.',
+  'chart.foggedDescription.season':
+    'Una voce archiviata a {threshold}, oltre il tuo segnalibro.',
+  'chart.foggedDescription.chapter':
+    'Una voce archiviata al capitolo {threshold}, oltre il tuo segnalibro.',
   'chart.hereSet.episode': 'Sei qui · episodio {threshold}',
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
@@ -106,6 +114,7 @@ export const itDictionary: Dictionary = {
   'characters.featuredLede':
     'I personaggi che la carta disegna: la ciurma, e le persone attorno a cui gira la storia.',
   'characters.bookTitle': 'Tutto il libro',
+  'characters.loading': 'Gli scaffali stanno arrivando…',
   'characters.bookLede':
     'Tutti quelli che l’archivio ha registrato, ordinati per l’arco che li introduce.',
   'characters.sectionOpensAt.episode': 'Dall’episodio {threshold}',
@@ -148,6 +157,7 @@ export const itDictionary: Dictionary = {
   'character.routeStart': 'Niente. La rotta comincia qui.',
   'character.routeEnd': 'Ancora niente. Questa è l’ultima voce archiviata.',
   'character.nearbyTitle': 'Navigano vicino',
+  'character.nearbyLoading': 'Leggo la rotta…',
   'character.nearbyLede':
     'I personaggi in elenco archiviati più vicino a questo sulla rotta.',
   'character.notFoundTitle': 'Nessun personaggio così',

@@ -7,7 +7,8 @@ import {
   SEA,
   shadow,
   star,
-} from './primitives'
+} from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the summit war stretch of the route. */

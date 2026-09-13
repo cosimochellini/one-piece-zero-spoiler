@@ -1,16 +1,16 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import { useServerFn } from '@tanstack/react-start'
+import { type ReactElement, useCallback } from 'react'
 
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartHero } from '~/components/SeaChartHero'
-import { chart } from '~/data/characters'
-import { orderByMode } from '~/data/order'
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { modeOf } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { Bookmark } from '~/lib/progress/episode'
+import type { ChartView, WaypointView } from '~/lib/view/records'
+import { liftWaypoint, loadChart } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 import {
   color,
@@ -26,7 +26,15 @@ import {
 // inserted in the middle is one edit here and not four along the page.
 const BAND = { fold: 0, orientation: 1, route: 2, faq: 3 } as const
 
-export const Route = createFileRoute('/$locale/')({ component: Landing })
+export const Route = createFileRoute('/$locale/')({
+  component: Landing,
+  // The chart is the page, so it is awaited rather than streamed: a reader
+  // with scripting off would otherwise get a skeleton where the
+  // demonstration should be. The server reads the bookmark from the request
+  // and sends back only the waypoints at or below it.
+  loader: async ({ context }) =>
+    loadChart({ data: { locale: context.locale } }),
+})
 
 const FAQ = [
   { q: 'faq.animeQ', a: 'faq.animeA' },
@@ -74,17 +82,89 @@ function Fold(): ReactElement {
   )
 }
 
-function Landing(): ReactElement {
+/**
+ * The orientation column and the route beside it: the lede and the legend on
+ * the left, the chart itself on the right, and on a wide screen the column
+ * stays put while the route scrolls.
+ */
+function ChartBand({
+  bookmark,
+  covered,
+  filed,
+  open,
+  peek,
+}: {
+  readonly bookmark: Bookmark
+  readonly covered: ChartView['covered']
+  readonly filed: number
+  readonly open: ChartView['open']
+  readonly peek: (handle: string) => Promise<WaypointView>
+}): ReactElement {
   const t = useT()
-  const { bookmark } = useBookmark()
 
-  // In the order of the threshold the reader counts in, so the route runs in
-  // the order their unit reaches each waypoint and the horizon falls at a
-  // single point along it.
+  return (
+    <div {...stylex.props(styles.chart)}>
+      <section
+        {...stylex.props(
+          styles.orientation,
+          settleStyles.band,
+          settleStyles.at(BAND.orientation),
+        )}
+      >
+        <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
+        <RouteLegend
+          covered={covered.length}
+          filed={filed}
+          open={open.length}
+        />
+      </section>
+
+      <section
+        aria-labelledby="route-title"
+        {...stylex.props(
+          styles.routeBand,
+          settleStyles.band,
+          settleStyles.at(BAND.route),
+        )}
+      >
+        <h2
+          id="route-title"
+          {...stylex.props(styles.routeTitle)}
+        >
+          {t('chart.title')}
+        </h2>
+        <RouteChart
+          bookmark={bookmark}
+          covered={covered}
+          open={open}
+          peek={peek}
+        />
+      </section>
+    </div>
+  )
+}
+
+function Landing(): ReactElement {
+  const { locale } = useLocale()
+  const { bookmark } = useBookmark()
   // The chart draws the arcs, the places, the ships and the featured
-  // characters; the rest of the cast is in the signal book.
-  const ordered = orderByMode(chart, modeOf(bookmark))
-  const open = ordered.filter((entry) => isRevealed(entry, bookmark)).length
+  // characters; the rest of the cast is in the signal book. It arrives in the
+  // order of the threshold the reader counts in, so the horizon falls at a
+  // single point along it.
+  const { covered, filed, open } = Route.useLoaderData()
+
+  const call = useServerFn(liftWaypoint)
+  const peek = useCallback(
+    async (handle: string) => {
+      const record = await call({ data: { handle, locale } })
+      if (record === null) {
+        throw new Error('No record is filed under that mark')
+      }
+
+      return record
+    },
+    [call, locale],
+  )
 
   return (
     <main
@@ -93,42 +173,13 @@ function Landing(): ReactElement {
     >
       <Fold />
 
-      <div {...stylex.props(styles.chart)}>
-        <section
-          {...stylex.props(
-            styles.orientation,
-            settleStyles.band,
-            settleStyles.at(BAND.orientation),
-          )}
-        >
-          <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
-          <RouteLegend
-            covered={ordered.length - open}
-            filed={ordered.length}
-            open={open}
-          />
-        </section>
-
-        <section
-          aria-labelledby="route-title"
-          {...stylex.props(
-            styles.routeBand,
-            settleStyles.band,
-            settleStyles.at(BAND.route),
-          )}
-        >
-          <h2
-            id="route-title"
-            {...stylex.props(styles.routeTitle)}
-          >
-            {t('chart.title')}
-          </h2>
-          <RouteChart
-            bookmark={bookmark}
-            entries={ordered}
-          />
-        </section>
-      </div>
+      <ChartBand
+        bookmark={bookmark}
+        covered={covered}
+        filed={filed}
+        open={open}
+        peek={peek}
+      />
 
       <Questions />
     </main>

@@ -1,17 +1,16 @@
 import {
-  formatSeasonCode,
-  getSeason,
-  locateEpisode,
-  resolveEpisode,
-  seasonLength,
-} from '~/data/seasons'
-
-import {
   CHAPTER_CEILING,
   EPISODE_CEILING,
   FIRST_CHAPTER,
   FIRST_EPISODE,
 } from './bounds'
+import {
+  formatSeasonCode,
+  getSeason,
+  locateEpisode,
+  resolveEpisode,
+  seasonLength,
+} from './seasons'
 
 export {
   CHAPTER_CEILING,
@@ -35,7 +34,7 @@ export type BookmarkMode = 'chapter' | 'episode' | 'season'
  *
  * A season bookmark keeps the season and the episode within it as the reader
  * typed them, so the chip can show `S02E03` back; the absolute episode it
- * stands for is derived through `~/data/seasons` when the fog is decided.
+ * stands for is derived through `~/lib/progress/seasons` when the fog is decided.
  */
 export type Bookmark =
   | null

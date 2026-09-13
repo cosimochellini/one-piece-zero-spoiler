@@ -1,4 +1,13 @@
-import { cell, circle, dots, ellipse, polygon, SEA, shadow } from './primitives'
+import {
+  cell,
+  circle,
+  dots,
+  ellipse,
+  polygon,
+  SEA,
+  shadow,
+} from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the wano stretch of the route. */

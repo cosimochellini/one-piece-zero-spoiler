@@ -4,10 +4,9 @@ import type { ReactElement, ReactNode } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { roleOf } from '~/data/characters'
-import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { CharacterView, Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -20,10 +19,10 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-/** One page of the book: the record, whether it is open, and what matched. */
+/** One page of the book: the slot it fills, and what a search matched. */
 export type CharacterCardProps = {
-  readonly entity: Entity
-  readonly revealed: boolean
+  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
   readonly highlight?: null | readonly [number, number]
 }
@@ -38,20 +37,18 @@ export type CharacterCardProps = {
  * the promise and not the spoiler.
  */
 export function CharacterCard({
-  entity,
-  revealed,
+  slot,
+  peek,
   highlight = null,
 }: CharacterCardProps): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
-  const role = roleOf(entity)
-  const name = entity.name[locale]
 
   return (
     <li {...stylex.props(styles.card)}>
       <SpoilerVeil
         density="compact"
-        gated={entity}
+        peek={peek}
         // A fogged card has no link, no name and no drawing in the DOM: the
         // slug in the href would spell the name a blur is meant to hide, and
         // the drawing and its colour would say as much.
@@ -63,29 +60,33 @@ export function CharacterCard({
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
-        revealed={revealed}
+        slot={slot}
       >
-        <Link
-          params={{ locale, id: entity.id }}
-          to="/$locale/characters/$id"
-          {...stylex.props(styles.link)}
-        >
-          <span {...stylex.props(styles.frame)}>
-            <CharacterCrest visual={entity.visual} />
-          </span>
-          <span {...stylex.props(styles.name)}>
-            <Marked
-              span={highlight}
-              text={name}
-            />
-          </span>
-          {role === undefined ? null : (
-            <span {...stylex.props(styles.role)}>{role[locale]}</span>
-          )}
-        </Link>
+        {(record) => {
+          return (
+            <Link
+              params={{ locale, id: record.id }}
+              to="/$locale/characters/$id"
+              {...stylex.props(styles.link)}
+            >
+              <span {...stylex.props(styles.frame)}>
+                <CharacterCrest visual={record.visual} />
+              </span>
+              <span {...stylex.props(styles.name)}>
+                <Marked
+                  span={highlight}
+                  text={record.name}
+                />
+              </span>
+              {record.role === undefined ? null : (
+                <span {...stylex.props(styles.role)}>{record.role}</span>
+              )}
+            </Link>
+          )
+        }}
       </SpoilerVeil>
       <p {...stylex.props(styles.episode)}>
-        {threshold('chart.opensAt', entity)}
+        {threshold('chart.opensAt', slot.open ? slot.record : slot.covered)}
       </p>
     </li>
   )

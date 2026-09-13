@@ -4,6 +4,7 @@
     "src/routes/**/*.ts",
     "src/routes/**/*.tsx",
     "src/router.tsx",
+    "src/start.ts",
     "scripts/*.mjs",
     "doctor.config.ts",
     "commitlint.config.mjs"
@@ -73,6 +74,7 @@
         "patterns": ["src/test/**", "src/**/*.test.ts", "src/**/*.test.tsx"]
       },
       { "name": "routes", "patterns": ["src/routes/**", "src/router.tsx"] },
+      { "name": "server", "patterns": ["src/server/**", "src/start.ts"] },
       { "name": "ui", "patterns": ["src/components/ui/**"] },
       { "name": "components", "patterns": ["src/components/**"] },
       { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
@@ -83,14 +85,12 @@
     "rules": [
       {
         "from": "routes",
-        "allow": ["components", "ui", "lib", "data", "i18n", "styles"]
+        "allow": ["components", "ui", "lib", "server", "i18n", "styles"]
       },
-      {
-        "from": "components",
-        "allow": ["ui", "lib", "data", "i18n", "styles"]
-      },
+      { "from": "server", "allow": ["data", "lib", "i18n", "styles"] },
+      { "from": "components", "allow": ["ui", "lib", "i18n", "styles"] },
       { "from": "ui", "allow": ["styles"] },
-      { "from": "lib", "allow": ["data", "i18n", "styles"] },
+      { "from": "lib", "allow": ["i18n", "styles"] },
       { "from": "data", "allow": ["lib", "i18n", "styles"] },
       { "from": "i18n", "allow": ["lib", "data", "styles"] },
       { "from": "styles", "allow": [] }

@@ -1,4 +1,5 @@
-import { cell, circle, dots, ellipse, shadow, wave } from './primitives'
+import { cell, circle, dots, ellipse, shadow, wave } from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the egghead stretch of the route. */

@@ -1,13 +1,7 @@
 import type { Locale } from '~/i18n/locales'
+import type { EntityKind, TintId } from '~/lib/view/records'
 
 import type { ArtId } from './art'
-
-/**
- * The kinds of record the archive files. The list grows with the wiki;
- * `kind` exists so a generic list can label a record without a lookup table
- * per page.
- */
-export type EntityKind = 'arc' | 'character' | 'place' | 'ship'
 
 /**
  * A string in every published locale. Total over `Locale` on purpose: a record
@@ -24,31 +18,6 @@ export type LocalizedText = Readonly<Record<Locale, string>>
  */
 export type { ArtId } from './art'
 
-/* eslint-disable perfectionist/sort-union-types -- the hue wheel is the order `tint` is written in, and it is the point: alphabetising hides which hues sit next to each other. */
-/** The hue a drawing's main stroke takes. One per record, from `tint` in the tokens. */
-export type TintId =
-  | 'red'
-  | 'vermilion'
-  | 'orange'
-  | 'ocher'
-  | 'yellow'
-  | 'acid'
-  | 'green'
-  | 'teal'
-  | 'cyan'
-  | 'azure'
-  | 'blue'
-  | 'ice'
-  | 'lavender'
-  | 'violet'
-  | 'magenta'
-  | 'pink'
-  | 'flamingo'
-  | 'sand'
-  | 'wine'
-  | 'ivory'
-/* eslint-enable perfectionist/sort-union-types -- back to alphabetical for every other union. */
-
 /**
  * What a record shows: a line drawing and the one colour its main stroke
  * takes. No photographs and no official artwork appear anywhere on the site.
@@ -64,7 +33,7 @@ export type Visual = { readonly art: ArtId; readonly tint: TintId }
  * record rather than derived, because "when does this become safe" is an
  * editorial judgement, not something a script can work out. A reader who
  * counts in seasons is filed at an absolute episode through
- * `~/data/seasons`, so no third threshold is kept.
+ * `~/lib/progress/seasons`, so no third threshold is kept.
  *
  * The two thresholds are independent: the anime and the manga do not always
  * introduce a record in the same order, so a list is sorted by whichever

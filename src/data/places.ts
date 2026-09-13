@@ -1,3 +1,5 @@
+import type { PlaceForm, Sea } from '~/lib/view/records'
+
 import { entities } from './entities'
 import { orderByMode } from './order'
 import type { Entity, LocalizedText } from './types'
@@ -17,11 +19,11 @@ import type { Entity, LocalizedText } from './types'
  * Jaya has a town that laughs and not what lies past it.
  */
 
-/** The three stretches of sea the route crosses, in order. */
-export type Sea = 'east-blue' | 'grand-line' | 'new-world'
-
-/** What kind of place a record is, as the log would put it. */
-export type PlaceForm = 'island' | 'restaurant' | 'town' | 'village'
+/**
+ * The sea a place lies in and what kind of place it is are declared with the
+ * view models rather than here: the log prints them, and nothing under
+ * `~/data` may be named from the browser (issue #12).
+ */
 
 /**
  * The log entry for a place, beyond the name and the sentence every record
@@ -148,6 +150,6 @@ export function getPlace(id: string): Entity | undefined {
  * in at. A place with no entry still has a name, a drawing and a threshold –
  * the log is the extra the page shows once there is something to say.
  */
-export function dossierOf(entity: Entity): PlaceDossier | undefined {
+export function placeDossierOf(entity: Entity): PlaceDossier | undefined {
   return PLACE_DOSSIERS[entity.id]
 }

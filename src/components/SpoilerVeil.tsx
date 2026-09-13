@@ -2,8 +2,10 @@ import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, type ReactNode, useState } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
+import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { Gated } from '~/lib/progress/spoiler'
+import type { Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -16,15 +18,25 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** Everything the curtain needs to decide what it covers and how thickly. */
-export type SpoilerVeilProps = {
-  /** The record's thresholds, for the notice that names the one in force. */
-  readonly gated: Gated
+export type SpoilerVeilProps<T extends Gated> = {
   /**
-   * Whether the reader's bookmark already clears the threshold. Computed by
-   * the caller with `isRevealed` so the same decision is made once, on the
-   * server, for every record on the page.
+   * Whether this place on the page shows a record or fog, and — when it is
+   * fog — the two thresholds and the opaque handle that stand in for it.
+   *
+   * One field rather than a `revealed` flag beside a record, because the two
+   * cannot be told apart by a type: a covered slot has no record to pass. The
+   * decision is the server's, taken once for every record on the page, and
+   * never retaken here.
    */
-  readonly revealed: boolean
+  readonly slot: Slot<T>
+  /**
+   * Trades a covered record's handle for the record.
+   *
+   * A prop rather than a hook, for a reason that is not style: under Vitest
+   * the Start plugin is deliberately absent, so a server function called from
+   * a component throws out of `getStartContext()`. A closure needs no mock.
+   */
+  readonly peek: (handle: string) => Promise<T>
   /**
    * `block` is the default: the curtain stacks its notice above its action and
    * covers a paragraph or more. `inline` puts both on one line for a table
@@ -40,13 +52,22 @@ export type SpoilerVeilProps = {
    */
   readonly strength?: 'media' | 'text'
   /**
-   * What to render under the fog instead of `children`. With a placeholder
-   * the covered words are not in the served HTML or the DOM at all; the real
-   * children mount only once the fog is lifted. Entity pages use this, since
-   * a page about one record must not carry that record's name in its source.
+   * The uncovered content, built from the record once there is one.
+   *
+   * A function rather than a node. Given a node, the caller has already read
+   * the record's name and drawing to build the JSX, and this component then
+   * throws it away — which is fine when the record is in the bundle anyway,
+   * and impossible when it is not.
    */
-  readonly children: ReactNode
-  readonly placeholder?: ReactNode
+  readonly children: (record: T) => ReactNode
+  /**
+   * What stands under the fog. Required, where it used to be optional: with
+   * no record there is nothing else to draw. That is also what closes the
+   * limit this component used to admit to — the covered words are no longer
+   * in the DOM for find-in-page to turn up, because they are no longer in the
+   * browser at all.
+   */
+  readonly placeholder: ReactNode
 }
 
 /**
@@ -63,46 +84,66 @@ export type SpoilerVeilProps = {
  * covered content, so a screen reader or a Tab press can never walk into a
  * spoiler that the eye cannot see.
  *
- * Known limit: without a `placeholder` the real text is present in the DOM,
- * so browser find-in-page and devtools can still surface it. That is the
- * cost of a blur, and it is acceptable for the landing chart. Entity pages
- * pass a `placeholder`, so the covered words are absent from the served HTML
- * and only mount on the client once the fog is lifted.
+ * Lifting the fog by hand is a request now rather than a state flip: the
+ * record is on the server. The curtain says so while the request is in flight
+ * and stays put, so nothing of the record is in the DOM until it arrives —
+ * the same guarantee the covered state gives.
  */
-export function SpoilerVeil({
-  gated,
-  revealed,
+export function SpoilerVeil<T extends Gated>({
+  slot,
+  peek,
   density = 'block',
   strength = 'text',
   placeholder,
   children,
-}: SpoilerVeilProps): ReactElement {
+}: SpoilerVeilProps<T>): ReactElement {
   const threshold = useThreshold()
-  const [uncovered, setUncovered] = useState(false)
-  const visible = revealed || uncovered
+  const [peeked, setPeeked] = useState<null | T>(null)
+  const [state, setState] = useState<PeekState>('resting')
 
-  // A block body: `no-confusing-void-expression` rejects an arrow that
-  // implicitly returns the void result of a state setter.
+  const shown = slot.open ? slot.record : peeked
+  const visible = shown !== null
+
+  // Not a transition: there is no older tree worth keeping here — the curtain
+  // is up either way — and the state has to survive the await, so the verb
+  // does not flicker back while the record is still on its way.
+  const ask = async (handle: string): Promise<void> => {
+    setState('asking')
+    try {
+      setPeeked(await peek(handle))
+      setState('resting')
+    } catch {
+      setState('failed')
+    }
+  }
+
   const handleUncover = (): void => {
-    setUncovered(true)
+    if (state === 'asking' || slot.open) {
+      return
+    }
+
+    void ask(slot.covered.handle)
   }
 
   return (
     <div {...stylex.props(styles.frame)}>
       <Covered
         density={density}
-        placeholder={placeholder}
         strength={strength}
         visible={visible}
       >
-        {children}
+        {shown === null ? placeholder : children(shown)}
       </Covered>
 
       <Curtain
         density={density}
         lifted={visible}
-        notice={threshold('veil.locked', gated)}
+        notice={threshold(
+          'veil.locked',
+          slot.open ? slot.record : slot.covered,
+        )}
         onUncover={handleUncover}
+        state={state}
       />
     </div>
   )
@@ -111,19 +152,17 @@ export function SpoilerVeil({
 /**
  * What is under the fog. While it is covered it is `inert` and `aria-hidden`,
  * so neither a Tab press nor a screen reader can walk into a spoiler the eye
- * cannot see, and with a placeholder the real children are not mounted at all
- * — which is what keeps a covered name out of the served HTML.
+ * cannot see — and what is mounted there is the placeholder, because the
+ * record itself is not in the browser to mount.
  */
 function Covered({
   density,
   strength,
   visible,
-  placeholder,
   children,
 }: {
   readonly children: ReactNode
   readonly density: Density
-  readonly placeholder: ReactNode
   readonly strength: Strength
   readonly visible: boolean
 }): ReactElement {
@@ -136,7 +175,7 @@ function Covered({
       inert={!visible}
       {...stylex.props(styles.content, !visible && fogFor(density, strength))}
     >
-      {!visible && placeholder !== undefined ? placeholder : children}
+      {children}
     </div>
   )
 }
@@ -152,17 +191,24 @@ function Curtain({
   lifted,
   notice,
   onUncover,
+  state,
 }: {
   readonly density: Density
   readonly lifted: boolean
   readonly notice: string
   readonly onUncover: () => void
+  readonly state: PeekState
 }): ReactElement {
   const t = useT()
   const verbOnly = density !== 'block'
+  const asking = state === 'asking'
 
   return (
     <button
+      aria-busy={asking}
+      // `aria-disabled` rather than `disabled`: a disabled button loses focus,
+      // and with it the announcement of what just happened.
+      aria-disabled={asking || undefined}
       // Block density reads its name off the visible notice. The verb-only
       // densities show the verb alone — the threshold already sits in its
       // own line beside them — so the sentence has to be supplied here.
@@ -176,15 +222,36 @@ function Curtain({
       )}
     >
       {verbOnly ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
-      <span {...stylex.props(styles.action)}>
-        {t(verbOnly ? 'veil.revealShort' : 'veil.reveal')}
+      <span
+        role="status"
+        {...stylex.props(styles.action)}
+      >
+        {t(verbFor(state, verbOnly))}
       </span>
     </button>
   )
 }
 
-type Density = NonNullable<SpoilerVeilProps['density']>
-type Strength = NonNullable<SpoilerVeilProps['strength']>
+/** Resting, waiting on the server, or back with nothing. */
+type PeekState = 'asking' | 'failed' | 'resting'
+
+/**
+ * What the curtain says. A verb-only curtain has the threshold beside it
+ * already, so it says the short form; the rest of the time the state speaks.
+ */
+function verbFor(state: PeekState, verbOnly: boolean): TranslationKey {
+  if (state === 'asking') {
+    return 'veil.revealing'
+  }
+  if (state === 'failed') {
+    return 'veil.peekFailed'
+  }
+
+  return verbOnly ? 'veil.revealShort' : 'veil.reveal'
+}
+
+type Density = NonNullable<SpoilerVeilProps<Gated>['density']>
+type Strength = NonNullable<SpoilerVeilProps<Gated>['strength']>
 
 /**
  * How thick the fog is. A table cell is one line tall, so its blur is the

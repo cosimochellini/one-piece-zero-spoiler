@@ -3,7 +3,7 @@ import { describe, expect, it } from 'vitest'
 import { LOCALES } from '~/i18n/locales'
 
 import { entities, getEntity } from './entities'
-import { dossierOf, getPlace, PLACE_DOSSIERS, places } from './places'
+import { getPlace, PLACE_DOSSIERS, placeDossierOf, places } from './places'
 
 describe('the ship’s log', () => {
   it('lists every place record, in the order the ship reaches them', () => {
@@ -33,7 +33,7 @@ describe('the ship’s log', () => {
 
   it('gives every place a dossier in every locale, and nothing else one', () => {
     for (const place of places) {
-      const dossier = dossierOf(place)
+      const dossier = placeDossierOf(place)
 
       expect(dossier, place.id).toBeDefined()
 
@@ -52,7 +52,7 @@ describe('the ship’s log', () => {
     // A place revealed before its arc would name the arc in its dossier while
     // the arc itself is still under fog.
     for (const place of places) {
-      const arc = getEntity(dossierOf(place)?.arc ?? '')
+      const arc = getEntity(placeDossierOf(place)?.arc ?? '')
 
       expect(arc?.kind, place.id).toBe('arc')
       expect(arc?.revealedAtEpisode).toBeLessThanOrEqual(
@@ -66,7 +66,7 @@ describe('the ship’s log', () => {
 
   it('files here only records the archive holds, none of them places', () => {
     for (const place of places) {
-      const filedHere = dossierOf(place)?.filedHere ?? []
+      const filedHere = placeDossierOf(place)?.filedHere ?? []
 
       for (const id of filedHere) {
         const record = getEntity(id)

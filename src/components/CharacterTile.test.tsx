@@ -1,31 +1,27 @@
 import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import type { Entity } from '~/data/types'
+import {
+  at,
+  coveredSlot,
+  openSlot,
+  peekPending,
+  searchable,
+} from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterTile } from './CharacterTile'
 
-// A made-up id: `roleOf` reads the live dossiers by id, and the test must
-// not depend on what the archive currently says about Nami.
-const nami: Entity = {
-  id: 'test-navigator',
-  kind: 'character',
-  revealedAtEpisode: 5,
-  revealedAtChapter: 5,
-  name: { it: 'Nami', en: 'Nami' },
-  summary: { it: 'x', en: 'x' },
-  visual: { art: 'nami', tint: 'orange' },
-}
+const nami = searchable({ id: 'test-navigator', name: 'Nami', ...at(5) })
 
 describe('CharacterTile', () => {
   it('links an open character with their drawing and name', () => {
     const { container } = renderWithProviders(
       <ul>
         <CharacterTile
-          entity={nami}
           highlight={[0, 3]}
-          revealed
+          peek={peekPending()}
+          slot={openSlot(nami)}
         />
       </ul>,
       { bookmark: ep(10) },
@@ -44,8 +40,8 @@ describe('CharacterTile', () => {
     const { container } = renderWithProviders(
       <ul>
         <CharacterTile
-          entity={nami}
-          revealed={false}
+          peek={peekPending()}
+          slot={coveredSlot({ ...at(5) })}
         />
       </ul>,
       { bookmark: ep(1) },

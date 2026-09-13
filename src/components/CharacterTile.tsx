@@ -5,10 +5,9 @@ import type { ReactElement } from 'react'
 import { Marked } from '~/components/CharacterCard'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { roleOf } from '~/data/characters'
-import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import type { CharacterView, Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -21,10 +20,10 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-/** One line of a shelf: the record, whether it is open, and what matched. */
+/** One line of a shelf: the slot it fills, and what a search matched. */
 export type CharacterTileProps = {
-  readonly entity: Entity
-  readonly revealed: boolean
+  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
   readonly highlight?: null | readonly [number, number]
 }
@@ -40,19 +39,18 @@ export type CharacterTileProps = {
  * would say as much. The episode stays, because it is the promise.
  */
 export function CharacterTile({
-  entity,
-  revealed,
+  slot,
+  peek,
   highlight = null,
 }: CharacterTileProps): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
-  const role = roleOf(entity)
 
   return (
     <li {...stylex.props(styles.tile)}>
       <SpoilerVeil
         density="compact"
-        gated={entity}
+        peek={peek}
         placeholder={
           <span {...stylex.props(styles.row)}>
             <span {...stylex.props(styles.frame)} />
@@ -63,34 +61,38 @@ export function CharacterTile({
             </span>
           </span>
         }
-        revealed={revealed}
+        slot={slot}
       >
-        <Link
-          params={{ locale, id: entity.id }}
-          to="/$locale/characters/$id"
-          {...stylex.props(styles.row, styles.link)}
-        >
-          <span {...stylex.props(styles.frame)}>
-            <ChartArt
-              art={entity.visual.art}
-              tint={entity.visual.tint}
-            />
-          </span>
-          <span {...stylex.props(styles.words)}>
-            <span {...stylex.props(styles.name)}>
-              <Marked
-                span={highlight}
-                text={entity.name[locale]}
-              />
-            </span>
-            {role === undefined ? null : (
-              <span {...stylex.props(styles.role)}>{role[locale]}</span>
-            )}
-          </span>
-        </Link>
+        {(record) => {
+          return (
+            <Link
+              params={{ locale, id: record.id }}
+              to="/$locale/characters/$id"
+              {...stylex.props(styles.row, styles.link)}
+            >
+              <span {...stylex.props(styles.frame)}>
+                <ChartArt
+                  strokes={record.visual.strokes}
+                  tint={record.visual.tint}
+                />
+              </span>
+              <span {...stylex.props(styles.words)}>
+                <span {...stylex.props(styles.name)}>
+                  <Marked
+                    span={highlight}
+                    text={record.name}
+                  />
+                </span>
+                {record.role === undefined ? null : (
+                  <span {...stylex.props(styles.role)}>{record.role}</span>
+                )}
+              </span>
+            </Link>
+          )
+        }}
       </SpoilerVeil>
       <p {...stylex.props(styles.episode)}>
-        {threshold('chart.opensAt', entity)}
+        {threshold('chart.opensAt', slot.open ? slot.record : slot.covered)}
       </p>
     </li>
   )

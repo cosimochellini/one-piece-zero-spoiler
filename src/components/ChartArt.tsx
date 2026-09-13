@@ -2,12 +2,12 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { ART_VIEWBOX, type ArtProps, tintOf } from '~/components/drawing'
-import { DRAWINGS, type Stroke } from '~/data/art'
 import { color, rule } from '~/styles/tokens.stylex'
 
 /**
  * The renderer for every line drawing in the archive. The drawings
- * themselves are data in `~/data/art`, filed by saga.
+ * themselves are data in `~/data/art`, filed by saga, and reach this renderer
+ * as strokes: the archive stays on the server.
  *
  * The rules they all obey: a 160x200 box; a single uniform 2px stroke with
  * round caps and joins, kept at 2px whatever size the card is drawn at
@@ -28,11 +28,7 @@ import { color, rule } from '~/styles/tokens.stylex'
  * drawing can be set inside another composition: the crest on a character
  * page nests it in a seal.
  */
-export function ArtStrokes({ art, tint: hue }: ArtProps): ReactElement {
-  // Widened on purpose: each saga's drawings are typed as literally as they
-  // are written, and the renderer only needs to know they are strokes.
-  const strokes: readonly Stroke[] = DRAWINGS[art]
-
+export function ArtStrokes({ strokes, tint: hue }: ArtProps): ReactElement {
   // Keyed by the path itself: a drawing is a fixed list that is never
   // reordered, and no stroke in it is ever drawn twice.
   return (

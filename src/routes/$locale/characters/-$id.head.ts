@@ -5,58 +5,21 @@
  * runs before any component does, on the server, and it is the one place a
  * covered name could still leak. The leading `-` keeps the file out of the
  * generated route tree.
+ *
+ * It spells out what the loader was given and derives nothing. The sentences
+ * themselves are chosen on the server, where the archive is: a title is set
+ * before the stream resolves, so anything worked out here would have to be
+ * worked out without a record to work from.
  */
-import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
-import type { BookmarkMode } from '~/lib/progress/episode'
-import { describeThreshold } from '~/lib/progress/threshold'
+import type { CharacterHead } from '~/lib/view/records'
 
 /** One entry of the document head, as the router's `meta` array takes it. */
 export type HeadTag = { content: string; name: string } | { title: string }
 
-/** What the head needs to know before it can name the page, or refuse to. */
-export type PageDescription = {
-  readonly entity: Entity
-  readonly locale: Locale
-  readonly mode: BookmarkMode
-  readonly revealed: boolean
-}
-
-/**
- * The document title and description. Under fog both are generic: a title is
- * set before any component runs, so this is the one place a covered name
- * could leak, and it must not.
- */
-export function describeDocument({
-  locale,
-  entity,
-  revealed,
-  mode,
-}: PageDescription): HeadTag[] {
-  const dictionary = getDictionary(locale)
-
-  if (!revealed) {
-    return [
-      { title: translate(dictionary, 'character.foggedTitle') },
-      {
-        name: 'description',
-        content: describeThreshold({
-          gated: entity,
-          mode,
-          sentence: 'character.foggedDescription',
-          t: (key, params) => translate(dictionary, key, params),
-        }),
-      },
-    ]
-  }
-
+/** The title and the description, as the head takes them. */
+export function describeDocument(head: CharacterHead): HeadTag[] {
   return [
-    {
-      title: translate(dictionary, 'character.pageTitle', {
-        name: entity.name[locale],
-      }),
-    },
-    { name: 'description', content: entity.summary[locale] },
+    { title: head.title },
+    { name: 'description', content: head.description },
   ]
 }

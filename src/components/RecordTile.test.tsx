@@ -1,26 +1,17 @@
 import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { getEntity } from '~/data/entities'
-import type { Entity } from '~/data/types'
-import { ep, renderWithProviders } from '~/test/providers'
+import { at, coveredSlot, openSlot, peekPending, record } from '~/test/fixtures'
+import { renderWithProviders } from '~/test/providers'
 
 import { RecordTile } from './RecordTile'
-
-function record(id: string): Entity {
-  const entity = getEntity(id)
-  if (entity === undefined) {
-    throw new Error(`no ${id}`)
-  }
-  return entity
-}
 
 describe('RecordTile', () => {
   it('links an open character to their page', () => {
     renderWithProviders(
       <RecordTile
-        bookmark={ep(20)}
-        entry={record('sanji')}
+        peek={peekPending()}
+        slot={openSlot(record({ id: 'sanji', name: 'Sanji', ...at(20) }))}
       />,
     )
 
@@ -34,8 +25,10 @@ describe('RecordTile', () => {
   it('links an open place to its entry in the log', () => {
     renderWithProviders(
       <RecordTile
-        bookmark={ep(20)}
-        entry={record('baratie')}
+        peek={peekPending()}
+        slot={openSlot(
+          record({ id: 'baratie', kind: 'place', name: 'Baratie' }),
+        )}
       />,
     )
 
@@ -48,8 +41,10 @@ describe('RecordTile', () => {
   it('leaves a ship as a name', () => {
     renderWithProviders(
       <RecordTile
-        bookmark={ep(20)}
-        entry={record('going-merry')}
+        peek={peekPending()}
+        slot={openSlot(
+          record({ id: 'going-merry', kind: 'ship', name: 'Going Merry' }),
+        )}
       />,
     )
 
@@ -60,8 +55,8 @@ describe('RecordTile', () => {
   it('keeps a covered record’s name, drawing and slug out of the DOM', () => {
     const { container } = renderWithProviders(
       <RecordTile
-        bookmark={ep(5)}
-        entry={record('sanji')}
+        peek={peekPending()}
+        slot={coveredSlot({ ...at(20) })}
       />,
     )
 

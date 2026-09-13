@@ -15,7 +15,7 @@ import {
   SEA_CHART_VIEWBOX,
   STARS,
   WAVES,
-} from '~/data/art/night-sea'
+} from '~/components/chrome/night-sea'
 import { color, rule } from '~/styles/tokens.stylex'
 
 /** The id the fog rect refers to; it has to be unique in the document. */
@@ -30,7 +30,7 @@ const FOG_GRADIENT = 'sea-chart-fog'
  * by the page, so the left half stays quiet on purpose, and the ship sits where
  * a phone's 4:3 crop of the box still shows it.
  *
- * The drawing itself is data in `~/data/art/night-sea`, as every other drawing
+ * The drawing itself is data in `~/components/chrome/night-sea`, as every other drawing
  * on the site is; this file is the box, the ink and the fog. The box is
  * cropped, not squashed, to whatever frame it is given (`slice`), and the
  * strokes stay 2px at every crop.

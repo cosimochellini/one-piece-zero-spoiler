@@ -1,5 +1,4 @@
 import * as stylex from '@stylexjs/stylex'
-import { useRouter } from '@tanstack/react-router'
 import {
   type ReactElement,
   type RefObject,
@@ -126,7 +125,6 @@ function BookmarkForm({
   ledeId,
   onDone,
 }: BookmarkFormProps): ReactElement {
-  const router = useRouter()
   const { bookmark, setBookmark } = useBookmark()
   const [draft, setDraft] = useState<Draft>(() => draftOf(bookmark))
   const [touched, setTouched] = useState(false)
@@ -135,10 +133,8 @@ function BookmarkForm({
   const problem = touched ? graded.problem : null
 
   const commit = (next: Bookmark): void => {
+    // `setBookmark` writes the cookie and re-reads the pages, in that order.
     setBookmark(next)
-    // The root route read the old cookie for this document; a fresh load
-    // lets a page whose <head> depends on it (a character's title) catch up.
-    void router.invalidate()
     onDone()
   }
 

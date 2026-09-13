@@ -3,8 +3,6 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement, ReactNode } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
-import { styles } from '~/components/RouteChart.styles'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
 import {
   type Bow,
   COMPASS_RING,
@@ -14,14 +12,22 @@ import {
   HORIZON_BELOW,
   SEGMENT,
   SEGMENT_VIEWBOX,
-} from '~/data/art/route-chart'
-import type { Entity, EntityKind, Visual } from '~/data/types'
+} from '~/components/chrome/route-chart'
+import { FoggedWaypoint } from '~/components/FoggedWaypoint'
+import { styles } from '~/components/RouteChart.styles'
+import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
+import type {
+  CoveredRecord,
+  Drawing,
+  EntityKind,
+  Slot,
+  WaypointView,
+} from '~/lib/view/records'
 
 // The bow flips from one waypoint to the next, so the route wanders like a
 // course rather than running like a ruler.
@@ -34,11 +40,18 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   ship: 'kind.ship',
 }
 
-/** The two facts the chart is drawn from, and nothing else. */
+/** The two runs the chart is drawn from, and the reader's own line. */
 export type RouteChartProps = {
-  /** The archive, sorted by the threshold the bookmark counts in. */
+  /** Still needed here: the horizon keys on it and is labelled with it. */
   readonly bookmark: Bookmark
-  readonly entries: readonly Entity[]
+  /**
+   * The waypoints the reader has reached, in the order their unit reaches
+   * them, then the ones they have not. Already a prefix and a suffix of one
+   * route: the split is the server's, over records this page never sees.
+   */
+  readonly covered: readonly CoveredRecord[]
+  readonly open: readonly WaypointView[]
+  readonly peek: (handle: string) => Promise<WaypointView>
 }
 
 /**
@@ -56,27 +69,27 @@ export type RouteChartProps = {
  * "Something opens at episode 1089" is the promise, not the spoiler; the name
  * and the summary are the spoiler, and those are what the veil takes.
  *
- * Because `entries` arrive sorted and `isRevealed` is monotone in the
- * threshold, the open waypoints are a prefix of the list, which is what lets
- * the horizon be a single element between two runs rather than a marker that
- * has to be interpolated along the route.
+ * The open waypoints are a prefix of the route, which is what lets the
+ * horizon be a single element between two runs rather than a marker that has
+ * to be interpolated along it.
  */
 export function RouteChart({
-  entries,
+  open,
+  covered,
   bookmark,
+  peek,
 }: RouteChartProps): ReactElement {
-  const open = entries.filter((entry) => isRevealed(entry, bookmark))
-  const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
-
   return (
     <ol {...stylex.props(styles.route)}>
-      {open.map((entry, index) => {
+      {open.map((record, index) => {
         return (
+          // Two runs in one list, so the keys are namespaced: an id and a
+          // handle are different things and must not be able to collide.
           <Waypoint
-            key={entry.id}
-            entry={entry}
+            key={`open-${record.id}`}
             index={index}
-            open
+            peek={peek}
+            slot={{ open: true, record }}
           />
         )
       })}
@@ -92,10 +105,10 @@ export function RouteChart({
       {covered.map((entry, index) => {
         return (
           <Waypoint
-            key={entry.id}
-            entry={entry}
+            key={`fog-${entry.handle}`}
             index={open.length + 1 + index}
-            open={false}
+            peek={peek}
+            slot={{ open: false, covered: entry }}
           />
         )
       })}
@@ -104,16 +117,18 @@ export function RouteChart({
 }
 
 type WaypointProps = {
-  readonly entry: Entity
   /** Position along the whole route, horizon included, so the wave alternates. */
   readonly index: number
-  readonly open: boolean
+  readonly peek: (handle: string) => Promise<WaypointView>
+  readonly slot: Slot<WaypointView>
 }
 
-function Waypoint({ entry, index, open }: WaypointProps): ReactElement {
-  const { locale, t } = useLocale()
+function Waypoint({ slot, index, peek }: WaypointProps): ReactElement {
+  const { t } = useLocale()
   const threshold = useThreshold()
   const bow: Bow = index % BOW_PERIOD === 0 ? 'left' : 'right'
+  const open = slot.open
+  const entry = slot.open ? slot.record : slot.covered
 
   return (
     <li {...stylex.props(styles.row)}>
@@ -142,21 +157,24 @@ function Waypoint({ entry, index, open }: WaypointProps): ReactElement {
 
         {/* The drawing is inside the veil with the words: under fog, both go. */}
         <SpoilerVeil
-          gated={entry}
-          revealed={open}
+          peek={peek}
+          placeholder={<FoggedWaypoint entry={entry} />}
+          slot={slot}
+          strength="media"
         >
-          <div {...stylex.props(styles.card)}>
-            <Picture visual={entry.visual} />
-            <div {...stylex.props(styles.words)}>
-              <h3 {...stylex.props(styles.name)}>
-                <WaypointName
-                  entry={entry}
-                  open={open}
-                />
-              </h3>
-              <p {...stylex.props(styles.summary)}>{entry.summary[locale]}</p>
-            </div>
-          </div>
+          {(record) => {
+            return (
+              <div {...stylex.props(styles.card)}>
+                <Picture visual={record.visual} />
+                <div {...stylex.props(styles.words)}>
+                  <h3 {...stylex.props(styles.name)}>
+                    <WaypointName record={record} />
+                  </h3>
+                  <p {...stylex.props(styles.summary)}>{record.summary}</p>
+                </div>
+              </div>
+            )
+          }}
         </SpoilerVeil>
       </div>
     </li>
@@ -164,45 +182,41 @@ function Waypoint({ entry, index, open }: WaypointProps): ReactElement {
 }
 
 /**
- * The name, and the way to the record's own page when there is one. Only an
- * open character or place is a link: a covered card's href would spell out,
- * in the page source, the name a blur hides.
+ * The name, and the way to the record's own page when there is one. A covered
+ * waypoint never reaches this: it has no name to draw and no slug to point at.
  */
 function WaypointName({
-  entry,
-  open,
+  record,
 }: {
-  readonly entry: Entity
-  readonly open: boolean
+  readonly record: WaypointView
 }): ReactNode {
   const { locale } = useLocale()
-  const name = entry.name[locale]
 
-  if (open && entry.kind === 'character') {
+  if (record.kind === 'character') {
     return (
       <Link
-        params={{ locale, id: entry.id }}
+        params={{ locale, id: record.id }}
         to="/$locale/characters/$id"
         {...stylex.props(styles.nameLink)}
       >
-        {name}
+        {record.name}
       </Link>
     )
   }
-  if (open && entry.kind === 'place') {
+  if (record.kind === 'place') {
     return (
       <Link
-        hash={entry.id}
+        hash={record.id}
         params={{ locale }}
         to="/$locale/places"
         {...stylex.props(styles.nameLink)}
       >
-        {name}
+        {record.name}
       </Link>
     )
   }
 
-  return name
+  return record.name
 }
 
 /**
@@ -210,11 +224,11 @@ function WaypointName({
  * hairline. Every frame has the same proportions, so the route reads as one
  * set of plates rather than a scrapbook.
  */
-function Picture({ visual }: { readonly visual: Visual }): ReactElement {
+function Picture({ visual }: { readonly visual: Drawing }): ReactElement {
   return (
     <div {...stylex.props(styles.frame)}>
       <ChartArt
-        art={visual.art}
+        strokes={visual.strokes}
         tint={visual.tint}
       />
     </div>
@@ -228,7 +242,7 @@ function Picture({ visual }: { readonly visual: Visual }): ReactElement {
  * one side in between; alternating the bow row by row is what makes the route
  * wander like a course rather than run like a ruler.
  *
- * `preserveAspectRatio="none"` stretches the cell of `~/data/art/route-chart`
+ * `preserveAspectRatio="none"` stretches the cell of `~/components/chrome/route-chart`
  * to the row, and `non-scaling-stroke` keeps the line 2px and the dashes even
  * under that stretch. The waypoint mark is a separate element for the same
  * reason: a circle inside this box would be squashed into an ellipse.

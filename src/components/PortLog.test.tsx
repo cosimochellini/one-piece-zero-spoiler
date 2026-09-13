@@ -1,25 +1,65 @@
 import { screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { places } from '~/data/places'
+import type { RecordView } from '~/lib/view/records'
+import {
+  at,
+  coveredRecord,
+  coveredSlot,
+  dossier,
+  openSlot,
+  peekPending,
+  port,
+  record,
+} from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { PortLog } from './PortLog'
 
-// The real log: five East Blue ports, then Jaya at 144 and Egghead at 1089.
-const entries = places
+// Five open East Blue ports, then two the reader has not reached.
+const sanji = openSlot(record({ id: 'sanji', name: 'Sanji', ...at(20) }))
+const metLater = coveredSlot<RecordView>({ ...at(24) })
 
-/**
- * The list row a port heading sits in. Narrowed here rather than in a test, so
- * a heading that lost its row fails once and says why.
- */
-function rowOf(heading: HTMLElement): HTMLElement {
-  const row = heading.closest('li')
+const baratie = port({
+  id: 'baratie',
+  name: 'Baratie',
+  ...at(20),
+  summary: 'A restaurant that floats on the sea.',
+  dossier: dossier({
+    arc: 'East Blue Saga',
+    landmark: 'The fish-head prow',
+    filedHere: [sanji, metLater],
+  }),
+})
+
+const open = [
+  port({ id: 'shells-town', name: 'Shells Town', ...at(3) }),
+  port({ id: 'foosha-village', name: 'Foosha Village', ...at(4) }),
+  port({ id: 'orange-town', name: 'Orange Town', ...at(6) }),
+  port({ id: 'syrup-village', name: 'Syrup Village', ...at(9) }),
+  baratie,
+]
+
+const covered = [
+  coveredRecord({ kind: 'place', ...at(144) }),
+  coveredRecord({ kind: 'place', ...at(1089) }),
+]
+
+/** The port of call one piece of the page belongs to. */
+function rowOf(element: HTMLElement): HTMLElement {
+  const row = element.closest('li')
   if (row === null) {
-    throw new Error(`no row around ${heading.textContent}`)
+    throw new Error('no port of call around the element')
   }
 
   return row
+}
+
+/** The ports and the horizon, in the order they are logged. */
+function rows(): readonly HTMLElement[] {
+  return screen
+    .getAllByRole('listitem')
+    .filter((item) => item.parentElement?.tagName === 'OL')
 }
 
 describe('PortLog', () => {
@@ -27,7 +67,10 @@ describe('PortLog', () => {
     renderWithProviders(
       <PortLog
         bookmark={ep(20)}
-        entries={entries}
+        covered={covered}
+        open={open}
+        peek={peekPending()}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -35,7 +78,9 @@ describe('PortLog', () => {
     const stages = screen.getAllByText(/^Port of call \d of 7$/u)
 
     expect(stages.map((node) => node.textContent)).toStrictEqual(
-      entries.map((_, index) => `Port of call ${String(index + 1)} of 7`),
+      [...open, ...covered].map(
+        (_, index) => `Port of call ${String(index + 1)} of 7`,
+      ),
     )
   })
 
@@ -43,26 +88,30 @@ describe('PortLog', () => {
     const { container } = renderWithProviders(
       <PortLog
         bookmark={ep(20)}
-        entries={entries}
+        covered={covered}
+        open={open}
+        peek={peekPending()}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
 
-    // Baratie is open at 20: name, facts, log entry, and an anchor to land on.
-    const baratie = screen.getByRole('heading', { level: 2, name: 'Baratie' })
+    // Baratie is open: name, facts, log entry, and an anchor to land on.
+    const heading = screen.getByRole('heading', { level: 2, name: 'Baratie' })
 
-    expect(baratie.closest('li')).toHaveAttribute('id', 'baratie')
-    expect(screen.getByText('Floating restaurant')).toBeInTheDocument()
+    expect(rowOf(heading)).toHaveAttribute('id', 'baratie')
+    expect(
+      screen.getByText('A restaurant that floats on the sea.'),
+    ).toBeInTheDocument()
     expect(screen.getByText('The fish-head prow')).toBeInTheDocument()
     expect(screen.getAllByText('East Blue Saga').length).toBeGreaterThan(0)
 
-    // Jaya is not: no name, no anchor, no drawing, and its episode still shows.
-    expect(screen.queryByText('Jaya')).not.toBeInTheDocument()
-    expect(container.querySelector('#jaya')).toBeNull()
+    // The two ports past the reader carry no id and no name of their own.
     // Fogged headings sit inside an `aria-hidden` wrapper, so they are found
     // by text, not by role: they have no accessible role by design.
     expect(screen.getAllByText('A place under fog')).toHaveLength(2)
     expect(screen.getByText('First seen in episode 144')).toBeVisible()
+    expect(container.querySelector(':scope #jaya')).toBeNull()
     // Every drawing on the page belongs to an open port or an open record.
     expect(container.querySelectorAll(':scope svg svg')).toHaveLength(5)
   })
@@ -71,30 +120,35 @@ describe('PortLog', () => {
     renderWithProviders(
       <PortLog
         bookmark={ep(20)}
-        entries={entries}
+        covered={covered}
+        open={open}
+        peek={peekPending()}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
 
-    const baratie = rowOf(
+    const row = rowOf(
       screen.getByRole('heading', { level: 2, name: 'Baratie' }),
     )
 
-    // Sanji is met at 20 and is a link; Mihawk arrives at 24 and is covered.
-    expect(
-      within(baratie).getByRole('link', { name: 'Sanji' }),
-    ).toHaveAttribute('href', '/en/characters/sanji')
-    expect(
-      within(baratie).queryByText('Dracule Mihawk'),
-    ).not.toBeInTheDocument()
-    expect(within(baratie).getByText('Episode 24')).toBeVisible()
+    // Sanji is met at 20 and is a link; the record filed at 24 is covered.
+    expect(within(row).getByRole('link', { name: 'Sanji' })).toHaveAttribute(
+      'href',
+      '/en/characters/sanji',
+    )
+    expect(within(row).getByText('Episode 24')).toBeVisible()
+    expect(within(row).getAllByText('Spoiler')).toHaveLength(1)
   })
 
   it('draws the horizon where the reader is', () => {
     renderWithProviders(
       <PortLog
         bookmark={ep(20)}
-        entries={entries}
+        covered={covered}
+        open={open}
+        peek={peekPending()}
+        peekRecord={peekPending()}
       />,
       { bookmark: ep(20) },
     )
@@ -102,29 +156,28 @@ describe('PortLog', () => {
     const horizon = rowOf(screen.getByText('You are here · episode 20'))
 
     expect(horizon).toHaveAttribute('aria-current', 'step')
-
     // Five open ports above the horizon, two covered below it.
-    const rows = screen
-      .getAllByRole('listitem')
-      .filter((item) => item.parentElement?.tagName === 'OL')
-
-    expect(rows.indexOf(horizon)).toBe(5)
+    expect(rows().indexOf(horizon)).toBe(5)
   })
 
   it('puts the horizon first and fogs everything with no bookmark', () => {
     renderWithProviders(
       <PortLog
         bookmark={null}
-        entries={entries}
+        covered={[
+          ...covered,
+          ...open.map(() => coveredRecord({ kind: 'place' })),
+        ]}
+        open={[]}
+        peek={peekPending()}
+        peekRecord={peekPending()}
       />,
     )
 
     expect(
       screen.getByText('No bookmark set · the whole route is under fog'),
     ).toBeInTheDocument()
-    expect(screen.getAllByText('A place under fog')).toHaveLength(
-      entries.length,
-    )
+    expect(screen.getAllByText('A place under fog')).toHaveLength(7)
     expect(screen.queryByText('Baratie')).not.toBeInTheDocument()
   })
 })
