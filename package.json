@@ -9,10 +9,11 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow && npm run gate:archive",
     "dev": "vite dev",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "gate:archive": "node scripts/archive-gate.mjs",
     "gate:fallow": "node scripts/fallow-gate.mjs",
     "gate:react-doctor": "node scripts/react-doctor-gate.mjs",
     "lint": "eslint . --max-warnings=0",

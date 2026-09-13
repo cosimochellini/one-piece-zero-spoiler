@@ -1,7 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { EPISODE_CEILING } from '~/lib/progress/bounds'
-
+import { EPISODE_CEILING } from './bounds'
 import {
   formatSeasonCode,
   getSeason,

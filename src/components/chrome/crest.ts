@@ -1,4 +1,4 @@
-import { circle } from './primitives'
+import { circle } from '~/lib/svg/primitives'
 
 /**
  * The seal a character's drawing is set into, drawn once and shared by every

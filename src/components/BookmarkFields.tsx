@@ -3,7 +3,6 @@ import { type ReactElement, useId } from 'react'
 
 import { styles } from '~/components/BookmarkDialog.styles'
 import { Button } from '~/components/ui/Button'
-import { type Season, SEASONS } from '~/data/seasons'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import {
@@ -12,6 +11,7 @@ import {
   type DraftProblem,
   stepperOf,
 } from '~/lib/progress/episode'
+import { type Season, SEASONS } from '~/lib/progress/seasons'
 
 const MODES: readonly BookmarkMode[] = ['episode', 'season', 'chapter']
 

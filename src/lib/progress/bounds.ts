@@ -1,6 +1,6 @@
 /**
  * The form ranges the bookmark accepts, kept in a module that imports nothing
- * so both the data layer (`~/data/seasons`) and the progress library can read
+ * so both the data layer (`~/lib/progress/seasons`) and the progress library can read
  * them without a cycle.
  */
 

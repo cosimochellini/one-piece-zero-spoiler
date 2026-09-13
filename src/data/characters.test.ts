@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
-import { type Bookmark, EPISODE_CEILING } from '~/lib/progress/episode'
+import { EPISODE_CEILING } from '~/lib/progress/episode'
 
 import {
   bookSections,
@@ -12,17 +12,12 @@ import {
   dossierOf,
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
-  foldName,
   getCharacter,
-  matchName,
   nearbyCharacters,
   routePositionOf,
 } from './characters'
 import { entities, sagas } from './entities'
 import type { Entity, LocalizedText, Timeline } from './types'
-
-const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
-const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
 
 function must(id: string): Entity {
   const entity = getCharacter(id)
@@ -356,104 +351,5 @@ describe('nearbyCharacters', () => {
         (character) => character.id,
       ),
     ).not.toContain('eustass-kid')
-  })
-})
-
-describe('search', () => {
-  const luffy = must('monkey-d-luffy')
-
-  it('folds case and diacritics', () => {
-    expect(foldName('Rùfy')).toBe('rufy')
-    expect(foldName('NAMI')).toBe('nami')
-  })
-
-  it('matches everything on an empty query and marks nothing', () => {
-    expect(
-      matchName({
-        bookmark: ep(1),
-        entity: luffy,
-        locale: 'en',
-        query: ' '.repeat(3),
-      }),
-    ).toStrictEqual({ matches: true, highlight: null })
-  })
-
-  it('finds a name in the shown locale and says where to mark it', () => {
-    expect(
-      matchName({ bookmark: ep(1), entity: luffy, locale: 'en', query: 'luf' }),
-    ).toStrictEqual({ matches: true, highlight: [10, 13] })
-  })
-
-  it('finds a name written in the other locale but marks nothing', () => {
-    // An Italian reader who knows him as Luffy still finds Rufy.
-    expect(
-      matchName({
-        bookmark: ep(1),
-        entity: luffy,
-        locale: 'it',
-        query: 'luffy',
-      }),
-    ).toStrictEqual({ matches: true, highlight: null })
-  })
-
-  it('does not match a name that is not there', () => {
-    expect(
-      matchName({ bookmark: ep(1), entity: luffy, locale: 'en', query: 'zoro' })
-        .matches,
-    ).toBe(false)
-  })
-
-  it('finds an epithet only once the reader has reached it', () => {
-    const newgate = must('edward-newgate')
-
-    expect(
-      matchName({
-        bookmark: ep(152),
-        entity: newgate,
-        locale: 'en',
-        query: 'barbabianca',
-      }).matches,
-    ).toBe(true)
-    expect(
-      matchName({
-        bookmark: ep(1200),
-        entity: newgate,
-        locale: 'it',
-        query: 'whitebeard',
-      }).matches,
-    ).toBe(true)
-    expect(
-      matchName({
-        bookmark: ep(151),
-        entity: newgate,
-        locale: 'en',
-        query: 'whitebeard',
-      }).matches,
-    ).toBe(false)
-    expect(
-      matchName({
-        bookmark: null,
-        entity: newgate,
-        locale: 'en',
-        query: 'whitebeard',
-      }).matches,
-    ).toBe(false)
-    // Epithets are dated in episodes: a chapter bookmark searches names only.
-    expect(
-      matchName({
-        bookmark: ch(1000),
-        entity: newgate,
-        locale: 'en',
-        query: 'whitebeard',
-      }).matches,
-    ).toBe(false)
-    expect(
-      matchName({
-        bookmark: ch(1000),
-        entity: newgate,
-        locale: 'en',
-        query: 'newgate',
-      }).matches,
-    ).toBe(true)
   })
 })

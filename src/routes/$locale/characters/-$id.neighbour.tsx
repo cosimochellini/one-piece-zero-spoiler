@@ -9,17 +9,17 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { RecordTile } from '~/components/RecordTile'
-import type { Entity } from '~/data/types'
-import type { Bookmark } from '~/lib/progress/episode'
+import type { RecordView, Slot } from '~/lib/view/records'
 
 import { styles } from './-$id.styles'
 
 /** What one neighbour tile is given: the slot's name, and what fills it. */
 export type NeighbourProps = {
-  readonly bookmark: Bookmark
   readonly empty: string
-  readonly entry: Entity | undefined
   readonly label: string
+  readonly peek: (handle: string) => Promise<RecordView>
+  /** `null` at either end of the route, where there is nothing filed. */
+  readonly slot: null | Slot<RecordView>
 }
 
 /**
@@ -29,19 +29,19 @@ export type NeighbourProps = {
  */
 export function Neighbour({
   label,
-  entry,
+  slot,
   empty,
-  bookmark,
+  peek,
 }: NeighbourProps): ReactElement {
   return (
     <div {...stylex.props(styles.neighbour)}>
       <dt {...stylex.props(styles.neighbourLabel)}>{label}</dt>
       <dd {...stylex.props(styles.neighbourBody)}>
-        {entry === undefined ?
+        {slot === null ?
           <span {...stylex.props(styles.lede)}>{empty}</span>
         : <RecordTile
-            bookmark={bookmark}
-            entry={entry}
+            peek={peek}
+            slot={slot}
           />
         }
       </dd>

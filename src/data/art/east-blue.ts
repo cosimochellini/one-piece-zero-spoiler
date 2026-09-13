@@ -9,7 +9,8 @@ import {
   shadow,
   sheath,
   star,
-} from './primitives'
+} from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the east blue stretch of the route. */

@@ -1,4 +1,5 @@
-import { circle, dot, dots, ellipse, SEA, shadow } from './primitives'
+import { circle, dot, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
+
 import type { Drawings, Stroke } from './stroke'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */

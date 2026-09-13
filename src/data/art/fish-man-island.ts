@@ -1,4 +1,13 @@
-import { cell, circle, dots, ellipse, house, SEA, shadow } from './primitives'
+import {
+  cell,
+  circle,
+  dots,
+  ellipse,
+  house,
+  SEA,
+  shadow,
+} from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the fish man island stretch of the route. */

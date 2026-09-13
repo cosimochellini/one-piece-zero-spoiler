@@ -2,6 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import {
   type ReactElement,
   type ReactNode,
+  Suspense,
+  use,
+  useDeferredValue,
   useEffect,
   useId,
   useState,
@@ -10,32 +13,39 @@ import {
 import { CatalogueSection } from '~/components/CatalogueSection'
 import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
-import { matchesFor, type MatchOf } from '~/components/characterMatches'
-import { CharacterShelves } from '~/components/CharacterShelves'
-import { Button } from '~/components/ui/Button'
-import type { BookSection } from '~/data/characters'
-import { orderByMode } from '~/data/order'
-import type { Entity } from '~/data/types'
-import { useLocale, useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
+import { matchesIn } from '~/components/characterMatches'
 import {
-  type Bookmark,
-  type BookmarkMode,
-  modeOf,
-} from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+  CharacterShelves,
+  type ShelvesSource,
+} from '~/components/CharacterShelves'
+import { Button } from '~/components/ui/Button'
+import { useT } from '~/i18n/LocaleContext'
+import type { Translate } from '~/i18n/types'
+import { foldName } from '~/lib/search/fold'
+import type {
+  CharacterView,
+  CoveredRecord,
+  SearchableCharacter,
+} from '~/lib/view/records'
 
 // Long enough that a reader typing "Nami" hears one count and not four, short
 // enough that the count still arrives while the query is under their hands.
 const ANNOUNCE_DELAY_MS = 250
 
-/** What the signal book is built from: the crests, the shelves, the reader. */
+/** What the signal book is built from: the crests, the shelves, the query. */
 export type CharacterGridProps = {
-  /** The characters in evidence, in route order: the ones drawn as crests. */
-  readonly featured: readonly Entity[]
-  /** The whole book, shelved by arc, in route order. */
-  readonly bookmark: Bookmark
-  readonly sections: readonly BookSection[]
+  /** The characters in evidence: the ones drawn as crests. */
+  readonly featuredCovered: readonly CoveredRecord[]
+  readonly featuredOpen: readonly SearchableCharacter[]
+  readonly peek: (handle: string) => Promise<CharacterView>
+  /**
+   * The shelves, streamed. The crests are above the fold and there are
+   * thirty-six of them; the shelves are three hundred and twenty-six tiles
+   * with a drawing each, and they are the part of this page worth not
+   * waiting for.
+   */
+  readonly shelfCount: number
+  readonly shelves: ShelvesSource
 }
 
 /**
@@ -49,61 +59,93 @@ export type CharacterGridProps = {
  * the fogged tiles stay on their shelves, and neither ever moves: typing
  * filters the open pages and leaves the fog exactly as it was.
  *
- * Filtering is a few hundred names in memory and is instant. Only the
- * announcement to a screen reader waits, so a reader still mid-word is not
- * read a fresh count on every keystroke.
+ * The names arrive folded, so a keystroke costs one folded query and a few
+ * hundred `indexOf` calls. Only the announcement to a screen reader waits, so
+ * a reader still mid-word is not read a fresh count on every keystroke.
  */
 export function CharacterGrid({
-  featured,
-  sections,
-  bookmark,
+  featuredOpen,
+  featuredCovered,
+  shelves,
+  shelfCount,
+  peek,
 }: CharacterGridProps): ReactElement {
-  const { locale, t } = useLocale()
   const fieldId = useId()
   const [query, setQuery] = useState('')
-  // Crests and tiles run in the order of the threshold the reader counts in,
-  // so the open ones are always a prefix of each list.
-  const mode = modeOf(bookmark)
-
-  const everyone = sections.flatMap((section) => section.characters)
-  const open = everyone.filter((entry) => isRevealed(entry, bookmark))
-  const matched = matchesFor({ bookmark, locale, open, query })
-  const matchOf: MatchOf = (entry) => matched.get(entry.id)
-
   const trimmed = query.trim()
-  const empty = trimmed !== '' && matched.size === 0
-  const status =
-    empty ?
-      t('characters.noMatch', { query: trimmed })
-    : t('characters.shown', { count: matched.size, total: open.length })
-  const announced = useSettled(status, ANNOUNCE_DELAY_MS)
+  // The field is never deferred; the lists behind it are.
+  const needle = useDeferredValue(foldName(trimmed))
 
   return (
     <div {...stylex.props(styles.book)}>
       <SearchBox
-        empty={empty}
         fieldId={fieldId}
         onQuery={setQuery}
         query={query}
-        status={announced}
+        status={
+          // The count is over every open character, so it cannot be said
+          // until the shelves have landed. Its own boundary, so the field
+          // beside it never suspends: an input that unmounts mid-word loses
+          // the word and the focus with it.
+          <Suspense fallback={<p {...stylex.props(styles.status)} />}>
+            <SearchStatus
+              needle={needle}
+              query={trimmed}
+              shelves={shelves}
+            />
+          </Suspense>
+        }
       />
 
       <FeaturedCrests
-        bookmark={bookmark}
-        featured={featured}
+        covered={featuredCovered}
         fieldId={fieldId}
-        matchOf={matchOf}
-        mode={mode}
+        needle={needle}
+        open={featuredOpen}
+        peek={peek}
       />
 
       <CharacterShelves
-        bookmark={bookmark}
         fieldId={fieldId}
-        matchOf={matchOf}
-        searching={trimmed !== ''}
-        sections={sections}
+        needle={needle}
+        peek={peek}
+        shelfCount={shelfCount}
+        shelves={shelves}
       />
     </div>
+  )
+}
+
+/**
+ * How many open characters the query answers, out of how many there are.
+ * Reads the shelves, so it lives inside a boundary of its own.
+ */
+function SearchStatus({
+  shelves,
+  needle,
+  query,
+}: {
+  readonly needle: string
+  readonly query: string
+  readonly shelves: ShelvesSource
+}): ReactElement {
+  const t = useT()
+  const sections = shelves instanceof Promise ? use(shelves) : shelves
+  const open = sections.flatMap((section) => section.open)
+  const count = matchesIn(open, needle).length
+  const empty = query !== '' && count === 0
+  const status =
+    empty ?
+      t('characters.noMatch', { query })
+    : t('characters.shown', { count, total: open.length })
+
+  return (
+    <p
+      aria-live="polite"
+      {...stylex.props(styles.status, empty && styles.statusEmpty)}
+    >
+      {useSettled(status, ANNOUNCE_DELAY_MS)}
+    </p>
   )
 }
 
@@ -117,13 +159,11 @@ function SearchBox({
   query,
   onQuery,
   status,
-  empty,
 }: {
-  readonly empty: boolean
   readonly fieldId: string
   readonly onQuery: (query: string) => void
   readonly query: string
-  readonly status: string
+  readonly status: ReactNode
 }): ReactElement {
   const t = useT()
 
@@ -155,12 +195,7 @@ function SearchBox({
           }}
         />
       </div>
-      <p
-        aria-live="polite"
-        {...stylex.props(styles.status, empty && styles.statusEmpty)}
-      >
-        {status}
-      </p>
+      {status}
     </search>
   )
 }
@@ -205,28 +240,20 @@ function ClearSlot({
  * places, which is the whole reason they are kept in separate lists.
  */
 function FeaturedCrests({
-  featured,
+  open,
+  covered,
   fieldId,
-  bookmark,
-  matchOf,
-  mode,
+  needle,
+  peek,
 }: {
-  readonly bookmark: Bookmark
-  readonly featured: readonly Entity[]
+  readonly covered: readonly CoveredRecord[]
   readonly fieldId: string
-  readonly matchOf: MatchOf
-  readonly mode: BookmarkMode
+  readonly needle: string
+  readonly open: readonly SearchableCharacter[]
+  readonly peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const t = useT()
-  const ordered = orderByMode(featured, mode)
-  const covered = ordered.filter((entry) => !isRevealed(entry, bookmark))
-  const matches = ordered.flatMap((entry) => {
-    if (!isRevealed(entry, bookmark)) {
-      return []
-    }
-    const match = matchOf(entry)
-    return match === undefined ? [] : [match]
-  })
+  const matches = matchesIn(open, needle)
 
   return (
     <CatalogueSection
@@ -239,10 +266,10 @@ function FeaturedCrests({
           {matches.map(({ entry, match }) => {
             return (
               <CharacterCard
-                key={entry.id}
-                entity={entry}
+                key={`open-${entry.id}`}
                 highlight={match.highlight}
-                revealed
+                peek={peek}
+                slot={{ open: true, record: entry }}
               />
             )
           })}
@@ -252,6 +279,7 @@ function FeaturedCrests({
       <FogBand
         covered={covered}
         headingId={`${fieldId}-fog`}
+        peek={peek}
       />
     </CatalogueSection>
   )
@@ -265,9 +293,11 @@ function FeaturedCrests({
 function FogBand({
   covered,
   headingId,
+  peek,
 }: {
-  readonly covered: readonly Entity[]
+  readonly covered: readonly CoveredRecord[]
   readonly headingId: string
+  readonly peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const t = useT()
 
@@ -289,9 +319,9 @@ function FogBand({
             {covered.map((entry) => {
               return (
                 <CharacterCard
-                  key={entry.id}
-                  entity={entry}
-                  revealed={false}
+                  key={`fog-${entry.handle}`}
+                  peek={peek}
+                  slot={{ open: false, covered: entry }}
                 />
               )
             })}

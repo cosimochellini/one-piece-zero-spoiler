@@ -1,4 +1,4 @@
-import { dots } from './primitives'
+import { dots } from '~/lib/svg/primitives'
 
 /**
  * The night sea of the fold drawing, in the same line as the record drawings

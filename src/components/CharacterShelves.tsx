@@ -1,31 +1,41 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import { type ReactElement, Suspense, use } from 'react'
 
 import { CatalogueSection } from '~/components/CatalogueSection'
 import { styles } from '~/components/CharacterGrid.styles'
-import type { Match, MatchOf } from '~/components/characterMatches'
+import { type Match, matchesIn } from '~/components/characterMatches'
 import { CharacterTile } from '~/components/CharacterTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import type { BookSection } from '~/data/characters'
-import { orderByMode } from '~/data/order'
-import type { Entity } from '~/data/types'
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import {
-  type Bookmark,
-  type BookmarkMode,
-  modeOf,
-} from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type {
+  CharacterView,
+  CoveredRecord,
+  ShelfView,
+  Slot,
+} from '~/lib/view/records'
 
-/** What a shelf needs: the arc it holds, the reader, and the live query. */
+/**
+ * The shelves, or the promise of them.
+ *
+ * The route hands over a promise so the three hundred and twenty-six tiles
+ * stream in behind the crests. A test hands over the array, because `use()`
+ * does not resume under jsdom inside an `act` scope — a classic thrown
+ * promise does, but `use` does not — and a streaming boundary that cannot be
+ * awaited would mean the shelves went untested altogether.
+ */
+export type ShelvesSource = Promise<readonly ShelfView[]> | readonly ShelfView[]
+
+/** What the shelves need: the arcs, the live query, and a way to ask. */
 export type CharacterShelvesProps = {
-  readonly bookmark: Bookmark
   /** Prefix for every heading id on the page, so the shelves cannot collide. */
   readonly fieldId: string
-  readonly matchOf: MatchOf
-  readonly searching: boolean
-  readonly sections: readonly BookSection[]
+  /** The query, already folded. Empty matches everything. */
+  readonly needle: string
+  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly shelves: ShelvesSource
+  /** How many are coming, so the pending state reserves their height. */
+  readonly shelfCount: number
 }
 
 /**
@@ -38,11 +48,11 @@ export type CharacterShelvesProps = {
  * itself answer the question the fog refuses to answer.
  */
 export function CharacterShelves({
-  sections,
+  shelves,
+  shelfCount,
   fieldId,
-  bookmark,
-  matchOf,
-  searching,
+  needle,
+  peek,
 }: CharacterShelvesProps): ReactElement {
   const t = useT()
 
@@ -52,40 +62,92 @@ export function CharacterShelves({
       lede={t('characters.bookLede')}
       title={t('characters.bookTitle')}
     >
-      {shelvesInOrder(sections, modeOf(bookmark)).map((section) => {
-        return (
-          <Shelf
-            key={section.arc.id}
-            bookmark={bookmark}
-            headingId={`${fieldId}-${section.arc.id}`}
-            matchOf={matchOf}
-            searching={searching}
-            section={section}
-          />
-        )
-      })}
+      <Suspense fallback={<ShelvesPending count={shelfCount} />}>
+        <Shelves
+          fieldId={fieldId}
+          needle={needle}
+          peek={peek}
+          shelves={shelves}
+        />
+      </Suspense>
     </CatalogueSection>
   )
 }
 
 /**
- * The shelves in the order the reader's unit reaches their arcs. The
- * sections come shelved by episode; a reader who counts in chapters gets
- * the same shelves sorted by chapter, so the open ones stay a prefix.
+ * The shelves once they are here. Keyed and labelled by position rather than
+ * by the arc's id: a covered shelf has no id to use, and the one it used to
+ * borrow put the covered arc's slug into the markup.
  */
-function shelvesInOrder(
-  sections: readonly BookSection[],
-  mode: BookmarkMode,
-): readonly BookSection[] {
-  const byArc = new Map(sections.map((section) => [section.arc.id, section]))
+function Shelves({
+  shelves,
+  fieldId,
+  needle,
+  peek,
+}: {
+  readonly fieldId: string
+  readonly needle: string
+  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly shelves: ShelvesSource
+}): ReactElement {
+  return (
+    <>
+      {useShelves(shelves).map((section, index) => {
+        // The heading id is built from the shelf's position, not the arc's:
+        // the id of a covered arc is its name slug, and it would end up in
+        // the markup on `aria-labelledby`. The React key is the arc's own
+        // identity — its id when it is open, its opaque handle when it is
+        // not — because a key has to survive the list being re-read.
+        const headingId = `${fieldId}-shelf-${String(index)}`
 
-  return orderByMode(
-    sections.map((section) => section.arc),
-    mode,
-  ).flatMap((arc) => {
-    const section = byArc.get(arc.id)
-    return section === undefined ? [] : [section]
-  })
+        return (
+          <Shelf
+            key={
+              section.arc.open ?
+                `open-${section.arc.record.id}`
+              : `fog-${section.arc.covered.handle}`
+            }
+            headingId={headingId}
+            needle={needle}
+            peek={peek}
+            section={section}
+          />
+        )
+      })}
+    </>
+  )
+}
+
+/**
+ * The shelves, waiting for them first if they are still on their way.
+ *
+ * Named as a hook because the lint rule reads names rather than bodies, and
+ * `use` is not a hook: it may sit in a branch, which is what lets the array
+ * form skip it entirely.
+ */
+function useShelves(source: ShelvesSource): readonly ShelfView[] {
+  return source instanceof Promise ? use(source) : source
+}
+
+/**
+ * The shelves' height before they arrive, so the page does not jump when they
+ * do. The same `content-visibility` box as a real shelf, for the same reason:
+ * the renderer skips what is far down the page.
+ */
+function ShelvesPending({ count }: { readonly count: number }): ReactElement {
+  return (
+    <>
+      {Array.from({ length: count }, (_, index) => {
+        return (
+          <div
+            key={index}
+            aria-hidden="true"
+            {...stylex.props(styles.shelf)}
+          />
+        )
+      })}
+    </>
+  )
 }
 
 /**
@@ -95,28 +157,18 @@ function shelvesInOrder(
  */
 function Shelf({
   section,
-  bookmark,
   headingId,
-  matchOf,
-  searching,
+  needle,
+  peek,
 }: {
-  readonly bookmark: Bookmark
   readonly headingId: string
-  readonly matchOf: MatchOf
-  readonly searching: boolean
-  readonly section: BookSection
+  readonly needle: string
+  readonly peek: (handle: string) => Promise<CharacterView>
+  readonly section: ShelfView
 }): null | ReactElement {
-  const characters = orderByMode(section.characters, modeOf(bookmark))
-  const shown = characters.flatMap((entry) => {
-    if (!isRevealed(entry, bookmark)) {
-      return []
-    }
-    const match = matchOf(entry)
-    return match === undefined ? [] : [match]
-  })
-  const covered = characters.filter((entry) => !isRevealed(entry, bookmark))
+  const shown = matchesIn(section.open, needle)
 
-  if (searching && shown.length === 0 && covered.length === 0) {
+  if (needle !== '' && shown.length === 0 && section.covered.length === 0) {
     return null
   }
 
@@ -127,12 +179,13 @@ function Shelf({
     >
       <ShelfHead
         arc={section.arc}
-        count={characters.length}
+        count={section.total}
         headingId={headingId}
-        revealed={isRevealed(section.arc, bookmark)}
+        peek={peek}
       />
       <ShelfTiles
-        covered={covered}
+        covered={section.covered}
+        peek={peek}
         shown={shown}
       />
     </section>
@@ -150,21 +203,21 @@ function ShelfHead({
   arc,
   count,
   headingId,
-  revealed,
+  peek,
 }: {
-  readonly arc: Entity
+  readonly arc: Slot<CharacterView>
   readonly count: number
   readonly headingId: string
-  readonly revealed: boolean
+  readonly peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
-  const { locale, t } = useLocale()
+  const t = useT()
   const threshold = useThreshold()
 
   return (
     <div {...stylex.props(styles.shelfHead)}>
       <SpoilerVeil
         density="inline"
-        gated={arc}
+        peek={peek}
         placeholder={
           <h3
             id={headingId}
@@ -173,18 +226,25 @@ function ShelfHead({
             {t('characters.sectionFogged')}
           </h3>
         }
-        revealed={revealed}
+        slot={arc}
       >
-        <h3
-          id={headingId}
-          {...stylex.props(styles.shelfTitle)}
-        >
-          {arc.name[locale]}
-        </h3>
+        {(record) => {
+          return (
+            <h3
+              id={headingId}
+              {...stylex.props(styles.shelfTitle)}
+            >
+              {record.name}
+            </h3>
+          )
+        }}
       </SpoilerVeil>
       <p {...stylex.props(styles.shelfMeta)}>
         <span {...stylex.props(styles.shelfEpisode)}>
-          {threshold('characters.sectionOpensAt', arc)}
+          {threshold(
+            'characters.sectionOpensAt',
+            arc.open ? arc.record : arc.covered,
+          )}
         </span>
         <span>
           {count === 1 ?
@@ -204,8 +264,10 @@ function ShelfHead({
 function ShelfTiles({
   shown,
   covered,
+  peek,
 }: {
-  readonly covered: readonly Entity[]
+  readonly covered: readonly CoveredRecord[]
+  readonly peek: (handle: string) => Promise<CharacterView>
   readonly shown: readonly Match[]
 }): ReactElement {
   return (
@@ -213,19 +275,19 @@ function ShelfTiles({
       {shown.map(({ entry, match }) => {
         return (
           <CharacterTile
-            key={entry.id}
-            entity={entry}
+            key={`open-${entry.id}`}
             highlight={match.highlight}
-            revealed
+            peek={peek}
+            slot={{ open: true, record: entry }}
           />
         )
       })}
       {covered.map((entry) => {
         return (
           <CharacterTile
-            key={entry.id}
-            entity={entry}
-            revealed={false}
+            key={`fog-${entry.handle}`}
+            peek={peek}
+            slot={{ open: false, covered: entry }}
           />
         )
       })}

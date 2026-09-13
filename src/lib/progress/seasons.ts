@@ -1,4 +1,4 @@
-import { EPISODE_CEILING, FIRST_EPISODE } from '~/lib/progress/bounds'
+import { EPISODE_CEILING, FIRST_EPISODE } from './bounds'
 
 /**
  * The anime's seasons, as the English-language Wikipedia "List of One Piece
@@ -114,7 +114,15 @@ export function locateEpisode(absolute: number): null | SeasonPosition {
   return { season: season.number, episode: absolute - season.first + 1 }
 }
 
+// Two digits, so a season code is the same width whatever the numbers are.
+const CODE_WIDTH = 2
+
+/** One number of a season code, padded to the code's width. */
+function pad(value: number): string {
+  return String(value).padStart(CODE_WIDTH, '0')
+}
+
 /** `S02E03`: both numbers padded to two digits, more when they need more. */
 export function formatSeasonCode(season: number, episode: number): string {
-  return `S${String(season).padStart(2, '0')}E${String(episode).padStart(2, '0')}`
+  return `S${pad(season)}E${pad(episode)}`
 }

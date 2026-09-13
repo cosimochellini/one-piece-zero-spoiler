@@ -1,23 +1,17 @@
+import type { Stroke } from '~/lib/view/records'
+
 /**
- * One stroke of a line drawing: an SVG path and how it is inked.
+ * Re-exported under the archive's own name so a saga's drawings read as
+ * strokes without naming the view models the browser takes them as.
+ */
+
+/**
+ * A set of drawings keyed by the id of the record each was drawn for.
  *
- * `accent` takes the drawing's one colour, `soft` the second ink like an
- * unmarked stroke, `ambient` the muted rule ink for ground, water and other
- * things that are merely there. `dashed` is for the ambient lines that mark
- * a course or a shadow.
+ * A stroke itself is declared with the view models rather than here: a
+ * drawing crosses the wire as its strokes, so the shape belongs to both
+ * sides, and declaring it twice would leave two definitions to drift apart.
  */
-export type Role = 'accent' | 'ambient' | 'soft'
-
-/**
- * `transform` is for a stroke that repeats around a centre — the four blades
- * of a windmill are one path rotated — so the shape is written once.
- */
-export type Stroke = {
-  readonly d: string
-  readonly dashed?: boolean
-  readonly role?: Role
-  readonly transform?: string
-}
-
-/** A set of drawings keyed by the id of the record each was drawn for. */
 export type Drawings = Readonly<Record<string, readonly Stroke[]>>
+
+export { type Stroke } from '~/lib/view/records'

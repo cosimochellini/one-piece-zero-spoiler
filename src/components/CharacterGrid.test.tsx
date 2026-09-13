@@ -1,82 +1,96 @@
-import { type RenderResult, screen, within } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
-import type { BookSection } from '~/data/characters'
-import type { Entity } from '~/data/types'
-import { ep, renderWithProviders } from '~/test/providers'
+import type { Locale } from '~/i18n/locales'
+import type {
+  CoveredRecord,
+  SearchableCharacter,
+  ShelfView,
+} from '~/lib/view/records'
+import {
+  shelf as aShelf,
+  at,
+  coveredRecord,
+  coveredSlot,
+  openSlot,
+  peekPending,
+  record,
+  searchable,
+} from '~/test/fixtures'
+import { renderWithProviders } from '~/test/providers'
 
 import { CharacterGrid } from './CharacterGrid'
 
-const entries: readonly Entity[] = [
-  {
-    id: 'monkey-d-luffy',
-    kind: 'character',
-    revealedAtEpisode: 1,
-    revealedAtChapter: 1,
-    name: { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' },
-    summary: { it: 'x', en: 'x' },
-    visual: { art: 'monkey-d-luffy', tint: 'red' },
-  },
-  {
-    id: 'nami',
-    kind: 'character',
-    revealedAtEpisode: 5,
-    revealedAtChapter: 5,
-    name: { it: 'Nami', en: 'Nami' },
-    summary: { it: 'x', en: 'x' },
-    visual: { art: 'nami', tint: 'orange' },
-  },
-  {
-    id: 'nico-robin',
-    kind: 'character',
-    revealedAtEpisode: 130,
-    revealedAtChapter: 130,
-    name: { it: 'Nico Robin', en: 'Nico Robin' },
-    summary: { it: 'x', en: 'x' },
-    visual: { art: 'nico-robin', tint: 'violet' },
-  },
-]
+const luffy = searchable({
+  id: 'monkey-d-luffy',
+  name: 'Monkey D. Luffy',
+  folded: 'monkey d. luffy',
+  aliases: ['monkey d. rufy'],
+  ...at(1),
+})
+const nami = searchable({
+  id: 'nami',
+  name: 'Nami',
+  folded: 'nami',
+  aliases: [],
+  ...at(5),
+})
+const robinCovered = coveredRecord({ ...at(130) })
 
-const arc: Entity = {
+const eastBlueArc = record({
   id: 'east-blue',
   kind: 'arc',
-  revealedAtEpisode: 1,
-  revealedAtChapter: 1,
-  name: { it: 'Saga del East Blue', en: 'East Blue Saga' },
-  summary: { it: 'x', en: 'x' },
-  visual: { art: 'east-blue', tint: 'ivory' },
-}
+  name: 'East Blue Saga',
+  ...at(1),
+})
 
-const lateArc: Entity = {
-  id: 'alabasta',
-  kind: 'arc',
-  revealedAtEpisode: 92,
-  revealedAtChapter: 92,
-  name: { it: 'Saga di Alabasta', en: 'Alabasta Saga' },
-  summary: { it: 'x', en: 'x' },
-  visual: { art: 'alabasta', tint: 'sand' },
-}
+const eastBlue: ShelfView = aShelf({
+  arc: openSlot(eastBlueArc),
+  total: 2,
+  open: [luffy, nami],
+  covered: [],
+})
+const alabasta: ShelfView = aShelf({
+  arc: coveredSlot({ kind: 'arc', ...at(92) }),
+  total: 1,
+  open: [],
+  covered: [robinCovered],
+})
 
-// Luffy and Nami on the first shelf, Robin alone on a covered one.
-const sections: readonly BookSection[] = [
-  { arc, characters: entries.slice(0, 2) },
-  { arc: lateArc, characters: entries.slice(2) },
-]
-
-function book(
-  episode: null | number,
-  locale: 'en' | 'it' = 'en',
-): RenderResult {
-  const bookmark = episode === null ? null : ep(episode)
-  return renderWithProviders(
+/** The signal book, with the shelves already here rather than streaming. */
+function book({
+  featuredCovered = [robinCovered],
+  featuredOpen = [luffy, nami],
+  locale = 'en',
+  shelves = [eastBlue, alabasta],
+}: {
+  readonly featuredCovered?: readonly CoveredRecord[]
+  readonly featuredOpen?: readonly SearchableCharacter[]
+  readonly locale?: Locale
+  readonly shelves?: readonly ShelfView[]
+} = {}): void {
+  renderWithProviders(
     <CharacterGrid
-      bookmark={bookmark}
-      featured={entries}
-      sections={sections}
+      featuredCovered={featuredCovered}
+      featuredOpen={featuredOpen}
+      peek={peekPending()}
+      shelfCount={shelves.length}
+      shelves={shelves}
     />,
-    { bookmark, locale },
+    { locale },
   )
+}
+
+/**
+ * Shelves that never arrive, so the pending state is the one under test. The
+ * settled case passes the array instead: `use()` does not resume under jsdom
+ * inside an `act` scope.
+ */
+async function onTheirWay(): Promise<readonly ShelfView[]> {
+  return new Promise(() => {
+    // Never settles.
+  })
 }
 
 function fogBand(): HTMLElement {
@@ -89,14 +103,12 @@ function shelf(name: RegExp): HTMLElement {
 
 describe('CharacterGrid', () => {
   it('lists the open characters as links to their pages and fogs the rest', () => {
-    book(10)
+    book()
 
     // Once as a crest and once as a tile on the East Blue shelf.
-    const luffyLinks = screen.getAllByRole('link', {
-      name: /Monkey D\. Luffy/u,
-    })
+    const links = screen.getAllByRole('link', { name: /Monkey D\. Luffy/u })
 
-    for (const link of luffyLinks) {
+    for (const link of links) {
       expect(link).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
     }
 
@@ -106,43 +118,20 @@ describe('CharacterGrid', () => {
       screen.queryByRole('link', { name: /Nico Robin/u }),
     ).not.toBeInTheDocument()
     expect(fogBand()).toHaveTextContent('1 under fog')
-    // The covered name is not in the DOM at all, only its episode is.
-    expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
+    // The covered name never reached the browser, so there is nothing to hide.
     expect(within(fogBand()).getByText('Spoiler')).toBeInTheDocument()
     expect(fogBand().querySelectorAll(':scope svg svg')).toHaveLength(0)
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
-  it('orders the shelves by the unit the reader counts in', () => {
-    // A chapter bookmark: the East Blue shelf (chapter 1) still comes before
-    // the Alabasta one (chapter 92 in this fixture), and both are on the page.
-    const chapter = { mode: 'chapter', chapter: 200 } as const
-    renderWithProviders(
-      <CharacterGrid
-        bookmark={chapter}
-        featured={entries}
-        sections={sections}
-      />,
-      { bookmark: chapter },
-    )
-
-    const headings = screen
-      .getAllByRole('heading', { level: 3 })
-      .map((heading) => heading.textContent)
-
-    expect(headings.indexOf('East Blue Saga')).toBeLessThan(
-      headings.indexOf('Alabasta Saga'),
-    )
-  })
-
   it('shelves the tiles by arc and veils the heading of a covered shelf', () => {
-    book(10)
+    book()
 
-    const eastBlue = shelf(/East Blue Saga/u)
+    const open = shelf(/East Blue Saga/u)
 
-    expect(within(eastBlue).getByText('From episode 1')).toBeVisible()
-    expect(within(eastBlue).getByText('2 characters')).toBeVisible()
-    expect(within(eastBlue).getAllByRole('link')).toHaveLength(2)
+    expect(within(open).getByText('From episode 1')).toBeVisible()
+    expect(within(open).getByText('2 characters')).toBeVisible()
+    expect(within(open).getAllByRole('link')).toHaveLength(2)
 
     // The Alabasta shelf is covered with everyone on it: no arc name, no
     // link, no drawing, and its one tile says only the episode.
@@ -154,9 +143,19 @@ describe('CharacterGrid', () => {
     expect(within(covered).getByText('Episode 130')).toBeVisible()
   })
 
+  it('keeps the covered arc’s slug out of the shelf’s own id', () => {
+    book()
+
+    // The heading id used to be built from the arc's id, so a covered shelf
+    // carried the covered arc's slug in the markup.
+    const covered = shelf(/An arc under fog/u)
+
+    expect(covered.getAttribute('aria-labelledby')).not.toContain('alabasta')
+  })
+
   it('filters the open characters as the reader types, and marks the match', async () => {
     const user = userEvent.setup()
-    book(10)
+    book()
 
     await user.type(screen.getByRole('searchbox'), 'nam')
 
@@ -170,15 +169,28 @@ describe('CharacterGrid', () => {
     }
   })
 
+  it('matches the other locale’s name without marking it', async () => {
+    const user = userEvent.setup()
+    book()
+
+    await user.type(screen.getByRole('searchbox'), 'rufy')
+
+    // An Italian reader who knows him as Rufy finds Luffy; the mark would
+    // have to point at letters that are not on the card, so there is none.
+    expect(
+      screen.getAllByRole('link', { name: /Luffy/u }).length,
+    ).toBeGreaterThan(0)
+    expect(screen.queryByText('Ruf')).not.toBeInTheDocument()
+  })
+
   it('never lets the fog answer a search', async () => {
     const user = userEvent.setup()
-    book(10)
+    book()
 
     await user.type(screen.getByRole('searchbox'), 'robin')
 
     // The covered card and the covered shelf are still there and unchanged;
     // the open results are empty, and the page says so in the reader's words.
-    expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
     expect(fogBand()).toHaveTextContent('1 under fog')
     expect(shelf(/An arc under fog/u)).toBeInTheDocument()
     // The East Blue shelf has nothing open that matches and nothing covered,
@@ -187,16 +199,14 @@ describe('CharacterGrid', () => {
       screen.queryByRole('region', { name: /East Blue Saga/u }),
     ).not.toBeInTheDocument()
 
-    const empty = await screen.findByText(
-      'No open character is called “robin”.',
-    )
+    const none = await screen.findByText('No open character is called “robin”.')
 
-    expect(empty).toBeInTheDocument()
+    expect(none).toBeInTheDocument()
   })
 
   it('announces the count once the typing has settled', async () => {
     const user = userEvent.setup()
-    book(10)
+    book()
 
     await user.type(screen.getByRole('searchbox'), 'na')
 
@@ -204,14 +214,14 @@ describe('CharacterGrid', () => {
     // screen reader hears one count and not one per letter.
     expect(screen.getByText('2 of 2 open characters shown')).toBeVisible()
 
-    const settled = await screen.findByText('1 of 2 open characters shown')
+    const announced = await screen.findByText('1 of 2 open characters shown')
 
-    expect(settled).toBeVisible()
+    expect(announced).toBeVisible()
   })
 
   it('clears the search from the button beside the field', async () => {
     const user = userEvent.setup()
-    book(10)
+    book()
 
     const field = screen.getByRole('searchbox')
 
@@ -227,8 +237,27 @@ describe('CharacterGrid', () => {
     expect(screen.getAllByRole('link', { name: /Luffy/u })).toHaveLength(2)
   })
 
+  it('reserves the shelves’ height, and stays usable, while they are on their way', () => {
+    renderWithProviders(
+      <CharacterGrid
+        featuredCovered={[robinCovered]}
+        featuredOpen={[luffy, nami]}
+        peek={peekPending()}
+        shelfCount={2}
+        shelves={onTheirWay()}
+      />,
+    )
+
+    // The search field and the crests are up before the shelves arrive.
+    expect(screen.getByRole('searchbox')).toBeInTheDocument()
+    expect(screen.getAllByRole('link', { name: /Nami/u })).toHaveLength(1)
+    expect(
+      screen.queryByRole('region', { name: /East Blue/u }),
+    ).not.toBeInTheDocument()
+  })
+
   it('says so when nothing is under fog', () => {
-    book(1200)
+    book({ featuredCovered: [], shelves: [eastBlue] })
 
     expect(
       screen.getByText('Nothing is under fog. Every character is open to you.'),
@@ -236,7 +265,11 @@ describe('CharacterGrid', () => {
   })
 
   it('speaks the active locale', () => {
-    book(null, 'it')
+    book({
+      featuredOpen: [],
+      featuredCovered: [robinCovered, coveredRecord(), coveredRecord()],
+      locale: 'it',
+    })
 
     expect(screen.getByLabelText('Trova un personaggio')).toBeInTheDocument()
     expect(screen.getByText('3 nella nebbia')).toBeInTheDocument()

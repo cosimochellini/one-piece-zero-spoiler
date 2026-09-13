@@ -56,12 +56,20 @@ export const itDictionary: Dictionary = {
   'veil.locked.chapter': 'Nella nebbia fino al capitolo {threshold}',
   'veil.reveal': 'Dirada la nebbia comunque',
   'veil.revealShort': 'Dirada',
+  'veil.revealing': 'Dirado…',
+  'veil.peekFailed': 'Non è riuscito — riprova',
   'veil.placeholder': 'Spoiler',
 
   'chart.title': 'La rotta, fin dove hai navigato',
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
+  'chart.foggedDescription.episode':
+    'Una voce archiviata all’episodio {threshold}, oltre il tuo segnalibro.',
+  'chart.foggedDescription.season':
+    'Una voce archiviata a {threshold}, oltre il tuo segnalibro.',
+  'chart.foggedDescription.chapter':
+    'Una voce archiviata al capitolo {threshold}, oltre il tuo segnalibro.',
   'chart.hereSet.episode': 'Sei qui · episodio {threshold}',
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',

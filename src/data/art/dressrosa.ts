@@ -1,4 +1,13 @@
-import { circle, dots, ellipse, polygon, SEA, shadow, star } from './primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  polygon,
+  SEA,
+  shadow,
+  star,
+} from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the dressrosa stretch of the route. */

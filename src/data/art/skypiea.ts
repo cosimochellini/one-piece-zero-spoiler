@@ -1,4 +1,5 @@
-import { circle, dots, ellipse, SEA, shadow } from './primitives'
+import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
+
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the skypiea stretch of the route. */

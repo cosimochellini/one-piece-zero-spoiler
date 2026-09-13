@@ -2,8 +2,6 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { ArtStrokes } from '~/components/ChartArt'
-import { ART_VIEWBOX, tintOf } from '~/components/drawing'
-import { emblemStyles } from '~/components/emblem.styles'
 import {
   PLATE_ART_BOX,
   PLATE_CORNERS,
@@ -12,8 +10,10 @@ import {
   PLATE_INNER,
   PLATE_NORTH,
   PLATE_VIEWBOX,
-} from '~/data/art/plate'
-import type { Visual } from '~/data/types'
+} from '~/components/chrome/plate'
+import { ART_VIEWBOX, tintOf } from '~/components/drawing'
+import { emblemStyles } from '~/components/emblem.styles'
+import type { Drawing } from '~/lib/view/records'
 
 /**
  * The plate itself: the border, the dashed inner rule, the graticule, the
@@ -75,7 +75,7 @@ function Frame({ hue }: { readonly hue: null | string }): ReactElement {
  * the middle and the one colour change. Nothing here is a flag or an
  * official mark: the plate is the site's own, built from the drawing the
  * route already shows. The frame's own geometry is data in
- * `~/data/art/plate`, as every drawing on the site is.
+ * `~/components/chrome/plate`, as every drawing on the site is.
  *
  * The same 2px non-scaling stroke as every other drawing, so a plate on a
  * card and a plate filling a column are drawn with the same pen.
@@ -87,7 +87,7 @@ function Frame({ hue }: { readonly hue: null | string }): ReactElement {
 export function PortPlate({
   visual,
 }: {
-  readonly visual?: Visual
+  readonly visual?: Drawing
 }): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
@@ -107,7 +107,7 @@ export function PortPlate({
           y={PLATE_ART_BOX.y}
         >
           <ArtStrokes
-            art={visual.art}
+            strokes={visual.strokes}
             tint={visual.tint}
           />
         </svg>

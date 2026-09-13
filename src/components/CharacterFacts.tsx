@@ -1,56 +1,49 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
-import type { CharacterDossier, LocalizedText, Timeline } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import { type Bookmark, modeOf } from '~/lib/progress/episode'
-import { latestAt } from '~/lib/progress/spoiler'
+import type { CharacterFacts as Facts } from '~/lib/view/records'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
-/** The dossier to read the facts off, and the episode to read them at. */
-export type CharacterFactsProps = {
-  readonly bookmark: Bookmark
-  readonly dossier: CharacterDossier
-}
+/** The facts as they stand at the reader's bookmark. */
+export type CharacterFactsProps = { readonly facts: Facts }
 
 /**
  * The dossier's facts as a definition list, each as it stands at the
  * reader's episode.
  *
- * Every fact is a timeline and the row shows the latest entry the reader has
- * reached, so Robin's affiliation changes when she changes it and a bounty is
- * the one on the poster the reader has seen. A fact with no entry yet is not
- * a row: an empty "Bounty" line would say that a bounty is coming, which is
- * itself a spoiler. Computed at render from the live bookmark, so an entry
- * above the reader's episode is never in the DOM.
+ * Every fact is a timeline in the archive, and the row shows the latest entry
+ * the reader has reached, so Robin's affiliation changes when she changes it
+ * and a bounty is the one on the poster the reader has seen. A fact with no
+ * entry yet is not a row: an empty "Bounty" line would say that a bounty is
+ * coming, which is itself a spoiler. The timelines are resolved on the
+ * server, so an entry above the reader's episode is not in the payload — not
+ * merely absent from the DOM.
+ *
+ * What stays here is what belongs to the reader's language rather than the
+ * archive: the labels, and the digit grouping of a bounty.
  */
 export function CharacterFacts({
-  dossier,
-  bookmark,
+  facts,
 }: CharacterFactsProps): null | ReactElement {
   const { locale, t } = useLocale()
 
   // The timelines count in anime episodes. A reader who counts in chapters
   // reaches none of their entries, and is told why instead of shown nothing.
-  if (modeOf(bookmark) === 'chapter') {
+  if (facts.mode === 'chapterNote') {
     return (
       <p {...stylex.props(styles.note)}>{t('character.factsInEpisodes')}</p>
     )
   }
 
-  const known = <T,>(timeline: Timeline<T> | undefined): T | undefined =>
-    timeline === undefined ? undefined : latestAt(timeline, bookmark)
-  const words = (value: LocalizedText | undefined): string | undefined =>
-    value?.[locale]
-
   const rows: readonly (readonly [string, string | undefined])[] = [
-    [t('character.epithet'), words(known(dossier.epithet))],
-    [t('character.affiliation'), words(known(dossier.affiliation))],
-    [t('character.origin'), words(known(dossier.origin))],
-    [t('character.devilFruit'), words(known(dossier.devilFruit))],
-    [t('character.bounty'), formatBounty(known(dossier.bounty), locale, t)],
+    [t('character.epithet'), facts.epithet],
+    [t('character.affiliation'), facts.affiliation],
+    [t('character.origin'), facts.origin],
+    [t('character.devilFruit'), facts.devilFruit],
+    [t('character.bounty'), formatBounty(facts.bounty, locale, t)],
   ]
   const shown = rows.filter(
     (row): row is readonly [string, string] => row[1] !== undefined,

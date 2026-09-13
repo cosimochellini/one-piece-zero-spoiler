@@ -10,8 +10,6 @@ import { wanoArt } from './wano'
 import { waterSevenArt } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
 
-export type { Stroke } from './stroke'
-
 /**
  * Every line drawing, one per record, keyed by the record's id. The drawings
  * are data rather than JSX so the rules live in one renderer

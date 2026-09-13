@@ -50,12 +50,25 @@ const CONFIGS = [
 // Content, not code: the archive records, the drawings, the dictionaries and
 // the design tokens. They are long by nature, every number in them is the
 // value itself, and the same word recurs because the same word is correct.
-const RECORDS = ['src/data/**', 'src/i18n/dictionaries/**']
+const RECORDS = [
+  'src/data/**',
+  'src/i18n/dictionaries/**',
+  // The page's own furniture — the seal, the plate frame, the route rail, the
+  // night sea — and the geometry every drawing is built from. Coordinates too,
+  // and they sit outside `~/data` because they name no record and so may reach
+  // the browser (issue #12).
+  'src/components/chrome/**',
+  'src/lib/svg/**',
+]
 const TOKENS = ['src/**/*.stylex.ts']
 
 // Natural order, case-insensitive: the one order a reader reproduces without
 // running a tool. `item2` before `item10`, `Ace` beside `ace`.
 const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
+
+// Said three times below, once per block that bans a parent-relative import.
+const ALIAS_ONLY =
+  'Import through the `~/` alias instead of a parent-relative path.'
 
 export default defineConfig(
   // Global ignores. `globalIgnores` is the only form that ignores rather than
@@ -162,15 +175,7 @@ export default defineConfig(
       // should stay free to change.
       'no-restricted-imports': [
         'error',
-        {
-          patterns: [
-            {
-              regex: String.raw`^\.\./`,
-              message:
-                'Import through the `~/` alias instead of a parent-relative path.',
-            },
-          ],
-        },
+        { patterns: [{ regex: String.raw`^\.\./`, message: ALIAS_ONLY }] },
       ],
     },
   },
@@ -717,7 +722,7 @@ export default defineConfig(
   // `polygon(cx, cy, r, sides)` reads as geometry, and the options object the
   // three-parameter ceiling would force reads as bookkeeping.
   {
-    files: ['src/data/art/primitives.ts'],
+    files: ['src/lib/svg/primitives.ts'],
     rules: { '@typescript-eslint/max-params': ['error', { max: 4 }] },
   },
 
@@ -771,6 +776,74 @@ export default defineConfig(
       'sonarjs/no-os-command-from-path': 'off',
       'sonarjs/os-command': 'off',
       'jsdoc/require-jsdoc': 'off',
+    },
+  },
+
+  // -------------------------------------------------------------------------
+  // The archive stays on the server (issue #12).
+  //
+  // 800 KB of records and drawings used to be compiled into the client bundle,
+  // where a visitor with no bookmark could read the lot. The build gate
+  // (`scripts/archive-gate.mjs`) catches a regression after the fact, by
+  // grepping the emitted chunks; this catches it at the import, which is where
+  // a reviewer can see it.
+  //
+  // Both blocks repeat the parent-relative ban from the base rules: a later
+  // `no-restricted-imports` replaces the earlier one rather than adding to it.
+  // -------------------------------------------------------------------------
+  {
+    files: [...ROUTES, 'src/components/**/*.{ts,tsx}', 'src/lib/**/*.{ts,tsx}'],
+    ignores: TESTS,
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
+            {
+              group: ['~/data', '~/data/*', '~/data/**'],
+              message:
+                'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  // A route may call a server function; nothing below it may. Under Vitest the
+  // Start plugin is deliberately absent, so a component that called one would
+  // throw out of `getStartContext()` rather than run — a `peek` closure passed
+  // as a prop needs no mock and no runtime.
+  {
+    files: ['src/components/**/*.{ts,tsx}', 'src/lib/**/*.{ts,tsx}'],
+    // The one module whose whole job is to answer on whichever side is asking.
+    ignores: [...TESTS, 'src/lib/progress/readBookmark.ts'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            { regex: String.raw`^\.\./`, message: ALIAS_ONLY },
+            {
+              group: ['~/data', '~/data/*', '~/data/**'],
+              message:
+                'The archive stays on the server. Take a view model from `~/lib/view/records` instead (issue #12).',
+            },
+            {
+              group: [
+                '@tanstack/react-start',
+                '@tanstack/react-start/*',
+                '~/server',
+                '~/server/*',
+                '~/server/**',
+              ],
+              message:
+                'Server functions are called from route loaders only. Take a `peek` closure as a prop instead.',
+            },
+          ],
+        },
+      ],
     },
   },
 

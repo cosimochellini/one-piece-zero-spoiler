@@ -2,8 +2,6 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { ArtStrokes } from '~/components/ChartArt'
-import { ART_VIEWBOX, tintOf } from '~/components/drawing'
-import { emblemStyles } from '~/components/emblem.styles'
 import {
   CREST_ART_BOX,
   CREST_BEZEL,
@@ -11,8 +9,10 @@ import {
   CREST_INNER_RING,
   CREST_RING,
   CREST_VIEWBOX,
-} from '~/data/art/crest'
-import type { Visual } from '~/data/types'
+} from '~/components/chrome/crest'
+import { ART_VIEWBOX, tintOf } from '~/components/drawing'
+import { emblemStyles } from '~/components/emblem.styles'
+import type { Drawing } from '~/lib/view/records'
 
 /**
  * A character's crest: the drawing that stands for them, set inside a seal.
@@ -24,7 +24,7 @@ import type { Visual } from '~/data/types'
  * in the middle and the one colour change. Nothing here is a face and nothing
  * is an official mark: the emblem is the site's own, built from the drawing
  * the route already shows. The seal's own geometry is data in
- * `~/data/art/crest`, as every drawing on the site is.
+ * `~/components/chrome/crest`, as every drawing on the site is.
  *
  * The same 2px non-scaling stroke as every other drawing, so a crest on a
  * 7rem card and a crest filling half a page are drawn with the same pen.
@@ -36,7 +36,7 @@ import type { Visual } from '~/data/types'
 export function CharacterCrest({
   visual,
 }: {
-  readonly visual?: Visual
+  readonly visual?: Drawing
 }): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
@@ -85,7 +85,7 @@ export function CharacterCrest({
           y={CREST_ART_BOX.y}
         >
           <ArtStrokes
-            art={visual.art}
+            strokes={visual.strokes}
             tint={visual.tint}
           />
         </svg>

@@ -52,69 +52,57 @@ curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
 
 Send the same request with `Cookie: opzs_ep=650` and the count is `1` and the
 title is the name. The decision is taken once, on the server, before the
-document exists:
+document exists — and the records it decides against never leave the server at
+all:
 
 ```mermaid
 flowchart LR
-  A["Request + opzs_ep cookie"] --> B["beforeLoad: readBookmark()"]
-  B --> C["isRevealed() per record"]
-  C --> D["HTML with revealed records only"]
+  A["Request + opzs_ep cookie"] --> B["Loader calls a server function"]
+  B --> C["isRevealed() per record, on the server"]
+  C --> D["Revealed records, in the route's locale"]
+  C --> E["Covered records: two thresholds and an opaque handle"]
+  D --> F["HTML, and a payload with nothing else in it"]
+  E --> F
 ```
+
+The archive is 356 records and 356 line drawings — about 800 KB of TypeScript.
+None of it is compiled into the client bundle. A route loader reads the cookie
+out of the request and sends back the records at or below the bookmark, with
+their strings already resolved to the page's locale and their drawings already
+resolved to stroke paths. A record the reader has not reached crosses the wire
+as two numbers and an opaque handle:
 
 ```ts
-export const readBookmark: () => Bookmark = createIsomorphicFn()
-  .server((): Bookmark => parseBookmark(getCookie(EPISODE_COOKIE)))
-  .client((): Bookmark =>
-    parseBookmark(parseCookieHeader(document.cookie).get(EPISODE_COOKIE)),
-  )
+export type CoveredRecord = {
+  readonly handle: string
+  readonly kind: EntityKind
+  readonly revealedAtEpisode: number
+  readonly revealedAtChapter: number
+}
 ```
 
-That runs in `beforeLoad` of the root route, so the first paint is already
-correct. Reading the cookie in an effect would paint the uncovered page and
-cover it one frame later, which is itself the spoiler.
+No id, because the id is the name slug: `/characters/trafalgar-law` in a `key`,
+an `href` or a DOM `id` spells the name the fog is for. The handle is the
+record's index in one canonical order, written in base 36, and the index-to-id
+table exists only in the server bundle.
 
-Two ways of hiding, picked per surface:
+Every covered surface is a placeholder rather than a blur over the real thing: a
+bare seal, the word "Spoiler", and the threshold, because "something opens at
+episode 392" is the promise and not the spoiler. The covered text is not in the
+DOM for find-in-page to turn up, and it is not in the payload behind it either.
 
-- **Blur plus `inert` and `aria-hidden`** on the route chart, where the covered
-  text stays in the DOM but is unreachable by keyboard, screen reader or
-  drag-select.
-- **A placeholder** on character and place pages, where the covered name is
-  absent from the served HTML entirely and only mounts on the client once the
-  fog is lifted. A covered card also carries no link, because the slug would
-  spell the name.
+The cost is one round trip. Moving the bookmark used to be instant because every
+record was already in the browser; it is now a request, made inside a
+`useTransition` so the page the reader is looking at — already correct, already
+censored — stays on screen until the new one is ready, and the horizon line and
+the records it divides commit together.
 
-## Where you are is where the fog starts
-
-The bookmark lives in one cookie, `opzs_ep`, and it has three grammars, because
-readers count in three different units:
-
-| Value   | Means               |
-| ------- | ------------------- |
-| `650`   | anime episode 650   |
-| `s2e3`  | season 2, episode 3 |
-| `c1044` | manga chapter 1044  |
-
-Parsing fails closed. A missing cookie, a corrupt one, or a number outside
-1–1300 hides everything rather than revealing it.
-
-Every record carries two thresholds, `revealedAtEpisode` and
-`revealedAtChapter`. A chapter bookmark is read against the chapter, an episode
-or season bookmark against the episode, and a season is resolved to an absolute
-episode through a table of the 22 anime seasons. There is no conversion between
-units: a reader picks one, and every threshold on the site is then stated in
-that unit.
-
-Ordering follows the reader's unit too, which matters more than it sounds.
-Shanks is on the first page of the manga but appears in the fourth episode of
-the anime, so a list sorted by episode is not the same list sorted by chapter.
-Sorting per unit is what keeps the open records a contiguous prefix, which in
-turn lets the reader's position be a single row on the chart rather than a
-marker interpolated along a path.
-
-The search field obeys the same rule. It filters open characters only, and it
-matches only the epithets the reader has already reached — so "Whitebeard" finds
-Edward Newgate after episode 152 and not before. A covered card that appeared
-when its name was typed would confirm the name.
+The search field obeys the same rule, and now by construction rather than by
+discipline: a covered character is not on the page to be searched. It matches
+only the epithets the reader has already reached — so "Whitebeard" finds Edward
+Newgate after episode 152 and not before — and those are gated on the server and
+sent already folded, so an epithet the reader has not reached is not in the
+browser at all rather than there and declined.
 
 ## Aboard
 
@@ -191,6 +179,10 @@ runtime mistakes at all:
 What the compiler cannot hold, the test suite does. These are editorial
 invariants, checked on every run:
 
+- nothing in a payload names a record the reader has not reached, no handle can
+  be read back into a name, and a covered record carries no id — checked over
+  all 356 of them, because one handle that happened to be `btoa(id)` would undo
+  the whole arrangement;
 - ids are unique, thresholds sit inside the allowed range, and every record is
   translated in both locales;
 - a record's drawing is its own, never borrowed from another record;
@@ -227,13 +219,39 @@ nothing, so it fails as a test instead.
   here is server-rendered by one.
 - In CI the pull request title reaches the validator through the environment,
   never through template interpolation, because a title is attacker-controlled.
+- The server functions that serve the archive sit behind a CSRF middleware, so
+  another origin cannot ask them on a reader's behalf.
+
+**What the fog is and is not.** It hides the story from someone reading the
+site, and it is honest about the rest. The "lift the fog anyway" control is a
+deliberate escape hatch: it asks the server for one record, by handle, and a
+script could walk every handle on a page and rebuild the archive in a few
+hundred requests. What changed is the shape of that: it used to be one `curl` of
+a cacheable, crawlable static asset, and it is now same-origin POSTs to a
+function — logged, rate-limitable, and not something a search engine indexes on
+its own.
 
 ### Performance
 
+- **The archive is not in the bundle.** Moving it behind the loaders took the
+  client JavaScript from 1,048,559 bytes to 449,410 — and 318 KB of what is left
+  is React. A reader at episode 45 downloads the ten records they have reached,
+  not all 356.
+- Payloads carry one locale. A record used to ship its Italian and English name
+  and summary side by side; it now carries the page's own.
+- The shelves — 326 tiles with a drawing each, below the fold — are returned
+  from the loader as an un-awaited promise and stream into a `<Suspense>`
+  boundary, so the search field and the crests above them are up first. The
+  landing chart, the ship's log and a character's dossier are awaited instead:
+  they are the page, and a reader with scripting off should get them whole.
+- Search runs on names folded once by the server, so a keystroke costs one
+  folded query and a few hundred `indexOf` calls, and the list behind the field
+  is deferred while the field itself never is.
 - Three self-hosted variable font families, five woff2 files, each with a
   metric-matched fallback face so the `font-display: swap` handover does not
   reflow the page.
-- Immutable one-year cache headers on assets and fonts.
+- Immutable one-year cache headers on assets and fonts. The archive's own
+  responses vary by cookie and are never shared-cached.
 
 ### Localization
 
@@ -257,18 +275,19 @@ than a dependency's postinstall, so they arrive on a plain install without the
 project allowing install scripts. `LEFTHOOK=0 git commit` skips them for one
 command.
 
-| Script                                      | Does                                       |
-| ------------------------------------------- | ------------------------------------------ |
-| `npm run dev`                               | Dev server                                 |
-| `npm run build`                             | Production build                           |
-| `npm start`                                 | Serve the production build                 |
-| `npm run typecheck`                         | `tsc --noEmit`                             |
-| `npm run lint` / `lint:fix`                 | ESLint, type-aware, zero warnings allowed  |
-| `npm run format` / `format:check`           | Prettier                                   |
-| `npm test` / `test:watch` / `test:coverage` | Vitest                                     |
-| `npm run gate:react-doctor`                 | Blocking react-doctor health gate          |
-| `npm run gate:fallow`                       | Blocking fallow codebase-intelligence gate |
-| `npm run check`                             | All of the above, in the order CI runs it  |
+| Script                                      | Does                                            |
+| ------------------------------------------- | ----------------------------------------------- |
+| `npm run dev`                               | Dev server                                      |
+| `npm run build`                             | Production build                                |
+| `npm start`                                 | Serve the production build                      |
+| `npm run typecheck`                         | `tsc --noEmit`                                  |
+| `npm run lint` / `lint:fix`                 | ESLint, type-aware, zero warnings allowed       |
+| `npm run format` / `format:check`           | Prettier                                        |
+| `npm test` / `test:watch` / `test:coverage` | Vitest                                          |
+| `npm run gate:react-doctor`                 | Blocking react-doctor health gate               |
+| `npm run gate:fallow`                       | Blocking fallow codebase-intelligence gate      |
+| `npm run gate:archive`                      | Blocking gate: the archive is not in the bundle |
+| `npm run check`                             | All of the above, in the order CI runs it       |
 
 `npm run check` is the gate. Run it before pushing.
 
@@ -286,11 +305,21 @@ subject to cut the tag and the GitHub Release. Every conventional type maps to a
 release on purpose, so a merged pull request always produces a version. There is
 no `CHANGELOG.md`; the Releases page is the changelog.
 
-**Two blocking gates beyond lint and test.** react-doctor and fallow run last,
+**Three blocking gates beyond lint and test.** react-doctor and fallow run last,
 after typecheck, lint, format, test and build, locally and in CI, and neither
 leaves itself a way to shrug. Every react-doctor finding blocks whatever tag it
 carries, its configuration is now a typed `doctor.config.ts`, and it runs with
-inline disables ignored, so a comment cannot walk a finding past the gate.
+inline disables ignored, so a comment cannot walk a finding past the gate. The
+third is `scripts/archive-gate.mjs`, and it exists because nothing else can see
+the failure it looks for: one stray value import from `~/data` typechecks,
+lints, passes every test and passes both other gates, and the only symptom is a
+bigger `.js` file that a visitor with no bookmark can read end to end. It greps
+the built client chunks for prose read out of the archive at gate time — a late
+saga's summary, a port's log entry, never a key such as `revealedAtEpisode`,
+which legitimately survives on a covered record — and holds the whole client
+payload under a byte ceiling, because the canaries only catch what they happen
+to name. ESLint catches the same mistake one step earlier, at the import.
+
 fallow watches the shape of the codebase instead, with nearly every rule it has
 raised to error: eight zones with a declared import direction between them, no
 block of eight lines or more duplicated, and ceilings of 8 cyclomatic, 8

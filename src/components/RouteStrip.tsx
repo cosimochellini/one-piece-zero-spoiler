@@ -2,20 +2,28 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { tintOf } from '~/components/drawing'
-import type { Entity } from '~/data/types'
-import type { Bookmark } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { TintId } from '~/lib/view/records'
 import { color, rule } from '~/styles/tokens.stylex'
 
 /** What the strip needs to draw itself and to say what it is showing. */
 export type RouteStripProps = {
-  /** The whole archive, sorted by the threshold the bookmark counts in. */
-  readonly entries: readonly Entity[]
-  /** The record this strip is about. */
-  readonly bookmark: Bookmark
-  readonly current: Entity
+  /**
+   * How many waypoints the route has, and how many the reader has reached.
+   * Counts rather than records: the strip draws dots, and sending it the
+   * chart so it can call `length` on it would be the same waste in a smaller
+   * costume.
+   */
+  readonly openCount: number
+  readonly total: number
+  /** Where this record sits on the route, zero-based. */
+  readonly at: number
   /** What a screen reader hears instead of the dots. */
   readonly label: string
+  /**
+   * The current record's hue, or `null` under fog — so a covered record's
+   * colour is not in the HTML. The server applies the guard.
+   */
+  readonly tint: null | TintId
 }
 
 // Half a step first: the horizon tick falls between two marks, so the strip
@@ -45,19 +53,14 @@ const markX = (index: number): number => PAD + STEP * index
  * two facts, the archive and the bookmark, so it is never wrong about either.
  */
 export function RouteStrip({
-  entries,
-  current,
-  bookmark,
+  total,
+  openCount,
+  at,
+  tint,
   label,
 }: RouteStripProps): ReactElement {
-  const openCount = entries.filter((entry) =>
-    isRevealed(entry, bookmark),
-  ).length
-  // The ring takes the record's colour only once the reader has reached it;
-  // under fog it is drawn in the ambient ink, so the colour is not in the HTML.
-  const ringHue =
-    isRevealed(current, bookmark) ? tintOf(current.visual.tint) : null
-  const width = PAD + STEP * (entries.length - 1) + PAD
+  const ringHue = tint === null ? null : tintOf(tint)
+  const width = PAD + STEP * (total - 1) + PAD
   // Between the last open mark and the first covered one; before the first
   // mark when nothing is open.
   const horizonX =
@@ -77,25 +80,28 @@ export function RouteStrip({
           {...stylex.props(styles.line, styles.lineOpen)}
         />
       )}
-      {openCount < entries.length && (
+      {openCount < total && (
         <path
-          d={`M${String(Math.max(markX(0), horizonX))} ${String(Y)} H${String(markX(entries.length - 1))}`}
+          d={`M${String(Math.max(markX(0), horizonX))} ${String(Y)} H${String(markX(total - 1))}`}
           vectorEffect="non-scaling-stroke"
           {...stylex.props(styles.line, styles.lineCovered)}
         />
       )}
-      {openCount < entries.length && (
+      {openCount < total && (
         <path
           d={`M${String(horizonX)} ${String(Y - TICK_ARM)} V${String(Y + TICK_ARM)}`}
           vectorEffect="non-scaling-stroke"
           {...stylex.props(styles.line, styles.lineOpen)}
         />
       )}
-      {entries.map((entry, index) => {
+      {Array.from({ length: total }, (_, index) => {
         return (
+          // A fixed-length range that cannot reorder, so the index is the
+          // key. It is also the only key available: a covered waypoint has no
+          // id, because the id is the name slug.
           <Mark
-            key={entry.id}
-            here={entry.id === current.id}
+            key={index}
+            here={index === at}
             index={index}
             open={index < openCount}
             ringHue={ringHue}

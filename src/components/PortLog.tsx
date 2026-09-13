@@ -9,18 +9,22 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
+import { PortFacts } from '~/components/PortFacts'
 import { styles } from '~/components/PortLog.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { RecordTile } from '~/components/RecordTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import { getEntity } from '~/data/entities'
-import { dossierOf, type PlaceDossier } from '~/data/places'
-import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { Gated } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
+import type {
+  CoveredRecord,
+  PortView,
+  RecordView,
+  Slot,
+} from '~/lib/view/records'
 
 // Ports are numbered 01, 02, …: two digits so the markers on the spine are the
 // same width all the way down, and the rail never shifts under them.
@@ -28,9 +32,12 @@ const NUMBER_WIDTH = 2
 
 /** What the log needs to draw one port and to place the horizon among them. */
 export type PortLogProps = {
-  /** The places, in the order the ship reaches them. */
   readonly bookmark: Bookmark
-  readonly entries: readonly Entity[]
+  /** The ports the reader has reached, then the ones they have not. */
+  readonly covered: readonly CoveredRecord[]
+  readonly open: readonly PortView[]
+  readonly peek: (handle: string) => Promise<PortView>
+  readonly peekRecord: (handle: string) => Promise<RecordView>
 }
 
 /**
@@ -45,25 +52,29 @@ export type PortLogProps = {
  * because "the sixth port opens at episode 144" is the promise and not the
  * spoiler.
  *
- * Because the entries arrive in threshold order and `isRevealed` is monotone,
- * the open ports are a prefix, and the horizon is one element between two
+ * The open ports are a prefix, so the horizon is one element between two
  * runs, the same construction as the route on the landing page.
  */
-export function PortLog({ entries, bookmark }: PortLogProps): ReactElement {
-  const open = entries.filter((entry) => isRevealed(entry, bookmark))
-  const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
+export function PortLog({
+  open,
+  covered,
+  bookmark,
+  peek,
+  peekRecord,
+}: PortLogProps): ReactElement {
+  const total = open.length + covered.length
 
   return (
     <ol {...stylex.props(styles.log)}>
-      {open.map((entry, index) => {
+      {open.map((record, index) => {
         return (
           <Port
-            key={entry.id}
-            bookmark={bookmark}
-            entry={entry}
+            key={`open-${record.id}`}
             index={index}
-            open
-            total={entries.length}
+            peek={peek}
+            peekRecord={peekRecord}
+            slot={{ open: true, record }}
+            total={total}
           />
         )
       })}
@@ -76,12 +87,12 @@ export function PortLog({ entries, bookmark }: PortLogProps): ReactElement {
       {covered.map((entry, index) => {
         return (
           <Port
-            key={entry.id}
-            bookmark={bookmark}
-            entry={entry}
+            key={`fog-${entry.handle}`}
             index={open.length + index}
-            open={false}
-            total={entries.length}
+            peek={peek}
+            peekRecord={peekRecord}
+            slot={{ open: false, covered: entry }}
+            total={total}
           />
         )
       })}
@@ -90,11 +101,11 @@ export function PortLog({ entries, bookmark }: PortLogProps): ReactElement {
 }
 
 type PortProps = {
-  readonly entry: Entity
   /** Zero-based position among the places; the page prints it plus one. */
-  readonly bookmark: Bookmark
   readonly index: number
-  readonly open: boolean
+  readonly peek: (handle: string) => Promise<PortView>
+  readonly peekRecord: (handle: string) => Promise<RecordView>
+  readonly slot: Slot<PortView>
   readonly total: number
 }
 
@@ -103,20 +114,22 @@ type PortProps = {
  * this is and when it opens, then the spread under whatever fog it is owed.
  */
 function Port({
-  entry,
+  slot,
   index,
   total,
-  bookmark,
-  open,
+  peek,
+  peekRecord,
 }: PortProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
+  const open = slot.open
+  const entry = slot.open ? slot.record : slot.covered
 
   return (
     <li
       // The anchor a record tile points at. Set only once the port is open:
       // an id spells the name a covered entry is meant to hide.
-      id={open ? entry.id : undefined}
+      id={slot.open ? slot.record.id : undefined}
       {...stylex.props(styles.row)}
     >
       <Rail
@@ -140,15 +153,19 @@ function Port({
         </p>
 
         <SpoilerVeil
-          gated={entry}
+          peek={peek}
           placeholder={<FoggedSpread entry={entry} />}
-          revealed={open}
+          slot={slot}
           strength="media"
         >
-          <Spread
-            bookmark={bookmark}
-            entry={entry}
-          />
+          {(record) => {
+            return (
+              <Spread
+                peekRecord={peekRecord}
+                port={record}
+              />
+            )
+          }}
         </SpoilerVeil>
       </div>
     </li>
@@ -199,7 +216,7 @@ function Rail({
  * as the open spread and carries none of its content: the served HTML has no
  * name, no drawing and no colour, only the bare plate and a generic line.
  */
-function FoggedSpread({ entry }: { readonly entry: Entity }): ReactElement {
+function FoggedSpread({ entry }: { readonly entry: Gated }): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
 
@@ -220,85 +237,33 @@ function FoggedSpread({ entry }: { readonly entry: Entity }): ReactElement {
 
 /** An open port: the plate beside the dossier. */
 function Spread({
-  entry,
-  bookmark,
+  port,
+  peekRecord,
 }: {
-  readonly bookmark: Bookmark
-  readonly entry: Entity
+  readonly peekRecord: (handle: string) => Promise<RecordView>
+  readonly port: PortView
 }): ReactElement {
-  const { locale } = useLocale()
-  const dossier = dossierOf(entry)
-
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
-        <PortPlate visual={entry.visual} />
+        <PortPlate visual={port.visual} />
       </div>
 
       <div {...stylex.props(styles.dossier)}>
-        <h2 {...stylex.props(styles.name)}>{entry.name[locale]}</h2>
-        <p {...stylex.props(styles.summary)}>{entry.summary[locale]}</p>
+        <h2 {...stylex.props(styles.name)}>{port.name}</h2>
+        <p {...stylex.props(styles.summary)}>{port.summary}</p>
 
-        {dossier === undefined ? null : (
+        {port.dossier === null ? null : (
           <>
-            <Facts dossier={dossier} />
-            <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
+            <PortFacts dossier={port.dossier} />
+            <p {...stylex.props(styles.entry)}>{port.dossier.log}</p>
             <FiledHere
-              bookmark={bookmark}
-              ids={dossier.filedHere}
+              filed={port.dossier.filedHere}
+              peekRecord={peekRecord}
             />
           </>
         )}
       </div>
-    </div>
-  )
-}
-
-/**
- * The four facts, as a definition list. The arc is named directly rather
- * than veiled: an arc opens no later than any place filed under it (the
- * data test holds that), so an open place always has an open arc.
- */
-function Facts({ dossier }: { readonly dossier: PlaceDossier }): ReactElement {
-  const { locale, t } = useLocale()
-  const arc = getEntity(dossier.arc)
-
-  return (
-    <dl {...stylex.props(styles.facts)}>
-      <Fact
-        label={t('places.sea')}
-        value={t(`sea.${dossier.sea}`)}
-      />
-      <Fact
-        label={t('places.form')}
-        value={t(`form.${dossier.form}`)}
-      />
-      {arc === undefined ? null : (
-        <Fact
-          label={t('places.arc')}
-          value={arc.name[locale]}
-        />
-      )}
-      <Fact
-        label={t('places.landmark')}
-        value={dossier.landmark[locale]}
-      />
-    </dl>
-  )
-}
-
-/** One row of the ledger: the term in small caps, the value beside it. */
-function Fact({
-  label,
-  value,
-}: {
-  readonly label: string
-  readonly value: string
-}): ReactElement {
-  return (
-    <div {...stylex.props(styles.fact)}>
-      <dt {...stylex.props(styles.factLabel)}>{label}</dt>
-      <dd {...stylex.props(styles.factValue)}>{value}</dd>
     </div>
   )
 }
@@ -309,32 +274,33 @@ function Fact({
  * is a covered tile beside an open one.
  */
 function FiledHere({
-  ids,
-  bookmark,
+  filed,
+  peekRecord,
 }: {
-  readonly bookmark: Bookmark
-  readonly ids: readonly string[]
+  readonly filed: readonly Slot<RecordView>[]
+  readonly peekRecord: (handle: string) => Promise<RecordView>
 }): ReactElement {
   const { t } = useLocale()
-  const records = ids
-    .map((id) => getEntity(id))
-    .filter((record): record is Entity => record !== undefined)
 
   return (
     <div {...stylex.props(styles.filed)}>
       <h3 {...stylex.props(styles.filedTitle)}>{t('places.filedHere')}</h3>
-      {records.length === 0 ?
+      {filed.length === 0 ?
         <p {...stylex.props(styles.filedNone)}>{t('places.filedNone')}</p>
       : <ul {...stylex.props(styles.crew)}>
-          {records.map((record) => {
+          {filed.map((slot) => {
             return (
               <li
-                key={record.id}
+                key={
+                  slot.open ?
+                    `open-${slot.record.id}`
+                  : `fog-${slot.covered.handle}`
+                }
                 {...stylex.props(styles.crewItem)}
               >
                 <RecordTile
-                  bookmark={bookmark}
-                  entry={record}
+                  peek={peekRecord}
+                  slot={slot}
                 />
               </li>
             )

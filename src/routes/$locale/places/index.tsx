@@ -8,19 +8,23 @@
  * · differs from the previous build (Catalogue) on macrostructure; theme is
  *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import { useServerFn } from '@tanstack/react-start'
+import { type ReactElement, useCallback } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { PortLog } from '~/components/PortLog'
-import { orderByMode } from '~/data/order'
-import { places } from '~/data/places'
-import { useT } from '~/i18n/LocaleContext'
+import { useLocale } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { modeOf } from '~/lib/progress/episode'
+import { liftPort, liftRecord, loadPlaces } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/places/')({
+  // Awaited, not streamed: a record tile elsewhere links here with a `#id`,
+  // and an anchor that is not in the first paint is one the browser cannot
+  // scroll to.
+  loader: async ({ context }) =>
+    loadPlaces({ data: { locale: context.locale } }),
   head: ({ params }) => {
     if (!isLocale(params.locale)) {
       return {}
@@ -51,17 +55,47 @@ export const Route = createFileRoute('/$locale/places/')({
  * the served HTML.
  */
 function PlacesPage(): ReactElement {
-  const t = useT()
+  const { locale, t } = useLocale()
   const { bookmark } = useBookmark()
+  const { covered, filed, open } = Route.useLoaderData()
+
+  const callPort = useServerFn(liftPort)
+  const peek = useCallback(
+    async (handle: string) => {
+      const port = await callPort({ data: { handle, locale } })
+      if (port === null) {
+        throw new Error('No port is filed under that mark')
+      }
+
+      return port
+    },
+    [callPort, locale],
+  )
+
+  const callRecord = useServerFn(liftRecord)
+  const peekRecord = useCallback(
+    async (handle: string) => {
+      const record = await callRecord({ data: { handle, locale } })
+      if (record === null) {
+        throw new Error('No record is filed under that mark')
+      }
+
+      return record
+    },
+    [callRecord, locale],
+  )
 
   return (
     <ArchivePage
-      count={t('places.count', { count: places.length })}
+      count={t('places.count', { count: filed })}
       title={t('places.title')}
     >
       <PortLog
         bookmark={bookmark}
-        entries={orderByMode(places, modeOf(bookmark))}
+        covered={covered}
+        open={open}
+        peek={peek}
+        peekRecord={peekRecord}
       />
     </ArchivePage>
   )

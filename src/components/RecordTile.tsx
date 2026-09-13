@@ -4,12 +4,10 @@ import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
-import type { Entity, EntityKind } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { Bookmark } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { EntityKind, RecordView, Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -29,10 +27,10 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   ship: 'kind.ship',
 }
 
-/** The record to file and the reader it is filed for. */
+/** The slot to file, and how to ask for what fills it. */
 export type RecordTileProps = {
-  readonly bookmark: Bookmark
-  readonly entry: Entity
+  readonly peek: (handle: string) => Promise<RecordView>
+  readonly slot: Slot<RecordView>
 }
 
 /**
@@ -45,38 +43,43 @@ export type RecordTileProps = {
  * Used wherever a page points at the records filed beside the one it is
  * about: the two neighbours on a character page, the crew a port files.
  */
-export function RecordTile({ entry, bookmark }: RecordTileProps): ReactElement {
+export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
+  const filed = slot.open ? slot.record : slot.covered
 
   return (
     <span {...stylex.props(styles.tile)}>
       <span {...stylex.props(styles.meta)}>
-        <span {...stylex.props(styles.kind)}>{t(KIND_KEY[entry.kind])}</span>
+        <span {...stylex.props(styles.kind)}>{t(KIND_KEY[filed.kind])}</span>
         <span {...stylex.props(styles.episode)}>
-          {threshold('chart.opensAt', entry)}
+          {threshold('chart.opensAt', filed)}
         </span>
       </span>
       <SpoilerVeil
         density="inline"
-        gated={entry}
+        peek={peek}
         placeholder={
           <span {...stylex.props(styles.card)}>
             <span {...stylex.props(styles.frame)} />
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
-        revealed={isRevealed(entry, bookmark)}
+        slot={slot}
       >
-        <span {...stylex.props(styles.card)}>
-          <span {...stylex.props(styles.frame)}>
-            <ChartArt
-              art={entry.visual.art}
-              tint={entry.visual.tint}
-            />
-          </span>
-          <Name entry={entry} />
-        </span>
+        {(record) => {
+          return (
+            <span {...stylex.props(styles.card)}>
+              <span {...stylex.props(styles.frame)}>
+                <ChartArt
+                  strokes={record.visual.strokes}
+                  tint={record.visual.tint}
+                />
+              </span>
+              <Name entry={record} />
+            </span>
+          )
+        }}
       </SpoilerVeil>
     </span>
   )
@@ -87,9 +90,9 @@ export function RecordTile({ entry, bookmark }: RecordTileProps): ReactElement {
  * point at; an arc and a ship do not, so their names are plain text rather
  * than a link that would go nowhere.
  */
-function Name({ entry }: { readonly entry: Entity }): ReactElement {
+function Name({ entry }: { readonly entry: RecordView }): ReactElement {
   const { locale } = useLocale()
-  const label = entry.name[locale]
+  const label = entry.name
 
   if (entry.kind === 'character') {
     return (
