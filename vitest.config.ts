@@ -1,6 +1,7 @@
 import path from 'node:path'
 
 import stylex from '@stylexjs/unplugin'
+import type { UserOptions } from '@stylexjs/unplugin'
 import viteReact from '@vitejs/plugin-react'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vitest/config'
@@ -27,7 +28,11 @@ import { defineConfig } from 'vitest/config'
 //   - `devPersistToDisk` is left out. `buildStart` deletes
 //     node_modules/.stylex/rules.json, which would stomp a dev server running
 //     next to the test watcher.
-const stylexPlugin = stylex.vite({
+// @stylexjs/unplugin declares every bundler factory as `(options?) => any`.
+// Naming the return type once, here, keeps the plugin array checked.
+const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
+
+const stylexPlugin = stylexVite({
   useCSSLayers: true,
   devMode: 'css-only',
   runtimeInjection: false,
@@ -38,7 +43,7 @@ const stylexPlugin = stylex.vite({
   aliases: {
     '~/*': [path.join(import.meta.dirname, 'src', '*')],
   },
-}) as Plugin
+})
 
 export default defineConfig({
   resolve: { tsconfigPaths: true },
