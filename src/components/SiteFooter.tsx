@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
@@ -11,7 +12,7 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * social icons is the footer every generated page ships, and this site has
  * nothing to put in them. The lead sentence is the one the whole page argues.
  */
-export function SiteFooter() {
+export function SiteFooter(): ReactElement {
   const t = useT()
 
   return (
@@ -26,12 +27,12 @@ export function SiteFooter() {
 
 const styles = stylex.create({
   footer: {
+    paddingInline: space.md,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     paddingBlockEnd: space.xl,
     paddingBlockStart: space.lg,
-    paddingInline: space.md,
   },
 
   // A colophon is read once, slowly, so it keeps a measure.
@@ -42,8 +43,5 @@ const styles = stylex.create({
     lineHeight: leading.body,
     maxWidth: '72ch',
   },
-  lead: {
-    color: color.ink2,
-    fontWeight: 700,
-  },
+  lead: { color: color.ink2, fontWeight: 700 },
 })

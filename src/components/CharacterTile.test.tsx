@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import type { Entity } from '~/data/types'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -21,7 +22,11 @@ describe('CharacterTile', () => {
   it('links an open character with their drawing and name', () => {
     const { container } = renderWithProviders(
       <ul>
-        <CharacterTile entity={nami} revealed highlight={[0, 3]} />
+        <CharacterTile
+          entity={nami}
+          highlight={[0, 3]}
+          revealed
+        />
       </ul>,
       { bookmark: ep(10) },
     )
@@ -38,7 +43,10 @@ describe('CharacterTile', () => {
   it('keeps a covered character out of the DOM but for the episode', () => {
     const { container } = renderWithProviders(
       <ul>
-        <CharacterTile entity={nami} revealed={false} />
+        <CharacterTile
+          entity={nami}
+          revealed={false}
+        />
       </ul>,
       { bookmark: ep(1) },
     )

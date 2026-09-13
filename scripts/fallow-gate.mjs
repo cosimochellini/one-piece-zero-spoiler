@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Blocking fallow gate.
  *
@@ -19,19 +18,18 @@
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, rmSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
+const repoRoot = path.resolve(import.meta.dirname, '..')
 
 // bin/fallow is a Node shim that require.resolve()s the platform package from
 // optionalDependencies, so never install with --omit=optional.
-const local = join(repoRoot, 'node_modules', '.bin', 'fallow')
+const local = path.join(repoRoot, 'node_modules', '.bin', 'fallow')
 const command = existsSync(local) ? local : 'fallow'
 
-const sarifPath = join(repoRoot, '.gate', 'fallow.sarif')
-mkdirSync(dirname(sarifPath), { recursive: true })
+const sarifPath = path.join(repoRoot, '.gate', 'fallow.sarif')
+mkdirSync(path.dirname(sarifPath), { recursive: true })
 // A stale report must never survive a failed run.
 rmSync(sarifPath, { force: true })
 
@@ -74,17 +72,17 @@ const status = child.status ?? 3
 const label = {
   0: 'fallow gate: PASSED',
   1:
-    'fallow gate: FAILED with error-severity findings, listed above. ' +
-    'Severity policy lives in .fallowrc.json.',
+    'fallow gate: FAILED with error-severity findings, listed above. '
+    + 'Severity policy lives in .fallowrc.json.',
   2:
-    'fallow gate: exit 2, invalid config or input. This is NOT a code ' +
-    'finding: check .fallowrc.json.',
+    'fallow gate: exit 2, invalid config or input. This is NOT a code '
+    + 'finding: check .fallowrc.json.',
 }[status]
 
 const message =
-  label ??
-  `fallow gate: exit ${status}, analyzer failure. This is NOT a code ` +
-    'finding: see `fallow schema.exit_codes`.'
+  label
+  ?? `fallow gate: exit ${status}, analyzer failure. This is NOT a code `
+    + 'finding: see `fallow schema.exit_codes`.'
 
 if (status === 0) {
   process.stdout.write(`\n${message}\n`)

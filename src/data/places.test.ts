@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { LOCALES } from '~/i18n/locales'
 
 import { entities, getEntity } from './entities'
@@ -10,14 +12,17 @@ describe('the ship’s log', () => {
       .map((entity) => entity.id)
 
     expect(places.map((place) => place.id)).toHaveLength(placeIds.length)
-    expect(new Set(places.map((place) => place.id))).toEqual(new Set(placeIds))
+    expect(new Set(places.map((place) => place.id))).toStrictEqual(
+      new Set(placeIds),
+    )
 
     const thresholds = places.map((place) => place.revealedAtEpisode)
-    expect(thresholds).toEqual([...thresholds].sort((a, b) => a - b))
+
+    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
   })
 
   it('opens with the five East Blue ports of call', () => {
-    expect(places.slice(0, 5).map((place) => place.id)).toEqual([
+    expect(places.slice(0, 5).map((place) => place.id)).toStrictEqual([
       'shells-town',
       'foosha-village',
       'orange-town',
@@ -29,7 +34,9 @@ describe('the ship’s log', () => {
   it('gives every place a dossier in every locale, and nothing else one', () => {
     for (const place of places) {
       const dossier = dossierOf(place)
+
       expect(dossier, place.id).toBeDefined()
+
       for (const locale of LOCALES) {
         expect(dossier?.landmark[locale].length).toBeGreaterThan(0)
         expect(dossier?.log[locale].length).toBeGreaterThan(0)
@@ -46,6 +53,7 @@ describe('the ship’s log', () => {
     // the arc itself is still under fog.
     for (const place of places) {
       const arc = getEntity(dossierOf(place)?.arc ?? '')
+
       expect(arc?.kind, place.id).toBe('arc')
       expect(arc?.revealedAtEpisode).toBeLessThanOrEqual(
         place.revealedAtEpisode,
@@ -58,8 +66,11 @@ describe('the ship’s log', () => {
 
   it('files here only records the archive holds, none of them places', () => {
     for (const place of places) {
-      for (const id of dossierOf(place)?.filedHere ?? []) {
+      const filedHere = dossierOf(place)?.filedHere ?? []
+
+      for (const id of filedHere) {
         const record = getEntity(id)
+
         expect(record, `${place.id} → ${id}`).toBeDefined()
         expect(record?.kind).not.toBe('place')
       }

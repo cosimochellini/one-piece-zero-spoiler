@@ -1,6 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
-import type { ReactNode } from 'react'
+import { type ReactElement, type ReactNode, useState } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -16,6 +15,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
+/** Everything the curtain needs to decide what it covers and how thickly. */
 export type SpoilerVeilProps = {
   /** The record's thresholds, for the notice that names the one in force. */
   readonly gated: Gated
@@ -32,21 +32,21 @@ export type SpoilerVeilProps = {
    * a small card: the verb alone, centred, with the threshold left to the
    * card's own meta line and to the control's accessible name.
    */
-  readonly density?: 'block' | 'inline' | 'compact'
+  readonly density?: 'block' | 'compact' | 'inline'
   /**
    * How hard to blur. `text` is enough for a line of words; a photograph
    * needs `media`, because a face survives a half-rem blur and a fogged
    * waypoint must not give its subject away.
    */
-  readonly strength?: 'text' | 'media'
+  readonly strength?: 'media' | 'text'
   /**
    * What to render under the fog instead of `children`. With a placeholder
    * the covered words are not in the served HTML or the DOM at all; the real
    * children mount only once the fog is lifted. Entity pages use this, since
    * a page about one record must not carry that record's name in its source.
    */
-  readonly placeholder?: ReactNode
   readonly children: ReactNode
+  readonly placeholder?: ReactNode
 }
 
 /**
@@ -76,54 +76,110 @@ export function SpoilerVeil({
   strength = 'text',
   placeholder,
   children,
-}: SpoilerVeilProps) {
-  const t = useT()
+}: SpoilerVeilProps): ReactElement {
   const threshold = useThreshold()
   const [uncovered, setUncovered] = useState(false)
   const visible = revealed || uncovered
-  const notice = threshold('veil.locked', gated)
-  const verbOnly = density !== 'block'
 
   // A block body: `no-confusing-void-expression` rejects an arrow that
   // implicitly returns the void result of a state setter.
-  const handleUncover = () => {
+  const handleUncover = (): void => {
     setUncovered(true)
   }
 
   return (
     <div {...stylex.props(styles.frame)}>
-      <div
-        // `undefined` rather than `false`: an explicit `aria-hidden="false"`
-        // is legal but it is noise in the accessibility tree, and it reads as
-        // if the covered state were still being managed once it is not.
-        aria-hidden={visible ? undefined : true}
-        inert={!visible}
-        {...stylex.props(styles.content, !visible && fogFor(density, strength))}
+      <Covered
+        density={density}
+        placeholder={placeholder}
+        strength={strength}
+        visible={visible}
       >
-        {!visible && placeholder !== undefined ? placeholder : children}
-      </div>
+        {children}
+      </Covered>
 
-      <button
-        type="button"
-        onClick={handleUncover}
-        // Block density reads its name off the visible notice. The verb-only
-        // densities show the verb alone — the threshold already sits in its
-        // own line beside them — so the sentence has to be supplied here.
-        aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
-        {...stylex.props(
-          styles.curtain,
-          curtainFor(density),
-          visible && styles.curtainLifted,
-        )}
-      >
-        {verbOnly ? null : (
-          <span {...stylex.props(styles.notice)}>{notice}</span>
-        )}
-        <span {...stylex.props(styles.action)}>
-          {verbOnly ? t('veil.revealShort') : t('veil.reveal')}
-        </span>
-      </button>
+      <Curtain
+        density={density}
+        lifted={visible}
+        notice={threshold('veil.locked', gated)}
+        onUncover={handleUncover}
+      />
     </div>
+  )
+}
+
+/**
+ * What is under the fog. While it is covered it is `inert` and `aria-hidden`,
+ * so neither a Tab press nor a screen reader can walk into a spoiler the eye
+ * cannot see, and with a placeholder the real children are not mounted at all
+ * — which is what keeps a covered name out of the served HTML.
+ */
+function Covered({
+  density,
+  strength,
+  visible,
+  placeholder,
+  children,
+}: {
+  readonly children: ReactNode
+  readonly density: Density
+  readonly placeholder: ReactNode
+  readonly strength: Strength
+  readonly visible: boolean
+}): ReactElement {
+  return (
+    <div
+      // `undefined` rather than `false`: an explicit `aria-hidden="false"`
+      // is legal but it is noise in the accessibility tree, and it reads as
+      // if the covered state were still being managed once it is not.
+      aria-hidden={visible ? undefined : true}
+      inert={!visible}
+      {...stylex.props(styles.content, !visible && fogFor(density, strength))}
+    >
+      {!visible && placeholder !== undefined ? placeholder : children}
+    </div>
+  )
+}
+
+/**
+ * The curtain over it, and the control that lifts it. It stays mounted after
+ * the lift instead of unmounting, because a node that disappears cannot fade;
+ * `visibility: hidden` is what then takes it out of the tab order and the
+ * accessibility tree once the fade is over.
+ */
+function Curtain({
+  density,
+  lifted,
+  notice,
+  onUncover,
+}: {
+  readonly density: Density
+  readonly lifted: boolean
+  readonly notice: string
+  readonly onUncover: () => void
+}): ReactElement {
+  const t = useT()
+  const verbOnly = density !== 'block'
+
+  return (
+    <button
+      // Block density reads its name off the visible notice. The verb-only
+      // densities show the verb alone — the threshold already sits in its
+      // own line beside them — so the sentence has to be supplied here.
+      aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
+      onClick={onUncover}
+      type="button"
+      {...stylex.props(
+        styles.curtain,
+        curtainFor(density),
+        lifted && styles.curtainLifted,
+      )}
+    >
+      {verbOnly ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
+      <span {...stylex.props(styles.action)}>
+        {t(verbOnly ? 'veil.revealShort' : 'veil.reveal')}
+      </span>
+    </button>
   )
 }
 
@@ -135,24 +191,29 @@ type Strength = NonNullable<SpoilerVeilProps['strength']>
  * smallest; a card is a drawing and a name at once, so its blur is a
  * drawing's; a block follows the strength its caller asked for.
  */
-function fogFor(density: Density, strength: Strength) {
-  if (density === 'inline') return styles.coveredTight
-  if (density === 'compact') return styles.coveredCompact
+function fogFor(density: Density, strength: Strength): stylex.StyleXStyles {
+  if (density === 'inline') {
+    return styles.coveredTight
+  }
+  if (density === 'compact') {
+    return styles.coveredCompact
+  }
   return strength === 'media' ? styles.coveredMedia : styles.covered
 }
 
 /** The curtain's layout per density; `block` adds nothing to the base. */
-function curtainFor(density: Density) {
-  if (density === 'inline') return styles.curtainInline
-  if (density === 'compact') return styles.curtainCompact
+function curtainFor(density: Density): stylex.StyleXStyles {
+  if (density === 'inline') {
+    return styles.curtainInline
+  }
+  if (density === 'compact') {
+    return styles.curtainCompact
+  }
   return null
 }
 
 const styles = stylex.create({
-  frame: {
-    display: 'grid',
-    position: 'relative',
-  },
+  frame: { display: 'grid', position: 'relative' },
 
   content: {
     // The blur is dropped in one frame. It is never transitioned: `filter` is
@@ -170,43 +231,34 @@ const styles = stylex.create({
   // A block with a photograph in it. The radius is set by what it takes to
   // make a face unreadable at card size, and the content is clipped by the
   // frame so the blur cannot bleed a halo past the card edge.
-  coveredMedia: {
-    filter: 'blur(1.4rem)',
-    userSelect: 'none',
-  },
+  coveredMedia: { filter: 'blur(1.4rem)', userSelect: 'none' },
   // A table cell is one line tall, so the blur radius drops with it: 0.55rem
   // on a single line smears into the rows above and below.
-  coveredTight: {
-    filter: 'blur(0.3rem)',
-    userSelect: 'none',
-  },
+  coveredTight: { filter: 'blur(0.3rem)', userSelect: 'none' },
   // A crest on a card is a drawing and a name at once, so the fog is thick
   // enough for a drawing, and the card is clipped by its own frame.
-  coveredCompact: {
-    filter: 'blur(1rem)',
-    userSelect: 'none',
-  },
+  coveredCompact: { filter: 'blur(1rem)', userSelect: 'none' },
 
   curtain: {
+    inset: 0,
+    padding: space.md,
+    borderRadius: radius.card,
+    borderStyle: 'none',
+    gap: space.xs,
     alignContent: 'center',
     backgroundColor: 'transparent',
-    borderStyle: 'none',
-    borderRadius: radius.card,
     color: color.ink2,
     cursor: 'pointer',
     display: 'grid',
-    gap: space.xs,
     // Explicit rather than the implicit `minmax(auto, 1fr)`, whose floor is
     // the notice's min-content and can push the curtain past its frame.
     gridTemplateColumns: 'minmax(0, 1fr)',
-    inset: 0,
     justifyItems: 'start',
     opacity: 1,
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    padding: space.md,
     pointerEvents: 'auto',
     position: 'absolute',
     textAlign: 'start',
@@ -217,17 +269,17 @@ const styles = stylex.create({
     width: '100%',
   },
   curtainInline: {
-    alignItems: 'center',
-    display: 'flex',
     gap: space.xs,
-    justifyContent: 'start',
     paddingBlock: 0,
     paddingInline: 0,
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'start',
   },
   curtainCompact: {
+    padding: space.xs,
     alignContent: 'center',
     justifyItems: 'center',
-    padding: space.xs,
   },
   curtainLifted: {
     opacity: 0,
@@ -239,31 +291,31 @@ const styles = stylex.create({
   },
 
   notice: {
-    backgroundColor: color.paper,
     borderColor: color.rule2,
     borderStyle: 'solid',
     borderWidth: rule.hair,
+    paddingBlock: space.xs3,
+    paddingInline: space.xs,
+    backgroundColor: color.paper,
     fontFamily: font.mono,
     fontSize: text.xs,
     fontWeight: 500,
     letterSpacing: '0.08em',
-    minWidth: 0,
     overflowWrap: 'anywhere',
-    paddingBlock: space.xs3,
-    paddingInline: space.xs,
     textTransform: 'uppercase',
+    minWidth: 0,
   },
   action: {
+    paddingInline: space.xs2,
     backgroundColor: color.paper,
     color: {
-      default: color.accent,
-      ':is(button:hover) > &': color.ink,
+      'default': color.accent,
       ':is(button:active) > &': color.ink,
+      ':is(button:hover) > &': color.ink,
     },
     fontFamily: font.body,
     fontSize: text.base,
     fontWeight: 700,
-    paddingInline: space.xs2,
     textDecorationLine: 'underline',
     textUnderlineOffset: '2px',
     // A verb in a table cell is one line or it is broken.

@@ -1,12 +1,14 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
+/** The three counts the legend explains, each taken from the live archive. */
 export type RouteLegendProps = {
-  readonly open: number
   readonly covered: number
   readonly filed: number
+  readonly open: number
 }
 
 /**
@@ -17,29 +19,46 @@ export type RouteLegendProps = {
  * at render time. None of them is a claim about the project's size or reach,
  * which is the only reason figures are allowed on this page at all.
  */
-export function RouteLegend({ open, covered, filed }: RouteLegendProps) {
+export function RouteLegend({
+  open,
+  covered,
+  filed,
+}: RouteLegendProps): ReactElement {
   const t = useT()
 
   return (
     <dl {...stylex.props(styles.legend)}>
-      <Entry swatch="open" value={open} label={t('legend.open')} />
-      <Entry swatch="covered" value={covered} label={t('legend.covered')} />
-      <Entry swatch="filed" value={filed} label={t('legend.filed')} />
+      <Entry
+        label={t('legend.open')}
+        swatch="open"
+        value={open}
+      />
+      <Entry
+        label={t('legend.covered')}
+        swatch="covered"
+        value={covered}
+      />
+      <Entry
+        label={t('legend.filed')}
+        swatch="filed"
+        value={filed}
+      />
     </dl>
   )
 }
 
-type Swatch = 'open' | 'covered' | 'filed'
+type Swatch = 'covered' | 'filed' | 'open'
 
+/** One line of the legend: the mark, what it means, and how many there are. */
 function Entry({
   swatch,
   value,
   label,
 }: {
+  readonly label: string
   readonly swatch: Swatch
   readonly value: number
-  readonly label: string
-}) {
+}): ReactElement {
   return (
     <div {...stylex.props(styles.entry)}>
       {/*
@@ -61,7 +80,7 @@ function Entry({
  * fogged stretch with a hollow one, and the two waypoint marks side by side
  * for the whole archive.
  */
-function SwatchMark({ kind }: { readonly kind: Swatch }) {
+function SwatchMark({ kind }: { readonly kind: Swatch }): ReactElement {
   return (
     <svg
       aria-hidden="true"
@@ -72,30 +91,50 @@ function SwatchMark({ kind }: { readonly kind: Swatch }) {
         <>
           <line
             x1="0"
-            y1="6"
             x2="40"
+            y1="6"
             y2="6"
             {...stylex.props(styles.lineOpen)}
           />
-          <circle cx="20" cy="6" r="4" {...stylex.props(styles.markOpen)} />
+          <circle
+            cx="20"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markOpen)}
+          />
         </>
       )}
       {kind === 'covered' && (
         <>
           <line
             x1="0"
-            y1="6"
             x2="40"
+            y1="6"
             y2="6"
             {...stylex.props(styles.lineCovered)}
           />
-          <circle cx="20" cy="6" r="4" {...stylex.props(styles.markCovered)} />
+          <circle
+            cx="20"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markCovered)}
+          />
         </>
       )}
       {kind === 'filed' && (
         <>
-          <circle cx="12" cy="6" r="4" {...stylex.props(styles.markOpen)} />
-          <circle cx="28" cy="6" r="4" {...stylex.props(styles.markCovered)} />
+          <circle
+            cx="12"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markOpen)}
+          />
+          <circle
+            cx="28"
+            cy="6"
+            r="4"
+            {...stylex.props(styles.markCovered)}
+          />
         </>
       )}
     </svg>
@@ -103,10 +142,7 @@ function SwatchMark({ kind }: { readonly kind: Swatch }) {
 }
 
 const styles = stylex.create({
-  legend: {
-    display: 'grid',
-    gap: space.xs,
-  },
+  legend: { gap: space.xs, display: 'grid' },
   entry: {
     alignItems: 'baseline',
     columnGap: space.sm,
@@ -114,49 +150,44 @@ const styles = stylex.create({
     gridTemplateColumns: 'minmax(3ch, auto) minmax(0, 1fr)',
   },
   term: {
+    gap: space.xs,
+    gridColumn: '2',
+    gridRow: '1',
     alignItems: 'center',
     color: color.muted,
     display: 'flex',
     fontSize: text.base,
-    gap: space.xs,
-    gridColumn: '2',
-    gridRow: '1',
     lineHeight: leading.body,
     minWidth: 0,
   },
   figure: {
+    gridColumn: '1',
+    gridRow: '1',
     color: color.ink,
     fontFamily: font.display,
     fontSize: text.xl,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 800,
-    gridColumn: '1',
-    gridRow: '1',
     lineHeight: leading.heading,
     marginInlineStart: 0,
     textAlign: 'end',
   },
 
   swatch: {
+    overflow: 'visible',
     display: 'block',
     flexShrink: 0,
     height: '0.75rem',
-    overflow: 'visible',
     width: '2.5rem',
   },
-  lineOpen: {
-    stroke: color.accent,
-    strokeWidth: rule.fine,
-  },
+  lineOpen: { stroke: color.accent, strokeWidth: rule.fine },
   lineCovered: {
     stroke: color.rule2,
     strokeDasharray: '3 5',
     strokeLinecap: 'round',
     strokeWidth: rule.fine,
   },
-  markOpen: {
-    fill: color.accent,
-  },
+  markOpen: { fill: color.accent },
   markCovered: {
     fill: color.paper,
     stroke: color.rule2,

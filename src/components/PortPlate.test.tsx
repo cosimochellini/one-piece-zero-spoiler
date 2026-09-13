@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { PortPlate } from './PortPlate'
 
@@ -9,10 +10,12 @@ describe('PortPlate', () => {
     )
 
     const outer = container.querySelector('svg')
+
     expect(outer).toHaveAttribute('aria-hidden', 'true')
-    // The nested svg is the drawing; the plate itself is five paths.
+    // The nested SVG is the drawing; the plate itself is five paths.
     expect(container.querySelectorAll('svg')).toHaveLength(2)
     expect(container.querySelectorAll(':scope > svg > path')).toHaveLength(5)
+
     for (const path of container.querySelectorAll('path')) {
       expect(path).toHaveAttribute('vector-effect', 'non-scaling-stroke')
     }

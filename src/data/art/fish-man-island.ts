@@ -19,7 +19,7 @@ export const fishManIslandArt = {
   ],
 
   // A scythe, the mud still running off the blade.
-  caribou: [
+  'caribou': [
     { d: 'M44 184 C58 140 76 96 96 52' },
     { d: 'M52 186 C66 142 84 98 104 54' },
     { d: 'M44 184 L52 186 M96 52 L104 54' },
@@ -38,7 +38,7 @@ export const fishManIslandArt = {
     shadow(70, 192, 34),
   ],
   // A spade, and the crosses of the row it has already filled.
-  coribou: [
+  'coribou': [
     { d: 'M48 20 C40 30 40 42 48 52 M48 20 C56 30 56 42 48 52' },
     { d: 'M44 52 h8 V108 h-8z' },
     { d: 'M34 108 H62 L58 142 q-10 8 -20 0 Z', role: 'accent' },
@@ -51,7 +51,7 @@ export const fishManIslandArt = {
   ],
 
   // A harpoon, the barbs turned back under the point.
-  hammond: [
+  'hammond': [
     { d: 'M72 190 L94 54' },
     { d: 'M82 191 L104 55' },
     { d: 'M72 190 L82 191' },
@@ -64,7 +64,7 @@ export const fishManIslandArt = {
   ],
 
   // A crystal ball on a café counter, a shark's tail rising behind it.
-  shyarly: [
+  'shyarly': [
     { d: circle(72, 92, 34), role: 'accent' },
     { d: 'M52 78 q8 -12 22 -16', role: 'accent' },
     { d: 'M58 126 h28 l6 12 h-40z' },
@@ -105,7 +105,7 @@ export const fishManIslandArt = {
 
   // A coral throne with the crown left on the seat, and the king's trident
   // standing beside it.
-  neptune: [
+  'neptune': [
     { d: 'M30 190 V118 H106 V190' },
     { d: 'M30 118 C30 40 106 40 106 118' },
     { d: 'M30 134 H106', role: 'soft' },
@@ -121,21 +121,18 @@ export const fishManIslandArt = {
     shadow(74, 196, 50),
   ],
   // A lance whose head is cut in the shape of a shark.
-  fukaboshi: [
+  'fukaboshi': [
     { d: 'M46 186 L96 62' },
     { d: 'M56 190 L106 66' },
     { d: 'M46 186 L56 190' },
     { d: 'M60 158 l10 4 M72 128 l10 4', role: 'soft' },
-    {
-      d: 'M96 62 C92 40 100 18 120 8 C124 26 122 48 106 66 Z',
-      role: 'accent',
-    },
+    { d: 'M96 62 C92 40 100 18 120 8 C124 26 122 48 106 66 Z', role: 'accent' },
     { d: 'M110 28 L128 18 L118 40 Z', role: 'accent' },
     { d: 'M98 52 l12 -4 M100 44 l12 -4', role: 'soft' },
     shadow(78, 194, 30),
   ],
   // A sabre, and two notes going up off the edge of it.
-  ryuboshi: [
+  'ryuboshi': [
     { d: 'M48 158 C74 132 104 94 126 44' },
     { d: 'M58 166 C84 140 114 102 134 50' },
     { d: 'M126 44 L134 50' },
@@ -147,7 +144,7 @@ export const fishManIslandArt = {
     shadow(84, 192, 40),
   ],
   // A sunfish with its two fins out, and a sabre standing beside it.
-  manboshi: [
+  'manboshi': [
     { d: circle(58, 102, 34), role: 'accent' },
     { d: 'M54 70 L62 30 L80 72', role: 'accent' },
     { d: 'M56 134 L64 174 L84 132', role: 'accent' },
@@ -161,7 +158,7 @@ export const fishManIslandArt = {
   ],
 
   // A great pearl on its pin, left on the sill of a tower window.
-  shirahoshi: [
+  'shirahoshi': [
     { d: 'M44 158 V76 C44 36 116 36 116 76 V158 Z' },
     { d: 'M80 158 V44', role: 'soft' },
     { d: 'M44 100 H116', role: 'soft' },
@@ -173,7 +170,7 @@ export const fishManIslandArt = {
     shadow(80, 180, 48),
   ],
   // Eight blades out of one grip, the poison still on the points.
-  hyouzou: [
+  'hyouzou': [
     { d: 'M84 86 L80 46 L76 86 Z' },
     { d: 'M76 122 L80 162 L84 122 Z' },
     { d: 'M62 100 L22 104 L62 108 Z' },
@@ -194,7 +191,7 @@ export const fishManIslandArt = {
     },
   ],
   // A hooded cloak with the coral pattern already coming through it.
-  zeo: [
+  'zeo': [
     { d: 'M62 46 C62 32 98 32 98 46 C98 58 92 64 86 66' },
     {
       d: 'M62 46 C48 58 34 96 28 154 C50 166 110 166 132 154 C126 96 112 58 98 46',
@@ -210,7 +207,7 @@ export const fishManIslandArt = {
     { d: 'M8 178 H152', role: 'ambient' },
   ],
   // A wall bitten through, the two rows of teeth still in the stone.
-  daruma: [
+  'daruma': [
     { d: 'M18 34 H142 V180 H18 Z' },
     { d: 'M18 70 H142 M18 106 H142 M18 142 H142', role: 'soft' },
     {
@@ -249,7 +246,7 @@ export const fishManIslandArt = {
     shadow(80, 196, 52),
   ],
   // A hammer with a head wider than the man who swings it.
-  dosun: [
+  'dosun': [
     { d: 'M74 194 V96 M88 194 V96' },
     { d: 'M72 196 h18' },
     { d: 'M76 170 h10 M76 146 h10', role: 'soft' },
@@ -262,7 +259,7 @@ export const fishManIslandArt = {
   ],
 
   // A shipwright's mallet, and the bubbles going up off it.
-  den: [
+  'den': [
     { d: 'M46 60 L86 20 L120 54 L80 94 Z', role: 'accent' },
     { d: 'M56 50 L92 84 M66 40 L102 74', role: 'soft' },
     { d: 'M74 88 L44 156' },
@@ -277,7 +274,7 @@ export const fishManIslandArt = {
   ],
 
   // A petition sheet with one signature at the foot of it, and the pen.
-  otohime: [
+  'otohime': [
     { d: 'M36 22 H118 V178 H36 Z' },
     { d: 'M50 46 H104 M50 62 H104 M50 78 H92', role: 'soft' },
     { d: 'M50 102 H104 M50 118 H104 M50 134 H104', role: 'ambient' },
@@ -307,7 +304,7 @@ export const fishManIslandArt = {
     shadow(70, 192, 44),
   ],
   // A doctor's bag on the counter, a shark fin behind it.
-  aladine: [
+  'aladine': [
     { d: 'M30 108 H130 V174 H30 Z' },
     { d: 'M30 108 C30 90 130 90 130 108' },
     { d: 'M64 94 C64 82 96 82 96 94' },
@@ -320,7 +317,7 @@ export const fishManIslandArt = {
   ],
 
   // A pair of dark glasses lying under a tortoise shell.
-  pekoms: [
+  'pekoms': [
     { d: 'M24 128 C24 78 136 78 136 128 Z' },
     { d: 'M60 128 V104 l20 -12 l20 12 v24 Z', role: 'soft' },
     { d: 'M36 128 V112 l24 -8 M124 128 V112 l-24 -8', role: 'soft' },

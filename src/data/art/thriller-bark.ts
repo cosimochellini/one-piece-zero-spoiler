@@ -21,7 +21,7 @@ export const thrillerBarkArt = {
   ],
 
   // A violin, its bow laid across it; the f-holes take the colour.
-  brook: [
+  'brook': [
     {
       d: 'M80 64 c-26 0 -34 20 -24 32 c-10 10 -14 34 -2 46 c12 12 40 12 52 0 c12 -12 8 -36 -2 -46 c10 -12 2 -32 -24 -32z',
     },
@@ -36,7 +36,7 @@ export const thrillerBarkArt = {
   ],
 
   // An umbrella, and two small ghosts drifting beside it.
-  perona: [
+  'perona': [
     { d: 'M28 104 Q80 44 132 104' },
     { d: 'M28 104 q13 -12 26 0 t26 0 t26 0 t26 0' },
     { d: 'M80 52 L54 100 M80 52 L106 100', role: 'ambient' },
@@ -47,7 +47,7 @@ export const thrillerBarkArt = {
   ],
 
   // A bridal veil hung over a pair of tusks.
-  lola: [
+  'lola': [
     { d: 'M62 38 C62 26 98 26 98 38' },
     { d: 'M64 40 C42 62 30 96 30 126', role: 'accent' },
     { d: 'M96 40 C118 62 130 96 130 126', role: 'accent' },
@@ -84,7 +84,7 @@ export const thrillerBarkArt = {
   ],
 
   // A long coat with nobody in it, and the bazooka out of one sleeve.
-  absalom: [
+  'absalom': [
     {
       d: 'M62 40 C46 44 38 58 36 76 L30 160 H128 L122 76 C120 58 112 44 96 40',
     },
@@ -108,7 +108,7 @@ export const thrillerBarkArt = {
   ],
 
   // A scalpel laid over a heart that has been sewn back together.
-  hogback: [
+  'hogback': [
     {
       d: 'M80 172 C38 142 24 110 32 86 C40 62 72 62 80 90 C88 62 120 62 128 86 C136 110 122 142 80 172 Z',
     },
@@ -143,7 +143,7 @@ export const thrillerBarkArt = {
   ],
 
   // A katana half drawn, the bare stretch of the blade in its colour.
-  ryuma: [
+  'ryuma': [
     { d: 'M24 184 L72 92 L83.5 98 L35.5 190 Z' },
     { d: 'M41 152 q6 -6 11 0 q-5 6 -11 0 Z', role: 'soft' },
     { d: 'M72 92 L89.1 62.6 L97.9 67.2 L83.5 98 Z', role: 'accent' },
@@ -157,7 +157,7 @@ export const thrillerBarkArt = {
   ],
 
   // A giant's helmet, the two horns curving off it.
-  oars: [
+  'oars': [
     { d: 'M36 120 C36 60 124 60 124 120' },
     { d: 'M30 120 H130 V136 H30 Z' },
     { d: 'M74 136 V166 h12 V136' },
@@ -183,7 +183,7 @@ export const thrillerBarkArt = {
   ],
 
   // A captain's cap resting on a closed violin case.
-  yorki: [
+  'yorki': [
     {
       d: 'M80 86 c-28 0 -37 22 -26 35 c-11 11 -15 37 -2 50 c13 13 43 13 56 0 c13 -13 9 -39 -2 -50 c11 -13 2 -35 -26 -35z',
     },

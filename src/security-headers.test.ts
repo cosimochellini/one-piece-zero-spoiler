@@ -1,10 +1,14 @@
+import { describe, expect, it } from 'vitest'
+
 import { createSecurityHeaders } from './security-headers'
 
 const NONCE = 'test-nonce-value'
 
 describe('createSecurityHeaders', () => {
   it('gives every header a non-empty value', () => {
-    for (const [name, value] of Object.entries(createSecurityHeaders(NONCE))) {
+    const headers = Object.entries(createSecurityHeaders(NONCE))
+
+    for (const [name, value] of headers) {
       expect(value, name).not.toBe('')
     }
   })
@@ -27,7 +31,7 @@ describe('createSecurityHeaders', () => {
     const csp = createSecurityHeaders(NONCE)['Content-Security-Policy']
 
     expect(csp).toContain(`script-src 'self' 'nonce-${NONCE}'`)
-    expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/)
+    expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/u)
   })
 
   it('falls back to unsafe-inline when no nonce is available', () => {

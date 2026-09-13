@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -28,9 +29,10 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   ship: 'kind.ship',
 }
 
+/** The record to file and the reader it is filed for. */
 export type RecordTileProps = {
-  readonly entry: Entity
   readonly bookmark: Bookmark
+  readonly entry: Entity
 }
 
 /**
@@ -43,7 +45,7 @@ export type RecordTileProps = {
  * Used wherever a page points at the records filed beside the one it is
  * about: the two neighbours on a character page, the crew a port files.
  */
-export function RecordTile({ entry, bookmark }: RecordTileProps) {
+export function RecordTile({ entry, bookmark }: RecordTileProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
 
@@ -56,19 +58,22 @@ export function RecordTile({ entry, bookmark }: RecordTileProps) {
         </span>
       </span>
       <SpoilerVeil
-        gated={entry}
-        revealed={isRevealed(entry, bookmark)}
         density="inline"
+        gated={entry}
         placeholder={
           <span {...stylex.props(styles.card)}>
             <span {...stylex.props(styles.frame)} />
             <span {...stylex.props(styles.name)}>{t('veil.placeholder')}</span>
           </span>
         }
+        revealed={isRevealed(entry, bookmark)}
       >
         <span {...stylex.props(styles.card)}>
           <span {...stylex.props(styles.frame)}>
-            <ChartArt art={entry.visual.art} tint={entry.visual.tint} />
+            <ChartArt
+              art={entry.visual.art}
+              tint={entry.visual.tint}
+            />
           </span>
           <Name entry={entry} />
         </span>
@@ -77,15 +82,20 @@ export function RecordTile({ entry, bookmark }: RecordTileProps) {
   )
 }
 
-function Name({ entry }: { readonly entry: Entity }) {
+/**
+ * The name, and where it leads. A character and a place each have a page to
+ * point at; an arc and a ship do not, so their names are plain text rather
+ * than a link that would go nowhere.
+ */
+function Name({ entry }: { readonly entry: Entity }): ReactElement {
   const { locale } = useLocale()
   const label = entry.name[locale]
 
   if (entry.kind === 'character') {
     return (
       <Link
-        to="/$locale/characters/$id"
         params={{ locale, id: entry.id }}
+        to="/$locale/characters/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -96,9 +106,9 @@ function Name({ entry }: { readonly entry: Entity }) {
   if (entry.kind === 'place') {
     return (
       <Link
-        to="/$locale/places"
-        params={{ locale }}
         hash={entry.id}
+        params={{ locale }}
+        to="/$locale/places"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}
@@ -110,11 +120,7 @@ function Name({ entry }: { readonly entry: Entity }) {
 }
 
 const styles = stylex.create({
-  tile: {
-    display: 'grid',
-    gap: space.xs,
-    minWidth: 0,
-  },
+  tile: { gap: space.xs, display: 'grid', minWidth: 0 },
   meta: {
     alignItems: 'baseline',
     color: color.muted,
@@ -126,10 +132,7 @@ const styles = stylex.create({
     lineHeight: leading.body,
     textTransform: 'uppercase',
   },
-  kind: {
-    fontFamily: font.body,
-    fontWeight: 600,
-  },
+  kind: { fontFamily: font.body, fontWeight: 600 },
   episode: {
     color: color.ink2,
     fontFamily: font.mono,
@@ -143,14 +146,14 @@ const styles = stylex.create({
     gridTemplateColumns: '3.5rem minmax(0, 1fr)',
   },
   frame: {
-    aspectRatio: '4 / 5',
-    backgroundColor: color.paper2,
     borderColor: color.rule,
     borderRadius: radius.card,
     borderStyle: 'solid',
     borderWidth: rule.hair,
-    display: 'block',
     overflow: 'hidden',
+    aspectRatio: '4 / 5',
+    backgroundColor: color.paper2,
+    display: 'block',
   },
   name: {
     color: color.ink,
@@ -159,20 +162,20 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   link: {
     color: {
-      default: color.ink,
+      'default': color.ink,
       ':hover': color.accent,
       ':active': color.ink2,
     },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    textDecorationColor: { default: 'transparent', ':hover': color.accent },
+    textDecorationColor: { 'default': 'transparent', ':hover': color.accent },
     textDecorationLine: 'underline',
     textDecorationThickness: rule.fine,
     textUnderlineOffset: '4px',

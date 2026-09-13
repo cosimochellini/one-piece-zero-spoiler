@@ -1,7 +1,6 @@
 import { parseCookieHeader } from '~/lib/cookies'
 
-import { DEFAULT_LOCALE, isLocale, LOCALE_COOKIE, LOCALES } from './locales'
-import type { Locale } from './locales'
+import { DEFAULT_LOCALE, isLocale, type Locale, LOCALE_COOKIE } from './locales'
 
 /**
  * Picks the locale for a request that did not name one in its path.
@@ -12,14 +11,22 @@ import type { Locale } from './locales'
  * site default apply.
  */
 export function negotiateLocale(
-  cookieHeader: string | null | undefined,
-  acceptLanguage: string | null | undefined,
+  cookieHeader: null | string | undefined,
+  acceptLanguage: null | string | undefined,
 ): Locale {
   const fromCookie = parseCookieHeader(cookieHeader).get(LOCALE_COOKIE)
-  if (isLocale(fromCookie)) return fromCookie
+  if (isLocale(fromCookie)) {
+    return fromCookie
+  }
 
   return parseAcceptLanguage(acceptLanguage) ?? DEFAULT_LOCALE
 }
+
+// Matched against an already-trimmed parameter, so the surrounding whitespace
+// the header grammar allows is handled by `trim` rather than by a `\s*` the
+// captured value could trade characters with – which is what made the older
+// pattern backtrack quadratically on a hostile header.
+const QUALITY_PARAM = /^q=(?<quality>.*)$/u
 
 /**
  * Reads the highest-weighted supported language out of an `Accept-Language`
@@ -30,16 +37,21 @@ export function negotiateLocale(
  * than throwing.
  */
 export function parseAcceptLanguage(
-  header: string | null | undefined,
+  header: null | string | undefined,
 ): Locale | undefined {
-  if (header === null || header === undefined || header === '') return undefined
+  if (header === null || header === undefined) {
+    return undefined
+  }
+  if (header === '') {
+    return undefined
+  }
 
   const ranked = header
     .split(',')
     .map((entry) => {
       const [tag = '', ...rest] = entry.split(';')
       const quality = rest
-        .map((part) => /^\s*q=(.*?)\s*$/u.exec(part))
+        .map((part) => QUALITY_PARAM.exec(part.trim()))
         .find((match) => match !== null)
       // A `q` that is present but not a number sinks the entry rather than
       // being read as "no q given": a client that sent `q=abc` did not mean
@@ -47,14 +59,17 @@ export function parseAcceptLanguage(
       const parsed = quality === undefined ? 1 : Number(quality[1])
 
       return {
-        language: (tag.trim().split('-')[0] ?? '').toLowerCase(),
+        language: (tag.trim().split('-', 1)[0] ?? '').toLowerCase(),
         quality: Number.isFinite(parsed) ? parsed : 0,
       }
     })
     .filter((entry) => entry.quality > 0)
-    .sort((a, b) => b.quality - a.quality)
+    .toSorted((a, b) => b.quality - a.quality)
 
-  return ranked.find((entry): entry is { language: Locale; quality: number } =>
-    (LOCALES as readonly string[]).includes(entry.language),
-  )?.language
+  const best = ranked.find(
+    (entry): entry is { language: Locale; quality: number } =>
+      isLocale(entry.language),
+  )
+
+  return best?.language
 }

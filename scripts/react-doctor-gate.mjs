@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Blocking react-doctor gate.
  *
@@ -10,18 +9,18 @@
  *
  * Exit codes:
  *   0  clean
- *   1  error-severity findings
+ *   1  findings, of any severity
  *   2  the tool failed: crash, timeout, unreadable report, or an analysis
  *      that skipped checks
  *
  * `--no-telemetry` is an alias for `--no-score`, so the report carries no
- * health score. Gating is by severity, never by score.
+ * health score. Gating is by the presence of findings, never by score, and
+ * doctor.config.ts stamps every rule that applies to this stack at error.
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
-import { dirname, join, relative, resolve } from 'node:path'
+import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 
 const EXIT_CLEAN = 0
 const EXIT_FINDINGS = 1
@@ -31,14 +30,14 @@ const TIMEOUT_MS = 900_000
 const MAX_DURATION_SECONDS = 600
 const MAX_PRINTED = 50
 
-const repoRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..')
-const reportPath = join(repoRoot, '.gate', 'react-doctor.json')
+const repoRoot = path.resolve(import.meta.dirname, '..')
+const reportPath = path.join(repoRoot, '.gate', 'react-doctor.json')
 
 function fail(headline) {
   process.stderr.write(
-    `\nreact-doctor gate: TOOL FAILURE\n  ${headline}\n\n` +
-      '  This is not a code finding: react-doctor did not produce a report\n' +
-      '  that can be trusted, so the gate refuses to pass.\n',
+    `\nreact-doctor gate: TOOL FAILURE\n  ${headline}\n\n`
+      + '  This is not a code finding: react-doctor did not produce a report\n'
+      + '  that can be trusted, so the gate refuses to pass.\n',
   )
   process.exit(EXIT_TOOL_FAILURE)
 }
@@ -50,14 +49,16 @@ function isObject(value) {
 // The package `exports` map hides ./package.json, so require.resolve cannot
 // find the binary. Look it up by path, then fall back to PATH.
 function resolveCli() {
-  const local = join(
+  const local = path.join(
     repoRoot,
     'node_modules',
     'react-doctor',
     'bin',
     'react-doctor.js',
   )
-  if (existsSync(local)) return { command: process.execPath, args: [local] }
+  if (existsSync(local)) {
+    return { command: process.execPath, args: [local] }
+  }
   return { command: 'react-doctor', args: [] }
 }
 
@@ -72,6 +73,13 @@ function runDoctor() {
       reportPath,
       '--no-telemetry',
       '--no-supply-chain',
+      // Audit mode: an inline eslint- or react-doctor-disable comment must not
+      // be able to walk a finding past the gate. doctor.config.ts says the same
+      // thing; the flag keeps the gate honest if that file drifts.
+      '--no-respect-inline-disables',
+      // A cache keyed on an older doctor.config.ts would replay a stale
+      // verdict. CI runners are fresh anyway, so this only costs a local rerun.
+      '--no-cache',
       '--blocking',
       'none',
       '--scope',
@@ -91,9 +99,12 @@ function runDoctor() {
 }
 
 function assertChildSucceeded(child) {
-  if (child.error) fail(`could not run react-doctor: ${child.error.message}`)
-  if (child.signal)
+  if (child.error) {
+    fail(`could not run react-doctor: ${child.error.message}`)
+  }
+  if (child.signal) {
     fail(`react-doctor was terminated by signal ${child.signal}`)
+  }
   // Under --blocking none, findings cannot set a non-zero status.
   if (child.status !== 0) {
     fail(
@@ -103,36 +114,44 @@ function assertChildSucceeded(child) {
 }
 
 function readReport() {
-  if (!existsSync(reportPath))
-    fail(`no report was written to ${relative(repoRoot, reportPath)}`)
+  if (!existsSync(reportPath)) {
+    fail(`no report was written to ${path.relative(repoRoot, reportPath)}`)
+  }
   try {
     return JSON.parse(readFileSync(reportPath, 'utf8'))
   } catch (error) {
     fail(
-      `${relative(repoRoot, reportPath)} could not be parsed: ${String(error)}`,
+      `${path.relative(repoRoot, reportPath)} could not be parsed: ${String(error)}`,
     )
   }
 }
 
 function assertReportShape(report) {
-  if (!isObject(report))
+  if (!isObject(report)) {
     fail(`report root is ${typeof report}, expected an object`)
-  if (!Array.isArray(report.projects)) fail('report has no `projects` array')
-  if (report.projects.length === 0) fail('react-doctor scanned zero projects')
+  }
+  if (!Array.isArray(report.projects)) {
+    fail('report has no `projects` array')
+  }
+  if (report.projects.length === 0) {
+    fail('react-doctor scanned zero projects')
+  }
 }
 
 function readDiagnostics(report) {
-  if (!Array.isArray(report.diagnostics))
+  if (!Array.isArray(report.diagnostics)) {
     fail('report has no `diagnostics` array')
-  return report.diagnostics.filter(isObject)
+  }
+  return report.diagnostics.filter((diagnostic) => isObject(diagnostic))
 }
 
 function assertNoToolError(report) {
   // react-doctor surfaces its own internal errors as a populated `error`.
-  if (report.error)
+  if (report.error) {
     fail(
       `react-doctor reported an internal error: ${JSON.stringify(report.error)}`,
     )
+  }
   // Projects that were selected but never started, e.g. reason "max-duration".
   const never = report.skippedProjects ?? []
   if (never.length > 0) {
@@ -164,9 +183,15 @@ function assertAnalysisComplete(report) {
   }
 }
 
-/** Anything whose severity cannot be read is counted as an error, never as harmless. */
-function isBlocking(diagnostic) {
-  return diagnostic.severity !== 'warning'
+/**
+ * Every finding blocks, whatever severity it carries. Nothing react-doctor
+ * reports here is advisory: doctor.config.ts stamps each applicable rule at
+ * error, and a rule that should not fire at all is turned off there rather than
+ * demoted to a warning nobody reads.
+ * @returns {boolean} Always true.
+ */
+function isBlocking() {
+  return true
 }
 
 function format(diagnostic) {
@@ -175,11 +200,17 @@ function format(diagnostic) {
   return `    [${diagnostic.severity}] ${diagnostic.rule} ${site}\n        ${diagnostic.message}`
 }
 
-function main() {
-  mkdirSync(dirname(reportPath), { recursive: true })
-  // A stale report must never be able to produce a pass.
+// A stale report must never be able to produce a pass, so the previous run's
+// file is removed before the tool is given the chance to write a new one.
+function prepareReportPath() {
+  mkdirSync(path.dirname(reportPath), { recursive: true })
   rmSync(reportPath, { force: true })
+}
 
+// Everything that has to hold before a verdict may be read out of the report.
+// Each assertion exits 2 on its own, so reaching the return means the file on
+// disk is a complete analysis and not a partial or crashed one.
+function readTrustedReport() {
   const child = runDoctor()
   assertChildSucceeded(child)
 
@@ -188,19 +219,13 @@ function main() {
   assertNoToolError(report)
   assertAnalysisComplete(report)
 
-  const diagnostics = readDiagnostics(report)
-  const blocking = diagnostics.filter(isBlocking)
+  return report
+}
 
-  process.stdout.write(
-    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), ` +
-      `${blocking.length} blocking\n  report: ${relative(repoRoot, reportPath)}\n`,
-  )
-
-  if (blocking.length === 0) {
-    process.stdout.write('\nreact-doctor gate: PASSED\n')
-    process.exit(EXIT_CLEAN)
-  }
-
+// Only the first MAX_PRINTED findings are listed. The report file keeps the
+// rest, and a log that scrolls for pages buries the finding a reader opened it
+// for.
+function printBlockingFindings(blocking) {
   process.stdout.write('\n  blocking findings:\n')
   for (const diagnostic of blocking.slice(0, MAX_PRINTED)) {
     process.stdout.write(`${format(diagnostic)}\n`)
@@ -210,6 +235,26 @@ function main() {
       `    ... and ${blocking.length - MAX_PRINTED} more, see the report\n`,
     )
   }
+}
+
+function main() {
+  prepareReportPath()
+
+  const report = readTrustedReport()
+  const diagnostics = readDiagnostics(report)
+  const blocking = diagnostics.filter(() => isBlocking())
+
+  process.stdout.write(
+    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `
+      + `${blocking.length} blocking\n  report: ${path.relative(repoRoot, reportPath)}\n`,
+  )
+
+  if (blocking.length === 0) {
+    process.stdout.write('\nreact-doctor gate: PASSED\n')
+    process.exit(EXIT_CLEAN)
+  }
+
+  printBlockingFindings(blocking)
   process.stderr.write(
     `\nreact-doctor gate: FAILED with ${blocking.length} blocking finding(s)\n`,
   )

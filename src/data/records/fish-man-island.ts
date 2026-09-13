@@ -299,7 +299,7 @@ export const fishManIsland: Saga = {
   ],
 
   dossiers: {
-    caribou: {
+    'caribou': {
       role: {
         it: 'Capitano dei Pirati di Caribou',
         en: 'Captain of the Caribou Pirates',
@@ -325,10 +325,7 @@ export const fishManIsland: Saga = {
         },
       ],
       epithet: [
-        {
-          episode: 517,
-          value: { it: 'Capelli Bagnati', en: 'Wet-Haired' },
-        },
+        { episode: 517, value: { it: 'Capelli Bagnati', en: 'Wet-Haired' } },
       ],
       devilFruit: [
         {
@@ -338,11 +335,8 @@ export const fishManIsland: Saga = {
       ],
       bounty: [{ episode: 517, value: 210_000_000 }],
     },
-    coribou: {
-      role: {
-        it: 'Fratello del capitano',
-        en: 'The captain’s brother',
-      },
+    'coribou': {
+      role: { it: 'Fratello del capitano', en: 'The captain’s brother' },
       log: {
         it: 'Segue il fratello con la vanga in spalla e il lavoro sporco già assegnato: quando Caribou ha finito, lui interra i corpi e pianta le croci. Ha una taglia quasi pari a quella del capitano e nessuna voglia di comandare. Parla poco, e quasi sempre per dire al fratello che sta esagerando.',
         en: 'He follows his brother with a spade over his shoulder and the dirty work already assigned: when Caribou has finished, he buries the bodies and plants the crosses. His bounty is nearly the captain’s and he has no wish to give orders. He says little, and almost always to tell his brother he has gone too far.',
@@ -364,7 +358,7 @@ export const fishManIsland: Saga = {
       ],
       bounty: [{ episode: 517, value: 190_000_000 }],
     },
-    hammond: {
+    'hammond': {
       role: {
         it: 'Uomo-pesce dei Nuovi Pirati',
         en: 'Fish-man of the New Pirates',
@@ -384,7 +378,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 523, value: FISH_MAN_ISLAND }],
     },
-    shyarly: {
+    'shyarly': {
       role: {
         it: 'Proprietaria del Caffè delle Sirene',
         en: 'Owner of the Mermaid Café',
@@ -447,10 +441,7 @@ export const fishManIsland: Saga = {
             en: 'New Fish-Man Pirates, captain',
           },
         },
-        {
-          episode: 574,
-          value: { it: 'Imprigionato', en: 'Imprisoned' },
-        },
+        { episode: 574, value: { it: 'Imprigionato', en: 'Imprisoned' } },
       ],
       origin: [
         {
@@ -462,7 +453,7 @@ export const fishManIsland: Saga = {
         },
       ],
     },
-    neptune: {
+    'neptune': {
       role: { it: 'Re del Regno di Ryugu', en: 'King of the Ryugu Kingdom' },
       log: {
         it: 'Siede su un trono di corallo in un palazzo pieno d’acqua e si muove con la lentezza allegra di chi ha già visto tutto. È forte abbastanza da essere chiamato il Grande Cavaliere del Mare e mite abbastanza da ridere di sé stesso davanti alla corte. Vuole che la sua gente possa vivere sotto il sole e non perde occasione per ripeterlo.',
@@ -485,11 +476,8 @@ export const fishManIsland: Saga = {
         },
       ],
     },
-    fukaboshi: {
-      role: {
-        it: 'Principe ereditario di Ryugu',
-        en: 'Crown prince of Ryugu',
-      },
+    'fukaboshi': {
+      role: { it: 'Principe ereditario di Ryugu', en: 'Crown prince of Ryugu' },
       log: {
         it: 'Guida i ministri e l’armata di Nettuno ed è il più misurato dei tre fratelli: ascolta prima di alzare la voce e non promette nulla che non possa mantenere. Porta una lancia con la punta a forma di squalo ed è il primo a rendersi conto di quanto sia grave quello che sta montando nel Quartiere degli Uomini-Pesce.',
         en: 'He leads the ministers and the Neptune Army and is the steadiest of the three brothers: he listens before raising his voice and promises nothing he cannot deliver. He carries a lance with a shark-shaped head, and he is the first to work out how serious the thing rising in the Fish-Man District really is.',
@@ -505,7 +493,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
     },
-    ryuboshi: {
+    'ryuboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
         it: 'Finisce quasi ogni frase su un acuto, con la bocca spalancata come se fosse sempre a teatro, e i fratelli hanno smesso da un pezzo di farci caso. Sotto la posa c’è un principe che si batte con la sciabola e che non lascia il palazzo quando le cose si mettono male. Le sue note si sentono da un capo all’altro del salone.',
@@ -522,7 +510,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
     },
-    manboshi: {
+    'manboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
         it: 'È il più tondo e il più rumoroso dei tre, un pesce luna che accompagna ogni discorso con un passo di danza e tiene il ritmo anche quando nessuno canta. Sta al fianco dei fratelli nell’armata del padre e prende la sciabola quando serve. Nel salone del palazzo lo si sente arrivare molto prima di vederlo.',
@@ -539,7 +527,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
     },
-    shirahoshi: {
+    'shirahoshi': {
       role: {
         it: 'Principessa del Regno di Ryugu',
         en: 'Princess of the Ryugu Kingdom',
@@ -572,7 +560,7 @@ export const fishManIsland: Saga = {
         },
       ],
     },
-    hyouzou: {
+    'hyouzou': {
       role: { it: 'Spadaccino prezzolato', en: 'Sword for hire' },
       log: {
         it: 'Tiene una sciabola per braccio e passa il veleno su ogni lama prima di muoversi, perché gli basta un graffio. Si vende a chi paga, e adesso paga la ciurma del Quartiere degli Uomini-Pesce, che lo presenta come il proprio spadaccino. Chiede più soldi a metà lavoro e nessuno dei suoi nuovi compagni se ne stupisce.',
@@ -589,7 +577,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
-    zeo: {
+    'zeo': {
       role: {
         it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
         en: 'Officer of the New Fish-Man Pirates',
@@ -601,7 +589,7 @@ export const fishManIsland: Saga = {
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
-    daruma: {
+    'daruma': {
       role: {
         it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
         en: 'Officer of the New Fish-Man Pirates',
@@ -625,7 +613,7 @@ export const fishManIsland: Saga = {
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
-    dosun: {
+    'dosun': {
       role: {
         it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
         en: 'Officer of the New Fish-Man Pirates',
@@ -637,11 +625,8 @@ export const fishManIsland: Saga = {
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
-    den: {
-      role: {
-        it: 'Carpentiere dell’isola',
-        en: 'Shipwright of the island',
-      },
+    'den': {
+      role: { it: 'Carpentiere dell’isola', en: 'Shipwright of the island' },
       log: {
         it: 'Tiene il cantiere dell’isola e lavora sugli scafi che scendono dalla superficie coperti di resina, con il martello in mano e le bolle che gli salgono intorno. Dice di essere il fratello minore di Tom, il carpentiere di cui si parla ancora a Water Seven, e a chi lo ha conosciuto basta guardarlo. Per il lavoro non chiede niente.',
         en: 'He runs the island’s yard and works on the hulls that come down from the surface under their coating, mallet in hand and bubbles rising around him. He says he is the younger brother of Tom, the shipwright people still talk about in Water Seven, and anyone who knew him only has to look. He asks nothing for the work.',
@@ -657,7 +642,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 531, value: FISH_MAN_ISLAND }],
     },
-    otohime: {
+    'otohime': {
       role: {
         it: 'Regina del Regno di Ryugu',
         en: 'Queen of the Ryugu Kingdom',
@@ -697,14 +682,11 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
       epithet: [
-        {
-          episode: 539,
-          value: { it: 'l’Avventuriero', en: 'the Adventurer' },
-        },
+        { episode: 539, value: { it: 'l’Avventuriero', en: 'the Adventurer' } },
       ],
       bounty: [{ episode: 539, value: 230_000_000 }],
     },
-    aladine: {
+    'aladine': {
       role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
       log: {
         it: 'Naviga con la ciurma nata dalla liberazione degli schiavi e ne è il medico: cura le ferite dei compagni e, quando serve, anche quelle di chi hanno appena affrontato. Porta il sole marchiato sulla pelle come tutti gli altri a bordo. È fra i più pacati della nave e uno dei pochi che dice al capitano quando ha esagerato.',
@@ -725,7 +707,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 541, value: FISH_MAN_ISLAND }],
     },
-    pekoms: {
+    'pekoms': {
       role: {
         it: 'Combattente dei Pirati di Big Mom',
         en: 'Combatant of the Big Mom Pirates',

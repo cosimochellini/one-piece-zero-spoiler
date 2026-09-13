@@ -1,0 +1,15 @@
+# Mirrors .prettierrc for the files Prettier does not own and for editors that
+# read this before a formatter is configured.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# A double space at the end of a line is a hard break in Markdown.
+[*.md]
+trim_trailing_whitespace = false

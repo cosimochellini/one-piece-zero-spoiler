@@ -1,25 +1,22 @@
-import { circle, ellipse, dot, dots, SEA, shadow } from './primitives'
+import { circle, dot, dots, ellipse, SEA, shadow } from './primitives'
 import type { Drawings, Stroke } from './stroke'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
   // A whale as big as an island, the scars on its forehead where it beats the
   // cliff, and the spout going up.
-  laboon: [
+  'laboon': [
     { d: 'M12 150 C12 78 58 44 96 54 C134 64 152 104 150 150' },
     { d: 'M16 124 C52 134 100 134 146 122' },
     { d: 'M60 150 q18 -14 38 -6' },
-    {
-      d: 'M34 84 L52 74 M32 98 L52 86 M40 110 L56 100',
-      role: 'accent',
-    },
+    { d: 'M34 84 L52 74 M32 98 L52 86 M40 110 L56 100', role: 'accent' },
     { d: 'M88 48 C84 30 96 26 94 12 M98 50 C106 34 116 34 114 20' },
     ...SEA,
   ],
 
   // A lighthouse on the cape, its light going out over the water, and the
   // mouth of the river behind it.
-  crocus: [
+  'crocus': [
     { d: 'M62 152 L70 66 H92 L100 152' },
     { d: 'M66 66 H96' },
     { d: 'M70 66 V48 H92 V66' },
@@ -89,7 +86,7 @@ export const alabastaArt = {
   ],
 
   // A saxophone with a gun barrel where the mouthpiece should be.
-  igaram: [
+  'igaram': [
     { d: 'M104 32 C108 72 100 112 86 132 C72 152 46 158 32 146' },
     { d: 'M90 34 C94 72 86 106 74 124 C62 142 44 146 34 136' },
     { d: 'M32 146 q-14 -6 -12 -22 q2 -14 14 -16' },
@@ -123,7 +120,7 @@ export const alabastaArt = {
   ],
 
   // A riding saddle with a canteen slung from it.
-  karoo: [
+  'karoo': [
     {
       d: 'M34 110 C30 84 56 70 82 70 C110 70 130 84 128 110 C116 122 46 122 34 110 Z',
     },
@@ -232,7 +229,7 @@ export const alabastaArt = {
   ],
 
   // A giant's round shield with a sword snapped off above the guard.
-  dorry: [
+  'dorry': [
     { d: circle(58, 104, 42) },
     { d: circle(58, 104, 34), role: 'ambient' },
     { d: circle(58, 104, 10) },
@@ -253,7 +250,7 @@ export const alabastaArt = {
   ],
 
   // A giant's double-bitted axe planted in the ground.
-  brogy: [
+  'brogy': [
     { d: 'M78 176 V44' },
     { d: 'M72 160 V70 M84 156 V74', role: 'ambient' },
     {
@@ -292,7 +289,7 @@ export const alabastaArt = {
   ],
 
   // A crown above a set of iron jaws.
-  wapol: [
+  'wapol': [
     {
       d: 'M40 110 L48 56 L64 84 L80 46 L96 84 L112 56 L120 110 Z',
       role: 'accent',
@@ -335,7 +332,7 @@ export const alabastaArt = {
   ],
 
   // A captain's cloak with a bison's horns above the collar.
-  dalton: [
+  'dalton': [
     { d: 'M40 176 C34 130 44 96 62 84 H98 C116 96 126 130 120 176 Z' },
     { d: 'M62 84 q18 14 36 0' },
     { d: circle(80, 98, 6) },
@@ -349,7 +346,7 @@ export const alabastaArt = {
   ],
 
   // A medicine bottle standing beside a flask of plum wine.
-  kureha: [
+  'kureha': [
     { d: 'M40 170 V112 q0 -10 8 -14 V84 h20 v14 q8 4 8 14 v58 Z' },
     { d: 'M46 84 H70' },
     { d: 'M36 120 H80 V146 H36 Z', role: 'accent' },
@@ -375,7 +372,7 @@ export const alabastaArt = {
   ],
 
   // A doctor's bag with a small flag stitched onto the side.
-  hiluluk: [
+  'hiluluk': [
     { d: 'M28 160 V106 q52 -14 104 0 v54 Z' },
     { d: 'M28 106 q52 -18 104 0' },
     { d: 'M34 104 H126', role: 'ambient' },
@@ -388,7 +385,7 @@ export const alabastaArt = {
   ],
 
   // Dunes, a palm, and the sun over a desert kingdom.
-  alabasta: [
+  'alabasta': [
     { d: 'M10 148 C40 112 70 128 96 136 C120 142 140 126 154 116' },
     { d: 'M10 168 C46 150 90 158 154 146' },
     { d: circle(116, 66, 16), role: 'accent' },
@@ -411,7 +408,7 @@ export const alabastaArt = {
   ],
 
   // A golden hook and an hourglass.
-  crocodile: [
+  'crocodile': [
     {
       d: 'M44 172 V112 C44 84 66 76 80 84 C94 92 92 112 78 116 C70 118 66 112 68 106',
       role: 'accent',
@@ -436,7 +433,7 @@ export const alabastaArt = {
   ],
 
   // A rebel's goggles above a curved sabre.
-  kohza: [
+  'kohza': [
     { d: ellipse(54, 76, 22, 17) },
     { d: ellipse(106, 76, 22, 17) },
     { d: 'M76 76 q4 -8 8 0' },
@@ -452,7 +449,7 @@ export const alabastaArt = {
   ],
 
   // A falcon's spread wing above a curved sword.
-  pell: [
+  'pell': [
     { d: 'M18 56 C54 36 100 48 132 82 C104 96 60 92 30 76 Z', role: 'accent' },
     {
       d: 'M40 70 L52 46 M58 76 L70 48 M76 80 L88 54 M94 84 L106 62',
@@ -467,7 +464,7 @@ export const alabastaArt = {
   ],
 
   // A sword whose pommel is shaped like a jackal's head.
-  chaka: [
+  'chaka': [
     { d: 'M70 90 V178 L80 190 L90 178 V90 Z' },
     { d: 'M80 96 V176', role: 'ambient' },
     { d: 'M44 82 H116 V92 H44 Z' },
@@ -569,7 +566,7 @@ export const alabastaArt = {
   ],
 
   // An iron shackle ring, and a cigarette burning beside it.
-  hina: [
+  'hina': [
     { d: circle(70, 112, 44), role: 'accent' },
     { d: circle(70, 112, 34), role: 'accent' },
     { d: 'M26 104 H14 V120 H26' },
@@ -601,11 +598,13 @@ export const alabastaArt = {
     },
     { d: 'M80 104 V64' },
     { d: 'M80 84 q-12 -2 -14 -12' },
-    ...[0, 72, 144, 216, 288].map((angle): Stroke => ({
-      d: 'M80 64 q-9 -12 0 -22 q9 10 0 22',
-      role: 'accent',
-      transform: `rotate(${String(angle)} 80 64)`,
-    })),
+    ...[0, 72, 144, 216, 288].map((angle): Stroke => {
+      return {
+        d: 'M80 64 q-9 -12 0 -22 q9 10 0 22',
+        role: 'accent',
+        transform: `rotate(${String(angle)} 80 64)`,
+      }
+    }),
     { d: dot(80, 64), role: 'accent' },
   ],
 } satisfies Drawings

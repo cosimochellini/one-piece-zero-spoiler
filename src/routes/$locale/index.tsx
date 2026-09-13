@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
@@ -10,10 +11,9 @@ import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { settleStyles } from '~/styles/settle'
 import {
   color,
-  dur,
-  ease,
   font,
   leading,
   radius,
@@ -22,37 +22,11 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-// The page's one load orchestration: the four bands settle in DOM order, the
-// last of them 210ms in, well under the half-second cap. Only `opacity` and
-// `transform` move, so it composites.
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
-})
+// The bands in DOM order. Named rather than counted at the call, so a band
+// inserted in the middle is one edit here and not four along the page.
+const BAND = { fold: 0, orientation: 1, route: 2, faq: 3 } as const
 
-const enter = stylex.create({
-  band: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    // Guarded rather than overridden: with reduced motion requested the
-    // sections are simply present, and nothing depends on an animation having
-    // run.
-    animationName: {
-      default: 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      default: 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: `${String(index * 70)}ms` }),
-})
-
-export const Route = createFileRoute('/$locale/')({
-  component: Landing,
-})
+export const Route = createFileRoute('/$locale/')({ component: Landing })
 
 const FAQ = [
   { q: 'faq.animeQ', a: 'faq.animeA' },
@@ -76,7 +50,31 @@ const FAQ = [
  * Below the chart, three questions answered plainly. They are the rules of the
  * site, written as a conversation rather than as a row of cards.
  */
-function Landing() {
+/**
+ * The fold: the night sea with the headline set into its lower-left corner.
+ * The drawing is cropped rather than squashed, so the caravel stays where a
+ * phone's crop of the box still shows it.
+ */
+function Fold(): ReactElement {
+  const t = useT()
+
+  return (
+    <section
+      {...stylex.props(
+        styles.fold,
+        settleStyles.band,
+        settleStyles.at(BAND.fold),
+      )}
+    >
+      <div {...stylex.props(styles.foldFigure)}>
+        <SeaChartHero />
+      </div>
+      <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
+    </section>
+  )
+}
+
+function Landing(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
 
@@ -89,70 +87,102 @@ function Landing() {
   const open = ordered.filter((entry) => isRevealed(entry, bookmark)).length
 
   return (
-    <main id="content" {...stylex.props(styles.page)}>
-      <section {...stylex.props(styles.fold, enter.band, enter.at(0))}>
-        <div {...stylex.props(styles.foldFigure)}>
-          <SeaChartHero />
-        </div>
-        <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
-      </section>
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
+      <Fold />
 
       <div {...stylex.props(styles.chart)}>
-        <section {...stylex.props(styles.orientation, enter.band, enter.at(1))}>
+        <section
+          {...stylex.props(
+            styles.orientation,
+            settleStyles.band,
+            settleStyles.at(BAND.orientation),
+          )}
+        >
           <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
           <RouteLegend
-            open={open}
             covered={ordered.length - open}
             filed={ordered.length}
+            open={open}
           />
         </section>
 
         <section
           aria-labelledby="route-title"
-          {...stylex.props(styles.routeBand, enter.band, enter.at(2))}
+          {...stylex.props(
+            styles.routeBand,
+            settleStyles.band,
+            settleStyles.at(BAND.route),
+          )}
         >
-          <h2 id="route-title" {...stylex.props(styles.routeTitle)}>
+          <h2
+            id="route-title"
+            {...stylex.props(styles.routeTitle)}
+          >
             {t('chart.title')}
           </h2>
-          <RouteChart entries={ordered} bookmark={bookmark} />
+          <RouteChart
+            bookmark={bookmark}
+            entries={ordered}
+          />
         </section>
       </div>
 
-      <section {...stylex.props(styles.faq, enter.band, enter.at(3))}>
-        {FAQ.map(({ q, a }) => (
-          <div key={q} {...stylex.props(styles.qa)}>
-            <h2 {...stylex.props(styles.question)}>{t(q)}</h2>
-            <p {...stylex.props(styles.answer)}>{t(a)}</p>
-          </div>
-        ))}
-      </section>
+      <Questions />
     </main>
   )
 }
 
+/**
+ * The three questions, answered plainly.
+ *
+ * They are the rules of the site rather than a marketing FAQ, which is why
+ * they are set as a conversation down one column and not as a row of cards.
+ */
+function Questions(): ReactElement {
+  const t = useT()
+
+  return (
+    <section
+      {...stylex.props(
+        styles.faq,
+        settleStyles.band,
+        settleStyles.at(BAND.faq),
+      )}
+    >
+      {FAQ.map(({ q, a }) => {
+        return (
+          <div
+            key={q}
+            {...stylex.props(styles.qa)}
+          >
+            <h2 {...stylex.props(styles.question)}>{t(q)}</h2>
+            <p {...stylex.props(styles.answer)}>{t(a)}</p>
+          </div>
+        )
+      })}
+    </section>
+  )
+}
+
 const styles = stylex.create({
-  page: {
-    display: 'grid',
-    paddingInline: space.md,
-  },
+  page: { paddingInline: space.md, display: 'grid' },
 
   // The illustrated fold: the drawing is the height of its frame, not of the
   // viewport, and the headline is set into its lower-left corner on a scrim
   // that darkens toward the paper so the type reads over the sea.
-  fold: {
-    display: 'grid',
-    paddingBlockStart: space.xs,
-    position: 'relative',
-  },
+  fold: { display: 'grid', paddingBlockStart: space.xs, position: 'relative' },
   foldFigure: {
+    borderRadius: radius.card,
+    overflow: 'hidden',
     aspectRatio: {
-      default: '16 / 9',
+      'default': '16 / 9',
       '@media (min-width: 40rem)': '16 / 8',
       '@media (min-width: 60rem)': '16 / 7',
     },
     backgroundColor: color.paper2,
-    borderRadius: radius.card,
-    overflow: 'hidden',
     position: 'relative',
   },
   // Two columns from 60rem: the orientation column is narrower than the
@@ -162,29 +192,26 @@ const styles = stylex.create({
     columnGap: space.xl2,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 60rem)': 'minmax(0, 5fr) minmax(0, 7fr)',
     },
     paddingBlockStart: space.lg,
     rowGap: space.xl,
   },
   orientation: {
+    gap: space.lg,
     alignSelf: 'start',
     display: 'grid',
-    gap: space.lg,
     insetBlockStart: space.lg,
     justifyItems: 'start',
-    position: {
-      default: 'static',
-      '@media (min-width: 60rem)': 'sticky',
-    },
+    position: { 'default': 'static', '@media (min-width: 60rem)': 'sticky' },
   },
   // On a phone the headline sits under the drawing, in the page; from 40rem
   // it is set into the drawing's lower-left corner on a scrim that darkens
   // toward the paper, so the type reads over the sea and the ship stays clear.
   headline: {
     backgroundImage: {
-      default: 'none',
+      'default': 'none',
       '@media (min-width: 40rem)': `linear-gradient(to top, ${color.paper} 0%, ${color.paper} 18%, transparent 100%)`,
     },
     color: color.ink,
@@ -195,19 +222,19 @@ const styles = stylex.create({
     insetInlineStart: 0,
     letterSpacing: '-0.035em',
     lineHeight: leading.display,
+    overflowWrap: 'anywhere',
+    paddingBlockEnd: { 'default': 0, '@media (min-width: 40rem)': space.xs },
+    paddingBlockStart: {
+      'default': space.lg,
+      '@media (min-width: 40rem)': space.xl2,
+    },
+    paddingInlineEnd: { 'default': 0, '@media (min-width: 40rem)': space.xl },
+    paddingInlineStart: { 'default': 0, '@media (min-width: 40rem)': space.md },
+    position: { 'default': 'static', '@media (min-width: 40rem)': 'absolute' },
     maxWidth: '16ch',
     // Display type needs an explicit last-resort break or a long unbroken
     // string walks off a 320px viewport.
     minWidth: 0,
-    overflowWrap: 'anywhere',
-    paddingBlockEnd: { default: 0, '@media (min-width: 40rem)': space.xs },
-    paddingBlockStart: {
-      default: space.lg,
-      '@media (min-width: 40rem)': space.xl2,
-    },
-    paddingInlineEnd: { default: 0, '@media (min-width: 40rem)': space.xl },
-    paddingInlineStart: { default: 0, '@media (min-width: 40rem)': space.md },
-    position: { default: 'static', '@media (min-width: 40rem)': 'absolute' },
   },
 
   lede: {
@@ -217,11 +244,7 @@ const styles = stylex.create({
     maxWidth: '44ch',
   },
 
-  routeBand: {
-    display: 'grid',
-    gap: space.md,
-    minWidth: 0,
-  },
+  routeBand: { gap: space.md, display: 'grid', minWidth: 0 },
   // A small orientation phrase, as the macrostructure asks: the chart is the
   // heading, this only says what it is.
   routeTitle: {
@@ -231,7 +254,7 @@ const styles = stylex.create({
     fontWeight: 600,
     lineHeight: leading.body,
     paddingInlineStart: {
-      default: 0,
+      'default': 0,
       // Lines up with the waypoint text, past the 4rem rail and its gap.
       '@media (min-width: 40rem)': 'calc(4rem + 1rem)',
     },
@@ -245,16 +268,16 @@ const styles = stylex.create({
     paddingBlockEnd: space.xl2,
   },
   qa: {
+    paddingBlock: space.lg,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     columnGap: space.xl,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 40rem)': 'minmax(0, 18rem) minmax(0, 1fr)',
     },
-    paddingBlock: space.lg,
     rowGap: space.xs,
   },
   question: {
@@ -264,8 +287,8 @@ const styles = stylex.create({
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   answer: {
     color: color.ink2,

@@ -7,8 +7,8 @@ import { absoluteEpisodeOf, type Bookmark } from './episode'
  * 45, and one who first appears in chapter 8 by someone who has read it.
  */
 export type Gated = {
-  readonly revealedAtEpisode: number
   readonly revealedAtChapter: number
+  readonly revealedAtEpisode: number
 }
 
 /**
@@ -21,7 +21,9 @@ export type Gated = {
  * an episode or season bookmark against the episode one.
  */
 export function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
-  if (bookmark === null) return false
+  if (bookmark === null) {
+    return false
+  }
 
   if (bookmark.mode === 'chapter') {
     return bookmark.chapter >= gated.revealedAtChapter
@@ -36,10 +38,7 @@ export function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
  * the same as `Dated<T>` in `~/data/types`; declared here so the spoiler
  * module owes the data module nothing.
  */
-export type DatedEntry<T> = {
-  readonly episode: number
-  readonly value: T
-}
+export type DatedEntry<T> = { readonly episode: number; readonly value: T }
 
 /**
  * The anime episode a bookmark stands at, or `null` when it stands nowhere
@@ -48,7 +47,7 @@ export type DatedEntry<T> = {
  * counts in chapters reaches none of their entries; that fails closed, which
  * is the safe direction.
  */
-export function episodeOf(bookmark: Bookmark): number | null {
+export function episodeOf(bookmark: Bookmark): null | number {
   return bookmark === null ? null : absoluteEpisodeOf(bookmark)
 }
 
@@ -63,11 +62,15 @@ export function latestAt<T>(
   bookmark: Bookmark,
 ): T | undefined {
   const progress = episodeOf(bookmark)
-  if (progress === null) return undefined
+  if (progress === null) {
+    return undefined
+  }
 
   let latest: T | undefined
   for (const entry of timeline) {
-    if (entry.episode > progress) break
+    if (entry.episode > progress) {
+      break
+    }
     latest = entry.value
   }
   return latest

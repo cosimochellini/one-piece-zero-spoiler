@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { EPISODE_CEILING } from '~/lib/progress/bounds'
 
 import {
@@ -5,31 +7,51 @@ import {
   getSeason,
   locateEpisode,
   resolveEpisode,
-  SEASONS,
+  type Season,
   seasonLength,
+  SEASONS,
 } from './seasons'
+
+/**
+ * Narrows a table lookup outside of any test body. A missing entry has to stop
+ * the file rather than let the assertions below read fields off `undefined`
+ * and pass for the wrong reason.
+ */
+function required(season: Season | undefined, what: string): Season {
+  if (season === undefined) {
+    throw new Error(what)
+  }
+
+  return season
+}
+
+const OPEN_SEASON = required(SEASONS.at(-1), 'empty table')
+const LAST_NUMBERED_SEASON = required(getSeason(22), 'no season 22')
 
 describe('the season table', () => {
   it('starts at episode 1 and runs without a gap or an overlap', () => {
     expect(SEASONS[0]?.first).toBe(1)
-    for (let i = 1; i < SEASONS.length; i += 1) {
-      const previous = SEASONS[i - 1]
-      const season = SEASONS[i]
-      expect(season?.number).toBe(i + 1)
-      expect(season?.first).toBe((previous?.last ?? Number.NaN) + 1)
+
+    for (let index = 1; index < SEASONS.length; index += 1) {
+      const previous = SEASONS[index - 1]
+      const season = SEASONS[index]
+
+      expect(season?.number).toBe(index + 1)
+      expect(season?.first).toBe((previous?.last ?? NaN) + 1)
     }
   })
 
   it('leaves only the last season open', () => {
     const open = SEASONS.filter((season) => season.last === null)
+
     expect(open).toHaveLength(1)
-    expect(open[0]).toBe(SEASONS[SEASONS.length - 1])
+    expect(open[0]).toBe(SEASONS.at(-1))
   })
 
   it('runs the open season to the ceiling', () => {
-    const last = SEASONS[SEASONS.length - 1]
-    if (last === undefined) throw new Error('empty table')
-    expect(seasonLength(last)).toBe(EPISODE_CEILING - last.first + 1)
+    expect(seasonLength(OPEN_SEASON)).toBe(
+      EPISODE_CEILING - OPEN_SEASON.first + 1,
+    )
   })
 })
 
@@ -54,20 +76,20 @@ describe('resolveEpisode', () => {
   })
 
   it('accepts the open season up to the ceiling and no further', () => {
-    const last = getSeason(22)
-    if (last === undefined) throw new Error('no season 22')
-    expect(resolveEpisode(22, seasonLength(last))).toBe(EPISODE_CEILING)
-    expect(resolveEpisode(22, seasonLength(last) + 1)).toBeNull()
+    const length = seasonLength(LAST_NUMBERED_SEASON)
+
+    expect(resolveEpisode(22, length)).toBe(EPISODE_CEILING)
+    expect(resolveEpisode(22, length + 1)).toBeNull()
   })
 })
 
 describe('locateEpisode', () => {
   it('finds the season an absolute episode falls in', () => {
-    expect(locateEpisode(1)).toEqual({ season: 1, episode: 1 })
-    expect(locateEpisode(61)).toEqual({ season: 1, episode: 61 })
-    expect(locateEpisode(62)).toEqual({ season: 2, episode: 1 })
-    expect(locateEpisode(130)).toEqual({ season: 4, episode: 38 })
-    expect(locateEpisode(1089)).toEqual({ season: 21, episode: 1 })
+    expect(locateEpisode(1)).toStrictEqual({ season: 1, episode: 1 })
+    expect(locateEpisode(61)).toStrictEqual({ season: 1, episode: 61 })
+    expect(locateEpisode(62)).toStrictEqual({ season: 2, episode: 1 })
+    expect(locateEpisode(130)).toStrictEqual({ season: 4, episode: 38 })
+    expect(locateEpisode(1089)).toStrictEqual({ season: 21, episode: 1 })
     expect(locateEpisode(EPISODE_CEILING)?.season).toBe(22)
   })
 
@@ -80,7 +102,10 @@ describe('locateEpisode', () => {
   it('round-trips with resolveEpisode', () => {
     for (const absolute of [1, 64, 130, 457, 1089, 1177]) {
       const at = locateEpisode(absolute)
-      if (at === null) throw new Error(`no season for ${String(absolute)}`)
+      if (at === null) {
+        throw new Error(`no season for ${String(absolute)}`)
+      }
+
       expect(resolveEpisode(at.season, at.episode)).toBe(absolute)
     }
   })

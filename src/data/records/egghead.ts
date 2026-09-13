@@ -256,7 +256,7 @@ export const egghead: Saga = {
   ],
 
   dossiers: {
-    vegapunk: {
+    'vegapunk': {
       role: {
         it: 'Scienziato capo del Governo Mondiale',
         en: 'World Government chief scientist',
@@ -275,10 +275,7 @@ export const egghead: Saga = {
         },
         {
           episode: 1116,
-          value: {
-            it: 'Ucciso dalla Marina',
-            en: 'Killed by the Marines',
-          },
+          value: { it: 'Ucciso dalla Marina', en: 'Killed by the Marines' },
         },
       ],
       origin: [
@@ -300,7 +297,7 @@ export const egghead: Saga = {
         },
       ],
     },
-    shaka: {
+    'shaka': {
       role: {
         it: 'Satellite di Vegapunk, Punk-01',
         en: 'Vegapunk satellite, Punk-01',
@@ -322,7 +319,7 @@ export const egghead: Saga = {
       origin: [{ episode: 1091, value: EGGHEAD }],
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
     },
-    lilith: {
+    'lilith': {
       role: {
         it: 'Satellite di Vegapunk, Punk-02',
         en: 'Vegapunk satellite, Punk-02',
@@ -415,7 +412,7 @@ export const egghead: Saga = {
         },
       ],
     },
-    edison: {
+    'edison': {
       role: {
         it: 'Satellite di Vegapunk, Punk-03',
         en: 'Vegapunk satellite, Punk-03',
@@ -436,7 +433,7 @@ export const egghead: Saga = {
       origin: [{ episode: 1094, value: EGGHEAD }],
       epithet: [{ episode: 1094, value: { it: 'Think', en: 'Think' } }],
     },
-    pythagoras: {
+    'pythagoras': {
       role: {
         it: 'Satellite di Vegapunk, Punk-04',
         en: 'Vegapunk satellite, Punk-04',
@@ -458,7 +455,7 @@ export const egghead: Saga = {
       origin: [{ episode: 1094, value: EGGHEAD }],
       epithet: [{ episode: 1094, value: { it: 'Wisdom', en: 'Wisdom' } }],
     },
-    atlas: {
+    'atlas': {
       role: {
         it: 'Satellite di Vegapunk, Punk-05',
         en: 'Vegapunk satellite, Punk-05',
@@ -479,7 +476,7 @@ export const egghead: Saga = {
       origin: [{ episode: 1094, value: EGGHEAD }],
       epithet: [{ episode: 1094, value: { it: 'Violence', en: 'Violence' } }],
     },
-    york: {
+    'york': {
       role: {
         it: 'Satellite di Vegapunk, Punk-06',
         en: 'Vegapunk satellite, Punk-06',
@@ -525,11 +522,8 @@ export const egghead: Saga = {
       ],
       origin: [{ episode: 1105, value: MARY_GEOISE }],
     },
-    ginny: {
-      role: {
-        it: 'Amica d’infanzia di Kuma',
-        en: 'Kuma’s childhood friend',
-      },
+    'ginny': {
+      role: { it: 'Amica d’infanzia di Kuma', en: 'Kuma’s childhood friend' },
       log: {
         it: 'Cresce nella stessa chiesa del Regno di Sorbet in cui finisce Kuma, in mezzo a bambini che nessuno è venuto a riprendere. È la più sfacciata di tutti e la prima a difendere chi viene trattato male, e canta per i malati che il prete accoglie. Quando arriva un bambino che non parla con nessuno, decide che a lui ci penserà lei.',
         en: 'She grows up in the same Sorbet Kingdom church that takes Kuma in, among children nobody ever came back for. She is the boldest of them and the first to stand up for anyone treated badly, and she sings for the sick the priest shelters. When a boy arrives who will not speak to anyone, she decides on the spot that he is hers to look after.',

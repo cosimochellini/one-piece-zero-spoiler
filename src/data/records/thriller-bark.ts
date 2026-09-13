@@ -147,7 +147,7 @@ export const thrillerBark: Saga = {
   ],
 
   dossiers: {
-    brook: {
+    'brook': {
       role: { it: 'Musicista', en: 'Musician' },
       log: {
         it: 'Ha vagato per cinquant’anni su una nave fantasma in un mare senza sole, senza compagni e senza ombra. È morto una volta e il suo frutto lo ha riportato indietro, ma il corpo che ha ritrovato era già solo ossa. Accetta l’invito a bordo di Rufy in trenta secondi, poi chiede alla navigatrice di mostrargli le mutandine.',
@@ -177,7 +177,7 @@ export const thrillerBark: Saga = {
         { episode: 1086, value: 383_000_000 },
       ],
     },
-    perona: {
+    'perona': {
       role: { it: 'Principessa fantasma', en: 'Ghost princess' },
       log: {
         it: 'Comanda gli zombie animali di Thriller Bark da un giardino pieno di peluche, e trova carino tutto ciò che è morto e tondo. I suoi fantasmi passano attraverso i muri e attraverso le persone, e chi ne viene toccato si accascia a maledire la propria esistenza. Contro un tiratore che non ha nulla da perdere, la tattica funziona meno.',
@@ -202,7 +202,7 @@ export const thrillerBark: Saga = {
         },
       ],
     },
-    lola: {
+    'lola': {
       role: { it: 'Sposa zombie', en: 'Zombie bride' },
       log: {
         it: 'Si aggira per i corridoi della villa con l’abito da sposa addosso e il velo fermato tra le zanne, e chiede la mano a chiunque incontri, uomo o scheletro che sia. Il rifiuto la rattrista per qualche secondo soltanto, poi ricomincia con il primo che passa. Sotto il velo ha la forza di un cinghiale, e una proposta respinta sa diventare una carica.',
@@ -261,7 +261,7 @@ export const thrillerBark: Saga = {
       ],
       bounty: [{ episode: 343, value: 320_000_000 }],
     },
-    absalom: {
+    'absalom': {
       role: { it: 'Generale degli zombie', en: 'General of the zombies' },
       log: {
         it: 'Comanda i soldati zombie del cimitero e li manda avanti a ondate, mentre lui cammina invisibile in mezzo ai vivi. Il potere non gli toglie il peso dei passi né l’odore del sigaro, così chi lo cerca impara a fidarsi delle orecchie più che degli occhi. Il bazooka che porta al braccio è l’unica parte di lui che si vede sempre.',
@@ -286,7 +286,7 @@ export const thrillerBark: Saga = {
         },
       ],
     },
-    hogback: {
+    'hogback': {
       role: { it: 'Chirurgo', en: 'Surgeon' },
       log: {
         it: 'Era un medico famoso in tutto il mondo, capace di rimettere in piedi chi nessun altro sapeva salvare, poi è sparito senza spiegazioni. Lo si ritrova nella villa di Thriller Bark, con il camice addosso, a cucire pezzi di cadaveri diversi in un corpo solo e a firmarlo come un’opera d’arte. Serve il padrone dell’isola e sembra divertirsi molto.',
@@ -324,7 +324,7 @@ export const thrillerBark: Saga = {
         },
       ],
     },
-    ryuma: {
+    'ryuma': {
       role: { it: 'Generale zombie', en: 'Zombie general' },
       log: {
         it: 'È il più forte dei cadaveri cuciti nella villa, un samurai rimesso in piedi con dentro l’ombra rubata a qualcun altro. Al fianco porta una lama nera e con quella taglia perfino il fuoco, come se le fiamme fossero corda. In vita veniva dal Paese di Wano, e di lui si racconta che abbia fatto a pezzi un drago sopra una città.',
@@ -349,7 +349,7 @@ export const thrillerBark: Saga = {
         },
       ],
     },
-    oars: {
+    'oars': {
       role: { it: 'Zombie speciale', en: 'Special zombie' },
       log: {
         it: 'È il pezzo più grosso della collezione del padrone dell’isola: un gigante morto da secoli, tenuto in una cella di ghiaccio finché non arriva l’ombra giusta da mettergli dentro. Quando si rialza ha la forza di sfondare un edificio con una spallata e la testa di un bambino che scopre il mondo. Le leggende dicono che in vita trascinasse i continenti.',
@@ -374,7 +374,7 @@ export const thrillerBark: Saga = {
         },
       ],
     },
-    yorki: {
+    'yorki': {
       role: {
         it: 'Capitano dei Pirati di Rumbar',
         en: 'Rumbar Pirates captain',

@@ -1,5 +1,5 @@
 {
-  "include": ["src", "vite.config.ts", "vitest.config.ts"],
+  "include": ["src", "vite.config.ts", "vitest.config.ts", "doctor.config.ts"],
   "exclude": [
     "node_modules",
     "dist",
@@ -22,17 +22,21 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
+    "exactOptionalPropertyTypes": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "erasableSyntaxOnly": true,
 
     "allowImportingTsExtensions": true,
-    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "noEmit": true,
 
-    "paths": {
-      "~/*": ["./src/*"]
-    }
+    "paths": { "~/*": ["./src/*"] }
   }
 }

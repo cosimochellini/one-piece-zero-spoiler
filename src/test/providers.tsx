@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react'
 import {
   createMemoryHistory,
   createRootRoute,
@@ -7,11 +6,12 @@ import {
   RouterContextProvider,
   RouterProvider,
 } from '@tanstack/react-router'
+import { render, type RenderResult } from '@testing-library/react'
 import type { ReactElement } from 'react'
 
-import { LocaleProvider } from '~/i18n/LocaleContext'
+import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
-import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
 
 /** An anime-episode bookmark, the case most tests need. */
@@ -20,8 +20,8 @@ export function ep(episode: number): Bookmark {
 }
 
 export type RenderOptions = {
-  readonly locale?: Locale
   readonly bookmark?: Bookmark
+  readonly locale?: Locale
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   readonly path?: string
 }
@@ -42,7 +42,7 @@ export type RenderOptions = {
 export function renderWithProviders(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path }: RenderOptions = {},
-) {
+): RenderResult {
   const router = createRouter({
     routeTree: createRootRoute(),
     history: createMemoryHistory({ initialEntries: [path ?? `/${locale}`] }),
@@ -70,16 +70,18 @@ export type RouteRenderOptions = RenderOptions & {
 export async function renderOnRoute(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path, pattern }: RouteRenderOptions,
-) {
+): Promise<RenderResult> {
   const rootRoute = createRootRoute()
   const page = createRoute({
     getParentRoute: () => rootRoute,
     path: pattern,
-    component: () => (
-      <LocaleProvider locale={locale}>
-        <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
-      </LocaleProvider>
-    ),
+    component: (): ReactElement => {
+      return (
+        <LocaleProvider locale={locale}>
+          <BookmarkProvider initialBookmark={bookmark}>{ui}</BookmarkProvider>
+        </LocaleProvider>
+      )
+    },
   })
   const router = createRouter({
     routeTree: rootRoute.addChildren([page]),

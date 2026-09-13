@@ -1,16 +1,18 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import type { CharacterDossier, LocalizedText, Timeline } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import { modeOf, type Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { latestAt } from '~/lib/progress/spoiler'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
+/** The dossier to read the facts off, and the episode to read them at. */
 export type CharacterFactsProps = {
-  readonly dossier: CharacterDossier
   readonly bookmark: Bookmark
+  readonly dossier: CharacterDossier
 }
 
 /**
@@ -24,11 +26,24 @@ export type CharacterFactsProps = {
  * itself a spoiler. Computed at render from the live bookmark, so an entry
  * above the reader's episode is never in the DOM.
  */
-export function CharacterFacts({ dossier, bookmark }: CharacterFactsProps) {
+export function CharacterFacts({
+  dossier,
+  bookmark,
+}: CharacterFactsProps): null | ReactElement {
   const { locale, t } = useLocale()
-  const known = <T,>(timeline: Timeline<T> | undefined) =>
+
+  // The timelines count in anime episodes. A reader who counts in chapters
+  // reaches none of their entries, and is told why instead of shown nothing.
+  if (modeOf(bookmark) === 'chapter') {
+    return (
+      <p {...stylex.props(styles.note)}>{t('character.factsInEpisodes')}</p>
+    )
+  }
+
+  const known = <T,>(timeline: Timeline<T> | undefined): T | undefined =>
     timeline === undefined ? undefined : latestAt(timeline, bookmark)
-  const words = (value: LocalizedText | undefined) => value?.[locale]
+  const words = (value: LocalizedText | undefined): string | undefined =>
+    value?.[locale]
 
   const rows: readonly (readonly [string, string | undefined])[] = [
     [t('character.epithet'), words(known(dossier.epithet))],
@@ -41,24 +56,26 @@ export function CharacterFacts({ dossier, bookmark }: CharacterFactsProps) {
     (row): row is readonly [string, string] => row[1] !== undefined,
   )
 
-  // The timelines count in anime episodes. A reader who counts in chapters
-  // reaches none of their entries, and is told why instead of shown nothing.
-  if (modeOf(bookmark) === 'chapter') {
-    return (
-      <p {...stylex.props(styles.note)}>{t('character.factsInEpisodes')}</p>
-    )
+  if (shown.length === 0) {
+    return null
   }
 
-  if (shown.length === 0) return null
-
   return (
-    <dl aria-label={t('character.factsLabel')} {...stylex.props(styles.facts)}>
-      {shown.map(([label, value]) => (
-        <div key={label} {...stylex.props(styles.fact)}>
-          <dt {...stylex.props(styles.label)}>{label}</dt>
-          <dd {...stylex.props(styles.value)}>{value}</dd>
-        </div>
-      ))}
+    <dl
+      aria-label={t('character.factsLabel')}
+      {...stylex.props(styles.facts)}
+    >
+      {shown.map(([label, value]) => {
+        return (
+          <div
+            key={label}
+            {...stylex.props(styles.fact)}
+          >
+            <dt {...stylex.props(styles.label)}>{label}</dt>
+            <dd {...stylex.props(styles.value)}>{value}</dd>
+          </div>
+        )
+      })}
     </dl>
   )
 }
@@ -72,27 +89,28 @@ function formatBounty(
   locale: Locale,
   t: Translate,
 ): string | undefined {
-  if (amount === undefined) return undefined
+  if (amount === undefined) {
+    return undefined
+  }
 
-  const grouped = new Intl.NumberFormat(
-    locale === 'it' ? 'it-IT' : 'en-GB',
-  ).format(amount)
-  return t('character.bountyValue', { amount: grouped })
+  const digits = new Intl.NumberFormat(locale === 'it' ? 'it-IT' : 'en-GB')
+  return t('character.bountyValue', { amount: digits.format(amount) })
 }
 
 const styles = stylex.create({
   // The same ledger as a port's facts: a label in small caps, the value in
   // body type, a hairline between rows.
   facts: {
+    marginBlock: 0,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
     display: 'grid',
-    marginBlock: 0,
     marginBlockStart: space.xs,
     minWidth: 0,
   },
   fact: {
+    paddingBlock: space.xs,
     alignItems: 'baseline',
     borderBlockEndColor: color.rule,
     borderBlockEndStyle: 'solid',
@@ -100,12 +118,11 @@ const styles = stylex.create({
     columnGap: space.md,
     display: 'grid',
     gridTemplateColumns: {
-      default: 'minmax(0, 1fr)',
+      'default': 'minmax(0, 1fr)',
       '@media (min-width: 30rem)': 'minmax(7rem, 9rem) minmax(0, 1fr)',
     },
-    minWidth: 0,
-    paddingBlock: space.xs,
     rowGap: space.xs3,
+    minWidth: 0,
   },
   label: {
     color: color.muted,
@@ -121,8 +138,8 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     marginInlineStart: 0,
-    minWidth: 0,
     overflowWrap: 'anywhere',
+    minWidth: 0,
   },
   note: {
     color: color.muted,

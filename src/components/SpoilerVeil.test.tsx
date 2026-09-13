@@ -1,6 +1,8 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { describe, expect, it } from 'vitest'
 
+import type { Gated } from '~/lib/progress/spoiler'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SpoilerVeil } from './SpoilerVeil'
@@ -8,12 +10,17 @@ import { SpoilerVeil } from './SpoilerVeil'
 const covered = <p data-testid="secret">Spoiler body</p>
 
 /** A record filed at the same number in both units, for tests that read one. */
-const at = (n: number) => ({ revealedAtEpisode: n, revealedAtChapter: n })
+function at(n: number): Gated {
+  return { revealedAtEpisode: n, revealedAtChapter: n }
+}
 
 describe('SpoilerVeil', () => {
   it('hides the content from assistive technology while it is covered', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -22,13 +29,17 @@ describe('SpoilerVeil', () => {
     // screen reader reading the spoiler out loud and a Tab press landing
     // inside it.
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).toHaveAttribute('aria-hidden', 'true')
     expect(wrapper).toHaveAttribute('inert')
   })
 
   it('names the threshold on the uncover control', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -43,7 +54,10 @@ describe('SpoilerVeil', () => {
   it('uncovers the content when the control is used', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -51,6 +65,7 @@ describe('SpoilerVeil', () => {
     await user.click(screen.getByRole('button'))
 
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).not.toHaveAttribute('aria-hidden')
     expect(wrapper).not.toHaveAttribute('inert')
   })
@@ -60,8 +75,8 @@ describe('SpoilerVeil', () => {
     renderWithProviders(
       <SpoilerVeil
         gated={at(1089)}
-        revealed={false}
         placeholder={<p>Spoiler</p>}
+        revealed={false}
       >
         {covered}
       </SpoilerVeil>,
@@ -78,19 +93,26 @@ describe('SpoilerVeil', () => {
 
   it('shows the content outright when the reader is already past it', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(1)} revealed>
+      <SpoilerVeil
+        gated={at(1)}
+        revealed
+      >
         {covered}
       </SpoilerVeil>,
     )
 
     const wrapper = screen.getByTestId('secret').parentElement
+
     expect(wrapper).not.toHaveAttribute('aria-hidden')
   })
 
   it('keeps the curtain mounted after a reveal so the fade can run', async () => {
     const user = userEvent.setup()
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false}>
+      <SpoilerVeil
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
@@ -105,7 +127,10 @@ describe('SpoilerVeil', () => {
 
   it('translates the control into the active locale', () => {
     renderWithProviders(
-      <SpoilerVeil gated={at(890)} revealed={false}>
+      <SpoilerVeil
+        gated={at(890)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
       { locale: 'it' },
@@ -175,12 +200,17 @@ describe('SpoilerVeil at inline density', () => {
     // sentence plus the verb wraps to two lines below ~40rem — which reads as
     // a broken control.
     renderWithProviders(
-      <SpoilerVeil gated={at(1089)} revealed={false} density="inline">
+      <SpoilerVeil
+        density="inline"
+        gated={at(1089)}
+        revealed={false}
+      >
         {covered}
       </SpoilerVeil>,
     )
 
     const button = screen.getByRole('button')
+
     expect(button).toHaveTextContent('Lift')
     expect(button).not.toHaveTextContent('Under fog until episode 1089')
     expect(button).toHaveAccessibleName(

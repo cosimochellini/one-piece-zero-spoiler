@@ -1,9 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { useLocale } from '~/i18n/LocaleContext'
-import { LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
-import type { Locale } from '~/i18n/locales'
+import { type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
 import { COOKIE_MAX_AGE_SECONDS, writeCookie } from '~/lib/cookies'
 import {
   color,
@@ -39,11 +39,14 @@ function remember(next: Locale): void {
  * reader on a character's page gets the same page in the other language and
  * not the landing.
  */
-export function LocaleSwitch() {
+export function LocaleSwitch(): ReactElement {
   const { locale, t } = useLocale()
 
   return (
-    <nav aria-label={t('locale.label')} {...stylex.props(styles.nav)}>
+    <nav
+      aria-label={t('locale.label')}
+      {...stylex.props(styles.nav)}
+    >
       <ul {...stylex.props(styles.list)}>
         {LOCALES.map((candidate) => {
           const current = candidate === locale
@@ -51,23 +54,29 @@ export function LocaleSwitch() {
           return (
             <li key={candidate}>
               <Link
-                to="."
-                params={(previous) => ({ ...previous, locale: candidate })}
+                // The accessible name is always the full language name; only
+                // what is painted changes with the width.
+                aria-label={t(LABEL_KEY[candidate])}
                 hrefLang={candidate}
                 // `Link` sets `aria-current="page"` on the active item by
                 // itself, so the accent rule is never the only signal.
                 onClick={() => {
                   remember(candidate)
                 }}
-                // The accessible name is always the full language name; only
-                // what is painted changes with the width.
-                aria-label={t(LABEL_KEY[candidate])}
+                params={(previous) => ({ ...previous, locale: candidate })}
+                to="."
                 {...stylex.props(styles.link, current && styles.linkCurrent)}
               >
-                <span aria-hidden="true" {...stylex.props(styles.full)}>
+                <span
+                  aria-hidden="true"
+                  {...stylex.props(styles.full)}
+                >
                   {t(LABEL_KEY[candidate])}
                 </span>
-                <span aria-hidden="true" {...stylex.props(styles.code)}>
+                <span
+                  aria-hidden="true"
+                  {...stylex.props(styles.code)}
+                >
                   {candidate}
                 </span>
               </Link>
@@ -79,53 +88,56 @@ export function LocaleSwitch() {
   )
 }
 
+// `inline-flex` in three declarations: the switch, the list inside it and
+// each link. All three have to sit on the bar's own line, beside the controls
+// rather than under them, and they have to agree on that or the bar wraps.
+const INLINE_FLEX = 'inline-flex'
+
 const styles = stylex.create({
-  nav: {
-    display: 'inline-flex',
-  },
+  nav: { display: INLINE_FLEX },
   list: {
-    display: 'inline-flex',
     gap: space.xs2,
-    listStyleType: 'none',
     paddingInline: 0,
+    display: INLINE_FLEX,
+    listStyleType: 'none',
   },
   link: {
-    alignItems: 'center',
     borderRadius: radius.pill,
+    paddingInline: {
+      'default': space.xs2,
+      '@media (min-width: 40rem)': space.xs,
+    },
+    alignItems: 'center',
     color: {
-      default: color.muted,
+      'default': color.muted,
       ':hover': color.accent,
       ':active': color.ink,
     },
-    display: 'inline-flex',
+    display: INLINE_FLEX,
     fontFamily: font.body,
     fontSize: text.xs,
     fontWeight: 600,
-    letterSpacing: '0.08em',
-    minHeight: '44px',
-    minWidth: { default: '44px', '@media (min-width: 40rem)': 0 },
     justifyContent: 'center',
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    letterSpacing: '0.08em',
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    paddingInline: {
-      default: space.xs2,
-      '@media (min-width: 40rem)': space.xs,
-    },
     textDecorationLine: 'none',
     textTransform: 'uppercase',
     transitionDuration: dur.micro,
     transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+    minHeight: '44px',
+    minWidth: { 'default': '44px', '@media (min-width: 40rem)': 0 },
   },
   // A phone bar has room for the wordmark, one page link and two language
   // codes, not two language names: 'Italiano English' alone is 158px.
   full: {
-    display: { default: 'none', '@media (min-width: 40rem)': 'inline' },
+    display: { 'default': 'none', '@media (min-width: 40rem)': 'inline' },
   },
   code: {
-    display: { default: 'inline', '@media (min-width: 40rem)': 'none' },
+    display: { 'default': 'inline', '@media (min-width: 40rem)': 'none' },
   },
   linkCurrent: {
     color: color.ink,

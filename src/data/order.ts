@@ -16,11 +16,20 @@ export function orderByMode(
   entries: readonly Entity[],
   mode: BookmarkMode,
 ): readonly Entity[] {
-  return [...entries].sort((a, b) =>
-    mode === 'chapter'
-      ? a.revealedAtChapter - b.revealedAtChapter ||
-        a.revealedAtEpisode - b.revealedAtEpisode
-      : a.revealedAtEpisode - b.revealedAtEpisode ||
-        a.revealedAtChapter - b.revealedAtChapter,
-  )
+  return entries.toSorted((a, b) => {
+    const [aFirst, aSecond] = thresholdsFor(mode, a)
+    const [bFirst, bSecond] = thresholdsFor(mode, b)
+
+    return aFirst === bFirst ? aSecond - bSecond : aFirst - bFirst
+  })
+}
+
+/** Both thresholds of one record, the mode's own one first. */
+function thresholdsFor(
+  mode: BookmarkMode,
+  entity: Entity,
+): readonly [number, number] {
+  return mode === 'chapter' ?
+      [entity.revealedAtChapter, entity.revealedAtEpisode]
+    : [entity.revealedAtEpisode, entity.revealedAtChapter]
 }

@@ -1,20 +1,27 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { getEntity } from '~/data/entities'
+import type { Entity } from '~/data/types'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { RecordTile } from './RecordTile'
 
-function record(id: string) {
+function record(id: string): Entity {
   const entity = getEntity(id)
-  if (entity === undefined) throw new Error(`no ${id}`)
+  if (entity === undefined) {
+    throw new Error(`no ${id}`)
+  }
   return entity
 }
 
 describe('RecordTile', () => {
   it('links an open character to their page', () => {
     renderWithProviders(
-      <RecordTile entry={record('sanji')} bookmark={ep(20)} />,
+      <RecordTile
+        bookmark={ep(20)}
+        entry={record('sanji')}
+      />,
     )
 
     expect(screen.getByRole('link', { name: 'Sanji' })).toHaveAttribute(
@@ -26,7 +33,10 @@ describe('RecordTile', () => {
 
   it('links an open place to its entry in the log', () => {
     renderWithProviders(
-      <RecordTile entry={record('baratie')} bookmark={ep(20)} />,
+      <RecordTile
+        bookmark={ep(20)}
+        entry={record('baratie')}
+      />,
     )
 
     expect(screen.getByRole('link', { name: 'Baratie' })).toHaveAttribute(
@@ -37,7 +47,10 @@ describe('RecordTile', () => {
 
   it('leaves a ship as a name', () => {
     renderWithProviders(
-      <RecordTile entry={record('going-merry')} bookmark={ep(20)} />,
+      <RecordTile
+        bookmark={ep(20)}
+        entry={record('going-merry')}
+      />,
     )
 
     expect(screen.getByText('Going Merry')).toBeInTheDocument()
@@ -46,7 +59,10 @@ describe('RecordTile', () => {
 
   it('keeps a covered record’s name, drawing and slug out of the DOM', () => {
     const { container } = renderWithProviders(
-      <RecordTile entry={record('sanji')} bookmark={ep(5)} />,
+      <RecordTile
+        bookmark={ep(5)}
+        entry={record('sanji')}
+      />,
     )
 
     expect(screen.queryByText('Sanji')).not.toBeInTheDocument()

@@ -4,7 +4,7 @@ import type { Drawings } from './stroke'
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
   // A newsboy cap and the headband of a fish-man karate gi.
-  koala: [
+  'koala': [
     { d: 'M34 112 C34 84 58 72 80 74 C104 76 118 88 120 108 Z' },
     { d: 'M30 112 h94 q6 8 -6 10 H38 q-12 -2 -8 -10 z' },
     { d: circle(78, 76, 4) },
@@ -33,22 +33,19 @@ export const dressrosaArt = {
   ],
 
   // A samurai's katana with a small flame at the tip.
-  kinemon: [
+  'kinemon': [
     { d: 'M40 172 C66 138 96 96 124 46' },
     { d: 'M32 166 C58 132 88 90 118 42' },
     { d: 'M118 42 L124 46' },
     { d: 'M50 158 L28 142' },
     { d: 'M40 172 L24 186 M32 166 L16 180 M24 186 L16 180' },
     { d: 'M34 176 l-6 -5 M28 182 l-6 -5', role: 'soft' },
-    {
-      d: 'M122 40 c6 -12 -1 -18 4 -27 c10 10 11 23 3 30',
-      role: 'accent',
-    },
+    { d: 'M122 40 c6 -12 -1 -18 4 -27 c10 10 11 23 3 30', role: 'accent' },
     shadow(80, 192, 30),
   ],
 
   // A pirate's coat with a crocodile's tail coming out of the hem.
-  brownbeard: [
+  'brownbeard': [
     { d: 'M48 62 L40 152 H112 L104 62' },
     { d: 'M64 62 L76 98 L92 62' },
     { d: 'M48 62 q28 -14 56 0' },
@@ -83,16 +80,13 @@ export const dressrosaArt = {
       ]),
       role: 'soft',
     },
-    {
-      d: 'M72 54 C64 40 84 36 78 24 C74 16 86 12 90 18',
-      role: 'accent',
-    },
+    { d: 'M72 54 C64 40 84 36 78 24 C74 16 86 12 90 18', role: 'accent' },
     { d: 'M92 52 C100 42 88 32 96 24', role: 'accent' },
     shadow(80, 176, 40),
   ],
 
   // A harpy's wing spread over an open book.
-  monet: [
+  'monet': [
     {
       d: 'M22 128 C44 120 66 122 80 132 C94 122 116 120 138 128 L138 152 C116 144 94 146 80 156 C66 146 44 144 22 152 Z',
     },
@@ -110,7 +104,7 @@ export const dressrosaArt = {
   ],
 
   // A bamboo staff with a hamburger stuck on the end of it.
-  vergo: [
+  'vergo': [
     { d: 'M26 180 L116 52' },
     { d: 'M36 186 L126 58' },
     { d: 'M48 158 l10 7 M70 128 l10 7 M92 98 l10 7' },
@@ -129,7 +123,7 @@ export const dressrosaArt = {
   ],
 
   // A small dragon's tail curled round the hilt of a sword.
-  momonosuke: [
+  'momonosuke': [
     { d: 'M72 42 h16 v68 h-16 z' },
     { d: 'M60 110 h40' },
     { d: 'M74 110 L80 172 L86 110' },
@@ -170,7 +164,7 @@ export const dressrosaArt = {
   ],
 
   // A round body with a propeller spinning over it.
-  buffalo: [
+  'buffalo': [
     { d: 'M48 96 V166 a32 8 0 0 0 64 0 V96' },
     { d: ellipse(80, 96, 32, 8) },
     { d: 'M48 118 h64 M48 144 h64', role: 'soft' },
@@ -186,7 +180,7 @@ export const dressrosaArt = {
   ],
 
   // A colosseum with a wooden soldier standing at the gate.
-  dressrosa: [
+  'dressrosa': [
     { d: 'M30 132 V90 a36 18 0 0 1 72 0 V132' },
     { d: ellipse(66, 90, 36, 18) },
     {
@@ -200,21 +194,18 @@ export const dressrosaArt = {
   ],
 
   // A gladiator's helmet with a long braid falling from it.
-  rebecca: [
+  'rebecca': [
     { d: 'M44 96 a36 36 0 0 1 72 0 v18 h-72 z' },
     { d: 'M80 68 V114' },
     { d: 'M52 100 v22 h14 v-22 M108 100 v22 h-14 v-22' },
     { d: 'M60 64 C68 40 92 40 100 64', role: 'accent' },
-    {
-      d: 'M116 108 C140 122 132 156 108 172',
-      role: 'accent',
-    },
+    { d: 'M116 108 C140 122 132 156 108 172', role: 'accent' },
     { d: 'M122 120 l8 -4 M129 134 l9 0 M126 150 l8 4 M118 162 l6 6' },
     shadow(80, 188, 40),
   ],
 
   // A sword-cane and a pair of dice.
-  issho: [
+  'issho': [
     { d: 'M60 40 V172' },
     { d: 'M68 40 V172' },
     { d: 'M60 40 C60 20 92 20 92 40' },
@@ -232,7 +223,7 @@ export const dressrosaArt = {
   ],
 
   // A wall of bricks, some of them see-through.
-  bartolomeo: [
+  'bartolomeo': [
     { d: 'M20 56 H140 V168 H20z', role: 'accent' },
     { d: 'M24 64 h36 v20 h-36z M64 64 h36 v20 h-36z M104 64 h32 v20 h-32z' },
     {
@@ -263,7 +254,7 @@ export const dressrosaArt = {
   ],
 
   // A chair with a cloak of mucus dripping off it.
-  trebol: [
+  'trebol': [
     { d: 'M40 118 h64 v10 h-64 z' },
     { d: 'M96 118 V44 h8 v84' },
     { d: 'M46 128 V172 M98 128 V172' },
@@ -276,15 +267,12 @@ export const dressrosaArt = {
   ],
 
   // A rose on a rapier's hilt, a bridle hanging beside it.
-  cavendish: [
+  'cavendish': [
     { d: 'M96 44 L100 32 L104 44 V130 h-8 z' },
     { d: 'M84 130 C72 140 78 156 92 154 M116 130 C128 140 122 156 108 154' },
     { d: 'M94 130 v30 h12 v-30' },
     { d: circle(100, 166, 7) },
-    {
-      d: 'M100 128 a7 7 0 1 1 -7 7 a12 12 0 1 0 12 -12',
-      role: 'accent',
-    },
+    { d: 'M100 128 a7 7 0 1 1 -7 7 a12 12 0 1 0 12 -12', role: 'accent' },
     { d: 'M30 60 C18 88 22 130 40 150', role: 'soft' },
     { d: 'M30 60 C46 72 50 98 44 122' },
     { d: `${circle(30, 56, 5)} ${circle(41, 152, 5)}` },
@@ -292,7 +280,7 @@ export const dressrosaArt = {
   ],
 
   // A naginata with a blade cut like a shard of stone.
-  sai: [
+  'sai': [
     { d: 'M28 180 L104 56' },
     { d: 'M36 184 L112 60' },
     { d: 'M52 152 l8 5 M70 122 l8 5', role: 'soft' },
@@ -315,7 +303,7 @@ export const dressrosaArt = {
   ],
 
   // A boxing glove with a cannon barrel on the front of it.
-  ideo: [
+  'ideo': [
     {
       d: 'M36 110 C36 80 58 66 84 70 C104 74 112 90 110 110 L108 146 a10 10 0 0 1 -10 10 H46 a10 10 0 0 1 -10 -10 Z',
     },
@@ -363,10 +351,8 @@ export const dressrosaArt = {
   ],
 
   // A giant's horned helmet resting on a gladiator's shield.
-  hajrudin: [
-    {
-      d: 'M34 66 H126 V128 C126 158 104 176 80 184 C56 176 34 158 34 128 Z',
-    },
+  'hajrudin': [
+    { d: 'M34 66 H126 V128 C126 158 104 176 80 184 C56 176 34 158 34 128 Z' },
     { d: circle(80, 120, 12) },
     {
       d: dots([
@@ -388,7 +374,7 @@ export const dressrosaArt = {
   ],
 
   // A sharkskin hood over a giant sword.
-  bastille: [
+  'bastille': [
     { d: 'M64 150 V44 L80 20 L96 44 V150 Z' },
     { d: 'M80 30 V150', role: 'soft' },
     { d: 'M44 150 h72 v10 h-72 z' },
@@ -403,7 +389,7 @@ export const dressrosaArt = {
   ],
 
   // A Marine cap on a colosseum fighter's cloak.
-  maynard: [
+  'maynard': [
     { d: 'M40 92 C30 122 28 154 30 176 H130 C132 154 130 122 120 92 Z' },
     { d: 'M40 92 q40 -16 80 0' },
     {
@@ -417,7 +403,7 @@ export const dressrosaArt = {
   ],
 
   // The belt of a fish-man karate gi, and one bubble above it.
-  hack: [
+  'hack': [
     { d: 'M16 108 h124 v20 h-124 z' },
     { d: 'M60 100 h30 v36 h-30 z' },
     { d: 'M60 108 q15 10 30 0 M60 128 q15 -10 30 0', role: 'soft' },
@@ -436,7 +422,7 @@ export const dressrosaArt = {
   ],
 
   // A flamenco fan open over a pair of castanets.
-  viola: [
+  'viola': [
     { d: 'M20 128 A66 66 0 0 1 140 128', role: 'accent' },
     { d: 'M44 142 A42 42 0 0 1 116 142', role: 'soft' },
     {
@@ -450,7 +436,7 @@ export const dressrosaArt = {
   ],
 
   // A jar of grapes with a toy key lying under it.
-  sugar: [
+  'sugar': [
     {
       d: 'M52 90 h40 v8 a10 10 0 0 1 8 10 v38 a10 10 0 0 1 -10 10 h-36 a10 10 0 0 1 -10 -10 v-38 a10 10 0 0 1 8 -10 z',
     },
@@ -465,7 +451,7 @@ export const dressrosaArt = {
   ],
 
   // A steel banner-sword rippling on its pole.
-  diamante: [
+  'diamante': [
     { d: 'M40 182 V36' },
     { d: circle(40, 30, 6) },
     {
@@ -481,7 +467,7 @@ export const dressrosaArt = {
   ],
 
   // A mountain with a block of stone raised out of its slope.
-  pica: [
+  'pica': [
     { d: 'M12 160 L58 68 L90 112 L116 74 L150 160 Z' },
     { d: 'M56 160 V120 h34 v40 M64 120 V100 h20 v20', role: 'accent' },
     { d: 'M22 146 h34 M90 146 h50 M100 128 h30', role: 'soft' },
@@ -512,7 +498,7 @@ export const dressrosaArt = {
   ],
 
   // Two high heels, each with a fin along the back of it.
-  dellinger: [
+  'dellinger': [
     { d: 'M30 150 C30 130 44 118 64 116 L72 116 L74 150 Z' },
     { d: 'M70 150 L74 178 L84 178 L78 150' },
     { d: 'M86 130 C86 110 100 98 120 96 L128 96 L130 130 Z' },
@@ -540,7 +526,7 @@ export const dressrosaArt = {
   ],
 
   // A great iron weight with a handle over it.
-  machvise: [
+  'machvise': [
     { d: 'M28 104 h104 l8 62 h-120 z' },
     { d: 'M56 104 C56 66 104 66 104 104', role: 'accent' },
     { d: 'M68 104 C68 80 92 80 92 104', role: 'accent' },
@@ -551,7 +537,7 @@ export const dressrosaArt = {
   ],
 
   // A paintbrush and a cannon coming apart into shapes.
-  jora: [
+  'jora': [
     { d: 'M22 36 L66 80' },
     { d: 'M30 28 L74 72' },
     { d: 'M66 80 L84 98 C72 106 60 98 66 80 Z' },
@@ -566,7 +552,7 @@ export const dressrosaArt = {
   ],
 
   // An admiral's cloak with a line of little ships along the hem.
-  orlumbus: [
+  'orlumbus': [
     { d: 'M46 40 C30 70 26 110 28 148 H132 C134 110 130 70 114 40 Z' },
     { d: 'M46 40 q34 -16 68 0' },
     { d: circle(80, 46, 6) },
@@ -582,7 +568,7 @@ export const dressrosaArt = {
   ],
 
   // A studded jacket with the rivets going off.
-  gladius: [
+  'gladius': [
     { d: 'M50 58 L40 154 H120 L110 58' },
     { d: 'M50 58 q30 -12 60 0' },
     { d: 'M66 58 L80 94 L94 58' },
@@ -602,7 +588,7 @@ export const dressrosaArt = {
   ],
 
   // A needle and thread stitching a very small hat.
-  leo: [
+  'leo': [
     { d: 'M30 172 L120 52' },
     { d: circle(122, 48, 5) },
     {
@@ -624,7 +610,7 @@ export const dressrosaArt = {
   ],
 
   // A toy soldier's drum and the sword leaning on it.
-  kyros: [
+  'kyros': [
     { d: 'M44 112 h60 v44 h-60 z' },
     { d: ellipse(74, 112, 30, 10) },
     { d: 'M44 156 a30 10 0 0 0 60 0' },
@@ -636,7 +622,7 @@ export const dressrosaArt = {
   ],
 
   // A very small crown resting on a flower.
-  mansherry: [
+  'mansherry': [
     { d: circle(60, 104, 18) },
     { d: circle(100, 104, 18) },
     { d: circle(64, 136, 18) },
@@ -651,7 +637,7 @@ export const dressrosaArt = {
   ],
 
   // A calligraphy brush and the bird it has just drawn.
-  kanjuro: [
+  'kanjuro': [
     { d: 'M30 26 h16 v86 h-16 z' },
     { d: 'M28 112 h20 v12 h-20 z' },
     { d: 'M28 124 C28 148 34 172 38 182 C42 172 48 148 48 124 Z' },
@@ -687,7 +673,7 @@ export const dressrosaArt = {
   ],
 
   // A spiked club and a sake gourd set down beside it.
-  kaido: [
+  'kaido': [
     { d: 'M22 150 L60 112' },
     { d: 'M56 108 L120 44 a10 10 0 0 1 14 14 L70 122 a10 10 0 0 1 -14 -14 z' },
     {

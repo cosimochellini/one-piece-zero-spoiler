@@ -6,10 +6,10 @@ import {
   Scripts,
   useParams,
 } from '@tanstack/react-router'
-import { useEffect, type ReactNode } from 'react'
+import { type ReactElement, type ReactNode, useEffect } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
-import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
 import { color, font, leading, text } from '~/styles/tokens.stylex'
@@ -29,6 +29,7 @@ export const Route = createRootRoute({
   beforeLoad: () => ({ initialBookmark: readBookmark() }),
   head: () => ({
     meta: [
+      // eslint-disable-next-line unicorn/text-encoding-identifier-case -- HTML requires this attribute to be an ASCII case-insensitive match for "utf-8"; `utf8` is a valid encoding label everywhere else, but not here.
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
@@ -66,9 +67,9 @@ export const Route = createRootRoute({
       // `import.meta.env.DEV` is replaced with `false` so this entry is dead
       // code. In dev the plugin serves the aggregated sheet from an in-memory
       // middleware instead, because nothing has been emitted to disk yet.
-      ...(import.meta.env.DEV
-        ? [{ rel: 'stylesheet', href: '/virtual:stylex.css' }]
-        : []),
+      ...(import.meta.env.DEV ?
+        [{ rel: 'stylesheet', href: '/virtual:stylex.css' }]
+      : []),
     ],
   }),
   // Netlify does not apply netlify.toml headers to function responses, and
@@ -78,7 +79,7 @@ export const Route = createRootRoute({
   component: RootComponent,
 })
 
-function RootComponent() {
+function RootComponent(): ReactElement {
   const { initialBookmark } = Route.useRouteContext()
 
   return (
@@ -92,7 +93,9 @@ function RootComponent() {
 
 // The default client entry hydrates the whole document, so the root route has
 // to render <html> itself.
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument({
+  children,
+}: Readonly<{ children: ReactNode }>): ReactElement {
   // Read loosely because the root route has no params of its own; the locale
   // belongs to the `$locale` layout below it. Anything unrecognised falls back
   // to the site default rather than emitting an invalid `lang`.
@@ -108,7 +111,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   // `devMode: 'css-only'` the plugin resolves this one and never
   // `virtual:stylex:runtime`.
   useEffect(() => {
-    if (!import.meta.env.DEV) return
+    if (!import.meta.env.DEV) {
+      return
+    }
+    // eslint-disable-next-line import-x/no-unresolved -- the id is minted by @stylexjs/unplugin at dev time and exists on no filesystem, so no resolver can be pointed at it.
     void import('virtual:stylex:css-only')
   }, [])
 
@@ -142,11 +148,11 @@ const styles = stylex.create({
     backgroundRepeat: 'no-repeat',
     color: color.ink,
     fontFamily: font.body,
-    fontSize: text.base,
-    lineHeight: leading.body,
     // Optical sizing on is what makes Bricolage Grotesque's `opsz` axis open
     // up its counters when it is set small, as on the legend figures.
     fontOpticalSizing: 'auto',
+    fontSize: text.base,
+    lineHeight: leading.body,
     textRendering: 'optimizeLegibility',
   },
 })

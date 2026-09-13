@@ -678,7 +678,7 @@ export const eastBlue: Saga = {
         { episode: 1086, value: 3_000_000_000 },
       ],
     },
-    koby: {
+    'koby': {
       role: { it: 'Mozzo', en: 'Cabin boy' },
       log: {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
@@ -723,7 +723,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    alvida: {
+    'alvida': {
       role: {
         it: 'Capitano dei Pirati di Alvida',
         en: 'Captain of the Alvida Pirates',
@@ -821,7 +821,7 @@ export const eastBlue: Saga = {
         { episode: 1086, value: 1_111_000_000 },
       ],
     },
-    helmeppo: {
+    'helmeppo': {
       role: {
         it: 'Figlio del capitano della base',
         en: 'The base captain’s son',
@@ -861,7 +861,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    morgan: {
+    'morgan': {
       role: {
         it: 'Capitano della base di Shells Town',
         en: 'Captain of the Shells Town base',
@@ -888,7 +888,7 @@ export const eastBlue: Saga = {
       ],
       epithet: [{ episode: 2, value: { it: 'Mano d’Ascia', en: 'Axe-Hand' } }],
     },
-    shanks: {
+    'shanks': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Beve, ride e lascia che un bandito gli versi il vino in testa senza reagire, perché una rissa non vale la pena. Poi lo stesso bandito tocca il bambino della taverna, e il mare intero viene a sapere di che cosa è capace. Riparte con un braccio in meno e senza il cappello, entrambi lasciati a Rufy insieme a una promessa.',
@@ -906,7 +906,7 @@ export const eastBlue: Saga = {
       epithet: [{ episode: 4, value: { it: 'Il Rosso', en: 'Red-Haired' } }],
       bounty: [{ episode: 958, value: 4_048_900_000 }],
     },
-    makino: {
+    'makino': {
       role: { it: 'Proprietaria del Partys Bar', en: 'Owner of Partys Bar' },
       log: {
         it: 'Il suo locale è l’unico del villaggio, e per un anno intero una ciurma di pirati ci ha bevuto dentro senza che lei alzasse mai la voce. Asciuga il bancone, ride alle battute e non giudica nessuno, nemmeno il bambino che urla di voler diventare un pirata. Quando i banditi di montagna entrano a rovinare tutto, è lei a finire per terra fra i cocci.',
@@ -963,7 +963,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    yasopp: {
+    'yasopp': {
       role: { it: 'Tiratore scelto', en: 'Sniper' },
       log: {
         it: 'Ha lasciato il villaggio e un bambino piccolo per salire su una nave pirata, e da allora non ha smesso un giorno di raccontare quanto è in gamba suo figlio. Con la pistola non sbaglia: al villaggio dicono che possa staccare le corna a un insetto senza toccare il resto. Beve alla taverna insieme agli altri, e nessuno lo sente mai parlare di tornare indietro.',
@@ -980,7 +980,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 4, value: SYRUP_VILLAGE }],
     },
-    higuma: {
+    'higuma': {
       role: { it: 'Capo dei banditi di montagna', en: 'Mountain bandit boss' },
       log: {
         it: 'Scende dalla montagna con i suoi uomini quando le provviste finiscono e prende quello che vuole, perché in paese nessuno ha armi. Ha ucciso più di cinquanta persone e lo dice come un altro direbbe il proprio mestiere. Alla taverna trova una ciurma di pirati che ride invece di reagire, e si convince di avere davanti dei codardi.',
@@ -997,7 +997,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 4, value: 8_000_000 }],
     },
-    buggy: {
+    'buggy': {
       role: {
         it: 'Capitano dei Pirati di Bagy',
         en: 'Captain of the Buggy Pirates',
@@ -1032,7 +1032,7 @@ export const eastBlue: Saga = {
         { episode: 1088, value: 3_189_000_000 },
       ],
     },
-    nami: {
+    'nami': {
       role: { it: 'Navigatrice e ladra', en: 'Navigator and thief' },
       log: {
         it: 'Disegna carte nautiche a mano e sente il tempo cambiare prima che cambi. Ha rubato una mappa della Rotta Maggiore a Bagy e si è aggregata a Rufy e Zoro solo per convenienza, come tiene a precisare. Odia i pirati, e non spiega perché.',
@@ -1063,7 +1063,7 @@ export const eastBlue: Saga = {
         { episode: 1086, value: 366_000_000 },
       ],
     },
-    mohji: {
+    'mohji': {
       role: {
         it: 'Domatore dei Pirati di Bagy',
         en: 'Beast tamer of the Buggy Pirates',
@@ -1085,7 +1085,7 @@ export const eastBlue: Saga = {
         { episode: 6, value: { it: 'Il Domatore', en: 'Beast Tamer' } },
       ],
     },
-    cabaji: {
+    'cabaji': {
       role: { it: 'Acrobata e spadaccino', en: 'Acrobat and swordsman' },
       log: {
         it: 'Non scende mai dal suo monociclo, nemmeno per duellare, e usa ogni trucco da circo che conosce: fumo, fuoco, sabbia negli occhi. L’unica cosa che trova disonorevole è perdere. Quando un avversario ferito si rifiuta di arrendersi, lui colpisce per prime le ferite e chiama strategia quello che tutti gli altri chiamano viltà.',
@@ -1102,7 +1102,7 @@ export const eastBlue: Saga = {
       ],
       epithet: [{ episode: 7, value: { it: 'L’Acrobata', en: 'the Acrobat' } }],
     },
-    usopp: {
+    'usopp': {
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
         it: 'Comanda una ciurma pirata di tre bambini con una bandiera, e racconta ogni giorno a una ragazza malata le sue avventure inventate. Suo padre è salpato con dei pirati veri quando lui era piccolo, e lui ha deciso di diventare un uomo di mare coraggioso. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
@@ -1137,7 +1137,7 @@ export const eastBlue: Saga = {
         { episode: 1086, value: 500_000_000 },
       ],
     },
-    kaya: {
+    'kaya': {
       role: { it: 'Erede della villa', en: 'Heiress of the mansion' },
       log: {
         it: 'Ha ereditato una casa enorme e un patrimonio che non le interessa, e non esce dalla sua stanza da quando ha perso i genitori. Il maggiordomo le porta la medicina a ore fisse e le ricorda di riposare. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
@@ -1154,7 +1154,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 9, value: SYRUP_VILLAGE }],
     },
-    kuro: {
+    'kuro': {
       role: {
         it: 'Capitano dei Pirati del Gatto Nero',
         en: 'Captain of the Black Cat Pirates',
@@ -1184,7 +1184,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 9, value: 16_000_000 }],
     },
-    jango: {
+    'jango': {
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
       log: {
         it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio in avanscoperta per conto del suo capitano e passa le giornate a farsi notare nel modo peggiore, ballando in mezzo alla strada. Sotto la giacca tiene una fila di anelli affilati.',
@@ -1201,7 +1201,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 9, value: 9_000_000 }],
     },
-    merry: {
+    'merry': {
       role: { it: 'Maggiordomo della villa', en: 'Butler of the mansion' },
       log: {
         it: 'Serve la famiglia da prima che la padrona nascesse e conosce ogni voce del patrimonio, comprese le navi ferme nel cantiere. Sono sue le carte, le firme e le visite, e sua anche l’insistenza perché la ragazza riposi. Le sue giornate finiscono sempre alla stessa ora, con il vassoio del tè portato di sopra.',
@@ -1218,7 +1218,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 9, value: SYRUP_VILLAGE }],
     },
-    gaimon: {
+    'gaimon': {
       role: { it: 'Guardiano dell’isola', en: 'Keeper of the island' },
       log: {
         it: 'È arrivato sull’isola da giovane con una ciurma, è caduto in una fenditura ed è rimasto incastrato dentro un baule, e la nave è ripartita senza di lui. Da vent’anni aspetta di aprire i forzieri che vede sulla scogliera, convinto che dentro ci sia il tesoro per cui ha perso tutto. Nel frattempo ha fatto amicizia con ogni animale dell’isola.',
@@ -1234,7 +1234,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    kuina: {
+    'kuina': {
       role: { it: 'Spadaccina del dojo', en: 'Swordsman of the dojo' },
       log: {
         it: 'Nel dojo di suo padre nessuno le tiene testa, men che meno il ragazzo che la sfida ogni giorno con due spade di legno e perde ogni volta. Vuole diventare la più grande spadaccina del mondo e teme che il corpo, crescendo, le tolga quello che adesso ha. Una sera, sulla scala del dojo, i due si promettono che uno dei due ci arriverà.',
@@ -1251,7 +1251,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 19, value: EAST_BLUE }],
     },
-    johnny: {
+    'johnny': {
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
         it: 'Ha lavorato per un po’ a fianco di un cacciatore di pirati con tre spade e da allora lo chiama fratello, anche se non lo vede da mesi. Adesso batte le rotte con Yosaku, un manifesto alla volta, e spende quello che guadagna prima di arrivare al porto seguente. Quando il socio si accascia sul ponte, non sa che cosa fare e si mette a piangere.',
@@ -1267,7 +1267,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    yosaku: {
+    'yosaku': {
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
         it: 'Va a caccia di taglie con Johnny da anni e non ha mai pensato che un pirata potesse fare qualcosa per lui. Si accascia sul ponte di colpo, convinto di essere in punto di morte per una maledizione: è scorbuto, e bastano dei limoni. Rimesso in piedi, decide che quella ciurma merita di essere seguita almeno per un tratto di mare.',
@@ -1283,7 +1283,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    sanji: {
+    'sanji': {
       role: { it: 'Cuoco', en: 'Cook' },
       log: {
         it: 'Cucina al Baratie sotto un vecchio con una gamba di legno che lo chiama moccioso, e prende a calci chiunque sprechi il cibo. Non usa mai le mani in combattimento: le mani di un cuoco sono per la cucina. Sogna un mare leggendario dove si trovano tutti i pesci del mondo, e non lo dice a nessuno che possa riderne.',
@@ -1317,7 +1317,7 @@ export const eastBlue: Saga = {
         { episode: 1086, value: 1_032_000_000 },
       ],
     },
-    zeff: {
+    'zeff': {
       role: { it: 'Proprietario del Baratie', en: 'Owner of the Baratie' },
       log: {
         it: 'Comanda il suo ristorante galleggiante come si comanda una nave, a urla e a calci, e nessun cuoco osa rispondergli. Ha una gamba di legno e non spiega a nessuno come l’ha persa. A bordo vale una regola sola, che nemmeno lui si permette di discutere: nessuno che abbia fame se ne va senza mangiare, pirata o marinaio che sia.',
@@ -1341,7 +1341,7 @@ export const eastBlue: Saga = {
       ],
       epithet: [{ episode: 21, value: { it: 'Gamba Rossa', en: 'Red Leg' } }],
     },
-    gin: {
+    'gin': {
       role: { it: 'Naufrago armato', en: 'Armed castaway' },
       log: {
         it: 'Arriva al ristorante quasi morto di fame, dopo giorni alla deriva, e punta la pistola contro il primo cuoco che incontra. Il piatto che si vede servire lo lascia senza parole e senza difese. Ringrazia, paga a modo suo e se ne va, dicendo a quel cuoco che farebbe bene a non restare troppo a lungo in questo mare.',
@@ -1389,7 +1389,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 22, value: 17_000_000 }],
     },
-    pearl: {
+    'pearl': {
       role: {
         it: 'Scudo dei Pirati di Creek',
         en: 'Shield of the Krieg Pirates',
@@ -1432,7 +1432,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 1088, value: 3_590_000_000 }],
     },
-    arlong: {
+    'arlong': {
       role: {
         it: 'Capitano dei Pirati di Arlong',
         en: 'Captain of the Arlong Pirates',
@@ -1463,7 +1463,7 @@ export const eastBlue: Saga = {
       ],
       bounty: [{ episode: 31, value: 20_000_000 }],
     },
-    hatchan: {
+    'hatchan': {
       role: {
         it: 'Spadaccino dei Pirati di Arlong',
         en: 'Swordsman of the Arlong Pirates',
@@ -1491,7 +1491,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
-    kuroobi: {
+    'kuroobi': {
       role: { it: 'Maestro di karate', en: 'Karate master' },
       log: {
         it: 'Ha studiato il karate degli uomini-pesce fino a poter colpire attraverso l’acqua, e considera il combattimento una disciplina, non una rissa. Parla poco e spiega volentieri quanto un uomo gli sia inferiore, con la calma di chi enuncia una regola. Nel parco di Arlong è l’unico a cui importi ancora della forma.',
@@ -1500,7 +1500,7 @@ export const eastBlue: Saga = {
       affiliation: [{ episode: 31, value: ARLONG_OFFICER }],
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
-    chew: {
+    'chew': {
       role: {
         it: 'Tiratore dei Pirati di Arlong',
         en: 'Marksman of the Arlong Pirates',
@@ -1512,7 +1512,7 @@ export const eastBlue: Saga = {
       affiliation: [{ episode: 31, value: ARLONG_OFFICER }],
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
-    nojiko: {
+    'nojiko': {
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },
       log: {
         it: 'Lavora da sola il frutteto sulla collina e ogni anno paga agli uomini-pesce il tributo senza discutere, come tutto il villaggio. Di sua sorella non parla con nessuno, né con gli estranei né con gli amici, e lascia che gli altri la credano una ladra qualunque. Quando qualcuno le chiede spiegazioni, risponde con il silenzio o con una pala in mano.',
@@ -1529,7 +1529,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 31, value: COCOYASI_VILLAGE }],
     },
-    genzo: {
+    'genzo': {
       role: { it: 'Poliziotto del villaggio', en: 'Village sheriff' },
       log: {
         it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e ogni anno raccoglie il denaro del tributo casa per casa. Porta una girandola sul cappello e non spiega a nessuno perché. Ha visto che fine fa chi prova a ribellarsi, e da allora impone al villaggio una pazienza che odia.',
@@ -1566,7 +1566,7 @@ export const eastBlue: Saga = {
       ],
       origin: [{ episode: 34, value: COCOYASI_VILLAGE }],
     },
-    nezumi: {
+    'nezumi': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda la sedicesima base e da anni chiude gli occhi su tutto quello che accade nelle isole che dovrebbe proteggere, in cambio di una parte del riscosso. Si presenta con i soldati in divisa e chiama legge quello che è un saccheggio. Appena qualcuno gli mette una mano addosso, ricorda subito a tutti chi rappresenta.',
@@ -1582,7 +1582,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    smoker: {
+    'smoker': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Il suo corpo diventa fumo, e nessuno di quelli che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
@@ -1612,7 +1612,7 @@ export const eastBlue: Saga = {
         },
       ],
     },
-    tashigi: {
+    'tashigi': {
       role: { it: 'Sergente della Marina', en: 'Marine sergeant' },
       log: {
         it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana più alta di lei. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',

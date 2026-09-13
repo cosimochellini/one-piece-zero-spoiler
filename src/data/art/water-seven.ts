@@ -1,4 +1,4 @@
-import { circle, ellipse, dots, star, SEA, shadow } from './primitives'
+import { circle, dots, ellipse, SEA, shadow, star } from './primitives'
 import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the water seven stretch of the route. */
@@ -17,7 +17,7 @@ export const waterSevenArt = {
   ],
 
   // A pennant on its pole, a fox's tail curled across the cloth.
-  foxy: [
+  'foxy': [
     { d: 'M40 178 V36' },
     { d: circle(40, 32, 4) },
     { d: 'M40 40 H132 L118 66 L132 92 H40' },
@@ -31,7 +31,7 @@ export const waterSevenArt = {
   ],
 
   // A majorette's baton with its ribbon streaming off the end.
-  porche: [
+  'porche': [
     { d: 'M46 150 L110 62' },
     { d: circle(42, 156, 9) },
     { d: circle(114, 56, 9) },
@@ -45,7 +45,7 @@ export const waterSevenArt = {
   ],
 
   // A pair of heavy gauntlets, knuckles down.
-  hamburg: [
+  'hamburg': [
     { d: 'M22 42 h52 v18 h-52z' },
     { d: 'M26 60 h44 v34 a22 22 0 0 1 -44 0z' },
     { d: 'M30 104 q10 10 20 0 q10 10 18 -2', role: 'accent' },
@@ -57,7 +57,7 @@ export const waterSevenArt = {
   ],
 
   // A bicycle standing on a sea that has frozen under it.
-  kuzan: [
+  'kuzan': [
     { d: circle(44, 114, 24) },
     { d: circle(118, 114, 24) },
     { d: 'M44 114 L76 70 L82 114 L106 74 L76 70 M44 114 H82 M106 74 L118 114' },
@@ -88,7 +88,7 @@ export const waterSevenArt = {
   ],
 
   // A shipwright's coat, and the mouse that rides in its pocket.
-  iceburg: [
+  'iceburg': [
     { d: 'M36 46 V172 H124 V46' },
     { d: 'M36 46 L62 38 L80 86 L98 38 L124 46' },
     { d: 'M80 86 V172', role: 'ambient' },
@@ -107,7 +107,7 @@ export const waterSevenArt = {
   ],
 
   // A coil of rope tied off in a knot, a cigar laid beside it.
-  paulie: [
+  'paulie': [
     { d: circle(68, 94, 42) },
     { d: circle(68, 94, 31) },
     { d: circle(68, 94, 20) },
@@ -122,7 +122,7 @@ export const waterSevenArt = {
   ],
 
   // A bottle of liquor and a glass on the station master's desk.
-  kokoro: [
+  'kokoro': [
     { d: 'M66 62 h20 v14 q12 8 12 22 V150 H54 V98 q0 -14 12 -22z' },
     { d: 'M64 56 h24 v6 h-24z' },
     { d: 'M54 118 q22 6 44 0', role: 'ambient' },
@@ -134,7 +134,7 @@ export const waterSevenArt = {
   ],
 
   // A fishing rod, and the paw print of the animal that follows it.
-  chimney: [
+  'chimney': [
     { d: 'M20 172 L104 52' },
     { d: 'M26 164 l10 6 M34 152 l10 6', role: 'ambient' },
     { d: circle(44, 132, 9) },
@@ -148,7 +148,7 @@ export const waterSevenArt = {
   ],
 
   // A carpenter's square with a plane resting along its arm.
-  kaku: [
+  'kaku': [
     { d: 'M28 30 h16 v96 h86 v16 H28z' },
     {
       d: 'M34 46 h10 M34 62 h10 M34 78 h10 M34 94 h10 M60 132 v10 M78 132 v10 M96 132 v10 M114 132 v10',
@@ -179,7 +179,7 @@ export const waterSevenArt = {
   ],
 
   // A pair of glasses above a bar of soap, and the bubbles off it.
-  kalifa: [
+  'kalifa': [
     { d: circle(48, 64, 20) },
     { d: circle(112, 64, 20) },
     { d: 'M68 64 q12 -8 24 0' },
@@ -197,7 +197,7 @@ export const waterSevenArt = {
   ],
 
   // A bar counter, and a door standing open in the air above it.
-  blueno: [
+  'blueno': [
     { d: 'M16 120 H144 v12 H16z' },
     { d: 'M26 132 V174 H134 V132' },
     { d: 'M26 152 H134', role: 'ambient' },
@@ -233,7 +233,7 @@ export const waterSevenArt = {
   ],
 
   // A headband with its tails loose, and a rocket launcher below it.
-  zambai: [
+  'zambai': [
     { d: 'M22 56 h116 v18 H22z' },
     { d: 'M138 58 c16 4 18 16 8 24 M138 72 c18 8 16 22 4 28', role: 'soft' },
     { d: 'M30 116 h84 v26 H30z' },
@@ -244,7 +244,7 @@ export const waterSevenArt = {
   ],
 
   // A wrench and a bolt with a star head.
-  franky: [
+  'franky': [
     { d: 'M36 164 L96 104 M44 172 L104 112 M36 164 L44 172' },
     { d: 'M96 104 a20 20 0 1 1 28 -28 l-8 8 a6 6 0 0 0 -8 8 L104 112' },
     { d: star(124, 54, 14, 7), role: 'accent' },
@@ -253,7 +253,7 @@ export const waterSevenArt = {
   ],
 
   // A blueprint with a hull drawn on it, and a shipwright's mallet below.
-  tom: [
+  'tom': [
     { d: 'M24 26 h108 v106 H24z' },
     { d: 'M38 44 h40 M38 56 h64 M38 120 h56', role: 'ambient' },
     { d: 'M44 92 h72 M50 92 q30 30 60 0', role: 'accent' },
@@ -264,7 +264,7 @@ export const waterSevenArt = {
   ],
 
   // A telephone snail, and a sword with a trunk curling off the guard.
-  spandam: [
+  'spandam': [
     { d: circle(52, 112, 26) },
     { d: 'M52 112 c-8 -4 -6 -16 4 -18 c14 -2 20 10 16 20', role: 'ambient' },
     {
@@ -279,7 +279,7 @@ export const waterSevenArt = {
   ],
 
   // A wolf's paw print over a knotted martial arts sash.
-  jabra: [
+  'jabra': [
     { d: 'M12 116 h136 v30 H12z' },
     { d: 'M62 116 l36 30 M98 116 l-36 30' },
     { d: 'M68 146 l-10 34 h18z M92 146 l10 34 h-18z' },
@@ -292,7 +292,7 @@ export const waterSevenArt = {
   ],
 
   // A ringed kabuki staff with two lengths of hair wound round it.
-  kumadori: [
+  'kumadori': [
     { d: 'M80 176 V52' },
     { d: 'M66 52 q14 -24 28 0z' },
     { d: `${circle(70, 40, 6)} ${circle(80, 34, 6)} ${circle(90, 40, 6)}` },
@@ -309,7 +309,7 @@ export const waterSevenArt = {
   ],
 
   // A round owl of a body with a zip run down the front of it.
-  fukurou: [
+  'fukurou': [
     { d: ellipse(80, 90, 50, 60) },
     { d: 'M56 42 l6 -16 l10 12 M104 42 l-6 -16 l-10 12' },
     { d: 'M32 96 q-16 16 -6 34' },

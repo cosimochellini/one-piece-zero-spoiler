@@ -1,4 +1,5 @@
 import { screen, within } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import { places } from '~/data/places'
 import { ep, renderWithProviders } from '~/test/providers'
@@ -8,26 +9,48 @@ import { PortLog } from './PortLog'
 // The real log: five East Blue ports, then Jaya at 144 and Egghead at 1089.
 const entries = places
 
+/**
+ * The list row a port heading sits in. Narrowed here rather than in a test, so
+ * a heading that lost its row fails once and says why.
+ */
+function rowOf(heading: HTMLElement): HTMLElement {
+  const row = heading.closest('li')
+  if (row === null) {
+    throw new Error(`no row around ${heading.textContent}`)
+  }
+
+  return row
+}
+
 describe('PortLog', () => {
   it('numbers every port in the order the ship reaches them', () => {
-    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
-      bookmark: ep(20),
-    })
+    renderWithProviders(
+      <PortLog
+        bookmark={ep(20)}
+        entries={entries}
+      />,
+      { bookmark: ep(20) },
+    )
 
     const stages = screen.getAllByText(/^Port of call \d of 7$/u)
-    expect(stages.map((node) => node.textContent)).toEqual(
-      entries.map((_, i) => `Port of call ${String(i + 1)} of 7`),
+
+    expect(stages.map((node) => node.textContent)).toStrictEqual(
+      entries.map((_, index) => `Port of call ${String(index + 1)} of 7`),
     )
   })
 
   it('opens the ports the reader has reached with their dossier, and fogs the rest', () => {
     const { container } = renderWithProviders(
-      <PortLog entries={entries} bookmark={ep(20)} />,
+      <PortLog
+        bookmark={ep(20)}
+        entries={entries}
+      />,
       { bookmark: ep(20) },
     )
 
     // Baratie is open at 20: name, facts, log entry, and an anchor to land on.
     const baratie = screen.getByRole('heading', { level: 2, name: 'Baratie' })
+
     expect(baratie.closest('li')).toHaveAttribute('id', 'baratie')
     expect(screen.getByText('Floating restaurant')).toBeInTheDocument()
     expect(screen.getByText('The fish-head prow')).toBeInTheDocument()
@@ -41,18 +64,21 @@ describe('PortLog', () => {
     expect(screen.getAllByText('A place under fog')).toHaveLength(2)
     expect(screen.getByText('First seen in episode 144')).toBeVisible()
     // Every drawing on the page belongs to an open port or an open record.
-    expect(container.querySelectorAll('svg svg')).toHaveLength(5)
+    expect(container.querySelectorAll(':scope svg svg')).toHaveLength(5)
   })
 
   it('files the records met at a port, each behind its own fog', () => {
-    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
-      bookmark: ep(20),
-    })
+    renderWithProviders(
+      <PortLog
+        bookmark={ep(20)}
+        entries={entries}
+      />,
+      { bookmark: ep(20) },
+    )
 
-    const baratie = screen
-      .getByRole('heading', { level: 2, name: 'Baratie' })
-      .closest('li')
-    if (baratie === null) throw new Error('no Baratie row')
+    const baratie = rowOf(
+      screen.getByRole('heading', { level: 2, name: 'Baratie' }),
+    )
 
     // Sanji is met at 20 and is a link; Mihawk arrives at 24 and is covered.
     expect(
@@ -65,21 +91,33 @@ describe('PortLog', () => {
   })
 
   it('draws the horizon where the reader is', () => {
-    renderWithProviders(<PortLog entries={entries} bookmark={ep(20)} />, {
-      bookmark: ep(20),
-    })
+    renderWithProviders(
+      <PortLog
+        bookmark={ep(20)}
+        entries={entries}
+      />,
+      { bookmark: ep(20) },
+    )
 
-    const horizon = screen.getByText('You are here · episode 20').closest('li')
+    const horizon = rowOf(screen.getByText('You are here · episode 20'))
+
     expect(horizon).toHaveAttribute('aria-current', 'step')
+
     // Five open ports above the horizon, two covered below it.
     const rows = screen
       .getAllByRole('listitem')
       .filter((item) => item.parentElement?.tagName === 'OL')
-    expect(rows.indexOf(horizon as HTMLLIElement)).toBe(5)
+
+    expect(rows.indexOf(horizon)).toBe(5)
   })
 
   it('puts the horizon first and fogs everything with no bookmark', () => {
-    renderWithProviders(<PortLog entries={entries} bookmark={null} />)
+    renderWithProviders(
+      <PortLog
+        bookmark={null}
+        entries={entries}
+      />,
+    )
 
     expect(
       screen.getByText('No bookmark set · the whole route is under fog'),

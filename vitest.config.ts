@@ -1,7 +1,6 @@
-import path from 'node:path'
-
-import stylex from '@stylexjs/unplugin'
+import stylex, { type UserOptions } from '@stylexjs/unplugin'
 import viteReact from '@vitejs/plugin-react'
+import path from 'node:path'
 import type { Plugin } from 'vite'
 import { defineConfig } from 'vitest/config'
 
@@ -27,7 +26,11 @@ import { defineConfig } from 'vitest/config'
 //   - `devPersistToDisk` is left out. `buildStart` deletes
 //     node_modules/.stylex/rules.json, which would stomp a dev server running
 //     next to the test watcher.
-const stylexPlugin = stylex.vite({
+// @stylexjs/unplugin declares every bundler factory as `(options?) => any`.
+// Naming the return type once, here, keeps the plugin array checked.
+const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
+
+const stylexPlugin = stylexVite({
   useCSSLayers: true,
   devMode: 'css-only',
   runtimeInjection: false,
@@ -35,10 +38,8 @@ const stylexPlugin = stylex.vite({
   // nothing about tsconfig `paths`, so the `~/` alias has to be repeated here
   // or every `~/styles/tokens.stylex` import fails to compile with
   // "Could not resolve the path to the imported file".
-  aliases: {
-    '~/*': [path.join(import.meta.dirname, 'src', '*')],
-  },
-}) as Plugin
+  aliases: { '~/*': [path.join(import.meta.dirname, 'src', '*')] },
+})
 
 export default defineConfig({
   resolve: { tsconfigPaths: true },

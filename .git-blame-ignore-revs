@@ -1,0 +1,6 @@
+# Commits that only reformat. Point git at this file once with:
+#   git config blame.ignoreRevsFile .git-blame-ignore-revs
+# GitHub reads it without any configuration.
+
+# style: widen the Prettier configuration and reformat the repository
+05c14eb140b93a56079d2c09889d72dd338c0127

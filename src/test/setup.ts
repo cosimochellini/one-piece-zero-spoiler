@@ -1,13 +1,10 @@
+import '@testing-library/jest-dom/vitest'
 // Registers the jest-dom matchers on Vitest's `expect` and augments the
 // matcher types via `declare module 'vitest'`.
-import '@testing-library/jest-dom/vitest'
-import { cleanup } from '@testing-library/react'
 
-// `globals: true` already enables RTL auto-cleanup. Doing it explicitly is
-// idempotent and keeps the suite independent of that detection.
-afterEach(() => {
-  cleanup()
-})
+// No explicit `afterEach(cleanup)` here on purpose. Vitest runs with
+// `globals: true`, so Testing Library registers its own auto-cleanup, and a
+// second manual one would only be a duplicate of it.
 
 /**
  * jsdom 30 ships `HTMLDialogElement` without `showModal` and `close`, and the
@@ -20,8 +17,8 @@ afterEach(() => {
  * gate scripts' tests ask for.
  */
 if (
-  typeof HTMLDialogElement !== 'undefined' &&
-  typeof HTMLDialogElement.prototype.showModal !== 'function'
+  typeof HTMLDialogElement !== 'undefined'
+  && typeof HTMLDialogElement.prototype.showModal !== 'function'
 ) {
   HTMLDialogElement.prototype.showModal = function showModal(
     this: HTMLDialogElement,
@@ -40,17 +37,27 @@ if (
     this: HTMLDialogElement,
     returnValue?: string,
   ) {
-    if (!this.hasAttribute('open')) return
+    if (!this.hasAttribute('open')) {
+      return
+    }
     this.removeAttribute('open')
-    if (returnValue !== undefined) this.returnValue = returnValue
+    if (returnValue !== undefined) {
+      this.returnValue = returnValue
+    }
     this.dispatchEvent(new Event('close'))
   }
 
   document.addEventListener('keydown', (event) => {
-    if (event.key !== 'Escape') return
+    if (event.key !== 'Escape') {
+      return
+    }
     const dialog = document.querySelector<HTMLDialogElement>('dialog[open]')
-    if (dialog === null) return
+    if (dialog === null) {
+      return
+    }
     const cancel = new Event('cancel', { cancelable: true })
-    if (dialog.dispatchEvent(cancel)) dialog.close()
+    if (dialog.dispatchEvent(cancel)) {
+      dialog.close()
+    }
   })
 }

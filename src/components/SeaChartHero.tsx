@@ -1,6 +1,25 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
+import {
+  CARAVEL_AT,
+  CARAVEL_FIGUREHEAD,
+  CARAVEL_HULL,
+  CARAVEL_MAST,
+  CARAVEL_SAIL,
+  CONSTELLATION,
+  COURSE,
+  FOG_BAND,
+  HORIZON,
+  MOON,
+  SEA_CHART_VIEWBOX,
+  STARS,
+  WAVES,
+} from '~/data/art/night-sea'
 import { color, rule } from '~/styles/tokens.stylex'
+
+/** The id the fog rect refers to; it has to be unique in the document. */
+const FOG_GRADIENT = 'sea-chart-fog'
 
 /**
  * The fold drawing: a night sea in the same line as the waypoint plates.
@@ -11,46 +30,82 @@ import { color, rule } from '~/styles/tokens.stylex'
  * by the page, so the left half stays quiet on purpose, and the ship sits where
  * a phone's 4:3 crop of the box still shows it.
  *
- * The box is 1600x560 and is cropped, not squashed, to whatever frame it is
- * given (`slice`), and the strokes stay 2px at every crop.
+ * The drawing itself is data in `~/data/art/night-sea`, as every other drawing
+ * on the site is; this file is the box, the ink and the fog. The box is
+ * cropped, not squashed, to whatever frame it is given (`slice`), and the
+ * strokes stay 2px at every crop.
  */
-export function SeaChartHero() {
+export function SeaChartHero(): ReactElement {
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 1600 560"
       preserveAspectRatio="xMidYMid slice"
+      viewBox={SEA_CHART_VIEWBOX}
       {...stylex.props(styles.svg)}
     >
       <defs>
-        <linearGradient id="sea-chart-fog" x1="0" x2="1" y1="0" y2="0">
-          <stop offset="0" {...stylex.props(styles.fogStart)} />
-          <stop offset="1" {...stylex.props(styles.fogEnd)} />
+        <linearGradient
+          id={FOG_GRADIENT}
+          x1="0"
+          x2="1"
+          y1="0"
+          y2="0"
+        >
+          <stop
+            offset="0"
+            {...stylex.props(styles.fogStart)}
+          />
+          <stop
+            offset="1"
+            {...stylex.props(styles.fogEnd)}
+          />
         </linearGradient>
       </defs>
 
-      {/* Stars: a handful of dots, one small constellation. */}
+      <Sky />
+      <Sea />
+      <Caravel />
+      <Course />
+    </svg>
+  )
+}
+
+/**
+ * A handful of dots, one small constellation drawn between four of them, and
+ * a crescent. Nothing here is a light source: the sea below is not lit by it.
+ */
+function Sky(): ReactElement {
+  return (
+    <>
       <path
         d={STARS}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.gold)}
       />
       <path
-        d="M640 118 L684 96 L732 108 L770 76"
+        d={CONSTELLATION}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.ambient)}
       />
-
-      {/* A thin moon. */}
       <path
-        d="M1400 70 a76 76 0 1 0 0 152 a60 60 0 1 1 0 -152z"
+        d={MOON}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line)}
       />
+    </>
+  )
+}
 
-      {/* The horizon, and the sea under it. */}
+/**
+ * The horizon takes the route gold because it is the same line the chart
+ * draws across every waypoint; the swell under it stays in the muted ink so
+ * it never competes with the ship.
+ */
+function Sea(): ReactElement {
+  return (
+    <>
       <path
-        d="M0 380 H1600"
+        d={HORIZON}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.gold)}
       />
@@ -59,82 +114,67 @@ export function SeaChartHero() {
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.ambient)}
       />
+    </>
+  )
+}
 
-      {/* The caravel, sails full, heading right. */}
-      <g transform="translate(940 380) scale(1.45)">
-        <path
-          d="M-58 -2 L-48 30 Q0 48 48 30 L58 -2 M-58 -2 H58 M-44 16 Q0 30 44 16"
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
-        />
-        <path
-          d="M0 -2 V-84 M-28 -72 H28 M0 -84 l16 6 l-16 6"
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
-        />
-        <path
-          d="M-26 -70 Q0 -78 26 -70 L30 -20 Q0 -10 -30 -20 Z"
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line, styles.gold)}
-        />
-        <path
-          d="M-58 -2 C-70 -4 -74 -16 -70 -26 C-66 -34 -56 -32 -54 -24 C-52 -18 -58 -14 -60 -18 M-70 -26 q-8 -4 -4 -12"
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
-        />
-      </g>
-
-      {/* The course, dotted, leaving the ship and thinning into the fog. */}
+/**
+ * Sails full, heading right, drawn about her own waterline and put in place
+ * by one transform, so the parts never drift apart from each other.
+ */
+function Caravel(): ReactElement {
+  return (
+    <g transform={CARAVEL_AT}>
       <path
-        d="M1030 380 C1120 380 1200 340 1290 346 S1440 380 1600 330"
+        d={CARAVEL_HULL}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line)}
+      />
+      <path
+        d={CARAVEL_MAST}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line)}
+      />
+      <path
+        d={CARAVEL_SAIL}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line, styles.gold)}
+      />
+      <path
+        d={CARAVEL_FIGUREHEAD}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line)}
+      />
+    </g>
+  )
+}
+
+/**
+ * The course leaves the ship dotted and is then painted over by the fog, so
+ * it thins out instead of stopping: where the route goes next is the one
+ * thing the fold refuses to say.
+ */
+function Course(): ReactElement {
+  return (
+    <>
+      <path
+        d={COURSE}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.gold, styles.dotted)}
       />
       <rect
-        x="1000"
-        y="0"
-        width="600"
-        height="560"
-        fill="url(#sea-chart-fog)"
+        fill={`url(#${FOG_GRADIENT})`}
+        height={FOG_BAND.height}
+        width={FOG_BAND.width}
+        x={FOG_BAND.x}
+        y={FOG_BAND.y}
       />
-    </svg>
+    </>
   )
 }
 
-const STARS = [
-  [180, 90],
-  [260, 150],
-  [420, 60],
-  [700, 110],
-  [880, 60],
-  [960, 170],
-  [640, 118],
-  [684, 96],
-  [732, 108],
-  [770, 76],
-  [1240, 200],
-  [1480, 130],
-  [1540, 60],
-  [120, 210],
-  [1440, 250],
-]
-  .map(([x, y]) => `M${String(x)} ${String(y)} h0.01`)
-  .join(' ')
-
-const WAVES = [420, 462, 508]
-  .map(
-    (y, i) =>
-      `M${String(-40 + i * 30)} ${String(y)} ` +
-      Array.from({ length: 30 }, () => 'q30 -10 60 0').join(' '),
-  )
-  .join(' ')
-
 const styles = stylex.create({
-  svg: {
-    display: 'block',
-    height: '100%',
-    width: '100%',
-  },
+  svg: { display: 'block', height: '100%', width: '100%' },
   line: {
     fill: 'none',
     stroke: color.ink2,
@@ -142,23 +182,11 @@ const styles = stylex.create({
     strokeLinejoin: 'round',
     strokeWidth: rule.fine,
   },
-  gold: {
-    stroke: color.accent,
-  },
-  ambient: {
-    stroke: color.rule2,
-  },
-  dotted: {
-    strokeDasharray: '2 10',
-  },
+  gold: { stroke: color.accent },
+  ambient: { stroke: color.rule2 },
+  dotted: { strokeDasharray: '2 10' },
   // The fog is the card surface itself, rising from nothing to solid across
   // the right third, so the course visibly disappears into it.
-  fogStart: {
-    stopColor: color.paper2,
-    stopOpacity: 0,
-  },
-  fogEnd: {
-    stopColor: color.paper2,
-    stopOpacity: 0.96,
-  },
+  fogStart: { stopColor: color.paper2, stopOpacity: 0 },
+  fogEnd: { stopColor: color.paper2, stopOpacity: 0.96 },
 })

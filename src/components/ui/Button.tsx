@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, ReactElement } from 'react'
 
 import {
   color,
@@ -12,19 +12,28 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-type NativeButtonProps = Omit<
+/**
+ * Everything the DOM button takes, less the two escape hatches. Exported
+ * because ButtonProps is built on it, and a public signature that names a
+ * private type cannot be read by anyone who imports it.
+ */
+export type NativeButtonProps = Omit<
   ComponentPropsWithoutRef<'button'>,
   'className' | 'style'
 >
 
+/**
+ * Everything a `<button>` takes, less the two escape hatches: styling goes
+ * through `sx` so it stays in StyleX, never through `className` or `style`.
+ */
 export type ButtonProps = NativeButtonProps & {
   /**
    * `chip` is the outlined typographic action (Hallmark C1); `quiet` is the
    * square control used by the episode stepper, where the label is an icon
    * glyph and the accessible name comes from `aria-label`.
    */
-  readonly variant?: 'chip' | 'quiet'
   readonly sx?: stylex.StyleXStyles
+  readonly variant?: 'chip' | 'quiet'
 }
 
 /**
@@ -40,7 +49,12 @@ export type ButtonProps = NativeButtonProps & {
  *  - `disabled` reads on three channels — the attribute, the cursor and the
  *    opacity — because opacity alone is invisible to anyone who cannot see it.
  */
-export function Button({ variant = 'chip', sx, type, ...rest }: ButtonProps) {
+export function Button({
+  variant = 'chip',
+  sx,
+  type,
+  ...rest
+}: ButtonProps): ReactElement {
   return (
     <button
       // A button inside a form defaults to `submit`. Every button here is an
@@ -59,59 +73,56 @@ export function Button({ variant = 'chip', sx, type, ...rest }: ButtonProps) {
 
 const styles = stylex.create({
   base: {
-    alignItems: 'center',
-    backgroundColor: {
-      default: 'transparent',
-      ':active:not(:disabled)': color.paper3,
-    },
-    borderColor: {
-      default: color.rule2,
-      ':hover:not(:disabled)': color.ink,
-    },
+    borderColor: { 'default': color.rule2, ':hover:not(:disabled)': color.ink },
     borderRadius: radius.input,
     borderStyle: 'solid',
     // Constant across every state. The hover and focus styles change colour,
     // never width.
     borderWidth: rule.fine,
-    color: {
-      default: color.ink,
-      ':hover:not(:disabled)': color.accent,
+    gap: space.xs,
+    alignItems: 'center',
+    backgroundColor: {
+      'default': 'transparent',
+      ':active:not(:disabled)': color.paper3,
     },
-    cursor: { default: 'pointer', ':disabled': 'not-allowed' },
+    color: { 'default': color.ink, ':hover:not(:disabled)': color.accent },
+    cursor: { 'default': 'pointer', ':disabled': 'not-allowed' },
     display: 'inline-flex',
     fontFamily: font.body,
     fontWeight: 600,
-    gap: space.xs,
     justifyContent: 'center',
-    minHeight: '44px',
-    opacity: { default: 1, ':disabled': 0.55 },
-    outlineColor: { default: 'transparent', ':focus-visible': color.focus },
+    opacity: { 'default': 1, ':disabled': 0.55 },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     // Reserved at rest, not added on focus, so the ring costs no layout.
     outlineWidth: rule.fine,
     // A press moves the control, which is a transform, so it composites.
-    transform: { default: 'none', ':active:not(:disabled)': 'translateY(1px)' },
+    transform: {
+      'default': 'none',
+      ':active:not(:disabled)': 'translateY(1px)',
+    },
     transitionDuration: dur.micro,
     transitionProperty: 'color, border-color, background-color, transform',
     transitionTimingFunction: ease.out,
+    minHeight: '44px',
   },
 
   chip: {
+    paddingBlock: space.xs,
+    paddingInline: space.md,
     fontSize: text.base,
     letterSpacing: '0.02em',
     // A button label that wraps reads as a styling error, never as intent.
     whiteSpace: 'nowrap',
-    paddingBlock: space.xs,
-    paddingInline: space.md,
   },
 
   quiet: {
+    paddingBlock: space.xs,
+    paddingInline: space.xs,
     fontFamily: font.mono,
     fontSize: text.base,
     lineHeight: 1,
     minWidth: '44px',
-    paddingBlock: space.xs,
-    paddingInline: space.xs,
   },
 })

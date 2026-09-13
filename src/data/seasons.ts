@@ -17,7 +17,7 @@ export type Season = {
   /** The absolute number of the season's first episode. */
   readonly first: number
   /** The absolute number of its last episode, or `null` while it is airing. */
-  readonly last: number | null
+  readonly last: null | number
 }
 
 export const SEASONS: readonly Season[] = [
@@ -45,6 +45,11 @@ export const SEASONS: readonly Season[] = [
   { number: 22, first: 1156, last: null },
 ]
 
+/**
+ * One row of the season table, or `undefined` for a number the table does not
+ * run to. Every conversion between a season code and an absolute episode goes
+ * through here, so an out-of-range season fails in one place.
+ */
 export function getSeason(number: number): Season | undefined {
   return SEASONS.find((season) => season.number === number)
 }
@@ -66,15 +71,26 @@ export function seasonLength(season: Season): number {
 export function resolveEpisode(
   seasonNumber: number,
   episode: number,
-): number | null {
+): null | number {
   const season = getSeason(seasonNumber)
-  if (season === undefined) return null
-  if (!Number.isInteger(episode)) return null
-  if (episode < 1 || episode > seasonLength(season)) return null
+  if (season === undefined) {
+    return null
+  }
+  if (!Number.isSafeInteger(episode)) {
+    return null
+  }
+  if (episode < 1 || episode > seasonLength(season)) {
+    return null
+  }
 
   return season.first + episode - 1
 }
 
+/**
+ * An absolute episode said the way a season viewer counts, which is the only
+ * form the `S04E38` chip can be built from: the two numbers are kept apart
+ * because a season's length is what turns one into the other.
+ */
 export type SeasonPosition = {
   readonly season: number
   /** One-based, within the season. */
@@ -82,14 +98,18 @@ export type SeasonPosition = {
 }
 
 /** The season an absolute episode falls in, and its number within it. */
-export function locateEpisode(absolute: number): SeasonPosition | null {
-  if (!Number.isInteger(absolute) || absolute < FIRST_EPISODE) return null
+export function locateEpisode(absolute: number): null | SeasonPosition {
+  if (!Number.isSafeInteger(absolute) || absolute < FIRST_EPISODE) {
+    return null
+  }
 
   const season = SEASONS.find(
     (candidate) =>
       absolute >= candidate.first && absolute <= lastEpisodeOf(candidate),
   )
-  if (season === undefined) return null
+  if (season === undefined) {
+    return null
+  }
 
   return { season: season.number, episode: absolute - season.first + 1 }
 }

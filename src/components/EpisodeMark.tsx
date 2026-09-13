@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
+import { type ReactElement, useState } from 'react'
 
 import { BookmarkDialog } from '~/components/BookmarkDialog'
 import { Button } from '~/components/ui/Button'
@@ -17,7 +17,7 @@ import { color, font, space, text } from '~/styles/tokens.stylex'
  * The dialog is mounted only while it is open, so every opening starts from
  * the bookmark as it stands, and nothing about it is in the served HTML.
  */
-export function EpisodeMark() {
+export function EpisodeMark(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
   const [open, setOpen] = useState(false)
@@ -28,8 +28,8 @@ export function EpisodeMark() {
   return (
     <>
       <Button
-        aria-haspopup="dialog"
         aria-expanded={open}
+        aria-haspopup="dialog"
         aria-label={
           bookmark === null ? undefined : t('mark.change', { threshold: label })
         }
@@ -58,28 +58,22 @@ const styles = stylex.create({
   // border on hover, never a fill.
   mark: {
     borderColor: {
-      default: color.rule2,
+      'default': color.rule2,
       ':hover:not(:disabled)': color.accent,
     },
-    color: {
-      default: color.accent,
-      ':hover:not(:disabled)': color.ink,
-    },
+    paddingInline: space.sm,
+    color: { 'default': color.accent, ':hover:not(:disabled)': color.ink },
     fontFamily: font.mono,
     fontSize: text.xs,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 700,
     letterSpacing: '0.1em',
-    paddingInline: space.sm,
     textTransform: 'uppercase',
   },
   // No bookmark yet: the dashed rule of the fogged stretch of route, in the
   // ambient ink, so the unset state reads as "still under fog".
   markUnset: {
     borderStyle: 'dashed',
-    color: {
-      default: color.ink2,
-      ':hover:not(:disabled)': color.accent,
-    },
+    color: { 'default': color.ink2, ':hover:not(:disabled)': color.accent },
   },
 })

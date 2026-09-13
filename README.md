@@ -27,8 +27,8 @@
 
 Every wiki about a long story is a minefield. You look up one character and the
 sidebar tells you who dies, who betrays whom, and what the hat is for. This one
-asks a single question — where have you got to? — and files everything past
-that point under fog.
+asks a single question — where have you got to? — and files everything past that
+point under fog.
 
 The same page, same viewport, same scroll offset. Only the bookmark changed.
 
@@ -112,9 +112,9 @@ turn lets the reader's position be a single row on the chart rather than a
 marker interpolated along a path.
 
 The search field obeys the same rule. It filters open characters only, and it
-matches only the epithets the reader has already reached — so "Whitebeard"
-finds Edward Newgate after episode 152 and not before. A covered card that
-appeared when its name was typed would confirm the name.
+matches only the epithets the reader has already reached — so "Whitebeard" finds
+Edward Newgate after episode 152 and not before. A covered card that appeared
+when its name was typed would confirm the name.
 
 ## Aboard
 
@@ -132,9 +132,9 @@ appeared when its name was typed would confirm the name.
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
 | Line drawings       | 356, one per record                                                   |
-| Test files          | 31                                                                    |
-| Test cases          | 267                                                                   |
-| Coverage            | 97.4 % statements, 94.1 % branches, 96.0 % functions (last local run) |
+| Test files          | 33                                                                    |
+| Test cases          | 288                                                                   |
+| Coverage            | 95.7 % statements, 94.2 % branches, 95.0 % functions (last local run) |
 
 ## Every line drawn here
 
@@ -144,27 +144,30 @@ drawing made for this project: a straw hat, three sheathed swords, a violin, a
 windmill on a hill. No faces, no logos, no official artwork.
 
 The drawings are data, not markup — lists of stroke paths in TypeScript — and
-one component renders all 356 of them: a 160×200 box, a uniform 2 px stroke
-held at 2 px through `vector-effect: non-scaling-stroke`, round caps and joins,
-no fills. Each takes exactly one hue for its main stroke and leaves the rest in
-the neutral ink, which is what makes several hundred illustrations read as one
-set.
+one component renders all 356 of them: a 160×200 box, a uniform 2 px stroke held
+at 2 px through `vector-effect: non-scaling-stroke`, round caps and joins, no
+fills. Each takes exactly one hue for its main stroke and leaves the rest in the
+neutral ink, which is what makes several hundred illustrations read as one set.
+The compositions around them went the same way: the fold's night sea, the seal a
+character's crest is set into, a port's chart plate, the route's own line and
+compass mark are all stroke lists under `src/data/art/` too, so no line on the
+site is written in JSX.
 
 ## Stack
 
-| Layer     | Choice                                              |
-| --------- | --------------------------------------------------- |
-| UI        | React 19.3.0                                        |
-| Framework | TanStack Start 1.168.52 (SSR, file-based routes)    |
-| Router    | TanStack Router 1.170.35                            |
-| Styling   | StyleX 0.19.0, compiled to one same-origin sheet    |
-| Build     | Vite 8.3.0                                          |
-| Language  | TypeScript 6.0.3, `strict` plus three extra flags   |
-| Tests     | Vitest 5.0.0, jsdom, Testing Library                |
-| Lint      | ESLint 10 flat config, typescript-eslint type-aware |
-| Gates     | react-doctor 0.9.13, fallow 3.24.1                  |
-| Host      | Netlify, SSR function plus CDN assets               |
-| Runtime   | Node 24.18.0, npm 11.16.0                           |
+| Layer     | Choice                                            |
+| --------- | ------------------------------------------------- |
+| UI        | React 19.3.0                                      |
+| Framework | TanStack Start 1.168.52 (SSR, file-based routes)  |
+| Router    | TanStack Router 1.170.35                          |
+| Styling   | StyleX 0.19.0, compiled to one same-origin sheet  |
+| Build     | Vite 8.3.0                                        |
+| Language  | TypeScript 6.0.3, `strict` plus nine extra flags  |
+| Tests     | Vitest 5.0.0, jsdom, Testing Library              |
+| Lint      | ESLint 10 flat config, 1,020 rules on, type-aware |
+| Gates     | react-doctor 0.9.14, fallow 3.25.0                |
+| Host      | Netlify, SSR function plus CDN assets             |
+| Runtime   | Node 24.18.0, npm 11.16.0                         |
 
 **Five runtime dependencies**, and every version is pinned exact — no ranges,
 one documented `overrides` entry.
@@ -178,10 +181,12 @@ runtime mistakes at all:
   drawing that does not exist.
 - The English dictionary defines the key set and the Italian one is typed
   against it, so a missing translation fails `typecheck`.
-- The bookmark is a discriminated union read through an exhaustive switch,
-  under `noFallthroughCasesInSwitch`.
-- `strict`, `noUncheckedIndexedAccess` and `noImplicitOverride` are on, and
-  the hand-written source carries no `eslint-disable` comment.
+- The bookmark is a discriminated union read through an exhaustive switch, under
+  `noFallthroughCasesInSwitch`.
+- `strict` plus nine further flags are on — `noUncheckedIndexedAccess`,
+  `exactOptionalPropertyTypes` and `noPropertyAccessFromIndexSignature` among
+  them — and the four `eslint-disable` comments in the whole tree each name
+  their rule and give a reason, because the lint rejects one that does not.
 
 What the compiler cannot hold, the test suite does. These are editorial
 invariants, checked on every run:
@@ -206,8 +211,8 @@ nothing, so it fails as a test instead.
 
 - A skip link, and a native `<dialog>` opened with `showModal()` — top layer,
   page inert, Escape closes, focus returns to where it came from.
-- Covered content carries `inert` and `aria-hidden`, so neither Tab nor a
-  screen reader can walk into a spoiler.
+- Covered content carries `inert` and `aria-hidden`, so neither Tab nor a screen
+  reader can walk into a spoiler.
 - The reader's position on the chart is `aria-current="step"`.
 - Contrast is measured and recorded beside the tokens: 17.4:1 for body ink,
   12.2:1 for the accent.
@@ -247,6 +252,11 @@ npm install
 npm run dev     # http://localhost:3000
 ```
 
+`npm install` also lays down the git hooks, through the `prepare` script rather
+than a dependency's postinstall, so they arrive on a plain install without the
+project allowing install scripts. `LEFTHOOK=0 git commit` skips them for one
+command.
+
 | Script                                      | Does                                       |
 | ------------------------------------------- | ------------------------------------------ |
 | `npm run dev`                               | Dev server                                 |
@@ -262,25 +272,60 @@ npm run dev     # http://localhost:3000
 
 `npm run check` is the gate. Run it before pushing.
 
+The hooks sit in front of it, never in place of it: `pre-commit` formats and
+lints the staged files and typechecks the whole project, `commit-msg` runs
+commitlint, `pre-push` runs the suite. Each sees a subset of what
+`npm run check` does, and CI skips all three with `LEFTHOOK=0` because it runs
+the whole thing anyway.
+
 ## Engineering notes
 
 **The pull request title is the version bump.** Merges to `main` are squashed
 into one commit whose subject is the title, and semantic-release reads that
-subject to cut the tag and the GitHub Release. Every conventional type maps to
-a release on purpose, so a merged pull request always produces a version. There
-is no `CHANGELOG.md`; the Releases page is the changelog.
+subject to cut the tag and the GitHub Release. Every conventional type maps to a
+release on purpose, so a merged pull request always produces a version. There is
+no `CHANGELOG.md`; the Releases page is the changelog.
 
-**Two blocking gates beyond lint and test.** react-doctor and fallow both run
-after typecheck, lint, format, test and build, locally and in CI, and both
-write a machine-readable report that CI uploads as an artifact on every run,
-red or green.
+**Two blocking gates beyond lint and test.** react-doctor and fallow run last,
+after typecheck, lint, format, test and build, locally and in CI, and neither
+leaves itself a way to shrug. Every react-doctor finding blocks whatever tag it
+carries, its configuration is now a typed `doctor.config.ts`, and it runs with
+inline disables ignored, so a comment cannot walk a finding past the gate.
+fallow watches the shape of the codebase instead, with nearly every rule it has
+raised to error: eight zones with a declared import direction between them, no
+block of eight lines or more duplicated, and ceilings of 8 cyclomatic, 8
+cognitive and 60 lines per unit. Both write a machine-readable report that CI
+uploads as an artifact on every run, red or green.
+
+**A thousand rules, not four presets.** `eslint --print-config` on a source file
+reports 1,020 rules switched on. The bulk of them are unicorn's 328 and
+sonarjs's 216, then typescript-eslint's type-aware sets, `@eslint-react`,
+regexp, jsdoc and jsx-a11y-x; `eslint-config-prettier` is applied last, so the
+two tools cannot disagree about where a character sits. Over the families sit
+explicit ceilings — complexity 8, cognitive complexity 10, 60 lines a function,
+300 a file, 15 statements, 3 parameters, 3 levels of nesting — sized for what a
+reviewer holds in their head at once rather than as a target to grow into. And a
+suppression has to earn itself: `require-description` means an `eslint-disable`
+names its rule and states a reason, `no-unused-disable` fails it once the reason
+is gone. Four exist in the tree.
+
+**The commit type list has one home.** The hooks run through lefthook, one
+declarative file with globs, `{staged_files}` and re-staging built in, rather
+than a committed shell script per hook plus lint-staged on top. `commit-msg`
+puts the message through commitlint, and commitlint's config imports
+`TYPE_BUMPS` and `MAX_TITLE_LENGTH` from `scripts/validate-pr-title.mjs` instead
+of repeating them — the header cap is the pull request title cap, because a
+squash merge turns that title into the subject. The validator is itself asserted
+against `.releaserc.json`, so all three corners stay in lockstep by
+construction, and a parity test spawns the same commitlint binary the hook runs
+to check the import is what the tool ends up enforcing.
 
 **Two Vite configs, on purpose.** The Vitest config deliberately omits the
 TanStack Start plugin: it forces `optimizeDeps.include` for React, which
 prebundles a second copy under Vitest and nulls the hook dispatcher. Vitest
 gives its own config full priority rather than merging the two, so this is real
-isolation. StyleX has to stay registered in both, because its `create` throws
-at runtime when it has not been compiled.
+isolation. StyleX has to stay registered in both, because its `create` throws at
+runtime when it has not been compiled.
 
 **One dependency override.** StyleX's plugin and TanStack's router plugin
 declare disjoint peer ranges for `unplugin`, so a clean install fails with
@@ -294,19 +339,20 @@ This project was built in agentic sessions with
 that a model wrote code — it is that the guardrails were built first, so its
 output could be accepted or rejected mechanically rather than on trust.
 
-Nothing reaches `main` that has not passed a type-aware lint with zero warnings
-allowed, 267 tests including the editorial invariants above, a production
-build, and two blocking quality gates. Pull requests go through review loops
-run by subagents, and every finding is either fixed in scope or filed as an
-issue. Even the release metadata is checked by a test rather than by memory.
+Nothing reaches `main` that has not passed a type-aware lint of a thousand-odd
+rules at zero warnings, 288 tests including the editorial invariants above, a
+production build, and two blocking quality gates. Pull requests go through
+review loops run by subagents, and every finding is either fixed in scope or
+filed as an issue. Even the release metadata is checked by a test rather than by
+memory.
 
-The same discipline is why the architecture decisions live in code comments
-next to the code they explain, and why this README is short.
+The same discipline is why the architecture decisions live in code comments next
+to the code they explain, and why this README is short.
 
 ## Charted next
 
-- [ ] Verify the manga chapter thresholds against a source. They were filed
-      from memory and are marked for a check.
+- [ ] Verify the manga chapter thresholds against a source. They were filed from
+      memory and are marked for a check.
 - [ ] More ports in the ship's log — 7 places carry full dossiers today, across
       21 filed arcs.
 

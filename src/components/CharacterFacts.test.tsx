@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react'
+import { describe, expect, it } from 'vitest'
 
 import type { CharacterDossier } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -30,9 +31,13 @@ const dossier: CharacterDossier = {
 
 describe('CharacterFacts', () => {
   it('shows each fact as the reader knows it, and no fact not yet learned', () => {
-    renderWithProviders(<CharacterFacts dossier={dossier} bookmark={ep(3)} />, {
-      bookmark: ep(3),
-    })
+    renderWithProviders(
+      <CharacterFacts
+        bookmark={ep(3)}
+        dossier={dossier}
+      />,
+      { bookmark: ep(3) },
+    )
 
     expect(screen.getByText('Affiliation')).toBeInTheDocument()
     expect(screen.getByText('Straw Hat Pirates')).toBeInTheDocument()
@@ -47,7 +52,10 @@ describe('CharacterFacts', () => {
 
   it('shows the latest bounty reached and never a later one', () => {
     renderWithProviders(
-      <CharacterFacts dossier={dossier} bookmark={ep(100)} />,
+      <CharacterFacts
+        bookmark={ep(100)}
+        dossier={dossier}
+      />,
       { bookmark: ep(100) },
     )
 
@@ -57,7 +65,10 @@ describe('CharacterFacts', () => {
 
   it('groups digits the Italian way in Italian', () => {
     renderWithProviders(
-      <CharacterFacts dossier={dossier} bookmark={ep(130)} />,
+      <CharacterFacts
+        bookmark={ep(130)}
+        dossier={dossier}
+      />,
       { bookmark: ep(130), locale: 'it' },
     )
 
@@ -70,10 +81,11 @@ describe('CharacterFacts', () => {
     // S04E38 is episode 130.
     const season: Bookmark = { mode: 'season', season: 4, episode: 38 }
     renderWithProviders(
-      <CharacterFacts dossier={dossier} bookmark={season} />,
-      {
-        bookmark: season,
-      },
+      <CharacterFacts
+        bookmark={season}
+        dossier={dossier}
+      />,
+      { bookmark: season },
     )
 
     expect(screen.getByText('100,000,000 Berry')).toBeInTheDocument()
@@ -83,7 +95,10 @@ describe('CharacterFacts', () => {
   it('shows the note and no fact to a reader who counts in chapters', () => {
     const chapter: Bookmark = { mode: 'chapter', chapter: 1000 }
     renderWithProviders(
-      <CharacterFacts dossier={dossier} bookmark={chapter} />,
+      <CharacterFacts
+        bookmark={chapter}
+        dossier={dossier}
+      />,
       { bookmark: chapter },
     )
 
@@ -94,7 +109,10 @@ describe('CharacterFacts', () => {
 
   it('renders nothing at all when the reader has reached no fact', () => {
     const { container } = renderWithProviders(
-      <CharacterFacts dossier={dossier} bookmark={null} />,
+      <CharacterFacts
+        bookmark={null}
+        dossier={dossier}
+      />,
     )
 
     expect(container).toBeEmptyDOMElement()
