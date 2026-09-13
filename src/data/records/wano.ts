@@ -112,8 +112,8 @@ export const wano: Saga = {
       revealedAtChapter: 930,
       name: { it: 'Shinobu', en: 'Shinobu' },
       summary: {
-        it: 'Una kunoichi che un tempo serviva la guardia segreta dello shogun e ora lavora per i Kozuki, capace di far maturare tutto ciò che tocca.',
-        en: 'A kunoichi who once served the shogun’s secret guard and now works for the Kozuki, able to ripen whatever she puts her hands on.',
+        it: 'Una kunoichi grande e rumorosa al servizio dei Kozuki, che si offende se la chiamano vecchia e fa maturare e marcire tutto ciò che tocca.',
+        en: 'A big, loud kunoichi in the service of the Kozuki, who takes offence at being called old and ripens and rots whatever she touches.',
       },
       visual: { art: 'shinobu', tint: 'lavender' },
     },
@@ -136,15 +136,15 @@ export const wano: Saga = {
       revealedAtChapter: 933,
       name: { it: 'Queen', en: 'Queen' },
       summary: {
-        it: 'Il direttore del campo di prigionia di Udon, un gigante che canta al microfono e si trasforma in un brachiosauro corazzato di ferro.',
-        en: 'The warden of the Udon prison camp, a giant who sings into a microphone and turns into a brachiosaurus plated with iron.',
+        it: 'Il direttore del campo di prigionia di Udon, un gigante con il corpo pieno di macchine che canta al microfono mentre i prigionieri lavorano.',
+        en: 'The warden of the Udon prison camp, a giant with a body full of machinery who sings into a microphone while the prisoners work.',
       },
       visual: { art: 'queen', tint: 'yellow' },
     },
     {
       id: 'king',
       kind: 'character',
-      revealedAtEpisode: 919,
+      revealedAtEpisode: 923,
       revealedAtChapter: 935,
       name: { it: 'King', en: 'King' },
       summary: {
@@ -192,7 +192,7 @@ export const wano: Saga = {
     {
       id: 'shimotsuki-yasuie',
       kind: 'character',
-      revealedAtEpisode: 934,
+      revealedAtEpisode: 938,
       revealedAtChapter: 943,
       name: { it: 'Shimotsuki Yasuie', en: 'Shimotsuki Yasuie' },
       summary: {
@@ -264,7 +264,7 @@ export const wano: Saga = {
     {
       id: 'kozuki-toki',
       kind: 'character',
-      revealedAtEpisode: 962,
+      revealedAtEpisode: 963,
       revealedAtChapter: 966,
       name: { it: 'Kozuki Toki', en: 'Kozuki Toki' },
       summary: {
@@ -328,8 +328,8 @@ export const wano: Saga = {
       revealedAtChapter: 980,
       name: { it: 'Who’s-Who', en: 'Who’s-Who' },
       summary: {
-        it: 'Un uomo mascherato dell’Imperatore, con una zanna sull’elmo, che prima di diventare pirata lavorava per il Governo Mondiale.',
-        en: 'A masked man of the Emperor’s crew, a fang on his helmet, who worked for the World Government before he turned pirate.',
+        it: 'Un uomo mascherato dell’Imperatore, con una zanna sull’elmo, che si trasforma in una tigre dai denti a sciabola e non sopporta di essere guardato dall’alto.',
+        en: 'A masked man of the Emperor’s, a fang on his helmet, who turns into a sabre-toothed tiger and cannot stand being looked down on.',
       },
       visual: { art: 'whos-who', tint: 'sand' },
     },
@@ -615,7 +615,7 @@ export const wano: Saga = {
       ],
       devilFruit: [
         {
-          episode: 917,
+          episode: 925,
           value: {
             it: 'Frutto Ryu Ryu, modello Brachiosauro',
             en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
@@ -635,7 +635,7 @@ export const wano: Saga = {
       },
       affiliation: [
         {
-          episode: 919,
+          episode: 923,
           value: {
             it: 'Pirati delle Cento Bestie, All-Star',
             en: 'Beasts Pirates, All-Star',
@@ -650,20 +650,20 @@ export const wano: Saga = {
       ],
       epithet: [
         {
-          episode: 919,
+          episode: 923,
           value: { it: 'King l’Incendio', en: 'King the Wildfire' },
         },
       ],
       devilFruit: [
         {
-          episode: 919,
+          episode: 923,
           value: {
             it: 'Frutto Ryu Ryu, modello Pteranodonte',
             en: 'Dragon-Dragon Fruit, Ancient Model: Pteranodon',
           },
         },
       ],
-      bounty: [{ episode: 919, value: 1_390_000_000 }],
+      bounty: [{ episode: 923, value: 1_390_000_000 }],
     },
     komurasaki: {
       role: {
@@ -749,7 +749,7 @@ export const wano: Saga = {
       },
       affiliation: [
         {
-          episode: 934,
+          episode: 938,
           value: {
             it: 'Ex daimyo di Hakumai; Tonoyasu del quartiere di Ebisu',
             en: 'Former daimyo of Hakumai; Tonoyasu of Ebisu Town',
@@ -757,8 +757,8 @@ export const wano: Saga = {
         },
         { episode: 940, value: { it: 'Giustiziato', en: 'Executed' } },
       ],
-      origin: [{ episode: 934, value: WANO }],
-      epithet: [{ episode: 934, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
+      origin: [{ episode: 938, value: WANO }],
+      epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
     },
     gyukimaru: {
       role: { it: 'Ladro di spade', en: 'Sword thief' },
@@ -797,8 +797,8 @@ export const wano: Saga = {
     kawamatsu: {
       role: { it: 'Prigioniero di Udon', en: 'Prisoner of Udon' },
       log: {
-        it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. Quando gli rimettono in mano una spada si capisce perché lo tenevano in gabbia.',
-        en: 'He has spent years at the bottom of the Udon jail, in a cage far too small for him, watched more closely than any other prisoner. He shares what little food he gets with the weakest convicts and takes his beatings laughing, the flat head that earned him the kappa name held high. When a sword is put back in his hands it becomes clear why they caged him.',
+        it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. I carcerieri sanno che è più pericoloso di quanto sembri, e nessuno gli passa vicino.',
+        en: 'He has spent years at the bottom of the Udon jail, in a cage far too small for him, watched more closely than any other prisoner. He shares what little food he gets with the weakest convicts and takes his beatings laughing, the flat head that earned him the kappa name held high. The jailers know he is more dangerous than he looks, and none of them goes near him.',
       },
       affiliation: [
         {
@@ -863,7 +863,7 @@ export const wano: Saga = {
       },
       affiliation: [
         {
-          episode: 962,
+          episode: 963,
           value: {
             it: 'Famiglia Kozuki, moglie di Oden, deceduta',
             en: 'Kozuki family, Oden’s wife, deceased',
@@ -872,7 +872,7 @@ export const wano: Saga = {
       ],
       origin: [
         {
-          episode: 962,
+          episode: 963,
           value: {
             it: 'Paese di Wano, ottocento anni fa',
             en: 'Wano Country, eight hundred years ago',
@@ -881,7 +881,7 @@ export const wano: Saga = {
       ],
       devilFruit: [
         {
-          episode: 962,
+          episode: 963,
           value: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
         },
       ],

@@ -1438,8 +1438,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Arlong Pirates',
       },
       log: {
-        it: 'Ha costruito un parco sul mare e da otto anni riscuote una tassa su ogni testa dei villaggi vicini: chi non paga muore, e la Marina della zona guarda altrove. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene una cartografa chiusa in una stanza al piano di sopra a disegnare mappe per lui.',
-        en: 'He built a park on the water and for eight years has collected a tax on every head in the villages nearby: those who cannot pay die, and the local Marines look elsewhere. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a cartographer shut in a room upstairs, drawing charts for him.',
+        it: 'Ha costruito un parco sul mare e da otto anni riscuote una tassa su ogni testa dei villaggi vicini: chi non paga muore, e la Marina della zona guarda altrove. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
+        en: 'He built a park on the water and for eight years has collected a tax on every head in the villages nearby: those who cannot pay die, and the local Marines look elsewhere. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
       },
       affiliation: [
         {
@@ -1515,8 +1515,8 @@ export const eastBlue: Saga = {
     nojiko: {
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },
       log: {
-        it: 'Lavora da sola il frutteto sulla collina e ogni anno paga agli uomini-pesce il tributo senza discutere, come tutto il villaggio. Sa perfettamente che cosa fa sua sorella e perché, e lascia che gli altri la credano una ladra qualunque. Quando qualcuno le chiede spiegazioni, risponde con il silenzio o con una pala in mano.',
-        en: 'She works the hillside orchard alone and pays the fish-men their tribute every year without arguing, as the whole village does. She knows exactly what her sister is doing and why, and lets everyone else take her for an ordinary thief. When somebody asks her for an explanation, she answers with silence or with a shovel in her hand.',
+        it: 'Lavora da sola il frutteto sulla collina e ogni anno paga agli uomini-pesce il tributo senza discutere, come tutto il villaggio. Di sua sorella non parla con nessuno, né con gli estranei né con gli amici, e lascia che gli altri la credano una ladra qualunque. Quando qualcuno le chiede spiegazioni, risponde con il silenzio o con una pala in mano.',
+        en: 'She works the hillside orchard alone and pays the fish-men their tribute every year without arguing, as the whole village does. She speaks of her sister to nobody, stranger or friend, and lets the rest of them take her for an ordinary thief. When somebody asks her for an explanation, she answers with silence or with a shovel in her hand.',
       },
       affiliation: [
         {
@@ -1532,8 +1532,8 @@ export const eastBlue: Saga = {
     genzo: {
       role: { it: 'Poliziotto del villaggio', en: 'Village sheriff' },
       log: {
-        it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e ogni anno raccoglie il denaro del tributo casa per casa. Porta una girandola sul cappello da quando una bambina gli disse che faceva troppa paura ai piccoli. Ha visto che fine fa chi prova a ribellarsi, e da allora impone al villaggio una pazienza che odia.',
-        en: 'He keeps order in a town with nothing left to defend, and every year he collects the tribute money house by house. He has worn a pinwheel in his cap since a little girl told him he frightened the children. He has seen what happens to those who resist, and since then he holds the village to a patience he hates.',
+        it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e ogni anno raccoglie il denaro del tributo casa per casa. Porta una girandola sul cappello e non spiega a nessuno perché. Ha visto che fine fa chi prova a ribellarsi, e da allora impone al villaggio una pazienza che odia.',
+        en: 'He keeps order in a town with nothing left to defend, and every year he collects the tribute money house by house. He wears a pinwheel on his cap and explains it to nobody. He has seen what happens to those who resist, and since then he holds the village to a patience he hates.',
       },
       affiliation: [
         {

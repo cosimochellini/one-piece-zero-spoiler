@@ -557,8 +557,8 @@ export const alabasta: Saga = {
     karoo: {
       role: { it: 'Anatra da corsa', en: 'Racing duck' },
       log: {
-        it: 'È un’anatra grande quanto un uomo, con la sella sul dorso e la borraccia al collo, e corre più veloce di un cavallo quando la sua padrona glielo chiede. Capisce tutto quello che gli si dice e risponde a gesti, ma non sa nuotare e ha una paura evidente del mare aperto. Quando lei è in pericolo si mette davanti senza pensarci.',
-        en: 'He is a duck the size of a man, a saddle on his back and a canteen at his neck, and he runs faster than a horse when his mistress asks it of him. He understands everything said to him and answers in gestures, but he cannot swim and is plainly frightened of open water. When she is in danger he puts himself in front of her without thinking.',
+        it: 'È un’anatra grande quanto un uomo, con la sella sul dorso e la borraccia al collo, e corre più veloce di un cavallo quando la sua padrona glielo chiede. Capisce tutto quello che gli si dice e risponde a gesti, e beve dalla borraccia molto più di quanto dovrebbe. Quando lei è in pericolo si mette davanti senza pensarci.',
+        en: 'He is a duck the size of a man, a saddle on his back and a canteen at his neck, and he runs faster than a horse when his mistress asks it of him. He understands everything said to him and answers in gestures, and drinks from his canteen far more than he should. When she is in danger he puts himself in front of her without thinking.',
       },
       affiliation: [
         {

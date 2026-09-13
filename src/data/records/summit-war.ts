@@ -150,7 +150,7 @@ export const summitWar: Saga = {
     {
       id: 'duval',
       kind: 'character',
-      revealedAtEpisode: 388,
+      revealedAtEpisode: 391,
       revealedAtChapter: 497,
       name: { it: 'Duval', en: 'Duval' },
       summary: {
@@ -174,7 +174,7 @@ export const summitWar: Saga = {
     {
       id: 'silvers-rayleigh',
       kind: 'character',
-      revealedAtEpisode: 396,
+      revealedAtEpisode: 398,
       revealedAtChapter: 504,
       name: { it: 'Silvers Rayleigh', en: 'Silvers Rayleigh' },
       summary: {
@@ -306,7 +306,7 @@ export const summitWar: Saga = {
     {
       id: 'sentomaru',
       kind: 'character',
-      revealedAtEpisode: 401,
+      revealedAtEpisode: 403,
       revealedAtChapter: 508,
       name: { it: 'Sentomaru', en: 'Sentomaru' },
       summary: {
@@ -318,7 +318,7 @@ export const summitWar: Saga = {
     {
       id: 'boa-sandersonia',
       kind: 'character',
-      revealedAtEpisode: 410,
+      revealedAtEpisode: 412,
       revealedAtChapter: 521,
       name: { it: 'Boa Sandersonia', en: 'Boa Sandersonia' },
       summary: {
@@ -330,7 +330,7 @@ export const summitWar: Saga = {
     {
       id: 'boa-marigold',
       kind: 'character',
-      revealedAtEpisode: 410,
+      revealedAtEpisode: 412,
       revealedAtChapter: 521,
       name: { it: 'Boa Marigold', en: 'Boa Marigold' },
       summary: {
@@ -550,8 +550,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 556,
       name: { it: 'Vista', en: 'Vista' },
       summary: {
-        it: 'Un comandante di Barbabianca con i baffi all’insù e due spade, che incrocia la lama del migliore spadaccino del mondo senza cedere.',
-        en: 'A Whitebeard commander with curled moustaches and two swords, who crosses blades with the greatest swordsman alive and holds.',
+        it: 'Un comandante di Barbabianca con i baffi all’insù e due spade, lo spadaccino più elegante della ciurma, che saluta con un inchino prima di tagliare.',
+        en: 'A Whitebeard commander with an upturned moustache and two swords, the most elegant swordsman of the crew, who bows before he cuts.',
       },
       visual: { art: 'vista', tint: 'flamingo' },
     },
@@ -618,8 +618,8 @@ export const summitWar: Saga = {
     {
       id: 'sabo',
       kind: 'character',
-      revealedAtEpisode: 495,
-      revealedAtChapter: 583,
+      revealedAtEpisode: 497,
+      revealedAtChapter: 585,
       name: { it: 'Sabo', en: 'Sabo' },
       summary: {
         it: 'Un bambino in cilindro e occhialoni che vive fra i rottami della città, fratello giurato di Rufy e Ace davanti a tre tazze di sakè.',
@@ -796,8 +796,8 @@ export const summitWar: Saga = {
     camie: {
       role: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
       log: {
-        it: 'Arriva dentro una vasca, rapita dai pirati che vendono sirene, e ne esce perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
-        en: 'She arrives inside a tank, taken by pirates who sell mermaids, and gets out of it because a rubber boy decides the matter is not up for discussion. She works the takoyaki counter for Hatchan, who treats her like a daughter, and apologises constantly for trouble she thinks she is causing. Danger finds her easily, and somebody always has to fetch her back.',
+        it: 'Viene inseguita per mare da una banda a cavallo di pesci volanti e se la cava perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
+        en: 'She is chased across the sea by a gang riding flying fish and gets away because a rubber boy decides the matter is not up for discussion. She works the takoyaki counter for Hatchan, who treats her like a daughter, and apologises constantly for trouble she thinks she is causing. Danger finds her easily, and somebody always has to fetch her back.',
       },
       affiliation: [
         {
@@ -856,13 +856,6 @@ export const summitWar: Saga = {
       },
       affiliation: [
         {
-          episode: 388,
-          value: {
-            it: 'Cavalieri del Pesce Volante, capo',
-            en: 'Flying Fish Riders, boss',
-          },
-        },
-        {
           episode: 391,
           value: {
             it: 'Cavalieri della Vita Rosa, capo',
@@ -870,10 +863,7 @@ export const summitWar: Saga = {
           },
         },
       ],
-      epithet: [
-        { episode: 388, value: { it: 'Maschera di Ferro', en: 'Iron Mask' } },
-        { episode: 391, value: { it: 'il Bello', en: 'Handsome' } },
-      ],
+      epithet: [{ episode: 391, value: { it: 'il Bello', en: 'Handsome' } }],
     },
     shakky: {
       role: { it: 'Padrona del bar', en: 'Bar owner' },
@@ -899,7 +889,7 @@ export const summitWar: Saga = {
       },
       affiliation: [
         {
-          episode: 396,
+          episode: 398,
           value: {
             it: 'Artigiano del rivestimento a Sabaody; un tempo secondo dei Pirati di Roger',
             en: 'Coating craftsman of Sabaody; once first mate of the Roger Pirates',
@@ -907,7 +897,7 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [
-        { episode: 396, value: { it: 'Re Oscuro', en: 'the Dark King' } },
+        { episode: 398, value: { it: 'Re Oscuro', en: 'the Dark King' } },
       ],
     },
     killer: {
@@ -1037,8 +1027,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Drake Pirates',
       },
       log: {
-        it: 'Prima di issare bandiera nera portava le stellette di contrammiraglio, e nessuno sa dire perché abbia cambiato parte. Arriva a Sabaody con gli altri capitani della sua generazione e tiene la testa bassa, come se preferisse non essere contato. Quando serve prende la forma di un animale che non esiste più da millenni.',
-        en: 'Before he raised a black flag he wore a rear admiral’s stars, and nobody can say why he changed sides. He comes to Sabaody with the other captains of his generation and keeps his head down, as though he would rather not be counted. When it is needed he takes the shape of an animal extinct for millennia.',
+        it: 'Prima di issare bandiera nera portava le stellette di contrammiraglio, e nessuno sa dire perché abbia cambiato parte. Arriva a Sabaody con gli altri capitani della sua generazione e tiene la testa bassa, come se preferisse non essere contato.',
+        en: 'Before he raised a black flag he wore a rear admiral’s stars, and nobody can say why he changed sides. He comes to Sabaody with the other captains of his generation and keeps his head down, as though he would rather not be counted.',
       },
       affiliation: [
         {
@@ -1063,7 +1053,7 @@ export const summitWar: Saga = {
       ],
       devilFruit: [
         {
-          episode: 392,
+          episode: 402,
           value: {
             it: 'Frutto Ryu Ryu, modello Allosauro',
             en: 'Dragon-Dragon Fruit, Ancient Model: Allosaurus',
@@ -1151,8 +1141,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Bonney Pirates',
       },
       log: {
-        it: 'È l’unica donna fra gli undici capitani arrivati a Sabaody con una taglia sopra i cento milioni, e mangia mentre parla, mentre cammina e mentre minaccia. Ha modi da ragazzina e una ciurma che la segue senza fiatare. Quando sente nominare la Marina il tono le cambia di colpo, e non spiega a nessuno perché.',
-        en: 'She is the only woman among the eleven captains who reach Sabaody with a bounty above a hundred million, and she eats while she talks, while she walks and while she threatens. Her manners are a girl’s and her crew follows her without a murmur. When the Marines are mentioned her tone changes at once, and she never says why.',
+        it: 'È l’unica donna fra gli undici capitani arrivati a Sabaody con una taglia sopra i cento milioni, e mangia mentre parla, mentre cammina e mentre minaccia. Ha modi da ragazzina e una ciurma che la segue senza fiatare. Mangia e beve a spese di chiunque le capiti davanti, e non ringrazia.',
+        en: 'She is the only woman among the eleven captains who reach Sabaody with a bounty above a hundred million, and she eats while she talks, while she walks and while she threatens. Her manners are a girl’s and her crew follows her without a murmur. She eats and drinks at the expense of whoever is nearest, and never says thank you.',
       },
       affiliation: [
         {
@@ -1229,7 +1219,7 @@ export const summitWar: Saga = {
       },
       affiliation: [
         {
-          episode: 401,
+          episode: 403,
           value: {
             it: 'Marina, guardia del corpo del dottor Vegapunk',
             en: 'Marines, Dr. Vegapunk’s bodyguard',
@@ -1251,12 +1241,12 @@ export const summitWar: Saga = {
         en: 'She is the tallest and thinnest of the three sisters, her green hair bound up above her head, and everyone on the island calls her princess. In the arena she fights beside her younger sister and turns into a snake as long as the stands. On her back is something she shows to nobody, and when her cloak slips she covers up in a hurry.',
       },
       affiliation: [
-        { episode: 410, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
+        { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
       ],
-      origin: [{ episode: 410, value: AMAZON_LILY }],
+      origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
         {
-          episode: 410,
+          episode: 412,
           value: {
             it: 'Frutto Hebi Hebi, modello Anaconda',
             en: 'Snake-Snake Fruit, Model: Anaconda',
@@ -1271,12 +1261,12 @@ export const summitWar: Saga = {
         en: 'She is the largest of the three sisters and moves with a slowness that deceives, because in the arena she gets there sooner than she looks. She becomes an orange snake that breathes fire, and her tail sweeps away half the ground. She too keeps her back hidden under a cloak, and a glance from her sister is enough to remind her.',
       },
       affiliation: [
-        { episode: 410, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
+        { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
       ],
-      origin: [{ episode: 410, value: AMAZON_LILY }],
+      origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
         {
-          episode: 410,
+          episode: 412,
           value: {
             it: 'Frutto Hebi Hebi, modello Cobra Reale',
             en: 'Snake-Snake Fruit, Model: King Cobra',
@@ -1411,8 +1401,8 @@ export const summitWar: Saga = {
     inazuma: {
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
       log: {
-        it: 'Sta accanto al sovrano del livello nascosto e parla al posto suo quando serve una risposta seria. Ha le mani che diventano forbici e ritaglia la pietra come si ritaglia la carta, poi piega il pezzo e lo rimette dove gli serve. Dei rivoluzionari non dice nulla a nessuno, e dentro la prigione nessuno glielo chiede.',
-        en: 'He stands beside the ruler of the hidden level and speaks for him whenever a serious answer is needed. His hands turn into scissors and cut stone the way scissors cut paper, and then he folds the piece and sets it down where it is needed. About the revolutionaries he tells nobody anything, and inside the prison nobody asks.',
+        it: 'Sta accanto al sovrano del livello nascosto e parla al posto suo quando serve una risposta seria. Ha le mani che diventano forbici e ritaglia la pietra come si ritaglia la carta, poi piega il pezzo e lo rimette dove gli serve. Di sé non dice nulla a nessuno, e dentro la prigione nessuno glielo chiede.',
+        en: 'He stands beside the ruler of the hidden level and speaks for him whenever a serious answer is needed. His hands turn into scissors and cut stone the way scissors cut paper, and then he folds the piece and sets it down where it is needed. About himself he tells nobody anything, and inside the prison nobody asks.',
       },
       affiliation: [
         {
@@ -1433,8 +1423,8 @@ export const summitWar: Saga = {
     shiryu: {
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
       log: {
-        it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Siede nella cella con la spada che gli hanno lasciato accanto, e i guardiani passano davanti senza guardarlo. Il direttore lo tiene lì e non lo libera, nemmeno mentre la prigione va a fuoco.',
-        en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. He sits in his cell with the sword they left beside him, and the guards walk past without looking in. The warden keeps him there and will not let him out, not even with the prison burning.',
+        it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Siede nella cella con la spada che gli hanno lasciato accanto, e i guardiani passano davanti senza guardarlo. Il direttore lo considera l’unico detenuto che non vorrebbe mai vedere fuori.',
+        en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. He sits in his cell with the sword they left beside him, and the guards walk past without looking in. The warden counts him as the one inmate he never wants to see outside.',
       },
       affiliation: [
         {
@@ -1742,8 +1732,8 @@ export const summitWar: Saga = {
         en: 'Fifth division commander',
       },
       log: {
-        it: 'Comanda la quinta divisione con due spade e i baffi arricciati, e si muove come se fosse a un ballo invece che in battaglia. Quando il migliore spadaccino del mondo punta il vecchio, è lui a mettersi in mezzo e a reggere il colpo. Fra i comandanti è quello che alza meno la voce e che sorride di più.',
-        en: 'He commands the fifth division with two swords and curled moustaches, and moves as though he were at a ball rather than a battle. When the greatest swordsman alive goes for the old man, he is the one who steps in and holds. Of all the commanders he raises his voice least and smiles most.',
+        it: 'Comanda la quinta divisione con due spade e i baffi arricciati, e si muove come se fosse a un ballo invece che in battaglia. Nella baia tiene la prima linea davanti alla nave del vecchio, e nessuno la passa. Fra i comandanti è quello che alza meno la voce e che sorride di più.',
+        en: 'He commands the fifth division with two swords and curled moustaches, and moves as though he were at a ball rather than a battle. In the bay he holds the front line before the old man’s ship, and nobody gets past it. Of all the commanders he raises his voice least and smiles most.',
       },
       affiliation: [
         {
@@ -1764,8 +1754,8 @@ export const summitWar: Saga = {
         en: 'Captain allied to Whitebeard',
       },
       log: {
-        it: 'Guida una delle ciurme alleate e porta la sua nave in prima fila nella baia, davanti a tutte le altre bandiere. Chiama padre Barbabianca e lo dice davanti ai suoi uomini senza abbassare la voce. La ciurma che comandava prima dell’alleanza è andata perduta in mare aperto, e di quella storia non parla volentieri.',
-        en: 'He leads one of the allied crews and takes his ship into the front line of the bay, ahead of every other flag. He calls Whitebeard father and says it in front of his own men without lowering his voice. The crew he led before the alliance was lost at sea, and it is not a story he tells willingly.',
+        it: 'Guida una delle ciurme alleate e porta la sua nave in prima fila nella baia, davanti a tutte le altre bandiere. Chiama padre Barbabianca e lo dice davanti ai suoi uomini senza abbassare la voce. È il primo degli alleati a rispondere quando il vecchio chiama, e l’ultimo a chiedere perché.',
+        en: 'He leads one of the allied crews and takes his ship into the front line of the bay, ahead of every other flag. He calls Whitebeard father and says it in front of his own men without lowering his voice. He is the first of the allies to answer when the old man calls, and the last to ask why.',
       },
       affiliation: [
         {
@@ -1884,7 +1874,7 @@ export const summitWar: Saga = {
       },
       affiliation: [
         {
-          episode: 495,
+          episode: 497,
           value: {
             it: 'Famiglia Dadan, fratello giurato di Rufy e Ace, dato per morto',
             en: 'Dadan Family, sworn brother of Luffy and Ace, presumed dead',
@@ -1900,7 +1890,7 @@ export const summitWar: Saga = {
       ],
       origin: [
         {
-          episode: 495,
+          episode: 497,
           value: {
             it: 'Regno di Goa, East Blue',
             en: 'Goa Kingdom, East Blue',

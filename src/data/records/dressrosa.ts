@@ -197,8 +197,8 @@ export const dressrosa: Saga = {
     {
       id: 'riku-doldo-iii',
       kind: 'character',
-      revealedAtEpisode: 632,
-      revealedAtChapter: 708,
+      revealedAtEpisode: 662,
+      revealedAtChapter: 730,
       name: { it: 'Riku Doldo III', en: 'Riku Doldo III' },
       summary: {
         it: 'Il vecchio re di Dressrosa, cacciato dal trono dieci anni fa, che ora gira per il colosseo con la barba lunga e un altro nome.',
@@ -341,8 +341,8 @@ export const dressrosa: Saga = {
     {
       id: 'viola',
       kind: 'character',
-      revealedAtEpisode: 633,
-      revealedAtChapter: 709,
+      revealedAtEpisode: 640,
+      revealedAtChapter: 712,
       name: { it: 'Viola', en: 'Viola' },
       summary: {
         it: 'Una ballerina con il ventaglio che lavora per il re di Dressrosa e vede quello che succede in ogni angolo dell’isola senza muoversi.',
@@ -353,8 +353,8 @@ export const dressrosa: Saga = {
     {
       id: 'sugar',
       kind: 'character',
-      revealedAtEpisode: 633,
-      revealedAtChapter: 709,
+      revealedAtEpisode: 641,
+      revealedAtChapter: 725,
       name: { it: 'Sugar', en: 'Sugar' },
       summary: {
         it: 'Una bambina che mangia acini d’uva seduta in un salotto del palazzo, e che con un tocco trasforma chiunque in un giocattolo.',
@@ -521,7 +521,7 @@ export const dressrosa: Saga = {
     {
       id: 'donquixote-rosinante',
       kind: 'character',
-      revealedAtEpisode: 700,
+      revealedAtEpisode: 704,
       revealedAtChapter: 768,
       name: { it: 'Donquijote Rosinante', en: 'Donquixote Rosinante' },
       summary: {
@@ -912,7 +912,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 662,
           value: {
             it: 'Ex re di Dressrosa, deposto',
             en: 'Former king of Dressrosa, deposed',
@@ -926,8 +926,8 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 632, value: DRESSROSA }],
-      epithet: [{ episode: 632, value: { it: 'Ricky', en: 'Ricky' } }],
+      origin: [{ episode: 662, value: DRESSROSA }],
+      epithet: [{ episode: 662, value: { it: 'Ricky', en: 'Ricky' } }],
     },
     trebol: {
       role: DONQUIXOTE_ELITE_ROLE,
@@ -1016,8 +1016,8 @@ export const dressrosa: Saga = {
         en: 'Former leader of the Happo Navy',
       },
       log: {
-        it: 'Ha comandato ottomila uomini e in mare aperto apriva il ghiaccio con la testa. Adesso quella punta non c’è più, schiacciata da un pugno che ha ricevuto da giovane, e lui non ha mai smesso di pensarci. Ha ceduto il comando al nipote e dice di essersi ritirato, ma appena sente un certo cognome si rimette in piedi.',
-        en: 'He led eight thousand men and used to split the ice at sea with his head. That point is gone now, flattened by a fist he took when he was young, and he has never stopped thinking about it. He has handed command to his grandson and says he is retired, but one surname on the air puts him back on his feet.',
+        it: 'Ha comandato ottomila uomini e in mare aperto apriva il ghiaccio con la testa. Adesso quella punta non c’è più, e lui non racconta a nessuno come l’abbia persa. Ha ceduto il comando al nipote e dice di essersi ritirato, ma nel colosseo scende in campo come se il conto fosse suo.',
+        en: 'He led eight thousand men and used to split the ice at sea with his head. That point is gone now, and he tells nobody how he lost it. He has handed command to his grandson and says he is retired, but he walks into the colosseum as if the score were his own.',
       },
       affiliation: [
         {
@@ -1214,7 +1214,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 633,
+          episode: 640,
           value: {
             it: 'Pirati di Donquijote, Violet',
             en: 'Donquixote Pirates, Violet',
@@ -1228,11 +1228,11 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 633, value: DRESSROSA }],
-      epithet: [{ episode: 633, value: { it: 'Violet', en: 'Violet' } }],
+      origin: [{ episode: 640, value: DRESSROSA }],
+      epithet: [{ episode: 640, value: { it: 'Violet', en: 'Violet' } }],
       devilFruit: [
         {
-          episode: 633,
+          episode: 640,
           value: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
         },
       ],
@@ -1248,7 +1248,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 633,
+          episode: 641,
           value: {
             it: 'Pirati di Donquijote, ufficiale dell’Armata Trebol',
             en: 'Donquixote Pirates, Trebol Army officer',
@@ -1257,7 +1257,7 @@ export const dressrosa: Saga = {
       ],
       devilFruit: [
         {
-          episode: 633,
+          episode: 641,
           value: { it: 'Frutto Hobi Hobi', en: 'Hobby-Hobby Fruit' },
         },
       ],
@@ -1583,7 +1583,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 700,
+          episode: 704,
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo Corazon, in segreto comandante della Marina, deceduto',
             en: 'Donquixote Pirates, elite officer Corazon, secretly a Marine commander, deceased',
@@ -1592,14 +1592,14 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 700,
+          episode: 704,
           value: { it: 'Mary Geoise', en: 'Mary Geoise' },
         },
       ],
-      epithet: [{ episode: 700, value: { it: 'Corazon', en: 'Corazon' } }],
+      epithet: [{ episode: 704, value: { it: 'Corazon', en: 'Corazon' } }],
       devilFruit: [
         {
-          episode: 700,
+          episode: 704,
           value: { it: 'Frutto Nagi Nagi', en: 'Calm-Calm Fruit' },
         },
       ],

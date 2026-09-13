@@ -299,8 +299,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 385,
       name: { it: 'Oimo e Kashi', en: 'Oimo and Kashi' },
       summary: {
-        it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, con le clave appoggiate al muro e la convinzione di star salvando i vecchi compagni.',
-        en: 'Two giants guarding the gate of a judicial island, their clubs propped against the wall, convinced that they are saving their old comrades.',
+        it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, con le clave appoggiate al muro e una porta che nessuno ha mai forzato.',
+        en: 'Two giants who guard the gate of a judicial island, their clubs leaning on the wall and a door nobody has ever forced.',
       },
       visual: { art: 'oimo-and-kashi', tint: 'ocher' },
     },
@@ -710,8 +710,8 @@ export const waterSeven: Saga = {
     'oimo-and-kashi': {
       role: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
       log: {
-        it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una spada enorme. Lavorano per il Governo Mondiale da anni in cambio della vita dei loro compagni, e non hanno mai chiesto se quella promessa sia stata mantenuta. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
-        en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with an enormous sword. They have worked for the World Government for years in exchange for their comrades’ lives, and have never asked whether that promise was kept. They come from an island of warriors and still carry themselves like it.',
+        it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una spada enorme. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
+        en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with an enormous sword. They have worked for the World Government for years and have never questioned an order. They come from an island of warriors and still carry themselves like it.',
       },
       affiliation: [
         {

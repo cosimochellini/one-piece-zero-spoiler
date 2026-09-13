@@ -305,8 +305,8 @@ export const fishManIsland: Saga = {
         en: 'Captain of the Caribou Pirates',
       },
       log: {
-        it: 'Arriva all’arcipelago Sabaody con una taglia da duecento milioni e le lacrime già pronte: si inginocchia, supplica, e appena l’avversario abbassa la guardia lo uccide. Il fratello gli scava le fosse dietro, una croce per ciascuna. Quando lo si colpisce il corpo gli si disfa in una palude, e il colpo non arriva mai fino in fondo.',
-        en: 'He reaches the Sabaody Archipelago with a two hundred million bounty and his tears ready: he kneels, he begs, and the moment his opponent drops their guard he kills them. His brother digs the graves behind him, one cross each. When he is hit his body comes apart into swamp water, and the blow never really lands.',
+        it: 'Arriva all’arcipelago Sabaody con una taglia da duecento milioni e le lacrime già pronte: si inginocchia, supplica, e appena l’avversario abbassa la guardia lo uccide. Il fratello gli scava le fosse dietro, una croce per ciascuna. Ha una taglia da duecentodieci milioni e una ciurma che lo teme più di quanto tema chi insegue.',
+        en: 'He reaches the Sabaody Archipelago with a two hundred million bounty and his tears ready: he kneels, he begs, and the moment his opponent drops their guard he kills them. His brother digs the graves behind him, one cross each. He carries a bounty of two hundred and ten million and a crew that fears him more than it fears anyone he hunts.',
       },
       affiliation: [
         {
@@ -332,7 +332,7 @@ export const fishManIsland: Saga = {
       ],
       devilFruit: [
         {
-          episode: 517,
+          episode: 519,
           value: { it: 'Frutto Numa Numa', en: 'Swamp-Swamp Fruit' },
         },
       ],

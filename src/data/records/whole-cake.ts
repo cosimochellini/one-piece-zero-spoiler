@@ -65,8 +65,8 @@ export const wholeCake: Saga = {
     {
       id: 'jack',
       kind: 'character',
-      revealedAtEpisode: 751,
-      revealedAtChapter: 802,
+      revealedAtEpisode: 757,
+      revealedAtChapter: 809,
       name: { it: 'Jack', en: 'Jack' },
       summary: {
         it: 'Un pirata delle Cento Bestie che arriva a Zou con una flotta e diventa un mammut alto quanto una nave per avere un uomo solo.',
@@ -333,8 +333,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 840,
       name: { it: 'Charlotte Katakuri', en: 'Charlotte Katakuri' },
       summary: {
-        it: 'Lo Sweet Commander più forte di Big Mom, un uomo altissimo con la sciarpa tirata fino agli occhi e un tridente sempre in mano.',
-        en: 'Big Mom’s strongest Sweet Commander, a very tall man with his scarf pulled up to his eyes and a trident always in hand.',
+        it: 'Uno Sweet Commander di Big Mom, un uomo altissimo con la sciarpa tirata fino agli occhi e un tridente sempre in mano, che nessuno ha mai visto mangiare.',
+        en: 'A Sweet Commander of Big Mom’s, a very tall man with a scarf pulled up to his eyes and a trident always in hand, whom nobody has ever seen eat.',
       },
       visual: { art: 'charlotte-katakuri', tint: 'wine' },
     },
@@ -555,7 +555,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 751,
+          episode: 757,
           value: {
             it: 'Pirati delle Cento Bestie, All-Star',
             en: 'Beasts Pirates, All-Star',
@@ -563,18 +563,18 @@ export const wholeCake: Saga = {
         },
       ],
       epithet: [
-        { episode: 751, value: { it: 'la Siccità', en: 'the Drought' } },
+        { episode: 757, value: { it: 'la Siccità', en: 'the Drought' } },
       ],
       devilFruit: [
         {
-          episode: 751,
+          episode: 757,
           value: {
             it: 'Frutto Zou Zou, modello Mammut',
             en: 'Elephant-Elephant Fruit, Ancient Model: Mammoth',
           },
         },
       ],
-      bounty: [{ episode: 751, value: 1_000_000_000 }],
+      bounty: [{ episode: 757, value: 1_000_000_000 }],
     },
     wanda: {
       role: MUSKETEER_ROLE,
@@ -634,15 +634,15 @@ export const wholeCake: Saga = {
     pedro: {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
       log: {
-        it: 'Parla poco, si muove di notte e i mink lo ascoltano anche quando dice cose che nessuno ha voglia di sentire. Anni fa ha preso il mare come pirata e ne è tornato con una cicatrice che gli taglia un occhio e con pochissime parole in più. Adesso difende il ducato con i candelotti alla cintura e la convinzione che certe cose valgano più della propria pelle.',
-        en: 'He says little, moves at night, and the minks listen to him even when he tells them what nobody wants to hear. Years ago he went to sea as a pirate and came back with a scar across one eye and very few more words than before. Now he guards the dukedom with dynamite on his belt and a settled belief that some things are worth more than his own skin.',
+        it: 'Parla poco, si muove di notte e i mink lo ascoltano anche quando dice cose che nessuno ha voglia di sentire. Porta una cicatrice che gli taglia un occhio e non racconta a nessuno come se l’è fatta. Difende il ducato con i candelotti alla cintura e la convinzione che certe cose valgano più della propria pelle.',
+        en: 'He says little, moves at night, and the minks listen to him even when he tells them what nobody wants to hear. He carries a scar across one eye and tells nobody how he got it. He guards the dukedom with dynamite on his belt and a settled belief that some things are worth more than his own skin.',
       },
       affiliation: [
         {
           episode: 757,
           value: {
-            it: 'Ducato di Mokomo, capitano dei Guardiani; un tempo Pirati Nox',
-            en: 'Mokomo Dukedom, Guardians captain; once Nox Pirates',
+            it: 'Ducato di Mokomo, capitano dei Guardiani',
+            en: 'Mokomo Dukedom, Guardians captain',
           },
         },
       ],
@@ -1153,8 +1153,8 @@ export const wholeCake: Saga = {
     streusen: {
       role: { it: 'Capocuoco di Totto Land', en: 'Head chef of Totto Land' },
       log: {
-        it: 'Cucina per Big Mom da moltissimo tempo, e da allora porta la stessa divisa bianca e lo stesso coltello. Tutto quello che tocca diventa cibo: una roccia diventa pane, una parete diventa torta, e l’isola intera è nata proprio così. Parla poco ai figli della sua padrona e li chiama ancora con i nomi che avevano da piccoli.',
-        en: 'He has cooked for Big Mom for a very long time, and has worn the same whites and carried the same knife throughout. Everything he touches turns into food: a rock becomes bread, a wall becomes cake, and the island itself was made exactly that way. He says little to his mistress’s children and still calls them by the names they had as infants.',
+        it: 'Cucina per Big Mom da moltissimo tempo, e da allora porta la stessa divisa bianca e lo stesso coltello. Tutto quello che tocca diventa cibo: una roccia diventa pane, una parete diventa torta, e in cucina non gli serve altro. Parla poco ai figli della sua padrona e li chiama ancora con i nomi che avevano da piccoli.',
+        en: 'He has cooked for Big Mom for a very long time, and has worn the same whites and carried the same knife throughout. Everything he touches turns into food: a rock becomes bread, a wall becomes cake, and the kitchen needs nothing else. He says little to his mistress’s children and still calls them by the names they had as infants.',
       },
       affiliation: [
         {

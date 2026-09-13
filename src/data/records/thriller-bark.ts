@@ -99,7 +99,7 @@ export const thrillerBark: Saga = {
     {
       id: 'victoria-cindry',
       kind: 'character',
-      revealedAtEpisode: 340,
+      revealedAtEpisode: 342,
       revealedAtChapter: 452,
       name: { it: 'Victoria Cindry', en: 'Victoria Cindry' },
       summary: {
@@ -316,7 +316,7 @@ export const thrillerBark: Saga = {
       },
       affiliation: [
         {
-          episode: 340,
+          episode: 342,
           value: {
             it: 'Thriller Bark, cameriera zombie; un tempo attrice di teatro',
             en: 'Thriller Bark, zombie maid; once a stage actress',
