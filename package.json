@@ -17,6 +17,7 @@
     "gate:react-doctor": "node scripts/react-doctor-gate.mjs",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
+    "prepare": "lefthook install",
     "start": "vite preview",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -90,10 +91,5 @@
   "engines": {
     "node": ">=24.18.0",
     "npm": ">=11.16.0"
-  },
-  "reactDoctor": {
-    "supplyChain": {
-      "enabled": false
-    }
   }
 }

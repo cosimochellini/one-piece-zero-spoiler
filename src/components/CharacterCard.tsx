@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -98,11 +98,9 @@ export function Marked({
 }: {
   readonly span: null | readonly [number, number]
   readonly text: string
-}): ReactElement {
-  // A fragment rather than the bare string: the two branches have to be the
-  // same kind of thing, and a fragment around one text node adds no element.
+}): ReactNode {
   if (span === null) {
-    return <>{value}</>
+    return value
   }
 
   const [from, to] = span

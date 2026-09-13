@@ -115,10 +115,13 @@ function Shelf({
   readonly section: BookSection
 }): null | ReactElement {
   const characters = orderByMode(section.characters, modeOf(bookmark))
-  const shown = characters
-    .filter((entry) => isRevealed(entry, bookmark))
-    .map((entry) => matchOf(entry))
-    .filter((match): match is Match => match !== undefined)
+  const shown = characters.flatMap((entry) => {
+    if (!isRevealed(entry, bookmark)) {
+      return []
+    }
+    const match = matchOf(entry)
+    return match === undefined ? [] : [match]
+  })
   const covered = characters.filter((entry) => !isRevealed(entry, bookmark))
 
   if (searching && shown.length === 0 && covered.length === 0) {

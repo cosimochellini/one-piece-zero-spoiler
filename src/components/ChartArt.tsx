@@ -28,29 +28,33 @@ import { color, rule } from '~/styles/tokens.stylex'
  * drawing can be set inside another composition: the crest on a character
  * page nests it in a seal.
  */
-export function ArtStrokes({ art, tint: hue }: ArtProps): ReactElement[] {
+export function ArtStrokes({ art, tint: hue }: ArtProps): ReactElement {
   // Widened on purpose: each saga's drawings are typed as literally as they
   // are written, and the renderer only needs to know they are strokes.
   const strokes: readonly Stroke[] = DRAWINGS[art]
 
   // Keyed by the path itself: a drawing is a fixed list that is never
   // reordered, and no stroke in it is ever drawn twice.
-  return strokes.map((stroke) => {
-    return (
-      <path
-        key={stroke.d}
-        d={stroke.d}
-        transform={stroke.transform}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          stroke.role === 'ambient' && styles.ambient,
-          stroke.role === 'accent' && styles.accent(tintOf(hue)),
-          stroke.dashed === true && styles.dashed,
-        )}
-      />
-    )
-  })
+  return (
+    <>
+      {strokes.map((stroke) => {
+        return (
+          <path
+            key={stroke.d}
+            d={stroke.d}
+            transform={stroke.transform}
+            vectorEffect="non-scaling-stroke"
+            {...stylex.props(
+              styles.line,
+              stroke.role === 'ambient' && styles.ambient,
+              stroke.role === 'accent' && styles.accent(tintOf(hue)),
+              stroke.dashed === true && styles.dashed,
+            )}
+          />
+        )
+      })}
+    </>
+  )
 }
 
 /**

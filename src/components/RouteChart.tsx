@@ -1,6 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { styles } from '~/components/RouteChart.styles'
@@ -174,7 +174,7 @@ function WaypointName({
 }: {
   readonly entry: Entity
   readonly open: boolean
-}): ReactElement {
+}): ReactNode {
   const { locale } = useLocale()
   const name = entry.name[locale]
 
@@ -202,7 +202,7 @@ function WaypointName({
     )
   }
 
-  return <>{name}</>
+  return name
 }
 
 /**

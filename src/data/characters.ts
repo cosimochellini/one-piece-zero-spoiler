@@ -175,16 +175,12 @@ function shelfOf(character: Entity): Entity | undefined {
 }
 
 /** The signal book shelved by arc, in route order, empty shelves left out. */
-export const bookSections: readonly BookSection[] = arcs
-  .map((arc) => {
-    return {
-      arc,
-      characters: characters.filter(
-        (character) => shelfOf(character)?.id === arc.id,
-      ),
-    }
-  })
-  .filter((section) => section.characters.length > 0)
+export const bookSections: readonly BookSection[] = arcs.flatMap((arc) => {
+  const shelved = characters.filter(
+    (character) => shelfOf(character)?.id === arc.id,
+  )
+  return shelved.length === 0 ? [] : [{ arc, characters: shelved }]
+})
 
 /**
  * Where a record sits on the chart, and what lies either side of it.
@@ -226,15 +222,14 @@ export function routePositionOf(
  */
 export function nearbyCharacters(entity: Entity, count: number): Entity[] {
   return featuredCharacters
-    .filter((candidate) => candidate.id !== entity.id)
-    .map((candidate, order) => {
-      return {
-        candidate,
-        order,
-        distance: Math.abs(
-          candidate.revealedAtEpisode - entity.revealedAtEpisode,
-        ),
+    .flatMap((candidate, order) => {
+      if (candidate.id === entity.id) {
+        return []
       }
+      const distance = Math.abs(
+        candidate.revealedAtEpisode - entity.revealedAtEpisode,
+      )
+      return [{ candidate, distance, order }]
     })
     .toSorted((a, b) => {
       const byDistance = a.distance - b.distance

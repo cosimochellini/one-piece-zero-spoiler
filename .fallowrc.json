@@ -4,7 +4,9 @@
     "src/routes/**/*.ts",
     "src/routes/**/*.tsx",
     "src/router.tsx",
-    "scripts/*.mjs"
+    "scripts/*.mjs",
+    "doctor.config.ts",
+    "commitlint.config.mjs"
   ],
   "ignorePatterns": [
     "src/routeTree.gen.ts",
@@ -14,6 +16,118 @@
     ".tanstack/**",
     ".gate/**"
   ],
-  "ignoreDependencies": ["react-doctor", "@tanstack/react-start"],
-  "rules": { "boundary-violation": "off", "policy-violation": "off" }
+  "ignoreDependencies": ["@tanstack/react-start"],
+  "typeAware": {
+    "enabled": true,
+    "projects": ["tsconfig.json"],
+    "require": "best-effort"
+  },
+  "rules": {
+    "private-type-leaks": "error",
+    "unused-dev-dependencies": "error",
+    "unused-optional-dependencies": "error",
+    "unused-store-members": "error",
+    "unprovided-injects": "error",
+    "unrendered-components": "error",
+    "unused-component-props": "error",
+    "unused-component-emits": "error",
+    "unused-component-inputs": "error",
+    "unused-component-outputs": "error",
+    "unused-svelte-events": "error",
+    "unused-server-actions": "error",
+    "unused-load-data-keys": "error",
+    "prop-drilling": "error",
+    "thin-wrapper": "error",
+    "duplicate-prop-shape": "error",
+    "css-token-drift": "error",
+    "css-duplicate-block": "error",
+    "css-selector-complexity": "error",
+    "css-dead-surface": "error",
+    "css-broken-reference": "error",
+    "type-only-dependencies": "error",
+    "test-only-dependencies": "error",
+    "dev-dependencies-in-production": "error",
+    "re-export-cycle": "error",
+    "boundary-violation": "error",
+    "coverage-gaps": "warn",
+    "feature-flags": "off",
+    "stale-suppressions": "error",
+    "require-suppression-reason": "error",
+    "unused-catalog-entries": "error",
+    "empty-catalog-groups": "error",
+    "unused-dependency-overrides": "error",
+    "security-client-server-leak": "error",
+    "security-sink": "error",
+    "policy-violation": "off",
+    "invalid-client-export": "error",
+    "mixed-client-server-barrel": "error",
+    "misplaced-directive": "error",
+    "route-collision": "error",
+    "dynamic-segment-name-conflict": "error"
+  },
+  "unusedComponentProps": { "ignorePattern": "^_" },
+  "boundaries": {
+    "zones": [
+      {
+        "name": "tests",
+        "patterns": ["src/test/**", "src/**/*.test.ts", "src/**/*.test.tsx"]
+      },
+      { "name": "routes", "patterns": ["src/routes/**", "src/router.tsx"] },
+      { "name": "ui", "patterns": ["src/components/ui/**"] },
+      { "name": "components", "patterns": ["src/components/**"] },
+      { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
+      { "name": "data", "patterns": ["src/data/**"] },
+      { "name": "i18n", "patterns": ["src/i18n/**"] },
+      { "name": "styles", "patterns": ["src/styles/**"] }
+    ],
+    "rules": [
+      {
+        "from": "routes",
+        "allow": ["components", "ui", "lib", "data", "i18n", "styles"]
+      },
+      {
+        "from": "components",
+        "allow": ["ui", "lib", "data", "i18n", "styles"]
+      },
+      { "from": "ui", "allow": ["styles"] },
+      { "from": "lib", "allow": ["data", "i18n", "styles"] },
+      { "from": "data", "allow": ["lib", "i18n", "styles"] },
+      { "from": "i18n", "allow": ["lib", "data", "styles"] },
+      { "from": "styles", "allow": [] }
+    ],
+    "coverage": {
+      "requireAllFiles": true,
+      "allowUnmatched": [
+        "src/vite-env.d.ts",
+        "vite.config.ts",
+        "vitest.config.ts",
+        "eslint.config.js",
+        "doctor.config.ts",
+        "commitlint.config.mjs",
+        "scripts/**"
+      ]
+    }
+  },
+  "duplicates": {
+    "mode": "mild",
+    "threshold": 1,
+    "minLines": 8,
+    "ignore": ["src/styles/global.css"]
+  },
+  "health": {
+    "maxCyclomatic": 8,
+    "maxCognitive": 8,
+    "maxUnitSize": 60,
+    "thresholdOverrides": [
+      {
+        "files": [
+          "src/**/*.test.ts",
+          "src/**/*.test.tsx",
+          "scripts/**/*.test.mjs"
+        ],
+        "maxUnitSize": 200,
+        "reason": "A describe() block is one unit; a test suite is long by design."
+      }
+    ]
+  }
 }

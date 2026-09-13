@@ -32,14 +32,10 @@ export function matchesFor({
   readonly open: readonly Entity[]
   readonly query: string
 }): Map<string, Match> {
-  const graded = open.map((entry) => {
-    const match = matchName({ bookmark, entity: entry, locale, query })
-    return { entry, match }
-  })
-
   return new Map<string, Match>(
-    graded
-      .filter(({ match }) => match.matches)
-      .map((match) => [match.entry.id, match]),
+    open.flatMap((entry) => {
+      const match = matchName({ bookmark, entity: entry, locale, query })
+      return match.matches ? [[entry.id, { entry, match }]] : []
+    }),
   )
 }

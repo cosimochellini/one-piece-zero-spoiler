@@ -9,12 +9,13 @@
  *
  * Exit codes:
  *   0  clean
- *   1  error-severity findings
+ *   1  findings, of any severity
  *   2  the tool failed: crash, timeout, unreadable report, or an analysis
  *      that skipped checks
  *
  * `--no-telemetry` is an alias for `--no-score`, so the report carries no
- * health score. Gating is by severity, never by score.
+ * health score. Gating is by the presence of findings, never by score, and
+ * doctor.config.ts stamps every rule that applies to this stack at error.
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
@@ -72,6 +73,13 @@ function runDoctor() {
       reportPath,
       '--no-telemetry',
       '--no-supply-chain',
+      // Audit mode: an inline eslint- or react-doctor-disable comment must not
+      // be able to walk a finding past the gate. doctor.config.ts says the same
+      // thing; the flag keeps the gate honest if that file drifts.
+      '--no-respect-inline-disables',
+      // A cache keyed on an older doctor.config.ts would replay a stale
+      // verdict. CI runners are fresh anyway, so this only costs a local rerun.
+      '--no-cache',
       '--blocking',
       'none',
       '--scope',
@@ -176,16 +184,14 @@ function assertAnalysisComplete(report) {
 }
 
 /**
- * Anything whose severity cannot be read is counted as an error, never as
- * harmless: a report that changed shape must fail the gate rather than let an
- * unrecognised finding through as a warning.
- * @param {Record<string, unknown>} diagnostic - One entry of the report's
- *   `diagnostics` array, already known to be an object but not otherwise
- *   validated.
- * @returns {boolean} Whether this finding is severe enough to fail the gate.
+ * Every finding blocks, whatever severity it carries. Nothing react-doctor
+ * reports here is advisory: doctor.config.ts stamps each applicable rule at
+ * error, and a rule that should not fire at all is turned off there rather than
+ * demoted to a warning nobody reads.
+ * @returns {boolean} Always true.
  */
-function isBlocking(diagnostic) {
-  return diagnostic.severity !== 'warning'
+function isBlocking() {
+  return true
 }
 
 function format(diagnostic) {
@@ -236,7 +242,7 @@ function main() {
 
   const report = readTrustedReport()
   const diagnostics = readDiagnostics(report)
-  const blocking = diagnostics.filter((diagnostic) => isBlocking(diagnostic))
+  const blocking = diagnostics.filter(() => isBlocking())
 
   process.stdout.write(
     `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `

@@ -9,11 +9,7 @@ import {
 
 import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
-import {
-  type Match,
-  matchesFor,
-  type MatchOf,
-} from '~/components/characterMatches'
+import { matchesFor, type MatchOf } from '~/components/characterMatches'
 import { CharacterShelves } from '~/components/CharacterShelves'
 import { Button } from '~/components/ui/Button'
 import type { BookSection } from '~/data/characters'
@@ -131,10 +127,7 @@ function SearchBox({
   const t = useT()
 
   return (
-    <div
-      role="search"
-      {...stylex.props(styles.search)}
-    >
+    <search {...stylex.props(styles.search)}>
       <label
         htmlFor={fieldId}
         {...stylex.props(styles.label)}
@@ -167,7 +160,7 @@ function SearchBox({
       >
         {status}
       </p>
-    </div>
+    </search>
   )
 }
 
@@ -226,10 +219,13 @@ function FeaturedCrests({
   const t = useT()
   const ordered = orderByMode(featured, mode)
   const covered = ordered.filter((entry) => !isRevealed(entry, bookmark))
-  const matches = ordered
-    .filter((entry) => isRevealed(entry, bookmark))
-    .map((entry) => matchOf(entry))
-    .filter((match): match is Match => match !== undefined)
+  const matches = ordered.flatMap((entry) => {
+    if (!isRevealed(entry, bookmark)) {
+      return []
+    }
+    const match = matchOf(entry)
+    return match === undefined ? [] : [match]
+  })
 
   return (
     <section

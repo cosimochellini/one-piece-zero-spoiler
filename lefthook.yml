@@ -1,42 +1,43 @@
-# EXAMPLE USAGE:
+# Local guards in front of `npm run check`, which is what CI runs and what
+# decides. These only shorten the loop.
 #
-#   Refer for explanation to following link:
-#   https://lefthook.dev/configuration/
-#
-# pre-push:
-#   jobs:
-#     - name: packages audit
-#       tags:
-#         - frontend
-#         - security
-#       run: yarn audit
-#
-#     - name: gems audit
-#       tags:
-#         - backend
-#         - security
-#       run: bundle audit
-#
-# pre-commit:
-#   parallel: true
-#   jobs:
-#     - run: yarn eslint {staged_files}
-#       glob: "*.{js,ts,jsx,tsx}"
-#
-#     - name: rubocop
-#       glob: "*.rb"
-#       exclude:
-#         - config/application.rb
-#         - config/routes.rb
-#       run: bundle exec rubocop --force-exclusion -- {all_files}
-#
-#     - name: govet
-#       files: git ls-files -m
-#       glob: "*.go"
-#       run: go vet -- {files}
-#
-#     - script: "hello.js"
-#       runner: node
-#
-#     - script: "hello.go"
-#       runner: go run
+# The hooks install themselves on `npm install` through the `prepare` script.
+# To reinstall by hand: `npx lefthook install`. To skip them for one command:
+# `LEFTHOOK=0 git commit`. CI sets LEFTHOOK=0 for the whole workflow.
+min_version: 2.1.12
+
+pre-commit:
+  parallel: true
+  # A merge or a rebase replays commits that were already checked once, and a
+  # conflict resolution is not the moment to argue about formatting.
+  skip:
+    - merge
+    - rebase
+  jobs:
+    - name: prettier
+      glob: '*.{ts,tsx,js,mjs,cjs,json,jsonc,yml,yaml,md,css,html}'
+      run: npx prettier --write --ignore-unknown {staged_files}
+      stage_fixed: true
+
+    - name: eslint
+      glob: '*.{ts,tsx,js,mjs,cjs}'
+      # --no-warn-ignored: an explicitly passed ignored file, such as
+      # src/routeTree.gen.ts, would otherwise count as a warning and fail
+      # --max-warnings=0.
+      run: npx eslint --max-warnings=0 --no-warn-ignored {staged_files}
+
+    - name: typecheck
+      # The whole project, not the staged files: a changed type breaks files
+      # that are not staged. Runs only when TypeScript is part of the commit.
+      glob: '*.{ts,tsx}'
+      run: npx tsc --noEmit
+
+commit-msg:
+  jobs:
+    - name: commitlint
+      run: npx commitlint --edit {1}
+
+pre-push:
+  jobs:
+    - name: test
+      run: npx vitest run

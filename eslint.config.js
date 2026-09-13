@@ -411,6 +411,18 @@ export default defineConfig(
     },
   },
 
+  {
+    files: TSX,
+    rules: {
+      // Off for JSX only. A component that renders either a link or bare text
+      // returns `ReactNode`, which is one type; the rule sees the JavaScript
+      // union underneath it and asks for a fragment around the text, which is
+      // the DOM-free wrapper react-doctor's jsx-no-useless-fragment then
+      // reports. Between the two, `ReactNode` is the honest signature.
+      'sonarjs/function-return-type': 'off',
+    },
+  },
+
   // -------------------------------------------------------------------------
   // Imports: cycles, boundaries, resolution. Ordering belongs to perfectionist.
   // -------------------------------------------------------------------------

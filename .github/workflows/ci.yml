@@ -30,6 +30,10 @@ env:
   NPM_CONFIG_FUND: 'false'
   NPM_CONFIG_AUDIT: 'false'
   COREPACK_ENABLE_DOWNLOAD_PROMPT: '0'
+  # No git hooks in CI. lefthook's own installer already skips when CI is set;
+  # this also stops the release job's `chore(release)` commit, whose body is the
+  # generated notes, from being judged by commitlint.
+  LEFTHOOK: '0'
 
 jobs:
   # The pull request title is the only input to the version bump: GitHub
