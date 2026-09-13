@@ -16,7 +16,7 @@ import {
   nearbyCharacters,
   routePositionOf,
 } from './characters'
-import { entities } from './entities'
+import { entities, sagas } from './entities'
 import type { Entity, LocalizedText, Timeline } from './types'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
@@ -55,6 +55,17 @@ describe('the dossiers', () => {
         expect(dossier?.log[locale].length, character.id).toBeGreaterThan(0)
       }
     }
+  })
+
+  it('never files the same dossier in two sagas', () => {
+    // The sagas are merged with Object.fromEntries, which would keep the
+    // last dossier and drop the other without a word; the count is the tell.
+    const total = sagas.reduce(
+      (sum, saga) => sum + Object.keys(saga.dossiers).length,
+      0,
+    )
+
+    expect(Object.keys(CHARACTER_DOSSIERS)).toHaveLength(total)
   })
 
   it('has no dossier for a record that is not a character', () => {

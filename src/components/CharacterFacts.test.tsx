@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react'
 
 import type { CharacterDossier } from '~/data/types'
+import type { Bookmark } from '~/lib/progress/episode'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { CharacterFacts } from './CharacterFacts'
@@ -63,6 +64,32 @@ describe('CharacterFacts', () => {
     expect(screen.getByText('Taglia')).toBeInTheDocument()
     expect(screen.getByText('100.000.000 Berry')).toBeInTheDocument()
     expect(screen.getByText('Cappello di Paglia')).toBeInTheDocument()
+  })
+
+  it('resolves a season bookmark to its episode before reading the facts', () => {
+    // S04E38 is episode 130.
+    const season: Bookmark = { mode: 'season', season: 4, episode: 38 }
+    renderWithProviders(
+      <CharacterFacts dossier={dossier} bookmark={season} />,
+      {
+        bookmark: season,
+      },
+    )
+
+    expect(screen.getByText('100,000,000 Berry')).toBeInTheDocument()
+    expect(screen.getByText('Straw Hat')).toBeInTheDocument()
+  })
+
+  it('shows the note and no fact to a reader who counts in chapters', () => {
+    const chapter: Bookmark = { mode: 'chapter', chapter: 1000 }
+    renderWithProviders(
+      <CharacterFacts dossier={dossier} bookmark={chapter} />,
+      { bookmark: chapter },
+    )
+
+    expect(screen.getByText(/count in anime episodes/u)).toBeInTheDocument()
+    expect(screen.queryByText(/Berry/u)).not.toBeInTheDocument()
+    expect(screen.queryByText('Affiliation')).not.toBeInTheDocument()
   })
 
   it('renders nothing at all when the reader has reached no fact', () => {

@@ -10,7 +10,11 @@ import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import { modeOf, type Bookmark } from '~/lib/progress/episode'
+import {
+  modeOf,
+  type Bookmark,
+  type BookmarkMode,
+} from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import {
   color,
@@ -211,7 +215,7 @@ export function CharacterGrid({
           <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
         </div>
 
-        {sections.map((section) => (
+        {shelvesInOrder(sections, mode).map((section) => (
           <Shelf
             key={section.arc.id}
             section={section}
@@ -224,6 +228,26 @@ export function CharacterGrid({
       </section>
     </div>
   )
+}
+
+/**
+ * The shelves in the order the reader's unit reaches their arcs. The
+ * sections come shelved by episode; a reader who counts in chapters gets
+ * the same shelves sorted by chapter, so the open ones stay a prefix.
+ */
+function shelvesInOrder(
+  sections: readonly BookSection[],
+  mode: BookmarkMode,
+): readonly BookSection[] {
+  const byArc = new Map(sections.map((section) => [section.arc.id, section]))
+
+  return orderByMode(
+    sections.map((section) => section.arc),
+    mode,
+  ).flatMap((arc) => {
+    const section = byArc.get(arc.id)
+    return section === undefined ? [] : [section]
+  })
 }
 
 /**

@@ -106,6 +106,27 @@ describe('CharacterGrid', () => {
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
+  it('orders the shelves by the unit the reader counts in', () => {
+    // A chapter bookmark: the East Blue shelf (chapter 1) still comes before
+    // the Alabasta one (chapter 92 in this fixture), and both are on the page.
+    const chapter = { mode: 'chapter', chapter: 200 } as const
+    renderWithProviders(
+      <CharacterGrid
+        featured={entries}
+        sections={sections}
+        bookmark={chapter}
+      />,
+      { bookmark: chapter },
+    )
+
+    const headings = screen
+      .getAllByRole('heading', { level: 3 })
+      .map((heading) => heading.textContent)
+    expect(headings.indexOf('East Blue Saga')).toBeLessThan(
+      headings.indexOf('Alabasta Saga'),
+    )
+  })
+
   it('shelves the tiles by arc and veils the heading of a covered shelf', () => {
     book(10)
 
