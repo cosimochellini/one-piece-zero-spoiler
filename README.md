@@ -159,7 +159,7 @@ set.
 | Router    | TanStack Router 1.170.35                            |
 | Styling   | StyleX 0.19.0, compiled to one same-origin sheet    |
 | Build     | Vite 8.3.0                                          |
-| Language  | TypeScript 6.0.3, `strict` plus four extra flags    |
+| Language  | TypeScript 6.0.3, `strict` plus three extra flags   |
 | Tests     | Vitest 5.0.0, jsdom, Testing Library                |
 | Lint      | ESLint 10 flat config, typescript-eslint type-aware |
 | Gates     | react-doctor 0.9.13, fallow 3.24.1                  |
