@@ -1,7 +1,17 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import { ArtStrokes } from '~/components/ChartArt'
 import { ART_VIEWBOX, tintOf } from '~/components/drawing'
+import {
+  PLATE_ART_BOX,
+  PLATE_CORNERS,
+  PLATE_FRAME,
+  PLATE_GRATICULE,
+  PLATE_INNER,
+  PLATE_NORTH,
+  PLATE_VIEWBOX,
+} from '~/data/art/plate'
 import type { Visual } from '~/data/types'
 import { color, rule } from '~/styles/tokens.stylex'
 
@@ -15,7 +25,8 @@ import { color, rule } from '~/styles/tokens.stylex'
  * corner brackets and a north mark in the colour — and only the drawing in
  * the middle and the one colour change. Nothing here is a flag or an
  * official mark: the plate is the site's own, built from the drawing the
- * route already shows.
+ * route already shows. The frame's own geometry is data in
+ * `~/data/art/plate`, as every drawing on the site is.
  *
  * The same 2px non-scaling stroke as every other drawing, so a plate on a
  * card and a plate filling a column are drawn with the same pen.
@@ -24,54 +35,53 @@ import { color, rule } from '~/styles/tokens.stylex'
  * nothing in the middle. That is what stands in for a fogged place, so the
  * served HTML carries neither its drawing nor its colour.
  */
-export function PortPlate({ visual }: { readonly visual?: Visual }) {
+export function PortPlate({
+  visual,
+}: {
+  readonly visual?: Visual
+}): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 200 200"
+      viewBox={PLATE_VIEWBOX}
       {...stylex.props(styles.svg)}
     >
       <path
-        d={FRAME}
+        d={PLATE_FRAME}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
       />
       <path
-        d={INNER}
+        d={PLATE_INNER}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.ambient, styles.dashed)}
       />
       <path
-        d={GRATICULE}
+        d={PLATE_GRATICULE}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line)}
       />
       <path
-        d={CORNERS}
+        d={PLATE_CORNERS}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
       />
       {hue === null ? null : (
         <path
-          d={NORTH}
+          d={PLATE_NORTH}
           vectorEffect="non-scaling-stroke"
           {...stylex.props(styles.line, styles.tinted(hue))}
         />
       )}
-      {/*
-        The drawing's 4:5 box, set inside the dashed rule with a margin on
-        every side: 112 by 140 in a 156-square, so the waves at the foot of a
-        drawing stop short of the frame.
-      */}
       {visual === undefined ? null : (
         <svg
-          height="140"
+          height={PLATE_ART_BOX.height}
           viewBox={ART_VIEWBOX}
-          width="112"
-          x="44"
-          y="30"
+          width={PLATE_ART_BOX.width}
+          x={PLATE_ART_BOX.x}
+          y={PLATE_ART_BOX.y}
         >
           <ArtStrokes
             art={visual.art}
@@ -82,37 +92,6 @@ export function PortPlate({ visual }: { readonly visual?: Visual }) {
     </svg>
   )
 }
-
-const OUTER = 12
-const INSET = 22
-const FAR = 200 - OUTER
-
-const FRAME = `M${String(OUTER)} ${String(OUTER)} H${String(FAR)} V${String(FAR)} H${String(OUTER)} Z`
-const INNER = `M${String(INSET)} ${String(INSET)} H${String(200 - INSET)} V${String(200 - INSET)} H${String(INSET)} Z`
-
-/**
- * A tick every 16 units along the inside of each edge, the way a chart's
- * margin is divided into minutes of arc. One path for all four sides.
- */
-function graticule(): string {
-  const stops = Array.from({ length: 10 }, (_, index) => 28 + index * 16)
-  return stops
-    .map(
-      (at) =>
-        `M${String(at)} ${String(OUTER)} v4 M${String(at)} ${String(FAR)} v-4 M${String(OUTER)} ${String(at)} h4 M${String(FAR)} ${String(at)} h-4`,
-    )
-    .join(' ')
-}
-
-const GRATICULE = graticule()
-
-// Four L-shaped brackets just outside the frame, the register marks of a
-// printed chart.
-const CORNERS =
-  'M4 20 V4 H20 M180 4 H196 V20 M196 180 V196 H180 M20 196 H4 V180'
-
-// A small north arrow inside the top-right corner of the frame.
-const NORTH = 'M170 40 V24 M166 29 L170 24 L174 29'
 
 const styles = stylex.create({
   svg: { display: 'block', height: '100%', width: '100%' },

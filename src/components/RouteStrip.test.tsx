@@ -18,12 +18,24 @@ const entries: readonly Entity[] = [1, 50, 400, 1000].map((episode, index) => {
   }
 })
 
+/**
+ * Reads one fixture record. The lookup is narrowed here rather than in a test,
+ * where a shortened fixture would read as a failed assertion instead of as the
+ * fixture problem it is.
+ */
+function entryAt(index: number): Entity {
+  const entry = entries[index]
+  if (entry === undefined) {
+    throw new Error(`no fixture entry ${String(index)}`)
+  }
+
+  return entry
+}
+
 describe('RouteStrip', () => {
   it('is one labelled image, not a list of dots', () => {
-    const current = entries[2]
-    if (current === undefined) {
-      throw new Error('fixture')
-    }
+    const current = entryAt(2)
+
     renderWithProviders(
       <RouteStrip
         bookmark={ep(500)}
@@ -40,10 +52,7 @@ describe('RouteStrip', () => {
   })
 
   it('rings a covered record in the ambient ink, not its own colour', () => {
-    const current = entries[3]
-    if (current === undefined) {
-      throw new Error('fixture')
-    }
+    const current = entryAt(3)
     const { container, unmount } = renderWithProviders(
       <RouteStrip
         bookmark={ep(500)}
@@ -72,10 +81,8 @@ describe('RouteStrip', () => {
   })
 
   it('draws no open stretch when nothing is open', () => {
-    const current = entries[0]
-    if (current === undefined) {
-      throw new Error('fixture')
-    }
+    const current = entryAt(0)
+
     renderWithProviders(
       <RouteStrip
         bookmark={null}

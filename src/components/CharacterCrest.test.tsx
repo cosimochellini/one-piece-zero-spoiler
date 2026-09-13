@@ -5,6 +5,14 @@ import { characters } from '~/data/characters'
 
 import { CharacterCrest } from './CharacterCrest'
 
+/**
+ * How many subpaths a tick path is made of, which is how the two tick rings
+ * are told apart: one `M` command per tick.
+ */
+function segments(path: Element | undefined): number {
+  return (path?.getAttribute('d')?.match(/M/gu) ?? []).length
+}
+
 describe('CharacterCrest', () => {
   it('sets every character’s drawing inside the same seal', () => {
     for (const character of characters) {
@@ -31,8 +39,6 @@ describe('CharacterCrest', () => {
       <CharacterCrest visual={{ art: 'nami', tint: 'orange' }} />,
     )
     const paths = container.querySelectorAll(':scope svg > path')
-    const segments = (path: Element | undefined) =>
-      (path?.getAttribute('d')?.match(/M/gu) ?? []).length
     const minor = paths[2]
     const cardinal = paths[3]
 

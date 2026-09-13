@@ -8,6 +8,10 @@
  */
 export type Role = 'accent' | 'ambient' | 'soft'
 
+/**
+ * `transform` is for a stroke that repeats around a centre — the four blades
+ * of a windmill are one path rotated — so the shape is written once.
+ */
 export type Stroke = {
   readonly d: string
   readonly dashed?: boolean

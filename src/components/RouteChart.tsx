@@ -1,8 +1,20 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
+import { styles } from '~/components/RouteChart.styles'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
+import {
+  type Bow,
+  COMPASS_RING,
+  COMPASS_STAR,
+  COMPASS_VIEWBOX,
+  HORIZON_ABOVE,
+  HORIZON_BELOW,
+  SEGMENT,
+  SEGMENT_VIEWBOX,
+} from '~/data/art/route-chart'
 import type { Entity, EntityKind, Visual } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
@@ -10,17 +22,10 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
+
+// The bow flips from one waypoint to the next, so the route wanders like a
+// course rather than running like a ruler.
+const BOW_PERIOD = 2
 
 const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   character: 'kind.character',
@@ -29,6 +34,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   ship: 'kind.ship',
 }
 
+/** The two facts the chart is drawn from, and nothing else. */
 export type RouteChartProps = {
   /** The archive, sorted by the threshold the bookmark counts in. */
   readonly bookmark: Bookmark
@@ -55,7 +61,10 @@ export type RouteChartProps = {
  * the horizon be a single element between two runs rather than a marker that
  * has to be interpolated along the route.
  */
-export function RouteChart({ entries, bookmark }: RouteChartProps) {
+export function RouteChart({
+  entries,
+  bookmark,
+}: RouteChartProps): ReactElement {
   const open = entries.filter((entry) => isRevealed(entry, bookmark))
   const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
 
@@ -101,10 +110,10 @@ type WaypointProps = {
   readonly open: boolean
 }
 
-function Waypoint({ entry, index, open }: WaypointProps) {
+function Waypoint({ entry, index, open }: WaypointProps): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
-  const bow = index % 2 === 0 ? 'left' : 'right'
+  const bow: Bow = index % BOW_PERIOD === 0 ? 'left' : 'right'
 
   return (
     <li {...stylex.props(styles.row)}>
@@ -140,29 +149,10 @@ function Waypoint({ entry, index, open }: WaypointProps) {
             <Picture visual={entry.visual} />
             <div {...stylex.props(styles.words)}>
               <h3 {...stylex.props(styles.name)}>
-                {/*
-                  Only an open character or place is a link: a covered
-                  card's href would spell out, in the page source, the name
-                  a blur hides.
-                */}
-                {entry.kind === 'character' && open ?
-                  <Link
-                    params={{ locale, id: entry.id }}
-                    to="/$locale/characters/$id"
-                    {...stylex.props(styles.nameLink)}
-                  >
-                    {entry.name[locale]}
-                  </Link>
-                : entry.kind === 'place' && open ?
-                  <Link
-                    hash={entry.id}
-                    params={{ locale }}
-                    to="/$locale/places"
-                    {...stylex.props(styles.nameLink)}
-                  >
-                    {entry.name[locale]}
-                  </Link>
-                : entry.name[locale]}
+                <WaypointName
+                  entry={entry}
+                  open={open}
+                />
               </h3>
               <p {...stylex.props(styles.summary)}>{entry.summary[locale]}</p>
             </div>
@@ -174,11 +164,53 @@ function Waypoint({ entry, index, open }: WaypointProps) {
 }
 
 /**
+ * The name, and the way to the record's own page when there is one. Only an
+ * open character or place is a link: a covered card's href would spell out,
+ * in the page source, the name a blur hides.
+ */
+function WaypointName({
+  entry,
+  open,
+}: {
+  readonly entry: Entity
+  readonly open: boolean
+}): ReactElement {
+  const { locale } = useLocale()
+  const name = entry.name[locale]
+
+  if (open && entry.kind === 'character') {
+    return (
+      <Link
+        params={{ locale, id: entry.id }}
+        to="/$locale/characters/$id"
+        {...stylex.props(styles.nameLink)}
+      >
+        {name}
+      </Link>
+    )
+  }
+  if (open && entry.kind === 'place') {
+    return (
+      <Link
+        hash={entry.id}
+        params={{ locale }}
+        to="/$locale/places"
+        {...stylex.props(styles.nameLink)}
+      >
+        {name}
+      </Link>
+    )
+  }
+
+  return <>{name}</>
+}
+
+/**
  * The waypoint's drawing in a 4:5 frame, on the card surface, behind a
  * hairline. Every frame has the same proportions, so the route reads as one
  * set of plates rather than a scrapbook.
  */
-function Picture({ visual }: { readonly visual: Visual }) {
+function Picture({ visual }: { readonly visual: Visual }): ReactElement {
   return (
     <div {...stylex.props(styles.frame)}>
       <ChartArt
@@ -196,29 +228,27 @@ function Picture({ visual }: { readonly visual: Visual }) {
  * one side in between; alternating the bow row by row is what makes the route
  * wander like a course rather than run like a ruler.
  *
- * `preserveAspectRatio="none"` stretches the 64x100 box to the cell, and
- * `non-scaling-stroke` keeps the line 2px and the dashes even under that
- * stretch. The waypoint mark is a separate element for the same reason: a
- * circle inside this box would be squashed into an ellipse.
+ * `preserveAspectRatio="none"` stretches the cell of `~/data/art/route-chart`
+ * to the row, and `non-scaling-stroke` keeps the line 2px and the dashes even
+ * under that stretch. The waypoint mark is a separate element for the same
+ * reason: a circle inside this box would be squashed into an ellipse.
  */
 function Segment({
   bow,
   open,
 }: {
-  readonly bow: 'left' | 'right'
+  readonly bow: Bow
   readonly open: boolean
-}) {
-  const x = bow === 'left' ? 14 : 50
-
+}): ReactElement {
   return (
     <svg
       aria-hidden="true"
       preserveAspectRatio="none"
-      viewBox="0 0 64 100"
+      viewBox={SEGMENT_VIEWBOX}
       {...stylex.props(styles.segment)}
     >
       <path
-        d={`M32 0 C32 25 ${String(x)} 25 ${String(x)} 50 C${String(x)} 75 32 75 32 100`}
+        d={SEGMENT[bow]}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(
           styles.stroke,
@@ -234,7 +264,7 @@ function Segment({
  * With no bookmark the horizon sits at the very top, everything is under fog,
  * and the label says so rather than pretending the reader is at episode 0.
  */
-function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
+function Horizon({ bookmark }: { readonly bookmark: Bookmark }): ReactElement {
   const { t } = useLocale()
   const set = bookmark !== null
 
@@ -247,11 +277,11 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
         <svg
           aria-hidden="true"
           preserveAspectRatio="none"
-          viewBox="0 0 64 100"
+          viewBox={SEGMENT_VIEWBOX}
           {...stylex.props(styles.segment)}
         >
           <path
-            d="M32 0 V50"
+            d={HORIZON_ABOVE}
             vectorEffect="non-scaling-stroke"
             {...stylex.props(
               styles.stroke,
@@ -259,7 +289,7 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
             )}
           />
           <path
-            d="M32 50 V100"
+            d={HORIZON_BELOW}
             vectorEffect="non-scaling-stroke"
             {...stylex.props(styles.stroke, styles.strokeCovered)}
           />
@@ -291,24 +321,24 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
 }
 
 /** A compass rose, hand-drawn: a ring and a four-point star in one colour. */
-function Compass({ set }: { readonly set: boolean }) {
+function Compass({ set }: { readonly set: boolean }): ReactElement {
   return (
     <svg
       aria-hidden="true"
-      viewBox="0 0 32 32"
+      viewBox={COMPASS_VIEWBOX}
       {...stylex.props(
         styles.compass,
         set ? styles.compassSet : styles.compassUnset,
       )}
     >
       <circle
-        cx="16"
-        cy="16"
-        r="13"
+        cx={COMPASS_RING.cx}
+        cy={COMPASS_RING.cy}
+        r={COMPASS_RING.r}
         {...stylex.props(styles.compassRing)}
       />
       <path
-        d="M16 4 L18.4 13.6 L28 16 L18.4 18.4 L16 28 L13.6 18.4 L4 16 L13.6 13.6 Z"
+        d={COMPASS_STAR}
         {...stylex.props(styles.compassStar)}
       />
     </svg>
@@ -317,213 +347,3 @@ function Compass({ set }: { readonly set: boolean }) {
 
 // The horizon surfaces where it has just moved to: a short fade, `opacity`
 // only, so it composites. Guarded rather than overridden under reduced motion.
-const surface = stylex.keyframes({ from: { opacity: 0 }, to: { opacity: 1 } })
-
-const styles = stylex.create({
-  route: { display: 'grid', listStyleType: 'none', paddingInlineStart: 0 },
-
-  // The rail is a fixed width so consecutive segments line up; the body
-  // takes the rest and may shrink to zero, which is what lets a long
-  // unbroken name wrap instead of pushing the page sideways. On a phone the
-  // rail is 2.5rem: the compass is 2rem, and every rem the rail keeps is a
-  // rem the words lose on a 320px screen.
-  row: {
-    columnGap: { 'default': space.sm, '@media (min-width: 40rem)': space.md },
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': '2.5rem minmax(0, 1fr)',
-      '@media (min-width: 40rem)': '4rem minmax(0, 1fr)',
-    },
-  },
-  rail: { position: 'relative' },
-  segment: {
-    inset: 0,
-    overflow: 'visible',
-    display: 'block',
-    position: 'absolute',
-    height: '100%',
-    width: '100%',
-  },
-  stroke: {
-    fill: 'none',
-    strokeLinecap: 'round',
-    strokeWidth: rule.fine,
-    transitionDuration: dur.short,
-    transitionProperty: 'stroke',
-    transitionTimingFunction: ease.out,
-  },
-  strokeOpen: { stroke: color.accent },
-  strokeCovered: { stroke: color.rule2, strokeDasharray: '3 8' },
-
-  node: {
-    borderRadius: radius.pill,
-    borderStyle: 'solid',
-    borderWidth: rule.fine,
-    insetBlockStart: '50%',
-    position: 'absolute',
-    transform: 'translate(-50%, -50%)',
-    transitionDuration: dur.short,
-    transitionProperty: 'background-color, border-color',
-    transitionTimingFunction: ease.out,
-    height: '0.875rem',
-    width: '0.875rem',
-  },
-  // 14/64 and 50/64: where the two bows of the segment path sit.
-  nodeLeft: { insetInlineStart: '21.875%' },
-  nodeRight: { insetInlineStart: '78.125%' },
-  nodeOpen: { borderColor: color.accent, backgroundColor: color.accent },
-  nodeCovered: { borderColor: color.rule2, backgroundColor: color.paper },
-
-  body: { gap: space.xs, paddingBlock: space.lg, display: 'grid', minWidth: 0 },
-  meta: {
-    alignItems: 'baseline',
-    color: color.muted,
-    columnGap: space.sm,
-    display: 'flex',
-    flexWrap: 'wrap',
-    fontSize: text.xs,
-    letterSpacing: '0.08em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  // The one outlier slot on the waypoint: the number is set in mono so every
-  // threshold on the route lines up.
-  episode: {
-    color: color.ink2,
-    fontFamily: font.mono,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 600,
-    whiteSpace: 'nowrap',
-  },
-  kind: { fontFamily: font.body, fontWeight: 600 },
-  // Picture above words on a phone, beside them from 40rem. A 320px row
-  // has about 230px left after the rail; a 7rem picture beside that left
-  // the words 80px and split names mid-word. From 60rem the picture is the
-  // larger half of the card, because the pictures are the point.
-  card: {
-    columnGap: { 'default': 0, '@media (min-width: 40rem)': space.lg },
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': '11rem minmax(0, 1fr)',
-      '@media (min-width: 60rem)': '14rem minmax(0, 1fr)',
-    },
-    rowGap: { 'default': space.sm, '@media (min-width: 40rem)': 0 },
-  },
-  words: {
-    gap: space.xs2,
-    // Packed to the top: with the default `stretch` the two rows share the
-    // picture's height and the summary floats halfway down the card.
-    alignContent: 'start',
-    display: 'grid',
-    minWidth: 0,
-  },
-  frame: {
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    // Clips the blur of a fogged drawing to its own frame, so the fog stays
-    // on the card and does not smear into the words beside it.
-    overflow: 'hidden',
-    aspectRatio: '4 / 5',
-    backgroundColor: color.paper2,
-    // Stacked on a phone the picture keeps the size it has beside the
-    // words on a tablet, not the full row: a route of 35 full-width
-    // drawings is a feed, not a chart.
-    maxWidth: { 'default': '9rem', '@media (min-width: 40rem)': 'none' },
-  },
-  name: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: { 'default': text.lg, '@media (min-width: 40rem)': text.xl },
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  // A character's name is the way to its page. Same ink as the name at
-  // rest, the accent rule on hover, so the route does not turn into a column
-  // of blue links.
-  nameLink: {
-    color: {
-      'default': 'inherit',
-      ':hover': color.accent,
-      ':active': color.ink2,
-    },
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationColor: { 'default': 'transparent', ':hover': color.accent },
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.fine,
-    textUnderlineOffset: '4px',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color, text-decoration-color',
-    transitionTimingFunction: ease.out,
-  },
-  summary: {
-    color: color.ink2,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    overflowWrap: 'anywhere',
-    maxWidth: '52ch',
-    // At 320px the words column is under 100px wide, and one long word
-    // ("vice-president,") would otherwise widen the column past the page.
-    minWidth: 0,
-  },
-
-  // No `align-items: center` here: the rail cell has to stretch to the row's
-  // full height or the segment behind the compass has nothing to draw on.
-  horizon: {
-    animationDuration: dur.short,
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': surface,
-    },
-    animationTimingFunction: ease.out,
-  },
-  compass: {
-    insetBlockStart: '50%',
-    insetInlineStart: '50%',
-    position: 'absolute',
-    transform: 'translate(-50%, -50%)',
-    height: '2rem',
-    width: '2rem',
-  },
-  compassSet: { color: color.accent },
-  compassUnset: { color: color.rule2 },
-  compassRing: {
-    fill: color.paper,
-    stroke: 'currentColor',
-    strokeWidth: rule.fine,
-  },
-  compassStar: { fill: 'currentColor' },
-  horizonBody: {
-    gap: space.sm,
-    paddingBlock: space.md,
-    alignItems: 'center',
-    display: 'flex',
-    minWidth: 0,
-  },
-  horizonLabel: {
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-    minWidth: 0,
-  },
-  horizonSet: { color: color.accent },
-  horizonUnset: { color: color.muted },
-  // The line runs from the label to the edge of the chart. It is the one
-  // element that reads as a rule and is drawn in the accent, because it is
-  // the reader's own position and not a divider.
-  horizonLine: { flexGrow: 1, height: rule.fine, minWidth: '1.5rem' },
-  horizonLineSet: { backgroundColor: color.accent },
-  horizonLineUnset: { backgroundColor: color.rule2 },
-})
