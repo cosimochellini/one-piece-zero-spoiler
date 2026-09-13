@@ -11,10 +11,9 @@ import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { settleStyles } from '~/styles/settle'
 import {
   color,
-  dur,
-  ease,
   font,
   leading,
   radius,
@@ -23,46 +22,9 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-// The page's one load orchestration: the four bands settle in DOM order, the
-// last of them 210ms in, well under the half-second cap. Only `opacity` and
-// `transform` move, so it composites.
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
-})
-
-// One band after another, far enough apart to read as an order and close
-// enough that the last of the four is in by 210ms.
-const SETTLE_STEP_MS = 70
-
-/** How long the nth band waits before it settles. */
-function settleDelay(index: number): string {
-  return `${String(index * SETTLE_STEP_MS)}ms`
-}
-
 // The bands in DOM order. Named rather than counted at the call, so a band
 // inserted in the middle is one edit here and not four along the page.
 const BAND = { fold: 0, orientation: 1, route: 2, faq: 3 } as const
-
-const enter = stylex.create({
-  band: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    // Guarded rather than overridden: with reduced motion requested the
-    // sections are simply present, and nothing depends on an animation having
-    // run.
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: settleDelay(index) }),
-})
 
 export const Route = createFileRoute('/$locale/')({ component: Landing })
 
@@ -88,6 +50,30 @@ const FAQ = [
  * Below the chart, three questions answered plainly. They are the rules of the
  * site, written as a conversation rather than as a row of cards.
  */
+/**
+ * The fold: the night sea with the headline set into its lower-left corner.
+ * The drawing is cropped rather than squashed, so the caravel stays where a
+ * phone's crop of the box still shows it.
+ */
+function Fold(): ReactElement {
+  const t = useT()
+
+  return (
+    <section
+      {...stylex.props(
+        styles.fold,
+        settleStyles.band,
+        settleStyles.at(BAND.fold),
+      )}
+    >
+      <div {...stylex.props(styles.foldFigure)}>
+        <SeaChartHero />
+      </div>
+      <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
+    </section>
+  )
+}
+
 function Landing(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
@@ -105,19 +91,14 @@ function Landing(): ReactElement {
       id="content"
       {...stylex.props(styles.page)}
     >
-      <section {...stylex.props(styles.fold, enter.band, enter.at(BAND.fold))}>
-        <div {...stylex.props(styles.foldFigure)}>
-          <SeaChartHero />
-        </div>
-        <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
-      </section>
+      <Fold />
 
       <div {...stylex.props(styles.chart)}>
         <section
           {...stylex.props(
             styles.orientation,
-            enter.band,
-            enter.at(BAND.orientation),
+            settleStyles.band,
+            settleStyles.at(BAND.orientation),
           )}
         >
           <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
@@ -130,7 +111,11 @@ function Landing(): ReactElement {
 
         <section
           aria-labelledby="route-title"
-          {...stylex.props(styles.routeBand, enter.band, enter.at(BAND.route))}
+          {...stylex.props(
+            styles.routeBand,
+            settleStyles.band,
+            settleStyles.at(BAND.route),
+          )}
         >
           <h2
             id="route-title"
@@ -160,7 +145,13 @@ function Questions(): ReactElement {
   const t = useT()
 
   return (
-    <section {...stylex.props(styles.faq, enter.band, enter.at(BAND.faq))}>
+    <section
+      {...stylex.props(
+        styles.faq,
+        settleStyles.band,
+        settleStyles.at(BAND.faq),
+      )}
+    >
       {FAQ.map(({ q, a }) => {
         return (
           <div

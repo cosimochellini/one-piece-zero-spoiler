@@ -3,6 +3,7 @@ import type { ReactElement } from 'react'
 
 import { ArtStrokes } from '~/components/ChartArt'
 import { ART_VIEWBOX, tintOf } from '~/components/drawing'
+import { emblemStyles } from '~/components/emblem.styles'
 import {
   PLATE_ART_BOX,
   PLATE_CORNERS,
@@ -13,7 +14,55 @@ import {
   PLATE_VIEWBOX,
 } from '~/data/art/plate'
 import type { Visual } from '~/data/types'
-import { color, rule } from '~/styles/tokens.stylex'
+
+/**
+ * The plate itself: the border, the dashed inner rule, the graticule, the
+ * corner ticks and the north mark. The port's own hue tints the border, the
+ * corners and the mark; everything else is the second ink.
+ */
+function Frame({ hue }: { readonly hue: null | string }): ReactElement {
+  return (
+    <>
+      <path
+        d={PLATE_FRAME}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          emblemStyles.line,
+          hue !== null && emblemStyles.tinted(hue),
+        )}
+      />
+      <path
+        d={PLATE_INNER}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          emblemStyles.line,
+          emblemStyles.ambient,
+          emblemStyles.dashed,
+        )}
+      />
+      <path
+        d={PLATE_GRATICULE}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(emblemStyles.line)}
+      />
+      <path
+        d={PLATE_CORNERS}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          emblemStyles.line,
+          hue !== null && emblemStyles.tinted(hue),
+        )}
+      />
+      {hue === null ? null : (
+        <path
+          d={PLATE_NORTH}
+          vectorEffect="non-scaling-stroke"
+          {...stylex.props(emblemStyles.line, emblemStyles.tinted(hue))}
+        />
+      )}
+    </>
+  )
+}
 
 /**
  * A place's plate: the drawing that stands for it, set inside a chart frame.
@@ -46,35 +95,9 @@ export function PortPlate({
     <svg
       aria-hidden="true"
       viewBox={PLATE_VIEWBOX}
-      {...stylex.props(styles.svg)}
+      {...stylex.props(emblemStyles.svg)}
     >
-      <path
-        d={PLATE_FRAME}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
-      />
-      <path
-        d={PLATE_INNER}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.ambient, styles.dashed)}
-      />
-      <path
-        d={PLATE_GRATICULE}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line)}
-      />
-      <path
-        d={PLATE_CORNERS}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, hue !== null && styles.tinted(hue))}
-      />
-      {hue === null ? null : (
-        <path
-          d={PLATE_NORTH}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line, styles.tinted(hue))}
-        />
-      )}
+      <Frame hue={hue} />
       {visual === undefined ? null : (
         <svg
           height={PLATE_ART_BOX.height}
@@ -92,17 +115,3 @@ export function PortPlate({
     </svg>
   )
 }
-
-const styles = stylex.create({
-  svg: { display: 'block', height: '100%', width: '100%' },
-  line: {
-    fill: 'none',
-    stroke: color.ink2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    strokeWidth: rule.fine,
-  },
-  ambient: { stroke: color.rule2 },
-  tinted: (hue: string) => ({ stroke: hue }),
-  dashed: { strokeDasharray: '3 6' },
-})

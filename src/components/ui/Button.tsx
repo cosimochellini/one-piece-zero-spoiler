@@ -12,7 +12,12 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-type NativeButtonProps = Omit<
+/**
+ * Everything the DOM button takes, less the two escape hatches. Exported
+ * because ButtonProps is built on it, and a public signature that names a
+ * private type cannot be read by anyone who imports it.
+ */
+export type NativeButtonProps = Omit<
   ComponentPropsWithoutRef<'button'>,
   'className' | 'style'
 >

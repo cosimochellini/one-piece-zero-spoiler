@@ -7,6 +7,7 @@ import {
   useState,
 } from 'react'
 
+import { CatalogueSection } from '~/components/CatalogueSection'
 import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
 import { matchesFor, type MatchOf } from '~/components/characterMatches'
@@ -228,20 +229,11 @@ function FeaturedCrests({
   })
 
   return (
-    <section
-      aria-labelledby={`${fieldId}-featured`}
-      {...stylex.props(styles.part)}
+    <CatalogueSection
+      headingId={`${fieldId}-featured`}
+      lede={t('characters.featuredLede')}
+      title={t('characters.featuredTitle')}
     >
-      <div {...stylex.props(styles.partHead)}>
-        <h2
-          id={`${fieldId}-featured`}
-          {...stylex.props(styles.partTitle)}
-        >
-          {t('characters.featuredTitle')}
-        </h2>
-        <p {...stylex.props(styles.partLede)}>{t('characters.featuredLede')}</p>
-      </div>
-
       {matches.length === 0 ? null : (
         <CharacterCardList>
           {matches.map(({ entry, match }) => {
@@ -261,7 +253,7 @@ function FeaturedCrests({
         covered={covered}
         headingId={`${fieldId}-fog`}
       />
-    </section>
+    </CatalogueSection>
   )
 }
 

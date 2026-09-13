@@ -1,15 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement, ReactNode } from 'react'
 
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
+import { settleStyles } from '~/styles/settle'
+import { color, font, leading, space, text } from '~/styles/tokens.stylex'
 
 /**
  * The heading and the count are already translated strings rather than
@@ -42,28 +35,18 @@ export function ArchivePage({
       id="content"
       {...stylex.props(styles.page)}
     >
-      <header {...stylex.props(styles.head, styles.enter, styles.at(0))}>
+      <header
+        {...stylex.props(styles.head, settleStyles.band, settleStyles.at(0))}
+      >
         <h1 {...stylex.props(styles.title)}>{title}</h1>
         <p {...stylex.props(styles.count)}>{count}</p>
       </header>
 
-      <div {...stylex.props(styles.enter, styles.at(1))}>{children}</div>
+      <div {...stylex.props(settleStyles.band, settleStyles.at(1))}>
+        {children}
+      </div>
     </main>
   )
-}
-
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
-})
-
-// One band after another, far enough apart to read as an order and close
-// enough that the whole page has settled well inside the half-second cap.
-const SETTLE_STEP_MS = 70
-
-/** How long the nth band waits before it settles. */
-function settleDelay(index: number): string {
-  return `${String(index * SETTLE_STEP_MS)}ms`
 }
 
 const styles = stylex.create({
@@ -94,18 +77,4 @@ const styles = stylex.create({
     lineHeight: leading.body,
     maxWidth: '58ch',
   },
-  enter: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: settleDelay(index) }),
 })

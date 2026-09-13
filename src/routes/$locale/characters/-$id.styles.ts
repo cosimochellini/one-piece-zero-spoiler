@@ -22,20 +22,6 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
-})
-
-// One band after another, far enough apart to read as an order and close
-// enough that the last of the three is in by 140ms.
-const SETTLE_STEP_MS = 70
-
-/** How long the nth band waits before it settles. */
-function settleDelay(index: number): string {
-  return `${String(index * SETTLE_STEP_MS)}ms`
-}
-
 // The floor every grid column here takes. Written once because `1fr` on its
 // own has `min-content` for a floor, and one `white-space: nowrap` child is
 // then enough to push a column, and the page with it, wider than a phone.
@@ -234,19 +220,4 @@ export const styles = stylex.create({
     paddingBlockStart: space.xl,
   },
   nearbyHead: { gap: space.xs, display: 'grid' },
-
-  enter: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: settleDelay(index) }),
 })

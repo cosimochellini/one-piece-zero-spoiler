@@ -1,6 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
+import { CatalogueSection } from '~/components/CatalogueSection'
 import { styles } from '~/components/CharacterGrid.styles'
 import type { Match, MatchOf } from '~/components/characterMatches'
 import { CharacterTile } from '~/components/CharacterTile'
@@ -46,20 +47,11 @@ export function CharacterShelves({
   const t = useT()
 
   return (
-    <section
-      aria-labelledby={`${fieldId}-book`}
-      {...stylex.props(styles.part)}
+    <CatalogueSection
+      headingId={`${fieldId}-book`}
+      lede={t('characters.bookLede')}
+      title={t('characters.bookTitle')}
     >
-      <div {...stylex.props(styles.partHead)}>
-        <h2
-          id={`${fieldId}-book`}
-          {...stylex.props(styles.partTitle)}
-        >
-          {t('characters.bookTitle')}
-        </h2>
-        <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
-      </div>
-
       {shelvesInOrder(sections, modeOf(bookmark)).map((section) => {
         return (
           <Shelf
@@ -72,7 +64,7 @@ export function CharacterShelves({
           />
         )
       })}
-    </section>
+    </CatalogueSection>
   )
 }
 

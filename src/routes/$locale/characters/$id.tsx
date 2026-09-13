@@ -29,6 +29,7 @@ import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
 import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
+import { settleStyles } from '~/styles/settle'
 
 import { describeDocument } from './-$id.head'
 import { Neighbour } from './-$id.neighbour'
@@ -118,7 +119,13 @@ function CharacterPage(): null | ReactElement {
       id="content"
       {...stylex.props(styles.page)}
     >
-      <p {...stylex.props(styles.back, styles.enter, styles.at(BAND.dossier))}>
+      <p
+        {...stylex.props(
+          styles.back,
+          settleStyles.band,
+          settleStyles.at(BAND.dossier),
+        )}
+      >
         <BackLink />
       </p>
 
@@ -142,7 +149,11 @@ type SectionProps = { readonly entity: Entity }
 function DossierDiptych({ entity }: SectionProps): ReactElement {
   return (
     <section
-      {...stylex.props(styles.diptych, styles.enter, styles.at(BAND.dossier))}
+      {...stylex.props(
+        styles.diptych,
+        settleStyles.band,
+        settleStyles.at(BAND.dossier),
+      )}
     >
       <CrestPlate entity={entity} />
       <DossierColumn entity={entity} />
@@ -266,8 +277,8 @@ function RouteDiptych({ entity }: SectionProps): ReactElement {
       {...stylex.props(
         styles.diptych,
         styles.reversed,
-        styles.enter,
-        styles.at(BAND.route),
+        settleStyles.band,
+        settleStyles.at(BAND.route),
       )}
     >
       <div {...stylex.props(styles.dossier)}>
@@ -320,7 +331,11 @@ function NearbyRow({ entity }: SectionProps): ReactElement {
   return (
     <section
       aria-labelledby="nearby"
-      {...stylex.props(styles.nearby, styles.enter, styles.at(BAND.nearby))}
+      {...stylex.props(
+        styles.nearby,
+        settleStyles.band,
+        settleStyles.at(BAND.nearby),
+      )}
     >
       <div {...stylex.props(styles.nearbyHead)}>
         <h2
