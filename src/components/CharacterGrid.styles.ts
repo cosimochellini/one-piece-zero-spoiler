@@ -138,6 +138,11 @@ export const styles = stylex.create({
   // A shelf: a hairline above, the arc's name and its two facts, then the
   // tiles four across on a wide page and one across on a phone. Long shelves
   // far down the page are skipped by the renderer until they scroll near.
+  shelvesPending: {
+    color: color.muted,
+    fontSize: text.base,
+    lineHeight: leading.body,
+  },
   shelf: {
     containIntrinsicSize: 'auto 24rem',
     gap: space.md,

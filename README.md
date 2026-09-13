@@ -120,9 +120,9 @@ browser at all rather than there and declined.
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
 | Line drawings       | 356, one per record                                                   |
-| Test files          | 33                                                                    |
-| Test cases          | 288                                                                   |
-| Coverage            | 95.7 % statements, 94.2 % branches, 95.0 % functions (last local run) |
+| Test files          | 40                                                                    |
+| Test cases          | 337                                                                   |
+| Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
 
 ## Every line drawn here
 
@@ -234,7 +234,7 @@ its own.
 ### Performance
 
 - **The archive is not in the bundle.** Moving it behind the loaders took the
-  client JavaScript from 1,048,559 bytes to 449,410 — and 318 KB of what is left
+  client JavaScript from 1,048,559 bytes to 450,058 — and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
   not all 356.
 - Payloads carry one locale. A record used to ship its Italian and English name
@@ -314,11 +314,14 @@ third is `scripts/archive-gate.mjs`, and it exists because nothing else can see
 the failure it looks for: one stray value import from `~/data` typechecks,
 lints, passes every test and passes both other gates, and the only symptom is a
 bigger `.js` file that a visitor with no bookmark can read end to end. It greps
-the built client chunks for prose read out of the archive at gate time — a late
-saga's summary, a port's log entry, never a key such as `revealedAtEpisode`,
-which legitimately survives on a covered record — and holds the whole client
-payload under a byte ceiling, because the canaries only catch what they happen
-to name. ESLint catches the same mistake one step earlier, at the import.
+the built client chunks for a sentence out of every saga and out of the ship's
+log, read at gate time so it cannot go stale, and never a key such as
+`revealedAtEpisode`, which legitimately survives on a covered record. The
+drawing modules carry no sentences — they are keyed by record id, and a record's
+id is its name slug — so those are looked for by id instead, which is the shape
+a leak there would take. A byte ceiling on the whole client payload catches bulk
+arriving through a shape neither pattern matches. ESLint catches the same
+mistake one step earlier, at the import.
 
 fallow watches the shape of the codebase instead, with nearly every rule it has
 raised to error: eight zones with a declared import direction between them, no
@@ -369,8 +372,8 @@ that a model wrote code — it is that the guardrails were built first, so its
 output could be accepted or rejected mechanically rather than on trust.
 
 Nothing reaches `main` that has not passed a type-aware lint of a thousand-odd
-rules at zero warnings, 288 tests including the editorial invariants above, a
-production build, and two blocking quality gates. Pull requests go through
+rules at zero warnings, 337 tests including the editorial invariants above, a
+production build, and three blocking quality gates. Pull requests go through
 review loops run by subagents, and every finding is either fixed in scope or
 filed as an issue. Even the release metadata is checked by a test rather than by
 memory.

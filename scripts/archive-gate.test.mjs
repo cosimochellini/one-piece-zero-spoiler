@@ -6,11 +6,16 @@
 // `describe` / `it` / `expect` are imported rather than taken from
 // `test.globals`: this file is linted as plain JavaScript, where ESLint's
 // `no-undef` has no TypeScript program to learn the Vitest globals from.
-import { readFileSync } from 'node:fs'
+import { readdirSync, readFileSync } from 'node:fs'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
-import { canaryFrom, judge, MAX_CLIENT_BYTES } from './archive-gate.mjs'
+import {
+  canaryFrom,
+  judge,
+  MAX_CLIENT_BYTES,
+  slugsFrom,
+} from './archive-gate.mjs'
 
 const repoRoot = path.resolve(import.meta.dirname, '..')
 
@@ -56,6 +61,67 @@ describe('the canary the archive gate looks for', () => {
 
   it('is nothing when a module has no prose to offer', () => {
     expect(canaryFrom("export const x = { en: 'short' }")).toBeNull()
+  })
+})
+
+describe('the slugs the gate looks for', () => {
+  it('takes the hyphenated ids a drawing module is keyed by', () => {
+    const source = [
+      'export const eastBlueArt = {',
+      "  'monkey-d-luffy': [{ d: 'M0 0' }],",
+      "  nami: [{ d: 'M0 0' }],",
+      "  'roronoa-zoro': [{ d: 'M0 0' }],",
+      '}',
+    ].join('\n')
+
+    // `nami` is a word. A gate that failed on a word is a gate nobody trusts.
+    expect(slugsFrom(source)).toStrictEqual(['monkey-d-luffy', 'roronoa-zoro'])
+  })
+
+  it('is nothing for a module keyed by no record', () => {
+    expect(slugsFrom('export type Stroke = { d: string }')).toStrictEqual([])
+  })
+
+  it('names every drawing module the archive holds', () => {
+    // The drawing modules carry no prose at all, so the prose canaries can
+    // never cover them — and their keys are the record ids, which are the
+    // name slugs. One uncovered module would ship names as identifiers.
+    const artDir = path.join(repoRoot, 'src/data/art')
+    const modules = readdirSync(artDir).filter(
+      (name) => name.endsWith('.ts') && !name.endsWith('.test.ts'),
+    )
+    const keyed = modules.filter((name) => {
+      const source = readFileSync(path.join(artDir, name), 'utf8')
+
+      return slugsFrom(source).length > 0
+    })
+
+    // Every module but the table itself and its type is keyed by records.
+    expect(keyed).toHaveLength(modules.length - 2)
+    expect(keyed.length).toBeGreaterThan(10)
+  })
+})
+
+describe('the prose the gate looks for', () => {
+  it('names every saga the archive holds, and the log', () => {
+    const recordsDir = path.join(repoRoot, 'src/data/records')
+    const sagas = readdirSync(recordsDir).filter((name) => {
+      return (
+        name.endsWith('.ts') && !name.endsWith('.test.ts') && name !== 'saga.ts'
+      )
+    })
+
+    expect(sagas.length).toBeGreaterThan(10)
+    for (const name of sagas) {
+      const phrase = canaryFrom(
+        readFileSync(path.join(recordsDir, name), 'utf8'),
+      )
+
+      expect(phrase, name).not.toBeNull()
+    }
+    const log = readFileSync(path.join(repoRoot, 'src/data/places.ts'), 'utf8')
+
+    expect(canaryFrom(log)).not.toBeNull()
   })
 })
 

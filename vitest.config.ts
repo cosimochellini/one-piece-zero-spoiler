@@ -74,6 +74,13 @@ export default defineConfig({
         'src/router.tsx',
         'src/routes/**',
         'src/test/**',
+        // The Start instance and the server-function wrappers. Vitest runs
+        // without the Start plugin on purpose (see the note at the top), so
+        // `createServerFn` is unplugged and calling one throws out of
+        // `getStartContext()` rather than running. The decisions those
+        // wrappers wrap live in `src/server/archive/*` and are covered there.
+        'src/start.ts',
+        'src/server/*.ts',
         // A defineVars module is a compile-time artifact: StyleX inlines the
         // values at build time, so there is no runtime behaviour to cover.
         'src/**/*.stylex.ts',

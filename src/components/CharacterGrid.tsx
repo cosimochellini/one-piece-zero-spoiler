@@ -87,7 +87,15 @@ export function CharacterGrid({
           // until the shelves have landed. Its own boundary, so the field
           // beside it never suspends: an input that unmounts mid-word loses
           // the word and the focus with it.
-          <Suspense fallback={<p {...stylex.props(styles.status)} />}>
+          <Suspense
+            fallback={
+              <p
+                aria-busy="true"
+                aria-live="polite"
+                {...stylex.props(styles.status)}
+              />
+            }
+          >
             <SearchStatus
               needle={needle}
               query={trimmed}

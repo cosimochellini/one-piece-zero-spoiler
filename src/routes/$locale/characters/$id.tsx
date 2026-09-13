@@ -6,7 +6,7 @@
  *   position | strip · nearby crests as one row
  * · idea: "a page from the signal book, opened flat" */
 import * as stylex from '@stylexjs/stylex'
-import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import { createFileRoute, Link } from '@tanstack/react-router'
 import { useServerFn } from '@tanstack/react-start'
 import { type ReactElement, Suspense, use, useCallback } from 'react'
 
@@ -26,6 +26,7 @@ import {
 import { settleStyles } from '~/styles/settle'
 
 import { DossierDiptych } from './-$id.dossier'
+import { orNotFound } from './-$id.found'
 import { describeDocument } from './-$id.head'
 import { RouteDiptych, RoutePending } from './-$id.route'
 import { styles } from './-$id.styles'
@@ -42,15 +43,11 @@ export const Route = createFileRoute('/$locale/characters/$id')({
     const page = await loadCharacter({
       data: { id: params.id, locale: context.locale },
     })
-    // `notFound` is a router signal, so it is thrown here and not inside the
-    // server function: a signal thrown across an RPC boundary is an error.
-    if (page === null) {
-      throw notFound()
-    }
+    const found = orNotFound(page)
 
     return {
-      detail: page.detail,
-      head: page.head,
+      detail: found.detail,
+      head: found.head,
       // Below the dossier, so they stream: the strip is sixty-six marks and
       // the nearby row is five drawings, and neither is what the reader came
       // for.
@@ -197,13 +194,27 @@ function NearbyRow({
         </h2>
         <p {...stylex.props(styles.lede)}>{t('character.nearbyLede')}</p>
       </div>
-      <Suspense fallback={null}>
+      <Suspense fallback={<NearbyPending />}>
         <NearbyCrests
           nearby={nearby}
           peek={peek}
         />
       </Suspense>
     </section>
+  )
+}
+
+/** What the nearby row says while its crests are still on their way. */
+function NearbyPending(): ReactElement {
+  const { t } = useLocale()
+
+  return (
+    <p
+      aria-busy="true"
+      {...stylex.props(styles.lede)}
+    >
+      {t('character.nearbyLoading')}
+    </p>
   )
 }
 

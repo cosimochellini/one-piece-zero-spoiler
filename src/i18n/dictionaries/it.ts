@@ -114,6 +114,7 @@ export const itDictionary: Dictionary = {
   'characters.featuredLede':
     'I personaggi che la carta disegna: la ciurma, e le persone attorno a cui gira la storia.',
   'characters.bookTitle': 'Tutto il libro',
+  'characters.loading': 'Gli scaffali stanno arrivando…',
   'characters.bookLede':
     'Tutti quelli che l’archivio ha registrato, ordinati per l’arco che li introduce.',
   'characters.sectionOpensAt.episode': 'Dall’episodio {threshold}',
@@ -156,6 +157,7 @@ export const itDictionary: Dictionary = {
   'character.routeStart': 'Niente. La rotta comincia qui.',
   'character.routeEnd': 'Ancora niente. Questa è l’ultima voce archiviata.',
   'character.nearbyTitle': 'Navigano vicino',
+  'character.nearbyLoading': 'Leggo la rotta…',
   'character.nearbyLede':
     'I personaggi in elenco archiviati più vicino a questo sulla rotta.',
   'character.notFoundTitle': 'Nessun personaggio così',

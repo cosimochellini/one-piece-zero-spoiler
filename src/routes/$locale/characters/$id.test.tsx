@@ -1,8 +1,10 @@
+import { isNotFound } from '@tanstack/react-router'
 import { describe, expect, it } from 'vitest'
 
 import type { CharacterHead } from '~/lib/view/records'
 
 import { Route } from './$id'
+import { orNotFound } from './-$id.found'
 
 type Meta = {
   readonly content?: string
@@ -68,5 +70,27 @@ describe('character route head', () => {
 
   it('says nothing at all before the loader has run', () => {
     expect(metaFor(undefined)).toBe('[]')
+  })
+})
+
+describe('an id the archive does not file as a character', () => {
+  it('becomes the router’s not-found signal', () => {
+    // The server function answers `null` rather than throwing: a router
+    // signal thrown across an RPC boundary is only an error. The turning is
+    // the route's job, so it is the route that is held to it.
+    let thrown: unknown = null
+    try {
+      orNotFound(null)
+    } catch (error: unknown) {
+      thrown = error
+    }
+
+    expect(isNotFound(thrown)).toBe(true)
+  })
+
+  it('leaves a page that was found alone', () => {
+    const page = { head: { description: 'A scholar.', title: 'Nico Robin' } }
+
+    expect(orNotFound(page)).toBe(page)
   })
 })

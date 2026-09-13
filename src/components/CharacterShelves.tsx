@@ -135,8 +135,14 @@ function useShelves(source: ShelvesSource): readonly ShelfView[] {
  * the renderer skips what is far down the page.
  */
 function ShelvesPending({ count }: { readonly count: number }): ReactElement {
+  const t = useT()
+
   return (
-    <>
+    // Busy rather than hidden: the boxes themselves are decoration, but a
+    // reader who cannot see them still needs to be told the shelves are on
+    // their way rather than absent.
+    <div aria-busy="true">
+      <p {...stylex.props(styles.shelvesPending)}>{t('characters.loading')}</p>
       {Array.from({ length: count }, (_, index) => {
         return (
           <div
@@ -146,7 +152,7 @@ function ShelvesPending({ count }: { readonly count: number }): ReactElement {
           />
         )
       })}
-    </>
+    </div>
   )
 }
 

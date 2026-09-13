@@ -7,16 +7,20 @@
  * both other gates, and the only symptom is a bigger `.js` file that a
  * visitor with no bookmark can read end to end.
  *
- * Two checks over the built client chunks, in the order they are worth
- * having:
+ * Three checks over the built client chunks:
  *
- *   1. Canaries. Prose read out of the archive at gate time — a late saga's
- *      summary, a place's log entry — and looked for in the chunks. Read from
- *      source rather than hard-coded so they can never go stale. Never a key
- *      such as `revealedAtEpisode`, which legitimately survives on a covered
- *      record.
- *   2. A byte budget. The canaries only catch what they happen to name; the
- *      budget catches a whole module coming back through a path they miss.
+ *   1. Prose canaries. The longest sentence in every archive module — all
+ *      eleven sagas and the ship's log — read at gate time rather than
+ *      hard-coded, so they cannot go stale, and looked for in the chunks.
+ *      Never a key such as `revealedAtEpisode`, which legitimately survives
+ *      on a covered record.
+ *   2. Slug canaries. The drawing modules carry no prose: they are keyed by
+ *      record id, and a record's id is its name slug. A hyphenated id long
+ *      enough not to occur by accident — `monkey-d-luffy`, `edward-newgate` —
+ *      is looked for in the chunks too, because a leak there ships names as
+ *      literal identifiers rather than as sentences.
+ *   3. A byte budget. The canaries name every module now, but the budget
+ *      still catches bulk arriving through a shape neither pattern matches.
  *
  * Exit codes:
  *   0  the archive stayed on the server
@@ -46,12 +50,25 @@ const WORST_CHUNKS = 5
  */
 export const MAX_CLIENT_BYTES = 520_000
 
-/** The archive modules a canary is read out of. */
-const CANARY_SOURCES = [
-  'src/data/records/egghead.ts',
-  'src/data/records/wano.ts',
-  'src/data/places.ts',
-]
+/** Where the prose lives: every saga, and the ship's log. */
+const PROSE_DIR = 'src/data/records'
+const PROSE_EXTRA = ['src/data/places.ts']
+
+/** Where the drawings live, keyed by the id of the record each was drawn for. */
+const ART_DIR = 'src/data/art'
+
+/**
+ * An id hyphenated and long enough that a minifier could not produce it by
+ * accident. Short ones — `nami`, `koby` — are words, and a gate that failed
+ * on a word would be a gate nobody trusted.
+ */
+// One flat character class rather than a nested quantifier: `(a+)+` is how a
+// regular expression comes to take exponential time on a line that nearly
+// matches, and an archive module is a long file.
+const SLUG_PATTERN = /^ {2}'(?<slug>[a-z\d-]{12,})':/gmu
+
+/** A slug earns its place by being hyphenated: a bare word is a word. */
+const HYPHENATED = /-/u
 
 // Forty characters or more of single-quoted English, escapes allowed: long
 // enough to be a sentence of the archive rather than a label from the UI.
@@ -75,6 +92,19 @@ export function canaryFrom(source) {
   return longest === undefined || longest === '' ?
       null
     : longest.replaceAll(String.raw`\'`, "'")
+}
+
+/**
+ * The record ids a drawing module is keyed by, long enough to be unmistakable.
+ * @param {string} source The module's text.
+ * @returns {string[]} The slugs, in the order they are written.
+ */
+export function slugsFrom(source) {
+  return source
+    .matchAll(SLUG_PATTERN)
+    .map((match) => match.groups?.['slug'] ?? '')
+    .filter((slug) => HYPHENATED.test(slug))
+    .toArray()
 }
 
 /**
@@ -155,6 +185,45 @@ function report(verdict, chunks) {
 }
 
 /**
+ * One canary per archive module that carries prose: every saga, and the log.
+ * @param {string} repoRoot The repository root.
+ * @returns {{file: string, phrase: null | string}[]} What to look for.
+ */
+function proseCanaries(repoRoot) {
+  const sagas = readdirSync(path.join(repoRoot, PROSE_DIR))
+    .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
+    .map((name) => `${PROSE_DIR}/${name}`)
+
+  return [...sagas, ...PROSE_EXTRA].flatMap((file) => {
+    const phrase = canaryFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+
+    // `saga.ts` is the shape of a saga, not a saga: no prose, nothing to say.
+    if (phrase === null && file.endsWith('saga.ts')) {
+      return []
+    }
+
+    return [{ file, phrase }]
+  })
+}
+
+/**
+ * One canary per drawing module: the first id long enough to be unmistakable.
+ * @param {string} repoRoot The repository root.
+ * @returns {{file: string, phrase: null | string}[]} What to look for.
+ */
+function slugCanaries(repoRoot) {
+  return readdirSync(path.join(repoRoot, ART_DIR))
+    .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
+    .flatMap((name) => {
+      const file = `${ART_DIR}/${name}`
+      const slugs = slugsFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+
+      // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
+      return slugs.length === 0 ? [] : [{ file, phrase: slugs[0] ?? null }]
+    })
+}
+
+/**
  * The built client scripts, or nothing at all when there is no build.
  * @param {string} repoRoot The repository root.
  * @returns {{bytes: number, name: string, text: string}[]} One per script.
@@ -183,12 +252,7 @@ function main() {
     return EXIT_UNUSABLE
   }
 
-  const canaries = CANARY_SOURCES.map((file) => {
-    return {
-      file,
-      phrase: canaryFrom(readFileSync(path.join(repoRoot, file), 'utf8')),
-    }
-  })
+  const canaries = [...proseCanaries(repoRoot), ...slugCanaries(repoRoot)]
   const verdict = judge(chunks, canaries)
 
   if (verdict.unreadable.length > 0) {

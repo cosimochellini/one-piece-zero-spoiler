@@ -119,6 +119,7 @@ export const enDictionary = {
   'characters.featuredLede':
     'The characters the chart draws: the crew, and the people the story turns on.',
   'characters.bookTitle': 'The whole book',
+  'characters.loading': 'The shelves are on their way…',
   'characters.bookLede':
     'Everyone the archive has filed, shelved by the arc that introduces them.',
   'characters.sectionOpensAt.episode': 'From episode {threshold}',
@@ -159,6 +160,7 @@ export const enDictionary = {
   'character.routeStart': 'Nothing. This is where the route begins.',
   'character.routeEnd': 'Nothing yet. This is the last entry filed.',
   'character.nearbyTitle': 'Sailing nearby',
+  'character.nearbyLoading': 'Reading the route…',
   'character.nearbyLede':
     'The listed characters filed closest to this one on the route.',
   'character.notFoundTitle': 'No such character',
