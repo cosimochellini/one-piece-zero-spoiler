@@ -2,11 +2,12 @@ import { screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import { getEntity } from '~/data/entities'
+import type { Entity } from '~/data/types'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { RecordTile } from './RecordTile'
 
-function record(id: string) {
+function record(id: string): Entity {
   const entity = getEntity(id)
   if (entity === undefined) {
     throw new Error(`no ${id}`)

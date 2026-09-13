@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
@@ -11,7 +12,7 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  * social icons is the footer every generated page ships, and this site has
  * nothing to put in them. The lead sentence is the one the whole page argues.
  */
-export function SiteFooter() {
+export function SiteFooter(): ReactElement {
   const t = useT()
 
   return (

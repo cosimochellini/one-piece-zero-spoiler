@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -19,6 +20,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
+/** One page of the book: the record, whether it is open, and what matched. */
 export type CharacterCardProps = {
   readonly entity: Entity
   readonly revealed: boolean
@@ -39,7 +41,7 @@ export function CharacterCard({
   entity,
   revealed,
   highlight = null,
-}: CharacterCardProps) {
+}: CharacterCardProps): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
   const role = roleOf(entity)
@@ -96,9 +98,11 @@ export function Marked({
 }: {
   readonly span: null | readonly [number, number]
   readonly text: string
-}) {
+}): ReactElement {
+  // A fragment rather than the bare string: the two branches have to be the
+  // same kind of thing, and a fragment around one text node adds no element.
   if (span === null) {
-    return value
+    return <>{value}</>
   }
 
   const [from, to] = span

@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ComponentPropsWithoutRef } from 'react'
+import type { ComponentPropsWithoutRef, ReactElement } from 'react'
 
 import {
   color,
@@ -17,6 +17,10 @@ type NativeButtonProps = Omit<
   'className' | 'style'
 >
 
+/**
+ * Everything a `<button>` takes, less the two escape hatches: styling goes
+ * through `sx` so it stays in StyleX, never through `className` or `style`.
+ */
 export type ButtonProps = NativeButtonProps & {
   /**
    * `chip` is the outlined typographic action (Hallmark C1); `quiet` is the
@@ -40,7 +44,12 @@ export type ButtonProps = NativeButtonProps & {
  *  - `disabled` reads on three channels — the attribute, the cursor and the
  *    opacity — because opacity alone is invisible to anyone who cannot see it.
  */
-export function Button({ variant = 'chip', sx, type, ...rest }: ButtonProps) {
+export function Button({
+  variant = 'chip',
+  sx,
+  type,
+  ...rest
+}: ButtonProps): ReactElement {
   return (
     <button
       // A button inside a form defaults to `submit`. Every button here is an

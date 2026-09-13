@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
 import { ChartArt } from '~/components/ChartArt'
@@ -20,6 +21,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
+/** One line of a shelf: the record, whether it is open, and what matched. */
 export type CharacterTileProps = {
   readonly entity: Entity
   readonly revealed: boolean
@@ -41,7 +43,7 @@ export function CharacterTile({
   entity,
   revealed,
   highlight = null,
-}: CharacterTileProps) {
+}: CharacterTileProps): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
   const role = roleOf(entity)

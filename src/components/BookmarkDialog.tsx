@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { useRouter } from '@tanstack/react-router'
 import {
-  type MouseEvent,
+  type ReactElement,
+  type RefObject,
   type SyntheticEvent,
   useEffect,
   useId,
@@ -9,52 +10,19 @@ import {
   useState,
 } from 'react'
 
+import { styles } from '~/components/BookmarkDialog.styles'
+import { NumberField, UnitFields } from '~/components/BookmarkFields'
 import { Button } from '~/components/ui/Button'
-import { type Season, SEASONS } from '~/data/seasons'
 import { useT } from '~/i18n/LocaleContext'
-import type { Translate, TranslationKey } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
-  type BookmarkMode,
+  type Bookmark,
   type Draft,
   draftOf,
-  type DraftProblem,
   gradeDraft,
-  stepperOf,
 } from '~/lib/progress/episode'
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
 
-const MODES: readonly BookmarkMode[] = ['episode', 'season', 'chapter']
-
-const MODE_KEY: Readonly<Record<BookmarkMode, TranslationKey>> = {
-  episode: 'dialog.modeEpisode',
-  season: 'dialog.modeSeason',
-  chapter: 'dialog.modeChapter',
-}
-
-const FIELD_KEY: Readonly<Record<BookmarkMode, TranslationKey>> = {
-  episode: 'dialog.episodeLabel',
-  season: 'dialog.seasonEpisodeLabel',
-  chapter: 'dialog.chapterLabel',
-}
-
-/** One message per way a draft can be unusable. */
-const ERROR_KEY: Readonly<Record<DraftProblem, TranslationKey>> = {
-  empty: 'dialog.errorEmpty',
-  range: 'dialog.errorRange',
-  season: 'dialog.errorSeason',
-}
-
+/** The one thing the dialog owes whoever opened it. */
 export type BookmarkDialogProps = {
   /** Called once the dialog has closed, however it closed. */
   readonly onClose: () => void
@@ -74,527 +42,224 @@ export type BookmarkDialogProps = {
  * across would be a guess dressed as a fact. Validation follows the touched
  * pattern: silent until the field is blurred, then live on every keystroke.
  */
-export function BookmarkDialog({ onClose }: BookmarkDialogProps) {
-  const t = useT()
-  const router = useRouter()
-  const { bookmark, setBookmark } = useBookmark()
-  const dialogRef = useRef<HTMLDialogElement>(null)
+export function BookmarkDialog({ onClose }: BookmarkDialogProps): ReactElement {
+  const { dialogRef, close } = useModal()
   const titleId = useId()
   const ledeId = useId()
-
-  const [draft, setDraft] = useState<Draft>(() => draftOf(bookmark))
-  const [touched, setTouched] = useState(false)
-
-  // A DOM call, not state: the element exists only while this component is
-  // mounted, so opening it once on mount is the whole lifecycle.
-  useEffect(() => {
-    dialogRef.current?.showModal()
-  }, [])
-
-  const graded = gradeDraft(draft)
-  const problem = touched ? graded.problem : null
-
-  const close = () => {
-    dialogRef.current?.close()
-  }
-
-  const chooseMode = (mode: BookmarkMode) => {
-    setDraft({ mode, season: '', number: '' })
-    setTouched(false)
-  }
-
-  const chooseSeason = (season: string) => {
-    setDraft({ ...draft, season, number: '' })
-    setTouched(false)
-  }
-
-  const save = (event: SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    if (graded.bookmark === null) {
-      return
-    }
-    setBookmark(graded.bookmark)
-    // The root route read the old cookie for this document; a fresh load
-    // lets a page whose <head> depends on it (a character's title) catch up.
-    void router.invalidate()
-    close()
-  }
-
-  const forget = () => {
-    setBookmark(null)
-    void router.invalidate()
-    close()
-  }
-
-  const onBackdrop = (event: MouseEvent<HTMLDialogElement>) => {
-    if (event.target === event.currentTarget) {
-      close()
-    }
-  }
 
   return (
     <dialog
       aria-describedby={ledeId}
       aria-labelledby={titleId}
-      onClick={onBackdrop}
       onClose={onClose}
       ref={dialogRef}
       {...stylex.props(styles.dialog)}
     >
-      <form
-        onSubmit={save}
-        {...stylex.props(styles.form)}
-      >
-        <div {...stylex.props(styles.head)}>
-          <h2
-            id={titleId}
-            {...stylex.props(styles.title)}
-          >
-            {t('dialog.title')}
-          </h2>
-          <p
-            id={ledeId}
-            {...stylex.props(styles.lede)}
-          >
-            {t('dialog.lede')}
-          </p>
-        </div>
-
-        <ModeChooser
-          mode={draft.mode}
-          onChoose={chooseMode}
-        />
-
-        {draft.mode === 'season' && (
-          <SeasonPicker
-            onChoose={chooseSeason}
-            season={draft.season}
-          />
-        )}
-
-        <NumberField
-          draft={draft}
-          onBlur={() => {
-            setTouched(true)
-          }}
-          onChange={(number) => {
-            setDraft({ ...draft, number })
-          }}
-          problem={problem}
-        />
-
-        <div {...stylex.props(styles.actions)}>
-          <Button
-            disabled={graded.bookmark === null}
-            type="submit"
-          >
-            {t('dialog.save')}
-          </Button>
-          <Button
-            disabled={bookmark === null}
-            onClick={forget}
-          >
-            {t('dialog.forget')}
-          </Button>
-          <Button
-            onClick={close}
-            sx={styles.cancel}
-          >
-            {t('dialog.cancel')}
-          </Button>
-        </div>
-      </form>
+      <BookmarkForm
+        ledeId={ledeId}
+        onDone={close}
+        titleId={titleId}
+      />
     </dialog>
   )
 }
 
-/**
- * The three units as a segmented control: three radios, each drawn by the
- * label beside it, so the keyboard and the screen reader get a real radio
- * group and the eye gets three cells with one of them marked.
- */
-function ModeChooser({
-  mode,
-  onChoose,
-}: {
-  readonly mode: BookmarkMode
-  readonly onChoose: (mode: BookmarkMode) => void
-}) {
-  const t = useT()
-  const name = useId()
-
-  return (
-    <fieldset {...stylex.props(styles.modes)}>
-      <legend {...stylex.props(styles.label)}>{t('dialog.modeLabel')}</legend>
-      <div {...stylex.props(styles.modeRow)}>
-        {MODES.map((candidate) => (
-          <label
-            key={candidate}
-            {...stylex.props(styles.mode)}
-          >
-            <input
-              checked={mode === candidate}
-              name={name}
-              onChange={() => {
-                onChoose(candidate)
-              }}
-              type="radio"
-              value={candidate}
-              {...stylex.props(styles.radio)}
-            />
-            <span {...stylex.props(styles.modeLabel)}>
-              {t(MODE_KEY[candidate])}
-            </span>
-          </label>
-        ))}
-      </div>
-    </fieldset>
-  )
+type Modal = {
+  readonly close: () => void
+  readonly dialogRef: RefObject<HTMLDialogElement | null>
 }
 
-/** The season, as a `<select>` with an empty first option: nothing is assumed. */
-function SeasonPicker({
-  season,
-  onChoose,
-}: {
-  readonly onChoose: (season: string) => void
-  readonly season: string
-}) {
-  const t = useT()
-  const id = useId()
+/**
+ * The whole native lifecycle of the dialog in one place: it is opened modally
+ * for as long as the component is mounted, and a click that lands on the
+ * dialog element itself rather than on the form inside it closes it, which is
+ * what a click on the backdrop is.
+ *
+ * That listener is native rather than a React `onClick` on purpose. The
+ * backdrop is not an element of its own and a `<dialog>` is not a control, so
+ * a handler in the JSX would be a mouse listener on a non-interactive element
+ * — and it would be owed a keyboard equivalent, which Escape already is and
+ * which the browser already handles.
+ */
+function useModal(): Modal {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+
+  useEffect(() => {
+    const dialog = dialogRef.current
+    const closeOnBackdrop = (event: MouseEvent): void => {
+      if (event.target === dialog) {
+        dialog?.close()
+      }
+    }
+
+    dialog?.showModal()
+    dialog?.addEventListener('click', closeOnBackdrop)
+
+    return () => {
+      dialog?.removeEventListener('click', closeOnBackdrop)
+    }
+  }, [])
+
+  return {
+    dialogRef,
+    close: () => {
+      dialogRef.current?.close()
+    },
+  }
+}
+
+type BookmarkFormProps = {
+  readonly ledeId: string
+  /** Closes the dialog. Called on every way out, including a successful save. */
+  readonly onDone: () => void
+  readonly titleId: string
+}
+
+/**
+ * The draft from the unit down to the number, and the three ways out of it.
+ *
+ * Nothing here reaches the cookie until Save, so a reader who opens the
+ * dialog, tries a unit and leaves still has the bookmark they arrived with.
+ */
+function BookmarkForm({
+  titleId,
+  ledeId,
+  onDone,
+}: BookmarkFormProps): ReactElement {
+  const router = useRouter()
+  const { bookmark, setBookmark } = useBookmark()
+  const [draft, setDraft] = useState<Draft>(() => draftOf(bookmark))
+  const [touched, setTouched] = useState(false)
+
+  const graded = gradeDraft(draft)
+  const problem = touched ? graded.problem : null
+
+  const commit = (next: Bookmark): void => {
+    setBookmark(next)
+    // The root route read the old cookie for this document; a fresh load
+    // lets a page whose <head> depends on it (a character's title) catch up.
+    void router.invalidate()
+    onDone()
+  }
+
+  const save = (event: SyntheticEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+    if (graded.bookmark !== null) {
+      commit(graded.bookmark)
+    }
+  }
 
   return (
-    <div {...stylex.props(styles.group)}>
-      <label
-        htmlFor={id}
-        {...stylex.props(styles.label)}
-      >
-        {t('dialog.seasonLabel')}
-      </label>
-      <select
-        id={id}
-        onChange={(event) => {
-          onChoose(event.target.value)
+    <form
+      onSubmit={save}
+      {...stylex.props(styles.form)}
+    >
+      <DialogHead
+        ledeId={ledeId}
+        titleId={titleId}
+      />
+
+      <UnitFields
+        draft={draft}
+        onRestart={(next) => {
+          setDraft(next)
+          setTouched(false)
         }}
-        value={season}
-        {...stylex.props(styles.field, styles.select)}
-      >
-        <option value="">{t('dialog.seasonPlaceholder')}</option>
-        {SEASONS.map((candidate) => (
-          <option
-            key={candidate.number}
-            value={String(candidate.number)}
-          >
-            {seasonOption(t, candidate)}
-          </option>
-        ))}
-      </select>
-    </div>
+      />
+
+      <NumberField
+        draft={draft}
+        onBlur={() => {
+          setTouched(true)
+        }}
+        onChange={(number) => {
+          setDraft({ ...draft, number })
+        }}
+        problem={problem}
+      />
+
+      <Actions
+        canForget={bookmark !== null}
+        canSave={graded.bookmark !== null}
+        onCancel={onDone}
+        onForget={() => {
+          commit(null)
+        }}
+      />
+    </form>
   )
 }
 
 /**
- * The number itself: a text field with `inputMode="numeric"` between two
- * steppers, and one line below for the hint or the error. `type="text"`
- * rather than `number` because a number input ships its own spinner, and
- * two sets of steppers on one field is worse than none.
+ * The title and the lede together. They carry the two ids the dialog points
+ * its `aria-labelledby` and `aria-describedby` at, so neither can be moved
+ * without the other losing what names it.
  */
-function NumberField({
-  draft,
-  problem,
-  onChange,
-  onBlur,
+function DialogHead({
+  ledeId,
+  titleId,
 }: {
-  readonly draft: Draft
-  readonly onBlur: () => void
-  readonly onChange: (number: string) => void
-  readonly problem: DraftProblem | null
-}) {
+  readonly ledeId: string
+  readonly titleId: string
+}): ReactElement {
   const t = useT()
-  const id = useId()
-  const messageId = useId()
-  const { ceiling, atFloor, atCeiling, stepped } = stepperOf(draft)
-  const error = problem === null ? null : ERROR_KEY[problem]
-  const disabled = ceiling === null
 
   return (
-    <div {...stylex.props(styles.group)}>
-      <label
-        htmlFor={id}
-        {...stylex.props(styles.label)}
+    <div {...stylex.props(styles.head)}>
+      <h2
+        id={titleId}
+        {...stylex.props(styles.title)}
       >
-        {t(FIELD_KEY[draft.mode])}
-      </label>
-      <div {...stylex.props(styles.row)}>
-        <Button
-          aria-label={t('dialog.decrease')}
-          disabled={disabled || atFloor}
-          onClick={() => {
-            onChange(stepped(-1))
-          }}
-          variant="quiet"
-        >
-          −
-        </Button>
-        <input
-          aria-describedby={messageId}
-          aria-invalid={error !== null}
-          autoComplete="off"
-          disabled={disabled}
-          id={id}
-          inputMode="numeric"
-          onBlur={onBlur}
-          onChange={(event) => {
-            onChange(event.target.value)
-          }}
-          type="text"
-          value={draft.number}
-          {...stylex.props(
-            styles.field,
-            styles.number,
-            error !== null && styles.fieldInvalid,
-          )}
-        />
-        <Button
-          aria-label={t('dialog.increase')}
-          disabled={disabled || atCeiling}
-          onClick={() => {
-            onChange(stepped(1))
-          }}
-          variant="quiet"
-        >
-          +
-        </Button>
-      </div>
-      {/*
-        One slot for both the hint and the error, reserving a line of text so
-        the layout does not jump the first time a message appears.
-        `role=alert` is withheld until there is something to announce.
-      */}
+        {t('dialog.title')}
+      </h2>
       <p
-        id={messageId}
-        role={error === null ? undefined : 'alert'}
-        {...stylex.props(styles.message, error !== null && styles.messageError)}
+        id={ledeId}
+        {...stylex.props(styles.lede)}
       >
-        {messageFor(t, error, ceiling)}
+        {t('dialog.lede')}
       </p>
     </div>
   )
 }
 
-/** The hint when nothing is wrong, the error when something is. */
-function messageFor(
-  t: Translate,
-  error: null | TranslationKey,
-  ceiling: null | number,
-): string {
-  if (error !== null) {
-    return t(error, { max: ceiling ?? 0 })
-  }
-  if (ceiling === null) {
-    return t('dialog.errorSeason')
-  }
+/**
+ * Save, forget and cancel. Each of the first two is disabled until it would
+ * do something — until the draft grades to a real bookmark, and until there
+ * is a bookmark to drop — so neither can be pressed into a silent no-op.
+ */
+function Actions({
+  canSave,
+  canForget,
+  onForget,
+  onCancel,
+}: {
+  readonly canForget: boolean
+  readonly canSave: boolean
+  readonly onCancel: () => void
+  readonly onForget: () => void
+}): ReactElement {
+  const t = useT()
 
-  return t('dialog.hint', { max: ceiling })
+  return (
+    <div {...stylex.props(styles.actions)}>
+      <Button
+        disabled={!canSave}
+        type="submit"
+      >
+        {t('dialog.save')}
+      </Button>
+      <Button
+        disabled={!canForget}
+        onClick={onForget}
+      >
+        {t('dialog.forget')}
+      </Button>
+      <Button
+        onClick={onCancel}
+        sx={styles.cancel}
+      >
+        {t('dialog.cancel')}
+      </Button>
+    </div>
+  )
 }
-
-function seasonOption(t: ReturnType<typeof useT>, season: Season): string {
-  return season.last === null ?
-      t('dialog.seasonOptionOpen', {
-        season: season.number,
-        first: season.first,
-      })
-    : t('dialog.seasonOption', {
-        season: season.number,
-        first: season.first,
-        last: season.last,
-      })
-}
-
-// The dialog surfaces rather than slides: a short fade and a small rise, both
-// compositor properties, and none of it under reduced motion.
-const surface = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(8px)' },
-  to: { opacity: 1, transform: 'none' },
-})
-
-const styles = stylex.create({
-  // Pinned by hand rather than left to the UA: `margin: auto` on a fixed,
-  // inset-zero box centres it, and `height: fit-content` keeps it from
-  // stretching to the viewport. The top layer ignores `z-index`.
-  dialog: {
-    'inset': 0,
-    'margin': 'auto',
-    'padding': 0,
-    'borderColor': color.rule2,
-    'borderRadius': radius.card,
-    'borderStyle': 'solid',
-    'borderWidth': rule.fine,
-    'overflow': 'auto',
-    'animationDuration': dur.short,
-    'animationName': {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': surface,
-    },
-    'animationTimingFunction': ease.out,
-    'backgroundColor': color.paper2,
-    'color': color.ink,
-    'position': 'fixed',
-    'height': 'fit-content',
-    'maxHeight': 'min(80dvh, 40rem)',
-    'width': 'min(calc(100% - 2rem), 28rem)',
-    '::backdrop': { backgroundColor: color.scrim },
-  },
-  // Tighter on a phone, where 80dvh is not much taller than the form: every
-  // rem of padding is a rem the actions lose before the box has to scroll.
-  form: {
-    padding: { 'default': space.md, '@media (min-width: 40rem)': space.xl },
-    gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
-    display: 'grid',
-  },
-  head: { gap: space.xs, display: 'grid' },
-  title: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-  },
-  lede: { color: color.muted, fontSize: text.base, lineHeight: leading.body },
-
-  modes: {
-    margin: 0,
-    padding: 0,
-    borderStyle: 'none',
-    gap: space.xs,
-    display: 'grid',
-    minWidth: 0,
-  },
-  modeRow: {
-    gap: space.xs2,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': 'repeat(3, minmax(0, 1fr))',
-    },
-  },
-  mode: { display: 'grid', position: 'relative' },
-  // The input is present for the keyboard and the screen reader and drawn
-  // by its sibling: the checked and focused states are read off it there.
-  radio: {
-    inset: 0,
-    margin: 0,
-    opacity: 0,
-    position: 'absolute',
-    height: '1px',
-    width: '1px',
-  },
-  modeLabel: {
-    borderColor: {
-      'default': color.rule2,
-      ':is(input:checked + &)': color.accent,
-      ':is(input:focus-visible + &)': color.accent,
-      ':is(label:hover > &)': color.ink,
-    },
-    borderRadius: radius.input,
-    borderStyle: 'solid',
-    borderWidth: rule.fine,
-    paddingBlock: space.xs,
-    paddingInline: space.sm,
-    alignItems: 'center',
-    color: { 'default': color.ink2, ':is(input:checked + &)': color.ink },
-    cursor: 'pointer',
-    display: 'flex',
-    fontSize: text.base,
-    fontWeight: 600,
-    justifyContent: 'center',
-    lineHeight: leading.heading,
-    outlineColor: {
-      'default': 'transparent',
-      ':is(input:focus-visible + &)': color.focus,
-    },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textAlign: 'center',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color, border-color',
-    transitionTimingFunction: ease.out,
-    minHeight: '44px',
-  },
-
-  group: { gap: space.xs, display: 'grid', justifyItems: 'start' },
-  label: {
-    padding: 0,
-    color: color.ink2,
-    fontFamily: font.body,
-    fontSize: text.base,
-    fontWeight: 600,
-  },
-  row: {
-    gap: space.xs,
-    alignItems: 'center',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  field: {
-    borderColor: {
-      'default': color.rule2,
-      ':hover': color.ink2,
-      ':focus': color.ink,
-    },
-    borderRadius: radius.input,
-    borderStyle: 'solid',
-    borderWidth: rule.fine,
-    paddingBlock: space.xs2,
-    paddingInline: space.xs,
-    backgroundColor: color.paper,
-    color: color.ink,
-    cursor: { 'default': 'auto', ':disabled': 'not-allowed' },
-    fontFamily: font.mono,
-    fontSize: text.lg,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    opacity: { 'default': 1, ':disabled': 0.55 },
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    transitionDuration: dur.micro,
-    transitionProperty: 'border-color',
-    transitionTimingFunction: ease.out,
-    // Matches the 44px button height exactly; a field shorter than the
-    // controls beside it reads as an afterthought.
-    minHeight: '44px',
-  },
-  select: {
-    fontFamily: font.body,
-    fontSize: text.base,
-    fontWeight: 600,
-    maxWidth: '100%',
-    width: '100%',
-  },
-  number: {
-    textAlign: 'center',
-    // 5ch holds the ceiling plus a digit of headroom without the field
-    // stretching to fill the row. The padding and the border are added on
-    // top: the width is the border box, and '5ch' alone clipped '1100'.
-    width: `calc(5ch + ${space.md} + ${space.xs2})`,
-  },
-  fieldInvalid: { borderColor: color.accent },
-  message: {
-    color: color.muted,
-    fontFamily: font.body,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    // Reserves the line whether or not there is a message in it.
-    minHeight: '1lh',
-  },
-  messageError: { color: color.accent, fontWeight: 600 },
-
-  actions: { gap: space.xs, display: 'flex', flexWrap: 'wrap' },
-  cancel: {
-    marginInlineStart: { 'default': 0, '@media (min-width: 40rem)': 'auto' },
-  },
-})

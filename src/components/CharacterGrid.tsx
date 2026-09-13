@@ -1,33 +1,38 @@
 import * as stylex from '@stylexjs/stylex'
-import { type ReactNode, useEffect, useId, useState } from 'react'
+import {
+  type ReactElement,
+  type ReactNode,
+  useEffect,
+  useId,
+  useState,
+} from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
-import { CharacterTile } from '~/components/CharacterTile'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
+import { styles } from '~/components/CharacterGrid.styles'
+import {
+  type Match,
+  matchesFor,
+  type MatchOf,
+} from '~/components/characterMatches'
+import { CharacterShelves } from '~/components/CharacterShelves'
 import { Button } from '~/components/ui/Button'
-import { type BookSection, matchName, type NameMatch } from '~/data/characters'
+import type { BookSection } from '~/data/characters'
 import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
-import { useLocale } from '~/i18n/LocaleContext'
-import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useLocale, useT } from '~/i18n/LocaleContext'
+import type { Translate } from '~/i18n/types'
 import {
   type Bookmark,
   type BookmarkMode,
   modeOf,
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
 
+// Long enough that a reader typing "Nami" hears one count and not four, short
+// enough that the count still arrives while the query is under their hands.
+const ANNOUNCE_DELAY_MS = 250
+
+/** What the signal book is built from: the crests, the shelves, the reader. */
 export type CharacterGridProps = {
   /** The characters in evidence, in route order: the ones drawn as crests. */
   readonly featured: readonly Entity[]
@@ -35,8 +40,6 @@ export type CharacterGridProps = {
   readonly bookmark: Bookmark
   readonly sections: readonly BookSection[]
 }
-
-type Match = { readonly entry: Entity; readonly match: NameMatch }
 
 /**
  * The signal book: the featured characters as crests on one uniform grid,
@@ -50,14 +53,14 @@ type Match = { readonly entry: Entity; readonly match: NameMatch }
  * filters the open pages and leaves the fog exactly as it was.
  *
  * Filtering is a few hundred names in memory and is instant. Only the
- * announcement to a screen reader waits, 250ms after the last keystroke, so a
- * reader typing "Nami" hears one count and not four.
+ * announcement to a screen reader waits, so a reader still mid-word is not
+ * read a fresh count on every keystroke.
  */
 export function CharacterGrid({
   featured,
   sections,
   bookmark,
-}: CharacterGridProps) {
+}: CharacterGridProps): ReactElement {
   const { locale, t } = useLocale()
   const fieldId = useId()
   const [query, setQuery] = useState('')
@@ -67,306 +70,263 @@ export function CharacterGrid({
 
   const everyone = sections.flatMap((section) => section.characters)
   const open = everyone.filter((entry) => isRevealed(entry, bookmark))
-  const matched = new Map<string, Match>(
-    open
-      .map((entry) => ({
-        entry,
-        match: matchName(entry, query, locale, bookmark),
-      }))
-      .filter(({ match }) => match.matches)
-      .map((match) => [match.entry.id, match]),
-  )
-  const matchOf = (entry: Entity) => matched.get(entry.id)
-
-  const ordered = orderByMode(featured, mode)
-  const featuredOpen = ordered.filter((entry) => isRevealed(entry, bookmark))
-  const featuredCovered = ordered.filter(
-    (entry) => !isRevealed(entry, bookmark),
-  )
-  const featuredMatches = featuredOpen
-    .map(matchOf)
-    .filter((match): match is Match => match !== undefined)
+  const matched = matchesFor({ bookmark, locale, open, query })
+  const matchOf: MatchOf = (entry) => matched.get(entry.id)
 
   const trimmed = query.trim()
+  const empty = trimmed !== '' && matched.size === 0
   const status =
-    trimmed !== '' && matched.size === 0 ?
+    empty ?
       t('characters.noMatch', { query: trimmed })
     : t('characters.shown', { count: matched.size, total: open.length })
-  const announced = useSettled(status, 250)
+  const announced = useSettled(status, ANNOUNCE_DELAY_MS)
 
   return (
     <div {...stylex.props(styles.book)}>
-      <div
-        role="search"
-        {...stylex.props(styles.search)}
-      >
-        <label
-          htmlFor={fieldId}
-          {...stylex.props(styles.label)}
-        >
-          {t('characters.searchLabel')}
-        </label>
-        <div {...stylex.props(styles.fieldRow)}>
-          <input
-            autoComplete="off"
-            id={fieldId}
-            onChange={(event) => {
-              setQuery(event.target.value)
-            }}
-            placeholder="Nami"
-            spellCheck={false}
-            type="search"
-            value={query}
-            {...stylex.props(styles.field)}
-          />
-          {/*
-            The slot is always there, so the field does not change width when
-            a query appears. The button stays mounted and is hidden with
-            `visibility`, which keeps the row's geometry identical in both
-            states and takes it out of the tab order. The `hidden` attribute
-            alone would not: the button's own `display` wins over the user
-            agent's `[hidden]` rule.
-          */}
-          <span {...stylex.props(styles.clearSlot)}>
-            <Button
-              aria-label={t('characters.searchClear')}
-              hidden={trimmed === ''}
-              onClick={() => {
-                setQuery('')
-              }}
-              sx={trimmed === '' ? styles.clearHidden : undefined}
-              variant="quiet"
-            >
-              ×
-            </Button>
-          </span>
-        </div>
-        <p
-          aria-live="polite"
-          {...stylex.props(
-            styles.status,
-            trimmed !== '' && matched.size === 0 && styles.statusEmpty,
-          )}
-        >
-          {announced}
-        </p>
-      </div>
+      <SearchBox
+        empty={empty}
+        fieldId={fieldId}
+        onQuery={setQuery}
+        query={query}
+        status={announced}
+      />
 
-      <section
-        aria-labelledby={`${fieldId}-featured`}
-        {...stylex.props(styles.part)}
-      >
-        <div {...stylex.props(styles.partHead)}>
-          <h2
-            id={`${fieldId}-featured`}
-            {...stylex.props(styles.partTitle)}
-          >
-            {t('characters.featuredTitle')}
-          </h2>
-          <p {...stylex.props(styles.partLede)}>
-            {t('characters.featuredLede')}
-          </p>
-        </div>
+      <FeaturedCrests
+        bookmark={bookmark}
+        featured={featured}
+        fieldId={fieldId}
+        matchOf={matchOf}
+        mode={mode}
+      />
 
-        {featuredMatches.length === 0 ? null : (
-          <CharacterCardList>
-            {featuredMatches.map(({ entry, match }) => {
-              return (
-                <CharacterCard
-                  key={entry.id}
-                  entity={entry}
-                  highlight={match.highlight}
-                  revealed
-                />
-              )
-            })}
-          </CharacterCardList>
-        )}
-
-        <section
-          aria-labelledby={`${fieldId}-fog`}
-          {...stylex.props(styles.fog)}
-        >
-          <h3
-            id={`${fieldId}-fog`}
-            {...stylex.props(styles.fogTitle)}
-          >
-            {featuredCovered.length === 0 ?
-              t('characters.allOpen')
-            : featuredCovered.length === 1 ?
-              t('characters.foggedTitleOne')
-            : t('characters.foggedTitle', { count: featuredCovered.length })}
-          </h3>
-          {featuredCovered.length === 0 ? null : (
-            <>
-              <p {...stylex.props(styles.fogHint)}>
-                {t('characters.foggedHint')}
-              </p>
-              <CharacterCardList>
-                {featuredCovered.map((entry) => {
-                  return (
-                    <CharacterCard
-                      key={entry.id}
-                      entity={entry}
-                      revealed={false}
-                    />
-                  )
-                })}
-              </CharacterCardList>
-            </>
-          )}
-        </section>
-      </section>
-
-      <section
-        aria-labelledby={`${fieldId}-book`}
-        {...stylex.props(styles.part)}
-      >
-        <div {...stylex.props(styles.partHead)}>
-          <h2
-            id={`${fieldId}-book`}
-            {...stylex.props(styles.partTitle)}
-          >
-            {t('characters.bookTitle')}
-          </h2>
-          <p {...stylex.props(styles.partLede)}>{t('characters.bookLede')}</p>
-        </div>
-
-        {shelvesInOrder(sections, mode).map((section) => {
-          return (
-            <Shelf
-              key={section.arc.id}
-              bookmark={bookmark}
-              headingId={`${fieldId}-${section.arc.id}`}
-              matchOf={matchOf}
-              searching={trimmed !== ''}
-              section={section}
-            />
-          )
-        })}
-      </section>
+      <CharacterShelves
+        bookmark={bookmark}
+        fieldId={fieldId}
+        matchOf={matchOf}
+        searching={trimmed !== ''}
+        sections={sections}
+      />
     </div>
   )
 }
 
 /**
- * The shelves in the order the reader's unit reaches their arcs. The
- * sections come shelved by episode; a reader who counts in chapters gets
- * the same shelves sorted by chapter, so the open ones stay a prefix.
+ * The one control on the page: a field, a clear button, and a line saying what
+ * the query found. That line is `aria-live`, which is why it is given the
+ * settled count rather than the live one.
  */
-function shelvesInOrder(
-  sections: readonly BookSection[],
-  mode: BookmarkMode,
-): readonly BookSection[] {
-  const byArc = new Map(sections.map((section) => [section.arc.id, section]))
+function SearchBox({
+  fieldId,
+  query,
+  onQuery,
+  status,
+  empty,
+}: {
+  readonly empty: boolean
+  readonly fieldId: string
+  readonly onQuery: (query: string) => void
+  readonly query: string
+  readonly status: string
+}): ReactElement {
+  const t = useT()
 
-  return orderByMode(
-    sections.map((section) => section.arc),
-    mode,
-  ).flatMap((arc) => {
-    const section = byArc.get(arc.id)
-    return section === undefined ? [] : [section]
-  })
+  return (
+    <div
+      role="search"
+      {...stylex.props(styles.search)}
+    >
+      <label
+        htmlFor={fieldId}
+        {...stylex.props(styles.label)}
+      >
+        {t('characters.searchLabel')}
+      </label>
+      <div {...stylex.props(styles.fieldRow)}>
+        <input
+          autoComplete="off"
+          id={fieldId}
+          onChange={(event) => {
+            onQuery(event.target.value)
+          }}
+          placeholder="Nami"
+          spellCheck={false}
+          type="search"
+          value={query}
+          {...stylex.props(styles.field)}
+        />
+        <ClearSlot
+          blank={query.trim() === ''}
+          onClear={() => {
+            onQuery('')
+          }}
+        />
+      </div>
+      <p
+        aria-live="polite"
+        {...stylex.props(styles.status, empty && styles.statusEmpty)}
+      >
+        {status}
+      </p>
+    </div>
+  )
 }
 
 /**
- * One shelf: the arc's name as a heading, the threshold it opens on and how
- * many characters it holds, then the open tiles that answer the search and
- * every covered tile, in that order. The heading is veiled when the arc is
- * covered, which for a reader counting in episodes only happens when every
- * tile on the shelf is covered too. A shelf with nothing to show during a search is left out;
- * with no search every shelf is on the page.
+ * The × that empties the field, and the space it keeps whether or not there is
+ * anything to clear.
+ *
+ * The slot is always in the layout, so the field beside it does not change
+ * width when a query appears. The button stays mounted and is hidden with
+ * `visibility`, which keeps the row's geometry identical in both states and
+ * takes it out of the tab order. The `hidden` attribute alone would not: the
+ * button's own `display` wins over the user agent's `[hidden]` rule.
  */
-function Shelf({
-  section,
+function ClearSlot({
+  blank,
+  onClear,
+}: {
+  readonly blank: boolean
+  readonly onClear: () => void
+}): ReactElement {
+  const t = useT()
+
+  return (
+    <span {...stylex.props(styles.clearSlot)}>
+      <Button
+        aria-label={t('characters.searchClear')}
+        hidden={blank}
+        onClick={onClear}
+        sx={blank ? styles.clearHidden : undefined}
+        variant="quiet"
+      >
+        ×
+      </Button>
+    </span>
+  )
+}
+
+/**
+ * The crests: the featured characters the reader has reached, filtered by the
+ * query, and below them a band of the ones they have not. The two never trade
+ * places, which is the whole reason they are kept in separate lists.
+ */
+function FeaturedCrests({
+  featured,
+  fieldId,
   bookmark,
-  headingId,
   matchOf,
-  searching,
+  mode,
 }: {
   readonly bookmark: Bookmark
-  readonly headingId: string
-  readonly matchOf: (entry: Entity) => Match | undefined
-  readonly searching: boolean
-  readonly section: BookSection
-}) {
-  const { locale, t } = useLocale()
-  const threshold = useThreshold()
-  const { arc } = section
-  const characters = orderByMode(section.characters, modeOf(bookmark))
-  const arcOpen = isRevealed(arc, bookmark)
-
-  const shown = characters
+  readonly featured: readonly Entity[]
+  readonly fieldId: string
+  readonly matchOf: MatchOf
+  readonly mode: BookmarkMode
+}): ReactElement {
+  const t = useT()
+  const ordered = orderByMode(featured, mode)
+  const covered = ordered.filter((entry) => !isRevealed(entry, bookmark))
+  const matches = ordered
     .filter((entry) => isRevealed(entry, bookmark))
-    .map(matchOf)
+    .map((entry) => matchOf(entry))
     .filter((match): match is Match => match !== undefined)
-  const covered = characters.filter((entry) => !isRevealed(entry, bookmark))
 
-  if (searching && shown.length === 0 && covered.length === 0) {
-    return null
-  }
+  return (
+    <section
+      aria-labelledby={`${fieldId}-featured`}
+      {...stylex.props(styles.part)}
+    >
+      <div {...stylex.props(styles.partHead)}>
+        <h2
+          id={`${fieldId}-featured`}
+          {...stylex.props(styles.partTitle)}
+        >
+          {t('characters.featuredTitle')}
+        </h2>
+        <p {...stylex.props(styles.partLede)}>{t('characters.featuredLede')}</p>
+      </div>
+
+      {matches.length === 0 ? null : (
+        <CharacterCardList>
+          {matches.map(({ entry, match }) => {
+            return (
+              <CharacterCard
+                key={entry.id}
+                entity={entry}
+                highlight={match.highlight}
+                revealed
+              />
+            )
+          })}
+        </CharacterCardList>
+      )}
+
+      <FogBand
+        covered={covered}
+        headingId={`${fieldId}-fog`}
+      />
+    </section>
+  )
+}
+
+/**
+ * The band below the crests. It is on the page even with nothing under fog,
+ * because a band that appeared the moment a reader fell behind would itself be
+ * news; empty, it says so and shows no cards.
+ */
+function FogBand({
+  covered,
+  headingId,
+}: {
+  readonly covered: readonly Entity[]
+  readonly headingId: string
+}): ReactElement {
+  const t = useT()
 
   return (
     <section
       aria-labelledby={headingId}
-      {...stylex.props(styles.shelf)}
+      {...stylex.props(styles.fog)}
     >
-      <div {...stylex.props(styles.shelfHead)}>
-        <SpoilerVeil
-          density="inline"
-          gated={arc}
-          placeholder={
-            <h3
-              id={headingId}
-              {...stylex.props(styles.shelfTitle)}
-            >
-              {t('characters.sectionFogged')}
-            </h3>
-          }
-          revealed={arcOpen}
-        >
-          <h3
-            id={headingId}
-            {...stylex.props(styles.shelfTitle)}
-          >
-            {arc.name[locale]}
-          </h3>
-        </SpoilerVeil>
-        <p {...stylex.props(styles.shelfMeta)}>
-          <span {...stylex.props(styles.shelfEpisode)}>
-            {threshold('characters.sectionOpensAt', arc)}
-          </span>
-          <span>
-            {characters.length === 1 ?
-              t('characters.sectionCountOne')
-            : t('characters.sectionCount', { count: characters.length })}
-          </span>
-        </p>
-      </div>
-
-      <ul {...stylex.props(styles.tiles)}>
-        {shown.map(({ entry, match }) => {
-          return (
-            <CharacterTile
-              key={entry.id}
-              entity={entry}
-              highlight={match.highlight}
-              revealed
-            />
-          )
-        })}
-        {covered.map((entry) => {
-          return (
-            <CharacterTile
-              key={entry.id}
-              entity={entry}
-              revealed={false}
-            />
-          )
-        })}
-      </ul>
+      <h3
+        id={headingId}
+        {...stylex.props(styles.fogTitle)}
+      >
+        {fogTitle(t, covered.length)}
+      </h3>
+      {covered.length === 0 ? null : (
+        <>
+          <p {...stylex.props(styles.fogHint)}>{t('characters.foggedHint')}</p>
+          <CharacterCardList>
+            {covered.map((entry) => {
+              return (
+                <CharacterCard
+                  key={entry.id}
+                  entity={entry}
+                  revealed={false}
+                />
+              )
+            })}
+          </CharacterCardList>
+        </>
+      )}
     </section>
   )
+}
+
+/**
+ * What the fog band calls itself. None, one and many are three different
+ * sentences rather than one sentence with a count wedged into it.
+ */
+function fogTitle(t: Translate, count: number): string {
+  if (count === 0) {
+    return t('characters.allOpen')
+  }
+  if (count === 1) {
+    return t('characters.foggedTitleOne')
+  }
+
+  return t('characters.foggedTitle', { count })
 }
 
 /**
@@ -379,7 +339,7 @@ export function CharacterCardList({
   children,
 }: {
   readonly children: ReactNode
-}) {
+}): ReactElement {
   return <ul {...stylex.props(styles.grid)}>{children}</ul>
 }
 
@@ -398,180 +358,3 @@ function useSettled<T>(value: T, delay: number): T {
 
   return settled
 }
-
-const styles = stylex.create({
-  book: { gap: space.xl2, display: 'grid' },
-
-  search: { gap: space.xs, display: 'grid', justifyItems: 'start' },
-  label: {
-    color: color.ink2,
-    fontFamily: font.body,
-    fontSize: text.base,
-    fontWeight: 600,
-  },
-  fieldRow: {
-    gap: space.xs,
-    alignItems: 'center',
-    display: 'flex',
-    maxWidth: '100%',
-  },
-  field: {
-    'borderColor': { 'default': color.rule2, ':focus': color.ink },
-    'borderRadius': radius.input,
-    'borderStyle': 'solid',
-    // Constant in every state; the outline carries focus.
-    'borderWidth': rule.fine,
-    'paddingBlock': space.xs2,
-    'paddingInline': space.sm,
-    'appearance': 'textfield',
-    'backgroundColor': { 'default': color.paper, ':hover': color.paper2 },
-    'color': color.ink,
-    'fontFamily': font.body,
-    'fontSize': text.lg,
-    'fontWeight': 600,
-    'outlineColor': { 'default': 'transparent', ':focus-visible': color.focus },
-    'outlineOffset': space.xs3,
-    'outlineStyle': 'solid',
-    'outlineWidth': rule.fine,
-    'transitionDuration': dur.micro,
-    'transitionProperty': 'background-color, border-color',
-    'transitionTimingFunction': ease.out,
-    // The same 44px as every button on the site.
-    'minHeight': '44px',
-    'minWidth': 0,
-    'width': 'min(100%, 22rem)',
-    '::-webkit-search-cancel-button': { appearance: 'none' },
-    '::placeholder': { color: color.muted, fontWeight: 400 },
-  },
-  clearSlot: { display: 'inline-flex', flexShrink: 0, minWidth: '44px' },
-  clearHidden: { visibility: 'hidden' },
-  status: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    // Reserved whether or not there is anything to say.
-    minHeight: '1lh',
-  },
-  statusEmpty: { color: color.ink2 },
-
-  // The two parts of the book, each with an inventory heading: the crests,
-  // then the shelves.
-  part: { gap: space.lg, display: 'grid' },
-  partHead: { gap: space.xs2, display: 'grid' },
-  partTitle: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  partLede: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '58ch',
-  },
-
-  grid: {
-    columnGap: space.md,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'repeat(2, minmax(0, 1fr))',
-      '@media (min-width: 40rem)': 'repeat(3, minmax(0, 1fr))',
-      '@media (min-width: 60rem)': 'repeat(4, minmax(0, 1fr))',
-      '@media (min-width: 76rem)': 'repeat(5, minmax(0, 1fr))',
-    },
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-    rowGap: space.xl,
-  },
-
-  // The fog band is set apart by a dashed rule, the same mark the route uses
-  // for the stretch the reader has not sailed.
-  fog: {
-    gap: space.md,
-    borderBlockStartColor: color.rule2,
-    borderBlockStartStyle: 'dashed',
-    borderBlockStartWidth: rule.hair,
-    display: 'grid',
-    paddingBlockStart: space.lg,
-  },
-  fogTitle: {
-    color: color.muted,
-    fontFamily: font.display,
-    fontSize: text.lg,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-  },
-  fogHint: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    marginBlockStart: `calc(-1 * ${space.xs})`,
-    maxWidth: '58ch',
-  },
-
-  // A shelf: a hairline above, the arc's name and its two facts, then the
-  // tiles four across on a wide page and one across on a phone. Long shelves
-  // far down the page are skipped by the renderer until they scroll near.
-  shelf: {
-    containIntrinsicSize: 'auto 24rem',
-    gap: space.md,
-    borderBlockStartColor: color.rule,
-    borderBlockStartStyle: 'solid',
-    borderBlockStartWidth: rule.hair,
-    contentVisibility: 'auto',
-    display: 'grid',
-    paddingBlockStart: space.md,
-  },
-  shelfHead: {
-    alignItems: 'baseline',
-    columnGap: space.md,
-    display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: space.xs2,
-  },
-  shelfTitle: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.lg,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  shelfMeta: {
-    color: color.muted,
-    columnGap: space.sm,
-    display: 'flex',
-    flexWrap: 'wrap',
-    fontSize: text.xs,
-    letterSpacing: '0.08em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  shelfEpisode: {
-    color: color.ink2,
-    fontFamily: font.mono,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 600,
-  },
-  tiles: {
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
-      '@media (min-width: 60rem)': 'repeat(3, minmax(0, 1fr))',
-      '@media (min-width: 76rem)': 'repeat(4, minmax(0, 1fr))',
-    },
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-    rowGap: space.md,
-  },
-})

@@ -1,5 +1,6 @@
-import { screen, within } from '@testing-library/react'
+import { type RenderResult, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import type { ReactElement } from 'react'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
@@ -12,7 +13,7 @@ import { EpisodeMark } from './EpisodeMark'
  * Reports what the rest of the app would see, so the dialog can be tested by
  *  its effect rather than by its internals.
  */
-function BookmarkProbe() {
+function BookmarkProbe(): ReactElement {
   const { bookmark } = useBookmark()
 
   return (
@@ -22,7 +23,7 @@ function BookmarkProbe() {
   )
 }
 
-function renderMark(bookmark: Bookmark = null) {
+function renderMark(bookmark: Bookmark = null): RenderResult {
   return renderWithProviders(
     <>
       <EpisodeMark />
@@ -32,22 +33,31 @@ function renderMark(bookmark: Bookmark = null) {
   )
 }
 
-const stored = () => screen.getByTestId('bookmark').textContent
-const dialog = () =>
+const stored = (): null | string => screen.getByTestId('bookmark').textContent
+const dialog = (): HTMLElement =>
   screen.getByRole('dialog', { name: 'Where have you got to?' })
-const field = (name: string) => within(dialog()).getByLabelText(name)
-const button = (name: string) => within(dialog()).getByRole('button', { name })
+const field = (name: string): HTMLElement =>
+  within(dialog()).getByLabelText(name)
+const button = (name: string): HTMLElement =>
+  within(dialog()).getByRole('button', { name })
 
-async function open(user: ReturnType<typeof userEvent.setup>) {
+async function open(
+  user: ReturnType<typeof userEvent.setup>,
+): Promise<HTMLElement> {
   await user.click(screen.getByRole('button', { name: /Set episode|Change/u }))
   return dialog()
 }
 
-beforeEach(() => {
-  document.cookie = 'opzs_ep=; Max-Age=0; Path=/'
-})
-
 describe('EpisodeMark', () => {
+  beforeEach(() => {
+    // The component writes the bookmark to `document.cookie`, and jsdom keeps
+    // one document for the whole file, so a value left behind would let a
+    // later assertion pass on the previous test's cookie. jsdom ships no
+    // `CookieStore`, which is the only writer the rule accepts.
+    // eslint-disable-next-line unicorn/no-document-cookie -- jsdom has no CookieStore, and this is the only way to clear what the component wrote.
+    document.cookie = 'opzs_ep=; Max-Age=0; Path=/'
+  })
+
   it('shows the invitation with no bookmark and nothing else', () => {
     renderMark()
 

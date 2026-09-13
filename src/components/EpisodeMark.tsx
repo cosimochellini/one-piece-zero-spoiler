@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState } from 'react'
+import { type ReactElement, useState } from 'react'
 
 import { BookmarkDialog } from '~/components/BookmarkDialog'
 import { Button } from '~/components/ui/Button'
@@ -17,7 +17,7 @@ import { color, font, space, text } from '~/styles/tokens.stylex'
  * The dialog is mounted only while it is open, so every opening starts from
  * the bookmark as it stands, and nothing about it is in the served HTML.
  */
-export function EpisodeMark() {
+export function EpisodeMark(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
   const [open, setOpen] = useState(false)

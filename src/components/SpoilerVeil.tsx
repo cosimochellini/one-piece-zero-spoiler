@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import { type ReactNode, useState } from 'react'
+import { type ReactElement, type ReactNode, useState } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -15,6 +15,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
+/** Everything the curtain needs to decide what it covers and how thickly. */
 export type SpoilerVeilProps = {
   /** The record's thresholds, for the notice that names the one in force. */
   readonly gated: Gated
@@ -75,54 +76,110 @@ export function SpoilerVeil({
   strength = 'text',
   placeholder,
   children,
-}: SpoilerVeilProps) {
-  const t = useT()
+}: SpoilerVeilProps): ReactElement {
   const threshold = useThreshold()
   const [uncovered, setUncovered] = useState(false)
   const visible = revealed || uncovered
-  const notice = threshold('veil.locked', gated)
-  const verbOnly = density !== 'block'
 
   // A block body: `no-confusing-void-expression` rejects an arrow that
   // implicitly returns the void result of a state setter.
-  const handleUncover = () => {
+  const handleUncover = (): void => {
     setUncovered(true)
   }
 
   return (
     <div {...stylex.props(styles.frame)}>
-      <div
-        // `undefined` rather than `false`: an explicit `aria-hidden="false"`
-        // is legal but it is noise in the accessibility tree, and it reads as
-        // if the covered state were still being managed once it is not.
-        aria-hidden={visible ? undefined : true}
-        inert={!visible}
-        {...stylex.props(styles.content, !visible && fogFor(density, strength))}
+      <Covered
+        density={density}
+        placeholder={placeholder}
+        strength={strength}
+        visible={visible}
       >
-        {!visible && placeholder !== undefined ? placeholder : children}
-      </div>
+        {children}
+      </Covered>
 
-      <button
-        // Block density reads its name off the visible notice. The verb-only
-        // densities show the verb alone — the threshold already sits in its
-        // own line beside them — so the sentence has to be supplied here.
-        aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
-        onClick={handleUncover}
-        type="button"
-        {...stylex.props(
-          styles.curtain,
-          curtainFor(density),
-          visible && styles.curtainLifted,
-        )}
-      >
-        {verbOnly ? null : (
-          <span {...stylex.props(styles.notice)}>{notice}</span>
-        )}
-        <span {...stylex.props(styles.action)}>
-          {verbOnly ? t('veil.revealShort') : t('veil.reveal')}
-        </span>
-      </button>
+      <Curtain
+        density={density}
+        lifted={visible}
+        notice={threshold('veil.locked', gated)}
+        onUncover={handleUncover}
+      />
     </div>
+  )
+}
+
+/**
+ * What is under the fog. While it is covered it is `inert` and `aria-hidden`,
+ * so neither a Tab press nor a screen reader can walk into a spoiler the eye
+ * cannot see, and with a placeholder the real children are not mounted at all
+ * — which is what keeps a covered name out of the served HTML.
+ */
+function Covered({
+  density,
+  strength,
+  visible,
+  placeholder,
+  children,
+}: {
+  readonly children: ReactNode
+  readonly density: Density
+  readonly placeholder: ReactNode
+  readonly strength: Strength
+  readonly visible: boolean
+}): ReactElement {
+  return (
+    <div
+      // `undefined` rather than `false`: an explicit `aria-hidden="false"`
+      // is legal but it is noise in the accessibility tree, and it reads as
+      // if the covered state were still being managed once it is not.
+      aria-hidden={visible ? undefined : true}
+      inert={!visible}
+      {...stylex.props(styles.content, !visible && fogFor(density, strength))}
+    >
+      {!visible && placeholder !== undefined ? placeholder : children}
+    </div>
+  )
+}
+
+/**
+ * The curtain over it, and the control that lifts it. It stays mounted after
+ * the lift instead of unmounting, because a node that disappears cannot fade;
+ * `visibility: hidden` is what then takes it out of the tab order and the
+ * accessibility tree once the fade is over.
+ */
+function Curtain({
+  density,
+  lifted,
+  notice,
+  onUncover,
+}: {
+  readonly density: Density
+  readonly lifted: boolean
+  readonly notice: string
+  readonly onUncover: () => void
+}): ReactElement {
+  const t = useT()
+  const verbOnly = density !== 'block'
+
+  return (
+    <button
+      // Block density reads its name off the visible notice. The verb-only
+      // densities show the verb alone — the threshold already sits in its
+      // own line beside them — so the sentence has to be supplied here.
+      aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
+      onClick={onUncover}
+      type="button"
+      {...stylex.props(
+        styles.curtain,
+        curtainFor(density),
+        lifted && styles.curtainLifted,
+      )}
+    >
+      {verbOnly ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
+      <span {...stylex.props(styles.action)}>
+        {t(verbOnly ? 'veil.revealShort' : 'veil.reveal')}
+      </span>
+    </button>
   )
 }
 
@@ -134,7 +191,7 @@ type Strength = NonNullable<SpoilerVeilProps['strength']>
  * smallest; a card is a drawing and a name at once, so its blur is a
  * drawing's; a block follows the strength its caller asked for.
  */
-function fogFor(density: Density, strength: Strength) {
+function fogFor(density: Density, strength: Strength): stylex.StyleXStyles {
   if (density === 'inline') {
     return styles.coveredTight
   }
@@ -145,7 +202,7 @@ function fogFor(density: Density, strength: Strength) {
 }
 
 /** The curtain's layout per density; `block` adds nothing to the base. */
-function curtainFor(density: Density) {
+function curtainFor(density: Density): stylex.StyleXStyles {
   if (density === 'inline') {
     return styles.curtainInline
   }

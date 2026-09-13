@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
@@ -26,7 +27,7 @@ import {
  * route still draws it as the horizon line, which is where the eye goes to
  * see what it did.
  */
-export function SiteBar() {
+export function SiteBar(): ReactElement {
   const { locale, t } = useLocale()
 
   return (

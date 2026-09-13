@@ -1,4 +1,5 @@
 import { screen, within } from '@testing-library/react'
+import type { ReactElement } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import { ep, renderWithProviders } from '~/test/providers'
@@ -6,9 +7,11 @@ import { ep, renderWithProviders } from '~/test/providers'
 import { SiteBar } from './SiteBar'
 
 // The switch is two <Link>s with their own test; here it is only a landmark.
-vi.mock(import('~/components/LocaleSwitch'), () => ({
-  LocaleSwitch: () => <nav aria-label="Language" />,
-}))
+function LocaleSwitch(): ReactElement {
+  return <nav aria-label="Language" />
+}
+
+vi.mock(import('~/components/LocaleSwitch'), () => ({ LocaleSwitch }))
 
 describe('SiteBar', () => {
   it('carries the wordmark, two page links, the bookmark and the language control, and nothing else', () => {
@@ -48,13 +51,13 @@ describe('SiteBar', () => {
 
     unmount()
 
-    const second = renderWithProviders(<SiteBar />, {
+    const view = renderWithProviders(<SiteBar />, {
       bookmark: { mode: 'season', season: 2, episode: 3 },
     })
 
     expect(screen.getByRole('button')).toHaveTextContent('S02E03')
 
-    second.unmount()
+    view.unmount()
 
     renderWithProviders(<SiteBar />, {
       bookmark: { mode: 'chapter', chapter: 1044 },

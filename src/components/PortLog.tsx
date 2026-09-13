@@ -7,7 +7,9 @@
  * · differs from the previous build (Catalogue + Split Studio) on
  *   macrostructure; theme is the project's locked system and does not rotate */
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
+import { styles } from '~/components/PortLog.styles'
 import { PortPlate } from '~/components/PortPlate'
 import { RecordTile } from '~/components/RecordTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -19,16 +21,12 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
-import {
-  color,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
 
+// Ports are numbered 01, 02, …: two digits so the markers on the spine are the
+// same width all the way down, and the rail never shifts under them.
+const NUMBER_WIDTH = 2
+
+/** What the log needs to draw one port and to place the horizon among them. */
 export type PortLogProps = {
   /** The places, in the order the ship reaches them. */
   readonly bookmark: Bookmark
@@ -51,7 +49,7 @@ export type PortLogProps = {
  * the open ports are a prefix, and the horizon is one element between two
  * runs, the same construction as the route on the landing page.
  */
-export function PortLog({ entries, bookmark }: PortLogProps) {
+export function PortLog({ entries, bookmark }: PortLogProps): ReactElement {
   const open = entries.filter((entry) => isRevealed(entry, bookmark))
   const covered = entries.filter((entry) => !isRevealed(entry, bookmark))
 
@@ -100,10 +98,19 @@ type PortProps = {
   readonly total: number
 }
 
-function Port({ entry, index, total, bookmark, open }: PortProps) {
+/**
+ * One port of call: the rail on the left, then the line that says which stage
+ * this is and when it opens, then the spread under whatever fog it is owed.
+ */
+function Port({
+  entry,
+  index,
+  total,
+  bookmark,
+  open,
+}: PortProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
-  const number = String(index + 1).padStart(2, '0')
 
   return (
     <li
@@ -112,31 +119,10 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
       id={open ? entry.id : undefined}
       {...stylex.props(styles.row)}
     >
-      <div
-        aria-hidden="true"
-        {...stylex.props(styles.rail)}
-      >
-        <span
-          {...stylex.props(
-            styles.spine,
-            open ? styles.spineOpen : styles.spineCovered,
-          )}
-        />
-        <span
-          {...stylex.props(
-            styles.marker,
-            open ? styles.markerOpen : styles.markerCovered,
-          )}
-        >
-          {number}
-        </span>
-        <span
-          {...stylex.props(
-            styles.spine,
-            open ? styles.spineOpen : styles.spineCovered,
-          )}
-        />
-      </div>
+      <Rail
+        number={String(index + 1).padStart(NUMBER_WIDTH, '0')}
+        open={open}
+      />
 
       <div {...stylex.props(styles.body)}>
         <p {...stylex.props(styles.stage)}>
@@ -155,21 +141,7 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
 
         <SpoilerVeil
           gated={entry}
-          // Under fog the served HTML carries no name, no drawing and no
-          // colour: a bare plate and a generic line stand in for the entry.
-          placeholder={
-            <div {...stylex.props(styles.spread)}>
-              <div {...stylex.props(styles.plate)}>
-                <PortPlate />
-              </div>
-              <div {...stylex.props(styles.dossier)}>
-                <h2 {...stylex.props(styles.name)}>{t('places.foggedName')}</h2>
-                <p {...stylex.props(styles.summary)}>
-                  {threshold('places.foggedDescription', entry)}
-                </p>
-              </div>
-            </div>
-          }
+          placeholder={<FoggedSpread entry={entry} />}
           revealed={open}
           strength="media"
         >
@@ -183,6 +155,69 @@ function Port({ entry, index, total, bookmark, open }: PortProps) {
   )
 }
 
+/**
+ * The spine through this port with its number on it: gold and solid above the
+ * horizon, hairline and dashed below. Drawn for the eye alone, so the whole
+ * column is hidden from the accessibility tree — the stage line beside it says
+ * the same thing in words.
+ */
+function Rail({
+  number,
+  open,
+}: {
+  readonly number: string
+  readonly open: boolean
+}): ReactElement {
+  // One object for both stretches: the spine above the marker and the spine
+  // below it are the same line, and nothing may ever draw them differently.
+  const spine = stylex.props(
+    styles.spine,
+    open ? styles.spineOpen : styles.spineCovered,
+  )
+
+  return (
+    <div
+      aria-hidden="true"
+      {...stylex.props(styles.rail)}
+    >
+      <span {...spine} />
+      <span
+        {...stylex.props(
+          styles.marker,
+          open ? styles.markerOpen : styles.markerCovered,
+        )}
+      >
+        {number}
+      </span>
+      <span {...spine} />
+    </div>
+  )
+}
+
+/**
+ * What stands in for a port the reader has not reached. It is the same shape
+ * as the open spread and carries none of its content: the served HTML has no
+ * name, no drawing and no colour, only the bare plate and a generic line.
+ */
+function FoggedSpread({ entry }: { readonly entry: Entity }): ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+
+  return (
+    <div {...stylex.props(styles.spread)}>
+      <div {...stylex.props(styles.plate)}>
+        <PortPlate />
+      </div>
+      <div {...stylex.props(styles.dossier)}>
+        <h2 {...stylex.props(styles.name)}>{t('places.foggedName')}</h2>
+        <p {...stylex.props(styles.summary)}>
+          {threshold('places.foggedDescription', entry)}
+        </p>
+      </div>
+    </div>
+  )
+}
+
 /** An open port: the plate beside the dossier. */
 function Spread({
   entry,
@@ -190,7 +225,7 @@ function Spread({
 }: {
   readonly bookmark: Bookmark
   readonly entry: Entity
-}) {
+}): ReactElement {
   const { locale } = useLocale()
   const dossier = dossierOf(entry)
 
@@ -224,7 +259,7 @@ function Spread({
  * than veiled: an arc opens no later than any place filed under it (the
  * data test holds that), so an open place always has an open arc.
  */
-function Facts({ dossier }: { readonly dossier: PlaceDossier }) {
+function Facts({ dossier }: { readonly dossier: PlaceDossier }): ReactElement {
   const { locale, t } = useLocale()
   const arc = getEntity(dossier.arc)
 
@@ -252,13 +287,14 @@ function Facts({ dossier }: { readonly dossier: PlaceDossier }) {
   )
 }
 
+/** One row of the ledger: the term in small caps, the value beside it. */
 function Fact({
   label,
   value,
 }: {
   readonly label: string
   readonly value: string
-}) {
+}): ReactElement {
   return (
     <div {...stylex.props(styles.fact)}>
       <dt {...stylex.props(styles.factLabel)}>{label}</dt>
@@ -278,7 +314,7 @@ function FiledHere({
 }: {
   readonly bookmark: Bookmark
   readonly ids: readonly string[]
-}) {
+}): ReactElement {
   const { t } = useLocale()
   const records = ids
     .map((id) => getEntity(id))
@@ -290,17 +326,19 @@ function FiledHere({
       {records.length === 0 ?
         <p {...stylex.props(styles.filedNone)}>{t('places.filedNone')}</p>
       : <ul {...stylex.props(styles.crew)}>
-          {records.map((record) => (
-            <li
-              key={record.id}
-              {...stylex.props(styles.crewItem)}
-            >
-              <RecordTile
-                bookmark={bookmark}
-                entry={record}
-              />
-            </li>
-          ))}
+          {records.map((record) => {
+            return (
+              <li
+                key={record.id}
+                {...stylex.props(styles.crewItem)}
+              >
+                <RecordTile
+                  bookmark={bookmark}
+                  entry={record}
+                />
+              </li>
+            )
+          })}
         </ul>
       }
     </div>
@@ -311,7 +349,7 @@ function FiledHere({
  * The reader's position on the spine: a gold tick and a line across the
  * body, labelled. With no bookmark it sits above the first port and says so.
  */
-function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
+function Horizon({ bookmark }: { readonly bookmark: Bookmark }): ReactElement {
   const { t } = useLocale()
   const set = bookmark !== null
 
@@ -346,225 +384,3 @@ function Horizon({ bookmark }: { readonly bookmark: Bookmark }) {
     </li>
   )
 }
-
-const styles = stylex.create({
-  log: { display: 'grid', listStyleType: 'none', paddingInlineStart: 0 },
-
-  // The rail is a narrow first column; the body takes the rest. Rows have no
-  // gap of their own, so the spine runs unbroken from one port to the next.
-  row: {
-    columnGap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': '2.75rem minmax(0, 1fr)',
-      '@media (min-width: 40rem)': '3.5rem minmax(0, 1fr)',
-    },
-    scrollMarginBlockStart: space.xl,
-  },
-  // Three rows: a stretch of spine the height of the body's top padding, so
-  // the marker sits level with the stage label, the marker, and the rest.
-  rail: {
-    display: 'grid',
-    gridTemplateRows: `${space.lg} auto minmax(0, 1fr)`,
-    justifyItems: 'center',
-  },
-  spine: {
-    borderInlineStartStyle: 'solid',
-    borderInlineStartWidth: rule.fine,
-    display: 'block',
-    height: '100%',
-    width: 0,
-  },
-  spineOpen: { borderInlineStartColor: color.accent },
-  spineCovered: {
-    borderInlineStartColor: color.rule2,
-    borderInlineStartStyle: 'dashed',
-  },
-  // The port number in a ring: the numbered stage label the macrostructure
-  // asks for, drawn as a mark on the spine rather than set in the margin.
-  marker: {
-    borderRadius: radius.pill,
-    borderStyle: 'solid',
-    borderWidth: rule.fine,
-    alignItems: 'center',
-    backgroundColor: color.paper,
-    display: 'grid',
-    fontFamily: font.mono,
-    fontSize: text.base,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    justifyContent: 'center',
-    lineHeight: 1,
-    height: '2.75rem',
-    width: '2.75rem',
-  },
-  markerOpen: { borderColor: color.accent, color: color.ink },
-  markerCovered: { borderColor: color.rule2, color: color.muted },
-
-  body: {
-    gap: space.md,
-    display: 'grid',
-    paddingBlockEnd: space.xl2,
-    paddingBlockStart: space.lg,
-    minWidth: 0,
-  },
-  // Sits level with the marker: one line, the stage and the episode, and
-  // the only thing besides the number that a covered port says about itself.
-  stage: {
-    alignItems: 'baseline',
-    columnGap: space.md,
-    display: 'flex',
-    flexWrap: 'wrap',
-    lineHeight: leading.body,
-    rowGap: space.xs3,
-    minHeight: '2.75rem',
-  },
-  stageLabel: {
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    textTransform: 'uppercase',
-  },
-  stageOpen: { color: color.accent },
-  stageCovered: { color: color.muted },
-  stageEpisode: { color: color.ink2, fontSize: text.base },
-
-  // The spread: plate beside dossier from 60rem, stacked below it.
-  spread: {
-    alignItems: 'start',
-    columnGap: space.xl,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 60rem)': 'minmax(0, 4fr) minmax(0, 8fr)',
-    },
-    rowGap: space.lg,
-  },
-  plate: {
-    padding: space.sm,
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    overflow: 'hidden',
-    aspectRatio: '1',
-    backgroundColor: color.paper2,
-    maxWidth: '22rem',
-    width: '100%',
-  },
-  dossier: { gap: space.md, display: 'grid', minWidth: 0 },
-  name: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    fontWeight: 800,
-    letterSpacing: '-0.025em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  summary: {
-    color: color.ink2,
-    fontSize: text.lg,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
-  },
-
-  facts: {
-    borderBlockStyle: 'solid',
-    paddingBlock: space.md,
-    borderBlockColor: color.rule,
-    borderBlockWidth: rule.hair,
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
-    },
-    rowGap: space.sm,
-  },
-  fact: { gap: space.xs3, display: 'grid', minWidth: 0 },
-  factLabel: {
-    color: color.muted,
-    fontSize: text.xs,
-    fontWeight: 600,
-    letterSpacing: '0.08em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  factValue: {
-    color: color.ink,
-    fontSize: text.base,
-    fontWeight: 600,
-    lineHeight: leading.body,
-    marginInlineStart: 0,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  entry: {
-    color: color.ink2,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '60ch',
-  },
-
-  filed: { gap: space.sm, display: 'grid' },
-  filedTitle: {
-    color: color.ink2,
-    fontFamily: font.body,
-    fontSize: text.base,
-    fontWeight: 600,
-    lineHeight: leading.body,
-  },
-  filedNone: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-  },
-  crew: {
-    gap: space.md,
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 14rem), 1fr))',
-    listStyleType: 'none',
-    paddingInlineStart: 0,
-  },
-  crewItem: { minWidth: 0 },
-
-  // The horizon: a short row, the tick on the spine, the line across the
-  // body and its label.
-  horizonRow: { alignItems: 'center' },
-  horizonRail: {
-    gridTemplateRows: 'minmax(0, 1fr) auto minmax(0, 1fr)',
-    height: '100%',
-  },
-  tick: {
-    borderBlockStartStyle: 'solid',
-    borderBlockStartWidth: rule.fine,
-    display: 'block',
-    height: 0,
-    width: '1.25rem',
-  },
-  tickSet: { borderBlockStartColor: color.accent },
-  tickUnset: { borderBlockStartColor: color.rule2 },
-  horizonLabel: {
-    marginBlock: space.md,
-    borderBlockStartStyle: 'solid',
-    borderBlockStartWidth: rule.fine,
-    fontFamily: font.mono,
-    fontSize: text.xs,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    lineHeight: leading.body,
-    paddingBlockStart: space.xs,
-    textTransform: 'uppercase',
-  },
-  horizonSet: { borderBlockStartColor: color.accent, color: color.accent },
-  horizonUnset: {
-    borderBlockStartColor: color.rule2,
-    borderBlockStartStyle: 'dashed',
-    color: color.muted,
-  },
-})

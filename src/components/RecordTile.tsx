@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
@@ -28,6 +29,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   ship: 'kind.ship',
 }
 
+/** The record to file and the reader it is filed for. */
 export type RecordTileProps = {
   readonly bookmark: Bookmark
   readonly entry: Entity
@@ -43,7 +45,7 @@ export type RecordTileProps = {
  * Used wherever a page points at the records filed beside the one it is
  * about: the two neighbours on a character page, the crew a port files.
  */
-export function RecordTile({ entry, bookmark }: RecordTileProps) {
+export function RecordTile({ entry, bookmark }: RecordTileProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
 
@@ -80,7 +82,12 @@ export function RecordTile({ entry, bookmark }: RecordTileProps) {
   )
 }
 
-function Name({ entry }: { readonly entry: Entity }) {
+/**
+ * The name, and where it leads. A character and a place each have a page to
+ * point at; an arc and a ship do not, so their names are plain text rather
+ * than a link that would go nowhere.
+ */
+function Name({ entry }: { readonly entry: Entity }): ReactElement {
   const { locale } = useLocale()
   const label = entry.name[locale]
 

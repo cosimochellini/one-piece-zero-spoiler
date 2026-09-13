@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
+import type { Gated } from '~/lib/progress/spoiler'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { SpoilerVeil } from './SpoilerVeil'
@@ -9,7 +10,9 @@ import { SpoilerVeil } from './SpoilerVeil'
 const covered = <p data-testid="secret">Spoiler body</p>
 
 /** A record filed at the same number in both units, for tests that read one. */
-const at = (n: number) => ({ revealedAtEpisode: n, revealedAtChapter: n })
+function at(n: number): Gated {
+  return { revealedAtEpisode: n, revealedAtChapter: n }
+}
 
 describe('SpoilerVeil', () => {
   it('hides the content from assistive technology while it is covered', () => {

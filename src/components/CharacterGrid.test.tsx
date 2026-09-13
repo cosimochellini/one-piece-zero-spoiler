@@ -1,4 +1,4 @@
-import { screen, within } from '@testing-library/react'
+import { type RenderResult, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -64,7 +64,10 @@ const sections: readonly BookSection[] = [
   { arc: lateArc, characters: entries.slice(2) },
 ]
 
-function book(episode: null | number, locale: 'en' | 'it' = 'en') {
+function book(
+  episode: null | number,
+  locale: 'en' | 'it' = 'en',
+): RenderResult {
   const bookmark = episode === null ? null : ep(episode)
   return renderWithProviders(
     <CharacterGrid
@@ -89,9 +92,11 @@ describe('CharacterGrid', () => {
     book(10)
 
     // Once as a crest and once as a tile on the East Blue shelf.
-    for (const link of screen.getAllByRole('link', {
+    const luffyLinks = screen.getAllByRole('link', {
       name: /Monkey D\. Luffy/u,
-    })) {
+    })
+
+    for (const link of luffyLinks) {
       expect(link).toHaveAttribute('href', '/en/characters/monkey-d-luffy')
     }
 
@@ -104,7 +109,7 @@ describe('CharacterGrid', () => {
     // The covered name is not in the DOM at all, only its episode is.
     expect(within(fogBand()).queryByText('Nico Robin')).not.toBeInTheDocument()
     expect(within(fogBand()).getByText('Spoiler')).toBeInTheDocument()
-    expect(fogBand().querySelectorAll('svg svg')).toHaveLength(0)
+    expect(fogBand().querySelectorAll(':scope svg svg')).toHaveLength(0)
     expect(within(fogBand()).getByText('Episode 130')).toBeVisible()
   })
 
@@ -181,9 +186,12 @@ describe('CharacterGrid', () => {
     expect(
       screen.queryByRole('region', { name: /East Blue Saga/u }),
     ).not.toBeInTheDocument()
-    await expect(
-      screen.findByText('No open character is called “robin”.'),
-    ).resolves.toBeInTheDocument()
+
+    const empty = await screen.findByText(
+      'No open character is called “robin”.',
+    )
+
+    expect(empty).toBeInTheDocument()
   })
 
   it('announces the count once the typing has settled', async () => {
@@ -196,9 +204,9 @@ describe('CharacterGrid', () => {
     // screen reader hears one count and not one per letter.
     expect(screen.getByText('2 of 2 open characters shown')).toBeVisible()
 
-    await expect(
-      screen.findByText('1 of 2 open characters shown'),
-    ).resolves.toBeVisible()
+    const settled = await screen.findByText('1 of 2 open characters shown')
+
+    expect(settled).toBeVisible()
   })
 
   it('clears the search from the button beside the field', async () => {

@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { useLocale } from '~/i18n/LocaleContext'
 import { type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
@@ -38,7 +39,7 @@ function remember(next: Locale): void {
  * reader on a character's page gets the same page in the other language and
  * not the landing.
  */
-export function LocaleSwitch() {
+export function LocaleSwitch(): ReactElement {
   const { locale, t } = useLocale()
 
   return (
@@ -87,12 +88,17 @@ export function LocaleSwitch() {
   )
 }
 
+// `inline-flex` in three declarations: the switch, the list inside it and
+// each link. All three have to sit on the bar's own line, beside the controls
+// rather than under them, and they have to agree on that or the bar wraps.
+const INLINE_FLEX = 'inline-flex'
+
 const styles = stylex.create({
-  nav: { display: 'inline-flex' },
+  nav: { display: INLINE_FLEX },
   list: {
     gap: space.xs2,
     paddingInline: 0,
-    display: 'inline-flex',
+    display: INLINE_FLEX,
     listStyleType: 'none',
   },
   link: {
@@ -107,7 +113,7 @@ const styles = stylex.create({
       ':hover': color.accent,
       ':active': color.ink,
     },
-    display: 'inline-flex',
+    display: INLINE_FLEX,
     fontFamily: font.body,
     fontSize: text.xs,
     fontWeight: 600,

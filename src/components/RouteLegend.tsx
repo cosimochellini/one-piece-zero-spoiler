@@ -1,8 +1,10 @@
 import * as stylex from '@stylexjs/stylex'
+import type { ReactElement } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
+/** The three counts the legend explains, each taken from the live archive. */
 export type RouteLegendProps = {
   readonly covered: number
   readonly filed: number
@@ -17,7 +19,11 @@ export type RouteLegendProps = {
  * at render time. None of them is a claim about the project's size or reach,
  * which is the only reason figures are allowed on this page at all.
  */
-export function RouteLegend({ open, covered, filed }: RouteLegendProps) {
+export function RouteLegend({
+  open,
+  covered,
+  filed,
+}: RouteLegendProps): ReactElement {
   const t = useT()
 
   return (
@@ -43,6 +49,7 @@ export function RouteLegend({ open, covered, filed }: RouteLegendProps) {
 
 type Swatch = 'covered' | 'filed' | 'open'
 
+/** One line of the legend: the mark, what it means, and how many there are. */
 function Entry({
   swatch,
   value,
@@ -51,7 +58,7 @@ function Entry({
   readonly label: string
   readonly swatch: Swatch
   readonly value: number
-}) {
+}): ReactElement {
   return (
     <div {...stylex.props(styles.entry)}>
       {/*
@@ -73,7 +80,7 @@ function Entry({
  * fogged stretch with a hollow one, and the two waypoint marks side by side
  * for the whole archive.
  */
-function SwatchMark({ kind }: { readonly kind: Swatch }) {
+function SwatchMark({ kind }: { readonly kind: Swatch }): ReactElement {
   return (
     <svg
       aria-hidden="true"
