@@ -10,7 +10,7 @@ import { wholeCakeArt } from './whole-cake'
 import { wanoArt } from './wano'
 import { eggheadArt } from './egghead'
 
-export type { Role, Stroke } from './stroke'
+export type { Stroke } from './stroke'
 
 /**
  * Every line drawing, one per record, keyed by the record's id. The drawings

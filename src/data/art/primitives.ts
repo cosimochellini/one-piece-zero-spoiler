@@ -6,7 +6,7 @@ import type { Role, Stroke } from './stroke'
  * live in the 160x200 box of `ART_VIEWBOX`.
  */
 
-export const n = (value: number) => String(Math.round(value * 10) / 10)
+const n = (value: number) => String(Math.round(value * 10) / 10)
 
 export const circle = (cx: number, cy: number, r: number) =>
   `M${n(cx - r)} ${n(cy)} a${n(r)} ${n(r)} 0 1 0 ${n(2 * r)} 0 a${n(r)} ${n(r)} 0 1 0 ${n(-2 * r)} 0`
