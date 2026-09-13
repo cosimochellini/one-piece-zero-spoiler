@@ -18,19 +18,18 @@
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, rmSync } from 'node:fs'
-import { dirname, join, resolve } from 'node:path'
+import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 
-const repoRoot = resolve(import.meta.dirname, '..')
+const repoRoot = path.resolve(import.meta.dirname, '..')
 
 // bin/fallow is a Node shim that require.resolve()s the platform package from
 // optionalDependencies, so never install with --omit=optional.
-const local = join(repoRoot, 'node_modules', '.bin', 'fallow')
+const local = path.join(repoRoot, 'node_modules', '.bin', 'fallow')
 const command = existsSync(local) ? local : 'fallow'
 
-const sarifPath = join(repoRoot, '.gate', 'fallow.sarif')
-mkdirSync(dirname(sarifPath), { recursive: true })
+const sarifPath = path.join(repoRoot, '.gate', 'fallow.sarif')
+mkdirSync(path.dirname(sarifPath), { recursive: true })
 // A stale report must never survive a failed run.
 rmSync(sarifPath, { force: true })
 

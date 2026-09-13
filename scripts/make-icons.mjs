@@ -21,31 +21,50 @@ function png(size) {
   ])
 }
 
+const HEADER_BYTES = 6
+const ENTRY_BYTES = 16
+// An edge of 256 is stored as 0: the field is one byte, so 256 does not fit
+// and 0 is how the format spells it.
+const OVERSIZE_EDGE = 256
+
+// The file header: reserved, then the type (1 is an icon, 2 a cursor), then
+// how many directory entries follow.
+function icoHeader(count) {
+  const header = Buffer.alloc(HEADER_BYTES)
+  header.writeUInt16LE(0, 0)
+  header.writeUInt16LE(1, 2)
+  header.writeUInt16LE(count, 4)
+  return header
+}
+
+// One directory entry, pointing at an image already laid out in the file.
+function icoEntry({ size, byteLength, offset }) {
+  const edge = size === OVERSIZE_EDGE ? 0 : size
+  const entry = Buffer.alloc(ENTRY_BYTES)
+  entry.writeUInt8(edge, 0) // width
+  entry.writeUInt8(edge, 1) // height
+  entry.writeUInt8(0, 2) // palette
+  entry.writeUInt8(0, 3) // reserved
+  entry.writeUInt16LE(1, 4) // colour planes
+  entry.writeUInt16LE(32, 6) // bits per pixel
+  entry.writeUInt32LE(byteLength, 8)
+  entry.writeUInt32LE(offset, 12)
+  return entry
+}
+
 // ICO container holding PNG-encoded images, which every current browser reads.
 function ico(images) {
-  const header = Buffer.alloc(6)
-  header.writeUInt16LE(0, 0) // reserved
-  header.writeUInt16LE(1, 2) // type: icon
-  header.writeUInt16LE(images.length, 4)
-
   const entries = []
-  let offset = 6 + 16 * images.length
+  // The images sit after the header and the whole directory, so every offset
+  // is known before a single byte of image data is copied.
+  let offset = HEADER_BYTES + ENTRY_BYTES * images.length
   for (const { size, data } of images) {
-    const entry = Buffer.alloc(16)
-    entry.writeUInt8(size === 256 ? 0 : size, 0) // width
-    entry.writeUInt8(size === 256 ? 0 : size, 1) // height
-    entry.writeUInt8(0, 2) // palette
-    entry.writeUInt8(0, 3) // reserved
-    entry.writeUInt16LE(1, 4) // colour planes
-    entry.writeUInt16LE(32, 6) // bits per pixel
-    entry.writeUInt32LE(data.length, 8)
-    entry.writeUInt32LE(offset, 12)
-    entries.push(entry)
+    entries.push(icoEntry({ size, byteLength: data.length, offset }))
     offset += data.length
   }
 
   return Buffer.concat([
-    header,
+    icoHeader(images.length),
     ...entries,
     ...images.map((image) => image.data),
   ])

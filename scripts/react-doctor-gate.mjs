@@ -18,9 +18,8 @@
  */
 import { spawnSync } from 'node:child_process'
 import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
-import { dirname, join, relative, resolve } from 'node:path'
+import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 
 const EXIT_CLEAN = 0
 const EXIT_FINDINGS = 1
@@ -30,8 +29,8 @@ const TIMEOUT_MS = 900_000
 const MAX_DURATION_SECONDS = 600
 const MAX_PRINTED = 50
 
-const repoRoot = resolve(import.meta.dirname, '..')
-const reportPath = join(repoRoot, '.gate', 'react-doctor.json')
+const repoRoot = path.resolve(import.meta.dirname, '..')
+const reportPath = path.join(repoRoot, '.gate', 'react-doctor.json')
 
 function fail(headline) {
   process.stderr.write(
@@ -49,7 +48,7 @@ function isObject(value) {
 // The package `exports` map hides ./package.json, so require.resolve cannot
 // find the binary. Look it up by path, then fall back to PATH.
 function resolveCli() {
-  const local = join(
+  const local = path.join(
     repoRoot,
     'node_modules',
     'react-doctor',
@@ -108,13 +107,13 @@ function assertChildSucceeded(child) {
 
 function readReport() {
   if (!existsSync(reportPath)) {
-    fail(`no report was written to ${relative(repoRoot, reportPath)}`)
+    fail(`no report was written to ${path.relative(repoRoot, reportPath)}`)
   }
   try {
     return JSON.parse(readFileSync(reportPath, 'utf8'))
   } catch (error) {
     fail(
-      `${relative(repoRoot, reportPath)} could not be parsed: ${String(error)}`,
+      `${path.relative(repoRoot, reportPath)} could not be parsed: ${String(error)}`,
     )
   }
 }
@@ -135,7 +134,7 @@ function readDiagnostics(report) {
   if (!Array.isArray(report.diagnostics)) {
     fail('report has no `diagnostics` array')
   }
-  return report.diagnostics.filter(isObject)
+  return report.diagnostics.filter((diagnostic) => isObject(diagnostic))
 }
 
 function assertNoToolError(report) {
@@ -177,8 +176,13 @@ function assertAnalysisComplete(report) {
 }
 
 /**
- * Anything whose severity cannot be read is counted as an error, never as harmless.
- * @param diagnostic
+ * Anything whose severity cannot be read is counted as an error, never as
+ * harmless: a report that changed shape must fail the gate rather than let an
+ * unrecognised finding through as a warning.
+ * @param {Record<string, unknown>} diagnostic - One entry of the report's
+ *   `diagnostics` array, already known to be an object but not otherwise
+ *   validated.
+ * @returns {boolean} Whether this finding is severe enough to fail the gate.
  */
 function isBlocking(diagnostic) {
   return diagnostic.severity !== 'warning'
@@ -190,11 +194,17 @@ function format(diagnostic) {
   return `    [${diagnostic.severity}] ${diagnostic.rule} ${site}\n        ${diagnostic.message}`
 }
 
-function main() {
-  mkdirSync(dirname(reportPath), { recursive: true })
-  // A stale report must never be able to produce a pass.
+// A stale report must never be able to produce a pass, so the previous run's
+// file is removed before the tool is given the chance to write a new one.
+function prepareReportPath() {
+  mkdirSync(path.dirname(reportPath), { recursive: true })
   rmSync(reportPath, { force: true })
+}
 
+// Everything that has to hold before a verdict may be read out of the report.
+// Each assertion exits 2 on its own, so reaching the return means the file on
+// disk is a complete analysis and not a partial or crashed one.
+function readTrustedReport() {
   const child = runDoctor()
   assertChildSucceeded(child)
 
@@ -203,19 +213,13 @@ function main() {
   assertNoToolError(report)
   assertAnalysisComplete(report)
 
-  const diagnostics = readDiagnostics(report)
-  const blocking = diagnostics.filter(isBlocking)
+  return report
+}
 
-  process.stdout.write(
-    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `
-      + `${blocking.length} blocking\n  report: ${relative(repoRoot, reportPath)}\n`,
-  )
-
-  if (blocking.length === 0) {
-    process.stdout.write('\nreact-doctor gate: PASSED\n')
-    process.exit(EXIT_CLEAN)
-  }
-
+// Only the first MAX_PRINTED findings are listed. The report file keeps the
+// rest, and a log that scrolls for pages buries the finding a reader opened it
+// for.
+function printBlockingFindings(blocking) {
   process.stdout.write('\n  blocking findings:\n')
   for (const diagnostic of blocking.slice(0, MAX_PRINTED)) {
     process.stdout.write(`${format(diagnostic)}\n`)
@@ -225,6 +229,26 @@ function main() {
       `    ... and ${blocking.length - MAX_PRINTED} more, see the report\n`,
     )
   }
+}
+
+function main() {
+  prepareReportPath()
+
+  const report = readTrustedReport()
+  const diagnostics = readDiagnostics(report)
+  const blocking = diagnostics.filter((diagnostic) => isBlocking(diagnostic))
+
+  process.stdout.write(
+    `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `
+      + `${blocking.length} blocking\n  report: ${path.relative(repoRoot, reportPath)}\n`,
+  )
+
+  if (blocking.length === 0) {
+    process.stdout.write('\nreact-doctor gate: PASSED\n')
+    process.exit(EXIT_CLEAN)
+  }
+
+  printBlockingFindings(blocking)
   process.stderr.write(
     `\nreact-doctor gate: FAILED with ${blocking.length} blocking finding(s)\n`,
   )

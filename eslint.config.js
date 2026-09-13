@@ -375,7 +375,7 @@ export default defineConfig(
         'error',
         {
           cases: { camelCase: true, kebabCase: true, pascalCase: true },
-          ignore: [/^\$[A-Za-z]+(\.[a-z]+)?\.tsx?$/u, /^__root\.tsx$/u, /^-/u],
+          ignore: [/^\$[A-Za-z]+\.(?:test\.)?tsx?$/u, /^__root\.tsx$/u, /^-/u],
         },
       ],
       // The repo documents itself in JSDoc blocks: `*`-prefixed lines, prose
@@ -718,6 +718,16 @@ export default defineConfig(
       // A configuration file is a list. Splitting it to satisfy a line count
       // would scatter decisions that belong together in one place.
       'max-lines': 'off',
+      // An ESLint plugin's default export is the plugin object, and reading a
+      // preset off it as `plugin.configs[...]` is the documented flat-config
+      // form. Both rules exist to catch a CommonJS interop mistake that this
+      // is not, and they fire on `stylex.vite` for the same reason.
+      'import-x/no-named-as-default': 'off',
+      'import-x/no-named-as-default-member': 'off',
+      // These files are a wall of long camelCase option names, which is what
+      // the entropy heuristic is measuring. `verbatimModuleSyntax` is not a
+      // credential.
+      'no-secrets/no-secrets': 'off',
     },
   },
 
