@@ -334,9 +334,9 @@ export const summitWarArt = {
     { d: circle(56, 92, 22) },
     { d: circle(112, 92, 22) },
     { d: 'M78 92 q8 -8 16 0' },
-    { d: 'M34 86 L12 76 M134 86 L156 76' },
-    { d: 'M44 112 L22 186 M68 112 L84 186', role: 'accent' },
-    { d: 'M100 112 L84 186 M124 112 L146 186', role: 'accent' },
+    { d: 'M34 86 L20 80 M134 86 L148 80' },
+    { d: 'M44 112 L26 186 M68 112 L84 186', role: 'accent' },
+    { d: 'M100 112 L84 186 M124 112 L142 186', role: 'accent' },
     { d: 'M30 150 h104', role: 'ambient', dashed: true },
   ],
 
@@ -481,14 +481,14 @@ export const summitWarArt = {
 
   // A championship belt, plate and strap.
   'jesus-burgess': [
-    { d: 'M10 84 h140 v40 h-140z' },
-    { d: 'M10 92 h140 M10 116 h140', role: 'soft' },
+    { d: 'M18 84 h124 v40 h-124z' },
+    { d: 'M18 92 h124 M18 116 h124', role: 'soft' },
     {
       d: dots([
-        [24, 104],
-        [40, 104],
-        [120, 104],
-        [136, 104],
+        [30, 104],
+        [44, 104],
+        [116, 104],
+        [130, 104],
       ]),
     },
     {
@@ -587,10 +587,10 @@ export const summitWarArt = {
 
   // A horned crown put down on a cushion.
   'avalo-pizarro': [
-    { d: 'M26 138 h108 l10 30 h-128z' },
-    { d: 'M16 168 h128', role: 'soft' },
-    { d: 'M26 138 q54 12 108 0', role: 'soft' },
-    { d: 'M16 168 l-6 8 M144 168 l6 8' },
+    { d: 'M30 138 h100 l8 30 h-116z' },
+    { d: 'M22 168 h116', role: 'soft' },
+    { d: 'M30 138 q50 12 100 0', role: 'soft' },
+    { d: 'M22 168 l-4 6 M138 168 l4 6' },
     { d: 'M48 132 V96 h64 v36z' },
     { d: 'M48 96 C44 66 38 50 26 38 C44 44 54 62 58 84', role: 'accent' },
     {
@@ -693,12 +693,12 @@ export const summitWarArt = {
 
   // A cap set on a sword laid across the rail.
   momonga: [
-    { d: 'M10 142 h140' },
-    { d: 'M10 150 h140', role: 'soft' },
+    { d: 'M18 142 h124' },
+    { d: 'M18 150 h124', role: 'soft' },
     { d: 'M34 150 V182 M126 150 V182' },
-    { d: 'M24 126 h112 M24 132 h112 M136 126 l10 3 l-10 3', role: 'accent' },
+    { d: 'M28 126 h104 M28 132 h104 M132 126 l8 3 l-8 3', role: 'accent' },
     { d: 'M44 120 h8 v18 h-8z' },
-    { d: 'M24 126 L10 126 M24 132 L10 132' },
+    { d: 'M28 126 L18 126 M28 132 L18 132' },
     { d: 'M56 114 C56 88 116 88 116 114z' },
     { d: 'M50 114 h72' },
     { d: 'M54 122 q32 10 64 0' },
