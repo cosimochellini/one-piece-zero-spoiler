@@ -17,6 +17,17 @@ npm run dev
 
 The dev server listens on http://localhost:3000.
 
+`npm install` also installs the git hooks. It does that through the `prepare`
+script rather than through lefthook's own postinstall, so the hooks land on a
+plain install without the project having to allow install scripts from its
+dependencies. To put them back by hand after a `.git` is recreated or a hook
+file is deleted, run `npx lefthook install`. To skip them for a single command,
+set `LEFTHOOK=0` for it — `LEFTHOOK=0 git commit` commits without running
+anything. CI sets `LEFTHOOK=0` for the whole workflow instead of per step: no
+hook has anything useful to add to a run that already executes `npm run check`,
+and it is also what keeps the release job's generated commit body away from
+commitlint.
+
 ## Scripts
 
 | Script                                      | Description                                                             |
@@ -33,6 +44,16 @@ The dev server listens on http://localhost:3000.
 | `npm run check`                             | Everything above, in the same order CI runs it                          |
 
 `npm run check` is what CI runs. Run it before pushing.
+
+The git hooks sit in front of that, never in place of it. `pre-commit` runs
+Prettier over the staged files and stages what it rewrote, runs ESLint over them
+at zero warnings, and then typechecks the whole project rather than the staged
+files, because a changed type breaks files that are not staged; it skips
+entirely during a merge or a rebase, which replays commits that were checked
+once already and is not the moment to argue about formatting. `commit-msg` puts
+the message through commitlint. `pre-push` runs the test suite. All three only
+shorten the loop: they see a subset of the work `npm run check` does, and that
+command, run by CI, is still what decides.
 
 ## Versioning and releases
 
@@ -94,11 +115,19 @@ gh release create vX.Y.Z --generate-notes
 
 Three details worth knowing before changing any of this:
 
-- **`scripts/validate-pr-title.mjs` and `.releaserc.json` must agree.** A type
-  the validator accepts but the release rules ignore would merge cleanly and
-  then release nothing. `scripts/validate-pr-title.test.mjs` reads
-  `.releaserc.json` and asserts the two maps are identical, so the drift fails
-  the test run rather than a release.
+- **`scripts/validate-pr-title.mjs`, `.releaserc.json` and
+  `commitlint.config.mjs` must agree.** A type the validator accepts but the
+  release rules ignore would merge cleanly and then release nothing.
+  `scripts/validate-pr-title.test.mjs` reads `.releaserc.json` and asserts the
+  two maps are identical, so the drift fails the test run rather than a release.
+  The commit-message linter is the third corner, and it cannot drift at all: it
+  imports `TYPE_BUMPS` and `MAX_TITLE_LENGTH` from the validator instead of
+  repeating them, so the type list has one home and the header cap is the pull
+  request title cap — anything shorter would make a local commit stricter than
+  the squashed subject it turns into. `scripts/commitlint-parity.test.mjs`
+  checks that the import is actually what the tool ends up enforcing, by
+  spawning the same binary the `commit-msg` hook runs over one message per
+  accepted type and over four that must be rejected.
 - **`revert` needs two release rules.** `{ revert: true }` only matches the body
   `git revert` writes (`This reverts commit <sha>.`), which a squashed pull
   request never carries because the squash body is blank. The
@@ -128,9 +157,50 @@ range of `typescript >=4.8.4 <6.1.0`. Upgrading TypeScript past 6.0 would break
 the type-aware ESLint rules, so the pin holds until `typescript-eslint` supports
 the native compiler.
 
-**Prettier owns formatting.** ESLint carries no stylistic rules
-(`stylisticTypeChecked` is deliberately not enabled) and
-`eslint-config-prettier` is applied last, so the two tools cannot disagree.
+**Prettier owns the whitespace, ESLint owns the choice of construct.**
+`eslint-config-prettier` is applied last, so every rule about where a character
+sits is switched off and the two tools cannot disagree about a line break. The
+one rule it disables that is not really about whitespace comes straight back on
+after it: `curly` is off in that config only because Prettier cannot re-indent a
+body it did not brace, and with `curly: all` there is nothing left for it to
+re-indent. What ESLint does carry is `stylisticTypeChecked`, which is enabled
+and is not a stylistic ruleset in the sense the name suggests: its rules pick
+between constructs that mean the same thing — `type` over `interface`, `??` over
+`||`, `T[]` over `Array<T>` — and none of those is a whitespace decision, so
+Prettier has nothing to say about any of them.
+
+Thirteen Prettier options are pinned rather than five. `endOfLine` and
+`bracketSameLine` only restate the defaults, which is the point: an editor that
+disagrees is then disagreeing with something written down.
+`singleAttributePerLine` and `objectWrap: collapse` make JSX and object literals
+wrap the same way every time instead of by whether the author's first draft
+happened to fit. `quoteProps: consistent` stops one key that needs quoting from
+leaving its neighbours bare. `proseWrap: always` is what fixes this file's line
+length. `experimentalTernaries` and `experimentalOperatorPosition: start` settle
+the last two placement questions Prettier used to leave to whoever typed the
+line. `prettier-plugin-packagejson` sorts `package.json` into the canonical key
+order, which is why the `scripts` block reads alphabetically rather than in the
+order the scripts were added, and why a new dependency lands in its slot instead
+of at the bottom of the list.
+
+**Git hooks run through lefthook.** `lefthook.yml` is the whole of it: one
+declarative file, globs and `{staged_files}` built in, and `stage_fixed` to
+re-stage what Prettier rewrote. Husky would mean a committed shell script per
+hook plus lint-staged on top, because husky itself knows nothing about what is
+staged, and that is two more moving parts for something lefthook does in one.
+The hooks themselves are described under Scripts; none of them is authoritative,
+and all of them are skipped wholesale in CI through `LEFTHOOK: '0'` in the
+workflow's `env` rather than per step.
+
+**`.git-blame-ignore-revs` names the reformat commits.** Widening the Prettier
+configuration rewrote seventy-five files in one commit, and `git blame` would
+otherwise credit every line in them to that commit and to nothing earlier. The
+file lists the revision; GitHub reads it with no configuration, and locally it
+takes one `git config blame.ignoreRevsFile .git-blame-ignore-revs`. Any future
+commit that only reformats belongs in it too. `.editorconfig` and `.vscode/`
+carry the same decisions into the editor — format on save with Prettier, ESLint
+fixes on save, the workspace TypeScript rather than the editor's own bundled
+one, and the three extensions that make all of it work.
 
 **Spoiler gating is decided on the server.** The reader's bookmark lives in the
 `opzs_ep` cookie, and `src/lib/progress/readBookmark.ts` reads it through
@@ -388,41 +458,211 @@ fallow.
 
 ## Quality gates
 
-Both gates block, locally and in CI.
+Three tools decide whether the tree is healthy — ESLint, react-doctor and fallow
+— and all three block, locally and in CI. A warning is the exception here rather
+than the middle setting: `npm run lint` runs at `--max-warnings=0`, every
+react-doctor finding blocks whatever severity it carries, and the one fallow
+rule still set to `warn` says in the file why it cannot be an error. A finding
+nobody has to act on is a finding nobody acts on, so anything not worth failing
+on is switched off by name with its reason beside it rather than demoted to a
+line in the log.
 
 - **react-doctor** runs through `scripts/react-doctor-gate.mjs`. The wrapper
   exists because react-doctor's crash path and its "blocked by findings" path
   both exit 1; the wrapper runs it with `--blocking none` so that any non-zero
   child exit means the tool itself failed, then decides the verdict from the
-  JSON report. Exit 1 means findings, exit 2 means the tool failed. Telemetry is
-  off (`--no-telemetry`), which also disables the remote score API — so the gate
-  is severity-based, not score-based. The Socket.dev supply-chain scan is
-  disabled via the `reactDoctor` key in `package.json` because it makes a
-  network call per dependency at error severity, which would turn CI red without
-  a code change.
+  JSON report. Exit 1 means findings, exit 2 means the tool failed. A report
+  that is not a complete analysis counts as a tool failure rather than a pass: a
+  skipped check, a project the `--max-duration` cut short, or a run where the
+  analysed and scanned file counts disagree all exit 2, because findings that
+  were never looked for are not an absence of findings. Telemetry is off
+  (`--no-telemetry`), which is an alias for `--no-score` and also disables the
+  remote score API, so the verdict is the presence of findings and never a
+  number.
 - **fallow** runs through `scripts/fallow-gate.mjs`, which forwards fallow's
   exit code and labels which class it was: 1 = findings, 2 = invalid config, 3+
   = analyzer failure. Note that `fallow --format json` exits 0 even with
   critical health findings, so the gate uses the human format.
+  `--fail-on-issues` is deliberately not passed: it promotes every warn rule to
+  error for that one run, which would silently override the severity policy
+  `.fallowrc.json` sets on purpose.
 
 Both gates write a machine-readable report under `.gate/` (`react-doctor.json`,
 `fallow.sarif`), which CI uploads as the `gate-reports` artifact on every run,
 red or green.
 
+**react-doctor is configured in `doctor.config.ts`, and nowhere else.** It used
+to be a `reactDoctor` key in `package.json`; the two cannot coexist, because
+which one wins when both are present is undocumented, so the key is gone rather
+than kept as a duplicate that might or might not be read.
+
+**Every finding blocks, whatever severity it carries.** `isBlocking()` in the
+wrapper is a function that returns `true` and says why. The alternative — fail
+on errors, print the warnings — leaves the warnings with nowhere to go; eleven
+had accumulated that way before the gate was tightened. A rule that should not
+fire at all is turned off in the configuration with its reason, not demoted.
+`blocking: 'warning'` in the configuration says the same thing to the bare CLI,
+so `npx react-doctor` agrees with the gate instead of being more forgiving than
+it.
+
+**Inline disables are neutralised, twice.** `respectInlineDisables: false` in
+the configuration and `--no-respect-inline-disables` on the command line say the
+same thing, so a comment cannot walk a finding past the gate and the flag still
+holds if the file drifts. **The cache is off** for a related reason: it is keyed
+on the configuration, and a verdict replayed from an older `doctor.config.ts`
+would be a pass nobody earned. CI runners are fresh anyway, so this costs only a
+local rerun.
+
+All five categories — Security, Bugs, Performance, Accessibility,
+Maintainability — are stamped `error`, and then seventy-five rules are listed
+one by one, because a category severity re-stamps the rules that are already
+enabled and never activates one that ships disabled. Those seventy-five are
+every opt-out rule that applies to this stack: a React 19 app on TanStack Start,
+with StyleX rather than Tailwind, no React Native, no react-three-fiber, no
+WebGL. The families left out are left out for a reason, and each is written down
+beside the list:
+
+- `design` is tagged test-noise upstream, and its rules encode a different
+  visual system from the one this site is drawn in.
+- `project-analysis` — unused export, unused file, unused dependency, circular
+  dependency — cannot be trusted here. react-doctor honours `.prettierignore`,
+  which hides `src/routeTree.gen.ts`, and that generated file is the only
+  importer of the route modules, so every `Route` export would read as unused.
+  Dead code is fallow's job, and fallow's entry globs and that same ignore are
+  kept as one atomic pair.
+- `jsx-props-no-spreading` would fire on every StyleX call site, all of which
+  are `{...stylex.props(…)}` by construction, and `react-in-jsx-scope` predates
+  the automatic JSX runtime this project compiles with (`jsx: react-jsx`).
+- `forbid-component-props`, `jsx-max-depth`, `no-many-boolean-props`,
+  `no-multi-comp`, `no-set-state` and `prefer-useReducer` each want a project
+  decision this project has not made, or repeat a ceiling ESLint already
+  enforces.
+
+One rule that is on by default is switched off by name. `js-set-map-lookups`
+reads `foldName(name).includes(needle)` as a scan over an array when it is a
+substring search over one folded name, and a Set cannot replace a substring
+search. The Socket.dev supply-chain scan stays disabled too, for the reason it
+always was: it makes a network call per dependency at error severity, which
+would turn CI red without a code change.
+
+**Every fallow rule that ships as a warning is now an error** — the five CSS
+rules, private type leaks, prop drilling, thin wrappers, stale suppressions and
+the rest — with two exceptions. `coverage-gaps` stays a warning because the
+route modules have no static test path and `vitest.config.ts` excludes them from
+coverage deliberately, so the rule reports a decision rather than an omission.
+`feature-flags` is off because there are no flags to detect. A third rule is off
+without ever having been a warning: `policy-violation`, for the reason it always
+was, which is that there is no rule pack to enforce and fallow reports an
+unconfigured check as "nothing was measured" rather than as a pass.
+
+**`boundary-violation` is on, so a green fallow run now says something about the
+architecture.** It was off for as long as there was no `boundaries` block to
+give it, and a `fallow gate: PASSED` therefore meant nothing about which module
+may reach which. Eight zones divide `src`, and what each may import is the
+architecture written down:
+
+- **tests** (`src/test/**` and every `*.test.ts[x]`) is listed first, because a
+  file matching two zones takes the first one and a test beside a component is a
+  test. It carries no rule of its own, so a suite may reach the render helpers —
+  and no production zone lists it, so nothing may reach a suite.
+- **routes** (`src/routes/**`, `src/router.tsx`) may import everything below it.
+- **components** may import `ui`, the library, the records, the dictionaries and
+  the styles, but never a route.
+- **ui** (`src/components/ui/**`) may import the styles and nothing else, which
+  is what keeps a button from knowing the archive exists.
+- **lib**, **data** and **i18n** may reach each other and the styles, and none
+  of the three may import a component or a route.
+- **styles** imports nothing.
+
+`requireAllFiles` is what holds the zones honest: a new file under `src` that
+matches no zone fails the gate instead of quietly escaping it. The
+`allowUnmatched` list is the configuration files and `scripts/**`, which are
+outside the application rather than unclassified within it.
+
+**Duplication is capped at one per cent over a floor of eight lines** (`mild`
+mode, with the compiler-appended `src/styles/global.css` excepted). The cap
+earns its keep: it found three clone groups that were each a real omission — the
+settle orchestration written out three times and already drifted by a step, a
+fifteen-line stylesheet the seal and the plate carried verbatim, and the heading
+markup both bands of the signal book repeated.
+
+**Complexity is capped at eight cyclomatic and eight cognitive**, roughly two
+and a half times stricter than the default, with a sixty-line unit on top of
+that. There is one threshold override, and it raises only the unit size, only
+for the test files, to two hundred lines: a `describe()` block is one unit, and
+a suite is long by design. `typeAware` is on against `tsconfig.json` at
+`best-effort`, so the rules that need types get them and a file outside the
+program degrades instead of failing the run.
+
 Two entries in `.fallowrc.json` deserve an explanation:
 
-- `entry` lists the route modules, `src/router.tsx` and `scripts/*.mjs`.
-  Ignoring the generated `src/routeTree.gen.ts` removes the only static importer
-  of the route modules, so the ignore and the `entry` globs are one atomic pair
-  — never add one without the other.
-- `ignoreDependencies` lists `react-doctor` (used only as a CLI binary from an
-  npm script, which fallow cannot observe) and `@tanstack/react-start` (so far
+- `entry` lists the route modules, `src/router.tsx`, `scripts/*.mjs`,
+  `doctor.config.ts` and `commitlint.config.mjs`. Ignoring the generated
+  `src/routeTree.gen.ts` removes the only static importer of the route modules,
+  so the ignore and the `entry` globs are one atomic pair — never add one
+  without the other. The two configuration files are entries for the same kind
+  of reason: nothing in the tree imports them, and the tool that reads each one
+  is not something fallow can see.
+- `ignoreDependencies` lists `@tanstack/react-start` alone. It is so far
   imported only by `vite.config.ts`, which fallow classifies as non-production;
   it is a genuine runtime dependency and the entry can be dropped once a route
-  imports it).
-- `rules` turns off `boundary-violation` and `policy-violation`. There is no
-  `boundaries` preset and no rule pack to enforce yet, so fallow reports both as
-  "not configured, nothing was measured" and asks to either configure them or
-  state that the check is not wanted. Turn them back on together with a
-  `boundaries` preset once `src/` grows a module structure worth enforcing —
-  until then a `fallow gate: PASSED` says nothing about architecture boundaries.
+  imports it. `react-doctor` used to sit beside it, because a binary invoked
+  from an npm script is invisible to fallow — `doctor.config.ts` imports
+  `react-doctor/api`, so the dependency is now visible in the source and the
+  entry is gone.
+
+**ESLint is the third gate, and it carries twenty-three plugins.** They stand
+behind `npm run lint`, grouped by what each can actually prove: accessibility
+(`eslint-plugin-jsx-a11y-x` at `strict` — the es-tooling fork of the same rule
+set, because the original's peer range stops at ESLint 9 and this repo is on
+10), React correctness (`eslint-plugin-react-hooks` as the sole authority on
+hooks, eslint-react at `strict-type-checked` for everything else with its two
+overlapping rules turned off, the Fast Refresh boundary rule, and the
+you-might-not-need-an-effect detector), TanStack Router's own rules, StyleX's
+own six, import hygiene and cycles through import-x, one deterministic order for
+imports, exports, type members and JSX props through perfectionist, unicorn in
+full, sonarjs, regexp, de Morgan, promise, security, dependency hygiene, secret
+detection, JSDoc on every public export, and the vitest, Testing Library and
+jest-dom rule sets on the suites. typescript-eslint runs `strictTypeChecked` and
+`stylisticTypeChecked`, type-aware, against the whole program.
+
+Size and shape carry ceilings: complexity eight, three levels of nesting, three
+parameters, sixty lines in a function, three hundred in a file, fifteen
+statements, and a cognitive complexity of ten. They are the ceiling for a unit a
+reviewer can hold in their head at once, not a target to grow into. Each scope
+that relaxes one of them names what it relaxes and why, and relaxes nothing
+else: a test drops the size limits and the duplicate-string rule, because a
+scenario reads top to bottom as one thing and repeats the strings it asserts on;
+a route module drops `only-throw-error`, because TanStack Router signals a
+redirect by throwing a plain object the router catches, and drops the Fast
+Refresh rule, because a file route has no component export to anchor to; the
+records, the dictionaries and the token modules drop the magic-number and
+duplicate-string rules, because they are content rather than code and every
+number in them is the value itself; `src/data/art/primitives.ts` takes a fourth
+parameter, because `polygon(cx, cy, r, sides)` reads as geometry where the
+options object a ceiling of three would force reads as bookkeeping; the
+configuration files keep their default exports; and the gate scripts may spawn a
+child process and write to stdout, which is their entire contract with CI.
+
+**A suppression has to name its rule and carry a reason.**
+`no-unlimited-disable` rejects a bare `eslint-disable`,
+`eslint-comments/require-description` rejects one written without a `-- reason`,
+and `disable-enable-pair` refuses to let a block disable run to the end of the
+file. `reportUnusedDisableDirectives` and `reportUnusedInlineConfigs` are errors
+as well, so a suppression that has outlived the thing it silenced fails the lint
+rather than sitting there looking load-bearing. Four exist in the tree today:
+
+- `src/routes/__root.tsx` disables `unicorn/text-encoding-identifier-case` on
+  the charset attribute, which HTML requires to be an ASCII case-insensitive
+  match for `utf-8`; `utf8` is a valid encoding label everywhere else, which is
+  what the rule is enforcing.
+- `src/routes/__root.tsx` disables `import-x/no-unresolved` on the StyleX
+  stylesheet id, which `@stylexjs/unplugin` mints at dev time and which exists
+  on no filesystem for any resolver to be pointed at.
+- `src/data/types.ts` disables `perfectionist/sort-union-types` across the
+  `tint` union, because red round to wine is the hue wheel the tokens are
+  written in, and which hues sit next to each other is the entire content of
+  that list.
+- `src/components/BookmarkDialog.test.tsx` disables `unicorn/no-document-cookie`
+  to clear, between tests, the cookie the component wrote: jsdom ships no
+  CookieStore, so there is no other way.
