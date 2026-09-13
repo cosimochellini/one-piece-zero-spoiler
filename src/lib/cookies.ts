@@ -17,7 +17,10 @@ export function parseCookieHeader(
   header: null | string | undefined,
 ): ReadonlyMap<string, string> {
   const jar = new Map<string, string>()
-  if (header === null || header === undefined || header === '') {
+  if (header === null || header === undefined) {
+    return jar
+  }
+  if (header === '') {
     return jar
   }
 
@@ -84,8 +87,14 @@ export function expireCookie(name: string): void {
   writeCookie(name, '', 0)
 }
 
+const SECONDS_PER_MINUTE = 60
+const MINUTES_PER_HOUR = 60
+const HOURS_PER_DAY = 24
+const DAYS_PER_YEAR = 365
+
 /** One year. Long enough that a reader never has to set their episode twice. */
-export const COOKIE_MAX_AGE_SECONDS = 60 * 60 * 24 * 365
+export const COOKIE_MAX_AGE_SECONDS =
+  SECONDS_PER_MINUTE * MINUTES_PER_HOUR * HOURS_PER_DAY * DAYS_PER_YEAR
 
 function decodeCookieValue(raw: string): string {
   try {

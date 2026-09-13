@@ -6,24 +6,16 @@
  *   answer a search"
  * · differs from the previous build (Map / Diagram) on macrostructure; theme
  *   is the project's locked system and does not rotate */
-import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
+import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
 import { bookSections, characters, featuredCharacters } from '~/data/characters'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
 
 export const Route = createFileRoute('/$locale/characters/')({
   head: ({ params }) => {
@@ -45,11 +37,6 @@ export const Route = createFileRoute('/$locale/characters/')({
   component: CharactersPage,
 })
 
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
-})
-
 /**
  * The characters page (Hallmark macrostructure 11, Catalogue).
  *
@@ -59,72 +46,20 @@ const settle = stylex.keyframes({
  * search above the grid filters the open characters, and the fogged ones sit
  * where they were, which is the spoiler rule applied to a text field.
  */
-function CharactersPage() {
+function CharactersPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
 
   return (
-    <main
-      id="content"
-      {...stylex.props(styles.page)}
+    <ArchivePage
+      count={t('characters.count', { count: characters.length })}
+      title={t('characters.title')}
     >
-      <header {...stylex.props(styles.head, styles.enter, styles.at(0))}>
-        <h1 {...stylex.props(styles.title)}>{t('characters.title')}</h1>
-        <p {...stylex.props(styles.count)}>
-          {t('characters.count', { count: characters.length })}
-        </p>
-      </header>
-
-      <div {...stylex.props(styles.enter, styles.at(1))}>
-        <CharacterGrid
-          bookmark={bookmark}
-          featured={featuredCharacters}
-          sections={bookSections}
-        />
-      </div>
-    </main>
+      <CharacterGrid
+        bookmark={bookmark}
+        featured={featuredCharacters}
+        sections={bookSections}
+      />
+    </ArchivePage>
   )
 }
-
-const styles = stylex.create({
-  page: {
-    gap: space.xl,
-    paddingInline: space.md,
-    display: 'grid',
-    paddingBlockEnd: space.xl3,
-    paddingBlockStart: space.lg,
-  },
-  // Wordmark-sized, not display-sized: a catalogue's heading is an inventory
-  // header, and the count under it is a fact about the page.
-  head: { gap: space.xs, display: 'grid' },
-  title: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  count: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '58ch',
-  },
-  enter: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: `${String(index * 70)}ms` }),
-})

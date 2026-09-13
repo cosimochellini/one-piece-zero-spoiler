@@ -131,10 +131,20 @@ export function getCharacter(id: string): Entity | undefined {
   return CHARACTER_BY_ID.get(id)
 }
 
+/**
+ * What the archive knows about a character beyond its name and sentence, or
+ * `undefined` where nothing has been filed yet: every character has a page,
+ * and only the ones the story turns on have a role, a bounty and a log entry.
+ */
 export function dossierOf(entity: Entity): CharacterDossier | undefined {
   return CHARACTER_DOSSIERS[entity.id]
 }
 
+/**
+ * The line that sits under the name on a card. Read off the dossier rather
+ * than stored on the record, because a role is an editorial sentence frozen
+ * at the threshold and not a property of the archive entry.
+ */
 export function roleOf(entity: Entity): LocalizedText | undefined {
   return dossierOf(entity)?.role
 }
@@ -187,6 +197,13 @@ export type RoutePosition = {
   readonly total: number
 }
 
+/**
+ * Where a record falls along a drawn route, and what lies either side of it.
+ *
+ * `drawn` is a parameter rather than always the default because a page has
+ * usually ordered the chart in the reader's unit already, and computing it
+ * twice would let the strip and the "waypoint 23 of 66" line disagree.
+ */
 export function routePositionOf(
   entity: Entity,
   drawn: readonly Entity[] = chartWith(entity),
@@ -196,7 +213,9 @@ export function routePositionOf(
   return {
     index,
     total: drawn.length,
-    previous: index > 0 ? drawn[index - 1] : undefined,
+    // No `index > 0` guard: a negative index reads off the front of the array
+    // and is `undefined` there too, which is the answer either way.
+    previous: drawn[index - 1],
     next: drawn[index + 1],
   }
 }
@@ -217,10 +236,19 @@ export function nearbyCharacters(entity: Entity, count: number): Entity[] {
         ),
       }
     })
-    .sort((a, b) => a.distance - b.distance || a.order - b.order)
+    .toSorted((a, b) => {
+      const byDistance = a.distance - b.distance
+      return byDistance === 0 ? a.order - b.order : byDistance
+    })
     .slice(0, count)
     .map(({ candidate }) => candidate)
 }
+
+// The combining marks NFD leaves behind, named by their Unicode category
+// rather than written as a range. The characters at both ends of that range
+// are invisible in an editor, so the range was one nobody could check, and
+// "nonspacing mark" is what it was always trying to say.
+const COMBINING_MARKS = /\p{Mn}/gu
 
 /**
  * Lower-cased and stripped of diacritics, so "Rufy", "rufy" and "Rùfy" are
@@ -228,13 +256,27 @@ export function nearbyCharacters(entity: Entity, count: number): Entity[] {
  * has no combining marks, which is what lets a match be highlighted by index.
  */
 export function foldName(value: string): string {
-  return value.normalize('NFD').replaceAll(/[̀-ͯ]/gu, '').toLowerCase()
+  return value.normalize('NFD').replaceAll(COMBINING_MARKS, '').toLowerCase()
 }
 
+/**
+ * What the search field needs back: whether the row stays, and the span to
+ * mark in the name on screen. `highlight` is `null` whenever a mark could not
+ * be trusted to line up – a hit in the other locale's name, a hit in an
+ * epithet, or a name whose folding changed its length.
+ */
 export type NameMatch = {
   readonly matches: boolean
   /** The span of the displayed name to mark, when it can be found by index. */
   readonly highlight: null | readonly [number, number]
+}
+
+/** One name search: which record, what the reader typed, and how far they have read. */
+export type NameQuery = {
+  readonly bookmark: Bookmark
+  readonly entity: Entity
+  readonly locale: Locale
+  readonly query: string
 }
 
 /**
@@ -251,12 +293,12 @@ export type NameMatch = {
  * reader's episode would confirm a name the fog is meant to hide. Epithets
  * are dated in episodes, so a chapter bookmark searches names only.
  */
-export function matchName(
-  entity: Entity,
-  query: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): NameMatch {
+export function matchName({
+  entity,
+  query,
+  locale,
+  bookmark,
+}: NameQuery): NameMatch {
   const needle = foldName(query.trim())
   if (needle === '') {
     return { matches: true, highlight: null }

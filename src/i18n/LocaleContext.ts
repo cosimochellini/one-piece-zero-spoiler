@@ -1,4 +1,4 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 import type { Locale } from './locales'
 import type { Translate } from './types'
@@ -17,7 +17,7 @@ export const LocaleContext = createContext<LocaleContextValue | null>(null)
  * the wrong language instead of failing.
  */
 export function useLocale(): LocaleContextValue {
-  const value = useContext(LocaleContext)
+  const value = use(LocaleContext)
 
   if (value === null) {
     throw new Error('useLocale must be used inside a LocaleProvider')

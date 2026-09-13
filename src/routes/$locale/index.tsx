@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
@@ -30,6 +31,19 @@ const settle = stylex.keyframes({
   to: { opacity: 1, transform: 'none' },
 })
 
+// One band after another, far enough apart to read as an order and close
+// enough that the last of the four is in by 210ms.
+const SETTLE_STEP_MS = 70
+
+/** How long the nth band waits before it settles. */
+function settleDelay(index: number): string {
+  return `${String(index * SETTLE_STEP_MS)}ms`
+}
+
+// The bands in DOM order. Named rather than counted at the call, so a band
+// inserted in the middle is one edit here and not four along the page.
+const BAND = { fold: 0, orientation: 1, route: 2, faq: 3 } as const
+
 const enter = stylex.create({
   band: {
     animationDuration: dur.long,
@@ -47,7 +61,7 @@ const enter = stylex.create({
       '@media (prefers-reduced-motion: no-preference)': 0,
     },
   },
-  at: (index: number) => ({ animationDelay: `${String(index * 70)}ms` }),
+  at: (index: number) => ({ animationDelay: settleDelay(index) }),
 })
 
 export const Route = createFileRoute('/$locale/')({ component: Landing })
@@ -74,7 +88,7 @@ const FAQ = [
  * Below the chart, three questions answered plainly. They are the rules of the
  * site, written as a conversation rather than as a row of cards.
  */
-function Landing() {
+function Landing(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
 
@@ -91,7 +105,7 @@ function Landing() {
       id="content"
       {...stylex.props(styles.page)}
     >
-      <section {...stylex.props(styles.fold, enter.band, enter.at(0))}>
+      <section {...stylex.props(styles.fold, enter.band, enter.at(BAND.fold))}>
         <div {...stylex.props(styles.foldFigure)}>
           <SeaChartHero />
         </div>
@@ -99,7 +113,13 @@ function Landing() {
       </section>
 
       <div {...stylex.props(styles.chart)}>
-        <section {...stylex.props(styles.orientation, enter.band, enter.at(1))}>
+        <section
+          {...stylex.props(
+            styles.orientation,
+            enter.band,
+            enter.at(BAND.orientation),
+          )}
+        >
           <p {...stylex.props(styles.lede)}>{t('hero.lede')}</p>
           <RouteLegend
             covered={ordered.length - open}
@@ -110,7 +130,7 @@ function Landing() {
 
         <section
           aria-labelledby="route-title"
-          {...stylex.props(styles.routeBand, enter.band, enter.at(2))}
+          {...stylex.props(styles.routeBand, enter.band, enter.at(BAND.route))}
         >
           <h2
             id="route-title"
@@ -125,8 +145,24 @@ function Landing() {
         </section>
       </div>
 
-      <section {...stylex.props(styles.faq, enter.band, enter.at(3))}>
-        {FAQ.map(({ q, a }) => (
+      <Questions />
+    </main>
+  )
+}
+
+/**
+ * The three questions, answered plainly.
+ *
+ * They are the rules of the site rather than a marketing FAQ, which is why
+ * they are set as a conversation down one column and not as a row of cards.
+ */
+function Questions(): ReactElement {
+  const t = useT()
+
+  return (
+    <section {...stylex.props(styles.faq, enter.band, enter.at(BAND.faq))}>
+      {FAQ.map(({ q, a }) => {
+        return (
           <div
             key={q}
             {...stylex.props(styles.qa)}
@@ -134,9 +170,9 @@ function Landing() {
             <h2 {...stylex.props(styles.question)}>{t(q)}</h2>
             <p {...stylex.props(styles.answer)}>{t(a)}</p>
           </div>
-        ))}
-      </section>
-    </main>
+        )
+      })}
+    </section>
   )
 }
 

@@ -6,7 +6,7 @@ import {
   Scripts,
   useParams,
 } from '@tanstack/react-router'
-import { type ReactNode, useEffect } from 'react'
+import { type ReactElement, type ReactNode, useEffect } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
@@ -29,6 +29,7 @@ export const Route = createRootRoute({
   beforeLoad: () => ({ initialBookmark: readBookmark() }),
   head: () => ({
     meta: [
+      // eslint-disable-next-line unicorn/text-encoding-identifier-case -- HTML requires this attribute to be an ASCII case-insensitive match for "utf-8"; `utf8` is a valid encoding label everywhere else, but not here.
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
     ],
@@ -78,7 +79,7 @@ export const Route = createRootRoute({
   component: RootComponent,
 })
 
-function RootComponent() {
+function RootComponent(): ReactElement {
   const { initialBookmark } = Route.useRouteContext()
 
   return (
@@ -92,7 +93,9 @@ function RootComponent() {
 
 // The default client entry hydrates the whole document, so the root route has
 // to render <html> itself.
-function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+function RootDocument({
+  children,
+}: Readonly<{ children: ReactNode }>): ReactElement {
   // Read loosely because the root route has no params of its own; the locale
   // belongs to the `$locale` layout below it. Anything unrecognised falls back
   // to the site default rather than emitting an invalid `lang`.
@@ -111,6 +114,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
     if (!import.meta.env.DEV) {
       return
     }
+    // eslint-disable-next-line import-x/no-unresolved -- the id is minted by @stylexjs/unplugin at dev time and exists on no filesystem, so no resolver can be pointed at it.
     void import('virtual:stylex:css-only')
   }, [])
 

@@ -1,12 +1,6 @@
 import { parseCookieHeader } from '~/lib/cookies'
 
-import {
-  DEFAULT_LOCALE,
-  isLocale,
-  type Locale,
-  LOCALE_COOKIE,
-  LOCALES,
-} from './locales'
+import { DEFAULT_LOCALE, isLocale, type Locale, LOCALE_COOKIE } from './locales'
 
 /**
  * Picks the locale for a request that did not name one in its path.
@@ -28,6 +22,12 @@ export function negotiateLocale(
   return parseAcceptLanguage(acceptLanguage) ?? DEFAULT_LOCALE
 }
 
+// Matched against an already-trimmed parameter, so the surrounding whitespace
+// the header grammar allows is handled by `trim` rather than by a `\s*` the
+// captured value could trade characters with – which is what made the older
+// pattern backtrack quadratically on a hostile header.
+const QUALITY_PARAM = /^q=(?<quality>.*)$/u
+
 /**
  * Reads the highest-weighted supported language out of an `Accept-Language`
  * header.
@@ -39,7 +39,10 @@ export function negotiateLocale(
 export function parseAcceptLanguage(
   header: null | string | undefined,
 ): Locale | undefined {
-  if (header === null || header === undefined || header === '') {
+  if (header === null || header === undefined) {
+    return undefined
+  }
+  if (header === '') {
     return undefined
   }
 
@@ -48,7 +51,7 @@ export function parseAcceptLanguage(
     .map((entry) => {
       const [tag = '', ...rest] = entry.split(';')
       const quality = rest
-        .map((part) => /^\s*q=(.*?)\s*$/u.exec(part))
+        .map((part) => QUALITY_PARAM.exec(part.trim()))
         .find((match) => match !== null)
       // A `q` that is present but not a number sinks the entry rather than
       // being read as "no q given": a client that sent `q=abc` did not mean
@@ -61,9 +64,12 @@ export function parseAcceptLanguage(
       }
     })
     .filter((entry) => entry.quality > 0)
-    .sort((a, b) => b.quality - a.quality)
+    .toSorted((a, b) => b.quality - a.quality)
 
-  return ranked.find((entry): entry is { language: Locale; quality: number } =>
-    (LOCALES as readonly string[]).includes(entry.language),
-  )?.language
+  const best = ranked.find(
+    (entry): entry is { language: Locale; quality: number } =>
+      isLocale(entry.language),
+  )
+
+  return best?.language
 }

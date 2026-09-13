@@ -4,7 +4,7 @@ import { routeTree } from './routeTree.gen'
 
 // Required entry point: the Start plugin resolves src/router.{ts,tsx} and the
 // server handler calls getRouter(). Keep exactly one router module.
-export function getRouter() {
+export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
   return createRouter({
     routeTree,
     defaultPreload: 'intent',

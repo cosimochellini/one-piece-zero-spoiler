@@ -23,6 +23,12 @@ export type Sea = 'east-blue' | 'grand-line' | 'new-world'
 /** What kind of place a record is, as the log would put it. */
 export type PlaceForm = 'island' | 'restaurant' | 'town' | 'village'
 
+/**
+ * The log entry for a place, beyond the name and the sentence every record
+ * carries. Every field obeys the record's own threshold: it says what a
+ * viewer who has just arrived could say, so nothing here has to be veiled
+ * separately from the place itself.
+ */
 export type PlaceDossier = {
   readonly form: PlaceForm
   readonly sea: Sea
@@ -137,6 +143,11 @@ export function getPlace(id: string): Entity | undefined {
   return places.find((candidate) => candidate.id === id)
 }
 
+/**
+ * The log entry filed for a record, or `undefined` for one the ship never put
+ * in at. A place with no entry still has a name, a drawing and a threshold –
+ * the log is the extra the page shows once there is something to say.
+ */
 export function dossierOf(entity: Entity): PlaceDossier | undefined {
   return PLACE_DOSSIERS[entity.id]
 }

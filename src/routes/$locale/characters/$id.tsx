@@ -7,12 +7,12 @@
  * · idea: "a page from the signal book, opened flat" */
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link, notFound } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { CharacterFacts } from '~/components/CharacterFacts'
 import { CharacterCardList } from '~/components/CharacterGrid'
-import { RecordTile } from '~/components/RecordTile'
 import { RouteStrip } from '~/components/RouteStrip'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import {
@@ -24,28 +24,15 @@ import {
 } from '~/data/characters'
 import type { Entity, EntityKind } from '~/data/types'
 import { useLocale } from '~/i18n/LocaleContext'
-import { isLocale, type Locale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
+import { isLocale } from '~/i18n/locales'
 import type { TranslationKey } from '~/i18n/types'
 import { useBookmark, useThreshold } from '~/lib/progress/BookmarkContext'
-import {
-  type Bookmark,
-  type BookmarkMode,
-  modeOf,
-} from '~/lib/progress/episode'
+import { modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
-import { describeThreshold } from '~/lib/progress/threshold'
-import {
-  color,
-  dur,
-  ease,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
+
+import { describeDocument } from './-$id.head'
+import { Neighbour } from './-$id.neighbour'
+import { styles } from './-$id.styles'
 
 const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   character: 'kind.character',
@@ -53,6 +40,14 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   place: 'kind.place',
   ship: 'kind.ship',
 }
+
+// The three bands in DOM order. Named rather than counted at the call, so a
+// band inserted in the middle is one edit here and not three down the page.
+const BAND = { dossier: 0, route: 1, nearby: 2 } as const
+
+// One row of crests, which is what the card list holds on a wide screen
+// before it wraps.
+const NEARBY_COUNT = 5
 
 export const Route = createFileRoute('/$locale/characters/$id')({
   // The one decision the page turns on is made here, on the server, from the
@@ -73,7 +68,7 @@ export const Route = createFileRoute('/$locale/characters/$id')({
     }
   },
   head: ({ params, loaderData }) => {
-    if (!isLocale(params.locale) || loaderData === undefined) {
+    if (loaderData === undefined || !isLocale(params.locale)) {
       return {}
     }
     const entity = getCharacter(loaderData.id)
@@ -82,59 +77,16 @@ export const Route = createFileRoute('/$locale/characters/$id')({
     }
 
     return {
-      meta: describe(
-        params.locale,
+      meta: describeDocument({
         entity,
-        loaderData.revealed,
-        loaderData.mode,
-      ),
+        locale: params.locale,
+        mode: loaderData.mode,
+        revealed: loaderData.revealed,
+      }),
     }
   },
   component: CharacterPage,
   notFoundComponent: CharacterNotFound,
-})
-
-/**
- * The document title and description. Under fog both are generic: a title is
- * set before any component runs, so this is the one place a covered name
- * could leak, and it must not.
- */
-function describe(
-  locale: Locale,
-  entity: Entity,
-  revealed: boolean,
-  mode: BookmarkMode,
-) {
-  const dictionary = getDictionary(locale)
-
-  if (!revealed) {
-    return [
-      { title: translate(dictionary, 'character.foggedTitle') },
-      {
-        name: 'description',
-        content: describeThreshold(
-          (key, params) => translate(dictionary, key, params),
-          'character.foggedDescription',
-          entity,
-          mode,
-        ),
-      },
-    ]
-  }
-
-  return [
-    {
-      title: translate(dictionary, 'character.pageTitle', {
-        name: entity.name[locale],
-      }),
-    },
-    { name: 'description', content: entity.summary[locale] },
-  ]
-}
-
-const settle = stylex.keyframes({
-  from: { opacity: 0, transform: 'translateY(10px)' },
-  to: { opacity: 1, transform: 'none' },
 })
 
 /**
@@ -152,11 +104,8 @@ const settle = stylex.keyframes({
  * generic; the strip still shows where on the route the page sits, because
  * "waypoint 23 of 35" is the promise and not the spoiler.
  */
-function CharacterPage() {
+function CharacterPage(): null | ReactElement {
   const { id } = Route.useLoaderData()
-  const { locale, t } = useLocale()
-  const threshold = useThreshold()
-  const { bookmark } = useBookmark()
 
   // Cannot be undefined: the loader threw `notFound` for any id that is.
   const entity = getCharacter(id)
@@ -164,12 +113,146 @@ function CharacterPage() {
     return null
   }
 
-  const revealed = isRevealed(entity, bookmark)
+  return (
+    <main
+      id="content"
+      {...stylex.props(styles.page)}
+    >
+      <p {...stylex.props(styles.back, styles.enter, styles.at(BAND.dossier))}>
+        <BackLink />
+      </p>
+
+      <DossierDiptych entity={entity} />
+      <RouteDiptych entity={entity} />
+      <NearbyRow entity={entity} />
+    </main>
+  )
+}
+
+/** What every section of the page is about. */
+type SectionProps = { readonly entity: Entity }
+
+/**
+ * The crest beside the dossier: the page's first diptych.
+ *
+ * The two halves are veiled separately but on the same condition, because a
+ * covered page must carry neither the drawing nor the words in its HTML –
+ * blurring either one would leave the answer in the page source.
+ */
+function DossierDiptych({ entity }: SectionProps): ReactElement {
+  return (
+    <section
+      {...stylex.props(styles.diptych, styles.enter, styles.at(BAND.dossier))}
+    >
+      <CrestPlate entity={entity} />
+      <DossierColumn entity={entity} />
+    </section>
+  )
+}
+
+/** The seal, framed. Under fog it is drawn empty rather than blurred. */
+function CrestPlate({ entity }: SectionProps): ReactElement {
+  const { bookmark } = useBookmark()
+
+  return (
+    <SpoilerVeil
+      gated={entity}
+      // A bare seal under fog: the drawing and its colour stay out of the
+      // served HTML along with the name.
+      placeholder={
+        <div {...stylex.props(styles.plate)}>
+          <CharacterCrest />
+        </div>
+      }
+      revealed={isRevealed(entity, bookmark)}
+      strength="media"
+    >
+      <div {...stylex.props(styles.plate)}>
+        <CharacterCrest visual={entity.visual} />
+      </div>
+    </SpoilerVeil>
+  )
+}
+
+/**
+ * The words half: the kind and the threshold in mono, then everything the
+ * fog decides.
+ *
+ * The meta line sits outside the veil on purpose – "character, episode 130"
+ * is the promise the page makes to a reader who has not got there yet, and
+ * covering it would leave them with nothing at all.
+ */
+function DossierColumn({ entity }: SectionProps): ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+  const { bookmark } = useBookmark()
+
+  return (
+    <div {...stylex.props(styles.dossier)}>
+      <p {...stylex.props(styles.meta)}>
+        <span {...stylex.props(styles.kind)}>{t(KIND_KEY[entity.kind])}</span>
+        <span {...stylex.props(styles.episode)}>
+          {threshold('character.opensAt', entity)}
+        </span>
+      </p>
+
+      <SpoilerVeil
+        gated={entity}
+        placeholder={
+          <div {...stylex.props(styles.words)}>
+            <h1 {...stylex.props(styles.name)}>{t('character.foggedName')}</h1>
+            <p {...stylex.props(styles.summary)}>
+              {threshold('character.foggedDescription', entity)}
+            </p>
+          </div>
+        }
+        revealed={isRevealed(entity, bookmark)}
+      >
+        <DossierWords entity={entity} />
+      </SpoilerVeil>
+    </div>
+  )
+}
+
+/** The name, the role, the sentence, the facts and the log entry. */
+function DossierWords({ entity }: SectionProps): ReactElement {
+  const { locale } = useLocale()
+  const { bookmark } = useBookmark()
+
   const dossier = dossierOf(entity)
   const role = dossier?.role
-  // The chart with this record on it, in the reader's unit, so the strip's
-  // open marks are a prefix and "waypoint 23 of 66" counts the way the
-  // reader does.
+
+  return (
+    <div {...stylex.props(styles.words)}>
+      <h1 {...stylex.props(styles.name)}>{entity.name[locale]}</h1>
+      {role === undefined ? null : (
+        <p {...stylex.props(styles.role)}>{role[locale]}</p>
+      )}
+      <p {...stylex.props(styles.summary)}>{entity.summary[locale]}</p>
+      {dossier === undefined ? null : (
+        <>
+          <CharacterFacts
+            bookmark={bookmark}
+            dossier={dossier}
+          />
+          <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
+        </>
+      )}
+    </div>
+  )
+}
+
+/**
+ * Where the record sits on the route, beside the strip that draws it.
+ *
+ * The chart is ordered in the reader's unit here rather than once for the
+ * page, so "waypoint 23 of 66" and the marks on the strip are counted from
+ * the same list and cannot disagree.
+ */
+function RouteDiptych({ entity }: SectionProps): ReactElement {
+  const { t } = useLocale()
+  const { bookmark } = useBookmark()
+
   const ordered = chartWith(entity, modeOf(bookmark))
   const position = routePositionOf(entity, ordered)
   const positionLabel = t('character.position', {
@@ -178,193 +261,109 @@ function CharacterPage() {
   })
 
   return (
-    <main
-      id="content"
-      {...stylex.props(styles.page)}
+    <section
+      aria-labelledby="route-position"
+      {...stylex.props(
+        styles.diptych,
+        styles.reversed,
+        styles.enter,
+        styles.at(BAND.route),
+      )}
     >
-      <p {...stylex.props(styles.back, styles.enter, styles.at(0))}>
-        <Link
-          params={{ locale }}
-          to="/$locale/characters"
-          {...stylex.props(styles.backLink)}
+      <div {...stylex.props(styles.dossier)}>
+        <h2
+          id="route-position"
+          {...stylex.props(styles.sectionTitle)}
         >
-          ← {t('character.back')}
-        </Link>
-      </p>
+          {t('character.routeTitle')}
+        </h2>
+        <p {...stylex.props(styles.position)}>{positionLabel}</p>
+        <p {...stylex.props(styles.lede)}>{t('character.positionLede')}</p>
 
-      <section {...stylex.props(styles.diptych, styles.enter, styles.at(0))}>
-        <SpoilerVeil
-          gated={entity}
-          // A bare seal under fog: the drawing and its colour stay out of
-          // the served HTML along with the name.
-          placeholder={
-            <div {...stylex.props(styles.plate)}>
-              <CharacterCrest />
-            </div>
-          }
-          revealed={revealed}
-          strength="media"
-        >
-          <div {...stylex.props(styles.plate)}>
-            <CharacterCrest visual={entity.visual} />
-          </div>
-        </SpoilerVeil>
-
-        <div {...stylex.props(styles.dossier)}>
-          <p {...stylex.props(styles.meta)}>
-            <span {...stylex.props(styles.kind)}>
-              {t(KIND_KEY[entity.kind])}
-            </span>
-            <span {...stylex.props(styles.episode)}>
-              {threshold('character.opensAt', entity)}
-            </span>
-          </p>
-
-          <SpoilerVeil
-            gated={entity}
-            // Under fog the served HTML carries no name, role or summary:
-            // this is a page about one record, so a blur alone would leave
-            // the answer in the page source.
-            placeholder={
-              <div {...stylex.props(styles.words)}>
-                <h1 {...stylex.props(styles.name)}>
-                  {t('character.foggedName')}
-                </h1>
-                <p {...stylex.props(styles.summary)}>
-                  {threshold('character.foggedDescription', entity)}
-                </p>
-              </div>
-            }
-            revealed={revealed}
-          >
-            <div {...stylex.props(styles.words)}>
-              <h1 {...stylex.props(styles.name)}>{entity.name[locale]}</h1>
-              {role === undefined ? null : (
-                <p {...stylex.props(styles.role)}>{role[locale]}</p>
-              )}
-              <p {...stylex.props(styles.summary)}>{entity.summary[locale]}</p>
-              {dossier === undefined ? null : (
-                <>
-                  <CharacterFacts
-                    bookmark={bookmark}
-                    dossier={dossier}
-                  />
-                  <p {...stylex.props(styles.entry)}>{dossier.log[locale]}</p>
-                </>
-              )}
-            </div>
-          </SpoilerVeil>
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="route-position"
-        {...stylex.props(
-          styles.diptych,
-          styles.reversed,
-          styles.enter,
-          styles.at(1),
-        )}
-      >
-        <div {...stylex.props(styles.dossier)}>
-          <h2
-            id="route-position"
-            {...stylex.props(styles.sectionTitle)}
-          >
-            {t('character.routeTitle')}
-          </h2>
-          <p {...stylex.props(styles.position)}>{positionLabel}</p>
-          <p {...stylex.props(styles.lede)}>{t('character.positionLede')}</p>
-
-          <dl {...stylex.props(styles.neighbours)}>
-            <Neighbour
-              bookmark={bookmark}
-              empty={t('character.routeStart')}
-              entry={position.previous}
-              label={t('character.before')}
-            />
-            <Neighbour
-              bookmark={bookmark}
-              empty={t('character.routeEnd')}
-              entry={position.next}
-              label={t('character.after')}
-            />
-          </dl>
-        </div>
-        <div {...stylex.props(styles.stripBand)}>
-          <RouteStrip
+        <dl {...stylex.props(styles.neighbours)}>
+          <Neighbour
             bookmark={bookmark}
-            current={entity}
-            entries={ordered}
-            label={positionLabel}
+            empty={t('character.routeStart')}
+            entry={position.previous}
+            label={t('character.before')}
           />
-        </div>
-      </section>
-
-      <section
-        aria-labelledby="nearby"
-        {...stylex.props(styles.nearby, styles.enter, styles.at(2))}
-      >
-        <div {...stylex.props(styles.nearbyHead)}>
-          <h2
-            id="nearby"
-            {...stylex.props(styles.sectionTitle)}
-          >
-            {t('character.nearbyTitle')}
-          </h2>
-          <p {...stylex.props(styles.lede)}>{t('character.nearbyLede')}</p>
-        </div>
-        <CharacterCardList>
-          {nearbyCharacters(entity, 5).map((near) => {
-            return (
-              <CharacterCard
-                key={near.id}
-                entity={near}
-                revealed={isRevealed(near, bookmark)}
-              />
-            )
-          })}
-        </CharacterCardList>
-      </section>
-    </main>
+          <Neighbour
+            bookmark={bookmark}
+            empty={t('character.routeEnd')}
+            entry={position.next}
+            label={t('character.after')}
+          />
+        </dl>
+      </div>
+      <div {...stylex.props(styles.stripBand)}>
+        <RouteStrip
+          bookmark={bookmark}
+          current={entity}
+          entries={ordered}
+          label={positionLabel}
+        />
+      </div>
+    </section>
   )
 }
 
 /**
- * One of the two records filed beside this one, as a tile: whatever its
- * kind, a small plate and a name, with a character's or a place's name a
- * link. Under fog the plate and the name go together and the episode stays.
+ * The characters filed nearest this one on the route, as one row of crests.
+ *
+ * Nearness is measured in thresholds, so the row is the reader's own
+ * neighbourhood of the story rather than an editorial "see also".
  */
-function Neighbour({
-  label,
-  entry,
-  empty,
-  bookmark,
-}: {
-  readonly bookmark: Bookmark
-  readonly empty: string
-  readonly entry: Entity | undefined
-  readonly label: string
-}) {
+function NearbyRow({ entity }: SectionProps): ReactElement {
+  const { t } = useLocale()
+  const { bookmark } = useBookmark()
+
   return (
-    <div {...stylex.props(styles.neighbour)}>
-      <dt {...stylex.props(styles.neighbourLabel)}>{label}</dt>
-      <dd {...stylex.props(styles.neighbourBody)}>
-        {entry === undefined ?
-          <span {...stylex.props(styles.lede)}>{empty}</span>
-        : <RecordTile
-            bookmark={bookmark}
-            entry={entry}
-          />
-        }
-      </dd>
-    </div>
+    <section
+      aria-labelledby="nearby"
+      {...stylex.props(styles.nearby, styles.enter, styles.at(BAND.nearby))}
+    >
+      <div {...stylex.props(styles.nearbyHead)}>
+        <h2
+          id="nearby"
+          {...stylex.props(styles.sectionTitle)}
+        >
+          {t('character.nearbyTitle')}
+        </h2>
+        <p {...stylex.props(styles.lede)}>{t('character.nearbyLede')}</p>
+      </div>
+      <CharacterCardList>
+        {nearbyCharacters(entity, NEARBY_COUNT).map((near) => {
+          return (
+            <CharacterCard
+              key={near.id}
+              entity={near}
+              revealed={isRevealed(near, bookmark)}
+            />
+          )
+        })}
+      </CharacterCardList>
+    </section>
+  )
+}
+
+/** Hallmark C3: a word, an arrow, a rule. It is the page's one way back. */
+function BackLink(): ReactElement {
+  const { locale, t } = useLocale()
+
+  return (
+    <Link
+      params={{ locale }}
+      to="/$locale/characters"
+      {...stylex.props(styles.backLink)}
+    >
+      ← {t('character.back')}
+    </Link>
   )
 }
 
 /** `/characters/<not-a-character>`: says so, and points at the book. */
-function CharacterNotFound() {
-  const { locale, t } = useLocale()
+function CharacterNotFound(): ReactElement {
+  const { t } = useLocale()
 
   return (
     <main
@@ -375,223 +374,9 @@ function CharacterNotFound() {
         <h1 {...stylex.props(styles.name)}>{t('character.notFoundTitle')}</h1>
         <p {...stylex.props(styles.summary)}>{t('character.notFoundBody')}</p>
         <p>
-          <Link
-            params={{ locale }}
-            to="/$locale/characters"
-            {...stylex.props(styles.backLink)}
-          >
-            ← {t('character.back')}
-          </Link>
+          <BackLink />
         </p>
       </div>
     </main>
   )
 }
-
-const styles = stylex.create({
-  page: {
-    gap: space.xl2,
-    paddingInline: space.md,
-    display: 'grid',
-    paddingBlockEnd: space.xl3,
-    paddingBlockStart: space.lg,
-  },
-
-  back: { marginBlockEnd: `calc(-1 * ${space.xl})` },
-  // Hallmark C3: a word, an arrow, a rule. It is the page's one way back.
-  backLink: {
-    color: {
-      'default': color.ink2,
-      ':hover': color.accent,
-      ':active': color.ink,
-    },
-    fontSize: text.base,
-    fontWeight: 600,
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationColor: { 'default': color.rule2, ':hover': color.accent },
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.hair,
-    textUnderlineOffset: '4px',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color, text-decoration-color',
-    transitionTimingFunction: ease.out,
-    whiteSpace: 'nowrap',
-  },
-
-  // The diptych: two halves with a wide gutter and no rule between them.
-  // The crest half is the narrower one; the words need the width more.
-  diptych: {
-    alignItems: 'start',
-    columnGap: space.xl2,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 60rem)': 'minmax(0, 5fr) minmax(0, 7fr)',
-    },
-    rowGap: space.lg,
-  },
-  // The second diptych swaps sides on a wide page, so the two rows read as
-  // a pair rather than a template: words left, strip right. On a phone the
-  // words come first and the strip follows.
-  reversed: {
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 60rem)': 'minmax(0, 7fr) minmax(0, 5fr)',
-    },
-  },
-  plate: {
-    padding: space.lg,
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    marginInline: { 'default': 'auto', '@media (min-width: 60rem)': 0 },
-    overflow: 'hidden',
-    aspectRatio: '1',
-    backgroundColor: color.paper2,
-    maxWidth: '26rem',
-    width: '100%',
-  },
-  dossier: { gap: space.md, display: 'grid', minWidth: 0 },
-  words: { gap: space.sm, display: 'grid', minWidth: 0 },
-  meta: {
-    alignItems: 'baseline',
-    color: color.muted,
-    columnGap: space.sm,
-    display: 'flex',
-    flexWrap: 'wrap',
-    fontSize: text.xs,
-    letterSpacing: '0.08em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  kind: { fontFamily: font.body, fontWeight: 600 },
-  episode: {
-    color: color.ink2,
-    fontFamily: font.mono,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 600,
-  },
-  // The one display line on the page. Names run 4 to 22 characters, so the
-  // full display size holds two lines at most in the 7fr column.
-  name: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.display,
-    fontWeight: 800,
-    letterSpacing: '-0.035em',
-    lineHeight: leading.display,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  role: {
-    color: color.ink2,
-    fontSize: text.xl,
-    fontWeight: 600,
-    letterSpacing: '-0.01em',
-    lineHeight: leading.heading,
-  },
-  summary: {
-    color: color.ink2,
-    fontSize: text.lg,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
-  },
-  // The log entry proper, after the facts: body size, a measure that holds
-  // three sentences without a wall.
-  entry: {
-    color: color.ink2,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    marginBlockStart: space.xs,
-    maxWidth: '60ch',
-  },
-
-  sectionTitle: {
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.xl,
-    fontWeight: 800,
-    letterSpacing: '-0.02em',
-    lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
-    minWidth: 0,
-  },
-  position: {
-    color: color.accent,
-    fontFamily: font.mono,
-    fontSize: text.base,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    letterSpacing: '0.1em',
-    lineHeight: leading.body,
-    textTransform: 'uppercase',
-  },
-  lede: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
-  },
-  stripBand: {
-    borderColor: color.rule,
-    borderRadius: radius.card,
-    borderStyle: 'solid',
-    borderWidth: rule.hair,
-    paddingBlock: space.lg,
-    paddingInline: space.md,
-    alignSelf: 'center',
-    backgroundColor: color.paper2,
-  },
-
-  neighbours: {
-    columnGap: space.lg,
-    display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
-    },
-    marginBlockStart: space.xs,
-    rowGap: space.md,
-  },
-  neighbour: { gap: space.xs, display: 'grid', minWidth: 0 },
-  neighbourLabel: {
-    color: color.ink2,
-    fontSize: text.base,
-    fontWeight: 600,
-    lineHeight: leading.body,
-  },
-  neighbourBody: {
-    gap: space.xs,
-    display: 'grid',
-    marginInlineStart: 0,
-    minWidth: 0,
-  },
-  nearby: {
-    gap: space.lg,
-    borderBlockStartColor: color.rule,
-    borderBlockStartStyle: 'solid',
-    borderBlockStartWidth: rule.hair,
-    display: 'grid',
-    paddingBlockStart: space.xl,
-  },
-  nearbyHead: { gap: space.xs, display: 'grid' },
-
-  enter: {
-    animationDuration: dur.long,
-    animationFillMode: 'forwards',
-    animationName: {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': settle,
-    },
-    animationTimingFunction: ease.out,
-    opacity: {
-      'default': 1,
-      '@media (prefers-reduced-motion: no-preference)': 0,
-    },
-  },
-  at: (index: number) => ({ animationDelay: `${String(index * 70)}ms` }),
-})

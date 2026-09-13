@@ -53,13 +53,62 @@ export type Bookmark =
  * still works. `s2e3` is a season and an episode within it; `c1044` is a
  * chapter. Anchored, lower-case, digits only: anything else fails closed.
  */
-const EPISODE_FORM = /^(\d{1,4})$/u
-const SEASON_FORM = /^s(\d{1,2})e(\d{1,4})$/u
-const CHAPTER_FORM = /^c(\d{1,4})$/u
+const EPISODE_FORM = /^(?<episode>\d{1,4})$/u
+const SEASON_FORM = /^s(?<season>\d{1,2})e(?<episode>\d{1,4})$/u
+const CHAPTER_FORM = /^c(?<chapter>\d{1,4})$/u
 
 function within(value: number, first: number, ceiling: number): boolean {
-  return Number.isInteger(value) && value >= first && value <= ceiling
+  return Number.isSafeInteger(value) && value >= first && value <= ceiling
 }
+
+// Each of the three returns `undefined` for "not my grammar" and `null` for
+// "my grammar, and out of range". Keeping those apart is what makes `c9999`
+// fail closed instead of falling through to a grammar that would read it as
+// something else.
+
+/** The legacy bare integer. */
+function readEpisodeForm(raw: string): Bookmark | undefined {
+  const match = EPISODE_FORM.exec(raw)
+  if (match === null) {
+    return undefined
+  }
+
+  const episode = Number(match.groups?.['episode'])
+  return within(episode, FIRST_EPISODE, EPISODE_CEILING) ?
+      { mode: 'episode', episode }
+    : null
+}
+
+/** `s2e3`, checked against the season table rather than a flat range. */
+function readSeasonForm(raw: string): Bookmark | undefined {
+  const match = SEASON_FORM.exec(raw)
+  if (match === null) {
+    return undefined
+  }
+
+  const season = Number(match.groups?.['season'])
+  const episode = Number(match.groups?.['episode'])
+  return resolveEpisode(season, episode) === null ? null : (
+      { mode: 'season', season, episode }
+    )
+}
+
+/** `c1044`. */
+function readChapterForm(raw: string): Bookmark | undefined {
+  const match = CHAPTER_FORM.exec(raw)
+  if (match === null) {
+    return undefined
+  }
+
+  const chapter = Number(match.groups?.['chapter'])
+  return within(chapter, FIRST_CHAPTER, CHAPTER_CEILING) ?
+      { mode: 'chapter', chapter }
+    : null
+}
+
+// In order, and the order is the grammar's: the bare integer is tried first
+// because it is the oldest form and the only ambiguous-looking one.
+const FORMS = [readEpisodeForm, readSeasonForm, readChapterForm] as const
 
 /** Parses a raw cookie value into a valid bookmark, or `null`. */
 export function parseBookmark(raw: null | string | undefined): Bookmark {
@@ -67,29 +116,11 @@ export function parseBookmark(raw: null | string | undefined): Bookmark {
     return null
   }
 
-  const episode = EPISODE_FORM.exec(raw)
-  if (episode !== null) {
-    const value = Number(episode[1])
-    return within(value, FIRST_EPISODE, EPISODE_CEILING) ?
-        { mode: 'episode', episode: value }
-      : null
-  }
-
-  const season = SEASON_FORM.exec(raw)
-  if (season !== null) {
-    const number = Number(season[1])
-    const value = Number(season[2])
-    return resolveEpisode(number, value) === null ? null : (
-        { mode: 'season', season: number, episode: value }
-      )
-  }
-
-  const chapter = CHAPTER_FORM.exec(raw)
-  if (chapter !== null) {
-    const value = Number(chapter[1])
-    return within(value, FIRST_CHAPTER, CHAPTER_CEILING) ?
-        { mode: 'chapter', chapter: value }
-      : null
+  for (const read of FORMS) {
+    const bookmark = read(raw)
+    if (bookmark !== undefined) {
+      return bookmark
+    }
   }
 
   return null
@@ -200,6 +231,11 @@ export type Draft = {
 /** Why a draft is not usable yet. `season` means no season has been chosen. */
 export type DraftProblem = 'empty' | 'range' | 'season'
 
+/**
+ * A graded draft carries both halves at once: the bookmark it would save and
+ * the reason it cannot be saved yet. The dialog needs the second to decide
+ * whether the button is live, and the first the moment it is.
+ */
 export type GradedDraft = {
   readonly bookmark: Bookmark
   readonly problem: DraftProblem | null
@@ -257,6 +293,11 @@ export type Stepper = {
   readonly stepped: (delta: number) => string
 }
 
+/**
+ * Wires the two steppers to the field as it currently reads, rather than to a
+ * parsed number: the reader may be mid-edit with an empty or nonsense field,
+ * and the buttons still have to say something sensible about the next press.
+ */
 export function stepperOf(draft: Draft): Stepper {
   const ceiling = ceilingOf(draft)
   const current = parseWhole(draft.number)
@@ -279,7 +320,7 @@ function parseWhole(raw: string): null | number {
     return null
   }
   const value = Number(raw)
-  return Number.isInteger(value) ? value : null
+  return Number.isSafeInteger(value) ? value : null
 }
 
 /**

@@ -45,6 +45,11 @@ export const SEASONS: readonly Season[] = [
   { number: 22, first: 1156, last: null },
 ]
 
+/**
+ * One row of the season table, or `undefined` for a number the table does not
+ * run to. Every conversion between a season code and an absolute episode goes
+ * through here, so an out-of-range season fails in one place.
+ */
 export function getSeason(number: number): Season | undefined {
   return SEASONS.find((season) => season.number === number)
 }
@@ -71,7 +76,7 @@ export function resolveEpisode(
   if (season === undefined) {
     return null
   }
-  if (!Number.isInteger(episode)) {
+  if (!Number.isSafeInteger(episode)) {
     return null
   }
   if (episode < 1 || episode > seasonLength(season)) {
@@ -81,6 +86,11 @@ export function resolveEpisode(
   return season.first + episode - 1
 }
 
+/**
+ * An absolute episode said the way a season viewer counts, which is the only
+ * form the `S04E38` chip can be built from: the two numbers are kept apart
+ * because a season's length is what turns one into the other.
+ */
 export type SeasonPosition = {
   readonly season: number
   /** One-based, within the season. */
@@ -89,7 +99,7 @@ export type SeasonPosition = {
 
 /** The season an absolute episode falls in, and its number within it. */
 export function locateEpisode(absolute: number): null | SeasonPosition {
-  if (!Number.isInteger(absolute) || absolute < FIRST_EPISODE) {
+  if (!Number.isSafeInteger(absolute) || absolute < FIRST_EPISODE) {
     return null
   }
 

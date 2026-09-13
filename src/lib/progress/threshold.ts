@@ -23,13 +23,21 @@ export type ThresholdSentence =
   | 'places.foggedDescription'
   | 'veil.locked'
 
+/** What a threshold sentence needs to name a record's threshold. */
+export type ThresholdDescription = {
+  readonly gated: Gated
+  readonly mode: BookmarkMode
+  readonly sentence: ThresholdSentence
+  readonly t: Translate
+}
+
 /** A record's threshold, said in the reader's unit. */
-export function describeThreshold(
-  t: Translate,
-  sentence: ThresholdSentence,
-  gated: Gated,
-  mode: BookmarkMode,
-): string {
+export function describeThreshold({
+  t,
+  sentence,
+  gated,
+  mode,
+}: ThresholdDescription): string {
   return t(`${sentence}.${mode}`, { threshold: thresholdValue(gated, mode) })
 }
 

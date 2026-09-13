@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
+import type { ReactElement } from 'react'
 
 import { SiteBar } from '~/components/SiteBar'
 import { SiteFooter } from '~/components/SiteFooter'
@@ -45,7 +46,7 @@ export const Route = createFileRoute('/$locale')({
   component: LocaleLayout,
 })
 
-function LocaleLayout() {
+function LocaleLayout(): ReactElement {
   const { locale } = Route.useRouteContext()
   const dictionary = getDictionary(locale)
 

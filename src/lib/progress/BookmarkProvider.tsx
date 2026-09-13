@@ -1,4 +1,10 @@
-import { type ReactNode, useCallback, useMemo, useState } from 'react'
+import {
+  type ReactElement,
+  type ReactNode,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react'
 
 import {
   COOKIE_MAX_AGE_SECONDS,
@@ -9,14 +15,18 @@ import {
 import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
 import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
 
+/**
+ * One bookmark is held for the whole document, so every veil on the page
+ * opens and closes together rather than each reading the cookie for itself.
+ */
 export type BookmarkProviderProps = {
+  readonly children: ReactNode
   /**
    * The bookmark as the server read it. Passing it in rather than reading
    * `document.cookie` in an effect is what keeps the first server-rendered
-   * HTML correct — an effect would paint the uncovered page first and cover it
-   * a frame later, which is a spoiler.
+   * HTML correct – an effect would paint the uncovered page first and cover
+   * it a frame later, which is a spoiler.
    */
-  readonly children: ReactNode
   readonly initialBookmark: Bookmark
 }
 
@@ -30,8 +40,9 @@ export type BookmarkProviderProps = {
 export function BookmarkProvider({
   initialBookmark,
   children,
-}: BookmarkProviderProps) {
-  const [bookmark, setStoredBookmark] = useState<Bookmark>(initialBookmark)
+}: BookmarkProviderProps): ReactElement {
+  const [storedBookmark, setStoredBookmark] =
+    useState<Bookmark>(initialBookmark)
 
   const setBookmark = useCallback((next: Bookmark) => {
     setStoredBookmark(next)
@@ -51,8 +62,8 @@ export function BookmarkProvider({
   }, [])
 
   const value = useMemo<BookmarkContextValue>(
-    () => ({ bookmark, setBookmark }),
-    [bookmark, setBookmark],
+    () => ({ bookmark: storedBookmark, setBookmark }),
+    [storedBookmark, setBookmark],
   )
 
   return <BookmarkContext value={value}>{children}</BookmarkContext>

@@ -9,6 +9,11 @@ import type { ArtId } from './art'
  */
 export type EntityKind = 'arc' | 'character' | 'place' | 'ship'
 
+/**
+ * A string in every published locale. Total over `Locale` on purpose: a record
+ * that is missing a translation is a typecheck failure rather than a page with
+ * a blank line on it.
+ */
 export type LocalizedText = Readonly<Record<Locale, string>>
 
 /**

@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext } from 'react'
+import { createContext, use, useCallback } from 'react'
 
 import { useT } from '~/i18n/LocaleContext'
 
@@ -20,7 +20,7 @@ export const BookmarkContext = createContext<BookmarkContextValue | null>(null)
  * default would uncover the whole archive.
  */
 export function useBookmark(): BookmarkContextValue {
-  const value = useContext(BookmarkContext)
+  const value = use(BookmarkContext)
 
   if (value === null) {
     throw new Error('useBookmark must be used inside a BookmarkProvider')
@@ -42,7 +42,7 @@ export function useThreshold(): (
 
   return useCallback(
     (sentence: ThresholdSentence, gated: Gated) =>
-      describeThreshold(t, sentence, gated, mode),
+      describeThreshold({ gated, mode, sentence, t }),
     [t, mode],
   )
 }

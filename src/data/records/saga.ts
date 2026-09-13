@@ -1,4 +1,4 @@
-import type { CharacterDossier, Entity } from '../types'
+import type { CharacterDossier, Entity } from '~/data/types'
 
 /**
  * One stretch of the route as a module: the records filed along it, in the
