@@ -121,13 +121,14 @@ export type WaypointView = RecordView & { readonly summary: string }
  *
  * Folding on the server is not only about the work: the epithets are gated
  * there too, so an epithet the reader has not reached is not in the payload
- * at all. Today the whole timeline is on the client and `matchName` merely
- * declines to match the future ones.
+ * at all — where the archive used to be in the browser whole and the search
+ * merely declined to match the entries above the reader.
  */
 export type SearchableCharacter = CharacterView & {
   /**
-   * The displayed name, folded. Empty when folding changed its length, so an
-   * index into it can never point at the wrong letters.
+   * The displayed name, folded. A match is only marked when this is the same
+   * length as the name it was folded from, so an index into it can never
+   * point at the wrong letters.
    */
   readonly folded: string
   /**
