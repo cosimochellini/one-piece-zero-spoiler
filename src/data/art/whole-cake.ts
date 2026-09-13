@@ -197,14 +197,14 @@ export const wholeCakeArt = {
 
   // A cake with a ribbon tied across it like a blindfold.
   'charlotte-pudding': [
-    { d: 'M40 140 H120 V104 H40 Z' },
-    { d: 'M40 104 q40 -22 80 0' },
-    { d: 'M40 116 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 16 0', role: 'soft' },
-    { d: 'M26 118 H134', role: 'accent' },
-    { d: 'M74 112 l-18 -9 v18z M86 112 l18 -9 v18z', role: 'accent' },
-    { d: circle(80, 112, 5), role: 'accent' },
-    { d: ellipse(80, 144, 52, 8) },
-    shadow(80, 162, 50),
+    { d: 'M40 148 H120 V90 H40 Z' },
+    { d: 'M40 90 q40 -26 80 0' },
+    { d: 'M40 102 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 16 0', role: 'soft' },
+    { d: 'M26 112 H134', role: 'accent' },
+    { d: 'M74 106 l-18 -9 v18z M86 106 l18 -9 v18z', role: 'accent' },
+    { d: circle(80, 106, 5), role: 'accent' },
+    { d: ellipse(80, 152, 52, 8) },
+    shadow(80, 170, 50),
   ],
 
   // A great bicorne hat resting on a heap of sweets.
@@ -226,15 +226,15 @@ export const wholeCakeArt = {
 
   // A candy cane staff, its hook curling over.
   'charlotte-perospero': [
-    { d: 'M54 178 V88 C54 56 74 40 96 40 C118 40 134 56 134 84' },
-    { d: 'M70 178 V88 C70 64 82 54 96 54 C110 54 118 64 118 84' },
-    { d: 'M54 178 H70 M134 84 H118' },
-    { d: 'M54 160 l16 -10 M54 136 l16 -10 M54 112 l16 -10', role: 'accent' },
+    { d: 'M42 178 V88 C42 56 62 40 84 40 C106 40 122 56 122 84' },
+    { d: 'M58 178 V88 C58 64 70 54 84 54 C98 54 106 64 106 84' },
+    { d: 'M42 178 H58 M122 84 H106' },
+    { d: 'M42 160 l16 -10 M42 136 l16 -10 M42 112 l16 -10', role: 'accent' },
     {
-      d: 'M57 90 l13 -13 M74 66 l10 -9 M104 56 l6 12 M120 68 l12 -5',
+      d: 'M45 90 l13 -13 M62 66 l10 -9 M92 56 l6 12 M108 68 l12 -5',
       role: 'accent',
     },
-    shadow(62, 188, 16),
+    shadow(50, 188, 16),
   ],
 
   // A biscuit shield with a serrated blade behind it.
@@ -375,8 +375,8 @@ export const wholeCakeArt = {
   'vinsmoke-sora': [
     { d: 'M24 150 H136 V160 H24 Z' },
     { d: 'M32 160 V176 M128 160 V176' },
-    { d: 'M24 150 V98 H40 V150' },
-    { d: 'M24 108 H40 M24 122 H40 M24 136 H40', role: 'soft' },
+    { d: 'M24 150 V76 H40 V150' },
+    { d: 'M24 86 H40 M24 104 H40 M24 122 H40 M24 138 H40', role: 'soft' },
     { d: 'M30 150 V128 H130 V150' },
     { d: 'M30 138 q50 -10 100 0', role: 'soft' },
     { d: 'M38 128 q-4 -14 10 -14 h22 q12 0 8 14' },
@@ -439,15 +439,15 @@ export const wholeCakeArt = {
 
   // A lamp with a curl of smoke rising from the spout.
   'charlotte-daifuku': [
-    { d: 'M38 138 q14 -28 42 -28 q28 0 42 28 Z' },
-    { d: 'M120 124 l24 -11 l3 7 l-23 12' },
-    { d: 'M40 126 c-15 -8 -15 -24 0 -28' },
-    { d: 'M76 110 v-8 h8 v8' },
-    { d: circle(80, 98, 6) },
-    { d: 'M44 138 h72 v10 h-72z' },
-    { d: 'M146 112 c11 -14 -6 -23 4 -35 c8 -10 -6 -19 0 -29', role: 'accent' },
-    { d: 'M150 46 c-10 -6 -18 4 -12 13', role: 'accent' },
-    shadow(80, 158, 46),
+    { d: 'M28 138 q14 -28 42 -28 q28 0 42 28 Z' },
+    { d: 'M110 124 l24 -11 l3 7 l-23 12' },
+    { d: 'M30 126 c-15 -8 -15 -24 0 -28' },
+    { d: 'M66 110 v-8 h8 v8' },
+    { d: circle(70, 98, 6) },
+    { d: 'M34 138 h72 v10 h-72z' },
+    { d: 'M136 112 c11 -14 -6 -23 4 -35 c8 -10 -6 -19 0 -29', role: 'accent' },
+    { d: 'M140 46 c-10 -6 -18 4 -12 13', role: 'accent' },
+    shadow(70, 158, 46),
   ],
 
   // A stack of books with a hand coming out of the pages.
@@ -459,7 +459,7 @@ export const wholeCakeArt = {
     { d: 'M64 114 q16 -10 32 0 v-2 h-32z' },
     { d: 'M66 108 q14 -8 28 0 v8 h-28z', role: 'accent' },
     {
-      d: 'M68 108 v-18 M76 106 v-24 M86 106 v-22 M94 110 v-16',
+      d: 'M68 104 v-30 M76 102 v-40 M86 102 v-36 M94 106 v-28',
       role: 'accent',
     },
     shadow(80, 172, 50),
@@ -487,24 +487,24 @@ export const wholeCakeArt = {
   // A nun's veil and a bag of sweets beside it.
   carmel: [
     {
-      d: 'M40 58 C40 34 104 34 104 58 C112 94 114 126 110 148 L34 148 C30 126 32 94 40 58 Z',
+      d: 'M34 58 C34 34 98 34 98 58 C106 94 108 126 104 148 L28 148 C24 126 26 94 34 58 Z',
     },
     {
-      d: 'M54 60 C52 90 54 120 58 148 M90 60 C92 90 90 120 86 148',
+      d: 'M48 60 C46 90 48 120 52 148 M84 60 C86 90 84 120 80 148',
       role: 'soft',
     },
-    { d: 'M40 60 q32 -12 64 0', role: 'accent' },
-    { d: 'M114 168 q-12 -26 6 -36 h20 q16 10 6 36 Z' },
-    { d: 'M118 132 q14 -8 26 0', role: 'accent' },
+    { d: 'M34 60 q32 -12 64 0', role: 'accent' },
+    { d: 'M106 170 q-12 -26 6 -36 h20 q16 10 6 36 Z' },
+    { d: 'M110 134 q14 -8 26 0', role: 'accent' },
     {
       d: dots([
-        [124, 150],
-        [136, 156],
-        [130, 164],
+        [116, 152],
+        [128, 158],
+        [122, 166],
       ]),
       role: 'soft',
     },
-    shadow(72, 160, 42),
+    shadow(66, 160, 40),
   ],
 
   // A cracked bubble helmet with a plaster on the collar.
@@ -532,17 +532,17 @@ export const wholeCakeArt = {
 
   // A flag on a pole and a cigarette burning beside it.
   'belo-betty': [
-    { d: 'M52 178 V28' },
+    { d: 'M46 178 V24' },
     {
-      d: 'M52 32 C78 22 102 42 128 32 L128 76 C102 86 78 66 52 76 Z',
+      d: 'M46 28 C72 18 96 38 122 28 L122 72 C96 82 72 62 46 72 Z',
       role: 'accent',
     },
-    { d: 'M78 30 v46 M104 40 v46', role: 'soft' },
-    { d: circle(52, 24, 6) },
-    { d: 'M100 150 l28 -10 l3 9 l-28 10 Z' },
-    { d: 'M124 141 l3 9', role: 'soft' },
-    { d: 'M134 138 c9 -10 -5 -15 4 -25', role: 'soft' },
-    shadow(64, 184, 28),
+    { d: 'M72 26 v46 M98 36 v46', role: 'soft' },
+    { d: circle(46, 20, 6) },
+    { d: 'M84 152 l28 -10 l3 9 l-28 10 Z' },
+    { d: 'M108 143 l3 9', role: 'soft' },
+    { d: 'M118 140 c9 -10 -5 -15 4 -25', role: 'soft' },
+    shadow(56, 184, 28),
   ],
 
   // A giant's trident with a broad ribbon tied to the shaft.

@@ -25,8 +25,8 @@ const SWEET_COMMANDER = {
 }
 
 const SWEET_COMMANDER_ROLE = {
-  it: 'Sweet Commander dei Pirati di Big Mom',
-  en: 'Sweet Commander of the Big Mom Pirates',
+  it: 'Sweet Commander di Big Mom',
+  en: 'Big Mom’s Sweet Commander',
 }
 
 const MOKOMO_MUSKETEERS = {
@@ -865,7 +865,7 @@ export const wholeCake: Saga = {
     morgans: {
       role: {
         it: 'Presidente del World Economy News Paper',
-        en: 'President of the World Economy News Paper',
+        en: 'World Economy News Paper president',
       },
       log: {
         it: 'Ha la testa e le ali di un albatro e il fiuto di chi vive di tirature: decide lui che cosa il mondo leggerà domattina. Va di persona dove succedono le cose, matita in mano, e paga bene chi gli porta qualcosa di grosso. Dice apertamente che una notizia interessante conta più di una notizia esatta, e stampa di conseguenza.',
