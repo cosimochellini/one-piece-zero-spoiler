@@ -9,7 +9,7 @@ import {
 import { type ReactNode, useEffect } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
-import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
 import { color, font, leading, text } from '~/styles/tokens.stylex'

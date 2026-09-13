@@ -1,15 +1,20 @@
-import { useContext } from 'react'
+import { createContext, useContext } from 'react'
 
-import { LocaleContext, type LocaleContextValue } from './LocaleContext'
+import type { Locale } from './locales'
 import type { Translate } from './types'
+
+/** What the provider puts on the context: the active locale and its translate. */
+export type LocaleContextValue = {
+  readonly locale: Locale
+  readonly t: Translate
+}
+
+export const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 /**
  * The active locale and its translate function. Throws rather than falling
  * back to a default, because a subtree outside the provider would render in
  * the wrong language instead of failing.
- *
- * It lives beside the provider rather than inside it so that LocaleContext.tsx
- * exports components only and Vite can refresh it in place.
  */
 export function useLocale(): LocaleContextValue {
   const value = useContext(LocaleContext)

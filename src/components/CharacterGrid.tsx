@@ -8,14 +8,14 @@ import { Button } from '~/components/ui/Button'
 import { type BookSection, matchName, type NameMatch } from '~/data/characters'
 import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
-import { useLocale } from '~/i18n/useLocale'
+import { useLocale } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import {
   type Bookmark,
   type BookmarkMode,
   modeOf,
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
-import { useThreshold } from '~/lib/progress/useBookmark'
 import {
   color,
   dur,
@@ -69,9 +69,10 @@ export function CharacterGrid({
   const open = everyone.filter((entry) => isRevealed(entry, bookmark))
   const matched = new Map<string, Match>(
     open
-      .map((entry) => {
-        return { entry, match: matchName(entry, query, locale, bookmark) }
-      })
+      .map((entry) => ({
+        entry,
+        match: matchName(entry, query, locale, bookmark),
+      }))
       .filter(({ match }) => match.matches)
       .map((match) => [match.entry.id, match]),
   )

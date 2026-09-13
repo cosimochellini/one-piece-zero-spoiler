@@ -11,10 +11,10 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { CharacterGrid } from '~/components/CharacterGrid'
 import { bookSections, characters, featuredCharacters } from '~/data/characters'
+import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
-import { useT } from '~/i18n/useLocale'
-import { useBookmark } from '~/lib/progress/useBookmark'
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,

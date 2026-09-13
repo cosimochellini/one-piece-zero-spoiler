@@ -1,19 +1,23 @@
-import { useCallback, useContext } from 'react'
+import { createContext, useCallback, useContext } from 'react'
 
-import { useT } from '~/i18n/useLocale'
+import { useT } from '~/i18n/LocaleContext'
 
-import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
-import { modeOf } from './episode'
+import { type Bookmark, modeOf } from './episode'
 import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
+
+/** What the provider puts on the context: the bookmark, and how to move it. */
+export type BookmarkContextValue = {
+  readonly bookmark: Bookmark
+  readonly setBookmark: (next: Bookmark) => void
+}
+
+export const BookmarkContext = createContext<BookmarkContextValue | null>(null)
 
 /**
  * The reader's bookmark and the setter that moves it. Throws outside the
  * provider rather than defaulting to "nothing read yet", because a silent
  * default would uncover the whole archive.
- *
- * Both hooks live beside the provider rather than inside it so that
- * BookmarkContext.tsx exports components only and Vite can refresh it in place.
  */
 export function useBookmark(): BookmarkContextValue {
   const value = useContext(BookmarkContext)

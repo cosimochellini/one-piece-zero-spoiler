@@ -6,8 +6,8 @@ import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { roleOf } from '~/data/characters'
 import type { Entity } from '~/data/types'
-import { useLocale } from '~/i18n/useLocale'
-import { useThreshold } from '~/lib/progress/useBookmark'
+import { useLocale } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import {
   color,
   dur,

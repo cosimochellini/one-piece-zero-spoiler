@@ -1,16 +1,8 @@
-import { createContext, type ReactNode, useMemo } from 'react'
+import { type ReactNode, useMemo } from 'react'
 
+import { LocaleContext, type LocaleContextValue } from './LocaleContext'
 import type { Locale } from './locales'
 import { getDictionary, translate } from './translate'
-import type { Translate } from './types'
-
-/** What the provider puts on the context: the active locale and its translate. */
-export type LocaleContextValue = {
-  readonly locale: Locale
-  readonly t: Translate
-}
-
-export const LocaleContext = createContext<LocaleContextValue | null>(null)
 
 export type LocaleProviderProps = {
   readonly children: ReactNode
@@ -20,6 +12,9 @@ export type LocaleProviderProps = {
 /**
  * Puts one locale and the translate function bound to it on the context, for
  * the subtree the server rendered under that locale's URL.
+ *
+ * The context object and its hooks live in LocaleContext.ts, so this module
+ * exports a component and nothing else and Vite can refresh it in place.
  */
 export function LocaleProvider({ locale, children }: LocaleProviderProps) {
   const value = useMemo<LocaleContextValue>(() => {

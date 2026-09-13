@@ -9,9 +9,9 @@ import {
 import { render } from '@testing-library/react'
 import type { ReactElement } from 'react'
 
-import { LocaleProvider } from '~/i18n/LocaleContext'
+import { LocaleProvider } from '~/i18n/LocaleProvider'
 import type { Locale } from '~/i18n/locales'
-import { BookmarkProvider } from '~/lib/progress/BookmarkContext'
+import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import type { Bookmark } from '~/lib/progress/episode'
 
 /** An anime-episode bookmark, the case most tests need. */

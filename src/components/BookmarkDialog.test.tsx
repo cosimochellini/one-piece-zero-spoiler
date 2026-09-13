@@ -2,8 +2,8 @@ import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 
+import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
-import { useBookmark } from '~/lib/progress/useBookmark'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { EpisodeMark } from './EpisodeMark'

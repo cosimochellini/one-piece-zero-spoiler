@@ -1,10 +1,4 @@
-import {
-  createContext,
-  type ReactNode,
-  useCallback,
-  useMemo,
-  useState,
-} from 'react'
+import { type ReactNode, useCallback, useMemo, useState } from 'react'
 
 import {
   COOKIE_MAX_AGE_SECONDS,
@@ -12,15 +6,8 @@ import {
   writeCookie,
 } from '~/lib/cookies'
 
+import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
 import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
-
-/** What the provider puts on the context: the bookmark, and how to move it. */
-export type BookmarkContextValue = {
-  readonly bookmark: Bookmark
-  readonly setBookmark: (next: Bookmark) => void
-}
-
-export const BookmarkContext = createContext<BookmarkContextValue | null>(null)
 
 export type BookmarkProviderProps = {
   /**
@@ -36,6 +23,9 @@ export type BookmarkProviderProps = {
 /**
  * Holds the reader's bookmark for the whole page and writes it back to the
  * cookie whenever it moves.
+ *
+ * The context object and its hooks live in BookmarkContext.ts, so this module
+ * exports a component and nothing else and Vite can refresh it in place.
  */
 export function BookmarkProvider({
   initialBookmark,

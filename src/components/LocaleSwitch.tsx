@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 
+import { useLocale } from '~/i18n/LocaleContext'
 import { type Locale, LOCALE_COOKIE, LOCALES } from '~/i18n/locales'
-import { useLocale } from '~/i18n/useLocale'
 import { COOKIE_MAX_AGE_SECONDS, writeCookie } from '~/lib/cookies'
 import {
   color,

@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 
 import { EpisodeMark } from '~/components/EpisodeMark'
 import { LocaleSwitch } from '~/components/LocaleSwitch'
-import { useLocale } from '~/i18n/useLocale'
+import { useLocale } from '~/i18n/LocaleContext'
 import {
   color,
   dur,

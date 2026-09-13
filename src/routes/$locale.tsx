@@ -3,7 +3,7 @@ import { createFileRoute, notFound, Outlet } from '@tanstack/react-router'
 
 import { SiteBar } from '~/components/SiteBar'
 import { SiteFooter } from '~/components/SiteFooter'
-import { LocaleProvider } from '~/i18n/LocaleContext'
+import { LocaleProvider } from '~/i18n/LocaleProvider'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
