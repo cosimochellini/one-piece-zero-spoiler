@@ -93,13 +93,14 @@ export const styles = stylex.create({
     letterSpacing: '-0.035em',
     lineHeight: leading.display,
     overflowWrap: 'anywhere',
-    // The ship sits at 57% of the widest crop and the headline may not reach
-    // her. Twelve characters is where the line breaks short of the sail at
-    // 40rem; by 60rem the frame is wide enough for the full measure.
+    // The moon spans x 760 to 1200 of the box, 47% to 81% of the widest crop,
+    // and the headline may not reach it. Twelve characters is where the line
+    // breaks short of the disc once the words sit on the drawing; by 72rem the
+    // frame is wide enough for the full measure to stop short of it too.
     maxWidth: {
       'default': '16ch',
       '@media (min-width: 40rem)': '12ch',
-      '@media (min-width: 60rem)': '16ch',
+      '@media (min-width: 72rem)': '16ch',
     },
     // Display type needs an explicit last-resort break or a long unbroken
     // string walks off a 320px viewport.

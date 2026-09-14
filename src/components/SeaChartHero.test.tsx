@@ -1,9 +1,15 @@
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { MOON } from '~/components/chrome/night-sea'
+import { HORIZON, SUNNY_BODY } from '~/components/chrome/night-sea'
 
 import { SeaChartHero } from './SeaChartHero'
+
+// StyleX compiles to opaque atomic classes, so a colour is identified the only
+// way a test honestly can: as the class one element carries and another does
+// not.
+const classesOf = (container: HTMLElement, selector: string): Set<string> =>
+  new Set(container.querySelector(selector)?.classList)
 
 describe('SeaChartHero', () => {
   it('draws the night sea in one hidden box that is cropped, not squashed', () => {
@@ -25,7 +31,7 @@ describe('SeaChartHero', () => {
     )
     const blank = paths.filter((path) => path.getAttribute('d') === '')
 
-    expect(paths.length).toBeGreaterThanOrEqual(25)
+    expect(paths.length).toBeGreaterThanOrEqual(14)
     expect(effects).toStrictEqual(new Set(['non-scaling-stroke']))
     expect(blank).toHaveLength(0)
   })
@@ -42,29 +48,55 @@ describe('SeaChartHero', () => {
     expect(placed?.querySelector('g')).not.toBeNull()
   })
 
-  it('spends the route gold on the sail and the lion, and nowhere else', () => {
+  it('draws the ship twice: a gold rim behind, the paper fill in front', () => {
     const { container } = render(<SeaChartHero />)
 
-    // StyleX compiles to opaque atomic classes, so the gold is identified the
-    // only way a test honestly can: it is the class the horizon carries and
-    // the moon does not.
-    const classesOf = (d: string): Set<string> =>
-      new Set(container.querySelector(`path[d="${CSS.escape(d)}"]`)?.classList)
-    const crescent = classesOf(MOON)
-    const goldName = [...classesOf('M0 380 H1600')].find(
-      (name) => !crescent.has(name),
+    const body = `path[d="${CSS.escape(SUNNY_BODY)}"]`
+    const horizon = `path[d="${CSS.escape(HORIZON)}"]`
+    // The horizon is gold and the sea rect is not; the fill is what the front
+    // copy of the hull has and the horizon has not.
+    const goldName = [...classesOf(container, horizon)].find(
+      (name) => !classesOf(container, 'rect').has(name),
+    )
+    const [rimBody, fillBody] = container.querySelectorAll(body)
+    const fillName = [...(fillBody?.classList ?? [])].find(
+      (name) => !classesOf(container, horizon).has(name),
     )
 
     const parts = [
       ...container.querySelectorAll(':scope g[transform] > g > path'),
     ]
-    const gilded = parts.filter((path) =>
-      path.classList.contains(goldName ?? ''),
-    )
+    const rim = parts.slice(0, 3)
+    const fill = parts.slice(3)
 
     expect(goldName).toBeDefined()
-    expect(parts).toHaveLength(8)
-    // The sail, the lion and the rays of its mane.
-    expect(gilded).toHaveLength(3)
+    expect(fillName).toBeDefined()
+    expect(parts).toHaveLength(6)
+    expect(rimBody).toBe(rim[0])
+    expect(fillBody).toBe(fill[0])
+    // Same three shapes, in the same order, so the fill lands exactly on the
+    // stroke and hides its inner half.
+    expect(rim.map((path) => path.getAttribute('d'))).toStrictEqual(
+      fill.map((path) => path.getAttribute('d')),
+    )
+
+    for (const path of rim) {
+      expect(path).toHaveClass(goldName ?? '')
+    }
+
+    for (const path of fill) {
+      expect(path).not.toHaveClass(goldName ?? '')
+      expect(path).toHaveClass(fillName ?? '')
+    }
+  })
+
+  it('paints the sea over the ship, so the swell passes in front of her hull', () => {
+    const { container } = render(<SeaChartHero />)
+
+    // Document order is paint order: the placing group first, the sea after.
+    const [first, second] = container.querySelectorAll('g[transform], rect')
+
+    expect(first).toHaveAttribute('transform')
+    expect(second?.tagName).toBe('rect')
   })
 })

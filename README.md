@@ -139,7 +139,10 @@ neutral ink, which is what makes several hundred illustrations read as one set.
 The compositions around them went the same way: the fold's night sea, the seal a
 character's crest is set into, a port's chart plate, the route's own line and
 compass mark are all stroke lists under `src/data/art/` too, so no line on the
-site is written in JSX.
+site is written in JSX. The one solid on the site is the ship in the fold: the
+Thousand Sunny cut out of a full moon as a silhouette, with a hairline of the
+route gold around her profile, because a ship the size of a headline drawn in
+outline read as a diagram of a ship.
 
 ## Stack
 
