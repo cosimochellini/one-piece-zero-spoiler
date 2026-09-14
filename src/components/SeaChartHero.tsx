@@ -5,11 +5,6 @@ import {
   BRIGHT_STARS_A,
   BRIGHT_STARS_B,
   BRIGHT_STARS_C,
-  CARAVEL_AT,
-  CARAVEL_FIGUREHEAD,
-  CARAVEL_HULL,
-  CARAVEL_MAST,
-  CARAVEL_SAIL,
   CONSTELLATION,
   COURSE,
   DEEP_FIELD,
@@ -23,6 +18,15 @@ import {
   SEA_CHART_VIEWBOX,
   STAR_FLARES,
   STARS,
+  SUNNY_AT,
+  SUNNY_HULL,
+  SUNNY_JOLLY,
+  SUNNY_LION,
+  SUNNY_MANE,
+  SUNNY_MAST,
+  SUNNY_NEST,
+  SUNNY_SAIL,
+  SUNNY_WALE,
   WAVE_FAR,
   WAVE_FORE,
   WAVE_MID,
@@ -39,8 +43,8 @@ const MOON_GRADIENT = 'sea-chart-moon'
 /**
  * The fold drawing: a night sea in the same line as the waypoint plates.
  *
- * One horizon in the route gold, a small caravel under sail right of centre, a
- * dotted course that leaves her and runs into fog at the right edge, a
+ * One horizon in the route gold, the Thousand Sunny under sail right of centre,
+ * a dotted course that leaves her and runs into fog at the right edge, a
  * crescent with its light ruled around it, and a sky in three depths. The
  * headline is set into the lower-left corner by the fold, so the left half
  * stays quiet on purpose, and the ship sits where a phone's 4:3 crop of the
@@ -71,9 +75,30 @@ export function SeaChartHero(): ReactElement {
       <Twinkle />
       <Sea />
       <Lantern />
-      <Caravel />
+      <Sunny />
       <Course />
     </svg>
+  )
+}
+
+/**
+ * One stroke of the drawing. Every line in the fold is 2px with round caps at
+ * any crop, so the ink and the `vector-effect` are stated once here rather
+ * than on each of the two dozen paths that follow.
+ */
+function Line({
+  d,
+  sx,
+}: {
+  readonly d: string
+  readonly sx?: stylex.StyleXStyles
+}): ReactElement {
+  return (
+    <path
+      d={d}
+      vectorEffect="non-scaling-stroke"
+      {...stylex.props(styles.line, sx)}
+    />
   )
 }
 
@@ -136,31 +161,23 @@ function Sky(): ReactElement {
         r={MOON_HALO.r}
         {...stylex.props(styles.halo)}
       />
-      <path
+      <Line
         d={DEEP_FIELD}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.faint)}
+        sx={styles.faint}
       />
-      <path
+      <Line
         d={STARS}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.gold)}
+        sx={styles.gold}
       />
-      <path
+      <Line
         d={CONSTELLATION}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.ambient)}
+        sx={styles.ambient}
       />
-      <path
+      <Line
         d={MOON_RINGS}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.faint)}
+        sx={styles.faint}
       />
-      <path
-        d={MOON}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line)}
-      />
+      <Line d={MOON} />
     </>
   )
 }
@@ -173,35 +190,21 @@ function Sky(): ReactElement {
 function Twinkle(): ReactElement {
   return (
     <>
-      <path
+      <Line
         d={BRIGHT_STARS_A}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.gold, styles.pulse)}
+        sx={[styles.gold, styles.pulse]}
       />
-      <path
+      <Line
         d={STAR_FLARES}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.faint, styles.pulse)}
+        sx={[styles.faint, styles.pulse]}
       />
-      <path
+      <Line
         d={BRIGHT_STARS_B}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.gold,
-          styles.pulse,
-          styles.pulseLate,
-        )}
+        sx={[styles.gold, styles.pulse, styles.pulseLate]}
       />
-      <path
+      <Line
         d={BRIGHT_STARS_C}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.gold,
-          styles.pulse,
-          styles.pulseLater,
-        )}
+        sx={[styles.gold, styles.pulse, styles.pulseLater]}
       />
     </>
   )
@@ -216,55 +219,29 @@ function Twinkle(): ReactElement {
 function Sea(): ReactElement {
   return (
     <>
-      <path
+      <Line
         d={HORIZON}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.gold)}
+        sx={styles.gold}
       />
-      <path
+      <Line
         d={FAR_ISLES}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.ambient)}
+        sx={styles.ambient}
       />
-      <path
+      <Line
         d={WAVE_FAR}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.ambient,
-          styles.swell,
-          styles.farRow,
-        )}
+        sx={[styles.ambient, styles.swell, styles.farRow]}
       />
-      <path
+      <Line
         d={WAVE_MID}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.ambient,
-          styles.swell,
-          styles.midRow,
-        )}
+        sx={[styles.ambient, styles.swell, styles.midRow]}
       />
-      <path
+      <Line
         d={WAVE_NEAR}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.ambient,
-          styles.swell,
-          styles.nearRow,
-        )}
+        sx={[styles.ambient, styles.swell, styles.nearRow]}
       />
-      <path
+      <Line
         d={WAVE_FORE}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(
-          styles.line,
-          styles.ambient,
-          styles.swell,
-          styles.foreRow,
-        )}
+        sx={[styles.ambient, styles.swell, styles.foreRow]}
       />
     </>
   )
@@ -277,53 +254,56 @@ function Sea(): ReactElement {
  */
 function Lantern(): ReactElement {
   return (
-    <path
+    <Line
       d={LANTERN_PATH}
-      vectorEffect="non-scaling-stroke"
-      {...stylex.props(
-        styles.line,
+      sx={[
         styles.gold,
         styles.faint,
         styles.dotted,
         styles.pulse,
         styles.lantern,
-      )}
+      ]}
     />
   )
 }
 
 /**
- * Sails full, heading right, drawn about her own waterline and put in place
- * by one transform, so the parts never drift apart from each other.
+ * The Thousand Sunny: sails full, heading right, drawn about her own waterline
+ * and put in place by one transform, so the parts never drift apart from each
+ * other. The sail and the lion at her prow are the two pieces that take the
+ * route gold; the wale is ambient and everything else is the neutral ink.
  *
  * The rock is on a second group inside that one, and it has to be: a CSS
  * `transform` replaces the `transform` attribute outright rather than
  * composing with it, so an animation on the outer group would drop the ship
  * at the origin of the view box at full scale.
  */
-function Caravel(): ReactElement {
+function Sunny(): ReactElement {
   return (
-    <g transform={CARAVEL_AT}>
+    <g transform={SUNNY_AT}>
       <g {...stylex.props(styles.rock)}>
-        <path
-          d={CARAVEL_HULL}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
+        <Line d={SUNNY_HULL} />
+        <Line
+          d={SUNNY_WALE}
+          sx={styles.ambient}
         />
-        <path
-          d={CARAVEL_MAST}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
+        <Line d={SUNNY_MAST} />
+        <Line
+          d={SUNNY_SAIL}
+          sx={styles.gold}
         />
-        <path
-          d={CARAVEL_SAIL}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line, styles.gold)}
+        <Line d={SUNNY_NEST} />
+        <Line
+          d={SUNNY_LION}
+          sx={styles.gold}
         />
-        <path
-          d={CARAVEL_FIGUREHEAD}
-          vectorEffect="non-scaling-stroke"
-          {...stylex.props(styles.line)}
+        <Line
+          d={SUNNY_MANE}
+          sx={styles.gold}
+        />
+        <Line
+          d={SUNNY_JOLLY}
+          sx={styles.jolly}
         />
       </g>
     </g>
@@ -338,10 +318,9 @@ function Caravel(): ReactElement {
 function Course(): ReactElement {
   return (
     <>
-      <path
+      <Line
         d={COURSE}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.gold, styles.dotted)}
+        sx={[styles.gold, styles.dotted]}
       />
       <rect
         fill={`url(#${FOG_GRADIENT})`}

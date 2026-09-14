@@ -1,12 +1,20 @@
 import { describe, expect, it } from 'vitest'
 
 import {
-  CARAVEL_AT,
+  COURSE,
   FAR_ISLES,
   LANTERN_PATH,
   MOON,
   MOON_HALO,
   MOON_RINGS,
+  SUNNY_AT,
+  SUNNY_HULL,
+  SUNNY_LION,
+  SUNNY_MANE,
+  SUNNY_MAST,
+  SUNNY_NEST,
+  SUNNY_SAIL,
+  SUNNY_WALE,
   WAVE_FAR,
   WAVE_FORE,
   WAVE_MID,
@@ -89,24 +97,48 @@ describe('night-sea', () => {
     expect(MOON_HALO.cy + MOON_HALO.r).toBeLessThan(380)
   })
 
-  it('keeps the ship inside a phone crop, hull and all', () => {
+  it('keeps the ship inside a phone crop, mane and all', () => {
     const at = /translate\((?<x>\d+) \d+\) scale\((?<scale>[\d.]+)\)/u.exec(
-      CARAVEL_AT,
+      SUNNY_AT,
     )
     const x = Number(at?.groups?.['x'])
     const scale = Number(at?.groups?.['scale'])
 
-    // The hull runs from -70 (the figurehead's curl) to 58 about the origin.
-    expect(x - 70 * scale).toBeGreaterThan(SAFE_START)
-    expect(x + 58 * scale).toBeLessThan(SAFE_END)
+    // The ship runs from -80 (the mane's outermost ray) to 64 (the stern)
+    // about the origin.
+    expect(x - 80 * scale).toBeGreaterThan(SAFE_START)
+    expect(x + 64 * scale).toBeLessThan(SAFE_END)
+  })
+
+  it('keeps the masthead and the keel inside the box', () => {
+    const at = /translate\(\d+ (?<y>\d+)\) scale\((?<scale>[\d.]+)\)/u.exec(
+      SUNNY_AT,
+    )
+    const y = Number(at?.groups?.['y'])
+    const scale = Number(at?.groups?.['scale'])
+
+    // The pennant tops out at -118 and the keel bottoms at +39 — the curve's
+    // own apex, not the `Q8 48` control point that writes it.
+    expect(y - 118 * scale).toBeGreaterThan(0)
+    expect(y + 39 * scale).toBeLessThan(560)
   })
 
   it('draws every coordinate to at most one decimal', () => {
+    // `SUNNY_JOLLY` is deliberately absent: the skull's eyes are dots, and a
+    // dot is written `h0.01` — the same reason `STARS` is not here either.
     const drawings = [
+      COURSE,
       FAR_ISLES,
       LANTERN_PATH,
       MOON,
       MOON_RINGS,
+      SUNNY_HULL,
+      SUNNY_LION,
+      SUNNY_MANE,
+      SUNNY_MAST,
+      SUNNY_NEST,
+      SUNNY_SAIL,
+      SUNNY_WALE,
       WAVE_FAR,
       WAVE_FORE,
       WAVE_MID,

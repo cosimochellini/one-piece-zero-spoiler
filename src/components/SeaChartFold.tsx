@@ -26,7 +26,7 @@ export type SeaChartFoldProps = { readonly band: number }
  * The fold: the night sea with the headline and the two ways into the site
  * set into its lower-left corner.
  *
- * The drawing is cropped rather than squashed, so the caravel stays where a
+ * The drawing is cropped rather than squashed, so the ship stays where a
  * phone's crop of the box still shows her. Below 40rem the words sit under
  * the drawing in the page; from there up they move onto it, on a scrim that
  * darkens toward the paper, and the left half of the sea is kept quiet for

@@ -103,7 +103,7 @@ function ChartBand({
  * The landing page (Hallmark macrostructure 19, Map / Diagram, with an
  * illustrated fold).
  *
- * The fold is one line drawing — a night sea, a small caravel, a route running
+ * The fold is one line drawing — a night sea, the Thousand Sunny, a route running
  * into fog — with the headline and the two ways into the site set into its
  * lower edge. Under it the page is one composition: the archive drawn as a sea
  * route, every waypoint with its own drawing, and the reader's bookmark as a

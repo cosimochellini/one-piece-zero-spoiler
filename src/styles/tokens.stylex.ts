@@ -1,9 +1,10 @@
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V5 */
 /* Hallmark · route: custom (bespoke) · genre: atmospheric · macrostructure: Map / Diagram
  *   with an illustrated fold
- * · structure: line-drawn fold (night sea, caravel, course into fog, headline set
- *   into it) · sticky orientation column (lede · dial · legend) beside a vertical
- *   sea-route of waypoints, each with a framed line drawing; the reader's episode
+ * · structure: line-drawn fold (night sea, Thousand Sunny, course into fog,
+ *   headline and two actions set into it) · sticky orientation column
+ *   (lede · dial · legend) beside a vertical sea-route of waypoints, each with
+ *   a framed line drawing; the reader's episode
  *   is a horizon line across the route and everything below it is under fog
  * · idea: "the spoiler boundary is a horizon you move"
  * · theme: custom "Sea Chart" · vibe: night sea, lantern gold, hand-drawn chart

@@ -2,9 +2,15 @@ import { circle, dots } from '~/lib/svg/primitives'
 
 /**
  * The night sea of the fold drawing, in the same line as the record drawings
- * but composed in a box ten times as wide: a horizon, a caravel under sail
- * right of centre, a course that leaves her and runs off the right edge, a
- * thin moon and a scatter of stars.
+ * but composed in a box ten times as wide: a horizon, the Thousand Sunny under
+ * sail right of centre, a course that leaves her and runs off the right edge,
+ * a thin moon and a scatter of stars.
+ *
+ * The ship is the archive's own `thousand-sunny` drawing translated into this
+ * box rather than a second one drawn from scratch, so the fold and the record
+ * card are the same ship: the same hull, the same sail, and the same answer to
+ * how you draw a lion figurehead without drawing a face — a disc with rays,
+ * read as a mane and as a sun.
  *
  * It is data for the same reason every other drawing is: `SeaChartHero` owns
  * the `<svg>`, the fog gradient and the ink, and nothing about where a line
@@ -116,7 +122,8 @@ const DEEP_STARS = [
   [842, 216],
   [880, 150],
   [918, 84],
-  [956, 240],
+  // Was at (956, 240), which the larger ship put inside her own sail.
+  [964, 22],
   [994, 120],
   [1032, 58],
   [1070, 200],
@@ -147,7 +154,9 @@ export const BRIGHT_STARS_B = dots([
 /** The third pair, a beat behind the second. */
 export const BRIGHT_STARS_C = dots([
   [344, 118],
-  [900, 214],
+  // Was at (900, 214): close enough to the crow's nest to read as a lamp hung
+  // on it, and a pulsing one at that.
+  [1040, 260],
 ])
 
 /** A cross of light on the two brightest stars: the only flare the sky allows. */
@@ -162,7 +171,7 @@ export const HORIZON = 'M0 380 H1600'
  * ambient ink are enough to say the sea has a far side.
  */
 export const FAR_ISLES =
-  'M508 380 q44 -30 86 -8 q26 -16 54 8 M672 380 q38 -24 72 -4 q22 -12 48 4'
+  'M468 380 q44 -30 86 -8 q26 -16 54 8 M632 380 q38 -24 72 -4 q22 -12 48 4'
 
 /**
  * One row of swell: thirty repeats of a crest exactly 60 units wide, started
@@ -198,24 +207,73 @@ export const WAVE_FORE = `M-60 528 ${Array.from(
 ).join(' ')}`
 
 /**
- * Where the caravel sits and how big she is. She is drawn about her own
- * waterline at the origin, so this is the only place her position is stated.
+ * Where the ship sits and how big she is. She is drawn about her own waterline
+ * at the origin, so this is the only place her position is stated.
+ *
+ * She is the archive's `thousand-sunny` redrawn for this box rather than
+ * scaled up from it: at ten times the size a stroke that stays 2px stops
+ * carrying the same weight, so the hull is broader, the lion is mounted on the
+ * bow instead of trailing it, and the mast is split so the sail is not cut in
+ * half by a line drawn through it. What the two share is the reading — a lion
+ * at the prow drawn as a disc with a mane of rays — and that is the part a
+ * reader recognises.
  */
-export const CARAVEL_AT = 'translate(940 380) scale(1.45)'
+export const SUNNY_AT = 'translate(940 380) scale(1.8)'
 
-/** Hull, deck line and wale. */
-export const CARAVEL_HULL =
-  'M-58 -2 L-48 30 Q0 48 48 30 L58 -2 M-58 -2 H58 M-44 16 Q0 30 44 16'
+/** Hull, deck line and the stem the lion is mounted on. */
+export const SUNNY_HULL = 'M-46 -2 L-38 30 Q8 48 54 30 L64 -2 M-46 -2 H64'
 
-/** Mast, yard and the pennant at the masthead. */
-export const CARAVEL_MAST = 'M0 -2 V-84 M-28 -72 H28 M0 -84 l16 6 l-16 6'
+/** The wale, in the ambient ink: it is on the hull, not of it. */
+export const SUNNY_WALE = 'M-34 16 Q8 28 48 16'
 
-/** The one shape on the ship that takes the route gold: a sail, full. */
-export const CARAVEL_SAIL = 'M-26 -70 Q0 -78 26 -70 L30 -20 Q0 -10 -30 -20 Z'
+/**
+ * Mast, yard and the pennant at the masthead.
+ *
+ * The mast is two segments rather than one because the sail has no fill: a
+ * single line from the deck to the masthead would be drawn straight through
+ * the canvas and cut it in half. What is left is what a mast actually shows —
+ * a stub under the foot and the topmast above the yard.
+ */
+export const SUNNY_MAST =
+  'M0 -2 V-12 M0 -84 V-118 M-30 -84 H30 M0 -118 l16 6 l-16 6'
 
-/** The curl at the bow, the only flourish the drawing allows itself. */
-export const CARAVEL_FIGUREHEAD =
-  'M-58 -2 C-70 -4 -74 -16 -70 -26 C-66 -34 -56 -32 -54 -24 C-52 -18 -58 -14 -60 -18 M-70 -26 q-8 -4 -4 -12'
+/** A sail, full, and one of the two shapes that take the route gold. */
+export const SUNNY_SAIL = 'M-28 -74 Q0 -82 28 -74 L32 -20 Q0 -10 -32 -20 Z'
+
+/** The crow's nest high on the topmast, on two brackets. */
+export const SUNNY_NEST = `${circle(0, -98, 12)} M-8 -87 l8 -4 M8 -87 l-8 -4`
+
+/**
+ * The lion at the prow, sat astride the bow so the hull carries her rather
+ * than trailing her, and the mane drawn as rays swept forward from it.
+ *
+ * This is how the archive draws her too, and the reason is a rule rather than
+ * a style: no drawing on this site has a face. A disc with rays reads as a
+ * mane and as a sun at once, which is the whole of the ship's name.
+ */
+export const SUNNY_LION = circle(-52, -18, 16)
+
+/** The rays of the mane. None of them reaches the water or the sail. */
+export const SUNNY_MANE =
+  'M-68 -18 h-12 M-65 -29 l-9 -9 M-52 -34 v-12 M-65 -7 l-9 5'
+
+/**
+ * The mark on the sail: a skull under a straw hat, left in the neutral ink so
+ * the gold of the canvas stays the loud thing.
+ *
+ * It is a deliberate exception to the rule stated in `ChartArt.tsx` and in the
+ * README — no faces, no logos — and the only one on the site. It is drawn, not
+ * reproduced: a cranium, a jaw, two sockets and a hat. Every record drawing in
+ * `~/data/art` still obeys the rule as written. Below 52rem the fold hides it
+ * rather than render it at a size where the strokes fuse into a badge.
+ */
+export const SUNNY_JOLLY = [
+  circle(0, -48, 12),
+  'M-7 -30 h14 M-7 -30 v-6 M7 -30 v-6 M-2.5 -30 v-6 M2.5 -30 v-6',
+  circle(-5, -52, 3.5),
+  circle(5, -52, 3.5),
+  'M-26 -56 q26 5 52 0 M-13 -56 q13 -12 26 0',
+].join(' ')
 
 /**
  * The light the ship's lantern throws on the water: five broken strokes
@@ -224,10 +282,10 @@ export const CARAVEL_FIGUREHEAD =
  * accent stays a signal rather than becoming a surface.
  */
 export const LANTERN_PATH =
-  'M916 404 h48 M902 432 h76 M886 464 h108 M868 500 h144 M848 540 h184'
+  'M910 404 h60 M892 432 h96 M872 464 h136 M850 500 h180 M826 540 h228'
 
 /** Leaves the ship level with her waterline and rises into the fog. */
-export const COURSE = 'M1030 380 C1120 380 1200 340 1290 346 S1440 380 1600 330'
+export const COURSE = 'M1062 380 C1147 380 1222 340 1307 346 S1449 380 1600 330'
 
 /**
  * The band the fog gradient is painted over: the right third plus the width
