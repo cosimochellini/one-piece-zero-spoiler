@@ -27,6 +27,9 @@ export const enDictionary = {
   'hero.headline': 'The wiki stops where you stopped',
   'hero.lede':
     'Set your bookmark in the bar above: the anime episode, the season and episode, or the manga chapter you have reached. Every character, arc and island filed after it stays under fog until you decide otherwise.',
+  'hero.setBookmark': 'Set your bookmark',
+  'hero.changeBookmark': 'Change your bookmark · {threshold}',
+  'hero.explore': 'Explore the archive',
 
   'mark.unset': 'Set episode',
   'mark.episode': 'EP {threshold}',
