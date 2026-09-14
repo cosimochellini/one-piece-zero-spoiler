@@ -178,31 +178,6 @@ export const styles = stylex.create({
     maxWidth: '52ch',
   },
 
-  // The fog band of a plate, set apart by the same dashed rule the route uses
-  // for the stretch the reader has not sailed.
-  fog: {
-    gap: space.sm,
-    borderBlockStartColor: color.rule2,
-    borderBlockStartStyle: 'dashed',
-    borderBlockStartWidth: rule.hair,
-    display: 'grid',
-    paddingBlockStart: space.md,
-  },
-  fogTitle: {
-    color: color.muted,
-    fontFamily: font.display,
-    fontSize: text.lg,
-    fontWeight: 800,
-    letterSpacing: NAME_TRACKING,
-    lineHeight: leading.heading,
-  },
-  fogHint: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '58ch',
-  },
-
   rail: {
     columnGap: space.lg,
     display: 'grid',
