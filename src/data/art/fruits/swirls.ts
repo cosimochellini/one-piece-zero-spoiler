@@ -13,7 +13,15 @@ import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
 /** Which of the four marks a fruit wears. */
 export type SwirlFamily = 'scales' | 'spiral' | 'waves' | 'whorls'
 
-/** How far out the widest mark is allowed to reach, as a fraction of a radius. */
+/**
+ * How far out a spiral reaches, as a fraction of the shorter radius.
+ *
+ * A spiral's ceiling and nobody else's: the other three families each work
+ * their reach out of the radii themselves, and the furthest any of the four
+ * goes is `waves` at 0.72 of a radius. What holds all of them inside the body
+ * is the generator's test, which walks every mark it can grow against the
+ * body's own ellipse — not this number.
+ */
 const SPREAD = 0.55
 
 /** Where a spiral starts, so two fruits of the same family are not the same. */
