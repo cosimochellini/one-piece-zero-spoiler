@@ -139,7 +139,15 @@ const styles = stylex.create({
       ':hover:not(:disabled)': color.ink,
     },
     paddingBlock: space.sm,
-    paddingInline: space.lg,
+    // The label carries the threshold, so the longest of them — `Change your
+    // bookmark · CH 1044` — is what has to fit. At 320px it only does with the
+    // narrower padding: a chip label that wraps reads as a styling error, and
+    // `overflow-x: clip` on the document hides an overflow rather than letting
+    // the reader scroll to it.
+    paddingInline: {
+      'default': space.md,
+      '@media (min-width: 40rem)': space.lg,
+    },
     color: { 'default': color.accent, ':hover:not(:disabled)': color.ink },
     fontWeight: 700,
     letterSpacing: '0.01em',

@@ -26,7 +26,8 @@
  * · slop: pass (42-45) · chrome: pass (47) · tokens: pass (48) · icons: pass (30)
  * · type: 3 families, outlier in 2 registers (37-38) · no italic heads (38a);
  *   one step above `display` (`hero`) reserved for the fold headline, set on the
- *   display face's width axis at 92% so two lines still hold 16 characters
+ *   display face's width axis at semi-condensed (87.5%) so two lines still hold
+ *   16 characters
  * · mobile 320/375/414/768 + 1280/1440: verified in headless Chrome — no horizontal
  *   scroll, no wrapped affordance, horizon between open and fogged rows (34, 49-57) */
 import * as stylex from '@stylexjs/stylex'
@@ -172,8 +173,8 @@ export const font = stylex.defineVars({
  * `hero` is the one step above it, and it exists for exactly one place: the
  * fold, where the headline is set over a drawing rather than beside body copy
  * and has the whole width of the page to fall through. At that size the
- * display face is set condensed on its width axis, which is what keeps two
- * lines of it inside 16 characters a line.
+ * display face is set semi-condensed on its width axis, which is what keeps
+ * two lines of it inside 16 characters a line.
  */
 export const text = stylex.defineVars({
   xs: '0.75rem',

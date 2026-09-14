@@ -68,14 +68,14 @@ describe('SeaChartFold', () => {
       }),
     ).toBeVisible()
     expect(
-      screen.getByRole('button', { name: 'Imposta il capitolo' }),
+      screen.getByRole('button', { name: 'Imposta il segnalibro' }),
     ).toBeVisible()
     expect(
       screen.getByRole('link', { name: 'Esplora l’archivio' }),
     ).toHaveAttribute('href', '/it/characters')
   })
 
-  it('opens the one bookmark dialog from the fold and gives focus back', async () => {
+  it('opens exactly one bookmark dialog from the fold and closes it', async () => {
     const user = userEvent.setup()
     renderWithProviders(<SeaChartFold band={FIRST_BAND} />, {
       bookmark: ep(650),

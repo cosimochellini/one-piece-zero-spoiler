@@ -20,8 +20,8 @@ export const itDictionary: Dictionary = {
   'hero.headline': 'La wiki si ferma dove sei tu',
   'hero.lede':
     'Imposta il segnalibro nella barra qui sopra: l’episodio dell’anime, la stagione e l’episodio, o il capitolo del manga a cui sei arrivato. Ogni personaggio, saga e isola archiviati dopo quel punto restano nella nebbia, finché non decidi tu.',
-  'hero.setBookmark': 'Imposta il capitolo',
-  'hero.changeBookmark': 'Cambia il capitolo · {threshold}',
+  'hero.setBookmark': 'Imposta il segnalibro',
+  'hero.changeBookmark': 'Cambia il segnalibro · {threshold}',
   'hero.explore': 'Esplora l’archivio',
 
   'mark.unset': 'Imposta episodio',

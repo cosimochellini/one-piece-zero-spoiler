@@ -29,10 +29,21 @@ const FORE_CREST = 120
 const ROW_LENGTH = 1800
 const FORE_LENGTH = 1920
 
+// The leftmost point a path is written from. A path may hold several subpaths
+// — `MOON_RINGS` is three circles joined into one string — so every `M` counts,
+// not only the first.
 const startOf = (d: string): number => {
-  const match = /^M(?<x>-?\d+)/u.exec(d)
-  return Number(match?.groups?.['x'] ?? NaN)
+  const starts = d
+    .split('M')
+    .slice(1)
+    .map((part) => Number(part.split(' ', 1)[0]))
+
+  return Math.min(...starts)
 }
+
+// An arc bulges past the point it is written from by its own radius, and the
+// crescent's outer arc is the widest thing in the sky.
+const MOON_ARC_R = 76
 
 const occurrences = (d: string, segment: string): number =>
   d.split(segment).length - 1
@@ -60,12 +71,18 @@ describe('night-sea', () => {
   })
 
   it('keeps the moon, the isles and the lantern inside a phone crop', () => {
-    expect(startOf(MOON)).toBeGreaterThan(SAFE_START)
+    expect(startOf(MOON) - MOON_ARC_R).toBeGreaterThan(SAFE_START)
     expect(startOf(MOON_RINGS)).toBeGreaterThan(SAFE_START)
     expect(startOf(FAR_ISLES)).toBeGreaterThan(SAFE_START)
     expect(startOf(LANTERN_PATH)).toBeGreaterThan(SAFE_START)
     expect(MOON_HALO.cx).toBeGreaterThan(SAFE_START)
     expect(MOON_HALO.cx).toBeLessThan(SAFE_END)
+  })
+
+  it('counts every subpath of the rings, not only the first', () => {
+    // Three circles in one string, and the widest of them is the one that can
+    // leave the frame.
+    expect(occurrences(MOON_RINGS, 'M')).toBe(3)
   })
 
   it('keeps the moon bloom clear of the water', () => {

@@ -15,8 +15,11 @@ import { settleStyles } from '~/styles/settle'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 // The bands in DOM order. Named rather than counted at the call, so a band
-// inserted in the middle is one edit here and not four along the page.
-const BAND = { fold: 0, orientation: 1, route: 2, faq: 3 } as const
+// inserted in the middle is one edit here and not four along the page. The
+// fold settles in three steps of its own — the drawing, then the headline,
+// then the actions — so the next band starts after them rather than landing
+// on top of one.
+const BAND = { fold: 0, orientation: 3, route: 4, faq: 5 } as const
 
 export const Route = createFileRoute('/$locale/')({
   component: Landing,
