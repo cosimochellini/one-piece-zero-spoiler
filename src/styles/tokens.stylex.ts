@@ -1,8 +1,9 @@
 /* Hallmark · pre-emit critique: P5 H4 E4 S5 R4 V5 */
 /* Hallmark · route: custom (bespoke) · genre: atmospheric · macrostructure: Map / Diagram
  *   with an illustrated fold
- * · structure: line-drawn fold (night sea, Thousand Sunny, course into fog,
- *   headline and two actions set into it) · sticky orientation column
+ * · structure: illustrated fold (night sea, a full moon low on the water, the
+ *   Thousand Sunny in silhouette cut out of it, course into fog, headline and
+ *   two actions set into it) · sticky orientation column
  *   (lede · dial · legend) beside a vertical sea-route of waypoints, each with
  *   a framed line drawing; the reader's episode
  *   is a horizon line across the route and everything below it is under fog
@@ -17,8 +18,9 @@
  * · sections: H2-shaped orientation column · F4-shaped route · legend · FAQ rows
  * · enrichment: Tier B hand-built SVG throughout — 35 line drawings (one object or
  *   place per record, 2px uniform stroke, no fills, one tint each from the 19-hue
- *   `tint` set), the fold chart, route segments, compass, legend swatches; no
- *   photographs, no official artwork
+ *   `tint` set), the fold chart (the one filled shape: the ship, paper on the
+ *   moon's ink2 with a hairline accent rim), route segments, compass, legend
+ *   swatches; no photographs, no official artwork
  * · contrast: pass (40-41) — ink 17.4:1 · ink2 12.3:1 · muted 8.1:1 · accent 12.2:1
  *   on paper; rule2 3.15:1 on paper3, the darkest surface a control sits on;
  *   accentInk 11.8:1 on accent

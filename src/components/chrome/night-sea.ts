@@ -1,22 +1,22 @@
-import { circle, dots } from '~/lib/svg/primitives'
+import { dots } from '~/lib/svg/primitives'
 
 /**
- * The night sea of the fold drawing, in the same line as the record drawings
- * but composed in a box ten times as wide: a horizon, the Thousand Sunny under
- * sail right of centre, a course that leaves her and runs off the right edge,
- * a thin moon and a scatter of stars.
+ * The night sea of the fold drawing: a full moon low over the water and the
+ * Thousand Sunny crossing it in silhouette, a course that leaves her bow and
+ * runs off into fog, the moon's light broken on the swell, and a scatter of
+ * stars kept clear of the disc.
  *
- * The ship is the archive's own `thousand-sunny` drawing translated into this
- * box rather than a second one drawn from scratch, so the fold and the record
- * card are the same ship: the same hull, the same sail, and the same answer to
- * how you draw a lion figurehead without drawing a face — a disc with rays,
- * read as a mane and as a sun.
+ * The ship is the one shape on the site drawn as a solid rather than as a
+ * stroke list. A ship the size of a headline drawn in 2px outline read as a
+ * diagram of a ship; a silhouette cut out of the moon reads as the ship. Her
+ * one line of ink is a hairline of the route gold around her profile, and it
+ * is the only gold she takes.
  *
- * It is data for the same reason every other drawing is: `SeaChartHero` owns
- * the `<svg>`, the fog gradient and the ink, and nothing about where a line
- * goes is written in JSX. Coordinates here are in the box below, not the
- * 160x200 of `ART_VIEWBOX`, so the primitives that assume that box do not
- * apply — only `dots` and `circle`, which take their points as given.
+ * It is data for the same reason every other drawing is: `SeaChartHero` and
+ * its parts own the `<svg>`, the gradients and the ink, and nothing about
+ * where a line goes is written in JSX. Coordinates here are in the box below,
+ * not the 160x200 of `ART_VIEWBOX`, so the primitives that assume that box do
+ * not apply — only `dots`, which takes its points as given.
  *
  * The box is cropped rather than squashed, and the crop takes the sides: at
  * the narrowest frame the reader sees x 302 to 1298 and never less. Every
@@ -25,87 +25,53 @@ import { circle, dots } from '~/lib/svg/primitives'
  */
 
 /**
- * Wide enough that a phone's 4:3 crop of it still shows the ship. The drawing
- * is cropped to whatever frame it is given rather than squashed, so nothing
- * may depend on the aspect ratio holding.
+ * Wide enough that a phone's 4:3 crop of it still shows the moon and the ship
+ * whole. The drawing is cropped to whatever frame it is given rather than
+ * squashed, so nothing may depend on the aspect ratio holding.
  */
 export const SEA_CHART_VIEWBOX = '0 0 1600 560'
 
 /**
- * The four stars the line joins, in the order it joins them. They are stars
- * first: the same points are dotted with the rest, so the constellation is a
- * line drawn between stars that are there anyway, not a shape of its own.
+ * The moon: a full disc, low, its lower edge under the horizon so it sits on
+ * the water rather than in the sky. It stands right of centre so the headline,
+ * set into the lower-left corner from 40rem up, never reaches it. It is the light source and the backdrop
+ * at once — everything that has to be seen at a glance is cut out of it.
  */
-const CONSTELLATION_POINTS = [
-  [640, 118],
-  [684, 96],
-  [732, 108],
-  [770, 76],
-] as const
+export const MOON_DISC = { cx: 980, cy: 250, r: 220 }
 
-// Loose stars, high and to the left of the constellation.
-const EARLY_STARS = [
+/**
+ * The soft bloom the disc sits in, painted with the page's overlay glow and
+ * never with the accent: gold is a signal here, not a surface. It is drawn
+ * first and the sea is painted over it, so the water takes no bloom.
+ */
+export const MOON_HALO = { cx: MOON_DISC.cx, cy: MOON_DISC.cy, r: 410 }
+
+/** The sea as a surface: everything below the horizon, in the card paper. */
+export const SEA_FILL = { height: 180, width: 1600, x: 0, y: 380 }
+
+// Every star keeps clear of the disc: a point of light on the moon reads as
+// a flaw in it. The nearest is a dozen units outside the rim.
+
+/** Loose stars in the route gold, the ones a reader registers as points. */
+export const STARS = dots([
   [180, 90],
   [260, 150],
   [420, 60],
-  [700, 110],
-  [880, 60],
-  [960, 170],
-] as const
-
-// Loose stars around the moon, plus two low ones that keep the corners from
-// reading as empty at a wide crop.
-const LATE_STARS = [
+  [640, 118],
+  [684, 96],
   [1240, 200],
   [1480, 130],
   [1540, 60],
   [120, 210],
   [1440, 250],
-] as const
-
-/** Every star as a zero-length stroke, so the sky is one path. */
-export const STARS = dots([
-  ...EARLY_STARS,
-  ...CONSTELLATION_POINTS,
-  ...LATE_STARS,
+  [560, 220],
 ])
 
-/** The line joining `CONSTELLATION_POINTS`, drawn in the muted ink. */
-export const CONSTELLATION = `M${CONSTELLATION_POINTS.map(
-  ([x, y]) => `${String(x)} ${String(y)}`,
-).join(' L')}`
-
-// The crescent's centre. It used to hang at x 1400, which a phone crops away
-// entirely: the one light source in the drawing was a desktop-only shape.
-const MOON_CX = 470
-const MOON_CY = 136
-
-/** A crescent: one disc with a second bitten out of it, never a full moon. */
-export const MOON = 'M470 60 a76 76 0 1 0 0 152 a60 60 0 1 1 0 -152z'
-
 /**
- * Three hairline rings widening away from the crescent. A drawing made of
- * lines says "this is the light in here" by drawing the light, so the glow is
- * ruled rather than blurred.
+ * The faint field behind everything: the stars a reader registers as depth
+ * rather than as points, drawn in the ambient ink at a hairline.
  */
-export const MOON_RINGS = [90, 112, 138]
-  .map((r) => circle(MOON_CX, MOON_CY, r))
-  .join(' ')
-
-/**
- * The soft bloom the rings sit in, painted with the page's overlay glow and
- * never with the accent: gold is a signal here, not a surface. The radius
- * stops short of the horizon so the light never spills onto the water.
- */
-export const MOON_HALO = { cx: MOON_CX, cy: MOON_CY, r: 196 }
-
-/**
- * The faint field behind everything. These are the stars a reader registers
- * as depth rather than as points, so they are drawn in the ambient ink at a
- * hairline. They keep clear of the crescent, which would otherwise read as
- * pitted.
- */
-const DEEP_STARS = [
+export const DEEP_FIELD = dots([
   [318, 52],
   [352, 176],
   [388, 262],
@@ -115,26 +81,14 @@ const DEEP_STARS = [
   [568, 158],
   [604, 36],
   [642, 230],
-  [688, 62],
-  [716, 190],
-  [754, 132],
-  [806, 44],
-  [842, 216],
-  [880, 150],
-  [918, 84],
-  // Was at (956, 240), which the larger ship put inside her own sail.
-  [964, 22],
-  [994, 120],
-  [1032, 58],
-  [1070, 200],
-  [1108, 146],
-  [1184, 232],
+  [790, 30],
+  [1060, 30],
+  [1180, 90],
+  [1230, 300],
   [1222, 104],
   [1262, 168],
-] as const
-
-/** The deep field as one path, the way `STARS` is one path. */
-export const DEEP_FIELD = dots(DEEP_STARS)
+  [1300, 300],
+])
 
 // The six stars that carry the light. They are three paths rather than one so
 // each pair can breathe out of step with the others; a sky where everything
@@ -147,16 +101,14 @@ export const BRIGHT_STARS_A = dots([
 
 /** The second pair, a beat behind the first. */
 export const BRIGHT_STARS_B = dots([
-  [784, 66],
+  [760, 50],
   [1206, 140],
 ])
 
 /** The third pair, a beat behind the second. */
 export const BRIGHT_STARS_C = dots([
   [344, 118],
-  // Was at (900, 214): close enough to the crow's nest to read as a lamp hung
-  // on it, and a pulsing one at that.
-  [1040, 260],
+  [1250, 320],
 ])
 
 /** A cross of light on the two brightest stars: the only flare the sky allows. */
@@ -164,14 +116,6 @@ export const STAR_FLARES = 'M566 78 v36 M548 96 h36 M1102 36 v36 M1084 54 h36'
 
 /** Edge to edge, and the one line that says which way is up. */
 export const HORIZON = 'M0 380 H1600'
-
-/**
- * Two low islands sitting on the horizon behind the ship, left of her so
- * nothing crosses her rigging. They are the distance: two strokes in the
- * ambient ink are enough to say the sea has a far side.
- */
-export const FAR_ISLES =
-  'M468 380 q44 -30 86 -8 q26 -16 54 8 M632 380 q38 -24 72 -4 q22 -12 48 4'
 
 /**
  * One row of swell: thirty repeats of a crest exactly 60 units wide, started
@@ -207,81 +151,76 @@ export const WAVE_FORE = `M-60 528 ${Array.from(
 ).join(' ')}`
 
 /**
+ * The moon on the water: six broken strokes under the disc, narrow at the
+ * horizon and widening toward the reader the way a reflection does. It is the
+ * only gold below the horizon besides the course, dashed so the accent stays a
+ * signal rather than becoming a surface.
+ */
+export const GLITTER =
+  'M950 404 h60 M934 428 h92 M916 452 h128 M896 478 h168 M872 506 h216 M844 536 h272'
+
+/**
  * Where the ship sits and how big she is. She is drawn about her own waterline
- * at the origin, so this is the only place her position is stated.
+ * at the origin, heading right, so this is the only place her position is
+ * stated — and the tests read it from here rather than from the transform.
+ */
+export const SUNNY_PLACE = { scale: 0.98, x: 970, y: 380 }
+
+/** `SUNNY_PLACE` as the one `transform` attribute the placing group carries. */
+export const SUNNY_AT = `translate(${String(SUNNY_PLACE.x)} ${String(
+  SUNNY_PLACE.y,
+)}) scale(${String(SUNNY_PLACE.scale)})`
+
+/**
+ * The extents of the drawing about its origin, before `SUNNY_PLACE`. The bow
+ * is the tip of the mane's forward ray, the stern the back of the paddle
+ * housing, the masthead the foot of the pennant, the keel the lowest point the
+ * hull's curve can reach (its control points, so a conservative bound).
+ */
+export const SUNNY_MARKS = {
+  bow: [220, -100],
+  keel: 22,
+  masthead: [40, -310],
+  stern: [-170, -30],
+} as const
+
+/**
+ * The ship, less her sail and pennants: hull, paddle housing, the aft cabin
+ * with its domed lookout, both masts, the yard, the crow's nest, and the lion
+ * at her prow. Many closed subpaths in one `d`, every one wound the same way,
+ * so under the default nonzero rule they union into one solid.
  *
- * She is the archive's `thousand-sunny` redrawn for this box rather than
- * scaled up from it. At ten times the size a 2px stroke stops carrying the
- * same weight and an unfilled outline stops reading as a solid thing: the
- * swell was crossing the inside of the hull and the stars were showing
- * through the canvas. So the hull, the sail, the crow's nest and the lion are
- * filled with the surface colour here, the way the fog band already is, and
- * the sea passes behind her. What the fold and the record card still share is
- * the reading the archive settled on — a lion figurehead as a disc with a
- * mane of rays, which is a mane and a sun at once and is never a face.
+ * The lion is a disc with a mane of twelve rays, which is what the Sunny's
+ * figurehead is: a lion drawn as a sun. In silhouette it has no eyes and no
+ * mouth, so the site's rule that no drawing carries a face holds here too.
  */
-export const SUNNY_AT = 'translate(940 380) scale(1.8)'
+export const SUNNY_BODY =
+  'M-150 -92 L-92 -92 L-92 -64 L-60 -64 C-30 -38 0 -42 40 -42 C90 -42 108 -46 120 -62 Q148 -72 156 -76 C164 -56 160 -6 138 8 C96 22 -40 22 -110 8 C-130 4 -136 -2 -136 -4 C-156 -10 -156 -50 -150 -56 Z '
+  + 'M-170 -30 a12 12 0 1 1 24 0 a12 12 0 1 1 -24 0 Z '
+  + 'M-128 -122 L-120 -122 L-120 -90 L-128 -90 Z M-145 -124 L-103 -124 L-103 -120 L-145 -120 Z M-141 -122 a17 17 0 1 1 34 0 a17 17 0 1 1 -34 0 Z '
+  + 'M37 -310 L43 -310 L43 -38 L37 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
+  + 'M20 -264 L60 -264 L60 -260 L20 -260 Z M22 -262 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
+  + 'M-38 -238 L118 -238 L118 -234 L-38 -234 Z '
+  + 'M138 -100 a30 30 0 1 1 60 0 a30 30 0 1 1 -60 0 Z '
+  + 'M195.8 -103.7 L220 -100 L195.8 -96.3 Z M193.9 -89.3 L213 -74 L190.2 -83 Z M185 -77.8 L194 -55 L178.7 -74.1 Z M171.7 -72.2 L168 -48 L164.3 -72.2 Z M157.3 -74.1 L142 -55 L151 -77.8 Z M145.8 -83 L123 -74 L142.1 -89.3 Z M140.2 -96.3 L116 -100 L140.2 -103.7 Z M142.1 -110.7 L123 -126 L145.8 -117 Z M151 -122.2 L142 -145 L157.3 -125.9 Z M164.3 -127.8 L168 -152 L171.7 -127.8 Z M178.7 -125.9 L194 -145 L185 -122.2 Z M190.2 -117 L213 -126 L193.9 -110.7 Z'
 
 /**
- * Hull, from the stem to a sheer that rises aft. One closed path, because it
- * is filled: the outline and the surface are the same shape.
+ * One sail, full, hung from the yard and bellied toward the bow. It is a
+ * shape of its own rather than part of the body so it can breathe on its own
+ * loop, about the yard it hangs from.
  */
-export const SUNNY_HULL = 'M-50 -2 L44 -6 L66 -18 L60 30 Q8 48 -42 30 Z'
+export const SUNNY_SAILS =
+  'M-32 -234 L112 -234 C132 -185.2 128 -130.4 114 -86 C76 -70 4 -70 -28 -86 C-20 -130.4 -22 -185.2 -32 -234 Z'
 
-/** The bulwark, in the ambient ink: it is on the hull, not of it. */
-export const SUNNY_BULWARK = 'M-44 6 L52 2'
-
-/** The wale, lower down and on the same terms. */
-export const SUNNY_WALE = 'M-38 16 Q8 28 50 16'
-
-/**
- * Mast, yard and the pennant at the masthead.
- *
- * One line from the deck to the masthead. It is drawn before the sail and the
- * hull, which are filled, so what shows of it is what a mast actually shows:
- * a stub under the foot of the canvas and the topmast above the yard.
- */
-export const SUNNY_MAST = 'M0 -2 V-118 M-30 -84 H30 M0 -118 l16 6 l-16 6'
-
-/** A sail, full, and one of the two shapes that take the route gold. */
-export const SUNNY_SAIL = 'M-28 -74 Q0 -82 28 -74 L32 -20 Q0 -10 -32 -20 Z'
-
-/** The crow's nest high on the topmast. */
-export const SUNNY_NEST = circle(0, -96, 10)
-
-/**
- * The lion at the prow, sat on the foredeck so the hull carries her, drawn as
- * the archive draws her: a disc, and a mane of rays swept forward from it.
- *
- * The reason it is a disc and not a head is a rule rather than a style — no
- * drawing on this site has a face — and it is the reading the record card
- * uses, so a reader who has seen one recognises the other.
- */
-export const SUNNY_LION = circle(-48, -16, 15)
-
-/**
- * The rays of the mane. Each one starts on the disc's rim rather than at its
- * centre, because the disc is filled: a ray written from the middle is a ray
- * the lion paints over. None of them reaches the water or the canvas.
- */
-export const SUNNY_MANE =
-  'M-63 -16 h-16 M-59 -27 l-11 -11 M-48 -31 v-17 M-37 -27 l6 -6 M-60 -7 l-9 5'
-
-/**
- * The light the ship's lantern throws on the water: four broken strokes
- * widening toward the reader, the first of them clear of the keel. It is the
- * only
- * gold below the horizon besides the course, a hairline and dashed, so the
- * accent stays a signal rather than becoming a surface.
- */
-export const LANTERN_PATH =
-  'M900 462 h96 M880 488 h136 M856 512 h180 M830 540 h228'
+/** The two pennants, one per masthead, streaming aft to for'ard with the wind. */
+export const SUNNY_FLAG =
+  'M40 -310 L70 -303 L40 -296 Z M-72 -180 L-48 -174 L-72 -168 Z'
 
 /** Leaves the ship level with her waterline and rises into the fog. */
-export const COURSE = 'M1066 380 C1150 380 1225 340 1310 346 S1450 380 1600 330'
+export const COURSE = 'M1190 380 C1260 380 1330 340 1410 346 S1500 380 1600 330'
 
 /**
- * The band the fog gradient is painted over: the right third plus the width
- * of the ship, so the course is already fading where it passes her.
+ * The band the fog gradient is painted over: the right third, started past
+ * the disc so the moon keeps a hard edge and only the course goes soft.
  */
-export const FOG_BAND = { height: 560, width: 600, x: 1000, y: 0 }
+export const FOG_BAND = { height: 560, width: 380, x: 1220, y: 0 }
