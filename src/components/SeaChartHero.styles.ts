@@ -125,8 +125,8 @@ export const styles = stylex.create({
   // stars: it is a reflection, and reflections are slow.
   lantern: { animationDuration: drift.halo },
 
-  // The mark on the sail is forty units across, and a forty-unit glyph drawn
-  // with strokes that stay 2px at every size stops being four strokes and
+  // The mark on the sail is fifty-two units across, and a glyph that size drawn
+  // with strokes that stay 2px at every size stops being separate strokes and
   // becomes one badge somewhere around 800px of viewport. Below that the sail
   // is better plain than smudged.
   jolly: {

@@ -9,6 +9,7 @@ import {
   MOON_RINGS,
   SUNNY_AT,
   SUNNY_HULL,
+  SUNNY_JOLLY,
   SUNNY_LION,
   SUNNY_MANE,
   SUNNY_MAST,
@@ -124,8 +125,6 @@ describe('night-sea', () => {
   })
 
   it('draws every coordinate to at most one decimal', () => {
-    // `SUNNY_JOLLY` is deliberately absent: the skull's eyes are dots, and a
-    // dot is written `h0.01` — the same reason `STARS` is not here either.
     const drawings = [
       COURSE,
       FAR_ISLES,
@@ -133,6 +132,7 @@ describe('night-sea', () => {
       MOON,
       MOON_RINGS,
       SUNNY_HULL,
+      SUNNY_JOLLY,
       SUNNY_LION,
       SUNNY_MANE,
       SUNNY_MAST,

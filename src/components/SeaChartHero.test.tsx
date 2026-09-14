@@ -64,7 +64,7 @@ describe('SeaChartHero', () => {
 
     expect(goldName).toBeDefined()
     expect(parts).toHaveLength(8)
-    // The sail, the lion and the five rays of its mane.
+    // The sail, the lion and the four rays of its mane.
     expect(gilded).toHaveLength(3)
   })
 })
