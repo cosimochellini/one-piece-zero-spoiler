@@ -164,7 +164,7 @@ export const GLITTER =
  * at the origin, heading right, so this is the only place her position is
  * stated — and the tests read it from here rather than from the transform.
  */
-export const SUNNY_PLACE = { scale: 0.98, x: 966, y: 380 }
+export const SUNNY_PLACE = { scale: 0.92, x: 956, y: 380 }
 
 /** `SUNNY_PLACE` as the one `transform` attribute the placing group carries. */
 export const SUNNY_AT = `translate(${String(SUNNY_PLACE.x)} ${String(
@@ -173,14 +173,14 @@ export const SUNNY_AT = `translate(${String(SUNNY_PLACE.x)} ${String(
 
 /**
  * The extents of the drawing about its origin, before `SUNNY_PLACE`. The bow
- * is the tip of the mane's forward flame, the stern the back of the paddle
+ * is the mane's forwardmost point, the stern the back of the paddle
  * housing, the masthead the foot of the pennant, the keel the lowest point the
  * hull's curve can reach (its control points, so a conservative bound).
  */
 export const SUNNY_MARKS = {
-  bow: [223.5, -147.1],
+  bow: [238.5, -96.8],
   keel: 22,
-  masthead: [36, -310],
+  masthead: [30, -310],
   stern: [-170, -30],
 } as const
 
@@ -190,34 +190,21 @@ export const SUNNY_MARKS = {
  * at her prow. Many closed subpaths in one `d`, every one wound the same way,
  * so under the default nonzero rule they union into one solid.
  *
- * The lion is drawn as the figurehead is: a round head with a muzzle pushed
- * forward and low, and a mane of seven broad flames that curl aft, shorter on
- * the side that faces the sail and parted where the muzzle comes through. In
- * silhouette it has no eyes and no mouth, so the site's rule that no drawing
- * carries a face holds here too.
+ * The lion is the figurehead's own outline — the round head, the muzzle pushed
+ * forward and low, the mane of eight flames curling aft — traced from a
+ * side view and reduced to one closed curve, because a mane drawn from rules
+ * kept reading as a cog or a flower and the real one reads as the Sunny at a
+ * glance. In silhouette it has no eyes and no mouth, so the site's rule that
+ * no drawing carries a face holds here too.
  */
 export const SUNNY_BODY =
-  'M-150 -92 L-92 -92 L-92 -64 L-60 -64 C-30 -38 0 -42 40 -42 C96 -42 114 -46 126 -62 Q152 -72 160 -76 C168 -56 164 -6 142 8 C100 22 -40 22 -110 8 C-130 4 -136 -2 -136 -4 C-156 -10 -156 -50 -150 -56 Z '
+  'M-150 -92 L-92 -92 L-92 -64 L-60 -64 C-30 -38 0 -42 40 -42 C102 -42 120 -46 132 -62 Q160 -72 168 -76 C176 -56 172 -6 150 8 C108 22 -40 22 -110 8 C-130 4 -136 -2 -136 -4 C-156 -10 -156 -50 -150 -56 Z '
   + 'M-170 -30 a12 12 0 1 1 24 0 a12 12 0 1 1 -24 0 Z M-128 -122 L-120 -122 L-120 -90 L-128 -90 Z '
   + 'M-145 -124 L-103 -124 L-103 -120 L-145 -120 Z M-141 -122 a17 17 0 1 1 34 0 a17 17 0 1 1 -34 0 Z '
-  + 'M33 -310 L39 -310 L39 -38 L33 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
-  + 'M16 -264 L56 -264 L56 -260 L16 -260 Z M18 -262 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
-  + 'M-36 -238 L108 -238 L108 -234 L-36 -234 Z M138 -102 a32 32 0 1 1 64 0 a32 32 0 1 1 -64 0 Z '
-  + 'M180.8 -88.6 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
-  + 'M194.7 -115.2 C201.5 -115.5 210.4 -137.8 223.5 -147.1 C231.5 -133.6 218.3 -94 197.9 -99.5 Z '
-  + 'M183.2 -77.3 C183.5 -70.5 205.8 -61.6 215.1 -48.5 C201.6 -40.5 162 -53.7 167.5 -74.1 Z '
-  + 'M161.9 -75.2 C157.6 -71 167 -52 164.6 -38.5 C150.8 -42 132.7 -75.3 148.5 -84.1 Z '
-  + 'M145.3 -88.8 C140 -89.2 134.7 -70.8 125 -64.1 C118.2 -75.4 127.2 -109.1 142.1 -104.5 Z '
-  + 'M143.2 -110.1 C139.5 -114.3 121.9 -104.9 109.7 -107.2 C113 -120.3 144.2 -138 152.1 -123.5 Z '
-  + 'M156.8 -126.7 C156.7 -133.2 135.1 -141.4 126.4 -153.8 C139.4 -161.5 177.8 -149.2 172.5 -129.9 Z '
-  + 'M178.1 -128.8 C182.8 -133.8 173.3 -155.9 176 -171.7 C191.1 -167.9 209.8 -130.6 191.5 -119.9 Z'
-  + 'M-170 -30 a12 12 0 1 1 24 0 a12 12 0 1 1 -24 0 Z '
-  + 'M-128 -122 L-120 -122 L-120 -90 L-128 -90 Z M-145 -124 L-103 -124 L-103 -120 L-145 -120 Z M-141 -122 a17 17 0 1 1 34 0 a17 17 0 1 1 -34 0 Z '
-  + 'M37 -310 L43 -310 L43 -38 L37 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
-  + 'M20 -264 L60 -264 L60 -260 L20 -260 Z M22 -262 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
-  + 'M-38 -238 L118 -238 L118 -234 L-38 -234 Z '
-  + 'M138 -100 a30 30 0 1 1 60 0 a30 30 0 1 1 -60 0 Z '
-  + 'M195.8 -103.7 L220 -100 L195.8 -96.3 Z M193.9 -89.3 L213 -74 L190.2 -83 Z M185 -77.8 L194 -55 L178.7 -74.1 Z M171.7 -72.2 L168 -48 L164.3 -72.2 Z M157.3 -74.1 L142 -55 L151 -77.8 Z M145.8 -83 L123 -74 L142.1 -89.3 Z M140.2 -96.3 L116 -100 L140.2 -103.7 Z M142.1 -110.7 L123 -126 L145.8 -117 Z M151 -122.2 L142 -145 L157.3 -125.9 Z M164.3 -127.8 L168 -152 L171.7 -127.8 Z M178.7 -125.9 L194 -145 L185 -122.2 Z M190.2 -117 L213 -126 L193.9 -110.7 Z'
+  + 'M27 -310 L33 -310 L33 -38 L27 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
+  + 'M10 -264 L50 -264 L50 -260 L10 -260 Z M12 -262 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
+  + 'M-34 -238 L94 -238 L94 -234 L-34 -234 Z '
+  + 'M164 -161.7 L164.3 -167.9 C164.9 -167.9 168.6 -165.1 172.9 -161.4 C184 -151.3 191.7 -138.9 194.5 -126.9 C194.5 -125.4 195.1 -124.2 195.1 -124.2 C195.1 -123.9 196.3 -124.8 197.9 -126 C204.3 -131.9 209.3 -138.9 210.8 -145.4 C211.7 -148.8 211.4 -148.5 212.9 -146.9 C216.9 -143.3 220 -137.1 221.3 -130.9 C222.5 -123.6 220.6 -110.9 217.6 -104.2 C217.3 -103.2 216.9 -102 216.9 -100.2 L216.9 -97.7 L219.1 -96.8 C226.2 -93.4 232.7 -94 236.7 -98.3 L238.5 -100.2 L238.5 -96.8 C238.5 -77.1 225.9 -63.2 211.4 -66.9 C208.9 -67.5 208.9 -67.2 209.9 -65.4 C211.4 -59.8 216 -54.3 221.3 -50.9 C224 -49 224 -49 222.2 -47.5 C216 -42.9 207.4 -42.3 200.3 -45.7 C196.6 -47.2 192 -51.5 188.9 -55.8 C188 -57.4 188 -57.4 187.1 -55.5 C184.3 -50 178.2 -44.4 172.9 -42.9 C164.6 -40.1 150.8 -44.7 146.1 -51.5 L145.2 -52.7 L146.4 -53.4 C147.4 -53.7 148 -54.3 148.3 -54.3 C151.4 -55.5 156.9 -60.4 159.1 -64.1 C160.3 -66 161.2 -67.5 160.9 -67.5 C160.9 -67.5 160 -67.2 159.1 -66.9 C156 -66.3 148.9 -66 145.2 -66.9 C129.2 -70 117.8 -82 114.4 -98.9 C113.5 -103.2 113.5 -103.2 116 -101.4 C122.7 -96.1 131.4 -93.4 139.1 -94 C142.4 -94 142.4 -94.3 140.3 -95.2 C132 -99.5 124.3 -107.5 120.9 -115.9 C118.1 -122.6 117.2 -131.9 118.4 -140.8 C118.4 -142.6 118.7 -142.6 121.5 -140.2 C124.3 -137.7 127.4 -135.6 131.4 -132.8 C135.4 -130 138.1 -128.5 142.1 -126.9 C147.1 -124.5 151.4 -123.2 156.3 -122.6 L157.8 -122.6 L157.8 -126.3 C158.1 -130.3 158.8 -134.3 160.6 -139.9 C163.1 -149.1 163.7 -151.3 164 -161.7 Z'
 
 /**
  * One sail, full, hung from the yard and bellied toward the bow. It is a
@@ -225,11 +212,11 @@ export const SUNNY_BODY =
  * loop, about the yard it hangs from.
  */
 export const SUNNY_SAILS =
-  'M-30 -234 L102 -234 C122 -185.2 118 -130.4 104 -86 C69 -70 3 -70 -26 -86 C-18 -130.4 -20 -185.2 -30 -234 Z'
+  'M-28 -234 L88 -234 C108 -185.2 104 -130.4 90 -86 C59 -70 1 -70 -24 -86 C-16 -130.4 -18 -185.2 -28 -234 Z'
 
 /** The two pennants, one per masthead, streaming aft to for'ard with the wind. */
 export const SUNNY_FLAG =
-  'M36 -310 L66 -303 L36 -296 Z M-72 -180 L-48 -174 L-72 -168 Z'
+  'M30 -310 L60 -303 L30 -296 Z M-72 -180 L-48 -174 L-72 -168 Z'
 
 /** Leaves the ship level with her waterline and rises into the fog. */
 export const COURSE = 'M1190 380 C1260 380 1330 340 1410 346 S1500 380 1600 330'
