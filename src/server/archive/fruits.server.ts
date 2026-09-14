@@ -8,7 +8,12 @@ import {
 import { orderByMode } from '~/data/order'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { type Bookmark, CHAPTER_CEILING, modeOf } from '~/lib/progress/episode'
+import {
+  type Bookmark,
+  type BookmarkMode,
+  CHAPTER_CEILING,
+  modeOf,
+} from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import type {
   CharacterView,
@@ -23,7 +28,7 @@ import type {
 } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { characterOf, coveredOf, fruitOf } from './project.server'
+import { characterOf, coveredOf, fruitOf, slotOf } from './project.server'
 
 /**
  * What the specimen sheet and a fruit's own page are allowed to know.
@@ -167,23 +172,40 @@ export function fruitSiblings(
     return []
   }
 
-  return nearest(entity, fruitsOfForm(form)).map((near) => {
-    return isRevealed(near, bookmark) ?
-        { open: true, record: fruitOf(near, locale, form) }
-      : { open: false, covered: coveredOf(near) }
-  })
+  const mode = modeOf(bookmark)
+
+  return nearest(entity, fruitsOfForm(form), mode).map((near) =>
+    slotOf(near, bookmark, (found) => fruitOf(found, locale, form)),
+  )
 }
 
-/** The records filed closest to this one by threshold, this one excluded. */
-function nearest(entity: Entity, among: readonly Entity[]): readonly Entity[] {
+/** A record's threshold in the unit the reader counts in. */
+function thresholdOf(entity: Entity, mode: BookmarkMode): number {
+  return mode === 'chapter' ?
+      entity.revealedAtChapter
+    : entity.revealedAtEpisode
+}
+
+/**
+ * The records filed closest to this one, this one excluded.
+ *
+ * Nearness is measured in whatever the reader counts in, because the page
+ * prints this fruit's threshold in that unit and a rail sorted by the other
+ * one would be a neighbourhood the reader cannot see they are in.
+ */
+function nearest(
+  entity: Entity,
+  among: readonly Entity[],
+  mode: BookmarkMode,
+): readonly Entity[] {
+  const here = thresholdOf(entity, mode)
+
   return among
     .flatMap((candidate, order) => {
       if (candidate.id === entity.id) {
         return []
       }
-      const distance = Math.abs(
-        candidate.revealedAtEpisode - entity.revealedAtEpisode,
-      )
+      const distance = Math.abs(thresholdOf(candidate, mode) - here)
 
       return [{ candidate, distance, order }]
     })

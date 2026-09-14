@@ -249,6 +249,10 @@ export const itDictionary: Dictionary = {
   'fruit.notFoundBody':
     'Non c’è niente archiviato a questo indirizzo. Il foglio dei campioni elenca tutti i frutti che ci sono.',
 
+  // `Zoo Zoo` and not `Zoan`: the names here are the Italian dub's, the same
+  // rule that makes the captain Rufy and the clown Bagy, and the dub calls
+  // that class of fruit Zoo Zoo. The other two classes the dub leaves as they
+  // are, which is why they read the same as the English.
   'fruitForm.paramecia': 'Paramecia',
   'fruitForm.zoan': 'Zoo Zoo',
   'fruitForm.logia': 'Logia',

@@ -340,6 +340,13 @@ export const egghead: Saga = {
     // body, not a second fruit, and the log above each of them already says
     // they are built on somebody else's pattern. A record per copy would put
     // four near-identical drawings on the sheet and say nothing more.
+    //
+    // Three of the four point at a fruit the archive already files for the
+    // body it was copied from. The fourth, `water-water-fruit`, has nobody
+    // else: whoever ate it first is not a record here yet, so its page lists
+    // the copy alone. That is the archive being honest about what it holds
+    // rather than a hole — the fruit was named on screen and the eater was
+    // not.
     's-snake': {
       role: SERAPHIM_ROLE,
       log: {

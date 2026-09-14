@@ -4,7 +4,7 @@ import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
-import type { FruitEatersView } from '~/lib/view/records'
+import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
 
 import {
   fruitEaters,
@@ -76,6 +76,11 @@ function saysNothing(payload: unknown, bookmark: Bookmark): void {
       expect(said.has(name), entity.id).toBe(false)
     }
   }
+}
+
+/** The ids a rail shows, in the order it shows them. */
+function openIds(rail: readonly Slot<FruitView>[]): readonly string[] {
+  return rail.flatMap((slot) => (slot.open ? [slot.record.id] : []))
 }
 
 /** The eaters a band names, or a failure when the band named none. */
@@ -233,6 +238,37 @@ describe('the rail of the same kind', () => {
     expect(shown.map((record) => record.form)).toStrictEqual(
       shown.map(() => 'paramecia'),
     )
+  })
+
+  it('keeps a sibling the reader has not reached under its own fog', () => {
+    // Gum-Gum is the first fruit filed, so at episode 5 its neighbours on the
+    // plate are all still ahead of the reader. A rail that opened them would
+    // be the fruit page handing back what the sheet had just covered.
+    const rail = fruitSiblings('gum-gum-fruit', ep(5), 'en')
+    const covered = rail.flatMap((slot) => (slot.open ? [] : [slot.covered]))
+
+    expect(rail.length).toBeGreaterThan(0)
+    expect(covered.length).toBeGreaterThan(0)
+
+    for (const entry of covered) {
+      expect(entry).not.toHaveProperty('id')
+      expect(entry).not.toHaveProperty('name')
+    }
+
+    saysNothing(rail, ep(5))
+  })
+
+  it('measures nearness in the unit the reader counts in', () => {
+    // Paw-Paw is filed at episode 372 and chapter 233, which is a different
+    // neighbourhood in each unit, so the two rails must not agree.
+    const byEpisode = fruitSiblings('paw-paw-fruit', ep(1200), 'en')
+    const byChapter = fruitSiblings(
+      'paw-paw-fruit',
+      { mode: 'chapter', chapter: 1200 },
+      'en',
+    )
+
+    expect(openIds(byEpisode)).not.toStrictEqual(openIds(byChapter))
   })
 
   it('is empty for a record that is not a fruit', () => {
