@@ -211,81 +211,74 @@ export const WAVE_FORE = `M-60 528 ${Array.from(
  * at the origin, so this is the only place her position is stated.
  *
  * She is the archive's `thousand-sunny` redrawn for this box rather than
- * scaled up from it: at ten times the size a stroke that stays 2px stops
- * carrying the same weight, so the hull is broader, the lion is mounted on the
- * bow instead of trailing it, and the mast is split so the sail is not cut in
- * half by a line drawn through it. What the two share is the reading — a lion
- * at the prow drawn as a disc with a mane of rays — and that is the part a
- * reader recognises.
+ * scaled up from it. At ten times the size a 2px stroke stops carrying the
+ * same weight and an unfilled outline stops reading as a solid thing: the
+ * swell was crossing the inside of the hull and the stars were showing
+ * through the canvas. So the hull, the sail, the crow's nest and the lion are
+ * filled with the surface colour here, the way the fog band already is, and
+ * the sea passes behind her. What the fold and the record card still share is
+ * the reading the archive settled on — a lion figurehead as a disc with a
+ * mane of rays, which is a mane and a sun at once and is never a face.
  */
 export const SUNNY_AT = 'translate(940 380) scale(1.8)'
 
-/** Hull, deck line and the stem the lion is mounted on. */
-export const SUNNY_HULL = 'M-46 -2 L-38 30 Q8 48 54 30 L64 -2 M-46 -2 H64'
+/**
+ * Hull, from the stem to a sheer that rises aft. One closed path, because it
+ * is filled: the outline and the surface are the same shape.
+ */
+export const SUNNY_HULL = 'M-50 -2 L44 -6 L66 -18 L60 30 Q8 48 -42 30 Z'
 
-/** The wale, in the ambient ink: it is on the hull, not of it. */
-export const SUNNY_WALE = 'M-34 16 Q8 28 48 16'
+/** The bulwark, in the ambient ink: it is on the hull, not of it. */
+export const SUNNY_BULWARK = 'M-44 6 L52 2'
+
+/** The wale, lower down and on the same terms. */
+export const SUNNY_WALE = 'M-38 16 Q8 28 50 16'
 
 /**
  * Mast, yard and the pennant at the masthead.
  *
- * The mast is two segments rather than one because the sail has no fill: a
- * single line from the deck to the masthead would be drawn straight through
- * the canvas and cut it in half. What is left is what a mast actually shows —
- * a stub under the foot and the topmast above the yard.
+ * One line from the deck to the masthead. It is drawn before the sail and the
+ * hull, which are filled, so what shows of it is what a mast actually shows:
+ * a stub under the foot of the canvas and the topmast above the yard.
  */
-export const SUNNY_MAST =
-  'M0 -2 V-12 M0 -84 V-118 M-30 -84 H30 M0 -118 l16 6 l-16 6'
+export const SUNNY_MAST = 'M0 -2 V-118 M-30 -84 H30 M0 -118 l16 6 l-16 6'
 
 /** A sail, full, and one of the two shapes that take the route gold. */
 export const SUNNY_SAIL = 'M-28 -74 Q0 -82 28 -74 L32 -20 Q0 -10 -32 -20 Z'
 
-/** The crow's nest high on the topmast, on two brackets. */
-export const SUNNY_NEST = `${circle(0, -98, 12)} M-8 -87 l8 -4 M8 -87 l-8 -4`
+/** The crow's nest high on the topmast. */
+export const SUNNY_NEST = circle(0, -96, 10)
 
 /**
- * The lion at the prow, sat astride the bow so the hull carries her rather
- * than trailing her, and the mane drawn as rays swept forward from it.
+ * The lion at the prow, sat on the foredeck so the hull carries her, drawn as
+ * the archive draws her: a disc, and a mane of rays swept forward from it.
  *
- * This is how the archive draws her too, and the reason is a rule rather than
- * a style: no drawing on this site has a face. A disc with rays reads as a
- * mane and as a sun at once, which is the whole of the ship's name.
+ * The reason it is a disc and not a head is a rule rather than a style — no
+ * drawing on this site has a face — and it is the reading the record card
+ * uses, so a reader who has seen one recognises the other.
  */
-export const SUNNY_LION = circle(-52, -18, 16)
+export const SUNNY_LION = circle(-48, -16, 15)
 
-/** The rays of the mane. None of them reaches the water or the sail. */
+/**
+ * The rays of the mane. Each one starts on the disc's rim rather than at its
+ * centre, because the disc is filled: a ray written from the middle is a ray
+ * the lion paints over. None of them reaches the water or the canvas.
+ */
 export const SUNNY_MANE =
-  'M-68 -18 h-12 M-65 -29 l-9 -9 M-52 -34 v-12 M-65 -7 l-9 5'
+  'M-63 -16 h-16 M-59 -27 l-11 -11 M-48 -31 v-17 M-37 -27 l6 -6 M-60 -7 l-9 5'
 
 /**
- * The mark on the sail: a skull under a straw hat, left in the neutral ink so
- * the gold of the canvas stays the loud thing.
- *
- * It is a deliberate exception to the rule stated in `ChartArt.tsx` and in the
- * README — no faces, no logos — and the only one on the site. It is drawn, not
- * reproduced: a cranium, a jaw, two sockets and a hat. Every record drawing in
- * `~/data/art` still obeys the rule as written. Below 52rem the fold hides it
- * rather than render it at a size where the strokes fuse into a badge.
- */
-export const SUNNY_JOLLY = [
-  circle(0, -48, 12),
-  'M-7 -30 h14 M-7 -30 v-6 M7 -30 v-6 M-2.5 -30 v-6 M2.5 -30 v-6',
-  circle(-5, -52, 3.5),
-  circle(5, -52, 3.5),
-  'M-26 -56 q26 5 52 0 M-13 -56 q13 -12 26 0',
-].join(' ')
-
-/**
- * The light the ship's lantern throws on the water: five broken strokes
- * widening toward the reader, crossing every row of swell. It is the only
+ * The light the ship's lantern throws on the water: four broken strokes
+ * widening toward the reader, the first of them clear of the keel. It is the
+ * only
  * gold below the horizon besides the course, a hairline and dashed, so the
  * accent stays a signal rather than becoming a surface.
  */
 export const LANTERN_PATH =
-  'M910 404 h60 M892 432 h96 M872 464 h136 M850 500 h180 M826 540 h228'
+  'M900 462 h96 M880 488 h136 M856 512 h180 M830 540 h228'
 
 /** Leaves the ship level with her waterline and rises into the fog. */
-export const COURSE = 'M1062 380 C1147 380 1222 340 1307 346 S1449 380 1600 330'
+export const COURSE = 'M1066 380 C1150 380 1225 340 1310 346 S1450 380 1600 330'
 
 /**
  * The band the fog gradient is painted over: the right third plus the width

@@ -8,8 +8,8 @@ import {
   MOON_HALO,
   MOON_RINGS,
   SUNNY_AT,
+  SUNNY_BULWARK,
   SUNNY_HULL,
-  SUNNY_JOLLY,
   SUNNY_LION,
   SUNNY_MANE,
   SUNNY_MAST,
@@ -115,10 +115,10 @@ describe('night-sea', () => {
     const x = Number(at?.groups?.['x'])
     const scale = Number(at?.groups?.['scale'])
 
-    // The ship runs from -80 (the mane's outermost ray) to 64 (the stern)
-    // about the origin.
-    expect(x - 80 * scale).toBeGreaterThan(SAFE_START)
-    expect(x + 64 * scale).toBeLessThan(SAFE_END)
+    // The ship runs from -79 (the mane's outermost ray) to 66 (the sheer at
+    // the stern) about the origin.
+    expect(x - 79 * scale).toBeGreaterThan(SAFE_START)
+    expect(x + 66 * scale).toBeLessThan(SAFE_END)
   })
 
   it('keeps the masthead and the keel inside the box', () => {
@@ -141,8 +141,8 @@ describe('night-sea', () => {
       LANTERN_PATH,
       MOON,
       MOON_RINGS,
+      SUNNY_BULWARK,
       SUNNY_HULL,
-      SUNNY_JOLLY,
       SUNNY_LION,
       SUNNY_MANE,
       SUNNY_MAST,

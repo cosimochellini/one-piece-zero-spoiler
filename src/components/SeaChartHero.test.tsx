@@ -16,7 +16,7 @@ describe('SeaChartHero', () => {
     expect(svg).toHaveAttribute('preserveAspectRatio', 'xMidYMid slice')
   })
 
-  it('never fills a shape and never lets a stroke scale with the crop', () => {
+  it('never lets a stroke scale with the crop', () => {
     const { container } = render(<SeaChartHero />)
 
     const paths = [...container.querySelectorAll('path')]
@@ -64,7 +64,7 @@ describe('SeaChartHero', () => {
 
     expect(goldName).toBeDefined()
     expect(parts).toHaveLength(8)
-    // The sail, the lion and the four rays of its mane.
+    // The sail, the lion and the rays of its mane.
     expect(gilded).toHaveLength(3)
   })
 })

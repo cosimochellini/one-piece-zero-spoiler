@@ -125,13 +125,11 @@ export const styles = stylex.create({
   // stars: it is a reflection, and reflections are slow.
   lantern: { animationDuration: drift.halo },
 
-  // The mark on the sail is fifty-two units across, and a glyph that size drawn
-  // with strokes that stay 2px at every size stops being separate strokes and
-  // becomes one badge somewhere around 800px of viewport. Below that the sail
-  // is better plain than smudged.
-  jolly: {
-    display: { 'default': 'none', '@media (min-width: 52rem)': 'block' },
-  },
+  // The one departure from the outline-only drawing, and the fog band already
+  // makes it: a shape filled with the surface colour reads as solid, so the
+  // swell passes behind the hull instead of through it and the stars stop
+  // showing through the canvas. It is the paper, not a new colour.
+  solid: { fill: color.paper2 },
 
   rock: {
     animationDirection: 'alternate',

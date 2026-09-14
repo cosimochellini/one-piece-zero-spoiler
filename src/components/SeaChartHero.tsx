@@ -19,8 +19,8 @@ import {
   STAR_FLARES,
   STARS,
   SUNNY_AT,
+  SUNNY_BULWARK,
   SUNNY_HULL,
-  SUNNY_JOLLY,
   SUNNY_LION,
   SUNNY_MANE,
   SUNNY_MAST,
@@ -271,39 +271,51 @@ function Lantern(): ReactElement {
  * The Thousand Sunny: sails full, heading right, drawn about her own waterline
  * and put in place by one transform, so the parts never drift apart from each
  * other. The sail and the lion at her prow are the two pieces that take the
- * route gold; the wale is ambient and everything else is the neutral ink.
+ * route gold; the bulwark and the wale are ambient, and the rest is the
+ * neutral ink.
  *
- * The rock is on a second group inside that one, and it has to be: a CSS
- * `transform` replaces the `transform` attribute outright rather than
- * composing with it, so an animation on the outer group would drop the ship
- * at the origin of the view box at full scale.
+ * The order is the drawing: the mast and the mane go down first and the sail,
+ * the nest, the hull and the lion are laid over them filled, so a mast does
+ * not run through its own canvas and a mane does not cross the hull it is
+ * mounted on.
+ *
+ * The rock is on a second group inside the one that places her, and it has to
+ * be: a CSS `transform` replaces the `transform` attribute outright rather
+ * than composing with it, so an animation on the outer group would drop the
+ * ship at the origin of the view box at full scale.
  */
 function Sunny(): ReactElement {
   return (
     <g transform={SUNNY_AT}>
       <g {...stylex.props(styles.rock)}>
-        <Line d={SUNNY_HULL} />
-        <Line
-          d={SUNNY_WALE}
-          sx={styles.ambient}
-        />
         <Line d={SUNNY_MAST} />
-        <Line
-          d={SUNNY_SAIL}
-          sx={styles.gold}
-        />
-        <Line d={SUNNY_NEST} />
-        <Line
-          d={SUNNY_LION}
-          sx={styles.gold}
-        />
         <Line
           d={SUNNY_MANE}
           sx={styles.gold}
         />
         <Line
-          d={SUNNY_JOLLY}
-          sx={styles.jolly}
+          d={SUNNY_SAIL}
+          sx={[styles.gold, styles.solid]}
+        />
+        <Line
+          d={SUNNY_NEST}
+          sx={styles.solid}
+        />
+        <Line
+          d={SUNNY_HULL}
+          sx={styles.solid}
+        />
+        <Line
+          d={SUNNY_BULWARK}
+          sx={styles.ambient}
+        />
+        <Line
+          d={SUNNY_WALE}
+          sx={styles.ambient}
+        />
+        <Line
+          d={SUNNY_LION}
+          sx={[styles.gold, styles.solid]}
         />
       </g>
     </g>
