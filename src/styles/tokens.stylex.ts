@@ -24,7 +24,9 @@
  * · honest: pass (46) — every number on the page is the reader's bookmark or a
  *   count of the archive at render time
  * · slop: pass (42-45) · chrome: pass (47) · tokens: pass (48) · icons: pass (30)
- * · type: 3 families, outlier in 2 registers (37-38) · no italic heads (38a)
+ * · type: 3 families, outlier in 2 registers (37-38) · no italic heads (38a);
+ *   one step above `display` (`hero`) reserved for the fold headline, set on the
+ *   display face's width axis at 92% so two lines still hold 16 characters
  * · mobile 320/375/414/768 + 1280/1440: verified in headless Chrome — no horizontal
  *   scroll, no wrapped affordance, horizon between open and fogged rows (34, 49-57) */
 import * as stylex from '@stylexjs/stylex'
@@ -161,11 +163,17 @@ export const font = stylex.defineVars({
 })
 
 /**
- * A 1.25 major third on a 16px base, plus one fluid display size.
+ * A 1.25 major third on a 16px base, plus two fluid sizes.
  *
  * `display` is sized for a two-line headline in a column that is at most half
  * the page: 2.5rem on a phone, 4rem at 96rem and above. The headline is 32
  * characters, inside the 21-50 bracket that gets the full display size.
+ *
+ * `hero` is the one step above it, and it exists for exactly one place: the
+ * fold, where the headline is set over a drawing rather than beside body copy
+ * and has the whole width of the page to fall through. At that size the
+ * display face is set condensed on its width axis, which is what keeps two
+ * lines of it inside 16 characters a line.
  */
 export const text = stylex.defineVars({
   xs: '0.75rem',
@@ -173,6 +181,7 @@ export const text = stylex.defineVars({
   lg: '1.25rem',
   xl: '1.5625rem',
   display: 'clamp(2.5rem, 1.6vw + 1.6rem, 4rem)',
+  hero: 'clamp(3rem, 4.2vw + 1.2rem, 5.5rem)',
 })
 
 /**
@@ -197,6 +206,27 @@ export const dur = stylex.defineVars({
   micro: '120ms',
   short: '220ms',
   long: '420ms',
+})
+
+/**
+ * How long the fold's ambient loops take. None of them answers a press, so
+ * they are measured in seconds rather than in the three interaction buckets
+ * above: the sea, the ship and the sky are the room the page is in.
+ *
+ * The four swell rows are the parallax, and their order is the depth order:
+ * the row nearest the reader crosses a crest roughly twice as often as the
+ * one at the horizon. Every loop is guarded behind `prefers-reduced-motion`
+ * at its call site, so these are the durations of something that may never
+ * run.
+ */
+export const drift = stylex.defineVars({
+  far: '21s',
+  mid: '15s',
+  near: '11s',
+  fore: '8s',
+  ship: '7s',
+  star: '5s',
+  halo: '16s',
 })
 
 /**

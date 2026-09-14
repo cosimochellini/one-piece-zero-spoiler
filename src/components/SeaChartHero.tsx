@@ -2,6 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import {
+  BRIGHT_STARS_A,
+  BRIGHT_STARS_B,
+  BRIGHT_STARS_C,
   CARAVEL_AT,
   CARAVEL_FIGUREHEAD,
   CARAVEL_HULL,
@@ -9,29 +12,48 @@ import {
   CARAVEL_SAIL,
   CONSTELLATION,
   COURSE,
+  DEEP_FIELD,
+  FAR_ISLES,
   FOG_BAND,
   HORIZON,
+  LANTERN_PATH,
   MOON,
+  MOON_HALO,
+  MOON_RINGS,
   SEA_CHART_VIEWBOX,
+  STAR_FLARES,
   STARS,
-  WAVES,
+  WAVE_FAR,
+  WAVE_FORE,
+  WAVE_MID,
+  WAVE_NEAR,
 } from '~/components/chrome/night-sea'
-import { color, rule } from '~/styles/tokens.stylex'
+import { styles } from '~/components/SeaChartHero.styles'
 
 /** The id the fog rect refers to; it has to be unique in the document. */
 const FOG_GRADIENT = 'sea-chart-fog'
+
+/** The id the moon's bloom refers to, on the same terms as the fog's. */
+const MOON_GRADIENT = 'sea-chart-moon'
 
 /**
  * The fold drawing: a night sea in the same line as the waypoint plates.
  *
  * One horizon in the route gold, a small caravel under sail right of centre, a
- * dotted course that leaves it and runs into fog at the right edge, a thin moon
- * and a few stars. Nothing else. The headline is set into the lower-left corner
- * by the page, so the left half stays quiet on purpose, and the ship sits where
- * a phone's 4:3 crop of the box still shows it.
+ * dotted course that leaves her and runs into fog at the right edge, a
+ * crescent with its light ruled around it, and a sky in three depths. The
+ * headline is set into the lower-left corner by the fold, so the left half
+ * stays quiet on purpose, and the ship sits where a phone's 4:3 crop of the
+ * box still shows her.
  *
- * The drawing itself is data in `~/components/chrome/night-sea`, as every other drawing
- * on the site is; this file is the box, the ink and the fog. The box is
+ * Nothing in it is still: four rows of swell slide at four speeds, the ship
+ * rocks about her keel, the stars breathe a beat apart. All of it is
+ * `opacity` and `transform`, all of it is behind `prefers-reduced-motion`,
+ * and none of it carries meaning — a reader who never sees a frame of it has
+ * missed nothing.
+ *
+ * The drawing itself is data in `~/components/chrome/night-sea`, as every other
+ * drawing on the site is; this file is the box, the ink and the fog. The box is
  * cropped, not squashed, to whatever frame it is given (`slice`), and the
  * strokes stay 2px at every crop.
  */
@@ -43,27 +65,12 @@ export function SeaChartHero(): ReactElement {
       viewBox={SEA_CHART_VIEWBOX}
       {...stylex.props(styles.svg)}
     >
-      <defs>
-        <linearGradient
-          id={FOG_GRADIENT}
-          x1="0"
-          x2="1"
-          y1="0"
-          y2="0"
-        >
-          <stop
-            offset="0"
-            {...stylex.props(styles.fogStart)}
-          />
-          <stop
-            offset="1"
-            {...stylex.props(styles.fogEnd)}
-          />
-        </linearGradient>
-      </defs>
+      <HeroDefs />
 
       <Sky />
+      <Twinkle />
       <Sea />
+      <Lantern />
       <Caravel />
       <Course />
     </svg>
@@ -71,12 +78,69 @@ export function SeaChartHero(): ReactElement {
 }
 
 /**
- * A handful of dots, one small constellation drawn between four of them, and
- * a crescent. Nothing here is a light source: the sea below is not lit by it.
+ * The two gradients the drawing paints with: the bloom around the crescent,
+ * and the fog the course runs into. Both are overlays of a surface colour, so
+ * neither of them adds a hue the palette does not already have.
+ */
+function HeroDefs(): ReactElement {
+  return (
+    <defs>
+      <radialGradient id={MOON_GRADIENT}>
+        <stop
+          offset="0"
+          {...stylex.props(styles.haloCore)}
+        />
+        <stop
+          offset="0.38"
+          {...stylex.props(styles.haloMid)}
+        />
+        <stop
+          offset="1"
+          {...stylex.props(styles.haloEdge)}
+        />
+      </radialGradient>
+
+      <linearGradient
+        id={FOG_GRADIENT}
+        x1="0"
+        x2="1"
+        y1="0"
+        y2="0"
+      >
+        <stop
+          offset="0"
+          {...stylex.props(styles.fogStart)}
+        />
+        <stop
+          offset="1"
+          {...stylex.props(styles.fogEnd)}
+        />
+      </linearGradient>
+    </defs>
+  )
+}
+
+/**
+ * Three depths of sky: a faint field that reads as distance, the loose stars
+ * with one constellation drawn between four of them, and the crescent with
+ * its light ruled in rings around it. The bloom is the one soft edge in the
+ * drawing, and it stops short of the horizon: the sea below is not lit by it.
  */
 function Sky(): ReactElement {
   return (
     <>
+      <circle
+        cx={MOON_HALO.cx}
+        cy={MOON_HALO.cy}
+        fill={`url(#${MOON_GRADIENT})`}
+        r={MOON_HALO.r}
+        {...stylex.props(styles.halo)}
+      />
+      <path
+        d={DEEP_FIELD}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line, styles.faint)}
+      />
       <path
         d={STARS}
         vectorEffect="non-scaling-stroke"
@@ -88,6 +152,11 @@ function Sky(): ReactElement {
         {...stylex.props(styles.line, styles.ambient)}
       />
       <path
+        d={MOON_RINGS}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line, styles.faint)}
+      />
+      <path
         d={MOON}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line)}
@@ -97,9 +166,52 @@ function Sky(): ReactElement {
 }
 
 /**
+ * The six stars that carry the light, on one loop started a beat apart, and
+ * the cross of light on the brightest pair. Three paths rather than one so
+ * the sky breathes instead of blinking.
+ */
+function Twinkle(): ReactElement {
+  return (
+    <>
+      <path
+        d={BRIGHT_STARS_A}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line, styles.gold, styles.pulse)}
+      />
+      <path
+        d={STAR_FLARES}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(styles.line, styles.faint, styles.pulse)}
+      />
+      <path
+        d={BRIGHT_STARS_B}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.gold,
+          styles.pulse,
+          styles.pulseLate,
+        )}
+      />
+      <path
+        d={BRIGHT_STARS_C}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.gold,
+          styles.pulse,
+          styles.pulseLater,
+        )}
+      />
+    </>
+  )
+}
+
+/**
  * The horizon takes the route gold because it is the same line the chart
- * draws across every waypoint; the swell under it stays in the muted ink so
- * it never competes with the ship.
+ * draws across every waypoint; the isles and the swell under it stay in the
+ * muted ink so they never compete with the ship. The four rows slide at four
+ * speeds, each by exactly one crest, so the sea moves and never restarts.
  */
 function Sea(): ReactElement {
   return (
@@ -110,41 +222,110 @@ function Sea(): ReactElement {
         {...stylex.props(styles.line, styles.gold)}
       />
       <path
-        d={WAVES}
+        d={FAR_ISLES}
         vectorEffect="non-scaling-stroke"
         {...stylex.props(styles.line, styles.ambient)}
+      />
+      <path
+        d={WAVE_FAR}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.ambient,
+          styles.swell,
+          styles.farRow,
+        )}
+      />
+      <path
+        d={WAVE_MID}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.ambient,
+          styles.swell,
+          styles.midRow,
+        )}
+      />
+      <path
+        d={WAVE_NEAR}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.ambient,
+          styles.swell,
+          styles.nearRow,
+        )}
+      />
+      <path
+        d={WAVE_FORE}
+        vectorEffect="non-scaling-stroke"
+        {...stylex.props(
+          styles.line,
+          styles.ambient,
+          styles.swell,
+          styles.foreRow,
+        )}
       />
     </>
   )
 }
 
 /**
+ * The lantern's reflection, broken across the swell and widening toward the
+ * reader. It breathes on the moon's slow loop rather than on the stars', the
+ * way a light on water does.
+ */
+function Lantern(): ReactElement {
+  return (
+    <path
+      d={LANTERN_PATH}
+      vectorEffect="non-scaling-stroke"
+      {...stylex.props(
+        styles.line,
+        styles.gold,
+        styles.faint,
+        styles.dotted,
+        styles.pulse,
+        styles.lantern,
+      )}
+    />
+  )
+}
+
+/**
  * Sails full, heading right, drawn about her own waterline and put in place
  * by one transform, so the parts never drift apart from each other.
+ *
+ * The rock is on a second group inside that one, and it has to be: a CSS
+ * `transform` replaces the `transform` attribute outright rather than
+ * composing with it, so an animation on the outer group would drop the ship
+ * at the origin of the view box at full scale.
  */
 function Caravel(): ReactElement {
   return (
     <g transform={CARAVEL_AT}>
-      <path
-        d={CARAVEL_HULL}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line)}
-      />
-      <path
-        d={CARAVEL_MAST}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line)}
-      />
-      <path
-        d={CARAVEL_SAIL}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line, styles.gold)}
-      />
-      <path
-        d={CARAVEL_FIGUREHEAD}
-        vectorEffect="non-scaling-stroke"
-        {...stylex.props(styles.line)}
-      />
+      <g {...stylex.props(styles.rock)}>
+        <path
+          d={CARAVEL_HULL}
+          vectorEffect="non-scaling-stroke"
+          {...stylex.props(styles.line)}
+        />
+        <path
+          d={CARAVEL_MAST}
+          vectorEffect="non-scaling-stroke"
+          {...stylex.props(styles.line)}
+        />
+        <path
+          d={CARAVEL_SAIL}
+          vectorEffect="non-scaling-stroke"
+          {...stylex.props(styles.line, styles.gold)}
+        />
+        <path
+          d={CARAVEL_FIGUREHEAD}
+          vectorEffect="non-scaling-stroke"
+          {...stylex.props(styles.line)}
+        />
+      </g>
     </g>
   )
 }
@@ -172,21 +353,3 @@ function Course(): ReactElement {
     </>
   )
 }
-
-const styles = stylex.create({
-  svg: { display: 'block', height: '100%', width: '100%' },
-  line: {
-    fill: 'none',
-    stroke: color.ink2,
-    strokeLinecap: 'round',
-    strokeLinejoin: 'round',
-    strokeWidth: rule.fine,
-  },
-  gold: { stroke: color.accent },
-  ambient: { stroke: color.rule2 },
-  dotted: { strokeDasharray: '2 10' },
-  // The fog is the card surface itself, rising from nothing to solid across
-  // the right third, so the course visibly disappears into it.
-  fogStart: { stopColor: color.paper2, stopOpacity: 0 },
-  fogEnd: { stopColor: color.paper2, stopOpacity: 0.96 },
-})

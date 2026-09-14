@@ -5,22 +5,14 @@ import { type ReactElement, useCallback } from 'react'
 
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
-import { SeaChartHero } from '~/components/SeaChartHero'
+import { SeaChartFold } from '~/components/SeaChartFold'
 import { useLocale, useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { ChartView, WaypointView } from '~/lib/view/records'
 import { liftWaypoint, loadChart } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
-import {
-  color,
-  font,
-  leading,
-  radius,
-  rule,
-  space,
-  text,
-} from '~/styles/tokens.stylex'
+import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
 
 // The bands in DOM order. Named rather than counted at the call, so a band
 // inserted in the middle is one edit here and not four along the page.
@@ -41,46 +33,6 @@ const FAQ = [
   { q: 'faq.bookmarkQ', a: 'faq.bookmarkA' },
   { q: 'faq.peekQ', a: 'faq.peekA' },
 ] as const
-
-/**
- * The landing page (Hallmark macrostructure 19, Map / Diagram, with an
- * illustrated fold).
- *
- * The fold is one line drawing — a night sea, a small caravel, a route running
- * into fog — with the headline set into its lower edge. Under it the page is
- * one composition: the archive drawn as a sea route, every waypoint with its
- * own drawing, and the reader's bookmark as a horizon line across it. The
- * orientation column on the left holds the lede and the legend, and on a wide
- * screen it stays put while the route scrolls, so saving a new bookmark from
- * the bar moves the line in view. That is the demonstration; nothing on the
- * page describes it instead.
- *
- * Below the chart, three questions answered plainly. They are the rules of the
- * site, written as a conversation rather than as a row of cards.
- */
-/**
- * The fold: the night sea with the headline set into its lower-left corner.
- * The drawing is cropped rather than squashed, so the caravel stays where a
- * phone's crop of the box still shows it.
- */
-function Fold(): ReactElement {
-  const t = useT()
-
-  return (
-    <section
-      {...stylex.props(
-        styles.fold,
-        settleStyles.band,
-        settleStyles.at(BAND.fold),
-      )}
-    >
-      <div {...stylex.props(styles.foldFigure)}>
-        <SeaChartHero />
-      </div>
-      <h1 {...stylex.props(styles.headline)}>{t('hero.headline')}</h1>
-    </section>
-  )
-}
 
 /**
  * The orientation column and the route beside it: the lede and the legend on
@@ -144,6 +96,22 @@ function ChartBand({
   )
 }
 
+/**
+ * The landing page (Hallmark macrostructure 19, Map / Diagram, with an
+ * illustrated fold).
+ *
+ * The fold is one line drawing — a night sea, a small caravel, a route running
+ * into fog — with the headline and the two ways into the site set into its
+ * lower edge. Under it the page is one composition: the archive drawn as a sea
+ * route, every waypoint with its own drawing, and the reader's bookmark as a
+ * horizon line across it. The orientation column on the left holds the lede and
+ * the legend, and on a wide screen it stays put while the route scrolls, so
+ * saving a new bookmark from the bar moves the line in view. That is the
+ * demonstration; nothing on the page describes it instead.
+ *
+ * Below the chart, three questions answered plainly. They are the rules of the
+ * site, written as a conversation rather than as a row of cards.
+ */
 function Landing(): ReactElement {
   const { locale } = useLocale()
   const { bookmark } = useBookmark()
@@ -171,7 +139,7 @@ function Landing(): ReactElement {
       id="content"
       {...stylex.props(styles.page)}
     >
-      <Fold />
+      <SeaChartFold band={BAND.fold} />
 
       <ChartBand
         bookmark={bookmark}
@@ -221,21 +189,6 @@ function Questions(): ReactElement {
 const styles = stylex.create({
   page: { paddingInline: space.md, display: 'grid' },
 
-  // The illustrated fold: the drawing is the height of its frame, not of the
-  // viewport, and the headline is set into its lower-left corner on a scrim
-  // that darkens toward the paper so the type reads over the sea.
-  fold: { display: 'grid', paddingBlockStart: space.xs, position: 'relative' },
-  foldFigure: {
-    borderRadius: radius.card,
-    overflow: 'hidden',
-    aspectRatio: {
-      'default': '16 / 9',
-      '@media (min-width: 40rem)': '16 / 8',
-      '@media (min-width: 60rem)': '16 / 7',
-    },
-    backgroundColor: color.paper2,
-    position: 'relative',
-  },
   // Two columns from 60rem: the orientation column is narrower than the
   // route, and pinned, so the legend is in view for the whole length of the
   // chart. Below that the two stack, lede first.
@@ -257,37 +210,6 @@ const styles = stylex.create({
     justifyItems: 'start',
     position: { 'default': 'static', '@media (min-width: 60rem)': 'sticky' },
   },
-  // On a phone the headline sits under the drawing, in the page; from 40rem
-  // it is set into the drawing's lower-left corner on a scrim that darkens
-  // toward the paper, so the type reads over the sea and the ship stays clear.
-  headline: {
-    backgroundImage: {
-      'default': 'none',
-      '@media (min-width: 40rem)': `linear-gradient(to top, ${color.paper} 0%, ${color.paper} 18%, transparent 100%)`,
-    },
-    color: color.ink,
-    fontFamily: font.display,
-    fontSize: text.display,
-    fontWeight: 800,
-    insetBlockEnd: 0,
-    insetInlineStart: 0,
-    letterSpacing: '-0.035em',
-    lineHeight: leading.display,
-    overflowWrap: 'anywhere',
-    paddingBlockEnd: { 'default': 0, '@media (min-width: 40rem)': space.xs },
-    paddingBlockStart: {
-      'default': space.lg,
-      '@media (min-width: 40rem)': space.xl2,
-    },
-    paddingInlineEnd: { 'default': 0, '@media (min-width: 40rem)': space.xl },
-    paddingInlineStart: { 'default': 0, '@media (min-width: 40rem)': space.md },
-    position: { 'default': 'static', '@media (min-width: 40rem)': 'absolute' },
-    maxWidth: '16ch',
-    // Display type needs an explicit last-resort break or a long unbroken
-    // string walks off a 320px viewport.
-    minWidth: 0,
-  },
-
   lede: {
     color: color.ink2,
     fontSize: text.base,
