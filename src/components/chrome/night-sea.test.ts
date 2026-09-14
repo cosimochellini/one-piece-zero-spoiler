@@ -54,6 +54,10 @@ const startOf = (d: string): number => {
 // crescent's outer arc is the widest thing in the sky.
 const MOON_ARC_R = 76
 
+// Where `SeaChartHero` puts the bloom's middle stop, past which it is only
+// fading out.
+const HALO_MID_STOP = 0.38
+
 const occurrences = (d: string, segment: string): number =>
   d.split(segment).length - 1
 
@@ -84,8 +88,14 @@ describe('night-sea', () => {
     expect(startOf(MOON_RINGS)).toBeGreaterThan(SAFE_START)
     expect(startOf(FAR_ISLES)).toBeGreaterThan(SAFE_START)
     expect(startOf(LANTERN_PATH)).toBeGreaterThan(SAFE_START)
-    expect(MOON_HALO.cx).toBeGreaterThan(SAFE_START)
-    expect(MOON_HALO.cx).toBeLessThan(SAFE_END)
+    // The bloom is the one shape allowed past the crop, because past its mid
+    // stop it is already all but transparent and has no edge to cut. What has
+    // to stay in frame is the part that still carries light: the radius out to
+    // that stop, where the gradient is at 0.12 of `color.glow`.
+    expect(MOON_HALO.cx - MOON_HALO.r * HALO_MID_STOP).toBeGreaterThan(
+      SAFE_START,
+    )
+    expect(MOON_HALO.cx + MOON_HALO.r * HALO_MID_STOP).toBeLessThan(SAFE_END)
   })
 
   it('counts every subpath of the rings, not only the first', () => {
