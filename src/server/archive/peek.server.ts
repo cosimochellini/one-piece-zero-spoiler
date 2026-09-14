@@ -1,7 +1,9 @@
+import { fruitFormOf } from '~/data/fruits'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
+  FruitView,
   PortView,
   RecordView,
   WaypointView,
@@ -9,7 +11,7 @@ import type {
 
 import { entityForHandle } from './handle.server'
 import { portOf } from './pages.server'
-import { characterOf, recordOf, waypointOf } from './project.server'
+import { characterOf, fruitOf, recordOf, waypointOf } from './project.server'
 
 /**
  * Trading a handle for the record it stands for.
@@ -57,6 +59,22 @@ export function peekDossier(
   }
 
   return { ...characterOf(entity, locale), summary: entity.summary[locale] }
+}
+
+/**
+ * A devil fruit, as a specimen draws it. A handle that stands for a record
+ * which is not a fruit answers nothing, the way every lookup here fails.
+ */
+export function peekFruit(
+  handle: string,
+  locale: Locale,
+): FruitView | undefined {
+  const entity = entityForHandle(handle)
+  const form = entity === undefined ? undefined : fruitFormOf(entity)
+
+  return entity === undefined || form === undefined ?
+      undefined
+    : fruitOf(entity, locale, form)
 }
 
 /** Any record, as a small tile draws it. */

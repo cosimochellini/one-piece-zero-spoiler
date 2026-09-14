@@ -580,6 +580,10 @@ export const dressrosa: Saga = {
         },
       ],
     },
+    // No `devilFruit` line: the story shows him dress people in whatever he
+    // likes long before it ever names the fruit that lets him, and the field
+    // holds fruit ids now. Naming one here would print a name the viewer has
+    // not been given; the line comes back when the story gives it.
     'kinemon': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
@@ -602,15 +606,6 @@ export const dressrosa: Saga = {
       origin: [{ episode: 579, value: WANO }],
       epithet: [
         { episode: 579, value: { it: 'Volpe di Fuoco', en: 'Foxfire' } },
-      ],
-      devilFruit: [
-        {
-          episode: 590,
-          value: {
-            it: 'Frutto di un potere di travestimento (senza nome)',
-            en: 'Fruit of a Dressing Ability (unnamed)',
-          },
-        },
       ],
     },
     'brownbeard': {
@@ -660,12 +655,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
-      devilFruit: [
-        {
-          episode: 584,
-          value: { it: 'Frutto Gasu Gasu', en: 'Gas-Gas Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 584, value: ['gas-gas-fruit'] }],
       bounty: [{ episode: 584, value: 300_000_000 }],
     },
     'monet': {
@@ -686,12 +676,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 586,
-          value: { it: 'Frutto Yuki Yuki', en: 'Snow-Snow Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 586, value: ['snow-snow-fruit'] }],
     },
     'vergo': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -739,15 +724,7 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [{ episode: 590, value: WANO }],
-      devilFruit: [
-        {
-          episode: 590,
-          value: {
-            it: 'Frutto Ryu Ryu artificiale',
-            en: 'Artificial Dragon-Dragon Fruit',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 590, value: ['artificial-dragon-dragon-fruit'] }],
     },
     'baby-5': {
       role: {
@@ -774,12 +751,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 591,
-          value: { it: 'Frutto Buki Buki', en: 'Arms-Arms Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 591, value: ['arms-arms-fruit'] }],
     },
     'buffalo': {
       role: {
@@ -799,12 +771,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 591,
-          value: { it: 'Frutto Guru Guru', en: 'Spin-Spin Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 591, value: ['spin-spin-fruit'] }],
     },
     'rebecca': {
       role: { it: 'Gladiatrice del colosseo', en: 'Colosseum gladiator' },
@@ -852,12 +819,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [{ episode: 630, value: { it: 'Fujitora', en: 'Fujitora' } }],
-      devilFruit: [
-        {
-          episode: 630,
-          value: { it: 'Frutto Zushi Zushi', en: 'Press-Press Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 630, value: ['press-press-fruit'] }],
     },
     'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
@@ -887,12 +849,7 @@ export const dressrosa: Saga = {
       epithet: [
         { episode: 632, value: { it: 'Il Cannibale', en: 'the Cannibal' } },
       ],
-      devilFruit: [
-        {
-          episode: 660,
-          value: { it: 'Frutto Bari Bari', en: 'Barrier-Barrier Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 660, value: ['barrier-barrier-fruit'] }],
       bounty: [{ episode: 632, value: 150_000_000 }],
     },
     'riku-doldo-iii': {
@@ -935,12 +892,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 632,
-          value: { it: 'Frutto Beta Beta', en: 'Stick-Stick Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 632, value: ['stick-stick-fruit'] }],
     },
     'cavendish': {
       role: {
@@ -1209,12 +1161,7 @@ export const dressrosa: Saga = {
       ],
       origin: [{ episode: 640, value: DRESSROSA }],
       epithet: [{ episode: 640, value: { it: 'Violet', en: 'Violet' } }],
-      devilFruit: [
-        {
-          episode: 640,
-          value: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 640, value: ['glare-glare-fruit'] }],
     },
     'sugar': {
       role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
@@ -1231,12 +1178,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 641,
-          value: { it: 'Frutto Hobi Hobi', en: 'Hobby-Hobby Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 641, value: ['hobby-hobby-fruit'] }],
     },
     'diamante': {
       role: DONQUIXOTE_ELITE_ROLE,
@@ -1259,12 +1201,7 @@ export const dressrosa: Saga = {
           value: { it: 'Eroe del Colosseo', en: 'Hero of the Colosseum' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 633,
-          value: { it: 'Frutto Hira Hira', en: 'Ripple-Ripple Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 633, value: ['ripple-ripple-fruit'] }],
     },
     'pica': {
       role: DONQUIXOTE_ELITE_ROLE,
@@ -1281,12 +1218,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 633,
-          value: { it: 'Frutto Ishi Ishi', en: 'Stone-Stone Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 633, value: ['stone-stone-fruit'] }],
     },
     'senor-pink': {
       role: {
@@ -1298,12 +1230,7 @@ export const dressrosa: Saga = {
         en: 'He turns up in a dark suit, sunglasses and a bib, and nobody in Dressrosa dares point out the contrast. He crosses the ground with swimming strokes, vanishes under the cobbles and surfaces behind whoever was looking for him. The women of the city find him wonderful and shout so after him, and he never once loses his composure.',
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
-      devilFruit: [
-        {
-          episode: 635,
-          value: { it: 'Frutto Sui Sui', en: 'Swim-Swim Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 635, value: ['swim-swim-fruit'] }],
     },
     'dellinger': {
       role: {
@@ -1334,9 +1261,7 @@ export const dressrosa: Saga = {
         en: 'He is as wide as two men and moves like someone in no hurry, because nobody dodges him when he comes down from above. He raises the weight of his own body at will and flattens whatever is underneath without even throwing a punch. He is one of the officers watching over the colosseum, and waits his turn laughing at the crowd’s bets.',
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
-      devilFruit: [
-        { episode: 635, value: { it: 'Frutto Ton Ton', en: 'Ton-Ton Fruit' } },
-      ],
+      devilFruit: [{ episode: 635, value: ['ton-ton-fruit'] }],
     },
     'jora': {
       role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
@@ -1353,9 +1278,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        { episode: 635, value: { it: 'Frutto Ato Ato', en: 'Art-Art Fruit' } },
-      ],
+      devilFruit: [{ episode: 635, value: ['art-art-fruit'] }],
     },
     'orlumbus': {
       role: {
@@ -1399,12 +1322,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 640,
-          value: { it: 'Frutto Pamu Pamu', en: 'Pop-Pop Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 640, value: ['pop-pop-fruit'] }],
     },
     'leo': {
       role: { it: 'Capo del Corpo Tonta', en: 'Leader of the Tonta Corps' },
@@ -1428,12 +1346,7 @@ export const dressrosa: Saga = {
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 640,
-          value: { it: 'Frutto Nui Nui', en: 'Stitch-Stitch Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 640, value: ['stitch-stitch-fruit'] }],
     },
     'kyros': {
       role: {
@@ -1482,12 +1395,7 @@ export const dressrosa: Saga = {
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 675,
-          value: { it: 'Frutto Chiyu Chiyu', en: 'Heal-Heal Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 675, value: ['heal-heal-fruit'] }],
     },
     'kanjuro': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
@@ -1522,19 +1430,10 @@ export const dressrosa: Saga = {
           value: { it: 'Acquazzone della Sera', en: 'Evening Shower' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 676,
-          value: {
-            it: 'Frutto di un potere di disegno (senza nome)',
-            en: 'Fruit of a Drawing Ability (unnamed)',
-          },
-        },
-        {
-          episode: 985,
-          value: { it: 'Frutto Fude Fude', en: 'Brush-Brush Fruit' },
-        },
-      ],
+      // Filed at 985 and not at 676: the drawings come alive long before the
+      // story says what the fruit is called, and the field carries fruit ids
+      // now, so an entry at 676 would print the name early.
+      devilFruit: [{ episode: 985, value: ['brush-brush-fruit'] }],
     },
     'donquixote-rosinante': {
       role: {
@@ -1558,12 +1457,7 @@ export const dressrosa: Saga = {
         { episode: 704, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
       ],
       epithet: [{ episode: 704, value: { it: 'Corazon', en: 'Corazon' } }],
-      devilFruit: [
-        {
-          episode: 704,
-          value: { it: 'Frutto Nagi Nagi', en: 'Calm-Calm Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 704, value: ['calm-calm-fruit'] }],
     },
     'kaido': {
       role: {
@@ -1595,10 +1489,7 @@ export const dressrosa: Saga = {
       devilFruit: [
         {
           episode: 912,
-          value: {
-            it: 'Frutto Uo Uo, modello Drago Azzurro',
-            en: 'Fish-Fish Fruit, Mythical Model: Azure Dragon',
-          },
+          value: ['fish-fish-fruit-mythical-model-azure-dragon'],
         },
       ],
       bounty: [{ episode: 958, value: 4_611_100_000 }],

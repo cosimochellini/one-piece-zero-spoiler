@@ -575,12 +575,7 @@ export const alabasta: Saga = {
         en: 'Anything that leaves his body becomes an explosive: his breath, his fingers, a crumb picked from his nose and flicked like a bullet. He works in a pair with a colleague who laughs at everything and never loses her composure. His orders are to kill anyone who has learned the boss’s name.',
       },
       affiliation: [{ episode: 66, value: BW_OFFICER }],
-      devilFruit: [
-        {
-          episode: 66,
-          value: { it: 'Frutto Bomb Bomb', en: 'Bomb-Bomb Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 66, value: ['bomb-bomb-fruit'] }],
     },
     'miss-valentine': {
       role: BW_OFFICER_ROLE,
@@ -589,12 +584,7 @@ export const alabasta: Saga = {
         en: 'She laughs without stopping, even at work, and comes down out of the sky under a lemon-yellow umbrella. She can make herself light as a feather or heavy as a bronze bell, and drops on whoever is underneath. She travels everywhere with a colleague who blows up whatever he touches.',
       },
       affiliation: [{ episode: 66, value: BW_OFFICER }],
-      devilFruit: [
-        {
-          episode: 66,
-          value: { it: 'Frutto Kilo Kilo', en: 'Kilo-Kilo Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 66, value: ['kilo-kilo-fruit'] }],
     },
     'nefertari-vivi': {
       role: { it: 'Principessa di Alabasta', en: 'Princess of Alabasta' },
@@ -629,9 +619,7 @@ export const alabasta: Saga = {
         { episode: 422, value: IMPEL_DOWN },
         { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
       ],
-      devilFruit: [
-        { episode: 70, value: { it: 'Frutto Wax Wax', en: 'Wax-Wax Fruit' } },
-      ],
+      devilFruit: [{ episode: 70, value: ['wax-wax-fruit'] }],
       bounty: [{ episode: 70, value: 24_000_000 }],
     },
     'miss-goldenweek': {
@@ -706,12 +694,7 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 78, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
       ],
-      devilFruit: [
-        {
-          episode: 79,
-          value: { it: 'Frutto Munch Munch', en: 'Munch-Munch Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 79, value: ['munch-munch-fruit'] }],
     },
     'bon-clay': {
       role: BW_OFFICER_ROLE,
@@ -730,12 +713,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 78,
-          value: { it: 'Frutto Clone Clone', en: 'Clone-Clone Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 78, value: ['clone-clone-fruit'] }],
       bounty: [{ episode: 78, value: 32_000_000 }],
     },
     'dalton': {
@@ -761,15 +739,7 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 79, value: DRUM_ISLAND }],
-      devilFruit: [
-        {
-          episode: 79,
-          value: {
-            it: 'Frutto Ushi Ushi, modello Bisonte',
-            en: 'Ox-Ox Fruit, Model: Bison',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 79, value: ['ox-ox-fruit-model-bison'] }],
     },
     'kureha': {
       role: { it: 'Dottoressa di Drum', en: 'Doctor of Drum' },
@@ -823,12 +793,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 83,
-          value: { it: 'Frutto Homo Homo', en: 'Human-Human Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 83, value: ['human-human-fruit'] }],
       bounty: [
         { episode: 320, value: 50 },
         { episode: 746, value: 100 },
@@ -881,12 +846,7 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 92, value: { it: 'Sir Crocodile', en: 'Sir Crocodile' } },
       ],
-      devilFruit: [
-        {
-          episode: 112,
-          value: { it: 'Frutto Sand Sand', en: 'Sand-Sand Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 112, value: ['sand-sand-fruit'] }],
       bounty: [
         { episode: 130, value: 81_000_000 },
         { episode: 1088, value: 1_965_000_000 },
@@ -959,15 +919,7 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 93, value: { it: 'Pell il Falco', en: 'Falcon Pell' } },
       ],
-      devilFruit: [
-        {
-          episode: 93,
-          value: {
-            it: 'Frutto Tori Tori, modello Falco',
-            en: 'Bird-Bird Fruit, Model: Falcon',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 93, value: ['bird-bird-fruit-model-falcon'] }],
     },
     'chaka': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
@@ -991,15 +943,7 @@ export const alabasta: Saga = {
           value: { it: 'Chaka lo Sciacallo', en: 'Jackal Chaka' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 93,
-          value: {
-            it: 'Frutto Inu Inu, modello Sciacallo',
-            en: 'Dog-Dog Fruit, Model: Jackal',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 93, value: ['dog-dog-fruit-model-jackal'] }],
     },
     'portgas-d-ace': {
       role: { it: 'Comandante di divisione', en: 'Division commander' },
@@ -1025,12 +969,7 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 95, value: { it: 'Pugno di Fuoco', en: 'Fire Fist' } },
       ],
-      devilFruit: [
-        {
-          episode: 95,
-          value: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 95, value: ['flame-flame-fruit'] }],
       bounty: [{ episode: 483, value: 550_000_000 }],
     },
     'mr-1': {
@@ -1044,12 +983,7 @@ export const alabasta: Saga = {
         { episode: 422, value: IMPEL_DOWN },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
-      devilFruit: [
-        {
-          episode: 100,
-          value: { it: 'Frutto Dice Dice', en: 'Dice-Dice Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 100, value: ['dice-dice-fruit'] }],
       bounty: [{ episode: 100, value: 75_000_000 }],
     },
     'miss-doublefinger': {
@@ -1059,12 +993,7 @@ export const alabasta: Saga = {
         en: 'She arrives in high heels with a cigarette and seems the calmest person in the organisation until steel spikes come out of her hands, her shoulders and her heels. She uses them as stilts too, to walk above the heads of whoever is chasing her. She works beside the highest-ranked agent and puts up with his silences.',
       },
       affiliation: [{ episode: 100, value: BW_OFFICER }],
-      devilFruit: [
-        {
-          episode: 100,
-          value: { it: 'Frutto Spike Spike', en: 'Spike-Spike Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 100, value: ['spike-spike-fruit'] }],
     },
     'mr-4': {
       role: BW_OFFICER_ROLE,
@@ -1081,12 +1010,7 @@ export const alabasta: Saga = {
         en: 'She is a small elderly woman who turns into a mole and digs beneath the city faster than anyone walks above it. She collapses the ground under her enemies and comes up behind them laughing. She works with an extremely slow agent and keeps his pace by speaking for him.',
       },
       affiliation: [{ episode: 100, value: BW_OFFICER }],
-      devilFruit: [
-        {
-          episode: 100,
-          value: { it: 'Frutto Mole Mole', en: 'Mole-Mole Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 100, value: ['mole-mole-fruit'] }],
     },
     'hina': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
@@ -1107,12 +1031,7 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 128, value: { it: 'Gabbia Nera', en: 'Black Cage' } },
       ],
-      devilFruit: [
-        {
-          episode: 128,
-          value: { it: 'Frutto Cage Cage', en: 'Cage-Cage Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 128, value: ['cage-cage-fruit'] }],
     },
     'nico-robin': {
       role: { it: 'Archeologa', en: 'Archaeologist' },
@@ -1134,12 +1053,7 @@ export const alabasta: Saga = {
           value: { it: 'Figlia del Demonio', en: 'Devil Child' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 130,
-          value: { it: 'Frutto Fior Fior', en: 'Flower-Flower Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 130, value: ['flower-flower-fruit'] }],
       bounty: [
         { episode: 130, value: 79_000_000 },
         { episode: 320, value: 80_000_000 },

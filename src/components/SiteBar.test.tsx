@@ -14,7 +14,7 @@ function LocaleSwitch(): ReactElement {
 vi.mock(import('~/components/LocaleSwitch'), () => ({ LocaleSwitch }))
 
 describe('SiteBar', () => {
-  it('carries the wordmark, two page links, the bookmark and the language control, and nothing else', () => {
+  it('carries the wordmark, three page links, the bookmark and the language control, and nothing else', () => {
     renderWithProviders(<SiteBar />)
 
     const banner = screen.getByRole('banner')
@@ -32,13 +32,16 @@ describe('SiteBar', () => {
       within(banner).getByRole('link', { name: 'Places' }),
     ).toHaveAttribute('href', '/en/places')
     expect(
+      within(banner).getByRole('link', { name: 'Fruits' }),
+    ).toHaveAttribute('href', '/en/fruits')
+    expect(
       within(banner).getByRole('navigation', { name: 'Language' }),
     ).toBeInTheDocument()
     expect(
       within(banner).getByRole('button', { name: 'Set episode' }),
     ).toHaveAttribute('aria-haspopup', 'dialog')
     // No link row filling the middle: the space is the design.
-    expect(within(banner).getAllByRole('link')).toHaveLength(3)
+    expect(within(banner).getAllByRole('link')).toHaveLength(4)
     expect(within(banner).getAllByRole('button')).toHaveLength(1)
   })
 
@@ -87,13 +90,28 @@ describe('SiteBar', () => {
     ).not.toHaveAttribute('aria-current')
   })
 
-  it('does not mark either page link on the landing', () => {
+  it('marks the fruits link as the current page when the reader is on it', () => {
+    renderWithProviders(<SiteBar />, { path: '/en/fruits' })
+
+    expect(screen.getByRole('link', { name: 'Fruits' })).toHaveAttribute(
+      'aria-current',
+      'page',
+    )
+    expect(screen.getByRole('link', { name: 'Places' })).not.toHaveAttribute(
+      'aria-current',
+    )
+  })
+
+  it('does not mark any page link on the landing', () => {
     renderWithProviders(<SiteBar />, { path: '/en' })
 
     expect(
       screen.getByRole('link', { name: 'Characters' }),
     ).not.toHaveAttribute('aria-current')
     expect(screen.getByRole('link', { name: 'Places' })).not.toHaveAttribute(
+      'aria-current',
+    )
+    expect(screen.getByRole('link', { name: 'Fruits' })).not.toHaveAttribute(
       'aria-current',
     )
   })
@@ -108,6 +126,10 @@ describe('SiteBar', () => {
     expect(screen.getByRole('link', { name: 'Luoghi' })).toHaveAttribute(
       'href',
       '/it/places',
+    )
+    expect(screen.getByRole('link', { name: 'Frutti' })).toHaveAttribute(
+      'href',
+      '/it/fruits',
     )
     expect(
       screen.getByRole('button', { name: 'Imposta episodio' }),

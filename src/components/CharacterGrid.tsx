@@ -5,7 +5,6 @@ import {
   Suspense,
   use,
   useDeferredValue,
-  useEffect,
   useId,
   useState,
 } from 'react'
@@ -13,14 +12,16 @@ import {
 import { CatalogueSection } from '~/components/CatalogueSection'
 import { CharacterCard } from '~/components/CharacterCard'
 import { styles } from '~/components/CharacterGrid.styles'
-import { matchesIn } from '~/components/characterMatches'
 import {
   CharacterShelves,
   type ShelvesSource,
 } from '~/components/CharacterShelves'
-import { Button } from '~/components/ui/Button'
+import { FogBand, type FogTitles } from '~/components/FogBand'
+import { matchesIn } from '~/components/recordMatches'
+import { SearchField } from '~/components/SearchField'
+import { searchStyles } from '~/components/SearchField.styles'
+import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterView,
@@ -31,6 +32,14 @@ import type {
 // Long enough that a reader typing "Nami" hears one count and not four, short
 // enough that the count still arrives while the query is under their hands.
 const ANNOUNCE_DELAY_MS = 250
+
+/** What the signal book's fog band calls itself at each count. */
+const CHARACTER_FOG: FogTitles = {
+  allOpen: 'characters.allOpen',
+  hint: 'characters.foggedHint',
+  many: 'characters.foggedTitle',
+  one: 'characters.foggedTitleOne',
+}
 
 /** What the signal book is built from: the crests, the shelves, the query. */
 export type CharacterGridProps = {
@@ -70,6 +79,7 @@ export function CharacterGrid({
   shelfCount,
   peek,
 }: CharacterGridProps): ReactElement {
+  const t = useT()
   const fieldId = useId()
   const [query, setQuery] = useState('')
   const trimmed = query.trim()
@@ -78,9 +88,12 @@ export function CharacterGrid({
 
   return (
     <div {...stylex.props(styles.book)}>
-      <SearchBox
+      <SearchField
+        clearLabel={t('characters.searchClear')}
         fieldId={fieldId}
+        label={t('characters.searchLabel')}
         onQuery={setQuery}
+        placeholder="Nami"
         query={query}
         status={
           // The count is over every open character, so it cannot be said
@@ -92,7 +105,7 @@ export function CharacterGrid({
               <p
                 aria-busy="true"
                 aria-live="polite"
-                {...stylex.props(styles.status)}
+                {...stylex.props(searchStyles.status)}
               />
             }
           >
@@ -150,95 +163,10 @@ function SearchStatus({
   return (
     <p
       aria-live="polite"
-      {...stylex.props(styles.status, empty && styles.statusEmpty)}
+      {...stylex.props(searchStyles.status, empty && searchStyles.statusEmpty)}
     >
       {useSettled(status, ANNOUNCE_DELAY_MS)}
     </p>
-  )
-}
-
-/**
- * The one control on the page: a field, a clear button, and a line saying what
- * the query found. That line is `aria-live`, which is why it is given the
- * settled count rather than the live one.
- */
-function SearchBox({
-  fieldId,
-  query,
-  onQuery,
-  status,
-}: {
-  readonly fieldId: string
-  readonly onQuery: (query: string) => void
-  readonly query: string
-  readonly status: ReactNode
-}): ReactElement {
-  const t = useT()
-
-  return (
-    <search {...stylex.props(styles.search)}>
-      <label
-        htmlFor={fieldId}
-        {...stylex.props(styles.label)}
-      >
-        {t('characters.searchLabel')}
-      </label>
-      <div {...stylex.props(styles.fieldRow)}>
-        <input
-          autoComplete="off"
-          id={fieldId}
-          onChange={(event) => {
-            onQuery(event.target.value)
-          }}
-          placeholder="Nami"
-          spellCheck={false}
-          type="search"
-          value={query}
-          {...stylex.props(styles.field)}
-        />
-        <ClearSlot
-          blank={query.trim() === ''}
-          onClear={() => {
-            onQuery('')
-          }}
-        />
-      </div>
-      {status}
-    </search>
-  )
-}
-
-/**
- * The × that empties the field, and the space it keeps whether or not there is
- * anything to clear.
- *
- * The slot is always in the layout, so the field beside it does not change
- * width when a query appears. The button stays mounted and is hidden with
- * `visibility`, which keeps the row's geometry identical in both states and
- * takes it out of the tab order. The `hidden` attribute alone would not: the
- * button's own `display` wins over the user agent's `[hidden]` rule.
- */
-function ClearSlot({
-  blank,
-  onClear,
-}: {
-  readonly blank: boolean
-  readonly onClear: () => void
-}): ReactElement {
-  const t = useT()
-
-  return (
-    <span {...stylex.props(styles.clearSlot)}>
-      <Button
-        aria-label={t('characters.searchClear')}
-        hidden={blank}
-        onClick={onClear}
-        sx={blank ? styles.clearHidden : undefined}
-        variant="quiet"
-      >
-        ×
-      </Button>
-    </span>
   )
 }
 
@@ -285,74 +213,24 @@ function FeaturedCrests({
       )}
 
       <FogBand
-        covered={covered}
+        count={covered.length}
         headingId={`${fieldId}-fog`}
-        peek={peek}
-      />
+        words={CHARACTER_FOG}
+      >
+        <CharacterCardList>
+          {covered.map((entry) => {
+            return (
+              <CharacterCard
+                key={`fog-${entry.handle}`}
+                peek={peek}
+                slot={{ open: false, covered: entry }}
+              />
+            )
+          })}
+        </CharacterCardList>
+      </FogBand>
     </CatalogueSection>
   )
-}
-
-/**
- * The band below the crests. It is on the page even with nothing under fog,
- * because a band that appeared the moment a reader fell behind would itself be
- * news; empty, it says so and shows no cards.
- */
-function FogBand({
-  covered,
-  headingId,
-  peek,
-}: {
-  readonly covered: readonly CoveredRecord[]
-  readonly headingId: string
-  readonly peek: (handle: string) => Promise<CharacterView>
-}): ReactElement {
-  const t = useT()
-
-  return (
-    <section
-      aria-labelledby={headingId}
-      {...stylex.props(styles.fog)}
-    >
-      <h3
-        id={headingId}
-        {...stylex.props(styles.fogTitle)}
-      >
-        {fogTitle(t, covered.length)}
-      </h3>
-      {covered.length === 0 ? null : (
-        <>
-          <p {...stylex.props(styles.fogHint)}>{t('characters.foggedHint')}</p>
-          <CharacterCardList>
-            {covered.map((entry) => {
-              return (
-                <CharacterCard
-                  key={`fog-${entry.handle}`}
-                  peek={peek}
-                  slot={{ open: false, covered: entry }}
-                />
-              )
-            })}
-          </CharacterCardList>
-        </>
-      )}
-    </section>
-  )
-}
-
-/**
- * What the fog band calls itself. None, one and many are three different
- * sentences rather than one sentence with a count wedged into it.
- */
-function fogTitle(t: Translate, count: number): string {
-  if (count === 0) {
-    return t('characters.allOpen')
-  }
-  if (count === 1) {
-    return t('characters.foggedTitleOne')
-  }
-
-  return t('characters.foggedTitle', { count })
 }
 
 /**
@@ -367,20 +245,4 @@ export function CharacterCardList({
   readonly children: ReactNode
 }): ReactElement {
   return <ul {...stylex.props(styles.grid)}>{children}</ul>
-}
-
-/** The value as it stood once it had stopped changing for `delay` ms. */
-function useSettled<T>(value: T, delay: number): T {
-  const [settled, setSettled] = useState(value)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setSettled(value)
-    }, delay)
-    return () => {
-      clearTimeout(timer)
-    }
-  }, [value, delay])
-
-  return settled
 }

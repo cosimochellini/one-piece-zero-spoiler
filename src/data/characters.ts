@@ -1,4 +1,5 @@
 import type { BookmarkMode } from '~/lib/progress/episode'
+import type { EntityKind } from '~/lib/view/records'
 
 import { entities, sagas } from './entities'
 import { orderByMode } from './order'
@@ -90,12 +91,23 @@ export const featuredCharacters: readonly Entity[] = characters.filter(
 )
 
 /**
+ * The kinds the landing chart draws.
+ *
+ * Written as the kinds that are on it rather than as the kinds that are not,
+ * so a kind filed later is off the chart until somebody puts it on. The
+ * devil fruits are the first kind to arrive since this was written, and a
+ * list of exceptions would have put all hundred and twenty of them on the
+ * chart without anybody deciding to.
+ */
+const CHARTED_KINDS = new Set<EntityKind>(['arc', 'place', 'ship'])
+
+/**
  * The route as the landing chart draws it: every arc, place and ship, and
  * the featured characters. The other characters are in the signal book but
  * not on the chart, which would otherwise run to several hundred waypoints.
  */
 export const chart: readonly Entity[] = route.filter(
-  (entity) => entity.kind !== 'character' || FEATURED.has(entity.id),
+  (entity) => CHARTED_KINDS.has(entity.kind) || FEATURED.has(entity.id),
 )
 
 const ON_CHART = new Set(chart.map((entity) => entity.id))

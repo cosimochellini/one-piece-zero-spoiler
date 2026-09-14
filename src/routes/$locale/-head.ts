@@ -11,13 +11,13 @@
  * before the stream resolves, so anything worked out here would have to be
  * worked out without a record to work from.
  */
-import type { CharacterHead } from '~/lib/view/records'
+import type { DocumentHead } from '~/lib/view/records'
 
 /** One entry of the document head, as the router's `meta` array takes it. */
 export type HeadTag = { content: string; name: string } | { title: string }
 
 /** The title and the description, as the head takes them. */
-export function describeDocument(head: CharacterHead): HeadTag[] {
+export function describeDocument(head: DocumentHead): HeadTag[] {
   return [
     { title: head.title },
     { name: 'description', content: head.description },

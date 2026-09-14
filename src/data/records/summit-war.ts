@@ -680,9 +680,7 @@ export const summitWar: Saga = {
           value: { it: 'Chirurgo della Morte', en: 'Surgeon of Death' },
         },
       ],
-      devilFruit: [
-        { episode: 590, value: { it: 'Frutto Ope Ope', en: 'Op-Op Fruit' } },
-      ],
+      devilFruit: [{ episode: 590, value: ['op-op-fruit'] }],
       bounty: [
         { episode: 392, value: 200_000_000 },
         { episode: 517, value: 440_000_000 },
@@ -709,12 +707,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 392, value: { it: 'Capitan Kid', en: 'Captain Kid' } },
       ],
-      devilFruit: [
-        {
-          episode: 1040,
-          value: { it: 'Frutto Jiki Jiki', en: 'Magnet-Magnet Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1040, value: ['magnet-magnet-fruit'] }],
       bounty: [
         { episode: 392, value: 315_000_000 },
         { episode: 517, value: 470_000_000 },
@@ -752,12 +745,7 @@ export const summitWar: Saga = {
           value: { it: 'Imperatrice Pirata', en: 'Pirate Empress' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 412,
-          value: { it: 'Frutto Mero Mero', en: 'Love-Love Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 412, value: ['love-love-fruit'] }],
     },
     'jinbe': {
       role: {
@@ -1010,12 +998,7 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 392, value: { it: 'North Blue', en: 'North Blue' } }],
       epithet: [{ episode: 392, value: { it: 'il Mago', en: 'the Magician' } }],
-      devilFruit: [
-        {
-          episode: 895,
-          value: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 895, value: ['straw-straw-fruit'] }],
       bounty: [
         { episode: 392, value: 249_000_000 },
         { episode: 517, value: 320_000_000 },
@@ -1054,10 +1037,7 @@ export const summitWar: Saga = {
       devilFruit: [
         {
           episode: 402,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Allosauro',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Allosaurus',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-allosaurus'],
         },
       ],
       bounty: [{ episode: 392, value: 222_000_000 }],
@@ -1124,12 +1104,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 392, value: { it: 'Bege il Gangster', en: 'Gang Bege' } },
       ],
-      devilFruit: [
-        {
-          episode: 785,
-          value: { it: 'Frutto Shiro Shiro', en: 'Castle-Castle Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 785, value: ['castle-castle-fruit'] }],
       bounty: [
         { episode: 392, value: 138_000_000 },
         { episode: 517, value: 300_000_000 },
@@ -1164,12 +1139,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 392, value: { it: 'la Divoratrice', en: 'Big Eater' } },
       ],
-      devilFruit: [
-        {
-          episode: 1099,
-          value: { it: 'Frutto Toshi Toshi', en: 'Age-Age Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1099, value: ['age-age-fruit'] }],
       bounty: [{ episode: 392, value: 140_000_000 }],
     },
     'saint-charloss': {
@@ -1204,12 +1174,7 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 401, value: { it: 'Kizaru', en: 'Kizaru' } }],
-      devilFruit: [
-        {
-          episode: 401,
-          value: { it: 'Frutto Pika Pika', en: 'Glint-Glint Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 401, value: ['glint-glint-fruit'] }],
     },
     'sentomaru': {
       role: { it: 'Guardia del corpo', en: 'Bodyguard' },
@@ -1245,13 +1210,7 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
-        {
-          episode: 412,
-          value: {
-            it: 'Frutto Hebi Hebi, modello Anaconda',
-            en: 'Snake-Snake Fruit, Model: Anaconda',
-          },
-        },
+        { episode: 412, value: ['snake-snake-fruit-model-anaconda'] },
       ],
     },
     'boa-marigold': {
@@ -1265,13 +1224,7 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
-        {
-          episode: 412,
-          value: {
-            it: 'Frutto Hebi Hebi, modello Cobra Reale',
-            en: 'Snake-Snake Fruit, Model: King Cobra',
-          },
-        },
+        { episode: 412, value: ['snake-snake-fruit-model-king-cobra'] },
       ],
     },
     'marguerite': {
@@ -1328,12 +1281,7 @@ export const summitWar: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 424,
-          value: { it: 'Frutto Doku Doku', en: 'Venom-Venom Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 424, value: ['venom-venom-fruit'] }],
     },
     'hannyabal': {
       role: {
@@ -1388,12 +1336,7 @@ export const summitWar: Saga = {
           value: { it: 'Persona dei Miracoli', en: 'Miracle Person' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 438,
-          value: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 438, value: ['horm-horm-fruit'] }],
     },
     'inazuma': {
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
@@ -1410,12 +1353,7 @@ export const summitWar: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 438,
-          value: { it: 'Frutto Choki Choki', en: 'Snip-Snip Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 438, value: ['snip-snip-fruit'] }],
     },
     'shiryu': {
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
@@ -1439,12 +1377,7 @@ export const summitWar: Saga = {
           value: { it: 'Shiryu della Pioggia', en: 'Shiryu of the Rain' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Suke Suke', en: 'Clear-Clear Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['clear-clear-fruit'] }],
     },
     'jesus-burgess': {
       role: {
@@ -1465,12 +1398,7 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 151, value: { it: 'il Campione', en: 'Champion' } }],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Riki Riki', en: 'Strong-Strong Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['strong-strong-fruit'] }],
     },
     'van-augur': {
       role: {
@@ -1493,12 +1421,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 151, value: { it: 'il Supersonico', en: 'the Supersonic' } },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Wapu Wapu', en: 'Warp-Warp Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['warp-warp-fruit'] }],
     },
     'doc-q': {
       role: {
@@ -1521,12 +1444,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 151, value: { it: 'la Morte', en: 'the Grim Reaper' } },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Shiku Shiku', en: 'Sick-Sick Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['sick-sick-fruit'] }],
     },
     'laffitte': {
       role: {
@@ -1585,10 +1503,7 @@ export const summitWar: Saga = {
       devilFruit: [
         {
           episode: 1120,
-          value: {
-            it: 'Frutto Inu Inu, modello Volpe a Nove Code',
-            en: 'Dog-Dog Fruit, Mythical Model: Nine-Tailed Fox',
-          },
+          value: ['dog-dog-fruit-mythical-model-nine-tailed-fox'],
         },
       ],
     },
@@ -1605,12 +1520,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 450, value: { it: 'il Beone', en: 'Heavy Drinker' } },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['gabu-gabu-fruit'] }],
     },
     'san-juan-wolf': {
       role: LEVEL_SIX_ROLE,
@@ -1628,12 +1538,7 @@ export const summitWar: Saga = {
           value: { it: 'Nave da Guerra Colossale', en: 'Colossal Battleship' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Deka Deka', en: 'Huge-Huge Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['huge-huge-fruit'] }],
     },
     'avalo-pizarro': {
       role: LEVEL_SIX_ROLE,
@@ -1648,12 +1553,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 450, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
       ],
-      devilFruit: [
-        {
-          episode: 1120,
-          value: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1120, value: ['island-island-fruit'] }],
     },
     'sakazuki': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
@@ -1675,12 +1575,7 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 463, value: { it: 'Akainu', en: 'Akainu' } }],
-      devilFruit: [
-        {
-          episode: 463,
-          value: { it: 'Frutto Magu Magu', en: 'Magma-Magma Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 463, value: ['magma-magma-fruit'] }],
     },
     'jozu': {
       role: {
@@ -1710,12 +1605,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 461, value: { it: 'Jozu il Diamante', en: 'Diamond Jozu' } },
       ],
-      devilFruit: [
-        {
-          episode: 461,
-          value: { it: 'Frutto Kira Kira', en: 'Sparkle-Sparkle Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 461, value: ['sparkle-sparkle-fruit'] }],
     },
     'vista': {
       role: {
@@ -1805,12 +1695,7 @@ export const summitWar: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 461,
-          value: { it: 'Frutto Woshu Woshu', en: 'Wash-Wash Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 461, value: ['wash-wash-fruit'] }],
     },
     'momonga': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -1894,12 +1779,7 @@ export const summitWar: Saga = {
           value: { it: 'Imperatore delle Fiamme', en: 'Flame Emperor' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 678,
-          value: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 678, value: ['flame-flame-fruit'] }],
       bounty: [{ episode: 878, value: 602_000_000 }],
     },
     'portgas-d-rouge': {

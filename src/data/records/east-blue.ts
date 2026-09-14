@@ -665,9 +665,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 45, value: { it: 'Cappello di Paglia', en: 'Straw Hat' } },
       ],
-      devilFruit: [
-        { episode: 1, value: { it: 'Frutto Gom Gom', en: 'Gum-Gum Fruit' } },
-      ],
+      devilFruit: [{ episode: 1, value: ['gum-gum-fruit'] }],
       bounty: [
         { episode: 45, value: 30_000_000 },
         { episode: 130, value: 100_000_000 },
@@ -751,12 +749,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 1, value: { it: 'Mazza di Ferro', en: 'Iron Mace' } },
       ],
-      devilFruit: [
-        {
-          episode: 48,
-          value: { it: 'Frutto Slip Slip', en: 'Slip-Slip Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 48, value: ['slip-slip-fruit'] }],
       bounty: [{ episode: 1, value: 5_000_000 }],
     },
     'gold-roger': {
@@ -1021,12 +1014,7 @@ export const eastBlue: Saga = {
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
       epithet: [{ episode: 5, value: { it: 'Il Clown', en: 'the Clown' } }],
-      devilFruit: [
-        {
-          episode: 5,
-          value: { it: 'Frutto Puzzle Puzzle', en: 'Chop-Chop Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 5, value: ['chop-chop-fruit'] }],
       bounty: [
         { episode: 5, value: 15_000_000 },
         { episode: 1088, value: 3_189_000_000 },
@@ -1605,12 +1593,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 49, value: { it: 'Cacciatore Bianco', en: 'White Hunter' } },
       ],
-      devilFruit: [
-        {
-          episode: 49,
-          value: { it: 'Frutto Fumo Fumo', en: 'Smoke-Smoke Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 49, value: ['smoke-smoke-fruit'] }],
     },
     'tashigi': {
       role: { it: 'Sergente della Marina', en: 'Marine sergeant' },

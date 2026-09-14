@@ -426,12 +426,7 @@ export const skypiea: Saga = {
       ],
       origin: [{ episode: 146, value: { it: 'North Blue', en: 'North Blue' } }],
       epithet: [{ episode: 146, value: { it: 'La Iena', en: 'the Hyena' } }],
-      devilFruit: [
-        {
-          episode: 146,
-          value: { it: 'Frutto Bane Bane', en: 'Spring-Spring Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 146, value: ['spring-spring-fruit'] }],
       bounty: [
         { episode: 146, value: 55_000_000 },
         { episode: 632, value: 195_000_000 },
@@ -484,17 +479,8 @@ export const skypiea: Saga = {
       ],
       epithet: [{ episode: 151, value: { it: 'Barbanera', en: 'Blackbeard' } }],
       devilFruit: [
-        {
-          episode: 462,
-          value: { it: 'Frutto Yami Yami', en: 'Dark-Dark Fruit' },
-        },
-        {
-          episode: 485,
-          value: {
-            it: 'Frutto Yami Yami e Frutto Gura Gura',
-            en: 'Dark-Dark Fruit and Tremor-Tremor Fruit',
-          },
-        },
+        { episode: 462, value: ['dark-dark-fruit'] },
+        { episode: 485, value: ['dark-dark-fruit', 'tremor-tremor-fruit'] },
       ],
       bounty: [{ episode: 958, value: 2_247_600_000 }],
     },
@@ -532,12 +518,7 @@ export const skypiea: Saga = {
       epithet: [
         { episode: 151, value: { it: 'Il Tiranno', en: 'the Tyrant' } },
       ],
-      devilFruit: [
-        {
-          episode: 372,
-          value: { it: 'Frutto Nikyu Nikyu', en: 'Paw-Paw Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 372, value: ['paw-paw-fruit'] }],
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
     'sengoku': {
@@ -567,13 +548,7 @@ export const skypiea: Saga = {
       ],
       epithet: [{ episode: 151, value: { it: 'Il Buddha', en: 'the Buddha' } }],
       devilFruit: [
-        {
-          episode: 469,
-          value: {
-            it: 'Frutto Hito Hito, modello Daibutsu',
-            en: 'Human-Human Fruit, Model: Daibutsu',
-          },
-        },
+        { episode: 469, value: ['human-human-fruit-model-daibutsu'] },
       ],
     },
     'edward-newgate': {
@@ -597,12 +572,7 @@ export const skypiea: Saga = {
       epithet: [
         { episode: 152, value: { it: 'Barbabianca', en: 'Whitebeard' } },
       ],
-      devilFruit: [
-        {
-          episode: 466,
-          value: { it: 'Frutto Gura Gura', en: 'Tremor-Tremor Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 466, value: ['tremor-tremor-fruit'] }],
       bounty: [{ episode: 958, value: 5_046_000_000 }],
     },
     'donquixote-doflamingo': {
@@ -641,12 +611,7 @@ export const skypiea: Saga = {
           value: { it: 'Il Demone Celeste', en: 'Heavenly Demon' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 700,
-          value: { it: 'Frutto Ito Ito', en: 'String-String Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 700, value: ['string-string-fruit'] }],
       bounty: [{ episode: 700, value: 340_000_000 }],
     },
     'marco': {
@@ -684,15 +649,7 @@ export const skypiea: Saga = {
       epithet: [
         { episode: 461, value: { it: 'La Fenice', en: 'the Phoenix' } },
       ],
-      devilFruit: [
-        {
-          episode: 461,
-          value: {
-            it: 'Frutto Tori Tori, modello Fenice',
-            en: 'Bird-Bird Fruit, Model: Phoenix',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 461, value: ['bird-bird-fruit-model-phoenix'] }],
       bounty: [{ episode: 958, value: 1_374_000_000 }],
     },
     'gan-fall': {
@@ -870,12 +827,7 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [{ episode: 158, value: { it: 'Dio', en: 'God' } }],
-      devilFruit: [
-        {
-          episode: 158,
-          value: { it: 'Frutto Goro Goro', en: 'Rumble-Rumble Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 158, value: ['rumble-rumble-fruit'] }],
     },
     'satori': {
       role: ENEL_PRIEST,

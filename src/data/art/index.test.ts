@@ -8,6 +8,7 @@ import { dressrosaArt } from './dressrosa'
 import { eastBlueArt } from './east-blue'
 import { eggheadArt } from './egghead'
 import { fishManIslandArt } from './fish-man-island'
+import { fruitArt } from './fruits'
 import { skypieaArt } from './skypiea'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt } from './thriller-bark'
@@ -31,6 +32,7 @@ describe('the drawings', () => {
       wholeCakeArt,
       wanoArt,
       eggheadArt,
+      fruitArt,
     ]
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 

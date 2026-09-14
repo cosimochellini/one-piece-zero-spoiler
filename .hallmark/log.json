@@ -66,5 +66,16 @@
     "nav": "N6 newspaper masthead",
     "footer": "Ft5 statement",
     "brief": "First landing build. Superseded: six tiles all shaped title + paragraph, which is the three-column feature grid wearing a bento. Step 4 and Step 7 were never run."
+  },
+  {
+    "date": "2026-09-14",
+    "macrostructure": "Specimen (devil fruits sheet: three plates, one fruit to a row) - Specimen again on the fruit page (one specimen off the sheet)",
+    "theme": "custom (bespoke): Sea Chart - locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88 degrees)",
+    "enrichment": "Tier B hand-built SVG: 120 devil fruit drawings, each grown from a seed written beside its id (six silhouettes, four marks, a stalk, a leaf) and eleven of them drawn by hand; FruitFrame hairline square, a third frame beside the character crest and the port plate",
+    "nav": "N9 edge-aligned (shared), now four page links",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "index: inventory head, search, three plates (Paramecia, Zoo Zoo, Logia) each a numbered label beside a heading and a lede, then one fruit to a row (number and drawing in the margin, kind, episode, name and sentence beside them), each plate closing on its own fog band - page: the plate (drawing beside kind, episode, name, type, sentence), who ate it (one card per eater, each under its own fog), others of this type (a rail of four)",
+    "brief": "Add the devil fruits as a fourth archive layer. Decisions taken with the user: only the 120 fruits already named in the character dossiers, the relation written once on the character as a fruit id, fruits off the landing chart, a fixed type per fruit, one sentence each in both locales, a procedural drawing generator with eleven hand-drawn overrides, and the search field extracted from the signal book so both listings share one."
   }
 ]

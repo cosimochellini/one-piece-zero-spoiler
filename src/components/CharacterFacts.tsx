@@ -1,11 +1,21 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import { Link } from '@tanstack/react-router'
+import { Fragment, type ReactElement, type ReactNode } from 'react'
 
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import type { CharacterFacts as Facts } from '~/lib/view/records'
-import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
+import type { CharacterFacts as Facts, FruitLink } from '~/lib/view/records'
+import {
+  color,
+  dur,
+  ease,
+  font,
+  leading,
+  rule,
+  space,
+  text,
+} from '~/styles/tokens.stylex'
 
 /** The facts as they stand at the reader's bookmark. */
 export type CharacterFactsProps = { readonly facts: Facts }
@@ -38,16 +48,14 @@ export function CharacterFacts({
     )
   }
 
-  const rows: readonly (readonly [string, string | undefined])[] = [
+  const rows: readonly (readonly [string, ReactNode])[] = [
     [t('character.epithet'), facts.epithet],
     [t('character.affiliation'), facts.affiliation],
     [t('character.origin'), facts.origin],
-    [t('character.devilFruit'), facts.devilFruit],
+    [t('character.devilFruit'), fruitRow(facts.devilFruit)],
     [t('character.bounty'), formatBounty(facts.bounty, locale, t)],
   ]
-  const shown = rows.filter(
-    (row): row is readonly [string, string] => row[1] !== undefined,
-  )
+  const shown = rows.filter((row) => row[1] !== undefined)
 
   if (shown.length === 0) {
     return null
@@ -70,6 +78,46 @@ export function CharacterFacts({
         )
       })}
     </dl>
+  )
+}
+
+/**
+ * The devil fruit row, or nothing when the reader has not been told of one.
+ *
+ * The fruits are links because a fruit is a record with a page of its own
+ * now, and the link is always safe to print: the row is only built from a
+ * timeline entry the reader has reached, and a fruit opens no later than the
+ * entry that names it, which a data test holds.
+ */
+function fruitRow(links: readonly FruitLink[] | undefined): ReactNode {
+  return links === undefined ? undefined : <FruitLinks links={links} />
+}
+
+/** One link per fruit, comma-separated: an entry may name more than one. */
+function FruitLinks({
+  links,
+}: {
+  readonly links: readonly FruitLink[]
+}): ReactElement {
+  const { locale } = useLocale()
+
+  return (
+    <>
+      {links.map((link, at) => {
+        return (
+          <Fragment key={link.id}>
+            {at === 0 ? null : ', '}
+            <Link
+              params={{ locale, id: link.id }}
+              to="/$locale/fruits/$id"
+              {...stylex.props(styles.link)}
+            >
+              {link.name}
+            </Link>
+          </Fragment>
+        )
+      })}
+    </>
   )
 }
 
@@ -139,5 +187,25 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '52ch',
+  },
+  // The same link voice as a record tile: colour on hover, the rule under it
+  // reserved at rest so nothing shifts when the pointer arrives.
+  link: {
+    color: {
+      'default': color.ink2,
+      ':hover': color.accent,
+      ':active': color.ink2,
+    },
+    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
+    outlineOffset: space.xs3,
+    outlineStyle: 'solid',
+    outlineWidth: rule.fine,
+    textDecorationColor: { 'default': color.rule, ':hover': color.accent },
+    textDecorationLine: 'underline',
+    textDecorationThickness: rule.hair,
+    textUnderlineOffset: '3px',
+    transitionDuration: dur.micro,
+    transitionProperty: 'color, text-decoration-color',
+    transitionTimingFunction: ease.out,
   },
 })

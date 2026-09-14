@@ -38,6 +38,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   arc: 'kind.arc',
   place: 'kind.place',
   ship: 'kind.ship',
+  fruit: 'kind.fruit',
 }
 
 /** The two runs the chart is drawn from, and the reader's own line. */

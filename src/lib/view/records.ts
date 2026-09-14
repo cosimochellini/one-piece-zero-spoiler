@@ -56,7 +56,13 @@ export type TintId =
  * The kinds of record the archive files. `kind` exists so a generic list can
  * label a record without a lookup table per page.
  */
-export type EntityKind = 'arc' | 'character' | 'place' | 'ship'
+export type EntityKind = 'arc' | 'character' | 'fruit' | 'place' | 'ship'
+
+/**
+ * Which of the three kinds a devil fruit is. Declared here rather than in
+ * `~/data`, like `PlaceForm`, because the specimen sheet prints it.
+ */
+export type FruitForm = 'logia' | 'paramecia' | 'zoan'
 
 /**
  * A drawing already resolved: the strokes themselves, never a key into a
@@ -117,26 +123,31 @@ export type CharacterView = RecordView & { readonly role?: string }
 export type WaypointView = RecordView & { readonly summary: string }
 
 /**
- * A character with its searchable surface already folded.
+ * A record whose searchable surface the server has already folded: what is
+ * shown, and what is only ever matched against.
  *
- * Folding on the server is not only about the work: the epithets are gated
- * there too, so an epithet the reader has not reached is not in the payload
- * at all — where the archive used to be in the browser whole and the search
- * merely declined to match the entries above the reader.
+ * Folding on the server is not only about the work: a character's epithets are
+ * gated there too, so an epithet the reader has not reached is not in the
+ * payload at all — where the archive used to be in the browser whole and the
+ * search merely declined to match the entries above the reader.
  */
-export type SearchableCharacter = CharacterView & {
+export type Searchable = {
   /**
    * The displayed name, folded. A match is only marked when this is the same
    * length as the name it was folded from, so an index into it can never
    * point at the wrong letters.
    */
   readonly folded: string
+  readonly name: string
   /**
-   * The other locale's name and the epithets the reader has reached, folded.
-   * Searched, never shown, so only the folded form travels.
+   * The other locale's name, and for a character the epithets the reader has
+   * reached. Searched, never shown, so only the folded form travels.
    */
   readonly aliases: readonly string[]
 }
+
+/** A character the search field can answer for. */
+export type SearchableCharacter = CharacterView & Searchable
 
 /** Where in a displayed name a search matched. */
 export type NameMatch = {
@@ -159,7 +170,13 @@ export type NameMatch = {
 export type CharacterFacts =
   | {
       readonly affiliation?: string
-      readonly devilFruit?: string
+      /**
+       * The fruits the reader has been told this character ate, each with the
+       * id of its own page. A row is only ever built from a timeline entry the
+       * reader has reached, and a fruit opens no later than the entry that
+       * names it, so a link here always leads somewhere the reader may go.
+       */
+      readonly devilFruit?: readonly FruitLink[]
       readonly epithet?: string
       readonly mode: 'facts'
       readonly origin?: string
@@ -167,6 +184,47 @@ export type CharacterFacts =
       readonly bounty?: number
     }
   /** The timelines count in episodes, so a chapter reader reaches none. */
+  | { readonly mode: 'chapterNote' }
+
+/** A fruit named on another record's page, and the page it leads to. */
+export type FruitLink = { readonly id: string; readonly name: string }
+
+/**
+ * A devil fruit as the specimen sheet draws it: a record, its kind, the
+ * sentence that says what the power does, and its folded searchable surface.
+ */
+export type FruitView = RecordView
+  & Searchable & { readonly form: FruitForm; readonly summary: string }
+
+/**
+ * One plate of the specimen sheet: the fruits of one kind, open first and
+ * covered after, and how many the archive files of that kind either way.
+ */
+export type FruitBandView = {
+  readonly covered: readonly CoveredRecord[]
+  readonly form: FruitForm
+  readonly open: readonly FruitView[]
+  readonly total: number
+}
+
+/** The specimen sheet: the three plates, and how many fruits are filed. */
+export type FruitSheetView = {
+  readonly bands: readonly FruitBandView[]
+  readonly filed: number
+}
+
+/** A devil fruit's own page. */
+export type FruitDetail = { readonly slot: Slot<FruitView> }
+
+/**
+ * The band that names who ate a fruit.
+ *
+ * The dossiers count in anime episodes, so a reader who counts in chapters
+ * reaches none of their entries and is told why instead of shown nothing —
+ * the same answer `CharacterFacts` gives them.
+ */
+export type FruitEatersView =
+  | { readonly eaters: readonly Slot<CharacterView>[]; readonly mode: 'eaters' }
   | { readonly mode: 'chapterNote' }
 
 /** The three stretches of sea the route crosses. */
@@ -230,7 +288,7 @@ export type ChartView = {
  * covered name could leak into a page that is otherwise clean. The route's
  * `head` spells these out and derives nothing.
  */
-export type CharacterHead = {
+export type DocumentHead = {
   readonly description: string
   readonly title: string
 }

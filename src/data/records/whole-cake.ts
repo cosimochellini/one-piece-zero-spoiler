@@ -568,10 +568,7 @@ export const wholeCake: Saga = {
       devilFruit: [
         {
           episode: 757,
-          value: {
-            it: 'Frutto Zou Zou, modello Mammut',
-            en: 'Elephant-Elephant Fruit, Ancient Model: Mammoth',
-          },
+          value: ['elephant-elephant-fruit-ancient-model-mammoth'],
         },
       ],
       bounty: [{ episode: 757, value: 1_000_000_000 }],
@@ -695,12 +692,7 @@ export const wholeCake: Saga = {
           value: { it: 'Raizo della Nebbia', en: 'Raizo of the Mist' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 764,
-          value: { it: 'Frutto Maki Maki', en: 'Scroll-Scroll Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 764, value: ['scroll-scroll-fruit'] }],
     },
     'vinsmoke-reiju': {
       role: {
@@ -768,12 +760,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 786,
-          value: { it: 'Frutto Memo Memo', en: 'Memo-Memo Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 786, value: ['memo-memo-fruit'] }],
     },
     'charlotte-linlin': {
       role: { it: 'Imperatore di Totto Land', en: 'Emperor of Totto Land' },
@@ -793,12 +780,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
       epithet: [{ episode: 786, value: { it: 'Big Mom', en: 'Big Mom' } }],
-      devilFruit: [
-        {
-          episode: 786,
-          value: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 786, value: ['soul-soul-fruit'] }],
       bounty: [{ episode: 958, value: 4_388_000_000 }],
     },
     'charlotte-perospero': {
@@ -817,12 +799,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 787, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 787,
-          value: { it: 'Frutto Pero Pero', en: 'Lick-Lick Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 787, value: ['lick-lick-fruit'] }],
       bounty: [{ episode: 787, value: 700_000_000 }],
     },
     'charlotte-cracker': {
@@ -836,12 +813,7 @@ export const wholeCake: Saga = {
       epithet: [
         { episode: 789, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
       ],
-      devilFruit: [
-        {
-          episode: 789,
-          value: { it: 'Frutto Bisu Bisu', en: 'Bis-Bis Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 789, value: ['bis-bis-fruit'] }],
       bounty: [{ episode: 789, value: 860_000_000 }],
     },
     'charlotte-brulee': {
@@ -857,12 +829,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 790, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 790,
-          value: { it: 'Frutto Mira Mira', en: 'Mirror-Mirror Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 790, value: ['mirror-mirror-fruit'] }],
     },
     'stussy': {
       role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
@@ -922,13 +889,7 @@ export const wholeCake: Saga = {
         },
       ],
       devilFruit: [
-        {
-          episode: 792,
-          value: {
-            it: 'Frutto Tori Tori, modello Albatro',
-            en: 'Bird-Bird Fruit, Model: Albatross',
-          },
-        },
+        { episode: 792, value: ['bird-bird-fruit-model-albatross'] },
       ],
     },
     'vinsmoke-judge': {
@@ -1011,12 +972,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 796,
-          value: { it: 'Frutto Mochi Mochi', en: 'Mochi-Mochi Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 796, value: ['mochi-mochi-fruit'] }],
       bounty: [{ episode: 796, value: 1_057_000_000 }],
     },
     'vinsmoke-sora': {
@@ -1064,12 +1020,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [{ episode: 810, value: SWEET_COMMANDER }],
       origin: [{ episode: 810, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 810,
-          value: { it: 'Frutto Shibo Shibo', en: 'Wring-Wring Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 810, value: ['wring-wring-fruit'] }],
       bounty: [{ episode: 810, value: 932_000_000 }],
     },
     'charlotte-oven': {
@@ -1088,12 +1039,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 811,
-          value: { it: 'Frutto Netsu Netsu', en: 'Heat-Heat Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 811, value: ['heat-heat-fruit'] }],
       bounty: [{ episode: 811, value: 300_000_000 }],
     },
     'charlotte-daifuku': {
@@ -1112,12 +1058,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 811,
-          value: { it: 'Frutto Hoya Hoya', en: 'Puff-Puff Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 811, value: ['puff-puff-fruit'] }],
       bounty: [{ episode: 811, value: 300_000_000 }],
     },
     'charlotte-mont-dor': {
@@ -1136,12 +1077,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 811,
-          value: { it: 'Frutto Buku Buku', en: 'Book-Book Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 811, value: ['book-book-fruit'] }],
       bounty: [{ episode: 811, value: 120_000_000 }],
     },
     'streusen': {
@@ -1160,12 +1096,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 830, value: TOTTO_LAND }],
-      devilFruit: [
-        {
-          episode: 830,
-          value: { it: 'Frutto Kuku Kuku', en: 'Cook-Cook Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 830, value: ['cook-cook-fruit'] }],
     },
     'carmel': {
       role: {
@@ -1189,12 +1120,7 @@ export const wholeCake: Saga = {
       epithet: [
         { episode: 836, value: { it: 'Mamma Carmel', en: 'Mother Carmel' } },
       ],
-      devilFruit: [
-        {
-          episode: 836,
-          value: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 836, value: ['soul-soul-fruit'] }],
     },
     'donquixote-mjosgard': {
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
@@ -1234,12 +1160,7 @@ export const wholeCake: Saga = {
       epithet: [
         { episode: 879, value: { it: 'l’Istigatrice', en: 'the Instigator' } },
       ],
-      devilFruit: [
-        {
-          episode: 879,
-          value: { it: 'Frutto Kobu Kobu', en: 'Pump-Pump Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 879, value: ['pump-pump-fruit'] }],
     },
     'morley': {
       role: {
@@ -1259,12 +1180,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 879,
-          value: { it: 'Frutto Oshi Oshi', en: 'Push-Push Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 879, value: ['push-push-fruit'] }],
     },
     'karasu': {
       role: {
@@ -1284,12 +1200,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 879,
-          value: { it: 'Frutto Karasu Karasu', en: 'Crow-Crow Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 879, value: ['crow-crow-fruit'] }],
     },
     'lindbergh': {
       role: {
@@ -1365,12 +1276,7 @@ export const wholeCake: Saga = {
         },
       ],
       epithet: [{ episode: 1077, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
-      devilFruit: [
-        {
-          episode: 1077,
-          value: { it: 'Frutto Mori Mori', en: 'Woods-Woods Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1077, value: ['woods-woods-fruit'] }],
     },
   },
 }

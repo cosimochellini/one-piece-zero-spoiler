@@ -17,16 +17,17 @@ export const enDictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler — a One Piece wiki that waits for you',
   'site.description':
-    'A One Piece wiki that hides every character, arc and island filed after the episode you have reached.',
+    'A One Piece wiki that hides every character, arc, island and devil fruit filed after the episode you have reached.',
 
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',
   'nav.places': 'Places',
+  'nav.fruits': 'Fruits',
   'nav.label': 'Pages',
 
   'hero.headline': 'The wiki stops where you stopped',
   'hero.lede':
-    'Set your bookmark in the bar above: the anime episode, the season and episode, or the manga chapter you have reached. Every character, arc and island filed after it stays under fog until you decide otherwise.',
+    'Set your bookmark in the bar above: the anime episode, the season and episode, or the manga chapter you have reached. Every character, arc, island and devil fruit filed after it stays under fog until you decide otherwise.',
   'hero.setBookmark': 'Set your bookmark',
   'hero.changeBookmark': 'Change your bookmark · {threshold}',
   'hero.explore': 'Explore the archive',
@@ -194,6 +195,63 @@ export const enDictionary = {
   'places.filedHere': 'Filed here',
   'places.filedNone': 'Nothing in the archive is filed here yet.',
 
+  'fruits.title': 'The specimen sheet',
+  'fruits.count':
+    '{count} devil fruits, set on three plates in the order the story names them. The fog does not answer a search.',
+  'fruits.pageTitle': 'Devil fruits — Zero Spoiler',
+  'fruits.pageDescription':
+    'The devil fruits of One Piece, each drawn as a specimen and filed at the episode that first names it.',
+  'fruits.searchLabel': 'Find a fruit',
+  'fruits.searchClear': 'Clear the search',
+  'fruits.searchPlaceholder': 'Gum-Gum',
+  'fruits.shown': '{count} of {total} open fruits shown',
+  'fruits.noMatch': 'No open fruit is called “{query}”.',
+  'fruits.plate': 'Plate {index}',
+  'fruits.specimen': 'Specimen {index}',
+  'fruits.bandCount': '{count} fruits',
+  'fruits.bandCountOne': '1 fruit',
+  'fruits.lede.paramecia': 'The fruits that change what a body can do.',
+  'fruits.lede.zoan': 'The fruits that turn a body into another animal.',
+  'fruits.lede.logia': 'The fruits that turn a body into an element.',
+  'fruits.foggedTitle': '{count} under fog',
+  'fruits.foggedTitleOne': '1 under fog',
+  'fruits.foggedHint':
+    'Their names are covered, so they do not answer a search. Move your bookmark in the bar to open them.',
+  'fruits.allOpen': 'Nothing is under fog on this plate.',
+
+  'fruit.opensAt.episode': 'First named in episode {threshold}',
+  'fruit.opensAt.season': 'First named in {threshold}',
+  'fruit.opensAt.chapter': 'First named in chapter {threshold}',
+  'fruit.foggedName': 'A fruit under fog',
+  'fruit.foggedTitle': 'A fruit under fog — Zero Spoiler',
+  'fruit.foggedDescription.episode':
+    'A One Piece devil fruit filed at episode {threshold}. Set your bookmark to read the page.',
+  'fruit.foggedDescription.season':
+    'A One Piece devil fruit filed at {threshold}. Set your bookmark to read the page.',
+  'fruit.foggedDescription.chapter':
+    'A One Piece devil fruit filed at chapter {threshold}. Set your bookmark to read the page.',
+  'fruit.pageTitle': '{name} — Zero Spoiler',
+  'fruit.back': 'All devil fruits',
+  'fruit.form': 'Type',
+  'fruit.eatersTitle': 'Who ate it',
+  'fruit.eatersLede':
+    'The characters the archive files as having eaten this fruit, each under its own fog.',
+  'fruit.eatersLoading': 'Reading the dossiers…',
+  'fruit.eatersNone': 'Nobody in the archive has eaten it yet.',
+  'fruit.eatersInEpisodes':
+    'The dossiers count in anime episodes. Set an episode or a season bookmark to read who ate it; a chapter bookmark keeps them covered.',
+  'fruit.siblingsTitle': 'Others of this type',
+  'fruit.siblingsLede':
+    'The fruits filed nearest to this one on the same plate.',
+  'fruit.siblingsLoading': 'Reading the sheet…',
+  'fruit.notFoundTitle': 'No such fruit',
+  'fruit.notFoundBody':
+    'Nothing is filed under that address. The specimen sheet lists every fruit that is.',
+
+  'fruitForm.paramecia': 'Paramecia',
+  'fruitForm.zoan': 'Zoan',
+  'fruitForm.logia': 'Logia',
+
   'sea.east-blue': 'East Blue',
   'sea.grand-line': 'Grand Line',
   'sea.new-world': 'New World',
@@ -207,6 +265,7 @@ export const enDictionary = {
   'kind.arc': 'Arc',
   'kind.place': 'Place',
   'kind.ship': 'Ship',
+  'kind.fruit': 'Devil fruit',
 
   'locale.label': 'Language',
   'locale.it': 'Italiano',

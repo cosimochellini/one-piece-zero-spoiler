@@ -25,6 +25,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   arc: 'kind.arc',
   place: 'kind.place',
   ship: 'kind.ship',
+  fruit: 'kind.fruit',
 }
 
 /** The slot to file, and how to ask for what fills it. */
@@ -86,9 +87,9 @@ export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
 }
 
 /**
- * The name, and where it leads. A character and a place each have a page to
- * point at; an arc and a ship do not, so their names are plain text rather
- * than a link that would go nowhere.
+ * The name, and where it leads. A character, a place and a devil fruit each
+ * have a page to point at; an arc and a ship do not, so their names are plain
+ * text rather than a link that would go nowhere.
  */
 function Name({ entry }: { readonly entry: RecordView }): ReactElement {
   const { locale } = useLocale()
@@ -112,6 +113,18 @@ function Name({ entry }: { readonly entry: RecordView }): ReactElement {
         hash={entry.id}
         params={{ locale }}
         to="/$locale/places"
+        {...stylex.props(styles.name, styles.link)}
+      >
+        {label}
+      </Link>
+    )
+  }
+
+  if (entry.kind === 'fruit') {
+    return (
+      <Link
+        params={{ locale, id: entry.id }}
+        to="/$locale/fruits/$id"
         {...stylex.props(styles.name, styles.link)}
       >
         {label}

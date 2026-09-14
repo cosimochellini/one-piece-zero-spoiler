@@ -7,14 +7,14 @@
  * · differs from the previous build (Map / Diagram) on macrostructure; theme
  *   is the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
-import { type ReactElement, useCallback } from 'react'
+import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
+import { usePeek } from '~/routes/$locale/-peek'
 import { liftCharacter, loadCharacters, loadShelves } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/characters/')({
@@ -55,21 +55,10 @@ export const Route = createFileRoute('/$locale/characters/')({
  * where they were, which is the spoiler rule applied to a text field.
  */
 function CharactersPage(): ReactElement {
-  const { locale, t } = useLocale()
+  const t = useT()
   const { page, shelves } = Route.useLoaderData()
 
-  const call = useServerFn(liftCharacter)
-  const peek = useCallback(
-    async (handle: string) => {
-      const record = await call({ data: { handle, locale } })
-      if (record === null) {
-        throw new Error('No record is filed under that mark')
-      }
-
-      return record
-    },
-    [call, locale],
-  )
+  const peek = usePeek(liftCharacter)
 
   return (
     <ArchivePage

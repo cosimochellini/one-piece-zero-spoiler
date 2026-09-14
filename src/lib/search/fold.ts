@@ -1,4 +1,4 @@
-import type { NameMatch, SearchableCharacter } from '~/lib/view/records'
+import type { NameMatch, Searchable } from '~/lib/view/records'
 
 /**
  * Name folding and matching, with nothing behind it.
@@ -25,7 +25,7 @@ export function foldName(value: string): string {
 }
 
 /**
- * Whether a folded query matches a character, and where in the displayed name
+ * Whether a folded query matches a record, and where in the displayed name
  * to mark it.
  *
  * The displayed name is tried first, and is the only one that can be
@@ -39,10 +39,7 @@ export function foldName(value: string): string {
  *
  * `needle` is already folded. An empty one matches everything.
  */
-export function matchFolded(
-  entry: SearchableCharacter,
-  needle: string,
-): NameMatch {
+export function matchFolded(entry: Searchable, needle: string): NameMatch {
   if (needle === '') {
     return { matches: true, highlight: null }
   }

@@ -1,15 +1,15 @@
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
-import { type ReactElement, useCallback } from 'react'
+import type { ReactElement } from 'react'
 
 import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartFold } from '~/components/SeaChartFold'
-import { useLocale, useT } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { ChartView, WaypointView } from '~/lib/view/records'
+import { usePeek } from '~/routes/$locale/-peek'
 import { liftWaypoint, loadChart } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
@@ -116,7 +116,6 @@ function ChartBand({
  * site, written as a conversation rather than as a row of cards.
  */
 function Landing(): ReactElement {
-  const { locale } = useLocale()
   const { bookmark } = useBookmark()
   // The chart draws the arcs, the places, the ships and the featured
   // characters; the rest of the cast is in the signal book. It arrives in the
@@ -124,18 +123,7 @@ function Landing(): ReactElement {
   // single point along it.
   const { covered, filed, open } = Route.useLoaderData()
 
-  const call = useServerFn(liftWaypoint)
-  const peek = useCallback(
-    async (handle: string) => {
-      const record = await call({ data: { handle, locale } })
-      if (record === null) {
-        throw new Error('No record is filed under that mark')
-      }
-
-      return record
-    },
-    [call, locale],
-  )
+  const peek = usePeek(liftWaypoint)
 
   return (
     <main
