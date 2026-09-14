@@ -121,7 +121,10 @@ function gateFor(entity: Entity, namedAtEpisode: number): Entity {
   return {
     ...entity,
     revealedAtEpisode: Math.max(entity.revealedAtEpisode, namedAtEpisode),
-    revealedAtChapter: CHAPTER_CEILING,
+    // One past the ceiling, not the ceiling itself: `isRevealed` compares a
+    // chapter bookmark with `>=`, and the dial can be set to the ceiling, so
+    // the ceiling would open this at the last chapter rather than never.
+    revealedAtChapter: CHAPTER_CEILING + 1,
   }
 }
 

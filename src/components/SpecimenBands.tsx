@@ -133,6 +133,11 @@ function Plate({
 }): ReactElement {
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
+  // Where each open fruit sits on its plate, which is not where it sits in
+  // the search results: a specimen keeps its number while the reader types,
+  // and the covered rows carry on from the last open one rather than starting
+  // again, so no two rows on a plate are specimen 01.
+  const numbered = new Map(band.open.map((entry, at) => [entry.id, at]))
 
   return (
     <section
@@ -147,13 +152,13 @@ function Plate({
 
       {matches.length === 0 ? null : (
         <ul {...stylex.props(styles.rows)}>
-          {matches.map(({ entry, match }, at) => {
+          {matches.map(({ entry, match }) => {
             return (
               <FruitSpecimen
                 key={`open-${entry.id}`}
                 form={band.form}
                 highlight={match.highlight}
-                index={at}
+                index={numbered.get(entry.id) ?? 0}
                 peek={peek}
                 slot={{ open: true, record: entry }}
               />
@@ -176,7 +181,14 @@ function Plate({
   )
 }
 
-/** A plate's covered rows: a number, a kind and a threshold, and no more. */
+/**
+ * A plate's covered rows: a number, a kind and a threshold, and no more.
+ *
+ * The numbers carry on from the open rows above rather than starting again.
+ * The server orders a plate by threshold and the open ones are a prefix of
+ * it, so the count is the plate's own order and a fruit keeps its number when
+ * the reader's bookmark passes it.
+ */
 function CoveredRows({
   band,
   peek,
@@ -191,7 +203,7 @@ function CoveredRows({
           <FruitSpecimen
             key={`fog-${entry.handle}`}
             form={band.form}
-            index={at}
+            index={band.open.length + at}
             peek={peek}
             slot={{ open: false, covered: entry }}
           />

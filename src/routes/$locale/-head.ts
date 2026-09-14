@@ -1,7 +1,8 @@
 /**
- * The character page's document head.
+ * The document head of every page a record has to itself: a character's and
+ * a devil fruit's.
  *
- * Kept out of the route module because it is the one part of the page that
+ * Kept out of the route modules because it is the one part of a page that
  * runs before any component does, on the server, and it is the one place a
  * covered name could still leak. The leading `-` keeps the file out of the
  * generated route tree.

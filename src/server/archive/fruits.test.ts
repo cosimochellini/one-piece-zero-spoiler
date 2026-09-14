@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
-import type { Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import type { FruitEatersView } from '~/lib/view/records'
 
@@ -195,6 +195,19 @@ describe('who ate it', () => {
 
       expect(view.mode, fruit.id).toBe('chapterNote')
     }
+  })
+
+  it('never opens an eater to a reader at the very last chapter', () => {
+    // The band is withheld from a chapter reader before the gate is built at
+    // all, and the gate is past the ceiling as well, so neither half of that
+    // can be removed without the other showing up as a failure here.
+    const gate = fruitEaters(
+      'flame-flame-fruit',
+      { mode: 'chapter', chapter: CHAPTER_CEILING },
+      'en',
+    )
+
+    expect(gate.mode).toBe('chapterNote')
   })
 
   it('names nobody the reader has not reached', () => {

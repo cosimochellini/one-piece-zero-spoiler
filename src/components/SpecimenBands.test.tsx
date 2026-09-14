@@ -86,6 +86,40 @@ describe('SpecimenBands', () => {
     expect(screen.getByText('A fruit under fog')).toBeInTheDocument()
   })
 
+  it('numbers a plate once, across the open rows and the covered ones', () => {
+    renderWithProviders(
+      <SpecimenBands
+        bands={BANDS}
+        peek={peekTo(GUM)}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    // The Logia plate holds one open fruit and one covered one. Two rows
+    // called "Specimen 01" would be a sheet that counted itself twice.
+    expect(screen.getAllByText('Specimen 01')).toHaveLength(2)
+    expect(screen.getAllByText('Specimen 02')).toHaveLength(2)
+  })
+
+  it('keeps a specimen’s number while the reader types', async () => {
+    renderWithProviders(
+      <SpecimenBands
+        bands={BANDS}
+        peek={peekPending()}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    // Chop-Chop is the second fruit on the Paramecia plate. Filtering Gum-Gum
+    // out must not promote it to the first.
+    await userEvent.type(screen.getByRole('searchbox'), 'chop')
+
+    expect(
+      screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
+    ).not.toBeInTheDocument()
+    expect(screen.getAllByText('Specimen 02')).toHaveLength(2)
+  })
+
   it('says so when a plate has nothing under fog', () => {
     renderWithProviders(
       <SpecimenBands
