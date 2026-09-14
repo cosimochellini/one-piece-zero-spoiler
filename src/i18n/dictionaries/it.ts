@@ -245,6 +245,7 @@ export const itDictionary: Dictionary = {
   'fruit.siblingsLede':
     'I frutti archiviati più vicino a questo sulla stessa tavola.',
   'fruit.siblingsLoading': 'Leggo il foglio…',
+  'fruit.siblingsNone': 'Non c’è ancora nient’altro di questo tipo archiviato.',
   'fruit.notFoundTitle': 'Nessun frutto così',
   'fruit.notFoundBody':
     'Non c’è niente archiviato a questo indirizzo. Il foglio dei campioni elenca tutti i frutti che ci sono.',

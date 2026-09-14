@@ -231,7 +231,7 @@ export function KinBand({
   )
 }
 
-/** The rail once it arrives. */
+/** The rail once it arrives, or the sentence that stands where it would. */
 function Kin({
   peek,
   siblings,
@@ -239,9 +239,19 @@ function Kin({
   readonly peek: (handle: string) => Promise<FruitView>
   readonly siblings: KinSource
 }): ReactElement {
+  const { t } = useLocale()
+  const rail = siblings instanceof Promise ? use(siblings) : siblings
+
+  // Every plate holds dozens today, so this is a sentence nobody reads. It is
+  // here because the band above it already says what an empty answer looks
+  // like, and a heading with an empty list under it says nothing at all.
+  if (rail.length === 0) {
+    return <p {...stylex.props(styles.lede)}>{t('fruit.siblingsNone')}</p>
+  }
+
   return (
     <FruitRail
-      fruits={siblings instanceof Promise ? use(siblings) : siblings}
+      fruits={rail}
       peek={peek}
     />
   )

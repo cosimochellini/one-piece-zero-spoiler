@@ -140,6 +140,22 @@ describe('the eaters band', () => {
   })
 })
 
+describe('the rail of others of this type', () => {
+  it('says so when the archive files nothing else of the kind', () => {
+    renderWithProviders(
+      <KinBand
+        peek={peekPending()}
+        siblings={[]}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    expect(
+      screen.getByText('Nothing else of this type is filed yet.'),
+    ).toBeInTheDocument()
+  })
+})
+
 describe('the fruit page’s shape', () => {
   it('has no route position: a fruit is not a waypoint on the chart', () => {
     renderWithProviders(

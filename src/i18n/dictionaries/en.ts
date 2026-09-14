@@ -244,6 +244,7 @@ export const enDictionary = {
   'fruit.siblingsLede':
     'The fruits filed nearest to this one on the same plate.',
   'fruit.siblingsLoading': 'Reading the sheet…',
+  'fruit.siblingsNone': 'Nothing else of this type is filed yet.',
   'fruit.notFoundTitle': 'No such fruit',
   'fruit.notFoundBody':
     'Nothing is filed under that address. The specimen sheet lists every fruit that is.',
