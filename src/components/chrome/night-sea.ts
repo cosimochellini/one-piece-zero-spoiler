@@ -164,7 +164,7 @@ export const GLITTER =
  * at the origin, heading right, so this is the only place her position is
  * stated — and the tests read it from here rather than from the transform.
  */
-export const SUNNY_PLACE = { scale: 0.98, x: 970, y: 380 }
+export const SUNNY_PLACE = { scale: 0.98, x: 966, y: 380 }
 
 /** `SUNNY_PLACE` as the one `transform` attribute the placing group carries. */
 export const SUNNY_AT = `translate(${String(SUNNY_PLACE.x)} ${String(
@@ -173,14 +173,14 @@ export const SUNNY_AT = `translate(${String(SUNNY_PLACE.x)} ${String(
 
 /**
  * The extents of the drawing about its origin, before `SUNNY_PLACE`. The bow
- * is the tip of the mane's forward ray, the stern the back of the paddle
+ * is the tip of the mane's forward flame, the stern the back of the paddle
  * housing, the masthead the foot of the pennant, the keel the lowest point the
  * hull's curve can reach (its control points, so a conservative bound).
  */
 export const SUNNY_MARKS = {
-  bow: [220, -100],
+  bow: [223.5, -147.1],
   keel: 22,
-  masthead: [40, -310],
+  masthead: [36, -310],
   stern: [-170, -30],
 } as const
 
@@ -190,12 +190,27 @@ export const SUNNY_MARKS = {
  * at her prow. Many closed subpaths in one `d`, every one wound the same way,
  * so under the default nonzero rule they union into one solid.
  *
- * The lion is a disc with a mane of twelve rays, which is what the Sunny's
- * figurehead is: a lion drawn as a sun. In silhouette it has no eyes and no
- * mouth, so the site's rule that no drawing carries a face holds here too.
+ * The lion is drawn as the figurehead is: a round head with a muzzle pushed
+ * forward and low, and a mane of seven broad flames that curl aft, shorter on
+ * the side that faces the sail and parted where the muzzle comes through. In
+ * silhouette it has no eyes and no mouth, so the site's rule that no drawing
+ * carries a face holds here too.
  */
 export const SUNNY_BODY =
-  'M-150 -92 L-92 -92 L-92 -64 L-60 -64 C-30 -38 0 -42 40 -42 C90 -42 108 -46 120 -62 Q148 -72 156 -76 C164 -56 160 -6 138 8 C96 22 -40 22 -110 8 C-130 4 -136 -2 -136 -4 C-156 -10 -156 -50 -150 -56 Z '
+  'M-150 -92 L-92 -92 L-92 -64 L-60 -64 C-30 -38 0 -42 40 -42 C96 -42 114 -46 126 -62 Q152 -72 160 -76 C168 -56 164 -6 142 8 C100 22 -40 22 -110 8 C-130 4 -136 -2 -136 -4 C-156 -10 -156 -50 -150 -56 Z '
+  + 'M-170 -30 a12 12 0 1 1 24 0 a12 12 0 1 1 -24 0 Z M-128 -122 L-120 -122 L-120 -90 L-128 -90 Z '
+  + 'M-145 -124 L-103 -124 L-103 -120 L-145 -120 Z M-141 -122 a17 17 0 1 1 34 0 a17 17 0 1 1 -34 0 Z '
+  + 'M33 -310 L39 -310 L39 -38 L33 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
+  + 'M16 -264 L56 -264 L56 -260 L16 -260 Z M18 -262 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
+  + 'M-36 -238 L108 -238 L108 -234 L-36 -234 Z M138 -102 a32 32 0 1 1 64 0 a32 32 0 1 1 -64 0 Z '
+  + 'M180.8 -88.6 a18 18 0 1 1 36 0 a18 18 0 1 1 -36 0 Z '
+  + 'M194.7 -115.2 C201.5 -115.5 210.4 -137.8 223.5 -147.1 C231.5 -133.6 218.3 -94 197.9 -99.5 Z '
+  + 'M183.2 -77.3 C183.5 -70.5 205.8 -61.6 215.1 -48.5 C201.6 -40.5 162 -53.7 167.5 -74.1 Z '
+  + 'M161.9 -75.2 C157.6 -71 167 -52 164.6 -38.5 C150.8 -42 132.7 -75.3 148.5 -84.1 Z '
+  + 'M145.3 -88.8 C140 -89.2 134.7 -70.8 125 -64.1 C118.2 -75.4 127.2 -109.1 142.1 -104.5 Z '
+  + 'M143.2 -110.1 C139.5 -114.3 121.9 -104.9 109.7 -107.2 C113 -120.3 144.2 -138 152.1 -123.5 Z '
+  + 'M156.8 -126.7 C156.7 -133.2 135.1 -141.4 126.4 -153.8 C139.4 -161.5 177.8 -149.2 172.5 -129.9 Z '
+  + 'M178.1 -128.8 C182.8 -133.8 173.3 -155.9 176 -171.7 C191.1 -167.9 209.8 -130.6 191.5 -119.9 Z'
   + 'M-170 -30 a12 12 0 1 1 24 0 a12 12 0 1 1 -24 0 Z '
   + 'M-128 -122 L-120 -122 L-120 -90 L-128 -90 Z M-145 -124 L-103 -124 L-103 -120 L-145 -120 Z M-141 -122 a17 17 0 1 1 34 0 a17 17 0 1 1 -34 0 Z '
   + 'M37 -310 L43 -310 L43 -38 L37 -38 Z M-74.5 -180 L-69.5 -180 L-69.5 -60 L-74.5 -60 Z '
@@ -210,11 +225,11 @@ export const SUNNY_BODY =
  * loop, about the yard it hangs from.
  */
 export const SUNNY_SAILS =
-  'M-32 -234 L112 -234 C132 -185.2 128 -130.4 114 -86 C76 -70 4 -70 -28 -86 C-20 -130.4 -22 -185.2 -32 -234 Z'
+  'M-30 -234 L102 -234 C122 -185.2 118 -130.4 104 -86 C69 -70 3 -70 -26 -86 C-18 -130.4 -20 -185.2 -30 -234 Z'
 
 /** The two pennants, one per masthead, streaming aft to for'ard with the wind. */
 export const SUNNY_FLAG =
-  'M40 -310 L70 -303 L40 -296 Z M-72 -180 L-48 -174 L-72 -168 Z'
+  'M36 -310 L66 -303 L36 -296 Z M-72 -180 L-48 -174 L-72 -168 Z'
 
 /** Leaves the ship level with her waterline and rises into the fog. */
 export const COURSE = 'M1190 380 C1260 380 1330 340 1410 346 S1500 380 1600 330'
