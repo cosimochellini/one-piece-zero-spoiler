@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { MOON } from '~/components/chrome/night-sea'
+import { MOON, SUNNY_HULL, SUNNY_MAST } from '~/components/chrome/night-sea'
 
 import { SeaChartHero } from './SeaChartHero'
 
@@ -66,5 +66,29 @@ describe('SeaChartHero', () => {
     expect(parts).toHaveLength(8)
     // The sail, the lion and the rays of its mane.
     expect(gilded).toHaveLength(3)
+  })
+
+  it('fills the ship so the sea passes behind her and not through her', () => {
+    const { container } = render(<SeaChartHero />)
+
+    // Same trick as the gold: the fill is the one class the hull carries and
+    // the mast does not. The mast is the right thing to compare against —
+    // same ink, same weight, no fill — so the difference is the fill alone.
+    const classesOf = (d: string): Set<string> =>
+      new Set(container.querySelector(`path[d="${CSS.escape(d)}"]`)?.classList)
+    const bare = classesOf(SUNNY_MAST)
+    const solidName = [...classesOf(SUNNY_HULL)].find((name) => !bare.has(name))
+
+    const parts = [
+      ...container.querySelectorAll(':scope g[transform] > g > path'),
+    ]
+    const filled = parts.filter((path) =>
+      path.classList.contains(solidName ?? ''),
+    )
+
+    expect(solidName).toBeDefined()
+    // The hull, the sail, the crow's nest and the lion. The mast, the mane,
+    // the bulwark and the wale stay bare strokes over them.
+    expect(filled).toHaveLength(4)
   })
 })

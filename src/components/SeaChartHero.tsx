@@ -270,8 +270,8 @@ function Lantern(): ReactElement {
 /**
  * The Thousand Sunny: sails full, heading right, drawn about her own waterline
  * and put in place by one transform, so the parts never drift apart from each
- * other. The sail and the lion at her prow are the two pieces that take the
- * route gold; the bulwark and the wale are ambient, and the rest is the
+ * other. The sail, the lion at her prow and the rays of her mane are what take
+ * the route gold; the bulwark and the wale are ambient, and the rest is the
  * neutral ink.
  *
  * The order is the drawing: the mast and the mane go down first and the sail,
