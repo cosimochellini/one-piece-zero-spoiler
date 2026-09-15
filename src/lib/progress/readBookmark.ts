@@ -1,9 +1,10 @@
 import { createIsomorphicFn } from '@tanstack/react-start'
-import { getCookie } from '@tanstack/react-start/server'
+import { getCookie, getRequestHeader } from '@tanstack/react-start/server'
 
 import { parseCookieHeader } from '~/lib/cookies'
 
 import { type Bookmark, EPISODE_COOKIE, parseBookmark } from './episode'
+import { bookmarkForRequest } from './requestBookmark'
 
 /**
  * Reads the bookmark on whichever side is asking.
@@ -16,9 +17,18 @@ import { type Bookmark, EPISODE_COOKIE, parseBookmark } from './episode'
  * The server branch is the one that matters: it runs before the first byte of
  * HTML, so a covered record is already covered in the markup. A reader with
  * scripts disabled, or on a slow connection, never sees an uncovered flash.
+ * It reads the two headers and hands them to `bookmarkForRequest`, which is
+ * where the decision itself lives and where it is tested.
  */
+function serverBookmark(): Bookmark {
+  return bookmarkForRequest(
+    getCookie(EPISODE_COOKIE),
+    getRequestHeader('user-agent'),
+  )
+}
+
 export const readBookmark: () => Bookmark = createIsomorphicFn()
-  .server((): Bookmark => parseBookmark(getCookie(EPISODE_COOKIE)))
+  .server(serverBookmark)
   .client((): Bookmark =>
     parseBookmark(parseCookieHeader(document.cookie).get(EPISODE_COOKIE)),
   )

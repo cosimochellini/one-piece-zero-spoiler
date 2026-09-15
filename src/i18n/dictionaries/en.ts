@@ -18,6 +18,8 @@ export const enDictionary = {
   'site.title': 'Zero Spoiler — a One Piece wiki that waits for you',
   'site.description':
     'A One Piece wiki that hides every character, arc, island and devil fruit filed after the episode you have reached.',
+  'seo.imageAlt':
+    'The Zero Spoiler card: the wordmark over a charted route whose waypoints run out into fog.',
 
   'nav.skip': 'Skip to content',
   'nav.characters': 'Characters',

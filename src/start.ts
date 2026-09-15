@@ -1,5 +1,7 @@
 import { createCsrfMiddleware, createStart } from '@tanstack/react-start'
 
+import { SERVER_FN_BASE } from '~/lib/endpoints'
+
 /**
  * The Start instance.
  *
@@ -12,8 +14,6 @@ import { createCsrfMiddleware, createStart } from '@tanstack/react-start'
  * document request would reject an ordinary address-bar navigation, which
  * sends `Sec-Fetch-Site: none`.
  */
-const SERVER_FN_BASE = '/_serverFn'
-
 export const startInstance = createStart(() => {
   return {
     requestMiddleware: [

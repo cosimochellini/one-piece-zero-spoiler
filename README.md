@@ -121,8 +121,8 @@ browser at all rather than there and declined.
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
 | Line drawings       | 476, one per record                                                   |
-| Test files          | 51                                                                    |
-| Test cases          | 429                                                                   |
+| Test files          | 60                                                                    |
+| Test cases          | 494                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
 
 ## Every line drawn here
@@ -249,6 +249,20 @@ hundred requests. What changed is the shape of that: it used to be one `curl` of
 a cacheable, crawlable static asset, and it is now same-origin POSTs to a
 function — logged, rate-limitable, and not something a search engine indexes on
 its own.
+
+**And a search engine is served the whole thing.** A crawler sends no bookmark,
+so left alone it would index four hundred and forty-six pages that all say "a
+character under fog". A request whose `User-Agent` names one of the fourteen
+known crawlers and unfurlers — Googlebot, Bingbot, Applebot, the two Yandex and
+Baidu bots, and the link previewers of Slack, Discord, WhatsApp and the rest —
+is therefore read as a reader who has finished the story, and gets the archive
+open. That is a deliberate trade and it is worth saying plainly: a user agent is
+a string anyone can send, so `curl -A Googlebot` reads the whole wiki. The fog
+is an editorial promise to someone reading the site, not an access control, and
+this is the place that is most visible. WhatsApp is the one name matched only at
+the start of the string: its unfurler leads with it, while its in-app browser
+appends the same token to an ordinary mobile browser's, and behind that one is a
+reader who tapped a link a friend sent.
 
 ### Performance
 

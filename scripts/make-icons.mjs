@@ -1,5 +1,6 @@
-// Renders public/icon.svg into the bitmap icons the head links point at.
-// Run by hand after editing the SVG: `node scripts/make-icons.mjs`. Needs
+// Renders public/icon.svg into the bitmap icons the head links point at, and
+// scripts/og-card.svg into the social card the Open Graph tags point at.
+// Run by hand after editing either SVG: `node scripts/make-icons.mjs`. Needs
 // `rsvg-convert` (librsvg) on PATH; the outputs are committed, so the build
 // never depends on it.
 import { Buffer } from 'node:buffer'
@@ -10,15 +11,23 @@ import process from 'node:process'
 
 const root = path.join(import.meta.dirname, '..')
 const svg = path.join(root, 'public', 'icon.svg')
+const card = path.join(root, 'scripts', 'og-card.svg')
 
-function png(size) {
+// The icons are square, the card is not, so the two edges are separate
+// arguments: rsvg-convert stretches to the box it is given rather than
+// letterboxing into it.
+function render(source, width, height = width) {
   return execFileSync('rsvg-convert', [
     '-w',
-    String(size),
+    String(width),
     '-h',
-    String(size),
-    svg,
+    String(height),
+    source,
   ])
+}
+
+function png(size) {
+  return render(svg, size)
 }
 
 const HEADER_BYTES = 6
@@ -76,6 +85,16 @@ writeFileSync(
   ico(sizes.map((size) => ({ size, data: png(size) }))),
 )
 writeFileSync(path.join(root, 'public', 'apple-touch-icon.png'), png(180))
+
+// The size every platform crops its link preview from: 1.91:1, and large
+// enough that Twitter and Slack take the wide card rather than the small one.
+const CARD_WIDTH = 1200
+const CARD_HEIGHT = 630
+writeFileSync(
+  path.join(root, 'public', 'og-card.png'),
+  render(card, CARD_WIDTH, CARD_HEIGHT),
+)
+
 process.stdout.write(
-  'wrote public/favicon.ico (16, 32) and public/apple-touch-icon.png (180)\n',
+  'wrote public/favicon.ico (16, 32), public/apple-touch-icon.png (180) and public/og-card.png (1200x630)\n',
 )

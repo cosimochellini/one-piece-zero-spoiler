@@ -11,6 +11,8 @@ export const itDictionary: Dictionary = {
   'site.title': 'Zero Spoiler — una wiki di One Piece che ti aspetta',
   'site.description':
     'Una wiki di One Piece che nasconde ogni personaggio, saga, isola e frutto del diavolo archiviati dopo l’episodio a cui sei arrivato.',
+  'seo.imageAlt':
+    'La card di Zero Spoiler: il logotipo sopra una rotta tracciata i cui punti nave si perdono nella nebbia.',
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',

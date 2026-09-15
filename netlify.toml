@@ -6,6 +6,12 @@
   # Mirrors .nvmrc, which Netlify also reads. Declared explicitly so the
   # runtime is visible in the deploy config itself.
   NODE_VERSION = "24.18.0"
+  # The origin every canonical link, hreflang alternate, og:url and sitemap
+  # entry is written against. Vite inlines it at build time; without it the
+  # constant in src/lib/seo/site.ts is used, which is this same address. It is
+  # declared here so a move to a custom domain is one edit in the deploy
+  # config rather than a code change.
+  VITE_SITE_ORIGIN = "https://one-piece-zero-spoiler.netlify.app"
 
 # Vite content-hashes every client asset, so they are safe to cache forever.
 # These files are served from Netlify's CDN rather than the SSR function, which
