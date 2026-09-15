@@ -27,6 +27,10 @@ const dossier: CharacterDossier = {
     { episode: 45, value: 30_000_000 },
     { episode: 130, value: 100_000_000 },
   ],
+  status: [
+    { episode: 1, value: 'alive' },
+    { episode: 130, value: 'presumed-dead' },
+  ],
 }
 
 /**
@@ -41,6 +45,7 @@ describe('the facts a bookmark reaches', () => {
     expect(found).toStrictEqual({
       mode: 'facts',
       affiliation: 'Straw Hat Pirates',
+      status: 'alive',
     })
     // Origin (4), epithet (45) and bounty (45) are still ahead of the reader.
     expect(found).not.toHaveProperty('origin')
@@ -61,10 +66,22 @@ describe('the facts a bookmark reaches', () => {
     ).toMatchObject({ bounty: 100_000_000, epithet: 'Straw Hat' })
   })
 
+  it('gives the state the reader has reached and never a later one', () => {
+    // The episode before the fall and the episode of it: the pair is the whole
+    // promise of the field, since a death is the one fact a wiki gives away.
+    expect(factsFrom(dossier, 'en', ep(129))).toMatchObject({ status: 'alive' })
+    expect(factsFrom(dossier, 'en', ep(130))).toMatchObject({
+      status: 'presumed-dead',
+    })
+  })
+
   it('answers in the reader’s locale', () => {
     expect(factsFrom(dossier, 'it', ep(130))).toMatchObject({
       epithet: 'Cappello di Paglia',
       affiliation: 'Pirati di Cappello di Paglia',
+      // The state is an id rather than prose, so it is the same in both
+      // languages and the page is what translates it.
+      status: 'presumed-dead',
     })
   })
 

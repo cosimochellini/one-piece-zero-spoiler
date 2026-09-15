@@ -5,7 +5,11 @@ import { Fragment, type ReactElement, type ReactNode } from 'react'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { Locale } from '~/i18n/locales'
 import type { Translate } from '~/i18n/types'
-import type { CharacterFacts as Facts, FruitLink } from '~/lib/view/records'
+import type {
+  CharacterStatus,
+  CharacterFacts as Facts,
+  FruitLink,
+} from '~/lib/view/records'
 import {
   color,
   dur,
@@ -49,6 +53,7 @@ export function CharacterFacts({
   }
 
   const rows: readonly (readonly [string, ReactNode])[] = [
+    [t('character.status'), statusRow(facts.status, t)],
     [t('character.epithet'), facts.epithet],
     [t('character.affiliation'), facts.affiliation],
     [t('character.origin'), facts.origin],
@@ -79,6 +84,22 @@ export function CharacterFacts({
       })}
     </dl>
   )
+}
+
+/**
+ * What became of the character, in the reader's language, or nothing when the
+ * archive has not said.
+ *
+ * The key is built from the value the way a port's sea and form are built
+ * (`~/components/PortFacts`), which makes it exhaustive by construction: a
+ * status with no label is not a key the dictionary carries, so it fails
+ * `typecheck` rather than printing its own id on the page.
+ */
+function statusRow(
+  status: CharacterStatus | undefined,
+  t: Translate,
+): string | undefined {
+  return status === undefined ? undefined : t(`status.${status}`)
 }
 
 /**

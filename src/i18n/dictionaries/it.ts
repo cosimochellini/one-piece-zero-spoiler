@@ -149,6 +149,7 @@ export const itDictionary: Dictionary = {
   'character.position': 'Tappa {index} di {total}',
   'character.positionLede':
     'Dove questa voce sta sulla carta, e cosa è archiviato ai suoi lati.',
+  'character.status': 'Stato',
   'character.epithet': 'Epiteto',
   'character.affiliation': 'Affiliazione',
   'character.origin': 'Origine',
@@ -268,6 +269,14 @@ export const itDictionary: Dictionary = {
   'form.town': 'Cittadina',
   'form.restaurant': 'Ristorante galleggiante',
   'form.island': 'Isola',
+
+  'status.alive': 'In vita',
+  'status.deceased': 'Morte confermata',
+  'status.presumed-dead': 'Morte presunta',
+  'status.captured': 'In cattività',
+  'status.imprisoned': 'In prigione',
+  'status.missing': 'Scomparsa',
+  'status.unknown': 'Sorte ignota',
 
   'kind.character': 'Personaggio',
   'kind.arc': 'Saga',

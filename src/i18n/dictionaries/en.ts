@@ -152,6 +152,7 @@ export const enDictionary = {
   'character.position': 'Waypoint {index} of {total}',
   'character.positionLede':
     'Where this entry sits on the chart, and what is filed either side of it.',
+  'character.status': 'Status',
   'character.epithet': 'Epithet',
   'character.affiliation': 'Affiliation',
   'character.origin': 'Origin',
@@ -263,6 +264,14 @@ export const enDictionary = {
   'form.town': 'Town',
   'form.restaurant': 'Floating restaurant',
   'form.island': 'Island',
+
+  'status.alive': 'Alive',
+  'status.deceased': 'Deceased',
+  'status.presumed-dead': 'Presumed dead',
+  'status.captured': 'Captured',
+  'status.imprisoned': 'Imprisoned',
+  'status.missing': 'Missing',
+  'status.unknown': 'Fate unknown',
 
   'kind.character': 'Character',
   'kind.arc': 'Arc',

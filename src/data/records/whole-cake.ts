@@ -634,6 +634,10 @@ export const wholeCake: Saga = {
         it: 'Parla poco, si muove di notte e i mink lo ascoltano anche quando dice cose che nessuno ha voglia di sentire. Porta una cicatrice che gli taglia un occhio e non racconta a nessuno come se l’è fatta. Difende il ducato con i candelotti alla cintura e la convinzione che certe cose valgano più della propria pelle.',
         en: 'He says little, moves at night, and the minks listen to him even when he tells them what nobody wants to hear. He carries a scar across one eye and tells nobody how he got it. He guards the dukedom with dynamite on his belt and a settled belief that some things are worth more than his own skin.',
       },
+      status: [
+        { episode: 757, value: 'alive' },
+        { episode: 846, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 757,
@@ -768,6 +772,7 @@ export const wholeCake: Saga = {
         it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano. Sa strappare alla gente anni della propria vita e darli a oggetti e animali, che da quel momento parlano e obbediscono a lei.',
         en: 'She rules an archipelago of sugar islands and an enormous family of children, and her whims decide the weather. When she wants a sweet she does not have, she loses her head and flattens whatever is in the way until it is brought to her. She can pull years of life out of people and give them to objects and animals, which from then on talk and answer to her.',
       },
+      status: [{ episode: 786, value: 'alive' }],
       affiliation: [
         {
           episode: 786,
@@ -984,13 +989,11 @@ export const wholeCake: Saga = {
         it: 'Nel ricordo del figlio è l’unica voce gentile di quel castello: gli prepara il pranzo, gli dice che va bene così com’è e si mette tra lui e il padre. È malata e sempre più debole, e continua a sorridere dal letto come se non lo fosse. Non vuole che i suoi bambini diventino le armi che il regno ha ordinato.',
         en: 'In her son’s memory she is the only kind voice in that castle: she packs his lunch, tells him he is fine as he is and puts herself between him and his father. She is ill and getting weaker, and she goes on smiling from the bed as though she were not. She does not want her children to become the weapons the kingdom has ordered.',
       },
+      status: [{ episode: 799, value: 'deceased' }],
       affiliation: [
         {
           episode: 799,
-          value: {
-            it: 'Regno di Germa, regina, defunta',
-            en: 'Germa Kingdom, queen, deceased',
-          },
+          value: { it: 'Regno di Germa, regina', en: 'Germa Kingdom, queen' },
         },
       ],
       origin: [{ episode: 799, value: GERMA_KINGDOM }],
@@ -1107,12 +1110,13 @@ export const wholeCake: Saga = {
         it: 'Nel ricordo gestisce un orfanotrofio sull’isola dei giganti e accoglie chiunque venga lasciato alla sua porta, chiamandoli tutti figli suoi. Ha il velo bianco, un sorriso larghissimo e un sacchetto di dolci sempre a portata di mano. I bambini la chiamano Mamma, e una di loro, una bambina già più alta di lei, non si stacca mai dalla sua gonna.',
         en: 'In the memory she runs an orphanage on the island of giants and takes in whoever is left at her door, calling them all her own children. She has a white veil, a very wide smile and a bag of sweets always within reach. The children call her Mother, and one of them, a little girl already taller than she is, never leaves her skirts.',
       },
+      status: [{ episode: 836, value: 'deceased' }],
       affiliation: [
         {
           episode: 836,
           value: {
-            it: 'Casa delle Pecore, Mamma Carmel, defunta',
-            en: 'Sheep’s House, Mother Carmel, deceased',
+            it: 'Casa delle Pecore, Mamma Carmel',
+            en: 'Sheep’s House, Mother Carmel',
           },
         },
       ],

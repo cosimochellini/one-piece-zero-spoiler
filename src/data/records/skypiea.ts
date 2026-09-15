@@ -463,6 +463,7 @@ export const skypiea: Saga = {
         it: 'A Mock Town beve, mangia a quattro palmenti e ride di tutto, e quando qualcuno gli dice che i sogni sono morti è lui a rispondere che i sogni degli uomini non finiscono mai. Ha navigato sotto Barbabianca, poi ha ucciso un compagno di ciurma ed è scappato, e da allora un comandante di quella ciurma lo insegue per il mare. Dove sia diretto non lo sa nessuno.',
         en: 'In Mock Town he drinks, eats his fill and laughs at everything, and when somebody tells him dreams are dead he is the one who answers that the dreams of men never end. He sailed under Whitebeard, then killed a crewmate and ran, and a commander of that crew has been hunting him across the sea ever since. Where he is heading, nobody knows.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -493,6 +494,7 @@ export const skypiea: Saga = {
         it: 'Alla convocazione del Governo Mondiale è l’unico a non alzare mai la voce: resta seduto con un libro aperto in mano mentre gli altri si punzecchiano su una poltrona rimasta vuota. In piedi supera di una testa abbondante chiunque altro nella stanza. Della sua vita prima dell’accordo con il Governo non si dice una parola.',
         en: 'At the World Government’s summons he is the only one who never raises his voice: he sits with a book open in his hands while the others trade jabs about a chair left empty. Standing, he is a full head and more above anyone else in the room. Of his life before the deal with the Government, not a word is said.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -530,6 +532,7 @@ export const skypiea: Saga = {
         it: 'Convoca i Sette a nome del Governo Mondiale e li tiene a bada senza perdere la calma nemmeno quando la riunione degenera. Uno dei posti al tavolo è vuoto, e quel posto vuoto lo preoccupa più di tutti quelli occupati. Si porta dietro una capra che si mangia le carte, e nessuno dei presenti se ne stupisce.',
         en: 'He calls the Warlords together for the World Government and keeps them in order without once losing his temper, even when the meeting turns ugly. One seat at the table is empty, and that empty seat worries him more than all the occupied ones. He brings a goat with him that eats the paperwork, and nobody in the room finds it odd.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -560,6 +563,10 @@ export const skypiea: Saga = {
         it: 'È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e l’unico ad aver combattuto il Re dei Pirati alla pari. Riceve la notizia che Shanks vuole vederlo come si riceve la visita di un vecchio conoscente, cioè male. Un suo comandante è partito da solo per inseguire un traditore, e lui ha lasciato fare.',
         en: 'He is one of the four Emperors who divide the New World between them, and the only man to have fought the Pirate King as an equal. He takes the news that Shanks wants to see him the way one takes a call from an old acquaintance, which is badly. One of his commanders has gone off alone after a traitor, and he let him go.',
       },
+      status: [
+        { episode: 152, value: 'alive' },
+        { episode: 486, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 152,
@@ -584,6 +591,10 @@ export const skypiea: Saga = {
         it: 'Alla riunione dei Sette ride di tutto e di tutti, e nel frattempo due marinai nella stanza sguainano le spade l’uno contro l’altro senza volerlo. Nessuno dei presenti lo prende alla leggera, nemmeno quelli che non lo sopportano. Il cappotto rosa è l’unica cosa di lui che non fa paura.',
         en: 'At the Warlords’ meeting he laughs at everything and everyone, and meanwhile two Marines in the room draw their swords on each other without meaning to. Nobody present takes him lightly, not even the ones who cannot stand him. The pink coat is the only thing about him that is not frightening.',
       },
+      status: [
+        { episode: 152, value: 'alive' },
+        { episode: 746, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 152,
@@ -813,6 +824,7 @@ export const skypiea: Saga = {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',
         en: 'He rules the clouds as a god and has the manner of one: he speaks softly, never lifts his head and decides who lives without explaining himself. He hears every voice on the island wherever it is, and anyone who speaks his name badly finds out too late. The priests who serve him keep the ordeals that almost nobody gets past.',
       },
+      status: [{ episode: 158, value: 'alive' }],
       affiliation: [
         { episode: 158, value: { it: 'Dio di Skypiea', en: 'God of Skypiea' } },
         {
@@ -883,6 +895,7 @@ export const skypiea: Saga = {
         it: 'Sbarcò su Jaya con il suo equipaggio e vi trovò una città piena d’oro e un popolo che lo prese per nemico. Guarì il capo di quella gente da una febbre che lo stava uccidendo, e i due finirono per intendersi senza avere una lingua in comune. Tornato in patria raccontò tutto al suo re, e nessuno gli credette.',
         en: 'He put in at Jaya with his crew and found a city full of gold and a people who took him for an enemy. He cured their chief of a fever that was killing him, and the two of them came to understand each other with no language in common. Back home he told his king everything, and nobody believed a word of it.',
       },
+      status: [{ episode: 187, value: 'deceased' }],
       affiliation: [
         {
           episode: 187,
@@ -912,6 +925,7 @@ export const skypiea: Saga = {
         it: 'Prese gli stranieri sbarcati sull’isola per dei ladri e li combatté finché una febbre non lo mise a terra. Fu uno di loro a curarlo, e da lì nacque un’amicizia che né l’uno né l’altro avrebbe saputo spiegare a parole. Prima che l’esploratore ripartisse gli promise che avrebbe suonato la grande campana, perché la ritrovasse.',
         en: 'He took the foreigners who landed on the island for thieves and fought them until a fever put him on his back. One of them cured him, and out of that came a friendship neither man could have explained in words. Before the explorer sailed he promised him he would ring the great bell, so that it could be found again.',
       },
+      status: [{ episode: 187, value: 'deceased' }],
       affiliation: [
         {
           episode: 187,

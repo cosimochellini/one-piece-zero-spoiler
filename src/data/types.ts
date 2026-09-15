@@ -1,5 +1,5 @@
 import type { Locale } from '~/i18n/locales'
-import type { EntityKind, TintId } from '~/lib/view/records'
+import type { CharacterStatus, EntityKind, TintId } from '~/lib/view/records'
 
 import type { ArtId } from './art'
 import type { FruitId } from './fruit-forms'
@@ -96,6 +96,16 @@ export type CharacterDossier = {
   readonly log: LocalizedText
   readonly origin?: Timeline<LocalizedText>
   readonly role: LocalizedText
+  /**
+   * Where the character stands, and from which episode. A vocabulary rather
+   * than prose so the page can say it in the reader's language: the labels
+   * are in the dictionaries, not here.
+   *
+   * Absent means the archive has not filed a fate for this character, and the
+   * page then prints no row at all — an empty "Status" line would say that
+   * something is coming, which is the spoiler itself.
+   */
+  readonly status?: Timeline<CharacterStatus>
   /** In Berry. */
   readonly bounty?: Timeline<number>
 }
