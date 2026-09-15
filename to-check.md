@@ -7,11 +7,13 @@ issue #24.
 
 Everything **not** listed here is safe by construction: an entry filed at the
 character's own `revealedAtEpisode` takes its number from the record, and
-twenty-two further entries took theirs from a line of the dossier that already
+twenty-one further entries took theirs from a line of the dossier that already
 named the same episode (Hiluluk 85, Rosinante 704, Ginny 1117, Otohime 539,
 Fisher Tiger 539, Rouge 493, Yorki 380, Orochi 1085, Xebec 958, Toki 963,
 Higurashi 963, Semimaru 963, Sora 799, Carmel 836, Vergo 613, Vegapunk 1116,
-Hody Jones 574, Caribou 574, Sabo 497, Yasuie 940, Oden 960, Noland 187).
+Hody Jones 574, Caribou 574, Yasuie 940, Oden 960, Noland 187). Sabo's 497 is
+the same: his affiliation named that episode as the one he was given up for dead
+at, and the clause moved into the status field rather than being read off it.
 
 The direction of a mistake matters: an episode filed **too early** shows a fate
 to a reader who has not reached it, which is the one thing the site exists to

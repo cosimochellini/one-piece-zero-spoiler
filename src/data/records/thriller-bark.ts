@@ -339,6 +339,7 @@ export const thrillerBark: Saga = {
         it: 'È il pezzo più grosso della collezione del padrone dell’isola: un gigante morto da secoli, tenuto in una cella di ghiaccio finché non arriva l’ombra giusta da mettergli dentro. Quando si rialza ha la forza di sfondare un edificio con una spallata e la testa di un bambino che scopre il mondo. Le leggende dicono che in vita trascinasse i continenti.',
         en: 'He is the largest piece in the island master’s collection: a giant dead for centuries, kept in an ice cellar until the right shadow comes along to put inside him. Once he stands he has the strength to take a building down with one shoulder and the mind of a child discovering the world. The legends say that in life he dragged continents about.',
       },
+      status: [{ episode: 358, value: 'deceased' }],
       affiliation: [
         {
           episode: 358,
