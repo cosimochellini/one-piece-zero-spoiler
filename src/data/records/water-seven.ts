@@ -607,8 +607,8 @@ export const waterSeven: Saga = {
         {
           episode: 246,
           value: {
-            it: 'Tom’s Workers, maestro d’ascia, giustiziato',
-            en: 'Tom’s Workers, master shipwright, executed',
+            it: 'Tom’s Workers, maestro d’ascia',
+            en: 'Tom’s Workers, master shipwright',
           },
         },
       ],

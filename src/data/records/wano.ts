@@ -742,7 +742,6 @@ export const wano: Saga = {
             en: 'Former daimyo of Hakumai; Tonoyasu of Ebisu Town',
           },
         },
-        { episode: 940, value: { it: 'Giustiziato', en: 'Executed' } },
       ],
       origin: [{ episode: 938, value: WANO }],
       epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
@@ -832,16 +831,13 @@ export const wano: Saga = {
         it: 'A Wano lo ricordano come un disastro: rubava, si azzuffava e metteva in imbarazzo il castello di suo padre, e la gente di Kuri lo adorava lo stesso. Prese il mare con la ciurma di Barbabianca e poi con quella del Re dei Pirati, e tornò in un paese che non era più il suo. Vent’anni fa lo giustiziarono nella capitale, e da allora Wano è chiusa.',
         en: 'Wano remembers him as a walking disaster: he stole, he brawled and he shamed his father’s castle, and the people of Kuri loved him for it. He took to the sea with Whitebeard’s crew and then with the King of the Pirates, and came home to a country that was no longer his. Twenty years ago they executed him in the capital, and Wano has been shut ever since.',
       },
-      status: [
-        { episode: 960, value: 'alive' },
-        { episode: 972, value: 'deceased' },
-      ],
+      status: [{ episode: 960, value: 'deceased' }],
       affiliation: [
         {
           episode: 960,
           value: {
-            it: 'Kuri, daimyo; Pirati di Barbabianca, comandante della seconda divisione; Pirati di Roger; giustiziato vent’anni fa',
-            en: 'Kuri, daimyo; Whitebeard Pirates, second division commander; Roger Pirates; executed twenty years ago',
+            it: 'Kuri, daimyo; Pirati di Barbabianca, comandante della seconda divisione; Pirati di Roger',
+            en: 'Kuri, daimyo; Whitebeard Pirates, second division commander; Roger Pirates',
           },
         },
       ],

@@ -900,8 +900,8 @@ export const skypiea: Saga = {
         {
           episode: 187,
           value: {
-            it: 'Esploratore del Regno di Lvneel, giustiziato quattrocento anni fa',
-            en: 'Explorer of the Lvneel Kingdom, executed four hundred years ago',
+            it: 'Esploratore del Regno di Lvneel',
+            en: 'Explorer of the Lvneel Kingdom',
           },
         },
       ],

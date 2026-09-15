@@ -266,7 +266,7 @@ describe('the dossiers', () => {
       for (const entry of timeline) {
         for (const locale of LOCALES) {
           expect(entry.value[locale], label).not.toMatch(
-            /decedut|defunt|deceased|uccis|killed|dato per mort|presumed dead/iu,
+            /decedut|defunt|deceased|uccis|killed|giustiziat|executed|dato per mort|presumed dead/iu,
           )
         }
       }
