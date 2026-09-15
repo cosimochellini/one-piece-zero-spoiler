@@ -14,8 +14,8 @@ import { ArchivePage } from '~/components/ArchivePage'
 import { PortLog } from '~/components/PortLog'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftPort, liftRecord, loadPlaces } from '~/server/api'
 
@@ -25,21 +25,16 @@ export const Route = createFileRoute('/$locale/places/')({
   // scroll to.
   loader: async ({ context }) =>
     loadPlaces({ data: { locale: context.locale } }),
-  head: ({ params }) => {
-    if (!isLocale(params.locale)) {
-      return {}
-    }
-    const dictionary = getDictionary(params.locale)
-
-    return {
-      meta: [
-        { title: translate(dictionary, 'places.pageTitle') },
-        {
-          name: 'description',
-          content: translate(dictionary, 'places.pageDescription'),
-        },
-      ],
-    }
+  head: ({ match, params }) => {
+    return isLocale(params.locale) ?
+        describeNamedPage({
+          descriptionKey: 'places.pageDescription',
+          kind: 'index',
+          locale: params.locale,
+          pathname: match.pathname,
+          titleKey: 'places.pageTitle',
+        })
+      : {}
   },
   component: PlacesPage,
 })

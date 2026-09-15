@@ -14,7 +14,7 @@ import { ArchivePage } from '~/components/ArchivePage'
 import { SpecimenBands } from '~/components/SpecimenBands'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
+import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftFruit, loadFruits } from '~/server/api'
 
@@ -24,21 +24,16 @@ export const Route = createFileRoute('/$locale/fruits/')({
   // behind it were still on their way.
   loader: async ({ context }) =>
     loadFruits({ data: { locale: context.locale } }),
-  head: ({ params }) => {
-    if (!isLocale(params.locale)) {
-      return {}
-    }
-    const dictionary = getDictionary(params.locale)
-
-    return {
-      meta: [
-        { title: translate(dictionary, 'fruits.pageTitle') },
-        {
-          name: 'description',
-          content: translate(dictionary, 'fruits.pageDescription'),
-        },
-      ],
-    }
+  head: ({ match, params }) => {
+    return isLocale(params.locale) ?
+        describeNamedPage({
+          descriptionKey: 'fruits.pageDescription',
+          kind: 'index',
+          locale: params.locale,
+          pathname: match.pathname,
+          titleKey: 'fruits.pageTitle',
+        })
+      : {}
   },
   component: FruitsPage,
 })

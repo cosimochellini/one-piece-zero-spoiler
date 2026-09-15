@@ -13,7 +13,7 @@ import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
+import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftCharacter, loadCharacters, loadShelves } from '~/server/api'
 
@@ -26,21 +26,16 @@ export const Route = createFileRoute('/$locale/characters/')({
     // stream into a boundary of their own while the crests are already up.
     shelves: loadShelves({ data: { locale: context.locale } }),
   }),
-  head: ({ params }) => {
-    if (!isLocale(params.locale)) {
-      return {}
-    }
-    const dictionary = getDictionary(params.locale)
-
-    return {
-      meta: [
-        { title: translate(dictionary, 'characters.pageTitle') },
-        {
-          name: 'description',
-          content: translate(dictionary, 'characters.pageDescription'),
-        },
-      ],
-    }
+  head: ({ match, params }) => {
+    return isLocale(params.locale) ?
+        describeNamedPage({
+          descriptionKey: 'characters.pageDescription',
+          kind: 'index',
+          locale: params.locale,
+          pathname: match.pathname,
+          titleKey: 'characters.pageTitle',
+        })
+      : {}
   },
   component: CharactersPage,
 })

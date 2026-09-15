@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!--
+    The social card. One idea, the site's own: a charted route whose waypoints
+    run out into fog. Kept in scripts/ rather than public/ because only the
+    render is published; `node scripts/make-icons.mjs` writes public/og-card.png.
+
+    The colours are the tokens as hex, because librsvg does not read oklch():
+    paper #0b131b, paper3 #101c28, rule #2b3a4a, ink #eef2f5, muted #a9b6c2,
+    accent #f6c330.
+  -->
+  <defs>
+    <linearGradient id="fog" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#f6c330" stop-opacity="1"/>
+      <stop offset="0.52" stop-color="#f6c330" stop-opacity="1"/>
+      <stop offset="0.72" stop-color="#f6c330" stop-opacity="0.25"/>
+      <stop offset="1" stop-color="#f6c330" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="lantern" cx="0.85" cy="0.08" r="0.6">
+      <stop offset="0" stop-color="#f6c330" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#f6c330" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0b131b"/>
+  <rect width="1200" height="630" fill="url(#lantern)"/>
+
+  <!-- The route: sailed in gold, then fogged, with the waypoints on it. -->
+  <g fill="none" stroke="url(#fog)" stroke-width="4" stroke-linecap="round">
+    <path d="M90 430 C 260 372, 340 486, 500 430 S 760 372, 920 430 S 1080 460, 1128 434"/>
+  </g>
+  <g fill="#f6c330">
+    <circle cx="90" cy="430" r="9"/>
+    <circle cx="316" cy="424" r="9"/>
+    <circle cx="500" cy="430" r="9"/>
+  </g>
+  <g fill="none" stroke="#2b3a4a" stroke-width="4" stroke-linecap="round">
+    <circle cx="716" cy="424" r="9"/>
+    <circle cx="920" cy="430" r="9"/>
+  </g>
+
+  <!-- The horizon: where the reader has got to, and where the fog begins. -->
+  <path d="M608 330 V 520" stroke="#f6c330" stroke-width="3" stroke-dasharray="10 12" stroke-linecap="round"/>
+
+  <g fill="#eef2f5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+    <text x="90" y="200" font-size="104" font-weight="700" letter-spacing="-2">Zero Spoiler</text>
+    <text x="90" y="268" font-size="36" fill="#a9b6c2">A One Piece wiki that stops where you do</text>
+  </g>
+
+  <!-- The compass mark, the same star the favicon carries. -->
+  <g transform="translate(1010 150) scale(3.2)" fill="none" stroke="#f6c330" stroke-width="2" stroke-linejoin="round" stroke-linecap="round">
+    <circle cx="0" cy="0" r="10.5"/>
+    <path d="M0 -8.5 L2 -2 L8.5 0 L2 2 L0 8.5 L-2 2 L-8.5 0 L-2 -2 Z"/>
+  </g>
+</svg>

@@ -13,9 +13,10 @@ import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
 import { useLocale } from '~/i18n/LocaleContext'
+import { isLocale } from '~/i18n/locales'
 import type { CharacterView, Slot } from '~/lib/view/records'
 import { orNotFound } from '~/routes/$locale/-found'
-import { describeDocument } from '~/routes/$locale/-head'
+import { describeRecordPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { recordStyles } from '~/routes/$locale/-record.styles'
 import {
@@ -58,10 +59,16 @@ export const Route = createFileRoute('/$locale/characters/$id')({
       }),
     }
   },
-  head: ({ loaderData }) => {
-    return loaderData === undefined ?
+  head: ({ loaderData, match, params }) => {
+    return loaderData === undefined || !isLocale(params.locale) ?
         {}
-      : { meta: describeDocument(loaderData.head) }
+      : describeRecordPage({
+          head: loaderData.head,
+          locale: params.locale,
+          parentPath: '/characters',
+          parentTitleKey: 'characters.pageTitle',
+          pathname: match.pathname,
+        })
   },
   component: CharacterPage,
   notFoundComponent: CharacterNotFound,

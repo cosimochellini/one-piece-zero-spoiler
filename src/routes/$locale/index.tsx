@@ -6,9 +6,11 @@ import { RouteChart } from '~/components/RouteChart'
 import { RouteLegend } from '~/components/RouteLegend'
 import { SeaChartFold } from '~/components/SeaChartFold'
 import { useT } from '~/i18n/LocaleContext'
+import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { ChartView, WaypointView } from '~/lib/view/records'
+import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftWaypoint, loadChart } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
@@ -29,6 +31,17 @@ export const Route = createFileRoute('/$locale/')({
   // and sends back only the waypoints at or below it.
   loader: async ({ context }) =>
     loadChart({ data: { locale: context.locale } }),
+  head: ({ match, params }) => {
+    return isLocale(params.locale) ?
+        describeNamedPage({
+          descriptionKey: 'site.description',
+          kind: 'landing',
+          locale: params.locale,
+          pathname: match.pathname,
+          titleKey: 'site.title',
+        })
+      : {}
+  },
 })
 
 const FAQ = [

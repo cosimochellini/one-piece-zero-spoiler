@@ -15,6 +15,8 @@ import { ep, renderWithProviders } from '~/test/providers'
 import { Route } from './$id'
 import { EatersBand, KinBand, PlateBand } from './-$id.bands'
 
+const PATHNAME = '/en/fruits/gum-gum'
+
 type Meta = {
   readonly content?: string
   readonly name?: string
@@ -23,7 +25,13 @@ type Meta = {
 
 type Head = (input: {
   readonly loaderData: undefined | { readonly head: DocumentHead }
-}) => { readonly meta?: readonly Meta[] }
+  readonly match: { readonly pathname: string }
+  readonly params: { readonly locale: string }
+}) => {
+  readonly links?: readonly { href: string; rel: string }[]
+  readonly meta?: readonly Meta[]
+  readonly scripts?: readonly { children: string }[]
+}
 
 /**
  * The route options are typed against the whole generated tree, whose context
@@ -35,17 +43,21 @@ function isHead(value: unknown): value is Head {
   return typeof value === 'function'
 }
 
-function metaFor(head: DocumentHead | undefined): string {
+function headFor(head: DocumentHead | undefined): ReturnType<Head> {
   const describeHead: unknown = Route.options.head
   if (!isHead(describeHead)) {
     throw new TypeError('the route has no head')
   }
 
-  const { meta } = describeHead({
+  return describeHead({
     loaderData: head === undefined ? undefined : { head },
+    match: { pathname: PATHNAME },
+    params: { locale: 'en' },
   })
+}
 
-  return JSON.stringify(meta ?? [])
+function metaFor(head: DocumentHead | undefined): string {
+  return JSON.stringify(headFor(head).meta ?? [])
 }
 
 describe('fruit route head', () => {
@@ -68,6 +80,34 @@ describe('fruit route head', () => {
     expect(fogged).not.toContain('Dark')
     expect(fogged).toContain('A fruit under fog — Zero Spoiler')
     expect(fogged).toContain('episode 462')
+  })
+
+  it('points the canonical link and the cards at this page', () => {
+    const { links, scripts } = headFor({
+      description: 'A rubber fruit.',
+      title: 'Gum-Gum Fruit — Zero Spoiler',
+    })
+    const canonical = links?.filter((link) => link.rel === 'canonical') ?? []
+    const alternates = links?.filter((link) => link.rel === 'alternate') ?? []
+
+    expect(canonical).toHaveLength(1)
+    expect(canonical[0]?.href).toBe(
+      'https://one-piece-zero-spoiler.netlify.app/en/fruits/gum-gum',
+    )
+    // Italian, English and the x-default.
+    expect(alternates).toHaveLength(3)
+    expect(JSON.stringify(scripts)).toContain('BreadcrumbList')
+  })
+
+  it('keeps a covered name out of the structured data too', () => {
+    const { scripts } = headFor({
+      description: 'A devil fruit filed at episode 130.',
+      title: 'A fruit under fog — Zero Spoiler',
+    })
+    const graph: unknown = JSON.parse(scripts?.[0]?.children ?? 'null')
+
+    expect(JSON.stringify(graph)).not.toContain('Gum-Gum')
+    expect(JSON.stringify(graph)).toContain('A fruit under fog')
   })
 
   it('says nothing at all before the loader has run', () => {
