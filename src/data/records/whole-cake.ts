@@ -636,7 +636,7 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 757, value: 'alive' },
-        { episode: 846, value: 'deceased' },
+        { episode: 850, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1110,7 +1110,11 @@ export const wholeCake: Saga = {
         it: 'Nel ricordo gestisce un orfanotrofio sull’isola dei giganti e accoglie chiunque venga lasciato alla sua porta, chiamandoli tutti figli suoi. Ha il velo bianco, un sorriso larghissimo e un sacchetto di dolci sempre a portata di mano. I bambini la chiamano Mamma, e una di loro, una bambina già più alta di lei, non si stacca mai dalla sua gonna.',
         en: 'In the memory she runs an orphanage on the island of giants and takes in whoever is left at her door, calling them all her own children. She has a white veil, a very wide smile and a bag of sweets always within reach. The children call her Mother, and one of them, a little girl already taller than she is, never leaves her skirts.',
       },
-      status: [{ episode: 836, value: 'deceased' }],
+      status: [
+        { episode: 836, value: 'alive' },
+        { episode: 837, value: 'missing' },
+        { episode: 838, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 836,

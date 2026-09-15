@@ -759,7 +759,7 @@ export const summitWar: Saga = {
       },
       status: [
         { episode: 430, value: 'imprisoned' },
-        { episode: 459, value: 'alive' },
+        { episode: 451, value: 'alive' },
       ],
       affiliation: [
         { episode: 430, value: WARLORDS },
@@ -1757,7 +1757,8 @@ export const summitWar: Saga = {
         en: 'He is a boy born into a rich family of the kingdom who ran away from it, living among the scrap and quietly building himself a boat. With Ace and Luffy he shares the loot, the beatings and a length of iron pipe used as a weapon. In a clearing in the woods the three of them drink from three cups and call each other brothers, and tell nobody.',
       },
       status: [
-        { episode: 497, value: 'presumed-dead' },
+        { episode: 497, value: 'alive' },
+        { episode: 503, value: 'presumed-dead' },
         { episode: 663, value: 'alive' },
       ],
       affiliation: [

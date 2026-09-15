@@ -474,7 +474,7 @@ export const wano: Saga = {
       },
       status: [
         { episode: 898, value: 'alive' },
-        { episode: 1043, value: 'deceased' },
+        { episode: 1025, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -513,7 +513,9 @@ export const wano: Saga = {
       },
       status: [
         { episode: 908, value: 'alive' },
-        { episode: 1085, value: 'deceased' },
+        { episode: 994, value: 'presumed-dead' },
+        { episode: 1026, value: 'alive' },
+        { episode: 1075, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -876,7 +878,10 @@ export const wano: Saga = {
         it: 'Porta il nome di una famiglia che a Wano nessuno pronuncia volentieri, e cammina appoggiata a un bastone con una maschera da volpe sul viso. Il suo frutto le permette di assumere l’aspetto di chiunque abbia visto, e se ne serve per mettere gli uomini gli uni contro gli altri. È lei a spingere verso il potere un giovane Kurozumi.',
         en: 'She carries a family name that nobody in Wano says gladly, and walks leaning on a stick with a fox mask over her face. Her fruit lets her take the shape of anyone she has laid eyes on, and she uses it to set men against each other. It is she who pushes a young Kurozumi towards power.',
       },
-      status: [{ episode: 963, value: 'deceased' }],
+      status: [
+        { episode: 963, value: 'alive' },
+        { episode: 974, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 963,
@@ -919,7 +924,7 @@ export const wano: Saga = {
       },
       status: [
         { episode: 970, value: 'alive' },
-        { episode: 1076, value: 'deceased' },
+        { episode: 1068, value: 'deceased' },
       ],
       affiliation: [
         {

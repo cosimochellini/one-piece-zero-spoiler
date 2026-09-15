@@ -267,7 +267,7 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1090, value: 'alive' },
-        { episode: 1116, value: 'deceased' },
+        { episode: 1142, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -505,7 +505,7 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1112, value: 'alive' },
-        { episode: 1117, value: 'deceased' },
+        { episode: 1132, value: 'deceased' },
       ],
       affiliation: [
         {

@@ -808,7 +808,10 @@ export const alabasta: Saga = {
         it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Portava una bandiera dei pirati cucita sulla giacca e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco, l’ha chiamata Chopper e le ha insegnato a fare il medico.',
         en: 'He treated anyone for free with remedies that nearly always made things worse, and said an illness is beaten the moment you stop fearing it. He wore a pirate flag stitched to his coat and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out, called him Chopper, and taught him to be a doctor.',
       },
-      status: [{ episode: 85, value: 'deceased' }],
+      status: [
+        { episode: 85, value: 'alive' },
+        { episode: 86, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 85,
@@ -828,8 +831,8 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 92, value: 'alive' },
-        { episode: 130, value: 'imprisoned' },
-        { episode: 452, value: 'alive' },
+        { episode: 127, value: 'imprisoned' },
+        { episode: 451, value: 'alive' },
       ],
       affiliation: [
         {
@@ -865,7 +868,7 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 93, value: 'alive' },
-        { episode: 1085, value: 'deceased' },
+        { episode: 1088, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -917,7 +920,7 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 93, value: 'alive' },
-        { episode: 127, value: 'presumed-dead' },
+        { episode: 125, value: 'presumed-dead' },
         { episode: 130, value: 'alive' },
       ],
       affiliation: [

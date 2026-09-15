@@ -310,7 +310,10 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 517, value: 'alive' },
-        { episode: 574, value: 'captured' },
+        { episode: 525, value: 'captured' },
+        { episode: 531, value: 'alive' },
+        { episode: 919, value: 'imprisoned' },
+        { episode: 949, value: 'alive' },
       ],
       affiliation: [
         {
@@ -321,10 +324,10 @@ export const fishManIsland: Saga = {
           },
         },
         {
-          episode: 574,
+          episode: 919,
           value: {
-            it: 'Catturato, poi prigioniero di Kid',
-            en: 'Captured, later Kid’s prisoner',
+            it: 'Prigioniero nella miniera di Udon',
+            en: 'Prisoner in the Udon mine',
           },
         },
       ],
@@ -429,7 +432,7 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 527, value: 'alive' },
-        { episode: 574, value: 'imprisoned' },
+        { episode: 569, value: 'imprisoned' },
       ],
       affiliation: [
         {
@@ -667,7 +670,10 @@ export const fishManIsland: Saga = {
         it: 'Lascia l’Isola degli Uomini-Pesce per vedere il mondo e ne torna con i segni delle catene ai polsi. Poi risale la Red Line da solo, apre le celle di Mary Geoise e porta giù chiunque riesca a camminare, di qualunque razza sia. Sulla pelle dei liberati fa marchiare un sole che copre il marchio dei Nobili, e con loro fonda una ciurma.',
         en: 'He leaves Fish-Man Island to see the world and comes back with chain marks on his wrists. Then he climbs the Red Line alone, opens the cells of Mary Geoise and brings down everyone who can still walk, of whatever race. On the freed he has a sun burned over the Nobles’ brand, and with them he founds a crew.',
       },
-      status: [{ episode: 539, value: 'deceased' }],
+      status: [
+        { episode: 539, value: 'alive' },
+        { episode: 543, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 539,

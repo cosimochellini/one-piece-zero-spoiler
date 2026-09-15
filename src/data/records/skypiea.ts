@@ -565,7 +565,7 @@ export const skypiea: Saga = {
       },
       status: [
         { episode: 152, value: 'alive' },
-        { episode: 486, value: 'deceased' },
+        { episode: 485, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -593,7 +593,7 @@ export const skypiea: Saga = {
       },
       status: [
         { episode: 152, value: 'alive' },
-        { episode: 746, value: 'imprisoned' },
+        { episode: 735, value: 'imprisoned' },
       ],
       affiliation: [
         {

@@ -368,7 +368,7 @@ export const thrillerBark: Saga = {
         it: 'Guidava i Pirati di Rumbar con l’allegria di chi è salpato per far ballare la gente, e la sua ciurma suonava anche mentre combatteva. Alla vigilia della traversata più dura si ammalò, e scelse di staccarsi dagli altri con una nave sola per non trascinarli con sé. Li salutò ridendo, come se fosse una partenza qualunque.',
         en: 'He led the Rumbar Pirates with the cheer of a man who set out to make people dance, and his crew played while it fought. On the eve of the hardest crossing he fell ill, and chose to break away with a single ship rather than drag the others down with him. He waved them off laughing, as though it were an ordinary parting.',
       },
-      status: [{ episode: 380, value: 'deceased' }],
+      status: [{ episode: 380, value: 'unknown' }],
       affiliation: [
         {
           episode: 380,

@@ -1006,8 +1006,8 @@ export const eastBlue: Saga = {
       },
       status: [
         { episode: 5, value: 'alive' },
-        { episode: 437, value: 'imprisoned' },
-        { episode: 452, value: 'alive' },
+        { episode: 422, value: 'imprisoned' },
+        { episode: 451, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1558,7 +1558,10 @@ export const eastBlue: Saga = {
         it: 'Torna dalla guerra senza niente e con due bambine che non sono sue, e le tiene lo stesso, in una casa dove spesso si mangia una volta al giorno. Coltiva un frutteto di mandarini che rende poco e litiga con le figlie come si litiga in famiglia. Quando gli uomini-pesce arrivano a contare le teste, non dice mai di non essere la loro madre.',
         en: 'She comes home from a war with nothing and two girls who are not hers, and keeps them anyway, in a house where a meal a day is often all there is. She works a mandarin orchard that barely pays and argues with her daughters the way families argue. When the fish-men come counting heads, she never once says she is not their mother.',
       },
-      status: [{ episode: 34, value: 'deceased' }],
+      status: [
+        { episode: 34, value: 'alive' },
+        { episode: 36, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 34,

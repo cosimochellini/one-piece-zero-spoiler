@@ -669,7 +669,7 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 586, value: 'alive' },
-        { episode: 625, value: 'deceased' },
+        { episode: 620, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -690,7 +690,7 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 589, value: 'alive' },
-        { episode: 613, value: 'deceased' },
+        { episode: 620, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1410,7 +1410,7 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 676, value: 'alive' },
-        { episode: 1050, value: 'deceased' },
+        { episode: 1055, value: 'deceased' },
       ],
       affiliation: [
         {
