@@ -121,8 +121,8 @@ browser at all rather than there and declined.
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
 | Line drawings       | 476, one per record                                                   |
-| Test files          | 59                                                                    |
-| Test cases          | 487                                                                   |
+| Test files          | 60                                                                    |
+| Test cases          | 493                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
 
 ## Every line drawn here

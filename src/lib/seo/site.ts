@@ -13,15 +13,26 @@
  * built output.
  */
 const FALLBACK_ORIGIN = 'https://one-piece-zero-spoiler.netlify.app'
+const HTTPS = 'https://'
 
 /**
  * The configured origin with its trailing slashes taken off, or the default
  * when nothing is configured. Exported rather than inlined so the branches can
  * be fed a value: the real one is frozen at import time from the build's env,
  * which a test cannot vary.
+ *
+ * A value without a scheme is refused rather than trusted. Every use of this
+ * is an absolute address written into markup a crawler reads — a canonical
+ * link, an alternate, an `og:url`, nine hundred `<loc>` elements — and
+ * `example.test/en` in any of them is not a URL at all. The failure would be
+ * silent for days, so a dropped `https://` falls back to the address the site
+ * is published under instead.
  */
 export function normaliseOrigin(configured: string | undefined): string {
-  if (configured === undefined || configured === '') {
+  // Compared to `true` rather than read as a condition: the chain is
+  // `undefined` when nothing is configured, and this file's lint holds that a
+  // nullable boolean says which of the two it means.
+  if (configured?.startsWith(HTTPS) !== true) {
     return FALLBACK_ORIGIN
   }
 

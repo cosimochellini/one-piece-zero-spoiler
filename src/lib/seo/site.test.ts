@@ -30,6 +30,14 @@ describe('a configured origin', () => {
     expect(normaliseOrigin(undefined)).toBe(normaliseOrigin(''))
     expect(normaliseOrigin(undefined)).toContain('https://')
   })
+
+  it('refuses a value that is not an absolute https address', () => {
+    const fallback = normaliseOrigin(undefined)
+
+    expect(normaliseOrigin('one-piece-zero-spoiler.netlify.app')).toBe(fallback)
+    expect(normaliseOrigin('//example.test')).toBe(fallback)
+    expect(normaliseOrigin('/en')).toBe(fallback)
+  })
 })
 
 describe('an absolute URL', () => {
