@@ -41,6 +41,14 @@ describe('the structured data of a page', () => {
     )
   })
 
+  it('ends the trail on the page itself, and does not link it', () => {
+    const steps: unknown = JSON.parse(pageJsonLd(PAGE))
+
+    expect(JSON.stringify(steps)).toContain(
+      '{"@type":"ListItem","position":2,"name":"Nico Robin — Zero Spoiler"}',
+    )
+  })
+
   it('leaves out the trail when there is none', () => {
     expect(pageJsonLd({ ...PAGE, trail: [] })).not.toContain('BreadcrumbList')
   })

@@ -36,7 +36,18 @@ const PAGE_TYPE: Readonly<Record<PageKind, string>> = {
   record: 'WebPage',
 }
 
-function breadcrumbs(trail: readonly Crumb[]): readonly object[] {
+// The last step is the page the reader is already on. Google's own example
+// leaves that one without an `item`, because a breadcrumb does not link to
+// where it stands.
+function listItem(crumb: Crumb, index: number): object {
+  const position = index + 1
+
+  return crumb.url === '' ?
+      { '@type': 'ListItem', position, 'name': crumb.name }
+    : { '@type': 'ListItem', position, 'name': crumb.name, 'item': crumb.url }
+}
+
+function breadcrumbs(trail: readonly Crumb[], here: Crumb): readonly object[] {
   if (trail.length === 0) {
     return []
   }
@@ -44,14 +55,9 @@ function breadcrumbs(trail: readonly Crumb[]): readonly object[] {
   return [
     {
       '@type': 'BreadcrumbList',
-      'itemListElement': trail.map((crumb, index) => {
-        return {
-          '@type': 'ListItem',
-          'position': index + 1,
-          'name': crumb.name,
-          'item': crumb.url,
-        }
-      }),
+      'itemListElement': [...trail, here].map((crumb, index) =>
+        listItem(crumb, index),
+      ),
     },
   ]
 }
@@ -86,7 +92,7 @@ function graphOf(page: JsonLdPage): string {
         'inLanguage': page.locale,
         'isPartOf': { '@id': `${page.siteUrl}#website` },
       },
-      ...breadcrumbs(page.trail),
+      ...breadcrumbs(page.trail, { name: page.title, url: '' }),
     ],
   })
 }
