@@ -252,11 +252,21 @@ describe('the dossiers', () => {
   })
 
   it('leaves a fate to the status and out of the affiliation', () => {
+    // Both halves of the vocabulary that are a fate and nothing else: a
+    // death, and a death the story later takes back. An affiliation that
+    // carried one would print it a second time, and — as it did for Sabo —
+    // at whichever episode the affiliation happened to change rather than at
+    // the episode the fate did.
+    //
+    // Being held is deliberately not on this list: "Kid's prisoner" and
+    // "prisoner of the Udon camp" name a captor and a place, which is what an
+    // affiliation is for. `captured` and `imprisoned` say the state beside
+    // them, they do not replace them.
     for (const { label, timeline } of AFFILIATION_TIMELINES) {
       for (const entry of timeline) {
         for (const locale of LOCALES) {
           expect(entry.value[locale], label).not.toMatch(
-            /decedut|defunt|deceased/iu,
+            /decedut|defunt|deceased|uccis|killed|dato per mort|presumed dead/iu,
           )
         }
       }

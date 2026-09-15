@@ -1757,16 +1757,15 @@ export const summitWar: Saga = {
         en: 'He is a boy born into a rich family of the kingdom who ran away from it, living among the scrap and quietly building himself a boat. With Ace and Luffy he shares the loot, the beatings and a length of iron pipe used as a weapon. In a clearing in the woods the three of them drink from three cups and call each other brothers, and tell nobody.',
       },
       status: [
-        { episode: 497, value: 'alive' },
-        { episode: 498, value: 'presumed-dead' },
+        { episode: 497, value: 'presumed-dead' },
         { episode: 663, value: 'alive' },
       ],
       affiliation: [
         {
           episode: 497,
           value: {
-            it: 'Famiglia Dadan, fratello giurato di Rufy e Ace, dato per morto',
-            en: 'Dadan Family, sworn brother of Luffy and Ace, presumed dead',
+            it: 'Famiglia Dadan, fratello giurato di Rufy e Ace',
+            en: 'Dadan Family, sworn brother of Luffy and Ace',
           },
         },
         {
