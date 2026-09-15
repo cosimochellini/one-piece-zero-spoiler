@@ -472,6 +472,10 @@ export const wano: Saga = {
         it: 'Guida una banda di briganti che ruba il riso ai pirati dell’Imperatore e lo lascia ai villaggi affamati, e non prende ordini da nessuno. Si fa chiamare Shutenmaru, ma i vecchi del paese riconoscono in lui il capobanda che vent’anni fa metteva paura a mezza Wano. Quando gli si propone un’alleanza risponde a colpi di spada.',
         en: 'He leads a band of thieves that steals rice from the Emperor’s pirates and leaves it for the starving villages, and he takes orders from nobody. He goes by Shutenmaru, though the old men of the country recognise in him the bandit chief who terrified half of Wano twenty years ago. Offered an alliance, he answers with his sword.',
       },
+      status: [
+        { episode: 898, value: 'alive' },
+        { episode: 1025, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 898,
@@ -507,15 +511,18 @@ export const wano: Saga = {
         it: 'Tiene il paese chiuso e la capitale ricca mentre le campagne bevono acqua avvelenata, e paga la propria sicurezza all’Imperatore che gli presta i pirati. Chi nomina la famiglia Kozuki davanti a lui viene giustiziato senza processo. Ride di ogni cosa, anche quando ordina di bruciare un villaggio, e non lascia mai il fianco scoperto.',
         en: 'He keeps the country sealed and the capital rich while the countryside drinks poisoned water, and pays for his own safety with the Emperor who lends him pirates. Anyone who says the name Kozuki in front of him is executed without a trial. He laughs at everything, even while ordering a village burned, and never leaves his flank open.',
       },
+      status: [
+        { episode: 908, value: 'alive' },
+        { episode: 994, value: 'presumed-dead' },
+        { episode: 1026, value: 'alive' },
+        { episode: 1075, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 908,
           value: { it: 'Shogun del Paese di Wano', en: 'Shogun of Wano' },
         },
-        {
-          episode: 1085,
-          value: { it: 'Deposto, deceduto', en: 'Deposed, deceased' },
-        },
+        { episode: 1085, value: { it: 'Deposto', en: 'Deposed' } },
       ],
       origin: [{ episode: 908, value: WANO }],
       devilFruit: [
@@ -725,6 +732,10 @@ export const wano: Saga = {
         it: 'Nel quartiere più povero della capitale gira scalzo, saluta tutti per nome e promette a chi ha fame che un giorno le cose cambieranno. La gente di Ebisu lo chiama Tonoyasu e lo ascolta più di quanto ascolti lo shogun. Quando si presenta da solo davanti al patibolo, la capitale scopre che quel vecchio senza sandali era il signore di una delle regioni di Wano.',
         en: 'In the poorest quarter of the capital he walks barefoot, greets everyone by name and promises the hungry that one day things will change. The people of Ebisu call him Tonoyasu and listen to him more than they listen to the shogun. When he walks up to the execution stand alone, the capital learns that the old man without sandals once ruled one of Wano’s regions.',
       },
+      status: [
+        { episode: 938, value: 'alive' },
+        { episode: 940, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 938,
@@ -733,7 +744,6 @@ export const wano: Saga = {
             en: 'Former daimyo of Hakumai; Tonoyasu of Ebisu Town',
           },
         },
-        { episode: 940, value: { it: 'Giustiziato', en: 'Executed' } },
       ],
       origin: [{ episode: 938, value: WANO }],
       epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
@@ -805,12 +815,13 @@ export const wano: Saga = {
         it: 'Un vecchio grand’ammiraglio racconta di una ciurma che quarant’anni fa metteva insieme uomini che oggi sono leggende, e del capitano che li teneva tutti sotto di sé. Voleva prendersi il mondo, e la sua storia finisce su un’isola chiamata God Valley, dove qualcuno lo ferma. Il Governo Mondiale ha fatto sparire quel nome da ogni documento.',
         en: 'A retired fleet admiral tells of a crew that forty years ago held men who are legends today, and of the captain who kept every one of them under him. He meant to take the world, and his story ends on an island called God Valley, where somebody stopped him. The World Government struck his name out of every record it keeps.',
       },
+      status: [{ episode: 958, value: 'deceased' }],
       affiliation: [
         {
           episode: 958,
           value: {
-            it: 'Pirati di Rocks, capitano, quarant’anni fa, deceduto',
-            en: 'Rocks Pirates, captain, forty years ago, deceased',
+            it: 'Pirati di Rocks, capitano, quarant’anni fa',
+            en: 'Rocks Pirates, captain, forty years ago',
           },
         },
       ],
@@ -822,12 +833,13 @@ export const wano: Saga = {
         it: 'A Wano lo ricordano come un disastro: rubava, si azzuffava e metteva in imbarazzo il castello di suo padre, e la gente di Kuri lo adorava lo stesso. Prese il mare con la ciurma di Barbabianca e poi con quella del Re dei Pirati, e tornò in un paese che non era più il suo. Vent’anni fa lo giustiziarono nella capitale, e da allora Wano è chiusa.',
         en: 'Wano remembers him as a walking disaster: he stole, he brawled and he shamed his father’s castle, and the people of Kuri loved him for it. He took to the sea with Whitebeard’s crew and then with the King of the Pirates, and came home to a country that was no longer his. Twenty years ago they executed him in the capital, and Wano has been shut ever since.',
       },
+      status: [{ episode: 960, value: 'deceased' }],
       affiliation: [
         {
           episode: 960,
           value: {
-            it: 'Kuri, daimyo; Pirati di Barbabianca, comandante della seconda divisione; Pirati di Roger; giustiziato vent’anni fa',
-            en: 'Kuri, daimyo; Whitebeard Pirates, second division commander; Roger Pirates; executed twenty years ago',
+            it: 'Kuri, daimyo; Pirati di Barbabianca, comandante della seconda divisione; Pirati di Roger',
+            en: 'Kuri, daimyo; Whitebeard Pirates, second division commander; Roger Pirates',
           },
         },
       ],
@@ -839,12 +851,13 @@ export const wano: Saga = {
         it: 'Arriva a Wano da sola, cercando un paese che dice di avere lasciato ottocento anni prima, e non spiega a nessuno come ci sia riuscita. Il suo frutto del diavolo manda le persone avanti nel tempo in una sola direzione: nessuno può tornare indietro. Sposa il daimyo di Kuri e resta con lui anche quando il paese gli si rivolta contro.',
         en: 'She arrives in Wano alone, looking for a country she says she left eight hundred years earlier, and explains to nobody how she managed it. Her devil fruit sends people forward through time in one direction only: nobody comes back. She marries the daimyo of Kuri and stays with him even when the country turns against him.',
       },
+      status: [{ episode: 963, value: 'deceased' }],
       affiliation: [
         {
           episode: 963,
           value: {
-            it: 'Famiglia Kozuki, moglie di Oden, deceduta',
-            en: 'Kozuki family, Oden’s wife, deceased',
+            it: 'Famiglia Kozuki, moglie di Oden',
+            en: 'Kozuki family, Oden’s wife',
           },
         },
       ],
@@ -865,12 +878,16 @@ export const wano: Saga = {
         it: 'Porta il nome di una famiglia che a Wano nessuno pronuncia volentieri, e cammina appoggiata a un bastone con una maschera da volpe sul viso. Il suo frutto le permette di assumere l’aspetto di chiunque abbia visto, e se ne serve per mettere gli uomini gli uni contro gli altri. È lei a spingere verso il potere un giovane Kurozumi.',
         en: 'She carries a family name that nobody in Wano says gladly, and walks leaning on a stick with a fox mask over her face. Her fruit lets her take the shape of anyone she has laid eyes on, and she uses it to set men against each other. It is she who pushes a young Kurozumi towards power.',
       },
+      status: [
+        { episode: 963, value: 'alive' },
+        { episode: 974, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 963,
           value: {
-            it: 'Famiglia Kurozumi, anziana, deceduta',
-            en: 'Kurozumi family, elder, deceased',
+            it: 'Famiglia Kurozumi, anziana',
+            en: 'Kurozumi family, elder',
           },
         },
       ],
@@ -886,13 +903,11 @@ export const wano: Saga = {
         it: 'Sta accanto all’anziana della famiglia Kurozumi senza quasi mai parlare, e interviene soltanto quando qualcuno alza una mano su di lei. Il suo frutto del diavolo alza barriere invisibili che fermano una lama a mezz’aria e non si lasciano piegare. In un paese che odia il suo cognome, gli basta una parete d’aria per restare in piedi.',
         en: 'He stands beside the elder of the Kurozumi family and hardly ever speaks, stepping in only when somebody raises a hand to her. His devil fruit throws up invisible barriers that stop a blade in mid-air and will not bend for anyone. In a country that hates his family name, a wall of air is enough to keep him standing.',
       },
+      status: [{ episode: 963, value: 'deceased' }],
       affiliation: [
         {
           episode: 963,
-          value: {
-            it: 'Famiglia Kurozumi, deceduto',
-            en: 'Kurozumi family, deceased',
-          },
+          value: { it: 'Famiglia Kurozumi', en: 'Kurozumi family' },
         },
       ],
       origin: [{ episode: 963, value: WANO }],
@@ -907,6 +922,10 @@ export const wano: Saga = {
         it: 'Cresciuto nella capitale, ha lasciato Wano insieme al daimyo di Kuri e non ha più fatto ritorno, restando a bordo della nave di Barbabianca. Si presenta in kimono, con gli spilloni tra i capelli e due pistole a pietra focaia che usa meglio di chiunque altro nella ciurma. Del paese che ha lasciato non ha mai smesso di chiedere notizie.',
         en: 'Raised in the capital, he left Wano with the daimyo of Kuri and never went home, staying aboard Whitebeard’s ship instead. He turns up in a kimono, pins in his hair and a flintlock in each hand, and shoots better than anyone else in the crew. He has never stopped asking for word of the country he left behind.',
       },
+      status: [
+        { episode: 970, value: 'alive' },
+        { episode: 1068, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 970,

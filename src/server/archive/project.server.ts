@@ -213,6 +213,68 @@ export function factsOf(
   return factsFrom(dossierOf(entity), locale, bookmark)
 }
 
+/**
+ * The facts themselves, before `mode` is set on them.
+ *
+ * Every one is optional, and an absent one is absent rather than `undefined`:
+ * under `exactOptionalPropertyTypes` those are different types, and the
+ * difference is the feature — a key that is not there is a row the page does
+ * not draw.
+ */
+type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
+
+/** The latest entry of a timeline the dossier may not carry at all. */
+function knownAt<T>(
+  timeline: Timeline<T> | undefined,
+  bookmark: Bookmark,
+): T | undefined {
+  return timeline === undefined ? undefined : latestAt(timeline, bookmark)
+}
+
+/** The facts that are prose, in the reader's own language. */
+function wordFactsOf(
+  dossier: CharacterDossier,
+  locale: Locale,
+  bookmark: Bookmark,
+): ReachedFacts {
+  const words = (
+    timeline: Timeline<LocalizedText> | undefined,
+  ): string | undefined => knownAt(timeline, bookmark)?.[locale]
+
+  const epithet = words(dossier.epithet)
+  const affiliation = words(dossier.affiliation)
+  const origin = words(dossier.origin)
+
+  return {
+    ...(epithet !== undefined && { epithet }),
+    ...(affiliation !== undefined && { affiliation }),
+    ...(origin !== undefined && { origin }),
+  }
+}
+
+/**
+ * The facts that are not prose: a state, a fruit, a number.
+ *
+ * Split from the prose half because one projection spreading six optional
+ * facts is one `&&` over the complexity ceiling, and the ceiling is the
+ * review budget rather than a number to argue with.
+ */
+function codedFactsOf(
+  dossier: CharacterDossier,
+  locale: Locale,
+  bookmark: Bookmark,
+): ReachedFacts {
+  const status = knownAt(dossier.status, bookmark)
+  const devilFruit = linksFor(knownAt(dossier.devilFruit, bookmark), locale)
+  const bounty = knownAt(dossier.bounty, bookmark)
+
+  return {
+    ...(status !== undefined && { status }),
+    ...(devilFruit !== undefined && { devilFruit }),
+    ...(bounty !== undefined && { bounty }),
+  }
+}
+
 /** The same, from a dossier rather than the record it belongs to. */
 export function factsFrom(
   dossier: CharacterDossier | undefined,
@@ -228,23 +290,9 @@ export function factsFrom(
     return { mode: 'facts' }
   }
 
-  const known = <T>(timeline: Timeline<T> | undefined): T | undefined =>
-    timeline === undefined ? undefined : latestAt(timeline, bookmark)
-  const words = (value: LocalizedText | undefined): string | undefined =>
-    value?.[locale]
-
-  const epithet = words(known(dossier.epithet))
-  const affiliation = words(known(dossier.affiliation))
-  const origin = words(known(dossier.origin))
-  const devilFruit = linksFor(known(dossier.devilFruit), locale)
-  const bounty = known(dossier.bounty)
-
   return {
     mode: 'facts',
-    ...(epithet !== undefined && { epithet }),
-    ...(affiliation !== undefined && { affiliation }),
-    ...(origin !== undefined && { origin }),
-    ...(devilFruit !== undefined && { devilFruit }),
-    ...(bounty !== undefined && { bounty }),
+    ...wordFactsOf(dossier, locale, bookmark),
+    ...codedFactsOf(dossier, locale, bookmark),
   }
 }

@@ -265,6 +265,10 @@ export const egghead: Saga = {
         it: 'Il Governo Mondiale lo tiene su un’isola sola in mezzo al Nuovo Mondo, e da lì escono le navi, le armi e i Pacifista che la Marina usa da anni. Chi approda su Egghead trova un vecchio dalla testa enorme, gentile e distratto, che parla della propria ricerca come di una cosa che appartiene a tutti. Dice di essere lui lo scienziato di cui il mondo parla da sempre.',
         en: 'The World Government keeps him on a single island in the middle of the New World, and out of it come the ships, the weapons and the Pacifista the Marines have used for years. Whoever lands on Egghead finds a kindly, distracted old man with an enormous head who talks about his research as something that belongs to everyone. He says he is the scientist the world has been discussing for decades.',
       },
+      status: [
+        { episode: 1090, value: 'alive' },
+        { episode: 1142, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 1090,
@@ -272,10 +276,6 @@ export const egghead: Saga = {
             it: 'Governo Mondiale, scienziato capo',
             en: 'World Government, chief scientist',
           },
-        },
-        {
-          episode: 1116,
-          value: { it: 'Ucciso dalla Marina', en: 'Killed by the Marines' },
         },
       ],
       origin: [
@@ -503,6 +503,10 @@ export const egghead: Saga = {
         it: 'Cresce nella stessa chiesa del Regno di Sorbet in cui finisce Kuma, in mezzo a bambini che nessuno è venuto a riprendere. È la più sfacciata di tutti e la prima a difendere chi viene trattato male, e canta per i malati che il prete accoglie. Quando arriva un bambino che non parla con nessuno, decide che a lui ci penserà lei.',
         en: 'She grows up in the same Sorbet Kingdom church that takes Kuma in, among children nobody ever came back for. She is the boldest of them and the first to stand up for anyone treated badly, and she sings for the sick the priest shelters. When a boy arrives who will not speak to anyone, she decides on the spot that he is hers to look after.',
       },
+      status: [
+        { episode: 1112, value: 'alive' },
+        { episode: 1132, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 1112,
@@ -514,8 +518,8 @@ export const egghead: Saga = {
         {
           episode: 1117,
           value: {
-            it: 'Armata Rivoluzionaria, comandante dell’Armata dell’Est, deceduta',
-            en: 'Revolutionary Army, East Army commander, deceased',
+            it: 'Armata Rivoluzionaria, comandante dell’Armata dell’Est',
+            en: 'Revolutionary Army, East Army commander',
           },
         },
       ],

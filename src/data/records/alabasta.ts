@@ -592,6 +592,7 @@ export const alabasta: Saga = {
         it: 'Per due anni è stata Miss Wednesday, un’agente dell’organizzazione di cui voleva scoprire il capo. Ora che lo conosce, quel nome la condanna a morte e l’unico modo per tornare a casa è una nave di pirati che ha appena incontrato. Ha un’anatra da corsa che risponde al nome di Carue.',
         en: 'For two years she was Miss Wednesday, an agent of the organisation whose leader she set out to unmask. Now that she knows him, that name marks her for death and the only way home is a pirate ship she has just met. She has a racing duck who answers to Carue.',
       },
+      status: [{ episode: 67, value: 'alive' }],
       affiliation: [
         {
           episode: 67,
@@ -765,6 +766,7 @@ export const alabasta: Saga = {
         it: 'Il branco lo ha cacciato per il naso blu e gli uomini gli hanno sparato perché parlava. Un ciarlatano con la bandiera dei pirati sulla giacca lo ha raccolto, gli ha dato un nome e gli ha insegnato che non esiste malattia che non si possa curare. Ora vive su una montagna con la dottoressa più anziana e più temuta dell’isola, e scappa da chiunque gli parli.',
         en: 'His herd drove him out over the blue nose and men shot at him because he talked. A quack with a pirate flag on his coat took him in, gave him a name and taught him that there is no illness that cannot be cured. Now he lives on a mountain with the oldest and most feared doctor on the island, and runs from anyone who speaks to him.',
       },
+      status: [{ episode: 83, value: 'alive' }],
       affiliation: [
         {
           episode: 83,
@@ -806,13 +808,14 @@ export const alabasta: Saga = {
         it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Portava una bandiera dei pirati cucita sulla giacca e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco, l’ha chiamata Chopper e le ha insegnato a fare il medico.',
         en: 'He treated anyone for free with remedies that nearly always made things worse, and said an illness is beaten the moment you stop fearing it. He wore a pirate flag stitched to his coat and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out, called him Chopper, and taught him to be a doctor.',
       },
+      status: [
+        { episode: 85, value: 'alive' },
+        { episode: 86, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 85,
-          value: {
-            it: 'Ciarlatano di Drum, defunto',
-            en: 'Quack doctor of Drum, deceased',
-          },
+          value: { it: 'Ciarlatano di Drum', en: 'Quack doctor of Drum' },
         },
       ],
       origin: [{ episode: 85, value: DRUM_ISLAND }],
@@ -826,6 +829,11 @@ export const alabasta: Saga = {
         it: 'Ad Alabasta gli hanno intitolato piazze: ha fermato i pirati che assalivano le coste e il popolo lo adora. Sotto il casinò di Rainbase dirige Baroque Works, una rete di agenti con nomi in codice che non lo hanno mai visto in faccia. Fuma sigari, non alza la voce e non considera nessuno un avversario.',
         en: 'Alabasta has named squares after him: he stopped the pirates raiding its coast and the people adore him. Beneath a casino in Rainbase he runs Baroque Works, a network of code-named agents who have never seen his face. He smokes cigars, never raises his voice, and does not consider anyone an opponent.',
       },
+      status: [
+        { episode: 92, value: 'alive' },
+        { episode: 127, value: 'imprisoned' },
+        { episode: 451, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 92,
@@ -858,6 +866,10 @@ export const alabasta: Saga = {
         it: 'Regna su un paese in cui non piove da anni e in cui metà del popolo lo accusa di aver rubato la pioggia. Riceve chiunque si presenti al palazzo, senza guardie fra sé e chi gli parla, e non ha mai alzato la voce contro i ribelli. Sa che sua figlia è partita da sola per scoprire chi sta distruggendo il regno.',
         en: 'He rules a country where it has not rained for years and where half the people accuse him of stealing the rain. He receives anyone who comes to the palace, with no guards between himself and whoever is speaking, and has never raised his voice against the rebels. He knows his daughter left alone to find out who is tearing the kingdom apart.',
       },
+      status: [
+        { episode: 93, value: 'alive' },
+        { episode: 1088, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 93,
@@ -906,6 +918,11 @@ export const alabasta: Saga = {
         it: 'Vola sopra il deserto sotto forma di falco e riporta al palazzo quello che vede, il che lo rende l’uomo più informato del regno. Porta una maschera a becco e una sciabola ricurva, e parla poco. Ha giurato di proteggere la famiglia reale e considera la principessa una bambina che ha visto crescere.',
         en: 'He flies over the desert as a falcon and brings back to the palace whatever he sees, which makes him the best-informed man in the kingdom. He wears a beaked mask and a curved sabre, and says little. He has sworn to protect the royal family and thinks of the princess as a child he watched grow up.',
       },
+      status: [
+        { episode: 93, value: 'alive' },
+        { episode: 125, value: 'presumed-dead' },
+        { episode: 130, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 93,
@@ -951,6 +968,10 @@ export const alabasta: Saga = {
         it: 'Si addormenta a metà pasto e a metà frase, e si sveglia come se niente fosse. Il suo corpo prende fuoco quando vuole, e il suo capitano è l’uomo che tutti chiamano il più forte del mondo. È venuto ad Alabasta per un compagno che ha ucciso uno dei suoi e se n’è andato; a Rufy lascia un pezzo di carta e l’ordine di tenerlo con sé.',
         en: 'He falls asleep mid-meal and mid-sentence, and wakes as if nothing happened. His body turns to fire at will, and his captain is the man everyone calls the strongest in the world. He came to Alabasta after a crewmate who killed one of their own and left; to Luffy he leaves a scrap of paper and an order to keep it.',
       },
+      status: [
+        { episode: 95, value: 'alive' },
+        { episode: 483, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 95,
@@ -1039,6 +1060,7 @@ export const alabasta: Saga = {
         it: 'Era Miss All Sunday, la vicepresidente di Baroque Works, e per tutto il tempo ha seguito il suo capo per una ragione sua: una stele scritta in una lingua che solo lei legge. Fa spuntare braccia dove vuole, dal pavimento o dalla schiena di un nemico. Dopo che Rufy le ha salvato la vita contro la sua volontà, sale sulla Going Merry e dichiara di farne parte.',
         en: 'She was Miss All Sunday, vice-president of Baroque Works, and all along she followed her boss for a reason of her own: a stone slab written in a language only she can read. She sprouts arms wherever she likes, from the floor or from an enemy’s back. After Luffy saves her life against her will, she boards the Going Merry and declares herself part of the crew.',
       },
+      status: [{ episode: 130, value: 'alive' }],
       affiliation: [{ episode: 130, value: STRAW_HATS }],
       origin: [
         { episode: 130, value: { it: 'West Blue', en: 'West Blue' } },

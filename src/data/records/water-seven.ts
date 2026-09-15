@@ -384,6 +384,7 @@ export const waterSeven: Saga = {
         it: 'Compare su Long Ring Long Land senza scorta, in bicicletta, e passa più tempo a dormire in piedi che a parlare. Congela il mare e ci cammina sopra, e per lui una ciurma di pirati è una pratica da sbrigare subito o da rimandare, a seconda dell’umore. Chiama pigra la sua idea di giustizia, e nessuno capisce se sia un avvertimento.',
         en: 'He turns up on Long Ring Long Land with no escort, on a bicycle, and spends more time asleep on his feet than talking. He freezes the sea and walks on it, and a crew of pirates is a piece of paperwork he will either settle now or put off, depending on his mood. He calls his own justice lazy, and nobody can tell whether that is a warning.',
       },
+      status: [{ episode: 227, value: 'alive' }],
       affiliation: [
         {
           episode: 227,
@@ -489,6 +490,7 @@ export const waterSeven: Saga = {
         it: 'Sta al Dock 1 e non dice una parola: a rispondere è Hattori, il piccione posato sul suo cilindro, mentre lui resta immobile a braccia conserte. Gli operai ci hanno fatto l’abitudine e nessuno ci vede più niente di strano. Quando si muove, ha una scioltezza che mette a disagio anche chi non saprebbe dire perché.',
         en: 'He stands at Dock One and does not say a word: the answers come from Hattori, the pigeon on his top hat, while he keeps his arms folded and does not move. The workers are used to it and nobody thinks it strange any more. When he does move, there is an ease about him that unsettles people who could not say why.',
       },
+      status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         { episode: 230, value: GALLEY_LA_DOCK_ONE },
         {
@@ -578,6 +580,7 @@ export const waterSeven: Saga = {
         it: 'Comanda la Franky Family, una banda di smantellatori che vive sotto un ponte di Water Seven e ruba a chi capita. Si è ricostruito il corpo da solo con pezzi di ferro, e funziona a cola: quando è scarico gli cambiano l’acconciatura e l’umore. Sa cosa vuol dire perdere una nave, e non lo racconta.',
         en: 'He runs the Franky Family, a gang of dismantlers who live under a bridge in Water Seven and rob whoever comes along. He rebuilt his own body out of scrap iron, and it runs on cola: when he is empty his hair and his mood both go flat. He knows what it is to lose a ship, and does not talk about it.',
       },
+      status: [{ episode: 235, value: 'alive' }],
       affiliation: [
         {
           episode: 235,
@@ -599,12 +602,13 @@ export const waterSeven: Saga = {
         it: 'Aveva un cantiere sull’acqua, due allievi e una regola sola: un costruttore deve essere fiero di ogni nave che vara. Era un uomo-pesce arrivato da lontano, enorme e allegro, e non tutti a Water Seven lo vedevano di buon occhio. Sulla sua testa pendeva già un processo, e lui continuava a lavorare come se non lo riguardasse.',
         en: 'He had a yard out on the water, two apprentices, and one rule: a builder must be proud of every ship he launches. He was a fish-man from far away, huge and cheerful, and not everyone in Water Seven was glad to have him. A trial was already hanging over him, and he went on working as though it were somebody else’s business.',
       },
+      status: [{ episode: 246, value: 'deceased' }],
       affiliation: [
         {
           episode: 246,
           value: {
-            it: 'Tom’s Workers, maestro d’ascia, giustiziato',
-            en: 'Tom’s Workers, master shipwright, executed',
+            it: 'Tom’s Workers, maestro d’ascia',
+            en: 'Tom’s Workers, master shipwright',
           },
         },
       ],
@@ -693,6 +697,7 @@ export const waterSeven: Saga = {
         it: 'Arriva ridendo, si siede come se fosse a casa sua e sbriciola biscotti di riso sul ponte di una nave pirata. È il nonno di Rufy, e il suo metodo educativo consisteva nel buttarlo giù da un dirupo perché diventasse forte. Le palle di cannone le tira con il braccio, e la Marina per questo gli ha dato un nome che conoscono tutti.',
         en: 'He arrives laughing, sits down as though he were at home, and drops rice cracker crumbs on the deck of a pirate ship. He is Luffy’s grandfather, and his idea of raising a child was throwing him off a cliff to toughen him up. He throws his cannonballs with his arm, and the Marines gave him a name for it that everyone knows.',
       },
+      status: [{ episode: 313, value: 'alive' }],
       affiliation: [
         {
           episode: 313,

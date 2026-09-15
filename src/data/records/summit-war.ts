@@ -648,6 +648,7 @@ export const summitWar: Saga = {
         it: 'Uno degli undici pirati con una taglia sopra i cento milioni approdati a Sabaody nello stesso mese. Siede in un bar con la ciurma, guarda Rufy prendere a pugni un Nobile Mondiale e sorride, cosa che nessun altro nella stanza fa. Porta una spada lunga quanto lui e la usa poco, perché le mani gli bastano.',
         en: 'One of eleven pirates with a bounty above a hundred million to reach Sabaody in the same month. He sits in a bar with his crew, watches Luffy punch a World Noble and smiles, which nobody else in the room does. He carries a sword as long as himself and rarely uses it, because his hands are enough.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -756,6 +757,10 @@ export const summitWar: Saga = {
         it: 'Il Governo gli ha chiesto di schierarsi contro Barbabianca, e lui ha preferito la cella. Nel livello più basso di Impel Down condivide la prigionia con Ace, e ha smesso di mangiare per protesta. Rufy lo libera perché gli serve un braccio in più; Jinbe lo segue perché quel braccio vuole salvare la stessa persona.',
         en: 'The Government asked him to take arms against Whitebeard, and he chose the cell instead. On the lowest level of Impel Down he shares his imprisonment with Ace, and has stopped eating in protest. Luffy frees him because he needs another pair of hands; Jinbe follows because those hands want to save the same man.',
       },
+      status: [
+        { episode: 430, value: 'imprisoned' },
+        { episode: 451, value: 'alive' },
+      ],
       affiliation: [
         { episode: 430, value: WARLORDS },
         {
@@ -875,6 +880,7 @@ export const summitWar: Saga = {
         it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi torna al suo bicchiere come se non fosse successo niente. Dice di aver navigato, tanti anni fa, sulla nave del Re dei Pirati, e lo dice come si dice un vecchio mestiere.',
         en: 'At Sabaody they call him the old man who coats ships, and for that work he asks prices nobody dares argue with. In the auction house he drops a whole hall of armed men without touching one of them, then goes back to his glass as though nothing had happened. He says he sailed, many years ago, on the ship of the Pirate King, and says it the way a man names an old trade.',
       },
+      status: [{ episode: 398, value: 'alive' }],
       affiliation: [
         {
           episode: 398,
@@ -1167,6 +1173,7 @@ export const summitWar: Saga = {
         it: 'Arriva sull’arcipelago in un lampo e attraversa le mangrovie alla velocità della luce, senza per questo smettere di parlare lento. Prende a calci chi gli sta davanti con una gamba che scotta e sembra sempre un po’ annoiato da quello che deve fare. Non ha bisogno di alzare la voce: davanti a lui i pirati smettono di correre.',
         en: 'He arrives on the archipelago in a flash and crosses the mangroves at the speed of light, without once speeding up his drawl. He kicks whoever stands in front of him with a leg that burns, and always looks faintly bored by the errand. He never needs to raise his voice: pirates stop running when he appears.',
       },
+      status: [{ episode: 401, value: 'alive' }],
       affiliation: [
         {
           episode: 401,
@@ -1561,6 +1568,7 @@ export const summitWar: Saga = {
         it: 'Siede al quartier generale fra gli altri due ammiragli e non discute mai l’ordine che ha ricevuto: lo esegue fino in fondo. Il suo corpo diventa magma, e quando si muove il cappello e le spalline fumano ancora prima del colpo. Della giustizia ha una sola idea e non ammette che esistano casi particolari.',
         en: 'He sits at headquarters between the other two admirals and never argues with an order he has been given: he carries it all the way through. His body turns to magma, and when he moves his cap and epaulettes are smoking before the blow even lands. He holds one idea of justice and allows no special cases.',
       },
+      status: [{ episode: 463, value: 'alive' }],
       affiliation: [
         {
           episode: 463,
@@ -1748,12 +1756,17 @@ export const summitWar: Saga = {
         it: 'È un bambino nato in una famiglia ricca del regno e scappato di casa, che vive fra i rottami e si costruisce una barca di nascosto. Con Ace e Rufy divide il bottino, le botte e un tubo di ferro usato come arma. In una radura dei boschi i tre bevono da tre tazze e si dichiarano fratelli, senza dirlo a nessun altro.',
         en: 'He is a boy born into a rich family of the kingdom who ran away from it, living among the scrap and quietly building himself a boat. With Ace and Luffy he shares the loot, the beatings and a length of iron pipe used as a weapon. In a clearing in the woods the three of them drink from three cups and call each other brothers, and tell nobody.',
       },
+      status: [
+        { episode: 497, value: 'alive' },
+        { episode: 503, value: 'presumed-dead' },
+        { episode: 663, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 497,
           value: {
-            it: 'Famiglia Dadan, fratello giurato di Rufy e Ace, dato per morto',
-            en: 'Dadan Family, sworn brother of Luffy and Ace, presumed dead',
+            it: 'Famiglia Dadan, fratello giurato di Rufy e Ace',
+            en: 'Dadan Family, sworn brother of Luffy and Ace',
           },
         },
         {
@@ -1788,11 +1801,9 @@ export const summitWar: Saga = {
         it: 'Ha aspettato il figlio venti mesi invece di nove, trattenendolo dentro di sé perché la Marina cercava il bambino del Re dei Pirati e setacciava le isole. Ha tenuto duro finché non è nato, e poi ha avuto il tempo di dargli un nome e niente di più. Sull’isola dove è morta nessuno sapeva chi fosse il padre.',
         en: 'She carried her son for twenty months instead of nine, holding him inside her because the Marines were combing the islands for the Pirate King’s child. She held on until he was born, and then had time enough to give him a name and nothing more. On the island where she died, nobody knew who the father was.',
       },
+      status: [{ episode: 493, value: 'deceased' }],
       affiliation: [
-        {
-          episode: 493,
-          value: { it: 'Madre di Ace, defunta', en: 'Ace’s mother, deceased' },
-        },
+        { episode: 493, value: { it: 'Madre di Ace', en: 'Ace’s mother' } },
       ],
       origin: [
         {

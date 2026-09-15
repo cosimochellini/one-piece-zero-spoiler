@@ -24,6 +24,7 @@ describe('CharacterFacts', () => {
     expect(screen.queryByText('Origin')).not.toBeInTheDocument()
     expect(screen.queryByText('Epithet')).not.toBeInTheDocument()
     expect(screen.queryByText('Bounty')).not.toBeInTheDocument()
+    expect(screen.queryByText('Status')).not.toBeInTheDocument()
     expect(screen.queryByText(/Berry/u)).not.toBeInTheDocument()
   })
 
@@ -46,6 +47,30 @@ describe('CharacterFacts', () => {
     expect(screen.getByText('Taglia')).toBeInTheDocument()
     expect(screen.getByText('100.000.000 Berry')).toBeInTheDocument()
     expect(screen.getByText('Cappello di Paglia')).toBeInTheDocument()
+  })
+
+  it('prints what became of the character before every other fact', () => {
+    renderWithProviders(
+      <CharacterFacts
+        facts={facts({ status: 'deceased', bounty: 30_000_000 })}
+      />,
+    )
+
+    expect(screen.getByText('Status')).toBeInTheDocument()
+    expect(screen.getByText('Deceased')).toBeInTheDocument()
+    // First in the ledger: it is the fact the rest of the dossier is read
+    // against, and a row that moved would move on every character at once.
+    expect(screen.getAllByRole('term')[0]).toHaveTextContent('Status')
+  })
+
+  it('says the state in Italian without agreeing with a gender', () => {
+    renderWithProviders(
+      <CharacterFacts facts={facts({ status: 'presumed-dead' })} />,
+      { locale: 'it' },
+    )
+
+    expect(screen.getByText('Stato')).toBeInTheDocument()
+    expect(screen.getByText('Morte presunta')).toBeInTheDocument()
   })
 
   it('shows the note and no fact to a reader who counts in chapters', () => {

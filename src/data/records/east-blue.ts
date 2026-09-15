@@ -643,6 +643,7 @@ export const eastBlue: Saga = {
         it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: parte dentro una botte e recluta il primo membro della ciurma nel giro di un pomeriggio. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
         en: 'Seventeen, a grin that does not switch off, and no ship: he sets out inside a barrel and recruits the first member of his crew within an afternoon. He ate a devil fruit as a child and has been rubber ever since, which means the sea rejects him and he cannot swim. He sails anyway.',
       },
+      status: [{ episode: 1, value: 'alive' }],
       affiliation: [
         {
           episode: 1,
@@ -682,6 +683,7 @@ export const eastBlue: Saga = {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
         en: 'He climbed into the wrong fishing boat at ten and has been scrubbing Alvida’s deck ever since, beaten whenever an answer displeases her. He knows he could run, and he does not. Then a rubber boy climbs out of a barrel in the hold and asks what he actually wants: he says he wants to join the Marines, and hears himself say it out loud for the first time.',
       },
+      status: [{ episode: 1, value: 'alive' }],
       affiliation: [
         {
           episode: 1,
@@ -758,6 +760,7 @@ export const eastBlue: Saga = {
         it: 'Ha percorso tutti i mari e preso tutto quello che c’era da prendere, e il Governo Mondiale lo giustizia in piazza davanti a una folla enorme. Sul patibolo gli chiedono dove sia il suo tesoro, e lui sorride: è là fuori, e se lo prenda chi lo vuole. Quel giorno migliaia di uomini prendono il mare, e l’epoca che ne nasce porta il suo nome.',
         en: 'He sailed every sea and took everything there was to take, and the World Government executes him in a public square before an enormous crowd. On the scaffold they ask where his treasure is and he smiles: it is out there, and whoever wants it may have it. Thousands put to sea that day, and the age that follows is named after him.',
       },
+      status: [{ episode: 1, value: 'deceased' }],
       affiliation: [
         {
           episode: 1,
@@ -790,6 +793,7 @@ export const eastBlue: Saga = {
         it: 'Combatte con tre spade, una delle quali tiene in bocca, e ha un nome che i pirati dell’East Blue pronunciano a bassa voce. Si è fatto legare a un palo per un mese piuttosto che chiedere scusa a un ufficiale che non lo meritava. Accetta di imbarcarsi con un patto: se il capitano gli farà mai rinunciare al suo sogno, sarà lui a farlo pagare.',
         en: 'He fights with three swords, one of them held in his teeth, and his name is one East Blue pirates say quietly. He let himself be tied to a post for a month rather than apologise to an officer who did not deserve it. He signs on with a condition: if the captain ever makes him give up his dream, he will make him pay for it.',
       },
+      status: [{ episode: 2, value: 'alive' }],
       affiliation: [
         {
           episode: 2,
@@ -887,6 +891,7 @@ export const eastBlue: Saga = {
         it: 'Beve, ride e lascia che un bandito gli versi il vino in testa senza reagire, perché una rissa non vale la pena. Poi lo stesso bandito tocca il bambino della taverna, e il mare intero viene a sapere di che cosa è capace. Riparte con un braccio in meno e senza il cappello, entrambi lasciati a Rufy insieme a una promessa.',
         en: 'He drinks, he laughs, and he lets a bandit pour wine over his head without lifting a finger, because a brawl is not worth it. Then the same bandit lays hands on the boy from the tavern, and the whole sea learns what he can do. He sails on one arm lighter and without his hat, both left with Luffy along with a promise.',
       },
+      status: [{ episode: 4, value: 'alive' }],
       affiliation: [
         {
           episode: 4,
@@ -999,6 +1004,11 @@ export const eastBlue: Saga = {
         it: 'Ha svuotato Orange Town a cannonate e ci ha piantato un tendone da circo, con un domatore, un acrobata e un leone al seguito. Il suo corpo si separa in pezzi che volano da soli, cosa che rende inutile tagliarlo. Odia ogni parola che assomigli a «naso», e la sua ciurma ha imparato a non pronunciarla.',
         en: 'He emptied Orange Town with cannon fire and pitched a circus tent in it, a lion tamer, an acrobat and a lion in tow. His body comes apart into pieces that fly on their own, which makes cutting him pointless. He hates any word that sounds like “nose”, and his crew has learned not to say it.',
       },
+      status: [
+        { episode: 5, value: 'alive' },
+        { episode: 422, value: 'imprisoned' },
+        { episode: 451, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 5,
@@ -1026,6 +1036,7 @@ export const eastBlue: Saga = {
         it: 'Disegna carte nautiche a mano e sente il tempo cambiare prima che cambi. Ha rubato una mappa della Rotta Maggiore a Bagy e si è aggregata a Rufy e Zoro solo per convenienza, come tiene a precisare. Odia i pirati, e non spiega perché.',
         en: 'She draws sea charts by hand and feels the weather turn before it does. She stole a map of the Grand Line from Buggy and has thrown in with Luffy and Zoro purely for convenience, as she is careful to point out. She hates pirates, and does not say why.',
       },
+      status: [{ episode: 5, value: 'alive' }],
       affiliation: [
         {
           episode: 5,
@@ -1096,6 +1107,7 @@ export const eastBlue: Saga = {
         it: 'Comanda una ciurma pirata di tre bambini con una bandiera, e racconta ogni giorno a una ragazza malata le sue avventure inventate. Suo padre è salpato con dei pirati veri quando lui era piccolo, e lui ha deciso di diventare un uomo di mare coraggioso. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
         en: 'He captains a pirate crew of three children with a flag, and tells a sick girl a new invented adventure every day. His father sailed with real pirates when he was small, and he has decided to become a brave man of the sea. With a slingshot he never misses; the bravery is still a work in progress.',
       },
+      status: [{ episode: 9, value: 'alive' }],
       affiliation: [
         {
           episode: 9,
@@ -1228,6 +1240,7 @@ export const eastBlue: Saga = {
         it: 'Nel dojo di suo padre nessuno le tiene testa, men che meno il ragazzo che la sfida ogni giorno con due spade di legno e perde ogni volta. Vuole diventare la più grande spadaccina del mondo e teme che il corpo, crescendo, le tolga quello che adesso ha. Una sera, sulla scala del dojo, i due si promettono che uno dei due ci arriverà.',
         en: 'In her father’s dojo nobody can hold her, least of all the boy who challenges her daily with two wooden swords and loses every time. She means to become the greatest swordsman in the world, and fears that growing up will take from her what she has now. One evening on the dojo steps the two of them promise that one of them will get there.',
       },
+      status: [{ episode: 19, value: 'deceased' }],
       affiliation: [
         {
           episode: 19,
@@ -1277,6 +1290,7 @@ export const eastBlue: Saga = {
         it: 'Cucina al Baratie sotto un vecchio con una gamba di legno che lo chiama moccioso, e prende a calci chiunque sprechi il cibo. Non usa mai le mani in combattimento: le mani di un cuoco sono per la cucina. Sogna un mare leggendario dove si trovano tutti i pesci del mondo, e non lo dice a nessuno che possa riderne.',
         en: 'He cooks at the Baratie under an old man with a peg leg who calls him a brat, and kicks anyone who wastes food. He never uses his hands in a fight: a cook’s hands are for the kitchen. He dreams of a legendary sea where every fish in the world can be found, and tells nobody who might laugh.',
       },
+      status: [{ episode: 20, value: 'alive' }],
       affiliation: [
         {
           episode: 20,
@@ -1408,6 +1422,7 @@ export const eastBlue: Saga = {
         it: 'Ha inseguito una flotta pirata dall’altra parte del mondo fin nell’East Blue per noia, e l’ha ridotta a relitti. Accetta il duello di uno sconosciuto con tre spade e lo affronta con un coltellino, perché una spada vera sarebbe uno spreco. Quando quello sconosciuto rifiuta di arretrare, gli lascia una ferita e un invito a superarlo.',
         en: 'He chased a pirate fleet from the other side of the world into East Blue out of boredom, and left it in splinters. He accepts a duel from a stranger with three swords and fights him with a paring knife, because a real blade would be a waste. When that stranger refuses to step back, he leaves him a scar and an invitation to surpass him.',
       },
+      status: [{ episode: 24, value: 'alive' }],
       affiliation: [
         {
           episode: 24,
@@ -1543,6 +1558,10 @@ export const eastBlue: Saga = {
         it: 'Torna dalla guerra senza niente e con due bambine che non sono sue, e le tiene lo stesso, in una casa dove spesso si mangia una volta al giorno. Coltiva un frutteto di mandarini che rende poco e litiga con le figlie come si litiga in famiglia. Quando gli uomini-pesce arrivano a contare le teste, non dice mai di non essere la loro madre.',
         en: 'She comes home from a war with nothing and two girls who are not hers, and keeps them anyway, in a house where a meal a day is often all there is. She works a mandarin orchard that barely pays and argues with her daughters the way families argue. When the fish-men come counting heads, she never once says she is not their mother.',
       },
+      status: [
+        { episode: 34, value: 'alive' },
+        { episode: 36, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 34,
@@ -1576,6 +1595,7 @@ export const eastBlue: Saga = {
         it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Il suo corpo diventa fumo, e nessuno di quelli che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
         en: 'He commands the base at Loguetown, the town where the Pirate King was executed and from which every East Blue pirate sets out for the Grand Line. His body turns to smoke, and none of the pirates he has chased has reached open water. He makes no exceptions for rubber boys.',
       },
+      status: [{ episode: 49, value: 'alive' }],
       affiliation: [
         {
           episode: 49,
@@ -1628,6 +1648,7 @@ export const eastBlue: Saga = {
         it: 'Garp lo nomina una volta sola, a denti stretti, davanti a un nipote che non sapeva nemmeno di avere un padre: è a capo dell’Armata Rivoluzionaria ed è l’uomo più ricercato dal Governo Mondiale. A Loguetown, sotto la pioggia, un incappucciato aveva fermato la lama sopra la testa di Rufy e se n’era andato senza dire il proprio nome. Era lui.',
         en: 'Garp names him once, through his teeth, in front of a grandson who did not know he had a father at all: he leads the Revolutionary Army and is the man the World Government wants most. At Loguetown, in the rain, a hooded figure stopped the blade above Luffy’s head and walked away without giving a name. It was him.',
       },
+      status: [{ episode: 314, value: 'alive' }],
       affiliation: [
         {
           episode: 314,

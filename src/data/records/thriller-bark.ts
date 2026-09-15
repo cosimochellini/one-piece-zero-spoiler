@@ -153,6 +153,7 @@ export const thrillerBark: Saga = {
         it: 'Ha vagato per cinquant’anni su una nave fantasma in un mare senza sole, senza compagni e senza ombra. È morto una volta e il suo frutto lo ha riportato indietro, ma il corpo che ha ritrovato era già solo ossa. Accetta l’invito a bordo di Rufy in trenta secondi, poi chiede alla navigatrice di mostrargli le mutandine.',
         en: 'He drifted for fifty years on a ghost ship in a sunless sea, with no crew and no shadow. He died once and his fruit brought him back, but the body he found again was already bare bones. He accepts Luffy’s invitation aboard within thirty seconds, then asks the navigator to show him her panties.',
       },
+      status: [{ episode: 339, value: 'alive' }],
       affiliation: [
         {
           episode: 339,
@@ -226,6 +227,7 @@ export const thrillerBark: Saga = {
         it: 'Governa la nave-isola dall’alto di un trono, circondato da un esercito di cadaveri cuciti a cui ha prestato le ombre rubate ai vivi. Con le forbici che porta al fianco stacca l’ombra di chi sconfigge, e chi la perde non può più restare al sole senza sbriciolarsi. Fa parte della Flotta dei Sette, e preferisce che a combattere per lui siano i morti.',
         en: 'He rules the island-ship from a high throne, surrounded by an army of stitched corpses wearing the shadows he has taken from the living. The scissors at his side cut the shadow off anyone he beats, and a person without one crumbles the moment sunlight touches them. He sits among the Seven Warlords, and would rather the dead did his fighting.',
       },
+      status: [{ episode: 343, value: 'alive' }],
       affiliation: [
         {
           episode: 343,
@@ -294,6 +296,7 @@ export const thrillerBark: Saga = {
         it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire su questa nave calcasse i palcoscenici, e che fosse fra le più amate.',
         en: 'She carries the tray along the mansion corridors and answers the surgeon’s orders in a flat voice while the plates slide out of her fingers and break on the floor. Stitches cross her face and her arms, and she does not seem to mind. They say that before she ended up on this ship she was an actress, and a beloved one.',
       },
+      status: [{ episode: 342, value: 'deceased' }],
       affiliation: [
         {
           episode: 342,
@@ -310,6 +313,7 @@ export const thrillerBark: Saga = {
         it: 'È il più forte dei cadaveri cuciti nella villa, un samurai rimesso in piedi con dentro l’ombra rubata a qualcun altro. Al fianco porta una lama nera e con quella taglia perfino il fuoco, come se le fiamme fossero corda. In vita veniva dal Paese di Wano, e di lui si racconta che abbia fatto a pezzi un drago sopra una città.',
         en: 'He is the strongest of the stitched corpses in the mansion, a samurai set back on his feet with a shadow stolen from someone else inside him. He carries a black blade and cuts through fire itself with it, as though the flames were rope. In life he came from Wano Country, and the story goes that he cut a dragon to pieces above a town.',
       },
+      status: [{ episode: 345, value: 'deceased' }],
       affiliation: [
         {
           episode: 345,
@@ -335,6 +339,7 @@ export const thrillerBark: Saga = {
         it: 'È il pezzo più grosso della collezione del padrone dell’isola: un gigante morto da secoli, tenuto in una cella di ghiaccio finché non arriva l’ombra giusta da mettergli dentro. Quando si rialza ha la forza di sfondare un edificio con una spallata e la testa di un bambino che scopre il mondo. Le leggende dicono che in vita trascinasse i continenti.',
         en: 'He is the largest piece in the island master’s collection: a giant dead for centuries, kept in an ice cellar until the right shadow comes along to put inside him. Once he stands he has the strength to take a building down with one shoulder and the mind of a child discovering the world. The legends say that in life he dragged continents about.',
       },
+      status: [{ episode: 358, value: 'deceased' }],
       affiliation: [
         {
           episode: 358,
@@ -363,12 +368,13 @@ export const thrillerBark: Saga = {
         it: 'Guidava i Pirati di Rumbar con l’allegria di chi è salpato per far ballare la gente, e la sua ciurma suonava anche mentre combatteva. Alla vigilia della traversata più dura si ammalò, e scelse di staccarsi dagli altri con una nave sola per non trascinarli con sé. Li salutò ridendo, come se fosse una partenza qualunque.',
         en: 'He led the Rumbar Pirates with the cheer of a man who set out to make people dance, and his crew played while it fought. On the eve of the hardest crossing he fell ill, and chose to break away with a single ship rather than drag the others down with him. He waved them off laughing, as though it were an ordinary parting.',
       },
+      status: [{ episode: 380, value: 'unknown' }],
       affiliation: [
         {
           episode: 380,
           value: {
-            it: 'Pirati di Rumbar, capitano, deceduto',
-            en: 'Rumbar Pirates, captain, deceased',
+            it: 'Pirati di Rumbar, capitano',
+            en: 'Rumbar Pirates, captain',
           },
         },
       ],

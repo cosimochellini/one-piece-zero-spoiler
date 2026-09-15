@@ -667,6 +667,10 @@ export const dressrosa: Saga = {
         it: 'Siede accanto al padrone del laboratorio, prende appunti e risponde al telefono con la stessa voce gentile con cui minaccia. Il suo corpo è neve: le lame la attraversano e lei si ricompone, e con la neve riempie i corridoi per fermare chi corre. Sorride sempre, anche quando dice cose che non lasciano una via d’uscita.',
         en: 'She sits beside the master of the laboratory, takes notes and answers the phone in the same gentle voice she uses to threaten. Her body is snow: blades pass through her and she puts herself back together, and she fills the corridors with drifts to stop anyone running. She is always smiling, even while saying things that leave no way out.',
       },
+      status: [
+        { episode: 586, value: 'alive' },
+        { episode: 620, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 586,
@@ -684,6 +688,10 @@ export const dressrosa: Saga = {
         it: 'Comanda la base G-5 e i suoi uomini lo temono più del nemico. Ha sempre qualcosa attaccato in faccia, un chicco di riso o una foglia di insalata, e nessuno osa dirglielo. Arriva a Punk Hazard con una calma che non somiglia a quella di un ispettore, e la prima cosa che fa è mettersi fra i prigionieri e chi vorrebbe liberarli.',
         en: 'He commands the G-5 base and his own men fear him more than any enemy. There is always something stuck to his face, a grain of rice or a leaf of salad, and nobody dares tell him. He reaches Punk Hazard with a calm that has nothing of an inspector about it, and the first thing he does is put himself between the prisoners and anyone who would free them.',
       },
+      status: [
+        { episode: 589, value: 'alive' },
+        { episode: 620, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 589,
@@ -692,10 +700,7 @@ export const dressrosa: Saga = {
             en: 'Marines, vice admiral of G-5, secretly Doflamingo’s man',
           },
         },
-        {
-          episode: 613,
-          value: { it: 'Smascherato, ucciso', en: 'Exposed, killed' },
-        },
+        { episode: 613, value: { it: 'Smascherato', en: 'Exposed' } },
       ],
       epithet: [
         { episode: 589, value: { it: 'Bambù Demoniaco', en: 'Demon Bamboo' } },
@@ -1403,6 +1408,10 @@ export const dressrosa: Saga = {
         it: 'Compare a Dressrosa insieme al samurai che cerca suo figlio, e si presenta con un pennello grande quanto un remo. Quello che disegna prende vita e si muove, anche se i suoi disegni fanno ridere chiunque li guardi. Parla poco, si commuove facilmente e non racconta quasi nulla del paese da cui viene.',
         en: 'He turns up in Dressrosa with the samurai who is searching for his son, carrying a brush the size of an oar. Whatever he draws comes alive and moves about, though his drawings make anyone who sees them laugh. He says little, is easily moved to tears, and tells almost nothing about the country he comes from.',
       },
+      status: [
+        { episode: 676, value: 'alive' },
+        { episode: 1055, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 676,
@@ -1444,12 +1453,13 @@ export const dressrosa: Saga = {
         it: 'Nella famiglia lo chiamano Corazon e lo credono muto, e lui lascia che lo credano. Inciampa, prende fuoco e rovescia tutto quello che tocca, poi porta via da quella casa un bambino malato senza spiegare perché. Quando resta solo con lui parla, e dice di essere il fratello minore dell’uomo che comanda la famiglia e un ufficiale della Marina.',
         en: 'In the family they call him Corazon and take him for mute, and he lets them. He trips, catches fire and knocks over whatever he touches, then carries a sick child away from that house without saying why. Alone with the boy he speaks, and says he is the younger brother of the man who runs the family, and a Marine officer.',
       },
+      status: [{ episode: 704, value: 'deceased' }],
       affiliation: [
         {
           episode: 704,
           value: {
-            it: 'Pirati di Donquijote, ufficiale supremo Corazon, in segreto comandante della Marina, deceduto',
-            en: 'Donquixote Pirates, elite officer Corazon, secretly a Marine commander, deceased',
+            it: 'Pirati di Donquijote, ufficiale supremo Corazon, in segreto comandante della Marina',
+            en: 'Donquixote Pirates, elite officer Corazon, secretly a Marine commander',
           },
         },
       ],
@@ -1468,6 +1478,7 @@ export const dressrosa: Saga = {
         it: 'Arriva dall’alto senza nave e senza avvertimento, e quello che resta della base che ha centrato non è più una base. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. Dicono che si sia buttato dal cielo decine di volte senza morire mai, e che sia il suo modo di passare il tempo.',
         en: 'He comes down from above with no ship and no warning, and what is left of the base he lands on is no longer a base. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. They say he has thrown himself out of the sky dozens of times without once dying, and that this is how he passes the time.',
       },
+      status: [{ episode: 739, value: 'alive' }],
       affiliation: [
         {
           episode: 739,

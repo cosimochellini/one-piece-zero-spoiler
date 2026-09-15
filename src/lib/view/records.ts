@@ -59,6 +59,27 @@ export type TintId =
 export type EntityKind = 'arc' | 'character' | 'fruit' | 'place' | 'ship'
 
 /**
+ * Where a character stands the last time the story said so.
+ *
+ * A closed vocabulary rather than prose, because the row is the same sentence
+ * on every page and the reader's language decides how it is written: the
+ * labels live in the dictionaries, so Italian can say `In vita` without
+ * agreeing with a gender the archive does not file.
+ *
+ * `captured` is held by someone right now, `imprisoned` is serving a
+ * sentence, and `missing` is a character the story has lost sight of —
+ * distinct from `unknown`, which is a fate nobody on the page can state.
+ */
+export type CharacterStatus =
+  | 'alive'
+  | 'captured'
+  | 'deceased'
+  | 'imprisoned'
+  | 'missing'
+  | 'presumed-dead'
+  | 'unknown'
+
+/**
  * Which of the three kinds a devil fruit is. Declared here rather than in
  * `~/data`, like `PlaceForm`, because the specimen sheet prints it.
  */
@@ -180,6 +201,8 @@ export type CharacterFacts =
       readonly epithet?: string
       readonly mode: 'facts'
       readonly origin?: string
+      /** Where the character stands at the last entry the reader has reached. */
+      readonly status?: CharacterStatus
       /** In Berry, ungrouped. */
       readonly bounty?: number
     }

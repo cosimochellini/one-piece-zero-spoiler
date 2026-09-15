@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
 import { EPISODE_CEILING } from '~/lib/progress/episode'
+import type { CharacterStatus } from '~/lib/view/records'
 
 import {
   bookSections,
@@ -49,18 +50,29 @@ function timelineCases<T>(
     : [{ character, label: `${character.id}.${field}`, timeline }]
 }
 
-const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] =
-  characters.flatMap((character) => {
+/**
+ * The affiliation timelines on their own, because one test is about them
+ * rather than about dated prose in general: an affiliation says who a
+ * character belongs to, and what became of them is the status field's to say.
+ */
+const AFFILIATION_TIMELINES: readonly TimelineCase<LocalizedText>[] =
+  characters.flatMap((character) =>
+    timelineCases(character, 'affiliation', dossierOf(character)?.affiliation),
+  )
+
+const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] = [
+  ...AFFILIATION_TIMELINES,
+  ...characters.flatMap((character) => {
     const dossier = dossierOf(character)
 
     return dossier === undefined ?
         []
       : [
-          ...timelineCases(character, 'affiliation', dossier.affiliation),
           ...timelineCases(character, 'origin', dossier.origin),
           ...timelineCases(character, 'epithet', dossier.epithet),
         ]
-  })
+  }),
+]
 
 const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
   (character) =>
@@ -77,10 +89,21 @@ const FRUIT_TIMELINES: readonly TimelineCase<readonly string[]>[] =
     timelineCases(character, 'devilFruit', dossierOf(character)?.devilFruit),
   )
 
+/**
+ * The status timelines. Their own bucket for the same reason the fruits have
+ * one — they carry a vocabulary rather than prose — and because three tests
+ * below are about this field alone.
+ */
+const STATUS_TIMELINES: readonly TimelineCase<CharacterStatus>[] =
+  characters.flatMap((character) =>
+    timelineCases(character, 'status', dossierOf(character)?.status),
+  )
+
 const ALL_TIMELINES: readonly TimelineCase<unknown>[] = [
   ...TEXT_TIMELINES,
   ...BOUNTY_TIMELINES,
   ...FRUIT_TIMELINES,
+  ...STATUS_TIMELINES,
 ]
 
 /** The first record on the chart, which the route tests read either side of. */
@@ -185,6 +208,66 @@ describe('the dossiers', () => {
       for (const entry of timeline) {
         for (const locale of LOCALES) {
           expect(entry.value[locale].length, label).toBeGreaterThan(0)
+        }
+      }
+    }
+  })
+
+  it('opens every status at the episode the character is filed at', () => {
+    // The row must not be its own spoiler. If a status timeline could begin
+    // at the episode of the death, the mere appearance of the Status row
+    // would announce that something had happened; every timeline instead
+    // opens at the threshold, in the state the character is introduced in.
+    for (const { character, label, timeline } of STATUS_TIMELINES) {
+      expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
+    }
+  })
+
+  it('files a status only where it changes', () => {
+    for (const { label, timeline } of STATUS_TIMELINES) {
+      const values = timeline.map((entry) => entry.value)
+      const restated = values.filter((value, at) => value === values[at - 1])
+
+      expect(restated, label).toStrictEqual([])
+    }
+  })
+
+  it('brings nobody back from a confirmed death', () => {
+    // What `presumed-dead` is for: a character the story drops and picks up
+    // again is filed under the doubt, never under the certainty.
+    for (const { label, timeline } of STATUS_TIMELINES) {
+      const died = timeline.findIndex((entry) => entry.value === 'deceased')
+
+      expect(died === -1 || died === timeline.length - 1, label).toBe(true)
+    }
+  })
+
+  it('says what became of every featured character', () => {
+    for (const character of featuredCharacters) {
+      expect(
+        dossierOf(character)?.status?.length,
+        character.id,
+      ).toBeGreaterThan(0)
+    }
+  })
+
+  it('leaves a fate to the status and out of the affiliation', () => {
+    // Both halves of the vocabulary that are a fate and nothing else: a
+    // death, and a death the story later takes back. An affiliation that
+    // carried one would print it a second time, and — as it did for Sabo —
+    // at whichever episode the affiliation happened to change rather than at
+    // the episode the fate did.
+    //
+    // Being held is deliberately not on this list: "Kid's prisoner" and
+    // "prisoner of the Udon camp" name a captor and a place, which is what an
+    // affiliation is for. `captured` and `imprisoned` say the state beside
+    // them, they do not replace them.
+    for (const { label, timeline } of AFFILIATION_TIMELINES) {
+      for (const entry of timeline) {
+        for (const locale of LOCALES) {
+          expect(entry.value[locale], label).not.toMatch(
+            /decedut|defunt|deceased|uccis|killed|giustiziat|executed|dato per mort|presumed dead/iu,
+          )
         }
       }
     }

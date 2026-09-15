@@ -308,6 +308,13 @@ export const fishManIsland: Saga = {
         it: 'Arriva all’arcipelago Sabaody con una taglia da duecento milioni e le lacrime già pronte: si inginocchia, supplica, e appena l’avversario abbassa la guardia lo uccide. Il fratello gli scava le fosse dietro, una croce per ciascuna. Ha una taglia da duecentodieci milioni e una ciurma che lo teme più di quanto tema chi insegue.',
         en: 'He reaches the Sabaody Archipelago with a two hundred million bounty and his tears ready: he kneels, he begs, and the moment his opponent drops their guard he kills them. His brother digs the graves behind him, one cross each. He carries a bounty of two hundred and ten million and a crew that fears him more than it fears anyone he hunts.',
       },
+      status: [
+        { episode: 517, value: 'alive' },
+        { episode: 525, value: 'captured' },
+        { episode: 531, value: 'alive' },
+        { episode: 919, value: 'imprisoned' },
+        { episode: 949, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 517,
@@ -317,10 +324,10 @@ export const fishManIsland: Saga = {
           },
         },
         {
-          episode: 574,
+          episode: 919,
           value: {
-            it: 'Catturato, poi prigioniero di Kid',
-            en: 'Captured, later Kid’s prisoner',
+            it: 'Prigioniero nella miniera di Udon',
+            en: 'Prisoner in the Udon mine',
           },
         },
       ],
@@ -423,6 +430,10 @@ export const fishManIsland: Saga = {
         it: 'Comanda dal Quartiere degli Uomini-Pesce, il fondo dell’isola dove nessuno scende volentieri, una ciurma che cresce di giorno in giorno. Dice che il regno ha tradito la propria gente inchinandosi agli umani e che il trono va rovesciato. Manda giù pastiglie di steroidi energetici come fossero caramelle, e la forza che gli danno gli basta.',
         en: 'He commands a crew that grows by the day from the Fish-Man District, the bottom of the island where nobody goes willingly. He says the kingdom betrayed its own people by bowing to the humans, and that the throne has to come down. He swallows energy steroids like sweets, and the strength they hand him is enough for him.',
       },
+      status: [
+        { episode: 527, value: 'alive' },
+        { episode: 569, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 527,
@@ -641,13 +652,11 @@ export const fishManIsland: Saga = {
         it: 'Piccola, fragile e incapace di alzare le mani su chiunque, ha deciso che l’isola deve smettere di odiare la superficie e raccoglie le firme una per una, in mezzo a chi le sputa addosso. Vuole portare gli uomini-pesce a vivere sotto il sole e ripete che nessuno cambia idea per paura. Il marito la lascia fare e la ascolta.',
         en: 'Small, frail and unable to raise a hand against anyone, she decided the island had to stop hating the surface and gathers signatures one at a time, among people who spit at her. She wants fish-men living under the sun, and repeats that nobody ever changes their mind out of fear. Her husband lets her go, and listens.',
       },
+      status: [{ episode: 539, value: 'deceased' }],
       affiliation: [
         {
           episode: 539,
-          value: {
-            it: 'Regno di Ryugu, regina, defunta',
-            en: 'Ryugu Kingdom, queen, deceased',
-          },
+          value: { it: 'Regno di Ryugu, regina', en: 'Ryugu Kingdom, queen' },
         },
       ],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
@@ -661,12 +670,16 @@ export const fishManIsland: Saga = {
         it: 'Lascia l’Isola degli Uomini-Pesce per vedere il mondo e ne torna con i segni delle catene ai polsi. Poi risale la Red Line da solo, apre le celle di Mary Geoise e porta giù chiunque riesca a camminare, di qualunque razza sia. Sulla pelle dei liberati fa marchiare un sole che copre il marchio dei Nobili, e con loro fonda una ciurma.',
         en: 'He leaves Fish-Man Island to see the world and comes back with chain marks on his wrists. Then he climbs the Red Line alone, opens the cells of Mary Geoise and brings down everyone who can still walk, of whatever race. On the freed he has a sun burned over the Nobles’ brand, and with them he founds a crew.',
       },
+      status: [
+        { episode: 539, value: 'alive' },
+        { episode: 543, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 539,
           value: {
-            it: 'Pirati del Sole, capitano, defunto',
-            en: 'Sun Pirates, captain, deceased',
+            it: 'Pirati del Sole, capitano',
+            en: 'Sun Pirates, captain',
           },
         },
       ],
