@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
+import { absoluteUrl } from '~/lib/seo/site'
+
 import { Route as LandingRoute } from '.'
 import { Route as CharactersRoute } from './characters'
 import { Route as FruitsRoute } from './fruits'
@@ -57,7 +59,9 @@ describe('every page that is not a record’s own', () => {
       const canonical = links?.filter((link) => link.rel === 'canonical') ?? []
 
       expect(canonical).toHaveLength(1)
-      expect(canonical[0]?.href).toContain(page.canonical)
+      // Exactly, not `toContain`: the trailing slash this is here to catch
+      // would still be a substring match.
+      expect(canonical[0]?.href).toBe(absoluteUrl(page.canonical))
     }
   })
 

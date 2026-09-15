@@ -20,6 +20,7 @@ describe('crawler user agents', () => {
     expect(isCrawlerAgent('Twitterbot/1.0')).toBe(true)
     expect(isCrawlerAgent('Slackbot-LinkExpanding 1.0')).toBe(true)
     expect(isCrawlerAgent('WhatsApp/2.19.81 A')).toBe(true)
+    expect(isCrawlerAgent('WhatsApp/2.24.10.85 A')).toBe(true)
   })
 
   it('is not case-sensitive, because a user agent is not', () => {
@@ -35,5 +36,15 @@ describe('crawler user agents', () => {
 
   it('does not open to anything that merely calls itself a bot', () => {
     expect(isCrawlerAgent('SomeScraperBot/1.0 (+spider)')).toBe(false)
+  })
+
+  it('leaves the reader who tapped a link inside WhatsApp in the fog', () => {
+    // The in-app browser appends the same token an ordinary mobile browser's
+    // string. Behind it is a person on their first visit, not an unfurler.
+    expect(
+      isCrawlerAgent(
+        'Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36 WhatsApp/2.24.10.85 A',
+      ),
+    ).toBe(false)
   })
 })

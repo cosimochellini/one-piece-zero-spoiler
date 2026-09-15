@@ -13,7 +13,16 @@
  * not an access control, and this is where that is most visible.
  */
 const CRAWLERS =
-  /applebot|baiduspider|bingbot|discordbot|duckduckbot|facebookexternalhit|googlebot|linkedinbot|slackbot|slurp|telegrambot|twitterbot|whatsapp|yandexbot/iu
+  /applebot|baiduspider|bingbot|discordbot|duckduckbot|facebookexternalhit|googlebot|linkedinbot|slackbot|slurp|telegrambot|twitterbot|yandexbot/iu
+
+// WhatsApp is the one name on the list that two different things send. Its
+// unfurler introduces itself first — `WhatsApp/2.19.81 A` — while its in-app
+// browser appends the same token to an ordinary mobile browser's string, and
+// that is a person who tapped a link a friend shared. Matched anywhere, the
+// tap would open the whole archive to a reader on their first visit, which is
+// the one thing this site exists not to do. So it is anchored: the unfurler
+// leads with it, a browser never does.
+const WHATSAPP = /^whatsapp\//iu
 
 /** Whether a `User-Agent` header names one of the crawlers the site answers in full. */
 export function isCrawlerAgent(userAgent: string | undefined): boolean {
@@ -21,5 +30,5 @@ export function isCrawlerAgent(userAgent: string | undefined): boolean {
     return false
   }
 
-  return CRAWLERS.test(userAgent)
+  return CRAWLERS.test(userAgent) || WHATSAPP.test(userAgent)
 }
