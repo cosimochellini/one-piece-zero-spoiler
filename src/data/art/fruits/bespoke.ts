@@ -8,6 +8,7 @@ import {
 } from '~/data/art/fruits/parts'
 import { lobed } from '~/data/art/fruits/shape'
 import { ring, swirlOf } from '~/data/art/fruits/swirls'
+import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
 /**
@@ -44,29 +45,124 @@ function furniture(
   ]
 }
 
-/** The classic: three loops wound wide, the mark everyone pictures. */
-export const GUM_GUM: readonly Stroke[] = [
-  { d: lobed('round', RX, RY) },
-  {
-    d: `${ring(80, 112, 9)} ${ring(78, 112, 18)} ${ring(76, 112, 27)}`,
-    role: 'accent',
-  },
-  ...furniture('straight', 'right'),
-]
+/** How far a curl winds before it reaches its rim. Nearly two full turns. */
+const CURL_TURNS = 1.9
 
-/** A coil at the foot with three tongues climbing off it. */
-export const FLAME_FLAME: readonly Stroke[] = [
-  { d: lobed('pear', RX, RY) },
+/** Segments a curl is drawn with; round joins make them read as a curve. */
+const CURL_STEPS = 22
+
+/** Where a curl starts, so the eye reads a spiral and not a comma. */
+const CURL_TILT = 0.6
+
+/**
+ * One curl of skin, wound out from a point.
+ *
+ * The mark a devil fruit is known by is not one spiral but a skin covered in
+ * them, at every size and winding both ways. A negative radius winds the
+ * other way round, which is what keeps ten of them on one fruit from reading
+ * as ten copies of one stamp.
+ *
+ * Sampled rather than written as arcs for the reason the generator gives: an
+ * arc command is relative, and a relative command in a fruit defeats the
+ * bounds test that reads the numbers in a path as coordinates.
+ */
+function curl(cx: number, cy: number, r: number): string {
+  const way = r < 0 ? -1 : 1
+  const reach = Math.abs(r)
+  const steps = Array.from({ length: CURL_STEPS + 1 }, (_unused, at) => {
+    const along = at / CURL_STEPS
+    const angle = way * (CURL_TILT + CURL_TURNS * 2 * Math.PI * along)
+
+    return point(
+      cx + reach * along * Math.cos(angle),
+      cy + reach * along * Math.sin(angle),
+    )
+  })
+
+  return steps.map((step, at) => (at === 0 ? `M${step}` : `L${step}`)).join(' ')
+}
+
+/**
+ * The classic: a sphere under a skin of curls, hung from a long stalk that
+ * runs off sideways and winds up at the end of itself.
+ *
+ * Ten curls and not three. The fruit everybody can draw from memory is not a
+ * target with a couple of rings on it — it is covered, corner to corner, in
+ * spirals of every size, and the stalk is as much of the shape as the fruit.
+ */
+export const GUM_GUM: readonly Stroke[] = [
+  { d: ring(80, 126, 44) },
   {
     d: [
-      ring(80, 130, 11),
-      'M69 122 C62 110 74 104 70 92 C80 100 76 114 82 120',
-      'M80 119 C76 104 88 98 86 84 C96 94 90 110 94 118',
-      'M92 124 C90 114 100 110 100 100 C108 110 102 120 102 126',
+      curl(80, 126, 14),
+      curl(58, 106, -12),
+      curl(103, 107, 12),
+      curl(106, 143, -12),
+      curl(55, 145, 12),
+      curl(80, 162, -11),
+      curl(47, 124, 10),
+      curl(114, 128, -10),
+      curl(80, 90, 11),
+      curl(66, 128, -8),
     ].join(' '),
     role: 'accent',
   },
-  ...furniture('hooked', 'left'),
+  {
+    // The stalk: up out of the crown, along, and wound in on itself. The
+    // curl at its end is the one every drawing of this fruit keeps, so it is
+    // drawn at the size the fruit's own marks are drawn at.
+    d: [
+      'M80 82 C81 70 82 58 84 47',
+      'M44 54 C38 48 42 40 50 42 C62 44 74 44 86 46',
+      'C98 48 108 50 114 54 C122 60 116 70 108 66',
+      'C103 64 104 57 110 58',
+    ].join(' '),
+  },
+  shadowUnder(1),
+]
+
+/**
+ * The fruit that is all flame: a body whose crown is a row of tongues, curls
+ * burning across it, and a stalk that runs off with a hook at the end.
+ */
+export const FLAME_FLAME: readonly Stroke[] = [
+  {
+    // Every tongue leans the same way and hooks back at the tip, which is
+    // what tells a flame from a spike: a crown of points is a crown.
+    d: [
+      'M38 134 C38 118 40 105 45 93',
+      'C46 82 50 72 60 62 C64 74 62 82 66 90',
+      'C66 78 71 62 82 52 C87 64 84 80 86 90',
+      'C87 80 93 66 104 58 C109 70 105 82 107 90',
+      'C108 82 114 74 122 70 C126 78 125 86 128 95',
+      'C131 107 132 120 132 134',
+      'C132 157 111 172 85 172 C58 172 38 157 38 134 Z',
+    ].join(' '),
+  },
+  {
+    d: [
+      curl(85, 110, 15),
+      curl(55, 132, -12),
+      curl(114, 134, 12),
+      curl(68, 158, 11),
+      curl(103, 158, -11),
+      curl(85, 152, 9),
+      curl(61, 112, -9),
+      curl(110, 111, 9),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    // The stalk runs off to the left and winds up at its own end. It goes
+    // left because the tallest tongues stand to the right of it, and a stalk
+    // laid across a flame is a knot rather than a stalk.
+    d: [
+      'M60 62 C57 52 55 44 52 34',
+      'M52 34 C42 28 30 30 29 38 C28 45 36 49 40 43',
+      'C42 39 38 37 36 39',
+    ].join(' '),
+  },
+  shadowUnder(1),
 ]
 
 /** A coil wound tight inside a sphere, the way a diagram sections a thing. */
