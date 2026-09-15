@@ -12,8 +12,6 @@ import * as stylex from '@stylexjs/stylex'
 
 import {
   color,
-  dur,
-  ease,
   font,
   leading,
   radius,
@@ -29,39 +27,6 @@ const ONE_COLUMN = 'minmax(0, 1fr)'
 
 /** The page's sheet. Exported as one object so the route reads as markup. */
 export const styles = stylex.create({
-  page: {
-    gap: space.xl2,
-    paddingInline: space.md,
-    display: 'grid',
-    paddingBlockEnd: space.xl3,
-    paddingBlockStart: space.lg,
-  },
-
-  back: { marginBlockEnd: `calc(-1 * ${space.xl})` },
-  // The rule under the word, and the two colours it takes. What the link is
-  // for is said where it is rendered.
-  backLink: {
-    color: {
-      'default': color.ink2,
-      ':hover': color.accent,
-      ':active': color.ink,
-    },
-    fontSize: text.base,
-    fontWeight: 600,
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs3,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
-    textDecorationColor: { 'default': color.rule2, ':hover': color.accent },
-    textDecorationLine: 'underline',
-    textDecorationThickness: rule.hair,
-    textUnderlineOffset: '4px',
-    transitionDuration: dur.micro,
-    transitionProperty: 'color, text-decoration-color',
-    transitionTimingFunction: ease.out,
-    whiteSpace: 'nowrap',
-  },
-
   // The diptych: two halves with a wide gutter and no rule between them.
   // The crest half is the narrower one; the words need the width more.
   diptych: {

@@ -327,12 +327,7 @@ export const fishManIsland: Saga = {
       epithet: [
         { episode: 517, value: { it: 'Capelli Bagnati', en: 'Wet-Haired' } },
       ],
-      devilFruit: [
-        {
-          episode: 519,
-          value: { it: 'Frutto Numa Numa', en: 'Swamp-Swamp Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 519, value: ['swamp-swamp-fruit'] }],
       bounty: [{ episode: 517, value: 210_000_000 }],
     },
     'coribou': {
@@ -417,12 +412,7 @@ export const fishManIsland: Saga = {
         },
       ],
       origin: [{ episode: 526, value: FISH_MAN_ISLAND }],
-      devilFruit: [
-        {
-          episode: 526,
-          value: { it: 'Frutto Mato Mato', en: 'Mark-Mark Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 526, value: ['mark-mark-fruit'] }],
     },
     'hody-jones': {
       role: {
@@ -726,12 +716,7 @@ export const fishManIsland: Saga = {
         },
       ],
       origin: [{ episode: 571, value: { it: 'Zou', en: 'Zou' } }],
-      devilFruit: [
-        {
-          episode: 571,
-          value: { it: 'Frutto Kame Kame', en: 'Turtle-Turtle Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 571, value: ['turtle-turtle-fruit'] }],
       bounty: [{ episode: 571, value: 330_000_000 }],
     },
     'baron-tamago': {
@@ -752,12 +737,7 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 571,
-          value: { it: 'Frutto Tama Tama', en: 'Egg-Egg Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 571, value: ['egg-egg-fruit'] }],
       bounty: [{ episode: 571, value: 429_000_000 }],
     },
   },

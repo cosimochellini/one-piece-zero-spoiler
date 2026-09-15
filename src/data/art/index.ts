@@ -3,6 +3,7 @@ import { dressrosaArt } from './dressrosa'
 import { eastBlueArt } from './east-blue'
 import { eggheadArt } from './egghead'
 import { fishManIslandArt } from './fish-man-island'
+import { fruitArt } from './fruits'
 import { skypieaArt } from './skypiea'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt } from './thriller-bark'
@@ -28,6 +29,7 @@ export const DRAWINGS = {
   ...wholeCakeArt,
   ...wanoArt,
   ...eggheadArt,
+  ...fruitArt,
 }
 
 /**

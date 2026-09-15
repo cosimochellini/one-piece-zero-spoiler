@@ -1,5 +1,6 @@
 import { DRAWINGS } from '~/data/art'
 import { dossierOf, roleOf } from '~/data/characters'
+import { getFruit } from '~/data/fruits'
 import type {
   CharacterDossier,
   Entity,
@@ -15,7 +16,11 @@ import type {
   CharacterView,
   CoveredRecord,
   Drawing,
+  FruitForm,
+  FruitLink,
+  FruitView,
   RecordView,
+  Searchable,
   SearchableCharacter,
   Slot,
   WaypointView,
@@ -73,42 +78,87 @@ export function waypointOf(entity: Entity, locale: Locale): WaypointView {
   return { ...recordOf(entity, locale), summary: entity.summary[locale] }
 }
 
+/** A record's searchable surface, folded: the shown name and what matches it. */
+function foldedOf(shown: string, aliases: readonly string[]): Searchable {
+  return {
+    name: shown,
+    folded: foldName(shown),
+    aliases: aliases.flatMap((alias) => {
+      const folded = foldName(alias)
+
+      return folded === '' ? [] : [folded]
+    }),
+  }
+}
+
+/** A record's name in every locale but the one the page is drawn in. */
+function otherNames(entity: Entity, locale: Locale): readonly string[] {
+  return LOCALES.flatMap((other) =>
+    other === locale ? [] : [entity.name[other]],
+  )
+}
+
+/**
+ * The epithets the reader has reached, in both locales.
+ *
+ * Gated here rather than in the browser: an epithet learned later than the
+ * reader's episode would confirm a name the fog is meant to hide, and now it
+ * is not sent at all rather than sent and declined.
+ */
+function reachedEpithets(
+  entity: Entity,
+  bookmark: Bookmark,
+): readonly string[] {
+  const progress = episodeOf(bookmark)
+  if (progress === null) {
+    return []
+  }
+
+  return (dossierOf(entity)?.epithet ?? []).flatMap((entry) => {
+    return entry.episode <= progress ?
+        LOCALES.map((other) => entry.value[other])
+      : []
+  })
+}
+
 /**
  * A character with its searchable surface folded, and gated.
  *
  * The aliases are the other locale's name — an Italian reader who knows the
  * character as Luffy should still find Rufy — and the epithets the reader has
- * already reached. Only those: an epithet learned later than the reader's
- * episode would confirm a name the fog is meant to hide, and now it is not
- * sent at all rather than sent and declined.
+ * already reached.
  */
 export function searchableOf(
   entity: Entity,
   locale: Locale,
   bookmark: Bookmark,
 ): SearchableCharacter {
-  const shown = entity.name[locale]
-  const progress = episodeOf(bookmark)
-  const others = LOCALES.flatMap((other) =>
-    other === locale ? [] : [entity.name[other]],
-  )
-  const epithets =
-    progress === null ?
-      []
-    : (dossierOf(entity)?.epithet ?? []).flatMap((entry) => {
-        return entry.episode <= progress ?
-            LOCALES.map((other) => entry.value[other])
-          : []
-      })
-
   return {
     ...characterOf(entity, locale),
-    folded: foldName(shown),
-    aliases: [...others, ...epithets].flatMap((alias) => {
-      const folded = foldName(alias)
+    ...foldedOf(entity.name[locale], [
+      ...otherNames(entity, locale),
+      ...reachedEpithets(entity, bookmark),
+    ]),
+  }
+}
 
-      return folded === '' ? [] : [folded]
-    }),
+/**
+ * A devil fruit as the specimen sheet draws it.
+ *
+ * The kind is passed in rather than looked up, because the sheet is built one
+ * plate at a time and already knows which plate it is setting: a projection
+ * that guessed would put a fruit on the wrong one rather than fail.
+ */
+export function fruitOf(
+  entity: Entity,
+  locale: Locale,
+  form: FruitForm,
+): FruitView {
+  return {
+    ...recordOf(entity, locale),
+    form,
+    summary: entity.summary[locale],
+    ...foldedOf(entity.name[locale], otherNames(entity, locale)),
   }
 }
 
@@ -121,6 +171,34 @@ export function slotOf<T>(
   return isRevealed(entity, bookmark) ?
       { open: true, record: open(entity) }
     : { open: false, covered: coveredOf(entity) }
+}
+
+/**
+ * The fruits one dossier entry names, as links to their own pages.
+ *
+ * An id the archive does not file is dropped rather than printed, which fails
+ * closed: a row that named a fruit with no page would be a dead link on a
+ * page the reader has reached. `undefined` for no entry and for an entry that
+ * named nothing, because an empty "Devil fruit" row says a fruit is coming,
+ * and that is itself a spoiler.
+ */
+function linksFor(
+  ids: readonly string[] | undefined,
+  locale: Locale,
+): readonly FruitLink[] | undefined {
+  if (ids === undefined) {
+    return undefined
+  }
+
+  const links = ids.flatMap((id) => {
+    const fruit = getFruit(id)
+
+    return fruit === undefined ?
+        []
+      : [{ id: fruit.id, name: fruit.name[locale] }]
+  })
+
+  return links.length === 0 ? undefined : links
 }
 
 /**
@@ -158,7 +236,7 @@ export function factsFrom(
   const epithet = words(known(dossier.epithet))
   const affiliation = words(known(dossier.affiliation))
   const origin = words(known(dossier.origin))
-  const devilFruit = words(known(dossier.devilFruit))
+  const devilFruit = linksFor(known(dossier.devilFruit), locale)
   const bounty = known(dossier.bounty)
 
   return {

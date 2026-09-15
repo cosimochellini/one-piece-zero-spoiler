@@ -65,7 +65,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 356 records and 356 line drawings — about 800 KB of TypeScript.
+The archive is 476 records and 476 line drawings — about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 out of the request and sends back the records at or below the bookmark, with
 their strings already resolved to the page's locale and their drawings already
@@ -115,13 +115,14 @@ browser at all rather than there and declined.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 356                                                                   |
+| Records             | 476                                                                   |
 | Characters          | 326                                                                   |
+| Devil fruits        | 120                                                                   |
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
-| Line drawings       | 356, one per record                                                   |
-| Test files          | 40                                                                    |
-| Test cases          | 337                                                                   |
+| Line drawings       | 476, one per record                                                   |
+| Test files          | 51                                                                    |
+| Test cases          | 429                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
 
 ## Every line drawn here
@@ -132,7 +133,7 @@ drawing made for this project: a straw hat, three sheathed swords, a violin, a
 windmill on a hill. No faces, no logos, no official artwork.
 
 The drawings are data, not markup — lists of stroke paths in TypeScript — and
-one component renders all 356 of them: a 160×200 box, a uniform 2 px stroke held
+one component renders all 476 of them: a 160×200 box, a uniform 2 px stroke held
 at 2 px through `vector-effect: non-scaling-stroke`, round caps and joins, no
 fills. Each takes exactly one hue for its main stroke and leaves the rest in the
 neutral ink, which is what makes several hundred illustrations read as one set.
@@ -143,6 +144,16 @@ site is written in JSX. The one solid on the site is the ship in the fold: the
 Thousand Sunny cut out of a full moon as a silhouette, with a hairline of the
 route gold around her profile, because a ship the size of a headline drawn in
 outline read as a diagram of a ship.
+
+The 120 devil fruits are the one set that is grown rather than drawn one at a
+time. A hundred and twenty drawings of the same object have to read as one set
+and still be a hundred and twenty drawings, so each one is composed from a seed
+written beside its id — one of six silhouettes, one of four marks, a stalk and a
+leaf — and the eleven a reader arrives already knowing are drawn by hand and
+override theirs. The containment is a proof rather than a hope: a seed cannot
+supply a radius, so the widest fruit the generator can produce is known in
+advance, and every path it writes uses absolute commands only, which is what
+lets the test read the numbers in a path as coordinates.
 
 ## Stack
 
@@ -193,7 +204,12 @@ invariants, checked on every run:
   threshold, so a fact can never predate the character it belongs to;
 - every place is filed under an arc that opens no later than the place itself,
   because the dossier names that arc in the open;
-- no drawing is left without a record.
+- no drawing is left without a record;
+- every devil fruit opens no later than any dossier entry that names it, which
+  is what lets a character's page print its fruit as a link without checking
+  anything — and the eighteen fruits whose chapter threshold rounds the wrong
+  way are pinned in a list, so a nineteenth is a decision somebody takes rather
+  than one that happens.
 
 The one I like most is self-referential: the pull request title validator reads
 the release configuration and asserts that the two accept exactly the same set
@@ -239,7 +255,8 @@ its own.
 - **The archive is not in the bundle.** Moving it behind the loaders took the
   client JavaScript from 1,048,559 bytes to 450,058 — and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
-  not all 356.
+  not all 476. Adding the 120 devil fruits, their drawings and two more pages
+  cost 31 KB of client JavaScript and not one byte of archive.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary side by side; it now carries the page's own.
 - The shelves — 326 tiles with a drawing each, below the fold — are returned

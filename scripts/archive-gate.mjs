@@ -58,6 +58,12 @@ const PROSE_EXTRA = ['src/data/places.ts']
 const ART_DIR = 'src/data/art'
 
 /**
+ * Archive modules keyed by record id that carry no prose and live outside the
+ * drawing directory, so neither canary would otherwise see them.
+ */
+const SLUG_EXTRA = ['src/data/art/fruits/index.ts', 'src/data/fruit-forms.ts']
+
+/**
  * An id hyphenated and long enough that a minifier could not produce it by
  * accident. Short ones — `nami`, `koby` — are words, and a gate that failed
  * on a word would be a gate nobody trusted.
@@ -212,15 +218,16 @@ function proseCanaries(repoRoot) {
  * @returns {{file: string, phrase: null | string}[]} What to look for.
  */
 function slugCanaries(repoRoot) {
-  return readdirSync(path.join(repoRoot, ART_DIR))
+  const drawings = readdirSync(path.join(repoRoot, ART_DIR))
     .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
-    .flatMap((name) => {
-      const file = `${ART_DIR}/${name}`
-      const slugs = slugsFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+    .map((name) => `${ART_DIR}/${name}`)
 
-      // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
-      return slugs.length === 0 ? [] : [{ file, phrase: slugs[0] ?? null }]
-    })
+  return [...drawings, ...SLUG_EXTRA].flatMap((file) => {
+    const slugs = slugsFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+
+    // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
+    return slugs.length === 0 ? [] : [{ file, phrase: slugs[0] ?? null }]
+  })
 }
 
 /**

@@ -14,17 +14,14 @@ import { orderByMode } from '~/data/order'
 import { placeDossierOf, places } from '~/data/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { getDictionary, translate } from '~/i18n/translate'
-import type { Translate } from '~/i18n/types'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
-import { describeThreshold } from '~/lib/progress/threshold'
 import type {
   CharacterDetail,
-  CharacterHead,
   CharacterView,
   ChartView,
   CoveredRecord,
+  DocumentHead,
   PortView,
   RecordView,
   RoutePositionView,
@@ -33,6 +30,7 @@ import type {
   Slot,
 } from '~/lib/view/records'
 
+import { headFor, type HeadKeys } from './head.server'
 import {
   characterOf,
   coveredOf,
@@ -146,7 +144,7 @@ export function shelvesPage(
 /** A character's own page: what names it, and what it says. */
 export type CharacterPage = {
   readonly detail: CharacterDetail
-  readonly head: CharacterHead
+  readonly head: DocumentHead
 }
 
 /**
@@ -168,7 +166,7 @@ export function characterPage(
   const dossier = characterDossierOf(entity)
 
   return {
-    head: headOf({ bookmark, entity, locale, revealed }),
+    head: headFor({ bookmark, entity, keys: CHARACTER_HEAD, locale, revealed }),
     detail: {
       slot:
         revealed ?
@@ -294,39 +292,9 @@ export function portOf(
   }
 }
 
-/**
- * The document title and description. Under fog both are generic: a title is
- * set before any component runs, so this is the one place a covered name
- * could leak, and it must not.
- */
-function headOf({
-  bookmark,
-  entity,
-  locale,
-  revealed,
-}: {
-  readonly bookmark: Bookmark
-  readonly entity: Entity
-  readonly locale: Locale
-  readonly revealed: boolean
-}): CharacterHead {
-  const dictionary = getDictionary(locale)
-  const t: Translate = (key, params) => translate(dictionary, key, params)
-
-  if (!revealed) {
-    return {
-      title: t('character.foggedTitle'),
-      description: describeThreshold({
-        gated: entity,
-        mode: modeOf(bookmark),
-        sentence: 'character.foggedDescription',
-        t,
-      }),
-    }
-  }
-
-  return {
-    title: t('character.pageTitle', { name: entity.name[locale] }),
-    description: entity.summary[locale],
-  }
+/** What a character's page calls itself, open and under fog. */
+const CHARACTER_HEAD: HeadKeys = {
+  foggedDescription: 'character.foggedDescription',
+  foggedTitle: 'character.foggedTitle',
+  pageTitle: 'character.pageTitle',
 }

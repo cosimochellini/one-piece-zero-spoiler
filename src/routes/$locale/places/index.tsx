@@ -8,15 +8,15 @@
  * · differs from the previous build (Catalogue) on macrostructure; theme is
  *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
-import { type ReactElement, useCallback } from 'react'
+import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { PortLog } from '~/components/PortLog'
-import { useLocale } from '~/i18n/LocaleContext'
+import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
+import { usePeek } from '~/routes/$locale/-peek'
 import { liftPort, liftRecord, loadPlaces } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/places/')({
@@ -55,35 +55,13 @@ export const Route = createFileRoute('/$locale/places/')({
  * the served HTML.
  */
 function PlacesPage(): ReactElement {
-  const { locale, t } = useLocale()
+  const t = useT()
   const { bookmark } = useBookmark()
   const { covered, filed, open } = Route.useLoaderData()
 
-  const callPort = useServerFn(liftPort)
-  const peek = useCallback(
-    async (handle: string) => {
-      const port = await callPort({ data: { handle, locale } })
-      if (port === null) {
-        throw new Error('No port is filed under that mark')
-      }
+  const peek = usePeek(liftPort)
 
-      return port
-    },
-    [callPort, locale],
-  )
-
-  const callRecord = useServerFn(liftRecord)
-  const peekRecord = useCallback(
-    async (handle: string) => {
-      const record = await callRecord({ data: { handle, locale } })
-      if (record === null) {
-        throw new Error('No record is filed under that mark')
-      }
-
-      return record
-    },
-    [callRecord, locale],
-  )
+  const peekRecord = usePeek(liftRecord)
 
   return (
     <ArchivePage

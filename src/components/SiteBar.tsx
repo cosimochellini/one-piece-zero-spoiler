@@ -20,7 +20,7 @@ import {
  * The bar (Hallmark N9, edge-aligned).
  *
  * Wordmark hard-left, the controls hard-right, and nothing in between. The
- * site has three pages and two languages, so the right edge carries two
+ * site has four pages and two languages, so the right edge carries three
  * links, the reader's bookmark and the language switch, and no more. The
  * bookmark is the one control the whole site turns on, so it lives here, on
  * every page, as a single mark that opens the dialog where it is set; the
@@ -61,6 +61,14 @@ export function SiteBar(): ReactElement {
           >
             {t('nav.places')}
           </Link>
+          <Link
+            activeProps={{ 'aria-current': 'page' }}
+            params={{ locale }}
+            to="/$locale/fruits"
+            {...stylex.props(styles.link)}
+          >
+            {t('nav.fruits')}
+          </Link>
         </nav>
         <EpisodeMark />
         <LocaleSwitch />
@@ -88,8 +96,8 @@ const styles = stylex.create({
     minWidth: 0,
   },
 
-  // Two page links, the bookmark and the language switch. They may wrap too,
-  // on a 320px phone, where the switch drops under the page links.
+  // Three page links, the bookmark and the language switch. They may wrap
+  // too, on a 320px phone, where the switch drops under the page links.
   controls: {
     alignItems: 'center',
     columnGap: { 'default': space.xs, '@media (min-width: 40rem)': space.lg },

@@ -25,6 +25,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   character: 'kind.character',
   place: 'kind.place',
   ship: 'kind.ship',
+  fruit: 'kind.fruit',
 }
 
 // The three bands in DOM order, as the page counts them.

@@ -410,12 +410,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 892, value: WANO }],
-      devilFruit: [
-        {
-          episode: 892,
-          value: { it: 'Frutto Kibi Kibi', en: 'Millet-Millet Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 892, value: ['millet-millet-fruit'] }],
     },
     'tenguyama-hitetsu': {
       role: { it: 'Fabbro di spade', en: 'Swordsmith' },
@@ -502,10 +497,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 906,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Spinosauro',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Spinosaurus',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-spinosaurus'],
         },
       ],
     },
@@ -529,10 +521,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 908,
-          value: {
-            it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
-            en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
-          },
+          value: ['snake-snake-fruit-mythical-model-yamata-no-orochi'],
         },
       ],
     },
@@ -555,12 +544,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 912, value: WANO }],
-      devilFruit: [
-        {
-          episode: 912,
-          value: { it: 'Frutto Juku Juku', en: 'Ripe-Ripe Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 912, value: ['ripe-ripe-fruit'] }],
     },
     'hyogoro': {
       role: { it: 'Vecchio capo della yakuza', en: 'Old yakuza boss' },
@@ -616,10 +600,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 925,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Brachiosauro',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-brachiosaurus'],
         },
       ],
       bounty: [{ episode: 917, value: 1_320_000_000 }],
@@ -657,10 +638,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 923,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Pteranodonte',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Pteranodon',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-pteranodon'],
         },
       ],
       bounty: [{ episode: 923, value: 1_390_000_000 }],
@@ -879,12 +857,7 @@ export const wano: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 963,
-          value: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 963, value: ['time-time-fruit'] }],
     },
     'kurozumi-higurashi': {
       role: { it: 'Anziana dei Kurozumi', en: 'Kurozumi elder' },
@@ -902,12 +875,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 963, value: WANO }],
-      devilFruit: [
-        {
-          episode: 963,
-          value: { it: 'Frutto Clone Clone', en: 'Clone-Clone Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 963, value: ['clone-clone-fruit'] }],
     },
     'kurozumi-semimaru': {
       role: {
@@ -928,12 +896,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 963, value: WANO }],
-      devilFruit: [
-        {
-          episode: 963,
-          value: { it: 'Frutto Bari Bari', en: 'Barrier-Barrier Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 963, value: ['barrier-barrier-fruit'] }],
     },
     'izo': {
       role: {
@@ -965,10 +928,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 982,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Pachicefalosauro',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Pachycephalosaurus',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-pachycephalosaurus'],
         },
       ],
     },
@@ -990,10 +950,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 982,
-          value: {
-            it: 'Frutto Neko Neko, modello Tigre dai denti a sciabola',
-            en: 'Cat-Cat Fruit, Ancient Model: Sabre-Tooth Tiger',
-          },
+          value: ['cat-cat-fruit-ancient-model-sabre-tooth-tiger'],
         },
       ],
     },
@@ -1007,10 +964,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 982,
-          value: {
-            it: 'Frutto Kumo Kumo, modello Rosamygale Grauvogeli',
-            en: 'Spider-Spider Fruit, Ancient Model: Rosamygale Grauvogeli',
-          },
+          value: ['spider-spider-fruit-ancient-model-rosamygale-grauvogeli'],
         },
       ],
     },
@@ -1024,10 +978,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 982,
-          value: {
-            it: 'Frutto Ryu Ryu, modello Triceratopo',
-            en: 'Dragon-Dragon Fruit, Ancient Model: Triceratops',
-          },
+          value: ['dragon-dragon-fruit-ancient-model-triceratops'],
         },
       ],
     },
@@ -1050,13 +1001,7 @@ export const wano: Saga = {
         { episode: 992, value: { it: 'Paese di Wano', en: 'Wano Country' } },
       ],
       devilFruit: [
-        {
-          episode: 1040,
-          value: {
-            it: 'Frutto Inu Inu, modello Okuchi no Makami',
-            en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
-          },
-        },
+        { episode: 1040, value: ['dog-dog-fruit-model-okuchi-no-makami'] },
       ],
     },
     'bao-huang': {
@@ -1077,12 +1022,7 @@ export const wano: Saga = {
           },
         },
       ],
-      devilFruit: [
-        {
-          episode: 995,
-          value: { it: 'Frutto Risu Risu', en: 'Squirrel-Squirrel Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 995, value: ['squirrel-squirrel-fruit'] }],
     },
   },
 }

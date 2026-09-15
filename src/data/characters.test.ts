@@ -59,7 +59,6 @@ const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] =
           ...timelineCases(character, 'affiliation', dossier.affiliation),
           ...timelineCases(character, 'origin', dossier.origin),
           ...timelineCases(character, 'epithet', dossier.epithet),
-          ...timelineCases(character, 'devilFruit', dossier.devilFruit),
         ]
   })
 
@@ -68,9 +67,20 @@ const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
     timelineCases(character, 'bounty', dossierOf(character)?.bounty),
 )
 
+/**
+ * The devil fruit timelines. Their own bucket because they carry fruit ids
+ * rather than prose, so the "written in every locale" test does not apply to
+ * them; the ordering and threshold tests still do.
+ */
+const FRUIT_TIMELINES: readonly TimelineCase<readonly string[]>[] =
+  characters.flatMap((character) =>
+    timelineCases(character, 'devilFruit', dossierOf(character)?.devilFruit),
+  )
+
 const ALL_TIMELINES: readonly TimelineCase<unknown>[] = [
   ...TEXT_TIMELINES,
   ...BOUNTY_TIMELINES,
+  ...FRUIT_TIMELINES,
 ]
 
 /** The first record on the chart, which the route tests read either side of. */
@@ -80,6 +90,12 @@ if (FIRST_CHARTED === undefined) {
 }
 
 const NOT_CHARACTERS = entities.filter((entity) => entity.kind !== 'character')
+
+/** The kinds the chart draws whatever the featured list says. */
+const CHARTED_KINDS = new Set(['arc', 'place', 'ship'])
+const CHARTED_OTHERS = entities.filter((entity) =>
+  CHARTED_KINDS.has(entity.kind),
+)
 
 /** A stable alphabetical order, so two id lists can be compared as sets. */
 function byName(a: string, b: string): number {
@@ -197,7 +213,7 @@ describe('the chart', () => {
   it('draws every arc, place and ship and only the featured characters', () => {
     const chartedIds = chart.map((entity) => entity.id)
 
-    for (const other of NOT_CHARACTERS) {
+    for (const other of CHARTED_OTHERS) {
       expect(chartedIds, other.id).toContain(other.id)
     }
 
@@ -208,6 +224,14 @@ describe('the chart', () => {
     expect(drawn.toSorted(byName)).toStrictEqual(
       FEATURED_CHARACTER_IDS.toSorted(byName),
     )
+  })
+
+  it('draws no devil fruit', () => {
+    // The chart is arcs, places, ships and the characters in evidence. A
+    // hundred and twenty fruits on it would be a different page, and the
+    // filter is an allow-list so that a new kind never arrives on it by
+    // default.
+    expect(chart.filter((entity) => entity.kind === 'fruit')).toStrictEqual([])
   })
 
   it('is in threshold order', () => {

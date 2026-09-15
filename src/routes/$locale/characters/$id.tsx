@@ -7,14 +7,17 @@
  * · idea: "a page from the signal book, opened flat" */
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useServerFn } from '@tanstack/react-start'
-import { type ReactElement, Suspense, use, useCallback } from 'react'
+import { type ReactElement, Suspense, use } from 'react'
 
+import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { Locale } from '~/i18n/locales'
 import type { CharacterView, Slot } from '~/lib/view/records'
+import { orNotFound } from '~/routes/$locale/-found'
+import { describeDocument } from '~/routes/$locale/-head'
+import { usePeek } from '~/routes/$locale/-peek'
+import { recordStyles } from '~/routes/$locale/-record.styles'
 import {
   liftCharacter,
   liftDossier,
@@ -26,8 +29,6 @@ import {
 import { settleStyles } from '~/styles/settle'
 
 import { DossierDiptych } from './-$id.dossier'
-import { orNotFound } from './-$id.found'
-import { describeDocument } from './-$id.head'
 import { RouteDiptych, RoutePending } from './-$id.route'
 import { styles } from './-$id.styles'
 
@@ -90,11 +91,11 @@ function CharacterPage(): ReactElement {
   return (
     <main
       id="content"
-      {...stylex.props(styles.page)}
+      {...stylex.props(recordStyles.page)}
     >
       <p
         {...stylex.props(
-          styles.back,
+          recordStyles.back,
           settleStyles.band,
           settleStyles.at(BAND.dossier),
         )}
@@ -129,35 +130,6 @@ function CharacterPage(): ReactElement {
         peek={peekCharacter}
       />
     </main>
-  )
-}
-
-/**
- * A closure that trades a covered record's handle for the record.
- *
- * Built here rather than in the components, because a component may not call
- * a server function: under Vitest the Start plugin is deliberately absent and
- * calling one throws out of `getStartContext()`. Everything below takes the
- * closure as a prop.
- */
-function usePeek<T>(
-  lift: (input: {
-    readonly data: { readonly handle: string; readonly locale: Locale }
-  }) => Promise<null | T>,
-): (handle: string) => Promise<T> {
-  const { locale } = useLocale()
-  const call = useServerFn(lift)
-
-  return useCallback(
-    async (handle: string) => {
-      const record = await call({ data: { handle, locale } })
-      if (record === null) {
-        throw new Error('No record is filed under that mark')
-      }
-
-      return record
-    },
-    [call, locale],
   )
 }
 
@@ -253,29 +225,31 @@ function BackLink(): ReactElement {
     <Link
       params={{ locale }}
       to="/$locale/characters"
-      {...stylex.props(styles.backLink)}
+      {...stylex.props(recordStyles.backLink)}
     >
       ← {t('character.back')}
     </Link>
   )
 }
 
-/** `/characters/<not-a-character>`: says so, and points at the book. */
+/**
+ * `/characters/<not-a-character>`: says so, and points at the book.
+ *
+ * The archive shell rather than a page of its own: a not-found page is a
+ * heading, a sentence and a way out, which is exactly what the listings open
+ * with, and two hand-built copies of that had already drifted into being.
+ */
 function CharacterNotFound(): ReactElement {
   const { t } = useLocale()
 
   return (
-    <main
-      id="content"
-      {...stylex.props(styles.page)}
+    <ArchivePage
+      count={t('character.notFoundBody')}
+      title={t('character.notFoundTitle')}
     >
-      <div {...stylex.props(styles.words)}>
-        <h1 {...stylex.props(styles.name)}>{t('character.notFoundTitle')}</h1>
-        <p {...stylex.props(styles.summary)}>{t('character.notFoundBody')}</p>
-        <p>
-          <BackLink />
-        </p>
-      </div>
-    </main>
+      <p>
+        <BackLink />
+      </p>
+    </ArchivePage>
   )
 }

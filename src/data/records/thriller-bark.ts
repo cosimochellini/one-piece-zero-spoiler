@@ -165,12 +165,7 @@ export const thrillerBark: Saga = {
       ],
       origin: [{ episode: 339, value: { it: 'West Blue', en: 'West Blue' } }],
       epithet: [{ episode: 517, value: { it: 'Soul King', en: 'Soul King' } }],
-      devilFruit: [
-        {
-          episode: 339,
-          value: { it: 'Frutto Yomi Yomi', en: 'Revive-Revive Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 339, value: ['revive-revive-fruit'] }],
       bounty: [
         { episode: 339, value: 33_000_000 },
         { episode: 746, value: 83_000_000 },
@@ -195,12 +190,7 @@ export const thrillerBark: Saga = {
           value: { it: 'Principessa Fantasma', en: 'Ghost Princess' },
         },
       ],
-      devilFruit: [
-        {
-          episode: 340,
-          value: { it: 'Frutto Horo Horo', en: 'Hollow-Hollow Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 340, value: ['hollow-hollow-fruit'] }],
     },
     'lola': {
       role: { it: 'Sposa zombie', en: 'Zombie bride' },
@@ -253,12 +243,7 @@ export const thrillerBark: Saga = {
         },
       ],
       origin: [{ episode: 343, value: { it: 'West Blue', en: 'West Blue' } }],
-      devilFruit: [
-        {
-          episode: 343,
-          value: { it: 'Frutto Kage Kage', en: 'Shadow-Shadow Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 343, value: ['shadow-shadow-fruit'] }],
       bounty: [{ episode: 343, value: 320_000_000 }],
     },
     'absalom': {
@@ -279,12 +264,7 @@ export const thrillerBark: Saga = {
       epithet: [
         { episode: 341, value: { it: 'Il Cimitero', en: 'the Graveyard' } },
       ],
-      devilFruit: [
-        {
-          episode: 341,
-          value: { it: 'Frutto Suke Suke', en: 'Clear-Clear Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 341, value: ['clear-clear-fruit'] }],
     },
     'hogback': {
       role: { it: 'Chirurgo', en: 'Surgeon' },

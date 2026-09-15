@@ -14,6 +14,8 @@ import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
 import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
 import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
+import { Route as LocaleFruitsIndexRouteImport } from './routes/$locale/fruits/index'
+import { Route as LocaleFruitsIdRouteImport } from './routes/$locale/fruits/$id'
 import { Route as LocalePlacesIndexRouteImport } from './routes/$locale/places/index'
 
 const IndexRoute = IndexRouteImport.update({
@@ -41,6 +43,16 @@ const LocaleCharactersIdRoute = LocaleCharactersIdRouteImport.update({
   path: '/characters/$id',
   getParentRoute: () => LocaleRoute,
 } as any)
+const LocaleFruitsIndexRoute = LocaleFruitsIndexRouteImport.update({
+  id: '/fruits/',
+  path: '/fruits/',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleFruitsIdRoute = LocaleFruitsIdRouteImport.update({
+  id: '/fruits/$id',
+  path: '/fruits/$id',
+  getParentRoute: () => LocaleRoute,
+} as any)
 const LocalePlacesIndexRoute = LocalePlacesIndexRouteImport.update({
   id: '/places/',
   path: '/places/',
@@ -52,14 +64,18 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
+  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
+  '/$locale/fruits/': typeof LocaleFruitsIndexRoute
   '/$locale/places/': typeof LocalePlacesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
+  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
   '/$locale/characters': typeof LocaleCharactersIndexRoute
+  '/$locale/fruits': typeof LocaleFruitsIndexRoute
   '/$locale/places': typeof LocalePlacesIndexRoute
 }
 export interface FileRoutesById {
@@ -68,7 +84,9 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
+  '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
   '/$locale/characters/': typeof LocaleCharactersIndexRoute
+  '/$locale/fruits/': typeof LocaleFruitsIndexRoute
   '/$locale/places/': typeof LocalePlacesIndexRoute
 }
 export interface FileRouteTypes {
@@ -78,14 +96,18 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/'
     | '/$locale/characters/$id'
+    | '/$locale/fruits/$id'
     | '/$locale/characters/'
+    | '/$locale/fruits/'
     | '/$locale/places/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/$locale'
     | '/$locale/characters/$id'
+    | '/$locale/fruits/$id'
     | '/$locale/characters'
+    | '/$locale/fruits'
     | '/$locale/places'
   id:
     | '__root__'
@@ -93,7 +115,9 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/$locale/'
     | '/$locale/characters/$id'
+    | '/$locale/fruits/$id'
     | '/$locale/characters/'
+    | '/$locale/fruits/'
     | '/$locale/places/'
   fileRoutesById: FileRoutesById
 }
@@ -139,6 +163,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleCharactersIdRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/fruits/': {
+      id: '/$locale/fruits/'
+      path: '/fruits'
+      fullPath: '/$locale/fruits/'
+      preLoaderRoute: typeof LocaleFruitsIndexRouteImport
+      parentRoute: typeof LocaleRoute
+    }
+    '/$locale/fruits/$id': {
+      id: '/$locale/fruits/$id'
+      path: '/fruits/$id'
+      fullPath: '/$locale/fruits/$id'
+      preLoaderRoute: typeof LocaleFruitsIdRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/places/': {
       id: '/$locale/places/'
       path: '/places'
@@ -152,14 +190,18 @@ declare module '@tanstack/react-router' {
 interface LocaleRouteChildren {
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
+  LocaleFruitsIdRoute: typeof LocaleFruitsIdRoute
   LocaleCharactersIndexRoute: typeof LocaleCharactersIndexRoute
+  LocaleFruitsIndexRoute: typeof LocaleFruitsIndexRoute
   LocalePlacesIndexRoute: typeof LocalePlacesIndexRoute
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,
+  LocaleFruitsIdRoute: LocaleFruitsIdRoute,
   LocaleCharactersIndexRoute: LocaleCharactersIndexRoute,
+  LocaleFruitsIndexRoute: LocaleFruitsIndexRoute,
   LocalePlacesIndexRoute: LocalePlacesIndexRoute,
 }
 

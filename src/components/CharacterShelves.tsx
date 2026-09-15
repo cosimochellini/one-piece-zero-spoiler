@@ -3,8 +3,8 @@ import { type ReactElement, Suspense, use } from 'react'
 
 import { CatalogueSection } from '~/components/CatalogueSection'
 import { styles } from '~/components/CharacterGrid.styles'
-import { type Match, matchesIn } from '~/components/characterMatches'
 import { CharacterTile } from '~/components/CharacterTile'
+import { type Match, matchesIn } from '~/components/recordMatches'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useT } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
@@ -12,6 +12,7 @@ import type {
   CharacterView,
   CoveredRecord,
   RecordView,
+  SearchableCharacter,
   ShelfView,
   Slot,
 } from '~/lib/view/records'
@@ -278,7 +279,7 @@ function ShelfTiles({
 }: {
   readonly covered: readonly CoveredRecord[]
   readonly peek: (handle: string) => Promise<CharacterView>
-  readonly shown: readonly Match[]
+  readonly shown: readonly Match<SearchableCharacter>[]
 }): ReactElement {
   return (
     <ul {...stylex.props(styles.tiles)}>

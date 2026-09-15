@@ -82,6 +82,36 @@ describe('the slugs the gate looks for', () => {
     expect(slugsFrom('export type Stroke = { d: string }')).toStrictEqual([])
   })
 
+  it('reads a slug-keyed archive table that holds no drawing either', () => {
+    // `src/data/fruit-forms.ts` is a hundred and twenty name slugs and not one
+    // sentence, and it sits outside the drawing directory, so neither canary
+    // would see it without being told to.
+    const source = [
+      'export const FRUIT_FORMS = {',
+      "  'gum-gum-fruit': 'paramecia',",
+      "  'op-op-fruit': 'paramecia',",
+      "  'flame-flame-fruit': 'logia',",
+      '} satisfies Readonly<Record<string, FruitForm>>',
+    ].join('\n')
+
+    // `op-op-fruit` is eleven characters, under the length the gate trusts.
+    expect(slugsFrom(source)).toStrictEqual([
+      'gum-gum-fruit',
+      'flame-flame-fruit',
+    ])
+  })
+
+  it('covers the slug-keyed modules that live outside the drawings', () => {
+    for (const file of [
+      'src/data/fruit-forms.ts',
+      'src/data/art/fruits/index.ts',
+    ]) {
+      const source = readFileSync(path.join(repoRoot, file), 'utf8')
+
+      expect(slugsFrom(source).length, file).toBeGreaterThan(0)
+    }
+  })
+
   it('names every drawing module the archive holds', () => {
     // The drawing modules carry no prose at all, so the prose canaries can
     // never cover them — and their keys are the record ids, which are the

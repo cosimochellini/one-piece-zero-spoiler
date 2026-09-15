@@ -3,6 +3,9 @@ import type {
   CharacterView,
   CoveredRecord,
   Drawing,
+  FruitBandView,
+  FruitDetail,
+  FruitView,
   PortDossier,
   PortView,
   RecordView,
@@ -75,6 +78,32 @@ export function searchable(
   const base = character(over)
 
   return { ...base, folded: base.name.toLowerCase(), aliases: [], ...over }
+}
+
+export function fruit(over: Partial<FruitView> = {}): FruitView {
+  const base = record({
+    kind: 'fruit',
+    id: 'test-fruit',
+    name: 'Gum-Gum Fruit',
+    ...over,
+  })
+
+  return {
+    ...base,
+    form: 'paramecia',
+    summary: 'Turns the body of whoever ate it to rubber.',
+    folded: base.name.toLowerCase(),
+    aliases: [],
+    ...over,
+  }
+}
+
+export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
+  return { form: 'paramecia', total: 1, open: [fruit()], covered: [], ...over }
+}
+
+export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
+  return { slot: openSlot(fruit()), ...over }
 }
 
 export function waypoint(over: Partial<WaypointView> = {}): WaypointView {

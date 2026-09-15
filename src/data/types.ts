@@ -2,6 +2,7 @@ import type { Locale } from '~/i18n/locales'
 import type { EntityKind, TintId } from '~/lib/view/records'
 
 import type { ArtId } from './art'
+import type { FruitId } from './fruit-forms'
 
 /**
  * A string in every published locale. Total over `Locale` on purpose: a record
@@ -17,6 +18,17 @@ export type LocalizedText = Readonly<Record<Locale, string>>
  * drawing that does not exist.
  */
 export type { ArtId } from './art'
+
+/**
+ * The devil fruits, filed as records of their own in `~/data/records/fruits`
+ * and keyed in `~/data/fruit-forms`. The type is derived from that table, so
+ * a dossier cannot say a character ate a fruit the archive never filed.
+ *
+ * Imported as `import type`, never as an inline `import { type … }`: under
+ * `isolatedModules` the inline form is a live module edge, and this module is
+ * imported by every saga. See the note at the head of `~/lib/view/records`.
+ */
+export type { FruitId } from './fruit-forms'
 
 /**
  * What a record shows: a line drawing and the one colour its main stroke
@@ -74,7 +86,12 @@ export type Timeline<T> = readonly Dated<T>[]
  */
 export type CharacterDossier = {
   readonly affiliation: Timeline<LocalizedText>
-  readonly devilFruit?: Timeline<LocalizedText>
+  /**
+   * The fruits the story has said this character ate, by id rather than by
+   * name: one entry may carry two, because one episode may say two. The name
+   * the page prints is the fruit record's own, so the two can never drift.
+   */
+  readonly devilFruit?: Timeline<readonly FruitId[]>
   readonly epithet?: Timeline<LocalizedText>
   readonly log: LocalizedText
   readonly origin?: Timeline<LocalizedText>

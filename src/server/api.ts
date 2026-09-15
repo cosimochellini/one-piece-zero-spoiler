@@ -4,6 +4,12 @@ import { isLocale, type Locale } from '~/i18n/locales'
 import { readBookmark } from '~/lib/progress/readBookmark'
 
 import {
+  fruitEaters,
+  fruitPage,
+  fruitSheet,
+  fruitSiblings,
+} from './archive/fruits.server'
+import {
   characterPage,
   charactersPage,
   chartPage,
@@ -15,6 +21,7 @@ import {
 import {
   peekCharacter,
   peekDossier,
+  peekFruit,
   peekPort,
   peekRecord,
   peekWaypoint,
@@ -123,6 +130,24 @@ export const loadNearby = createServerFn()
   .validator(addressed)
   .handler(({ data }) => nearbyPage(data.id, readBookmark(), data.locale))
 
+export const loadFruits = createServerFn()
+  .validator(located)
+  .handler(({ data }) => fruitSheet(readBookmark(), data.locale))
+
+export const loadFruit = createServerFn()
+  .validator(addressed)
+  .handler(
+    ({ data }) => fruitPage(data.id, readBookmark(), data.locale) ?? null,
+  )
+
+export const loadFruitEaters = createServerFn()
+  .validator(addressed)
+  .handler(({ data }) => fruitEaters(data.id, readBookmark(), data.locale))
+
+export const loadFruitSiblings = createServerFn()
+  .validator(addressed)
+  .handler(({ data }) => fruitSiblings(data.id, readBookmark(), data.locale))
+
 export const loadPlaces = createServerFn()
   .validator(located)
   .handler(({ data }) => placesPage(readBookmark(), data.locale))
@@ -138,6 +163,10 @@ export const liftCharacter = createServerFn()
 export const liftDossier = createServerFn()
   .validator(handled)
   .handler(({ data }) => peekDossier(data.handle, data.locale) ?? null)
+
+export const liftFruit = createServerFn()
+  .validator(handled)
+  .handler(({ data }) => peekFruit(data.handle, data.locale) ?? null)
 
 export const liftRecord = createServerFn()
   .validator(handled)

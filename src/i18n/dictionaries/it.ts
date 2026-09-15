@@ -10,16 +10,17 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler — una wiki di One Piece che ti aspetta',
   'site.description':
-    'Una wiki di One Piece che nasconde ogni personaggio, saga e isola archiviati dopo l’episodio a cui sei arrivato.',
+    'Una wiki di One Piece che nasconde ogni personaggio, saga, isola e frutto del diavolo archiviati dopo l’episodio a cui sei arrivato.',
 
   'nav.skip': 'Vai al contenuto',
   'nav.characters': 'Personaggi',
   'nav.places': 'Luoghi',
+  'nav.fruits': 'Frutti',
   'nav.label': 'Pagine',
 
   'hero.headline': 'La wiki si ferma dove sei tu',
   'hero.lede':
-    'Imposta il segnalibro nella barra qui sopra: l’episodio dell’anime, la stagione e l’episodio, o il capitolo del manga a cui sei arrivato. Ogni personaggio, saga e isola archiviati dopo quel punto restano nella nebbia, finché non decidi tu.',
+    'Imposta il segnalibro nella barra qui sopra: l’episodio dell’anime, la stagione e l’episodio, o il capitolo del manga a cui sei arrivato. Ogni personaggio, saga, isola e frutto del diavolo archiviati dopo quel punto restano nella nebbia, finché non decidi tu.',
   'hero.setBookmark': 'Imposta il segnalibro',
   'hero.changeBookmark': 'Cambia il segnalibro · {threshold}',
   'hero.explore': 'Esplora l’archivio',
@@ -193,6 +194,70 @@ export const itDictionary: Dictionary = {
   'places.filedHere': 'Archiviati qui',
   'places.filedNone': 'Niente dell’archivio è ancora archiviato qui.',
 
+  'fruits.title': 'Il foglio dei campioni',
+  'fruits.count':
+    '{count} frutti del diavolo, disposti su tre tavole nell’ordine in cui la storia li nomina. La nebbia non risponde alle ricerche.',
+  'fruits.pageTitle': 'Frutti del diavolo — Zero Spoiler',
+  'fruits.pageDescription':
+    'I frutti del diavolo di One Piece, ognuno disegnato come un campione e archiviato all’episodio che lo nomina per la prima volta.',
+  'fruits.searchLabel': 'Trova un frutto',
+  'fruits.searchClear': 'Cancella la ricerca',
+  'fruits.searchPlaceholder': 'Gom Gom',
+  'fruits.shown': '{count} frutti aperti su {total} mostrati',
+  'fruits.noMatch': 'Nessun frutto aperto si chiama “{query}”.',
+  'fruits.plate': 'Tavola {index}',
+  'fruits.specimen': 'Campione {index}',
+  'fruits.bandCount': '{count} frutti',
+  'fruits.bandCountOne': '1 frutto',
+  'fruits.lede.paramecia': 'I frutti che cambiano ciò che un corpo può fare.',
+  'fruits.lede.zoan': 'I frutti che trasformano un corpo in un altro animale.',
+  'fruits.lede.logia': 'I frutti che trasformano un corpo in un elemento.',
+  'fruits.foggedTitle': '{count} nella nebbia',
+  'fruits.foggedTitleOne': '1 nella nebbia',
+  'fruits.foggedHint':
+    'I loro nomi sono coperti, quindi non rispondono a una ricerca. Sposta il segnalibro nella barra per aprirli.',
+  'fruits.allOpen': 'Su questa tavola non c’è niente nella nebbia.',
+
+  'fruit.opensAt.episode':
+    'Nominato per la prima volta nell’episodio {threshold}',
+  'fruit.opensAt.season': 'Nominato per la prima volta in {threshold}',
+  'fruit.opensAt.chapter':
+    'Nominato per la prima volta nel capitolo {threshold}',
+  'fruit.foggedName': 'Un frutto nella nebbia',
+  'fruit.foggedTitle': 'Un frutto nella nebbia — Zero Spoiler',
+  'fruit.foggedDescription.episode':
+    'Un frutto del diavolo di One Piece archiviato all’episodio {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
+  'fruit.foggedDescription.season':
+    'Un frutto del diavolo di One Piece archiviato a {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
+  'fruit.foggedDescription.chapter':
+    'Un frutto del diavolo di One Piece archiviato al capitolo {threshold}. Imposta il tuo segnalibro per leggere la pagina.',
+  'fruit.pageTitle': '{name} — Zero Spoiler',
+  'fruit.back': 'Tutti i frutti del diavolo',
+  'fruit.form': 'Tipo',
+  'fruit.eatersTitle': 'Chi l’ha mangiato',
+  'fruit.eatersLede':
+    'I personaggi che l’archivio registra come mangiatori di questo frutto, ciascuno sotto la propria nebbia.',
+  'fruit.eatersLoading': 'Leggo i dossier…',
+  'fruit.eatersNone': 'Nessuno nell’archivio l’ha ancora mangiato.',
+  'fruit.eatersInEpisodes':
+    'I dossier contano in episodi dell’anime. Imposta un segnalibro a episodio o a stagione per leggere chi l’ha mangiato; un segnalibro a capitolo li tiene coperti.',
+  'fruit.siblingsTitle': 'Altri di questo tipo',
+  'fruit.siblingsLede':
+    'I frutti archiviati più vicino a questo sulla stessa tavola.',
+  'fruit.siblingsLoading': 'Leggo il foglio…',
+  'fruit.siblingsNone': 'Non c’è ancora nient’altro di questo tipo archiviato.',
+  'fruit.notFoundTitle': 'Nessun frutto così',
+  'fruit.notFoundBody':
+    'Non c’è niente archiviato a questo indirizzo. Il foglio dei campioni elenca tutti i frutti che ci sono.',
+
+  // `Zoo Zoo` and not `Zoan`: the names here are the Italian dub's, the same
+  // rule that makes the captain Rufy and the clown Bagy, and the dub calls
+  // that class of fruit Zoo Zoo. The other two classes the dub leaves as they
+  // are, which is why they read the same as the English.
+  'fruitForm.paramecia': 'Paramecia',
+  'fruitForm.zoan': 'Zoo Zoo',
+  'fruitForm.logia': 'Logia',
+
   'sea.east-blue': 'East Blue',
   'sea.grand-line': 'Rotta Maggiore',
   'sea.new-world': 'Nuovo Mondo',
@@ -206,6 +271,7 @@ export const itDictionary: Dictionary = {
   'kind.arc': 'Saga',
   'kind.place': 'Luogo',
   'kind.ship': 'Nave',
+  'kind.fruit': 'Frutto del diavolo',
 
   'locale.label': 'Lingua',
   'locale.it': 'Italiano',

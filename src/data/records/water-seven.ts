@@ -352,12 +352,7 @@ export const waterSeven: Saga = {
       epithet: [
         { episode: 207, value: { it: 'La Volpe d’Argento', en: 'Silver Fox' } },
       ],
-      devilFruit: [
-        {
-          episode: 208,
-          value: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 208, value: ['slow-slow-fruit'] }],
       bounty: [{ episode: 207, value: 24_000_000 }],
     },
     'porche': {
@@ -407,12 +402,7 @@ export const waterSeven: Saga = {
         },
       ],
       epithet: [{ episode: 227, value: { it: 'Aokiji', en: 'Aokiji' } }],
-      devilFruit: [
-        {
-          episode: 227,
-          value: { it: 'Frutto Gelo Gelo', en: 'Ice-Ice Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 227, value: ['ice-ice-fruit'] }],
     },
     'iceburg': {
       role: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
@@ -491,15 +481,7 @@ export const waterSeven: Saga = {
         { episode: 264, value: CIPHER_POL_9 },
         { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
       ],
-      devilFruit: [
-        {
-          episode: 273,
-          value: {
-            it: 'Frutto Ushi Ushi, modello Giraffa',
-            en: 'Ox-Ox Fruit, Model: Giraffe',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 273, value: ['ox-ox-fruit-model-giraffe'] }],
     },
     'rob-lucci': {
       role: DOCK_ONE,
@@ -518,15 +500,7 @@ export const waterSeven: Saga = {
         },
         { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
       ],
-      devilFruit: [
-        {
-          episode: 273,
-          value: {
-            it: 'Frutto Neko Neko, modello Leopardo',
-            en: 'Cat-Cat Fruit, Model: Leopard',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 273, value: ['cat-cat-fruit-model-leopard'] }],
     },
     'kalifa': {
       role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
@@ -544,12 +518,7 @@ export const waterSeven: Saga = {
         },
         { episode: 264, value: CIPHER_POL_9 },
       ],
-      devilFruit: [
-        {
-          episode: 273,
-          value: { it: 'Frutto Bolla Bolla', en: 'Bubble-Bubble Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 273, value: ['bubble-bubble-fruit'] }],
     },
     'blueno': {
       role: { it: 'Barista', en: 'Barkeeper' },
@@ -567,12 +536,7 @@ export const waterSeven: Saga = {
         },
         { episode: 264, value: CIPHER_POL_9 },
       ],
-      devilFruit: [
-        {
-          episode: 273,
-          value: { it: 'Frutto Porta Porta', en: 'Door-Door Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 273, value: ['door-door-fruit'] }],
     },
     'kiwi-and-mozu': {
       role: {
@@ -681,15 +645,7 @@ export const waterSeven: Saga = {
         en: 'He spends more time needling the other agents than working, and with one of them it always ends in raised fists. He tells tearful stories in the middle of a fight to make an opponent hesitate, and it works. Under the uniform he wears a martial arts sash, and his rating inside the unit is among the highest there is.',
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
-      devilFruit: [
-        {
-          episode: 273,
-          value: {
-            it: 'Frutto Inu Inu, modello Lupo',
-            en: 'Dog-Dog Fruit, Model: Wolf',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 273, value: ['dog-dog-fruit-model-wolf'] }],
     },
     'kumadori': {
       role: CP9_AGENT,

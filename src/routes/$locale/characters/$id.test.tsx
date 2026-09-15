@@ -1,10 +1,10 @@
 import { isNotFound } from '@tanstack/react-router'
 import { describe, expect, it } from 'vitest'
 
-import type { CharacterHead } from '~/lib/view/records'
+import type { DocumentHead } from '~/lib/view/records'
+import { orNotFound } from '~/routes/$locale/-found'
 
 import { Route } from './$id'
-import { orNotFound } from './-$id.found'
 
 type Meta = {
   readonly content?: string
@@ -13,7 +13,7 @@ type Meta = {
 }
 
 type Head = (input: {
-  readonly loaderData: undefined | { readonly head: CharacterHead }
+  readonly loaderData: undefined | { readonly head: DocumentHead }
 }) => { readonly meta?: readonly Meta[] }
 
 /**
@@ -26,7 +26,7 @@ function isHead(value: unknown): value is Head {
   return typeof value === 'function'
 }
 
-function metaFor(head: CharacterHead | undefined): string {
+function metaFor(head: DocumentHead | undefined): string {
   const describeHead: unknown = Route.options.head
   if (!isHead(describeHead)) {
     throw new TypeError('the route has no head')

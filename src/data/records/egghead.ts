@@ -290,12 +290,7 @@ export const egghead: Saga = {
       epithet: [
         { episode: 1090, value: { it: 'Dr. Vegapunk', en: 'Dr. Vegapunk' } },
       ],
-      devilFruit: [
-        {
-          episode: 1090,
-          value: { it: 'Frutto Nomi Nomi', en: 'Brain-Brain Fruit' },
-        },
-      ],
+      devilFruit: [{ episode: 1090, value: ['brain-brain-fruit'] }],
     },
     'shaka': {
       role: {
@@ -340,6 +335,18 @@ export const egghead: Saga = {
       origin: [{ episode: 1091, value: EGGHEAD }],
       epithet: [{ episode: 1091, value: { it: 'Evil', en: 'Evil' } }],
     },
+    // The four Seraphim point at the fruits themselves rather than at a
+    // record of their own: what they carry is a copy grown from another
+    // body, not a second fruit, and the log above each of them already says
+    // they are built on somebody else's pattern. A record per copy would put
+    // four near-identical drawings on the sheet and say nothing more.
+    //
+    // Three of the four point at a fruit the archive already files for the
+    // body it was copied from. The fourth, `water-water-fruit`, has nobody
+    // else: whoever ate it first is not a record here yet, so its page lists
+    // the copy alone. That is the archive being honest about what it holds
+    // rather than a hole — the fruit was named on screen and the eater was
+    // not.
     's-snake': {
       role: SERAPHIM_ROLE,
       log: {
@@ -348,15 +355,7 @@ export const egghead: Saga = {
       },
       affiliation: [{ episode: 1092, value: SERAPHIM }],
       origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [
-        {
-          episode: 1092,
-          value: {
-            it: 'Frutto Mero Mero, copia Green Blood',
-            en: 'Love-Love Fruit, Green Blood copy',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 1092, value: ['love-love-fruit'] }],
     },
     's-hawk': {
       role: SERAPHIM_ROLE,
@@ -366,15 +365,7 @@ export const egghead: Saga = {
       },
       affiliation: [{ episode: 1092, value: SERAPHIM }],
       origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [
-        {
-          episode: 1092,
-          value: {
-            it: 'Frutto Dice Dice, copia Green Blood',
-            en: 'Dice-Dice Fruit, Green Blood copy',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 1092, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
       role: SERAPHIM_ROLE,
@@ -384,15 +375,7 @@ export const egghead: Saga = {
       },
       affiliation: [{ episode: 1092, value: SERAPHIM }],
       origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [
-        {
-          episode: 1092,
-          value: {
-            it: 'Frutto Nikyu Nikyu, copia Green Blood',
-            en: 'Paw-Paw Fruit, Green Blood copy',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 1092, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
       role: SERAPHIM_ROLE,
@@ -402,15 +385,7 @@ export const egghead: Saga = {
       },
       affiliation: [{ episode: 1092, value: SERAPHIM }],
       origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [
-        {
-          episode: 1092,
-          value: {
-            it: 'Frutto Mizu Mizu, copia Green Blood',
-            en: 'Water-Water Fruit, Green Blood copy',
-          },
-        },
-      ],
+      devilFruit: [{ episode: 1092, value: ['water-water-fruit'] }],
     },
     'edison': {
       role: {
