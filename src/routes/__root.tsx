@@ -32,6 +32,14 @@ export const Route = createRootRoute({
       // eslint-disable-next-line unicorn/text-encoding-identifier-case -- HTML requires this attribute to be an ASCII case-insensitive match for "utf-8"; `utf8` is a valid encoding label everywhere else, but not here.
       { charSet: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      // Proves ownership of the property to Google Search Console. The tag
+      // has to stay on every document: Search Console re-checks it, and a
+      // page that drops it fails verification.
+      {
+        name: 'google-site-verification',
+        // eslint-disable-next-line no-secrets/no-secrets -- the token is a public ownership proof Google hands out to be served in the HTML of every page; it grants nothing and is meant to be read by anyone.
+        content: 'h5qpGoxTYVlSKZU1U4-E74deg8MRRDnKdRa3Wb-kkPI',
+      },
     ],
     links: [
       // The .ico comes first so Safari, which ignores SVG icons, still finds
