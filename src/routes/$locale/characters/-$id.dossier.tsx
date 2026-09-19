@@ -28,7 +28,7 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
   fruit: 'kind.fruit',
 }
 
-// The three bands in DOM order, as the page counts them.
+// The four bands in DOM order, as the page counts them.
 const DOSSIER_BAND = 0
 
 /** The open half of the dossier: the record, with its summary. */

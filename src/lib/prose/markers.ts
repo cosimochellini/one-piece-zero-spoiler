@@ -43,24 +43,30 @@ type Found = {
 }
 
 /**
- * The first well-formed marker at or after `from`. A `[[` with no `]]` after
- * it, or with something between them that is not a marker, ends the search:
+ * The first well-formed marker at or after `from`. A `[[` with something
+ * between it and the next `]]` that is not a marker is left as words and the
+ * search goes on past it, so one slip does not swallow the links after it:
  * the data tests hold that this never happens, so the reader then sees the
  * brackets rather than losing the sentence.
  */
 function nextMarker(text: string, from: number): Found | undefined {
-  const start = text.indexOf(OPEN, from)
-  if (start === -1) {
-    return undefined
+  for (
+    let start = text.indexOf(OPEN, from);
+    start !== -1;
+    start = text.indexOf(OPEN, start + OPEN.length)
+  ) {
+    const close = text.indexOf(CLOSE, start + OPEN.length)
+    if (close === -1) {
+      return undefined
+    }
+
+    const marker = markerOf(text.slice(start + OPEN.length, close))
+    if (marker !== undefined) {
+      return { end: close + CLOSE.length, marker, start }
+    }
   }
 
-  const close = text.indexOf(CLOSE, start + OPEN.length)
-  const marker =
-    close === -1 ? undefined : markerOf(text.slice(start + OPEN.length, close))
-
-  return marker === undefined ? undefined : (
-      { end: close + CLOSE.length, marker, start }
-    )
+  return undefined
 }
 
 /** The paragraph as tokens, in order. */

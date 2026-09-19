@@ -3,7 +3,7 @@
  * route, and the strip that draws it.
  *
  * A sibling of the route module rather than a shared component because it is
- * only ever this page's second band; the leading `-` keeps the file out of
+ * only ever this page's third band; the leading `-` keeps the file out of
  * the generated route tree.
  */
 import * as stylex from '@stylexjs/stylex'

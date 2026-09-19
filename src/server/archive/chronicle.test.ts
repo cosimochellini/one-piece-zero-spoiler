@@ -163,4 +163,15 @@ describe('the markers in a story', () => {
       { kind: 'text', text: 'A [[Bad Marker]] and [[open' },
     ])
   })
+
+  it('still links the markers after a bracket that is not one', () => {
+    // One slip in a paragraph must not cost it every link that follows.
+    expect(
+      segmentsOf('A [[Bad Marker]] then [[koby]].', resolve),
+    ).toStrictEqual([
+      { kind: 'text', text: 'A [[Bad Marker]] then ' },
+      { kind: 'link', id: 'koby', name: 'Koby' },
+      { kind: 'text', text: '.' },
+    ])
+  })
 })
