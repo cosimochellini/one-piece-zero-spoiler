@@ -157,13 +157,6 @@ function asWords(text: string): string {
 
 /** Whether a paragraph names a record by its full name, as whole words. */
 function names(text: string, name: string): boolean {
-  // A one-word record name such as "King" is also ordinary narration. Those
-  // names are checked through markers; plain-text scanning is reserved for a
-  // full name that cannot occur as an unremarkable common noun.
-  if (!name.includes(' ')) {
-    return false
-  }
-
   return asWords(text).includes(asWords(name))
 }
 
@@ -196,9 +189,18 @@ function leaksIn(
   const text = `${story.title[locale]} ${shownWords(story.body[locale])}`
 
   return filedAfter(episode)
+    .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => names(text, other.name[locale]))
     .map((other) => `${label} (${locale}) names ${other.id}`)
 }
+
+/**
+ * The records whose name is also an ordinary word of the stories — "King" is
+ * in "King of the Pirates" from episode 1 — and so cannot be scanned for in
+ * plain text. Listed by id so a second one is a decision, not a drift; each
+ * is still held to the marker rules when it is linked.
+ */
+const COMMON_WORD_NAMES = new Set(['king'])
 
 /**
  * Every record filed after this episode, which a story at it may not name:
