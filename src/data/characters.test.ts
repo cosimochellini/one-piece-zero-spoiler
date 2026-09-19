@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { LOCALES } from '~/i18n/locales'
+import { type Locale, LOCALES } from '~/i18n/locales'
 import { EPISODE_CEILING } from '~/lib/progress/episode'
 import { markedIds, tokenize } from '~/lib/prose/markers'
 import type { CharacterStatus } from '~/lib/view/records'
@@ -140,12 +140,14 @@ const CHRONICLED_IDS = [
 ] as const
 
 /** The words of a paragraph with its markers reduced to the text they show. */
-function shownWords(text: string): string {
+function shownWords(text: string, locale: Locale): string {
   return tokenize(text)
     .map((token) => {
       return token.kind === 'words' ?
           token.text
-        : (token.marker.shown ?? getCharacter(token.marker.id)?.name.en ?? '')
+        : (token.marker.shown
+            ?? getCharacter(token.marker.id)?.name[locale]
+            ?? '')
     })
     .join('')
 }
@@ -184,9 +186,9 @@ const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
 /** Every later record one story names in one locale, as one line each. */
 function leaksIn(
   { episode, label, story }: StoryCase,
-  locale: (typeof LOCALES)[number],
+  locale: Locale,
 ): readonly string[] {
-  const text = `${story.title[locale]} ${shownWords(story.body[locale])}`
+  const text = `${story.title[locale]} ${shownWords(story.body[locale], locale)}`
 
   return filedAfter(episode)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
@@ -401,7 +403,7 @@ describe('the chronicles', () => {
   it('writes every story in every locale, as a title and a paragraph', () => {
     for (const { label, story } of STORIES) {
       for (const locale of LOCALES) {
-        const words = shownWords(story.body[locale]).split(/\s+/u)
+        const words = shownWords(story.body[locale], locale).split(/\s+/u)
 
         expect(story.title[locale].length, label).toBeGreaterThan(0)
         expect(story.title[locale], label).not.toContain('[[')
@@ -422,7 +424,7 @@ describe('the chronicles', () => {
   it('leaves no marker half written', () => {
     for (const { label, story } of STORIES) {
       for (const locale of LOCALES) {
-        const rest = shownWords(story.body[locale])
+        const rest = shownWords(story.body[locale], locale)
 
         expect(rest, label).not.toContain('[[')
         expect(rest, label).not.toContain(']]')

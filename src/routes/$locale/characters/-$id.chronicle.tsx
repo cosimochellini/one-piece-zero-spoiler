@@ -49,7 +49,7 @@ export function ChronicleBand({
         settleStyles.at(band),
       )}
     >
-      <div {...stylex.props(styles.nearbyHead)}>
+      <div {...stylex.props(styles.bandHead)}>
         <h2
           id="chronicle"
           {...stylex.props(styles.sectionTitle)}

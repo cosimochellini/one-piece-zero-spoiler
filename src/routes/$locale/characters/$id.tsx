@@ -171,7 +171,7 @@ function NearbyRow({
         settleStyles.at(BAND.nearby),
       )}
     >
-      <div {...stylex.props(styles.nearbyHead)}>
+      <div {...stylex.props(styles.bandHead)}>
         <h2
           id="nearby"
           {...stylex.props(styles.sectionTitle)}

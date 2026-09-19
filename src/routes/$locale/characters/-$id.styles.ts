@@ -186,5 +186,6 @@ export const styles = stylex.create({
     display: 'grid',
     paddingBlockStart: space.xl,
   },
-  nearbyHead: { gap: space.xs, display: 'grid' },
+  // A band's heading and its lede, stacked: the chronicle and the nearby row.
+  bandHead: { gap: space.xs, display: 'grid' },
 })
