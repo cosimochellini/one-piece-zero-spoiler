@@ -162,6 +162,12 @@ export const enDictionary = {
   'character.factsLabel': 'What is known so far',
   'character.factsInEpisodes':
     'The facts of a dossier count in anime episodes. Set an episode or a season bookmark to read them; a chapter bookmark keeps them covered.',
+  'character.chronicleTitle': 'The story so far',
+  'character.chronicleLede':
+    'What has happened to them, up to the episode you have reached. Each story opens at the episode that shows it.',
+  'character.chronicleEpisode': 'Episode {episode}',
+  'character.chronicleInEpisodes':
+    'The stories of a chronicle count in anime episodes. Set an episode or a season bookmark to read them; a chapter bookmark keeps them covered.',
   'character.before': 'Filed before',
   'character.after': 'Filed after',
   'character.routeStart': 'Nothing. This is where the route begins.',

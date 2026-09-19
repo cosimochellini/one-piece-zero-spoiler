@@ -2,8 +2,8 @@
 /* Hallmark · genre: atmospheric · macrostructure: Split Studio · theme: Sea
  *   Chart (locked) · enrichment: Tier B hand-built SVG (crest seal + route
  *   strip) · nav: N9 (shared) · footer: Ft4 (shared)
- * · structure: three diptychs that alternate — crest | dossier · route
- *   position | strip · nearby crests as one row
+ * · structure: the crest | dossier diptych · the chronicle as one ledger ·
+ *   route position | strip · nearby crests as one row
  * · idea: "a page from the signal book, opened flat" */
 import * as stylex from '@stylexjs/stylex'
 import { createFileRoute, Link } from '@tanstack/react-router'
@@ -29,13 +29,14 @@ import {
 } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 
+import { ChronicleBand } from './-$id.chronicle'
 import { DossierDiptych } from './-$id.dossier'
 import { RouteDiptych, RoutePending } from './-$id.route'
 import { styles } from './-$id.styles'
 
-// The three bands in DOM order. Named rather than counted at the call, so a
+// The four bands in DOM order. Named rather than counted at the call, so a
 // band inserted in the middle is one edit here and not three down the page.
-const BAND = { dossier: 0, route: 1, nearby: 2 } as const
+const BAND = { dossier: 0, chronicle: 1, route: 2, nearby: 3 } as const
 
 export const Route = createFileRoute('/$locale/characters/$id')({
   // The one decision the page turns on is made on the server, from the
@@ -77,13 +78,14 @@ export const Route = createFileRoute('/$locale/characters/$id')({
 /**
  * A character's page (Hallmark macrostructure 15, Split Studio).
  *
- * Three diptychs down the page, alternating sides. The first is the crest
- * beside the dossier: kind and episode in mono, the name as the only display
- * line, the role, the summary, then the facts as the reader's bookmark knows
- * them and the log entry. The second is the record's place on the route
- * beside a strip of the whole route with this waypoint ringed, and the two
- * records filed either side of it. The third is one row of the listed
- * characters filed nearest on the route.
+ * Four bands down the page. The first is the crest beside the dossier: kind
+ * and episode in mono, the name as the only display line, the role, the
+ * summary, then the facts as the reader's bookmark knows them and the log
+ * entry. The second is the chronicle: the stories the reader has reached,
+ * one under the other, and nothing at all when they have reached none. The
+ * third is the record's place on the route beside a strip of the whole route
+ * with this waypoint ringed, and the two records filed either side of it. The
+ * fourth is one row of the listed characters filed nearest on the route.
  *
  * Under fog the crest and the dossier are covered together and the title is
  * generic; the strip still shows where on the route the page sits, because
@@ -113,6 +115,11 @@ function CharacterPage(): ReactElement {
       <DossierDiptych
         detail={detail}
         peek={peekDossier}
+      />
+
+      <ChronicleBand
+        band={BAND.chronicle}
+        detail={detail}
       />
 
       <section

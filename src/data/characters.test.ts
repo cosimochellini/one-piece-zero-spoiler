@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
 import { EPISODE_CEILING } from '~/lib/progress/episode'
+import { markedIds, tokenize } from '~/lib/prose/markers'
 import type { CharacterStatus } from '~/lib/view/records'
 
 import {
@@ -18,7 +19,7 @@ import {
   routePositionOf,
 } from './characters'
 import { entities, sagas } from './entities'
-import type { Entity, LocalizedText, Timeline } from './types'
+import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 function must(id: string): Entity {
   const entity = getCharacter(id)
@@ -99,12 +100,98 @@ const STATUS_TIMELINES: readonly TimelineCase<CharacterStatus>[] =
     timelineCases(character, 'status', dossierOf(character)?.status),
   )
 
+/**
+ * The chronicles. Their own bucket because a story is a title and a
+ * paragraph rather than one line of prose, and because the tests below about
+ * markers and about who may be named are about this field alone.
+ */
+const CHRONICLE_TIMELINES: readonly TimelineCase<Story>[] = characters.flatMap(
+  (character) =>
+    timelineCases(character, 'chronicle', dossierOf(character)?.chronicle),
+)
+
 const ALL_TIMELINES: readonly TimelineCase<unknown>[] = [
   ...TEXT_TIMELINES,
   ...BOUNTY_TIMELINES,
   ...FRUIT_TIMELINES,
   ...STATUS_TIMELINES,
+  ...CHRONICLE_TIMELINES,
 ]
+
+/**
+ * The characters whose chronicle has been written, most important first: the
+ * crew, then the two figures the first half of the story turns on. Later
+ * batches extend the list; a character on it with no chronicle is a test
+ * failure, so a chronicle cannot be dropped by accident.
+ */
+const CHRONICLED_IDS = [
+  'monkey-d-luffy',
+  'roronoa-zoro',
+  'nami',
+  'usopp',
+  'sanji',
+  'tony-tony-chopper',
+  'nico-robin',
+  'franky',
+  'brook',
+  'jinbe',
+  'shanks',
+  'portgas-d-ace',
+] as const
+
+/** The words of a paragraph with its markers reduced to the text they show. */
+function shownWords(text: string): string {
+  return tokenize(text)
+    .map((token) => {
+      return token.kind === 'words' ?
+          token.text
+        : (token.marker.shown ?? getCharacter(token.marker.id)?.name.en ?? '')
+    })
+    .join('')
+}
+
+/** A text as whole words: punctuation dropped, one space between words. */
+function asWords(text: string): string {
+  return ` ${text.replaceAll(/[^\p{L}\p{N}]+/gu, ' ').trim()} `
+}
+
+/** Whether a paragraph names a record by its full name, as whole words. */
+function names(text: string, name: string): boolean {
+  // A one-word record name such as "King" is also ordinary narration. Those
+  // names are checked through markers; plain-text scanning is reserved for a
+  // full name that cannot occur as an unremarkable common noun.
+  if (!name.includes(' ')) {
+    return false
+  }
+
+  return asWords(text).includes(asWords(name))
+}
+
+/** One story of one chronicle, with the words it shows in each locale. */
+type StoryCase = {
+  readonly character: Entity
+  readonly episode: number
+  readonly label: string
+  readonly story: Story
+}
+
+const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
+  ({ character, label, timeline }) => {
+    return timeline.map((entry) => {
+      return {
+        character,
+        episode: entry.episode,
+        label: `${label} @${String(entry.episode)}`,
+        story: entry.value,
+      }
+    })
+  },
+)
+
+/** Every character filed after this episode, whom a story at it may not name. */
+function filedAfter(episode: number): readonly Entity[] {
+  return characters.filter((other) => other.revealedAtEpisode > episode)
+}
 
 /** The first record on the chart, which the route tests read either side of. */
 const FIRST_CHARTED = chart[0]
@@ -278,6 +365,89 @@ describe('the dossiers', () => {
       for (const entry of timeline) {
         expect(Number.isSafeInteger(entry.value), label).toBe(true)
         expect(entry.value, label).toBeGreaterThan(0)
+      }
+    }
+  })
+})
+
+describe('the chronicles', () => {
+  it('tells the story of every character on the list, in several stories', () => {
+    for (const id of CHRONICLED_IDS) {
+      const chronicle = dossierOf(must(id))?.chronicle
+
+      expect(chronicle?.length, id).toBeGreaterThanOrEqual(4)
+    }
+  })
+
+  it('writes every story in every locale, as a title and a paragraph', () => {
+    for (const { label, story } of STORIES) {
+      for (const locale of LOCALES) {
+        const words = shownWords(story.body[locale]).split(/\s+/u)
+
+        expect(story.title[locale].length, label).toBeGreaterThan(0)
+        expect(story.title[locale], label).not.toContain('[[')
+        expect(words.length, label).toBeGreaterThanOrEqual(40)
+        expect(words.length, label).toBeLessThanOrEqual(140)
+      }
+    }
+  })
+
+  it('opens every chronicle at the episode the character is filed at', () => {
+    // The band must not be its own spoiler: a chronicle that began at the
+    // episode of a defeat would announce it by appearing.
+    for (const { character, label, timeline } of CHRONICLE_TIMELINES) {
+      expect(timeline[0]?.episode, label).toBe(character.revealedAtEpisode)
+    }
+  })
+
+  it('leaves no marker half written', () => {
+    for (const { label, story } of STORIES) {
+      for (const locale of LOCALES) {
+        const rest = shownWords(story.body[locale])
+
+        expect(rest, label).not.toContain('[[')
+        expect(rest, label).not.toContain(']]')
+      }
+    }
+  })
+
+  it('links only characters the reader has already met, and never itself', () => {
+    for (const { character, episode, label, story } of STORIES) {
+      for (const id of markedIds(story.body.en)) {
+        const linked = getCharacter(id)
+        const where = `${label} -> ${id}`
+
+        expect(linked, where).toBeDefined()
+        expect(id, where).not.toBe(character.id)
+        expect(linked?.revealedAtEpisode, where).toBeLessThanOrEqual(episode)
+      }
+    }
+  })
+
+  it('links the same characters in every locale', () => {
+    for (const { label, story } of STORIES) {
+      const inEnglish = markedIds(story.body.en).toSorted(byName)
+      const inItalian = markedIds(story.body.it).toSorted(byName)
+
+      expect(inItalian, label).toStrictEqual(inEnglish)
+    }
+  })
+
+  it('names nobody the reader has not reached, linked or not', () => {
+    // The markers are checked above; this is the plain text. A story at
+    // episode 1 that wrote "Kaido" in passing would be a leak the walker in
+    // `slices.test.ts` cannot see, because it only reads ids and names.
+    for (const { episode, label, story } of STORIES) {
+      for (const locale of LOCALES) {
+        const text = `${story.title[locale]} ${shownWords(story.body[locale])}`
+        const named = filedAfter(episode).filter((other) =>
+          names(text, other.name[locale]),
+        )
+
+        expect(
+          named.map((other) => other.id),
+          `${label} (${locale})`,
+        ).toStrictEqual([])
       }
     }
   })

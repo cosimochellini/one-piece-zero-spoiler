@@ -202,6 +202,11 @@ invariants, checked on every run:
 - a record's drawing is its own, never borrowed from another record;
 - every dossier timeline ascends and starts no earlier than the record's own
   threshold, so a fact can never predate the character it belongs to;
+- a chronicle's stories name only characters filed no later than the story's own
+  episode — the links the server builds from `[[id]]` markers, and the plain
+  words around them, checked against every later record's name in both locales —
+  so a story a reader has reached can never introduce them to someone they have
+  not met;
 - every place is filed under an arc that opens no later than the place itself,
   because the dossier names that arc in the open;
 - no drawing is left without a record;
@@ -421,6 +426,10 @@ to the code they explain, and why this README is short.
       memory and are marked for a check.
 - [ ] More ports in the ship's log — 7 places carry full dossiers today, across
       21 filed arcs.
+- [ ] Chronicles for the rest of the featured list — 12 of the 36 carry one
+      today, the crew and the two figures the first half turns on. The episode
+      each story is filed at is recorded in
+      [`docs/chronicle-verification.md`](docs/chronicle-verification.md).
 
 ## License
 

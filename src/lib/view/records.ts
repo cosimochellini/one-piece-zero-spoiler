@@ -213,6 +213,38 @@ export type CharacterFacts =
 export type FruitLink = { readonly id: string; readonly name: string }
 
 /**
+ * One run of a story's paragraph: plain words, or a character's name that
+ * leads to their page.
+ *
+ * The link is safe to print by construction: a story is only in the payload
+ * once the reader has reached its episode, and a story may only name a
+ * character filed no later than that episode, so the linked page is one the
+ * reader is already allowed to open.
+ */
+export type ProseSegment =
+  | { readonly id: string; readonly kind: 'link'; readonly name: string }
+  | { readonly kind: 'text'; readonly text: string }
+
+/** One story the reader has reached, resolved to their language. */
+export type ChronicleEntry = {
+  readonly body: readonly ProseSegment[]
+  readonly episode: number
+  readonly title: string
+}
+
+/**
+ * A character's chronicle as it stands at the reader's bookmark: every story
+ * they have reached, in episode order, and none they have not. A story above
+ * the reader's episode is not in the payload — there is no placeholder and
+ * no count, because "three more stories under fog" is itself the news that
+ * something happens.
+ */
+export type CharacterChronicle =
+  | { readonly entries: readonly ChronicleEntry[]; readonly mode: 'chronicle' }
+  /** The stories count in episodes, so a chapter reader reaches none. */
+  | { readonly mode: 'chapterNote' }
+
+/**
  * A devil fruit as the specimen sheet draws it: a record, its kind, the
  * sentence that says what the power does, and its folded searchable surface.
  */
@@ -330,6 +362,7 @@ export type RoutePositionView = {
 
 /** A character's own page. */
 export type CharacterDetail = {
+  readonly chronicle: CharacterChronicle
   readonly facts: CharacterFacts
   readonly log: null | string
   readonly slot: Slot<CharacterView & { readonly summary: string }>

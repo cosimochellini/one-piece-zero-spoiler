@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { waterSevenChronicles } from './water-seven.chronicle'
 
 /**
  * The Water Seven saga, episodes 207 to 325: a game on a long thin island,
@@ -575,6 +576,7 @@ export const waterSeven: Saga = {
       origin: [{ episode: 233, value: WATER_SEVEN }],
     },
     'franky': {
+      chronicle: waterSevenChronicles.franky,
       role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
       log: {
         it: 'Comanda la Franky Family, una banda di smantellatori che vive sotto un ponte di Water Seven e ruba a chi capita. Si è ricostruito il corpo da solo con pezzi di ferro, e funziona a cola: quando è scarico gli cambiano l’acconciatura e l’umore. Sa cosa vuol dire perdere una nave, e non lo racconta.',
