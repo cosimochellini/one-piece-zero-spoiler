@@ -188,9 +188,26 @@ const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
   },
 )
 
-/** Every character filed after this episode, whom a story at it may not name. */
+/** Every later record one story names in one locale, as one line each. */
+function leaksIn(
+  { episode, label, story }: StoryCase,
+  locale: (typeof LOCALES)[number],
+): readonly string[] {
+  const text = `${story.title[locale]} ${shownWords(story.body[locale])}`
+
+  return filedAfter(episode)
+    .filter((other) => names(text, other.name[locale]))
+    .map((other) => `${label} (${locale}) names ${other.id}`)
+}
+
+/**
+ * Every record filed after this episode, which a story at it may not name:
+ * characters, but also the arcs, places, ships and fruits, whose names are
+ * as much a spoiler as a person's — "Marineford" in a story at episode 400
+ * says where the war will be.
+ */
 function filedAfter(episode: number): readonly Entity[] {
-  return characters.filter((other) => other.revealedAtEpisode > episode)
+  return entities.filter((other) => other.revealedAtEpisode > episode)
 }
 
 /** The first record on the chart, which the route tests read either side of. */
@@ -433,23 +450,22 @@ describe('the chronicles', () => {
     }
   })
 
-  it('names nobody the reader has not reached, linked or not', () => {
+  it('names no record the reader has not reached, linked or not', () => {
     // The markers are checked above; this is the plain text. A story at
-    // episode 1 that wrote "Kaido" in passing would be a leak the walker in
-    // `slices.test.ts` cannot see, because it only reads ids and names.
-    for (const { episode, label, story } of STORIES) {
+    // episode 1 that wrote "Kaido" or "Marineford" in passing would be a leak
+    // the walker in `slices.test.ts` cannot see, because it only reads ids
+    // and names.
+    //
+    // Gathered first and asserted once, so a failure lists every leak in the
+    // batch rather than the first one found.
+    const leaks: string[] = []
+    for (const story of STORIES) {
       for (const locale of LOCALES) {
-        const text = `${story.title[locale]} ${shownWords(story.body[locale])}`
-        const named = filedAfter(episode).filter((other) =>
-          names(text, other.name[locale]),
-        )
-
-        expect(
-          named.map((other) => other.id),
-          `${label} (${locale})`,
-        ).toStrictEqual([])
+        leaks.push(...leaksIn(story, locale))
       }
     }
+
+    expect(leaks).toStrictEqual([])
   })
 })
 
