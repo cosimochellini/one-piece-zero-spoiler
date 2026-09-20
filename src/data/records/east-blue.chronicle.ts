@@ -50,6 +50,45 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 396,
+      value: {
+        title: {
+          it: 'Un pugno a un Nobile Mondiale',
+          en: 'A punch for a World Noble',
+        },
+        body: {
+          it: 'All’asta di esseri umani di Sabaody, Rufy e i suoi pesci volanti sfondano il tetto per raggiungere la sirena che un Nobile Mondiale ha appena comprato sotto il loro naso. [[hatchan|Octy]] lo blocca prima che raggiunga il palco, e nell’afferrarlo con le sue braccia extra rivela per sbaglio di essere un uomo-pesce: tutta la nobiltà indietreggia disgustata. [[saint-charloss|Charlos]] gli spara addosso senza pensarci, vantandosi di essersi appena procurato uno schiavo pesce gratis. Rufy non ci pensa due volte: gli pianta un pugno in piena faccia, davanti a tutti. Il silenzio che segue dice a ogni Nobile Mondiale nella sala che qualcuno ha osato colpirli.',
+          en: 'At the Sabaody Archipelago’s human auction, Luffy and his Flying Fish crash through the roof to reach the mermaid a World Noble has just bought out from under them. [[hatchan|Hatchan]] holds him back before he reaches the stage, and grabbing him with his extra arms accidentally reveals himself as a Fish-Man: the whole nobility recoils in disgust. [[saint-charloss|Charlos]] shoots him without a thought, boasting that he has just gotten himself a free fish slave. Luffy doesn’t stop to think: he punches him full in the face, in front of everyone. The silence that follows tells every World Noble in the room that someone has dared to touch them.',
+        },
+      },
+    },
+    {
+      episode: 405,
+      value: {
+        title: {
+          it: 'Uno a uno, spariscono tutti',
+          en: 'One by one, they vanish',
+        },
+        body: {
+          it: '[[roronoa-zoro|Zoro]] è il primo a sparire dentro una bolla, e da lì Rufy non riesce più a fermare nulla. [[bartholomew-kuma|Orso]] scaraventa via [[brook|Brook]], [[usopp|Usop]] e [[sanji|Sanji]] uno dopo l’altro con un solo colpo della zampa, poi [[franky|Franky]] e [[nami|Nami]], che urla il suo nome mentre svanisce. [[tony-tony-chopper|Chopper]] tenta un ultimo sacrificio e fa la stessa fine; Rufy prova ad aggrapparsi alla mano di [[nico-robin|Robin]] e la perde comunque. Resta solo lui, davanti a [[bartholomew-kuma|Orso]], che gli dice che non si rivedranno mai più e lo scaraventa a sua volta lontano. Rufy crolla ripensando a ogni compagno: non è riuscito a salvarne nemmeno uno.',
+          en: '[[roronoa-zoro|Zoro]] is the first to disappear inside a bubble, and after that Luffy can’t stop any of it. [[bartholomew-kuma|Kuma]] swats [[brook|Brook]], [[usopp|Usopp]] and [[sanji|Sanji]] away one after another with a single blow of his paw, then [[franky|Franky]] and [[nami|Nami]], who screams his name as she vanishes. [[tony-tony-chopper|Chopper]] tries one last heroic charge and gets the same treatment; Luffy grabs for [[nico-robin|Robin]]’s hand and loses her anyway. Only he is left, in front of [[bartholomew-kuma|Kuma]], who tells him they will never meet again and sends him flying too. Luffy breaks down thinking of every friend he watched vanish: he couldn’t save a single one.',
+        },
+      },
+    },
+    {
+      episode: 479,
+      value: {
+        title: {
+          it: 'Un’esplosione di Haki, senza volerlo',
+          en: 'A burst of Haki, without meaning to',
+        },
+        body: {
+          it: 'A pochi istanti dall’esecuzione di [[portgas-d-ace|Ace]], Rufy sente qualcosa esplodere fuori di sé senza averlo voluto: un’ondata che stende in un colpo solo i marine intorno a lui. Non capisce nemmeno cosa sia successo, ma la strada verso il patibolo si è aperta, e [[edward-newgate|Barbabianca]] e i suoi la spingono ancora più avanti per farlo passare. Rufy corre verso la piattaforma approfittando di quel varco improvviso, ma [[monkey-d-garp|Garp]] gli si para davanti prima che possa arrivarci: l’unico ostacolo rimasto tra lui e suo fratello.',
+          en: 'Moments before [[portgas-d-ace|Ace]]’s execution, Luffy feels something burst out of him that he never meant to unleash: a single wave that drops the Marines around him all at once. He doesn’t even understand what just happened, but the road to the scaffold has opened, and [[edward-newgate|Whitebeard]] and his men push it open even further to let him through. Luffy runs for the platform through that sudden gap, but [[monkey-d-garp|Garp]] plants himself in his way before he can reach it: the last obstacle left between him and his brother.',
+        },
+      },
+    },
+    {
       episode: 483,
       value: {
         title: {
@@ -198,6 +237,16 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 404,
+      value: {
+        title: { it: 'Sparisce per primo', en: 'Gone first' },
+        body: {
+          it: 'Sabaody è nel caos, e Zoro sta ancora fuggendo insieme a [[usopp|Usop]] e [[brook|Brook]] da [[sentomaru|Sentomaru]] e dai suoi Pacifista quando il vero [[bartholomew-kuma|Orso Bartholomew]] compare all’improvviso davanti a loro. Zoro, già a pezzi per i colpi incassati poco prima, non fa in tempo a difendersi: una zampata, e sparisce dentro una bolla di sapone senza che nessuno veda dove va a finire. Usop e Brook restano pietrificati, incapaci di fare qualsiasi cosa per fermarlo. Zoro è il primo della ciurma a sparire quel giorno; molti altri lo seguiranno.',
+          en: 'Sabaody is chaos, and Zoro is still fleeing alongside [[usopp|Usopp]] and [[brook|Brook]] from [[sentomaru|Sentomaru]] and his Pacifista when the real [[bartholomew-kuma|Bartholomew Kuma]] suddenly appears in front of them. Zoro, already battered from blows taken moments before, has no time to defend himself: one swipe of the paw, and he vanishes inside a soap bubble with nobody seeing where he goes. Usopp and Brook stand frozen, unable to do anything to stop it. Zoro is the first of the crew to vanish that day; many more will follow him.',
+        },
+      },
+    },
+    {
       episode: 515,
       value: {
         title: {
@@ -287,6 +336,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 434,
+      value: {
+        title: {
+          it: 'Ferma un altro Imperatore per strada',
+          en: 'He stops another Emperor on the way',
+        },
+        body: {
+          it: 'Mentre [[edward-newgate|Barbabianca]] muove la sua flotta su Marineford, un altro dei quattro Imperatori tenta di approfittarne per colpire i suoi uomini alle spalle. La notizia che arriva alla Marina getta tutti nel panico: Shanks lo ha intercettato per strada, da solo, e i due capitani si sono fronteggiati fino a uno stallo senza che le due flotte si scontrassero davvero. Nessuno sa cosa si siano detti. Ai piani alti della Marina la domanda che conta di più non è più chi vincerà la guerra, ma cosa succederà il giorno in cui due Imperatori smetteranno di evitarsi.',
+          en: 'While [[edward-newgate|Whitebeard]] moves his fleet on Marineford, another of the four Emperors tries to use the moment to strike his men from behind. Word that reaches the Marines throws them into a panic: Shanks intercepted him alone, out at sea, and the two captains faced off to a stalemate without their fleets ever truly clashing. Nobody knows what passed between them. At the top of the Marines the question that matters most is no longer who will win the war, but what happens on the day two Emperors stop avoiding each other.',
+        },
+      },
+    },
+    {
       episode: 489,
       value: {
         title: {
@@ -296,6 +358,19 @@ export const eastBlueChronicles = {
         body: {
           it: '[[portgas-d-ace|Ace]] e [[edward-newgate|Barbabianca]] sono morti, e a Marineford si continua a uccidere senza più un motivo. Un giovane marine, [[koby|Kobi]], grida che basta così, e [[sakazuki|Akainu]] alza il pugno per zittirlo: la spada di Shanks lo ferma. Quei pochi secondi di coraggio, dice, hanno cambiato il destino del mondo. Lancia il suo cappello di paglia a [[buggy|Bagy]] perché lo riporti a [[monkey-d-luffy|Rufy]], che sta fuggendo ferito, e sceglie di non vederlo: la promessa non è ancora compiuta. Chiede a [[marshall-d-teach|Teach]] se vuole battersi; [[marshall-d-teach|Teach]] se ne va. Poi chiede che i morti abbiano una sepoltura, e la guerra finisce.',
           en: '[[portgas-d-ace|Ace]] and [[edward-newgate|Whitebeard]] are dead, and at Marineford the killing goes on with no reason left. A young Marine, [[koby|Koby]], shouts that it is enough, and [[sakazuki|Akainu]] raises his fist to silence him: Shanks’s sword stops it. Those few seconds of courage, he says, have changed the fate of the world. He tosses his straw hat to [[buggy|Buggy]] to carry back to [[monkey-d-luffy|Luffy]], who is fleeing wounded, and chooses not to see him: the promise is not yet kept. He asks [[marshall-d-teach|Teach]] whether he wants to fight; [[marshall-d-teach|Teach]] leaves. Then he asks that the dead be given a burial, and the war ends.',
+        },
+      },
+    },
+    {
+      episode: 505,
+      value: {
+        title: {
+          it: 'L’ultimo saluto a Barbabianca e Ace',
+          en: 'The last farewell to Whitebeard and Ace',
+        },
+        body: {
+          it: 'Settimane dopo la guerra, la ciurma di Shanks attracca nel Nuovo Mondo per il funerale di [[edward-newgate|Barbabianca]] e [[portgas-d-ace|Ace]], fianco a fianco con quel che resta dei loro uomini. [[marco|Marco]] lo ringrazia per aver strappato quei corpi alla Marina e per aver dato loro una sepoltura degna, invece di lasciarli come trofei di guerra. Mentre se ne va, Shanks pensa in silenzio a [[monkey-d-luffy|Rufy]]: va bene piangere, gli dice senza che lui possa sentirlo, ma quello che conta adesso è andare avanti.',
+          en: 'Weeks after the war, Shanks’s crew docks in the New World for the funeral of [[edward-newgate|Whitebeard]] and [[portgas-d-ace|Ace]], standing alongside what is left of their men. [[marco|Marco]] thanks him for winning those bodies back from the Marines and giving them a proper burial instead of leaving them as trophies of war. As he leaves, Shanks thinks silently of [[monkey-d-luffy|Luffy]]: it’s all right to cry, he tells him though Luffy can’t hear it, but what matters now is moving forward.',
         },
       },
     },
@@ -349,6 +424,29 @@ export const eastBlueChronicles = {
         body: {
           it: 'A Enies Lobby ha combattuto con una maschera e un altro nome, Sogeking, che ha ingannato soltanto [[monkey-d-luffy|Rufy]] e [[tony-tony-chopper|Chopper]]. Ha visto la Merry bruciare in mare. Ora la ciurma salpa su una nave nuova mentre [[monkey-d-garp|Garp]] la bombarda a mani nude, e Usop corre lungo la riva chiamandoli: perché lo lasciano lì? [[roronoa-zoro|Zoro]] ha posto una condizione e [[monkey-d-luffy|Rufy]] l’ha accettata: chi ha lasciato la ciurma non può tornare senza chiedere scusa. Quando la nave si allontana, Usop cade in ginocchio e urla il suo perdono; [[monkey-d-luffy|Rufy]] allunga il braccio e lo tira a bordo, tutti e due in lacrime.',
           en: 'At Enies Lobby he fought behind a mask and another name, Sogeking, which fooled nobody except [[monkey-d-luffy|Luffy]] and [[tony-tony-chopper|Chopper]]. He watched the Merry burn at sea. Now the crew sails on a new ship while [[monkey-d-garp|Garp]] hurls cannonballs at it by hand, and Usopp runs along the shore calling to them: why are they leaving him behind? [[roronoa-zoro|Zoro]] set one condition and [[monkey-d-luffy|Luffy]] accepted it: whoever quit the crew cannot come back without an apology. As the ship pulls away, Usopp drops to his knees and screams that he is sorry; [[monkey-d-luffy|Luffy]] stretches out an arm and hauls him aboard, both of them in tears.',
+        },
+      },
+    },
+    {
+      episode: 397,
+      value: {
+        title: {
+          it: 'Usop cade su un Nobile Mondiale',
+          en: 'Usopp falls on a World Noble',
+        },
+        body: {
+          it: 'In ritardo all’appuntamento, Usop raggiunge l’asta di Sabaody a bordo di un pesce volante mentre è già tutto esploso: [[monkey-d-luffy|Rufy]] ha appena steso [[saint-charloss|Charlos]] e la Marina sta convergendo sull’edificio. Spinto sul tetto dal pesce, resta immobile senza il coraggio di saltare, finché l’animale non lo scaraventa giù comunque. Cade dritto su un altro Nobile Mondiale, gli rompe gli occhiali e lo lascia svenuto sul pavimento. Mentre [[nico-robin|Robin]] e [[brook|Brook]] passano all’attacco intorno a lui, Usop si rialza tremante, giusto in tempo per sentire che una nave da guerra e un ammiraglio sono già in arrivo.',
+          en: 'Running late, Usopp reaches the Sabaody auction house on a flying fish just as everything has already gone off: [[monkey-d-luffy|Luffy]] has just decked [[saint-charloss|Charlos]] and the Marines are already closing in on the building. Pushed onto the roof by the fish, he stands there without the nerve to jump, until the same animal throws him off anyway. He lands square on another World Noble, breaking the man’s glasses and knocking him out cold. While [[nico-robin|Robin]] and [[brook|Brook]] go on the attack around him, Usopp gets back up shaking, just in time to hear that a warship and an Admiral are already on their way.',
+        },
+      },
+    },
+    {
+      episode: 420,
+      value: {
+        title: { it: 'La foresta imbrogliona', en: 'The swindling forest' },
+        body: {
+          it: 'Scaraventato lontano dalla ciurma dal potere di [[bartholomew-kuma|Orso Bartholomew]], Usop si ritrova solo in una giungla che gli restituisce solo eco alle sue grida, finché uno scarabeo gigante non gli piomba addosso. Un uomo enorme lo salva uccidendolo e mangiandoselo lì per lì, poi si presenta senza troppi complimenti. Affamato, Usop prova a mordere un frutto qualunque, ma una pianta carnivora gli si avventa contro, e altre la seguono a sciami; l’uomo le scaccia via come fossero mosche. Solo allora gli rivela dove si trova davvero: la Foresta Imbrogliona, sull’isola di Greenstone, nell’arcipelago di Boin.',
+          en: 'Flung far from the crew by [[bartholomew-kuma|Bartholomew Kuma]]’s power, Usopp finds himself alone in a jungle that only echoes his own screams back at him, until a giant beetle drops on him. An enormous man saves him by killing it and eating it on the spot, then introduces himself without much ceremony. Starving, Usopp tries to bite into a random fruit, but a man-eating plant lunges at him, and more follow in a swarm; the man swats them away like flies. Only then does he tell Usopp where he really is: the Swindling Forest, on Greenstone Island, in the Boin Archipelago.',
         },
       },
     },
@@ -447,6 +545,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Nella Torre della Giustizia di Enies Lobby, [[usopp|Usop]] è a terra sotto i colpi di [[jabra|Jabra]], l’agente lupo. Sanji si mette in mezzo e lo manda via: io faccio quello che tu non sai fare, tu fai quello che non so fare io. Poi combatte. Il corpo di ferro di [[jabra|Jabra]] assorbe ogni calcio, e le sue bugie su una sorella perduta di nome [[nico-robin|Nico Robin]] non funzionano su un cuoco che riconosce una storia inventata quando la sente. Sanji gira su se stesso finché la gamba destra prende fuoco, un calore che passa attraverso il ferro, e chiude il combattimento con un calcio fiammeggiante. Prende la chiave e se ne va senza voltarsi.',
           en: 'In the Tower of Justice at Enies Lobby, [[usopp|Usopp]] lies beaten under the blows of [[jabra|Jabra]], the wolf agent. Sanji steps between them and sends him off: I will do what you cannot do, and you do what I cannot. Then he fights. [[jabra|Jabra]]’s iron body swallows every kick, and his lies about a long-lost sister named [[nico-robin|Nico Robin]] do not work on a cook who knows an invented story when he hears one. Sanji spins until his right leg catches fire, a heat that passes through iron, and ends the fight with a flaming kick. He takes the key and walks away without looking back.',
+        },
+      },
+    },
+    {
+      episode: 403,
+      value: {
+        title: {
+          it: 'Gamba diavolo contro la Pacifista',
+          en: 'Devil leg against the Pacifista',
+        },
+        body: {
+          it: 'La Pacifista non sanguina, non si stanca e assorbe ogni colpo della ciurma senza un graffio, finché [[nami|Nami]] non la stordisce con un fulmine dal suo bastone. Sanji sfrutta quell’attimo: avvolge la gamba nelle fiamme e la scaglia addosso al mostro con un calcio che lo manda a sbattere dritto contro [[roronoa-zoro|Zoro]], ferito ma ancora in piedi. Zoro lo incide in un lampo di nove tagli, e [[monkey-d-luffy|Rufy]] chiude il conto con un pugno gigante che lo spegne del tutto. Nessuno festeggia a lungo: [[sentomaru|Sentomaru]] scende con un secondo mostro identico, e il nome che grida, Pacifista, dice alla ciurma che ce ne sono altri.',
+          en: 'The Pacifista doesn’t bleed, doesn’t tire and swallows every hit the crew lands without a scratch, until [[nami|Nami]] stuns it with a bolt from her staff. Sanji uses the opening: he wraps his leg in fire and launches it at the thing with a kick that sends it crashing straight into [[roronoa-zoro|Zoro]], wounded but still standing. Zoro carves it apart in a flash of nine strikes, and [[monkey-d-luffy|Luffy]] finishes the job with a giant fist that shuts it down for good. Nobody celebrates for long: [[sentomaru|Sentomaru]] drops in with a second, identical monster, and the name he shouts, Pacifista, tells the crew there are more of them.',
         },
       },
     },

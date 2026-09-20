@@ -22,6 +22,18 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'Spandam points at the flag, the flag burns, Robin says she wants to live, the crew moves on the tower.',
     },
+    396: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_396',
+      note: 'Second pass: it is Hatchan, not guards, who physically restrains Luffy before the stage and in doing so accidentally reveals himself as a Fish-Man; corrected.',
+    },
+    405: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_405',
+      note: "Zoro's disappearance is 404, but this story is Luffy watching the rest of the crew vanish one by one and despairing over failing to save them; that account, ending with his own capture, closes the Sabaody Archipelago Arc at 405. Second pass: the paw-swipe order is Brook, then Usopp, then Sanji, not Usopp before Brook — corrected.",
+    },
+    479: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_479',
+      note: 'Luffy releases Haki unintentionally just before reaching the execution platform, opening his path; Garp then blocks him — resolves within 479.',
+    },
     483: {
       source: 'https://onepiece.fandom.com/wiki/Episode_483',
       note: 'Ace’s last words and death; Jinbe blocks Akainu. Second pass: the breakdown is episode 484, so the closing clause was dropped and the story ends at the scream.',
@@ -75,6 +87,10 @@ export const CHRONICLE_SOURCES = {
     377: {
       source: 'https://onepiece.fandom.com/wiki/Episode_377',
       note: 'The long summary of 377 ends with Sanji finding Zoro: “nothing happened”.',
+    },
+    404: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_404',
+      note: "Kuma arrives and makes Zoro disappear first; 405 opens on the crew reacting to his vanishing, confirming he was the first taken. Second pass: the story wrongly placed the Pacifista mistaken-for-Kuma beat here (it is 402–403, already resolved) and had Franky present recognising the real Kuma's power (that is episode 405, and Franky was elsewhere with Nami); rewritten to Zoro fleeing with Usopp and Brook from Sentomaru and the Pacifista when the real Kuma appears and swats him away.",
     },
     515: {
       source: 'https://onepiece.fandom.com/wiki/Episode_515',
@@ -148,6 +164,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_323',
       note: 'Zoro’s condition in flashback, Garp’s meteor, the apology, Luffy pulls him aboard.',
     },
+    397: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_397',
+      note: 'Usopp is knocked off the roof by the flying fish and crashes into a World Noble, knocking him out and breaking his glasses, within 397. The Noble isn’t a filed character, so he’s described generically.',
+    },
+    420: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_420',
+      note: 'Corrected from 419–420 to 420: Usopp lands, is attacked by a beetle, saved by a giant of the island, attacked by man-eating plants, and told the island is the “Swindling Forest” — all resolves in 420. The giant isn’t a filed character, so he’s described generically.',
+    },
     515: {
       source: 'https://onepiece.fandom.com/wiki/Episode_515',
       note: 'Reads the news at Boin (ep 512), runs with Heracles and the Pop Greens (ep 515).',
@@ -181,6 +205,10 @@ export const CHRONICLE_SOURCES = {
     298: {
       source: 'https://onepiece.fandom.com/wiki/Episode_298',
       note: 'Jabra’s “sister” story seen through, Diable Jambe, the key taken.',
+    },
+    403: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_403',
+      note: 'Corrected from 401: 401–402 only set up the Pacifista fight; Sanji’s Diable Jambe finishing blow alongside Zoro and Luffy against PX-1 lands within 403.',
     },
     514: {
       source: 'https://onepiece.fandom.com/wiki/Episode_514',
@@ -228,6 +256,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_293',
       note: 'Third Rumble Ball (eaten ep 290), Kumadori thrown to the courthouse.',
     },
+    404: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_404',
+      note: 'Chopper History page states he used three Rumble Balls at once against Sentomaru, having already burned one on Marines at the auction house and one on a Pacifista; the episode shows him overdosing into an uncontrolled Monster form.',
+    },
     512: {
       source: 'https://onepiece.fandom.com/wiki/Episode_512',
       note: 'Chopper on a Torino bird understands the message; “three weeks since the war”.',
@@ -262,6 +294,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'The whole exchange on the courthouse roof.',
     },
+    400: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_400',
+      note: 'At Shakky’s Bar, after Rayleigh finishes his own backstory, Robin asks about the Void Century and he tells her to keep searching herself rather than just telling her — resolves within 400.',
+    },
+    455: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_455',
+      note: 'Bumped up from the candidate’s ~420, which is only Robin’s arrival at Tequila Wolf. 455 has her captured, interrogated in the Prison Tower, recognised by a fellow slave, and freed when the Revolutionary Army storms the camp.',
+    },
     548: {
       source: 'https://onepiece.fandom.com/wiki/Episode_548',
       note: 'Robin reads the Sea Forest Poneglyph as an apology; the Poneglyph wiki article confirms it was written by Joy Boy, addressed to Fish-Man Island over a broken promise tied to Noah.',
@@ -295,6 +335,10 @@ export const CHRONICLE_SOURCES = {
     322: {
       source: 'https://onepiece.fandom.com/wiki/Episode_322',
       note: 'The chase (ep 321), Robin and Iceburg persuade him (ep 322). Dossier: Straw Hats at 322.',
+    },
+    418: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_418',
+      note: "Corrected from the issue's guess of exploring Vegapunk's lab (that starts at ep 508, already told by the existing 514 entry): 418 has Franky flung onto the snow island by Kuma, mistaken for game by a hunter and his grandson, and given an unwanted comic personality shift by tea at the local hospital — resolves within this episode.",
     },
     514: {
       source: 'https://onepiece.fandom.com/wiki/Episode_514',
@@ -334,9 +378,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_381',
       note: 'The Rumbar Pirates, Laboon, Binks’ Sake, he boards (eps 380–381).',
     },
+    421: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_421',
+      note: 'Last episode of the Amazon Lily Arc: Brook, blown away by Kuma’s attack, lands on Namakura Island and is mistaken for a demon by cultists seeking revenge on the Longarm Tribe — resolves fully within this episode.',
+    },
+    515: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_515',
+      note: 'Second pass: moved from 517, where it was misfiled. Brook/History — the Namakura cult took him for their demon and he helped them; the Longarm Tribe caged him as a sideshow in Tehna Gehna, where he reads the paper (ep 512); this account concludes when he plays “Bone to Be Wild” from the cage and resolves to keep going for Luffy, per the episode’s own summary.',
+    },
     517: {
       source: 'https://onepiece.fandom.com/wiki/Episode_517',
-      note: 'Second pass: rewritten to Brook/History — the Namakura cult took him for their demon and he helped them; the Longarm Tribe caged him as a sideshow in Tehna Gehna, where he reads the paper (ep 512) and sings from the cage (ep 515). The Soul King name is not on screen yet, so the title no longer uses it.',
+      note: 'Second pass: moved from a fabricated 518 (which has no Brook content beyond a background poster). Episode 517’s own summary is the actual Soul King reveal — posters all over Sabaody Park, the Longarm Tribe as his managers, his final world-tour concert. It only looked “taken” because the cage-song entry above was itself misfiled here instead of at 515.',
     },
     566: {
       source: 'https://onepiece.fandom.com/wiki/Episode_566',
@@ -355,6 +407,14 @@ export const CHRONICLE_SOURCES = {
     430: {
       source: 'https://onepiece.fandom.com/wiki/Episode_430',
       note: 'Threshold entry. Second pass: Luffy only reaches Level 6 in 442–443, so the story now tells only what 430 shows — the cell, the refusal to fight Whitebeard, the offer to give up the title.',
+    },
+    443: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_443',
+      note: 'Second pass: moved from 442. Episode 442 ends with Luffy only just meeting Crocodile as a cliffhanger — Jinbe’s plea and release (with Crocodile, via Inazuma’s Devil Fruit unlocking the cuffs, not Luffy) is Episode 443’s own scene, "The Strongest Team is Formed."',
+    },
+    466: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_466',
+      note: "Corrected from the issue's candidate of 459, which is only Sengoku revealing Ace's parentage: Jinbe's Warlord resignation to Sengoku's face is Qref'd to chapter 557, which other character pages map to episode 466.",
     },
     505: {
       source: 'https://onepiece.fandom.com/wiki/Episode_505',
@@ -377,6 +437,136 @@ export const CHRONICLE_SOURCES = {
       note: 'Second pass: moved from 977. Jinbe surfaces and smashes the ship (ep 980), takes the helm (ep 981). The dossier affiliation moved 977 → 980 with it.',
     },
   },
+  'trafalgar-law': {
+    392: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_392',
+      note: 'Character-debut episode for Law and Bepo; matches the archive’s own revealedAtEpisode threshold.',
+    },
+    399: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_399',
+      note: 'Law, Luffy and Kid promise to meet in the New World; a Pacifista posing as Kuma attacks Law and Kid to close the Sabaody arc for them.',
+    },
+    489: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_489',
+      note: "Second pass: moved from 488. Law's arrival and the initial dive attempt are ep488; the operating-table scene, Kizaru firing Yasakani no Magatama at the diving hull, and the war officially ending are all ep489 content.",
+    },
+    594: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_594',
+      note: 'Alliance formed on Punk Hazard, Caesar Clown named as first target — exact match, no change from the issue’s candidate.',
+    },
+    706: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_706',
+      note: 'Corazon’s death and the treasure-chest scene are both explicit in this episode’s long summary — exact match.',
+    },
+    1066: {
+      source: 'https://onepiece.fandom.com/wiki/Ope_Ope_no_Mi',
+      note: 'Corrected from the candidate’s 1067: Puncture Wille’s first use on Big Mom is Qref’d to chapter 1039 / episode 1066; 1067 is only her fall into the magma chamber.',
+    },
+  },
+  'silvers-rayleigh': {
+    398: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_398',
+      note: 'Second pass: rewritten. The chain-breaking and protecting Camie from Shalria are ep397 events; ep398 itself covers Rayleigh defusing Camie\'s exploding collar and Kid revealing his identity as the "Dark King."',
+    },
+    400: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_400',
+      note: 'Long summary confirms Roger’s-first-mate reveal and Robin’s unanswered Void Century question in the same episode; ends on Kizaru’s cannonball arrival.',
+    },
+    404: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_404',
+      note: 'Corrected from the candidate’s 405: “Rayleigh arrived out of nowhere, and managed to block Kizaru’s attack” is this episode’s own short summary.',
+    },
+    507: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_507',
+      note: 'Rayleigh returns Luffy’s straw hat and explains Kuma’s plan to Luffy and Jinbe.',
+    },
+    516: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_516',
+      note: 'Replaces an unverifiable “tells Shakky about a hat” beat near episode 523: Luffy sets his hat down at Rusukaina as training begins.',
+    },
+    1130: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1130',
+      note: 'Second pass: rewritten. The "rescuing a captive from the World Nobles" (Shakky) beat has blank ep= citations on Rayleigh\'s own wiki page — not yet adapted into the anime. Ep1130 itself only shows the Roger/Rocks Pirates clash over two Devil Fruits and the incident\'s later erasure from history.',
+    },
+  },
+  'borsalino': {
+    401: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_401',
+      note: 'Matches the archive’s revealedAtEpisode threshold; cannonball landing and demonstration of light powers against Hawkins, Urouge and Drake.',
+    },
+    404: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_404',
+      note: 'Corrected from the candidate’s 405, same source as Rayleigh’s entry at this episode — same scene, Kizaru’s side of it.',
+    },
+    476: {
+      source: 'https://onepiece.fandom.com/wiki/Sakazuki',
+      note: 'Corrected from the candidate’s 478: the Borsalino page Qrefs the “more than willpower” line to chapter 567 / episode 476; Episode_476’s short summary confirms the kick and catch.',
+    },
+    544: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_544',
+      note: 'Flashback episode: “easily beaten by Vice-Admiral Borsalino” after Fisher Tiger’s death — confirms his rank at the time and the Arlong arrest. Second pass: fixed a claim that Jinbe watches the arrest from a distance — per the wiki, Jinbe only learns of it the next day by reading the newspaper.',
+    },
+    1127: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1127',
+      note: 'Long summary: “he throws Kizaru far into the sky” — matches “thrown out” of the Labophase fight.',
+    },
+    1141: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1141',
+      note: 'Long summary: “Sanji protects him, deflecting Kizaru’s light beam with his leg” — exact match.',
+    },
+  },
+  'sakazuki': {
+    463: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_463',
+      note: 'Matches the archive’s revealedAtEpisode threshold exactly: Akainu stops Jozu’s ice block, revealing his magma power.',
+    },
+    472: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_472',
+      note: 'Corrected from the candidate’s 471, which is only the stabbing itself: the episode titled “Akainu’s Plot” is where Squard explains the lie Sakazuki told him.',
+    },
+    483: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_483',
+      note: 'Exact match, no change from the candidate: Ace’s death by magma fist.',
+    },
+    489: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_489',
+      note: '“Enter Shanks! The Ultimate War Ends at Last” — exact match, no change from the candidate.',
+    },
+    582: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_582',
+      note: 'Smoker explains on screen that the island was Aokiji and Akainu’s ten-day duel ground for the Fleet Admiral title two years earlier.',
+    },
+    1154: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1154',
+      note: 'Corrected framing from the candidate’s “Akainu unreachable”: the long summary shows Sakazuki does take the call and berates Kizaru, who snaps back; Sakazuki apologises and calls him “brother” — confirmed via the Sakazuki wiki page’s Kizaru relationship section.',
+    },
+  },
+  'sabo': {
+    497: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_497',
+      note: 'Matches the archive’s revealedAtEpisode threshold: building the Gray Terminal hideout after fleeing Garp.',
+    },
+    503: {
+      source: 'https://onepiece.fandom.com/wiki/Sabo',
+      note: 'Corrected from the candidate’s 502, which is only the decision to leave: the boat is actually destroyed by the World Noble in this episode, matching the dossier’s own status entry at episode 503. Second pass: the letter was addressed to Ace only, asking him to look after Luffy — fixed wording that wrongly named Luffy as a co-recipient.',
+    },
+    663: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_663',
+      note: 'Replaces the candidate’s 504 (“pulled from wreckage”): the dossier keeps Sabo’s status as presumed-dead until episode 663, so his survival can only be shown to the reader here, where he reveals himself to Luffy at the Corrida Colosseum.',
+    },
+    678: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_678',
+      note: 'Corrected from the candidate’s 679: this is the exact episode, matching the dossier’s own devilFruit entry at episode 678, where Sabo eats the Flame-Flame Fruit and destroys the Colosseum floor. Second pass: the sequence was reversed — Sabo first cracks the floor with a bare Haki punch, then eats the fruit and catches Rebecca, and only then uses his first fire punch to break through into the underground port; corrected.',
+    },
+    738: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_738',
+      note: 'Corrected from the candidate’s 746: the Sabo wiki page Qrefs the Vivre Card scene to chapter 794 / episode 737–738; Episode_738’s own short summary confirms Sabo gives a Vivre Card of Luffy to the Straw Hats.',
+    },
+    1120: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1120',
+      note: 'Corrected from the candidate’s 1116, which is only the start of the Momoiro Island meeting: the Imu/First-Twenty theory is Qref’d to chapter 1086 / episode 1120, confirmed by that episode’s own short summary.',
+    },
+  },
   'shanks': {
     4: {
       source: 'https://onepiece.fandom.com/wiki/Episode_4',
@@ -386,9 +576,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_316',
       note: 'Whitebeard recalls Loguetown and Buggy, Teach’s scar, the request about Ace refused, the sky splits.',
     },
+    434: {
+      source: 'https://onepiece.fandom.com/wiki/Shanks/History',
+      note: 'Confirmed via Qref (chap 533, ep 434): Momonga’s men report that Shanks intercepted a rival Emperor en route to Marineford, ending in a stalemate. Written without naming the Emperor, since his own revealedAtEpisode (739) is far later than 434.',
+    },
     489: {
       source: 'https://onepiece.fandom.com/wiki/Episode_489',
       note: 'Koby’s cry and Akainu’s fist stopped (ep 488); hat to Buggy, Teach declines, the burial, the war ends (ep 489).',
+    },
+    505: {
+      source: 'https://onepiece.fandom.com/wiki/Shanks/History',
+      note: 'Confirmed via Qref (chap 590, ep 505): the Red Hair Pirates attend Whitebeard and Ace’s funeral with the Whitebeard Pirates; Marco thanks Shanks. Second pass: the closing line invented "victories and defeats make a real man"; replaced with the episode\'s actual content — Shanks silently tells Luffy it is okay to cry, but what matters is moving on.',
     },
     1082: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1082',
@@ -404,6 +602,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_416',
       note: 'Second pass: moved from 325, whose outcome is left unrevealed on screen. The defeat is shown in 378, the execution announced in 395, and Luffy learns and chooses the prison in 416. A vivre card burns and shrinks; it does not point. The prison and the execution ground are not named: the archive files those arcs at 422 and 457.',
     },
+    461: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_461',
+      note: 'Self-contained flashback: Ace refuses to join, is carried aboard unconscious, tries to kill Whitebeard a hundred times, then accepts him as captain and adopted father — confirmed as 461, not the candidate’s 464, which is the unrelated Oars Jr. scene.',
+    },
     482: {
       source: 'https://onepiece.fandom.com/wiki/Episode_482',
       note: 'Galdino’s wax key and Ace freed (ep 480). Second pass: “picks up his necklace” was unattested and removed.',
@@ -411,6 +613,14 @@ export const CHRONICLE_SOURCES = {
     483: {
       source: 'https://onepiece.fandom.com/wiki/Episode_483',
       note: 'The insult (ep 482), the last words and the card burning out (ep 483). Dossier: deceased at 483.',
+    },
+    497: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_497',
+      note: 'Bumped up from the candidate’s ~494: the oath-cup sake ceremony airs at episode 496, but Sabo is filed in this archive with revealedAtEpisode 497, so the story can’t be placed earlier without naming him ahead of his own threshold.',
+    },
+    505: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_505',
+      note: 'Ace’s hat, knife and necklace made into his grave marker beside Whitebeard’s in the New World; the wiki cites this exactly at chapter 590 / episode 505.',
     },
     678: {
       source: 'https://onepiece.fandom.com/wiki/Episode_678',

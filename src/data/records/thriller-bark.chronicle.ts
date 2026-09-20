@@ -27,12 +27,35 @@ export const thrillerBarkChronicles = {
       },
     },
     {
-      episode: 517,
+      episode: 421,
+      value: {
+        title: {
+          it: 'Il demonio di Harahettania',
+          en: 'The demon of Harahettania',
+        },
+        body: {
+          it: 'Separato dalla ciurma dall’attacco di [[bartholomew-kuma|Orso]], Brook precipita su Namakura, nella povera Harahettania, proprio al centro di un rito: una setta di disperati sta evocando Satana per vendicarsi della Tribù dei Bracci Lunghi che li opprime. Quando lo scheletro atterra tra loro, i fedeli non hanno dubbi: il demone è arrivato. Brook, confuso ma cortese, coglie l’occasione e chiede solo di vedere le mutandine di una ragazza spaventata. Per gratitudine e terrore, l’intero villaggio gliele consegna, uomini compresi, lasciando Brook più sbalordito di loro.',
+          en: 'Blown away from the crew by [[bartholomew-kuma|Kuma]]’s attack, Brook crashes onto Namakura, in the poor land of Harahettania, right in the middle of a ritual: a cult of desperate villagers is summoning Satan for revenge against the Longarm Tribe that oppresses them. When the skeleton lands among them, the faithful have no doubt: the demon has arrived. Brook, confused but courteous, seizes the moment and asks only to see a frightened girl’s panties. Out of gratitude and terror, the whole village hands them over, men included, leaving Brook more astonished than anyone.',
+        },
+      },
+    },
+    {
+      episode: 515,
       value: {
         title: { it: 'Una canzone dalla gabbia', en: 'A song from the cage' },
         body: {
           it: 'Separato dalla ciurma, Brook cade sull’isola di Namakura in mezzo a una setta che lo prende per il demone che stava evocando, e lui la aiuta. Poi la Tribù dei Bracci Lunghi lo rapisce e lo espone in gabbia come attrazione da baraccone nel regno di Tehna Gehna. È da quella gabbia che legge il giornale con il messaggio di [[monkey-d-luffy|Rufy]]: non devono ritrovarsi subito, devono diventare più forti. Brook accetta le sbarre, prende il violino e canta una canzone nuova. Per due anni, la promessa a [[laboon|Labon]] aspetterà.',
           en: 'Separated from the crew, Brook falls onto the island of Namakura among a cult that takes him for the demon it was summoning, and he helps them. Then the Longarm Tribe kidnaps him and puts him on show in a cage as a sideshow freak in the kingdom of Tehna Gehna. It is from that cage that he reads the newspaper carrying [[monkey-d-luffy|Luffy]]’s message: they must not meet again yet, they must become stronger. Brook accepts the bars, picks up his violin and sings a new song. For two years, the promise to [[laboon|Laboon]] will wait.',
+        },
+      },
+    },
+    {
+      episode: 517,
+      value: {
+        title: { it: 'Il Soul King', en: 'The Soul King' },
+        body: {
+          it: 'Due anni dopo essere stato messo in mostra come fenomeno da baraccone, Brook è un fenomeno di tutt’altro genere: la Tribù dei Bracci Lunghi che lo aveva rapito ora lavora per lui, come manager di un tour mondiale che lo ha reso una rockstar. Il pubblico lo acclama come il Soul King, chitarra a forma di squalo, occhiali da sole e mantello di piume. Sceglie l’Arcipelago Sabaody come ultima tappa del tour: è lì che, due anni prima, la ciurma si era dispersa, ed è lì che il musicista scheletro conta di ritrovarla.',
+          en: 'Two years after being put on display as a sideshow freak, Brook has become a very different kind of attraction: the Longarm Tribe that once kidnapped him now works for him, managing a world tour that has turned him into a rock star. Crowds cheer him as the Soul King, shark-shaped guitar, sunglasses and a feather boa. He picks the Sabaody Archipelago as his tour’s final stop: it is where, two years earlier, the crew was scattered, and where the skeleton musician expects to find them again.',
         },
       },
     },
