@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "firecrawl-lean": {
+      "source": "alexsmedile/firecrawl-lean",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "290a06939bf56d54d179e1c147ba57d2693e36d9a5033570126dd90391727790"
+    },
     "hallmark": {
       "source": "nutlope/hallmark",
       "sourceType": "github",
