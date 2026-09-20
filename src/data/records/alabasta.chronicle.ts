@@ -50,6 +50,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 404,
+      value: {
+        title: {
+          it: 'Tre Rumble Ball in una volta sola',
+          en: 'Three Rumble Balls at once',
+        },
+        body: {
+          it: "A Sabaody la ciurma si sfalda sotto la luce di [[borsalino|Kizaru]] e i pugni di [[sentomaru|Sentomaru]]: [[roronoa-zoro|Zoro]] è a terra e [[monkey-d-luffy|Rufy]] è inchiodato al suolo. Chopper ha già bruciato una Rumble Ball contro i marine della casa d'aste e una seconda contro un Pacifista: non gli resta che quella che aveva giurato di non prendere mai due volte, e la ingoia sopra le altre due. La bestia che si alza non riconosce nessuno e non ubbidisce a ordini: si scaglia su Sentomaru senza mira né freni, pericolosa per la sua ciurma quanto per il nemico, finché non compare [[bartholomew-kuma|Orso Bartholomew]] e lo scontro smette di contare qualcosa.",
+          en: "At Sabaody the crew comes apart under [[borsalino|Kizaru]]'s light and [[sentomaru|Sentomaru]]'s fists: [[roronoa-zoro|Zoro]] lies broken and [[monkey-d-luffy|Luffy]] is pinned to the ground. Chopper has already burned through one Rumble Ball against the Marines at the auction house and another against a Pacifista, and there is nothing left to try but the one he swore never to use twice: he swallows a third on top of the other two. The beast that rises knows no one and takes no orders; it hurls itself at Sentomaru with no aim and no brakes, as dangerous to its own crew as to the enemy, until [[bartholomew-kuma|Kuma]] appears and the fight stops mattering.",
+        },
+      },
+    },
+    {
       episode: 512,
       value: {
         title: {
@@ -137,6 +150,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 461,
+      value: {
+        title: {
+          it: 'Cento tentativi, una parola',
+          en: 'A hundred tries, one word',
+        },
+        body: {
+          it: 'Nel pieno della battaglia di Marineford, Ace ripensa a come è arrivato fin lì. Aveva rifiutato un posto nella ciurma di [[edward-newgate|Barbabianca]] ed era stato portato a bordo comunque, svenuto, passando i giorni successivi a provare a uccidere il vecchio nel sonno senza riuscirci mai. Dopo il centesimo tentativo, [[marco|Marco]] gli spiega finalmente perché tutta la ciurma chiama il capitano Papà, poi gli offre una scelta: andarsene e tornare più forte, oppure restare e smettere di volerlo uccidere. Ace resta, si fa marchiare la schiena e, anni dopo, trascinato in una guerra che nessuno dei due ha scelto, lo chiama qualcosa di molto vicino a un padre.',
+          en: "Amid the fighting at Marineford, Ace remembers how he got here. He turned down a place on [[edward-newgate|Whitebeard]]'s crew and was carried aboard anyway, unconscious, and spent every day after trying to kill the old man in his sleep and failing every single time. After his hundredth attempt, [[marco|Marco]] finally tells him why the whole crew calls their captain Pops, then gives him a choice: leave and come back stronger, or stay and stop trying to kill him. Ace stays, takes the mark on his back, and years later, dragged into a war neither of them chose, calls him something closer to father.",
+        },
+      },
+    },
+    {
       episode: 482,
       value: {
         title: { it: 'Fuori dalle catene', en: 'Out of the shackles' },
@@ -153,6 +179,26 @@ export const alabastaChronicles = {
         body: {
           it: 'Durante la fuga l’ammiraglio Akainu provoca Ace insultando Barbabianca. Ace si volta; [[monkey-d-luffy|Rufy]], sfinito, cade davanti a lui. Il pugno di magma punta al fratello minore, e Ace gli si mette davanti. Ferito mortalmente, resta nelle braccia di Rufy abbastanza a lungo da dire quello che non aveva mai saputo chiedere: grazie a tutti per averlo amato. Poi il fuoco si spegne. La vivre card di Rufy diventa cenere.',
           en: 'During the escape Admiral Akainu provokes Ace by insulting Whitebeard. Ace turns back; [[monkey-d-luffy|Luffy]], exhausted, falls in front of him. The magma fist is aimed at his younger brother, and Ace steps in front. Mortally wounded, he remains in Luffy’s arms long enough to say what he never knew how to ask for: thank you all for loving me. Then the fire goes out. Luffy’s vivre card turns to ash.',
+        },
+      },
+    },
+    {
+      episode: 497,
+      value: {
+        title: { it: 'Tre tazze di sakè', en: 'Three cups of sake' },
+        body: {
+          it: 'Anni prima di Marineford, a Dawn Island, Ace divide ramen rubato e un travestimento improvvisato con [[monkey-d-luffy|Rufy]] e un figlio di nobili scappato di casa di nome [[sabo|Sabo]], che ha nascosto a entrambi la sua vera famiglia. Quando la verità viene fuori e nessuno se ne va sbattendo la porta, i tre ragazzini riempiono tazze di sakè che sono troppo piccoli per bere e giurano di diventare fratelli, qualunque cosa capiti a ciascuno di loro dopo. Ace brinda per ultimo, il meno disposto ad ammettere di avere bisogno di qualcuno. Nessuno dei tre sa ancora come sarà mantenuta quella promessa, né a che prezzo.',
+          en: "Years before Marineford, on Dawn Island, Ace shares stolen ramen and a made-up disguise with [[monkey-d-luffy|Luffy]] and a runaway noble's son named [[sabo|Sabo]], who has been hiding his real family from both of them. Once the truth comes out and nobody storms off, the three boys fill cups with sake they are much too young to drink and swear to become brothers, whatever happens to each of them afterward. Ace toasts last, the one least willing to admit he needed anyone. None of them yet knows how the promise will be kept, or at what cost.",
+        },
+      },
+    },
+    {
+      episode: 505,
+      value: {
+        title: { it: 'Quel che resta di lui', en: "What's left of him" },
+        body: {
+          it: "Su un'isola del New World vicino alla vecchia casa di [[edward-newgate|Barbabianca]], i Pirati di Barbabianca e la ciurma di [[shanks|Shanks]] seppelliscono i due capitani fianco a fianco. Il cappello di Ace, il suo coltello e la collana che portava sempre diventano il suo segno di tomba, piantati nella terra accanto alla lapide del vecchio e coperti di fiori e delle spade che i compagni lasciano lì. Marco ringrazia Shanks per la tregua che ha reso possibile il funerale. Prima che le navi si separino, Shanks pensa a [[monkey-d-luffy|Rufy]], lontano e in lutto, e spera che si conceda di piangere adesso, per poi trovare il modo di andare avanti.",
+          en: "On an island in the New World near [[edward-newgate|Whitebeard]]'s old home, the Whitebeard Pirates and [[shanks|Shanks]]'s crew lay both captains to rest side by side. Ace's hat, his knife and the necklace he always wore become his marker, planted in the ground next to the old man's grave and buried under flowers and the swords his crewmates leave behind. Marco thanks Shanks for arranging the ceasefire that made the burial possible at all. Before the ships part, Shanks thinks of [[monkey-d-luffy|Luffy]], grieving somewhere far off, and hopes he lets himself cry now, then finds a way to keep going.",
         },
       },
     },
@@ -195,6 +241,32 @@ export const alabastaChronicles = {
         body: {
           it: 'A Enies Lobby Robin spiega che il Governo la insegue da quando era bambina e che ha sempre lasciato gli altri prima che potessero tradirla. [[monkey-d-luffy|Rufy]] non accetta questa resa: fa bruciare la bandiera del Governo e le chiede soltanto cosa desideri. Robin guarda la ciurma che è venuta a prenderla e grida che vuole vivere, che vuole andare in mare con loro. Da quel momento non fugge più da sola.',
           en: 'At Enies Lobby Robin explains that the Government has hunted her since childhood and that she always left others before they could betray her. [[monkey-d-luffy|Luffy]] will not accept that surrender: he has the Government flag burned and asks only what she wants. Robin looks at the crew that came to take her back and cries that she wants to live, that she wants to go to sea with them. From that moment she no longer runs alone.',
+        },
+      },
+    },
+    {
+      episode: 400,
+      value: {
+        title: {
+          it: 'Quello che Rayleigh non le regala',
+          en: "What Rayleigh won't just hand her",
+        },
+        body: {
+          it: 'Al bar di [[shakky|Shakky]], dopo che [[silvers-rayleigh|Rayleigh]] ha finito di raccontare alla ciurma chi è stato davvero, Robin resta indietro per chiedergli del Secolo Vuoto, e di una nota che [[gold-roger|Gold Roger]] lasciò tempo fa su un Poneglifo a Skypiea. Rayleigh ammette che la ciurma del suo vecchio capitano ha scoperto tutta la storia, ma le dice di continuare a cercarla da sola: potrebbe leggere le pietre in modo diverso da come le hanno lette loro. Le offre perfino di raccontarle tutto su due piedi. Robin rifiuta e gli dà ragione. È la prima volta che qualcuno che conosce la verità le dice di continuare a cercarla.',
+          en: "At [[shakky|Shakky]]'s bar, once [[silvers-rayleigh|Rayleigh]] has finished telling the crew who he really was, Robin stays behind to ask about the Void Century, and about the note [[gold-roger|Gold Roger]] once left on a Poneglyph in Skypiea. Rayleigh admits his old captain's crew learned the whole history, but tells her to keep looking for it herself: she might read the stones differently than they did. He even offers to simply tell her everything. Robin turns him down and agrees with his own advice. It is the first time anyone with the truth in hand has told her to go on searching.",
+        },
+      },
+    },
+    {
+      episode: 455,
+      value: {
+        title: {
+          it: 'Il debito di Tequila Wolf',
+          en: 'The debt of Tequila Wolf',
+        },
+        body: {
+          it: "La zampa di [[bartholomew-kuma|Orso Bartholomew]] manda Robin da sola a Tequila Wolf, un ponte dell'East Blue che i prigionieri costruiscono da settecento anni senza mai lasciarlo. Messa al lavoro come tutti gli altri, viene incatenata con manette di kairoseki e portata nella torre del campo non appena le guardie capiscono quanto sia pericolosa. Fra le schiave che dividono con lei il poco cibo nonostante il rischio, un'anziana alla fine la riconosce. Prima che le guardie possano consegnarla al Governo, i soldati dell'Armata Rivoluzionaria sfondano il campo e aprono ogni cella del ponte. Robin esce libera, in debito con persone che conosceva da pochi giorni.",
+          en: "[[bartholomew-kuma|Kuma]]'s paw sends Robin alone to Tequila Wolf, an East Blue bridge that prisoners have been building for seven hundred years without ever leaving it. Put to labour like everyone else, she is caught, seastone-cuffed and dragged to the camp's prison tower once the guards work out how dangerous she is. Among the slaves who share their rations with her despite the risk, an old woman finally names her. Before the guards can hand her to the Government, soldiers of the Revolutionary Army tear through the camp and open every cell on the bridge. Robin walks free owing her life to people she had known for days.",
         },
       },
     },

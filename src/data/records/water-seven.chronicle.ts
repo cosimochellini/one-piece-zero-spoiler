@@ -56,6 +56,16 @@ export const waterSevenChronicles = {
       },
     },
     {
+      episode: 418,
+      value: {
+        title: { it: 'Tè al posto della cola', en: 'Tea instead of cola' },
+        body: {
+          it: "Il pugno di [[bartholomew-kuma|Orso]] lo scaraventa su un'isola coperta di neve, dove un vecchio cacciatore, suo nipote e il loro cane lo scambiano per selvaggina e gli scaricano addosso l'intera armeria di famiglia senza lasciargli un graffio. È il gelo a stenderlo: viene portato in un ospedale del posto, dove i medici non trovano una goccia di cola per rimetterlo in moto e gli versano del tè al suo posto. Per qualche ora Franky si sveglia gentiluomo educato e compìto, con gran disappunto del ragazzo, che rimpiange subito il cyborg sboccato di sempre.",
+          en: "[[bartholomew-kuma|Kuma]]'s punch sends him flying onto a snow-covered island, where an old hunter, his grandson and their dog mistake him for game and empty the family armoury on him without leaving a scratch. It is the cold that finally drops him: he is carried to the local hospital, where the doctors cannot find a drop of cola to fuel him and pour tea into him instead. For a few hours Franky wakes up a polite, well-mannered gentleman, to the boy's dismay, who immediately misses the foul-mouthed cyborg he knew.",
+        },
+      },
+    },
+    {
       episode: 514,
       value: {
         title: {

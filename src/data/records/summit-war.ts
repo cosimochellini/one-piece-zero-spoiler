@@ -644,6 +644,7 @@ export const summitWar: Saga = {
 
   dossiers: {
     'trafalgar-law': {
+      chronicle: summitWarChronicles['trafalgar-law'],
       role: { it: 'Capitano e chirurgo', en: 'Captain and surgeon' },
       log: {
         it: 'Uno degli undici pirati con una taglia sopra i cento milioni approdati a Sabaody nello stesso mese. Siede in un bar con la ciurma, guarda Rufy prendere a pugni un Nobile Mondiale e sorride, cosa che nessun altro nella stanza fa. Porta una spada lunga quanto lui e la usa poco, perché le mani gli bastano.',
@@ -877,6 +878,7 @@ export const summitWar: Saga = {
       ],
     },
     'silvers-rayleigh': {
+      chronicle: summitWarChronicles['silvers-rayleigh'],
       role: { it: 'Artigiano del rivestimento', en: 'Coating craftsman' },
       log: {
         it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi torna al suo bicchiere come se non fosse successo niente. Dice di aver navigato, tanti anni fa, sulla nave del Re dei Pirati, e lo dice come si dice un vecchio mestiere.',
@@ -1170,6 +1172,7 @@ export const summitWar: Saga = {
       ],
     },
     'borsalino': {
+      chronicle: summitWarChronicles.borsalino,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Arriva sull’arcipelago in un lampo e attraversa le mangrovie alla velocità della luce, senza per questo smettere di parlare lento. Prende a calci chi gli sta davanti con una gamba che scotta e sembra sempre un po’ annoiato da quello che deve fare. Non ha bisogno di alzare la voce: davanti a lui i pirati smettono di correre.',
@@ -1565,6 +1568,7 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 1120, value: ['island-island-fruit'] }],
     },
     'sakazuki': {
+      chronicle: summitWarChronicles.sakazuki,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Siede al quartier generale fra gli altri due ammiragli e non discute mai l’ordine che ha ricevuto: lo esegue fino in fondo. Il suo corpo diventa magma, e quando si muove il cappello e le spalline fumano ancora prima del colpo. Della giustizia ha una sola idea e non ammette che esistano casi particolari.',
@@ -1750,6 +1754,7 @@ export const summitWar: Saga = {
       bounty: [{ episode: 493, value: 7_800_000 }],
     },
     'sabo': {
+      chronicle: summitWarChronicles.sabo,
       role: {
         it: 'Fratello giurato di Rufy e Ace',
         en: 'Sworn brother of Luffy and Ace',
