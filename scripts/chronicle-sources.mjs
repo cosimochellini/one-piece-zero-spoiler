@@ -32,7 +32,7 @@ export const CHRONICLE_SOURCES = {
     },
     594: {
       source: 'https://onepiece.fandom.com/wiki/Episode_594',
-      note: "593 only carries the offer; 594 has the agreement, Robin's betrayal warning and the first joint objective. The Emperor is deliberately unnamed — he is first named at episode 623.",
+      note: "593 only carries the offer; 594 has the agreement, Robin's betrayal warning and the first joint objective. The Emperor is deliberately unnamed — he is first named at episode 623. Second pass: the line about the two years is addressed to the crew, over Usopp's objection.",
     },
     726: {
       source: 'https://onepiece.fandom.com/wiki/Episode_726',
@@ -40,7 +40,7 @@ export const CHRONICLE_SOURCES = {
     },
     734: {
       source: 'https://onepiece.fandom.com/wiki/Episode_734',
-      note: "Filed at the top of the 733–734 range: the King Kong Gun lands in 733 but the Birdcage is still up at its end; 734 has it dissolving, Gatz's announcement and Kyros' tears.",
+      note: "Filed at the top of the 733–734 range: the King Kong Gun lands in 733 but the Birdcage is still up at its end; 734 has it dissolving, Gatz's announcement and Kyros' tears. Second pass: Robin, Fujitora and the Marines keep their feet when it goes, and the Gear Fourth wear-off is on screen before Gatz speaks — both corrected.",
     },
     1071: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1071',
@@ -74,7 +74,7 @@ export const CHRONICLE_SOURCES = {
     },
     719: {
       source: 'https://onepiece.fandom.com/wiki/Episode_719',
-      note: "718 is the approach only; 719 has Orlumbus' throw, the giant halved, the hunt through the falling stone and Pica's helmet opened.",
+      note: "718 is the approach only; 719 has Orlumbus' throw, the giant halved, the hunt through the falling stone and Pica's helmet opened. Second pass: the first cut is horizontal, and nothing puts it at the waist.",
     },
     1062: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1062',
@@ -100,7 +100,7 @@ export const CHRONICLE_SOURCES = {
     },
     587: {
       source: 'https://onepiece.fandom.com/wiki/Episode_587',
-      note: "The swap is performed in 586; 587 is the first episode that states who is in whose body, and its cast list is the first annotated one. The issue's candidate of 591–592 would be four episodes late.",
+      note: "The swap is performed in 586; 587 is the first episode that states who is in whose body, and its cast list is the first annotated one. The issue's candidate of 591–592 would be four episodes late. Second pass: Law takes four hearts out rather than cutting anyone in four — the one he does cut apart here is Tashigi — and that only he can undo it is not said on screen until 591, so the story says it as its own reading.",
     },
     653: {
       source: 'https://onepiece.fandom.com/wiki/Episode_653',
@@ -130,7 +130,7 @@ export const CHRONICLE_SOURCES = {
     },
     643: {
       source: 'https://onepiece.fandom.com/wiki/Episode_643',
-      note: '641 only has "legendary warrior"; 643 coins "Usoland", gives the Noland legend and the statue, and ends with the dwarves chanting for him to lead them.',
+      note: '641 only has "legendary warrior"; 643 coins "Usoland", gives the Noland legend and the statue, and ends with the dwarves chanting for him to lead them. Second pass: the anniversary is Leo\'s line, not the chief\'s, and nothing says the feeding ever stops.',
     },
     677: {
       source: 'https://onepiece.fandom.com/wiki/Episode_677',
@@ -160,7 +160,7 @@ export const CHRONICLE_SOURCES = {
     },
     655: {
       source: 'https://onepiece.fandom.com/wiki/Episode_655',
-      note: "Both halves are inside 655: Sanji pinned by the strings with Overheat winding up, and Law's log-Shambles swap from the shore.",
+      note: "Both halves are inside 655: Sanji pinned by the strings with Overheat winding up, and Law's log-Shambles swap from the shore. Second pass: none of Sanji's kicks connect — the admission is about a blocked one — and the log takes Law's own place, not Sanji's; both corrected.",
     },
     795: {
       source: 'https://onepiece.fandom.com/wiki/Episode_795',
@@ -198,7 +198,7 @@ export const CHRONICLE_SOURCES = {
     },
     622: {
       source: 'https://onepiece.fandom.com/wiki/Episode_622',
-      note: "Moved well past the issue's 611–614: Mocha collapses in 614 and is not confirmed recovered until the celebration in 622. The cure is Law's surgery, so the story credits Chopper only with the sedation and with keeping her alive.",
+      note: "Moved well past the issue's 611–614: Mocha collapses in 614 and is not confirmed recovered until the celebration in 622. Second pass: Chopper is left choosing between sedating the rest and saving her, and the mass sedation is Sanji's and the marines' — the story no longer credits him with it, nor with the cure, which is Law's surgery.",
     },
     1023: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1023',
@@ -220,7 +220,7 @@ export const CHRONICLE_SOURCES = {
     },
     713: {
       source: 'https://onepiece.fandom.com/wiki/Episode_713',
-      note: 'The rescue is Mil Fleur: Kochoran, a moth of linked hands, not a giant hand — Gigantesco Mano is never used on Diamante, and the giant-hand Hanagasa is episode 716. 713 is where the blade is turned aside.',
+      note: 'The rescue is Mil Fleur: Kochoran, a moth of linked hands, not a giant hand — Gigantesco Mano is never used on Diamante, and the giant-hand Hanagasa is episode 716. 713 is where the blade is turned aside. Second pass: she is climbing the levels of the new plateau, not the underground port, which is elsewhere.',
     },
     746: {
       source: 'https://onepiece.fandom.com/wiki/Episode_746',
@@ -250,11 +250,11 @@ export const CHRONICLE_SOURCES = {
     },
     621: {
       source: 'https://onepiece.fandom.com/wiki/Episode_621',
-      note: "Filed at the top of the 618–621 range: 619 ends with the robot's fate unknown, and 621 is where General Cannon settles it.",
+      note: "Filed at the top of the 618–621 range: 619 ends with the robot's fate unknown, and 621 is where General Cannon settles it. Second pass: Baby 5 is a woman carried in by Buffalo, her missile only knocks the robot flat — the armour is pierced by the sickle, which is what Franky gives them credit for — the chain is Buffalo's, and the cannon is the ship's own brought ashore.",
     },
     716: {
       source: 'https://onepiece.fandom.com/wiki/Episode_716',
-      note: "The thirty-blows count is 715, but 715 ends mid-flashback; 716 carries the last punch, Senor Pink's concession and Franky wiping his tears.",
+      note: "The thirty-blows count is 715, but 715 ends mid-flashback; 716 carries the last punch, Senor Pink's concession and Franky wiping his tears. Second pass: the fight starts at the factory and finishes off a tower outside it, so the gate was too precise.",
     },
     1042: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1042',
@@ -276,7 +276,7 @@ export const CHRONICLE_SOURCES = {
     },
     653: {
       source: 'https://onepiece.fandom.com/wiki/Episode_653',
-      note: 'Filed at the bottom of the 653–654 range: the trick, the cut and the whole ship reverting are all inside 653; 654 only opens after the fight.',
+      note: 'Filed at the bottom of the 653–654 range: the trick, the cut and the whole ship reverting are all inside 653; 654 only opens after the fight. Second pass: she restores his instrument as well as his blade, and his pretext is to play alongside her.',
     },
     827: {
       source: 'https://onepiece.fandom.com/wiki/Episode_827',
@@ -338,7 +338,7 @@ export const CHRONICLE_SOURCES = {
     },
     678: {
       source: 'https://onepiece.fandom.com/wiki/Episode_678',
-      note: "678 is where Sabo takes the chest and eats the fruit; that the fruit was Ace's was settled back at 631. Ace himself is on screen only in 679, so the story names nothing that needs him there.",
+      note: "678 is where Sabo takes the chest and eats the fruit; that the fruit was Ace's was settled back at 631, that a dead user's power resurfaces at 632, and that Hiken is Ace's move at 94. Ace himself is on screen only in 679, so the story names nothing that needs him there. Second pass: Luffy hands over his place because he leaves the ring to go after a friend, not because he cannot eat a second fruit.",
     },
   },
   'kaido': {
@@ -348,19 +348,19 @@ export const CHRONICLE_SOURCES = {
     },
     915: {
       source: 'https://onepiece.fandom.com/wiki/Episode_915',
-      note: 'The drunken dragon flight is 912 and the castle is 914, but Thunder Bagua is exclusive to 915. The castle is left unnamed because Oden is not filed until 960.',
+      note: 'The drunken dragon is 912–913 and the castle is 913, but Thunder Bagua is exclusive to 915. The castle is left unnamed because Oden is not filed until 960. Second pass: "azure" echoes the fruit\'s own name, which is not given until 1014, and he flies to the castle on Hawkins\' lie about where his quarry is — both corrected.',
     },
     955: {
       source: 'https://onepiece.fandom.com/wiki/Episode_955',
-      note: '953 only continues the clash; 955 declares the alliance. Corrected from the issue\'s "days of fighting": the wiki says they fought through the night.',
+      note: '953 only continues the clash; 955 declares the alliance. Corrected from the issue\'s "days of fighting": the wiki says they fought through the night. Second pass: only one officer looks for a way out of the island, the declared aim at 955 is the world rather than the World Government — that framing waits until 993 — and his reason for striking her chains off is never given.',
     },
-    994: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_994',
-      note: "Moved from the issue's 993: 992 only names the project and 993 adds the Big Mom announcement; the plan's contents and Orochi's beheading are both in 994.",
+    995: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_995',
+      note: "Moved twice. The issue filed it at 993, but 992 only names the project and 993 adds the Big Mom announcement; the plan's contents and Orochi's beheading are in 994. The second pass moved it again: the retainers' choice between serving him and dying is only shown in 995. The beats were reordered too — on screen the beheading comes before the New Onigashima plan, not after.",
     },
     1017: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1017',
-      note: 'The five reach the roof in 1015; filed at 1017 on purpose because the story describes the combined barrage and his counterattack, which are 1016–1017.',
+      note: 'The five reach the roof in 1015; filed at 1017 on purpose because the story describes the combined barrage and his counterattack, which are 1016–1017. The story does not say which of the five drew blood.',
     },
     1077: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1077',

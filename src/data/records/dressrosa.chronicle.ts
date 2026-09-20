@@ -27,8 +27,8 @@ export const dressrosaChronicles = {
           en: 'The drunk dragon over Kuri',
         },
         body: {
-          it: 'Beve fino alla rabbia, si trasforma in un drago azzurro e vola su Kuri, dove un solo soffio smonta il vecchio castello sulla collina. [[monkey-d-luffy|Rufy]] gli scarica addosso tutto quello che il suo Gear Third può dare, e lui quasi non se ne accorge. Torna in forma umana, troppo ubriaco per reggersi dritto, incassa un pugno del Gear Fourth che lo manda attraverso una fila di edifici e si rialza. Poi pianta i piedi e chiude con un colpo solo, e resta lì sopra il ragazzo a deridere la sua ambizione.',
-          en: 'He drinks himself into a rage, turns into an azure dragon and flies to Kuri, where one breath takes the old castle on the hill apart. [[monkey-d-luffy|Luffy]] hits him with everything his Gear Third has, and he barely notices. He drops back into human shape, too drunk to stand straight, takes a Gear Fourth punch through a row of buildings and gets up. Then he sets his feet and ends it with a single blow, and stands over the boy scoffing at his ambition.',
+          it: 'Beve fino alla rabbia e semina distruzione su Kuri in forma di drago blu; quando gli dicono che gli uomini che cerca sono al vecchio castello sulla collina, ci vola e lo smonta con un solo soffio. [[monkey-d-luffy|Rufy]] gli scarica addosso tutto quello che il suo Gear Third può dare, e lui quasi non se ne accorge. Torna in forma umana, troppo ubriaco per reggersi dritto, incassa un pugno del Gear Fourth che lo manda attraverso una fila di edifici e si rialza. Poi pianta i piedi e chiude con un colpo solo, e resta lì sopra il ragazzo a deridere la sua ambizione.',
+          en: 'He drinks himself into a rage and rampages over Kuri as a blue dragon; told the men he is hunting are sheltering at the ruined castle on the hill, he flies there and takes it apart with one breath. [[monkey-d-luffy|Luffy]] hits him with everything his Gear Third has, and he barely notices. He drops back into human shape, too drunk to stand straight, takes a Gear Fourth punch through a row of buildings and gets up. Then he sets his feet and ends it with a single blow, and stands over the boy scoffing at his ambition.',
         },
       },
     },
@@ -40,21 +40,21 @@ export const dressrosaChronicles = {
           en: 'Two Emperors stop fighting',
         },
         body: {
-          it: '[[charlotte-linlin|Big Mom]] arriva alla sua isola e lui le fa togliere le catene, perché preferisce affrontarla piuttosto che tenerla prigioniera. Lo scontro spacca il cielo e la sua stessa ciurma passa la notte a cercare un posto dove non essere. All’alba i due semplicemente smettono. Annuncia un’alleanza temporanea fra la sua ciurma e quella di lei, puntata contro il Governo Mondiale e contro tutto quello che ci sta sotto, e [[scratchmen-apoo|Apoo]] rientra lo stesso giorno portandosi dietro bestie che nessuno del posto ha mai visto.',
-          en: '[[charlotte-linlin|Big Mom]] arrives at his island and he has her chains struck off, because he would rather fight her than hold her. The clash splits the sky, and his own crew spend the night looking for somewhere else to be. By morning the two of them simply stop. He announces a temporary alliance between his crew and hers, aimed at the World Government and everything under it, and [[scratchmen-apoo|Apoo]] comes home the same day with beasts nobody there has ever seen.',
+          it: '[[charlotte-linlin|Big Mom]] arriva alla sua isola e lui le fa togliere le catene prima ancora che si dicano una parola. Lo scontro spacca il cielo, e uno dei suoi stessi ufficiali passa la notte a cercare una scusa per essere altrove. All’alba i due semplicemente smettono. Annuncia un’alleanza temporanea fra la sua ciurma e quella di lei, puntata a prendersi il mondo intero, e [[scratchmen-apoo|Apoo]] rientra lo stesso giorno portandosi dietro bestie che nessuno del posto ha mai visto.',
+          en: '[[charlotte-linlin|Big Mom]] arrives at his island and he has her chains struck off before a word is said. The clash splits the sky, and one of his own officers spends the night hunting for an excuse to be anywhere else. By morning the two of them simply stop. He announces a temporary alliance between his crew and hers, aimed at taking the whole world, and [[scratchmen-apoo|Apoo]] comes home the same day with beasts nobody there has ever seen.',
         },
       },
     },
     {
-      episode: 994,
+      episode: 995,
       value: {
         title: {
           it: 'Un paese nuovo, e la testa dello shogun',
           en: 'A new country, and the shogun’s head',
         },
         body: {
-          it: 'Davanti a tutta la ciurma dice cosa vuole fare: prendere le armi ancestrali, spezzare il mondo in una guerra sola e mettere al lavoro per sé il paese che ha preso, capitale compresa. Lascerà cadere l’isola stessa sulla capitale e chiamerà quello che resta Nuova Onigashima, con [[yamato|Yamato]] installato come shogun, che Yamato lo voglia o no. [[kurozumi-orochi|Orochi]] obietta che la capitale è l’orgoglio della sua famiglia. Lui sfodera la spada e gli stacca la testa, poi offre ai retainer dello shogun la scelta fra servirlo e morire.',
-          en: 'In front of his whole crew he lays out what he means to do: take the ancient weapons, break the world into one long war, and put the country he has taken to work for him, capital included. He will drop the island itself onto that capital and call what is left New Onigashima, with [[yamato|Yamato]] installed as its shogun, whether Yamato wants it or not. [[kurozumi-orochi|Orochi]] objects that the capital is his family’s pride. He draws his sword and takes his head, then offers the shogun’s retainers the choice between serving him and dying.',
+          it: 'Davanti a tutta la ciurma dice cosa vuole fare: prendere le armi ancestrali, spezzare il mondo in una guerra sola e mettere al lavoro per sé il paese che ha preso, capitale compresa. [[kurozumi-orochi|Orochi]] obietta che la capitale è l’orgoglio della sua famiglia. Lui sfodera la spada e gli stacca la testa, poi ordina ai servitori dello shogun morto di servirlo o morire, e quelli si inginocchiano. Poi conclude: lascerà cadere l’isola stessa sulla capitale e chiamerà quello che resta Nuova Onigashima, con [[yamato|Yamato]] messo lì come shogun, che Yamato lo voglia o no.',
+          en: 'In front of his whole crew he lays out what he means to do: take the ancient weapons, break the world into one long war, and put the country he has taken to work for him, capital included. [[kurozumi-orochi|Orochi]] objects that the capital is his family’s pride. He draws his sword and takes his head, then tells the dead shogun’s retainers to serve him or die, and they kneel. Then he finishes: he will drop the island itself onto that capital and call what is left New Onigashima, with [[yamato|Yamato]] installed as its shogun, whether Yamato wants it or not.',
         },
       },
     },
