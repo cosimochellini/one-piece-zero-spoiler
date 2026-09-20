@@ -30,6 +30,18 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_516',
       note: 'Ox Bell and flowers (ep 511), Rusukaina and the hat on the rock (ep 516). “Two weeks later” per the Post-War Arc page.',
     },
+    554: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_554',
+      note: "The Haki burst that drops roughly 50,000 of Hody's men resolves within this episode; 555–556 only cover the free-for-all brawl that follows.",
+    },
+    567: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_567',
+      note: "566 has Hody's final defeat by Elephant Gun and Gatling; 567 has Luffy attacking Noah and Shirahoshi stopping him, revealing the Sea Kings already halted it — the combined account isn't complete until 567's end.",
+    },
+    571: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_571',
+      note: "The full Den Den Mushi call — Luffy answers for Pekoms and Tamago, offers the treasure, is refused and threatened, and declares he'll beat her — resolves within this one episode. 'Big Mom' is written unmarked, matching the existing Pekoms entry in fish-man-island.ts, since her own dossier isn't filed until episode 786.",
+    },
     594: {
       source: 'https://onepiece.fandom.com/wiki/Episode_594',
       note: "593 only carries the offer; 594 has the agreement, Robin's betrayal warning and the first joint objective. The Emperor is deliberately unnamed — he is first named at episode 623. Second pass: the line about the two years is addressed to the crew, over Usopp's objection.",
@@ -68,6 +80,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_515',
       note: 'Zoro begs Mihawk, beats the humandrills, Mihawk agrees; Luffy’s message explained to Perona.',
     },
+    521: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_521',
+      note: "517 has Zoro learning he's the first crewmate back at Sabaody; the Fake Zoro impostor and the Marine fallout it causes (Manjaro, debut ep 518) only conclude at 521, when Zoro and Sanji beat a Pacifista together and the fraud is exposed.",
+    },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: 'Zoro calls Hyouzou a frog at the bottom of a well and walks away; when Hyouzou attacks from behind, Zoro turns and cuts him down with a single stroke, Rengoku Onigiri.',
+    },
     613: {
       source: 'https://onepiece.fandom.com/wiki/Episode_613',
       note: "612 only sets the fight up; 613 holds Tashigi's accusation, the Haki-cut cheek, the wild-animal line and the vertical cut that leaves the snow body whole.",
@@ -97,6 +117,10 @@ export const CHRONICLE_SOURCES = {
     517: {
       source: 'https://onepiece.fandom.com/wiki/Episode_517',
       note: 'Reads the message (ep 512), asks Haredas to teach her (ep 514); 517 shows the weapon in use, so it is safe.',
+    },
+    547: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_547',
+      note: "Jinbe asks Nami's forgiveness for once letting Arlong go free; she answers that she resents only Arlong, not fish-men in general.",
     },
     587: {
       source: 'https://onepiece.fandom.com/wiki/Episode_587',
@@ -128,6 +152,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_515',
       note: 'Reads the news at Boin (ep 512), runs with Heracles and the Pop Greens (ep 515).',
     },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: "Usopp's Humandrake, Trampolia and Impact Wolf Pop Green sequence finishes off Daruma.",
+    },
     643: {
       source: 'https://onepiece.fandom.com/wiki/Episode_643',
       note: '641 only has "legendary warrior"; 643 coins "Usoland", gives the Noland legend and the statue, and ends with the dwarves chanting for him to lead them. Second pass: the anniversary is Leo\'s line, not the chief\'s, and nothing says the feeding ever stops.',
@@ -157,6 +185,14 @@ export const CHRONICLE_SOURCES = {
     514: {
       source: 'https://onepiece.fandom.com/wiki/Episode_514',
       note: 'Reads the news at Kamabakka (ep 512), the 99 recipes deal (ep 514).',
+    },
+    529: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_529',
+      note: 'Episode 528 has the near-fatal blood loss; 529 confirms his S RH- blood type and reveals the two donors, behind a curtain, as the okama pirate twins Splash and Splatter.',
+    },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: "Jinbe's water fist launches Wadatsumi skyward; Sanji follows him up through the air and finishes him with a flaming kick, Hell Memories.",
     },
     655: {
       source: 'https://onepiece.fandom.com/wiki/Episode_655',
@@ -196,6 +232,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_512',
       note: 'Chopper on a Torino bird understands the message; “three weeks since the war”.',
     },
+    524: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_524',
+      note: 'Chopper uses Guard Point, no Rumble Ball needed, to help block a Kraken attack alongside Franky and Robin.',
+    },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: 'Chopper holds his mind for three minutes in Monster Point; the fight against Dosun ends here with the hammer shattered.',
+    },
     622: {
       source: 'https://onepiece.fandom.com/wiki/Episode_622',
       note: "Moved well past the issue's 611–614: Mocha collapses in 614 and is not confirmed recovered until the celebration in 622. Second pass: Chopper is left choosing between sedating the rest and saving her, and the mass sedation is Sanji's and the marines' — the story no longer credits him with it, nor with the cure, which is Law's surgery.",
@@ -217,6 +261,14 @@ export const CHRONICLE_SOURCES = {
     278: {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'The whole exchange on the courthouse roof.',
+    },
+    548: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_548',
+      note: 'Robin reads the Sea Forest Poneglyph as an apology; the Poneglyph wiki article confirms it was written by Joy Boy, addressed to Fish-Man Island over a broken promise tied to Noah.',
+    },
+    569: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_569',
+      note: "Robin pulls Neptune aside and he explains Joy Boy was a surface-dweller from the Void Century who apologized to that era's mermaid princess.",
     },
     713: {
       source: 'https://onepiece.fandom.com/wiki/Episode_713',
@@ -248,6 +300,18 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_514',
       note: 'Baldimore; the skull button is on Franky/History (ep 508).',
     },
+    519: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_519',
+      note: 'Robin reaches Grove 17 and finds Franky showing off his rebuilt, post-timeskip body.',
+    },
+    535: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_535',
+      note: "Franky finds the Thousand Sunny with the help of Tom's brother, Den (Den/History confirms his debut at chapter 616, episode 535).",
+    },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: "General Franky first appears in this saga at episode 557, against Daruma's sinkhole trap, then is turned on Ikaros Much starting episode 561 (Ikaros Much/History: 'Ikaros and Franky begin their fight'); the fight concludes with the Franky Radical Beam at 566 (Ikaros Much/Major Battles: 'Ikaros and Franky continue and conclude their fight,' ep 564/566). The story is titled without 'debut', since the mecha's actual first use was against Daruma, not Ikaros.",
+    },
     621: {
       source: 'https://onepiece.fandom.com/wiki/Episode_621',
       note: "Filed at the top of the 618–621 range: 619 ends with the robot's fate unknown, and 621 is where General Cannon settles it. Second pass: Baby 5 is a woman carried in by Buffalo, her missile only knocks the robot flat — the armour is pierced by the sickle, which is what Franky gives them credit for — the chain is Buffalo's, and the cannon is the ship's own brought ashore.",
@@ -274,6 +338,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_517',
       note: 'Second pass: rewritten to Brook/History — the Namakura cult took him for their demon and he helped them; the Longarm Tribe caged him as a sideshow in Tehna Gehna, where he reads the paper (ep 512) and sings from the cage (ep 515). The Soul King name is not on screen yet, so the title no longer uses it.',
     },
+    566: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_566',
+      note: "Moved off the 561–565 candidate: Zeo's chain snaps Brook's skull off across 561–565, and the Yomi Yomi no Mi wiki page confirms that during this fight Brook explains his soul, not bone or muscle, holds him together and can be poured into an object; he freezes his blade with it and cuts Zeo down at 566, where the wiki's own Major Battles list marks the win.",
+    },
     653: {
       source: 'https://onepiece.fandom.com/wiki/Episode_653',
       note: 'Filed at the bottom of the 653–654 range: the trick, the cut and the whole ship reverting are all inside 653; 654 only opens after the fight. Second pass: she restores his instrument as well as his blade, and his pretext is to play alongside her.',
@@ -295,6 +363,14 @@ export const CHRONICLE_SOURCES = {
     516: {
       source: 'https://onepiece.fandom.com/wiki/Episode_516',
       note: 'Rayleigh takes over, the promise to meet at Fish-Man Island.',
+    },
+    547: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_547',
+      note: "The flashback Jinbe tells Nami covers Fisher Tiger's rise and founding of the Sun Pirates, Otohime's coexistence campaign, Fisher Tiger's death refusing a blood transfusion (ep 543) and Otohime's assassination (ep 546); it closes at episode 547.",
+    },
+    569: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_569',
+      note: 'Episode 568 ends with Luffy inviting Jinbe to join the crew as a cliffhanger; 569 confirms Jinbe declines for now, citing unfinished business.',
     },
     981: {
       source: 'https://onepiece.fandom.com/wiki/Episode_981',

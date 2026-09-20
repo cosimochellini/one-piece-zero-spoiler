@@ -37,6 +37,16 @@ export const thrillerBarkChronicles = {
       },
     },
     {
+      episode: 566,
+      value: {
+        title: { it: 'L’anima, non le ossa', en: 'The soul, not the bones' },
+        body: {
+          it: 'Nel duello contro [[zeo|Zeo]], la catena del fish-man gli stacca di netto la testa, ma il cranio di Brook torna a incastrarsi da solo: a tenerlo in piedi non sono ossa né muscoli, spiega, ma la sua anima, l’unica cosa che il suo frutto lascia restare in questo mondo. Due anni di allenamento gli hanno insegnato la vera natura di quel potere: può riversare l’energia dell’anima in un oggetto, e la fa scorrere nella lama finché non diventa gelida come l’aldilà. Con un solo fendente attraversa lo spazio in cui Zeo giura di poterlo stritolare, e lo abbatte gelandogli il sangue nelle vene.',
+          en: 'In his duel against [[zeo|Zeo]], the fish-man’s chain snaps his head clean off, but Brook’s skull locks itself back onto his spine: what keeps him standing, he explains, is neither bone nor muscle but his soul, the one thing his fruit lets remain in this world. Two years of training have taught him the true nature of that power: he can pour his soul’s energy into an object, and he pours it into his blade until it turns as cold as the underworld. With a single stroke he crosses the space Zeo swears will crush him, and cuts him down, freezing the blood in his veins.',
+        },
+      },
+    },
+    {
       episode: 653,
       value: {
         title: {

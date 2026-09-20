@@ -69,6 +69,42 @@ export const waterSevenChronicles = {
       },
     },
     {
+      episode: 519,
+      value: {
+        title: {
+          it: 'Un corpo nuovo con le spalle da frigorifero',
+          en: 'A new body with fridge-wide shoulders',
+        },
+        body: {
+          it: "[[nico-robin|Robin]] raggiunge la Thousand Sunny, rivestita per l'immersione, e trova ad aspettarla un Franky che non assomiglia più a quello che ricordava. Due anni da solo su un'isola di neve, tra le macerie di un laboratorio del Governo, gli hanno cambiato il corpo: spalle larghe come un frigorifero, braccia più spesse, piastre nuove sotto la pelle sintetica. Lui si gira, si mette in posa, le spiega dove trovare gli altri mentre lei osserva ogni giuntura con la curiosità di un'archeologa. Franky ride, orgoglioso della propria opera più che vanitoso, e le chiede se non trova che il nuovo modello sia decisamente più figo del vecchio.",
+          en: "[[nico-robin|Robin]] reaches the Thousand Sunny, coated and ready for the dive, and finds a Franky who no longer looks like the one she remembers. Two years alone on a snowbound island, picking through a Government laboratory's wreckage, have rebuilt his body: shoulders as wide as a fridge, thicker arms, new plating under the synthetic skin. He turns, strikes a pose, tells her where to find the others while she studies every joint with an archaeologist's curiosity. Franky laughs, proud of his own work rather than vain about it, and asks if she does not think the new model is a lot cooler than the old one.",
+        },
+      },
+    },
+    {
+      episode: 535,
+      value: {
+        title: { it: 'Il fratello di Tom', en: "Tom's brother" },
+        body: {
+          it: 'Nella Foresta Marina, a cercare la Thousand Sunny nascosta sotto la coltre, Franky trova ad aiutarlo un uomo pesce enorme che dice di chiamarsi [[den|Den]]. Gli spiega di aver conosciuto [[iceburg|Iceburg]] e lui stesso dalle lettere di [[kokoro|Kokoro]], e che è il fratello minore di [[tom|Tom]]. Franky lo guarda spiazzato: non gli somiglia per niente. Den ride e gli spiega come funziona il sangue misto fra uomini pesce e sirene, poi gli chiede se per caso un suo antenato fosse un robot; Franky ribatte che è umano, solo modificato. Poco più in là, sotto un albero, nota [[jinbe|Jinbe]] seduto davanti a una tomba, in silenzio.',
+          en: "In the Sea Forest, hunting for the Thousand Sunny under its wrapping, Franky finds a huge fish-man helping him along, who gives his name as [[den|Den]]. Den explains he knows about [[iceburg|Iceburg]] and Franky himself from [[kokoro|Kokoro]]'s letters, and that he is [[tom|Tom]]'s younger brother. Franky stares, thrown: the man looks nothing like him. Den laughs and explains how the blood mixes between fish-men and merfolk, then asks whether one of Franky's ancestors happened to be a robot; Franky answers that he is human, just modified. A little further off, under a tree, he notices [[jinbe|Jinbe]] sitting in front of a grave, saying nothing.",
+        },
+      },
+    },
+    {
+      episode: 566,
+      value: {
+        title: {
+          it: 'Generale Franky contro Ikaros',
+          en: 'General Franky against Ikaros',
+        },
+        body: {
+          it: "Nella piazza in rivolta, [[ikaros-much|Ikaros Much]] sta per infilzare [[nami|Nami]] con una delle sue lance quando un pugno enorme lo scaraventa via: è il Generale Franky, il robot gigante che Franky ha assemblato dai suoi due veicoli, già usato altrove in battaglia e ora rivolto contro di lui. Ikaros si rialza, sputa lame d'inchiostro e si moltiplica in cloni, convinto che un calamaro abbia comunque una spina dorsale. Quando tira fuori dai capelli la lancia che dice capace di trapassare persino una montagna sottomarina, Franky non lo lascia nemmeno provare: unisce le mani come per un Coup de Vent e scarica il nuovo Franky Radical Beam, lasciandolo carbonizzato a terra mentre [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] guardano a bocca aperta.",
+          en: 'In the plaza mid-riot, [[ikaros-much|Ikaros Much]] is about to skewer [[nami|Nami]] with one of his spears when an enormous fist sends him flying: it is General Franky, the giant robot Franky assembled from his two vehicles, already used elsewhere in the fighting and now turned on him. Ikaros gets back up, spits ink blades and multiplies into clones, insisting a squid still has a backbone. When he pulls the spear out of his own hair, claiming it can pierce an undersea mountain, Franky does not even let him try: he cups his hands and fires the new Franky Radical Beam, leaving him blackened on the ground while [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] watch with stars in their eyes.',
+        },
+      },
+    },
+    {
       episode: 621,
       value: {
         title: {
