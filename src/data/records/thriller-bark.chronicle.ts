@@ -86,11 +86,11 @@ export const thrillerBarkChronicles = {
       episode: 820,
       value: {
         title: {
-          it: 'Una ferita al homie di fuoco',
+          it: 'Una ferita allo homie di fuoco',
           en: 'A wound on the fire homie',
         },
         body: {
-          it: 'Nella Stanza del Tesoro, Brook affronta da solo [[charlotte-linlin|Big Mom]] per guadagnare il tempo necessario a intrufolarsi tra i Road Poneglyph e copiarne il testo. I suoi homie di fuoco e fulmine lo massacrano colpo su colpo, e lui non riesce a scalfire la pelle della sua padrona nemmeno quando la sorprende alle spalle. Ridotto quasi allo stremo, a terra, sferra un ultimo fendente e taglia il homie di fiamme, che pure dovrebbe essere intoccabile. È un colpo isolato in una battaglia persa in partenza, ma basta a incrinare, per un istante, l’aura di invincibilità di un’Imperatrice.',
+          it: 'Nella Stanza del Tesoro, Brook affronta da solo [[charlotte-linlin|Big Mom]] per guadagnare il tempo necessario a intrufolarsi tra i Road Poneglyph e copiarne il testo. I suoi homie di fuoco e fulmine lo massacrano colpo su colpo, e lui non riesce a scalfire la pelle della sua padrona nemmeno quando la sorprende alle spalle. Ridotto quasi allo stremo, a terra, sferra un ultimo fendente e taglia lo homie di fiamme, che pure dovrebbe essere intoccabile. È un colpo isolato in una battaglia persa in partenza, ma basta a incrinare, per un istante, l’aura di invincibilità di un’Imperatrice.',
           en: 'In the Room of Treasure, Brook stands alone against [[charlotte-linlin|Big Mom]], buying himself time to slip toward the Road Poneglyphs and copy their text. Her fire homie and lightning homie batter him relentlessly, and even a surprise strike from behind fails to dent her skin. Beaten down and lying on the ground, he manages one last stroke and cuts the flame creature, a homie that should be untouchable. It is a single, isolated win inside a fight he cannot hope to survive, but enough, for a moment, to crack an Emperor’s aura of invincibility.',
         },
       },
