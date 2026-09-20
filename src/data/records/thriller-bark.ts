@@ -224,6 +224,7 @@ export const thrillerBark: Saga = {
       bounty: [{ episode: 340, value: 24_000_000 }],
     },
     'gecko-moria': {
+      chronicle: thrillerBarkChronicles['gecko-moria'],
       role: { it: 'Padrone di Thriller Bark', en: 'Master of Thriller Bark' },
       log: {
         it: 'Governa la nave-isola dall’alto di un trono, circondato da un esercito di cadaveri cuciti a cui ha prestato le ombre rubate ai vivi. Con le forbici che porta al fianco stacca l’ombra di chi sconfigge, e chi la perde non può più restare al sole senza sbriciolarsi. Fa parte della Flotta dei Sette, e preferisce che a combattere per lui siano i morti.',

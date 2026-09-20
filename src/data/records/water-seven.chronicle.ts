@@ -56,6 +56,19 @@ export const waterSevenChronicles = {
       },
     },
     {
+      episode: 381,
+      value: {
+        title: {
+          it: 'Una tomba di terra del West Blue',
+          en: 'A grave of West Blue soil',
+        },
+        body: {
+          it: 'Due giorni dopo che [[brook|Brook]] si è unito alla ciurma, Franky costruisce con [[usopp|Usop]] una tomba per i Pirati di Rumbar, la ciurma di cinquant’anni fa che Brook ha portato con sé solo nei ricordi. La usano perché la Thousand Sunny non basterebbe a contenere quei resti, e perché la terra di Thriller Bark viene proprio dal West Blue in cui la ciurma era nata. Brook li ringrazia: i suoi compagni hanno finalmente un posto dove riposare. Poco dopo Franky ripara anche il timone e le vele della vecchia nave di Brook, perché chi è rimasto intrappolato qui possa finalmente tornare a casa.',
+          en: 'Two days after [[brook|Brook]] joins the crew, Franky and [[usopp|Usopp]] build a grave for the Rumbar Pirates, the fifty-year-old crew Brook has carried with him only in memory. They use it because the Thousand Sunny could never hold those remains, and because the soil of Thriller Bark comes from the very West Blue the crew was born in. Brook thanks them: his comrades finally have somewhere to rest. Shortly after, Franky also repairs the rudder and sails of Brook’s old ship, so whoever has been trapped here can finally sail home.',
+        },
+      },
+    },
+    {
       episode: 418,
       value: {
         title: { it: 'Tè al posto della cola', en: 'Tea instead of cola' },

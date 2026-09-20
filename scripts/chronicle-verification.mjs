@@ -88,7 +88,9 @@ Kaido's chronicle, and the Punk Hazard and Dressrosa stories the twelve were
 missing — was written and re-verified on 2026-09-20. The Summit War batch —
 Law's, Rayleigh's, Borsalino's, Sakazuki's and Sabo's chronicles, and the
 Summit War stories the twelve were missing — was written and re-verified on
-2026-09-20.
+2026-09-20. The Thriller Bark batch — Gecko Moria's chronicle, and the
+Thriller Bark stories the twelve were missing — was written and re-verified
+on 2026-09-20.
 
 The rule is the one the \`status\` field already follows: **the episode filed is
 the first one at whose end the viewer knows everything the story says**, with or

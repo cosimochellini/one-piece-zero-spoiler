@@ -50,6 +50,16 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 363,
+      value: {
+        title: { it: 'Quella non è medicina', en: 'That is not medicine' },
+        body: {
+          it: 'Nel laboratorio del dottor [[hogback|Hogback]], Chopper lo ascolta raccontare perché resuscita i morti: dice che è per lenire il cuore di chi ha perso qualcuno. Chopper, che lo ammira come medico, si offre persino di aiutarlo. Ma quando vede come tratta [[victoria-cindry|Cindry]], la cameriera zombie che ha resuscitato solo per tenerla con sé dopo che lei in vita lo aveva rifiutato, capisce la verità: quei corpi si muovono, ma non sono vivi, e Hogback lo sa. Gli dice che non può più lasciarlo continuare a rovinare vite per costruire cadaveri felici, e la sua rabbia da medico esplode tutta insieme.',
+          en: 'In Dr. [[hogback|Hogback]]’s laboratory, Chopper listens to him explain why he resurrects the dead: he says it is to ease the hearts of those who have lost someone. Chopper, who admires him as a doctor, even offers to help him with his research. But when he sees how he treats [[victoria-cindry|Cindry]], the zombie maid he brought back only to keep her close after she rejected him in life, he understands the truth: those bodies move, but they are not alive, and Hogback knows it. He tells him he cannot let him keep ruining lives to build happy corpses, and all his anger as a doctor comes out at once.',
+        },
+      },
+    },
+    {
       episode: 404,
       value: {
         title: {
@@ -149,6 +159,19 @@ export const alabastaChronicles = {
         body: {
           it: 'Nel porto di Nanohana, ad Alabasta, [[monkey-d-luffy|Rufy]] incontra un uomo col cappello arancione che dorme nel piatto e poi incendia le navi di Baroque Works con il pugno. È Ace, suo fratello maggiore, capitano della seconda divisione di Barbabianca. I due mangiano, ridono e raccontano alla ciurma di essere cresciuti insieme. Ace è sulle tracce di un uomo chiamato Barbanera, ma prima di partire lascia a Rufy un pezzo della propria vivre card.',
           en: 'In the port town of Nanohana, in Alabasta, [[monkey-d-luffy|Luffy]] meets a man in an orange hat who falls asleep in his food and then burns the Baroque Works ships with his fist. He is Ace, Luffy’s older brother and captain of Whitebeard’s second division. The two eat, laugh and tell the crew that they grew up together. Ace is hunting a man called Blackbeard, but before leaving he gives Luffy a piece of his vivre card.',
+        },
+      },
+    },
+    {
+      episode: 378,
+      value: {
+        title: {
+          it: 'Un nome nuovo tra i Sette',
+          en: 'A new name among the Seven',
+        },
+        body: {
+          it: 'Lontano da Marineford, sulla nave-isola di Thriller Bark, [[hogback|Hogback]] mostra ad [[absalom|Absalom]] un giornale prima di fuggire con [[gecko-moria|Moria]] svenuto: [[marshall-d-teach|Barbanera]] ha sconfitto Ace, l’ha consegnato al Governo Mondiale, e in cambio ha ottenuto il posto lasciato libero nella Flotta dei Sette. È così che la notizia comincia a viaggiare per i mari, ben prima che Rufy la legga di persona: il figlio del Re dei Pirati è stato catturato, e un uomo che nessuno considerava temibile è appena salito di rango sul suo corpo prigioniero.',
+          en: 'Far from Marineford, on the island-ship Thriller Bark, [[hogback|Hogback]] shows [[absalom|Absalom]] a newspaper before fleeing with an unconscious [[gecko-moria|Moria]]: [[marshall-d-teach|Blackbeard]] has beaten Ace, handed him to the World Government, and earned the empty seat among the Seven Warlords in exchange. This is how the news begins to travel across the seas, long before Luffy reads it himself: the son of the Pirate King has been captured, and a man nobody thought dangerous has just risen in rank on top of his prisoner.',
         },
       },
     },

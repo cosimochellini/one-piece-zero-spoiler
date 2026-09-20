@@ -2,7 +2,7 @@ import type { Story, Timeline } from '~/data/types'
 
 /** The dated stories for the characters Thriller Bark introduces. */
 export const thrillerBarkChronicles = {
-  brook: [
+  'brook': [
     {
       episode: 339,
       value: {
@@ -13,6 +13,29 @@ export const thrillerBarkChronicles = {
         body: {
           it: 'In una nave alla deriva nel Triangolo Florian, uno scheletro in frac canta sottovoce davanti a una tazza di tè e parla con perfetta educazione. È Brook, un musicista che non ha ombra e non può lasciare quel mare senza sole. Accoglie [[monkey-d-luffy|Rufy]] e la sua ciurma con una canzone e una richiesta imbarazzante, poi spiega che la sua ombra è stata rubata e che il sole lo ridurrebbe in cenere.',
           en: 'On a drifting ship in the Florian Triangle, a skeleton in a tailcoat sings softly over a cup of tea and speaks with perfect manners. He is Brook, a musician with no shadow who cannot leave that sunless sea. He welcomes [[monkey-d-luffy|Luffy]] and his crew with a song and an embarrassing request, then explains that his shadow was stolen and that sunlight would turn him to ash.',
+        },
+      },
+    },
+    {
+      episode: 362,
+      value: {
+        title: { it: 'L’ombra che torna a casa', en: 'The shadow comes home' },
+        body: {
+          it: 'Nel laboratorio di [[hogback|Hogback]], Brook sfida [[ryuma|Ryuma]], lo zombie samurai che porta la sua stessa ombra rubata, e perde di nuovo: Ryuma conosce ogni suo trucco, lo umilia colpo su colpo e sta per tagliargli via l’afro come trofeo finale quando un tremore della nave gli fa perdere la presa. [[roronoa-zoro|Zoro]] arriva, blocca il colpo diretto a Brook e prende il suo posto nel duello promettendo di riprendersi la spada del morto. Quando Zoro lo sconfigge sul tetto, Ryuma lascia che l’ombra se ne vada: torna a incastrarsi in Brook mentre il corpo che l’aveva portata brucia in cenere.',
+          en: 'In [[hogback|Hogback]]’s laboratory, Brook challenges [[ryuma|Ryuma]], the samurai zombie carrying his own stolen shadow, and loses again: Ryuma knows every one of his tricks, humiliates him blow after blow, and is about to cut off his afro as a final trophy when a tremor through the ship makes him lose his grip. [[roronoa-zoro|Zoro]] arrives, blocks the strike meant for Brook and takes his place in the duel, promising to win back the dead man’s sword. When Zoro defeats him on the roof, Ryuma lets the shadow go: it slots back into Brook as the body that carried it burns to ash.',
+        },
+      },
+    },
+    {
+      episode: 380,
+      value: {
+        title: {
+          it: 'Cantacela un’ultima volta',
+          en: 'Play it for us one last time',
+        },
+        body: {
+          it: 'Cinquant’anni prima, il capitano [[yorki|Yorki]] e altri dieci Pirati di Rumbar si ammalano di un male che il loro medico non sa curare. Per non contagiare il resto della ciurma, Yorki ordina ai sani di prendere una nuova nave e decide di attraversare la Cintura della Calma con i malati, verso una morte quasi certa. Prima di separarsi, tiene la mano di Brook e gli chiede una cosa sola: che la loro nave parta al suono della loro canzone preferita. Brook imbraccia il violino e suona Binks’ Sake mentre il capitano si allontana per sempre, ridendo fino all’ultimo.',
+          en: 'Fifty years earlier, Captain [[yorki|Yorki]] and ten other Rumbar Pirates fall ill with a disease their own doctor cannot cure. To spare the rest of the crew, Yorki orders the healthy ones to take a new ship and decides to cross the Calm Belt with the sick, toward an almost certain death. Before they part, he takes Brook’s hand and asks for only one thing: that their ship set off to the sound of their favorite song. Brook picks up his violin and plays Binks’ Sake as the captain sails away for good, laughing until the very end.',
         },
       },
     },
@@ -115,6 +138,77 @@ export const thrillerBarkChronicles = {
         body: {
           it: 'Travestito tra gli invitati al matrimonio, Brook individua un vecchio ritratto che [[charlotte-linlin|Big Mom]] custodisce come una reliquia: il volto di una donna del suo passato, mai nominata. Senza esitare lo riduce in pezzi. Big Mom vacilla, colta da un panico che nessuno sa spiegare, come se quell’immagine tenesse a bada qualcosa di più vecchio della sua rabbia. Poi Brook si toglie la maschera. Lei lo riconosce, e il terrore si trasforma in furia: invece di urlare, si scaglia contro gli ospiti del banchetto, e la festa si rovescia in battaglia.',
           en: 'Disguised among the wedding guests, Brook finds an old portrait [[charlotte-linlin|Big Mom]] keeps like a relic: the face of a woman from her past, never named. Without hesitation he smashes it to pieces. Big Mom staggers, gripped by a panic no one can explain, as though that image were holding back something older than her rage. Then Brook pulls off his mask. She recognizes him, and the terror turns to fury: instead of screaming, she turns on the wedding guests, and the banquet collapses into battle.',
+        },
+      },
+    },
+  ],
+  'gecko-moria': [
+    {
+      episode: 343,
+      value: {
+        title: {
+          it: 'Il nome che fa tremare Thriller Bark',
+          en: 'The name that makes Thriller Bark tremble',
+        },
+        body: {
+          it: 'Nella foresta di Thriller Bark, un vecchio zombie senza più la propria ombra ferma la ciurma di [[monkey-d-luffy|Rufy]] e li implora di sconfiggere chi gliel’ha rubata prima che tocchi a loro: Moria, un membro della Flotta dei Sette che ruba le ombre ai vivi e le cuce sui cadaveri, condannando chi ne resta privo a bruciare al primo sole. Poco dopo la ciurma scopre che l’isola su cui camminano non è terra ma una nave enorme, con l’albero maestro come dimora del suo padrone. Quella notte, Moria si sveglia da un sonno di quattro giorni per dirigere la caccia di persona.',
+          en: 'In the Thriller Bark forest, an old zombie with no shadow of his own stops [[monkey-d-luffy|Luffy]]’s crew and begs them to defeat whoever took it before it’s their turn: Moria, a Warlord of the Sea who steals the shadows of the living and sews them onto corpses, leaving whoever is left without one to burn at first sunlight. Soon after, the crew discovers the island they are walking on is no island at all but an enormous ship, its mainmast the home of its master. That night, Moria wakes from a four-day sleep to direct the hunt in person.',
+        },
+      },
+    },
+    {
+      episode: 350,
+      value: {
+        title: {
+          it: 'Re dei Pirati senza alzare un dito',
+          en: 'Pirate King without lifting a finger',
+        },
+        body: {
+          it: 'Moria stacca l’ombra di [[monkey-d-luffy|Rufy]] con le sue forbici mentre uno dei fantasmi di [[perona|Perona]] lo tiene troppo abbattuto per reagire, e la solleva come un trofeo: un’ombra così forte, dice, lo avvicina al trono di Re dei Pirati e gli avrebbe risparmiato la sua peggior sconfitta nel New World, se l’avesse già avuta allora. Non ha bisogno di combattere lui stesso: gli basta rubare la forza degli altri e cucirla su un esercito di morti che ubbidiscono senza fare domande. Porta l’ombra fino al congelatore dove tiene il cadavere più grande che possiede, pronto a dargli un corpo nuovo.',
+          en: 'Moria cuts off [[monkey-d-luffy|Luffy]]’s shadow with his scissors while one of [[perona|Perona]]’s ghosts keeps him too dejected to fight back, and lifts it like a trophy: a shadow this strong, he says, brings him closer to the throne of Pirate King, and would have spared him his worst defeat in the New World, had he owned it back then. He doesn’t need to fight himself; it’s enough to steal other people’s strength and sew it onto an army of the dead who obey without asking questions. He carries the shadow down to the freezer holding the largest corpse he owns, ready to give it a new body.',
+        },
+      },
+    },
+    {
+      episode: 371,
+      value: {
+        title: { it: 'Kage Kakumei', en: 'Kage Kakumei' },
+        body: {
+          it: 'Dentro lo stomaco di [[oars|Oz]], seduto al posto di comando, Moria rivela ai fratelli di paglia la vera natura del suo potere: Kage Kakumei, la capacità di rimodellare l’ombra dentro il gigante e con essa il suo stesso corpo, allungandogli le braccia come gomma o gonfiandolo a piacere. Quando [[nico-robin|Robin]] riesce a immobilizzarlo con le sue braccia fiorite, Moria ammette che fa male, ma non si ferma: fa emergere Doppelman dall’ombra di Oz e le stacca l’ombra a sua volta con le forbici, restando poi senza uno zombie in cui infilarla.',
+          en: 'Inside [[oars|Oars]]’s stomach, seated at the controls, Moria reveals to the straw-hatted crew the true nature of his power: Kage Kakumei, the ability to reshape the giant’s shadow and, through it, his own body, stretching his arms like rubber or swelling him at will. When [[nico-robin|Robin]] manages to pin him down with her flowering arms, Moria admits it hurts, but doesn’t stop: he makes Doppelman rise from Oars’s shadow and cuts off her shadow too with his scissors, left with no zombie to put it into.',
+        },
+      },
+    },
+    {
+      episode: 374,
+      value: {
+        title: {
+          it: 'Mille ombre, un solo pugno',
+          en: 'A thousand shadows, one punch',
+        },
+        body: {
+          it: 'Dopo che [[monkey-d-luffy|Rufy]] abbatte [[oars|Oz]] spezzandogli la spina dorsale, Moria emerge dal suo interno e si rifiuta di arrendersi: attiva Shadow’s Asgard, strappa via le ombre di mille zombie e le prende su di sé, gonfiandosi in una forma enorme e deforme. Rufy lo travolge comunque con la velocità del Gear Second e la mole del Gear Third, e Moria, incapace di controllare tutte quelle ombre insieme, comincia a vomitarle una dopo l’altra a ogni colpo. Stretto contro l’albero maestro che crolla su di lui, sviene mentre le ombre rubate tornano finalmente libere.',
+          en: 'After [[monkey-d-luffy|Luffy]] brings down [[oars|Oars]] by shattering his spine, Moria emerges from inside him and refuses to give up: he activates Shadow’s Asgard, tears the shadows off a thousand zombies and takes them into himself, swelling into an enormous, misshapen form. Luffy overwhelms him anyway with Gear Second’s speed and Gear Third’s bulk, and Moria, unable to control all those shadows at once, starts spitting them up one after another with every hit. Pinned against the mainmast as it topples onto him, he passes out as the stolen shadows are finally set free.',
+        },
+      },
+    },
+    {
+      episode: 468,
+      value: {
+        title: { it: 'Un solo colpo di Jinbe', en: 'One blow from Jinbe' },
+        body: {
+          it: 'A Marineford, Moria vede [[monkey-d-luffy|Rufy]] cadere dal cielo insieme agli evasi di Impel Down e cerca di rianimare il corpo di un gigante caduto con la sua stessa ombra, ma [[jinbe|Jinbe]] disperde i suoi zombie con un getto d’acqua salata prima che possa riuscirci. Moria allora sceglie di combattere di persona: assorbe altre ombre per farsi più forte e si lancia contro il Cavaliere del Mare. Basta un solo colpo di Jinbe a stenderlo, e Moria resta a terra mentre la guerra intorno a lui continua senza di lui.',
+          en: 'At Marineford, Moria watches [[monkey-d-luffy|Luffy]] fall from the sky with the Impel Down escapees and tries to reanimate a fallen giant’s corpse with his own shadow, but [[jinbe|Jinbe]] scatters his zombies with a blast of salt water before he can. Moria decides to fight in person instead: he absorbs more shadows to make himself stronger and charges at the Knight of the Sea. It takes only one blow from Jinbe to put him down, and Moria stays on the ground while the war rages on without him.',
+        },
+      },
+    },
+    {
+      episode: 1156,
+      value: {
+        title: { it: 'Libero da Hachinosu', en: 'Free from Hachinosu' },
+        body: {
+          it: 'Anni dopo aver perso il titolo di Signore della Guerra, Moria finisce rinchiuso nella prigione di Hachinosu. Poco prima che i Marine la assaltino, [[perona|Perona]] si infiltra e libera [[koby|Koby]] in cambio del suo aiuto per far evadere anche lui. Il piano funziona: quando [[avalo-pizarro|Pizarro]] lo conferma a [[marshall-d-teach|Barbanera]], è ormai certo che Moria è di nuovo un uomo libero, uscito da una prigione che avrebbe dovuto tenerlo per sempre grazie all’aiuto di una vecchia sottoposta e di un marine che non aveva mai incontrato prima.',
+          en: 'Years after losing his Warlord title, Moria ends up locked away in the Hachinosu prison. Shortly before the Marines raid it, [[perona|Perona]] sneaks in and frees [[koby|Koby]] in exchange for his help getting Moria out too. The plan works: when [[avalo-pizarro|Pizarro]] confirms it to [[marshall-d-teach|Blackbeard]], it is certain that Moria is a free man again, out of a prison that was meant to hold him forever, thanks to a former subordinate and a Marine he had never met before.',
         },
       },
     },
