@@ -43,12 +43,12 @@ export const wholeCakeChronicles = {
       episode: 838,
       value: {
         title: {
-          it: 'Elbaph, sessantatré anni fa',
-          en: 'Elbaph, sixty-three years ago',
+          it: 'Elbaf, sessantatré anni fa',
+          en: 'Elbaf, sixty-three years ago',
         },
         body: {
-          it: "Mentre urla, Big Mom rivive un ricordo di sessantatré anni prima: una bambina di cinque anni lasciata sulla spiaggia di Elbaph da genitori che non riuscivano più a gestirla, accolta da [[carmel|Mother Carmel]] in un orfanotrofio per bambini di ogni razza. Carmel la cresce e condivide con lei un sogno di armonia, finché, la notte del suo sesto compleanno, Linlin alza gli occhi dalla torta e scopre che Carmel, gli altri bambini e l'intero tavolo sono svaniti senza lasciare traccia, solo brandelli di vestiti rimasti a terra. Un cuoco di nome [[streusen|Streusen]], che aveva assistito di nascosto alla scena, la trova a piangere tra le macerie e coglie l'occasione.",
-          en: "As she screams, Big Mom relives a memory sixty-three years old: a five-year-old girl left on Elbaph's shore by parents who could no longer manage her, taken in by [[carmel|Mother Carmel]] at an orphanage for children of every race. Carmel raised her and shared a dream of harmony with her, until the night of her sixth birthday, when Linlin looked up from her cake to find Carmel, the other children and the whole table gone without a trace, only scraps of clothing left behind. A cook named [[streusen|Streusen]], who had secretly watched it happen, found her crying in the wreckage and saw his chance.",
+          it: "Mentre urla, Big Mom rivive un ricordo di sessantatré anni prima: una bambina di cinque anni lasciata sulla spiaggia di Elbaf da genitori che non riuscivano più a gestirla, accolta da [[carmel|Mother Carmel]] in un orfanotrofio per bambini di ogni razza. Carmel la cresce e condivide con lei un sogno di armonia, finché, la notte del suo sesto compleanno, Linlin alza gli occhi dalla torta e scopre che Carmel, gli altri bambini e l'intero tavolo sono svaniti senza lasciare traccia, solo brandelli di vestiti rimasti a terra. Un cuoco di nome [[streusen|Streusen]], che aveva assistito di nascosto alla scena, la trova a piangere tra le macerie e coglie l'occasione.",
+          en: "As she screams, Big Mom relives a memory sixty-three years old: a five-year-old girl left on Elbaf's shore by parents who could no longer manage her, taken in by [[carmel|Mother Carmel]] at an orphanage for children of every race. Carmel raised her and shared a dream of harmony with her, until the night of her sixth birthday, when Linlin looked up from her cake to find Carmel, the other children and the whole table gone without a trace, only scraps of clothing left behind. A cook named [[streusen|Streusen]], who had secretly watched it happen, found her crying in the wreckage and saw his chance.",
         },
       },
     },
