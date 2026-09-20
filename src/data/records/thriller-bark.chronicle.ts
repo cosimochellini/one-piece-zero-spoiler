@@ -83,12 +83,38 @@ export const thrillerBarkChronicles = {
       },
     },
     {
+      episode: 820,
+      value: {
+        title: {
+          it: 'Una ferita al homie di fuoco',
+          en: 'A wound on the fire homie',
+        },
+        body: {
+          it: 'Nella Stanza del Tesoro, Brook affronta da solo [[charlotte-linlin|Big Mom]] per guadagnare il tempo necessario a intrufolarsi tra i Road Poneglyph e copiarne il testo. I suoi homie di fuoco e fulmine lo massacrano colpo su colpo, e lui non riesce a scalfire la pelle della sua padrona nemmeno quando la sorprende alle spalle. Ridotto quasi allo stremo, a terra, sferra un ultimo fendente e taglia il homie di fiamme, che pure dovrebbe essere intoccabile. È un colpo isolato in una battaglia persa in partenza, ma basta a incrinare, per un istante, l’aura di invincibilità di un’Imperatrice.',
+          en: 'In the Room of Treasure, Brook stands alone against [[charlotte-linlin|Big Mom]], buying himself time to slip toward the Road Poneglyphs and copy their text. Her fire homie and lightning homie batter him relentlessly, and even a surprise strike from behind fails to dent her skin. Beaten down and lying on the ground, he manages one last stroke and cuts the flame creature, a homie that should be untouchable. It is a single, isolated win inside a fight he cannot hope to survive, but enough, for a moment, to crack an Emperor’s aura of invincibility.',
+        },
+      },
+    },
+    {
       episode: 827,
       value: {
         title: { it: 'Una copia nel cranio', en: 'A copy in his skull' },
         body: {
           it: 'Nel castello di Whole Cake Island Brook affronta una forza che non può battere: [[charlotte-linlin|Big Mom]] lo sopraffà, lo perquisisce e, non trovando nulla, decide di tenerlo come animale da compagnia. Lui sopporta, e resta galante. Il vero scopo era un altro: entrare nella stanza del Road Poneglyph e copiarne il testo per [[monkey-d-luffy|Rufy]]. Quando la ciurma si ricompone, Brook tira fuori dal cranio i fogli che nessuno aveva trovato. Per una volta, il musicista ha battuto un’Imperatrice in casa sua.',
           en: 'In Whole Cake Island’s castle Brook faces a force he cannot beat: [[charlotte-linlin|Big Mom]] overpowers him, searches him and, finding nothing, decides to keep him as her pet. He endures it, and stays gallant. His real purpose was different: enter the Road Poneglyph room and copy its text for [[monkey-d-luffy|Luffy]]. When the crew comes back together, Brook pulls out of his skull the rubbings nobody had found. For once, the musician has beaten an Emperor in her own house.',
+        },
+      },
+    },
+    {
+      episode: 834,
+      value: {
+        title: {
+          it: 'Il quadro che spezza Big Mom',
+          en: 'The portrait that breaks Big Mom',
+        },
+        body: {
+          it: 'Travestito tra gli invitati al matrimonio, Brook individua un vecchio ritratto che [[charlotte-linlin|Big Mom]] custodisce come una reliquia: il volto di una donna del suo passato, mai nominata. Senza esitare lo riduce in pezzi. Big Mom vacilla, colta da un panico che nessuno sa spiegare, come se quell’immagine tenesse a bada qualcosa di più vecchio della sua rabbia. Poi Brook si toglie la maschera. Lei lo riconosce, e il terrore si trasforma in furia: invece di urlare, si scaglia contro gli ospiti del banchetto, e la festa si rovescia in battaglia.',
+          en: 'Disguised among the wedding guests, Brook finds an old portrait [[charlotte-linlin|Big Mom]] keeps like a relic: the face of a woman from her past, never named. Without hesitation he smashes it to pieces. Big Mom staggers, gripped by a panic no one can explain, as though that image were holding back something older than her rage. Then Brook pulls off his mask. She recognizes him, and the terror turns to fury: instead of screaming, she turns on the wedding guests, and the banquet collapses into battle.',
         },
       },
     },

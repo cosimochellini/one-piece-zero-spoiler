@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { wholeCakeChronicles } from './whole-cake.chronicle'
 
 /**
  * The Whole Cake Island saga, episodes 747 to 889: an elephant that walks,
@@ -767,6 +768,7 @@ export const wholeCake: Saga = {
       devilFruit: [{ episode: 786, value: ['memo-memo-fruit'] }],
     },
     'charlotte-linlin': {
+      chronicle: wholeCakeChronicles['charlotte-linlin'],
       role: { it: 'Imperatore di Totto Land', en: 'Emperor of Totto Land' },
       log: {
         it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano. Sa strappare alla gente anni della propria vita e darli a oggetti e animali, che da quel momento parlano e obbediscono a lei.',

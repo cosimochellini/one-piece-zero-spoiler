@@ -115,6 +115,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 815,
+      value: {
+        title: {
+          it: 'Prigionieri nel Mirro-World',
+          en: 'Prisoners in the Mirro-World',
+        },
+        body: {
+          it: 'Sopraffatto dagli scagnozzi di Brûlée, Chopper viene risucchiato attraverso uno specchio nel Mirro-World, dove [[carrot|Carrot]] è già prigioniera. Per ore corrono di specchio in specchio in cerca di uno che mostri [[sanji|Sanji]], mentre [[charlotte-brulee|Brûlée]] e le sue guardie li inseguono a loro volta, decise a bollirli entrambi per cena. Lasciandosi catturare apposta, Chopper si libera delle catene, si trasforma in Monster Point e aiuta Carrot a rovesciare la pentola bollente proprio su Brûlée. Insieme abbattono quel che resta della sua ciurma e catturano Brûlée, priva di sensi, per farsi aprire lo specchio che vogliono.',
+          en: "Overwhelmed by Brûlée's henchmen, Chopper is swallowed through a mirror into the Mirro-World, where [[carrot|Carrot]] is already trapped. For hours they run from mirror to mirror hunting for one that shows [[sanji|Sanji]], while [[charlotte-brulee|Brûlée]] and her guards hunt them back, planning to boil them both for supper. Letting himself be caught on purpose, Chopper slips his chains, turns Monster Point and helps Carrot tip the boiling pot onto Brûlée herself. Together they beat down what is left of her crew and capture Brûlée, unconscious, to force open whichever mirror they choose.",
+        },
+      },
+    },
+    {
       episode: 1023,
       value: {
         title: {
@@ -316,6 +329,16 @@ export const alabastaChronicles = {
         body: {
           it: 'Dopo Dressrosa il mondo legge che la ciurma di [[monkey-d-luffy|Rufy]] ha abbattuto Doflamingo, e la taglia di Robin sale a 130 milioni di berry. Per anni il Governo l’ha chiamata Figlia del Diavolo e l’ha trattata come una minaccia da eliminare. Ora la cifra riconosce anche il suo posto nella ciurma che ha sfidato un Drago Celeste, salvato un regno e continua a cercare la storia proibita sulle pietre antiche.',
           en: 'After Dressrosa the world learns that [[monkey-d-luffy|Luffy]]’s crew brought down Doflamingo, and Robin’s bounty rises to 130 million berries. For years the Government called her the Devil Child and treated her as a threat to erase. Now the figure also recognises her place in the crew that challenged a Celestial Dragon, saved a kingdom and still searches for forbidden history on ancient stones.',
+        },
+      },
+    },
+    {
+      episode: 769,
+      value: {
+        title: { it: 'Il Poneglifo rosso', en: 'The red Poneglyph' },
+        body: {
+          it: "Nel cuore dell'Albero Balena di Zou, a Robin viene concesso il raro permesso di leggere un Poneglifo inciso in rosso anziché in blu, il primo che vede di quel colore. Ricordando gli anni di studio delle pietre a Ohara, lo traduce in una sequenza di coordinate nautiche che [[nami|Nami]] può segnare su una mappa. [[inuarashi|Inuarashi]] le spiega cosa ha appena trovato: un Poneglifo della Rotta, uno dei quattro sparsi per il mondo, ciascuno indica un'isola. Solo quando tutti e quattro saranno letti e collegati si potrà trovare Laugh Tale e, con esso, lo One Piece.",
+          en: 'Inside the Whale Tree on Zou, Robin is given rare permission to read a Poneglyph carved in red instead of blue, the first she has ever seen in this colour. Recalling her years studying the stones on Ohara, she translates it into a string of nautical coordinates that [[nami|Nami]] can plot on a chart. [[inuarashi|Inuarashi]] explains what she has just found: a Road Poneglyph, one of four scattered across the world, each pointing to an island. Only once all four are read and connected can anyone find Laugh Tale and, with it, the One Piece.',
         },
       },
     },

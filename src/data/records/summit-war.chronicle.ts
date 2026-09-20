@@ -92,6 +92,32 @@ export const summitWarChronicles = {
       },
     },
     {
+      episode: 819,
+      value: {
+        title: {
+          it: 'La biblioteca dei prigionieri',
+          en: 'The Prisoner Library',
+        },
+        body: {
+          it: 'Nella biblioteca dei prigionieri di Whole Cake Island, [[monkey-d-luffy|Rufy]] si sta strappando le braccia pur di liberarsi, mentre un carceriere minaccia di sparare a [[nami|Nami]] ogni cinque secondi se non rivela il nascondiglio di una fuggitiva. Jinbe entra senza permesso — non dovrebbe nemmeno trovarsi nel Castello — si scusa e abbatte il carceriere con un solo colpo. Poi dà fuoco al libro che li tiene prigionieri, liberandoli entrambi. Spiega che i Pirati del Sole sono sudditi di [[charlotte-linlin|Big Mom]] e che, da questo momento, è in aperta ribellione: dice loro di nascondersi, prima di correre lui stesso ad avvisare Sanji.',
+          en: 'In the Prisoner Library on Whole Cake Island, [[monkey-d-luffy|Luffy]] is tearing at his own arms to break free, while a guard threatens to shoot [[nami|Nami]] every five seconds unless she gives away a fugitive’s hiding place. Jinbe walks in uninvited — he has no business being inside the Chateau at all — apologises, and drops the guard with a single blow. He then sets fire to the book holding them prisoner, freeing them both. He explains that the Sun Pirates answer to [[charlotte-linlin|Big Mom]] and that, as of this moment, he is in open rebellion: he tells them to hide, then runs off himself to warn Sanji.',
+        },
+      },
+    },
+    {
+      episode: 876,
+      value: {
+        title: {
+          it: 'Le retrovie al largo di Cacao Island',
+          en: 'The rear guard off Cacao Island',
+        },
+        body: {
+          it: 'Al largo di Cacao Island, la vecchia ciurma di Jinbe, i Pirati del Sole, si getta contro la flotta dei Pirati di Big Mom per aprire una via di fuga alla Thousand Sunny, nascondendola nella bocca di un compagno gigante per farla scivolare sott’acqua oltre il blocco navale. Quando il trucco viene scoperto e l’inseguimento riprende, Jinbe ordina alla ciurma di svuotare la nave dall’acqua e riparare le vele, mentre lui resta indietro. Non può abbandonare i suoi vecchi compagni, dice, e anche se [[monkey-d-luffy|Rufy]] si offre di restare con lui, Jinbe insiste: l’unico modo perché tutti sopravvivano è che lui tenga a bada la flotta dalle retrovie. Rufy accetta, gli ricorda che è ancora il suo capitano, e gli dice di raggiungerli.',
+          en: 'Off Cacao Island, Jinbe’s old crew, the Sun Pirates, throw themselves at the Big Mom Pirates’ fleet to clear a path for the Thousand Sunny, smuggling it to safety inside a giant crewmate’s mouth to slip past the blockade underwater. When the trick is spotted and the chase resumes, Jinbe tells the crew to bail water and mend the sails while he stays behind. He cannot abandon his old crewmates, he says, and though [[monkey-d-luffy|Luffy]] offers to stay too, Jinbe insists the only way anyone survives is if he holds the fleet off from the rear. Luffy accepts, reminding him he is still their captain, and tells him to catch up.',
+        },
+      },
+    },
+    {
       episode: 981,
       value: {
         title: {
