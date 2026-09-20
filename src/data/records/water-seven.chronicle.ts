@@ -69,6 +69,29 @@ export const waterSevenChronicles = {
       },
     },
     {
+      episode: 621,
+      value: {
+        title: {
+          it: 'Il generale contro i due dal cielo',
+          en: 'The general against the pair from the sky',
+        },
+        body: {
+          it: 'Un uomo e la donna che porta con sé arrivano in volo per riprendersi [[caesar-clown|Caesar Clown]], e Franky li affronta dentro il robot gigante che si è costruito: [[baby-5|Baby 5]], che trasforma il proprio corpo in qualunque arma serva, fatta roteare su una catena e scagliata da [[buffalo|Buffalo]]. Il missile di lei stende il robot e sfonda la poppa della cisterna sotto di esso. Franky si rialza, riconosce ai due il merito dell’unica cosa che ha bucato la sua corazza, dice loro che sono una mantide che attacca una corazzata, poi tira Baby 5 a sé per la catena e scarica su entrambi il cannone della nave, portato a terra.',
+          en: 'A man and the woman he carries fly in to take [[caesar-clown|Caesar Clown]] back, and Franky meets them inside the giant robot he built for himself: [[baby-5|Baby 5]], who turns her own body into whatever weapon is wanted, spun on a chain and thrown by [[buffalo|Buffalo]]. Her missile knocks the robot flat and wrecks the stern of the tanker under it. Franky gets back up, gives them credit for the one thing that got through his armour, tells them they are a praying mantis attacking a warship, then hauls Baby 5 in by the chain and fires the ship’s own cannon, brought ashore, into both of them.',
+        },
+      },
+    },
+    {
+      episode: 716,
+      value: {
+        title: { it: 'Il duello più virile', en: 'The manliest fight' },
+        body: {
+          it: 'Alla fabbrica [[senor-pink|Señor Pink]] accetta di combattere come Franky vuole: nessuno dei due schiva. I nani contano trenta colpi incassati da ciascuno. Señor Pink lo trascina su una torre e lo pianta a testa in giù nel terreno, proprio sul punto debole della sua schiena; Franky esce dal cratere e chiude il conto. L’uomo vestito da neonato lo fa per una moglie che tornò a sorridere solo quando lui si mise quei vestiti, e alla fine Franky gli asciuga le lacrime dalla faccia e gli offre da bere, un giorno.',
+          en: 'At the factory [[senor-pink|Señor Pink]] agrees to fight it the way Franky wants it fought: neither man dodges. The dwarves count thirty blows taken by each of them. Señor Pink drags him up a tower and drives him head first into the ground, on the weak part of his back; Franky climbs out of the crater and settles it. The man dressed as a baby does it for a wife who smiled again only once he put those clothes on, and when it is over Franky wipes his opponent’s tears away and offers him a drink some day.',
+        },
+      },
+    },
+    {
       episode: 1042,
       value: {
         title: {

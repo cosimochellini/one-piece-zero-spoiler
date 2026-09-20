@@ -1,3 +1,4 @@
+import { dressrosaChronicles } from './dressrosa.chronicle'
 import type { Saga } from './saga'
 
 /**
@@ -1470,6 +1471,7 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 704, value: ['calm-calm-fruit'] }],
     },
     'kaido': {
+      chronicle: dressrosaChronicles.kaido,
       role: {
         it: 'Imperatore del Nuovo Mondo',
         en: 'Emperor of the New World',

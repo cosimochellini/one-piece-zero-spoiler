@@ -37,6 +37,19 @@ export const thrillerBarkChronicles = {
       },
     },
     {
+      episode: 653,
+      value: {
+        title: {
+          it: 'Il quadro che aveva una spada',
+          en: 'The painting with a sword',
+        },
+        body: {
+          it: '[[jora|Jora]] sale sulla Thousand Sunny e trasforma la nave, [[nami|Nami]], [[tony-tony-chopper|Chopper]] e Brook stesso in arte astratta. Brook sta al gioco: loda il suo lavoro, si offre come assistente e chiede soltanto che al suo strumento e alla sua lama venga ridata la forma giusta, per poter suonare accanto a lei. Lei glieli rimette a posto. Lui la abbatte con un colpo solo, e la nave, la ciurma e tutto quello che aveva dipinto tornano com’erano in un istante. Quando lei si fa quadro di se stessa per un ultimo attacco, Nami la butta giù.',
+          en: '[[jora|Jora]] boards the Thousand Sunny and turns the ship, [[nami|Nami]], [[tony-tony-chopper|Chopper]] and Brook himself into abstract art. Brook plays along: he praises her work, offers himself as her assistant, and asks only that his instrument and his blade be given their proper shapes back so that he can play alongside her. She restores them. He cuts her down with a single stroke, and the ship, the crew and everything else she had painted come back at once. When she makes a painting of herself for one last attack, Nami knocks her down.',
+        },
+      },
+    },
+    {
       episode: 827,
       value: {
         title: { it: 'Una copia nel cranio', en: 'A copy in his skull' },

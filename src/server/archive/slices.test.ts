@@ -85,12 +85,13 @@ function positionOf(id: string, bookmark: Bookmark): RoutePositionView {
   return at
 }
 
-/** Four chronicled characters at four points of the route: sixteen pages. */
+/** Five chronicled characters at four points of the route: twenty pages. */
 const CHRONICLE_SWEEP = [
   'monkey-d-luffy',
   'nico-robin',
   'jinbe',
   'shanks',
+  'kaido',
 ].flatMap((id) => [1, 60, 500, 1100].map((episode) => ({ episode, id })))
 
 /** The stories a page carries, or a failure when it carries the note instead. */
