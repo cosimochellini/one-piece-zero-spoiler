@@ -76,6 +76,36 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 594,
+      value: {
+        title: { it: 'Un patto con Law', en: 'A deal with Law' },
+        body: {
+          it: '[[trafalgar-law|Law]] dice di aver trovato il modo di abbattere uno dei quattro Imperatori, e che gli serve un socio. Rufy chiede quale Imperatore, sente la risposta e accetta seduta stante. La ciurma protesta; solo [[nico-robin|Robin]] lo appoggia, e lo avverte che le alleanze fra pirati finiscono con un tradimento. Rufy chiede a Law senza giri se li tradirà, si accontenta del no e spiega a [[usopp|Usop]] che due anni di allenamento gli hanno dato una ciurma di cui può fidarsi. Il primo lavoro è prendere vivo [[caesar-clown|Caesar Clown]].',
+          en: '[[trafalgar-law|Law]] says he has found a way to bring down one of the four Emperors, and that he needs a partner for it. Luffy asks which Emperor, hears the answer and agrees on the spot. The crew object; only [[nico-robin|Robin]] backs him, and warns him that alliances between pirates end in betrayal. Luffy asks Law straight out whether he will betray them, takes no for an answer, and tells [[usopp|Usopp]] that two years of training bought him a crew he can rely on. The first job is to take [[caesar-clown|Caesar Clown]] alive.',
+        },
+      },
+    },
+    {
+      episode: 726,
+      value: {
+        title: { it: 'Gear Fourth', en: 'Gear Fourth' },
+        body: {
+          it: 'Sul tetto del palazzo, a corto di risposte contro un uomo che combatte con i fili, Rufy si morde il braccio e soffia. Il nero gli si stende addosso in disegni a forma di fiamma, il corpo si gonfia e non riesce più a stare fermo: Gear Fourth, Boundman, messo a punto nei due anni per le bestie che i suoi pugni normali non toccavano. [[donquixote-doflamingo|Do Flamingo]] ride della forma che ha preso, e finisce scagliato giù dall’altopiano fin dentro la città. Il calcio che gli torna indietro viene assorbito dalla gomma e restituito.',
+          en: 'On the palace roof, out of answers against a man who fights with strings, Luffy bites into his arm and blows. Black spreads over him in markings shaped like flames, his body swells and he cannot hold still: Gear Fourth, Boundman, worked out during the two years for the animals his ordinary punches could not touch. [[donquixote-doflamingo|Doflamingo]] laughs at the shape of him, and is then blasted off the plateau into the town below. The kick that comes back is swallowed by rubber and returned.',
+        },
+      },
+    },
+    {
+      episode: 734,
+      value: {
+        title: { it: 'La gabbia si scioglie', en: 'The cage comes apart' },
+        body: {
+          it: '[[donquixote-doflamingo|Do Flamingo]] giace immobile nel porto sotterraneo con gli occhiali in pezzi accanto a lui, e la gabbia sopra il paese comincia a dissolversi dalla punta in giù. Tutti quelli che la stavano tenendo cadono in avanti nel vuoto. Gatz annuncia all’isola che Rufy ha vinto, e fra le macerie parte la festa. La forma che Rufy aveva preso si è esaurita: se ne va sballottato come un palloncino bucato, finché [[trafalgar-law|Law]] non lo scambia con un sasso. [[kyros|Kyros]] piange lacrime umane per la prima volta in dieci anni.',
+          en: '[[donquixote-doflamingo|Doflamingo]] lies still in the underground harbour with his glasses in pieces beside him, and the cage over the country begins to dissolve from the tip downward. Everyone who has been holding it back falls forward into empty air. Gatz tells the island that Luffy has won, and the cheering starts among the rubble. The form Luffy took has run out: he is blown about like a burst balloon until [[trafalgar-law|Law]] swaps him for a rock. [[kyros|Kyros]] weeps human tears for the first time in ten years.',
+        },
+      },
+    },
+    {
       episode: 1071,
       value: {
         title: { it: 'Un battito sul tetto', en: 'A heartbeat on the roof' },
@@ -138,6 +168,26 @@ export const eastBlueChronicles = {
         body: {
           it: 'La zampa di [[bartholomew-kuma|Orso]] lo ha spedito a Kuraigana, un’isola grigia di rovine e babbuini armati di spada, dove le sole altre persone sono una ragazza dei fantasmi, [[perona|Perona]], e l’uomo che lo ha abbattuto al Baratie: [[dracule-mihawk|Mihawk]] vive nel castello. Zoro ha letto il giornale e capito il messaggio di [[monkey-d-luffy|Rufy]]: due anni, non tre giorni. Così l’uomo che ha giurato di non perdere mai più si inginocchia nella polvere davanti al suo rivale e lo supplica di insegnargli. Mihawk, disgustato, rifiuta; poi sente che Zoro ha già battuto tutti i babbuini dell’isola, e accetta.',
           en: '[[bartholomew-kuma|Kuma]]’s paw sent him to Kuraigana, a grey island of ruins and sword-wielding baboons, where the only other people are a ghost girl, [[perona|Perona]], and the man who cut him down at the Baratie: [[dracule-mihawk|Mihawk]] lives in the castle. Zoro has read the newspaper and understood [[monkey-d-luffy|Luffy]]’s message: two years, not three days. So the man who swore never to lose again kneels in the dirt in front of his rival and begs him to teach him. Mihawk, disgusted, refuses; then he hears that Zoro has already beaten every baboon on the island, and he agrees.',
+        },
+      },
+    },
+    {
+      episode: 613,
+      value: {
+        title: { it: 'La donna di neve', en: 'The snow woman' },
+        body: {
+          it: '[[tashigi|Tashigi]] resta a combattere [[monet|Monet]] perché è convinta che Zoro non colpirà una donna, e glielo dice in faccia, citando il duello che ebbero anni prima. Zoro nega, si siede e la lascia provare. Quando i denti di Monet si chiudono sulla spalla di Tashigi le apre la guancia con una lama annerita per farla mollare, poi chiede se una delle due abbia mai incontrato una bestia selvatica che prometteva di non mordere. Taglia Monet in due per il lungo senza annerire la lama, così la neve si richiude, e Tashigi la finisce.',
+          en: '[[tashigi|Tashigi]] stays to fight [[monet|Monet]] because she is sure Zoro will not cut a woman, and says so to his face, citing the duel they had years before. Zoro denies it, sits down and lets her try. When Monet’s teeth close on Tashigi’s shoulder he opens the snow woman’s cheek with a blackened blade to make her let go, then asks whether either of them has ever met a wild animal that promised not to bite. He splits Monet down the middle with the blade left plain, so the snow closes again, and Tashigi finishes her.',
+        },
+      },
+    },
+    {
+      episode: 719,
+      value: {
+        title: { it: 'Il gigante di pietra', en: 'The stone giant' },
+        body: {
+          it: '[[pica|Pica]] raccoglie la pietra di tutto il paese in un corpo solo e lo cammina verso l’altopiano dove il vecchio re e la sua gente hanno scelto di non scappare. [[orlumbus|Orlumbus]] lancia Zoro in aria. Tre spade e due mani annerite: taglia il gigante in due alla vita, poi dimezza quello che resta, poi insegue l’uomo dentro la roccia che cade, il braccio, le dita, ancora il braccio, finché Pica non deve farsi vedere. Zoro ricorda la sconfitta contro [[dracule-mihawk|Mihawk]], e gli apre l’elmo.',
+          en: '[[pica|Pica]] gathers the stone of the whole country into one body and walks it at the plateau where the old king and his people have decided not to run. [[orlumbus|Orlumbus]] throws Zoro into the air. Three swords and both hands blackened: he cuts the giant in half at the waist, halves what is left, then hunts the man himself through the falling rock — the arm, the fingers, the arm again — until Pica has to show his face. Zoro remembers losing to [[dracule-mihawk|Mihawk]], and opens his helmet.',
         },
       },
     },
@@ -251,6 +301,16 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 643,
+      value: {
+        title: { it: 'Usoland', en: 'Usoland' },
+        body: {
+          it: 'Sottoterra, nel regno dei nani, lo rimpinzano finché non riesce più a muoversi e lo battezzano Usoland. Il loro eroe è [[montblanc-noland|Montblanc Noland]], che arrivò quattrocento anni fa e portò i loro antenati a una vittoria di cui conservano ancora la statua, e Usop ha raccontato di esserne un discendente. [[nico-robin|Robin]], che ha letto lo stesso libro illustrato, lo chiama cattivo. Poi il capo annuncia che l’anniversario cade proprio oggi, e tutto il regno si mette a invocare Usoland perché li guidi in guerra.',
+          en: 'Underground, in the kingdom of the dwarves, they feed him until he cannot move and christen him Usoland. Their hero is [[montblanc-noland|Montblanc Noland]], who came four hundred years ago and led their ancestors to a victory they still keep a statue of, and Usopp has told them he is a descendant of his. [[nico-robin|Robin]], who has read the same picture book, calls him a bad man. Then the chief announces that the anniversary falls today, and the whole kingdom starts chanting for Usoland to lead them into a war.',
+        },
+      },
+    },
+    {
       episode: 677,
       value: {
         title: {
@@ -322,6 +382,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il colpo di [[bartholomew-kuma|Orso Bartholomew]] lo ha scagliato sull’isola Momoiro, il regno delle drag queen di [[emporio-ivankov|Emporio Ivankov]]: tutto è rosa, tutti vogliono truccarlo e infilarlo in un vestito, e per lui è l’inferno. Il giornale gli dice che [[monkey-d-luffy|Rufy]] è tornato sul campo di battaglia di Marineford, e in quel gesto Sanji legge un messaggio: non è ancora il momento di raggiungerlo. Sulla stessa isola esiste una cucina che rende più forte chi la mangia. Sanji ne vuole le ricette per la ciurma, e [[emporio-ivankov|Ivankov]] gliele promette a un prezzo: dovrà battere, uno dopo l’altro, i novantanove maestri del regno.',
           en: '[[bartholomew-kuma|Bartholomew Kuma]]’s blow flung him onto Momoiro Island, the kingdom of [[emporio-ivankov|Emporio Ivankov]]’s drag queens: everything is pink, everyone wants to make him up and put him in a dress, and to him it is hell. The newspaper tells him [[monkey-d-luffy|Luffy]] has gone back to the battlefield at Marineford, and in that gesture Sanji reads a message: it is not yet time to go to him. On this same island there is a cuisine that makes whoever eats it stronger. Sanji wants its recipes for the crew, and [[emporio-ivankov|Ivankov]] promises them at a price: he must beat the kingdom’s ninety-nine masters, one after another.',
+        },
+      },
+    },
+    {
+      episode: 655,
+      value: {
+        title: { it: 'Appeso ai fili', en: 'Hung on strings' },
+        body: {
+          it: 'Si stacca dal ponte per affrontare [[donquixote-doflamingo|Do Flamingo]] da solo e comprare alla nave i minuti che le servono. Va a segno davvero, e l’altro lo ammette; poi i fili se lo prendono e lo lasciano appeso in aria senza più niente di suo da muovere. Dice a [[nami|Nami]] e [[brook|Brook]] di lasciarlo lì e andare. Il colpo che deve ucciderlo è già partito quando [[trafalgar-law|Law]], che guarda dalla riva, lancia un tronco nello spazio che lui occupa e scambia i due.',
+          en: 'He flies off the deck to face [[donquixote-doflamingo|Doflamingo]] alone and buy the ship the minutes it needs. He lands real hits, and the man admits it; then the strings take him and leave him hanging in the air with nothing of his own to move. He tells [[nami|Nami]] and [[brook|Brook]] to leave him there and go. The blow meant to kill him is already coming when [[trafalgar-law|Law]], watching from the shore, throws a log into the space he occupies and swaps the two.',
         },
       },
     },
@@ -403,6 +473,26 @@ export const eastBlueChronicles = {
         body: {
           it: 'Separata dai compagni, Nami arriva a Weatheria, un’isola nel cielo abitata da scienziati che studiano le nuvole e il clima. Legge il messaggio di [[monkey-d-luffy|Rufy]] sul giornale e decide che due anni non sono un’attesa: sono tempo da usare. Restando con gli abitanti dell’isola impara a creare bolle di calore, freddo e vento, strumenti che possono guidare una nave o cambiare una battaglia. Quando tornerà, non sarà soltanto quella che legge il mare.',
           en: 'Separated from her companions, Nami reaches Weatheria, a sky island inhabited by scientists who study clouds and climate. She reads [[monkey-d-luffy|Luffy]]’s message in the newspaper and decides that two years are not waiting time: they are time to use. Staying with the islanders, she learns to make bubbles of heat, cold and wind, tools that can guide a ship or change a battle. When she returns, she will not only be the one who reads the sea.',
+        },
+      },
+    },
+    {
+      episode: 587,
+      value: {
+        title: { it: 'Il corpo sbagliato', en: 'The wrong body' },
+        body: {
+          it: '[[trafalgar-law|Law]] li taglia in quattro e li rimette insieme nell’ordine sbagliato. Nami si sveglia dentro il corpo di [[franky|Franky]], con la sua voce e le sue braccia; [[sanji|Sanji]] è dentro il suo, [[tony-tony-chopper|Chopper]] dentro quello di Sanji, e Franky è una renna. Sanji è entusiasta e cerca una macchina fotografica. I bambini liberati capiscono cos’è successo prima della ciurma. Nessuno può rimediare tranne Law, e Law è occupato là fuori, così Nami attraversa la metà ghiacciata dell’isola in un corpo grande il doppio di lei.',
+          en: '[[trafalgar-law|Law]] cuts four of them apart and puts them back in the wrong order. Nami wakes up inside [[franky|Franky]]’s body, with his voice and his arms; [[sanji|Sanji]] is inside hers, [[tony-tony-chopper|Chopper]] is inside Sanji’s, and Franky is a reindeer. Sanji is delighted and goes looking for a camera. The rescued children work out what has happened before the crew do. Nobody can undo it but Law, and Law is busy outside, so Nami crosses the frozen half of the island in a body twice her size.',
+        },
+      },
+    },
+    {
+      episode: 653,
+      value: {
+        title: { it: 'La nave dipinta', en: 'The painted ship' },
+        body: {
+          it: '[[jora|Jora]] sale a bordo della Thousand Sunny e trasforma la nave e chi c’è rimasto sopra in arte astratta: il bastone del tempo di Nami diventa una forma inutile, e lei non può combattere in un corpo che non ha più i bordi giusti. [[brook|Brook]] finge di passare dalla sua parte, la lusinga finché non gli rimette a posto la spada, e la abbatte, il che annulla tutto in un colpo solo. Quando lei torna all’attacco come un quadro di se stessa, Nami la butta giù con il cannone della nave.',
+          en: '[[jora|Jora]] comes aboard the Thousand Sunny and turns the ship and everyone left on it into abstract art: Nami’s weather staff becomes a useless shape, and she cannot fight in a body that no longer has the right edges. [[brook|Brook]] pretends to change sides, flatters her into restoring his sword, and cuts her down, which undoes all of it at once. When she comes back at them as a painting of herself, Nami knocks her out of the air with the ship’s own cannon.',
         },
       },
     },

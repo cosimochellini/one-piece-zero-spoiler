@@ -91,6 +91,7 @@ const CHRONICLE_SWEEP = [
   'nico-robin',
   'jinbe',
   'shanks',
+  'kaido',
 ].flatMap((id) => [1, 60, 500, 1100].map((episode) => ({ episode, id })))
 
 /** The stories a page carries, or a failure when it carries the note instead. */

@@ -59,6 +59,9 @@ const RECORDS = [
   // the browser (issue #12).
   'src/components/chrome/**',
   'src/lib/svg/**',
+  // The wiki page and the note behind every chronicle story. Research rather
+  // than code, and it grows by one entry per story written.
+  'scripts/chronicle-sources.mjs',
 ]
 const TOKENS = ['src/**/*.stylex.ts']
 

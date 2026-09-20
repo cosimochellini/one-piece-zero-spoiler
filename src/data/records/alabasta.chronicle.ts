@@ -63,6 +63,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 622,
+      value: {
+        title: {
+          it: 'La caramella e la bambina',
+          en: 'The candy and the girl',
+        },
+        body: {
+          it: 'I bambini dell’isola non mangiavano caramelle ma una droga, e quando gliela tolgono inseguono urlando quel che ne resta. Chopper trova un sedativo e li mette giù uno alla volta mentre Mocha scappa con tutta la scorta; messa alle strette, se la ingoia tutta lei perché nessun altro possa. La raggiunge mentre crolla sputando sangue e la tiene in vita. Poi [[trafalgar-law|Law]] toglie la droga dal corpo di ognuno di loro, e Mocha è l’ultima a svegliarsi.',
+          en: 'The children on the island were not eating sweets but a drug, and when it is taken away they chase the last of it screaming. Chopper finds a sedative and puts them down one at a time while Mocha runs with the whole batch; cornered, she swallows all of it herself so that none of them can. He reaches her as she goes down coughing blood and keeps her breathing. Afterwards [[trafalgar-law|Law]] takes the drug out of every one of them, and Mocha is the last to wake.',
+        },
+      },
+    },
+    {
       episode: 1023,
       value: {
         title: {
@@ -117,6 +130,16 @@ export const alabastaChronicles = {
         },
       },
     },
+    {
+      episode: 678,
+      value: {
+        title: { it: 'La fiamma cambia mano', en: 'The flame changes hands' },
+        body: {
+          it: 'Il suo frutto non è morto con lui. È riaffiorato come premio di un torneo a Dressrosa, e il fratello minore si è iscritto piuttosto che lasciarlo a uno sconosciuto. Non potendo mangiarlo, [[monkey-d-luffy|Rufy]] ha ceduto il posto a [[sabo|Sabo]], che ha sbriciolato l’arena, ha attraversato l’acqua saltando di pesce in pesce fino al forziere, l’ha aperto e ha mangiato quel che c’era dentro sul posto. Poi si è tolto il travestimento, si è trovato il fuoco attorno al pugno e l’ha lanciato: la mossa di Ace, con il nome che Ace le aveva dato.',
+          en: 'His fruit did not die with him. It surfaced again as the prize of a tournament on Dressrosa, and his younger brother entered rather than let a stranger eat it. Unable to eat it himself, [[monkey-d-luffy|Luffy]] handed his place to [[sabo|Sabo]], who shattered the arena, crossed the water fish by fish to reach the chest, broke it open and ate what was inside on the spot. Then he pulled off the disguise, found fire around his fist and threw it: Ace’s own move, under the name Ace gave it.',
+        },
+      },
+    },
   ],
   'nico-robin': [
     {
@@ -146,6 +169,19 @@ export const alabastaChronicles = {
         body: {
           it: 'A Enies Lobby Robin spiega che il Governo la insegue da quando era bambina e che ha sempre lasciato gli altri prima che potessero tradirla. [[monkey-d-luffy|Rufy]] non accetta questa resa: fa bruciare la bandiera del Governo e le chiede soltanto cosa desideri. Robin guarda la ciurma che è venuta a prenderla e grida che vuole vivere, che vuole andare in mare con loro. Da quel momento non fugge più da sola.',
           en: 'At Enies Lobby Robin explains that the Government has hunted her since childhood and that she always left others before they could betray her. [[monkey-d-luffy|Luffy]] will not accept that surrender: he has the Government flag burned and asks only what she wants. Robin looks at the crew that came to take her back and cries that she wants to live, that she wants to go to sea with them. From that moment she no longer runs alone.',
+        },
+      },
+    },
+    {
+      episode: 713,
+      value: {
+        title: {
+          it: 'Cento mani sul colle',
+          en: 'A hundred hands on the hill',
+        },
+        body: {
+          it: 'Sale i piani del porto sotterraneo su gradini fatti spuntare dalle pareti, con [[bartolomeo|Bartolomeo]] che per tutta la salita incassa al posto suo i colpi di [[gladius|Gladius]] e [[cavendish|Cavendish]] che la porta all’ultimo tratto a una velocità che non controlla. Li fa atterrare entrambi su una rete di braccia sue. Sul colle [[diamante|Diamante]] ha messo all’angolo [[rebecca|Rebecca]] e [[kyros|Kyros]], con il terreno che ondeggia sotto di loro. Robin arriva insieme alla lama, la devia con una falena di mani intrecciate e dice che alla ragazza ci pensa lei.',
+          en: 'She climbs the floors of the underground port on steps sprouted from the walls, with [[bartolomeo|Bartolomeo]] taking [[gladius|Gladius]]’s blasts for her the whole way and [[cavendish|Cavendish]] carrying her the last stretch at a speed he does not control. She lands the pair of them on a net of her own arms. On the hill above, [[diamante|Diamante]] has [[rebecca|Rebecca]] and [[kyros|Kyros]] cornered and the ground rippling under them. Robin arrives with the blade, turns it aside with a moth made of linked hands, and says she will look after the girl.',
         },
       },
     },
