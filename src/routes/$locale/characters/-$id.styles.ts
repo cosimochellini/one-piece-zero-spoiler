@@ -176,6 +176,8 @@ export const styles = stylex.create({
     marginInlineStart: 0,
     minWidth: 0,
   },
+  // The chronicle band: a heading, a lede and one ledger, full width.
+  chronicle: { gap: space.lg, display: 'grid', minWidth: 0 },
   nearby: {
     gap: space.lg,
     borderBlockStartColor: color.rule,
@@ -184,5 +186,6 @@ export const styles = stylex.create({
     display: 'grid',
     paddingBlockStart: space.xl,
   },
-  nearbyHead: { gap: space.xs, display: 'grid' },
+  // A band's heading and its lede, stacked: the chronicle and the nearby row.
+  bandHead: { gap: space.xs, display: 'grid' },
 })

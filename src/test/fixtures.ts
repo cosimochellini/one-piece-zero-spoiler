@@ -1,6 +1,8 @@
 import type {
+  CharacterChronicle,
   CharacterFacts,
   CharacterView,
+  ChronicleEntry,
   CoveredRecord,
   Drawing,
   FruitBandView,
@@ -166,6 +168,23 @@ export function facts(
   over: Partial<Extract<CharacterFacts, { mode: 'facts' }>> = {},
 ): CharacterFacts {
   return { mode: 'facts', ...over }
+}
+
+/** One reached story, with a plain paragraph unless told otherwise. */
+export function story(over: Partial<ChronicleEntry> = {}): ChronicleEntry {
+  return {
+    episode: 1,
+    title: 'A boy in a barrel',
+    body: [{ kind: 'text', text: 'He climbs out of a barrel.' }],
+    ...over,
+  }
+}
+
+/** A chronicle with the stories it is given, in the order it is given them. */
+export function chronicle(
+  entries: readonly ChronicleEntry[] = [],
+): CharacterChronicle {
+  return { mode: 'chronicle', entries }
 }
 
 export function openSlot<T>(value: T): Slot<T> {

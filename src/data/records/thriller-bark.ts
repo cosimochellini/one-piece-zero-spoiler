@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { thrillerBarkChronicles } from './thriller-bark.chronicle'
 
 /**
  * The Thriller Bark saga, episodes 326 to 384: a ghost ship, an island that
@@ -148,6 +149,7 @@ export const thrillerBark: Saga = {
 
   dossiers: {
     'brook': {
+      chronicle: thrillerBarkChronicles.brook,
       role: { it: 'Musicista', en: 'Musician' },
       log: {
         it: 'Ha vagato per cinquant’anni su una nave fantasma in un mare senza sole, senza compagni e senza ombra. È morto una volta e il suo frutto lo ha riportato indietro, ma il corpo che ha ritrovato era già solo ossa. Accetta l’invito a bordo di Rufy in trenta secondi, poi chiede alla navigatrice di mostrargli le mutandine.',

@@ -159,6 +159,12 @@ export const itDictionary: Dictionary = {
   'character.factsLabel': 'Quello che si sa finora',
   'character.factsInEpisodes':
     'I fatti di un dossier contano in episodi dell’anime. Imposta un segnalibro a episodi o a stagioni per leggerli; con un segnalibro a capitoli restano coperti.',
+  'character.chronicleTitle': 'La storia finora',
+  'character.chronicleLede':
+    'Quello che gli è successo, fino all’episodio a cui sei arrivato. Ogni storia si apre all’episodio che la mostra.',
+  'character.chronicleEpisode': 'Episodio {episode}',
+  'character.chronicleInEpisodes':
+    'Le storie di una cronaca contano in episodi dell’anime. Imposta un segnalibro a episodi o a stagioni per leggerle; con un segnalibro a capitoli restano coperte.',
   'character.before': 'Archiviato prima',
   'character.after': 'Archiviato dopo',
   'character.routeStart': 'Niente. La rotta comincia qui.',

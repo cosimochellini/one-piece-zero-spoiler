@@ -6,9 +6,15 @@ import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
-import type { RoutePositionView, ShelfView } from '~/lib/view/records'
+import type {
+  CharacterChronicle,
+  ChronicleEntry,
+  RoutePositionView,
+  ShelfView,
+} from '~/lib/view/records'
 
 import {
+  characterPage,
   charactersPage,
   chartPage,
   nearbyPage,
@@ -79,6 +85,25 @@ function positionOf(id: string, bookmark: Bookmark): RoutePositionView {
   return at
 }
 
+/** Four chronicled characters at four points of the route: sixteen pages. */
+const CHRONICLE_SWEEP = [
+  'monkey-d-luffy',
+  'nico-robin',
+  'jinbe',
+  'shanks',
+].flatMap((id) => [1, 60, 500, 1100].map((episode) => ({ episode, id })))
+
+/** The stories a page carries, or a failure when it carries the note instead. */
+function storiesOf(
+  chronicle: CharacterChronicle | undefined,
+): readonly ChronicleEntry[] {
+  if (chronicle?.mode !== 'chronicle') {
+    throw new Error('the page carries no chronicle')
+  }
+
+  return chronicle.entries
+}
+
 /** Every character a shelf holds: the open ones by id, the rest by handle. */
 function shelvedKeys(shelf: ShelfView): readonly string[] {
   return [
@@ -110,6 +135,42 @@ function saysNothing(payload: unknown, bookmark: Bookmark): void {
 }
 
 describe('the slice of the archive a page is given', () => {
+  it('tells a character’s page nothing the reader has not reached', () => {
+    // The chronicle is the one payload that carries other characters' names
+    // in prose, so the sweep runs across the reader's whole route.
+    for (const { episode, id } of CHRONICLE_SWEEP) {
+      const label = `${id} @${String(episode)}`
+      const page = characterPage(id, ep(episode), 'en')
+
+      expect(page, label).toBeDefined()
+
+      saysNothing(page, ep(episode))
+
+      const reached = storiesOf(page?.detail.chronicle)
+
+      // A covered page reaches no story; an open one, at least the first.
+      const floor = page?.detail.slot.open === true ? 1 : 0
+
+      expect(reached.length, label).toBeGreaterThanOrEqual(floor)
+      expect(reached.length === 0 || floor === 1, label).toBe(true)
+
+      for (const story of reached) {
+        expect(story.episode, label).toBeLessThanOrEqual(episode)
+      }
+    }
+  })
+
+  it('gives a character’s page no story at all without a bookmark', () => {
+    const page = characterPage('monkey-d-luffy', null, 'en')
+
+    expect(page?.detail.chronicle).toStrictEqual({
+      mode: 'chronicle',
+      entries: [],
+    })
+
+    saysNothing(page, null)
+  })
+
   it('splits the chart at the reader’s bookmark, open first', () => {
     const chart = chartPage(ep(500), 'en')
 

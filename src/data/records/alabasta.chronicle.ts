@@ -1,0 +1,166 @@
+import type { Story, Timeline } from '~/data/types'
+
+/**
+ * The dated stories for characters introduced in this saga. Each entry is
+ * filed at the first episode by whose end its full account is known.
+ */
+export const alabastaChronicles = {
+  'tony-tony-chopper': [
+    {
+      episode: 83,
+      value: {
+        title: {
+          it: 'Una renna alla porta del castello',
+          en: 'A reindeer at the castle door',
+        },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]] arriva in cima alla montagna di Drum con [[nami|Nami]] febbricitante sulla schiena e [[sanji|Sanji]] quasi privo di sensi, dopo aver scalato la parete a mani nude nel gelo. Davanti al castello le forze lo abbandonano, e a raccoglierlo è una renna dal naso blu che cammina su due zampe e porta un cappello rosa. Appena si accorge di essere stata vista, la creatura si nasconde dietro un muro, dal lato sbagliato, con metà del corpo in vista. Si chiama Chopper, parla, e assiste la dottoressa [[kureha|Kureha]]: prepara le medicine, controlla i malati e scappa appena qualcuno gli rivolge la parola. È lui a trascinare dentro i tre viaggiatori mezzi congelati.',
+          en: '[[monkey-d-luffy|Luffy]] reaches the top of the Drum mountain with a feverish [[nami|Nami]] on his back and [[sanji|Sanji]] barely conscious, after climbing the cliff bare-handed in the cold. At the castle gate his strength gives out, and the one who catches him is a blue-nosed reindeer that walks on two legs and wears a pink hat. The moment he realises he has been seen, the creature hides behind a wall, on the wrong side, half his body showing. His name is Chopper; he talks, and he assists doctor [[kureha|Kureha]], preparing medicines and checking on the patients, and he runs the moment anyone speaks to him. He is the one who drags the three half-frozen travellers inside.',
+        },
+      },
+    },
+    {
+      episode: 86,
+      value: {
+        title: { it: 'La bandiera di Hiluluk', en: 'Hiluluk’s flag' },
+        body: {
+          it: '[[kureha|Kureha]] racconta da dove viene la renna. Cacciato dal branco per il naso blu e preso a fucilate dagli uomini perché parlava, Chopper è stato raccolto da [[hiluluk|Hiluluk]], un ciarlatano con la bandiera dei pirati cucita sulla giacca, che gli ha dato un nome e un tetto. Quando Hiluluk si ammala, Chopper attraversa la montagna per portargli un fungo che nel libro di medicina ha il teschio dei pirati: lo prende per il segno di una cura, ed è veleno. Hiluluk lo mangia sorridendo. Poi risponde alla chiamata di [[wapol|Wapol]], scopre che è una trappola e sceglie di finire con le sue mani, gridando che un uomo muore solo quando viene dimenticato.',
+          en: '[[kureha|Kureha]] tells where the reindeer comes from. Driven out by his herd over the blue nose and shot at by men because he talked, Chopper was taken in by [[hiluluk|Hiluluk]], a quack with a pirate flag stitched to his coat, who gave him a name and a roof. When Hiluluk falls ill, Chopper crosses the mountain to bring him a mushroom that carries a skull and crossbones in the medical book: he takes it for the sign of a cure, and it is poison. Hiluluk eats it smiling. Then he answers [[wapol|Wapol]]’s summons, finds out it is a trap and chooses to end things with his own hands, shouting that a man dies only when he is forgotten.',
+        },
+      },
+    },
+    {
+      episode: 95,
+      value: {
+        title: { it: 'Ciliegi nella neve', en: 'Cherry blossoms in the snow' },
+        body: {
+          it: '[[wapol|Wapol]] spara alla bandiera di [[hiluluk|Hiluluk]] e [[monkey-d-luffy|Rufy]] la difende senza sapere di chi sia, poi scaccia il re dal suo stesso regno. Quando Rufy gli chiede di venire con lui, Chopper risponde che è una renna, un mostro, e che non può; Rufy gli urla di stare zitto e di salire a bordo. Chopper annuncia la sua decisione a [[kureha|Kureha]], che lo insegue per il castello lanciando coltelli e poi lo lascia andare. Mentre la slitta scende verso il villaggio, Kureha spara nel cielo la polvere rosa del dottore: sopra la neve fioriscono ciliegi enormi, e Chopper piange. Poi è a bordo della Going Merry, il nuovo medico della ciurma.',
+          en: '[[wapol|Wapol]] fires at [[hiluluk|Hiluluk]]’s flag and [[monkey-d-luffy|Luffy]] defends it without knowing whose it is, then knocks the king out of his own country. When Luffy asks him to come along, Chopper answers that he is a reindeer, a monster, and cannot; Luffy yells at him to shut up and get on board. Chopper announces his decision to [[kureha|Kureha]], who chases him through the castle throwing knives and then lets him go. As the sled runs down towards the village, Kureha fires the doctor’s pink powder into the sky: over the snow, enormous cherry trees bloom, and Chopper cries. Then he is aboard the Going Merry, the crew’s new doctor.',
+        },
+      },
+    },
+    {
+      episode: 293,
+      value: {
+        title: { it: 'La terza Rumble Ball', en: 'The third Rumble Ball' },
+        body: {
+          it: 'A Enies Lobby, per riprendersi [[nico-robin|Robin]], Chopper affronta [[kumadori|Kumadori]] del CP9, un uomo con i capelli che si muovono da soli e un bastone che gli passa attraverso il corpo. La sua Rumble Ball dura tre minuti e non basta: ne mangia una seconda e perde il controllo delle trasformazioni, che cambiano da sole. Ferito e inchiodato a terra, ne ingoia una terza, quella che aveva promesso a [[kureha|Kureha]] di non prendere mai più. Il suo corpo cresce fino al soffitto, diventa una bestia enorme dagli occhi vuoti che sfonda le pareti della torre, batte Kumadori e lo scaglia giù nella piazza. Ma il mostro non riconosce nessuno e non sa fermarsi.',
+          en: 'At Enies Lobby, to take [[nico-robin|Robin]] back, Chopper faces [[kumadori|Kumadori]] of CP9, a man whose hair moves on its own and whose staff goes straight through his body. His Rumble Ball lasts three minutes and it is not enough: he eats a second one and loses control of his transformations, which shift by themselves. Wounded and pinned to the floor, he swallows a third, the one he had promised [[kureha|Kureha]] never to take again. His body grows to the ceiling and becomes a huge blank-eyed beast that smashes through the tower walls, beats Kumadori and hurls him down into the square. But the monster recognises nobody and cannot stop.',
+        },
+      },
+    },
+    {
+      episode: 512,
+      value: {
+        title: {
+          it: 'Il messaggio sull’isola degli uccelli',
+          en: 'The message on the island of birds',
+        },
+        body: {
+          it: 'A Sabaody [[bartholomew-kuma|Orso Bartholomew]] ha fatto sparire la ciurma un membro alla volta, e Chopper si è risvegliato nel regno di Torino, nel South Blue: uccelli giganti lo usano come giocattolo e gli abitanti dell’isola vogliono cucinarlo. Passano settimane senza notizie. Poi arriva il giornale: [[monkey-d-luffy|Rufy]] ha perso il fratello [[portgas-d-ace|Ace]] nella grande guerra di Marineford, ed è tornato là da solo, a suonare una campana sedici volte e a pregare davanti ai giornalisti. Chopper guarda la fotografia e legge il messaggio nascosto sul braccio del capitano. In groppa a uno degli uccelli giganti, grida verso il mare che ha capito.',
+          en: 'At Sabaody [[bartholomew-kuma|Bartholomew Kuma]] made the crew vanish one member at a time, and Chopper woke up in the Torino Kingdom, in the South Blue: giant birds use him as a toy and the islanders want to cook him. Weeks pass without news. Then the newspaper arrives: [[monkey-d-luffy|Luffy]] has lost his brother [[portgas-d-ace|Ace]] in the great war at Marineford, and has gone back there alone to ring a bell sixteen times and pray in front of the reporters. Chopper studies the photograph and reads the message hidden on his captain’s arm. Riding one of the giant birds, he shouts out to the sea that he has understood.',
+        },
+      },
+    },
+    {
+      episode: 1023,
+      value: {
+        title: {
+          it: 'La cura per i demoni di ghiaccio',
+          en: 'A cure for the ice demons',
+        },
+        body: {
+          it: 'A Onigashima [[queen|Queen]] spara sulla folla proiettili che diffondono un virus: chi viene infettato si copre di ghiaccio, perde la ragione e morde chiunque gli sia vicino, passando il contagio. Chopper analizza l’antidoto che [[roronoa-zoro|Zoro]] ha strappato ad [[scratchmen-apoo|Apoo]] mentre l’epidemia si allarga di piano in piano, poi scopre dal braccio che gli sta gelando di essere infetto anche lui. Con la fiamma di [[marco|Marco]] che gli restituisce il braccio, in poche ore completa un antidoto che si riproduce da solo, il Chopperphage, lo fa sparare con un cannone su tutta la sala e cura anche i soldati di Queen, insieme a [[hyogoro|Hyogoro]] a un passo dalla morte. Poi urla a tutti che non è un tanuki e colpisce Queen in faccia.',
+          en: 'On Onigashima [[queen|Queen]] fires bullets into the crowd that spread a virus: whoever is infected grows a coat of ice, loses his mind and bites anyone nearby, passing the disease on. Chopper analyses the antidote [[roronoa-zoro|Zoro]] has snatched from [[scratchmen-apoo|Apoo]] while the outbreak spreads floor by floor, then learns from his own freezing arm that he is infected too. With [[marco|Marco]]’s flame giving him his arm back, in a few hours he completes an antidote that reproduces on its own, the Chopperphage, has it fired from a cannon across the whole hall and cures Queen’s own soldiers along with [[hyogoro|Hyogoro]], a breath from death. Then he yells at everyone that he is not a tanuki and hits Queen in the face.',
+        },
+      },
+    },
+  ],
+  'portgas-d-ace': [
+    {
+      episode: 95,
+      value: {
+        title: { it: 'Il fratello maggiore', en: 'The older brother' },
+        body: {
+          it: 'Nel porto di Nanohana, ad Alabasta, [[monkey-d-luffy|Rufy]] incontra un uomo col cappello arancione che dorme nel piatto e poi incendia le navi di Baroque Works con il pugno. È Ace, suo fratello maggiore, capitano della seconda divisione di Barbabianca. I due mangiano, ridono e raccontano alla ciurma di essere cresciuti insieme. Ace è sulle tracce di un uomo chiamato Barbanera, ma prima di partire lascia a Rufy un pezzo della propria vivre card.',
+          en: 'In the port town of Nanohana, in Alabasta, [[monkey-d-luffy|Luffy]] meets a man in an orange hat who falls asleep in his food and then burns the Baroque Works ships with his fist. He is Ace, Luffy’s older brother and captain of Whitebeard’s second division. The two eat, laugh and tell the crew that they grew up together. Ace is hunting a man called Blackbeard, but before leaving he gives Luffy a piece of his vivre card.',
+        },
+      },
+    },
+    {
+      episode: 416,
+      value: {
+        title: { it: 'La carta brucia', en: 'The card burns' },
+        body: {
+          it: 'La vivre card che Ace ha lasciato a [[monkey-d-luffy|Rufy]] si è ridotta a un frammento che brucia. Ad Amazon Lily il giornale spiega il resto: Ace ha perso il duello con [[marshall-d-teach|Barbanera]], è stato consegnato al Governo e sarà giustiziato in pubblico, in un giorno già fissato. Rufy legge la data e non esita: non andrà al patibolo, dove il fratello arriverà solo per morire, ma alla grande prigione dove lo tengono adesso, e chiede di farsi portare là dentro. La carta è la sola prova che Ace è ancora vivo, e continua a rimpicciolire.',
+          en: 'The vivre card Ace left with [[monkey-d-luffy|Luffy]] has shrunk to a burning scrap. On Amazon Lily the newspaper explains the rest: Ace lost his duel with [[marshall-d-teach|Blackbeard]], was handed to the Government and will be executed in public, on a day already set. Luffy reads the date and does not hesitate: he will not go to the scaffold, where his brother will only arrive to die, but to the great prison where they hold him now, and asks to be smuggled inside it. The card is the one proof that Ace is still alive, and it keeps shrinking.',
+        },
+      },
+    },
+    {
+      episode: 482,
+      value: {
+        title: { it: 'Fuori dalle catene', en: 'Out of the shackles' },
+        body: {
+          it: 'La guerra esplode intorno al patibolo, ma [[monkey-d-luffy|Rufy]] arriva fino alle catene di Ace con la chiave presa da [[mr-3|Mr. 3]]. Le manette si aprono e i due fratelli sono finalmente liberi. Ace si mette accanto a Rufy e usa il fuoco per aprire loro una strada tra Marines e pirati. Per pochi minuti la missione impossibile è compiuta: devono soltanto lasciare Marineford insieme.',
+          en: 'War erupts around the scaffold, but [[monkey-d-luffy|Luffy]] reaches Ace’s shackles with the key taken from [[mr-3|Mr. 3]]. The cuffs open and the two brothers are finally free. Ace stands beside Luffy and uses fire to open a path through Marines and pirates. For a few minutes the impossible mission is complete: they only need to leave Marineford together.',
+        },
+      },
+    },
+    {
+      episode: 483,
+      value: {
+        title: { it: 'Grazie per avermi amato', en: 'Thank you for loving me' },
+        body: {
+          it: 'Durante la fuga l’ammiraglio Akainu provoca Ace insultando Barbabianca. Ace si volta; [[monkey-d-luffy|Rufy]], sfinito, cade davanti a lui. Il pugno di magma punta al fratello minore, e Ace gli si mette davanti. Ferito mortalmente, resta nelle braccia di Rufy abbastanza a lungo da dire quello che non aveva mai saputo chiedere: grazie a tutti per averlo amato. Poi il fuoco si spegne. La vivre card di Rufy diventa cenere.',
+          en: 'During the escape Admiral Akainu provokes Ace by insulting Whitebeard. Ace turns back; [[monkey-d-luffy|Luffy]], exhausted, falls in front of him. The magma fist is aimed at his younger brother, and Ace steps in front. Mortally wounded, he remains in Luffy’s arms long enough to say what he never knew how to ask for: thank you all for loving me. Then the fire goes out. Luffy’s vivre card turns to ash.',
+        },
+      },
+    },
+  ],
+  'nico-robin': [
+    {
+      episode: 130,
+      value: {
+        title: { it: 'Miss All Sunday', en: 'Miss All Sunday' },
+        body: {
+          it: 'Dopo Whiskey Peak, una donna con un cappello bianco sale da sola sulla Going Merry e dice di lavorare per [[crocodile|Crocodile]]. Si fa chiamare Miss All Sunday e ha già sentito parlare di [[monkey-d-luffy|Rufy]]. Offre un Eternal Pose per un’isola deserta vicino ad Alabasta, e Rufy lo frantuma senza pensarci; lei se ne va senza che nessuno riesca a fermarla. La sua calma è più inquietante di una minaccia: ha molte mani, molti segreti e un legame con la guerra che aspetta la ciurma nel deserto.',
+          en: 'After Whiskey Peak, a woman in a white hat boards the Going Merry alone and says she works for [[crocodile|Crocodile]]. She calls herself Miss All Sunday and has already heard of [[monkey-d-luffy|Luffy]]. She offers an Eternal Pose to a deserted island near Alabasta, and Luffy crushes it without a thought; she leaves before anyone can stop her. Her calm is more unsettling than a threat: she has many hands, many secrets and a connection to the war waiting for the crew in the desert.',
+        },
+      },
+    },
+    {
+      episode: 131,
+      value: {
+        title: { it: 'Una compagna senza invito', en: 'An uninvited crewmate' },
+        body: {
+          it: 'Dopo la caduta di [[crocodile|Crocodile]], Robin riappare nella cabina della Going Merry. [[monkey-d-luffy|Rufy]] l’ha salvata nella tomba reale quando lei aveva smesso di voler vivere, dice, e ora deve prendersi la responsabilità: la porterà con sé. La ciurma diffida di lei; Rufy accetta subito. Robin racconta di essere un’archeologa e di non avere un posto dove andare. Quando la nave lascia Alabasta, una ex agente di Baroque Works ride per la prima volta accanto ai pirati che l’hanno sconfitta.',
+          en: 'After [[crocodile|Crocodile]] falls, Robin reappears in the Going Merry’s cabin. [[monkey-d-luffy|Luffy]] saved her in the royal tomb when she had given up on living, she says, so now he must take responsibility: he will take her with him. The crew mistrusts her; Luffy accepts at once. Robin says she is an archaeologist and has nowhere to go. When the ship leaves Alabasta, a former Baroque Works agent laughs for the first time beside the pirates who defeated her.',
+        },
+      },
+    },
+    {
+      episode: 278,
+      value: {
+        title: { it: 'Voglio vivere', en: 'I want to live' },
+        body: {
+          it: 'A Enies Lobby Robin spiega che il Governo la insegue da quando era bambina e che ha sempre lasciato gli altri prima che potessero tradirla. [[monkey-d-luffy|Rufy]] non accetta questa resa: fa bruciare la bandiera del Governo e le chiede soltanto cosa desideri. Robin guarda la ciurma che è venuta a prenderla e grida che vuole vivere, che vuole andare in mare con loro. Da quel momento non fugge più da sola.',
+          en: 'At Enies Lobby Robin explains that the Government has hunted her since childhood and that she always left others before they could betray her. [[monkey-d-luffy|Luffy]] will not accept that surrender: he has the Government flag burned and asks only what she wants. Robin looks at the crew that came to take her back and cries that she wants to live, that she wants to go to sea with them. From that moment she no longer runs alone.',
+        },
+      },
+    },
+    {
+      episode: 746,
+      value: {
+        title: {
+          it: 'Una taglia da rivoluzionaria',
+          en: 'A revolutionary bounty',
+        },
+        body: {
+          it: 'Dopo Dressrosa il mondo legge che la ciurma di [[monkey-d-luffy|Rufy]] ha abbattuto Doflamingo, e la taglia di Robin sale a 130 milioni di berry. Per anni il Governo l’ha chiamata Figlia del Diavolo e l’ha trattata come una minaccia da eliminare. Ora la cifra riconosce anche il suo posto nella ciurma che ha sfidato un Drago Celeste, salvato un regno e continua a cercare la storia proibita sulle pietre antiche.',
+          en: 'After Dressrosa the world learns that [[monkey-d-luffy|Luffy]]’s crew brought down Doflamingo, and Robin’s bounty rises to 130 million berries. For years the Government called her the Devil Child and treated her as a threat to erase. Now the figure also recognises her place in the crew that challenged a Celestial Dragon, saved a kingdom and still searches for forbidden history on ancient stones.',
+        },
+      },
+    },
+  ],
+} satisfies Readonly<Record<string, Timeline<Story>>>

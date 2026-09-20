@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { summitWarChronicles } from './summit-war.chronicle'
 
 /**
  * The Summit War saga, episodes 385 to 516: an archipelago of bubbles, an
@@ -749,6 +750,7 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 412, value: ['love-love-fruit'] }],
     },
     'jinbe': {
+      chronicle: summitWarChronicles.jinbe,
       role: {
         it: 'Uomo-pesce della Flotta dei Sette',
         en: 'Fish-man of the Seven Warlords',
@@ -770,7 +772,7 @@ export const summitWar: Saga = {
             en: 'Former Warlord',
           },
         },
-        { episode: 977, value: STRAW_HATS },
+        { episode: 980, value: STRAW_HATS },
       ],
       origin: [
         {

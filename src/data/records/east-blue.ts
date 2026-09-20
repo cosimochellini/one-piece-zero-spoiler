@@ -1,3 +1,4 @@
+import { eastBlueChronicles } from './east-blue.chronicle'
 import type { Saga } from './saga'
 
 /**
@@ -638,6 +639,7 @@ export const eastBlue: Saga = {
 
   dossiers: {
     'monkey-d-luffy': {
+      chronicle: eastBlueChronicles['monkey-d-luffy'],
       role: { it: 'Capitano', en: 'Captain' },
       log: {
         it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: parte dentro una botte e recluta il primo membro della ciurma nel giro di un pomeriggio. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
@@ -785,6 +787,7 @@ export const eastBlue: Saga = {
       bounty: [{ episode: 958, value: 5_564_800_000 }],
     },
     'roronoa-zoro': {
+      chronicle: eastBlueChronicles['roronoa-zoro'],
       role: {
         it: 'Spadaccino, cacciatore di pirati',
         en: 'Swordsman, pirate hunter',
@@ -886,6 +889,7 @@ export const eastBlue: Saga = {
       epithet: [{ episode: 2, value: { it: 'Mano d’Ascia', en: 'Axe-Hand' } }],
     },
     'shanks': {
+      chronicle: eastBlueChronicles.shanks,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
         it: 'Beve, ride e lascia che un bandito gli versi il vino in testa senza reagire, perché una rissa non vale la pena. Poi lo stesso bandito tocca il bambino della taverna, e il mare intero viene a sapere di che cosa è capace. Riparte con un braccio in meno e senza il cappello, entrambi lasciati a Rufy insieme a una promessa.',
@@ -1031,6 +1035,7 @@ export const eastBlue: Saga = {
       ],
     },
     'nami': {
+      chronicle: eastBlueChronicles.nami,
       role: { it: 'Navigatrice e ladra', en: 'Navigator and thief' },
       log: {
         it: 'Disegna carte nautiche a mano e sente il tempo cambiare prima che cambi. Ha rubato una mappa della Rotta Maggiore a Bagy e si è aggregata a Rufy e Zoro solo per convenienza, come tiene a precisare. Odia i pirati, e non spiega perché.',
@@ -1102,6 +1107,7 @@ export const eastBlue: Saga = {
       epithet: [{ episode: 7, value: { it: 'L’Acrobata', en: 'the Acrobat' } }],
     },
     'usopp': {
+      chronicle: eastBlueChronicles.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
         it: 'Comanda una ciurma pirata di tre bambini con una bandiera, e racconta ogni giorno a una ragazza malata le sue avventure inventate. Suo padre è salpato con dei pirati veri quando lui era piccolo, e lui ha deciso di diventare un uomo di mare coraggioso. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
@@ -1285,6 +1291,7 @@ export const eastBlue: Saga = {
       ],
     },
     'sanji': {
+      chronicle: eastBlueChronicles.sanji,
       role: { it: 'Cuoco', en: 'Cook' },
       log: {
         it: 'Cucina al Baratie sotto un vecchio con una gamba di legno che lo chiama moccioso, e prende a calci chiunque sprechi il cibo. Non usa mai le mani in combattimento: le mani di un cuoco sono per la cucina. Sogna un mare leggendario dove si trovano tutti i pesci del mondo, e non lo dice a nessuno che possa riderne.',

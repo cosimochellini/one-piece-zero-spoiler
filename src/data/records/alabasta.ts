@@ -1,3 +1,4 @@
+import { alabastaChronicles } from './alabasta.chronicle'
 import type { Saga } from './saga'
 
 /**
@@ -761,6 +762,7 @@ export const alabasta: Saga = {
       epithet: [{ episode: 82, value: { it: 'Dottorina', en: 'Doctorine' } }],
     },
     'tony-tony-chopper': {
+      chronicle: alabastaChronicles['tony-tony-chopper'],
       role: { it: 'Medico', en: 'Doctor' },
       log: {
         it: 'Il branco lo ha cacciato per il naso blu e gli uomini gli hanno sparato perché parlava. Un ciarlatano con la bandiera dei pirati sulla giacca lo ha raccolto, gli ha dato un nome e gli ha insegnato che non esiste malattia che non si possa curare. Ora vive su una montagna con la dottoressa più anziana e più temuta dell’isola, e scappa da chiunque gli parli.',
@@ -963,6 +965,7 @@ export const alabasta: Saga = {
       devilFruit: [{ episode: 93, value: ['dog-dog-fruit-model-jackal'] }],
     },
     'portgas-d-ace': {
+      chronicle: alabastaChronicles['portgas-d-ace'],
       role: { it: 'Comandante di divisione', en: 'Division commander' },
       log: {
         it: 'Si addormenta a metà pasto e a metà frase, e si sveglia come se niente fosse. Il suo corpo prende fuoco quando vuole, e il suo capitano è l’uomo che tutti chiamano il più forte del mondo. È venuto ad Alabasta per un compagno che ha ucciso uno dei suoi e se n’è andato; a Rufy lascia un pezzo di carta e l’ordine di tenerlo con sé.',
@@ -1055,6 +1058,7 @@ export const alabasta: Saga = {
       devilFruit: [{ episode: 128, value: ['cage-cage-fruit'] }],
     },
     'nico-robin': {
+      chronicle: alabastaChronicles['nico-robin'],
       role: { it: 'Archeologa', en: 'Archaeologist' },
       log: {
         it: 'Era Miss All Sunday, la vicepresidente di Baroque Works, e per tutto il tempo ha seguito il suo capo per una ragione sua: una stele scritta in una lingua che solo lei legge. Fa spuntare braccia dove vuole, dal pavimento o dalla schiena di un nemico. Dopo che Rufy le ha salvato la vita contro la sua volontà, sale sulla Going Merry e dichiara di farne parte.',

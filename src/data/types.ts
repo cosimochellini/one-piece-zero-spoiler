@@ -75,6 +75,23 @@ export type Dated<T> = { readonly episode: number; readonly value: T }
 export type Timeline<T> = readonly Dated<T>[]
 
 /**
+ * One story of a character's chronicle: a short title and one paragraph, each
+ * in every locale.
+ *
+ * The body may name another character with a marker — `[[roronoa-zoro]]`
+ * prints that record's name in the page's language, `[[roronoa-zoro|Zoro]]`
+ * prints the text after the bar — and the server turns each into a link to
+ * the character's own page. The title carries no markers. A marker may only
+ * name a character filed no later than the story's episode, which the data
+ * tests hold: a story is read by a viewer who has reached its episode, and
+ * must not introduce them to anyone they have not met.
+ */
+export type Story = {
+  readonly body: LocalizedText
+  readonly title: LocalizedText
+}
+
+/**
  * What the archive knows about a character beyond the name and the sentence.
  *
  * `role` and `log` are frozen at the threshold, like the summary: they say
@@ -86,6 +103,17 @@ export type Timeline<T> = readonly Dated<T>[]
  */
 export type CharacterDossier = {
   readonly affiliation: Timeline<LocalizedText>
+  /**
+   * What has happened to the character, one story per turning point, each
+   * filed at the first episode by whose end a viewer knows all of it. Unlike
+   * the other timelines the page prints every story the reader has reached,
+   * not only the last, and opens at the character's own threshold so the band
+   * itself never announces that something is about to happen.
+   *
+   * Absent means no chronicle has been written yet, and the page then draws
+   * no band at all.
+   */
+  readonly chronicle?: Timeline<Story>
   /**
    * The fruits the story has said this character ate, by id rather than by
    * name: one entry may carry two, because one episode may say two. The name

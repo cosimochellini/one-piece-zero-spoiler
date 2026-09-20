@@ -30,6 +30,7 @@ import type {
   Slot,
 } from '~/lib/view/records'
 
+import { chronicleOf } from './chronicle.server'
 import { headFor, type HeadKeys } from './head.server'
 import {
   characterOf,
@@ -180,6 +181,7 @@ export function characterPage(
         : { open: false, covered: coveredOf(entity) },
       log: revealed && dossier !== undefined ? dossier.log[locale] : null,
       facts: factsOf(entity, locale, bookmark),
+      chronicle: chronicleOf(entity, locale, bookmark),
     },
   }
 }
