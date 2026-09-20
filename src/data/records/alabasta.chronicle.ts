@@ -63,6 +63,32 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 524,
+      value: {
+        title: {
+          it: 'Il Guard Point ferma un kraken',
+          en: 'Guard Point stops a kraken',
+        },
+        body: {
+          it: "Diretta verso l'Isola degli Uomini-Pesce, la Thousand Sunny finisce nella morsa di un kraken gigantesco che le si avventa contro con i tentacoli. [[franky|Franky]] spara con i suoi nuovi lanciarazzi e [[nico-robin|Robin]] fa spuntare una mano enorme che ferma un macigno diretto sullo scafo. Chopper non ha bisogno della Rumble Ball: si trasforma nel suo nuovo Guard Point, una corazza di muscoli e pelliccia, e incassa un colpo che avrebbe spaccato in due la nave. [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[sanji|Sanji]] si preparano a finire il mostro mentre il resto della ciurma tiene.",
+          en: 'Heading for Fish-Man Island, the Thousand Sunny gets caught in the grip of a giant kraken lashing out with its tentacles. [[franky|Franky]] fires his new rocket launchers and [[nico-robin|Robin]] grows an enormous hand that stops a boulder aimed at the hull. Chopper needs no Rumble Ball this time: he shifts into his new Guard Point, a wall of muscle and fur, and takes a blow that would have split the ship in two. [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[sanji|Sanji]] get ready to finish the monster while the rest of the crew holds on.',
+        },
+      },
+    },
+    {
+      episode: 566,
+      value: {
+        title: {
+          it: 'Tre minuti di Monster Point contro Dosun',
+          en: 'Three minutes of Monster Point against Dosun',
+        },
+        body: {
+          it: 'Contro [[dosun|Dosun]], il colosso che sfascia un palazzo con un colpo di martello, Chopper ingoia una sola Rumble Ball e si lascia diventare Monster Point, la forma che un tempo lo trasformava in una bestia cieca. Questa volta resta se stesso: risponde a [[usopp|Usop]], che lo guarda a bocca aperta, si imbarazza per i complimenti e conta i minuti che gli restano, tre soli, prima di tornare piccolo. Dosun lo sfida ancora convinto di poterlo scaraventare in mare, ma il colpo che segue gli spacca il martello in mano e lo stende a terra in un solo istante.',
+          en: 'Against [[dosun|Dosun]], a colossus who can flatten a building with one swing of his hammer, Chopper swallows a single Rumble Ball and lets himself become Monster Point, the form that once turned him into a blind beast. This time he stays himself: he answers [[usopp|Usopp]], who watches him open-mouthed, gets embarrassed at the compliments and counts down the minutes he has left, three only, before shrinking back. Dosun charges again, sure he can still knock him into the sea, but the blow that follows shatters the hammer in his hands and drops him in a single instant.',
+        },
+      },
+    },
+    {
       episode: 622,
       value: {
         title: {
@@ -169,6 +195,29 @@ export const alabastaChronicles = {
         body: {
           it: 'A Enies Lobby Robin spiega che il Governo la insegue da quando era bambina e che ha sempre lasciato gli altri prima che potessero tradirla. [[monkey-d-luffy|Rufy]] non accetta questa resa: fa bruciare la bandiera del Governo e le chiede soltanto cosa desideri. Robin guarda la ciurma che è venuta a prenderla e grida che vuole vivere, che vuole andare in mare con loro. Da quel momento non fugge più da sola.',
           en: 'At Enies Lobby Robin explains that the Government has hunted her since childhood and that she always left others before they could betray her. [[monkey-d-luffy|Luffy]] will not accept that surrender: he has the Government flag burned and asks only what she wants. Robin looks at the crew that came to take her back and cries that she wants to live, that she wants to go to sea with them. From that moment she no longer runs alone.',
+        },
+      },
+    },
+    {
+      episode: 548,
+      value: {
+        title: {
+          it: 'Il Poneglifo che chiede scusa',
+          en: 'The Poneglyph that says sorry',
+        },
+        body: {
+          it: "Nella Foresta Marina Robin trova un Poneglifo diverso da tutti quelli letti finora: non racconta la storia del Secolo Vuoto, ma si legge come una lettera di scuse. A scriverla è stato un uomo della superficie chiamato Joy Boy, che chiede perdono agli abitanti dell'isola per non aver mantenuto una promessa fatta loro, qualcosa che riguardava il tornare a completare lo scopo di Noah. Robin non ha mai visto una pietra antica piangere invece di raccontare, e resta a fissarla chiedendosi chi fosse davvero quell'uomo e cosa avesse promesso a un popolo che ancora oggi ne porta il peso.",
+          en: "In the Sea Forest Robin finds a Poneglyph unlike any she has read before: it does not tell the history of the Void Century, it reads like a letter of apology. It was written by a man from the surface called Joy Boy, who begs forgiveness from the islanders for breaking a promise he made them, something to do with coming back to fulfil Noah's purpose. Robin has never seen an ancient stone weep instead of report, and she stays there staring at it, wondering who that man really was and what he had promised a people who still carry the weight of it.",
+        },
+      },
+    },
+    {
+      episode: 569,
+      value: {
+        title: { it: 'Chi era Joy Boy', en: 'Who Joy Boy was' },
+        body: {
+          it: 'Alla festa per la vittoria su [[hody-jones|Hody Jones]], Robin porta [[neptune|Nettuno]] in disparte e, appena lui smette di pensare che lei lo stia corteggiando, gli chiede chi fosse Joy Boy. Il re, di colpo sobrio, le racconta la leggenda tramandata nella sua famiglia: un uomo della superficie vissuto durante il Secolo Vuoto, che aveva scritto quel messaggio per la principessa sirena di allora, chiedendo scusa per una promessa non mantenuta. In cambio gli uomini pesce avevano giurato di proteggere Noah fino al giorno stabilito, quello in cui il suo vero scopo si sarebbe finalmente rivelato. Robin ascolta e capisce di aver trovato solo il primo pezzo.',
+          en: "At the victory banquet after [[hody-jones|Hody Jones]]'s defeat, Robin pulls [[neptune|Neptune]] aside and, once he stops assuming she is coming on to him, asks him plainly who Joy Boy was. The king, suddenly sober, tells her the legend passed down in his family: a man from the surface who lived during the Void Century, who wrote that message to the mermaid princess of that age, apologising for a broken promise. In exchange, the merfolk had sworn to protect Noah until the appointed day, the one on which its true purpose would finally be revealed. Robin listens and realises she has only found the first piece.",
         },
       },
     },

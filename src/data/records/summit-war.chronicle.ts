@@ -40,6 +40,32 @@ export const summitWarChronicles = {
       },
     },
     {
+      episode: 547,
+      value: {
+        title: {
+          it: 'Fisher Tiger, Otohime, i Pirati del Sole',
+          en: 'Fisher Tiger, Otohime, the Sun Pirates',
+        },
+        body: {
+          it: 'Seduto accanto a [[nami|Nami]], Jinbe racconta la storia che porta ancora sulla pelle. Da giovane lascia l’esercito per seguire [[fisher-tiger|Fisher Tiger]], l’uomo-pesce che risale la Red Line e torna da Mary Geoise con una nave di schiavi liberati: nasce così la ciurma dei Pirati del Sole. Mentre Fisher Tiger porta ancora l’odio per chi l’ha incatenato, la regina [[otohime|Otohime]] gira l’isola con un foglio di firme, chiedendo che uomini e uomini-pesce vivano insieme. Fisher Tiger muore rifiutando sangue umano; anni dopo Otohime muore per lo stesso sogno, colpita da un proiettile. Jinbe li ha visti cadere entrambi, e ha scelto comunque da che parte restare.',
+          en: 'Sitting beside [[nami|Nami]], Jinbe tells the story he still carries on his skin. As a young man he leaves the army to follow [[fisher-tiger|Fisher Tiger]], the fish-man who climbs the Red Line and returns from Mary Geoise with a ship of freed slaves: that is how the Sun Pirates are born. While Fisher Tiger still carries hatred for the men who chained him, [[otohime|Otohime]], the island’s ruler, walks it with a petition sheet, asking that humans and fish-men live together. Fisher Tiger dies refusing human blood; years later Otohime dies for the same dream, shot by a bullet. Jinbe watched them both fall, and chose which side to stand on anyway.',
+        },
+      },
+    },
+    {
+      episode: 569,
+      value: {
+        title: {
+          it: 'Rifiuta l’invito di Rufy: “Ho faccende in sospeso”',
+          en: 'Declines Luffy’s invitation: “I have unfinished business”',
+        },
+        body: {
+          it: 'L’isola festeggia la sconfitta di [[hody-jones|Hody]] quando [[monkey-d-luffy|Rufy]] gli chiede di entrare nella ciurma. La sera prima Jinbe ha dato il proprio sangue per tenerlo in vita; ora, davanti alla richiesta, esita. Ha una comunità appena uscita da una guerra civile, un debito con [[neptune|Nettuno]] e con la memoria di [[otohime|Otohime]], compiti che non può lasciare a metà. Dice a Rufy che non può salire a bordo, non ancora: ha faccende in sospeso. Non è un rifiuto, è un rinvio, e lo dice guardandolo negli occhi, certo che si ritroveranno.',
+          en: 'The island celebrates [[hody-jones|Hody]]’s defeat when [[monkey-d-luffy|Luffy]] asks him to join the crew. The night before, Jinbe gave his own blood to keep him alive; now, faced with the offer, he hesitates. He has a community just out of a civil war, a debt to [[neptune|Neptune]] and to the memory of [[otohime|Otohime]], duties he cannot leave half done. He tells Luffy he cannot come aboard, not yet: he has unfinished business. It is not a refusal, it is a postponement, and he says it looking him in the eye, certain they will meet again.',
+        },
+      },
+    },
+    {
       episode: 981,
       value: {
         title: {

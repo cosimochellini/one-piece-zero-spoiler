@@ -76,6 +76,45 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 554,
+      value: {
+        title: {
+          it: 'Cinquantamila nemici a uno sguardo',
+          en: 'Fifty thousand fall to a glare',
+        },
+        body: {
+          it: 'Hody si rialza dal colpo di Rufy e ride, vantandosi che sarà lui il Re dei Pirati, davanti ai centomila uomini della sua flotta radunati sulla piazza. Rufy non risponde con i pugni: cammina verso di loro, e per un istante non sembra fare nulla. Poi cinquantamila nemici crollano tutti insieme, senza un graffio, storditi da una sola ondata di volontà. [[nico-robin|Robin]] riconosce quell’Haki per quello che è, e [[jinbe|Jinbe]] capisce quanta strada Rufy abbia fatto in due anni. Rufy si volta verso [[hody-jones|Hody]] e ripete, piano, che il Re dei Pirati sarà lui.',
+          en: 'Hody gets back up from Luffy’s blow and laughs, boasting that he will be King of the Pirates, in front of the hundred thousand men of his fleet gathered in the plaza. Luffy doesn’t answer with fists: he walks toward them, and for a moment he seems to do nothing at all. Then fifty thousand enemies drop all at once, without a mark on them, stunned by a single wave of will. [[nico-robin|Robin]] recognizes the Haki for what it is, and [[jinbe|Jinbe]] sees how far Luffy has come in two years. Luffy turns to [[hody-jones|Hody]] and repeats, quietly, that he will be the one to become King of the Pirates.',
+        },
+      },
+    },
+    {
+      episode: 567,
+      value: {
+        title: {
+          it: 'Red Hawk, poi ferma la Noah',
+          en: 'Red Hawk, then he stops Noah',
+        },
+        body: {
+          it: 'Sopra il ponte della Noah, [[hody-jones|Hody]] si ricarica di pillole e morde di nuovo Rufy nello stesso punto, ma un pugno avvolto di Haki, il Red Hawk, lo spedisce contro l’acciaio della nave finché non crolla privo di sensi, sconfitto. L’ultimo pensiero di Hody è che la Noah si schianti comunque su Fish-Man Island. Rufy allora si volta contro la nave stessa e la colpisce senza sosta per distruggerla, finché [[shirahoshi|Shirahoshi]] non gli si getta davanti implorandolo di fermarsi. Rufy si ferma, e solo allora vede che i Re del Mare hanno già bloccato la Noah con il proprio corpo. Poi sviene, mentre tutta l’isola festeggia.',
+          en: 'On the deck of Noah, [[hody-jones|Hody]] gulps down more pills and bites Luffy again in the same spot, but a fist wrapped in Haki, Red Hawk, sends him into the ship’s hull until he drops, unconscious, finally beaten. Hody’s last thought is that Noah should crash into Fish-Man Island anyway. Luffy then turns on the ship itself and keeps hitting it to bring it down, until [[shirahoshi|Shirahoshi]] throws herself in front of him, begging him to stop. Luffy stops, and only then sees that the Sea Kings have already halted Noah with their own bodies. Then he faints, while the whole island celebrates.',
+        },
+      },
+    },
+    {
+      episode: 571,
+      value: {
+        title: {
+          it: 'Dichiara guerra a Big Mom al telefono',
+          en: 'Declares war on Big Mom over the phone',
+        },
+        body: {
+          it: 'Con il bottino appena strappato a [[caribou|Caribou]], Rufy scopre perché la fabbrica di dolci dell’isola è ridotta in macerie: da anni ne paga il tributo a Big Mom, e i suoi uomini, [[pekoms|Pekoms]] e [[baron-tamago|Tamago]], sono venuti a riscuoterlo. Quando la lumaca squilla e nessuno dei due osa rispondere, Rufy prende lui la cornetta. Le dice che i dolci li ha mangiati lui, e le offre in cambio il tesoro che porta in spalla. Big Mom rifiuta e promette di dargli la caccia nel Nuovo Mondo. Rufy ride e le risponde che sarà lui a batterla, e che l’isola diventerà territorio suo.',
+          en: 'With the loot he has just taken back from [[caribou|Caribou]], Luffy learns why the island’s candy factory lies in ruins: for years its tribute has gone to Big Mom, and her men, [[pekoms|Pekoms]] and [[baron-tamago|Tamago]], have come to collect it. When the snail rings and neither of them dares answer, Luffy picks it up himself. He tells her he ate the candy himself, and offers the treasure on his back instead. Big Mom refuses and promises to hunt him down in the New World. Luffy laughs and tells her that he will be the one to beat her, and that the island will become his own territory.',
+        },
+      },
+    },
+    {
       episode: 594,
       value: {
         title: { it: 'Un patto con Law', en: 'A deal with Law' },
@@ -168,6 +207,29 @@ export const eastBlueChronicles = {
         body: {
           it: 'La zampa di [[bartholomew-kuma|Orso]] lo ha spedito a Kuraigana, un’isola grigia di rovine e babbuini armati di spada, dove le sole altre persone sono una ragazza dei fantasmi, [[perona|Perona]], e l’uomo che lo ha abbattuto al Baratie: [[dracule-mihawk|Mihawk]] vive nel castello. Zoro ha letto il giornale e capito il messaggio di [[monkey-d-luffy|Rufy]]: due anni, non tre giorni. Così l’uomo che ha giurato di non perdere mai più si inginocchia nella polvere davanti al suo rivale e lo supplica di insegnargli. Mihawk, disgustato, rifiuta; poi sente che Zoro ha già battuto tutti i babbuini dell’isola, e accetta.',
           en: '[[bartholomew-kuma|Kuma]]’s paw sent him to Kuraigana, a grey island of ruins and sword-wielding baboons, where the only other people are a ghost girl, [[perona|Perona]], and the man who cut him down at the Baratie: [[dracule-mihawk|Mihawk]] lives in the castle. Zoro has read the newspaper and understood [[monkey-d-luffy|Luffy]]’s message: two years, not three days. So the man who swore never to lose again kneels in the dirt in front of his rival and begs him to teach him. Mihawk, disgusted, refuses; then he hears that Zoro has already beaten every baboon on the island, and he agrees.',
+        },
+      },
+    },
+    {
+      episode: 521,
+      value: {
+        title: {
+          it: 'Primo a tornare, poi il falso Zoro',
+          en: 'First one back, then Fake Zoro',
+        },
+        body: {
+          it: 'Zoro è il primo della ciurma a farsi vivo a Sabaody, esattamente due anni dopo la separazione. Mentre aspetta gli altri, un impostore con le sue stesse tre spade gira per l’arcipelago spacciandosi per lui, parte di una banda che ha rubato il nome della ciurma intera per arruolare pirati. Quando la Marina piomba sul raduno con un’arma alta il triplo di un uomo, la truffa crolla e il falso Zoro scappa terrorizzato. Il vero Zoro, ritrovato [[monkey-d-luffy|Rufy]], abbatte insieme a [[sanji|Sanji]] quell’arma prima che i tre tornino dal resto della ciurma.',
+          en: 'Zoro is the first of the crew to show up at Sabaody, exactly two years after they scattered. While he waits for the others, an impostor carrying his same three swords works the archipelago pretending to be him, part of a gang that stole the whole crew’s name to recruit pirates. When the Marines descend on the gathering with a weapon three times a man’s height, the fraud collapses and the fake Zoro bolts in terror. The real Zoro, reunited with [[monkey-d-luffy|Luffy]], brings that same weapon down alongside [[sanji|Sanji]] before the three head back to the rest of the crew.',
+        },
+      },
+    },
+    {
+      episode: 566,
+      value: {
+        title: { it: 'Un fendente per Hyouzou', en: 'One stroke for Hyouzou' },
+        body: {
+          it: '[[hyouzou|Hyouzou]] si è caricato di pillole energetiche e sfida di nuovo Zoro, otto spade grondanti di veleno contro le sue tre. Zoro gli volta le spalle e se ne va: dice che non può tagliare chi non ha vera voglia di combattere, e lo chiama una rana in fondo a un pozzo, cieca al mondo fuori. Hyouzou ride e gli si lancia addosso da dietro. Zoro si gira appena in tempo e lo apre con un solo fendente, Rengoku Onigiri, poi si scusa: lo aveva scambiato per quella rana, ma una rana non avrebbe mai osato tanto.',
+          en: '[[hyouzou|Hyouzou]] has loaded up on energy pills and comes at Zoro again, eight poison-slick swords against his three. Zoro turns his back and walks away: he says he cannot cut down someone with no real will to fight, and calls him a frog at the bottom of a well, blind to the world outside it. Hyouzou laughs and lunges at him from behind. Zoro turns just in time and opens him up with a single stroke, Rengoku Onigiri, then apologizes: he had mistaken him for that frog, but a frog would never have dared this much.',
         },
       },
     },
@@ -301,6 +363,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 566,
+      value: {
+        title: {
+          it: 'Pop Green contro Daruma',
+          en: 'Pop Green against Daruma',
+        },
+        body: {
+          it: '[[daruma|Daruma]] carica ancora, e Usop questa volta ha il terreno pronto: fiori chiamati Humandrake spuntano dal nulla e lo colpiscono da sotto ogni volta che lo sentono sopra di loro. Quando Daruma vola in aria per sfuggirgli, un fiore enorme, la Trampolia, lo rilancia più lontano di quanto sia arrivato. Usop gli dice che non ha più dove scappare e fa sbocciare l’ultimo seme: un lupo di semi verdi con un bulbo sul muso. Daruma prova a morderlo; il bulbo esplode in un’onda d’urto che lo travolge da tre metri di raggio, e lo lascia a terra, sconfitto.',
+          en: '[[daruma|Daruma]] charges again, and this time Usopp has the ground ready for him: flowers called Humandrakes spring up out of nowhere and strike him from below whenever they sense him overhead. When Daruma leaps into the air to escape them, a huge flower, Trampolia, launches him even farther than he came from. Usopp tells him there is nowhere left to run and pops his last seed: a wolf shaped out of green plant matter with a bulb on its nose. Daruma tries to bite it; the bulb bursts into a shockwave that flattens everything within three meters, and leaves him beaten on the ground.',
+        },
+      },
+    },
+    {
       episode: 643,
       value: {
         title: { it: 'Usoland', en: 'Usoland' },
@@ -382,6 +457,32 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il colpo di [[bartholomew-kuma|Orso Bartholomew]] lo ha scagliato sull’isola Momoiro, il regno delle drag queen di [[emporio-ivankov|Emporio Ivankov]]: tutto è rosa, tutti vogliono truccarlo e infilarlo in un vestito, e per lui è l’inferno. Il giornale gli dice che [[monkey-d-luffy|Rufy]] è tornato sul campo di battaglia di Marineford, e in quel gesto Sanji legge un messaggio: non è ancora il momento di raggiungerlo. Sulla stessa isola esiste una cucina che rende più forte chi la mangia. Sanji ne vuole le ricette per la ciurma, e [[emporio-ivankov|Ivankov]] gliele promette a un prezzo: dovrà battere, uno dopo l’altro, i novantanove maestri del regno.',
           en: '[[bartholomew-kuma|Bartholomew Kuma]]’s blow flung him onto Momoiro Island, the kingdom of [[emporio-ivankov|Emporio Ivankov]]’s drag queens: everything is pink, everyone wants to make him up and put him in a dress, and to him it is hell. The newspaper tells him [[monkey-d-luffy|Luffy]] has gone back to the battlefield at Marineford, and in that gesture Sanji reads a message: it is not yet time to go to him. On this same island there is a cuisine that makes whoever eats it stronger. Sanji wants its recipes for the crew, and [[emporio-ivankov|Ivankov]] promises them at a price: he must beat the kingdom’s ninety-nine masters, one after another.',
+        },
+      },
+    },
+    {
+      episode: 529,
+      value: {
+        title: {
+          it: 'Una trasfusione da due okama lo salva',
+          en: 'A blood transfusion from two okama saves him',
+        },
+        body: {
+          it: 'Il sangue gli esce a fiotti dal naso per l’emozione delle sirene, e il gruppo sanguigno di Sanji è talmente raro che la scorta di [[tony-tony-chopper|Chopper]] non basta. Nessun uomo-pesce dell’isola si offre come donatore, e Sanji rischia di morire dissanguato prima che [[monkey-d-luffy|Rufy]] e gli altri trovino due umani in un bar. Sanji si sveglia debole ma vivo, e chiede da dietro una tenda se hanno preso il sangue di una fragile fanciulla, riconoscendo una voce femminile. Quando la tenda si apre rivela due pirati okama, gemelli, uno dei quali si offre di darne ancora se serve. Sanji urla e sviene, mentre gli altri lo esortano a ringraziarli.',
+          en: 'Blood pours from his nose over the excitement of the mermaids, and Sanji’s blood type is so rare that [[tony-tony-chopper|Chopper]]’s stock cannot cover it. No fish-man on the island will volunteer as a donor, and Sanji is close to bleeding out before [[monkey-d-luffy|Luffy]] and the others find two humans in a bar. Sanji wakes weak but alive, and asks from behind a curtain whether they took blood from some fragile young lady, recognizing a woman’s voice. When the curtain is pulled back it reveals two pirate okama, twins, one of whom offers to give more if needed. Sanji screams and passes out, while the others urge him to thank them.',
+        },
+      },
+    },
+    {
+      episode: 566,
+      value: {
+        title: {
+          it: 'Cammina sul nulla, con Jinbe',
+          en: 'Walking on nothing, with Jinbe',
+        },
+        body: {
+          it: 'Wadatsumi si è gonfiato al doppio della sua taglia normale, e Sanji, in piedi sulla sua guancia, lo prende in giro dicendo che è ancora più piccolo di un certo kraken. Quando il gigante non riesce più a trattenere il fiato, [[jinbe|Jinbe]] gli pianta un pugno d’acqua che lo attraversa da parte a parte, e Wadatsumi si spara in cielo rilasciando tutta l’aria che ha ingoiato. Sanji lo segue lassù camminando sul vuoto, ripensa a due anni di torture negli abissi rosa, e lo colpisce con un calcio in fiamme che lo lascia carbonizzato. Ricorda a tutti che nel pesce palla si toglie sempre la parte velenosa.',
+          en: 'Wadatsumi has puffed himself up to twice his normal size, and Sanji, standing on his cheek, needles him for it, saying he’s still smaller than a certain kraken. When the giant can no longer hold his breath, [[jinbe|Jinbe]] drives a fist of water straight through him, and Wadatsumi rockets into the sky, venting all the air he swallowed. Sanji follows him up there, walking on nothing, thinking back to two years of torture in a pink hell, and kicks him with a burning leg that leaves him charred. He reminds everyone that with blowfish, you always cut away the poisonous part first.',
         },
       },
     },
@@ -473,6 +574,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Separata dai compagni, Nami arriva a Weatheria, un’isola nel cielo abitata da scienziati che studiano le nuvole e il clima. Legge il messaggio di [[monkey-d-luffy|Rufy]] sul giornale e decide che due anni non sono un’attesa: sono tempo da usare. Restando con gli abitanti dell’isola impara a creare bolle di calore, freddo e vento, strumenti che possono guidare una nave o cambiare una battaglia. Quando tornerà, non sarà soltanto quella che legge il mare.',
           en: 'Separated from her companions, Nami reaches Weatheria, a sky island inhabited by scientists who study clouds and climate. She reads [[monkey-d-luffy|Luffy]]’s message in the newspaper and decides that two years are not waiting time: they are time to use. Staying with the islanders, she learns to make bubbles of heat, cold and wind, tools that can guide a ship or change a battle. When she returns, she will not only be the one who reads the sea.',
+        },
+      },
+    },
+    {
+      episode: 547,
+      value: {
+        title: {
+          it: 'Perdona Jinbe: Arlong era Arlong',
+          en: 'Forgives Jinbe: Arlong was Arlong',
+        },
+        body: {
+          it: 'Ad ascoltare la storia di [[otohime|Otohime]] e dell’odio che si tramanda tra uomini e uomini-pesce, Nami ripensa per tutto il tempo al proprio villaggio. Quando il racconto finisce, [[jinbe|Jinbe]] si inchina e le chiede perdono per non aver fermato [[arlong|Arlong]] tanti anni prima, dicendo che accetterà qualunque punizione lei voglia dargli. Nami risponde che non porta rancore a lui, né a nessun altro uomo-pesce: Arlong era Arlong, un uomo solo, non tutto il suo popolo. È felice della vita che si è costruita, dice, e non le serve altro. Jinbe si commuove, sentendosi in debito per quel perdono.',
+          en: 'Listening to the story of [[otohime|Otohime]] and the hatred passed down between humans and fish-men, Nami keeps thinking back to her own village. When the story ends, [[jinbe|Jinbe]] bows and asks her forgiveness for never having stopped [[arlong|Arlong]] all those years ago, saying he will accept whatever punishment she wants to give him. Nami answers that she holds no grudge against him, or against any other fish-man: Arlong was Arlong, one man, not his whole people. She is happy with the life she has built, she says, and needs nothing more. Jinbe is moved, feeling indebted for that forgiveness.',
         },
       },
     },
