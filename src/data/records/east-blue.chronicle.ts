@@ -37,6 +37,32 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 151,
+      value: {
+        title: {
+          it: 'L’oro di Cricket, riportato indietro',
+          en: 'Cricket’s gold, brought back',
+        },
+        body: {
+          it: '[[bellamy|Bellamy]] ride della richiesta e si lancia contro Rufy sui tetti di Mock Town, deridendolo come l’ennesimo sognatore in cerca di un’isola nel cielo. Rufy incassa ogni colpo senza rispondere, finché Bellamy non si lancia un’ultima volta per finirlo: un solo pugno lo manda giù attraverso il molo, impronta del pugno compresa. Con il sangue di [[bellamy|Bellamy]] ancora sulle nocche, Rufy raccoglie l’oro rubato di [[montblanc-cricket|Cricket]] e se ne va. Alla domanda su dove stia andando, indica dritto in alto: il cielo.',
+          en: '[[bellamy|Bellamy]] laughs off the demand and springs at Luffy across the rooftops of Mock Town, mocking him as just another dreamer chasing a floating island. Luffy takes every hit without answering, until Bellamy springs in one last time to finish it: a single punch drives him down through the boardwalk, fist-shaped dent and all. With [[bellamy|Bellamy]]’s blood still on his knuckles, Luffy sacks up [[montblanc-cricket|Cricket]]’s stolen gold and walks off. Asked where he’s headed, he points straight up: the sky.',
+        },
+      },
+    },
+    {
+      episode: 193,
+      value: {
+        title: {
+          it: 'La campana che chiude una guerra',
+          en: 'The bell that ends a war',
+        },
+        body: {
+          it: 'La gomma non conduce: duecento milioni di volt di Ener attraversano il corpo di Rufy senza abbatterlo, e [[enel|Ener]] capisce troppo tardi cosa ha davanti. Con la palla d’oro saldata al braccio ormai contorto, Rufy colpisce una sola volta, prende in pieno Ener e lo scaglia contro il Campanile stesso. La Campana d’Oro suona e cade nell’oceano del cielo, il suo suono arriva fino a [[montblanc-cricket|Cricket]] su Jaya, quattrocento anni dopo la promessa. Rufy resta disteso sulla schiena, e chiede solo se il vecchio e gli altri l’abbiano sentita anche loro.',
+          en: 'Rubber doesn’t conduct: Enel’s two hundred million volts pass through Luffy’s body without dropping him, and [[enel|Enel]] understands what he’s facing too late to stop it. With a golden ball welded to his own twisted arm, Luffy swings once, catches Enel full on and hurls him into the Belfry itself. The Golden Bell rings and falls into the sky ocean, its sound carrying all the way down to [[montblanc-cricket|Cricket]] on Jaya, four hundred years after the promise was made. Luffy lies flat on his back afterward, only asking if the old man and the others heard it too.',
+        },
+      },
+    },
+    {
       episode: 278,
       value: {
         title: {
@@ -270,6 +296,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 178,
+      value: {
+        title: {
+          it: 'La nuvola di ferro si spezza',
+          en: 'The iron cloud breaks',
+        },
+        body: {
+          it: 'Intrappolato nel duello a morte di [[ohm|Om]] insieme a [[wyper|Wiper]] e [[gan-fall|Gan Fall]], Zoro non riesce a colpirlo: il sacerdote lo segue alla cieca attraverso pareti di nuvola indurita e risponde a ogni fendente con un contrattacco della propria Nuvola di Ferro. Poi trova [[tony-tony-chopper|Chopper]] steso privo di sensi dalle sue mani, e per una volta combatte solo per vendetta. Si toglie gli occhialini, aspetta che sia Om ad accorciare le distanze, e legge l’attacco che arriva attraverso la lama invece che con gli occhi: un solo fendente, Santoryu Hyakuhachi Pound Ho, squarcia la nuvola di ferro e lo abbatte.',
+          en: 'Trapped inside [[ohm|Ohm]]’s barbed death match with [[wyper|Wyper]] and [[gan-fall|Gan Fall]], Zoro can’t land a hit: the priest tracks him blind through walls of hardened cloud and answers every strike with an Iron Cloud counter of his own. Then he finds [[tony-tony-chopper|Chopper]] beaten unconscious at Ohm’s hands, and for once fights for nothing but revenge. He discards his bandana, waits for Ohm to close the distance himself, and reads the attack coming through the blade rather than the eye: one cut, Santoryu Hyakuhachi Pound Ho, tears straight through the iron cloud and puts Ohm down.',
+        },
+      },
+    },
+    {
       episode: 362,
       value: {
         title: {
@@ -382,6 +421,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 151,
+      value: {
+        title: {
+          it: 'Un Imperatore rivale, avvertito in silenzio',
+          en: 'A rival Emperor, warned quietly',
+        },
+        body: {
+          it: 'A Mary Geoise arriva la notizia: Shanks il Rosso ha mandato uomini oltre il mare per aprire un contatto con un Imperatore rivale, nella speranza di fermare la guerra che la caccia di [[marshall-d-teach|Teach]] a una taglia rischia di scatenare fra due ciurme che nessuna delle due parti può permettersi di perdere. I cinque che governano il mondo chiamano l’incontro stesso il pericolo maggiore, e si affrettano a riempire il seggio lasciato vuoto da Crocodile prima che l’equilibrio si sposti ancora. Nessuno in quella sala ha mai visto due Imperatori sedersi faccia a faccia.',
+          en: 'Word reaches Mary Geoise: Red-Haired Shanks has sent men across the sea to open contact with a rival Emperor, hoping to head off the war [[marshall-d-teach|Teach]]’s hunt for a bounty risks starting between two crews neither side can afford to lose. The World Government’s own rulers call the meeting itself the greater danger, and scramble to fill the empty Warlord seat left by Crocodile’s fall before the balance tips any further. Nobody in that room has ever seen two Emperors sit down face to face.',
+        },
+      },
+    },
+    {
       episode: 316,
       value: {
         title: { it: 'Due Imperatori, un cielo', en: 'Two Emperors, one sky' },
@@ -460,6 +512,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il maggiordomo era il pirata [[kuro|Kuro]], e il suo piano di uccidere [[kaya|Kaya]] è fallito sulla spiaggia: [[monkey-d-luffy|Rufy]] lo ha steso, e Usop ha centrato in faccia l’ipnotizzatore [[jango|Jango]] con un colpo di fionda. In paese nessuno deve saperlo: il villaggio ha bisogno della sua pace, e lui delle sue bugie. [[kaya|Kaya]] regala alla ciurma una caravella con la testa di pecora, la Going Merry, e Usop scioglie la sua ciurma di bambini per salire a bordo con i pirati veri. Sulla vela dipinge il teschio con il cappello di paglia: per la prima volta la bandiera è davvero la sua.',
           en: 'The butler was the pirate [[kuro|Kuro]], and his plan to murder [[kaya|Kaya]] failed on the beach: [[monkey-d-luffy|Luffy]] knocked him out, and Usopp put a slingshot pellet in the face of the hypnotist [[jango|Jango]]. Nobody in the village must know: the village needs its peace, and he needs his lies. [[kaya|Kaya]] gives the crew a caravel with a sheep’s head, the Going Merry, and Usopp disbands his crew of children to climb aboard with real pirates. On the sail he paints the skull in a straw hat: for the first time the flag is truly his.',
+        },
+      },
+    },
+    {
+      episode: 186,
+      value: {
+        title: { it: 'Lo porta via dall’Arca', en: 'Carrying him off the Ark' },
+        body: {
+          it: 'Usop aggancia la fune allo scafo e si arrampica sul fianco della nave con scarpe a stella marina prese in prestito, solo ora che [[sanji|Sanji]] è entrato per primo. Lo trova disteso sul ponte, annerito e immobile, l’ingranaggio che Sanji aveva distrutto per soffocare la tempesta di [[enel|Ener]] ancora fumante da qualche parte sotto. Ener stesso non c’è più. Usop dice al corpo che [[nami|Nami]] è atterrata sana e salva, poi solleva Sanji tra le braccia e salta oltre il bordo con scarpe a molla, sbaglia l’atterraggio e resta appeso alla fune finché questa non li lascia cadere entrambi su una nuvola, vivi.',
+          en: 'Usopp hooks his line onto the ship’s hull and drags himself up the side on borrowed starfish shoes, alone now that [[sanji|Sanji]] went in first. He finds him sprawled on deck, blackened and unmoving, the gear Sanji had wrecked to choke off [[enel|Enel]]’s storm still smoking somewhere below. Enel himself is gone. Usopp tells the body [[nami|Nami]] landed safe, then hauls Sanji into his arms and leaps off the edge on spring-loaded shoes, missing his landing and dangling from the rope until it finally drops them both onto a cloud, alive.',
         },
       },
     },
@@ -604,6 +666,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'Ha dato da mangiare a [[gin|Gin]], un pirata affamato, e [[gin|Gin]] è tornato con la flotta di [[don-krieg|Don Creek]] a prendersi il ristorante. Sotto i colpi Sanji non ha ceduto il Baratie, e i cuochi hanno capito perché: da bambino, naufrago su uno scoglio, [[zeff|Zeff]] gli ha dato tutto il cibo e ha perso una gamba per strapparlo al mare. Ora [[don-krieg|Don Creek]] è stato battuto da [[monkey-d-luffy|Rufy]], che vuole Sanji come cuoco, e tutti in cucina fingono che la sua zuppa sia immangiabile per spingerlo a partire. Sanji cade in ginocchio davanti a [[zeff|Zeff]], lo ringrazia di tutto insultandolo, e salpa in cerca dell’All Blue.',
           en: 'He fed [[gin|Gin]], a starving pirate, and [[gin|Gin]] came back with [[don-krieg|Don Krieg]]’s fleet to take the restaurant. Under the blows Sanji would not give up the Baratie, and the cooks learned why: as a boy, shipwrecked on a bare rock, he was given every scrap of food by [[zeff|Zeff]], who lost a leg pulling him from the sea. Now [[don-krieg|Don Krieg]] has been beaten by [[monkey-d-luffy|Luffy]], who wants Sanji as his cook, and everyone in the kitchen pretends his soup is inedible to push him out the door. Sanji drops to his knees before [[zeff|Zeff]], thanks him for everything while insulting him, and sails in search of the All Blue.',
+        },
+      },
+    },
+    {
+      episode: 186,
+      value: {
+        title: { it: 'L’ingranaggio che ha rotto', en: 'The gear he broke' },
+        body: {
+          it: 'Sanji si infila da solo nelle sale macchine dell’Arca, segue il camino che alimenta la tempesta di [[enel|Ener]] fino a un singolo ingranaggio, e lo strappa via a calci finché il fumo smette di riversarsi sull’isola sottostante. Ener lo trova prima che possa mettersi al riparo e risponde con una scarica che lo lascia annerito sul ponte, immobile. Non saprà mai se ha funzionato. L’unica cosa che sa, mentre crolla, è che [[nami|Nami]] è ancora da qualche parte su quella nave, e che salire a bordo per lei non è mai stata una scelta.',
+          en: 'Sanji slips into the Ark’s machine rooms alone, tracking the chimney that feeds [[enel|Enel]]’s storm cloud down to a single spinning gear, and tears it loose with his bare foot until the smoke stops pouring out over the island below. Enel finds him before he can get clear and answers with a shock that leaves him blackened on the deck, not moving. He never learns whether it worked. All he knows, going down, is that [[nami|Nami]] is still somewhere on this ship, and that coming aboard for her was never a choice.',
         },
       },
     },
@@ -790,6 +862,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Arlong Park è crollato e il villaggio di Cocoyashi festeggia senza più dover pagare il tributo. Nami riceve indietro la stanza, i mandarini e il diritto di scegliere dove andare. Quando [[monkey-d-luffy|Rufy]] salpa verso Loguetown, lei sale sulla Going Merry senza trucchi né contratti: ora è la navigatrice della ciurma. Sul giornale appare la prima taglia del capitano, e Nami capisce che la rotta da disegnare non finirà nell’East Blue.',
           en: 'Arlong Park has fallen and Cocoyasi Village celebrates without paying tribute anymore. Nami gets back her room, her tangerines and the right to choose where to go. When [[monkey-d-luffy|Luffy]] sails for Loguetown, she boards the Going Merry without tricks or contracts: she is now the crew’s navigator. The captain’s first wanted poster appears in the paper, and Nami understands that the route she must draw will not end in the East Blue.',
+        },
+      },
+    },
+    {
+      episode: 192,
+      value: {
+        title: {
+          it: 'Guida il fusto nel cielo',
+          en: 'Driving the beanstalk into the sky',
+        },
+        body: {
+          it: 'Con il fusto che crolla sotto i fulmini di Ener e [[monkey-d-luffy|Rufy]] incapace di arrampicarsi, Nami porta lei stessa il Waver lungo tutta la sua lunghezza, schivando legno che cade e fulmine dopo fulmine mentre lui si aggrappa dietro di lei, puntando dritto alla nave sospesa in alto. Chi guarda da terra è certo che il fusto li schiaccerà prima che siano a metà strada. Quando le ruote si bloccano sotto di lei, li ha già portati abbastanza vicini: Rufy si stacca dalla sua schiena e prosegue da solo, e Nami può solo guardarlo volare per il resto della strada verso [[enel|Ener]].',
+          en: 'With the beanstalk collapsing under Enel’s lightning and [[monkey-d-luffy|Luffy]] unable to climb it, Nami takes the Waver up its length herself, weaving through falling wood and bolt after bolt while he clings on behind her, aiming for the ship overhead. Everyone watching from the ground is sure the stalk will crush them both before they’re halfway up. When the wheels finally cut out under her, she has carried him close enough: Luffy leaps free from her back and keeps going alone, and Nami can only watch him fly the rest of the way toward [[enel|Enel]].',
         },
       },
     },

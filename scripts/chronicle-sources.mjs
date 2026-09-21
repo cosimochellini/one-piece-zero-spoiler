@@ -18,6 +18,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_126',
       note: 'Crocodile through the ceiling, Vivi sees him fall, first rain in three years. Second pass: the second defeat was at the palace (eps 121–122), not beneath it, and the water barrel was pierced in that fight — both corrected.',
     },
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Luffy beats Bellamy at Mock Town and recovers Cricket’s stolen gold, confirmed in the episode’s Long Summary.',
+    },
+    193: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_193',
+      note: 'Episode 192 only sets up the finishing blow against Enel; the Golden Bell actually rings and falls in 193, so the story is filed there.',
+    },
     278: {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'Spandam points at the flag, the flag burns, Robin says she wants to live, the crew moves on the tower.',
@@ -100,6 +108,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_24',
       note: 'Kogatana, the chest wound, the vow never to lose again, Mihawk’s challenge.',
     },
+    178: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_178',
+      note: 'Zoro lands the finishing blow, Santoryu Hyakuhachi Pound Ho, breaking Ohm’s Iron Cloud in the Upper Yard ruins; episodes 174–175 (the issue’s candidate) are too early, as Ohm is still fighting Chopper there and Zoro hasn’t engaged him yet.',
+    },
     362: {
       source: 'https://onepiece.fandom.com/wiki/Ryuma_(Zombie)',
       note: 'Zoro challenges Ryuma at ep 357 (chap 462, Qref), but the duel itself, Ryuma’s defeat and him bestowing Shusui before burning to ash are dated to ep 362 (chap 467) on Ryuma’s own history page.',
@@ -150,6 +162,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
       note: 'Celebration and Nami’s permanent boarding (ep 44), the first poster (ep 45).',
     },
+    192: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_192',
+      note: 'Nami drives the Waver up the falling Giant Jack with Luffy aboard; her active driving portion concludes here when the waver cuts out and Luffy leaps for the Ark Maxim.',
+    },
     366: {
       source: 'https://onepiece.fandom.com/wiki/Absalom',
       note: 'Absalom’s history dates Lola interrupting the ceremony and Nami knocking him out with Swing Arm to ep 366 (chap 471); the ceremony itself starts at ep 352 and Sanji’s own fight with Absalom ends at 359.',
@@ -183,6 +199,10 @@ export const CHRONICLE_SOURCES = {
     18: {
       source: 'https://onepiece.fandom.com/wiki/Episode_18',
       note: 'Jango beaten and the Going Merry given (ep 17); Usopp paints the flag on the sail in 18.',
+    },
+    186: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_186',
+      note: 'Usopp carries the blackened, unconscious Sanji off Ark Maxim and they land safely; episode 184 (the issue’s candidate) only covers the boarding, before the rescue.',
     },
     236: {
       source: 'https://onepiece.fandom.com/wiki/Episode_236',
@@ -233,6 +253,10 @@ export const CHRONICLE_SOURCES = {
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
       note: 'The soup, the prostration before Zeff, All Blue.',
+    },
+    186: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_186',
+      note: 'Confirms Sanji dislodged the gear choking off Enel’s storm machinery and is found blackened and unconscious; episode 184 (the issue’s candidate) only covers the boarding, before the sabotage.',
     },
     298: {
       source: 'https://onepiece.fandom.com/wiki/Episode_298',
@@ -300,6 +324,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_95',
       note: 'Filed late: the flag (87), “shut up and come” (89), the knives (90), the sakura (91). The dossier files the crew at 91.',
     },
+    172: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_172',
+      note: 'Chopper defeats Gedatsu at the Ordeal of Swamp, closing the two-priest vignette that began with him alone guarding the Going Merry against Shura (ep 162, resolved 164). The issue’s candidate of ep 178 is wrong — that episode is Zoro vs. Ohm, with no Chopper content — moved to 172.',
+    },
     293: {
       source: 'https://onepiece.fandom.com/wiki/Episode_293',
       note: 'Third Rumble Ball (eaten ep 290), Kumadori thrown to the courthouse.',
@@ -345,6 +373,10 @@ export const CHRONICLE_SOURCES = {
     131: {
       source: 'https://onepiece.fandom.com/wiki/Episode_131',
       note: 'Second pass: the reason for boarding was inverted — Luffy saved her when she wanted to die, so he must take responsibility (ep 130); “archaeologist” replaces “reads the ancient stones”.',
+    },
+    194: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_194',
+      note: 'Robin reads the Poneglyph under the recovered Golden Bell, then finds Gol D. Roger’s own inscription on the bell itself; Gan Fall confirms Roger visited Skypiea over twenty years earlier.',
     },
     278: {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
@@ -660,6 +692,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_4',
       note: 'Threshold entry. The whole Foosha flashback, Higuma, the Sea King, the arm, the hat.',
     },
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'The Five Elders learn Shanks is trying to reach Whitebeard via messenger and panic; written without naming Whitebeard, since his repo revealedAtEpisode (152) is one episode after this story.',
+    },
     316: {
       source: 'https://onepiece.fandom.com/wiki/Episode_316',
       note: 'Whitebeard recalls Loguetown and Buggy, Teach’s scar, the request about Ace refused, the sky splits.',
@@ -685,6 +721,10 @@ export const CHRONICLE_SOURCES = {
     95: {
       source: 'https://onepiece.fandom.com/wiki/Episode_95',
       note: 'Threshold entry. Second pass: Nanohana (a port, not the desert), the ships (plural), and “Blackbeard” — the name Teach is first heard in 151.',
+    },
+    145: {
+      source: 'https://onepiece.fandom.com/wiki/Portgas_D._Ace/History',
+      note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (152) is after this episode.',
     },
     378: {
       source: 'https://onepiece.fandom.com/wiki/Episode_378',
@@ -795,6 +835,162 @@ export const CHRONICLE_SOURCES = {
     1156: {
       source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
       note: 'Egghead Arc section: Perona infiltrates Hachinosu and frees Koby in exchange for his help freeing Moria; Pizarro confirms Moria’s escape to Blackbeard at ep 1156 (chap 1126), the episode by whose end the escape is confirmed to the reader.',
+    },
+  },
+  'marshall-d-teach': {
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Threshold entry. Teach is spotted in Mock Town after Luffy’s bounty poster spreads, and Laffitte recommends him for the empty Warlord seat at the same Mary Geoise summit.',
+    },
+    325: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_325',
+      note: 'Teach kills Thatch and fights Ace on Banaro Island; the Yami Yami no Mi is revealed.',
+    },
+    446: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_446',
+      note: 'Teach walks into Impel Down through the front entrance and breaks up the Luffy/Hannyabal confrontation on Level 4.',
+    },
+    486: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_486',
+      note: 'A black cloth is lowered over Whitebeard’s body and the ground shakes; episodes 485–486 cover Whitebeard’s death and its aftermath.',
+    },
+    513: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_513',
+      note: 'Teach and his crew make their first move in the New World, capturing and taunting Jewelry Bonney before an admiral arrives.',
+    },
+    1115: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1115',
+      note: 'Corrected from the issue’s candidate range 1093/1115: the Blackbeard Pirates’ ambush on Law’s crew at sea is confirmed within episode 1115 itself.',
+    },
+  },
+  'bartholomew-kuma': {
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Threshold entry. Kuma arrives at the Mary Geoise Warlord summit in his bible-and-paw coat.',
+    },
+    368: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_368',
+      note: 'Kuma asks Perona where she would like to go on a trip, before sending her away from Thriller Bark.',
+    },
+    377: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_377',
+      note: 'Kuma draws all the pain out of Luffy’s body into a bubble; Zoro takes it in his place, resolving within this episode’s Long Summary (“nothing happened”).',
+    },
+    405: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_405',
+      note: 'Kuma makes the rest of the Straw Hats vanish one by one with a swipe of his paw, ending with Luffy himself.',
+    },
+    523: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_523',
+      note: 'Franky reveals that Kuma has stood guard over the abandoned Thousand Sunny for the full two years since Sabaody.',
+    },
+    1137: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1137',
+      note: 'Kuma arrives running on Egghead and punches an Elder (Saturn) in the face.',
+    },
+  },
+  'sengoku': {
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Threshold entry, no Qref on the wiki (chapter 234): Sengoku chairs the Warlord summit at Mary Geoise, which Dracule Mihawk gatecrashes.',
+    },
+    323: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_323',
+      note: 'Sengoku learns that the revolutionary Monkey D. Dragon is Luffy’s father.',
+    },
+    398: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_398',
+      note: 'After a World Noble is punched at the Sabaody auction house, Sengoku dispatches an admiral.',
+    },
+    462: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_462',
+      note: 'Sengoku tells the world that Portgas D. Ace is Gol D. Roger’s son.',
+    },
+    487: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_487',
+      note: 'Sengoku’s Buddha form strikes Blackbeard’s crew at Marineford.',
+    },
+    746: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_746',
+      note: 'A retired Sengoku shares food with Tsuru and, through Fujitora, hears thanks meant for Luffy.',
+    },
+  },
+  'edward-newgate': {
+    152: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Wiki content settles at episode 151 (Shanks’s letter to Whitebeard, torn up unread by a man on life support); filed at episode 152, the repo’s existing revealedAtEpisode for this character. Flagged for the independent verification pass — both this and Doflamingo’s ep-152 entry may need the threshold itself corrected to 151.',
+    },
+    316: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_316',
+      note: 'Shanks boards Whitebeard’s ship in person; the two Emperors meet and the sky splits above them.',
+    },
+    434: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_434',
+      note: 'Whitebeard sinks the twenty-three ships that had been watching his fleet and sets sail for Marineford.',
+    },
+    461: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_461',
+      note: 'Flashback: young Ace tries a hundred times to take Whitebeard’s head; Whitebeard calls him son.',
+    },
+    475: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_475',
+      note: 'Whitebeard’s submerged ship tilts the whole of Marineford.',
+    },
+    486: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_486',
+      note: 'Whitebeard dies standing, declaring that the One Piece exists.',
+    },
+  },
+  'donquixote-doflamingo': {
+    152: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Wiki content settles at episode 151 (two Marines made to fight each other on strings at Mary Geoise); filed at episode 152, the repo’s existing revealedAtEpisode for this character. Flagged for the independent verification pass alongside Edward Newgate’s matching discrepancy.',
+    },
+    207: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_207',
+      note: 'Flashback: Doflamingo makes Bellamy and Sarquiss fight each other in Mock Town after Bellamy’s defeat by Luffy.',
+    },
+    398: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_398',
+      note: 'Doflamingo is confirmed as the owner of the Sabaody Auction House and is unbothered by the chaos of the World Noble incident.',
+    },
+    470: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_470',
+      note: 'Doflamingo rides Jozu like a horse at Marineford and calls Kuma dead.',
+    },
+    681: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_681',
+      note: 'The Birdcage closes over Dressrosa; episode 680 sets it up and 681 confirms it sealed.',
+    },
+    735: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_735',
+      note: 'Doflamingo is beaten, the Birdcage falls, and he is taken to a warship cell; episode 734 has the final blow and 735 the aftermath.',
+    },
+  },
+  'enel': {
+    158: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_158',
+      note: 'Threshold entry. The god of Skypiea shows himself and judgement falls as lightning; episode 155 sets up the trap Conis reveals.',
+    },
+    171: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_171',
+      note: 'Enel announces the survival game: only five will remain on the Upper Yard.',
+    },
+    181: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_181',
+      note: 'Enel’s offer to Zoro, Robin, Gan Fall and Wyper to serve him is refused; episode 180 sets up the confrontation.',
+    },
+    183: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_183',
+      note: 'Luffy’s rubber body does not conduct Enel’s lightning; Enel sees his own face reflected back in defeat.',
+    },
+    190: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_190',
+      note: 'Enel’s Raigo falls over Angel Island, threatening the whole of Skypiea with Deathpiea; episodes 186 and 189 build up to it.',
+    },
+    193: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_193',
+      note: 'Two hundred million volts meet Luffy’s fist and the Golden Bell rings; episode 192 sets up the final exchange.',
     },
   },
 }

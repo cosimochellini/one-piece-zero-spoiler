@@ -40,6 +40,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 172,
+      value: {
+        title: {
+          it: 'Solo contro due sacerdoti',
+          en: 'Alone against two priests',
+        },
+        body: {
+          it: "Lasciato solo a guardia della Going Merry, Chopper viene assalito da [[shura|Shura]], uno dei sacerdoti di [[enel|Enel]], che dà fuoco alla nave con la sua lancia prima che arrivi [[gan-fall|Gan Fall]] a incassare i colpi al posto suo. Giorni dopo, separato dagli altri da un pitone gigante, Chopper finisce da solo nell'Ordalia della Palude e trova ad aspettarlo [[gedatsu|Gedatsu]]. Convinto di essere finalmente senza aiuto, si getta nello scontro con tutto quello che ha e manda il sacerdote a precipitare giù dal cielo, verso il mare sottostante.",
+          en: 'Left alone to guard the Going Merry, Chopper is ambushed by [[shura|Shura]], one of [[enel|Enel]]’s priests, who sets the ship on fire with a spear before [[gan-fall|Gan Fall]] arrives and takes the beating meant for him. Days later, cut off from the others by a giant python, Chopper stumbles onto the Ordeal of Swamp and finds [[gedatsu|Gedatsu]] waiting there instead. Certain he is finally on his own, he fights back with everything he has and sends the priest plunging out of the sky, down toward the sea below.',
+        },
+      },
+    },
+    {
       episode: 293,
       value: {
         title: { it: 'La terza Rumble Ball', en: 'The third Rumble Ball' },
@@ -163,6 +176,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 145,
+      value: {
+        title: {
+          it: 'Un pasto gratis, e una promessa',
+          en: 'A free meal, and a promise',
+        },
+        body: {
+          it: "Da qualche parte tra un'isola e l'altra, Ace sale a bordo della nave di [[buggy|Bagy]] in cerca soltanto di un pasto gratis, e si addormenta subito. L'equipaggio di Bagy vorrebbe finirlo mentre non può difendersi, ma Bagy si rifiuta categoricamente, per paura di quello che i compagni di Ace farebbero in cambio. Al risveglio, Ace si getta nella festa già in corso sulla nave di Bagy, e prima di ripartire fa un favore al suo improbabile ospite: promette di indicargli la strada per [[monkey-d-luffy|Rufy]].",
+          en: 'Somewhere between islands, Ace climbs aboard [[buggy|Buggy]]’s ship looking for nothing more than a free meal, and promptly falls asleep. Buggy’s own crew want to finish him off while he can’t fight back, but Buggy refuses outright, unwilling to risk what Ace’s crewmates would do to them in return. When Ace wakes, he throws himself into the party already going on Buggy’s ship, and before he moves on he does one favor for his unlikely host: he promises to point him toward [[monkey-d-luffy|Luffy]].',
+        },
+      },
+    },
+    {
       episode: 378,
       value: {
         title: {
@@ -267,6 +293,16 @@ export const alabastaChronicles = {
         body: {
           it: 'Dopo la caduta di [[crocodile|Crocodile]], Robin riappare nella cabina della Going Merry. [[monkey-d-luffy|Rufy]] l’ha salvata nella tomba reale quando lei aveva smesso di voler vivere, dice, e ora deve prendersi la responsabilità: la porterà con sé. La ciurma diffida di lei; Rufy accetta subito. Robin racconta di essere un’archeologa e di non avere un posto dove andare. Quando la nave lascia Alabasta, una ex agente di Baroque Works ride per la prima volta accanto ai pirati che l’hanno sconfitta.',
           en: 'After [[crocodile|Crocodile]] falls, Robin reappears in the Going Merry’s cabin. [[monkey-d-luffy|Luffy]] saved her in the royal tomb when she had given up on living, she says, so now he must take responsibility: he will take her with him. The crew mistrusts her; Luffy accepts at once. Robin says she is an archaeologist and has nowhere to go. When the ship leaves Alabasta, a former Baroque Works agent laughs for the first time beside the pirates who defeated her.',
+        },
+      },
+    },
+    {
+      episode: 194,
+      value: {
+        title: { it: 'La mano di Gol D. Roger', en: 'Gol D. Roger’s own hand' },
+        body: {
+          it: "Dopo che la Campana d'Oro viene issata su dal mare del cielo, Robin legge ad alta voce il Poneglifo alla sua base davanti agli Shandia riuniti, poi nota un'iscrizione più antica incisa sulla campana stessa, sfuggita a tutti. Il nome è quello di [[gold-roger|Gold Roger]]: una riga che dichiara di essere arrivato fin lì e di voler portare questo passaggio fino ai confini della terra. [[gan-fall|Gan Fall]] le racconta che il Re dei Pirati visitò davvero Skypiea, più di vent'anni prima, anche se nessuno quassù sa spiegare come riuscisse a leggere lettere così antiche.",
+          en: 'After the Golden Bell is hauled up from the sky sea, Robin reads the Poneglyph fixed to its base aloud for the gathered Shandia, then notices older writing carved into the bell itself, missed by everyone else. It names [[gold-roger|Gold Roger]]: a line declaring that he made it here and means to carry this passage to the ends of the earth. [[gan-fall|Gan Fall]] tells her the Pirate King really did visit Skypiea, over twenty years before, though nobody up here could explain how he ever read letters this old.',
         },
       },
     },

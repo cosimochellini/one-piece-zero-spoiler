@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { skypieaChronicles } from './skypiea.chronicle'
 
 /**
  * The Sky Island saga, episodes 136 to 206: a fallen ship from the clouds,
@@ -455,6 +456,7 @@ export const skypiea: Saga = {
       ],
     },
     'marshall-d-teach': {
+      chronicle: skypieaChronicles['marshall-d-teach'],
       role: {
         it: 'Capitano dei Pirati di Barbanera',
         en: 'Captain of the Blackbeard Pirates',
@@ -486,6 +488,7 @@ export const skypiea: Saga = {
       bounty: [{ episode: 958, value: 2_247_600_000 }],
     },
     'bartholomew-kuma': {
+      chronicle: skypieaChronicles['bartholomew-kuma'],
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -524,6 +527,7 @@ export const skypiea: Saga = {
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
     'sengoku': {
+      chronicle: skypieaChronicles.sengoku,
       role: {
         it: 'Grand’ammiraglio della Marina',
         en: 'Fleet admiral of the Marines',
@@ -555,6 +559,7 @@ export const skypiea: Saga = {
       ],
     },
     'edward-newgate': {
+      chronicle: skypieaChronicles['edward-newgate'],
       role: {
         it: 'Capitano dei Pirati di Barbabianca',
         en: 'Captain of the Whitebeard Pirates',
@@ -583,6 +588,7 @@ export const skypiea: Saga = {
       bounty: [{ episode: 958, value: 5_046_000_000 }],
     },
     'donquixote-doflamingo': {
+      chronicle: skypieaChronicles['donquixote-doflamingo'],
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -819,6 +825,7 @@ export const skypiea: Saga = {
       ],
     },
     'enel': {
+      chronicle: skypieaChronicles.enel,
       role: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
       log: {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',
