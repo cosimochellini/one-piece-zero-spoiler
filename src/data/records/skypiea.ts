@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { skypieaChronicles } from './skypiea.chronicle'
 
 /**
  * The Sky Island saga, episodes 136 to 206: a fallen ship from the clouds,
@@ -124,7 +125,7 @@ export const skypiea: Saga = {
     {
       id: 'edward-newgate',
       kind: 'character',
-      revealedAtEpisode: 152,
+      revealedAtEpisode: 151,
       revealedAtChapter: 234,
       name: { it: 'Edward Newgate', en: 'Edward Newgate' },
       summary: {
@@ -136,7 +137,7 @@ export const skypiea: Saga = {
     {
       id: 'donquixote-doflamingo',
       kind: 'character',
-      revealedAtEpisode: 152,
+      revealedAtEpisode: 151,
       revealedAtChapter: 233,
       name: { it: 'Donquijote Do Flamingo', en: 'Donquixote Doflamingo' },
       summary: {
@@ -455,6 +456,7 @@ export const skypiea: Saga = {
       ],
     },
     'marshall-d-teach': {
+      chronicle: skypieaChronicles['marshall-d-teach'],
       role: {
         it: 'Capitano dei Pirati di Barbanera',
         en: 'Captain of the Blackbeard Pirates',
@@ -486,6 +488,7 @@ export const skypiea: Saga = {
       bounty: [{ episode: 958, value: 2_247_600_000 }],
     },
     'bartholomew-kuma': {
+      chronicle: skypieaChronicles['bartholomew-kuma'],
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -524,6 +527,7 @@ export const skypiea: Saga = {
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
     'sengoku': {
+      chronicle: skypieaChronicles.sengoku,
       role: {
         it: 'Grand’ammiraglio della Marina',
         en: 'Fleet admiral of the Marines',
@@ -555,6 +559,7 @@ export const skypiea: Saga = {
       ],
     },
     'edward-newgate': {
+      chronicle: skypieaChronicles['edward-newgate'],
       role: {
         it: 'Capitano dei Pirati di Barbabianca',
         en: 'Captain of the Whitebeard Pirates',
@@ -564,12 +569,12 @@ export const skypiea: Saga = {
         en: 'He is one of the four Emperors who divide the New World between them, and the only man to have fought the Pirate King as an equal. He takes the news that Shanks wants to see him the way one takes a call from an old acquaintance, which is badly. One of his commanders has gone off alone after a traitor, and he let him go.',
       },
       status: [
-        { episode: 152, value: 'alive' },
+        { episode: 151, value: 'alive' },
         { episode: 485, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 152,
+          episode: 151,
           value: {
             it: 'Pirati di Barbabianca, capitano; Imperatore',
             en: 'Whitebeard Pirates, captain; Emperor',
@@ -577,12 +582,13 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [
-        { episode: 152, value: { it: 'Barbabianca', en: 'Whitebeard' } },
+        { episode: 151, value: { it: 'Barbabianca', en: 'Whitebeard' } },
       ],
       devilFruit: [{ episode: 466, value: ['tremor-tremor-fruit'] }],
       bounty: [{ episode: 958, value: 5_046_000_000 }],
     },
     'donquixote-doflamingo': {
+      chronicle: skypieaChronicles['donquixote-doflamingo'],
       role: {
         it: 'Membro della Flotta dei Sette',
         en: 'One of the Seven Warlords',
@@ -592,12 +598,12 @@ export const skypiea: Saga = {
         en: 'At the Warlords’ meeting he laughs at everything and everyone, and meanwhile two Marines in the room draw their swords on each other without meaning to. Nobody present takes him lightly, not even the ones who cannot stand him. The pink coat is the only thing about him that is not frightening.',
       },
       status: [
-        { episode: 152, value: 'alive' },
+        { episode: 151, value: 'alive' },
         { episode: 735, value: 'imprisoned' },
       ],
       affiliation: [
         {
-          episode: 152,
+          episode: 151,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         {
@@ -819,6 +825,7 @@ export const skypiea: Saga = {
       ],
     },
     'enel': {
+      chronicle: skypieaChronicles.enel,
       role: { it: 'Dio di Skypiea', en: 'God of Skypiea' },
       log: {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',

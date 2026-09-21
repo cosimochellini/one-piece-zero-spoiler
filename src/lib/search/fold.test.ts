@@ -122,7 +122,7 @@ describe('the epithets a search may answer with', () => {
     // in the browser at all.
     expect(
       search({
-        bookmark: ep(151),
+        bookmark: ep(150),
         id: newgate,
         locale: 'en',
         query: 'whitebeard',
