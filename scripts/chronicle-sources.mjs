@@ -918,7 +918,7 @@ export const CHRONICLE_SOURCES = {
   'edward-newgate': {
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug. Episode 151’s own charDebut list and Long Summary already carry Shanks’s letter torn up unread by Whitebeard in full; episode 152 is entirely about the Going Merry’s refit and the Knock-Up Stream, with no Whitebeard content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed no other chronicle entry anywhere names or marks edward-newgate below episode 434, so the move is safe); the story’s episode moved to match.',
+      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug. Episode 151’s own charDebut list and Long Summary already carry Shanks’s letter torn up unread by Whitebeard in full; episode 152 is entirely about the Going Merry’s refit and the Knock-Up Stream, with no Whitebeard content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed every other chronicle entry that names or marks edward-newgate sits at episode 316 or later, above the new threshold, so the move is safe); the story’s episode moved to match.',
     },
     316: {
       source: 'https://onepiece.fandom.com/wiki/Episode_316',
