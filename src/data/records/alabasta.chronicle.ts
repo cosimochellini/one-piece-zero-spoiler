@@ -417,11 +417,11 @@ export const alabastaChronicles = {
       episode: 67,
       value: {
         title: {
-          it: 'Miss Mercoledì è una principessa',
+          it: 'Miss Wednesday è una principessa',
           en: 'Miss Wednesday is a princess',
         },
         body: {
-          it: "Bibi ha viaggiato con la ciurma come Miss Mercoledì, un'agente di Baroque Works pagata per guidare estranei nel pericolo, e nessuno a bordo sa ancora che è davvero Nefertari Bibi, principessa di un regno che si sta sfasciando dall'interno. Quando la verità le sfugge per sbaglio, due sicari appostati su un tetto vicino la sentono anche loro. [[monkey-d-luffy|Rufy]] si limita ad alzare le spalle davanti al pericolo; [[nami|Nami]] fissa un prezzo di un miliardo di berry per riportarla a casa, pagata o no. Tra loro, [[roronoa-zoro|Zoro]], [[usopp|Usop]] e [[sanji|Sanji]] non si chiedono mai se in cinque contro un'intera organizzazione sia un incontro alla pari.",
+          it: "Bibi ha viaggiato con la ciurma come Miss Wednesday, un'agente di Baroque Works pagata per guidare estranei nel pericolo, e nessuno a bordo sa ancora che è davvero Nefertari Bibi, principessa di un regno che si sta sfasciando dall'interno. Quando la verità le sfugge per sbaglio, due sicari appostati su un tetto vicino la sentono anche loro. [[monkey-d-luffy|Rufy]] si limita ad alzare le spalle davanti al pericolo; [[nami|Nami]] fissa un prezzo di un miliardo di berry per riportarla a casa, pagata o no. Tra loro, [[roronoa-zoro|Zoro]], [[usopp|Usop]] e [[sanji|Sanji]] non si chiedono mai se in cinque contro un'intera organizzazione sia un incontro alla pari.",
           en: 'She has been travelling with the crew as Miss Wednesday, a Baroque Works agent paid to guide strangers into danger, and no one aboard yet knows she is really Nefertari Vivi, princess of a kingdom coming apart from within. When the truth slips out of her by accident, two assassins perched on a nearby rooftop overhear it too. [[monkey-d-luffy|Luffy]] only shrugs at the danger; [[nami|Nami]] fixes a price of one billion berries to take her home regardless of payment. Between them, [[roronoa-zoro|Zoro]], [[usopp|Usopp]] and [[sanji|Sanji]] never once ask whether five against an entire organisation is a fair fight.',
         },
       },
@@ -457,7 +457,7 @@ export const alabastaChronicles = {
       value: {
         title: { it: "L'addio al porto", en: 'The harbour farewell' },
         body: {
-          it: "[[bon-clay|Bon Clay]] attira su di sé la flotta della Marina che insegue la Going Merry, comprando la fuga della ciurma al prezzo della propria cattura. Bibi ha scelto di restare a ricostruire il suo regno invece di salpare con i pirati che l'hanno salvato, e arriva al porto solo per chiedere loro un'ultima cosa: se dovessero rivedersi, la considererebbero ancora un'amica? [[monkey-d-luffy|Rufy]] apre la bocca per rispondere ad alta voce, ma [[nami|Nami]] lo ferma: i marine in ascolto lo prenderebbero come una confessione. Così tutta la ciurma alza insieme il braccio sinistro, una X disegnata su ogni palmo, senza dire una parola.",
+          it: "[[bon-clay|Von Clay]] attira su di sé la flotta della Marina che insegue la Going Merry, comprando la fuga della ciurma al prezzo della propria cattura. Bibi ha scelto di restare a ricostruire il suo regno invece di salpare con i pirati che l'hanno salvato, e arriva al porto solo per chiedere loro un'ultima cosa: se dovessero rivedersi, la considererebbero ancora un'amica? [[monkey-d-luffy|Rufy]] apre la bocca per rispondere ad alta voce, ma [[nami|Nami]] lo ferma: i marine in ascolto lo prenderebbero come una confessione. Così tutta la ciurma alza insieme il braccio sinistro, una X disegnata su ogni palmo, senza dire una parola.",
           en: '[[bon-clay|Bon Clay]] draws off the Marine fleet chasing the Going Merry, buying the crew’s escape at the cost of his own capture. Vivi has chosen to stay behind and rebuild her kingdom rather than sail on with the pirates who saved it, and she comes to the harbour only to ask them one last thing: if they ever meet again, will they still call her a friend? [[monkey-d-luffy|Luffy]] opens his mouth to answer aloud, but [[nami|Nami]] stops him: the watching Marines would hear it as a confession. So the whole crew raises its left arm together, an X inked across each palm, and says nothing at all.',
         },
       },
