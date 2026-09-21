@@ -466,12 +466,12 @@ export const alabastaChronicles = {
       episode: 886,
       value: {
         title: {
-          it: 'Una voce alzata alla Levely',
-          en: 'A voice raised at the Levely',
+          it: 'Una voce alzata alla Reverie',
+          en: 'A voice raised at the Reverie',
         },
         body: {
-          it: 'Alla Levely, il Nobile Mondiale Charlos fa trascinare via [[shirahoshi|Shirahoshi]] da uno schiavo per tenerla come animale domestico, mentre la famiglia reale degli Uomini di Mare e ogni delegato presente restano immobili, troppo spaventati dalla legge dei Draghi Celesti per muovere un dito. Bibi non riesce a tacere: dice in faccia a [[rob-lucci|Lucci]] che lasciare che un uomo ne possieda un altro solo perché nato come un dio non ha alcun senso, poi gli si scaglia contro lei stessa piuttosto che restare a guardare. Ci vuole un altro Nobile Mondiale, vergognoso della propria stessa gente, per abbattere Charlos prima che le guardie la raggiungano.',
-          en: 'At the Levely, a World Noble named Charlos has [[shirahoshi|Shirahoshi]] dragged off the street by a slave to keep as a pet, while Fish-Man royalty and every delegate present stand frozen, too afraid of Celestial Dragon law to move a finger. Vivi cannot stay quiet: she tells [[rob-lucci|Lucci]] to his face that letting one man own another just because he was born a god makes no sense at all, then lunges at him herself rather than watch it happen. It takes another World Noble, one ashamed of his own kind, to strike Charlos down before the guards can reach her.',
+          it: 'Alla Reverie, il Nobile Mondiale Charlos fa trascinare via [[shirahoshi|Shirahoshi]] da uno schiavo per tenerla come animale domestico, mentre la famiglia reale degli Uomini di Mare e ogni delegato presente restano immobili, troppo spaventati dalla legge dei Draghi Celesti per muovere un dito. Bibi non riesce a tacere: dice in faccia a [[rob-lucci|Lucci]] che lasciare che un uomo ne possieda un altro solo perché nato come un dio non ha alcun senso, poi gli si scaglia contro lei stessa piuttosto che restare a guardare. Ci vuole un altro Nobile Mondiale, vergognoso della propria stessa gente, per abbattere Charlos prima che le guardie la raggiungano.',
+          en: 'At the Reverie, a World Noble named Charlos has [[shirahoshi|Shirahoshi]] dragged off the street by a slave to keep as a pet, while Fish-Man royalty and every delegate present stand frozen, too afraid of Celestial Dragon law to move a finger. Vivi cannot stay quiet: she tells [[rob-lucci|Lucci]] to his face that letting one man own another just because he was born a god makes no sense at all, then lunges at him herself rather than watch it happen. It takes another World Noble, one ashamed of his own kind, to strike Charlos down before the guards can reach her.',
         },
       },
     },
