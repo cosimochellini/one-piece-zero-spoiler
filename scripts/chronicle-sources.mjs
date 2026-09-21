@@ -694,7 +694,7 @@ export const CHRONICLE_SOURCES = {
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'The Five Elders learn Shanks is trying to reach Whitebeard via messenger and panic; written without naming Whitebeard, since his repo revealedAtEpisode (152) is one episode after this story.',
+      note: 'The Five Elders learn Shanks is trying to reach Whitebeard via messenger and panic; written without naming Whitebeard by choice, even though his revealedAtEpisode (corrected to 151 in the same PR) now matches this story’s own episode and would technically allow the marker.',
     },
     316: {
       source: 'https://onepiece.fandom.com/wiki/Episode_316',
@@ -724,7 +724,7 @@ export const CHRONICLE_SOURCES = {
     },
     145: {
       source: 'https://onepiece.fandom.com/wiki/Portgas_D._Ace/History',
-      note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (152) is after this episode.',
+      note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (151, corrected from 152 in the same PR) is still after this episode.',
     },
     378: {
       source: 'https://onepiece.fandom.com/wiki/Episode_378',
