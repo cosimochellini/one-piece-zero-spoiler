@@ -27,12 +27,38 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 111,
+      value: {
+        title: {
+          it: 'Lasciato per morto nella sabbia',
+          en: 'Left for dead in the sand',
+        },
+        body: {
+          it: "[[crocodile|Crocodile]] prosciuga l'acqua dal suo braccio, gli trafigge lo stomaco con l'uncino e lo lascia per morto nel deserto aperto, certo che la battaglia sia finita. Ci manca poco che lo sia davvero. Solo e affondando nella sabbia, Rufy viene tirato fuori solo perché una sconosciuta sta passando di lì per caso e si ferma a chiedergli, tra tutte le cose, perché continui a combattere. Non ha una vera risposta per lei. Sa solo che [[nefertari-vivi|Bibi]] lo aspetta ad Alubarna, e che restare fermo nella sabbia non è un modo per arrivarci.",
+          en: '[[crocodile|Crocodile]] drains the water clean out of his arm, drives a hook through his stomach, and leaves him for dead in the open desert, certain the fight is over. It very nearly is. Alone and sinking into the sand, Luffy is pulled free only because a stranger happens to be passing overhead and stops to ask him, of all things, why he keeps on fighting at all. He has no real answer for her. He only knows that [[nefertari-vivi|Vivi]] is waiting for him in Alubarna, and that lying still in the sand is no way of getting there.',
+        },
+      },
+    },
+    {
       episode: 126,
       value: {
         title: { it: 'Pioggia su Alubarna', en: 'Rain over Alubarna' },
         body: {
           it: 'Due volte [[crocodile|Crocodile]] lo ha battuto: nel deserto fuori Rainbase, dove la sabbia gli ha succhiato l’acqua dal braccio e un uncino lo ha inchiodato a terra, e di nuovo davanti al palazzo di Alubarna. Rufy si rialza una terza volta, con il veleno nel sangue, e segue il membro della Flotta dei Sette giù nella tomba reale. Lì, mentre la città si dilania sopra di loro, sfonda la sabbia di Crocodile a pugni bagnati e lo scaglia oltre il soffitto, verso il cielo. [[nefertari-vivi|Bibi]] vede il corpo cadere, e su Alubarna comincia la prima pioggia in tre anni.',
           en: 'Twice [[crocodile|Crocodile]] has beaten him: in the desert outside Rainbase, where sand drank the water from his arm and a hook pinned him to the ground, and again before the palace of Alubarna. Luffy gets up a third time, with poison in his blood, and follows the Warlord down into the royal tomb. There, while the city tears itself apart above them, he punches through Crocodile’s sand with wet fists and hurls him up through the ceiling into the sky. [[nefertari-vivi|Vivi]] sees the body fall, and the first rain in three years begins over Alubarna.',
+        },
+      },
+    },
+    {
+      episode: 129,
+      value: {
+        title: {
+          it: 'Il miglior colpo che abbia mai visto',
+          en: "The best mark he's ever seen",
+        },
+        body: {
+          it: "Mentre le navi della Marina si stringono attorno alla Going Merry, [[usopp|Usop]] spara con il cannone di bordo contro la nave di [[jango|Jango]] e la fa saltare in un colpo solo; Rufy ride e lo chiama il miglior colpo che abbia mai visto. Poco dopo [[bon-clay|Bon Clay]] attira su di sé il resto della flotta, comprando la loro fuga al prezzo della propria libertà. Al porto, [[nefertari-vivi|Bibi]] chiede solo se, incontrandosi di nuovo, la considererebbero ancora un'amica. Rufy prova a rispondere ad alta voce, ma [[nami|Nami]] lo ferma: con i marine in ascolto, una risposta parlata farebbe di Bibi una criminale. Così alza il braccio, una X disegnata sul palmo, e non dice nulla.",
+          en: 'With Marine ships closing in on the Going Merry, [[usopp|Usopp]] fires the deck cannon at [[jango|Jango]]’s ship and blows it apart in one shot; Luffy laughs and calls it the best mark he’s ever seen. [[bon-clay|Bon Clay]] draws the rest of the fleet off soon after, buying their escape at the cost of his own freedom. At the harbour, [[nefertari-vivi|Vivi]] asks only whether they would still call her a friend if they ever meet again. Luffy tries to answer out loud, but [[nami|Nami]] stops him: with Marines listening, a spoken answer would mark Vivi as a criminal. So he raises his arm instead, an X inked on his palm, and says nothing.',
         },
       },
     },
@@ -296,6 +322,32 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 65,
+      value: {
+        title: {
+          it: 'Cento cacciatori di taglie, un capitano che dorme',
+          en: 'A hundred bounty hunters, one sleeping captain',
+        },
+        body: {
+          it: "Un centinaio di cacciatori di taglie ha il controllo di Whisky Peak, e quasi tutti danno la caccia a Zoro per tutta la notte. Lui non si lascia mai mettere all'angolo: sparisce da un tetto all'altro, taglia le loro fila senza svegliare un'anima in paese, e lascia che una delle sue due nuove lame risponda da sola quando una donna gli scaglia contro un barile di vino. Cannoni, proiettili e un pugno che spacca in due un tetto mancano tutti il bersaglio. Quando l'ultimo agente capisce quanto abbiano sottovalutato questa ciurma, Zoro tiene già uno di loro per il cranio con una sola mano — e [[monkey-d-luffy|Rufy]] ha dormito per tutta la scazzottata.",
+          en: 'A hundred bounty hunters have the run of Whisky Peak, and nearly every one of them is hunting Zoro through the night. He never lets them corner him: he vanishes from rooftop to rooftop, cuts through their ranks without waking a soul in town, and lets one of his two new blades answer for him on its own when a woman swings a wine barrel his way. Cannons, bullets and a punch that cracks a roof in half all miss their mark. By the time the last agent works out how badly they misjudged this crew, Zoro is holding one of them one-handed by the skull — and [[monkey-d-luffy|Luffy]] has slept through the entire fight.',
+        },
+      },
+    },
+    {
+      episode: 119,
+      value: {
+        title: {
+          it: 'Il respiro di tutte le cose',
+          en: 'The breath of all things',
+        },
+        body: {
+          it: "Ogni attacco che Zoro sferra contro [[mr-1|Mister 1]] lo attraversa senza effetto o si infrange contro un corpo diventato acciaio puro, e una raffica finale di lame rotanti lo abbatte infine sotto un pilastro che crolla. Lui si rialza comunque. Ricordando qualcosa che il suo vecchio maestro gli disse un tempo — che uno spadaccino capace di non tagliare nulla può tagliare qualunque cosa — Zoro smette di forzare la lama contro l'acciaio e impara invece a sentire la forma del mondo intorno a sé, la venatura di una foglia, il vero filo di una pietra. Una sola spada, sguainata in silenzio, basta per abbattere finalmente Mister 1.",
+          en: 'Every attack Zoro throws at [[mr-1|Mr. 1]] passes clean through him or shatters against a body turned to solid steel, and a final flurry of spinning blades finally drops him under a collapsing pillar. He gets up anyway. Remembering something his old teacher once told him — that a swordsman who can cut nothing can cut anything — Zoro stops trying to force his blade through steel and instead learns to feel the shape of the world around him, the grain of a leaf, the true edge of a stone. One sword, drawn quietly, is all it takes to finally cut Mr. 1 down.',
+        },
+      },
+    },
+    {
       episode: 178,
       value: {
         title: {
@@ -516,6 +568,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 115,
+      value: {
+        title: {
+          it: 'Nessuno dei due lo dice ad alta voce',
+          en: 'Neither of them says it out loud',
+        },
+        body: {
+          it: 'Quando gli dicono che [[monkey-d-luffy|Rufy]] è morto, [[mr-4|Mister 4]] e [[miss-merry-christmas|Miss Merry Christmas]] si rilassano, certi che lo scontro sia già loro, ma Usop rifiuta di crederci anche solo per un istante. Ridotto quasi allo stremo da palle da baseball esplosive e gallerie scavate sotto i suoi stessi piedi, resta comunque in piedi, li acceca con il fumo, e lascia che [[tony-tony-chopper|Chopper]] inganni Mister 4 facendolo colpire la propria compagna. Un martello sparato con la fionda attraverso le corna di Chopper finisce quello che la testardaggine ha iniziato. Nessuno dei due era davvero certo che Rufy fosse morto, e nessuno lo avrebbe detto ad alta voce finché lo scontro non fosse già vinto.',
+          en: 'Told that [[monkey-d-luffy|Luffy]] is dead, [[mr-4|Mr. 4]] and [[miss-merry-christmas|Miss Merry Christmas]] both relax, certain the fight is already theirs, but Usopp refuses to believe a word of it. Battered half senseless by exploding baseballs and tunnels dug straight under his feet, he keeps standing anyway, blinds the pair with smoke, and lets [[tony-tony-chopper|Chopper]] trick Mr. 4 into swinging at his own partner. A slingshot hammer through Chopper’s antlers finishes what stubbornness started. Neither of them was ever really certain Luffy could be gone, and neither would say so out loud until the fight was already won.',
+        },
+      },
+    },
+    {
       episode: 186,
       value: {
         title: { it: 'Lo porta via dall’Arca', en: 'Carrying him off the Ark' },
@@ -666,6 +731,45 @@ export const eastBlueChronicles = {
         body: {
           it: 'Ha dato da mangiare a [[gin|Gin]], un pirata affamato, e [[gin|Gin]] è tornato con la flotta di [[don-krieg|Don Creek]] a prendersi il ristorante. Sotto i colpi Sanji non ha ceduto il Baratie, e i cuochi hanno capito perché: da bambino, naufrago su uno scoglio, [[zeff|Zeff]] gli ha dato tutto il cibo e ha perso una gamba per strapparlo al mare. Ora [[don-krieg|Don Creek]] è stato battuto da [[monkey-d-luffy|Rufy]], che vuole Sanji come cuoco, e tutti in cucina fingono che la sua zuppa sia immangiabile per spingerlo a partire. Sanji cade in ginocchio davanti a [[zeff|Zeff]], lo ringrazia di tutto insultandolo, e salpa in cerca dell’All Blue.',
           en: 'He fed [[gin|Gin]], a starving pirate, and [[gin|Gin]] came back with [[don-krieg|Don Krieg]]’s fleet to take the restaurant. Under the blows Sanji would not give up the Baratie, and the cooks learned why: as a boy, shipwrecked on a bare rock, he was given every scrap of food by [[zeff|Zeff]], who lost a leg pulling him from the sea. Now [[don-krieg|Don Krieg]] has been beaten by [[monkey-d-luffy|Luffy]], who wants Sanji as his cook, and everyone in the kitchen pretends his soup is inedible to push him out the door. Sanji drops to his knees before [[zeff|Zeff]], thanks him for everything while insulting him, and sails in search of the All Blue.',
+        },
+      },
+    },
+    {
+      episode: 77,
+      value: {
+        title: {
+          it: 'Mr. Prince inganna il capo',
+          en: 'Mr. Prince fools the boss',
+        },
+        body: {
+          it: 'Quando Sanji capisce di chi è la lumaca telefonica che ha in mano, finge di essere [[mr-3|Mister 3]] e dice al misterioso Mr. 0 che Bibi e la sua scorta di pirati sono già morti. Due messaggeri del capo in persona, una lontra e un avvoltoio che lavorano insieme, piombano per consegnare a Mister 3 un Eternal Pose e attaccano subito Sanji; lui li uccide entrambi senza perdere il filo della telefonata. Per spiegare il rumore, dichiara che uno dei Cappelli di Paglia è sopravvissuto. Mr. 0 crede a ogni parola, e Sanji chiude la chiamata con in mano proprio l’Eternal Pose che servirà ad Alabasta.',
+          en: 'Once Sanji realises whose responder snail he is holding, he pretends to be [[mr-3|Mr. 3]] and tells the mysterious Mr. 0 that Vivi and her pirate escort are already dead. Two of the boss’s own messengers, an otter and a vulture working as one, swoop in to deliver an Eternal Pose meant for Mr. 3 and attack Sanji outright; he kills them both without missing a beat of the call. To explain the noise, he claims one Straw Hat somehow survived. Mr. 0 believes every word of it, and Sanji hangs up holding the very pose Alabasta will need.',
+        },
+      },
+    },
+    {
+      episode: 108,
+      value: {
+        title: {
+          it: 'Una telefonata alla volta',
+          en: 'One phone call at a time',
+        },
+        body: {
+          it: 'Gran parte della ciurma resta chiusa nella gabbia di [[crocodile|Crocodile]] mentre la sala VIP intorno a loro si allaga lentamente, e [[nefertari-vivi|Bibi]] ha appena visto la chiave sparire in gola a un Bananawani. Poi squilla la lumaca telefonica di Crocodile: un chiamante che si fa chiamare "Mr. Prince" vuole sapere dove tiene nascosto il suo forziere. Chi è ancora libero riconosce subito la voce. È Sanji, che tira l’unica leva rimastagli da qualche altra parte del casinò, comprando ai compagni intrappolati il tempo che non hanno altro modo di ottenere, una telefonata assurda e civettuola alla volta.',
+          en: 'Most of the crew sit locked in [[crocodile|Crocodile]]’s cage while the VIP room around them slowly floods, and [[nefertari-vivi|Vivi]] has just watched the key vanish down a Bananawani’s throat. Then Crocodile’s responder snail rings: a caller styling himself "Mr. Prince" wants to know where the Warlord keeps his hidden vault. Everyone still free recognises the voice at once. It is Sanji, working the only lever he has left from somewhere else in the casino, buying his trapped crewmates time they have no other way of getting, one absurd, flirtatious phone call at a time.',
+        },
+      },
+    },
+    {
+      episode: 116,
+      value: {
+        title: {
+          it: 'Il calcio che non è il volto di Nami',
+          en: "The kick that isn't Nami's face",
+        },
+        body: {
+          it: '[[bon-clay|Bon Clay]] continua a trasformarsi in [[nami|Nami]] a metà scontro, e per un po’ funziona: Sanji non riesce a colpire davvero un volto che ama, per quante volte si ripeta che è solo un trucco. Vede finalmente la verità nel momento in cui capisce che Bon Clay deve abbandonare il travestimento per eseguire i suoi calci di balletto. Una volta che Sanji smette di esitare, lo scontro diventa perfettamente alla pari, colpo su colpo, finché non piazza l’unico colpo pulito a cui il volto preso in prestito da Bon Clay non poteva sopravvivere.',
+          en: '[[bon-clay|Bon Clay]] keeps turning into [[nami|Nami]] mid-fight, and for a while it works: Sanji cannot bring himself to land a real hit on a face he loves, no matter how many times he reminds himself it is a trick. He finally sees through the ruse the moment he realises Bon Clay must drop the disguise to perform his own ballet kicks at all. Once Sanji stops flinching, the fight turns fully even, blow for blow, until he lands the one clean hit that Bon Clay’s borrowed face was never going to survive.',
         },
       },
     },
@@ -862,6 +966,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Arlong Park è crollato e il villaggio di Cocoyashi festeggia senza più dover pagare il tributo. Nami riceve indietro la stanza, i mandarini e il diritto di scegliere dove andare. Quando [[monkey-d-luffy|Rufy]] salpa verso Loguetown, lei sale sulla Going Merry senza trucchi né contratti: ora è la navigatrice della ciurma. Sul giornale appare la prima taglia del capitano, e Nami capisce che la rotta da disegnare non finirà nell’East Blue.',
           en: 'Arlong Park has fallen and Cocoyasi Village celebrates without paying tribute anymore. Nami gets back her room, her tangerines and the right to choose where to go. When [[monkey-d-luffy|Luffy]] sails for Loguetown, she boards the Going Merry without tricks or contracts: she is now the crew’s navigator. The captain’s first wanted poster appears in the paper, and Nami understands that the route she must draw will not end in the East Blue.',
+        },
+      },
+    },
+    {
+      episode: 118,
+      value: {
+        title: {
+          it: 'Tornado Tempo, una sola volta',
+          en: 'Tornado Tempo, once',
+        },
+        body: {
+          it: "[[usopp|Usop]] le ha costruito il Clima-Tact, e Nami passa gran parte del combattimento contro [[miss-doublefinger|Miss Doublefinger]] a leggere le sue istruzioni mentre schiva le sue spine, provando trucchetti da festa che fanno apparire colombe o sbocciare fiori, chiedendosi se qualcosa di tutto ciò possa mai far male a qualcuno. Ferita e messa all'angolo, scopre finalmente le combinazioni nascoste dell'arma: una scarica di fulmine da una nuvola temporalesca, poi un miraggio di se stessa per infilarsi alle spalle del nemico senza farsi vedere. La sua ultima mossa, Tornado Tempo, si attiva una sola volta — aspetta di essere certa che colpisca, e chiude lo scontro all'istante.",
+          en: '[[usopp|Usopp]] built her the Clima-Tact, and Nami spends most of her fight against [[miss-doublefinger|Miss Doublefinger]] just reading his instructions while dodging her spikes, testing party tricks that make doves appear or flowers bloom and wondering if any of it can actually hurt anyone. Bleeding and cornered, she finally works out the weapon’s hidden combinations: a jolt of lightning from a thundercloud, then a mirage of herself to slip in behind her enemy unseen. Her last move, Tornado Tempo, only ever fires once — she waits until she is certain it will land, and it ends the fight outright.',
         },
       },
     },
