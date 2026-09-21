@@ -22,6 +22,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'Spandam points at the flag, the flag burns, Robin says she wants to live, the crew moves on the tower.',
     },
+    349: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Moria’s own history section confirms the shadow cut (chap 455, ep 349, Qref name=Warlord) resolves within this episode; the following episode carries him to the freezer instead.',
+    },
+    373: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Nightmare Luffy stops Oars’s Gomu Gomu no Rifle and slams him down at ep 372 (chap 478); Moria’s history explicitly dates Luffy defeating Oars by shattering his spine to ep 373 (chap 481) — the fall is not confirmed until this episode.',
+    },
     396: {
       source: 'https://onepiece.fandom.com/wiki/Episode_396',
       note: 'Second pass: it is Hatchan, not guards, who physically restrains Luffy before the stage and in doing so accidentally reveals himself as a Fish-Man; corrected.',
@@ -92,6 +100,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_24',
       note: 'Kogatana, the chest wound, the vow never to lose again, Mihawk’s challenge.',
     },
+    362: {
+      source: 'https://onepiece.fandom.com/wiki/Ryuma_(Zombie)',
+      note: 'Zoro challenges Ryuma at ep 357 (chap 462, Qref), but the duel itself, Ryuma’s defeat and him bestowing Shusui before burning to ash are dated to ep 362 (chap 467) on Ryuma’s own history page.',
+    },
     377: {
       source: 'https://onepiece.fandom.com/wiki/Episode_377',
       note: 'The long summary of 377 ends with Sanji finding Zoro: “nothing happened”.',
@@ -138,6 +150,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
       note: 'Celebration and Nami’s permanent boarding (ep 44), the first poster (ep 45).',
     },
+    366: {
+      source: 'https://onepiece.fandom.com/wiki/Absalom',
+      note: 'Absalom’s history dates Lola interrupting the ceremony and Nami knocking him out with Swing Arm to ep 366 (chap 471); the ceremony itself starts at ep 352 and Sanji’s own fight with Absalom ends at 359.',
+    },
     517: {
       source: 'https://onepiece.fandom.com/wiki/Episode_517',
       note: 'Reads the message (ep 512), asks Haredas to teach her (ep 514); 517 shows the weapon in use, so it is safe.',
@@ -175,6 +191,10 @@ export const CHRONICLE_SOURCES = {
     323: {
       source: 'https://onepiece.fandom.com/wiki/Episode_323',
       note: 'Zoro’s condition in flashback, Garp’s meteor, the apology, Luffy pulls him aboard.',
+    },
+    361: {
+      source: 'https://onepiece.fandom.com/wiki/Perona',
+      note: 'Perona’s history dates Usopp’s immunity reveal to ep 356 (chap 461, Qref name=cheerup) and his outmaneuvering and defeat of her to ep 361 (chap 466); filed at the later episode where the fight actually closes.',
     },
     397: {
       source: 'https://onepiece.fandom.com/wiki/Episode_397',
@@ -217,6 +237,10 @@ export const CHRONICLE_SOURCES = {
     298: {
       source: 'https://onepiece.fandom.com/wiki/Episode_298',
       note: 'Jabra’s “sister” story seen through, Diable Jambe, the key taken.',
+    },
+    359: {
+      source: 'https://onepiece.fandom.com/wiki/Absalom',
+      note: 'Absalom’s history dates Sanji identifying his Devil Fruit and defeating him with Extra Hachis to ep 359 (chap 464, Qref); Lola’s interruption and Nami’s own defeat of Absalom come later, at ep 366.',
     },
     403: {
       source: 'https://onepiece.fandom.com/wiki/Episode_403',
@@ -279,6 +303,10 @@ export const CHRONICLE_SOURCES = {
     293: {
       source: 'https://onepiece.fandom.com/wiki/Episode_293',
       note: 'Third Rumble Ball (eaten ep 290), Kumadori thrown to the courthouse.',
+    },
+    363: {
+      source: 'https://onepiece.fandom.com/wiki/Hogback',
+      note: 'Hogback’s history dates his full confrontation with Chopper over his research and values as a doctor to ep 363 (chap 468); the interruption by Oars and his escape attempt follow at 364.',
     },
     404: {
       source: 'https://onepiece.fandom.com/wiki/Episode_404',
@@ -368,6 +396,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_322',
       note: 'The chase (ep 321), Robin and Iceburg persuade him (ep 322). Dossier: Straw Hats at 322.',
     },
+    381: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_381',
+      note: '“Two days later, Usopp and Franky made a grave for the dead Rumbar Pirates” — same episode as Brook’s own joining; Franky also repairs the rudder and sails of Brook’s old ship for the Thriller Bark Victims to use.',
+    },
     418: {
       source: 'https://onepiece.fandom.com/wiki/Episode_418',
       note: "Corrected from the issue's guess of exploring Vegapunk's lab (that starts at ep 508, already told by the existing 514 entry): 418 has Franky flung onto the snow island by Kuma, mistaken for game by a hunter and his grandson, and given an unwanted comic personality shift by tea at the local hospital — resolves within this episode.",
@@ -405,6 +437,14 @@ export const CHRONICLE_SOURCES = {
     339: {
       source: 'https://onepiece.fandom.com/wiki/Episode_339',
       note: 'Threshold entry, told from the first sighting (eps 337–338). Second pass: no piano on the ghost ship — he sings softly over tea; title and body corrected.',
+    },
+    362: {
+      source: 'https://onepiece.fandom.com/wiki/Ryuma_(Zombie)',
+      note: 'Ryuma’s own history: Brook challenges him at ep 352 (chap 458) and loses; Zoro steps in at ep 357 (chap 462); the duel’s end, Ryuma bestowing Shusui and Brook’s shadow returning to him are all dated to ep 362 (chap 467).',
+    },
+    380: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_380',
+      note: '“Binks’ Sake - The Song that Connects the Past and Present”: Yorki’s illness, the crew splitting up, and his farewell request that Brook send them off with their song, distinct from the poisoning and Tone Dial recording already told at ep 381.',
     },
     381: {
       source: 'https://onepiece.fandom.com/wiki/Episode_381',
@@ -646,6 +686,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_95',
       note: 'Threshold entry. Second pass: Nanohana (a port, not the desert), the ships (plural), and “Blackbeard” — the name Teach is first heard in 151.',
     },
+    378: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_378',
+      note: 'Issue candidate for “the world learns his public execution is scheduled”, but the episode 378 summary and character list (Ace, Iceberg, Peepley Lulu “newspaper”) only show Hogback handing Absalom a newspaper revealing Blackbeard’s capture of Ace and his new Warlord seat; the execution itself is not announced on screen until 395, already the subject of the existing 416 entry. Filed here as the capture becoming public, distinct from that later reveal.',
+    },
     416: {
       source: 'https://onepiece.fandom.com/wiki/Episode_416',
       note: 'Second pass: moved from 325, whose outcome is left unrevealed on screen. The defeat is shown in 378, the execution announced in 395, and Luffy learns and chooses the prison in 416. A vivre card burns and shrinks; it does not point. The prison and the execution ground are not named: the archive files those arcs at 422 and 457.',
@@ -725,6 +769,32 @@ export const CHRONICLE_SOURCES = {
     1067: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1067',
       note: "Matches the issue's candidate exactly. Kid and Law's combined strike defeats Big Mom and drops her into Onigashima's exposed magma chamber within 1067.",
+    },
+  },
+  'gecko-moria': {
+    343: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_343',
+      note: 'Threshold entry. An old, already-shadowless zombie warns the crew about Moria and that Thriller Bark is a ship, not an island; Moria himself is shown waking from his four-day sleep at the end of the episode.',
+    },
+    350: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Moria’s history: the shadow cut is ep 349 (chap 455), and he carries it to Oars’s freezer, declaring it brings him closer to becoming Pirate King, at ep 350 (chap 456). The comparison to a specific past defeat is left unnamed since that rival is not filed until much later.',
+    },
+    371: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Moria explains Kage Kakumei to the Straw Hats and is restrained by Robin, who he then cuts the shadow off of, all within ep 371 (chap 476-477).',
+    },
+    374: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Shadow’s Asgard is activated at ep 373 (chap 481); Moria is overwhelmed by Luffy’s Gear Second and Third and releases the rest of the shadows at ep 374 (chap 482), where the story is filed.',
+    },
+    468: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Jinbe defeats Moria with a single Samegawara Seiken at ep 468 (chap 559, Qref name="Jinbe Defeats Moria"), corrected from the issue’s candidate of 472, which is actually Squard stabbing Whitebeard, an unrelated beat. Little Oars Jr. is not a filed character, so he is described generically.',
+    },
+    1156: {
+      source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
+      note: 'Egghead Arc section: Perona infiltrates Hachinosu and frees Koby in exchange for his help freeing Moria; Pizarro confirms Moria’s escape to Blackbeard at ep 1156 (chap 1126), the episode by whose end the escape is confirmed to the reader.',
     },
   },
 }

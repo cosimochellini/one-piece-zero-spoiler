@@ -50,6 +50,29 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 349,
+      value: {
+        title: { it: 'L’ombra tagliata via', en: 'The shadow cut away' },
+        body: {
+          it: 'Sulla nave-isola di Thriller Bark, Rufy viene catturato dai sudditi di [[gecko-moria|Moria]], un membro della Flotta dei Sette che ruba le ombre ai vivi per cucirle sui cadaveri. Prova a scappare, ma una delle ombre negative di [[perona|Perona]] lo lascia troppo abbattuto per muoversi, e Moria gli passa le forbici sotto i piedi. Rufy sente qualcosa staccarsi da sé e cadere a terra: senza quell’ombra, il sole lo ridurrà in cenere. Moria la solleva soddisfatto, dicendo che un pezzo così forte lo avvicina di un passo a diventare Re dei Pirati.',
+          en: 'On the island-ship of Thriller Bark, Luffy is captured by the followers of [[gecko-moria|Moria]], a Warlord of the Sea who steals the shadows of the living and sews them onto corpses. He tries to escape, but one of [[perona|Perona]]’s Negative Hollows leaves him too dejected to move, and Moria slides his scissors under his feet. Luffy feels something come loose and drop to the ground: without that shadow, sunlight will burn him to ash. Moria lifts it, pleased, saying a piece this strong brings him one step closer to becoming Pirate King.',
+        },
+      },
+    },
+    {
+      episode: 373,
+      value: {
+        title: {
+          it: 'Rufy da incubo, e Oz cade',
+          en: 'Nightmare Luffy, and Oars falls',
+        },
+        body: {
+          it: 'Dopo aver salvato [[nami|Nami]] e [[usopp|Usop]], Rufy torna da incubo: occhi vuoti, ghigno da demone, la forza raddoppiata dalla paura che [[perona|Perona]] gli aveva iniettato e che lui ha rivoltato in rabbia. Ferma a mani nude il pugno di [[oars|Oz]], il gigante che porta dentro di sé la sua stessa ombra rubata, poi lo scaraventa a terra insieme a [[gecko-moria|Moria]], che lo pilotava dal suo interno. La furia però lo consuma in fretta: quando torna in sé, è di nuovo il vecchio Rufy, esausto, davanti a un nemico che si è appena rialzato.',
+          en: 'After rescuing [[nami|Nami]] and [[usopp|Usopp]], Luffy comes back nightmarish: hollow eyes, a demon’s grin, his strength doubled by the fear [[perona|Perona]] had poured into him and that he has turned into rage. He stops [[oars|Oars]]’s fist bare-handed — the giant carrying his own stolen shadow inside him — then slams him into the ground along with [[gecko-moria|Moria]], who had been steering him from within. But the fury burns out fast: when he comes back to himself, he is plain Luffy again, exhausted, in front of an enemy who has just gotten back up.',
+        },
+      },
+    },
+    {
       episode: 396,
       value: {
         title: {
@@ -243,6 +266,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il più grande spadaccino del mondo arriva al ristorante galleggiante su una barchetta a forma di bara, e Zoro, che ha preso il mare per trovarlo, lo sfida sul posto. [[dracule-mihawk|Mihawk]] estrae un coltellino grande come un tagliacarte e con quello ferma tutte e tre le spade. Zoro non indietreggia: una ferita sulla schiena, dice, è la vergogna di uno spadaccino. Così si volta e prende la lama nera in pieno petto, e cade in mare. Mihawk gli lascia la vita e gli dice di superarlo. Tirato fuori dall’acqua, Zoro alza la spada verso [[monkey-d-luffy|Rufy]] e giura che non perderà mai più.',
           en: 'The greatest swordsman in the world arrives at the floating restaurant on a small coffin-shaped boat, and Zoro, who went to sea to find him, challenges him on the spot. [[dracule-mihawk|Mihawk]] draws a knife the size of a letter opener and stops all three swords with it. Zoro will not step back: a wound on the back, he says, is a swordsman’s shame. So he turns and takes the black blade across the chest, and falls into the sea. Mihawk lets him live and tells him to surpass him. Pulled out of the water, Zoro raises his sword toward [[monkey-d-luffy|Luffy]] and swears he will never lose again.',
+        },
+      },
+    },
+    {
+      episode: 362,
+      value: {
+        title: {
+          it: 'Ryuma cade, nasce Shusui',
+          en: 'Ryuma falls, Shusui begins',
+        },
+        body: {
+          it: 'Nel laboratorio di [[hogback|Hogback]], [[ryuma|Ryuma]], lo zombie samurai animato dall’ombra di [[brook|Brook]], sta per tagliargli l’afro quando Zoro blocca il colpo e prende il suo posto nel duello. Promette che si prenderà Shusui, la lama leggendaria al fianco del morto, e mantiene la parola: il combattimento distrugge il laboratorio e finisce sul tetto, tra fendenti che tagliano fino alle fiamme blu. Sconfitto, Ryuma sceglie di lasciargli la spada, certo che la sua anima sarà più felice servendo chi lo ha battuto. L’ombra di Brook torna al suo corpo mentre quello di Ryuma brucia in cenere.',
+          en: 'In [[hogback|Hogback]]’s laboratory, [[ryuma|Ryuma]], the samurai zombie animated by [[brook|Brook]]’s own shadow, is about to cut off his afro when Zoro blocks the strike and takes his place in the duel. He promises he’ll take Shusui, the legendary blade at the corpse’s hip, and keeps his word: the fight wrecks the laboratory and finishes on the roof, blades crossing until blue flames spread from a final cut. Defeated, Ryuma chooses to leave him the sword, certain its soul will be happier serving the man who beat it. Brook’s shadow returns to its body as Ryuma’s corpse burns to ash.',
         },
       },
     },
@@ -448,6 +484,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 361,
+      value: {
+        title: {
+          it: 'Troppo negativo per le sue fantasme',
+          en: 'Too negative for her ghosts',
+        },
+        body: {
+          it: '[[perona|Perona]] scaglia contro Usop uno dei suoi fantasmi Negativo, la stessa arma che ha steso [[monkey-d-luffy|Rufy]], [[franky|Franky]] e [[roronoa-zoro|Zoro]] senza sforzo. Ma Usop resta in piedi: si dichiara sempre stato negativo, e più lei lo colpisce più tocca a lei sprofondare nello sconforto. Fugge, poi lo attacca ancora con trucchi, illusioni e fantasmi esplosivi, convinta che il primo colpo sia stato un caso. Usop la insegue con l’astuzia del cecchino, le smaschera il corpo vero nascosto in una stanza, e la mette fuori combattimento a forza di scarafaggi finti e un martello di cartone.',
+          en: '[[perona|Perona]] fires one of her Negative Hollows at Usopp, the same weapon that dropped [[monkey-d-luffy|Luffy]], [[franky|Franky]] and [[roronoa-zoro|Zoro]] without effort. But Usopp stays on his feet: he declares he has always been negative, and the more she hits him the more it is she who sinks into despair. She flees, then attacks again with tricks, illusions and exploding ghosts, convinced the first hit was a fluke. Usopp hunts her down with a sniper’s cunning, exposes her real body hidden in another room, and knocks her out with fake cockroaches and a cardboard hammer.',
+        },
+      },
+    },
+    {
       episode: 397,
       value: {
         title: {
@@ -565,6 +614,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Nella Torre della Giustizia di Enies Lobby, [[usopp|Usop]] è a terra sotto i colpi di [[jabra|Jabra]], l’agente lupo. Sanji si mette in mezzo e lo manda via: io faccio quello che tu non sai fare, tu fai quello che non so fare io. Poi combatte. Il corpo di ferro di [[jabra|Jabra]] assorbe ogni calcio, e le sue bugie su una sorella perduta di nome [[nico-robin|Nico Robin]] non funzionano su un cuoco che riconosce una storia inventata quando la sente. Sanji gira su se stesso finché la gamba destra prende fuoco, un calore che passa attraverso il ferro, e chiude il combattimento con un calcio fiammeggiante. Prende la chiave e se ne va senza voltarsi.',
           en: 'In the Tower of Justice at Enies Lobby, [[usopp|Usopp]] lies beaten under the blows of [[jabra|Jabra]], the wolf agent. Sanji steps between them and sends him off: I will do what you cannot do, and you do what I cannot. Then he fights. [[jabra|Jabra]]’s iron body swallows every kick, and his lies about a long-lost sister named [[nico-robin|Nico Robin]] do not work on a cook who knows an invented story when he hears one. Sanji spins until his right leg catches fire, a heat that passes through iron, and ends the fight with a flaming kick. He takes the key and walks away without looking back.',
+        },
+      },
+    },
+    {
+      episode: 359,
+      value: {
+        title: {
+          it: 'Il frutto che Sanji voleva',
+          en: 'The fruit Sanji always wanted',
+        },
+        body: {
+          it: 'Sanji irrompe alle nozze forzate di [[absalom|Absalom]] e [[nami|Nami]] deciso a riportarla indietro, e i due si scambiano complimenti sulla bellezza della sposa prima che lui lo travolga di calci accusandolo di avergli rubato un sogno: diventare invisibile per spiare le donne senza farsi scoprire, lo stesso potere che il frutto del diavolo di Absalom gli dà già. Absalom lo deride chiamandolo pervertito proprio mentre lo accusa della stessa cosa, poi torna invisibile e lo pugnala alla schiena mentre lui protegge Nami tra le braccia. Sanji lo atterra comunque con un calcio fiammeggiante, sceglie di lasciar perdere quel sogno per sempre, e resta a proteggere Nami.',
+          en: 'Sanji bursts into [[absalom|Absalom]] and [[nami|Nami]]’s forced wedding determined to bring her back, and the two men trade compliments on the bride’s beauty before he overwhelms Absalom with kicks, accusing him of stealing a dream from him: turning invisible to spy on women without being caught, the very power Absalom’s own Devil Fruit already gives him. Absalom calls him a pervert for that while doing the same thing himself, then turns invisible again and stabs him in the back while Sanji is holding Nami in his arms. Sanji still burns him down with a flaming kick, chooses to let that dream go for good, and stays to protect Nami.',
         },
       },
     },
@@ -728,6 +790,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Arlong Park è crollato e il villaggio di Cocoyashi festeggia senza più dover pagare il tributo. Nami riceve indietro la stanza, i mandarini e il diritto di scegliere dove andare. Quando [[monkey-d-luffy|Rufy]] salpa verso Loguetown, lei sale sulla Going Merry senza trucchi né contratti: ora è la navigatrice della ciurma. Sul giornale appare la prima taglia del capitano, e Nami capisce che la rotta da disegnare non finirà nell’East Blue.',
           en: 'Arlong Park has fallen and Cocoyasi Village celebrates without paying tribute anymore. Nami gets back her room, her tangerines and the right to choose where to go. When [[monkey-d-luffy|Luffy]] sails for Loguetown, she boards the Going Merry without tricks or contracts: she is now the crew’s navigator. The captain’s first wanted poster appears in the paper, and Nami understands that the route she must draw will not end in the East Blue.',
+        },
+      },
+    },
+    {
+      episode: 366,
+      value: {
+        title: {
+          it: 'Le nozze interrotte da Lola',
+          en: 'The wedding Lola interrupts',
+        },
+        body: {
+          it: 'Rapita e vestita da sposa da [[absalom|Absalom]], l’uomo invisibile che l’ha scelta come futura moglie, Nami si sveglia già davanti all’altare mentre lui recita i voti. Riesce a schivargli il bacio finché non arriva [[lola|Lola]], una sposa zombie convinta che Nami le abbia rubato il fidanzato: la interrompe furiosa, pronta a ucciderla. Absalom, esasperato, la respinge con un colpo di bazooka pur di proteggere la sua sposa, ma è un errore: Nami, ormai libera e furiosa per conto suo, lo abbatte con una scarica del suo bastone del tempo prima che possa finire la cerimonia.',
+          en: 'Kidnapped and dressed as a bride by [[absalom|Absalom]], the invisible man who has picked her as his future wife, Nami wakes up already at the altar as he recites his vows. She dodges his kiss until [[lola|Lola]] arrives, a zombie bride convinced Nami stole her groom, and interrupts furiously, ready to kill her. Absalom, exasperated, blasts her away with a bazooka to protect his bride, but it’s a mistake: Nami, free by now and furious on her own account, knocks him out with a strike from her weather staff before he can finish the ceremony.',
         },
       },
     },

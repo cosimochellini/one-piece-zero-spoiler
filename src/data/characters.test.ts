@@ -144,6 +144,7 @@ const CHRONICLED_IDS = [
   'sakazuki',
   'sabo',
   'charlotte-linlin',
+  'gecko-moria',
 ] as const
 
 /** The words of a paragraph with its markers reduced to the text they show. */
