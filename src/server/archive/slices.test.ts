@@ -243,10 +243,10 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('sends only the epithets the reader has already reached, folded', () => {
-    // "Whitebeard" finds Edward Newgate after episode 152 and not before, and
+    // "Whitebeard" finds Edward Newgate after episode 151 and not before, and
     // before it the word is not in the browser to be matched at all.
     const newgate = onFile('edward-newgate')
-    const early = searchableOf(newgate, 'en', ep(151))
+    const early = searchableOf(newgate, 'en', ep(150))
     const later = searchableOf(newgate, 'en', ep(500))
 
     expect(early.folded).toBe(foldName(newgate.name.en))

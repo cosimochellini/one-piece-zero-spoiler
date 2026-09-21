@@ -916,9 +916,9 @@ export const CHRONICLE_SOURCES = {
     },
   },
   'edward-newgate': {
-    152: {
+    151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Wiki content settles at episode 151 (Shanks’s letter to Whitebeard, torn up unread by a man on life support); filed at episode 152, the repo’s existing revealedAtEpisode for this character. Flagged for the independent verification pass — both this and Doflamingo’s ep-152 entry may need the threshold itself corrected to 151.',
+      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug. Episode 151’s own charDebut list and Long Summary already carry Shanks’s letter torn up unread by Whitebeard in full; episode 152 is entirely about the Going Merry’s refit and the Knock-Up Stream, with no Whitebeard content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed no other chronicle entry anywhere names or marks edward-newgate below episode 434, so the move is safe); the story’s episode moved to match.',
     },
     316: {
       source: 'https://onepiece.fandom.com/wiki/Episode_316',
@@ -942,9 +942,9 @@ export const CHRONICLE_SOURCES = {
     },
   },
   'donquixote-doflamingo': {
-    152: {
+    151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Wiki content settles at episode 151 (two Marines made to fight each other on strings at Mary Geoise); filed at episode 152, the repo’s existing revealedAtEpisode for this character. Flagged for the independent verification pass alongside Edward Newgate’s matching discrepancy.',
+      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug, same as Edward Newgate. Episode 151’s own charDebut list and Long Summary already carry Doflamingo puppeteering two Marines into fighting each other for his own amusement; episode 152 has no Doflamingo content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed no other chronicle entry anywhere names or marks donquixote-doflamingo below episode 655, so the move is safe); the story’s episode moved to match.',
     },
     207: {
       source: 'https://onepiece.fandom.com/wiki/Episode_207',
@@ -964,7 +964,7 @@ export const CHRONICLE_SOURCES = {
     },
     735: {
       source: 'https://onepiece.fandom.com/wiki/Episode_735',
-      note: 'Doflamingo is beaten, the Birdcage falls, and he is taken to a warship cell; episode 734 has the final blow and 735 the aftermath.',
+      note: 'Doflamingo is beaten, the Birdcage falls, and he is taken to a warship cell; episode 734 has the final blow and 735 the aftermath. Second pass: softened “the whole Donquixote crew” arrested to “nearly all of the crew” — the wiki has Bellamy, Baby 5 and Viola exempted.',
     },
   },
   'enel': {

@@ -125,7 +125,7 @@ export const skypiea: Saga = {
     {
       id: 'edward-newgate',
       kind: 'character',
-      revealedAtEpisode: 152,
+      revealedAtEpisode: 151,
       revealedAtChapter: 234,
       name: { it: 'Edward Newgate', en: 'Edward Newgate' },
       summary: {
@@ -137,7 +137,7 @@ export const skypiea: Saga = {
     {
       id: 'donquixote-doflamingo',
       kind: 'character',
-      revealedAtEpisode: 152,
+      revealedAtEpisode: 151,
       revealedAtChapter: 233,
       name: { it: 'Donquijote Do Flamingo', en: 'Donquixote Doflamingo' },
       summary: {
@@ -569,12 +569,12 @@ export const skypiea: Saga = {
         en: 'He is one of the four Emperors who divide the New World between them, and the only man to have fought the Pirate King as an equal. He takes the news that Shanks wants to see him the way one takes a call from an old acquaintance, which is badly. One of his commanders has gone off alone after a traitor, and he let him go.',
       },
       status: [
-        { episode: 152, value: 'alive' },
+        { episode: 151, value: 'alive' },
         { episode: 485, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 152,
+          episode: 151,
           value: {
             it: 'Pirati di Barbabianca, capitano; Imperatore',
             en: 'Whitebeard Pirates, captain; Emperor',
@@ -582,7 +582,7 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [
-        { episode: 152, value: { it: 'Barbabianca', en: 'Whitebeard' } },
+        { episode: 151, value: { it: 'Barbabianca', en: 'Whitebeard' } },
       ],
       devilFruit: [{ episode: 466, value: ['tremor-tremor-fruit'] }],
       bounty: [{ episode: 958, value: 5_046_000_000 }],
@@ -598,12 +598,12 @@ export const skypiea: Saga = {
         en: 'At the Warlords’ meeting he laughs at everything and everyone, and meanwhile two Marines in the room draw their swords on each other without meaning to. Nobody present takes him lightly, not even the ones who cannot stand him. The pink coat is the only thing about him that is not frightening.',
       },
       status: [
-        { episode: 152, value: 'alive' },
+        { episode: 151, value: 'alive' },
         { episode: 735, value: 'imprisoned' },
       ],
       affiliation: [
         {
-          episode: 152,
+          episode: 151,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         {

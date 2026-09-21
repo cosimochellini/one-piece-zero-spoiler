@@ -226,7 +226,7 @@ export const skypieaChronicles = {
 
   'edward-newgate': [
     {
-      episode: 152,
+      episode: 151,
       value: {
         title: { it: 'Una lettera strappata', en: 'A torn-up letter' },
         body: {
@@ -292,7 +292,7 @@ export const skypieaChronicles = {
 
   'donquixote-doflamingo': [
     {
-      episode: 152,
+      episode: 151,
       value: {
         title: {
           it: 'Marionette su fili invisibili',
@@ -352,8 +352,8 @@ export const skypieaChronicles = {
       value: {
         title: { it: 'In catene su una nave', en: 'In chains aboard a ship' },
         body: {
-          it: 'La Gabbia è sparita, dissolta nell’istante in cui [[monkey-d-luffy|Rufy]] ha finalmente steso Doflamingo nel porto sotterraneo, e Dressrosa passa il giorno dopo a contare chi è sopravvissuto. Doflamingo stesso sopravvive, ma non più da Corsaro: i marine arrestano l’intera ciurma Donquixote, e Doflamingo li segue in catene, condotto su una nave verso una cella che un tempo apparteneva a uomini che considerava inferiori a sé. [[issho|Fujitora]] e i suoi marine si inchinano al re tornato sull’isola, chiedendo scusa per aver permesso che accadesse.',
-          en: 'The Birdcage is gone, dissolved the moment [[monkey-d-luffy|Luffy]] finally beat Doflamingo unconscious in the underground harbor, and Dressrosa spends the next day counting what survived. Doflamingo himself survives too, but not as a Warlord anymore: the marines take the whole Donquixote crew into custody, and Doflamingo goes with them in chains, led onto a ship bound for a cell that used to belong to men he once called beneath him. [[issho|Fujitora]] and his marines bow to the island’s returning king in apology for ever letting this happen.',
+          it: 'La Gabbia è sparita, dissolta nell’istante in cui [[monkey-d-luffy|Rufy]] ha finalmente steso Doflamingo nel porto sotterraneo, e Dressrosa passa il giorno dopo a contare chi è sopravvissuto. Doflamingo stesso sopravvive, ma non più da Corsaro: i marine scovano quasi tutta la ciurma Donquixote, e Doflamingo li segue in catene, condotto su una nave verso una cella che un tempo apparteneva a uomini che considerava inferiori a sé. [[issho|Fujitora]] e i suoi marine si inchinano al re tornato sull’isola, chiedendo scusa per aver permesso che accadesse.',
+          en: 'The Birdcage is gone, dissolved the moment [[monkey-d-luffy|Luffy]] finally beat Doflamingo unconscious in the underground harbor, and Dressrosa spends the next day counting what survived. Doflamingo himself survives too, but not as a Warlord anymore: the marines round up nearly all of the Donquixote crew, and Doflamingo goes with them in chains, led onto a ship bound for a cell that used to belong to men he once called beneath him. [[issho|Fujitora]] and his marines bow to the island’s returning king in apology for ever letting this happen.',
         },
       },
     },
