@@ -222,7 +222,7 @@ export const CHRONICLE_SOURCES = {
     },
     115: {
       source: 'https://onepiece.fandom.com/wiki/Episode_115',
-      note: 'Candidate was the 113–114 range, no Qref; 114 only has Usopp and Chopper still fighting Mr. 4 and Miss Merry Christmas. Their actual defeat happens in 115. Corrected to 115.',
+      note: 'Candidate was the 113–114 range, no Qref. Episode 114\'s own Short Summary says the tide is only "beginning to turn" for Usopp and Chopper, not that they win; a line in its Long Summary claiming an earlier defeat conflicts with that and with 115\'s own Short Summary, which says they "finally manage to defeat" the pair — read as a wiki inconsistency, since an episode\'s Short Summary is the more reliable single statement of what it resolves. Corrected to 115.',
     },
     186: {
       source: 'https://onepiece.fandom.com/wiki/Episode_186',
