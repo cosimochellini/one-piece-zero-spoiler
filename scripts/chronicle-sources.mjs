@@ -66,6 +66,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_734',
       note: "Filed at the top of the 733–734 range: the King Kong Gun lands in 733 but the Birdcage is still up at its end; 734 has it dissolving, Gatz's announcement and Kyros' tears. Second pass: Robin, Fujitora and the Marines keep their feet when it goes, and the Gear Fourth wear-off is on screen before Gatz speaks — both corrected.",
     },
+    808: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_808',
+      note: 'This is the episode where Luffy actually speaks the vow ("I cannot become Pirate King without you... I will wait here and not eat until you return") after Sanji knocks him out and leaves; episode 807 is only the setup/confrontation. Corrected from the candidate range 807–808 to 808 alone.',
+    },
+    869: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_869',
+      note: 'Per the wiki’s own Observation Haki article, Luffy “unlocks Future Vision” at chapter 894 / episode 869 specifically against Katakuri — a precise episode, not the vague 870 candidate.',
+    },
     1071: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1071',
       note: 'The Five Elders name the fruit, Kaido dragged onto the roof, the ground bounces the fireball — all within 1071.',
@@ -145,6 +153,10 @@ export const CHRONICLE_SOURCES = {
     653: {
       source: 'https://onepiece.fandom.com/wiki/Episode_653',
       note: "Filed at the top of the 648–653 range: Jora is winning at 648, and 653 is where Brook's trick undoes every transformation and Nami brings her down.",
+    },
+    865: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_865',
+      note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die, and accepting — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890).',
     },
   },
   'usopp': {
@@ -226,6 +238,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_655',
       note: "Both halves are inside 655: Sanji pinned by the strings with Overheat winding up, and Law's log-Shambles swap from the shore. Second pass: none of Sanji's kicks connect — the admission is about a blocked one — and the log takes Law's own place, not Sanji's; both corrected.",
     },
+    794: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_794',
+      note: 'Judge defeats Sanji in their duel and Reiju treats his wounds within this same episode; 793 only covers the challenge/buildup. Ichiji/Niji/Yonji are not named since their own threshold (795) is one episode later — the brother Sanji injured is referenced only as “a brother.”',
+    },
     795: {
       source: 'https://onepiece.fandom.com/wiki/Episode_795',
       note: 'Filed late: the challenge and the childhood flashback are episode 793.',
@@ -233,6 +249,14 @@ export const CHRONICLE_SOURCES = {
     825: {
       source: 'https://onepiece.fandom.com/wiki/Episode_825',
       note: 'The bento, the punch, “I want to go back”, Luffy decides to crash the wedding.',
+    },
+    832: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_832',
+      note: 'Corrected from the candidate 834–835: the third-eye reveal and Sanji’s “beautiful” compliment happen at the altar in episode 832 (confirmed via Charlotte Pudding’s own wiki page, chapter 862). Episodes 834–835 cover a later, different scene (the Vinsmokes’ near-assassination) with no third-eye content.',
+    },
+    866: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_866',
+      note: 'By 866 Sanji finishes the cake and it is sent out as bait; Big Mom catches its scent and breaks off chasing the Sunny to pursue it instead. Episode 863 is included as the moment Sanji refuses to poison it.',
     },
     1061: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1061',
@@ -276,6 +300,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_622',
       note: "Moved well past the issue's 611–614: Mocha collapses in 614 and is not confirmed recovered until the celebration in 622. Second pass: Chopper is left choosing between sedating the rest and saving her, and the mass sedation is Sanji's and the marines' — the story no longer credits him with it, nor with the cure, which is Law's surgery.",
     },
+    815: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_815',
+      note: 'Corrected twice from the candidate 805–806: the first pass moved it to 816, but a second, independent pass found the Brûlée defeat/capture fully resolves by the end of 815 itself — 816 only continues the Mirro-World search and adds nothing to this thread. The “eleven hours” detail in the original candidate belongs to Luffy’s separate fight against Cracker, not to Chopper’s time here, so it was dropped.',
+    },
     1023: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1023',
       note: 'Chopperphage cannon, the Pleasures cured, Monster Point on Queen, “not a raccoon”.',
@@ -317,6 +345,10 @@ export const CHRONICLE_SOURCES = {
     746: {
       source: 'https://onepiece.fandom.com/wiki/Episode_746',
       note: 'The Dressrosa posters; the dossier files 130,000,000 at 746.',
+    },
+    769: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_769',
+      note: 'Confirms Robin reads the red Road Poneglyph in the Whale Tree, translates its coordinates for Nami, and Inuarashi explains the four-Poneglyph system pointing to Laugh Tale — matches the issue’s candidate exactly.',
     },
   },
   'franky': {
@@ -398,9 +430,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_653',
       note: 'Filed at the bottom of the 653–654 range: the trick, the cut and the whole ship reverting are all inside 653; 654 only opens after the fight. Second pass: she restores his instrument as well as his blade, and his pretext is to play alongside her.',
     },
+    820: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_820',
+      note: 'Corrected from the candidate range 818–820: episode 818 only shows Brook’s stand beginning, and 819 has no Brook content; 820 is where he lands one grounded strike that wounds Big Mom’s fire homie despite its flames. Stops before the strip-search/pet-decision/text-reveal beats that ep 827 alone owns, so the two stories do not overlap.',
+    },
     827: {
       source: 'https://onepiece.fandom.com/wiki/Episode_827',
       note: 'Second pass: moved from 869. Big Mom overpowers him and keeps him as a pet (eps 818–820); he pulls the rubbings out of his skull in 827.',
+    },
+    834: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_834',
+      note: 'Brook in disguise smashes the portrait to trigger a private panic in Big Mom, then unmasks to turn that panic into a public rampage — an entirely separate beat from ep 827, no overlap. The portrait’s subject is left unnamed since `carmel` is not filed until episode 836.',
     },
   },
   'jinbe': {
@@ -431,6 +471,14 @@ export const CHRONICLE_SOURCES = {
     569: {
       source: 'https://onepiece.fandom.com/wiki/Episode_569',
       note: 'Episode 568 ends with Luffy inviting Jinbe to join the crew as a cliffhanger; 569 confirms Jinbe declines for now, citing unfinished business.',
+    },
+    819: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_819',
+      note: 'Corrected from the candidate range 818–819: episode 818 only shows Jinbe entering the Prisoner Library and knocking out the guard; the book is actually burned and Luffy/Nami freed in 819.',
+    },
+    876: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_876',
+      note: 'Corrected from the candidate range 875–877: episode 875 only shows the Sun Pirates opening a path via a decoy-ship trick; Jinbe explicitly choosing to stay behind and defend the escape is confirmed in 876. “Wano” as the reunion point was dropped since that arc is not revealed until episode 890.',
     },
     981: {
       source: 'https://onepiece.fandom.com/wiki/Episode_981',
@@ -651,6 +699,32 @@ export const CHRONICLE_SOURCES = {
     1077: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1077',
       note: '1076 only drops him into an abyss; 1077 names the magma chamber, the eruption and Onigashima set down beside the capital. Whether he lived is left open, as the episode leaves it.',
+    },
+  },
+  'charlotte-linlin': {
+    786: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_786',
+      note: "Threshold entry, matching the issue's candidate exactly. The long summary ends with Big Mom asking her singers how long until the Tea Party (three days), confirming Sanji's arrival, checking on the cake ingredients, and hearing that Luffy is in her territory.",
+    },
+    789: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_789',
+      note: "Corrected from the candidate episode 790 by an independent second pass: the rampage, the son's death, and Jinbe calming her with living croquembouche are all Episode 789's content — Episode 790 covers Jinbe's own backstory and the Sanji Retrieval Team reaching the island instead, and adds nothing to this story. The son is left unnamed (no `charlotte-moscato` record exists in the archive).",
+    },
+    835: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_835',
+      note: "Matches the issue's candidate exactly. Luffy shows Big Mom the reassembled portrait pieces and she unleashes the scream that incapacitates the hall — confirmed within 835. `carmel` is not filed until episode 836, so the portrait's subject is never named.",
+    },
+    838: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_838',
+      note: "Matches the issue's candidate exactly. The flashback (started 836) resolves by 838's end: Carmel, the other children and the table vanish without explanation the night before the planned sale, and Streusen seizes the opportunity to shape Linlin's ambitions. Second pass: the story originally stated the sale to Cipher Pol as the confirmed cause, but the source (episode 837) leaves the disappearance itself unexplained — the sale was only the plan for the following day, and the Charlotte Linlin wiki page itself calls it a mysterious disappearance; corrected to match.",
+    },
+    946: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_946',
+      note: "Matches the issue's candidate exactly. Queen's dive-bomb strike to Big Mom's head at the quarry, after the failed oshiruko search and the chase through the Prisoner Mines, restores her memory within 946. Second pass: the story originally opened with 'her fall from Onigashima' as the cause of her amnesia, but per the Wano Country Arc summary she lost her memory falling into the sea when King's attack sent the Queen Mama Chanter down before it ever reached Wano — corrected to match.",
+    },
+    1067: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1067',
+      note: "Matches the issue's candidate exactly. Kid and Law's combined strike defeats Big Mom and drops her into Onigashima's exposed magma chamber within 1067.",
     },
   },
 }

@@ -184,6 +184,26 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 808,
+      value: {
+        title: { it: 'Aspetterò qui', en: 'I’ll wait here' },
+        body: {
+          it: 'Fuori dal castello della famiglia di [[sanji|Sanji]], Rufy lo affronta a mani nude e si lascia colpire calcio dopo calcio senza rispondere, perché non è pugni che vuole dare: vuole solo parlargli. Sanji lo respinge con un calcio fiammeggiante che lo stende, poi torna dai suoi e se ne va in lacrime dietro una maschera di disprezzo. Rufy si rialza sanguinante e grida che non può diventare il Re dei Pirati senza di lui: resterà lì, senza mangiare, finché non tornerà. Non entra a prenderlo: aspetta che sia Sanji a scegliere di uscire con le sue gambe.',
+          en: 'Outside his family’s stronghold, Luffy confronts [[sanji|Sanji]] bare-handed and lets himself be kicked down again and again without striking back, because he isn’t there to throw punches: he only wants to talk. Sanji finally drops him with a burning kick, then walks back to his family, tears hidden behind a mask of contempt. Luffy gets up bleeding and shouts that he cannot become King of the Pirates without him: he will stay right there, without eating, until Sanji comes back. He won’t go in after him; he waits for Sanji to choose to walk out on his own legs.',
+        },
+      },
+    },
+    {
+      episode: 869,
+      value: {
+        title: { it: 'Un lampo di futuro', en: 'A flash of the future' },
+        body: {
+          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] lo ha appena scaraventato a terra con un pugno di mochi indurito, ma qualcosa cambia nella testa di Rufy: per un istante vede l’attacco successivo prima che parta, un’immagine netta di pochi secondi nel futuro, non solo l’istinto affinato in due anni di allenamento con [[silvers-rayleigh|Rayleigh]]. Schiva il colpo che Katakuri non ha ancora sferrato, e lo Sweet Commander se ne accorge subito: nessuno, a parte lui stesso, aveva mai risposto ai suoi attacchi in quel modo. I due tornano a scontrarsi, ormai pari, ciascuno capace di leggere l’altro un passo prima che accada.',
+          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] has just slammed him down with a hardened mochi fist, but something shifts in Luffy’s head: for an instant he sees the next attack before it starts, a clear image a few seconds into the future, not just the instinct honed over two years of training with [[silvers-rayleigh|Rayleigh]]. He dodges a blow Katakuri hasn’t even thrown yet, and the Sweet Commander notices at once: no one but himself had ever answered his attacks that way. The two clash again, evenly matched now, each reading the other a step before it happens.',
+        },
+      },
+    },
+    {
       episode: 1071,
       value: {
         title: { it: 'Un battito sul tetto', en: 'A heartbeat on the roof' },
@@ -608,6 +628,16 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 794,
+      value: {
+        title: { it: 'Le cure di una sorella', en: 'A sister’s care' },
+        body: {
+          it: 'Sanji è tornato al castello del Regno di Germa dopo anni lontano, dove suo padre [[vinsmoke-judge|Judge]] lo sfida a duello per aver rotto la faccia a un fratello. Sanji rifiuta di colpire con le mani, i suoi attrezzi da cuoco, e combatte solo a calci; Judge lo batte facendosi scudo con un soldato e chiudendo il conto con un fendente elettrico. A terra, ripensa alla cella buia in cui lo chiudeva da bambino e si rialza senza un briciolo di perdono. Dopo, [[vinsmoke-reiju|Reiju]] gli medica le ferite in silenzio e loda la sua forza; Sanji spera solo di arrivare in fretta al matrimonio e andarsene per sempre.',
+          en: 'Sanji is back in his family’s castle after years away, and his father [[vinsmoke-judge|Judge]] challenges him to a duel over the face he smashed in on one of his brothers. Sanji refuses to fight with the hands he cooks with, using only kicks; Judge beats him by hiding behind one of his own soldiers and finishing him off with an electric strike. On the ground, Sanji remembers the dark cell Judge once locked him in as a child, and gets up without a scrap of forgiveness. Afterward [[vinsmoke-reiju|Reiju]] treats his wounds in silence, praising his strength; Sanji only hopes to get through the wedding fast and leave for good.',
+        },
+      },
+    },
+    {
       episode: 795,
       value: {
         title: {
@@ -627,6 +657,29 @@ export const eastBlueChronicles = {
         body: {
           it: 'Ha preso a calci [[monkey-d-luffy|Rufy]] per allontanarlo, perché la famiglia tiene in ostaggio [[zeff|Zeff]] e il Baratie. [[monkey-d-luffy|Rufy]] ha risposto che lo aspetterà lì, senza mangiare, finché non tornerà. Ora Sanji lo trova alla fine di una notte di pioggia, svenuto per la fame, e gli porge un cestino inzuppato che [[monkey-d-luffy|Rufy]] divora dicendo che è buonissimo. Sanji ripete che non torna. [[monkey-d-luffy|Rufy]] lo colpisce e gli chiede cosa provi davvero. Allora Sanji piange: vuole tornare sulla Sunny, ma non può lasciare che la sua famiglia venga sterminata al matrimonio di [[charlotte-linlin|Big Mom]], anche se non gli ha mai voluto bene. [[monkey-d-luffy|Rufy]] sorride: allora rovineranno quel matrimonio insieme.',
           en: 'He kicked [[monkey-d-luffy|Luffy]] away to drive him off, because the family holds [[zeff|Zeff]] and the Baratie hostage. [[monkey-d-luffy|Luffy]] answered that he would wait right there, without eating, until he came back. Now Sanji finds him at the end of a rainy night, passed out from hunger, and hands him a soaked lunch box that [[monkey-d-luffy|Luffy]] devours, calling it delicious. Sanji repeats that he is not coming back. [[monkey-d-luffy|Luffy]] punches him and asks how he really feels. Then Sanji weeps: he wants to go back to the Sunny, but he cannot let his family be slaughtered at [[charlotte-linlin|Big Mom]]’s wedding, even if they never loved him. [[monkey-d-luffy|Luffy]] grins: then they will wreck that wedding together.',
+        },
+      },
+    },
+    {
+      episode: 832,
+      value: {
+        title: { it: 'Il primo a dirlo', en: 'The first to say it' },
+        body: {
+          it: 'All’altare, quando il velo si alza, [[charlotte-pudding|Pudding]] scopre a Sanji il terzo occhio in mezzo alla fronte, la pistola già pronta sotto il bianco dell’abito: è il momento stabilito per ucciderlo. Ma Sanji, invece di indietreggiare, le dice che quell’occhio è bellissimo. Nessuno gliel’aveva mai detto, nemmeno sua madre, che anzi le aveva sempre ordinato di nasconderlo dietro la frangia. Pudding crolla in ginocchio in lacrime, incapace in quell’istante di premere il grilletto sul primo che ha trovato bello ciò che tutti le hanno insegnato a odiare di sé.',
+          en: 'At the altar, when the veil is lifted, [[charlotte-pudding|Pudding]] shows Sanji the third eye in the middle of her forehead, the gun already ready under her white dress: this is the moment set for killing him. But Sanji, instead of recoiling, tells her that eye is beautiful. No one had ever said that to her, not even her own mother, who had always ordered her to keep it hidden under her bangs. Pudding collapses to her knees in tears, unable in that instant to pull the trigger on the first person who called beautiful what everyone taught her to hate about herself.',
+        },
+      },
+    },
+    {
+      episode: 866,
+      value: {
+        title: {
+          it: 'La torta che non ha avvelenato',
+          en: 'The cake he wouldn’t poison',
+        },
+        body: {
+          it: 'Sui fornelli della Nostra Castello, gli uomini di [[capone-bege|Bege]] portano a Sanji il veleno da versare nella torta nuziale, il piano per uccidere [[charlotte-linlin|Big Mom]] non appena l’avrà assaggiata. Sanji lo scaraventa in mare: da cuoco non ammette che si sprechi cibo per farne un’arma, punto e basta. Con [[charlotte-pudding|Pudding]] e [[charlotte-chiffon|Chiffon]] rifinisce la torta fino all’ultima rosa di glassa, pulita, perfetta. Quando la nave la porta al largo, Big Mom ne sente il profumo e smette di dare la caccia alla Sunny per inseguirla: la torta che Sanji si è rifiutato di avvelenare diventa l’esca che salva tutta la ciurma.',
+          en: 'On the stove of the Nostra Castello, [[capone-bege|Bege]]’s men bring Sanji the poison meant for the wedding cake, the plan to kill [[charlotte-linlin|Big Mom]] the moment she takes a bite. Sanji kicks it into the sea: as a cook, he won’t let food be wasted turning it into a weapon, end of discussion. With [[charlotte-pudding|Pudding]] and [[charlotte-chiffon|Chiffon]] he finishes the cake down to the last frosting rose, clean, perfect. When the ship carries it out to sea, Big Mom catches its scent and breaks off chasing the Sunny to follow it instead: the cake Sanji refused to poison becomes the bait that saves the whole crew.',
         },
       },
     },
@@ -718,6 +771,16 @@ export const eastBlueChronicles = {
         body: {
           it: '[[jora|Jora]] sale a bordo della Thousand Sunny e trasforma la nave e chi c’è rimasto sopra in arte astratta: il bastone del tempo di Nami diventa una forma inutile, e lei non può combattere in un corpo che non ha più i bordi giusti. [[brook|Brook]] finge di passare dalla sua parte, la lusinga finché non gli rimette a posto la spada, e la abbatte, il che annulla tutto in un colpo solo. Quando lei torna all’attacco come un quadro di se stessa, Nami la butta giù con il cannone della nave.',
           en: '[[jora|Jora]] comes aboard the Thousand Sunny and turns the ship and everyone left on it into abstract art: Nami’s weather staff becomes a useless shape, and she cannot fight in a body that no longer has the right edges. [[brook|Brook]] pretends to change sides, flatters her into restoring his sword, and cuts her down, which undoes all of it at once. When she comes back at them as a painting of herself, Nami knocks her out of the air with the ship’s own cannon.',
+        },
+      },
+    },
+    {
+      episode: 865,
+      value: {
+        title: { it: 'Servi me, o muori', en: 'Serve me, or die' },
+        body: {
+          it: 'A bordo della Sunny in fuga, il fulmine di Zeus continua a colpire mentre [[charlotte-linlin|Big Mom]] insegue la nave a cavallo della nuvola. [[brook|Brook]] lo taglia in due con un fendente, e Nami approfitta del colpo per scaricargli addosso tutta l’elettricità con il bastone del tempo, riducendolo a una nuvola tremante grande quanto una mano. Lo tiene stretto e gli dà un’unica scelta: servirla o morire. Zeus, che per una vita intera ha obbedito solo a Big Mom, accetta di restare con lei. La nuvola che poco prima incendiava il cielo per la sua vecchia padrona segue ora Nami sul ponte.',
+          en: 'Aboard the fleeing Sunny, Zeus’s lightning keeps striking as [[charlotte-linlin|Big Mom]] chases the ship riding her storm cloud. [[brook|Brook]] cuts him clean in half, and Nami uses the opening to drain every spark of electricity out of him with her weather staff, shrinking him to a trembling cloud small enough to fit in one hand. She holds him tight and gives him one choice: serve her or die. Zeus, who has obeyed only Big Mom his whole life, agrees to stay with her. The cloud that moments ago was setting the sky on fire for his old mistress now follows Nami across the deck.',
         },
       },
     },
