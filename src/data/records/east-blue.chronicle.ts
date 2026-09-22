@@ -1320,7 +1320,7 @@ export const eastBlueChronicles = {
       },
     },
     {
-      episode: 425,
+      episode: 423,
       value: {
         title: { it: 'Ritrovarsi all’inferno', en: 'A reunion in hell' },
         body: {
@@ -1388,7 +1388,7 @@ export const eastBlueChronicles = {
       value: {
         title: { it: 'Solo per curiosità', en: 'Only out of curiosity' },
         body: {
-          it: 'A Mary Geoise, Mihawk si presenta a una convocazione dei Corsari che non gli interessa affatto, curioso solo dei pirati che hanno battuto [[crocodile|Crocodile]]. Trova [[donquixote-doflamingo|Doflamingo]] già intento a divertirsi, due marine costretti da fili invisibili a colpirsi a vicenda, e [[sengoku|Sengoku]] che gli ordina di smettere mentre [[bartholomew-kuma|Orso]] tace. Doflamingo si scrolla di dosso la cosa: è venuto solo per noia. Mihawk dice a Sengoku di essere venuto solo a guardare. Prima che il summit trovi un sostituto, un tizio allampanato con scarpette a punta irrompe senza invito: Laffitte, che propone il suo capitano, uno sconosciuto di nome Marshall D. Teach, per il seggio vuoto.',
+          it: 'A Mary Geoise, Mihawk si presenta a una convocazione dei Corsari che non gli interessa affatto, curioso solo dei pirati che hanno battuto [[crocodile|Crocodile]]. Trova [[donquixote-doflamingo|Do Flamingo]] già intento a divertirsi, due marine costretti da fili invisibili a colpirsi a vicenda, e [[sengoku|Sengoku]] che gli ordina di smettere mentre [[bartholomew-kuma|Orso]] tace. Do Flamingo si scrolla di dosso la cosa: è venuto solo per noia. Mihawk dice a Sengoku di essere venuto solo a guardare. Prima che il summit trovi un sostituto, un tizio allampanato con scarpette a punta irrompe senza invito: Laffitte, che propone il suo capitano, uno sconosciuto di nome Marshall D. Teach, per il seggio vuoto.',
           en: 'At Mary Geoise, Mihawk arrives to a Warlord summons he cares nothing about, curious only about the pirates who beat [[crocodile|Crocodile]]. He finds [[donquixote-doflamingo|Doflamingo]] already amusing himself, two marines forced by invisible strings to trade blows neither chose, and [[sengoku|Sengoku]] ordering him to stop while [[bartholomew-kuma|Kuma]] says nothing at all. Doflamingo shrugs that boredom brought him. Mihawk tells Sengoku plainly that he only came to look. Before the meeting can settle on a replacement, a lanky stranger in tap shoes barges in uninvited: Laffitte, offering his own captain, a nobody named Marshall D. Teach, for the empty seat.',
         },
       },
@@ -1569,8 +1569,8 @@ export const eastBlueChronicles = {
       value: {
         title: { it: 'I Cacciatori della Libertà', en: 'The Freedom Fighters' },
         body: {
-          it: 'Ventidue anni prima, un marine che ha appena voltato le spalle alla propria uniforme guida un manipolo di ribelli contro il palazzo di un re che affama e schiavizza metà della sua stessa isola. Al fianco di [[emporio-ivankov|Ivankov]] e di un gigante chiamato [[bartholomew-kuma|Kuma]], sfonda i cancelli, libera gli schiavi in catene e costringe il sovrano a ritirare la legge. Da quella notte, i Cacciatori della Libertà smettono di essere una banda di disperati locali: diventano il primo nucleo di un esercito che vuole rovesciare governi, non solo re, e Dragon, l’ex marine, ne diventa il comandante che nessuno riesce più a fermare.',
-          en: 'Twenty-two years earlier, a Marine who has just turned his back on his own uniform leads a handful of rebels against the palace of a king who starves and enslaves half his own island. Alongside [[emporio-ivankov|Ivankov]] and a giant named [[bartholomew-kuma|Kuma]], he breaks down the gates, frees the slaves in chains, and forces the king to repeal the law. From that night on, the Freedom Fighters stop being a local band of the desperate: they become the first core of an army that means to topple governments, not just kings, and Dragon, the former Marine, becomes the commander nobody can stop again.',
+          it: 'Ventidue anni prima, un marine che ha appena voltato le spalle alla propria uniforme guida, al fianco di [[emporio-ivankov|Ivankov]], un manipolo di ribelli contro il palazzo di un re che affama e schiavizza metà della sua stessa isola. Sfondano i cancelli e liberano gli schiavi in catene, tra cui un gigante imprigionato per essersi opposto a quella legge, chiamato [[bartholomew-kuma|Kuma]], che li supplica di lasciarlo unirsi a loro. Da quella notte, i Cacciatori della Libertà smettono di essere una banda di disperati locali: diventano il primo nucleo di un esercito che vuole rovesciare governi, non solo re, e Dragon, l’ex marine, ne diventa il comandante che nessuno riesce più a fermare.',
+          en: 'Twenty-two years earlier, a Marine who has just turned his back on his own uniform leads, alongside [[emporio-ivankov|Ivankov]], a handful of rebels against the palace of a king who starves and enslaves half his own island. They break down the gates and free the slaves in chains, among them a giant imprisoned for standing against that same law, a man named [[bartholomew-kuma|Kuma]], who begs to join them. From that night on, the Freedom Fighters stop being a local band of the desperate: they become the first core of an army that means to topple governments, not just kings, and Dragon, the former Marine, becomes the commander nobody can stop again.',
         },
       },
     },

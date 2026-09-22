@@ -1168,9 +1168,9 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_52',
       note: 'On the Loguetown execution platform where Gold Roger died, Cabaji pins Luffy in stocks and Buggy raises his sword to behead him; lightning strikes the platform in that instant.',
     },
-    425: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_425',
-      note: 'On Level 1 of Impel Down, Luffy (undercover to save Ace) runs into Buggy, who is trying to escape; Buggy’s surprise blows Luffy’s cover and the two team up, continuing together into Level 2 (episodes 424-425), with Buggy explaining he was caught chasing Captain John’s treasure.',
+    423: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_423',
+      note: 'Corrected after review from 425 to 423: episode 423 itself is titled "Reunion in Hell!? The User of the Bara Bara No Mi!" and its own Long Summary has Luffy (undercover to save Ace) running into Buggy on Level 1, Buggy’s surprise blowing Luffy’s cover, and the two deciding to fight through together — by 425 they are already into Level 2, so the reunion itself is known by the end of 423.',
     },
     489: {
       source: 'https://onepiece.fandom.com/wiki/Episode_489',
