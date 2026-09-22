@@ -10,9 +10,21 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1',
       note: 'Threshold entry. Barrel, Koby, Alvida and the Pirate King line are all in episode 1.',
     },
+    8: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_8',
+      note: 'Buggy fires a Buggy Ball, Luffy deflects it with his rubber body; Buggy splits into pieces (Bara Bara Festival) trying to reclaim his treasure from Nami, she ropes his limbs, Luffy finishes him with Gomu Gomu no Bazooka and sends him flying out of Orange Town. All resolved within episode 8, the last of the Orange Town Arc.',
+    },
+    43: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_43',
+      note: 'Candidate was episode 43-44 (Qref ep=43,44). The map-room smashing and Arlong Park’s collapse (Kiribachi broken, maps and furniture destroyed, Gomu Gomu no Ono through the floors, building collapses, Luffy declares Nami crew) all happen within episode 43 itself; episode 44 is only the village’s celebration and departure the next day, so the story is filed at 43, not 44.',
+    },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
       note: 'News Coo, 30,000,000 as the highest bounty in the East Blue, Loguetown named as Roger’s birthplace and execution ground.',
+    },
+    52: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_52',
+      note: 'Buggy traps Luffy on the execution platform, Luffy’s last words are that he’ll become Pirate King, and lightning strikes Buggy and the platform an instant before the blade lands — all within episode 52, confirming the Qref ep=52 candidate.',
     },
     111: {
       source: 'https://onepiece.fandom.com/wiki/Episode_111',
@@ -108,6 +120,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_2',
       note: 'Threshold entry. Rika’s rice balls, the one-month deal, Helmeppo’s betrayal, Luffy heads for the swords.',
     },
+    7: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_7',
+      note: 'Cabaji targets Zoro’s existing stab wound; Zoro lets the wound be reopened rather than guard it, then beats Cabaji with one Oni Giri.',
+    },
     19: {
       source: 'https://onepiece.fandom.com/wiki/Episode_19',
       note: 'Zoro dreams of Kuina; the promise is told in this episode.',
@@ -115,6 +131,10 @@ export const CHRONICLE_SOURCES = {
     24: {
       source: 'https://onepiece.fandom.com/wiki/Episode_24',
       note: 'Kogatana, the chest wound, the vow never to lose again, Mihawk’s challenge.',
+    },
+    49: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_49',
+      note: 'Candidate was episode 48-49 (Qref ep=48 for the Tashigi meeting only). Tashigi and the glasses/Kuina resemblance happen in 48, but the sword shop, the Sandai Kitetsu curse test and receiving the Yubashiri for free all happen in 49, so the story is filed there — also required since Tashigi’s own revealedAtEpisode is 49.',
     },
     65: {
       source: 'https://onepiece.fandom.com/wiki/Episode_65',
@@ -170,6 +190,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_5',
       note: 'Threshold entry. Second pass: the first sentence was rewritten to the sourced version — the map stolen from a pirate, the empty chest, three men talked out of their boat (Nami/History, ep 4).',
     },
+    36: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_36',
+      note: 'Candidate was episode 35-36 (Qref ep=35,36). Episode 35 sets up Nojiko telling the crew about Nami’s childhood (mikan trees, Bell-mère adopting the two girls); the flashback does not close until 36, where Arlong invades, Bell-mère pays tribute only for her daughters and is shot dead, so the story is filed at 36.',
+    },
+    37: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_37',
+      note: 'Nezumi seizes Nami’s buried savings and shoots Nojiko, Nami confronts Arlong, the village decides to fight without her consent, and — furious — she stabs the Arlong Pirates tattoo on her shoulder repeatedly. Kept to the private tattoo-stabbing moment; the public "help me" scene later the same episode is already covered by the existing entry filed at episode 44.',
+    },
     44: {
       source: 'https://onepiece.fandom.com/wiki/Episode_44',
       note: 'Filed late on purpose: Nezumi and the request for help are episode 37; nothing in the story needs 38–44.',
@@ -219,6 +247,10 @@ export const CHRONICLE_SOURCES = {
     18: {
       source: 'https://onepiece.fandom.com/wiki/Episode_18',
       note: 'Jango beaten and the Going Merry given (ep 17); Usopp paints the flag on the sail in 18.',
+    },
+    40: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_40',
+      note: 'No Qref citation for this beat; verified directly. Usopp fakes death with a ketchup bomb (Ketchup Boshi) to fool Chew, then burns and hammers him down; all resolved within episode 40.',
     },
     115: {
       source: 'https://onepiece.fandom.com/wiki/Episode_115',
@@ -274,9 +306,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_20',
       note: 'Threshold entry. Fullbody beaten, Luffy the chore boy. Second pass: the closing line presumed the recruitment (ep 21) and was softened.',
     },
+    26: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_26',
+      note: 'Candidate was episode 25-26 (Qref ep=25,26). The Zeff/rock flashback (rescue, Zeff losing his leg freeing himself from the wreckage while saving Sanji, then giving away all his food rations) plays out during the Pearl fight and closes at the end of 26, so filed there.',
+    },
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
       note: 'The soup, the prostration before Zeff, All Blue.',
+    },
+    40: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_40',
+      note: 'No Qref citation; verified directly. Sanji loses the underwater phase against Kuroobi (held down, pressure-crushed) then beats him on land with a rapid combo and Mouton Shot, all within episode 40 — chronologically after the existing episode 30 entry.',
     },
     77: {
       source: 'https://onepiece.fandom.com/wiki/Episode_77',
@@ -732,6 +772,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_4',
       note: 'Threshold entry. The whole Foosha flashback, Higuma, the Sea King, the arm, the hat.',
     },
+    45: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_45',
+      note: 'No Qref citation (manga ch. 96); verified directly. Long Summary: "Dracule Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment" (his first bounty, 30,000,000 berries) — Mihawk sails to Shanks’s crew with word of the straw-hatted boy, at episode 45.',
+    },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
       note: 'The Five Elders learn Shanks is trying to reach Whitebeard via messenger and panic; written without naming Whitebeard by choice, even though his revealedAtEpisode (corrected to 151 in the same PR) now matches this story’s own episode and would technically allow the marker.',
@@ -1083,6 +1127,136 @@ export const CHRONICLE_SOURCES = {
     1086: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1086',
       note: 'Cross Guild’s formation, Buggy as its figurehead Emperor and Crocodile/Mihawk as Chief Officers are all confirmed in this episode; affiliation/bounty timelines elsewhere in the dossier use episode 1088 for the same development, a pre-existing discrepancy this PR does not touch.',
+    },
+  },
+  'koby': {
+    1: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1',
+      note: 'Threshold entry. Barrel rolls into the ship’s kitchen, Koby (Alvida’s chore boy) and other pirates find Luffy inside, Alvida attacks with her club and Luffy sends her flying off the ship — same scene as monkey-d-luffy’s own episode-1 story.',
+    },
+    3: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_3',
+      note: 'Helmeppo holds Koby hostage as Luffy fights Morgan, Luffy punches Helmeppo and Zoro cuts Morgan down, the garrison arrests its own captain; Koby then punches Luffy to distance himself, is accepted into the Marines despite his past, and salutes Luffy and Zoro as they sail off, joined by the rest of the base.',
+    },
+    68: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_68',
+      note: 'Koby and Helmeppo are chore boys at Shells Town after Morgan’s fall; Morgan is being escorted to a visiting vice admiral’s custody for trial, breaks free and takes Helmeppo hostage, Koby stops the cannon and swims out to talk Morgan down, and the vice admiral — Monkey D. Garp, filed at episode 313 and so left unnamed here — takes both boys to Marine Headquarters instead of dismissing them.',
+    },
+    315: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_315',
+      note: 'Koby character page (Qref ep=314-315): Koby asks Luffy about the New World before parting, then blurts out his dream of becoming an admiral before immediately collapsing in embarrassment, and Luffy accepts it as a certainty.',
+    },
+    489: {
+      source: 'https://onepiece.fandom.com/wiki/Koby',
+      note: 'Koby character page (Qref ep=488-489, chap 579): Koby screams at both sides to stop the war, Akainu raises a fist to kill him for wasting time, and his life is saved by the sudden arrival of Shanks, who stops the blow and tells him his few seconds of courage changed the world’s fate — consistent with the shanks chronicle’s own episode-489 story, where Shanks’s sword stops Akainu’s fist.',
+    },
+    1122: {
+      source: 'https://onepiece.fandom.com/wiki/Koby',
+      note: 'Koby character page (Egghead Arc, chap 1088, ep 1122): Perona brings Koby the keys, he leads the breakout across Hachinosu, Garp and SWORD storm in, and Koby destroys Avalo Pizarro’s giant hand with a single Haki-imbued punch before boarding the escaping ship, named "Honesty Impact" on the Techniques section.',
+    },
+  },
+  'buggy': {
+    5: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_5',
+      note: 'Buggy locks Luffy in a cage after Nami hands him over, then loads a Buggy Ball aimed at him; Nami refuses to fire and burns her hands putting out the fuse, and Buggy sets his men on her.',
+    },
+    8: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_8',
+      note: 'Buggy’s flashback: stole the map from Roger’s crew, ate the Bara Bara no Mi by accident fleeing Shanks, lost the map and his ability to swim; in the present Luffy strikes him down, Nami ropes his limbs, and Gomu Gomu no Bazooka sends him flying out of Orange Town.',
+    },
+    52: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_52',
+      note: 'On the Loguetown execution platform where Gold Roger died, Cabaji pins Luffy in stocks and Buggy raises his sword to behead him; lightning strikes the platform in that instant.',
+    },
+    425: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_423',
+      note: 'On Level 1 of Impel Down, Luffy (undercover to save Ace) runs into Buggy, who is trying to escape; Buggy’s surprise blows Luffy’s cover and the two team up, continuing together into Level 2 (episodes 424-425), with Buggy explaining he was caught chasing Captain John’s treasure.',
+    },
+    489: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_489',
+      note: 'At Marineford’s end, Shanks throws Buggy his straw hat to get to Luffy and dangles a treasure map to make him comply; Buggy races it into Law’s submarine as it dives, then learns the map was a lie.',
+    },
+    1086: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1086',
+      note: 'Buggy’s Cross Guild flyers put his face at the center, larger than Crocodile’s and Mihawk’s; the Marines take him for their leader and declare him an Emperor, and after nearly killing him for the humiliation, Mihawk and Crocodile decide to let him be the figurehead, founding Cross Guild with themselves as Chief Officers.',
+    },
+  },
+  'dracule-mihawk': {
+    24: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_24',
+      note: 'Mihawk sinks Krieg’s flagship, is challenged by Zoro, uses a kogatana ("knife the size of a letter opener") to stop all three swords, wounds him, then draws Yoru, shatters two swords, and finishes with a chest slash, sparing him and telling him to surpass him. Matches roronoa-zoro’s own episode-24 story.',
+    },
+    45: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_45',
+      note: 'Long Summary: "Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment." He seeks out Shanks on a remote base island, startling the lower crew, confirms Luffy is the village boy Shanks lost his arm for, and Shanks pulls him into a celebratory drink — cited to manga ch. 96 / anime episode 45.',
+    },
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Long Summary: at Mary Geoise, Doflamingo (bored, toying with two marines via his strings) and Kuma are already present when Mihawk joins them, making it three Warlords; he says he came only as an onlooker interested in the pirates who beat Crocodile; Laffitte then bursts in to nominate Marshall D. Teach for the empty seat.',
+    },
+    463: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_463',
+      note: 'Long Summary opens with "Mihawk launches his shockwave towards Whitebeard which is blocked by Jozu with his diamond powers." Confirmed on Dracule Mihawk’s own page as one of the first Warlords to attack, wishing to measure his strength against Whitebeard, stopped by Jozu. The issue’s candidate episode 466 is incorrect for this fact — 466 is Luffy’s arrival, where Mihawk only remarks he "never fails to make things interesting." Used 463 instead.',
+    },
+    515: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_515',
+      note: 'Short summary: "At Kuraigana Island, Zoro goes onto his knees and asks Mihawk to train him, in which Mihawk agrees." Zoro/History’s Post-War Arc section fills in that Mihawk first dismissed the request, thinking Zoro couldn’t even beat the humandrills, until Zoro said he had, then agreed once Perona patched him up. The issue’s candidate episode 509 only covers the earlier boat/humandrill setup, confirmed by reading 509 and 511-514 directly, none of which show the kneeling/training-request scene; this exact scene is first and clearly shown in episode 515.',
+    },
+    1086: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1086',
+      note: 'After the Levely dissolves the Warlord system (stripping Mihawk of his immunity and reverting him to fugitive status), Mihawk and Crocodile team up, arrive at Karai Bari Island, sink the Marine ships besieging Buggy’s hideout to collect an old debt, and Buggy’s men mistake them for his subordinates — the founding of Cross Guild, with Mihawk and Crocodile as Chief Officers.',
+    },
+  },
+  'smoker': {
+    49: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_49',
+      note: 'Smoker confronts Luffy at the historic execution platform, unaware Luffy is his target until this point, and easily dominates the fight without even using his Devil Fruit powers.',
+    },
+    53: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_53',
+      note: 'Smoker is about to finish Luffy when a mysterious figure (unidentified on-screen) releases a strong gust of wind, saving Luffy and letting the crew escape Loguetown by sea. The figure is Dragon, but his identity is not revealed at this point, so the story leaves him unnamed.',
+    },
+    109: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_109',
+      note: 'Crocodile’s underwater base floods; the Straw Hats and Smoker escape the cell together. Episode 108’s summary confirms the room fills with water on a timer, and Luffy tells Zoro to save Smoker as they flee.',
+    },
+    127: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_127',
+      note: 'Marine HQ calls Smoker, crediting him and Tashigi with Crocodile’s capture (covering up the Straw Hats’ role) and promoting them to match; Smoker angrily tells the World Government what they can do with their promotion.',
+    },
+    469: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_469',
+      note: 'Smoker attacks Luffy again at Marineford, restrained only when Hancock breaks his jitte. Smoker’s own character page states he would eventually learn about the connection between Dragon and Luffy during the Summit War — Sengoku’s public reveal of Luffy’s parentage happens at episode 467, just before this fight.',
+    },
+    587: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_587',
+      note: 'Smoker intervenes to stop Law from killing Tashigi and fights him instead; Law extracts his heart and Smoker collapses. Confirmed again in episode 588’s summary (Tashigi crying over Smoker’s body).',
+    },
+  },
+  'monkey-d-dragon': {
+    314: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_314',
+      note: 'Garp reveals to the crew, mid-sentence, that Luffy’s father is Monkey D. Dragon, the Revolutionary Army leader the World Government wants most — and that he was the hooded man who saved Luffy from Smoker at Loguetown.',
+    },
+    441: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_441',
+      note: 'Luffy tells Ivankov (mid-jailbreak in Impel Down) that Dragon is his father; Ivankov, stunned, recalls Dragon always facing East Blue and declares himself Dragon’s friend, vowing to back Luffy.',
+    },
+    510: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_510',
+      note: 'Dragon calls Ivankov about the newspaper story on his son and Whitebeard’s death; the "seeing him as human" line is sourced from Monkey D. Dragon’s own wiki page, Revolutionary Army section (Qref chap=593, ep=510).',
+    },
+    737: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_737',
+      note: 'The issue’s candidate episode 504 does not hold up: that episode only shows Sabo’s boat destroyed and him presumed dead. The actual rescue — a World Noble’s ship firing on ten-year-old Sabo’s stolen boat, Dragon pulling him out of the water barely alive, his name read off his belongings — is the "Sabo’s Past" flashback at episode 737. Corroborated by the sibling sabo chronicle entry at episode 738 (src/data/records/summit-war.chronicle.ts), which recaps this same rescue from Sabo’s side one episode later.',
+    },
+    1120: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1120',
+      note: 'The issue’s candidate episode 1116 is when Sabo returns to Momoiro Island, but he only reaches the part of his report naming Im, beyond the Empty Throne, three episodes later. Matches the parallel sabo chronicle entry filed at the same episode 1120 in src/data/records/summit-war.chronicle.ts.',
+    },
+    1131: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1131',
+      note: 'Twenty-five years before the present: Dragon, a Marine who has defected, leads the Freedom Fighters — alongside Ivankov and Kuma — to storm the king’s palace on Sorbet Kingdom and free its enslaved southern half, the founding act that grows into the Revolutionary Army.',
     },
   },
 }

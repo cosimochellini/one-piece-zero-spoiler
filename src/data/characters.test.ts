@@ -153,6 +153,11 @@ const CHRONICLED_IDS = [
   'enel',
   'nefertari-vivi',
   'crocodile',
+  'koby',
+  'buggy',
+  'dracule-mihawk',
+  'smoker',
+  'monkey-d-dragon',
 ] as const
 
 /** The words of a paragraph with its markers reduced to the text they show. */

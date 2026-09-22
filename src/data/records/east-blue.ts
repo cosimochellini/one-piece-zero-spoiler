@@ -680,6 +680,7 @@ export const eastBlue: Saga = {
       ],
     },
     'koby': {
+      chronicle: eastBlueChronicles.koby,
       role: { it: 'Mozzo', en: 'Cabin boy' },
       log: {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
@@ -1000,6 +1001,7 @@ export const eastBlue: Saga = {
       bounty: [{ episode: 4, value: 8_000_000 }],
     },
     'buggy': {
+      chronicle: eastBlueChronicles.buggy,
       role: {
         it: 'Capitano dei Pirati di Bagy',
         en: 'Captain of the Buggy Pirates',
@@ -1421,6 +1423,7 @@ export const eastBlue: Saga = {
       ],
     },
     'dracule-mihawk': {
+      chronicle: eastBlueChronicles['dracule-mihawk'],
       role: {
         it: 'Lo spadaccino più forte del mondo',
         en: 'The strongest swordsman in the world',
@@ -1597,6 +1600,7 @@ export const eastBlue: Saga = {
       ],
     },
     'smoker': {
+      chronicle: eastBlueChronicles.smoker,
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
         it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Il suo corpo diventa fumo, e nessuno di quelli che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
@@ -1647,6 +1651,7 @@ export const eastBlue: Saga = {
       ],
     },
     'monkey-d-dragon': {
+      chronicle: eastBlueChronicles['monkey-d-dragon'],
       role: {
         it: 'Capo dell’Armata Rivoluzionaria',
         en: 'Head of the Revolutionary Army',
