@@ -17,12 +17,51 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 8,
+      value: {
+        title: {
+          it: 'La palla di Bagy torna indietro',
+          en: 'The cannonball comes back',
+        },
+        body: {
+          it: 'A Orange Town [[buggy|Bagy]] spara una Palla di Bagy contro la ciurma, ma il corpo di gomma di Rufy assorbe il colpo e lo rimanda indietro contro i suoi stessi uomini. Poco dopo Bagy sorprende [[nami|Nami]] mentre porta via il suo tesoro e si scompone in pezzi con il suo frutto per proteggersi dai pugni di Rufy. Nami lega le sue membra sparse con una corda, riducendolo a poco più di un torso, e Rufy lo scaraventa fuori dalla città con un Gomu Gomu no Bazooka, in pezzi e sconfitto.',
+          en: 'At Orange Town [[buggy|Buggy]] fires a Buggy Ball at the crew, but Luffy’s rubber body swallows the blast and flings it straight back into his own men. Moments later Buggy catches [[nami|Nami]] making off with his treasure and splits himself into floating pieces with his fruit to dodge Luffy’s fists. Nami ropes his scattered limbs together, leaving him barely more than a torso, and Luffy finishes him with a Gomu Gomu Bazooka, blasting him clean out of town in pieces.',
+        },
+      },
+    },
+    {
+      episode: 43,
+      value: {
+        title: {
+          it: 'Arlong Park crolla su di lui',
+          en: 'Arlong Park comes down on him',
+        },
+        body: {
+          it: 'Rufy vede la penna di [[nami|Nami]] coperta del suo stesso sangue e capisce fino a dove [[arlong|Arlong]] l’abbia sfruttata come cartografa. Prima ancora di colpirlo spezza a mani nude la sua spada a sega, poi fa a pezzi ogni mappa e mobile della sala. Arlong morde la sua spalla e gli spacca il naso in risposta, poi tenta lo Squalo coi Denti; Rufy lo schiaccia con un Gomu Gomu no Ono attraverso i piani del palazzo, che crolla sulle sue macerie. Uscendo da sotto le macerie, dichiara Nami un membro della ciurma.',
+          en: 'Luffy sees [[nami|Nami]]’s old pen soaked in her own blood and understands exactly how [[arlong|Arlong]] used her as his cartographer. Before he even lands a punch he snaps the fish-man’s sawtooth blade bare-handed, then wrecks every map and stick of furniture in the room. Arlong bites his shoulder and gets his nose broken for it, then tries his Shark on Tooth; Luffy answers with a Gomu Gomu Axe that drives him through the floors below, and the building comes down on top of him. Climbing out of the rubble, Luffy calls Nami a member of his crew.',
+        },
+      },
+    },
+    {
       episode: 45,
       value: {
         title: { it: 'Trenta milioni di berry', en: 'Thirty million berries' },
         body: {
           it: 'Un gabbiano postino lascia cadere il giornale sul ponte e dal fascio scivola un foglio: una taglia con la faccia sorridente di Rufy e la cifra di trenta milioni di berry, la più alta di tutto l’East Blue. Arriva pochi giorni dopo Arlong Park: [[arlong|Arlong]], l’uomo-pesce che per otto anni ha dominato l’isola di [[nami|Nami]], è a terra, e Nami è entrata nella ciurma per davvero. La Marina adesso lo chiama Rufy Cappello di Paglia. Lui è felicissimo; gli altri capiscono che da oggi ogni porto conoscerà la faccia del loro capitano. La prossima tappa è Loguetown, dove [[gold-roger|Gold Roger]] è nato ed è stato giustiziato.',
           en: 'A News Coo drops the morning paper on the deck, and a sheet slips out of it: a wanted poster with Luffy’s grinning face and the figure of thirty million berries, the highest bounty in all the East Blue. It comes only days after Arlong Park: [[arlong|Arlong]], the fish-man who ruled [[nami|Nami]]’s island for eight years, is down, and Nami has joined the crew for good. The Marines now call him Straw Hat Luffy. He is delighted; the others understand that from now on every port will know their captain’s face. The next stop is Loguetown, where [[gold-roger|Gold Roger]] was born and executed.',
+        },
+      },
+    },
+    {
+      episode: 52,
+      value: {
+        title: {
+          it: 'Un fulmine sul patibolo',
+          en: 'Lightning on the scaffold',
+        },
+        body: {
+          it: 'Sul palco dove [[gold-roger|Gold Roger]] fu giustiziato, [[cabaji|Cabaji]] blocca Rufy nei ceppi mentre [[buggy|Bagy]] annuncia che lo giustizierà proprio lì, davanti alla folla. Quando gli viene concessa un’ultima parola, Rufy non chiede pietà: dichiara che diventerà il Re dei Pirati, e ride mentre la lama di Bagy scende verso il suo collo. Un fulmine colpisce Bagy e il patibolo un istante prima che la spada lo tocchi; il palco prende fuoco e crolla, e Rufy si ritrova in piedi, illeso, con il cappello di paglia che gli cade di nuovo in testa sotto la pioggia.',
+          en: 'On the platform where [[gold-roger|Gold Roger]] was executed, [[cabaji|Cabaji]] locks Luffy in the stocks while [[buggy|Buggy]] announces he’ll execute him on that very spot, in front of the crowd. Given one last word, Luffy asks for no mercy: he declares he will become the Pirate King, and laughs as Buggy’s blade starts down toward his neck. Lightning strikes Buggy and the platform an instant before the sword touches him; the scaffold catches fire and collapses, and Luffy is left standing, unharmed, his straw hat dropping back onto his head as the rain begins to fall.',
         },
       },
     },
@@ -302,6 +341,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 7,
+      value: {
+        title: {
+          it: 'Cicatrici solo sul petto',
+          en: 'Scars only on the front',
+        },
+        body: {
+          it: 'A Orange Town [[cabaji|Cabaji]] mira dritto alla ferita che Zoro porta già sul fianco, sperando di piegarlo col dolore prima ancora di incrociare le lame. Zoro non si tira indietro: lascia che il colpo lo raggiunga di nuovo, perché uno spadaccino che teme una ferita che vede già arrivare non merita il nome. Un solo Oni Giri abbatte Cabaji, e Zoro crolla addormentato sul selciato con la lama ancora stretta fra i denti. In piedi o a terra, si dice, le sue cicatrici resteranno sempre sul petto, mai sulla schiena.',
+          en: 'At Orange Town [[cabaji|Cabaji]] aims straight for the wound already open on Zoro’s side, hoping pain will bend him before their blades even cross. Zoro doesn’t flinch: he lets the strike land there again, because a swordsman who fears a cut he can already see coming doesn’t deserve the name. One stroke of Oni Giri puts Cabaji down, and Zoro drops asleep on the cobblestones with the blade still clenched in his teeth. Standing or on the ground, he tells himself, his scars will stay on the front of him, never on his back.',
+        },
+      },
+    },
+    {
       episode: 19,
       value: {
         title: { it: 'Una promessa a Kuina', en: 'A promise to Kuina' },
@@ -318,6 +370,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il più grande spadaccino del mondo arriva al ristorante galleggiante su una barchetta a forma di bara, e Zoro, che ha preso il mare per trovarlo, lo sfida sul posto. [[dracule-mihawk|Mihawk]] estrae un coltellino grande come un tagliacarte e con quello ferma tutte e tre le spade. Zoro non indietreggia: una ferita sulla schiena, dice, è la vergogna di uno spadaccino. Così si volta e prende la lama nera in pieno petto, e cade in mare. Mihawk gli lascia la vita e gli dice di superarlo. Tirato fuori dall’acqua, Zoro alza la spada verso [[monkey-d-luffy|Rufy]] e giura che non perderà mai più.',
           en: 'The greatest swordsman in the world arrives at the floating restaurant on a small coffin-shaped boat, and Zoro, who went to sea to find him, challenges him on the spot. [[dracule-mihawk|Mihawk]] draws a knife the size of a letter opener and stops all three swords with it. Zoro will not step back: a wound on the back, he says, is a swordsman’s shame. So he turns and takes the black blade across the chest, and falls into the sea. Mihawk lets him live and tells him to surpass him. Pulled out of the water, Zoro raises his sword toward [[monkey-d-luffy|Luffy]] and swears he will never lose again.',
+        },
+      },
+    },
+    {
+      episode: 49,
+      value: {
+        title: {
+          it: 'La maledizione che non lo tocca',
+          en: 'The curse that never touches him',
+        },
+        body: {
+          it: 'A Loguetown [[tashigi|Tashigi]] lo mette a lucidare i pavimenti della base per ripagare gli occhiali che le ha rotto, scambiandola per un fantasma del suo passato, ma due marine lo riconoscono e Zoro fugge portandosi via i loro soldi. Con quelli va in un’armeria per sostituire le due lame che [[dracule-mihawk|Mihawk]] gli ha spezzato: sceglie la maledetta Sandai Kitetsu e la lancia in aria, offrendole il proprio braccio. La spada gli gira intorno senza toccarlo. Colpito dalla sua fortuna, l’armaiolo gliela regala insieme alla Yubashiri, senza chiedere un soldo.',
+          en: 'In Loguetown [[tashigi|Tashigi]] sets him to mopping the base floors to pay for the glasses he broke, mistaking her for a ghost from his past, but two Marines recognise him and Zoro fights free, taking their money with him. He spends it at a sword shop to replace the two blades [[dracule-mihawk|Mihawk]] shattered: he picks the supposedly cursed Sandai Kitetsu and throws it into the air, offering it his own arm. The blade circles his skin without drawing blood. Impressed by his luck, the old swordsmith hands it over along with the Yubashiri, free of charge.',
         },
       },
     },
@@ -473,6 +538,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 45,
+      value: {
+        title: {
+          it: 'Un brindisi per il ragazzo col cappello',
+          en: 'A toast for the boy in the hat',
+        },
+        body: {
+          it: 'La notizia arriva sull’isola dei Pirati di Shanks: la testa di [[monkey-d-luffy|Rufy]] vale trenta milioni di berry, la più alta mai vista nell’East Blue. A portarla è [[dracule-mihawk|Mihawk]] in persona, arrivato via mare fino a loro solo per questo. La ciurma esplode a festeggiare il ragazzo che un tempo mendicava un posto sulla nave, e Shanks alza un bicchiere con Mihawk, ricordando quella sera in taverna in cui gli lasciò in testa il proprio cappello di paglia.',
+          en: 'Word reaches Shanks’s island: [[monkey-d-luffy|Luffy]]’s head is now worth thirty million berries, the highest bounty East Blue has ever seen. It’s [[dracule-mihawk|Mihawk]] who brings it, sailing all the way out just to deliver the news in person. The crew erupts celebrating the boy who once begged for a spot on their ship, and Shanks raises a cup with Mihawk, remembering the night in the tavern when he set his own straw hat on the kid’s head.',
+        },
+      },
+    },
+    {
       episode: 151,
       value: {
         title: {
@@ -564,6 +642,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Il maggiordomo era il pirata [[kuro|Kuro]], e il suo piano di uccidere [[kaya|Kaya]] è fallito sulla spiaggia: [[monkey-d-luffy|Rufy]] lo ha steso, e Usop ha centrato in faccia l’ipnotizzatore [[jango|Jango]] con un colpo di fionda. In paese nessuno deve saperlo: il villaggio ha bisogno della sua pace, e lui delle sue bugie. [[kaya|Kaya]] regala alla ciurma una caravella con la testa di pecora, la Going Merry, e Usop scioglie la sua ciurma di bambini per salire a bordo con i pirati veri. Sulla vela dipinge il teschio con il cappello di paglia: per la prima volta la bandiera è davvero la sua.',
           en: 'The butler was the pirate [[kuro|Kuro]], and his plan to murder [[kaya|Kaya]] failed on the beach: [[monkey-d-luffy|Luffy]] knocked him out, and Usopp put a slingshot pellet in the face of the hypnotist [[jango|Jango]]. Nobody in the village must know: the village needs its peace, and he needs his lies. [[kaya|Kaya]] gives the crew a caravel with a sheep’s head, the Going Merry, and Usopp disbands his crew of children to climb aboard with real pirates. On the sail he paints the skull in a straw hat: for the first time the flag is truly his.',
+        },
+      },
+    },
+    {
+      episode: 40,
+      value: {
+        title: {
+          it: 'Ketchup Boshi contro Chu',
+          en: 'Ketchup Boshi against Chew',
+        },
+        body: {
+          it: 'Alle porte di Arlong Park Usop si sporca con una bomba di ketchup, la sua Ketchup Boshi, e finge di essere già morto per far calare la guardia a [[chew|Chu]]. Il trucco non basta a fermarlo: Chu lo stana sputando acqua come proiettili contro la foresta dove si nasconde, ma Usop lo ha già inzuppato di vino infiammabile e gli dà fuoco con un colpo mirato. Poi lo finisce a martellate, una dopo l’altra, finché non crolla privo di sensi. Per la prima volta contro un vero uomo-pesce, è proprio una delle sue bugie a tenerlo in vita.',
+          en: 'At the gates of Arlong Park Usopp splatters himself with a ketchup bomb, Ketchup Boshi, and plays dead to make [[chew|Chew]] drop his guard. The trick doesn’t end it there: Chew hunts him down anyway, spitting water like bullets through the forest, but Usopp has already soaked him in flammable wine and sets him alight with one well-aimed shot. Then he finishes him with the hammer, blow after blow, until he drops unconscious. Against a real fish-man for the first time, it’s one of his own lies that keeps him alive.',
         },
       },
     },
@@ -722,6 +813,19 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 26,
+      value: {
+        title: {
+          it: 'Lo scoglio e la gamba di Zeff',
+          en: 'The rock, and Zeff’s leg',
+        },
+        body: {
+          it: 'Colpito a terra da [[pearl|Pearl]] durante l’assedio al Baratie, Sanji ripensa a quando, ragazzino, un’onda lo spazzò via dalla nave da crociera appena abbordata dai Pirati dei Cuochi di [[zeff|Zeff]]; un’altra onda affondò entrambe le navi. Zeff si tuffò per salvarlo, ma restò con una gamba incastrata tra le lamiere e dovette tranciarsela con una catena per liberarsi. Portò Sanji su uno scoglio deserto, dove divisero le razioni e si accamparono ai lati opposti. Quando il cibo di Sanji finì, affamato aprì la sacca di Zeff aspettandosi la sua parte: dentro c’era solo tesoro. Zeff gli aveva dato tutto il cibo, e aveva pagato il salvataggio con la propria gamba.',
+          en: 'Knocked down by [[pearl|Pearl]] during the siege of the Baratie, Sanji remembers the boy he was, swept overboard by a wave from a cruise ship just raided by [[zeff|Zeff]]’s Cook Pirates; another wave sank both ships. Zeff dove in to save him, but his leg caught in the wreckage, and he cut it off with a chain to break free. He carried Sanji to a deserted rocky island, where they split their rations and camped at opposite ends. When Sanji’s food ran out, starving, he opened Zeff’s bag expecting his share: inside was only treasure. Zeff had given him every bit of the food, and paid for the rescue with his own leg.',
+        },
+      },
+    },
+    {
       episode: 30,
       value: {
         title: {
@@ -731,6 +835,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Ha dato da mangiare a [[gin|Gin]], un pirata affamato, e [[gin|Gin]] è tornato con la flotta di [[don-krieg|Don Creek]] a prendersi il ristorante. Sotto i colpi Sanji non ha ceduto il Baratie, e i cuochi hanno capito perché: da bambino, naufrago su uno scoglio, [[zeff|Zeff]] gli ha dato tutto il cibo e ha perso una gamba per strapparlo al mare. Ora [[don-krieg|Don Creek]] è stato battuto da [[monkey-d-luffy|Rufy]], che vuole Sanji come cuoco, e tutti in cucina fingono che la sua zuppa sia immangiabile per spingerlo a partire. Sanji cade in ginocchio davanti a [[zeff|Zeff]], lo ringrazia di tutto insultandolo, e salpa in cerca dell’All Blue.',
           en: 'He fed [[gin|Gin]], a starving pirate, and [[gin|Gin]] came back with [[don-krieg|Don Krieg]]’s fleet to take the restaurant. Under the blows Sanji would not give up the Baratie, and the cooks learned why: as a boy, shipwrecked on a bare rock, he was given every scrap of food by [[zeff|Zeff]], who lost a leg pulling him from the sea. Now [[don-krieg|Don Krieg]] has been beaten by [[monkey-d-luffy|Luffy]], who wants Sanji as his cook, and everyone in the kitchen pretends his soup is inedible to push him out the door. Sanji drops to his knees before [[zeff|Zeff]], thanks him for everything while insulting him, and sails in search of the All Blue.',
+        },
+      },
+    },
+    {
+      episode: 40,
+      value: {
+        title: {
+          it: 'Sott’acqua perde, a terra vince',
+          en: 'Beaten in the water, winning on land',
+        },
+        body: {
+          it: 'Nella piscina di Arlong Park [[kuroobi|Kuroobi]] ha il vantaggio: lo intrappola con i capelli, lo massacra di karate degli uomini-pesce e lo trascina sott’acqua per schiacciarlo con la pressione. Sanji gli soffia aria dritta nelle branchie e risale in superficie. Sulla terraferma i ruoli si ribaltano: Kuroobi minaccia la sua mossa più forte, ma Sanji lo travolge di calci in rapida sequenza e lo abbatte con un Mouton Shot che lo scaraventa attraverso il muro dell’edificio.',
+          en: 'In Arlong Park’s pool [[kuroobi|Kuroobi]] has every advantage: he binds Sanji with his own hair, batters him with Fish-Man Karate, and drags him under to crush him with the water pressure. Sanji blows air straight into his gills and forces his way back to the surface. On dry land the fight turns: Kuroobi threatens his strongest move, but Sanji buries him under a rapid string of kicks and finishes with a Mouton Shot that sends him crashing clean through the building’s wall.',
         },
       },
     },
@@ -947,6 +1064,29 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 36,
+      value: {
+        title: { it: 'I mandarini di Bellemere', en: 'Bell-mère’s mikans' },
+        body: {
+          it: '[[nojiko|Nojiko]] racconta alla ciurma l’infanzia di Nami: crebbero insieme tra gli alberi di mandarini coltivati da [[bell-mere|Bellemere]], un’ex marine che le aveva adottate da bambine e che si nutriva solo di mandarini per sfamarle entrambe. Poi [[arlong|Arlong]] invase Cocoyashi e impose un tributo mensile su ogni abitante, pena la morte. Bellemere non aveva abbastanza per pagare anche per sé: rifiutò di rinnegare le figlie davanti agli uomini-pesce, pagò solo per Nami e Nojiko, e Arlong la uccise con un colpo di pistola davanti a loro.',
+          en: '[[nojiko|Nojiko]] tells the crew about Nami’s childhood: the two of them grew up among the mikan trees [[bell-mere|Bell-mère]] farmed, a former Marine who had adopted them as babies and lived on nothing but mikans herself so the girls could eat. Then [[arlong|Arlong]] invaded Cocoyasi and set a monthly tribute on every villager, death the price for refusing it. Bell-mère didn’t have enough to cover herself too: she refused to deny her daughters were hers in front of the fish-men, paid only for Nami and Nojiko, and Arlong shot her dead in front of them.',
+        },
+      },
+    },
+    {
+      episode: 37,
+      value: {
+        title: {
+          it: 'Il coltello nel tatuaggio',
+          en: 'The knife in the tattoo',
+        },
+        body: {
+          it: 'Otto anni di risparmi sepolti nell’orto non bastano: [[nezumi|Nezumi]] li dissotterra e li confisca per conto del governo, e quando Nami reagisce spara alla schiena di [[nojiko|Nojiko]]. Nami corre da [[arlong|Arlong]] a chiedere conto: lui risponde che non ha rotto nessuna promessa, ha solo mandato Nezumi a prendersi l’oro. Tornata al villaggio trova [[genzo|Genzo]] e gli altri già pronti a marciare su Arlong Park contro la sua volontà, disposti a morire per lei. Da sola, Nami si pianta più volte il coltello nel tatuaggio dei Pirati di Arlong sulla spalla, incapace di sopportarlo ancora.',
+          en: 'Eight years of savings buried in the orchard aren’t enough: [[nezumi|Nezumi]] digs them up and confiscates them for the government, and when Nami fights back he shoots [[nojiko|Nojiko]] in the back. Nami runs to demand an answer from [[arlong|Arlong]]; he tells her he broke no promise, he only sent Nezumi to take the gold. Back in the village she finds [[genzo|Genzo]] and the others already set to march on Arlong Park against her wishes, ready to die for her sake. Alone, Nami stabs the knife into the Arlong Pirates tattoo on her shoulder, again and again, unable to bear wearing it any longer.',
+        },
+      },
+    },
+    {
       episode: 44,
       value: {
         title: { it: 'Aiutami', en: 'Help me' },
@@ -1058,6 +1198,379 @@ export const eastBlueChronicles = {
         body: {
           it: 'A bordo della Sunny in fuga, il fulmine di Zeus continua a colpire mentre [[charlotte-linlin|Big Mom]] insegue la nave a cavallo della nuvola. [[brook|Brook]] lo taglia in due con un fendente, e Nami approfitta del colpo per scaricargli addosso tutta l’elettricità con il bastone del tempo, riducendolo a una nuvola tremante grande quanto una mano. Lo tiene stretto e gli dà un’unica scelta: servirla o morire. Zeus, che per una vita intera ha obbedito solo a Big Mom, accetta di restare con lei. La nuvola che poco prima incendiava il cielo per la sua vecchia padrona segue ora Nami sul ponte.',
           en: 'Aboard the fleeing Sunny, Zeus’s lightning keeps striking as [[charlotte-linlin|Big Mom]] chases the ship riding her storm cloud. [[brook|Brook]] cuts him clean in half, and Nami uses the opening to drain every spark of electricity out of him with her weather staff, shrinking him to a trembling cloud small enough to fit in one hand. She holds him tight and gives him one choice: serve her or die. Zeus, who has obeyed only Big Mom his whole life, agrees to stay with her. The cloud that moments ago was setting the sky on fire for his old mistress now follows Nami across the deck.',
+        },
+      },
+    },
+  ],
+  'koby': [
+    {
+      episode: 1,
+      value: {
+        title: {
+          it: 'Il mozzo che non è mai scappato',
+          en: 'The chore boy who never ran',
+        },
+        body: {
+          it: 'Kobi lava il ponte di questa nave da due anni, troppo spaventato da [[alvida|Alvida]] per scappare. Una botte rotola fuori dalla stiva, e Kobi la apre: ne esce un ragazzo affamato e sorridente. Tra le mele rubate il ragazzo, [[monkey-d-luffy|Rufy]], gli chiede cosa vorrebbe davvero fare della sua vita; per una volta lo dice ad alta voce, la giacca della Marina, non i pavimenti lavati. Alvida irrompe agitando la mazza, e il braccio di Rufy si allunga come gomma e la manda fuori dalla nave con un solo pugno. Kobi fissa lo spazio dove stava la sua capitana, tremante, e comincia a credere di poter essere libero.',
+          en: 'Koby has scrubbed this ship’s deck for two years, too afraid of [[alvida|Alvida]] to run. A barrel rolls out of the hold, and Koby cracks it open: a hungry, grinning boy climbs out. Over stolen apples the boy, [[monkey-d-luffy|Luffy]], asks what Koby really wants from his life; for once he says it aloud, a Marine’s coat, not scrubbed floors. Alvida storms in swinging her club, and Luffy’s arm stretches like rubber, knocking her off the ship in one punch. Koby stares at the space where his captain stood, shaking, and starts to believe he might be free.',
+        },
+      },
+    },
+    {
+      episode: 3,
+      value: {
+        title: {
+          it: 'I suoi primi due amici salpano',
+          en: 'His first two friends sail away',
+        },
+        body: {
+          it: '[[helmeppo|Hermeppo]] punta una pistola su Kobi per fermare la carica di [[monkey-d-luffy|Rufy]], ma Rufy lo scaraventa via mentre [[roronoa-zoro|Zoro]] abbatte [[morgan|Morgan]]. La guarnigione arresta il proprio capitano. Quella sera, a cena gratis da Rika, Kobi chiama Rufy e Zoro i suoi primi veri amici, proprio mentre i marine arrivano a mandare via i pirati. Interrogato se sta con loro, Kobi si spaventa, lo nega, e tira un pugno a Rufy; solo dopo capisce che Rufy ha perso apposta, perché lui potesse essere accettato come recluta. Mentre i pirati salpano, Kobi li saluta, e tutta la guarnigione, stupita, saluta insieme a lui.',
+          en: '[[helmeppo|Helmeppo]] holds a pistol on Koby to stop [[monkey-d-luffy|Luffy]]’s charge, but Luffy knocks him aside while [[roronoa-zoro|Zoro]] cuts down [[morgan|Morgan]]. The garrison arrests its own captain. That evening, over free food at Rika’s, Koby calls Luffy and Zoro his first real friends, just before Marines arrive to send the pirates away. Asked if he belongs with them, Koby panics, denies it, and punches Luffy; only after does he understand Luffy threw the fight on purpose, so Koby could be accepted as a recruit. As the pirates sail off, Koby salutes them, and the whole garrison, astonished, salutes alongside him.',
+        },
+      },
+    },
+    {
+      episode: 68,
+      value: {
+        title: {
+          it: 'Non congedati, dopotutto',
+          en: 'Not dismissed after all',
+        },
+        body: {
+          it: 'Ora mozzi al 153° Distaccamento di Villa di Conchiglia, Kobi e [[helmeppo|Hermeppo]] puliscono i corridoi dove comandava [[morgan|Morgan]], in attesa di consegnarlo al processo. Morgan si libera delle catene, prende Hermeppo in ostaggio e fugge su una barca rubata. Kobi si getta davanti al cannone della base perché i soldati non sparino sul suo amico, poi nuota fino alla barca e vi sale, dicendo a Morgan che non è più solo. Morgan getta via entrambi i ragazzi, senza la voglia di ucciderli. Pronti a essere congedati, Kobi e Hermeppo vengono invece avvisati: un viceammiraglio in visita li porta al Quartier Generale della Marina per l’addestramento.',
+          en: 'Now chore boys at Shells Town’s 153rd Branch, Koby and [[helmeppo|Helmeppo]] scrub the halls where [[morgan|Morgan]] once ruled, waiting to hand him over for trial. Morgan breaks his chains, seizes Helmeppo hostage, and rows off in a stolen boat. Koby blocks the base’s cannon so soldiers cannot fire on his friend, then swims after the boat and climbs aboard, telling Morgan he is not alone anymore. Morgan flings both boys aside rather than kill them. Braced to be dismissed, Koby and Helmeppo are told instead to pack: a visiting vice admiral is taking them to Marine Headquarters for training.',
+        },
+      },
+    },
+    {
+      episode: 315,
+      value: {
+        title: {
+          it: 'Un sogno da raggiungere insieme',
+          en: 'A dream worth racing for',
+        },
+        body: {
+          it: 'A Water 7, [[monkey-d-garp|Garp]] manda due allievi contro il pirata che sta distruggendo i suoi uomini; Kobi ed [[helmeppo|Hermeppo]] si lanciano all’attacco e vengono atterrati in pochi secondi. Il pirata è [[roronoa-zoro|Zoro]], e dietro di lui c’è [[monkey-d-luffy|Rufy]], il primo amico di Kobi, cresciuto più alto e più strano di come lo ricordava. Prima che Garp lo riporti all’addestramento, Kobi gli dice il proprio sogno: incontrarlo di nuovo nel Nuovo Mondo, lui ammiraglio e Rufy Re dei Pirati, per scoprire chi dei due ce l’ha fatta prima. Rufy accetta la sfida senza un’ombra di scherno, e gli dice di farsi trovare pronto.',
+          en: 'At Water 7, [[monkey-d-garp|Garp]] sends two trainees against the pirate wrecking his soldiers; Koby and [[helmeppo|Hermeppo]] charge in and are flattened in seconds. The pirate is [[roronoa-zoro|Zoro]], and behind him stands [[monkey-d-luffy|Luffy]], Koby’s first friend, grown taller and stranger than he remembers. Before Garp drags them back to training, Koby tells him his own dream: to meet him again in the New World, Koby an admiral and Luffy the Pirate King, and see which of them gets there first. Luffy takes the challenge without a hint of mockery, and tells him to be ready.',
+        },
+      },
+    },
+    {
+      episode: 488,
+      value: {
+        title: {
+          it: 'Uno sconosciuto dai capelli rossi',
+          en: 'A stranger with red hair',
+        },
+        body: {
+          it: 'Marineford è un massacro senza più scopo: [[portgas-d-ace|Ace]] e [[edward-newgate|Barbabianca]] sono morti, e i marine cadono per una guerra che nessuno può fermare. Il terrore di Kobi diventa parole prima che riesca a trattenerle, e grida di finirla, che ogni soldato che muore adesso muore per niente. [[sakazuki|Akainu]] alza un pugno per zittirlo per sempre, e Kobi si prepara al colpo senza rimpianti. Il colpo non arriva mai: [[shanks|uno sconosciuto dai lunghi capelli rossi]] ferma il pugno con la spada, dicendo a Kobi che quei secondi di coraggio hanno cambiato il destino del mondo. Poi le gambe di Kobi cedono, il campo di battaglia si spegne intorno a lui.',
+          en: 'Marineford is a slaughter with no purpose left: [[portgas-d-ace|Ace]] and [[edward-newgate|Whitebeard]] are dead, and Marines keep falling for a war nobody can stop. Koby’s terror breaks into words before he can hold them back, and he screams at both sides to end it, that every soldier dying now dies for nothing. [[sakazuki|Akainu]] raises a fist to silence him for good, and Koby braces for it with no regrets left. The blow never lands: [[shanks|a stranger with flowing red hair]] stops the fist cold with his sword, telling Koby those seconds of courage just changed the world’s fate. Then Koby’s legs give out, the battlefield going dark around him.',
+        },
+      },
+    },
+    {
+      episode: 1122,
+      value: {
+        title: { it: 'Honesty Impact', en: 'Honesty Impact' },
+        body: {
+          it: 'Rinchiuso in una cella a Hachinosu come ostaggio di [[marshall-d-teach|Teach]], Kobi è disgustato all’idea che la sua vita debba comprare legittimità ai pirati, certo che la Marina non pagherà mai. [[perona|Perona]] gli passa le chiavi in cambio della liberazione di [[gecko-moria|Moria]], e Kobi spalanca ogni cella, guidando una fuga attraverso l’isola, attirando su di sé il fuoco pirata. [[monkey-d-garp|Garp]] e lo SWORD piombano per tirarli fuori, ma mentre l’ultima nave si carica, [[avalo-pizarro|Pizarro]] alza una mano strappata all’isola, grande abbastanza da schiacciarla. Kobi riversa il suo Haki dell’Armatura in un solo pugno, Honesty Impact, frantumando il pugno prima di issarsi a bordo, scoprendo che Garp è rimasto indietro di proposito.',
+          en: 'Locked in a cell on Hachinosu as [[marshall-d-teach|Teach]]’s hostage, Koby is disgusted his life is meant to buy the pirates legitimacy, certain the Marines will never pay that price. [[perona|Perona]] slips him the keys for freeing [[gecko-moria|Moria]], and Koby throws open every cell, leading a breakout across the island, drawing pirate fire onto himself. [[monkey-d-garp|Garp]] and SWORD storm in to pull them out, but as the last ship loads, [[avalo-pizarro|Pizarro]] raises a hand torn from the island, big enough to crush it whole. Koby drives Armament Haki into one punch, Honesty Impact, shattering the fist before hauling himself aboard, only to learn Garp stayed behind on purpose.',
+        },
+      },
+    },
+  ],
+  'buggy': [
+    {
+      episode: 5,
+      value: {
+        title: {
+          it: 'Una gabbia per il ragazzo di gomma',
+          en: 'A cage for the rubber boy',
+        },
+        body: {
+          it: 'Il capitano pagliaccio ha passato la notte a dare la caccia alla ladra che gli ha rubato la mappa della Rotta Maggiore. Quando [[nami|Nami]] si presenta e gliela restituisce insieme al resto del tesoro, offrendogli [[monkey-d-luffy|Rufy]] legato come prova di voler tornare nella sua ciurma, lui le crede sulla parola. Poi lo rinchiude in una gabbia di ferro e prepara una Buggy Ball puntata dritta su di lui. Ordina a Nami di accendere la miccia; lei si rifiuta, e si ustiona le mani spegnendola a mani nude. Buggy scatena i suoi uomini contro di lei, certo che in quella piazza nessuno osi alzare una lama contro un capitano pirata.',
+          en: 'The clown captain has spent the night hunting the thief who stole his Grand Line map. When [[nami|Nami]] turns up and hands it back along with the rest of his treasure, offering [[monkey-d-luffy|Luffy]], bound, as proof she wants back in his crew, he believes her and takes her at her word. Then he locks Luffy in an iron cage and loads a Buggy Ball aimed straight at him. He orders Nami to light the fuse; she refuses, and burns her own hands snuffing it out bare-fingered. Buggy sets his men on her, certain that in this square no one dares raise a blade against a pirate captain.',
+        },
+      },
+    },
+    {
+      episode: 8,
+      value: {
+        title: {
+          it: 'Sparato fuori da Orange Town',
+          en: 'Blown out of Orange Town',
+        },
+        body: {
+          it: 'Bagy racconta tutto pur di guadagnare tempo: apprendista sulla nave di [[gold-roger|Gold Roger]] fin da bambino, insieme a [[shanks|Shanks]], trovò una mappa del tesoro durante un abbordaggio e la tenne segreta, pronto a lasciare la ciurma da ricco. Per nascondere il vero Bara Bara no Mi rubato alla nave lo ingoiò per sbaglio quando Shanks lo sorprese all’improvviso, perdendo così sia la mappa, volata in mare, sia la capacità di nuotare per andarla a recuperare. Ora vuole solo il suo forziere indietro. Si scaglia a pezzi sparsi contro [[nami|Nami]], ma [[monkey-d-luffy|Rufy]] lo abbatte, Nami gli lega le membra con una corda, e un solo Gomu Gomu no Bazooka scaraventa quel che resta di lui fuori da Orange Town.',
+          en: 'Buggy tells the whole story just to buy time: an apprentice on [[gold-roger|Gold Roger]]’s crew since childhood, alongside [[shanks|Shanks]], he found a treasure map during a raid and kept it secret, planning to leave the crew rich. To hide the real Bara Bara no Mi he’d stolen from the ship, he swallowed it by accident when Shanks caught him off guard, losing both the map, blown into the sea, and the ability to swim after it. Now he only wants his chest of loot back. He scatters himself in pieces at [[nami|Nami]], but [[monkey-d-luffy|Luffy]] strikes him down, Nami binds his limbs with rope, and one Gomu Gomu no Bazooka sends what’s left of him flying out of Orange Town.',
+        },
+      },
+    },
+    {
+      episode: 52,
+      value: {
+        title: {
+          it: 'Il fulmine sul palco delle esecuzioni',
+          en: 'Lightning on the execution platform',
+        },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]] sale di sua iniziativa sullo stesso palco dove [[gold-roger|Gold Roger]] fu giustiziato ventidue anni prima, e una guardia lo intima a scendere. Bagy arriva poco dopo, deciso a finire quello che le sue Buggy Ball non sono riuscite a fare a Orange Town: i ceppi di [[cabaji|Cabaji]] lo inchiodano al patibolo, la folla trattiene il fiato, e Bagy alza la spada per decapitarlo davanti a tutta la città. Nell’istante in cui la lama scende, un fulmine si abbatte sul palco: Bagy viene sbalzato all’indietro, bruciacchiato e stordito, mentre Rufy resta miracolosamente illeso e la folla grida al miracolo.',
+          en: '[[monkey-d-luffy|Luffy]] climbs onto the very platform where [[gold-roger|Gold Roger]] was executed twenty-two years earlier on his own, and a guard orders him down. Buggy arrives soon after, determined to finish what his Buggy Balls couldn’t at Orange Town: [[cabaji|Cabaji]]’s stocks pin him to the scaffold, the crowd holds its breath, and Buggy raises his blade to behead him in front of the whole town. In the instant the sword falls, lightning crashes down onto the platform: Buggy is thrown backward, scorched and stunned, while Luffy stands miraculously untouched and the crowd screams that it’s a miracle.',
+        },
+      },
+    },
+    {
+      episode: 423,
+      value: {
+        title: { it: 'Ritrovarsi all’inferno', en: 'A reunion in hell' },
+        body: {
+          it: 'Nel penitenziario sottomarino più sorvegliato del mondo, mentre cerca di scappare dal Livello 1 di Impel Down, Bagy si imbatte per caso in [[monkey-d-luffy|Rufy]], infiltrato in incognito per salvare [[portgas-d-ace|Ace]]. La sorpresa di Bagy lo smaschera davanti alle guardie, e i due finiscono per allearsi loro malgrado. Bagy racconta di essere finito qui inseguendo il tesoro del Capitano John, catturato dalla Marina prima di trovarlo. Livello dopo livello apre celle e usa la sua Bara Bara no Mi per farsi strada, sempre più convinto che con Rufy accanto almeno non morirà da solo.',
+          en: 'Inside the world’s most heavily guarded underwater prison, while trying to escape Level 1 of Impel Down, Buggy stumbles into [[monkey-d-luffy|Luffy]], who has snuck in undercover to save [[portgas-d-ace|Ace]]. Buggy’s own surprise blows Luffy’s cover in front of the guards, and the two end up allies whether they like it or not. Buggy explains he ended up here chasing Captain John’s treasure, caught by the Marines before he ever found it. Level by level he unlocks cells and uses his Bara Bara no Mi to clear a path, increasingly sure that with Luffy beside him, at least, he won’t die alone.',
+        },
+      },
+    },
+    {
+      episode: 489,
+      value: {
+        title: {
+          it: 'Un cappello di paglia e una bugia',
+          en: 'A straw hat and a lie',
+        },
+        body: {
+          it: 'Bagy fugge da Marineford col fiato corto quando si ritrova davanti [[shanks|Shanks]], l’ultima persona che vorrebbe vedere. Shanks gli lancia il proprio cappello di paglia e gli ordina di consegnarlo a [[monkey-d-luffy|Rufy]]; Bagy urla che non vuole più favori da lui, finché Shanks non gli promette in cambio una mappa del tesoro. Solo dopo aver corso a infilare il cappello nella mano di un sommergibile in immersione, mentre l’acqua si richiude sopra Rufy, Bagy scopre che la mappa era solo un modo per farlo muovere: non esiste alcun tesoro.',
+          en: 'Buggy is running for his life off Marineford when he finds himself face to face with [[shanks|Shanks]], the last person he wants to see. Shanks throws him his own straw hat and orders him to get it to [[monkey-d-luffy|Luffy]]; Buggy screams that he wants no more favors from him, until Shanks dangles a treasure map in trade. Only after he’s sprinted the hat into the hand of a submarine sliding underwater, the sea closing over Luffy, does Buggy realize the map was only ever a trick to get him moving: there is no treasure.',
+        },
+      },
+    },
+    {
+      episode: 1086,
+      value: {
+        title: {
+          it: 'Il nome sbagliato sulla porta',
+          en: 'The wrong name on the door',
+        },
+        body: {
+          it: 'I volantini che i suoi sottoposti hanno stampato per la Cross Guild mettono la faccia di Bagy al centro, più grande di quella di [[crocodile|Crocodile]] e di [[dracule-mihawk|Mihawk]], come se fosse lui il capo e loro i suoi scagnozzi. I due arrivano sulla sua isola pronti a ucciderlo per l’umiliazione, ma Mihawk, che non ha alcuna voglia di diventare lui stesso un Imperatore, ci ripensa: lasciare che sia Bagy ad attirarsi addosso tutta l’attenzione della Marina non è poi una cattiva idea. Nasce così la Cross Guild, con Bagy figura di facciata e i due veri fondatori ridotti a suoi ufficiali.',
+          en: 'The flyers his underlings printed for Cross Guild put Buggy’s face at the center, bigger than [[crocodile|Crocodile]]’s or [[dracule-mihawk|Mihawk]]’s, as if he were the boss and they were his lackeys. The two arrive on his island ready to kill him over the humiliation, but Mihawk, who has no wish to become an Emperor himself, reconsiders: letting Buggy draw all the Marines’ attention instead isn’t such a bad idea after all. Cross Guild is born from it, with Buggy as its figurehead and its two real founders reduced to his officers.',
+        },
+      },
+    },
+  ],
+  'dracule-mihawk': [
+    {
+      episode: 24,
+      value: {
+        title: {
+          it: 'Un coltellino contro tre spade',
+          en: 'A knife against three swords',
+        },
+        body: {
+          it: 'Mihawk affonda la nave ammiraglia di [[don-krieg|Creek]] per puro divertimento, e la sua barca a forma di bara è appena accostata al Baratie quando uno spadaccino sconosciuto lo sfida sul ponte. Giudica lo scontro troppo sbilanciato ed estrae solo un coltellino grande come un tagliacarte, che ferma le tre spade di [[roronoa-zoro|Zoro]] e gli apre il petto. Zoro non arretra. Colpito, Mihawk pronuncia il suo nome, sguaina Yoru e con un solo colpo gli spezza due lame. Zoro si volta e offre il petto piuttosto che la schiena. Mihawk lo colpisce, attento a lasciarlo vivo, e gli dice di diventare forte abbastanza da superarlo un giorno.',
+          en: 'Mihawk sinks [[don-krieg|Krieg]]’s flagship for amusement, and his coffin-shaped boat is barely alongside the Baratie before an unknown swordsman challenges him on the deck. He judges the match too lopsided for real steel and draws only a knife the size of a letter opener, stopping all three of [[roronoa-zoro|Zoro]]’s swords before it opens his chest. Zoro will not step back. Impressed, Mihawk speaks his name, draws Yoru, and shatters two of his blades in one stroke. Zoro turns and offers his chest rather than his back. Mihawk cuts him down, careful to leave him breathing, and tells him to grow strong enough to surpass him one day.',
+        },
+      },
+    },
+    {
+      episode: 45,
+      value: {
+        title: {
+          it: 'Un brindisi per il ragazzo dal cappello di paglia',
+          en: 'A drink for the boy in the straw hat',
+        },
+        body: {
+          it: 'Mihawk rintraccia [[shanks|Shanks]] su un’isola base remota della sua ciurma, e il suo arrivo basta a zittire i marinai più giovani dei Capelli Rossi. È venuto solo per consegnare un manifesto: trenta milioni di berry, il più alto dell’East Blue, per un ragazzo con un cappello di paglia. Shanks guarda il volto e Mihawk conferma ciò che già sospettava: è lo stesso bambino per cui Shanks ha perso il braccio sinistro. Shanks ride, felice, e non lascia passare la notizia senza un brindisi. Trascina Mihawk tra i barili della sua ciurma, e per una volta lo lascia riempirgli la coppa.',
+          en: 'Mihawk tracks [[shanks|Shanks]] down to one of his crew’s remote base islands, and his arrival alone is enough to startle the lower-ranked Red Hair Pirates into silence. He has come only to deliver a wanted poster: thirty million berries, East Blue’s highest, for a boy in a straw hat. Shanks studies the face and Mihawk confirms what he already suspects, that this is the same village boy for whom Shanks gave up his left arm. Shanks laughs, delighted, and will not let the news pass without a drink. He pulls Mihawk down among his crew’s barrels and bottles, and for once he lets himself be poured a cup.',
+        },
+      },
+    },
+    {
+      episode: 151,
+      value: {
+        title: { it: 'Solo per curiosità', en: 'Only out of curiosity' },
+        body: {
+          it: 'A Mary Geoise, Mihawk si presenta a una convocazione dei Corsari che non gli interessa affatto, curioso solo dei pirati che hanno battuto [[crocodile|Crocodile]]. Trova [[donquixote-doflamingo|Do Flamingo]] già intento a divertirsi, due marine costretti da fili invisibili a colpirsi a vicenda, e [[sengoku|Sengoku]] che gli ordina di smettere mentre [[bartholomew-kuma|Orso]] tace. Do Flamingo si scrolla di dosso la cosa: è venuto solo per noia. Mihawk dice a Sengoku di essere venuto solo a guardare. Prima che il summit trovi un sostituto, un tizio allampanato con scarpette a punta irrompe senza invito: Laffitte, che propone il suo capitano, uno sconosciuto di nome Marshall D. Teach, per il seggio vuoto.',
+          en: 'At Mary Geoise, Mihawk arrives to a Warlord summons he cares nothing about, curious only about the pirates who beat [[crocodile|Crocodile]]. He finds [[donquixote-doflamingo|Doflamingo]] already amusing himself, two marines forced by invisible strings to trade blows neither chose, and [[sengoku|Sengoku]] ordering him to stop while [[bartholomew-kuma|Kuma]] says nothing at all. Doflamingo shrugs that boredom brought him. Mihawk tells Sengoku plainly that he only came to look. Before the meeting can settle on a replacement, a lanky stranger in tap shoes barges in uninvited: Laffitte, offering his own captain, a nobody named Marshall D. Teach, for the empty seat.',
+        },
+      },
+    },
+    {
+      episode: 463,
+      value: {
+        title: {
+          it: 'Il fendente più forte del mondo',
+          en: 'The strongest slash in the world',
+        },
+        body: {
+          it: 'Quando [[kuzan|Aokiji]] congela lo tsunami che [[edward-newgate|Barbabianca]] ha scagliato sulla baia, Mihawk è il primo Corsaro a muoversi, mosso solo dal desiderio di misurarsi con l’uomo più forte del mondo prima di chiunque altro. Sguaina Yoru e colpisce una sola volta, e il fendente attraversa l’intera distanza gelata come un muro d’aria compressa diretto dritto al petto di Barbabianca. [[jozu|Jozu]] gli si mette in mezzo, trasforma il proprio braccio in diamante, e il colpo si ferma contro di lui. Mihawk osserva la parata senza rabbia né sorpresa, solo interesse, prendendo nota di quanta della sua forza un solo comandante sia riuscito ad assorbire.',
+          en: 'Once [[kuzan|Aokiji]] freezes the tsunami [[edward-newgate|Whitebeard]] sent across the bay, Mihawk is the first Warlord to move, wanting only to measure himself against the world’s strongest man before anyone else gets the chance. He draws Yoru and cuts once, and the slash crosses the whole frozen distance as a wall of compressed air aimed straight at Whitebeard’s chest. [[jozu|Jozu]] steps into its path, turns his own arm to diamond, and the blow stops dead against him. Mihawk studies the block without anger or surprise, only interest, filing away exactly how much of his strength one commander alone could absorb.',
+        },
+      },
+    },
+    {
+      episode: 515,
+      value: {
+        title: {
+          it: 'Uno studente in ginocchio',
+          en: 'A student on his knees',
+        },
+        body: {
+          it: '[[roronoa-zoro|Zoro]] torna trascinandosi al castello, ancora bendato per gli scontri con gli uomini scimmia, si getta in ginocchio sul pavimento e chiede a Mihawk di allenarlo. Mihawk non ne è commosso, ma disgustato: un uomo che non è riuscito a battere le bestie fuori dalle mura non ha alcun diritto di chiedere lezioni al più grande spadaccino del mondo, e glielo dice chiaro. Zoro risponde, secco, che le ha battute tutte. La cosa lo blocca sul serio. Lo osserva un istante, poi scoppia a ridere per la sfacciataggine della richiesta e accetta, a una condizione: [[perona|Perona]] lo curerà prima, perché un allievo che non regge in piedi non serve a niente da insegnare.',
+          en: '[[roronoa-zoro|Zoro]] drags himself back into the castle still bandaged from the humandrills, drops to his knees on the floor, and asks Mihawk to train him. Mihawk is disgusted rather than moved: a man who could not even beat the animals outside has no business asking to learn from the world’s greatest swordsman, and he says so. Zoro answers flatly that he beat every one of them. That stops Mihawk cold. He studies the boy a moment, starts laughing at the sheer nerve of the request, and agrees, on one condition: [[perona|Perona]] patches him up first, because a student who cannot stand is worth nothing to teach.',
+        },
+      },
+    },
+    {
+      episode: 1086,
+      value: {
+        title: {
+          it: 'Kuraigana non è più casa',
+          en: 'Kuraigana is no longer home',
+        },
+        body: {
+          it: 'Quando la Levely scioglie il sistema dei Corsari, Mihawk perde il perdono che gli garantiva il castello su Kuraigana in pace: da un giorno all’altro torna un pirata ricercato. [[crocodile|Crocodile]] gli propone una società per finanziare la loro nuova impresa, e insieme affondano le navi della Marina che assediano il nascondiglio di [[buggy|Buggy]] su Karai Bari Island, riscuotendo nello stesso gesto un debito che Buggy non può pagare se non a parole. Mesi dopo, quando i manifesti stampati dai suoi stessi uomini lo fanno dichiarare Imperatore al posto loro, Mihawk decide che lasciargli il titolo non gli costa nulla: non ha mai voluto esserlo lui stesso.',
+          en: 'When the Levely dissolves the Warlord system, Mihawk loses the pardon that let him keep his castle on Kuraigana in peace: overnight he is a wanted pirate again. [[crocodile|Crocodile]] proposes a partnership to fund their new venture, and together they sink the Marine ships blockading [[buggy|Buggy]]’s hideout on Karai Bari Island, collecting in the same stroke a debt Buggy can only repay in service. Months later, when flyers his own men printed declare him Emperor in their place, Mihawk decides handing him the title costs nothing: he never wanted to be one himself.',
+        },
+      },
+    },
+  ],
+  'smoker': [
+    {
+      episode: 49,
+      value: {
+        title: { it: 'Due sigari insieme', en: 'Two cigars at once' },
+        body: {
+          it: 'Nessun pirata è mai sfuggito a Loguetown, la città dove [[gold-roger|Gold Roger]] è nato ed è stato giustiziato, non sotto la sorveglianza di Smoker. Sale sul vecchio patibolo con due sigari già accesi, uno per lato della bocca, e solo allora riconosce nel ragazzo dal cappello di paglia, indicato da lui stesso verso la piattaforma un’ora prima, proprio il pirata che sta cacciando. [[monkey-d-luffy|Rufy]] gli scaglia contro un pugno che attraversa il suo corpo di fumo senza incontrare nulla: lo slancio del colpo a vuoto lo manda a ruzzolare lontano, oltre i tetti della città. Smoker non lo insegue: sa già dove, nella sua città, il ragazzo sta andando.',
+          en: 'No pirate has ever slipped free of Loguetown, the town where [[gold-roger|Gold Roger]] was born and executed, not on Smoker’s watch. He climbs to the old scaffold with two cigars already lit, one clamped into each side of his jaw, and only then places the straw-hatted boy he pointed toward the platform himself an hour earlier as the very pirate he has been hunting. [[monkey-d-luffy|Luffy]] throws a punch that passes clean through his smoke body, meeting nothing at all; the momentum of the missed blow sends him hurtling away, clean over the rooftops. Smoker does not give chase. He already knows exactly where in his own town the boy is headed.',
+        },
+      },
+    },
+    {
+      episode: 53,
+      value: {
+        title: { it: 'Un vento senza nome', en: 'A wind with no name' },
+        body: {
+          it: 'Sulla strada sopra il porto, Smoker angola [[monkey-d-luffy|Rufy]] per l’ultima volta, niente folla in cui sparire, nessun tetto su cui rimbalzare. Manca un solo colpo alla fine quando uno sconosciuto con un lungo cappotto si trova semplicemente lì, tra i due, senza fare nulla a cui un pugno o una spada possano rispondere. Una raffica di vento senza origine visibile lo scaraventa a terra sulla schiena, abbastanza forte da strappargli via il fumo dai polmoni. Quando si rialza, Rufy sta già correndo verso il mare, e lo sconosciuto si è già voltato, senza fretta, come se nulla di tutto questo gli fosse costato niente.',
+          en: 'On the road above the harbor, Smoker corners [[monkey-d-luffy|Luffy]] for good this time, no crowd to hide in, no rooftop left to bounce off. He is one strike from finishing it when a stranger in a long coat is simply there, between them, doing nothing a fist or sword could answer. A gust of wind with no visible source throws Smoker flat on his back, hard enough to drive the smoke clean out of his lungs. By the time he is upright again, Luffy is running for the sea, and the stranger has already turned away, unhurried, as if none of it had cost him anything at all.',
+        },
+      },
+    },
+    {
+      episode: 109,
+      value: {
+        title: { it: 'Salvato da un pirata', en: 'Saved by a pirate' },
+        body: {
+          it: 'Quando [[crocodile|Crocodile]] allaga la stanza ed esce lasciando che l’acqua finisca il lavoro, Smoker scopre l’unica cosa che il suo fumo non sa fare: nuotare. Affonda insieme agli altri, inutile nel proprio corpo, finché un braccio non lo aggancia e lo trascina su per la scala allagata fino all’aria aperta. È [[roronoa-zoro|Zoro]], uno dei pirati stessi che era venuto ad arrestare, ad aver appena speso le proprie forze per tenere a galla un capitano della Marina. Smoker non dice nulla mentre esce. Odia ogni secondo in cui gli deve l’aria nei polmoni, e odia ancora di più che sia stato [[monkey-d-luffy|Rufy]] a dire a Zoro di disturbarsi.',
+          en: 'When [[crocodile|Crocodile]] floods the chamber and walks out to let the water finish the job, Smoker discovers the one thing his smoke cannot do: swim. He sinks with the rest of them, useless in his own body, until an arm hooks under his and hauls him up through the flooding stairwell into open air. It is [[roronoa-zoro|Zoro]], one of the pirates he came to arrest, who has just spent his own strength keeping a Marine captain from drowning. Smoker says nothing on the way out. He hates owing him the air in his lungs, and hates more that [[monkey-d-luffy|Luffy]] was the one who told Zoro to bother.',
+        },
+      },
+    },
+    {
+      episode: 127,
+      value: {
+        title: { it: 'Una vittoria non sua', en: 'Not his victory' },
+        body: {
+          it: 'Il Quartier Generale della Marina chiama con la lumaca-telefono per congratularsi con l’ufficiale che ha abbattuto [[crocodile|Crocodile]]: Smoker, con una promozione in cambio, l’intera vicenda intestata solo a lui e a [[tashigi|Tashigi]]. È una menzogna costruita per seppellire la verità: che un pirata adolescente ha battuto due volte il membro della Flotta dei Sette, avvelenato e mezzo annegato, mentre la Marina è arrivata quasi sempre in ritardo. Smoker non ha mai chiesto che gli venisse affidata una vittoria che non era sua, e la promozione la vuole ancora meno. Dice al Governo Mondiale, con rabbia, esattamente cosa può farsene del suo grado.',
+          en: 'Marine Headquarters calls down the responder snail to congratulate the officer who brought down [[crocodile|Crocodile]], meaning Smoker, meaning a promotion to match, the whole affair signed over to him and [[tashigi|Tashigi]] alone. It is a lie built to bury the truth: that a teenage pirate beat the Warlord twice, poisoned and half drowned, while the Marines mostly arrived late and stood at the edges. Smoker never asked to be handed a win that was not his, and he wants the promotion even less. He tells the World Government, angrily and without softening a word of it, exactly what they can do with their rank.',
+        },
+      },
+    },
+    {
+      episode: 469,
+      value: {
+        title: { it: 'Il vento riceve un nome', en: 'The wind gets a name' },
+        body: {
+          it: 'A Marineford il fumo si chiude attorno a [[monkey-d-luffy|Rufy]] prima che possa schivare, la jitte di Smoker lo inchioda contro la pietra con una forza a cui il ragazzo non ha una vera risposta, finché [[boa-hancock|Hancock]] non gli spezza l’arma in mano piuttosto che lasciar arrivare il colpo. Smoker quasi non se ne accorge. L’annuncio di Sengoku risuona ancora su tutta la baia, che questo pirata, quello che anni prima era sfuggito alla sua città grazie soltanto a una raffica di vento di uno sconosciuto, è il figlio di [[monkey-d-dragon|Dragon]]. Inchiodandolo a terra adesso, Smoker capisce finalmente chi lo risparmiò quel pomeriggio sulla strada del porto, e perché.',
+          en: 'At Marineford the smoke closes around [[monkey-d-luffy|Luffy]] before he can dodge, Smoker’s jitte driving him down into the stone with a strength the boy has no real answer for, until [[boa-hancock|Hancock]] shatters the weapon in his hand rather than let the blow land. Smoker barely notices. Sengoku’s announcement is still ringing across the whole bay, that this pirate, the one who slipped his city years ago on nothing but a stranger’s gust of wind, is the son of [[monkey-d-dragon|Dragon]]. Pinning him down now, Smoker finally understands exactly who spared him that afternoon on the harbor road, and exactly why.',
+        },
+      },
+    },
+    {
+      episode: 587,
+      value: {
+        title: {
+          it: 'Il suo cuore, nella mano di Law',
+          en: 'His heart, in Law’s hand',
+        },
+        body: {
+          it: 'Su Punk Hazard, [[trafalgar-law|Law]] ha la lama alzata su [[tashigi|Tashigi]], ferita e pronta a chiedergli di finirla, quando Smoker si mette in mezzo e prende su di sé lo scontro. Va peggio di quanto si aspetti. Law legge ogni affondo della jitte, fa sorgere una punta di pietra dal terreno nel momento sbagliato, e quando Smoker vacilla dopo il colpo, gli chiede con voce quasi annoiata perché non riesca a vedere certe cose dalla sua posizione, poi infila una mano nel suo petto e gli estrae il cuore intatto e ancora battente, all’aria aperta. Smoker crolla prima di riuscire anche solo a chiedergli come.',
+          en: 'On Punk Hazard, [[trafalgar-law|Law]] has his blade raised over [[tashigi|Tashigi]], sliced open and begging to be finished, when Smoker steps between them and takes the fight instead. It goes worse than he expects. Law reads every jab of the jitte, raises a spike of stone from the ground at the exact wrong moment, and when Smoker staggers off it, asks in an almost bored voice why he can’t see a few things from where he’s standing, then reaches into his chest and lifts his heart clean out, whole and beating, into the open air. Smoker collapses before he can even ask how.',
+        },
+      },
+    },
+  ],
+  'monkey-d-dragon': [
+    {
+      episode: 314,
+      value: {
+        title: {
+          it: 'Il nome che Garp non doveva dire',
+          en: 'The name Garp wasn’t meant to say',
+        },
+        body: {
+          it: 'Mentre i marine ricostruiscono il muro che ha appena sfondato, [[monkey-d-garp|Garp]] lascia scappare un nome che nessuno doveva sentire: il padre di Rufy è Dragon, il rivoluzionario più ricercato dal Governo Mondiale. Rufy non capisce: non sapeva nemmeno di avere un padre. Garp si rende conto solo allora che a Loguetown l’uomo incappucciato che aveva scaraventato a terra Smoker con una sola raffica di vento non si era mai presentato. [[nico-robin|Robin]] spiega il resto alla ciurma sbigottita: Dragon guida l’Armata Rivoluzionaria, e pronunciare il suo nome basta a far tremare chiunque lo conosca.',
+          en: 'As the Marines rebuild the wall he just knocked down, [[monkey-d-garp|Garp]] lets slip a name no one was meant to hear: Luffy’s father is Dragon, the revolutionary the World Government wants most. Luffy doesn’t understand — he didn’t even know he had a father. Only then does Garp realize that the hooded man who threw Smoker flat with a single gust of wind at Loguetown never gave his name. [[nico-robin|Robin]] explains the rest to the stunned crew: Dragon leads the Revolutionary Army, and just saying his name is enough to make anyone who knows it flinch.',
+        },
+      },
+    },
+    {
+      episode: 441,
+      value: {
+        title: {
+          it: 'Un amico dentro Impel Down',
+          en: 'A friend inside Impel Down',
+        },
+        body: {
+          it: 'A Impel Down, appena rianimato dagli ormoni di [[emporio-ivankov|Ivankov]], Rufy gli dice senza pensarci che Dragon è suo padre. Ivankov resta senza fiato: chiede da dove viene, e quando sente che è dell’East Blue capisce di colpo perché Dragon guardava sempre verso est, qualunque fosse il mare in cui si trovavano. Si dichiara amico del rivoluzionario, arrestato proprio per questo, e giura che sosterrà Rufy comunque vada: non può guardare il figlio del suo amico morire davanti a sé. Poi torna a preparare la fuga verso il livello sei, con il tempo che stringe.',
+          en: 'In Impel Down, freshly revived by [[emporio-ivankov|Ivankov]]’s hormones, Luffy blurts out that Dragon is his father. Ivankov is stunned speechless; he asks where Luffy is from, and hearing East Blue suddenly understands why Dragon always used to face east, no matter which sea they were in. He declares himself a friend of the revolutionary, arrested for exactly that friendship, and swears he will back Luffy no matter what: he cannot watch his friend’s own son die in front of him. Then he turns back to the breakout, with the clock already running toward level six.',
+        },
+      },
+    },
+    {
+      episode: 510,
+      value: {
+        title: {
+          it: 'Anche un rivoluzionario è umano',
+          en: 'Even a revolutionary is human',
+        },
+        body: {
+          it: 'Al quartier generale, Dragon chiama [[emporio-ivankov|Ivankov]] con la lumaca telefonica, il giornale ancora aperto sul tavolo: la notizia che ha un figlio è ormai di dominio pubblico. Non sembra scosso; dice solo che forse, per una volta, farà bene ai suoi uomini sapere che anche lui è umano. Poi passa agli affari: con [[edward-newgate|Barbabianca]] morto a Marineford il mondo intero traballa, e serve riunire tutti i comandanti prima che qualcuno ne approfitti. Ivankov gli chiede se ha letto cosa ha combinato [[monkey-d-luffy|Rufy]] a Marineford; anche lui è rimasto sorpreso.',
+          en: 'At his headquarters, Dragon calls [[emporio-ivankov|Ivankov]] on the responder snail, the newspaper still open on the table: word that he has a son is public now. He doesn’t seem shaken; he only says that, for once, it might do his men good to see he is human too. Then he moves to business: with [[edward-newgate|Whitebeard]] dead at Marineford the whole world is reeling, and he needs every commander gathered before someone takes advantage. Ivankov asks if he read what [[monkey-d-luffy|Luffy]] pulled off at Marineford; he admits he was surprised himself.',
+        },
+      },
+    },
+    {
+      episode: 737,
+      value: {
+        title: {
+          it: 'Una mano fuori dall’acqua',
+          en: 'A hand out of the water',
+        },
+        body: {
+          it: 'Un ragazzo di dieci anni fugge verso il mare aperto su una barca da pesca rubata e incrocia per sbaglio la rotta della nave di un Nobile Mondiale, che apre il fuoco per l’affronto. Il secondo colpo disintegra lo scafo e manda il suo cappello a galleggiare solo tra i rottami. Il ragazzo affonda, ferito a un occhio e privo di sensi, quando una mano lo afferra e lo tira fuori dall’acqua: Dragon. Lo porta a bordo tra rivoluzionari in ansia per il suo ritardo; quando il ragazzo riapre gli occhi non ricorda nulla, nemmeno il proprio nome, che un oggetto tra le sue cose rivela essere [[sabo|Sabo]].',
+          en: 'A ten-year-old boy flees toward the open sea on a stolen fishing boat and crosses the path of a World Noble’s ship by accident, who opens fire at the insult. The second shot tears the hull apart and sends his hat floating alone among the wreckage. The boy sinks, an eye badly hurt and already unconscious, when a hand closes around his and pulls him out of the water: Dragon. He carries him aboard past revolutionaries anxious over his delay; when the boy opens his eyes again he remembers nothing, not even his own name, which an object among his belongings reveals to be [[sabo|Sabo]].',
+        },
+      },
+    },
+    {
+      episode: 1120,
+      value: {
+        title: {
+          it: 'Quel nome oltre il Trono Vuoto',
+          en: 'That name beyond the Empty Throne',
+        },
+        body: {
+          it: 'Al ritorno di [[sabo|Sabo]] su Momoiro Island, Dragon lo ascolta in silenzio mentre racconta come ha visto il Regno di Lulusia svanire in un lampo, cancellato da un’arma che nessuno di loro conosceva. Poi arriva al punto che lo turba di più: oltre il Trono Vuoto, dentro Pangea Castle, ha incontrato una figura chiamata [[im|Im]]. Alla parola, [[emporio-ivankov|Ivankov]] si irrigidisce e sussurra che potrebbe trattarsi di uno dei Venti iniziali, vivo da secoli prima ancora del Governo Mondiale. Dragon non commenta: fissa il rapporto sul tavolo, mentre il nemico che pensava di conoscere da una vita intera prende improvvisamente un altro nome.',
+          en: 'When [[sabo|Sabo]] returns to Momoiro Island, Dragon listens in silence as he describes watching the Lulusia Kingdom vanish in a flash, wiped out by a weapon none of them had ever heard of. Then Sabo reaches the part that unsettles him most: beyond the Empty Throne, inside Pangaea Castle, he met a figure called [[im|Im]]. At the word, [[emporio-ivankov|Ivankov]] stiffens and murmurs that it could be one of the original First Twenty, alive centuries before the World Government even existed. Dragon says nothing; he stares at the report on the table while the enemy he thought he had known his whole life suddenly takes on another name.',
+        },
+      },
+    },
+    {
+      episode: 1131,
+      value: {
+        title: { it: 'I Cacciatori della Libertà', en: 'The Freedom Fighters' },
+        body: {
+          it: 'Ventidue anni prima, un marine che ha appena voltato le spalle alla propria uniforme guida, al fianco di [[emporio-ivankov|Ivankov]], un manipolo di ribelli contro il palazzo di un re che affama e schiavizza metà della sua stessa isola. Sfondano i cancelli e liberano gli schiavi in catene, tra cui un gigante imprigionato per essersi opposto a quella legge, chiamato [[bartholomew-kuma|Kuma]], che li supplica di lasciarlo unirsi a loro. Da quella notte, i Cacciatori della Libertà smettono di essere una banda di disperati locali: diventano il primo nucleo di un esercito che vuole rovesciare governi, non solo re, e Dragon, l’ex marine, ne diventa il comandante che nessuno riesce più a fermare.',
+          en: 'Twenty-two years earlier, a Marine who has just turned his back on his own uniform leads, alongside [[emporio-ivankov|Ivankov]], a handful of rebels against the palace of a king who starves and enslaves half his own island. They break down the gates and free the slaves in chains, among them a giant imprisoned for standing against that same law, a man named [[bartholomew-kuma|Kuma]], who begs to join them. From that night on, the Freedom Fighters stop being a local band of the desperate: they become the first core of an army that means to topple governments, not just kings, and Dragon, the former Marine, becomes the commander nobody can stop again.',
         },
       },
     },
