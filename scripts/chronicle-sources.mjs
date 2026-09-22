@@ -1146,9 +1146,9 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_315',
       note: 'Episode 315’s own Long Summary: Koby hopes that one day, even as opponents, they can meet in the New World and see whose dream is realized first — Luffy as Pirate King or Koby as Admiral — and Luffy acknowledges this and, without a hint of ridicule, challenges him to meet him there as a worthy rival. Corrected after review: an earlier pass wrongly had Koby blurt the dream out and collapse in embarrassment, which the source does not support; he states it as a genuine hope and Luffy actively challenges him rather than merely not laughing.',
     },
-    489: {
-      source: 'https://onepiece.fandom.com/wiki/Koby',
-      note: 'Koby character page (Qref ep=488-489, chap 579): Koby screams at both sides to stop the war, Akainu raises a fist to kill him for wasting time, and his life is saved by the sudden arrival of Shanks, who stops the blow and tells him his few seconds of courage changed the world’s fate — consistent with the shanks chronicle’s own episode-489 story, where Shanks’s sword stops Akainu’s fist.',
+    488: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_488',
+      note: 'Corrected after review from 489 to 488: episode 488’s own Long Summary has Koby yelling that it’s enough, Akainu moving to execute him, and Shanks stopping the blow with his sword ("Shanks picks up his Straw Hat and announces he will bring an end to the war") all resolving within it — episode 489 covers a disjoint later scene. Consistent with the shanks chronicle’s own episode-489 story, which covers what happens next.',
     },
     1122: {
       source: 'https://onepiece.fandom.com/wiki/Koby',
@@ -1204,7 +1204,7 @@ export const CHRONICLE_SOURCES = {
     },
     1086: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1086',
-      note: 'After the Levely dissolves the Warlord system (stripping Mihawk of his immunity and reverting him to fugitive status), Mihawk and Crocodile team up, arrive at Karai Bari Island, sink the Marine ships besieging Buggy’s hideout to collect an old debt, and Buggy’s men mistake them for his subordinates — the founding of Cross Guild, with Mihawk and Crocodile as Chief Officers.',
+      note: 'After the Levely dissolves the Warlord system (stripping Mihawk of his immunity and reverting him to fugitive status), Mihawk and Crocodile team up to fund their new venture, arrive at Karai Bari Island, sink the Marine ships besieging Buggy’s hideout, and collect in the same stroke a debt Buggy cannot pay in money (so he works it off in services) — Buggy’s men mistake them for his subordinates. Months later, when Buggy’s own flyers get him declared Emperor in their place, Mihawk — who has no plans of becoming an Emperor himself — decides it costs him nothing to let it stand; Crocodile agrees. Corrected after review: an earlier pass conflated the two beats, implying the flyers/Emperor decision was the same event as the debt-collecting ship-sinking, when the episode presents them as sequential.',
     },
   },
   'smoker': {
@@ -1256,7 +1256,7 @@ export const CHRONICLE_SOURCES = {
     },
     1131: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1131',
-      note: 'Twenty-two years before the present (Freedom Fighters/History: the Sorbet Kingdom raid and the group’s transformation into the Revolutionary Army both happened "22 years ago," the same year as the Ohara Incident): Dragon, a Marine who has defected, leads the Freedom Fighters — alongside Ivankov and Kuma — to storm King Bekori’s palace on Sorbet Kingdom and free its enslaved southern half. Corrected after review: originally dated "twenty-five years," which was drawn from a separate, earlier data point on the same wiki page (the group already being well-known 25 years ago) rather than this specific raid.',
+      note: 'Twenty-two years before the present (Freedom Fighters/History: the Sorbet Kingdom raid and the group’s transformation into the Revolutionary Army both happened "22 years ago," the same year as the Ohara Incident): Dragon, a Marine who has defected, leads the Freedom Fighters alongside Ivankov to storm King Bekori’s palace on Sorbet Kingdom and free its enslaved southern half — among the freed prisoners is a giant, Kuma, imprisoned for standing against that same law, who joins the group afterward. Corrected after review (twice): originally dated "twenty-five years," which was drawn from a separate, earlier data point on the same wiki page (the group already being well-known 25 years ago) rather than this specific raid; a later pass also had Kuma fighting alongside Dragon and Ivankov as a co-attacker, when per Bartholomew_Kuma’s own wiki page he was one of the prisoners the raid freed, not a participant in storming the palace.',
     },
   },
 }
