@@ -308,7 +308,7 @@ export const CHRONICLE_SOURCES = {
     },
     26: {
       source: 'https://onepiece.fandom.com/wiki/Episode_26',
-      note: 'Candidate was episode 25-26 (Qref ep=25,26). The Zeff/rock flashback (rescue, Zeff losing his leg freeing himself from the wreckage while saving Sanji, then giving away all his food rations) plays out during the Pearl fight and closes at the end of 26, so filed there.',
+      note: 'Candidate was episode 25-26 (Qref ep=25,26). The Zeff/rock flashback plays out during the Pearl fight and closes at the end of 26, so filed there. Corrected after review: Zeff did not lose the leg escaping wreckage — marooned with Sanji on a barren rock, he gave the boy the only food bag and secretly cut off and ate his own leg to survive, a truth Sanji only discovers 70 days later (Zeff/History, "Past" section, Qref chap=57-58, ep=26).',
     },
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
@@ -1162,14 +1162,14 @@ export const CHRONICLE_SOURCES = {
     },
     8: {
       source: 'https://onepiece.fandom.com/wiki/Episode_8',
-      note: 'Buggy’s flashback: stole the map from Roger’s crew, ate the Bara Bara no Mi by accident fleeing Shanks, lost the map and his ability to swim; in the present Luffy strikes him down, Nami ropes his limbs, and Gomu Gomu no Bazooka sends him flying out of Orange Town.',
+      note: 'Buggy’s flashback (Buggy/History, "Past" section, Qref chap=19, ep=8): an apprentice on Roger’s crew alongside Shanks, Buggy found a treasure map during a raid and kept it secret; swallowed the real Bara Bara no Mi by accident hiding it from Shanks, then lost the map to the sea along with his ability to swim after it. Corrected after review: Buggy was one of Roger’s own apprentices, not an outsider stealing from the crew, and the incident is dated to "at least 27 years ago" — before Roger’s execution (22 years ago per this same character’s episode-52 story), not "ten years ago".',
     },
     52: {
       source: 'https://onepiece.fandom.com/wiki/Episode_52',
       note: 'On the Loguetown execution platform where Gold Roger died, Cabaji pins Luffy in stocks and Buggy raises his sword to behead him; lightning strikes the platform in that instant.',
     },
     425: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_423',
+      source: 'https://onepiece.fandom.com/wiki/Episode_425',
       note: 'On Level 1 of Impel Down, Luffy (undercover to save Ace) runs into Buggy, who is trying to escape; Buggy’s surprise blows Luffy’s cover and the two team up, continuing together into Level 2 (episodes 424-425), with Buggy explaining he was caught chasing Captain John’s treasure.',
     },
     489: {
