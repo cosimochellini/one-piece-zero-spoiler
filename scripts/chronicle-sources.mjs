@@ -764,7 +764,7 @@ export const CHRONICLE_SOURCES = {
     },
     1120: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1120',
-      note: 'Corrected from the candidate’s 1116, which is only the start of the Momoiro Island meeting: the Imu/First-Twenty theory is Qref’d to chapter 1086 / episode 1120, confirmed by that episode’s own short summary.',
+      note: 'Corrected from the candidate’s 1116, which is only the start of the Momoiro Island meeting: the Imu/First-Twenty theory is Qref’d to chapter 1086 / episode 1120, confirmed by that episode’s own short summary — "Ivankov deduced that Imu is Nerona Imu, one of the First Twenty." Corrected again after review (round 4 of PR #66): an earlier pass had the theory go unvoiced by all three, contradicting the episode’s own summary and the sibling monkey-d-dragon entry at the same episode; Ivankov now voices the suspicion in both stories, as the wiki does.',
     },
   },
   'shanks': {
@@ -1144,7 +1144,7 @@ export const CHRONICLE_SOURCES = {
     },
     315: {
       source: 'https://onepiece.fandom.com/wiki/Episode_315',
-      note: 'Koby character page (Qref ep=314-315): Koby asks Luffy about the New World before parting, then blurts out his dream of becoming an admiral before immediately collapsing in embarrassment, and Luffy accepts it as a certainty.',
+      note: 'Episode 315’s own Long Summary: Koby hopes that one day, even as opponents, they can meet in the New World and see whose dream is realized first — Luffy as Pirate King or Koby as Admiral — and Luffy acknowledges this and, without a hint of ridicule, challenges him to meet him there as a worthy rival. Corrected after review: an earlier pass wrongly had Koby blurt the dream out and collapse in embarrassment, which the source does not support; he states it as a genuine hope and Luffy actively challenges him rather than merely not laughing.',
     },
     489: {
       source: 'https://onepiece.fandom.com/wiki/Koby',
@@ -1178,7 +1178,7 @@ export const CHRONICLE_SOURCES = {
     },
     1086: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1086',
-      note: 'Buggy’s Cross Guild flyers put his face at the center, larger than Crocodile’s and Mihawk’s; the Marines take him for their leader and declare him an Emperor, and after nearly killing him for the humiliation, Mihawk and Crocodile decide to let him be the figurehead, founding Cross Guild with themselves as Chief Officers.',
+      note: 'Buggy’s Cross Guild flyers put his face at the center, larger than Crocodile’s and Mihawk’s; the Marines take him for their leader and declare him an Emperor, and after nearly killing him for the humiliation, Mihawk relents — he has no plans of becoming an Emperor himself — and Crocodile agrees, founding Cross Guild with Buggy as figurehead and themselves as Chief Officers. Corrected after review: an earlier pass wrongly gave an unpaid debt as the reason they spare him; per the episode, the debt (an unrelated, earlier funding loan) was already worked off in services before this scene, and this story’s sibling entry (dracule-mihawk, same episode) independently establishes that debt as already collected.',
     },
   },
   'dracule-mihawk': {
