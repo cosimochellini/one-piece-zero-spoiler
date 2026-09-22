@@ -308,7 +308,7 @@ export const CHRONICLE_SOURCES = {
     },
     26: {
       source: 'https://onepiece.fandom.com/wiki/Episode_26',
-      note: 'Candidate was episode 25-26 (Qref ep=25,26). The Zeff/rock flashback plays out during the Pearl fight and closes at the end of 26, so filed there. Corrected after review: Zeff did not lose the leg escaping wreckage — marooned with Sanji on a barren rock, he gave the boy the only food bag and secretly cut off and ate his own leg to survive, a truth Sanji only discovers 70 days later (Zeff/History, "Past" section, Qref chap=57-58, ep=26).',
+      note: 'Candidate was episode 25-26 (Qref ep=25,26). The Zeff/rock flashback plays out during the Pearl fight and closes at the end of 26, per the episode’s own Long Summary: a wave sweeps Sanji overboard from Zeff’s raided ship, another sinks both, Zeff dives in but his leg is caught in the wreckage and he cuts it off with a chain to free himself, then marooned together he gives Sanji all the food and Sanji only discovers the missing leg and the empty food bag once his own rations run out. Corrected twice after review: a first pass wrongly had Zeff lose the leg secretly cutting it off on the island to eat, which is the manga account (Episode 26’s own Anime Notes flag this exact divergence) — the anime version above is what this site follows.',
     },
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
@@ -1256,7 +1256,7 @@ export const CHRONICLE_SOURCES = {
     },
     1131: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1131',
-      note: 'Twenty-five years before the present: Dragon, a Marine who has defected, leads the Freedom Fighters — alongside Ivankov and Kuma — to storm the king’s palace on Sorbet Kingdom and free its enslaved southern half, the founding act that grows into the Revolutionary Army.',
+      note: 'Twenty-two years before the present (Freedom Fighters/History: the Sorbet Kingdom raid and the group’s transformation into the Revolutionary Army both happened "22 years ago," the same year as the Ohara Incident): Dragon, a Marine who has defected, leads the Freedom Fighters — alongside Ivankov and Kuma — to storm King Bekori’s palace on Sorbet Kingdom and free its enslaved southern half. Corrected after review: originally dated "twenty-five years," which was drawn from a separate, earlier data point on the same wiki page (the group already being well-known 25 years ago) rather than this specific raid.',
     },
   },
 }
