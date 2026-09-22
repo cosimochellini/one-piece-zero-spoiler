@@ -609,6 +609,7 @@ export const alabasta: Saga = {
           value: { it: 'Alubarna, Alabasta', en: 'Alubarna, Alabasta' },
         },
       ],
+      chronicle: alabastaChronicles['nefertari-vivi'],
     },
     'mr-3': {
       role: BW_OFFICER_ROLE,
@@ -861,6 +862,7 @@ export const alabasta: Saga = {
         { episode: 130, value: 81_000_000 },
         { episode: 1088, value: 1_965_000_000 },
       ],
+      chronicle: alabastaChronicles.crocodile,
     },
     'nefertari-cobra': {
       role: { it: 'Re di Alabasta', en: 'King of Alabasta' },

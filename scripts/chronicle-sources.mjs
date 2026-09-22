@@ -14,9 +14,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
       note: 'News Coo, 30,000,000 as the highest bounty in the East Blue, Loguetown named as Roger’s birthplace and execution ground.',
     },
+    111: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_111',
+      note: 'Candidate was the 110–111 range; 110 ends on the hook impaling Luffy, but Crocodile burying him in the quicksand and leaving happens in 111, so the story is filed there.',
+    },
     126: {
       source: 'https://onepiece.fandom.com/wiki/Episode_126',
       note: 'Crocodile through the ceiling, Vivi sees him fall, first rain in three years. Second pass: the second defeat was at the palace (eps 121–122), not beneath it, and the water barrel was pierced in that fight — both corrected.',
+    },
+    129: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_129',
+      note: "Candidate was episode 130, credited to 'the X salute, no Qref'; the wiki's Long Summary places the whole harbour scene, cannon shot and salute, inside 129 itself. Corrected to 129.",
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
@@ -108,6 +116,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_24',
       note: 'Kogatana, the chest wound, the vow never to lose again, Mihawk’s challenge.',
     },
+    65: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_65',
+      note: 'The full Whisky Peak rooftop fight — Miss Monday, Mr. 9, the wine barrel — resolves within this one episode.',
+    },
+    119: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_119',
+      note: 'Mr. 1 begins turning to steel at the end of episode 118; the "breath of all things" realisation and his defeat both happen within 119.',
+    },
     178: {
       source: 'https://onepiece.fandom.com/wiki/Episode_178',
       note: 'Zoro lands the finishing blow, Santoryu Hyakuhachi Pound Ho, breaking Ohm’s Iron Cloud in the Upper Yard ruins; episodes 174–175 (the issue’s candidate) are too early, as Ohm is still fighting Chopper there and Zoro hasn’t engaged him yet.',
@@ -162,6 +178,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
       note: 'Celebration and Nami’s permanent boarding (ep 44), the first poster (ep 45).',
     },
+    118: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_118',
+      note: 'Candidate was episode 117, no Qref; 117 only has Nami testing party-trick moves against Miss Doublefinger, and Tornado Tempo — the move that actually ends the fight — is not thrown until 118. Corrected to 118.',
+    },
     192: {
       source: 'https://onepiece.fandom.com/wiki/Episode_192',
       note: 'Nami drives the Waver up the falling Giant Jack with Luffy aboard; her active driving portion concludes here when the waver cuts out and Luffy leaps for the Ark Maxim.',
@@ -199,6 +219,10 @@ export const CHRONICLE_SOURCES = {
     18: {
       source: 'https://onepiece.fandom.com/wiki/Episode_18',
       note: 'Jango beaten and the Going Merry given (ep 17); Usopp paints the flag on the sail in 18.',
+    },
+    115: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_115',
+      note: 'Candidate was the 113–114 range, no Qref. Episode 114\'s own Short Summary says the tide is only "beginning to turn" for Usopp and Chopper, not that they win; a line in its Long Summary claiming an earlier defeat conflicts with that and with 115\'s own Short Summary, which says they "finally manage to defeat" the pair — read as a wiki inconsistency, since an episode\'s Short Summary is the more reliable single statement of what it resolves. Corrected to 115.',
     },
     186: {
       source: 'https://onepiece.fandom.com/wiki/Episode_186',
@@ -253,6 +277,18 @@ export const CHRONICLE_SOURCES = {
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
       note: 'The soup, the prostration before Zeff, All Blue.',
+    },
+    77: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_77',
+      note: 'Candidate was episode 76, no Qref; 76 only shows the call starting. Sanji actually posing as Mr. 3 and fooling Mr. 0 resolves in 77, along with the Unluckies attacking and the Eternal Pose. Corrected to 77.',
+    },
+    108: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_108',
+      note: 'The key slipping to the Bananawani and the flooding VIP room are also this episode, from Crocodile’s side; Sanji’s call as "Mr. Prince" reaches him here.',
+    },
+    116: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_116',
+      note: 'Bon Kurei’s Nami-transformation trick and Sanji finally seeing through it, ending the fight evenly, both resolve within 116.',
     },
     186: {
       source: 'https://onepiece.fandom.com/wiki/Episode_186',
@@ -319,6 +355,10 @@ export const CHRONICLE_SOURCES = {
     86: {
       source: 'https://onepiece.fandom.com/wiki/Episode_86',
       note: 'Kureha tells the Amiudake story; Hiluluk answers Wapol’s trap.',
+    },
+    88: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_88',
+      note: 'Chopper’s solo fight against Chessmarimo, cycling through Guard, Brain and Arm Point, resolves within this one episode, before he formally joins the crew (ep 95).',
     },
     95: {
       source: 'https://onepiece.fandom.com/wiki/Episode_95',
@@ -991,6 +1031,58 @@ export const CHRONICLE_SOURCES = {
     193: {
       source: 'https://onepiece.fandom.com/wiki/Episode_193',
       note: 'Two hundred million volts meet Luffy’s fist and the Golden Bell rings; episode 192 sets up the final exchange.',
+    },
+  },
+  'nefertari-vivi': {
+    67: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_67',
+      note: 'Threshold entry. Her real name slips out to the Unluckies, and the crew of five agrees to escort her home, both within this episode.',
+    },
+    104: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_104',
+      note: 'Baroque Works learns Mr. 0 is Crocodile, and the Long Summary confirms the Luffy/Vivi argument and his line about risking their lives together.',
+    },
+    121: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_121',
+      note: 'Crocodile drops Vivi from the cliff below the palace and Luffy, riding Pell, catches her out of the air, both within this episode.',
+    },
+    129: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_129',
+      note: 'Bon Kurei’s decoy, the harbour farewell and the crew’s silent answer with the X-marked arms are all in this episode’s Long Summary.',
+    },
+    886: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_886',
+      note: "Vivi protests to Lucci over Charlos's treatment of Shirahoshi and moves to intervene herself; Mjosgard is the one who actually strikes Charlos down.",
+    },
+    1120: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1120',
+      note: "Candidate cited both 1119 and 1120; 1119 only has Wapol breaking into the room. The cargo-crate stowaway and the ship's departure, the part the story is actually about, resolves in 1120.",
+    },
+  },
+  'crocodile': {
+    92: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_92',
+      note: "Threshold entry. Crocodile dries out Puppu's crew at Nanohana in a single scene; Puppu himself is not a filed character, so he is described generically.",
+    },
+    108: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_108',
+      note: 'Candidate was episode 107, no Qref matched; 107 covers Operation Utopia and Nanohana burning, with no cage or flooding content. The key slipping to the Bananawani and the VIP room flooding are both in 108. Corrected to 108.',
+    },
+    111: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_111',
+      note: 'Candidate cited 110 and 111; 110 ends on the hook impaling Luffy. Crocodile burying him in the quicksand, raising the second sandstorm toward Yuba and leaving all happen in 111.',
+    },
+    126: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_126',
+      note: 'Same episode as Luffy’s own “Rain over Alubarna” story, told from Crocodile’s side: driven through the ceiling and into the sky above Alubarna.',
+    },
+    475: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_475',
+      note: 'Crocodile’s sand knocks the executioners off Ace’s platform and he rebuffs Doflamingo’s taunt, both within this episode.',
+    },
+    1086: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1086',
+      note: 'Cross Guild’s formation, Buggy as its figurehead Emperor and Crocodile/Mihawk as Chief Officers are all confirmed in this episode; affiliation/bounty timelines elsewhere in the dossier use episode 1088 for the same development, a pre-existing discrepancy this PR does not touch.',
     },
   },
 }

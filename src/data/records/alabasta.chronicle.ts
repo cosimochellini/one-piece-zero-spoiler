@@ -30,6 +30,16 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 88,
+      value: {
+        title: { it: 'Sette forme, da solo', en: 'Seven forms, alone' },
+        body: {
+          it: "Con la bandiera di [[hiluluk|Hiluluk]] piantata sulla torre e [[wapol|Wapol]] in fuga, [[monkey-d-luffy|Rufy]] lascia Chessmarimo a Chopper da solo e gli chiede se può cavarsela; Chopper risponde che sarà uno scherzo. Ingoia una Rumble Ball e passa in rassegna le sue sette forme una dopo l'altra: Guard Point per spezzare due martelli, Brain Point per leggere lo scontro e trovare l'unico varco nella guardia dell'avversario, Arm Point per sferrare il colpo che chiude tutto. È la prima volta che qualcuno lo vede combattere così, e persino Rufy resta a fissarlo, stupito da cosa sappia fare davvero quella renna.",
+          en: 'With [[hiluluk|Hiluluk]]’s flag planted on the tower and [[wapol|Wapol]] fleeing, [[monkey-d-luffy|Luffy]] leaves Chessmarimo to Chopper alone and asks if he can handle it; Chopper says it will be easy. He swallows a Rumble Ball and cycles through his seven forms one by one: Guard Point to shatter a pair of hammers, Brain Point to read the fight and find the one gap in his opponent’s guard, Arm Point to land the blow that ends it. It is the first time anyone has watched him fight like this, and even Luffy stares, amazed at what the reindeer can actually do.',
+        },
+      },
+    },
+    {
       episode: 95,
       value: {
         title: { it: 'Ciliegi nella neve', en: 'Cherry blossoms in the snow' },
@@ -398,6 +408,160 @@ export const alabastaChronicles = {
         body: {
           it: "Nel cuore dell'Albero Balena di Zou, a Robin viene concesso il raro permesso di leggere un Poneglifo inciso in rosso anziché in blu, il primo che vede di quel colore. Ricordando gli anni di studio delle pietre a Ohara, lo traduce in una sequenza di coordinate nautiche che [[nami|Nami]] può segnare su una mappa. [[inuarashi|Inuarashi]] le spiega cosa ha appena trovato: un Poneglifo della Rotta, uno dei quattro sparsi per il mondo, ciascuno indica un'isola. Solo quando tutti e quattro saranno letti e collegati si potrà trovare Laugh Tale e, con esso, lo One Piece.",
           en: 'Inside the Whale Tree on Zou, Robin is given rare permission to read a Poneglyph carved in red instead of blue, the first she has ever seen in this colour. Recalling her years studying the stones on Ohara, she translates it into a string of nautical coordinates that [[nami|Nami]] can plot on a chart. [[inuarashi|Inuarashi]] explains what she has just found: a Road Poneglyph, one of four scattered across the world, each pointing to an island. Only once all four are read and connected can anyone find Laugh Tale and, with it, the One Piece.',
+        },
+      },
+    },
+  ],
+  'nefertari-vivi': [
+    {
+      episode: 67,
+      value: {
+        title: {
+          it: 'Miss Wednesday è una principessa',
+          en: 'Miss Wednesday is a princess',
+        },
+        body: {
+          it: "Bibi ha viaggiato con la ciurma come Miss Wednesday, un'agente di Baroque Works pagata per guidare estranei nel pericolo, e nessuno a bordo sa ancora che è davvero Nefertari Bibi, principessa di un regno che si sta sfasciando dall'interno. Quando la verità le sfugge per sbaglio, due sicari appostati su un tetto vicino la sentono anche loro. [[monkey-d-luffy|Rufy]] si limita ad alzare le spalle davanti al pericolo; [[nami|Nami]] fissa un prezzo di un miliardo di berry per riportarla a casa, pagata o no. Tra loro, [[roronoa-zoro|Zoro]], [[usopp|Usop]] e [[sanji|Sanji]] non si chiedono mai se in cinque contro un'intera organizzazione sia un incontro alla pari.",
+          en: 'She has been travelling with the crew as Miss Wednesday, a Baroque Works agent paid to guide strangers into danger, and no one aboard yet knows she is really Nefertari Vivi, princess of a kingdom coming apart from within. When the truth slips out of her by accident, two assassins perched on a nearby rooftop overhear it too. [[monkey-d-luffy|Luffy]] only shrugs at the danger; [[nami|Nami]] fixes a price of one billion berries to take her home regardless of payment. Between them, [[roronoa-zoro|Zoro]], [[usopp|Usopp]] and [[sanji|Sanji]] never once ask whether five against an entire organisation is a fair fight.',
+        },
+      },
+    },
+    {
+      episode: 104,
+      value: {
+        title: {
+          it: 'Mettere in gioco la vita insieme',
+          en: 'Put our lives on the line together',
+        },
+        body: {
+          it: "A Baroque Works arriva la notizia che il loro capo, Mr. 0, è in realtà [[crocodile|Crocodile]], intenzionato a lasciare che Alabasta si sfasci da sola in guerra civile prima di impadronirsene del tutto. [[monkey-d-luffy|Rufy]] raggiunge Bibi ed espone il suo piano per battere Crocodile direttamente; lei lo definisce sconsiderato e insiste che sia solo la sua vita a dover essere rischiata, per risparmiare il suo popolo e i suoi amici. Rufy non accetta l'offerta. Le dice che gli amici devono mettere in gioco la vita insieme, altrimenti la parola non significa niente. Bibi non trova altra risposta che le lacrime.",
+          en: 'Word reaches Baroque Works that their leader, Mr. 0, is really [[crocodile|Crocodile]], and that he means to let Alabasta tear itself apart in civil war before seizing it outright. [[monkey-d-luffy|Luffy]] catches up with Vivi and lays out his own plan to beat Crocodile directly; she calls it reckless and insists that only her own life should be risked, to spare her people and her friends alike. Luffy will not accept the offer. He tells her that friends are supposed to put their lives on the line together, or the word means nothing at all. Vivi has no answer for him but tears.',
+        },
+      },
+    },
+    {
+      episode: 121,
+      value: {
+        title: {
+          it: 'Gettata dalla scogliera, presa al volo',
+          en: 'Thrown from the cliff, caught in the air',
+        },
+        body: {
+          it: "Una tempesta di sabbia orchestrata da Crocodile acceca ribelli e guardie reali, spingendoli a spararsi a vicenda nella piazza del palazzo, e [[nefertari-cobra|Cobra]] ordina a Bibi di scappare. Lei rifiuta, ancora intenta ad avvertire tutti di una bomba che esploderà entro pochi minuti. Crocodile la afferra invece per il collo, deride i due anni passati a spiarlo dall'interno della sua stessa organizzazione, e la lascia cadere dalla scogliera sotto il palazzo verso quella che dovrebbe essere la sua morte. [[monkey-d-luffy|Rufy]] la afferra al volo prima che tocchi terra, poi torna subito indietro per finire quello che Crocodile ha iniziato.",
+          en: 'A sandstorm engineered by Crocodile blinds the rebels and the royal guard into shooting at each other across the palace square, and [[nefertari-cobra|Cobra]] orders Vivi to run. She refuses, still trying to warn everyone about a bomb timed to explode within minutes. Crocodile grabs her by the throat instead, mocks the two years she spent spying inside his own organisation, and drops her from the cliff below the palace to what should be her death. [[monkey-d-luffy|Luffy]] catches her clean out of the air before she lands, then turns straight back to finish what Crocodile started.',
+        },
+      },
+    },
+    {
+      episode: 129,
+      value: {
+        title: { it: "L'addio al porto", en: 'The harbour farewell' },
+        body: {
+          it: "[[bon-clay|Von Clay]] attira su di sé la flotta della Marina che insegue la Going Merry, comprando la fuga della ciurma al prezzo della propria cattura. Bibi ha scelto di restare a ricostruire il suo regno invece di salpare con i pirati che l'hanno salvato, e arriva al porto solo per chiedere loro un'ultima cosa: se dovessero rivedersi, la considererebbero ancora un'amica? [[monkey-d-luffy|Rufy]] apre la bocca per rispondere ad alta voce, ma [[nami|Nami]] lo ferma: i marine in ascolto lo prenderebbero come una confessione. Così tutta la ciurma alza insieme il braccio sinistro, una X disegnata su ogni palmo, senza dire una parola.",
+          en: '[[bon-clay|Bon Clay]] draws off the Marine fleet chasing the Going Merry, buying the crew’s escape at the cost of his own capture. Vivi has chosen to stay behind and rebuild her kingdom rather than sail on with the pirates who saved it, and she comes to the harbour only to ask them one last thing: if they ever meet again, will they still call her a friend? [[monkey-d-luffy|Luffy]] opens his mouth to answer aloud, but [[nami|Nami]] stops him: the watching Marines would hear it as a confession. So the whole crew raises its left arm together, an X inked across each palm, and says nothing at all.',
+        },
+      },
+    },
+    {
+      episode: 886,
+      value: {
+        title: {
+          it: 'Una voce alzata alla Reverie',
+          en: 'A voice raised at the Reverie',
+        },
+        body: {
+          it: 'Alla Reverie, il Nobile Mondiale Charlos fa trascinare via [[shirahoshi|Shirahoshi]] da uno schiavo per tenerla come animale domestico, mentre la famiglia reale degli Uomini di Mare e ogni delegato presente restano immobili, troppo spaventati dalla legge dei Draghi Celesti per muovere un dito. Bibi non riesce a tacere: dice in faccia a [[rob-lucci|Lucci]] che lasciare che un uomo ne possieda un altro solo perché nato come un dio non ha alcun senso, poi gli si scaglia contro lei stessa piuttosto che restare a guardare. Ci vuole un altro Nobile Mondiale, vergognoso della propria stessa gente, per abbattere Charlos prima che le guardie la raggiungano.',
+          en: 'At the Reverie, a World Noble named Charlos has [[shirahoshi|Shirahoshi]] dragged off the street by a slave to keep as a pet, while Fish-Man royalty and every delegate present stand frozen, too afraid of Celestial Dragon law to move a finger. Vivi cannot stay quiet: she tells [[rob-lucci|Lucci]] to his face that letting one man own another just because he was born a god makes no sense at all, then lunges at him herself rather than watch it happen. It takes another World Noble, one ashamed of his own kind, to strike Charlos down before the guards can reach her.',
+        },
+      },
+    },
+    {
+      episode: 1120,
+      value: {
+        title: {
+          it: 'Fuori dai denti di Wapol',
+          en: "Out through Wapol's teeth",
+        },
+        body: {
+          it: "La notizia della sorte di suo padre non l'ha ancora raggiunta quando CP0 le spiega, con calma assoluta, che intendono venderla come proprietà a un Nobile Mondiale anche lei. Poi il muro accanto a lei semplicemente si apre: [[wapol|Wapol]], in fuga dal proprio stesso panico, l'ha masticato da parte a parte. Bibi si libera attraverso il buco nelle sue fauci prima che gli agenti possano reagire, e i due attraversano insieme la Terra Santa nascosti dentro una cassa da carico, una principessa in fuga che deve la propria salvezza proprio all'uomo che un tempo vide [[monkey-d-luffy|Rufy]] scacciare dal suo stesso regno.",
+          en: 'Word of her father’s fate has not yet reached her when CP0 explains, quite calmly, that they mean to sell her off as property to some World Noble too. Then the wall beside her simply comes apart: [[wapol|Wapol]], fleeing in a panic of his own, has chewed straight through the stone. Vivi slips free through the hole in his jaws before the agents can react, and the two of them cross the Holy Land hidden together inside a cargo crate, a fugitive princess owing her escape to the very man she once watched [[monkey-d-luffy|Luffy]] drive out of his own kingdom.',
+        },
+      },
+    },
+  ],
+  'crocodile': [
+    {
+      episode: 92,
+      value: {
+        title: {
+          it: 'Una commissione di un pomeriggio',
+          en: 'An afternoon errand',
+        },
+        body: {
+          it: "Un capitano pirata ha attraccato a Nanohana e lascia che la sua ciurma saccheggi la città in pace, sicuro che nessuno nei paraggi possa toccarlo. Crocodile lo smentisce senza alzare la voce: arriva a piedi, dice a chi tiene alla vita di stendersi a terra, e lascia che i pirati lo pugnalino inutilmente prima di rispondere con un ciclone di sabbia. Quando si dirada, l'intera ciurma giace morta, prosciugata fino alle ossa e mezza sepolta dove si trovava. Se ne sta già andando quando la guardia reale arriva sulla scena, la commissione di un pomeriggio per un membro della Flotta contro pirati che non hanno mai avuto scampo.",
+          en: 'A pirate captain has made port at Nanohana and let his crew loot the town in peace, confident that nobody nearby can touch him. Crocodile proves him wrong without raising his voice: he walks in on foot, tells anyone who values his life to lie down, and lets the pirates stab him uselessly before answering with a spinning cyclone of sand. When it clears, the whole crew lies dead, drained bone-dry and half-buried where they stood. He is already leaving by the time the royal guard reaches the scene, one Warlord’s afternoon errand against pirates who never stood a chance.',
+        },
+      },
+    },
+    {
+      episode: 108,
+      value: {
+        title: { it: 'La chiave e l’allagamento', en: 'The key and the flood' },
+        body: {
+          it: "Rinchiusa la ciurma insieme al resto degli ostaggi, mentre [[nefertari-vivi|Bibi]] resta legata da sola nel suo casinò, Crocodile le fa dondolare davanti la chiave della gabbia abbastanza a lungo perché lei quasi riesca ad afferrarla, poi se la lascia scivolare dalle dita apposta. Cade attraverso una botola in una fossa di Bananawani, che la ingoiano intera. Concede a chiunque sia rimasto nella sua sala VIP un'ora di vita mentre la stanza si allaga lentamente, e si volta per andarsene senza un'ombra di preoccupazione, finché una voce sconosciuta sulla sua lumaca telefonica non lo costringe a restare ancora un po'.",
+          en: 'Locked away with the rest of the crew while [[nefertari-vivi|Vivi]] alone stays tied up in his casino, Crocodile dangles the cage key in front of her just long enough for her to almost reach it, then lets it slip through his own fingers on purpose. It falls through a trapdoor into a pit of Bananawani, who swallow it whole. He gives everyone left in his VIP room one hour to live as the chamber slowly floods, and turns to leave without a flicker of concern, until an unfamiliar voice on his responder snail forces him to stay a little longer.',
+        },
+      },
+    },
+    {
+      episode: 111,
+      value: {
+        title: {
+          it: 'Sepolto nelle sabbie mobili',
+          en: 'Buried in the quicksand',
+        },
+        body: {
+          it: "Tre minuti sono tutto il divertimento che [[monkey-d-luffy|Rufy]] merita ai suoi occhi; quando la clessidra finisce, Crocodile smette di giocare, prosciuga l'acqua dal suo braccio, lo trafigge e lo seppellisce vivo nelle sabbie mobili fuori Alubarna. Prima di andarsene, solleva un'altra tempesta di sabbia, puntata a sud verso la città di Yuba, solo per completare quello che la siccità su Alabasta aveva già iniziato. Se ne va convinto che il ragazzo sia finito. Non sa che l'acqua sta già tornando a scorrere a Yuba, né che un braccio testardo sta per trascinarsi fuori dalla sabbia proprio alle sue spalle.",
+          en: 'Three minutes is all the amusement [[monkey-d-luffy|Luffy]] is worth to him; when the timer runs out, Crocodile stops playing, drains the water clean out of his arm, impales him, and buries him alive in the quicksand outside Alubarna. Before leaving, he raises one more sandstorm, aimed south at the town of Yuba, purely to finish what the drought over Alabasta had already started. He walks away certain the boy is finished. He has no idea that water is already flowing back into Yuba, or that a stubborn arm is about to drag itself out of the sand behind him.',
+        },
+      },
+    },
+    {
+      episode: 126,
+      value: {
+        title: {
+          it: 'Attraverso il soffitto, nella pioggia',
+          en: 'Through the ceiling, into the rain',
+        },
+        body: {
+          it: 'Sottoterra, nella tomba reale che crolla, Crocodile crede di aver già vinto: [[nefertari-cobra|Cobra]], Miss All Sunday e persino [[monkey-d-luffy|Rufy]] giacciono immobili intorno a lui. Poi Rufy si rialza. Il suo uncino, la sua sabbia, ogni trucco che possiede non spiegano come un ragazzo che ha avvelenato e sepolto due volte sia ancora in piedi, tanto meno che riesca a colpirlo tanto forte da scaraventarlo tra le rovine. Rufy alla fine lo scaglia attraverso il soffitto e per centinaia di metri nel cielo sopra Alubarna. Ricade a pezzi in strada, e per la prima volta in tre anni comincia a piovere sulla città che ha cercato di conquistare.',
+          en: 'Underground, in the crumbling royal tomb, Crocodile believes he has already won: [[nefertari-cobra|Cobra]], Miss All Sunday and even [[monkey-d-luffy|Luffy]] all lie still around him. Then Luffy gets up. Crocodile’s hook, his sand, every trick he owns fail to explain how a boy he poisoned and buried twice is still standing, let alone landing punches that send him through the ruins. Luffy finally drives him clean through the ceiling and hundreds of feet into the sky above Alubarna. He comes down broken in the street below, and for the first time in three years, rain begins to fall on the city he tried to take.',
+        },
+      },
+    },
+    {
+      episode: 475,
+      value: {
+        title: {
+          it: 'Un signore della guerra che non si allea con nessuno',
+          en: 'A warlord who teams up with nobody',
+        },
+        body: {
+          it: "A Marineford, Sengoku ordina che l'esecuzione proceda non appena le forze di Barbabianca raggiungono la piazza, e i boia alzano le lame su [[portgas-d-ace|Ace]]. Prima che possano calare, un'ondata di sabbia dall'altro capo della piazza li spazza via dalla piattaforma. Crocodile non offre alleanza né scuse: si rifiuta soltanto di lasciare che i marine vincano così a buon mercato, e quando [[donquixote-doflamingo|Do Flamingo]] lo deride per l'interferenza, risponde che non si allea con nessuno, tanto meno con Barbabianca. Quali che siano le sue ragioni, un'esecuzione che doveva concludersi in pochi secondi si è appena guadagnata un po' più di tempo.",
+          en: 'At Marineford, Sengoku orders the execution to proceed the moment Whitebeard’s forces reach the plaza, and the executioners raise their blades over [[portgas-d-ace|Ace]]. Before the swords can fall, a wave of sand from across the square knocks them clean off the platform. Crocodile offers no ally and no apology: he simply refuses to let the Marines win this cheaply, and when [[donquixote-doflamingo|Doflamingo]] mocks him for the interference, he answers that he is teaming up with nobody, least of all Whitebeard. Whatever his reasons, an execution due to finish in seconds has just bought itself a little more time.',
+        },
+      },
+    },
+    {
+      episode: 1086,
+      value: {
+        title: {
+          it: 'Capo Ufficiale della gilda di un pagliaccio',
+          en: "Chief Officer of a clown's guild",
+        },
+        body: {
+          it: "A Karai Bari arriva la notizia che dei volantini per qualcosa chiamato Cross Guild circolano con [[buggy|Bagy]] al centro, più grande in ogni immagine dei due uomini che in realtà la dirigono. Crocodile e [[dracule-mihawk|Mihawk]] arrivano pronti a ucciderlo per l'umiliazione, finché non notano cosa hanno ottenuto davvero quei manifesti: dipingere un pagliaccio innocuo come il nuovo Imperatore del Mare, lasciando loro la libertà di agire nell'ombra come suoi Capi Ufficiali. Crocodile decide che una gilda di cacciatori di taglie costruita sulla faccia di qualcun altro gli va benissimo, e lascia a Bagy la vita e il suo nuovo titolo.",
+          en: 'Word reaches Karai Bari Island that flyers for something called Cross Guild have been circulating with [[buggy|Buggy]] front and centre, larger in every picture than either of the two men who actually run it. Crocodile and [[dracule-mihawk|Mihawk]] arrive ready to kill him for the humiliation, until they notice what the posters have actually done: painted an unthreatening clown as the newest Emperor of the Sea, and left themselves free to work from the shadows as its Chief Officers. Crocodile decides a bounty-hunting guild built on someone else’s face suits him perfectly, and lets Buggy keep his life and his new title.',
         },
       },
     },
