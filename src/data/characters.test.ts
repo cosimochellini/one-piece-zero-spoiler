@@ -491,7 +491,8 @@ describe('the chronicles', () => {
     }
 
     expect(leaks).toStrictEqual([])
-  })
+  }, // 5s budget has grown tight now that the chronicle corpus is large. // Scans every story against every entity in every locale; the default
+  15_000)
 })
 
 describe('getCharacter', () => {
