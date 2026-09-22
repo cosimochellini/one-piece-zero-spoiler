@@ -475,14 +475,16 @@ describe('the chronicles', () => {
     }
   })
 
+  // Scans every story against every entity in every locale, so its runtime
+  // grows with the chronicle corpus; the default 5s budget has grown tight.
   it('names no record the reader has not reached, linked or not', () => {
     // The markers are checked above; this is the plain text. A story at
-    // episode 1 that wrote "Kaido" or "Marineford" in passing would be a leak
-    // the walker in `slices.test.ts` cannot see, because it only reads ids
-    // and names.
+    // episode 1 that wrote "Kaido" or "Marineford" in passing would be a
+    // leak the walker in `slices.test.ts` cannot see, because it only
+    // reads ids and names.
     //
-    // Gathered first and asserted once, so a failure lists every leak in the
-    // batch rather than the first one found.
+    // Gathered first and asserted once, so a failure lists every leak in
+    // the batch rather than the first one found.
     const leaks: string[] = []
     for (const story of STORIES) {
       for (const locale of LOCALES) {
@@ -491,8 +493,7 @@ describe('the chronicles', () => {
     }
 
     expect(leaks).toStrictEqual([])
-  }, // 5s budget has grown tight now that the chronicle corpus is large. // Scans every story against every entity in every locale; the default
-  15_000)
+  }, 15_000)
 })
 
 describe('getCharacter', () => {
