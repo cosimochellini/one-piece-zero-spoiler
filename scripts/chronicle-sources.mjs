@@ -24,7 +24,7 @@ export const CHRONICLE_SOURCES = {
     },
     52: {
       source: 'https://onepiece.fandom.com/wiki/Episode_52',
-      note: 'Buggy traps Luffy on the execution platform, Luffy’s last words are that he’ll become Pirate King, and lightning strikes Buggy and the platform an instant before the blade lands — all within episode 52, confirming the Qref ep=52 candidate.',
+      note: 'Cabaji slams a set of stocks down on Luffy, trapping him; Buggy declares the execution. Luffy’s last words are that he’ll become Pirate King, and lightning strikes Buggy and the platform an instant before the blade lands — all within episode 52, confirming the Qref ep=52 candidate. Corrected after review: an earlier pass had Buggy himself lock Luffy in the stocks, contradicting this same PR’s own buggy episode-52 story, which correctly credits Cabaji.',
     },
     111: {
       source: 'https://onepiece.fandom.com/wiki/Episode_111',
@@ -1158,7 +1158,7 @@ export const CHRONICLE_SOURCES = {
   'buggy': {
     5: {
       source: 'https://onepiece.fandom.com/wiki/Episode_5',
-      note: 'Buggy locks Luffy in a cage after Nami hands him over, then loads a Buggy Ball aimed at him; Nami refuses to fire and burns her hands putting out the fuse, and Buggy sets his men on her.',
+      note: 'Buggy/History, Orange Town Arc: Nami stole Buggy’s Grand Line map, and in this scene returns both it and a bound Luffy, claiming she wants back into his crew; he believes her, locks Luffy in a cage, and loads a Buggy Ball aimed at him. Nami refuses to fire and burns her hands putting out the fuse, and Buggy sets his men on her. Corrected after review (twice): a first pass had the map stolen from Buggy overnight with no source; a second pass invented an unsupported “stolen from a Marine base” origin. Neither is in any source — the map is Buggy’s own treasure, and Nami is the one who stole it from him.',
     },
     8: {
       source: 'https://onepiece.fandom.com/wiki/Episode_8',
@@ -1236,7 +1236,7 @@ export const CHRONICLE_SOURCES = {
   'monkey-d-dragon': {
     314: {
       source: 'https://onepiece.fandom.com/wiki/Episode_314',
-      note: 'Garp reveals to the crew, mid-sentence, that Luffy’s father is Monkey D. Dragon, the Revolutionary Army leader the World Government wants most — and that he was the hooded man who saved Luffy from Smoker at Loguetown.',
+      note: 'Garp reveals to the crew, mid-sentence, that Luffy’s father is Monkey D. Dragon, the Revolutionary Army leader the World Government wants most — and that he was the hooded man who saved Luffy from Smoker at Loguetown with a gust of wind (Monkey D. Dragon/History, Loguetown Arc: "a massive gust occurred that blew away the Marines and freed Luffy"; Episode_53’s own summary: no blade or sword involved). Corrected after review: an earlier pass wrongly had Dragon stop “Smoker’s blade,” contradicting this same PR’s own smoker episode-53 story, which correctly has the stranger do “nothing a fist or sword could answer.”',
     },
     441: {
       source: 'https://onepiece.fandom.com/wiki/Episode_441',
