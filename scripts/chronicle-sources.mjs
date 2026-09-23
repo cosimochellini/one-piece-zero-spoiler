@@ -46,9 +46,21 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_193',
       note: 'Episode 192 only sets up the finishing blow against Enel; the Golden Bell actually rings and falls in 193, so the story is filed there.',
     },
+    228: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_228',
+      note: 'Candidate 227–228. Aokiji freezes Robin at the end of 227; in 228 Luffy slides her to Usopp and Chopper, fights alone, is frozen by Ice Time and left on the ground (Aokiji cites his debt for Crocodile), and later Chopper reports both hearts beating again. Freeze and recovery are both in 228.',
+    },
+    273: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_273',
+      note: 'Candidate 272–273 (Qref ep=272,273). Luffy only announces Gear 2 at the end of 272; the Jet Pistol, Blueno recognising Soru, the Tekkai Go and the Jet Bazooka that drops him are all in 273.',
+    },
     278: {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'Spandam points at the flag, the flag burns, Robin says she wants to live, the crew moves on the tower.',
+    },
+    314: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_314',
+      note: 'Candidate 313–314 (Qref ep=313,314). The wall punch, the rubber not helping and the word grandpa close 313; Garp’s complaints about Luffy not becoming a Marine, the childhood training (ravine, wild, balloon; Luffy History Qref chap=432 ep=314), Shanks as one of the Four Emperors and the rebuilt wall are 314. Dragon left to dragon@314, Koby to koby@315.',
     },
     349: {
       source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
@@ -148,6 +160,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_178',
       note: 'Zoro lands the finishing blow, Santoryu Hyakuhachi Pound Ho, breaking Ohm’s Iron Cloud in the Upper Yard ruins; episodes 174–175 (the issue’s candidate) are too early, as Ohm is still fighting Chopper there and Zoro hasn’t engaged him yet.',
     },
+    300: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_300',
+      note: 'Candidate 299–300. Episode 299 only has the fight heating up; the Asura illusion, Kaku reading it as Zoro’s spirit, Ichibugin through Amane Dachi, and the fired/zoo exchange with the key (Kaku page Qref chap=417,418 ep=300) are all 300.',
+    },
+    320: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_320',
+      note: 'Poster scene with Zoro’s 60M to 120M and his positive reaction, plus his wondering about a new sword on the Florian Triangle treasure ships, are in 320’s long summary. Yubashiri’s rusted hilt is shown in 313.',
+    },
     362: {
       source: 'https://onepiece.fandom.com/wiki/Ryuma_(Zombie)',
       note: 'Zoro challenges Ryuma at ep 357 (chap 462, Qref), but the duel itself, Ryuma’s defeat and him bestowing Shusui before burning to ash are dated to ep 362 (chap 467) on Ryuma’s own history page.',
@@ -214,6 +234,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_192',
       note: 'Nami drives the Waver up the falling Giant Jack with Luffy aboard; her active driving portion concludes here when the waver cuts out and Luffy leaps for the Ark Maxim.',
     },
+    296: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_296',
+      note: 'Candidate 297 moved to 296. Water weakness, Rain Tempo and the mirages are 295; the bubble wave, the horizontal bolt (Thunder Lance Tempo) and ripping Kalifa’s clothes for key #2 (Kalifa page Qref chap=412 ep=296) close in 296. Episode 297 is Jabra vs Usopp and Sanji.',
+    },
+    320: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_320',
+      note: 'Log Pose set after a week, needle pointing down toward Fish-Man Island, Nami’s Arlong memories, Robin’s treasure-ship remark, then the Cat Burglar 16,000,000 poster with the photographer posing as a reporter/magazine (Nami History Qref chap=435 ep=320). The dossier epithet and bounty were moved from 130 to 320 in this batch to match.',
+    },
     366: {
       source: 'https://onepiece.fandom.com/wiki/Absalom',
       note: 'Absalom’s history dates Lola interrupting the ceremony and Nami knocking him out with Swing Arm to ep 366 (chap 471); the ceremony itself starts at ep 352 and Sanji’s own fight with Absalom ends at 359.',
@@ -263,6 +291,14 @@ export const CHRONICLE_SOURCES = {
     236: {
       source: 'https://onepiece.fandom.com/wiki/Episode_236',
       note: 'The duel, the loss, Luffy leaves him the ship.',
+    },
+    278: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_278',
+      note: 'Sogeking burns the World Government flag on Luffy’s order in episode 278, after Spandam’s warning. The giants’ defection (270–272) and Kashii throwing him onto the courthouse roof (274) are past context. Candidate 278 kept.',
+    },
+    301: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_301',
+      note: 'In episode 301 Sogeking snipes Spandam and the Marines from the Tower of Justice, Franky frees Robin from the Seastone cuffs and she slaps Spandam down; all within one episode. Candidate 301–302 → 301.',
     },
     323: {
       source: 'https://onepiece.fandom.com/wiki/Episode_323',
@@ -334,9 +370,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_186',
       note: 'Confirms Sanji dislodged the gear choking off Enel’s storm machinery and is found blackened and unconscious; episode 184 (the issue’s candidate) only covers the boarding, before the sabotage.',
     },
+    261: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_261',
+      note: 'Wanze appears at the end of 258, the fight runs through 259–260 and ends in 261 with the three sins and Santen Découpage throwing Wanze into the CP9 car. Candidate 257–258 → 261.',
+    },
     298: {
       source: 'https://onepiece.fandom.com/wiki/Episode_298',
       note: 'Jabra’s “sister” story seen through, Diable Jambe, the key taken.',
+    },
+    320: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_320',
+      note: 'The Franky Family brings the new posters at the end of episode 320: Black Leg Sanji, 77,000,000, with a drawing instead of a photo. The Fish-Man Island talk is earlier in the same episode.',
     },
     359: {
       source: 'https://onepiece.fandom.com/wiki/Absalom',
@@ -412,6 +456,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_293',
       note: 'Third Rumble Ball (eaten ep 290), Kumadori thrown to the courthouse.',
     },
+    320: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_320',
+      note: 'Episode 320 reveals the crew’s bounties; Chopper, Cotton Candy Lover, gets 50 because he is mistaken for the crew’s pet. Candidate 320 kept.',
+    },
     363: {
       source: 'https://onepiece.fandom.com/wiki/Hogback',
       note: 'Hogback’s history dates his full confrontation with Chopper over his research and values as a doctor to ep 363 (chap 468); the interruption by Oars and his escape attempt follow at 364.',
@@ -458,6 +506,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_194',
       note: 'Robin reads the Poneglyph under the recovered Golden Bell, then finds Gol D. Roger’s own inscription on the bell itself; Gan Fall confirms Roger visited Skypiea over twenty years earlier.',
     },
+    245: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_245',
+      note: 'Episode 244 has Lucci name CP9 to Iceburg and ends as the Straw Hats break in; in 245 Robin states her wish, pins Iceburg and leaves through the window. Candidate 245–246 → 245.',
+    },
+    277: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_277',
+      note: 'The Ohara flashback starts in 275 (Saul, Tree of Knowledge), Olvia and the raid follow in 276, and 277 ends with Clover shot, the Buster Call and Olvia sending Robin off with Saul. Saul’s last stand and Kuzan’s help are in 278 and left out.',
+    },
     278: {
       source: 'https://onepiece.fandom.com/wiki/Episode_278',
       note: 'The whole exchange on the courthouse roof.',
@@ -503,6 +559,14 @@ export const CHRONICLE_SOURCES = {
     284: {
       source: 'https://onepiece.fandom.com/wiki/Episode_284',
       note: 'Pluton blueprints burned before Spandam; Kokoro’s Rocketman arrives.',
+    },
+    289: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_289',
+      note: 'Candidate 294 → 289. The cola shortage, Chopper’s vegetable juice, tea and cola, and the Strong Hammer are ep.288; the fight continues over the water and Franky wins with Coup de Vent at 289. At 293 he is already taking the key from the unconscious Fukurou.',
+    },
+    312: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_312',
+      note: 'Franky’s Klabautermann memory, Iceburg’s arrival, the keel snapping, the Viking funeral and Merry’s last words are all ep.312. Franky crying on all fours is from Franky/History (no Qref); the summary says nobody could hold back tears, so the story says only that he cries.',
     },
     322: {
       source: 'https://onepiece.fandom.com/wiki/Episode_322',
@@ -810,6 +874,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Portgas_D._Ace/History',
       note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (151, corrected from 152 in the same PR) is still after this episode.',
     },
+    325: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_325',
+      note: 'Episode 325 is the whole Banaro Island duel: Teach confesses killing Thatch, threatens Luffy, and the final clash is left without an outcome. Candidate 325 kept; the result is told at 378.',
+    },
     378: {
       source: 'https://onepiece.fandom.com/wiki/Episode_378',
       note: 'Issue candidate for “the world learns his public execution is scheduled”, but the episode 378 summary and character list (Ace, Iceberg, Peepley Lulu “newspaper”) only show Hogback handing Absalom a newspaper revealing Blackbeard’s capture of Ace and his new Warlord seat; the execution itself is not announced on screen until 395, already the subject of the existing 416 entry. Filed here as the capture becoming public, distinct from that later reveal.',
@@ -928,7 +996,7 @@ export const CHRONICLE_SOURCES = {
     },
     325: {
       source: 'https://onepiece.fandom.com/wiki/Episode_325',
-      note: 'Teach kills Thatch and fights Ace on Banaro Island; the Yami Yami no Mi is revealed.',
+      note: 'Teach kills Thatch and fights Ace on Banaro Island; the Yami Yami no Mi is revealed. Corrected in the Water Seven batch: the episode leaves only “Ace’s hat” on the ground, not a straw hat.',
     },
     446: {
       source: 'https://onepiece.fandom.com/wiki/Episode_446',
@@ -1257,6 +1325,88 @@ export const CHRONICLE_SOURCES = {
     1131: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1131',
       note: 'Twenty-two years before the present (Freedom Fighters/History: the Sorbet Kingdom raid and the group’s transformation into the Revolutionary Army both happened "22 years ago," the same year as the Ohara Incident): Dragon, a Marine who has defected, leads the Freedom Fighters alongside Ivankov to storm King Bekori’s palace on Sorbet Kingdom and free its enslaved southern half — among the freed prisoners is a giant, Kuma, imprisoned for standing against that same law, who joins the group afterward. Corrected after review (twice): originally dated "twenty-five years," which was drawn from a separate, earlier data point on the same wiki page (the group already being well-known 25 years ago) rather than this specific raid; a later pass also had Kuma fighting alongside Dragon and Ivankov as a co-attacker, when per Bartholomew_Kuma’s own wiki page he was one of the prisoners the raid freed, not a participant in storming the palace.',
+    },
+  },
+  'kuzan': {
+    227: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_227',
+      note: 'Threshold entry. Episode 226 only ends with Chopper waking a sleeping man whom Robin names as Aokiji; 227 has the lazy-justice talk, the castaways who saw him cycle on the sea, the Ice Age road with the Sea King, the grandfather remark, Robin shattering him, and the frozen fist, arm, leg and Robin. The anime replaces the manga’s old man Tonjit with stranded castaways, so no old man’s house appears.',
+    },
+    228: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_228',
+      note: 'Added at the freeze episode, told from his side: the stomp on Robin, the one-on-one, Ice Time on Luffy, sparing him for Crocodile, Smoker’s message and the note about Water 7 are all in 228, none in 227.',
+    },
+    278: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_278',
+      note: 'Candidate was episode 254 (the Spandam call). Episode 254 only has Spandam praising Aokiji’s generosity with agents and battleships; the tip about Robin and the Buster Call permission are explained in 268. The story is refiled on the Ohara flashback of 278 (Kuzan fights Saul, the evacuation ship is sunk, he freezes Saul and helps Robin escape; history page Qref ep=278), with the Spandam call closing it.',
+    },
+    315: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_315',
+      note: 'The talk through the wall during the party: why she did not run, Saul as a friend, twenty years of watching her, the tree to call home and the icy X are all in 315.',
+    },
+    462: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_462',
+      note: 'Candidate was episode 466 (a Qref for his comment on Luffy’s arrival). The waves are frozen with Ice Age in 462, where he also attacks Whitebeard, is shattered and freezes the bay; the fruit is not named, since the Tremor-Tremor Fruit record is filed at 466.',
+    },
+    625: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_625',
+      note: 'He appears and calls Smoker his friend at the end of 624; the freeze, Doflamingo’s exit with Buffalo and Baby 5, the talk with Smoker and the request to the G-5 men are in 625.',
+    },
+    1122: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1122',
+      note: 'The Blackbeard recruitment is in 1114–1115, the training flashbacks and the stalemate in 1121; Garp punching the ground to stop him intercepting and Kuzan freezing him solid close 1122.',
+    },
+  },
+  'monkey-d-garp': {
+    313: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_313',
+      note: 'Threshold entry. The bulldog ship, the Roger reputation, the punch through the wall that hurts rubber Luffy and Grandpa are all in 313; Dragon, Koby and Helmeppo wait for 314 and are left out.',
+    },
+    324: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_324',
+      note: 'The attack and the hand-thrown cannonballs start in 323 (usopp@323 and sengoku@323 already mention them, consistent with the wiki); the enormous cannonball, the Coup de Burst, Aokiji’s surprise and Garp’s laugh close the scene in 324.',
+    },
+    422: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_422',
+      note: 'Garp’s visit to Ace’s cell starts at the end of 421 (Ace asks to die; his death will not stop Whitebeard); the pride in Luffy, the criminal’s blood, the Marines complaint (History Qref ep=422) and Whitebeard as Ace’s only father are in 422.',
+    },
+    480: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_480',
+      note: 'Candidate was episode 479. Garp only blocks the bridge at the end of 479; the training flashbacks, the enemy declaration, the missed punch and Luffy knocking him down are in 480 (Qref ep=479, ep2=480).',
+    },
+    1114: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1114',
+      note: 'The ship launched by a punch, Koby as the future of the Marines, Galaxy Impact and Kuzan freezing Hibari are all in 1114. Second pass: Kuzan is not identified as Garp’s pupil until 1115/1121, so the story says only that he was once an admiral, which 1114’s account of the Fleet Admiral duel supports.',
+    },
+    1122: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1122',
+      note: 'Shiryu’s stab is in 1121; the split skull, Koby breaking the hand, Garp staying behind with his last message and Kuzan freezing him are in 1122. Dossier: the “captured by the Blackbeard Pirates” affiliation was filed at 1109, an episode Garp is not in; moved to 1122, where “Kuzan captures him, freezing him solid”.',
+    },
+  },
+  'rob-lucci': {
+    230: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_230',
+      note: 'Debut: the Galley-La shipwrights beat Mikazuki’s crew with a cannon and the Straw Hats find a crowd praising Lucci, one of the shipwrights; Hattori debuts with him here (Hattori page, ch.323/ep.230). The ventriloquism is not in the ep.230 summaries (History cites it at ep.232), so the story only says a pigeon is perched on him. Second pass: “the women think him handsome” was unattested and removed.',
+    },
+    246: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_246',
+      note: 'Unmasking at ep.243, the CP9 explanation and the Franky deduction at 244, Paulie cut down with Shigan and the transformation begun at the end of 245; the leopard fruit is named, the building cut in half and Luffy and Zoro thrown out at 246. Records: the CP9 affiliation of Lucci, Kaku, Kalifa and Blueno moved from 264 to 244 (Lucci’s “strongest agent” to 266, where Fukurou measures 4000 doriki), and the CP9 fruits from 273 to the episodes that name them: Door 243, Leopard 246, Giraffe and Wolf 286, Bubble 293.',
+    },
+    294: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_294',
+      note: 'Lucci is never on the Bridge of Hesitation here: at 288 he admits letting Chimney follow, at 293 he sends Spandam ahead and waits behind a wooden door in the undersea passage, and the rematch itself starts in a storage room at 294.',
+    },
+    309: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_309',
+      note: 'Rokuogan floors Luffy at 308 and Usopp unmasks at its end; the tail-trap, the full-power Rokuogan, the Jet Gatling and the announcement of Lucci’s defeat are all ep.309, fought on Tower 1 of the Bridge of Hesitation.',
+    },
+    1101: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1101',
+      note: 'Refused entry at 1098; S-Bear’s transport and Atlas dropped by Rokuogan at 1099 (not cut down); Sakazuki’s order, both awakened forms and Sentomaru struck at 1100; Luffy’s Dawn Rocket defeats Lucci, who gets up and finishes Sentomaru, at 1101.',
+    },
+    1145: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1145',
+      note: 'The Elders land and Zoro’s strike after Sanji’s deadweight call are ep.1144; Jinbe’s Gosenmaigawara Shuto, the three chest wounds, Mars asking for York and the plea for Kaku are ep.1145.',
     },
   },
 }

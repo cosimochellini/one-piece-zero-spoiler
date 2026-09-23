@@ -380,6 +380,7 @@ export const waterSeven: Saga = {
       ],
     },
     'kuzan': {
+      chronicle: waterSevenChronicles.kuzan,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
         it: 'Compare su Long Ring Long Land senza scorta, in bicicletta, e passa più tempo a dormire in piedi che a parlare. Congela il mare e ci cammina sopra, e per lui una ciurma di pirati è una pratica da sbrigare subito o da rimandare, a seconda dell’umore. Chiama pigra la sua idea di giustizia, e nessuno capisce se sia un avvertimento.',
@@ -480,12 +481,13 @@ export const waterSeven: Saga = {
       },
       affiliation: [
         { episode: 230, value: GALLEY_LA_DOCK_ONE },
-        { episode: 264, value: CIPHER_POL_9 },
+        { episode: 244, value: CIPHER_POL_9 },
         { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
       ],
-      devilFruit: [{ episode: 273, value: ['ox-ox-fruit-model-giraffe'] }],
+      devilFruit: [{ episode: 286, value: ['ox-ox-fruit-model-giraffe'] }],
     },
     'rob-lucci': {
+      chronicle: waterSevenChronicles['rob-lucci'],
       role: DOCK_ONE,
       log: {
         it: 'Sta al Dock 1 e non dice una parola: a rispondere è Hattori, il piccione posato sul suo cilindro, mentre lui resta immobile a braccia conserte. Gli operai ci hanno fatto l’abitudine e nessuno ci vede più niente di strano. Quando si muove, ha una scioltezza che mette a disagio anche chi non saprebbe dire perché.',
@@ -494,8 +496,9 @@ export const waterSeven: Saga = {
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         { episode: 230, value: GALLEY_LA_DOCK_ONE },
+        { episode: 244, value: CIPHER_POL_9 },
         {
-          episode: 264,
+          episode: 266,
           value: {
             it: 'Cipher Pol 9, l’agente più forte',
             en: 'Cipher Pol 9, strongest agent',
@@ -503,7 +506,7 @@ export const waterSeven: Saga = {
         },
         { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
       ],
-      devilFruit: [{ episode: 273, value: ['cat-cat-fruit-model-leopard'] }],
+      devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
     'kalifa': {
       role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
@@ -519,9 +522,9 @@ export const waterSeven: Saga = {
             en: 'Galley-La Company, Iceburg’s secretary',
           },
         },
-        { episode: 264, value: CIPHER_POL_9 },
+        { episode: 244, value: CIPHER_POL_9 },
       ],
-      devilFruit: [{ episode: 273, value: ['bubble-bubble-fruit'] }],
+      devilFruit: [{ episode: 293, value: ['bubble-bubble-fruit'] }],
     },
     'blueno': {
       role: { it: 'Barista', en: 'Barkeeper' },
@@ -537,9 +540,9 @@ export const waterSeven: Saga = {
             en: 'Blueno’s Bar, barkeeper',
           },
         },
-        { episode: 264, value: CIPHER_POL_9 },
+        { episode: 244, value: CIPHER_POL_9 },
       ],
-      devilFruit: [{ episode: 273, value: ['door-door-fruit'] }],
+      devilFruit: [{ episode: 243, value: ['door-door-fruit'] }],
     },
     'kiwi-and-mozu': {
       role: {
@@ -651,7 +654,7 @@ export const waterSeven: Saga = {
         en: 'He spends more time needling the other agents than working, and with one of them it always ends in raised fists. He tells tearful stories in the middle of a fight to make an opponent hesitate, and it works. Under the uniform he wears a martial arts sash, and his rating inside the unit is among the highest there is.',
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
-      devilFruit: [{ episode: 273, value: ['dog-dog-fruit-model-wolf'] }],
+      devilFruit: [{ episode: 286, value: ['dog-dog-fruit-model-wolf'] }],
     },
     'kumadori': {
       role: CP9_AGENT,
@@ -694,6 +697,7 @@ export const waterSeven: Saga = {
       origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaf' } }],
     },
     'monkey-d-garp': {
+      chronicle: waterSevenChronicles['monkey-d-garp'],
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
         it: 'Arriva ridendo, si siede come se fosse a casa sua e sbriciola biscotti di riso sul ponte di una nave pirata. È il nonno di Rufy, e il suo metodo educativo consisteva nel buttarlo giù da un dirupo perché diventasse forte. Le palle di cannone le tira con il braccio, e la Marina per questo gli ha dato un nome che conoscono tutti.',
@@ -706,7 +710,7 @@ export const waterSeven: Saga = {
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
         {
-          episode: 1109,
+          episode: 1122,
           value: {
             it: 'Marina, viceammiraglio, catturato dai Pirati di Barbanera',
             en: 'Marines, vice admiral, captured by the Blackbeard Pirates',

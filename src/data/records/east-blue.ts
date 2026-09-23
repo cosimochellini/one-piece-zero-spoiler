@@ -1061,10 +1061,10 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [
-        { episode: 130, value: { it: 'Gatta Ladra', en: 'Cat Burglar' } },
+        { episode: 320, value: { it: 'Gatta Ladra', en: 'Cat Burglar' } },
       ],
       bounty: [
-        { episode: 130, value: 16_000_000 },
+        { episode: 320, value: 16_000_000 },
         { episode: 746, value: 66_000_000 },
         { episode: 1086, value: 366_000_000 },
       ],

@@ -128,6 +128,26 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 228,
+      value: {
+        title: { it: 'Congelato per la sua ciurma', en: 'Frozen for his crew' },
+        body: {
+          it: '[[kuzan|Aokiji]] ha già congelato [[nico-robin|Robin]] da capo a piedi, e quando alza il piede per frantumarla Rufy la fa scivolare via verso [[usopp|Usop]] e [[tony-tony-chopper|Chopper]], perché la riportino sulla nave a scongelarla. Poi chiede all’Ammiraglio di battersi da solo con lui. Lo colpisce con un calcio e tenta un Gomu Gomu no Storm, ma Aokiji si scompone e si ricompone attorno a lui, lo congela e ne adagia il corpo a terra. Se ne va lasciandolo lì: dice di dovergli qualcosa per [[crocodile|Crocodile]]. Più tardi Chopper risale in lacrime: il cuore di Robin e quello di Rufy battono di nuovo. Una settimana dopo, Rufy ci scherza già sopra.',
+          en: '[[kuzan|Aokiji]] has already frozen [[nico-robin|Robin]] solid, and when he raises his foot to shatter her, Luffy slides her away to [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] so they can take her back to the ship and thaw her. Then he asks the Admiral to fight him alone. He lands a kick and tries a Gomu Gomu no Storm, but Aokiji breaks apart, re-forms around him, freezes him and lays his body on the ground. He leaves him there, saying he owed him one for [[crocodile|Crocodile]]. Some time later Chopper comes up in tears: Robin’s heart and Luffy’s are both beating again. A week on, Luffy is already joking about it.',
+        },
+      },
+    },
+    {
+      episode: 273,
+      value: {
+        title: { it: 'Un passo più in alto', en: 'One step higher' },
+        body: {
+          it: 'Sul tetto del tribunale di Enies Lobby, [[blueno|Blueno]] del CP9 ha trasformato il viso di Rufy in una porta e gli tiene testa colpo su colpo con le Sei Tecniche. Aveva bisogno di diventare più forte per proteggere i suoi amici, e si è inventato un modo per spingere il corpo un passo più in alto: il Gear Second. Dalla pelle gli sale vapore, e il suo Jet Pistol arriva prima che Blueno lo veda partire. L’agente capisce che Rufy ha copiato il Soru calciando il suolo decine di volte in un istante. Si blinda con il suo Tekkai più duro e crolla lo stesso sotto un Jet Bazooka.',
+          en: 'On the courthouse roof at Enies Lobby, [[blueno|Blueno]] of CP9 has turned Luffy’s face into a door and matched him blow for blow with the Six Powers. He needed to get stronger to protect his friends, so he came up with a way to push his body one step higher: Gear Second. Steam rises off his skin, and his Jet Pistol lands before Blueno sees it leave. The agent realises Luffy has copied Soru by kicking the ground over and over in an instant. He braces with his hardest Tekkai and still falls to a Jet Bazooka.',
+        },
+      },
+    },
+    {
       episode: 278,
       value: {
         title: {
@@ -137,6 +157,19 @@ export const eastBlueChronicles = {
         body: {
           it: 'Sul tetto del tribunale di Enies Lobby, [[nico-robin|Robin]] spiega alla ciurma perché li ha respinti: il mondo intero le dà la caccia, e chiunque l’abbia protetta ha pagato. Il suo carceriere indica la bandiera che sventola sopra di lui, la bandiera del Governo Mondiale, e dice che tenerla con sé significa farsi nemico ogni mare. Rufy risponde facendo abbattere la bandiera, che brucia davanti agli agenti riuniti. Poi chiede a Robin una cosa sola: di dire che vuole vivere. Lei lo dice, in lacrime, e chiede di tornare in mare con loro. La ciurma muove verso la Torre della Giustizia.',
           en: 'On the roof of the Enies Lobby courthouse, [[nico-robin|Robin]] tells the crew why she pushed them away: the whole world hunts her, and everyone who sheltered her has paid. Her captor points to the flag flying above him, the flag of the World Government, and says that keeping her means making an enemy of every sea. Luffy answers by having the flag shot down; it burns before the agents. Then he asks Robin only one thing: to say that she wants to live. She says it, in tears, and asks to go back to the sea with them. The crew moves on the Tower of Justice.',
+        },
+      },
+    },
+    {
+      episode: 314,
+      value: {
+        title: {
+          it: 'Il nonno passa dal muro',
+          en: 'Grandpa comes through the wall',
+        },
+        body: {
+          it: 'Una nave della Marina con la polena a forma di bulldog attracca a Water Seven, e il viceammiraglio [[monkey-d-garp|Garp]], l’uomo che dava la caccia a [[gold-roger|Gold Roger]], sfonda il muro con un pugno e colpisce Rufy nel sonno. La gomma non serve a niente: il pugno fa male davvero. Rufy lo chiama nonno. Garp si lamenta che tutto il suo addestramento non ne abbia fatto un marine, e l’addestramento era un’infanzia passata fra burroni, notti da solo nella natura e palloncini a cui veniva legato. Poi si lascia sfuggire che [[shanks|Shanks]] ora è uno dei Quattro Imperatori. E ordina ai suoi uomini di ricostruire il muro, finendo per aiutarli.',
+          en: 'A Marine ship with a bulldog figurehead docks at Water Seven, and Vice Admiral [[monkey-d-garp|Garp]], the man who chased [[gold-roger|Gold Roger]], punches straight through the wall and hits the sleeping Luffy. Rubber is no help: the fist really hurts. Luffy calls him grandpa. Garp complains that all his training never made a Marine of him, and that training turns out to be a childhood of ravines, nights alone in the wild and being tied to balloons. Then he lets slip that [[shanks|Shanks]] is now one of the Four Emperors. And he orders his men to rebuild the wall, ending up helping them.',
         },
       },
     },
@@ -426,6 +459,26 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 300,
+      value: {
+        title: { it: 'Asura', en: 'Asura' },
+        body: {
+          it: 'Nella Torre della Giustizia, finalmente libero dalle manette, Zoro affronta [[kaku|Kaku]]. L’uomo giraffa mescola le spade ai poteri del suo frutto e ha la meglio, ma quando insulta [[nico-robin|Robin]] Zoro smette di trattenersi. Per sola forza di volontà gli spuntano due teste e quattro braccia in più, nove lame in tutto, e Kaku riconosce in quella visione lo spirito stesso dello spadaccino. Asura taglia il Rankyaku più potente di Kaku e lo abbatte. Zoro gli riferisce un messaggio di [[paulie|Paulie]]: il CP9 è licenziato. Kaku ammette che fare il carpentiere gli piaceva; Zoro gli dice che può sempre provare con lo zoo. Kaku ride e gli consegna la chiave.',
+          en: 'In the Tower of Justice, free of the handcuffs at last, Zoro faces [[kaku|Kaku]]. The giraffe-man mixes swordplay with his fruit’s powers and has the upper hand, but when he insults [[nico-robin|Robin]], Zoro stops holding back. Through sheer will, two more heads and four more arms seem to rise from him, nine blades in all, and Kaku recognises the vision as the swordsman’s own spirit. Asura cuts straight through Kaku’s strongest Rankyaku and drops him. Zoro passes on a message from [[paulie|Paulie]]: CP9 is fired. Kaku admits he liked being a shipwright; Zoro says he can always try the zoo. Kaku laughs and hands over his key.',
+        },
+      },
+    },
+    {
+      episode: 320,
+      value: {
+        title: { it: 'Il doppio, e va bene così', en: 'Worth twice as much' },
+        body: {
+          it: 'Zoro ha appena perso Yubashiri, la spada ridotta a un’elsa arrugginita a Enies Lobby, e quando si parla delle navi fantasma del Triangolo Florian l’unica cosa che gli interessa è se a bordo ci sia una buona lama da prendere. Poi arriva [[zambai|Zambai]] con i nuovi avvisi di taglia. Zoro il Cacciatore di pirati: centoventi milioni, il doppio dei sessanta di prima. Non si lamenta nemmeno per un istante. Una taglia più alta vuol dire che a cercarlo verranno avversari più forti, ed è esattamente quello che vuole.',
+          en: 'Zoro has just lost Yubashiri, the sword left a rusted hilt at Enies Lobby, and when talk turns to the ghost ships of the Florian Triangle, all he wants to know is whether one of them might carry a good blade. Then [[zambai|Zambai]] arrives with the new wanted posters. Pirate Hunter Zoro: one hundred and twenty million, double the sixty he had before. He doesn’t complain for a moment. A bigger bounty means stronger opponents will come looking for him, which is exactly what he wants.',
+        },
+      },
+    },
+    {
       episode: 362,
       value: {
         title: {
@@ -692,6 +745,32 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 278,
+      value: {
+        title: {
+          it: 'Il colpo che dichiara guerra',
+          en: 'The shot that declares war',
+        },
+        body: {
+          it: 'Rimasto indietro alle porte di Enies Lobby, con la maschera di Sogeking trasforma due nemici in alleati: racconta ai giganti [[oimo-and-kashi|Oimo e Kashi]] che [[dorry|Dorry]] e [[brogy|Broggy]] non sono mai stati prigionieri, e che i Marine li hanno ingannati per cinquant’anni. Uno dei due lo lancia sul tetto del tribunale, accanto agli altri. Oltre l’abisso, [[nico-robin|Robin]] spiega perché si è arresa, e [[spandam|Spandam]] avverte che salvarla significa avere il mondo intero contro. [[monkey-d-luffy|Rufy]] dà a Sogeking un solo ordine: abbattere la bandiera del Governo Mondiale. Basta una Fire Bird Star, e la bandiera brucia. Chi ha lasciato la ciurma spara il colpo che dichiara guerra al Governo per lei.',
+          en: 'Left behind at the gates of Enies Lobby, masked as Sogeking, he turns two enemies into allies: he tells the giants [[oimo-and-kashi|Oimo and Kashi]] that [[dorry|Dorry]] and [[brogy|Brogy]] were never prisoners, and that the Marines have lied to them for fifty years. One of them throws him onto the courthouse roof. Across the abyss, [[nico-robin|Robin]] explains why she gave up, and [[spandam|Spandam]] warns that saving her means making an enemy of the world. [[monkey-d-luffy|Luffy]] gives Sogeking a single order: bring down the World Government flag. One Fire Bird Star, and the flag burns. The man who quit the crew fires the shot that declares war on the Government for her.',
+        },
+      },
+    },
+    {
+      episode: 301,
+      value: {
+        title: {
+          it: 'Un cecchino sulla Torre della Giustizia',
+          en: 'A sniper on the Tower of Justice',
+        },
+        body: {
+          it: 'Battuto da [[jabra|Jabra]], ha lasciato il posto a [[sanji|Sanji]]; ora, mentre gli altri combattono, sale da solo sul tetto della Torre della Giustizia. Sotto di lui, sul ponte, [[spandam|Spandam]] trascina [[nico-robin|Robin]] verso le porte e si vanta che il Buster Call cancellerà i suoi amici come ha cancellato Ohara. Poi un proiettile lo colpisce. Sogeking abbatte i Marine uno dopo l’altro, colpisce di nuovo Spandam e avverte [[franky|Franky]] che le chiavi sono arrivate: in pochi secondi Robin è libera dalle manette. Sogeking le promette che la ciurma sarà felice di riaverla, e lei si sfoga su Spandam con una tempesta di schiaffi.',
+          en: 'Beaten by [[jabra|Jabra]], he handed his fight to [[sanji|Sanji]]; now, while the others fight on, he climbs alone to the roof of the Tower of Justice. Below him, on the bridge, [[spandam|Spandam]] is dragging [[nico-robin|Robin]] toward the gates, boasting that the Buster Call will wipe out her friends the way it wiped out Ohara. Then a shot hits him. Sogeking picks off the Marines one after another, hits Spandam again and tells [[franky|Franky]] the keys have arrived: within seconds Robin is out of her handcuffs. Sogeking promises her the crew will be glad to have her back, and she takes it out on Spandam with a storm of slaps.',
+        },
+      },
+    },
+    {
       episode: 323,
       value: {
         title: { it: 'Scusate, riprendetemi', en: 'Sorry, take me back' },
@@ -901,12 +980,35 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 261,
+      value: {
+        title: { it: 'I tre peccati di un cuoco', en: 'A cook’s three sins' },
+        body: {
+          it: 'Ha seguito [[nico-robin|Robin]] da solo sul treno marino e si è aperto la strada fino a [[usopp|Usop]] e [[franky|Franky]], legati tra i prigionieri. Quando si presenta un cecchino mascherato di nome Sogeking, Sanji riconosce Usop e sta al gioco. Nel quarto vagone lo aspetta Wanze, un cuoco del Governo che combatte con il Ramen Kenpo: spaghetti tirati fuori dal naso e una tuta fatta di spaghetti. Sanji gliela fa a fette con i coltelli da cucina. Poi Wanze insulta Robin. Sanji gli rimodella la faccia a calci e gli elenca tre peccati: dirsi cuoco, mancare di rispetto al cibo, offendere un’amica. L’ultimo calcio lo scaraventa nel vagone del CP9.',
+          en: 'He followed [[nico-robin|Robin]] onto the Sea Train alone and, car by car, fought his way to [[usopp|Usopp]] and [[franky|Franky]], tied up among the prisoners. When a masked sniper called Sogeking turns up, Sanji recognises Usopp and plays along. In car four a Government cook, Wanze, blocks the way with Ramen Kenpo: noodles drawn out of his own nose and even a suit woven from them. Sanji picks up the kitchen knives and slices it to ribbons. Then Wanze insults Robin. Sanji reshapes his face with kicks and lists his three sins: calling himself a cook, disrespecting food, insulting a friend. The last kick sends him flying into the CP9 car.',
+        },
+      },
+    },
+    {
       episode: 298,
       value: {
         title: { it: 'Una gamba in fiamme', en: 'A leg on fire' },
         body: {
           it: 'Nella Torre della Giustizia di Enies Lobby, [[usopp|Usop]] è a terra sotto i colpi di [[jabra|Jabra]], l’agente lupo. Sanji si mette in mezzo e lo manda via: io faccio quello che tu non sai fare, tu fai quello che non so fare io. Poi combatte. Il corpo di ferro di [[jabra|Jabra]] assorbe ogni calcio, e le sue bugie su una sorella perduta di nome [[nico-robin|Nico Robin]] non funzionano su un cuoco che riconosce una storia inventata quando la sente. Sanji gira su se stesso finché la gamba destra prende fuoco, un calore che passa attraverso il ferro, e chiude il combattimento con un calcio fiammeggiante. Prende la chiave e se ne va senza voltarsi.',
           en: 'In the Tower of Justice at Enies Lobby, [[usopp|Usopp]] lies beaten under the blows of [[jabra|Jabra]], the wolf agent. Sanji steps between them and sends him off: I will do what you cannot do, and you do what I cannot. Then he fights. [[jabra|Jabra]]’s iron body swallows every kick, and his lies about a long-lost sister named [[nico-robin|Nico Robin]] do not work on a cook who knows an invented story when he hears one. Sanji spins until his right leg catches fire, a heat that passes through iron, and ends the fight with a flaming kick. He takes the key and walks away without looking back.',
+        },
+      },
+    },
+    {
+      episode: 320,
+      value: {
+        title: {
+          it: 'Settantasette milioni e un disegno',
+          en: 'Seventy-seven million and a sketch',
+        },
+        body: {
+          it: 'Una settimana dopo Enies Lobby, quando [[kokoro|Kokoro]] annuncia la prossima tappa, l’Isola degli Uomini-Pesce, Sanji sente una parola sola: sirene. Sta già sognando a occhi aperti, finché non si ricorda che anche Kokoro è una sirena. Poi [[zambai|Zambai]] porta i nuovi avvisi di taglia, e per la prima volta su uno di quei fogli c’è anche il suo nome: Gamba Nera, settantasette milioni di berry. Sanji è entusiasta di essere finalmente un ricercato. La gioia dura il tempo di guardare la foto. Non è una foto: è un disegno che non gli somiglia per niente.',
+          en: 'A week after Enies Lobby, when [[kokoro|Kokoro]] names the crew’s next stop, Fish-Man Island, Sanji hears only one word: mermaids. He is already daydreaming, until he remembers that Kokoro is a mermaid too. Then [[zambai|Zambai]] brings the new wanted posters, and for the first time his own name is on one of them: Black Leg, seventy-seven million berries. Sanji is thrilled to be a wanted man at last. The joy lasts as long as it takes to look at the picture. It is not a photograph: it is a drawing that looks nothing like him.',
         },
       },
     },
@@ -1132,6 +1234,29 @@ export const eastBlueChronicles = {
         body: {
           it: 'Con il fusto che crolla sotto i fulmini di Ener e [[monkey-d-luffy|Rufy]] incapace di arrampicarsi, Nami porta lei stessa il Waver lungo tutta la sua lunghezza, schivando legno che cade e fulmine dopo fulmine mentre lui si aggrappa dietro di lei, puntando dritto alla nave sospesa in alto. Chi guarda da terra è certo che il fusto li schiaccerà prima che siano a metà strada. Quando le ruote si bloccano sotto di lei, li ha già portati abbastanza vicini: Rufy si stacca dalla sua schiena e prosegue da solo, e Nami può solo guardarlo volare per il resto della strada verso [[enel|Ener]].',
           en: 'With the beanstalk collapsing under Enel’s lightning and [[monkey-d-luffy|Luffy]] unable to climb it, Nami takes the Waver up its length herself, weaving through falling wood and bolt after bolt while he clings on behind her, aiming for the ship overhead. Everyone watching from the ground is sure the stalk will crush them both before they’re halfway up. When the wheels finally cut out under her, she has carried him close enough: Luffy leaps free from her back and keeps going alone, and Nami can only watch him fly the rest of the way toward [[enel|Enel]].',
+        },
+      },
+    },
+    {
+      episode: 296,
+      value: {
+        title: { it: 'Pioggia sul sapone', en: 'Rain against soap' },
+        body: {
+          it: 'Nella Torre della Giustizia, [[kalifa|Califa]] ha già trasformato [[sanji|Sanji]] in una bambola di sapone, e le sue bolle lasciano Nami scivolosa e senza forze, incapace perfino di stringere il bastone. È Nami a scoprire da sola il punto debole: l’acqua. Con il Perfect Clima-Tact chiama nuvole e pioggia, lava via il sapone e contrattacca con i miraggi, una folla di false Nami che Califa colpisce una dopo l’altra. L’agente risponde inondando la stanza di bolle; Nami ci sguscia in mezzo per un soffio e scatena un fulmine orizzontale, il Thunder Lance Tempo. Poi strappa i vestiti di Califa finché non trova la chiave delle manette di [[roronoa-zoro|Zoro]].',
+          en: 'In the Tower of Justice, [[kalifa|Kalifa]] has already turned [[sanji|Sanji]] into a soap doll, and her bubbles leave Nami slippery and drained, unable even to grip her staff. Nami works out the weakness on her own: water. With the Perfect Clima-Tact she calls up clouds and rain, washes the soap away and strikes back with mirages, a crowd of false Namis that Kalifa hits one after another. The agent answers by flooding the room with bubbles; Nami barely slips through them and unleashes a horizontal bolt of lightning, the Thunder Lance Tempo. Then she tears Kalifa’s clothes apart until she finds the key to [[roronoa-zoro|Zoro]]’s handcuffs.',
+        },
+      },
+    },
+    {
+      episode: 320,
+      value: {
+        title: {
+          it: 'Gatta Ladra, sedici milioni',
+          en: 'Cat Burglar, sixteen million',
+        },
+        body: {
+          it: 'Dopo una settimana a Water Seven il Log Pose è finalmente carico, e l’ago punta verso il basso: la prossima isola è in fondo al mare, fra gli uomini-pesce, e Nami non riesce a non pensare ad [[arlong|Arlong]]. La rotta passa per il Triangolo Florian, dove le navi spariscono, e lei è terrorizzata finché [[nico-robin|Robin]] non le fa notare che le navi fantasma spesso trasportano tesori. Poi arrivano i nuovi avvisi di taglia, e per la prima volta c’è anche lei: Gatta Ladra, sedici milioni. È sconvolta di essere ricercata. La foto è provocante, perché il fotografo si era spacciato per un giornalista, e lei aveva posato volentieri.',
+          en: 'After a week at Water Seven the Log Pose is finally set, and its needle tips downward: the next island lies at the bottom of the sea, among Fish-Men, and Nami can’t help thinking of [[arlong|Arlong]]. The route runs through the Florian Triangle, where ships vanish, and she is terrified until [[nico-robin|Robin]] points out that ghost ships often carry treasure. Then the new wanted posters arrive, and for the first time she is on one: Cat Burglar, sixteen million. She is shocked to be wanted at all. The photo is provocative, because the photographer passed himself off as a reporter, and she had posed for him willingly.',
         },
       },
     },

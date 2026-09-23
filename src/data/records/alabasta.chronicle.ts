@@ -73,6 +73,16 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 320,
+      value: {
+        title: { it: 'Cinquanta berry', en: 'Fifty berries' },
+        body: {
+          it: 'A Enies Lobby ha ingoiato tre Rumble Ball per battere un agente del CP9, e ora il Governo Mondiale risponde. [[zambai|Zambai]] e la Franky Family portano i nuovi avvisi di taglia: [[monkey-d-luffy|Rufy]] sale a trecento milioni e ogni membro della ciurma ha un prezzo, perfino Sogeking, il cecchino mascherato, trenta milioni. Chopper cerca il suo. Il soprannome è Amante dello zucchero filato, la cifra è cinquanta berry: i Marine lo hanno preso per l’animale domestico della ciurma. Mentre Rufy festeggia la taglia triplicata, Chopper è sconvolto.',
+          en: 'At Enies Lobby he swallowed three Rumble Balls to beat a CP9 agent, and now the World Government gives its answer. [[zambai|Zambai]] and the Franky Family bring the new wanted posters: [[monkey-d-luffy|Luffy]] rises to three hundred million and every member of the crew has a price, even Sogeking, the masked sniper, at thirty million. Chopper looks for his own. The epithet is Cotton Candy Lover, the figure is fifty berries: the Marines have taken him for the crew’s pet. While Luffy celebrates his tripled bounty, Chopper is devastated.',
+        },
+      },
+    },
+    {
       episode: 363,
       value: {
         title: { it: 'Quella non è medicina', en: 'That is not medicine' },
@@ -199,6 +209,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 325,
+      value: {
+        title: {
+          it: 'Barbabianca re, o la morte',
+          en: 'Whitebeard as King, or death',
+        },
+        body: {
+          it: 'Sull’isola di Banaro, Ace raggiunge finalmente l’uomo che insegue: [[marshall-d-teach|Teach]], che ha ucciso Thatch, comandante della quarta divisione, per il frutto del diavolo che Thatch aveva trovato. Teach lo chiama comandante; Ace risponde che non ne ha più il diritto. Teach gli offre un posto nella sua ciurma e annuncia che andrà a Water Seven a uccidere [[monkey-d-luffy|Rufy]], per farne un regalo al Governo Mondiale. Ace non lascerà che tocchi il suo fratellino. Le sue fiamme vanno a segno, ma l’oscurità lo trascina a sé e i pugni di Teach lo raggiungono. In ginocchio, Ace rifiuta ancora: farà di [[edward-newgate|Barbabianca]] il Re, o morirà provandoci.',
+          en: 'On Banaro Island, Ace finally catches up with the man he has been chasing: [[marshall-d-teach|Teach]], who killed Thatch, commander of the fourth division, for the Devil Fruit Thatch had found. Teach calls him Commander; Ace answers that he has lost the right to. Teach offers him a place in his crew and announces he is heading to Water Seven to kill [[monkey-d-luffy|Luffy]] as a gift for the World Government. Ace will not let him touch his little brother. His flames strike home, but the darkness drags him in and Teach’s fists find him. On his knees, Ace refuses again: he will make [[edward-newgate|Whitebeard]] the King, or die trying.',
+        },
+      },
+    },
+    {
       episode: 378,
       value: {
         title: {
@@ -313,6 +336,26 @@ export const alabastaChronicles = {
         body: {
           it: "Dopo che la Campana d'Oro viene issata su dal mare del cielo, Robin legge ad alta voce il Poneglifo alla sua base davanti agli Shandia riuniti, poi nota un'iscrizione più antica incisa sulla campana stessa, sfuggita a tutti. Il nome è quello di [[gold-roger|Gold Roger]]: una riga che dichiara di essere arrivato fin lì e di voler portare questo passaggio fino ai confini della terra. [[gan-fall|Gan Fall]] le racconta che il Re dei Pirati visitò davvero Skypiea, più di vent'anni prima, anche se nessuno quassù sa spiegare come riuscisse a leggere lettere così antiche.",
           en: 'After the Golden Bell is hauled up from the sky sea, Robin reads the Poneglyph fixed to its base aloud for the gathered Shandia, then notices older writing carved into the bell itself, missed by everyone else. It names [[gold-roger|Gold Roger]]: a line declaring that he made it here and means to carry this passage to the ends of the earth. [[gan-fall|Gan Fall]] tells her the Pirate King really did visit Skypiea, over twenty years before, though nobody up here could explain how he ever read letters this old.',
+        },
+      },
+    },
+    {
+      episode: 245,
+      value: {
+        title: { it: 'Addio dalla finestra', en: 'Goodbye through the window' },
+        body: {
+          it: 'Nella stanza di Iceburg le maschere sono cadute: [[rob-lucci|Lucci]], [[kaku|Kaku]], [[kalifa|Califa]] e [[blueno|Blueno]] sono il CP9, l’unità segreta del Governo autorizzata a uccidere, e Robin sta con loro. Quando [[monkey-d-luffy|Rufy]] le chiede perché, risponde che lo fa per realizzare il suo desiderio, e che sacrificherà qualunque cosa. [[roronoa-zoro|Zoro]] le ricorda che questo include far accusare di omicidio la sua vecchia ciurma; [[iceburg|Iceburg]] protesta, e lei lo blocca a terra con il suo potere. Mancano pochi minuti all’incendio che cancellerà le prove. Lucci si complimenta per il lavoro svolto. I compagni la pregano di tornare; Robin salta dalla finestra e sparisce.',
+          en: 'In Iceburg’s room the masks are off: [[rob-lucci|Lucci]], [[kaku|Kaku]], [[kalifa|Kalifa]] and [[blueno|Blueno]] are CP9, the Government’s secret unit licensed to kill, and Robin stands with them. When [[monkey-d-luffy|Luffy]] asks her why, she answers that she is doing it to make her wish come true, and that she will sacrifice anything. [[roronoa-zoro|Zoro]] reminds her that this includes framing her old crew for murder; [[iceburg|Iceburg]] protests, and she pins him to the floor with her power. Minutes remain before the fire that will erase the evidence. Lucci compliments her on a job well done. Her crewmates beg her to come back; Robin jumps out of the window and is gone.',
+        },
+      },
+    },
+    {
+      episode: 277,
+      value: {
+        title: { it: 'Ohara brucia', en: 'Ohara burns' },
+        body: {
+          it: 'Vent’anni prima, sull’isola di Ohara, è una studiosa di archeologia di otto anni, respinta dagli studiosi dell’Albero della Conoscenza quando chiede di studiare il Secolo Buio. Saul, un gigante naufragato sulla spiaggia, le insegna a ridere. Poi il Governo Mondiale viene a prendere gli studiosi. Sua madre Olvia, tornata dopo anni, nega di essere sua madre per proteggerla; il professor Clover viene ucciso per aver detto troppo su una civiltà scomparsa. Con la biblioteca in fiamme e i cannoni del Buster Call che piovono sull’isola, Robin confessa di saper leggere i Poneglyph, abbraccia finalmente la madre e viene affidata a Saul perché fugga.',
+          en: 'Twenty years earlier, on the island of Ohara, she is an eight-year-old scholar of archaeology, turned away by the scholars of the Tree of Knowledge when she asks to study the Void Century. Saul, a giant washed up on the beach, teaches her to laugh. Then the World Government comes for the scholars. Her mother Olvia, back after years away, denies being her mother to protect her; Professor Clover is shot for saying too much about a vanished civilisation. With the library in flames and the Buster Call’s cannons raining down, Robin confesses she can read the Poneglyphs, embraces her mother at last and is sent to flee with Saul.',
         },
       },
     },

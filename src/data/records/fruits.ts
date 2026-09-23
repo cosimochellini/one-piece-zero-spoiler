@@ -334,7 +334,7 @@ export const devilFruits: Saga = {
     {
       id: 'bubble-bubble-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 273,
+      revealedAtEpisode: 293,
       revealedAtChapter: 327,
       name: { it: 'Frutto Bolla Bolla', en: 'Bubble-Bubble Fruit' },
       summary: {
@@ -346,7 +346,7 @@ export const devilFruits: Saga = {
     {
       id: 'cat-cat-fruit-model-leopard',
       kind: 'fruit',
-      revealedAtEpisode: 273,
+      revealedAtEpisode: 246,
       revealedAtChapter: 326,
       name: {
         it: 'Frutto Neko Neko, modello Leopardo',
@@ -361,7 +361,7 @@ export const devilFruits: Saga = {
     {
       id: 'dog-dog-fruit-model-wolf',
       kind: 'fruit',
-      revealedAtEpisode: 273,
+      revealedAtEpisode: 286,
       revealedAtChapter: 385,
       name: {
         it: 'Frutto Inu Inu, modello Lupo',
@@ -376,19 +376,19 @@ export const devilFruits: Saga = {
     {
       id: 'door-door-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 273,
+      revealedAtEpisode: 243,
       revealedAtChapter: 333,
       name: { it: 'Frutto Porta Porta', en: 'Door-Door Fruit' },
       summary: {
-        it: 'Disegna una porta su qualsiasi cosa, muro, pavimento o aria vuota, la apre ed esce da un’altra parte.',
-        en: 'Draws a door on anything at all, a wall, a floor or empty air, opens it and steps through to somewhere else.',
+        it: 'Disegna una porta su qualsiasi superficie, anche un muro pieno, la apre ed esce dall’altra parte.',
+        en: 'Draws a door on any surface, even a solid wall, opens it and steps through to the other side.',
       },
       visual: { art: 'door-door-fruit', tint: 'flamingo' },
     },
     {
       id: 'ox-ox-fruit-model-giraffe',
       kind: 'fruit',
-      revealedAtEpisode: 273,
+      revealedAtEpisode: 286,
       revealedAtChapter: 326,
       name: {
         it: 'Frutto Ushi Ushi, modello Giraffa',
