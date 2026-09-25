@@ -186,6 +186,16 @@ export const waterSevenChronicles = {
         },
       },
     },
+    {
+      episode: 1068,
+      value: {
+        title: { it: 'Un braccio oltre il bordo', en: 'An arm over the edge' },
+        body: {
+          it: 'Dopo che [[roronoa-zoro|Zoro]] ha battuto [[king|King]], Franky lo cerca per il castello in fiamme di Onigashima. Al piano di sotto [[tony-tony-chopper|Chopper]] teme già che la medicina presa per restare in piedi gli farà pagare il doppio. Zoro è steso sul bordo dell’isola, perde sangue, e nel delirio vede un mietitore alzare la falce su di lui. Poi un’esplosione scuote tutta l’isola, la roccia sotto di lui si sgretola e Zoro precipita nel vuoto, sopra il paese di Wano. Franky arriva appena in tempo: il suo braccio scatta, si allunga e si chiude intorno al compagno, e lui lo tira di nuovo sulla terraferma.',
+          en: 'After [[roronoa-zoro|Zoro]] beats [[king|King]], Franky goes looking for him through the burning castle on Onigashima. On the floor below, [[tony-tony-chopper|Chopper]] already fears that the medicine Zoro took to keep fighting will make him pay twice over. Zoro lies on the edge of the island, bleeding out, and in his delirium he sees a reaper raise its scythe over him. Then an explosion shakes the whole island, the rock under him crumbles, and Zoro drops into the empty sky above Wano. Franky gets there just in time: his arm shoots out, stretches and closes around his crewmate, and he hauls him back onto solid ground.',
+        },
+      },
+    },
   ],
   'kuzan': [
     {

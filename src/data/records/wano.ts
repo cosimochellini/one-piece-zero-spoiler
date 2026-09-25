@@ -36,12 +36,12 @@ export const wano: Saga = {
     {
       id: 'tama',
       kind: 'character',
-      revealedAtEpisode: 892,
+      revealedAtEpisode: 894,
       revealedAtChapter: 912,
       name: { it: 'O-Tama', en: 'Tama' },
       summary: {
-        it: 'Una bambina affamata del villaggio di Amigasa che divide la sua unica scodella di zuppa di fagioli rossi con uno sconosciuto.',
-        en: 'A hungry girl from Amigasa Village who shares her one bowl of red bean soup with a starving stranger she has just met.',
+        it: 'Una bambina affamata del villaggio di Amigasa che divide la sua unica scodella di riso con uno sconosciuto.',
+        en: 'A hungry girl from Amigasa Village who shares her one bowl of rice with a starving stranger she has just met.',
       },
       visual: { art: 'tama', tint: 'pink' },
     },
@@ -60,12 +60,12 @@ export const wano: Saga = {
     {
       id: 'kikunojo',
       kind: 'character',
-      revealedAtEpisode: 897,
+      revealedAtEpisode: 901,
       revealedAtChapter: 917,
       name: { it: 'Kikunojo', en: 'Kikunojo' },
       summary: {
-        it: 'La cameriera alta e gentile della casa da tè di Okobore, che serve con un inchino e tiene una lama sotto il kimono.',
-        en: 'The tall, gentle waitress of the Okobore tea house, who pours with a bow and keeps a blade under her kimono.',
+        it: 'La cameriera alta e gentile della casa da tè di Okobore, che serve con un inchino e, quando serve, impugna una katana.',
+        en: 'The tall, gentle waitress of the Okobore tea house, who pours with a bow and, when it counts, takes up a katana.',
       },
       visual: { art: 'kikunojo', tint: 'ice' },
     },
@@ -120,24 +120,24 @@ export const wano: Saga = {
     {
       id: 'hyogoro',
       kind: 'character',
-      revealedAtEpisode: 917,
-      revealedAtChapter: 933,
+      revealedAtEpisode: 931,
+      revealedAtChapter: 935,
       name: { it: 'Hyogoro', en: 'Hyogoro' },
       summary: {
-        it: 'Un vecchio prigioniero del campo di Udon, rispettato da ogni detenuto, che un tempo comandava tutta la yakuza di Wano.',
-        en: 'An old prisoner of the Udon camp, respected by every convict in it, who once commanded the whole of Wano’s yakuza.',
+        it: 'Un vecchio prigioniero del campo di Udon, conosciuto lì solo come il vecchio Hyo, che si rivela essere Hyogoro del Fiore, un tempo il boss della yakuza più potente di Wano.',
+        en: 'An old prisoner of the Udon camp, known there only as Old Man Hyo, who turns out to be Hyogoro of the Flower, once the most powerful yakuza boss in Wano.',
       },
       visual: { art: 'hyogoro', tint: 'ocher' },
     },
     {
       id: 'queen',
       kind: 'character',
-      revealedAtEpisode: 917,
-      revealedAtChapter: 933,
+      revealedAtEpisode: 931,
+      revealedAtChapter: 936,
       name: { it: 'Queen', en: 'Queen' },
       summary: {
-        it: 'Il direttore del campo di prigionia di Udon, un gigante con il corpo pieno di macchine che canta al microfono mentre i prigionieri lavorano.',
-        en: 'The warden of the Udon prison camp, a giant with a body full of machinery who sings into a microphone while the prisoners work.',
+        it: 'L’All-Star dei Pirati delle Cento Bestie che comanda il campo di prigionia di Udon, un omone con un braccio meccanico che sale su un palco a cantare e ballare per le sue guardie.',
+        en: 'The Beasts Pirates All-Star who rules the Udon prison camp, a huge man with a mechanical arm who takes to a stage to sing and dance for his guards.',
       },
       visual: { art: 'queen', tint: 'yellow' },
     },
@@ -390,12 +390,12 @@ export const wano: Saga = {
         en: 'Child of Amigasa Village',
       },
       log: {
-        it: 'Vive in un villaggio dove l’acqua del fiume è veleno e il cibo arriva una volta ogni tanto, e regala comunque a un affamato la sua unica scodella di zuppa di fagioli rossi. Ha un frutto del diavolo che le permette di staccarsi una guancia e farne uno gnocco di miglio, e chi lo mangia le obbedisce come un animale addomesticato. Chiede a Rufy di prenderla con sé come allieva.',
-        en: 'She lives in a village where the river water is poison and food arrives once in a while, and still gives her only bowl of red bean soup to a starving stranger. A devil fruit lets her pull a millet dumpling out of her own cheek, and whoever eats one follows her like a tamed animal. She asks Luffy to take her on as his apprentice.',
+        it: 'Vive in un villaggio dove l’acqua del fiume è veleno e il cibo arriva una volta ogni tanto, e regala comunque a un affamato la sua unica scodella di riso. Ha un frutto del diavolo che le permette di staccarsi una guancia e farne uno gnocco di miglio, e l’animale che lo mangia le obbedisce come se fosse addomesticato.',
+        en: 'She lives in a village where the river water is poison and food arrives once in a while, and still gives her only bowl of rice to a starving stranger. A devil fruit lets her pull a millet dumpling out of her own cheek, and any animal that eats one follows her as if tamed.',
       },
       affiliation: [
         {
-          episode: 892,
+          episode: 894,
           value: {
             it: 'Kuri, Paese di Wano, bambina del villaggio di Amigasa',
             en: 'Kuri, Wano, a child of Amigasa Village',
@@ -409,8 +409,8 @@ export const wano: Saga = {
           },
         },
       ],
-      origin: [{ episode: 892, value: WANO }],
-      devilFruit: [{ episode: 892, value: ['millet-millet-fruit'] }],
+      origin: [{ episode: 894, value: WANO }],
+      devilFruit: [{ episode: 894, value: ['millet-millet-fruit'] }],
     },
     'tenguyama-hitetsu': {
       role: { it: 'Fabbro di spade', en: 'Swordsmith' },
@@ -427,7 +427,7 @@ export const wano: Saga = {
           },
         },
         {
-          episode: 1085,
+          episode: 1080,
           value: {
             it: 'Kozuki Sukiyaki, ex shogun del Paese di Wano',
             en: 'Kozuki Sukiyaki, former shogun of Wano',
@@ -439,23 +439,23 @@ export const wano: Saga = {
     'kikunojo': {
       role: { it: 'Cameriera e spadaccina', en: 'Waitress and swordswoman' },
       log: {
-        it: 'Serve il tè nella locanda di Okobore, dove i contadini mangiano gli avanzi della capitale, e tratta i clienti con una gentilezza che in quel paese non si vede spesso. Quando i pirati dell’Imperatore alzano le mani sui vecchi del villaggio si scopre che sotto il kimono porta una lama, e che sa usarla meglio di loro. Si presenta con il nome di O-Kiku.',
-        en: 'She serves tea at the Okobore house, where farmers eat the capital’s leftovers, and treats her customers with a kindness this country rarely sees. When the Emperor’s pirates raise their hands to the village elders, it turns out she carries a blade under her kimono and handles it better than they do. She gives her name as O-Kiku.',
+        it: 'Serve il tè nella locanda di Okobore, dove i contadini mangiano gli avanzi della capitale, e tratta i clienti con una gentilezza che in quel paese non si vede spesso. Quando gli uomini dell’Imperatore rapiscono la bambina che stava curando, afferra una katana, si lega i capelli e dichiara di essere un samurai. Si presenta con il nome di O-Kiku.',
+        en: 'She serves tea at the Okobore house, where farmers eat the capital’s leftovers, and treats her customers with a kindness this country rarely sees. When the Emperor’s men kidnap the girl she has been nursing, she snatches up a katana, ties back her hair and declares that she is a samurai. She gives her name as O-Kiku.',
       },
       affiliation: [
         {
-          episode: 897,
+          episode: 901,
           value: {
             it: 'Casa da tè di Okobore, cameriera',
             en: 'Tea house of Okobore Town, waitress',
           },
         },
-        { episode: 898, value: RED_SCABBARDS },
+        { episode: 910, value: RED_SCABBARDS },
       ],
-      origin: [{ episode: 897, value: WANO }],
+      origin: [{ episode: 901, value: WANO }],
       epithet: [
         {
-          episode: 898,
+          episode: 948,
           value: {
             it: 'Kiku della Neve Persistente',
             en: 'Kiku of the Lingering Snow',
@@ -556,12 +556,12 @@ export const wano: Saga = {
     'hyogoro': {
       role: { it: 'Vecchio capo della yakuza', en: 'Old yakuza boss' },
       log: {
-        it: 'Nel campo di lavoro di Udon spacca pietre come tutti gli altri, ma quando parla i detenuti abbassano la voce. Per quarant’anni ha tenuto insieme le famiglie della yakuza del paese e non ha mai piegato la testa davanti allo shogun. Divide la sua ciotola di zuppa con un ragazzo appena arrivato che non ha ancora capito dove si trova.',
-        en: 'In the Udon labour camp he breaks rocks like everybody else, yet the prisoners drop their voices when he speaks. For forty years he held the country’s yakuza families together, and he never once bowed his head to the shogun. He shares his bowl of soup with a newcomer who has not yet understood where he is.',
+        it: 'Nel campo di lavoro di Udon è solo un vecchio fragile che a stento trascina le sue pietre, finché un nuovo arrivato comincia a regalargli i suoi buoni pasto e lui si fa picchiare piuttosto che dire chi è stato. Vent’anni fa era lo yakuza più potente del paese, seguito dai capi di ogni regione, e si rifiutò di servire lo shogun.',
+        en: 'In the Udon labour camp he is only a frail old man who can barely haul his stones, until a newcomer starts giving him his meal tickets and he takes a beating rather than say who. Twenty years ago he was the most powerful yakuza in the country, followed by the bosses of every region, and he refused to serve the shogun.',
       },
       affiliation: [
         {
-          episode: 917,
+          episode: 931,
           value: {
             it: 'Prigioniero del campo di lavoro di Udon; un tempo capo della yakuza di Wano',
             en: 'Prisoner of the Udon labour camp; once boss of the Wano yakuza',
@@ -572,10 +572,10 @@ export const wano: Saga = {
           value: { it: 'Alleanza Kozuki', en: 'Kozuki alliance' },
         },
       ],
-      origin: [{ episode: 917, value: WANO }],
+      origin: [{ episode: 931, value: WANO }],
       epithet: [
         {
-          episode: 917,
+          episode: 931,
           value: { it: 'Hyogoro del Fiore', en: 'Hyogoro of the Flower' },
         },
       ],
@@ -586,31 +586,31 @@ export const wano: Saga = {
         en: 'Beasts Pirates All-Star',
       },
       log: {
-        it: 'Governa il campo di Udon come uno spettacolo: musica, risate e prigionieri costretti a lavorare finché reggono. È uno dei tre luogotenenti dell’Imperatore, ha un corpo pieno di macchine e di trovate e porta una taglia che pochi al mondo raggiungono. Chi tenta la fuga viene riportato dentro e usato come intrattenimento.',
-        en: 'He runs the Udon camp like a stage show: music, laughter, and prisoners worked until they drop. He is one of the Emperor’s three lieutenants, a body full of machinery and gimmicks, and a bounty few men in the world reach. Anyone who tries to escape is dragged back inside and used as entertainment.',
+        it: 'Governa il campo di Udon come uno spettacolo: arriva tra musica e guardie che lo acclamano, e canta della propria figura. È uno dei tre All-Star dell’Imperatore, ha un braccio meccanico e porta una taglia che pochi al mondo raggiungono. Chi tenta la fuga viene riportato dentro e usato come intrattenimento.',
+        en: 'He runs the Udon camp like a stage show: he arrives to music and cheering guards, and sings about his own figure. He is one of the Emperor’s three All-Stars, with a mechanical arm and a bounty few men in the world reach. Anyone who tries to escape is dragged back inside and used as entertainment.',
       },
       affiliation: [
         {
-          episode: 917,
+          episode: 931,
           value: {
-            it: 'Pirati delle Cento Bestie, All-Star, direttore di Udon',
-            en: 'Beasts Pirates, All-Star, warden of Udon',
+            it: 'Pirati delle Cento Bestie, All-Star, padrone del campo di prigionia di Udon',
+            en: 'Beasts Pirates, All-Star, master of the Udon prison camp',
           },
         },
       ],
       epithet: [
         {
-          episode: 917,
+          episode: 931,
           value: { it: 'Queen la Peste', en: 'Queen the Plague' },
         },
       ],
       devilFruit: [
         {
-          episode: 925,
+          episode: 944,
           value: ['dragon-dragon-fruit-ancient-model-brachiosaurus'],
         },
       ],
-      bounty: [{ episode: 917, value: 1_320_000_000 }],
+      bounty: [{ episode: 931, value: 1_320_000_000 }],
     },
     'king': {
       role: {
@@ -954,12 +954,13 @@ export const wano: Saga = {
     'whos-who': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È uno dei sei ufficiali di punta dell’Imperatore e si muove con la calma di chi il mondo lo ha già visto dall’altra parte: ha servito nel Cipher Pol prima di arrivare su questa nave. Si trasforma in una tigre dai denti a sciabola, combatte con la spada e con le gambe e tiene il volto coperto. Chi gli sta intorno lo ascolta senza interromperlo.',
-        en: 'He is one of the Emperor’s six leading officers and carries himself like a man who has seen the world from the other side: he served in Cipher Pol before he ended up on this ship. He turns into a sabre-toothed tiger, fights with sword and legs both, and keeps his face covered. The men around him listen without interrupting.',
+        it: 'È uno dei sei ufficiali di punta dell’Imperatore e si muove con la calma di chi il mondo lo ha già visto dall’altra parte. Si trasforma in una tigre dai denti a sciabola, combatte con la spada e con le gambe e tiene il volto coperto. Chi gli sta intorno lo ascolta senza interromperlo.',
+        en: 'He is one of the Emperor’s six leading officers and carries himself like a man who has seen the world from the other side. He turns into a sabre-toothed tiger, fights with sword and legs both, and keeps his face covered. The men around him listen without interrupting.',
       },
       affiliation: [
+        { episode: 982, value: TOBIROPPO },
         {
-          episode: 982,
+          episode: 1039,
           value: {
             it: 'Pirati delle Cento Bestie, Tobiroppo; un tempo Cipher Pol 9',
             en: 'Beasts Pirates, Tobiroppo; once Cipher Pol 9',

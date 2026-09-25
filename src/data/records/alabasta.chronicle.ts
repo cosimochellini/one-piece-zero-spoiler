@@ -171,6 +171,19 @@ export const alabastaChronicles = {
       },
     },
     {
+      episode: 928,
+      value: {
+        title: {
+          it: 'Un’Imperatrice di nome Olin',
+          en: 'An Emperor called Olin',
+        },
+        body: {
+          it: 'Sulla spiaggia di Kuri, dove si allena con [[tama|O-Tama]] e [[momonosuke|Momonosuke]], Chopper avvista qualcosa di enorme sulla sabbia: è [[charlotte-linlin|Big Mom]], trascinata a riva priva di sensi dopo l’attacco di [[king|King]]. Quando si sveglia non ricorda nulla, nemmeno il proprio nome. Chopper, terrorizzato all’idea di ricordarle che è un’Imperatrice, le dice che si chiama Olin, e lei gli crede. Il giorno dopo il gruppo, con [[kikunojo|Kiku]], la porta a Okobore, dove le danno da mangiare zuppa di fagioli rossi, e O-Tama ha un’idea: dirle che ce n’è ancora a Udon, la prigione dove è rinchiuso [[monkey-d-luffy|Rufy]]. Big Mom si prepara a partire subito.',
+          en: 'On Kuri beach, where he is training with [[tama|Tama]] and [[momonosuke|Momonosuke]], Chopper spots something huge on the sand: [[charlotte-linlin|Big Mom]], washed ashore unconscious after [[king|King]]’s attack. When she wakes she remembers nothing, not even her own name. Chopper, terrified of reminding her that she is an Emperor, tells her she is called Olin, and she believes him. The next day the group, with [[kikunojo|Kiku]], takes her to Okobore Town, where she is fed red bean soup, and Tama has an idea: tell her there is more of it in Udon, the prison where [[monkey-d-luffy|Luffy]] is held. Big Mom gets ready to leave at once.',
+        },
+      },
+    },
+    {
       episode: 1023,
       value: {
         title: {
@@ -180,6 +193,19 @@ export const alabastaChronicles = {
         body: {
           it: 'A Onigashima [[queen|Queen]] spara sulla folla proiettili che diffondono un virus: chi viene infettato si copre di ghiaccio, perde la ragione e morde chiunque gli sia vicino, passando il contagio. Chopper analizza l’antidoto che [[roronoa-zoro|Zoro]] ha strappato ad [[scratchmen-apoo|Apoo]] mentre l’epidemia si allarga di piano in piano, poi scopre dal braccio che gli sta gelando di essere infetto anche lui. Con la fiamma di [[marco|Marco]] che gli restituisce il braccio, in poche ore completa un antidoto che si riproduce da solo, il Chopperphage, lo fa sparare con un cannone su tutta la sala e cura anche i soldati di Queen, insieme a [[hyogoro|Hyogoro]] a un passo dalla morte. Poi urla a tutti che non è un tanuki e colpisce Queen in faccia.',
           en: 'On Onigashima [[queen|Queen]] fires bullets into the crowd that spread a virus: whoever is infected grows a coat of ice, loses his mind and bites anyone nearby, passing the disease on. Chopper analyses the antidote [[roronoa-zoro|Zoro]] has snatched from [[scratchmen-apoo|Apoo]] while the outbreak spreads floor by floor, then learns from his own freezing arm that he is infected too. With [[marco|Marco]]’s flame giving him his arm back, in a few hours he completes an antidote that reproduces on its own, the Chopperphage, has it fired from a cannon across the whole hall and cures Queen’s own soldiers along with [[hyogoro|Hyogoro]], a breath from death. Then he yells at everyone that he is not a tanuki and hits Queen in the face.',
+        },
+      },
+    },
+    {
+      episode: 1036,
+      value: {
+        title: {
+          it: 'Trenta minuti contro Queen',
+          en: 'Thirty minutes against Queen',
+        },
+        body: {
+          it: 'Sul Live Floor Chopper tiene testa in Monster Point a [[queen|Queen]], mentre [[charlotte-perospero|Perospero]] fa piovere frecce sui samurai. Un tempo [[caesar-clown|Caesar]] gli ha offerto di allungare la durata della Rumble Ball fino a trenta minuti, al prezzo di un effetto collaterale che Chopper ha accettato. Sbatte Queen sul pavimento e lo scaraventa contro un muro, ma Queen si rialza illeso. Poi [[bao-huang|Bao Huang]] annuncia che [[kaido|Kaido]] ha sconfitto [[monkey-d-luffy|Rufy]]: Chopper si perde d’animo e Queen spalanca le fauci per finirlo. Un calcio di [[sanji|Sanji]] gli fa girare la testa come una trottola; Sanji loda Chopper per aver resistito, gli dice di continuare a credere in Rufy e gli affida [[roronoa-zoro|Zoro]] ferito.',
+          en: 'On the Live Floor Chopper holds his ground in Monster Point against [[queen|Queen]], while [[charlotte-perospero|Perospero]] rains arrows on the samurai. Once, [[caesar-clown|Caesar]] offered to stretch his Rumble Ball to thirty minutes, at the price of a side effect Chopper agreed to. He slams Queen into the floor and hurls him into a wall, and Queen gets up unharmed. Then [[bao-huang|Bao Huang]] announces that [[kaido|Kaido]] has beaten [[monkey-d-luffy|Luffy]]: Chopper loses heart, and Queen opens his jaws to finish him. [[sanji|Sanji]]’s kick sends Queen’s head spinning; Sanji praises Chopper for holding out, tells him to keep trusting Luffy and hands him the wounded [[roronoa-zoro|Zoro]].',
         },
       },
     },
@@ -304,6 +330,29 @@ export const alabastaChronicles = {
         body: {
           it: 'Il suo frutto non è morto con lui. È riaffiorato come premio di un torneo a Dressrosa, e il fratello minore si è iscritto per riprenderselo. Quando [[monkey-d-luffy|Rufy]] ha dovuto lasciare il torneo per correre da un amico, ha ceduto il posto e il travestimento a [[sabo|Sabo]], che ha sbriciolato l’arena, ha attraversato l’acqua saltando di pesce in pesce fino al forziere, l’ha aperto e ha mangiato quel che c’era dentro sul posto. Poi si è tolto il travestimento, si è trovato il fuoco attorno al pugno e l’ha lanciato: la mossa di Ace, con il nome che Ace le aveva dato.',
           en: 'His fruit did not die with him. It surfaced again as the prize of a tournament on Dressrosa, and his younger brother entered to win it back. When [[monkey-d-luffy|Luffy]] had to leave the ring to go after a friend, he handed his place and his disguise to [[sabo|Sabo]], who shattered the arena, crossed the water fish by fish to reach the chest, broke it open and ate what was inside on the spot. Then he pulled off the disguise, found fire around his fist and threw it: Ace’s own move, under the name Ace gave it.',
+        },
+      },
+    },
+    {
+      episode: 897,
+      value: {
+        title: {
+          it: 'La promessa che O-Tama aspetta',
+          en: 'The promise Tama is waiting on',
+        },
+        body: {
+          it: 'Qualche anno fa, racconta [[tenguyama-hitetsu|Hitetsu]] a [[monkey-d-luffy|Rufy]], Ace e una manciata di pirati naufragarono vicino a questo villaggio di Wano. Gli abitanti, affamati, li legarono e mangiarono le loro provviste; Ace li lasciò finire, si liberò con il suo potere e invece di vendicarsi andò nella foresta a cercare altro cibo per loro. Rimase per settimane, e una bambina, [[tama|O-Tama]], si affezionò a lui più di tutti. Quando lei chiese di salpare con lui, le disse di aspettare: sarebbe tornato quando fosse diventata una kunoichi affascinante. Lei aspetta ancora, in un villaggio in rovina, quando Rufy le dice che Ace è morto, e lo prende a pugni dandogli del bugiardo.',
+          en: 'Years ago, [[tenguyama-hitetsu|Hitetsu]] tells [[monkey-d-luffy|Luffy]], Ace and a few pirates washed ashore near this Wano village. The starving villagers tied them up and ate their supplies; Ace let them finish, freed himself with his power and, instead of taking revenge, went into the forest to find them more food. He stayed for weeks, and a little girl, [[tama|Tama]], grew fonder of him than anyone. When she asked to sail with him, he told her to wait: he would come back once she had grown into an enchanting kunoichi. She is still waiting when Luffy tells her Ace is dead, and she hits him and calls him a liar.',
+        },
+      },
+    },
+    {
+      episode: 1015,
+      value: {
+        title: { it: 'Un amico a Onigashima', en: 'A friend on Onigashima' },
+        body: {
+          it: '[[yamato|Yamato]] racconta a [[momonosuke|Momonosuke]] di quando Ace venne a Onigashima con la sua ciurma per liberare i bambini rapiti, mentre [[kaido|Kaido]] era via. Mentre i suoi uomini li riportavano a casa, Ace affrontò Yamato, di guardia all’isola, e gli raccontò cosa significava essere figlio dell’odiato [[gold-roger|Roger]]. Ace spinse Yamato, che manette esplosive tengono sull’isola, a sfidare Kaido, e Yamato distrusse la statua del drago di Kaido. Diventarono amici. Accanto al fuoco Ace parlò del fratellino [[monkey-d-luffy|Rufy]] e del suo sogno; Yamato ricavò una Vivre Card da una sua unghia e la tenne finché non si sbriciolò, quando Ace morì a Marineford.',
+          en: '[[yamato|Yamato]] tells [[momonosuke|Momonosuke]] how Ace once came to Onigashima with his crew to free kidnapped children, while [[kaido|Kaido]] was away. As his men sent them home, Ace fought Yamato, the island’s guard, and spoke of what it meant to be the son of a man as hated as [[gold-roger|Roger]]. Ace urged Yamato, held on the island by exploding cuffs, to defy Kaido, and Yamato smashed Kaido’s dragon statue. They became friends. By a campfire Ace talked about his little brother [[monkey-d-luffy|Luffy]] and his dream; Yamato made a Vivre Card from his fingernail and kept it until it crumbled away, the day Ace died at Marineford.',
         },
       },
     },
@@ -451,6 +500,26 @@ export const alabastaChronicles = {
         body: {
           it: "Nel cuore dell'Albero Balena di Zou, a Robin viene concesso il raro permesso di leggere un Poneglifo inciso in rosso anziché in blu, il primo che vede di quel colore. Ricordando gli anni di studio delle pietre a Ohara, lo traduce in una sequenza di coordinate nautiche che [[nami|Nami]] può segnare su una mappa. [[inuarashi|Inuarashi]] le spiega cosa ha appena trovato: un Poneglifo della Rotta, uno dei quattro sparsi per il mondo, ciascuno indica un'isola. Solo quando tutti e quattro saranno letti e collegati si potrà trovare Laugh Tale e, con esso, lo One Piece.",
           en: 'Inside the Whale Tree on Zou, Robin is given rare permission to read a Poneglyph carved in red instead of blue, the first she has ever seen in this colour. Recalling her years studying the stones on Ohara, she translates it into a string of nautical coordinates that [[nami|Nami]] can plot on a chart. [[inuarashi|Inuarashi]] explains what she has just found: a Road Poneglyph, one of four scattered across the world, each pointing to an island. Only once all four are read and connected can anyone find Laugh Tale and, with it, the One Piece.',
+        },
+      },
+    },
+    {
+      episode: 1044,
+      value: {
+        title: { it: 'Volti nella nebbia', en: 'Faces in the mist' },
+        body: {
+          it: 'A Onigashima, in una nebbia, Robin rivede sua madre Olvia, Saul e Clover, vivi. È l’illusione di [[black-maria|Black Maria]]: Robin scaccia gli impostori e [[brook|Brook]], immune alla nebbia, resta con lei finché non le lascia l’avversaria. Robin fa sbocciare un proprio corpo gigante, ma ogni taglio che Black Maria gli infligge si apre su di lei, e ragnatele e fuoco la inchiodano mentre Black Maria la deride, utile solo a leggere i Poneglifi. Robin ricorda una lezione imparata con l’Armata Rivoluzionaria, fa crollare il soffitto sulle fiamme, poi si erge come un demone gigantesco e la stringe fra le braccia finché non perde i sensi.',
+          en: 'In a mist on Onigashima Robin sees her mother Olvia, Saul and Clover alive again. It is [[black-maria|Black Maria]]’s illusion: Robin knocks the impostors away, and [[brook|Brook]], immune to the mist, stays at her side, then leaves the fight to her. Robin grows a giant body of her own, but every cut Black Maria gives it opens on Robin, and webs and fire pin her down while Black Maria mocks her as useful only for reading Poneglyphs. Robin remembers a lesson learned with the Revolutionary Army, brings the ceiling down on the flames, then rises as a giant demon and crushes her in its arms until she passes out.',
+        },
+      },
+    },
+    {
+      episode: 1083,
+      value: {
+        title: { it: 'Ciò che giace sotto Wano', en: 'What lies beneath Wano' },
+        body: {
+          it: 'La pietra di Alabasta aveva detto a Robin che Pluton, una delle armi ancestrali, si trova a Wano; finita la guerra lo chiede al vecchio spadaio [[tenguyama-hitetsu|Hitetsu]], che in realtà è l’ex shogun Sukiyaki, e lui glielo conferma. Porta lei e [[trafalgar-law|Law]] giù per un passaggio fino a una finestra su una città in fondo al mare, la vecchia Wano, sommersa otto secoli fa dopo che furono alzate le sue mura, e fino al Poneglifo della Rotta. Pluton giace ancora più in basso, e l’unico modo per raggiungerlo è abbattere le mura che chiudono il paese. Tornata dalla ciurma, Robin racconta tutto; [[monkey-d-luffy|Rufy]] decide di lasciare l’arma dov’è.',
+          en: 'A stone in Alabasta told Robin that the ancient weapon Pluton lies in Wano; after the war she asks the old swordsmith [[tenguyama-hitetsu|Hitetsu]], who is really the former shogun Sukiyaki, and he confirms it. He leads her and [[trafalgar-law|Law]] down a passage to a window on a city at the bottom of the sea, the old Wano, flooded eight centuries ago after its walls went up, and on to the Road Poneglyph. Pluton lies deeper still, and the only way to reach it is to tear down the walls that close the country. Back with the crew, Robin tells them everything; [[monkey-d-luffy|Luffy]] decides to leave the weapon where it is.',
         },
       },
     },
