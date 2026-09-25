@@ -169,7 +169,7 @@ lets the test read the numbers in a path as coordinates.
 | Lint      | ESLint 10 flat config, 1,020 rules on, type-aware |
 | Gates     | react-doctor 0.9.14, fallow 3.25.0                |
 | Host      | Netlify, SSR function plus CDN assets             |
-| Runtime   | Node 24.18.0, npm 11.16.0                         |
+| Runtime   | Node 24.18.0, npm 11.20.0                         |
 
 **Five runtime dependencies**, and every version is pinned exact — no ranges,
 one documented `overrides` entry.
@@ -301,7 +301,7 @@ Character names are the Italian dub's in Italian.
 
 ## Running it locally
 
-Node 24.18.0 and npm 11.16.0, both pinned.
+Node 24.18.0 and npm 11.20.0, both pinned.
 
 ```sh
 nvm use

@@ -73,13 +73,12 @@ export function resolveEpisode(
   episode: number,
 ): null | number {
   const season = getSeason(seasonNumber)
-  if (season === undefined) {
-    return null
-  }
-  if (!Number.isSafeInteger(episode)) {
-    return null
-  }
-  if (episode < 1 || episode > seasonLength(season)) {
+  if (
+    season === undefined
+    || !Number.isSafeInteger(episode)
+    || episode < 1
+    || episode > seasonLength(season)
+  ) {
     return null
   }
 
