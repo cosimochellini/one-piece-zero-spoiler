@@ -1298,7 +1298,7 @@ export const devilFruits: Saga = {
       id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
       kind: 'fruit',
       revealedAtEpisode: 944,
-      revealedAtChapter: 936,
+      revealedAtChapter: 935,
       name: {
         it: 'Frutto Ryu Ryu, modello Brachiosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',

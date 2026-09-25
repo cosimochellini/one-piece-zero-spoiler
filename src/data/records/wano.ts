@@ -132,8 +132,8 @@ export const wano: Saga = {
     {
       id: 'queen',
       kind: 'character',
-      revealedAtEpisode: 931,
-      revealedAtChapter: 936,
+      revealedAtEpisode: 930,
+      revealedAtChapter: 935,
       name: { it: 'Queen', en: 'Queen' },
       summary: {
         it: 'L’All-Star dei Pirati delle Cento Bestie che comanda il campo di prigionia di Udon, un omone con un braccio meccanico che sale su un palco a cantare e ballare per le sue guardie.',
@@ -586,12 +586,12 @@ export const wano: Saga = {
         en: 'Beasts Pirates All-Star',
       },
       log: {
-        it: 'Governa il campo di Udon come uno spettacolo: arriva tra musica e guardie che lo acclamano, e canta della propria figura. È uno dei tre All-Star dell’Imperatore, ha un braccio meccanico e porta una taglia che pochi al mondo raggiungono. Chi tenta la fuga viene riportato dentro e usato come intrattenimento.',
-        en: 'He runs the Udon camp like a stage show: he arrives to music and cheering guards, and sings about his own figure. He is one of the Emperor’s three All-Stars, with a mechanical arm and a bounty few men in the world reach. Anyone who tries to escape is dragged back inside and used as entertainment.',
+        it: 'Governa il campo di Udon come uno spettacolo: arriva tra musica e guardie che lo acclamano, e si esibisce sul palco in un numero di canto e ballo. È uno dei tre All-Star dell’Imperatore, ha un braccio meccanico e porta una taglia che pochi al mondo raggiungono. Quando un prigioniero prova a scavalcare il muro, gli sguinzaglia dietro i suoi uomini.',
+        en: 'He runs the Udon camp like a stage show: he arrives to music and cheering guards, and puts on a song-and-dance number on stage. He is one of the Emperor’s three All-Stars, with a mechanical arm and a bounty few men in the world reach. When a prisoner tries to climb the wall out, he sends his men after him.',
       },
       affiliation: [
         {
-          episode: 931,
+          episode: 930,
           value: {
             it: 'Pirati delle Cento Bestie, All-Star, padrone del campo di prigionia di Udon',
             en: 'Beasts Pirates, All-Star, master of the Udon prison camp',
@@ -600,7 +600,7 @@ export const wano: Saga = {
       ],
       epithet: [
         {
-          episode: 931,
+          episode: 930,
           value: { it: 'Queen la Peste', en: 'Queen the Plague' },
         },
       ],
@@ -610,7 +610,7 @@ export const wano: Saga = {
           value: ['dragon-dragon-fruit-ancient-model-brachiosaurus'],
         },
       ],
-      bounty: [{ episode: 931, value: 1_320_000_000 }],
+      bounty: [{ episode: 930, value: 1_320_000_000 }],
     },
     'king': {
       role: {
