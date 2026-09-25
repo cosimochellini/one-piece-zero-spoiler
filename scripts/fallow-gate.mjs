@@ -9,7 +9,7 @@
  *
  * Exit codes are fallow's own, forwarded as-is:
  *   0   clean
- *   1   error-severity findings (severity policy lives in .fallowrc.json)
+ *   1   error-severity findings (severity policy lives in .fallowrc.jsonc)
  *   2   invalid config or input, not a code finding
  *   3+  analyzer failure, see `fallow schema.exit_codes`
  *
@@ -73,10 +73,10 @@ const label = {
   0: 'fallow gate: PASSED',
   1:
     'fallow gate: FAILED with error-severity findings, listed above. '
-    + 'Severity policy lives in .fallowrc.json.',
+    + 'Severity policy lives in .fallowrc.jsonc.',
   2:
     'fallow gate: exit 2, invalid config or input. This is NOT a code '
-    + 'finding: check .fallowrc.json.',
+    + 'finding: check .fallowrc.jsonc.',
 }[status]
 
 const message =

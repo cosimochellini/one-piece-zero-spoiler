@@ -1,5 +1,11 @@
 {
   "$schema": "./node_modules/fallow/schema.json",
+  // `entry` and the `src/routeTree.gen.ts` ignore below are one atomic pair.
+  // The generated route tree is the only static importer of the route
+  // modules, so once it is ignored nothing reaches them and every route would
+  // read as an unused file. The route globs here are what keeps them alive:
+  // drop the ignore and they become redundant, drop them and the routes turn
+  // into findings.
   "entry": [
     "src/routes/**/*.ts",
     "src/routes/**/*.tsx",
@@ -7,7 +13,7 @@
     "src/start.ts",
     "scripts/*.mjs",
     "doctor.config.ts",
-    "commitlint.config.mjs"
+    "commitlint.config.mjs",
   ],
   "ignorePatterns": [
     "src/routeTree.gen.ts",
@@ -15,13 +21,12 @@
     ".nitro/**",
     ".netlify/**",
     ".tanstack/**",
-    ".gate/**"
+    ".gate/**",
   ],
-  "ignoreDependencies": ["@tanstack/react-start"],
   "typeAware": {
     "enabled": true,
     "projects": ["tsconfig.json"],
-    "require": "best-effort"
+    "require": "best-effort",
   },
   "rules": {
     "private-type-leaks": "error",
@@ -64,14 +69,14 @@
     "mixed-client-server-barrel": "error",
     "misplaced-directive": "error",
     "route-collision": "error",
-    "dynamic-segment-name-conflict": "error"
+    "dynamic-segment-name-conflict": "error",
   },
   "unusedComponentProps": { "ignorePattern": "^_" },
   "boundaries": {
     "zones": [
       {
         "name": "tests",
-        "patterns": ["src/test/**", "src/**/*.test.ts", "src/**/*.test.tsx"]
+        "patterns": ["src/test/**", "src/**/*.test.ts", "src/**/*.test.tsx"],
       },
       { "name": "routes", "patterns": ["src/routes/**", "src/router.tsx"] },
       { "name": "server", "patterns": ["src/server/**", "src/start.ts"] },
@@ -80,12 +85,12 @@
       { "name": "lib", "patterns": ["src/lib/**", "src/security-headers.ts"] },
       { "name": "data", "patterns": ["src/data/**"] },
       { "name": "i18n", "patterns": ["src/i18n/**"] },
-      { "name": "styles", "patterns": ["src/styles/**"] }
+      { "name": "styles", "patterns": ["src/styles/**"] },
     ],
     "rules": [
       {
         "from": "routes",
-        "allow": ["components", "ui", "lib", "server", "i18n", "styles"]
+        "allow": ["components", "ui", "lib", "server", "i18n", "styles"],
       },
       { "from": "server", "allow": ["data", "lib", "i18n", "styles"] },
       { "from": "components", "allow": ["ui", "lib", "i18n", "styles"] },
@@ -93,7 +98,7 @@
       { "from": "lib", "allow": ["i18n", "styles"] },
       { "from": "data", "allow": ["lib", "i18n", "styles"] },
       { "from": "i18n", "allow": ["lib", "data", "styles"] },
-      { "from": "styles", "allow": [] }
+      { "from": "styles", "allow": [] },
     ],
     "coverage": {
       "requireAllFiles": true,
@@ -104,15 +109,15 @@
         "eslint.config.js",
         "doctor.config.ts",
         "commitlint.config.mjs",
-        "scripts/**"
-      ]
-    }
+        "scripts/**",
+      ],
+    },
   },
   "duplicates": {
     "mode": "mild",
     "threshold": 1,
     "minLines": 8,
-    "ignore": ["src/styles/global.css"]
+    "ignore": ["src/styles/global.css"],
   },
   "health": {
     "maxCyclomatic": 8,
@@ -123,11 +128,11 @@
         "files": [
           "src/**/*.test.ts",
           "src/**/*.test.tsx",
-          "scripts/**/*.test.mjs"
+          "scripts/**/*.test.mjs",
         ],
         "maxUnitSize": 200,
-        "reason": "A describe() block is one unit; a test suite is long by design."
-      }
-    ]
-  }
+        "reason": "A describe() block is one unit; a test suite is long by design.",
+      },
+    ],
+  },
 }

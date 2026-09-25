@@ -102,6 +102,11 @@ export default defineConfig(
   // Type-aware rules. stylisticTypeChecked is in: its rules choose between
   // constructs (`type` over `interface`, `??` over `||`, `T[]` over
   // `Array<T>`), never whitespace, so Prettier has nothing to argue with.
+  //
+  // These are why TypeScript is pinned to 6.0.x. typescript-eslint declares a
+  // peer range of `typescript >=4.8.4 <6.1.0`, and past it the type-aware
+  // rules above break. A routine bump of TypeScript waits until
+  // typescript-eslint widens that range.
   tseslint.configs.strictTypeChecked,
   tseslint.configs.stylisticTypeChecked,
 
