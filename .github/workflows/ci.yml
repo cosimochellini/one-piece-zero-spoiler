@@ -137,6 +137,12 @@ jobs:
 
   # Cuts the release for every push to main, which in practice means every
   # squashed pull request. Gated on `check` so a red build never tags.
+  #
+  # This job is also why `main` carries no branch protection. A ruleset that
+  # requires a pull request would reject the `chore(release)` commit pushed
+  # below as well, and adding `github-actions` to the bypass list is rejected
+  # on a personal repository. Protecting the branch costs either a deploy key
+  # held as a secret or dropping the package.json version bump.
   release:
     name: release
     needs: check
@@ -165,6 +171,12 @@ jobs:
         with:
           node-version-file: .nvmrc
 
+      # Recovering a half-finished release: if this step dies between tagging
+      # and publishing, the tag and the version commit land but the GitHub
+      # Release does not, and the next merge will not backfill it because its
+      # commits are already released. Create it by hand:
+      #   gh release create vX.Y.Z --generate-notes
+      #
       # Installed through npx rather than devDependencies: this pulls ~250
       # packages that no other job, and no local `npm install`, has any use
       # for. Versions are pinned, so the run stays reproducible.
