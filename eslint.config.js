@@ -405,6 +405,10 @@ export default defineConfig(
       // `disabled`, `hidden`. Renaming them `isOpen` puts the component API at
       // odds with `<dialog open>`.
       'unicorn/consistent-boolean-name': 'off',
+      // Since unicorn 76 it also covers an `if` that returns followed by a
+      // `return`, and has no option to leave those alone: it would fold every
+      // guard clause into a multi-line nested ternary.
+      'unicorn/prefer-ternary': 'off',
     },
   },
 

@@ -171,7 +171,7 @@ function Covered({
       // `undefined` rather than `false`: an explicit `aria-hidden="false"`
       // is legal but it is noise in the accessibility tree, and it reads as
       // if the covered state were still being managed once it is not.
-      aria-hidden={visible ? undefined : true}
+      aria-hidden={!visible || undefined}
       inert={!visible}
       {...stylex.props(styles.content, !visible && fogFor(density, strength))}
     >

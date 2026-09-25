@@ -8,8 +8,16 @@ import { SeaChartHero } from './SeaChartHero'
 // StyleX compiles to opaque atomic classes, so a colour is identified the only
 // way a test honestly can: as the class one element carries and another does
 // not.
-const classesOf = (container: HTMLElement, selector: string): Set<string> =>
-  new Set(container.querySelector(selector)?.classList)
+const classesOf = (element: Element | null | undefined): Set<string> =>
+  new Set(element?.classList)
+
+// Matched on the attribute rather than through a `path[d="…"]` selector:
+// jsdom refuses any selector over 2048 characters, and the hull is longer.
+function pathsDrawing(container: HTMLElement, d: string): SVGPathElement[] {
+  return [...container.querySelectorAll('path')].filter(
+    (path) => path.getAttribute('d') === d,
+  )
+}
 
 describe('SeaChartHero', () => {
   it('draws the night sea in one hidden box that is cropped, not squashed', () => {
@@ -51,16 +59,15 @@ describe('SeaChartHero', () => {
   it('draws the ship twice: a gold rim behind, the paper fill in front', () => {
     const { container } = render(<SeaChartHero />)
 
-    const body = `path[d="${CSS.escape(SUNNY_BODY)}"]`
-    const horizon = `path[d="${CSS.escape(HORIZON)}"]`
+    const [horizon] = pathsDrawing(container, HORIZON)
     // The horizon is gold and the sea rect is not; the fill is what the front
     // copy of the hull has and the horizon has not.
-    const goldName = [...classesOf(container, horizon)].find(
-      (name) => !classesOf(container, 'rect').has(name),
+    const goldName = [...classesOf(horizon)].find(
+      (name) => !classesOf(container.querySelector('rect')).has(name),
     )
-    const [rimBody, fillBody] = container.querySelectorAll(body)
+    const [rimBody, fillBody] = pathsDrawing(container, SUNNY_BODY)
     const fillName = [...(fillBody?.classList ?? [])].find(
-      (name) => !classesOf(container, horizon).has(name),
+      (name) => !classesOf(horizon).has(name),
     )
 
     const parts = [
