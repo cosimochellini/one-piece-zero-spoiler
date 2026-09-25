@@ -1189,12 +1189,12 @@ export const devilFruits: Saga = {
     {
       id: 'millet-millet-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 892,
+      revealedAtEpisode: 894,
       revealedAtChapter: 912,
       name: { it: 'Frutto Kibi Kibi', en: 'Millet-Millet Fruit' },
       summary: {
-        it: 'Ricava gnocchi di miglio dalle guance, e chi ne mangia uno, uomo o bestia, diventa fedele all’istante.',
-        en: 'Makes millet dumplings out of the cheeks, and whoever eats one, man or beast, turns loyal on the spot.',
+        it: 'Ricava gnocchi di miglio dalle guance, e l’animale che ne mangia uno diventa fedele all’istante.',
+        en: 'Makes millet dumplings out of the cheeks, and any animal that eats one turns loyal on the spot.',
       },
       visual: { art: 'millet-millet-fruit', tint: 'ocher' },
     },
@@ -1297,8 +1297,8 @@ export const devilFruits: Saga = {
     {
       id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
       kind: 'fruit',
-      revealedAtEpisode: 925,
-      revealedAtChapter: 933,
+      revealedAtEpisode: 944,
+      revealedAtChapter: 935,
       name: {
         it: 'Frutto Ryu Ryu, modello Brachiosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',

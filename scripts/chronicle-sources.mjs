@@ -122,6 +122,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_869',
       note: 'Per the wiki’s own Observation Haki article, Luffy “unlocks Future Vision” at chapter 894 / episode 869 specifically against Katakuri — a precise episode, not the vague 870 candidate.',
     },
+    916: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_916',
+      note: 'Candidate 914–915 (Qref ep=914,915), moved to 916 because the story includes the prison: ep 914 has the Elephant Gun that grounds Kaido and Speed’s account of Tama; ep 915 the Gear Fourth barrage and Raimei Hakke; only ep 916 has the unconscious Conqueror’s Haki knocking out the guards, Hawkins arresting him, Udon and the cell next to Kid (History Qref chap=924 ep=915, ep2=916). Luffy has no other story at 916. Tama’s survival (Inuarashi, ep 916) is left out: Luffy does not know it. Oden’s name kept out (filed 960): “the ruined castle on the hill”.',
+    },
+    956: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_956',
+      note: 'Candidate 937–956 (Qref ep=937,955,956), filed at the end. Ep 936–937 Hyogoro’s lesson; ep 944–945 Big Mom and the torn-off collars; ep 946 the Rayleigh memory; ep 949 the prison taken; ep 952 and 955 training on rocks and metal; only ep 956 ends with Luffy mastering it by blasting a tree, one day before the raid (History Qref chap=955 ep=956). Ep 955 is still “keeps training”. Luffy has no other story at 956.',
+    },
     1071: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1071',
       note: 'The Five Elders name the fruit, Kaido dragged onto the roof, the ground bounces the fireball — all within 1071.',
@@ -200,6 +208,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_719',
       note: "718 is the approach only; 719 has Orlumbus' throw, the giant halved, the hunt through the falling stone and Pica's helmet opened. Second pass: the first cut is horizontal, and nothing puts it at the waist.",
     },
+    956: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_956',
+      note: 'Candidate 954–956 (Qref ep=954,955,956), filed at the end. Ep 952 the rematch with Gyukimaru; ep 954 Hiyori asks for Shusui and offers Enma; ep 955 the national-treasure explanation and Zoro’s condition of Ryuma’s grave; only ep 956 has Hitetsu handing Enma over, the cliff cut, and Zoro vowing to make it a Black Blade. Hiyori shown via the komurasaki record (921); Oden (960) is only “her father”. Zoro has no other story at 956.',
+    },
+    1027: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1027',
+      note: 'Candidate 1027, confirmed. Ep 1026 has Law and Zoro pushing Big Mom off the island; ep 1027 has Kaido about to finish the unconscious Luffy, the Nine Sword Style attack with Supreme King Haki reopening his scar, Raimei Hakke on Zoro and Law, and Luffy getting up. Kaido’s surprise and Zoro not knowing he has the Haki are from the History paragraph (Qref chap=1010 ep=1027, ep2=1028); the 1028 half is only Luffy sending them downstairs, left out. Big Mom’s rescue (1027) left out.',
+    },
     1062: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1062',
       note: 'King’s ability worked out, King of Hell Three Sword Style, King defeated.',
@@ -265,6 +281,10 @@ export const CHRONICLE_SOURCES = {
     865: {
       source: 'https://onepiece.fandom.com/wiki/Episode_865',
       note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die, and accepting — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890).',
+    },
+    1038: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1038',
+      note: 'Corrected from the candidate’s 1032–1033: ep 1032 is Ulti striking Tama and Nami’s first lightning, and in ep 1033 Ulti falls to Big Mom’s Maser Ho, not to Nami, while Zeus is only rejected. Zeus pleads, is refused and sacrificed in ep 1034; the Black Balls put him in the Clima-Tact, revealed in ep 1037 (History Qref chap=1013 ep=1033, ep2=1034; chap=1015 ep=1037); Nami and Zeus knock Ulti out only in ep 1038 (Qref chap=1016 ep=1037, ep2=1038). Kept the event, filed at 1038. Second pass: 1034 and the Zeus page (Qref chap=1013) have Zeus attacking Big Mom to make amends and Nami’s Black Balls meant to power him up, not to buy time or as a parting gift; both phrases corrected. The rest checked against 1032–1038.',
     },
   },
   'usopp': {
@@ -335,6 +355,14 @@ export const CHRONICLE_SOURCES = {
     746: {
       source: 'https://onepiece.fandom.com/wiki/Episode_746',
       note: 'Bartolomeo’s ship and the new posters, Sanji “only alive”.',
+    },
+    1019: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1019',
+      note: 'Candidate 1008–1009 (Qref ep=1008,1009), but the candidate’s own ‘Tama’s dango’ half is not in those episodes: 1008 has Ulti’s headbutt on Nami, Page One helping her beat Usopp’s Pop Greens, Nami’s Pirate King declaration and Tama arriving on Komachiyo, who bites Ulti’s head; 1009 has the escape on Komachiyo. The kibi dango only appear in 1019 (Qref chap=1004 ep=1019): the flashback of Tama making them, Usopp shooting one into Hamlet’s mouth and firing them at Sasaki’s Armoured Division while Franky fights. Filed at 1019 so the story can keep both halves. Second pass: Italian brought in line with the English (the escape on Komachiyo, ep 1009). Timing confirmed: 1008–1009 for the bathhouse, 1019 for the dango and the Armoured Division. Second pass: the dango tame the Gifters (1019: ‘to tame the Gifters in Onigashima’), not every Beasts Pirate, so ‘Kaido’s pirates’ became ‘Kaido’s Gifters’. Timing re-checked: 1008–1009 bathhouse, 1019 dango.',
+    },
+    1076: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1076',
+      note: 'Candidate 1073–1076 (Qref ep=1073,1074,1076). Background from 1063: Usopp finds Kin’emon and Kiku, tells them to hold on to life instead of their honour, and Izou holds off the Beasts Pirates while they escape on Hamlet’s back. 1073 debuts Midori Boshi: Sprinkler and has Usopp’s group trapped by the fire (Hamlet’s ‘wasting energy’ line and the promise to Izou are the Qref chap=1046 ep=1073); the flood that puts the fire out starts in 1073, and 1074 shows Usopp being hit by it. 1076 has the allies surviving Raizo’s flood (Qref chap=1049 ep=1076: Usopp keeping them from drowning) and, per its anime notes, Nami, Chopper and Tama spotting Usopp, Kin’emon and Kiku. Filed at 1076. Hamlet is not a filed record, so he is named in plain text. Second pass: 1073 puts Usopp’s group in the corridors, not the basement (that is Brook and Robin’s), so ‘basements’ became ‘corridors’. The manga-cited lines check out on the Hamlet page (Qref chap=1046 ep=1073: the burning sprinkler, Hamlet calling it useless, the promise to Izou) and 1076’s anime notes (Nami, Chopper and Tama spotting them).',
     },
   },
   'sanji': {
@@ -426,6 +454,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_866',
       note: 'By 866 Sanji finishes the cake and it is sent out as bait; Big Mom catches its scent and breaks off chasing the Sunny to pursue it instead. Episode 863 is included as the moment Sanji refuses to poison it.',
     },
+    925: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_925',
+      note: 'Candidate 924–925 (Qref ep=924,925). 924 ends with Page One rampaging through the Flower Capital destroying soba shops, Sanji running away, then turning back at the citizens’ cries and taking out the raid suit. The suit itself is only activated in 925: the can, Stealth Black renamed Soba Mask, the kick that knocks Page One down, the cape shield, invisibility, Page One throwing him into houses unharmed, the last attack and the escape into the sky while Usopp, Law and Franky flee. Filed at 925. The episode has the kick to the throat; the character history says stomach, so the body just says ‘a kick’.',
+    },
+    1020: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1020',
+      note: 'Candidate 1020. The build-up runs from 1010 (Sanji hears a woman being harassed on the stairs with Luffy and Jinbe) through 1011 (the web trap, the corpses in the closet), 1013 (her ancient spider form) and 1016 (he burns the webs with Diable Jambe but cannot attack Black Maria, who questions him about Robin). 1020 has the women’s game that knocks him out, the web crucifixion, the brass knuckles, his cry for Robin broadcast by the Marys, and Robin’s giant arm striking Black Maria before the last blow. Brook freeing him is 1021 and is left out, so 1020 holds everything the story says.',
+    },
     1061: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1061',
       note: 'Copied Vinsmoke weapons, Ifrit Jambe, Queen sent off Onigashima, Sanji collapses.',
@@ -488,9 +524,17 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_815',
       note: 'Corrected twice from the candidate 805–806: the first pass moved it to 816, but a second, independent pass found the Brûlée defeat/capture fully resolves by the end of 815 itself — 816 only continues the Mirro-World search and adds nothing to this thread. The “eleven hours” detail in the original candidate belongs to Luffy’s separate fight against Cracker, not to Chopper’s time here, so it was dropped.',
     },
+    928: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_928',
+      note: 'Candidate 926–928 (Qref ep=926,928). Episode 926 ends on Big Mom waking without memory on the beach (found by Chopper, Tama, Momonosuke and Kiku); the name Olin is 927; the trip to Okobore Town, Tsuru’s red bean soup and Tama’s idea of luring her to Udon, where Luffy is imprisoned, are 928, so the story is filed there. The wiki spells the fake name Olin, not O-Lin. Tsuru is left unnamed because the tsuru record is the Marine vice admiral. The ride to Udon itself starts in 929 and is not told.',
+    },
     1023: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1023',
       note: 'Chopperphage cannon, the Pleasures cured, Monster Point on Queen, “not a raccoon”.',
+    },
+    1036: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1036',
+      note: "Candidate 1034–1036 (Qref ep=1034,1035; ep=1036,1037). Chopper slamming Queen and Queen standing up unharmed are 1034; the Caesar flashback (longer Rumble Ball, accepted side effect) and Bao Huang’s announcement of Luffy’s defeat are 1035; Chopper losing heart, Queen about to bite him, Sanji’s kick, the praise and Zoro handed over are 1036, so the story is filed there. The thirty-minute figure is from Chopper’s History (Qref chap=1014 ep=1034,1035). The side effect itself (Babyjiji, ep 1039) and Chopper’s tears of joy at Momonosuke’s message are left out. Second pass: episode placement confirmed (slam 1034, Caesar and the announcement 1035, Sanji 1036); the thirty minutes stay, since the New World History cites them with Qref ep=1034,1035, but no episode summary states the figure. Italian aligned to 'loses heart' and the arrows on the samurai.",
     },
   },
   'nico-robin': {
@@ -545,6 +589,14 @@ export const CHRONICLE_SOURCES = {
     769: {
       source: 'https://onepiece.fandom.com/wiki/Episode_769',
       note: 'Confirms Robin reads the red Road Poneglyph in the Whale Tree, translates its coordinates for Nami, and Inuarashi explains the four-Poneglyph system pointing to Laugh Tale — matches the issue’s candidate exactly.',
+    },
+    1044: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1044',
+      note: 'Candidate 1042–1043 (Qref ep=1042,1043; ep=1043,1044). The mist with Olvia, Saul and Clover and Robin knocking the three impostors away are 1042; Brook’s immunity, the Gigante Fleur, the cuts transferring to Robin, the webs and Black Maria pinning her are 1043’s first half, and the ep 1043 Long Summary itself carries the Revolutionary Army lesson, the collapsed ceiling putting out the fire, the demon-shaped giant body (Demonio Fleur) and the Clutch that knocks Black Maria out. Filed at 1043. Her collapse from exhaustion afterwards is left out. Second pass: moved from 1043 to 1044. The 1043 Long Summary stops at the thread tendrils blocking Robin’s giant limbs; the burning webs, the Poneglyph taunt, the Revolutionary Army lesson, the collapsed ceiling, the demon form and the Clutch are all in the 1044 Long Summary.',
+    },
+    1083: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1083',
+      note: "Candidate 1083. Robin’s question to Hitetsu/Sukiyaki about Pluton is ep 1080 (Robin History, Qref chap=1053 ep=1080); the sunken old Wano, the Road Poneglyph and Pluton under the walls are ep 1082; Robin reporting to the crew and Luffy choosing not to uncover the weapon are the ep 1083 Long Summary, so the story is filed there. Sukiyaki has no record and is named in plain text. Second pass: placement confirmed (Sukiyaki reveal and Pluton confirmation 1080, sunken Wano and Road Poneglyph 1082, report to the crew and Luffy's refusal 1083); Italian changed from 'quando' to 'dopo che' so the flood follows the walls, as in ep 1082.",
     },
   },
   'franky': {
@@ -608,6 +660,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1042',
       note: 'General Cannon, then Radical Beam to the belly. Second pass: the horn-grab throw was into the wall, and the torn thruster was unattested — both corrected.',
     },
+    1068: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1068',
+      note: 'Candidate 1065, which is wrong for the catch itself: 1065 only has Franky searching for Zoro at the Right-Brain Tower (Qref chap=1038 ep=1065), Chopper worrying about the medicine’s double price, and Zoro bleeding out and seeing the reaper. 1067 has the explosion that crumbles the island and Zoro falling off its edge; 1068 has Franky saving him with his extendable arm and pulling him back onto the island (Qref chap=1041 ep=1068). Filed at 1068.',
+    },
   },
   'brook': {
     339: {
@@ -658,6 +714,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_834',
       note: 'Brook in disguise smashes the portrait to trigger a private panic in Big Mom, then unmasks to turn that panic into a public rampage — an entirely separate beat from ep 827, no overlap. The portrait’s subject is left unnamed since `carmel` is not filed until episode 836.',
     },
+    929: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_929',
+      note: 'Candidate 926–929 (Qref ep=926,928,929). The anime moves the discovery earlier than the manga: in 923 Brook, as a soul, passes through a strangely reinforced door in Orochi’s mansion and finds the Poneglyph. 925 has Robin searching for it; 926 Brook going out as a soul to protect her; 927–928 him scaring the Oniwabanshu as a ghost until they realise he is not attacking, and Nami’s Zeus striking Orochi. Only 929, at the snowy cottage meeting, says the Poneglyph Brook found was not red. Filed at 929.',
+    },
+    998: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_998',
+      note: 'Candidate 998–999. Everything is in 998: Big Mom recalling the ruined wedding cake and Brook destroying her only portrait, noticing Zeus carried off by Nami and grabbing him, Franky and Brook arriving on the Kurosai FR-U IV (the anime adds their song and Brook standing to jump off), running over her face, and Brook slicing Zeus in half (Qref chap=988 ep=998). 999 only adds Nami’s joy at seeing them and the Numbers fight, so the story is filed at 998. Zeus is not a filed record.',
+    },
   },
   'jinbe': {
     430: {
@@ -699,6 +763,10 @@ export const CHRONICLE_SOURCES = {
     981: {
       source: 'https://onepiece.fandom.com/wiki/Episode_981',
       note: 'Second pass: moved from 977. Jinbe surfaces and smashes the ship (ep 980), takes the helm (ep 981). The dossier affiliation moved 977 → 980 with it.',
+    },
+    1040: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1040',
+      note: 'Candidate 1038–1040 (Qref ep=1038,1039; ep=1040). Jinbe stays behind while Luffy goes on in 1012; the Six Powers, the escaped CP9 agent and the guarded fruit eaten by Luffy are 1039; the Nika story, the executed guard, the question about fish-men and slavery, the broken fingers, the tail, the single punch and the warning about history are 1040, so the story is filed there. The thief of the fruit (named only in the History, not in the episode summaries) is left out.',
     },
   },
   'trafalgar-law': {
@@ -909,6 +977,14 @@ export const CHRONICLE_SOURCES = {
     678: {
       source: 'https://onepiece.fandom.com/wiki/Episode_678',
       note: "678 is where Sabo takes the chest and eats the fruit; that the fruit was Ace's was settled back at 631, that a dead user's power resurfaces at 632, and that Hiken is Ace's move at 94. Ace himself is on screen only in 679, so the story names nothing that needs him there. Second pass: Luffy hands over his place because he leaves the ring to go after a friend, not because he cannot eat a second fruit.",
+    },
+    897: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_897',
+      note: 'Candidate 894–897 (Qref ep=894,897). Hitetsu’s account of Ace’s arrival (tied up, food eaten, freed by his fruit, food fetched from the forest, weeks in the village, Tama’s fondness) and Luffy’s blunt news of his death are 894; Tama’s request to join his crew and his promise to return when she is an enchanting kunoichi are told only in 897, when she wakes and hits Luffy, so the story is filed there. The episodes disagree on the date (four years in 894, three in 897), so the body says some years ago. Ace weaving a kasa is not in either summary and is left out.',
+    },
+    1015: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1015',
+      note: 'Candidate 1013–1015 (Qref ep=1013,1015). The broken dragon statue is first shown in 1012; the raid to rescue the children, Kaido away, the fight with Yamato, Roger, the exploding cuffs and the smashed statue are 1013; the campfire talk about Luffy’s dream, the Vivre Card made from Ace’s fingernail and its disintegration at Marineford are 1015, so the story is filed there. Oden’s journal appears in 1015 only as Yamato’s possession handed to Momonosuke, with no link to Ace in the summaries, so the logbook is left out. Marco’s memory of Whitebeard refusing Ace a war with Kaido (1014) is left out too.',
     },
   },
   'kaido': {

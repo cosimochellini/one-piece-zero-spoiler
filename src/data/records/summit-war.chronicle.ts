@@ -130,6 +130,19 @@ export const summitWarChronicles = {
         },
       },
     },
+    {
+      episode: 1040,
+      value: {
+        title: {
+          it: 'Una storia sul Dio del Sole',
+          en: 'A story about the Sun God',
+        },
+        body: {
+          it: 'A Onigashima Jinbe affronta [[whos-who|Who’s-Who]], che combatte con le tecniche del Governo Mondiale: è l’agente del CP9 evaso di prigione di cui Jinbe aveva sentito parlare. Tredici anni fa, racconta, custodiva un frutto del diavolo che fu rubato e mangiato da [[monkey-d-luffy|Rufy]]. In cella una guardia lo invitava per scherno a pregare Nika, il Dio del Sole, leggendario liberatore di schiavi, poi giustiziata; ora chiede all’uomo-pesce, il cui popolo ha conosciuto le catene, che cosa ne sa. Jinbe risponde che non ha niente da dirgli, gli spezza le dita e lo scaglia nel muro con un solo pugno: chi indaga sulla storia sia pronto a ciò che troverà.',
+          en: 'On Onigashima Jinbe faces [[whos-who|Who’s-Who]], who fights with Government techniques: he is the escaped CP9 agent Jinbe once heard of. Thirteen years ago, he explains, he guarded a devil fruit that was stolen and eaten by [[monkey-d-luffy|Luffy]]. In his cell a guard mockingly told him to pray to Nika, the Sun God, a legendary freer of slaves, and that guard was executed; now he asks the fish-man, whose people knew chains, what he knows. Jinbe answers that he has nothing to tell him, breaks his fingers and drives him into the wall with a single punch: whoever digs into history had better be ready for what he finds.',
+        },
+      },
+    },
   ],
 
   'trafalgar-law': [

@@ -141,6 +141,29 @@ export const thrillerBarkChronicles = {
         },
       },
     },
+    {
+      episode: 929,
+      value: {
+        title: {
+          it: 'Un Poneglyph, ma non rosso',
+          en: 'A Poneglyph, but not a red one',
+        },
+        body: {
+          it: 'Mentre [[nico-robin|Robin]] si confonde tra le geishe al banchetto dello shogun, Brook lascia il corpo e attraversa come anima i muri della residenza di [[kurozumi-orochi|Orochi]]. Dietro una porta stranamente rinforzata trova la pietra che Robin sta cercando: un Poneglyph. Poi i ninja scoprono Robin, e lui fluttua nella sala del banchetto per spaventarli nei panni di un fantasma, finché non si accorgono che non attacca mai davvero. Il fulmine di Zeus, liberato da [[nami|Nami]], si abbatte sullo shogun, e in una baita innevata lontano dalla capitale Brook racconta la sua scoperta: un Poneglyph, sì, ma non di quelli rossi.',
+          en: 'While [[nico-robin|Robin]] passes as a geisha at the shogun’s banquet, Brook leaves his body behind and drifts through the walls of [[kurozumi-orochi|Orochi]]’s mansion as a soul. Behind a strangely reinforced door he finds the stone Robin is looking for: a Poneglyph. Then the ninjas expose Robin, and he floats into the banquet hall to terrify them as a ghost, until they notice he never actually attacks. Zeus, let loose by [[nami|Nami]], brings a thunderbolt down on the shogun, and in a snowy cottage far from the capital Brook reports his find: a Poneglyph, yes, but not one of the red ones.',
+        },
+      },
+    },
+    {
+      episode: 998,
+      value: {
+        title: { it: 'Zeus tagliato in due', en: 'Zeus cut in two' },
+        body: {
+          it: 'A Onigashima [[charlotte-linlin|Big Mom]] non ha dimenticato chi le ha fatto a pezzi l’unico ritratto al matrimonio, né chi le ha rovinato la torta. [[nami|Nami]] sta scappando con Zeus, la nuvola del tuono che ha lasciato l’Imperatrice per lei, quando Big Mom si accorge che manca e lo riacciuffa. In quel momento [[franky|Franky]] irrompe sulla sua moto con Brook, i due che cantano a squarciagola, e le passa sopra la faccia, gettandola a terra. Brook salta giù, e la sua spada taglia Zeus in due. Nami, che già temeva di perdere la sua nuvola, si ritrova accanto due compagni appena in tempo.',
+          en: 'On Onigashima [[charlotte-linlin|Big Mom]] has not forgotten who smashed her only portrait at the wedding, or who ruined her cake. [[nami|Nami]] is running off with Zeus, the thundercloud who left the Emperor for her, when Big Mom notices him missing and snatches him back. At that moment [[franky|Franky]] roars in on his motorcycle with Brook, the two of them singing at the top of their lungs, and drives right over her face, knocking her flat. Brook leaps off, and his sword cuts Zeus in two. Nami, who was about to lose her cloud, finds two crewmates beside her just in time.',
+        },
+      },
+    },
   ],
   'gecko-moria': [
     {

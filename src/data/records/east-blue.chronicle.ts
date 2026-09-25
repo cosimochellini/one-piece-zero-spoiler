@@ -351,6 +351,26 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 916,
+      value: {
+        title: { it: 'Il primo pugno a Kaido', en: 'The first punch at Kaido' },
+        body: {
+          it: 'Il fuoco di [[kaido|Kaido]] spazza via il castello in rovina sulla collina e Rufy risponde con un pugno gigante del Gear Third sulla testa del drago, che lo abbatte a terra. Poi trova ferita la centaura che riportava a casa [[tama|O-Tama]] e crede che la bambina sia morta. Richiama Kaido a battersi e gli getta addosso tutto quello che ha, Gear Fourth compreso; basta un colpo solo a chiudere la lotta. Anche svenuto, il suo Haki del Re Conquistatore stende gli uomini mandati a incatenarlo. [[basil-hawkins|Hawkins]] lo porta via, e Rufy si ritrova nella miniera-prigione di Udon, nella cella accanto a [[eustass-kid|Kid]], che ha giurato la stessa vendetta.',
+          en: '[[kaido|Kaido]]’s fire tears through the ruined castle on the hill, and Luffy answers with a giant Gear Third fist to the dragon’s head that knocks him to the ground. Then he finds the centaur who was taking [[tama|Tama]] home lying hurt, and believes the girl is dead. He calls Kaido back to his feet and throws everything he has at him, Gear Fourth included; a single blow ends it. Even unconscious, his Conqueror’s Haki drops the men sent to chain him. [[basil-hawkins|Hawkins]] takes him away, and Luffy wakes in the prison mine of Udon, in the cell next to [[eustass-kid|Kid]], who has sworn the same revenge.',
+        },
+      },
+    },
+    {
+      episode: 956,
+      value: {
+        title: { it: 'Un Haki che scorre', en: 'Haki that flows' },
+        body: {
+          it: 'Nel ring di sumo della miniera-prigione di Udon, il vecchio [[hyogoro|Hyogoro]] gli mostra come si combatte a Wano: il Ryuo, un Haki che scorre fuori dal pugno e colpisce senza toccare. Rufy non ci riesce. Poi irrompe [[charlotte-linlin|Big Mom]], senza memoria, in cerca della zuppa di fagioli rossi che lui ha già mangiato, e nella confusione le sue mani strappano i collari esplosivi dal suo collo e da quello di Hyogoro, come aveva visto fare a [[silvers-rayleigh|Rayleigh]]. Ma non sa rifarlo a comando. Per giorni spacca rocce e lastre di metallo sotto gli occhi di Hyogoro, finché il giorno prima dell’assalto un albero esplode.',
+          en: 'In the sumo ring of the Udon prison mine, old [[hyogoro|Hyogoro]] shows him how Wano fights: Ryuo, Haki that flows out of the fist and strikes without touching. Luffy can’t do it. Then an amnesiac [[charlotte-linlin|Big Mom]] storms in looking for the red bean soup he has already eaten, and in the chaos his hands tear the exploding collars off his own neck and Hyogoro’s, the way he once saw [[silvers-rayleigh|Rayleigh]] do it. He can’t call it back at will. For days he breaks rock and sheets of metal under Hyogoro’s eye, until, the day before the raid, a tree bursts apart.',
+        },
+      },
+    },
+    {
       episode: 1071,
       value: {
         title: { it: 'Un battito sul tetto', en: 'A heartbeat on the roof' },
@@ -564,6 +584,26 @@ export const eastBlueChronicles = {
         body: {
           it: '[[pica|Pica]] raccoglie la pietra di tutto il paese in un corpo solo e lo cammina verso l’altopiano dove il vecchio re e la sua gente hanno scelto di non scappare. [[orlumbus|Orlumbus]] lancia Zoro in aria. Tre spade e due mani annerite: taglia il gigante in due a metà, poi dimezza quello che resta, poi insegue l’uomo dentro la roccia che cade, il braccio, le dita, ancora il braccio, finché Pica non deve farsi vedere. Zoro ricorda la sconfitta contro [[dracule-mihawk|Mihawk]], e gli apre l’elmo.',
           en: '[[pica|Pica]] gathers the stone of the whole country into one body and walks it at the plateau where the old king and his people have decided not to run. [[orlumbus|Orlumbus]] throws Zoro into the air. Three swords and both hands blackened: he cuts the giant in half across the middle, halves what is left, then hunts the man himself through the falling rock — the arm, the fingers, the arm again — until Pica has to show his face. Zoro remembers losing to [[dracule-mihawk|Mihawk]], and opens his helmet.',
+        },
+      },
+    },
+    {
+      episode: 956,
+      value: {
+        title: { it: 'Enma al posto di Shusui', en: 'Enma for Shusui' },
+        body: {
+          it: 'Zoro è venuto a Ringo per Shusui e ha avuto la meglio su [[gyukimaru|Gyukimaru]], il ladro del ponte che la custodiva; poi [[komurasaki|Hiyori]] gli chiede di lasciarla. È il tesoro sacro di Wano, e il paese ha sofferto quando [[gecko-moria|Gekko Moria]] l’ha portata via. Al suo posto gli offre la spada di suo padre, Enma, l’unica che abbia mai ferito [[kaido|Kaido]]. Zoro accetta, a patto di poter visitare la tomba di [[ryuma|Ryuma]]. A Kuri [[tenguyama-hitetsu|Hitetsu]] gliela mette in mano, e la lama gli beve tanto Haki che un fendente di prova stacca la parete di roccia dietro l’albero. Hitetsu la dice indomabile; Zoro giura che ne farà una lama nera.',
+          en: 'Zoro has come to Ringo for Shusui and bested [[gyukimaru|Gyukimaru]], the bridge thief who kept it; then [[komurasaki|Hiyori]] asks him to leave it. It is Wano’s sacred treasure, and the country suffered when [[gecko-moria|Moria]] carried it off. In its place she offers her father’s sword, Enma, the only one ever to wound [[kaido|Kaido]]. Zoro agrees, on condition that he may visit [[ryuma|Ryuma]]’s grave. In Kuri [[tenguyama-hitetsu|Hitetsu]] puts it in his hands, and it drains his Haki so hard that a test cut at a tree slices away the cliff behind. Hitetsu calls it impossible to wield; Zoro says he will make it a black blade.',
+        },
+      },
+    },
+    {
+      episode: 1027,
+      value: {
+        title: { it: 'Asura sul tetto', en: 'Asura on the roof' },
+        body: {
+          it: 'Sul tetto di Onigashima, Zoro e [[trafalgar-law|Law]] hanno appena spinto [[charlotte-linlin|Big Mom]] giù dal bordo dell’isola, e [[kaido|Kaido]] ha steso [[monkey-d-luffy|Rufy]] e sta per finirlo. Zoro, che si regge a stento dopo aver incassato il colpo combinato dei due Imperatori, spende le ultime forze: lo stile a nove spade, Asura, per la prima volta da anni. Il taglio apre il petto di Kaido sulla sua vecchia cicatrice, e Kaido, sbalordito, sente nel colpo l’Haki del Re Conquistatore, un potere che Zoro non sapeva di avere. Non basta ad abbatterlo: l’Imperatore risponde e mette a terra Zoro e Law. Dietro di loro, Rufy si rialza.',
+          en: 'On the roof of Onigashima, Zoro and [[trafalgar-law|Law]] have just pushed [[charlotte-linlin|Big Mom]] over the edge of the island, and [[kaido|Kaido]] has knocked [[monkey-d-luffy|Luffy]] out and is about to finish him. Zoro, barely standing after taking the two Emperors’ combined blow, spends what strength he has left: Nine Sword Style, Asura, for the first time in years. The cut opens Kaido’s chest across his old scar, and Kaido, stunned, feels Conqueror’s Haki in the blow, a power Zoro didn’t know he had. It is not enough to bring him down: the Emperor strikes back and drops both Zoro and Law. Behind them, Luffy gets to his feet.',
         },
       },
     },
@@ -875,6 +915,29 @@ export const eastBlueChronicles = {
         },
       },
     },
+    {
+      episode: 1019,
+      value: {
+        title: { it: 'Kibi dango come munizioni', en: 'Dango for ammunition' },
+        body: {
+          it: 'In un bagno termale di Onigashima le testate di [[ulti|Ulti]] mettono a terra [[nami|Nami]], e quando Usop tenta i suoi Pop Green, [[page-one|Page One]] aiuta la sorella a stenderlo. Messa alle strette, Nami giura lo stesso che [[monkey-d-luffy|Rufy]] diventerà il Re dei pirati. Li salva [[tama|O-Tama]], in groppa al komainu Komachiyo, che azzanna Ulti alla testa, e fuggono insieme. La bambina ha portato i suoi kibi dango: ogni Gifter di [[kaido|Kaido]] che ne mangia uno passa dalla sua parte. Usop li trasforma in munizioni. Ne spara uno in bocca a un Gifter, poi raggiunge [[franky|Franky]], bloccato dagli uomini di [[sasaki|Sasaki]], e bersaglia di dango l’intera divisione corazzata, che cambia bandiera.',
+          en: 'In a bathhouse on Onigashima [[ulti|Ulti]]’s headbutts put [[nami|Nami]] on the floor, and when Usopp tries his Pop Greens, [[page-one|Page One]] helps his sister beat him down. Cornered, Nami still swears that [[monkey-d-luffy|Luffy]] will be King of the Pirates. [[tama|Tama]] saves them, riding in on the komainu Komachiyo, who bites Ulti on the head, and they flee together. The girl has come with her kibi dango: every one of [[kaido|Kaido]]’s Gifters who eats one switches to her side. Usopp turns them into ammunition. He shoots one into a Gifter’s mouth, then reaches [[franky|Franky]], pinned down by [[sasaki|Sasaki]]’s men, and pelts the whole armoured division with dango until it changes sides.',
+        },
+      },
+    },
+    {
+      episode: 1076,
+      value: {
+        title: {
+          it: 'Due samurai fuori dal fuoco',
+          en: 'Two samurai out of the fire',
+        },
+        body: {
+          it: '[[kinemon|Kinemon]] e [[kikunojo|Kiku]], feriti, gli hanno chiesto di lasciarli indietro, e Usop li ha sgridati: meglio aggrapparsi alla vita che all’orgoglio. Poi [[izo|Izo]] ha trattenuto gli inseguitori e gli ha affidato i due samurai da portare in salvo. Ora Usop e Hamlet, il Gifter reso amico dal suo dango, li trascinano per i corridoi di Onigashima mentre l’incendio avanza. Il suo Pop Green annaffiatore brucia; Hamlet gli dice che spreca le forze, e Usop risponde che l’ha promesso a Izo. Poi un’ondata allaga i corridoi e spegne le fiamme, e lui lotta per tenere a galla i due samurai finché [[nami|Nami]], [[tony-tony-chopper|Chopper]] e [[tama|O-Tama]] non li scorgono.',
+          en: '[[kinemon|Kin’emon]] and [[kikunojo|Kiku]], wounded, asked to be left behind, and Usopp scolded them: better to cling to life than to pride. Then [[izo|Izo]] held the pursuers back and handed him the two samurai to carry to safety. Now Usopp and Hamlet, the Gifter his dango turned friendly, haul them through the corridors of Onigashima as the fire spreads. His Pop Green sprinkler burns up; Hamlet says he is wasting his strength, and Usopp answers that he promised Izo. Then a wave floods the corridors and drowns the flames, and he fights to keep both samurai afloat until [[nami|Nami]], [[tony-tony-chopper|Chopper]] and [[tama|Tama]] spot them.',
+        },
+      },
+    },
   ],
 
   'sanji': [
@@ -1141,6 +1204,26 @@ export const eastBlueChronicles = {
       },
     },
     {
+      episode: 925,
+      value: {
+        title: { it: 'Soba Mask', en: 'Soba Mask' },
+        body: {
+          it: 'Nella Capitale dei Fiori [[page-one|Page One]] percorre le strade in forma di spinosauro e distrugge i banchi di soba, a caccia di un cuoco. Sanji dovrebbe restare nascosto e scappa, finché non sente le urla della gente. Torna indietro e apre una piccola lattina: la tuta da raid nera della Germa, che lo rende invisibile. Si fa chiamare Soba Mask. Un calcio atterra il dinosauro, il mantello diventa uno scudo contro i suoi artigli, e scagliato contro una fila di case si rialza illeso. Sferra un ultimo colpo e sparisce in cielo, mentre [[usopp|Usop]], [[franky|Franky]] e [[trafalgar-law|Law]] se la svignano.',
+          en: 'In the Flower Capital [[page-one|Page One]] tramples the streets as a spinosaurus, smashing soba stalls to flush out a cook. Sanji is meant to stay hidden and runs, until he hears the townspeople screaming. He turns back and opens a small can: the black Germa raid suit, which lets him turn invisible. He calls himself Soba Mask. A kick knocks the dinosaur down, the cape hardens into a shield against his claws, and thrown through a row of houses he gets up unhurt. He lands one last blow and vanishes into the sky, while [[usopp|Usopp]], [[franky|Franky]] and [[trafalgar-law|Law]] slip away.',
+        },
+      },
+    },
+    {
+      episode: 1020,
+      value: {
+        title: { it: 'La tela di Black Maria', en: 'Black Maria’s web' },
+        body: {
+          it: 'A Onigashima Sanji sente una donna chiedere aiuto, lascia [[monkey-d-luffy|Rufy]] e [[jinbe|Jinbe]] sulle scale e sfonda una porta dritto in una ragnatela. È la trappola di [[black-maria|Black Maria]]: tiene appesi in un armadio gli uomini già catturati, e si trasforma in un enorme ragno antico. Lui brucia i fili con il Diable Jambe, ma non riesce a colpire né lei né le sue donne. Così lo stordiscono e lo crocifiggono nella tela, e lei lo prende a pugni con un tirapugni finché lui non grida il nome di [[nico-robin|Robin]] in una trasmissione che attraversa il castello. Mentre carica l’ultimo colpo, un braccio gigante fatto di mani la colpisce.',
+          en: 'On Onigashima Sanji hears a woman crying for help, leaves [[monkey-d-luffy|Luffy]] and [[jinbe|Jinbe]] on the stairs and bursts through a door into a spider’s web. It is [[black-maria|Black Maria]]’s trap: she keeps the men already caught hanging in a closet, and turns into a huge ancient spider. He burns the threads with Diable Jambe, but cannot bring himself to hit her or her women. So they knock him out and crucify him in the web, and she beats him with brass knuckles until he shouts [[nico-robin|Robin]]’s name into a broadcast heard across the castle. As she winds up for the last blow, a giant arm made of hands strikes her.',
+        },
+      },
+    },
+    {
       episode: 1061,
       value: {
         title: { it: 'Fiamme blu', en: 'Blue flames' },
@@ -1323,6 +1406,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'A bordo della Sunny in fuga, il fulmine di Zeus continua a colpire mentre [[charlotte-linlin|Big Mom]] insegue la nave a cavallo della nuvola. [[brook|Brook]] lo taglia in due con un fendente, e Nami approfitta del colpo per scaricargli addosso tutta l’elettricità con il bastone del tempo, riducendolo a una nuvola tremante grande quanto una mano. Lo tiene stretto e gli dà un’unica scelta: servirla o morire. Zeus, che per una vita intera ha obbedito solo a Big Mom, accetta di restare con lei. La nuvola che poco prima incendiava il cielo per la sua vecchia padrona segue ora Nami sul ponte.',
           en: 'Aboard the fleeing Sunny, Zeus’s lightning keeps striking as [[charlotte-linlin|Big Mom]] chases the ship riding her storm cloud. [[brook|Brook]] cuts him clean in half, and Nami uses the opening to drain every spark of electricity out of him with her weather staff, shrinking him to a trembling cloud small enough to fit in one hand. She holds him tight and gives him one choice: serve her or die. Zeus, who has obeyed only Big Mom his whole life, agrees to stay with her. The cloud that moments ago was setting the sky on fire for his old mistress now follows Nami across the deck.',
+        },
+      },
+    },
+    {
+      episode: 1038,
+      value: {
+        title: { it: 'Zeus nel bastone', en: 'Zeus in the staff' },
+        body: {
+          it: 'Quando [[ulti|Ulti]] colpisce in faccia [[tama|O-Tama]], Nami le scaglia contro il suo fulmine; poi un raggio di [[charlotte-linlin|Big Mom]] mette a terra Ulti. Zeus, la nuvola che Big Mom ha appena sostituito, chiede perdono a Nami e viene respinto, poi si getta contro Big Mom per rimediare. Mentre la sua anima viene strappata via, Nami gli lancia qualche nuvola temporalesca per dargli forza, e lui finisce nel suo bastone del tempo invece di essere divorato. Quando Ulti torna e afferra O-Tama, [[usopp|Usop]] libera la bambina, Nami chiama il fulmine e Zeus lo guida su Ulti mentre lei schiva, mettendola fuori combattimento.',
+          en: 'When [[ulti|Ulti]] strikes [[tama|Tama]] in the face, Nami turns her lightning on her; then a beam from [[charlotte-linlin|Big Mom]] drops Ulti. Zeus, the cloud Big Mom has just replaced, begs Nami’s forgiveness and is refused, then throws himself at Big Mom to make amends. As his soul is torn out, Nami throws him a few thunderclouds to power him up, and he ends up inside her weather staff instead of being eaten. When Ulti comes back and seizes Tama, [[usopp|Usopp]] pulls the girl free, Nami calls down the lightning, and Zeus steers it into Ulti as she dodges, knocking her out.',
         },
       },
     },
