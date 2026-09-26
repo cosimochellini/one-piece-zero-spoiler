@@ -1,3 +1,4 @@
+import type { DatedEntry } from '~/lib/progress/spoiler'
 import type { Stroke } from '~/lib/view/records'
 
 /**
@@ -13,5 +14,15 @@ import type { Stroke } from '~/lib/view/records'
  * sides, and declaring it twice would leave two definitions to drift apart.
  */
 export type Drawings = Readonly<Record<string, readonly Stroke[]>>
+
+/**
+ * The records drawn again later in the story, keyed by id: each entry is a
+ * whole drawing from the episode it is first safe to show, in ascending
+ * order, like any other dated fact of a dossier. The drawing in `Drawings`
+ * stays the one a reader below the first entry is shown.
+ */
+export type Redrawings = Readonly<
+  Record<string, readonly DatedEntry<readonly Stroke[]>[]>
+>
 
 export { type Stroke } from '~/lib/view/records'
