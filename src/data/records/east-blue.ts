@@ -558,8 +558,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 69,
       name: { it: 'Arlong Park', en: 'Arlong Park' },
       summary: {
-        it: 'La base cinta di mura del pirata più temuto dell’East Blue, un uomo-pesce, sulla riva di un’isola i cui villaggi gli pagano un tributo.',
-        en: 'The walled base of the most feared pirate in the East Blue, a fish-man, on the shore of an island whose villages pay him tribute.',
+        it: 'La base cinta di mura del pirata più temuto dell’East Blue, un uomo-pesce, sulla riva di un’isola.',
+        en: 'The walled base of the most feared pirate in the East Blue, a fish-man, on the shore of an island.',
       },
       visual: { art: 'arlong-park', tint: 'teal' },
     },

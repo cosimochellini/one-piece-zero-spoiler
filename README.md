@@ -429,7 +429,7 @@ to the code they explain, and why this README is short.
 - [ ] Verify the manga chapter thresholds against a source. They were filed from
       memory and are marked for a check.
 - [ ] More ports in the ship's log — 7 places carry full dossiers today, across
-      21 filed arcs.
+      27 filed arcs.
 - [ ] Chronicles for the rest of the featured list — 12 of the 36 carry one
       today, the crew and the two figures the first half turns on. The episode
       each story is filed at is recorded in
