@@ -61,9 +61,11 @@ export function chartPage(bookmark: Bookmark, locale: Locale): ChartView {
   const ordered = orderByMode(chart, modeOf(bookmark))
 
   return {
-    open: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [waypointOf(entity, locale)] : [],
-    ),
+    open: ordered.flatMap((entity) => {
+      return isRevealed(entity, bookmark) ?
+          [waypointOf(entity, locale, bookmark)]
+        : []
+    }),
     covered: ordered.flatMap((entity) =>
       isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
     ),
@@ -127,7 +129,9 @@ export function shelvesPage(
 
     return [
       {
-        arc: slotOf(arc, bookmark, (entity) => recordOf(entity, locale)),
+        arc: slotOf(arc, bookmark, (entity) =>
+          recordOf(entity, locale, bookmark),
+        ),
         total: shelved.length,
         open: shelved.flatMap((entity) => {
           return isRevealed(entity, bookmark) ?
@@ -174,7 +178,7 @@ export function characterPage(
           {
             open: true,
             record: {
-              ...characterOf(entity, locale),
+              ...characterOf(entity, locale, bookmark),
               summary: entity.summary[locale],
             },
           }
@@ -201,7 +205,7 @@ export function routePosition(
   const position = routePositionOf(entity, ordered)
   const beside = (near: Entity | undefined): null | Slot<RecordView> => {
     return near === undefined ? null : (
-        slotOf(near, bookmark, (record) => recordOf(record, locale))
+        slotOf(near, bookmark, (record) => recordOf(record, locale, bookmark))
       )
   }
 
@@ -233,7 +237,7 @@ export function nearbyPage(
   }
 
   return nearbyCharacters(entity, NEARBY_COUNT).map((near) =>
-    slotOf(near, bookmark, (record) => characterOf(record, locale)),
+    slotOf(near, bookmark, (record) => characterOf(record, locale, bookmark)),
   )
 }
 
@@ -273,7 +277,7 @@ export function portOf(
   const arc = dossier === undefined ? undefined : getEntity(dossier.arc)
 
   return {
-    ...recordOf(entity, locale),
+    ...recordOf(entity, locale, bookmark),
     summary: entity.summary[locale],
     dossier:
       dossier === undefined ? null : (
@@ -287,7 +291,11 @@ export function portOf(
             const record = getEntity(filed)
             return record === undefined ?
                 []
-              : [slotOf(record, bookmark, (found) => recordOf(found, locale))]
+              : [
+                  slotOf(record, bookmark, (found) =>
+                    recordOf(found, locale, bookmark),
+                  ),
+                ]
           }),
         }
       ),

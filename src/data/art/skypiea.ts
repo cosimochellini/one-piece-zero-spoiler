@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -426,3 +426,41 @@ export const skypieaArt = {
     { d: 'M118 152 V172 M124 154 V176 M130 152 V172' },
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const skypieaRedrawn: Redrawings = {
+  // A tricorne over a knotted bandana: the hat he wears from the Warlords'
+  // table on (ch. 524, ep. 421), and never at Mock Town. The shade under the
+  // brim and down the crown's far side is hatched, never filled.
+  'marshall-d-teach': [
+    {
+      episode: 421,
+      value: [
+        { d: 'M52 110 C54 64 106 64 108 110' },
+        {
+          d: 'M10 124 C6 104 14 84 30 74 C38 72 42 76 42 82 C44 94 48 104 52 110',
+        },
+        {
+          d: 'M150 124 C154 104 146 84 130 74 C122 72 118 76 118 82 C116 94 112 104 108 110',
+        },
+        { d: 'M52 110 Q80 118 108 110', role: 'soft' },
+        { d: 'M10 124 C30 132 56 134 80 126 C104 134 130 132 150 124' },
+        { d: 'M30 134 Q80 148 130 134', role: 'accent' },
+        { d: 'M34 142 Q80 157 126 142', role: 'accent' },
+        {
+          d: `${circle(134, 139, 4)} M137 142 q10 4 12 16 M138 137 q12 -2 16 8`,
+          role: 'accent',
+        },
+        {
+          d: 'M98 82 l-5 8 M103 90 l-5 8 M106 99 l-4 6 M136 96 l-5 8 M141 106 l-5 8',
+          role: 'ambient',
+        },
+        {
+          d: 'M94 133 l-5 9 M104 133 l-5 9 M114 131 l-5 9 M124 128 l-5 9',
+          role: 'ambient',
+        },
+        shadow(80, 178, 50),
+      ],
+    },
+  ],
+}

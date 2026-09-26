@@ -154,23 +154,35 @@ export const loadPlaces = createServerFn()
 
 export const liftWaypoint = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekWaypoint(data.handle, data.locale) ?? null)
+  .handler(
+    ({ data }) =>
+      peekWaypoint(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftCharacter = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekCharacter(data.handle, data.locale) ?? null)
+  .handler(
+    ({ data }) =>
+      peekCharacter(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftDossier = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekDossier(data.handle, data.locale) ?? null)
+  .handler(
+    ({ data }) => peekDossier(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftFruit = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekFruit(data.handle, data.locale) ?? null)
+  .handler(
+    ({ data }) => peekFruit(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftRecord = createServerFn()
   .validator(handled)
-  .handler(({ data }) => peekRecord(data.handle, data.locale) ?? null)
+  .handler(
+    ({ data }) => peekRecord(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftPort = createServerFn()
   .validator(handled)

@@ -65,7 +65,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 476 records and 476 line drawings — about 900 KB of TypeScript.
+The archive is 476 records and 477 line drawings — about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 out of the request and sends back the records at or below the bookmark, with
 their strings already resolved to the page's locale and their drawings already
@@ -120,7 +120,7 @@ browser at all rather than there and declined.
 | Devil fruits        | 120                                                                   |
 | Arcs, places, ships | 21 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
-| Line drawings       | 476, one per record                                                   |
+| Line drawings       | 477: one per record, and one redrawn from episode 421                 |
 | Test files          | 60                                                                    |
 | Test cases          | 494                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -133,17 +133,21 @@ drawing made for this project: a straw hat, three sheathed swords, a violin, a
 windmill on a hill. No faces, no logos, no official artwork.
 
 The drawings are data, not markup — lists of stroke paths in TypeScript — and
-one component renders all 476 of them: a 160×200 box, a uniform 2 px stroke held
-at 2 px through `vector-effect: non-scaling-stroke`, round caps and joins, no
+one component renders all of them: a 160×200 box, a uniform 2 px stroke held at
+2 px through `vector-effect: non-scaling-stroke`, round caps and joins, no
 fills. Each takes exactly one hue for its main stroke and leaves the rest in the
 neutral ink, which is what makes several hundred illustrations read as one set.
-The compositions around them went the same way: the fold's night sea, the seal a
-character's crest is set into, a port's chart plate, the route's own line and
-compass mark are all stroke lists under `src/data/art/` too, so no line on the
-site is written in JSX. The one solid on the site is the ship in the fold: the
-Thousand Sunny cut out of a full moon as a silhouette, with a hairline of the
-route gold around her profile, because a ship the size of a headline drawn in
-outline read as a diagram of a ship.
+A drawing can be dated like a dossier fact: a record the story changes is drawn
+again from the episode it changes in, and the server picks the latest drawing
+the reader's bookmark has reached, so the object that stands for a character
+never says what the reader has not yet seen. The compositions around them went
+the same way: the fold's night sea, the seal a character's crest is set into, a
+port's chart plate, the route's own line and compass mark are all stroke lists
+under `src/data/art/` too, so no line on the site is written in JSX. The one
+solid on the site is the ship in the fold: the Thousand Sunny cut out of a full
+moon as a silhouette, with a hairline of the route gold around her profile,
+because a ship the size of a headline drawn in outline read as a diagram of a
+ship.
 
 The 120 devil fruits are the one set that is grown rather than drawn one at a
 time. A hundred and twenty drawings of the same object have to read as one set
