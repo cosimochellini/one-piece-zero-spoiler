@@ -48,6 +48,18 @@ export const eastBlue: Saga = {
       visual: { art: 'east-blue', tint: 'ivory' },
     },
     {
+      id: 'romance-dawn',
+      kind: 'arc',
+      revealedAtEpisode: 1,
+      revealedAtChapter: 1,
+      name: { it: 'Romance Dawn', en: 'Romance Dawn' },
+      summary: {
+        it: 'Una botte alla deriva su un mare calmo, una nave pirata poco lontano, e dentro la botte un ragazzo che ha deciso di diventare il Re dei Pirati.',
+        en: 'A barrel adrift on a calm sea, a pirate ship close by, and inside the barrel a boy who has decided he will be King of the Pirates.',
+      },
+      visual: { art: 'romance-dawn', tint: 'ocher' },
+    },
+    {
       id: 'monkey-d-luffy',
       kind: 'character',
       revealedAtEpisode: 1,
@@ -228,6 +240,18 @@ export const eastBlue: Saga = {
       visual: { art: 'higuma', tint: 'sand' },
     },
     {
+      id: 'orange-town-arc',
+      kind: 'arc',
+      revealedAtEpisode: 5,
+      revealedAtChapter: 8,
+      name: { it: 'Orange Town', en: 'Orange Town' },
+      summary: {
+        it: 'Una cittadina di porto svuotata dei suoi abitanti, occupata da una ciurma di pirati che ha piantato un tendone in piazza e tiene il cannone carico.',
+        en: 'A harbour town emptied of its people, held by a pirate crew that has pitched a big top in the square and keeps its cannon loaded.',
+      },
+      visual: { art: 'orange-town-arc', tint: 'orange' },
+    },
+    {
       id: 'buggy',
       kind: 'character',
       revealedAtEpisode: 5,
@@ -286,6 +310,18 @@ export const eastBlue: Saga = {
         en: 'The Buggy Pirates’ acrobat, who fights balanced on a unicycle and breathes fire between one stroke of his sabre and the next.',
       },
       visual: { art: 'cabaji', tint: 'teal' },
+    },
+    {
+      id: 'syrup-village-arc',
+      kind: 'arc',
+      revealedAtEpisode: 9,
+      revealedAtChapter: 22,
+      name: { it: 'Villaggio di Syrup', en: 'Syrup Village' },
+      summary: {
+        it: 'Il prossimo approdo della rotta, per tre persone che navigano ancora l’East Blue senza una vera nave.',
+        en: 'The next landfall on the route, for three people still sailing the East Blue without a proper ship.',
+      },
+      visual: { art: 'syrup-village-arc', tint: 'green' },
     },
     {
       id: 'usopp',
@@ -420,6 +456,18 @@ export const eastBlue: Saga = {
       visual: { art: 'yosaku', tint: 'acid' },
     },
     {
+      id: 'baratie-arc',
+      kind: 'arc',
+      revealedAtEpisode: 20,
+      revealedAtChapter: 43,
+      name: { it: 'Baratie', en: 'Baratie' },
+      summary: {
+        it: 'Un ristorante che galleggia in mare aperto, con una testa di pesce per prua, dove la ciurma va a cercare un cuoco.',
+        en: 'A restaurant floating on the open sea, a fish’s head for its prow, where the crew goes looking for a cook.',
+      },
+      visual: { art: 'baratie-arc', tint: 'ivory' },
+    },
+    {
       id: 'sanji',
       kind: 'character',
       revealedAtEpisode: 20,
@@ -502,6 +550,18 @@ export const eastBlue: Saga = {
         en: 'The strongest swordsman in the world, arrived in a coffin-shaped boat with a black sword as broad as himself, who cuts a galleon in half to pass the time.',
       },
       visual: { art: 'dracule-mihawk', tint: 'ocher' },
+    },
+    {
+      id: 'arlong-park',
+      kind: 'arc',
+      revealedAtEpisode: 31,
+      revealedAtChapter: 69,
+      name: { it: 'Arlong Park', en: 'Arlong Park' },
+      summary: {
+        it: 'La base cinta di mura del pirata più temuto dell’East Blue, un uomo-pesce, sulla riva di un’isola.',
+        en: 'The walled base of the most feared pirate in the East Blue, a fish-man, on the shore of an island.',
+      },
+      visual: { art: 'arlong-park', tint: 'teal' },
     },
     {
       id: 'arlong',
@@ -598,6 +658,18 @@ export const eastBlue: Saga = {
         en: 'A Marine captain with a rat’s whiskers, who comes to Cocoyasi to confiscate the village’s money and leaves with his pockets full.',
       },
       visual: { art: 'nezumi', tint: 'sand' },
+    },
+    {
+      id: 'loguetown',
+      kind: 'arc',
+      revealedAtEpisode: 45,
+      revealedAtChapter: 96,
+      name: { it: 'Loguetown', en: 'Loguetown' },
+      summary: {
+        it: 'La città dell’inizio e della fine, dove Gold Roger è nato e dove è stato giustiziato, ultima tappa prima della Rotta Maggiore.',
+        en: 'The town of the beginning and the end, where Gold Roger was born and where he was executed, and the last stop before the Grand Line.',
+      },
+      visual: { art: 'loguetown', tint: 'wine' },
     },
     {
       id: 'smoker',

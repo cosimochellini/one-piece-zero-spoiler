@@ -65,7 +65,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 476 records and 477 line drawings — about 900 KB of TypeScript.
+The archive is 482 records and 483 line drawings — about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 out of the request and sends back the records at or below the bookmark, with
 their strings already resolved to the page's locale and their drawings already
@@ -115,12 +115,12 @@ browser at all rather than there and declined.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 476                                                                   |
+| Records             | 482                                                                   |
 | Characters          | 326                                                                   |
 | Devil fruits        | 120                                                                   |
-| Arcs, places, ships | 21 · 7 · 2                                                            |
+| Arcs, places, ships | 27 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
-| Line drawings       | 477: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 483: one per record, and one redrawn from episode 421                 |
 | Test files          | 60                                                                    |
 | Test cases          | 494                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -429,7 +429,7 @@ to the code they explain, and why this README is short.
 - [ ] Verify the manga chapter thresholds against a source. They were filed from
       memory and are marked for a check.
 - [ ] More ports in the ship's log — 7 places carry full dossiers today, across
-      21 filed arcs.
+      27 filed arcs.
 - [ ] Chronicles for the rest of the featured list — 12 of the 36 carry one
       today, the crew and the two figures the first half turns on. The episode
       each story is filed at is recorded in
