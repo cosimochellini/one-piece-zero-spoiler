@@ -567,6 +567,13 @@ describe('the chart', () => {
   })
 })
 
+/** The ids shelved under one arc, or `undefined` when it has no shelf. */
+function shelf(arcId: string): readonly string[] | undefined {
+  return bookSections
+    .find((section) => section.arc.id === arcId)
+    ?.characters.map((character) => character.id)
+}
+
 describe('the shelves', () => {
   it('shelve every character exactly once, in route order', () => {
     const shelved = bookSections
@@ -621,6 +628,19 @@ describe('the shelves', () => {
     expect(bookSections.map((section) => section.arc.id)).not.toContain(
       'east-blue',
     )
+  })
+
+  it('shelves Reverse Mountain and Jaya on their own arcs, not on the saga either side', () => {
+    expect(shelf('reverse-mountain')).toStrictEqual([
+      'laboon',
+      'crocus',
+      'mr-9',
+    ])
+    expect(shelf('jaya-arc')).toContain('bellamy')
+    expect(shelf('jaya-arc')).toContain('montblanc-cricket')
+    expect(shelf('jaya-arc')).toContain('marshall-d-teach')
+    expect(shelf('jaya-arc')).not.toContain('gan-fall')
+    expect(shelf('skypiea')).toContain('gan-fall')
   })
 })
 

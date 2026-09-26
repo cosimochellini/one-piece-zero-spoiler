@@ -34,6 +34,18 @@ const DRUM_ISLAND = { it: 'Isola di Drum', en: 'Drum Island' }
 export const alabasta: Saga = {
   entries: [
     {
+      id: 'reverse-mountain',
+      kind: 'arc',
+      revealedAtEpisode: 62,
+      revealedAtChapter: 101,
+      name: { it: 'Reverse Mountain', en: 'Reverse Mountain' },
+      summary: {
+        it: 'Una montagna al confine della Rotta Maggiore dove il mare scorre in salita: le correnti dei quattro mari la risalgono fino alla vetta, e da lì le navi precipitano nella Rotta Maggiore.',
+        en: 'A mountain at the edge of the Grand Line where the sea runs uphill: the currents of the four seas climb it to the summit, and from there ships drop into the Grand Line.',
+      },
+      visual: { art: 'reverse-mountain', tint: 'teal' },
+    },
+    {
       id: 'laboon',
       kind: 'character',
       revealedAtEpisode: 62,

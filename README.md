@@ -115,14 +115,14 @@ browser at all rather than there and declined.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 482                                                                   |
+| Records             | 484                                                                   |
 | Characters          | 326                                                                   |
 | Devil fruits        | 120                                                                   |
-| Arcs, places, ships | 27 · 7 · 2                                                            |
+| Arcs, places, ships | 29 · 7 · 2                                                            |
 | Sagas               | 11                                                                    |
-| Line drawings       | 483: one per record, and one redrawn from episode 421                 |
-| Test files          | 60                                                                    |
-| Test cases          | 494                                                                   |
+| Line drawings       | 485: one per record, and one redrawn from episode 421                 |
+| Test files          | 63                                                                    |
+| Test cases          | 539                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
 
 ## Every line drawn here
@@ -429,7 +429,7 @@ to the code they explain, and why this README is short.
 - [ ] Verify the manga chapter thresholds against a source. They were filed from
       memory and are marked for a check.
 - [ ] More ports in the ship's log — 7 places carry full dossiers today, across
-      27 filed arcs.
+      29 filed arcs.
 - [ ] Chronicles for the rest of the featured list — 12 of the 36 carry one
       today, the crew and the two figures the first half turns on. The episode
       each story is filed at is recorded in
