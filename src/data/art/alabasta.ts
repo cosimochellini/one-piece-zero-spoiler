@@ -4,6 +4,21 @@ import type { Drawings, Stroke } from './stroke'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
+  // Twin peaks with the canal running up to the notch between them, the sea
+  // climbing it, and a lighthouse at the foot.
+  'reverse-mountain': [
+    { d: 'M4 150 L44 40 L72 58 L100 40 L128 150' },
+    { d: 'M60 150 L69 60 M84 150 L75 60', role: 'accent' },
+    {
+      d: 'M68 132 l4 -7 l4 7 M69 104 l3 -6 l3 6 M70 78 l2 -5 l2 5',
+      role: 'soft',
+    },
+    { d: 'M134 150 L138 118 H146 L150 150z' },
+    { d: 'M137 118 V110 H147 V118 M134 110 L142 102 L150 110' },
+    { d: 'M152 106 h6 M151 98 l6 -5', role: 'ambient', dashed: true },
+    ...SEA.slice(1),
+  ],
+
   // A whale as big as an island, the scars on its forehead where it beats the
   // cliff, and the spout going up.
   'laboon': [

@@ -4,6 +4,23 @@ import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
+  // A Log Pose on its wrist band with the needle pointing straight up, and a
+  // galleon falling out of the sky above it.
+  'jaya-arc': [
+    { d: circle(80, 116, 28) },
+    { d: 'M80 136 V100 M73 108 L80 96 L87 108', role: 'accent' },
+    { d: 'M72 143 V150 M88 143 V150' },
+    { d: ellipse(80, 156, 32, 8) },
+    { d: 'M92 30 L138 20 L132 38 L100 46z', transform: 'rotate(28 114 32)' },
+    {
+      d: 'M116 34 V8 M116 12 L130 18 L116 24',
+      role: 'soft',
+      transform: 'rotate(28 114 32)',
+    },
+    { d: 'M92 16 v-10 M126 8 v-6', role: 'ambient', dashed: true },
+    shadow(80, 176, 36),
+  ],
+
   // An island resting on a cloud, a giant beanstalk climbing to it.
   'skypiea': [
     {

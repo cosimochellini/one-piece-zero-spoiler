@@ -15,16 +15,16 @@ const ENEL_PRIEST = { it: 'Sacerdote di Ener', en: 'One of Enel’s priests' }
 export const skypiea: Saga = {
   entries: [
     {
-      id: 'skypiea',
+      id: 'jaya-arc',
       kind: 'arc',
       revealedAtEpisode: 144,
-      revealedAtChapter: 219,
-      name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
+      revealedAtChapter: 218,
+      name: { it: 'Jaya', en: 'Jaya' },
       summary: {
-        it: 'Un’isola sospesa sopra il mare, raggiunta da una corrente che spara le navi verso l’alto.',
-        en: 'An island suspended above the sea, reached by a current that fires ships upward.',
+        it: 'Una nave cade dal cielo, il Log Pose punta dritto verso l’alto, e la ciurma cerca su un’isola di pirati qualcuno che sappia dove porta.',
+        en: 'A ship falls out of the sky, the Log Pose points straight up, and the crew looks on an island of pirates for anyone who knows where it leads.',
       },
-      visual: { art: 'skypiea', tint: 'azure' },
+      visual: { art: 'jaya-arc', tint: 'orange' },
     },
     {
       id: 'jaya',
@@ -157,6 +157,18 @@ export const skypiea: Saga = {
         en: 'A commander of the Whitebeard Pirates, the first to speak when the old man raises his voice, with the air of someone bored even in a storm.',
       },
       visual: { art: 'marco', tint: 'cyan' },
+    },
+    {
+      id: 'skypiea',
+      kind: 'arc',
+      revealedAtEpisode: 153,
+      revealedAtChapter: 237,
+      name: { it: 'Saga di Skypiea', en: 'Skypiea Saga' },
+      summary: {
+        it: 'Un’isola sospesa sopra il mare, raggiunta da una corrente che spara le navi verso l’alto.',
+        en: 'An island suspended above the sea, reached by a current that fires ships upward.',
+      },
+      visual: { art: 'skypiea', tint: 'azure' },
     },
     {
       id: 'gan-fall',
