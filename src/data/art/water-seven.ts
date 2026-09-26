@@ -279,6 +279,28 @@ export const waterSevenArt = {
     shadow(70, 182, 54),
   ],
 
+  // A round island hanging over a hole in the sea, the water pouring off its
+  // rim, a tower in the middle, the sun overhead, and a train on the track
+  // coming in.
+  'enies-lobby': [
+    { d: ellipse(80, 112, 58, 12) },
+    {
+      d: 'M22 114 C24 130 30 140 34 150 M138 114 C136 130 130 140 126 150',
+      role: 'accent',
+    },
+    { d: 'M46 124 v18 M62 126 v22 M98 126 v22 M114 124 v18', role: 'soft' },
+    { d: 'M70 108 V58 H90 V108 M66 58 L80 40 L94 58' },
+    { d: 'M76 72 h8 M76 88 h8', role: 'ambient' },
+    { d: circle(132, 34, 10), role: 'accent' },
+    {
+      d: 'M132 18 v-6 M148 34 h6 M143 23 l4 -4 M143 45 l4 4 M116 34 h-6',
+      role: 'ambient',
+    },
+    { d: 'M-2 104 h16 v-12 h-16z M14 98 h6 l4 6' },
+    { d: 'M-4 108 H22', role: 'ambient', dashed: true },
+    ...SEA.slice(1),
+  ],
+
   // A wolf's paw print over a knotted martial arts sash.
   'jabra': [
     { d: 'M12 116 h136 v30 H12z' },
@@ -340,6 +362,22 @@ export const waterSevenArt = {
       d: 'M146 176 C138 142 132 118 124 98 C118 82 98 82 98 100 C98 116 116 148 132 180z',
       role: 'accent',
     },
+  ],
+
+  // Patched roofs and a scaffold on the waterfront, and the sail of a
+  // warship on the horizon behind them.
+  'post-enies-lobby': [
+    { d: 'M4 96 H156', role: 'ambient' },
+    { d: 'M112 96 l4 8 h28 l4 -8z M130 96 V62' },
+    { d: 'M116 68 H144 L140 90 H120z', role: 'accent' },
+    { d: 'M8 176 V128 L28 112 L48 128 V176 M48 176 V136 L70 118 L92 136 V176' },
+    { d: 'M20 134 h10 v8 h-10z M62 140 h12 v8 h-12z', role: 'soft' },
+    {
+      d: 'M100 176 V120 M128 176 V120 M100 140 H128 M100 160 H128 M100 120 L128 140 M100 140 L128 160',
+      role: 'accent',
+    },
+    { d: 'M4 176 H156' },
+    ...SEA.slice(2),
   ],
 
   // A rice cracker and a cannonball, side by side, the fuse already lit.

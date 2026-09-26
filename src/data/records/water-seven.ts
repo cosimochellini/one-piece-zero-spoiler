@@ -258,6 +258,18 @@ export const waterSeven: Saga = {
       visual: { art: 'spandam', tint: 'wine' },
     },
     {
+      id: 'enies-lobby',
+      kind: 'arc',
+      revealedAtEpisode: 264,
+      revealedAtChapter: 375,
+      name: { it: 'Enies Lobby', en: 'Enies Lobby' },
+      summary: {
+        it: 'L’isola giudiziaria del Governo Mondiale, dove il treno del mare porta i prigionieri, e dove la ciurma sbarca da un secondo treno per riprendersi una compagna.',
+        en: 'The World Government’s judicial island, where the sea train takes its prisoners, and where the crew comes ashore off a second train to take back one of its own.',
+      },
+      visual: { art: 'enies-lobby', tint: 'yellow' },
+    },
+    {
       id: 'jabra',
       kind: 'character',
       revealedAtEpisode: 264,
@@ -304,6 +316,18 @@ export const waterSeven: Saga = {
         en: 'Two giants who guard the gate of a judicial island, their clubs leaning on the wall and a door nobody has ever forced.',
       },
       visual: { art: 'oimo-and-kashi', tint: 'ocher' },
+    },
+    {
+      id: 'post-enies-lobby',
+      kind: 'arc',
+      revealedAtEpisode: 313,
+      revealedAtChapter: 431,
+      name: { it: 'Dopo Enies Lobby', en: 'Post-Enies Lobby' },
+      summary: {
+        it: 'Di nuovo a Water Seven, la ciurma dorme e mangia mentre la città ripara i danni dell’Aqua Laguna, finché nel porto non attracca una nave della Marina.',
+        en: 'Back in Water Seven, the crew sleeps and eats while the city repairs what Aqua Laguna broke, until a Marine warship docks in the harbour.',
+      },
+      visual: { art: 'post-enies-lobby', tint: 'blue' },
     },
     {
       id: 'monkey-d-garp',
