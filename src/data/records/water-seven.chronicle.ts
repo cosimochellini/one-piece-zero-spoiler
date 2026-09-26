@@ -196,6 +196,19 @@ export const waterSevenChronicles = {
         },
       },
     },
+    {
+      episode: 1149,
+      value: {
+        title: {
+          it: 'Fra Bonney e la lama',
+          en: 'Between Bonney and the blade',
+        },
+        body: {
+          it: 'Sulla costa di Egghead, [[ethanbaron-v-nusjuro|Nusjuro]] vuole la testa di [[jewelry-bonney|Bonney]]. Franky fa per mettersi davanti a lei, ma [[sanji|Sanji]] gli dice di farsi da parte: la proteggerà lui. L’Anziano si trasforma e mette fuori combattimento Sanji, poi cala la spada su Bonney, cresciuta fino a diventare gigante. Franky si lancia e la spinge via dalla traiettoria un istante prima del colpo: il fendente squarcia la nave dei giganti alle loro spalle. Poco dopo Nusjuro lascia perdere quel gruppo e vola verso il Labophase.',
+          en: 'On the coast of Egghead, [[ethanbaron-v-nusjuro|Nusjuro]] wants [[jewelry-bonney|Bonney]] dead. Franky moves to stand in front of her, but [[sanji|Sanji]] tells him to step aside: he will protect her himself. The Elder transforms and puts Sanji down, then brings his sword down on Bonney, grown to giant size. Franky throws himself at her and tackles her out of the blade’s path a moment before it lands; the slash tears into the giants’ ship behind them instead. Soon after, Nusjuro gives up on the group and heads for the Labophase.',
+        },
+      },
+    },
   ],
   'kuzan': [
     {

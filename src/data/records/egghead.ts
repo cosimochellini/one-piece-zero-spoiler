@@ -172,7 +172,7 @@ export const egghead: Saga = {
     {
       id: 'york',
       kind: 'character',
-      revealedAtEpisode: 1094,
+      revealedAtEpisode: 1095,
       revealedAtChapter: 1070,
       name: { it: 'York', en: 'York' },
       summary: {
@@ -462,22 +462,22 @@ export const egghead: Saga = {
       },
       affiliation: [
         {
-          episode: 1094,
+          episode: 1095,
           value: {
             it: 'Satellite di Vegapunk, Punk-06 Greed',
             en: 'Vegapunk satellite, Punk-06 Greed',
           },
         },
         {
-          episode: 1108,
+          episode: 1111,
           value: {
             it: 'Traditrice, alleata dei Cinque Astri di Saggezza',
             en: 'Traitor, ally of the Five Elders',
           },
         },
       ],
-      origin: [{ episode: 1094, value: EGGHEAD }],
-      epithet: [{ episode: 1094, value: { it: 'Greed', en: 'Greed' } }],
+      origin: [{ episode: 1095, value: EGGHEAD }],
+      epithet: [{ episode: 1095, value: { it: 'Greed', en: 'Greed' } }],
     },
     'jaygarcia-saturn': {
       role: ELDER_ROLE,
@@ -485,15 +485,22 @@ export const egghead: Saga = {
         it: 'I cinque che decidono per il mondo non lasciano quasi mai Mary Geoise, e questo scende su Egghead perché la faccenda del laboratorio è troppo grossa per un ordine dato a distanza. Ha la barba lunga, il cilindro e un bastone, e i marine di grado più alto gli parlano a testa bassa. Sotto il cappotto non c’è un vecchio: c’è qualcosa con le zampe.',
         en: 'The five who decide for the world almost never leave Mary Geoise, and this one comes down to Egghead because the matter of the laboratory is too large for an order sent from a distance. He has a long beard, a top hat and a cane, and the highest-ranking Marines speak to him with their heads lowered. Under the coat there is no old man: there is something with legs.',
       },
+      status: [
+        { episode: 1105, value: 'alive' },
+        { episode: 1155, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 1105,
+          value: { it: 'Cinque Astri di Saggezza', en: 'Five Elders' },
+        },
+        {
+          episode: 1120,
           value: {
             it: 'Cinque Astri di Saggezza, Dio Guerriero della Scienza e della Difesa',
             en: 'Five Elders, Warrior God of Science and Defence',
           },
         },
-        { episode: 1122, value: DESTROYED },
       ],
       origin: [{ episode: 1105, value: MARY_GEOISE }],
     },

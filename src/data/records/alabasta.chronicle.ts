@@ -523,6 +523,16 @@ export const alabastaChronicles = {
         },
       },
     },
+    {
+      episode: 1148,
+      value: {
+        title: { it: 'La bambina di Ohara', en: 'The child of Ohara' },
+        body: {
+          it: 'Sul Labophase, mentre il gruppo di [[nami|Nami]] cerca un modo per lasciare Egghead, [[jaygarcia-saturn|Saturn]] si arrampica fino a loro e riconosce Robin: è la bambina sopravvissuta a Ohara. Davanti a lui Robin rivive l’incidente di Ohara, sconvolta, e quando l’Anziano prova a ucciderla sono i suoi compagni a mettersi in mezzo per proteggerla. Saturn li spazza via; Robin li afferra al volo con una rete di braccia. Poi la trasmissione di [[vegapunk|Vegapunk]] continua a risuonare per il mondo, e Saturn abbandona la lotta per correre alla centrale e zittirla.',
+          en: 'On the Labophase, while [[nami|Nami]]’s group looks for a way off Egghead, [[jaygarcia-saturn|Saturn]] climbs up to them and recognises Robin as the child who survived Ohara. Facing him, Robin relives the Ohara Incident, shaken, and when the Elder moves to kill her it is her crewmates who throw themselves in the way to protect her. Saturn sweeps them aside; Robin catches them in a net of arms. Then [[vegapunk|Vegapunk]]’s broadcast keeps ringing out across the world, and Saturn abandons the fight to rush to the power plant and silence it.',
+        },
+      },
+    },
   ],
   'nefertari-vivi': [
     {

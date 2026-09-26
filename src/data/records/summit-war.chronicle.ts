@@ -143,6 +143,16 @@ export const summitWarChronicles = {
         },
       },
     },
+    {
+      episode: 1094,
+      value: {
+        title: { it: 'Ciò che si dice di Kuma', en: 'What is said of Kuma' },
+        body: {
+          it: 'Su Egghead un Pacifista insegue il gruppo di [[monkey-d-luffy|Rufy]], e [[jewelry-bonney|Bonney]] lo inganna col suo potere: trasforma sé stessa e Jinbe in bambini, Rufy e [[tony-tony-chopper|Chopper]] in vecchi, e il Pacifista non li riconosce più. Al riparo, Jinbe racconta ciò che ha sentito di [[bartholomew-kuma|Kuma]]: re tiranno del Regno di Sorbet, deposto dal suo stesso popolo, poi pirata e ufficiale dell’Armata Rivoluzionaria; arrestato e condannato a vita, gli fu offerta la libertà come membro della Flotta dei Sette, e in cambio [[vegapunk|Vegapunk]] ne fece un cyborg. Bonney si infuria: suo padre non si sarebbe mai piegato al Governo di sua volontà.',
+          en: 'On Egghead a Pacifista chases [[monkey-d-luffy|Luffy]]’s group, and [[jewelry-bonney|Bonney]] fools it with her power: she turns herself and Jinbe into children, Luffy and [[tony-tony-chopper|Chopper]] into old men, and the Pacifista no longer recognises them. Safe for now, Jinbe tells what he has heard about [[bartholomew-kuma|Kuma]]: a tyrant king of the Sorbet Kingdom, deposed by his own people, then a pirate and an officer of the Revolutionary Army; arrested and sentenced to life, he was offered his freedom as a Warlord, and in exchange [[vegapunk|Vegapunk]] turned him into a cyborg. Bonney is furious: her father would never have bowed to the Government willingly.',
+        },
+      },
+    },
   ],
 
   'trafalgar-law': [
@@ -356,8 +366,8 @@ export const summitWarChronicles = {
           en: 'Thrown far from the Labophase',
         },
         body: {
-          it: 'Dentro il Labophase di Egghead, l’ammiraglio insiste che [[vegapunk|Vegapunk]] deve morire, ed è pronto a farlo con le proprie mani. [[monkey-d-luffy|Rufy]] non glielo permette: lo afferra e lo scaglia lontanissimo, ben oltre il campo di battaglia, come se fosse un peso qualunque da togliere di mezzo. È la prima volta che qualcuno lo tratta così senza che lui riesca a evitarlo, e per un momento l’isola intera resta senza il suo ammiraglio più veloce.',
-          en: 'Inside Egghead’s Labophase, the admiral insists that [[vegapunk|Vegapunk]] must die, and he is ready to do it with his own hands. [[monkey-d-luffy|Luffy]] will not allow it: he grabs him and throws him far away, well past the battlefield, as though he were just a weight to clear out of the way. It is the first time anyone has treated him like this without his being able to stop it, and for a moment the whole island is left without its fastest admiral.',
+          it: 'Dentro il Labophase di Egghead, l’ammiraglio insiste che [[vegapunk|Vegapunk]] deve morire, anche se dice di eseguire soltanto degli ordini. [[monkey-d-luffy|Rufy]] non glielo permette: lo afferra e lo scaglia lontanissimo, ben oltre il campo di battaglia, come se fosse un peso qualunque da togliere di mezzo. L’ammiraglio si ferma prima di cadere in mare, si divide in raggi di luce e torna sull’isola a colpire di nuovo.',
+          en: 'Inside Egghead’s Labophase, the admiral insists that [[vegapunk|Vegapunk]] must die, even though he says he is only following orders. [[monkey-d-luffy|Luffy]] will not allow it: he grabs him and throws him far away, well past the battlefield, as though he were just a weight to clear out of the way. The admiral stops himself before he falls into the sea, splits into beams of light and comes back to the island to strike again.',
         },
       },
     },
@@ -365,12 +375,12 @@ export const summitWarChronicles = {
       episode: 1141,
       value: {
         title: {
-          it: 'Il calcio deviato dal cuoco',
-          en: 'The kick deflected by the cook',
+          it: 'Il raggio spezzato da un calcio',
+          en: 'The beam kicked apart',
         },
         body: {
-          it: 'Con [[vegapunk|Vegapunk]] ormai troppo ferito per muoversi, l’ammiraglio punta il proprio raggio di luce dritto su di lui, certo che nessuno arriverà in tempo. Invece un cuoco devia il colpo lontano con un solo calcio, proteggendo lo scienziato con il proprio corpo. È [[sanji|Sanji]], e per un istante l’ammiraglio lo osserva con qualcosa che somiglia, per la prima volta in giornata, a un minimo di sorpresa.',
-          en: 'With [[vegapunk|Vegapunk]] now too injured to move, the admiral aims his beam of light straight at him, certain no one can reach him in time. Instead a cook deflects the blow away with a single kick of his leg, shielding the scientist with his own body. It is [[sanji|Sanji]], and for a moment the admiral studies him with something that, for the first time all day, looks almost like surprise.',
+          it: 'Con [[vegapunk|Vegapunk]] ormai troppo ferito per muoversi, l’ammiraglio punta il proprio raggio di luce dritto su di lui. Invece un cuoco manda in pezzi il raggio con un solo calcio. È [[sanji|Sanji]], e l’ammiraglio resta visibilmente sbalordito: Sanji dice che l’amore è più forte della luce, e l’ammiraglio si chiede se le leggi della fisica valgano ancora. L’unico modo per salvare la faccia, dice, è almeno prendersi le loro teste.',
+          en: 'With [[vegapunk|Vegapunk]] now too injured to move, the admiral aims his beam of light straight at him. Instead a cook kicks the beam apart. It is [[sanji|Sanji]], and the admiral is visibly stunned: Sanji says love is stronger than light, and the admiral wonders whether the laws of physics still hold. The only way left to save face, he says, is at least to take their heads.',
         },
       },
     },
