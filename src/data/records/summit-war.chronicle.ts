@@ -379,8 +379,8 @@ export const summitWarChronicles = {
           en: 'The beam kicked apart',
         },
         body: {
-          it: 'Con [[vegapunk|Vegapunk]] ormai troppo ferito per muoversi, l’ammiraglio punta il proprio raggio di luce dritto su di lui. Invece un cuoco manda in pezzi il raggio con un solo calcio. È [[sanji|Sanji]], e l’ammiraglio resta visibilmente sbalordito: Sanji dice che l’amore è più forte della luce, e l’ammiraglio si chiede se le leggi della fisica valgano ancora. L’unico modo per salvare la faccia, dice, è almeno prendersi le loro teste.',
-          en: 'With [[vegapunk|Vegapunk]] now too injured to move, the admiral aims his beam of light straight at him. Instead a cook kicks the beam apart. It is [[sanji|Sanji]], and the admiral is visibly stunned: Sanji says love is stronger than light, and the admiral wonders whether the laws of physics still hold. The only way left to save face, he says, is at least to take their heads.',
+          it: 'Con [[vegapunk|Vegapunk]] ormai troppo ferito per muoversi, l’ammiraglio spara il proprio raggio di luce. Invece un cuoco manda in pezzi il raggio con un solo calcio. È [[sanji|Sanji]], e l’ammiraglio resta visibilmente sbalordito: Sanji dice che l’amore è più forte della luce, e l’ammiraglio si chiede se le leggi della fisica valgano ancora. L’unico modo per salvare la faccia, dice, è almeno prendersi le loro teste.',
+          en: 'With [[vegapunk|Vegapunk]] now too injured to move, the admiral fires his beam of light. Instead a cook kicks the beam apart. It is [[sanji|Sanji]], and the admiral is visibly stunned: Sanji says love is stronger than light, and the admiral wonders whether the laws of physics still hold. The only way left to save face, he says, is at least to take their heads.',
         },
       },
     },

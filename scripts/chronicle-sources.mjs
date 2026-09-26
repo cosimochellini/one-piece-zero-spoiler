@@ -480,7 +480,7 @@ export const CHRONICLE_SOURCES = {
     },
     1141: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1141',
-      note: 'Candidate was 1141 (Qref ep=1141). Episode 1140 has Luffy return in Gear 5 and punch Kizaru away from Bonney and Kuma; Luffy launching Saturn, Vegapunk staying behind and Sanji deflecting Kizaru’s beam with his leg are in 1141.',
+      note: 'Candidate was 1141 (Qref ep=1141). Episode 1140 has Luffy return in Gear 5 and punch Kizaru away from Bonney and Kuma; Luffy launching Saturn, Vegapunk staying behind and Sanji deflecting Kizaru’s beam with his leg are in 1141. The beam’s target is left unnamed: the Long Summary says Vegapunk, Sanji/History says Bonney.',
     },
   },
   'tony-tony-chopper': {
@@ -872,7 +872,7 @@ export const CHRONICLE_SOURCES = {
     },
     1141: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1141',
-      note: 'Long summary: “Sanji protects him, deflecting Kizaru’s light beam with his leg” — exact match. Egghead pass (#36): “shielding the scientist with his own body”, “certain no one can reach him” and “for the first time all day” were invented and are gone; the reaction (stunned, love stronger than light, take their heads) is from Sanji/History, chap=1107 ep=1141. Retitled: the beam was kicked apart, not the kick deflected.',
+      note: 'Long summary: “Sanji protects him, deflecting Kizaru’s light beam with his leg” — exact match. Egghead pass (#36): “shielding the scientist with his own body”, “certain no one can reach him” and “for the first time all day” were invented and are gone; the reaction (stunned, love stronger than light, take their heads) is from Sanji/History, chap=1107 ep=1141. Retitled: the beam was kicked apart, not the kick deflected. The wiki disagrees on the target (the 1141 Long Summary says Vegapunk, Sanji/History says Bonney, Franky/History both), so neither this story nor Sanji’s names one.',
     },
   },
   'sakazuki': {
