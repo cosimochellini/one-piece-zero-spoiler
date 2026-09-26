@@ -642,6 +642,21 @@ describe('the shelves', () => {
     expect(shelf('jaya-arc')).not.toContain('gan-fall')
     expect(shelf('skypiea')).toContain('gan-fall')
   })
+
+  it('shelves Enies Lobby and Post-Enies Lobby on their own arcs, not on Water Seven', () => {
+    expect(shelf('enies-lobby')).toStrictEqual([
+      'jabra',
+      'kumadori',
+      'fukurou',
+      'oimo-and-kashi',
+    ])
+    expect(shelf('post-enies-lobby')).toStrictEqual([
+      'monkey-d-garp',
+      'monkey-d-dragon',
+    ])
+    expect(shelf('water-seven')).toContain('spandam')
+    expect(shelf('water-seven')).not.toContain('jabra')
+  })
 })
 
 describe('routePositionOf', () => {
