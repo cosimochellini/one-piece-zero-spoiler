@@ -318,8 +318,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 22,
       name: { it: 'Villaggio di Syrup', en: 'Syrup Village' },
       summary: {
-        it: 'Un villaggio tranquillo su una piccola isola a sud, dove la ciurma approda sperando di trovare una barca migliore.',
-        en: 'A quiet village on a small island to the south, where the crew puts in hoping to find a better boat.',
+        it: 'Il prossimo approdo della rotta, per tre persone che navigano ancora l’East Blue senza una vera nave.',
+        en: 'The next landfall on the route, for three people still sailing the East Blue without a proper ship.',
       },
       visual: { art: 'syrup-village-arc', tint: 'green' },
     },
