@@ -34,6 +34,15 @@ export const eastBlueArt = {
     ...SEA,
   ],
 
+  // A barrel adrift, its lid shut, two hoops round the staves.
+  'romance-dawn': [
+    { d: 'M54 84 Q46 118 54 150 H106 Q114 118 106 84 Z' },
+    { d: ellipse(80, 84, 26, 6) },
+    { d: 'M50 104 Q80 110 110 104 M50 132 Q80 138 110 132', role: 'accent' },
+    { d: 'M68 90 V148 M92 90 V148', role: 'soft' },
+    ...SEA,
+  ],
+
   // A straw hat: the brim as one ellipse, the crown as one curve, the band in
   // the captain's red.
   'monkey-d-luffy': [
@@ -237,6 +246,15 @@ export const eastBlueArt = {
     },
     shadow(74, 192, 44),
   ],
+  // An iron cage hung from a ring, the bars shut all the way round.
+  'orange-town-arc': [
+    { d: 'M40 60 H120 V156 H40 Z' },
+    { d: 'M34 60 H126 M34 156 H126', role: 'accent' },
+    { d: 'M56 60 V156 M72 60 V156 M88 60 V156 M104 60 V156', role: 'soft' },
+    { d: 'M80 60 V44' },
+    { d: circle(80, 36, 8), role: 'accent' },
+    shadow(80, 172, 52),
+  ],
   // A cannonball with its fuse lit.
   'buggy': [
     { d: circle(76, 118, 34), role: 'accent' },
@@ -306,6 +324,15 @@ export const eastBlueArt = {
     { d: 'M102 180 C120 142 132 98 136 44' },
     { d: 'M136 44 C140 40 144 42 146 46' },
     { d: 'M100 178 L116 186' },
+  ],
+  // A signpost on the slope above the shore, one board pointing each way.
+  'syrup-village-arc': [
+    { d: 'M4 150 C44 146 74 134 100 110 S140 76 156 72' },
+    { d: 'M70 124 V52' },
+    { d: 'M70 60 H116 l10 9 l-10 9 H70', role: 'accent' },
+    { d: 'M70 88 H34 l-10 8 l10 8 H70' },
+    { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
+    ...SEA.slice(1),
   ],
   // A slingshot, the band drawn taut around a star-shaped pellet.
   'usopp': [
@@ -451,6 +478,17 @@ export const eastBlueArt = {
     },
     shadow(80, 184, 56),
   ],
+  // An empty plate laid on the table, a fork on one side and a knife on the
+  // other.
+  'baratie-arc': [
+    { d: ellipse(80, 124, 44, 16) },
+    { d: ellipse(80, 124, 30, 10), role: 'soft' },
+    { d: 'M16 78 V98 M22 78 V98 M28 78 V98 M16 98 Q22 106 28 98 M22 102 V160' },
+    { d: 'M134 78 C146 90 146 108 140 116 H134 Z', role: 'accent' },
+    { d: 'M137 116 V160' },
+    { d: 'M4 168 H156', role: 'ambient' },
+    shadow(80, 146, 48),
+  ],
   // A chef's knife with a flame off its point.
   'sanji': [
     { d: 'M28 170 L54 144 M38 178 L64 152' },
@@ -558,6 +596,21 @@ export const eastBlueArt = {
     { d: 'M74 140 V172 M86 140 V172' },
     { d: 'M74 148 l12 4 M74 156 l12 4 M74 164 l12 4', role: 'ambient' },
     { d: circle(80, 180, 6) },
+  ],
+
+  // A walled compound on the shore, a gate in the wall and a tower rising
+  // behind it.
+  'arlong-park': [
+    { d: 'M14 150 V108 H146 V150' },
+    {
+      d: 'M14 108 v-8 h10 v8 M36 108 v-8 h10 v8 M114 108 v-8 h10 v8 M136 108 v-8 h10 v8',
+    },
+    { d: 'M62 108 V44 H98 V108' },
+    { d: 'M56 44 H104 L80 20 Z', role: 'accent' },
+    { d: 'M74 64 h12 v14 h-12z', role: 'soft' },
+    { d: 'M68 150 V132 a12 12 0 0 1 24 0 V150' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(1),
   ],
 
   // A saw-toothed sword, laid over on the diagonal.
@@ -696,6 +749,23 @@ export const eastBlueArt = {
       role: 'accent',
     },
     shadow(70, 186, 48),
+  ],
+  // A single wanted poster nailed to a noticeboard, the reward line under an
+  // empty frame.
+  'loguetown': [
+    { d: 'M20 40 H140 V150 H20 Z' },
+    { d: 'M34 150 V184 M126 150 V184' },
+    { d: 'M48 52 H112 V140 H48 Z' },
+    { d: 'M58 64 H102', role: 'soft' },
+    { d: 'M58 74 H102 V112 H58 Z', role: 'soft' },
+    { d: 'M60 126 H100', role: 'accent' },
+    {
+      d: dots([
+        [52, 56],
+        [108, 56],
+      ]),
+    },
+    shadow(80, 190, 56),
   ],
   // A jitte, and the smoke that goes with its owner.
   'smoker': [

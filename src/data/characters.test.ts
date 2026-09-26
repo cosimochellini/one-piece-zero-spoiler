@@ -600,15 +600,27 @@ describe('the shelves', () => {
     }
   })
 
-  it('shelves the East Blue crew under the East Blue saga', () => {
-    const eastBlue = bookSections.find(
-      (section) => section.arc.id === 'east-blue',
-    )
-    const shelved = eastBlue?.characters.map((character) => character.id)
+  it('shelves East Blue by its six arcs, not under the saga', () => {
+    const firstMet = [
+      ['romance-dawn', 'monkey-d-luffy'],
+      ['orange-town-arc', 'nami'],
+      ['syrup-village-arc', 'usopp'],
+      ['baratie-arc', 'sanji'],
+      ['arlong-park', 'arlong'],
+      ['loguetown', 'smoker'],
+    ] as const
 
-    expect(shelved).toContain('monkey-d-luffy')
-    expect(shelved).toContain('smoker')
-    expect(shelved).not.toContain('crocodile')
+    for (const [index, [arc, character]] of firstMet.entries()) {
+      const section = bookSections[index]
+      const shelved = section?.characters.map((entity) => entity.id)
+
+      expect(section?.arc.id).toBe(arc)
+      expect(shelved).toContain(character)
+    }
+
+    expect(bookSections.map((section) => section.arc.id)).not.toContain(
+      'east-blue',
+    )
   })
 })
 
@@ -625,8 +637,9 @@ describe('routePositionOf', () => {
   it('names the records either side of a waypoint in route order', () => {
     const position = routePositionOf(must('sanji'))
 
-    // Baratie is filed at the same episode as Sanji, right after him.
-    expect(position.previous?.id).toBe('going-merry')
+    // The Baratie arc and the restaurant are filed at the same episode as
+    // Sanji, the arc just before him and the place right after.
+    expect(position.previous?.id).toBe('baratie-arc')
     expect(position.next?.id).toBe('baratie')
   })
 
