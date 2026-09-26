@@ -380,6 +380,29 @@ export const eastBlueChronicles = {
         },
       },
     },
+    {
+      episode: 1127,
+      value: {
+        title: { it: 'Fuori dal Labophase', en: 'Out of the Labophase' },
+        body: {
+          it: 'Dentro il Labophase, [[borsalino|Kizaru]] insiste che [[vegapunk|Vegapunk]] deve morire. Rufy, nella forma del Gear 5, non glielo permette: solleva l’ammiraglio e lo scaglia altissimo nel cielo, fuori dal Labophase e lontano dall’isola. Kizaru evita di finire in mare, si divide in tanti raggi di luce e torna a colpire. Quando Rufy centra quello vero, finisce solo per spedirlo nell’ufficio di Vegapunk, dove Kizaru afferra [[usopp|Usop]] e pretende di sapere dov’è lo scienziato. Poi l’ammiraglio fa fuoco sul carro armato su cui fuggono Vegapunk e [[atlas|Atlas]], e Rufy inghiotte la luce.',
+          en: 'Inside the Labophase, [[borsalino|Kizaru]] insists that [[vegapunk|Vegapunk]] must die. Luffy, in his Gear 5 form, will not allow it: he lifts the Admiral and hurls him far into the sky, out of the Labophase and off the island. Kizaru keeps himself from falling into the sea, splits into many beams of light and comes back to strike again. When Luffy hits the real one, he only sends him crashing into Vegapunk’s office, where Kizaru seizes [[usopp|Usopp]] and demands to know where the scientist is. Then the Admiral fires at the tank Vegapunk and [[atlas|Atlas]] are fleeing on, and Luffy swallows the light.',
+        },
+      },
+    },
+    {
+      episode: 1152,
+      value: {
+        title: {
+          it: 'Chiamato con un altro nome',
+          en: 'Called by another name',
+        },
+        body: {
+          it: 'Il Gigante di Ferro, Emet, è riemerso dal mare, e ora parla a Rufy. Lo chiama Joy Boy e dice che combatterà per lui; Rufy non ha idea di cosa intenda. Il vecchio robot si volta ad affrontare i Cinque Astri di Saggezza, ma le sue armi, logorate dal tempo, non funzionano più, e [[shepherd-ju-peter|Ju Peter]] gli stacca un braccio a morsi. Intanto [[jaygarcia-saturn|Saturn]] balza sulla nave dei giganti per impedire a [[jewelry-bonney|Bonney]] e [[bartholomew-kuma|Kuma]] di fuggire. Rufy protegge Bonney finché lei non si rimette in forze, poi i due colpiscono insieme, aprendo buchi nel corpo di Saturn e sbalzandolo giù dalla nave.',
+          en: 'The Iron Giant, Emet, has risen from the sea, and now it speaks to Luffy. It calls him Joy Boy and says it will fight for him; Luffy has no idea what it means. The old robot turns to face the Five Elders, but its weapons, worn out by age, no longer work, and [[shepherd-ju-peter|Ju Peter]] bites off one of its arms. Meanwhile [[jaygarcia-saturn|Saturn]] leaps onto the giants’ ship to stop [[jewelry-bonney|Bonney]] and [[bartholomew-kuma|Kuma]] from escaping. Luffy shields Bonney until she has recovered her strength, then the two of them strike together, punching holes through Saturn and knocking him off the ship.',
+        },
+      },
+    },
   ],
 
   'roronoa-zoro': [
@@ -617,6 +640,16 @@ export const eastBlueChronicles = {
         },
       },
     },
+    {
+      episode: 1145,
+      value: {
+        title: { it: 'Di nuovo Lucci', en: 'Lucci, again' },
+        body: {
+          it: 'Quando [[rob-lucci|Lucci]] tradisce i Cappello di Paglia e prova a colpire [[vegapunk|Vegapunk]], e [[stussy|Stussy]] incassa il colpo al suo posto, Zoro gli dà del vigliacco e lo affronta. Lo scontro si trascina a lungo: Lucci, nella sua forma risvegliata, si nasconde tra i cespugli, e Zoro lo scova con l’olfatto. Poi [[sanji|Sanji]] dà a Zoro del peso morto per non aver ancora chiuso la faccenda. Zoro risponde con un solo fendente che apre tre ferite profonde sul petto di Lucci. Lucci sputa sangue e prova ancora a rialzarsi, finché [[jinbe|Jinbe]] non gli dice che è finita e lo respinge con un colpo di karate che lo riporta alla forma umana.',
+          en: 'When [[rob-lucci|Lucci]] turns on the Straw Hats and strikes at [[vegapunk|Vegapunk]], and [[stussy|Stussy]] takes the blow instead, Zoro calls him spineless and takes him on. The fight drags on: Lucci, in his awakened form, hides in the bushes, and Zoro finds him by smell. Then [[sanji|Sanji]] calls Zoro deadweight for not having finished yet. Zoro answers with a single slash that leaves three deep wounds across Lucci’s chest. Lucci coughs blood and still tries to rise, until [[jinbe|Jinbe]] tells him the fight is over and drives him back with a karate strike that forces him into human form.',
+        },
+      },
+    },
   ],
 
   'shanks': [
@@ -712,6 +745,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'Una settimana dopo la caduta di [[kaido|Kaido]], la sua nave è al largo di Wano. Shanks guarda il nuovo manifesto di [[monkey-d-luffy|Rufy]] e ripensa al bambino della taverna, e al frutto che lui stesso rubò anni prima al Governo. La ciurma vorrebbe scendere a salutare [[monkey-d-luffy|Rufy]]; lui dice che non è ancora il momento. Sulla costa l’ammiraglio [[aramaki|Aramaki]] sta attaccando i samurai e [[momonosuke|Momonosuke]], che per la prima volta riesce a sputare fuoco. Da lontano Shanks scaglia un’onda di volontà così pesante da piegare l’ammiraglio, che si ritira. La nave rossa riparte, senza che [[monkey-d-luffy|Rufy]] sappia di averla avuta accanto.',
           en: 'A week after [[kaido|Kaido]]’s fall, his ship lies off the coast of Wano. Shanks looks at [[monkey-d-luffy|Luffy]]’s new wanted poster and thinks back to the boy in the tavern, and to the fruit he himself stole from the Government years ago. The crew want to go ashore and greet [[monkey-d-luffy|Luffy]]; he says it is not yet time. On the coast the Admiral [[aramaki|Aramaki]] is attacking the samurai and [[momonosuke|Momonosuke]], who manages to breathe fire for the first time. From offshore Shanks hurls a wave of will so heavy it bends the Admiral, who withdraws. The red ship sails on, without [[monkey-d-luffy|Luffy]] ever knowing it was there.',
+        },
+      },
+    },
+    {
+      episode: 1112,
+      value: {
+        title: { it: 'Un solo colpo per Kid', en: 'One blow for Kid' },
+        body: {
+          it: 'In una taverna di Elbaph, Shanks beve con la sua ciurma e si diverte con un bambino che implora di essere preso a bordo, quando arriva la notizia: i pirati di [[eustass-kid|Kid]], l’uomo a cui aveva tagliato un braccio, tornano all’attacco. Shanks salpa con [[dorry|Dorry]] e [[brogy|Broggy]] al suo fianco e offre a Kid di andarsene illeso in cambio delle sue copie dei Poneglifi della Rotta; Kid accetta la battaglia. La visione del futuro gli mostra Kid pronto a spazzare via le navi dei suoi alleati: Shanks lo anticipa e lo abbatte con un solo colpo, travolgendo anche [[killer|Killer]]. Dorry e Broggy affondano la nave di Kid.',
+          en: 'In a tavern on Elbaph, Shanks drinks with his crew and plays along with a child begging to join them, when word arrives: the pirates of [[eustass-kid|Kid]], whose arm he once cut off, are attacking again. Shanks sails out with [[dorry|Dorry]] and [[brogy|Brogy]] on his side and offers to let Kid leave unharmed in exchange for his Road Poneglyph copies; Kid chooses to fight. Future sight shows Kid about to wipe out his allies’ ships, so Shanks gets there first and strikes him down with a single blow, [[killer|Killer]] caught in it too. Dorry and Brogy sink Kid’s ship.',
         },
       },
     },
@@ -1230,6 +1273,16 @@ export const eastBlueChronicles = {
         body: {
           it: 'A Onigashima [[queen|Queen]] gli mostra di aver copiato le armi dei suoi fratelli, laser, scariche elettriche, un braccio a verricello, e lo chiama Vinsmoke a ogni colpo. Sanji ha una paura più grande dei colpi: da quando ha indossato la tuta lasciatagli dal fratello, il suo corpo si è fatto duro come il loro, e teme di perdere anche il cuore, come loro. Poi [[queen|Queen]] colpisce una donna, e la rabbia di Sanji risponde: le sue fiamme diventano blu, più calde, e ogni calcio pesa il doppio. Accetta quel corpo, purché il cuore resti il suo, e con un ultimo calcio manda [[queen|Queen]] a volare fuori dall’isola. Poi crolla.',
           en: 'On Onigashima [[queen|Queen]] shows him he has copied his brothers’ weapons, lasers, electric shocks, a winch for an arm, and calls him a Vinsmoke with every blow. Sanji has a fear bigger than the blows: since he put on the suit his brother left him, his body has hardened like theirs, and he dreads losing his heart the way they did. Then [[queen|Queen]] strikes a woman, and Sanji’s rage answers: his flames turn blue, hotter, and every kick lands twice as hard. He accepts that body, as long as the heart stays his, and with a last kick sends [[queen|Queen]] flying off the island. Then he collapses.',
+        },
+      },
+    },
+    {
+      episode: 1141,
+      value: {
+        title: { it: 'Più forte della luce', en: 'Stronger than light' },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]] ha appena scagliato [[jaygarcia-saturn|Saturn]] contro gli edifici, e [[jewelry-bonney|Bonney]], [[atlas|Atlas]] e [[bartholomew-kuma|Kuma]] si mettono in fuga. [[vegapunk|Vegapunk]] resta indietro: ferito com’è, se si muovesse morirebbe. [[borsalino|Kizaru]] torna e spara un raggio di luce. Sanji arriva prima e manda in pezzi il laser con un calcio. [[franky|Franky]] non crede ai propri occhi, e Sanji spiega che è il potere dell’amore, una risposta che lascia l’ammiraglio altrettanto sbalordito. Poi Sanji e Rufy restano lì, pronti ad affrontare Kizaru.',
+          en: '[[monkey-d-luffy|Luffy]] has just sent [[jaygarcia-saturn|Saturn]] flying into the buildings, and [[jewelry-bonney|Bonney]], [[atlas|Atlas]] and [[bartholomew-kuma|Kuma]] run for it. [[vegapunk|Vegapunk]] stays behind: wounded as he is, moving would kill him. [[borsalino|Kizaru]] comes back and fires a beam of light. Sanji gets there first and kicks the laser apart. [[franky|Franky]] can hardly believe it, and Sanji puts it down to the power of love, an answer that leaves the Admiral just as startled. Then Sanji and Luffy stay where they are, ready to take on Kizaru.',
         },
       },
     },

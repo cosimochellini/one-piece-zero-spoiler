@@ -134,6 +134,14 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1071',
       note: 'The Five Elders name the fruit, Kaido dragged onto the roof, the ground bounces the fireball — all within 1071.',
     },
+    1127: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1127',
+      note: 'Candidate was 1126–1127 (Qref ep=1126,1127). Episode 1126 only has Luffy reach the Punk Records in Gear 5 and attack; the throw out of the Labophase, Kizaru’s return as beams of light, the grab on Usopp and Luffy swallowing the laser aimed at the Vegatank are all in 1127.',
+    },
+    1152: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1152',
+      note: 'Candidate was 1152 (Qref ep=1152). Episode 1151 only has Emet rise from the sea and punch Warcury; Emet addressing Luffy as Joy Boy, its failed weapons, Ju Peter biting off its arm and Luffy and Bonney’s joint attack on Saturn are in 1152 (Luffy history and Emet page cite chap 1120–1121, ep=1152).',
+    },
   },
   'roronoa-zoro': {
     2: {
@@ -219,6 +227,10 @@ export const CHRONICLE_SOURCES = {
     1062: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1062',
       note: 'King’s ability worked out, King of Hell Three Sword Style, King defeated.',
+    },
+    1145: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1145',
+      note: 'Candidate was 1144–1145 (Qref ep=1144,1145). Zoro’s decisive slash after Sanji’s "deadweight" lands in 1144, but the three chest wounds and Jinbe ending the fight with Gosenmaigawara Shuto are only shown in 1145; the betrayal and Stussy’s block are 1125, the bushes and the sense of smell 1127.',
     },
   },
   'nami': {
@@ -466,6 +478,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1061',
       note: 'Copied Vinsmoke weapons, Ifrit Jambe, Queen sent off Onigashima, Sanji collapses.',
     },
+    1141: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1141',
+      note: 'Candidate was 1141 (Qref ep=1141). Episode 1140 has Luffy return in Gear 5 and punch Kizaru away from Bonney and Kuma; Luffy launching Saturn, Vegapunk staying behind and Sanji deflecting Kizaru’s beam with his leg are in 1141. The beam’s target is left unnamed: the Long Summary says Vegapunk, Sanji/History says Bonney.',
+    },
   },
   'tony-tony-chopper': {
     83: {
@@ -598,6 +614,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1083',
       note: "Candidate 1083. Robin’s question to Hitetsu/Sukiyaki about Pluton is ep 1080 (Robin History, Qref chap=1053 ep=1080); the sunken old Wano, the Road Poneglyph and Pluton under the walls are ep 1082; Robin reporting to the crew and Luffy choosing not to uncover the weapon are the ep 1083 Long Summary, so the story is filed there. Sukiyaki has no record and is named in plain text. Second pass: placement confirmed (Sukiyaki reveal and Pluton confirmation 1080, sunken Wano and Road Poneglyph 1082, report to the crew and Luffy's refusal 1083); Italian changed from 'quando' to 'dopo che' so the flood follows the walls, as in ep 1082.",
     },
+    1148: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1148',
+      note: 'Candidate was 1147–1148 (Qref ep=1147,1148). Saturn recognises Robin from Ohara and her crewmates shield her in 1147, but Robin catching them in her Spider Net and Saturn leaving for the power plant are in 1148, so it is filed at the later episode.',
+    },
   },
   'franky': {
     235: {
@@ -663,6 +683,10 @@ export const CHRONICLE_SOURCES = {
     1068: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1068',
       note: 'Candidate 1065, which is wrong for the catch itself: 1065 only has Franky searching for Zoro at the Right-Brain Tower (Qref chap=1038 ep=1065), Chopper worrying about the medicine’s double price, and Zoro bleeding out and seeing the reaper. 1067 has the explosion that crumbles the island and Zoro falling off its edge; 1068 has Franky saving him with his extendable arm and pulling him back onto the island (Qref chap=1041 ep=1068). Filed at 1068.',
+    },
+    1149: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1149',
+      note: 'Candidate was 1149 (Qref ep=1149). In 1147 Franky moves to block Nusjuro and Sanji takes his place; the tackle that saves Bonney from the slash, and Nusjuro leaving for the Labophase, are in 1149.',
     },
   },
   'brook': {
@@ -768,6 +792,10 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_1040',
       note: 'Candidate 1038–1040 (Qref ep=1038,1039; ep=1040). Jinbe stays behind while Luffy goes on in 1012; the Six Powers, the escaped CP9 agent and the guarded fruit eaten by Luffy are 1039; the Nika story, the executed guard, the question about fish-men and slavery, the broken fingers, the tail, the single punch and the warning about history are 1040, so the story is filed there. The thief of the fruit (named only in the History, not in the episode summaries) is left out.',
     },
+    1094: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1094',
+      note: 'Candidate was 1094–1096 (Qref ep=1094,1095,1096). The disguise and the whole conversation about Kuma are in 1094; the rusty robot in the scrapyard (1095) and Vegapunk stuck in it (1096) are not part of the story, so it is filed at 1094.',
+    },
   },
   'trafalgar-law': {
     392: {
@@ -840,11 +868,11 @@ export const CHRONICLE_SOURCES = {
     },
     1127: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1127',
-      note: 'Long summary: “he throws Kizaru far into the sky” — matches “thrown out” of the Labophase fight.',
+      note: 'Long summary: “he throws Kizaru far into the sky” — matches “thrown out” of the Labophase fight. Egghead pass (#36): the invented closing line (“the first time anyone has treated him like this”, the island “without its fastest admiral”) is replaced by what 1127 shows, Kizaru stopping short of the sea and coming back as beams of light; the 1126 “only following orders” line replaces “ready to do it with his own hands”.',
     },
     1141: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1141',
-      note: 'Long summary: “Sanji protects him, deflecting Kizaru’s light beam with his leg” — exact match.',
+      note: 'Long summary: “Sanji protects him, deflecting Kizaru’s light beam with his leg” — exact match. Egghead pass (#36): “shielding the scientist with his own body”, “certain no one can reach him” and “for the first time all day” were invented and are gone; the reaction (stunned, love stronger than light, take their heads) is from Sanji/History, chap=1107 ep=1141. Retitled: the beam was kicked apart, not the kick deflected. The wiki disagrees on the target (the 1141 Long Summary says Vegapunk, Sanji/History says Bonney, Franky/History both), so neither this story nor Sanji’s names one.',
     },
   },
   'sakazuki': {
@@ -931,6 +959,10 @@ export const CHRONICLE_SOURCES = {
     1082: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1082',
       note: 'The stolen fruit recalled (ep 1081); Momonosuke’s flame, Ryokugyu retreats, the ship departs (ep 1082).',
+    },
+    1112: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1112',
+      note: "Candidate was 1112 (Qref ep=1109,1112). The tavern and Kid's approach are in 1109; the one-blow Kamusari on Kid and Killer and the sinking of the Victoria Punk are in 1112.",
     },
   },
   'portgas-d-ace': {
@@ -1114,7 +1146,7 @@ export const CHRONICLE_SOURCES = {
     },
     1137: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1137',
-      note: 'Kuma arrives running on Egghead and punches an Elder (Saturn) in the face.',
+      note: 'Kuma arrives running on Egghead and punches an Elder (Saturn) in the face. Egghead pass (#36): “for the first time since Thriller Bark acts on his own” was wrong (he runs to Mary Geoise on his own from 1098), and Saturn’s motive and fear were invented; rewritten from the 1137 Long Summary: the shots that do not stop him, Saturn piercing his back, the chip and kill switch failing, the Haki punch.',
     },
   },
   'sengoku': {
