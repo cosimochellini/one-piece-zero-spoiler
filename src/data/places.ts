@@ -52,7 +52,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   'shells-town': {
     sea: 'east-blue',
     form: 'town',
-    arc: 'east-blue',
+    arc: 'romance-dawn',
     landmark: {
       it: 'La torre della base della Marina',
       en: 'The Marine base tower',
@@ -66,7 +66,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   'foosha-village': {
     sea: 'east-blue',
     form: 'village',
-    arc: 'east-blue',
+    arc: 'romance-dawn',
     landmark: { it: 'Il mulino a vento', en: 'The windmill' },
     log: {
       it: 'Il porto di partenza. Qui un bambino ha passato un anno a chiedere di essere imbarcato dai pirati che avevano preso la taverna per casa, e qui ha ricevuto in prestito il cappello di paglia che porta ancora, con la promessa di restituirlo quando sarà diventato un grande pirata.',
@@ -77,7 +77,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   'orange-town': {
     sea: 'east-blue',
     form: 'town',
-    arc: 'east-blue',
+    arc: 'orange-town-arc',
     landmark: { it: 'Il tendone dei pirati', en: 'The pirates’ big top' },
     log: {
       it: 'Il capitano ci è caduto dentro dal cielo, lasciato andare da un uccello, nel mezzo di un inseguimento tra una ladra e tre pirati. Le strade sono vuote, le case ancora intere tranne quelle che i cannoni hanno già raggiunto, e la ciurma che occupa la piazza ha una nave, un tendone e una carta nautica che qualcuno le ha appena rubato.',
@@ -88,7 +88,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   'syrup-village': {
     sea: 'east-blue',
     form: 'village',
-    arc: 'east-blue',
+    arc: 'syrup-village-arc',
     landmark: { it: 'La villa sulla collina', en: 'The mansion on the hill' },
     log: {
       it: 'Tre bambini con una bandiera, il bugiardo che li comanda e una ragazza malata che ascolta le sue storie dalla finestra della villa. Il villaggio ha imparato a non credere a una parola di quello che sente gridare all’alba, il che è un problema il giorno in cui la bugia è vera.',
@@ -99,7 +99,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   'baratie': {
     sea: 'east-blue',
     form: 'restaurant',
-    arc: 'east-blue',
+    arc: 'baratie-arc',
     landmark: { it: 'La prua a testa di pesce', en: 'The fish-head prow' },
     log: {
       it: 'Il primo scalo che non è un’isola. Il proprietario è un vecchio cuoco con una gamba di legno; il suo vice dà da mangiare a chiunque abbia fame e prende a calci chiunque manchi di rispetto alla cucina. La ciurma arriva per cercare un cuoco e il capitano finisce a lavare i piatti per pagare un tetto sfondato.',
