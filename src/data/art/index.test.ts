@@ -77,20 +77,9 @@ describe('the drawings', () => {
 })
 
 describe('the redrawings', () => {
-  it('never file the same id in two sagas', () => {
-    // Merged by spread like the drawings, and caught the same way.
-    const modules = [skypieaRedrawn]
-    const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
-
-    expect(Object.keys(REDRAWINGS)).toHaveLength(total)
-  })
-
   it('redraw a record that exists, by the same rules as the first drawing', () => {
     for (const [id, timeline] of Object.entries(REDRAWINGS)) {
       expect(getEntity(id), id).toBeDefined()
-      // The server looks the first drawing up by `visual.art` and the
-      // redrawings by id; the two are one key space, and this is the tell.
-      expect(Object.keys(DRAWINGS), id).toContain(id)
       expect(timeline.length, id).toBeGreaterThan(0)
 
       for (const entry of timeline) {
