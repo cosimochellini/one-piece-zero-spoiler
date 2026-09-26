@@ -65,7 +65,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 482 records and 483 line drawings — about 900 KB of TypeScript.
+The archive is 484 records and 485 line drawings — about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 out of the request and sends back the records at or below the bookmark, with
 their strings already resolved to the page's locale and their drawings already
@@ -278,7 +278,7 @@ reader who tapped a link a friend sent.
 - **The archive is not in the bundle.** Moving it behind the loaders took the
   client JavaScript from 1,048,559 bytes to 450,058 — and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
-  not all 476. Adding the 120 devil fruits, their drawings and two more pages
+  not all 484. Adding the 120 devil fruits, their drawings and two more pages
   cost 31 KB of client JavaScript and not one byte of archive.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary side by side; it now carries the page's own.
