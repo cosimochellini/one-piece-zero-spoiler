@@ -37,19 +37,19 @@ function coveredAt(
  */
 describe('a record lifted by hand', () => {
   it('answers a handle with the shape the veil it belongs to renders', () => {
-    expect(peekWaypoint(lawHandle, 'en')).toMatchObject({
+    expect(peekWaypoint(lawHandle, 'en', null)).toMatchObject({
       id: law,
       kind: 'character',
       name: 'Trafalgar Law',
     })
-    expect(peekWaypoint(lawHandle, 'en')?.summary).toBe(lawSummary)
-    expect(peekCharacter(lawHandle, 'en')).not.toHaveProperty('summary')
-    expect(peekDossier(lawHandle, 'en')?.summary).toBe(lawSummary)
-    expect(peekRecord(lawHandle, 'en')).not.toHaveProperty('role')
+    expect(peekWaypoint(lawHandle, 'en', null)?.summary).toBe(lawSummary)
+    expect(peekCharacter(lawHandle, 'en', null)).not.toHaveProperty('summary')
+    expect(peekDossier(lawHandle, 'en', null)?.summary).toBe(lawSummary)
+    expect(peekRecord(lawHandle, 'en', null)).not.toHaveProperty('role')
   })
 
   it('answers in the locale the page asked for', () => {
-    const drawing = peekWaypoint(lawHandle, 'it')
+    const drawing = peekWaypoint(lawHandle, 'it', null)
     const record = getEntity(law)
 
     expect(drawing?.name).toBe(record?.name.it)
@@ -57,7 +57,7 @@ describe('a record lifted by hand', () => {
   })
 
   it('sends the strokes rather than the drawing’s key', () => {
-    const drawing = peekWaypoint(lawHandle, 'en')?.visual
+    const drawing = peekWaypoint(lawHandle, 'en', null)?.visual
 
     // The keys of the drawing table are the record ids, which are the name
     // slugs, so a key would spell the name the fog was for.
@@ -89,17 +89,17 @@ describe('a record lifted by hand', () => {
 
   it('answers nothing at all to anything it did not mint', () => {
     for (const rubbish of ['', 'nami', 'zzzzzz', '-1', '../etc']) {
-      expect(peekWaypoint(rubbish, 'en'), rubbish).toBeUndefined()
-      expect(peekCharacter(rubbish, 'en'), rubbish).toBeUndefined()
-      expect(peekRecord(rubbish, 'en'), rubbish).toBeUndefined()
-      expect(peekDossier(rubbish, 'en'), rubbish).toBeUndefined()
+      expect(peekWaypoint(rubbish, 'en', null), rubbish).toBeUndefined()
+      expect(peekCharacter(rubbish, 'en', null), rubbish).toBeUndefined()
+      expect(peekRecord(rubbish, 'en', null), rubbish).toBeUndefined()
+      expect(peekDossier(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekPort(rubbish, 'en', null), rubbish).toBeUndefined()
     }
   })
 
   it('resolves every handle the archive can mint', () => {
     for (const entity of entities) {
-      expect(peekRecord(handleOf(entity.id), 'en')?.id, entity.id).toBe(
+      expect(peekRecord(handleOf(entity.id), 'en', null)?.id, entity.id).toBe(
         entity.id,
       )
     }

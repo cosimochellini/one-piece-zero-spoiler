@@ -58,9 +58,11 @@ function bandOf(
   return {
     form,
     total: ordered.length,
-    open: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [fruitOf(entity, locale, form)] : [],
-    ),
+    open: ordered.flatMap((entity) => {
+      return isRevealed(entity, bookmark) ?
+          [fruitOf({ bookmark, entity, form, locale })]
+        : []
+    }),
     covered: ordered.flatMap((entity) =>
       isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
     ),
@@ -105,7 +107,7 @@ export function fruitPage(
     detail: {
       slot:
         revealed ?
-          { open: true, record: fruitOf(entity, locale, form) }
+          { open: true, record: fruitOf({ bookmark, entity, form, locale }) }
         : { open: false, covered: coveredOf(entity) },
     },
   }
@@ -151,7 +153,7 @@ export function fruitEaters(
       const gated = gateFor(eater.entity, eater.namedAtEpisode)
 
       return isRevealed(gated, bookmark) ?
-          { open: true, record: characterOf(eater.entity, locale) }
+          { open: true, record: characterOf(eater.entity, locale, bookmark) }
         : { open: false, covered: coveredOf(gated) }
     }),
   }
@@ -174,9 +176,11 @@ export function fruitSiblings(
 
   const mode = modeOf(bookmark)
 
-  return nearest(entity, fruitsOfForm(form), mode).map((near) =>
-    slotOf(near, bookmark, (found) => fruitOf(found, locale, form)),
-  )
+  return nearest(entity, fruitsOfForm(form), mode).map((near) => {
+    return slotOf(near, bookmark, (found) =>
+      fruitOf({ bookmark, entity: found, form, locale }),
+    )
+  })
 }
 
 /** A record's threshold in the unit the reader counts in. */

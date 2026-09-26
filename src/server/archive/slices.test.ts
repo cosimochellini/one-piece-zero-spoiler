@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import type { Entity } from '~/data/types'
@@ -13,6 +14,7 @@ import type {
   ShelfView,
 } from '~/lib/view/records'
 
+import { handleOf } from './handle.server'
 import {
   characterPage,
   charactersPage,
@@ -22,7 +24,8 @@ import {
   routePosition,
   shelvesPage,
 } from './pages.server'
-import { searchableOf } from './project.server'
+import { peekCharacter } from './peek.server'
+import { characterOf, searchableOf } from './project.server'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const handleSpace = new Set(
@@ -318,5 +321,51 @@ describe('the slice of the archive a page is given', () => {
     for (const covered of chartPage(null, 'en').covered) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
+  })
+})
+
+/** A record the archive is known to file, or the test is wrong. */
+function filed(id: string): Entity {
+  const entity = getEntity(id)
+  if (entity === undefined) {
+    throw new Error(`${id} is not filed`)
+  }
+
+  return entity
+}
+
+describe('a record drawn again later in the story', () => {
+  const teach = filed('marshall-d-teach')
+  const first = DRAWINGS['marshall-d-teach']
+  const redrawn = REDRAWINGS['marshall-d-teach']?.[0]
+
+  it('is drawn again only from the episode it is redrawn at', () => {
+    expect(redrawn?.episode).toBe(421)
+
+    expect(characterOf(teach, 'en', ep(420)).visual.strokes).toBe(first)
+    expect(characterOf(teach, 'en', ep(421)).visual.strokes).toBe(
+      redrawn?.value,
+    )
+    expect(characterOf(teach, 'en', ep(1200)).visual.strokes).toBe(
+      redrawn?.value,
+    )
+  })
+
+  it('keeps the first drawing for a reader the timelines cannot place', () => {
+    // No bookmark knows nothing, and a chapter one reaches no episode.
+    expect(characterOf(teach, 'en', null).visual.strokes).toBe(first)
+    expect(
+      characterOf(teach, 'en', { mode: 'chapter', chapter: 1100 }).visual
+        .strokes,
+    ).toBe(first)
+  })
+
+  it('is lifted by hand as the reader would see it, not as it ends', () => {
+    const handle = handleOf('marshall-d-teach')
+
+    expect(peekCharacter(handle, 'en', ep(420))?.visual.strokes).toBe(first)
+    expect(peekCharacter(handle, 'en', ep(421))?.visual.strokes).toBe(
+      redrawn?.value,
+    )
   })
 })

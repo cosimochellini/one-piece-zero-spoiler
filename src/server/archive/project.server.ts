@@ -1,4 +1,4 @@
-import { DRAWINGS } from '~/data/art'
+import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { dossierOf, roleOf } from '~/data/characters'
 import { getFruit } from '~/data/fruits'
 import type {
@@ -37,8 +37,18 @@ import { handleOf } from './handle.server'
  * they have not reached, so what it leaves out is the feature.
  */
 
-function drawingOf(entity: Entity): Drawing {
-  return { strokes: DRAWINGS[entity.visual.art], tint: entity.visual.tint }
+/**
+ * The drawing as it stands at the reader's bookmark. A record drawn again
+ * later in the story follows the bookmark like a dossier fact does, and a
+ * reader who has reached no redrawing — none set, no bookmark, or one that
+ * counts in chapters — is shown the first drawing, which fails closed.
+ */
+function drawingOf(entity: Entity, bookmark: Bookmark): Drawing {
+  return {
+    strokes:
+      knownAt(REDRAWINGS[entity.id], bookmark) ?? DRAWINGS[entity.visual.art],
+    tint: entity.visual.tint,
+  }
 }
 
 /** Everything a record under fog is allowed to say about itself. */
@@ -52,30 +62,45 @@ export function coveredOf(entity: Entity): CoveredRecord {
 }
 
 /** A record as a small tile draws it: a name, a drawing, two thresholds. */
-export function recordOf(entity: Entity, locale: Locale): RecordView {
+export function recordOf(
+  entity: Entity,
+  locale: Locale,
+  bookmark: Bookmark,
+): RecordView {
   return {
     id: entity.id,
     kind: entity.kind,
     name: entity.name[locale],
-    visual: drawingOf(entity),
+    visual: drawingOf(entity, bookmark),
     revealedAtEpisode: entity.revealedAtEpisode,
     revealedAtChapter: entity.revealedAtChapter,
   }
 }
 
 /** A character, with the role their dossier gives them. */
-export function characterOf(entity: Entity, locale: Locale): CharacterView {
+export function characterOf(
+  entity: Entity,
+  locale: Locale,
+  bookmark: Bookmark,
+): CharacterView {
   const role = roleOf(entity)
 
   return {
-    ...recordOf(entity, locale),
+    ...recordOf(entity, locale, bookmark),
     ...(role !== undefined && { role: role[locale] }),
   }
 }
 
 /** A waypoint on the landing chart, which does print a summary. */
-export function waypointOf(entity: Entity, locale: Locale): WaypointView {
-  return { ...recordOf(entity, locale), summary: entity.summary[locale] }
+export function waypointOf(
+  entity: Entity,
+  locale: Locale,
+  bookmark: Bookmark,
+): WaypointView {
+  return {
+    ...recordOf(entity, locale, bookmark),
+    summary: entity.summary[locale],
+  }
 }
 
 /** A record's searchable surface, folded: the shown name and what matches it. */
@@ -134,12 +159,20 @@ export function searchableOf(
   bookmark: Bookmark,
 ): SearchableCharacter {
   return {
-    ...characterOf(entity, locale),
+    ...characterOf(entity, locale, bookmark),
     ...foldedOf(entity.name[locale], [
       ...otherNames(entity, locale),
       ...reachedEpithets(entity, bookmark),
     ]),
   }
+}
+
+/** What a fruit is projected from: the record, its plate, and the reader. */
+export type FruitSource = {
+  readonly bookmark: Bookmark
+  readonly entity: Entity
+  readonly form: FruitForm
+  readonly locale: Locale
 }
 
 /**
@@ -149,13 +182,14 @@ export function searchableOf(
  * plate at a time and already knows which plate it is setting: a projection
  * that guessed would put a fruit on the wrong one rather than fail.
  */
-export function fruitOf(
-  entity: Entity,
-  locale: Locale,
-  form: FruitForm,
-): FruitView {
+export function fruitOf({
+  bookmark,
+  entity,
+  form,
+  locale,
+}: FruitSource): FruitView {
   return {
-    ...recordOf(entity, locale),
+    ...recordOf(entity, locale, bookmark),
     form,
     summary: entity.summary[locale],
     ...foldedOf(entity.name[locale], otherNames(entity, locale)),

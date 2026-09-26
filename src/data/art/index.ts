@@ -4,7 +4,8 @@ import { eastBlueArt } from './east-blue'
 import { eggheadArt } from './egghead'
 import { fishManIslandArt } from './fish-man-island'
 import { fruitArt } from './fruits'
-import { skypieaArt } from './skypiea'
+import { skypieaArt, skypieaRedrawn } from './skypiea'
+import type { Redrawings } from './stroke'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt } from './thriller-bark'
 import { wanoArt } from './wano'
@@ -31,6 +32,14 @@ export const DRAWINGS = {
   ...eggheadArt,
   ...fruitArt,
 }
+
+/**
+ * The records drawn again later in the story, filed beside the saga that
+ * first drew them. The server picks the latest entry the reader has reached
+ * and falls back to `DRAWINGS`, so a reader below the first entry — or one
+ * counting in chapters — is shown the drawing they always were.
+ */
+export const REDRAWINGS: Redrawings = { ...skypieaRedrawn }
 
 /**
  * The id of a drawing. Derived from the drawings themselves, so a record

@@ -278,13 +278,13 @@ describe('the rail of the same kind', () => {
 
 describe('peekFruit', () => {
   it('trades a minted handle for the fruit it stands for', () => {
-    expect(peekFruit(handleOf('dark-dark-fruit'), 'en')?.name).toBe(
+    expect(peekFruit(handleOf('dark-dark-fruit'), 'en', null)?.name).toBe(
       'Dark-Dark Fruit',
     )
   })
 
   it('refuses a handle that stands for something else, and junk', () => {
-    expect(peekFruit(handleOf('monkey-d-luffy'), 'en')).toBeUndefined()
-    expect(peekFruit('not-a-handle', 'en')).toBeUndefined()
+    expect(peekFruit(handleOf('monkey-d-luffy'), 'en', null)).toBeUndefined()
+    expect(peekFruit('not-a-handle', 'en', null)).toBeUndefined()
   })
 })
