@@ -4,6 +4,36 @@ import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the whole cake stretch of the route. */
 export const wholeCakeArt = {
+  // A crown of wild flowers, big enough to sit on a giant girl’s head.
+  'gerd': [
+    { d: ellipse(80, 110, 52, 18) },
+    {
+      d: [circle(34, 106, 8), circle(80, 128, 8), circle(126, 106, 8)].join(
+        ' ',
+      ),
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [34, 106],
+        [80, 128],
+        [126, 106],
+      ]),
+      role: 'accent',
+    },
+    { d: 'M52 96 q6 -10 14 -6 M94 90 q8 -4 14 6', role: 'soft' },
+    shadow(80, 150, 50),
+  ],
+
+  // A long walking staff before a mountain whose snow runs down like a beard.
+  'jarul': [
+    { d: 'M-4 160 L60 50 L90 90 L110 70 L164 160' },
+    { d: 'M44 78 C52 100 60 110 60 130 C66 110 72 100 78 80', role: 'soft' },
+    { d: 'M124 40 V180', role: 'accent' },
+    { d: 'M124 40 c-10 -2 -12 -14 -2 -18 c8 -2 12 6 6 10', role: 'accent' },
+    shadow(80, 176, 60),
+  ],
+
   // An elephant seen from the sea, a walled city riding on its back.
   'zou': [
     { d: 'M18 132 C18 92 46 74 80 74 C114 74 142 92 142 132' },

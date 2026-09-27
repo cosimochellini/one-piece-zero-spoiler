@@ -2,6 +2,7 @@ import { alabasta } from './records/alabasta'
 import { dressrosa } from './records/dressrosa'
 import { eastBlue } from './records/east-blue'
 import { egghead } from './records/egghead'
+import { elbaf } from './records/elbaf'
 import { fishManIsland } from './records/fish-man-island'
 import { devilFruits } from './records/fruits'
 import type { Saga } from './records/saga'
@@ -65,8 +66,8 @@ import type { Entity } from './types'
  * The sagas in the order the anime reaches them, and the devil fruits after
  * them.
  *
- * The fruits are a twelfth module rather than a thirteenth kind scattered
- * through the eleven, because a fruit belongs to no one stretch of the route:
+ * The fruits are a thirteenth module rather than a kind scattered through
+ * the twelve, because a fruit belongs to no one stretch of the route:
  * it is filed at the episode a dossier first names it in, whoever names it.
  * They are last in this list and nowhere in it: the archive is sorted by
  * threshold everywhere it is drawn, so the order here decides nothing.
@@ -83,6 +84,7 @@ export const sagas: readonly Saga[] = [
   wholeCake,
   wano,
   egghead,
+  elbaf,
   devilFruits,
 ]
 

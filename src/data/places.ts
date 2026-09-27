@@ -136,6 +136,57 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
     },
     filedHere: [],
   },
+  'elbaf-island': {
+    sea: 'new-world',
+    form: 'island',
+    arc: 'elbaf',
+    landmark: {
+      it: 'Un albero più alto delle nuvole',
+      en: 'A tree taller than the clouds',
+    },
+    log: {
+      it: 'L’isola dei giganti di cui Dorry e Brogy parlavano, e la ciurma capisce di esserci già arrivata solo dopo aver lasciato un regno in miniatura. Un albero sconfinato la sovrasta, e nel buio gelido ai suoi piedi c’è un principe incatenato da anni.',
+      en: 'The island of giants Dorry and Brogy spoke of, and the crew only realises it has already arrived after leaving a miniature kingdom behind. A boundless tree towers over it, and in the freezing dark at its foot a prince has been chained for years.',
+    },
+    filedHere: ['road', 'iscat', 'goldberg', 'stansen'],
+  },
+  'warland': {
+    sea: 'new-world',
+    form: 'region',
+    arc: 'elbaf',
+    landmark: {
+      it: 'Due asce incrociate su uno scudo',
+      en: 'Two axes crossed over a shield',
+    },
+    log: {
+      it: 'Il regno dei guerrieri giganti su Elbaf, «la terra da cui vengono le guerre», come la chiama con orgoglio chi ci è nato principe. È la patria dei giganti che la ciurma ha incontrato per mare, da Little Garden a Enies Lobby.',
+      en: 'The kingdom of the warrior giants on Elbaph, “the land where wars come from”, as the one born its prince proudly calls it. It is the homeland of the giants the crew has met at sea, from Little Garden to Enies Lobby.',
+    },
+    filedHere: ['loki', 'ragnir'],
+  },
+  'sun-world': {
+    sea: 'new-world',
+    form: 'region',
+    arc: 'elbaf',
+    landmark: {
+      it: 'Le case dei giganti alla luce del sole',
+      en: 'The giants’ houses in the sunlight',
+    },
+    log: {
+      it: 'Lo strato di mezzo di Elbaf, in alto sull’albero colossale, dove i giganti vivono alla luce del sole; sopra c’è il Mondo del Cielo. Sotto c’è il Mondo Sotterraneo, buio e freddo.',
+      en: 'The middle layer of Elbaph, high up the colossal tree, where the giants live in the sunlight, with the Heaven World above. Below lies the Underworld, dark and cold.',
+    },
+    filedHere: [
+      'ange',
+      'ripley',
+      'colon',
+      'biblo',
+      'kiba',
+      'wolf-elbaph',
+      'blade',
+      'scopper-gaban',
+    ],
+  },
 }
 
 /** Every place record, in the order the ship puts in at them. */

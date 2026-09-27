@@ -275,6 +275,7 @@ export const itDictionary: Dictionary = {
   'form.town': 'Cittadina',
   'form.restaurant': 'Ristorante galleggiante',
   'form.island': 'Isola',
+  'form.region': 'Regione',
 
   'status.alive': 'In vita',
   'status.deceased': 'Morte confermata',

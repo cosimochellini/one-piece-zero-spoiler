@@ -134,6 +134,10 @@ export const FRUIT_FORMS = {
   'sick-sick-fruit': 'paramecia',
   'strong-strong-fruit': 'paramecia',
   'warp-warp-fruit': 'paramecia',
+  'grow-grow-fruit': 'paramecia',
+  'arrow-arrow-fruit': 'paramecia',
+  'thorn-thorn-fruit': 'paramecia',
+  'dragon-dragon-fruit-mythical-model-kirin': 'zoan',
 } satisfies Readonly<Record<string, FruitForm>>
 
 /**

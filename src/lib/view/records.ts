@@ -286,7 +286,7 @@ export type FruitEatersView =
 export type Sea = 'east-blue' | 'grand-line' | 'new-world'
 
 /** What kind of place a record is, as the log would put it. */
-export type PlaceForm = 'island' | 'restaurant' | 'town' | 'village'
+export type PlaceForm = 'island' | 'region' | 'restaurant' | 'town' | 'village'
 
 /**
  * One entry of the ship's log.

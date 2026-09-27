@@ -4,6 +4,16 @@ import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
+  // A raft washed up on a beach, a great tree of books on the shore behind.
+  'jaguar-d-saul': [
+    { d: 'M-4 150 C40 138 120 138 164 150' },
+    { d: 'M100 142 C102 110 100 80 96 60 M120 142 C118 110 120 80 124 60' },
+    { d: circle(110, 44, 30), role: 'soft' },
+    { d: 'M24 136 L70 128 L72 136 L26 144 Z', role: 'accent' },
+    { d: 'M36 134 l2 8 M48 132 l2 8 M60 130 l2 8', role: 'accent' },
+    ...SEA.slice(1),
+  ],
+
   // A long low island with three trees stretched out of shape above it.
   'long-ring-long-land': [
     { d: 'M-4 148 C34 132 126 132 164 148' },

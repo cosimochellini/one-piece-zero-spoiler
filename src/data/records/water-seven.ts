@@ -318,6 +318,18 @@ export const waterSeven: Saga = {
       visual: { art: 'oimo-and-kashi', tint: 'ocher' },
     },
     {
+      id: 'jaguar-d-saul',
+      kind: 'character',
+      revealedAtEpisode: 275,
+      revealedAtChapter: 392,
+      name: { it: 'Jaguar D. Saul', en: 'Jaguar D. Saul' },
+      summary: {
+        it: 'Un gigante naufragato sulla spiaggia di Ohara, vent’anni prima, che ride facendo «dereshishi» e diventa il primo amico della piccola Robin.',
+        en: 'A giant washed up on the beach of Ohara twenty years earlier, who laughs “dereshishi” and becomes little Robin’s first friend.',
+      },
+      visual: { art: 'jaguar-d-saul', tint: 'sand' },
+    },
+    {
       id: 'post-enies-lobby',
       kind: 'arc',
       revealedAtEpisode: 313,
@@ -718,7 +730,35 @@ export const waterSeven: Saga = {
           },
         },
       ],
-      origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaph' } }],
+    },
+    'jaguar-d-saul': {
+      role: { it: 'Gigante naufragato a Ohara', en: 'Giant castaway on Ohara' },
+      log: {
+        it: 'Vent’anni prima la marea lo lascia sulla spiaggia di Ohara, dove una bambina di otto anni, respinta dagli studiosi e evitata da tutti, si ferma a guardarlo. Lui le chiede come si chiama e le insegna a ridere a modo suo, «dereshishi», finché lei non ride davvero. In un’isola che la chiama mostro, è il primo a trattarla come una bambina qualunque.',
+        en: 'Twenty years earlier the tide leaves him on the beach of Ohara, where an eight-year-old girl, turned away by the scholars and shunned by everyone, stops to look at him. He asks her name and teaches her to laugh his way, “dereshishi”, until she really laughs. On an island that calls her a monster, he is the first to treat her like any other little girl.',
+      },
+      status: [
+        { episode: 275, value: 'alive' },
+        { episode: 278, value: 'presumed-dead' },
+        { episode: 1163, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 277,
+          value: {
+            it: 'Marina, ex viceammiraglio',
+            en: 'Marines, former vice admiral',
+          },
+        },
+        {
+          episode: 1164,
+          value: {
+            it: 'Scuola Walrus, insegnante di storia',
+            en: 'Walrus School, history teacher',
+          },
+        },
+      ],
     },
     'monkey-d-garp': {
       chronicle: waterSevenChronicles['monkey-d-garp'],

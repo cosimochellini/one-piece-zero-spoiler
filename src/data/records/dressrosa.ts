@@ -1077,8 +1077,16 @@ export const dressrosa: Saga = {
             en: 'New Giant Warrior Pirates, captain; Straw Hat Grand Fleet',
           },
         },
+        // Learned on Elbaph, where the crew hears whose son he is.
+        {
+          episode: 1160,
+          value: {
+            it: 'Nuovi Pirati Guerrieri Giganti, capitano; Grande Flotta di Cappello di Paglia; figlio del re di Elbaf',
+            en: 'New Giant Warrior Pirates, captain; Straw Hat Grand Fleet; son of the King of Elbaph',
+          },
+        },
       ],
-      origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaph' } }],
     },
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },

@@ -225,9 +225,11 @@ function leaksIn(
  * The records whose name is also an ordinary word of the stories — "King" is
  * in "King of the Pirates" from episode 1 — and so cannot be scanned for in
  * plain text. Listed by id so a second one is a decision, not a drift; each
- * is still held to the marker rules when it is linked.
+ * is still held to the marker rules when it is linked. Road is in "Road
+ * Poneglyph" and Wolf in the Dog-Dog Fruit's wolf form long before either
+ * teacher or navigator is met.
  */
-const COMMON_WORD_NAMES = new Set(['king'])
+const COMMON_WORD_NAMES = new Set(['king', 'road', 'wolf-elbaph'])
 
 /**
  * The arcs whose name is said in the story well before the arc opens, and
@@ -235,11 +237,14 @@ const COMMON_WORD_NAMES = new Set(['king'])
  * before it is a heading. Fish-Man Island is named as the next stop by
  * Kokoro at 320; Marineford is named as the war's venue by 434, where
  * Momonga sets out to escort Hancock there. A story before that episode is
- * still scanned for the name.
+ * still scanned for the name. Elbaph, arc and island alike, is the giants'
+ * homeland from 71, where Brogy calls himself its strongest warrior.
  */
 const SAID_BEFORE_FILED = new Map([
   ['fish-man-island', 320],
   ['marineford', 434],
+  ['elbaf', 71],
+  ['elbaf-island', 71],
 ])
 
 /**
@@ -663,6 +668,7 @@ describe('the shelves', () => {
       'kumadori',
       'fukurou',
       'oimo-and-kashi',
+      'jaguar-d-saul',
     ])
     expect(shelf('post-enies-lobby')).toStrictEqual([
       'monkey-d-garp',
@@ -682,6 +688,14 @@ describe('the shelves', () => {
     expect(shelf('marineford')).not.toContain('portgas-d-rouge')
     expect(shelf('fish-man-island')).toContain('hammond')
     expect(shelf('fish-man-island')).not.toContain('caribou')
+  })
+
+  it('shelves Elbaph on its own arc after Egghead, and Saul where Robin names him', () => {
+    expect(shelf('elbaf')).toContain('loki')
+    expect(shelf('elbaf')).toContain('scopper-gaban')
+    expect(shelf('egghead')).not.toContain('loki')
+    expect(shelf('enies-lobby')).toContain('jaguar-d-saul')
+    expect(shelf('whole-cake-island')).toContain('jarul')
   })
 })
 
