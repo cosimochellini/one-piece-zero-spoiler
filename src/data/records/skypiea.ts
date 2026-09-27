@@ -426,7 +426,7 @@ export const skypiea: Saga = {
       id: 'yama',
       kind: 'character',
       revealedAtEpisode: 172,
-      revealedAtChapter: 254,
+      revealedAtChapter: 261,
       name: { it: 'Yama', en: 'Yama' },
       summary: {
         it: 'Il comandante dei guerrieri sacri di Ener, un uomo enorme e tondo dagli arti piccoli ma fortissimi, con una fascia piena di axe dial, che piomba sui nemici con tutto il suo peso.',
