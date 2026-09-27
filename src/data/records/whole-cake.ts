@@ -1164,7 +1164,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 1160,
+          episode: 1161,
           value: {
             it: 'Nuovi Pirati Guerrieri Giganti, medico',
             en: 'New Giant Warrior Pirates, doctor',

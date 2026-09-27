@@ -173,7 +173,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       en: 'The giants’ houses in the sunlight',
     },
     log: {
-      it: 'Lo strato di mezzo di Elbaf, in alto sull’albero colossale, dove i giganti vivono alla luce del sole; sopra c’è il Mondo del Cielo. Sotto c’è il Mondo di Sotto, buio e freddo.',
+      it: 'Lo strato di mezzo di Elbaf, in alto sull’albero colossale, dove i giganti vivono alla luce del sole; sopra c’è il Mondo del Cielo. Sotto c’è il Mondo Sotterraneo, buio e freddo.',
       en: 'The middle layer of Elbaph, high up the colossal tree, where the giants live in the sunlight, with the Heaven World above. Below lies the Underworld, dark and cold.',
     },
     filedHere: [

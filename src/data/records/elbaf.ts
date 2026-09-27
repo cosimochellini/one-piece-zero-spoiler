@@ -106,8 +106,10 @@ export const elbaf: Saga = {
     {
       id: 'goldberg',
       kind: 'character',
-      revealedAtEpisode: 1160,
-      revealedAtChapter: 1130,
+      // Seen with Gerd at 1160, but the crew they sail with is only named at
+      // 1161, so he is filed where his summary is first true.
+      revealedAtEpisode: 1161,
+      revealedAtChapter: 1131,
       name: { it: 'Goldberg', en: 'Goldberg' },
       summary: {
         it: 'Il cuoco dei Nuovi Pirati Guerrieri Giganti, un gigante che attraversa il ponte di corda insieme a Gerd con l’ordine di arrestare gli intrusi.',
@@ -393,9 +395,9 @@ export const elbaf: Saga = {
         it: 'È il cuoco della ciurma di Hajrudin, e la ciurma di Cappello di Paglia lo incontra sul ponte di corda che sale lungo l’albero, mentre parla con Gerd. Dice che gli intrusi vanno arrestati e consegnati a Jarul, e che Road continua a portarne di nascosto sull’isola. Nemmeno a lui Road va molto a genio.',
         en: 'He is the cook of Hajrudin’s crew, and the Straw Hats first see him on the rope bridge climbing the tree, deep in talk with Gerd. He says intruders are to be arrested and reported to Jarul, and that Road keeps smuggling them onto the island. He has little love for Road either.',
       },
-      status: [{ episode: 1160, value: 'alive' }],
-      affiliation: [{ episode: 1160, value: NEW_GIANTS('cuoco', 'cook') }],
-      origin: [{ episode: 1160, value: ELBAF }],
+      status: [{ episode: 1161, value: 'alive' }],
+      affiliation: [{ episode: 1161, value: NEW_GIANTS('cuoco', 'cook') }],
+      origin: [{ episode: 1161, value: ELBAF }],
     },
     'ange': {
       role: {

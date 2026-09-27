@@ -149,14 +149,14 @@ moon as a silhouette, with a hairline of the route gold around her profile,
 because a ship the size of a headline drawn in outline read as a diagram of a
 ship.
 
-The 120 devil fruits are the one set that is grown rather than drawn one at a
-time. A hundred and twenty drawings of the same object have to read as one set
-and still be a hundred and twenty drawings, so each one is composed from a seed
-written beside its id — one of six silhouettes, one of four marks, a stalk and a
-leaf — and the eleven a reader arrives already knowing are drawn by hand and
-override theirs. The containment is a proof rather than a hope: a seed cannot
-supply a radius, so the widest fruit the generator can produce is known in
-advance, and every path it writes uses absolute commands only, which is what
+The 124 devil fruits are the one set that is grown rather than drawn one at a
+time. A hundred and twenty-four drawings of the same object have to read as one
+set and still be a hundred and twenty drawings, so each one is composed from a
+seed written beside its id — one of six silhouettes, one of four marks, a stalk
+and a leaf — and the eleven a reader arrives already knowing are drawn by hand
+and override theirs. The containment is a proof rather than a hope: a seed
+cannot supply a radius, so the widest fruit the generator can produce is known
+in advance, and every path it writes uses absolute commands only, which is what
 lets the test read the numbers in a path as coordinates.
 
 ## Stack

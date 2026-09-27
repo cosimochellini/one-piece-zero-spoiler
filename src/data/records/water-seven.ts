@@ -741,7 +741,7 @@ export const waterSeven: Saga = {
       status: [
         { episode: 275, value: 'alive' },
         { episode: 278, value: 'presumed-dead' },
-        { episode: 1161, value: 'alive' },
+        { episode: 1163, value: 'alive' },
       ],
       affiliation: [
         {
