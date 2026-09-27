@@ -646,7 +646,7 @@ export const alabasta: Saga = {
       affiliation: [{ episode: 70, value: BW_OFFICER }],
     },
     'dorry': {
-      role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaf' },
+      role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
         it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni duella ogni giorno con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo. Tra un duello e l’altro brindano insieme.',
         en: 'He stands as tall as a tower, carries a round shield and a sword, and lives in a cave on Little Garden where he roasts prehistoric beasts whole. For a hundred years he has duelled another giant every day over a reason neither of them remembers, and neither has given a step. Between duels they drink together.',
@@ -660,12 +660,15 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [{ episode: 70, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
-      bounty: [{ episode: 70, value: 100_000_000 }],
+      bounty: [
+        { episode: 70, value: 100_000_000 },
+        { episode: 1160, value: 1_800_000_000 },
+      ],
     },
     'brogy': {
-      role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaf' },
+      role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
       log: {
         it: 'Ha la barba rossa e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta il suo vecchio amico, come fa da cento anni. Dice che il duello è l’unica cosa che li tiene vivi tutti e due.',
         en: 'He has a red beard and a laugh you can hear from the far side of the island, and he carries an axe no man could lift. Every time the volcano erupts he walks down to the field and faces his old friend, as he has for a hundred years. He says the duel is the only thing keeping the two of them alive.',
@@ -679,9 +682,12 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [{ episode: 70, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
-      bounty: [{ episode: 70, value: 100_000_000 }],
+      bounty: [
+        { episode: 70, value: 100_000_000 },
+        { episode: 1160, value: 1_800_000_000 },
+      ],
     },
     'wapol': {
       role: { it: 'Re in esilio', en: 'King in exile' },

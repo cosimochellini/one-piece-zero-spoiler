@@ -2,6 +2,7 @@ import { alabastaArt } from './alabasta'
 import { dressrosaArt } from './dressrosa'
 import { eastBlueArt } from './east-blue'
 import { eggheadArt } from './egghead'
+import { elbafArt } from './elbaf'
 import { fishManIslandArt } from './fish-man-island'
 import { fruitArt } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
@@ -30,6 +31,7 @@ export const DRAWINGS = {
   ...wholeCakeArt,
   ...wanoArt,
   ...eggheadArt,
+  ...elbafArt,
   ...fruitArt,
 }
 

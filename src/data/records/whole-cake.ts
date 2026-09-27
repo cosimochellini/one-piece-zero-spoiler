@@ -431,9 +431,33 @@ export const wholeCake: Saga = {
       name: { it: 'Carmel', en: 'Carmel' },
       summary: {
         it: 'Una suora dal velo bianco che in un ricordo lontano raccoglie bambini abbandonati a Elbaf e offre caramelle a chi ha paura.',
-        en: 'A white-veiled nun who, in a distant memory, takes in abandoned children on Elbaf and hands sweets to whoever is frightened.',
+        en: 'A white-veiled nun who, in a distant memory, takes in abandoned children on Elbaph and hands sweets to whoever is frightened.',
       },
       visual: { art: 'carmel', tint: 'ivory' },
+    },
+    {
+      id: 'gerd',
+      kind: 'character',
+      revealedAtEpisode: 836,
+      revealedAtChapter: 866,
+      name: { it: 'Gerd', en: 'Gerd' },
+      summary: {
+        it: 'Una bambina gigante di Elbaf che, in un ricordo lontano, si fa rincorrere dalla piccola Linlin per il villaggio e le racconta del digiuno prima della festa.',
+        en: 'A giant girl on Elbaph who, in a distant memory, is chased through the village by little Linlin and tells her about the fast before the festival.',
+      },
+      visual: { art: 'gerd', tint: 'flamingo' },
+    },
+    {
+      id: 'jarul',
+      kind: 'character',
+      revealedAtEpisode: 836,
+      revealedAtChapter: 866,
+      name: { it: 'Jarul', en: 'Jarul' },
+      summary: {
+        it: 'Un gigante anziano con un elmo cornuto e una barba larga come una montagna, che in un ricordo lontano raduna gli orfani di Elbaf attorno a un banchetto di semla.',
+        en: 'An ancient giant in a horned helmet with a beard as broad as a mountain, who in a distant memory gathers Elbaph’s orphans around a feast of semla.',
+      },
+      visual: { art: 'jarul', tint: 'sand' },
     },
     {
       id: 'donquixote-mjosgard',
@@ -1126,11 +1150,45 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [
         { episode: 836, value: { it: 'Mamma Carmel', en: 'Mother Carmel' } },
       ],
       devilFruit: [{ episode: 836, value: ['soul-soul-fruit'] }],
+    },
+    'gerd': {
+      role: { it: 'Bambina gigante di Elbaf', en: 'Giant girl of Elbaph' },
+      log: {
+        it: 'Nel ricordo è una bambina gigante del villaggio di Elbaf, e la piccola Linlin le corre dietro come dietro a un’amica. È lei a spiegarle che sull’isola si digiuna dodici giorni prima della festa del solstizio d’inverno, e a descriverle la semla finché a tutte e due non viene l’acquolina. Il settimo giorno di digiuno corre in preda al panico da Mamma Carmel.',
+        en: 'In the memory she is a giant girl from the village on Elbaph, and little Linlin runs after her as after a friend. She is the one who explains that the island fasts for twelve days before the Winter Solstice Festival, and who describes semla until both of them are drooling. On the seventh day of the fast she runs to Mother Carmel in a panic.',
+      },
+      affiliation: [
+        {
+          episode: 1160,
+          value: {
+            it: 'Nuovi Pirati Guerrieri Giganti, medico',
+            en: 'New Giant Warrior Pirates, doctor',
+          },
+        },
+      ],
+      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+    },
+    'jarul': {
+      role: { it: 'Anziano di Elbaf', en: 'Elder of Elbaph' },
+      log: {
+        it: 'Nel ricordo è uno dei due vecchi capitani che i giganti di Elbaf trattano da eroi, alto il doppio di chiunque altro e con una barba che gli copre quasi tutto il corpo. Loda i giovani che si allenano con spirito da guerriero e raccoglie gli orfani della Casa delle Pecore per mangiare la semla prima del digiuno. Prima del banchetto ringrazia il sole per i bambini nati e cresciuti sull’isola.',
+        en: 'In the memory he is one of the two old captains the giants of Elbaph treat as heroes, twice as tall as anyone else, with a beard that covers nearly his whole body. He praises the young ones who train with a warrior’s spirit and gathers the Sheep’s House orphans to eat semla before the fast. Before the feast he thanks the sun for the children born and raised on the island.',
+      },
+      affiliation: [
+        { episode: 836, value: { it: 'Elbaf, anziano', en: 'Elbaph, elder' } },
+      ],
+      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      epithet: [
+        {
+          episode: 836,
+          value: { it: 'Barba di Montagna', en: 'Mountain Beard' },
+        },
+      ],
     },
     'donquixote-mjosgard': {
       role: { it: 'Nobile Mondiale', en: 'World Noble' },

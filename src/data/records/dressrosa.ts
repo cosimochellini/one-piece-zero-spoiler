@@ -1078,7 +1078,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaf' } }],
+      origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaph' } }],
     },
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },

@@ -3,7 +3,7 @@ import type { Saga } from './saga'
 /**
  * The devil fruits.
  *
- * A twelfth module beside the eleven sagas, because a fruit belongs to no one
+ * A thirteenth module beside the twelve sagas, because a fruit belongs to no one
  * stretch of the route: it is filed at the episode a dossier first names it
  * in, whoever names it and wherever they are standing. It carries no
  * dossiers of its own — who ate a fruit is written on the character, once,
@@ -1584,6 +1584,57 @@ export const devilFruits: Saga = {
         en: 'Moves a body from one place to another without crossing the ground in between: it is gone from where it stood and already somewhere else.',
       },
       visual: { art: 'warp-warp-fruit', tint: 'pink' },
+    },
+    {
+      id: 'grow-grow-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 1165,
+      revealedAtChapter: 1135,
+      name: { it: 'Frutto Iku Iku', en: 'Grow-Grow Fruit' },
+      summary: {
+        it: 'Fa diventare giganti i libri che entrano in biblioteca, così un volume minuscolo si legge alla misura di un gigante, e torna piccolo appena ne esce.',
+        en: 'Makes every book that enters the library giant-sized, so a tiny volume reads at a giant’s scale, and it shrinks back as soon as it leaves.',
+      },
+      visual: { art: 'grow-grow-fruit', tint: 'ocher' },
+    },
+    {
+      id: 'arrow-arrow-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 1167,
+      revealedAtChapter: 1137,
+      name: { it: 'Frutto Aro Aro', en: 'Arrow-Arrow Fruit' },
+      summary: {
+        it: 'Scocca frecce che nascono dai vestiti, e quelle che girano attorno al bersaglio segnano in anticipo il punto dove colpirà.',
+        en: 'Looses arrows spun out of her clothes, and those circling a target mark in advance the spot where her blow will land.',
+      },
+      visual: { art: 'arrow-arrow-fruit', tint: 'lavender' },
+    },
+    {
+      id: 'thorn-thorn-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 1173,
+      revealedAtChapter: 1143,
+      name: { it: 'Frutto Iba Iba', en: 'Thorn-Thorn Fruit' },
+      summary: {
+        it: 'Avvolge chi vuole in rovi di spine invisibili, e chi prova a toccarlo si ritrova trafitto senza aver visto niente.',
+        en: 'Wraps whoever it chooses in invisible thorns, and anyone who reaches out to touch them is run through without having seen a thing.',
+      },
+      visual: { art: 'thorn-thorn-fruit', tint: 'green' },
+    },
+    {
+      id: 'dragon-dragon-fruit-mythical-model-kirin',
+      kind: 'fruit',
+      revealedAtEpisode: 1173,
+      revealedAtChapter: 1143,
+      name: {
+        it: 'Frutto Ryu Ryu, modello Kirin',
+        en: 'Dragon-Dragon Fruit, Mythical Model: Kirin',
+      },
+      summary: {
+        it: 'Un modello mitologico: il corpo diventa un qilin, e chi ne subisce il potere cade addormentato mentre i suoi incubi prendono corpo come mostri veri.',
+        en: 'A Mythical Model: the body becomes a qilin, and whoever falls under its power drops asleep while their nightmares take shape as real monsters.',
+      },
+      visual: { art: 'dragon-dragon-fruit-mythical-model-kirin', tint: 'ice' },
     },
   ],
   dossiers: {},

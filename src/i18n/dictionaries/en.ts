@@ -270,6 +270,7 @@ export const enDictionary = {
   'form.town': 'Town',
   'form.restaurant': 'Floating restaurant',
   'form.island': 'Island',
+  'form.region': 'Region',
 
   'status.alive': 'Alive',
   'status.deceased': 'Deceased',

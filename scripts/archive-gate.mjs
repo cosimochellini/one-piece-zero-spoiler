@@ -10,7 +10,7 @@
  * Three checks over the built client chunks:
  *
  *   1. Prose canaries. The longest sentence in every archive module — all
- *      eleven sagas and the ship's log — read at gate time rather than
+ *      twelve sagas and the ship's log — read at gate time rather than
  *      hard-coded, so they cannot go stale, and looked for in the chunks.
  *      Never a key such as `revealedAtEpisode`, which legitimately survives
  *      on a covered record.

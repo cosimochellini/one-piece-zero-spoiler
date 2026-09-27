@@ -804,4 +804,32 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'scales',
   }),
+  'grow-grow-fruit': fruit({
+    body: 'round',
+    grain: 7,
+    leaf: 'sprig',
+    stem: 'nub',
+    swirl: 'whorls',
+  }),
+  'arrow-arrow-fruit': fruit({
+    body: 'star',
+    grain: 9,
+    leaf: 'pair',
+    stem: 'straight',
+    swirl: 'spiral',
+  }),
+  'thorn-thorn-fruit': fruit({
+    body: 'heart',
+    grain: 4,
+    leaf: 'right',
+    stem: 'nub',
+    swirl: 'waves',
+  }),
+  'dragon-dragon-fruit-mythical-model-kirin': fruit({
+    body: 'pear',
+    grain: 11,
+    leaf: 'sprig',
+    stem: 'hooked',
+    swirl: 'whorls',
+  }),
 } satisfies Drawings

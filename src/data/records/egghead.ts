@@ -1,8 +1,8 @@
 import type { Saga } from './saga'
 
 /**
- * The Egghead arc, episodes 1086 to 1122: the first island of the final
- * saga, a laboratory that lives in the future.
+ * The Egghead arc, episodes 1089 to 1155: the first island of the final
+ * saga, a laboratory that lives in the future. Records so far stop at 1122.
  */
 
 const EGGHEAD = { it: 'Egghead', en: 'Egghead' }
@@ -30,7 +30,7 @@ export const egghead: Saga = {
       kind: 'arc',
       revealedAtEpisode: 1089,
       revealedAtChapter: 1061,
-      name: { it: 'Saga di Egghead', en: 'Egghead Saga' },
+      name: { it: 'Egghead', en: 'Egghead' },
       summary: {
         it: 'La ciurma approda su un’isola che vive centinaia di anni nel futuro, costruita attorno al laboratorio di uno scienziato del Governo Mondiale.',
         en: 'The crew lands on an island living hundreds of years in the future, built around the laboratory of a World Government scientist.',
