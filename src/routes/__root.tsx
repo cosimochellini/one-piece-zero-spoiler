@@ -12,7 +12,7 @@ import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
-import { color, font, leading, text } from '~/styles/tokens.stylex'
+import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
 // client entry chunk's `viteMetadata.importedCss`, which is the only source
 // TanStack Start reads when it builds the route manifest, so the <link> is
@@ -127,7 +127,10 @@ function RootDocument({
   }, [])
 
   return (
-    <html lang={locale}>
+    <html
+      lang={locale}
+      {...stylex.props(styles.document)}
+    >
       <head>
         <HeadContent />
       </head>
@@ -144,7 +147,23 @@ function RootDocument({
   )
 }
 
+// The crossfade the router starts between two pages (see src/router.tsx),
+// timed from the tokens instead of the browser's default quarter second. The
+// old and new snapshots of the whole viewport inherit the group's timing and
+// keep the browser's own fade, so the masthead, whose pixels do not change,
+// reads as standing still while the page under it turns over. Opacity is the
+// form every spatial motion here collapses to under reduced motion, so it
+// runs for every reader; the blanket reset in global.css does not reach the
+// view transition pseudo-elements.
+const pageTransition = stylex.viewTransitionClass({
+  group: { animationDuration: dur.short, animationTimingFunction: ease.inOut },
+})
+
 const styles = stylex.create({
+  document: {
+    // eslint-disable-next-line @stylexjs/valid-styles -- the compiler emits `view-transition-class` from this, but the rule's property table predates it, and its `propLimits` escape admits only string literals, never the class name `stylex.viewTransitionClass` returns.
+    viewTransitionClass: pageTransition,
+  },
   body: {
     backgroundColor: color.paper,
     // The two blooms the genre allows, and the only decoration on the canvas:
