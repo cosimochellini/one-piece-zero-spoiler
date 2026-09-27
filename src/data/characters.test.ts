@@ -655,6 +655,10 @@ describe('the shelves', () => {
       'crocus',
       'mr-9',
     ])
+    // The Unluckies are on Reverse Mountain from 63, but only as a pair
+    // without names; the rank chart that names them is Drum Island's last.
+    expect(shelf('drum-island')).toContain('mr-13')
+    expect(shelf('drum-island')).toContain('miss-friday')
     expect(shelf('jaya-arc')).toContain('bellamy')
     expect(shelf('jaya-arc')).toContain('montblanc-cricket')
     expect(shelf('jaya-arc')).toContain('marshall-d-teach')

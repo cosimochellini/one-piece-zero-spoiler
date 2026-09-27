@@ -22,6 +22,25 @@ const BW_OFFICER = {
   en: 'Baroque Works, officer agent',
 }
 
+const BW_FRONTIER_ROLE = { it: 'Agente di frontiera', en: 'Frontier agent' }
+
+const BW_FRONTIER = {
+  it: 'Baroque Works, agente di frontiera',
+  en: 'Baroque Works, frontier agent',
+}
+
+const UNLUCKIES_ROLE = {
+  it: 'Messaggero di Baroque Works',
+  en: 'Baroque Works messenger',
+}
+
+const UNLUCKIES = {
+  it: 'Baroque Works, gli Unluckies',
+  en: 'Baroque Works, the Unluckies',
+}
+
+const DRUM_KINGDOM = { it: 'Regno di Drum', en: 'Drum Kingdom' }
+
 const IMPEL_DOWN = {
   it: 'Prigioniero di Impel Down',
   en: 'Prisoner of Impel Down',
@@ -274,6 +293,18 @@ export const alabasta: Saga = {
       visual: { art: 'dalton', tint: 'teal' },
     },
     {
+      id: 'mr-11',
+      kind: 'character',
+      revealedAtEpisode: 79,
+      revealedAtChapter: 130,
+      name: { it: 'Mister 11', en: 'Mr. 11' },
+      summary: {
+        it: 'Un agente catturato dalla Marina e legato all’albero maestro della nave di Smoker, che giura di non aver mai sentito parlare dell’organizzazione per cui lavora.',
+        en: 'An agent caught by the Marines and tied to the mast of Smoker’s ship, who swears he has never heard of the organisation he works for.',
+      },
+      visual: { art: 'mr-11', tint: 'azure' },
+    },
+    {
       id: 'kureha',
       kind: 'character',
       revealedAtEpisode: 82,
@@ -308,6 +339,54 @@ export const alabasta: Saga = {
         en: 'A quack with a pirate flag stitched to his coat, certain that no illness is incurable, who took in a reindeer and gave him a name.',
       },
       visual: { art: 'hiluluk', tint: 'pink' },
+    },
+    {
+      id: 'chess',
+      kind: 'character',
+      revealedAtEpisode: 87,
+      revealedAtChapter: 147,
+      name: { it: 'Scacco', en: 'Chess' },
+      summary: {
+        it: 'Il capo di stato maggiore di Wapol, un arciere dalla faccia triste in costume da giullare che mette per iscritto le leggi del suo re e scocca frecce che bruciano.',
+        en: 'Wapol’s chief of staff, a sad-faced archer in a jester’s costume who writes down his king’s laws and fires arrows that burn.',
+      },
+      visual: { art: 'chess', tint: 'violet' },
+    },
+    {
+      id: 'kuromarimo',
+      kind: 'character',
+      revealedAtEpisode: 87,
+      revealedAtChapter: 147,
+      name: { it: 'Kuromarino', en: 'Kuromarimo' },
+      summary: {
+        it: 'Il magistrato di Wapol, un pugile coperto di capigliature afro che lancia ciuffi di capelli contro i nemici perché gli restino attaccati addosso.',
+        en: 'Wapol’s magistrate, a boxer covered in afros who throws tufts of his hair at his enemies so that they stick.',
+      },
+      visual: { art: 'kuromarimo', tint: 'wine' },
+    },
+    {
+      id: 'mr-13',
+      kind: 'character',
+      revealedAtEpisode: 91,
+      revealedAtChapter: 155,
+      name: { it: 'Mister 13', en: 'Mr. 13' },
+      summary: {
+        it: 'Una lontra con gli occhiali da sole e una tuta a pois che, in coppia con un avvoltoio, porta gli ordini del capo e punisce gli agenti che falliscono.',
+        en: 'An otter in sunglasses and a polka-dot jumpsuit who, with a vulture for a partner, carries the boss’s orders and punishes the agents who fail him.',
+      },
+      visual: { art: 'mr-13', tint: 'lavender' },
+    },
+    {
+      id: 'miss-friday',
+      kind: 'character',
+      revealedAtEpisode: 91,
+      revealedAtChapter: 155,
+      name: { it: 'Miss Friday', en: 'Miss Friday' },
+      summary: {
+        it: 'Un avvoltoio con cuffia e occhiali da aviatore che porta in volo una lontra sopra la Rotta Maggiore e sgancia bombe sugli agenti che deludono il capo.',
+        en: 'A vulture in an aviator’s cap and goggles who flies an otter over the Grand Line and drops bombs on the agents who fail the boss.',
+      },
+      visual: { art: 'miss-friday', tint: 'orange' },
     },
     {
       id: 'alabasta',
@@ -394,6 +473,18 @@ export const alabasta: Saga = {
       visual: { art: 'portgas-d-ace', tint: 'orange' },
     },
     {
+      id: 'matsuge',
+      kind: 'character',
+      revealedAtEpisode: 97,
+      revealedAtChapter: 162,
+      name: { it: 'Ciglione', en: 'Matsuge' },
+      summary: {
+        it: 'Un cammello del deserto con la sella in groppa e le ciglia lunghe, salvato da una lucertola gigante, che si lascia cavalcare solo dalle donne della ciurma.',
+        en: 'A saddled desert camel with long eyelashes, saved from a giant lizard, who will carry only the women of the crew.',
+      },
+      visual: { art: 'matsuge', tint: 'ocher' },
+    },
+    {
       id: 'mr-1',
       kind: 'character',
       revealedAtEpisode: 100,
@@ -442,6 +533,78 @@ export const alabasta: Saga = {
       visual: { art: 'miss-merry-christmas', tint: 'red' },
     },
     {
+      id: 'toto',
+      kind: 'character',
+      revealedAtEpisode: 103,
+      revealedAtChapter: 163,
+      name: { it: 'Toto', en: 'Toto' },
+      summary: {
+        it: 'L’ultimo uomo rimasto in un’oasi prosciugata, smagrito da tre anni passati a scavare nella sabbia in cerca d’acqua.',
+        en: 'The last man left in a dried-up oasis, worn thin by three years of digging in the sand for water.',
+      },
+      visual: { art: 'toto', tint: 'sand' },
+    },
+    {
+      id: 'hasami',
+      kind: 'character',
+      revealedAtEpisode: 111,
+      revealedAtChapter: 179,
+      name: { it: 'Chelotto', en: 'Hasami' },
+      summary: {
+        it: 'Un granchio del deserto grande come una casa, amico del cammello della ciurma, che porta la ciurma attraverso il deserto verso Alubarna.',
+        en: 'A desert crab as big as a house, a friend of the crew’s camel, who carries the crew across the desert towards Alubarna.',
+      },
+      visual: { art: 'hasami', tint: 'red' },
+    },
+    {
+      id: 'lassoo',
+      kind: 'character',
+      revealedAtEpisode: 113,
+      revealedAtChapter: 184,
+      name: { it: 'Laassiù', en: 'Lassoo' },
+      summary: {
+        it: 'Un bazooka a forma di bassotto, sempre raffreddato, che starnutisce palle da baseball che esplodono qualche secondo dopo essere cadute.',
+        en: 'A bazooka shaped like a dachshund, with a permanent cold, who sneezes out baseballs that explode a few seconds after they land.',
+      },
+      visual: { art: 'lassoo', tint: 'vermilion' },
+    },
+    {
+      id: 'tsumegeri-guards',
+      kind: 'character',
+      revealedAtEpisode: 120,
+      revealedAtChapter: 196,
+      name: { it: 'Squadra Tsumegeri', en: 'Tsumegeri Guards' },
+      summary: {
+        it: 'Quattro guardie reali scelte di Alabasta che bevono un’acqua capace di dare cinque minuti di forza enorme, e poi di uccidere chi l’ha bevuta.',
+        en: 'Four elite royal guards of Alabasta who drink a water that gives five minutes of enormous strength and then kills whoever drank it.',
+      },
+      visual: { art: 'tsumegeri-guards', tint: 'cyan' },
+    },
+    {
+      id: 'mr-7',
+      kind: 'character',
+      revealedAtEpisode: 125,
+      revealedAtChapter: 206,
+      name: { it: 'Mister 7', en: 'Mr. 7' },
+      summary: {
+        it: 'Un cecchino nella torre dell’orologio sopra la piazza di Alubarna, che ride accanto a un cannone che ha l’ordine di sparare alle quattro e mezza.',
+        en: 'A sniper in the clock tower above the square of Alubarna, laughing beside a cannon he has orders to fire at half past four.',
+      },
+      visual: { art: 'mr-7', tint: 'yellow' },
+    },
+    {
+      id: 'miss-fathers-day',
+      kind: 'character',
+      revealedAtEpisode: 125,
+      revealedAtChapter: 206,
+      name: { it: 'Miss Father’s Day', en: 'Miss Father’s Day' },
+      summary: {
+        it: 'Una cecchina vestita da rana che abbatte in volo una guardia reale e sorveglia con il suo compagno un cannone puntato sulla piazza.',
+        en: 'A sniper in a frog costume who shoots a royal guard out of the sky and keeps watch with her partner over a cannon aimed at the square.',
+      },
+      visual: { art: 'miss-fathers-day', tint: 'green' },
+    },
+    {
       id: 'hina',
       kind: 'character',
       revealedAtEpisode: 128,
@@ -452,6 +615,18 @@ export const alabasta: Saga = {
         en: 'A Marine captain who smokes without hurry and lets pirates pass through her body, leaving them locked in iron.',
       },
       visual: { art: 'hina', tint: 'wine' },
+    },
+    {
+      id: 'terracotta',
+      kind: 'character',
+      revealedAtEpisode: 128,
+      revealedAtChapter: 213,
+      name: { it: 'Terracotta', en: 'Terracotta' },
+      summary: {
+        it: 'La capocuoca del palazzo di Alubarna, moglie di Igaram, tanto somigliante al marito da essere scambiata per lui travestito.',
+        en: 'The head chef of the palace of Alubarna, Igaram’s wife, so like her husband that she is taken for him in a dress.',
+      },
+      visual: { art: 'terracotta', tint: 'flamingo' },
     },
     {
       id: 'nico-robin',
@@ -512,20 +687,12 @@ export const alabasta: Saga = {
       ],
     },
     'mr-9': {
-      role: { it: 'Agente di frontiera', en: 'Frontier agent' },
+      role: BW_FRONTIER_ROLE,
       log: {
         it: 'Gira con una corona in testa e due mazze d’acciaio, e parla di sé in terza persona come un attore di provincia. Lavora in coppia con una collega che finge di essere la sua fidanzata, e nessuno dei due ammette per chi lavori davvero. Quando la copertura salta, saluta l’avversario con un inchino prima di attaccarlo.',
         en: 'He goes about in a crown with two steel bats, talking about himself in the third person like a provincial actor. He works in a pair with a colleague who pretends to be his sweetheart, and neither of them admits who they really work for. When the cover falls, he bows to his opponent before attacking.',
       },
-      affiliation: [
-        {
-          episode: 63,
-          value: {
-            it: 'Baroque Works, agente di frontiera',
-            en: 'Baroque Works, frontier agent',
-          },
-        },
-      ],
+      affiliation: [{ episode: 63, value: BW_FRONTIER }],
     },
     'igaram': {
       role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
@@ -549,20 +716,12 @@ export const alabasta: Saga = {
       origin: [{ episode: 67, value: ALABASTA }],
     },
     'miss-monday': {
-      role: { it: 'Agente di frontiera', en: 'Frontier agent' },
+      role: BW_FRONTIER_ROLE,
       log: {
         it: 'Serve da bere al banchetto vestita da suora e sorride finché l’ultimo pirata non cade addormentato sul tavolo. Poi si toglie il velo, e si vede che ha le spalle più larghe di chiunque altro in città. Combatte a mani nude con un paio di tirapugni, e solleva un uomo adulto come si solleva un boccale.',
         en: 'She pours the drinks at the banquet in a nun’s habit and keeps smiling until the last pirate has fallen asleep on the table. Then the veil comes off, and her shoulders turn out to be broader than anyone else’s in town. She fights bare-handed with a pair of knuckledusters, and lifts a grown man the way one lifts a tankard.',
       },
-      affiliation: [
-        {
-          episode: 64,
-          value: {
-            it: 'Baroque Works, agente di frontiera',
-            en: 'Baroque Works, frontier agent',
-          },
-        },
-      ],
+      affiliation: [{ episode: 64, value: BW_FRONTIER }],
     },
     'karoo': {
       role: { it: 'Anatra da corsa', en: 'Racing duck' },
@@ -709,9 +868,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [
-        { episode: 78, value: { it: 'Regno di Drum', en: 'Drum Kingdom' } },
-      ],
+      origin: [{ episode: 78, value: DRUM_KINGDOM }],
       epithet: [
         { episode: 78, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
       ],
@@ -761,6 +918,21 @@ export const alabasta: Saga = {
       ],
       origin: [{ episode: 79, value: DRUM_ISLAND }],
       devilFruit: [{ episode: 79, value: ['ox-ox-fruit-model-bison'] }],
+    },
+    'mr-11': {
+      role: { it: 'Agente di Baroque Works', en: 'Baroque Works agent' },
+      log: {
+        it: 'La Marina lo ha catturato pochi giorni prima e lo tiene legato all’albero maestro della nave di Smoker. Giura di non aver mai sentito parlare di nessuna organizzazione né di nessun Mister 0. Smoker, che non gli crede, finge di avergli trovato degli ordini in tasca, e lui si tradisce da solo.',
+        en: 'The Marines caught him a few days before and keep him tied to the mast of Smoker’s ship. He swears he has never heard of any organisation, or of anyone called Mr. 0. Smoker, who believes none of it, bluffs that orders were found in his pocket, and he gives himself away.',
+      },
+      status: [
+        { episode: 79, value: 'captured' },
+        { episode: 95, value: 'deceased' },
+      ],
+      affiliation: [
+        { episode: 79, value: { it: 'Baroque Works', en: 'Baroque Works' } },
+        { episode: 91, value: BW_FRONTIER },
+      ],
     },
     'kureha': {
       role: { it: 'Dottoressa di Drum', en: 'Doctor of Drum' },
@@ -840,6 +1012,59 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 85, value: DRUM_ISLAND }],
+    },
+    'chess': {
+      role: {
+        it: 'Capo di stato maggiore di Wapol',
+        en: 'Wapol’s chief of staff',
+      },
+      log: {
+        it: 'Sta accanto al suo re con una penna e mette per iscritto ogni legge che Wapol si inventa, per quanto crudele sia. In combattimento scocca raffiche di frecce da un arco lungo, alcune in fiamme, senza quasi cambiare espressione. È fuggito da Drum con Wapol quando sono arrivati i pirati, e con lui è tornato a riprendersi il castello.',
+        en: 'He stands beside his king with a quill and writes down every law Wapol invents, however cruel. In a fight he looses volleys of arrows from a longbow, some of them burning, and hardly changes his expression. He fled Drum with Wapol when the pirates came, and has come back with him to take the castle again.',
+      },
+      affiliation: [
+        {
+          episode: 87,
+          value: {
+            it: 'Seguito di Wapol; ex capo di stato maggiore del Regno di Drum',
+            en: 'Wapol’s retinue; former chief of staff of the Drum Kingdom',
+          },
+        },
+      ],
+      origin: [{ episode: 87, value: DRUM_KINGDOM }],
+    },
+    'kuromarimo': {
+      role: { it: 'Magistrato di Wapol', en: 'Wapol’s magistrate' },
+      log: {
+        it: 'È un pugile con una capigliatura afro in testa e altre sulle spalle e sui guantoni, e i ciuffi che lancia restano attaccati a chiunque colpiscano. Incendiati dalle frecce del suo collega, bruciano dove si sono attaccati. Quando loro due non bastano, Wapol li inghiotte entrambi e li risputa come un unico guerriero con quattro braccia.',
+        en: 'He is a boxer with an afro on his head and more on his shoulders and gloves, and the tufts he throws cling to whatever they hit. Set alight by his colleague’s arrows, they burn where they cling. When the two of them are not enough, Wapol swallows them both and spits them out as a single fighter with four arms.',
+      },
+      affiliation: [
+        {
+          episode: 87,
+          value: {
+            it: 'Seguito di Wapol; ex magistrato del Regno di Drum',
+            en: 'Wapol’s retinue; former magistrate of the Drum Kingdom',
+          },
+        },
+      ],
+      origin: [{ episode: 87, value: DRUM_KINGDOM }],
+    },
+    'mr-13': {
+      role: UNLUCKIES_ROLE,
+      log: {
+        it: 'Lui e la sua compagna sono gli Unluckies, la coppia che porta gli ordini di Mister 0 e si occupa degli agenti che falliscono. Accende le bombe che sganciano sui traditori con due conchiglie artigliate, e con le stesse conchiglie combatte. A Whisky Peak ha sentito pronunciare il nome del capo e ha disegnato i volti dei pirati che lo avevano sentito.',
+        en: 'He and his partner are the Unluckies, the pair who carry Mr. 0’s orders and deal with the agents who fail. He lights the bombs they drop on traitors with a pair of clawed clam shells, and fights with the same shells. At Whisky Peak he overheard the boss’s name said aloud, and sketched the faces of the pirates who heard it.',
+      },
+      affiliation: [{ episode: 91, value: UNLUCKIES }],
+    },
+    'miss-friday': {
+      role: UNLUCKIES_ROLE,
+      log: {
+        it: 'È l’avvoltoio degli Unluckies e porta in volo il suo compagno lontra ovunque Mister 0 li mandi. Dall’alto sganciano pacchi bomba sugli agenti che falliscono o scappano, e da vicino apre il fuoco con le mitragliatrici legate sulla schiena. Capisce ogni parola che si dice vicino a lei, e la riferisce.',
+        en: 'She is the vulture of the Unluckies, and flies her otter partner wherever Mr. 0 sends them. From the air they drop parcel bombs on the agents who fail or run, and at close range she opens fire with the machine guns strapped to her back. She understands every word said near her, and passes it on.',
+      },
+      affiliation: [{ episode: 91, value: UNLUCKIES }],
     },
     'crocodile': {
       role: {
@@ -1016,6 +1241,35 @@ export const alabasta: Saga = {
       devilFruit: [{ episode: 95, value: ['flame-flame-fruit'] }],
       bounty: [{ episode: 483, value: 550_000_000 }],
     },
+    'matsuge': {
+      role: { it: 'Cammello del deserto', en: 'Desert camel' },
+      log: {
+        it: 'La ciurma lo ha strappato alle fauci di una lucertola gigante nel deserto, e per ringraziare si è offerto di portarla. Intendeva solo le donne: lascia salire Nami e Bibi e degli uomini non si cura. Nami lo ha chiamato Ciglione, per via delle ciglia.',
+        en: 'The crew pulled him out of the jaws of a giant lizard in the desert, and in thanks he offered to carry them. He meant only the women: he lets Nami and Vivi ride and pays the men no attention. Nami named him Matsuge, for his eyelashes.',
+      },
+      affiliation: [
+        {
+          episode: 97,
+          value: {
+            it: 'Cavalcatura di Nami e Bibi',
+            en: 'Nami’s and Vivi’s mount',
+          },
+        },
+        {
+          episode: 130,
+          value: {
+            it: 'Squadra delle Super Anatre di Alabasta',
+            en: 'Alabasta’s Super Spot-Billed Duck Squad',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 110,
+          value: { it: 'Rainbase, Alabasta', en: 'Rainbase, Alabasta' },
+        },
+      ],
+    },
     'mr-1': {
       role: BW_OFFICER_ROLE,
       log: {
@@ -1056,6 +1310,85 @@ export const alabasta: Saga = {
       affiliation: [{ episode: 100, value: BW_OFFICER }],
       devilFruit: [{ episode: 100, value: ['mole-mole-fruit'] }],
     },
+    'toto': {
+      role: { it: 'Abitante di Yuba', en: 'Resident of Yuba' },
+      log: {
+        it: 'Yuba era la base dei ribelli finché la sabbia non l’ha sepolta, e lui è l’unico rimasto. Scava ogni giorno in cerca dell’acqua sparita tre anni fa, e all’inizio ha scambiato i viaggiatori per ribelli e li ha aggrediti. È il padre di Kosa, e supplica Bibi di fermare suo figlio.',
+        en: 'Yuba was the rebels’ base until the sand buried it, and he is the only one who stayed. He digs every day for the water that dried up three years ago, and at first took the travellers for rebels and went for them. He is Kohza’s father, and he begs Vivi to stop his son.',
+      },
+      status: [{ episode: 103, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 103,
+          value: { it: 'Yuba, ultimo abitante', en: 'Yuba, its last resident' },
+        },
+      ],
+      origin: [{ episode: 103, value: ALABASTA }],
+    },
+    'hasami': {
+      role: { it: 'Granchio del deserto', en: 'Desert crab' },
+      log: {
+        it: 'È un granchio corridore grande come una casa, amico di Ciglione da quando erano a Rainbase. Corre di lato sulla sabbia con tutta la ciurma sul dorso. L’acqua è un’altra faccenda: quando Nami balla per spingerlo ad attraversare un fiume, affonda prima dell’altra riva.',
+        en: 'He is a Moving Crab as big as a house, a friend of Matsuge’s from Rainbase. He runs sideways over the sand with the whole crew on his back. Water is another matter: when Nami dances to push him across a river, he sinks before the far bank.',
+      },
+      affiliation: [
+        {
+          episode: 111,
+          value: { it: 'Amico di Ciglione', en: 'Matsuge’s friend' },
+        },
+      ],
+    },
+    'lassoo': {
+      role: { it: 'Cane-fucile di Mister 4', en: 'Mr. 4’s gun-dog' },
+      log: {
+        it: 'È un bazooka a cui è stato fatto mangiare un frutto del diavolo, e così è diventato un bassotto vivo, perennemente raffreddato. Quando starnutisce spara palle da baseball pesanti come palle di cannone, che esplodono qualche secondo dopo essere cadute. Mister 4 le rilancia con la mazza contro chiunque abbia davanti.',
+        en: 'He is a bazooka that was fed a devil fruit, and so became a living dachshund with a permanent cold. When he sneezes he fires baseballs as heavy as cannonballs, which go off a few seconds after they land. Mr. 4 bats them at whoever is in front of him.',
+      },
+      affiliation: [
+        {
+          episode: 113,
+          value: {
+            it: 'Baroque Works, arma di Mister 4',
+            en: 'Baroque Works, Mr. 4’s weapon',
+          },
+        },
+      ],
+      devilFruit: [{ episode: 113, value: ['dog-dog-fruit-model-dachshund'] }],
+    },
+    'tsumegeri-guards': {
+      role: { it: 'Guardie reali di Alabasta', en: 'Royal guards of Alabasta' },
+      log: {
+        it: 'Sono quattro delle migliori guardie reali, e irrompono per salvare il loro re da Crocodile contro i suoi stessi ordini. Prima di attaccare bevono l’acqua potente, che dà cinque minuti di forza enorme e poi uccide chi l’ha bevuta. Crocodile si limita a farsi di sabbia e ad aspettare che faccia effetto.',
+        en: 'They are four of the royal guard’s best, and they burst in to save their king from Crocodile against his own orders. Before they attack they drink the Hero Water, which gives five minutes of enormous strength and then kills whoever drank it. Crocodile simply turns to sand and waits for it to work.',
+      },
+      status: [{ episode: 120, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 120,
+          value: {
+            it: 'Regno di Alabasta, guardia reale',
+            en: 'Kingdom of Alabasta, royal guard',
+          },
+        },
+      ],
+      origin: [{ episode: 120, value: ALABASTA }],
+    },
+    'mr-7': {
+      role: BW_FRONTIER_ROLE,
+      log: {
+        it: 'Lui e la sua compagna sono i cecchini che Crocodile ha piazzato nella torre dell’orologio, accanto a un cannone che deve sparare sulla piazza alle quattro e mezza. Si veste di sette, ride mentre aspetta di accendere la miccia e spara a chiunque provi ad avvicinarsi alla torre. I loro proiettili si uniscono in aria in qualcosa di peggio di ciascuno dei due.',
+        en: 'He and his partner are the snipers Crocodile has placed in the clock tower, beside a cannon set to fire on the square at half past four. He dresses in sevens, laughs as he waits to light the fuse and shoots at anyone who comes near the tower. Their bullets join in mid-air into something worse than either.',
+      },
+      affiliation: [{ episode: 125, value: BW_FRONTIER }],
+    },
+    'miss-fathers-day': {
+      role: BW_FRONTIER_ROLE,
+      log: {
+        it: 'Veste da rana, ride come una rana e spara proiettili a forma di rana da un’arma intonata. Dalla torre dell’orologio ha abbattuto in volo una guardia reale. Lei e il suo compagno contano su quest’ultima missione per ottenere una promozione.',
+        en: 'She wears a frog costume, laughs like a frog and fires frog-shaped bullets from a gun to match. From the clock tower she shot a royal guard out of the sky. She and her partner are counting on this last mission to earn them a promotion.',
+      },
+      affiliation: [{ episode: 125, value: BW_FRONTIER }],
+    },
     'hina': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
@@ -1076,6 +1409,22 @@ export const alabasta: Saga = {
         { episode: 128, value: { it: 'Gabbia Nera', en: 'Black Cage' } },
       ],
       devilFruit: [{ episode: 128, value: ['cage-cage-fruit'] }],
+    },
+    'terracotta': {
+      role: { it: 'Capocuoca del palazzo', en: 'Palace head chef' },
+      log: {
+        it: 'Dirige le cucine del palazzo di Alubarna ed è sposata con Igaram, al quale somiglia tanto da essere scambiata per lui travestito da donna. Quando Rufy si sveglia dopo tre giorni di sonno, entra con un vassoio di cibo prima ancora che lo chieda. A cena prende il suo appetito come una sfida e continua a far arrivare piatti.',
+        en: 'She runs the kitchens of the palace of Alubarna, and is married to Igaram, whom she resembles so closely that she is taken for him in a dress. When Luffy wakes after three days of sleep she comes in with a tray of food before he can even ask for it. At dinner she takes his appetite as a challenge and keeps the dishes coming.',
+      },
+      affiliation: [
+        {
+          episode: 128,
+          value: {
+            it: 'Regno di Alabasta, capocuoca del palazzo',
+            en: 'Kingdom of Alabasta, palace head chef',
+          },
+        },
+      ],
     },
     'nico-robin': {
       chronicle: alabastaChronicles['nico-robin'],
