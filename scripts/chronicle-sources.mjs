@@ -1673,4 +1673,178 @@ export const CHRONICLE_SOURCES = {
       note: 'Lord of the Coast page: name Qref "chap=1, page=49, ep=504: The Lord of the Coast is named by Luffy." Episode_504 Long Summary: "Three years later, Luffy sets out from the Goa Kingdom. He then beats up the Lord of the Coast for eating Shanks\' arm"; Anime Notes: the defeat "is properly shown for the first time in the anime version in this episode". Episode_4 calls it only "a Sea King, a carnivorous sea monster" and skips the rematch, so ep 4 is not a naming; rounded up to 504. Chapter 1 names it at the rematch (page 49). Ep 4 facts (Higuma eaten, Shanks\'s arm, the glare) are already known at 504.',
     },
   },
+  'roshio': {
+    146: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_146',
+      note: 'Debut and naming (Roshio Char Box first = Ch 222 / Ep 146). Episode_146 Long Summary: "In a bar, Roshio and Bellamy are gambling and Roshio wins. However, Bellamy refuses to accept defeat and insists that Roshio cheated by having Sarquiss bear false witness"; later "one of Roshio\'s men, judging by the mark on his head band" and "two men are discussing how Roshio was defeated, with the false excuse that he cheated". Anime version followed (Roshio page, Anime and Manga Differences, Qref ep=146): Bellamy grabs and crushes his arm instead of the knife, shoots him several times, kicks him out of the window; his crew tries to carry him away before Bellamy jumps down and finishes him. The manga-only match/fire is left out. Madman who killed a card winner: Roshio page Personality, Qref chap=222 ep=146 page=13. Fate left open (alive only at ep 1149), so no status.',
+    },
+  },
+  'sarquiss': {
+    146: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_146',
+      note: 'Debut and naming (Char Box first = Ch 222 / Ep 146; introduced Ch 223, Qref ep=146). Episode_146 Long Summary: Bellamy "insists that Roshio cheated by having Sarquiss bear false witness"; "Sarquiss returns at the hotel and upon seeing Luffy, Zoro, and Nami ... Luffy asks if he should kick Sarquiss\'s butt but Nami and Spector yell no. Sarquiss throws some money at them saying they should use that to buy themselves some clothes ... Nami drags him away"; Spector refuses them because "the Bellamy Party has rented the entire place". Poster shown by a crewmate, worth telling Bellamy: Sarquiss/History Qref chap=223 ep=146 and Chapter_223 Long Summary. First mate: Chapter_223 ("the first mate of Bellamy\'s crew, Sarquiss").',
+    },
+    150: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_150',
+      note: "Long Summary: Bellamy and his crew arrive at Cricket's place for the gold; Sarquiss and the rest go in first (anime: beaten by the Saruyama Alliance; manga: Big Chop on Masira, so the story only says they went in first) and Bellamy defeats Cricket, Shoujou and Masira with the Bane Bane no Mi; gold stolen; Zoro notices Bellamy's mark on the Going Merry's hull; \"Sarquiss was telling of the event\"; the drunk brings the posters \"higher than Bellamy's bounty\"; Bellamy says some pirates inflate their bounties; Luffy arrives yelling Bellamy's name.",
+    },
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Long Summary: Sarquiss believes the 100,000,000 poster is fake and questions the old 30,000,000 one; Luffy punches Bellamy through the boardwalks; Sarquiss urges Bellamy to get up, "thinking Bellamy was fooling around"; Sarquiss tries to challenge Luffy "but is held back by the others" (anime: Eddy); Luffy raises his bloody fist, Sarquiss falls to the ground in fear; Luffy points up: "The sky!"; "Sarquiss runs into him and tells him to get out, so Teach buries his head into the ground". Teach filed at 151.',
+    },
+    207: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_207',
+      note: 'Long Summary: "In Mock Town, Donquixote Doflamingo perches from a column and uses his powers on Bellamy and Sarquiss as punishment for being defeated by Luffy prior to his journey to Skypiea. Bellamy begs Doflamingo to give him another chance, but Doflamingo concludes that Bellamy and his crew are obsolete to him and uses his puppetry to force Sarquiss to slash Bellamy, although he survives." Sarquiss/History Qref chap=303 ep=207.',
+    },
+  },
+  'rockstar': {
+    151: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_151',
+      note: 'Debut and naming (Char Box first = Ch 234 / Ep 151, "Rockstar is seen and formally introduced"). He names himself: Chapter_234 Long Summary "Rockstar greets himself as a rookie, but asks a member of the Whitebeard Pirates if he had ever heard of the pirate Rockstar, to which he receives the reply of no". Episode_151 Long Summary: "His men insult the messenger, Rockstar, a relative newcomer to the Red Hair Pirates ... Whitebeard rips up Shanks\' letter ... if Shanks wants to send a message, he should deliver it personally, and bring good booze along with it. Rockstar alerts Shanks by Den Den Mushi. Shanks apologizes ... tells his men to get ready to set sail". Honour/being called back and "the old man never changes": Rockstar/History Qref chap=234 ep=151 and Chapter_234. Marco (filed 152) answers him but is not named in the story. "Den Den Mushi" avoided: "Den" is a record filed at 531.',
+    },
+    1109: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1109',
+      note: 'Rockstar/History (Egghead Arc) Qref chap=1076 ep=1109: "Rockstar is seen alerting Shanks of Eustass Kid attacking the Red Hair Pirates\' fleet. He asks him if they should declare war and Shanks says that they will." Episode_1109 Long Summary: Red Hair Pirates drinking at a bar (Elbaph, not named), "another invasion at the hands of the Kid Pirates", they set sail "with Dorry and Brogy on his side", "Shanks offers to let Kid escape unharmed if he hands over his Road Poneglyph copies. Kid, seeing the incoming threat, accepts the battle."',
+    },
+  },
+  'pierre': {
+    153: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_153',
+      note: 'Debut and naming (Char Box first = Ch 237 / Ep 153; Horse-Horse Fruit shown Ch 238). Episode_153 Long Summary: a man with a shield and bazooka "quickly knocks down Zoro, Sanji and Luffy, then jumps up and takes aim. However, he is stopped by a second man who jousts at him from a bird ... reveals himself as the Sky Knight, an old man wearing armor along with his riding bird, Pierre"; "this rescue was on the house"; free whistle for one more call; "he shows that Pierre had eaten the Uma Uma no Mi devil fruit, allowing him to turn into a Pegasus. The crew is disappointed that the mythical Pegasus looks so ordinary." Wyper (filed 154) left unnamed.',
+    },
+    164: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_164',
+      note: 'Episode_162 Long Summary: "Pierre heard the whistle go off and Gan Fall left right away to Chopper\'s aid ... Just as he was about to kill Chopper, Gan Fall arrived and began battle with Shura." Episode_163: "the battle between Gan Fall and Shura continued and Gan Fall lost." Episode_164: "Chopper failed to save Gan Fall forgetting that he cannot swim. With Chopper and Pierre both being Devil Fruit users and Gan Fall unconscious, it seemed to be the end, but a mysterious bird came and saved them ... Chopper wakes up ... a flock of birds"; "Chopper was amazed to see huge South Birds". Fuza (filed 169) not named. Filed at 164 because the rescue ends there.',
+    },
+    168: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_168',
+      note: 'Pierre page Qref chap=255 page=6 ep=168 ("Pierre transforms into a Pegasus to attack Usopp"). Chapter_255 Long Summary: Gan Fall says "until 6 years ago, he was known as the God of Skypiea. This causes Usopp to ask him if he fell on his head, earning him a nasty bite on the head from Pierre"; Upper Yard appeared about 400 years ago, the Shandia already lived there and were forced out; "Sanji and Usopp immediately voice their blame on Gan Fall, earning them both a bite on the head from Pierre. However Gan Fall owns up to it". Episode_168 Long Summary: the crew sails the Milky Road with Gan Fall, who tells the history of the war.',
+    },
+    185: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_185',
+      note: 'Episode_182: "Luffy and Aisa riding on Pierre are seen running towards the location of the Arc Maxim", Aisa and Pierre hiding and watching. Episode_184: "Aisa and Pierre see this and starts flying near Luffy to help him. Enel notices them and realizes they are the two extra voices he could feel. He then proceeds to launch a God\'s Judgment thunderbolt at the three." Episode_185: "In a hole on the ground, Aisa is crying over Pierre\'s apparently lifeless body and thanks him for protecting her." Pierre page History: "Pierre is knocked out when protecting Aisa from Enel\'s attack". He wakes at 186, so the story stops at "lies without moving".',
+    },
+  },
+  'su': {
+    154: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_154',
+      note: 'Debut and naming (Char Box first = Ch 239 / Ep 154, "Conis greets the Straw Hats on Angel Beach with Su in her arm"). Episode_154 Short Summary: "they are greeted by Conis and her pet Su"; Long Summary: "Conis finally introduces herself and the cloud fox Su"; Luffy cannot control the waver, Nami rides it skillfully; they arrive at Conis\' house; the talk ends on the place they must never go (Upper Yard). Su/History Qref chap=239-240 ep=154: Su approached the crew, watched Luffy and Nami try the Waver, followed them home. Conis and Pagaya (filed 155) are left unnamed at 154.',
+    },
+    172: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_172',
+      note: 'Long Summary: Aisa\'s boat stopped working and a Sky Shark ate half of it; "She was then rescued by Conis and Pagaya ... Conis introduced Su and Pagaya to Aisa. Aisa requested to be taken to Upper Yard and Conis mentioned they were on their way there to lead the Straw Hats out of Skypiea ... Conis implored Aisa to lead them to the Straw Hats."',
+    },
+    179: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_179',
+      note: 'Pagaya puts Su on watch: Su/History Qref c269 (chap 269, ep 176) and it wiki Suu ("le ordina di fare la guardia"). Episode_178: "Su made a distress call that brought Conis and Pagaya out, only for them to see a wounded man. The man was a Divine Squad member, one of Gan Fall\'s men ... Enel intends to ... destroy the land ... the lightning landed on Pagaya and the Divine Squad member." Pagaya thinks she is hungry: Su page Relationships Qref c272 (chap 272, ep 178). Episode_179: Conis "resolved to leave for Angel Island to warn the inhabitants. She left Su behind telling her to watch over the unconscious Usopp and Sanji." Pagaya\'s fate deliberately not stated.',
+    },
+    185: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_185',
+      note: 'Episode_185: Sanji wakes, sees Nami aboard the Ark above the forest, climbs a rope to the Maxim with a reluctant Usopp; Episode_184 (anime order): "Conis is now on the Going Merry and asks Su what is going on and why Sanji and Usopp are gone. Su tells her of their plan ... Conis thinks that this is too dangerous because of the injuries they sustained"; Episode_185: Conis "prays for their safety". Su tries to stop them: Su/History Qref c283 (chap 283, ep 185); gestures: Qref chap 283 p4 ep 184. Filed at 185, when both halves are known.',
+    },
+  },
+  'mckinley': {
+    156: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_156',
+      note: 'Naming: Episode_156 Long Summary "tells the captain of the White Berets, McKinley, to be patient" (Usopp addressing him); every McKinley scene in the story is in this summary: crime for owning a waver, hitting a rare fish about to eat Conis, Zoro wanting to fight him, sleeping as environmental pollution, Nami "hit McKinley with her Waver", "class 5 crime punishable by cloud drifting", White Berets beaten by Luffy, "They are now class 2 criminals and the Priests of the Upper Yard will be the ones to judge them". McKinley page Char Box gives first = Ch 241 / Ep 155, and Episode_155 ends on "McKinley, Captain of the White Berets then tells the Straw Hats..."; 156 kept as the safe side (round up). Enel (158) not named.',
+    },
+    182: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_182',
+      note: 'Long Summary: "At Lovely Street, McKinley announces to the public that Conis, Pagaya and Gan Fall ... are on the run"; Conis "manages to run over McKinley"; the crowd resists, then goes to pack; relatives in the Divine Squad, "McKinley interrupts them saying the White Berets will figure it out and tells the crowd to go ahead"; "he can\'t let this island turn into Birka, a southeastern sky island ... that disappeared six years ago"; "McKinley used to serve under Gan Fall\'s Divine Squad. McKinley formed the White Berets knowing that ... he would be able to protect the island by enforcing Enel\'s rule." Birka is not a filed record.',
+    },
+    186: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_186',
+      note: 'Long Summary: "Some of the White Berets inform McKinley they need to use the ships at the wharf, otherwise they won\'t have enough space ... McKinley says there is no time to go there and urges them to create a river with some emergency Dials. Half of the islanders are still on the island, and after angrily remembering Conis\' speech ... McKinley tells the White Berets not to let people take any belongings ... The wharf gets attacked by the lightning and the White Berets try to direct the remaining islanders to the beach where there still are some boats left." Canon: it wiki McKinley Nota cap=285 ep=186.',
+    },
+  },
+  'yama': {
+    172: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_172',
+      note: 'THRESHOLD RAISED 167 -> 172. Ep 167 shows him (Characters in Order of Appearance) but no naming is recorded (Episode_167 Long Summary; it Episodio_167 only narrates "con Yama"). Episode_172 Long Summary: "Robin asked if Yama was one of God\'s Army and Yama was upset hearing that, stating he is the Divine Soldiers\' leader. He introduced himself to Robin"; "Yama used the Punch Mountain on Robin which destroyed another ruin". Genbo fight from Episode_171 (known by 172): "Genbo and the Divine Soldiers battle and he easily overwhelms them. Yama then appears before Genbo. Genbo shoots an iron cannonball at Yama, which he dodges and kicks the iron cannonball back ... Ten-Fold Axe: Axe Mountain attack on Genbo and defeats him"; Chapter_261 (ep 171): Genbo names Yama. Ruins, notes: Episode_172. Enel\'s throne and scolding the priests: Chapter_254 / Yama page Qref chap=254 ep=167 (known by 172). Chapter kept at 254 (manga introduction, Qref page 10).',
+    },
+    174: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_174',
+      note: 'Long Summary: "Robin, trying very hard to ensure the monument in the ruins are kept intact, protects it using Veinte Fleur: Calendula. However, Yama knowingly wants them destroyed ... Robin decided to lead him out of the ruins ... Yama launched his Drop Mountain which Robin countered with Treinta Fleur: Pound ... tried to attack with axe Mountain but Robin turned the dials inward and trapped him, making him take on his own attack. Robin then chastises him and uses the Cien Fleur Delphinium: Clutch to attack and defeat Yama. Robin continued on her exploration of the ruins." The manga-only apology and cliff throw are left out.',
+    },
+  },
+  'fuza': {
+    169: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_169',
+      note: 'NAMING KEPT AT 169, NOT 162. Chapter_256 (adapted in ep 169, chapter field "256 p.9-19"): "Wyper has somehow managed to evade the String Clouds, and Shura readies his bird Fuza for an aerial battle with the Shandia", the first chapter summary where the story itself names him. Episode_162 names Fuza only in the wiki narration ("Shura and Fuza have already begun their attack on the Going Merry"), and Chapter_248 lists him only under Characters; no on-screen naming could be quoted for 162 (subslikescript blocked by a captcha), so the threshold stays at 169. Char Box first = Ch 241 / Ep 155 is the unnamed debut. Episode_169 Long Summary: the Shandia are trapped in Shura’s Ordeal of String, Wyper throws his weapon away to take Shura’s hit and defeats him with the Reject Dial. Fuza flies off: Shura page Qref chap=257 page=11 ep=169. Altar, Chopper alone, Merry: Episode_162 Long Summary + Shura page Qref chap=247-248 ep=161-162. Sky duel with Gan Fall and Pierre: Chapter_248 "The two men engage into an aerial battle, riding their birds", Shura page Qref chap=249 ep=162-163. Purple bird: Fuza page Appearance. Fire breathing (summary): Chapter_257 (ep 169 p.2-19) "a flame dial can be placed in a bird’s mouth to create a fire-breathing bird (Fuza is shown as an example)", with the ep 169 Long Summary "Gan Fall further explained how some other dials are used for warfare".',
+    },
+  },
+  'holy': {
+    175: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_175',
+      note: 'Naming: Holy page Relationships Qref chap=266 page=7 ep=175 (Ohm to Chopper: Holy does not move or attack unless commanded). Episode_175 Long Summary: Chopper "felt a presence and found it was Holy. Ohm told Chopper not to worry as Holy would not bite him unless he has reason to do so because the dog is well trained by him"; Chopper steps over a person, Ohm says he defeated him; Ohm on death as salvation; Ohm defeats Chopper at 0% survival, Ordeal of Iron; Zoro, Wyper and Gan Fall reach the ruins. Lying beside Ohm as they arrive: Holy page Qref c267 (chap=267 ep=175). Char Box first = Ch 241 / Ep 155 is the unnamed debut (Episode_155: "the dog belonging to the priest"). Log trespasser chase: Episode_155 Long Summary ("about to be eaten by the dog belonging to the priest").',
+    },
+    177: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_177',
+      note: 'Episode_176 Long Summary: "From behind was Holy who threw a punch that Zoro dodged. Zoro wondered how a dog could make such a move and Ohm introduced Holy, further commenting that he trains animals"; the snake swallows Nami, Aisa and Gan Fall. Episode_177 Long Summary: "The Shandia at the Upper Ruins ... were defeated by Holy and killed by the piercing of the Iron Cloud. At Ohm’s command, Holy ran around and created a dome-like cage in the form of barbed wires ... hence, called a death match." The snake is not named in the story (Nola is filed at 189).',
+    },
+    179: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_179',
+      note: 'Episode_178 Long Summary: Zoro defeats Ohm with Santoryu: Hyakuhachi Pound Ho through the iron cloud. Episode_179 Long Summary: Zoro "commented on needing more training with the attack that he used. Just then, Holy came intending on punching Zoro and missed. Zoro yelled "down" while dodging the attack and the dog obeyed leading Zoro to say that the dog obey’s anyone. Zoro then told the dog to hit itself on the head and take a nap and the dog did." The order itself is left unquoted because the manga has "stay" (Holy page, Qref c272) and the anime summary "down".',
+    },
+  },
+  'shandia-chief': {
+    181: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_181',
+      note: 'Naming by title: he is never named, only "Chief" (Shandia Chief page: "Characters Known by Titles"; jname シャンディア酋長). First canon appearance Chapter_275 (ep 181 covers 275 p.14-19): "As children, Wyper, Genbo, Kamakiri, and Braham were told the story of how their Shandia ancestors defended an ancient stone tablet ... they lost a great many men ... 400 years ago the island was blasted into Skypiea. Their ancestors were unable to defend the land from the native Skypieans ... The chieftain confirms that they lost ... "The Light of Shandora"". Episode_181 Long Summary: "In a flashback, the Shandia Chief is shown talking to a young Wyper and other young warriors telling them about the words inscribed on the Poneglyph and how the Shandia fought hard to protect the Poneglyph"; Wyper stops Enel’s heart with Seastone and Reject. The Char Box "first = Episode 168" and the "village head" in Episode_163 are anime additions to episodes adapting ch 249-256, long before his manga debut, so they are not counted. "Fire of Shandora" is the anime’s wording (Episode_188). Headdress and staff: Shandia Chief page Appearance.',
+    },
+    189: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_189',
+      note: 'Episode_189 Long Summary: "Back to Wyper’s flashback, the Village Chief tells young Wyper that Kalgara kept thinking of Noland all through that battle and hoped that if he could just ring the Golden Bell once more, he could let his friend know he is alive ... he never got to do it. Some time later, a ship from the Blue Sea went up to Skypiea and told the Shandia what had happened to Noland ... Young Wyper wonders if ringing the bell now would still reach Noland ... Maybe, says the Chief". Chapter_293 (ep 189 p.2-19) has the chief in tears; the anime summary has only "Maybe", so the story says only that he does not say no. Episode_187 opens the frame: "He remembers the Shandia Chief telling him as a child about Kalgara’s other reason". The chief in the 400-years-ago scenes of eps 187-188 is a different man (Coburn) and is not used.',
+    },
+    193: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_193',
+      note: 'Episode_193 Long Summary: "Wyper gains consciousness. He sees Gan Fall, Conis and the Shandorian Chief, prompting him to ask if they were captured by Skypieans. The Shandorian Chief tells him that there is no distinction between those who have been injured in battle. Wyper grows restless, remembering that they still need to find and protect the Golden Bell. He then hears the sound of drums and sees a huge fire outside his tent and assumes that they were announcing a battle. The Shandorian Chief calms him down and tells him to wait and see ... a celebration between Skypieans and Shandorians is taking place." Ruins: Chapter_300 "he is in the ruins of Shandora".',
+    },
+    195: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_195',
+      note: 'Episode_194 Long Summary: a Shandorian reports the Golden Bell hanging on Giant Jack, he asks for every able-bodied warrior, Skypieans arrive to help; the Poneglyph at its base; Robin reads it; Roger has already taken the text on, so the duty is fulfilled; "The Shandorian Chief is moved to tears ... they don’t have to fight any longer"; he offers the Belfry’s broken column. Episode_195 Long Summary: he asks Gan Fall to lead, Gan Fall declines, then suggests the Chief; "Vearth should be shared among all the peoples in Sky Island, and that he is the best person who can lead them. All of the Sky People then cry out for him to be their leader, which he then accepts." Chapter_302: "The Shandia Chief asks Gan Fall to be the God of Skypiea once again and he accepts." Roger and Poseidon deliberately not named.',
+    },
+  },
+  'seto': {
+    187: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_187',
+      note: 'Debut and naming (Seto Char Box first = Ch 287 / Ep 187). Episode_187 Long Summary: "A crying young man called Seto was in the forest in the rain trying to get the same type of green skin stain off his arm with a rock. Kalgara walked by and Seto angrily told him he had wanted to be like him one day and instead he was going to die "like this""; "there have been a hundred victims already"; "As they went into the jungle, they ran into Seto. The Doctor diagnosed Seto’s weird stains as Tree Fever and Noland ordered the crew to get some conine"; "Kalgara stormed out and ran into Seto outside who said he was cured and wondered what Noland meant when he mentioned "progress"". Chapter_288: Seto asks Kalgara "to elaborate on his meaning of the word "progress"". Status deceased at 187: he lived four hundred years ago (Char Box status 2), as with Noland and Kalgara.',
+    },
+    188: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_188',
+      note: 'Episode_188 Long Summary: the villagers, enraged by the earthquake, gather around the cage to execute the crew; "Seto sits down in front of the cage to block the way ... and tells them they should be ashamed of themselves"; the cure, everybody getting along; the villagers shun the crew over "something the crew has done" (the reason is only given in 189); "Seto tells Noland that Kalgara does not want to see him and reminds them they should leave soon". Seto page Qref chap=289-290 ep=188.',
+    },
+    189: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_189',
+      note: 'Episode_189 Long Summary: the Doctor explains the grove "was already dead and infected with Tree Fever" and was cut to stop it infecting the island; "Seto and the villagers are stunned to hear they did it to protect them"; "Seto and the other villagers are all crying and ringing the bell hoping Noland and his crew will hear it before they go"; "a grown-up Seto accompanies Kalgara to their daily ring of the bell. They greet Nola ... who now lives in the ruins. Seto wonders when Noland will be back"; "the sky becomes very dark". Chapter_292 Quick Reference: "The King of the Sky’s name is revealed to be Nola". Marriage to Mousse (Chapter_292 p.19) is left out: the anime summary does not show it.',
+    },
+  },
+  'mousse': {
+    187: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_187',
+      note: 'Debut and naming (Mousse Char Box first = Ch 287 / Ep 187; Qref chap=287 page=5 ep=187 for "the most beautiful of the Shandia women"). Episode_187 Long Summary: the dying priest says "a girl must be offered to the Sacrificial Altar"; "In a castle chamber, Mousse said that if it would save the village, she was willing to offer her body and was looking forward to meeting the Sun God. Her mother sobbed"; tied down, Kashigami hovers, "Noland jumped in the water, climbed the altar, and beheaded Kashigami"; "the villagers ... screamed for both of them to be killed"; "Kalgara threw a knife at Mousse and encouraged her to kill herself to appease the Gods. Noland stopped her"; "Mousse who was in a nearby cage asked about Noland". That she is Kalgara’s daughter is not in the 187 story or dossier (revealed in 188). Status deceased at 187: four hundred years ago, as with Noland and Kalgara (Char Box status 2).',
+    },
+    188: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_188',
+      note: 'Episode_188 Long Summary: "the crew as well as Mousse are being led to the Sacrificial Altar ... The villagers are getting ready to burn the crew and Mousse"; "Kalgara reveals that he believes so strongly in them that Mousse is actually his daughter and he was ready to let her die"; the cure, "Kalgara is also tearingly reunited with his daughter"; "Kalgara offering him Mousse’s hand in marriage (that he turned down on account of his own family back home)". Chapter_289: Kalgara "angrily yelling that Mousse was actually his daughter".',
+    },
+    189: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_189',
+      note: 'Episode_189 Long Summary: "a cloaked Mousse appears behind him"; "those trees were sacred to them as they believe the souls brought back by the Golden Bell reside in those trees"; the Doctor: "the grove in question was already dead and infected with Tree Fever"; "Mousse runs into town ... begs her father to go talk to the crew before they leave and tells him he will regret it later if he does not go say goodbye to the best friend he ever had"; "Kalgara rushes to the beach"; the villagers ring the bell. Mousse page Qref chap=291 page=6-8, 10-14 ep=189.',
+    },
+  },
+  'nola': {
+    189: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_189',
+      note: 'Naming: Chapter_292 (ep 189 covers 292 p.2-19) Quick Reference "The King of the Sky’s name is revealed to be Nola" and "Seto stops momentarily to feed the snake, Nola"; Episode_189 Long Summary: "a grown-up Seto accompanies Kalgara to their daily ring of the bell. They greet Nola, the now slightly grown python who is Kashigami’s grandson and who now lives in the ruins"; Seto page: Seto named the snake (Qref c292, ep 189). Char Box first = Ch 255 / Ep 168 is the unnamed debut; the Nola page’s own name Qref points to chap=296 ep=191, which is later still. Recap facts, all before 189: Luffy swallowed and thinking it a cave (Nola page Qref c261 ep 171; Episode_175 "Luffy, upset about the "cave""); Nami, Aisa and Gan Fall swallowed (Episode_176 Long Summary); dropped into Shandora, cries, struck by Enel (Episode_179 Long Summary). Epithet "Master of the Sky": Char Box Qref chap=267 page=7 ep=175 (a Divine Soldier), filed at the threshold. Origin: born on Jaya 400 years ago (Episode_188-189 flashback).',
+    },
+    191: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_191',
+      note: 'Chapter_296 (ep 191 covers 296 p.2-19): "Nola lies unconscious ... She dreams of accompanying Kalgara and Seto to ring the Golden Bell as a small snake, before the two vanished, ignoring her cries; awakening and upset, she slams her head into the beanstalk, causing a massive vibration of the cloud layer ... Usopp labeling it a "cloudquake" ... the beanstalk only tilts slightly". Seto page Qref chap=296 page=7-8 ep=191 for the dream. Episode_191 Long Summary: Zoro "slices one part of the beanstalk down"; "Nola, the snake tries to help topple it down, but it doesn’t work".',
+    },
+    194: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_194',
+      note: 'Bell and joy: Chapter_299 (ep 193) "Nola, upon hearing the ringing of the golden bell, cries out in joy"; dancing at the celebration: Nola page Qref c300 (ep 193). Episode_194 Long Summary: "Luffy, Sanji, Chopper and Nami are inside Nola, retrieving the treasure inside its belly". Chapter_301 (ep 194): Nola sleeping, "Usopp comments that the snake is a heavy sleeper. Zoro notes that it’s been dancing all night ... Usopp replies that Nola seems harmless, and Zoro retorts that he has no idea how vicious that snake truly is"; Sanji wonders what Nola ate to hold so much treasure.',
+    },
+  },
 }

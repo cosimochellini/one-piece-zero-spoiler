@@ -75,6 +75,30 @@ export const skypiea: Saga = {
       visual: { art: 'bellamy', tint: 'azure' },
     },
     {
+      id: 'roshio',
+      kind: 'character',
+      revealedAtEpisode: 146,
+      revealedAtChapter: 222,
+      name: { it: 'Roshio', en: 'Roshio' },
+      summary: {
+        it: 'Un capitano pirata con lunghi dreadlock bianchi e il simbolo di un impiccato sulla fascia, che a Mock Town vince una mano a carte contro l’uomo sbagliato.',
+        en: 'A pirate captain with long white dreadlocks and a hanged-man mark on his headband, who wins a hand of cards in Mock Town against the wrong man.',
+      },
+      visual: { art: 'roshio', tint: 'red' },
+    },
+    {
+      id: 'sarquiss',
+      kind: 'character',
+      revealedAtEpisode: 146,
+      revealedAtChapter: 222,
+      name: { it: 'Cirkeys', en: 'Sarquiss' },
+      summary: {
+        it: 'Il braccio destro di Bellamy a Mock Town, un uomo alto con una pelliccia bianca e gli occhiali colorati, che getta soldi agli sconosciuti perché si comprino dei vestiti decenti.',
+        en: 'Bellamy’s right hand in Mock Town, a tall man in a white fur coat and tinted glasses who throws money at strangers so they can buy themselves some decent clothes.',
+      },
+      visual: { art: 'sarquiss', tint: 'magenta' },
+    },
+    {
       id: 'montblanc-cricket',
       kind: 'character',
       revealedAtEpisode: 148,
@@ -147,6 +171,18 @@ export const skypiea: Saga = {
       visual: { art: 'donquixote-doflamingo', tint: 'flamingo' },
     },
     {
+      id: 'rockstar',
+      kind: 'character',
+      revealedAtEpisode: 151,
+      revealedAtChapter: 234,
+      name: { it: 'Rockstar', en: 'Rockstar' },
+      summary: {
+        it: 'Un nuovo arrivato fra i Pirati del Rosso, con i capelli rossi a punte e una sciabola al fianco, mandato per mare a consegnare nelle mani di Barbabianca una lettera del suo capitano.',
+        en: 'A new man in the Red Hair Pirates, red hair spiked up and a sabre at his hip, sent across the sea to put a letter from his captain into Whitebeard’s hands.',
+      },
+      visual: { art: 'rockstar', tint: 'vermilion' },
+    },
+    {
       id: 'marco',
       kind: 'character',
       revealedAtEpisode: 152,
@@ -181,6 +217,18 @@ export const skypiea: Saga = {
         en: 'An old knight who rides the clouds with a lance and a pumpkin-shaped helmet, on a winged horse, and helps whoever he finds in trouble.',
       },
       visual: { art: 'gan-fall', tint: 'ivory' },
+    },
+    {
+      id: 'pierre',
+      kind: 'character',
+      revealedAtEpisode: 153,
+      revealedAtChapter: 238,
+      name: { it: 'Pierre', en: 'Pierre' },
+      summary: {
+        it: 'La cavalcatura di Gan Fall, un grosso uccello rosa a pois rossi che sa trasformarsi in un cavallo alato, senza stupire granché nessuno.',
+        en: 'Gan Fall’s mount, a big pink bird spotted with red that can turn itself into a winged horse, to nobody’s great amazement.',
+      },
+      visual: { art: 'pierre', tint: 'pink' },
     },
     {
       id: 'wyper',
@@ -255,6 +303,18 @@ export const skypiea: Saga = {
       visual: { art: 'aisa', tint: 'pink' },
     },
     {
+      id: 'su',
+      kind: 'character',
+      revealedAtEpisode: 154,
+      revealedAtChapter: 239,
+      name: { it: 'Suu', en: 'Su' },
+      summary: {
+        it: 'Una piccola volpe delle nuvole chiara, con gli occhi socchiusi e una lunga coda, che viaggia in braccio a una ragazza con le ali e segue gli stranieri dalla spiaggia fino a cena.',
+        en: 'A small pale cloud fox with squinting eyes and a long tail, who rides in a winged girl’s arms and follows the strangers from the beach home to dinner.',
+      },
+      visual: { art: 'su', tint: 'lavender' },
+    },
+    {
       id: 'conis',
       kind: 'character',
       revealedAtEpisode: 155,
@@ -277,6 +337,18 @@ export const skypiea: Saga = {
         en: 'Conis’s father, a mild craftsman who fits shells together at a workbench and makes boats, lamps and everything else out of them.',
       },
       visual: { art: 'pagaya', tint: 'teal' },
+    },
+    {
+      id: 'mckinley',
+      kind: 'character',
+      revealedAtEpisode: 156,
+      revealedAtChapter: 241,
+      name: { it: 'McKinley', en: 'McKinley' },
+      summary: {
+        it: 'Il capitano dei White Berets di Skypiea, un ufficiale alato con un cappotto a mantella che si avvicina agli stranieri strisciando sulla spiaggia e legge loro le multe.',
+        en: 'The captain of Skypiea’s White Berets, a winged officer in a caped coat who crawls up to strangers on the beach and reads them their fines.',
+      },
+      visual: { art: 'mckinley', tint: 'blue' },
     },
     {
       id: 'enel',
@@ -339,6 +411,54 @@ export const skypiea: Saga = {
       visual: { art: 'ohm', tint: 'ivory' },
     },
     {
+      id: 'fuza',
+      kind: 'character',
+      revealedAtEpisode: 169,
+      revealedAtChapter: 256,
+      name: { it: 'Fuza', en: 'Fuza' },
+      summary: {
+        it: 'Un enorme uccello viola che porta in groppa un sacerdote di Ener sopra la foresta e sputa fuoco su chiunque lui stia combattendo.',
+        en: 'An enormous purple bird that carries one of Enel’s priests over the forest on its back and breathes fire on whoever he is fighting.',
+      },
+      visual: { art: 'fuza', tint: 'violet' },
+    },
+    {
+      id: 'yama',
+      kind: 'character',
+      revealedAtEpisode: 172,
+      revealedAtChapter: 254,
+      name: { it: 'Yama', en: 'Yama' },
+      summary: {
+        it: 'Il comandante dei guerrieri sacri di Ener, un uomo enorme e tondo dagli arti piccoli ma fortissimi, con una fascia piena di axe dial, che piomba sui nemici con tutto il suo peso.',
+        en: 'The commander of Enel’s Divine Soldiers, a huge round man with small but powerful limbs and a sash full of axe dials, who comes down on his enemies with his whole weight.',
+      },
+      visual: { art: 'yama', tint: 'orange' },
+    },
+    {
+      id: 'holy',
+      kind: 'character',
+      revealedAtEpisode: 175,
+      revealedAtChapter: 266,
+      name: { it: 'Holy', en: 'Holy' },
+      summary: {
+        it: 'Un enorme cane dal pelo chiaro al fianco di un sacerdote di Ener, addestrato così bene che non morde nessuno finché il padrone non gliene dà un motivo.',
+        en: 'An enormous pale dog at the side of one of Enel’s priests, trained so well that he bites nobody until his master gives him a reason.',
+      },
+      visual: { art: 'holy', tint: 'sand' },
+    },
+    {
+      id: 'shandia-chief',
+      kind: 'character',
+      revealedAtEpisode: 181,
+      revealedAtChapter: 275,
+      name: { it: 'Capo degli Shandia', en: 'Shandia Chief' },
+      summary: {
+        it: 'Il vecchio capo degli Shandia, con la testa di una bestia per elmo e un bastone in mano, che ai bambini del villaggio ha insegnato che cosa il suo popolo ha perso insieme alla sua terra.',
+        en: 'The old chief of the Shandia, a beast’s head worn for a helmet and a staff in his hand, who taught the village children what their people lost along with their land.',
+      },
+      visual: { art: 'shandia-chief', tint: 'ocher' },
+    },
+    {
       id: 'montblanc-noland',
       kind: 'character',
       revealedAtEpisode: 187,
@@ -361,6 +481,42 @@ export const skypiea: Saga = {
         en: 'The chief of the Shandia warriors four hundred years ago, who defends his city with a spear taller than himself and the voice of a great bell.',
       },
       visual: { art: 'kalgara', tint: 'vermilion' },
+    },
+    {
+      id: 'seto',
+      kind: 'character',
+      revealedAtEpisode: 187,
+      revealedAtChapter: 287,
+      name: { it: 'Set', en: 'Seto' },
+      summary: {
+        it: 'Un giovane shandia di quattrocento anni fa che vuole diventare un guerriero come Kalgara, ed è il primo del suo villaggio a incontrare gli stranieri venuti a curarlo.',
+        en: 'A young Shandia of four hundred years ago who wants to become a warrior like Kalgara, and is the first of his village to meet the strangers who come to cure it.',
+      },
+      visual: { art: 'seto', tint: 'acid' },
+    },
+    {
+      id: 'mousse',
+      kind: 'character',
+      revealedAtEpisode: 187,
+      revealedAtChapter: 287,
+      name: { it: 'Musse', en: 'Mousse' },
+      summary: {
+        it: 'Una giovane shandia di quattrocento anni fa, scelta come l’offerta che dovrebbe salvare il suo villaggio dalla febbre.',
+        en: 'A young Shandia woman of four hundred years ago, chosen as the offering that is meant to save her village from the fever.',
+      },
+      visual: { art: 'mousse', tint: 'lavender' },
+    },
+    {
+      id: 'nola',
+      kind: 'character',
+      revealedAtEpisode: 189,
+      revealedAtChapter: 292,
+      name: { it: 'Nola', en: 'Nola' },
+      summary: {
+        it: 'Un serpente gigantesco dell’Upper Yard che inghiotte le persone intere e che, quattrocento anni fa, era un giovane serpente salutato ogni giorno dagli Shandia che venivano a suonare la campana d’oro.',
+        en: 'A gigantic snake of Upper Yard that swallows people whole, and that four hundred years ago was a young snake greeted every day by the Shandia who came to ring the golden bell.',
+      },
+      visual: { art: 'nola', tint: 'azure' },
     },
   ],
 
@@ -443,6 +599,43 @@ export const skypiea: Saga = {
       bounty: [
         { episode: 146, value: 55_000_000 },
         { episode: 632, value: 195_000_000 },
+      ],
+    },
+    'roshio': {
+      chronicle: skypieaChronicles.roshio,
+      role: { it: 'Capitano pirata', en: 'Pirate captain' },
+      log: {
+        it: 'A Mock Town lo chiamano un pazzo, e raccontano che una volta ha ammazzato sul posto un uomo solo perché lo aveva battuto a carte. Stavolta è lui a vincere la mano, e l’uomo seduto di fronte lo accusa di aver barato. Quell’uomo è Bellamy, e in questa città è così che una partita a carte finisce con il vincitore fuori dalla finestra.',
+        en: 'In Mock Town they call him a madman, and say he once killed a man on the spot for beating him at cards. This time he is the one who wins the hand, and the man across the table calls it cheating. The man across the table is Bellamy, and in this town that is how a card game ends with its winner going out through a window.',
+      },
+      affiliation: [
+        {
+          episode: 146,
+          value: {
+            it: 'Pirati di Roshio, capitano',
+            en: 'Roshio Pirates, captain',
+          },
+        },
+      ],
+    },
+    'sarquiss': {
+      chronicle: skypieaChronicles.sarquiss,
+      role: {
+        it: 'Vicecapitano dei Pirati di Bellamy',
+        en: 'First mate of the Bellamy Pirates',
+      },
+      log: {
+        it: 'Dà ragione al suo capitano su tutto, compresa un’accusa di barare fatta per pura convenienza. Crede che una taglia dica quanto è forte un uomo, e secondo quel metro tre straccioni appena sbarcati non meritano uno sguardo. Ride di chiunque a Mock Town parli ancora di sogni.',
+        en: 'He backs his captain in everything, a cheating charge made purely for convenience included. He believes a bounty tells you how strong a man is, and by that measure three shabby newcomers are beneath his notice. He laughs at anyone in Mock Town who still talks about dreams.',
+      },
+      affiliation: [
+        {
+          episode: 146,
+          value: {
+            it: 'Pirati di Bellamy, vicecapitano',
+            en: 'Bellamy Pirates, first mate',
+          },
+        },
       ],
     },
     'montblanc-cricket': {
@@ -643,6 +836,26 @@ export const skypiea: Saga = {
       devilFruit: [{ episode: 700, value: ['string-string-fruit'] }],
       bounty: [{ episode: 700, value: 340_000_000 }],
     },
+    'rockstar': {
+      chronicle: skypieaChronicles.rockstar,
+      role: {
+        it: 'Membro dei Pirati del Rosso',
+        en: 'Member of the Red Hair Pirates',
+      },
+      log: {
+        it: 'È entrato da poco nella ciurma di Shanks ed è convinto che il suo nome il mondo lo conosca già da prima. Gli uomini di Barbabianca non l’hanno mai sentito nominare, e Barbabianca strappa la lettera che ha portato. Vorrebbe restare a rispondere all’offesa; il suo capitano ride e lo richiama indietro.',
+        en: 'He joined Shanks’s crew only recently and is sure the world knows his name from before. Whitebeard’s men have never heard of him, and Whitebeard tears up the letter he brought. He wants to stay and answer the insult; his captain laughs and calls him back.',
+      },
+      affiliation: [
+        {
+          episode: 151,
+          value: {
+            it: 'Pirati del Rosso, nuova recluta',
+            en: 'Red Hair Pirates, newcomer',
+          },
+        },
+      ],
+    },
     'marco': {
       role: {
         it: 'Comandante della prima divisione',
@@ -707,6 +920,21 @@ export const skypiea: Saga = {
           value: { it: 'Il Cavaliere del Cielo', en: 'Knight of the Sky' },
         },
       ],
+    },
+    'pierre': {
+      chronicle: skypieaChronicles.pierre,
+      role: { it: 'Destriero di Gan Fall', en: 'Gan Fall’s steed' },
+      log: {
+        it: 'Porta il Cavaliere del cielo sopra le nuvole e dentro ogni battaglia, con un uomo in armatura e una lancia sul dorso. Ha mangiato un frutto del diavolo che lo trasforma in cavallo, cosa che, visto che volava già, cambia soprattutto il suo aspetto. La ciurma di Cappello di paglia si aspettava un Pegaso più impressionante.',
+        en: 'He carries the Knight of the Sky over the clouds and into every fight, a man in armour with a lance on his back. He ate a devil fruit that turns him into a horse, which, since he could already fly, mostly changes how he looks. The Straw Hats were hoping for a more impressive Pegasus.',
+      },
+      affiliation: [
+        {
+          episode: 153,
+          value: { it: 'Gan Fall, destriero', en: 'Gan Fall, steed' },
+        },
+      ],
+      devilFruit: [{ episode: 153, value: ['horse-horse-fruit'] }],
     },
     'wyper': {
       role: {
@@ -789,6 +1017,20 @@ export const skypiea: Saga = {
       ],
       origin: [{ episode: 154, value: SKY_ISLAND }],
     },
+    'su': {
+      chronicle: skypieaChronicles.su,
+      role: { it: 'Volpe delle nuvole', en: 'Cloud fox' },
+      log: {
+        it: 'È la prima creatura dell’isola ad avvicinarsi agli stranieri e a squadrarli, prima che qualcuno rivolga loro la parola. Sta in braccio alla ragazza che suona sulla spiaggia, e va con loro quando tutta la compagnia torna a casa a mangiare. La bocca non la apre mai.',
+        en: 'She is the first creature on the island to come and look the newcomers over, before anyone has said a word to them. She rides in the arms of the girl who plays music on the beach, and goes along when the whole party heads home to eat. She never once opens her mouth.',
+      },
+      affiliation: [
+        {
+          episode: 154,
+          value: { it: 'Skypiea, animale domestico', en: 'Skypiea, pet' },
+        },
+      ],
+    },
     'conis': {
       role: { it: 'Abitante di Angel Beach', en: 'Resident of Angel Beach' },
       log: {
@@ -833,6 +1075,23 @@ export const skypiea: Saga = {
             it: 'Isola degli angeli, Skypiea',
             en: 'Angel Island, Skypiea',
           },
+        },
+      ],
+    },
+    'mckinley': {
+      chronicle: skypieaChronicles.mckinley,
+      role: {
+        it: 'Capitano dei White Berets',
+        en: 'Captain of the White Berets',
+      },
+      log: {
+        it: 'Applica la legge di Skypiea alla lettera, e per la ciurma di Cappello di paglia ogni lettera è una multa: entrare senza pagare, possedere un waver, perfino dormire sulla spiaggia. Quando Nami lo investe con un waver, diventa un reato di quinta classe. Battuti i suoi uomini, ride lo stesso: adesso a giudicarli saranno i sacerdoti.',
+        en: 'He enforces the law of Skypiea to the letter, and for the Straw Hats every letter carries a fine: coming in without paying, owning a Waver, even sleeping on the beach. When Nami runs him over with a Waver, that is a crime of the fifth class. Once his men are beaten he laughs anyway: the priests will be the ones to judge them now.',
+      },
+      affiliation: [
+        {
+          episode: 156,
+          value: { it: 'White Berets, capitano', en: 'White Berets, captain' },
         },
       ],
     },
@@ -905,6 +1164,71 @@ export const skypiea: Saga = {
       affiliation: [{ episode: 169, value: ENEL_PRIESTS }],
       origin: [{ episode: 169, value: SKY_ISLAND }],
     },
+    'fuza': {
+      role: { it: 'Cavalcatura di Shura', en: 'Shura’s mount' },
+      log: {
+        it: 'Porta Shura ovunque il sacerdote voglia andare, sopra la foresta e sopra i fili della sua prova, dove nessuno a piedi può seguirlo. C’era quando la Going Merry ha preso fuoco all’altare, e ha tenuto in aria il suo padrone per un intero duello con il Cavaliere del Cielo. Quando Shura è caduto davvero, l’uccello non è rimasto a vedere cosa sarebbe successo.',
+        en: 'He carries Shura wherever the priest wants to go, over the forest and above the strings of his ordeal, where nobody on foot can follow. He was there when the Going Merry burned at the altar, and he kept his master in the air through a whole duel with the Knight of the Sky. When Shura fell for good, the bird did not stay to see what came next.',
+      },
+      affiliation: [
+        {
+          episode: 169,
+          value: {
+            it: 'Sacerdoti di Ener, cavalcatura di Shura',
+            en: 'Enel’s priests, Shura’s mount',
+          },
+        },
+      ],
+      chronicle: skypieaChronicles.fuza,
+    },
+    'yama': {
+      chronicle: skypieaChronicles.yama,
+      role: {
+        it: 'Comandante dei guerrieri sacri',
+        en: 'Commander of the Divine Soldiers',
+      },
+      log: {
+        it: 'Sta accanto al trono di Ener e rimprovera i sacerdoti che litigano davanti al dio. Si offende se lo si chiama un semplice membro dell’esercito del dio: lui è il capo dei guerrieri sacri. Per la sua mole salta e calcia come un acrobata, e intende schiacciare gli stranieri di Upper Yard insieme a qualunque cosa si trovi in mezzo.',
+        en: 'He stands beside Enel’s throne and scolds the priests for squabbling in God’s presence. He takes offence at being called just one of God’s army: he leads the Divine Soldiers. For a man his size he jumps and kicks like an acrobat, and he means to flatten the strangers in Upper Yard along with whatever else is in the way.',
+      },
+      affiliation: [
+        {
+          episode: 172,
+          value: {
+            it: 'Guerrieri sacri di Ener, comandante',
+            en: 'Enel’s Divine Soldiers, commander',
+          },
+        },
+      ],
+    },
+    'holy': {
+      role: { it: 'Cane di Om', en: 'Ohm’s dog' },
+      log: {
+        it: 'Aspetta al fianco di Om fra le rovine sopra la foresta e si muove solo quando il padrone glielo dice. Quando arriva un piccolo medico il cane gli torreggia sopra, e Om lo rassicura: non morde nessuno senza un motivo. Corre con i sacerdoti almeno dal giorno in cui inseguirono un intruso per l’Upper Yard, e quell’uomo per poco non finì fra le sue fauci.',
+        en: 'He waits at Ohm’s side in the ruins above the forest and moves only when his master tells him to. When a small doctor wanders in, the dog looms over him, and Ohm tells the doctor not to worry: he bites nobody without a reason. He has run with the priests at least since the day they chased a trespasser across Upper Yard, and that man very nearly ended up in his jaws.',
+      },
+      affiliation: [
+        {
+          episode: 175,
+          value: {
+            it: 'Sacerdoti di Ener, cane di Om',
+            en: 'Enel’s priests, Ohm’s dog',
+          },
+        },
+      ],
+      chronicle: skypieaChronicles.holy,
+    },
+    'shandia-chief': {
+      role: { it: 'Capo degli Shandia', en: 'Chief of the Shandia' },
+      log: {
+        it: 'Anni fa radunò i bambini del villaggio, Wiper fra loro, e raccontò di una pietra antica che i loro antenati avevano difeso a costo di moltissimi uomini. Raccontò anche di come quattrocento anni fa la loro terra fu scagliata nel cielo e tolta al suo popolo, e con lei il fuoco di Shandora. Qualunque cosa i giovani guerrieri abbiano fatto da allora di quella storia, l’hanno imparata da lui.',
+        en: 'Years ago he sat the village children down, Wyper among them, and told them of an ancient stone their ancestors defended at the cost of a great many men. He told them too how their land was blasted into the sky four hundred years ago and taken from his people, and with it the fire of Shandora. Whatever the young warriors have made of that story since, they learned it from him.',
+      },
+      affiliation: [
+        { episode: 181, value: { it: 'Shandia, capo', en: 'Shandia, chief' } },
+      ],
+      chronicle: skypieaChronicles['shandia-chief'],
+    },
     'montblanc-noland': {
       role: {
         it: 'Esploratore e capitano di nave',
@@ -960,6 +1284,83 @@ export const skypiea: Saga = {
           value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
         },
       ],
+    },
+    'seto': {
+      role: { it: 'Giovane shandia', en: 'Young Shandia' },
+      log: {
+        it: 'Quando le macchie verdi della febbre degli alberi gli comparvero sul braccio, corse sotto la pioggia e provò a raschiarle via con un sasso. Disse a Kalgara che avrebbe voluto diventare come lui, un giorno, e che invece sarebbe morto così. Gli stranieri lo trovarono nella foresta e lo curarono, e una delle prime cose che fece da guarito fu chiedere a Kalgara che cosa intendesse quell’uomo per progresso.',
+        en: 'When the green blotches of the tree fever turned up on his arm, he ran out into the rain and tried to scrape them off with a rock. He told Kalgara he had wanted to be like him one day, and now he would die like this instead. The strangers found him in the forest and cured him, and one of the first things he did once he was well was ask Kalgara what their captain meant by progress.',
+      },
+      status: [{ episode: 187, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 187,
+          value: {
+            it: 'Shandia, un giovane del villaggio, quattrocento anni fa',
+            en: 'Shandia, a youth of the village, four hundred years ago',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 187,
+          value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
+        },
+      ],
+      chronicle: skypieaChronicles.seto,
+    },
+    'mousse': {
+      role: { it: 'Fanciulla shandia', en: 'Shandia maiden' },
+      log: {
+        it: 'Quando il sacerdote morente disse che il villaggio si sarebbe salvato solo offrendo una ragazza agli dèi, lei accettò di andare, e alla madre in lacrime disse che non vedeva l’ora di incontrare il dio. Legata sull’altare, era a un passo dall’essere divorata quando uno straniero si arrampicò fin lassù e tagliò la testa al grande serpente. Chiusa in una gabbia accanto al suo equipaggio, è lei a chiedere che razza di uomo sia il loro capitano.',
+        en: 'When the dying priest said the village could only be saved by offering a girl to the gods, she agreed to go, and told her weeping mother she was looking forward to meeting the god. Tied down on the altar, she was a moment from being eaten when a stranger climbed up and cut the great snake’s head off. Locked in a cage beside his crew, she is the one who asks them what kind of man their captain is.',
+      },
+      status: [{ episode: 187, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 187,
+          value: {
+            it: 'Shandia, una giovane del villaggio, quattrocento anni fa',
+            en: 'Shandia, a young woman of the village, four hundred years ago',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 187,
+          value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
+        },
+      ],
+      chronicle: skypieaChronicles.mousse,
+    },
+    'nola': {
+      role: { it: 'Serpente dell’Upper Yard', en: 'Snake of Upper Yard' },
+      log: {
+        it: 'Ha dato la caccia agli intrusi per tutto l’Upper Yard e ne ha inghiottiti diversi interi, uno dei quali continuava a tempestargli lo stomaco di pugni, convinto di essersi perso in una caverna. Quando un fulmine l’ha fatto precipitare fra le rovine della città d’oro si è guardato attorno cercando qualcuno, non ha trovato nessuno e ha pianto finché Ener non l’ha abbattuto. Quattrocento anni fa era un giovane serpente che viveva fra quelle stesse rovine, e due Shandia lo salutavano ogni giorno andando a suonare la campana.',
+        en: 'It hunted the intruders across Upper Yard and swallowed several of them whole, one of whom kept punching its stomach, convinced he was lost in a cave. When lightning dropped it into the ruins of the golden city it looked around for someone, found nobody, and cried until Enel struck it down. Four hundred years ago it was a young snake living in those same ruins, and two Shandia greeted it every day on their way to ring the bell.',
+      },
+      affiliation: [
+        {
+          episode: 189,
+          value: {
+            it: 'Nessuna: il serpente delle rovine di Shandora',
+            en: 'None: the snake of the Shandora ruins',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 189,
+          value: { it: 'Jaya, Rotta Maggiore', en: 'Jaya, Grand Line' },
+        },
+      ],
+      epithet: [
+        {
+          episode: 189,
+          value: { it: 'Il signore del cielo', en: 'Master of the Sky' },
+        },
+      ],
+      chronicle: skypieaChronicles.nola,
     },
   },
 }

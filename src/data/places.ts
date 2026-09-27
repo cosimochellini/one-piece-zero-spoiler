@@ -124,6 +124,8 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
     },
     filedHere: [
       'bellamy',
+      'roshio',
+      'sarquiss',
       'montblanc-cricket',
       'marshall-d-teach',
       'jesus-burgess',
