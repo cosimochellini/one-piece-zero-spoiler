@@ -180,9 +180,6 @@ function Eaters({
   const { t } = useLocale()
   const answer = eaters instanceof Promise ? use(eaters) : eaters
 
-  if (answer.mode === 'chapterNote') {
-    return <p {...stylex.props(styles.lede)}>{t('fruit.eatersInEpisodes')}</p>
-  }
   if (answer.eaters.length === 0) {
     return <p {...stylex.props(styles.lede)}>{t('fruit.eatersNone')}</p>
   }

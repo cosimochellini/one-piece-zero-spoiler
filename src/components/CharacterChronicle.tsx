@@ -3,6 +3,7 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { useLocale } from '~/i18n/LocaleContext'
+import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type {
   CharacterChronicle as Chronicle,
   ChronicleEntry,
@@ -24,7 +25,7 @@ export type CharacterChronicleProps = { readonly chronicle: Chronicle }
 
 /**
  * The stories the reader has reached, as one ledger down the page: the
- * episode in mono, the title as a heading, the paragraph under it.
+ * mark in mono, the title as a heading, the paragraph under it.
  *
  * Every story here is one the server has already decided the reader may
  * read; the component draws what it is given and never a count of what it
@@ -34,16 +35,6 @@ export type CharacterChronicleProps = { readonly chronicle: Chronicle }
 export function CharacterChronicle({
   chronicle,
 }: CharacterChronicleProps): null | ReactElement {
-  const { t } = useLocale()
-
-  // The stories count in anime episodes. A reader who counts in chapters
-  // reaches none of them, and is told why instead of shown nothing.
-  if (chronicle.mode === 'chapterNote') {
-    return (
-      <p {...stylex.props(styles.note)}>{t('character.chronicleInEpisodes')}</p>
-    )
-  }
-
   if (chronicle.entries.length === 0) {
     return null
   }
@@ -53,7 +44,7 @@ export function CharacterChronicle({
       {chronicle.entries.map((entry) => {
         return (
           <StoryRow
-            key={entry.episode}
+            key={entry.revealedAtEpisode}
             entry={entry}
           />
         )
@@ -62,15 +53,13 @@ export function CharacterChronicle({
   )
 }
 
-/** One story: the episode mark, the title, the paragraph. */
+/** One story: the mark in the reader's unit, the title, the paragraph. */
 function StoryRow({ entry }: { readonly entry: ChronicleEntry }): ReactElement {
-  const { t } = useLocale()
+  const threshold = useThreshold()
 
   return (
     <li {...stylex.props(styles.story)}>
-      <p {...stylex.props(styles.mark)}>
-        {t('character.chronicleEpisode', { episode: entry.episode })}
-      </p>
+      <p {...stylex.props(styles.mark)}>{threshold('chart.opensAt', entry)}</p>
       <div {...stylex.props(styles.words)}>
         <h3 {...stylex.props(styles.title)}>{entry.title}</h3>
         <p {...stylex.props(styles.body)}>
@@ -190,12 +179,6 @@ const styles = stylex.create({
     fontSize: text.base,
     lineHeight: leading.body,
     maxWidth: '60ch',
-  },
-  note: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
   },
   // The same link voice as the facts ledger: colour on hover, the rule under
   // it reserved at rest so nothing shifts when the pointer arrives.

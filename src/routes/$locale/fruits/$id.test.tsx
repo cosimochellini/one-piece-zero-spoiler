@@ -151,20 +151,6 @@ describe('the plate band', () => {
 })
 
 describe('the eaters band', () => {
-  it('says the band counts in episodes to a reader counting in chapters', () => {
-    renderWithProviders(
-      <EatersBand
-        eaters={{ mode: 'chapterNote' }}
-        peek={peekPending()}
-      />,
-      { bookmark: { mode: 'chapter', chapter: 1044 } },
-    )
-
-    expect(
-      screen.getByText(/The dossiers count in anime episodes/u),
-    ).toBeInTheDocument()
-  })
-
   it('says so when the archive files nobody', () => {
     renderWithProviders(
       <EatersBand

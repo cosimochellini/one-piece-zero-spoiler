@@ -73,14 +73,6 @@ describe('CharacterFacts', () => {
     expect(screen.getByText('Morte presunta')).toBeInTheDocument()
   })
 
-  it('shows the note and no fact to a reader who counts in chapters', () => {
-    renderWithProviders(<CharacterFacts facts={{ mode: 'chapterNote' }} />)
-
-    expect(screen.getByText(/count in anime episodes/u)).toBeInTheDocument()
-    expect(screen.queryByText(/Berry/u)).not.toBeInTheDocument()
-    expect(screen.queryByText('Affiliation')).not.toBeInTheDocument()
-  })
-
   it('renders nothing at all when the reader has reached no fact', () => {
     const { container } = renderWithProviders(
       <CharacterFacts facts={facts()} />,

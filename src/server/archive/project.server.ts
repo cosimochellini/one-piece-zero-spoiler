@@ -1,4 +1,5 @@
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
+import { timelineBookmark } from '~/data/chapters'
 import { dossierOf, roleOf } from '~/data/characters'
 import { getFruit } from '~/data/fruits'
 import type {
@@ -8,7 +9,7 @@ import type {
   Timeline,
 } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
-import { type Bookmark, modeOf } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { episodeOf, isRevealed, latestAt } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
 import type {
@@ -40,8 +41,8 @@ import { handleOf } from './handle.server'
 /**
  * The drawing as it stands at the reader's bookmark. A record drawn again
  * later in the story follows the bookmark like a dossier fact does, and a
- * reader who has reached no redrawing — none set, no bookmark, or one that
- * counts in chapters — is shown the first drawing, which fails closed.
+ * reader who has reached no redrawing — none set, or no bookmark — is shown
+ * the first drawing, which fails closed.
  */
 function drawingOf(entity: Entity, bookmark: Bookmark): Drawing {
   return {
@@ -134,7 +135,7 @@ function reachedEpithets(
   entity: Entity,
   bookmark: Bookmark,
 ): readonly string[] {
-  const progress = episodeOf(bookmark)
+  const progress = episodeOf(timelineBookmark(bookmark))
   if (progress === null) {
     return []
   }
@@ -257,12 +258,17 @@ export function factsOf(
  */
 type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
 
-/** The latest entry of a timeline the dossier may not carry at all. */
+/**
+ * The latest entry of a timeline the dossier may not carry at all. A chapter
+ * bookmark is read at the episode its chapter reaches (`~/data/chapters`).
+ */
 function knownAt<T>(
   timeline: Timeline<T> | undefined,
   bookmark: Bookmark,
 ): T | undefined {
-  return timeline === undefined ? undefined : latestAt(timeline, bookmark)
+  return timeline === undefined ? undefined : (
+      latestAt(timeline, timelineBookmark(bookmark))
+    )
 }
 
 /** The facts that are prose, in the reader's own language. */
@@ -315,11 +321,6 @@ export function factsFrom(
   locale: Locale,
   bookmark: Bookmark,
 ): CharacterFacts {
-  // The timelines count in anime episodes. A reader who counts in chapters
-  // reaches none of their entries, and is told why instead of shown nothing.
-  if (modeOf(bookmark) === 'chapter') {
-    return { mode: 'chapterNote' }
-  }
   if (dossier === undefined) {
     return { mode: 'facts' }
   }

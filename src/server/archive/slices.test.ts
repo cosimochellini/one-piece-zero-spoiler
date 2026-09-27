@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
+import { chapterAtEpisode } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import type { Entity } from '~/data/types'
@@ -12,6 +13,7 @@ import type {
   ChronicleEntry,
   RoutePositionView,
   ShelfView,
+  Stroke,
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
@@ -159,7 +161,7 @@ describe('the slice of the archive a page is given', () => {
       expect(reached.length === 0 || floor === 1, label).toBe(true)
 
       for (const story of reached) {
-        expect(story.episode, label).toBeLessThanOrEqual(episode)
+        expect(story.revealedAtEpisode, label).toBeLessThanOrEqual(episode)
       }
     }
   })
@@ -255,10 +257,16 @@ describe('the slice of the archive a page is given', () => {
     expect(early.folded).toBe(foldName(newgate.name.en))
     expect(early.aliases).not.toContain('whitebeard')
     expect(later.aliases).toContain('whitebeard')
-    // A chapter reader reaches none of them: the timelines count in episodes.
+
+    // A chapter reader reaches them at the episode the chapter reaches.
+    const at = chapterAtEpisode(151)
+
     expect(
-      searchableOf(newgate, 'en', { mode: 'chapter', chapter: 1000 }).aliases,
+      searchableOf(newgate, 'en', { mode: 'chapter', chapter: at - 1 }).aliases,
     ).not.toContain('whitebeard')
+    expect(
+      searchableOf(newgate, 'en', { mode: 'chapter', chapter: at }).aliases,
+    ).toContain('whitebeard')
   })
 
   it('carries the other locale’s name so a reader can search in either', () => {
@@ -334,6 +342,14 @@ function filed(id: string): Entity {
   return entity
 }
 
+/** Teach's strokes as a reader at this chapter is shown them. */
+function drawnAtChapter(chapter: number): readonly Stroke[] {
+  return characterOf(filed('marshall-d-teach'), 'en', {
+    mode: 'chapter',
+    chapter,
+  }).visual.strokes
+}
+
 describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
@@ -352,12 +368,14 @@ describe('a record drawn again later in the story', () => {
   })
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
-    // No bookmark knows nothing, and a chapter one reaches no episode.
     expect(characterOf(teach, 'en', null).visual.strokes).toBe(first)
-    expect(
-      characterOf(teach, 'en', { mode: 'chapter', chapter: 1100 }).visual
-        .strokes,
-    ).toBe(first)
+  })
+
+  it('is drawn again for a chapter reader once the chapter reaches it', () => {
+    const at = chapterAtEpisode(421)
+
+    expect(drawnAtChapter(at - 1)).toBe(first)
+    expect(drawnAtChapter(at)).toBe(redrawn?.value)
   })
 
   it('is lifted by hand as the reader would see it, not as it ends', () => {

@@ -16,8 +16,8 @@ describe('CharacterChronicle', () => {
     renderWithProviders(
       <CharacterChronicle
         chronicle={chronicle([
-          story({ episode: 1, title: 'A boy in a barrel' }),
-          story({ episode: 45, title: 'The first poster' }),
+          story({ revealedAtEpisode: 1, title: 'A boy in a barrel' }),
+          story({ revealedAtEpisode: 45, title: 'The first poster' }),
         ])}
       />,
     )
@@ -55,7 +55,9 @@ describe('CharacterChronicle', () => {
 
   it('says the episode in Italian', () => {
     renderWithProviders(
-      <CharacterChronicle chronicle={chronicle([story({ episode: 130 })])} />,
+      <CharacterChronicle
+        chronicle={chronicle([story({ revealedAtEpisode: 130 })])}
+      />,
       { locale: 'it' },
     )
 
@@ -72,12 +74,14 @@ describe('CharacterChronicle', () => {
     expect(container).toBeEmptyDOMElement()
   })
 
-  it('shows the note and no story to a reader who counts in chapters', () => {
-    renderWithProviders(
-      <CharacterChronicle chronicle={{ mode: 'chapterNote' }} />,
-    )
+  it('marks each story in the unit the reader counts in', () => {
+    const entry = story({ revealedAtEpisode: 130, revealedAtChapter: 218 })
 
-    expect(screen.getByText(/count in anime episodes/u)).toBeInTheDocument()
-    expect(screen.queryByRole('list')).not.toBeInTheDocument()
+    renderWithProviders(<CharacterChronicle chronicle={chronicle([entry])} />, {
+      bookmark: { mode: 'chapter', chapter: 400 },
+    })
+
+    expect(screen.getByText('Chapter 218')).toBeInTheDocument()
+    expect(screen.queryByText(/Episode/u)).not.toBeInTheDocument()
   })
 })

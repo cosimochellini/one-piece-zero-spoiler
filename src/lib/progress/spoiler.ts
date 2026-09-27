@@ -43,9 +43,10 @@ export type DatedEntry<T> = { readonly episode: number; readonly value: T }
 /**
  * The anime episode a bookmark stands at, or `null` when it stands nowhere
  * the timelines can measure: no bookmark, a season code the table cannot
- * resolve, or a chapter. Timelines count in episodes only, so a reader who
- * counts in chapters reaches none of their entries; that fails closed, which
- * is the safe direction.
+ * resolve, or a chapter. Timelines count in episodes only, so a chapter
+ * bookmark alone reaches none of their entries, which fails closed; the server
+ * first reads it as the episode its chapter reaches (`~/data/chapters`),
+ * which this module cannot import.
  */
 export function episodeOf(bookmark: Bookmark): null | number {
   return bookmark === null ? null : absoluteEpisodeOf(bookmark)
@@ -54,7 +55,8 @@ export function episodeOf(bookmark: Bookmark): null | number {
 /**
  * The latest fact the reader has reached, or `undefined` when they have
  * reached none. Same asymmetry as `isRevealed`: a `null` bookmark knows
- * nothing, and so does a chapter one. Entries are expected in ascending
+ * nothing, and neither does a chapter one not yet read as an episode (see
+ * `episodeOf`). Entries are expected in ascending
  * episode order.
  */
 export function latestAt<T>(

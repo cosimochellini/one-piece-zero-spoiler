@@ -44,14 +44,6 @@ export function CharacterFacts({
 }: CharacterFactsProps): null | ReactElement {
   const { locale, t } = useLocale()
 
-  // The timelines count in anime episodes. A reader who counts in chapters
-  // reaches none of their entries, and is told why instead of shown nothing.
-  if (facts.mode === 'chapterNote') {
-    return (
-      <p {...stylex.props(styles.note)}>{t('character.factsInEpisodes')}</p>
-    )
-  }
-
   const rows: readonly (readonly [string, ReactNode])[] = [
     [t('character.status'), statusRow(facts.status, t)],
     [t('character.epithet'), facts.epithet],
@@ -202,12 +194,6 @@ const styles = stylex.create({
     marginInlineStart: 0,
     overflowWrap: 'anywhere',
     minWidth: 0,
-  },
-  note: {
-    color: color.muted,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    maxWidth: '52ch',
   },
   // The same link voice as a record tile: colour on hover, the rule under it
   // reserved at rest so nothing shifts when the pointer arrives.
