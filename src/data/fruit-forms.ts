@@ -32,6 +32,7 @@ export const FRUIT_FORMS = {
   'mole-mole-fruit': 'paramecia',
   'spike-spike-fruit': 'paramecia',
   'sand-sand-fruit': 'logia',
+  'dog-dog-fruit-model-dachshund': 'zoan',
   'cage-cage-fruit': 'paramecia',
   'flower-flower-fruit': 'paramecia',
   'spring-spring-fruit': 'paramecia',

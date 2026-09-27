@@ -361,6 +361,22 @@ export const alabastaArt = {
     shadow(80, 186, 44),
   ],
 
+  // A ship's mast with a prisoner's ropes wound round it, and the sword taken
+  // from him laid on the deck at its foot.
+  'mr-11': [
+    { d: 'M74 176 V16 H86 V176' },
+    { d: 'M36 40 H124 V48 H36 Z' },
+    { d: 'M74 58 L40 48 M86 58 L120 48', role: 'ambient' },
+    {
+      d: 'M70 92 L90 100 M70 104 L90 112 M70 116 L90 124 M70 128 L90 136',
+      role: 'accent',
+    },
+    { d: 'M90 136 C104 140 106 150 100 160', role: 'accent' },
+    { d: 'M4 176 H156' },
+    { d: 'M22 186 L112 180 L120 184 L112 188 L22 190 Z' },
+    { d: 'M112 176 V192', role: 'soft' },
+  ],
+
   // A medicine bottle standing beside a flask of plum wine.
   'kureha': [
     { d: 'M40 170 V112 q0 -10 8 -14 V84 h20 v14 q8 4 8 14 v58 Z' },
@@ -398,6 +414,74 @@ export const alabastaArt = {
     { d: 'M46 118 H104 M46 156 H104', role: 'ambient', dashed: true },
     { d: 'M40 160 V170 M120 160 V170' },
     shadow(80, 180, 52),
+  ],
+
+  // A longbow with an arrow on the string, its head wrapped and burning.
+  'chess': [
+    { d: 'M44 20 C100 50 100 150 44 180' },
+    { d: 'M44 20 V180', role: 'ambient' },
+    { d: 'M78 90 H90 V110 H78 Z', role: 'soft' },
+    { d: 'M44 100 H134' },
+    { d: 'M44 100 l-10 -8 M44 100 l-10 8 M54 100 l-10 -8 M54 100 l-10 8' },
+    { d: 'M134 94 L150 100 L134 106 Z' },
+    {
+      d: 'M130 90 C124 78 132 72 130 60 C140 70 146 78 140 90 M142 92 C140 84 146 80 146 72 C152 80 152 88 148 94',
+      role: 'accent',
+    },
+  ],
+
+  // A boxing glove grown over with curls of hair, spikes standing out of them.
+  'kuromarimo': [
+    {
+      d: 'M52 150 C34 130 36 72 64 58 C92 44 126 60 126 94 C126 122 114 142 100 150 Z',
+    },
+    { d: 'M52 150 C40 146 30 126 40 112 C44 106 52 108 54 114' },
+    { d: 'M56 150 V178 H100 V150' },
+    { d: 'M56 162 H100', role: 'ambient' },
+    {
+      d: 'M62 82 a8 8 0 1 1 12 6 M86 70 a8 8 0 1 1 12 6 M102 98 a8 8 0 1 1 12 6 M70 108 a8 8 0 1 1 12 6 M90 124 a8 8 0 1 1 12 6',
+      role: 'accent',
+    },
+    { d: 'M62 60 L56 44 M94 52 L98 36 M122 74 L138 66 M126 108 L142 112' },
+    shadow(78, 188, 32),
+  ],
+
+  // Two clam shells with claws along their lips, and a parcel tied with a fuse.
+  'mr-13': [
+    { d: 'M20 80 C20 44 70 40 74 76 Z' },
+    { d: 'M86 76 C90 40 140 44 140 80 Z' },
+    {
+      d: 'M32 76 L40 52 M46 76 L48 48 M60 76 L60 52 M100 76 L100 52 M114 76 L112 48 M128 76 L120 52',
+      role: 'ambient',
+    },
+    {
+      d: 'M20 80 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 M86 76 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 4',
+      role: 'accent',
+    },
+    { d: 'M44 118 H112 V174 H44 Z' },
+    { d: 'M78 118 V174 M44 146 H112', role: 'ambient' },
+    { d: 'M78 118 c-10 -12 -20 -2 0 0 c10 -12 20 -2 0 0' },
+    { d: 'M112 126 C126 122 128 110 140 104' },
+    { d: 'M140 104 l6 -8 M140 104 l10 0 M140 104 l2 -10', role: 'soft' },
+    shadow(78, 184, 40),
+  ],
+
+  // An aviator's cap with its goggles pushed up, and a belt of bullets below.
+  'miss-friday': [
+    { d: 'M34 112 C34 52 126 52 126 112' },
+    {
+      d: 'M34 112 V140 Q34 150 46 150 H56 V114 M126 112 V140 Q126 150 114 150 H104 V114',
+    },
+    { d: 'M80 56 V72', role: 'ambient' },
+    { d: 'M34 92 C58 84 102 84 126 92', role: 'ambient' },
+    {
+      d: `${circle(64, 86, 12)} ${circle(96, 86, 12)} M76 86 H84`,
+      role: 'accent',
+    },
+    { d: 'M26 176 Q80 160 134 176' },
+    {
+      d: 'M40 171 v-12 a3 3 0 0 1 6 0 v12 M58 167 v-12 a3 3 0 0 1 6 0 v12 M76 166 v-12 a3 3 0 0 1 6 0 v12 M94 166 v-12 a3 3 0 0 1 6 0 v12 M112 168 v-12 a3 3 0 0 1 6 0 v12',
+    },
   ],
 
   // Dunes, a palm, and the sun over a desert kingdom.
@@ -510,6 +594,30 @@ export const alabastaArt = {
     { d: 'M82 60 c-6 -8 0 -14 2 -22 c2 8 8 10 6 18', role: 'accent' },
   ],
 
+  // A saddle and a striped blanket with tassels, laid on a dune.
+  'matsuge': [
+    { d: 'M4 172 C40 150 82 150 112 162 C132 170 146 168 156 160' },
+    { d: 'M4 190 C50 178 100 186 156 178', role: 'ambient', dashed: true },
+    { d: 'M34 116 H126 L118 146 H42 Z' },
+    { d: 'M38 126 H122 M40 136 H120', role: 'ambient' },
+    {
+      d: 'M46 146 v12 M62 146 v12 M78 146 v12 M94 146 v12 M110 146 v12',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [46, 161],
+        [62, 161],
+        [78, 161],
+        [94, 161],
+        [110, 161],
+      ]),
+      role: 'accent',
+    },
+    { d: 'M50 116 C54 92 106 92 110 116' },
+    { d: 'M54 106 C48 88 58 80 64 94 M106 106 C112 88 102 80 96 94' },
+  ],
+
   // Two steel blades crossed, each set into a cuff.
   'mr-1': [
     { d: 'M38 178 L36 168 L92 46 L100 50 L48 176 Z', role: 'accent' },
@@ -581,6 +689,111 @@ export const alabastaArt = {
     { d: 'M74 150 q22 10 44 0', role: 'ambient' },
   ],
 
+  // A shovel driven into cracked ground, and the sand it has dug out.
+  'toto': [
+    { d: 'M4 150 H156' },
+    {
+      d: 'M20 150 l8 14 l-4 12 M56 150 l-6 10 l8 16 M112 150 l6 12 l-6 16 M142 150 l-8 20',
+      role: 'ambient',
+    },
+    { d: 'M74 22 H98 M86 22 L78 124' },
+    { d: 'M64 122 L92 126 L88 156 Q78 166 66 154 Z', role: 'accent' },
+    { d: 'M100 150 C110 126 138 126 150 150' },
+    {
+      d: dots([
+        [112, 138],
+        [124, 132],
+        [136, 140],
+        [118, 146],
+      ]),
+      role: 'ambient',
+    },
+    shadow(80, 186, 50),
+  ],
+
+  // A crab's great pincer rising out of a river, the water closing over it.
+  'hasami': [
+    { d: 'M62 160 C60 140 64 124 72 112 M92 160 C92 142 90 128 86 116' },
+    {
+      d: 'M72 112 C44 96 38 58 58 30 C62 58 76 78 98 86 C104 70 102 54 110 40 C126 66 118 104 86 116 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M62 50 l6 4 M66 62 l7 3 M72 74 l7 2 M106 56 l-6 4 M106 70 l-7 3',
+      role: 'ambient',
+    },
+    { d: 'M72 132 H90 M68 146 H92', role: 'soft' },
+    ...SEA,
+  ],
+
+  // A baseball with a fuse in it, the spark running down to the stitches.
+  'lassoo': [
+    { d: circle(76, 116, 42) },
+    {
+      d: 'M48 86 C62 102 62 130 48 146 M104 86 C90 102 90 130 104 146',
+      role: 'accent',
+    },
+    {
+      d: 'M54 96 l6 -2 M58 110 h6 M58 124 h6 M54 138 l6 2 M98 96 l-6 -2 M94 110 h-6 M94 124 h-6 M98 138 l-6 2',
+      role: 'ambient',
+    },
+    { d: 'M100 80 L110 70 L118 78 L108 88 Z' },
+    { d: 'M114 74 C124 60 118 48 132 40' },
+    { d: 'M132 40 l6 -8 M132 40 l9 2 M132 40 l2 -10', role: 'soft' },
+    shadow(76, 176, 36),
+  ],
+
+  // Four small bottles of the water that gives five minutes, on a tray.
+  'tsumegeri-guards': [
+    ...[28, 60, 92, 124].flatMap((x): Stroke[] => {
+      return [
+        { d: `M${String(x)} 150 V112 q0 -8 6 -12 V84 h8 v16 q6 4 6 12 V150 Z` },
+        { d: `M${String(x + 6)} 84 V74 h8 v10`, role: 'soft' },
+        { d: `M${String(x)} 124 H${String(x + 20)}`, role: 'accent' },
+      ]
+    }),
+    { d: 'M16 150 H148 L140 162 H24 Z' },
+    shadow(82, 176, 60),
+  ],
+
+  // A long rifle with a scope, and two dice thrown beneath it.
+  'mr-7': [
+    { d: 'M10 86 H100 V94 H10 Z' },
+    { d: 'M100 82 H124 V98 H100 Z' },
+    { d: 'M124 84 L152 92 V116 L124 98' },
+    { d: 'M56 68 H100 V78 H56 Z M64 78 V82 M92 78 V82', role: 'accent' },
+    { d: 'M108 98 q0 10 8 10 q4 0 4 -10', role: 'soft' },
+    { d: 'M34 134 H62 V162 H34 Z' },
+    { d: 'M84 142 L110 134 L118 160 L92 168 Z' },
+    {
+      d: dots([
+        [41, 141],
+        [48, 148],
+        [55, 155],
+        [93.5, 147],
+        [105, 143.5],
+        [97, 158.5],
+        [108.5, 155],
+      ]),
+    },
+  ],
+
+  // A lily pad on the water, and a pistol laid across it with round bullets.
+  'miss-fathers-day': [
+    {
+      d: 'M80 152 L100 130 C128 132 142 142 140 154 C136 172 24 174 20 154 C18 140 40 130 66 130 Z',
+    },
+    { d: 'M80 152 L48 142 M80 152 L60 168 M80 152 L112 166', role: 'ambient' },
+    { d: 'M30 98 H104 V110 H30 Z', role: 'accent' },
+    { d: 'M30 98 q-10 6 0 12', role: 'accent' },
+    { d: 'M88 110 L96 134 H110 L104 110' },
+    {
+      d: `${circle(124, 90, 5)} ${circle(138, 100, 5)} ${circle(126, 110, 5)}`,
+      role: 'soft',
+    },
+    ...SEA.slice(1),
+  ],
+
   // An iron shackle ring, and a cigarette burning beside it.
   'hina': [
     { d: circle(70, 112, 44), role: 'accent' },
@@ -601,6 +814,20 @@ export const alabastaArt = {
     { d: 'M120 62 L124 54', role: 'ambient' },
     { d: 'M154 34 C146 22 156 16 150 6', role: 'ambient', dashed: true },
     shadow(70, 188, 44),
+  ],
+
+  // A cooking pot steaming on the stove, a ladle standing in it.
+  'terracotta': [
+    { d: 'M36 110 H124 V158 Q124 178 104 178 H56 Q36 178 36 158 Z' },
+    { d: 'M30 110 H130' },
+    { d: 'M36 124 H24 V140 H36 M124 124 H136 V140 H124' },
+    { d: 'M36 144 H124', role: 'ambient', dashed: true },
+    { d: 'M104 108 L126 42 l8 2' },
+    {
+      d: 'M58 96 C50 82 66 74 58 58 M80 96 C72 82 88 74 80 58',
+      role: 'accent',
+    },
+    shadow(80, 188, 50),
   ],
 
   // An open book, a flower growing out of its spine.

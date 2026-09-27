@@ -260,6 +260,21 @@ export const devilFruits: Saga = {
       visual: { art: 'sand-sand-fruit', tint: 'sand' },
     },
     {
+      id: 'dog-dog-fruit-model-dachshund',
+      kind: 'fruit',
+      revealedAtEpisode: 113,
+      revealedAtChapter: 184,
+      name: {
+        it: 'Frutto Inu Inu, modello Bassotto',
+        en: 'Dog-Dog Fruit, Model: Dachshund',
+      },
+      summary: {
+        it: 'Trasforma in un bassotto chi lo mangia, persino un oggetto: un bazooka che ne ha mangiato uno è diventato un cane vivo che continua a sparare i suoi colpi, uno starnuto alla volta.',
+        en: 'Turns whatever eats it into a dachshund, even an object: a bazooka fed one became a living dog that still fires its shells, one sneeze at a time.',
+      },
+      visual: { art: 'dog-dog-fruit-model-dachshund', tint: 'sand' },
+    },
+    {
       id: 'cage-cage-fruit',
       kind: 'fruit',
       revealedAtEpisode: 128,
