@@ -9,6 +9,12 @@ export function getRouter(): ReturnType<typeof createRouter<typeof routeTree>> {
     routeTree,
     defaultPreload: 'intent',
     scrollRestoration: true,
+    // A new page crossfades in rather than cutting (the timing is on <html>,
+    // in the root route). Only a new path counts: a hash jump stays a jump,
+    // and a bookmark move re-reads the records through `invalidate`, which
+    // never starts a view transition. Browsers that cannot tell the two
+    // apart fade on every navigation; browsers without view transitions cut.
+    defaultViewTransition: { types: ({ pathChanged }) => pathChanged && [] },
     // The server handler calls getRouter() once per request, so this is a
     // per-request nonce. <Scripts> stamps it onto every script tag it renders,
     // and the root route puts the same value in the Content-Security-Policy,

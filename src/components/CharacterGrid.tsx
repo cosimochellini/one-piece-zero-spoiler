@@ -127,6 +127,7 @@ export function CharacterGrid({
       />
 
       <CharacterShelves
+        featured={new Set(featuredOpen.map((entry) => entry.id))}
         fieldId={fieldId}
         needle={needle}
         peek={peek}

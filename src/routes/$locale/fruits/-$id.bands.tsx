@@ -24,6 +24,7 @@ import type {
   FruitView,
   Slot,
 } from '~/lib/view/records'
+import { morphPart } from '~/styles/morph'
 
 import { styles } from './-$id.styles'
 
@@ -63,7 +64,13 @@ export function PlateBand({
           slot={detail.slot}
           strength="media"
         >
-          {(record) => <FruitFrame visual={record.visual} />}
+          {(record) => {
+            return (
+              <div {...stylex.props(morphPart('fruit', record.id, 'art'))}>
+                <FruitFrame visual={record.visual} />
+              </div>
+            )
+          }}
         </SpoilerVeil>
       </div>
 
@@ -100,7 +107,9 @@ function PlateWords({ record }: { readonly record: FruitView }): ReactElement {
 
   return (
     <>
-      <h1 {...stylex.props(styles.name)}>{record.name}</h1>
+      <h1 {...stylex.props(styles.name, morphPart('fruit', record.id, 'name'))}>
+        {record.name}
+      </h1>
       <p {...stylex.props(styles.meta)}>
         <span {...stylex.props(styles.kind)}>
           {t('fruit.form')}
@@ -188,6 +197,7 @@ function Eaters({
                 `open-${slot.record.id}`
               : `fog-${slot.covered.handle}`
             }
+            morph="onClick"
             peek={peek}
             slot={slot}
           />
