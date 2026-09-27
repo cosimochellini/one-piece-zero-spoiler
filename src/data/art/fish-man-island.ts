@@ -12,6 +12,19 @@ import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the fish man island stretch of the route. */
 export const fishManIslandArt = {
+  // A mangrove on its stilt roots with a bubble going up, and an hourglass
+  // beside it with all the sand run through.
+  'return-to-sabaody': [
+    { d: 'M40 150 V78 M54 150 V78' },
+    { d: ellipse(47, 70, 30, 14) },
+    { d: 'M40 126 C32 134 28 142 26 152 M54 126 C62 134 66 142 68 152' },
+    { d: circle(84, 44, 9), role: 'accent' },
+    { d: 'M102 64 H142 M102 144 H142' },
+    { d: 'M108 64 L136 64 L122 104 Z M122 104 L108 144 H136 Z' },
+    { d: 'M112 144 L122 128 L132 144', role: 'accent' },
+    ...SEA,
+  ],
+
   // A bubble dome over a row of houses, the root of a great tree coming down
   // through it.
   'fish-man-island': [

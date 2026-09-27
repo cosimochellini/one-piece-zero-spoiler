@@ -216,6 +216,7 @@ function leaksIn(
 
   return filedAfter(episode)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
+    .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
     .filter((other) => names(text, other.name[locale]))
     .map((other) => `${label} (${locale}) names ${other.id}`)
 }
@@ -227,6 +228,18 @@ function leaksIn(
  * is still held to the marker rules when it is linked.
  */
 const COMMON_WORD_NAMES = new Set(['king'])
+
+/**
+ * The arcs whose name is said in the story well before the arc opens, and
+ * the episode from which a story may say it: the place is a destination long
+ * before it is a heading. Fish-Man Island is named as the next stop by
+ * Kokoro at 320; Whitebeard sails for Marineford at 434. A story before that
+ * episode is still scanned for the name.
+ */
+const SAID_BEFORE_FILED = new Map([
+  ['fish-man-island', 320],
+  ['marineford', 434],
+])
 
 /**
  * Every record filed after this episode, which a story at it may not name:
@@ -656,6 +669,18 @@ describe('the shelves', () => {
     ])
     expect(shelf('water-seven')).toContain('spandam')
     expect(shelf('water-seven')).not.toContain('jabra')
+  })
+
+  it('shelves the Post-War and the Return to Sabaody on their own arcs, not on Marineford or Fish-Man Island', () => {
+    expect(shelf('post-war')).toStrictEqual([
+      'curly-dadan',
+      'portgas-d-rouge',
+      'sabo',
+    ])
+    expect(shelf('return-to-sabaody')).toStrictEqual(['caribou', 'coribou'])
+    expect(shelf('marineford')).not.toContain('portgas-d-rouge')
+    expect(shelf('fish-man-island')).toContain('hammond')
+    expect(shelf('fish-man-island')).not.toContain('caribou')
   })
 })
 

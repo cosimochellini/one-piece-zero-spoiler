@@ -81,12 +81,24 @@ export const summitWar: Saga = {
       kind: 'arc',
       revealedAtEpisode: 457,
       revealedAtChapter: 550,
-      name: { it: 'Saga di Marineford', en: 'Marineford Saga' },
+      name: { it: 'Marineford', en: 'Marineford' },
       summary: {
         it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',
         en: 'The Marines and the strongest pirates in the world end up in the same harbour on the same day.',
       },
       visual: { art: 'marineford', tint: 'blue' },
+    },
+    {
+      id: 'post-war',
+      kind: 'arc',
+      revealedAtEpisode: 490,
+      revealedAtChapter: 581,
+      name: { it: 'Dopoguerra', en: 'Post-War' },
+      summary: {
+        it: 'La guerra è finita e il mondo festeggia la vittoria della Marina, mentre i pirati contro cui è stata combattuta tornano a muoversi su tutti i mari.',
+        en: 'The war is over and the world celebrates a Marine victory, while the pirates it was fought against start moving again across every sea.',
+      },
+      visual: { art: 'post-war', tint: 'ivory' },
     },
     {
       id: 'sabaody',
@@ -632,7 +644,7 @@ export const summitWar: Saga = {
       id: 'portgas-d-rouge',
       kind: 'character',
       revealedAtEpisode: 493,
-      revealedAtChapter: 550,
+      revealedAtChapter: 582,
       name: { it: 'Portuguese D. Rouge', en: 'Portgas D. Rouge' },
       summary: {
         it: 'La madre di Ace, che ha tenuto il figlio in grembo venti mesi per sottrarlo alla Marina e non è sopravvissuta al parto.',

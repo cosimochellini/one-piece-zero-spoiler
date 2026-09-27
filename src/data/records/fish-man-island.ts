@@ -18,17 +18,30 @@ const NEW_FISH_MAN_OFFICER = {
 export const fishManIsland: Saga = {
   entries: [
     {
-      id: 'fish-man-island',
+      id: 'return-to-sabaody',
       kind: 'arc',
       revealedAtEpisode: 517,
       revealedAtChapter: 598,
-      name: {
-        it: 'Saga dell’Isola degli Uomini-Pesce',
-        en: 'Fish-Man Island Saga',
-      },
+      name: { it: 'Ritorno a Sabaody', en: 'Return to Sabaody' },
       summary: {
-        it: 'Una città chiusa in una bolla d’aria a diecimila metri sotto il mare, appesa alle radici di un albero enorme, ultima tappa prima del Nuovo Mondo.',
-        en: 'A city inside an air bubble ten thousand metres down, hung from the roots of an enormous tree, the last stop before the New World.',
+        it: 'Due anni dopo essere stata dispersa, la ciurma torna all’arcipelago un membro alla volta, e ci trova già un’altra ciurma che usa il suo nome.',
+        en: 'Two years after it was scattered, the crew comes back to the archipelago one by one, and finds another crew already using its name.',
+      },
+      visual: { art: 'return-to-sabaody', tint: 'acid' },
+    },
+    // Filed at 523, where the arc itself opens, rather than at 517 with the
+    // saga: the Return to Sabaody opens the saga now, and the island is not
+    // reached until the descent. The summary no longer says the city hangs
+    // from a tree's roots, which is not learned until 531.
+    {
+      id: 'fish-man-island',
+      kind: 'arc',
+      revealedAtEpisode: 523,
+      revealedAtChapter: 603,
+      name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
+      summary: {
+        it: 'Diecimila metri sotto l’arcipelago, la rotta scende verso un’isola di uomini-pesce e sirene, ultima tappa prima del Nuovo Mondo.',
+        en: 'Ten thousand metres down, beneath the archipelago, the route sinks toward an island of fish-men and merfolk, the last stop before the New World.',
       },
       visual: { art: 'fish-man-island', tint: 'cyan' },
     },
