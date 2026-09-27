@@ -411,8 +411,8 @@ export const eastBlueChronicles = {
       value: {
         title: { it: 'Legato a un palo', en: 'Tied to a post' },
         body: {
-          it: 'Nel cortile della base della Marina di Shells Town un uomo sta legato a un palo, bruciato dal sole, da nove giorni senza mangiare. È Roronoa Zoro, il cacciatore di pirati, e ci si è messo da solo: un mese legato in cambio della vita di una bambina, dopo aver abbattuto il lupo domestico di [[helmeppo|Hermeppo]], il figlio del capitano della base. [[monkey-d-luffy|Rufy]] e [[koby|Kobi]] lo trovano; Zoro mangia la polpetta di riso schiacciata che la bambina aveva preparato per lui e chiede che le venga detto che era buona. Quando Hermeppo si vanta di non aver mai voluto tenere la parola, Rufy va a prendere le spade di Zoro.',
-          en: 'In the yard of the Marine base at Shells Town a man stands tied to a post, sun-blackened, nine days without food. He is Roronoa Zoro, the pirate hunter, and he put himself there: a month tied up in exchange for the life of a little girl, after he cut down the pet wolf of [[helmeppo|Helmeppo]], the base captain’s son. [[monkey-d-luffy|Luffy]] and [[koby|Koby]] find him; Zoro eats the crushed rice ball the girl made for him and asks that she be told it was good. When Helmeppo boasts that he never meant to keep his word, Luffy goes to fetch Zoro’s swords.',
+          it: 'Nel cortile della base della Marina di Shells Town un uomo sta legato a un palo, bruciato dal sole, da nove giorni senza mangiare. È Roronoa Zoro, il cacciatore di pirati, e ci si è messo da solo: un mese legato in cambio della vita di [[rika|una bambina]], dopo aver abbattuto il lupo domestico di [[helmeppo|Hermeppo]], il figlio del capitano della base. [[monkey-d-luffy|Rufy]] e [[koby|Kobi]] lo trovano; Zoro mangia la polpetta di riso schiacciata che la bambina aveva preparato per lui e chiede che le venga detto che era buona. Quando Hermeppo si vanta di non aver mai voluto tenere la parola, Rufy va a prendere le spade di Zoro.',
+          en: 'In the yard of the Marine base at Shells Town a man stands tied to a post, sun-blackened, nine days without food. He is Roronoa Zoro, the pirate hunter, and he put himself there: a month tied up in exchange for the life of [[rika|a little girl]], after he cut down the pet wolf of [[helmeppo|Helmeppo]], the base captain’s son. [[monkey-d-luffy|Luffy]] and [[koby|Koby]] find him; Zoro eats the crushed rice ball the girl made for him and asks that she be told it was good. When Helmeppo boasts that he never meant to keep his word, Luffy goes to fetch Zoro’s swords.',
         },
       },
     },
@@ -776,8 +776,8 @@ export const eastBlueChronicles = {
       value: {
         title: { it: 'Una bandiera sulla vela', en: 'A flag on the sail' },
         body: {
-          it: 'Il maggiordomo era il pirata [[kuro|Kuro]], e il suo piano di uccidere [[kaya|Kaya]] è fallito sulla spiaggia: [[monkey-d-luffy|Rufy]] lo ha steso, e Usop ha centrato in faccia l’ipnotizzatore [[jango|Jango]] con un colpo di fionda. In paese nessuno deve saperlo: il villaggio ha bisogno della sua pace, e lui delle sue bugie. [[kaya|Kaya]] regala alla ciurma una caravella con la testa di pecora, la Going Merry, e Usop scioglie la sua ciurma di bambini per salire a bordo con i pirati veri. Sulla vela dipinge il teschio con il cappello di paglia: per la prima volta la bandiera è davvero la sua.',
-          en: 'The butler was the pirate [[kuro|Kuro]], and his plan to murder [[kaya|Kaya]] failed on the beach: [[monkey-d-luffy|Luffy]] knocked him out, and Usopp put a slingshot pellet in the face of the hypnotist [[jango|Jango]]. Nobody in the village must know: the village needs its peace, and he needs his lies. [[kaya|Kaya]] gives the crew a caravel with a sheep’s head, the Going Merry, and Usopp disbands his crew of children to climb aboard with real pirates. On the sail he paints the skull in a straw hat: for the first time the flag is truly his.',
+          it: 'Il maggiordomo era il pirata [[kuro|Kuro]], e il suo piano di uccidere [[kaya|Kaya]] è fallito sulla spiaggia: [[monkey-d-luffy|Rufy]] lo ha steso, e Usop ha centrato in faccia l’ipnotizzatore [[jango|Jango]] con un colpo di fionda. In paese nessuno deve saperlo: il villaggio ha bisogno della sua pace, e lui delle sue bugie. [[kaya|Kaya]] regala alla ciurma una caravella con la testa di pecora, la Going Merry, e Usop scioglie la sua [[ninjin-piiman-and-tamanegi|ciurma di bambini]] per salire a bordo con i pirati veri. Sulla vela dipinge il teschio con il cappello di paglia: per la prima volta la bandiera è davvero la sua.',
+          en: 'The butler was the pirate [[kuro|Kuro]], and his plan to murder [[kaya|Kaya]] failed on the beach: [[monkey-d-luffy|Luffy]] knocked him out, and Usopp put a slingshot pellet in the face of the hypnotist [[jango|Jango]]. Nobody in the village must know: the village needs its peace, and he needs his lies. [[kaya|Kaya]] gives the crew a caravel with a sheep’s head, the Going Merry, and Usopp disbands his [[ninjin-piiman-and-tamanegi|crew of children]] to climb aboard with real pirates. On the sail he paints the skull in a straw hat: for the first time the flag is truly his.',
         },
       },
     },
@@ -992,8 +992,8 @@ export const eastBlueChronicles = {
           en: 'The Baratie’s sous-chef',
         },
         body: {
-          it: 'Il Baratie è un ristorante in mezzo al mare, e Sanji ne è il vice-cuoco. Serve ai tavoli con la sigaretta accesa, si inchina davanti a ogni cliente donna e, quando un tenente della Marina rovescia per terra la zuppa che ha preparato, lo pesta con le sole gambe fino a lasciarlo sanguinante sul pavimento: il cibo non si spreca, davanti a lui. Nello stesso momento [[monkey-d-luffy|Rufy]] sta scontando come sguattero il buco che ha aperto a cannonate nel tetto, sotto gli ordini di [[zeff|Zeff]], il vecchio con la gamba di legno che comanda la cucina. La ciurma è arrivata qui in cerca di un cuoco.',
-          en: 'The Baratie is a restaurant in the middle of the sea, and Sanji is its sous-chef. He waits tables with a cigarette lit, bows to every woman who walks in and, when a Marine lieutenant tips the soup he cooked onto the floor, beats him with his legs alone until the man lies bleeding on the boards: nobody wastes food in front of him. At the same time [[monkey-d-luffy|Luffy]] is working off the hole he blew in the roof as a chore boy, under the orders of [[zeff|Zeff]], the old man with the peg leg who runs the kitchen. The crew came here looking for a cook.',
+          it: 'Il Baratie è un ristorante in mezzo al mare, e Sanji ne è il vice-cuoco. Serve ai tavoli con la sigaretta accesa, si inchina davanti a ogni cliente donna e, quando [[fullbody|un tenente della Marina]] rovescia per terra la zuppa che ha preparato, lo pesta con le sole gambe fino a lasciarlo sanguinante sul pavimento: il cibo non si spreca, davanti a lui. Nello stesso momento [[monkey-d-luffy|Rufy]] sta scontando come sguattero il buco che ha aperto a cannonate nel tetto, sotto gli ordini di [[zeff|Zeff]], il vecchio con la gamba di legno che comanda la cucina. La ciurma è arrivata qui in cerca di un cuoco.',
+          en: 'The Baratie is a restaurant in the middle of the sea, and Sanji is its sous-chef. He waits tables with a cigarette lit, bows to every woman who walks in and, when [[fullbody|a Marine lieutenant]] tips the soup he cooked onto the floor, beats him with his legs alone until the man lies bleeding on the boards: nobody wastes food in front of him. At the same time [[monkey-d-luffy|Luffy]] is working off the hole he blew in the roof as a chore boy, under the orders of [[zeff|Zeff]], the old man with the peg leg who runs the kitchen. The crew came here looking for a cook.',
         },
       },
     },
@@ -1495,8 +1495,8 @@ export const eastBlueChronicles = {
           en: 'His first two friends sail away',
         },
         body: {
-          it: '[[helmeppo|Hermeppo]] punta una pistola su Kobi per fermare la carica di [[monkey-d-luffy|Rufy]], ma Rufy lo scaraventa via mentre [[roronoa-zoro|Zoro]] abbatte [[morgan|Morgan]]. La guarnigione arresta il proprio capitano. Quella sera, a cena gratis da Rika, Kobi chiama Rufy e Zoro i suoi primi veri amici, proprio mentre i marine arrivano a mandare via i pirati. Interrogato se sta con loro, Kobi si spaventa, lo nega, e tira un pugno a Rufy; solo dopo capisce che Rufy ha perso apposta, perché lui potesse essere accettato come recluta. Mentre i pirati salpano, Kobi li saluta, e tutta la guarnigione, stupita, saluta insieme a lui.',
-          en: '[[helmeppo|Helmeppo]] holds a pistol on Koby to stop [[monkey-d-luffy|Luffy]]’s charge, but Luffy knocks him aside while [[roronoa-zoro|Zoro]] cuts down [[morgan|Morgan]]. The garrison arrests its own captain. That evening, over free food at Rika’s, Koby calls Luffy and Zoro his first real friends, just before Marines arrive to send the pirates away. Asked if he belongs with them, Koby panics, denies it, and punches Luffy; only after does he understand Luffy threw the fight on purpose, so Koby could be accepted as a recruit. As the pirates sail off, Koby salutes them, and the whole garrison, astonished, salutes alongside him.',
+          it: '[[helmeppo|Hermeppo]] punta una pistola su Kobi per fermare la carica di [[monkey-d-luffy|Rufy]], ma Rufy lo scaraventa via mentre [[roronoa-zoro|Zoro]] abbatte [[morgan|Morgan]]. La guarnigione arresta il proprio capitano. Quella sera, a cena gratis da [[rika|Rika]], Kobi chiama Rufy e Zoro i suoi primi veri amici, proprio mentre i marine arrivano a mandare via i pirati. Interrogato se sta con loro, Kobi si spaventa, lo nega, e tira un pugno a Rufy; solo dopo capisce che Rufy ha perso apposta, perché lui potesse essere accettato come recluta. Mentre i pirati salpano, Kobi li saluta, e tutta la guarnigione, stupita, saluta insieme a lui.',
+          en: '[[helmeppo|Helmeppo]] holds a pistol on Koby to stop [[monkey-d-luffy|Luffy]]’s charge, but Luffy knocks him aside while [[roronoa-zoro|Zoro]] cuts down [[morgan|Morgan]]. The garrison arrests its own captain. That evening, over free food at [[rika|Rika]]’s, Koby calls Luffy and Zoro his first real friends, just before Marines arrive to send the pirates away. Asked if he belongs with them, Koby panics, denies it, and punches Luffy; only after does he understand Luffy threw the fight on purpose, so Koby could be accepted as a recruit. As the pirates sail off, Koby salutes them, and the whole garrison, astonished, salutes alongside him.',
         },
       },
     },
@@ -1842,6 +1842,367 @@ export const eastBlueChronicles = {
         body: {
           it: 'Ventidue anni prima, un marine che ha appena voltato le spalle alla propria uniforme guida, al fianco di [[emporio-ivankov|Ivankov]], un manipolo di ribelli contro il palazzo di un re che affama e schiavizza metà della sua stessa isola. Sfondano i cancelli e liberano gli schiavi in catene, tra cui un gigante imprigionato per essersi opposto a quella legge, chiamato [[bartholomew-kuma|Kuma]], che li supplica di lasciarlo unirsi a loro. Da quella notte, i Cacciatori della Libertà smettono di essere una banda di disperati locali: diventano il primo nucleo di un esercito che vuole rovesciare governi, non solo re, e Dragon, l’ex marine, ne diventa il comandante che nessuno riesce più a fermare.',
           en: 'Twenty-two years earlier, a Marine who has just turned his back on his own uniform leads, alongside [[emporio-ivankov|Ivankov]], a handful of rebels against the palace of a king who starves and enslaves half his own island. They break down the gates and free the slaves in chains, among them a giant imprisoned for standing against that same law, a man named [[bartholomew-kuma|Kuma]], who begs to join them. From that night on, the Freedom Fighters stop being a local band of the desperate: they become the first core of an army that means to topple governments, not just kings, and Dragon, the former Marine, becomes the commander nobody can stop again.',
+        },
+      },
+    },
+  ],
+  'rika': [
+    {
+      episode: 2,
+      value: {
+        title: {
+          it: 'Polpette di riso con lo zucchero',
+          en: 'Sweet rice balls',
+        },
+        body: {
+          it: 'Una bambina sale con una scala oltre il muro della base della Marina di Shells Town e si avvicina al cacciatore di pirati legato nel cortile, con delle polpette di riso fatte da lei. [[roronoa-zoro|Zoro]] le dice di andarsene. [[helmeppo|Hermeppo]] ne prende una, la sputa perché lei ha messo lo zucchero al posto del sale, calpesta le altre nella terra e ordina a un marine di buttarla oltre il muro. [[monkey-d-luffy|Rufy]] la prende al volo. Zoro mangia lo stesso il riso schiacciato e chiede che le si dica che era buono. Lei spiega perché è legato lì: un lupo lasciato libero da Hermeppo nel locale l’aveva aggredita, e Zoro lo aveva abbattuto. Quando Rufy prende a pugni Hermeppo, lei esulta, finché sua madre non la trascina a casa.',
+          en: 'A little girl climbs a ladder over the wall of the Marine base at Shells Town and walks up to the pirate hunter tied in the yard, carrying rice balls she made herself. [[roronoa-zoro|Zoro]] tells her to go away. [[helmeppo|Helmeppo]] takes one, spits it out because she made them sweet instead of salty, stamps the rest into the dirt and has a Marine throw her over the wall. [[monkey-d-luffy|Luffy]] catches her. Zoro eats the trampled rice anyway and asks that she be told it was good. She explains why he is there: a wolf Helmeppo let loose in the bar went for her, and Zoro cut it down. When Luffy punches Helmeppo she cheers, until her mother drags her home.',
+        },
+      },
+    },
+    {
+      episode: 3,
+      value: {
+        title: { it: 'Il pranzo della vittoria', en: 'The victory lunch' },
+        body: {
+          it: 'Con [[morgan|Morgan]] sconfitto e arrestato dai suoi stessi uomini, [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[koby|Kobi]] si siedono a mangiare nel locale della madre di Rica, e la bambina li guarda felice, dicendo a Rufy che aveva ragione a dirsi forte. Il nuovo comandante della base entra a ringraziarli e a chiedere ai due pirati di lasciare la città, promettendo in cambio di non segnalarli al quartier generale. Kobi resta per entrare nella Marina. Quando Rufy e Zoro prendono il mare, Rica e sua madre li salutano dal porto.',
+          en: 'With [[morgan|Morgan]] beaten and arrested by his own men, [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[koby|Koby]] sit down to eat at the restaurant Rika’s mother keeps, and the girl watches them, delighted, telling Luffy he was right to say he was strong. The new commander of the base comes in to thank them and to ask the two pirates to leave town, promising in return not to report them to headquarters. Koby stays behind to join the Marines. When Luffy and Zoro put to sea, Rika and her mother wave them off from the harbour.',
+        },
+      },
+    },
+  ],
+  'chouchou': [
+    {
+      episode: 6,
+      value: {
+        title: { it: 'L’ultimo pacco di cibo', en: 'The last box of dog food' },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]], chiuso in una gabbia, stuzzica il cane davanti al negozio di cibo per animali e si fa mordere; quando [[nami|Nami]] gli lancia la chiave, Shushu la inghiotte. Il sindaco spiega che il cane fa la guardia al negozio da quando il suo padrone è morto. Poi arriva [[mohji|Mohji]] in groppa a [[richie|Richi]], e Shushu morde anche lui. Il leone spezza la gabbia, scaraventa Rufy dentro una casa e si getta sul cibo del negozio; Shushu lo affronta con tutte le sue forze e perde, mentre il negozio va a fuoco. Rufy torna, batte il leone e il suo domatore, e posa davanti al cane l’unico pacco di cibo salvato dalle macerie. Shushu lo prende e se ne va.',
+          en: '[[monkey-d-luffy|Luffy]], locked in a cage, pokes the dog outside the pet-food shop and gets bitten; when [[nami|Nami]] throws him the key, Chouchou swallows it. The mayor explains that the dog has guarded the shop since his master died. Then [[mohji|Mohji]] rides up on [[richie|Richie]], and Chouchou bites him too. The lion breaks the cage, swats Luffy through a house and goes for the food in the shop; Chouchou fights him with everything he has and loses, and the shop goes up in flames. Luffy comes back, beats the lion and his tamer, and sets down the one box of food saved from the ruins. Chouchou takes it and goes.',
+        },
+      },
+    },
+    {
+      episode: 8,
+      value: {
+        title: { it: 'Un cane in mezzo alla strada', en: 'A dog in the road' },
+        body: {
+          it: 'Quando la gente di Orange Town torna dalle campagne, trova il sindaco, [[boodle|Barboncino]], svenuto, i pirati sconfitti e tre sconosciuti in mezzo alle macerie; [[monkey-d-luffy|Rufy]] ammette tranquillo di essere stato lui a stendere il sindaco. La folla si rivolta contro di loro, e Rufy, [[roronoa-zoro|Zoro]] e [[nami|Nami]] scappano verso il porto. Shushu si pianta in mezzo alla strada e abbaia finché gli abitanti non si fermano, e i tre riescono a raggiungere il molo.',
+          en: 'When the people of Orange Town come back from the outskirts, they find their mayor, [[boodle|Boodle]], knocked out cold, the pirates beaten and three strangers standing among the ruins; [[monkey-d-luffy|Luffy]] cheerfully admits that he knocked the mayor out. The crowd turns on them, and Luffy, [[roronoa-zoro|Zoro]] and [[nami|Nami]] run for the harbour. Chouchou plants himself in the road and barks until the townspeople stop, and the three get away to the pier.',
+        },
+      },
+    },
+  ],
+  'richie': [
+    {
+      episode: 6,
+      value: {
+        title: { it: 'La gabbia e il negozio', en: 'The cage and the shop' },
+        body: {
+          it: '[[mohji|Mohji]] lo porta fino al negozio di animali dove [[monkey-d-luffy|Rufy]] è chiuso in una gabbia, e gli ordina di attaccare. Il balzo di Richi spacca la gabbia, liberando Rufy, e una zampata lo manda dentro una casa. Credendo il ragazzo morto, Mohji gli permette di prendersi il cibo del negozio. [[chouchou|Shushu]] glielo contende e perde, e il negozio va a fuoco. Poi Rufy esce dalle macerie. Quando Mohji gli lancia contro Richi, Rufy ferma il leone con un solo colpo, e poi si occupa del suo domatore.',
+          en: '[[mohji|Mohji]] rides him up to the pet shop where [[monkey-d-luffy|Luffy]] sits locked in a cage, and orders him to attack. Richie’s pounce smashes the cage open, which sets Luffy free, and a swipe of his paw sends Luffy through a house. Thinking the boy dead, Mohji lets him have the shop’s food. [[chouchou|Chouchou]] fights him for it and loses, and the shop burns. Then Luffy walks back out of the rubble. When Mohji sends Richie at him, Luffy stops the lion with one blow, then deals with his tamer.',
+        },
+      },
+    },
+    {
+      episode: 7,
+      value: {
+        title: { it: 'Uno scudo con la criniera', en: 'A shield with a mane' },
+        body: {
+          it: 'Quando [[buggy|Bagy]] spara una palla di Bagy contro [[monkey-d-luffy|Rufy]] e i suoi compagni, il corpo di gomma di Rufy assorbe il colpo e lo rimanda dritto contro i Pirati di Bagy. Restano in piedi solo in due: Bagy, che si è fatto scudo dei suoi uomini, e [[cabaji|Cabaji]], che si è fatto scudo di Richi, ancora svenuto dopo lo scontro con Rufy, per non sporcarsi i vestiti. [[mohji|Mohji]] si riprende, trova il suo leone privo di sensi fra le braccia di Cabaji e va su tutte le furie.',
+          en: 'When [[buggy|Buggy]] fires a Buggy Ball at [[monkey-d-luffy|Luffy]] and his friends, Luffy’s rubber body catches the shot and sends it straight back into the Buggy Pirates. Only two are left standing: Buggy, who used his own men as a shield, and [[cabaji|Cabaji]], who used Richie, still out cold from his fight with Luffy, so that his clothes would not get dirty. [[mohji|Mohji]] comes round to find his lion limp in Cabaji’s arms and is furious.',
+        },
+      },
+    },
+    {
+      episode: 53,
+      value: {
+        title: {
+          it: 'Una torcia per la Going Merry',
+          en: 'A torch for the Going Merry',
+        },
+        body: {
+          it: 'A Loguetown, mentre [[buggy|Bagy]] si prepara a giustiziare [[monkey-d-luffy|Rufy]] in piazza, [[mohji|Mohji]] e Richi scendono al porto per togliergli ogni via di fuga. Riconoscono la sua nave, la Going Merry, dal cappello di paglia sulla bandiera e si preparano a darle fuoco. [[nami|Nami]] e [[usopp|Usop]] raggiungono la nave proprio mentre Mohji sta per incendiarla; arrivano i marine e aprono il fuoco su Mohji, e i due ne approfittano per salire a bordo e salpare.',
+          en: 'At Loguetown, while [[buggy|Buggy]] prepares to execute [[monkey-d-luffy|Luffy]] in the square, [[mohji|Mohji]] and Richie go down to the harbour to make sure he has no way out. They pick out his ship, the Going Merry, by the straw hat on its flag and set about burning it. [[nami|Nami]] and [[usopp|Usopp]] reach the ship just as Mohji is about to set it alight; Marines arrive and open fire on Mohji, and the two take the chance to board and sail.',
+        },
+      },
+    },
+  ],
+  'boodle': [
+    {
+      episode: 7,
+      value: {
+        title: {
+          it: 'La città è il suo tesoro',
+          en: 'The town is his treasure',
+        },
+        body: {
+          it: '[[chouchou|Shushu]] ha difeso dal leone [[richie|Richi]] il negozio del suo padrone morto, e uno sconosciuto con un cappello di paglia lo ha vendicato, mentre il sindaco di Orange Town era scappato al riparo. Poi una palla di Bagy gli rade al suolo la casa. Barboncino ha costruito quella città con le sue mani in quarant’anni, e non la guarderà distruggere una seconda volta: con un’armatura di cuoio e una lancia in pugno, marcia fino al pub e chiama fuori [[buggy|Bagy]]. La mano staccata di Bagy lo afferra alla gola. [[monkey-d-luffy|Rufy]] gliela toglie di dosso, e quando Barboncino insiste per combattere da solo, Rufy lo stende contro un muro per tenerlo fuori dalla lotta.',
+          en: '[[chouchou|Chouchou]] defended his dead master’s shop against the lion [[richie|Richie]], and a stranger in a straw hat avenged him, while the mayor of Orange Town had run for cover. Then a Buggy Ball flattens the mayor’s house. Boodle has built this town with his own hands over forty years, and he will not watch it destroyed a second time: in leather armour, spear in hand, he marches to the pub and calls [[buggy|Buggy]] out. Buggy’s detached hand seizes him by the throat. [[monkey-d-luffy|Luffy]] pulls it off, and when Boodle insists on fighting alone, Luffy knocks him out against a wall to keep him out of the fight.',
+        },
+      },
+    },
+    {
+      episode: 8,
+      value: {
+        title: { it: 'Grazie dal molo', en: 'Thanks from the pier' },
+        body: {
+          it: 'Barboncino si risveglia e trova i Pirati di Bagy sconfitti e i suoi cittadini, tornati dalle campagne, che gli raccontano di aver cacciato i tre sconosciuti. Li zittisce: solo lui ha il diritto di dire qualcosa contro quei tre. Si toglie l’armatura mentre corre verso il porto, e ci arriva quando [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[nami|Nami]] hanno già preso il largo. In lacrime, grida loro che gli dispiace e che non li dimenticherà mai, e loro lo salutano. Rufy ha lasciato alla città il tesoro di Bagy, perché possa ricostruirsi.',
+          en: 'Boodle comes round to find the Buggy Pirates beaten and his townspeople, back from the outskirts, telling him they have chased off the three strangers. He shouts them down: nobody but him has the right to say a word against those three. He strips off his armour as he runs to the harbour, and reaches it as [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[nami|Nami]] are already pulling away. In tears, he calls after them that he is sorry and will never forget them, and they wave back. Luffy has left Buggy’s treasure behind for the town to rebuild with.',
+        },
+      },
+    },
+  ],
+  'ninjin-piiman-and-tamanegi': [
+    {
+      episode: 9,
+      value: {
+        title: {
+          it: 'Un salvataggio in trattoria',
+          en: 'A rescue at the restaurant',
+        },
+        body: {
+          it: 'Ogni giorno corrono con [[usopp|Usop]] per il Villaggio di Syrup, e oggi uno di loro porta una notizia vera: sta arrivando una nave, e ha il teschio sulla bandiera. I quattro vanno alla costa per ricacciare indietro i pirati, ma quando [[roronoa-zoro|Zoro]] li scopre, i tre ragazzini scappano e lasciano solo il loro capitano. Più tardi, saputo che i pirati sono in trattoria con Usop, fanno irruzione con le spade di legno per salvarlo, e si sentono dire che se lo sono mangiato. È uno scherzo. Il capitano è andato, come ogni giorno, alla villa sulla collina a raccontare bugie a [[kaya|Kaya]] per farla ridere, e per loro è la cosa più bella che fa.',
+          en: 'Every day they run through Syrup Village with [[usopp|Usopp]], and today one of them brings real news: a ship is coming, and it flies a skull. The four go down to the coast to drive the pirates back, but when [[roronoa-zoro|Zoro]] spots them, the three boys run off and leave their captain alone. Later, hearing that the pirates are in the restaurant with Usopp, they storm in with wooden swords to save him, and are told he has been eaten. It is a joke. Their captain has gone, as he does every day, to the mansion on the hill to tell [[kaya|Kaya]] lies that make her laugh, and to them that is the best thing he does.',
+        },
+      },
+    },
+    {
+      episode: 11,
+      value: {
+        title: { it: 'Il capitano che ha mentito', en: 'The captain who lied' },
+        body: {
+          it: 'Mentre [[monkey-d-luffy|Rufy]] e [[usopp|Usop]] sono via, aspettano ai margini del villaggio con [[roronoa-zoro|Zoro]] e [[nami|Nami]], finché uno di loro non vede un uomo che risale la strada camminando all’indietro. È [[jango|Jango]], un ipnotizzatore, che fa dondolare il suo anello per mostrare il trucco e addormenta tutti e tre, compreso sé stesso. Quando [[usopp|Usop]] torna con un braccio che sanguina e dice che il suo avvertimento sul maggiordomo era solo un’altra bugia, gli dicono che li ha delusi e se ne vanno. Per una volta aveva detto la verità.',
+          en: 'While [[monkey-d-luffy|Luffy]] and [[usopp|Usopp]] are away, they wait at the edge of the village with [[roronoa-zoro|Zoro]] and [[nami|Nami]], until one of them sees a man coming up the road walking backwards. It is [[jango|Jango]], a hypnotist, who swings his ring to show them his trick and sends all three to sleep, himself included. When [[usopp|Usopp]] comes back, his arm bleeding, and says that his warning about the butler was just another lie, they tell him he has let them down and walk away. For once he had been telling the truth.',
+        },
+      },
+    },
+    {
+      episode: 16,
+      value: {
+        title: { it: 'Nel bosco', en: 'Through the forest' },
+        body: {
+          it: 'Sulla costa nord saltano fuori e picchiano [[kuro|Kuro]] mentre è a terra, uno di loro armato di padella, finché lui non stende [[usopp|Usop]] e manda [[jango|Jango]] dietro a [[kaya|Kaya]]. Il loro capitano dà un solo ordine: proteggerla. La guidano attraverso il bosco, e quando lei sta troppo male per correre provano a fermare Jango da soli, con una finta resa, le loro armi e un tronco che gli cade addosso. Lui ne esce illeso e dice che li ucciderà. Per salvarli, Kaya accetta di firmare il testamento che vuole, e proprio allora arrivano [[roronoa-zoro|Zoro]] e Usop.',
+          en: 'On the north shore they jump out and beat [[kuro|Kuro]] while he is down, one of them swinging a frying pan, until he knocks [[usopp|Usopp]] to the ground and sends [[jango|Jango]] after [[kaya|Kaya]]. Their captain gives them one order: protect her. They lead her through the forest, and when she is too ill to run, they try to stop Jango themselves with a fake surrender, their weapons and a falling log. He walks out of it unhurt and says he will kill them. To save them, Kaya agrees to sign the will he wants, and just then [[roronoa-zoro|Zoro]] and Usopp arrive.',
+        },
+      },
+    },
+    {
+      episode: 17,
+      value: {
+        title: { it: 'La ciurma si scioglie', en: 'The crew disbands' },
+        body: {
+          it: '[[usopp|Usop]] abbatte [[jango|Jango]] con un proiettile che gli esplode in faccia, poi chiede ai tre di non raccontare mai al villaggio che cosa è successo sulla costa. Più tardi dice loro che prende il mare come pirata vero e che i Pirati di Usop finiscono qui: ognuno di loro ha un sogno suo da seguire. I ragazzini piangono. Quando la nave è salpata con il loro capitano a bordo, corrono per il Villaggio di Syrup gridando che i pirati stanno arrivando, come faceva sempre lui.',
+          en: '[[usopp|Usopp]] brings [[jango|Jango]] down with a pellet that explodes in his face, then asks the three of them never to tell the village what happened on the shore. Afterwards he tells them he is going to sea as a real pirate, and that the Usopp Pirates end here: each of them has a dream of his own to follow. The boys cry. When the ship has sailed with their captain aboard, they run through Syrup Village shouting that pirates are coming, the way he always did.',
+        },
+      },
+    },
+  ],
+  'buchi': [
+    {
+      episode: 13,
+      value: {
+        title: { it: 'Giù dalla nave', en: 'Down from the ship' },
+        body: {
+          it: 'Buchi e [[sham|Sham]] guardano dal ponte la ciurma battuta sul pendio, e quando [[jango|Jango]] li chiama saltano giù, con Buchi che giura di non voler partecipare a quella battaglia. È una recita. Mentre Sham tiene fermo [[roronoa-zoro|Zoro]], Buchi salta altissimo per schiacciarlo; Zoro si libera e il terreno si spacca sotto il pestone. Con lo spadaccino rimasto con una spada sola, i fratelli attaccano insieme, finché un colpo sbagliato di [[usopp|Usop]] non centra Zoro e loro gli squarciano il petto. Poi arriva [[kuro|Kuro]], e Buchi si immobilizza.',
+          en: 'Buchi and [[sham|Sham]] watch from the deck as the crew is beaten on the slope, and when [[jango|Jango]] calls for them they jump down, Buchi insisting that he wants no part of this fight. It is an act. While Sham holds [[roronoa-zoro|Zoro]] down, Buchi springs high into the air to crush him; Zoro twists free and the ground splits under the stomp. With the swordsman left with a single sword, the brothers attack together, until a stray shot from [[usopp|Usopp]] hits Zoro and they cut his chest. Then [[kuro|Kuro]] arrives, and Buchi goes still.',
+        },
+      },
+    },
+    {
+      episode: 14,
+      value: {
+        title: { it: 'Ipnotizzato', en: 'Hypnotised' },
+        body: {
+          it: 'Quando [[kuro|Kuro]] li chiama buoni a nulla, Buchi gli ricorda i villaggi saccheggiati e le navi affondate mentre lui si riposava, e dice che non è più il loro capitano. Kuro è alle loro spalle prima che possano colpire, con le lame alla gola, e dà loro cinque minuti. Poi [[roronoa-zoro|Zoro]] si riprende le spade e abbatte i due fratelli. [[sham|Sham]] resta a terra; Buchi, ferito gravemente, si rialza e supplica [[jango|Jango]] di ipnotizzarlo. Al dondolio dell’anello i muscoli gli si gonfiano, e torna contro Zoro più forte e più feroce di prima.',
+          en: 'When [[kuro|Kuro]] calls them useless, Buchi reminds him of the villages they raided and the ships they sank while he rested, and says he is no longer their captain. Kuro is behind them before they can strike, blades at their throats, and gives them five minutes. Then [[roronoa-zoro|Zoro]] gets his swords back and cuts both brothers down. [[sham|Sham]] stays down; Buchi, badly hurt, gets up and begs [[jango|Jango]] to hypnotise him. At the swing of the ring his muscles swell, and he comes back at Zoro stronger and more savage than before.',
+        },
+      },
+    },
+    {
+      episode: 15,
+      value: {
+        title: { it: 'Sulla strada di Zoro', en: 'In Zoro’s way' },
+        body: {
+          it: 'Ipnotizzato, Buchi mette a soqquadro la costa: i suoi salti frantumano la roccia ovunque atterri, e si piazza tra [[roronoa-zoro|Zoro]] e lo scontro di [[monkey-d-luffy|Rufy]] con [[kuro|Kuro]]. Quando Kuro gli ordina di finire [[usopp|Usop]], Zoro lo trascina a terra; Buchi scaraventa lo spadaccino contro la parete di roccia e carica di nuovo. Questa volta Zoro non ha più pazienza. Gli dice di togliersi di mezzo e lo taglia da parte a parte, e Buchi non si rialza più. Con il permesso di Rufy, Zoro va a cercare [[kaya|Kaya]].',
+          en: 'Hypnotised, Buchi tears up the shore: his leaps shatter the rock wherever he lands, and he stands between [[roronoa-zoro|Zoro]] and [[monkey-d-luffy|Luffy]]’s fight with [[kuro|Kuro]]. When Kuro orders him to finish off [[usopp|Usopp]], Zoro drags him down; Buchi throws the swordsman into the cliff and charges again. This time Zoro has no patience left. He tells him to get out of the way and cuts straight through him, and Buchi does not get up again. With Luffy’s leave, Zoro goes after [[kaya|Kaya]].',
+        },
+      },
+    },
+  ],
+  'sham': [
+    {
+      episode: 13,
+      value: {
+        title: { it: 'La finta paura', en: 'The coward act' },
+        body: {
+          it: 'Quando la ciurma è stata battuta sul pendio, [[jango|Jango]] chiama i fratelli Nyaban, e Sham e [[buchi|Buchi]] saltano giù dalla nave lamentandosi che il nemico è troppo forte per loro. Sham corre verso [[roronoa-zoro|Zoro]] con tanta debolezza che lo spadaccino si trattiene, e in quell’istante gli strappa due delle tre spade e le getta giù per il pendio. Il colpo di Zoro gli taglia soltanto la camicia. Sham gli blocca le braccia per Buchi, e quando un colpo sbagliato di [[usopp|Usop]] centra Zoro, i fratelli gli squarciano il petto. Poi in cima al pendio compare [[kuro|Kuro]], e tutti e due si pietrificano.',
+          en: 'Once the crew has been beaten on the slope, [[jango|Jango]] calls down the Nyaban Brothers, and Sham and [[buchi|Buchi]] leap from the ship moaning that the enemy is far too strong for them. Sham runs at [[roronoa-zoro|Zoro]] so feebly that the swordsman holds back, and in that instant he snatches two of the three swords and tosses them down the slope. Zoro’s cut slices only his shirt. Sham pins his arms for Buchi, and when a stray shot from [[usopp|Usopp]] hits Zoro, the brothers slash his chest. Then [[kuro|Kuro]] appears at the top of the slope, and both of them freeze.',
+        },
+      },
+    },
+    {
+      episode: 14,
+      value: {
+        title: {
+          it: 'Contro il loro capitano',
+          en: 'Against their own captain',
+        },
+        body: {
+          it: '[[kuro|Kuro]] dà dei buoni a nulla ai suoi vecchi uomini, e i fratelli gli si rivoltano contro: lui ha passato tre anni a riposarsi in un villaggio, gridano, mentre loro continuavano a saccheggiare e ad affondare navi. Lo caricano, e lui sparisce per ricomparire alle loro spalle con le lame dei guanti puntate alla gola. Dà loro cinque minuti per finire [[roronoa-zoro|Zoro]], altrimenti li ucciderà tutti. Sham promette che gliene bastano cinque secondi. Ma [[nami|Nami]] rilancia a Zoro le sue spade con un calcio, e con tutte e tre lui abbatte i due fratelli in un colpo solo. Sham non si rialza.',
+          en: '[[kuro|Kuro]] calls his old crew useless, and the brothers turn on him: he has spent three years resting in a village, they shout, while they kept raiding and sinking ships. They charge him, and he vanishes, to reappear behind them with the blades of his gloves at their throats. He gives them five minutes to finish off [[roronoa-zoro|Zoro]], or he will kill them all. Sham promises to do it in five seconds. But [[nami|Nami]] kicks Zoro back his swords, and with all three he cuts both brothers down in a single stroke. Sham does not get up.',
+        },
+      },
+    },
+  ],
+  'fullbody': [
+    {
+      episode: 20,
+      value: {
+        title: { it: 'La zuppa per terra', en: 'Soup on the floor' },
+        body: {
+          it: 'Fullbody arriva al Baratie con una donna sottobraccio e ordina ai suoi uomini di sparare sulla piccola nave accostata al ristorante; [[monkey-d-luffy|Rufy]] respinge la palla di cannone, che sfonda il tetto e finisce addosso a [[zeff|Zeff]]. Dentro, a servire il tenente è [[sanji|Sanji]]. Fullbody infila una mosca nella zuppa per rimettere il cuoco al suo posto, e quando lo scherzo gli si ritorce contro spacca il tavolo e la zuppa finisce per terra. Per aver sprecato il cibo, Sanji lo pesta a sangue usando solo le gambe.',
+          en: 'Fullbody arrives at the Baratie with a woman on his arm and orders his men to fire on the little ship tied up beside the restaurant; [[monkey-d-luffy|Luffy]] bounces the cannonball back, and it smashes through the roof onto [[zeff|Zeff]]. Inside, the lieutenant is served by [[sanji|Sanji]]. Fullbody slips a fly into his soup to put the cook in his place, and when the trick turns on him he smashes the table and the soup goes on the floor. For wasting food, Sanji beats him bloody with his legs alone.',
+        },
+      },
+    },
+    {
+      episode: 21,
+      value: {
+        title: {
+          it: 'Il prigioniero scappato',
+          en: 'The prisoner who got away',
+        },
+        body: {
+          it: 'Pestato dal vice-cuoco del Baratie, Fullbody sta cercando di svignarsela quando uno dei suoi uomini gli porta una notizia peggiore: il pirata che avevano catturato e lasciato a digiuno nella cella della nave è scappato. È [[gin|Gin]], che un momento dopo entra nel ristorante e chiede da mangiare. Fullbody guarda uno dei cuochi stendere il pirata affamato e buttarlo fuori perché non ha soldi, decide che quel ristorante non fa per lui e se ne va.',
+          en: 'Beaten by the Baratie’s sous-chef, Fullbody is trying to slip away when one of his men brings worse news: the pirate they caught and kept starving in their ship’s brig has broken out. It is [[gin|Gin]], who walks into the restaurant a moment later and asks for food. Fullbody watches one of the cooks beat the starving pirate to the floor and throw him out for having no money, decides this restaurant is no place for him, and leaves.',
+        },
+      },
+    },
+    {
+      episode: 45,
+      value: {
+        title: { it: 'Degradato', en: 'Demoted' },
+        body: {
+          it: 'La rissa al Baratie è costata a Fullbody il suo grado: la Marina lo ha degradato. Quando escono i manifesti con la prima taglia di [[monkey-d-luffy|Rufy]], lui ci vede un modo per risalire, e quando la nave dei pirati passa accanto alla sua ordina ai suoi uomini di aprire il fuoco. L’attacco viene respinto, e appena Fullbody vede [[sanji|Sanji]] sul ponte, batte in ritirata.',
+          en: 'The fight at the Baratie has cost Fullbody his rank: the Marines demoted him for it. When the posters go out with [[monkey-d-luffy|Luffy]]’s first bounty, he sees a way back up, and when the pirates’ ship sails past his own, he orders his men to open fire. The attack is thrown back, and as soon as Fullbody sees [[sanji|Sanji]] on deck, he retreats.',
+        },
+      },
+    },
+    {
+      episode: 129,
+      value: {
+        title: { it: 'Con Hina ad Alabasta', en: 'With Hina in Alabasta' },
+        body: {
+          it: 'Ad Alabasta Fullbody serve nell’unità di [[hina|Hina]] accanto a [[jango|Jango]], e i due ballano sul ponte di una nave pirata appena catturata prima che Hina li mandi a caccia della ciurma di [[monkey-d-luffy|Rufy]]. Quando le navi della Marina stringono i pirati, Fullbody riconosce [[sanji|Sanji]] e gli grida che questa volta è molto più forte e che non hanno scampo. Poi una palla di cannone di [[usopp|Usop]] distrugge in un colpo solo la nave di Jango e anche la sua.',
+          en: 'In Alabasta Fullbody serves in [[hina|Hina]]’s unit beside [[jango|Jango]], and the two of them dance on the deck of a pirate ship they have just taken before Hina sends them after [[monkey-d-luffy|Luffy]]’s crew. When the Marine ships close in on the pirates, Fullbody spots [[sanji|Sanji]] and calls out that this time he is far stronger and they have no way out. Then a cannonball from [[usopp|Usopp]] wrecks Jango’s ship and his own at a single stroke.',
+        },
+      },
+    },
+  ],
+  'carne': [
+    {
+      episode: 21,
+      value: {
+        title: { it: 'Cinquanta navi', en: 'Fifty ships' },
+        body: {
+          it: 'In cucina, mentre le ordinazioni si accumulano, Carne e gli altri cuochi chiedono a [[patty|Paty]] se sia stato saggio pestare il pirata entrato senza soldi, [[gin|Gin]]. Quell’uomo appartiene alla flotta più forte e crudele dell’East Blue, cinquanta navi e più di cinquemila uomini, e se racconta tutto al suo capitano il Baratie verrà schiacciato come formiche sotto una parata di elefanti. Paty risponde che sfamare gratis un pirata sarebbe un insulto ai clienti che pagano, e che chi ha paura può andarsene. Carne gli ricorda che è esattamente quello che ha detto ai camerieri, ed è per questo che adesso sono tutti di corsa. Si azzuffano finché [[zeff|Zeff]] non li rimanda al lavoro a urla.',
+          en: 'In the kitchen, with the orders piling up, Carne and the other cooks ask [[patty|Patty]] whether it was wise to beat up the pirate who came in without money, [[gin|Gin]]. The man belongs to the strongest and cruellest fleet in the East Blue, fifty ships and more than five thousand men, and if he tells his captain the Baratie will be stamped flat like ants under a parade of elephants. Patty answers that feeding a pirate for free would insult the paying customers, and that anyone who is scared can quit. Carne reminds him that is exactly what he told the waiters, which is why they are all run off their feet now. They go for each other until [[zeff|Zeff]] shouts them back to work.',
+        },
+      },
+    },
+    {
+      episode: 25,
+      value: {
+        title: { it: 'Il Sabagashira', en: 'The Sabagashira' },
+        body: {
+          it: 'Quando i Pirati di Creek salgono sulle pinne del ristorante, Carne e [[patty|Paty]] lanciano contro [[don-krieg|Don Creek]] il Sabagashira I, una barca a pale armata e a forma di pesce. I colpi rimbalzano sulla sua armatura, e lui scaglia indietro la barca intera con una mano sola, facendola schiantare sulla pinna. Mentre si rialzano, i due ricordano come sono arrivati lì: dieci anni da cuochi, cacciati da trecento ristoranti per le risse, finché [[zeff|Zeff]] non ha cercato cuochi capaci di menare le mani. Si gettano tra i pirati e ne abbattono un bel mucchio, finché [[pearl|Pearl]] non si fa avanti e li stende tutti e due con un colpo solo.',
+          en: 'When the Krieg Pirates board the restaurant’s fins, Carne and [[patty|Patty]] drive the Sabagashira I, an armed paddle boat shaped like a fish, straight at [[don-krieg|Don Krieg]]. Its shots glance off his armour, and he throws the whole boat back one-handed, crashing it onto the fin. Picking themselves up, the two remember how they came here: ten years as cooks, fired from three hundred restaurants for brawling, until [[zeff|Zeff]] went looking for cooks who could fight. They wade into the pirates and bring down a crowd of them, until [[pearl|Pearl]] steps up and flattens them both with a single blow.',
+        },
+      },
+    },
+    {
+      episode: 28,
+      value: {
+        title: { it: 'La cura sbagliata', en: 'The wrong cure' },
+        body: {
+          it: '[[gin|Gin]] ha dato la sua maschera antigas a [[monkey-d-luffy|Rufy]] e ha respirato il veleno di [[don-krieg|Don Creek]], e ora è disteso sul ponte e sanguina dentro. I cuochi non hanno motivo di voler bene all’uomo venuto a prendersi il loro ristorante, ma [[sanji|Sanji]] ordina di salvarlo, e Carne e [[patty|Paty]] fanno quello che possono. Paty propone come medicina il suo budino speciale. Carne gli risponde secco che dare quella roba a Gin vorrebbe dire avvelenarlo una seconda volta.',
+          en: '[[gin|Gin]] has given his gas mask to [[monkey-d-luffy|Luffy]] and breathed in [[don-krieg|Don Krieg]]’s poison, and now he lies on the deck bleeding inside. The cooks have no reason to love the man who came to take their restaurant, but [[sanji|Sanji]] orders them to save him, and Carne and [[patty|Patty]] do what they can. Patty offers his special pudding as medicine. Carne tells him flatly that feeding Gin that would only poison him a second time.',
+        },
+      },
+    },
+  ],
+  'patty': [
+    {
+      episode: 21,
+      value: {
+        title: {
+          it: 'Un cliente senza un soldo',
+          en: 'A customer with no money',
+        },
+        body: {
+          it: 'Paty ripassa i suoi motti di servizio, il cliente è re, e quando esce in sala trova [[sanji|Sanji]] che ha ridotto in sangue [[fullbody|un tenente della Marina]] per una zuppa sprecata. Lo sta ancora sgridando quando [[zeff|Zeff]] sfonda il soffitto insieme a [[monkey-d-luffy|Rufy]] e ordina a tutti e due di litigare in cucina. Poi un pirata affamato, [[gin|Gin]], si siede e pretende da mangiare. Alla domanda se può pagare offre un proiettile; Paty lo schianta a terra spaccando una sedia e lo butta fuori, tra gli applausi dei clienti. In cucina gli altri cuochi lo avvertono che quell’uomo appartiene a una flotta di cinquanta navi, e Paty risponde che chi ha paura può licenziarsi; [[carne|Carne]] gli ricorda che è proprio per questo che i camerieri se ne sono andati.',
+          en: 'Patty rehearses his service mottos, the customer is king, and walks out to find [[sanji|Sanji]] beating [[fullbody|a Marine lieutenant]] bloody over a wasted soup. He is still yelling at him when [[zeff|Zeff]] crashes through the ceiling with [[monkey-d-luffy|Luffy]] and orders the two of them to do their fighting in the kitchen. Then a starving pirate, [[gin|Gin]], sits down and demands food. Asked whether he can pay, he offers a bullet; Patty smashes him down through a chair and throws him out, to the diners’ applause. In the kitchen the other cooks warn him that the man belongs to a fleet of fifty ships, and Patty answers that anyone who is scared can quit; [[carne|Carne]] reminds him that is exactly why the waiters left.',
+        },
+      },
+    },
+    {
+      episode: 22,
+      value: {
+        title: {
+          it: 'Un cannone a forma di aragosta',
+          en: 'A cannon shaped like a lobster',
+        },
+        body: {
+          it: 'Una galea distrutta esce dalla nebbia, e il pirata che si trascina a bordo è [[don-krieg|Don Creek]] in persona, affamato, che implora da mangiare. Paty vuole consegnarlo alla Marina, ma [[sanji|Sanji]] lo sfama lo stesso, e l’ammiraglio mangia, si alza e pretende l’intero ristorante. Quando Sanji fa per cucinare anche per i suoi uomini, Paty lo stende con un pugno e spara contro Creek con il suo cannone a forma di aragosta. L’armatura d’oro non si scalfisce nemmeno. Dalle piastre spuntano canne di fucile che fanno arretrare i cuochi, e [[zeff|Zeff]] consegna il cibo di persona.',
+          en: 'A wrecked galleon drifts out of the fog, and the pirate who staggers aboard is [[don-krieg|Don Krieg]] himself, starving and begging for food. Patty wants him handed to the Marines, but [[sanji|Sanji]] feeds him anyway, and the admiral eats, stands up and demands the whole restaurant. When Sanji moves to cook for Krieg’s men too, Patty knocks him down and fires his lobster-shaped cannon at Krieg. The gilded armour is not even scratched. Gun barrels open out of the plating and drive the cooks back, and [[zeff|Zeff]] hands over the food himself.',
+        },
+      },
+    },
+    {
+      episode: 30,
+      value: {
+        title: { it: 'La zuppa buttata via', en: 'The soup thrown out' },
+        body: {
+          it: 'I Pirati di Creek se ne sono andati, e al pasto successivo Paty, [[carne|Carne]] e tutta la cucina assaggiano la zuppa di [[sanji|Sanji]], e la chiamano sbobba, solo per spingerlo fuori dalla porta e dietro al suo sogno. Sanji scopre la messinscena, perché i cuochi se la confessano appena credono che non li senta, e accetta di salpare con [[monkey-d-luffy|Rufy]]. Mentre se ne va, Paty e Carne gli saltano addosso per un’ultima rivincita e finiscono a terra come sempre. Poi tutta la cucina piange senza vergogna, mentre Sanji si inginocchia davanti a [[zeff|Zeff]] e parte.',
+          en: 'The Krieg Pirates are gone, and at the next meal Patty, [[carne|Carne]] and the whole kitchen taste [[sanji|Sanji]]’s soup, and call it slop, all to push him out of the door and after his dream. Sanji sees through the act, because the cooks own up to it the moment they think he cannot hear, and agrees to sail with [[monkey-d-luffy|Luffy]]. As he leaves, Patty and Carne jump him for one last payback and end up on the floor as usual. Then the whole kitchen weeps openly while Sanji kneels before [[zeff|Zeff]] and goes.',
+        },
+      },
+    },
+  ],
+  'momoo': [
+    {
+      episode: 38,
+      value: {
+        title: { it: 'Un traino mai scelto', en: 'A tow he never chose' },
+        body: {
+          it: 'Attirato dall’odore del pranzo, il bestione emerge accanto a una piccola barca per prendersi il cibo. [[monkey-d-luffy|Rufy]] lo ricaccia con un pugno; [[sanji|Sanji]] gli dà da mangiare per pietà, poi lo stende a calci quando prova a mangiarsi anche il cuoco. Legato alla prua, traina la barca e [[yosaku|Yosaku]] fino all’isola e, sfinito, la manda a schiantarsi sulla riva così forte da scagliarla nel bosco. Più tardi [[hatchan|Octy]] lo chiama ad Arlong Park per schiacciare gli intrusi. Rivede le stesse due facce e fa per scappare, finché [[arlong|Arlong]] non gli dice che è libero di andarsene, con una voce che dice il contrario. Carica; Rufy lo afferra, lo fa roteare come un mulino in mezzo agli uomini-pesce e lo scaglia dall’altra parte del parco.',
+          en: 'Drawn by the smell of lunch, the sea cow surfaces beside a small boat to take the food. [[monkey-d-luffy|Luffy]] punches him away; [[sanji|Sanji]] feeds him out of pity, then kicks him down when he tries to eat the cook as well. Harnessed to the prow, he tows the boat and [[yosaku|Yosaku]] to the island and, worn out, runs it into the shore hard enough to fling it into the woods. Later [[hatchan|Hatchan]] calls him up at Arlong Park to crush the intruders. He sees the same two faces and turns to flee, until [[arlong|Arlong]] tells him he is free to go, in a voice that says he is not. He charges; Luffy grabs him, swings him round like a windmill through the fish-men’s own ranks and throws him clear across the park.',
+        },
+      },
+    },
+    {
+      episode: 524,
+      value: {
+        title: { it: 'Di nuovo quei tre', en: 'Those three again' },
+        body: {
+          it: 'Due anni dopo, il bestione porta un collare e traina sott’acqua una nave pirata per la ciurma di [[caribou|Caribou]], che lo ha catturato nelle acque di Sabaody. Mentre si avvicinano alla Thousand Sunny riconosce [[nami|Nami]], [[sanji|Sanji]] e [[monkey-d-luffy|Rufy]] e scappa terrorizzato, trascinandosi dietro la nave e tutto l’equipaggio e lasciando Caribou da solo sul ponte dei Cappello di Paglia. Torna più tardi a tutta velocità, con un bernoccolo nuovo sulla testa. Quando il Kraken distrugge la nave di Caribou, i finimenti se ne vanno con lei e lui si allontana a nuoto, libero.',
+          en: 'Two years on, the sea cow wears a collar and pulls a pirate ship under the sea for [[caribou|Caribou]]’s crew, who caught him in the waters near Sabaody. As they close on the Thousand Sunny he recognises [[nami|Nami]], [[sanji|Sanji]] and [[monkey-d-luffy|Luffy]], and bolts in terror, dragging the ship and the whole crew away and leaving Caribou alone on the Straw Hats’ deck. He comes back later at full speed, a fresh lump on his head. When the Kraken smashes the Caribou ship the harness goes with it, and he swims off free.',
+        },
+      },
+    },
+  ],
+  'lord-of-the-coast': [
+    {
+      episode: 504,
+      value: {
+        title: {
+          it: 'Lo stesso mare, dieci anni dopo',
+          en: 'The same sea, ten years on',
+        },
+        body: {
+          it: 'Dieci anni prima era emerso alle spalle di [[higuma|Higuma]] mentre il bandito remava al largo, lo aveva inghiottito con tutta la barca in un boccone e si era voltato verso il bambino che quello aveva gettato in mare. [[shanks|Shanks]] era arrivato prima da [[monkey-d-luffy|Rufy]] e aveva lasciato il braccio sinistro fra le sue fauci, poi lo aveva messo in fuga con un solo sguardo. Ora Rufy ha diciassette anni e parte da solo dal Villaggio Fuschia per il suo viaggio, e il Re del mare riemerge dalla stessa acqua per attaccarlo. Questa volta Rufy è pronto: carica il braccio, lo allunga e stende il mostro con un solo Gomu Gomu no Pistol.',
+          en: 'Ten years earlier it rose behind [[higuma|Higuma]] as the bandit rowed out to sea, swallowed him and his boat in one bite, and turned on the boy he had thrown overboard. [[shanks|Shanks]] reached [[monkey-d-luffy|Luffy]] first and lost his left arm between its jaws, then drove it off with nothing but a look. Now Luffy is seventeen and rows out alone from Foosha Village to start his voyage, and the Sea King rises from the same water to attack him. This time Luffy is ready: he draws back his arm, stretches it and knocks the monster out with a single Gomu Gomu no Pistol.',
         },
       },
     },

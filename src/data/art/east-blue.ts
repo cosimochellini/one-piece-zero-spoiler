@@ -159,6 +159,30 @@ export const eastBlueArt = {
     },
     shadow(82, 194, 26),
   ],
+
+  // Two rice balls, each with its strip of seaweed, a few grains fallen beside them.
+  'rika': [
+    {
+      d: 'M30 150 Q26 146 30 140 L58 96 Q62 90 66 96 L94 140 Q98 146 92 150 Z',
+      role: 'accent',
+    },
+    { d: 'M46 150 V126 H78 V150' },
+    {
+      d: 'M84 166 Q80 162 84 156 L108 118 Q112 112 116 118 L140 156 Q144 162 138 166 Z',
+      role: 'accent',
+    },
+    { d: 'M98 166 V146 H126 V166' },
+    {
+      d: dots([
+        [40, 172],
+        [50, 168],
+        [60, 174],
+        [150, 176],
+      ]),
+      role: 'soft',
+    },
+    shadow(86, 180, 60),
+  ],
   // A sake bottle and three cups: the pledge of brothers.
   'shanks': [
     { d: 'M40 152 V96 q0 -8 6 -12 V70 h16 V84 q6 4 6 12 V152z' },
@@ -312,6 +336,32 @@ export const eastBlueArt = {
     { d: 'M116 96 c-10 0 -14 8 -8 12', role: 'accent' },
     shadow(88, 176, 44),
   ],
+
+  // A small shop front, and in front of its door the one sack of dog food saved from it.
+  'chouchou': [
+    { d: house(36, 88, 76, 50) },
+    { d: 'M44 94 h20 v16 h-20z M104 94 h20 v16 h-20z', role: 'soft' },
+    {
+      d: 'M62 178 C56 164 58 150 66 144 L94 144 C102 150 104 164 98 178 Z',
+      role: 'accent',
+    },
+    { d: 'M66 144 q14 -9 28 0', role: 'accent' },
+    { d: 'M70 162 h20', role: 'soft' },
+    shadow(80, 184, 40),
+  ],
+
+  // An iron cage burst open from inside: two bars bent apart, claw marks across a bar.
+  'richie': [
+    { d: 'M30 52 H130 V60 H30 Z' },
+    { d: 'M30 160 H130 V168 H30 Z' },
+    { d: 'M40 60 V160 M120 60 V160' },
+    {
+      d: 'M74 60 C74 96 50 116 56 160 M90 60 C90 96 112 116 104 160',
+      role: 'accent',
+    },
+    { d: 'M130 92 l-14 16 M132 108 l-14 16 M134 124 l-14 16', role: 'soft' },
+    shadow(80, 180, 56),
+  ],
   // A unicycle and a sabre: the whole act in two objects.
   'cabaji': [
     { d: circle(66, 134, 38), role: 'accent' },
@@ -324,6 +374,17 @@ export const eastBlueArt = {
     { d: 'M102 180 C120 142 132 98 136 44' },
     { d: 'M136 44 C140 40 144 42 146 46' },
     { d: 'M100 178 L116 186' },
+  ],
+
+  // A spear planted upright beside the leather breastplate he wore to face the pirates.
+  'boodle': [
+    { d: 'M118 36 V186' },
+    { d: 'M118 14 L110 36 H126 Z', role: 'accent' },
+    { d: 'M34 96 Q58 86 82 96 L86 150 Q58 162 30 150 Z', role: 'accent' },
+    { d: 'M46 91 q12 12 24 0', role: 'soft' },
+    { d: 'M36 116 H80 M34 134 H84', role: 'soft' },
+    { d: 'M40 150 L36 176 M76 150 L80 176', role: 'ambient' },
+    shadow(80, 188, 50),
   ],
   // A signpost on the slope above the shore, one board pointing each way.
   'syrup-village-arc': [
@@ -410,6 +471,61 @@ export const eastBlueArt = {
     { d: 'M114 144 L86 136 L86 170 Z' },
     { d: 'M74 146 h12 v14 h-12 Z' },
     shadow(80, 182, 50),
+  ],
+
+  // Three wooden swords of three heights, planted point down in a row.
+  'ninjin-piiman-and-tamanegi': [
+    { d: 'M41 86 V164 L46 172 L51 164 V86', role: 'accent' },
+    { d: 'M75 62 V164 L80 172 L85 164 V62', role: 'accent' },
+    { d: 'M109 98 V164 L114 172 L119 164 V98', role: 'accent' },
+    { d: 'M34 86 H58 M68 62 H92 M102 98 H126' },
+    { d: 'M43 86 V66 H49 V86 M77 62 V42 H83 V62 M111 98 V78 H117 V98' },
+    {
+      d: `${circle(46, 62, 4)} ${circle(80, 38, 4)} ${circle(114, 74, 4)}`,
+      role: 'soft',
+    },
+    { d: 'M46 98 V150 M80 74 V150 M114 110 V150', role: 'soft' },
+    shadow(80, 176, 62),
+  ],
+
+  // A giant paw print stamped into the ground, cracks running out from it.
+  'buchi': [
+    {
+      d: 'M56 128 C56 106 104 106 104 128 C104 146 92 144 80 144 C68 144 56 146 56 128 Z',
+      role: 'accent',
+    },
+    {
+      d: `${ellipse(48, 98, 8, 11)} ${ellipse(68, 82, 8, 11)} ${ellipse(92, 82, 8, 11)} ${ellipse(112, 98, 8, 11)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M44 146 L26 160 L14 158 M116 146 L134 162 L148 160 M80 152 L74 172 L82 186',
+    },
+    { d: 'M10 150 H34 M126 150 H150', role: 'soft' },
+    {
+      d: dots([
+        [34, 170],
+        [126, 176],
+        [96, 168],
+        [60, 176],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 192, 62),
+  ],
+
+  // A headband with two cat ears, above a glove with three hooked claws.
+  'sham': [
+    { d: 'M34 84 C42 44 118 44 126 84', role: 'accent' },
+    { d: 'M50 62 L54 30 L76 50 M84 50 L106 30 L110 62', role: 'accent' },
+    { d: 'M57 54 L58 42 L67 50 M93 50 L102 42 L103 54', role: 'soft' },
+    { d: 'M48 160 C40 140 48 120 66 120 C84 120 92 138 86 160' },
+    { d: 'M46 160 V178 H88 V160', role: 'soft' },
+    {
+      d: 'M88 128 C108 118 126 120 140 130 M90 140 C110 134 126 138 136 150 M88 152 C104 150 118 156 126 168',
+      role: 'accent',
+    },
+    shadow(80, 188, 56),
   ],
   // The ship: hull, deck, one mast, one sail, and the RAM's head at the prow.
   'going-merry': [
@@ -547,6 +663,60 @@ export const eastBlueArt = {
     { d: circle(39, 160, 20), role: 'accent' },
     { d: circle(121, 160, 20), role: 'accent' },
     shadow(80, 188, 52),
+  ],
+
+  // An iron knuckle with four rings, and a bowl of soup with a fly above it.
+  'fullbody': [
+    {
+      d: `${circle(48, 66, 10)} ${circle(70, 66, 10)} ${circle(92, 66, 10)} ${circle(114, 66, 10)}`,
+      role: 'accent',
+    },
+    { d: 'M36 72 C44 102 116 102 124 72', role: 'accent' },
+    {
+      d: dots([
+        [48, 56],
+        [70, 56],
+        [92, 56],
+        [114, 56],
+      ]),
+      role: 'soft',
+    },
+    { d: ellipse(80, 142, 34, 6) },
+    { d: 'M46 142 C48 164 60 172 80 172 C100 172 112 164 114 142' },
+    {
+      d: 'M126 122 h0.01 M126 122 q-6 -8 -10 -2 M126 122 q6 -8 10 -2',
+      role: 'soft',
+    },
+    shadow(80, 182, 44),
+  ],
+
+  // A glaive taller than its owner, a string of sausages hung from the shaft.
+  'carne': [
+    { d: 'M52 190 L104 50' },
+    {
+      d: 'M100 60 C102 36 116 20 136 12 C132 32 124 48 110 64 Z',
+      role: 'accent',
+    },
+    { d: 'M96 56 L112 64', role: 'accent' },
+    { d: 'M36 118 Q54 104 80 118', role: 'soft' },
+    { d: ellipse(36, 132, 6, 12), role: 'soft' },
+    { d: ellipse(36, 160, 6, 12), role: 'soft' },
+    { d: 'M36 144 V148', role: 'soft' },
+    shadow(78, 192, 40),
+  ],
+
+  // A trident as tall as its owner, a carving knife leaning at its foot.
+  'patty': [
+    { d: 'M80 188 V60' },
+    { d: 'M62 60 H98 M62 60 V36 M80 60 V26 M98 60 V36', role: 'accent' },
+    {
+      d: 'M57 42 L62 28 L67 42 M75 32 L80 16 L85 32 M93 42 L98 28 L103 42',
+      role: 'accent',
+    },
+    { d: 'M75 120 h10 M75 128 h10 M75 136 h10', role: 'soft' },
+    { d: 'M110 188 L114 166 M108 166 h12' },
+    { d: 'M114 166 L128 102 Q134 98 132 110 L120 166', role: 'soft' },
+    shadow(92, 190, 34),
   ],
   // A steel spear and the shoulder plate of a gilded suit.
   'don-krieg': [
@@ -750,6 +920,19 @@ export const eastBlueArt = {
     },
     shadow(70, 186, 48),
   ],
+
+  // A collar big enough for a sea beast, a cowbell under it, a tow line
+  // running to a small boat.
+  'momoo': [
+    { d: ellipse(64, 96, 48, 16), role: 'accent' },
+    { d: ellipse(64, 96, 41, 10), role: 'accent' },
+    { d: 'M56 112 H72 L78 138 H50 Z' },
+    { d: circle(64, 142, 3) },
+    { d: 'M112 98 Q128 108 128 132', role: 'soft' },
+    { d: 'M112 134 H152 L144 146 H120 Z' },
+    { d: 'M134 134 V110 M134 112 L148 126 H134', role: 'soft' },
+    ...SEA,
+  ],
   // A single wanted poster nailed to a noticeboard, the reward line under an
   // empty frame.
   'loguetown': [
@@ -808,5 +991,24 @@ export const eastBlueArt = {
       dashed: true,
     },
     shadow(70, 186, 54),
+  ],
+
+  // A long back arching out of the sea, fins along its ridge, and a small boat rowing past.
+  'lord-of-the-coast': [
+    {
+      d: 'M12 156 C26 92 66 66 90 94 C102 110 110 136 120 156',
+      role: 'accent',
+    },
+    {
+      d: 'M30 156 C42 110 66 92 84 110 C94 124 100 142 106 156',
+      role: 'accent',
+    },
+    {
+      d: 'M42 100 l-6 -12 l14 4 M60 84 l-2 -14 l12 10 M80 80 l4 -14 l6 14',
+      role: 'soft',
+    },
+    { d: 'M126 146 h26 l-5 8 h-16z' },
+    { d: 'M132 146 l-8 -14 M146 146 l8 -12', role: 'soft' },
+    ...SEA,
   ],
 } satisfies Drawings

@@ -156,6 +156,18 @@ export const eastBlue: Saga = {
       visual: { art: 'morgan', tint: 'azure' },
     },
     {
+      id: 'rika',
+      kind: 'character',
+      revealedAtEpisode: 2,
+      revealedAtChapter: 4,
+      name: { it: 'Rica', en: 'Rika' },
+      summary: {
+        it: 'Una bambina di Shells Town che scavalca il muro della base della Marina con delle polpette di riso fatte da lei, per il cacciatore di pirati che nessun altro osa sfamare.',
+        en: 'A little girl of Shells Town who climbs the wall of the Marine base with rice balls she made herself, for the pirate hunter nobody else dares to feed.',
+      },
+      visual: { art: 'rika', tint: 'ivory' },
+    },
+    {
       id: 'shanks',
       kind: 'character',
       revealedAtEpisode: 4,
@@ -300,6 +312,30 @@ export const eastBlue: Saga = {
       visual: { art: 'mohji', tint: 'yellow' },
     },
     {
+      id: 'chouchou',
+      kind: 'character',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 12,
+      name: { it: 'Shushu', en: 'Chouchou' },
+      summary: {
+        it: 'Un piccolo cane bianco che siede giorno e notte davanti a un negozio di cibo per animali chiuso di Orange Town, coperto di ferite, e non si sposta per i pirati che tengono la città.',
+        en: 'A small white dog who sits day and night outside a shut pet-food shop in Orange Town, covered in wounds, and will not move for the pirates who hold the town.',
+      },
+      visual: { art: 'chouchou', tint: 'sand' },
+    },
+    {
+      id: 'richie',
+      kind: 'character',
+      revealedAtEpisode: 6,
+      revealedAtChapter: 13,
+      name: { it: 'Richi', en: 'Richie' },
+      summary: {
+        it: 'Il leone dei Pirati di Bagy, abbastanza grosso da portare in groppa il suo domatore per le vie di Orange Town e abbastanza forte da spaccare una gabbia di ferro con un balzo.',
+        en: 'The Buggy Pirates’ lion, big enough for his tamer to ride through Orange Town and strong enough to break open an iron cage with one pounce.',
+      },
+      visual: { art: 'richie', tint: 'acid' },
+    },
+    {
       id: 'cabaji',
       kind: 'character',
       revealedAtEpisode: 7,
@@ -310,6 +346,18 @@ export const eastBlue: Saga = {
         en: 'The Buggy Pirates’ acrobat, who fights balanced on a unicycle and breathes fire between one stroke of his sabre and the next.',
       },
       visual: { art: 'cabaji', tint: 'teal' },
+    },
+    {
+      id: 'boodle',
+      kind: 'character',
+      revealedAtEpisode: 7,
+      revealedAtChapter: 15,
+      name: { it: 'Barboncino', en: 'Boodle' },
+      summary: {
+        it: 'L’anziano sindaco di Orange Town, che quarant’anni fa l’ha costruita su una terra spoglia e marcia da solo, con un’armatura di cuoio, contro il capitano pirata che la occupa.',
+        en: 'The old mayor of Orange Town, who built it out of bare ground forty years ago and marches out alone in leather armour to face the pirate captain holding it.',
+      },
+      visual: { art: 'boodle', tint: 'ocher' },
     },
     {
       id: 'syrup-village-arc',
@@ -394,6 +442,45 @@ export const eastBlue: Saga = {
         en: 'The mansion’s butler, a tray always in his hands and a head shaped like a sheep, who has kept the family’s accounts for a lifetime.',
       },
       visual: { art: 'merry', tint: 'ivory' },
+    },
+    {
+      id: 'ninjin-piiman-and-tamanegi',
+      kind: 'character',
+      revealedAtEpisode: 9,
+      revealedAtChapter: 23,
+      name: {
+        it: 'Carota, Peperone e Cipolla',
+        en: 'Ninjin, Piiman and Tamanegi',
+      },
+      summary: {
+        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e irrompono in una trattoria per salvare il loro capitano.',
+        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and burst into a restaurant to rescue their captain.',
+      },
+      visual: { art: 'ninjin-piiman-and-tamanegi', tint: 'orange' },
+    },
+    {
+      id: 'buchi',
+      kind: 'character',
+      revealedAtEpisode: 13,
+      revealedAtChapter: 31,
+      name: { it: 'Buchi', en: 'Buchi' },
+      summary: {
+        it: 'Un pirata del Gatto Nero enorme e pesante, l’altra metà dei fratelli Nyaban di guardia alla nave, che salta in aria e piomba sul nemico con tanta forza da spaccare il terreno.',
+        en: 'A huge, heavy Black Cat pirate, the other half of the Nyaban Brothers who guard the ship, who leaps into the air and comes down on his enemy hard enough to split the ground.',
+      },
+      visual: { art: 'buchi', tint: 'ocher' },
+    },
+    {
+      id: 'sham',
+      kind: 'character',
+      revealedAtEpisode: 13,
+      revealedAtChapter: 31,
+      name: { it: 'Sham', en: 'Sham' },
+      summary: {
+        it: 'Un pirata magro e ingobbito, con le orecchie da gatto in testa e i guanti artigliati, uno dei due fratelli Nyaban di guardia alla nave del Gatto Nero, che fa il vigliacco per avvicinarsi.',
+        en: 'A thin, hunched pirate with cat ears on his head and clawed gloves, one of the two Nyaban Brothers who guard the Black Cat ship, who plays the coward to get close.',
+      },
+      visual: { art: 'sham', tint: 'teal' },
     },
     {
       id: 'going-merry',
@@ -514,6 +601,42 @@ export const eastBlue: Saga = {
         en: 'A castaway who drags himself into the Baratie with a pistol drawn and asks for food, then weeps over the plate he is given.',
       },
       visual: { art: 'gin', tint: 'wine' },
+    },
+    {
+      id: 'fullbody',
+      kind: 'character',
+      revealedAtEpisode: 20,
+      revealedAtChapter: 43,
+      name: { it: 'Fullbody', en: 'Fullbody' },
+      summary: {
+        it: 'Un tenente della Marina in completo gessato con un tirapugni di ferro sulla mano, che fa cannoneggiare la nave della ciurma e poi si siede a cena con una donna al Baratie.',
+        en: 'A Marine lieutenant in a pinstripe suit with an iron knuckle on his fist, who has his men fire on the crew’s ship and then sits down to a dinner date at the Baratie.',
+      },
+      visual: { art: 'fullbody', tint: 'azure' },
+    },
+    {
+      id: 'carne',
+      kind: 'character',
+      revealedAtEpisode: 21,
+      revealedAtChapter: 45,
+      name: { it: 'Carne', en: 'Carne' },
+      summary: {
+        it: 'Un cuoco del Baratie con gli occhiali scuri, più prudente del resto della cucina, che sa quanto possa essere pericolosa la flotta dietro il pirata appena cacciato.',
+        en: 'A Baratie cook in dark glasses, more cautious than the rest of the kitchen, who knows how dangerous the fleet behind the pirate just thrown out can be.',
+      },
+      visual: { art: 'carne', tint: 'wine' },
+    },
+    {
+      id: 'patty',
+      kind: 'character',
+      revealedAtEpisode: 21,
+      revealedAtChapter: 45,
+      name: { it: 'Paty', en: 'Patty' },
+      summary: {
+        it: 'Un cuoco del Baratie grosso come un armadio, che accoglie i clienti con motti di servizio imparati a memoria e butta fuori a pugni chi non può pagare.',
+        en: 'A Baratie cook built like a wardrobe, who greets the customers with service mottos learned by heart and punches out anyone who cannot pay.',
+      },
+      visual: { art: 'patty', tint: 'orange' },
     },
     {
       id: 'don-krieg',
@@ -660,6 +783,18 @@ export const eastBlue: Saga = {
       visual: { art: 'nezumi', tint: 'sand' },
     },
     {
+      id: 'momoo',
+      kind: 'character',
+      revealedAtEpisode: 38,
+      revealedAtChapter: 82,
+      name: { it: 'Momu', en: 'Momoo' },
+      summary: {
+        it: 'Un’enorme bestia marina con la testa di mucca, portata dalla Rotta Maggiore dagli uomini-pesce, che ha raso al suolo un villaggio per loro e scappa appena rivede chi l’ha battuta.',
+        en: 'A giant sea beast with a cow’s head, brought from the Grand Line by the fish-men, who flattened a village for them and flees at the sight of the pair who beat him.',
+      },
+      visual: { art: 'momoo', tint: 'sand' },
+    },
+    {
       id: 'loguetown',
       kind: 'arc',
       revealedAtEpisode: 45,
@@ -706,6 +841,18 @@ export const eastBlue: Saga = {
         en: 'The most dangerous revolutionary in the world and Luffy’s father, a name Garp says once and unwillingly, in front of a grandson who never knew it.',
       },
       visual: { art: 'monkey-d-dragon', tint: 'green' },
+    },
+    {
+      id: 'lord-of-the-coast',
+      kind: 'character',
+      revealedAtEpisode: 504,
+      revealedAtChapter: 589,
+      name: { it: 'Padrone della scogliera', en: 'Lord of the Coast' },
+      summary: {
+        it: 'Il Re del mare delle acque davanti al Villaggio Fuschia, che dieci anni prima della partenza di Rufy ha inghiottito un bandito con tutta la barca e strappato il braccio sinistro a un capitano pirata.',
+        en: 'The Sea King of the waters off Foosha Village, which swallowed a bandit and his boat in one bite and took a pirate captain’s left arm ten years before Luffy sailed.',
+      },
+      visual: { art: 'lord-of-the-coast', tint: 'teal' },
     },
   ],
 
@@ -961,6 +1108,27 @@ export const eastBlue: Saga = {
       ],
       epithet: [{ episode: 2, value: { it: 'Mano d’Ascia', en: 'Axe-Hand' } }],
     },
+    'rika': {
+      chronicle: eastBlueChronicles.rika,
+      role: { it: 'Bambina di Shells Town', en: 'Shells Town girl' },
+      log: {
+        it: 'È la bambina che Zoro ha salvato quando il lupo di Hermeppo l’ha aggredita nel locale, ed è per questo che lui è finito legato nel cortile. Dopo settimane senza cibo, gli prepara delle polpette di riso per la prima volta in vita sua, con lo zucchero perché pensava che fossero più buone, e scavalca il muro con una scala per portargliele. Piange quando gliele calpestano, ed esulta ad alta voce quando uno sconosciuto con un cappello di paglia prende a pugni chi l’ha fatto.',
+        en: 'She is the girl Zoro saved when Helmeppo’s wolf went for her in the bar, which is how he ended up tied in the yard. After weeks without food for him, she makes him rice balls for the first time in her life, sweet instead of salty because she thought they would taste better, and climbs the wall on a ladder to bring them. She cries when they are trampled, and cheers out loud when a stranger in a straw hat punches the man who trampled them.',
+      },
+      status: [{ episode: 2, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 2,
+          value: { it: 'Abitante di Shells Town', en: 'Shells Town resident' },
+        },
+      ],
+      origin: [
+        {
+          episode: 2,
+          value: { it: 'Shells Town, East Blue', en: 'Shells Town, East Blue' },
+        },
+      ],
+    },
     'shanks': {
       chronicle: eastBlueChronicles.shanks,
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
@@ -1147,7 +1315,7 @@ export const eastBlue: Saga = {
         en: 'Beast tamer of the Buggy Pirates',
       },
       log: {
-        it: 'Sostiene che nessun animale gli abbia mai disobbedito e porta in giro un leone di nome Richie come prova. Perlustra la città svuotata per conto del suo capitano, cercando chi si nasconde ancora nelle case. Il primo cane che incontra, seduto davanti a un negozio chiuso, non si sposta di un passo, e lui scopre che la sua parola non vale su tutti.',
+        it: 'Sostiene che nessun animale gli abbia mai disobbedito e porta in giro un leone di nome Richi come prova. Perlustra la città svuotata per conto del suo capitano, cercando chi si nasconde ancora nelle case. Il primo cane che incontra, seduto davanti a un negozio chiuso, non si sposta di un passo, e lui scopre che la sua parola non vale su tutti.',
         en: 'He claims no animal has ever disobeyed him, and carries a lion named Richie about as proof. He sweeps the emptied town for his captain, looking for whoever is still hiding in the houses. The first dog he meets, sitting outside a shut-up shop, does not move a step, and he learns that his word does not carry with everyone.',
       },
       affiliation: [
@@ -1161,6 +1329,52 @@ export const eastBlue: Saga = {
       ],
       epithet: [
         { episode: 6, value: { it: 'Il Domatore', en: 'Beast Tamer' } },
+      ],
+    },
+    'chouchou': {
+      chronicle: eastBlueChronicles.chouchou,
+      role: {
+        it: 'Guardiano del negozio del suo padrone',
+        en: 'Guardian of his master’s shop',
+      },
+      log: {
+        it: 'Il suo padrone ha aperto il negozio dieci anni fa ed è entrato in ospedale tre mesi fa, senza più tornare. Il sindaco gli porta da mangiare ogni giorno e dice che il cane sa benissimo che il padrone non c’è più: sorveglia il negozio perché è ciò che gli è rimasto. Morde chi lo stuzzica, inghiotte per dispetto la chiave della gabbia di uno sconosciuto, e morde anche un domatore convinto che ogni animale gli obbedisca.',
+        en: 'His master opened the shop ten years ago, went into hospital three months ago and never came back. The mayor feeds him every day and says the dog knows perfectly well his master is gone: he guards the shop because it is what he was left. He bites anyone who pokes him, swallows the key to a stranger’s cage out of spite, and bites a beast tamer who claims every animal obeys him.',
+      },
+      status: [{ episode: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 6,
+          value: {
+            it: 'Il negozio del suo padrone, guardiano',
+            en: 'His master’s pet-food shop, guardian',
+          },
+        },
+      ],
+    },
+    'richie': {
+      chronicle: eastBlueChronicles.richie,
+      role: { it: 'Leone di Mohji', en: 'Mohji’s lion' },
+      log: {
+        it: 'Porta Mohji in groppa per le vie svuotate di Orange Town e attacca chiunque il suo domatore gli indichi. Con un balzo spacca la gabbia di ferro in cui è chiuso un ragazzo, e con una zampata lo manda dentro il muro di una casa. Ma quello che vuole davvero è il cibo del negozio di animali, e ci si butta appena gli viene permesso.',
+        en: 'He carries Mohji through the emptied streets of Orange Town and attacks whatever his tamer points him at. One pounce breaks open the iron cage a boy has been locked in, and one swipe sends the boy through the wall of a house. What he really wants, though, is the food in the pet shop, and he goes in after it the moment he is allowed.',
+      },
+      status: [{ episode: 6, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 6,
+          value: {
+            it: 'Pirati di Bagy, leone di Mohji',
+            en: 'Buggy Pirates, Mohji’s lion',
+          },
+        },
+        {
+          episode: 1086,
+          value: {
+            it: 'Cross Guild, con la ciurma di Bagy',
+            en: 'Cross Guild, with Buggy’s crew',
+          },
+        },
       ],
     },
     'cabaji': {
@@ -1179,6 +1393,21 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [{ episode: 7, value: { it: 'L’Acrobata', en: 'the Acrobat' } }],
+    },
+    'boodle': {
+      chronicle: eastBlueChronicles.boodle,
+      role: { it: 'Sindaco di Orange Town', en: 'Mayor of Orange Town' },
+      log: {
+        it: 'È arrivato qui quarant’anni fa con gente la cui città era stata distrutta dai pirati, e con loro ha costruito questa, casa per casa. Quando sono arrivati i Pirati di Bagy è fuggito con tutti gli altri, e torna di nascosto solo per dare da mangiare al cane davanti al negozio di animali. Il giorno in cui un cane e uno sconosciuto combattono per la sua città mentre lui è scappato, una palla di cannone gli rade al suolo la casa, e lui prende una lancia e va a sfidare Bagy di persona.',
+        en: 'He came here forty years ago with people whose own town pirates had destroyed, and built this one with them, house by house. When the Buggy Pirates arrived he fled with everyone else, and slips back only to feed the dog outside the pet shop. The day a dog and a stranger fight for his town while he has run for cover, a cannonball flattens his own house, and he picks up a spear and goes to challenge Buggy himself.',
+      },
+      status: [{ episode: 7, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 7,
+          value: { it: 'Orange Town, sindaco', en: 'Orange Town, mayor' },
+        },
+      ],
     },
     'usopp': {
       chronicle: eastBlueChronicles.usopp,
@@ -1297,6 +1526,88 @@ export const eastBlue: Saga = {
         },
       ],
       origin: [{ episode: 9, value: SYRUP_VILLAGE }],
+    },
+    'ninjin-piiman-and-tamanegi': {
+      chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
+      role: { it: 'Pirati di Usop', en: 'Usopp Pirates' },
+      log: {
+        it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque e dicono ad alta voce che adorano le sue bugie. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono. Più tardi fanno irruzione nella trattoria con le spade di legno per salvare Usop, e vanno nel panico quando sentono che se lo sono mangiato.',
+        en: 'They are the whole of the Usopp Pirates: three boys who follow their captain everywhere and say out loud that they love his lies. When one of them spots a ship with a skull on its flag, they rush to the coast to drive the pirates off, and run the moment the pirates spot them. Later they storm the restaurant with wooden swords to rescue Usopp, and panic when they are told he has been eaten.',
+      },
+      status: [{ episode: 9, value: 'alive' }],
+      affiliation: [
+        { episode: 9, value: { it: 'Pirati di Usop', en: 'Usopp Pirates' } },
+        {
+          episode: 17,
+          value: {
+            it: 'Pirati di Usop, sciolti',
+            en: 'Usopp Pirates, disbanded',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 9,
+          value: {
+            it: 'Villaggio di Syrup, East Blue',
+            en: 'Syrup Village, East Blue',
+          },
+        },
+      ],
+    },
+    'buchi': {
+      chronicle: eastBlueChronicles.buchi,
+      role: {
+        it: 'Guardia della nave del Gatto Nero',
+        en: 'Guard of the Black Cat ship',
+      },
+      log: {
+        it: 'Lui e Sham fanno la guardia alla nave dei Pirati del Gatto Nero e la lasciano solo quando Jango li chiama. Brontola che non vuole saperne di combattere, poi guarda la paura del compagno trasformarsi in un agguato. Il suo colpo è un salto e un pestone: quando Zoro si sposta in tempo, il terreno si spacca dove atterra, e lui se la prende con Sham che non l’ha tenuto abbastanza fermo.',
+        en: 'He and Sham guard the Black Cat Pirates’ ship and leave it only when Jango calls them down. He grumbles that he wants no part of the fight, then watches his partner’s show of fear turn into an ambush. His move is a leap and a stomp: when Zoro slips out of the way, the ground splits where he lands, and he blames Sham for not holding the swordsman tighter.',
+      },
+      status: [{ episode: 13, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 13,
+          value: {
+            it: 'Pirati del Gatto Nero, guardia della nave',
+            en: 'Black Cat Pirates, ship guard',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 13,
+          value: { it: 'Fratelli Nyaban', en: 'Nyaban Brothers' },
+        },
+      ],
+    },
+    'sham': {
+      chronicle: eastBlueChronicles.sham,
+      role: {
+        it: 'Guardia della nave del Gatto Nero',
+        en: 'Guard of the Black Cat ship',
+      },
+      log: {
+        it: 'Lui e Buchi restano a bordo della nave dei Pirati del Gatto Nero e scendono solo quando Jango li chiama. Piagnucola che il nemico sembra troppo forte, corre verso Zoro come se sapesse a malapena combattere, e approfitta dell’attimo in cui lo spadaccino esita per rubargli due spade e gettarle via. Con Zoro ridotto a una lama sola, lui e il compagno lo sfiancano insieme.',
+        en: 'He and Buchi stay aboard the Black Cat Pirates’ ship and come down only when Jango calls them. He whimpers that the enemy looks too strong, runs at Zoro as if he could barely fight, and uses the moment the swordsman hesitates to take two of his swords and throw them away. With Zoro down to one blade, he and his partner wear him down together.',
+      },
+      status: [{ episode: 13, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 13,
+          value: {
+            it: 'Pirati del Gatto Nero, guardia della nave',
+            en: 'Black Cat Pirates, ship guard',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 13,
+          value: { it: 'Fratelli Nyaban', en: 'Nyaban Brothers' },
+        },
+      ],
     },
     'gaimon': {
       role: { it: 'Guardiano dell’isola', en: 'Keeper of the island' },
@@ -1440,6 +1751,56 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [{ episode: 21, value: { it: 'Uomo Demone', en: 'Man-Demon' } }],
+    },
+    'fullbody': {
+      chronicle: eastBlueChronicles.fullbody,
+      role: { it: 'Tenente della Marina', en: 'Marine lieutenant' },
+      log: {
+        it: 'Si presenta come Fullbody Pugno di ferro, tenente della Marina, e porta un tirapugni di ferro per non smentirsi. Porta una donna a cena al ristorante galleggiante, e prima di entrare ordina ai suoi uomini di affondare la piccola nave pirata che si è accostata. A tavola infila una mosca nella zuppa per umiliare il cameriere, spacca il tavolo quando lo scherzo gli si ritorce contro, e il vice-cuoco lo pesta fino a farlo sanguinare.',
+        en: 'He introduces himself as Ironfist Fullbody, a Marine lieutenant, and wears an iron knuckle on his fist to match. He brings a woman to dinner at the floating restaurant, and on the way in orders his men to sink the small pirate ship that has pulled up alongside. At the table he slips a fly into his soup to shame the waiter, smashes the table when the trick turns on him, and is beaten bloody by the sous-chef.',
+      },
+      status: [{ episode: 20, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 20,
+          value: { it: 'Marina, tenente', en: 'Marines, lieutenant' },
+        },
+        {
+          episode: 45,
+          value: { it: 'Marina, degradato', en: 'Marines, demoted' },
+        },
+        {
+          episode: 128,
+          value: { it: 'Marina, unità di Hina', en: 'Marines, Hina’s unit' },
+        },
+      ],
+      epithet: [
+        { episode: 20, value: { it: 'Pugno di ferro', en: 'Ironfist' } },
+      ],
+    },
+    'carne': {
+      chronicle: eastBlueChronicles.carne,
+      role: { it: 'Cuoco del Baratie', en: 'Baratie cook' },
+      log: {
+        it: 'Lavora in cucina accanto a Paty e litiga con lui su tutto, e di solito è quello che pensa prima di urlare. Quando Paty butta fuori dal ristorante un pirata affamato, è tra i cuochi che ricordano a tutti che quell’uomo appartiene a una flotta di cinquanta navi e cinquemila uomini. E ricorda a Paty che i camerieri se ne sono andati tutti per colpa sua.',
+        en: 'He works the kitchen beside Patty and argues with him about everything, and he is usually the one who thinks before he shouts. When Patty throws a starving pirate out of the restaurant, he is among the cooks who warn that the man belongs to a fleet of fifty ships and five thousand men. He also reminds Patty that the waiters all quit because of him.',
+      },
+      status: [{ episode: 21, value: 'alive' }],
+      affiliation: [
+        { episode: 21, value: { it: 'Baratie, cuoco', en: 'Baratie, cook' } },
+      ],
+    },
+    'patty': {
+      chronicle: eastBlueChronicles.patty,
+      role: { it: 'Cuoco del Baratie', en: 'Baratie cook' },
+      log: {
+        it: 'Ripassa in cucina i suoi motti di servizio e si inchina a ogni cliente che entra, chiamandolo con insulti che crede complimenti. Chi non può pagare, per lui, non è un cliente, e per dimostrarlo ne schianta uno a terra spaccando una sedia. Non sopporta il vice-cuoco, che dà da mangiare a chiunque abbia fame, e i due si insultano da un capo all’altro della cucina.',
+        en: 'He rehearses his service mottos in the kitchen and bows to every customer who walks in, calling them names he believes are compliments. A man who cannot pay is not a customer to him, and he smashes one down through a chair to prove it. He has no patience for the sous-chef, who feeds whoever is hungry, and the two of them trade insults across the kitchen.',
+      },
+      status: [{ episode: 21, value: 'alive' }],
+      affiliation: [
+        { episode: 21, value: { it: 'Baratie, cuoco', en: 'Baratie, cook' } },
+      ],
     },
     'don-krieg': {
       role: {
@@ -1671,6 +2032,37 @@ export const eastBlue: Saga = {
         },
       ],
     },
+    'momoo': {
+      chronicle: eastBlueChronicles.momoo,
+      role: {
+        it: 'Bestia marina dei Pirati di Arlong',
+        en: 'Sea beast of the Arlong Pirates',
+      },
+      log: {
+        it: 'Ha distrutto il villaggio di Gosa per gli uomini-pesce, rovesciandone le case e scavando solchi nella strada. Attirato su una piccola barca dall’odore del pranzo, ha provato a mangiarsi anche il cuoco, è stato battuto due volte ed è stato legato alla prua per trainarla fino all’isola. Richiamato ad Arlong Park, vorrebbe soltanto scappare.',
+        en: 'He tore up the town of Gosa for the fish-men, turning its houses upside down and ploughing furrows through its road. Drawn to a small boat by the smell of lunch, he tried to eat the cook along with the food, was beaten twice and harnessed to tow the boat to the island. Called out again at Arlong Park, all he wants is to run.',
+      },
+      status: [{ episode: 38, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 38,
+          value: {
+            it: 'Pirati di Arlong, bestia marina',
+            en: 'Arlong Pirates, sea beast',
+          },
+        },
+        {
+          episode: 524,
+          value: {
+            it: 'Nessuno: sfuggito ai Pirati di Caribou',
+            en: 'Nobody’s: slipped free of the Caribou Pirates',
+          },
+        },
+      ],
+      origin: [
+        { episode: 38, value: { it: 'Rotta Maggiore', en: 'Grand Line' } },
+      ],
+    },
     'smoker': {
       chronicle: eastBlueChronicles.smoker,
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
@@ -1746,6 +2138,27 @@ export const eastBlue: Saga = {
         {
           episode: 314,
           value: { it: 'Il Rivoluzionario', en: 'the Revolutionary' },
+        },
+      ],
+    },
+    'lord-of-the-coast': {
+      chronicle: eastBlueChronicles['lord-of-the-coast'],
+      role: {
+        it: 'Re del mare delle acque di Fuschia',
+        en: 'Sea King of the Foosha coast',
+      },
+      log: {
+        it: 'Vive nelle acque davanti al Villaggio Fuschia e sale in superficie per qualunque cosa ci cada dentro. Dieci anni fa ha inghiottito Higuma con tutta la barca, si è lanciato sul bambino che stava annegando, si è preso invece il braccio sinistro di Shanks ed è fuggito davanti a un solo sguardo. Quando quel bambino, ormai diciassettenne, esce in barca dallo stesso porto, riemerge, e un solo pugno di gomma lo stende sull’acqua.',
+        en: 'It lives in the waters off Foosha Village and rises for anything that falls into them. Ten years ago it swallowed Higuma and his rowboat whole, went for the drowning boy next, took Shanks’s left arm instead, and fled from a single look. When that boy, now seventeen, rows out of the same harbour, it rises again, and one rubber punch lays it out on the water.',
+      },
+      status: [{ episode: 504, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 504,
+          value: {
+            it: 'Nessuna: le acque del Villaggio Fuschia',
+            en: 'None: the waters off Foosha Village',
+          },
         },
       ],
     },
