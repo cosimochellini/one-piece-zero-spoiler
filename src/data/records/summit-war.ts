@@ -640,6 +640,8 @@ export const summitWar: Saga = {
       },
       visual: { art: 'sabo', tint: 'blue' },
     },
+    // Named in chapter 550, but filed at 582 with the episode: the Post-War
+    // shelf she sits on opens at chapter 581, and rounding up is the safe way.
     {
       id: 'portgas-d-rouge',
       kind: 'character',

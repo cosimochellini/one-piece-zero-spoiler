@@ -233,8 +233,9 @@ const COMMON_WORD_NAMES = new Set(['king'])
  * The arcs whose name is said in the story well before the arc opens, and
  * the episode from which a story may say it: the place is a destination long
  * before it is a heading. Fish-Man Island is named as the next stop by
- * Kokoro at 320; Whitebeard sails for Marineford at 434. A story before that
- * episode is still scanned for the name.
+ * Kokoro at 320; Marineford is named as the war's venue by 434, where
+ * Momonga sets out to escort Hancock there. A story before that episode is
+ * still scanned for the name.
  */
 const SAID_BEFORE_FILED = new Map([
   ['fish-man-island', 320],
