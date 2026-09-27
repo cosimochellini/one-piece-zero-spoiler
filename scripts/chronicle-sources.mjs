@@ -1594,7 +1594,7 @@ export const CHRONICLE_SOURCES = {
     },
     15: {
       source: 'https://onepiece.fandom.com/wiki/Episode_15',
-      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Kuro orders him at Usopp, Zoro pins him, thrown into the cliff, "get out of the way", final cut; Chapter_36: Zoro carries Usopp on his back.',
+      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only).',
     },
   },
   'sham': {

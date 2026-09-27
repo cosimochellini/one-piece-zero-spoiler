@@ -846,6 +846,9 @@ export const eastBlue: Saga = {
       id: 'lord-of-the-coast',
       kind: 'character',
       revealedAtEpisode: 504,
+      // Chapter 1 names it, but a chapter reader would then see it open under
+      // the Post-War heading (chapter 581) that shelves it: filed with the
+      // chapter episode 504 adapts, which only keeps it covered longer.
       revealedAtChapter: 589,
       name: { it: 'Padrone della scogliera', en: 'Lord of the Coast' },
       summary: {
