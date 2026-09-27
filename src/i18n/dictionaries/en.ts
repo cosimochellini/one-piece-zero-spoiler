@@ -160,14 +160,9 @@ export const enDictionary = {
   'character.bounty': 'Bounty',
   'character.bountyValue': '{amount} Berry',
   'character.factsLabel': 'What is known so far',
-  'character.factsInEpisodes':
-    'The facts of a dossier count in anime episodes. Set an episode or a season bookmark to read them; a chapter bookmark keeps them covered.',
   'character.chronicleTitle': 'The story so far',
   'character.chronicleLede':
-    'What has happened to them, up to the episode you have reached. Each story opens at the episode that shows it.',
-  'character.chronicleEpisode': 'Episode {episode}',
-  'character.chronicleInEpisodes':
-    'The stories of a chronicle count in anime episodes. Set an episode or a season bookmark to read them; a chapter bookmark keeps them covered.',
+    'What has happened to them, up to where you have reached. Each story opens where the series shows it.',
   'character.before': 'Filed before',
   'character.after': 'Filed after',
   'character.routeStart': 'Nothing. This is where the route begins.',
@@ -247,8 +242,6 @@ export const enDictionary = {
     'The characters the archive files as having eaten this fruit, each under its own fog.',
   'fruit.eatersLoading': 'Reading the dossiers…',
   'fruit.eatersNone': 'Nobody in the archive has eaten it yet.',
-  'fruit.eatersInEpisodes':
-    'The dossiers count in anime episodes. Set an episode or a season bookmark to read who ate it; a chapter bookmark keeps them covered.',
   'fruit.siblingsTitle': 'Others of this type',
   'fruit.siblingsLede':
     'The fruits filed nearest to this one on the same plate.',

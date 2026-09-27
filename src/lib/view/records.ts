@@ -188,26 +188,23 @@ export type NameMatch = {
  * The labels and the digit grouping stay in the component — they are the
  * reader's language, not the archive's.
  */
-export type CharacterFacts =
-  | {
-      readonly affiliation?: string
-      /**
-       * The fruits the reader has been told this character ate, each with the
-       * id of its own page. A row is only ever built from a timeline entry the
-       * reader has reached, and a fruit opens no later than the entry that
-       * names it, so a link here always leads somewhere the reader may go.
-       */
-      readonly devilFruit?: readonly FruitLink[]
-      readonly epithet?: string
-      readonly mode: 'facts'
-      readonly origin?: string
-      /** Where the character stands at the last entry the reader has reached. */
-      readonly status?: CharacterStatus
-      /** In Berry, ungrouped. */
-      readonly bounty?: number
-    }
-  /** The timelines count in episodes, so a chapter reader reaches none. */
-  | { readonly mode: 'chapterNote' }
+export type CharacterFacts = {
+  readonly affiliation?: string
+  /**
+   * The fruits the reader has been told this character ate, each with the
+   * id of its own page. A row is only ever built from a timeline entry the
+   * reader has reached, and a fruit opens no later than the entry that
+   * names it, so a link here always leads somewhere the reader may go.
+   */
+  readonly devilFruit?: readonly FruitLink[]
+  readonly epithet?: string
+  readonly mode: 'facts'
+  readonly origin?: string
+  /** Where the character stands at the last entry the reader has reached. */
+  readonly status?: CharacterStatus
+  /** In Berry, ungrouped. */
+  readonly bounty?: number
+}
 
 /** A fruit named on another record's page, and the page it leads to. */
 export type FruitLink = { readonly id: string; readonly name: string }
@@ -225,10 +222,16 @@ export type ProseSegment =
   | { readonly id: string; readonly kind: 'link'; readonly name: string }
   | { readonly kind: 'text'; readonly text: string }
 
-/** One story the reader has reached, resolved to their language. */
+/**
+ * One story the reader has reached, resolved to their language. A story is
+ * dated in episodes; the chapter is the first one that reaches that episode,
+ * so a manga reader's mark reads in chapters. Structurally satisfies `Gated`
+ * (`~/lib/progress/spoiler`), so its mark is named by `useThreshold`.
+ */
 export type ChronicleEntry = {
   readonly body: readonly ProseSegment[]
-  readonly episode: number
+  readonly revealedAtChapter: number
+  readonly revealedAtEpisode: number
   readonly title: string
 }
 
@@ -239,10 +242,10 @@ export type ChronicleEntry = {
  * no count, because "three more stories under fog" is itself the news that
  * something happens.
  */
-export type CharacterChronicle =
-  | { readonly entries: readonly ChronicleEntry[]; readonly mode: 'chronicle' }
-  /** The stories count in episodes, so a chapter reader reaches none. */
-  | { readonly mode: 'chapterNote' }
+export type CharacterChronicle = {
+  readonly entries: readonly ChronicleEntry[]
+  readonly mode: 'chronicle'
+}
 
 /**
  * A devil fruit as the specimen sheet draws it: a record, its kind, the
@@ -271,16 +274,11 @@ export type FruitSheetView = {
 /** A devil fruit's own page. */
 export type FruitDetail = { readonly slot: Slot<FruitView> }
 
-/**
- * The band that names who ate a fruit.
- *
- * The dossiers count in anime episodes, so a reader who counts in chapters
- * reaches none of their entries and is told why instead of shown nothing —
- * the same answer `CharacterFacts` gives them.
- */
-export type FruitEatersView =
-  | { readonly eaters: readonly Slot<CharacterView>[]; readonly mode: 'eaters' }
-  | { readonly mode: 'chapterNote' }
+/** The band that names who ate a fruit, each eater under their own fog. */
+export type FruitEatersView = {
+  readonly eaters: readonly Slot<CharacterView>[]
+  readonly mode: 'eaters'
+}
 
 /** The three stretches of sea the route crosses. */
 export type Sea = 'east-blue' | 'grand-line' | 'new-world'

@@ -1,3 +1,4 @@
+import { chapterAtEpisode } from '~/data/chapters'
 import {
   eatersOf,
   fruitFormOf,
@@ -11,7 +12,6 @@ import type { Locale } from '~/i18n/locales'
 import {
   type Bookmark,
   type BookmarkMode,
-  CHAPTER_CEILING,
   modeOf,
 } from '~/lib/progress/episode'
 import { isRevealed } from '~/lib/progress/spoiler'
@@ -120,18 +120,20 @@ export function fruitPage(
  * Both halves matter. A character filed long before the story says what they
  * ate would otherwise appear on the fruit's page the moment the reader met
  * them, which tells the reader something the story has not — and a character
- * the reader has not met must not be named at all. The chapter side is the
- * ceiling because a dossier entry has no chapter, which is also why the whole
- * band is withheld from a reader counting in chapters.
+ * the reader has not met must not be named at all. A dossier entry has no
+ * chapter, so the chapter side is the first chapter that reaches the episode
+ * (`~/data/chapters`) — or one past the ceiling, which is never.
  */
 function gateFor(entity: Entity, namedAtEpisode: number): Entity {
+  const revealedAtEpisode = Math.max(entity.revealedAtEpisode, namedAtEpisode)
+
   return {
     ...entity,
-    revealedAtEpisode: Math.max(entity.revealedAtEpisode, namedAtEpisode),
-    // One past the ceiling, not the ceiling itself: `isRevealed` compares a
-    // chapter bookmark with `>=`, and the dial can be set to the ceiling, so
-    // the ceiling would open this at the last chapter rather than never.
-    revealedAtChapter: CHAPTER_CEILING + 1,
+    revealedAtEpisode,
+    revealedAtChapter: Math.max(
+      entity.revealedAtChapter,
+      chapterAtEpisode(revealedAtEpisode),
+    ),
   }
 }
 
@@ -141,12 +143,6 @@ export function fruitEaters(
   bookmark: Bookmark,
   locale: Locale,
 ): FruitEatersView {
-  // The dossiers count in anime episodes. A reader who counts in chapters
-  // reaches none of their entries, and is told why instead of shown nothing.
-  if (modeOf(bookmark) === 'chapter') {
-    return { mode: 'chapterNote' }
-  }
-
   return {
     mode: 'eaters',
     eaters: eatersOf(id).map((eater): Slot<CharacterView> => {

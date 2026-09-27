@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
 import type { Story, Timeline } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { CharacterChronicle, ChronicleEntry } from '~/lib/view/records'
@@ -18,12 +19,8 @@ function reader(locale: 'en' | 'it'): Reader {
   return { locale, resolve: (id) => NAMES[id]?.[locale] }
 }
 
-/** The stories of a chronicle, or a failure when the reader got the note. */
+/** The stories of a chronicle. */
 function storiesOf(found: CharacterChronicle): readonly ChronicleEntry[] {
-  if (found.mode !== 'chronicle') {
-    throw new Error('the reader was given the chapter note')
-  }
-
   return found.entries
 }
 
@@ -61,7 +58,9 @@ describe('the stories a bookmark reaches', () => {
   it('gives every story reached, in order, and none not yet reached', () => {
     const stories = storiesOf(chronicleFrom(chronicle, ep(3), reader('en')))
 
-    expect(stories.map((entry) => entry.episode)).toStrictEqual([1, 3])
+    expect(stories.map((entry) => entry.revealedAtEpisode)).toStrictEqual([
+      1, 3,
+    ])
     expect(stories[0]?.title).toBe('A barrel')
   })
 
@@ -83,7 +82,8 @@ describe('the stories a bookmark reaches', () => {
       mode: 'chronicle',
       entries: [
         {
-          episode: 1,
+          revealedAtEpisode: 1,
+          revealedAtChapter: 1,
           title: 'Una botte',
           body: [
             { kind: 'text', text: 'Esce da una botte davanti a ' },
@@ -95,14 +95,27 @@ describe('the stories a bookmark reaches', () => {
     })
   })
 
-  it('reaches none of them for a reader who counts in chapters', () => {
-    expect(
-      chronicleFrom(
-        chronicle,
-        { mode: 'chapter', chapter: 1000 },
-        reader('en'),
-      ),
-    ).toStrictEqual({ mode: 'chapterNote' })
+  it('reads a chapter bookmark at the episode its chapter reaches', () => {
+    for (const chapter of [1, 50, 218, 1000]) {
+      const stories = storiesOf(
+        chronicleFrom(chronicle, { mode: 'chapter', chapter }, reader('en')),
+      )
+
+      expect(
+        stories.map((entry) => entry.revealedAtEpisode),
+        `chapter ${String(chapter)}`,
+      ).toStrictEqual(
+        [1, 3, 45].filter((episode) => episode <= episodeAtChapter(chapter)),
+      )
+    }
+  })
+
+  it('marks each story with the first chapter that reaches it', () => {
+    const stories = storiesOf(chronicleFrom(chronicle, ep(45), reader('en')))
+
+    expect(stories.map((entry) => entry.revealedAtChapter)).toStrictEqual(
+      [1, 3, 45].map((episode) => chapterAtEpisode(episode)),
+    )
   })
 
   it('reaches none of them with no bookmark at all', () => {

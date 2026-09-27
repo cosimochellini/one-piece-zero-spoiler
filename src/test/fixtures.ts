@@ -173,7 +173,8 @@ export function facts(
 /** One reached story, with a plain paragraph unless told otherwise. */
 export function story(over: Partial<ChronicleEntry> = {}): ChronicleEntry {
   return {
-    episode: 1,
+    revealedAtEpisode: 1,
+    revealedAtChapter: 1,
     title: 'A boy in a barrel',
     body: [{ kind: 'text', text: 'He climbs out of a barrel.' }],
     ...over,

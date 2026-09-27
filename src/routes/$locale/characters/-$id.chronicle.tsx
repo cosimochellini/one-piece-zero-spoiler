@@ -35,8 +35,7 @@ export function ChronicleBand({
   const { t } = useLocale()
   const { chronicle } = detail
 
-  const empty = chronicle.mode === 'chronicle' && chronicle.entries.length === 0
-  if (empty || !detail.slot.open) {
+  if (chronicle.entries.length === 0 || !detail.slot.open) {
     return null
   }
 

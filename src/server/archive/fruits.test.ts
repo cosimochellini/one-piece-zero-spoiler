@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { episodeAtChapter } from '~/data/chapters'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
@@ -83,12 +84,8 @@ function openIds(rail: readonly Slot<FruitView>[]): readonly string[] {
   return rail.flatMap((slot) => (slot.open ? [slot.record.id] : []))
 }
 
-/** The eaters a band names, or a failure when the band named none. */
+/** The eaters a band names. */
 function eatersIn(view: FruitEatersView): readonly string[] {
-  if (view.mode === 'chapterNote') {
-    throw new Error('the band counted in chapters')
-  }
-
   return view.eaters.flatMap((slot) => (slot.open ? [slot.record.name] : []))
 }
 
@@ -190,29 +187,26 @@ describe('who ate it', () => {
     expect(eatersIn(after)).toContain('Sabo')
   })
 
-  it('says the band counts in episodes to a reader counting in chapters', () => {
-    for (const fruit of fruits) {
-      const view = fruitEaters(
-        fruit.id,
-        { mode: 'chapter', chapter: 1100 },
-        'en',
-      )
+  it('names to a chapter reader exactly who the episode it reaches names', () => {
+    // The gate's chapter is derived from its episode, so the two must agree
+    // at every chapter, the ceiling included: a chapter reader who saw one
+    // more eater than the episode would be reading ahead of the dossiers.
+    for (const chapter of [100, 400, 700, 1000, CHAPTER_CEILING]) {
+      const episode = episodeAtChapter(chapter)
+      for (const fruit of fruits) {
+        const byChapter = fruitEaters(
+          fruit.id,
+          { mode: 'chapter', chapter },
+          'en',
+        )
+        const byEpisode = fruitEaters(fruit.id, ep(episode), 'en')
 
-      expect(view.mode, fruit.id).toBe('chapterNote')
+        expect(
+          eatersIn(byChapter),
+          `${fruit.id} @ c${String(chapter)}`,
+        ).toStrictEqual(eatersIn(byEpisode))
+      }
     }
-  })
-
-  it('never opens an eater to a reader at the very last chapter', () => {
-    // The band is withheld from a chapter reader before the gate is built at
-    // all, and the gate is past the ceiling as well, so neither half of that
-    // can be removed without the other showing up as a failure here.
-    const gate = fruitEaters(
-      'flame-flame-fruit',
-      { mode: 'chapter', chapter: CHAPTER_CEILING },
-      'en',
-    )
-
-    expect(gate.mode).toBe('chapterNote')
   })
 
   it('names nobody the reader has not reached', () => {
