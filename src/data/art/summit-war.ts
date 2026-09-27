@@ -86,6 +86,21 @@ export const summitWarArt = {
     { d: 'M40 68 V46 h14 v22 M106 68 V46 h14 v22 M76 68 V30 h8 v38' },
     ...SEA.slice(1),
   ],
+  // A newspaper folded open over the sea, the headline across the top, and a
+  // gull carrying the next edition in.
+  'post-war': [
+    { d: 'M34 70 L118 58 L128 136 L44 148z' },
+    { d: 'M76 64 L86 142', role: 'soft' },
+    { d: 'M42 84 L110 74', role: 'accent' },
+    {
+      d: 'M46 100 L74 96 M48 114 L76 110 M50 128 L78 124 M88 92 L116 88 M90 106 L118 102 M92 120 L120 116',
+      role: 'ambient',
+    },
+    { d: 'M112 34 q8 -8 16 0 q8 -8 16 0', role: 'accent' },
+    { d: 'M124 38 h8 v6 h-8z', role: 'soft' },
+    ...SEA,
+  ],
+
   // A mangrove on its stilt roots, with soap bubbles going up from the bark.
   'sabaody': [
     { d: 'M72 148 V64 M88 148 V64' },
