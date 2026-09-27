@@ -1517,4 +1517,160 @@ export const CHRONICLE_SOURCES = {
       note: 'The Elders land and Zoro’s strike after Sanji’s deadweight call are ep.1144; Jinbe’s Gosenmaigawara Shuto, the three chest wounds, Mars asking for York and the plea for Kaku are ep.1145.',
     },
   },
+  'rika': {
+    2: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_2',
+      note: 'Long Summary: "A small girl, Rika, sneaks into the base to offer Zoro onigiri, but she is stopped by Helmeppo ... Zoro later eats the dirt-stained rice"; she tells the wolf story. Rika page Qref chap=4 page=3 ep=2: her mother hurries her away. Named on screen in episode 2: in the wolf flashback her mother shouts “Rika! Don’t!” (checked against an ep 2 transcript). Anime-only: the wolf attacked her in the bar (Anime and Manga Differences).',
+    },
+    3: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_3',
+      note: 'Long Summary: Morgan cut down and arrested by his own Marines; Luffy, Zoro, Koby celebrate at a restaurant; Ripper asks the pirates to leave, promising not to report them to headquarters, and accepts Koby. it wiki Rica: at the Food Foo her mother cooks, Rica tells Luffy he was right to be strong; anime-only (ep 3) she and her mother wave the pirates off.',
+    },
+  },
+  'chouchou': {
+    6: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_6',
+      note: 'Long Summary: "Luffy interacts with Chouchou, a dog defending the shop. The mayor explains that Chouchou\'s owner passed away from illness ... Chouchou eats the key"; "Richie raids the store for food and burns it to the ground as Chouchou fights in vain ... Luffy came to Chouchou\'s aid, defeating both Richie and Mohji before giving the dog a single box of pet food". Chapter_12: Boodle shows up "demanding that they stop hurting the dog, Chouchou" (the naming, ch 12). Chouchou page Qref chap=14 page=4 ep=6: he joins the evacuees.',
+    },
+    8: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_8',
+      note: 'Long Summary: citizens return, blame the group; "Chouchou, aware of the crew\'s true intentions, stops the mob, allowing them to head to the pier to escape." Chapter_21: "they ask who did it, and Luffy admits it was him." Boodle linked: filed at 7 in this batch.',
+    },
+  },
+  'richie': {
+    6: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_6',
+      note: 'Long Summary: "Riding his lion Richie, he finds Luffy still trapped in the cage. Mohji orders Richie to attack Luffy, inadvertently destroying his cage ... Richie raids the store for food and burns it to the ground ... Luffy ... defeating both Richie and Mohji". Existing Mohji log (east-blue.ts) already names "a lion named Richie" at ep 6. Chapter: Chapter_12/13 summaries use the name; Mohji names him when sending him at Luffy in ch 13 ("Mohji sends Richie to attack"); ch 12 likely but rounded up to 13.',
+    },
+    7: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_7',
+      note: 'Long Summary: "Buggy\'s men are decimated by the attack, save for Buggy himself, who had used his subordinates as human shields, and ... Cabaji, who had used Richie as a shield." Chapter_16: "Mohji regains consciousness and becomes upset at Cabaji, because Cabaji is holding an unconscious Richie. Cabaji tells Mohji that he used Ritchie as a shield so that his clothes would not get dirty."',
+    },
+    53: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_53',
+      note: 'Episode_52: "the Going Merry is more in imminent danger from Mohji and Richie, who guess which ship is Luffy\'s based on the jolly roger with the straw hat on it, intent on burning it". Episode_53: "Nami and Usopp reach the Going Merry as Mohji was about to burn it down. Before Mohji can properly fight Nami, the Marines catch up and shoot at Mohji. Nami and Usopp take this opportunity to board the Going Merry and set sail." Filed at 53, where the whole account is known.',
+    },
+    1086: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1086',
+      note: 'Richie page affiliation: Cross Guild, Qref chap=1058 page=8 ep=1086; Episode_1086 notes list Richie in the crowd at Karai Bari as Buggy announces the Cross Guild.',
+    },
+  },
+  'boodle': {
+    7: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_7',
+      note: 'Threshold: Boodle gives Buggy his name and title when he challenges him at the Drinker Pub (it wiki Barboncino: "gli rivela il suo nome e il suo ruolo"; Chapter_15: "Boodle challenges Buggy over the matter of the town"). Boodle page cites that scene as chap=15 ep=6 ep2=7; Episode_7 Long Summary opens "Luffy knocks Boodle unconscious", so the scene straddles 6/7; rounded up to 7. At his first meeting (ch 12, ep 6) he only says he is the mayor (it wiki). Story detail: Boodle page History (ch 14-15, ep 6-7).',
+    },
+    8: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_8',
+      note: 'Long Summary: "Boodle wakes up and finds that the Buggy Pirates have been successfully repelled ... He goes to the pier to thank the group as they depart. To Nami\'s horror, Luffy leaves her treasures behind so the citizens could fund repairs." Boodle page: "after declaring that he alone had the right to hate them"; it wiki: removes armour on the way, apologises and says he will not forget them.',
+    },
+  },
+  'ninjin-piiman-and-tamanegi': {
+    9: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_9',
+      note: 'charDebut lists Ninjin, Piiman, Tamanegi. Fansub transcript of ep 9 (subslikescript) has the crew reporting to Usopp with the translator note on "piiman"/"ninjin" and "Where is Onion?" (Tamanegi) in the opening scene; Chapter_23 (the chapter ep 9 opens on) introduces all three.',
+    },
+    11: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_11',
+      note: 'Ep 10 Long Summary: Tamanegi spots the moonwalking man, Jango hypnotises the children and himself. Ep 11: Usopp shot in the arm by Merry; the children express their disappointment in Usopp for lying and leave.',
+    },
+    16: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_16',
+      note: 'Ep 15: the Usopp Pirates beat Kuro while he is down (frying pan: Ninjin page, chap=35 ep=15); Kuro sends Jango after Kaya; Usopp orders the children to protect her. Ep 16: forest, Kaya ill, fake surrender + weapons + falling log fail, Kaya agrees to sign the will, Zoro and Usopp arrive.',
+    },
+    17: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_17',
+      note: 'Kayaku Boshi defeats Jango; Usopp asks the children not to tell; disbands the crew telling each to pursue their ambitions (tearful: Ninjin page chap=40 ep=17); the children take over the "pirates are coming" lie.',
+    },
+  },
+  'buchi': {
+    13: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_13',
+      note: 'Long Summary names "the Nyaban Brothers, Sham and Buchi"; fansub transcript of ep 13 has "Right, Buchi?". Buchi page (chap=31/32, ep=13): complains he wants no part, stomp dodged and splits the ground, blames Sham; Usopp’s stray shot, chest cut, Kuro arrives.',
+    },
+    14: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_14',
+      note: 'Long Summary: rebellion against Kuro, Nukiashi, five minutes, Tora Gari; "Buchi is still conscious and begs Jango to hypnotize him"; muscles increase in size. Buchi page chap=33 ep=14: raided villages/sank ships, "no longer their captain".',
+    },
+    15: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_15',
+      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only).',
+    },
+  },
+  'sham': {
+    13: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_13',
+      note: 'Long Summary: "Jango summons the Nyaban Brothers, Sham and Buchi"; Sham takes two of Zoro’s katanas; Usopp’s missed shot hits Zoro; brothers slash his chest; Kuro arrives. Fansub transcript of ep 13: "Sham, just go do it!", "Gotcha, Sham!", "Right, Buchi?". Sham page: shirt-only cut (it wiki), chap=32 ep=13.',
+    },
+    14: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_14',
+      note: 'Long Summary: brothers accuse Kuro of going soft after three years, charge, Nukiashi puts claws at their backs, five minutes to kill Zoro, Nami kicks back the swords, Tora Gari defeats both; Buchi alone gets up. "Five seconds": Sham page chap=33 ep=14.',
+    },
+  },
+  'fullbody': {
+    20: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_20',
+      note: 'Long Summary: Marine lieutenant Fullbody enters for a date, orders the crew’s ship destroyed, Luffy deflects the cannonball into the roof onto Zeff, fly in the soup, table smashed, Sanji beats him with his legs. Fansub transcript of ep 20: "I’m the Marine Lieutenant, Iron Fist Fullbody!". Char box first = Chapter 43; Episode 20.',
+    },
+    21: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_21',
+      note: 'Long Summary: Fullbody tries to flee, his crew reports the escaped starved prisoner; Gin enters, Patty beats him and throws him out. Fullbody page (chap=44 ep=21): Gin broke out of Fullbody’s ship; Fullbody flees. Krieg deliberately not named (filed at 22).',
+    },
+    45: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_45',
+      note: 'Long Summary (anime-only scene in a canon episode adapting ch 96): Fullbody demoted after the fight at the Baratie, sees Luffy’s bounty as a way back, attacks the Going Merry, repelled, retreats on seeing Sanji.',
+    },
+    128: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_128',
+      note: 'Affiliation: Jango and Fullbody on a captured pirate ship, report to Hina, sent to patrol for the Straw Hats (Chapter_214).',
+    },
+    129: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_129',
+      note: 'Long Summary: Marines attack the Going Merry; Fullbody tells Sanji his crew will meet their doom since he is powered up; Usopp’s cannon destroys Jango’s ship and Fullbody’s; Bon Kurei’s decoy lets the Straw Hats escape.',
+    },
+  },
+  'carne': {
+    21: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_21',
+      note: 'Debut (charDebut; Char Box first = Ch 45 / Ep 21). Named on screen in ep 21: the cooks cheer "Carne, take him out! Patty, beat him!" during the kitchen quarrel (subslikescript ep 21 transcript). Fleet of 50 ships / 5000 men, elephants and ants, "just quit", waiters: same transcript + Chapter 45 summary + Carne/History (chap 45, ep 21).',
+    },
+    25: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_25',
+      note: 'Long Summary: patissier Patty and charcutier Carne operate Sabagashira I, Krieg throws it back into the fin, they remember how they were accepted into the Baratie, defeat many enemies, downed by Pearl. Ten years / 300 restaurants / Zeff’s call for cooks: Patty/History Qref c54 (chap 54, ep 25) and chap 68 moved to ep 25 flashback.',
+    },
+    28: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_28',
+      note: 'Long Summary: Gin gives his mask to Luffy, inhales MH5, internal bleeding, staff rush to care for him. Sanji’s order and the pudding remark: Patty/Relationships + Trivia Qref "poison" (chap 63, ep 28).',
+    },
+  },
+  'patty': {
+    21: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_21',
+      note: 'Debut (charDebut, Char Box first = Ch 44 / Ep 21). Named on screen in ep 21: Zeff "Patty, Sanji! If you wanna fight, do it in the kitchen!" and the cooks "Is it really okay, though, Patty?" (subslikescript ep 21 transcript). Gin thrown out, kitchen warning, Luffy as chore boy: Long Summary + Patty/History (chap 44-45, ep 21).',
+    },
+    22: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_22',
+      note: 'Long Summary: Krieg fed against Patty’s wishes, Patty shoots him with Shokuatari Meatball, armour unharmed, guns emerge, Zeff submits. Marines idea and knocking Sanji down: Patty/History Qref chap 46-47 ep 22.',
+    },
+    30: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_30',
+      note: 'Long Summary: Patty, Carne and Zeff pretend to dislike the soup; Sanji prostrates before Zeff. Throwing out the soup, confession overheard, payback attack, tearful farewell: Patty/History Qref chap 67-68 ep 30.',
+    },
+  },
+  'momoo': {
+    38: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_38',
+      note: 'THRESHOLD MOVED 32 -> 38. First episode where he is on screen AND named: Hatchan "Come out, Momoo!", "the Grand Line monster that destroyed the town of Gosa", "the sea cow, Momoo!", Arlong "Momoo. What are you doing? ... if you wanna run away, I won’t stop you" (subslikescript ep 38). Ep 31 says the name ("A monster called Mohmoo did this", "Mohmoo! Lunchtime") but he is not seen; ep 32 shows him with no name. Towing/eating the cook: ep 32 transcript + Long Summary; crash: ep 33 Long Summary + Momoo/History (chap 74-75, ep 33); windmill throw: ep 38 Long Summary (Gomu Gomu no Kazaguruma). Gosa houses upside down / road: Episode 31 Long Summary + transcript.',
+    },
+    524: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_524',
+      note: 'Long Summary: Caribou’s crew pulled away by Momoo, who flees on recognising Nami, Sanji and Luffy; Caribou left alone on the Sunny; Kraken destroys the Caribou ship. Collar, captured near Sabaody, return with a new lump, freed and swims away: Momoo/History Qref chap 604-605, ep 524.',
+    },
+  },
+  'lord-of-the-coast': {
+    504: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_504',
+      note: 'Lord of the Coast page: name Qref "chap=1, page=49, ep=504: The Lord of the Coast is named by Luffy." Episode_504 Long Summary: "Three years later, Luffy sets out from the Goa Kingdom. He then beats up the Lord of the Coast for eating Shanks\' arm"; Anime Notes: the defeat "is properly shown for the first time in the anime version in this episode". Episode_4 calls it only "a Sea King, a carnivorous sea monster" and skips the rematch, so ep 4 is not a naming; rounded up to 504. Chapter 1 names it at the rematch (page 49). Ep 4 facts (Higuma eaten, Shanks\'s arm, the glare) are already known at 504.',
+    },
+  },
 }

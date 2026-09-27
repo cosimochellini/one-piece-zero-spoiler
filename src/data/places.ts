@@ -61,7 +61,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       it: 'La prima terra su cui la ciurma mette piede, se due persone senza nave si possono chiamare ciurma. La base tiene la città come una caserma, i marinai temono il proprio capitano più dei pirati, e nel cortile un cacciatore di pirati è legato a un palo da giorni, senza mangiare, per una promessa fatta a una bambina.',
       en: 'The first land the crew sets foot on, if two people with no ship can be called a crew. The base runs the town like a barracks, the Marines fear their own captain more than any pirate, and in the yard a pirate hunter has been tied to a post for days, unfed, over a promise made to a little girl.',
     },
-    filedHere: ['roronoa-zoro'],
+    filedHere: ['roronoa-zoro', 'rika'],
   },
   'foosha-village': {
     sea: 'east-blue',
@@ -72,7 +72,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       it: 'Il porto di partenza. Qui un bambino ha passato un anno a chiedere di essere imbarcato dai pirati che avevano preso la taverna per casa, e qui ha ricevuto in prestito il cappello di paglia che porta ancora, con la promessa di restituirlo quando sarà diventato un grande pirata.',
       en: 'The port of departure. Here a boy spent a year asking to be taken aboard by the pirates who had made the tavern their home, and here he was lent the straw hat he still wears, on a promise to give it back once he has become a great pirate.',
     },
-    filedHere: ['shanks'],
+    filedHere: ['shanks', 'lord-of-the-coast'],
   },
   'orange-town': {
     sea: 'east-blue',
@@ -83,7 +83,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       it: 'Il capitano ci è caduto dentro dal cielo, lasciato andare da un uccello, nel mezzo di un inseguimento tra una ladra e tre pirati. Le strade sono vuote, le case ancora intere tranne quelle che i cannoni hanno già raggiunto, e la ciurma che occupa la piazza ha una nave, un tendone e una carta nautica che qualcuno le ha appena rubato.',
       en: 'The captain fell into it from the sky, dropped by a bird, in the middle of a chase between a thief and three pirates. The streets are empty, the houses still whole except where the cannons have already reached, and the crew holding the square has a ship, a big top and a sea chart that somebody has just stolen from it.',
     },
-    filedHere: ['nami', 'buggy'],
+    filedHere: ['nami', 'buggy', 'chouchou', 'richie', 'boodle'],
   },
   'syrup-village': {
     sea: 'east-blue',
@@ -94,7 +94,13 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       it: 'Tre bambini con una bandiera, il bugiardo che li comanda e una ragazza malata che ascolta le sue storie dalla finestra della villa. Il villaggio ha imparato a non credere a una parola di quello che sente gridare all’alba, il che è un problema il giorno in cui la bugia è vera.',
       en: 'Three children with a flag, the liar who leads them, and a sick girl who listens to his stories from a window of the mansion. The village has learned not to believe a word of what it hears shouted at dawn, which is a problem on the day the lie is true.',
     },
-    filedHere: ['usopp', 'going-merry'],
+    filedHere: [
+      'usopp',
+      'going-merry',
+      'ninjin-piiman-and-tamanegi',
+      'buchi',
+      'sham',
+    ],
   },
   'baratie': {
     sea: 'east-blue',
@@ -105,7 +111,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       it: 'Il primo scalo che non è un’isola. Il proprietario è un vecchio cuoco con una gamba di legno; il suo vice dà da mangiare a chiunque abbia fame e prende a calci chiunque manchi di rispetto alla cucina. La ciurma arriva per cercare un cuoco e il capitano finisce a lavare i piatti per pagare un tetto sfondato.',
       en: 'The first port of call that is not an island. The owner is an old cook with a peg leg; his sous-chef feeds anyone who is hungry and kicks anyone who disrespects the kitchen. The crew comes looking for a cook, and the captain ends up washing dishes to pay for a hole in the roof.',
     },
-    filedHere: ['sanji', 'dracule-mihawk'],
+    filedHere: ['sanji', 'dracule-mihawk', 'fullbody', 'carne', 'patty'],
   },
   'jaya': {
     sea: 'grand-line',
