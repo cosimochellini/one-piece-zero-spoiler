@@ -114,8 +114,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 3,
       name: { it: 'Roronoa Zoro', en: 'Roronoa Zoro' },
       summary: {
-        it: 'Un cacciatore di pirati legato a un palo nel cortile di una base della Marina, che resiste da nove giorni senza mangiare per una promessa fatta a una bambina.',
-        en: 'A pirate hunter tied to a post in the yard of a Marine base, nine days without food, over a promise made to a little girl.',
+        it: 'Un cacciatore di pirati legato a un palo nel cortile di una base della Marina, che resiste da settimane senza mangiare per una promessa fatta a una bambina.',
+        en: 'A pirate hunter tied to a post in the yard of a Marine base, weeks without food, over a promise made to a little girl.',
       },
       visual: { art: 'roronoa-zoro', tint: 'green' },
     },
