@@ -1,7 +1,8 @@
+import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import { dossierOf, getCharacter } from '~/data/characters'
 import type { Entity, Story, Timeline } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { type Bookmark, modeOf } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { episodeOf } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
 import type {
@@ -58,14 +59,17 @@ export function segmentsOf(
 /**
  * The stories the reader has reached, in the reader's language. A `null`
  * bookmark reaches none, the same asymmetry as `isRevealed`: a reader who has
- * not said where they are is shown nothing.
+ * not said where they are is shown nothing. A chapter bookmark reaches the
+ * stories of the episode its chapter reaches (`~/data/chapters`), and each
+ * story carries the chapter that reaches it, so its mark can be printed in the
+ * reader's own unit.
  */
 function reachedStories(
   chronicle: Timeline<Story>,
   bookmark: Bookmark,
   { locale, resolve }: Reader,
 ): readonly ChronicleEntry[] {
-  const progress = episodeOf(bookmark)
+  const progress = episodeOf(timelineBookmark(bookmark))
   if (progress === null) {
     return []
   }
@@ -75,7 +79,8 @@ function reachedStories(
         []
       : [
           {
-            episode: entry.episode,
+            revealedAtEpisode: entry.episode,
+            revealedAtChapter: chapterAtEpisode(entry.episode),
             title: entry.value.title[locale],
             body: segmentsOf(entry.value.body[locale], resolve),
           },
@@ -89,12 +94,6 @@ export function chronicleFrom(
   bookmark: Bookmark,
   reader: Reader,
 ): CharacterChronicle {
-  // The stories count in anime episodes. A reader who counts in chapters
-  // reaches none of them, and is told why instead of shown nothing.
-  if (modeOf(bookmark) === 'chapter') {
-    return { mode: 'chapterNote' }
-  }
-
   return {
     mode: 'chronicle',
     entries:

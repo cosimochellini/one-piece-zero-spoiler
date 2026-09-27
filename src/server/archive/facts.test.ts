@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { episodeAtChapter } from '~/data/chapters'
 import type { CharacterDossier } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
 
@@ -85,10 +86,24 @@ describe('the facts a bookmark reaches', () => {
     })
   })
 
-  it('reaches none of them for a reader who counts in chapters', () => {
+  it('reads a chapter bookmark at the episode its chapter reaches', () => {
+    for (const chapter of [1, 50, 218, 1000]) {
+      const reached = ep(episodeAtChapter(chapter))
+
+      expect(
+        factsFrom(dossier, 'en', { mode: 'chapter', chapter }),
+        `chapter ${String(chapter)}`,
+      ).toStrictEqual(factsFrom(dossier, 'en', reached))
+    }
+
+    // Chapter 1 reaches episode 1 and nothing past it.
     expect(
-      factsFrom(dossier, 'en', { mode: 'chapter', chapter: 1000 }),
-    ).toStrictEqual({ mode: 'chapterNote' })
+      factsFrom(dossier, 'en', { mode: 'chapter', chapter: 1 }),
+    ).toStrictEqual({
+      mode: 'facts',
+      affiliation: 'No crew yet',
+      status: 'alive',
+    })
   })
 
   it('reaches none of them with no bookmark at all', () => {

@@ -157,14 +157,9 @@ export const itDictionary: Dictionary = {
   'character.bounty': 'Taglia',
   'character.bountyValue': '{amount} Berry',
   'character.factsLabel': 'Quello che si sa finora',
-  'character.factsInEpisodes':
-    'I fatti di un dossier contano in episodi dell’anime. Imposta un segnalibro a episodi o a stagioni per leggerli; con un segnalibro a capitoli restano coperti.',
   'character.chronicleTitle': 'La storia finora',
   'character.chronicleLede':
-    'Quello che gli è successo, fino all’episodio a cui sei arrivato. Ogni storia si apre all’episodio che la mostra.',
-  'character.chronicleEpisode': 'Episodio {episode}',
-  'character.chronicleInEpisodes':
-    'Le storie di una cronaca contano in episodi dell’anime. Imposta un segnalibro a episodi o a stagioni per leggerle; con un segnalibro a capitoli restano coperte.',
+    'Quello che gli è successo, fino a dove sei arrivato. Ogni storia si apre dove la serie la mostra.',
   'character.before': 'Archiviato prima',
   'character.after': 'Archiviato dopo',
   'character.routeStart': 'Niente. La rotta comincia qui.',
@@ -248,8 +243,6 @@ export const itDictionary: Dictionary = {
     'I personaggi che l’archivio registra come mangiatori di questo frutto, ciascuno sotto la propria nebbia.',
   'fruit.eatersLoading': 'Leggo i dossier…',
   'fruit.eatersNone': 'Nessuno nell’archivio l’ha ancora mangiato.',
-  'fruit.eatersInEpisodes':
-    'I dossier contano in episodi dell’anime. Imposta un segnalibro a episodio o a stagione per leggere chi l’ha mangiato; un segnalibro a capitolo li tiene coperti.',
   'fruit.siblingsTitle': 'Altri di questo tipo',
   'fruit.siblingsLede':
     'I frutti archiviati più vicino a questo sulla stessa tavola.',

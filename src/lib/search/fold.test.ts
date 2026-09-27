@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { chapterAtEpisode } from '~/data/chapters'
 import { getCharacter } from '~/data/characters'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -134,11 +135,14 @@ describe('the epithets a search may answer with', () => {
     ).toBe(false)
   })
 
-  it('searches names only for a reader who counts in chapters', () => {
-    // Epithets are dated in episodes, so a chapter bookmark reaches none.
+  it('searches an epithet for a chapter reader once the chapter reaches it', () => {
+    // Epithets are dated in episodes; "Whitebeard" is learned in episode 151,
+    // so a chapter reader finds it from the first chapter that reaches 151.
+    const at = chapterAtEpisode(151)
+
     expect(
       search({
-        bookmark: ch(1000),
+        bookmark: ch(at - 1),
         id: newgate,
         locale: 'en',
         query: 'whitebeard',
@@ -146,10 +150,10 @@ describe('the epithets a search may answer with', () => {
     ).toBe(false)
     expect(
       search({
-        bookmark: ch(1000),
+        bookmark: ch(at),
         id: newgate,
         locale: 'en',
-        query: 'newgate',
+        query: 'whitebeard',
       }).matches,
     ).toBe(true)
   })
