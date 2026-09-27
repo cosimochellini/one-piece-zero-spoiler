@@ -126,6 +126,13 @@ export const fruitArt = {
     swirl: 'waves',
   }),
   'sand-sand-fruit': SAND_SAND,
+  'dog-dog-fruit-model-dachshund': fruit({
+    body: 'oblong',
+    grain: 2,
+    leaf: 'pair',
+    stem: 'hooked',
+    swirl: 'spiral',
+  }),
   'cage-cage-fruit': fruit({
     body: 'round',
     grain: 6,
