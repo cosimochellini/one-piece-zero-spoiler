@@ -16,6 +16,7 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterDetail, EntityKind, Slot } from '~/lib/view/records'
+import { morphPart } from '~/styles/morph'
 import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
@@ -92,7 +93,12 @@ function CrestPlate({
     >
       {(record) => {
         return (
-          <div {...stylex.props(styles.plate)}>
+          <div
+            {...stylex.props(
+              styles.plate,
+              morphPart('character', record.id, 'art'),
+            )}
+          >
             <CharacterCrest visual={record.visual} />
           </div>
         )
@@ -164,7 +170,14 @@ function DossierWords({
 }): ReactElement {
   return (
     <div {...stylex.props(styles.words)}>
-      <h1 {...stylex.props(styles.name)}>{record.name}</h1>
+      <h1
+        {...stylex.props(
+          styles.name,
+          morphPart('character', record.id, 'name'),
+        )}
+      >
+        {record.name}
+      </h1>
       {record.role === undefined ? null : (
         <p {...stylex.props(styles.role)}>{record.role}</p>
       )}

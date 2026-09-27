@@ -30,6 +30,12 @@ export type ShelvesSource = Promise<readonly ShelfView[]> | readonly ShelfView[]
 
 /** What the shelves need: the arcs, the live query, and a way to ask. */
 export type CharacterShelvesProps = {
+  /**
+   * The featured characters open above the shelves. Their crest cards carry
+   * the names that travel to a character's page, and a name may be on one
+   * element of a page only, so their tiles here go without.
+   */
+  readonly featured: ReadonlySet<string>
   /** Prefix for every heading id on the page, so the shelves cannot collide. */
   readonly fieldId: string
   /** The query, already folded. Empty matches everything. */
@@ -50,6 +56,7 @@ export type CharacterShelvesProps = {
  * itself answer the question the fog refuses to answer.
  */
 export function CharacterShelves({
+  featured,
   shelves,
   shelfCount,
   fieldId,
@@ -66,6 +73,7 @@ export function CharacterShelves({
     >
       <Suspense fallback={<ShelvesPending count={shelfCount} />}>
         <Shelves
+          featured={featured}
           fieldId={fieldId}
           needle={needle}
           peek={peek}
@@ -82,11 +90,13 @@ export function CharacterShelves({
  * borrow put the covered arc's slug into the markup.
  */
 function Shelves({
+  featured,
   shelves,
   fieldId,
   needle,
   peek,
 }: {
+  readonly featured: ReadonlySet<string>
   readonly fieldId: string
   readonly needle: string
   readonly peek: (handle: string) => Promise<CharacterView>
@@ -109,6 +119,7 @@ function Shelves({
                 `open-${section.arc.record.id}`
               : `fog-${section.arc.covered.handle}`
             }
+            featured={featured}
             headingId={headingId}
             needle={needle}
             peek={peek}
@@ -164,11 +175,13 @@ function ShelvesPending({ count }: { readonly count: number }): ReactElement {
  * search is left out; with no search every shelf is on the page.
  */
 function Shelf({
+  featured,
   section,
   headingId,
   needle,
   peek,
 }: {
+  readonly featured: ReadonlySet<string>
   readonly headingId: string
   readonly needle: string
   readonly peek: (handle: string) => Promise<CharacterView>
@@ -193,6 +206,7 @@ function Shelf({
       />
       <ShelfTiles
         covered={section.covered}
+        featured={featured}
         peek={peek}
         shown={shown}
       />
@@ -275,9 +289,11 @@ function ShelfHead({
 function ShelfTiles({
   shown,
   covered,
+  featured,
   peek,
 }: {
   readonly covered: readonly CoveredRecord[]
+  readonly featured: ReadonlySet<string>
   readonly peek: (handle: string) => Promise<CharacterView>
   readonly shown: readonly Match<SearchableCharacter>[]
 }): ReactElement {
@@ -288,6 +304,7 @@ function ShelfTiles({
           <CharacterTile
             key={`open-${entry.id}`}
             highlight={match.highlight}
+            morph={!featured.has(entry.id)}
             peek={peek}
             slot={{ open: true, record: entry }}
           />
@@ -295,6 +312,10 @@ function ShelfTiles({
       })}
       {covered.map((entry) => {
         return (
+          // ponytail: a covered tile's id is unknown until it is peeked, so it
+          // keeps its names. Peeking both a featured card and its tile puts one
+          // name on two elements, and the browser skips that one transition
+          // (the navigation still happens). Pass the peeked id up if it shows.
           <CharacterTile
             key={`fog-${entry.handle}`}
             peek={peek}

@@ -8,6 +8,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterView, Slot } from '~/lib/view/records'
+import { morphPart } from '~/styles/morph'
 import {
   color,
   dur,
@@ -26,6 +27,19 @@ export type CharacterTileProps = {
   readonly slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
   readonly highlight?: null | readonly [number, number]
+  /**
+   * Whether the drawing and the name travel to the character's page. Off for
+   * a featured character, whose crest card higher up already carries the
+   * names: a name may be on one element of a page only.
+   *
+   * The way back from a character's page lands on the tile only when its
+   * shelf was already painted: a shelf is `content-visibility: auto`, and the
+   * browser still counts one that scroll restoration has just brought on
+   * screen as skipped in the frame it captures, so that return is the page's
+   * crossfade. Dropping the containment would fix it and make every layout
+   * of the book several times slower.
+   */
+  readonly morph?: boolean
 }
 
 /**
@@ -42,8 +56,9 @@ export function CharacterTile({
   slot,
   peek,
   highlight = null,
+  morph = true,
 }: CharacterTileProps): ReactElement {
-  const { locale, t } = useLocale()
+  const { t } = useLocale()
   const threshold = useThreshold()
 
   return (
@@ -65,29 +80,11 @@ export function CharacterTile({
       >
         {(record) => {
           return (
-            <Link
-              params={{ locale, id: record.id }}
-              to="/$locale/characters/$id"
-              {...stylex.props(styles.row, styles.link)}
-            >
-              <span {...stylex.props(styles.frame)}>
-                <ChartArt
-                  strokes={record.visual.strokes}
-                  tint={record.visual.tint}
-                />
-              </span>
-              <span {...stylex.props(styles.words)}>
-                <span {...stylex.props(styles.name)}>
-                  <Marked
-                    span={highlight}
-                    text={record.name}
-                  />
-                </span>
-                {record.role === undefined ? null : (
-                  <span {...stylex.props(styles.role)}>{record.role}</span>
-                )}
-              </span>
-            </Link>
+            <TileLink
+              highlight={highlight}
+              morph={morph}
+              record={record}
+            />
           )
         }}
       </SpoilerVeil>
@@ -95,6 +92,55 @@ export function CharacterTile({
         {threshold('chart.opensAt', slot.open ? slot.record : slot.covered)}
       </p>
     </li>
+  )
+}
+
+/** An open tile: the drawing and the name, as a link to the page. */
+function TileLink({
+  record,
+  highlight,
+  morph,
+}: {
+  readonly highlight: null | readonly [number, number]
+  readonly morph: boolean
+  readonly record: CharacterView
+}): ReactElement {
+  const { locale } = useLocale()
+
+  return (
+    <Link
+      params={{ locale, id: record.id }}
+      to="/$locale/characters/$id"
+      {...stylex.props(styles.row, styles.link)}
+    >
+      <span
+        {...stylex.props(
+          styles.frame,
+          morph && morphPart('character', record.id, 'art'),
+        )}
+      >
+        <ChartArt
+          strokes={record.visual.strokes}
+          tint={record.visual.tint}
+        />
+      </span>
+      <span {...stylex.props(styles.words)}>
+        <span
+          {...stylex.props(
+            styles.name,
+            morph && morphPart('character', record.id, 'name'),
+          )}
+        >
+          <Marked
+            span={highlight}
+            text={record.name}
+          />
+        </span>
+        {record.role === undefined ? null : (
+          <span {...stylex.props(styles.role)}>{record.role}</span>
+        )}
+      </span>
+    </Link>
   )
 }
 

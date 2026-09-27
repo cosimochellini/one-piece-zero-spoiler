@@ -1,12 +1,13 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import type { ReactElement, ReactNode } from 'react'
+import { type ReactElement, type ReactNode, useState } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterView, Slot } from '~/lib/view/records'
+import { morphPart } from '~/styles/morph'
 import {
   color,
   dur,
@@ -25,6 +26,14 @@ export type CharacterCardProps = {
   readonly slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
   readonly highlight?: null | readonly [number, number]
+  /**
+   * When the crest and the name take the names that travel to the page.
+   * `always` on the signal book, so the way back lands on the card too.
+   * `onClick` for the cards a record's own page lists: those are other pages'
+   * cards as well, and carrying the names from the start would pair them with
+   * the signal book's, flying in from wherever they sat on the page left.
+   */
+  readonly morph?: 'always' | 'onClick'
 }
 
 /**
@@ -40,8 +49,9 @@ export function CharacterCard({
   slot,
   peek,
   highlight = null,
+  morph = 'always',
 }: CharacterCardProps): ReactElement {
-  const { locale, t } = useLocale()
+  const { t } = useLocale()
   const threshold = useThreshold()
 
   return (
@@ -64,24 +74,11 @@ export function CharacterCard({
       >
         {(record) => {
           return (
-            <Link
-              params={{ locale, id: record.id }}
-              to="/$locale/characters/$id"
-              {...stylex.props(styles.link)}
-            >
-              <span {...stylex.props(styles.frame)}>
-                <CharacterCrest visual={record.visual} />
-              </span>
-              <span {...stylex.props(styles.name)}>
-                <Marked
-                  span={highlight}
-                  text={record.name}
-                />
-              </span>
-              {record.role === undefined ? null : (
-                <span {...stylex.props(styles.role)}>{record.role}</span>
-              )}
-            </Link>
+            <CardLink
+              highlight={highlight}
+              morph={morph}
+              record={record}
+            />
           )
         }}
       </SpoilerVeil>
@@ -89,6 +86,58 @@ export function CharacterCard({
         {threshold('chart.opensAt', slot.open ? slot.record : slot.covered)}
       </p>
     </li>
+  )
+}
+
+/** An open card: the crest, the name and the role, as a link to the page. */
+function CardLink({
+  record,
+  highlight,
+  morph,
+}: {
+  readonly highlight: null | readonly [number, number]
+  readonly morph: 'always' | 'onClick'
+  readonly record: CharacterView
+}): ReactElement {
+  const { locale } = useLocale()
+  // Set in the click, which renders before the router starts the transition,
+  // so the old page is captured with the names on. ponytail: a modified click
+  // that opens a tab also sets it; the card then pairs like a signal book one.
+  const [clicked, setClicked] = useState(false)
+  const travels = morph === 'always' || clicked
+
+  return (
+    <Link
+      onClick={() => {
+        setClicked(true)
+      }}
+      params={{ locale, id: record.id }}
+      to="/$locale/characters/$id"
+      {...stylex.props(styles.link)}
+    >
+      <span
+        {...stylex.props(
+          styles.frame,
+          travels && morphPart('character', record.id, 'art'),
+        )}
+      >
+        <CharacterCrest visual={record.visual} />
+      </span>
+      <span
+        {...stylex.props(
+          styles.name,
+          travels && morphPart('character', record.id, 'name'),
+        )}
+      >
+        <Marked
+          span={highlight}
+          text={record.name}
+        />
+      </span>
+      {record.role === undefined ? null : (
+        <span {...stylex.props(styles.role)}>{record.role}</span>
+      )}
+    </Link>
   )
 }
 

@@ -10,6 +10,7 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitForm, FruitView, Slot } from '~/lib/view/records'
+import { morphPart } from '~/styles/morph'
 
 /** How wide a specimen number is printed. `01`, never `1`. */
 const NUMBER_WIDTH = 2
@@ -125,7 +126,13 @@ function SpecimenMargin({
           slot={slot}
           strength="media"
         >
-          {(record) => <FruitFrame visual={record.visual} />}
+          {(record) => {
+            return (
+              <div {...stylex.props(morphPart('fruit', record.id, 'art'))}>
+                <FruitFrame visual={record.visual} />
+              </div>
+            )
+          }}
         </SpoilerVeil>
       </div>
     </div>
@@ -144,7 +151,7 @@ function SpecimenWords({
 
   return (
     <>
-      <p {...stylex.props(styles.name)}>
+      <p {...stylex.props(styles.name, morphPart('fruit', record.id, 'name'))}>
         <Link
           params={{ locale, id: record.id }}
           to="/$locale/fruits/$id"
