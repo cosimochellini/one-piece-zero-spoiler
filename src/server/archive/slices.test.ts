@@ -126,6 +126,13 @@ function shelvedKeys(shelf: ShelfView): readonly string[] {
  */
 function saysNothing(payload: unknown, bookmark: Bookmark): void {
   const said = named(payload)
+  // A name a reached record also goes by is that record's, not a leak: the
+  // zombie dog Cerberus is met at 339, Shamrock's sword of the name at 1168.
+  const reachedNames = new Set(
+    entities
+      .filter((entity) => isRevealed(entity, bookmark))
+      .flatMap((entity) => Object.values(entity.name)),
+  )
 
   for (const entity of entities) {
     if (isRevealed(entity, bookmark)) {
@@ -135,7 +142,9 @@ function saysNothing(payload: unknown, bookmark: Bookmark): void {
     expect(said.has(entity.id), entity.id).toBe(false)
 
     for (const name of Object.values(entity.name)) {
-      expect(said.has(name), entity.id).toBe(false)
+      if (!reachedNames.has(name)) {
+        expect(said.has(name), entity.id).toBe(false)
+      }
     }
   }
 }

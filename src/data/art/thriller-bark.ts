@@ -196,4 +196,205 @@ export const thrillerBarkArt = {
     { d: 'M34 68 C20 72 12 80 16 84 H52', role: 'accent' },
     shadow(80, 186, 48),
   ],
+  // A tall bottle of wine and the glass poured from it; the wine takes the colour.
+  'hildon': [
+    {
+      d: 'M66 40 V74 C66 84 54 88 54 100 V172 q0 6 6 6 h24 q6 0 6 -6 V100 C90 88 78 84 78 74 V40 Z',
+    },
+    { d: 'M64 30 h16 v10 h-16z' },
+    { d: 'M54 118 h36 v30 h-36z', role: 'soft' },
+    { d: 'M104 104 q0 32 20 32 q20 0 20 -32 Z' },
+    { d: 'M107 118 q17 6 34 0 q-3 16 -17 16 q-14 0 -17 -16 Z', role: 'accent' },
+    { d: 'M124 136 V170 M110 172 h28' },
+    shadow(96, 186, 58),
+  ],
+
+  // A spiked dog collar lying open, three tags hanging from its buckle.
+  'cerberus-thriller-bark': [
+    { d: ellipse(80, 96, 56, 24), role: 'accent' },
+    { d: ellipse(80, 96, 46, 16), role: 'accent' },
+    {
+      d: 'M34 84 l4 -14 l5 12 M56 76 l4 -15 l5 14 M76 74 l4 -15 l4 15 M95 76 l5 -14 l4 15 M117 82 l5 -12 l4 14',
+    },
+    { d: 'M70 112 h20 v14 h-20z', role: 'soft' },
+    { d: 'M76 126 L60 142 M80 126 V146 M84 126 L100 142', role: 'soft' },
+    { d: circle(58, 150, 8) },
+    { d: circle(80, 156, 9) },
+    { d: circle(102, 150, 8) },
+    shadow(80, 180, 44),
+  ],
+
+  // A pig's snout on a trophy plaque hung from a nail, two swords crossed beneath it.
+  'buhichuck': [
+    { d: 'M62 40 L80 20 L98 40', role: 'ambient' },
+    { d: dots([[80, 20]]) },
+    { d: 'M44 40 H116 V92 C116 118 100 134 80 142 C60 134 44 118 44 92 Z' },
+    {
+      d: 'M54 50 H106 V92 C106 112 94 124 80 131 C66 124 54 112 54 92 Z',
+      role: 'soft',
+    },
+    { d: ellipse(80, 98, 16, 11) },
+    {
+      d: dots([
+        [74, 98],
+        [86, 98],
+        [66, 72],
+        [94, 72],
+      ]),
+    },
+    { d: 'M26 180 L134 116', role: 'accent' },
+    { d: 'M134 180 L26 116', role: 'accent' },
+    { d: 'M36 164 l9 14 M124 164 l-9 14' },
+    { d: 'M22 184 l6 -4 M138 184 l-6 -4' },
+  ],
+
+  // A surgical mask on its ear loops, and the long zip that runs down a bear's back.
+  'kumashi': [
+    { d: 'M40 44 C60 36 100 36 120 44 V80 C100 92 60 92 40 80 Z' },
+    {
+      d: 'M42 56 C62 50 98 50 118 56 M42 68 C62 62 98 62 118 68',
+      role: 'soft',
+    },
+    {
+      d: 'M40 48 C18 46 18 76 40 76 M120 48 C142 46 142 76 120 76',
+      role: 'ambient',
+    },
+    { d: 'M80 104 V170' },
+    {
+      d: 'M74 110 h12 M74 120 h12 M74 130 h12 M74 140 h12 M74 150 h12 M74 160 h12',
+      role: 'accent',
+    },
+    { d: 'M74 170 h12 v14 h-12z', role: 'accent' },
+  ],
+  // A bottle of liquor standing in front of two crossed swords, the bubbles
+  // of a hiccup rising off it.
+  'john': [
+    { d: 'M44 150 L122 38 L128 42 L50 154 Z' },
+    { d: 'M116 150 L38 38 L32 42 L110 154 Z' },
+    { d: 'M38 146 L58 160 M122 146 L102 160' },
+    { d: 'M47 152 L33 172 M113 152 L127 172', role: 'soft' },
+    {
+      d: 'M72 58 h16 v24 c0 8 14 12 14 28 V168 q0 8 -8 8 H66 q-8 0 -8 -8 V110 c0 -16 14 -20 14 -28 Z',
+    },
+    { d: 'M70 48 h20 v10 h-20z', role: 'soft' },
+    { d: 'M60 124 H100 V148 H60 Z', role: 'soft' },
+    { d: 'M59 106 H101', role: 'ambient' },
+    {
+      d: `${circle(112, 62, 5)} ${circle(124, 48, 3.5)} ${circle(133, 36, 2.5)}`,
+      role: 'accent',
+    },
+    shadow(80, 186, 46),
+  ],
+
+  // An old oil lantern with its flame lit, and a shadow on the ground beneath
+  // it again.
+  'spoil': [
+    { d: 'M68 36 C68 18 92 18 92 36' },
+    { d: 'M56 50 L66 36 H94 L104 50 Z' },
+    { d: 'M58 50 V140 M102 50 V140' },
+    {
+      d: 'M64 56 C56 80 56 116 64 134 H96 C104 116 104 80 96 56 Z',
+      role: 'soft',
+    },
+    { d: 'M80 118 C70 108 72 94 80 80 C88 94 90 108 80 118 Z', role: 'accent' },
+    { d: 'M80 118 V128' },
+    { d: 'M52 140 H108 V152 H52 Z' },
+    { d: 'M58 152 L62 160 H98 L102 152' },
+    {
+      d: 'M40 96 h-12 M120 96 h12 M46 70 l-10 -8 M114 70 l10 -8',
+      role: 'ambient',
+    },
+    shadow(80, 174, 44),
+  ],
+
+  // A bow drawn back, its arrow flying into a bubble that bursts.
+  'gyoro-nin-and-bao': [
+    { d: 'M34 30 C66 60 66 130 34 160' },
+    { d: 'M34 30 L58 95 L34 160', role: 'soft' },
+    { d: 'M58 95 H118' },
+    { d: 'M118 95 l-10 -6 M118 95 l-10 6' },
+    {
+      d: 'M58 95 l-8 -7 M58 95 l-8 7 M66 95 l-8 -7 M66 95 l-8 7',
+      role: 'soft',
+    },
+    { d: circle(132, 95, 16), role: 'accent', dashed: true },
+    {
+      d: 'M132 71 v-8 M149 78 l6 -6 M149 112 l6 6 M132 119 v8',
+      role: 'accent',
+    },
+    shadow(80, 182, 46),
+  ],
+  // Uses only primitives already imported by src/data/art/thriller-bark.ts:
+  // dots, shadow.
+
+  // Three sabres standing side by side, each with its knuckle guard, the
+  // middle one in colour, and the wind curling over them.
+  'jigoro': [
+    {
+      d: 'M35 152.1 C21.6 116.4 16 78.5 24.7 51 C30.7 82.6 38.1 115.8 43.6 149.6 Z',
+    },
+    { d: 'M29.2 153.8 L48.4 148.3 M38.8 151 L46 176' },
+    { d: 'M48.4 148.3 C57.9 155.9 57.9 170.5 46 176', role: 'soft' },
+    {
+      d: 'M112.1 149.7 C115.1 111.7 126 74.9 145.5 53.7 C137.6 84.9 130.3 118.1 121 151.1 Z',
+    },
+    { d: 'M106.2 148.8 L125.9 151.9 M116.1 150.3 L112 176' },
+    { d: 'M125.9 151.9 C131.3 162.9 125.2 176.1 112 176', role: 'soft' },
+    { d: 'M76 150 C73 112 78 74 94 50 C91 82 89 116 85 150 Z', role: 'accent' },
+    { d: 'M70 150 L90 150 M80 150 L80 176' },
+    { d: 'M90 150 C97 160 93 174 80 176', role: 'soft' },
+    {
+      d: 'M10 34 q18 -12 36 -2 q8 5 2 10 M116 20 q18 -10 34 2 q6 6 -2 9',
+      role: 'ambient',
+    },
+    shadow(80, 186, 56),
+  ],
+
+  // A spider web strung wide, one sticky thread hanging from it with a
+  // drop at the end.
+  'tararan': [
+    {
+      d: 'M80 82 L144.7 108.8 M80 82 L106.8 146.7 M80 82 L53.2 146.7 M80 82 L15.3 108.8 M80 82 L15.3 55.2 M80 82 L53.2 17.3 M80 82 L106.8 17.3 M80 82 L144.7 55.2',
+    },
+    {
+      d: 'M94.8 88.1 Q89 91 86.1 96.8 Q80 94.7 73.9 96.8 Q71 91 65.2 88.1 Q67.3 82 65.2 75.9 Q71 73 73.9 67.2 Q80 69.3 86.1 67.2 Q89 73 94.8 75.9 Q92.7 82 94.8 88.1',
+    },
+    {
+      d: 'M111.4 95 Q99.1 101.1 93 113.4 Q80 109 67 113.4 Q60.9 101.1 48.6 95 Q53 82 48.6 69 Q60.9 62.9 67 50.6 Q80 55 93 50.6 Q99.1 62.9 111.4 69 Q107 82 111.4 95',
+      role: 'soft',
+    },
+    {
+      d: 'M129.9 102.7 Q110.3 112.3 100.7 131.9 Q80 124.9 59.3 131.9 Q49.7 112.3 30.1 102.7 Q37.1 82 30.1 61.3 Q49.7 51.7 59.3 32.1 Q80 39.1 100.7 32.1 Q110.3 51.7 129.9 61.3 Q122.9 82 129.9 102.7',
+    },
+    { d: 'M101 132 C104 146 100 158 102 170', role: 'accent' },
+    { d: 'M102 170 c-6 4 -6 12 0 14 c6 -2 6 -10 0 -14z', role: 'accent' },
+  ],
+
+  // A sack of salt tied at the neck, grains spilled beside it, and a caught
+  // shadow drifting up out of it.
+  'risky-brothers': [
+    {
+      d: 'M50 176 C32 176 28 150 36 128 C44 108 58 100 64 92 H96 C102 100 116 108 124 128 C132 150 128 176 110 176 Z',
+    },
+    { d: 'M64 92 C58 82 62 74 72 80 L80 86 L88 80 C98 74 102 82 96 92' },
+    { d: 'M60 100 H100', role: 'soft' },
+    { d: 'M50 140 q30 8 60 0 M46 158 q34 8 68 0', role: 'soft' },
+    {
+      d: dots([
+        [122, 184],
+        [128, 178],
+        [132, 184],
+        [136, 174],
+        [142, 180],
+        [146, 172],
+        [150, 182],
+      ]),
+      role: 'accent',
+    },
+    {
+      d: 'M80 78 C66 62 94 52 80 36 C72 26 84 16 94 20',
+      role: 'ambient',
+      dashed: true,
+    },
+  ],
 } satisfies Drawings
