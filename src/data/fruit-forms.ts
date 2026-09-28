@@ -87,6 +87,7 @@ export const FRUIT_FORMS = {
   'pop-pop-fruit': 'paramecia',
   'stitch-stitch-fruit': 'paramecia',
   'hobby-hobby-fruit': 'paramecia',
+  'jacket-jacket-fruit': 'paramecia',
   'barrier-barrier-fruit': 'paramecia',
   'heal-heal-fruit': 'paramecia',
   'string-string-fruit': 'paramecia',
