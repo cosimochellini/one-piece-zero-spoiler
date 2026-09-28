@@ -324,8 +324,6 @@ export const thrillerBarkArt = {
     },
     shadow(80, 182, 46),
   ],
-  // Uses only primitives already imported by src/data/art/thriller-bark.ts:
-  // dots, shadow.
 
   // Three sabres standing side by side, each with its knuckle guard, the
   // middle one in colour, and the wind curling over them.
