@@ -866,8 +866,8 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles['rob-lucci'],
       role: DOCK_ONE,
       log: {
-        it: 'Ai cantieri della Galley-La, dove i carpentieri hanno appena messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, la folla scandisce il suo nome più di ogni altro. Un piccione bianco gli sta sulla spalla ovunque vada. Ai curiosi non dice nulla, e non ne ha bisogno: per Water Seven gli uomini della Galley-La sono l’orgoglio della città.',
-        en: 'At the Galley-La docks, where the shipwrights have just knocked flat a pirate crew that would not pay for its repairs, the crowd chants his name louder than any other. A white pigeon rides on his shoulder wherever he goes. He says nothing to the onlookers and does not need to: for Water Seven, the Galley-La men are the pride of the city.',
+        it: 'Ai cantieri della Galley-La, poco dopo che i carpentieri hanno messo al tappeto una ciurma pirata che non voleva pagare le riparazioni, una folla si raduna ad acclamarlo. Un piccione bianco gli sta sulla spalla ovunque vada. Ai curiosi non dice nulla, e non ne ha bisogno: per Water Seven gli uomini della Galley-La sono l’orgoglio della città.',
+        en: 'At the Galley-La docks, not long after the shipwrights knocked flat a pirate crew that would not pay for its repairs, a crowd gathers to praise him. A white pigeon rides on his shoulder wherever he goes. He says nothing to the onlookers and does not need to: for Water Seven, the Galley-La men are the pride of the city.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
