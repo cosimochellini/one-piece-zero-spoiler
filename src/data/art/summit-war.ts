@@ -754,4 +754,371 @@ export const summitWarArt = {
       role: 'accent',
     },
   ],
+
+  // A cane with a gilded knob, leaning on an empty seat of the VIP row.
+  'rosward': [
+    { d: 'M42 118 V58 q30 -12 60 0 V118' },
+    { d: 'M50 70 q22 -8 44 0 V112 H50z', role: 'soft' },
+    { d: 'M36 118 h72 v10 h-72z' },
+    { d: 'M40 128 v44 M104 128 v44' },
+    { d: 'M130 176 L117 66', role: 'accent' },
+    { d: circle(116, 58, 8), role: 'accent' },
+    { d: 'M113 76 l9 -1', role: 'accent' },
+    shadow(84, 180, 54),
+  ],
+
+  // A small pistol laid across an open fan.
+  'shalria': [
+    { d: 'M40 124 Q80 84 120 124' },
+    {
+      d: 'M80 162 L40 124 M80 162 L58 108 M80 162 L80 102 M80 162 L102 108 M80 162 L120 124',
+      role: 'soft',
+    },
+    { d: 'M52 132 h52 v8 h-52z', role: 'accent' },
+    { d: 'M96 140 l6 22 h10 l-4 -22', role: 'accent' },
+    { d: 'M86 140 q0 8 8 8', role: 'accent' },
+    { d: 'M44 128 q-6 -6 0 -12 q6 -6 0 -12', role: 'ambient', dashed: true },
+    shadow(80, 178, 48),
+  ],
+
+  // An auctioneer's gavel on its block, and a pair of star-shaped glasses.
+  'disco': [
+    { d: 'M34 150 h60 v12 h-60z' },
+    { d: 'M40 106 h44 v18 h-44z', role: 'accent' },
+    { d: 'M50 106 v18 M74 106 v18', role: 'soft' },
+    { d: 'M84 115 L132 132' },
+    { d: `${star(106, 70, 14, 6)} ${star(140, 70, 14, 6)}`, role: 'accent' },
+    { d: 'M120 68 q3 -3 6 0' },
+    shadow(64, 172, 40),
+  ],
+
+  // An explosive collar lying open, its chain still wound round the stake.
+  'jean-bart': [
+    { d: 'M36 124 a34 12 0 0 0 68 0', role: 'accent' },
+    { d: 'M36 124 C36 100 60 88 84 92', role: 'accent' },
+    { d: 'M62 132 h16 v10 h-16z' },
+    { d: dot(70, 137), role: 'accent' },
+    {
+      d: `${ellipse(98, 116, 6, 3)} ${ellipse(110, 108, 6, 3)} ${ellipse(121, 100, 6, 3)}`,
+    },
+    { d: 'M128 60 V168 M122 60 h12 M124 168 l4 8 l4 -8' },
+    { d: 'M122 92 q6 4 12 0 M122 102 q6 4 12 0', role: 'soft' },
+    shadow(80, 184, 50),
+  ],
+
+  // A cluster of forest mushrooms, and the smoke she followed to find them.
+  'sweet-pea': [
+    { d: 'M40 120 C40 94 88 94 88 120z', role: 'accent' },
+    { d: 'M56 120 V160 M72 120 V160' },
+    { d: 'M92 136 C92 120 118 120 118 136z', role: 'accent' },
+    { d: 'M100 136 V160 M110 136 V160' },
+    {
+      d: dots([
+        [54, 108],
+        [70, 103],
+        [80, 112],
+        [104, 129],
+      ]),
+      role: 'soft',
+    },
+    {
+      d: 'M126 112 c-10 -12 10 -20 0 -32 c-10 -12 10 -20 0 -32',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M16 160 h128', role: 'ambient' },
+  ],
+
+  // A pair of sandals, one big enough to stand the other inside it.
+  'aphelandra': [
+    {
+      d: 'M40 64 C40 36 96 36 96 64 L92 160 C92 186 44 186 44 160z',
+      role: 'accent',
+    },
+    { d: 'M44 90 C60 76 76 76 92 90 M46 124 h44', role: 'accent' },
+    { d: 'M68 50 v14', role: 'soft' },
+    { d: 'M58 112 C58 100 78 100 78 112 L76 152 C76 162 60 162 60 152z' },
+    { d: 'M60 126 h16', role: 'soft' },
+    shadow(70, 192, 40),
+  ],
+
+  // Three arrows in a roof beam, beside the hole a man went out through.
+  'kikyo': [
+    { d: 'M10 60 L80 24 L150 60' },
+    { d: 'M96 40 l6 -6 l8 4 l6 -4 l4 10 l-8 6 l-10 -2z', role: 'soft' },
+    { d: 'M10 64 h140 v16 h-140z' },
+    { d: 'M30 150 L48 80 M60 156 L66 80 M94 152 L84 80', role: 'accent' },
+    {
+      d: 'M30 150 l-6 4 M30 150 l2 8 M60 156 l-6 2 M60 156 l4 6 M94 152 l-4 6 M94 152 l6 2',
+      role: 'accent',
+    },
+    {
+      d: 'M44 80 l-4 -4 M52 80 l4 -4 M64 80 l-2 -6 M86 80 l4 -5',
+      role: 'soft',
+    },
+    { d: 'M20 176 h120', role: 'ambient', dashed: true },
+  ],
+
+  // A cap tossed on the arena sand, three claw marks raked beside it.
+  'bacura': [
+    { d: ellipse(80, 156, 66, 20), role: 'soft' },
+    {
+      d: 'M44 124 C44 96 88 90 96 114 C98 122 92 128 80 128 H50 C46 128 44 126 44 124z',
+      role: 'accent',
+    },
+    { d: 'M94 120 c14 -2 26 4 30 10 c-10 4 -22 2 -30 -4', role: 'accent' },
+    { d: 'M50 128 c-8 10 -10 20 -6 30', role: 'accent' },
+    { d: 'M58 110 q14 -8 28 0', role: 'soft' },
+    { d: 'M104 150 l16 -20 M114 154 l16 -20 M124 158 l16 -20' },
+    shadow(80, 186, 50),
+  ],
+
+  // A beetle's horned helmet set down on a broad leaf.
+  'heracles': [
+    {
+      d: 'M22 160 C40 128 120 124 140 150 C118 172 44 176 22 160z',
+      role: 'soft',
+    },
+    { d: 'M26 158 C60 150 100 148 136 150', role: 'soft' },
+    { d: 'M52 142 C52 104 108 104 108 142z' },
+    { d: 'M60 130 h40', role: 'soft' },
+    { d: 'M80 110 C78 84 88 60 108 46 C104 62 96 80 90 110', role: 'accent' },
+    { d: 'M72 112 C68 98 60 90 48 86 C54 96 60 106 64 114', role: 'accent' },
+    shadow(80, 184, 48),
+  ],
+
+  // A pair of cuffs lying open on an inspection tray.
+  'domino': [
+    { d: 'M24 150 h112 l-10 16 h-92z' },
+    { d: 'M34 158 h92', role: 'soft' },
+    { d: 'M46 138 A18 18 0 1 1 70 138', role: 'accent' },
+    { d: 'M90 138 A18 18 0 1 1 114 138', role: 'accent' },
+    { d: 'M46 138 l-6 8 M114 138 l6 8', role: 'accent' },
+    { d: 'M72 112 h4 M84 112 h4 M76 112 c2 -4 6 -4 8 0 c-2 4 -6 4 -8 0z' },
+    shadow(80, 180, 56),
+  ],
+
+  // A devil's trident with a torn net hanging off its prongs.
+  'saldeath': [
+    { d: 'M80 186 V56' },
+    { d: 'M60 40 V60 q20 14 40 0 V40 M80 30 V56', role: 'accent' },
+    {
+      d: 'M60 40 l-4 6 M60 40 l4 6 M100 40 l-4 6 M100 40 l4 6 M80 30 l-4 6 M80 30 l4 6',
+      role: 'accent',
+    },
+    { d: 'M60 64 C40 84 36 110 44 132 M100 64 C120 84 124 110 116 132' },
+    {
+      d: 'M60 64 L116 132 M100 64 L44 132 M50 86 L110 86 M44 110 L116 110',
+      role: 'soft',
+    },
+    {
+      d: 'M44 132 l6 10 M116 132 l-4 12 M80 132 v8',
+      role: 'soft',
+      dashed: true,
+    },
+    shadow(80, 190, 30),
+  ],
+
+  // A whip coiled on the floor, its tip cracking in the air.
+  'sadi': [
+    { d: 'M28 168 l30 -14 l4 8 l-30 14z' },
+    { d: ellipse(92, 158, 34, 10), role: 'accent' },
+    { d: ellipse(92, 150, 28, 8), role: 'accent' },
+    {
+      d: 'M62 158 C70 150 78 150 92 142 C120 124 96 90 118 66 C126 58 134 52 140 40',
+      role: 'accent',
+    },
+    { d: 'M140 40 l8 -6 M140 40 l10 2 M140 40 l2 -10', role: 'soft' },
+    shadow(88, 178, 48),
+  ],
+
+  // A spiked club leaning over a belt with a hoof-shaped buckle.
+  'minotaurus': [
+    {
+      d: 'M94 174 C98 150 104 110 106 72 C108 54 132 54 130 74 C126 110 110 150 102 176z',
+    },
+    {
+      d: dots([
+        [112, 70],
+        [124, 74],
+        [116, 90],
+        [108, 102],
+        [120, 104],
+      ]),
+    },
+    { d: 'M20 140 h76 v14 h-76z' },
+    {
+      d: dots([
+        [28, 147],
+        [36, 147],
+      ]),
+      role: 'soft',
+    },
+    {
+      d: 'M46 154 v-18 c0 -10 12 -10 12 0 v18 M58 154 v-18 c0 -10 12 -10 12 0 v18',
+      role: 'accent',
+    },
+    shadow(78, 186, 54),
+  ],
+
+  // A red band knotted with its tails loose, and a string of square stones
+  // hanging under it.
+  'doma': [
+    { d: 'M30 78 v12 C30 108 130 108 130 90 v-12', role: 'accent' },
+    { d: ellipse(80, 78, 50, 14), role: 'accent' },
+    { d: 'M126 84 l16 -8 v18z' },
+    {
+      d: 'M140 88 C152 104 146 122 152 138 M136 94 C142 112 134 128 138 146',
+      role: 'soft',
+    },
+    { d: 'M44 128 C56 166 104 166 116 128', role: 'soft' },
+    {
+      d: `${polygon(56, 148, 6, 4)} ${polygon(80, 158, 6, 4)} ${polygon(104, 148, 6, 4)}`,
+    },
+    shadow(80, 186, 44),
+  ],
+
+  // A giant's sabre snapped in two, hilt on one side and blade on the other.
+  'lacroix': [
+    { d: 'M20 150 h28 v10 h-28z' },
+    { d: 'M48 136 v34' },
+    { d: 'M20 150 C20 134 40 130 48 136', role: 'soft' },
+    { d: 'M48 150 h14 l4 4 l-4 3 l3 3 h-17', role: 'accent' },
+    {
+      d: 'M80 152 l6 -4 l-3 -4 h18 C120 144 138 140 146 132 C140 148 120 160 96 160 h-16z',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [68, 144],
+        [72, 162],
+        [74, 138],
+      ]),
+      role: 'soft',
+    },
+    shadow(84, 176, 64),
+  ],
+
+  // An icebreaker's iron-shod prow, and the floes it has split.
+  'whitey-bay': [
+    { d: 'M18 118 H116 L148 134 L116 150 H26 Z' },
+    { d: 'M130 124 l6 4 l-4 2 l8 2 l-8 2 l4 2 l-6 4', role: 'accent' },
+    { d: 'M116 118 L148 134 L116 150', role: 'accent' },
+    { d: 'M60 118 V40' },
+    { d: 'M60 46 q30 20 0 56', role: 'soft' },
+    { d: 'M148 134 l6 -10 M148 134 l8 4 M146 140 l4 10', role: 'soft' },
+    { d: 'M4 172 l20 -6 l18 4 l-4 8 h-30z M100 174 l22 -8 l26 6 l-6 10 h-38z' },
+    { d: 'M4 158 h152', role: 'ambient' },
+  ],
+
+  // A heavy cutlass driven into the frozen bay, cracks running from the
+  // blade.
+  'blenheim': [
+    { d: 'M78 28 V8 M86 28 V8 M78 8 h8' },
+    { d: 'M58 30 H106 M106 30 C114 20 104 8 86 8' },
+    {
+      d: 'M72 30 H92 C96 70 96 110 84 150 C78 120 74 80 72 30z',
+      role: 'accent',
+    },
+    { d: 'M10 150 H150', role: 'soft' },
+    {
+      d: 'M84 150 l-14 14 l-10 -4 l-18 16 M84 150 l18 10 l8 -6 l20 14 M84 150 l2 22',
+    },
+    { d: 'M20 170 l20 6 M118 176 l20 -6', role: 'ambient' },
+    shadow(84, 190, 40),
+  ],
+
+  // A horned helmet cracked across the crown, its blue mane hanging behind.
+  'salome': [
+    { d: 'M40 120 C40 70 120 70 120 120 Z' },
+    {
+      d: 'M50 96 C34 80 30 60 40 40 C44 60 54 76 64 86 M110 96 C126 80 130 60 120 40 C116 60 106 76 96 86',
+    },
+    { d: 'M80 78 l-6 10 l8 6 l-4 10', role: 'soft' },
+    { d: 'M36 120 h88 v8 h-88z' },
+    {
+      d: 'M44 128 q-6 20 2 40 M60 128 q-4 22 2 44 M76 128 q-2 22 2 46 M92 128 q2 22 -2 44 M108 128 q6 20 -2 40',
+      role: 'accent',
+    },
+    shadow(80, 186, 48),
+  ],
+
+  // A flintlock, the smoke still coming off the muzzle.
+  'bluejam': [
+    { d: 'M40 80 h92 v12 h-92z' },
+    { d: 'M40 92 C34 110 28 128 34 150 h20 C52 130 58 110 64 92' },
+    { d: 'M56 80 l-8 -12 l6 -2 l8 12' },
+    { d: 'M64 92 q6 18 18 0', role: 'soft' },
+    {
+      d: 'M134 84 c8 -8 18 -4 18 4 c8 0 10 10 2 14 c4 8 -6 14 -12 8',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [148, 68],
+        [154, 60],
+      ]),
+      role: 'ambient',
+    },
+    shadow(80, 170, 50),
+  ],
+
+  // A pair of spiked gloves, laid down side by side.
+  'porchemy': [
+    { d: 'M24 150 V104 C24 92 70 92 70 104 V150z' },
+    { d: 'M90 150 V104 C90 92 136 92 136 104 V150z' },
+    {
+      d: 'M28 96 l4 -12 l4 12 M42 92 l4 -12 l4 12 M56 94 l4 -12 l4 12',
+      role: 'accent',
+    },
+    {
+      d: 'M94 96 l4 -12 l4 12 M108 92 l4 -12 l4 12 M122 94 l4 -12 l4 12',
+      role: 'accent',
+    },
+    { d: 'M24 138 h46 M90 138 h46', role: 'soft' },
+    shadow(80, 166, 64),
+  ],
+
+  // An open dictionary with its ribbon hanging, and a short sword behind it.
+  'dogra': [
+    { d: 'M132 150 L146 40' },
+    { d: 'M124 146 l16 6 M132 150 l-3 22' },
+    { d: 'M20 120 L80 132 L140 120 V64 L80 76 L20 64z' },
+    { d: 'M80 76 V132' },
+    {
+      d: 'M30 78 l40 8 M30 90 l40 8 M30 102 l40 8 M90 86 l40 -8 M90 98 l40 -8 M90 110 l40 -8',
+      role: 'soft',
+    },
+    { d: 'M76 132 v36 l5 -6 l5 6 v-36', role: 'accent' },
+    shadow(76, 182, 50),
+  ],
+
+  // A cord tied in three knots, a gust curling out of the one undone.
+  'haredas': [
+    {
+      d: 'M38 60 c0 -10 14 -14 20 -6 c4 -8 18 -6 18 4 c8 0 10 12 0 12 h-34 c-8 0 -10 -10 -4 -10z',
+      role: 'soft',
+    },
+    { d: 'M24 120 C44 108 60 132 80 120 C100 108 112 128 124 118' },
+    { d: circle(43, 117, 6) },
+    { d: circle(80, 120, 6) },
+    { d: 'M118 112 c8 -2 12 6 6 10 c-6 2 -10 -6 -2 -12', role: 'soft' },
+    {
+      d: 'M126 116 c12 -10 18 -28 6 -38 c-10 -8 -24 2 -16 12 c6 6 14 0 10 -6',
+      role: 'accent',
+    },
+    { d: 'M110 70 c10 -12 26 -12 34 0', role: 'accent' },
+    shadow(80, 176, 50),
+  ],
+
+  // A stamp set down beside the papers it has just signed off.
+  'kong': [
+    { d: 'M20 132 L108 120 L132 152 L44 164z' },
+    { d: 'M28 124 L116 112 L140 144', role: 'soft' },
+    { d: circle(84, 44, 12) },
+    { d: 'M80 56 v30 M88 56 v30' },
+    { d: 'M62 86 h44 v16 h-44z', role: 'accent' },
+    { d: ellipse(62, 146, 16, 5), role: 'accent' },
+    shadow(84, 176, 56),
+  ],
 } satisfies Drawings

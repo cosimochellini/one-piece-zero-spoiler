@@ -2511,4 +2511,124 @@ export const CHRONICLE_SOURCES = {
       note: 'Ep 736 transcript (t=79984): "AN ISLAND SOMEWHERE" / "Your father got killed?! By Doflamingo?!" / "It was a long time ago. I\'m not holding a grudge." (caption X. Drake, captain of the Drake Pirates) / "What?! How could you be so cold?" / "It\'s an emergency! If we don\'t let him know quickly, he\'ll snap!" / "We can\'t get SMILEs anymore!". Chapter_793 notes: "It is confirmed that Diez Barrels is X Drake\'s father" (Chapter 793 p.11, adapted in ep 736). The story does not name Barrels here: the link is the one the episode makes, with the boy with the cross-shaped scar who fled the cage at 706. Kaido is not named (filed at 739).',
     },
   },
+  'demalo-black': {
+    521: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_521',
+      note: 'Threshold entry. On screen from 517 but never named there: デマロ appears nowhere in the 517-520 subs (his speaker label there is （ニセ･ルフィ）), and people call him "Luffy" / 麦わらの大頭. JP subs 521 at 16:55: Sentomaru "PX-5 こいつは誰だ", Pacifista "海賊 “三枚舌のデマロ・ブラック” 懸賞金 2600万ベリー" (name, epithet and bounty spoken; the scan graphic reads "Demaro Black", File:Demaro_Black_Scan_Episode_521.png). Ch 601: "Fake Luffy\'s real name is Demalo Black ... bounty of only 26,000,000". Build-up known by the end of 521: 517 bar scene (最低額７千万ベリーの賞金首 ... 帰れ クズ, shoots the 55,000,000 captain) and the real Nami and Usopp not recognised; Episode_518 Long Summary: "Luffy dodges the bullet ... and then releases his Haoshoku Haki on them", Luffy walking off (the word Haki is not said on screen, so the story says only that he knocks them out without touching them); 521: "さっきの海兵を盾に" / Caribou ignores the order and kills the Marine instead (Episode_521: "Caribou does not listen to him and instead kills the Marine scout"; corrected in review round 1), the Dragon / Garp / 頂上戦争 / 懸賞金４億 boast, "麦わらは おめえみてえな カスじゃねえよ！", "ニセ麦わらの仲間に…", recruits "たった2000万やそこらの クズ野郎に", "バレた 逃げるぞ". "Fake Straw Hats" is safe at 521 (520 title card ニセ麦わら一味, Shakky 偽物のモンキーちゃん一味; 521 ニセ麦わらの仲間). Italian name Demaro from the IT wiki page (dub audio not checked); epithet "Tre Lingue" from the IT wiki. Origin East Blue is Vivre Card only and is left out; the claimed 400,000,000 is Luffy\'s and is not filed as his bounty. Albion and Lip Doughty are not filed and are not named.',
+    },
+    523: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_523',
+      note: 'JP subs 523 at 04:29-06:14: Caribou\'s crew bury the fakes (偽ゾロ 許してくれ 埋めないでくれ; 偽フランキー 船長にやらされてたんだよ ブラックのやつに; Caribou いったん仲間になっちまえばよ ... 内部から全員 ぶっ殺し放題 ... ただの偽カス野郎さんだ); Sentomaru to his superiors: 広場から うまく消えやがったのは カリブー兄弟 その一味 ニセ麦わらの一味 数名 ほかは全員 捕らえた. Episode_523 characters list: "Demaro Black (Fake Luffy, K.O.)". This anchors the captured status. Rayleigh and Kizaru, named in the same report, are left out. The G-4 appearance in Kid costume (Episode_1148) is not filed: naming on screen there could not be checked.',
+    },
+  },
+  'ankoro': {
+    525: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_525',
+      note: 'Threshold entry (naming). JP CC (Netflix) 525.srt 22:07-22:19, the giant after punching the fish off the Sunny: "こら アンコロ！ ダメらろ / 船は食っちゃいけん / 何度言うたら分かるんら？ / キャプテン･バンダー･デッケンさまに— 怒られるろ" (the name is in the dialogue, not only in the speaker label); Prime subs 525 22:18 have the same line. Earlier in 525: 20:52 "あれ何だ？ ものすげえ光ってるけど！" / 20:56 "魚人島かな？ ルフィたちがいるかな？" / 21:00 "まだ3000メートルも潜ってないわ" / 21:21 "アンコウだ！ ダマされた！" / 21:24 "深海のハンターに釣られましたね" / 21:53 "海坊主だー！"; the repeated "ちょっと風来･バースト" and the air loss at 20:10-20:43. Episode_525 Long Summary: "Franky has to use Coup de Burst ... four times ... the bubble shrinks whenever Coup de Burst is used. After barely escaping from the jaws of a giant anglerfish, they see Wadatsumi, who knocks out the anglerfish. The episode ends with the Flying Dutchman appearing." Neither the giant nor his captain is named in the story: Wadatsumi is filed at 526 (his name is only a speaker label in 525) and Vander Decken IX at 526, so "the captain" and "a ghost ship" stand in; "Flying Dutchman" is said in 525 only in the next-episode preview narration (23:09), which does not count. Chapter 606: Chapter_606 Long Summary "The giant punches the angler fish, whose name is Ankoro", and the Char Box first appearance is Ch 606 (the verification pass moved an earlier round-up of 607 down to 606). Verification pass: the Sunny is lured up to the jaws (21:24 "深海のハンターに釣られましたね", 21:32 "完全にワナにハマった"), not swallowed, and the story says so. No status filed: the fish is last heard as a sound caption in 532 and its fate is never stated. Affiliation at 526 from Decken\'s "アンコロ ワダツミ 船は食っちゃ 宝が取れねえ / たたき落とせ！" (526.srt 08:23); "Flying Pirates" is never said on screen in 517-628, so the ship name is used. A thin 526 story (Decken\'s tow order) was skipped: it is told in the wadatsumi and surume 526 stories.',
+    },
+  },
+  'surume': {
+    526: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_526',
+      note: 'Threshold entry (naming). JP CC (Netflix) 526.srt 11:03-11:22: Robin "で あのクラーケン使って", Luffy "おう！ あいつを使って 上級者の航海するんだ 俺は / なっ？ スルメ！", Usopp "いや イカみたいな名前 付けちゃってるよ！", Brook "♪ クラーケンってタコなのに / ♪ スルメって付けました", Luffy "じゃ サニー号を引け！ スルメ！" (Prime subs 11:22 "なっ スルメ"). In 524-525 he is only "the kraken"; the wiki Qref name=named is chap=606 page=16 ep=526. The beating of the giant: 526.srt 08:23 Decken "アンコロ ワダツミ ... たたき落とせ！", 09:08 "クラーケン!?", 09:15 Decken "北極の怪物 クラーケン？", 09:23-09:36 the flurry until Luffy "おいっ もういいぞ やめろ！"; the trio sheltering in Zoro\'s bubble (10:33-10:37). Flight and trench: 12:39-12:51 ("もう脇目も振らずに 走り出してる！"), 16:05 Luffy "飛び込め！ スルメー！", 17:26-17:44 Usopp\'s "緑星 サルガッソ！" holds the debris flow, 18:39-18:53 the cheering then the impact; Episode_526 Short Summary: "a rock hit Surume\'s head, made it faints". Epithet dated 526 from Decken\'s line; the Vivre Card "North Blue" is left out, and the origin is dated 556 where Hody says it outright. Italian name Seppy from the IT wiki (IT Episodio_526: "Trascinati dal kraken, soprannominato Seppy"); the dub was not checked. The Heracles-sensei tangent and Hammond\'s sea-beast riders at the end are left out.',
+    },
+    556: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_556',
+      note: 'JP CC (Netflix) 556.srt 17:42 Hody "来い クラーケン！", 19:03 "お前は わざわざ北極から / 連れてきた 俺の奴隷だ", 19:55-20:13 Luffy "あっ… お〜い スルメ！ / 俺だよ 俺！ スルメ！ / えっ？ 忘れたのか？ ... お前 一度 ウチのペットになった— 友達だろ", "くすぐってえって ハハッ！ / や… やめろよ スルメ！", 21:34 "アアッ クラーケンが裏切った！", 22:04 "あのクラーケンが しっかり 麦わらに懐いてやがる！", 22:13 "いいか スルメ！ お前は ここで よわほしを守るんだ", 22:30 Jinbe "まさか クラーケンまで 知り合いじゃったとは… お前さんの交友関係には つくづく驚かされるわい", 22:41 Shirahoshi "どうぞ よろしくお願いします スルメさま". Gyoncorde is named on screen from 550. Episode_556 Short Summary: "Luffy tames Surume again and orders it to protect Shirahoshi." The "pet" affiliation and the slave past are dated here. Luffy\'s nickname for Shirahoshi (よわほし) and the replayed 526 flashback are left out.',
+    },
+    557: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_557',
+      note: 'JP CC (Netflix) 557.srt 18:34-19:24 Hody "クラーケン お前にしちゃ 上出来だ / うまくヤツらに取り入って よく しらほしを捕らえた / そのまま握りつぶせ", "北極で暮らす お前の兄弟 / その居場所は分かっている / 俺たちなら いつでも たやすく殺しに行けるんだぜ / お前たちは伝説の存在 たとえ死体でも 高く売れるだろうな", Jinbe "兄弟の命を担保に脅され 従っとったのか", 19:38 "しらほしを握りつぶせ！", 19:50 Shirahoshi "ス… スルメさま く… 苦しいです", 20:11-20:34 Luffy "兄弟を守るために お前 あいつの言いなりになってたのか / そりゃ 守りてえよな / 兄弟ってのは弟か？ 兄ちゃんか？ / それ 俺にも守らせてくれよ / 忘れたのか？ 俺たち 友達だろ", 20:48 Shirahoshi "アア… スルメさま". Surume page (Qref name=Obey, chap=636 ep=557): "Surume stopped squeezing the mermaid princess." Ep 558 only repeats this in the recap. The 569 send-off carrying Wadatsumi is told in the wadatsumi 569 story and the 560 knockout in the wadatsumi 560 story, so neither is repeated here.',
+    },
+  },
+  'wadatsumi': {
+    526: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_526',
+      note: 'Threshold entry (naming). In 525 his name is only the CC speaker label (525.srt 22:07 "（ワダツミ）こら アンコロ！"); he is called "海坊主" (21:53). First spoken in 526 (JP CC Netflix): 07:37 a pirate "キャプテン･バンダー･デッケン！ ワダツミたちが 海賊船を捕らえたようです！", 08:23 Decken "アンコロ ワダツミ 船は食っちゃ 宝が取れねえ / たたき落とせ！", 08:32 "分かったら！", 08:34 Usopp "ああっ！ 海坊主が！", 09:08-09:36 the kraken\'s flurry, 10:24 Decken "こら！ 起きろ ワダツミ！ / リベンジだ やり返せ！", 12:22 "アンコロ ワダツミ！ 船を引け！", 14:04 "ゴーストシップと 海坊主が！" as the currents throw them. Brook names the Flying Dutchman in 526 ("有名な船 フライング･ダッチマン号"), so the ship name is used; "Flying Pirates" is never said on screen in 517-628 and is left out. EN Ch 606 Long Summary: "the giant, whose name is Wadatsumi"; chapter 606 is not a scan check. "Fish-man" and "blowfish" are not said on screen by 526 and are left out of the summary and log, with the Vivre Card height, the databook age and the Ryugu origin. Epithet 大入道 first said at 537 ("お… 大入道だ！ ワダツミ！", 537.srt 17:16); the Italian "il Gigante" is the IT wiki nickname, not checked against the dub. Sun Pirates affiliation dated 790 (verification pass; an earlier pass had 874): 790.srt 07:02 Jinbe addresses "タイヨウの海賊団の皆" with Wadatsumi among them, and 11:32 "すまんな ワダツミ 連れてきて早々に聞いてのとおりだ" / "みんなと一緒で 俺 楽しいら". His log says only "ships are not for eating, or the captain will be angry" (525 22:07-22:19); the treasure reason is Decken’s (526 08:23), and the verification pass took it out of his mouth.',
+    },
+    560: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_560',
+      note: 'Verification pass: he slipped and fell off the ship (558.srt 12:54 "足滑ったらぁ", 13:09 "俺が落っこっちまったらぁ！ 船を止めてくれ！", 16:04 "デッケン船長！ 俺は？"); an earlier pass had him simply left in its way. 558.srt 16:07 Decken "ワダツミ！ お前を助けることは もう不ギャ能！ / この魚人島と共に しらほしの死に 供えられる いけにえとなれ！" (after hurling the ship with "魚人島ごと くたばれ！"). 560.srt: narration "ギョンコルド広場" and sobbing "キャプテン･バンダー･デッケンさまに— 見捨てられたら！", pirates "おい 戦え 海坊主！ / クラーケンを なんとかしてくれ！", Zeo "おい 大入道！ 何を聞き違えている？ / デッケンは貴様に こう言ったんだ “この広場を任せた”と", aside "ウソだが…", "さあ これをのみ— 我らの味方として 麦わらの一味をたたきつぶせ！", "Ｅ･Ｓ(エネルギー･ステロイド)！", Surume knocked out ("ダメだ 気を失ってる！"), then Jinbe\'s "魚人空手 七千枚瓦 回し蹴り" ("なぜ あの体格差で はじき飛ばせる!?"). Filed at 560, the first episode by whose end all of it is known. The name of Decken\'s great ship and Sanji\'s follow-up kick (his fight is Sanji\'s 566 story) are left out; the 566 defeat is not retold here.',
+    },
+    569: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_569',
+      note: 'JP CC (Netflix) 569.srt ~10:00-10:30: narration "ネプチューンの命により— 魚人街は 直ちに封鎖され / ホーディをはじめ— 新魚人海賊団幹部 および バンダー･デッケンは— 監獄塔に投獄された", soldiers "頼むぞ クラーケン 遠くの海へ！ / ワダツミ お前を入れる牢獄はない / お前は今後 一切の入国を禁ずる！", then fish-men catching food "すぐに さばいて 竜宮城へ届けよう / 麦わらたちが招かれて でかい宴が開かれる / 海獣の肉が好物だそうじゃねえか". The banishment stays in the story: "exiled" is not a status value, and no affiliation entry is filed for it.',
+    },
+    876: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_876',
+      note: 'JP CC (Netflix) 874.srt ~21:56 "親分を困らせるヤツは 許さんのら～！" and Jinbe "ワダツミ！" as the sea swells among the Big Mom fleet. 876.srt 07:00-11:30: he gulps the crew ("あ～む！ / しばらく我慢ら"), Jinbe "ワダツミの口の中じゃ", "海中だ！", Oven "熱海… 万来！" and "あっついら～！", "麦わら おいら… 魚人島れは いけんことして ごめんらったろ！", "それれも 拾ってくれた ジンベエ親分に か… 感謝してるら", Oven "どけ 海坊主！", "おいらたち 親分が 麦わらんとこ行きてえって 言ったときから 決めてたら！ / みんなで決めてたんら！", Aladine "ジンベエの新たな船出を あいつらに邪魔させはしない！ / 下がれ ワダツミ！". Filed checks: charlotte-oven 811, aladine 541, jinbe 430; Whole Cake Island (783) is an arc, so it stays plain text. The Sun Pirates\' decoy ship, Praline and the Mega Nyudo name are left out.',
+    },
+  },
+  'megalo': {
+    530: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_530',
+      note: 'Threshold entry. First seen unnamed in 525 (JP subs: サメ？ ... 服 着てねえか？ あのサメ ... 助けてもらった 礼を言ってんのか？ ... 律儀なサメだな). Named in 530 by Neptune, JP subs 12:41 "おい メガロ 確かに この者で 間違いないんじゃもんな？"; Luffy "スルメに捕まってたやつか"; 17:26 "それじゃ メガロ 麦わらの人間たちを 竜宮城まで乗せてやるんじゃもん" / （メガロ）シャッ シャッ. Episode_530 Long Summary: "Neptune, the island\'s king, appears with his whale and Megalo before them". Ch 611: Neptune "asks Megalo (the shark that the Straw Hats had freed from the kraken) if he had the right people". The group on screen is Luffy, Nami, Usopp, Brook, Camie and Pappag. "Ryugu Kingdom" is said in 530 (Pappag: この魚人島 すなわち リュウグウ王国). The pet reveal is 531, so the 530 texts do not say whose pet he is, and Shirahoshi is not named: 530 has only 人魚姫 (Pappag), and しらほし is first spoken in 531. No origin is filed: no line says he was born on the island.',
+    },
+    532: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_532',
+      note: 'JP subs 531: そのサメ メガロは— 娘が大層 かわいがっておる ペットじゃもん / メガロが帰ってこんと 泣いて手に負えなんだ / クラーケンに襲われとったとは (dates the pet affiliation at 531). JP subs 532: （メガロ）シャッ （右大臣）くせ者！ ... （しらほし）メガロ おかえりなさい; 私(わたくし)のお話し相手はメガロだけ 大切な お友達なのです, said to Luffy in her room. The ten years in the tower are left out: they are not needed here and were not dated.',
+    },
+    534: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_534',
+      note: 'Episode_533 Long Summary: "Luffy leaves with Shirahoshi out of the tower ... with Shirahoshi stuffed inside Megalo\'s mouth to hide her and prepare to go to the Sea Forest"; 533.srt: 海の森, 俺は泳げねえからな, 外 出たら お前 目立って みんなに すぐバレちまうからよ ... 俺にいい考えがあるんだ, お願いします メガロ. Episode_534: "Luffy leads Shirahoshi out of her tower inside Megalo while Brook and the Minister of the Right tells them to stop"; 534.srt: （ブルック）ちょちょ… ルフィさん / （右大臣）おい 待て メガロ どこへ行くのだ / （しらほし）お父様 お兄様 お城の皆様 お許しくださいませ 無断で外出いたします お夕食までには帰ります. Filed at 534 because the minister and the apology from inside the shark are 534. The minister is left unnamed, and the Hard-Shell Tower (硬殻塔, said in 534) is left out: it is not filed as a place.',
+    },
+    553: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_553',
+      note: 'JP subs 553: Hody オトヒメを… 殺したのは… 俺だ！; しらほし 知ってました; 事件から数年後— メガロが… こっそり教えてくれました; メガロは もともと ネプチューン軍のペット あの日… すべてを見ていたのです (dates the "formerly the Neptune Army\'s" affiliation entry); Hody なあ？ メガロ ... よく黙っていてくれた そして よく このマヌケ女を選んで 真相を話してくれた; Jinbe 違う 耳を貸すな 姫様; （ゼオ）サメの中から？ / ずっと腹の中にいたのか？ as Luffy strikes Hody. EN short summary: "Before Hody delivered the killing blow, Luffy escapes from Megalo\'s mouth". The plaza is left unnamed (not filed).',
+    },
+  },
+  'minister-of-the-right': {
+    532: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_532',
+      note: 'Threshold entry. Candidate was 531 (Char Box first = Ch 612 / Ep 531), but in the 531 JP subtitles he is named only by the SDH speaker labels (「（右大臣）まったく あなたという人は！」), which are caption-type and not said on screen. Ep 532 transcript 12:08: a soldier says 「右大臣 そろそろ…」 and he answers 「ああ… もう５分を過ぎました 我々は これにて」; 12:25 「厳重に鍵をかけよ」. Also 07:41 「なぜ誰も そばにいない」 / 「警備交代の手違いで…」; 10:09 「尋常ならぬ 姫様の泣き声 心配しましたぞ」; 10:24-10:32 「確かに誰かの声が…」 / 「お… おなかの音です」; 10:54 「行方知れずの 人魚の娘たちをさらった疑い そして マダム・シャーリーの 予知により—」; 11:45-11:53 a second rumble, 「今 何か音が…」 / 「気のせいです」; 11:56 「メガロの恩人に お縄を 差し上げることになろうとは」. Episode_532 Anime Notes: "Before the Minister of the Right leaves Shirahoshi\'s room, he is suspicious of Shirahoshi and Megalo\'s behavior." revealedAtChapter 613 is the chapter the scene adapts (Chapter_613: he "checks his watch and notices that five minutes have passed"); the ch 612 name box is unverified. The other minister, who gives the arrest order to the crew in the same episode, is not named until 544 and is left out.',
+    },
+    534: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_534',
+      note: 'Ep 534 transcript: Shirahoshi 「無断で外出いたします」 and Luffy 「行くぞ 散歩」; 05:11 「おい 待て メガロ どこへ行くのだ」; 05:36 「何だというのだ メガロ 硬殻塔の扉を開け放っていくとは」; then 「いない しらほし姫がいない！」 / 「大変だ 国家的一大事だ」 / 「これは誘拐事件にほかならん」; 17:16 「急げ 骸骨 王のもとへ」; 20:37 「ネプチューン様… 誘拐事件であります 姫が何者かに連れ去られました」. Episode_534 Long Summary: "When Brook and the Minister see that Shirahoshi is not in her tower, they are attacked by human pirates". The pirates on the tower are set up at the end of 533 (「塔の周りを見よ」); Vander Decken, who flung them there, is left out to keep the story on the minister. The tower\'s proper name (硬殻塔, first said here) is not used.',
+    },
+    563: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_563',
+      note: 'Ep 563 transcript: 10:30 「全兵 広場へ ジンベエと麦わらの一味に続け」; 10:43 「身を疑い なき罪を着せた一味に 国を守られては— 既に 面目など丸潰れ せめて 敬意を持って 彼らを援護せよ」; 17:40-18:20 the children refuse (「人間で 海賊の 麦わらの一味が— この島のために 戦ってくれてんのに— 目の前で 俺たちが 逃げ出すわけにはいかないよ」, 「俺もだ 右大臣」), and he answers 「よいか？ 伝達は義務だ / ここにいる その他大勢の 物見の者たちにも— 私の言葉を必ず伝えよ！」 (the duty is theirs, to pass his words on; the verification pass corrected an earlier reading of it as his own duty to pass on an order) / 「人それぞれ 都合と考えがある それでも ここにおる者は 勝手にせい」 / 「かかってこい 無法者ども」. The plaza is not a filed place and its name is not used.',
+    },
+    573: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_573',
+      note: 'Ep 572 transcript 10:10-11:43: 「何じゃ 右大臣 慌てて」 / 「大変なことを思い出しました」; he asks that 「玉手箱だけ 返却を」; 「10年前 玉手箱を 何者かに空にされた時— … 箱いっぱいの爆弾が… 開ければ 大爆発を引き起こす仕組みに」; 「宝物庫と玉手箱の鍵を 預かる身」; 「財宝全部…」 / 「ビッグ・マムに… あげた？」. Ep 573 transcript: 07:23 「やはり伝えねば ルフィ君たちが ビッグ・マムに贈った玉手箱は—」; (2人) 「既に 爆弾を贈っているなんて— とても言えない」; 08:12 「不発の可能性はないか？ 右大臣」 / 「いやあ 国王 ポジティブシンキング そうそう 竜宮城は湿気 多いですし」. The Tamatebako and its theft are said from 570. "Big Mom" is written unmarked, following the Pekoms/Tamago precedent (charlotte-linlin is filed at 786). Who emptied the chest is left out.',
+    },
+  },
+  'minister-of-the-left': {
+    544: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_544',
+      note: 'Threshold entry. Candidate was 531 (Char Box first = Ch 612 / Ep 531), moved up by 13: in the 531-543 JP subtitles he is named only by the SDH speaker labels ((左大臣)), and no spoken 左大臣 appears. Ep 544 transcript (Otohime flashback): 13:59 「オ… オトヒメ様 い… 今の国中への放送がオンに」; 14:11 「うるへえっ 左大臣！」; 14:31 「あ… あなた お酒を」; 14:42 「酔ってますよ」; 15:00-16:22 her speech, 「地上には もっと大きな光がある」 … 「勇気を出して １番 欲しいものを 欲してください！」. IT Episodio_544 lists "Ministro della sinistra (flashback)". Chapter_624: "The Minister of the Left tells her that the national broadcast system was on and asks her if she had been drinking", hence revealedAtChapter 624 (the ch 612 name box is unverified). The video line is from ep 540 13:34: 「オトヒメ様も 演説なら— 映像をお使いになってくだされば よいものを…」, answered by Neptune. First named in the present day at 551 (「左大臣殿！」), the fallback if a flashback naming is not accepted. Otohime\'s death (546) is left out.',
+    },
+    547: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_547',
+      note: 'Ep 547 transcript: 07:07 「神も仏もないのか この世には… 無情すぎる」; 07:33 「国王は まだ硬殻塔に？」; 08:17-08:24 「国王様 私です」 / 「んっ… 左大臣」 / 「犯人は 銃を持っていましたので— 兵士が撃ちました 人間でした…」; Neptune 「オトヒメの思いを わしが引き継いでも— 矛盾が生じるばかりじゃもん」; 10:00 「し… しかし 人の心は移ろうもの 矛盾だらけです 魚人も 人間も… 戦士にしか守れぬものも ありましょう」. Chapter_627: "The Minister of the Left is sitting outside the door to the tower, listening to the king." The story keeps to what the minister reports about the gunman; the truth about the shooting comes out later and is left out.',
+    },
+    568: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_568',
+      note: 'Ep 568 transcript: 09:09 「左大臣殿 取り急ぎ…」; 09:13-09:38 「誘拐されておりました 人魚の娘たちが— なんと 城内にて— 発見されました」 / 「同時に宝物庫が もぬけの殻に」 / 「当然 国宝である玉手箱も」; Neptune 「財宝泥棒など放っておけ」 / 「娘たちの無事を国中に知らせよ 今さらじゃが 麦わらたちの潔白を示すのじゃもん」; 11:08-11:27 「島民の皆さんに お伝えしたいことがあります 麦わらの一味は— 人魚の誘拐に 一切 関わっておりません」 / 「我々の事実確認に 過ちがあったことを認め— これを深く反省し 謝罪いたします」. Who emptied the treasury is left out.',
+    },
+    573: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_573',
+      note: 'Ep 571 transcript 06:54: Pekoms 「だからよ 左大臣」, he 「何とか大目に見てもらえんか 突然の大事件で ホーディ 一味に工場を襲われ…」. Ep 573 transcript: 08:37 「新世界で使う記録指針だ やるから持っていけ」; 08:57 「これまでの海で使ってきた 記録指針をのぞいてみよ」; 「この先 後半の海には… 磁気までもが変動する島がある」; 09:35 「航海中 完全に磁気を失う島さえあるのだ」; 09:47 「３本あるほうは どうだ」 / Nami 「ほかの２本は安定してるみたい」 / 「３つの指針は それぞれ 別々の島の磁気を記憶する」. "Big Mom" is written unmarked, following the Pekoms/Tamago precedent (charlotte-linlin is filed at 786). The sweets eaten at the banquet (research, not in the transcript window checked) are left out.',
+    },
+  },
+  'bobbin': {
+    571: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_571',
+      note: 'Threshold entry. Named by Big Mom: JP subs 571 at 14:32-14:42 "（ボビン）ママ 今 帰ったよ ボヨヨヨン" / "（ビッグ・マム）ああ どうだった？ ボビン". Chapter_651: "A subordinate, Bobbin, comes in, and Big Mom asks him how the operation went". Report and snacks, 14:42-15:27: やっつけて 燃やしてきた / あの国の焼き菓子は最高だった 国を焼いたら いい香りがしただろう？ ... 約束のお菓子が 焼き上がらなかったんだから / おやつある？ / お菓子を くれないやつは 殺さなきゃね / 魚人島も 今月 納めるお菓子がないかもって / さっき ペコムズから連絡があった 魚人島も燃やす？ The tea party four days away: ４日後の お茶会には… 魚人島のお菓子が食べられる. It is a country (国), not an island. "Big Mom Pirates" is said in 571 (Tamago: ビッグ・マム海賊団の 猛者ども), and the combatant role follows the Pekoms/Tamago precedent. Big Mom stays unlinked (charlotte-linlin is filed at 786). Whole Cake Island (783) and Pudding (786) are not named. The bishop rank and the 105,500,000 bounty come from the ch 855 intro caption only, so both are left out. The epithet 始末屋 is first said at 809 (Yonji "始末屋ボビン", 809 09:56); its Italian "il Taccagno" is the IT wiki’s nickname, not checked against the dub. Verification pass: "おやつある？" (14:50) comes before Big Mom’s "お菓子を くれないやつは 殺さなきゃね" (14:52), and the story now keeps that order. No status is filed: nobody on screen says he is dead (827/829 only say he was taken out and shot).',
+    },
+    811: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_811',
+      note: 'Epithet on screen: 809.srt 10:11 Yonji "おお！ ありえねえ 始末屋ボビン" (dated 809 in the dossier; it is repeated at 829 by Mont-d\'Or, うちの始末屋ボビン). Episode_810 Long Summary: "he is then confronted by Bobbin, who bobs his head from side to side and emits waves that make Luffy fall asleep ... Nami and Kingbaum suddenly come to the rescue"; 810.srt: 麦わら～ ボヨヨヨ… もらったー！ / （ナミ）突風(ガスト)ソード！. 811.srt: やっと倒れたか てこずらせやがって; the vivre card (ママのビブルカード ... “ローラ”と 書いてある), なんてこった！ 殺されたのか あの家出娘？ / ローラは友達よ もらったの！ / Mont-d\'Or 残念ながら 指令は お前たちの生け捕りだ. The line これで兄貴の敵は取ったぞ is left out, since it is not clear on screen whose brother is meant. Kingbaum, Amande, Opera and Galette are not filed and are not named.',
+    },
+    823: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_823',
+      note: '822.srt: Sanji cooking at night (全部あいつらの好物じゃねえか), Luffy vowing to wait (俺は 戻らなきゃいけねえんだ あの場所へ / お前が戻ってこねえなら 俺はここで餓死してやる！); Bobbin ほう 食い物 ... お前 ヴィンスモーク･サンジか？; Sanji 手放せ！ その肉は… お前のじゃねえよ！ and the kick. 823.srt 04:05-04:58: ボ…ボビン様この壁の穴は？ / なんでもない / お前たちは下がっていろ, the ボヨヨヨヨヨヨ～ン head-swaying, 心配するな 俺が この手で始末をつける. Episode_823 (with Episode_822) describe the same scenes.',
+    },
+    827: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_827',
+      note: "824.srt: あの野郎 許さねえ 俺が必ず始末してやる ヴィンスモーク･サンジ, then at 18:01 ハア ハア… くっそ… あっ あいつら… うっ ああ… （倒れる音）. 827.srt 05:56: Bege ボビンを消したのか？ / Vito ええ 黒足を 追いかけてたので. Mont-d'Or's anime-added discovery in 829 (撃たれたのは いつごろ？ 恐らく深夜です) does not say he is dead, so no status is filed and the story does not call him dead. Verification pass: 824 has only a fall sound (no gunshot), and the shooting is first said at 829, so the 827 story no longer says he was shot.",
+    },
+  },
 }

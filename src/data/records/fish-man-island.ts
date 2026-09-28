@@ -1,3 +1,4 @@
+import { fishManIslandChronicles } from './fish-man-island.chronicle'
 import type { Saga } from './saga'
 
 /**
@@ -70,6 +71,18 @@ export const fishManIsland: Saga = {
       visual: { art: 'coribou', tint: 'ocher' },
     },
     {
+      id: 'demalo-black',
+      kind: 'character',
+      revealedAtEpisode: 521,
+      revealedAtChapter: 601,
+      name: { it: 'Demaro Black', en: 'Demalo Black' },
+      summary: {
+        it: 'Un pirata grasso con un cappello di paglia sfilacciato e una cicatrice finta sotto l’occhio, che a Sabaody si spaccia per Rufy per arruolare capitani, finché un Pacifista non legge ad alta voce il suo vero nome.',
+        en: 'A heavy-set pirate with a frayed straw hat and a fake scar under one eye, passing himself off as Luffy on Sabaody to recruit captains, until a Pacifista reads out his real name.',
+      },
+      visual: { art: 'demalo-black', tint: 'ocher' },
+    },
+    {
       id: 'hammond',
       kind: 'character',
       revealedAtEpisode: 523,
@@ -94,6 +107,18 @@ export const fishManIsland: Saga = {
       visual: { art: 'shyarly', tint: 'violet' },
     },
     {
+      id: 'ankoro',
+      kind: 'character',
+      revealedAtEpisode: 525,
+      revealedAtChapter: 606,
+      name: { it: 'Lucetto', en: 'Ankoro' },
+      summary: {
+        it: 'Una rana pescatrice gigante la cui esca luminosa, nel buio, passa per le luci di un’isola, e che un gigante sgrida come un animale di casa per aver provato, ancora una volta, a inghiottire una nave.',
+        en: 'A giant anglerfish whose glowing lure passes for an island’s lights in the dark, and whom a giant scolds like a pet for trying, once again, to swallow a ship whole.',
+      },
+      visual: { art: 'ankoro', tint: 'yellow' },
+    },
+    {
       id: 'vander-decken-ix',
       kind: 'character',
       revealedAtEpisode: 526,
@@ -104,6 +129,30 @@ export const fishManIsland: Saga = {
         en: 'The captain of the Flying Pirates, who touches a target once and from then on anything he throws chases it down until it lands.',
       },
       visual: { art: 'vander-decken-ix', tint: 'acid' },
+    },
+    {
+      id: 'surume',
+      kind: 'character',
+      revealedAtEpisode: 526,
+      revealedAtChapter: 606,
+      name: { it: 'Seppy', en: 'Surume' },
+      summary: {
+        it: 'Un kraken così enorme che la Thousand Sunny gli sta in testa come un cappello, battuto da tre pirati all’imbocco della corrente e ora pronto a trascinarla ovunque Rufy indichi.',
+        en: 'A kraken so huge the Thousand Sunny sits on his head like a hat, beaten by three pirates at the mouth of the current and now ready to haul it wherever Luffy points.',
+      },
+      visual: { art: 'surume', tint: 'vermilion' },
+    },
+    {
+      id: 'wadatsumi',
+      kind: 'character',
+      revealedAtEpisode: 526,
+      revealedAtChapter: 606,
+      name: { it: 'Wadatsumi', en: 'Wadatsumi' },
+      summary: {
+        it: 'Un gigante grande quanto un kraken al servizio del capitano dell’Olandese Volante, che allontana a pugni una rana pescatrice da una nave che il capitano vuole depredare, finché un kraken addomesticato non lo stende.',
+        en: 'A giant as big as a kraken who serves the captain of the Flying Dutchman, punching an anglerfish off a ship his captain means to rob, until a tamed kraken beats him senseless.',
+      },
+      visual: { art: 'wadatsumi', tint: 'ocher' },
     },
     {
       id: 'hody-jones',
@@ -238,6 +287,18 @@ export const fishManIsland: Saga = {
       visual: { art: 'dosun', tint: 'sand' },
     },
     {
+      id: 'megalo',
+      kind: 'character',
+      revealedAtEpisode: 530,
+      revealedAtChapter: 611,
+      name: { it: 'Megalo', en: 'Megalo' },
+      summary: {
+        it: 'Uno squalo enorme con la maglietta, lo stesso che il kraken teneva stretto, che compare accanto al re dell’Isola degli Uomini-Pesce per confermare che sono quelli i pirati giusti, poi se li carica sul dorso per portarli a palazzo.',
+        en: 'A huge shark in a T-shirt, the one the kraken had been holding, who turns up beside the king of Fish-Man Island to confirm these are the right pirates, then sets off to carry them to the palace.',
+      },
+      visual: { art: 'megalo', tint: 'ice' },
+    },
+    {
       id: 'den',
       kind: 'character',
       revealedAtEpisode: 531,
@@ -248,6 +309,21 @@ export const fishManIsland: Saga = {
         en: 'The shipwright of Fish-Man Island, who puts right the hulls that come down from the surface and says he is Tom’s younger brother.',
       },
       visual: { art: 'den', tint: 'cyan' },
+    },
+    // Filed at 532, not at his 531 debut: in 531 he scolds the king but
+    // nobody calls him by his title, and the first spoken 右大臣 is the
+    // soldier in the princess's tower at 532.
+    {
+      id: 'minister-of-the-right',
+      kind: 'character',
+      revealedAtEpisode: 532,
+      revealedAtChapter: 613,
+      name: { it: 'Ministro della Destra', en: 'Minister of the Right' },
+      summary: {
+        it: 'Un tritone cavalluccio marino con tridente e spada al fianco che rimprovera re Nettuno come un ragazzino, poi irrompe nella torre della principessa, parla cinque minuti e fa chiudere la porta a chiave.',
+        en: 'A seahorse merman with a trident and a sword at his hip who scolds King Neptune like a boy, then bursts into the princess’s tower, talks for five minutes and has the door locked.',
+      },
+      visual: { art: 'minister-of-the-right', tint: 'orange' },
     },
     {
       id: 'otohime',
@@ -285,6 +361,20 @@ export const fishManIsland: Saga = {
       },
       visual: { art: 'aladine', tint: 'teal' },
     },
+    // Filed at 544, well after his 531 debut: nobody says 左大臣 aloud
+    // until the drunk queen shouts it at him in the flashback of 544.
+    {
+      id: 'minister-of-the-left',
+      kind: 'character',
+      revealedAtEpisode: 544,
+      revealedAtChapter: 624,
+      name: { it: 'Ministro della Sinistra', en: 'Minister of the Left' },
+      summary: {
+        it: 'Un tritone pesce gatto basso e tondo, con monocolo, cilindro e bastone, che fa arrestare i Cappello di Paglia e che anni prima corse ad avvertire la regina ubriaca che tutto il regno la stava ascoltando.',
+        en: 'A short, round catfish merman with monocle, top hat and cane who has the Straw Hats arrested, and who years ago ran to warn a drunken queen that the whole kingdom could hear her.',
+      },
+      visual: { art: 'minister-of-the-left', tint: 'sand' },
+    },
     {
       id: 'pekoms',
       kind: 'character',
@@ -308,6 +398,18 @@ export const fishManIsland: Saga = {
         en: 'A knight with the body of an egg, a top hat and a cane, along for the sweets collection and measuring everything in minutes.',
       },
       visual: { art: 'baron-tamago', tint: 'ivory' },
+    },
+    {
+      id: 'bobbin',
+      kind: 'character',
+      revealedAtEpisode: 571,
+      revealedAtChapter: 651,
+      name: { it: 'Bobbin', en: 'Bobbin' },
+      summary: {
+        it: 'Un pirata basso e largo, con una maschera bianca, un gran sorriso e una spada più alta di lui, che torna da Big Mom dopo aver bruciato un paese che non le aveva sfornato i dolci promessi.',
+        en: 'A short, broad pirate with a white mask, a wide grin and a sword taller than he is, who comes home to Big Mom after burning a country that failed to bake her promised sweets.',
+      },
+      visual: { art: 'bobbin', tint: 'flamingo' },
     },
   ],
 
@@ -373,6 +475,34 @@ export const fishManIsland: Saga = {
       ],
       bounty: [{ episode: 517, value: 190_000_000 }],
     },
+    'demalo-black': {
+      chronicle: fishManIslandChronicles['demalo-black'],
+      role: {
+        it: 'Capitano dei Finti Pirati di Cappello di Paglia',
+        en: 'Captain of the Fake Straw Hats',
+      },
+      log: {
+        it: 'A Sabaody porta un cappello di paglia sfilacciato e una cicatrice finta, si fa chiamare Rufy e arruola soltanto capitani con una taglia da settanta milioni in su; a chi gli risponde male spara. Si vanta di un padre rivoluzionario, di un nonno eroe e di una taglia da quattrocento milioni, e niente di tutto questo è suo. Il resto della sua ciurma è fatto di impostori travestiti da Cappello di Paglia. Quando un marine che ha già affrontato il vero Rufy lo stende con un colpo solo, un Pacifista legge ad alta voce la sua taglia vera: ventisei milioni.',
+        en: 'On Sabaody he wears a frayed straw hat and a fake scar, calls himself Luffy, and signs up only captains worth seventy million or more; anyone who talks back gets shot at. He boasts of a revolutionary father, a hero for a grandfather and a four-hundred-million bounty, and none of it is his. The rest of his crew are impostors dressed as the other Straw Hats. When a Marine who has already fought the real Luffy flattens him with one blow, a Pacifista reads out his true bounty: twenty-six million.',
+      },
+      status: [
+        { episode: 521, value: 'alive' },
+        { episode: 523, value: 'captured' },
+      ],
+      affiliation: [
+        {
+          episode: 521,
+          value: {
+            it: 'Finti Pirati di Cappello di Paglia, capitano',
+            en: 'Fake Straw Hat Crew, captain',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 521, value: { it: 'Tre Lingue', en: 'Three-Tongued' } },
+      ],
+      bounty: [{ episode: 521, value: 26_000_000 }],
+    },
     'hammond': {
       role: {
         it: 'Uomo-pesce dei Nuovi Pirati',
@@ -413,6 +543,33 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 524, value: FISH_MAN_ISLAND }],
     },
+    'ankoro': {
+      chronicle: fishManIslandChronicles.ankoro,
+      role: {
+        it: 'Rana pescatrice degli abissi',
+        en: 'Giant anglerfish of the deep',
+      },
+      log: {
+        it: 'A meno di tremila metri di profondità, in un buio dove non brilla nulla, tiene accesa la sua esca luminosa e aspetta che una nave venga a cercare la luce. Una ciurma in cerca dei compagni dispersi la scambia per le luci dell’Isola degli Uomini-Pesce e ci punta dritta, finché dietro la luce non si spalancano le fauci. Risponde a un gigante che la stacca a pugni dalla preda e la sgrida come un animale di casa: le navi non si mangiano, quante volte deve ripeterlo, il capitano si arrabbierà.',
+        en: 'Less than three thousand metres down, in a dark where nothing shines, it hangs out its glowing lure and waits for a ship to come looking for the light. A crew searching for their lost friends takes it for the lights of Fish-Man Island and sails straight at it, until the jaws open behind the glow. It answers to a giant who punches it off its prey and scolds it like a pet: ships are not for eating, how many times must he say it, the captain will be angry.',
+      },
+      affiliation: [
+        {
+          episode: 525,
+          value: {
+            it: 'Bestia al servizio di un capitano',
+            en: 'Beast in a captain’s service',
+          },
+        },
+        {
+          episode: 526,
+          value: {
+            it: 'Olandese Volante, bestia di Vander Decken IX',
+            en: 'Flying Dutchman, Vander Decken IX’s beast',
+          },
+        },
+      ],
+    },
     'vander-decken-ix': {
       role: {
         it: 'Capitano dei Pirati Volanti',
@@ -433,6 +590,66 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 526, value: FISH_MAN_ISLAND }],
       devilFruit: [{ episode: 526, value: ['mark-mark-fruit'] }],
+    },
+    'surume': {
+      chronicle: fishManIslandChronicles.surume,
+      role: { it: 'Kraken addomesticato da Rufy', en: 'Kraken tamed by Luffy' },
+      log: {
+        it: 'Viveva all’imbocco della corrente che scende verso l’Isola degli Uomini-Pesce e afferrava con i tentacoli le navi che la attraversavano, finché tre dei Cappello di Paglia non lo hanno messo al tappeto. Poi tempesta di colpi un gigante finché non sviene e si porta la Sunny in testa, e Rufy gli dà il nome di Seppy, un nome da seppia per un polpo. Vander Decken IX lo conosce di fama come il mostro dell’Artico. Il vulcano sottomarino lo terrorizza: scappa a tutta velocità e si butta nella fossa appena Rufy glielo dice.',
+        en: 'He lived at the mouth of the current that runs down to Fish-Man Island, grabbing the ships that came through it in his tentacles, until three of the Straw Hats knocked him out. Then he beats a giant senseless with a flurry of blows and carries the Sunny on his head, and Luffy names him Surume, a squid’s name for an octopus. Vander Decken IX knows him by reputation as the monster of the Arctic. The undersea volcano terrifies him: he bolts flat out, and dives into the trench the moment Luffy tells him to.',
+      },
+      status: [{ episode: 526, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 526,
+          value: {
+            it: 'Pirati di Cappello di Paglia, addomesticato da Rufy',
+            en: 'Straw Hat Pirates, tamed by Luffy',
+          },
+        },
+        {
+          episode: 556,
+          value: {
+            it: 'Pirati di Cappello di Paglia, animale domestico; già schiavo di Hody Jones',
+            en: 'Straw Hat Pirates, pet; formerly Hody Jones’s slave',
+          },
+        },
+      ],
+      origin: [{ episode: 556, value: { it: 'Polo Nord', en: 'North Pole' } }],
+      epithet: [
+        {
+          episode: 526,
+          value: {
+            it: 'il Mostro dell’Artico',
+            en: 'the Monster of the Arctic',
+          },
+        },
+      ],
+    },
+    'wadatsumi': {
+      chronicle: fishManIslandChronicles.wadatsumi,
+      role: {
+        it: 'Il gigante di Vander Decken IX',
+        en: 'Vander Decken IX’s giant',
+      },
+      log: {
+        it: 'Emerge dalle rocce degli abissi, una sagoma d’uomo grande quanto un kraken, e la ciurma che sorprende lo prende per un mostro marino. Obbedisce al capitano Vander Decken, a cui si rivolge con tutto il rispetto, e bada alla rana pescatrice Lucetto come a un animale di casa, ricordandole ogni volta che le navi non si mangiano, se no il capitano si arrabbia. Quando il capitano dice di abbattere una nave, carica il pugno; quando dice di tirare, si mette a trainare l’Olandese Volante lontano dal pericolo.',
+        en: 'He rises out of the rocks of the deep, a man-shaped figure the size of a kraken, and the crew he surprises take him for a sea monster. He obeys Captain Vander Decken, whom he never names without a respectful “sir”, and minds the anglerfish Ankoro like a pet, forever reminding it that ships are not for eating, or the captain will be angry. When his captain says knock a ship down, he winds up his fist; when the captain says pull, he tows the Flying Dutchman out of harm’s way.',
+      },
+      status: [{ episode: 526, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 526,
+          value: {
+            it: 'Olandese Volante, sottoposto di Vander Decken IX',
+            en: 'Flying Dutchman, Vander Decken IX’s underling',
+          },
+        },
+        { episode: 790, value: { it: 'Pirati del Sole', en: 'Sun Pirates' } },
+      ],
+      epithet: [
+        { episode: 537, value: { it: 'il Gigante', en: 'the Large Monk' } },
+      ],
     },
     'hody-jones': {
       role: {
@@ -639,6 +856,34 @@ export const fishManIsland: Saga = {
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
+    'megalo': {
+      chronicle: fishManIslandChronicles.megalo,
+      role: {
+        it: 'Squalo del Palazzo di Ryugu',
+        en: 'Shark of the Ryugu Palace',
+      },
+      log: {
+        it: 'Nelle profondità, i Cappello di Paglia mettono al tappeto il kraken che lo teneva stretto, e lui si ferma davanti a loro come per ringraziarli. Ricompare sull’Isola degli Uomini-Pesce accanto al re, che gli chiede se sono davvero quelli giusti. Quando gli ordina di portarli, risponde con un verso allegro e parte con tutto il gruppo sul dorso verso il Palazzo di Ryugu, dove li aspetta un banchetto.',
+        en: 'Down in the deep, the Straw Hats knock out the kraken that had him in its grip, and he stops in front of them as if to say thank you. He turns up again on Fish-Man Island beside the king, who asks him whether these are really the right people. Told to carry them, he answers with a cheerful sound and sets off with the whole group on his back for the Ryugu Palace, where a feast is ready.',
+      },
+      affiliation: [
+        { episode: 530, value: { it: 'Regno di Ryugu', en: 'Ryugu Kingdom' } },
+        {
+          episode: 531,
+          value: {
+            it: 'Regno di Ryugu, animale della principessa',
+            en: 'Ryugu Kingdom, the princess’s pet',
+          },
+        },
+        {
+          episode: 553,
+          value: {
+            it: 'Regno di Ryugu, animale della principessa; un tempo dell’Armata di Nettuno',
+            en: 'Ryugu Kingdom, the princess’s pet; formerly the Neptune Army’s',
+          },
+        },
+      ],
+    },
     'den': {
       role: { it: 'Carpentiere dell’isola', en: 'Shipwright of the island' },
       log: {
@@ -655,6 +900,31 @@ export const fishManIsland: Saga = {
         },
       ],
       origin: [{ episode: 531, value: FISH_MAN_ISLAND }],
+    },
+    'minister-of-the-right': {
+      chronicle: fishManIslandChronicles['minister-of-the-right'],
+      role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
+      log: {
+        it: 'Rimprovera il re come si fa con un ragazzino: è uscito dal palazzo da solo, senza scorta, proprio mentre il paese attraversa un momento delicato. Quando la principessa grida corre alla torre con le guardie, è sicuro di aver sentito una voce che non dovrebbe esserci e lascia perdere quando lei gli dice che era la sua pancia. Le spiega che i Cappello di Paglia verranno arrestati, sospettati di aver rapito le sirene scomparse e indicati da una predizione di madame Sharley, e gli dispiace mettere le corde a chi ha salvato Megalo. Allo scadere dei cinque minuti se ne va e ordina di chiudere la porta a doppia mandata.',
+        en: 'He scolds the king the way one scolds a boy: he left the palace alone, with no escort, at the very moment the country is on edge. When the princess cries out he runs to her tower with the guards, is sure he heard a voice that should not be there, and lets it go when she tells him it was her stomach. He explains that the Straw Hats are to be arrested, suspected of carrying off the missing mermaids and named by a prediction of Madam Shyarly, and he is sorry to put ropes on the people who saved Megalo. When his five minutes are up he leaves, and orders the door locked tight.',
+      },
+      status: [{ episode: 532, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 532,
+          value: {
+            it: 'Regno di Ryugu, ministro',
+            en: 'Ryugu Kingdom, minister',
+          },
+        },
+        {
+          episode: 539,
+          value: {
+            it: 'Regno di Ryugu, ministro; Armata di Nettuno',
+            en: 'Ryugu Kingdom, minister; Neptune Army',
+          },
+        },
+      ],
     },
     'otohime': {
       role: {
@@ -723,6 +993,24 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 541, value: FISH_MAN_ISLAND }],
     },
+    'minister-of-the-left': {
+      chronicle: fishManIslandChronicles['minister-of-the-left'],
+      role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
+      log: {
+        it: 'Sbuffa mentre il re viene rimproverato per le sue uscite senza scorta, e quando arriva la notizia della predizione è lui a dichiarare in arresto i Cappello di Paglia: la loro resistenza, dice, è il prologo del futuro annunciato. Legato dopo la sconfitta, spiega a Nami che con un Log Pose così semplice il Nuovo Mondo non si attraversa, e concede a Zoro che offrire un tè e parlare sarebbe forse stata una strada. Quando nel palazzo compaiono Vander Decken e Hody, accusa la ciurma di essere loro complice. Anni prima avrebbe voluto che la regina Otohime facesse i suoi discorsi in video, e il giorno in cui lei parlò ubriaca a tutto il regno fu lui a correre ad avvertirla.',
+        en: 'He groans along while the king is scolded for slipping out without an escort, and when word of the prediction arrives it is he who declares the Straw Hats under arrest: their resistance, he says, is the prologue of the future foretold. Tied up after the defeat, he tells Nami that a Log Pose that simple will never cross the New World, and grants Zoro that offering tea and talking might have been one way. When Vander Decken and Hody turn up in the palace, he accuses the crew of being in league with them. Years before, he wished the queen, Otohime, would give her speeches by video, and on the day she spoke drunk to the whole kingdom it was he who ran to warn her.',
+      },
+      status: [{ episode: 544, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 544,
+          value: {
+            it: 'Regno di Ryugu, ministro',
+            en: 'Ryugu Kingdom, minister',
+          },
+        },
+      ],
+    },
     'pekoms': {
       role: {
         it: 'Combattente dei Pirati di Big Mom',
@@ -765,6 +1053,29 @@ export const fishManIsland: Saga = {
       ],
       devilFruit: [{ episode: 571, value: ['egg-egg-fruit'] }],
       bounty: [{ episode: 571, value: 429_000_000 }],
+    },
+    'bobbin': {
+      chronicle: fishManIslandChronicles.bobbin,
+      role: {
+        it: 'Combattente dei Pirati di Big Mom',
+        en: 'Combatant of the Big Mom Pirates',
+      },
+      log: {
+        it: 'Chiama Mama l’Imperatrice che serve e torna da lei a lavoro finito: il paese che le aveva promesso dei dolci senza riuscire a sfornarli è stato battuto e dato alle fiamme. A lei dispiace soltanto per i suoi biscotti. La prima cosa che lui chiede, dopo, è se c’è qualcosa da mangiare. Poi riferisce una chiamata di Pekoms e domanda, con la stessa leggerezza, se deve bruciare anche l’Isola degli Uomini-Pesce.',
+        en: 'He calls the Emperor he serves Mama, and comes home to her with the job done: the country that promised her sweets and failed to bake them has been beaten and burned. She only regrets its pastries. The first thing he asks afterwards is whether there are any snacks. Then he passes on a call from Pekoms and asks, just as lightly, whether Fish-Man Island should burn too.',
+      },
+      affiliation: [
+        {
+          episode: 571,
+          value: {
+            it: 'Pirati di Big Mom, combattente',
+            en: 'Big Mom Pirates, combatant',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 809, value: { it: 'il Taccagno', en: 'the Sweeper' } },
+      ],
     },
   },
 }
