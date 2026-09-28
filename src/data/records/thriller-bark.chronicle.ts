@@ -236,4 +236,284 @@ export const thrillerBarkChronicles = {
       },
     },
   ],
+  'hildon': [
+    {
+      episode: 339,
+      value: {
+        title: { it: 'Una voce alle spalle', en: 'A voice from behind' },
+        body: {
+          it: 'Dopo essere scappati da [[cerberus-thriller-bark|Cerbero]] ed essersi nascosti su un albero, [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] sentono una voce alle loro spalle. Un uomo dall’aspetto di vampiro, appeso a testa in giù a un ramo, si presenta: si chiama Hildon. Li ha visti inseguiti, dice, e li ha seguiti di nascosto per proteggerli in caso di pericolo. Con il calare della notte la foresta diventerà pericolosa: forse farebbero meglio a salire sulla sua carrozza e a farsi portare alla villa di un famoso dottore. Quando Hildon ne pronuncia il nome, Chopper sobbalza.',
+          en: 'After running from [[cerberus-thriller-bark|Cerberus]] and hiding up a tree, [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] hear a voice behind them. A vampire-looking man is hanging upside down from a branch, and he introduces himself as Hildon. He saw them being chased, he says, and followed them in secret to protect them in case of trouble. With night falling, the forest will soon turn dangerous: perhaps they had better ride in his carriage to the mansion of a famous doctor. When Hildon says the doctor’s name, Chopper jumps in shock.',
+        },
+      },
+    },
+    {
+      episode: 340,
+      value: {
+        title: {
+          it: 'La carrozza nel cimitero',
+          en: 'The carriage in the graveyard',
+        },
+        body: {
+          it: 'In carrozza, [[tony-tony-chopper|Chopper]] chiede se potrà davvero incontrare il dottor [[hogback|Hogback]], e Hildon gli assicura che il celebre chirurgo vive proprio nella villa. Poi [[nami|Nami]] guarda dal finestrino e urla: un leone con la faccia di un uomo, e una foresta piena di creature strane che spariscono appena si sbatte le palpebre. Sono solo illusioni della nebbia, dice Hildon. Quando i tre decidono di tornare indietro, lui li prega di aspettare dentro mentre parla con il cocchiere. Passano alcuni minuti. [[usopp|Usop]] si affaccia: fuori non c’è nessuno, e la carrozza è ferma in mezzo a un cimitero, dove i morti cominciano a uscire dalla terra.',
+          en: 'In the carriage, [[tony-tony-chopper|Chopper]] asks whether he can really meet Dr. [[hogback|Hogback]], and Hildon assures him the famous surgeon lives in the mansion. Then [[nami|Nami]] looks out of the window and screams: a lion with a man’s face, and a forest full of strange creatures that are gone the moment anyone blinks. Only illusions made by the fog, Hildon says. When the three decide to turn back, he tells them to wait inside while he speaks to the driver. Minutes pass. [[usopp|Usopp]] looks out: there is nobody there, and the carriage stands in the middle of a graveyard, where the dead are starting to rise from the earth.',
+        },
+      },
+    },
+    {
+      episode: 341,
+      value: {
+        title: {
+          it: 'Appeso al lampadario',
+          en: 'Hanging from the chandelier',
+        },
+        body: {
+          it: 'Di ritorno dal bagno, [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] entrano nella sala da pranzo buia; le luci si accendono, e Hildon è lì, appeso a testa in giù al lampadario. Il dottore e la sua cameriera sono già andati a dormire, dice. Usop è furioso per essere stato abbandonato nel cimitero; Hildon si scusa e si offre di accompagnarli nelle loro stanze, ma Nami e Usop non credono più a una sola parola e annunciano che se ne vanno. Una voce da un ritratto lo prende in giro per il rifiuto, e tutta la stanza si anima intorno a loro.',
+          en: 'Back from the bath, [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] walk into the dark dining room; the lights come on, and there is Hildon, hanging upside down from the chandelier. The doctor and his maid have already gone to bed, he says. Usopp is furious at being left in the graveyard; Hildon apologises and offers to guide them to their rooms, but Nami and Usopp no longer believe a word he says and announce that they are leaving. A voice from a portrait mocks him for being turned down, and the whole room comes to life around them.',
+        },
+      },
+    },
+    {
+      episode: 348,
+      value: {
+        title: {
+          it: 'Il messaggero del padrone',
+          en: 'The master’s messenger',
+        },
+        body: {
+          it: 'Mentre [[perona|Perona]] svuota la Thousand Sunny di quel poco che contiene, Hildon arriva in volo con un messaggio: [[gecko-moria|Moria]] convoca una riunione. Porta l’avviso anche ad [[absalom|Absalom]], e con l’avviso una notizia che preoccupa entrambi: [[brook|Brook]] è sull’isola, e nessuno lo tiene d’occhio. Nessuno di loro sa che [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] sono nascosti dentro [[kumashi|Kumacy]], lì accanto, e ascoltano ogni parola.',
+          en: 'While [[perona|Perona]] empties the Thousand Sunny of what little it holds, Hildon flies in with a message: [[gecko-moria|Moria]] is calling a meeting. He brings the summons to [[absalom|Absalom]] too, and with it a piece of news that worries them both: [[brook|Brook]] is on the island, and on the loose. None of them knows that [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] are hidden inside [[kumashi|Kumashi]], standing right beside them, listening to every word.',
+        },
+      },
+    },
+  ],
+  'cerberus-thriller-bark': [
+    {
+      episode: 339,
+      value: {
+        title: { it: 'Il cane dell’inferno', en: 'The hound of hell' },
+        body: {
+          it: 'Andati a sbattere contro l’argine nella nebbia, [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] finiscono in un fossato profondissimo tra il mare e l’isola, il fondo coperto di teschi e ossa. Dal buio spunta un cane a tre teste, e Chopper grida che dev’essere Cerbero, il cane da guardia dell’inferno. La bestia li insegue lungo il fossato; Chopper si accorge che una delle tre teste è di volpe, non di cane, e questo la fa infuriare ancora di più. In cima a una grande scalinata, nella foresta, bastano una stella fumogena di Usop e un albero per seminarla: con tutte quelle teste, ha un pessimo fiuto.',
+          en: 'Crashing into the embankment in the fog, [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] tumble into a very deep ditch between the sea and the island, its floor covered in skulls and bones. Out of the dark comes a three-headed dog, and Chopper cries that it must be Cerberus, the guard dog of hell. The beast chases them along the ditch; Chopper notices that one of the three heads is a fox’s, not a dog’s, which only makes it angrier. At the top of a great staircase, in the forest, a smoke star from Usopp and a tree are enough to lose it: for all those heads, its nose is poor.',
+        },
+      },
+    },
+    {
+      episode: 341,
+      value: {
+        title: { it: 'Addomesticato con un pugno', en: 'Tamed with a punch' },
+        body: {
+          it: 'Il resto della ciurma sbarca sull’isola e trova Cerbero ai piedi della scalinata. Prova a fare paura, ma [[monkey-d-luffy|Rufy]] si lecca le labbra, [[sanji|Sanji]] si chiede se sia buono da mangiare, e la bestia perde coraggio. Rufy vuole addomesticarlo: gli si avvicina per accarezzarlo, e tutte e tre le teste lo azzannano. Lui gli dice con calma di mollare la presa, poi lo scaraventa contro la parete con un pugno. Da quel momento Cerbero cammina a testa bassa e porta Rufy attraverso la foresta, mentre [[nico-robin|Robin]] prova pena per lui e Sanji si domanda chi possa aver fabbricato una cosa simile.',
+          en: 'The rest of the crew set foot on the island and find Cerberus at the foot of the staircase. It tries to be frightening, but [[monkey-d-luffy|Luffy]] licks his lips, [[sanji|Sanji]] wonders whether it is any good to eat, and the beast loses its nerve. Luffy wants to tame it: he walks up to pet it, and all three heads bite down on him. He tells it calmly to let go, then punches it into the wall. From then on Cerberus walks with its heads held low and carries Luffy through the forest, while [[nico-robin|Robin]] feels sorry for it and Sanji wonders who could have built such a thing.',
+        },
+      },
+    },
+  ],
+  'buhichuck': [
+    {
+      episode: 341,
+      value: {
+        title: { it: 'Il trofeo sulla parete', en: 'The trophy on the wall' },
+        body: {
+          it: 'Nella sala da pranzo buia, [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] rifiutano l’offerta di [[hildon|Hildon]] di accompagnarli nelle stanze, e la sala si anima: una donna esce dal suo ritratto e afferra Chopper, e la testa di maiale appesa alla parete comincia a parlare. È Grunfchuck, e annuncia di essere il capo degli zombie di quella stanza. Lancia contro Usop una delle spade appese sotto di lui, lo manca e colpisce il tappeto di pelle d’orso, che si alza dando la colpa a Usop. Usop risponde a colpi di candele, dà fuoco agli zombie e i tre scappano, ma trovano la porta chiusa a chiave.',
+          en: 'In the dark dining room, [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] turn down [[hildon|Hildon]]’s offer to guide them to their rooms, and the room comes alive: a woman climbs out of her portrait and grabs Chopper, and the pig’s head mounted on the wall begins to talk. It is Buhichuck, and he announces that he is the leader of the zombies in this room. He throws one of the swords hanging beneath him at Usopp, misses, and hits the bear-skin rug, which rises up blaming Usopp. Usopp answers with candles, sets the zombies alight and the three run, only to find the door locked.',
+        },
+      },
+    },
+    {
+      episode: 344,
+      value: {
+        title: { it: 'Una guida per la villa', en: 'A guide to the mansion' },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] e [[franky|Franky]] entrano nella villa cercando [[gecko-moria|Moria]], e la stessa sala tende loro la sua sorpresa: Grunfchuck ride del loro coraggio e scatena contro di loro i ritratti e il tappeto d’orso. Durano pochi istanti; Rufy mette fuori combattimento il tappeto, e Grunfchuck resta solo sulla sua parete, sconvolto. Messo alle strette, giura che i tre compagni scomparsi dormono tranquilli al piano di sopra. Poi Franky si accorge che anche Sanji è sparito, e Robin decide che il maiale farà loro da guida per la villa.',
+          en: '[[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] and [[franky|Franky]] walk into the mansion looking for [[gecko-moria|Moria]], and the same room springs its surprise: Buhichuck laughs at their nerve and sends the portraits and the bear rug at them. They last a few moments; Luffy knocks the rug out, and Buhichuck is left alone on his wall, in shock. Cornered, he swears the three missing crewmates are sleeping safely upstairs. Then Franky notices that Sanji has vanished too, and Robin decides the pig will serve as their guide to the mansion.',
+        },
+      },
+    },
+    {
+      episode: 346,
+      value: {
+        title: { it: 'La parete che si chiude', en: 'The wall that closes' },
+        body: {
+          it: 'Portato in giro come guida, Grunfchuck continua a ridere e a giurare di non sapere nulla, mentre dopo [[sanji|Sanji]] sparisce anche [[roronoa-zoro|Zoro]]. Conduce [[monkey-d-luffy|Rufy]], [[nico-robin|Robin]] e [[franky|Franky]] in una sala che sembra un’arena, dove un cavaliere in armatura si lancia su Franky: è un general zombie. Mentre combattono, Grunfchuck si vanta che i general zombie reggono molti più colpi degli altri; poi una parete si chiude alle sue spalle e lui sparisce, lasciando i tre davanti a un intero plotone di zombie corazzati.',
+          en: 'Carried around as a guide, Buhichuck keeps laughing and swearing he knows nothing, while after [[sanji|Sanji]], [[roronoa-zoro|Zoro]] vanishes from the group too. He leads [[monkey-d-luffy|Luffy]], [[nico-robin|Robin]] and [[franky|Franky]] into a hall that looks like an arena, where a knight in armour dives at Franky: a General Zombie. While they fight, Buhichuck boasts that the General Zombies can take far more punishment than the rest; then a wall closes behind him and he is gone, leaving the three facing a whole platoon of armoured zombies.',
+        },
+      },
+    },
+  ],
+  'kumashi': [
+    {
+      episode: 345,
+      value: {
+        title: { it: 'Zitto, Kumacy', en: 'Don’t talk, Kumashi' },
+        body: {
+          it: 'Quando i fantasmi di [[perona|Perona]] tornano alla villa, un enorme orso di pezza le dà il bentornato, e lei gli ordina di tacere: con quell’aspetto ha una voce troppo profonda, e chi non è carino non è degno di lavorare per lei. Più tardi, nella sua stanza, gli dà gli ordini: la bara con dentro [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]], messi fuori combattimento da [[ryuma|Ryuma]], va portata nella sala da ballo, mentre lei va a svuotare la Thousand Sunny. Kumacy risponde di sì e viene sgridato per aver parlato; la saluta con un borbottio, e viene sgridato di nuovo.',
+          en: 'When [[perona|Perona]]’s ghosts drift back to the mansion, a huge patchwork bear welcomes her home, and she tells him to shut up: with that look his voice is far too deep, and anyone who is not cute is not fit to work for her. Later, in her room, she gives him his orders: the coffin holding [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]], knocked out by [[ryuma|Ryuma]], is to go to the dance hall, while she goes to empty the Thousand Sunny. Kumashi answers yes and is scolded for speaking; he waves her off with a mumble, and is scolded again.',
+        },
+      },
+    },
+    {
+      episode: 349,
+      value: {
+        title: {
+          it: 'Tre clandestini nell’orso',
+          en: 'Three stowaways in the bear',
+        },
+        body: {
+          it: 'Per nascondersi da [[absalom|Absalom]] nelle stanze di [[perona|Perona]], [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] trovano una cerniera sulla schiena di Kumacy e ci si infilano dentro. Lui non arriva alla cerniera, e quando Absalom passa a chiedere degli intrusi prova a spiegargli che sono proprio lì, dentro di lui; Absalom lo interrompe, e Perona lo sgrida per aver parlato. Alla riunione di [[gecko-moria|Moria]] ci riprova, e lei lo zittisce di nuovo. Da dentro l’orso, i tre guardano Moria tagliare con un paio di forbici giganti l’ombra di [[monkey-d-luffy|Rufy]].',
+          en: 'Hiding from [[absalom|Absalom]] in [[perona|Perona]]’s rooms, [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] find a zipper on Kumashi’s back and climb inside. He cannot reach the zipper, and when Absalom comes asking after the intruders he tries to explain that they are right there, inside him; Absalom talks over him, and Perona scolds him for speaking. At [[gecko-moria|Moria]]’s meeting he tries once more, and she shushes him again. From inside the bear, the three watch Moria cut [[monkey-d-luffy|Luffy]]’s shadow off with a giant pair of scissors.',
+        },
+      },
+    },
+    {
+      episode: 360,
+      value: {
+        title: { it: 'Sale in bocca', en: 'Salt in the mouth' },
+        body: {
+          it: 'Quando [[usopp|Usop]] si mette a inseguire [[perona|Perona]], Kumacy gli va dietro infuriato e cerca di schiacciarlo, spaccando il pavimento a ogni colpo; una palla di fuoco e una scia d’olio in fiamme lo trattengono per un po’. Poi, mentre i piccoli fantasmi di Perona esplodono intorno a Usop, l’orso lo ritrova e lo colpisce ancora e ancora, piantandolo nel pavimento. Quando la sconfitta sembra certa, Usop indossa la maschera di Sogeking e gli spara del sale dritto in bocca: Kumacy crolla, purificato, e non si muove più.',
+          en: 'When [[usopp|Usopp]] goes after [[perona|Perona]], Kumashi comes after him in a rage and tries to crush him, cracking the floor with every blow; a ball of fire and a trail of burning oil hold him back for a while. Then, as Perona’s little ghosts explode around Usopp, the bear finds him again and hits him again and again, driving him into the floor. When defeat seems certain, Usopp puts on the mask of Sogeking and shoots salt straight into his mouth: Kumashi falls, purified, and moves no more.',
+        },
+      },
+    },
+  ],
+  'john': [
+    {
+      episode: 345,
+      value: {
+        title: {
+          it: 'L’ultimo a uscire dalla porta',
+          en: 'The last one out of the door',
+        },
+        body: {
+          it: 'Mentre comincia la caccia notturna, [[absalom|Absalom]] fa uscire i generali zombie dalle bare e da sotto terra e li manda dietro ai Cappello di Paglia. Uno di loro se la prende comoda: il Capitano John, un pirata famigerato finché era vivo, si trascina oltre le porte con il singhiozzo e la bottiglia in mano, due spade ancora conficcate nella pancia. Absalom gli dice che la fama che si era fatto in vita starà piangendo a vederlo così, e si dispera finché John non riesce finalmente a uscire.',
+          en: 'As the night hunt begins, [[absalom|Absalom]] calls the General Zombies out of their coffins and out of the ground and sends them after the Straw Hats. One of them takes his time: Captain John, a pirate who was notorious while he lived, shuffles through the doors hiccuping over his bottle, two swords still stuck in his belly. Absalom tells him the reputation he built in life must be weeping to see him like this, and despairs of him until John finally makes it outside.',
+        },
+      },
+    },
+    {
+      episode: 424,
+      value: {
+        title: { it: 'Il segno sul bracciale', en: 'The mark on the armband' },
+        body: {
+          it: 'A Impel Down, [[buggy|Bagy]] nota il bracciale che [[nami|Nami]] ha lasciato tenere a [[monkey-d-luffy|Rufy]] dal tesoro trovato su Thriller Bark, e non riesce a staccargli gli occhi di dosso. È finito in questa prigione proprio per il tesoro del Capitano John: aveva scavato nella grotta dove doveva trovarsi senza trovare niente, prima che la Marina lo catturasse. Quel bracciale è la chiave per arrivarci. Rufy gliel’ha promesso in cambio del suo aiuto per arrivare da [[portgas-d-ace|Ace]], e glielo consegna pur sapendo che potrebbe scappare: e Bagy scappa con il bracciale, convinto che il tesoro sia finalmente suo, finché un colpo d’ascia non lo fa precipitare al livello di sotto dietro a Rufy.',
+          en: 'In Impel Down, [[buggy|Buggy]] notices the armband [[nami|Nami]] let [[monkey-d-luffy|Luffy]] keep from the treasure found on Thriller Bark, and cannot take his eyes off it. He landed in this prison chasing Captain John’s treasure: he had dug through the cave where it was meant to lie and found nothing before the Marines caught him. That armband is the key to finding it. Luffy has promised it to him in return for his help reaching [[portgas-d-ace|Ace]], and hands it over knowing he may run: Buggy bolts with it, sure the treasure is finally his, until an axe blow sends him tumbling down to the level below after Luffy.',
+        },
+      },
+    },
+  ],
+  'spoil': [
+    {
+      episode: 375,
+      value: {
+        title: {
+          it: 'Soltanto un vecchio ferito',
+          en: 'Only an injured old man',
+        },
+        body: {
+          it: 'Con le ombre rubate tornate ai loro proprietari, il vecchio con la lanterna che la ciurma di [[monkey-d-luffy|Rufy]] aveva incontrato al cimitero va a cercarla. Non è affatto uno zombie, solo un anziano malconcio e pieno di ferite, e ringrazia i Cappello di Paglia per aver finalmente sconfitto [[gecko-moria|Moria]]. [[lola|Lola]] lo riconosce: è Spoil, il presidente onorario dell’Associazione vittime del furto d’ombra, la gente senza ombra che si nascondeva nella foresta. Anche Lola ringrazia la ciurma, poi chiede un marito, e riceve un rifiuto.',
+          en: 'With the stolen shadows back with their owners, the old man with the lantern whom [[monkey-d-luffy|Luffy]]’s crew met at the graveyard comes looking for them. He is no zombie at all, just an elderly, badly injured man, and he thanks the Straw Hats for finally defeating [[gecko-moria|Moria]]. [[lola|Lola]] recognises him: he is Spoil, the honorary president of the Thriller Bark Victims’ Association, the shadowless people who hid in the forest. Lola thanks the crew too, then asks for a husband, and is turned down.',
+        },
+      },
+    },
+  ],
+  'gyoro-nin-and-bao': [
+    {
+      episode: 350,
+      value: {
+        title: { it: 'Gyoro! Nin! Bao!', en: 'Gyoro! Nin! Bao!' },
+        body: {
+          it: 'Con l’ombra di [[monkey-d-luffy|Rufy]] appena tagliata, [[gecko-moria|Moria]] chiama per nome i suoi tre piccoli servitori: Gyoro, Nin e Bao. «Sì, padrone!» Sono gli stessi tre zombie che a mezzanotte lo avevano svegliato per la caccia notturna dopo quattro giorni di sonno, con l’arciere che gli faceva scoppiare con una freccia la bolla al naso. Ora Moria li manda ad aprire la porta della cella frigorifera speciale, dove lo aspetta il cadavere gigantesco che [[hogback|Hogback]] ha preparato proprio per un giorno come questo, e li segue dentro per dargli l’ombra appena presa.',
+          en: 'With [[monkey-d-luffy|Luffy]]’s shadow freshly cut away, [[gecko-moria|Moria]] calls his three little servants by name: Gyoro, Nin and Bao. “Yes, Master!” They are the same three zombies who woke him at midnight for the night hunt after four days of sleep, the archer popping the bubble at his nose with an arrow. Now Moria sends them to open the door of the special freezer, where the giant corpse [[hogback|Hogback]] built for a day just like this one lies waiting, and follows them in to give it the shadow he has just taken.',
+        },
+      },
+    },
+    {
+      episode: 369,
+      value: {
+        title: { it: 'Un ospite inatteso', en: 'An unexpected guest' },
+        body: {
+          it: 'Thriller Bark è uscita dalla nebbia, e Gyoro, Nin e Bao corrono in preda al panico da [[gecko-moria|Moria]]: dopo tutto questo tempo l’isola ha lasciato le acque nebbiose, ed è tutta colpa di [[oars|Oz]]. Moria li zittisce. A un pirata non importa in che punto del mare si trovi, e lui ha un ospite fuori dal comune: [[bartholomew-kuma|Orso]], l’unico membro della Flotta dei Sette che esegue gli ordini del Governo. Orso è venuto a riferire chi occuperà il posto lasciato libero da [[crocodile|Crocodile]]: un pirata chiamato [[marshall-d-teach|Barbanera]], la cui taglia originale era pari a zero.',
+          en: 'Thriller Bark has slipped out of the fog, and Gyoro, Nin and Bao run to [[gecko-moria|Moria]] in a panic: after all this time the island has left the foggy waters, and it is all the fault of [[oars|Oars]]. Moria tells them to hush. A pirate hardly cares where on the sea he is, and he has an unusual guest: [[bartholomew-kuma|Kuma]], the only Warlord who does the Government’s bidding. Kuma has come to report who will fill the seat left empty by [[crocodile|Crocodile]]: a pirate called [[marshall-d-teach|Blackbeard]], whose original bounty was zero.',
+        },
+      },
+    },
+  ],
+  'jigoro': [
+    {
+      episode: 346,
+      value: {
+        title: { it: 'La mossa di un altro', en: 'Someone else’s move' },
+        body: {
+          it: 'Circondati dai general zombie in armatura in una sala della villa, [[monkey-d-luffy|Rufy]], [[franky|Franky]] e [[nico-robin|Robin]] tengono testa finché un fendente volante che Rufy riconosce subito non arriva dritto su di lui. È una mossa di [[roronoa-zoro|Zoro]], e lo spadaccino che l’ha lanciata ripete persino la frase di Zoro: una ferita sulla schiena è la vergogna di uno spadaccino, anche se lui di cicatrici è coperto. Rufy gli chiede se è Zoro. Lui risponde di chiamarsi Jigoro, e dichiara Rufy suo nemico. In quell’attimo di confusione gli zombie afferrano Rufy e lo portano via chiuso in una bara.',
+          en: 'Surrounded by armoured General Zombies in a hall of the mansion, [[monkey-d-luffy|Luffy]], [[franky|Franky]] and [[nico-robin|Robin]] hold their own until a flying slash Luffy recognises at once comes straight at him. It is [[roronoa-zoro|Zoro]]’s move, and the swordsman who threw it even repeats Zoro’s line: a wound on the back is a swordsman’s shame, though he himself is covered in scars. Luffy asks if he is Zoro. He answers that his name is Jigoro, and declares Luffy his enemy. In that moment of confusion the zombies seize Luffy and carry him off shut inside a coffin.',
+        },
+      },
+    },
+    {
+      episode: 363,
+      value: {
+        title: { it: 'Salta dalla finestra', en: 'Jump out of the window' },
+        body: {
+          it: 'Per ordine di [[hogback|Hogback]], Jigoro e uno zombie con la faccia da pinguino fanno la guardia al dottore, e [[tony-tony-chopper|Chopper]] e [[nico-robin|Robin]] capiscono presto quali ombre portano dentro: il pinguino combatte come [[sanji|Sanji]], lo spadaccino come [[roronoa-zoro|Zoro]]. Insieme li mettono al tappeto, e della ciurma non ricordano più nulla. Ma quando Hogback ordina di togliere di mezzo i seccatori che stanno per far mangiare il sale a [[victoria-cindry|Cindry]], un fendente di Jigoro sfiora il compagno, e i due cominciano a litigare come acqua e olio. Robin ne approfitta: spinge Hogback a gridare di saltare dalla finestra, e i due zombie, convinti che l’ordine sia per loro, si buttano giù dalla torre.',
+          en: 'On [[hogback|Hogback]]’s orders, Jigoro and a penguin-faced zombie stand guard over the doctor, and [[tony-tony-chopper|Chopper]] and [[nico-robin|Robin]] soon work out whose shadows they carry: the penguin fights like [[sanji|Sanji]], the swordsman like [[roronoa-zoro|Zoro]]. Together the two beat them down, and neither remembers anything of the crew. But when Hogback orders them to take out the pests about to feed salt to [[victoria-cindry|Cindry]], one of Jigoro’s slashes nearly hits his partner, and the two start fighting like water and oil. Robin seizes the moment: she goads Hogback into shouting at them to jump out of the window, and both zombies, taking the order as their own, throw themselves off the tower.',
+        },
+      },
+    },
+    {
+      episode: 373,
+      value: {
+        title: {
+          it: 'L’ombra restituita al padrone',
+          en: 'The shadow called home',
+        },
+        body: {
+          it: '[[monkey-d-luffy|Rufy]] ha abbattuto [[oars|Oz]], ma [[gecko-moria|Moria]] si rialza e si rifiuta di restituire le ombre rubate. Le richiama invece tutte a sé, ogni ombra di Thriller Bark, e le ombre escono dagli zombie che le portavano per volare dentro il loro padrone. Tocca anche a Jigoro: l’ombra che aveva preso in prestito da [[roronoa-zoro|Zoro]] lascia il suo corpo, e lo spadaccino crolla dove si trova, di nuovo soltanto un cadavere, insieme a [[victoria-cindry|Cindry]] e agli altri zombie della villa.',
+          en: '[[monkey-d-luffy|Luffy]] has brought [[oars|Oars]] down, but [[gecko-moria|Moria]] gets back up and refuses to return the stolen shadows. Instead he calls them all to himself, every shadow on Thriller Bark, and they pour out of the zombies that wore them and fly into their master. Jigoro is one of them: the shadow he had borrowed from [[roronoa-zoro|Zoro]] leaves his body, and the swordsman drops where he stands, only a corpse once more, together with [[victoria-cindry|Cindry]] and the other zombies of the mansion.',
+        },
+      },
+    },
+  ],
+  'tararan': [
+    {
+      episode: 349,
+      value: {
+        title: {
+          it: 'La scimmia-ragno sul ponte',
+          en: 'The spider monkey on the bridge',
+        },
+        body: {
+          it: 'Sul ponte fra le due ville, una gigantesca scimmia-ragno sbarra la strada a [[franky|Franky]] e [[nico-robin|Robin]] proprio mentre la bara di [[monkey-d-luffy|Rufy]] scivola via sopra le loro teste. Si vanta che la ragnatela che tiene prigioniera la Sunny sia opera sua, e che i fantasmi di [[perona|Perona]] abbiano spiato ogni loro mossa. Franky fa crollare il ponte, ma lo zombie risale sulla propria tela, e i suoi topi-ragno immobilizzano Robin e inchiodano Franky a terra. Poi arriva una canzone, e [[brook|Brook]] lo attraversa con un solo fendente. Il colpo sembra non fare nulla, finché dalla bocca dello zombie esce un’ombra nera che vola via. I topi-ragno gridano il nome del capitano Tararan, ma il loro capitano non si muove più.',
+          en: 'On the bridge between the two mansions, a giant spider monkey blocks [[franky|Franky]] and [[nico-robin|Robin]] just as the coffin holding [[monkey-d-luffy|Luffy]] slides away overhead. He boasts that the web holding the Sunny is his work, and that [[perona|Perona]]’s ghosts have watched their every move. Franky brings the bridge down, but the zombie climbs back up on his own webbing, and his spider mice truss Robin up and pin Franky to the ground. Then a song drifts in, and [[brook|Brook]] cuts through him in a single stroke. The cut seems to do nothing, until a black shadow pours out of the zombie’s mouth and flies away. The spider mice cry out for Captain Tararan, but their captain no longer moves.',
+        },
+      },
+    },
+  ],
+  'risky-brothers': [
+    {
+      episode: 370,
+      value: {
+        title: {
+          it: 'Cento ombre in un corpo solo',
+          en: 'A hundred shadows in one body',
+        },
+        body: {
+          it: 'Mentre corre verso la villa, [[monkey-d-luffy|Rufy]] viene sgambettato nella foresta da due sconosciuti che lo cercano da ore. Sono i fratelli Risky dei Pirati di Rolling, la ciurma di [[lola|Lola]], che gli chiede subito di sposarla e si sente dire di no. Come tutti gli altri membri dell’Associazione delle Vittime nascosti in quel bosco, vivono senza ombra da tre anni. Spiegano a Rufy che [[gecko-moria|Moria]] se ne sta dentro la pancia di [[oars|Oz]], e gli mostrano cosa hanno scoperto: l’ombra di uno zombie purificato si può catturare e infilare in un corpo vivo, che per dieci minuti ne prende la forza. Con venti minuti di notte ancora davanti, gli infilano dentro tutte le ombre che hanno raccolto, e Rufy si rialza traboccante di potenza.',
+          en: 'Racing back to the mansion, [[monkey-d-luffy|Luffy]] is tripped in the forest by two strangers who have been searching for him. They are the Risky Brothers of the Rolling Pirates, the crew of [[lola|Lola]], who proposes to him on the spot and is turned down. Like everyone in the Victim Association hiding in these woods, they have lived three years without shadows. They tell Luffy that [[gecko-moria|Moria]] is sitting inside the belly of [[oars|Oars]], and show him what they have learned: the shadow of a purified zombie can be caught and pushed into a living body, which takes on its strength for ten minutes. With twenty minutes of night left, they push in every shadow they have collected, and Luffy stands up bursting with power.',
+        },
+      },
+    },
+    {
+      episode: 378,
+      value: {
+        title: {
+          it: 'Una storia da tenere per sé',
+          en: 'A story to keep to themselves',
+        },
+        body: {
+          it: 'Con le ombre ritrovate e un banchetto pronto, i Cappello di Paglia si chiedono perché [[monkey-d-luffy|Rufy]] scoppi di energia mentre [[roronoa-zoro|Zoro]] è costretto a letto. I due fratelli hanno visto tutto e muoiono dalla voglia di raccontarlo. [[sanji|Sanji]] li porta in disparte e li fa parlare: [[bartholomew-kuma|Orso]] ha spinto fuori dal corpo di Rufy tutto il suo dolore, e Zoro se l’è preso addosso fino all’ultimo, anche se già un piccolo assaggio lo aveva fatto urlare. I fratelli vogliono raccontare a tutti la storia eroica. Sanji li ferma: Zoro non l’ha fatto per farsi ringraziare, e Rufy soprattutto non deve sapere che il suo dolore ha ferito un amico. Commossi, i due tacciono.',
+          en: 'With the shadows back and a feast laid out, the Straw Hats wonder why [[monkey-d-luffy|Luffy]] is bursting with energy while [[roronoa-zoro|Zoro]] lies bedridden. The two brothers saw everything and are dying to tell. [[sanji|Sanji]] takes them aside and makes them talk: [[bartholomew-kuma|Kuma]] pushed all of Luffy’s pain out of his body, and Zoro took every bit of it on himself, although even a small taste had made him scream. The brothers want to tell everyone the heroic story. Sanji stops them: Zoro did not do it to be thanked, and Luffy above all must never learn that his pain hurt a friend. Moved, the two keep quiet.',
+        },
+      },
+    },
+  ],
 } satisfies Readonly<Record<string, Timeline<Story>>>

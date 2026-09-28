@@ -218,7 +218,26 @@ function leaksIn(
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
     .filter((other) => names(text, other.name[locale]))
+    .filter((other) => !sharesAReachedName(other, episode, locale))
     .map((other) => `${label} (${locale}) names ${other.id}`)
+}
+
+/**
+ * Whether a record the reader has already reached goes by the same name, so
+ * the name in a story is that record's and not a leak: the zombie dog
+ * Cerberus is met at 339, Shamrock's sword of the same name only at 1168.
+ */
+function sharesAReachedName(
+  other: Entity,
+  episode: number,
+  locale: Locale,
+): boolean {
+  return entities.some((met) => {
+    return (
+      met.revealedAtEpisode <= episode
+      && met.name[locale] === other.name[locale]
+    )
+  })
 }
 
 /**
