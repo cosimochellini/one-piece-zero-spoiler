@@ -696,4 +696,402 @@ export const dressrosaArt = {
     { d: 'M42 154 h8 v-8 h-8 z' },
     shadow(80, 194, 48),
   ],
+  // A wrapped candy, twisted at both ends, with smoke curling off it.
+  'mocha': [
+    { d: ellipse(80, 112, 30, 20) },
+    { d: 'M50 112 L26 94 L32 112 L26 130 Z' },
+    { d: 'M110 112 L134 94 L128 112 L134 130 Z' },
+    {
+      d: 'M62 104 C72 96 88 96 98 104 M62 120 C72 128 88 128 98 120',
+      role: 'soft',
+    },
+    {
+      d: 'M72 88 C62 74 80 68 72 54 M90 90 C100 76 84 68 94 54',
+      role: 'accent',
+    },
+    shadow(80, 146, 42),
+  ],
+
+  // Two bowler hats frozen stiff, icicles hanging off the brims, above a
+  // footprint in the snow bigger than either of them.
+  'rock-and-scotch': [
+    { d: 'M30 120 C30 88 70 88 70 120' },
+    { d: 'M18 122 C34 115 66 115 82 122 C66 129 34 129 18 122 Z' },
+    { d: 'M92 104 C92 72 132 72 132 104' },
+    { d: 'M80 106 C96 99 128 99 144 106 C128 113 96 113 80 106 Z' },
+    {
+      d: 'M26 126 v6 M38 128 v9 M50 129 v6 M62 128 v9 M74 126 v5 M88 110 v6 M100 112 v9 M112 113 v6 M124 112 v9 M136 110 v5',
+      role: 'accent',
+    },
+    { d: 'M10 152 Q80 142 150 152', role: 'ambient' },
+    { d: ellipse(80, 176, 26, 11), role: 'soft' },
+    {
+      d: dots([
+        [56, 160],
+        [66, 157],
+        [78, 156],
+        [90, 157],
+        [101, 160],
+      ]),
+      role: 'soft',
+    },
+  ],
+
+  // A heap of slime with an axolotl's frilled gills, dripping and bubbling.
+  'smiley': [
+    { d: 'M24 160 C22 128 40 100 80 98 C120 100 138 128 136 160 Z' },
+    {
+      d: 'M46 110 C32 100 28 88 32 78 M52 104 C42 90 42 78 48 68 M42 118 C28 112 20 102 20 92',
+      role: 'accent',
+    },
+    {
+      d: 'M114 110 C128 100 132 88 128 78 M108 104 C118 90 118 78 112 68 M118 118 C132 112 140 102 140 92',
+      role: 'accent',
+    },
+    { d: 'M42 160 v10 M62 160 v15 M98 160 v12 M120 160 v8', role: 'soft' },
+    {
+      d: `${circle(66, 128, 5)} ${circle(96, 136, 4)} ${circle(82, 118, 3)}`,
+      role: 'soft',
+    },
+    shadow(80, 186, 56),
+  ],
+
+  // A studded gladiator's wristband on a folded cloak.
+  'spartan': [
+    { d: 'M20 156 L46 122 H140 L114 156 Z', role: 'accent' },
+    { d: 'M34 139 H126', role: 'accent' },
+    { d: ellipse(80, 100, 30, 10) },
+    { d: 'M50 100 V128 M110 100 V128' },
+    { d: 'M50 128 a30 10 0 0 0 60 0' },
+    {
+      d: dots([
+        [60, 117],
+        [72, 120],
+        [88, 120],
+        [100, 117],
+      ]),
+    },
+    { d: 'M50 110 a30 10 0 0 0 60 0', role: 'soft' },
+    shadow(80, 172, 56),
+  ],
+
+  // A plumed helmet beside the announcer's microphone.
+  'gatz': [
+    {
+      d: 'M44 118 C44 82 104 82 104 118 L104 152 L90 152 L88 128 L60 128 L58 152 L44 152 Z',
+    },
+    { d: 'M74 88 V112', role: 'soft' },
+    { d: 'M46 94 C46 62 70 44 104 50 C92 58 100 72 106 98', role: 'accent' },
+    {
+      d: 'M58 76 C64 62 80 56 96 56 M54 86 C58 70 72 62 88 62',
+      role: 'accent',
+    },
+    { d: circle(130, 112, 9) },
+    { d: 'M130 121 V170 M118 170 H142' },
+    shadow(84, 180, 52),
+  ],
+
+  // A bull's pair of horns, one snapped off, over a red cape; the broken tip
+  // lies on the ground.
+  'ucy': [
+    { d: 'M54 86 Q80 78 106 86 V100 Q80 92 54 100 Z' },
+    { d: 'M106 90 C128 86 140 66 134 40 C130 62 120 76 104 80' },
+    { d: 'M54 90 C42 86 36 78 36 70 L42 74 L44 68 C46 76 50 80 56 81' },
+    { d: 'M24 158 C28 146 36 142 44 144 L40 154 Z', role: 'soft' },
+    { d: 'M64 118 H136' },
+    {
+      d: 'M70 118 H130 C128 144 134 164 142 180 C118 174 96 178 78 184 C84 164 80 140 70 118 Z',
+      role: 'accent',
+    },
+    shadow(96, 190, 44),
+  ],
+  // A boxing glove whose cuff closes with a zip, the pull hanging off it.
+  'kelly-funk': [
+    {
+      d: 'M56 146 V100 C56 72 72 58 94 60 C116 62 124 82 120 106 C118 122 110 132 104 136 V146 Z',
+    },
+    { d: 'M56 112 C42 110 38 126 48 134 C54 138 60 134 62 126' },
+    { d: 'M72 74 C86 68 104 72 112 86', role: 'soft' },
+    { d: 'M52 146 h56 v24 h-56 z' },
+    { d: 'M80 146 V170 M75 151 h10 M75 157 h10 M75 163 h10', role: 'accent' },
+    { d: 'M80 170 v6', role: 'accent' },
+    { d: circle(80, 180, 4), role: 'accent' },
+    shadow(80, 192, 40),
+  ],
+
+  // A broad-brimmed fedora, and an axe head snapped in two in front of it.
+  'bobby-funk': [
+    { d: 'M50 116 C50 84 58 70 80 70 C102 70 110 84 110 116' },
+    { d: ellipse(80, 118, 58, 12) },
+    { d: 'M66 76 Q80 90 94 76', role: 'soft' },
+    { d: 'M51 104 C66 112 94 112 109 104', role: 'accent' },
+    { d: 'M30 180 L80 152', role: 'soft' },
+    { d: 'M80 152 L72 136 C86 128 100 132 106 142 Z' },
+    { d: 'M112 176 C112 164 122 156 136 158 L132 178 Z' },
+    {
+      d: dots([
+        [108, 150],
+        [110, 160],
+        [109, 168],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 186, 56),
+  ],
+
+  // A battle map with the arrows of a plan converging on one point, and a
+  // stack of coins weighing down its corner.
+  'dagama': [
+    { d: 'M24 62 H116 V148 H24 Z' },
+    { d: 'M24 90 H116 M24 120 H116 M54 62 V148 M86 62 V148', role: 'soft' },
+    {
+      d: 'M36 136 C50 124 60 114 72 104 M110 136 C98 124 88 114 76 104 M72 72 C72 82 72 90 74 100',
+      role: 'accent',
+    },
+    {
+      d: 'M66 102 l8 0 l-2 -8 M82 102 l-8 0 l2 -8 M70 94 l4 6 l3 -7',
+      role: 'accent',
+    },
+    { d: ellipse(124, 164, 18, 5) },
+    { d: 'M106 164 v-10 M142 164 v-10' },
+    { d: ellipse(124, 154, 18, 5) },
+    { d: 'M106 154 v-10 M142 154 v-10', role: 'soft' },
+    { d: ellipse(124, 144, 18, 5), role: 'soft' },
+    shadow(76, 184, 60),
+  ],
+
+  // A headsman's broad sword planted point down, a war medal hung from its
+  // crossguard.
+  'suleiman': [
+    { d: 'M72 64 H88 V160 L80 176 L72 160 Z' },
+    { d: 'M80 70 V156', role: 'soft' },
+    { d: 'M48 56 H112 V64 H48 Z' },
+    { d: 'M75 56 V32 H85 V56' },
+    { d: circle(80, 26, 6) },
+    { d: 'M100 64 L96 84 H108 L104 64', role: 'soft' },
+    { d: circle(102, 94, 9), role: 'accent' },
+    { d: star(102, 94, 5, 2.2), role: 'accent' },
+    shadow(80, 186, 30),
+  ],
+
+  // A wanted poster torn down the middle, and a round bomb with its fuse
+  // lit at its foot.
+  'abdullah': [
+    {
+      d: 'M30 40 H78 L72 56 L80 70 L72 86 L80 102 L72 118 L80 134 L72 150 L76 166 H30 Z',
+    },
+    {
+      d: 'M86 44 H128 V170 H82 L78 154 L86 138 L78 122 L86 106 L78 90 L86 74 L78 60 Z',
+    },
+    { d: 'M40 52 H66 M94 56 H118', role: 'soft' },
+    { d: 'M42 66 H70 M92 70 H118 M42 118 H68 M92 122 H118', role: 'soft' },
+    { d: circle(126, 168, 14), role: 'accent' },
+    { d: 'M134 156 q6 -10 14 -8', role: 'accent' },
+    {
+      d: dots([
+        [150, 142],
+        [154, 148],
+        [146, 138],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 190, 56),
+  ],
+
+  // Two curved sabres crossed blade over blade, their knuckle guards at the
+  // foot.
+  'jeet': [
+    { d: 'M50 158 C76 124 100 86 124 38 C112 84 90 124 60 164 Z' },
+    { d: 'M110 158 C84 124 60 86 36 38 C48 84 70 124 100 164 Z' },
+    { d: 'M54 162 L38 182 M106 162 L122 182' },
+    {
+      d: 'M44 154 C30 160 32 180 42 180 M116 154 C130 160 128 180 118 180',
+      role: 'accent',
+    },
+    { d: 'M60 146 C80 116 100 82 116 52', role: 'soft' },
+    shadow(80, 192, 44),
+  ],
+  // A double-bladed axe standing on its haft, the grip bound in leather.
+  'boo': [
+    { d: 'M77 48 V178 M83 48 V178 M77 48 h6 M77 178 h6' },
+    { d: 'M77 60 L50 50 C38 64 38 88 50 102 L77 92 Z', role: 'accent' },
+    { d: 'M83 60 L110 50 C122 64 122 88 110 102 L83 92 Z', role: 'accent' },
+    {
+      d: 'M58 60 C50 70 50 82 58 92 M102 60 C110 70 110 82 102 92',
+      role: 'soft',
+    },
+    {
+      d: 'M77 140 l6 -5 M77 150 l6 -5 M77 160 l6 -5 M77 170 l6 -5',
+      role: 'soft',
+    },
+    shadow(80, 188, 34),
+  ],
+
+  // A wide sombrero with a cactus growing out of its crown.
+  'jean-ango': [
+    { d: ellipse(80, 138, 64, 16) },
+    { d: 'M52 136 C54 108 62 96 80 96 C98 96 106 108 108 136' },
+    { d: 'M54 126 C70 132 90 132 106 126', role: 'accent' },
+    {
+      d: dots([
+        [30, 138],
+        [44, 148],
+        [62, 153],
+        [98, 153],
+        [116, 148],
+        [130, 138],
+      ]),
+      role: 'accent',
+    },
+    {
+      d: 'M74 96 V62 C74 52 86 52 86 62 V96 M74 80 h-6 q-4 0 -4 -4 v-10 M86 74 h6 q4 0 4 -4 v-10',
+    },
+    { d: 'M80 58 V92 M70 68 l-3 -2 M90 66 l3 -2', role: 'soft' },
+    shadow(80, 180, 56),
+  ],
+
+  // A spiked iron ball on a chain, the chain ending in a shackle.
+  'tank-lepanto': [
+    { d: circle(100, 124, 24) },
+    {
+      d: 'M123.6 128.4 L133.3 137.8 L119.8 137.6 M113.6 143.8 L113.8 157.3 L104.4 147.6 M95.6 147.6 L86.2 157.3 L86.4 143.8 M80.2 137.6 L66.7 137.8 L76.4 128.4 M76.4 119.6 L66.7 110.2 L80.2 110.4 M86.4 104.2 L86.2 90.7 L95.6 100.4 M104.4 100.4 L113.8 90.7 L113.6 104.2 M119.8 110.4 L133.3 110.2 L123.6 119.6',
+      role: 'accent',
+    },
+    { d: 'M90 116 C92 110 98 106 104 106', role: 'soft' },
+    { d: ellipse(80, 94, 6, 4) },
+    { d: ellipse(70, 84, 4, 6) },
+    { d: ellipse(60, 74, 6, 4) },
+    { d: ellipse(50, 64, 4, 6) },
+    { d: circle(38, 50, 9) },
+    { d: 'M32 43 L44 57', role: 'soft' },
+    shadow(100, 176, 40),
+  ],
+
+  // A cross hanging from a string of beads.
+  'gambia': [
+    {
+      d: dots([
+        [48, 30],
+        [49, 42],
+        [52, 54],
+        [57, 65],
+        [63, 75],
+        [71, 84],
+        [112, 30],
+        [111, 42],
+        [108, 54],
+        [103, 65],
+        [97, 75],
+        [89, 84],
+      ]),
+    },
+    { d: circle(80, 90, 5) },
+    { d: 'M80 95 V100' },
+    {
+      d: 'M74 100 h12 v22 h18 v12 h-18 v40 h-12 v-40 h-18 v-12 h18 Z',
+      role: 'accent',
+    },
+    { d: 'M80 106 V168 M62 128 H98', role: 'soft' },
+    shadow(80, 188, 30),
+  ],
+
+  // A tall floppy hat with a band round it, resting on a katana's hilt.
+  'wicca': [
+    { d: 'M18 164 H122 M122 160 v8 M126 164 H146' },
+    { d: 'M18 160 q-6 4 0 8 H110 M110 158 v12', role: 'soft' },
+    { d: ellipse(80, 132, 44, 10) },
+    {
+      d: 'M50 130 C52 102 60 70 78 52 C92 40 108 44 112 58 C104 56 98 62 96 74 C94 96 104 114 110 130',
+      role: 'accent',
+    },
+    { d: 'M52 118 C70 124 92 124 108 118', role: 'accent' },
+    { d: 'M112 58 c6 2 8 8 4 12', role: 'soft' },
+    shadow(80, 180, 60),
+  ],
+
+  // A canister vacuum cleaner, its hose curling up to the wand and nozzle.
+  'kyuin': [
+    {
+      d: 'M34 128 h52 a16 16 0 0 1 16 16 v10 a16 16 0 0 1 -16 16 h-52 a16 16 0 0 1 -16 -16 v-10 a16 16 0 0 1 16 -16 z',
+    },
+    { d: circle(40, 174, 6) },
+    { d: circle(80, 174, 6) },
+    { d: 'M30 142 h22 M62 142 h16', role: 'soft' },
+    {
+      d: 'M102 144 C124 142 130 110 112 96 C96 84 100 56 122 52',
+      role: 'accent',
+    },
+    { d: 'M122 52 L128 48 L138 156' },
+    { d: 'M124 156 h26 v8 h-26 z' },
+    { d: 'M128 172 v6 M138 172 v8 M148 172 v6', role: 'ambient' },
+    shadow(62, 186, 48),
+  ],
+  // A flower seller's basket, heaped with blooms, its handle arched over them.
+  'scarlett': [
+    { d: 'M40 120 h80 l-10 50 h-60 z' },
+    { d: 'M44 120 C44 64 116 64 116 120', role: 'soft' },
+    { d: 'M44 136 h72 M48 152 h64', role: 'soft' },
+    {
+      d: `${star(58, 108, 12, 6)} ${star(80, 100, 13, 6)} ${star(102, 108, 12, 6)}`,
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [58, 108],
+        [80, 100],
+        [102, 108],
+      ]),
+    },
+    { d: 'M66 120 l-4 -6 M94 120 l4 -6 M80 120 v-8' },
+    shadow(80, 180, 46),
+  ],
+
+  // A paper festival lantern hanging from a bent pole, a small flame inside.
+  'trafalgar-lami': [
+    { d: 'M30 44 C62 34 96 38 118 56' },
+    { d: 'M104 48 V72' },
+    { d: ellipse(104, 108, 26, 34) },
+    { d: 'M92 72 h24 v6 h-24 z M92 138 h24 v6 h-24 z' },
+    { d: 'M80 96 q24 6 48 0 M78 108 h52 M80 120 q24 -6 48 0', role: 'soft' },
+    { d: 'M104 118 c-7 -7 -1 -14 0 -20 c6 6 7 14 0 20 z', role: 'accent' },
+    {
+      d: 'M104 144 v8 M96 152 h16 M98 152 v14 M104 152 v16 M110 152 v14',
+      role: 'accent',
+    },
+    shadow(104, 188, 26),
+  ],
+
+  // Two plain apples set out on a cloth, the humble meal of a family that gave up a throne.
+  'donquixote-homing': [
+    {
+      d: 'M56 108 C42 100 30 112 33 130 C36 148 48 158 56 152 C64 158 76 148 79 130 C82 112 70 100 56 108 Z',
+    },
+    {
+      d: 'M106 108 C92 100 80 112 83 130 C86 148 98 158 106 152 C114 158 126 148 129 130 C132 112 120 100 106 108 Z',
+    },
+    { d: 'M56 108 q1 -10 6 -14 M106 108 q1 -10 6 -14' },
+    {
+      d: 'M60 98 q10 -8 16 -2 q-8 7 -16 2 z M110 98 q10 -8 16 -2 q-8 7 -16 2 z',
+      role: 'accent',
+    },
+    { d: 'M44 118 q-5 6 -4 14 M94 118 q-5 6 -4 14', role: 'soft' },
+    { d: 'M22 162 h116 l-8 12 h-100 z', role: 'soft' },
+    shadow(80, 186, 54),
+  ],
+
+  // A barrel of booze with a foaming tankard beside it.
+  'diez-barrels': [
+    { d: 'M42 72 C34 102 34 140 42 170 H94 C102 140 102 102 94 72 Z' },
+    { d: ellipse(68, 72, 26, 6) },
+    { d: 'M38 92 q30 6 60 0 M38 150 q30 6 60 0' },
+    {
+      d: 'M56 78 C52 106 52 136 56 168 M80 78 C84 106 84 136 80 168',
+      role: 'soft',
+    },
+    { d: circle(68, 121, 5), role: 'accent' },
+    { d: 'M112 134 h26 v36 h-26 z' },
+    { d: 'M138 142 q12 0 12 10 q0 10 -12 10' },
+    { d: 'M110 134 q4 -8 10 -4 q6 -8 12 0 q6 -4 8 4', role: 'accent' },
+    shadow(88, 182, 62),
+  ],
 } satisfies Drawings

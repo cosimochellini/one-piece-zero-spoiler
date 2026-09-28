@@ -953,6 +953,18 @@ export const devilFruits: Saga = {
       visual: { art: 'hobby-hobby-fruit', tint: 'sand' },
     },
     {
+      id: 'jacket-jacket-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 646,
+      revealedAtChapter: 704,
+      name: { it: 'Frutto Giacca Giacca', en: 'Jacket-Jacket Fruit' },
+      summary: {
+        it: 'Trasforma chi lo mangia in una giacca che un altro può indossare: una volta addosso, prende il controllo del corpo che lo porta, uomo o bestia, e combatte con la sua forza.',
+        en: 'Turns whoever eats it into a jacket that someone else can put on: once worn, the eater takes control of the body wearing it, man or beast, and fights with its strength.',
+      },
+      visual: { art: 'jacket-jacket-fruit', tint: 'magenta' },
+    },
+    {
       id: 'barrier-barrier-fruit',
       kind: 'fruit',
       revealedAtEpisode: 660,

@@ -481,6 +481,13 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'scales',
   }),
+  'jacket-jacket-fruit': fruit({
+    body: 'pear',
+    grain: 2,
+    leaf: 'sprig',
+    stem: 'hooked',
+    swirl: 'waves',
+  }),
   'barrier-barrier-fruit': fruit({
     body: 'heart',
     grain: 10,

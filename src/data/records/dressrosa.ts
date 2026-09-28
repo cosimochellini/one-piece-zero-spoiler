@@ -543,6 +543,270 @@ export const dressrosa: Saga = {
       },
       visual: { art: 'kaido', tint: 'wine' },
     },
+    {
+      id: 'mocha',
+      kind: 'character',
+      revealedAtEpisode: 591,
+      revealedAtChapter: 665,
+      name: { it: 'Mocia', en: 'Mocha' },
+      summary: {
+        it: 'Una bambina grande come una gigante fra quelle tenute nel laboratorio, che chiede ai pirati se guarirà e se potrà rivedere la mamma e il papà.',
+        en: 'A little girl grown as big as a giant, one of the children kept in the laboratory, who asks the pirates whether she will get better and see her mother and father again.',
+      },
+      visual: { art: 'mocha', tint: 'lavender' },
+    },
+    {
+      id: 'rock-and-scotch',
+      kind: 'character',
+      revealedAtEpisode: 592,
+      revealedAtChapter: 666,
+      name: { it: 'Rock e Scotch', en: 'Rock and Scotch' },
+      summary: {
+        it: 'Due sicari giganti e pelosi che nessuno ha mai visto in faccia, noti soltanto per le impronte sulla neve più grandi di un uomo e per le voci profonde.',
+        en: 'Two huge furry assassins whom nobody has ever seen face to face, known only by footprints in the snow bigger than a man and by their low voices.',
+      },
+      visual: { art: 'rock-and-scotch', tint: 'ice' },
+    },
+    {
+      id: 'smiley',
+      kind: 'character',
+      revealedAtEpisode: 594,
+      revealedAtChapter: 673,
+      name: { it: 'Smiley', en: 'Smiley' },
+      summary: {
+        it: 'Una massa di melma velenosa più grande di una montagna, liberata dal lato in fiamme dell’isola, che il padrone del laboratorio chiama il suo animale.',
+        en: 'A mass of poisonous slime bigger than a mountain, let loose on the burning half of the island, which the master of the laboratory calls his pet.',
+      },
+      visual: { art: 'smiley', tint: 'magenta' },
+    },
+    {
+      id: 'spartan',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Spartan', en: 'Spartan' },
+      summary: {
+        it: 'Un gladiatore enorme, fra le stelle del colosseo, che nella sala d’attesa non sopporta di vedere un ometto venuto a combattere e glielo fa sapere a pugni.',
+        en: 'A huge gladiator, one of the colosseum’s stars, who cannot stand the sight of a little man come to fight in the waiting room and tells him so with his fists.',
+      },
+      visual: { art: 'spartan', tint: 'orange' },
+    },
+    {
+      id: 'kelly-funk',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Kelly Funk', en: 'Kelly Funk' },
+      summary: {
+        it: 'Un assassino a torso nudo con i guantoni da boxe, il maggiore di due fratelli, che nella sala d’attesa del colosseo attacca briga con un rivale accusandolo di comprarsi gli alleati.',
+        en: 'A bare-chested assassin in boxing gloves, the elder of two brothers, who picks a quarrel in the colosseum’s waiting room by accusing a rival of buying himself allies.',
+      },
+      visual: { art: 'kelly-funk', tint: 'red' },
+    },
+    {
+      id: 'bobby-funk',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Bobby Funk', en: 'Bobby Funk' },
+      summary: {
+        it: 'Un omone barbuto con un cappello a tesa larga, il minore di due fratelli assassini, che sta alle spalle del fratello più basso e ricorda a tutti che un combattimento è una faccenda personale.',
+        en: 'A huge bearded man in a broad-brimmed hat, the younger of two assassin brothers, who stands behind his shorter brother and reminds everyone that a fight is a personal matter.',
+      },
+      visual: { art: 'bobby-funk', tint: 'ocher' },
+    },
+    {
+      id: 'dagama',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Dagama', en: 'Dagama' },
+      summary: {
+        it: 'Lo stratega del Regno di Prodence, venuto al torneo del colosseo con il suo re, che accusato di comprarsi gli alleati risponde che nella sala tutti stanno tramando qualcosa.',
+        en: 'The tactician of the Prodence Kingdom, come to the colosseum tournament with his king, who is accused of buying himself allies and answers that everyone in the room is plotting something.',
+      },
+      visual: { art: 'dagama', tint: 'yellow' },
+    },
+    {
+      id: 'suleiman',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Suleiman', en: 'Suleiman' },
+      summary: {
+        it: 'Un criminale di guerra di prima classe, reduce della battaglia navale di Dias e noto come il tagliatore di teste, tra i nomi famigerati iscritti al torneo del colosseo.',
+        en: 'A class-A war criminal who fought in the Sea Battle of Dias, known as the Beheader, one of the notorious names entered in the colosseum tournament.',
+      },
+      visual: { art: 'suleiman', tint: 'violet' },
+    },
+    {
+      id: 'abdullah',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Abdullah', en: 'Abdullah' },
+      summary: {
+        it: 'Un ex cacciatore di taglie che insieme al suo compagno ha fatto saltare in aria un’istituzione governativa, e che ora è tra i nomi famigerati iscritti al torneo del colosseo.',
+        en: 'A former bounty hunter who, with his partner, bombed a government institution, and who is now one of the notorious names entered in the colosseum tournament.',
+      },
+      visual: { art: 'abdullah', tint: 'wine' },
+    },
+    {
+      id: 'jeet',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 704,
+      name: { it: 'Jeet', en: 'Jeet' },
+      summary: {
+        it: 'Un ex cacciatore di taglie che con il suo compagno Abdullah ha fatto saltare in aria un’istituzione governativa, e che con lui si è iscritto al torneo del colosseo.',
+        en: 'A former bounty hunter who bombed a government institution with his partner Abdullah, and who has entered the colosseum tournament with him.',
+      },
+      visual: { art: 'jeet', tint: 'teal' },
+    },
+    {
+      id: 'boo',
+      kind: 'character',
+      revealedAtEpisode: 633,
+      revealedAtChapter: 708,
+      name: { it: 'Boo', en: 'Boo' },
+      summary: {
+        it: 'Un gladiatore con i capelli arancioni legati in due code, arrivato al colosseo con la sua famiglia dal Paese di Kano, che trattiene il fratello irascibile quando uno sconosciuto li ringrazia per l’aiuto.',
+        en: 'A gladiator with his orange hair tied in two ponytails, who comes to the colosseum with his family from Kano Country and holds his hot-headed brother back when a stranger thanks them for their help.',
+      },
+      visual: { art: 'boo', tint: 'orange' },
+    },
+    {
+      id: 'gambia',
+      kind: 'character',
+      revealedAtEpisode: 634,
+      revealedAtChapter: 705,
+      name: { it: 'Gambia', en: 'Gambia' },
+      summary: {
+        it: 'Un pirata con qualche dente in meno e una croce tatuata sul petto, che nel colosseo sorprende uno sconosciuto a sussurrare i nomi di combattenti famosi in un lumacofono, e fa una domanda di troppo.',
+        en: 'A gap-toothed pirate with a cross tattooed on his chest, who catches a stranger in the colosseum whispering the names of famous fighters into a transponder snail, and asks one question too many.',
+      },
+      visual: { art: 'gambia', tint: 'sand' },
+    },
+    {
+      id: 'tank-lepanto',
+      kind: 'character',
+      revealedAtEpisode: 636,
+      revealedAtChapter: 707,
+      name: { it: 'Tank Lepanto', en: 'Tank Lepanto' },
+      summary: {
+        it: 'Un omone con la barba a punta e due gambe cortissime, che comanda l’esercito di Dressrosa e nel torneo del colosseo combatte per chi lo paga.',
+        en: 'A huge man with a pointed beard on legs far too short for him, who commands the army of Dressrosa and fights in the colosseum tournament for whoever pays him.',
+      },
+      visual: { art: 'tank-lepanto', tint: 'ocher' },
+    },
+    {
+      id: 'gatz',
+      kind: 'character',
+      revealedAtEpisode: 638,
+      revealedAtChapter: 709,
+      name: { it: 'Gats', en: 'Gatz' },
+      summary: {
+        it: 'L’annunciatore del colosseo, con l’elmo piumato e la corazza dorata, che racconta ogni incontro al pubblico e fa una gran fatica a restare imparziale.',
+        en: 'The colosseum announcer, in a plumed helmet and a golden breastplate, who calls every bout for the crowd and has a hard time staying impartial.',
+      },
+      visual: { art: 'gatz', tint: 'yellow' },
+    },
+    {
+      id: 'wicca',
+      kind: 'character',
+      revealedAtEpisode: 640,
+      revealedAtChapter: 711,
+      name: { it: 'Wicca', en: 'Wicca' },
+      summary: {
+        it: 'Una donnina alta un palmo, con una coda folta e un grande cappello blu, che ruba una spada in una città portuale, si fa acchiappare dal proprietario e poi gli racconta molto più di quanto volesse.',
+        en: 'A woman no taller than a hand, with a bushy tail and a big blue hat, who steals a sword in a port town, is caught by its owner, and then tells him far more than she meant to.',
+      },
+      visual: { art: 'wicca', tint: 'blue' },
+    },
+    {
+      id: 'ucy',
+      kind: 'character',
+      revealedAtEpisode: 644,
+      revealedAtChapter: 714,
+      name: { it: 'Ucy', en: 'Ucy' },
+      summary: {
+        it: 'Un toro da combattimento nero che nel colosseo ha ucciso dei condannati a morte, finché un piccolo gladiatore barbuto non gli salta in groppa e gli dà un nome.',
+        en: 'A black fighting bull that has killed condemned prisoners in the colosseum, until a small bearded gladiator jumps on its back and gives it a name.',
+      },
+      visual: { art: 'ucy', tint: 'vermilion' },
+    },
+    {
+      id: 'jean-ango',
+      kind: 'character',
+      revealedAtEpisode: 645,
+      revealedAtChapter: 715,
+      name: { it: 'Jean Ango', en: 'Jean Ango' },
+      summary: {
+        it: 'Un cacciatore di taglie con un sombrero sormontato da un cactus, che resta in piedi quando i combattenti intorno a lui crollano e raccoglie dal ring le loro armi per rilanciarle come proiettili.',
+        en: 'A bounty hunter in a cactus-topped sombrero who stays on his feet when the fighters around him fall, and picks their weapons up off the ring to throw back as his bullets.',
+      },
+      visual: { art: 'jean-ango', tint: 'green' },
+    },
+    {
+      id: 'scarlett',
+      kind: 'character',
+      revealedAtEpisode: 651,
+      revealedAtChapter: 742,
+      name: { it: 'Scarlet', en: 'Scarlett' },
+      summary: {
+        it: 'La madre di Rebecca, che vendeva fiori in città insieme alla sua bambina finché una notte il palazzo non prese fuoco, e che fuggì con lei prima di uscire da sola a cercare qualcosa da mangiare.',
+        en: 'Rebecca’s mother, who sold flowers in town with her little girl until the night the palace caught fire, and fled with her before going out alone to find them something to eat.',
+      },
+      visual: { art: 'scarlett', tint: 'red' },
+    },
+    {
+      id: 'kyuin',
+      kind: 'character',
+      revealedAtEpisode: 692,
+      revealedAtChapter: 755,
+      name: { it: 'Swuuush', en: 'Kyuin' },
+      summary: {
+        it: 'Una donna enorme con una maschera da lottatore e la scritta SMILE sul vestito, che dirige una fabbrica e risucchia con un aspirapolvere gli operai che provano a scappare.',
+        en: 'A huge woman in a wrestler’s mask with the word SMILE across her dress, who runs a factory and sucks up the workers who try to escape it with a vacuum machine.',
+      },
+      visual: { art: 'kyuin', tint: 'violet' },
+    },
+    {
+      id: 'trafalgar-lami',
+      kind: 'character',
+      revealedAtEpisode: 701,
+      revealedAtChapter: 762,
+      name: { it: 'Trafalgar Lami', en: 'Trafalgar Lami' },
+      summary: {
+        it: 'La sorellina di Law a Flevance, la Città Bianca, che adora le feste e si ammala del veleno del piombo ambrato che sta uccidendo tutta la città.',
+        en: 'Law’s little sister in Flevance, the White Town, who loves festivals and falls ill with the amber lead poison that is killing the whole town.',
+      },
+      visual: { art: 'trafalgar-lami', tint: 'ivory' },
+    },
+    {
+      id: 'donquixote-homing',
+      kind: 'character',
+      revealedAtEpisode: 702,
+      revealedAtChapter: 763,
+      name: { it: 'Donquijote Homing', en: 'Donquixote Homing' },
+      summary: {
+        it: 'Un Nobile Mondiale che a Mary Geoise dichiara di essere un essere umano e rinuncia al proprio rango, e porta moglie e figli a vivere fra la gente comune, dove vengono braccati per quello che erano.',
+        en: 'A World Noble who declares at Mary Geoise that he is a human being and gives up his rank, then takes his wife and sons to live among ordinary people, where they are hunted for what they used to be.',
+      },
+      visual: { art: 'donquixote-homing', tint: 'green' },
+    },
+    {
+      id: 'diez-barrels',
+      kind: 'character',
+      revealedAtEpisode: 704,
+      revealedAtChapter: 765,
+      name: { it: 'Diez Barrels', en: 'Diez Barrels' },
+      summary: {
+        it: 'Un ex ufficiale della Marina passato alla pirateria, che beve con la sua ciurma in una città fantasma in attesa di vendere alla Marina un frutto del diavolo per cinque miliardi di berry.',
+        en: 'A former Marine officer turned pirate, drinking with his crew in a ghost town while he waits to sell a Devil Fruit to the Marines for five billion berries.',
+      },
+      visual: { art: 'diez-barrels', tint: 'ocher' },
+    },
   ],
 
   dossiers: {
@@ -1514,6 +1778,553 @@ export const dressrosa: Saga = {
         },
       ],
       bounty: [{ episode: 958, value: 4_611_100_000 }],
+    },
+    'mocha': {
+      chronicle: dressrosaChronicles.mocha,
+      role: {
+        it: 'Bambina tenuta nel laboratorio di Punk Hazard',
+        en: 'Child kept in the Punk Hazard laboratory',
+      },
+      log: {
+        it: 'È una dei bambini del laboratorio cresciuti fino alla taglia di un gigante, anche se sull’isola era arrivata piccola come tutti gli altri. Chiede a Nami se guarirà e se potrà rivedere la mamma e il papà, e Nami le promette di riportarla a casa. Quando i bambini più grandi cominciano a crollare chiedendo la caramella di ogni giorno, si scopre che non li ha mai trattenuti lì nessuna malattia.',
+        en: 'She is one of the laboratory children who have grown to a giant’s size, though she came to the island as small as all the others. She asks Nami whether she will get better and see her mother and father again, and Nami promises to take her home. When the biggest children start collapsing and asking for their daily candy, it turns out that no illness was ever what kept them there.',
+      },
+      status: [{ episode: 591, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 591,
+          value: {
+            it: 'Bambini rapiti di Punk Hazard',
+            en: 'Punk Hazard’s stolen children',
+          },
+        },
+        {
+          episode: 622,
+          value: {
+            it: 'Bambini rapiti di Punk Hazard, affidati alla Marina per tornare a casa',
+            en: 'Punk Hazard’s stolen children, in the Marines’ care on the way home',
+          },
+        },
+      ],
+    },
+    'rock-and-scotch': {
+      chronicle: dressrosaChronicles['rock-and-scotch'],
+      role: {
+        it: 'Sicari al soldo di Caesar Clown',
+        en: 'Assassins in Caesar Clown’s pay',
+      },
+      log: {
+        it: 'Nessuno li ha mai visti in faccia: di loro si sa soltanto che hanno impronte enormi e voci profonde, che sono giganti pelosi simili a bestie e che uccidono chiunque per il giusto prezzo. Il padrone del laboratorio li manda a caccia dei pirati sulle montagne innevate, e loro annunciano via radio di averne già lasciati tre morti in fondo a un dirupo. Poi puntano i fucili sul capo delle guardie che aspettava di essere liberato da loro, perché anche il suo nome è sulla loro lista.',
+        en: 'Nobody has ever seen their faces: all anyone knows is that their footprints are huge and their voices low, that they are furry, beast-like giants, and that they will kill anyone for the right price. The master of the laboratory sends them after the pirates on the snowy mountains, and they radio in that three are already lying dead at the foot of a cliff. Then they turn their rifles on the guard captain who was waiting for them to set him free, because his name is on their list too.',
+      },
+      status: [{ episode: 592, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 592,
+          value: {
+            it: 'Yeti Cool Brothers, sicari al soldo di Caesar Clown',
+            en: 'Yeti Cool Brothers, assassins in Caesar Clown’s pay',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 592,
+          value: {
+            it: 'Gli Assassini dei Monti Innevati',
+            en: 'the Snow Mountain Killers',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: the anime shows the slime take an axolotl's
+    // shape but never names the fruit that gives it one. The name is only in
+    // a caption box of chapter 673 that episode 599 does not adapt.
+    'smiley': {
+      chronicle: dressrosaChronicles.smiley,
+      role: { it: 'Animale di Caesar Clown', en: 'Caesar Clown’s pet' },
+      log: {
+        it: 'Gli uomini del laboratorio aprono una porta sul lato in fiamme dell’isola, come gli è stato ordinato, e dall’edificio esce qualcosa che uccide quasi tutti e che è più grande di una montagna. Chi riesce a scappare soffoca nel gas che si porta dietro. Il suo padrone lo chiama il suo animale, una creatura rarissima fatta di melma, lo saluta per nome come dopo una lunga separazione e annuncia che da quel momento nessuno potrà più lasciare l’isola.',
+        en: 'The laboratory’s men open a door on the burning half of the island, as they were ordered to, and out of the building comes something that kills almost all of them and is bigger than a mountain. Whoever manages to run chokes on the gas it trails. Its master calls it his pet, a very rare slime-type creature, greets it by name as if after a long separation, and announces that from now on nobody can leave the island.',
+      },
+      status: [
+        { episode: 594, value: 'alive' },
+        { episode: 602, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 594,
+          value: {
+            it: 'Punk Hazard, animale di Caesar Clown',
+            en: 'Punk Hazard, Caesar Clown’s pet',
+          },
+        },
+      ],
+    },
+    'spartan': {
+      chronicle: dressrosaChronicles.spartan,
+      role: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
+      log: {
+        it: 'È una delle stelle del colosseo delle corride e ne ha vinto il torneo mensile cinquantuno volte. Nella sala d’attesa prende l’arrivo di un nuovo concorrente piccolo e barbuto come uno scherzo fatto all’arena, dove il pubblico vuole vedere soltanto i forti, e lo attacca a pugni. Finisce piantato nel pavimento dopo una sola proiezione, e dal torneo viene cacciato lui.',
+        en: 'He is one of the stars of the Corrida Colosseum and has won its monthly tournament fifty-one times. In the waiting room he takes the arrival of a small, bearded newcomer as a joke played on the arena, where the crowd wants to see only the strong, and goes at him with his fists. He ends up planted in the floor after a single throw, and it is he who is thrown out of the tournament.',
+      },
+      status: [{ episode: 633, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 633,
+          value: {
+            it: 'Colosseo delle corride, gladiatore',
+            en: 'Corrida Colosseum, gladiator',
+          },
+        },
+      ],
+    },
+    'gatz': {
+      chronicle: dressrosaChronicles.gatz,
+      role: {
+        it: 'Annunciatore del colosseo delle corride',
+        en: 'Announcer of the Corrida Colosseum',
+      },
+      log: {
+        it: 'Dalla sua postazione presenta al pubblico il premio del torneo e i combattenti, e racconta ogni blocco colpo per colpo. Dovrebbe restare imparziale, ma quando il suo preferito cade si lamenta ad alta voce, e un collega deve ricordargli il suo ruolo. Ama i grandi nomi e i colpi forti, e quando il re combattente ha ripulito il ring con un pugno solo aveva già cominciato ad annunciarne la vittoria.',
+        en: 'From his booth he presents the tournament’s prize and its fighters to the crowd, and calls every block blow by blow. He is supposed to stay impartial, but when his favourite goes down he groans out loud, and a colleague has to remind him of his job. He loves a big name and a hard hit, and when the fighting king cleared the ring with a single punch he had already begun to announce the win.',
+      },
+      status: [{ episode: 638, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 638,
+          value: {
+            it: 'Colosseo delle corride, annunciatore',
+            en: 'Corrida Colosseum, announcer',
+          },
+        },
+      ],
+    },
+    'ucy': {
+      chronicle: dressrosaChronicles.ucy,
+      role: {
+        it: 'Toro da combattimento del colosseo',
+        en: 'Colosseum fighting bull',
+      },
+      log: {
+        it: 'È un toro da combattimento nero che nel colosseo ha ucciso dei condannati a morte, e l’annunciatore lo chiama il tristo mietitore dell’arena. Nel blocco C un piccolo gladiatore con la barba lo doma, gli sale in groppa e lo chiama Ucy, e insieme travolgono un avversario dopo l’altro fra gli applausi. Poi finiscono contro la gamba di un gigante, e il gigante li schiaccia tutti e due a terra.',
+        en: 'He is a black fighting bull who has killed condemned prisoners in the colosseum, and the announcer calls him the arena’s Grim Reaper. In Block C a small bearded gladiator tames him, climbs on his back and names him Ucy, and together they flatten one opponent after another to cheers. Then they run into a giant’s leg, and the giant smashes them both into the ground.',
+      },
+      status: [{ episode: 644, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 644,
+          value: {
+            it: 'Colosseo delle corride, toro da combattimento; cavalcatura di Lucy',
+            en: 'Corrida Colosseum, fighting bull; Lucy’s mount',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 644, value: { it: 'Brutal Bull', en: 'Brutal Bull' } },
+      ],
+    },
+    'kelly-funk': {
+      chronicle: dressrosaChronicles['kelly-funk'],
+      role: {
+        it: 'Assassino, il maggiore dei fratelli Funk',
+        en: 'Assassin, the elder Funk brother',
+      },
+      log: {
+        it: 'Lui e il fratello minore Bobby sono i fratelli Funk, assassini venuti da un paese vicino per contendersi il Frutto Foco Foco. Nella sala d’attesa accusa Dagama di allearsi con i più forti del suo blocco e di pagare la gente, e dice che la cosa gli fa schifo. Dagama ribatte che anche i due fratelli sono lì per ordine del proprio paese, e chiede se abbiano comprato il posto nello stesso blocco; è una coincidenza, risponde Kelly.',
+        en: 'He and his younger brother Bobby are the Funk Brothers, assassins from a neighbouring country come to fight for the Flame-Flame Fruit. In the waiting room he accuses Dagama of ganging up with the strongest fighters in his block and paying people off, and says it makes him sick. Dagama answers that the brothers are here on their country’s orders too, and asks whether they bought their places in the same block; it is a coincidence, Kelly says.',
+      },
+      status: [{ episode: 633, value: 'unknown' }],
+      affiliation: [
+        { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
+      ],
+      origin: [
+        {
+          episode: 645,
+          value: { it: 'Regno di Mogaro', en: 'Mogaro Kingdom' },
+        },
+      ],
+      devilFruit: [{ episode: 646, value: ['jacket-jacket-fruit'] }],
+    },
+    'bobby-funk': {
+      chronicle: dressrosaChronicles['bobby-funk'],
+      role: {
+        it: 'Assassino, il minore dei fratelli Funk',
+        en: 'Assassin, the younger Funk brother',
+      },
+      log: {
+        it: 'È il minore dei fratelli Funk, assassini venuti da un paese vicino, e supera di tutta la testa il fratello Kelly. Quando Kelly se la prende con Dagama perché si compra gli alleati, Bobby aggiunge soltanto che un combattimento è una faccenda personale. Alla domanda se i due abbiano pagato qualcuno per finire nello stesso blocco, risponde che è solo una coincidenza.',
+        en: 'He is the younger of the Funk Brothers, assassins from a neighbouring country, and stands head and shoulders above his brother Kelly. When Kelly rounds on Dagama for buying allies, Bobby adds only that a fight is a personal matter. Asked whether the two of them paid somebody off to share a block, he says it is just a coincidence.',
+      },
+      status: [{ episode: 633, value: 'unknown' }],
+      affiliation: [
+        { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
+      ],
+      origin: [
+        {
+          episode: 645,
+          value: { it: 'Regno di Mogaro', en: 'Mogaro Kingdom' },
+        },
+      ],
+    },
+    'dagama': {
+      chronicle: dressrosaChronicles.dagama,
+      role: {
+        it: 'Stratega del Regno di Prodence',
+        en: 'Tactician of the Prodence Kingdom',
+      },
+      log: {
+        it: 'Serve il Regno di Prodence come stratega, ed è venuto al colosseo con il suo re per vincere il Frutto Foco Foco, che darebbe a qualunque paese il coltello dalla parte del manico nella diplomazia. Kelly Funk lo accusa di stringere alleanze nel suo blocco e di corrompere i combattenti, e lui liquida l’accusa. Risponde indicando ogni nome famigerato nella sala e chiedendo se qualcuno creda davvero che loro non stiano tramando niente.',
+        en: 'He serves the Prodence Kingdom as its tactician, and has come to the colosseum with his king to win the Flame-Flame Fruit, which would give any country the upper hand in diplomacy. Kelly Funk accuses him of forming alliances in his block and bribing fighters, and he brushes it off. He answers by pointing out every notorious name in the room and asking whether anyone really believes they are not plotting something too.',
+      },
+      status: [{ episode: 633, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 633,
+          value: {
+            it: 'Regno di Prodence, stratega',
+            en: 'Prodence Kingdom, tactician',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 633,
+          value: { it: 'Regno di Prodence', en: 'Prodence Kingdom' },
+        },
+      ],
+    },
+    'suleiman': {
+      chronicle: dressrosaChronicles.suleiman,
+      role: { it: 'Criminale di guerra', en: 'War criminal' },
+      log: {
+        it: 'È un criminale di guerra di prima classe che ha combattuto nella battaglia navale di Dias, e lo chiamano il tagliatore di teste. Si è iscritto al torneo del colosseo per il Frutto Foco Foco, insieme agli altri nomi famigerati della sala d’attesa. Dagama lo indica per primo quando vuole dimostrare che lì dentro tutti stanno tramando qualcosa.',
+        en: 'He is a class-A war criminal who fought in the Sea Battle of Dias, and he is known as the Beheader. He has entered the colosseum tournament for the Flame-Flame Fruit, along with the other notorious names in the waiting room. Dagama points to him first when he sets out to prove that everyone there is plotting something.',
+      },
+      status: [
+        { episode: 633, value: 'unknown' },
+        { episode: 744, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 633,
+          value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
+        },
+        {
+          episode: 744,
+          value: { it: 'Pirati Beautiful', en: 'Beautiful Pirates' },
+        },
+        { episode: 746, value: GRAND_FLEET },
+      ],
+      epithet: [
+        {
+          episode: 633,
+          value: { it: 'Il tagliatore di teste', en: 'the Beheader' },
+        },
+      ],
+    },
+    'abdullah': {
+      chronicle: dressrosaChronicles.abdullah,
+      role: { it: 'Ex cacciatore di taglie', en: 'Former bounty hunter' },
+      log: {
+        it: 'Lui e il suo compagno Jeet erano cacciatori di taglie, finché non hanno fatto saltare in aria un’istituzione governativa. Adesso si sono iscritti insieme al torneo del colosseo per il Frutto Foco Foco. Dagama li conta tra i nomi famigerati della sala d’attesa che di sicuro stanno tramando qualcosa.',
+        en: 'He and his partner Jeet were bounty hunters until they bombed a government institution. Now the two of them have entered the colosseum tournament together, for the Flame-Flame Fruit. Dagama counts them among the notorious names in the waiting room who must surely be plotting something.',
+      },
+      status: [
+        { episode: 633, value: 'unknown' },
+        { episode: 744, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 633,
+          value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
+        },
+        {
+          episode: 744,
+          value: {
+            it: 'Alleanza di arti marziali della palestra XXX',
+            en: 'XXX Gym Martial Arts Alliance',
+          },
+        },
+        { episode: 746, value: GRAND_FLEET },
+      ],
+    },
+    'jeet': {
+      chronicle: dressrosaChronicles.jeet,
+      role: { it: 'Ex cacciatore di taglie', en: 'Former bounty hunter' },
+      log: {
+        it: 'Era un cacciatore di taglie insieme al suo compagno Abdullah, finché i due non hanno fatto saltare in aria un’istituzione governativa. Si sono iscritti insieme al torneo del colosseo, tra i combattenti famigerati radunati per il Frutto Foco Foco. Dagama li nomina tutti e due di fila quando elenca chi, nella sala, di sicuro sta tramando qualcosa.',
+        en: 'He was a bounty hunter with his partner Abdullah until the two of them bombed a government institution. They have entered the colosseum tournament together, among the notorious fighters gathered for the Flame-Flame Fruit. Dagama names them in one breath when he lists the people in the room who must be plotting something.',
+      },
+      status: [
+        { episode: 633, value: 'unknown' },
+        { episode: 744, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 633,
+          value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
+        },
+        {
+          episode: 744,
+          value: {
+            it: 'Alleanza di arti marziali della palestra XXX',
+            en: 'XXX Gym Martial Arts Alliance',
+          },
+        },
+        { episode: 746, value: GRAND_FLEET },
+      ],
+    },
+    'boo': {
+      chronicle: dressrosaChronicles.boo,
+      role: {
+        it: 'Gladiatore della famiglia Chinjao',
+        en: 'Chinjao Family gladiator',
+      },
+      log: {
+        it: 'Arriva al colosseo con il resto della famiglia Chinjao, un clan del Paese di Kano che il pubblico sembra conoscere per nome. Quando uno sconosciuto con la barba finta stende uno dei beniamini del colosseo e una guardia fa per cacciarlo, Boo e suo fratello dicono che ha cominciato quello grosso. Il fratello si scaglia contro lo sconosciuto solo perché li ha ringraziati, ed è Boo a trattenerlo e a scusarsi: suo fratello, dice, si scalda facilmente.',
+        en: 'He arrives at the colosseum with the rest of the Chinjao Family, a clan from Kano Country the crowd seems to know by name. When a stranger in a fake beard knocks down one of the house favourites and a guard moves to throw him out, Boo and his brother say the big man started it. His brother flies at the stranger for thanking them, and Boo is the one who holds him back and apologises: his brother, he says, is easily excited.',
+      },
+      affiliation: [
+        {
+          episode: 633,
+          value: {
+            it: 'Famiglia Chinjao, Paese di Kano',
+            en: 'Chinjao Family, Kano Country',
+          },
+        },
+        {
+          episode: 645,
+          value: {
+            it: 'Flotta Happo, vicecomandante',
+            en: 'Happo Navy, vice-leader',
+          },
+        },
+        { episode: 746, value: GRAND_FLEET },
+      ],
+      origin: [
+        { episode: 633, value: { it: 'Paese di Kano', en: 'Kano Country' } },
+      ],
+    },
+    'gambia': {
+      chronicle: dressrosaChronicles.gambia,
+      role: {
+        it: 'Ufficiale di stato maggiore del Barto Club',
+        en: 'Barto Club staff officer',
+      },
+      log: {
+        it: 'È l’ufficiale di stato maggiore di una ciurma pirata il cui capitano si è appena iscritto al torneo, e ha una taglia di 67 milioni. In un corridoio del colosseo sorprende un uomo che prende appunti e sussurra nomi famosi, compreso il suo, e ipotizza ad alta voce che sia un marine. L’uomo dice a chi è in linea che richiamerà fra dieci minuti, e un attimo dopo Gambia ha smesso di fare domande.',
+        en: 'He is the staff officer of a pirate crew whose captain has just entered the tournament, and he carries a bounty of 67 million. In a corridor of the colosseum he catches a man taking notes and whispering famous names, his own among them, and guesses aloud that he must be a Marine. The man tells his caller he will ring back in ten minutes, and a moment later Gambia has stopped asking.',
+      },
+      affiliation: [
+        {
+          episode: 634,
+          value: {
+            it: 'Barto Club, ufficiale di stato maggiore',
+            en: 'Barto Club, staff officer',
+          },
+        },
+        {
+          episode: 746,
+          value: {
+            it: 'Grande Flotta di Cappello di Paglia; Barto Club',
+            en: 'Straw Hat Grand Fleet; Barto Club',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 634, value: { it: 'Il Missionario', en: 'the Missionary' } },
+      ],
+      bounty: [{ episode: 634, value: 67_000_000 }],
+    },
+    'tank-lepanto': {
+      chronicle: dressrosaChronicles['tank-lepanto'],
+      role: {
+        it: 'Comandante dell’Esercito di autodifesa di Dressrosa',
+        en: 'Captain of Dressrosa’s Self-Defence Army',
+      },
+      log: {
+        it: 'È il comandante dell’Esercito di autodifesa di Dressrosa, e lo mettono fra i nomi da tenere d’occhio nel blocco B. Sul ring si schiera con gli uomini di un re straniero e apre loro la strada verso il pirata che vogliono eliminare per primo. Quando gli chiedono perché il comandante dell’esercito di Dressrosa aiuti degli stranieri, risponde che è il denaro a far girare il mondo, e che preferisce i soldi facili a un grande sogno.',
+        en: 'He is the military captain of Dressrosa’s Self-Defence Army, and he is counted among the names to watch in block B. In the ring he sides with a foreign king’s men and clears their way to the pirate they want out first. Asked why the captain of Dressrosa’s army is helping foreigners, he says that money makes the world go round, and that he would rather take easy money than chase a big dream.',
+      },
+      affiliation: [
+        {
+          episode: 636,
+          value: {
+            it: 'Esercito di autodifesa di Dressrosa, comandante',
+            en: 'Dressrosa Self-Defence Army, military captain',
+          },
+        },
+        {
+          episode: 658,
+          value: {
+            it: 'Esercito di autodifesa di Dressrosa, comandante; fedele al re deposto',
+            en: 'Dressrosa Self-Defence Army, military captain; loyal to the deposed king',
+          },
+        },
+      ],
+      origin: [{ episode: 636, value: DRESSROSA }],
+    },
+    'wicca': {
+      chronicle: dressrosaChronicles.wicca,
+      role: { it: 'Ricognitrice dei Tontatta', en: 'Tontatta scout' },
+      log: {
+        it: 'È una delle creature minuscole che gli isolani chiamano fate, che si prendono quello che vogliono e sostengono che sia stato loro regalato. Fa la ricognitrice, e quando un pirata la acchiappa con la sua spada non riesce più a smettere di parlare: che viene dalla tribù dei Tontatta, che la famiglia Donquijote sta andando ad attaccare la nave della sua ciurma. Con una caviglia storta non può correre, e lo supplica di portarla dal suo comandante al campo di fiori.',
+        en: 'She is one of the tiny people the islanders call fairies, who take what they please and insist it was given to them. She is a scout, and once a pirate has caught her with his sword she cannot stop telling him things: that she comes from the Tontatta tribe, that the Donquixote Family is on its way to attack his crew’s ship. With a twisted ankle she cannot run, so she begs him to carry her to her commander at the flower field.',
+      },
+      affiliation: [
+        {
+          episode: 640,
+          value: {
+            it: 'Tribù dei Tontatta, squadra dei ricognitori',
+            en: 'Tontatta tribe, scouting unit',
+          },
+        },
+        { episode: 746, value: GRAND_FLEET },
+      ],
+      origin: [
+        {
+          episode: 641,
+          value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
+        },
+      ],
+    },
+    'jean-ango': {
+      chronicle: dressrosaChronicles['jean-ango'],
+      role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
+      log: {
+        it: 'I grandi pirati del Nuovo Mondo ce l’hanno tutti con lui, dice il cronista, e lui si definisce un cecchino i cui proiettili sono le armi che trova in giro. Quando un gladiatore lo insegue per avergli mandato in prigione il compagno, gli rivolge contro quelle armi e lo deride: un vero amico avrebbe assaltato la prigione, come ha fatto un idiota due anni fa. Poi strappa l’elmo a un combattente travestito e ripete una voce: Cappello di Paglia Rufy sarebbe nel torneo in incognito.',
+        en: 'The big pirates of the New World all bear him a grudge, the announcer says, and he calls himself a sniper whose bullets are whatever weapons he finds lying about. When a gladiator comes after him for sending his partner to prison, he turns those weapons on him and sneers that a real friend would have raided the prison, as some idiot did two years ago. Then he snatches a disguised fighter’s helmet and repeats a rumour: Straw Hat Luffy is secretly in the tournament.',
+      },
+      affiliation: [
+        {
+          episode: 645,
+          value: {
+            it: 'Cacciatore di taglie, gladiatore del colosseo',
+            en: 'Bounty hunter, colosseum gladiator',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 645, value: { it: 'Il Bandito', en: 'the Bandit' } },
+      ],
+    },
+    'kyuin': {
+      chronicle: dressrosaChronicles.kyuin,
+      role: {
+        it: 'Direttrice della fabbrica di Smile',
+        en: 'SMILE Factory manager',
+      },
+      log: {
+        it: 'È la direttrice della fabbrica di Smile, e dice ai piccoli operai che sono sempre stati soltanto schiavi per fabbricare Smile. Quando si ribellano e girano la ruota che apre la porta della fabbrica, piomba su di loro con un aspirapolvere e li risucchia a manciate. Non ha intenzione di lasciarne uscire nemmeno uno.',
+        en: 'She is the manager of the SMILE Factory, and she tells the little workers they were only ever slaves for making SMILEs. When they rise and turn the wheel that opens the factory door, she comes down on them with a vacuum machine and sucks them up by the handful. She means to let not one of them out.',
+      },
+      affiliation: [
+        {
+          episode: 692,
+          value: {
+            it: 'Direttrice della fabbrica di Smile',
+            en: 'SMILE Factory manager',
+          },
+        },
+      ],
+    },
+    'scarlett': {
+      chronicle: dressrosaChronicles.scarlett,
+      role: { it: 'Madre di Rebecca', en: 'Rebecca’s mother' },
+      log: {
+        it: 'Vendeva fiori in città insieme alla sua bambina, e quando i fiori erano finiti mangiavano insieme. La notte in cui il palazzo andò a fuoco fuggì con lei, e dopo due giorni senza cibo uscì da sola a comprare qualcosa e non tornò più viva. Un soldatino giocattolo la riportò alla figlia, e le spiegò che la madre era di nobile famiglia: per questo il nuovo re cerca anche lei.',
+        en: 'She sold flowers in town with her little girl, and once the flowers were sold they ate together. The night the palace caught fire she fled with her, and after two days without food she went out alone to buy something and did not come back alive. A toy soldier carried her back to her daughter and told the girl her mother was high-born, which is why the new king is hunting her too.',
+      },
+      status: [{ episode: 651, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 651,
+          value: {
+            it: 'Antica nobiltà di Dressrosa',
+            en: 'Former nobility of Dressrosa',
+          },
+        },
+        {
+          episode: 667,
+          value: {
+            it: 'Famiglia reale Riku, principessa',
+            en: 'Riku royal family, princess',
+          },
+        },
+        {
+          episode: 675,
+          value: {
+            it: 'Famiglia reale Riku, ex principessa; moglie di Kyros',
+            en: 'Riku royal family, former princess; Kyros’ wife',
+          },
+        },
+      ],
+      origin: [{ episode: 667, value: DRESSROSA }],
+    },
+    'trafalgar-lami': {
+      chronicle: dressrosaChronicles['trafalgar-lami'],
+      role: { it: 'Sorella minore di Law', en: 'Law’s younger sister' },
+      log: {
+        it: 'Cresce nella Città Bianca, dove il padre fa il medico e il fratello maggiore Law studia per diventarlo. Implora tutti di portarla alla festa, e lungo la strada le compare sulla pelle la prima macchia bianca: è il veleno del piombo ambrato, che colpisce ogni generazione della città nello stesso momento. È ricoverata in ospedale quando i soldati dei paesi vicini arrivano a finire Flevance, e muore lì dentro quando gli danno fuoco.',
+        en: 'She grows up in the White Town, where her father is a doctor and her big brother Law is studying to become one. She begs them all to take her to the festival, and on the way the first white patch shows on her skin: the amber lead poison, which strikes every generation of the town at once. She is in the hospital when the soldiers of the neighbouring countries come to finish Flevance, and she dies inside when they set it on fire.',
+      },
+      status: [{ episode: 701, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 701,
+          value: {
+            it: 'Flevance, figlia di un medico',
+            en: 'Flevance, a doctor’s daughter',
+          },
+        },
+      ],
+      origin: [{ episode: 701, value: { it: 'Flevance', en: 'Flevance' } }],
+    },
+    'donquixote-homing': {
+      chronicle: dressrosaChronicles['donquixote-homing'],
+      role: { it: 'Ex Nobile Mondiale', en: 'Former World Noble' },
+      log: {
+        it: 'È il padre di Do Flamingo, un Drago Celeste che non si è mai creduto più di un essere umano, e un giorno rinuncia al proprio rango e lascia Mary Geoise con la moglie e i due figli. Nel paese dove si stabiliscono la gente scopre che cosa erano, dà fuoco alla loro casa e li bracca per le strade, e Mary Geoise rifiuta di riprenderli. La moglie muore di malattia; anni dopo Do Flamingo racconta a Rufy e a Law di aver ucciso lui stesso suo padre.',
+        en: 'He is Doflamingo’s father, a Celestial Dragon who never believed himself more than a human being, and one day he gives up his rank and leaves Mary Geoise with his wife and two sons. In the country where they settle, people find out what the family was, burn their house and hunt them through the streets, and Mary Geoise refuses to take them back. His wife dies of illness; years later Doflamingo tells Luffy and Law that he killed his father himself.',
+      },
+      status: [{ episode: 702, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 702,
+          value: {
+            it: 'Nobili Mondiali, Draghi Celesti (ha rinunciato al rango)',
+            en: 'World Nobles, Celestial Dragons (gave up his rank)',
+          },
+        },
+      ],
+      origin: [
+        { episode: 702, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
+      ],
+    },
+    'diez-barrels': {
+      chronicle: dressrosaChronicles['diez-barrels'],
+      role: {
+        it: 'Capitano pirata, ex ufficiale della Marina',
+        en: 'Pirate captain, former Marine officer',
+      },
+      log: {
+        it: 'Era un ufficiale della Marina e adesso è un pirata, e in qualche modo gli è capitato fra le mani il Frutto Ope Ope. Ha fissato uno scambio con la Marina per cinque miliardi di berry, e aspetta la consegna con la ciurma in una città fantasma su un’isola vicina al luogo dello scambio. Fra un bicchiere e l’altro qualcuno ricorda che un medico, con quel frutto, diventerebbe famoso in tutto il mondo, ma a lui e ai suoi interessano solo i soldi.',
+        en: 'He was a Marine officer and is now a pirate, and somehow the Op-Op Fruit has come into his hands. He has set up a trade with the Marines for five billion berries, and he waits for the handoff with his crew in a ghost town on an island near the meeting place. Between drinks one of them points out that a doctor who ate it would be famous all over the world, but he and his men care only for the money.',
+      },
+      status: [
+        { episode: 704, value: 'unknown' },
+        { episode: 706, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 704,
+          value: {
+            it: 'Ciurma di Barrels, capitano; ex ufficiale della Marina',
+            en: 'Barrels’ crew, captain; former Marine officer',
+          },
+        },
+      ],
     },
   },
 }
