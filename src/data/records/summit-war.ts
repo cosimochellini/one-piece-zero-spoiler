@@ -25,6 +25,13 @@ const LEVEL_SIX_ROLE = {
   it: 'Prigioniero del sesto livello',
   en: 'Prisoner of the sixth level',
 }
+const CELESTIAL_DRAGONS = {
+  it: 'Nobili Mondiali, Draghi Celesti',
+  en: 'World Nobles, Celestial Dragons',
+}
+const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
+const KUJA_WARRIOR = { it: 'Tribù kuja, guerriera', en: 'Kuja tribe, warrior' }
+const KUJA_WARRIOR_ROLE = { it: 'Guerriera kuja', en: 'Kuja warrior' }
 
 export const summitWar: Saga = {
   entries: [
@@ -295,7 +302,7 @@ export const summitWar: Saga = {
     {
       id: 'saint-charloss',
       kind: 'character',
-      revealedAtEpisode: 395,
+      revealedAtEpisode: 396,
       revealedAtChapter: 502,
       name: { it: 'Sant Charloss', en: 'Saint Charloss' },
       summary: {
@@ -653,6 +660,301 @@ export const summitWar: Saga = {
         en: 'Ace’s mother, who carried her son for twenty months to keep him out of the hands of the Marines and did not survive the birth.',
       },
       visual: { art: 'portgas-d-rouge', tint: 'orange' },
+    },
+    // Seen from episode 391, but only captioned there by the subtitles; the
+    // doorman of the auction house is the first to say the name, at 394.
+    {
+      id: 'rosward',
+      kind: 'character',
+      revealedAtEpisode: 394,
+      revealedAtChapter: 501,
+      name: { it: 'Sant Roswald', en: 'Saint Roswald' },
+      summary: {
+        it: 'Un Nobile Mondiale che rimprovera la figlia per aver rotto un altro pezzo della sua collezione di capitani pirati, e alla casa d’aste viene solo a guardare.',
+        en: 'A World Noble who scolds his daughter for breaking another piece of his collection of pirate captains, and comes to the auction house only to watch.',
+      },
+      visual: { art: 'rosward', tint: 'ocher' },
+    },
+    {
+      id: 'shalria',
+      kind: 'character',
+      revealedAtEpisode: 394,
+      revealedAtChapter: 501,
+      name: { it: 'Santa Shalulia', en: 'Saint Shalria' },
+      summary: {
+        it: 'Una Nobile Mondiale che prende a calci lo schiavo crollato a terra, gli spara perché ormai è inutile e chiede al padre un gigante come prossimo acquisto.',
+        en: 'A World Noble who kicks her collapsed slave where he lies, shoots him because he is of no more use, and asks her father for a giant next.',
+      },
+      visual: { art: 'shalria', tint: 'magenta' },
+    },
+    // On screen from episode 394; filed at 395, where he opens the auction
+    // under his own name.
+    {
+      id: 'disco',
+      kind: 'character',
+      revealedAtEpisode: 395,
+      revealedAtChapter: 501,
+      name: { it: 'Disco', en: 'Disco' },
+      summary: {
+        it: 'Il banditore della casa d’aste dell’arcipelago, occhiali a stella e complici in sala per gonfiare i prezzi, che schiaffeggia una sirena perché gli ha fatto la linguaccia.',
+        en: 'The auctioneer of the archipelago’s auction house, in star-shaped glasses and with plants in the crowd to push prices up, who slaps a mermaid for sticking out her tongue.',
+      },
+      visual: { art: 'disco', tint: 'violet' },
+    },
+    // On screen from episode 391 as the slave crawling behind his master, but
+    // nobody says his name until Law does, at 399.
+    {
+      id: 'jean-bart',
+      kind: 'character',
+      revealedAtEpisode: 399,
+      revealedAtChapter: 505,
+      name: { it: 'Jean Bart', en: 'Jean Bart' },
+      summary: {
+        it: 'Un omone in catene che un Nobile Mondiale portava a quattro zampe, finché un chirurgo gli apre il collare e lo chiama col suo vecchio nome di capitano.',
+        en: 'A huge man in chains whom a World Noble walked on all fours, until a surgeon opens his collar and calls him by his old captain’s name.',
+      },
+      visual: { art: 'jean-bart', tint: 'red' },
+    },
+    {
+      id: 'sweet-pea',
+      kind: 'character',
+      revealedAtEpisode: 409,
+      revealedAtChapter: 515,
+      name: { it: 'Sweet Pea', en: 'Sweet Pea' },
+      summary: {
+        it: 'Una guerriera kuja che segue una colonna di fumo nella foresta, trova un ragazzo coperto di funghi e prova a strappargli anche l’ultimo, che si allunga invece di staccarsi.',
+        en: 'A Kuja warrior who follows a column of smoke into the forest, finds a boy covered in mushrooms, and tries to pull off the last one, which only stretches.',
+      },
+      visual: { art: 'sweet-pea', tint: 'acid' },
+    },
+    {
+      id: 'aphelandra',
+      kind: 'character',
+      revealedAtEpisode: 409,
+      revealedAtChapter: 515,
+      name: { it: 'Aphelandra', en: 'Aphelandra' },
+      summary: {
+        it: 'Una guerriera kuja alta il doppio delle compagne, che obbedisce allegra a ogni ordine e porta fino al villaggio un ragazzo coperto di funghi.',
+        en: 'A Kuja warrior twice the height of her companions, who cheerfully answers every order and carries a boy covered in mushrooms all the way to the village.',
+      },
+      visual: { art: 'aphelandra', tint: 'sand' },
+    },
+    // On screen from episode 408 and named by chapter 516 at the latest;
+    // filed at 410, which adapts 516, rounding up.
+    {
+      id: 'kikyo',
+      kind: 'character',
+      revealedAtEpisode: 410,
+      revealedAtChapter: 516,
+      name: { it: 'Kikyo', en: 'Kikyo' },
+      summary: {
+        it: 'Una guerriera kuja che dà gli ordini alle arciere, ricorda a tutti che su Amazon Lily nessun uomo ha mai messo piede e vuole chiudere la faccenda con una freccia.',
+        en: 'A Kuja warrior who gives the archers their orders, reminds everyone that no man has ever set foot on Amazon Lily, and wants the matter settled with an arrow.',
+      },
+      visual: { art: 'kikyo', tint: 'wine' },
+    },
+    // Debuts at episode 410 and chapter 516 as the "kitten" in the empress’s
+    // way, unnamed; filed at 412/518, where she sets it on the prisoner.
+    {
+      id: 'bacura',
+      kind: 'character',
+      revealedAtEpisode: 412,
+      revealedAtChapter: 518,
+      name: { it: 'Bacura', en: 'Bacura' },
+      summary: {
+        it: 'Una pantera nera enorme con un berretto marrone in testa, da anni il boia dell’arena kuja, liberata contro un prigioniero e mandata tra il pubblico da un pugno solo.',
+        en: 'A huge black panther in a brown cap, for years the executioner of the Kuja arena, let loose on a prisoner and sent flying into the crowd by a single punch.',
+      },
+      visual: { art: 'bacura', tint: 'ocher' },
+    },
+    {
+      id: 'heracles',
+      kind: 'character',
+      revealedAtEpisode: 420,
+      revealedAtChapter: 524,
+      name: { it: 'Hercules', en: 'Heracles' },
+      summary: {
+        it: 'Un guerriero chiuso in un’armatura a forma di scarabeo, che salva un naufrago da un coleottero gigante, poi si mangia l’insetto e tiene a bada le piante carnivore della sua foresta.',
+        en: 'A warrior sealed in beetle-shaped armour who saves a castaway from a giant beetle, then eats the beetle, and keeps the man-eating plants of his forest at bay.',
+      },
+      visual: { art: 'heracles', tint: 'green' },
+    },
+    {
+      id: 'domino',
+      kind: 'character',
+      revealedAtEpisode: 422,
+      revealedAtChapter: 526,
+      name: { it: 'Domino', en: 'Domino' },
+      summary: {
+        it: 'La vicecapo dei secondini di Impel Down, occhiali scuri e un ciuffo biondo sull’occhio, che perquisisce ogni visitatore, imperatrice compresa, e tira fuori le manette.',
+        en: 'The vice head jailer of Impel Down, dark glasses and a lock of blonde hair over one eye, who searches every visitor, an empress included, and brings out the cuffs.',
+      },
+      visual: { art: 'domino', tint: 'ice' },
+    },
+    {
+      id: 'saldeath',
+      kind: 'character',
+      revealedAtEpisode: 431,
+      revealedAtChapter: 530,
+      name: { it: 'Saldeath', en: 'Saldeath' },
+      summary: {
+        it: 'Un ometto alato con il tridente, a capo dei Blugori, che cala una rete sugli intrusi e dice loro di ringraziarlo per averli presi lui.',
+        en: 'A little bat-winged man with a trident, chief of the Blugori, who drops a net on the intruders and tells them to be grateful he was the one who caught them.',
+      },
+      visual: { art: 'saldeath', tint: 'yellow' },
+    },
+    {
+      id: 'sadi',
+      kind: 'character',
+      revealedAtEpisode: 432,
+      revealedAtChapter: 531,
+      name: { it: 'Sady', en: 'Sadi' },
+      summary: {
+        it: 'La comandante dei guardiani demoniaci di Impel Down, frusta in pugno, che colpisce un marine per aver scordato il vezzeggiativo e sigilla la prigione senza bisogno di aiuto.',
+        en: 'The chief guard of Impel Down’s Jailer Beasts, whip in hand, who lashes a Marine for leaving the -chan off her name and seals the prison without anyone’s help.',
+      },
+      visual: { art: 'sadi', tint: 'pink' },
+    },
+    // Shown shadowed from episode 422 and chapter 525, and first named in
+    // chapter 532, whose title he is; filed at 433/532.
+    {
+      id: 'minotaurus',
+      kind: 'character',
+      revealedAtEpisode: 433,
+      revealedAtChapter: 532,
+      name: { it: 'Minotauros', en: 'Minotaurus' },
+      summary: {
+        it: 'Un minotauro dal manto pezzato di mucca con una mazza chiodata, che stende un avversario con un colpo solo e torna alla carica ogni volta che lo spediscono via.',
+        en: 'A minotaur with a cow’s patched hide and a spiked club, who floors an opponent with one blow and comes charging back every time he is knocked away.',
+      },
+      visual: { art: 'minotaurus', tint: 'vermilion' },
+    },
+    {
+      id: 'doma',
+      kind: 'character',
+      revealedAtEpisode: 460,
+      revealedAtChapter: 551,
+      name: { it: 'Doma', en: 'Doma' },
+      summary: {
+        it: 'Un capitano del Nuovo Mondo con una grande fascia rossa annodata in testa, uscito dalla nebbia con le quarantatré navi che rispondono al richiamo di Barbabianca.',
+        en: 'A New World captain with a great red band knotted round his head, come out of the fog with the forty-three ships that answer Whitebeard’s call.',
+      },
+      visual: { art: 'doma', tint: 'red' },
+    },
+    // Debuts at episode 459 and chapter 550 among the giants, unnamed; the
+    // manga names him in chapter 555, adapted by episode 464.
+    {
+      id: 'lacroix',
+      kind: 'character',
+      revealedAtEpisode: 464,
+      revealedAtChapter: 555,
+      name: { it: 'Lacroix', en: 'Lacroix' },
+      summary: {
+        it: 'Un viceammiraglio gigante di guardia davanti al patibolo, che per la prima volta in vita sua deve alzare gli occhi per guardare un nemico, e ci rimette la sciabola.',
+        en: 'A giant Marine vice admiral guarding the scaffold, who for the first time in his life has to look up at an enemy, and loses his sabre for it.',
+      },
+      visual: { art: 'lacroix', tint: 'azure' },
+    },
+    {
+      id: 'whitey-bay',
+      kind: 'character',
+      revealedAtEpisode: 465,
+      revealedAtChapter: 556,
+      name: { it: 'Whitey Bay', en: 'Whitey Bay' },
+      summary: {
+        it: 'Una capitana alleata di Barbabianca, mantello e cappello a tesa larga, la cui nave rompighiaccio sfonda il mare gelato della baia e apre la strada alle altre.',
+        en: 'A captain allied to Whitebeard, all cape and wide-brimmed hat, whose icebreaker smashes through the frozen bay and cuts a road for every ship behind her.',
+      },
+      visual: { art: 'whitey-bay', tint: 'cyan' },
+    },
+    {
+      id: 'blenheim',
+      kind: 'character',
+      revealedAtEpisode: 482,
+      revealedAtChapter: 573,
+      name: { it: 'Blenheim', en: 'Blenheim' },
+      summary: {
+        it: 'Un comandante di Barbabianca grosso quasi quanto il suo capitano, una treccia sulla nuca e una sciabola enorme, a cui i compagni chiedono di caricarsi in spalla Jozu congelato.',
+        en: 'A Whitebeard commander nearly as big as his captain, a braid down his back and an enormous cutlass, whom his crewmates ask to shoulder the frozen Jozu.',
+      },
+      visual: { art: 'blenheim', tint: 'azure' },
+    },
+    // On screen from episode 409 under the empress, but nobody says her name
+    // until the empress talks to her at Marineford, at 484 (chapter 575).
+    {
+      id: 'salome',
+      kind: 'character',
+      revealedAtEpisode: 484,
+      revealedAtChapter: 575,
+      name: { it: 'Salomè', en: 'Salome' },
+      summary: {
+        it: 'Il serpente gigante dell’imperatrice, un teschio cornuto e incrinato in testa, che le fa da trono e sibila quando lei confessa di essere in pena per Rufy.',
+        en: 'The empress’s giant snake, a cracked horned skull on its head, which serves as her throne and hisses when she admits she is worried sick about Luffy.',
+      },
+      visual: { art: 'salome', tint: 'azure' },
+    },
+    {
+      id: 'bluejam',
+      kind: 'character',
+      revealedAtEpisode: 495,
+      revealedAtChapter: 584,
+      name: { it: 'Bluejam', en: 'Bluejam' },
+      summary: {
+        it: 'Un capitano pirata altissimo che fa da padrone nella discarica fuori dalle mura, e spara al proprio sottoposto perché si è fatto battere da due bambini.',
+        en: 'A towering pirate captain who lords it over the rubbish tip outside the walls, and shoots his own underling for letting two boys beat him.',
+      },
+      visual: { art: 'bluejam', tint: 'azure' },
+    },
+    {
+      id: 'porchemy',
+      kind: 'character',
+      revealedAtEpisode: 495,
+      revealedAtChapter: 584,
+      name: { it: 'Polchemy', en: 'Porchemy' },
+      summary: {
+        it: 'Un pirata con i guanti chiodati che lega un bambino di gomma nella stiva di una nave rovesciata e lo picchia per sapere dove sono i soldi rubati.',
+        en: 'A pirate in spiked gloves who ties a rubber boy up in the hold of a capsized ship and beats him to learn where the stolen money is hidden.',
+      },
+      visual: { art: 'porchemy', tint: 'violet' },
+    },
+    {
+      id: 'dogra',
+      kind: 'character',
+      revealedAtEpisode: 503,
+      revealedAtChapter: 588,
+      name: { it: 'Dogura', en: 'Dogra' },
+      summary: {
+        it: 'Un brigante basso con il turbante e un vocabolario sottobraccio, che dal molo vede saltare in aria la barca di Sabo e corre fino al monte a dirlo.',
+        en: 'A short bandit in a turban with a dictionary under his arm, who watches Sabo’s boat blown apart from the dock and runs all the way up the mountain to tell.',
+      },
+      visual: { art: 'dogra', tint: 'sand' },
+    },
+    // On screen from episode 418, named only in its end credits; the manga
+    // names him in chapter 592, adapted by episode 508. Filed on the Post-War
+    // shelf at 508/592.
+    {
+      id: 'haredas',
+      kind: 'character',
+      revealedAtEpisode: 508,
+      revealedAtChapter: 592,
+      name: { it: 'Haredas', en: 'Haredas' },
+      summary: {
+        it: 'Un vecchio scienziato del tempo con tunica e cappello a punta, che accoglie una ragazza precipitata sulla sua isola del cielo e finisce portato via come suo ostaggio.',
+        en: 'An old weather scientist in a wizard’s robe and pointed hat, who takes in a girl fallen onto his sky island and ends up carried off as her hostage.',
+      },
+      visual: { art: 'haredas', tint: 'cyan' },
+    },
+    {
+      id: 'kong',
+      kind: 'character',
+      revealedAtEpisode: 511,
+      revealedAtChapter: 594,
+      name: { it: 'Kong', en: 'Kong' },
+      summary: {
+        it: 'Il comandante in capo del Governo Mondiale, un vecchio enorme con il cappotto della Marina sulle spalle, che accetta le dimissioni del grand’ammiraglio senza toccargli i gradi.',
+        en: 'The World Government’s commander-in-chief, a huge old man with a Marine coat over his shoulders, who accepts the fleet admiral’s resignation and leaves his record untouched.',
+      },
+      visual: { art: 'kong', tint: 'yellow' },
     },
   ],
 
@@ -1172,18 +1474,8 @@ export const summitWar: Saga = {
         it: 'Cammina sull’arcipelago dentro una bolla di vetro, perché l’aria che respirano gli altri non è degna di lui, e spara a chiunque gli passi troppo vicino. Alla casa d’aste compra persone come si comprano i mobili e pretende che la sala si inginocchi. Nessuno reagisce, perché alzare una mano su di lui significa chiamare un ammiraglio.',
         en: 'He walks the archipelago inside a glass bubble, because the air everyone else breathes is beneath him, and shoots whoever comes too close. At the auction house he buys people the way other men buy furniture and expects the room to kneel. Nobody moves against him, because raising a hand to him calls down an admiral.',
       },
-      affiliation: [
-        {
-          episode: 395,
-          value: {
-            it: 'Nobili Mondiali, Draghi Celesti',
-            en: 'World Nobles, Celestial Dragons',
-          },
-        },
-      ],
-      origin: [
-        { episode: 395, value: { it: 'Mary Geoise', en: 'Mary Geoise' } },
-      ],
+      affiliation: [{ episode: 396, value: CELESTIAL_DRAGONS }],
+      origin: [{ episode: 396, value: MARY_GEOISE }],
     },
     'borsalino': {
       chronicle: summitWarChronicles.borsalino,
@@ -1254,17 +1546,12 @@ export const summitWar: Saga = {
       ],
     },
     'marguerite': {
-      role: { it: 'Guerriera kuja', en: 'Kuja warrior' },
+      role: KUJA_WARRIOR_ROLE,
       log: {
         it: 'Trova un uomo svenuto nella foresta, il primo che vede in vita sua, e invece di ucciderlo lo porta al villaggio e lo nasconde. Caccia con un arco più alto di lei e tira frecce che colpiscono molto più forte di quanto il legno lasci immaginare. Fa domande su tutto quello che sta fuori dall’isola, e non ha mai potuto farle a nessuno.',
         en: 'She finds a man unconscious in the forest, the first she has ever seen, and instead of killing him she carries him to the village and hides him. She hunts with a bow taller than she is and looses arrows that land far harder than the wood suggests. She asks questions about everything outside the island, and has never had anyone to ask.',
       },
-      affiliation: [
-        {
-          episode: 408,
-          value: { it: 'Tribù kuja, guerriera', en: 'Kuja tribe, warrior' },
-        },
-      ],
+      affiliation: [{ episode: 408, value: KUJA_WARRIOR }],
       origin: [{ episode: 408, value: AMAZON_LILY }],
     },
     'nyon': {
@@ -1830,6 +2117,428 @@ export const summitWar: Saga = {
         {
           episode: 493,
           value: { it: 'Baterilla, South Blue', en: 'Baterilla, South Blue' },
+        },
+      ],
+    },
+    'rosward': {
+      role: { it: 'Nobile Mondiale', en: 'World Noble' },
+      log: {
+        it: 'Cammina per l’arcipelago con la figlia e un omone in catene che gli va dietro a quattro zampe, e la gente in strada si inginocchia al suo passaggio. Chiama i suoi schiavi la sua collezione di capitani, e si lamenta che la figlia non sappia educarli, consigliandole di cominciare da un bambino. Alla casa d’aste dice al portiere che non farà offerte, e che il figlio è in ritardo perché si fa portare da un umano invece che da un uomo-pesce.',
+        en: 'He walks the archipelago with his daughter and a huge man in chains crawling behind him on all fours, and the street kneels as he passes. He calls his slaves his captain collection, and complains that his daughter has no talent for training them, advising her to start with a child. At the auction house he tells the doorman he will not be bidding, and that his son is late because he rides a human instead of a fish-man.',
+      },
+      status: [{ episode: 394, value: 'alive' }],
+      affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
+      origin: [{ episode: 394, value: MARY_GEOISE }],
+    },
+    'shalria': {
+      role: { it: 'Nobile Mondiale', en: 'World Noble' },
+      log: {
+        it: 'Il suo schiavo, un capitano pirata, scappa con il collare ancora al collo, e lei lo ritrova per strada dopo l’esplosione, incapace di muoversi. Lo prende a calci perché piange per la famiglia, gli spara e se ne va chiedendo un gigante, perché quelli deboli la annoiano. Alla casa d’aste entra accanto al padre e si lamenta che il fratello sia in ritardo.',
+        en: 'Her slave, a pirate captain, runs off with the collar still round his neck, and she finds him in the street after it has gone off, no longer able to move. She kicks him for crying about his family, shoots him and walks away asking for a giant, because the weak ones bore her. At the auction house she walks in beside her father and complains that her brother is late.',
+      },
+      status: [{ episode: 394, value: 'alive' }],
+      affiliation: [{ episode: 394, value: CELESTIAL_DRAGONS }],
+      origin: [{ episode: 394, value: MARY_GEOISE }],
+    },
+    'disco': {
+      role: {
+        it: 'Banditore della casa d’aste',
+        en: 'Auctioneer of the auction house',
+      },
+      log: {
+        it: 'Dietro le quinte della casa d’aste controlla la merce prima dello spettacolo, e sa già che il pezzo forte della giornata è un gigante. Quando gli portano una sirena la esamina come un vestito in vetrina, e la schiaffeggia appena lei gli fa la linguaccia, finché i suoi uomini gli ricordano che un livido abbassa il prezzo. Vuole metterle il collare con le sue mani, e proprio in quel momento crolla a terra senza che nessuno l’abbia toccato.',
+        en: 'Backstage at the auction house he checks the goods before the show, and already knows the day’s star lot is a giant. When a mermaid is brought in he looks her over like a dress in a shop window, and slaps her the moment she sticks out her tongue, until his men remind him that a bruise lowers the price. He means to fit her collar with his own hands, and at that very moment drops to the floor without anyone touching him.',
+      },
+      status: [{ episode: 395, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 395,
+          value: {
+            it: 'Casa d’Aste di Sabaody, banditore',
+            en: 'Sabaody Human Auctioning House, auctioneer',
+          },
+        },
+      ],
+    },
+    'jean-bart': {
+      role: {
+        it: 'Nuova recluta dei Pirati Heart',
+        en: 'New recruit of the Heart Pirates',
+      },
+      log: {
+        it: 'Era un capitano pirata, poi è finito nella collezione di capitani di un Nobile Mondiale, costretto a camminare a quattro zampe dietro il padrone. Davanti alla casa d’aste resta incatenato a un palo, e non si muove nemmeno quando tutti gli altri scappano. Quando Law gli apre il collare e lo chiama per nome, dice che era da tanto che nessuno lo chiamava così, e accetta di seguirlo pur di non tornare dai Draghi Celesti.',
+        en: 'He was a pirate captain before he ended up in a World Noble’s collection of captains, made to walk on all fours behind his master. Outside the auction house he stays chained to a stake, and does not move even when everyone else runs. When Law opens his collar and calls him by name, he says it has been a long time since anyone did, and agrees to follow him rather than go back to the Celestial Dragons.',
+      },
+      status: [{ episode: 399, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 399,
+          value: { it: 'Pirati Heart, membro', en: 'Heart Pirates, member' },
+        },
+      ],
+    },
+    'sweet-pea': {
+      role: KUJA_WARRIOR_ROLE,
+      log: {
+        it: 'Corre nella foresta con due compagne verso una colonna di fumo. Aiuta a staccare i funghi dal corpo che trovano e a bruciarne i gambi, ed è lei a scovare il fungo rimasto fra le gambe. Tira con tutte le sue forze, e quando quello si allunga senza staccarsi propone di passare il lavoro ad Aphelandra.',
+        en: 'She runs through the forest with two companions towards a column of smoke. She helps pull the mushrooms off the body they find and burn the stems, and she is the one who spots the one mushroom left between its legs. She pulls with all her strength, and when it only stretches she suggests handing the job to Aphelandra.',
+      },
+      status: [{ episode: 409, value: 'alive' }],
+      affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
+      origin: [{ episode: 409, value: AMAZON_LILY }],
+    },
+    'aphelandra': {
+      role: KUJA_WARRIOR_ROLE,
+      log: {
+        it: 'È la più grande del suo gruppo di guerriere, e quando c’è da portare qualcosa di pesante le compagne si voltano verso di lei. Si carica il ragazzo trovato nella foresta e lo porta di corsa al villaggio, dove tutte le guerriere si accalcano per guardarlo. Quando un fungo si rifiuta di staccarsi le altre decidono che deve tirare lei, e lei chiede soltanto se tocca davvero a lei.',
+        en: 'She is the biggest of her band of warriors, and when something heavy needs carrying the others turn to her. She lifts the boy found in the forest and hurries him to the village, where every warrior crowds round to look. When one mushroom refuses to come off the others decide she should be the one to pull, and all she asks is whether they really mean her.',
+      },
+      status: [{ episode: 409, value: 'alive' }],
+      affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
+      origin: [{ episode: 409, value: AMAZON_LILY }],
+    },
+    'kikyo': {
+      role: KUJA_WARRIOR_ROLE,
+      log: {
+        it: 'È fra le guerriere che si accalcano a guardare lo straniero raccolto nella foresta, e non si scompone quando lui allunga un braccio per riprendersi il cappello. Appena l’intruso si sveglia e alza la voce ordina di tendere gli archi: le scuse non la interessano, e la legge dell’isola non ha mai avuto un’eccezione. Vuole finirlo prima che torni la loro sovrana, per risparmiare la punizione alle tre che lo hanno portato al villaggio, e quando lui fugge dal tetto guida l’inseguimento.',
+        en: 'She is among the warriors who crowd round the stranger brought in from the forest, and does not flinch when he stretches an arm to take back his hat. The moment the intruder wakes and raises his voice she orders bows drawn: apologies do not interest her, and the island’s law has never had an exception. She wants him finished before their ruler returns, to spare the three who carried him into the village from being punished, and when he escapes through the roof she leads the chase.',
+      },
+      status: [{ episode: 410, value: 'alive' }],
+      affiliation: [{ episode: 410, value: KUJA_WARRIOR }],
+      origin: [{ episode: 410, value: AMAZON_LILY }],
+    },
+    'bacura': {
+      role: { it: 'Boia dell’arena kuja', en: 'Executioner of the Kuja arena' },
+      log: {
+        it: 'È una pantera nera enorme con un berretto marrone che le scende lungo la schiena, e le Kuja la usano da anni per le esecuzioni. Si dice che delle sue vittime non restino nemmeno le ossa. Quando la liberano contro un prigioniero nell’arena, lui la stende con un pugno solo davanti a tutto il pubblico.',
+        en: 'It is a huge black panther in a brown cap that hangs down its back, and the Kuja have used it for their executions for years. They say nothing of its victims is left, not even the bones. When it is let loose on a prisoner in the arena, he lays it out with a single punch in front of the whole crowd.',
+      },
+      status: [{ episode: 412, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 412,
+          value: { it: 'Pirate Kuja, boia', en: 'Kuja Pirates, executioner' },
+        },
+      ],
+    },
+    'heracles': {
+      role: {
+        it: 'Guerriero dell’arcipelago Boeing',
+        en: 'Warrior of the Boin Archipelago',
+      },
+      log: {
+        it: 'Gira per la foresta di Greenstone chiuso in un’armatura da scarabeo, con l’elmo, la maschera e un mantello viola. Salva un naufrago da un coleottero gigante e poi si mangia l’insetto, perché su quest’isola anche il pericolo è cibo. Quando le piante carnivore provano a divorare il nuovo arrivato le respinge senza fatica, e gli spiega che qui bisogna stare sempre in guardia.',
+        en: 'He roams the Greenstone forest sealed in beetle armour, with a helmet, a mask and a purple cape. He saves a castaway from a giant beetle and then eats it, because on this island even danger is food. When the man-eating plants try to swallow the newcomer he drives them off without effort, and tells him that here you keep your guard up at all times.',
+      },
+      status: [{ episode: 420, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 420,
+          value: {
+            it: 'Arcipelago Boeing, guerriero',
+            en: 'Boin Archipelago, warrior',
+          },
+        },
+        {
+          episode: 515,
+          value: {
+            it: 'Arcipelago Boeing, guerriero; maestro di Usop',
+            en: 'Boin Archipelago, warrior; Usopp’s teacher',
+          },
+        },
+      ],
+    },
+    'domino': {
+      role: {
+        it: 'Vicecapo dei secondini di Impel Down',
+        en: 'Vice head jailer of Impel Down',
+      },
+      log: {
+        it: 'Accoglie i visitatori di Impel Down accanto al vicedirettore, con gli occhiali scuri e un ciuffo biondo che le copre l’altro occhio. Spiega che chiunque entri va perquisito da capo a piedi, e non fa eccezioni nemmeno per un membro della Flotta dei Sette. Porta la visitatrice in una stanza a parte e le porge un paio di manette che annullano i poteri dei frutti del diavolo.',
+        en: 'She receives visitors to Impel Down beside the vice chief warden, dark glasses on and a lock of blonde hair over the other eye. She explains that everyone who comes in is searched from head to foot, and makes no exception even for a Warlord. She takes the visitor to a private room and holds out a pair of cuffs that cancel a devil fruit’s power.',
+      },
+      status: [{ episode: 422, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 422,
+          value: {
+            it: 'Impel Down, vicecapo dei secondini',
+            en: 'Impel Down, vice head jailer',
+          },
+        },
+      ],
+    },
+    'saldeath': {
+      role: { it: 'Capo dei Blugori', en: 'Chief guard of the Blugori' },
+      log: {
+        it: 'È un ometto con le ali da pipistrello, un completo bianco e un cappello con due corna, e comanda i Blugori del terzo livello con un tridente in mano. Cattura tre intrusi in una rete che nemmeno i denti riescono a rompere, e li invita a essergli grati di non essere finiti nelle mani di chi sta più in basso. Si irrita quando uno di loro storpia il suo nome, e guarda la rete squarciarsi quando si sveglia la bestia che ci era caduta dentro insieme a loro.',
+        en: 'He is a small man with bat wings, a white suit and a two-horned hat, and he commands the Blugori of the third level with a trident in his hand. He catches three intruders in a net that not even teeth can break, and tells them to be grateful it was him and not what waits further down. He bristles when one of them mangles his name, and watches the net tear open when the beast that fell in with them wakes up.',
+      },
+      status: [{ episode: 431, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 431,
+          value: {
+            it: 'Impel Down, capo dei Blugori',
+            en: 'Impel Down, chief guard of the Blugori',
+          },
+        },
+      ],
+    },
+    'sadi': {
+      role: {
+        it: 'Comandante dei guardiani demoniaci',
+        en: 'Chief guard of the Jailer Beasts',
+      },
+      log: {
+        it: 'Comanda i guardiani demoniaci di Impel Down e pretende che tutti la chiamino con il vezzeggiativo, pena una frustata. Rifiuta l’aiuto della Marina contro l’intruso, perché la metà inferiore della prigione è un labirinto in cui chi non conosce la strada si perde da solo. Fa alzare il ponte levatoio e chiudere ogni ingresso, mentre alle sue spalle si affaccia qualcosa che somiglia a un koala.',
+        en: 'She commands the Jailer Beasts of Impel Down and expects everyone to add the -chan to her name, on pain of the whip. She turns down the Marines’ help against the intruder, because the lower half of the prison is a maze that swallows anyone who does not know the way. She has the drawbridge raised and every entrance sealed, while something like a koala peers out from behind her.',
+      },
+      status: [{ episode: 432, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 432,
+          value: {
+            it: 'Impel Down, comandante dei guardiani demoniaci',
+            en: 'Impel Down, chief guard of the Jailer Beasts',
+          },
+        },
+      ],
+    },
+    'minotaurus': {
+      role: {
+        it: 'Guardiano demoniaco di Impel Down',
+        en: 'Jailer Beast of Impel Down',
+      },
+      log: {
+        it: 'È un minotauro con il manto pezzato di una mucca, i calzoni a righe e una mazza chiodata che punta sempre alla testa. Compare dal nulla, manda a terra un avversario con un colpo solo e, spedito via da un pugno, torna alla carica subito dopo. Per metterlo al tappeto servono quattro pirati che per una volta combattono insieme.',
+        en: 'He is a minotaur with a cow’s patched hide, striped trousers and a spiked club that always goes for the head. He appears out of nowhere, floors an opponent in a single blow, and when a punch sends him flying he is back at once. It takes four pirates, fighting together for once, to put him down.',
+      },
+      status: [{ episode: 433, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 433,
+          value: {
+            it: 'Impel Down, guardiano demoniaco',
+            en: 'Impel Down, Jailer Beast',
+          },
+        },
+      ],
+    },
+    'doma': {
+      role: {
+        it: 'Capitano alleato di Barbabianca',
+        en: 'Captain allied to Whitebeard',
+      },
+      log: {
+        it: 'I marine lo riconoscono fra le prime bandiere che escono dalla nebbia e lo chiamano con l’epiteto che si è guadagnato nel Nuovo Mondo. Guida una delle quarantatré ciurme venute fino alla baia per stare dalla parte di Barbabianca. Porta una fascia rossa annodata in testa e una collana di pietre azzurre, e dal ponte guarda la Marina schierata ad aspettarlo.',
+        en: 'The Marines pick him out among the first flags to come out of the fog and call him by the epithet he earned in the New World. He leads one of the forty-three crews that have sailed into the bay to stand on Whitebeard’s side. He wears a red band knotted round his head and a necklace of pale blue stones, and from his deck he watches the Marines drawn up to meet him.',
+      },
+      status: [{ episode: 460, value: 'alive' }],
+      epithet: [
+        {
+          episode: 460,
+          value: { it: 'il Cavaliere Errante', en: 'the Bohemian Knight' },
+        },
+      ],
+      affiliation: [
+        {
+          episode: 460,
+          value: {
+            it: 'Capitano pirata; alleato di Barbabianca',
+            en: 'Pirate captain; Whitebeard’s ally',
+          },
+        },
+      ],
+    },
+    'lacroix': {
+      role: {
+        it: 'Viceammiraglio della squadra dei giganti',
+        en: 'Giant Squad vice admiral',
+      },
+      log: {
+        it: 'È un gigante con la divisa della Marina, il cappello, la cravatta e il cappotto sulle spalle, di guardia davanti al patibolo insieme agli altri giganti. Quando un gigante ancora più alto carica la baia, ammette che è la prima volta che deve alzare gli occhi per guardare qualcuno. È il primo a lanciarglisi contro, e la sua sciabola si spezza contro la lama dell’altro.',
+        en: 'He is a giant in Marine uniform, cap, tie and coat over his shoulders, standing guard before the scaffold with the other giants. When a giant taller still charges the bay, he admits it is the first time he has had to look up at anyone. He is the first to go at him, and his sabre shatters against the other’s blade.',
+      },
+      status: [{ episode: 464, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 464,
+          value: {
+            it: 'Marina, viceammiraglio, squadra dei giganti',
+            en: 'Marines, vice admiral, Giant Squad',
+          },
+        },
+      ],
+    },
+    'whitey-bay': {
+      role: {
+        it: 'Capitana alleata di Barbabianca',
+        en: 'Captain allied to Whitebeard',
+      },
+      log: {
+        it: 'Guida una delle ciurme alleate di Barbabianca e risponde alla sua chiamata insieme alle altre bandiere del Nuovo Mondo. Quando il mare della baia gela e blocca tutte le navi, la sua non si ferma: è un rompighiaccio, e avanza spaccando la lastra. La chiamano la Strega del Ghiaccio, e nessuno a bordo si stupisce che passi dove le altre restano ferme.',
+        en: 'She leads one of the crews allied to Whitebeard and answers his call along with the other flags of the New World. When the bay freezes and locks every ship in place, hers does not stop: it is an icebreaker, and it drives on splitting the sheet. They call her the Ice Witch, and nobody aboard is surprised that she goes where the others stay stuck.',
+      },
+      status: [{ episode: 465, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 465,
+          value: {
+            it: 'Ciurma alleata di Barbabianca, capitana',
+            en: 'Crew allied to Whitebeard, captain',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 465, value: { it: 'Strega del Ghiaccio', en: 'Ice Witch' } },
+      ],
+    },
+    'blenheim': {
+      role: {
+        it: 'Comandante dei Pirati di Barbabianca',
+        en: 'Whitebeard Pirates commander',
+      },
+      status: [{ episode: 482, value: 'alive' }],
+      log: {
+        it: 'È grande quasi quanto il vecchio e porta una sciabola che un uomo normale non riuscirebbe nemmeno a sollevare. Guarda con rabbia un alleato che pugnala il vecchio, e quando le catene di Ace cadono alza le braccia al cielo con tutti gli altri. Nella ritirata sono i compagni a chiamarlo per nome: Jozu è una statua di ghiaccio, e solo lui può portarlo via.',
+        en: 'He is nearly as big as the old man and carries a cutlass an ordinary man could not even lift. He watches in anger as an ally stabs the old man, and when Ace’s chains fall he throws his arms up with all the others. In the retreat his crewmates call him by name: Jozu is a statue of ice, and only he can carry him off.',
+      },
+      affiliation: [
+        {
+          episode: 482,
+          value: {
+            it: 'Pirati di Barbabianca, comandante di divisione',
+            en: 'Whitebeard Pirates, division commander',
+          },
+        },
+        {
+          episode: 517,
+          value: {
+            it: 'Pirati di Barbabianca, superstite',
+            en: 'Whitebeard Pirates, remnant',
+          },
+        },
+      ],
+    },
+    'salome': {
+      role: { it: 'Serpente di Boa Hancock', en: 'Boa Hancock’s snake' },
+      log: {
+        it: 'È il serpente che accompagna l’imperatrice dalla nave fino al campo di battaglia, bianco a macchie rosa, con un teschio cornuto calato sulla testa come un elmo. Si arrotola sotto di lei per farle da trono, e non se ne allontana mai di molto. È a Salomè che l’imperatrice, in mezzo alla guerra, confida di non riuscire a smettere di preoccuparsi per Rufy.',
+        en: 'It is the snake that goes with the empress from her ship to the battlefield, white with pink spots, a horned skull pulled down over its head like a helmet. It coils beneath her to serve as her throne, and never strays far from her. It is to Salome that the empress, in the middle of a war, confides that she cannot stop worrying about Luffy.',
+      },
+      status: [{ episode: 484, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 484,
+          value: {
+            it: 'Pirate Kuja, serpente dell’imperatrice',
+            en: 'Kuja Pirates, the empress’s snake',
+          },
+        },
+      ],
+    },
+    'bluejam': {
+      role: {
+        it: 'Capitano dei Pirati di Bluejam',
+        en: 'Captain of the Bluejam Pirates',
+      },
+      log: {
+        it: 'Comanda la ciurma di pirati che fa da padrona nella discarica fuori dalle mura del regno, e i suoi uomini la setacciano in cerca di chi ha rubato loro i soldi. Quando trova il suo sottoposto a terra, battuto da due bambini, non lo aiuta ad alzarsi: gli spara. Da quel giorno i suoi uomini cercano quei due in ogni angolo della discarica, e sul monte i briganti tremano all’idea che li trovino.',
+        en: 'He runs the pirate crew that lords it over the rubbish tip outside the kingdom’s walls, and his men comb it for whoever stole their money. When he finds his underling on the ground, beaten by two boys, he does not help him up: he shoots him. From that day his men hunt those two through every corner of the tip, and up on the mountain the bandits shudder at the thought of them being found.',
+      },
+      status: [
+        { episode: 495, value: 'alive' },
+        { episode: 503, value: 'unknown' },
+      ],
+      affiliation: [
+        {
+          episode: 495,
+          value: {
+            it: 'Pirati di Bluejam, capitano',
+            en: 'Bluejam Pirates, captain',
+          },
+        },
+      ],
+    },
+    'porchemy': {
+      role: {
+        it: 'Pirata della ciurma di Bluejam',
+        en: 'Pirate of Bluejam’s crew',
+      },
+      log: {
+        it: 'Fa parte della ciurma di Bluejam e gira per la discarica a caccia di chi ha derubato i suoi compagni. Cattura Rufy, lo porta nella stiva di una nave rovesciata e prova con il martello, poi con i guanti chiodati, poi con la spada, senza cavargli una parola. Due bambini lo battono, e il suo capitano, trovandolo a terra, gli spara.',
+        en: 'He belongs to Bluejam’s crew and prowls the rubbish tip hunting whoever robbed his crewmates. He catches Luffy, drags him into the hold of a capsized ship and tries a mallet, then the spiked gloves, then a sword, without getting a word out of him. Two boys beat him, and his captain, finding him on the ground, shoots him.',
+      },
+      status: [{ episode: 495, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 495,
+          value: {
+            it: 'Pirati di Bluejam, membro',
+            en: 'Bluejam Pirates, member',
+          },
+        },
+      ],
+    },
+    'dogra': {
+      role: {
+        it: 'Brigante della famiglia Dadan',
+        en: 'Bandit of the Dadan Family',
+      },
+      log: {
+        it: 'È uno dei briganti di Dadan sul monte Colubo, il più basso di tutti, e ha aiutato a tirare su i bambini che la Marina ha lasciato alla banda. Il giorno in cui arriva il Drago Celeste è al porto, e vede la barca di Sabo prendere fuoco sotto i colpi della nave del Drago Celeste. Quando lo racconta Ace gli salta addosso, e lui giura di averlo visto con i suoi occhi e di non riuscire a crederci nemmeno lui.',
+        en: 'He is one of Dadan’s bandits on Mount Colubo, the shortest of them all, and has helped raise the boys the Marines left with the gang. On the day the Celestial Dragon arrives he is at the harbour, and watches Sabo’s boat go up in flames under the Celestial Dragon’s guns. When he tells the others Ace throws himself on him, and he swears he saw it with his own eyes and cannot believe it himself.',
+      },
+      status: [{ episode: 503, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 503,
+          value: {
+            it: 'Famiglia Dadan, briganti di montagna, membro',
+            en: 'Dadan Family, mountain bandits, member',
+          },
+        },
+      ],
+    },
+    'haredas': {
+      role: { it: 'Scienziato di Weatheria', en: 'Weatheria scientist' },
+      log: {
+        it: 'Vive su Weatheria, un’isola del cielo dove un gruppo di vecchi studia il tempo, e porta tunica e cappello a punta come un mago. Accoglie una ragazza precipitata davanti a casa sua, le cucina da mangiare e le mostra i nodi del vento, che liberano raffiche sempre più forti man mano che si sciolgono. Lei lo prende a pugni più di una volta, e alla fine se lo porta via sotto il braccio come ostaggio, mentre lui continua a sorridere.',
+        en: 'He lives on Weatheria, a sky island where a group of old men study the weather, and wears a robe and a pointed hat like a wizard. He takes in a girl who crashes down outside his house, cooks for her and shows her the wind knots, which let loose stronger and stronger gusts as they are untied. She punches him more than once, and in the end carries him off under her arm as her hostage, while he goes on smiling.',
+      },
+      status: [{ episode: 508, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 508,
+          value: { it: 'Weatheria, scienziato', en: 'Weatheria, scientist' },
+        },
+        {
+          episode: 514,
+          value: {
+            it: 'Weatheria, scienziato; maestro di Nami',
+            en: 'Weatheria, scientist; Nami’s teacher',
+          },
+        },
+      ],
+    },
+    'kong': {
+      role: {
+        it: 'Comandante in capo del Governo Mondiale',
+        en: 'Commander-in-chief of the World Government',
+      },
+      log: {
+        it: 'Riceve Sengoku a Mary Geoise, dove il grand’ammiraglio arriva tre settimane dopo la guerra con le dimissioni in mano. Garp se n’è già andato allo stesso modo, e lui non nasconde la delusione di perdere insieme due uomini che servono dai tempi di Roger. Li lascia andare a patto che nomi e gradi restino negli archivi, perché alla Marina servono ancora.',
+        en: 'He receives Sengoku at Mary Geoise, where the fleet admiral arrives three weeks after the war with his resignation in hand. Garp has already gone the same way, and he does not hide his disappointment at losing, together, two men who have served since Roger’s day. He lets them go on condition that their names and ranks stay on the records, because the Marines still need them.',
+      },
+      status: [{ episode: 511, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 511,
+          value: {
+            it: 'Governo Mondiale, comandante in capo',
+            en: 'World Government, commander-in-chief',
+          },
         },
       ],
     },
