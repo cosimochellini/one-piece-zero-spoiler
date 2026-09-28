@@ -368,4 +368,135 @@ export const fishManIslandArt = {
     { d: 'M138 188 h8' },
     shadow(80, 192, 50),
   ],
+  // A frayed straw hat with a striped band, and a flintlock lying under it.
+  'demalo-black': [
+    { d: ellipse(80, 92, 60, 15) },
+    { d: 'M46 90 C46 46 114 46 114 90' },
+    {
+      d: 'M47 78 C60 84 100 84 113 78 M46 88 C60 94 100 94 114 88',
+      role: 'accent',
+    },
+    { d: 'M60 82 v8 M74 84 v8 M88 84 v8 M102 82 v8', role: 'accent' },
+    {
+      d: 'M24 98 l-7 5 M32 104 l-4 8 M128 104 l4 8 M136 98 l7 5',
+      role: 'soft',
+    },
+    { d: 'M34 150 H110 V160 H34 Z' },
+    { d: 'M110 150 C124 150 132 168 126 186 H112 C114 174 112 166 104 160' },
+    { d: 'M106 150 l6 -9 l5 3 M92 160 q2 10 12 6', role: 'soft' },
+    shadow(80, 194, 50),
+  ],
+  // A glowing lure on its bent stalk in the dark, and a small ship in its
+  // bubble sailing toward the light.
+  'ankoro': [
+    { d: 'M30 190 C28 120 50 70 103 58' },
+    { d: 'M38 190 C36 126 56 80 106 64', role: 'soft' },
+    { d: circle(112, 50, 12), role: 'accent' },
+    { d: 'M112 34 V26 M124 38 l6 -6 M128 50 h8 M100 38 l-6 -6', role: 'soft' },
+    { d: circle(104, 140, 26), role: 'ambient', dashed: true },
+    { d: 'M88 146 H120 L114 156 H94 Z' },
+    { d: 'M104 146 V122' },
+    { d: 'M104 124 L116 140 H104 Z', role: 'soft' },
+  ],
+  // A ship riding on a coil of tentacles, the suckers turned out along the
+  // curls.
+  'surume': [
+    { d: 'M44 64 H116 L106 80 H54 Z' },
+    { d: 'M80 64 V24' },
+    { d: 'M80 28 L104 56 H80 Z', role: 'soft' },
+    { d: 'M52 84 C30 110 30 150 54 160 C66 164 70 150 60 146', role: 'accent' },
+    {
+      d: 'M108 84 C130 110 130 150 106 160 C94 164 90 150 100 146',
+      role: 'accent',
+    },
+    { d: 'M72 84 C66 120 74 160 64 184' },
+    { d: 'M88 84 C94 120 86 160 96 184' },
+    {
+      d: dots([
+        [38, 118],
+        [36, 134],
+        [122, 118],
+        [124, 134],
+        [70, 124],
+        [90, 124],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 192, 40),
+  ],
+  // A tattered sail on a ship's mast, and a thick tow rope hanging from the
+  // prow down to a knot.
+  'wadatsumi': [
+    { d: 'M60 140 V26' },
+    { d: 'M60 32 H116 L110 54 L118 70 L106 86 L114 104 H60', role: 'soft' },
+    { d: 'M60 58 H104 M60 82 H100', role: 'ambient' },
+    { d: 'M24 140 H128 L116 160 H36 Z' },
+    { d: 'M128 142 C144 150 150 166 140 182', role: 'accent' },
+    { d: 'M124 148 C138 156 142 170 134 184', role: 'accent' },
+    { d: circle(137, 188, 6), role: 'accent' },
+    ...SEA,
+  ],
+  // A T-shirt big enough for a shark, and a dorsal fin rising through the sea
+  // behind it.
+  'megalo': [
+    {
+      d: 'M50 62 L28 78 L38 98 L50 90 V146 H110 V90 L122 98 L132 78 L110 62 C100 72 60 72 50 62 Z',
+    },
+    { d: 'M62 66 C68 78 92 78 98 66', role: 'soft' },
+    { d: 'M50 106 H110 M50 118 H110', role: 'accent' },
+    {
+      d: 'M114 58 C120 38 132 22 148 14 C144 30 142 44 144 58',
+      role: 'accent',
+    },
+    { d: `${circle(24, 42, 5)} ${circle(34, 24, 3)}`, role: 'soft' },
+    ...SEA,
+  ],
+  // An open pocket watch at five past the hour, its chain running to a
+  // heavy key.
+  'minister-of-the-right': [
+    { d: circle(70, 104, 38) },
+    { d: circle(70, 104, 31), role: 'soft' },
+    { d: 'M64 66 V60 H76 V66' },
+    { d: circle(70, 53, 7) },
+    { d: 'M70 77 V82 M70 126 V131 M43 104 H48 M92 104 H97', role: 'soft' },
+    { d: 'M70 104 L81 85 M70 104 L71 90', role: 'accent' },
+    { d: 'M77 51 C100 36 126 52 128 119', role: 'ambient', dashed: true },
+    { d: circle(128, 128, 9), role: 'accent' },
+    { d: 'M128 137 V180 M128 166 h9 M128 174 h7' },
+    shadow(84, 190, 54),
+  ],
+  // A cane with a horned grip, beside a loudspeaker still sending a voice
+  // out over the island.
+  'minister-of-the-left': [
+    { d: 'M40 188 L50 64 M48 188 L58 64' },
+    { d: 'M40 188 H48' },
+    { d: ellipse(54, 56, 11, 8) },
+    {
+      d: 'M45 51 C36 45 34 35 38 26 M63 51 C72 45 74 35 70 26',
+      role: 'accent',
+    },
+    { d: 'M43 150 h8 M46 116 h8', role: 'soft' },
+    { d: 'M76 92 H84 V104 H76 Z' },
+    { d: 'M84 94 L118 62 M84 102 L118 134' },
+    { d: ellipse(118, 98, 8, 36) },
+    { d: 'M80 104 V176 M68 176 H92' },
+    { d: 'M134 74 q10 24 0 48 M144 64 q14 34 0 68', role: 'accent' },
+    shadow(78, 192, 50),
+  ],
+  // A sword taller than its owner stood on its point, a black hat with a white
+  // tuft hung on the hilt.
+  'bobbin': [
+    { d: 'M72 72 V176 L80 194 L88 176 V72' },
+    { d: 'M80 78 V174', role: 'soft' },
+    { d: 'M50 64 H110 V72 H50 Z' },
+    { d: 'M75 64 V40 M85 64 V40' },
+    { d: ellipse(80, 40, 30, 6) },
+    { d: 'M62 38 C62 16 98 16 98 38', role: 'accent' },
+    {
+      d: 'M96 24 C108 12 120 14 130 6 M98 30 C112 24 124 26 136 16',
+      role: 'accent',
+    },
+    { d: 'M60 146 H100 M60 118 H100', role: 'ambient' },
+    shadow(80, 197, 30),
+  ],
 } satisfies Drawings

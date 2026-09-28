@@ -720,7 +720,11 @@ describe('the shelves', () => {
       'haredas',
       'kong',
     ])
-    expect(shelf('return-to-sabaody')).toStrictEqual(['caribou', 'coribou'])
+    expect(shelf('return-to-sabaody')).toStrictEqual([
+      'caribou',
+      'coribou',
+      'demalo-black',
+    ])
     expect(shelf('marineford')).not.toContain('portgas-d-rouge')
     expect(shelf('fish-man-island')).toContain('hammond')
     expect(shelf('fish-man-island')).not.toContain('caribou')
