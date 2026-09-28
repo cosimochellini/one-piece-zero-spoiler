@@ -712,8 +712,13 @@ describe('the shelves', () => {
     expect(shelf('post-war')).toStrictEqual([
       'curly-dadan',
       'portgas-d-rouge',
+      'bluejam',
+      'porchemy',
       'sabo',
+      'dogra',
       'lord-of-the-coast',
+      'haredas',
+      'kong',
     ])
     expect(shelf('return-to-sabaody')).toStrictEqual([
       'caribou',
