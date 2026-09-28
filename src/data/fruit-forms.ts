@@ -45,6 +45,7 @@ export const FRUIT_FORMS = {
   'dog-dog-fruit-model-wolf': 'zoan',
   'door-door-fruit': 'paramecia',
   'ox-ox-fruit-model-giraffe': 'zoan',
+  'elephant-elephant-fruit': 'zoan',
   'revive-revive-fruit': 'paramecia',
   'hollow-hollow-fruit': 'paramecia',
   'clear-clear-fruit': 'paramecia',

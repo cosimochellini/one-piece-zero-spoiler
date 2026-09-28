@@ -428,6 +428,18 @@ export const devilFruits: Saga = {
       visual: { art: 'ox-ox-fruit-model-giraffe', tint: 'acid' },
     },
     {
+      id: 'elephant-elephant-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 285,
+      revealedAtChapter: 400,
+      name: { it: 'Frutto Zou Zou', en: 'Elephant-Elephant Fruit' },
+      summary: {
+        it: 'Trasforma in un elefante chi lo mangia, anche se non è vivo: una spada che ne ha mangiato uno diventa un elefante che obbedisce al padrone, e torna lama quando serve.',
+        en: 'Turns whatever eats it into an elephant, even a thing that is not alive: a sword fed one becomes an elephant that obeys its owner, and turns back into a blade when needed.',
+      },
+      visual: { art: 'elephant-elephant-fruit', tint: 'ivory' },
+    },
+    {
       id: 'revive-revive-fruit',
       kind: 'fruit',
       revealedAtEpisode: 339,

@@ -205,6 +205,13 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
+  'elephant-elephant-fruit': fruit({
+    body: 'oblong',
+    grain: 5,
+    leaf: 'sprig',
+    stem: 'nub',
+    swirl: 'whorls',
+  }),
   'revive-revive-fruit': fruit({
     body: 'star',
     grain: 11,

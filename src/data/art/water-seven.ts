@@ -1,4 +1,12 @@
-import { circle, dots, ellipse, SEA, shadow, star } from '~/lib/svg/primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  house,
+  SEA,
+  shadow,
+  star,
+} from '~/lib/svg/primitives'
 
 import type { Drawings } from './stroke'
 
@@ -427,5 +435,259 @@ export const waterSevenArt = {
       role: 'accent',
     },
     ...SEA.slice(1),
+  ],
+  // Two bamboo stilts rising out of the grass until their tops vanish into a cloud.
+  'tonjit': [
+    { d: 'M58 184 V44 M102 184 V44' },
+    {
+      d: 'M54 160 h8 M54 128 h8 M54 96 h8 M54 64 h8 M98 150 h8 M98 118 h8 M98 86 h8 M98 56 h8',
+      role: 'soft',
+    },
+    { d: 'M58 170 h-12 M102 170 h12' },
+    {
+      d: 'M30 54 q-14 0 -10 -14 q4 -12 18 -10 q8 -16 28 -10 q14 -12 30 -2 q18 -2 18 14 q14 6 6 18 q-6 6 -16 4z',
+      role: 'accent',
+    },
+    { d: 'M14 186 H146', role: 'ambient' },
+  ],
+  // A snail with a microphone grille for a shell, riding on a sparrow's wing.
+  'itomimizu': [
+    {
+      d: 'M20 150 C50 120 100 112 146 124 C120 136 96 140 72 150 C56 156 36 158 20 150z',
+    },
+    { d: 'M60 146 l14 -16 M84 142 l14 -18 M108 134 l12 -14', role: 'soft' },
+    { d: circle(84, 84, 24) },
+    { d: 'M72 84 h24 M76 74 h16 M76 94 h16', role: 'accent' },
+    { d: 'M54 112 H116 q12 0 12 -10 l-4 -18 M54 112 q-10 0 -8 -10' },
+    { d: `M120 84 l4 -18 M112 88 l-2 -20 ${circle(124, 64, 2)}`, role: 'soft' },
+    { d: 'M138 62 q8 8 0 16 M148 56 q12 14 0 28', role: 'ambient' },
+  ],
+  // Two swords crossed at the hilts, spinning inside two sweeping arcs.
+  'pickles': [
+    { d: 'M44 156 L116 60' },
+    { d: 'M116 156 L44 60' },
+    { d: 'M50 136 l14 10 M110 136 l-14 10' },
+    { d: 'M44 156 l-8 10 M116 156 l8 10', role: 'soft' },
+    {
+      d: 'M28 108 A52 52 0 0 1 80 52 M132 100 A52 52 0 0 1 80 156',
+      role: 'accent',
+    },
+    { d: 'M22 90 l-6 -4 M138 118 l6 4', role: 'accent' },
+    shadow(80, 186, 40),
+  ],
+  // Two giant pans clapped together face to face, their handles out to the sides.
+  'big-pan': [
+    { d: ellipse(68, 100, 10, 44) },
+    { d: ellipse(92, 100, 10, 44) },
+    { d: 'M58 96 H14 V104 H58' },
+    { d: 'M102 96 H146 V104 H102' },
+    {
+      d: 'M80 44 V30 M68 48 l-6 -12 M92 48 l6 -12 M80 156 V170 M68 152 l-6 12 M92 152 l6 12',
+      role: 'accent',
+    },
+    shadow(80, 186, 50),
+  ],
+  // A frog's webbed foot planted on a sea-train rail, a sumo topknot above it.
+  'yokozuna': [
+    { d: 'M4 150 H156' },
+    {
+      d: 'M20 150 v8 M50 150 v8 M80 150 v8 M110 150 v8 M140 150 v8',
+      role: 'soft',
+    },
+    {
+      d: 'M80 146 C60 146 40 138 30 124 C44 126 50 118 48 108 C60 116 66 110 68 98 C74 108 86 108 92 98 C94 110 100 116 112 108 C110 118 116 126 130 124 C120 138 100 146 80 146z',
+    },
+    { d: 'M70 100 C66 76 70 60 80 52 C90 60 94 76 90 100' },
+    { d: 'M70 36 q10 -16 20 0 q-10 8 -20 0 M80 30 V18', role: 'accent' },
+    ...SEA.slice(1),
+  ],
+  // A pigeon's feather beside a small necktie, and a speech bubble with no mouth under it.
+  'hattori': [
+    { d: 'M40 172 C52 132 64 92 92 42' },
+    {
+      d: 'M92 42 C70 52 50 84 46 130 C60 112 72 98 78 88 M92 42 C98 72 86 106 58 138',
+    },
+    { d: 'M58 112 l-8 -4 M66 96 l-8 -4 M74 80 l-8 -4', role: 'ambient' },
+    { d: 'M110 104 h16 l-3 8 h-10z', role: 'accent' },
+    { d: 'M113 112 l-5 38 l10 10 l10 -10 l-5 -38', role: 'accent' },
+    {
+      d: 'M104 16 h44 a8 8 0 0 1 8 8 v16 a8 8 0 0 1 -8 8 h-26 l-10 10 v-10 h-8 a8 8 0 0 1 -8 -8 v-16 a8 8 0 0 1 8 -8z',
+      role: 'soft',
+    },
+    {
+      d: dots([
+        [116, 32],
+        [126, 32],
+        [136, 32],
+      ]),
+      role: 'ambient',
+    },
+    shadow(84, 184, 44),
+  ],
+  // A pair of dark glasses with a stubborn curl of hair springing up above them.
+  'peepley-lulu': [
+    { d: 'M28 96 h40 v14 q0 14 -20 14 q-20 0 -20 -14z' },
+    { d: 'M92 96 h40 v14 q0 14 -20 14 q-20 0 -20 -14z' },
+    { d: 'M68 100 q12 -6 24 0 M28 98 l-14 -6 M132 98 l14 -6' },
+    {
+      d: 'M80 82 C80 60 64 58 66 44 C68 30 88 30 90 42 C92 52 80 54 78 46',
+      role: 'accent',
+    },
+    { d: 'M40 86 q40 -12 80 0', role: 'soft' },
+    { d: 'M36 102 l8 8 M100 102 l8 8', role: 'ambient' },
+    shadow(80, 170, 50),
+  ],
+  // A government briefcase shut tight, a refused offer crossed out and sticking from its lid.
+  'corgi': [
+    { d: 'M28 92 h104 v64 h-104z' },
+    { d: 'M64 92 v-12 q0 -6 6 -6 h20 q6 0 6 6 v12' },
+    { d: 'M74 110 h12 v10 h-12z', role: 'accent' },
+    { d: 'M102 92 V44 h28 V92', role: 'soft' },
+    { d: 'M108 54 l16 16 M124 54 l-16 16', role: 'accent' },
+    { d: 'M28 128 h104', role: 'ambient' },
+    shadow(80, 170, 56),
+  ],
+  // A shipwright's giant mallet standing on its handle, the air around it ringing with a shout.
+  'tilestone': [
+    { d: 'M80 180 V88' },
+    { d: 'M36 52 h88 v36 h-88z' },
+    { d: 'M52 52 v36 M108 52 v36', role: 'ambient' },
+    { d: 'M74 150 h12 M74 160 h12 M74 170 h12', role: 'soft' },
+    { d: 'M24 34 l-10 -10 M80 38 V16 M136 34 l10 -10', role: 'accent' },
+    { d: 'M20 64 h-12 M140 64 h12', role: 'accent' },
+    shadow(80, 190, 40),
+  ],
+  // A red boxing glove hanging on its lace from the low ceiling of a train car.
+  'jerry': [
+    { d: 'M-4 30 H164' },
+    { d: 'M80 30 V56' },
+    {
+      d: 'M56 72 q0 -16 20 -16 h16 q22 0 22 30 v28 q0 16 -16 16 h-26 q-16 0 -16 -16z',
+      role: 'accent',
+    },
+    { d: 'M56 96 q-14 0 -14 14 q0 12 14 12', role: 'accent' },
+    { d: 'M62 130 h44 v24 h-44z' },
+    { d: 'M70 138 l28 10 M98 138 l-28 10', role: 'ambient' },
+    { d: 'M10 60 h24 v30 h-24z M126 60 h24 v30 h-24z', role: 'ambient' },
+    shadow(84, 186, 30),
+  ],
+  // A ramen bowl with noodles spilling over the rim and chopsticks resting in it.
+  'wanze': [
+    { d: 'M30 100 H130 C128 136 110 154 80 154 C50 154 32 136 30 100 Z' },
+    { d: 'M62 154 h36 v8 h-36z' },
+    {
+      d: 'M44 100 C38 116 52 124 44 142 M60 100 C56 120 68 130 58 152',
+      role: 'accent',
+    },
+    { d: 'M96 98 L136 36 M108 100 L146 42', role: 'accent' },
+    {
+      d: 'M62 86 c-6 -8 6 -14 0 -22 M82 82 c-6 -8 6 -14 0 -22',
+      role: 'ambient',
+    },
+    shadow(80, 174, 44),
+  ],
+  // A weasel's tail curling up off the roof of a train car.
+  'nero': [
+    { d: 'M16 124 H144 V158 H16 Z' },
+    { d: 'M10 124 Q80 106 150 124' },
+    { d: 'M30 134 h20 v12 h-20z M70 134 h20 v12 h-20z M110 134 h20 v12 h-20z' },
+    {
+      d: 'M118 116 C130 94 150 78 136 58 C124 42 100 50 106 64 C112 74 128 68 124 58',
+      role: 'accent',
+    },
+    { d: circle(42, 166, 8) },
+    { d: circle(118, 166, 8) },
+    { d: 'M-4 176 H164', role: 'ambient' },
+  ],
+  // A perfectly straight sword standing upright, a right-angled zigzag slash cut across it.
+  't-bone': [
+    { d: 'M80 22 V130' },
+    { d: 'M60 130 H100', role: 'accent' },
+    { d: 'M80 130 V164' },
+    { d: circle(80, 169, 5) },
+    { d: 'M18 64 H58 V104 H102 V144 H142', role: 'accent' },
+    shadow(80, 186, 30),
+  ],
+  // A double yoke with two collars, its tow line running back to a little house-shaped boat.
+  'sodom-and-gomorrah': [
+    { d: 'M20 50 H140' },
+    { d: ellipse(50, 76, 18, 22), role: 'accent' },
+    { d: ellipse(110, 76, 18, 22), role: 'accent' },
+    { d: 'M80 50 C72 72 88 90 80 110' },
+    { d: house(62, 36, 124, 110) },
+    { d: 'M48 150 H112 L104 162 H56 Z' },
+    ...SEA.slice(1),
+  ],
+  // A judge's gavel on its block, three different hats lined up above it.
+  'baskerville': [
+    { d: 'M44 96 h72 v26 h-72z' },
+    { d: 'M56 96 v26 M104 96 v26', role: 'ambient' },
+    { d: 'M80 122 V166' },
+    { d: 'M44 166 h72 v10 h-72z' },
+    { d: 'M28 78 Q44 54 60 78 Z', role: 'accent' },
+    { d: 'M64 78 h32 M72 78 q8 -20 16 0', role: 'accent' },
+    { d: 'M104 78 v-18 h24 v18 M100 78 h32', role: 'accent' },
+    shadow(80, 186, 40),
+  ],
+  // An open book with a clover leaf pressed flat on its right-hand page.
+  'clover': [
+    { d: 'M80 150 C60 140 36 140 16 146 V70 C36 64 60 64 80 74 Z' },
+    { d: 'M80 150 C100 140 124 140 144 146 V70 C124 64 100 64 80 74' },
+    { d: 'M26 90 h40 M26 102 h40 M26 114 h34 M26 126 h38', role: 'ambient' },
+    {
+      d: `${circle(104, 96, 8)} ${circle(124, 96, 8)} ${circle(114, 84, 8)} ${circle(114, 108, 8)}`,
+      role: 'accent',
+    },
+    { d: 'M114 104 q6 14 -2 30', role: 'accent' },
+    shadow(80, 162, 62),
+  ],
+  // A snail telephone with a golden shell, its button pushed down.
+  'spandine': [
+    { d: 'M28 150 C28 134 42 128 58 128 H126 C138 128 142 140 136 150 Z' },
+    { d: circle(82, 100, 30) },
+    {
+      d: 'M82 100 m-6 0 a6 6 0 1 1 12 0 a12 12 0 1 1 -24 0 a18 18 0 1 1 36 0',
+      role: 'accent',
+    },
+    { d: 'M124 128 l4 -24 M132 130 l12 -20', role: 'soft' },
+    { d: 'M74 64 h16 v6 h-16z', role: 'accent' },
+    { d: 'M82 38 v18 M76 50 l6 6 l6 -6', role: 'ambient' },
+    shadow(82, 160, 58),
+  ],
+  // A rifle leaning against a stack of three old books.
+  'nico-olvia': [
+    { d: 'M20 150 h80 v-16 h-80z' },
+    { d: 'M26 134 h70 v-14 h-70z' },
+    { d: 'M32 120 h60 v-14 h-60z' },
+    { d: 'M36 142 h22 M40 127 h18 M44 113 h16', role: 'ambient' },
+    { d: 'M110 150 L122 128 L132 132 L120 152 Z', role: 'accent' },
+    { d: 'M126 128 L146 38 L150 39 L131 130', role: 'accent' },
+    { d: 'M121 138 q-5 5 0 9', role: 'soft' },
+    shadow(84, 160, 64),
+  ],
+  // A cutlass whose guard sprouts two small tusks, a tail for a tassel.
+  'funkfreed': [
+    { d: 'M64 122 C72 84 98 50 134 28 C122 56 102 90 80 130 Z' },
+    { d: 'M50 114 L90 136' },
+    { d: 'M54 117 C42 122 38 134 44 142', role: 'accent' },
+    { d: 'M86 134 C88 148 80 156 70 158', role: 'accent' },
+    { d: 'M70 128 L54 160' },
+    { d: 'M54 160 c-4 8 -2 16 4 22 M54 160 c2 8 6 14 12 18', role: 'soft' },
+    shadow(80, 188, 40),
+  ],
+  // A dark swirled fruit resting in an open palm, a ladle hanging beside it.
+  'thatch': [
+    {
+      d: 'M28 150 C36 128 56 120 78 122 L116 112 C126 110 128 122 118 124 L98 128 L128 126 C138 126 138 138 128 138 L100 142 C90 154 60 158 28 156',
+    },
+    { d: circle(84, 100, 20), role: 'accent' },
+    {
+      d: 'M72 96 c4 -8 14 -8 16 0 c2 8 -8 10 -10 4 M88 108 c4 4 10 2 10 -4',
+      role: 'accent',
+    },
+    { d: 'M84 80 c0 -8 4 -12 10 -14', role: 'soft' },
+    { d: 'M136 30 L140 84', role: 'ambient' },
+    { d: ellipse(142, 92, 10, 7), role: 'ambient' },
+    shadow(80, 170, 56),
   ],
 } satisfies Drawings
