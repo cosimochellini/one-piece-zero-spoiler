@@ -668,15 +668,22 @@ describe('the shelves', () => {
 
   it('shelves Enies Lobby and Post-Enies Lobby on their own arcs, not on Water Seven', () => {
     expect(shelf('enies-lobby')).toStrictEqual([
+      'sodom-and-gomorrah',
       'jabra',
       'kumadori',
       'fukurou',
       'oimo-and-kashi',
+      'baskerville',
+      'clover',
       'jaguar-d-saul',
+      'spandine',
+      'nico-olvia',
+      'funkfreed',
     ])
     expect(shelf('post-enies-lobby')).toStrictEqual([
       'monkey-d-garp',
       'monkey-d-dragon',
+      'thatch',
     ])
     expect(shelf('water-seven')).toContain('spandam')
     expect(shelf('water-seven')).not.toContain('jabra')

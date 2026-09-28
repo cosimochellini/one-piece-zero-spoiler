@@ -78,6 +78,54 @@ export const waterSeven: Saga = {
       visual: { art: 'hamburg', tint: 'ocher' },
     },
     {
+      id: 'tonjit',
+      kind: 'character',
+      revealedAtEpisode: 207,
+      revealedAtChapter: 305,
+      name: { it: 'Tonjit', en: 'Tonjit' },
+      summary: {
+        it: 'Un vecchio che ha costruito i trampoli più alti del mondo, ha scoperto in cima di soffrire di vertigini ed è rimasto lassù dieci anni, finché un pirata di passaggio non ha spezzato il bambù.',
+        en: 'An old man who built the tallest stilts in the world, found out at the top that he was afraid of heights, and spent ten years up there until a passing pirate broke the bamboo.',
+      },
+      visual: { art: 'tonjit', tint: 'sand' },
+    },
+    {
+      id: 'itomimizu',
+      kind: 'character',
+      revealedAtEpisode: 209,
+      revealedAtChapter: 306,
+      name: { it: 'Lombrico', en: 'Itomimizu' },
+      summary: {
+        it: 'Il telecronista dei Pirati di Foxy, un tipo magrissimo con un passamontagna a righe, che racconta il Davy Back Fight dal dorso di un passero gigante in volo sopra il percorso.',
+        en: 'The Foxy Pirates’ announcer, a scrawny man in a striped hood, who calls the Davy Back Fight from the back of a huge sparrow circling over the course.',
+      },
+      visual: { art: 'itomimizu', tint: 'azure' },
+    },
+    {
+      id: 'pickles',
+      kind: 'character',
+      revealedAtEpisode: 210,
+      revealedAtChapter: 309,
+      name: { it: 'Pickles', en: 'Pickles' },
+      summary: {
+        it: 'Un pirata di Foxy enorme, con una faccia da ippopotamo, le braccia lunghe e le gambe corte, uno dei tre Groggy Monsters che il capitano manda in campo per vincere la seconda prova.',
+        en: 'A hulking Foxy pirate with a hippo’s face, long arms and short legs, one of the three Groggy Monsters the captain sends out to win the second round of his game.',
+      },
+      visual: { art: 'pickles', tint: 'green' },
+    },
+    {
+      id: 'big-pan',
+      kind: 'character',
+      revealedAtEpisode: 210,
+      revealedAtChapter: 309,
+      name: { it: 'Big Pan', en: 'Big Pan' },
+      summary: {
+        it: 'Il più grosso dei tre Groggy Monsters di Foxy, che sovrasta perfino i compagni di squadra, con la barba arancione, una bocca piena di denti aguzzi e una pinna che gli spunta dalla schiena.',
+        en: 'The biggest of Foxy’s three Groggy Monsters, towering even over his own teammates, with an orange beard, a mouthful of sharp teeth and a fin rising from his back.',
+      },
+      visual: { art: 'big-pan', tint: 'orange' },
+    },
+    {
       id: 'kuzan',
       kind: 'character',
       revealedAtEpisode: 227,
@@ -100,6 +148,18 @@ export const waterSeven: Saga = {
         en: 'A city of shipwrights built on water, where the crew turns out to be less united than it thought.',
       },
       visual: { art: 'water-seven', tint: 'teal' },
+    },
+    {
+      id: 'yokozuna',
+      kind: 'character',
+      revealedAtEpisode: 229,
+      revealedAtChapter: 322,
+      name: { it: 'Yokozuna', en: 'Yokozuna' },
+      summary: {
+        it: 'Una rana gigante con il ciuffo annodato dei lottatori di sumo, che nuota a stile libero e ogni giorno si pianta sul binario del treno del mare per misurare la sua forza contro la locomotiva.',
+        en: 'A giant frog with a sumo wrestler’s topknot, who swims the front crawl and plants himself on the sea train’s track every day to test his strength against the locomotive.',
+      },
+      visual: { art: 'yokozuna', tint: 'ocher' },
     },
     {
       id: 'iceburg',
@@ -168,8 +228,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 326,
       name: { it: 'Rob Lucci', en: 'Rob Lucci' },
       summary: {
-        it: 'Un caposquadra della Galley-La che non apre mai bocca e lascia parlare il piccione posato sul suo cilindro, come se le parole fossero dell’uccello.',
-        en: 'A Galley-La foreman who never speaks and lets the pigeon perched on his top hat do the talking, as though the words belonged to the bird.',
+        it: 'Un carpentiere della Galley-La con un piccione bianco sulla spalla, l’uomo che la folla dei cantieri acclama più di chiunque altro.',
+        en: 'A Galley-La shipwright with a white pigeon on his shoulder, the man the crowd at the docks cheers louder than anyone.',
       },
       visual: { art: 'rob-lucci', tint: 'ivory' },
     },
@@ -198,6 +258,18 @@ export const waterSeven: Saga = {
       visual: { art: 'blueno', tint: 'sand' },
     },
     {
+      id: 'hattori',
+      kind: 'character',
+      revealedAtEpisode: 232,
+      revealedAtChapter: 327,
+      name: { it: 'Hattori', en: 'Hattori' },
+      summary: {
+        it: 'Un piccione bianco con una cravattina rossa, appollaiato sulla spalla di un caposquadra della Galley-La, che parla al posto suo muovendo becco e ali a ogni parola.',
+        en: 'A white pigeon in a little red tie who perches on a Galley-La foreman’s shoulder and does all the talking for him, moving his beak and wings to every word.',
+      },
+      visual: { art: 'hattori', tint: 'flamingo' },
+    },
+    {
       id: 'kiwi-and-mozu',
       kind: 'character',
       revealedAtEpisode: 233,
@@ -222,6 +294,30 @@ export const waterSeven: Saga = {
       visual: { art: 'zambai', tint: 'red' },
     },
     {
+      id: 'peepley-lulu',
+      kind: 'character',
+      revealedAtEpisode: 233,
+      revealedAtChapter: 328,
+      name: { it: 'Peepley Lulu', en: 'Peepley Lulu' },
+      summary: {
+        it: 'Un caposquadra della Galley-La con gli occhiali scuri e un ciuffo che gli sta dritto in testa, che torna al Dock 1 dopo aver visto portare via un uomo dal naso lungo senza farci caso.',
+        en: 'A Galley-La foreman in dark glasses, a tuft of hair standing straight up off his head, who strolls back into Dock One having watched a long-nosed man being carried off and thought nothing of it.',
+      },
+      visual: { art: 'peepley-lulu', tint: 'violet' },
+    },
+    {
+      id: 'corgi',
+      kind: 'character',
+      revealedAtEpisode: 234,
+      revealedAtChapter: 331,
+      name: { it: 'Coogy', en: 'Corgi' },
+      summary: {
+        it: 'Un funzionario del Governo Mondiale che torna di continuo da Iceburg con nuove offerte per qualcosa che il sindaco custodisce, e ogni volta se ne va a mani vuote e di pessimo umore.',
+        en: 'A World Government official who keeps calling on Iceburg with offers for something the mayor is said to have, and walks out every time empty-handed and scowling.',
+      },
+      visual: { art: 'corgi', tint: 'blue' },
+    },
+    {
       id: 'franky',
       kind: 'character',
       revealedAtEpisode: 235,
@@ -232,6 +328,18 @@ export const waterSeven: Saga = {
         en: 'A cyborg in swim briefs and a Hawaiian shirt, hair in a pompadour, who strips ships for a living and rebuilds them for love, and who has just robbed Usopp.',
       },
       visual: { art: 'franky', tint: 'cyan' },
+    },
+    {
+      id: 'tilestone',
+      kind: 'character',
+      revealedAtEpisode: 238,
+      revealedAtChapter: 336,
+      name: { it: 'Tilestone', en: 'Tilestone' },
+      summary: {
+        it: 'Un caposquadra della Galley-La grosso come un armadio che dice tutto urlando, e che irrompe nella stanza di un convalescente con tanto baccano da farsi buttare fuori prima ancora di annunciare una rissa al cantiere.',
+        en: 'A hulking Galley-La foreman who says everything at a shout, and who bursts into a sickroom so loudly that he is thrown straight back out before he can report a fight at the docks.',
+      },
+      visual: { art: 'tilestone', tint: 'ocher' },
     },
     {
       id: 'tom',
@@ -256,6 +364,54 @@ export const waterSeven: Saga = {
         en: 'The chief of a secret World Government unit, who gives his orders down a golden Den Den Mushi and carries a sword with an elephant’s head on it.',
       },
       visual: { art: 'spandam', tint: 'wine' },
+    },
+    {
+      id: 'jerry',
+      kind: 'character',
+      revealedAtEpisode: 253,
+      revealedAtChapter: 362,
+      name: { it: 'Jerry', en: 'Jerry' },
+      summary: {
+        it: 'Un agente del Governo così alto che il suo busto riempie il soffitto della carrozza che sorveglia, che si proclama campione imbattuto di pugilato del South Blue e porta i guantoni rossi per dimostrarlo.',
+        en: 'A government agent so tall that his upper body fills the ceiling of the train car he guards, who calls himself the undefeated boxing champion of the South Blue and wears red gloves to prove it.',
+      },
+      visual: { art: 'jerry', tint: 'red' },
+    },
+    {
+      id: 'wanze',
+      kind: 'character',
+      revealedAtEpisode: 258,
+      revealedAtChapter: 368,
+      name: { it: 'Wanze', en: 'Wanze' },
+      summary: {
+        it: 'Un cuoco del treno del mare che fa il ramen mangiando farina e tirandosi i noodle fuori dal naso, e che sbarra la quarta carrozza con uno stile di lotta che chiama Ramen Kenpo.',
+        en: 'A cook on the sea train who makes ramen by eating flour and pulling the noodles out of his nose, and who blocks the fourth car with a fighting style he calls Ramen Kenpo.',
+      },
+      visual: { art: 'wanze', tint: 'orange' },
+    },
+    {
+      id: 'nero',
+      kind: 'character',
+      revealedAtEpisode: 259,
+      revealedAtChapter: 369,
+      name: { it: 'Nero', en: 'Nero' },
+      summary: {
+        it: 'Un agente del Cipher Pol 9 con una piuma sul cappello, che ha indovinato che Franky sarebbe passato sui tetti e lo aspetta in cima alla terza carrozza del treno del mare.',
+        en: 'A Cipher Pol 9 agent with a plume in his hat, who guessed that Franky would come along the roofs and waits for him on top of the third car of the sea train.',
+      },
+      visual: { art: 'nero', tint: 'lavender' },
+    },
+    {
+      id: 't-bone',
+      kind: 'character',
+      revealedAtEpisode: 261,
+      revealedAtChapter: 371,
+      name: { it: 'T-Bone', en: 'T Bone' },
+      summary: {
+        it: 'Un capitano della Marina scarno, con una faccia che spaventa i suoi stessi uomini, che fascia i loro graffi con strisce strappate al mantello e che, a sentire le voci, taglia in due qualunque nave.',
+        en: 'A gaunt Marine captain whose face frightens his own men, who binds their scratches with strips torn from his cape and who, by reputation, can cut clean through any ship.',
+      },
+      visual: { art: 't-bone', tint: 'azure' },
     },
     {
       id: 'enies-lobby',
@@ -306,6 +462,18 @@ export const waterSeven: Saga = {
       visual: { art: 'fukurou', tint: 'acid' },
     },
     {
+      id: 'sodom-and-gomorrah',
+      kind: 'character',
+      revealedAtEpisode: 264,
+      revealedAtChapter: 383,
+      name: { it: 'Sodoma e Gomorra', en: 'Sodom and Gomorrah' },
+      summary: {
+        it: 'Due enormi cavalli marini della Franky Family, che nuotano dietro il secondo treno del mare trainando la barca della banda e, a Enies Lobby, vengono mandati oltre la recinzione a sfondare il cancello.',
+        en: 'Two enormous sea horses of the Franky Family, who swim behind the second sea train hauling the family’s boat and, at Enies Lobby, are sent over the fence to break down the gate.',
+      },
+      visual: { art: 'sodom-and-gomorrah', tint: 'green' },
+    },
+    {
       id: 'oimo-and-kashi',
       kind: 'character',
       revealedAtEpisode: 265,
@@ -318,6 +486,18 @@ export const waterSeven: Saga = {
       visual: { art: 'oimo-and-kashi', tint: 'ocher' },
     },
     {
+      id: 'baskerville',
+      kind: 'character',
+      revealedAtEpisode: 267,
+      revealedAtChapter: 379,
+      name: { it: 'Baskerville', en: 'Baskerville' },
+      summary: {
+        it: 'Il giudice supremo di Enies Lobby, una figura altissima con tre teste, ognuna sotto il suo cappello, a cui tocca guidare la difesa dell’isola quando nessuno riesce a raggiungere Spandam.',
+        en: 'The chief justice of Enies Lobby, a towering figure with three heads, each under its own hat, who is left to run the island’s defence when nobody can reach Spandam.',
+      },
+      visual: { art: 'baskerville', tint: 'violet' },
+    },
+    {
       id: 'jaguar-d-saul',
       kind: 'character',
       revealedAtEpisode: 275,
@@ -328,6 +508,54 @@ export const waterSeven: Saga = {
         en: 'A giant washed up on the beach of Ohara twenty years earlier, who laughs “dereshishi” and becomes little Robin’s first friend.',
       },
       visual: { art: 'jaguar-d-saul', tint: 'sand' },
+    },
+    {
+      id: 'clover',
+      kind: 'character',
+      revealedAtEpisode: 275,
+      revealedAtChapter: 391,
+      name: { it: 'Clover', en: 'Clover' },
+      summary: {
+        it: 'Il capo degli studiosi di Ohara, un professore con barba e capelli a forma di foglie, che nomina archeologa la piccola Robin di otto anni e le vieta l’unico argomento che le interessa.',
+        en: 'The head of Ohara’s scholars, a professor whose hair and beard grow out like leaves, who makes eight-year-old Robin an archaeologist and forbids her the one subject she wants.',
+      },
+      visual: { art: 'clover', tint: 'green' },
+    },
+    {
+      id: 'spandine',
+      kind: 'character',
+      revealedAtEpisode: 276,
+      revealedAtChapter: 392,
+      name: { it: 'Spandine', en: 'Spandine' },
+      summary: {
+        it: 'Il capo del Cipher Pol 9 di vent’anni prima, che sbarca a Ohara con i suoi agenti e le navi da guerra del Governo schierate al largo per dare una lezione agli studiosi dell’isola.',
+        en: 'The chief of Cipher Pol 9 twenty years earlier, who lands on Ohara with his agents and the Government’s warships lined up offshore to make an example of the island’s scholars.',
+      },
+      visual: { art: 'spandine', tint: 'ocher' },
+    },
+    {
+      id: 'nico-olvia',
+      kind: 'character',
+      revealedAtEpisode: 276,
+      revealedAtChapter: 393,
+      name: { it: 'Nico Olvia', en: 'Nico Olvia' },
+      summary: {
+        it: 'Un’archeologa di Ohara che torna di nascosto sull’isola dopo anni passati a cercare i Poneglyph, unica sopravvissuta della sua spedizione, ed è la madre della piccola Robin.',
+        en: 'An archaeologist of Ohara who slips back onto the island after years away searching for Poneglyphs, the only survivor of her expedition, and who is little Robin’s mother.',
+      },
+      visual: { art: 'nico-olvia', tint: 'lavender' },
+    },
+    {
+      id: 'funkfreed',
+      kind: 'character',
+      revealedAtEpisode: 285,
+      revealedAtChapter: 400,
+      name: { it: 'Funkfleed', en: 'Funkfreed' },
+      summary: {
+        it: 'L’elefante di Spandam, che lo segue per Enies Lobby come un animale da compagnia e poi, a un suo comando, diventa la sciabola che il suo padrone porta in spalla.',
+        en: 'Spandam’s elephant, who trots after him around Enies Lobby like a pet and then, at a word from his master, turns into the cutlass Spandam carries on his shoulder.',
+      },
+      visual: { art: 'funkfreed', tint: 'ivory' },
     },
     {
       id: 'post-enies-lobby',
@@ -364,6 +592,18 @@ export const waterSeven: Saga = {
         en: 'A brigantine with a lion’s head at the prow, built in secret from a rare wood and launched for a crew that had just lost the ship it loved.',
       },
       visual: { art: 'thousand-sunny', tint: 'yellow' },
+    },
+    {
+      id: 'thatch',
+      kind: 'character',
+      revealedAtEpisode: 325,
+      revealedAtChapter: 440,
+      name: { it: 'Satch', en: 'Thatch' },
+      summary: {
+        it: 'Il comandante della quarta divisione dei Pirati di Barbabianca, ucciso da un compagno della sua stessa ciurma, Teach, per il frutto del diavolo che aveva trovato e non aveva ancora mangiato.',
+        en: 'The commander of the fourth division of the Whitebeard Pirates, killed by a man from his own crew, Teach, for the Devil Fruit he had found and had not yet eaten.',
+      },
+      visual: { art: 'thatch', tint: 'orange' },
     },
   ],
 
@@ -415,6 +655,89 @@ export const waterSeven: Saga = {
         { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
     },
+    'tonjit': {
+      chronicle: waterSevenChronicles.tonjit,
+      role: {
+        it: 'Abitante di Long Ring Long Land',
+        en: 'Resident of Long Ring Long Land',
+      },
+      log: {
+        it: 'Ha fatto i trampoli con il bambù dell’isola e ci è salito per il record, senza pensare nemmeno per un attimo a come sarebbe sceso. Dopo dieci anni è venuto giù con appena un po’ di sangue dal naso, e ha salutato tre sconosciuti come se li conoscesse da una vita. Su Long Ring Long Land, spiega, la prateria è così vasta e la vita così tranquilla che tutto si allunga.',
+        en: 'He made his stilts from the island’s own bamboo and climbed them for the record, without once thinking about how he would get down. He came down after ten years with nothing worse than a nosebleed, and greeted three strangers as though he had known them all his life. On Long Ring Long Land, he explains, the plain is so wide and life so easy that everything grows long.',
+      },
+      affiliation: [
+        {
+          episode: 208,
+          value: {
+            it: 'Tribù nomade di Long Ring Long Land',
+            en: 'Nomad tribe of Long Ring Long Land',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 208,
+          value: {
+            it: 'Long Ring Long Land, Rotta Maggiore',
+            en: 'Long Ring Long Land, Grand Line',
+          },
+        },
+      ],
+    },
+    'itomimizu': {
+      chronicle: waterSevenChronicles.itomimizu,
+      role: {
+        it: 'Telecronista del Davy Back Fight',
+        en: 'Davy Back Fight announcer',
+      },
+      log: {
+        it: 'Cavalca Chuchun, un passero abbastanza grande da portare un uomo, e segue la gara dall’alto perché niente del percorso gli sfugga. Parla in fretta e senza pause, fa il tifo per i trucchi della sua ciurma e li annuncia uno per uno mentre accadono. Per i Cappello di Paglia non ha parole gentili, ma non finge di non vedere quello che riescono a fare.',
+        en: 'He rides Chuchun, a sparrow big enough to carry a man, and follows the race from overhead so that nothing on the course escapes him. He talks fast and without a pause, cheers his own crew’s tricks and names each one as it happens. He has no kind words for the Straw Hats, but he does not pretend not to see what they pull off.',
+      },
+      affiliation: [
+        { episode: 209, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
+      ],
+    },
+    'pickles': {
+      chronicle: waterSevenChronicles.pickles,
+      role: {
+        it: 'Groggy Monster dei Pirati di Foxy',
+        en: 'Groggy Monster of the Foxy Pirates',
+      },
+      log: {
+        it: 'È uno dei Groggy Monsters, i tre uomini più grossi della ciurma di Foxy, che il capitano chiama per nome per il Groggy Ring. Veste di verde, con due spallacci tondi, e ha braccia lunghe che pendono sopra due gambe corte. La sua squadra avrà tre giocatori contro due, perché nella prima prova i Cappello di Paglia hanno perso Chopper.',
+        en: 'He is one of the Groggy Monsters, the three biggest men in Foxy’s crew, whom the captain calls out by name for the Groggy Ring. He dresses in green, with round plates on his shoulders, and his long arms hang over a pair of short legs. His side will field three players against two, because the first round has cost the Straw Hats Chopper.',
+      },
+      affiliation: [
+        {
+          episode: 210,
+          value: {
+            it: 'Pirati di Foxy, Groggy Monsters',
+            en: 'Foxy Pirates, Groggy Monsters',
+          },
+        },
+      ],
+    },
+    'big-pan': {
+      chronicle: waterSevenChronicles['big-pan'],
+      role: {
+        it: 'Groggy Monster dei Pirati di Foxy',
+        en: 'Groggy Monster of the Foxy Pirates',
+      },
+      log: {
+        it: 'Foxy lo chiama in campo con Hamburg e Pickles per la seconda prova, il Groggy Ring, dove in ogni squadra un giocatore fa da pallone. È più alto di qualunque altro uomo della ciurma, con slip, stivali e guanti gialli e la maschera dei Pirati di Foxy sul viso. Accanto a lui, i due Cappello di Paglia che devono giocare sembrano minuscoli.',
+        en: 'Foxy calls him out with Hamburg and Pickles for the second round, the Groggy Ring, where one player on each side is the ball. He stands taller than any other man in the crew, in yellow swim briefs, boots and gloves, with the Foxy Pirates’ mask over his face. Beside him, the two Straw Hats who have to play look tiny.',
+      },
+      affiliation: [
+        {
+          episode: 210,
+          value: {
+            it: 'Pirati di Foxy, Groggy Monsters',
+            en: 'Foxy Pirates, Groggy Monsters',
+          },
+        },
+      ],
+    },
     'kuzan': {
       chronicle: waterSevenChronicles.kuzan,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
@@ -442,6 +765,23 @@ export const waterSeven: Saga = {
       ],
       epithet: [{ episode: 227, value: { it: 'Aokiji', en: 'Aokiji' } }],
       devilFruit: [{ episode: 227, value: ['ice-ice-fruit'] }],
+    },
+    'yokozuna': {
+      chronicle: waterSevenChronicles.yokozuna,
+      role: { it: 'Rana gigante', en: 'Giant frog' },
+      log: {
+        it: 'Nuota come un uomo più che come una rana, ed è per questo che la ciurma lo nota, e il primo pensiero di Rufy è la cena. Quando arriva il treno del mare non si sposta: si mette in guardia sui binari e incassa il colpo in pieno. Alla stazione dicono che non c’è verso di ucciderlo, e che è il guaio peggiore che abbiano.',
+        en: 'He swims like a man rather than a frog, which is why the crew notices him at all, and Luffy’s first thought is dinner. When the sea train comes he does not move: he squares up on the rails and takes the full blow. At the station they say there is no killing him, and that he is the worst trouble they have.',
+      },
+      affiliation: [
+        {
+          episode: 248,
+          value: {
+            it: 'Tom’s Workers, animale domestico',
+            en: 'Tom’s Workers, pet',
+          },
+        },
+      ],
     },
     'iceburg': {
       role: { it: 'Sindaco di Water Seven', en: 'Mayor of Water Seven' },
@@ -526,8 +866,8 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles['rob-lucci'],
       role: DOCK_ONE,
       log: {
-        it: 'Sta al Dock 1 e non dice una parola: a rispondere è Hattori, il piccione posato sul suo cilindro, mentre lui resta immobile a braccia conserte. Gli operai ci hanno fatto l’abitudine e nessuno ci vede più niente di strano. Quando si muove, ha una scioltezza che mette a disagio anche chi non saprebbe dire perché.',
-        en: 'He stands at Dock One and does not say a word: the answers come from Hattori, the pigeon on his top hat, while he keeps his arms folded and does not move. The workers are used to it and nobody thinks it strange any more. When he does move, there is an ease about him that unsettles people who could not say why.',
+        it: 'Quando una ciurma pirata si rifiuta di pagare le riparazioni, è uno dei carpentieri della Galley-La che la mettono al tappeto, e la folla che si raduna dopo scandisce il suo nome. Un piccione bianco gli sta sulla spalla ovunque vada. Ai curiosi non dice nulla, e non ne ha bisogno: per Water Seven gli uomini della Galley-La sono l’orgoglio della città.',
+        en: 'When a pirate crew refuses to pay for its repairs, he is one of the Galley-La shipwrights who knock them flat, and the crowd that gathers afterwards chants his name. A white pigeon rides on his shoulder wherever he goes. He says nothing to the onlookers and does not need to: for Water Seven, the Galley-La men are the pride of the city.',
       },
       status: [{ episode: 230, value: 'alive' }],
       affiliation: [
@@ -580,6 +920,27 @@ export const waterSeven: Saga = {
       ],
       devilFruit: [{ episode: 243, value: ['door-door-fruit'] }],
     },
+    'hattori': {
+      chronicle: waterSevenChronicles.hattori,
+      role: { it: 'Il piccione di Rob Lucci', en: 'Rob Lucci’s pigeon' },
+      log: {
+        it: 'Sta appollaiato sulla spalla di Lucci al Dock 1 e parla lui: chiede scusa ai clienti e rimprovera Paulie, mentre il padrone tiene la bocca chiusa. È Nami a capire il trucco: la voce è di Lucci, da ventriloquo, e l’uccello si limita a muovere becco e ali a tempo. Paulie non ci fa più caso, perché per quanto ne sa il cantiere Lucci ha sempre parlato attraverso il suo piccione.',
+        en: 'He perches on Lucci’s shoulder at Dock One and does the talking, apologising to customers and telling Paulie off, while his master keeps his mouth shut. Nami is the one who works out the trick: the voice is Lucci’s, thrown like a ventriloquist’s, and the bird only moves his beak and wings in time with it. Paulie shrugs it off, because as far as the dock is concerned Lucci has always talked through his pigeon.',
+      },
+      affiliation: [
+        {
+          episode: 232,
+          value: { it: 'Rob Lucci, piccione', en: 'Rob Lucci, pigeon' },
+        },
+        {
+          episode: 244,
+          value: {
+            it: 'Cipher Pol 9, piccione di Rob Lucci',
+            en: 'Cipher Pol 9, Rob Lucci’s pigeon',
+          },
+        },
+      ],
+    },
     'kiwi-and-mozu': {
       role: {
         it: 'Sorelle della Franky Family',
@@ -614,6 +975,42 @@ export const waterSeven: Saga = {
       ],
       origin: [{ episode: 233, value: WATER_SEVEN }],
     },
+    'peepley-lulu': {
+      chronicle: waterSevenChronicles['peepley-lulu'],
+      role: DOCK_ONE,
+      log: {
+        it: 'È uno dei caposquadra del Dock 1, con Paulie, Kaku e Lucci, e quando dei funzionari del Governo si presentano da Iceburg è il primo a chiedere il permesso di cacciarli. Porta occhiali scuri e un ciuffo di capelli che gli sta dritto in testa. Non è l’uomo più attento del cantiere: tornando al lavoro ha incrociato la Franky Family che si portava via un tizio dal naso lungo, e l’ha preso per Kaku.',
+        en: 'He is one of the foremen of Dock One, with Paulie, Kaku and Lucci, and when government officials turn up to see Iceburg he is the first to ask leave to throw them out. He wears dark glasses and a tuft of hair that sticks straight up off his head. He is not the most observant man in the yard: on his way back he passed the Franky Family carrying off a long-nosed man, and took him for Kaku.',
+      },
+      affiliation: [{ episode: 233, value: GALLEY_LA_DOCK_ONE }],
+    },
+    'corgi': {
+      chronicle: waterSevenChronicles.corgi,
+      role: {
+        it: 'Funzionario del Governo Mondiale',
+        en: 'World Government official',
+      },
+      log: {
+        it: 'Si presenta alla Galley-La con due colleghi e chiede di parlare con Iceburg in privato, senza mai dire ad alta voce che cosa cerchi: soltanto «quella cosa». Iceburg lo respinge ogni volta, e ogni volta lui se ne va più arrabbiato di quando è arrivato. Dopo quest’ultima visita Iceburg ammette con Califa che l’oggetto di tante offerte ce l’ha davvero.',
+        en: 'He arrives at Galley-La with two colleagues and asks to see Iceburg in private, and he never says aloud what he is after, only “it”. Iceburg turns him down every time, and every time he leaves angrier than he came. After this latest visit Iceburg admits to Kalifa that the thing behind all those offers really is in his hands.',
+      },
+      affiliation: [
+        {
+          episode: 234,
+          value: {
+            it: 'Governo Mondiale, funzionario',
+            en: 'World Government, official',
+          },
+        },
+        {
+          episode: 253,
+          value: {
+            it: 'Governo Mondiale, capo della sicurezza sul treno del mare',
+            en: 'World Government, head of security aboard the sea train',
+          },
+        },
+      ],
+    },
     'franky': {
       chronicle: waterSevenChronicles.franky,
       role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
@@ -636,6 +1033,15 @@ export const waterSeven: Saga = {
         { episode: 746, value: 94_000_000 },
         { episode: 1086, value: 394_000_000 },
       ],
+    },
+    'tilestone': {
+      chronicle: waterSevenChronicles.tilestone,
+      role: DOCK_ONE,
+      log: {
+        it: 'È l’ultimo dei caposquadra del Dock 1 a essere presentato, e il più rumoroso: non sa dare una notizia, buona o cattiva, senza urlarla. Quando sente che Iceburg si è svegliato piomba nella stanza gridando, e Paulie lo rispedisce fuori per il baccano. In cantiere è più utile, e con un tronco intero spazza via Franky da una rissa.',
+        en: 'He is the last of the Dock One foremen to be introduced, and the loudest: he cannot deliver news, good or bad, without bellowing it. When he hears that Iceburg is awake he charges into the room shouting, and Paulie sends him straight back out for the noise. In the yard he is more use, and swings a whole log to knock Franky out of a fight.',
+      },
+      affiliation: [{ episode: 238, value: GALLEY_LA_DOCK_ONE }],
     },
     'tom': {
       role: { it: 'Maestro d’ascia', en: 'Master shipwright' },
@@ -683,6 +1089,84 @@ export const waterSeven: Saga = {
         },
       ],
     },
+    'jerry': {
+      chronicle: waterSevenChronicles.jerry,
+      role: { it: 'Agente del Cipher Pol 6', en: 'Cipher Pol 6 agent' },
+      log: {
+        it: 'Comanda gli agenti del Governo che sorvegliano l’ultima carrozza del treno del mare, ed è così grosso che il suo busto ne riempie il soffitto. Quando un intruso fa irruzione, dice ai suoi uomini che non serve disturbare il CP9 per una cosa così piccola, e si presenta come il campione imbattuto di pugilato del South Blue. La carrozza stretta non si addice al suo stile: i suoi pugni finiscono sui suoi stessi agenti, e un calcio dell’intruso basta a metterlo fuori combattimento.',
+        en: 'He is in charge of the government agents guarding the last car of the sea train, and he is so big that his upper body fills its ceiling. When an intruder breaks in, he tells his men there is no need to trouble CP9 with something so small, and announces himself as the South Blue’s undefeated boxing champion. The cramped car does not suit his style: his punches land on his own agents, and one kick from the intruder finishes him.',
+      },
+      affiliation: [
+        {
+          episode: 253,
+          value: {
+            it: 'Cipher Pol 6, capo della sicurezza dell’ultima carrozza',
+            en: 'Cipher Pol 6, head of security in the last car',
+          },
+        },
+      ],
+    },
+    'wanze': {
+      chronicle: waterSevenChronicles.wanze,
+      role: {
+        it: 'Agente del Cipher Pol 7 e cuoco',
+        en: 'Cipher Pol 7 agent and cook',
+      },
+      log: {
+        it: 'Fa la guardia alla quarta carrozza del treno che porta via Robin, e chi vuole arrivare a lei deve passare prima da lui. Schiva colpi di pistola e calci con un ghigno, poi giura di aver creduto che il cuore gli saltasse fuori dal petto. Si definisce un cuoco, e Sanji gli risponde che un cuoco vero si comporterebbe con più dignità.',
+        en: 'He guards the fourth car of the train taking Robin away, and anyone who wants to reach her has to get past him first. He dodges bullets and kicks with a grin, then swears he thought his heart would leap out of his chest. He calls himself a chef, and Sanji tells him that a real one would carry himself with more dignity.',
+      },
+      affiliation: [
+        { episode: 258, value: { it: 'Cipher Pol 7', en: 'Cipher Pol 7' } },
+      ],
+      epithet: [{ episode: 258, value: { it: 'Mad Wanze', en: 'Mad Wanze' } }],
+    },
+    'nero': {
+      chronicle: waterSevenChronicles.nero,
+      role: CP9_AGENT,
+      log: {
+        it: 'Si presenta come Nero la Donnola di mare, e si becca un pugno a tradimento appena Franky gli dice di guardare dall’altra parte. Si muove con le stesse tecniche degli altri agenti: sparisce in uno scatto, si piega attorno ai colpi e scalcia lame d’aria. Salta perfino giù dal treno, sopra il mare aperto, e ci risale camminando sull’aria.',
+        en: 'He introduces himself as Nero the Sea Weasel, and takes a sucker punch the moment Franky tells him to look the other way. He moves with the same techniques as the other agents: he vanishes in a burst of speed, bends around blows and kicks out blades of air. He even jumps off the train over the open sea and climbs back up walking on the air.',
+      },
+      affiliation: [
+        { episode: 259, value: CIPHER_POL_9 },
+        {
+          episode: 262,
+          value: {
+            it: 'Ex agente del Cipher Pol 9, espulso',
+            en: 'Former Cipher Pol 9 agent, expelled',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 259, value: { it: 'Donnola di mare', en: 'Sea Weasel' } },
+      ],
+    },
+    't-bone': {
+      chronicle: waterSevenChronicles['t-bone'],
+      role: { it: 'Capitano della Marina', en: 'Marine captain' },
+      log: {
+        it: 'Scorta il treno del mare con i suoi uomini e si preoccupa di ogni loro ferita, promettendo pace e gentilezza mentre loro cercano di non guardarlo in faccia. La sua spada taglia solo in linea retta e ad angolo retto, che si tratti di una porta o di un mostro marino. Quando gli intrusi lo ingannano e lo lasciano indietro, corre da solo lungo i binari battuti dalla tempesta per sbarrare loro la strada.',
+        en: 'He escorts the sea train with his men and fusses over every wound they get, promising peace and kindness while they try not to look at his face. His sword cuts only in straight lines and right angles, whether through a door or a sea monster. When the intruders trick him and leave him behind, he runs down the storm-lashed tracks alone to stand in their way.',
+      },
+      status: [
+        { episode: 261, value: 'alive' },
+        { episode: 1116, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 261,
+          value: { it: 'Marina, capitano', en: 'Marines, captain' },
+        },
+        {
+          episode: 1116,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+      epithet: [
+        { episode: 261, value: { it: 'Trancia-navi', en: 'Ship Cutter' } },
+      ],
+    },
     'jabra': {
       role: CP9_AGENT,
       log: {
@@ -708,6 +1192,20 @@ export const waterSeven: Saga = {
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
+    'sodom-and-gomorrah': {
+      chronicle: waterSevenChronicles['sodom-and-gomorrah'],
+      role: {
+        it: 'Cavalcature della Franky Family',
+        en: 'Mounts of the Franky Family',
+      },
+      log: {
+        it: 'Escono a nuoto da Water Seven legati alla barca della Franky Family, che è agganciata al Rocketman lanciato sui binari. Prendono ordini da Zambai come tutti gli altri della famiglia. Quando la ciurma arriva all’isola giudiziaria, è lui a mandarli a saltare la recinzione e ad abbattere il cancello.',
+        en: 'They swim out of Water Seven harnessed to the Franky Family’s boat, which is hooked to the Rocketman as it races along the rails. They take their orders from Zambai like everyone else in the family. When the crew reaches the judicial island, he is the one who sends them to jump the fence and break down the gate.',
+      },
+      affiliation: [
+        { episode: 264, value: { it: 'Franky Family', en: 'Franky Family' } },
+      ],
+    },
     'oimo-and-kashi': {
       role: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
       log: {
@@ -731,6 +1229,35 @@ export const waterSeven: Saga = {
         },
       ],
       origin: [{ episode: 265, value: { it: 'Elbaf', en: 'Elbaph' } }],
+    },
+    'baskerville': {
+      chronicle: waterSevenChronicles.baskerville,
+      role: {
+        it: 'Giudice supremo di Enies Lobby',
+        en: 'Chief Justice of Enies Lobby',
+      },
+      log: {
+        it: 'Presiede il tribunale di Enies Lobby, un’unica figura altissima con tre teste e tre cappelli diversi. Con l’isola sotto attacco e Spandam irraggiungibile, la difesa ricade su di lui. Viene a sapere che uno dei giganti del cancello è a terra e l’altro sta cedendo, e manda al fronte cento uomini della guardia del tribunale.',
+        en: 'He presides over the courthouse of Enies Lobby, a single towering figure with three heads under three different hats. With the island under attack and Spandam out of reach, the defence falls to him. He hears that one of the giants at the gate is down and the other is losing, and sends a hundred men of the Watchdog Unit of the Law to the front.',
+      },
+      affiliation: [
+        {
+          episode: 267,
+          value: {
+            it: 'Governo Mondiale, tribunale di Enies Lobby',
+            en: 'World Government, Enies Lobby courthouse',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 267,
+          value: {
+            it: 'Baskerville Triplice collo',
+            en: 'Three-Headed Baskerville',
+          },
+        },
+      ],
     },
     'jaguar-d-saul': {
       role: { it: 'Gigante naufragato a Ohara', en: 'Giant castaway on Ohara' },
@@ -759,6 +1286,105 @@ export const waterSeven: Saga = {
           },
         },
       ],
+    },
+    'clover': {
+      chronicle: waterSevenChronicles.clover,
+      role: { it: 'Capo degli studiosi di Ohara', en: 'Head scholar of Ohara' },
+      log: {
+        it: 'Dirige la biblioteca dell’Albero della Conoscenza, la più grande del mondo, dove lavorano gli studiosi dell’isola. Lascia che Robin legga lì quando il resto di Ohara la evita, e festeggia quando a otto anni supera l’esame da studiosa di archeologia. Quando lei chiede di unirsi alle ricerche sul Secolo Buio, le risponde di no senza esitare: quella storia il Governo Mondiale la proibisce.',
+        en: 'He runs the library in the Tree of Knowledge, the greatest in the world, where the island’s scholars do their work. He lets Robin read there when the rest of Ohara shuns her, and celebrates when she passes the exam to become a scholar of archaeology at eight. When she asks to join the scholars’ research into the Void Century, he refuses her flatly: that history is forbidden by the World Government.',
+      },
+      status: [
+        { episode: 275, value: 'alive' },
+        { episode: 278, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 275,
+          value: {
+            it: 'Studiosi di Ohara, professore',
+            en: 'Scholars of Ohara, professor',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 275,
+          value: { it: 'Ohara, West Blue', en: 'Ohara, West Blue' },
+        },
+      ],
+    },
+    'spandine': {
+      chronicle: waterSevenChronicles.spandine,
+      role: {
+        it: 'Capo del Cipher Pol 9, vent’anni prima',
+        en: 'Chief of Cipher Pol 9, twenty years earlier',
+      },
+      log: {
+        it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Un colpo di fucile che gli sfiora la manica non lo scompone: fa atterrare la donna che ha sparato e la getta davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
+        en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. A rifle shot that grazes his sleeve does not shake him: he has the woman who fired it knocked down and thrown before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
+      },
+      affiliation: [
+        {
+          episode: 276,
+          value: { it: 'Cipher Pol 9, capo', en: 'Cipher Pol 9, chief' },
+        },
+        {
+          episode: 301,
+          value: {
+            it: 'Cipher Pol 9, ex capo; padre di Spandam',
+            en: 'Cipher Pol 9, former chief; Spandam’s father',
+          },
+        },
+      ],
+    },
+    'nico-olvia': {
+      chronicle: waterSevenChronicles['nico-olvia'],
+      role: {
+        it: 'Archeologa di Ohara, madre di Robin',
+        en: 'Archaeologist of Ohara, Robin’s mother',
+      },
+      log: {
+        it: 'Anni fa ha lasciato Ohara con una spedizione in cerca di Poneglyph per il mondo, affidando ad altri la figlia piccola, e torna da sola: tutti gli altri li ha uccisi il Governo Mondiale. Avverte gli studiosi che il Governo sta arrivando per eliminarli, ma loro si rifiutano di abbandonare la biblioteca. Per evitare a Robin il marchio di figlia di una criminale decide di non dirle chi è, prende un fucile e scende alla spiaggia.',
+        en: 'Years ago she left Ohara with an expedition to search the world for Poneglyphs, leaving her small daughter in others’ care, and she comes back alone: the World Government killed everyone else. She warns the scholars that the Government is coming to wipe them out, but they refuse to abandon the library. To keep Robin from being branded a criminal’s daughter, she decides not to tell the girl who she is, takes a rifle and goes down to the beach.',
+      },
+      status: [
+        { episode: 276, value: 'alive' },
+        { episode: 278, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 276,
+          value: {
+            it: 'Studiosi di Ohara, archeologa',
+            en: 'Scholars of Ohara, archaeologist',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 276,
+          value: { it: 'Ohara, West Blue', en: 'Ohara, West Blue' },
+        },
+      ],
+    },
+    'funkfreed': {
+      chronicle: waterSevenChronicles.funkfreed,
+      role: { it: 'Spada vivente di Spandam', en: 'Spandam’s living sword' },
+      log: {
+        it: 'È un elefante finché Spandam vuole compagnia e una sciabola appena vuole un’arma. Quando i Cappello di Paglia irrompono nella Torre della Giustizia, Spandam lo chiama e l’elefante si ritrae in una lama con due zanne sull’elsa. Spandam spiega a Robin che la spada ha mangiato un frutto del diavolo di tipo Zoan, quello dell’elefante, e ora è tutte e due le cose.',
+        en: 'He is an elephant as long as Spandam wants company and a cutlass the moment he wants a weapon. When the Straw Hats break into the Tower of Justice, Spandam calls him, and the elephant shrinks into a blade with two tusks at the guard. Spandam explains to Robin that the sword has eaten a Zoan-type Devil Fruit, the elephant one, and is now both at once.',
+      },
+      affiliation: [
+        {
+          episode: 285,
+          value: {
+            it: 'Cipher Pol 9, arma di Spandam',
+            en: 'Cipher Pol 9, Spandam’s weapon',
+          },
+        },
+      ],
+      devilFruit: [{ episode: 285, value: ['elephant-elephant-fruit'] }],
     },
     'monkey-d-garp': {
       chronicle: waterSevenChronicles['monkey-d-garp'],
@@ -796,6 +1422,27 @@ export const waterSeven: Saga = {
           value: {
             it: 'il Pugno, Eroe della Marina',
             en: 'the Fist, Hero of the Marines',
+          },
+        },
+      ],
+    },
+    'thatch': {
+      chronicle: waterSevenChronicles.thatch,
+      role: {
+        it: 'Comandante della quarta divisione dei Pirati di Barbabianca',
+        en: 'Fourth division commander of the Whitebeard Pirates',
+      },
+      log: {
+        it: 'Comandava la quarta divisione della ciurma di Barbabianca, la stessa ciurma in cui Teach ha navigato per anni. Sulla nave di Barbabianca vale la regola che chi trova un frutto del diavolo può mangiarlo, e Satch teneva in mano proprio quello che Teach cercava da decenni. Teach lo ha ucciso per averlo, ed è per quell’omicidio che Ace ha attraversato il mare sulle sue tracce.',
+        en: 'He commanded the fourth division of Whitebeard’s crew, the same crew Teach sailed with for years. On Whitebeard’s ship the rule is that whoever finds a Devil Fruit may eat it, and Thatch was holding the very one Teach had hunted for decades. Teach killed him to get it, and that murder is what sent Ace across the sea on Teach’s trail.',
+      },
+      status: [{ episode: 325, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 325,
+          value: {
+            it: 'Pirati di Barbabianca, comandante della quarta divisione',
+            en: 'Whitebeard Pirates, fourth division commander',
           },
         },
       ],
