@@ -1920,7 +1920,7 @@ export const CHRONICLE_SOURCES = {
   'hattori': {
     232: {
       source: 'https://onepiece.fandom.com/wiki/Episode_232',
-      note: 'Naming. Episode 232 adapts Chapter 327 (Hattori page occupation Qref intro: chap 327, ep 232, "Hattori is introduced along with his master Lucci"). Chapter_327 Long Summary: Lucci brings Paulie back to Dock 1 "while being scolded by Hattori"; Hattori apologizes and explains Paulie is in debt; "Luffy tells Paulie that the true enemy is the pigeon, Hattori"; "Hattori introduces himself and Lucci. Nami finally realizes that Lucci is a ventriloquist"; Paulie says he always speaks through the pigeon. Episode_232 Long Summary: Paulie tries to run away with the money stolen by the Franky Family, Lucci stops him. Seen unnamed on Lucci in ep 230. Franky (filed 235) left unnamed: "the gang of dismantlers".',
+      note: 'Naming. Episode 232 adapts Chapter 326 p.14-17 and all of Chapter 327 p.2-19 (Episode_232 infobox), and its Characters in Order of Appearance lists Hattori beside Lucci; the introduction is on Chapter 327 p.3 (Hattori page occupation Qref intro: chap 327, ep 232, "Hattori is introduced along with his master Lucci"). Chapter_327 Long Summary: Lucci brings Paulie back to Dock 1 "while being scolded by Hattori"; Hattori apologizes and explains Paulie is in debt; "Luffy tells Paulie that the true enemy is the pigeon, Hattori"; "Hattori introduces himself and Lucci. Nami finally realizes that Lucci is a ventriloquist"; Paulie says he always speaks through the pigeon. Episode_232 Long Summary: Paulie tries to run away with the money stolen by the Franky Family, Lucci stops him. Seen unnamed on Lucci in ep 230. Franky (filed 235) left unnamed: "the gang of dismantlers".',
     },
     244: {
       source: 'https://onepiece.fandom.com/wiki/Episode_244',
@@ -2006,7 +2006,7 @@ export const CHRONICLE_SOURCES = {
   't-bone': {
     261: {
       source: 'https://onepiece.fandom.com/wiki/Episode_261',
-      note: 'Threshold entry: first episode that names him on screen (Zambai: “Ship-Slasher” T Bone, from the Navy, can slash through any ship). Folds in eps 257 (bandages a bitten arm with a piece of his cape, peace and kindness, Marines freaked out by his face), 258 (Chokkaku Senko cuts the door, the three are on car 5, the cars are detached) and 260 (the Sea King cut in half on the tracks). Episode_261: running on the tracks, ashamed of falling for a trap; proud captain of the Navy; Zoro blocks his attack and takes him down, he goes flying into the water; Zoro compliments his strength and T Bone, floating, compliments Zoro.',
+      note: 'Threshold entry: first episode that names him on screen (Zambai: “Ship-Slasher” T Bone, the Funimation wording of the epithet the record gives as Ship Cutter, from the Navy, can slash through any ship). Folds in eps 257 (bandages a bitten arm with a piece of his cape, peace and kindness, Marines freaked out by his face), 258 (Chokkaku Senko cuts the door, the three are on car 5, the cars are detached) and 260 (the Sea King cut in half on the tracks). Episode_261: running on the tracks, ashamed of falling for a trap; proud captain of the Navy; Zoro blocks his attack and takes him down, he goes flying into the water; Zoro compliments his strength and T Bone, floating, compliments Zoro.',
     },
     1116: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1116',
@@ -2100,7 +2100,7 @@ export const CHRONICLE_SOURCES = {
     },
     461: {
       source: 'https://onepiece.fandom.com/wiki/Episode_461',
-      note: 'Episode_461: Ace flashback, joining the Whitebeard Pirates, promotion, and leaving after Blackbeard kills Thatch against Whitebeard wishes. Thatch page: first to befriend Ace, who asks why he is not shackled on the Moby Dick (Chapter 552 p10, ep 461); anime-only scenes in 461 show them fighting back to back, Thatch giving Ace a drink at his commander banquet, and Thatch stabbed in the back. Novel and Vivre Card facts (head chef, North Blue) left out.',
+      note: 'Episode_461: Ace flashback, joining the Whitebeard Pirates, promotion, and leaving after Blackbeard kills Thatch against Whitebeard wishes. Thatch page: one of the first to befriend Ace, who asks why he is not shackled on the Moby Dick (Chapter 552 p10, ep 461); anime-only scenes in 461 show them fighting back to back, Thatch giving Ace a drink at his commander banquet, and Thatch stabbed in the back. Novel and Vivre Card facts (head chef, North Blue) left out.',
     },
   },
 }
