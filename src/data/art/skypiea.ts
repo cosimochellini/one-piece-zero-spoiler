@@ -1,4 +1,11 @@
-import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  polygon,
+  SEA,
+  shadow,
+} from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings } from './stroke'
 
@@ -441,6 +448,200 @@ export const skypieaArt = {
     },
     { d: 'M116 138 H132 q4 0 4 6 q0 8 -12 8 q-12 0 -12 -8 q0 -6 4 -6z' },
     { d: 'M118 152 V172 M124 154 V176 M130 152 V172' },
+  ],
+  // A fan of playing cards on a table, a hangman's noose above them.
+  'roshio': [
+    { d: 'M80 12 V42' },
+    { d: 'M73 42 H87 M73 47 H87' },
+    { d: ellipse(80, 62, 10, 14), role: 'accent' },
+    { d: 'M46 100 H78 V148 H46z', transform: 'rotate(-16 62 148)' },
+    { d: 'M64 96 H96 V144 H64z' },
+    { d: 'M82 100 H114 V148 H82z', transform: 'rotate(16 98 148)' },
+    { d: polygon(80, 120, 7, 4), role: 'accent' },
+    { d: 'M16 164 H144' },
+    shadow(80, 178, 44),
+  ],
+  // A big curved knife mid-spin, a couple of coins dropped beside it.
+  'sarquiss': [
+    {
+      d: 'M58 150 C62 118 70 88 92 60 C104 46 118 44 116 58 C112 80 94 108 72 154z',
+      role: 'accent',
+    },
+    { d: 'M64 146 C72 112 86 80 108 54', role: 'soft' },
+    { d: 'M50 148 L80 158' },
+    { d: 'M58 152 L46 178 M72 156 L60 182 M46 178 L60 182' },
+    { d: 'M30 70 q-12 40 8 80', role: 'ambient', dashed: true },
+    { d: 'M132 150 q14 -40 -6 -84', role: 'ambient', dashed: true },
+    { d: `${circle(112, 180, 5)} ${circle(127, 174, 5)}`, role: 'soft' },
+  ],
+  // A letter torn in two above a sabre, a wax seal still on one half.
+  'rockstar': [
+    { d: 'M28 58 H72 L68 74 L74 90 L68 106 H28z' },
+    { d: 'M84 62 H128 V110 H82 L88 94 L80 78z', transform: 'rotate(8 106 86)' },
+    { d: 'M36 70 H60 M36 82 H62 M36 94 H58', role: 'soft' },
+    { d: circle(106, 98, 6), role: 'accent' },
+    { d: 'M26 150 Q84 134 140 150', role: 'accent' },
+    { d: 'M26 150 l-8 -6 M22 142 v16' },
+    shadow(80, 176, 48),
+  ],
+  // A horseshoe with a pair of spotted wings spread from its sides.
+  'pierre': [
+    {
+      d: 'M56 150 V104 a24 24 0 0 1 48 0 V150 M68 150 V106 a12 12 0 0 1 24 0 V150',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [62, 118],
+        [62, 134],
+        [98, 118],
+        [98, 134],
+      ]),
+    },
+    { d: 'M54 110 C34 96 18 100 10 86 C26 88 30 80 22 70 C38 76 46 88 56 98' },
+    {
+      d: 'M106 110 C126 96 142 100 150 86 C134 88 130 80 138 70 C122 76 114 88 104 98',
+    },
+    { d: `${circle(30, 88, 3)} ${circle(130, 88, 3)}`, role: 'soft' },
+    shadow(80, 168, 36),
+  ],
+  // A little cloud with a long fox's tail curling out of it, paw prints below.
+  'su': [
+    {
+      d: 'M36 132 q-16 0 -12 -16 q2 -14 18 -12 q6 -18 26 -12 q12 -12 28 -2 q18 -4 20 14 q14 4 8 18 q-4 10 -16 10z',
+    },
+    {
+      d: 'M104 128 C132 120 144 92 128 72 C118 60 102 66 108 80 C114 92 124 90 122 80',
+      role: 'accent',
+    },
+    { d: 'M116 66 q-8 2 -8 10', role: 'soft' },
+    {
+      d: dots([
+        [40, 160],
+        [48, 166],
+        [60, 158],
+        [68, 164],
+        [80, 156],
+        [88, 162],
+      ]),
+      role: 'soft',
+    },
+    shadow(80, 178, 50),
+  ],
+  // A white beret resting on a ticket of fines, an official stamp in the corner.
+  'mckinley': [
+    { d: 'M36 84 C36 60 124 56 128 80 C130 92 40 96 36 84z' },
+    { d: 'M50 90 Q82 98 116 88' },
+    { d: 'M82 60 v-8' },
+    { d: 'M52 112 H108 V172 H52z' },
+    { d: 'M60 126 H100 M60 138 H100 M60 150 H86', role: 'soft' },
+    { d: circle(96, 160, 7), role: 'accent' },
+    shadow(80, 184, 40),
+  ],
+  // A sash strung with axe dials, broken ruins underneath it.
+  'yama': [
+    { d: 'M20 96 C60 120 100 120 140 96 M20 116 C60 140 100 140 140 116' },
+    {
+      d: `${circle(40, 112, 7)} ${circle(62, 121, 7)} ${circle(84, 124, 7)} ${circle(106, 121, 7)} ${circle(128, 112, 7)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M36 101 l4 -6 l4 6 M58 110 l4 -6 l4 6 M80 113 l4 -6 l4 6 M102 110 l4 -6 l4 6 M124 101 l4 -6 l4 6',
+      role: 'soft',
+    },
+    { d: 'M20 96 L8 84 M140 96 L152 84', role: 'ambient' },
+    {
+      d: 'M30 184 V152 H46 V164 H54 V184 M104 184 V158 L112 148 L120 158 V184',
+    },
+    {
+      d: dots([
+        [66, 182],
+        [76, 176],
+        [88, 184],
+      ]),
+      role: 'ambient',
+    },
+  ],
+  // A long feather over a flame spurting out of a dial shell.
+  'fuza': [
+    { d: 'M40 180 C60 130 92 76 128 24' },
+    { d: 'M128 24 C96 30 66 76 52 140 L60 144 C84 96 112 56 128 24z' },
+    { d: 'M70 110 l-12 -4 M82 88 l-12 -6 M96 66 l-10 -6', role: 'soft' },
+    {
+      d: 'M118 160 c-10 -12 -2 -24 6 -30 c0 10 8 12 10 4 c8 10 6 22 -4 28z',
+      role: 'accent',
+    },
+    { d: 'M100 176 C100 164 110 158 120 158 C130 158 140 164 140 176z' },
+    { d: 'M120 158 V176 M110 161 L106 176 M130 161 L134 176', role: 'ambient' },
+    shadow(110, 186, 40),
+  ],
+  // A boxing glove hanging by its laces above a dog's bowl.
+  'holy': [
+    {
+      d: 'M60 40 C40 40 34 64 38 84 C42 104 58 114 80 114 C104 114 118 98 116 74 C114 52 100 40 84 42 C78 36 68 36 60 40z',
+    },
+    { d: 'M60 62 C52 66 52 80 62 84', role: 'soft' },
+    { d: 'M58 114 H102 V132 H58z', role: 'accent' },
+    { d: 'M66 120 L94 126 M66 126 L94 120', role: 'ambient' },
+    { d: 'M80 36 V12' },
+    { d: 'M44 160 H116 L108 180 H52z' },
+    { d: ellipse(80, 160, 36, 6) },
+    shadow(80, 188, 40),
+  ],
+  // A chief's staff hung with fur and feathers, beside a carved stone block.
+  'shandia-chief': [
+    { d: 'M56 188 V40' },
+    { d: 'M48 40 H64 L60 24 H52z', role: 'accent' },
+    { d: 'M46 48 q10 16 20 0 q-2 14 -10 18 q-8 -4 -10 -18z', role: 'soft' },
+    { d: 'M50 60 q-14 12 -12 30 M62 60 q14 12 12 30' },
+    { d: 'M92 96 H144 V176 H92z' },
+    {
+      d: 'M100 110 H136 M100 124 H130 M100 138 H136 M100 152 H124',
+      role: 'ambient',
+    },
+    shadow(100, 184, 50),
+  ],
+  // A white cap marked with dark arches, and the rock he scraped his arm with.
+  'seto': [
+    { d: 'M40 120 C40 80 60 62 84 62 C108 62 124 80 124 120z' },
+    { d: 'M36 120 H128 V130 H36z' },
+    {
+      d: 'M56 112 v-12 a6 6 0 0 1 12 0 v12 M78 112 v-16 a6 6 0 0 1 12 0 v16 M100 112 v-12 a6 6 0 0 1 12 0 v12',
+      role: 'accent',
+    },
+    { d: 'M104 176 L112 156 L132 150 L146 164 L140 180z' },
+    { d: 'M112 156 L122 170 L140 180', role: 'soft' },
+    {
+      d: 'M24 40 l-4 10 M48 30 l-4 10 M120 36 l-4 10 M144 48 l-4 10',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(84, 186, 50),
+  ],
+  // A stone altar standing in the water, its ropes cut and a knife left on it.
+  'mousse': [
+    { d: 'M36 120 H124 V140 H36z' },
+    { d: 'M48 140 L40 162 H120 L112 140' },
+    { d: 'M56 120 q-6 10 -14 12 M104 120 q6 10 14 12', role: 'soft' },
+    { d: 'M62 112 L110 104 L114 108 L66 116z', role: 'accent' },
+    { d: 'M62 112 L50 114 L52 118 L66 116' },
+    ...SEA.slice(1),
+  ],
+  // The golden bell of the ruins, a long striped tail coiled at its foot.
+  'nola': [
+    { d: 'M58 110 C58 70 66 48 80 48 C94 48 102 70 102 110 L110 122 H50z' },
+    { d: 'M74 48 V40 H86 V48' },
+    { d: circle(80, 130, 5) },
+    {
+      d: 'M20 170 C40 150 80 190 120 164 C140 150 150 160 140 172 C124 188 70 184 40 176',
+      role: 'accent',
+    },
+    {
+      d: 'M44 164 l4 10 M70 172 l2 10 M100 170 l-2 10 M124 162 l-4 10',
+      role: 'soft',
+    },
+    { d: 'M40 70 q-8 10 0 20 M120 70 q8 10 0 20', role: 'ambient' },
+    shadow(80, 192, 56),
   ],
 } satisfies Drawings
 

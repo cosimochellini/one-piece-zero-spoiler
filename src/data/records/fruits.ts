@@ -311,6 +311,18 @@ export const devilFruits: Saga = {
       visual: { art: 'spring-spring-fruit', tint: 'yellow' },
     },
     {
+      id: 'horse-horse-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 153,
+      revealedAtChapter: 238,
+      name: { it: 'Frutto Ippo Ippo', en: 'Horse-Horse Fruit' },
+      summary: {
+        it: 'Trasforma in un cavallo chi lo mangia: un uccello che ne ha mangiato uno diventa un cavallo con le ali, anche se chi se lo aspettava leggendario resta deluso da quanto sembra normale.',
+        en: 'Turns whatever eats it into a horse: a bird fed one becomes a horse with wings, though anyone expecting a creature of legend is let down by how ordinary it looks.',
+      },
+      visual: { art: 'horse-horse-fruit', tint: 'pink' },
+    },
+    {
       id: 'rumble-rumble-fruit',
       kind: 'fruit',
       revealedAtEpisode: 158,

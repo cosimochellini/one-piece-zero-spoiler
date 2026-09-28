@@ -148,6 +148,13 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'scales',
   }),
+  'horse-horse-fruit': fruit({
+    body: 'pear',
+    grain: 4,
+    leaf: 'right',
+    stem: 'nub',
+    swirl: 'waves',
+  }),
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
   'slow-slow-fruit': fruit({
     body: 'heart',

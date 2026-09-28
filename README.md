@@ -65,7 +65,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 533 records and 534 line drawings — about 900 KB of TypeScript.
+The archive is 559 records and 560 line drawings — about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 out of the request and sends back the records at or below the bookmark, with
 their strings already resolved to the page's locale and their drawings already
@@ -115,12 +115,12 @@ browser at all rather than there and declined.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 545                                                                   |
-| Characters          | 374                                                                   |
-| Devil fruits        | 125                                                                   |
+| Records             | 559                                                                   |
+| Characters          | 387                                                                   |
+| Devil fruits        | 126                                                                   |
 | Arcs, places, ships | 34 · 10 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 546: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 560: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 553                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -149,8 +149,8 @@ moon as a silhouette, with a hairline of the route gold around her profile,
 because a ship the size of a headline drawn in outline read as a diagram of a
 ship.
 
-The 125 devil fruits are the one set that is grown rather than drawn one at a
-time. A hundred and twenty-five drawings of the same object have to read as one
+The 126 devil fruits are the one set that is grown rather than drawn one at a
+time. A hundred and twenty-six drawings of the same object have to read as one
 set and still be a hundred and twenty drawings, so each one is composed from a
 seed written beside its id — one of six silhouettes, one of four marks, a stalk
 and a leaf — and the eleven a reader arrives already knowing are drawn by hand
@@ -278,11 +278,11 @@ reader who tapped a link a friend sent.
 - **The archive is not in the bundle.** Moving it behind the loaders took the
   client JavaScript from 1,048,559 bytes to 450,058 — and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
-  not all 533. Adding the 120 devil fruits, their drawings and two more pages
+  not all 559. Adding the 120 devil fruits, their drawings and two more pages
   cost 31 KB of client JavaScript and not one byte of archive.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary side by side; it now carries the page's own.
-- The shelves — 362 tiles with a drawing each, below the fold — are returned
+- The shelves — 387 tiles with a drawing each, below the fold — are returned
   from the loader as an un-awaited promise and stream into a `<Suspense>`
   boundary, so the search field and the crests above them are up first. The
   landing chart, the ship's log and a character's dossier are awaited instead:

@@ -36,6 +36,7 @@ export const FRUIT_FORMS = {
   'cage-cage-fruit': 'paramecia',
   'flower-flower-fruit': 'paramecia',
   'spring-spring-fruit': 'paramecia',
+  'horse-horse-fruit': 'zoan',
   'rumble-rumble-fruit': 'logia',
   'slow-slow-fruit': 'paramecia',
   'ice-ice-fruit': 'logia',

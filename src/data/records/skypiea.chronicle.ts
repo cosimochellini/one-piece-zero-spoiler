@@ -11,8 +11,8 @@ export const skypieaChronicles = {
           en: 'A hundred million before it reaches the sky',
         },
         body: {
-          it: 'A Mock Town, mentre la strada parla ancora del pestaggio di [[bellamy|Bellamy]], un uomo enorme che ride studia il nuovo manifesto di taglia di [[monkey-d-luffy|Rufy]]: cento milioni di berry. Sarquiss lo spintona e finisce con la faccia nella polvere, senza una scusa. Lo sconosciuto dice di non avere interesse per i deboli, solo per l’uomo che vale tanto, e si volta per andarsene, già a parlare con la sua ciurma di una raccomandazione che lo aspetta a Mary Geoise, dove il seggio di un Corsaro è appena rimasto vuoto. A Mock Town nessuno impara il suo nome: Marshall D. Teach.',
-          en: 'In Mock Town, while the street still talks about [[bellamy|Bellamy]]’s beating, a laughing giant of a man studies [[monkey-d-luffy|Luffy]]’s new wanted poster: a hundred million berries. Sarquiss shoves him aside and gets his face buried in the dirt without a word of apology. The stranger says he has no use for weaklings, only for the one man worth that much, and turns to leave, already talking with his crew about a recommendation waiting for him at Mary Geoise, where a Warlord’s seat has just come open. Mock Town never learns his name: Marshall D. Teach.',
+          it: 'A Mock Town, mentre la strada parla ancora del pestaggio di [[bellamy|Bellamy]], un uomo enorme che ride studia il nuovo manifesto di taglia di [[monkey-d-luffy|Rufy]]: cento milioni di berry. [[sarquiss|Cirkeys]] lo spintona e finisce con la faccia nella polvere, senza una scusa. Lo sconosciuto dice di non avere interesse per i deboli, solo per l’uomo che vale tanto, e si volta per andarsene, già a parlare con la sua ciurma di una raccomandazione che lo aspetta a Mary Geoise, dove il seggio di un Corsaro è appena rimasto vuoto. A Mock Town nessuno impara il suo nome: Marshall D. Teach.',
+          en: 'In Mock Town, while the street still talks about [[bellamy|Bellamy]]’s beating, a laughing giant of a man studies [[monkey-d-luffy|Luffy]]’s new wanted poster: a hundred million berries. [[sarquiss|Sarquiss]] shoves him aside and gets his face buried in the dirt without a word of apology. The stranger says he has no use for weaklings, only for the one man worth that much, and turns to leave, already talking with his crew about a recommendation waiting for him at Mary Geoise, where a Warlord’s seat has just come open. Mock Town never learns his name: Marshall D. Teach.',
         },
       },
     },
@@ -309,8 +309,8 @@ export const skypieaChronicles = {
       value: {
         title: { it: 'Punizione a Mock Town', en: 'Punishment in Mock Town' },
         body: {
-          it: 'A Mock Town, Doflamingo si appollaia su una colonna e rivolge i suoi fili contro [[bellamy|Bellamy]] e Sarquiss, come punizione per la sconfitta contro [[monkey-d-luffy|Rufy]]. Bellamy implora un’altra possibilità; Doflamingo ha già deciso che è superato, e costringe la mano di Sarquiss a colpire il proprio capitano, una ferita che Bellamy sopravvive solo perché Doflamingo glielo permette. È una crudeltà piccola e casuale, finita quasi prima di iniziare, che dice a chiunque guardi quanto poco un Corsaro valuti i pirati che lo deludono.',
-          en: 'In Mock Town, Doflamingo perches on a column and turns his strings on [[bellamy|Bellamy]] and Sarquiss as punishment for losing to [[monkey-d-luffy|Luffy]]. Bellamy begs for another chance; Doflamingo has already decided he is obsolete, and forces Sarquiss’s own hand to slash his captain instead, a wound Bellamy survives only because Doflamingo lets him. It is a small, casual cruelty, over almost before it starts, and it tells anyone watching exactly how little a Warlord values the pirates who fail him.',
+          it: 'A Mock Town, Doflamingo si appollaia su una colonna e rivolge i suoi fili contro [[bellamy|Bellamy]] e [[sarquiss|Cirkeys]], come punizione per la sconfitta contro [[monkey-d-luffy|Rufy]]. Bellamy implora un’altra possibilità; Doflamingo ha già deciso che è superato, e costringe la mano di Cirkeys a colpire il proprio capitano, una ferita che Bellamy sopravvive solo perché Doflamingo glielo permette. È una crudeltà piccola e casuale, finita quasi prima di iniziare, che dice a chiunque guardi quanto poco un Corsaro valuti i pirati che lo deludono.',
+          en: 'In Mock Town, Doflamingo perches on a column and turns his strings on [[bellamy|Bellamy]] and [[sarquiss|Sarquiss]] as punishment for losing to [[monkey-d-luffy|Luffy]]. Bellamy begs for another chance; Doflamingo has already decided he is obsolete, and forces Sarquiss’s own hand to slash his captain instead, a wound Bellamy survives only because Doflamingo lets him. It is a small, casual cruelty, over almost before it starts, and it tells anyone watching exactly how little a Warlord values the pirates who fail him.',
         },
       },
     },
@@ -426,6 +426,450 @@ export const skypieaChronicles = {
         body: {
           it: 'Ener scaglia duecento milioni di volt di El Thor dritti su [[monkey-d-luffy|Rufy]], certo che la gomma abbia finalmente esaurito la fortuna contro un colpo di quella portata. Non è così: il pugno di Rufy incontra il fulmine di petto e continua ad avanzare, ed Ener viene scagliato giù dal cielo che ha dominato per anni. In basso, la Campana d’Oro suona su Skypiea e Shandora insieme, chiudendo quattrocento anni di guerra in un solo rintocco. Ener sopravvive, sbalzato verso il Mare Blu e, oltre di esso, verso la luna che ha sempre voluto raggiungere.',
           en: 'Enel throws two hundred million volts of El Thor straight at [[monkey-d-luffy|Luffy]], certain rubber has finally run out of luck against a strike that size. It does not; Luffy’s fist meets the bolt head-on and keeps moving, and Enel is thrown from the sky he has ruled for years. Down below, the Golden Bell rings out over Skypiea and Shandora both, ending four hundred years of war in a single sound. Enel survives, hurled toward the Blue Sea and, beyond it, the moon he always meant to reach.',
+        },
+      },
+    },
+  ],
+  'roshio': [
+    {
+      episode: 146,
+      value: {
+        title: {
+          it: 'Una mano vincente a Mock Town',
+          en: 'A winning hand in Mock Town',
+        },
+        body: {
+          it: 'In un bar di Mock Town, Roshio vince una mano a carte contro [[bellamy|Bellamy]], e Bellamy non ci sta. Gli afferra il braccio, dice che ha barato e chiede al suo compagno [[sarquiss|Cirkeys]] se l’ha visto; Cirkeys giura di sì. Roshio nega fino all’ultimo. Bellamy risponde con la pistola, poi lo manda in strada attraverso la finestra, dove la sua ciurma prova a portarlo via. Bellamy scende a finire il lavoro. Poco dopo al bancone se ne parla già, e chi racconta la storia sa bene che il trucco era solo una scusa.',
+          en: 'In a Mock Town bar, Roshio wins a hand of cards against [[bellamy|Bellamy]], and Bellamy will not accept it. He seizes Roshio’s arm, calls the win cheating and asks his crewmate [[sarquiss|Sarquiss]] whether he saw it; Sarquiss swears he did. Roshio denies it to the end. Bellamy answers with his pistol, then sends him out through the window into the street, where his crew tries to carry him away. Bellamy comes down after them to finish the job. Soon the bar is telling the story, and the men telling it know the cheating was only an excuse.',
+        },
+      },
+    },
+  ],
+  'sarquiss': [
+    {
+      episode: 146,
+      value: {
+        title: {
+          it: 'Spiccioli per i nuovi arrivati',
+          en: 'Pocket money for the new arrivals',
+        },
+        body: {
+          it: 'Quando [[bellamy|Bellamy]] perde a carte contro [[roshio|Roshio]] e grida al trucco, Cirkeys si volta dal bancone e giura di averlo visto, e Roshio finisce fuori dalla finestra. Tornato all’albergo che la sua ciurma ha affittato per intero, trova [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[nami|Nami]] che vengono cacciati sulla porta. Rufy chiede se può prenderlo a calci; Nami dice di no. Cirkeys lascia cadere dei soldi davanti a loro, perché si comprino dei vestiti decenti, e Nami trascina via Rufy prima che li raccolga. Poi un compagno gli mostra il manifesto di taglia di Rufy: trenta milioni. Roba da poco, ma vale la pena dirlo al capitano.',
+          en: 'When [[bellamy|Bellamy]] loses at cards to [[roshio|Roshio]] and cries cheat, Sarquiss turns from the bar and swears he saw it, and Roshio goes out through the window. Back at the hotel his crew has rented whole, he finds [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[nami|Nami]] being turned away at the door. Luffy asks whether he may kick him; Nami says no. Sarquiss drops some money in front of them so they can buy decent clothes, and Nami drags Luffy off before he can pick it up. Then a crewmate shows him Luffy’s wanted poster: thirty million. Small change, but worth mentioning to the captain.',
+        },
+      },
+    },
+    {
+      episode: 150,
+      value: {
+        title: { it: 'Prendersi l’oro', en: 'Taking the gold' },
+        body: {
+          it: 'I Pirati di Bellamy vanno a casa di [[montblanc-cricket|Cricket]] a prendersi il suo oro, mentre la ciurma di Cappello di paglia è nella foresta. Cirkeys e gli altri attaccano per primi Cricket, [[masira|Masira]] e [[shoujou|Shojo]], ma a chiudere la faccenda deve essere [[bellamy|Bellamy]], che li travolge tutti e tre a colpi di molla. La ciurma si porta via l’oro e lascia la Going Merry malconcia, con il simbolo di Bellamy sullo scafo. Al bar di Mock Town, Cirkeys sta raccontando l’impresa quando entra un ubriaco con i nuovi manifesti di [[monkey-d-luffy|Rufy]] e [[roronoa-zoro|Zoro]], più alti di quello di Bellamy. Bellamy li dice gonfiati; poi fuori c’è Rufy che grida il suo nome.',
+          en: 'The Bellamy Pirates come to [[montblanc-cricket|Cricket]]’s house for his gold while the Straw Hats are off in the forest. Sarquiss and the crew go in first against Cricket, [[masira|Masira]] and [[shoujou|Shoujou]], but it is [[bellamy|Bellamy]] who has to settle it, bouncing through all three on his springs. The crew carries off the gold and leaves the Going Merry battered, with Bellamy’s mark on her hull. Back at the bar in Mock Town, Sarquiss is telling the story when a drunk walks in with new wanted posters for [[monkey-d-luffy|Luffy]] and [[roronoa-zoro|Zoro]], worth more than Bellamy’s own. Bellamy calls them inflated; then Luffy is outside, shouting his name.',
+        },
+      },
+    },
+    {
+      episode: 151,
+      value: {
+        title: { it: 'Dove è diretto', en: 'Where he is going' },
+        body: {
+          it: 'Cirkeys guarda lo scontro convinto che il manifesto da cento milioni di [[monkey-d-luffy|Rufy]] sia un falso, e si chiede ad alta voce se fosse vero almeno quello vecchio da trenta. Poi un solo pugno fa sprofondare [[bellamy|Bellamy]] fra le assi, e Cirkeys urla al suo capitano di smetterla di scherzare. Quando Rufy se ne va con l’oro di [[montblanc-cricket|Cricket]], Cirkeys prova a inseguirlo ed è la sua stessa ciurma a trattenerlo; gli chiede dove sia diretto, e cade all’indietro quando Rufy si volta e alza un pugno sporco di sangue. Rufy indica soltanto in alto: il cielo. Più tardi, di pessimo umore, Cirkeys urta uno sconosciuto che ride, [[marshall-d-teach|Teach]], e si ritrova con la testa piantata nel terreno.',
+          en: 'Sarquiss watches the fight sure that [[monkey-d-luffy|Luffy]]’s hundred-million poster is a fake, and wonders aloud whether the old thirty million was real either. Then one punch puts [[bellamy|Bellamy]] through the boardwalk, and Sarquiss yells at his captain to stop fooling around. When Luffy walks off with [[montblanc-cricket|Cricket]]’s gold, Sarquiss tries to go after him and is held back by his own crew; he demands to know where Luffy is headed, and falls over backwards when Luffy turns and raises a bloody fist. Luffy only points up: the sky. Later, in a foul mood, Sarquiss shoves into a laughing stranger, [[marshall-d-teach|Teach]], and ends up with his head buried in the ground.',
+        },
+      },
+    },
+    {
+      episode: 207,
+      value: {
+        title: { it: 'La sua stessa lama', en: 'His own blade' },
+        body: {
+          it: 'Quando la ciurma di Cappello di paglia è ormai salita in cielo, [[donquixote-doflamingo|Do Flamingo]] si presenta a Mock Town e si appollaia su una colonna sopra i Pirati di Bellamy. Hanno perso contro [[monkey-d-luffy|Rufy]], ed è venuto per questo. [[bellamy|Bellamy]] implora un’altra possibilità. Do Flamingo decide che la ciurma non gli serve più e con i suoi fili muove il braccio di Cirkeys al posto suo: Cirkeys può solo guardare il proprio coltello abbattersi sul suo capitano. Bellamy sopravvive al colpo.',
+          en: 'With the Straw Hats gone up to the sky, [[donquixote-doflamingo|Doflamingo]] turns up in Mock Town and perches on a column above the Bellamy Pirates. They have lost to [[monkey-d-luffy|Luffy]], and that is what he has come about. [[bellamy|Bellamy]] begs for another chance. Doflamingo decides the crew is no use to him any more, and with his strings he moves Sarquiss’s arm for him: Sarquiss can only watch his own knife come down on his captain. Bellamy survives the blow.',
+        },
+      },
+    },
+  ],
+  'rockstar': [
+    {
+      episode: 151,
+      value: {
+        title: {
+          it: 'Una lettera per Barbabianca',
+          en: 'A letter for Whitebeard',
+        },
+        body: {
+          it: 'Da qualche parte in mare, Rockstar sale a bordo della nave di [[edward-newgate|Barbabianca]] con una lettera di [[shanks|Shanks]]. Si presenta come l’ultimo arrivato dei Pirati del Rosso e chiede se hanno sentito parlare di lui; gli uomini sul ponte no, e si fanno beffe del messaggero. Barbabianca strappa la lettera. Se Shanks ha qualcosa da dirgli, spiega a Rockstar, venga a dirglielo di persona, e porti del buon liquore. Al lumacofono Rockstar chiede di poter rispondere all’offesa. Shanks ride che il vecchio non cambia mai, si scusa per il disturbo e lo richiama, poi dice alla ciurma di prepararsi a salpare.',
+          en: 'Somewhere at sea, Rockstar climbs aboard [[edward-newgate|Whitebeard]]’s ship with a letter from [[shanks|Shanks]]. He introduces himself as the newest of the Red Hair Pirates and asks whether they have heard of him; the men on deck have not, and they make fun of the messenger. Whitebeard tears the letter up. If Shanks has something to say, he tells Rockstar, he can come and say it himself, and bring good drink with him. Over the transponder snail Rockstar asks for the chance to answer the insult. Shanks laughs that the old man never changes, apologises for the trouble and calls him back, then tells his crew to get ready to sail.',
+        },
+      },
+    },
+    {
+      episode: 1109,
+      value: {
+        title: { it: 'Notizia di un attacco', en: 'Word of an attack' },
+        body: {
+          it: 'Molto tempo dopo quella lettera, Rockstar è ancora con [[shanks|Shanks]] quando i Pirati del Rosso bevono a terra, sull’isola dei giganti. È lui a portare la notizia: [[eustass-kid|Kid]] e la sua ciurma stanno di nuovo attaccando la flotta, e chiede se si va in guerra. Shanks risponde di sì. La ciurma prende il mare con [[dorry|Dorry]] e [[brogy|Broggy]] al fianco, e Shanks manda a Kid le sue condizioni: combattere, oppure consegnare le copie del Poneglifo della Via e andarsene illeso. Kid sceglie di combattere.',
+          en: 'Long after that letter, Rockstar is still with [[shanks|Shanks]] when the Red Hair Pirates are drinking ashore on the giants’ island. He is the one who brings the news: [[eustass-kid|Kid]] and his crew are attacking the fleet again, and he asks whether they are going to war. Shanks says they are. The crew puts to sea with [[dorry|Dorry]] and [[brogy|Brogy]] beside them, and Shanks sends Kid his terms: fight, or hand over the Road Poneglyph copies and leave unharmed. Kid chooses to fight.',
+        },
+      },
+    },
+  ],
+  'pierre': [
+    {
+      episode: 153,
+      value: {
+        title: { it: 'Pegaso, più o meno', en: 'Pegasus, more or less' },
+        body: {
+          it: 'La Going Merry naviga sul Mare Bianco quando un uomo mascherato con un bazooka stende tre della ciurma e prende la mira. Un vecchio cavaliere in sella a un grosso uccello a pois lo respinge con la lancia e atterra sul ponte: il Cavaliere del cielo, [[gan-fall|Gan Fall]], con il suo uccello Pierre. Il salvataggio è offerto dalla casa. Lascia loro un fischietto per chiamarlo gratis un’altra volta e, prima di andarsene, fa mostrare a Pierre il suo frutto del diavolo: l’uccello si trasforma in un cavallo alato. La ciurma si aspettava qualcosa di più da un Pegaso.',
+          en: 'The Going Merry is out on the White Sea when a masked man with a bazooka knocks down three of the crew and takes aim. An old knight riding a big spotted bird drives him off with a lance and lands on deck: the Sky Knight, [[gan-fall|Gan Fall]], and his bird Pierre. The rescue is on the house. He leaves them a whistle to call him once more for free, and before going he has Pierre show off his devil fruit: the bird turns into a winged horse. The crew had expected something grander from a Pegasus.',
+        },
+      },
+    },
+    {
+      episode: 164,
+      value: {
+        title: { it: 'Due che non sanno nuotare', en: 'Two who cannot swim' },
+        body: {
+          it: 'Quando [[tony-tony-chopper|Chopper]] soffia nel fischietto all’altare, Pierre lo sente e [[gan-fall|Gan Fall]] vola subito in suo aiuto. Arrivano mentre [[shura|Shura]] sta per uccidere Chopper, e il cavaliere e il suo uccello affrontano il sacerdote in volo. Perdono. Gan Fall e Pierre finiscono nel mare di nuvole; Chopper si tuffa a salvarli e solo allora si ricorda di non saper nuotare, e nemmeno Pierre, che come lui ha mangiato un frutto del diavolo. Sembra la fine per tutti e tre, finché un uccello sbucato dal nulla li tira fuori. Chopper si risveglia in mezzo a uno stormo di enormi uccelli del sud.',
+          en: 'When [[tony-tony-chopper|Chopper]] blows the whistle at the altar, Pierre hears it, and [[gan-fall|Gan Fall]] flies straight to his aid. They arrive just as [[shura|Shura]] is about to kill Chopper, and the knight and his bird take the priest on in the air. They lose. Gan Fall and Pierre fall into the sea of clouds; Chopper dives in after them and only then remembers that he cannot swim, and neither can Pierre, who has eaten a devil fruit too. It looks like the end for all three until a bird comes out of nowhere and pulls them out. Chopper wakes up among a flock of huge south birds.',
+        },
+      },
+    },
+    {
+      episode: 168,
+      value: {
+        title: { it: 'Morsi per i maleducati', en: 'Bites for the rude' },
+        body: {
+          it: 'Sulla Going Merry, lungo la Milky Road, [[gan-fall|Gan Fall]] racconta a [[nami|Nami]], [[sanji|Sanji]] e [[usopp|Usop]] che fino a sei anni prima il Dio di Skypiea era lui. Usop gli chiede se ha battuto la testa, e Pierre, con il muso da cavallo, gli morde la sua. Il vecchio prosegue: quando quattrocento anni fa l’isola arrivò dal Mare Blu, gli Shandia ci vivevano già, e la sua gente li cacciò. Sanji e Usop dicono che il torto era degli abitanti del cielo, e vengono morsi tutti e due. Gan Fall non ribatte: la colpa se la prende lui.',
+          en: 'On the Going Merry, heading down the Milky Road, [[gan-fall|Gan Fall]] tells [[nami|Nami]], [[sanji|Sanji]] and [[usopp|Usopp]] that until six years ago he was the God of Skypiea. Usopp asks whether he fell on his head, and Pierre, horse-headed for the occasion, bites his. The old man goes on: when the island came up from the Blue Sea four hundred years ago, the Shandia already lived on it, and his people drove them out. Sanji and Usopp say the sky people were in the wrong, and both get bitten. Gan Fall does not argue; he takes the blame himself.',
+        },
+      },
+    },
+    {
+      episode: 185,
+      value: {
+        title: { it: 'Uno scudo di piume', en: 'A shield of feathers' },
+        body: {
+          it: 'Pierre porta in volo [[aisa|Aisa]] e [[monkey-d-luffy|Rufy]] dietro l’Arca e dal basso segue lo scontro con [[enel|Ener]]. Quando Rufy è in difficoltà, l’uccello e la bambina gli volano vicino per aiutarlo, ed Ener, che quelle due voci in più le sentiva da tempo, scaglia un giudizio di fulmini contro tutti e tre. Pierre mette il suo corpo fra la scarica e Aisa. Più tardi, in una buca nel terreno, Aisa piange su di lui che giace immobile, e lo ringrazia per averla protetta.',
+          en: 'Pierre carries [[aisa|Aisa]] and [[monkey-d-luffy|Luffy]] after the Ark and watches the fight with [[enel|Enel]] from below. When Luffy is in trouble, the bird and the girl fly in close to help him, and Enel, who has felt their two extra voices all along, turns a judgment of lightning on the three of them. Pierre puts his body between the bolt and Aisa. Afterwards, in a hole in the ground, Aisa cries over him where he lies without moving, and thanks him for protecting her.',
+        },
+      },
+    },
+  ],
+  'su': [
+    {
+      episode: 154,
+      value: {
+        title: { it: 'Una volpe sulla spiaggia', en: 'A fox on the beach' },
+        body: {
+          it: 'La ciurma di Cappello di paglia mette piede sulla soffice spiaggia bianca di Skypiea e si sta ancora meravigliando delle nuvole quando le si avvicina una piccola volpe, e qualcuno si chiede che animale sia. La ragazza che suona lì vicino risponde: una volpe delle nuvole, di nome Suu. Suu guarda [[monkey-d-luffy|Rufy]] non riuscire a guidare un waver e [[nami|Nami]] cavalcarlo come se si esercitasse da anni, poi segue tutti a casa per cena. A fine pasto il discorso è arrivato all’unico posto dell’isola in cui nessuno può entrare.',
+          en: 'The Straw Hats step onto the soft white beach of Skypiea and are still marvelling at the clouds when a small fox comes up to them, and someone wonders what it is. The girl playing music nearby answers: a cloud fox, called Su. Su watches [[monkey-d-luffy|Luffy]] fail to steer a Waver and [[nami|Nami]] ride it as if she had practised for years, then follows the whole crew home to dinner. By the end of the meal the talk has turned to the one place on the island that nobody may enter.',
+        },
+      },
+    },
+    {
+      episode: 172,
+      value: {
+        title: { it: 'Raccolta in mare', en: 'Picked up at sea' },
+        body: {
+          it: '[[aisa|Aisa]] è sola su una barca a dial quando il motore la pianta e uno squalo del cielo gliene divora metà. [[conis|Conis]] e [[pagaya|Pagaya]] arrivano in tempo per tirarla fuori, con Suu a bordo come sempre, e Conis presenta alla bambina Suu e suo padre. Aisa chiede di essere portata a Upper Yard. Conis spiega che stanno già andando là, per guidare la ciurma di Cappello di paglia fuori dal cielo, e chiede ad Aisa di fare loro da guida.',
+          en: '[[aisa|Aisa]] is alone in a dial boat when it breaks down and a sky shark bites half of it away. [[conis|Conis]] and [[pagaya|Pagaya]] arrive in time to pull her out, with Su aboard as always, and Conis introduces the girl to Su and to her father. Aisa asks to be taken to Upper Yard. Conis explains that they are on their way there already, to lead the Straw Hats down out of the sky, and asks Aisa to guide them.',
+        },
+      },
+    },
+    {
+      episode: 179,
+      value: {
+        title: { it: 'Di guardia', en: 'Left on watch' },
+        body: {
+          it: 'All’ancora nel punto d’incontro, [[pagaya|Pagaya]] mette Suu di guardia alla Going Merry. Quando vede qualcuno sulla riva lancia l’allarme finché [[conis|Conis]] e Pagaya non accorrono, anche se Pagaya sulle prime pensa che abbia solo fame. L’uomo ferito è uno dei soldati di [[gan-fall|Gan Fall]] e porta una notizia: [[enel|Ener]] vuole distruggere l’isola intera. Un attimo dopo un fulmine si abbatte dove si trovano lui e Pagaya. Conis decide di andare ad avvertire Angel Island e affida a Suu [[usopp|Usop]] e [[sanji|Sanji]], privi di sensi sottocoperta.',
+          en: 'At anchor by the meeting point, [[pagaya|Pagaya]] puts Su on watch over the Going Merry. When she spots someone on the shore she raises the alarm until [[conis|Conis]] and Pagaya come, though Pagaya first guesses she is only hungry. The wounded man is one of [[gan-fall|Gan Fall]]’s soldiers, and he brings word that [[enel|Enel]] means to destroy the whole island. A moment later lightning comes down where he and Pagaya stand. Conis resolves to go and warn Angel Island, and leaves Su in charge of [[usopp|Usopp]] and [[sanji|Sanji]], unconscious below deck.',
+        },
+      },
+    },
+    {
+      episode: 185,
+      value: {
+        title: {
+          it: 'Nessuno ascolta una volpe',
+          en: 'Nobody listens to a fox',
+        },
+        body: {
+          it: '[[sanji|Sanji]] si sveglia sulla Going Merry, vede [[nami|Nami]] a bordo dell’arca volante sopra la foresta e si trascina dietro [[usopp|Usop]] su per una corda, ferite comprese. Suu, a cui erano stati affidati, prova a fermarli senza riuscirci. Quando [[conis|Conis]] torna alla nave e non li trova più, Suu è agitatissima e le spiega a gesti cos’hanno fatto. Conis pensa che sia troppo pericoloso per due uomini ridotti così, e prega per loro.',
+          en: '[[sanji|Sanji]] wakes on the Going Merry, sees [[nami|Nami]] aboard the flying ark above the forest and drags [[usopp|Usopp]] up a rope after her, wounds and all. Su, who was left in charge of them, tries to stop them and cannot. When [[conis|Conis]] comes back to the ship and finds them gone, Su is frantic, and tells her with gestures what they have done. Conis thinks it far too dangerous for two men in their state, and prays for them.',
+        },
+      },
+    },
+  ],
+  'mckinley': [
+    {
+      episode: 156,
+      value: {
+        title: { it: 'Multati per tutto', en: 'Fined for everything' },
+        body: {
+          it: 'I White Berets arrivano sulla spiaggia per la tassa d’ingresso che la ciurma di Cappello di paglia non ha mai pagato. Mentre tutti si preoccupano per [[nami|Nami]], McKinley, il loro capitano, trova un reato in ogni cosa: possedere un waver, colpire un pesce raro che stava per mangiare [[conis|Conis]], le parole di [[roronoa-zoro|Zoro]] sul tagliarlo a pezzi, e infine sdraiarsi a dormire, che è inquinamento. [[usopp|Usop]] cerca di tenere la pace. Poi Nami torna, sente quanto costa la tassa e investe McKinley con il suo waver. I suoi uomini attaccano [[monkey-d-luffy|Rufy]] e vengono battuti subito, e McKinley ride: ormai sono criminali di seconda classe, e a giudicarli saranno i sacerdoti di Upper Yard.',
+          en: 'The White Berets reach the beach over the entry fee the Straw Hats never paid. While the crew worries about [[nami|Nami]], McKinley, their captain, finds a crime in everything they do: owning a Waver, hitting a rare fish that was about to eat [[conis|Conis]], [[roronoa-zoro|Zoro]] talking about cutting him, and finally lying down to sleep, which is pollution. [[usopp|Usopp]] tries to keep the peace. Then Nami comes back, hears the size of the fee and runs McKinley over with her Waver. His men attack [[monkey-d-luffy|Luffy]] and are beaten at once, and McKinley laughs: they are criminals of the second class now, and the priests of Upper Yard will judge them.',
+        },
+      },
+    },
+    {
+      episode: 182,
+      value: {
+        title: { it: 'Perché ha servito', en: 'Why he served' },
+        body: {
+          it: 'Ad Angel Island McKinley sta annunciando che [[conis|Conis]], [[pagaya|Pagaya]] e [[gan-fall|Gan Fall]] sono ricercati quando Conis punta dritta al porto su un waver e lo investe. Dice alla folla che [[enel|Ener]] vuole cancellare l’isola, e dopo molte resistenze riesce a smuoverla. Quando qualcuno chiede dei parenti arruolati nella vecchia guardia di Gan Fall, McKinley risponde che ci penseranno i White Berets, e di sbrigarsi. Rimasto solo con Conis, ammette di aver servito anche lui Gan Fall. Ha fondato i White Berets per tenere l’isola al sicuro sotto il regno di Ener, e non la lascerà finire come Birka, un’altra isola del cielo sparita sei anni fa.',
+          en: 'On Angel Island, McKinley is announcing that [[conis|Conis]], [[pagaya|Pagaya]] and [[gan-fall|Gan Fall]] are wanted when Conis comes straight at the harbour on a Waver and runs him over. She tells the crowd that [[enel|Enel]] means to wipe the island out, and after long resistance she gets them moving. When people ask about relatives serving in Gan Fall’s old guard, McKinley tells them the White Berets will see to it, and to hurry. Alone with Conis, he admits he once served Gan Fall himself. He founded the White Berets to keep the island safe under Enel’s rule, and he will not let it end up like Birka, another sky island that vanished six years ago.',
+        },
+      },
+    },
+    {
+      episode: 186,
+      value: {
+        title: {
+          it: 'Prima la gente, poi i bagagli',
+          en: 'People before luggage',
+        },
+        body: {
+          it: 'Con i fulmini che cadono su Angel Island, McKinley dirige l’evacuazione. I suoi uomini dicono che servono le navi del molo per far salire tutti; non c’è tempo di arrivarci, e lui fa aprire un fiume con i dial d’emergenza. Metà degli abitanti è ancora sull’isola. Ripensando alle parole di [[conis|Conis]], ordina che nessuno si porti dietro i bagagli, solo se stesso. Quando il molo viene colpito dal fulmine, i White Berets guidano gli ultimi verso la spiaggia, dove resta ancora qualche barca.',
+          en: 'With lightning falling on Angel Island, McKinley is running the evacuation. His men say they will need the ships at the wharf to fit everyone; there is no time to reach them, so he has them make a river with emergency dials instead. Half the islanders are still ashore. Remembering [[conis|Conis]]’s words, he orders that nobody takes belongings, only themselves. When lightning hits the wharf, the White Berets steer the last of the people to the beach, where a few boats are left.',
+        },
+      },
+    },
+  ],
+  'yama': [
+    {
+      episode: 172,
+      value: {
+        title: { it: 'Comandante, non soldato', en: 'Commander, not soldier' },
+        body: {
+          it: 'Nella foresta di Upper Yard, [[genbo|Genbo]] si fa strada fra una squadra di guerrieri sacri finché non esce ad affrontarlo il loro comandante. Genbo spara una palla di cannone di ferro; Yama gliela rispedisce addosso con un calcio, poi gli piomba sopra di pancia con una fascia di axe dial e lo lascia a terra. Proseguendo, trova [[nico-robin|Robin]] che prende appunti fra le rovine dell’antica città. Lei gli chiede se fa parte dell’esercito del dio, e lui si offende: è il capo dei guerrieri sacri. Le dice il suo nome, e comincia a demolire le rovine per arrivare a lei.',
+          en: 'In the forest of Upper Yard, [[genbo|Genbo]] cuts through a squad of Divine Soldiers until their commander comes out to meet him. Genbo fires an iron cannonball; Yama kicks it straight back into him, then drops on him belly first with a sash of axe dials and leaves him on the ground. Walking on, he finds [[nico-robin|Robin]] taking notes among the ruins of the old city. She asks if he is one of God’s army, and he takes offence: he is the leader of the Divine Soldiers. He tells her his name, and starts smashing the ruins to get at her.',
+        },
+      },
+    },
+    {
+      episode: 174,
+      value: {
+        title: { it: 'Il valore delle rovine', en: 'The value of ruins' },
+        body: {
+          it: 'Yama continua a inseguire [[nico-robin|Robin]] fra le rovine, e sa benissimo che cosa sta distruggendo: vuole distruggerlo. Lei protegge un monumento con le sue braccia e poi lo porta fuori, all’aperto, dove non resta niente da rovinare. Il suo Drop Mountain incontra trenta mani. Quando prova a usare su di lei gli axe dial, lei li gira verso l’interno, e lui incassa il suo stesso attacco. Poi lo finisce con cento braccia, e lui non si rialza. Robin torna alle sue rovine.',
+          en: 'Yama keeps after [[nico-robin|Robin]] through the ruins, and he knows perfectly well what he is breaking; he wants it broken. She shields a monument with her arms and then leads him out into the open, where there is nothing left to damage. His Drop Mountain meets thirty of her hands. When he turns his axe dials on her, she turns them inward, and he takes his own attack. Then she finishes him with a hundred arms, and he does not get up. Robin goes back to her ruins.',
+        },
+      },
+    },
+  ],
+  'fuza': [
+    {
+      episode: 169,
+      value: {
+        title: {
+          it: 'Le ali sopra la prova del filo',
+          en: 'Wings over the Ordeal of String',
+        },
+        body: {
+          it: 'Ovunque [[shura|Shura]] vada sull’Upper Yard, il suo grande uccello lo porta. Lo ha portato all’altare dove [[tony-tony-chopper|Chopper]] faceva la guardia da solo alla Going Merry, e lo ha tenuto in aria per un intero duello nel cielo contro [[gan-fall|Gan Fall]] e [[pierre|Pierre]]. Adesso i guerrieri shandia entrano nella prova del filo e restano appesi, impigliati, mentre Shura siede sulla groppa dell’uccello sopra i fili. [[wyper|Wiper]] si lascia trapassare dalla lancia del sacerdote pur di arrivargli addosso, e lo abbatte con un Reject Dial. Fuza, senza più cavaliere, batte le ali e sparisce.',
+          en: 'Wherever [[shura|Shura]] goes on Upper Yard, his great bird carries him. He flew him to the altar where [[tony-tony-chopper|Chopper]] was guarding the Going Merry alone, and kept him in the air through a whole duel in the sky against [[gan-fall|Gan Fall]] and [[pierre|Pierre]]. Now the Shandia warriors walk into the Ordeal of String and hang there, tangled, while Shura sits on the bird’s back above the threads. [[wyper|Wyper]] lets the priest’s lance run him through just to get close, and brings him down with a Reject Dial. Fuza, riderless, beats his wings and is gone.',
+        },
+      },
+    },
+  ],
+  'holy': [
+    {
+      episode: 175,
+      value: {
+        title: {
+          it: 'Il cane che aspetta un ordine',
+          en: 'The dog who waits for an order',
+        },
+        body: {
+          it: 'Mentre si arrampica fra le rovine in cima alla pianta gigante, [[tony-tony-chopper|Chopper]] sente una presenza e si trova davanti un cane enorme. [[ohm|Om]] gli dice di non preoccuparsi: Holy è ben addestrato e non morde nessuno senza un motivo. Il corpo su cui Chopper inciampa è opera di Om, non del cane. Il padrone parla della morte come dell’unica salvezza, poi insegue lui stesso Chopper in fuga e lo abbatte con la prova del ferro. Quando [[roronoa-zoro|Zoro]], [[wyper|Wiper]] e [[gan-fall|Gan Fall]] raggiungono le rovine, il cane è di nuovo sdraiato accanto a Om, in attesa di un ordine.',
+          en: 'Climbing through the ruins high on the giant beanstalk, [[tony-tony-chopper|Chopper]] feels a presence and finds himself facing an enormous dog. [[ohm|Ohm]] tells him not to worry: Holy is well trained and bites no one without a reason. The body Chopper stumbles over was Ohm’s work, not the dog’s. The master talks of death as the only way to be saved, then goes after the fleeing Chopper himself and brings him down with the Ordeal of Iron. When [[roronoa-zoro|Zoro]], [[wyper|Wyper]] and [[gan-fall|Gan Fall]] reach the ruins, the dog is lying beside Ohm again, waiting for an order.',
+        },
+      },
+    },
+    {
+      episode: 177,
+      value: {
+        title: {
+          it: 'La cupola di filo spinato',
+          en: 'The dome of barbed wire',
+        },
+        body: {
+          it: 'Quando la battaglia fra le rovine comincia, un pugno arriva alle spalle di [[roronoa-zoro|Zoro]], ed è Holy ad averlo tirato; Zoro stenta a credere che un cane si muova così, e [[ohm|Om]] spiega che gli animali li addestra lui. Poi un serpente gigante inghiotte in un colpo solo [[nami|Nami]], [[aisa|Aisa]] e [[gan-fall|Gan Fall]]. I guerrieri shandia che si lanciano contro Om vengono battuti dal cane e trafitti da punte di nuvola di ferro. A un cenno del padrone, Holy corre in tondo attorno alle rovine e stende su tutti una cupola di filo spinato, e da quel duello all’ultimo sangue non si esce più.',
+          en: 'When the fight at the ruins begins, a punch comes at [[roronoa-zoro|Zoro]] from behind, and it is Holy who threw it; Zoro can hardly believe a dog moves like that, and [[ohm|Ohm]] explains that he trains animals. Then a giant snake swallows [[nami|Nami]], [[aisa|Aisa]] and [[gan-fall|Gan Fall]] whole. The Shandia warriors who charge Ohm are beaten by the dog and pierced by spikes of iron cloud. At a word from his master, Holy runs round and round the ruins and draws a dome of barbed wire over everyone inside, and the deathmatch has no way out.',
+        },
+      },
+    },
+    {
+      episode: 179,
+      value: {
+        title: {
+          it: 'Un ordine dall’uomo sbagliato',
+          en: 'An order from the wrong man',
+        },
+        body: {
+          it: '[[roronoa-zoro|Zoro]] abbatte finalmente [[ohm|Om]], spezzando la nuvola di ferro con una tecnica che ammette di dover ancora allenare. Holy gli si lancia subito contro e tira un pugno che va a vuoto. Mentre schiva, Zoro grida al cane un ordine senza pensarci, e Holy obbedisce all’istante. Zoro capisce che quel cane obbedisce a chiunque, e allora gli dice di darsi un colpo in testa e di farsi un pisolino. Holy fa esattamente così, e il combattente che non si muoveva mai senza un ordine esce dalla battaglia per un colpo suo, sulla parola del nemico del suo padrone.',
+          en: '[[roronoa-zoro|Zoro]] brings [[ohm|Ohm]] down at last, cutting through the iron cloud with a technique he admits still needs training. Holy comes at him at once and throws a punch that misses. Dodging it, Zoro shouts an order at the dog without thinking, and Holy obeys on the spot. Zoro realises the dog will obey anyone at all, so he tells him to hit himself on the head and take a nap. Holy does exactly that, and the fighter who never moved without an order is knocked out of the battle by his own blow, on the word of his master’s enemy.',
+        },
+      },
+    },
+  ],
+  'shandia-chief': [
+    {
+      episode: 181,
+      value: {
+        title: {
+          it: 'Quello che si raccontava ai bambini',
+          en: 'What the children were told',
+        },
+        body: {
+          it: 'Molto prima degli assalti all’Upper Yard, il capo raduna i bambini del villaggio, fra loro un giovane [[wyper|Wiper]], e racconta della pietra antica che i loro antenati hanno combattuto per proteggere, e di quanti di loro sono caduti per farlo. Il resto i bambini lo sanno a memoria: quattrocento anni fa la loro isola fu scagliata nel cielo, e il popolo che già ci viveva cacciò i loro antenati dalla loro stessa terra. Il capo dice che cos’altro se n’è andato con lei: il fuoco di Shandora. Anni dopo, in piedi sopra un dio a cui ha appena fermato il cuore, Wiper ricorda ogni parola.',
+          en: 'Long before the raids on Upper Yard, the chief gathers the village children, a young [[wyper|Wyper]] among them, and tells them of the ancient stone their ancestors fought to protect, and of how many of them fell doing it. The children know the rest by heart: four hundred years ago their island was blasted up into the sky, and the people already living there drove their ancestors off their own land. The chief tells them what else went with it: the fire of Shandora. Years later, standing over a god whose heart he has just stopped, Wyper remembers every word.',
+        },
+      },
+    },
+    {
+      episode: 189,
+      value: {
+        title: {
+          it: 'Una campana che arrivi fino a lui',
+          en: 'A bell that might still reach him',
+        },
+        body: {
+          it: 'Il racconto del capo continua nella memoria di [[wyper|Wiper]]. [[kalgara|Kalgara]] combatté per quella terra pensando a [[montblanc-noland|Noland]], sperando di suonare la campana d’oro almeno un’altra volta perché l’amico sapesse che era ancora lì. Non ci riuscì mai. Più tardi una nave salita dal Mare Blu portò agli Shandia la notizia di che fine avesse fatto Noland. Il piccolo Wiper chiede se suonare la campana adesso arriverebbe ancora fino a lui, e il capo non gli risponde di no. Wiper si porta dietro quella risposta da allora.',
+          en: 'The chief’s story goes on in [[wyper|Wyper]]’s memory. [[kalgara|Kalgara]] fought for that land with [[montblanc-noland|Noland]] on his mind, hoping to ring the golden bell just once more so his friend would know he was still there. He never managed it. Later a ship up from the Blue Sea brought the Shandia word of what had become of Noland. Young Wyper asks whether ringing the bell now would still reach him, and the chief does not tell him no. Wyper has carried that answer ever since.',
+        },
+      },
+    },
+    {
+      episode: 193,
+      value: {
+        title: {
+          it: 'Fra i feriti non ci sono parti',
+          en: 'No sides among the wounded',
+        },
+        body: {
+          it: '[[wyper|Wiper]] si sveglia in una tenda fra le rovine, vede attorno a sé [[gan-fall|Gan Fall]], [[conis|Conis]] e il capo, e chiede se sono stati tutti catturati dalla gente del cielo. Il capo gli risponde che fra chi è stato ferito in battaglia non c’è distinzione. Wiper prova ad alzarsi per andare a proteggere la campana d’oro, e quando sente i tamburi e vede un grande fuoco là fuori lo prende per l’inizio di un’altra battaglia. Il capo gli dice di calmarsi e di guardare come stanno andando le cose. Fuori, Shandia e gente del cielo fanno festa insieme.',
+          en: '[[wyper|Wyper]] wakes in a tent among the ruins, sees [[gan-fall|Gan Fall]], [[conis|Conis]] and the chief around him, and asks whether they have all been captured by the sky people. The chief tells him there is no distinction between those who were hurt in battle. Wyper tries to get up to go and guard the golden bell, and when he hears drums and sees a great fire outside he takes it for the start of another fight. The chief tells him to calm down and wait to see how things are turning out. Outside, the Shandia and the sky people are celebrating together.',
+        },
+      },
+    },
+    {
+      episode: 195,
+      value: {
+        title: { it: 'Un dovere già compiuto', en: 'A duty already done' },
+        body: {
+          it: 'Al mattino la campana d’oro viene trovata appesa alla pianta gigante, e il capo chiama ogni guerriero in forze per tirarla su; la gente del cielo arriva ad aiutare. Alla sua base c’è la vecchia pietra. [[nico-robin|Robin]] la legge ad alta voce, e poi una frase incisa sulla campana accanto: qualcuno è già passato di lì e ne ha portato le parole dove dovevano arrivare. Il capo piange, perché vuol dire che il dovere del suo popolo è compiuto e che non c’è più niente per cui combattere. Vuole regalare ai pirati una colonna d’oro spezzata del campanile, ma loro scambiano il dono impacchettato per un cannone e scappano; poi chiede a [[gan-fall|Gan Fall]] di guidare di nuovo l’isola, di tutti quelli che ci vivono, e la folla non gli lascia rifiutare.',
+          en: 'In the morning the golden bell is found hanging off the giant beanstalk, and the chief calls every able warrior to haul it up; the sky people come to help. At its base stands the old stone. [[nico-robin|Robin]] reads it aloud, then a line carved into the bell beside it: someone has already been there and carried its words where they were meant to go. The chief weeps, because it means his people’s duty is done and there is nothing left to fight for. He wants to give the pirates a broken golden pillar from the belfry, but they take the wrapped gift for a cannon and run; then he asks [[gan-fall|Gan Fall]] to lead the island again, shared by everyone on it, and the crowd will not let him refuse.',
+        },
+      },
+    },
+  ],
+  'seto': [
+    {
+      episode: 187,
+      value: {
+        title: { it: 'Come lui, un giorno', en: 'Like him, one day' },
+        body: {
+          it: 'Quattrocento anni fa, in un villaggio dove la malattia ha già fatto cento vittime, Set trova le sue macchie verdi sul proprio braccio e corre sotto la pioggia a raschiarle via con un sasso. Quando [[kalgara|Kalgara]] gli passa accanto, il ragazzo gli grida che avrebbe voluto diventare come lui, un giorno, e che invece morirà così. Poi degli stranieri venuti dal mare lo trovano nella foresta: il loro medico riconosce la malattia, e il loro capitano, [[montblanc-noland|Noland]], manda i suoi uomini a prendere la medicina. Più tardi, guarito, Set aspetta fuori quando Kalgara esce infuriato dal consiglio, e gli chiede che cosa intendesse lo straniero per progresso.',
+          en: 'Four hundred years ago, in a village where the sickness has already claimed a hundred lives, Seto finds its green blotches on his own arm and runs into the rain to scrape them off with a rock. When [[kalgara|Kalgara]] passes by, the young man shouts that he wanted to be like him one day, and now he is going to die like this. Then strangers from the sea find him in the forest: their doctor names the disease, and their captain, [[montblanc-noland|Noland]], sends his men for the medicine. Later, cured, Seto is waiting outside when Kalgara storms out of the council, and asks him what the foreigner meant by progress.',
+        },
+      },
+    },
+    {
+      episode: 188,
+      value: {
+        title: {
+          it: 'L’orgoglio degli Shandia',
+          en: 'The pride of the Shandia',
+        },
+        body: {
+          it: 'Dopo il terremoto gli abitanti decidono che gli dèi sono furiosi e si accalcano attorno alla gabbia dove è chiuso l’equipaggio di [[montblanc-noland|Noland]], pronti a ucciderlo prima del tempo stabilito. Set si siede davanti alla gabbia per sbarrare la strada e dice loro che dovrebbero vergognarsi. La cura arriva in tempo, e per un po’ villaggio e stranieri vanno d’accordo. Poi l’equipaggio fa qualcosa che gli Shandia non possono perdonare, ed è Set a dire a Noland che [[kalgara|Kalgara]] non vuole vederlo, e che gli stranieri farebbero bene ad andarsene presto.',
+          en: 'After the earthquake the villagers decide the gods are angry and crowd around the cage holding [[montblanc-noland|Noland]]’s crew, ready to kill them before their time is up. Seto sits down in front of the cage to block the way and tells them they should be ashamed of themselves. The cure comes in time, and for a while the village and the foreigners get along. Then the crew does something the Shandia cannot forgive, and it is Seto who tells Noland that [[kalgara|Kalgara]] does not want to see him, and that the strangers had better be leaving soon.',
+        },
+      },
+    },
+    {
+      episode: 189,
+      value: {
+        title: {
+          it: 'In attesa che torni',
+          en: 'Waiting for him to come back',
+        },
+        body: {
+          it: 'Quando [[mousse|Musse]] porta al villaggio la verità, cioè che gli alberi abbattuti erano già malati e avrebbero sparso la febbre, Set e gli altri restano sconvolti: gli stranieri l’hanno fatto per proteggerli. Mentre la nave di [[montblanc-noland|Noland]] prende il largo, Set suona la campana d’oro con il resto del villaggio, in lacrime, perché l’equipaggio la senta prima di partire. Anni dopo, ormai adulto, va con [[kalgara|Kalgara]] a suonarla come ogni giorno, saluta [[nola|Nola]], il giovane serpente che vive fra le rovine, e si chiede ad alta voce quando tornerà Noland. Poi il cielo si fa buio.',
+          en: 'When [[mousse|Mousse]] brings the village the truth, that the felled trees were already infected and would have spread the fever, Seto and the others are stunned: the foreigners did it to protect them. As [[montblanc-noland|Noland]]’s ship sails, Seto rings the golden bell with the rest of the village, in tears, so the crew will hear it before they go. Years later, a grown man, he walks with [[kalgara|Kalgara]] to ring it as they do every day, greets [[nola|Nola]], the young snake living in the ruins, and wonders aloud when Noland will come back. Then the sky goes dark.',
+        },
+      },
+    },
+  ],
+  'mousse': [
+    {
+      episode: 187,
+      value: {
+        title: { it: 'L’offerta sull’altare', en: 'The offering on the altar' },
+        body: {
+          it: 'Quattrocento anni fa un sacerdote morente dice agli Shandia che solo l’offerta di una ragazza toglierà la maledizione dal villaggio. Musse dice che andrà, se questo salverà tutti, e consola la madre in lacrime. All’altare viene legata e il grande serpente si alza sopra di lei, finché uno straniero venuto dal mare, [[montblanc-noland|Noland]], si arrampica fin lassù e gli taglia la testa. La folla urla che devono morire tutti e due. [[kalgara|Kalgara]] le lancia un coltello e le dice di farla finita da sola; Noland la ferma. Più tardi, chiusa in gabbia accanto al suo equipaggio, chiede loro chi sia davvero il loro capitano.',
+          en: 'Four hundred years ago a dying priest tells the Shandia that only the offering of a girl will lift the curse from their village. Mousse says she will go if it saves everyone, and comforts her weeping mother. At the altar she is tied down and the great snake rises over her, until a stranger from the sea, [[montblanc-noland|Noland]], climbs up and cuts off its head. The crowd screams for them both to die. [[kalgara|Kalgara]] throws her a knife and tells her to finish it herself; Noland stops her. Later, caged beside his crew, she asks them who their captain really is.',
+        },
+      },
+    },
+    {
+      episode: 188,
+      value: {
+        title: { it: 'Sua figlia', en: 'His daughter' },
+        body: {
+          it: 'Quando il tempo concesso scade, Musse viene riportata all’altare con l’equipaggio di [[montblanc-noland|Noland]], per essere bruciata insieme a loro. Nella foresta, [[kalgara|Kalgara]] grida a Noland che crede nei riti a tal punto da essere stato pronto a lasciar morire sua figlia: Musse. Noland torna con la cura in tempo, il villaggio guarisce, e Kalgara stringe la figlia fra le lacrime. Per un po’ tutti vanno d’accordo, tanto che Kalgara offre a Noland la sua mano, e Noland rifiuta per la famiglia che lo aspetta a casa.',
+          en: 'When the time allowed runs out, Mousse is led back to the altar with [[montblanc-noland|Noland]]’s crew, to be burned along with them. Out in the forest, [[kalgara|Kalgara]] shouts at Noland that he believes in the rites so completely that he was ready to let his own daughter die: Mousse. Noland comes back with the cure in time, the village recovers, and Kalgara holds his daughter in tears. For a while everyone gets along, so well that Kalgara offers Noland her hand, and Noland turns it down for the family waiting for him at home.',
+        },
+      },
+    },
+    {
+      episode: 189,
+      value: {
+        title: {
+          it: 'Il migliore amico che abbia mai avuto',
+          en: 'The best friend he ever had',
+        },
+        body: {
+          it: 'Il villaggio ha voltato le spalle agli stranieri, e Musse esce di nascosto di notte per spiegare al loro medico il motivo: negli alberi che il suo equipaggio ha abbattuto abitano le anime degli antenati degli Shandia. In cambio il medico le dice la verità: quegli alberi erano già malati e avrebbero sparso la febbre. Il giorno dopo, mentre l’equipaggio si prepara a salpare, Musse corre al villaggio in lacrime e supplica il padre di andare a salutare il migliore amico che abbia mai avuto. [[kalgara|Kalgara]] corre verso la spiaggia, mentre il villaggio suona la campana d’oro per [[montblanc-noland|Noland]].',
+          en: 'The village has turned its back on the foreigners, and Mousse slips out at night to tell their doctor why: the trees his crew cut down hold the souls of the Shandia’s ancestors. In return the doctor tells her the truth: those trees were already infected and would have spread the fever. The next day, as the crew gets ready to sail, Mousse runs into the village in tears and begs her father to go and say goodbye to the best friend he ever had. [[kalgara|Kalgara]] runs for the beach, while the village rings the golden bell for [[montblanc-noland|Noland]].',
+        },
+      },
+    },
+  ],
+  'nola': [
+    {
+      episode: 189,
+      value: {
+        title: {
+          it: 'Il serpente fra le rovine',
+          en: 'The snake in the ruins',
+        },
+        body: {
+          it: 'Fino a ora il serpente gigante dell’Upper Yard era un pericolo come un altro nella foresta: ha inghiottito [[monkey-d-luffy|Rufy]], poi [[nami|Nami]], [[aisa|Aisa]] e [[gan-fall|Gan Fall]], e quando un fulmine l’ha scagliato fra le rovine della città d’oro le ha frugate, non ha trovato nessuno e ha pianto finché [[enel|Ener]] non l’ha abbattuto. La storia di [[kalgara|Kalgara]] lo mostra quattrocento anni prima: un giovane serpente, nipote di quello che gli Shandia adoravano come un dio, che vive fra quelle stesse rovine. Ogni giorno Kalgara e [[seto|Set]] vanno a suonare la campana per [[montblanc-noland|Noland]], e ogni giorno lo salutano per nome: Nola.',
+          en: 'Until now the giant snake of Upper Yard was one more danger in the forest: it swallowed [[monkey-d-luffy|Luffy]], then [[nami|Nami]], [[aisa|Aisa]] and [[gan-fall|Gan Fall]], and when lightning threw it down into the ruins of the golden city it searched them, found no one, and wept until [[enel|Enel]] struck it down. The story of [[kalgara|Kalgara]] shows it four hundred years earlier: a young snake, grandchild of the one the Shandia worshipped as a god, living among those same ruins. Every day Kalgara and [[seto|Seto]] go to ring the bell for [[montblanc-noland|Noland]], and every day they greet it by name: Nola.',
+        },
+      },
+    },
+    {
+      episode: 191,
+      value: {
+        title: { it: 'Un sogno della campana', en: 'A dream of the bell' },
+        body: {
+          it: 'Svenuto fra le rovine, il serpente sogna di essere di nuovo piccolo e di seguire [[kalgara|Kalgara]] e [[seto|Set]] mentre vanno a suonare la campana d’oro. I due si allontanano e non si voltano, per quanto li chiami piangendo. Nola si risveglia in preda all’angoscia, si lancia avanti alla cieca e sbatte la testa contro la pianta gigante, facendo tremare tutto lo strato di nuvole. Più in alto, sulle nuvole, i sopravvissuti parlano di un nuvolemoto senza sapere chi l’abbia causato. La pianta, già intaccata da [[roronoa-zoro|Zoro]], si piega appena e resta in piedi.',
+          en: 'Unconscious among the ruins, the snake dreams it is small again, following [[kalgara|Kalgara]] and [[seto|Seto]] on their way to ring the golden bell. The two of them walk away and do not turn round, however much it cries after them. Nola wakes in distress, slithers wildly forward and rams its head into the giant beanstalk, shaking the whole layer of cloud. Up on the cloud, the survivors call it a cloudquake without knowing what caused it. The beanstalk, which [[roronoa-zoro|Zoro]] has already cut into, leans a little and holds.',
+        },
+      },
+    },
+    {
+      episode: 194,
+      value: {
+        title: { it: 'Danze fino all’alba', en: 'Dancing all night' },
+        body: {
+          it: 'Quando la campana d’oro suona finalmente sopra l’isola, il serpente che l’ha aspettata per quattrocento anni lancia un grido di gioia. Nola balla con gli Shandia e con la gente del cielo per tutta la festa, e il giorno dopo dorme come un sasso mentre una parte della ciurma si infila nella sua pancia a ripescare il tesoro che ha inghiottito negli anni. A [[usopp|Usop]] sembra innocuo; [[roronoa-zoro|Zoro]], che durante la battaglia se l’è trovato alle calcagna, gli risponde che non ha idea di quanto sia feroce da sveglio.',
+          en: 'When the golden bell finally rings out over the island, the snake that waited four hundred years to hear it cries out for joy. Nola dances with the Shandia and the sky people through the whole celebration, and the next day it sleeps like a stone while part of the crew climbs into its belly to fish out the treasure it has swallowed over the years. [[usopp|Usopp]] thinks it looks harmless; [[roronoa-zoro|Zoro]], who spent the battle with it on his heels, tells him he has no idea how vicious it is awake.',
         },
       },
     },
