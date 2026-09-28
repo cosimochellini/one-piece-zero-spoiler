@@ -2223,7 +2223,7 @@ export const summitWar: Saga = {
     },
     'heracles': {
       role: {
-        it: 'Guerriero dell’arcipelago Boeing',
+        it: 'Guerriero dell’arcipelago di Boin',
         en: 'Warrior of the Boin Archipelago',
       },
       log: {
@@ -2235,14 +2235,14 @@ export const summitWar: Saga = {
         {
           episode: 420,
           value: {
-            it: 'Arcipelago Boeing, guerriero',
+            it: 'Arcipelago di Boin, guerriero',
             en: 'Boin Archipelago, warrior',
           },
         },
         {
           episode: 515,
           value: {
-            it: 'Arcipelago Boeing, guerriero; maestro di Usop',
+            it: 'Arcipelago di Boin, guerriero; maestro di Usop',
             en: 'Boin Archipelago, warrior; Usopp’s teacher',
           },
         },
