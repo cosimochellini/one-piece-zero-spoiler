@@ -167,7 +167,7 @@ export const enDictionary = {
   'character.before': 'Before',
   'character.after': 'After',
   'character.routeStart': 'Nothing. This is the first entry.',
-  'character.routeEnd': 'Nothing yet. This is the latest entry.',
+  'character.routeEnd': 'Nothing yet. This is the last entry in story order.',
   'character.nearbyTitle': 'Appearing around the same time',
   'character.nearbyLoading': 'Loading characters…',
   'character.nearbyLede':

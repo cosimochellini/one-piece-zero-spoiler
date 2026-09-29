@@ -12,7 +12,7 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo che non hai ancora visto. Imposta l’ultimo episodio visto o l’ultimo capitolo letto e leggi solo fino a lì.',
+    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo che vengono dopo il tuo segnalibro. Imposta l’ultimo episodio visto o l’ultimo capitolo letto e leggi fino a lì.',
   'seo.imageAlt':
     'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
@@ -107,7 +107,7 @@ export const itDictionary: Dictionary = {
     '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'characters.searchLabel': 'Cerca un personaggio',
   'characters.searchClear': 'Cancella la ricerca',
-  'characters.shown': '{count} risultati su {total} personaggi visibili',
+  'characters.shown': 'Risultati: {count} su {total} personaggi visibili',
   'characters.noMatch': 'Nessun personaggio visibile corrisponde a “{query}”.',
   'characters.foggedTitle': '{count} nella nebbia',
   'characters.foggedHint':
@@ -151,7 +151,7 @@ export const itDictionary: Dictionary = {
   'character.positionLede':
     'Dove si colloca questo personaggio nella storia, con le voci subito prima e subito dopo.',
   'character.status': 'Stato',
-  'character.epithet': 'Soprannome',
+  'character.epithet': 'Epiteto',
   'character.affiliation': 'Affiliazione',
   'character.origin': 'Origine',
   'character.devilFruit': 'Frutto del diavolo',
@@ -164,7 +164,8 @@ export const itDictionary: Dictionary = {
   'character.before': 'Prima',
   'character.after': 'Dopo',
   'character.routeStart': 'Niente, questa è la prima voce.',
-  'character.routeEnd': 'Ancora niente, questa è la voce più recente.',
+  'character.routeEnd':
+    'Ancora niente, questa è l’ultima voce nell’ordine della storia.',
   'character.nearbyTitle': 'Compaiono nello stesso periodo',
   'character.nearbyLoading': 'Caricamento dei personaggi…',
   'character.nearbyLede':
@@ -209,7 +210,7 @@ export const itDictionary: Dictionary = {
   'fruits.searchLabel': 'Cerca un frutto',
   'fruits.searchClear': 'Cancella la ricerca',
   'fruits.searchPlaceholder': 'Gom Gom',
-  'fruits.shown': '{count} risultati su {total} frutti visibili',
+  'fruits.shown': 'Risultati: {count} su {total} frutti visibili',
   'fruits.noMatch': 'Nessun frutto visibile corrisponde a “{query}”.',
   'fruits.plate': 'Gruppo {index}',
   'fruits.specimen': 'Frutto {index}',
@@ -248,7 +249,7 @@ export const itDictionary: Dictionary = {
   'fruit.eatersNone': 'Nessun personaggio della wiki l’ha ancora mangiato.',
   'fruit.siblingsTitle': 'Altri frutti di questo tipo',
   'fruit.siblingsLede':
-    'I frutti dello stesso tipo nominati più vicino a questo.',
+    'I frutti dello stesso tipo nominati più vicini a questo.',
   'fruit.siblingsLoading': 'Caricamento dei frutti…',
   'fruit.siblingsNone': 'Non ci sono ancora altri frutti di questo tipo.',
   'fruit.notFoundTitle': 'Frutto non trovato',
