@@ -10,10 +10,12 @@ describe('SiteFooter', () => {
     renderWithProviders(<SiteFooter />)
 
     expect(
-      screen.getByText('Nobody should learn the ending before they get there.'),
+      screen.getByText(
+        'A One Piece wiki that only shows what you have already seen.',
+      ),
     ).toBeInTheDocument()
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
-      'Thresholds count anime episodes or manga chapters, whichever you pick.',
+      'Your bookmark is saved in a cookie on this device.',
     )
     expect(screen.queryAllByRole('link')).toHaveLength(0)
   })
@@ -23,7 +25,7 @@ describe('SiteFooter', () => {
 
     expect(
       screen.getByText(
-        'Nessuno dovrebbe sapere come va a finire prima di arrivarci.',
+        'Una wiki di One Piece che mostra solo quello che hai già visto.',
       ),
     ).toBeInTheDocument()
   })

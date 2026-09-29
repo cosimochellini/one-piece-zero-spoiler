@@ -64,28 +64,28 @@ describe('fruit route head', () => {
   it('spells out the loader’s title and description, and derives nothing', () => {
     const meta = metaFor({
       description: 'Turns the body to rubber.',
-      title: 'Gum-Gum Fruit — Zero Spoiler',
+      title: 'Gum-Gum Fruit | Zero Spoiler',
     })
 
-    expect(meta).toContain('Gum-Gum Fruit — Zero Spoiler')
+    expect(meta).toContain('Gum-Gum Fruit | Zero Spoiler')
     expect(meta).toContain('Turns the body to rubber.')
   })
 
   it('carries a fogged title through untouched', () => {
     const fogged = metaFor({
-      description: 'A One Piece devil fruit filed at episode 462.',
-      title: 'A fruit under fog — Zero Spoiler',
+      description: 'A One Piece devil fruit first named in episode 462.',
+      title: 'A fruit under fog | Zero Spoiler',
     })
 
     expect(fogged).not.toContain('Dark')
-    expect(fogged).toContain('A fruit under fog — Zero Spoiler')
+    expect(fogged).toContain('A fruit under fog | Zero Spoiler')
     expect(fogged).toContain('episode 462')
   })
 
   it('points the canonical link and the cards at this page', () => {
     const { links, scripts } = headFor({
       description: 'A rubber fruit.',
-      title: 'Gum-Gum Fruit — Zero Spoiler',
+      title: 'Gum-Gum Fruit | Zero Spoiler',
     })
     const canonical = links?.filter((link) => link.rel === 'canonical') ?? []
     const alternates = links?.filter((link) => link.rel === 'alternate') ?? []
@@ -102,7 +102,7 @@ describe('fruit route head', () => {
   it('keeps a covered name out of the structured data too', () => {
     const { scripts } = headFor({
       description: 'A devil fruit filed at episode 130.',
-      title: 'A fruit under fog — Zero Spoiler',
+      title: 'A fruit under fog | Zero Spoiler',
     })
     const graph: unknown = JSON.parse(scripts?.[0]?.children ?? 'null')
 
@@ -161,7 +161,7 @@ describe('the eaters band', () => {
     )
 
     expect(
-      screen.getByText('Nobody in the archive has eaten it yet.'),
+      screen.getByText('No character in the wiki has eaten it yet.'),
     ).toBeInTheDocument()
   })
 })
@@ -177,7 +177,7 @@ describe('the rail of others of this type', () => {
     )
 
     expect(
-      screen.getByText('Nothing else of this type is filed yet.'),
+      screen.getByText('No other fruit of this type yet.'),
     ).toBeInTheDocument()
   })
 })
@@ -193,7 +193,7 @@ describe('the fruit page’s shape', () => {
     )
 
     expect(
-      screen.getByRole('region', { name: 'Others of this type' }),
+      screen.getByRole('region', { name: 'Other fruits of this type' }),
     ).toBeInTheDocument()
     expect(
       screen.queryByRole('region', { name: /route/iu }),

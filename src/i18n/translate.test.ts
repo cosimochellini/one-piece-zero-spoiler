@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { enDictionary } from './dictionaries/en'
 import { itDictionary } from './dictionaries/it'
-import { LOCALES } from './locales'
+import { type Locale, LOCALES } from './locales'
 import { getDictionary, translate } from './translate'
 
 type DictionaryKey = keyof typeof enDictionary
@@ -48,6 +48,62 @@ describe('the dictionaries', () => {
   })
 })
 
+/**
+ * The phrases the `tone-of-voice` skill in `.claude/skills` rules out, per
+ * locale. This list is the single source: the skill points here rather than
+ * repeating it. Matched case-insensitively against every value.
+ */
+const BANNED: Record<Locale, readonly string[]> = {
+  en: [
+    'signal book',
+    'specimen sheet',
+    'ship’s log',
+    "ship's log",
+    'dossier',
+    'filed',
+    'lift the fog',
+  ],
+  it: [
+    'libro dei segnali',
+    'foglio dei campioni',
+    'giornale di bordo',
+    'dossier',
+    'archiviat',
+    'dirad',
+    'scopri',
+    'immergiti',
+  ],
+}
+
+describe('the tone of voice', () => {
+  // The en dash stays allowed: it is the right mark for a range such as
+  // `{first}–{last}`.
+  it('uses no em dash and no exclamation mark', () => {
+    for (const locale of LOCALES) {
+      const dictionary = getDictionary(locale)
+
+      for (const key of dictionaryKeys()) {
+        expect(dictionary[key], `${locale} ${key}`).not.toMatch(/[—!]/u)
+      }
+    }
+  })
+
+  it('uses none of the banned phrases', () => {
+    for (const locale of LOCALES) {
+      const dictionary = getDictionary(locale)
+      const banned = BANNED[locale]
+
+      for (const key of dictionaryKeys()) {
+        const value = dictionary[key].toLowerCase()
+
+        for (const phrase of banned) {
+          expect(value, `${locale} ${key}: “${phrase}”`).not.toContain(phrase)
+        }
+      }
+    }
+  })
+})
+
 describe('translate', () => {
   it('fills a placeholder from the params', () => {
     expect(
@@ -66,7 +122,7 @@ describe('translate', () => {
 
   it('returns a string with no placeholders untouched', () => {
     expect(translate(enDictionary, 'veil.reveal', { unused: 'x' })).toBe(
-      'Lift the fog anyway',
+      'Show anyway',
     )
   })
 })

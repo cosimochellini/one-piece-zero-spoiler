@@ -47,7 +47,7 @@ describe('SpecimenBands', () => {
     ).toBeInTheDocument()
     expect(screen.getByRole('region', { name: 'Zoan' })).toBeInTheDocument()
     expect(screen.getByRole('region', { name: 'Logia' })).toBeInTheDocument()
-    expect(screen.getByText(/Plate 01 · 3 fruits/u)).toBeInTheDocument()
+    expect(screen.getByText(/Group 01 · 3 fruits/u)).toBeInTheDocument()
   })
 
   it('counts every open fruit across the three plates', async () => {
@@ -59,7 +59,7 @@ describe('SpecimenBands', () => {
       { bookmark: ep(650) },
     )
 
-    const status = await screen.findByText('3 of 3 open fruits shown')
+    const status = await screen.findByText('Showing 3 of 3 open fruits')
 
     expect(status).toBeInTheDocument()
   })
@@ -96,9 +96,9 @@ describe('SpecimenBands', () => {
     )
 
     // The Logia plate holds one open fruit and one covered one. Two rows
-    // called "Specimen 01" would be a sheet that counted itself twice.
-    expect(screen.getAllByText('Specimen 01')).toHaveLength(2)
-    expect(screen.getAllByText('Specimen 02')).toHaveLength(2)
+    // called "Fruit 01" would be a sheet that counted itself twice.
+    expect(screen.getAllByText('Fruit 01')).toHaveLength(2)
+    expect(screen.getAllByText('Fruit 02')).toHaveLength(2)
   })
 
   it('keeps a specimen’s number while the reader types', async () => {
@@ -117,7 +117,7 @@ describe('SpecimenBands', () => {
     expect(
       screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
     ).not.toBeInTheDocument()
-    expect(screen.getAllByText('Specimen 02')).toHaveLength(2)
+    expect(screen.getAllByText('Fruit 02')).toHaveLength(2)
   })
 
   it('says so when a plate has nothing under fog', () => {
@@ -130,7 +130,7 @@ describe('SpecimenBands', () => {
     )
 
     expect(
-      screen.getAllByText('Nothing is under fog on this plate.'),
+      screen.getAllByText('Nothing of this type is under fog.'),
     ).toHaveLength(2)
   })
 })
