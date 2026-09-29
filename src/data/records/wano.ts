@@ -389,8 +389,8 @@ export const wano: Saga = {
       revealedAtChapter: 914,
       name: { it: 'O-Tsuru', en: 'Tsuru' },
       summary: {
-        it: 'La proprietaria di una casa da tè di Okobore, con una gru d’oro appuntata tra i capelli, che ripaga lo spadaccino che l’ha salvata curando una bambina avvelenata.',
-        en: 'The owner of a tea house in Okobore Town, a golden crane pinned in her hair, who repays the swordsman who saved her by curing a poisoned child.',
+        it: 'La proprietaria di una casa da tè di Okobore, con una gru d’oro appuntata tra i capelli, che ripaga lo spadaccino che l’ha salvata preparando la cura per una bambina avvelenata.',
+        en: 'The owner of a tea house in Okobore Town, a golden crane pinned in her hair, who repays the swordsman who saved her by brewing the cure for a poisoned child.',
       },
       visual: { art: 'tsurujo', tint: 'azure' },
     },
@@ -1336,8 +1336,8 @@ export const wano: Saga = {
         en: 'Owner of the Okobore tea house',
       },
       log: {
-        it: 'Tiene una casa da tè a Okobore e conosce l’erba che funziona contro il veleno del fiume di Kuri. Quando nella landa desolata dei banditi pretendono tutto quello che ha, uno spadaccino a cui interessa soltanto il suo sakè li abbatte, e lei si nasconde nella coda del grosso cane che lo porta via, per poterlo ringraziare. Conosce per nome la bambina di Amigasa e la accoglie senza chiedere niente in cambio.',
-        en: 'She keeps a tea house in Okobore Town and knows the herb that works against the poisoned river water of Kuri. When robbers in the wasteland demand everything she has, a swordsman who wants only her sake cuts them down, and she hides in the tail of the great dog that carries him off, so that she can thank him. She knows the girl from Amigasa by name and takes her in without asking for anything.',
+        it: 'Tiene una casa da tè a Okobore e conosce l’erba che funziona contro il veleno del fiume di Kuri. Quando nella landa desolata dei banditi pretendono tutto quello che ha, uno spadaccino a cui interessa soltanto il suo sakè li abbatte, e lei si nasconde nella coda del grosso cane che lo porta via, per poterlo ringraziare. Conosce per nome la bambina di Amigasa e si offre di prendersene cura.',
+        en: 'She keeps a tea house in Okobore Town and knows the herb that works against the poisoned river water of Kuri. When robbers in the wasteland demand everything she has, a swordsman who wants only her sake cuts them down, and she hides in the tail of the great dog that carries him off, so that she can thank him. She knows the girl from Amigasa by name and offers to look after her.',
       },
       status: [
         { episode: 899, value: 'alive' },
