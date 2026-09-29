@@ -23,7 +23,7 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-informational" alt="License: MIT"></a>
 </p>
 
-## Hidden content never reaches the browser
+## Hidden content stays on the server
 
 Wikis about long stories are full of spoilers. You look up one character and the
 sidebar tells you who dies and who betrays whom. This one asks where you are in
@@ -285,8 +285,8 @@ real reader who tapped a link a friend sent.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary together; now it carries only the page's language.
 - The character grid on the characters page (470 tiles with a drawing each,
-  below the fold) come from the loader as a promise that is not awaited and
-  stream into a `<Suspense>` boundary, so the search field and the crests above
+  below the fold) comes from the loader as a promise that is not awaited and
+  streams into a `<Suspense>` boundary, so the search field and the crests above
   them load first. The landing page chart, the places list and a character page
   are awaited instead: they are the page, and a reader with scripting off should
   get them in full.

@@ -51,32 +51,33 @@ describe('the dictionaries', () => {
 /**
  * The phrases the `tone-of-voice` skill in `.claude/skills` rules out, per
  * locale. This list is the single source: the skill points here rather than
- * repeating it. Each pattern is tested against every value, ignoring case.
+ * repeating it. Each pattern is tested against every value, ignoring case,
+ * and anchored to word boundaries so that ordinary words that merely contain
+ * one ("profiled", "riscoprire") still pass.
  */
 const BANNED: Record<Locale, readonly RegExp[]> = {
   en: [
-    /signal book/iu,
-    /specimen sheet/iu,
-    /ship['’]s log/iu,
-    /ports? of call/iu,
-    /sailing nearby/iu,
-    /shelves/iu,
-    /dossier/iu,
-    /filed/iu,
-    /lift the fog/iu,
-    /discover|unlock|dive in/iu,
+    /\bsignal book\b/iu,
+    /\bspecimen sheet\b/iu,
+    /\bship['’]s log\b/iu,
+    /\bports? of call\b/iu,
+    /\bsailing nearby\b/iu,
+    /\bshelves\b/iu,
+    /\bdossiers?\b/iu,
+    /\bfiled\b/iu,
+    /\blift the fog\b/iu,
+    /\b(?:discover|unlock|dive in)\b/iu,
   ],
   it: [
-    /libro dei segnali/iu,
-    /foglio dei campioni/iu,
-    /giornale di bordo/iu,
-    /scaffal/iu,
-    /dossier/iu,
-    /archiviat/iu,
-    /dirad/iu,
-    /scopri|immergiti/iu,
-    // Whole words only: `parco` and `Marco` are fine.
-    /\barc(?:o|hi)\b/iu,
+    /\blibro dei segnali\b/iu,
+    /\bfoglio dei campioni\b/iu,
+    /\bgiornale di bordo\b/iu,
+    /\bscaffal[ei]\b/iu,
+    /\bdossier\b/iu,
+    /\barchiviat[aeio]\b/iu,
+    // The old verb for revealing: "Dirada la nebbia", "Dirado…".
+    /\bdirad[aio]\b/iu,
+    /\b(?:scopri|immergiti)\b/iu,
   ],
 }
 

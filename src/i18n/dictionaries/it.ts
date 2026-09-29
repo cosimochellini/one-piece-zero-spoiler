@@ -12,7 +12,7 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo a cui non sei ancora arrivato. Imposti l’episodio o il capitolo a cui sei arrivato e leggi fino a lì.',
+    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo che non hai ancora visto. Imposta l’ultimo episodio visto o l’ultimo capitolo letto e leggi solo fino a lì.',
   'seo.imageAlt':
     'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 

@@ -101,7 +101,7 @@ Each one below was in the old copy.
 ## README
 
 The same voice. Keep facts, numbers, commands and code exactly right. Headings
-say what the section is about ("Hidden content never reaches the browser"),
+say what the section is about ("Hidden content stays on the server"),
 not a slogan. When the README quotes the site (a `<title>`, a screenshot
 caption), it quotes the current copy.
 
@@ -116,10 +116,19 @@ These live in `src/data/records` and are written in the same voice.
 - The spoiler rules still apply, and the tests enforce them: a text may only
   name characters and facts the reader has reached at its threshold. This skill
   covers wording only.
+- The existing records predate this skill and have not been migrated; some
+  still use em dashes. Apply the rules to any text you write or edit, and
+  leave untouched stories alone unless the task is to rewrite them.
 
 ## Enforcement
 
 `src/i18n/translate.test.ts` ("the tone of voice") fails on an em dash, an
-exclamation mark, or any banned phrase in either dictionary. The banned list
-lives in that test and nowhere else. When a new habit starts showing up, add it
-there.
+exclamation mark, or any banned phrase in either dictionary. The en dash stays
+allowed, for ranges such as `{first}–{last}`. The banned list lives in that
+test and nowhere else. When a new habit starts showing up, add it there, as a
+whole-word pattern.
+
+Some rules are left to review, because a pattern would reject ordinary text:
+"arco" (the idiom "nell’arco di" is fine), the README, and the records.
+Dictionary key names such as `legend.filed` are identifiers, not copy, and
+are exempt.
