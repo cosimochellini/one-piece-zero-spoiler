@@ -181,11 +181,6 @@ function asWords(text: string): string {
   return ` ${text.replaceAll(/[^\p{L}\p{N}]+/gu, ' ').trim()} `
 }
 
-/** Whether a paragraph names a record by its full name, as whole words. */
-function names(text: string, name: string): boolean {
-  return asWords(text).includes(asWords(name))
-}
-
 /** One story of one chronicle, with the words it shows in each locale. */
 type StoryCase = {
   readonly character: Entity
@@ -212,12 +207,15 @@ function leaksIn(
   { episode, label, story }: StoryCase,
   locale: Locale,
 ): readonly string[] {
-  const text = `${story.title[locale]} ${shownWords(story.body[locale], locale)}`
+  // Reduced to words once per story, not once per record scanned against it.
+  const words = asWords(
+    `${story.title[locale]} ${shownWords(story.body[locale], locale)}`,
+  )
 
   return filedAfter(episode)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
-    .filter((other) => names(text, other.name[locale]))
+    .filter((other) => words.includes(asWords(other.name[locale])))
     .filter((other) => !sharesAReachedName(other, episode, locale))
     .map((other) => `${label} (${locale}) names ${other.id}`)
 }

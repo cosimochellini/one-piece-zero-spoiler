@@ -115,12 +115,12 @@ browser at all rather than there and declined.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 644                                                                   |
-| Characters          | 470                                                                   |
+| Records             | 666                                                                   |
+| Characters          | 492                                                                   |
 | Devil fruits        | 128                                                                   |
 | Arcs, places, ships | 34 · 10 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 645: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 667: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 553                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
