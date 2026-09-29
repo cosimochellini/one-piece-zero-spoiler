@@ -66,7 +66,7 @@ const BANNED: Record<Locale, readonly RegExp[]> = {
     /\bdossiers?\b/iu,
     /\bfiled\b/iu,
     /\blift the fog\b/iu,
-    /\b(?:discover|unlock|dive in)\b/iu,
+    /\b(?:(?:discover|unlock)(?:s|ed)?|explor(?:e|es|ed))\b|\bdive in\b/iu,
   ],
   it: [
     /\blibro dei segnali\b/iu,
@@ -77,7 +77,7 @@ const BANNED: Record<Locale, readonly RegExp[]> = {
     /\barchiviat[aeio]\b/iu,
     // The old verb for revealing: "Dirada la nebbia", "Dirado…".
     /\bdirad[aio]\b/iu,
-    /\b(?:scopri|immergiti)\b/iu,
+    /\b(?:scopri|immergiti|esplora)\b/iu,
   ],
 }
 
@@ -101,7 +101,10 @@ describe('the tone of voice', () => {
 
       for (const key of dictionaryKeys()) {
         for (const pattern of banned) {
-          expect(dictionary[key], `${locale} ${key}`).not.toMatch(pattern)
+          expect(
+            dictionary[key],
+            `${locale} ${key} ${String(pattern)}`,
+          ).not.toMatch(pattern)
         }
       }
     }

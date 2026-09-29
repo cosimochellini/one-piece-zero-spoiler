@@ -95,15 +95,15 @@ export const enDictionary = {
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
-    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain it is rounded up, so an entry never opens too early.',
+    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain it is rounded up, so an entry is more likely to open late than early.',
   'faq.bookmarkQ': 'Where is my bookmark stored?',
   'faq.bookmarkA':
-    'In a cookie on this device. The server reads it before building the page, so hidden entries never reach your browser. There is no account and no tracking.',
+    'In a cookie on this device. The server reads it before building the page, so hidden entries are not in the page you receive. There is no account and no tracking.',
   'faq.peekQ': 'Can I see a hidden entry?',
   'faq.peekA':
     'Yes. Press “Show anyway” on it. The choice is not saved, and everything else stays hidden.',
 
-  'footer.lead': 'A One Piece wiki that only shows what you have already seen.',
+  'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':
     'All the drawings are made for this site; no official artwork is used. Your bookmark is saved in a cookie on this device. MIT licence.',
 
@@ -160,7 +160,7 @@ export const enDictionary = {
   'character.devilFruit': 'Devil fruit',
   'character.bounty': 'Bounty',
   'character.bountyValue': '{amount} Berry',
-  'character.factsLabel': 'What you know so far',
+  'character.factsLabel': 'Facts up to your bookmark',
   'character.chronicleTitle': 'Story so far',
   'character.chronicleLede':
     'What happens to them up to your bookmark. Each part starts at the episode where it takes place.',
@@ -272,7 +272,7 @@ export const enDictionary = {
   'status.captured': 'Captured',
   'status.imprisoned': 'Imprisoned',
   'status.missing': 'Missing',
-  'status.unknown': 'Unknown',
+  'status.unknown': 'Fate unknown',
 
   'kind.character': 'Character',
   'kind.arc': 'Arc',

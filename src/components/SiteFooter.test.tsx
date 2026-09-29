@@ -11,7 +11,7 @@ describe('SiteFooter', () => {
 
     expect(
       screen.getByText(
-        'A One Piece wiki that only shows what you have already seen.',
+        'A One Piece wiki that hides what comes after your bookmark.',
       ),
     ).toBeInTheDocument()
     expect(screen.getByRole('contentinfo')).toHaveTextContent(
@@ -25,7 +25,7 @@ describe('SiteFooter', () => {
 
     expect(
       screen.getByText(
-        'Una wiki di One Piece che mostra solo quello che hai già visto.',
+        'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
       ),
     ).toBeInTheDocument()
   })

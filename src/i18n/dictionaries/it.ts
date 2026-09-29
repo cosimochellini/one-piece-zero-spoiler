@@ -89,16 +89,16 @@ export const itDictionary: Dictionary = {
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
-    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha sia un numero di episodio sia uno di capitolo. Quando il punto esatto è incerto viene arrotondato per eccesso, così una voce non si apre mai prima del dovuto.',
+    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha sia un numero di episodio sia uno di capitolo. Quando il punto esatto è incerto viene arrotondato per eccesso, così è più facile che una voce si apra tardi che presto.',
   'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
   'faq.bookmarkA':
-    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci nascoste non arrivano mai al browser. Non serve un account e non c’è nessun tracciamento.',
+    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci nascoste non sono nella pagina che ricevi. Non serve un account e non c’è nessun tracciamento.',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
     'Sì, premi “Mostra comunque”. La scelta non viene salvata e il resto rimane nascosto.',
 
   'footer.lead':
-    'Una wiki di One Piece che mostra solo quello che hai già visto.',
+    'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
   'footer.colophon':
     'Tutti i disegni sono fatti per questo sito e non ci sono immagini ufficiali. Il segnalibro viene salvato in un cookie su questo dispositivo. Licenza MIT.',
 
@@ -157,7 +157,7 @@ export const itDictionary: Dictionary = {
   'character.devilFruit': 'Frutto del diavolo',
   'character.bounty': 'Taglia',
   'character.bountyValue': '{amount} Berry',
-  'character.factsLabel': 'Cosa sai finora',
+  'character.factsLabel': 'Fatti fino al tuo segnalibro',
   'character.chronicleTitle': 'La storia finora',
   'character.chronicleLede':
     'Le sue vicende fino al tuo segnalibro. Ogni parte inizia dall’episodio in cui avviene.',
@@ -182,11 +182,11 @@ export const itDictionary: Dictionary = {
   'places.stage': 'Tappa {index} di {total}',
   'places.foggedName': 'Un luogo nella nebbia',
   'places.foggedDescription.episode':
-    'Un luogo di One Piece che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggerne la scheda.',
+    'Un luogo di One Piece che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.foggedDescription.season':
-    'Un luogo di One Piece che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la scheda.',
+    'Un luogo di One Piece che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.foggedDescription.chapter':
-    'Un luogo di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la scheda.',
+    'Un luogo di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
   'places.firstSeen.episode':
     'Compare per la prima volta nell’episodio {threshold}',
   'places.firstSeen.season': 'Compare per la prima volta in {threshold}',

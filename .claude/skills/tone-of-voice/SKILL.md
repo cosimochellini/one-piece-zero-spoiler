@@ -18,8 +18,12 @@ to sound evocative.
 - **Short declarative sentences.** One idea per sentence. Say what happens,
   not how it should feel.
 - **The site is not a character.** It does not wait, promise, remember or
-  care. Write "Hidden entries never reach your browser", not "The wiki waits
+  care. Write "Hidden entries are not in the page you receive", not "The wiki waits
   for you".
+- **Claims about the site are exact.** Say "more likely to open late than
+  early", not "never opens too early", unless the code guarantees it. Check the
+  sentence next to it: an absolute in one FAQ answer must not be undone by the
+  next one.
 - **Plain nouns for pages and sections**: Characters, Places, Devil fruits,
   All characters, Story so far.
 
@@ -93,8 +97,10 @@ Each one below was in the old copy.
 - Buttons: three words or fewer. `veil.revealShort` is one short word; it sits
   on the smallest tiles.
 - `mark.unset` has to fit the top bar at 390px.
-- Ledes: two lines on desktop at most. If it needs a third, cut a clause.
-- Titles: `Page | Zero Spoiler`, with a pipe.
+- Section ledes: two lines on desktop at most. If one needs a third, cut a
+  clause. The landing page lede, which explains the bookmark, may run longer.
+- Titles: `Page | Zero Spoiler`, with a pipe. The home page puts the site name
+  first: `Zero Spoiler | The One Piece wiki without spoilers`.
 - An `aria-label` built in code from two strings is joined with ". ", never an
   em dash.
 
