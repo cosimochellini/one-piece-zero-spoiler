@@ -565,10 +565,10 @@ export const wanoChronicles = {
     {
       episode: 1055,
       value: {
-        title: { it: 'Tre giganti a tavola', en: 'Three giants at the table' },
+        title: { it: 'Tre giganti di riserva', en: 'Three giants in reserve' },
         body: {
-          it: 'Mentre i Pirati delle Cento Bestie e i samurai si battono per tutta la fortezza, tre giganti siedono in disparte in una sala scavata nella roccia, a mangiare e bere. [[scratchmen-apoo|Apoo]] ci porta [[x-drake|Drake]]: ha capito che Drake è una spia della Marina, e non gliene importa niente. Quando la battaglia sarà finita, dice, chiunque abbia vinto sarà malconcio e facile da schiacciare. Poi presenta i giganti uno per uno, Fuga fra loro, come la forza che gli resta, e propone a Drake di allearsi con loro e prendersi il bottino alla fine. Drake gli dà del vigliacco.',
-          en: 'While the Beasts Pirates and the samurai fight their way through the fortress, three giants sit apart in a cave chamber, eating and drinking. [[scratchmen-apoo|Apoo]] brings [[x-drake|Drake]] there: he has guessed that Drake is a Marine spy, and he does not care. When the battle is over, he says, whoever wins will be badly bruised and easy to crush. Then he names the giants one by one, Fuga among them, as the power he still has, and asks Drake to ally with them and snatch up the spoils at the end. Drake calls him a coward.',
+          it: 'Mentre i Pirati delle Cento Bestie e i samurai si battono per tutta la fortezza, in una sala scavata nella roccia [[scratchmen-apoo|Apoo]] affronta [[x-drake|Drake]]: ha capito che Drake è una spia della Marina, e non gliene importa niente. Quando la battaglia sarà finita, dice, chiunque abbia vinto sarà malconcio e facile da schiacciare. Poi presenta i giganti uno per uno, Fuga fra loro, come la forza che gli resta, e propone a Drake di allearsi con loro e prendersi il bottino alla fine. Drake gli dà del vigliacco.',
+          en: 'While the Beasts Pirates and the samurai fight their way through the fortress, [[scratchmen-apoo|Apoo]] confronts [[x-drake|Drake]] in a cave chamber: he has guessed that Drake is a Marine spy, and he does not care. When the battle is over, he says, whoever wins will be badly bruised and easy to crush. Then he names the giants one by one, Fuga among them, as the power he still has, and asks Drake to ally with them and snatch up the spoils at the end. Drake calls him a coward.',
         },
       },
     },
