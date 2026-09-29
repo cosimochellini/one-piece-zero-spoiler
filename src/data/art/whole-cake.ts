@@ -673,4 +673,322 @@ export const wholeCakeArt = {
     { d: 'M52 130 l-11 9 M80 132 v11 M108 130 l11 9', role: 'soft' },
     { d: 'M20 158 H140', role: 'ambient', dashed: true },
   ],
+  // A sheep's curled horn lying above a sword laid flat.
+  'sheepshead': [
+    {
+      d: 'M36 64 C76 34 128 58 126 102 C124 136 84 144 70 122 C58 102 76 84 92 94 C102 100 98 114 88 114',
+    },
+    { d: 'M36 64 C46 74 52 80 58 96' },
+    {
+      d: 'M60 50 l4 12 M86 44 l-2 13 M112 56 l-9 9 M126 84 l-13 2 M118 122 l-10 -6',
+      role: 'soft',
+    },
+    { d: 'M34 154 H122 L136 159 L122 164 H34 Z', role: 'accent' },
+    { d: 'M34 144 V174', role: 'accent' },
+    { d: 'M34 159 H16' },
+    { d: circle(11, 159, 5) },
+    shadow(80, 182, 60),
+  ],
+
+  // A naginata planted upright in the rubble of a flattened town.
+  'edward-weevil': [
+    { d: 'M88 48 L78 164' },
+    { d: 'M86 48 C82 30 86 16 100 4 C102 20 100 34 94 50 Z', role: 'accent' },
+    { d: 'M80 50 L98 52' },
+    { d: 'M84 60 L94 61 M83 66 L93 67', role: 'soft' },
+    { d: 'M18 172 L32 150 L46 160 L58 144 L72 158' },
+    { d: 'M86 158 L100 146 L114 160 L128 148 L142 172' },
+    {
+      d: 'M30 184 h16 v-10 h-16 z M112 184 h18 v-10 h-18 z M60 180 l10 -8 l8 6',
+      role: 'soft',
+    },
+    shadow(80, 188, 64),
+  ],
+
+  // A pair of round sunglasses resting on a stack of coins.
+  'bakkin': [
+    { d: 'M44 128 V150 a36 9 0 0 0 72 0 V128' },
+    { d: ellipse(80, 128, 36, 9) },
+    { d: 'M44 135 a36 9 0 0 0 72 0 M44 142 a36 9 0 0 0 72 0', role: 'soft' },
+    { d: 'M118 168 a16 5 0 1 0 32 0 a16 5 0 1 0 -32 0', role: 'soft' },
+    { d: `${circle(62, 106, 13)} ${circle(98, 106, 13)}`, role: 'accent' },
+    { d: 'M75 104 q5 -6 10 0', role: 'accent' },
+    { d: 'M49 102 L34 90 M111 102 L126 90' },
+    { d: 'M56 101 l7 -4 M92 101 l7 -4', role: 'soft' },
+    shadow(70, 170, 40),
+  ],
+
+  // An elephant's trunk raised out of the sea, spraying water that falls back
+  // as rain, with a fish tumbling down in it.
+  'zunesha': [
+    { d: 'M34 160 C34 116 56 80 94 64 C106 58 118 58 124 66' },
+    { d: 'M58 160 C60 124 78 96 104 84 C112 80 120 80 124 74' },
+    { d: 'M124 66 C130 68 130 74 124 74', role: 'soft' },
+    {
+      d: 'M44 132 l12 4 M52 110 l12 6 M66 90 l10 8 M84 76 l6 10',
+      role: 'soft',
+    },
+    {
+      d: 'M126 64 C130 32 148 22 156 42 M122 62 C114 30 92 20 80 36',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [150, 60],
+        [156, 78],
+        [146, 96],
+        [82, 52],
+        [76, 70],
+        [92, 44],
+      ]),
+      role: 'accent',
+    },
+    {
+      d: 'M112 118 q14 -10 26 0 q-12 10 -26 0 z M138 118 l8 -6 v12 z',
+      role: 'soft',
+    },
+    ...SEA,
+  ],
+  // A musketeer's broad hat with a long curling plume, above a rapier laid
+  // across the table.
+  'shishilian': [
+    { d: 'M50 96 C50 66 110 66 110 96' },
+    { d: ellipse(80, 98, 58, 12) },
+    { d: 'M52 88 H108', role: 'soft' },
+    {
+      d: 'M104 84 C104 58 126 38 150 36 C146 58 128 76 104 84 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M108 78 C118 64 130 52 144 42 M116 70 l-4 -8 M126 60 l-4 -8 M136 50 l-3 -7',
+      role: 'soft',
+    },
+    { d: 'M36 150 L144 126' },
+    { d: 'M40 140 C30 146 32 158 44 158', role: 'accent' },
+    { d: circle(28, 154, 4) },
+    shadow(84, 172, 52),
+  ],
+
+  // A three-barrelled gun where a forearm should be, its pull chain hanging
+  // down to a ring.
+  'gotti': [
+    { d: 'M18 78 H42 V136 H18 Z' },
+    {
+      d: 'M42 84 H122 V96 H42 Z M42 101 H122 V113 H42 Z M42 118 H122 V130 H42 Z',
+    },
+    {
+      d: `${circle(126, 90, 4)} ${circle(126, 107, 4)} ${circle(126, 124, 4)}`,
+      role: 'accent',
+    },
+    { d: 'M60 84 V130 M100 84 V130', role: 'soft' },
+    {
+      d: `${ellipse(30, 144, 3, 5)} ${ellipse(30, 155, 3, 5)} ${ellipse(30, 166, 3, 5)}`,
+      role: 'soft',
+    },
+    { d: circle(30, 178, 6), role: 'accent' },
+    shadow(80, 188, 56),
+  ],
+
+  // A tall glass of apple juice with a bent straw, and an apple beside it,
+  // on a mound of earth.
+  'pound': [
+    { d: 'M8 162 C40 138 120 138 152 162' },
+    { d: 'M52 70 L58 148 H94 L100 70' },
+    { d: ellipse(76, 70, 24, 5), role: 'soft' },
+    { d: 'M55 98 Q76 104 97 98', role: 'accent' },
+    { d: 'M84 126 L90 56 L108 40', role: 'accent' },
+    {
+      d: 'M120 128 C104 116 104 148 122 150 C140 148 140 116 124 128 C123 126 121 126 120 128 Z',
+      role: 'accent',
+    },
+    { d: 'M122 127 q2 -8 9 -10', role: 'soft' },
+    {
+      d: dots([
+        [30, 156],
+        [46, 150],
+        [134, 154],
+      ]),
+      role: 'soft',
+    },
+  ],
+
+  // A hat with a brim wider than any table, flowers at its band, over a
+  // long sword laid out beneath it.
+  'amande': [
+    { d: ellipse(80, 96, 72, 16) },
+    { d: 'M58 92 C58 66 102 66 102 92' },
+    { d: 'M60 86 Q80 80 100 86', role: 'soft' },
+    {
+      d: `${circle(68, 83, 4)} ${circle(80, 81, 4)} ${circle(92, 83, 4)}`,
+      role: 'accent',
+    },
+    { d: 'M24 150 C64 138 110 132 150 130', role: 'accent' },
+    { d: 'M24 150 L8 155' },
+    { d: 'M22 143 L27 157' },
+    shadow(80, 172, 62),
+  ],
+  // A crossbow laid across a heap of whipped cream.
+  'charlotte-opera': [
+    {
+      d: 'M30 152 C24 140 36 128 50 130 C52 114 72 108 84 118 C96 106 118 112 118 128 C132 128 140 142 130 152 Z',
+      role: 'soft',
+    },
+    { d: 'M60 126 q10 -10 20 -2 M98 124 q8 -8 14 0', role: 'soft' },
+    { d: 'M40 116 L118 78' },
+    { d: 'M97 60 Q132 70 119 106' },
+    { d: 'M97 60 L97 88 L119 106', role: 'soft' },
+    { d: 'M66 104 L132 72 M132 72 l-9 -1 M132 72 l-5 7', role: 'accent' },
+    { d: 'M58 108 l5 11' },
+    shadow(80, 164, 56),
+  ],
+
+  // A footed bowl of stewed fruit, syrup running over the rim.
+  'charlotte-compote': [
+    { d: 'M34 108 C38 140 58 152 80 152 C102 152 122 140 126 108 Z' },
+    { d: 'M68 152 L62 166 H98 L92 152' },
+    {
+      d: [circle(58, 100, 10), circle(80, 96, 12), circle(103, 100, 10)].join(
+        ' ',
+      ),
+      role: 'accent',
+    },
+    { d: 'M80 84 q2 -8 9 -11 q8 -1 10 5 q-9 4 -19 6', role: 'soft' },
+    { d: 'M40 116 q3 8 0 13 M118 118 q-2 6 1 10', role: 'soft' },
+    shadow(80, 176, 44),
+  ],
+
+  // A bicorne hat with a tornado twisting up out of its crown.
+  'charlotte-nusstorte': [
+    {
+      d: 'M14 106 C40 140 120 140 146 106 C120 118 104 96 80 96 C56 96 40 118 14 106 Z',
+    },
+    { d: 'M40 118 C62 126 98 126 120 118', role: 'soft' },
+    { d: circle(80, 108, 5), role: 'accent' },
+    {
+      d: 'M40 22 C58 50 72 70 78 94 M124 22 C106 50 90 70 84 94',
+      role: 'accent',
+    },
+    {
+      d: 'M40 22 C62 32 102 32 124 22 M50 40 C68 48 96 48 114 40 M60 58 C72 64 90 64 102 58 M70 76 C76 80 86 80 92 76',
+      role: 'soft',
+    },
+    shadow(80, 150, 58),
+  ],
+
+  // A long blowgun, a dart flying from its mouth and a bubble of gum.
+  'charlotte-flampe': [
+    { d: 'M18 150 L110 70 M25 157 L117 77 M18 150 L25 157 M110 70 L117 77' },
+    { d: 'M34 136 l7 7', role: 'soft' },
+    { d: 'M128 60 L150 40 M150 40 l-9 1 M150 40 l-1 9', role: 'accent' },
+    { d: 'M120 70 l8 -7 M112 62 l8 -7', role: 'soft', dashed: true },
+    { d: circle(48, 72, 18), role: 'accent' },
+    { d: 'M38 66 q4 -6 11 -5', role: 'soft' },
+    shadow(70, 178, 50),
+  ],
+  // A double-headed spear laid across a long crane feather.
+  'randolph': [
+    { d: 'M30 176 L130 28' },
+    { d: 'M130 28 l-2 16 l-9 -6 Z M30 176 l2 -16 l9 6 Z', role: 'accent' },
+    { d: 'M72 118 l10 7 M78 110 l10 7', role: 'accent' },
+    { d: 'M44 58 C70 70 104 108 118 160 C96 132 62 100 44 58 Z' },
+    {
+      d: 'M58 74 l-10 8 M70 88 l-12 8 M82 104 l-12 10 M94 122 l-12 10 M104 140 l-10 10',
+      role: 'soft',
+    },
+    shadow(80, 184, 52),
+  ],
+
+  // A heaped thundercloud with a lightning bolt dropping out of it.
+  'zeus': [
+    {
+      d: 'M30 96 C14 96 12 72 30 68 C28 46 56 40 64 54 C70 30 108 30 112 56 C132 50 148 70 134 88 C142 104 118 110 110 100 C98 112 74 112 64 102 C52 110 34 108 30 96 Z',
+    },
+    { d: 'M36 88 C52 96 70 92 80 84 C92 94 112 94 128 82', role: 'soft' },
+    { d: 'M86 108 L70 140 H88 L72 180 L112 130 H92 L104 108', role: 'accent' },
+    { d: 'M40 124 v10 M52 136 v10 M122 124 v10 M132 138 v10', role: 'ambient' },
+  ],
+
+  // A sun with flames licking out of its rim.
+  'prometheus': [
+    { d: circle(80, 96, 34) },
+    { d: circle(80, 96, 24), role: 'soft' },
+    {
+      d: 'M80 44 q-8 -14 0 -26 q8 12 0 26 M132 96 q14 -8 26 0 q-12 8 -26 0 M80 148 q8 14 0 26 q-8 -12 0 -26 M28 96 q-14 8 -26 0 q12 -8 26 0',
+      role: 'accent',
+    },
+    {
+      d: 'M117 59 l12 -12 M117 133 l12 12 M43 133 l-12 12 M43 59 l-12 -12',
+      role: 'accent',
+    },
+    shadow(80, 188, 40),
+  ],
+
+  // A bicorne with a plume, a sword blade drawn out of its crown.
+  'napoleon': [
+    {
+      d: 'M16 132 C40 104 60 96 80 96 C100 96 120 104 144 132 C112 124 48 124 16 132 Z',
+    },
+    { d: 'M30 124 C52 112 108 112 130 124', role: 'soft' },
+    { d: circle(104, 112, 6), role: 'accent' },
+    {
+      d: 'M104 106 C110 82 128 70 146 68 C134 80 124 92 110 110',
+      role: 'soft',
+    },
+    { d: 'M76 96 V26 L80 16 L84 26 V96' },
+    { d: 'M64 96 H96', role: 'accent' },
+    shadow(80, 150, 60),
+  ],
+  // A cigar laid across a stack of coins, a thread of smoke rising from it.
+  'lu-feld': [
+    { d: ellipse(80, 104, 40, 12) },
+    { d: 'M40 104 V140 a40 12 0 0 0 80 0 V104' },
+    { d: 'M40 116 a40 12 0 0 0 80 0 M40 128 a40 12 0 0 0 80 0', role: 'soft' },
+    {
+      d: 'M34 90 L116 74 c7 -1 9 9 2 10 L36 100 c-7 1 -9 -9 -2 -10 Z',
+      role: 'accent',
+    },
+    { d: 'M100 77 l2 10', role: 'accent' },
+    { d: 'M30 92 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
+    shadow(80, 162, 48),
+  ],
+
+  // A longsword planted point down before a waterfall that falls like a beard.
+  'jorul': [
+    { d: 'M-4 52 H82 V62' },
+    {
+      d: 'M24 62 C20 96 30 128 34 160 M44 62 C40 96 50 128 50 160 M64 62 C60 96 68 128 66 160',
+      role: 'soft',
+    },
+    { d: 'M14 170 q10 -6 20 0 t20 0 t20 0', role: 'ambient' },
+    { d: 'M114 58 V160 L118 170 L122 160 V58 Z', role: 'accent' },
+    { d: 'M102 58 H134' },
+    { d: 'M118 58 V38', role: 'accent' },
+    { d: circle(118, 34, 4), role: 'accent' },
+    shadow(110, 182, 36),
+  ],
+
+  // A Marine coat hung from its shoulders like a cape, the hood let down.
+  'gion': [
+    { d: 'M80 42 c0 -8 10 -10 10 -3 c0 5 -10 6 -10 11' },
+    { d: 'M40 60 L80 44 L120 60', role: 'soft' },
+    { d: 'M44 60 C38 92 34 132 30 172 H130 C126 132 122 92 116 60' },
+    { d: 'M58 56 C62 76 98 76 102 56', role: 'soft' },
+    { d: 'M80 74 V172', role: 'soft' },
+    { d: 'M44 60 l-12 6 M116 60 l12 6', role: 'accent' },
+    { d: 'M30 172 l2 -10 h96 l2 10', role: 'accent' },
+    shadow(80, 186, 54),
+  ],
+
+  // A fedora with a checked band, and a lit pipe in front of its brim.
+  'tokikake': [
+    { d: 'M46 100 C46 70 56 58 80 58 C104 58 114 70 114 100' },
+    { d: 'M66 64 Q80 78 94 64', role: 'soft' },
+    { d: ellipse(80, 112, 62, 14) },
+    { d: 'M47 86 C66 94 94 94 113 86', role: 'accent' },
+    { d: 'M58 89 v7 M69 91 v7 M80 92 v7 M91 91 v7 M102 89 v7', role: 'soft' },
+    { d: 'M104 150 h18 v12 c0 9 -18 9 -18 0 Z' },
+    { d: 'M104 156 L52 170', role: 'accent' },
+    { d: 'M114 146 c-6 -6 6 -10 0 -16', role: 'soft' },
+    shadow(80, 186, 56),
+  ],
 } satisfies Drawings

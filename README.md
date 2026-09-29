@@ -64,7 +64,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 644 records and 645 line drawings, about 900 KB of TypeScript.
+The archive is 664 records and 665 line drawings, about 900 KB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 from the request and returns the records at or below the bookmark, with their
 strings already in the page's locale and their drawings already turned into
@@ -112,12 +112,12 @@ epithet the reader has not reached is not in the browser at all.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 644                                                                   |
-| Characters          | 470                                                                   |
+| Records             | 664                                                                   |
+| Characters          | 490                                                                   |
 | Devil fruits        | 128                                                                   |
 | Arcs, places, ships | 34 · 10 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 645: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 665: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 555                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -280,11 +280,11 @@ real reader who tapped a link a friend sent.
 - **The archive is not in the bundle.** Moving it behind the loaders took the
   client JavaScript from 1,048,559 bytes to 450,058, and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
-  not all 644. Adding the 120 devil fruits, their drawings and two more pages
+  not all 664. Adding the 120 devil fruits, their drawings and two more pages
   added 31 KB of client JavaScript and no archive data.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary together; now it carries only the page's language.
-- The character grid on the characters page (470 tiles with a drawing each,
+- The character grid on the characters page (490 tiles with a drawing each,
   below the fold) comes from the loader as a promise that is not awaited and
   streams into a `<Suspense>` boundary, so the search field and the crests above
   them load first. The landing page chart, the places list and a character page

@@ -567,6 +567,246 @@ export const wholeCake: Saga = {
       },
       visual: { art: 'aramaki', tint: 'green' },
     },
+    {
+      id: 'sheepshead',
+      kind: 'character',
+      revealedAtEpisode: 739,
+      revealedAtChapter: 795,
+      name: { it: 'Sheepshead', en: 'Sheepshead' },
+      summary: {
+        it: 'Un pirata con gli occhialoni in sella a una bestia simile a un coccodrillo, a caccia di un samurai su un’isola strana, con le mani che diventano corna ricurve di montone.',
+        en: 'A goggled pirate on a crocodile-like mount, hunting a samurai across a strange island, whose hands turn into the curled horns of a ram.',
+      },
+      visual: { art: 'sheepshead', tint: 'ivory' },
+    },
+    {
+      id: 'edward-weevil',
+      kind: 'character',
+      revealedAtEpisode: 751,
+      revealedAtChapter: 802,
+      name: { it: 'Edward Weeble', en: 'Edward Weevil' },
+      summary: {
+        it: 'Un membro della Flotta dei Sette che si dice figlio di Barbabianca, forte come il vecchio da giovane, che si lascia dietro intere città spazzate via.',
+        en: 'A Warlord who says he is Whitebeard’s own son, as strong as the old man was when young, and who leaves whole towns blown away behind him.',
+      },
+      visual: { art: 'edward-weevil', tint: 'sand' },
+    },
+    {
+      id: 'bakkin',
+      kind: 'character',
+      revealedAtEpisode: 752,
+      revealedAtChapter: 802,
+      name: { it: 'Miss Bakkin', en: 'Miss Buckin' },
+      summary: {
+        it: 'Una vecchietta minuscola con gli occhiali da sole e il cappello verde, madre di un membro della Flotta dei Sette, che dice di essere stata la donna amata da Barbabianca e pensa soprattutto ai soldi.',
+        en: 'A tiny old woman in sunglasses and a green hat, mother of a Warlord, who says she was the woman Whitebeard loved and cares above all for money.',
+      },
+      visual: { art: 'bakkin', tint: 'acid' },
+    },
+    {
+      id: 'zunesha',
+      kind: 'character',
+      revealedAtEpisode: 755,
+      revealedAtChapter: 806,
+      name: { it: 'Zunisha', en: 'Zunesha' },
+      summary: {
+        it: 'L’elefante millenario che porta Zou sulla schiena e due volte al giorno si fa la doccia con l’acqua di mare, facendo piovere pesci sulla città.',
+        en: 'The thousand-year-old elephant that carries Zou on its back and twice a day sprays seawater over itself, raining fish on the city.',
+      },
+      visual: { art: 'zunesha', tint: 'azure' },
+    },
+    {
+      id: 'shishilian',
+      kind: 'character',
+      revealedAtEpisode: 758,
+      revealedAtChapter: 808,
+      name: { it: 'Sicilian', en: 'Shishilian' },
+      summary: {
+        it: 'Un mink leone con il cappello piumato da moschettiere, di guardia al sanatorio del duca di Zou, che butta nel burrone chiunque parli di cose dolci.',
+        en: 'A lion mink in a plumed musketeer’s hat, on guard at the duke’s sanatorium on Zou, who throws anyone who talks about sweet things into the ravine.',
+      },
+      visual: { art: 'shishilian', tint: 'red' },
+    },
+    {
+      id: 'gotti',
+      kind: 'character',
+      revealedAtEpisode: 783,
+      revealedAtChapter: 825,
+      name: { it: 'Gotti', en: 'Gotti' },
+      summary: {
+        it: 'Un enorme pirata dei Fire Tank con una mitragliatrice a tre canne al posto del braccio destro, che si scaglia contro chi insulta un compagno e trema davanti a una donna sola.',
+        en: 'A huge Fire Tank Pirate with a three-barrelled gun for a right arm, who flies at anyone who insults a crewmate and trembles before one woman alone.',
+      },
+      visual: { art: 'gotti', tint: 'green' },
+    },
+    {
+      id: 'randolph',
+      kind: 'character',
+      revealedAtEpisode: 792,
+      revealedAtChapter: 832,
+      name: { it: 'Randolph', en: 'Randolph' },
+      summary: {
+        it: 'Un coniglio con il mantello e il cappello piumato che attraversa la Foresta della Seduzione in sella a una gru e mena una lancia a doppia lama contro gli intrusi.',
+        en: 'A rabbit in a cape and a feathered hat who rides a crane through the Seducing Woods and swings a double-bladed spear at intruders.',
+      },
+      visual: { art: 'randolph', tint: 'ivory' },
+    },
+    {
+      id: 'pound',
+      kind: 'character',
+      revealedAtEpisode: 797,
+      revealedAtChapter: 836,
+      name: { it: 'Pound', en: 'Pound' },
+      summary: {
+        it: 'Un uomo sepolto fino al collo nella Foresta della Seduzione perché gli piace, che un tempo sposò l’Imperatore di Totto Land e ora vuole soltanto rivedere le sue figlie.',
+        en: 'A man buried up to his neck in the Seducing Woods because he likes it there, who was once married to the Emperor of Totto Land and wants only to see his daughters.',
+      },
+      visual: { art: 'pound', tint: 'yellow' },
+    },
+    {
+      id: 'charlotte-opera',
+      kind: 'character',
+      revealedAtEpisode: 806,
+      revealedAtChapter: 843,
+      name: { it: 'Charlotte Opera', en: 'Charlotte Opera' },
+      summary: {
+        it: 'Un enorme ministro di Totto Land con la barba di panna, che chiude ogni frase con un «fa» e dà l’allarme alla capitale quando un fratello sconfitto piomba dal cielo.',
+        en: 'A huge minister of Totto Land with a beard of cream, who ends every sentence with a “fa” and alerts the capital when a beaten brother falls out of the sky.',
+      },
+      visual: { art: 'charlotte-opera', tint: 'ivory' },
+    },
+    {
+      id: 'zeus',
+      kind: 'character',
+      revealedAtEpisode: 806,
+      revealedAtChapter: 843,
+      name: { it: 'Zeus', en: 'Zeus' },
+      summary: {
+        it: 'Una nuvola temporalesca viva, con un volto, che sta sulla mano sinistra di Big Mom e trasforma la sua rabbia in una tempesta sul mare.',
+        en: 'A living thundercloud with a face, who rides on Big Mom’s left hand and turns her anger into a storm over the sea.',
+      },
+      visual: { art: 'zeus', tint: 'azure' },
+    },
+    {
+      id: 'prometheus',
+      kind: 'character',
+      revealedAtEpisode: 806,
+      revealedAtChapter: 843,
+      name: { it: 'Prometheus', en: 'Prometheus' },
+      summary: {
+        it: 'Un sole vivo, con un volto, che sta sulla mano destra di Big Mom e dà calore alle tempeste che lei scatena quando si infuria.',
+        en: 'A living sun with a face, who rides on Big Mom’s right hand and lends his heat to the storms she calls up when she is angry.',
+      },
+      visual: { art: 'prometheus', tint: 'vermilion' },
+    },
+    {
+      id: 'amande',
+      kind: 'character',
+      revealedAtEpisode: 809,
+      revealedAtChapter: 845,
+      name: { it: 'Amande', en: 'Amande' },
+      summary: {
+        it: 'Una donna altissima e pallida sotto un enorme cappello a tesa larga, uno dei nomi famosi che i principi del Germa riconoscono nell’esercito uscito dal castello per vendicare un comandante caduto.',
+        en: 'A very tall, pale woman under an enormous wide-brimmed hat, one of the famous names Germa’s princes pick out in the army marching from the chateau to avenge a fallen commander.',
+      },
+      visual: { art: 'amande', tint: 'azure' },
+    },
+    {
+      id: 'napoleon',
+      kind: 'character',
+      revealedAtEpisode: 816,
+      revealedAtChapter: 853,
+      name: { it: 'Napoleon', en: 'Napoleon' },
+      summary: {
+        it: 'Il bicorno rosa che Big Mom porta in testa, un cappello con occhi e bocca che risponde “Sì, mamma” ogni volta che lei lo chiama per nome.',
+        en: 'The pink bicorne Big Mom wears on her head, a hat with eyes and a mouth that answers “Yes, Mama” whenever she calls it by name.',
+      },
+      visual: { art: 'napoleon', tint: 'flamingo' },
+    },
+    {
+      id: 'lu-feld',
+      kind: 'character',
+      revealedAtEpisode: 830,
+      revealedAtChapter: 860,
+      name: { it: 'Du Feld', en: 'Lu Feld' },
+      summary: {
+        it: 'Il re degli strozzini della malavita, detto il Dio dell’abbondanza, che arriva al Tea Party di Big Mom in abito viola e pelliccia e scambia insulti già davanti al cancello.',
+        en: 'The Loan Shark King of the underworld, called the God of Fortune, who arrives at Big Mom’s Tea Party in a purple suit and a fur coat and trades insults at the gate.',
+      },
+      visual: { art: 'lu-feld', tint: 'violet' },
+    },
+    {
+      id: 'charlotte-compote',
+      kind: 'character',
+      revealedAtEpisode: 831,
+      revealedAtChapter: 861,
+      name: { it: 'Charlotte Compote', en: 'Charlotte Compote' },
+      summary: {
+        it: 'La figlia maggiore di Big Mom e ministra della frutta di Totto Land, seduta al tea party delle nozze di una sorella in mezzo a fratelli e sorelle senza numero.',
+        en: 'Big Mom’s eldest daughter and minister of fruit of Totto Land, seated at the tea party of a sister’s wedding among brothers and sisters beyond counting.',
+      },
+      visual: { art: 'charlotte-compote', tint: 'orange' },
+    },
+    {
+      id: 'jorul',
+      kind: 'character',
+      revealedAtEpisode: 836,
+      revealedAtChapter: 866,
+      name: { it: 'Jorul', en: 'Jorul' },
+      summary: {
+        it: 'Un gigante antichissimo con una barba che scende fino a terra come una cascata, che in un ricordo lontano va al villaggio di Elbaf con un vecchio compagno a dividere la semla con gli orfani.',
+        en: 'An ancient giant with a beard that pours to the ground like a waterfall, who in a distant memory comes down to Elbaph’s village with an old comrade to share semla with the orphans.',
+      },
+      visual: { art: 'jorul', tint: 'azure' },
+    },
+    {
+      id: 'charlotte-nusstorte',
+      kind: 'character',
+      revealedAtEpisode: 855,
+      revealedAtChapter: 882,
+      name: { it: 'Charlotte Nusstorte', en: 'Charlotte Nusstorte' },
+      summary: {
+        it: 'Un figlio di Big Mom con un bicorno che ha una faccia tutta sua e soffia tornado sui nemici, all’assalto del Regno di Germa con i soldati della madre.',
+        en: 'A son of Big Mom in a bicorne with a face of its own that blows tornadoes at the enemy, storming the Germa Kingdom with his mother’s soldiers.',
+      },
+      visual: { art: 'charlotte-nusstorte', tint: 'violet' },
+    },
+    {
+      id: 'charlotte-flampe',
+      kind: 'character',
+      revealedAtEpisode: 865,
+      revealedAtChapter: 891,
+      name: { it: 'Charlotte Flambè', en: 'Charlotte Flampe' },
+      summary: {
+        it: 'Una giovane figlia di Big Mom a capo del fan club di Katakuri, che spia i suoi duelli di nascosto con i suoi seguaci per diventare la sua sorella preferita.',
+        en: 'A young daughter of Big Mom at the head of Katakuri’s fan club, who spies on his duels from hiding with her followers, set on becoming his favourite sister.',
+      },
+      visual: { art: 'charlotte-flampe', tint: 'flamingo' },
+    },
+    {
+      id: 'gion',
+      kind: 'character',
+      revealedAtEpisode: 887,
+      revealedAtChapter: 907,
+      name: { it: 'Gion', en: 'Gion' },
+      summary: {
+        it: 'Un viceammiraglio della Marina con il cappotto sulle spalle come un mantello, che al Red Port rimprovera un vecchio eroe perché ride mentre due Imperatori danno la caccia a suo nipote.',
+        en: 'A Marine vice admiral with her coat worn over her shoulders like a cape, who at the Red Port scolds an old hero for laughing while two Emperors hunt his grandson.',
+      },
+      visual: { art: 'gion', tint: 'pink' },
+    },
+    {
+      id: 'tokikake',
+      kind: 'character',
+      revealedAtEpisode: 887,
+      revealedAtChapter: 907,
+      name: { it: 'Tokikake', en: 'Tokikake' },
+      summary: {
+        it: 'Un viceammiraglio della Marina con il cappello di feltro e il cappotto a quadri, che al Red Port si intromette scusandosi e scommette che Big Mom abbia già messo in conto una Marina sguarnita.',
+        en: 'A Marine vice admiral in a fedora and a checked coat, who at the Red Port cuts in with an apology and wagers that Big Mom has already counted on the Marines being short of men.',
+      },
+      visual: { art: 'tokikake', tint: 'ocher' },
+    },
   ],
   dossiers: {
     'jack': {
@@ -1176,8 +1416,8 @@ export const wholeCake: Saga = {
     'jarul': {
       role: { it: 'Anziano di Elbaf', en: 'Elder of Elbaph' },
       log: {
-        it: 'Nel ricordo è uno dei due vecchi capitani che i giganti di Elbaf trattano da eroi, alto il doppio di chiunque altro e con una barba che gli copre quasi tutto il corpo. Loda i giovani che si allenano con spirito da guerriero e raccoglie gli orfani della Casa delle Pecore per mangiare la semla prima del digiuno. Prima del banchetto ringrazia il sole per i bambini nati e cresciuti sull’isola.',
-        en: 'In the memory he is one of the two old captains the giants of Elbaph treat as heroes, twice as tall as anyone else, with a beard that covers nearly his whole body. He praises the young ones who train with a warrior’s spirit and gathers the Sheep’s House orphans to eat semla before the fast. Before the feast he thanks the sun for the children born and raised on the island.',
+        it: 'Nel ricordo è uno dei due vecchi capitani che i giganti di Elbaf trattano da eroi, alto il doppio di chiunque altro e con una barba che gli copre quasi tutto il corpo. Ai giovani ricorda che il commercio al posto del saccheggio, come predica Carmel, va benissimo, ma i giganti non devono mai dimenticare di essere guerrieri. Poi viene con il vecchio compagno a prendere gli orfani della Casa delle Pecore per mangiare la semla prima del digiuno.',
+        en: 'In the memory he is one of the two old captains the giants of Elbaph treat as heroes, twice as tall as anyone else, with a beard that covers nearly his whole body. He tells the young that trade over plunder, as Carmel preaches, is all very well, but giants must never forget they are warriors. Then he comes with his old comrade to fetch the Sheep’s House orphans for semla before the fast.',
       },
       affiliation: [
         { episode: 836, value: { it: 'Elbaf, anziano', en: 'Elbaph, elder' } },
@@ -1345,6 +1585,486 @@ export const wholeCake: Saga = {
       ],
       epithet: [{ episode: 1077, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
       devilFruit: [{ episode: 1077, value: ['woods-woods-fruit'] }],
+    },
+    // No `devilFruit` line: the story shows his hands turn into a sheep's horns
+    // from 739, and says at 779 that the Gifters eat artificial fruits, but the
+    // anime never names his; the Sheep SMILE is only in the Vivre Card.
+    'sheepshead': {
+      chronicle: wholeCakeChronicles.sheepshead,
+      role: {
+        it: 'Pirata a capo di una squadra di ricerca',
+        en: 'Pirate leading a search party',
+      },
+      log: {
+        it: 'Cavalca una bestia simile a un coccodrillo alla testa di una banda di pirati che, su un’isola strana, dà la caccia a una ragazza e a un samurai. I suoi uomini lo chiamano Sheepshead-sama, e con chiunque sembri sospetto la sua regola è semplice: ucciderlo. Quando combatte le sue mani diventano corna ricurve di montone, e carica con quelle come con la spada che porta sulla schiena.',
+        en: 'He rides a crocodile-like mount at the head of a band of pirates hunting a girl and a samurai across a strange island. His men call him Sheepshead-sama, and his rule for anyone who looks suspicious is a simple one: kill them. When he fights, his hands turn into a ram’s curled horns, and he charges with them as readily as with the sword on his back.',
+      },
+      status: [{ episode: 739, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 739,
+          value: {
+            it: 'Pirati, squadra in cerca di un samurai',
+            en: 'Pirates, a party hunting a samurai',
+          },
+        },
+        {
+          episode: 757,
+          value: {
+            it: 'Pirati delle Cento Bestie, headliner dei Gifters',
+            en: 'Beasts Pirates, headliner of the Gifters',
+          },
+        },
+      ],
+    },
+    'edward-weevil': {
+      chronicle: wholeCakeChronicles['edward-weevil'],
+      role: {
+        it: 'Membro della Flotta dei Sette',
+        en: 'One of the Seven Warlords',
+      },
+      log: {
+        it: 'Nei rapporti della Marina ha già annientato sedici ciurme di vecchi alleati di Barbabianca, e ogni volta una lite finisce con l’intera città spazzata via e centinaia di vittime. È un membro della Flotta dei Sette, e la Marina si chiede quanto a lungo potrà chiudere un occhio. Dice di essere il vero figlio di Barbabianca, un titolo a cui molti non credono; sulla sua forza invece nessuno ha dubbi, e un ammiraglio lo paragona a Barbabianca da giovane.',
+        en: 'By the Marines’ reports he has already wiped out sixteen crews of Whitebeard’s old allies, and each time a quarrel ends with the whole town blown away and hundreds of casualties. He is one of the Seven Warlords, and the Marines wonder how long they can look away. He says he is Whitebeard’s own son, a title many people doubt; nobody doubts his strength, and an admiral compares him to the young Whitebeard.',
+      },
+      affiliation: [
+        {
+          episode: 751,
+          value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+        },
+        {
+          episode: 957,
+          value: {
+            it: 'Pirata, ex membro della Flotta dei Sette',
+            en: 'Pirate, former Warlord',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 752,
+          value: { it: 'Barbabianca Jr.', en: 'Whitebeard Jr.' },
+        },
+      ],
+      bounty: [{ episode: 752, value: 480_000_000 }],
+    },
+    'bakkin': {
+      chronicle: wholeCakeChronicles.bakkin,
+      role: { it: 'Madre di Edward Weeble', en: 'Mother of Edward Weevil' },
+      log: {
+        it: 'È una vecchietta minuscola con gli occhiali da sole e il cappello verde, e dice al figlio, un membro della Flotta dei Sette, che lui è l’unico vero figlio di Barbabianca e lei la donna che Barbabianca amava. Per provarlo gli mostra una foto del vecchio, lo sgrida e lo perdona nello stesso momento. La vendetta per lei è tempo perso, perché non rende nemmeno un berry, mentre la fortuna di un Imperatore morto aspetta il suo legittimo erede.',
+        en: 'She is a tiny old woman in sunglasses and a green hat, and she tells her son, a Warlord, that he is the one true son of Whitebeard and she the woman Whitebeard loved. She holds up a picture of the old man to prove it, and scolds her boy and forgives him in the same breath. Revenge, to her, is a waste of time, since it earns not a single berry, while a dead Emperor’s fortune is waiting for its rightful heir.',
+      },
+      affiliation: [
+        {
+          episode: 752,
+          value: {
+            it: 'Al seguito del figlio, Edward Weeble',
+            en: 'At the side of her son, Edward Weevil',
+          },
+        },
+        {
+          episode: 890,
+          value: {
+            it: 'Al seguito del figlio; un tempo piratessa, sulla stessa nave di Barbabianca',
+            en: 'At her son’s side; once a pirate, on the same ship as Whitebeard',
+          },
+        },
+      ],
+    },
+    'zunesha': {
+      chronicle: wholeCakeChronicles.zunesha,
+      role: {
+        it: 'L’elefante che porta Zou',
+        en: 'The elephant that carries Zou',
+      },
+      log: {
+        it: 'L’intero paese dei mink viaggia sulla sua schiena, foresta e città comprese, e cammina sul mare da mille anni. Due volte al giorno si spruzza addosso acqua di mare, e l’ondata che si abbatte sul paese viene filtrata nel cuore della città e passa negli acquedotti come acqua da bere per tutta la nazione. I pesci che cadono con l’acqua sfamano i mink, e la loro foresta e la loro città sono fatte per reggere il diluvio.',
+        en: 'The whole country of the minks rides on its back, forest and city alike, and it has been walking the sea for a thousand years. Twice a day it sprays seawater over itself, and the flood that crashes down is filtered at the heart of the city into aqueducts that carry drinking water to the whole nation. The fish that fall with the water keep the minks fed, and their forest and town are built to take the downpour.',
+      },
+      status: [{ episode: 755, value: 'alive' }],
+      affiliation: [{ episode: 755, value: ZOU }],
+    },
+    'shishilian': {
+      chronicle: wholeCakeChronicles.shishilian,
+      role: {
+        it: 'Capitano dei Moschettieri',
+        en: 'Captain of the Musketeers',
+      },
+      log: {
+        it: 'È il capitano dei Moschettieri del duca e fa ogni cosa a tutta forza, dall’inchino al grido con cui annuncia il proprio nome. Non sopporta niente di dolce, parole comprese: gentilezza, amore e miele valgono un volo in fondo al burrone e la risalita da soli. Ringrazia in ginocchio i pirati che hanno salvato il suo paese, e durante l’assalto ha strappato Wanda alla presa di un nemico.',
+        en: 'He is captain of the duke’s Musketeers and does everything at full power, from a bow to the shout he announces his own name with. He cannot stand anything sweet, words included: kindness, love and honey earn a trip to the bottom of the ravine and the climb back up alone. He thanks the pirates who saved his country on his knees, and during the raid he tore Wanda out of an attacker’s grip.',
+      },
+      status: [{ episode: 758, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 758,
+          value: {
+            it: 'Ducato di Mokomo, capitano dei Moschettieri di Inuarashi',
+            en: 'Mokomo Dukedom, Inuarashi Musketeers captain',
+          },
+        },
+      ],
+      origin: [{ episode: 758, value: ZOU }],
+      epithet: [
+        { episode: 758, value: { it: 'A tutta forza', en: 'Full Power' } },
+      ],
+    },
+    'gotti': {
+      chronicle: wholeCakeChronicles.gotti,
+      role: {
+        it: 'Sicario dei Pirati Fire Tank',
+        en: 'Fire Tank Pirates hit man',
+      },
+      log: {
+        it: 'Naviga con i Pirati Fire Tank ed è un omone con l’avambraccio destro sostituito da una mitragliatrice a tre canne, che spara tirando una catena. Chi insulta un compagno deve vedersela con lui, e lui lo dice in poche parole: quello che si dice di lui non gli importa, ma a chi offende un amico non la perdona. Una sola donna a bordo lo ferma con un grido, e lui le chiede scusa con l’orecchio stretto fra le sue dita.',
+        en: 'He sails with the Fire Tank Pirates, a very big man whose right forearm has been replaced by a three-barrelled gun fired with a pull chain. Anyone who insults a crewmate has him to deal with, and he says so in few words: what is said about him does not matter, but he will not forgive an insult to a friend. One woman on board can stop him with a shout, and he begs her pardon with his ear pinched in her fingers.',
+      },
+      status: [{ episode: 783, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 783,
+          value: { it: 'Pirati Fire Tank', en: 'Fire Tank Pirates' },
+        },
+      ],
+      epithet: [
+        { episode: 783, value: { it: 'il Sicario', en: 'the Hit Man' } },
+      ],
+    },
+    'pound': {
+      chronicle: wholeCakeChronicles.pound,
+      role: { it: 'Ex marito di Big Mom', en: 'Big Mom’s ex-husband' },
+      log: {
+        it: 'Si è sepolto fino al collo nella Foresta della Seduzione perché gli piace starci, e chiede succo di mela a chiunque gli passi davanti di corsa. Sa come funziona Totto Land perché un tempo è stato il marito di Linlin, che lo ha cacciato appena sono nate le loro due figlie. Non vuole avere parte nella battaglia di nessuno: vuole soltanto rivedere le figlie e fare loro gli auguri.',
+        en: 'He has buried himself up to the neck in the Seducing Woods because he likes it there, and asks everyone who runs past him for apple juice. He knows how Totto Land works because he was once married to Linlin, who threw him out as soon as their two daughters were born. He wants no part in anybody’s fight: all he wants is to see his daughters again and tell them congratulations.',
+      },
+      status: [
+        { episode: 797, value: 'alive' },
+        { episode: 861, value: 'unknown' },
+      ],
+      affiliation: [
+        {
+          episode: 797,
+          value: {
+            it: 'Ex marito di Big Mom; padre di Lola',
+            en: 'Big Mom’s ex-husband; Lola’s father',
+          },
+        },
+        {
+          episode: 857,
+          value: {
+            it: 'Venticinquesimo ex marito di Big Mom; padre di Lola e Chiffon',
+            en: 'Big Mom’s twenty-fifth ex-husband; father of Lola and Chiffon',
+          },
+        },
+      ],
+    },
+    'amande': {
+      chronicle: wholeCakeChronicles.amande,
+      role: {
+        it: 'Spadaccina dei Pirati di Big Mom',
+        en: 'Big Mom Pirates swordswoman',
+      },
+      log: {
+        it: 'Marcia nell’esercito che Big Mom fa uscire dal castello dopo la caduta di un comandante, una donna altissima e magrissima con il volto che sparisce sotto una tesa enorme e una lunga spada in mano. I principi del Germa la riconoscono subito: è la Donna Demoniaca, uno dei nomi famosi di quella colonna. Si chiedono quanto facciano tutte quelle taglie messe insieme.',
+        en: 'She marches in the army Big Mom sends out of the chateau after a commander has fallen, a very tall, very thin woman whose face vanishes under an enormous brim, a long sword in her hand. Germa’s princes know her at once: she is the Demon Lady, one of the famous names in that column. They wonder what all those bounties add up to.',
+      },
+      status: [{ episode: 809, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 809,
+          value: { it: 'Pirati di Big Mom', en: 'Big Mom Pirates' },
+        },
+        {
+          episode: 849,
+          value: {
+            it: 'Pirati di Big Mom, ministra di Nuts Island',
+            en: 'Big Mom Pirates, minister of Nuts Island',
+          },
+        },
+        {
+          episode: 859,
+          value: {
+            it: 'Pirati di Big Mom, ministra di Nuts Island; figlia di Big Mom',
+            en: 'Big Mom Pirates, minister of Nuts Island; Big Mom’s daughter',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 809,
+          value: { it: 'la Donna Demoniaca', en: 'the Demon Lady' },
+        },
+      ],
+    },
+    // No `devilFruit` line: the anime shows his cream grab and burn Luffy
+    // (810, 811) but never names the fruit that makes it; the name is only in
+    // SBS volume 90. The line comes back when the story gives it.
+    'charlotte-opera': {
+      chronicle: wholeCakeChronicles['charlotte-opera'],
+      role: { it: 'Ministro della panna montata', en: 'Minister of cream' },
+      log: {
+        it: 'È il ministro della panna montata di Totto Land, un uomo enorme su due gambe cortissime, con la barba e le braccia coperte di panna, e chiude ogni frase con un «fa». Quando uno Sweet Commander piomba sconfitto contro il castello, è lui a chiedersi da dove sia volato e a capire che Cappello di Paglia dev’essere lì vicino. Fa suonare subito l’allarme, e la capitale gli si svuota intorno.',
+        en: 'He is the minister of cream of Totto Land, a huge man on two tiny legs, beard and arms covered in cream, and he ends every sentence with a “fa”. When a Sweet Commander crashes beaten into the castle, he is the one who asks where he flew in from and works out that Straw Hat must be close by. He has the alarm sounded at once, and the capital empties around him.',
+      },
+      status: [{ episode: 806, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 806,
+          value: {
+            it: 'Pirati di Big Mom, ministro della panna montata',
+            en: 'Big Mom Pirates, minister of cream',
+          },
+        },
+      ],
+      origin: [{ episode: 806, value: TOTTO_LAND }],
+    },
+    'charlotte-compote': {
+      chronicle: wholeCakeChronicles['charlotte-compote'],
+      role: { it: 'Ministra della frutta', en: 'Minister of fruit' },
+      log: {
+        it: 'È la figlia maggiore di Big Mom e la ministra della frutta di Totto Land, e al tea party per le nozze di una sorella siede con il resto della famiglia. Dall’alto del muro, uno degli uomini di Bege la nomina subito dopo il primogenito, tra i fratelli e le sorelle che definisce mostri a non finire. Rassicuranti finché stanno dalla tua parte, dice, da far gelare il sangue se diventano nemici.',
+        en: 'She is Big Mom’s eldest daughter and the minister of fruit of Totto Land, and at the tea party for a sister’s wedding she sits with the rest of the family. From the top of the wall one of Bege’s men names her right after the eldest son, among the brothers and sisters he calls more monsters than he can count. Reassuring while they are on your side, he says, and chilling once they are enemies.',
+      },
+      status: [{ episode: 831, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 831,
+          value: {
+            it: 'Pirati di Big Mom, ministra della frutta',
+            en: 'Big Mom Pirates, minister of fruit',
+          },
+        },
+      ],
+      origin: [{ episode: 831, value: TOTTO_LAND }],
+    },
+    'charlotte-nusstorte': {
+      chronicle: wholeCakeChronicles['charlotte-nusstorte'],
+      role: { it: 'Figlio di Big Mom', en: 'A son of Big Mom' },
+      log: {
+        it: 'È uno dei figli di Big Mom, con gli occhiali scuri, i baffi folti e un bicorno che ha la sua stessa faccia e gli stessi baffi. È tra i Pirati di Big Mom all’assalto del Regno di Germa e, quando uno dei Vinsmoke lo mette alle strette, il cappello soffia un tornado che solleva il nemico da terra: è il suo asso nella manica, e lo annuncia con il proprio nome. Chiude le frasi sempre con lo stesso intercalare impettito, anche in mezzo a uno scontro.',
+        en: 'He is one of Big Mom’s sons, with dark glasses, a thick moustache and a bicorne that wears the same face and the same moustache. He is among the Big Mom Pirates storming the Germa Kingdom, and when one of the Vinsmokes corners him the hat blows a tornado that lifts the enemy off the ground: it is his trump card, and he announces it by his own name. He ends his sentences with the same stiff turn of phrase, even in the middle of a fight.',
+      },
+      status: [{ episode: 855, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 855,
+          value: { it: 'Pirati di Big Mom', en: 'Big Mom Pirates' },
+        },
+      ],
+      origin: [{ episode: 855, value: TOTTO_LAND }],
+    },
+    'charlotte-flampe': {
+      chronicle: wholeCakeChronicles['charlotte-flampe'],
+      role: {
+        it: 'Presidente del fan club di Katakuri',
+        en: 'President of Katakuri’s fan club',
+      },
+      log: {
+        it: 'È una delle sorelle minori di Katakuri e la presidente del suo fan club, e per lui ha solo parole di adorazione: perfetto, bellissimo, sempre impeccabile. Quaranta dei suoi fratelli l’hanno votata miglior sorellina, e lei conta di diventare la preferita anche di Katakuri aiutandolo di nascosto a finire Cappello di Paglia. Tratta i propri seguaci come servitori e punisce senza pensarci chi la delude.',
+        en: 'She is one of Katakuri’s younger sisters and the president of his fan club, and she has nothing but adoration for him: perfect, gorgeous, always flawless. Forty of her brothers voted her best little sister, and she means to become Katakuri’s favourite too by secretly helping him finish off Straw Hat. She treats her followers as servants and punishes whoever lets her down without a second thought.',
+      },
+      status: [{ episode: 865, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 865,
+          value: {
+            it: 'Pirati di Big Mom; fan club di Katakuri, presidente',
+            en: 'Big Mom Pirates; Katakuri’s fan club, president',
+          },
+        },
+      ],
+      origin: [{ episode: 865, value: TOTTO_LAND }],
+    },
+    'randolph': {
+      chronicle: wholeCakeChronicles.randolph,
+      role: {
+        it: 'Lanciere dei Pirati di Big Mom, in sella a una gru',
+        en: 'Crane-riding spearman of the Big Mom Pirates',
+      },
+      log: {
+        it: 'È un coniglio con il mantello e un cappello piumato, e attraversa la Foresta della Seduzione in sella a una gru così in fretta da piombare sugli intrusi prima che lo sentano arrivare. Mena una lancia a doppia lama e, quando la sua cavalcatura viene abbattuta, la scaglia dietro a chi scappa. Carrot, che lo affronta corpo a corpo, si accorge che non è un mink: non sa usare l’elettro.',
+        en: 'He is a rabbit in a cape and a feathered hat, and he rides a crane through the Seducing Woods fast enough to fall on intruders before they hear him coming. He swings a double-bladed spear and, when his mount is brought down, throws it after whoever is running. Carrot, who fights him hand to hand, notices that he is no mink: he cannot use electro.',
+      },
+      status: [{ episode: 792, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 792,
+          value: { it: 'Pirati di Big Mom', en: 'Big Mom Pirates' },
+        },
+      ],
+      epithet: [
+        {
+          episode: 792,
+          value: { it: 'Cavaliere della gru', en: 'Crane Rider' },
+        },
+      ],
+    },
+    'zeus': {
+      chronicle: wholeCakeChronicles.zeus,
+      role: {
+        it: 'Homie nuvola del tuono di Big Mom',
+        en: 'Big Mom’s thundercloud homie',
+      },
+      log: {
+        it: 'È una nuvola temporalesca viva che fluttua accanto a Big Mom, una delle cose a cui lei ha dato voce e volto, e quando lei si infuria la tempesta è lui. Quando uno dei suoi Sweet Commander fu sconfitto, si racconta, lei scatenò un cielo che affondò in pochi istanti le navi nemiche, con lui sulla mano sinistra e Prometheus, un sole vivo, sulla destra. Durante i suoi capricci sa che è inutile provare a calmarla: non sente nessuno.',
+        en: 'He is a living thundercloud who floats at Big Mom’s side, one of the things she has given a voice and a face to, and when she is angry he is the storm. When a Sweet Commander of hers was beaten, the story goes, she called up a sky that sank the enemy’s ships in moments, with him on her left hand and Prometheus, a living sun, on her right. During her tantrums he knows better than to try to talk her down: she cannot hear anyone.',
+      },
+      status: [{ episode: 806, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 806,
+          value: {
+            it: 'Pirati di Big Mom, homie di Big Mom',
+            en: 'Big Mom Pirates, Big Mom’s homie',
+          },
+        },
+        {
+          episode: 878,
+          value: {
+            it: 'Pirati di Cappello di Paglia, servitore di Nami',
+            en: 'Straw Hat Pirates, Nami’s servant',
+          },
+        },
+        {
+          episode: 994,
+          value: {
+            it: 'Di nuovo agli ordini di Big Mom',
+            en: 'Back under Big Mom’s command',
+          },
+        },
+        {
+          episode: 1034,
+          value: { it: 'Scartato da Big Mom', en: 'Cast off by Big Mom' },
+        },
+        {
+          episode: 1040,
+          value: {
+            it: 'Pirati di Cappello di Paglia, compagno di Nami',
+            en: 'Straw Hat Pirates, Nami’s partner',
+          },
+        },
+      ],
+    },
+    'prometheus': {
+      chronicle: wholeCakeChronicles.prometheus,
+      role: { it: 'Homie sole di Big Mom', en: 'Big Mom’s sun homie' },
+      log: {
+        it: 'È un sole vivo, una palla di fuoco con un volto, una delle cose a cui Big Mom ha dato voce, e non risponde a nessun altro. Quando uno dei suoi Sweet Commander fu sconfitto, si racconta, la sua tempesta affondò in pochi istanti le navi nemiche, con la nuvola del tuono Zeus sulla mano sinistra e lui sulla destra. Durante la sua furia in città la supplica di fermarsi insieme agli altri, avvertendola che potrebbe buttare giù perfino il castello.',
+        en: 'He is a living sun, a ball of fire with a face, one of the things Big Mom has given a voice to, and he answers to nobody else. When a Sweet Commander of hers was beaten, the story goes, her storm sank the enemy’s ships in moments, with Zeus the thundercloud on her left hand and him on her right. During her rampage through the city he begs her to stop along with the others, warning that she could bring down even the castle.',
+      },
+      status: [{ episode: 806, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 806,
+          value: {
+            it: 'Pirati di Big Mom, homie di Big Mom',
+            en: 'Big Mom Pirates, Big Mom’s homie',
+          },
+        },
+      ],
+    },
+    'napoleon': {
+      chronicle: wholeCakeChronicles.napoleon,
+      role: { it: 'Homie bicorno di Big Mom', en: 'Big Mom’s bicorne homie' },
+      log: {
+        it: 'È il bicorno rosa che Big Mom porta in testa, un cappello con occhi e bocca, e parla come tutti gli altri suoi homie. Durante la sua furia in città la supplicava insieme agli altri, avvertendola che quella città era nei guai. Quando nella Stanza del Tesoro lei affronta un intruso, lo chiama per nome insieme alla sua nuvola e al suo sole, e lui risponde subito: “Sì, mamma.”',
+        en: 'He is the pink bicorne Big Mom wears on her head, a hat with eyes and a mouth, and he talks like the rest of her homies. During her rampage through the city he pleaded with her along with the others, warning that the town was in trouble. When she faces an intruder in the Room of Treasure she calls him by name alongside her thundercloud and her sun, and he answers at once: “Yes, Mama.”',
+      },
+      status: [{ episode: 816, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 816,
+          value: {
+            it: 'Pirati di Big Mom, homie di Big Mom',
+            en: 'Big Mom Pirates, Big Mom’s homie',
+          },
+        },
+      ],
+    },
+    'lu-feld': {
+      chronicle: wholeCakeChronicles['lu-feld'],
+      role: {
+        it: 'Re degli strozzini della malavita',
+        en: 'Loan Shark King of the underworld',
+      },
+      log: {
+        it: 'È uno dei pezzi grossi della malavita, il re degli strozzini, e lo chiamano il Dio dell’abbondanza. Arriva al Tea Party di Big Mom con gli ultimi invitati, chiede ad alta voce perché mai sia stato invitato anche un becchino e si unisce al coro che loda la scala mobile di caramelle che li porta su. Chiude le frasi con un piccolo «nen», e varcato il cancello osserva che quel posto ha sempre un aspetto delizioso.',
+        en: 'He is one of the bosses of the underworld, the Loan Shark King, and they call him the God of Fortune. He comes to Big Mom’s Tea Party with the last of the guests, asks out loud why an undertaker was invited at all, and joins the chorus praising the candy escalator that carries them up. He ends his sentences with a little “nen”, and once through the gate he remarks that the place always looks good enough to eat.',
+      },
+      affiliation: [
+        {
+          episode: 830,
+          value: {
+            it: 'Malavita, re degli strozzini; Conglomerato Du Feld',
+            en: 'Underworld, Loan Shark King; Lu Feld Conglomerate',
+          },
+        },
+      ],
+      epithet: [
+        {
+          episode: 830,
+          value: { it: 'Dio dell’abbondanza', en: 'God of Fortune' },
+        },
+      ],
+    },
+    'jorul': {
+      chronicle: wholeCakeChronicles.jorul,
+      role: { it: 'Eroe dei giganti', en: 'Hero of the giants' },
+      log: {
+        it: 'Nel ricordo è uno dei due ex capitani dei Pirati Guerrieri Giganti, un eroe a cui ogni gigante guarda con rispetto, con una barba che cade fino a terra come l’acqua. Loda i giovani che non smettono di allenarsi da guerrieri e va alla Casa delle Pecore con il vecchio compagno a prendere i bambini per la semla prima del digiuno. Al banchetto è lui a guidare il villaggio nel ringraziare il sole per i suoi bambini.',
+        en: 'In the memory he is one of the two former captains of the Giant Warrior Pirates, a hero every giant looks up to, with a beard that falls to the ground like water. He praises the young ones who keep training as warriors, and comes to the Sheep’s House with his old comrade to fetch the children for semla before the fast. At the feast it is he who leads the village in thanking the sun for its children.',
+      },
+      status: [
+        { episode: 836, value: 'unknown' },
+        { episode: 837, value: 'deceased' },
+      ],
+      affiliation: [
+        {
+          episode: 836,
+          value: {
+            it: 'Pirati Guerrieri Giganti, ex capitano; Elbaf',
+            en: 'Giant Warrior Pirates, former co-captain; Elbaph',
+          },
+        },
+      ],
+      origin: [{ episode: 836, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      epithet: [
+        {
+          episode: 836,
+          value: { it: 'Barba di Cascata', en: 'Waterfall Beard' },
+        },
+      ],
+    },
+    'gion': {
+      chronicle: wholeCakeChronicles.gion,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È un viceammiraglio del quartier generale della Marina, conosciuta come Momousagi, e porta il cappotto sulle spalle come un mantello. Al Red Port, mentre la Reverie tiene la Marina occupata a scortare i reali, chiama Garp «Garp-chan» e lo rimprovera perché ride mentre due Imperatori danno la caccia a suo nipote. Riferisce la risposta di Sakazuki, che Wano è fuori dalla loro giurisdizione, e ammette di non aver mai pensato che Cappello di Paglia sarebbe diventato così grande.',
+        en: 'She is a vice admiral of Marine Headquarters, known as Momousagi, and wears her coat over her shoulders like a cape. At the Red Port, while the Reverie keeps the Marines busy guarding royalty, she calls Garp “Garp-chan” and tells him off for laughing while two Emperors go after his grandson. She passes on Sakazuki’s answer, that Wano lies outside their jurisdiction, and admits she never thought Straw Hat would grow so big.',
+      },
+      affiliation: [
+        {
+          episode: 887,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+      epithet: [{ episode: 887, value: { it: 'Momousagi', en: 'Momousagi' } }],
+    },
+    'tokikake': {
+      chronicle: wholeCakeChronicles.tokikake,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È un viceammiraglio del quartier generale della Marina, conosciuto come Chaton, con un cappello di feltro e un cappotto a quadri. Al Red Port si intromette nella discussione di Gion chiedendo scusa, e dice che Big Mom ha di sicuro messo in conto una Marina a corto di uomini per via della Reverie. Chiama Sakazuki «il capo» e ricorda a Garp chi ha messo più scompiglio a Marineford: suo nipote.',
+        en: 'He is a vice admiral of Marine Headquarters, known as Chaton, in a fedora and a coat with a checked pattern. At the Red Port he cuts into Gion’s argument with an apology and says Big Mom has surely counted on the Reverie leaving the Marines short of men. He calls Sakazuki “the boss”, and reminds Garp who stirred up Marineford the most: his own grandson.',
+      },
+      affiliation: [
+        {
+          episode: 887,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+      epithet: [{ episode: 887, value: { it: 'Chaton', en: 'Chaton' } }],
     },
   },
 }
