@@ -12,7 +12,7 @@ export const itDictionary: Dictionary = {
   'site.name': 'Zero Spoiler',
   'site.title': 'Zero Spoiler | La wiki di One Piece senza spoiler',
   'site.description':
-    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo a cui non sei ancora arrivato. Imposti l’episodio o il capitolo a cui sei e leggi fino a lì.',
+    'Una wiki di One Piece che nasconde i personaggi, le saghe, i luoghi e i frutti del diavolo a cui non sei ancora arrivato. Imposti l’episodio o il capitolo a cui sei arrivato e leggi fino a lì.',
   'seo.imageAlt':
     'La card di Zero Spoiler: il logo sopra una rotta che sparisce nella nebbia.',
 
@@ -104,7 +104,7 @@ export const itDictionary: Dictionary = {
 
   'characters.title': 'Personaggi',
   'characters.count':
-    '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non escono nella ricerca.',
+    '{count} personaggi, nell’ordine in cui compaiono nell’anime. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'characters.searchLabel': 'Cerca un personaggio',
   'characters.searchClear': 'Cancella la ricerca',
   'characters.shown': '{count} risultati su {total} personaggi visibili',
@@ -196,13 +196,13 @@ export const itDictionary: Dictionary = {
   'places.form': 'Tipo',
   'places.arc': 'Saga',
   'places.landmark': 'Punto di riferimento',
-  'places.filedHere': 'Chi trovi qui',
+  'places.filedHere': 'Collegati a questo luogo',
   'places.filedNone':
     'Nella wiki non c’è ancora niente collegato a questo luogo.',
 
   'fruits.title': 'Frutti del diavolo',
   'fruits.count':
-    '{count} frutti del diavolo, divisi per tipo e nell’ordine in cui la storia li nomina. Quelli nella nebbia non escono nella ricerca.',
+    '{count} frutti del diavolo, divisi per tipo e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',
   'fruits.pageTitle': 'Frutti del diavolo | Zero Spoiler',
   'fruits.pageDescription':
     'I frutti del diavolo di One Piece, ognuno nascosto fino all’episodio in cui viene nominato per la prima volta.',
@@ -215,7 +215,8 @@ export const itDictionary: Dictionary = {
   'fruits.specimen': 'Frutto {index}',
   'fruits.bandCount': '{count} frutti',
   'fruits.bandCountOne': '1 frutto',
-  'fruits.lede.paramecia': 'Frutti che danno al corpo un potere specifico.',
+  'fruits.lede.paramecia':
+    'Frutti che danno a chi li mangia un potere specifico.',
   'fruits.lede.zoan': 'Frutti che permettono di trasformarsi in un animale.',
   'fruits.lede.logia': 'Frutti che permettono di diventare un elemento.',
   'fruits.foggedTitle': '{count} nella nebbia',

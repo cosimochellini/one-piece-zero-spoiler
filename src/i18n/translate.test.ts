@@ -51,27 +51,32 @@ describe('the dictionaries', () => {
 /**
  * The phrases the `tone-of-voice` skill in `.claude/skills` rules out, per
  * locale. This list is the single source: the skill points here rather than
- * repeating it. Matched case-insensitively against every value.
+ * repeating it. Each pattern is tested against every value, ignoring case.
  */
-const BANNED: Record<Locale, readonly string[]> = {
+const BANNED: Record<Locale, readonly RegExp[]> = {
   en: [
-    'signal book',
-    'specimen sheet',
-    'ship’s log',
-    "ship's log",
-    'dossier',
-    'filed',
-    'lift the fog',
+    /signal book/iu,
+    /specimen sheet/iu,
+    /ship['’]s log/iu,
+    /ports? of call/iu,
+    /sailing nearby/iu,
+    /shelves/iu,
+    /dossier/iu,
+    /filed/iu,
+    /lift the fog/iu,
+    /discover|unlock|dive in/iu,
   ],
   it: [
-    'libro dei segnali',
-    'foglio dei campioni',
-    'giornale di bordo',
-    'dossier',
-    'archiviat',
-    'dirad',
-    'scopri',
-    'immergiti',
+    /libro dei segnali/iu,
+    /foglio dei campioni/iu,
+    /giornale di bordo/iu,
+    /scaffal/iu,
+    /dossier/iu,
+    /archiviat/iu,
+    /dirad/iu,
+    /scopri|immergiti/iu,
+    // Whole words only: `parco` and `Marco` are fine.
+    /\barc(?:o|hi)\b/iu,
   ],
 }
 
@@ -94,10 +99,8 @@ describe('the tone of voice', () => {
       const banned = BANNED[locale]
 
       for (const key of dictionaryKeys()) {
-        const value = dictionary[key].toLowerCase()
-
-        for (const phrase of banned) {
-          expect(value, `${locale} ${key}: “${phrase}”`).not.toContain(phrase)
+        for (const pattern of banned) {
+          expect(dictionary[key], `${locale} ${key}`).not.toMatch(pattern)
         }
       }
     }

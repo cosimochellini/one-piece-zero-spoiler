@@ -103,10 +103,10 @@ epithet the reader has not reached is not in the browser at all.
 
 ## Screenshots
 
-|                                                                                                                                                                                                                     |                                                                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| <img src="docs/media/chart-ep650.png" alt="The landing page route with the reader's position marked on it" width="420"><br>The landing page: open entries in gold above your position, hidden ones dashed below it. | <img src="docs/media/characters-ep650.png" alt="The characters page with the crest grid and the search field" width="420"><br>Characters: 470 of them, each with its own crest.                        |
-| <img src="docs/media/places-ep650.png" alt="The places page as a numbered list of stops" width="420"><br>Places: one stop after another, each with a drawing and a short entry.                                     | <img src="docs/media/bookmark-dialog.png" alt="The bookmark dialog offering anime episode, season and episode, or manga chapter" width="420"><br>The bookmark dialog: three ways to say where you are. |
+|                                                                                                                                                                                                                                 |                                                                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <img src="docs/media/chart-ep650.png" alt="The route line on the landing page with the reader's position marked on it" width="420"><br>The landing page: open entries in gold above your position, hidden ones dashed below it. | <img src="docs/media/characters-ep650.png" alt="The characters page with the crest grid and the search field" width="420"><br>Characters: 470 of them, each with its own crest.                        |
+| <img src="docs/media/places-ep650.png" alt="The places page as a numbered list of stops" width="420"><br>Places: one stop after another, each with a drawing and a short entry.                                                 | <img src="docs/media/bookmark-dialog.png" alt="The bookmark dialog offering anime episode, season and episode, or manga chapter" width="420"><br>The bookmark dialog: three ways to say where you are. |
 
 ## The archive in numbers
 
@@ -236,7 +236,7 @@ banned phrase in either language.
   page inert, Escape closes it, and focus returns to where it was.
 - Covered content has `inert` and `aria-hidden`, so neither Tab nor a screen
   reader can reach a spoiler.
-- The reader's position on the landing page route is `aria-current="step"`.
+- The reader's position on the landing page chart is `aria-current="step"`.
 - Contrast is measured and recorded next to the tokens: 17.4:1 for body text,
   12.2:1 for the accent.
 
@@ -271,9 +271,9 @@ a reader who has finished the story, and gets everything. This is a deliberate
 trade-off: a user agent is a string anyone can send, so `curl -A Googlebot`
 reads the whole wiki. The fog protects readers from spoilers; it does not stop
 someone who wants to see everything. WhatsApp is the only name matched at the
-start of the string only. Its link previewer puts it first, while its in-app
-browser appends the same token to a normal mobile browser's user agent, and that
-is a real reader who tapped a link a friend sent.
+start of the string. Its link previewer puts it first, while its in-app browser
+appends the same token to a normal mobile browser's user agent, and that is a
+real reader who tapped a link a friend sent.
 
 ### Performance
 
@@ -284,12 +284,12 @@ is a real reader who tapped a link a friend sent.
   added 31 KB of client JavaScript and no archive data.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary together; now it carries only the page's language.
-- The shelves on the characters page (470 tiles with a drawing each, below the
-  fold) come from the loader as a promise that is not awaited and stream into a
-  `<Suspense>` boundary, so the search field and the crests above them load
-  first. The landing page route, the places list and a character page are
-  awaited instead: they are the page, and a reader with scripting off should get
-  them in full.
+- The character grid on the characters page (470 tiles with a drawing each,
+  below the fold) come from the loader as a promise that is not awaited and
+  stream into a `<Suspense>` boundary, so the search field and the crests above
+  them load first. The landing page chart, the places list and a character page
+  are awaited instead: they are the page, and a reader with scripting off should
+  get them in full.
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.

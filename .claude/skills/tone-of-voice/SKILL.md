@@ -47,6 +47,7 @@ One term per concept, in both languages. Do not alternate synonyms for variety.
 | a fruit's first mention | first named in episode N | nominato per la prima volta nell'episodio N |
 | any item in the wiki | entry | voce |
 | the whole site | the wiki | la wiki |
+| top-bar nav (short form, space is tight) | Fruits | Frutti |
 | loading state | Loading… / Loading characters… | Caricamento… / Caricamento dei personaggi… |
 
 Never "filed" / "archiviato" for when something appears. It is internal
