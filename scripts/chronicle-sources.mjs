@@ -292,7 +292,7 @@ export const CHRONICLE_SOURCES = {
     },
     865: {
       source: 'https://onepiece.fandom.com/wiki/Episode_865',
-      note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die, and accepting — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890).',
+      note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890). The anime shows no answer in 865 (JP 00:17:17-00:17:45 “あたしのしもべになる？ / それとも… / 死ぬ？ / よ～く考えてね”, then “追え プロメテウス！”); his choice is first shown at 878, so the story stops at the question.',
     },
     1038: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1038',
@@ -744,7 +744,7 @@ export const CHRONICLE_SOURCES = {
     },
     998: {
       source: 'https://onepiece.fandom.com/wiki/Episode_998',
-      note: 'Candidate 998–999. Everything is in 998: Big Mom recalling the ruined wedding cake and Brook destroying her only portrait, noticing Zeus carried off by Nami and grabbing him, Franky and Brook arriving on the Kurosai FR-U IV (the anime adds their song and Brook standing to jump off), running over her face, and Brook slicing Zeus in half (Qref chap=988 ep=998). 999 only adds Nami’s joy at seeing them and the Numbers fight, so the story is filed at 998. Zeus is not a filed record.',
+      note: 'Candidate 998–999. Everything is in 998: Big Mom recalling the ruined wedding cake and Brook destroying her only portrait, noticing Zeus carried off by Nami and grabbing him, Franky and Brook arriving on the Kurosai FR-U IV (the anime adds their song and Brook standing to jump off), running over her face, and Brook slicing Zeus in half (Qref chap=988 ep=998). 999 only adds Nami’s joy at seeing them and the Numbers fight, so the story is filed at 998. Zeus is filed at 806 and linked.',
     },
   },
   'jinbe': {
@@ -2620,7 +2620,7 @@ export const CHRONICLE_SOURCES = {
     },
     811: {
       source: 'https://onepiece.fandom.com/wiki/Episode_811',
-      note: 'Epithet on screen: 809.srt 10:11 Yonji "おお！ ありえねえ 始末屋ボビン" (dated 809 in the dossier; it is repeated at 829 by Mont-d\'Or, うちの始末屋ボビン). Episode_810 Long Summary: "he is then confronted by Bobbin, who bobs his head from side to side and emits waves that make Luffy fall asleep ... Nami and Kingbaum suddenly come to the rescue"; 810.srt: 麦わら～ ボヨヨヨ… もらったー！ / （ナミ）突風(ガスト)ソード！. 811.srt: やっと倒れたか てこずらせやがって; the vivre card (ママのビブルカード ... “ローラ”と 書いてある), なんてこった！ 殺されたのか あの家出娘？ / ローラは友達よ もらったの！ / Mont-d\'Or 残念ながら 指令は お前たちの生け捕りだ. The line これで兄貴の敵は取ったぞ is left out, since it is not clear on screen whose brother is meant. Kingbaum, Amande, Opera and Galette are not filed and are not named.',
+      note: 'Epithet on screen: 809.srt 10:11 Yonji "おお！ ありえねえ 始末屋ボビン" (dated 809 in the dossier; it is repeated at 829 by Mont-d\'Or, うちの始末屋ボビン). Episode_810 Long Summary: "he is then confronted by Bobbin, who bobs his head from side to side and emits waves that make Luffy fall asleep ... Nami and Kingbaum suddenly come to the rescue"; 810.srt: 麦わら～ ボヨヨヨ… もらったー！ / （ナミ）突風(ガスト)ソード！. 811.srt: やっと倒れたか てこずらせやがって; the vivre card (ママのビブルカード ... “ローラ”と 書いてある), なんてこった！ 殺されたのか あの家出娘？ / ローラは友達よ もらったの！ / Mont-d\'Or 残念ながら 指令は お前たちの生け捕りだ. The line これで兄貴の敵は取ったぞ is left out, since it is not clear on screen whose brother is meant. Kingbaum and Galette are not filed; they, Amande and Opera are not named.',
     },
     823: {
       source: 'https://onepiece.fandom.com/wiki/Episode_823',
@@ -2629,6 +2629,250 @@ export const CHRONICLE_SOURCES = {
     827: {
       source: 'https://onepiece.fandom.com/wiki/Episode_827',
       note: "824.srt: あの野郎 許さねえ 俺が必ず始末してやる ヴィンスモーク･サンジ, then at 18:01 ハア ハア… くっそ… あっ あいつら… うっ ああ… （倒れる音）. 827.srt 05:56: Bege ボビンを消したのか？ / Vito ええ 黒足を 追いかけてたので. Mont-d'Or's anime-added discovery in 829 (撃たれたのは いつごろ？ 恐らく深夜です) does not say he is dead, so no status is filed and the story does not call him dead. Verification pass: 824 has only a fall sound (no gunshot), and the shooting is first said at 829, so the 827 story no longer says he was shot.",
+    },
+  },
+  'sheepshead': {
+    739: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_739',
+      note: 'Threshold entry (naming), confirms the issue\'s 739. JP subtitles 739 (Prime SDH): spoken, no speaker label, 00:15:47 "シープスヘッド様！" right after Sanji\'s "悪魔風(ディアブル)ムートンショット！" (00:15:30); Ginrummy 00:16:09 "シープスヘッド様がやられた", 00:16:18 "侍は いない そう報告を". Earlier cues only carry him as a speaker label, e.g. 00:12:08 "（シープスヘッド） お前たちは なぜこの島に入れた？", 00:14:02 "疑わしきは— 殺すまで！", 00:14:56 "シープスホーン！". Ep 739 transcript: "Sheepshead-sama!" / "Guys! Retreat! Sheepshead-sama has been taken down!". Episode_739 Long Summary: "Sheepshead and Ginrummy ride their crocodile-like steed through the water"; "Brook intercepts his sword slash, and Sheepshead gets away from Brook as he turns his hands into sheep\'s horns". No シープスヘッド in 735-738. Chapter 795 (Sheepshead page: Gifters call him "Sheepshead-sama", Qref c795; Episode_739 Anime Notes flag only Ginrummy\'s name as anime-early). Ginrummy (unfiled) is "the woman riding with him"; the island (Zou, filed 751) is not named.',
+    },
+    757: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_757',
+      note: 'Episode_757 Long Summary: "one of the invaders, Sheepshead, revealed that they were the Beasts Pirates and the mammoth was Jack, one of the three Disasters who are Kaidou\'s right-hand men"; "Sheepshead berated Ginrummy for calling Raizo a samurai when he was a ninja". JP 757: 00:14:24 "お前 一体 誰に名を聞いてんだ！" / "かの四皇 カイドウ様の腹心 ３人いる“災害”と称される 懐刀のその１人 旱害(かんがい)のジャック様だ" / "ガキを抱くような 穏やかな暮らしを 脅かされたくは ないだろう"; 00:16:15 "バーカ 侍じゃねえ 雷ぞうは忍者だ" / Ginrummy "黙れ シープスヘッド様 侍はワノ国武人の総称". Ep 757 transcript caption: "SHEEPSHEAD THE HEADLINER OF THE GIFTERS, THE BEAST PIRATES" (dates Beasts Pirates, Gifters and headliner at 757). Raizo (filed 764) is left as "the warrior from Wano".',
+    },
+    772: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_772',
+      note: 'Episode_772 Long Summary: "Jack sits next to Sheepshead, who is heavily injured and hanging upside down. Having punished him for returning to him without finding Raizo, Jack continues berating Sheepshead, and Ginrummy silently hopes Sheepshead does not say anything about why they left"; Anime Notes: "After Jack reminds Sheepshead on his failure to find Raizo, Sheepshead apologizes." JP 772: 00:09:59 "シープスヘッド “雷ぞうは いませんでした” それで帰ってくるとは思わなかったぜ" / "す… すいません… でした" / "ミンク族は生命力が強い 万が一 ガスから逃れた者たちが うまく手当てをしたら…" / Ginrummy "黙ってろよ シープスヘッド様 ... 我々が何者かに 追い出されたことが知れたら" / Jack "殺しかけたら 息の根を止めろ！ 情けは やっかいな復讐(ふくしゅう)を生む" / "攻め込む必要もねえ" / "巨象を殺す".',
+    },
+  },
+  'edward-weevil': {
+    751: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_751',
+      note: 'Threshold entry (naming), confirms the issue\'s 751. JP 751: 00:17:57 "（海兵）ええ 七武海(しちぶかい) エドワード･ウィーブルです" (spoken), after "元白ひげ海賊団傘下 Ａ･Ｏ(アーオー)海賊団 全滅です" / Kizaru "また あいつか？"; "（海兵）16人目です"; "いつものように 何やら口論の末 その町ごと吹き飛ばされたもよう 死傷者は ざっと600名"; "七武海とて これに目を つぶっていていいものか"; "白ひげ エドワード･ニューゲートの 実の息子という肩書は 強力ですが疑う者も多く…"; Kizaru "ヤツは海賊として圧倒的に強い まるで本当に 白ひげの若い頃のように… 強さだけだけどね". Ep 751 transcript: "Yes, it\'s the Warlord - Edward Weevil." Episode_751 charDebut and Characters list include Edward Weevil (not marked image); Edward_Weevil page first = Chapter 802 / Episode 751, and ep=751 Qrefs for his earlier fights. No ウィーブル before 751. Chapter 802 (Kizaru\'s briefing names him).',
+    },
+    752: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_752',
+      note: 'Episode_752 Long Summary: "Edward Weevil ... stands over the decimated A O Pirates"; "Buckin sets her eyes on taking down Whitebeard\'s 16 division commanders"; "Weevil states his desire to take down Blackbeard to get revenge for Whitebeard\'s death, but Buckin berates him"; "decides to have Weevil go after him in order to use him to find the missing Marco". Ep 752 transcript: caption "EDWARD WEEVIL - A WARLORD SELF-PROCLAIMED "WHITEBEARD JR." (FORMER BOUNTY: MILLION BERRIES)" (the site drops digits; 480,000,000 per Chapter 802 notes and the Weevil page, c802p8) dates the epithet and the bounty; "Mommy! Mommy! I\'m Whitebeard\'s son, right?! My beard\'s white as well!"; "Find the remnants of the Whitebeard Pirates like Marco the Phoenix!"; "I wanna have my revenge on Blackbeard for k*lling Daddy!" / "You can\'t even earn one berry!"; "Doflamingo was defeated." / "It\'s him again! Garp\'s grandson!" / "Then, maybe he knows something about Marco. Should we go beat him up?"',
+    },
+    957: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_957',
+      note: 'Episode_957: "Buggy, Edward Weevil, Dracule Mihawk and Boa Hancock are surrounded by Marine soldiers, their legal immunity being revoked." JP 957: 00:20:21 "世界会議(レヴェリー)での白熱の議論の末 大多数の賛同を得て 可決されたのだった" / "王下七武海は 自動的に そのすべての権利を剥奪され 世界政府との一切の関わりを 断絶された"; 00:21:15 Weevil "あでで？ 味方の海軍に囲まれたど どうしよう 母ーたん"; 00:22:29 Miss Buckin "やつら 味方じゃなくなったみたいだよ まったく 許せねえ ウィーブル！ やっちまっていいよ！" / Weevil "ホント？ じゃあ ぶっ殺そお 白しげの名の下に". Episode 958 repeats the scene (00:04:23) and adds nothing. Dates the former-Warlord affiliation at 957 (Chapter 956).',
+    },
+  },
+  'bakkin': {
+    752: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_752',
+      note: 'Threshold entry (naming by caption), confirms the issue\'s 752. Ep 752 transcript caption: "MISS BUCKIN - WEEVIL\'S MOTHER SELF-PROCLAIMED "WHITEBEARD\'S LOVER"", on screen as she says "...the woman who Whitebeard loved!"; the JP SDH file does not render captions and names her only in speaker labels (00:13:07 "（バッキン）そうだよ あんた"); Weevil calls her 母たん. Transcript: "The Whitebeard Pirates were just a make-believe family." / "--Look at this! --What? Is that a mirror?" / "No, it\'s a picture of Whitebeard!" / "How can you be so silly?!" / "But I forgive you. Because I love you!" / "What\'s the point in taking revenge? You can\'t even earn one berry!" / "It\'s him again! Garp\'s grandson! They say Marco and the others tried to protect him in the Paramount w*r." Record name follows the caption (Miss Buckin); Marco says just Buckin at 890. Chapter 802 introduces her as Miss Buckin (Chapter_802 notes).',
+    },
+    890: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_890',
+      note: 'Episode_890 Long Summary: "Marco has no idea whether or not Weevil is actually Whitebeard\'s son, though he does know that his mother, Buckin, did sail with Whitebeard around 40 years ago ... Marco anticipates that Weevil and Buckin will eventually come after him and this island someday." JP 890 (Marco, spoken): 00:22:17 "ウィーブルの母親 バッキンは元海賊だ" / "三十何年前か… 40年近く前に オヤジと同じ船に乗ってはいたはずだ"; Nekomamushi "では 守るべき形見かもしれんのう" / Marco "そういう態度じゃねぇだろよい". Transcript: "a Warlord named Weevil is proclaiming he\'s Pops\' biological son and attacking people connected to Whitebeard"; "It\'s a man-loves-woman thing so I don\'t know for sure, but I guess they\'re after his fortune." Dates the former-pirate affiliation at 890 (Chapter 909 p. 7). The village (Sphinx, unfiled) is not named.',
+    },
+  },
+  'zunesha': {
+    755: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_755',
+      note: 'Threshold entry (naming), moved from the issue\'s ~751 (seen from 751, unnamed). JP 755: 00:10:01 Wanda, spoken: "１日２度 ズニーシャは水浴びをする" after "（ワンダ）噴火雨は正確には雨ではない"; no ズニーシャ in the 751-754 subtitles and no "Zunesha" in the 751-754 transcripts (only "the elephant"). Ep 755 transcript: "Rain-Ruptions aren\'t actually a type of rain. Twice a day, Zunesha sprays water on itself. So that was a blast of seawater. The water passes through a filtration system at the center of the city to aqueducts and becomes the drinking water for the whole nation. Fish fall along with the seawater so we\'d never run out of food."; "--Carrot! --I got it!"; "There\'s a shark! A shark?! Why?!". Episode_755 Long Summary: "Zunesha, lifts up its trunk and spews out a large volume of water". Chapter 806 (Chapter_806 notes: "The thousand years old elephant is revealed to be called Zunesha by the Mink Tribe"; Zunesha page Qref chap=806 page=5 ep=755).',
+    },
+    774: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_774',
+      note: 'Episode_774 is the title episode ("A Battle to Defend Zou! Luffy and Zunesha!"). JP 774: Pedro 00:05:15 "ゴール･Ｄ･ロジャーも… そして おでん様も この地にて同じことを言っていたと聞く 会話はできないが 大きな声が聞こえると" (Oden, filed 960, is left out); Momonosuke "強そうな船が５隻 ９時の方角に…"; Carrot "ズニーシャが襲われている？"; Momonosuke relays "象は“大昔に罪を犯し…” “ただ 歩くことしか… 許されて… いないのだ” “命令に従い続けている”"; Zunesha "だから 一度だけ許可をくれ"; Luffy "お前が言え！ お前の声なら届く気がする"; Momonosuke "負けるな 象！ 倒れてはならぬ！ ジャックを追い払ってくれ～！"; Zunesha 00:16:11 "承知した"; Jack "鼻？"; "本艦は空中に投げ出されました！". Transcript: "So Zunesha used his own trunk?" / "That\'s right-saru! With a single blow!". Zunesha page: Qref chap=821 ep=774 (the crime, the fleet wiped out).',
+    },
+    776: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_776',
+      note: 'Episode_776 (canon; 775 is a filler episode per its category and is skipped). JP 776: Musatobi 00:04:12 "い… いえ ジャックではなく ズニーシャの前足が ... 立ってることが奇跡と思えるほどで…"; Chopper "耐えられねえほど痛(いて)えはずなのに こんなにおとなしく 治療させてくれるなんて"; "みんなでズニーシャを守るぞ～"; 00:06:51 "ズニーシャは 千年続く我らの大地 ... 意志があるのなら 今 こう聞いてみたい 千年もの時間をかけて 一体 どこへ向かっているのかと"; Kin\'emon "残る？ この ゾウにでござるか"; Momonosuke "かなうなら いま一度 話してみたいのだ ズニーシャと… 千年を生きた者と… なぜ拙者の声は 届いたのであろうか？". Zunesha page: Qref chap=822 page=2-3 ep=776 (Chopper treats the leg with Miyagi and many minks). The mink doctor (Miyagi) and Musatobi are unfiled and go unnamed.',
+    },
+  },
+  'shishilian': {
+    758: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_758',
+      note: 'Threshold entry (naming), confirms the issue\'s 758. First spoken name in the JP subs (no シシリアン in 751-757): 758.srt 07:50 「申し訳ない シシリアン様」 (dog mink, as he throws them), 08:07 Wanda 「シシリアン殿 何事です？」 with him on screen panting; 08:14-08:35 「甘いことばかり言うのでな 千尋の谷へ たたき落として やったところだ」 / 「優しさ 愛 恋 赤子 砂糖 蜂蜜～！」 / 「さあ 自力でここまで上がってこい！」; 08:48-09:17 「これもシシリアン殿の愛のムチだ」 / 「優しいお方だ」 / 「今 何と言った！」 / 「愛だの優しさだの 甘ったるいことを！」; 09:43 「この度は 国を救っていただき ありがとう この恩は一生忘れない」; 10:11 「ガルチュー！」 (Luffy: 「熱い 熱い」); 10:18 「公爵がお待ちだ さあ中へ」; 16:07 「シシリアンだ 全力のな！」, 16:13-16:22 「町の者たちは昼に活動を 森の者たちは夜行性だ」, then snoring. Epithet: that spoken line plus the caption in the English transcript (forever dreaming t=80489, title card 18x758): "FULL-POWER SHISHILIAN (A LION MINK) THE CAPTAIN OF THE DOGSTORM MUSKETEERS", and "Shishilian! Always at full power!". Flashback in the same episode (canon, Qref chap=809 ep=758): 20:19 「ワンダ！」 / 「ゆガラ 後方へ！」 after a Wolf Grip attack, 20:42 「身軽な銃士は 町人たちを森へ誘導せよ！」 (in the log only). Chapter 808 names him (Chapter_808 Long Summary: "a mink named Shishilian throwing several minks into a bottomless pit"; Qref chap=808 page=14 is his caption box).',
+    },
+    776: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_776',
+      note: '776.srt 14:44-16:30: Nekomamushi 「ゆガラ ルフィと一緒に行きたいがか？」 / Pedro 「はい」 / Shishilian 「抜け駆けはよせ ペドロ！ その役目ならば… わしらイヌアラシ三銃士が 請け負う心積もり」 / Pedro 「引っ込んでろ シシリアン ゆガラのように うるさい男 この任務には 最も不適合」 / 「うるさくなどないわ～！」 / Wanda 「それなら 私に行かせてくれ」, then Tristan, BB, Roddy, Yomo and the crowd; Nekomamushi 「けんど ここは ペドロに任せい」 … 「ペコムズがおるきに あガラを抑えられるんは ペドロしかおらんきのう」 / Shishilian 「ぬお～ わしも行きたかった！」. English transcript (t=80507): "Back off, Shishilian! A noisy guy like you is the least suitable for the job!". The wiki (Qref chap=822 ep=776) says Nekomamushi turned him down; on screen it is Pedro who tells him to back off and Nekomamushi who picks Pedro, and the story follows the subtitles.',
+    },
+    1032: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1032',
+      note: '1032.srt 09:35-10:58: Shishilian 「ネコマムシの旦那」 / Nekomamushi 「シシリアン バリエテ」 / 「旦那の力が必要だ」 / 「実は ペドロが…」 / 「ペドロが… 死んだつか？」 / 「ええ ビッグ・マムの縄張りにて ルフィ君たちが 今 ここへ たどり着けたのは やつの犠牲のおかげかと」 / 「ペドロ そらあ 大儀じゃったニャア」 / 「敵が この島におるがか？」 / Bariete 「はっ 旦那も 助太刀してほしいでごサル」 / 「ワンダとキャロット どうやら苦戦している らしいのです」 / 「もとより そのつもりじゃ」, then 「猫が飛んだ」. English transcript (t=108031) caption: "SHISHILIAN - CAPTAIN OF DOGSTORM MUSKETEERS BARIETE - MINK RECON SQUAD". Shishilian page: Qref chap=1012 ep=1032. Perospero, the enemy, is not named in the scene and the story leaves him unnamed; Pedro is deceased from 850 in his dossier.',
+    },
+  },
+  'gotti': {
+    783: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_783',
+      note: 'Threshold entry (naming), confirms the issue\'s 783. 783.srt 15:39-17:49: 「出て行けだと？ こいつ今 ヴィトに 悪い言葉 使った 許せねえ 謝れ」 / Vito 「ゴッティ おい 待て待て」 … 「じゃれてただけ」 / Sanji 「じゃれてねえよ」, 16:01 「ゴッティ お前もヴィトも さっさと消えろ」 (spoken name, on screen) / 「俺はいい 仲間を侮辱するヤツ 俺 許さん」 / 「この～っ！」 / Chiffon 「ゴッティ！」 / 「おかみさん」 / 「お前 そいつが ヴィンスモークのせがれだと 知ってんのかい 傷１つでも付けてみな ファーザーの首が 飛んじまうってのが 分かんないのかい」 / 「痛てて ごめんよ おかみさん」 / 「悪いねえ あんたは大事な客人だ このバカのことは忘れて ゆっくりしとくれよ」 / 「罰としてきょうは飯抜きだよ」. English transcript (t=80514, 19x783) caption: "HITMAN GOTTI THE FIRE TANK PIRATES" (the epithet and the affiliation). Chapter 825 (Chapter_825 notes: "Gotti, a killer"; Gotti page Qref chap=825 page=5 ep=783). Vito is filed at 785 and Chiffon at 808, so the story names neither (the crewmate, the woman he calls ma\'am); Big Mom (786) is left out too. The ear: Gotti page, "capable of dragging him by the ear" (Qref chap=825 page=5-6 ep=783).',
+    },
+    828: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_828',
+      note: '828.srt 10:50-12:02: Luffy 「じゃあ まずペコムズを撃った件を 殴らせろ」 / Jinbe 「拳を収めろ ルフィ」 / 「でも友達を撃ったんだ」 / Gotti 「ファーザーを悪く言うヤツ 俺 許さん」 / Vito 「やめろゴッティ 落ち着くレロ」 / 「追ん出せ こんなヤツら」 / Jinbe 「ビッグ･マムは好きか？」 / Luffy, Bege, Caesar 「嫌いだ」 / 「それを連合軍と呼ぶんじゃ 生き方や目的が違えども 倒すべき敵は同じ」. English transcript (t=80721): "Someone talks bad about Father, I can\'t take!" / "No, Gotti! Calm down-rero!". Gotti page: Qref chap=858 page=14-15, 19 ep=827 ep2=828.',
+    },
+    831: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_831',
+      note: '831.srt 12:37-13:37: Bege 「シーザー 鏡 出せ」 / Caesar 「ここが茶会の入り口か」 / door 「シーザー･クラウン？」 / Bege 「ビッグ･マムの奇声が始まったら その鏡を持って会場に 飛び込んでくるのがお前の仕事 そいつだけが俺たちの脱出口だ」 / door 「大変 ベッジたちが 何かをたくらんでるわ」 / Gotti 「ええい」 / 「そぎ落とした」 / 「情報漏えいは予測不能の危機を呼ぶ」 / 「挙式まであと30分」. The speaker of the leak line is not labelled, so the story states it as narration. English transcript (t=80724, title card 19x831): "Oh, no! Bege and his people are up to something!" / "I pared it off." Gotti page: Qref chap=861 page=9-10 ep=831, "Gotti swiftly and cleanly carved the entire face of a massive door homie". The anime-added cook the two dispose of earlier (10:14 「念のために始末しておくか なあ ゴッティ」) is left out.',
+    },
+  },
+  'pound': {
+    797: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_797',
+      note: 'Threshold entry (naming), moved from the issue\'s 792 (his debut, unnamed). In 792-796 the JP subs name him only in speaker labels （パウンド）, and the English transcripts of 792-796 have no "Pound". First spoken name: 797.srt 21:48 Nami 「あんた 名前は？」 / 21:49 「うぬはパウンド」 / 21:55 「さっき己 ローラの名を言ったか？」; English transcript (t=80528, title card 19x797) "I\'m Pound." Earlier in 797: 08:34-09:30 「娘に… シフォンに一目会わせてくれ」 / 「ローラも家出したと聞いた」 / 「うぬはローラに シフォンに 娘たちに 会いたいだけなのよね！」 (Chiffon is filed at 808, so the story does not name her); Nami\'s Thriller Bark flashback with Lola and the vivre card, 12:26 「ローラのお父さん？」; 19:04-19:50 Cracker 「お前のことはママに言われている」 「消してかまわんと」 / 「ママに言わせりゃ 過去43人の夫たちなど 血のつながりのない他人だ」 / 「娘たちに おめでとうって 言いたいだけなのよ～」; 20:32 Luffy 「何十回も顔を突き合わせてりゃ 情くらい移る」. Chapter_836 notes: "Lola and Chiffon\'s father is named Pound". The Lola record is linked (thriller-bark.ts, 340).',
+    },
+    798: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_798',
+      note: '798.srt 18:18-21:28: Brûlée 「さあ おいで ミロワールドへ」 / 「向こうでゆっくり 顔も体も引き裂いたげる」 / Nami 「パウンドちゃん！」 / Pound 「離れろ ブリュレ！」 / Brûlée 「パウンド義父さん… いや パウンド！ これはママへの反逆だよね」 / 「終わりだよ もう助からぬ」 / Nami 「サンダーボルト＝テンポ！」 / Pound 「ブリュレは また来る あいつは 鏡のある場所なら どこにでも現れるのよね」 / Nami 「ごめん 私のために」 / 「どうせもう… うぬは 殺していいと言われてたのよね 元… 妻に…」 / 「そういえば 己 ローラと友達なのか？」 / 「うん」. English transcript (t=80529): "Pound-chan!" / "Stepfather Pound! I mean, Pound! What you just did was treason against Mama!". Pound page: Qref chap=837 page=10-12 ep=798.',
+    },
+    861: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_861',
+      note: '861.srt 13:15-19:28: the paddles broken by Oven\'s heat, 13:52-14:08 soldiers 「誰だ 貴様」 / 「オーブン様！ 危ない」 / Pound 「やめるのよね～！」, 15:12 「パウンド」 / 「ずいぶん頑丈なのね」 / Oven 「おめえ… 義理の息子… 殺す気かよ」 / 「海水の温度が下がります」; 15:55 「名も知らぬ孫よ 幸せか？ 父ちゃん 母ちゃんに しっかり愛してもらうのね うぬは それがしてやれなかった」; flashback 16:24-17:26 「リンリン 産まれたのね」 / 「ああ ローラとシフォン 双子だ」 / 「抱かせてほしいのね」 / 「お前は もう用済みだ」; 17:32 「あれが26年前」; 18:52-19:20 「うぬは ずっと心配してた … そばにいてやれなくて 悪かったのね 遅くなったけど 言わせてほしいのね 結婚… おめでとう！ シフォ～ン！」. Episode_861 Anime Notes: "When Pound congratulated Chiffon on her marriage in the manga, he said it in his mind. In the anime, he says it out loud" and "The anime does not show a silhouette of Oven attacking Pound and has no slashing sound effect"; its Long Summary still has Oven take him out with a naginata. The story stops at the congratulations, and the dossier files status unknown from 861. The grandson (Pez) is not a record and is left unnamed, as Pound leaves him.',
+    },
+  },
+  'amande': {
+    809: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_809',
+      note: 'Threshold entry (naming), moved from the issue\'s 786 (her debut, unnamed: 786.srt has only the speaker label （アマンド）確保 at 21:58, and the 786 English transcript has no "Amande"). First spoken name: 809.srt 10:11-10:24 as the army leaves the chateau, Yonji 「おお！ ありえねえ 始末屋ボビン」 / 「ハハッ 鬼婦人アマンド」 / 「おお！ 書司モンドール」 / 「トータルバウンティ いくらだ こいつら？」; English transcript (t=80702, 19x809): "I can\'t believe it! That\'s Bobbin the Disposer!" / "Amande the Mad Moiselle!". Episode_809 Anime Notes: "During the march of the enraged army, Amande\'s face is shown clearly" (so she is on screen when named). Also 809.srt 09:07 「クラッカー様のあだ討ちの軍団が 編制された」, 10:36 Luffy\'s 「俺はここで待ってるからな！」 in Sanji\'s memory, 11:27 「これ… 水あめ」. Chapter 845 (Chapter_845 notes: "Amande is the name of the woman with the wide-brimmed hat who was previously seen collecting ingredients for Big Mom\'s wedding cake in Chapter 827"; the Char Box epithet Qref chap=845 page=5 ep=809). Mont-d\'Or, named in the same cue run, is filed at 811 and left out of this story.',
+    },
+    811: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_811',
+      note: '810.srt 13:20 （シャーロット･アマンド）「キングバーム 裏切ったな」 (label; spoken line). 811.srt 07:16-08:17: 「名刀… 白魚」 / Kingbaum 「違うジュ！ わしらは裏切ったわけじゃ…」 / 「アマンド様！」 / 「スローバラード」 / 「やるなら 一思いに！」 / 「一瞬で斬り捨てるなんて 殺す意味がない いちばん痛く苦しい速度で 私は斬る」; 21:01-21:36 Bobbin 「ビブルカード」 / Amande 「“ローラ”と 書いてあるわ」 / Nami 「違う！ ローラは友達よ もらったの！」. English transcript (t=80704): "...Shirauo." / "Amande-sama!" / "Slow Ballad." / "It\'s pointless killing someone quickly.". Amande page: Qref chap=846 page=3, 8-9 ep=811 (bisects Kingbaum, removes Nami\'s vivre card and sees it is from Lola). Kingbaum is not a record.',
+    },
+    850: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_850',
+      note: 'The position is first said in 849: 849.srt 09:31 Mont-d\'Or 「ナッツ島タルト 応答しろ」 / 「ナッツ島 アマンドだ」 / 「南西の海岸を包囲だ 麦わらたちを 絶対に逃がしちゃならねえ」; 10:54-11:17 「南西の海岸に 麦わらの一味を確認」 / 「こちら ナッツ島タルトより大臣アマンド 麦わらたちを追い込むわ」 (gunfire) / Jinbe 「海から軍艦 陸からビッグ･マム 完全に挟まれてしもうた」; 09:53 Nami 「クードバースト １キロ先へ飛べるの この船」. The story is filed at 850, where it ends: 850.srt 20:51 「バースト！」, 21:23-21:28 「こちら アマンド 敵船は逃げたわ 空へ」 / Mont-d\'Or 「空～？」. English transcripts: 849 (t=80742) "This is Minister Amande from the Tarte of Nuts Island..."; 850 (t=80743) "This is Amande.". Amande page: Minister Qref chap=877 page=14 ep=849; "reported the ship\'s escape" Qref chap=878 page=16-17 ep=850.',
+    },
+    859: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_859',
+      note: '858.srt 06:48-07:01: 「どうしました アマンド様？」 / 「食いわずらいを発症中のママが ここに向かってると連絡が入ったわ」 / 「島民たちが危険よ 急いで避難させて！」. 859.srt 04:24 「まずい このままではナッツ島は 壊滅してしまう」; 04:51 「麦わら ブリュレ！」 / Brûlée 「アマンドお姉ちゃん！」; 05:52 Perospero 「妹を放せ」 「キャンディウォール！」; 06:21 Luffy 「無理か 覇気がねえと壊せねえ」; 06:37 「スローワルツ」 / Luffy 「危ねえ！」 / Brûlée 「お姉ちゃん あたしは斬っちゃダメ！」 / 「名刀 白魚が血を欲しているわ たっぷり苦しんで死になさい」; 07:12 「ペロス兄さん 邪魔よ このキャンディ」. English transcript (t=80764): "Big Sis Amande!". Amande page: Qref chap=885 page=8-13 ep=858 ep2=859 ("She also managed to cut through Perospero\'s extremely hard Candy Wall"). The Mondée and Effilée scenes later in 859 (anime-expanded) are left out. Her being Big Mom\'s daughter is dated here, where Brûlée calls her big sister and she calls Perospero big brother.',
+    },
+  },
+  'charlotte-opera': {
+    806: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_806',
+      note: 'Threshold entry (naming). The spoken subtitles never say his name before 814 (every オペラ cue in 789, 790, 806, 810-813 is a speaker label in full-width parentheses), but ep 806 shows an on-screen caption when the siblings stand over Cracker: transcript t=80699 "CHARLOTTE OPERA TH SON OF CHARLOTTE, MINISTER OF CREAM" (next to the Mont-d\'Or and Galette captions). No Opera caption in 789 (only Moscato\'s, t=80520) or 790 (t=80521). 806.srt 13:12 モンドール ウソだろ うちの３将星だぞ / 13:16 やったのは どこのどいつだ ぶっ殺してやる / 13:20 (Opera) どこから飛んできたんだファ / 13:24 (Galette) 兄さんは 確か 昨夜 麦わらのルフィを 始末しに 森へ / 13:34 麦わらのルフィが 近くにいるファ / 13:39 緊急警報だ！ / 13:47 避難しろ. Chapter_843 notes: "Charlotte Opera, the fifth son and the Minister of Whipped Cream" is introduced (ep 806 adapts it; Qref chap=843 ep=806). Mont-d\'Or (filed 811) and Galette (not filed) are not named. The ordinal is left out: the transcript caption drops the number.',
+    },
+    811: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_811',
+      note: 'Cream fight shown over 810 and 811, filed where the capture ends. 810.srt 11:39 調子の乗るなファ！ 11:47 クリームモンスター！ 11:58 それが生クリームの 甘いという力ファ！ 12:03 あま～いクリームがスイートすれば やがて体じゅうが焦げ落ちるファ！; 16:17 クリームモンスター！ 16:36 さっさと観念しろファ！. 811.srt 09:07 俺がしとめるファ！ クリームモンスター！; 14:05 ファファファ… クリームモンスター！; 20:23 やっと倒れたか; 20:30 (Opera) ファファファ…. Episode_811 Long Summary: "Mont-d\'Or blocks his strike with a book, which seems to suck him in. Luffy is placed under the illusion that he is in the book\'s world ... The Big Mom Pirates then take turns attacking Luffy while he is blinded"; "Luffy finally collapses"; "The army then takes her away". The fruit is never named on screen.',
+    },
+    818: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_818',
+      note: '818.srt 21:08 (Opera) ムチャなヤツファ / 21:14 夜のうちに ローラの居場所を 吐かせるように ママに言われてるファ / 21:22 (Nami) 嫌よ！ 友達 売るわけないでしょ / 21:25 よし 拷問するファ / 21:31 じゃあ ５秒に１回 ボーガンで お前を撃つから 言いたくなったら言うファ / 21:56 (Jinbe) お～い 誰かおらんか / 22:02 お前は今 城への出入りは禁止のはず / 22:11 悪いが オペラ… / 22:16 五千枚瓦 正拳！ / 22:52 すまんの 少し眠っとってくれ. Luffy tearing his arms: 20:40-21:05 and the 819 recap (ろうから脱出). The Prisoner Library is not named in the story: it is first said at 819 (囚人図書室から).',
+    },
+    844: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_844',
+      note: "The lie: 822.srt 14:35 (Mont-d'Or) 一体 どういうことだ オペラの兄貴？ / 14:52 あいつらからローラの居場所を 聞き出そうと拷問していたんだ / 14:57 ヤツらは なんにも知らず だから そのまま焼き殺した / 15:18 見張りを しくじったなんて絶対に言えるか ママに寿命を全部 抜かれてしまうファ. The rampage: 843.srt 16:54-17:54 (anime-only per the Opera page) やばいファ！ / オペラ兄さん！ / スムージーか 早く逃げるファ！ / こうなったのは すべて兄さんの責任だろう？ / 麦わらを殺したと なぜ ウソをついた？ / ここで逃げても もう兄さんに居場所などないぞ！ 責任を取れ！ / お前は… 逃げるファ！ / うう… ママ！ / なんだ お前… 俺の邪魔する気か？. The outcome is shown at 844.srt 05:54 オペラの兄貴！ / おい しっかりしろ！ / まさか寿命を抜かれたのか？ / 06:03 オペラ兄さんはママを止めようと 立ちはだかったのだ, hence the story is filed at 844. Status stays unknown (Charlotte_Opera: current status unknown). Zeus, named in 844 at 10:26, is not mentioned.",
+    },
+  },
+  'charlotte-compote': {
+    831: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_831',
+      note: 'Threshold entry (naming). 831.srt, Vito on the venue wall (no speaker label: the lines run on from 06:02 (Vito) ファーザー すげえ): 06:04 今 世経の社長とジェルマの親玉が 話してるレロ / 06:17 長男 キャンディ大臣 ペロスペロー / 06:21 長女 フルーツ大臣 コンポート / 06:25 次男 将星 カタクリ / 06:28 十四女 将星 スムージー / 06:31 三男 ダイフク / 06:33 四男 オーブン / 06:35 数え切れねえほどの化け物ぞろい / 06:39 味方と思ってるうちは 心強かったが… / 06:45 これが全員 敵に回ると思うと ぞっとするレロ. Transcript t=80724: "The eldest daughter and the Minister of Fruit - Compote." Not named in 830 (no コンポート cue in 830.srt, no caption in t=80723), which is the wiki debut: moved 830 -> 831. Chapter 861 p.2-3: Vito identifies Compote (Qref chap=861 ep=831).',
+    },
+    844: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_844',
+      note: "844.srt 04:45 (Big Mom) どこだ ウエディングケーキ！ / 08:18 (Compote) ああ… / 08:42 (Daifuku) もしや…？ / 08:44 (Compote) いい手を 思いついたんだね？ / 08:51 (Perospero) ママ ウエディングケーキは あるぞ！ ... なんと麦わらの一味が それを盗んでいったのさ / 10:31 マンマ～！ / 10:57 麦わらたちをママがしとめても ケーキなんてありはしない！ / 11:48 ママは あのケーキを 一口も食ってないんだ / 11:52 (Compote) じゃあ 今回の お題は… 11:55 ママの想像の中で膨らんだ 食べたこともない おいしいケーキだ / 12:08 (Katakuri) まずいな 少なくとも この島は滅ぶ. Perospero's lifespan threat and Zeus are left out.",
+    },
+  },
+  'charlotte-nusstorte': {
+    855: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_855',
+      note: 'Threshold entry (naming). Not named in any earlier episode: 835, 841, 843, 844, 845 only carry the speaker label (シャーロット･ヌストルテ), and the transcripts of 822, 831, 835, 841, 843, 844, 845 (t=80715, 80724, 80728, 80734, 80736, 80737, 80738) name him nowhere. The issue candidate 822 is the silent debut at the meeting. 855.srt (anime-only fight, Episode_855 Anime and Manga Differences): 18:40 奥の手は まだ取ってあるからして / 18:52 ただの風では ないからして / 18:54 ヌストルテ特製 竜巻デコレーションで あるからして / 19:03 くたばれジェルマ！. Canon call (Chapter 882 p.15-17, adapted in 855): 19:26 こちらジェルマの船 ヌストルテだ / 19:29 (Mont-d\'Or) 兄貴 ジェルマのほうは どうなった？ / 19:32 １万の兵で たたきつぶした 国は壊滅状態であるからして. Transcript t=80760: "Nusstorte\'s special tornado decoration!" / "This is Nusstorte from Germa\'s ship." / "They\'re heading due west...". Episode_855 Long Summary: "Niji contacts Mont-d\'Or and impersonates Nusstorte"; trivia: "the hand that is holding Nusstorte is shown to be glowing". Chapter 882 names him (the Charlotte Nusstorte page was created on 2017-10-20, the week of Chapter 882); the romanised spelling comes at 898. Dosmarche and Basskarte are not filed and not named.',
+    },
+    873: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_873',
+      note: '873.srt 05:08 (Oven) ヌストルテ率いる１万の兵が 貴様らの王国を乗っ取ったはず / 05:15 (Ichiji) 確かにハエどもが たかってきたが はたいて海に捨てておいた / 05:23 (Mont-d\'Or) 兄貴たちを海に捨てた？ / 05:29 俺は確かに ジェルマ討伐完了の知らせを… / 05:41 あの声は誰だったんだ？ / 05:46 こちらモンドール 応答せよ / 05:49 ヌストルテの兄貴 応答してくれ！ / 05:53 バスカルテの兄貴 ドスマルシェの兄貴 / 05:57 誰でもいい 応答しろお！ / 06:00 やはりだ！. Transcript t=80778: "Ten thousand soldiers led by Nusstorte took over your kingdom!" / "Big Bro Nusstorte! Please come in!". Episode_873 Long Summary: Mont-d\'Or and Niwatori "overhearing the exchange", "unsuccessfully trying to contact Nusstorte\'s army". Status stays unknown (Chapter 898: floating unconscious in the sea).',
+    },
+  },
+  'charlotte-flampe': {
+    865: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_865',
+      note: 'Threshold entry (naming). 865.srt 08:43 (Flampe) ああっ 本日もなんて完璧でかっこいいの カタクリお兄様 / 08:50 で まだなの？ スナイパー / 09:03 もう… 用なし / 09:10 早く麦わらを しとめないと カタクリお兄様が 倒しちゃうでしょ / 09:18 お兄様に なでなでしてもらうのは だ～れだ？ / 09:22 (all) そりゃもちろん フランペ様です！ (spoken) / 09:34 41人の兄を持ち うち40人のお兄様たちが選ぶ ベスト妹ティスト賞を… 受賞！ / 10:18 だから ここでお兄様の役に立って ポイントアップよ / 10:51 あの人はいつでも 完璧でなきゃ 幻滅しちゃう！. Transcript t=80770 caption: "C. FLAMPE (AGE ) - RD DAUGHTER OF CHARLOTTE (PRESIDENT OF THE KATAKURI FAN CLUB AND SUICIDE SQUAD CAPTAIN)" and "BEST LITTLE SISTER AWARD / FLAMPE". No Flampe cue in 864. Chapter 891 p.3-5 debut (Qref chap=891 ep=865). The daughter ordinal is left out: the episode repeats the chapter\'s misprint (33rd, corrected to 36th).',
+    },
+    867: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_867',
+      note: '867.srt 10:41-10:51 (laughter, Flampe) プウ～ / 11:07 (Katakuri) 足を滑らすとは / 11:24 (Flampe) きゃは 作戦大成功！ / 11:27 完璧に気配を消せるおかげで カタクリお兄様も まだ私の援護には気づいてない / 12:01-12:22 daydream: (Katakuri) そうだったのか フランペ ... さすが わが最愛の妹だ / 21:40 今度は さっきより 10倍も効果のある シビレ針をお見舞いしてあげる / 22:25 えっ？ よけた 私の無音の針を / 22:35 けど こけた～ / 22:39 (laughter). Episode_867 Long Summary: "Flampe successfully shoots Luffy in the leg with a blowdart. The dart causes Luffy\'s leg to numb ... Mogura dealing a gruesome wound to his side"; "Katakuri ends up overhearing them". Mogura is not named in the story.',
+    },
+    868: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_868',
+      note: '868.srt 05:33 (Katakuri) よくやった 本当にお利口さんだな フランペ (her daydream) / 05:47 そうか お前だったのか フランペ / 07:01 フランペ… お前の仕業だな / 07:06 (Flampe) そうよ お兄様 私の し わ ざ / 07:44 (stab) / 08:26 男の勝負に 薄っぺら援護などするな！ / 09:42 自分のおなか刺して ださすぎるわ！ / 09:46 あんたなんか カタクリお兄様じゃない！ / 09:54 まるでフクロウナギ / 11:13 写真を撮りなさい！ み～んなにバラすのよ / 11:50 ファンクラブの全員に 万国の各島に 国中にばらまいてやる / 13:07 外野がうるせえな / 13:36 (Flampe) 覇王色. Episode_868 Long Summary: "stab himself with Mogura in the same place he struck Luffy"; "Katakuri then removes his scarf"; "the two of them agree that the people on the sidelines are annoying".',
+    },
+  },
+  'randolph': {
+    792: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_792',
+      note: 'Threshold entry (naming), moved from the issue\'s 786 (his debut, where he is unnamed: the JP cue at 00:22:09 is only the speaker label "（ランドルフ）確保", and the ep 786 transcript never names him). Ep 792 transcript (forever dreaming 19x792) carries the on-screen caption "RANDOLPH - THE CRANE RIDER / THE BIG MOM PIRATES" right after Carrot\'s "Crane!"; the JP SDH track does not render that caption. Story from the same transcript and the Episode_792 Long Summary: the ambush ("Watch out! Nami! Chopper!" / "A rabbit?!"), Carrot: "But he\'s not a Mink!" / "See! He can\'t use Electro!", "I\'m sorry, Bird-san!", then the thrown spear striking the buried man in the head. Chapter threshold 832 (Chapter_832 notes: "The rabbit knight from the previous chapter is revealed to be named Randolph").',
+    },
+    797: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_797',
+      note: 'First spoken naming. JP 797 00:13:04 "（クラッカー）止まれ！ ランドルフ！" and 00:15:02 "ランドルフ！", then "（ランドルフ）すみません" / "（ランドルフ）こいつが行こうって"; transcript: "Stop! Randolph!" / "Randolph!" / "I\'m sorry. That was his idea." / "Don\'t lie! It was yours!" / "We are very sorry." Randolph page Qref chap=836 page=4-6 ep=797.',
+    },
+    815: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_815',
+      note: 'The scene starts in 814 and ends in 815, so it is filed at 815. JP 814 00:16:23 "ランドルフ ロープを切りな" / "（ランドルフ）了解", 00:17:09 "（石が当たる音）（ランドルフ）ぶぎっ…", 00:17:56 "（ブリュレ）ランドルフ さっさと縄を切っちまいな！", then the pot tipped over Brûlée ("熱っ 熱っ"); JP 815 00:09:35 "（ランドルフたち）ブリュレ様～！" and 00:09:47 "（ランドルフたち）ぎゃああ～！". Episode_815 Long Summary: Carrot "balls up Electro in her hands and slams it into the floor, creating an electric blast that shocks her attackers"; transcript: "Electrical Luna!".',
+    },
+  },
+  'zeus': {
+    806: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_806',
+      note: 'Threshold entry (naming), the issue\'s ~806 confirmed. JP 806 00:16:12 "（パウンド）左手に雷雲ゼウス" and 00:16:17 "右手に太陽プロメテウス": the name is in Pound\'s dialogue, not in the label. Episode_806 "Characters in Order of Appearance" lists Zeus and Prometheus as "(fantasy)", so both are on screen while named. Every earlier mention (786, 788, 789) is a speaker label only, e.g. 788 00:22:55 "（ゼウス）無理 無理 聞こえないって". Transcript: "On her left hand, Zeus, a thundercloud!" / "On her right hand, Prometheus, a sun!". Chapter threshold 843 (Zeus page Qref chap=843 page=9 ep=806 "Zeus is first mentioned"; Chapter_843 lists him as "flashback, silhouette").',
+    },
+    846: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_846',
+      note: 'Lure begun in 845 (transcript: "Zeus... In that case... Will you become my servant?" / "Then you can eat the Black Ball every day!"), finished in 846 (title "A Lightning Counterattack! Nami and Zeus the Thundercloud!"): "Why do you disobey Mama\'s orders, Zeus?!" / "I wanna eat just one more juicy thundercloud!" / "My Weather Egg is inside of Zeus...!" / "Sanji-kun! Carry me and run!" / "Zeus Breeze... Tempo!"; JP 846 00:22:28 "ゼウス･ブリーズ…". Long Summary: the Weather Egg forces him to "unleash an enormous thunderbolt that strikes Big Mom with extreme power".',
+    },
+    878: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_878',
+      note: 'JP 878 00:17:36-00:18:07: "最高 このタクトの中！" / "（サンジ）ゼウス！ お前 本当についてきたのか！ ビッグ･マムへの忠義より 食い物を取るとは！" / "（ナミ）強～いしもべ 手に入れちゃった" / "ナミさんのしもべなら 俺のほうが先だからな！" / "（ゼウス）けど おいらの住みかは ナミが肌身離さない タクトの中だぞ" / "（ブルック）サンジさん 相手は水蒸気ですよ"; earlier 00:17:26 "魔法の天候棒(ソーサリー･クリマ･タクト)は 空の科学と ウソップの技術の融合よ". This is the first episode that shows Zeus choosing Nami: in 865 he only wails "ママ～！" after her "serve me or die". Zeus page Qref chap=903 page=3 ep=878.',
+    },
+  },
+  'prometheus': {
+    806: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_806',
+      note: 'Threshold entry (naming), the issue\'s ~806 confirmed. JP 806 00:16:17 "右手に太陽プロメテウス" in Pound\'s dialogue, after 00:16:08 "リンリンは天候を従える女"; Episode_806 lists Prometheus as "(fantasy)". Every earlier mention (786, 788, 789) is a speaker label only, e.g. 788 00:22:53 "（プロメテウス）城まで壊しかねない". Chapter threshold 843 (Prometheus page Qref chap=843 page=9 ep=806 "Prometheus is first mentioned").',
+    },
+    846: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_846',
+      note: 'Kingbaum burned at the end of 845 (transcript: "That\'s Prometheus-sama!" / "You betrayed Mama..."); the fight is 846: "How dare you... burn up the tree guy!" / "Gum-Gum... Hawk Gatling!" / "I\'m gonna burn you all to death!" / "Spear Wave!" / "He\'s merely a mass of compressed flames! He could just be considered a big talking fire!" / later "The Sun guy is back!". Long Summary: Jinbe\'s water "strips the homie of his power", then the crew is "chased again by Big Mom and a rejuvenated Prometheus".',
+    },
+  },
+  'napoleon': {
+    816: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_816',
+      note: 'Threshold entry (naming), moved from the issue\'s ~806: no dialogue names him before 816 (788, 789, 800 and 813 carry only the speaker label "（ナポレオン）"). JP 816 00:10:13 "ナポレオン！" / 00:10:15 "（ナポレオン）はい ママ", after 00:09:53 "ゼウス！" and 00:10:03 "プロメテウス！"; the transcript also carries the on-screen captions "ZEUS, A THUNDERCLOUD", "PROMETHEUS, A SUN", "NAPOLEON, A BICORNE", then "You\'ll be mine!". Brook\'s lines from the transcript: "As you can see, I\'m trying to get a copy of the Road Ponegliff." / "When you face the Emperor, you have no choice but to turn defiant" / "I\'m gonna take you down and get a copy of the stone!". Chapter threshold 853 (Napoleon page Qref chap=853 ep=820 "Napoleon\'s name and abilities are revealed").',
+    },
+    818: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_818',
+      note: 'Long Summary: Zeus and Prometheus are unaffected by Brook\'s soul power, argue over who should finish him, and "Big Mom\'s bicorne homie Napoleon releases a sword hidden within it and slams into Brook". Transcript: "Hey, don\'t get in my way!" / "Let me do it! I\'ll give him the finishing blow!" / "--Napoleon, you can\'t cut in! --That\'s not fair." / "I did it because you guys were too slow."; JP 818 00:15:30 "ナポレオン 横取りかよ".',
+    },
+  },
+  'lu-feld': {
+    830: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_830',
+      note: 'Threshold entry (naming); candidate was ~828. Ep 828 shows the underworld guests arriving only as silhouettes (Episode_828 lists Lu Feld as silhouette) and no JP cue names him. Ep 829 JP 00:13:55 (unlabelled townsman) "ルフェルド財閥の一族が港に来たって" (EN transcript t=80722: "The family of the Du Feld Conglomerate has arrived.") names only the conglomerate, and he is not on screen (not in Episode_829 Characters in Order of Appearance). Ep 830 JP 00:10:09 (ル・フェルド) "どうしてお前が招かれてんネン 葬儀屋よ" / 00:10:13 (ステューシー) "細かい男ね よしなさい" / 00:10:24 Peclo, spoken-sung: "血のにおいのするお前から言われたかねえ！ ル・フェルド！" (00:10:26); EN transcript t=80723 on-screen captions "LOAN SHARK KING" / "GOD OF FORTUNE DU FELD"; Perospero: "If you walk through the castle you are going to be a little late" / "Mama hates late arrivals" / "By the Candy Escalator!"; all: "芸術だ"; 00:13:49 (ル・フェルド) "いつも うまそうな場所やネン". Episode_830 Long Summary: pig-drawn carriage, Feld and Peclo exchange insults. Manga: Chapter 860 introduces him with the caption "God of Fortune" (Chapter_860 Long Summary and Characters), so the chapter is 860.',
+    },
+    841: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_841',
+      note: 'The theft is fully shown only here. Ep 839 JP 00:06:46 (ル・フェルド) "鼓膜がもたんネン" / "ん？ 餅？" / "泣き声が聞こえないネン 助かったネン" / 00:07:21 "玉手箱！" / "魚人島に代々伝わる伝説の宝"; 00:18:31 "さてさて名だたる秘宝 玉手箱！ ここまで運べば見つかるまい いい混乱やネン このチャンスに中身をすり替えて…" then Big Mom\'s shriek; Episode_839 Long Summary: Big Mom\'s scream blows the chest off the Chateau roof; Anime Notes: the mochi flew onto his face. Ep 841 JP 00:19:03 "海底の秘宝 玉手箱が見えているというのに… なんという場所に引っかかってしまったネン しかたない 飛び降りるか" / 00:19:23 (ステューシー) "その玉手箱をどうする気？ ル・フェルド" / fall / 00:20:00 "飛ぶ指銃" / "玉手箱は 我々世界政府が頂くわ" / "もちろん 罪は あなたにかぶってもらうけど そういう記事にしてくれるんでしょ モルガンズ"; Episode_841 Long Summary: the frosting gives way, he falls onto the ledge, is shot by Tobu Shigan, and his unconscious body pushes the Tamatebako off the Chateau. EN transcript t=80734: "What will you do with the Tamate Box, Du Feld?".',
+    },
+  },
+  'jorul': {
+    836: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_836',
+      note: 'Threshold entry, matching the candidate. Ep 836 JP 00:17:57 (ライディーン) "滝ひげ様 山ひげ様" (epithet spoken); 00:18:10 (children, unlabelled) "ヤルル様 ヨルル様 かっこいいなあ" (name spoken); EN transcript t=80729 captions "CHIEF BEARDHILL JARUL / CHIEF BEARDFALL JORUL" and "FORMER CO-CAPTAINS OF THE GIANT PIRATES (TWO OF THE WORLD\'S OLDEST WARRIORS) HEROES OF THE GIANTS"; 00:03:59 narration "それは 63年前の新世界"; 00:17:43 (ヨルル) "ザバババーン その意気や よしじゃ ライディーン"; 00:18:24 (ヨルル) "村でセムラを食べるでな 羊の家の子らを呼びにきた"; 00:19:07 (ヨルル) "それでは皆の者" ... "子どもたちの成長を太陽に感謝して"; 00:22:42 (ヨルル) "とうとうやったな リンリン" / "子どもだとて許すにも限度がある" / 00:22:55 "カルメル すまんな こやつは 子どもの姿を借りた… 悪神じゃ". Chapter 866 introduces Jarul and Jorul (Chapter_866 Notes).',
+    },
+    837: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_837',
+      note: 'Ep 837 JP 00:04:06 (ヨルル) "リンリン せめて このわしの手で引導を渡してくれる" / 00:04:44 (ヤルル) "ヨルル！" / 00:05:11 (ハイルディン) "滝ひげ様！" / Carmel gives the flames a voice and they die down / 00:09:10 "裁け あれを子どもと思うな… このまま放っておけば 将来さらなる災厄を生む存在に" / 00:09:51 (ヤルル) "ヨルルは 300年 ともに戦った戦友 ... この年じゃ ヤツは もう助からん" / 00:11:45 (Linlin) "滝ひげ様は？" / (カルメル) "死んでしまったわ" / 00:12:00 narration "巨人族の英雄 ヨルルは死んだ". Episode_837 Long Summary: Linlin breaks his sword with her arm and flips him over; Anime Notes: Hajrudin runs to him. Death dated here (status deceased @837).',
+    },
+  },
+  'gion': {
+    887: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_887',
+      note: 'Threshold entry, matching the candidate. The JP SDH rip names her only in speaker labels (ギオン at 00:08:38, 00:09:08, 00:11:01); nobody says her name. The on-screen caption is not in the JP rip but is in the EN transcript t=80792: "GION (MOMOUSAGI) A VICE ADMIRAL OF THE NAVY HEADQUARTERS", right after "Are you gonna allow two of the Four Emperors to team up?". JP 00:08:38 "んもう ガープちゃん？ カイドウとビッグ・マムの狙いは お前さんの孫 麦わらのルフィだよ！" / "このまま四皇２人を接触させちまっていいのかい？" / Garp "今 レヴェリーじゃぞ それを止められる戦力は皆 王族の護衛じゃ" / 00:09:25 "ワノ国は非加盟国につき管轄外である ってさ" (Gion\'s balloon in Chapter 907) / 00:11:01 (ギオン) "まさか あの麦わらが ここまで大きくなるとは…". No JP subtitle in 629-1060 contains ギオン, 桃兎 or モモウサギ outside these labels. Chapter 907 is the chapter the episode adapts (Gion page Qref chap=907 ep=887).',
+    },
+  },
+  'tokikake': {
+    887: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_887',
+      note: 'Threshold entry, matching the candidate. JP labels only (トキカケ at 00:09:10, 00:10:56). EN transcript t=80792 caption: "TOKIKAKE (CHATON) A VICE ADMIRAL OF THE NAVY HEADQUARTERS". JP 00:09:10 (トキカケ) "ちょいとごめんよ お姉ちゃん ビッグ・マムのことだよ レヴェリーで海軍の戦力が手薄になってることぐれえ やっこさん織り込み済みだぜ？" / 00:09:23 "サカズキの社長は なんて？" / "ワノ国は非加盟国につき管轄外である ってさ" / Garp "じゃろうな ... 今は 触らんほうが吉じゃ" / 00:10:56 (トキカケ) "散々ひっかき回してくれたのは あんたのお孫さんじゃないですか". No JP subtitle in 629-1060 contains トキカケ, 茶豚 or チャトン outside these labels. Chapter 907 is the chapter the episode adapts.',
     },
   },
   'tsurujo': {

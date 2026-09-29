@@ -62,28 +62,28 @@ describe('character route head', () => {
   it('spells out the loader’s title and description, and derives nothing', () => {
     const meta = metaFor({
       description: 'A scholar.',
-      title: 'Nico Robin — Zero Spoiler',
+      title: 'Nico Robin | Zero Spoiler',
     })
 
-    expect(meta).toContain('Nico Robin — Zero Spoiler')
+    expect(meta).toContain('Nico Robin | Zero Spoiler')
     expect(meta).toContain('A scholar.')
   })
 
   it('carries a fogged title through untouched', () => {
     const fogged = metaFor({
-      description: 'A One Piece character filed at episode 130.',
-      title: 'A character under fog — Zero Spoiler',
+      description: 'A One Piece character who first appears in episode 130.',
+      title: 'A character under fog | Zero Spoiler',
     })
 
     expect(fogged).not.toContain('Robin')
-    expect(fogged).toContain('A character under fog — Zero Spoiler')
+    expect(fogged).toContain('A character under fog | Zero Spoiler')
     expect(fogged).toContain('episode 130')
   })
 
   it('points the canonical link and the cards at this page', () => {
     const { links, scripts } = headFor({
       description: 'A scholar.',
-      title: 'Nico Robin — Zero Spoiler',
+      title: 'Nico Robin | Zero Spoiler',
     })
     const canonical = links?.filter((link) => link.rel === 'canonical') ?? []
     const alternates = links?.filter((link) => link.rel === 'alternate') ?? []
@@ -99,8 +99,8 @@ describe('character route head', () => {
 
   it('keeps a covered name out of the structured data too', () => {
     const { scripts } = headFor({
-      description: 'A One Piece character filed at episode 130.',
-      title: 'A character under fog — Zero Spoiler',
+      description: 'A One Piece character who first appears in episode 130.',
+      title: 'A character under fog | Zero Spoiler',
     })
     const graph: unknown = JSON.parse(scripts?.[0]?.children ?? 'null')
 

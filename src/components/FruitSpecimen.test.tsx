@@ -24,7 +24,7 @@ describe('FruitSpecimen', () => {
       { bookmark: ep(650) },
     )
 
-    expect(screen.getByText('Specimen 04')).toBeInTheDocument()
+    expect(screen.getByText('Fruit 04')).toBeInTheDocument()
     expect(screen.getByText('Paramecia')).toBeInTheDocument()
     expect(screen.getByRole('link', { name: 'Gum-Gum Fruit' })).toHaveAttribute(
       'href',
@@ -61,7 +61,7 @@ describe('FruitSpecimen', () => {
       { bookmark: ep(100) },
     )
 
-    expect(screen.getByText('Specimen 01')).toBeInTheDocument()
+    expect(screen.getByText('Fruit 01')).toBeInTheDocument()
     expect(screen.getByText('Logia')).toBeInTheDocument()
     expect(screen.getByText('First named in episode 462')).toBeInTheDocument()
     expect(screen.getByText('A fruit under fog')).toBeInTheDocument()

@@ -10,14 +10,14 @@ describe('RouteStrip', () => {
     renderWithProviders(
       <RouteStrip
         at={2}
-        label="Waypoint 3 of 4"
+        label="Entry 3 of 4"
         openCount={3}
         tint="orange"
         total={4}
       />,
     )
 
-    const strip = screen.getByRole('img', { name: 'Waypoint 3 of 4' })
+    const strip = screen.getByRole('img', { name: 'Entry 3 of 4' })
 
     // Four marks, plus the ring around the current one.
     expect(strip.querySelectorAll('circle')).toHaveLength(5)
@@ -27,7 +27,7 @@ describe('RouteStrip', () => {
     const { container, unmount } = renderWithProviders(
       <RouteStrip
         at={3}
-        label="Waypoint 4 of 4"
+        label="Entry 4 of 4"
         openCount={3}
         tint={null}
         total={4}
@@ -40,7 +40,7 @@ describe('RouteStrip', () => {
     renderWithProviders(
       <RouteStrip
         at={3}
-        label="Waypoint 4 of 4"
+        label="Entry 4 of 4"
         openCount={4}
         tint="orange"
         total={4}
@@ -58,7 +58,7 @@ describe('RouteStrip', () => {
     renderWithProviders(
       <RouteStrip
         at={0}
-        label="Waypoint 1 of 4"
+        label="Entry 1 of 4"
         openCount={0}
         tint={null}
         total={4}

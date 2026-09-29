@@ -75,12 +75,10 @@ describe('PortLog', () => {
       { bookmark: ep(20) },
     )
 
-    const stages = screen.getAllByText(/^Port of call \d of 7$/u)
+    const stages = screen.getAllByText(/^Stop \d of 7$/u)
 
     expect(stages.map((node) => node.textContent)).toStrictEqual(
-      [...open, ...covered].map(
-        (_, index) => `Port of call ${String(index + 1)} of 7`,
-      ),
+      [...open, ...covered].map((_, index) => `Stop ${String(index + 1)} of 7`),
     )
   })
 
@@ -175,7 +173,7 @@ describe('PortLog', () => {
     )
 
     expect(
-      screen.getByText('No bookmark set · the whole route is under fog'),
+      screen.getByText('No bookmark set · everything is under fog'),
     ).toBeInTheDocument()
     expect(screen.getAllByText('A place under fog')).toHaveLength(7)
     expect(screen.queryByText('Baratie')).not.toBeInTheDocument()

@@ -149,7 +149,7 @@ describe('a fruit’s own page', () => {
   it('names nothing under fog, in the head or anywhere else', () => {
     const page = fruitPage('dark-dark-fruit', ep(100), 'en')
 
-    expect(page?.head.title).toBe('A fruit under fog — Zero Spoiler')
+    expect(page?.head.title).toBe('A fruit under fog | Zero Spoiler')
     expect(page?.detail.slot.open).toBe(false)
 
     saysNothing(page, ep(100))
@@ -158,7 +158,7 @@ describe('a fruit’s own page', () => {
   it('names the fruit once the reader has reached it', () => {
     const page = fruitPage('gum-gum-fruit', ep(100), 'en')
 
-    expect(page?.head.title).toBe('Gum-Gum Fruit — Zero Spoiler')
+    expect(page?.head.title).toBe('Gum-Gum Fruit | Zero Spoiler')
     expect(page?.detail.slot.open).toBe(true)
   })
 

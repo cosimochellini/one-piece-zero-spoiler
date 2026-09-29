@@ -32,6 +32,6 @@ describe('RouteLegend', () => {
     )
 
     expect(screen.getByText('nella nebbia')).toBeInTheDocument()
-    expect(screen.getByText('archiviate finora')).toBeInTheDocument()
+    expect(screen.getByText('in totale')).toBeInTheDocument()
   })
 })

@@ -35,7 +35,7 @@ function renderMark(bookmark: Bookmark = null): RenderResult {
 
 const stored = (): null | string => screen.getByTestId('bookmark').textContent
 const dialog = (): HTMLElement =>
-  screen.getByRole('dialog', { name: 'Where have you got to?' })
+  screen.getByRole('dialog', { name: 'Where are you up to?' })
 const field = (name: string): HTMLElement =>
   within(dialog()).getByLabelText(name)
 const button = (name: string): HTMLElement =>
@@ -75,7 +75,7 @@ describe('EpisodeMark', () => {
     expect(screen.getByRole('radio', { name: 'Anime episode' })).toHaveFocus()
     expect(screen.getByRole('radio', { name: 'Anime episode' })).toBeChecked()
     expect(button('Save')).toBeDisabled()
-    expect(button('Forget my bookmark')).toBeDisabled()
+    expect(button('Clear bookmark')).toBeDisabled()
   })
 
   it('opens on the bookmark as it stands', async () => {
@@ -88,7 +88,7 @@ describe('EpisodeMark', () => {
       screen.getByRole('radio', { name: 'Season and episode' }),
     ).toBeChecked()
     expect(field('Season')).toHaveValue('2')
-    expect(field('Episode within the season')).toHaveValue('3')
+    expect(field('Episode in that season')).toHaveValue('3')
     expect(button('Save')).toBeEnabled()
   })
 
@@ -97,7 +97,7 @@ describe('EpisodeMark', () => {
     renderMark()
 
     await open(user)
-    await user.type(field('Episode you have reached'), '92')
+    await user.type(field('Last episode you watched'), '92')
     await user.click(button('Save'))
 
     expect(stored()).toBe('92')
@@ -114,11 +114,11 @@ describe('EpisodeMark', () => {
     await user.click(screen.getByRole('radio', { name: 'Season and episode' }))
 
     // No season yet: the field waits, and so does Save.
-    expect(field('Episode within the season')).toBeDisabled()
+    expect(field('Episode in that season')).toBeDisabled()
     expect(dialog()).toHaveTextContent('Choose a season first.')
 
     await user.selectOptions(field('Season'), '2')
-    await user.type(field('Episode within the season'), '3')
+    await user.type(field('Episode in that season'), '3')
     await user.click(button('Save'))
 
     expect(stored()).toBe('s2e3')
@@ -132,7 +132,7 @@ describe('EpisodeMark', () => {
 
     await open(user)
     await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
-    await user.type(field('Chapter you have reached'), '1044')
+    await user.type(field('Last chapter you read'), '1044')
     await user.click(button('Save'))
 
     expect(stored()).toBe('c1044')
@@ -145,11 +145,11 @@ describe('EpisodeMark', () => {
 
     await open(user)
 
-    expect(field('Episode you have reached')).toHaveValue('650')
+    expect(field('Last episode you watched')).toHaveValue('650')
 
     await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
 
-    expect(field('Chapter you have reached')).toHaveValue('')
+    expect(field('Last chapter you read')).toHaveValue('')
     expect(button('Save')).toBeDisabled()
     // Nothing has been saved yet.
     expect(stored()).toBe('650')
@@ -160,11 +160,11 @@ describe('EpisodeMark', () => {
     renderMark(ep(650))
 
     await open(user)
-    await user.click(button('One forward'))
-    await user.click(button('One forward'))
-    await user.click(button('One back'))
+    await user.click(button('One more'))
+    await user.click(button('One more'))
+    await user.click(button('One less'))
 
-    expect(field('Episode you have reached')).toHaveValue('651')
+    expect(field('Last episode you watched')).toHaveValue('651')
   })
 
   it('says nothing about validity until the field has been left', async () => {
@@ -172,16 +172,16 @@ describe('EpisodeMark', () => {
     renderMark()
 
     await open(user)
-    await user.type(field('Episode you have reached'), '99999')
+    await user.type(field('Last episode you watched'), '99999')
 
     expect(screen.queryByRole('alert')).not.toBeInTheDocument()
 
     await user.tab()
 
     expect(screen.getByRole('alert')).toHaveTextContent(
-      'Enter a number between 1 and 1300.',
+      'Enter a number from 1 to 1300.',
     )
-    expect(field('Episode you have reached')).toHaveAttribute(
+    expect(field('Last episode you watched')).toHaveAttribute(
       'aria-invalid',
       'true',
     )
@@ -193,7 +193,7 @@ describe('EpisodeMark', () => {
     renderMark(ep(650))
 
     await open(user)
-    await user.click(button('Forget my bookmark'))
+    await user.click(button('Clear bookmark'))
 
     expect(stored()).toBe('none')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -205,8 +205,8 @@ describe('EpisodeMark', () => {
     renderMark(ep(650))
 
     await open(user)
-    await user.clear(field('Episode you have reached'))
-    await user.type(field('Episode you have reached'), '700')
+    await user.clear(field('Last episode you watched'))
+    await user.type(field('Last episode you watched'), '700')
     await user.click(button('Cancel'))
 
     expect(stored()).toBe('650')
@@ -242,7 +242,7 @@ describe('EpisodeMark', () => {
     await user.click(screen.getByRole('button', { name: 'Imposta episodio' }))
 
     expect(
-      screen.getByRole('dialog', { name: 'Dove sei arrivato?' }),
+      screen.getByRole('dialog', { name: 'A che punto sei?' }),
     ).toBeVisible()
     expect(
       screen.getByRole('radio', { name: 'Capitolo del manga' }),

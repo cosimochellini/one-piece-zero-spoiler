@@ -10,9 +10,9 @@ describe('SearchField', () => {
   it('takes its words from its props, not from a page it knows about', () => {
     const view = renderWithProviders(
       <SearchField
-        clearLabel="Clear the search"
+        clearLabel="Clear search"
         fieldId="find"
-        label="Find a character"
+        label="Search characters"
         onQuery={vi.fn<(query: string) => void>()}
         placeholder="Nami"
         query=""
@@ -20,7 +20,7 @@ describe('SearchField', () => {
       />,
     )
 
-    expect(screen.getByLabelText('Find a character')).toHaveAttribute(
+    expect(screen.getByLabelText('Search characters')).toHaveAttribute(
       'placeholder',
       'Nami',
     )
@@ -31,7 +31,7 @@ describe('SearchField', () => {
       <SearchField
         clearLabel="Cancella la ricerca"
         fieldId="find"
-        label="Trova un frutto"
+        label="Cerca un frutto"
         onQuery={vi.fn<(query: string) => void>()}
         placeholder="Gom Gom"
         query=""
@@ -39,7 +39,7 @@ describe('SearchField', () => {
       />,
     )
 
-    expect(screen.getByLabelText('Trova un frutto')).toHaveAttribute(
+    expect(screen.getByLabelText('Cerca un frutto')).toHaveAttribute(
       'placeholder',
       'Gom Gom',
     )
@@ -48,9 +48,9 @@ describe('SearchField', () => {
   it('keeps the clear button out of the page while the field is blank', () => {
     renderWithProviders(
       <SearchField
-        clearLabel="Clear the search"
+        clearLabel="Clear search"
         fieldId="find"
-        label="Find a fruit"
+        label="Search devil fruits"
         onQuery={vi.fn<(query: string) => void>()}
         placeholder="Gum-Gum"
         query="   "
@@ -60,7 +60,7 @@ describe('SearchField', () => {
 
     // Hidden, not unmounted: the slot keeps the row's width in both states.
     expect(
-      screen.queryByRole('button', { name: 'Clear the search' }),
+      screen.queryByRole('button', { name: 'Clear search' }),
     ).not.toBeInTheDocument()
   })
 
@@ -69,9 +69,9 @@ describe('SearchField', () => {
 
     renderWithProviders(
       <SearchField
-        clearLabel="Clear the search"
+        clearLabel="Clear search"
         fieldId="find"
-        label="Find a fruit"
+        label="Search devil fruits"
         onQuery={onQuery}
         placeholder="Gum-Gum"
         query="gum"
@@ -79,9 +79,7 @@ describe('SearchField', () => {
       />,
     )
 
-    await userEvent.click(
-      screen.getByRole('button', { name: 'Clear the search' }),
-    )
+    await userEvent.click(screen.getByRole('button', { name: 'Clear search' }))
 
     expect(onQuery).toHaveBeenCalledWith('')
   })
@@ -91,9 +89,9 @@ describe('SearchField', () => {
 
     renderWithProviders(
       <SearchField
-        clearLabel="Clear the search"
+        clearLabel="Clear search"
         fieldId="find"
-        label="Find a fruit"
+        label="Search devil fruits"
         onQuery={onQuery}
         placeholder="Gum-Gum"
         query=""
@@ -109,20 +107,20 @@ describe('SearchField', () => {
   it('puts the caller’s status line last, inside the search landmark', () => {
     const { container } = renderWithProviders(
       <SearchField
-        clearLabel="Clear the search"
+        clearLabel="Clear search"
         fieldId="find"
-        label="Find a fruit"
+        label="Search devil fruits"
         onQuery={vi.fn<(query: string) => void>()}
         placeholder="Gum-Gum"
         query=""
-        status={<p>3 of 3 open fruits shown</p>}
+        status={<p>Showing 3 of 3 open fruits</p>}
       />,
     )
 
     const landmark = container.querySelector('search')
 
     expect(landmark?.lastElementChild).toHaveTextContent(
-      '3 of 3 open fruits shown',
+      'Showing 3 of 3 open fruits',
     )
   })
 })

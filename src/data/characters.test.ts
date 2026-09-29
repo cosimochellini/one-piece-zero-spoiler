@@ -181,6 +181,11 @@ function asWords(text: string): string {
   return ` ${text.replaceAll(/[^\p{L}\p{N}]+/gu, ' ').trim()} `
 }
 
+/** Whether a paragraph, already as words, names a record by its full name. */
+function names(words: string, name: string): boolean {
+  return words.includes(asWords(name))
+}
+
 /** One story of one chronicle, with the words it shows in each locale. */
 type StoryCase = {
   readonly character: Entity
@@ -207,7 +212,7 @@ function leaksIn(
   { episode, label, story }: StoryCase,
   locale: Locale,
 ): readonly string[] {
-  // Reduced to words once per story, not once per record scanned against it.
+  // Reduced to words once, not once per record it is scanned for.
   const words = asWords(
     `${story.title[locale]} ${shownWords(story.body[locale], locale)}`,
   )
@@ -215,7 +220,7 @@ function leaksIn(
   return filedAfter(episode)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
-    .filter((other) => words.includes(asWords(other.name[locale])))
+    .filter((other) => names(words, other.name[locale]))
     .filter((other) => !sharesAReachedName(other, episode, locale))
     .map((other) => `${label} (${locale}) names ${other.id}`)
 }
@@ -244,9 +249,10 @@ function sharesAReachedName(
  * plain text. Listed by id so a second one is a decision, not a drift; each
  * is still held to the marker rules when it is linked. Road is in "Road
  * Poneglyph" and Wolf in the Dog-Dog Fruit's wolf form long before either
- * teacher or navigator is met.
+ * teacher or navigator is met. Pound is in Zoro's Hyakuhachi Pound Ho long
+ * before Lola's father is.
  */
-const COMMON_WORD_NAMES = new Set(['king', 'road', 'wolf-elbaph'])
+const COMMON_WORD_NAMES = new Set(['king', 'pound', 'road', 'wolf-elbaph'])
 
 /**
  * The arcs whose name is said in the story well before the arc opens, and
