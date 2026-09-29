@@ -155,7 +155,7 @@ describe('RouteChart', () => {
 
     expect(screen.getAllByRole('listitem').indexOf(horizon())).toBe(0)
     expect(horizon()).toHaveTextContent(
-      'No bookmark set · the whole route is under fog',
+      'No bookmark set · everything is under fog',
     )
     expect(screen.getAllByText('Spoiler')).toHaveLength(2)
   })
@@ -175,7 +175,7 @@ describe('RouteChart', () => {
 
     const target = waypointOf('Spoiler')
     await user.click(
-      within(target).getByRole('button', { name: /Lift the fog anyway/u }),
+      within(target).getByRole('button', { name: /Show anyway/u }),
     )
     await settle()
 

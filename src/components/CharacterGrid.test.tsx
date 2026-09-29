@@ -58,7 +58,7 @@ const alabasta: ShelfView = aShelf({
   covered: [robinCovered],
 })
 
-/** The signal book, with the shelves already here rather than streaming. */
+/** Characters, with the shelves already here rather than streaming. */
 function book({
   featuredCovered = [robinCovered],
   featuredOpen = [luffy, nami],
@@ -135,7 +135,7 @@ describe('CharacterGrid', () => {
 
     // The Alabasta shelf is covered with everyone on it: no arc name, no
     // link, no drawing, and its one tile says only the episode.
-    const covered = shelf(/An arc under fog/u)
+    const covered = shelf(/Arc under fog/u)
 
     expect(screen.queryByText('Alabasta Saga')).not.toBeInTheDocument()
     expect(within(covered).queryByRole('link')).not.toBeInTheDocument()
@@ -148,7 +148,7 @@ describe('CharacterGrid', () => {
 
     // The heading id used to be built from the arc's id, so a covered shelf
     // carried the covered arc's slug in the markup.
-    const covered = shelf(/An arc under fog/u)
+    const covered = shelf(/Arc under fog/u)
 
     expect(covered.getAttribute('aria-labelledby')).not.toContain('alabasta')
   })
@@ -192,14 +192,14 @@ describe('CharacterGrid', () => {
     // The covered card and the covered shelf are still there and unchanged;
     // the open results are empty, and the page says so in the reader's words.
     expect(fogBand()).toHaveTextContent('1 under fog')
-    expect(shelf(/An arc under fog/u)).toBeInTheDocument()
+    expect(shelf(/Arc under fog/u)).toBeInTheDocument()
     // The East Blue shelf has nothing open that matches and nothing covered,
     // so during a search it is left out rather than shown empty.
     expect(
       screen.queryByRole('region', { name: /East Blue Saga/u }),
     ).not.toBeInTheDocument()
 
-    const none = await screen.findByText('No open character is called “robin”.')
+    const none = await screen.findByText('No open character matches “robin”.')
 
     expect(none).toBeInTheDocument()
   })
@@ -212,9 +212,9 @@ describe('CharacterGrid', () => {
 
     // Not yet: the announcement waits 250ms after the last keystroke, so a
     // screen reader hears one count and not one per letter.
-    expect(screen.getByText('2 of 2 open characters shown')).toBeVisible()
+    expect(screen.getByText('Showing 2 of 2 open characters')).toBeVisible()
 
-    const announced = await screen.findByText('1 of 2 open characters shown')
+    const announced = await screen.findByText('Showing 1 of 2 open characters')
 
     expect(announced).toBeVisible()
   })
@@ -227,11 +227,11 @@ describe('CharacterGrid', () => {
 
     // Hidden until there is something to clear, but its slot is reserved.
     expect(
-      screen.queryByRole('button', { name: 'Clear the search' }),
+      screen.queryByRole('button', { name: 'Clear search' }),
     ).not.toBeInTheDocument()
 
     await user.type(field, 'nami')
-    await user.click(screen.getByRole('button', { name: 'Clear the search' }))
+    await user.click(screen.getByRole('button', { name: 'Clear search' }))
 
     expect(field).toHaveValue('')
     expect(screen.getAllByRole('link', { name: /Luffy/u })).toHaveLength(2)
@@ -260,7 +260,7 @@ describe('CharacterGrid', () => {
     book({ featuredCovered: [], shelves: [eastBlue] })
 
     expect(
-      screen.getByText('Nothing is under fog. Every character is open to you.'),
+      screen.getByText('Nothing is under fog. You can see every character.'),
     ).toBeInTheDocument()
   })
 
@@ -271,7 +271,7 @@ describe('CharacterGrid', () => {
       locale: 'it',
     })
 
-    expect(screen.getByLabelText('Trova un personaggio')).toBeInTheDocument()
+    expect(screen.getByLabelText('Cerca un personaggio')).toBeInTheDocument()
     expect(screen.getByText('3 nella nebbia')).toBeInTheDocument()
   })
 })

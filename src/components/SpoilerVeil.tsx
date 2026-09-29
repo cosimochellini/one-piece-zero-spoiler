@@ -212,7 +212,7 @@ function Curtain({
       // Block density reads its name off the visible notice. The verb-only
       // densities show the verb alone — the threshold already sits in its
       // own line beside them — so the sentence has to be supplied here.
-      aria-label={verbOnly ? `${notice} — ${t('veil.reveal')}` : undefined}
+      aria-label={verbOnly ? `${notice}. ${t('veil.reveal')}` : undefined}
       onClick={onUncover}
       type="button"
       {...stylex.props(

@@ -8,7 +8,7 @@ const PAGE = {
   imageUrl: 'https://example.test/og-card.png',
   locale: 'en',
   siteName: 'Zero Spoiler',
-  title: 'Nico Robin — Zero Spoiler',
+  title: 'Nico Robin | Zero Spoiler',
   type: 'article',
   url: 'https://example.test/en/characters/nico-robin',
 } as const

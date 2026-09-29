@@ -91,7 +91,7 @@ describe('SpoilerVeil', () => {
 
     expect(
       screen.getByRole('button', {
-        name: /Under fog until episode 1089.*Lift the fog anyway/su,
+        name: /Under fog until episode 1089.*Show anyway/su,
       }),
     ).toBeInTheDocument()
   })
@@ -136,7 +136,7 @@ describe('SpoilerVeil', () => {
 
     expect(screen.queryByTestId('secret')).not.toBeInTheDocument()
     expect(screen.getByRole('button')).toHaveAttribute('aria-busy', 'true')
-    expect(screen.getByRole('button')).toHaveTextContent('Lifting')
+    expect(screen.getByRole('button')).toHaveTextContent('Loading')
   })
 
   it('re-arms the control when the peek fails', async () => {
@@ -155,7 +155,7 @@ describe('SpoilerVeil', () => {
     await settle()
 
     expect(screen.queryByTestId('secret')).not.toBeInTheDocument()
-    expect(screen.getByRole('button')).toHaveTextContent(/try again/u)
+    expect(screen.getByRole('button')).toHaveTextContent(/Try again/u)
     expect(screen.getByRole('button')).not.toHaveAttribute('aria-busy', 'true')
   })
 
@@ -287,10 +287,10 @@ describe('SpoilerVeil at inline density', () => {
 
     const control = screen.getByRole('button')
 
-    expect(control).toHaveTextContent('Lift')
+    expect(control).toHaveTextContent('Show')
     expect(control).not.toHaveTextContent('Under fog until episode 1089')
     expect(control).toHaveAccessibleName(
-      'Under fog until episode 1089 — Lift the fog anyway',
+      'Under fog until episode 1089. Show anyway',
     )
   })
 })

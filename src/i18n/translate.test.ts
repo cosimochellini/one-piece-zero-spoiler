@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { enDictionary } from './dictionaries/en'
 import { itDictionary } from './dictionaries/it'
-import { LOCALES } from './locales'
+import { type Locale, LOCALES } from './locales'
 import { getDictionary, translate } from './translate'
 
 type DictionaryKey = keyof typeof enDictionary
@@ -48,6 +48,69 @@ describe('the dictionaries', () => {
   })
 })
 
+/**
+ * The phrases the `tone-of-voice` skill in `.claude/skills` rules out, per
+ * locale. This list is the single source: the skill points here rather than
+ * repeating it. Each pattern is tested against every value, ignoring case,
+ * and anchored to word boundaries so that ordinary words that merely contain
+ * one ("profiled", "riscoprire") still pass.
+ */
+const BANNED: Record<Locale, readonly RegExp[]> = {
+  en: [
+    /\bsignal book\b/iu,
+    /\bspecimen sheet\b/iu,
+    /\bship['’]s log\b/iu,
+    /\bports? of call\b/iu,
+    /\bsailing nearby\b/iu,
+    /\bshelves\b/iu,
+    /\bdossiers?\b/iu,
+    /\bfiled\b/iu,
+    /\blift the fog\b/iu,
+    /\b(?:(?:discover|unlock)(?:s|ed|ing)?|explor(?:e|es|ed|ing))\b|\bdive in\b/iu,
+  ],
+  it: [
+    /\blibro dei segnali\b/iu,
+    /\bfoglio dei campioni\b/iu,
+    /\bgiornale di bordo\b/iu,
+    /\bscaffal[ei]\b/iu,
+    /\bdossier\b/iu,
+    /\barchiviat[aeio]\b/iu,
+    // The old verb for revealing: "Dirada la nebbia", "Dirado…".
+    /\bdirad[aio]\b/iu,
+    /\b(?:scopri|immergiti|esplora)\b/iu,
+  ],
+}
+
+describe('the tone of voice', () => {
+  // The en dash stays allowed: it is the right mark for a range such as
+  // `{first}–{last}`.
+  it('uses no em dash and no exclamation mark', () => {
+    for (const locale of LOCALES) {
+      const dictionary = getDictionary(locale)
+
+      for (const key of dictionaryKeys()) {
+        expect(dictionary[key], `${locale} ${key}`).not.toMatch(/[—!]/u)
+      }
+    }
+  })
+
+  it('uses none of the banned phrases', () => {
+    for (const locale of LOCALES) {
+      const dictionary = getDictionary(locale)
+      const banned = BANNED[locale]
+
+      for (const key of dictionaryKeys()) {
+        for (const pattern of banned) {
+          expect(
+            dictionary[key],
+            `${locale} ${key} ${String(pattern)}`,
+          ).not.toMatch(pattern)
+        }
+      }
+    }
+  })
+})
+
 describe('translate', () => {
   it('fills a placeholder from the params', () => {
     expect(
@@ -66,7 +129,7 @@ describe('translate', () => {
 
   it('returns a string with no placeholders untouched', () => {
     expect(translate(enDictionary, 'veil.reveal', { unused: 'x' })).toBe(
-      'Lift the fog anyway',
+      'Show anyway',
     )
   })
 })
