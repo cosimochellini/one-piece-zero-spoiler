@@ -573,8 +573,8 @@ export const wano: Saga = {
       revealedAtChapter: 960,
       name: { it: 'Kozuki Sukiyaki', en: 'Kozuki Sukiyaki' },
       summary: {
-        it: 'Lo shogun del Paese di Wano ai tempi della giovinezza di Oden, un uomo severo che ascolta l’elenco delle malefatte del figlio e firma l’avviso che lo ripudia.',
-        en: 'The shogun of Wano in Oden’s youth, a stern man who hears out the list of his son’s misdeeds and signs the notice that disowns him.',
+        it: 'Lo shogun del Paese di Wano ai tempi della giovinezza di Oden, un uomo severo che ascolta l’elenco delle malefatte del figlio e manda l’avviso che lo ripudia.',
+        en: 'The shogun of Wano in Oden’s youth, a stern man who hears out the list of his son’s misdeeds and sends the notice that disowns him.',
       },
       visual: { art: 'kozuki-sukiyaki', tint: 'ivory' },
     },
