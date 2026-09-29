@@ -68,7 +68,7 @@ export const itDictionary: Dictionary = {
   'veil.peekFailed': 'Caricamento non riuscito. Riprova.',
   'veil.placeholder': 'Spoiler',
 
-  'chart.title': 'Tutta la wiki, nell’ordine della storia',
+  'chart.title': 'Le voci principali, nell’ordine della storia',
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
@@ -249,7 +249,7 @@ export const itDictionary: Dictionary = {
   'fruit.eatersNone': 'Nessun personaggio della wiki l’ha ancora mangiato.',
   'fruit.siblingsTitle': 'Altri frutti di questo tipo',
   'fruit.siblingsLede':
-    'I frutti dello stesso tipo nominati più vicini a questo.',
+    'I frutti dello stesso tipo nominati subito prima e subito dopo questo.',
   'fruit.siblingsLoading': 'Caricamento dei frutti…',
   'fruit.siblingsNone': 'Non ci sono ancora altri frutti di questo tipo.',
   'fruit.notFoundTitle': 'Frutto non trovato',

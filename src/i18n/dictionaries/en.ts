@@ -74,7 +74,7 @@ export const enDictionary = {
   'veil.peekFailed': 'Could not load it. Try again.',
   'veil.placeholder': 'Spoiler',
 
-  'chart.title': 'Everything in the wiki, in story order',
+  'chart.title': 'The main entries, in story order',
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',

@@ -66,7 +66,7 @@ const BANNED: Record<Locale, readonly RegExp[]> = {
     /\bdossiers?\b/iu,
     /\bfiled\b/iu,
     /\blift the fog\b/iu,
-    /\b(?:(?:discover|unlock)(?:s|ed)?|explor(?:e|es|ed))\b|\bdive in\b/iu,
+    /\b(?:(?:discover|unlock)(?:s|ed|ing)?|explor(?:e|es|ed|ing))\b|\bdive in\b/iu,
   ],
   it: [
     /\blibro dei segnali\b/iu,

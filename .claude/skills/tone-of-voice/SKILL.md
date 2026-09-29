@@ -45,6 +45,7 @@ One term per concept, in both languages. Do not alternate synonyms for variety.
 |---|---|---|
 | the reader's position | bookmark | segnalibro |
 | hidden | under fog | nella nebbia |
+| not hidden (counts, search status) | open | visibile |
 | reveal one entry | Show anyway / Show | Mostra comunque / Mostra |
 | story section | arc | saga (never "arco") |
 | a record's first appearance | first appears in episode N | compare per la prima volta nell'episodio N |
