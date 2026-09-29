@@ -95,7 +95,8 @@ Each one below was in the old copy.
 
 ## UI constraints
 
-- Buttons: three words or fewer. `veil.revealShort` is one short word; it sits
+- Buttons: three words or fewer, not counting an interpolated value such as
+  `· EP 650`. `veil.revealShort` is one short word; it sits
   on the smallest tiles.
 - `mark.unset` has to fit the top bar at 390px.
 - Section ledes: two lines on desktop at most. If one needs a third, cut a
