@@ -23,7 +23,7 @@ describe('SeaChartFold', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: 'The wiki stops where you stopped',
+        name: 'The One Piece wiki without spoilers',
       }),
     ).toBeVisible()
   })
@@ -54,7 +54,7 @@ describe('SeaChartFold', () => {
     })
 
     expect(
-      screen.getByRole('button', { name: 'Change your bookmark · EP 650' }),
+      screen.getByRole('button', { name: 'Change bookmark · EP 650' }),
     ).toBeVisible()
   })
 
@@ -64,14 +64,14 @@ describe('SeaChartFold', () => {
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: 'La wiki si ferma dove sei tu',
+        name: 'La wiki di One Piece senza spoiler',
       }),
     ).toBeVisible()
     expect(
       screen.getByRole('button', { name: 'Imposta il segnalibro' }),
     ).toBeVisible()
     expect(
-      screen.getByRole('link', { name: 'Esplora l’archivio' }),
+      screen.getByRole('link', { name: 'Vai ai personaggi' }),
     ).toHaveAttribute('href', '/it/characters')
   })
 
@@ -81,9 +81,7 @@ describe('SeaChartFold', () => {
       bookmark: ep(650),
     })
 
-    const cta = screen.getByRole('button', {
-      name: 'Change your bookmark · EP 650',
-    })
+    const cta = screen.getByRole('button', { name: 'Change bookmark · EP 650' })
 
     expect(cta).toHaveAttribute('aria-expanded', 'false')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -91,7 +89,7 @@ describe('SeaChartFold', () => {
     await user.click(cta)
 
     expect(
-      screen.getByRole('dialog', { name: 'Where have you got to?' }),
+      screen.getByRole('dialog', { name: 'Where are you up to?' }),
     ).toBeVisible()
     expect(screen.getAllByRole('dialog')).toHaveLength(1)
     expect(cta).toHaveAttribute('aria-expanded', 'true')

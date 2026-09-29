@@ -67,7 +67,7 @@ describe('the character page a bookmark sees', () => {
     const meta = headFor('nico-robin', null)
 
     expect(meta).not.toContain('Robin')
-    expect(meta).toContain('A character under fog — Zero Spoiler')
+    expect(meta).toContain('A character under fog | Zero Spoiler')
     expect(meta).toContain('episode 130')
   })
 
@@ -77,7 +77,7 @@ describe('the character page a bookmark sees', () => {
     )
     expect(
       headFor('nico-robin', { mode: 'season', season: 1, episode: 1 }),
-    ).toContain('at S04E38')
+    ).toContain('appears in S04E38')
     expect(
       headFor('nico-robin', { mode: 'chapter', chapter: 10 }),
     ).not.toContain('Robin')
@@ -85,7 +85,7 @@ describe('the character page a bookmark sees', () => {
 
   it('names the character once the reader has reached them', () => {
     expect(headFor('nico-robin', ep(130))).toContain(
-      'Nico Robin — Zero Spoiler',
+      'Nico Robin | Zero Spoiler',
     )
   })
 

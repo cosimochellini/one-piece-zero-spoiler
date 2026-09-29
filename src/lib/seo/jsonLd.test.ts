@@ -8,7 +8,7 @@ const PAGE = {
   locale: 'en',
   siteName: 'Zero Spoiler',
   siteUrl: 'https://example.test/en',
-  title: 'Nico Robin — Zero Spoiler',
+  title: 'Nico Robin | Zero Spoiler',
   trail: [{ name: 'Characters', url: 'https://example.test/en/characters' }],
   url: 'https://example.test/en/characters/nico-robin',
 } as const
@@ -45,7 +45,7 @@ describe('the structured data of a page', () => {
     const steps: unknown = JSON.parse(pageJsonLd(PAGE))
 
     expect(JSON.stringify(steps)).toContain(
-      '{"@type":"ListItem","position":2,"name":"Nico Robin — Zero Spoiler"}',
+      '{"@type":"ListItem","position":2,"name":"Nico Robin | Zero Spoiler"}',
     )
   })
 

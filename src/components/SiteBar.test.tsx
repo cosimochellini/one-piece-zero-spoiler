@@ -49,7 +49,7 @@ describe('SiteBar', () => {
     const { unmount } = renderWithProviders(<SiteBar />, { bookmark: ep(650) })
 
     expect(
-      screen.getByRole('button', { name: 'Change your bookmark, EP 650' }),
+      screen.getByRole('button', { name: 'Change bookmark (EP 650)' }),
     ).toHaveTextContent('EP 650')
 
     unmount()
