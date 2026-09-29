@@ -1,4 +1,5 @@
 import type { Saga } from './saga'
+import { wanoChronicles } from './wano.chronicle'
 
 /**
  * The Wano Country saga, episodes 890 to 1085: a country closed to the
@@ -381,6 +382,278 @@ export const wano: Saga = {
       },
       visual: { art: 'bao-huang', tint: 'pink' },
     },
+    {
+      id: 'tsurujo',
+      kind: 'character',
+      revealedAtEpisode: 899,
+      revealedAtChapter: 914,
+      name: { it: 'O-Tsuru', en: 'Tsuru' },
+      summary: {
+        it: 'La proprietaria di una casa da tè di Okobore, con una gru d’oro appuntata tra i capelli, che ripaga lo spadaccino che l’ha salvata preparando la cura per una bambina avvelenata.',
+        en: 'The owner of a tea house in Okobore Town, a golden crane pinned in her hair, who repays the swordsman who saved her by brewing the cure for a poisoned child.',
+      },
+      visual: { art: 'tsurujo', tint: 'azure' },
+    },
+    {
+      id: 'urashima',
+      kind: 'character',
+      revealedAtEpisode: 899,
+      revealedAtChapter: 915,
+      name: { it: 'Urashima', en: 'Urashima' },
+      summary: {
+        it: 'Un lottatore di sumo enorme, a sentir lui lo yokozuna più famoso della capitale, che corteggia la cameriera di una casa da tè vantando il proprio rango.',
+        en: 'An enormous sumo wrestler, by his own account the most famous yokozuna of the capital, who courts a tea house waitress by boasting of his rank.',
+      },
+      visual: { art: 'urashima', tint: 'flamingo' },
+    },
+    {
+      id: 'holdem',
+      kind: 'character',
+      revealedAtEpisode: 901,
+      revealedAtChapter: 915,
+      name: { it: 'Holdem', en: 'Holdem' },
+      summary: {
+        it: 'Un headliner dei Pirati delle Cento Bestie a Bakura, con una testa di leone che gli spunta dalla pancia e fa di testa sua, che vuole sapere come una bambina abbia addomesticato un babbuino.',
+        en: 'A Beasts Pirates headliner in Bakura Town, a lion’s head with a will of its own growing out of his belly, who wants to know how a little girl tamed a baboon.',
+      },
+      visual: { art: 'holdem', tint: 'orange' },
+    },
+    {
+      id: 'speed',
+      kind: 'character',
+      revealedAtEpisode: 904,
+      revealedAtChapter: 917,
+      name: { it: 'Speed', en: 'Speed' },
+      summary: {
+        it: 'Una headliner dei Pirati delle Cento Bestie che dalla vita in giù è un cavallo, con occhi che vedono quasi tutto intorno a sé, e che sorveglia il cibo della fattoria di Bakura.',
+        en: 'A Beasts Pirates headliner who is a horse from the waist down, with eyes that see nearly all the way round her, keeping watch over the food of the farm in Bakura Town.',
+      },
+      visual: { art: 'speed', tint: 'sand' },
+    },
+    {
+      id: 'kozuki-hiyori',
+      kind: 'character',
+      revealedAtEpisode: 910,
+      revealedAtChapter: 920,
+      name: { it: 'Kozuki Hiyori', en: 'Kozuki Hiyori' },
+      summary: {
+        it: 'La sorellina di Momonosuke, rimasta con la madre nel castello in fiamme vent’anni fa quando il fratello fu mandato via, e di cui da allora non si sa più nulla.',
+        en: 'Momonosuke’s little sister, left behind with her mother in the burning castle twenty years ago when her brother was sent away, and not heard of since.',
+      },
+      visual: { art: 'kozuki-hiyori', tint: 'flamingo' },
+    },
+    // Met as himself before the reveal: the orphan of Oden's flashback at
+    // 960. That he is Kyoshiro is dated on both records at 976.
+    {
+      id: 'dobon',
+      kind: 'character',
+      revealedAtEpisode: 919,
+      revealedAtChapter: 926,
+      name: { it: 'Dobon', en: 'Dobon' },
+      summary: {
+        it: 'Un vicedirettore del campo di lavoro di Udon che sta seduto nella bocca di un enorme ippopotamo, e va su tutte le furie quando i prigionieri gli lasciano soltanto tre dango.',
+        en: 'A vice warden of the Udon labour camp who sits inside the mouth of a huge hippo, and flies into a rage when the prisoners leave him only three dumplings.',
+      },
+      visual: { art: 'dobon', tint: 'pink' },
+    },
+    {
+      id: 'daikoku',
+      kind: 'character',
+      revealedAtEpisode: 928,
+      revealedAtChapter: 933,
+      name: { it: 'Daikoku', en: 'Daikoku' },
+      summary: {
+        it: 'Un ninja enorme della guardia dello shogun, con un copricapo a corna di toro, che non muove un dito per fermare la furia del suo padrone finché nel castello c’è un intruso da prendere.',
+        en: 'A huge ninja of the shogun’s guard in a bull-horned headpiece, who will not lift a finger to stop his master’s rampage while there is an intruder in the castle to catch.',
+      },
+      visual: { art: 'daikoku', tint: 'wine' },
+    },
+    {
+      id: 'raijin',
+      kind: 'character',
+      revealedAtEpisode: 928,
+      revealedAtChapter: 933,
+      name: { it: 'Raijin', en: 'Raijin' },
+      summary: {
+        it: 'Un ninja della guardia dello shogun, con una maschera a occhiali di due colori e un anello di sfere di fuoco sulla schiena, che davanti a un fantasma è molto meno coraggioso che davanti a un intruso.',
+        en: 'A ninja of the shogun’s guard in a two-coloured goggled mask, a ring of fireballs on his back, who is far less brave in front of a ghost than in front of an intruder.',
+      },
+      visual: { art: 'raijin', tint: 'yellow' },
+    },
+    {
+      id: 'fujin',
+      kind: 'character',
+      revealedAtEpisode: 928,
+      revealedAtChapter: 933,
+      name: { it: 'Fujin', en: 'Fujin' },
+      summary: {
+        it: 'Un ninja della guardia dello shogun, con un elmo scuro, un alto codino arancione e una mantella gonfia dietro le spalle, che va a caccia in coppia con Raijin.',
+        en: 'A ninja of the shogun’s guard with a dark helmet, a tall orange ponytail and a puffed-up cape swelling behind his shoulders, who hunts in a pair with Raijin.',
+      },
+      visual: { art: 'fujin', tint: 'teal' },
+    },
+    {
+      id: 'alpacaman',
+      kind: 'character',
+      revealedAtEpisode: 929,
+      revealedAtChapter: 934,
+      name: { it: 'Alpacaman', en: 'Alpacaman' },
+      summary: {
+        it: 'Una guardia del campo di lavoro di Udon con la testa e il collo di un alpaca, che interroga i prigionieri sputando loro addosso e ricorda che cosa succede a chi reagisce.',
+        en: 'A guard of the Udon labour camp with the head and neck of an alpaca, who questions the prisoners by spitting on them and reminds them what happens to anyone who hits back.',
+      },
+      visual: { art: 'alpacaman', tint: 'ivory' },
+    },
+    {
+      id: 'daifugo',
+      kind: 'character',
+      revealedAtEpisode: 929,
+      revealedAtChapter: 935,
+      name: { it: 'Daifugo', en: 'Daifugo' },
+      summary: {
+        it: 'Un vicedirettore del campo di lavoro di Udon con una coda di scorpione, che picchia un vecchio prigioniero perché mangia dango che non ha guadagnato con il proprio lavoro.',
+        en: 'A vice warden of the Udon labour camp with a scorpion’s tail, who beats an old prisoner for eating dumplings he did not earn with his own work.',
+      },
+      visual: { art: 'daifugo', tint: 'orange' },
+    },
+    {
+      id: 'babanuki',
+      kind: 'character',
+      revealedAtEpisode: 930,
+      revealedAtChapter: 935,
+      name: { it: 'Babanuki', en: 'Babanuki' },
+      summary: {
+        it: 'Il direttore del campo di lavoro di Udon, un omone con una testa d’elefante che gli spunta dal petto e uno starnuto che esplode come una cannonata.',
+        en: 'The warden of the Udon labour camp, a huge man with an elephant’s head growing out of his chest and a sneeze that goes off like a cannon.',
+      },
+      visual: { art: 'babanuki', tint: 'sand' },
+    },
+    {
+      id: 'solitaire',
+      kind: 'character',
+      revealedAtEpisode: 930,
+      revealedAtChapter: 935,
+      name: { it: 'Solitaire', en: 'Solitaire' },
+      summary: {
+        it: 'Una vicedirettrice del campo di lavoro di Udon con sei braccia e una coda di scimmia, che scopre che dalla sua torre sono sparite le chiavi delle manette dei prigionieri.',
+        en: 'A vice warden of the Udon labour camp with six arms and a monkey’s tail, who learns that the keys to the prisoners’ cuffs have gone missing from her tower.',
+      },
+      visual: { art: 'solitaire', tint: 'magenta' },
+    },
+    {
+      id: 'shimotsuki-ushimaru',
+      kind: 'character',
+      revealedAtEpisode: 954,
+      revealedAtChapter: 962,
+      name: { it: 'Shimotsuki Ushimaru', en: 'Shimotsuki Ushimaru' },
+      summary: {
+        it: 'Il defunto daimyo di Ringo, un maestro di spada del clan Shimotsuki che si vedeva sempre in compagnia di una volpe.',
+        en: 'The late daimyo of Ringo, a master swordsman of the Shimotsuki Clan who was always seen in the company of a fox.',
+      },
+      visual: { art: 'shimotsuki-ushimaru', tint: 'blue' },
+    },
+    {
+      id: 'denjiro',
+      kind: 'character',
+      revealedAtEpisode: 960,
+      revealedAtChapter: 960,
+      name: { it: 'Denjiro', en: 'Denjiro' },
+      summary: {
+        it: 'Un orfano sveglio della Capitale dei Fiori, con gli occhiali scuri e il codino, che imbroglia un bottegaio su una pentola e avverte un amico di un cinghiale rubato.',
+        en: 'A sharp orphan of the Flower Capital, in dark glasses and a ponytail, who cheats a shopkeeper over a pot and warns a friend about a stolen boar.',
+      },
+      visual: { art: 'denjiro', tint: 'cyan' },
+    },
+    // Met as himself before the reveal: the shogun of Oden's flashback at
+    // 960. That he is Tenguyama Hitetsu is dated on both records at 1080.
+    {
+      id: 'kozuki-sukiyaki',
+      kind: 'character',
+      revealedAtEpisode: 960,
+      revealedAtChapter: 960,
+      name: { it: 'Kozuki Sukiyaki', en: 'Kozuki Sukiyaki' },
+      summary: {
+        it: 'Lo shogun del Paese di Wano ai tempi della giovinezza di Oden, un uomo severo che ascolta l’elenco delle malefatte del figlio e manda l’avviso che lo ripudia.',
+        en: 'The shogun of Wano in Oden’s youth, a stern man who hears out the list of his son’s misdeeds and sends the notice that disowns him.',
+      },
+      visual: { art: 'kozuki-sukiyaki', tint: 'ivory' },
+    },
+    {
+      id: 'hatcha',
+      kind: 'character',
+      revealedAtEpisode: 987,
+      revealedAtChapter: 981,
+      name: { it: 'Hatcha', en: 'Hatcha' },
+      summary: {
+        it: 'Un gigante dei Pirati delle Cento Bestie, molto più grande di un gigante qualsiasi, che si getta sugli intrusi di Onigashima roteando una mazza chiodata e travolge insieme a loro anche i suoi compagni.',
+        en: 'A giant of the Beasts Pirates, far larger than any ordinary giant, who charges the intruders on Onigashima swinging a spiked club and bowls over his own crewmates along with them.',
+      },
+      visual: { art: 'hatcha', tint: 'yellow' },
+    },
+    {
+      id: 'hotei',
+      kind: 'character',
+      revealedAtEpisode: 1023,
+      revealedAtChapter: 1006,
+      name: { it: 'Hotei', en: 'Hotei' },
+      summary: {
+        it: 'Il capitano con gli occhiali scuri della squadra di samurai dello shogun, due spade alla cintura, che alla caduta del suo signore ha messo i suoi uomini al servizio dell’Imperatore.',
+        en: 'The captain in dark glasses of the shogun’s samurai squad, two swords at his waist, who put his men at the Emperor’s service the moment his master fell.',
+      },
+      visual: { art: 'hotei', tint: 'acid' },
+    },
+    {
+      id: 'fuga',
+      kind: 'character',
+      revealedAtEpisode: 1055,
+      revealedAtChapter: 1030,
+      name: { it: 'Fuga', en: 'Fuga' },
+      summary: {
+        it: 'Uno dei tre giganti enormi che mangiano e bevono in una sala della fortezza di Kaido mentre fuori infuria la battaglia, e che Scratchmen Apoo mostra a X Drake come la forza che gli resta.',
+        en: 'One of three enormous giants eating and drinking in a chamber of Kaido’s fortress while the battle rages outside, whom Scratchmen Apoo shows off to X Drake as the strength he still has.',
+      },
+      visual: { art: 'fuga', tint: 'orange' },
+    },
+    {
+      id: 'kazenbo',
+      kind: 'character',
+      revealedAtEpisode: 1055,
+      revealedAtChapter: 1030,
+      name: { it: 'Kazenbo', en: 'Kazenbo' },
+      summary: {
+        it: 'Uno spettro gigantesco di fiamme disegnato da Kanjuro in punto di morte su richiesta di Orochi: il rancore ardente del clan Kurozumi, lasciato libero di attraversare i muri del castello.',
+        en: 'A giant specter of flame drawn by the dying Kanjuro at Orochi’s request: the Kurozumi Clan’s burning grudge, set loose to walk through the castle walls.',
+      },
+      visual: { art: 'kazenbo', tint: 'vermilion' },
+    },
+    {
+      id: 'shimotsuki-kozaburo',
+      kind: 'character',
+      revealedAtEpisode: 1060,
+      revealedAtChapter: 1033,
+      name: { it: 'Shimotsuki Kozaburo', en: 'Shimotsuki Kozaburo' },
+      summary: {
+        it: 'Il vecchio brontolone che passava le giornate in riva al mare nel villaggio natale di Zoro, e che si rivela il leggendario forgiatore di Wano, l’autore di Enma e della Wado Ichimonji.',
+        en: 'The grumpy old man who spent his days by the sea in Zoro’s home village, and who turns out to be Wano’s legendary swordsmith, the maker of Enma and Wado Ichimonji.',
+      },
+      visual: { art: 'shimotsuki-kozaburo', tint: 'teal' },
+    },
+    {
+      id: 'maha',
+      kind: 'character',
+      revealedAtEpisode: 1068,
+      revealedAtChapter: 1041,
+      name: { it: 'Maha', en: 'Maha' },
+      summary: {
+        it: 'Un agente mascherato del CP0, altissimo, con un cappello a cilindro e un lungo bastone stretto in entrambe le mani, che dà la caccia ai Cappello di Paglia nella fortezza di Kaido.',
+        en: 'A very tall masked agent of CP0 in a high hat, a long stick held upright in both hands, who hunts the Straw Hats through Kaido’s fortress.',
+      },
+      visual: { art: 'maha', tint: 'ivory' },
+    },
+    // Met as herself before the reveal: Kin'emon's flashback at 910 shows
+    // her, a small child in silhouette, in the burning castle and names her
+    // there ("Hiyori- sama !"); chapter 920 does the same. That she is the
+    // oiran Komurasaki is dated on both records at 935.
   ],
 
   dossiers: {
@@ -716,7 +989,7 @@ export const wano: Saga = {
           },
         },
         {
-          episode: 956,
+          episode: 976,
           value: {
             it: 'Nove Foderi Rossi, Denjiro',
             en: 'Nine Red Scabbards, Denjiro',
@@ -724,7 +997,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 921, value: WANO }],
-      epithet: [{ episode: 956, value: { it: 'Denjiro', en: 'Denjiro' } }],
+      epithet: [{ episode: 976, value: { it: 'Denjiro', en: 'Denjiro' } }],
     },
     'shimotsuki-yasuie': {
       role: { it: 'Ex daimyo di Hakumai', en: 'Former daimyo of Hakumai' },
@@ -748,6 +1021,10 @@ export const wano: Saga = {
       origin: [{ episode: 938, value: WANO }],
       epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
     },
+    // Onimaru gets no record of his own: he is named only at the reveal
+    // (954), when the bridge monk turns back into Ushimaru's fox, so a
+    // second record would announce the reveal by appearing. The name is a
+    // dated epithet and affiliation here instead, like Denjiro's on kyoshiro.
     'gyukimaru': {
       role: { it: 'Ladro di spade', en: 'Sword thief' },
       log: {
@@ -762,8 +1039,16 @@ export const wano: Saga = {
             en: 'Oihagi Bridge, robber of weapons',
           },
         },
+        {
+          episode: 954,
+          value: {
+            it: 'Famiglia Shimotsuki, Onimaru, la volpe di Shimotsuki Ushimaru a guardia delle tombe di Ringo',
+            en: 'Shimotsuki family, Onimaru, Shimotsuki Ushimaru’s fox, guardian of the graves of Ringo',
+          },
+        },
       ],
       origin: [{ episode: 934, value: WANO }],
+      epithet: [{ episode: 954, value: { it: 'Onimaru', en: 'Onimaru' } }],
     },
     'fukurokuju': {
       role: { it: 'Capo dell’Oniwabanshu', en: 'Leader of the Oniwabanshu' },
@@ -1043,6 +1328,613 @@ export const wano: Saga = {
         },
       ],
       devilFruit: [{ episode: 995, value: ['squirrel-squirrel-fruit'] }],
+    },
+    'tsurujo': {
+      chronicle: wanoChronicles.tsurujo,
+      role: {
+        it: 'Proprietaria della casa da tè di Okobore',
+        en: 'Owner of the Okobore tea house',
+      },
+      log: {
+        it: 'Tiene una casa da tè a Okobore e conosce l’erba che funziona contro il veleno del fiume di Kuri. Quando nella landa desolata dei banditi pretendono tutto quello che ha, uno spadaccino a cui interessa soltanto il suo sakè li abbatte, e lei si nasconde nella coda del grosso cane che lo porta via, per poterlo ringraziare. Conosce per nome la bambina di Amigasa e si offre di prendersene cura.',
+        en: 'She keeps a tea house in Okobore Town and knows the herb that works against the poisoned river water of Kuri. When robbers in the wasteland demand everything she has, a swordsman who wants only her sake cuts them down, and she hides in the tail of the great dog that carries him off, so that she can thank him. She knows the girl from Amigasa by name and offers to look after her.',
+      },
+      status: [
+        { episode: 899, value: 'alive' },
+        { episode: 960, value: 'presumed-dead' },
+        { episode: 1084, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 899,
+          value: {
+            it: 'Casa da tè di Okobore, proprietaria',
+            en: 'Tea house of Okobore Town, owner',
+          },
+        },
+        {
+          episode: 913,
+          value: {
+            it: 'Casa da tè di Okobore, proprietaria; moglie di Kinemon',
+            en: 'Tea house of Okobore Town, owner; Kin’emon’s wife',
+          },
+        },
+      ],
+      origin: [{ episode: 899, value: WANO }],
+    },
+    'urashima': {
+      chronicle: wanoChronicles.urashima,
+      role: { it: 'Yokozuna della capitale', en: 'Yokozuna of the capital' },
+      log: {
+        it: 'Si presenta come un famoso yokozuna della capitale e il primo lottatore di sumo di Wano, e non tocca un dango fatto con gli avanzi di cui vive Okobore. Vuole in moglie la cameriera della casa da tè, le promette che non dovrà più lavorare né preoccuparsi della tassa sulla strada, e non prende sul serio nessuno dei suoi rifiuti. Quando uno spadaccino gli dice di togliersi di mezzo se ne va, non prima di averla invitata a vederlo combattere a Bakura.',
+        en: 'He calls himself a famous yokozuna of the capital and the first sumo wrestler in Wano, and will not touch a dango made from the leftovers Okobore Town lives on. He wants the tea house waitress for his wife, promises her that she will never have to work or worry about the street tax again, and takes none of her refusals seriously. When a swordsman tells him to get out of the way he leaves, but not before inviting her to come and watch him fight in Bakura Town.',
+      },
+      status: [{ episode: 899, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 899,
+          value: {
+            it: 'Sumo di Wano, yokozuna della capitale',
+            en: 'Wano sumo, yokozuna of the capital',
+          },
+        },
+        {
+          episode: 902,
+          value: {
+            it: 'Grande sumo del Paese di Wano, yokozuna della Capitale dei Fiori; classe dei samurai',
+            en: 'Wano Country grand sumo, yokozuna of the Flower Capital; samurai class',
+          },
+        },
+      ],
+      origin: [{ episode: 899, value: WANO }],
+    },
+    // No `devilFruit` line: what he ate is a SMILE, an artificial fruit, and
+    // the archive files no SMILE as a devil fruit. The lion is in the log.
+    'holdem': {
+      chronicle: wanoChronicles.holdem,
+      role: {
+        it: 'Headliner dei Pirati delle Cento Bestie',
+        en: 'Beasts Pirates headliner',
+      },
+      log: {
+        it: 'È uno dei tre headliner dei Pirati delle Cento Bestie di Bakura, la città dei funzionari che vende i propri avanzi a Okobore. Una testa di leone gli sporge dalla pancia, e quando lui la prende a pugni perché lo fissa, il leone risponde con un colpo sotto la cintura che fa male a tutti e due. Quando un Gifter gli porta la bambina di Amigasa che ha addomesticato il babbuino feroce, è sicuro che si tratti del potere di un vero frutto del diavolo e intende costringerla a mostrarlo.',
+        en: 'He is one of the three headliners of the Beasts Pirates in Bakura Town, the town of officials that sells its leftovers to Okobore. A lion’s head juts out of his belly, and when he punches it for staring at him it strikes back below the belt, which hurts them both. When a Gifter brings him the girl from Amigasa who tamed the savage baboon, he is sure it was a real devil fruit power and means to make her show it.',
+      },
+      status: [{ episode: 901, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 901,
+          value: {
+            it: 'Pirati delle Cento Bestie, headliner di Bakura',
+            en: 'Beasts Pirates, headliner in Bakura Town',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: what she ate is a SMILE, an artificial fruit, and
+    // the archive files no SMILE as a devil fruit. The horse is in the log.
+    'speed': {
+      chronicle: wanoChronicles.speed,
+      role: {
+        it: 'Headliner dei Pirati delle Cento Bestie',
+        en: 'Beasts Pirates headliner',
+      },
+      log: {
+        it: 'Sorveglia il cibo della fattoria in fondo a Bakura, dove il raccolto finisce ai Pirati delle Cento Bestie e un contadino viene pagato cinque monete d’argento che non bastano a sfamare la sua famiglia per una settimana. Dalla vita in giù è un cavallo, e i suoi occhi vedono quasi tutto intorno a lei, così il cibo alle sue spalle non le sfugge mai. Quando suona la campana dell’incendio fa spegnere il fuoco e trova in rovina la casa di Holdem, un altro headliner della città.',
+        en: 'She keeps watch over the food of the Paradise Farm at the far end of Bakura Town, where the harvest goes to the Beasts Pirates and a farmer is paid five silver coins that will not feed his family for a week. From the waist down she is a horse, and her eyes see nearly all the way round her, so the food behind her is never out of sight. When the fire bell rings she has the fire put out and finds the house of Holdem, another of the town’s headliners, in ruins.',
+      },
+      status: [{ episode: 904, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 904,
+          value: {
+            it: 'Pirati delle Cento Bestie, headliner di Bakura',
+            en: 'Beasts Pirates, headliner in Bakura Town',
+          },
+        },
+        {
+          episode: 906,
+          value: {
+            it: 'Al servizio di O-Tama, addomesticata da un suo dango',
+            en: 'Tama’s servant, tamed by one of her dango',
+          },
+        },
+        {
+          episode: 1078,
+          value: {
+            it: 'Accanto a O-Tama, come una madre',
+            en: 'At Tama’s side, like a mother to her',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: the hippo he sits in is a SMILE, and the archive
+    // files no SMILE as a devil fruit; the log describes the hippo instead.
+    'dobon': {
+      chronicle: wanoChronicles.dobon,
+      role: {
+        it: 'Vicedirettore del campo di lavoro di Udon',
+        en: 'Vice warden of the Udon labour camp',
+      },
+      log: {
+        it: 'È uno dei vicedirettori del campo di lavoro di Udon, un gran mangione che considera suo il magazzino del cibo. Ha le gambe fuse con la mascella inferiore di un enorme ippopotamo che fa di testa sua e a volte chiude la bocca mentre lui sta ancora parlando. I prigionieri che lo sfidano vengono inghiottiti e puniti là dentro, in quella che le sue guardie chiamano la sua stanza del massacro.',
+        en: 'He is one of the vice wardens of the Udon labour camp, a big eater who takes the camp’s food store for his own. His legs are fused into the lower jaw of a huge hippo that has a will of its own and sometimes shuts its mouth while he is still talking. Prisoners who cross him are swallowed and punished inside it, in what his guards call his slaughter room.',
+      },
+      status: [{ episode: 919, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 919,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner, vicedirettore del campo di lavoro di Udon',
+            en: 'Beasts Pirates, Headliner, vice warden of the Udon labour camp',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: his alpaca head and neck are a SMILE, and the
+    // archive files no SMILE as a devil fruit; the log describes them instead.
+    'alpacaman': {
+      chronicle: wanoChronicles.alpacaman,
+      role: {
+        it: 'Guardia del campo di lavoro di Udon',
+        en: 'Guard of the Udon labour camp',
+      },
+      log: {
+        it: 'È un Gifter, una delle guardie del campo di lavoro di Udon, con il lungo collo e la testa di un alpaca al posto dei suoi. Interroga i prigionieri sputando loro addosso, e il suo sputo puzza. A chi gli risponde ricorda le regole del campo: alla prima offesa si perdono le braccia, alla seconda le gambe, alla terza la vita.',
+        en: 'He is a Gifter, one of the guards of the Udon labour camp, with the long neck and head of an alpaca in place of his own. He questions prisoners by spitting on them, and his spit stinks. Anyone who talks back hears the camp’s rules from him: a first offence costs the arms, a second the legs, a third the prisoner’s life.',
+      },
+      status: [{ episode: 929, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 929,
+          value: {
+            it: 'Pirati delle Cento Bestie, Gifter, guardia del campo di lavoro di Udon',
+            en: 'Beasts Pirates, Gifter, guard of the Udon labour camp',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: his scorpion's tail is a SMILE, and the archive
+    // files no SMILE as a devil fruit; the log describes the tail instead.
+    'daifugo': {
+      chronicle: wanoChronicles.daifugo,
+      role: {
+        it: 'Vicedirettore del campo di lavoro di Udon',
+        en: 'Vice warden of the Udon labour camp',
+      },
+      log: {
+        it: 'È uno dei vicedirettori del campo di lavoro di Udon, con una coda di scorpione che gli si alza alle spalle, e tiene il conto di chi ha guadagnato che cosa. Lì i prigionieri mangiano soltanto quello che il loro lavoro gli frutta, e un vecchio che mangia con i buoni di un altro per lui è un imbroglione da picchiare davanti a tutti. Vuole sapere chi gli ha passato quei buoni.',
+        en: 'He is one of the vice wardens of the Udon labour camp, a scorpion’s tail rising behind him, and he keeps count of who has earned what. Prisoners there eat only what their work earns them, and to him an old man eating on someone else’s tickets is a cheater to be beaten in front of everyone. He wants to know who handed those tickets over.',
+      },
+      status: [{ episode: 929, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 929,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner, vicedirettore del campo di lavoro di Udon',
+            en: 'Beasts Pirates, Headliner, vice warden of the Udon labour camp',
+          },
+        },
+        {
+          episode: 1019,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner; addomesticato da O-Tama',
+            en: 'Beasts Pirates, Headliner; tamed by Tama',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: the elephant on his chest is a SMILE, and the
+    // archive files no SMILE as a devil fruit; the log describes it instead.
+    'babanuki': {
+      chronicle: wanoChronicles.babanuki,
+      role: {
+        it: 'Direttore del campo di lavoro di Udon',
+        en: 'Warden of the Udon labour camp',
+      },
+      log: {
+        it: 'Dirige il campo di lavoro di Udon per i Pirati delle Cento Bestie, e vicedirettori e guardie rispondono a lui. Dal petto gli spunta la testa di un elefante, e il suo starnuto esplode come una cannonata, abbastanza da scaraventare lontano un prigioniero con le manette di kairoseki. Non capisce perché un uomo senza futuro si ostini ad allenarsi, e quando arriva il suo superiore gli elenca i guai del campo tenendo il peggiore per ultimo.',
+        en: 'He runs the Udon labour camp for the Beasts Pirates, and the vice wardens and guards answer to him. An elephant’s head grows out of his chest, and its sneeze goes off like a cannonball, enough to throw a prisoner in Seastone cuffs across the yard. He cannot see why a man with no future bothers to train, and when his superior arrives he lists the camp’s troubles, saving the worst for last.',
+      },
+      status: [{ episode: 930, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 930,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner, direttore del campo di lavoro di Udon',
+            en: 'Beasts Pirates, Headliner, warden of the Udon labour camp',
+          },
+        },
+        {
+          episode: 953,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner, direttore del campo di lavoro di Udon; addomesticato da O-Tama',
+            en: 'Beasts Pirates, Headliner, warden of the Udon labour camp; tamed by Tama',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: her extra arms and her tail are a SMILE, and the
+    // archive files no SMILE as a devil fruit; the log describes them instead.
+    'solitaire': {
+      chronicle: wanoChronicles.solitaire,
+      role: {
+        it: 'Vicedirettrice del campo di lavoro di Udon',
+        en: 'Vice warden of the Udon labour camp',
+      },
+      log: {
+        it: 'È una dei vicedirettori del campo di lavoro di Udon, con sei braccia, una coda di scimmia e un casco da aviatore calato sugli occhi. Risponde della torre di comando, dove in una cassaforte sono chiuse le chiavi delle manette di kairoseki dei prigionieri con un frutto del diavolo: se quei prigionieri si liberassero, le guardie ci rimetterebbero la testa. Non ha pazienza per le guardie che si fanno prendere in giro da un ladro.',
+        en: 'She is one of the vice wardens of the Udon labour camp, with six arms, a monkey’s tail and a flier’s helmet pulled down over her eyes. She answers for the Executive Tower, where the keys to the Seastone cuffs of the prisoners with devil fruits are locked in a safe: if those prisoners ever freed themselves, the guards would pay with their heads. She has no patience for guards who let a thief make fools of them.',
+      },
+      status: [{ episode: 930, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 930,
+          value: {
+            it: 'Pirati delle Cento Bestie, Headliner, vicedirettrice del campo di lavoro di Udon',
+            en: 'Beasts Pirates, Headliner, vice warden of the Udon labour camp',
+          },
+        },
+      ],
+    },
+    'daikoku': {
+      chronicle: wanoChronicles.daikoku,
+      role: {
+        it: 'Ninja dell’Oniwabanshu di Orochi',
+        en: 'Orochi Oniwabanshu ninja',
+      },
+      log: {
+        it: 'È uno dei ninja che sorvegliano il castello dello shogun, e quando la nuova geisha Orobi viene sorpresa dove non dovrebbe essere la cerca per tutto il banchetto. Mentre Orochi, diventato un serpente, stringe l’oiran tra le fauci, gli ospiti lo supplicano di fermare il suo padrone; lui risponde che lo shogun è libero di fare ciò che vuole e che conta di più l’intruso. Poi uno scheletro che attraversa i muri mette in fuga i suoi compagni, e una mano gigante fatta di braccia spazza via i ninja.',
+        en: 'He is one of the ninja who guard the shogun’s castle, and once the new geisha Orobi is caught where she should not be he hunts her through the banquet. While Orochi, turned into a serpent, holds the oiran in his jaws, the guests beg him to stop his master; he answers that the shogun is free to do as he likes and that the invader matters more. Then a skeleton that floats through the walls sends his comrades running, and a giant hand made of arms sweeps the ninja aside.',
+      },
+      status: [{ episode: 928, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 928,
+          value: {
+            it: 'Oniwabanshu di Orochi, ninja',
+            en: 'Orochi Oniwabanshu, ninja',
+          },
+        },
+        {
+          episode: 995,
+          value: {
+            it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
+            en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
+          },
+        },
+      ],
+      origin: [{ episode: 928, value: WANO }],
+    },
+    'raijin': {
+      chronicle: wanoChronicles.raijin,
+      role: {
+        it: 'Ninja dell’Oniwabanshu di Orochi',
+        en: 'Orochi Oniwabanshu ninja',
+      },
+      log: {
+        it: 'È uno dei ninja che mettono alle strette la nuova geisha in una stanza del castello dello shogun, e uno di quelli che si sparpagliano per il banchetto a cercarla quando lei svanisce. Combatte con gli shuriken e si sposta in groppa a un pesce gatto gigante che cammina sulla terraferma. Quando uno scheletro fluttuante insegue lui e Fujin per i corridoi, scappa urlando che i gashadokuro esistono davvero.',
+        en: 'He is one of the ninja who corner the new geisha in a back room of the shogun’s castle, and one of those who scatter through the banquet to find her when she vanishes. He fights with shuriken and gets about on a giant catfish that moves on land. When a floating skeleton comes after him and Fujin in the corridors, he runs, screaming that the gashadokuro are real.',
+      },
+      status: [{ episode: 928, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 928,
+          value: {
+            it: 'Oniwabanshu di Orochi, ninja',
+            en: 'Orochi Oniwabanshu, ninja',
+          },
+        },
+        {
+          episode: 995,
+          value: {
+            it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
+            en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
+          },
+        },
+      ],
+      origin: [{ episode: 928, value: WANO }],
+    },
+    'fujin': {
+      chronicle: wanoChronicles.fujin,
+      role: {
+        it: 'Ninja dell’Oniwabanshu di Orochi',
+        en: 'Orochi Oniwabanshu ninja',
+      },
+      log: {
+        it: 'È uno dei ninja che mettono alle strette la nuova geisha nel castello dello shogun e poi si sparpagliano per il banchetto a cercarla di nuovo. Lavora in coppia con Raijin e, come lui, va in groppa a un pesce gatto gigante che cammina sulla terraferma. Basta uno scheletro che fluttua nei corridoi perché i due tornino di corsa nella sala urlando che i gashadokuro esistono davvero.',
+        en: 'He is one of the ninja who corner the new geisha in the shogun’s castle and then scatter through the banquet to find her again. He works in a pair with Raijin and, like him, rides a giant catfish that moves on land. A skeleton floating in the corridors is enough to send the two of them running back into the hall, shouting that the gashadokuro are real.',
+      },
+      status: [{ episode: 928, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 928,
+          value: {
+            it: 'Oniwabanshu di Orochi, ninja',
+            en: 'Orochi Oniwabanshu, ninja',
+          },
+        },
+        {
+          episode: 995,
+          value: {
+            it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
+            en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
+          },
+        },
+      ],
+      origin: [{ episode: 928, value: WANO }],
+    },
+    'hotei': {
+      chronicle: wanoChronicles.hotei,
+      role: {
+        it: 'Capitano del Mimawarigumi',
+        en: 'Captain of the Mimawarigumi',
+      },
+      log: {
+        it: 'Comandava il Mimawarigumi, la squadra di samurai che pattugliava la capitale per lo shogun, e quando Kaido ha decapitato Orochi ha offerto all’Imperatore l’intera forza dei samurai di Wano pur di non morire con il suo signore. A Onigashima lui e i suoi uomini combattono dalla parte dei Pirati delle Cento Bestie contro i samurai venuti all’assalto, mentre il virus Ice Oni contagia entrambi gli schieramenti. Quando Hyogoro torna a essere lo spadaccino di un tempo, il Mimawarigumi lo sfida, e un solo colpo lascia a terra anche il loro capitano.',
+        en: 'He commanded the Mimawarigumi, the samurai squad that patrolled the capital for the shogun, and when Kaido beheaded Orochi he offered the Emperor the whole samurai force of Wano rather than die with his lord. On Onigashima he and his men fight on the Beasts Pirates’ side against the samurai of the raid, while the Ice Oni virus spreads through both sides. When Hyogoro becomes the swordsman he used to be, the Mimawarigumi challenge him, and a single stroke leaves their captain on the floor with the rest.',
+      },
+      status: [{ episode: 1023, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1023,
+          value: {
+            it: 'Pirati delle Cento Bestie; un tempo capitano del Mimawarigumi di Orochi',
+            en: 'Beasts Pirates; once captain of Orochi’s Mimawarigumi',
+          },
+        },
+      ],
+      origin: [{ episode: 1023, value: WANO }],
+    },
+    'maha': {
+      chronicle: wanoChronicles.maha,
+      role: { it: 'Agente del CP0', en: 'CP0 agent' },
+      log: {
+        it: 'È uno degli agenti mascherati del CP0 venuti a Wano a trattare con lo shogun, che poi hanno seguito l’assalto a Onigashima da una stanza per gli ospiti; secondo Robin, quelli con la maschera sono l’élite dei servizi segreti del Governo. Quando arriva l’ordine di portare via Nico Robin, la insegue per la fortezza insieme al suo compagno e abbatte chiunque si metta in mezzo. In un sotterraneo Izo, ferito, rifiuta di lasciarli passare, e Maha lo trafigge con uno Shigan nello stesso istante in cui il colpo di pistola di Izo lo manda a terra.',
+        en: 'He is one of the masked CP0 agents who came to Wano to deal with the shogun and then watched the raid on Onigashima from a guest room; by Robin’s account, the masked ones are the elite of the Government’s intelligence. When the order comes to bring in Nico Robin, he chases her through the fortress beside his partner and cuts down anyone in the way. In a basement the wounded Izo refuses to let them pass, and Maha drives a Shigan into him in the same instant that Izo’s shot brings him down.',
+      },
+      status: [{ episode: 1068, value: 'unknown' }],
+      affiliation: [
+        { episode: 1068, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
+      ],
+    },
+    'kozuki-hiyori': {
+      chronicle: wanoChronicles['kozuki-hiyori'],
+      role: {
+        it: 'Sorella minore di Momonosuke',
+        en: 'Momonosuke’s younger sister',
+      },
+      log: {
+        it: 'Vent’anni fa, il giorno in cui il suo signore fu giustiziato nella capitale, rimase con la madre e il fratello nel castello che i pirati dell’Imperatore avevano dato alle fiamme. I samurai che si aprirono la strada fin dentro trovarono i tre intrappolati dal fuoco, e la madre mandò via soltanto il fratello, insieme a loro. Di che fine abbia fatto la bambina rimasta indietro, nessuno di loro sa niente.',
+        en: 'Twenty years ago, on the day her father was executed in the capital, she was left with her mother and brother in the castle the Emperor’s men had set on fire. The samurai who cut their way inside found the three of them trapped by the flames, and her mother sent only her brother away with them. What became of the little girl left behind, none of them knows.',
+      },
+      status: [
+        { episode: 910, value: 'unknown' },
+        { episode: 935, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 910,
+          value: {
+            it: 'Famiglia Kozuki, sorella minore di Momonosuke',
+            en: 'Kozuki family, Momonosuke’s younger sister',
+          },
+        },
+        {
+          episode: 935,
+          value: {
+            it: 'Famiglia Kozuki, sorella minore di Momonosuke; l’oiran Komurasaki della Capitale dei Fiori',
+            en: 'Kozuki family, Momonosuke’s younger sister; Komurasaki, oiran of the Flower Capital',
+          },
+        },
+      ],
+      origin: [{ episode: 910, value: WANO }],
+      epithet: [
+        { episode: 935, value: { it: 'Komurasaki', en: 'Komurasaki' } },
+      ],
+    },
+    'denjiro': {
+      chronicle: wanoChronicles.denjiro,
+      role: {
+        it: 'Samurai al servizio di Oden',
+        en: 'Samurai in Oden’s service',
+      },
+      log: {
+        it: 'Cresce da solo per le strade della Capitale dei Fiori, strappando una moneta alla volta ai bottegai e tenendo d’occhio le famiglie della yakuza. È amico di Kinemon, e lo avverte in tempo quando un cinghiale bianco rubato sta per tirarsi dietro sulla città il suo genitore gigante. È uno dei nove samurai che servirono Oden, e dalla morte del suo signore nessuno sa che fine abbia fatto.',
+        en: 'He grows up alone on the streets of the Flower Capital, cheating shopkeepers out of a coin at a time and keeping an ear on the yakuza families. He is a friend of Kin’emon’s, and warns him in time when a stolen white boar is about to bring its giant parent down on the city. He is one of the nine samurai who served Oden, and since his lord’s death nobody knows what has become of him.',
+      },
+      status: [
+        { episode: 960, value: 'unknown' },
+        { episode: 976, value: 'alive' },
+      ],
+      affiliation: [
+        { episode: 960, value: RED_SCABBARDS },
+        {
+          episode: 976,
+          value: {
+            it: 'Nove Foderi Rossi; Famiglia Kyoshiro, boss',
+            en: 'Nine Red Scabbards; Kyoshiro Family, boss',
+          },
+        },
+      ],
+      origin: [{ episode: 960, value: WANO }],
+      epithet: [
+        {
+          episode: 976,
+          value: {
+            it: 'Kyoshiro; Ushimitsu Kozo',
+            en: 'Kyoshiro; Ushimitsu Kozo',
+          },
+        },
+      ],
+    },
+    'kozuki-sukiyaki': {
+      chronicle: wanoChronicles['kozuki-sukiyaki'],
+      role: { it: 'Ex shogun del Paese di Wano', en: 'Former shogun of Wano' },
+      log: {
+        it: 'Governa Wano dal castello della Capitale dei Fiori mentre il suo erede, Oden, disonora la famiglia a ogni occasione. Dopo aver ascoltato da uno scrivano l’elenco di tutto quello che Oden ha combinato fin da prima di compiere un anno, non vuole sentire altri commenti e manda al figlio un avviso di ripudio. È lui, più tardi, a dare a Oden il titolo di daimyo di Kuri, quando il figlio ha domato quella terra senza legge.',
+        en: 'He rules Wano from the castle in the Flower Capital while his heir, Oden, shames the family at every turn. After hearing a scribe list everything Oden has done since before his first birthday, he wants no more commentary and sends his son a notice of disavowal. It is he who later gives Oden the title of daimyo of Kuri, once his son has tamed that lawless land.',
+      },
+      status: [
+        { episode: 960, value: 'unknown' },
+        { episode: 965, value: 'presumed-dead' },
+        { episode: 1080, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 960,
+          value: {
+            it: 'Famiglia Kozuki, ex shogun del Paese di Wano',
+            en: 'Kozuki family, former shogun of Wano',
+          },
+        },
+        {
+          episode: 1080,
+          value: {
+            it: 'Famiglia Kozuki, ex shogun; Tenguyama Hitetsu, fabbro di Amigasa',
+            en: 'Kozuki family, former shogun; Tenguyama Hitetsu, swordsmith of Amigasa',
+          },
+        },
+      ],
+      origin: [{ episode: 960, value: WANO }],
+      epithet: [
+        {
+          episode: 1080,
+          value: { it: 'Tenguyama Hitetsu', en: 'Tenguyama Hitetsu' },
+        },
+      ],
+    },
+    'shimotsuki-ushimaru': {
+      chronicle: wanoChronicles['shimotsuki-ushimaru'],
+      role: { it: 'Defunto daimyo di Ringo', en: 'Late daimyo of Ringo' },
+      log: {
+        it: 'Ringo, nel nord di Wano, era governata dal clan Shimotsuki, famoso per la sua tempra, e il suo daimyo era un maestro di spada che andava ovunque in compagnia di una volpe. Come le altre regioni, Ringo è stata distrutta da Kaido, e di lui ormai si parla soltanto come del defunto signore. Nella sua terra i morti vengono sepolti sotto la spada che hanno portato fin dalla nascita, e la sua volpe ha continuato a sorvegliarne le tombe anche dopo di lui.',
+        en: 'Ringo, in the north of Wano, was governed by the Shimotsuki Clan, famous for their toughness, and its daimyo was a master swordsman who went everywhere in the company of a fox. Like the other regions, Ringo was destroyed by Kaido, and he is spoken of now only as the late lord. In his land the dead are buried under the swords they carried from birth, and his fox went on guarding their graves long after he was gone.',
+      },
+      status: [{ episode: 954, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 954,
+          value: {
+            it: 'Ringo, daimyo; famiglia Shimotsuki',
+            en: 'Ringo, daimyo; Shimotsuki family',
+          },
+        },
+        {
+          episode: 1046,
+          value: {
+            it: 'Ringo, daimyo; famiglia Shimotsuki, discendente di Ryuma',
+            en: 'Ringo, daimyo; Shimotsuki family, descendant of Ryuma',
+          },
+        },
+      ],
+      origin: [{ episode: 954, value: WANO }],
+    },
+    'hatcha': {
+      chronicle: wanoChronicles.hatcha,
+      role: {
+        it: 'Gigante dei Pirati delle Cento Bestie',
+        en: 'Giant of the Beasts Pirates',
+      },
+      log: {
+        it: 'Quando Queen dà ai suoi il permesso di uccidere i pirati evasi dentro la fortezza, si butta nella mischia roteando una mazza chiodata, e i Pirati delle Cento Bestie intorno a lui gli urlano di fermarsi prima di colpire anche loro. Nessuno sembra in grado di controllarlo. Gli intrusi lo prendono per un gigante, poi si accorgono che è molto più grande di un gigante, e scelgono di correre verso il castello invece di affrontarlo lì.',
+        en: 'When Queen gives his men leave to kill the escaped pirates inside the fortress, he wades in swinging a spiked club, and the Beasts Pirates around him shout at him to stop before he hurts them too. Nobody seems able to control him. The intruders take him for a giant, then see that he is far bigger than one, and choose to run for the castle rather than fight him there.',
+      },
+      status: [{ episode: 987, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 987,
+          value: { it: 'Pirati delle Cento Bestie', en: 'Beasts Pirates' },
+        },
+        {
+          episode: 1002,
+          value: {
+            it: 'Pirati delle Cento Bestie, Numbers',
+            en: 'Beasts Pirates, Numbers',
+          },
+        },
+      ],
+      origin: [
+        { episode: 1002, value: { it: 'Punk Hazard', en: 'Punk Hazard' } },
+      ],
+    },
+    // No `devilFruit` line: from 1058 the anime shows him with a horse's body,
+    // but never says what gave it to him (a SMILE only in SBS 103), and the
+    // archive files no SMILE as a fruit.
+    'fuga': {
+      chronicle: wanoChronicles.fuga,
+      role: { it: 'Gigante di Onigashima', en: 'Giant of Onigashima' },
+      log: {
+        it: 'Siede a mangiare e bere con altri due giganti in una sala scavata nella roccia della fortezza, lontano dai combattimenti, mentre Scratchmen Apoo cerca di convincere X Drake a un’alleanza. Apoo li mostra tutti e tre come la prova che ha ancora della forza: giganti, dice, più potenti di quanto chiunque possa credere. Che cosa ne pensi Fuga, lui non lo dice.',
+        en: 'He sits eating and drinking with two other giants in a cave chamber of the fortress, well away from the fighting, while Scratchmen Apoo tries to talk X Drake into an alliance. Apoo shows the three of them off as proof that he still has power: giants, he says, stronger than anyone would believe. What Fuga himself thinks of it, he does not say.',
+      },
+      status: [{ episode: 1055, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1055,
+          value: {
+            it: 'Onigashima, gigante della sala nella roccia',
+            en: 'Onigashima, giant of the Cave Chamber',
+          },
+        },
+        {
+          episode: 1057,
+          value: {
+            it: 'Pirati delle Cento Bestie, Numbers',
+            en: 'Beasts Pirates, Numbers',
+          },
+        },
+        {
+          episode: 1063,
+          value: {
+            it: 'Pirati delle Cento Bestie, Numbers; al fianco di Yamato',
+            en: 'Beasts Pirates, Numbers; at Yamato’s side',
+          },
+        },
+      ],
+      origin: [
+        { episode: 1057, value: { it: 'Punk Hazard', en: 'Punk Hazard' } },
+      ],
+    },
+    'kazenbo': {
+      chronicle: wanoChronicles.kazenbo,
+      role: {
+        it: 'Spettro di fiamme disegnato da Kanjuro',
+        en: 'Flame specter drawn by Kanjuro',
+      },
+      log: {
+        it: 'In punto di morte, Kanjuro risponde un’ultima volta a Orochi, che gli chiede un bis: il rancore ardente del clan Kurozumi, disegnato e lasciato libero. Lo spettro sfila per il castello attraversando i muri e dando fuoco a tutto, e gli uomini della fortezza gli scappano davanti come davanti a un fantasma. Orochi vuole che scenda fino nell’abisso, e che il fondo dove finisce la sua corsa diventi la loro tomba.',
+        en: 'Dying, Kanjuro answers Orochi one last time, and Orochi asks him for an encore: the burning grudge of the Kurozumi Clan, drawn and set loose. The specter parades through the castle, passing through walls and setting everything alight, and the men of the fortress run from it as from a ghost. Orochi means it to walk down into the abyss, and the bottom where it ends to become their graveyard.',
+      },
+      status: [{ episode: 1055, value: 'unknown' }],
+      affiliation: [
+        {
+          episode: 1055,
+          value: {
+            it: 'Famiglia Kurozumi, creatura di Kanjuro',
+            en: 'Kurozumi family, Kanjuro’s creation',
+          },
+        },
+      ],
+    },
+    'shimotsuki-kozaburo': {
+      chronicle: wanoChronicles['shimotsuki-kozaburo'],
+      role: { it: 'Forgiatore leggendario', en: 'Legendary swordsmith' },
+      log: {
+        it: 'Nel villaggio natale di Zoro era il vecchio seduto in riva al mare, un samurai secondo le chiacchiere del dojo, che al ragazzo diceva di tacere perché altrimenti sarebbe arrivata la Marina. Al piccolo Zoro regalò due spade da allenamento senza filo, le sole che ormai sapesse forgiare, e gli spiegò che una spada maledetta è soltanto una spada che i deboli temono. Quando morì Zoro seppe soltanto che era il nonno di Kuina; il suo nome, Shimotsuki Kozaburo, lo ricostruisce anni dopo a Onigashima.',
+        en: 'In Zoro’s home village he was the old man who sat by the sea, a samurai according to the dojo gossip, who told the boy to keep quiet or the Marines would come. He gave young Zoro two blunt practice swords, the only kind he could still forge, and told him that a cursed sword is only what the weak call a sword they fear. When he died, Zoro learned only that he was Kuina’s grandfather; his name, Shimotsuki Kozaburo, Zoro pieces together years later on Onigashima.',
+      },
+      status: [{ episode: 1060, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 1060,
+          value: {
+            it: 'Villaggio di Shimotsuki, nonno di Kuina',
+            en: 'Shimotsuki Village, Kuina’s grandfather',
+          },
+        },
+      ],
+      origin: [{ episode: 1060, value: WANO }],
     },
   },
 }

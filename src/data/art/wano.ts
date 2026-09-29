@@ -504,4 +504,385 @@ export const wanoArt = {
     },
     { d: circle(80, 176, 4) },
   ],
+  // A teapot with its side handle, steam rising from the spout, and a
+  // crane in flight over the hairpin that carries it.
+  'tsurujo': [
+    { d: 'M50 136 C42 114 52 94 80 94 C108 94 118 114 110 136 Z' },
+    { d: ellipse(80, 94, 20, 5) },
+    { d: circle(80, 85, 4) },
+    { d: 'M110 112 L136 98 L139 104 L112 124' },
+    { d: 'M50 112 L24 102 L22 108 L48 120', role: 'soft' },
+    {
+      d: 'M136 86 C130 76 142 68 136 58 M146 88 C140 78 152 70 146 60',
+      role: 'soft',
+    },
+    { d: 'M34 180 H136 M136 176 v8' },
+    {
+      d: 'M68 164 C76 158 90 158 98 164 C90 168 76 168 68 164 Z',
+      role: 'accent',
+    },
+    { d: 'M68 164 C60 162 52 160 44 158 L36 160', role: 'accent' },
+    {
+      d: 'M78 162 C72 148 74 138 84 130 M88 162 C96 150 106 144 118 144',
+      role: 'accent',
+    },
+    { d: 'M98 164 L122 170', role: 'accent' },
+    shadow(80, 188, 46),
+  ],
+
+  // A sumo ring seen at a tilt, the straw bales round its edge, and a cut
+  // topknot lying in the middle of it.
+  'urashima': [
+    { d: ellipse(80, 122, 66, 26) },
+    { d: ellipse(80, 122, 54, 19), role: 'soft', dashed: true },
+    { d: 'M14 122 V140 C14 162 146 162 146 140 V122' },
+    { d: 'M60 128 v8 M100 128 v8', role: 'soft' },
+    {
+      d: 'M66 118 C60 106 74 98 88 102 C100 106 102 118 92 122 L72 124 Z',
+      role: 'accent',
+    },
+    { d: 'M84 102 L90 122', role: 'accent' },
+    { d: 'M66 118 l-12 -2 M68 123 l-12 3', role: 'accent' },
+    shadow(80, 176, 64),
+  ],
+
+  // A long sword laid flat, a star for its guard, flames climbing off the
+  // blade.
+  'holdem': [
+    { d: 'M60 96 H146 L152 100 L146 104 H60' },
+    { d: 'M64 100 H140', role: 'soft' },
+    {
+      d: 'M48.0 84.0 L52.1 94.3 L63.2 95.1 L54.7 102.2 L57.4 112.9 L48.0 107.0 L38.6 112.9 L41.3 102.2 L32.8 95.1 L43.9 94.3 Z',
+      role: 'accent',
+    },
+    { d: 'M34 96 H10 V104 H34' },
+    { d: 'M16 96 v8 M22 96 v8 M28 96 v8', role: 'soft' },
+    {
+      d: 'M80 94 C70 80 86 72 78 56 C94 66 96 82 88 94 M110 94 C102 76 118 70 112 50 C128 64 128 84 118 94 M136 94 C130 82 142 76 138 64 C148 74 148 88 142 94',
+      role: 'accent',
+    },
+    shadow(80, 130, 60),
+  ],
+
+  // A food cart built like a ship on two wheels, a sail on its mast and
+  // produce heaped on deck.
+  'speed': [
+    { d: 'M24 122 H136 L124 148 H36 Z' },
+    { d: circle(52, 156, 12) },
+    { d: circle(108, 156, 12) },
+    {
+      d: dots([
+        [52, 156],
+        [108, 156],
+      ]),
+    },
+    { d: 'M80 122 V36' },
+    {
+      d: 'M56 44 H104 C100 62 100 80 104 98 H56 C60 80 60 62 56 44 Z',
+      role: 'accent',
+    },
+    { d: circle(46, 114, 8), role: 'soft' },
+    { d: circle(64, 112, 9), role: 'soft' },
+    { d: circle(98, 112, 9), role: 'soft' },
+    { d: circle(116, 115, 7), role: 'soft' },
+    { d: 'M64 103 l-5 -9 M64 103 l5 -9', role: 'soft' },
+    shadow(80, 174, 58),
+  ],
+  // Three dumplings left on a plate, two daggers crossed beneath it.
+  'dobon': [
+    { d: ellipse(80, 96, 48, 12) },
+    { d: ellipse(80, 96, 36, 8), role: 'soft' },
+    { d: circle(70, 84, 10), role: 'accent' },
+    { d: circle(90, 84, 10), role: 'accent' },
+    { d: circle(80, 67, 10), role: 'accent' },
+    { d: 'M44 170 L96 142 M114 132 L100 140' },
+    { d: 'M92 136 L100 150' },
+    { d: 'M116 170 L64 142 M46 132 L60 140' },
+    { d: 'M68 136 L60 150' },
+    shadow(80, 184, 46),
+  ],
+
+  // A scorpion's tail curled over two meal tickets, a stamp on the front one.
+  'daifugo': [
+    { d: 'M60 110 H122 V144 H60 Z', role: 'soft' },
+    { d: 'M38 122 H100 V156 H38 Z' },
+    { d: 'M48 134 h30 M48 145 h40', role: 'soft' },
+    { d: circle(89, 134, 6), role: 'accent' },
+    {
+      d: 'M126 150 C146 128 148 96 132 76 C118 58 96 58 88 74',
+      role: 'accent',
+    },
+    { d: 'M88 74 L78 66 L82 84 Z', role: 'accent' },
+    {
+      d: 'M136 130 l9 3 M141 111 l9 0 M137 92 l8 -4 M124 76 l5 -7 M106 67 l0 -8',
+    },
+    shadow(80, 172, 48),
+  ],
+
+  // A ring of three keys hanging from a hook.
+  'solitaire': [
+    { d: 'M70 24 H90 M80 24 V38' },
+    { d: circle(80, 56, 18), role: 'accent' },
+    { d: circle(64, 84, 6) },
+    { d: circle(80, 90, 6) },
+    { d: circle(96, 84, 6) },
+    { d: 'M62 90 L52 140 M52 140 l9 2 M54 130 l9 2' },
+    { d: 'M80 96 V150 M80 150 h10 M80 140 h8' },
+    { d: 'M98 90 L108 140 M108 140 l-9 2 M106 130 l-9 2' },
+    { d: 'M64 78 L70 70 M80 84 V74 M96 78 L90 70', role: 'soft' },
+    shadow(80, 170, 38),
+  ],
+
+  // A sabre caught mid-spin, the arcs of its turn round it and three drops
+  // of spit flying off.
+  'alpacaman': [
+    { d: 'M54 148 C70 118 94 84 124 48 C104 88 82 122 60 152 Z' },
+    { d: 'M46 140 C38 156 50 170 64 160' },
+    { d: 'M46 140 L64 160', role: 'soft' },
+    { d: 'M54 150 L40 168' },
+    { d: 'M28 106 A58 58 0 0 1 84 42', role: 'soft', dashed: true },
+    { d: 'M136 92 A58 58 0 0 1 96 162', role: 'soft', dashed: true },
+    { d: 'M126 110 q7 9 0 13 q-7 -4 0 -13 Z', role: 'accent' },
+    { d: 'M142 128 q6 8 0 11 q-6 -3 0 -11 Z', role: 'accent' },
+    { d: 'M120 140 q5 7 0 10 q-5 -3 0 -10 Z', role: 'accent' },
+    shadow(80, 184, 40),
+  ],
+
+  // A wide belt with a big round buckle, a pair of tusks curving up over it.
+  'babanuki': [
+    { d: 'M20 118 C50 112 110 112 140 118 V138 C110 132 50 132 20 138 Z' },
+    { d: circle(80, 127, 20), role: 'accent' },
+    { d: circle(80, 127, 10), role: 'accent' },
+    {
+      d: dots([
+        [32, 127],
+        [46, 125],
+        [114, 125],
+        [128, 127],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M64 106 C48 94 44 70 56 46 C58 70 66 88 78 102' },
+    { d: 'M96 106 C112 94 116 70 104 46 C102 70 94 88 82 102' },
+    shadow(80, 160, 56),
+  ],
+  // A bull-horned headpiece above a long sheathed katana.
+  'daikoku': [
+    { d: 'M40 96 C52 84 108 84 120 96 L116 110 C104 100 56 100 44 110 Z' },
+    {
+      d: 'M44 96 C26 86 20 66 30 46 C34 64 42 76 56 88 M116 96 C134 86 140 66 130 46 C126 64 118 76 104 88',
+      role: 'accent',
+    },
+    { d: polygon(80, 98, 7, 4), role: 'accent' },
+    { d: 'M18 146 H126 V158 H18 Z' },
+    { d: 'M126 140 V164' },
+    { d: 'M126 147 H154 V157 H126' },
+    { d: 'M134 147 L140 157 M142 147 L148 157', role: 'soft' },
+    { d: 'M30 152 H112', role: 'soft' },
+    shadow(84, 176, 60),
+  ],
+
+  // A ring of four fireballs with a shuriken at its heart.
+  'raijin': [
+    { d: circle(80, 92, 48) },
+    { d: circle(80, 92, 42), role: 'soft' },
+    {
+      d: 'M80 30 C88 38 90 46 80 56 C70 46 72 38 80 30 Z M128 78 C136 86 138 94 128 104 C118 94 120 86 128 78 Z M80 126 C88 134 90 142 80 152 C70 142 72 134 80 126 Z M32 78 C40 86 42 94 32 104 C22 94 24 86 32 78 Z',
+      role: 'accent',
+    },
+    { d: 'M80 72 L86 86 L100 92 L86 98 L80 112 L74 98 L60 92 L74 86 Z' },
+    { d: circle(80, 92, 4), role: 'soft' },
+    shadow(80, 180, 40),
+  ],
+
+  // A swollen bag of wind over two short blades crossed beneath it.
+  'fujin': [
+    { d: 'M24 96 C24 40 136 40 136 96 C120 84 40 84 24 96 Z' },
+    { d: `${circle(22, 100, 6)} ${circle(138, 100, 6)}` },
+    {
+      d: 'M58 70 q8 -10 16 0 q-8 6 -12 -2 M90 62 q8 -10 16 0 q-8 6 -12 -2',
+      role: 'soft',
+    },
+    {
+      d: 'M52 170 L114 116 L118 120 L56 174 Z M108 170 L46 116 L42 120 L104 174 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M52 170 L40 180 L44 184 L56 174 M108 170 L120 180 L116 184 L104 174',
+    },
+    { d: 'M46 166 l12 12 M114 166 l-12 12' },
+    shadow(80, 192, 44),
+  ],
+
+  // A sword whole in its sash, and its twin snapped in two below it.
+  'hotei': [
+    { d: 'M14 104 C54 94 106 94 146 104 L146 118 C106 108 54 108 14 118 Z' },
+    { d: 'M30 150 L134 58 M34 154 L138 62 M134 58 L138 62' },
+    { d: 'M30 150 L18 162 L22 166 L34 154' },
+    { d: 'M24 146 l12 12', role: 'soft' },
+    { d: 'M16 176 H44 V186 H16 Z' },
+    { d: 'M44 172 V190' },
+    { d: 'M44 178 H78 L84 181 L78 184 H44', role: 'accent' },
+    { d: 'M92 178 L90 181 L94 184 H140 L148 181 L140 178 Z', role: 'accent' },
+    { d: 'M20 181 H40', role: 'soft' },
+  ],
+
+  // A tall hat balanced on the end of a long upright staff.
+  'maha': [
+    { d: 'M58 56 V16 H104 V56' },
+    { d: ellipse(81, 62, 40, 7) },
+    { d: 'M58 44 H104 V52 H58 Z', role: 'accent' },
+    { d: 'M78 70 V184 M84 70 V184' },
+    { d: 'M78 184 L81 192 L84 184' },
+    { d: 'M72 120 H90 M72 128 H90', role: 'soft' },
+    shadow(81, 194, 30),
+  ],
+  // A shamisen standing on its body, its plectrum beside it, a thin moon
+  // behind the pegs.
+  'kozuki-hiyori': [
+    {
+      d: 'M50 114 H106 Q112 114 112 120 V160 Q112 166 106 166 H50 Q44 166 44 160 V120 Q44 114 50 114 Z',
+    },
+    { d: 'M74 114 V34 H82 V114' },
+    { d: 'M73 34 L75 16 H81 L83 34' },
+    { d: 'M64 20 H75 M81 24 H92 M64 28 H75' },
+    { d: 'M76 36 V152 M78 36 V152 M80 36 V152', role: 'accent' },
+    { d: 'M68 152 H88' },
+    {
+      d: 'M122 154 L124 128 L106 100 Q124 92 142 100 L128 128 L126 154 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M122 22 C108 28 106 50 120 58 C104 56 98 32 112 22 C115 20 119 20 122 22 Z',
+      role: 'soft',
+    },
+    shadow(80, 180, 48),
+  ],
+
+  // Two clay pots, one big and one small, and two holed coins above them.
+  'denjiro': [
+    { d: 'M30 90 C18 134 34 162 50 168 H90 C106 162 122 134 110 90 Z' },
+    { d: ellipse(70, 90, 40, 9) },
+    { d: 'M38 118 C58 126 82 126 102 118', role: 'soft' },
+    { d: 'M120 146 C114 162 122 172 128 174 H144 C150 172 156 162 152 146 Z' },
+    { d: ellipse(136, 146, 16, 4) },
+    { d: circle(128, 58, 9), role: 'accent' },
+    { d: 'M125 55 h6 v6 h-6 Z', role: 'accent' },
+    { d: circle(142, 80, 9), role: 'accent' },
+    { d: 'M139 77 h6 v6 h-6 Z', role: 'accent' },
+    shadow(90, 182, 62),
+  ],
+
+  // An open scroll of disavowal between its two rollers, a red seal at its
+  // foot, and the brush laid across it.
+  'kozuki-sukiyaki': [
+    { d: 'M34 50 H126 V146 H34 Z' },
+    { d: 'M28 44 V152 M34 44 V152 M126 44 V152 M132 44 V152' },
+    { d: 'M26 44 H36 M26 152 H36 M124 44 H134 M124 152 H134' },
+    {
+      d: 'M112 64 V128 M98 64 V134 M84 64 V118 M70 64 V126',
+      role: 'soft',
+      dashed: true,
+    },
+    { d: 'M46 118 h16 v16 h-16 Z M50 122 h8 v8 h-8 Z', role: 'accent' },
+    { d: 'M72 184 L136 150' },
+    { d: 'M136 150 L146 142 L150 148 L140 154 Z', role: 'accent' },
+    shadow(80, 188, 54),
+  ],
+  // A katana standing as a grave marker in a mound of snow, the snow still
+  // coming down on it.
+  'shimotsuki-ushimaru': [
+    { d: 'M20 170 C40 144 120 144 140 170 Z' },
+    { d: 'M76 156 V76 H84 V156', role: 'accent' },
+    { d: 'M80 152 V80', role: 'soft' },
+    { d: ellipse(80, 73, 15, 4), role: 'accent' },
+    { d: 'M76.5 69 V32 H83.5 V69' },
+    { d: 'M76.5 62 l7 -6 M76.5 52 l7 -6 M76.5 42 l7 -6', role: 'soft' },
+    { d: 'M74.5 31 h11' },
+    {
+      d: dots([
+        [36, 40],
+        [118, 30],
+        [52, 78],
+        [128, 70],
+        [30, 112],
+        [110, 108],
+        [134, 128],
+        [44, 136],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M8 170 H152', role: 'ambient' },
+  ],
+
+  // A fishing rod bent out over the sea from a shore rock, and a long
+  // kiseru pipe set down on the stone.
+  'shimotsuki-kozaburo': [
+    { d: 'M14 152 C18 132 46 122 70 128 C86 132 96 144 98 152 Z' },
+    { d: 'M44 130 Q98 72 144 40' },
+    { d: 'M144 40 V146', role: 'soft' },
+    { d: circle(144, 150, 3.5), role: 'accent' },
+    { d: 'M32 141 L90 135', role: 'accent' },
+    { d: 'M23 135 h9 v6 q-4.5 4 -9 0 z', role: 'accent' },
+    { d: 'M90 133.5 v3', role: 'accent' },
+    { d: 'M27 128 q-6 -8 0 -14 q6 -6 0 -14', role: 'soft' },
+    ...SEA,
+  ],
+
+  // A morning star on a short haft, spikes all round its head, and a pair of
+  // oval sunglasses left at its foot.
+  'hatcha': [
+    { d: circle(96, 70, 24), role: 'accent' },
+    {
+      d: 'M100.4 46.4 L109.8 36.7 L109.6 50.2 M115.8 56.4 L129.3 56.2 L119.6 65.6 M119.6 74.4 L129.3 83.8 L115.8 83.6 M109.6 89.8 L109.8 103.3 L100.4 93.6 M91.6 93.6 L82.2 103.3 L82.4 89.8 M76.2 83.6 L62.7 83.8 L72.4 74.4 M72.4 65.6 L62.7 56.2 L76.2 56.4 M82.4 50.2 L82.2 36.7 L91.6 46.4',
+      role: 'accent',
+    },
+    { d: 'M75.4 85.3 L41.4 156.3 M82.6 88.7 L48.6 159.7' },
+    { d: 'M41.4 156.3 L48.6 159.7' },
+    { d: 'M50 140 l7 3.4 M54.5 131 l7 3.4 M59 122 l7 3.4', role: 'soft' },
+    { d: ellipse(104, 172, 11, 7) },
+    { d: ellipse(130, 172, 11, 7) },
+    { d: 'M115 171 Q117 167 119 171 M141 170 l8 -4' },
+    shadow(96, 188, 52),
+  ],
+
+  // Two long horns curving up over a horse's tail that sweeps down to the
+  // ground.
+  'fuga': [
+    { d: 'M66 100 C40 84 30 52 40 20 C46 52 58 74 78 90 Z', role: 'accent' },
+    {
+      d: 'M94 100 C120 84 130 52 120 20 C114 52 102 74 82 90 Z',
+      role: 'accent',
+    },
+    { d: ellipse(80, 106, 10, 4) },
+    { d: 'M80 110 C70 132 92 152 74 184' },
+    { d: 'M86 110 C84 136 106 152 96 186' },
+    { d: 'M74 110 C56 132 70 160 52 180', role: 'soft' },
+    shadow(80, 190, 36),
+  ],
+
+  // A flame standing up in the shape of a hooded monk, rising out of a pool
+  // of spilled ink.
+  'kazenbo': [
+    {
+      d: 'M80 28 C96 42 112 68 110 98 C122 110 124 140 116 166 H44 C36 140 38 110 50 98 C48 68 64 42 80 28 Z',
+      role: 'accent',
+    },
+    { d: 'M62 94 C66 72 94 72 98 94', role: 'soft' },
+    {
+      d: 'M110 98 q14 -10 10 -28 M50 98 q-14 -10 -10 -28 M116 136 q14 -6 14 -22 M44 136 q-14 -6 -14 -22',
+      role: 'accent',
+    },
+    { d: ellipse(80, 170, 54, 9) },
+    {
+      d: dots([
+        [80, 14],
+        [98, 22],
+        [62, 20],
+        [30, 184],
+        [132, 186],
+      ]),
+      role: 'soft',
+    },
+  ],
 } satisfies Drawings

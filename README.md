@@ -112,12 +112,12 @@ epithet the reader has not reached is not in the browser at all.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 664                                                                   |
-| Characters          | 490                                                                   |
+| Records             | 686                                                                   |
+| Characters          | 512                                                                   |
 | Devil fruits        | 128                                                                   |
 | Arcs, places, ships | 34 · 10 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 665: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 687: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 555                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
