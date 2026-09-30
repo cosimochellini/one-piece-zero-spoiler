@@ -1121,4 +1121,26 @@ export const summitWarArt = {
     { d: ellipse(62, 146, 16, 5), role: 'accent' },
     shadow(84, 176, 56),
   ],
+  // A shackle hanging open below a row of cell bars, one bar bent aside, the
+  // end of its chain snapped.
+  'shiki': [
+    {
+      d: 'M34 16 V96 M60 16 V96 M86 16 V40 q14 16 0 32 V96 M112 16 V96 M138 16 V96 M26 16 H146 M26 96 H146',
+      role: 'soft',
+    },
+    {
+      d: 'M100.4 115.1 A26 26 0 1 0 100.4 132.9 M92.9 117.8 A18 18 0 1 0 92.9 130.2 M100.4 115.1 L92.9 117.8 M100.4 132.9 L92.9 130.2',
+    },
+    { d: [ellipse(80, 156, 4, 7), ellipse(90, 166, 7, 4)].join(' ') },
+    { d: 'M100 169 a4 7 0 1 0 5 3', role: 'accent' },
+    {
+      d: dots([
+        [112, 174],
+        [116, 182],
+        [108, 186],
+      ]),
+      role: 'accent',
+    },
+    shadow(80, 188, 48),
+  ],
 } satisfies Drawings

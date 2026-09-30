@@ -255,19 +255,22 @@ function sharesAReachedName(
 const COMMON_WORD_NAMES = new Set(['king', 'pound', 'road', 'wolf-elbaph'])
 
 /**
- * The arcs whose name is said in the story well before the arc opens, and
+ * The records whose name is said in the story well before they open, and
  * the episode from which a story may say it: the place is a destination long
  * before it is a heading. Fish-Man Island is named as the next stop by
  * Kokoro at 320; Marineford is named as the war's venue by 434, where
  * Momonga sets out to escort Hancock there. A story before that episode is
  * still scanned for the name. Elbaph, arc and island alike, is the giants'
- * homeland from 71, where Brogy calls himself its strongest warrior.
+ * homeland from 71, where Brogy calls himself its strongest warrior. Joy
+ * Boy is the name on the Poneglyph Robin reads at 548, long before the show
+ * puts him on screen.
  */
 const SAID_BEFORE_FILED = new Map([
   ['fish-man-island', 320],
   ['marineford', 434],
   ['elbaf', 71],
   ['elbaf-island', 71],
+  ['joy-boy', 548],
 ])
 
 /**

@@ -1,8 +1,9 @@
+import { eggheadChronicles } from './egghead.chronicle'
 import type { Saga } from './saga'
 
 /**
  * The Egghead arc, episodes 1089 to 1155: the first island of the final
- * saga, a laboratory that lives in the future. Records so far stop at 1122.
+ * saga, a laboratory that lives in the future.
  */
 
 const EGGHEAD = { it: 'Egghead', en: 'Egghead' }
@@ -60,6 +61,42 @@ export const egghead: Saga = {
         en: 'The scientist the world is five hundred years behind, an old man with a huge bulb-shaped head who lives inside his own laboratory.',
       },
       visual: { art: 'vegapunk', tint: 'cyan' },
+    },
+    {
+      id: 'hibari',
+      kind: 'character',
+      revealedAtEpisode: 1090,
+      revealedAtChapter: 1061,
+      name: { it: 'Hibari', en: 'Hibari' },
+      summary: {
+        it: 'Una giovane ufficiale della Marina con le cuffie sulle orecchie e un orsetto appeso allo zaino, che supplica un contrammiraglio di andare a salvare Kobi.',
+        en: 'A young Marine officer with headphones over her ears and a teddy bear hanging from her backpack, who begs a rear admiral to go and rescue Koby.',
+      },
+      visual: { art: 'hibari', tint: 'pink' },
+    },
+    {
+      id: 'prince-grus',
+      kind: 'character',
+      revealedAtEpisode: 1090,
+      revealedAtChapter: 1061,
+      name: { it: 'Prince Grus', en: 'Prince Grus' },
+      summary: {
+        it: 'Un contrammiraglio della Marina con la pelliccia e un berretto dalla visiera enorme, che si rifiuta di portare i più giovani sull’isola dei pirati dove è prigioniero Kobi.',
+        en: 'A Marine rear admiral in a fur coat and a cap with an enormous bill, who refuses to take his juniors to the pirate island where Koby is being held.',
+      },
+      visual: { art: 'prince-grus', tint: 'green' },
+    },
+    {
+      id: 'doll',
+      kind: 'character',
+      revealedAtEpisode: 1090,
+      revealedAtChapter: 1061,
+      name: { it: 'Doll', en: 'Doll' },
+      summary: {
+        it: 'Viceammiraglio al comando della base G-14 della Marina, capelli neri corti e collare borchiato, che chiede a Tashigi di far tacere Hermeppo.',
+        en: 'The vice admiral in command of the G-14 naval branch, short black hair and a spiked choker, who asks Tashigi to make Helmeppo stop his pleading.',
+      },
+      visual: { art: 'doll', tint: 'violet' },
     },
     {
       id: 'shaka',
@@ -206,6 +243,42 @@ export const egghead: Saga = {
       visual: { art: 'ginny', tint: 'orange' },
     },
     {
+      id: 'kujaku',
+      kind: 'character',
+      revealedAtEpisode: 1113,
+      revealedAtChapter: 1080,
+      name: { it: 'Kujaku', en: 'Kujaku' },
+      summary: {
+        it: 'Contrammiraglio dello SWORD e nipote di Tsuru, con un vestito rosa e un cappello a campana, che frusta gli edifici di Hachinosu finché non si spostano dove dice lei.',
+        en: 'A SWORD rear admiral and granddaughter of Tsuru, in a pink dress and a cloche hat, who whips the buildings of Hachinosu until they move where she tells them.',
+      },
+      visual: { art: 'kujaku', tint: 'flamingo' },
+    },
+    {
+      id: 'nefertari-lili',
+      kind: 'character',
+      revealedAtEpisode: 1118,
+      revealedAtChapter: 1084,
+      name: { it: 'Nefertari Lili', en: 'Nefertari Lili' },
+      summary: {
+        it: 'Una regina di Alabasta di ottocento anni fa, tra i venti sovrani che fondarono il Governo Mondiale, partita per tornare a casa e mai arrivata.',
+        en: 'A queen of Alabasta eight hundred years ago, one of the twenty monarchs who founded the World Government, who set off for home and never arrived.',
+      },
+      visual: { art: 'nefertari-lili', tint: 'ocher' },
+    },
+    {
+      id: 'figarland-garling',
+      kind: 'character',
+      revealedAtEpisode: 1120,
+      revealedAtChapter: 1086,
+      name: { it: 'Figarland Garling', en: 'Figarland Garling' },
+      summary: {
+        it: 'Il comandante supremo dei Cavalieri di Dio, capelli tirati in punte rigide e occhiali rotondi rossi, che a Mary Geoise giudica un Drago Celeste e lo manda a morte.',
+        en: 'The Supreme Commander of the Knights of God, his hair set in stiff spikes behind round red glasses, who judges a Celestial Dragon at Mary Geoise and sends him to his death.',
+      },
+      visual: { art: 'figarland-garling', tint: 'red' },
+    },
+    {
       id: 'marcus-mars',
       kind: 'character',
       revealedAtEpisode: 1122,
@@ -252,6 +325,174 @@ export const egghead: Saga = {
         en: 'One of the Five Elders, down on Egghead in a wide-brimmed hat, with a shape that burrows through the ground and swallows what it finds.',
       },
       visual: { art: 'shepherd-ju-peter', tint: 'sand' },
+    },
+    {
+      id: 'bluegrass',
+      kind: 'character',
+      revealedAtEpisode: 1128,
+      revealedAtChapter: 1094,
+      name: { it: 'Bluegrass', en: 'Bluegrass' },
+      summary: {
+        it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi, che prende il comando di qualunque macchina su cui sale.',
+        en: 'A small old Marine vice admiral in headphones and sunglasses, blonde pigtails under a bowl cut, who takes command of any machine she climbs onto.',
+      },
+      visual: { art: 'bluegrass', tint: 'yellow' },
+    },
+    {
+      id: 'pomsky',
+      kind: 'character',
+      revealedAtEpisode: 1128,
+      revealedAtChapter: 1108,
+      name: { it: 'Pomsky', en: 'Pomsky' },
+      summary: {
+        it: 'Un viceammiraglio della Marina massiccio, con i baffi a manubrio e una cicatrice sulla guancia, che diventa per metà lontra e colpisce con una mazza dalla testa a conchiglia.',
+        en: 'A burly Marine vice admiral with a handlebar moustache and a scar on his cheek, who turns half into a sea otter and swings a maul with a seashell for a head.',
+      },
+      visual: { art: 'pomsky', tint: 'flamingo' },
+    },
+    {
+      id: 'clapp',
+      kind: 'character',
+      revealedAtEpisode: 1129,
+      revealedAtChapter: 1095,
+      name: { it: 'Klap', en: 'Clapp' },
+      summary: {
+        it: 'Il padre di Kuma, un bucaniere ridotto in schiavitù con la moglie e il figlio, che racconta al bambino di Nika, il Dio del Sole, e balla per farlo ridere.',
+        en: 'Kuma’s father, a Buccaneer taken into slavery with his wife and son, who tells the boy about Nika, the Sun God, and dances to make him laugh.',
+      },
+      visual: { art: 'clapp', tint: 'ocher' },
+    },
+    {
+      id: 'bekori',
+      kind: 'character',
+      revealedAtEpisode: 1131,
+      revealedAtChapter: 1097,
+      name: { it: 'Bekori', en: 'Bekori' },
+      summary: {
+        it: 'Il nuovo re del Regno di Sorbet, un uomo corpulento con la corona in testa, che si inchina ai Draghi Celesti e lascia morire di fame i poveri nelle sue prigioni.',
+        en: 'The new king of the Sorbet Kingdom, a stout man in a crown who bows low to the Celestial Dragons and lets the poor starve in his prisons.',
+      },
+      visual: { art: 'bekori', tint: 'wine' },
+    },
+    {
+      id: 'conney',
+      kind: 'character',
+      revealedAtEpisode: 1133,
+      revealedAtChapter: 1099,
+      name: { it: 'Conney', en: 'Conney' },
+      summary: {
+        it: 'L’ex regina madre del Regno di Sorbet, una vecchina minuta e piena di rughe, così simile a una Bonney invecchiata che nella chiesa di Kuma la scambiano per lei.',
+        en: 'The former queen dowager of the Sorbet Kingdom, a tiny, wrinkled old woman so like an aged Bonney that Kuma’s household takes her for the girl.',
+      },
+      visual: { art: 'conney', tint: 'yellow' },
+    },
+    {
+      id: 'bulldog',
+      kind: 'character',
+      revealedAtEpisode: 1133,
+      revealedAtChapter: 1099,
+      name: { it: 'Bulldog', en: 'Bulldog' },
+      summary: {
+        it: 'Un vecchio con un colbacco a paraorecchie, re di Sorbet due regni fa, che ora governa il paese dal palazzo mentre Kuma è re soltanto di nome.',
+        en: 'An old man in a fur hat with ear flaps, king of Sorbet two reigns ago, who now runs the country from the palace while Kuma is king in name only.',
+      },
+      visual: { art: 'bulldog', tint: 'azure' },
+    },
+    {
+      id: 'alpha',
+      kind: 'character',
+      revealedAtEpisode: 1134,
+      revealedAtChapter: 1100,
+      name: { it: 'Alpha', en: 'Alpha' },
+      summary: {
+        it: 'Un’infermiera con gli occhiali che si installa nella chiesa di Sorbet per assistere Bonney fino alla guarigione, e che pensa a quanto sia facile spezzare il collo a un bambino.',
+        en: 'A nurse in glasses who moves into the church in Sorbet to look after Bonney until she is cured, and who thinks of how easily a child’s neck snaps.',
+      },
+      visual: { art: 'alpha', tint: 'teal' },
+    },
+    {
+      id: 'red-king',
+      kind: 'character',
+      revealedAtEpisode: 1141,
+      revealedAtChapter: 1107,
+      name: { it: 'Red King', en: 'Red King' },
+      summary: {
+        it: 'Un viceammiraglio della Marina enorme e calvo, con un collo lungo pieno di menti e un guanto gigante sul braccio destro, che colpisce con un getto di vapore.',
+        en: 'A huge bald Marine vice admiral with a long neck of stacked chins and one giant gauntlet on his right arm, who punches with a blast of steam.',
+      },
+      visual: { art: 'red-king', tint: 'red' },
+    },
+    {
+      id: 'hound',
+      kind: 'character',
+      revealedAtEpisode: 1142,
+      revealedAtChapter: 1108,
+      name: { it: 'Hound', en: 'Hound' },
+      summary: {
+        it: 'Un viceammiraglio della Marina alto e spettinato, con il rossetto e gli occhiali a punta, che davanti alla flotta in rovina chiede se il Buster Call si possa ancora annullare.',
+        en: 'A tall, messy-haired Marine vice admiral with lipstick and pointed glasses, who watches the fleet take a beating and asks whether the Buster Call could still be called off.',
+      },
+      visual: { art: 'hound', tint: 'blue' },
+    },
+    {
+      id: 'guillotine',
+      kind: 'character',
+      revealedAtEpisode: 1142,
+      revealedAtChapter: 1108,
+      name: { it: 'Guillotine', en: 'Guillotine' },
+      summary: {
+        it: 'Un viceammiraglio della Marina alto, con una lunga barba arancione arricciata e una lama a mezzaluna sulla testa, che chiama Vegapunk traditore e non vuole fermare il Buster Call.',
+        en: 'A tall Marine vice admiral with a long curled orange beard and a crescent blade worn on his head, who calls Vegapunk a traitor and will not stop the Buster Call.',
+      },
+      visual: { art: 'guillotine', tint: 'green' },
+    },
+    {
+      id: 'tosa',
+      kind: 'character',
+      revealedAtEpisode: 1142,
+      revealedAtChapter: 1108,
+      name: { it: 'Tosa', en: 'Tosa' },
+      summary: {
+        it: 'Un viceammiraglio della Marina grosso e barbuto, con un berretto con la scritta MARINES, che insegue chi scappa fino a raggiungerlo e morde con le mani, dieci dita dure come artigli.',
+        en: 'A big bearded Marine vice admiral in a cap that reads MARINES, who runs down whoever flees from him and bites with his hands, ten fingers hard as claws.',
+      },
+      visual: { art: 'tosa', tint: 'ocher' },
+    },
+    {
+      id: 'urban',
+      kind: 'character',
+      revealedAtEpisode: 1142,
+      revealedAtChapter: 1108,
+      name: { it: 'Urban', en: 'Urban' },
+      summary: {
+        it: 'Un viceammiraglio della Marina alto e pallido, con le zanne e i capelli rossi fino ai piedi, sotto un cilindro nero che sa trasformare in un cannone.',
+        en: 'A tall, pale Marine vice admiral with fangs and red hair down to his feet, under a black top hat that he can turn into a cannon.',
+      },
+      visual: { art: 'urban', tint: 'wine' },
+    },
+    {
+      id: 'joy-boy',
+      kind: 'character',
+      revealedAtEpisode: 1148,
+      revealedAtChapter: 1115,
+      name: { it: 'Joy Boy', en: 'Joy Boy' },
+      summary: {
+        it: 'Il primo uomo a essere chiamato pirata, nato novecento anni fa in un regno molto più avanzato del suo tempo, che combatteva con un corpo elastico come Nika, il Dio del Sole.',
+        en: 'The first man ever called a pirate, born nine hundred years ago in a kingdom far ahead of its time, who fought with an elastic body like Nika, the Sun God.',
+      },
+      visual: { art: 'joy-boy', tint: 'orange' },
+    },
+    {
+      id: 'emet',
+      kind: 'character',
+      revealedAtEpisode: 1151,
+      revealedAtChapter: 1119,
+      name: { it: 'Emet', en: 'Emet' },
+      summary: {
+        it: 'Un enorme robot arrugginito nascosto su Egghead, con un corno mancante sull’elmo, che si risveglia dopo secoli e attraversa le fiamme dell’isola chiamando Joy Boy.',
+        en: 'An enormous rusted robot hidden on Egghead, one horn missing from its helmet, that wakes after centuries and walks through the island’s fires calling for Joy Boy.',
+      },
+      visual: { art: 'emet', tint: 'ocher' },
     },
   ],
 
@@ -607,6 +848,481 @@ export const egghead: Saga = {
         },
       ],
       origin: [{ episode: 1122, value: MARY_GEOISE }],
+    },
+    // SWORD is dated at 1114, the caption "HIBARI, NAVY HQ COMMANDER
+    // (SWORD)": her 1090 caption gives the rank only, and the show first
+    // says the word SWORD at 1113. North Blue comes from her Vivre Card
+    // alone, so there is no origin line.
+    'hibari': {
+      chronicle: eggheadChronicles.hibari,
+      role: { it: 'Capitano di fregata della Marina', en: 'Marine commander' },
+      log: {
+        it: 'Ha il grado di capitano di fregata al Quartier Generale della Marina e si trova alla base G-14 con Hermeppo: da quando Kobi è stato portato via, nessuno dei due si dà pace. Porta le cuffie sulle orecchie e uno zaino con un orsetto appeso, e parla con un forte accento di provincia. Insieme a Hermeppo supplica il contrammiraglio che chiamano “Principe” di andare con loro sull’isola dei pirati, perché Kobi è sempre stato buono con lei.',
+        en: 'She holds the rank of commander at Marine Headquarters and is at the G-14 naval branch with Helmeppo, and since Koby was taken neither of them has let the matter rest. She wears headphones over her ears and a backpack with a teddy bear hanging from it, and speaks with a strong regional accent. Together with Helmeppo she begs the rear admiral they call the Prince to come to the Pirate Island with them, because Koby has always been good to her.',
+      },
+      status: [{ episode: 1090, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1090,
+          value: {
+            it: 'Marina, capitano di fregata',
+            en: 'Marines, commander',
+          },
+        },
+        {
+          episode: 1114,
+          value: {
+            it: 'Marina, capitano di fregata dello SWORD',
+            en: 'Marines, SWORD commander',
+          },
+        },
+      ],
+    },
+    // No `devilFruit` line: the Glorp-Glorp Fruit is named on screen at
+    // 1114 (caption "GLORP-GLORP FRUIT, CLAY-MAN"), but the wiki gives its
+    // type as unknown, so no fruit record can be filed for it yet. SWORD is
+    // dated at 1114, his caption "PRINCE GRUS, NAVY HQ REAR ADMIRAL (SWORD)";
+    // West Blue comes from his Vivre Card alone, so there is no origin line.
+    'prince-grus': {
+      chronicle: eggheadChronicles['prince-grus'],
+      role: { it: 'Contrammiraglio della Marina', en: 'Marine rear admiral' },
+      log: {
+        it: 'Contrammiraglio al Quartier Generale della Marina, i più giovani lo chiamano “Principe”. Porta una pelliccia sopra la camicia aperta e un berretto della Marina con una visiera che sporge molto oltre il viso. Quando Hermeppo e Hibari lo supplicano di attaccare l’isola dei pirati dove è prigioniero Kobi, rifiuta: l’isola è la tana di Barbanera, la chiamano “Alveare”, e senza Drake, che non si riesce a contattare, nessuno può muoversi. Dice loro di calmarsi.',
+        en: 'A rear admiral at Marine Headquarters whom his juniors call the Prince. He wears a fur coat over an open shirt and a Marine cap whose bill sticks far out in front of his face. When Helmeppo and Hibari beg him to attack the Pirate Island where Koby is held, he refuses: the island is Blackbeard’s home, known as the Beehive, and without Drake, who cannot be reached, nobody is in a position to act. He tells them to calm down.',
+      },
+      status: [{ episode: 1090, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1090,
+          value: { it: 'Marina, contrammiraglio', en: 'Marines, rear admiral' },
+        },
+        {
+          episode: 1114,
+          value: {
+            it: 'Marina, contrammiraglio dello SWORD',
+            en: 'Marines, SWORD rear admiral',
+          },
+        },
+      ],
+    },
+    'doll': {
+      chronicle: eggheadChronicles.doll,
+      role: {
+        it: 'Viceammiraglio, comandante della base G-14',
+        en: 'Vice admiral, G-14 base commander',
+      },
+      log: {
+        it: 'Comanda la base G-14 della Marina con il grado di viceammiraglio, sull’isola dove Tashigi cura i bambini riportati da Punk Hazard. Ha i capelli neri corti, un collare borchiato e due cerchi alle orecchie. Le suppliche di Hermeppo per Kobi si sentono in tutta la base, e lei ne ha abbastanza: chiede a Tashigi di fare qualcosa con quel moccioso fastidioso. Tashigi risponde che non può farci niente, perché non si sa ancora che fine abbia fatto Kobi.',
+        en: 'She commands the G-14 naval branch with the rank of vice admiral, on the island where Tashigi is treating the children brought back from Punk Hazard. She has short black hair, a spiked choker and hoops at her ears. Helmeppo’s pleading about Koby carries across the base, and she has had enough of it: she asks Tashigi to do something about that annoying brat. Tashigi answers that there is nothing she can do, because Koby’s fate is still unknown.',
+      },
+      status: [{ episode: 1090, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1090,
+          value: {
+            it: 'Marina, viceammiraglio, comandante della base G-14',
+            en: 'Marines, vice admiral, commander of Naval Branch G-14',
+          },
+        },
+        {
+          episode: 1142,
+          value: {
+            it: 'Marina, viceammiraglio, comandante della base G-14; un tempo sotto Jaguar D. Saul',
+            en: 'Marines, vice admiral, commander of Naval Branch G-14; once under Jaguar D. Saul',
+          },
+        },
+      ],
+    },
+    // Filed at 1113, not 1090: she is on screen at G-14 in 1090 but not
+    // named there. The 1113 caption names her, her rank, SWORD, Tsuru and
+    // the Whip-Whip Fruit at once ("KUJAKU, NAVY HQ REAR ADMIRAL (SWORD) /
+    // GRANDDAUGHTER OF GREAT ADVISER TSURU / WHIP-WHIP FRUIT,
+    // DISCIPLINE-WOMAN"). North Blue comes from her Vivre Card alone, so
+    // there is no origin line.
+    'kujaku': {
+      chronicle: eggheadChronicles.kujaku,
+      role: { it: 'Contrammiraglio dello SWORD', en: 'SWORD rear admiral' },
+      log: {
+        it: 'È contrammiraglio al Quartier Generale della Marina, fa parte dello SWORD ed è la nipote di Tsuru. Sbarca a Hachinosu con un vestito rosa e un cappello a campana, il cappotto della Marina sulle spalle e una frusta in mano. Tutto ciò che frusta le obbedisce, edifici compresi, e lei li spinge per le strade sotto gli occhi dei pirati. Ai pirati che la fissano dice che sono carini, e promette di addestrarli.',
+        en: 'She is a rear admiral at Marine Headquarters, a member of SWORD and the granddaughter of Tsuru. She comes ashore on Hachinosu in a pink dress and a cloche hat, a Marine coat over her shoulders and a whip in her hand. Whatever she whips obeys her, buildings included, and she drives them through the streets while the pirates watch. She calls the pirates who stare at her cute, and promises to discipline them.',
+      },
+      status: [{ episode: 1113, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1113,
+          value: {
+            it: 'Marina, contrammiraglio dello SWORD',
+            en: 'Marines, SWORD rear admiral',
+          },
+        },
+      ],
+      devilFruit: [{ episode: 1113, value: ['whip-whip-fruit'] }],
+    },
+    // Filed as the bare "Nefertari Lili": at 1118 (chapter 1084) she is
+    // "Queen Lili of the Nefertari family", and the "D." in her name is
+    // the reveal of 1119 (chapter 1085), so the full name is a dated
+    // epithet here instead, as Onimaru's is on gyukimaru. Seen at 1118
+    // only as a silhouette, which counts as on screen, as Hiyori's
+    // silhouette at 910 does in wano.ts.
+    'nefertari-lili': {
+      chronicle: eggheadChronicles['nefertari-lili'],
+      role: {
+        it: 'Regina di Alabasta, ottocento anni fa',
+        en: 'Queen of Alabasta, eight hundred years ago',
+      },
+      log: {
+        it: 'Ottocento anni fa venti sovrani fondarono il Governo Mondiale, trasferirono le loro famiglie a Mary Geoise e diventarono i Draghi Celesti. La regina di Alabasta era una dei venti, e l’unica a non restare: ripartì per il suo paese, ed è per questo che laggiù regna ancora la famiglia Nefertari. Secondo Cobra non arrivò mai, e dopo di lei regnò il fratello minore. Nessun libro scritto dopo il Secolo Vuoto riporta il suo nome.',
+        en: 'Eight hundred years ago twenty monarchs founded the World Government, moved their families to Mary Geoise and became the Celestial Dragons. The queen of Alabasta was one of the twenty, and the only one who did not stay: she set off for her own country, which is why the Nefertari family still reigns there. According to Cobra she never arrived, and her younger brother ruled after her. No book written after the Void Century records her name.',
+      },
+      status: [{ episode: 1118, value: 'missing' }],
+      affiliation: [
+        {
+          episode: 1118,
+          value: {
+            it: 'Regno di Alabasta, regina; tra i venti sovrani fondatori del Governo Mondiale',
+            en: 'Alabasta Kingdom, queen; one of the twenty founding monarchs of the World Government',
+          },
+        },
+      ],
+      origin: [{ episode: 1118, value: { it: 'Alabasta', en: 'Alabasta' } }],
+      epithet: [
+        {
+          episode: 1119,
+          value: { it: 'Nefertari D. Lili', en: 'Nefertari D. Lili' },
+        },
+      ],
+    },
+    // Nothing here says whose father he is: the anime does not say it by
+    // the last episode filed, and the manga says it only from chapter 1137.
+    // The Five Elders title is dated at 1155, the episode that gives it
+    // (caption "ST. FIGARLAND GARLING / GODHEAD OF SCIENCE & DEFENSE, FIVE
+    // ELDERS").
+    'figarland-garling': {
+      chronicle: eggheadChronicles['figarland-garling'],
+      role: {
+        it: 'Comandante supremo dei Cavalieri di Dio',
+        en: 'Supreme Commander of the Knights of God',
+      },
+      log: {
+        it: 'A Mary Geoise viene giustiziato un Drago Celeste, e la notizia non arriverà mai al resto del mondo. Il giudice è San Figarland Garling, un tempo campione su un’isola chiamata God Valley e oggi comandante supremo dei Cavalieri di Dio: capelli tirati in punte rigide, occhiali rotondi rossi. Il giustiziato è Donquijote Mjosgard, che aveva difeso gli uomini-pesce. Intorno, gli altri nobili si lamentano perché il cibo sta finendo. Chi difende la feccia, dice Garling, vale meno della feccia che protegge.',
+        en: 'A Celestial Dragon is executed at Mary Geoise, and the news will never reach the rest of the world. The judge is Saint Figarland Garling, once a champion on an island called God Valley and now the Supreme Commander of the Knights of God, his hair set in stiff spikes behind round red glasses. The man executed is Donquixote Mjosgard, who defended the fish-men, while the other nobles complain that their food is running out. Anyone who defends scum, Garling says, is lower than the scum he protects.',
+      },
+      status: [{ episode: 1120, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1120,
+          value: {
+            it: 'Cavalieri di Dio, comandante supremo',
+            en: 'Knights of God, Supreme Commander',
+          },
+        },
+        {
+          episode: 1155,
+          value: {
+            it: 'Cinque Astri di Saggezza, Dio Guerriero della Scienza e della Difesa',
+            en: 'Five Elders, Warrior God of Science and Defence',
+          },
+        },
+      ],
+      origin: [{ episode: 1120, value: MARY_GEOISE }],
+    },
+    'bluegrass': {
+      chronicle: eggheadChronicles.bluegrass,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Dice di aver mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
+        en: 'She is one of the vice admirals who land on Egghead with the Marine fleet, a small old woman with headphones on her head and her coat over her shoulders. Whatever she rides obeys her: a Pacifista the laboratory has turned against the Marines still answers to her while she sits on its back, whatever the authority hierarchy says. She calls herself a Driving Human who ate the Ride-Ride Fruit, and she wants the pirate girl who changed her men’s ages to change them back.',
+      },
+      status: [{ episode: 1128, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1128,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+      devilFruit: [{ episode: 1128, value: ['ride-ride-fruit'] }],
+    },
+    // No `devilFruit` line: the otter form is on screen from 1128, but the
+    // fruit (the Ott-Ott Fruit) is named only in SBS volume 110, never in an
+    // episode.
+    'pomsky': {
+      chronicle: eggheadChronicles.pomsky,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli che sbarcano su Egghead, e il primo a trovare la ragazza pirata che la Marina cerca. Lei gli stende gli uomini con un colpo che fa credere loro di essere morti, e lui la prende come un affronto personale: vuole fargliela pagare per ciò che ha fatto ai suoi soldati. Quando un cuoco della ciurma di Cappello di Paglia arriva a portarla via, si trasforma per metà in lontra e cala su di loro una mazza con una conchiglia per testa.',
+        en: 'He is one of the vice admirals who land on Egghead, and the first to find the pirate girl the Marines are hunting. She drops his men with a move that makes them believe they have died, and he takes it personally: he wants her to pay for what she has done to his soldiers. When a Straw Hat cook comes to take her away, he changes into a half-otter shape and brings down on them a maul with a seashell for a head.',
+      },
+      status: [{ episode: 1128, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1128,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    // Dies in the same flashback that names him, decades before the present,
+    // so the fate a viewer holds at the threshold is already `deceased`, as
+    // for Shimotsuki Ushimaru. A 1129 caption already reads "Sorbet
+    // Kingdom, South Blue"; the origin waits for 1131, where the family's
+    // church is shown there, which is later and so safe.
+    'clapp': {
+      chronicle: eggheadChronicles.clapp,
+      role: { it: 'Padre di Kuma', en: 'Kuma’s father' },
+      log: {
+        it: 'Quando nasce suo figlio, il medico capisce che si tratta del sangue del bambino e promette di non dirlo a nessuno. Anni dopo lo stesso medico corre ad avvisarlo che al suo ospedale sono arrivati gli uomini del Governo. Klap li supplica di prendere solo lui, perché il sangue dei Bucanieri ce l’ha lui e non sua moglie, ma li portano via tutti e tre come schiavi. Quando la moglie muore, dice a Kuma di resistere e sopravvivere finché Nika non verrà a liberarlo.',
+        en: 'When his son is born, the doctor guesses it is about the baby’s blood and promises never to tell. Years later the same doctor runs in to warn him that Government men have come to the hospital. Clapp begs them to take only him, since he alone has Buccaneer blood and his wife does not, but all three are taken as slaves. When his wife dies, he tells Kuma to endure and survive until Nika comes to set him free.',
+      },
+      status: [{ episode: 1129, value: 'deceased' }],
+      affiliation: [
+        {
+          episode: 1129,
+          value: {
+            it: 'Bucanieri; schiavo dei Draghi Celesti',
+            en: 'Buccaneers; slave of the Celestial Dragons',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 1131,
+          value: {
+            it: 'Regno di Sorbet, South Blue',
+            en: 'Sorbet Kingdom, South Blue',
+          },
+        },
+      ],
+    },
+    // `unknown` from 1133: he is last seen shouting from the Navy fleet that
+    // Kuma sinks, and the anime does not say whether he came out of the sea.
+    'bekori': {
+      chronicle: eggheadChronicles.bekori,
+      role: { it: 'Re del Regno di Sorbet', en: 'King of the Sorbet Kingdom' },
+      log: {
+        it: 'I sudditi del sud dicono che non ha cuore: chi si ammala e non può pagare il tributo celeste finisce in prigione, e un vecchio rinchiuso lì è appena morto di fame. Poi ridisegna il regno. Da oggi il Regno di Sorbet è soltanto il nord dell’isola, perché il tributo si calcola sul numero dei cittadini e il sud, pieno di vecchi che pagano poco, trascina giù tutti. Chi abita al sud è lasciato ai suoi soldati, che possono farne ciò che vogliono. Kuma lo chiama il burattino dei Draghi Celesti.',
+        en: 'His subjects in the South call him cold and heartless: whoever falls ill and cannot pay the Heavenly Tribute goes to prison, and an old man jailed there has just starved to death. Then he redraws the kingdom. From today only the north of the island is the Sorbet Kingdom, since the tribute is set by the number of citizens and the South, full of old people who pay little, drags the rest down. Its people are left to his soldiers to use as they like. Kuma calls him the Celestial Dragons’ puppet.',
+      },
+      status: [
+        { episode: 1131, value: 'alive' },
+        { episode: 1133, value: 'unknown' },
+      ],
+      affiliation: [
+        {
+          episode: 1131,
+          value: { it: 'Regno di Sorbet, re', en: 'Sorbet Kingdom, king' },
+        },
+        {
+          episode: 1133,
+          value: {
+            it: 'Regno di Sorbet, re deposto, in esilio',
+            en: 'Sorbet Kingdom, deposed king in exile',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 1131,
+          value: {
+            it: 'Regno di Sorbet, South Blue',
+            en: 'Sorbet Kingdom, South Blue',
+          },
+        },
+      ],
+    },
+    // No origin line: the anime makes her the former queen dowager of Sorbet
+    // but never says where she was born.
+    'conney': {
+      chronicle: eggheadChronicles.conney,
+      role: {
+        it: 'Ex regina madre del Regno di Sorbet',
+        en: 'Former queen dowager of Sorbet',
+      },
+      log: {
+        it: 'È la madre di Bulldog, che era re di Sorbet due regni fa e che ora governa il paese dal palazzo per conto di re Kuma. Arriva con il figlio alla chiesa di Kuma proprio mentre Bonney ha appena scoperto di poter cambiare età, e Gyogyo scambia quella vecchina rugosa per la bambina invecchiata; lei risponde che non importa. Bulldog porta la notizia che Bekori tornerà con la Marina, e prima di partire Kuma dice a Bonney di ascoltare Bulldog e Conney.',
+        en: 'She is the mother of Bulldog, who was king of Sorbet two reigns ago and now runs the country from the palace for King Kuma. She comes with her son to Kuma’s church just as Bonney has found out she can change her age, and Gyogyo takes the wrinkled little woman for the girl grown old; she tells them it is fine. Bulldog brings word that Bekori will come back with the Navy, and before he leaves Kuma tells Bonney to listen to Bulldog and Conney.',
+      },
+      status: [{ episode: 1133, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1133,
+          value: {
+            it: 'Regno di Sorbet, ex regina madre',
+            en: 'Sorbet Kingdom, former queen dowager',
+          },
+        },
+      ],
+    },
+    'bulldog': {
+      chronicle: eggheadChronicles.bulldog,
+      role: { it: 'Ex re del Regno di Sorbet', en: 'Former king of Sorbet' },
+      log: {
+        it: 'A Sorbet ricordano il suo regno, due re fa, come un tempo povero ma ricco di spirito. Dopo che Kuma ha abbattuto il castello di Bekori, il popolo lo vuole re e lui resta nella sua chiesa: il lavoro vero lo fa Bulldog dal palazzo, e con Bonney si presenta come l’aiutante di suo padre. Quando un giornale scrive che Kuma ha bruciato un villaggio e preso il trono con la forza, capisce che dietro c’è Bekori e avverte che si preparano navi da guerra. Kuma gli chiede di prendere il trono e di dare riparo a Bonney.',
+        en: 'In Sorbet his reign, two kings back, is remembered as poor but spiritually rich. After Kuma brings down Bekori’s castle, the people make Kuma king and he stays in his church; the real work is done by Bulldog from the palace, and to Bonney he introduces himself as her father’s aide. When a newspaper says Kuma burned a village and took the throne by force, he sees Bekori behind it and warns that warships are being prepared. Kuma asks him to take the throne and shelter Bonney.',
+      },
+      status: [{ episode: 1133, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1133,
+          value: {
+            it: 'Regno di Sorbet, ex re; aiutante di re Kuma',
+            en: 'Sorbet Kingdom, former king; aide to King Kuma',
+          },
+        },
+      ],
+      origin: [
+        {
+          episode: 1133,
+          value: {
+            it: 'Regno di Sorbet, South Blue',
+            en: 'Sorbet Kingdom, South Blue',
+          },
+        },
+      ],
+    },
+    // Never Kalifa's sister: that is SBS 109 alone. The 1134 caption already
+    // calls her a Cipher Pol No. 8 agent, but the affiliation waits for 1135,
+    // where the story says what she and her people are; later is safe.
+    'alpha': {
+      chronicle: eggheadChronicles.alpha,
+      role: { it: 'Infermiera di Bonney', en: 'Bonney’s nurse' },
+      log: {
+        it: 'Arriva alla chiesa di Sorbet il giorno in cui Kuma riporta a casa Bonney dal laboratorio di Vegapunk. Per ordine del medico, dice, resterà con la bambina finché non sarà guarita del tutto: ogni giorno le misurerà la febbre, le darà la medicina e controllerà ogni minimo cambiamento. I suoi si costruiscono un alloggio davanti alla chiesa e chiedono a tutti di portare con sé un documento. Mentre Kuma se ne va, lei pensa che il collo di un bambino non è niente da spezzare, e lui pensa che lo sa, e che non tornerà.',
+        en: 'She arrives at the church in Sorbet on the day Kuma brings Bonney home from Vegapunk’s laboratory. By the doctor’s orders, she says, she will stay with the girl until she is fully cured, taking her temperature, giving her medicine and watching for the slightest change every day. Her people build their lodgings in front of the church and tell everyone to carry ID. As Kuma leaves, she thinks that a child’s neck is nothing to snap, and he thinks that he knows, and will not come back.',
+      },
+      status: [{ episode: 1134, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1134,
+          value: { it: 'Infermiera di Bonney', en: 'Bonney’s nurse' },
+        },
+        {
+          episode: 1135,
+          value: {
+            it: 'Governo Mondiale, agente dei servizi segreti',
+            en: 'World Government, intelligence agent',
+          },
+        },
+      ],
+    },
+    'red-king': {
+      chronicle: eggheadChronicles['red-king'],
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli della flotta che assedia Egghead: un omone calvo con una pila di menti su un collo lungo e un solo guanto enorme, con cui manda a terra le bestie marine meccaniche del laboratorio in una sbuffata di vapore. Quando i Pacifista si rivoltano contro la flotta e una trentina di navi piccole e medie sono già affondate, ritira le navi piccole, manda avanti quelle da guerra e fa sparare sui Pacifista, anche se sono armi della Marina.',
+        en: 'He is one of the vice admirals of the fleet besieging Egghead, a bald giant of a man with a stack of chins on a long neck and one enormous gauntlet, which he drives into the laboratory’s Sea Beast Weapons in a burst of steam. When the Pacifistas turn on the fleet and some thirty small and medium ships have already gone down, he pulls the small ships back, sends the warships forward and has them fire on the Pacifistas, although they are the Marines’ own weapons.',
+      },
+      status: [{ episode: 1141, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1141,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    // No `devilFruit` line: the Dog-Dog Fruit, Model: Hound is named only in
+    // SBS volume 110, and no episode up to the end of Egghead says it or
+    // shows him transform.
+    'hound': {
+      chronicle: eggheadChronicles.hound,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli della flotta che assedia Egghead: alto, la mascella squadrata, un completo gessato, i guanti neri e un paio di occhiali che finiscono a punta. Quando i Pacifista si rivoltano contro le navi e i giganti sbarcano dall’altra parte dell’isola, è lui a chiedere ad alta voce se il Buster Call si possa annullare, anche se non è mai successo. Un collega non vuole sentirne parlare, e l’ordine che parte è un altro: uccidere la ragazza che comanda i Pacifista.',
+        en: 'He is one of the vice admirals of the fleet besieging Egghead: tall and square-jawed, in a pinstriped suit, black gloves and a pair of glasses that end in points. When the Pacifistas turn on the ships and giants land on the far side of the island, he is the one who asks aloud whether the Buster Call could be called off, although it has never been done. A colleague will not hear of it, and the order that goes out is a different one: kill the girl who commands the Pacifistas.',
+      },
+      status: [{ episode: 1142, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1142,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    'guillotine': {
+      chronicle: eggheadChronicles.guillotine,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli della flotta che assedia Egghead: alto, occhiali da sole, una barba arancione che gli arriva alla pancia e una lama a mezzaluna posata sulla testa come un ornamento. Quando i Pacifista si rivoltano contro le navi e un collega chiede se il Buster Call si possa annullare, lui rifiuta senza pensarci. Lo scienziato ha dato a un pirata il comando delle armi della Marina, dice, e questo ne fa un traditore del Governo: l’unico modo di rimettere in piedi la battaglia è riprendersele.',
+        en: 'He is one of the vice admirals of the fleet besieging Egghead: tall, in sunglasses, with an orange beard down to his stomach and a crescent-shaped blade sitting on his head like an ornament. When the Pacifistas turn on the ships and a colleague asks whether the Buster Call could be called off, he refuses outright. The scientist gave a pirate command of the Marines’ own weapons, he says, which makes him a complete traitor to the Government, and the only way to turn the battle around is to take those weapons back.',
+      },
+      status: [{ episode: 1142, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1142,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    // Status opens as `unknown`: episode 1142 ends with him smashed into the
+    // ground and his line dead, and only 1155 shows him back on his feet.
+    'tosa': {
+      chronicle: eggheadChronicles.tosa,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli della flotta che assedia Egghead: un uomo massiccio con una barba nera e tonda, braccia pelose e un berretto con la scritta MARINES. Quando arriva l’ordine di lasciare i posti e uccidere la ragazza che comanda i Pacifista, è il primo a dire di averla nel mirino, e le va dietro di persona. Dice che le sue dita sono dieci Shigan capaci di tranciare una corazza, e le chiude sulla preda come una mascella, con una tecnica che porta il suo nome.',
+        en: 'He is one of the vice admirals of the fleet besieging Egghead, a heavy man with a round black beard, hairy arms and a cap that reads MARINES. When the order comes to leave their posts and kill the girl who commands the Pacifistas, he is the first to report her in sight, and he goes after her himself. He says his fingers are ten Finger Pistols that will shred armour, and he closes them on his prey like a jaw, with a move that carries his own name.',
+      },
+      status: [
+        { episode: 1142, value: 'unknown' },
+        { episode: 1155, value: 'alive' },
+      ],
+      affiliation: [
+        {
+          episode: 1142,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    // No `devilFruit` line: the cannon is on screen from 1129, but the fruit
+    // (the Barrel-Barrel Fruit) is named only in SBS volume 110.
+    'urban': {
+      chronicle: eggheadChronicles.urban,
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      log: {
+        it: 'È uno dei viceammiragli della flotta che assedia Egghead: alto, pallido, con le zanne in bocca e i capelli rossi che gli arrivano ai piedi. Quando Saturn tiene sollevata la ragazza pirata perché i marine le sparino, la cima del suo cilindro diventa la bocca di un cannone puntata su di lei. Tiene d’occhio la battaglia intera: è lui ad avvisare che anche i giganti sono sbarcati dall’altra parte dell’isola, e il primo ad accorgersi quando un collega smette di rispondere.',
+        en: 'He is one of the vice admirals of the fleet besieging Egghead, tall and pale, with fangs in his mouth and red hair that reaches his feet. When Saturn holds the pirate girl up for the Marines to shoot, the top of his hat turns into the mouth of a cannon aimed at her. He keeps an eye on the whole battle: he is the one who reports that giants have landed on the far side of the island too, and the first to notice when a colleague stops answering.',
+      },
+      status: [{ episode: 1142, value: 'alive' }],
+      affiliation: [
+        {
+          episode: 1142,
+          value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
+        },
+      ],
+    },
+    // No devil fruit: by 1158 the anime says only that he fought "with an
+    // elastic body... just like Nika" (1148), never which fruit he ate.
+    'joy-boy': {
+      chronicle: eggheadChronicles['joy-boy'],
+      role: { it: 'Il primo pirata', en: 'The first pirate' },
+      log: {
+        it: 'Per molto tempo è stato solo un nome: l’uomo che lasciò una lettera di scuse su un Poneglifo dell’Isola degli Uomini-Pesce, e il cui tesoro, sull’ultima isola, fece ridere fino alle lacrime la ciurma del Re dei Pirati. Poi il messaggio di Vegapunk racconta al mondo chi era: nato novecento anni fa in un regno molto più avanzato del suo tempo, combatteva con un corpo elastico come Nika, il Dio del Sole, ed è stato il primo uomo a essere chiamato pirata. La sua parte era così forte che venti regni si allearono contro di lei.',
+        en: 'For a long time he was only a name: the man who left an apology on a Poneglyph at Fish-Man Island, and whose treasure on the last island made the King of the Pirates’ crew laugh until they cried. Then Vegapunk’s broadcast tells the world who he was: born nine hundred years ago in a kingdom far ahead of its time, he fought with an elastic body like Nika, the Sun God, and was the first man ever called a pirate. His side was so strong that twenty kingdoms joined forces against it.',
+      },
+      status: [{ episode: 1148, value: 'deceased' }],
+      affiliation: [{ episode: 1148, value: { it: 'Pirata', en: 'Pirate' } }],
+    },
+    // No status: the robot powers down at 1153, and "deceased" would say
+    // more than the show does about a machine. No origin: "no one knows
+    // where this iron giant came from" (1098). The waking in the log and the
+    // summary, through the fire and saying sorry to Joy Boy, is 1145 (ch 1111).
+    'emet': {
+      chronicle: eggheadChronicles.emet,
+      role: { it: 'Robot antico', en: 'Ancient robot' },
+      log: {
+        it: 'Vegapunk lo tiene nascosto su Egghead: un robot enorme costruito novecento anni fa, che duecento anni fa scalò la Linea Rossa e attaccò Mary Geoise, poi rimase senza energia prima di fare danni. Il Governo Mondiale ne ordinò la distruzione, ma alcuni scienziati lo conservarono, e nemmeno Vegapunk è riuscito a copiarne la fonte di energia. Quando si risveglia attraversa le fiamme chiedendo scusa a Joy Boy, e protegge il lumacofono che trasmette il messaggio di Vegapunk.',
+        en: 'Vegapunk keeps it hidden on Egghead: an enormous robot built nine hundred years ago, which two hundred years ago climbed the Red Line and attacked Mary Geoise, then ran out of power before doing any damage. The World Government ordered it destroyed, but scientists kept it, and not even Vegapunk has managed to copy its power source. When it wakes it walks through the flames apologising to Joy Boy, and it guards the transponder snail that sends out Vegapunk’s broadcast.',
+      },
+      affiliation: [
+        {
+          episode: 1151,
+          value: {
+            it: 'Custodito da Vegapunk su Egghead',
+            en: 'In Vegapunk’s keeping on Egghead',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 1151, value: { it: 'Gigante di Ferro', en: 'Iron Giant' } },
+      ],
     },
   },
 }

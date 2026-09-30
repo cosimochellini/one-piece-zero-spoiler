@@ -408,6 +408,18 @@ export const summitWar: Saga = {
       visual: { art: 'hannyabal', tint: 'sand' },
     },
     {
+      id: 'shiki',
+      kind: 'character',
+      revealedAtEpisode: 425,
+      revealedAtChapter: 962,
+      name: { it: 'Shiki', en: 'Shiki' },
+      summary: {
+        it: 'Il pirata che Sengoku ricorda quando viene a sapere che Rufy si è infiltrato a Impel Down: vent’anni fa è stato il primo e unico prigioniero a evaderne.',
+        en: 'The pirate Sengoku remembers on hearing that Luffy has broken into Impel Down: twenty years ago he became the first and only prisoner ever to escape it.',
+      },
+      visual: { art: 'shiki', tint: 'yellow' },
+    },
+    {
       id: 'emporio-ivankov',
       kind: 'character',
       revealedAtEpisode: 438,
@@ -2540,6 +2552,33 @@ export const summitWar: Saga = {
             en: 'World Government, commander-in-chief',
           },
         },
+      ],
+    },
+    // Named by Sengoku at 425 (chapter 530), where the anime also shows his
+    // silhouette; the manga first shows him, in silhouette, at 957 and 962,
+    // so the chapter is rounded up to 962. No devil fruit: no canonical
+    // episode up to 1158 says which one he ate.
+    'shiki': {
+      chronicle: summitWarChronicles.shiki,
+      role: {
+        it: 'Pirata evaso da Impel Down',
+        en: 'Pirate who escaped Impel Down',
+      },
+      log: {
+        it: 'Impel Down si vanta che da lì non esce nessuno: la grande prigione ha tenuto centinaia di migliaia di detenuti senza una sola evasione. Quando arriva la notizia che Cappello di Paglia Rufy ci è entrato di nascosto, il grand’ammiraglio è sicuro che il ragazzo non ne uscirà vivo, e poi si corregge: uno c’è stato. Vent’anni fa un pirata chiamato Shiki il Leone dorato è diventato il primo e unico prigioniero nella storia della prigione a evadere.',
+        en: 'Impel Down boasts that nobody leaves it: the great prison has held hundreds of thousands of prisoners without a single breakout. When word comes that Straw Hat Luffy has slipped inside, the Fleet Admiral is sure the boy will not walk out alive, and then corrects himself: there was one man. Twenty years ago a pirate called Shiki the Golden Lion became the first and only prisoner in the prison’s history to escape.',
+      },
+      affiliation: [
+        {
+          episode: 958,
+          value: {
+            it: 'Pirati di Rocks, ex membro',
+            en: 'Rocks Pirates, former member',
+          },
+        },
+      ],
+      epithet: [
+        { episode: 425, value: { it: 'Leone dorato', en: 'Golden Lion' } },
       ],
     },
   },
