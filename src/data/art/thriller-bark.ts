@@ -6,7 +6,7 @@ import type { Drawings } from './stroke'
 export const thrillerBarkArt = {
   // A hull the size of an island, a mansion and two dead trees on the deck,
   // the moon hung over all of it.
-  'thriller-bark': [
+  'thriller-bark-arc': [
     { d: 'M10 132 L24 152 Q80 164 136 152 L150 132' },
     { d: 'M10 132 H150' },
     { d: 'M56 132 V72 H104 V132' },

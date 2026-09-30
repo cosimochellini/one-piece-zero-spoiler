@@ -27,7 +27,7 @@ export const fishManIslandArt = {
 
   // A bubble dome over a row of houses, the root of a great tree coming down
   // through it.
-  'fish-man-island': [
+  'fish-man-island-arc': [
     { d: 'M20 150 C20 20 140 20 140 150' },
     { d: 'M14 150 H146' },
     { d: cell(36, 96), role: 'soft' },

@@ -30,7 +30,7 @@ export const dressrosaArt = {
   ],
 
   // An island split down the middle, fire on one side and ice on the other.
-  'punk-hazard': [
+  'punk-hazard-arc': [
     { d: 'M16 140 C24 100 46 78 80 78 C114 78 136 100 144 140' },
     { d: 'M80 78 V140', role: 'accent' },
     {
@@ -189,7 +189,7 @@ export const dressrosaArt = {
   ],
 
   // A colosseum with a wooden soldier standing at the gate.
-  'dressrosa': [
+  'dressrosa-arc': [
     { d: 'M30 132 V90 a36 18 0 0 1 72 0 V132' },
     { d: ellipse(66, 90, 36, 18) },
     {

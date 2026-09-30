@@ -84,7 +84,7 @@ export const summitWar: Saga = {
       visual: { art: 'jinbe', tint: 'blue' },
     },
     {
-      id: 'marineford',
+      id: 'marineford-arc',
       kind: 'arc',
       revealedAtEpisode: 457,
       revealedAtChapter: 550,
@@ -93,7 +93,7 @@ export const summitWar: Saga = {
         it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',
         en: 'The Marines and the strongest pirates in the world end up in the same harbour on the same day.',
       },
-      visual: { art: 'marineford', tint: 'blue' },
+      visual: { art: 'marineford-arc', tint: 'blue' },
     },
     {
       id: 'post-war',
@@ -120,7 +120,7 @@ export const summitWar: Saga = {
       visual: { art: 'sabaody', tint: 'acid' },
     },
     {
-      id: 'amazon-lily',
+      id: 'amazon-lily-arc',
       kind: 'arc',
       revealedAtEpisode: 408,
       revealedAtChapter: 514,
@@ -129,10 +129,10 @@ export const summitWar: Saga = {
         it: 'Un’isola di giungla chiusa da un portale a forma di serpente, dove vive un popolo di sole donne e nessun uomo può sbarcare.',
         en: 'A jungle island behind a gate shaped like a snake, home to a people of women only, where no man is allowed ashore.',
       },
-      visual: { art: 'amazon-lily', tint: 'magenta' },
+      visual: { art: 'amazon-lily-arc', tint: 'magenta' },
     },
     {
-      id: 'impel-down',
+      id: 'impel-down-arc',
       kind: 'arc',
       revealedAtEpisode: 422,
       revealedAtChapter: 525,
@@ -141,7 +141,7 @@ export const summitWar: Saga = {
         it: 'La prigione del Governo Mondiale, una torre che scende nel mare di livello in livello e da cui non è mai uscito nessuno.',
         en: 'The prison of the World Government, a tower sinking into the sea one marked level after another, out of which nobody has ever walked.',
       },
-      visual: { art: 'impel-down', tint: 'wine' },
+      visual: { art: 'impel-down-arc', tint: 'wine' },
     },
     {
       id: 'camie',

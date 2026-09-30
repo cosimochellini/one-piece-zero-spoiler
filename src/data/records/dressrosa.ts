@@ -40,7 +40,7 @@ export const dressrosa: Saga = {
       visual: { art: 'koala', tint: 'orange' },
     },
     {
-      id: 'punk-hazard',
+      id: 'punk-hazard-arc',
       kind: 'arc',
       revealedAtEpisode: 579,
       revealedAtChapter: 654,
@@ -49,7 +49,7 @@ export const dressrosa: Saga = {
         it: 'Un’isola divisa in due da una linea netta, metà in fiamme e metà sepolta nel ghiaccio, su cui il Governo Mondiale vieta di sbarcare.',
         en: 'An island cut in two by a clean line, half of it burning and half buried in ice, which the World Government forbids anyone to land on.',
       },
-      visual: { art: 'punk-hazard', tint: 'vermilion' },
+      visual: { art: 'punk-hazard-arc', tint: 'vermilion' },
     },
     {
       id: 'kinemon',
@@ -148,7 +148,7 @@ export const dressrosa: Saga = {
       visual: { art: 'buffalo', tint: 'teal' },
     },
     {
-      id: 'dressrosa',
+      id: 'dressrosa-arc',
       kind: 'arc',
       revealedAtEpisode: 629,
       revealedAtChapter: 700,
@@ -157,7 +157,7 @@ export const dressrosa: Saga = {
         it: 'Un regno di fiori e giocattoli viventi, con un colosseo al centro e un soldatino di legno con una gamba sola fermo davanti al cancello.',
         en: 'A kingdom of flowers and living toys, a colosseum at its heart and a one-legged wooden soldier standing at the gate.',
       },
-      visual: { art: 'dressrosa', tint: 'flamingo' },
+      visual: { art: 'dressrosa-arc', tint: 'flamingo' },
     },
     {
       id: 'rebecca',

@@ -76,7 +76,7 @@ export const summitWarArt = {
   ],
 
   // A fortress in a crescent bay, gate to the sea.
-  'marineford': [
+  'marineford-arc': [
     { d: 'M-6 152 C34 100 126 100 166 152' },
     {
       d: 'M28 122 V82 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 V122z',
@@ -115,7 +115,7 @@ export const summitWarArt = {
   ],
 
   // A jungle gate with a snake coiled over the lintel.
-  'amazon-lily': [
+  'amazon-lily-arc': [
     { d: 'M18 152 C36 118 60 104 80 104 C100 104 124 118 142 152' },
     { d: 'M56 152 V96 M104 152 V96' },
     { d: 'M48 96 h64' },
@@ -130,7 +130,7 @@ export const summitWarArt = {
   ],
 
   // A prison tower going down into the water, one level line after another.
-  'impel-down': [
+  'impel-down-arc': [
     { d: 'M46 56 h68 v134 h-68z' },
     { d: 'M60 56 V38 h40 v18' },
     { d: 'M46 80 h68 M46 104 h68 M46 128 h68 M46 152 h68', role: 'soft' },

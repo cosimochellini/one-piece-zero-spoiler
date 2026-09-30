@@ -138,7 +138,7 @@ export const waterSeven: Saga = {
       visual: { art: 'kuzan', tint: 'ice' },
     },
     {
-      id: 'water-seven',
+      id: 'water-seven-arc',
       kind: 'arc',
       revealedAtEpisode: 229,
       revealedAtChapter: 322,
@@ -147,7 +147,7 @@ export const waterSeven: Saga = {
         it: 'Una città d’acqua di maestri d’ascia, dove la ciurma si scopre meno compatta di quanto credeva.',
         en: 'A city of shipwrights built on water, where the crew turns out to be less united than it thought.',
       },
-      visual: { art: 'water-seven', tint: 'teal' },
+      visual: { art: 'water-seven-arc', tint: 'teal' },
     },
     {
       id: 'yokozuna',
@@ -414,7 +414,7 @@ export const waterSeven: Saga = {
       visual: { art: 't-bone', tint: 'azure' },
     },
     {
-      id: 'enies-lobby',
+      id: 'enies-lobby-arc',
       kind: 'arc',
       revealedAtEpisode: 264,
       revealedAtChapter: 375,
@@ -423,7 +423,7 @@ export const waterSeven: Saga = {
         it: 'L’isola giudiziaria del Governo Mondiale, dove il treno del mare porta i prigionieri, e dove la ciurma sbarca da un secondo treno per riprendersi una compagna.',
         en: 'The World Government’s judicial island, where the sea train takes its prisoners, and where the crew comes ashore off a second train to take back one of its own.',
       },
-      visual: { art: 'enies-lobby', tint: 'yellow' },
+      visual: { art: 'enies-lobby-arc', tint: 'yellow' },
     },
     {
       id: 'jabra',

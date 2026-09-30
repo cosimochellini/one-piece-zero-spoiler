@@ -52,7 +52,7 @@ const MARY_GEOISE = { it: 'Mary Geoise', en: 'Mary Geoise' }
 export const wholeCake: Saga = {
   entries: [
     {
-      id: 'zou',
+      id: 'zou-arc',
       kind: 'arc',
       revealedAtEpisode: 751,
       revealedAtChapter: 802,
@@ -61,7 +61,7 @@ export const wholeCake: Saga = {
         it: 'Un elefante alto un chilometro che cammina sul mare da mille anni, con una foresta e una città fortificata in cima alla schiena.',
         en: 'A mile-high elephant that has walked the sea for a thousand years, a forest and a walled city riding on its back.',
       },
-      visual: { art: 'zou', tint: 'green' },
+      visual: { art: 'zou-arc', tint: 'green' },
     },
     {
       id: 'jack',
@@ -148,7 +148,7 @@ export const wholeCake: Saga = {
       visual: { art: 'raizo', tint: 'violet' },
     },
     {
-      id: 'whole-cake-island',
+      id: 'whole-cake-island-arc',
       kind: 'arc',
       revealedAtEpisode: 783,
       revealedAtChapter: 825,
@@ -157,7 +157,7 @@ export const wholeCake: Saga = {
         it: 'Un’isola di Totto Land fatta di dolci, con alberi di caramello e un castello a piani sopra una torta, dove regna un Imperatore.',
         en: 'An island of Totto Land built out of sweets, caramel trees and a tiered cake with a castle on top, ruled by an Emperor.',
       },
-      visual: { art: 'whole-cake-island', tint: 'pink' },
+      visual: { art: 'whole-cake-island-arc', tint: 'pink' },
     },
     {
       id: 'vinsmoke-reiju',

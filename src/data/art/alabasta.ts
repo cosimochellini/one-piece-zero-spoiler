@@ -79,7 +79,7 @@ export const alabastaArt = {
 
   // A town built into cactus-shaped rocks, with the banquet table laid out
   // below it.
-  'whisky-peak': [
+  'whisky-peak-arc': [
     { d: 'M30 132 V74 a12 12 0 0 1 24 0 V132' },
     { d: 'M30 100 H18 a8 8 0 0 0 -8 8 V132' },
     { d: 'M54 88 H68 a8 8 0 0 1 8 8 V132' },
@@ -200,7 +200,7 @@ export const alabastaArt = {
   ],
 
   // Two smoking volcanoes with a dinosaur skull lying between them.
-  'little-garden': [
+  'little-garden-arc': [
     { d: 'M6 148 L36 66 H52 L82 148' },
     { d: 'M78 148 L104 74 H124 L152 148' },
     { d: 'M40 64 C38 46 48 42 46 26', role: 'ambient', dashed: true },
@@ -282,7 +282,7 @@ export const alabastaArt = {
   ],
 
   // A castle on a drum-shaped peak, with the snow coming down.
-  'drum-island': [
+  'drum-island-arc': [
     { d: 'M8 156 L44 56 H88 L124 156' },
     { d: 'M118 156 L138 106 L156 156' },
     { d: 'M31 92 q18 8 35 0 q17 -8 35 2', role: 'ambient' },

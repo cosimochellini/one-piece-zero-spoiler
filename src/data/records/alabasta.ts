@@ -101,7 +101,7 @@ export const alabasta: Saga = {
       visual: { art: 'mr-9', tint: 'blue' },
     },
     {
-      id: 'whisky-peak',
+      id: 'whisky-peak-arc',
       kind: 'arc',
       revealedAtEpisode: 64,
       revealedAtChapter: 106,
@@ -110,7 +110,7 @@ export const alabasta: Saga = {
         it: 'Una città della Rotta Maggiore fatta di rocce a forma di cactus, dove cento abitanti accolgono ogni pirata con un banchetto e un brindisi.',
         en: 'A Grand Line town of cactus-shaped rocks, where a hundred townspeople greet every pirate with a banquet and a toast.',
       },
-      visual: { art: 'whisky-peak', tint: 'acid' },
+      visual: { art: 'whisky-peak-arc', tint: 'acid' },
     },
     {
       id: 'igaram',
@@ -185,7 +185,7 @@ export const alabasta: Saga = {
       visual: { art: 'nefertari-vivi', tint: 'azure' },
     },
     {
-      id: 'little-garden',
+      id: 'little-garden-arc',
       kind: 'arc',
       revealedAtEpisode: 70,
       revealedAtChapter: 115,
@@ -194,7 +194,7 @@ export const alabasta: Saga = {
         it: 'Un’isola preistorica della Rotta Maggiore, con due vulcani che fumano sopra le felci e ossa di dinosauro grandi come una nave.',
         en: 'A prehistoric island on the Grand Line, two volcanoes smoking above the ferns and dinosaur bones as big as a ship.',
       },
-      visual: { art: 'little-garden', tint: 'green' },
+      visual: { art: 'little-garden-arc', tint: 'green' },
     },
     {
       id: 'mr-3',
@@ -245,7 +245,7 @@ export const alabasta: Saga = {
       visual: { art: 'brogy', tint: 'vermilion' },
     },
     {
-      id: 'drum-island',
+      id: 'drum-island-arc',
       kind: 'arc',
       revealedAtEpisode: 78,
       revealedAtChapter: 130,
@@ -254,7 +254,7 @@ export const alabasta: Saga = {
         it: 'Un’isola sepolta dalla neve, con un castello issato in cima a una vetta a forma di tamburo e un paese rimasto senza medici.',
         en: 'An island buried in snow, a castle perched on a drum-shaped peak, and a town left without a single doctor.',
       },
-      visual: { art: 'drum-island', tint: 'ice' },
+      visual: { art: 'drum-island-arc', tint: 'ice' },
     },
     {
       id: 'wapol',

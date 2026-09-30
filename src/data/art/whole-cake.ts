@@ -35,7 +35,7 @@ export const wholeCakeArt = {
   ],
 
   // An elephant seen from the sea, a walled city riding on its back.
-  'zou': [
+  'zou-arc': [
     { d: 'M18 132 C18 92 46 74 80 74 C114 74 142 92 142 132' },
     { d: 'M40 132 V152 M70 132 V158 M98 132 V158 M126 132 V152' },
     { d: 'M18 118 C4 124 6 148 16 152' },
@@ -163,7 +163,7 @@ export const wholeCakeArt = {
   ],
 
   // An island that is a tiered cake with a castle on top.
-  'whole-cake-island': [
+  'whole-cake-island-arc': [
     { d: 'M26 140 H134 V118 H26 Z' },
     { d: 'M40 118 H120 V98 H40 Z' },
     { d: 'M54 98 H106 V80 H54 Z' },

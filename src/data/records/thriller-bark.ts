@@ -14,7 +14,7 @@ const STRAW_HATS = {
 export const thrillerBark: Saga = {
   entries: [
     {
-      id: 'thriller-bark',
+      id: 'thriller-bark-arc',
       kind: 'arc',
       revealedAtEpisode: 337,
       revealedAtChapter: 442,
@@ -23,7 +23,7 @@ export const thrillerBark: Saga = {
         it: 'Una nave grande quanto un’isola, con una villa e alberi secchi sul ponte, ferma in una nebbia dove la luna non tramonta mai.',
         en: 'A ship the size of an island, a mansion and dead trees standing on its deck, moored in a fog where the moon never sets.',
       },
-      visual: { art: 'thriller-bark', tint: 'lavender' },
+      visual: { art: 'thriller-bark-arc', tint: 'lavender' },
     },
     {
       id: 'brook',

@@ -35,7 +35,7 @@ export const fishManIsland: Saga = {
     // reached until the descent. The summary no longer says the city hangs
     // from a tree's roots, which is not learned until 531.
     {
-      id: 'fish-man-island',
+      id: 'fish-man-island-arc',
       kind: 'arc',
       revealedAtEpisode: 523,
       revealedAtChapter: 603,
@@ -44,7 +44,7 @@ export const fishManIsland: Saga = {
         it: 'Diecimila metri sotto l’arcipelago, la rotta scende verso un’isola di uomini-pesce e sirene, ultima tappa prima del Nuovo Mondo.',
         en: 'Ten thousand metres down, beneath the archipelago, the route sinks toward an island of fish-men and merfolk, the last stop before the New World.',
       },
-      visual: { art: 'fish-man-island', tint: 'cyan' },
+      visual: { art: 'fish-man-island-arc', tint: 'cyan' },
     },
     {
       id: 'caribou',

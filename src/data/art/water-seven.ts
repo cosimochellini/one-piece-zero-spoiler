@@ -92,7 +92,7 @@ export const waterSevenArt = {
   ],
 
   // Arches over the water, a tower behind, a gondola underneath.
-  'water-seven': [
+  'water-seven-arc': [
     {
       d: 'M12 148 V100 a20 20 0 0 1 40 0 V148 M56 148 V100 a20 20 0 0 1 40 0 V148 M100 148 V100 a20 20 0 0 1 40 0 V148',
     },
@@ -300,7 +300,7 @@ export const waterSevenArt = {
   // A round island hanging over a hole in the sea, the water pouring off its
   // rim, a tower in the middle, the sun overhead, and a train on the track
   // coming in.
-  'enies-lobby': [
+  'enies-lobby-arc': [
     { d: ellipse(80, 112, 58, 12) },
     {
       d: 'M22 114 C24 130 30 140 34 150 M138 114 C136 130 130 140 126 150',
