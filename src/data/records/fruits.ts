@@ -1547,6 +1547,18 @@ export const devilFruits: Saga = {
       visual: { art: 'age-age-fruit', tint: 'orange' },
     },
     {
+      id: 'whip-whip-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 1113,
+      revealedAtChapter: 1080,
+      name: { it: 'Frutto Muchi Muchi', en: 'Whip-Whip Fruit' },
+      summary: {
+        it: 'Chi l’ha mangiato fa obbedire alla frusta anche le cose: un edificio colpito si sposta dove gli viene ordinato.',
+        en: 'Makes even things obey its eater’s whip: a building that is struck moves wherever it is told.',
+      },
+      visual: { art: 'whip-whip-fruit', tint: 'magenta' },
+    },
+    {
       id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
       kind: 'fruit',
       revealedAtEpisode: 1120,
@@ -1635,6 +1647,18 @@ export const devilFruits: Saga = {
         en: 'Moves a body from one place to another without crossing the ground in between: it is gone from where it stood and already somewhere else.',
       },
       visual: { art: 'warp-warp-fruit', tint: 'pink' },
+    },
+    {
+      id: 'ride-ride-fruit',
+      kind: 'fruit',
+      revealedAtEpisode: 1128,
+      revealedAtChapter: 1094,
+      name: { it: 'Frutto Nori Nori', en: 'Ride-Ride Fruit' },
+      summary: {
+        it: 'Chi l’ha mangiato prende il comando di qualunque cosa cavalchi, anche di una macchina che si è rivoltata contro la sua parte.',
+        en: 'Puts whatever its eater rides under their command, even a machine that has turned against its own side.',
+      },
+      visual: { art: 'ride-ride-fruit', tint: 'yellow' },
     },
     {
       id: 'grow-grow-fruit',

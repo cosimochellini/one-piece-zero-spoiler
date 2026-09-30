@@ -532,4 +532,26 @@ export const summitWarChronicles = {
       },
     },
   ],
+  'shiki': [
+    {
+      episode: 425,
+      value: {
+        title: { it: 'L’unico evaso', en: 'The one who got out' },
+        body: {
+          it: 'Il grand’ammiraglio [[sengoku|Sengoku]] riceve un rapporto urgente da Impel Down: Cappello di Paglia [[monkey-d-luffy|Rufy]] si è infiltrato nella prigione. [[bartholomew-kuma|Orso Bartholomew]] avrebbe dovuto occuparsi di lui, e Sengoku non capisce perché un pirata voglia entrare di nascosto in un carcere. In ogni caso, dice, per quel ragazzo è la fine: Impel Down ha tenuto centinaia di migliaia di prigionieri e non ne ha mai lasciato evadere nessuno. Poi si corregge. Uno c’è stato. Vent’anni fa un pirata di nome Shiki il Leone dorato è diventato il primo e unico evaso nella storia della prigione.',
+          en: 'Fleet Admiral [[sengoku|Sengoku]] gets an emergency report from Impel Down: Straw Hat [[monkey-d-luffy|Luffy]] has broken in. [[bartholomew-kuma|Kuma]] was supposed to have dealt with the boy, and Sengoku cannot see why a pirate would sneak into a prison. Either way, he says, it is the end of the road for him: Impel Down has held hundreds of thousands of prisoners and never let a single one escape. Then he corrects himself. There was one man. Twenty years ago a pirate named Shiki the Golden Lion became the first and only prisoner in the prison’s history to get out.',
+        },
+      },
+    },
+    {
+      episode: 958,
+      value: {
+        title: { it: 'Una ciurma di leggende', en: 'A crew of legends' },
+        body: {
+          it: 'Quando arriva la notizia che [[kaido|Kaido]] e [[charlotte-linlin|Big Mom]] stanno per allearsi, [[sengoku|Sengoku]] spiega ai marine più giovani che cosa li lega: i Pirati di Rocks, una ciurma di pirati così violenti da battersi a morte anche sulla loro stessa nave. Ne facevano parte il capitano [[rocks-d-xebec|Rocks]], un giovane [[edward-newgate|Barbabianca]], Big Mom e Kaido. E poi altri che sarebbero diventati famigerati più tardi: il primo che nomina è Shiki il Leone dorato, un nome importante che un tempo si contendeva il dominio del Nuovo Mondo. La ciurma finì a God Valley, dove la fermò [[monkey-d-garp|Garp]].',
+          en: 'When word comes that [[kaido|Kaido]] and [[charlotte-linlin|Big Mom]] are about to form an alliance, [[sengoku|Sengoku]] explains to the younger Marines what the two have in common: the Rocks Pirates, a crew so violent its members fought to the death even aboard their own ship. It held Captain [[rocks-d-xebec|Rocks]], a young [[edward-newgate|Whitebeard]], Big Mom and Kaido. Then there were others who became infamous later, and the first he names is Shiki the Golden Lion, a big name who once vied for supremacy in the New World. The crew met its end at God Valley, where [[monkey-d-garp|Garp]] stopped it.',
+        },
+      },
+    },
+  ],
 } satisfies Readonly<Record<string, Timeline<Story>>>

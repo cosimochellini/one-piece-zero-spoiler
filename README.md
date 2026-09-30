@@ -112,12 +112,12 @@ epithet the reader has not reached is not in the browser at all.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 686                                                                   |
-| Characters          | 512                                                                   |
-| Devil fruits        | 128                                                                   |
+| Records             | 709                                                                   |
+| Characters          | 533                                                                   |
+| Devil fruits        | 130                                                                   |
 | Arcs, places, ships | 34 · 10 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 687: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 710: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 555                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -147,10 +147,10 @@ is written in JSX. The only filled shape is the ship on the landing page: the
 Thousand Sunny as a silhouette against a full moon, with a thin gold outline. At
 headline size, an outline-only ship looked like a technical diagram.
 
-The 128 devil fruits are generated rather than drawn one by one. A hundred and
-twenty-seven drawings of the same kind of object have to look like one set and
-still be told apart, so each is composed from a seed written next to its id: one
-of six silhouettes, one of four marks, a stalk and a leaf. The eleven fruits a
+The 130 devil fruits are generated rather than drawn one by one. A hundred and
+thirty drawings of the same kind of object have to look like one set and still
+be told apart, so each is composed from a seed written next to its id: one of
+six silhouettes, one of four marks, a stalk and a leaf. The eleven fruits a
 reader already knows well are drawn by hand and override their generated
 version. The sizing is guaranteed rather than hoped for: a seed cannot set a
 radius, so the widest fruit the generator can produce is known in advance. Every

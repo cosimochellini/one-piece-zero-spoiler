@@ -783,6 +783,13 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'waves',
   }),
+  'whip-whip-fruit': fruit({
+    body: 'gourd',
+    grain: 9,
+    leaf: 'left',
+    stem: 'straight',
+    swirl: 'whorls',
+  }),
   'dog-dog-fruit-mythical-model-nine-tailed-fox': fruit({
     body: 'star',
     grain: 11,
@@ -831,6 +838,13 @@ export const fruitArt = {
     leaf: 'left',
     stem: 'hooked',
     swirl: 'scales',
+  }),
+  'ride-ride-fruit': fruit({
+    body: 'oblong',
+    grain: 7,
+    leaf: 'pair',
+    stem: 'straight',
+    swirl: 'spiral',
   }),
   'grow-grow-fruit': fruit({
     body: 'round',
