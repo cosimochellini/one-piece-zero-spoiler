@@ -27,11 +27,18 @@ export type HomeStoriesProps = {
   readonly stories: readonly HomeStory[]
 }
 
+/** The stories past the first three, closed under their titles. */
+export type HomeMoreStoriesProps = { readonly stories: readonly HomeStory[] }
+
+/** A story's key in the ledger: its subject and the episode it concludes at. */
+function keyOf(story: HomeStory): string {
+  return `${story.subject.id}:${String(story.revealedAtEpisode)}`
+}
+
 /**
- * What just happened: the stories concluded in the arc so far, most recent
- * first, as one ledger down the page. The first three are set whole; the
- * others are closed under their titles and open with a tap, as a native
- * `<details>`, so the page works the same with scripting off.
+ * What just happened: the first three stories concluded in the arc, most
+ * recent first, set whole down one ledger. The rest are `HomeMoreStories`,
+ * further down the page.
  *
  * With no story reached the section says so in one line: the page is
  * already standing at the reader's point, so an empty list is a fact about
@@ -58,20 +65,61 @@ export function HomeStories({
       {stories.length === 0 ?
         <p {...stylex.props(styles.empty)}>{t('home.noStories')}</p>
       : <ol {...stylex.props(styles.ledger)}>
-          {stories.map((story, index) => {
+          {stories.slice(0, OPEN_COUNT).map((story) => {
             return (
               <li
-                key={`${story.subject.id}:${String(story.revealedAtEpisode)}`}
+                key={keyOf(story)}
                 {...stylex.props(styles.row)}
               >
-                {index < OPEN_COUNT ?
-                  <OpenStory story={story} />
-                : <ClosedStory story={story} />}
+                <OpenStory story={story} />
               </li>
             )
           })}
         </ol>
       }
+    </section>
+  )
+}
+
+/**
+ * The stories after the first three, closed under their titles and opened
+ * with a tap, as a native `<details>`, so the page works the same with
+ * scripting off. Nothing at all when there are none: a heading over an
+ * empty list would say more is coming.
+ */
+export function HomeMoreStories({
+  stories,
+}: HomeMoreStoriesProps): null | ReactElement {
+  const { t } = useLocale()
+  const more = stories.slice(OPEN_COUNT)
+
+  if (more.length === 0) {
+    return null
+  }
+
+  return (
+    <section
+      aria-labelledby="home-more"
+      {...stylex.props(styles.section)}
+    >
+      <h2
+        id="home-more"
+        {...stylex.props(styles.heading)}
+      >
+        {t('home.more')}
+      </h2>
+      <ol {...stylex.props(styles.ledger)}>
+        {more.map((story) => {
+          return (
+            <li
+              key={keyOf(story)}
+              {...stylex.props(styles.row)}
+            >
+              <ClosedStory story={story} />
+            </li>
+          )
+        })}
+      </ol>
     </section>
   )
 }

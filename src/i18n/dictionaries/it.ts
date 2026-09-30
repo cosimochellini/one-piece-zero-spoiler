@@ -35,6 +35,7 @@ export const itDictionary: Dictionary = {
   'home.storyAt.episode': 'Episodio {threshold}',
   'home.storyAt.season': '{threshold}',
   'home.storyAt.chapter': 'Circa capitolo {threshold}',
+  'home.more': 'Altre storie',
   'home.cast': 'Chi conta adesso',
 
   'mark.unset': 'Imposta episodio',
