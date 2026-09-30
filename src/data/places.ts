@@ -272,8 +272,8 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       en: 'The great fountain at the top of the city',
     },
     log: {
-      it: 'La ciurma arriva con una lettera per un certo Iceburg, una mappa disegnata dalla capostazione che non serve a niente e un sacco d’oro da cambiare. La città è stata progettata per stare nel mare, con gli edifici alzati su alte fondamenta, e l’acqua scende dalla grande fontana in cima fino al mare. Qui i pirati non fanno paura: vengono solo mandati ad attraccare in disparte, perché per i cantieri sono clienti.',
-      en: 'The crew arrives with a letter for a man named Iceburg, a map drawn by the station master that is no use at all, and a bag of gold to change. The city was designed to stand in the sea, its buildings raised on tall foundations, and its water runs down from the great fountain at the top into the sea. Pirates are not feared here, only sent to moor out of the way, since to the shipyards they are customers.',
+      it: 'La ciurma arriva con una lettera di presentazione, una mappa disegnata dalla capostazione che non serve a niente e un sacco d’oro da cambiare. La città è stata progettata per stare nel mare, con gli edifici alzati su alte fondamenta, e l’acqua scende dalla grande fontana in cima fino al mare. Qui i pirati non fanno paura: vengono solo mandati ad attraccare in disparte, perché per i cantieri sono clienti.',
+      en: 'The crew arrives with a letter of introduction, a map drawn by the station master that is no use at all, and a bag of gold to change. The city was designed to stand in the sea, its buildings raised on tall foundations, and its water runs down from the great fountain at the top into the sea. Pirates are not feared here, only sent to moor out of the way, since to the shipyards they are customers.',
     },
     filedHere: [
       'iceburg',
