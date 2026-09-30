@@ -264,10 +264,21 @@ const COMMON_WORD_NAMES = new Set(['king', 'pound', 'road', 'wolf-elbaph'])
  * homeland from 71, where Brogy calls himself its strongest warrior. Joy
  * Boy is the name on the Poneglyph Robin reads at 548, long before the show
  * puts him on screen.
+ *
+ * The ports follow the same rule, from the episode the show first says their
+ * name: Mary Geoise is where the Warlords are summoned at 151, long before
+ * the Reverie takes the story there; Kuzan reads Water Seven off the Log
+ * Pose at 228; Kokoro warns of the Florian Triangle at 320 in the same
+ * breath as she names Fish-Man Island; Momonga names Marineford at 410.
  */
 const SAID_BEFORE_FILED = new Map([
+  ['fish-man-island-arc', 320],
   ['fish-man-island', 320],
-  ['marineford', 434],
+  ['marineford-arc', 434],
+  ['marineford', 410],
+  ['mary-geoise', 151],
+  ['water-seven', 228],
+  ['florian-triangle', 320],
   ['elbaf', 71],
   ['elbaf-island', 71],
   ['joy-boy', 548],
@@ -683,8 +694,8 @@ describe('the shelves', () => {
     ])
     // The Unluckies are on Reverse Mountain from 63, but only as a pair
     // without names; the rank chart that names them is Drum Island's last.
-    expect(shelf('drum-island')).toContain('mr-13')
-    expect(shelf('drum-island')).toContain('miss-friday')
+    expect(shelf('drum-island-arc')).toContain('mr-13')
+    expect(shelf('drum-island-arc')).toContain('miss-friday')
     expect(shelf('jaya-arc')).toContain('bellamy')
     expect(shelf('jaya-arc')).toContain('montblanc-cricket')
     expect(shelf('jaya-arc')).toContain('marshall-d-teach')
@@ -693,7 +704,7 @@ describe('the shelves', () => {
   })
 
   it('shelves Enies Lobby and Post-Enies Lobby on their own arcs, not on Water Seven', () => {
-    expect(shelf('enies-lobby')).toStrictEqual([
+    expect(shelf('enies-lobby-arc')).toStrictEqual([
       'sodom-and-gomorrah',
       'jabra',
       'kumadori',
@@ -711,8 +722,8 @@ describe('the shelves', () => {
       'monkey-d-dragon',
       'thatch',
     ])
-    expect(shelf('water-seven')).toContain('spandam')
-    expect(shelf('water-seven')).not.toContain('jabra')
+    expect(shelf('water-seven-arc')).toContain('spandam')
+    expect(shelf('water-seven-arc')).not.toContain('jabra')
   })
 
   it('shelves the Post-War and the Return to Sabaody on their own arcs, not on Marineford or Fish-Man Island', () => {
@@ -732,17 +743,17 @@ describe('the shelves', () => {
       'coribou',
       'demalo-black',
     ])
-    expect(shelf('marineford')).not.toContain('portgas-d-rouge')
-    expect(shelf('fish-man-island')).toContain('hammond')
-    expect(shelf('fish-man-island')).not.toContain('caribou')
+    expect(shelf('marineford-arc')).not.toContain('portgas-d-rouge')
+    expect(shelf('fish-man-island-arc')).toContain('hammond')
+    expect(shelf('fish-man-island-arc')).not.toContain('caribou')
   })
 
   it('shelves Elbaph on its own arc after Egghead, and Saul where Robin names him', () => {
     expect(shelf('elbaf')).toContain('loki')
     expect(shelf('elbaf')).toContain('scopper-gaban')
     expect(shelf('egghead')).not.toContain('loki')
-    expect(shelf('enies-lobby')).toContain('jaguar-d-saul')
-    expect(shelf('whole-cake-island')).toContain('jarul')
+    expect(shelf('enies-lobby-arc')).toContain('jaguar-d-saul')
+    expect(shelf('whole-cake-island-arc')).toContain('jarul')
   })
 })
 

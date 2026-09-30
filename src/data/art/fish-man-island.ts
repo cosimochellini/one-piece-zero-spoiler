@@ -27,7 +27,7 @@ export const fishManIslandArt = {
 
   // A bubble dome over a row of houses, the root of a great tree coming down
   // through it.
-  'fish-man-island': [
+  'fish-man-island-arc': [
     { d: 'M20 150 C20 20 140 20 140 150' },
     { d: 'M14 150 H146' },
     { d: cell(36, 96), role: 'soft' },
@@ -123,6 +123,44 @@ export const fishManIslandArt = {
     { d: circle(128, 160, 15) },
     { d: 'M116 154 q12 8 24 0', role: 'soft' },
     shadow(80, 198, 28),
+  ],
+
+  // An enormous old ship resting on the seabed, shacks crowded at its bow and
+  // stern.
+  'fish-man-district': [
+    {
+      d: 'M26 84 C44 82 116 82 134 84 C132 124 114 148 80 152 C46 148 28 124 26 84 Z',
+      role: 'accent',
+    },
+    { d: 'M26 84 L20 66 M134 84 L140 66', role: 'accent' },
+    {
+      d: 'M30 102 C50 104 110 104 130 102 M38 122 C56 125 104 125 122 122',
+      role: 'soft',
+    },
+    {
+      d: dots([
+        [50, 93],
+        [65, 93],
+        [80, 93],
+        [95, 93],
+        [110, 93],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M56 84 V58 H104 V84', role: 'accent' },
+    { d: 'M66 58 V46 H94 V58', role: 'soft' },
+    { d: 'M2 156 V138 h18 V156 M-2 138 l13 -10 l13 10', role: 'soft' },
+    { d: 'M138 156 V134 h20 V156 M134 134 l14 -12 l14 12', role: 'soft' },
+    { d: 'M-4 156 C40 152 120 152 164 156', role: 'ambient' },
+    { d: 'M-4 174 C50 168 110 170 164 178', role: 'ambient', dashed: true },
+    {
+      d: dots([
+        [40, 30],
+        [52, 18],
+        [120, 36],
+      ]),
+      role: 'ambient',
+    },
   ],
 
   // A coral throne with the crown left on the seat, and the king's trident
@@ -435,6 +473,34 @@ export const fishManIslandArt = {
     { d: 'M124 148 C138 156 142 170 134 184', role: 'accent' },
     { d: circle(137, 188, 6), role: 'accent' },
     ...SEA,
+  ],
+
+  // A great bubble floating between the walls of a trench, clouds inside it
+  // and light falling on it from above.
+  'fish-man-island': [
+    { d: circle(80, 92, 46), role: 'accent' },
+    { d: 'M52 76 q6 -18 26 -24', role: 'accent' },
+    { d: 'M54 100 q6 -10 16 -6 q8 -10 18 0 q10 -4 14 6', role: 'soft' },
+    { d: 'M70 120 q6 -8 14 -4 q8 -6 14 2', role: 'soft' },
+    {
+      d: 'M56 6 L68 36 M80 2 V34 M104 6 L92 36',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M-4 40 C10 70 4 110 18 140 C24 160 20 176 30 190', role: 'ambient' },
+    {
+      d: 'M164 50 C150 80 158 116 142 146 C136 164 140 178 130 190',
+      role: 'ambient',
+    },
+    { d: 'M30 190 C60 180 100 180 130 190', role: 'ambient' },
+    {
+      d: dots([
+        [80, 150],
+        [76, 162],
+        [82, 174],
+      ]),
+      role: 'soft',
+    },
   ],
   // A T-shirt big enough for a shark, and a dorsal fin rising through the sea
   // behind it.

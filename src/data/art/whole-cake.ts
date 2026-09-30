@@ -1,4 +1,12 @@
-import { circle, dots, ellipse, SEA, shadow, star } from '~/lib/svg/primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  SEA,
+  shadow,
+  star,
+  wave,
+} from '~/lib/svg/primitives'
 
 import type { Drawings } from './stroke'
 
@@ -35,7 +43,7 @@ export const wholeCakeArt = {
   ],
 
   // An elephant seen from the sea, a walled city riding on its back.
-  'zou': [
+  'zou-arc': [
     { d: 'M18 132 C18 92 46 74 80 74 C114 74 142 92 142 132' },
     { d: 'M40 132 V152 M70 132 V158 M98 132 V158 M126 132 V152' },
     { d: 'M18 118 C4 124 6 148 16 152' },
@@ -163,7 +171,7 @@ export const wholeCakeArt = {
   ],
 
   // An island that is a tiered cake with a castle on top.
-  'whole-cake-island': [
+  'whole-cake-island-arc': [
     { d: 'M26 140 H134 V118 H26 Z' },
     { d: 'M40 118 H120 V98 H40 Z' },
     { d: 'M54 98 H106 V80 H54 Z' },
@@ -705,6 +713,30 @@ export const wholeCakeArt = {
     shadow(80, 188, 64),
   ],
 
+  // An elephant's leg rising out of the sea into the fog, its toenails at the waterline.
+  'zou': [
+    {
+      d: 'M42 154 C52 126 54 90 46 58 C42 42 44 28 48 14 M118 154 C108 126 106 90 114 58 C118 42 116 28 112 14',
+      role: 'accent',
+    },
+    {
+      d: 'M52 154 q7 -10 14 0 M73 154 q7 -10 14 0 M94 154 q7 -10 14 0',
+      role: 'accent',
+    },
+    {
+      d: 'M56 128 q24 -6 48 0 M54 100 q26 -6 52 0 M50 72 q30 -6 60 0',
+      role: 'soft',
+    },
+    { d: 'M60 114 q8 -3 14 0 M88 86 q8 -3 14 0', role: 'soft' },
+    {
+      d: 'M2 44 q20 -8 40 0 M122 38 q18 -8 36 0 M6 80 q16 -6 32 0 M124 88 q16 -6 32 0',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M-4 18 q30 -10 60 0 t60 0 t60 0', role: 'ambient', dashed: true },
+    ...SEA,
+  ],
+
   // A pair of round sunglasses resting on a stack of coins.
   'bakkin': [
     { d: 'M44 128 V150 a36 9 0 0 0 72 0 V128' },
@@ -787,6 +819,46 @@ export const wholeCakeArt = {
     },
     { d: circle(30, 178, 6), role: 'accent' },
     shadow(80, 188, 56),
+  ],
+
+  // A castle standing on the top layer of a cake, cream running down the edge below its gate.
+  'whole-cake-island': [
+    { d: 'M20 150 V132 H140 V150', role: 'ambient' },
+    {
+      d: 'M20 132 q6 10 12 0 q6 12 12 0 q6 8 12 0 q6 12 12 0 q6 10 12 0 q6 12 12 0 q6 8 12 0 q6 12 12 0 q6 10 12 0 q6 12 12 0',
+      role: 'soft',
+    },
+    { d: 'M52 132 V78 H108 V132' },
+    {
+      d: 'M52 78 v-6 h8 v6 M68 78 v-6 h8 v6 M84 78 v-6 h8 v6 M100 78 v-6 h8 v6',
+      role: 'soft',
+    },
+    { d: 'M70 132 V110 a10 10 0 0 1 20 0 V132', role: 'accent' },
+    { d: 'M30 132 V70 H48 V132 M112 132 V70 H130 V132', role: 'accent' },
+    { d: 'M26 70 L39 40 L52 70 M108 70 L121 40 L134 70', role: 'accent' },
+    { d: 'M72 72 V46 H88 V72 M68 46 L80 20 L92 46', role: 'accent' },
+    {
+      d: `${circle(39, 88, 3)} ${circle(121, 88, 3)} ${circle(80, 56, 3)}`,
+      role: 'soft',
+    },
+    shadow(80, 170, 64),
+  ],
+
+  // A house whose roof is a slab of chocolate scored into tiles, a smaller one beside it.
+  'cacao-island': [
+    { d: 'M34 150 V104 H112 V150' },
+    { d: 'M24 104 L44 64 H102 L122 104 Z', role: 'accent' },
+    { d: 'M29 94 H117 M34 84 H112 M39 74 H107', role: 'accent' },
+    { d: 'M56 64 L50 104 M73 64 V104 M90 64 L96 104', role: 'soft' },
+    { d: 'M64 150 V124 H82 V150', role: 'soft' },
+    { d: 'M44 116 h12 v10 h-12z M92 116 h12 v10 h-12z', role: 'soft' },
+    {
+      d: 'M116 150 V122 H146 V150 M112 122 L120 108 H142 L150 122 Z',
+      role: 'soft',
+    },
+    { d: 'M116 115 H146 M131 108 V122', role: 'ambient' },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    { d: wave(168), role: 'ambient', dashed: true },
   ],
 
   // A tall glass of apple juice with a bent straw, and an apple beside it,
@@ -884,6 +956,30 @@ export const wholeCakeArt = {
     { d: circle(48, 72, 18), role: 'accent' },
     { d: 'M38 66 q4 -6 11 -5', role: 'soft' },
     shadow(70, 178, 50),
+  ],
+
+  // A sheer wall rising out of the sea through the clouds, a palace of domes and spires along its top.
+  'mary-geoise': [
+    { d: 'M-4 70 H164', role: 'accent' },
+    { d: 'M-4 150 H164', role: 'soft' },
+    {
+      d: 'M18 150 l4 -18 l-5 -16 l6 -20 l-3 -26 M62 150 l-4 -22 l6 -14 l-3 -18 M104 150 l5 -20 l-4 -22 l3 -12 M142 150 l-4 -16 l5 -24 l-3 -20 l2 -20',
+      role: 'ambient',
+    },
+    {
+      d: 'M-4 112 q14 -10 28 0 q14 -12 30 0 M92 104 q16 -12 32 0 q14 -10 28 0 q8 -6 16 0',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M44 70 V50 H116 V70', role: 'accent' },
+    { d: 'M64 50 a16 16 0 0 1 32 0', role: 'accent' },
+    {
+      d: 'M80 34 V24 M48 50 V36 l4 -8 l4 8 V50 M104 50 V36 l4 -8 l4 8 V50',
+      role: 'accent',
+    },
+    { d: 'M24 70 V58 h12 V70 M124 70 V58 h12 V70', role: 'soft' },
+    { d: 'M72 70 V62 h16 V70', role: 'soft' },
+    ...SEA,
   ],
   // A double-headed spear laid across a long crane feather.
   'randolph': [

@@ -2,6 +2,7 @@ import {
   circle,
   dots,
   ellipse,
+  house,
   polygon,
   SEA,
   shadow,
@@ -30,7 +31,7 @@ export const dressrosaArt = {
   ],
 
   // An island split down the middle, fire on one side and ice on the other.
-  'punk-hazard': [
+  'punk-hazard-arc': [
     { d: 'M16 140 C24 100 46 78 80 78 C114 78 136 100 144 140' },
     { d: 'M80 78 V140', role: 'accent' },
     {
@@ -51,6 +52,35 @@ export const dressrosaArt = {
     { d: 'M34 176 l-6 -5 M28 182 l-6 -5', role: 'soft' },
     { d: 'M122 40 c6 -12 -1 -18 4 -27 c10 10 11 23 3 30', role: 'accent' },
     shadow(80, 192, 30),
+  ],
+
+  // A tall fenced gate with hazard stripes and a warning sign, flames rising
+  // behind it.
+  'punk-hazard': [
+    { d: 'M16 150 V58 H144 V150', role: 'accent' },
+    { d: 'M16 74 H144 M16 90 H144', role: 'accent' },
+    {
+      d: 'M28 74 L40 90 M52 74 L64 90 M76 74 L88 90 M100 74 L112 90 M124 74 L136 90',
+      role: 'soft',
+    },
+    { d: 'M34 150 V90 M52 150 V90 M108 150 V90 M126 150 V90', role: 'soft' },
+    { d: 'M66 150 V100 H94 V150', role: 'accent' },
+    { d: 'M80 104 L94 128 H66 Z', role: 'soft' },
+    { d: 'M80 112 V120', role: 'soft' },
+    {
+      d: 'M24 58 C20 44 30 36 28 22 C38 32 42 44 38 58 M64 58 C60 40 74 30 70 12 C84 26 86 44 80 58 M110 58 C106 46 116 38 114 26 C124 36 128 48 124 58',
+      role: 'ambient',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    {
+      d: 'M-4 166 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M-4 182 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0',
+      role: 'ambient',
+    },
   ],
 
   // A pirate's coat with a crocodile's tail coming out of the hem.
@@ -189,7 +219,7 @@ export const dressrosaArt = {
   ],
 
   // A colosseum with a wooden soldier standing at the gate.
-  'dressrosa': [
+  'dressrosa-arc': [
     { d: 'M30 132 V90 a36 18 0 0 1 72 0 V132' },
     { d: ellipse(66, 90, 36, 18) },
     {
@@ -756,6 +786,29 @@ export const dressrosaArt = {
     shadow(80, 186, 56),
   ],
 
+  // A rocky island seen from the sea, a tall craggy rock rising over the
+  // rooftops along its shore.
+  'dressrosa': [
+    {
+      d: 'M30 128 L38 100 L34 88 L46 72 L50 56 L64 48 L76 52 L88 44 L100 50 L110 64 L118 70 L122 90 L130 104 L132 128',
+      role: 'accent',
+    },
+    {
+      d: 'M56 64 L62 80 L58 96 M96 60 L90 78 L98 92 M76 70 L80 88',
+      role: 'soft',
+    },
+    {
+      d: 'M-4 150 C10 140 20 132 30 128 H132 C144 132 152 140 164 150',
+      role: 'accent',
+    },
+    { d: house(16, 12, 138, 130), role: 'soft' },
+    { d: house(40, 14, 134, 124), role: 'soft' },
+    { d: house(106, 14, 134, 124), role: 'soft' },
+    { d: house(132, 12, 138, 130), role: 'soft' },
+    { d: 'M68 150 V138 h10 V150 M84 150 V136 h10 V150', role: 'soft' },
+    ...SEA,
+  ],
+
   // A studded gladiator's wristband on a folded cloak.
   'spartan': [
     { d: 'M20 156 L46 122 H140 L114 156 Z', role: 'accent' },
@@ -789,6 +842,40 @@ export const dressrosaArt = {
     { d: circle(130, 112, 9) },
     { d: 'M130 121 V170 M118 170 H142' },
     shadow(84, 180, 52),
+  ],
+
+  // A long iron bridge running out over the sea to an island of huge wild
+  // plants.
+  'green-bit': [
+    { d: 'M-4 120 L100 96 M-4 128 L100 104', role: 'accent' },
+    {
+      d: 'M12 125 V150 M40 118 V150 M68 112 V150 M96 105 V150',
+      role: 'accent',
+    },
+    {
+      d: 'M12 116 L26 113 M40 110 L54 107 M68 103 L82 100',
+      role: 'soft',
+      dashed: true,
+    },
+    { d: 'M96 150 C104 120 124 104 164 100', role: 'ambient' },
+    {
+      d: 'M120 104 C118 80 116 60 124 40 M144 100 C146 76 150 60 146 36',
+      role: 'soft',
+    },
+    {
+      d: 'M124 40 C108 36 100 46 102 56 C112 50 120 48 124 40 M124 40 C136 30 150 34 152 44 C142 44 132 44 124 40',
+      role: 'accent',
+    },
+    {
+      d: 'M146 36 C140 22 150 12 162 14 C160 24 154 32 146 36',
+      role: 'accent',
+    },
+    {
+      d: 'M108 100 C104 90 106 80 112 76 M134 102 C130 90 134 82 140 80',
+      role: 'soft',
+    },
+    { d: 'M104 124 q4 -14 16 -10 q6 -14 20 -6 q10 -12 26 -2', role: 'soft' },
+    ...SEA,
   ],
 
   // A bull's pair of horns, one snapped off, over a red cape; the broken tip

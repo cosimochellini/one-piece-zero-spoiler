@@ -138,7 +138,7 @@ export const waterSeven: Saga = {
       visual: { art: 'kuzan', tint: 'ice' },
     },
     {
-      id: 'water-seven',
+      id: 'water-seven-arc',
       kind: 'arc',
       revealedAtEpisode: 229,
       revealedAtChapter: 322,
@@ -147,7 +147,7 @@ export const waterSeven: Saga = {
         it: 'Una città d’acqua di maestri d’ascia, dove la ciurma si scopre meno compatta di quanto credeva.',
         en: 'A city of shipwrights built on water, where the crew turns out to be less united than it thought.',
       },
-      visual: { art: 'water-seven', tint: 'teal' },
+      visual: { art: 'water-seven-arc', tint: 'teal' },
     },
     {
       id: 'yokozuna',
@@ -160,6 +160,30 @@ export const waterSeven: Saga = {
         en: 'A giant frog with a sumo wrestler’s topknot, who swims the front crawl and plants himself on the sea train’s track every day to test his strength against the locomotive.',
       },
       visual: { art: 'yokozuna', tint: 'ocher' },
+    },
+    {
+      id: 'water-seven',
+      kind: 'place',
+      revealedAtEpisode: 229,
+      revealedAtChapter: 323,
+      name: { it: 'Water Seven', en: 'Water Seven' },
+      summary: {
+        it: 'La città a cui porta il Log Pose dopo la stazione sul mare, costruita per metà sotto il livello dell’acqua, con una grande fontana in cima e i migliori carpentieri del mondo.',
+        en: 'The city the Log Pose points to after the station on the sea, built half below the water, with a great fountain at the top and the world’s best shipwrights.',
+      },
+      visual: { art: 'water-seven', tint: 'cyan' },
+    },
+    {
+      id: 'puffing-tom',
+      kind: 'place',
+      revealedAtEpisode: 229,
+      revealedAtChapter: 322,
+      name: { it: 'Puffing Tom', en: 'Puffing Tom' },
+      summary: {
+        it: 'Un treno a vapore con le ruote a pale che corre su un binario posato appena sotto il mare, e ogni giorno porta passeggeri, navi e posta da un’isola all’altra.',
+        en: 'A steam train with paddlewheels that runs on a rail laid just under the sea, carrying passengers, ships and mail from island to island every day.',
+      },
+      visual: { art: 'puffing-tom', tint: 'red' },
     },
     {
       id: 'iceburg',
@@ -414,7 +438,7 @@ export const waterSeven: Saga = {
       visual: { art: 't-bone', tint: 'azure' },
     },
     {
-      id: 'enies-lobby',
+      id: 'enies-lobby-arc',
       kind: 'arc',
       revealedAtEpisode: 264,
       revealedAtChapter: 375,
@@ -423,7 +447,7 @@ export const waterSeven: Saga = {
         it: 'L’isola giudiziaria del Governo Mondiale, dove il treno del mare porta i prigionieri, e dove la ciurma sbarca da un secondo treno per riprendersi una compagna.',
         en: 'The World Government’s judicial island, where the sea train takes its prisoners, and where the crew comes ashore off a second train to take back one of its own.',
       },
-      visual: { art: 'enies-lobby', tint: 'yellow' },
+      visual: { art: 'enies-lobby-arc', tint: 'yellow' },
     },
     {
       id: 'jabra',
@@ -472,6 +496,18 @@ export const waterSeven: Saga = {
         en: 'Two enormous sea horses of the Franky Family, who swim behind the second sea train hauling the family’s boat and, at Enies Lobby, are sent over the fence to break down the gate.',
       },
       visual: { art: 'sodom-and-gomorrah', tint: 'green' },
+    },
+    {
+      id: 'enies-lobby',
+      kind: 'place',
+      revealedAtEpisode: 264,
+      revealedAtChapter: 376,
+      name: { it: 'Enies Lobby', en: 'Enies Lobby' },
+      summary: {
+        it: 'Un’isola dove la notte non scende mai, sopra un buco nel mare con una cascata tutto intorno, un cancello principale davanti e le Porte della Giustizia alle spalle.',
+        en: 'An island where night never falls, set over a hole in the sea with a waterfall all round it, a main gate in front and the Gates of Justice behind.',
+      },
+      visual: { art: 'enies-lobby', tint: 'sand' },
     },
     {
       id: 'oimo-and-kashi',

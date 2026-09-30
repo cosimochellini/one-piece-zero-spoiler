@@ -40,7 +40,7 @@ export const dressrosa: Saga = {
       visual: { art: 'koala', tint: 'orange' },
     },
     {
-      id: 'punk-hazard',
+      id: 'punk-hazard-arc',
       kind: 'arc',
       revealedAtEpisode: 579,
       revealedAtChapter: 654,
@@ -49,7 +49,7 @@ export const dressrosa: Saga = {
         it: 'Un’isola divisa in due da una linea netta, metà in fiamme e metà sepolta nel ghiaccio, su cui il Governo Mondiale vieta di sbarcare.',
         en: 'An island cut in two by a clean line, half of it burning and half buried in ice, which the World Government forbids anyone to land on.',
       },
-      visual: { art: 'punk-hazard', tint: 'vermilion' },
+      visual: { art: 'punk-hazard-arc', tint: 'vermilion' },
     },
     {
       id: 'kinemon',
@@ -62,6 +62,18 @@ export const dressrosa: Saga = {
         en: 'A samurai chopped into pieces who goes on talking, found in the frozen half of the island looking for the rest of his body and for his son.',
       },
       visual: { art: 'kinemon', tint: 'red' },
+    },
+    {
+      id: 'punk-hazard',
+      kind: 'place',
+      revealedAtEpisode: 579,
+      revealedAtChapter: 655,
+      name: { it: 'Punk Hazard', en: 'Punk Hazard' },
+      summary: {
+        it: 'Un’isola in fiamme del Nuovo Mondo, oltre un mare di fuoco, chiusa da una recinzione del Governo Mondiale dietro cui gli edifici si sono fusi.',
+        en: 'A burning island in the New World beyond a sea of fire, closed off by a World Government fence behind which the buildings have melted.',
+      },
+      visual: { art: 'punk-hazard', tint: 'yellow' },
     },
     {
       id: 'brownbeard',
@@ -148,7 +160,7 @@ export const dressrosa: Saga = {
       visual: { art: 'buffalo', tint: 'teal' },
     },
     {
-      id: 'dressrosa',
+      id: 'dressrosa-arc',
       kind: 'arc',
       revealedAtEpisode: 629,
       revealedAtChapter: 700,
@@ -157,7 +169,7 @@ export const dressrosa: Saga = {
         it: 'Un regno di fiori e giocattoli viventi, con un colosseo al centro e un soldatino di legno con una gamba sola fermo davanti al cancello.',
         en: 'A kingdom of flowers and living toys, a colosseum at its heart and a one-legged wooden soldier standing at the gate.',
       },
-      visual: { art: 'dressrosa', tint: 'flamingo' },
+      visual: { art: 'dressrosa-arc', tint: 'flamingo' },
     },
     {
       id: 'rebecca',
@@ -580,6 +592,18 @@ export const dressrosa: Saga = {
       visual: { art: 'smiley', tint: 'magenta' },
     },
     {
+      id: 'dressrosa',
+      kind: 'place',
+      revealedAtEpisode: 629,
+      revealedAtChapter: 700,
+      name: { it: 'Dressrosa', en: 'Dressrosa' },
+      summary: {
+        it: 'Il regno dell’amore e della passione nel Nuovo Mondo, visto dal mare come un’isola rocciosa, di cui il pirata Do Flamingo è il re.',
+        en: 'The kingdom of love and passion in the New World, seen from the sea as a rocky island, with the pirate Doflamingo for its king.',
+      },
+      visual: { art: 'dressrosa', tint: 'red' },
+    },
+    {
       id: 'spartan',
       kind: 'character',
       revealedAtEpisode: 633,
@@ -710,6 +734,18 @@ export const dressrosa: Saga = {
         en: 'The colosseum announcer, in a plumed helmet and a golden breastplate, who calls every bout for the crowd and has a hard time staying impartial.',
       },
       visual: { art: 'gatz', tint: 'yellow' },
+    },
+    {
+      id: 'green-bit',
+      kind: 'place',
+      revealedAtEpisode: 639,
+      revealedAtChapter: 710,
+      name: { it: 'Green Bit', en: 'Green Bit' },
+      summary: {
+        it: 'Un’isoletta a nord di Dressrosa, unita a lei da un lungo ponte di ferro, dove una foresta selvaggia cresce dietro una riva piena di relitti.',
+        en: 'A small island north of Dressrosa, joined to it by a long iron bridge, where a wild forest grows behind a shore full of wrecks.',
+      },
+      visual: { art: 'green-bit', tint: 'green' },
     },
     {
       id: 'wicca',

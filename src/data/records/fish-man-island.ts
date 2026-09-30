@@ -35,7 +35,7 @@ export const fishManIsland: Saga = {
     // reached until the descent. The summary no longer says the city hangs
     // from a tree's roots, which is not learned until 531.
     {
-      id: 'fish-man-island',
+      id: 'fish-man-island-arc',
       kind: 'arc',
       revealedAtEpisode: 523,
       revealedAtChapter: 603,
@@ -44,7 +44,7 @@ export const fishManIsland: Saga = {
         it: 'Diecimila metri sotto l’arcipelago, la rotta scende verso un’isola di uomini-pesce e sirene, ultima tappa prima del Nuovo Mondo.',
         en: 'Ten thousand metres down, beneath the archipelago, the route sinks toward an island of fish-men and merfolk, the last stop before the New World.',
       },
-      visual: { art: 'fish-man-island', tint: 'cyan' },
+      visual: { art: 'fish-man-island-arc', tint: 'cyan' },
     },
     {
       id: 'caribou',
@@ -155,6 +155,18 @@ export const fishManIsland: Saga = {
       visual: { art: 'wadatsumi', tint: 'ocher' },
     },
     {
+      id: 'fish-man-island',
+      kind: 'place',
+      revealedAtEpisode: 526,
+      revealedAtChapter: 607,
+      name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
+      summary: {
+        it: 'Un’isola a diecimila metri sotto il mare, in fondo a una fossa, chiusa in un’enorme bolla d’aria e illuminata da una luce che scende dall’alto.',
+        en: 'An island ten thousand metres under the sea, at the bottom of a trench, wrapped in a huge bubble of air and lit by a light from above.',
+      },
+      visual: { art: 'fish-man-island', tint: 'azure' },
+    },
+    {
       id: 'hody-jones',
       kind: 'character',
       revealedAtEpisode: 527,
@@ -165,6 +177,18 @@ export const fishManIsland: Saga = {
         en: 'A great white fish-man with a trident, captain of the New Fish-Man Pirates, who promises to take the island and tear up the peace signed with the humans.',
       },
       visual: { art: 'hody-jones', tint: 'teal' },
+    },
+    {
+      id: 'fish-man-district',
+      kind: 'place',
+      revealedAtEpisode: 527,
+      revealedAtChapter: 608,
+      name: { it: 'Quartiere degli Uomini-Pesce', en: 'Fish-Man District' },
+      summary: {
+        it: 'Un quartiere malfamato di uomini-pesce, quello da cui viene Octy, dove una nuova ciurma pirata fa rapporto al suo capo a bordo di un’enorme nave chiamata Noah.',
+        en: 'A rough district of fish-men, the one Hatchan comes from, where a new pirate crew reports to its boss aboard an enormous ship called Noah.',
+      },
+      visual: { art: 'fish-man-district', tint: 'wine' },
     },
     {
       id: 'neptune',

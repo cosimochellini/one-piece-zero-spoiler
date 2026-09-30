@@ -101,7 +101,7 @@ export const alabasta: Saga = {
       visual: { art: 'mr-9', tint: 'blue' },
     },
     {
-      id: 'whisky-peak',
+      id: 'whisky-peak-arc',
       kind: 'arc',
       revealedAtEpisode: 64,
       revealedAtChapter: 106,
@@ -110,7 +110,7 @@ export const alabasta: Saga = {
         it: 'Una città della Rotta Maggiore fatta di rocce a forma di cactus, dove cento abitanti accolgono ogni pirata con un banchetto e un brindisi.',
         en: 'A Grand Line town of cactus-shaped rocks, where a hundred townspeople greet every pirate with a banquet and a toast.',
       },
-      visual: { art: 'whisky-peak', tint: 'acid' },
+      visual: { art: 'whisky-peak-arc', tint: 'acid' },
     },
     {
       id: 'igaram',
@@ -149,6 +149,18 @@ export const alabasta: Saga = {
       visual: { art: 'karoo', tint: 'orange' },
     },
     {
+      id: 'whisky-peak',
+      kind: 'place',
+      revealedAtEpisode: 64,
+      revealedAtChapter: 107,
+      name: { it: 'Whisky Peak', en: 'Whisky Peak' },
+      summary: {
+        it: 'La prima isola della Rotta Maggiore su cui la ciurma sbarca, una città che accoglie i pirati con applausi e liquore, tra rocce a forma di cactus coperte di tombe.',
+        en: 'The crew’s first island on the Grand Line, a town that cheers pirates ashore with liquor and a party, among cactus-shaped rocks covered in graves.',
+      },
+      visual: { art: 'whisky-peak', tint: 'lavender' },
+    },
+    {
       id: 'mr-5',
       kind: 'character',
       revealedAtEpisode: 66,
@@ -185,7 +197,7 @@ export const alabasta: Saga = {
       visual: { art: 'nefertari-vivi', tint: 'azure' },
     },
     {
-      id: 'little-garden',
+      id: 'little-garden-arc',
       kind: 'arc',
       revealedAtEpisode: 70,
       revealedAtChapter: 115,
@@ -194,7 +206,7 @@ export const alabasta: Saga = {
         it: 'Un’isola preistorica della Rotta Maggiore, con due vulcani che fumano sopra le felci e ossa di dinosauro grandi come una nave.',
         en: 'A prehistoric island on the Grand Line, two volcanoes smoking above the ferns and dinosaur bones as big as a ship.',
       },
-      visual: { art: 'little-garden', tint: 'green' },
+      visual: { art: 'little-garden-arc', tint: 'green' },
     },
     {
       id: 'mr-3',
@@ -245,7 +257,19 @@ export const alabasta: Saga = {
       visual: { art: 'brogy', tint: 'vermilion' },
     },
     {
-      id: 'drum-island',
+      id: 'little-garden',
+      kind: 'place',
+      revealedAtEpisode: 70,
+      revealedAtChapter: 115,
+      name: { it: 'Little Garden', en: 'Little Garden' },
+      summary: {
+        it: 'Un’isola di giungla della Rotta Maggiore rimasta ferma all’età dei dinosauri, che prende il nome da ciò che è per chi ci abita: un piccolo giardino.',
+        en: 'A jungle island on the Grand Line still living in the age of the dinosaurs, named for what it is to those who live there: a small garden.',
+      },
+      visual: { art: 'little-garden', tint: 'teal' },
+    },
+    {
+      id: 'drum-island-arc',
       kind: 'arc',
       revealedAtEpisode: 78,
       revealedAtChapter: 130,
@@ -254,7 +278,7 @@ export const alabasta: Saga = {
         it: 'Un’isola sepolta dalla neve, con un castello issato in cima a una vetta a forma di tamburo e un paese rimasto senza medici.',
         en: 'An island buried in snow, a castle perched on a drum-shaped peak, and a town left without a single doctor.',
       },
-      visual: { art: 'drum-island', tint: 'ice' },
+      visual: { art: 'drum-island-arc', tint: 'ice' },
     },
     {
       id: 'wapol',
@@ -303,6 +327,18 @@ export const alabasta: Saga = {
         en: 'An agent caught by the Marines and tied to the mast of Smoker’s ship, who swears he has never heard of the organisation he works for.',
       },
       visual: { art: 'mr-11', tint: 'azure' },
+    },
+    {
+      id: 'drum-island',
+      kind: 'place',
+      revealedAtEpisode: 80,
+      revealedAtChapter: 134,
+      name: { it: 'Isola di Drum', en: 'Drum Island' },
+      summary: {
+        it: 'Un’isola invernale della Rotta Maggiore sotto montagne a forma di tamburo, un paese che per ora non ha un nome e una sola dottoressa, che vive nel castello sulla vetta più alta.',
+        en: 'A winter island on the Grand Line under drum-shaped mountains, a country with no name for now, and a single doctor, who lives in the castle on the highest peak.',
+      },
+      visual: { art: 'drum-island', tint: 'blue' },
     },
     {
       id: 'kureha',
@@ -411,6 +447,18 @@ export const alabasta: Saga = {
         en: 'A government-sanctioned pirate with a golden hook for a left hand, hailed as a hero in Alabasta and secretly running the organisation the kingdom fears.',
       },
       visual: { art: 'crocodile', tint: 'sand' },
+    },
+    {
+      id: 'alubarna',
+      kind: 'place',
+      revealedAtEpisode: 92,
+      revealedAtChapter: 161,
+      name: { it: 'Alubarna', en: 'Alubarna' },
+      summary: {
+        it: 'La città del palazzo reale di Alabasta, un edificio a cupole tra due torri, dove regna il padre di Bibi e dove si ringrazia Crocodile per aver tenuto lontani i pirati.',
+        en: 'The city of Alabasta’s royal palace, a domed building between two towers, where Vivi’s father reigns and Crocodile is thanked for keeping the pirates away.',
+      },
+      visual: { art: 'alubarna', tint: 'ivory' },
     },
     {
       id: 'nefertari-cobra',
@@ -543,6 +591,18 @@ export const alabasta: Saga = {
         en: 'The last man left in a dried-up oasis, worn thin by three years of digging in the sand for water.',
       },
       visual: { art: 'toto', tint: 'sand' },
+    },
+    {
+      id: 'rainbase',
+      kind: 'place',
+      revealedAtEpisode: 105,
+      revealedAtChapter: 168,
+      name: { it: 'Rainbase', en: 'Rainbase' },
+      summary: {
+        it: 'La città di Crocodile nel deserto di Alabasta, che se la passa bene anche con la siccità grazie ai casinò, il più grande dei quali è una piramide con un coccodrillo d’oro sul tetto.',
+        en: 'Crocodile’s town in the Alabasta desert, doing well in the drought thanks to its casinos, the largest of them a pyramid with a golden crocodile on the roof.',
+      },
+      visual: { art: 'rainbase', tint: 'yellow' },
     },
     {
       id: 'hasami',

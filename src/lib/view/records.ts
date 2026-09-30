@@ -280,11 +280,28 @@ export type FruitEatersView = {
   readonly mode: 'eaters'
 }
 
-/** The three stretches of sea the route crosses. */
-export type Sea = 'east-blue' | 'grand-line' | 'new-world'
+/**
+ * The stretches of sea the route crosses, and the two bands that cross the
+ * route itself: the Calm Belt either side of the Grand Line, and the Red Line
+ * across it.
+ */
+export type Sea =
+  'calm-belt' | 'east-blue' | 'grand-line' | 'new-world' | 'red-line'
 
 /** What kind of place a record is, as the log would put it. */
-export type PlaceForm = 'island' | 'region' | 'restaurant' | 'town' | 'village'
+export type PlaceForm =
+  | 'archipelago'
+  | 'city'
+  | 'fortress'
+  | 'island'
+  | 'prison'
+  | 'region'
+  | 'restaurant'
+  | 'sea'
+  | 'ship'
+  | 'town'
+  | 'train'
+  | 'village'
 
 /**
  * One entry of the ship's log.

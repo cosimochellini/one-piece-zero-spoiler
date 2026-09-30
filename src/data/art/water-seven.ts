@@ -92,7 +92,7 @@ export const waterSevenArt = {
   ],
 
   // Arches over the water, a tower behind, a gondola underneath.
-  'water-seven': [
+  'water-seven-arc': [
     {
       d: 'M12 148 V100 a20 20 0 0 1 40 0 V148 M56 148 V100 a20 20 0 0 1 40 0 V148 M100 148 V100 a20 20 0 0 1 40 0 V148',
     },
@@ -300,7 +300,7 @@ export const waterSevenArt = {
   // A round island hanging over a hole in the sea, the water pouring off its
   // rim, a tower in the middle, the sun overhead, and a train on the track
   // coming in.
-  'enies-lobby': [
+  'enies-lobby-arc': [
     { d: ellipse(80, 112, 58, 12) },
     {
       d: 'M22 114 C24 130 30 140 34 150 M138 114 C136 130 130 140 126 150',
@@ -501,6 +501,54 @@ export const waterSevenArt = {
     { d: 'M70 36 q10 -16 20 0 q-10 8 -20 0 M80 30 V18', role: 'accent' },
     ...SEA.slice(1),
   ],
+
+  // A great fountain at the top of a stepped city, its water running down the terraces into the sea.
+  'water-seven': [
+    { d: 'M80 64 V28', role: 'accent' },
+    {
+      d: 'M80 28 C68 20 56 30 52 56 M80 28 C92 20 104 30 108 56',
+      role: 'accent',
+    },
+    { d: 'M80 36 C74 34 68 42 66 56 M80 36 C86 34 92 42 94 56', role: 'soft' },
+    { d: 'M46 58 H114 L106 70 H54z' },
+    { d: 'M14 152 V124 H32 V104 H50 V80 H110 V104 H128 V124 H146 V152' },
+    { d: 'M66 72 V150 M94 72 V150', role: 'ambient', dashed: true },
+    { d: 'M40 124 V150 M120 124 V150', role: 'ambient', dashed: true },
+    {
+      d: dots([
+        [58, 92],
+        [80, 92],
+        [102, 92],
+        [40, 114],
+        [120, 114],
+        [24, 136],
+        [136, 136],
+        [80, 116],
+      ]),
+      role: 'soft',
+    },
+    ...SEA,
+  ],
+
+  // A steam locomotive on the sea, a paddlewheel at its side and smoke from its funnel.
+  'puffing-tom': [
+    { d: 'M44 108 H118 V140 H44 C32 140 28 126 30 120 C32 112 38 108 44 108z' },
+    { d: 'M118 88 H146 V140 H118z M124 96 h16 v14 h-16z' },
+    { d: 'M58 108 V88 h14 V108 M54 88 h22', role: 'soft' },
+    {
+      d: 'M66 78 q-8 -8 0 -16 q10 -8 20 -2 q10 -8 18 4',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M30 132 L16 150 H40', role: 'soft' },
+    { d: circle(90, 140, 20), role: 'accent' },
+    {
+      d: 'M90 120 V160 M70 140 H110 M76 126 L104 154 M104 126 L76 154',
+      role: 'accent',
+    },
+    { d: 'M-4 156 H164', role: 'ambient', dashed: true },
+    ...SEA.slice(1),
+  ],
   // A pigeon's feather beside a small necktie, and a speech bubble with no mouth under it.
   'hattori': [
     { d: 'M40 172 C52 132 64 92 92 42' },
@@ -617,6 +665,19 @@ export const waterSevenArt = {
     { d: house(62, 36, 124, 110) },
     { d: 'M48 150 H112 L104 162 H56 Z' },
     ...SEA.slice(1),
+  ],
+
+  // Two giant doors standing shut in the sea, a small boat at their foot.
+  'enies-lobby': [
+    { d: 'M18 20 H142 V32 H18z M26 20 L80 6 L134 20' },
+    { d: 'M26 32 V156 M36 32 V156 M124 32 V156 M134 32 V156' },
+    { d: 'M36 32 H124 V156 M80 32 V156', role: 'accent' },
+    { d: 'M36 64 H124 M36 100 H124 M36 136 H124', role: 'soft' },
+    {
+      d: 'M60 172 q10 4 20 0 l-3 5 h-14z M70 172 v-9 l7 5 l-7 1',
+      role: 'soft',
+    },
+    ...SEA,
   ],
   // A judge's gavel on its block, three different hats lined up above it.
   'baskerville': [

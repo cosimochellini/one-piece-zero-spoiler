@@ -343,6 +343,29 @@ export const skypieaArt = {
     shadow(80, 186, 28),
   ],
 
+  // A beach made of cloud, two palm trees on it and a house on the rise behind.
+  'angel-island': [
+    {
+      d: 'M-4 138 q10 -12 22 -4 q10 -12 24 -2 q12 -12 26 -2 q12 -12 26 -2 q12 -12 26 -2 q10 -10 22 -2 q8 -6 14 0',
+      role: 'accent',
+    },
+    {
+      d: 'M52 96 q8 -12 20 -6 q10 -12 22 -2 q10 -10 20 0 q8 -4 12 4',
+      role: 'soft',
+    },
+    { d: 'M72 90 V74 h26 V90 M68 74 q17 -20 34 0' },
+    { d: 'M82 90 v-9 h6 v9', role: 'soft' },
+    { d: 'M36 134 C32 110 36 84 46 62' },
+    {
+      d: 'M46 62 q-16 -6 -30 6 M46 62 q-4 -16 -20 -22 M46 62 q12 -14 30 -10 M46 62 q18 0 26 18',
+    },
+    { d: 'M128 132 C132 114 130 96 122 82' },
+    {
+      d: 'M122 82 q-14 -4 -24 8 M122 82 q2 -14 -10 -22 M122 82 q12 -10 26 -2 M122 82 q14 2 16 16',
+    },
+    ...SEA,
+  ],
+
   // A cloud ball, something dashed hidden inside it, the surprise going off.
   'satori': [
     { d: circle(80, 104, 42) },
@@ -527,6 +550,33 @@ export const skypieaArt = {
       role: 'soft',
     },
     shadow(80, 178, 50),
+  ],
+
+  // Two giant trunks at the forest’s edge, too tall to end in the frame, and a small Waver below them.
+  'upper-yard': [
+    {
+      d: 'M4 146 C18 138 22 118 24 90 C26 50 26 20 24 -4 M72 146 C58 138 54 118 54 90 C52 50 52 20 54 -4',
+      role: 'accent',
+    },
+    {
+      d: 'M84 146 C96 138 98 116 100 86 C102 50 102 20 100 -4 M150 146 C138 138 134 116 134 86 C132 50 132 20 134 -4',
+      role: 'accent',
+    },
+    {
+      d: 'M30 146 C34 136 38 128 38 118 M116 146 C118 136 118 128 118 118',
+      role: 'soft',
+    },
+    {
+      d: 'M34 70 q4 -10 0 -20 M42 40 q-4 -8 0 -16 M110 60 q4 -10 0 -20 M122 96 q-4 -8 0 -16',
+      role: 'soft',
+    },
+    { d: 'M54 34 q-10 -12 -26 -12 M134 50 q10 -14 26 -12', role: 'soft' },
+    {
+      d: 'M-4 150 q8 -8 16 -2 q8 -8 18 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q10 -8 20 0 q8 -6 14 2',
+      role: 'ambient',
+    },
+    { d: 'M56 174 q24 8 48 0 l-6 8 h-36z M92 174 v-6 h10' },
+    ...SEA.slice(1),
   ],
   // A white beret resting on a ticket of fines, an official stamp in the corner.
   'mckinley': [
