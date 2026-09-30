@@ -556,6 +556,26 @@ export const summitWarArt = {
     },
   ],
 
+  // A Ferris wheel with its cabins hanging from the rim, bubbles drifting past.
+  'sabaody-archipelago': [
+    { d: circle(80, 84, 52), role: 'accent' },
+    {
+      d: 'M80 84 L132 84 M80 84 L116.8 120.8 M80 84 L80 136 M80 84 L43.2 120.8 M80 84 L28 84 M80 84 L43.2 47.2 M80 84 L80 32 M80 84 L116.8 47.2',
+      role: 'soft',
+    },
+    { d: circle(80, 84, 6) },
+    {
+      d: 'M127 87 h10 v8 h-10z M111.8 123.8 h10 v8 h-10z M75 139 h10 v8 h-10z M38.2 123.8 h10 v8 h-10z M23 87 h10 v8 h-10z M38.2 50.2 h10 v8 h-10z M75 35 h10 v8 h-10z M111.8 50.2 h10 v8 h-10z',
+    },
+    { d: 'M80 84 L50 166 M80 84 L110 166' },
+    {
+      d: `${circle(22, 40, 7)} ${circle(142, 150, 6)} ${circle(146, 30, 4)}`,
+      role: 'ambient',
+    },
+    { d: 'M-4 166 H164', role: 'ambient' },
+    ...SEA.slice(2),
+  ],
+
   // A spear whose head is a crescent moon.
   'catarina-devon': [
     { d: 'M80 178 V72' },
@@ -859,6 +879,33 @@ export const summitWarArt = {
     { d: 'M20 176 h120', role: 'ambient', dashed: true },
   ],
 
+  // A tall mountain with an arch in the shape of a heart at its top and a
+  // walled village in the hollow at its foot.
+  'amazon-lily': [
+    {
+      d: 'M6 150 C24 120 36 86 46 50 C52 28 72 24 80 40 C88 24 108 28 114 50 C124 86 136 120 154 150',
+    },
+    {
+      d: 'M66 66 C60 54 72 46 80 58 C88 46 100 54 94 66 L80 84 Z',
+      role: 'accent',
+    },
+    { d: 'M48 150 V116 C48 96 112 96 112 116 V150' },
+    {
+      d: 'M56 150 V134 h10 v16 M72 150 V128 h16 v22 M94 150 V134 h10 v16',
+      role: 'soft',
+    },
+    {
+      d: 'M52 134 l9 -8 l9 8 M70 128 l10 -9 l10 9 M90 134 l9 -8 l9 8',
+      role: 'soft',
+    },
+    {
+      d: 'M20 150 V132 M20 132 q-10 -6 -14 4 M20 132 q10 -6 14 4 M140 150 V130 M140 130 q-10 -6 -14 4 M140 130 q10 -6 14 4',
+      role: 'ambient',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    ...SEA.slice(1),
+  ],
+
   // A cap tossed on the arena sand, three claw marks raked beside it.
   'bacura': [
     { d: ellipse(80, 156, 66, 20), role: 'soft' },
@@ -896,6 +943,33 @@ export const summitWarArt = {
     { d: 'M46 138 l-6 8 M114 138 l6 8', role: 'accent' },
     { d: 'M72 112 h4 M84 112 h4 M76 112 c2 -4 6 -4 8 0 c-2 4 -6 4 -8 0z' },
     shadow(80, 180, 56),
+  ],
+
+  // The prison's great barred gate above the water, a warship moored on
+  // either side of it.
+  'impel-down': [
+    { d: 'M38 150 V40 H122 V150' },
+    { d: 'M38 40 L48 28 H112 L122 40', role: 'soft' },
+    { d: 'M54 150 V84 a26 26 0 0 1 52 0 V150', role: 'accent' },
+    {
+      d: 'M67 150 V64 M80 150 V58 M93 150 V64 M54 104 H106 M54 126 H106',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [46, 56],
+        [114, 56],
+        [46, 76],
+        [114, 76],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M-4 150 L4 164 H28 L34 150 Z M14 150 V110 M14 114 q14 12 0 28' },
+    {
+      d: 'M126 150 L132 164 H156 L164 150 Z M146 150 V110 M146 114 q14 12 0 28',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    ...SEA.slice(1),
   ],
 
   // A devil's trident with a torn net hanging off its prongs.
@@ -959,6 +1033,25 @@ export const summitWarArt = {
       role: 'accent',
     },
     shadow(78, 186, 54),
+  ],
+
+  // The Headquarters building, a castle of stacked curved roofs on a broad
+  // stone base, above the bay wall.
+  'marineford': [
+    { d: 'M20 150 V124 H140 V150' },
+    { d: 'M36 124 V100 H124 V124' },
+    { d: 'M26 100 Q80 90 134 100 L124 92 H36 Z', role: 'accent' },
+    { d: 'M48 92 V74 H112 V92' },
+    { d: 'M38 74 Q80 64 122 74 L112 66 H48 Z', role: 'accent' },
+    { d: 'M60 66 V50 H100 V66' },
+    { d: 'M50 50 Q80 40 110 50 L100 42 H60 Z M80 42 V30', role: 'accent' },
+    {
+      d: 'M46 106 h8 v10 h-8z M66 106 h8 v10 h-8z M86 106 h8 v10 h-8z M106 106 h8 v10 h-8z M60 78 h8 v8 h-8z M76 78 h8 v8 h-8z M92 78 h8 v8 h-8z',
+      role: 'soft',
+    },
+    { d: 'M74 150 V136 a6 6 0 0 1 12 0 V150', role: 'soft' },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    ...SEA.slice(1),
   ],
 
   // A red band knotted with its tails loose, and a string of square stones

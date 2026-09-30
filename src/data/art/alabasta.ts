@@ -1,4 +1,12 @@
-import { circle, dot, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
+import {
+  circle,
+  dot,
+  dots,
+  ellipse,
+  house,
+  SEA,
+  shadow,
+} from '~/lib/svg/primitives'
 
 import type { Drawings, Stroke } from './stroke'
 
@@ -151,6 +159,31 @@ export const alabastaArt = {
     shadow(80, 176, 46),
   ],
 
+  // A cactus-shaped rock under the moon, grave crosses standing on its top.
+  'whisky-peak': [
+    { d: 'M60 150 V60 a20 20 0 0 1 40 0 V150' },
+    { d: 'M60 124 H34 a8 8 0 0 1 -8 -8 V88 a8 8 0 0 1 16 0 V108 H60' },
+    { d: 'M100 110 H126 a8 8 0 0 0 8 -8 V74 a8 8 0 0 0 -16 0 V94 H100' },
+    {
+      d: 'M70 44 V28 M65 33 H75 M80 40 V22 M75 27 H85 M90 44 V28 M85 33 H95 M34 81 V66 M29 71 H39 M126 67 V52 M121 57 H131',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [70, 72],
+        [88, 84],
+        [72, 100],
+        [90, 118],
+        [34, 100],
+        [126, 86],
+      ]),
+      role: 'soft',
+    },
+    { d: circle(134, 28, 11), role: 'ambient' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(1),
+  ],
+
   // A pistol with the shot leaving the muzzle.
   'mr-5': [
     { d: 'M46 96 H118 V112 H46 Z' },
@@ -281,6 +314,27 @@ export const alabastaArt = {
     { d: 'M50 176 q28 -14 56 0', role: 'ambient', dashed: true },
   ],
 
+  // A long-necked dinosaur looking out over the jungle, a palm and ferns in front.
+  'little-garden': [
+    {
+      d: 'M112 150 C112 104 100 70 80 50 C72 42 58 40 50 44 C42 48 42 58 52 58 H62 C72 60 80 90 88 150',
+      role: 'accent',
+    },
+    { d: dot(56, 48), role: 'soft' },
+    { d: 'M112 128 C124 114 148 112 164 122', role: 'soft' },
+    { d: 'M26 150 C30 130 34 112 30 94' },
+    {
+      d: 'M30 94 q-16 -4 -24 8 M30 94 q-4 -14 8 -20 M30 94 q14 -8 26 2 M30 94 q10 4 12 16',
+    },
+    {
+      d: 'M50 150 q4 -18 16 -22 M58 150 q-2 -16 -12 -22 M126 150 q2 -16 14 -20 M134 150 q-4 -14 -16 -18',
+      role: 'soft',
+    },
+    { d: 'M112 34 q6 -6 12 0 q6 -6 12 0', role: 'ambient' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(1),
+  ],
+
   // A castle on a drum-shaped peak, with the snow coming down.
   'drum-island-arc': [
     { d: 'M8 156 L44 56 H88 L124 156' },
@@ -375,6 +429,37 @@ export const alabastaArt = {
     { d: 'M4 176 H156' },
     { d: 'M22 186 L112 180 L120 184 L112 188 L22 190 Z' },
     { d: 'M112 176 V192', role: 'soft' },
+  ],
+
+  // Three drum-shaped mountains with snow on their rims, and snowed-in houses below.
+  'drum-island': [
+    { d: `${ellipse(80, 40, 22, 6)} M58 40 V116 M102 40 V116`, role: 'accent' },
+    { d: `${ellipse(34, 78, 16, 5)} M18 78 V116 M50 78 V116`, role: 'accent' },
+    {
+      d: `${ellipse(128, 70, 18, 5)} M110 70 V116 M146 70 V116`,
+      role: 'accent',
+    },
+    {
+      d: 'M58 54 q11 6 22 0 q11 -6 22 0 M18 90 q8 5 16 0 q8 -5 16 0 M110 82 q9 5 18 0 q9 -5 18 0',
+      role: 'soft',
+    },
+    { d: 'M4 118 q38 -8 76 0 t76 0 t10 0', role: 'ambient' },
+    {
+      d: `${house(26, 22, 134, 122)} ${house(66, 28, 130, 118)} ${house(114, 22, 136, 124)}`,
+    },
+    {
+      d: dots([
+        [14, 30],
+        [36, 52],
+        [118, 30],
+        [146, 44],
+        [104, 22],
+        [60, 16],
+      ]),
+      role: 'ambient',
+    },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA.slice(1),
   ],
 
   // A medicine bottle standing beside a flask of plum wine.
@@ -518,6 +603,31 @@ export const alabastaArt = {
     { d: 'M88 60 h52 M88 136 h52' },
     { d: 'M102 70 h24', role: 'ambient', dashed: true },
     { d: 'M104 130 q10 -8 20 0', role: 'ambient' },
+  ],
+
+  // A royal palace with a great dome between two towers, the desert below.
+  'alubarna': [
+    {
+      d: 'M58 110 C58 88 72 80 80 64 C88 80 102 88 102 110 M80 64 V54',
+      role: 'accent',
+    },
+    { d: 'M40 150 V110 H120 V150' },
+    { d: 'M72 150 V134 a8 8 0 0 1 16 0 V150' },
+    { d: 'M20 150 V86 H32 V150 M128 150 V86 H140 V150' },
+    { d: 'M20 86 q6 -16 12 0 M128 86 q6 -16 12 0' },
+    { d: 'M32 124 H40 M120 124 H128', role: 'soft' },
+    {
+      d: dots([
+        [52, 126],
+        [108, 126],
+        [26, 100],
+        [134, 100],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    { d: 'M-4 170 q40 -10 80 0 t80 0 t10 0', role: 'ambient' },
+    { d: 'M-4 188 q30 -8 60 0 t60 0 t60 0', role: 'ambient', dashed: true },
   ],
 
   // A crown resting on the seat of a desert throne.
@@ -709,6 +819,22 @@ export const alabastaArt = {
       role: 'ambient',
     },
     shadow(80, 186, 50),
+  ],
+
+  // A stepped pyramid casino on a lake, a golden crocodile lying on its roof.
+  'rainbase': [
+    { d: 'M26 150 L62 98 H98 L134 150' },
+    { d: 'M40 130 H120 M52 114 H108', role: 'soft' },
+    { d: 'M72 150 V134 a8 8 0 0 1 16 0 V150' },
+    {
+      d: 'M24 90 L50 84 L56 80 q5 -6 10 0 q5 -6 10 0 q5 -6 10 0 q5 -6 10 0 q5 -6 10 0 C120 82 134 88 150 98 C134 96 122 94 110 92 C94 97 70 97 52 92 L24 90',
+      role: 'accent',
+    },
+    { d: 'M64 95 l-6 5 M100 95 l6 5', role: 'accent' },
+    { d: 'M30 90 l2 -2 l2 2 l2 -2 l2 2 l2 -2 l2 2', role: 'soft' },
+    { d: dot(47, 87), role: 'soft' },
+    { d: 'M4 150 H156', role: 'ambient' },
+    ...SEA,
   ],
 
   // A crab's great pincer rising out of a river, the water closing over it.

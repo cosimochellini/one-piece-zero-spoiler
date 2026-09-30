@@ -26,6 +26,18 @@ export const thrillerBark: Saga = {
       visual: { art: 'thriller-bark-arc', tint: 'lavender' },
     },
     {
+      id: 'florian-triangle',
+      kind: 'place',
+      revealedAtEpisode: 337,
+      revealedAtChapter: 442,
+      name: { it: 'Triangolo Florian', en: 'Florian Triangle' },
+      summary: {
+        it: 'Un tratto della Rotta Maggiore sotto una nebbia così fitta che il giorno sembra notte, dove ogni anno spariscono più di cento navi.',
+        en: 'A stretch of the Grand Line under a fog so thick that day looks like night, where more than a hundred ships vanish every year.',
+      },
+      visual: { art: 'florian-triangle', tint: 'ice' },
+    },
+    {
       id: 'brook',
       kind: 'character',
       revealedAtEpisode: 339,
@@ -180,6 +192,18 @@ export const thrillerBark: Saga = {
         en: 'A pig’s head mounted like a trophy on the dining-room wall, two swords hanging beneath its chin, which suddenly starts laughing and announces that it leads the zombies of the room.',
       },
       visual: { art: 'buhichuck', tint: 'flamingo' },
+    },
+    {
+      id: 'thriller-bark',
+      kind: 'place',
+      revealedAtEpisode: 343,
+      revealedAtChapter: 449,
+      name: { it: 'Thriller Bark', en: 'Thriller Bark' },
+      summary: {
+        it: 'La nave pirata più grande del mondo, un’isola con una villa, una foresta di alberi morti e un cimitero, chiusa da un portale a forma di bocca.',
+        en: 'The largest pirate ship in the world, an island with a mansion, a forest of dead trees and a graveyard, shut in behind a gate shaped like a mouth.',
+      },
+      visual: { art: 'thriller-bark', tint: 'violet' },
     },
     {
       id: 'kumashi',

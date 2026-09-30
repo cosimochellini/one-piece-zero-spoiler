@@ -64,7 +64,7 @@ flowchart LR
   E --> F
 ```
 
-The archive is 664 records and 665 line drawings, about 900 KB of TypeScript.
+The archive is 738 records and 739 line drawings, about 2.6 MB of TypeScript.
 None of it is compiled into the client bundle. A route loader reads the cookie
 from the request and returns the records at or below the bookmark, with their
 strings already in the page's locale and their drawings already turned into
@@ -112,12 +112,12 @@ epithet the reader has not reached is not in the browser at all.
 
 | Thing               | Count                                                                 |
 | ------------------- | --------------------------------------------------------------------- |
-| Records             | 709                                                                   |
+| Records             | 738                                                                   |
 | Characters          | 533                                                                   |
 | Devil fruits        | 130                                                                   |
-| Arcs, places, ships | 34 · 10 · 2                                                           |
+| Arcs, places, ships | 34 · 39 · 2                                                           |
 | Sagas               | 12                                                                    |
-| Line drawings       | 710: one per record, and one redrawn from episode 421                 |
+| Line drawings       | 739: one per record, and one redrawn from episode 421                 |
 | Test files          | 65                                                                    |
 | Test cases          | 555                                                                   |
 | Coverage            | 95.7 % statements, 93.8 % branches, 95.4 % functions (last local run) |
@@ -280,7 +280,7 @@ real reader who tapped a link a friend sent.
 - **The archive is not in the bundle.** Moving it behind the loaders took the
   client JavaScript from 1,048,559 bytes to 450,058, and 318 KB of what is left
   is React. A reader at episode 45 downloads the ten records they have reached,
-  not all 664. Adding the 120 devil fruits, their drawings and two more pages
+  not all 738. Adding the 120 devil fruits, their drawings and two more pages
   added 31 KB of client JavaScript and no archive data.
 - Payloads carry one locale. A record used to ship its Italian and English name
   and summary together; now it carries only the page's language.
@@ -436,7 +436,7 @@ to the code they explain, and this README stays short.
 
 - [ ] Verify the manga chapter thresholds against a source. They were entered
       from memory and are marked for a check.
-- [ ] More places with full pages: 10 places have one today, across 34 arcs.
+- [ ] More places with full pages: 39 places have one today, across 34 arcs.
 - [ ] Chronicles for the rest of the featured characters: 12 of the 36 have one
       today, the crew and the two key figures of the first half of the story.
       The episode each story opens at is recorded in

@@ -315,6 +315,18 @@ export const skypiea: Saga = {
       visual: { art: 'su', tint: 'lavender' },
     },
     {
+      id: 'upper-yard',
+      kind: 'place',
+      revealedAtEpisode: 154,
+      revealedAtChapter: 240,
+      name: { it: 'Upper Yard', en: 'Upper Yard' },
+      summary: {
+        it: 'Un’isola di foresta con alberi di cui non si vede la cima, a pochi minuti di waver dalla spiaggia dove sbarca la ciurma, e dove nessuno deve mettere piede.',
+        en: 'A forest island of trees too tall to see the tops of, a short Waver ride from the beach where the crew lands, where no one may set foot.',
+      },
+      visual: { art: 'upper-yard', tint: 'green' },
+    },
+    {
       id: 'conis',
       kind: 'character',
       revealedAtEpisode: 155,
@@ -361,6 +373,18 @@ export const skypiea: Saga = {
         en: 'The God of Skypiea, sitting above a golden drum with four more at his back, who knows what his subjects are saying without having to listen.',
       },
       visual: { art: 'enel', tint: 'yellow' },
+    },
+    {
+      id: 'angel-island',
+      kind: 'place',
+      revealedAtEpisode: 158,
+      revealedAtChapter: 244,
+      name: { it: 'Angel Island', en: 'Angel Island' },
+      summary: {
+        it: 'L’isola dove vivono gli abitanti di Skypiea, fatta tutta di nuvola, con una spiaggia dove approdano gli stranieri, una sola via di negozi e un molo pieno di barche dalle forme strane.',
+        en: 'The island where Skypiea’s people live, made entirely of cloud, with a beach where strangers come ashore, a single shopping street and a wharf full of oddly shaped boats.',
+      },
+      visual: { art: 'angel-island', tint: 'ice' },
     },
     {
       id: 'satori',

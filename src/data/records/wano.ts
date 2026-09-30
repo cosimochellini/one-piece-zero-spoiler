@@ -35,6 +35,18 @@ export const wano: Saga = {
       visual: { art: 'wano', tint: 'vermilion' },
     },
     {
+      id: 'kuri',
+      kind: 'place',
+      revealedAtEpisode: 893,
+      revealedAtChapter: 911,
+      name: { it: 'Kuri', en: 'Kuri' },
+      summary: {
+        it: 'La regione di Wano dove Rufy approda da solo con la nave, una spiaggia sotto un bosco, dove una bambina con il suo cane gli conferma che è arrivato.',
+        en: 'The region of Wano where Luffy washes up alone with the ship, a beach below a forest, where a girl with her dog tells him he has made it.',
+      },
+      visual: { art: 'kuri', tint: 'green' },
+    },
+    {
       id: 'tama',
       kind: 'character',
       revealedAtEpisode: 894,
@@ -431,6 +443,18 @@ export const wano: Saga = {
       visual: { art: 'speed', tint: 'sand' },
     },
     {
+      id: 'flower-capital',
+      kind: 'place',
+      revealedAtEpisode: 909,
+      revealedAtChapter: 919,
+      name: { it: 'Capitale dei Fiori', en: 'Flower Capital' },
+      summary: {
+        it: 'L’unica città di Wano che prospera ancora, dove vive lo shogun, con strade di botteghe e scuole in cui i bambini imparano a lodare il paese chiuso.',
+        en: 'The one city in Wano still thriving, where the shogun lives, with streets of shops and schools where the children are taught to praise the closed country.',
+      },
+      visual: { art: 'flower-capital', tint: 'pink' },
+    },
+    {
       id: 'kozuki-hiyori',
       kind: 'character',
       revealedAtEpisode: 910,
@@ -441,6 +465,30 @@ export const wano: Saga = {
         en: 'Momonosuke’s little sister, left behind with her mother in the burning castle twenty years ago when her brother was sent away, and not heard of since.',
       },
       visual: { art: 'kozuki-hiyori', tint: 'flamingo' },
+    },
+    {
+      id: 'udon',
+      kind: 'place',
+      revealedAtEpisode: 916,
+      revealedAtChapter: 924,
+      name: { it: 'Udon', en: 'Udon' },
+      summary: {
+        it: 'La regione di Wano delle fabbriche d’armi e delle miniere, dove i prigionieri sono costretti ai lavori forzati e chi ha sfidato Kaido resta in cella finché non cede.',
+        en: 'The Wano region of weapon factories and mines, worked by prisoners in forced labour, where anyone who defied Kaido stays in a cell until he gives in.',
+      },
+      visual: { art: 'udon', tint: 'blue' },
+    },
+    {
+      id: 'onigashima',
+      kind: 'place',
+      revealedAtEpisode: 918,
+      revealedAtChapter: 925,
+      name: { it: 'Onigashima', en: 'Onigashima' },
+      summary: {
+        it: 'L’isola dove Kaido e i Pirati delle Cento Bestie hanno la loro base, così vicina a Wano che dalla costa quasi si vede, e dove finiscono le offerte di Kuri.',
+        en: 'The island where Kaido and the Beasts Pirates keep their base, so close to Wano it can almost be seen from the shore, where the offerings from Kuri end up.',
+      },
+      visual: { art: 'onigashima', tint: 'violet' },
     },
     // Met as himself before the reveal: the orphan of Oden's flashback at
     // 960. That he is Kyoshiro is dated on both records at 976.

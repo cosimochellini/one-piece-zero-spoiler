@@ -264,10 +264,21 @@ const COMMON_WORD_NAMES = new Set(['king', 'pound', 'road', 'wolf-elbaph'])
  * homeland from 71, where Brogy calls himself its strongest warrior. Joy
  * Boy is the name on the Poneglyph Robin reads at 548, long before the show
  * puts him on screen.
+ *
+ * The ports follow the same rule, from the episode the show first says their
+ * name: Mary Geoise is where the Warlords are summoned at 151, long before
+ * the Reverie takes the story there; Kuzan reads Water Seven off the Log
+ * Pose at 228; Kokoro warns of the Florian Triangle at 320 in the same
+ * breath as she names Fish-Man Island; Momonga names Marineford at 410.
  */
 const SAID_BEFORE_FILED = new Map([
   ['fish-man-island-arc', 320],
+  ['fish-man-island', 320],
   ['marineford-arc', 434],
+  ['marineford', 410],
+  ['mary-geoise', 151],
+  ['water-seven', 228],
+  ['florian-triangle', 320],
   ['elbaf', 71],
   ['elbaf-island', 71],
   ['joy-boy', 548],

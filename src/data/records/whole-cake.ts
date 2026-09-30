@@ -592,6 +592,18 @@ export const wholeCake: Saga = {
       visual: { art: 'edward-weevil', tint: 'sand' },
     },
     {
+      id: 'zou',
+      kind: 'place',
+      revealedAtEpisode: 751,
+      revealedAtChapter: 802,
+      name: { it: 'Zou', en: 'Zou' },
+      summary: {
+        it: 'Un paese sulla schiena di un elefante grande come una montagna, che cammina nella nebbia del Nuovo Mondo, abitato da mille anni da una tribù che odia gli umani.',
+        en: 'A country on the back of a mountain-sized elephant that walks through the fog of the New World, home for a thousand years to a tribe that hates humans.',
+      },
+      visual: { art: 'zou', tint: 'ocher' },
+    },
+    {
       id: 'bakkin',
       kind: 'character',
       revealedAtEpisode: 752,
@@ -638,6 +650,30 @@ export const wholeCake: Saga = {
         en: 'A huge Fire Tank Pirate with a three-barrelled gun for a right arm, who flies at anyone who insults a crewmate and trembles before one woman alone.',
       },
       visual: { art: 'gotti', tint: 'green' },
+    },
+    {
+      id: 'whole-cake-island',
+      kind: 'place',
+      revealedAtEpisode: 786,
+      revealedAtChapter: 827,
+      name: { it: 'Whole Cake Island', en: 'Whole Cake Island' },
+      summary: {
+        it: 'L’isola da cui Big Mom governa Totto Land, circondata dalle isole dei suoi ministri, dove si contano i tre giorni che mancano al Tea Party di un matrimonio.',
+        en: 'The island Big Mom rules Totto Land from, ringed by the islands of her ministers, where the days are being counted down to a wedding Tea Party.',
+      },
+      visual: { art: 'whole-cake-island', tint: 'lavender' },
+    },
+    {
+      id: 'cacao-island',
+      kind: 'place',
+      revealedAtEpisode: 786,
+      revealedAtChapter: 827,
+      name: { it: 'Cacao Island', en: 'Cacao Island' },
+      summary: {
+        it: 'Un’isola di Totto Land governata dal ministro del cioccolato, con una città di cioccolato fino ai tavoli, dove la legge vieta di mangiare le tegole.',
+        en: 'An island of Totto Land run by the minister of chocolate, whose town is chocolate down to the tables and where the law forbids eating the roof tiles.',
+      },
+      visual: { art: 'cacao-island', tint: 'wine' },
     },
     {
       id: 'randolph',
@@ -782,6 +818,18 @@ export const wholeCake: Saga = {
         en: 'A young daughter of Big Mom at the head of Katakuri’s fan club, who spies on his duels from hiding with her followers, set on becoming his favourite sister.',
       },
       visual: { art: 'charlotte-flampe', tint: 'flamingo' },
+    },
+    {
+      id: 'mary-geoise',
+      kind: 'place',
+      revealedAtEpisode: 878,
+      revealedAtChapter: 903,
+      name: { it: 'Mary Geoise', en: 'Mary Geoise' },
+      summary: {
+        it: 'La Terra Santa costruita in cima alla Red Line, la città dei Nobili Mondiali, dove i re del mondo si riuniscono per la Reverie.',
+        en: 'The Holy Land built on top of the Red Line, the city of the World Nobles, where the kings of the world gather for the Reverie.',
+      },
+      visual: { art: 'mary-geoise', tint: 'red' },
     },
     {
       id: 'gion',

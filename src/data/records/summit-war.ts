@@ -504,6 +504,18 @@ export const summitWar: Saga = {
       visual: { art: 'laffitte', tint: 'ivory' },
     },
     {
+      id: 'sabaody-archipelago',
+      kind: 'place',
+      revealedAtEpisode: 390,
+      revealedAtChapter: 496,
+      name: { it: 'Arcipelago Sabaody', en: 'Sabaody Archipelago' },
+      summary: {
+        it: 'Una foresta di mangrovie giganti in mezzo al mare, ogni albero un’isola numerata con la sua città, e bolle che salgono dalle radici.',
+        en: 'A forest of giant mangroves out at sea, each tree a numbered island with its own town, and bubbles rising from the roots.',
+      },
+      visual: { art: 'sabaody-archipelago', tint: 'cyan' },
+    },
+    {
       id: 'catarina-devon',
       kind: 'character',
       revealedAtEpisode: 450,
@@ -765,6 +777,18 @@ export const summitWar: Saga = {
       },
       visual: { art: 'kikyo', tint: 'wine' },
     },
+    {
+      id: 'amazon-lily',
+      kind: 'place',
+      revealedAtEpisode: 410,
+      revealedAtChapter: 516,
+      name: { it: 'Amazon Lily', en: 'Amazon Lily' },
+      summary: {
+        it: 'Un’isola di giungla nella Fascia di Bonaccia abitata solo da donne, le Kuja, che vivono in un villaggio dentro una montagna e in gran parte non hanno mai visto un uomo.',
+        en: 'A jungle island in the Calm Belt where only women live, the Kuja, in a village built inside a mountain, and most of them have never seen a man.',
+      },
+      visual: { art: 'amazon-lily', tint: 'green' },
+    },
     // Debuts at episode 410 and chapter 516 as the "kitten" in the empress’s
     // way, unnamed; filed at 412/518, where she sets it on the prisoner.
     {
@@ -804,6 +828,18 @@ export const summitWar: Saga = {
       visual: { art: 'domino', tint: 'ice' },
     },
     {
+      id: 'impel-down',
+      kind: 'place',
+      revealedAtEpisode: 422,
+      revealedAtChapter: 525,
+      name: { it: 'Impel Down', en: 'Impel Down' },
+      summary: {
+        it: 'La prigione più grande del mondo, sotto il mare, raggiunta da una corrente riservata alla Marina e circondata da più navi da guerra di un Buster Call.',
+        en: 'The greatest prison in the world, deep under the sea, reached by a current kept for the Marines and ringed by more warships than a Buster Call.',
+      },
+      visual: { art: 'impel-down', tint: 'ocher' },
+    },
+    {
       id: 'saldeath',
       kind: 'character',
       revealedAtEpisode: 431,
@@ -840,6 +876,18 @@ export const summitWar: Saga = {
         en: 'A minotaur with a cow’s patched hide and a spiked club, who floors an opponent with one blow and comes charging back every time he is knocked away.',
       },
       visual: { art: 'minotaurus', tint: 'vermilion' },
+    },
+    {
+      id: 'marineford',
+      kind: 'place',
+      revealedAtEpisode: 459,
+      revealedAtChapter: 550,
+      name: { it: 'Marineford', en: 'Marineford' },
+      summary: {
+        it: 'L’isola del Quartier Generale della Marina, una baia a mezzaluna irta di cannoni, con alle spalle una città abitata dalle famiglie dei marine.',
+        en: 'The island of Marine Headquarters, a crescent bay lined with cannons, and behind it a town where the Marines’ families live.',
+      },
+      visual: { art: 'marineford', tint: 'azure' },
     },
     {
       id: 'doma',

@@ -21,6 +21,30 @@ export const thrillerBarkArt = {
     ...SEA.slice(1),
   ],
 
+  // A ship with torn sails drifting through bands of fog.
+  'florian-triangle': [
+    { d: 'M30 120 L42 146 H118 L132 116 L118 128 H44 Z' },
+    { d: 'M60 128 V40 M98 128 V52' },
+    {
+      d: 'M44 48 H76 L74 70 l-6 -6 l-5 8 l-5 -6 l-6 8 l-4 -6 L46 72 Z M82 60 H114 L112 84 l-6 -5 l-5 7 l-6 -6 l-5 7 l-5 -5 L84 86 Z',
+      role: 'accent',
+    },
+    { d: 'M48 88 H74 L72 104 l-6 -4 l-6 6 l-5 -5 L50 106 Z', role: 'accent' },
+    { d: 'M60 40 L36 126 M98 52 L126 124 M60 40 L98 52', role: 'soft' },
+    { d: 'M56 36 h8 M94 48 h8', role: 'soft' },
+    {
+      d: 'M-4 30 H40 M58 22 H164 M-4 112 H22 M136 104 H164',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M-4 150 H30 M130 150 H164 M-4 138 H26',
+      role: 'ambient',
+      dashed: true,
+    },
+    ...SEA.slice(1),
+  ],
+
   // A violin, its bow laid across it; the f-holes take the colour.
   'brook': [
     {
@@ -246,6 +270,33 @@ export const thrillerBarkArt = {
     { d: 'M134 180 L26 116', role: 'accent' },
     { d: 'M36 164 l9 14 M124 164 l-9 14' },
     { d: 'M22 184 l6 -4 M138 184 l-6 -4' },
+  ],
+
+  // A gate in the outer wall shaped like a mouth, its teeth closing on the sea.
+  'thriller-bark': [
+    { d: 'M-4 62 H164 M-4 150 H164' },
+    { d: 'M40 150 V100 C40 64 120 64 120 100 V150' },
+    {
+      d: 'M40 100 L51.8 98.8 L43.4 88.2 L56.4 91.4 L52.5 79.8 L64.8 87 L65.3 74.7 L74.8 85.2 L80 73 L85.2 85.2 L94.7 74.7 L95.2 87 L107.5 79.8 L103.6 91.4 L116.6 88.2 L108.2 98.8 L120 100',
+      role: 'accent',
+    },
+    {
+      d: 'M40 150 L46 138 L52 150 L60 136 L68 150 L76 136 L84 150 L92 136 L100 150 L108 136 L114 150 L120 138',
+      role: 'accent',
+    },
+    {
+      d: 'M12 62 V38 h6 v6 h6 v-6 h6 v6 h6 v-6 h6 V62 M118 62 V38 h6 v6 h6 v-6 h6 v6 h6 v-6 h6 V62',
+    },
+    {
+      d: 'M4 84 h26 M10 106 h24 M4 128 h26 M130 84 h26 M126 106 h24 M130 128 h26',
+      role: 'soft',
+    },
+    {
+      d: 'M-4 30 q20 -6 40 0 t40 0 M84 24 q20 -6 40 0 t40 0',
+      role: 'ambient',
+      dashed: true,
+    },
+    ...SEA.slice(1),
   ],
 
   // A surgical mask on its ear loops, and the long zip that runs down a bear's back.

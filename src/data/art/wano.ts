@@ -23,6 +23,38 @@ export const wanoArt = {
     ...SEA.slice(2),
   ],
 
+  // A pine leaning out from the edge of a forest over a beach, the sea washing up on the sand.
+  'kuri': [
+    {
+      d: 'M50 140 C54 118 44 102 56 86 C64 76 74 68 88 60 M58 90 C68 88 86 86 104 84 M52 110 C44 106 36 104 26 104',
+      role: 'accent',
+    },
+    {
+      d: 'M64 60 q2 -10 14 -10 q6 -10 18 -6 q10 -6 18 2 q10 0 10 10 Z M88 84 q2 -8 12 -8 q6 -8 14 -2 q10 0 10 10 Z M8 104 q2 -8 10 -8 q6 -6 12 0 q8 0 8 8 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M126 140 C124 124 130 112 138 104 C142 100 146 98 150 98',
+      role: 'soft',
+    },
+    { d: 'M134 98 q2 -8 10 -8 q6 -6 12 0 q6 0 6 8 Z', role: 'soft' },
+    {
+      d: 'M-4 128 q6 -14 12 -2 q6 -16 12 0 q4 -10 10 0 M108 130 q6 -12 10 -2',
+      role: 'ambient',
+    },
+    { d: 'M-4 140 C40 142 90 146 164 150', role: 'soft' },
+    {
+      d: dots([
+        [30, 148],
+        [70, 152],
+        [104, 151],
+        [138, 156],
+      ]),
+      role: 'ambient',
+    },
+    ...SEA,
+  ],
+
   // A bowl of red bean soup, and the dango skewer laid beside it.
   'tama': [
     { d: 'M30 118 C34 152 50 170 72 170 C94 170 110 152 114 118 Z' },
@@ -588,6 +620,32 @@ export const wanoArt = {
     { d: 'M64 103 l-5 -9 M64 103 l5 -9', role: 'soft' },
     shadow(80, 174, 58),
   ],
+
+  // A shop front under a tiled eave, a split curtain over the door and paper lanterns hanging beside it.
+  'flower-capital': [
+    { d: 'M8 70 L30 56 H130 L152 70 Z' },
+    {
+      d: 'M14 70 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0',
+      role: 'soft',
+    },
+    { d: 'M20 150 V76 M140 150 V76 M20 150 H140', role: 'soft' },
+    {
+      d: 'M50 80 H110 V118 M50 80 V118 M70 80 V116 M90 80 V116',
+      role: 'accent',
+    },
+    { d: 'M50 118 H66 M74 116 H86 M94 118 H110', role: 'accent' },
+    { d: 'M56 150 V128 H104 V150', role: 'ambient' },
+    { d: 'M32 76 V84 M128 76 V84', role: 'soft' },
+    {
+      d: `${ellipse(32, 98, 8, 13)} ${ellipse(128, 98, 8, 13)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M24 94 h16 M24 102 h16 M120 94 h16 M120 102 h16 M29 111 h6 M125 111 h6',
+      role: 'soft',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+  ],
   // Three dumplings left on a plate, two daggers crossed beneath it.
   'dobon': [
     { d: ellipse(80, 96, 48, 12) },
@@ -757,6 +815,49 @@ export const wanoArt = {
       role: 'soft',
     },
     shadow(80, 180, 48),
+  ],
+
+  // A mine entrance cut into a rock face, framed in timber and shut with iron bars, rails running out of it.
+  'udon': [
+    {
+      d: 'M-4 150 L10 96 L34 72 L58 54 L92 50 L120 62 L146 84 L164 110',
+      role: 'ambient',
+    },
+    { d: 'M44 150 V92 H116 V150 M38 92 H122', role: 'soft' },
+    { d: 'M52 150 V100 a28 22 0 0 1 56 0 V150' },
+    { d: 'M62 150 V84 M74 150 V80 M86 150 V80 M98 150 V84', role: 'accent' },
+    { d: 'M54 118 H106', role: 'accent' },
+    { d: 'M60 150 L40 190 M100 150 L120 190', role: 'soft' },
+    { d: 'M56 158 H104 M50 170 H110 M45 182 H115', role: 'ambient' },
+    {
+      d: 'M16 132 l8 -6 M132 120 l10 4 M24 104 l6 -8 M136 100 l8 6',
+      role: 'ambient',
+    },
+    { d: 'M-4 150 H44 M116 150 H164', role: 'ambient' },
+  ],
+
+  // An island off the coast whose peak is a great rock dome with two horns, crags around its foot.
+  'onigashima': [
+    {
+      d: 'M8 150 L22 128 L34 132 L44 116 H116 L126 132 L138 128 L152 150',
+      role: 'soft',
+    },
+    { d: 'M44 116 C40 70 58 44 80 44 C102 44 120 70 116 116', role: 'accent' },
+    {
+      d: 'M52 62 C40 50 36 34 40 18 C48 34 58 44 64 50 M108 62 C120 50 124 34 120 18 C112 34 102 44 96 50',
+      role: 'accent',
+    },
+    {
+      d: 'M60 116 l4 -16 l-3 -12 l5 -10 M100 116 l-3 -14 l4 -10 l-2 -8',
+      role: 'soft',
+    },
+    {
+      d: 'M18 100 q12 -8 24 0 M118 94 q12 -8 24 0 M-4 74 q16 -8 32 0',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M28 140 l6 -6 M128 138 l6 -4', role: 'ambient' },
+    ...SEA,
   ],
 
   // Two clay pots, one big and one small, and two holed coins above them.
