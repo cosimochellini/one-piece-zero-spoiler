@@ -237,8 +237,8 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       en: 'The giant trunks at the forest’s edge',
     },
     log: {
-      it: 'Nami ci arriva da sola, su un waver che ha appena imparato a guidare, mentre gli altri pranzano nella casa sopra la spiaggia. Dal bordo è un muro di tronchi di cui non si vede la cima. A tavola i padroni di casa spiegano che è la terra dove vive Dio, a pochi minuti di waver, e che nessuno deve mai metterci piede.',
-      en: 'Nami gets there alone, on a Waver she has only just learned to ride, while the others are at lunch in the house above the beach. From its edge it is a wall of trunks whose tops she cannot see. At the table their hosts explain that it is the land where God lives, a short ride away, and that no one is ever to set foot on it.',
+      it: 'Nami ci arriva da sola, su un waver che ha appena imparato a guidare, mentre gli altri pranzano nella casa sopra la spiaggia. Dal bordo è un muro di tronchi di cui non si vede la cima. A tavola i padroni di casa spiegano che è la terra di Dio, a pochi minuti di waver, e che nessuno deve mai metterci piede.',
+      en: 'Nami gets there alone, on a Waver she has only just learned to ride, while the others are at lunch in the house above the beach. From its edge it is a wall of trunks whose tops she cannot see. At the table their hosts explain that it is the land of God, a short ride away, and that no one is ever to set foot on it.',
     },
     filedHere: [
       'enel',
