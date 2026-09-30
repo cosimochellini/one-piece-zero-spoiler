@@ -1062,8 +1062,9 @@ export const egghead: Saga = {
     },
     // Dies in the same flashback that names him, decades before the present,
     // so the fate a viewer holds at the threshold is already `deceased`, as
-    // for Shimotsuki Ushimaru. Origin waits for 1131, the first episode that
-    // puts the family's church in the Sorbet Kingdom.
+    // for Shimotsuki Ushimaru. A 1129 caption already reads "Sorbet
+    // Kingdom, South Blue"; the origin waits for 1131, where the family's
+    // church is shown there, which is later and so safe.
     'clapp': {
       chronicle: eggheadChronicles.clapp,
       role: { it: 'Padre di Kuma', en: 'Kuma’s father' },

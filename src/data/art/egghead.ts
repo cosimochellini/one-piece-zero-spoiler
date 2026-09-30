@@ -1,12 +1,4 @@
-import {
-  cell,
-  circle,
-  dots,
-  ellipse,
-  shadow,
-  star,
-  wave,
-} from '~/lib/svg/primitives'
+import { cell, circle, dots, ellipse, shadow, wave } from '~/lib/svg/primitives'
 
 import type { Drawings } from './stroke'
 
@@ -319,19 +311,21 @@ export const eggheadArt = {
     { d: 'M57 82 q23 10 46 0', role: 'soft' },
     { d: 'M16 180 H144', role: 'ambient', dashed: true },
   ],
-  // A sniper's rifle laid on a slant, a flower blooming out of the muzzle
-  // where the shot should be.
+  // A pair of headphones on their band, a small teddy bear hanging from a
+  // cord below them, as on her backpack.
   'hibari': [
-    { d: 'M56 126 L120 50 L127 56 L63 132 Z' },
-    { d: 'M56 126 L26 156 L38 170 L68 140 Z' },
-    { d: 'M78 100 L98 76 L105 82 L85 106 Z', role: 'soft' },
-    { d: 'M70 136 q2 12 14 10', role: 'soft' },
-    { d: star(128, 44, 16, 7), role: 'accent' },
-    { d: circle(128, 44, 4), role: 'accent' },
+    { d: 'M42 104 C42 46 118 46 118 104' },
+    { d: 'M50 102 C50 60 110 60 110 102', role: 'soft' },
+    { d: ellipse(42, 112, 12, 18), role: 'accent' },
+    { d: ellipse(118, 112, 12, 18), role: 'accent' },
+    { d: 'M80 96 V136', role: 'soft' },
+    { d: circle(80, 148, 12) },
+    { d: [circle(70, 137, 4), circle(90, 137, 4)].join(' ') },
+    { d: ellipse(80, 172, 14, 11) },
     shadow(80, 188, 44),
   ],
-  // A Marine cap with a bill that runs far out past the crown, a lump of
-  // clay slumped in front of it.
+  // A Marine cap with a bill that runs far out past the crown, over the
+  // fur collar of a coat.
   'prince-grus': [
     { d: 'M34 118 C34 74 110 70 112 118' },
     { d: 'M30 118 h86 v10 h-86z' },
@@ -342,7 +336,7 @@ export const eggheadArt = {
     },
     { d: 'M30 128 C58 140 96 142 116 128', role: 'accent' },
     {
-      d: 'M40 180 C40 164 52 156 62 162 C66 150 84 150 88 164 C98 160 106 170 102 180 Z',
+      d: 'M30 170 q8 -12 16 0 q8 -12 16 0 q8 -12 16 0 q8 -12 16 0 q8 -12 16 0 q8 -12 16 0',
       role: 'soft',
     },
     shadow(80, 188, 50),
