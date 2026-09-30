@@ -16,7 +16,6 @@ import type {
   Slot,
   Stroke,
   TintId,
-  WaypointView,
 } from '~/lib/view/records'
 
 /**
@@ -106,10 +105,6 @@ export function fruitBand(over: Partial<FruitBandView> = {}): FruitBandView {
 
 export function fruitDetail(over: Partial<FruitDetail> = {}): FruitDetail {
   return { slot: openSlot(fruit()), ...over }
-}
-
-export function waypoint(over: Partial<WaypointView> = {}): WaypointView {
-  return { ...record(), summary: 'A record on the route.', ...over }
 }
 
 /**

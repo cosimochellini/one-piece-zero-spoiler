@@ -5,13 +5,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import {
-  peekCharacter,
-  peekDossier,
-  peekPort,
-  peekRecord,
-  peekWaypoint,
-} from './peek.server'
+import { peekCharacter, peekDossier, peekPort, peekRecord } from './peek.server'
 
 const law = 'trafalgar-law'
 const lawHandle = handleOf(law)
@@ -37,19 +31,18 @@ function coveredAt(
  */
 describe('a record lifted by hand', () => {
   it('answers a handle with the shape the veil it belongs to renders', () => {
-    expect(peekWaypoint(lawHandle, 'en', null)).toMatchObject({
+    expect(peekRecord(lawHandle, 'en', null)).toMatchObject({
       id: law,
       kind: 'character',
       name: 'Trafalgar Law',
     })
-    expect(peekWaypoint(lawHandle, 'en', null)?.summary).toBe(lawSummary)
     expect(peekCharacter(lawHandle, 'en', null)).not.toHaveProperty('summary')
     expect(peekDossier(lawHandle, 'en', null)?.summary).toBe(lawSummary)
     expect(peekRecord(lawHandle, 'en', null)).not.toHaveProperty('role')
   })
 
   it('answers in the locale the page asked for', () => {
-    const drawing = peekWaypoint(lawHandle, 'it', null)
+    const drawing = peekDossier(lawHandle, 'it', null)
     const record = getEntity(law)
 
     expect(drawing?.name).toBe(record?.name.it)
@@ -57,7 +50,7 @@ describe('a record lifted by hand', () => {
   })
 
   it('sends the strokes rather than the drawing’s key', () => {
-    const drawing = peekWaypoint(lawHandle, 'en', null)?.visual
+    const drawing = peekRecord(lawHandle, 'en', null)?.visual
 
     // The keys of the drawing table are the record ids, which are the name
     // slugs, so a key would spell the name the fog was for.
@@ -89,7 +82,6 @@ describe('a record lifted by hand', () => {
 
   it('answers nothing at all to anything it did not mint', () => {
     for (const rubbish of ['', 'nami', 'zzzzzz', '-1', '../etc']) {
-      expect(peekWaypoint(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekCharacter(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekRecord(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekDossier(rubbish, 'en', null), rubbish).toBeUndefined()

@@ -213,27 +213,6 @@ export const dur = stylex.defineVars({
 })
 
 /**
- * How long the fold's ambient loops take. None of them answers a press, so
- * they are measured in seconds rather than in the three interaction buckets
- * above: the sea, the ship and the sky are the room the page is in.
- *
- * The four swell rows are the parallax, and their order is the depth order:
- * the row nearest the reader crosses a crest roughly twice as often as the
- * one at the horizon. Every loop is guarded behind `prefers-reduced-motion`
- * at its call site, so these are the durations of something that may never
- * run.
- */
-export const drift = stylex.defineVars({
-  far: '21s',
-  mid: '15s',
-  near: '11s',
-  fore: '8s',
-  ship: '7s',
-  star: '5s',
-  halo: '16s',
-})
-
-/**
  * A chart is drawn with a ruler, so the radii are small. `pill` is kept for
  * the locale switch, which is the one control that reads as a toggle rather
  * than as a mark on the chart.

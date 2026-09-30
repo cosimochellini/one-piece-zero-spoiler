@@ -22,12 +22,21 @@ export const itDictionary: Dictionary = {
   'nav.fruits': 'Frutti',
   'nav.label': 'Pagine',
 
-  'hero.headline': 'La wiki di One Piece senza spoiler',
-  'hero.lede':
-    'Imposta il segnalibro dalla barra in alto: un episodio dell’anime, una stagione con il suo episodio o un capitolo del manga. Quello che viene dopo resta nella nebbia, ma puoi sempre aprirlo se vuoi.',
   'hero.setBookmark': 'Imposta il segnalibro',
   'hero.changeBookmark': 'Cambia segnalibro · {threshold}',
-  'hero.explore': 'Vai ai personaggi',
+
+  'home.point.episode': 'Episodio {threshold}',
+  'home.point.season': 'Stagione {season} · episodio {episode}',
+  'home.point.chapter': 'Capitolo {threshold}',
+  'home.unset': 'Non hai ancora scelto un segnalibro. Ti mostriamo l’inizio.',
+  'home.recent': 'Appena successo',
+  'home.before': 'Poco prima',
+  'home.noStories': 'Ancora nessuna storia.',
+  'home.storyAt.episode': 'Episodio {threshold}',
+  'home.storyAt.season': '{threshold}',
+  'home.storyAt.chapter': 'Circa capitolo {threshold}',
+  'home.more': 'Altre storie',
+  'home.cast': 'Chi conta adesso',
 
   'mark.unset': 'Imposta episodio',
   'mark.episode': 'EP {threshold}',
@@ -68,34 +77,13 @@ export const itDictionary: Dictionary = {
   'veil.peekFailed': 'Caricamento non riuscito. Riprova.',
   'veil.placeholder': 'Spoiler',
 
-  'chart.title': 'Le voci principali, nell’ordine della storia',
   'chart.opensAt.episode': 'Episodio {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Capitolo {threshold}',
-  'chart.foggedDescription.episode':
-    'Una voce dell’episodio {threshold}, dopo il tuo segnalibro.',
-  'chart.foggedDescription.season':
-    'Una voce di {threshold}, dopo il tuo segnalibro.',
-  'chart.foggedDescription.chapter':
-    'Una voce del capitolo {threshold}, dopo il tuo segnalibro.',
   'chart.hereSet.episode': 'Sei qui · episodio {threshold}',
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
   'chart.hereUnset': 'Nessun segnalibro · è tutto nella nebbia',
-
-  'legend.open': 'visibili',
-  'legend.covered': 'nella nebbia',
-  'legend.filed': 'in totale',
-
-  'faq.animeQ': 'Anime o manga?',
-  'faq.animeA':
-    'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha sia un numero di episodio sia uno di capitolo. Quando il punto esatto è incerto viene arrotondato per eccesso, così è più facile che una voce si apra tardi che presto.',
-  'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
-  'faq.bookmarkA':
-    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci nascoste non sono nella pagina che ricevi. Non serve un account e non c’è nessun tracciamento.',
-  'faq.peekQ': 'Posso vedere una voce nascosta?',
-  'faq.peekA':
-    'Sì, premi “Mostra comunque”. La scelta non viene salvata e il resto rimane nascosto.',
 
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',

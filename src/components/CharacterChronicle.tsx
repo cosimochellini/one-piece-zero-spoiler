@@ -74,9 +74,10 @@ function StoryRow({ entry }: { readonly entry: ChronicleEntry }): ReactElement {
  * A paragraph cut into words and names. A name is a link to the character's
  * own page, which is always one the reader may open: the server only builds
  * a link from a story the reader has reached, and a story may only name a
- * character filed no later than its own episode.
+ * character filed no later than its own episode. The home page sets its
+ * stories in the same prose.
  */
-function Prose({
+export function Prose({
   segments,
 }: {
   readonly segments: readonly ProseSegment[]

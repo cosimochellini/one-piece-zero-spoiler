@@ -28,12 +28,21 @@ export const enDictionary = {
   'nav.fruits': 'Fruits',
   'nav.label': 'Pages',
 
-  'hero.headline': 'The One Piece wiki without spoilers',
-  'hero.lede':
-    'Set your bookmark in the top bar: an anime episode, a season and episode, or a manga chapter. Anything that comes after it stays under fog, and you can still open it if you want to.',
   'hero.setBookmark': 'Set your bookmark',
   'hero.changeBookmark': 'Change bookmark · {threshold}',
-  'hero.explore': 'Browse characters',
+
+  'home.point.episode': 'Episode {threshold}',
+  'home.point.season': 'Season {season} · episode {episode}',
+  'home.point.chapter': 'Chapter {threshold}',
+  'home.unset': 'You have not set a bookmark yet. This is the start.',
+  'home.recent': 'Just happened',
+  'home.before': 'Just before',
+  'home.noStories': 'No stories yet.',
+  'home.storyAt.episode': 'Episode {threshold}',
+  'home.storyAt.season': '{threshold}',
+  'home.storyAt.chapter': 'About chapter {threshold}',
+  'home.more': 'More stories',
+  'home.cast': 'Who matters now',
 
   'mark.unset': 'Set episode',
   'mark.episode': 'EP {threshold}',
@@ -74,34 +83,13 @@ export const enDictionary = {
   'veil.peekFailed': 'Could not load it. Try again.',
   'veil.placeholder': 'Spoiler',
 
-  'chart.title': 'The main entries, in story order',
   'chart.opensAt.episode': 'Episode {threshold}',
   'chart.opensAt.season': '{threshold}',
   'chart.opensAt.chapter': 'Chapter {threshold}',
-  'chart.foggedDescription.episode':
-    'An entry from episode {threshold}, after your bookmark.',
-  'chart.foggedDescription.season':
-    'An entry from {threshold}, after your bookmark.',
-  'chart.foggedDescription.chapter':
-    'An entry from chapter {threshold}, after your bookmark.',
   'chart.hereSet.episode': 'You are here · episode {threshold}',
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
   'chart.hereUnset': 'No bookmark set · everything is under fog',
-
-  'legend.open': 'open to you',
-  'legend.covered': 'under fog',
-  'legend.filed': 'in total',
-
-  'faq.animeQ': 'Anime or manga?',
-  'faq.animeA':
-    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain it is rounded up, so an entry is more likely to open late than early.',
-  'faq.bookmarkQ': 'Where is my bookmark stored?',
-  'faq.bookmarkA':
-    'In a cookie on this device. The server reads it before building the page, so hidden entries are not in the page you receive. There is no account and no tracking.',
-  'faq.peekQ': 'Can I see a hidden entry?',
-  'faq.peekA':
-    'Yes. Press “Show anyway” on it. The choice is not saved, and everything else stays hidden.',
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':

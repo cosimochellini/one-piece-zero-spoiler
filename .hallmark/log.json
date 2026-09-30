@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-09-30",
+    "macrostructure": "Marquee Hero (landing: the arc's own drawing as the fold backdrop)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: the existing arc drawing set at 136% of the fold and cropped, on a halo of its own tint",
+    "nav": "N9 edge-aligned (shared)",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "fold (point in mono · arc name as h1 · arc sentence · change-bookmark chip; one-line notice when no bookmark) · thick rule · 'Just happened' ledger (3 stories whole, the rest as native details; byline = mark in the reader's unit + subject link; 'Just before' when the arc has none yet; 'No stories yet.') · 'Who matters now' six crests",
+    "brief": "Rebuild the landing per docs/homepage.md: where am I, what just happened, who matters now. Removed the route chart, the counters, the night-sea fold and the FAQ. Decisions with the user: Marquee Hero, drawing as backdrop, delete the orphans, subject + markers count as mentions, CharacterCard crests, previous arc's stories in full as fallback."
+  },
+  {
     "date": "2026-09-12",
     "macrostructure": "Catalogue + grouped inventory (characters index: crests, then shelves by arc) · Split Studio (character page, dossier added)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",

@@ -6,12 +6,11 @@ import type {
   FruitView,
   PortView,
   RecordView,
-  WaypointView,
 } from '~/lib/view/records'
 
 import { entityForHandle } from './handle.server'
 import { portOf } from './pages.server'
-import { characterOf, fruitOf, recordOf, waypointOf } from './project.server'
+import { characterOf, fruitOf, recordOf } from './project.server'
 
 /**
  * Trading a handle for the record it stands for.
@@ -32,16 +31,6 @@ import { characterOf, fruitOf, recordOf, waypointOf } from './project.server'
  * moving the bookmark, so a record drawn again later in the story is lifted
  * as the reader would see it, not as it stands at the end.
  */
-
-/** A waypoint on the chart, which prints a summary beside the drawing. */
-export function peekWaypoint(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): undefined | WaypointView {
-  const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : waypointOf(entity, locale, bookmark)
-}
 
 /** A character, as a crest or a tile draws it. */
 export function peekCharacter(

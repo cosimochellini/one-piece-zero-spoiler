@@ -3,7 +3,13 @@ import type { EntityKind } from '~/lib/view/records'
 
 import { entities, sagas } from './entities'
 import { orderByMode } from './order'
-import type { CharacterDossier, Entity, LocalizedText } from './types'
+import type {
+  CharacterDossier,
+  Dated,
+  Entity,
+  LocalizedText,
+  Story,
+} from './types'
 
 /**
  * The character layer of the archive: which records are characters, which
@@ -159,6 +165,29 @@ export function roleOf(entity: Entity): LocalizedText | undefined {
   return dossierOf(entity)?.role
 }
 
+/** One story, with the character whose chronicle it belongs to. */
+export type FiledStory = {
+  readonly character: Entity
+  readonly episode: number
+  readonly story: Story
+}
+
+/**
+ * Every story in the archive, ascending by the episode it concludes at; ties
+ * keep route order. The chronicles are filed per character, and the home
+ * page reads them across characters, by when they happen.
+ */
+export const stories: readonly FiledStory[] = characters
+  .flatMap((character) => {
+    const chronicle = dossierOf(character)?.chronicle ?? []
+    return chronicle.map((entry) => filedStory(character, entry))
+  })
+  .toSorted((a, b) => a.episode - b.episode)
+
+function filedStory(character: Entity, entry: Dated<Story>): FiledStory {
+  return { character, episode: entry.episode, story: entry.value }
+}
+
 /**
  * One shelf of the signal book: an arc and the characters first met along
  * it. A character is shelved under the arc with the greatest threshold no
@@ -171,7 +200,10 @@ export type BookSection = {
   readonly characters: readonly Entity[]
 }
 
-const arcs = route.filter((entity) => entity.kind === 'arc')
+/** Every arc, in route order. */
+export const arcs: readonly Entity[] = route.filter(
+  (entity) => entity.kind === 'arc',
+)
 
 function shelfOf(character: Entity): Entity | undefined {
   let shelf: Entity | undefined
