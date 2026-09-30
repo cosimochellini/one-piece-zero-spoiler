@@ -594,8 +594,8 @@ export const wholeCake: Saga = {
     {
       id: 'zou',
       kind: 'place',
-      revealedAtEpisode: 751,
-      revealedAtChapter: 802,
+      revealedAtEpisode: 752,
+      revealedAtChapter: 803,
       name: { it: 'Zou', en: 'Zou' },
       summary: {
         it: 'Un paese sulla schiena di un elefante grande come una montagna, che cammina nella nebbia del Nuovo Mondo, abitato da mille anni da una tribù che odia gli umani.',

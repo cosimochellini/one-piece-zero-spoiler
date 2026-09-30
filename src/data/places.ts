@@ -578,7 +578,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       en: 'The iron bridge from Dressrosa',
     },
     log: {
-      it: 'La squadra della consegna ci arriva lungo il ponte di ferro che parte da Dressrosa, mentre i pesci combattenti ne strappano dei pezzi, e fa l’ultimo tratto in volo, portata dal suo stesso prigioniero. L’isola dovrebbe essere deserta, ma dall’altra parte delle voci scappano in preda al panico appena vedono un umano. Oltre una riva piena di relitti di navi affondate dai pesci c’è una foresta selvaggia.',
+      it: 'La squadra della consegna ci arriva lungo il ponte di ferro che parte da Dressrosa, mentre i pesci combattenti ne strappano dei pezzi, e fa l’ultimo tratto in volo, portata dal suo stesso prigioniero. L’isola dovrebbe essere deserta, eppure dall’altra parte si sentono voci di qualcuno che scappa in preda al panico alla vista di un umano. Oltre una riva piena di relitti di navi affondate dai pesci c’è una foresta selvaggia.',
       en: 'The handover team reaches it along the iron bridge from Dressrosa while fighting fish tear pieces out of it, and covers the last stretch in the air, carried by its own prisoner. The island is supposed to be deserted, yet voices on the far side run off in a panic at the sight of a human. Past a shore full of the wrecks of ships the fish have sunk stands a very wild forest.',
     },
     filedHere: ['leo'],
@@ -718,8 +718,8 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       en: 'A barred mine entrance',
     },
     log: {
-      it: 'Rufy ci arriva prigioniero dopo lo scontro con Kaido a Kuri. Qui i prigionieri lavorano nelle miniere e battono il ferro per farne armi, mentre le guardie urlano che più è duro il ferro, più prospera la capitale, e al nuovo arrivato promettono la cella finché non piegherà la testa. Nei sotterranei c’è una cella che nessuno apre: chi ci sta dentro viene nutrito di pesce velenoso, e non ne è mai morto.',
-      en: 'Luffy is brought here as a prisoner after his fight with Kaido in Kuri. The prisoners work the mines and beat iron into weapons while the guards shout that the harder the iron, the more the capital thrives, and the newcomer is promised a cell until he bends the knee. Down in the cells there is one that nobody opens: whoever is inside is fed poisonous fish, and has never died of it.',
+      it: 'Rufy ci arriva prigioniero dopo lo scontro con Kaido a Kuri. Qui i prigionieri lavorano nelle miniere e battono il ferro per farne armi, e al nuovo arrivato promettono la cella finché non piegherà la testa. Nei sotterranei c’è una cella che nessuno apre: chi ci sta dentro viene nutrito di pesce velenoso, e non ne è mai morto.',
+      en: 'Luffy is brought here as a prisoner after his fight with Kaido in Kuri. The prisoners work the mines and beat iron into weapons, and the newcomer is promised a cell until he bends the knee. Down in the cells there is one that nobody opens: whoever is inside is fed poisonous fish, and has never died of it.',
     },
     filedHere: [
       'dobon',
