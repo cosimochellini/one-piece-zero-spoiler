@@ -565,14 +565,13 @@ export const eggheadArt = {
     { d: 'M38 128 l14 -5 M102 128 l14 -5', role: 'accent' },
     shadow(80, 188, 52),
   ],
-  // A crescent blade on a short mount, the arc it flies when thrown drawn
-  // above it.
+  // A crescent blade on a short mount, worn upright on the head like an
+  // ornament.
   'guillotine': [
     { d: 'M34 124 C34 56 126 56 126 124 C114 86 46 86 34 124 Z' },
     { d: 'M42 112 C46 72 114 72 118 112', role: 'accent' },
     { d: 'M62 124 h36 v14 h-36 Z' },
     { d: 'M70 138 v12 M90 138 v12', role: 'soft' },
-    { d: 'M20 66 q60 -56 120 0', role: 'ambient', dashed: true },
     shadow(80, 188, 40),
   ],
   // A peaked Marine cap, and five claw marks torn through the air above it.
