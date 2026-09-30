@@ -1301,7 +1301,8 @@ export const egghead: Saga = {
     },
     // No status: the robot powers down at 1153, and "deceased" would say
     // more than the show does about a machine. No origin: "no one knows
-    // where this iron giant came from" (1098).
+    // where this iron giant came from" (1098). The waking in the log and the
+    // summary, through the fire and saying sorry to Joy Boy, is 1145 (ch 1111).
     'emet': {
       chronicle: eggheadChronicles.emet,
       role: { it: 'Robot antico', en: 'Ancient robot' },
