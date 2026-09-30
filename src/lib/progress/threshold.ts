@@ -18,10 +18,10 @@ export type ThresholdSentence =
   | 'character.foggedDescription'
   | 'character.opensAt'
   | 'characters.sectionOpensAt'
-  | 'chart.foggedDescription'
   | 'chart.opensAt'
   | 'fruit.foggedDescription'
   | 'fruit.opensAt'
+  | 'home.storyAt'
   | 'places.firstSeen'
   | 'places.foggedDescription'
   | 'veil.locked'
@@ -45,7 +45,7 @@ export function describeThreshold({
 }
 
 /** The sentences that name the reader's own bookmark. */
-export type BookmarkSentence = 'chart.hereSet' | 'mark'
+export type BookmarkSentence = 'chart.hereSet' | 'home.point' | 'mark'
 
 /** The reader's bookmark, said in its own unit. */
 export function describeBookmark(

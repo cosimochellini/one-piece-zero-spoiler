@@ -323,15 +323,28 @@ export type ShelfView = {
   readonly total: number
 }
 
+/** One story on the home page: a reached entry, and whose page it leads to. */
+export type HomeStory = ChronicleEntry & {
+  readonly subject: { readonly id: string; readonly name: string }
+}
+
 /**
- * The landing chart. Open first, then covered: the two are a prefix and a
- * suffix of one route, which is what lets the reader's position be a single
- * line across it rather than a marker interpolated along a path.
+ * The home page at the reader's bookmark, or at the first episode when there
+ * is none. Nothing in it is under fog: every story concluded and every
+ * character named is one the reader has reached, so there is nothing to
+ * cover and no handle to lift.
  */
-export type ChartView = {
-  readonly covered: readonly CoveredRecord[]
-  readonly filed: number
-  readonly open: readonly WaypointView[]
+export type HomeView = {
+  /** The stories are the previous arc's, because this one has none yet. */
+  readonly before: boolean
+  /** The characters the stories name most, most named first, at most six. */
+  readonly cast: readonly CharacterView[]
+  /** The arc the reader is in: the last one that opens at or before them. */
+  readonly saga: WaypointView
+  /** The stories concluded in the arc up to the bookmark, most recent first. */
+  readonly stories: readonly HomeStory[]
+  /** No bookmark is set; the page shows the start. */
+  readonly unset: boolean
 }
 
 /**

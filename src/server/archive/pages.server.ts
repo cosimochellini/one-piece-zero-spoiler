@@ -2,7 +2,6 @@ import {
   bookSections,
   dossierOf as characterDossierOf,
   characters,
-  chart,
   chartWith,
   featuredCharacters,
   getCharacter,
@@ -19,7 +18,6 @@ import { isRevealed } from '~/lib/progress/spoiler'
 import type {
   CharacterDetail,
   CharacterView,
-  ChartView,
   CoveredRecord,
   DocumentHead,
   PortView,
@@ -39,7 +37,6 @@ import {
   recordOf,
   searchableOf,
   slotOf,
-  waypointOf,
 } from './project.server'
 
 /**
@@ -55,23 +52,6 @@ import {
  * a cookie. The wrappers read it, from the request, and never from the
  * client: a bookmark passed in over the wire would make the fog a suggestion.
  */
-
-/** The landing chart: arcs, places, ships and the characters in evidence. */
-export function chartPage(bookmark: Bookmark, locale: Locale): ChartView {
-  const ordered = orderByMode(chart, modeOf(bookmark))
-
-  return {
-    open: ordered.flatMap((entity) => {
-      return isRevealed(entity, bookmark) ?
-          [waypointOf(entity, locale, bookmark)]
-        : []
-    }),
-    covered: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
-    ),
-    filed: ordered.length,
-  }
-}
 
 /** The fold of the signal book: the crests, and how much is behind them. */
 export type CharactersPage = {

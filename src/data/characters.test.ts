@@ -17,6 +17,7 @@ import {
   getCharacter,
   nearbyCharacters,
   routePositionOf,
+  stories,
 } from './characters'
 import { entities, sagas } from './entities'
 import type { Entity, LocalizedText, Story, Timeline } from './types'
@@ -461,6 +462,13 @@ describe('the dossiers', () => {
 })
 
 describe('the chronicles', () => {
+  it('files every story once, across characters, by when it concludes', () => {
+    const episodes = stories.map((filed) => filed.episode)
+
+    expect(stories).toHaveLength(STORIES.length)
+    expect(episodes.toSorted((a, b) => a - b)).toStrictEqual(episodes)
+  })
+
   it('tells the story of every character on the list, in several stories', () => {
     for (const id of CHRONICLED_IDS) {
       const chronicle = dossierOf(must(id))?.chronicle

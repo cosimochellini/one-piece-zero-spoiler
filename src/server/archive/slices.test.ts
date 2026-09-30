@@ -1,26 +1,27 @@
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapters'
+import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import { episodeOf, isRevealed } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterChronicle,
   ChronicleEntry,
+  HomeView,
   RoutePositionView,
   ShelfView,
   Stroke,
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
+import { homePage } from './home.server'
 import {
   characterPage,
   charactersPage,
-  chartPage,
   nearbyPage,
   placesPage,
   routePosition,
@@ -186,51 +187,102 @@ describe('the slice of the archive a page is given', () => {
     saysNothing(page, null)
   })
 
-  it('splits the chart at the reader’s bookmark, open first', () => {
-    const chart = chartPage(ep(500), 'en')
+  it('opens the home page on the start for a reader with no bookmark', () => {
+    const home = homePage(null, 'en')
 
-    expect(chart.open.length).toBeGreaterThan(0)
-    expect(chart.covered.length).toBeGreaterThan(0)
-    expect(chart.open.length + chart.covered.length).toBe(chart.filed)
+    expect(home.unset).toBe(true)
+    expect(home.saga.id).toBe('romance-dawn')
 
-    for (const waypoint of chart.open) {
-      expect(waypoint.revealedAtEpisode).toBeLessThanOrEqual(500)
-    }
-    for (const covered of chart.covered) {
-      expect(covered.revealedAtEpisode).toBeGreaterThan(500)
-      expect(covered).not.toHaveProperty('id')
-      expect(covered).not.toHaveProperty('name')
-    }
+    // The page is computed as at the first episode, so it is held to that:
+    // a `null` bookmark reveals nothing by design and would fail everything.
+    saysNothing(home, ep(1))
   })
 
-  it('keeps the open waypoints a prefix, whatever the reader counts in', () => {
-    // The horizon is one element between two runs rather than a marker
-    // interpolated along the route, and that only works on a prefix.
-    const marks: readonly NonNullable<Bookmark>[] = [
-      { mode: 'episode', episode: 92 },
-      { mode: 'season', season: 4, episode: 1 },
+  it('puts a reader at the first episode in the arc, not the saga', () => {
+    const home = homePage(ep(1), 'en')
+
+    expect(home.unset).toBe(false)
+    expect(home.saga.id).toBe('romance-dawn')
+  })
+
+  it('tells the home page nothing the reader has not reached', () => {
+    const marks: readonly Bookmark[] = [
+      ep(1),
+      ep(60),
+      ep(500),
+      ep(1100),
+      ep(1300),
+      { mode: 'season', season: 4, episode: 38 },
+      { mode: 'chapter', chapter: 1 },
       { mode: 'chapter', chapter: 155 },
+      { mode: 'chapter', chapter: 1000 },
     ]
 
     for (const bookmark of marks) {
-      const chart = chartPage(bookmark, 'en')
-      const thresholds = chart.open.map((entry) => {
-        return bookmark.mode === 'chapter' ?
-            entry.revealedAtChapter
-          : entry.revealedAtEpisode
-      })
+      const home = homePage(bookmark, 'en')
+      const reached = episodeOf(timelineBookmark(bookmark)) ?? 0
+      const episodes = home.stories.map((story) => story.revealedAtEpisode)
 
-      expect(thresholds.toSorted((a, b) => a - b)).toStrictEqual(thresholds)
+      saysNothing(home, bookmark)
+
+      expect(isRevealed(home.saga, bookmark)).toBe(true)
+      expect(home.cast.length).toBeLessThanOrEqual(6)
+      expect(episodes.toSorted((a, b) => b - a)).toStrictEqual(episodes)
+
+      // Reaching back to the arc before is only ever a non-empty answer, and
+      // the stories are then all below this arc's start rather than above it.
+      const start = home.saga.revealedAtEpisode
+      const inside =
+        home.before ?
+          episodes.length > 0 && episodes.every((episode) => episode < start)
+        : episodes.every((episode) => episode >= start)
+
+      expect(episodes.every((episode) => episode <= reached)).toBe(true)
+      expect(inside).toBe(true)
     }
   })
 
-  it('tells a reader with no bookmark nothing but the thresholds', () => {
-    const chart = chartPage(null, 'en')
+  it('reaches back to the arc before when this one has no story yet', () => {
+    // Jaya opens at 144, and its first story concludes later than that.
+    const home = homePage(ep(144), 'en')
 
-    expect(chart.open).toHaveLength(0)
-    expect(chart.covered).toHaveLength(chart.filed)
+    expect(home.saga.id).toBe('jaya-arc')
+    expect(home.before).toBe(true)
+    expect(home.stories.length).toBeGreaterThan(0)
+  })
 
-    saysNothing(chart, null)
+  it('names the characters the stories name most, most named first', () => {
+    const home = homePage(ep(650), 'en')
+    const counts = new Map<string, number>()
+    for (const story of home.stories) {
+      const ids = [
+        story.subject.id,
+        ...story.body.flatMap((segment) =>
+          segment.kind === 'link' ? [segment.id] : [],
+        ),
+      ]
+      for (const id of ids) {
+        counts.set(id, (counts.get(id) ?? 0) + 1)
+      }
+    }
+    const tallies = home.cast.map((character) => counts.get(character.id) ?? 0)
+
+    expect(home.stories.length).toBeGreaterThan(3)
+    expect(home.cast).toHaveLength(6)
+    expect(tallies.every((count) => count > 0)).toBe(true)
+    expect(tallies.toSorted((a, b) => b - a)).toStrictEqual(tallies)
+  })
+
+  it('carries the home page in the locale the page asked for', () => {
+    const en: HomeView = homePage(ep(650), 'en')
+    const italian: HomeView = homePage(ep(650), 'it')
+
+    expect(en.saga.id).toBe(italian.saga.id)
+    expect(en.saga.name).toBe(onFile(en.saga.id).name.en)
+    expect(italian.saga.name).toBe(onFile(italian.saga.id).name.it)
+    expect(italian.stories[0]?.subject.name).toBe(
+      onFile(italian.stories[0]?.subject.id ?? '').name.it,
+    )
   })
 
   it('shelves every character exactly once, and fogs the right ones', () => {
@@ -335,7 +387,7 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('never leaks a name through a handle', () => {
-    for (const covered of chartPage(null, 'en').covered) {
+    for (const covered of placesPage(null, 'en').covered) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
   })
