@@ -41,7 +41,6 @@ export const enDictionary = {
   'home.storyAt.episode': 'Episode {threshold}',
   'home.storyAt.season': '{threshold}',
   'home.storyAt.chapter': 'About chapter {threshold}',
-  'home.more': 'More stories',
   'home.cast': 'Who matters now',
 
   'mark.unset': 'Set episode',

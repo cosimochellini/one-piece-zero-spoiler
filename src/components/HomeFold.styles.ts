@@ -22,12 +22,17 @@ import {
 export const styles = stylex.create({
   fold: {
     display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr)',
     paddingBlockStart: space.xs,
-    position: 'relative',
     rowGap: { 'default': space.lg, '@media (min-width: 40rem)': 0 },
   },
   figure: {
     'borderRadius': radius.card,
+    // From 40rem the words share the frame's grid cell, so the frame is as
+    // tall as its ratio or as the words, whichever is more: a long name over
+    // the notice never grows out of the top of it.
+    'gridColumn': '1',
+    'gridRow': '1',
     'overflow': 'clip',
     'aspectRatio': {
       'default': '4 / 5',
@@ -66,7 +71,11 @@ export const styles = stylex.create({
     marginInline: 'auto',
     aspectRatio: '160 / 200',
     insetBlockStart: { 'default': '-9%', '@media (min-width: 40rem)': '-18%' },
-    insetInlineEnd: { 'default': 0, '@media (min-width: 40rem)': '4%' },
+    insetInlineEnd: {
+      'default': 0,
+      '@media (min-width: 40rem)': '-12%',
+      '@media (min-width: 60rem)': '4%',
+    },
     insetInlineStart: { 'default': 0, '@media (min-width: 40rem)': 'auto' },
     opacity: 0.92,
     position: 'absolute',
@@ -74,14 +83,16 @@ export const styles = stylex.create({
   },
   copy: {
     gap: space.sm,
+    gridColumn: '1',
+    gridRow: { 'default': '2', '@media (min-width: 40rem)': '1' },
+    alignSelf: 'end',
     display: 'grid',
-    insetBlockEnd: 0,
-    insetInlineStart: 0,
     justifyItems: 'start',
     paddingBlockEnd: { 'default': 0, '@media (min-width: 40rem)': space.md },
+    paddingBlockStart: { 'default': 0, '@media (min-width: 40rem)': space.xl },
     paddingInlineEnd: { 'default': 0, '@media (min-width: 40rem)': space.xl },
     paddingInlineStart: { 'default': 0, '@media (min-width: 40rem)': space.md },
-    position: { 'default': 'static', '@media (min-width: 40rem)': 'absolute' },
+    position: 'relative',
     maxWidth: 'min(100%, 38rem)',
   },
   // The one sentence for a reader with no bookmark, set apart by the accent

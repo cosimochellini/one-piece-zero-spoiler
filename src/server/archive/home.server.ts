@@ -42,13 +42,7 @@ const CAST_COUNT = 6
  */
 export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
   const at = bookmark ?? FIRST_VISIT
-  const reached = orderByMode(arcs, modeOf(at)).filter((arc) =>
-    isRevealed(arc, at),
-  )
-  const [saga, previous] = reached.toReversed()
-  if (saga === undefined) {
-    throw new Error('No arc opens at the first episode')
-  }
+  const [saga, previous] = reachedArcs(at)
 
   // A chapter bookmark reaches the episode its chapter reaches, rounded down.
   const readerEpisode = episodeOf(timelineBookmark(at)) ?? 0
@@ -87,6 +81,22 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
         castOf(shown, at, locale)
       : newcomersOf(saga, at, locale),
   }
+}
+
+/**
+ * The arcs the reader has reached, last first: the one they are in, then the
+ * one before. A bookmark the cookie grammar admits always reaches the first
+ * arc; the fallback is for the type, not for a case the route can show.
+ */
+function reachedArcs(at: Bookmark): readonly [Entity, Entity | undefined] {
+  const reached = orderByMode(arcs, modeOf(at)).filter((arc) =>
+    isRevealed(arc, at),
+  )
+  const [saga = arcs[0], previous] = reached.toReversed()
+  if (saga === undefined) {
+    throw new Error('The archive files no arc')
+  }
+  return [saga, previous]
 }
 
 /**
