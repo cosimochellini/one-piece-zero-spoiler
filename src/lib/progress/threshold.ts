@@ -45,7 +45,7 @@ export function describeThreshold({
 }
 
 /** The sentences that name the reader's own bookmark. */
-export type BookmarkSentence = 'chart.hereSet' | 'home.point' | 'mark'
+export type BookmarkSentence = 'chart.hereSet' | 'mark'
 
 /** The reader's bookmark, said in its own unit. */
 export function describeBookmark(

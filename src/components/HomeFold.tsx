@@ -9,7 +9,6 @@ import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, FIRST_EPISODE } from '~/lib/progress/episode'
-import { describeBookmark } from '~/lib/progress/threshold'
 import type { TintId, WaypointView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -32,22 +31,27 @@ export type HomeFoldProps = {
 /**
  * The reader's point, in the unit they chose: "Episode 650", "Chapter 1044"
  * or "Season 2 · episode 3". With no bookmark it is the first episode, which
- * is where the page is standing in for one.
+ * is where the page is standing in for one. Spelled out per mode rather than
+ * through `describeBookmark`, because the season form carries two numbers.
  */
 function pointOf(t: Translate, bookmark: Bookmark): string {
-  if (bookmark === null) {
-    return describeBookmark(t, 'home.point', {
-      mode: 'episode',
-      episode: FIRST_EPISODE,
-    })
+  switch (bookmark?.mode) {
+    case 'chapter': {
+      return t('home.point.chapter', { threshold: bookmark.chapter })
+    }
+    case 'episode': {
+      return t('home.point.episode', { threshold: bookmark.episode })
+    }
+    case 'season': {
+      return t('home.point.season', {
+        season: bookmark.season,
+        episode: bookmark.episode,
+      })
+    }
+    case undefined: {
+      return t('home.point.episode', { threshold: FIRST_EPISODE })
+    }
   }
-  if (bookmark.mode === 'season') {
-    return t('home.point.season', {
-      season: bookmark.season,
-      episode: bookmark.episode,
-    })
-  }
-  return describeBookmark(t, 'home.point', bookmark)
 }
 
 /**

@@ -163,7 +163,7 @@ function ClosedStory({ story }: { readonly story: HomeStory }): ReactElement {
   return (
     <details {...stylex.props(styles.closed)}>
       <summary {...stylex.props(styles.summary)}>
-        <span {...stylex.props(styles.summaryTitle)}>{story.title}</span>
+        <h3 {...stylex.props(styles.summaryTitle)}>{story.title}</h3>
       </summary>
       <div {...stylex.props(styles.story)}>
         <Byline story={story} />
@@ -280,6 +280,8 @@ const styles = stylex.create({
     '::marker': { color: color.accent },
   },
   summaryTitle: {
+    margin: 0,
+    display: 'inline',
     fontFamily: font.display,
     fontSize: text.lg,
     fontWeight: 800,
