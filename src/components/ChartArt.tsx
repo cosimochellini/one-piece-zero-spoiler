@@ -29,14 +29,16 @@ import { color, rule } from '~/styles/tokens.stylex'
  * page nests it in a seal.
  */
 export function ArtStrokes({ strokes, tint: hue }: ArtProps): ReactElement {
-  // Keyed by the path itself: a drawing is a fixed list that is never
-  // reordered, and no stroke in it is ever drawn twice.
+  // Keyed by the path and its transform: a drawing is a fixed list that is
+  // never reordered, and one shape may be drawn again only under another
+  // transform — a windmill's blades, a flower's petals. The art data tests
+  // hold every drawing to that.
   return (
     <>
       {strokes.map((stroke) => {
         return (
           <path
-            key={stroke.d}
+            key={`${stroke.d}|${stroke.transform ?? ''}`}
             d={stroke.d}
             transform={stroke.transform}
             vectorEffect="non-scaling-stroke"

@@ -31,6 +31,14 @@ function isADrawing(id: string, strokes: readonly Stroke[]): void {
   for (const stroke of strokes) {
     expect(stroke.d.length, id).toBeGreaterThan(0)
   }
+
+  // The renderer keys each path by its `d` and transform, so the same shape
+  // may repeat only under another transform; a true duplicate is a React key
+  // clash and a line drawn over itself.
+  const keys = strokes.map((stroke) => `${stroke.d}|${stroke.transform ?? ''}`)
+  const distinct = new Set(keys)
+
+  expect(distinct.size, id).toBe(keys.length)
 }
 
 describe('the drawings', () => {
