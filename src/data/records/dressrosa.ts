@@ -1281,6 +1281,7 @@ export const dressrosa: Saga = {
       epithet: [
         { episode: 632, value: { it: 'La Trivella', en: 'the Drill' } },
       ],
+      bounty: [{ episode: 645, value: 500_000_000 }],
     },
     'ideo': {
       role: { it: 'Pugile del colosseo', en: 'Colosseum boxer' },
