@@ -439,8 +439,8 @@ export const thrillerBark: Saga = {
     'victoria-cindry': {
       role: { it: 'Cameriera zombie', en: 'Zombie maid' },
       log: {
-        it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire su questa nave calcasse i palcoscenici, e che fosse fra le più amate.',
-        en: 'She carries the tray along the mansion corridors and answers the surgeon’s orders in a flat voice while the plates slide out of her fingers and break on the floor. Stitches cross her face and her arms, and she does not seem to mind. They say that before she ended up on this ship she was an actress, and a beloved one.',
+        it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire qui calcasse i palcoscenici, e che fosse fra le più amate.',
+        en: 'She carries the tray along the mansion corridors and answers the surgeon’s orders in a flat voice while the plates slide out of her fingers and break on the floor. Stitches cross her face and her arms, and she does not seem to mind. They say that before she ended up here she was an actress, and a beloved one.',
       },
       status: [{ episode: 342, value: 'deceased' }],
       affiliation: [
