@@ -666,7 +666,6 @@ export const waterSeven: Saga = {
         { episode: 207, value: { it: 'La Volpe d’Argento', en: 'Silver Fox' } },
       ],
       devilFruit: [{ episode: 208, value: ['slow-slow-fruit'] }],
-      bounty: [{ episode: 207, value: 24_000_000 }],
     },
     'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
@@ -1461,6 +1460,7 @@ export const waterSeven: Saga = {
           },
         },
       ],
+      bounty: [{ episode: 1121, value: 3_000_000_000 }],
     },
     'thatch': {
       chronicle: waterSevenChronicles.thatch,

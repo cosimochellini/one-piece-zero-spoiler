@@ -934,6 +934,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
+      bounty: [{ episode: 584, value: 80_060_000 }],
     },
     'caesar-clown': {
       role: { it: 'Scienziato di Punk Hazard', en: 'Scientist of Punk Hazard' },
@@ -957,7 +958,7 @@ export const dressrosa: Saga = {
       ],
       epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
       devilFruit: [{ episode: 584, value: ['gas-gas-fruit'] }],
-      bounty: [{ episode: 584, value: 300_000_000 }],
+      bounty: [{ episode: 589, value: 300_000_000 }],
     },
     'monet': {
       role: {
@@ -1156,7 +1157,7 @@ export const dressrosa: Saga = {
         { episode: 632, value: { it: 'Il Cannibale', en: 'the Cannibal' } },
       ],
       devilFruit: [{ episode: 660, value: ['barrier-barrier-fruit'] }],
-      bounty: [{ episode: 632, value: 150_000_000 }],
+      bounty: [{ episode: 636, value: 150_000_000 }],
     },
     'riku-doldo-iii': {
       role: { it: 'Ex re di Dressrosa', en: 'Former king of Dressrosa' },
@@ -1234,7 +1235,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      bounty: [{ episode: 632, value: 280_000_000 }],
+      bounty: [{ episode: 634, value: 280_000_000 }],
     },
     'sai': {
       role: { it: 'Erede della Flotta Happo', en: 'Heir of the Happo Navy' },
@@ -1280,7 +1281,7 @@ export const dressrosa: Saga = {
       epithet: [
         { episode: 632, value: { it: 'La Trivella', en: 'the Drill' } },
       ],
-      bounty: [{ episode: 632, value: 500_000_000 }],
+      bounty: [{ episode: 645, value: 500_000_000 }],
     },
     'ideo': {
       role: { it: 'Pugile del colosseo', en: 'Colosseum boxer' },
@@ -1619,7 +1620,6 @@ export const dressrosa: Saga = {
           value: { it: 'Regno di Standing', en: 'Standing Kingdom' },
         },
       ],
-      bounty: [{ episode: 636, value: 148_000_000 }],
     },
     'gladius': {
       role: { it: 'Ufficiale dell’Armata Pica', en: 'Pica Army officer' },

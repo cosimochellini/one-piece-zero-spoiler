@@ -994,7 +994,7 @@ export const fishManIsland: Saga = {
       epithet: [
         { episode: 539, value: { it: 'l’Avventuriero', en: 'the Adventurer' } },
       ],
-      bounty: [{ episode: 539, value: 230_000_000 }],
+      bounty: [{ episode: 541, value: 230_000_000 }],
     },
     'aladine': {
       role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
@@ -1055,7 +1055,7 @@ export const fishManIsland: Saga = {
       ],
       origin: [{ episode: 571, value: { it: 'Zou', en: 'Zou' } }],
       devilFruit: [{ episode: 571, value: ['turtle-turtle-fruit'] }],
-      bounty: [{ episode: 571, value: 330_000_000 }],
+      bounty: [{ episode: 572, value: 330_000_000 }],
     },
     'baron-tamago': {
       role: {
@@ -1076,7 +1076,7 @@ export const fishManIsland: Saga = {
         },
       ],
       devilFruit: [{ episode: 571, value: ['egg-egg-fruit'] }],
-      bounty: [{ episode: 571, value: 429_000_000 }],
+      bounty: [{ episode: 816, value: 429_000_000 }],
     },
     'bobbin': {
       chronicle: fishManIslandChronicles.bobbin,
@@ -1100,6 +1100,7 @@ export const fishManIsland: Saga = {
       epithet: [
         { episode: 809, value: { it: 'il Taccagno', en: 'the Sweeper' } },
       ],
+      bounty: [{ episode: 823, value: 105_500_000 }],
     },
   },
 }

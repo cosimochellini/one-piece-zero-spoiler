@@ -622,7 +622,7 @@ export const skypiea: Saga = {
       devilFruit: [{ episode: 146, value: ['spring-spring-fruit'] }],
       bounty: [
         { episode: 146, value: 55_000_000 },
-        { episode: 632, value: 195_000_000 },
+        { episode: 635, value: 195_000_000 },
       ],
     },
     'roshio': {
@@ -641,6 +641,7 @@ export const skypiea: Saga = {
           },
         },
       ],
+      bounty: [{ episode: 146, value: 42_000_000 }],
     },
     'sarquiss': {
       chronicle: skypieaChronicles.sarquiss,
@@ -714,7 +715,10 @@ export const skypiea: Saga = {
         { episode: 462, value: ['dark-dark-fruit'] },
         { episode: 485, value: ['dark-dark-fruit', 'tremor-tremor-fruit'] },
       ],
-      bounty: [{ episode: 958, value: 2_247_600_000 }],
+      bounty: [
+        { episode: 917, value: 2_247_600_000 },
+        { episode: 1087, value: 3_996_000_000 },
+      ],
     },
     'bartholomew-kuma': {
       chronicle: skypieaChronicles['bartholomew-kuma'],
@@ -858,7 +862,7 @@ export const skypiea: Saga = {
         },
       ],
       devilFruit: [{ episode: 700, value: ['string-string-fruit'] }],
-      bounty: [{ episode: 700, value: 340_000_000 }],
+      bounty: [{ episode: 151, value: 340_000_000 }],
     },
     'rockstar': {
       chronicle: skypieaChronicles.rockstar,
@@ -879,6 +883,7 @@ export const skypiea: Saga = {
           },
         },
       ],
+      bounty: [{ episode: 151, value: 94_000_000 }],
     },
     'marco': {
       role: {
@@ -916,7 +921,6 @@ export const skypiea: Saga = {
         { episode: 461, value: { it: 'La Fenice', en: 'the Phoenix' } },
       ],
       devilFruit: [{ episode: 461, value: ['bird-bird-fruit-model-phoenix'] }],
-      bounty: [{ episode: 958, value: 1_374_000_000 }],
     },
     'gan-fall': {
       role: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },

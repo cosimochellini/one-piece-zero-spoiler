@@ -884,7 +884,7 @@ export const wholeCake: Saga = {
           value: ['elephant-elephant-fruit-ancient-model-mammoth'],
         },
       ],
-      bounty: [{ episode: 757, value: 1_000_000_000 }],
+      bounty: [{ episode: 759, value: 1_000_000_000 }],
     },
     'wanda': {
       role: MUSKETEER_ROLE,
@@ -961,7 +961,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 757, value: ZOU }],
-      bounty: [{ episode: 757, value: 382_000_000 }],
+      bounty: [{ episode: 816, value: 382_000_000 }],
     },
     'nekomamushi': {
       role: {
@@ -1100,7 +1100,10 @@ export const wholeCake: Saga = {
       origin: [{ episode: 786, value: TOTTO_LAND }],
       epithet: [{ episode: 786, value: { it: 'Big Mom', en: 'Big Mom' } }],
       devilFruit: [{ episode: 786, value: ['soul-soul-fruit'] }],
-      bounty: [{ episode: 958, value: 4_388_000_000 }],
+      bounty: [
+        { episode: 838, value: 500_000_000 },
+        { episode: 958, value: 4_388_000_000 },
+      ],
     },
     'charlotte-perospero': {
       role: { it: 'Ministro delle caramelle', en: 'Minister of candy' },
@@ -1119,7 +1122,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 787, value: TOTTO_LAND }],
       devilFruit: [{ episode: 787, value: ['lick-lick-fruit'] }],
-      bounty: [{ episode: 787, value: 700_000_000 }],
+      bounty: [{ episode: 849, value: 700_000_000 }],
     },
     'charlotte-cracker': {
       role: SWEET_COMMANDER_ROLE,
@@ -1133,7 +1136,7 @@ export const wholeCake: Saga = {
         { episode: 789, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
       ],
       devilFruit: [{ episode: 789, value: ['bis-bis-fruit'] }],
-      bounty: [{ episode: 789, value: 860_000_000 }],
+      bounty: [{ episode: 798, value: 860_000_000 }],
     },
     'charlotte-brulee': {
       role: BIG_MOM_DAUGHTER,
@@ -1292,7 +1295,7 @@ export const wholeCake: Saga = {
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
       devilFruit: [{ episode: 796, value: ['mochi-mochi-fruit'] }],
-      bounty: [{ episode: 796, value: 1_057_000_000 }],
+      bounty: [{ episode: 830, value: 1_057_000_000 }],
     },
     'vinsmoke-sora': {
       role: {
@@ -1338,7 +1341,7 @@ export const wholeCake: Saga = {
       affiliation: [{ episode: 810, value: SWEET_COMMANDER }],
       origin: [{ episode: 810, value: TOTTO_LAND }],
       devilFruit: [{ episode: 810, value: ['wring-wring-fruit'] }],
-      bounty: [{ episode: 810, value: 932_000_000 }],
+      bounty: [{ episode: 812, value: 932_000_000 }],
     },
     'charlotte-oven': {
       role: { it: 'Ministro della doratura', en: 'Minister of browning' },
@@ -1357,7 +1360,6 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
       devilFruit: [{ episode: 811, value: ['heat-heat-fruit'] }],
-      bounty: [{ episode: 811, value: 300_000_000 }],
     },
     'charlotte-daifuku': {
       role: { it: 'Ministro dei fagioli', en: 'Minister of beans' },
@@ -1376,7 +1378,6 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
       devilFruit: [{ episode: 811, value: ['puff-puff-fruit'] }],
-      bounty: [{ episode: 811, value: 300_000_000 }],
     },
     'charlotte-mont-dor': {
       role: { it: 'Ministro del formaggio', en: 'Minister of cheese' },
@@ -1395,7 +1396,6 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 811, value: TOTTO_LAND }],
       devilFruit: [{ episode: 811, value: ['book-book-fruit'] }],
-      bounty: [{ episode: 811, value: 120_000_000 }],
     },
     'streusen': {
       role: { it: 'Capocuoco di Totto Land', en: 'Head chef of Totto Land' },

@@ -1062,9 +1062,9 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 590, value: ['op-op-fruit'] }],
       bounty: [
         { episode: 392, value: 200_000_000 },
-        { episode: 517, value: 440_000_000 },
+        { episode: 584, value: 440_000_000 },
         { episode: 746, value: 500_000_000 },
-        { episode: 1086, value: 3_000_000_000 },
+        { episode: 1080, value: 3_000_000_000 },
       ],
     },
     'eustass-kid': {
@@ -1089,8 +1089,8 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 1040, value: ['magnet-magnet-fruit'] }],
       bounty: [
         { episode: 392, value: 315_000_000 },
-        { episode: 517, value: 470_000_000 },
-        { episode: 1086, value: 3_000_000_000 },
+        { episode: 603, value: 470_000_000 },
+        { episode: 1080, value: 3_000_000_000 },
       ],
     },
     'boa-hancock': {
@@ -1125,6 +1125,10 @@ export const summitWar: Saga = {
         },
       ],
       devilFruit: [{ episode: 412, value: ['love-love-fruit'] }],
+      bounty: [
+        { episode: 416, value: 80_000_000 },
+        { episode: 1087, value: 1_659_000_000 },
+      ],
     },
     'jinbe': {
       chronicle: summitWarChronicles.jinbe,
@@ -1163,7 +1167,11 @@ export const summitWar: Saga = {
           value: { it: 'Cavaliere del Mare', en: 'Knight of the Sea' },
         },
       ],
-      bounty: [{ episode: 1086, value: 1_100_000_000 }],
+      bounty: [
+        { episode: 430, value: 250_000_000 },
+        { episode: 980, value: 438_000_000 },
+        { episode: 1086, value: 1_100_000_000 },
+      ],
     },
     'camie': {
       role: { it: 'Sirena del Takoyaki 8', en: 'Mermaid of Takoyaki 8' },
@@ -1301,7 +1309,7 @@ export const summitWar: Saga = {
       ],
       bounty: [
         { episode: 392, value: 162_000_000 },
-        { episode: 517, value: 200_000_000 },
+        { episode: 603, value: 200_000_000 },
       ],
     },
     'bepo': {
@@ -1328,7 +1336,6 @@ export const summitWar: Saga = {
           value: { it: 'Zou, Ducato di Mokomo', en: 'Zou, Mokomo Dukedom' },
         },
       ],
-      bounty: [{ episode: 517, value: 500 }],
     },
     'scratchmen-apoo': {
       role: {
@@ -1360,7 +1367,7 @@ export const summitWar: Saga = {
       ],
       bounty: [
         { episode: 392, value: 198_000_000 },
-        { episode: 517, value: 350_000_000 },
+        { episode: 603, value: 350_000_000 },
       ],
     },
     'basil-hawkins': {
@@ -1387,7 +1394,7 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 895, value: ['straw-straw-fruit'] }],
       bounty: [
         { episode: 392, value: 249_000_000 },
-        { episode: 517, value: 320_000_000 },
+        { episode: 603, value: 320_000_000 },
       ],
     },
     'x-drake': {
@@ -1493,7 +1500,7 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 785, value: ['castle-castle-fruit'] }],
       bounty: [
         { episode: 392, value: 138_000_000 },
-        { episode: 517, value: 300_000_000 },
+        { episode: 763, value: 300_000_000 },
       ],
     },
     'jewelry-bonney': {
@@ -1526,7 +1533,10 @@ export const summitWar: Saga = {
         { episode: 392, value: { it: 'la Divoratrice', en: 'Big Eater' } },
       ],
       devilFruit: [{ episode: 1099, value: ['age-age-fruit'] }],
-      bounty: [{ episode: 392, value: 140_000_000 }],
+      bounty: [
+        { episode: 392, value: 140_000_000 },
+        { episode: 1089, value: 320_000_000 },
+      ],
     },
     'saint-charloss': {
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
@@ -2047,7 +2057,6 @@ export const summitWar: Saga = {
           },
         },
       ],
-      bounty: [{ episode: 466, value: 550_000_000 }],
     },
     'tsuru': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -2112,7 +2121,6 @@ export const summitWar: Saga = {
           },
         },
       ],
-      bounty: [{ episode: 493, value: 7_800_000 }],
     },
     'sabo': {
       chronicle: summitWarChronicles.sabo,
@@ -2161,7 +2169,6 @@ export const summitWar: Saga = {
         },
       ],
       devilFruit: [{ episode: 678, value: ['flame-flame-fruit'] }],
-      bounty: [{ episode: 878, value: 602_000_000 }],
     },
     'portgas-d-rouge': {
       role: { it: 'Madre di Ace', en: 'Ace’s mother' },

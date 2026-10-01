@@ -939,8 +939,8 @@ export const wano: Saga = {
         en: 'Beasts Pirates All-Star',
       },
       log: {
-        it: 'Vola sopra Wano con una maschera che non toglie mai e un corpo che prende fuoco quando accelera, e nessuno degli uomini dell’Imperatore osa rivolgergli la parola per primo. È il più forte dei tre luogotenenti e porta una taglia più alta di quella dei suoi pari. Di lui si sanno il nome, l’ala e poco altro.',
-        en: 'He flies over Wano behind a mask he never takes off, his body catching fire as he accelerates, and none of the Emperor’s men speaks to him first. He is the strongest of the three lieutenants and carries a bounty higher than either of his equals. His name, his wing and very little else are known.',
+        it: 'Vola sopra Wano con una maschera che non toglie mai e un corpo che prende fuoco quando accelera, e nessuno degli uomini dell’Imperatore osa rivolgergli la parola per primo. È il più forte dei tre luogotenenti. Di lui si sanno il nome, l’ala e poco altro.',
+        en: 'He flies over Wano behind a mask he never takes off, his body catching fire as he accelerates, and none of the Emperor’s men speaks to him first. He is the strongest of the three lieutenants. His name, his wing and very little else are known.',
       },
       affiliation: [
         {
@@ -969,7 +969,6 @@ export const wano: Saga = {
           value: ['dragon-dragon-fruit-ancient-model-pteranodon'],
         },
       ],
-      bounty: [{ episode: 923, value: 1_390_000_000 }],
     },
     'komurasaki': {
       role: {
