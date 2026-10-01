@@ -1,3 +1,5 @@
+import { byNumber, byValue } from 'sort-es'
+
 import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import {
   arcs,
@@ -102,28 +104,23 @@ function reachedArcs(at: Bookmark): readonly [Entity, Entity | undefined] {
 /**
  * The characters the stories name most: the subject counts as one mention
  * and every marker in the body as another. Ties go to the one named most
- * recently, which with the stories most recent first is the one met first.
+ * recently, which with the stories most recent first is the one met first:
+ * the tally keeps first-mention order and the sort is stable.
  */
 function castOf(
   shown: readonly FiledStory[],
   bookmark: Bookmark,
   locale: Locale,
 ): readonly CharacterView[] {
-  const tally = new Map<string, { count: number; first: number }>()
-  for (const [index, { character, story }] of shown.entries()) {
+  const tally = new Map<string, number>()
+  for (const { character, story } of shown) {
     for (const id of [character.id, ...markedIds(story.body.en)]) {
-      const seen = tally.get(id)
-      tally.set(id, {
-        count: (seen?.count ?? 0) + 1,
-        first: seen?.first ?? index,
-      })
+      tally.set(id, (tally.get(id) ?? 0) + 1)
     }
   }
 
   return [...tally]
-    .toSorted(([, a], [, b]) =>
-      a.count === b.count ? a.first - b.first : b.count - a.count,
-    )
+    .toSorted(byValue(([, count]) => count, byNumber({ desc: true })))
     .slice(0, CAST_COUNT)
     .flatMap(([id]) => {
       const entity = getCharacter(id)

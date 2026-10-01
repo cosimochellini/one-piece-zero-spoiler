@@ -1,3 +1,4 @@
+import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
@@ -227,7 +228,9 @@ describe('the slice of the archive a page is given', () => {
 
       expect(isRevealed(home.saga, bookmark)).toBe(true)
       expect(home.cast.length).toBeLessThanOrEqual(6)
-      expect(episodes.toSorted((a, b) => b - a)).toStrictEqual(episodes)
+      expect(episodes.toSorted(byNumber({ desc: true }))).toStrictEqual(
+        episodes,
+      )
 
       // Reaching back to the arc before is only ever a non-empty answer, and
       // the stories are then all below this arc's start rather than above it.
@@ -270,7 +273,7 @@ describe('the slice of the archive a page is given', () => {
     expect(home.stories.length).toBeGreaterThan(3)
     expect(home.cast).toHaveLength(6)
     expect(tallies.every((count) => count > 0)).toBe(true)
-    expect(tallies.toSorted((a, b) => b - a)).toStrictEqual(tallies)
+    expect(tallies.toSorted(byNumber({ desc: true }))).toStrictEqual(tallies)
   })
 
   it('carries the home page in the locale the page asked for', () => {

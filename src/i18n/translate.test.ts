@@ -1,3 +1,4 @@
+import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { enDictionary } from './dictionaries/en'
@@ -138,5 +139,5 @@ function placeholdersIn(value: string): string[] {
   return Array.from(
     value.matchAll(/\{(?<name>\w+)\}/gu),
     (match) => match.groups?.['name'] ?? '',
-  ).toSorted((a, b) => a.localeCompare(b))
+  ).toSorted(byString())
 }

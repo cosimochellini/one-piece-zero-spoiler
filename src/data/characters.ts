@@ -1,3 +1,5 @@
+import { byNumber, byValue } from 'sort-es'
+
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { EntityKind } from '~/lib/view/records'
 
@@ -182,7 +184,7 @@ export const stories: readonly FiledStory[] = characters
     const chronicle = dossierOf(character)?.chronicle ?? []
     return chronicle.map((entry) => filedStory(character, entry))
   })
-  .toSorted((a, b) => a.episode - b.episode)
+  .toSorted(byValue('episode', byNumber()))
 
 function filedStory(character: Entity, entry: Dated<Story>): FiledStory {
   return { character, episode: entry.episode, story: entry.value }
@@ -264,19 +266,13 @@ export function routePositionOf(
  */
 export function nearbyCharacters(entity: Entity, count: number): Entity[] {
   return featuredCharacters
-    .flatMap((candidate, order) => {
-      if (candidate.id === entity.id) {
-        return []
-      }
-      const distance = Math.abs(
-        candidate.revealedAtEpisode - entity.revealedAtEpisode,
-      )
-      return [{ candidate, distance, order }]
-    })
-    .toSorted((a, b) => {
-      const byDistance = a.distance - b.distance
-      return byDistance === 0 ? a.order - b.order : byDistance
-    })
+    .filter((candidate) => candidate.id !== entity.id)
+    .toSorted(
+      byValue(
+        (candidate) =>
+          Math.abs(candidate.revealedAtEpisode - entity.revealedAtEpisode),
+        byNumber(),
+      ),
+    )
     .slice(0, count)
-    .map(({ candidate }) => candidate)
 }

@@ -1,3 +1,4 @@
+import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { type Locale, LOCALES } from '~/i18n/locales'
@@ -309,11 +310,6 @@ const CHARTED_OTHERS = entities.filter((entity) =>
   CHARTED_KINDS.has(entity.kind),
 )
 
-/** A stable alphabetical order, so two id lists can be compared as sets. */
-function byName(a: string, b: string): number {
-  return a.localeCompare(b)
-}
-
 describe('the featured list', () => {
   it('lists exactly thirty-six distinct characters that all exist', () => {
     const distinct = new Set(FEATURED_CHARACTER_IDS)
@@ -333,7 +329,7 @@ describe('the featured list', () => {
       (character) => character.revealedAtEpisode,
     )
 
-    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
   })
 })
 
@@ -379,7 +375,7 @@ describe('the dossiers', () => {
       expect(episodes.length, label).toBeGreaterThan(0)
       // Sorted and all distinct is the same statement as strictly ascending,
       // without a look back at the previous entry inside the loop.
-      expect(episodes, label).toStrictEqual(episodes.toSorted((a, b) => a - b))
+      expect(episodes, label).toStrictEqual(episodes.toSorted(byNumber()))
       expect(distinct.size, label).toBe(episodes.length)
 
       for (const episode of episodes) {
@@ -483,7 +479,7 @@ describe('the chronicles', () => {
 
     expect(stories).toHaveLength(STORIES.length)
     expect(keys.size).toBe(stories.length)
-    expect(episodes.toSorted((a, b) => a - b)).toStrictEqual(episodes)
+    expect(episodes.toSorted(byNumber())).toStrictEqual(episodes)
   })
 
   it('tells the story of every character on the list, in several stories', () => {
@@ -541,8 +537,8 @@ describe('the chronicles', () => {
 
   it('links the same characters in every locale', () => {
     for (const { label, story } of STORIES) {
-      const inEnglish = markedIds(story.body.en).toSorted(byName)
-      const inItalian = markedIds(story.body.it).toSorted(byName)
+      const inEnglish = markedIds(story.body.en).toSorted(byString())
+      const inItalian = markedIds(story.body.it).toSorted(byString())
 
       expect(inItalian, label).toStrictEqual(inEnglish)
     }
@@ -590,8 +586,8 @@ describe('the chart', () => {
       .filter((entity) => entity.kind === 'character')
       .map((entity) => entity.id)
 
-    expect(drawn.toSorted(byName)).toStrictEqual(
-      FEATURED_CHARACTER_IDS.toSorted(byName),
+    expect(drawn.toSorted(byString())).toStrictEqual(
+      FEATURED_CHARACTER_IDS.toSorted(byString()),
     )
   })
 
@@ -606,7 +602,7 @@ describe('the chart', () => {
   it('is in threshold order', () => {
     const thresholds = chart.map((entity) => entity.revealedAtEpisode)
 
-    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
   })
 
   it('is itself for a record already drawn', () => {
@@ -617,7 +613,7 @@ describe('the chart', () => {
     const byChapter = chartWith(must('nami'), 'chapter')
     const chapters = byChapter.map((entity) => entity.revealedAtChapter)
 
-    expect(chapters).toStrictEqual(chapters.toSorted((a, b) => a - b))
+    expect(chapters).toStrictEqual(chapters.toSorted(byNumber()))
     expect(byChapter).toHaveLength(chart.length)
   })
 
@@ -650,13 +646,13 @@ describe('the shelves', () => {
       .flatMap((section) => section.characters)
       .map((character) => character.id)
 
-    expect(shelved.toSorted(byName)).toStrictEqual(
-      characters.map((character) => character.id).toSorted(byName),
+    expect(shelved.toSorted(byString())).toStrictEqual(
+      characters.map((character) => character.id).toSorted(byString()),
     )
 
     const opens = bookSections.map((section) => section.arc.revealedAtEpisode)
 
-    expect(opens).toStrictEqual(opens.toSorted((a, b) => a - b))
+    expect(opens).toStrictEqual(opens.toSorted(byNumber()))
   })
 
   it('never puts a character under a heading that opens after them, in either unit', () => {

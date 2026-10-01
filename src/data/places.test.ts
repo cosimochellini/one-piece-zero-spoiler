@@ -1,3 +1,4 @@
+import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
@@ -18,7 +19,7 @@ describe('the ship’s log', () => {
 
     const thresholds = places.map((place) => place.revealedAtEpisode)
 
-    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
   })
 
   it('opens with the five East Blue ports of call', () => {

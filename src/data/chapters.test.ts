@@ -1,3 +1,4 @@
+import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
@@ -36,7 +37,7 @@ describe('episodeAtChapter', () => {
   it('never goes backwards as the reader reads on', () => {
     const episodes = CHAPTERS.map((chapter) => episodeAtChapter(chapter))
 
-    expect(episodes).toStrictEqual(episodes.toSorted((a, b) => a - b))
+    expect(episodes).toStrictEqual(episodes.toSorted(byNumber()))
   })
 
   it('reads chapter 1 as episode 1, not the episode the anime moved it to', () => {

@@ -1,3 +1,4 @@
+import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { isRevealed } from '~/lib/progress/spoiler'
@@ -12,7 +13,7 @@ describe('orderByMode', () => {
         (entity) => entity.revealedAtEpisode,
       )
 
-      expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
+      expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
     }
   })
 
@@ -21,7 +22,7 @@ describe('orderByMode', () => {
       (entity) => entity.revealedAtChapter,
     )
 
-    expect(thresholds).toStrictEqual(thresholds.toSorted((a, b) => a - b))
+    expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
   })
 
   it('keeps the open rows a prefix of the list in every unit', () => {

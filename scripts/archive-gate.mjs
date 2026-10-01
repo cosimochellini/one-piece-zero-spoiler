@@ -31,6 +31,7 @@ import console from 'node:console'
 import { readdirSync, readFileSync, statSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
+import { byNumber, byValue } from 'sort-es'
 
 const EXIT_CLEAN = 0
 const EXIT_FOUND = 1
@@ -92,7 +93,7 @@ export function canaryFrom(source) {
     .matchAll(CANARY_PATTERN)
     .map((match) => match.groups?.['prose'] ?? '')
     .toArray()
-    .toSorted((a, b) => b.length - a.length)
+    .toSorted(byValue('length', byNumber({ desc: true })))
     .at(0)
 
   return longest === undefined || longest === '' ?
@@ -183,7 +184,7 @@ function report(verdict, chunks) {
     `archive-gate: client scripts total ${verdict.total.toLocaleString('en-GB')} bytes, over the ${MAX_CLIENT_BYTES.toLocaleString('en-GB')} ceiling.`,
   )
   const worst = chunks
-    .toSorted((a, b) => b.bytes - a.bytes)
+    .toSorted(byValue('bytes', byNumber({ desc: true })))
     .slice(0, WORST_CHUNKS)
   for (const chunk of worst) {
     console.error(`  ${String(chunk.bytes).padStart(9)}  ${chunk.name}`)

@@ -1,3 +1,5 @@
+import { byNumber, byValue } from 'sort-es'
+
 import { chapterAtEpisode } from '~/data/chapters'
 import {
   eatersOf,
@@ -201,19 +203,12 @@ function nearest(
   const here = thresholdOf(entity, mode)
 
   return among
-    .flatMap((candidate, order) => {
-      if (candidate.id === entity.id) {
-        return []
-      }
-      const distance = Math.abs(thresholdOf(candidate, mode) - here)
-
-      return [{ candidate, distance, order }]
-    })
-    .toSorted((a, b) => {
-      const byDistance = a.distance - b.distance
-
-      return byDistance === 0 ? a.order - b.order : byDistance
-    })
+    .filter((candidate) => candidate.id !== entity.id)
+    .toSorted(
+      byValue(
+        (candidate) => Math.abs(thresholdOf(candidate, mode) - here),
+        byNumber(),
+      ),
+    )
     .slice(0, SIBLING_COUNT)
-    .map(({ candidate }) => candidate)
 }
