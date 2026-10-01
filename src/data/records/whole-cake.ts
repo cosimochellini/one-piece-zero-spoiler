@@ -880,7 +880,7 @@ export const wholeCake: Saga = {
       ],
       devilFruit: [
         {
-          episode: 757,
+          episode: 759,
           value: ['elephant-elephant-fruit-ancient-model-mammoth'],
         },
       ],
