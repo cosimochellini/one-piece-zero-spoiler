@@ -1015,7 +1015,7 @@ export const devilFruits: Saga = {
     {
       id: 'elephant-elephant-fruit-ancient-model-mammoth',
       kind: 'fruit',
-      revealedAtEpisode: 757,
+      revealedAtEpisode: 759,
       revealedAtChapter: 809,
       name: {
         it: 'Frutto Zou Zou, modello Mammut',
