@@ -20,8 +20,8 @@ export const thrillerBark: Saga = {
       revealedAtChapter: 442,
       name: { it: 'Thriller Bark', en: 'Thriller Bark' },
       summary: {
-        it: 'Una nave grande quanto un’isola, con una villa e alberi secchi sul ponte, ferma in una nebbia dove la luna non tramonta mai.',
-        en: 'A ship the size of an island, a mansion and dead trees standing on its deck, moored in a fog where the moon never sets.',
+        it: 'La ciurma apre un barile trovato alla deriva ed entra in una nebbia così fitta che di giorno sembra notte. Dalla nebbia esce una nave fantasma, e a bordo uno scheletro canta.',
+        en: 'The crew opens a barrel found adrift and sails into a fog so thick that day looks like night. A ghost ship drifts out of it, and a skeleton is singing aboard.',
       },
       visual: { art: 'thriller-bark-arc', tint: 'lavender' },
     },
@@ -56,8 +56,8 @@ export const thrillerBark: Saga = {
       revealedAtChapter: 449,
       name: { it: 'Perona', en: 'Perona' },
       summary: {
-        it: 'La principessa fantasma di una nave-isola, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
-        en: 'The ghost princess of an island-ship, an umbrella and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
+        it: 'La principessa fantasma di Thriller Bark, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
+        en: 'The ghost princess of Thriller Bark, an umbrella and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
       },
       visual: { art: 'perona', tint: 'pink' },
     },

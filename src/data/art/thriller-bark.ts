@@ -1,23 +1,29 @@
 import { circle, dots, ellipse, ghost, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the thriller bark stretch of the route. */
 export const thrillerBarkArt = {
-  // A hull the size of an island, a mansion and two dead trees on the deck,
-  // the moon hung over all of it.
+  // A skull singing in the fog, notes rising from its open jaw: the arc's
+  // first episode shows only the fog and the skeleton aboard a ghost ship.
+  // The hull is drawn from 343, in `thrillerBarkRedrawn`.
   'thriller-bark-arc': [
-    { d: 'M10 132 L24 152 Q80 164 136 152 L150 132' },
-    { d: 'M10 132 H150' },
-    { d: 'M56 132 V72 H104 V132' },
-    { d: 'M50 72 L80 48 L110 72' },
-    { d: 'M66 86 h12 v14 h-12z M82 86 h12 v14 h-12z', role: 'soft' },
-    { d: 'M74 132 V112 h12 V132' },
+    { d: 'M52 104 C44 64 60 42 80 42 C100 42 116 64 108 104' },
+    { d: 'M52 104 q2 10 12 12 M108 104 q-2 10 -12 12' },
+    { d: 'M64 116 H96' },
+    { d: 'M70 116 v6 M77 116 v6 M84 116 v6 M91 116 v6', role: 'soft' },
+    { d: 'M64 128 H96 Q80 154 64 128' },
+    { d: `${ellipse(68, 88, 8, 9)} ${ellipse(92, 88, 8, 9)}`, role: 'accent' },
+    { d: 'M80 98 l-4 9 h8z', role: 'soft' },
     {
-      d: 'M26 132 V94 M26 116 l-12 -14 M26 108 l12 -16 M26 124 l-10 8 M26 100 l-8 -12',
+      d: `${ellipse(124, 64, 5, 3.5)} M129 64 V40 q6 4 8 12 ${ellipse(140, 36, 4, 3)} M144 36 V18`,
+      role: 'accent',
     },
-    { d: 'M136 132 V98 M136 118 l12 -13 M136 110 l-11 -14 M136 126 l10 8' },
-    { d: circle(122, 30, 20), role: 'accent' },
+    {
+      d: 'M-4 34 H40 M-4 70 H30 M118 96 H164 M-4 138 H48 M112 142 H164',
+      role: 'ambient',
+      dashed: true,
+    },
     ...SEA.slice(1),
   ],
 
@@ -447,3 +453,29 @@ export const thrillerBarkArt = {
     },
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const thrillerBarkRedrawn: Redrawings = {
+  // A hull the size of an island, a mansion and two dead trees on the deck,
+  // the moon hung over all of it: Spoil's line at 343 says the island is the
+  // largest pirate ship in the world (ch. 449).
+  'thriller-bark-arc': [
+    {
+      episode: 343,
+      value: [
+        { d: 'M10 132 L24 152 Q80 164 136 152 L150 132' },
+        { d: 'M10 132 H150' },
+        { d: 'M56 132 V72 H104 V132' },
+        { d: 'M50 72 L80 48 L110 72' },
+        { d: 'M66 86 h12 v14 h-12z M82 86 h12 v14 h-12z', role: 'soft' },
+        { d: 'M74 132 V112 h12 V132' },
+        {
+          d: 'M26 132 V94 M26 116 l-12 -14 M26 108 l12 -16 M26 124 l-10 8 M26 100 l-8 -12',
+        },
+        { d: 'M136 132 V98 M136 118 l12 -13 M136 110 l-11 -14 M136 126 l10 8' },
+        { d: circle(122, 30, 20), role: 'accent' },
+        ...SEA.slice(1),
+      ],
+    },
+  ],
+}
