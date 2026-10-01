@@ -314,7 +314,7 @@ export const thrillerBark: Saga = {
       epithet: [{ episode: 517, value: { it: 'Soul King', en: 'Soul King' } }],
       devilFruit: [{ episode: 339, value: ['revive-revive-fruit'] }],
       bounty: [
-        { episode: 339, value: 33_000_000 },
+        { episode: 381, value: 33_000_000 },
         { episode: 746, value: 83_000_000 },
         { episode: 1086, value: 383_000_000 },
       ],
@@ -365,7 +365,6 @@ export const thrillerBark: Saga = {
       epithet: [
         { episode: 340, value: { it: 'La Proponente', en: 'the Proposer' } },
       ],
-      bounty: [{ episode: 340, value: 24_000_000 }],
     },
     'gecko-moria': {
       chronicle: thrillerBarkChronicles['gecko-moria'],
@@ -393,7 +392,7 @@ export const thrillerBark: Saga = {
       ],
       origin: [{ episode: 343, value: { it: 'West Blue', en: 'West Blue' } }],
       devilFruit: [{ episode: 343, value: ['shadow-shadow-fruit'] }],
-      bounty: [{ episode: 343, value: 320_000_000 }],
+      bounty: [{ episode: 917, value: 320_000_000 }],
     },
     'absalom': {
       role: { it: 'Generale degli zombie', en: 'General of the zombies' },

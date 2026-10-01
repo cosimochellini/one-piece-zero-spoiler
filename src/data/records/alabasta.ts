@@ -854,7 +854,6 @@ export const alabasta: Saga = {
         { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
       ],
       devilFruit: [{ episode: 70, value: ['wax-wax-fruit'] }],
-      bounty: [{ episode: 70, value: 24_000_000 }],
     },
     'miss-goldenweek': {
       role: BW_OFFICER_ROLE,
@@ -882,7 +881,7 @@ export const alabasta: Saga = {
       origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [{ episode: 70, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
       bounty: [
-        { episode: 70, value: 100_000_000 },
+        { episode: 71, value: 100_000_000 },
         { episode: 1160, value: 1_800_000_000 },
       ],
     },
@@ -904,7 +903,7 @@ export const alabasta: Saga = {
       origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
       epithet: [{ episode: 70, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
       bounty: [
-        { episode: 70, value: 100_000_000 },
+        { episode: 71, value: 100_000_000 },
         { episode: 1160, value: 1_800_000_000 },
       ],
     },
@@ -952,7 +951,6 @@ export const alabasta: Saga = {
         },
       ],
       devilFruit: [{ episode: 78, value: ['clone-clone-fruit'] }],
-      bounty: [{ episode: 78, value: 32_000_000 }],
     },
     'dalton': {
       role: {
@@ -1161,10 +1159,7 @@ export const alabasta: Saga = {
         { episode: 92, value: { it: 'Sir Crocodile', en: 'Sir Crocodile' } },
       ],
       devilFruit: [{ episode: 112, value: ['sand-sand-fruit'] }],
-      bounty: [
-        { episode: 130, value: 81_000_000 },
-        { episode: 1088, value: 1_965_000_000 },
-      ],
+      bounty: [{ episode: 1086, value: 1_965_000_000 }],
       chronicle: alabastaChronicles.crocodile,
     },
     'nefertari-cobra': {
@@ -1299,7 +1294,6 @@ export const alabasta: Saga = {
         { episode: 95, value: { it: 'Pugno di Fuoco', en: 'Fire Fist' } },
       ],
       devilFruit: [{ episode: 95, value: ['flame-flame-fruit'] }],
-      bounty: [{ episode: 483, value: 550_000_000 }],
     },
     'matsuge': {
       role: { it: 'Cammello del deserto', en: 'Desert camel' },
@@ -1342,7 +1336,6 @@ export const alabasta: Saga = {
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
       devilFruit: [{ episode: 100, value: ['dice-dice-fruit'] }],
-      bounty: [{ episode: 100, value: 75_000_000 }],
     },
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,

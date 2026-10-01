@@ -893,12 +893,12 @@ export const eastBlue: Saga = {
       devilFruit: [{ episode: 1, value: ['gum-gum-fruit'] }],
       bounty: [
         { episode: 45, value: 30_000_000 },
-        { episode: 130, value: 100_000_000 },
+        { episode: 128, value: 100_000_000 },
         { episode: 320, value: 300_000_000 },
-        { episode: 512, value: 400_000_000 },
+        { episode: 521, value: 400_000_000 },
         { episode: 746, value: 500_000_000 },
         { episode: 879, value: 1_500_000_000 },
-        { episode: 1086, value: 3_000_000_000 },
+        { episode: 1080, value: 3_000_000_000 },
       ],
     },
     'koby': {
@@ -947,6 +947,7 @@ export const eastBlue: Saga = {
           value: { it: 'Eroe di Rocky Port', en: 'Hero of Rocky Port' },
         },
       ],
+      bounty: [{ episode: 1113, value: 500_000_000 }],
     },
     'alvida': {
       role: {
@@ -977,7 +978,6 @@ export const eastBlue: Saga = {
         { episode: 1, value: { it: 'Mazza di Ferro', en: 'Iron Mace' } },
       ],
       devilFruit: [{ episode: 48, value: ['slip-slip-fruit'] }],
-      bounty: [{ episode: 1, value: 5_000_000 }],
     },
     'gold-roger': {
       role: { it: 'Re dei Pirati', en: 'King of the Pirates' },
@@ -1038,7 +1038,7 @@ export const eastBlue: Saga = {
         },
       ],
       bounty: [
-        { episode: 130, value: 60_000_000 },
+        { episode: 128, value: 60_000_000 },
         { episode: 320, value: 120_000_000 },
         { episode: 746, value: 320_000_000 },
         { episode: 1086, value: 1_111_000_000 },
@@ -1275,8 +1275,8 @@ export const eastBlue: Saga = {
       epithet: [{ episode: 5, value: { it: 'Il Clown', en: 'the Clown' } }],
       devilFruit: [{ episode: 5, value: ['chop-chop-fruit'] }],
       bounty: [
-        { episode: 5, value: 15_000_000 },
-        { episode: 1088, value: 3_189_000_000 },
+        { episode: 45, value: 15_000_000 },
+        { episode: 1086, value: 3_189_000_000 },
       ],
     },
     'nami': {
@@ -1494,7 +1494,6 @@ export const eastBlue: Saga = {
           value: { it: 'Kuro dai Cento Piani', en: 'Kuro of a Hundred Plans' },
         },
       ],
-      bounty: [{ episode: 9, value: 16_000_000 }],
     },
     'jango': {
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
@@ -1511,7 +1510,6 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      bounty: [{ episode: 9, value: 9_000_000 }],
     },
     'merry': {
       role: { it: 'Maggiordomo della villa', en: 'Butler of the mansion' },
@@ -1710,7 +1708,7 @@ export const eastBlue: Saga = {
       bounty: [
         { episode: 320, value: 77_000_000 },
         { episode: 746, value: 177_000_000 },
-        { episode: 879, value: 330_000_000 },
+        { episode: 878, value: 330_000_000 },
         { episode: 1086, value: 1_032_000_000 },
       ],
     },
@@ -1834,7 +1832,7 @@ export const eastBlue: Saga = {
           value: { it: 'Creek il Traditore', en: 'Foul Play Krieg' },
         },
       ],
-      bounty: [{ episode: 22, value: 17_000_000 }],
+      bounty: [{ episode: 45, value: 17_000_000 }],
     },
     'pearl': {
       role: {
@@ -1879,7 +1877,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 24, value: { it: 'Occhi di Falco', en: 'Hawk-Eye' } },
       ],
-      bounty: [{ episode: 1088, value: 3_590_000_000 }],
+      bounty: [{ episode: 1086, value: 3_590_000_000 }],
     },
     'arlong': {
       role: {
