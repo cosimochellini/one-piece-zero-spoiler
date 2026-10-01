@@ -1,3 +1,4 @@
+import { readFileSync } from 'node:fs'
 // @vitest-environment node
 //
 // The suite-wide environment is jsdom for the React components. This module is
@@ -8,7 +9,7 @@
 // `no-undef` has no TypeScript program to learn the Vitest globals from. The
 // archive is imported by path for the same reason — the `~/` alias is resolved
 // from `tsconfig`, which does not cover `scripts/`.
-import { readFileSync } from 'node:fs'
+import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { characters, dossierOf } from '../src/data/characters.ts'
@@ -113,12 +114,8 @@ describe('the chronicle verification log', () => {
   it('vouches for every story, and for no story the archive does not hold', () => {
     // The document is the only record of which episode page settles which
     // story. A chronicle extended without it would ship prose nobody checked.
-    const inDocument = ROWS.map((row) => asLine(row)).toSorted((a, b) =>
-      a.localeCompare(b),
-    )
-    const inArchive = STORIES.map((story) => asLine(story)).toSorted((a, b) =>
-      a.localeCompare(b),
-    )
+    const inDocument = ROWS.map((row) => asLine(row)).toSorted(byString())
+    const inArchive = STORIES.map((story) => asLine(story)).toSorted(byString())
 
     expect(inDocument).toStrictEqual(inArchive)
   })

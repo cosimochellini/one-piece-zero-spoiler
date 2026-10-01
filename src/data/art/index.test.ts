@@ -1,3 +1,4 @@
+import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { entities, getEntity } from '~/data/entities'
@@ -116,7 +117,7 @@ describe('the redrawings', () => {
       const threshold = getEntity(id)?.revealedAtEpisode ?? Infinity
 
       // Sorted and all distinct is the same statement as strictly ascending.
-      expect(episodes, id).toStrictEqual(episodes.toSorted((a, b) => a - b))
+      expect(episodes, id).toStrictEqual(episodes.toSorted(byNumber()))
       expect(distinct.size, id).toBe(episodes.length)
 
       for (const episode of episodes) {

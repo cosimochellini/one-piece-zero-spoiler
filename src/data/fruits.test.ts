@@ -1,3 +1,4 @@
+import { byNumber, byString, byValues } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
@@ -60,24 +61,16 @@ const MENTIONS = readMentions()
  * then the earliest chapter among the characters that name it there, then the
  * id, so the rule is the same whatever order the dossiers are read in.
  */
-function earliest(a: Mention, b: Mention): number {
-  const byEpisode = a.episode - b.episode
-  if (byEpisode !== 0) {
-    return byEpisode
-  }
-
-  const byChapter =
-    a.character.revealedAtChapter - b.character.revealedAtChapter
-
-  return byChapter === 0 ?
-      a.character.id.localeCompare(b.character.id)
-    : byChapter
-}
+const earliest: (a: Mention, b: Mention) => number = byValues([
+  [(mention: Mention) => mention.episode, byNumber()],
+  [(mention: Mention) => mention.character.revealedAtChapter, byNumber()],
+  [(mention: Mention) => mention.character.id, byString()],
+])
 
 /** Every mention of one fruit, earliest first, by the archive's own rule. */
 function mentionsOf(id: string): readonly Mention[] {
   return MENTIONS.filter((mention) => mention.fruitIds.includes(id)).toSorted(
-    (a, b) => earliest(a, b),
+    earliest,
   )
 }
 
@@ -108,7 +101,7 @@ function writtenFor(id: string): readonly string[] {
 
   return [...first]
     .map(([character, episode]) => `${character}@${String(episode)}`)
-    .toSorted(byName)
+    .toSorted(byString())
 }
 
 /**
@@ -137,11 +130,6 @@ const ROUNDED_DOWN = [
   'warp-warp-fruit',
 ]
 
-/** A stable alphabetical order, so two id lists can be compared as sets. */
-function byName(a: string, b: string): number {
-  return a.localeCompare(b)
-}
-
 /** How far a fruit may be filed after its eater before it needs a decision. */
 const WIDE_GAP = 200
 
@@ -151,8 +139,8 @@ const CANARY_LENGTH = 12
 
 describe('the specimen sheet', () => {
   it('files a record for every fruit the table names, and no other', () => {
-    const keyed = Object.keys(FRUIT_FORMS).toSorted(byName)
-    const filed = fruits.map((fruit) => fruit.id).toSorted(byName)
+    const keyed = Object.keys(FRUIT_FORMS).toSorted(byString())
+    const filed = fruits.map((fruit) => fruit.id).toSorted(byString())
 
     expect(filed).toStrictEqual(keyed)
     expect(fruits).toHaveLength(Object.keys(FRUIT_FORMS).length)
@@ -209,8 +197,8 @@ describe('the specimen sheet', () => {
       ...fruitsOfForm('logia'),
     ]
 
-    expect(plates.map((fruit) => fruit.id).toSorted(byName)).toStrictEqual(
-      fruits.map((fruit) => fruit.id).toSorted(byName),
+    expect(plates.map((fruit) => fruit.id).toSorted(byString())).toStrictEqual(
+      fruits.map((fruit) => fruit.id).toSorted(byString()),
     )
 
     for (const fruit of fruits) {
@@ -242,7 +230,7 @@ describe('the relation between a character and a fruit', () => {
     for (const fruit of fruits) {
       const read = eatersOf(fruit.id)
         .map((eater) => `${eater.entity.id}@${String(eater.namedAtEpisode)}`)
-        .toSorted(byName)
+        .toSorted(byString())
 
       expect(read, fruit.id).toStrictEqual(writtenFor(fruit.id))
     }
@@ -294,9 +282,9 @@ describe('the fruit thresholds', () => {
         )
       })
       .map((fruit) => fruit.id)
-      .toSorted(byName)
+      .toSorted(byString())
 
-    expect(wide).toStrictEqual(ROUNDED_DOWN.toSorted(byName))
+    expect(wide).toStrictEqual(ROUNDED_DOWN.toSorted(byString()))
   })
 })
 

@@ -1,3 +1,5 @@
+import { byNumber, byValue } from 'sort-es'
+
 import { parseCookieHeader } from '~/lib/cookies'
 
 import { DEFAULT_LOCALE, isLocale, type Locale, LOCALE_COOKIE } from './locales'
@@ -64,7 +66,7 @@ export function parseAcceptLanguage(
       }
     })
     .filter((entry) => entry.quality > 0)
-    .toSorted((a, b) => b.quality - a.quality)
+    .toSorted(byValue('quality', byNumber({ desc: true })))
 
   const best = ranked.find(
     (entry): entry is { language: Locale; quality: number } =>

@@ -11,6 +11,7 @@ import { registerHooks } from 'node:module'
 import path from 'node:path'
 import process from 'node:process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
+import { byNumber, byValue } from 'sort-es'
 
 import { CHRONICLE_SOURCES } from './chronicle-sources.mjs'
 
@@ -167,12 +168,7 @@ function chronicled(archive) {
 
   return characters
     .filter((character) => dossierOf(character)?.chronicle !== undefined)
-    .map((character, order) => ({ character, order }))
-    .toSorted(
-      (a, b) =>
-        rank(a.character.id) - rank(b.character.id) || a.order - b.order,
-    )
-    .map(({ character }) => character)
+    .toSorted(byValue((character) => rank(character.id), byNumber()))
 }
 
 /**

@@ -1,3 +1,5 @@
+import { byNumber, byValues } from 'sort-es'
+
 import type { BookmarkMode } from '~/lib/progress/episode'
 
 import type { Entity } from './types'
@@ -16,12 +18,12 @@ export function orderByMode(
   entries: readonly Entity[],
   mode: BookmarkMode,
 ): readonly Entity[] {
-  return entries.toSorted((a, b) => {
-    const [aFirst, aSecond] = thresholdsFor(mode, a)
-    const [bFirst, bSecond] = thresholdsFor(mode, b)
-
-    return aFirst === bFirst ? aSecond - bSecond : aFirst - bFirst
-  })
+  return entries.toSorted(
+    byValues([
+      [(entity: Entity) => thresholdsFor(mode, entity)[0], byNumber()],
+      [(entity: Entity) => thresholdsFor(mode, entity)[1], byNumber()],
+    ]),
+  )
 }
 
 /** Both thresholds of one record, the mode's own one first. */

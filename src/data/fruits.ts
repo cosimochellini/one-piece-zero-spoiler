@@ -1,3 +1,5 @@
+import { byNumber, byValues } from 'sort-es'
+
 import type { FruitForm } from '~/lib/view/records'
 
 import { CHARACTER_DOSSIERS, getCharacter } from './characters'
@@ -98,13 +100,12 @@ function listed(byCharacter: ReadonlyMap<string, number>): readonly Eater[] {
 
       return entity === undefined ? [] : [{ entity, namedAtEpisode }]
     })
-    .toSorted((a, b) => {
-      const byEpisode = a.namedAtEpisode - b.namedAtEpisode
-
-      return byEpisode === 0 ?
-          a.entity.revealedAtEpisode - b.entity.revealedAtEpisode
-        : byEpisode
-    })
+    .toSorted(
+      byValues([
+        [(eater: Eater) => eater.namedAtEpisode, byNumber()],
+        [(eater: Eater) => eater.entity.revealedAtEpisode, byNumber()],
+      ]),
+    )
 }
 
 const EATERS = readEaters()
