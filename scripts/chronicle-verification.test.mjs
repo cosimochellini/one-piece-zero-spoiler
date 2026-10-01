@@ -1,4 +1,3 @@
-import { readFileSync } from 'node:fs'
 // @vitest-environment node
 //
 // The suite-wide environment is jsdom for the React components. This module is
@@ -9,6 +8,7 @@ import { readFileSync } from 'node:fs'
 // `no-undef` has no TypeScript program to learn the Vitest globals from. The
 // archive is imported by path for the same reason — the `~/` alias is resolved
 // from `tsconfig`, which does not cover `scripts/`.
+import { readFileSync } from 'node:fs'
 import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
