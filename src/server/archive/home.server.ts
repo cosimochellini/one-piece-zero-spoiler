@@ -120,9 +120,7 @@ function castOf(
   }
 
   return [...tally]
-    .toSorted(
-      byValue(([, count]: [string, number]) => count, byNumber({ desc: true })),
-    )
+    .toSorted(byValue(([, count]) => count, byNumber({ desc: true })))
     .slice(0, CAST_COUNT)
     .flatMap(([id]) => {
       const entity = getCharacter(id)

@@ -20,8 +20,8 @@ export function orderByMode(
 ): readonly Entity[] {
   return entries.toSorted(
     byValues([
-      [(entity: Entity) => thresholdsFor(mode, entity)[0], byNumber()],
-      [(entity: Entity) => thresholdsFor(mode, entity)[1], byNumber()],
+      [(entity) => thresholdsFor(mode, entity)[0], byNumber()],
+      [(entity) => thresholdsFor(mode, entity)[1], byNumber()],
     ]),
   )
 }

@@ -57,20 +57,18 @@ function readMentions(): readonly Mention[] {
 const MENTIONS = readMentions()
 
 /**
- * The order the archive files a fruit's thresholds from: the earliest episode,
- * then the earliest chapter among the characters that name it there, then the
- * id, so the rule is the same whatever order the dossiers are read in.
+ * Every mention of one fruit, in the order the archive files a fruit's
+ * thresholds from: the earliest episode, then the earliest chapter among the
+ * characters that name it there, then the id, so the rule is the same whatever
+ * order the dossiers are read in.
  */
-const earliest: (a: Mention, b: Mention) => number = byValues([
-  [(mention: Mention) => mention.episode, byNumber()],
-  [(mention: Mention) => mention.character.revealedAtChapter, byNumber()],
-  [(mention: Mention) => mention.character.id, byString()],
-])
-
-/** Every mention of one fruit, earliest first, by the archive's own rule. */
 function mentionsOf(id: string): readonly Mention[] {
   return MENTIONS.filter((mention) => mention.fruitIds.includes(id)).toSorted(
-    earliest,
+    byValues([
+      [(mention) => mention.episode, byNumber()],
+      [(mention) => mention.character.revealedAtChapter, byNumber()],
+      [(mention) => mention.character.id, byString()],
+    ]),
   )
 }
 

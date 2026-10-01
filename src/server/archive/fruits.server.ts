@@ -206,7 +206,7 @@ function nearest(
     .filter((candidate) => candidate.id !== entity.id)
     .toSorted(
       byValue(
-        (candidate: Entity) => Math.abs(thresholdOf(candidate, mode) - here),
+        (candidate) => Math.abs(thresholdOf(candidate, mode) - here),
         byNumber(),
       ),
     )

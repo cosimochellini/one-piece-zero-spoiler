@@ -102,8 +102,8 @@ function listed(byCharacter: ReadonlyMap<string, number>): readonly Eater[] {
     })
     .toSorted(
       byValues([
-        [(eater: Eater) => eater.namedAtEpisode, byNumber()],
-        [(eater: Eater) => eater.entity.revealedAtEpisode, byNumber()],
+        [(eater) => eater.namedAtEpisode, byNumber()],
+        [(eater) => eater.entity.revealedAtEpisode, byNumber()],
       ]),
     )
 }

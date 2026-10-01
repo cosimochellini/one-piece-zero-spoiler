@@ -269,7 +269,7 @@ export function nearbyCharacters(entity: Entity, count: number): Entity[] {
     .filter((candidate) => candidate.id !== entity.id)
     .toSorted(
       byValue(
-        (candidate: Entity) =>
+        (candidate) =>
           Math.abs(candidate.revealedAtEpisode - entity.revealedAtEpisode),
         byNumber(),
       ),
