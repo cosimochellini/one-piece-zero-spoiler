@@ -8,7 +8,7 @@ import { fruitArt } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import type { Redrawings } from './stroke'
 import { summitWarArt } from './summit-war'
-import { thrillerBarkArt } from './thriller-bark'
+import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt } from './wano'
 import { waterSevenArt } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
@@ -41,7 +41,10 @@ export const DRAWINGS = {
  * and falls back to `DRAWINGS`, so a reader below the first entry — or one
  * counting in chapters — is shown the drawing they always were.
  */
-export const REDRAWINGS: Redrawings = { ...skypieaRedrawn }
+export const REDRAWINGS: Redrawings = {
+  ...skypieaRedrawn,
+  ...thrillerBarkRedrawn,
+}
 
 /**
  * The id of a drawing. Derived from the drawings themselves, so a record

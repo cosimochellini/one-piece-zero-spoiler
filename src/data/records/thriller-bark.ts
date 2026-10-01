@@ -20,8 +20,8 @@ export const thrillerBark: Saga = {
       revealedAtChapter: 442,
       name: { it: 'Thriller Bark', en: 'Thriller Bark' },
       summary: {
-        it: 'Una nave grande quanto un’isola, con una villa e alberi secchi sul ponte, ferma in una nebbia dove la luna non tramonta mai.',
-        en: 'A ship the size of an island, a mansion and dead trees standing on its deck, moored in a fog where the moon never sets.',
+        it: 'La ciurma apre un barile trovato alla deriva ed entra in una nebbia così fitta che di giorno sembra notte. Dalla nebbia esce una nave fantasma, e a bordo uno scheletro canta.',
+        en: 'The crew opens a barrel found adrift and sails into a fog so thick that day looks like night. A ghost ship drifts out of it, and a skeleton is singing aboard.',
       },
       visual: { art: 'thriller-bark-arc', tint: 'lavender' },
     },
@@ -56,8 +56,8 @@ export const thrillerBark: Saga = {
       revealedAtChapter: 449,
       name: { it: 'Perona', en: 'Perona' },
       summary: {
-        it: 'La principessa fantasma di una nave-isola, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
-        en: 'The ghost princess of an island-ship, an umbrella and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
+        it: 'La principessa fantasma di Thriller Bark, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
+        en: 'The ghost princess of Thriller Bark, an umbrella and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
       },
       visual: { art: 'perona', tint: 'pink' },
     },
@@ -439,8 +439,8 @@ export const thrillerBark: Saga = {
     'victoria-cindry': {
       role: { it: 'Cameriera zombie', en: 'Zombie maid' },
       log: {
-        it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire su questa nave calcasse i palcoscenici, e che fosse fra le più amate.',
-        en: 'She carries the tray along the mansion corridors and answers the surgeon’s orders in a flat voice while the plates slide out of her fingers and break on the floor. Stitches cross her face and her arms, and she does not seem to mind. They say that before she ended up on this ship she was an actress, and a beloved one.',
+        it: 'Porta il vassoio per i corridoi della villa e risponde agli ordini del chirurgo con una voce piatta, mentre i piatti le scivolano dalle dita e si rompono sul pavimento. Le cuciture le attraversano il viso e le braccia, e non sembra importarle. Dicono che prima di finire qui calcasse i palcoscenici, e che fosse fra le più amate.',
+        en: 'She carries the tray along the mansion corridors and answers the surgeon’s orders in a flat voice while the plates slide out of her fingers and break on the floor. Stitches cross her face and her arms, and she does not seem to mind. They say that before she ended up here she was an actress, and a beloved one.',
       },
       status: [{ episode: 342, value: 'deceased' }],
       affiliation: [
