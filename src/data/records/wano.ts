@@ -101,8 +101,8 @@ export const wano: Saga = {
       revealedAtChapter: 929,
       name: { it: 'Page One', en: 'Page One' },
       summary: {
-        it: 'Un ragazzo in giacca di pelle, uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che arriva nella Capitale dei Fiori per punire in modo esemplare chi ha sfidato la ciurma.',
-        en: 'A young man in a leather jacket, one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who comes to the Flower Capital to make an example of whoever crossed the crew.',
+        it: 'Un ragazzo in giacca di pelle, uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che viene mandato con X Drake a punire in modo esemplare chi ha sfidato la ciurma.',
+        en: 'A young man in a leather jacket, one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who is sent with X Drake to make an example of whoever crossed the crew.',
       },
       visual: { art: 'page-one', tint: 'teal' },
     },
@@ -820,8 +820,8 @@ export const wano: Saga = {
         en: 'Tobiroppo of the Beasts Pirates',
       },
       log: {
-        it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e arriva nella Capitale dei Fiori insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
-        en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he walks into the Flower Capital with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
+        it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e viene mandato in missione insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
+        en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he is sent out with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
       },
       affiliation: [{ episode: 923, value: TOBIROPPO }],
       devilFruit: [

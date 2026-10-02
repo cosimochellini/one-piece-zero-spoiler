@@ -911,8 +911,8 @@ export const dressrosa: Saga = {
     },
     'brownbeard': {
       role: {
-        it: 'Capo delle guardie di Punk Hazard',
-        en: 'Punk Hazard guard captain',
+        it: 'Capo dei centauri di Punk Hazard',
+        en: 'Boss of the Punk Hazard centaurs',
       },
       log: {
         it: 'Comanda i centauri che sorvegliano l’isola, e ha una taglia che risale ai suoi anni da pirata. Scambia ogni straniero per un complice del samurai che sta facendo a pezzi i suoi uomini, e ordina di sparare prima che qualcuno possa spiegarsi.',
@@ -1046,8 +1046,8 @@ export const dressrosa: Saga = {
         {
           episode: 618,
           value: {
-            it: 'Pirati di Donquijote, ufficiale',
-            en: 'Donquixote Pirates, officer',
+            it: 'Pirati di Donquijote, assassina e domestica',
+            en: 'Donquixote Pirates, assassin and servant',
           },
         },
         {
@@ -1062,8 +1062,8 @@ export const dressrosa: Saga = {
     },
     'buffalo': {
       role: {
-        it: 'Ufficiale dei Pirati di Donquijote',
-        en: 'Donquixote Pirates officer',
+        it: 'Combattente dei Pirati di Donquijote',
+        en: 'Donquixote Pirates combatant',
       },
       log: {
         it: 'Porta in volo Baby 5 fino all’isola girando su sé stesso come un’elica, e chiude quasi ogni frase con lo stesso intercalare. Le dice che deve imparare a dire di no, e un attimo dopo le chiede dei soldi in prestito. Girando solleva un vento abbastanza forte da spazzare via parte del gas sull’isola.',
@@ -1073,8 +1073,8 @@ export const dressrosa: Saga = {
         {
           episode: 618,
           value: {
-            it: 'Pirati di Donquijote, ufficiale',
-            en: 'Donquixote Pirates, officer',
+            it: 'Pirati di Donquijote, combattente',
+            en: 'Donquixote Pirates, combatant',
           },
         },
       ],
