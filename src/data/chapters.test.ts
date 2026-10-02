@@ -40,6 +40,22 @@ describe('episodeAtChapter', () => {
     expect(episodes).toStrictEqual(episodes.toSorted(byNumber()))
   })
 
+  it('keeps chapters from reaching the Wano episodes the manga tells later', () => {
+    // Measured on PR #131: [episode a chapter used to reach, the episode its
+    // entry is dated at, and the chapter the manga tells it in].
+    for (const [chapter, entryEpisode, trueChapter] of [
+      [946, 953, 952],
+      [972, 976, 973],
+      [995, 1019, 1004],
+      [1006, 1040, 1018],
+    ] as const) {
+      expect(episodeAtChapter(chapter), `c${String(chapter)}`).toBeLessThan(
+        entryEpisode,
+      )
+      expect(chapterAtEpisode(entryEpisode)).toBeGreaterThanOrEqual(trueChapter)
+    }
+  })
+
   it('reads chapter 1 as episode 1, not the episode the anime moved it to', () => {
     // Shanks is chapter 1 but episode 4; Zoro, chapter 3, is episode 2.
     expect(episodeAtChapter(1)).toBe(1)

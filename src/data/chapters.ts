@@ -22,15 +22,33 @@ import { entities } from './entities'
  * so chapter 1 reaches episode 1 and not 4. Both bounds err towards fog,
  * which is the direction the archive always rounds in.
  *
- * ponytail: derived from the records' own thresholds, so it is only as fine
- * as they are dense; a curated chapter-to-episode table replaces it if a
- * reader ever needs better than "the last record you reached".
+ * Where the records are sparse a chapter would still reach episodes the
+ * manga tells chapters later, so ANCHORS adds measured pairs to the second
+ * bound only: an episode that opens at or after its chapter. The wiki has no
+ * episode-to-chapter table (the Episode_N `chapter =` field is empty), so the
+ * pairs are added where a gap was measured, not curated for every episode.
+ *
+ * ponytail: derived from the records' own thresholds plus a few anchors, so
+ * it is only as fine as they are dense; add an anchor wherever a chapter is
+ * seen to reach an episode too early.
  */
+const ANCHORS: readonly (readonly [episode: number, chapter: number])[] = [
+  [953, 952], // Babanuki tamed by Tama
+  [976, 973], // Denjiro's Kyoshiro entries (the reveal is chapter 973)
+  [1019, 1004], // Daifugo tamed, the Speed and Daifugo stories
+  [1040, 1018], // the Daifugo story; chapter approximate, so it errs late
+]
+
 const EPISODE_AT: readonly number[] = Array.from(
   { length: CHAPTER_CEILING + 1 },
   (_, chapter) => {
     let latestReached = 0
     let firstUnreached = Infinity
+    for (const [episode, anchored] of ANCHORS) {
+      if (anchored > chapter) {
+        firstUnreached = Math.min(firstUnreached, episode)
+      }
+    }
     for (const entity of entities) {
       if (entity.revealedAtChapter <= chapter) {
         latestReached = Math.max(latestReached, entity.revealedAtEpisode)
