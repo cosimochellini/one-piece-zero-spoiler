@@ -815,10 +815,7 @@ export const wano: Saga = {
       ],
     },
     'page-one': {
-      role: {
-        it: 'Tobiroppo dei Pirati delle Cento Bestie',
-        en: 'Tobiroppo of the Beasts Pirates',
-      },
+      role: TOBIROPPO_ROLE,
       log: {
         it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e viene mandato in missione insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
         en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he is sent out with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
