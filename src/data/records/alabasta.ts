@@ -139,7 +139,7 @@ export const alabasta: Saga = {
     {
       id: 'karoo',
       kind: 'character',
-      revealedAtEpisode: 64,
+      revealedAtEpisode: 65,
       revealedAtChapter: 114,
       name: { it: 'Carue', en: 'Karoo' },
       summary: {
@@ -235,7 +235,7 @@ export const alabasta: Saga = {
     {
       id: 'dorry',
       kind: 'character',
-      revealedAtEpisode: 70,
+      revealedAtEpisode: 71,
       revealedAtChapter: 120,
       name: { it: 'Dorry', en: 'Dorry' },
       summary: {
@@ -247,7 +247,7 @@ export const alabasta: Saga = {
     {
       id: 'brogy',
       kind: 'character',
-      revealedAtEpisode: 70,
+      revealedAtEpisode: 71,
       revealedAtChapter: 120,
       name: { it: 'Broggy', en: 'Brogy' },
       summary: {
@@ -271,7 +271,7 @@ export const alabasta: Saga = {
     {
       id: 'drum-island-arc',
       kind: 'arc',
-      revealedAtEpisode: 78,
+      revealedAtEpisode: 80,
       revealedAtChapter: 130,
       name: { it: 'Isola di Drum', en: 'Drum Island' },
       summary: {
@@ -283,7 +283,7 @@ export const alabasta: Saga = {
     {
       id: 'wapol',
       kind: 'character',
-      revealedAtEpisode: 78,
+      revealedAtEpisode: 79,
       revealedAtChapter: 133,
       name: { it: 'Wapol', en: 'Wapol' },
       summary: {
@@ -307,7 +307,7 @@ export const alabasta: Saga = {
     {
       id: 'dalton',
       kind: 'character',
-      revealedAtEpisode: 79,
+      revealedAtEpisode: 80,
       revealedAtChapter: 135,
       name: { it: 'Dalton', en: 'Dalton' },
       summary: {
@@ -535,7 +535,7 @@ export const alabasta: Saga = {
     {
       id: 'mr-1',
       kind: 'character',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Mister 1', en: 'Mr. 1' },
       summary: {
@@ -547,7 +547,7 @@ export const alabasta: Saga = {
     {
       id: 'miss-doublefinger',
       kind: 'character',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Miss Doublefinger', en: 'Miss Doublefinger' },
       summary: {
@@ -559,7 +559,7 @@ export const alabasta: Saga = {
     {
       id: 'mr-4',
       kind: 'character',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Mister 4', en: 'Mr. 4' },
       summary: {
@@ -571,7 +571,7 @@ export const alabasta: Saga = {
     {
       id: 'miss-merry-christmas',
       kind: 'character',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Miss Merry Christmas', en: 'Miss Merry Christmas' },
       summary: {
@@ -791,14 +791,14 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 64,
+          episode: 65,
           value: {
             it: 'Cavalcatura di Bibi; Squadra delle Super Anatre di Alabasta, capitano',
             en: 'Vivi’s mount; Alabasta’s Super Spot-Billed Duck Squad, captain',
           },
         },
       ],
-      origin: [{ episode: 64, value: ALABASTA }],
+      origin: [{ episode: 65, value: ALABASTA }],
     },
     'mr-5': {
       role: BW_OFFICER_ROLE,
@@ -835,8 +835,9 @@ export const alabasta: Saga = {
         },
       ],
       origin: [
+        { episode: 67, value: ALABASTA },
         {
-          episode: 67,
+          episode: 92,
           value: { it: 'Alubarna, Alabasta', en: 'Alubarna, Alabasta' },
         },
       ],
@@ -871,15 +872,15 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 70,
+          episode: 71,
           value: {
             it: 'Pirati Guerrieri Giganti, co-capitano',
             en: 'Giant Warrior Pirates, co-captain',
           },
         },
       ],
-      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
-      epithet: [{ episode: 70, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
+      origin: [{ episode: 71, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      epithet: [{ episode: 71, value: { it: 'Orco Blu', en: 'Blue Ogre' } }],
       bounty: [
         { episode: 71, value: 100_000_000 },
         { episode: 1160, value: 1_800_000_000 },
@@ -893,15 +894,15 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 70,
+          episode: 71,
           value: {
             it: 'Pirati Guerrieri Giganti, co-capitano',
             en: 'Giant Warrior Pirates, co-captain',
           },
         },
       ],
-      origin: [{ episode: 70, value: { it: 'Elbaf', en: 'Elbaph' } }],
-      epithet: [{ episode: 70, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
+      origin: [{ episode: 71, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      epithet: [{ episode: 71, value: { it: 'Orco Rosso', en: 'Red Ogre' } }],
       bounty: [
         { episode: 71, value: 100_000_000 },
         { episode: 1160, value: 1_800_000_000 },
@@ -915,7 +916,7 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 78,
+          episode: 79,
           value: { it: 'Re di Drum, in esilio', en: 'King of Drum, in exile' },
         },
         { episode: 91, value: { it: 'Deposto', en: 'Deposed' } },
@@ -927,9 +928,9 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 78, value: DRUM_KINGDOM }],
+      origin: [{ episode: 79, value: DRUM_KINGDOM }],
       epithet: [
-        { episode: 78, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
+        { episode: 79, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
       ],
       devilFruit: [{ episode: 79, value: ['munch-munch-fruit'] }],
     },
@@ -963,7 +964,7 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 79,
+          episode: 80,
           value: {
             it: 'Ex capitano della guardia di Drum',
             en: 'Former captain of Drum’s guard',
@@ -974,8 +975,8 @@ export const alabasta: Saga = {
           value: { it: 'Capo eletto di Drum', en: 'Drum’s elected leader' },
         },
       ],
-      origin: [{ episode: 79, value: DRUM_ISLAND }],
-      devilFruit: [{ episode: 79, value: ['ox-ox-fruit-model-bison'] }],
+      origin: [{ episode: 80, value: DRUM_ISLAND }],
+      devilFruit: [{ episode: 80, value: ['ox-ox-fruit-model-bison'] }],
     },
     'mr-11': {
       role: { it: 'Agente di Baroque Works', en: 'Baroque Works agent' },
@@ -1130,8 +1131,8 @@ export const alabasta: Saga = {
         en: 'One of the Seven Warlords',
       },
       log: {
-        it: 'Ad Alabasta gli hanno intitolato piazze: ha fermato i pirati che assalivano le coste e il popolo lo adora. Sotto il casinò di Rainbase dirige Baroque Works, una rete di agenti con nomi in codice che non lo hanno mai visto in faccia. Fuma sigari, non alza la voce e non considera nessuno un avversario.',
-        en: 'Alabasta has named squares after him: he stopped the pirates raiding its coast and the people adore him. Beneath a casino in Rainbase he runs Baroque Works, a network of code-named agents who have never seen his face. He smokes cigars, never raises his voice, and does not consider anyone an opponent.',
+        it: 'Ad Alabasta gli hanno intitolato piazze: ha fermato i pirati che assalivano le coste e il popolo lo adora. Da una base nascosta dirige Baroque Works, una rete di agenti con nomi in codice che non lo hanno mai visto in faccia. Fuma sigari, non alza la voce e non considera nessuno un avversario.',
+        en: 'Alabasta has named squares after him: he stopped the pirates raiding its coast and the people adore him. From a hidden base he runs Baroque Works, a network of code-named agents who have never seen his face. He smokes cigars, never raises his voice, and does not consider anyone an opponent.',
       },
       status: [
         { episode: 92, value: 'alive' },
@@ -1331,11 +1332,11 @@ export const alabasta: Saga = {
         en: 'He is the highest-ranked agent in the organisation and has never needed to raise his voice. His body turns to steel wherever he wants it: his arms open into blades, his legs become axes, and no ordinary sword marks him. He works with an elegant colleague and almost never speaks to her.',
       },
       affiliation: [
-        { episode: 100, value: BW_OFFICER },
+        { episode: 103, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
-      devilFruit: [{ episode: 100, value: ['dice-dice-fruit'] }],
+      devilFruit: [{ episode: 103, value: ['dice-dice-fruit'] }],
     },
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
@@ -1343,8 +1344,8 @@ export const alabasta: Saga = {
         it: 'Si presenta con i tacchi alti e una sigaretta, e sembra la più tranquilla dell’organizzazione finché non le spuntano spine d’acciaio dalle mani, dalle spalle e dai talloni. Le usa anche come trampoli, per camminare sopra la testa di chi la insegue. Lavora accanto all’agente di grado più alto e ne accetta i silenzi.',
         en: 'She arrives in high heels with a cigarette and seems the calmest person in the organisation until steel spikes come out of her hands, her shoulders and her heels. She uses them as stilts too, to walk above the heads of whoever is chasing her. She works beside the highest-ranked agent and puts up with his silences.',
       },
-      affiliation: [{ episode: 100, value: BW_OFFICER }],
-      devilFruit: [{ episode: 100, value: ['spike-spike-fruit'] }],
+      affiliation: [{ episode: 103, value: BW_OFFICER }],
+      devilFruit: [{ episode: 103, value: ['spike-spike-fruit'] }],
     },
     'mr-4': {
       role: BW_OFFICER_ROLE,
@@ -1352,7 +1353,7 @@ export const alabasta: Saga = {
         it: 'È lentissimo: impiega quattro secondi a rispondere a una domanda e altrettanti a decidere di muoversi, e questo lo rende difficile da prevedere. Combatte con una mazza da baseball e con un cane-fucile che ogni quattro minuti sputa una palla esplosiva. La collega con cui lavora parla per tutti e due.',
         en: 'He is extremely slow: it takes him four seconds to answer a question and as long again to decide to move, which makes him hard to read. He fights with a baseball bat and with a dog-shaped gun that spits an exploding ball every four minutes. The colleague he works with does the talking for both of them.',
       },
-      affiliation: [{ episode: 100, value: BW_OFFICER }],
+      affiliation: [{ episode: 103, value: BW_OFFICER }],
     },
     'miss-merry-christmas': {
       role: BW_OFFICER_ROLE,
@@ -1360,8 +1361,8 @@ export const alabasta: Saga = {
         it: 'È una donna anziana e piccola che si trasforma in talpa e scava sotto la città più in fretta di quanto si cammini in superficie. Fa crollare il terreno sotto i piedi dei nemici e riemerge alle loro spalle ridendo. Lavora con un agente lentissimo e gli tiene il ritmo parlando al posto suo.',
         en: 'She is a small elderly woman who turns into a mole and digs beneath the city faster than anyone walks above it. She collapses the ground under her enemies and comes up behind them laughing. She works with an extremely slow agent and keeps his pace by speaking for him.',
       },
-      affiliation: [{ episode: 100, value: BW_OFFICER }],
-      devilFruit: [{ episode: 100, value: ['mole-mole-fruit'] }],
+      affiliation: [{ episode: 103, value: BW_OFFICER }],
+      devilFruit: [{ episode: 103, value: ['mole-mole-fruit'] }],
     },
     'toto': {
       role: { it: 'Abitante di Yuba', en: 'Resident of Yuba' },
