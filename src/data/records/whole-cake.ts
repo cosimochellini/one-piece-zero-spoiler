@@ -930,7 +930,7 @@ export const wholeCake: Saga = {
             en: 'Mokomo Dukedom, ruler of the day',
           },
         },
-        { episode: 890, value: RED_SCABBARDS },
+        { episode: 955, value: RED_SCABBARDS },
         {
           episode: 1085,
           value: {
@@ -980,7 +980,6 @@ export const wholeCake: Saga = {
             en: 'Mokomo Dukedom, ruler of the night',
           },
         },
-        { episode: 890, value: RED_SCABBARDS },
       ],
       origin: [{ episode: 761, value: ZOU }],
     },
@@ -998,7 +997,7 @@ export const wholeCake: Saga = {
             en: 'Ninja of Wano, in hiding on Zou',
           },
         },
-        { episode: 890, value: RED_SCABBARDS },
+        { episode: 930, value: RED_SCABBARDS },
       ],
       origin: [
         { episode: 764, value: { it: 'Paese di Wano', en: 'Wano Country' } },
