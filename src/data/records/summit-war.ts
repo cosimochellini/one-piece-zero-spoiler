@@ -1416,7 +1416,7 @@ export const summitWar: Saga = {
         },
         { episode: 895, value: BEASTS_HEADLINER },
         {
-          episode: 1000,
+          episode: 957,
           value: {
             it: 'Marina, capitano dello SWORD',
             en: 'Marines, SWORD captain',

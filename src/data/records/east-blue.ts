@@ -933,10 +933,10 @@ export const eastBlue: Saga = {
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
         {
-          episode: 1090,
+          episode: 1113,
           value: {
-            it: 'Marina, capitano dello SWORD',
-            en: 'Marines, captain of SWORD',
+            it: 'Marina, capitano, membro dello SWORD',
+            en: 'Marines, captain, member of SWORD',
           },
         },
       ],
