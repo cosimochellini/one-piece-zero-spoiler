@@ -8,7 +8,7 @@ import {
   shadow,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the wano stretch of the route. */
 export const wanoArt = {
@@ -91,20 +91,24 @@ export const wanoArt = {
     shadow(80, 176, 48),
   ],
 
-  // A katana with a chrysanthemum for a guard.
-  'kikunojo': [
-    { d: 'M114 34 L58 126 M122 40 L66 132' },
-    { d: 'M114 34 L122 40' },
-    { d: circle(62, 133, 16), role: 'accent' },
+  // A tea tray with a pot and a cup, a chrysanthemum beside it: she serves
+  // at a tea house, and takes up a sword only at 901, in `wanoRedrawn`.
+  'kiku': [
+    { d: 'M26 152 H134 L128 162 H32 Z' },
+    { d: ellipse(68, 128, 26, 22) },
+    { d: 'M54 108 Q68 96 82 108' },
+    { d: 'M94 126 Q108 122 112 106', role: 'soft' },
+    { d: 'M42 116 Q28 128 44 140', role: 'soft' },
+    { d: 'M100 136 H120 L117 150 H103 Z' },
+    { d: 'M106 128 q-4 -6 0 -12 M114 128 q-4 -6 0 -12', role: 'ambient' },
+    { d: circle(116, 62, 14), role: 'accent' },
     {
-      d: 'M62 117 V149 M46 133 H78 M50.7 121.7 L73.3 144.3 M73.3 121.7 L50.7 144.3',
+      d: 'M116 48 V76 M102 62 H130 M106.1 52.1 L125.9 71.9 M125.9 52.1 L106.1 71.9',
       role: 'accent',
     },
-    { d: circle(62, 133, 5), role: 'accent' },
-    { d: 'M56 142 L34 172 M64 148 L42 178' },
-    { d: 'M34 172 L42 178' },
-    { d: 'M52 150 l8 6 M46 158 l8 6', role: 'soft' },
-    shadow(84, 186, 40),
+    { d: circle(116, 62, 4), role: 'accent' },
+    { d: 'M116 76 Q126 112 128 150', role: 'soft' },
+    shadow(80, 174, 52),
   ],
 
   // A bandit's broad blade, the sash still knotted round it.
@@ -987,3 +991,28 @@ export const wanoArt = {
     },
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const wanoRedrawn: Redrawings = {
+  // A katana with a chrysanthemum for a guard: she draws a sword for the
+  // first time at 901 (ch. 914), when Tama is taken from the tea house.
+  kiku: [
+    {
+      episode: 901,
+      value: [
+        { d: 'M114 34 L58 126 M122 40 L66 132' },
+        { d: 'M114 34 L122 40' },
+        { d: circle(62, 133, 16), role: 'accent' },
+        {
+          d: 'M62 117 V149 M46 133 H78 M50.7 121.7 L73.3 144.3 M73.3 121.7 L50.7 144.3',
+          role: 'accent',
+        },
+        { d: circle(62, 133, 5), role: 'accent' },
+        { d: 'M56 142 L34 172 M64 148 L42 178' },
+        { d: 'M34 172 L42 178' },
+        { d: 'M52 150 l8 6 M46 158 l8 6', role: 'soft' },
+        shadow(84, 186, 40),
+      ],
+    },
+  ],
+}

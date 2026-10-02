@@ -97,12 +97,12 @@ export const fishManIsland: Saga = {
     {
       id: 'shyarly',
       kind: 'character',
-      revealedAtEpisode: 524,
+      revealedAtEpisode: 529,
       revealedAtChapter: 612,
       name: { it: 'Sharley', en: 'Shyarly' },
       summary: {
-        it: 'La proprietaria del Caffè delle Sirene, una sirena con la coda da squalo che legge il futuro in una sfera di cristallo e non ha mai sbagliato.',
-        en: 'The owner of the Mermaid Café, a mermaid with a shark’s tail who reads the future in a crystal ball and has never once been wrong.',
+        it: 'La proprietaria del Caffè delle Sirene, una sirena con la coda da squalo le cui visioni nella sfera di cristallo hanno previsto l’era dei pirati e la morte di Barbabianca.',
+        en: 'The owner of the Mermaid Café, a mermaid with a shark’s tail whose visions in a crystal ball foretold the age of pirates and Whitebeard’s death.',
       },
       visual: { art: 'shyarly', tint: 'violet' },
     },
@@ -193,12 +193,12 @@ export const fishManIsland: Saga = {
     {
       id: 'neptune',
       kind: 'character',
-      revealedAtEpisode: 528,
-      revealedAtChapter: 615,
+      revealedAtEpisode: 530,
+      revealedAtChapter: 611,
       name: { it: 'Nettuno', en: 'Neptune' },
       summary: {
-        it: 'Il re del Regno di Ryugu, un tritone enorme con la barba bianca e un tridente, che governa dal palazzo di corallo in fondo all’isola.',
-        en: 'The king of the Ryugu Kingdom, an enormous white-bearded merman with a trident, ruling from the coral palace at the bottom of the island.',
+        it: 'Il re del Regno di Ryugu, un tritone enorme con la barba bianca e un tridente, che scende dal suo palazzo in groppa a una balena per invitarvi i Cappello di Paglia.',
+        en: 'The king of the Ryugu Kingdom, an enormous white-bearded merman with a trident, who rides down from his palace on a whale to invite the Straw Hats there.',
       },
       visual: { art: 'neptune', tint: 'blue' },
     },
@@ -209,8 +209,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 616,
       name: { it: 'Fukaboshi', en: 'Fukaboshi' },
       summary: {
-        it: 'Il primogenito di Nettuno, un tritone squalo che comanda l’armata del regno con una lancia e parla a nome del padre.',
-        en: 'Neptune’s eldest son, a shark merman who commands the kingdom’s army with a lance and speaks in his father’s name.',
+        it: 'Il primogenito del re, un tritone squalo che comanda l’armata del regno con una lancia e parla a nome del padre.',
+        en: 'The king’s eldest son, a shark merman who commands the kingdom’s army with a lance and speaks in his father’s name.',
       },
       visual: { art: 'fukaboshi', tint: 'azure' },
     },
@@ -325,12 +325,12 @@ export const fishManIsland: Saga = {
     {
       id: 'den',
       kind: 'character',
-      revealedAtEpisode: 531,
+      revealedAtEpisode: 535,
       revealedAtChapter: 620,
       name: { it: 'Den', en: 'Den' },
       summary: {
-        it: 'Il carpentiere dell’Isola degli Uomini-Pesce, che rimette a posto gli scafi scesi dalla superficie e dice di essere il fratello minore di Tom.',
-        en: 'The shipwright of Fish-Man Island, who puts right the hulls that come down from the surface and says he is Tom’s younger brother.',
+        it: 'Un tritone carpentiere che studia la Foresta Marina, dove la corrente porta le navi che affondano intorno all’isola, e che dice di essere il fratello minore di Tom.',
+        en: 'A merman shipwright who studies the Sea Forest, where the tide carries the ships that sink around the island, and who says he is Tom’s younger brother.',
       },
       visual: { art: 'den', tint: 'cyan' },
     },
@@ -553,19 +553,19 @@ export const fishManIsland: Saga = {
         en: 'Owner of the Mermaid Café',
       },
       log: {
-        it: 'Tiene il caffè dove le sirene vanno a farsi dire che cosa le aspetta, e sull’isola nessuno prende le sue parole alla leggera: quello che vede nella sfera è sempre accaduto. Non sceglie che cosa vedere e non spiega come funzioni, e quando una visione le pesa preferisce non dire niente a nessuno.',
-        en: 'She keeps the café where mermaids come to be told what is waiting for them, and nobody on the island takes her word lightly: what she sees in the ball has always happened. She does not choose what she sees and does not explain how it works, and when a vision weighs on her she says nothing at all.',
+        it: 'Gestisce il Caffè delle Sirene e presta il retro del locale alla ciurma mentre il suo cuoco si riprende. Le sue visioni nella sfera di cristallo sono famose sull’isola: da bambina previde l’arrivo dei pirati, e di recente la guerra di Marineford e la morte di Barbabianca. Dice di aver smesso, perché il futuro è meglio non conoscerlo. Dopo aver incontrato il ragazzo con il cappello di paglia guarda di nuovo, e quello che vede la manda in strada a gridare che va cacciato dall’isola.',
+        en: 'She runs the Mermaid Café and lends its back room to the crew while their cook recovers. Her visions in a crystal ball are famous on the island: as a child she foresaw the pirates who would come, and more recently the war at Marineford and Whitebeard’s death. She says she has given it up, because the future is better not known. After meeting the boy in the straw hat she looks again, and what she sees sends her into the street shouting that he must be thrown off the island.',
       },
       affiliation: [
         {
-          episode: 524,
+          episode: 529,
           value: {
             it: 'Caffè delle Sirene, proprietaria; veggente',
             en: 'Mermaid Café, owner; fortune teller',
           },
         },
       ],
-      origin: [{ episode: 524, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 529, value: FISH_MAN_ISLAND }],
     },
     'ankoro': {
       chronicle: fishManIslandChronicles.ankoro,
@@ -711,19 +711,19 @@ export const fishManIsland: Saga = {
     'neptune': {
       role: { it: 'Re del Regno di Ryugu', en: 'King of the Ryugu Kingdom' },
       log: {
-        it: 'Siede su un trono di corallo in un palazzo pieno d’acqua e si muove con la lentezza allegra di chi ha già visto tutto. È forte abbastanza da essere chiamato il Grande Cavaliere del Mare e mite abbastanza da ridere di sé stesso davanti alla corte. Vuole che la sua gente possa vivere sotto il sole e non perde occasione per ripeterlo.',
-        en: 'He sits on a coral throne in a palace full of water and moves with the cheerful slowness of a man who has seen everything already. He is strong enough to be called the Great Knight of the Sea and mild enough to laugh at himself in front of his court. He wants his people living under the sun, and he says so at every chance.',
+        it: 'Scende dal palazzo in groppa alla sua balena, senza guardie, e nella piazza la gente non lo ha mai visto di persona. Arrivando grida il proprio nome. È venuto per gli umani che lo squalo Megalo gli indica, e li invita al Palazzo di Ryugu.',
+        en: 'He rides down from the palace on his whale with no guards, and in the square below people have never seen him in person. He shouts his own name as he arrives. He has come for the humans the shark Megalo points out, and he invites them to the Ryugu Palace.',
       },
       affiliation: [
         {
-          episode: 528,
+          episode: 530,
           value: { it: 'Regno di Ryugu, re', en: 'Ryugu Kingdom, king' },
         },
       ],
-      origin: [{ episode: 528, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
       epithet: [
         {
-          episode: 528,
+          episode: 533,
           value: {
             it: 'il Grande Cavaliere del Mare',
             en: 'the Great Knight of the Sea',
@@ -734,12 +734,19 @@ export const fishManIsland: Saga = {
     'fukaboshi': {
       role: { it: 'Principe ereditario di Ryugu', en: 'Crown prince of Ryugu' },
       log: {
-        it: 'Guida i ministri e l’armata di Nettuno ed è il più misurato dei tre fratelli: ascolta prima di alzare la voce e non promette nulla che non possa mantenere. Porta una lancia con la punta a forma di squalo ed è il primo a rendersi conto di quanto sia grave quello che sta montando nel Quartiere degli Uomini-Pesce.',
-        en: 'He leads the ministers and the Neptune Army and is the steadiest of the three brothers: he listens before raising his voice and promises nothing he cannot deliver. He carries a lance with a shark-shaped head, and he is the first to work out how serious the thing rising in the Fish-Man District really is.',
+        it: 'Guida i ministri e l’armata del regno ed è il più misurato dei tre fratelli: ascolta prima di alzare la voce e non promette nulla che non possa mantenere. Porta una lancia con la punta a forma di squalo ed è il primo a rendersi conto di quanto sia grave quello che sta montando nel Quartiere degli Uomini-Pesce.',
+        en: 'He leads the ministers and the kingdom’s army and is the steadiest of the three brothers: he listens before raising his voice and promises nothing he cannot deliver. He carries a lance with a shark-shaped head, and he is the first to work out how serious the thing rising in the Fish-Man District really is.',
       },
       affiliation: [
         {
           episode: 529,
+          value: {
+            it: 'Regno di Ryugu, principe ereditario',
+            en: 'Ryugu Kingdom, crown prince',
+          },
+        },
+        {
+          episode: 530,
           value: {
             it: 'Regno di Ryugu, principe ereditario; Armata di Nettuno',
             en: 'Ryugu Kingdom, crown prince; Neptune Army',
@@ -911,19 +918,19 @@ export const fishManIsland: Saga = {
     'den': {
       role: { it: 'Carpentiere dell’isola', en: 'Shipwright of the island' },
       log: {
-        it: 'Tiene il cantiere dell’isola e lavora sugli scafi che scendono dalla superficie coperti di resina, con il martello in mano e le bolle che gli salgono intorno. Dice di essere il fratello minore di Tom, il carpentiere di cui si parla ancora a Water Seven, e a chi lo ha conosciuto basta guardarlo. Per il lavoro non chiede niente.',
-        en: 'He runs the island’s yard and works on the hulls that come down from the surface under their coating, mallet in hand and bubbles rising around him. He says he is the younger brother of Tom, the shipwright people still talk about in Water Seven, and anyone who knew him only has to look. He asks nothing for the work.',
+        it: 'Studia la Foresta Marina, dove la corrente porta le navi che affondano intorno all’isola, ed è carpentiere come il fratello maggiore Tom. Dalle lettere di Kokoro sa che cosa è stato di Tom, e ha già sentito parlare di Franky e Iceburg. A Tom non somiglia per niente, e spiega che sull’Isola degli Uomini-Pesce i figli prendono spesso da un antenato lontano invece che dai genitori. Si offre di rivestire lui stesso la Thousand Sunny.',
+        en: 'He studies the Sea Forest, where the tide carries the ships that sink around the island, and he is a shipwright like his elder brother Tom. Kokoro’s letters have told him what became of Tom, and about Franky and Iceburg. He looks nothing like Tom, and he explains that on Fish-Man Island children often take after a distant ancestor rather than their parents. He offers to coat the Thousand Sunny himself.',
       },
       affiliation: [
         {
-          episode: 531,
+          episode: 535,
           value: {
             it: 'Carpentiere dell’Isola degli Uomini-Pesce; fratello minore di Tom',
             en: 'Shipwright of Fish-Man Island; Tom’s younger brother',
           },
         },
       ],
-      origin: [{ episode: 531, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 535, value: FISH_MAN_ISLAND }],
     },
     'minister-of-the-right': {
       chronicle: fishManIslandChronicles['minister-of-the-right'],
@@ -1053,7 +1060,7 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 571, value: { it: 'Zou', en: 'Zou' } }],
+      origin: [{ episode: 762, value: { it: 'Zou', en: 'Zou' } }],
       devilFruit: [{ episode: 571, value: ['turtle-turtle-fruit'] }],
       bounty: [{ episode: 572, value: 330_000_000 }],
     },

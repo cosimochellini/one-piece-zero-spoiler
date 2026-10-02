@@ -46,16 +46,16 @@ export const dressrosa: Saga = {
       revealedAtChapter: 654,
       name: { it: 'Punk Hazard', en: 'Punk Hazard' },
       summary: {
-        it: 'Un’isola divisa in due da una linea netta, metà in fiamme e metà sepolta nel ghiaccio, su cui il Governo Mondiale vieta di sbarcare.',
-        en: 'An island cut in two by a clean line, half of it burning and half buried in ice, which the World Government forbids anyone to land on.',
+        it: 'Il primo tratto del Nuovo Mondo per la ciurma di Cappello di Paglia, che riemerge su un mare rosso che sembra in fiamme.',
+        en: 'The Straw Hats’ first stretch of the New World, where they surface onto a red sea that seems to be on fire.',
       },
       visual: { art: 'punk-hazard-arc', tint: 'vermilion' },
     },
     {
       id: 'kinemon',
       kind: 'character',
-      revealedAtEpisode: 579,
-      revealedAtChapter: 657,
+      revealedAtEpisode: 598,
+      revealedAtChapter: 672,
       name: { it: 'Kinemon', en: 'Kin’emon' },
       summary: {
         it: 'Un samurai tagliato in pezzi che continua a parlare, trovato nella metà ghiacciata dell’isola mentre cerca il resto del proprio corpo e suo figlio.',
@@ -78,12 +78,12 @@ export const dressrosa: Saga = {
     {
       id: 'brownbeard',
       kind: 'character',
-      revealedAtEpisode: 580,
-      revealedAtChapter: 658,
+      revealedAtEpisode: 584,
+      revealedAtChapter: 661,
       name: { it: 'Barbabruna', en: 'Brownbeard' },
       summary: {
-        it: 'Un pirata innestato sul corpo di un coccodrillo, che pattuglia la metà in fiamme dell’isola a capo di una banda di centauri.',
-        en: 'A pirate grafted onto a crocodile’s body who patrols the burning half of the island at the head of a band of centaurs.',
+        it: 'Un ex pirata con il corpo di alligatore dalla vita in giù, a capo di una banda di centauri che sorveglia l’isola.',
+        en: 'A former pirate with an alligator’s body from the waist down, at the head of a band of centaurs that guards the island.',
       },
       visual: { art: 'brownbeard', tint: 'ocher' },
     },
@@ -114,44 +114,44 @@ export const dressrosa: Saga = {
     {
       id: 'vergo',
       kind: 'character',
-      revealedAtEpisode: 589,
-      revealedAtChapter: 666,
+      revealedAtEpisode: 598,
+      revealedAtChapter: 672,
       name: { it: 'Vergo', en: 'Vergo' },
       summary: {
-        it: 'Un viceammiraglio della Marina con un pezzo di cibo sempre incollato alla guancia, che arriva sull’isola e non lascia capire da che parte stia.',
-        en: 'A Marine vice admiral with a scrap of food forever stuck to his cheek, who arrives on the island and leaves nobody sure whose side he is on.',
+        it: 'Un uomo alto con un pezzo di cibo incollato alla guancia, che compare nel laboratorio senza preavviso e mette a terra Law come se non gli costasse nulla.',
+        en: 'A tall man with a scrap of food stuck to his cheek, who turns up in the laboratory without warning and knocks Law down as though it cost him nothing.',
       },
       visual: { art: 'vergo', tint: 'sand' },
     },
     {
       id: 'momonosuke',
       kind: 'character',
-      revealedAtEpisode: 590,
-      revealedAtChapter: 667,
+      revealedAtEpisode: 609,
+      revealedAtChapter: 685,
       name: { it: 'Momonosuke', en: 'Momonosuke' },
       summary: {
-        it: 'Un bambino trovato nel laboratorio insieme agli altri rapiti, trasformato in un piccolo drago rosa che non riesce a capire come si vola.',
-        en: 'A boy found in the laboratory among the other stolen children, turned into a small pink dragon that cannot work out how to fly.',
+        it: 'Un bambino arrivato sull’isola insieme agli altri bambini, che si è infilato in una stanza dove nessuno può entrare e si è trasformato in un piccolo drago.',
+        en: 'A boy who came to the island with the other children, slipped into a room nobody may enter and turned into a small dragon.',
       },
       visual: { art: 'momonosuke', tint: 'pink' },
     },
     {
       id: 'baby-5',
       kind: 'character',
-      revealedAtEpisode: 591,
-      revealedAtChapter: 668,
+      revealedAtEpisode: 608,
+      revealedAtChapter: 682,
       name: { it: 'Baby 5', en: 'Baby 5' },
       summary: {
-        it: 'Una ragazza che non sa dire di no a nessuno e che trasforma le proprie braccia in armi da fuoco per rendersi utile a chi glielo chiede.',
-        en: 'A young woman who cannot say no to anybody, turning her own arms into firearms to make herself useful to whoever asks.',
+        it: 'Una ragazza della cerchia di Do Flamingo che trasforma il braccio in un cannone e giura che questa volta non lo perdonerà.',
+        en: 'A young woman in Doflamingo’s household who turns her arm into a cannon and swears she will not forgive him this time.',
       },
       visual: { art: 'baby-5', tint: 'wine' },
     },
     {
       id: 'buffalo',
       kind: 'character',
-      revealedAtEpisode: 591,
-      revealedAtChapter: 668,
+      revealedAtEpisode: 618,
+      revealedAtChapter: 692,
       name: { it: 'Buffalo', en: 'Buffalo' },
       summary: {
         it: 'Un uomo tondo come una palla che si mette a girare su sé stesso come un’elica e decolla portandosi dietro la compagna di viaggio.',
@@ -166,20 +166,20 @@ export const dressrosa: Saga = {
       revealedAtChapter: 700,
       name: { it: 'Dressrosa', en: 'Dressrosa' },
       summary: {
-        it: 'Un regno di fiori e giocattoli viventi, con un colosseo al centro e un soldatino di legno con una gamba sola fermo davanti al cancello.',
-        en: 'A kingdom of flowers and living toys, a colosseum at its heart and a one-legged wooden soldier standing at the gate.',
+        it: 'Un regno del Nuovo Mondo che dal mare appare come un’isola rocciosa, con un pirata sul trono e un colosseo sempre pieno.',
+        en: 'A New World kingdom that looks like a rocky island from the sea, with a pirate on its throne and a colosseum that is always full.',
       },
       visual: { art: 'dressrosa-arc', tint: 'flamingo' },
     },
     {
       id: 'rebecca',
       kind: 'character',
-      revealedAtEpisode: 630,
+      revealedAtEpisode: 634,
       revealedAtChapter: 706,
       name: { it: 'Rebecca', en: 'Rebecca' },
       summary: {
-        it: 'Una gladiatrice del colosseo con l’armatura leggera e una lunga treccia, che vince ogni incontro senza ferire nessuno e per questo viene fischiata.',
-        en: 'A colosseum gladiator in light armour with a long braid, who wins every bout without wounding anyone and is jeered for it.',
+        it: 'Una gladiatrice del colosseo delle corride con l’armatura leggera e una lunga treccia: non ha mai perso un incontro, e gli altri combattenti le dicono che tutti aspettano di vederla battuta.',
+        en: 'A gladiator of the Corrida Colosseum in light armour with a long braid: she has never lost a match, and the other fighters tell her everyone is waiting to see her beaten.',
       },
       visual: { art: 'rebecca', tint: 'pink' },
     },
@@ -888,12 +888,12 @@ export const dressrosa: Saga = {
     'kinemon': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
-        it: 'Ha la testa e il busto separati dalle gambe, e le insegue per l’isola come se fosse una seccatura passeggera. Taglia con la spada anche le fiamme, e non tollera che qualcuno tocchi la sua katana. Dice di essere arrivato dal mare con un bambino e di non ripartire senza di lui, ma di sé e del suo paese non racconta quasi nulla.',
-        en: 'His head and chest are parted from his legs, and he chases them across the island as though it were a passing inconvenience. He cuts flame itself with his sword and lets nobody touch his katana. He says he came over the sea with a child and will not leave without him, but about himself and his country he says almost nothing.',
+        it: 'È stato tagliato in tre, e la testa, il busto e le gambe finiscono in angoli diversi dell’isola. Non sopporta i pirati e glielo dice in faccia, poi si inginocchia per ringraziare chi gli riporta il busto. Con la spada taglia anche le fiamme, ed è venuto sull’isola per suo figlio, senza il quale non intende ripartire.',
+        en: 'He has been cut into three, and his head, his torso and his legs end up in different corners of the island. He cannot stand pirates and says so to their faces, then kneels to thank the one who brings back his torso. He cuts flame itself with his sword, and he came to the island for his son, whom he will not leave without.',
       },
       affiliation: [
         {
-          episode: 579,
+          episode: 598,
           value: {
             it: 'Samurai di Wano, in cerca di suo figlio',
             en: 'Samurai of Wano, in search of his son',
@@ -904,26 +904,26 @@ export const dressrosa: Saga = {
           value: { it: 'Nove Foderi Rossi', en: 'Nine Red Scabbards' },
         },
       ],
-      origin: [{ episode: 579, value: WANO }],
+      origin: [{ episode: 598, value: WANO }],
       epithet: [
-        { episode: 579, value: { it: 'Volpe di Fuoco', en: 'Foxfire' } },
+        { episode: 598, value: { it: 'Volpe di Fuoco', en: 'Foxfire' } },
       ],
     },
     'brownbeard': {
       role: {
-        it: 'Capo delle guardie di Punk Hazard',
-        en: 'Punk Hazard guard captain',
+        it: 'Capo dei centauri di Punk Hazard',
+        en: 'Boss of the Punk Hazard centaurs',
       },
       log: {
-        it: 'Comanda i centauri che sorvegliano l’isola e si presenta ridendo, sicuro che nessuno arrivi fin lì per caso. Racconta di quando aveva una ciurma vera e un nome che contava qualcosa, prima di perdere le gambe. Adesso lavora per l’uomo che tiene il laboratorio e ripete le sue parole come se fossero sue.',
-        en: 'He commands the centaurs who guard the island and introduces himself laughing, certain that nobody reaches this place by accident. He talks about the days when he had a real crew and a name that counted for something, before he lost his legs. Now he works for the man who keeps the laboratory and repeats his words as though they were his own.',
+        it: 'Comanda i centauri che sorvegliano l’isola, e ha una taglia che risale ai suoi anni da pirata. Scambia ogni straniero per un complice del samurai che sta facendo a pezzi i suoi uomini, e ordina di sparare prima che qualcuno possa spiegarsi.',
+        en: 'He commands the centaurs who guard the island, and he has a bounty from his years as a pirate. He takes every stranger for an accomplice of the samurai who has been cutting down his men, and gives the order to shoot before anyone can explain.',
       },
       affiliation: [
         {
-          episode: 580,
+          episode: 584,
           value: {
-            it: 'Punk Hazard, capo delle guardie del laboratorio',
-            en: 'Punk Hazard, captain of the laboratory guard',
+            it: 'Punk Hazard, capo dei centauri',
+            en: 'Punk Hazard, boss of the centaurs',
           },
         },
         {
@@ -985,18 +985,18 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 586, value: ['snow-snow-fruit'] }],
     },
     'vergo': {
-      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
+      role: { it: 'Vecchia conoscenza di Law', en: 'Law’s old acquaintance' },
       log: {
-        it: 'Comanda la base G-5 e i suoi uomini lo temono più del nemico. Ha sempre qualcosa attaccato in faccia, un chicco di riso o una foglia di insalata, e nessuno osa dirglielo. Arriva a Punk Hazard con una calma che non somiglia a quella di un ispettore, e la prima cosa che fa è mettersi fra i prigionieri e chi vorrebbe liberarli.',
-        en: 'He commands the G-5 base and his own men fear him more than any enemy. There is always something stuck to his face, a grain of rice or a leaf of salad, and nobody dares tell him. He reaches Punk Hazard with a calm that has nothing of an inspector about it, and the first thing he does is put himself between the prisoners and anyone who would free them.',
+        it: 'Arriva al laboratorio a bordo di una petroliera con un pezzo di cibo attaccato alla guancia, e Law lo riconosce subito. Lo mette a terra senza sforzo e pretende che lo chiami Vergo-san, non Vergo. Sa che Monet è stata mandata sull’isola per tenere d’occhio Caesar.',
+        en: 'He arrives at the laboratory on a tanker with a scrap of food stuck to his cheek, and Law recognises him at once. He knocks Law down without effort and tells him to say Vergo-san, not Vergo. He knows that Monet was sent to the island to keep an eye on Caesar.',
       },
       status: [
-        { episode: 589, value: 'alive' },
+        { episode: 598, value: 'alive' },
         { episode: 620, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 589,
+          episode: 599,
           value: {
             it: 'Marina, viceammiraglio della G-5, in segreto uomo di Do Flamingo',
             en: 'Marines, vice admiral of G-5, secretly Doflamingo’s man',
@@ -1005,18 +1005,21 @@ export const dressrosa: Saga = {
         { episode: 613, value: { it: 'Smascherato', en: 'Exposed' } },
       ],
       epithet: [
-        { episode: 589, value: { it: 'Bambù Demoniaco', en: 'Demon Bamboo' } },
+        { episode: 606, value: { it: 'Bambù Demoniaco', en: 'Demon Bamboo' } },
       ],
     },
     'momonosuke': {
-      role: { it: 'Bambino di Wano', en: 'Child from Wano' },
+      role: {
+        it: 'Bambino trasformato in drago',
+        en: 'Child turned into a dragon',
+      },
       log: {
-        it: 'Lo trovano nel laboratorio, fra bambini giganti tenuti buoni con i dolci, e lui divide il cibo con chi ha più fame. Un frutto artificiale lo ha trasformato in un dragoncello rosa e non sa come tornare indietro. Dice di chiamarsi Momonosuke e di essere il figlio del samurai che gira l’isola cercandolo, e non aggiunge altro.',
-        en: 'They find him in the laboratory, among giant children kept quiet with sweets, and he shares his food with whoever is hungriest. An artificial fruit has turned him into a small pink dragon and he has no idea how to change back. He says his name is Momonosuke and that he is the son of the samurai searching the island for him, and will say nothing more.',
+        it: 'Una bambina arrivata sulla stessa nave lo ha visto infilarsi nella stanza segreta del laboratorio e trasformarsi in un piccolo drago, e non lo ha detto a nessuno. Kinemon cerca per tutta l’isola un figlio con lo stesso nome.',
+        en: 'A girl who came on the same ship saw him slip into the laboratory’s secret room and turn into a small dragon, and kept it to herself. Kin’emon is searching the island for a son with the same name.',
       },
       affiliation: [
         {
-          episode: 590,
+          episode: 620,
           value: {
             it: 'Figlio di Kin’emon, a sentir lui',
             en: 'Kin’emon’s son, so he says',
@@ -1030,24 +1033,21 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 590, value: WANO }],
-      devilFruit: [{ episode: 590, value: ['artificial-dragon-dragon-fruit'] }],
+      origin: [{ episode: 620, value: WANO }],
+      devilFruit: [{ episode: 611, value: ['artificial-dragon-dragon-fruit'] }],
     },
     'baby-5': {
-      role: {
-        it: 'Ufficiale dei Pirati di Donquijote',
-        en: 'Donquixote Pirates officer',
-      },
+      role: { it: 'Sottoposta di Do Flamingo', en: 'Doflamingo’s subordinate' },
       log: {
-        it: 'Chiunque le dica di avere bisogno di lei ottiene qualsiasi cosa, e lei si commuove ogni volta come fosse la prima. Il suo corpo diventa fucili, lame e cannoni a seconda di quello che serve, e li usa senza esitare un istante. Viaggia insieme a un compagno chiassoso per conto della famiglia a cui appartiene, e litiga con lui per tutto il tragitto.',
-        en: 'Anyone who tells her they need her gets whatever they want, and she is moved by it every time as though it were the first. Her body becomes rifles, blades and cannons depending on what is wanted, and she uses them without a moment’s hesitation. She travels with a loud companion on the business of the family she belongs to, arguing with him the whole way.',
+        it: 'Piomba davanti a Do Flamingo con il braccio trasformato in un cannone e giura che questa volta non lo perdonerà. Le sparano, si rialza e lo attacca con un’ascia, e lui la schiva senza interrompere la telefonata. La chiama una testa calda e la manda sull’isola per i suoi affari.',
+        en: 'She bursts in on Doflamingo with her arm turned into a cannon and swears she will not forgive him this time. She is shot down, gets up again and swings an axe at him, and he dodges without breaking off his phone call. He calls her hot-blooded and sends her to the island on his business.',
       },
       affiliation: [
         {
-          episode: 591,
+          episode: 618,
           value: {
-            it: 'Pirati di Donquijote, ufficiale',
-            en: 'Donquixote Pirates, officer',
+            it: 'Pirati di Donquijote, assassina e domestica',
+            en: 'Donquixote Pirates, assassin and servant',
           },
         },
         {
@@ -1058,37 +1058,37 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 591, value: ['arms-arms-fruit'] }],
+      devilFruit: [{ episode: 608, value: ['arms-arms-fruit'] }],
     },
     'buffalo': {
       role: {
-        it: 'Ufficiale dei Pirati di Donquijote',
-        en: 'Donquixote Pirates officer',
+        it: 'Combattente dei Pirati di Donquijote',
+        en: 'Donquixote Pirates combatant',
       },
       log: {
-        it: 'Ripete quello che dicono gli altri e aggiunge sempre la stessa risata, e la ragazza che viaggia con lui lo tratta come un fratello insopportabile. Girando su sé stesso vola e taglia, e in aria è molto più svelto di quanto sembri a terra. Arriva sull’isola in fiamme per riportare a casa un carico che qualcuno aspetta con impazienza.',
-        en: 'He repeats whatever anyone else says and adds the same laugh each time, and the girl travelling with him treats him like an unbearable brother. Spinning on his own axis he flies and he cuts, and in the air he is far quicker than he looks on the ground. He comes to the burning island to bring home a cargo that somebody is waiting for impatiently.',
+        it: 'Porta in volo Baby 5 fino all’isola girando su sé stesso come un’elica, e chiude quasi ogni frase con lo stesso intercalare. Le dice che deve imparare a dire di no, e un attimo dopo le chiede dei soldi in prestito. Girando solleva un vento abbastanza forte da spazzare via parte del gas sull’isola.',
+        en: 'He flies Baby 5 to the island by spinning like a propeller, and ends almost every sentence with the same verbal tic. He tells her she has to learn to say no, then asks to borrow money from her in the same breath. His spinning raises a wind strong enough to blow back the gas over the island.',
       },
       affiliation: [
         {
-          episode: 591,
+          episode: 618,
           value: {
-            it: 'Pirati di Donquijote, ufficiale',
-            en: 'Donquixote Pirates, officer',
+            it: 'Pirati di Donquijote, combattente',
+            en: 'Donquixote Pirates, combatant',
           },
         },
       ],
-      devilFruit: [{ episode: 591, value: ['spin-spin-fruit'] }],
+      devilFruit: [{ episode: 618, value: ['spin-spin-fruit'] }],
     },
     'rebecca': {
       role: { it: 'Gladiatrice del colosseo', en: 'Colosseum gladiator' },
       log: {
-        it: 'Scende nell’arena con una spada che non usa mai per colpire, e schiva finché l’avversario non cade da solo. Gli spalti la fischiano e le tirano addosso di tutto, e lei continua a combattere lo stesso. Del premio in palio non parla, ma il modo in cui guarda il tabellone dice che non è lì per la gloria.',
-        en: 'She steps into the arena with a sword she never uses to strike, dodging until her opponent goes down on his own. The stands jeer her and throw whatever comes to hand, and she keeps fighting all the same. She says nothing about the prize, but the way she looks at the board says she is not there for glory.',
+        it: 'Nel colosseo non ha mai perso un incontro, e altri due combattenti la prendono in giro dicendo che tutti aspettano di vederla battuta. Ringrazia il nuovo arrivato che ha messo al tappeto Spartan, un gladiatore che l’ha tormentata per anni, e gli racconta della statua di un campione che nel paese nessuno ricorda. Questo torneo sarà il suo ultimo, dice: vuole vincere il Frutto Foco Foco e uccidere Do Flamingo.',
+        en: 'She has never lost a match in the colosseum, and two other fighters tease her that everyone is waiting to see her beaten. She thanks the newcomer who knocked out Spartan, a gladiator who bullied her for years, and tells him about the statue of a champion nobody in the country remembers. This tournament will be her last, she says: she means to win the Flame-Flame Fruit and kill Doflamingo.',
       },
       affiliation: [
         {
-          episode: 630,
+          episode: 634,
           value: {
             it: 'Gladiatrice del colosseo di Dressrosa',
             en: 'Colosseum gladiator of Dressrosa',
@@ -1102,10 +1102,14 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 630, value: DRESSROSA }],
+      origin: [{ episode: 651, value: DRESSROSA }],
       epithet: [
         {
-          episode: 630,
+          episode: 634,
+          value: { it: 'La Donna Invitta', en: 'the Undefeated Woman' },
+        },
+        {
+          episode: 651,
           value: {
             it: 'La Donna Invitta; La Principessa Fantasma',
             en: 'the Undefeated Woman; the Phantom Princess',

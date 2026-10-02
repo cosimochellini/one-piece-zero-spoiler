@@ -16,7 +16,7 @@ import { fruitArt } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
-import { wanoArt } from './wano'
+import { wanoArt, wanoRedrawn } from './wano'
 import { waterSevenArt } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
 
@@ -90,7 +90,7 @@ describe('the drawings', () => {
 describe('the redrawings', () => {
   it('never file the same id in two sagas', () => {
     // Merged by spread like the drawings, and caught the same way.
-    const modules = [skypieaRedrawn, thrillerBarkRedrawn]
+    const modules = [skypieaRedrawn, thrillerBarkRedrawn, wanoRedrawn]
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
     expect(Object.keys(REDRAWINGS)).toHaveLength(total)

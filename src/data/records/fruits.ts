@@ -772,8 +772,8 @@ export const devilFruits: Saga = {
     {
       id: 'artificial-dragon-dragon-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 590,
-      revealedAtChapter: 667,
+      revealedAtEpisode: 611,
+      revealedAtChapter: 685,
       name: {
         it: 'Frutto Ryu Ryu artificiale',
         en: 'Artificial Dragon-Dragon Fruit',
@@ -799,24 +799,24 @@ export const devilFruits: Saga = {
     {
       id: 'arms-arms-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 591,
-      revealedAtChapter: 668,
+      revealedAtEpisode: 608,
+      revealedAtChapter: 682,
       name: { it: 'Frutto Buki Buki', en: 'Arms-Arms Fruit' },
       summary: {
-        it: 'Trasforma qualsiasi parte del corpo in un’arma: un braccio diventa un cannone, una gamba una lama, il corpo intero una falce.',
-        en: 'Turns any part of the body into a weapon: an arm becomes a cannon, a leg becomes a blade, the whole of it becomes a scythe.',
+        it: 'Trasforma il corpo in un’arma: il braccio diventa un cannone e spara.',
+        en: 'Turns the body into a weapon: an arm becomes a cannon and fires.',
       },
       visual: { art: 'arms-arms-fruit', tint: 'ocher' },
     },
     {
       id: 'spin-spin-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 591,
-      revealedAtChapter: 668,
+      revealedAtEpisode: 618,
+      revealedAtChapter: 692,
       name: { it: 'Frutto Guru Guru', en: 'Spin-Spin Fruit' },
       summary: {
-        it: 'Mette a girare come eliche parti del corpo, abbastanza in fretta da sollevarlo da terra e da tagliare quello che gli si avvicina.',
-        en: 'Sets parts of the body spinning like propellers, fast enough to lift it off the ground and to cut whatever comes close.',
+        it: 'Mette a girare come eliche parti del corpo, abbastanza in fretta da sollevarlo da terra e da portare in volo qualcun altro.',
+        en: 'Sets parts of the body spinning like propellers, fast enough to lift it off the ground and carry someone else along.',
       },
       visual: { art: 'spin-spin-fruit', tint: 'yellow' },
     },
@@ -1264,8 +1264,8 @@ export const devilFruits: Saga = {
     {
       id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
       kind: 'fruit',
-      revealedAtEpisode: 906,
-      revealedAtChapter: 923,
+      revealedAtEpisode: 924,
+      revealedAtChapter: 929,
       name: {
         it: 'Frutto Ryu Ryu, modello Spinosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Spinosaurus',
@@ -1282,8 +1282,8 @@ export const devilFruits: Saga = {
     {
       id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
       kind: 'fruit',
-      revealedAtEpisode: 908,
-      revealedAtChapter: 926,
+      revealedAtEpisode: 927,
+      revealedAtChapter: 927,
       name: {
         it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
         en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
