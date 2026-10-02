@@ -462,12 +462,12 @@ export const wholeCake: Saga = {
     {
       id: 'donquixote-mjosgard',
       kind: 'character',
-      revealedAtEpisode: 877,
-      revealedAtChapter: 908,
+      revealedAtEpisode: 886,
+      revealedAtChapter: 907,
       name: { it: 'Donquijote Mjosgard', en: 'Donquixote Mjosgard' },
       summary: {
-        it: 'Un Nobile Mondiale con il casco a bolla incrinato, che a Mary Geoise tende la mano a una famiglia di uomini-pesce invece di alzare la pistola.',
-        en: 'A World Noble with a cracked bubble helmet, who at Mary Geoise offers a hand to a family of fish-men instead of raising a gun.',
+        it: 'Un Nobile Mondiale con il casco a bolla che a Mary Geoise tende la mano a una famiglia di uomini-pesce invece di alzare la pistola.',
+        en: 'A World Noble in a bubble helmet who at Mary Geoise offers a hand to a family of fish-men instead of raising a gun.',
       },
       visual: { art: 'donquixote-mjosgard', tint: 'teal' },
     },
@@ -534,12 +534,12 @@ export const wholeCake: Saga = {
     {
       id: 'sterry',
       kind: 'character',
-      revealedAtEpisode: 880,
+      revealedAtEpisode: 883,
       revealedAtChapter: 906,
       name: { it: 'Sterry', en: 'Sterry' },
       summary: {
-        it: 'Il giovane re del Regno di Goa, arrivato alla Reverie con una corona troppo grande e la boria di chi non ha fatto nulla per averla.',
-        en: 'The young king of the Goa Kingdom, arrived at the Reverie with a crown too big for him and the swagger of a boy who earned none of it.',
+        it: 'Il giovane re del Regno di Goa e fratello adottivo di Sabo, che sulla strada per la Reverie pretende che un eroe della Marina lo riconosca come suo re.',
+        en: 'The young king of the Goa Kingdom and Sabo’s adoptive brother, who on the way to the Reverie demands that a Marine hero recognise him as his king.',
       },
       visual: { art: 'sterry', tint: 'wine' },
     },
@@ -1481,19 +1481,19 @@ export const wholeCake: Saga = {
     'donquixote-mjosgard': {
       role: { it: 'Nobile Mondiale', en: 'World Noble' },
       log: {
-        it: 'Appartiene ai Draghi Celesti, la stirpe che si crede al di sopra di chiunque e che non respira la stessa aria degli altri. Anni fa una regina uomo-pesce lo ha fermato prendendosi un colpo al posto suo, e da allora qualcosa in lui si è incrinato insieme al casco. A Mary Geoise accoglie i figli di quella regina e chiede loro scusa, cosa che nessun altro della sua casta farebbe.',
-        en: 'He belongs to the Celestial Dragons, the line that believes itself above everyone and will not breathe the same air as the rest. Years ago a fish-man queen stopped him by taking a shot in his place, and since then something in him has cracked along with the helmet. At Mary Geoise he welcomes that queen’s children and apologises to them, which nobody else of his caste would do.',
+        it: 'Appartiene ai Draghi Celesti, la stirpe che si crede al di sopra di chiunque e che non respira la stessa aria degli altri. Anni fa una regina uomo-pesce gli ha salvato la vita prendendosi un colpo destinato a lui, e lui dice che è stata lei a insegnargli a diventare una persona per bene. A Mary Geoise colpisce un altro Drago Celeste che ha afferrato la figlia di quella regina, poi chiede scusa alla sua famiglia, cosa che nessun altro della sua casta farebbe.',
+        en: 'He belongs to the Celestial Dragons, the line that believes itself above everyone and will not breathe the same air as the rest. Years ago a fish-man queen saved him by taking a shot meant for him, and he says she taught him to be a decent human being. At Mary Geoise he strikes a fellow Celestial Dragon who has seized that queen’s daughter, then apologises to her family, which nobody else of his caste would do.',
       },
       affiliation: [
         {
-          episode: 877,
+          episode: 886,
           value: {
             it: 'Nobili Mondiali, Draghi Celesti',
             en: 'World Nobles, Celestial Dragons',
           },
         },
       ],
-      origin: [{ episode: 877, value: MARY_GEOISE }],
+      origin: [{ episode: 886, value: MARY_GEOISE }],
     },
     'belo-betty': {
       role: {
@@ -1580,18 +1580,18 @@ export const wholeCake: Saga = {
     'sterry': {
       role: { it: 'Re del Regno di Goa', en: 'King of the Goa Kingdom' },
       log: {
-        it: 'Ha preso il trono di un regno dell’East Blue senza esserci nato dentro, adottato da una famiglia nobile che cercava un erede. Alla Reverie si lamenta del viaggio, guarda gli altri sovrani dall’alto in basso e tratta la propria scorta come servitù. Della propria corona parla molto più che del proprio regno.',
-        en: 'He took the throne of an East Blue kingdom without being born to it, adopted by a noble family that needed an heir. At the Reverie he complains about the voyage, looks down on the other sovereigns and treats his own guard as servants. He talks a great deal more about his crown than about his kingdom.',
+        it: 'Adottato da bambino dai genitori nobili di Sabo, ha sposato una principessa del Regno di Goa e ne è diventato re pochi mesi fa, dopo che il vecchio re e il principe sono morti in circostanze che nessuno spiega. Sulla strada per la Reverie ferma Garp, che gli dà del moccioso, e gli ricorda che è un suo suddito. Salendo lungo la Red Line ha il terrore dell’altezza, vede nel muro un gigante che nessun altro vede e ordina alla sua guardia di sparare ai corvi prima che buchino la bolla.',
+        en: 'Adopted as a child by Sabo’s noble parents, he married a princess of the Goa Kingdom and became its king a few months ago, after the old king and the prince died in circumstances nobody explains. On the way to the Reverie he stops Garp, who calls him a brat, and reminds him that he is one of his subjects. Riding up the Red Line he is terrified of the height, sees a giant in the wall that nobody else sees, and orders his guard to shoot the crows before they pop the bubble.',
       },
       affiliation: [
         {
-          episode: 880,
+          episode: 883,
           value: { it: 'Regno di Goa, re', en: 'Goa Kingdom, king' },
         },
       ],
       origin: [
         {
-          episode: 880,
+          episode: 883,
           value: {
             it: 'Regno di Goa, East Blue',
             en: 'Goa Kingdom, East Blue',

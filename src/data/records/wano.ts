@@ -71,50 +71,50 @@ export const wano: Saga = {
       visual: { art: 'tenguyama-hitetsu', tint: 'red' },
     },
     {
-      id: 'kikunojo',
+      id: 'kiku',
       kind: 'character',
-      revealedAtEpisode: 901,
-      revealedAtChapter: 917,
-      name: { it: 'Kikunojo', en: 'Kikunojo' },
+      revealedAtEpisode: 899,
+      revealedAtChapter: 914,
+      name: { it: 'Kiku', en: 'Kiku' },
       summary: {
-        it: 'La cameriera alta e gentile della casa da tè di Okobore, che serve con un inchino e, quando serve, impugna una katana.',
-        en: 'The tall, gentle waitress of the Okobore tea house, who pours with a bow and, when it counts, takes up a katana.',
+        it: 'La cameriera di una casa da tè di Okobore, che rifiuta la proposta di matrimonio di uno yokozuna dicendogli che le loro condizioni sociali sono troppo diverse.',
+        en: 'The waitress of a tea house in Okobore Town, who turns down a yokozuna’s offer of marriage by telling him their stations are too far apart.',
       },
-      visual: { art: 'kikunojo', tint: 'ice' },
+      visual: { art: 'kiku', tint: 'ice' },
     },
     {
       id: 'ashura-doji',
       kind: 'character',
-      revealedAtEpisode: 898,
-      revealedAtChapter: 919,
+      revealedAtEpisode: 910,
+      revealedAtChapter: 920,
       name: { it: 'Ashura Doji', en: 'Ashura Doji' },
       summary: {
-        it: 'Il capo dei briganti del monte Atama, con una lama larga e una fascia rossa, temuto anche dai pirati che saccheggiano Wano.',
-        en: 'The boss of the Mt. Atama thieves, a broad blade and a red sash, feared even by the pirates who plunder Wano.',
+        it: 'L’uomo più pericoloso di Kuri ai tempi in cui la regione era una terra senza legge, capo dei suoi furfanti finché il figlio esiliato dello shogun non lo sconfisse.',
+        en: 'The most dangerous man in Kuri back when the region was a lawless land, leader of its ruffians until the shogun’s exiled son beat him.',
       },
       visual: { art: 'ashura-doji', tint: 'vermilion' },
     },
     {
       id: 'page-one',
       kind: 'character',
-      revealedAtEpisode: 906,
-      revealedAtChapter: 923,
+      revealedAtEpisode: 923,
+      revealedAtChapter: 929,
       name: { it: 'Page One', en: 'Page One' },
       summary: {
-        it: 'Un ragazzo in giacca di pelle al servizio dell’Imperatore, che davanti a una scodella di soba diventa uno spinosauro e sfonda il locale.',
-        en: 'A young man in a leather jacket serving the Emperor, who turns into a spinosaurus over a bowl of soba and wrecks the place.',
+        it: 'Un ragazzo in giacca di pelle, uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che arriva nella Capitale dei Fiori per punire in modo esemplare chi ha sfidato la ciurma.',
+        en: 'A young man in a leather jacket, one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who comes to the Flower Capital to make an example of whoever crossed the crew.',
       },
       visual: { art: 'page-one', tint: 'teal' },
     },
     {
       id: 'kurozumi-orochi',
       kind: 'character',
-      revealedAtEpisode: 908,
-      revealedAtChapter: 926,
+      revealedAtEpisode: 921,
+      revealedAtChapter: 927,
       name: { it: 'Kurozumi Orochi', en: 'Kurozumi Orochi' },
       summary: {
-        it: 'Lo shogun del Paese di Wano, un uomo pallido che ride sempre, protetto dall’Imperatore e odiato da ogni contadino che paga le sue tasse.',
-        en: 'The shogun of Wano Country, a pale man who is always laughing, protected by the Emperor and hated by every farmer who pays his taxes.',
+        it: 'Lo shogun del Paese di Wano, che vive nella Capitale dei Fiori e governa con i pirati dell’Imperatore alle spalle, mentre i villaggi fuori fanno la fame.',
+        en: 'The shogun of Wano Country, who lives in the Flower Capital and rules with the Emperor’s pirates behind him, while the villages outside go hungry.',
       },
       visual: { art: 'kurozumi-orochi', tint: 'violet' },
     },
@@ -757,71 +757,76 @@ export const wano: Saga = {
       ],
       origin: [{ episode: 894, value: WANO }],
     },
-    'kikunojo': {
-      role: { it: 'Cameriera e spadaccina', en: 'Waitress and swordswoman' },
+    'kiku': {
+      role: { it: 'Cameriera della casa da tè', en: 'Tea house waitress' },
       log: {
-        it: 'Serve il tè nella locanda di Okobore, dove i contadini mangiano gli avanzi della capitale, e tratta i clienti con una gentilezza che in quel paese non si vede spesso. Quando gli uomini dell’Imperatore rapiscono la bambina che stava curando, afferra una katana, si lega i capelli e dichiara di essere un samurai. Si presenta con il nome di O-Kiku.',
-        en: 'She serves tea at the Okobore house, where farmers eat the capital’s leftovers, and treats her customers with a kindness this country rarely sees. When the Emperor’s men kidnap the girl she has been nursing, she snatches up a katana, ties back her hair and declares that she is a samurai. She gives her name as O-Kiku.',
+        it: 'Serve in una casa da tè di Okobore. Un famoso yokozuna della capitale entra e insiste perché diventi sua moglie, promettendole che non dovrà più lavorare. Lei risponde che le loro condizioni sociali sono troppo diverse e gli chiede di ordinare qualcosa o di andarsene.',
+        en: 'She serves at a tea house in Okobore Town. A famous yokozuna from the capital comes in and presses her to become his wife, promising that she would never have to work again. She answers that their stations are too far apart, and asks him to order something or leave.',
       },
       affiliation: [
         {
-          episode: 901,
+          episode: 899,
           value: {
             it: 'Casa da tè di Okobore, cameriera',
             en: 'Tea house of Okobore Town, waitress',
           },
         },
-        { episode: 910, value: RED_SCABBARDS },
+        { episode: 936, value: RED_SCABBARDS },
       ],
-      origin: [{ episode: 901, value: WANO }],
+      origin: [{ episode: 899, value: WANO }],
       epithet: [
+        { episode: 936, value: { it: 'Kikunojo', en: 'Kikunojo' } },
         {
           episode: 948,
           value: {
-            it: 'Kiku della Neve Persistente',
-            en: 'Kiku of the Lingering Snow',
+            it: 'Kikunojo della Neve Persistente',
+            en: 'Kikunojo of the Lingering Snow',
           },
         },
       ],
     },
     'ashura-doji': {
       role: {
-        it: 'Capo dei briganti del monte Atama',
-        en: 'Boss of the Mt. Atama thieves',
+        it: 'Capo dei furfanti di Kuri',
+        en: 'Leader of the Kuri ruffians',
       },
       log: {
-        it: 'Guida una banda di briganti che ruba il riso ai pirati dell’Imperatore e lo lascia ai villaggi affamati, e non prende ordini da nessuno. Si fa chiamare Shutenmaru, ma i vecchi del paese riconoscono in lui il capobanda che vent’anni fa metteva paura a mezza Wano. Quando gli si propone un’alleanza risponde a colpi di spada.',
-        en: 'He leads a band of thieves that steals rice from the Emperor’s pirates and leaves it for the starving villages, and he takes orders from nobody. He goes by Shutenmaru, though the old men of the country recognise in him the bandit chief who terrified half of Wano twenty years ago. Offered an alliance, he answers with his sword.',
+        it: 'Ai tempi in cui Kuri era una terra senza legge, dove criminali e ronin cacciati da casa si derubavano e si uccidevano a vicenda, era l’uomo più pericoloso della regione e ne guidava i furfanti. Poi il figlio dello shogun, bandito dalla Capitale dei Fiori per le sue risse, arrivò a Kuri, e i due si scontrarono quasi subito. Ebbe la peggio, e i furfanti che aveva guidato furono messi a lavorare per costruire la regione.',
+        en: 'In the days when Kuri was a lawless land, where criminals and ronin driven from home robbed and killed one another, he was the most dangerous man in the region and led its ruffians. Then the shogun’s son, banished from the Flower Capital for his brawling, walked into Kuri, and the two clashed almost at once. He lost, and the ruffians he had led were put to work building the region instead.',
       },
       status: [
-        { episode: 898, value: 'alive' },
+        { episode: 910, value: 'unknown' },
+        { episode: 912, value: 'alive' },
         { episode: 1025, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 898,
+          episode: 912,
           value: {
             it: 'Briganti del monte Atama, capo',
             en: 'Mt. Atama Thieves, boss',
           },
         },
-        { episode: 921, value: RED_SCABBARDS },
+        { episode: 936, value: RED_SCABBARDS },
       ],
-      origin: [{ episode: 898, value: WANO }],
+      origin: [{ episode: 910, value: WANO }],
       epithet: [
-        { episode: 898, value: { it: 'Shutenmaru', en: 'Shutenmaru' } },
+        { episode: 912, value: { it: 'Shutenmaru', en: 'Shutenmaru' } },
       ],
     },
     'page-one': {
-      role: { it: 'Pirata delle Cento Bestie', en: 'Beasts Pirates crewman' },
-      log: {
-        it: 'Gira per Wano come se il paese fosse suo, cercando una nave rubata e chiunque l’abbia aiutata a partire. Basta una parola sbagliata perché il ragazzo diventi uno spinosauro che porta via mezza sala da pranzo con la coda. Chi gli si oppone lo affronta a calci, e lui non sembra abituato a prenderne.',
-        en: 'He walks Wano as if the country belonged to him, hunting a stolen ship and anyone who helped it sail. One wrong word and the young man becomes a spinosaurus that takes half a dining room out with his tail. The man who stands up to him fights with his legs, and Page One does not seem used to being kicked.',
+      role: {
+        it: 'Tobiroppo dei Pirati delle Cento Bestie',
+        en: 'Tobiroppo of the Beasts Pirates',
       },
-      affiliation: [{ episode: 906, value: TOBIROPPO }],
+      log: {
+        it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e arriva nella Capitale dei Fiori insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
+        en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he walks into the Flower Capital with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
+      },
+      affiliation: [{ episode: 923, value: TOBIROPPO }],
       devilFruit: [
         {
-          episode: 906,
+          episode: 924,
           value: ['dragon-dragon-fruit-ancient-model-spinosaurus'],
         },
       ],
@@ -829,26 +834,26 @@ export const wano: Saga = {
     'kurozumi-orochi': {
       role: { it: 'Shogun del Paese di Wano', en: 'Shogun of Wano' },
       log: {
-        it: 'Tiene il paese chiuso e la capitale ricca mentre le campagne bevono acqua avvelenata, e paga la propria sicurezza all’Imperatore che gli presta i pirati. Chi nomina la famiglia Kozuki davanti a lui viene giustiziato senza processo. Ride di ogni cosa, anche quando ordina di bruciare un villaggio, e non lascia mai il fianco scoperto.',
-        en: 'He keeps the country sealed and the capital rich while the countryside drinks poisoned water, and pays for his own safety with the Emperor who lends him pirates. Anyone who says the name Kozuki in front of him is executed without a trial. He laughs at everything, even while ordering a village burned, and never leaves his flank open.',
+        it: 'Tiene il cibo pulito per la capitale mentre le campagne bevono da un fiume avvelenato, e i suoi funzionari danno la caccia a chiunque parli male di lui. Vent’anni fa si è alleato con l’Imperatore per abbattere la famiglia Kozuki, e ora che quei vent’anni sono passati teme che i loro samurai tornino a prenderlo. Nel suo castello aspetta l’oiran più famosa della capitale, e l’ombra dietro la porta scorrevole ha più di una testa.',
+        en: 'He keeps the clean food for the capital while the countryside drinks from a poisoned river, and his officials hunt down anyone heard speaking ill of him. Twenty years ago he and the Emperor joined forces to bring down the Kozuki family, and now that the twenty years are up he fears that their samurai will come back for him. In his castle he waits for the capital’s most famous oiran, and the shadow behind the sliding door has more than one head.',
       },
       status: [
-        { episode: 908, value: 'alive' },
+        { episode: 921, value: 'alive' },
         { episode: 994, value: 'presumed-dead' },
         { episode: 1026, value: 'alive' },
         { episode: 1075, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 908,
+          episode: 921,
           value: { it: 'Shogun del Paese di Wano', en: 'Shogun of Wano' },
         },
         { episode: 1085, value: { it: 'Deposto', en: 'Deposed' } },
       ],
-      origin: [{ episode: 908, value: WANO }],
+      origin: [{ episode: 921, value: WANO }],
       devilFruit: [
         {
-          episode: 908,
+          episode: 927,
           value: ['snake-snake-fruit-mythical-model-yamata-no-orochi'],
         },
       ],

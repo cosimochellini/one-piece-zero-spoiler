@@ -679,7 +679,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       'ashura-doji',
       'tsurujo',
       'urashima',
-      'kikunojo',
+      'kiku',
       'holdem',
       'speed',
       'shinobu',

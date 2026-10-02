@@ -218,16 +218,15 @@ export const dressrosaArt = {
     shadow(80, 184, 40),
   ],
 
-  // A colosseum with a wooden soldier standing at the gate.
+  // A colosseum seen from the sea.
   'dressrosa-arc': [
     { d: 'M30 132 V90 a36 18 0 0 1 72 0 V132' },
     { d: ellipse(66, 90, 36, 18) },
     {
       d: 'M40 132 V112 a7 7 0 0 1 14 0 V132 M59 132 V112 a7 7 0 0 1 14 0 V132 M78 132 V112 a7 7 0 0 1 14 0 V132',
+      role: 'accent',
     },
     { d: 'M36 104 h16 M58 104 h16 M80 104 h16', role: 'soft' },
-    { d: circle(128, 108, 6), role: 'accent' },
-    { d: 'M128 114 V136 M120 122 h16 M128 136 V152', role: 'accent' },
     { d: 'M10 152 H150', role: 'ambient' },
     ...SEA,
   ],
