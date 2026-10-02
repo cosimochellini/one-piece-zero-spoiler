@@ -405,6 +405,21 @@ export const wanoChronicles = {
       },
     },
   ],
+  'guernica': [
+    {
+      episode: 1080,
+      value: {
+        title: {
+          it: 'Una firma sulle fotografie',
+          en: 'A name on the photographs',
+        },
+        body: {
+          it: 'Sul tetto della cupola del teschio, [[monkey-d-luffy|Rufy]] e [[kaido|Kaido]] si battono quando un agente mascherato del CP0 sale fin lassù, con l’ordine dei Cinque Anziani di eliminare Cappello di Paglia prima che quel duello lo renda troppo pericoloso, e si getta addosso a Rufy nel momento sbagliato. Kaido, privato del suo scontro, non glielo perdona. Il nome dell’agente arriva al mondo solo più tardi, in una redazione di giornale dove ristampano di corsa le fotografie che “Guernica-sama del CP-0” ha fatto a Wano: dal Cipher Pol non si è più saputo niente.',
+          en: 'On the roof of the Skull Dome, [[monkey-d-luffy|Luffy]] and [[kaido|Kaido]] are fighting when a masked CP0 agent climbs all the way up, carrying the Five Elders’ order to erase Straw Hat before that duel makes him too dangerous, and throws himself at Luffy at the worst moment. Kaido, robbed of his fight, does not forgive it. The agent’s name reaches the world only later, in a newspaper office hurrying to reprint the photographs “Guernica-sama of CP-0” took in Wano: nothing has been heard from Cipher Pol since.',
+        },
+      },
+    },
+  ],
   'kozuki-hiyori': [
     {
       episode: 910,
