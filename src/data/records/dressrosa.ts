@@ -900,7 +900,7 @@ export const dressrosa: Saga = {
           },
         },
         {
-          episode: 890,
+          episode: 927,
           value: { it: 'Nove Foderi Rossi', en: 'Nine Red Scabbards' },
         },
       ],
@@ -1734,7 +1734,7 @@ export const dressrosa: Saga = {
           },
         },
         {
-          episode: 890,
+          episode: 955,
           value: { it: 'Nove Foderi Rossi', en: 'Nine Red Scabbards' },
         },
         {
