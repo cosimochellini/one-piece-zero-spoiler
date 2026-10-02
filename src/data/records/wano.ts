@@ -698,6 +698,18 @@ export const wano: Saga = {
       },
       visual: { art: 'maha', tint: 'ivory' },
     },
+    {
+      id: 'guernica',
+      kind: 'character',
+      revealedAtEpisode: 1080,
+      revealedAtChapter: 1053,
+      name: { it: 'Guernica', en: 'Guernica' },
+      summary: {
+        it: 'Un agente mascherato del CP0 con una bombetta bianca e una sciarpa a pois, che si infila nel duello tra Rufy e Kaido sul tetto della fortezza.',
+        en: 'A masked CP0 agent in a white bowler hat and a dotted scarf, who breaks into the duel between Luffy and Kaido on the fortress roof.',
+      },
+      visual: { art: 'guernica', tint: 'wine' },
+    },
     // Met as herself before the reveal: Kin'emon's flashback at 910 shows
     // her, a small child in silhouette, in the burning castle and names her
     // there ("Hiyori- sama !"); chapter 920 does the same. That she is the
@@ -1752,6 +1764,18 @@ export const wano: Saga = {
       status: [{ episode: 1068, value: 'unknown' }],
       affiliation: [
         { episode: 1068, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
+      ],
+    },
+    'guernica': {
+      chronicle: wanoChronicles.guernica,
+      role: { it: 'Agente del CP0', en: 'CP0 agent' },
+      log: {
+        it: 'È uno dei due agenti mascherati del CP0 venuti a Wano a trattare con lo shogun, che poi hanno seguito l’assalto a Onigashima da una stanza per gli ospiti. Quando i Cinque Anziani ordinano di eliminare subito Cappello di Paglia, sale sul tetto della cupola del teschio e si infila nel duello tra Rufy e Kaido, che non gli perdona l’interruzione. Il suo nome arriva al mondo solo dopo, da una redazione che ristampa le sue fotografie di Wano, con la notizia che del Cipher Pol non si sa più niente.',
+        en: 'He is one of the two masked CP0 agents who came to Wano to deal with the shogun and then watched the raid on Onigashima from a guest room. When the Five Elders order Straw Hat erased at once, he climbs to the roof of the Skull Dome and breaks into the duel between Luffy and Kaido, who does not forgive the interruption. His name reaches the world only afterwards, from a newsroom reprinting his photographs of Wano, with word that nothing has been heard from Cipher Pol since.',
+      },
+      status: [{ episode: 1080, value: 'deceased' }],
+      affiliation: [
+        { episode: 1080, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
       ],
     },
     'kozuki-hiyori': {

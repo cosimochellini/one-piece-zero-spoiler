@@ -799,6 +799,25 @@ export const wanoArt = {
     { d: 'M72 120 H90 M72 128 H90', role: 'soft' },
     shadow(81, 194, 30),
   ],
+  // A white bowler hat above a dotted scarf and the lapels of a long coat.
+  'guernica': [
+    { d: 'M62 74 C62 40 100 40 100 74' },
+    { d: ellipse(81, 76, 36, 6) },
+    { d: 'M64 66 H98', role: 'accent' },
+    { d: 'M58 94 C70 106 92 106 104 94 L104 112 C92 122 70 122 58 112 Z' },
+    {
+      d: dots([
+        [68, 104],
+        [80, 110],
+        [92, 104],
+        [74, 116],
+        [88, 116],
+      ]),
+      role: 'accent',
+    },
+    { d: 'M58 112 L44 188 H118 L104 112 M81 122 V188', role: 'soft' },
+    shadow(81, 194, 40),
+  ],
   // A shamisen standing on its body, its plectrum beside it, a thin moon
   // behind the pegs.
   'kozuki-hiyori': [

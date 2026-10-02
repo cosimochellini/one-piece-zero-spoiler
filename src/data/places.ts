@@ -756,6 +756,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
       'fuga',
       'kazenbo',
       'maha',
+      'guernica',
     ],
   },
   'egghead-island': {

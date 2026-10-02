@@ -3047,6 +3047,12 @@ export const CHRONICLE_SOURCES = {
       note: 'Threshold entry (naming), moved from the issue\'s 922 (debut, unnamed). Ep 1068 transcript ("21x1068 - Moon Princess Echoes! The Final Phase of the Land of Wano!", matching the wiki title): "Cipher Pol!" / "Indeed, we\'re \'Aigis\' Zero." / "Izo, let\'s pretend we never saw each other." / "But we only have business with the Straw Hats right now." / "Is it okay for you to die here?" / "I don\'t wanna miss another chance to die."; "Finger p*stol!" / "Shave!"; "Maha!" / "Damn you, Izo!" / "He was gonna sacrifice himself from the start..." / "I gotta find Nico Robin quick." No "Maha" in the 922-1067 transcripts. Episode_1068 Long Summary: "as Maha fatally strikes Izou in the chest with a Shigan, Izou manages to shoot him down with his pistol, causing them to simultaneously take each other down." Episode_1065 Long Summary: Izo "is easily stabbed in the stomach"; caption "FIRST-FLOOR BASEMENT INSIDE THE CASTLE". Maha page: name Qref chap=1041 page=9 ep=1068 (chapter threshold 1041).',
     },
   },
+  'guernica': {
+    1080: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_1080',
+      note: 'Threshold entry (naming), filed on the maintainer\'s decision (issue #129) that the first on-screen mention is enough: the show names him only at ep 1080 ("We got the pictures from Guernica-sama of CP-0." / "Cipher Pol infiltrated the Land of Wano and no one\'s heard from them since."), after his death; the manga name is from SBS 104 and ch 1053. The scenes are earlier: ep 1069 ("It\'s an Imperial Command from the Five Elders." / "Erase Straw Hat Luffy immediately" / "CP-0?! Why is he here?!") and ep 1070 ("So you know what you\'ve done."); that the masked agent of those scenes is the Guernica of ep 1080 is the wiki\'s identification, which the show does not state.',
+    },
+  },
   'kozuki-hiyori': {
     910: {
       source: 'https://onepiece.fandom.com/wiki/Episode_910',
