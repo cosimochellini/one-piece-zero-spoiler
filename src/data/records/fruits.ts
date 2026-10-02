@@ -145,7 +145,7 @@ export const devilFruits: Saga = {
     {
       id: 'ox-ox-fruit-model-bison',
       kind: 'fruit',
-      revealedAtEpisode: 79,
+      revealedAtEpisode: 80,
       revealedAtChapter: 135,
       name: {
         it: 'Frutto Ushi Ushi, modello Bisonte',
@@ -214,7 +214,7 @@ export const devilFruits: Saga = {
     {
       id: 'dice-dice-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Frutto Dice Dice', en: 'Dice-Dice Fruit' },
       summary: {
@@ -226,7 +226,7 @@ export const devilFruits: Saga = {
     {
       id: 'mole-mole-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Frutto Mole Mole', en: 'Mole-Mole Fruit' },
       summary: {
@@ -238,7 +238,7 @@ export const devilFruits: Saga = {
     {
       id: 'spike-spike-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 100,
+      revealedAtEpisode: 103,
       revealedAtChapter: 170,
       name: { it: 'Frutto Spike Spike', en: 'Spike-Spike Fruit' },
       summary: {

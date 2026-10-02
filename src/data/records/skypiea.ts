@@ -233,7 +233,7 @@ export const skypiea: Saga = {
     {
       id: 'wyper',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 163,
       revealedAtChapter: 245,
       name: { it: 'Wiper', en: 'Wyper' },
       summary: {
@@ -245,7 +245,7 @@ export const skypiea: Saga = {
     {
       id: 'kamakiri',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 163,
       revealedAtChapter: 280,
       name: { it: 'Kamakiri', en: 'Kamakiri' },
       summary: {
@@ -257,7 +257,7 @@ export const skypiea: Saga = {
     {
       id: 'braham',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 164,
       revealedAtChapter: 280,
       name: { it: 'Braham', en: 'Braham' },
       summary: {
@@ -269,7 +269,7 @@ export const skypiea: Saga = {
     {
       id: 'genbo',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 164,
       revealedAtChapter: 280,
       name: { it: 'Genbo', en: 'Genbo' },
       summary: {
@@ -281,7 +281,7 @@ export const skypiea: Saga = {
     {
       id: 'laki',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 163,
       revealedAtChapter: 280,
       name: { it: 'Laki', en: 'Laki' },
       summary: {
@@ -293,7 +293,7 @@ export const skypiea: Saga = {
     {
       id: 'aisa',
       kind: 'character',
-      revealedAtEpisode: 154,
+      revealedAtEpisode: 163,
       revealedAtChapter: 250,
       name: { it: 'Aisa', en: 'Aisa' },
       summary: {
@@ -975,7 +975,7 @@ export const skypiea: Saga = {
       },
       affiliation: [
         {
-          episode: 154,
+          episode: 163,
           value: {
             it: 'Guerrieri shandia, capo',
             en: 'Shandia warriors, leader',
@@ -984,12 +984,12 @@ export const skypiea: Saga = {
       ],
       origin: [
         {
-          episode: 154,
+          episode: 163,
           value: { it: 'Skypiea, un tempo Jaya', en: 'Skypiea, once Jaya' },
         },
       ],
       epithet: [
-        { episode: 154, value: { it: 'Il Berserker', en: 'the Berserker' } },
+        { episode: 163, value: { it: 'Il Berserker', en: 'the Berserker' } },
       ],
     },
     'kamakiri': {
@@ -998,8 +998,8 @@ export const skypiea: Saga = {
         it: 'Combatte accanto a Wiper e porta una lama che lascia il segno sul cielo stesso. È fra i primi a passare la frontiera di Dio e fra i pochi che dopo l’assalto vengono contati ancora vivi. Dei quattro stranieri saliti dal mare azzurro non sa cosa pensare, e per prudenza li tratta da nemici.',
         en: 'He fights alongside Wyper and carries a blade that scars the sky itself. He is among the first across God’s frontier and among the few counted alive once the raid is over. He does not know what to make of the four strangers up from the blue sea, and to be safe he treats them as enemies.',
       },
-      affiliation: [{ episode: 154, value: SHANDIA }],
-      origin: [{ episode: 154, value: SKY_ISLAND }],
+      affiliation: [{ episode: 163, value: SHANDIA }],
+      origin: [{ episode: 163, value: SKY_ISLAND }],
     },
     'braham': {
       role: SHANDIA_WARRIOR,
@@ -1007,8 +1007,8 @@ export const skypiea: Saga = {
         it: 'Copre l’avanzata dei suoi con due pistole a lampo che non feriscono nessuno ma tolgono la vista, e nella foresta di nuvole questo basta a vincere. Si muove veloce, parla poco e si fida solo di chi è cresciuto con lui. La guerra per quella terra dura da più tempo di quanto chiunque a Skypiea abbia voglia di raccontare.',
         en: 'He covers his people’s advance with two flash pistols that wound nobody and take away sight, which in the cloud forest is enough to win. He moves fast, says little, and trusts only the people he grew up with. The war over that ground has run longer than anyone on Skypiea cares to say out loud.',
       },
-      affiliation: [{ episode: 154, value: SHANDIA }],
-      origin: [{ episode: 154, value: SKY_ISLAND }],
+      affiliation: [{ episode: 164, value: SHANDIA }],
+      origin: [{ episode: 164, value: SKY_ISLAND }],
     },
     'genbo': {
       role: SHANDIA_WARRIOR,
@@ -1016,8 +1016,8 @@ export const skypiea: Saga = {
         it: 'Porta da solo l’arma più pesante della banda e apre la strada agli altri fra le nuvole. Nell’assalto alla terra del cielo è la voce che chiama i compagni per nome e li tiene insieme. Della gente di Skypiea non vuole sapere niente: per lui quel suolo ha un solo proprietario, e non è chi ci abita adesso.',
         en: 'He carries the heaviest weapon in the band on his own and clears the way for the rest through the clouds. In the raid on the sky land his is the voice that calls the others by name and holds them together. He wants nothing to do with the people of Skypiea: to him that ground has one owner, and it is not whoever lives on it now.',
       },
-      affiliation: [{ episode: 154, value: SHANDIA }],
-      origin: [{ episode: 154, value: SKY_ISLAND }],
+      affiliation: [{ episode: 164, value: SHANDIA }],
+      origin: [{ episode: 164, value: SKY_ISLAND }],
     },
     'laki': {
       role: { it: 'Guerriera shandia', en: 'Shandia warrior' },
@@ -1025,8 +1025,8 @@ export const skypiea: Saga = {
         it: 'Resta indietro rispetto agli altri e colpisce da lontano, e nella foresta di nuvole è la prima ad accorgersi di chi si avvicina. Combatte per la stessa terra per cui combattono tutti i suoi, e non ne parla mai. Quando un assalto finisce, conta i sopravvissuti a voce alta perché nessuno se ne dimentichi.',
         en: 'She hangs back from the others and shoots from a distance, and in the cloud forest she is the first to notice anyone coming. She fights for the same ground all her people fight for, and never talks about it. When a raid is over she counts the survivors out loud, so that nobody forgets them.',
       },
-      affiliation: [{ episode: 154, value: SHANDIA }],
-      origin: [{ episode: 154, value: SKY_ISLAND }],
+      affiliation: [{ episode: 163, value: SHANDIA }],
+      origin: [{ episode: 163, value: SKY_ISLAND }],
     },
     'aisa': {
       role: { it: 'Bambina shandia', en: 'Shandia child' },
@@ -1036,14 +1036,14 @@ export const skypiea: Saga = {
       },
       affiliation: [
         {
-          episode: 154,
+          episode: 163,
           value: {
             it: 'Shandia, una bambina del villaggio',
             en: 'Shandia, a child of the village',
           },
         },
       ],
-      origin: [{ episode: 154, value: SKY_ISLAND }],
+      origin: [{ episode: 163, value: SKY_ISLAND }],
     },
     'su': {
       chronicle: skypieaChronicles.su,
@@ -1072,12 +1072,10 @@ export const skypiea: Saga = {
         },
       ],
       origin: [
+        { episode: 155, value: SKY_ISLAND },
         {
-          episode: 155,
-          value: {
-            it: 'Isola degli angeli, Skypiea',
-            en: 'Angel Island, Skypiea',
-          },
+          episode: 158,
+          value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
     },
@@ -1097,12 +1095,10 @@ export const skypiea: Saga = {
         },
       ],
       origin: [
+        { episode: 155, value: SKY_ISLAND },
         {
-          episode: 155,
-          value: {
-            it: 'Isola degli angeli, Skypiea',
-            en: 'Angel Island, Skypiea',
-          },
+          episode: 158,
+          value: { it: 'Angel Island, Skypiea', en: 'Angel Island, Skypiea' },
         },
       ],
     },
