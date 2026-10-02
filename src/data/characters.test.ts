@@ -184,8 +184,27 @@ function asWords(text: string): string {
 }
 
 /** Whether a paragraph, already as words, names a record by its full name. */
-function names(words: string, name: string): boolean {
-  return words.includes(asWords(name))
+function names(words: string, needle: string): boolean {
+  return words.includes(needle)
+}
+
+/** Each record's name as words, per locale, reduced once for the whole scan. */
+const NAME_WORDS = new Map<string, string>()
+
+function nameWords(entity: Entity, locale: Locale): string {
+  const key = `${locale}:${entity.id}`
+  const known = NAME_WORDS.get(key)
+  if (known !== undefined) {
+    return known
+  }
+
+  const words = asWords(entity.name[locale])
+  NAME_WORDS.set(key, words)
+  return words
+}
+
+function firstWord(entity: Entity, locale: Locale): string {
+  return nameWords(entity, locale).trim().split(' ', 1)[0] ?? ''
 }
 
 /** One story of one chronicle, with the words it shows in each locale. */
@@ -219,10 +238,15 @@ function leaksIn(
     `${story.title[locale]} ${shownWords(story.body[locale], locale)}`,
   )
 
+  // A name can only be in the story if its first word is, which rules out
+  // nearly every record before the slow substring scan.
+  const tokens = new Set(words.split(' '))
+
   return filedAfter(episode)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
-    .filter((other) => names(words, other.name[locale]))
+    .filter((other) => tokens.has(firstWord(other, locale)))
+    .filter((other) => names(words, nameWords(other, locale)))
     .filter((other) => !sharesAReachedName(other, episode, locale))
     .map((other) => `${label} (${locale}) names ${other.id}`)
 }
