@@ -868,6 +868,13 @@ export const wano: Saga = {
         {
           episode: 912,
           value: {
+            it: 'Alleanza Kozuki, kunoichi',
+            en: 'Kozuki alliance, kunoichi',
+          },
+        },
+        {
+          episode: 972,
+          value: {
             it: 'Alleanza Kozuki, kunoichi; un tempo dell’Oniwabanshu',
             en: 'Kozuki alliance, kunoichi; once of the Oniwabanshu',
           },
