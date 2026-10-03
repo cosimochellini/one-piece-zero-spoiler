@@ -1069,7 +1069,7 @@ export const devilFruits: Saga = {
     {
       id: 'soul-soul-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 786,
+      revealedAtEpisode: 796,
       revealedAtChapter: 831,
       name: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
       summary: {

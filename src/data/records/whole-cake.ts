@@ -214,8 +214,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 831,
       name: { it: 'Charlotte Linlin', en: 'Charlotte Linlin' },
       summary: {
-        it: 'L’Imperatore che regna su Totto Land, una donna alta come una casa che pretende dolci a ogni ora e toglie anni di vita a chi la contraria.',
-        en: 'The Emperor who rules Totto Land, a woman the height of a house who demands sweets at all hours and takes years of life from whoever crosses her.',
+        it: 'L’Imperatore che regna su Totto Land, una donna alta come una casa che pretende dolci a ogni ora e travolge chi si mette in mezzo.',
+        en: 'The Emperor who rules Totto Land, a woman the height of a house who demands sweets at all hours and flattens whoever stands in the way.',
       },
       visual: { art: 'charlotte-linlin', tint: 'magenta' },
     },
@@ -1082,8 +1082,8 @@ export const wholeCake: Saga = {
       chronicle: wholeCakeChronicles['charlotte-linlin'],
       role: { it: 'Imperatore di Totto Land', en: 'Emperor of Totto Land' },
       log: {
-        it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano. Sa strappare alla gente anni della propria vita e darli a oggetti e animali, che da quel momento parlano e obbediscono a lei.',
-        en: 'She rules an archipelago of sugar islands and an enormous family of children, and her whims decide the weather. When she wants a sweet she does not have, she loses her head and flattens whatever is in the way until it is brought to her. She can pull years of life out of people and give them to objects and animals, which from then on talk and answer to her.',
+        it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano.',
+        en: 'She rules an archipelago of sugar islands and an enormous family of children, and her whims decide the weather. When she wants a sweet she does not have, she loses her head and flattens whatever is in the way until it is brought to her.',
       },
       status: [{ episode: 786, value: 'alive' }],
       affiliation: [
@@ -1098,7 +1098,7 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
       epithet: [{ episode: 786, value: { it: 'Big Mom', en: 'Big Mom' } }],
-      devilFruit: [{ episode: 786, value: ['soul-soul-fruit'] }],
+      devilFruit: [{ episode: 796, value: ['soul-soul-fruit'] }],
       bounty: [
         { episode: 838, value: 500_000_000 },
         { episode: 958, value: 4_388_000_000 },
