@@ -1117,8 +1117,8 @@ export const devilFruits: Saga = {
     {
       id: 'bird-bird-fruit-model-albatross',
       kind: 'fruit',
-      revealedAtEpisode: 792,
-      revealedAtChapter: 836,
+      revealedAtEpisode: 830,
+      revealedAtChapter: 860,
       name: {
         it: 'Frutto Tori Tori, modello Albatro',
         en: 'Bird-Bird Fruit, Model: Albatross',

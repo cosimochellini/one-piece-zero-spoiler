@@ -258,8 +258,8 @@ export const wholeCake: Saga = {
     {
       id: 'stussy',
       kind: 'character',
-      revealedAtEpisode: 792,
-      revealedAtChapter: 836,
+      revealedAtEpisode: 830,
+      revealedAtChapter: 860,
       name: { it: 'Stussy', en: 'Stussy' },
       summary: {
         it: 'La regina del quartiere dei piaceri, invitata alle nozze tra i pezzi grossi della malavita, con il bocchino sempre acceso tra le dita.',
@@ -270,8 +270,8 @@ export const wholeCake: Saga = {
     {
       id: 'morgans',
       kind: 'character',
-      revealedAtEpisode: 792,
-      revealedAtChapter: 836,
+      revealedAtEpisode: 830,
+      revealedAtChapter: 860,
       name: { it: 'Morgans', en: 'Morgans' },
       summary: {
         it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro convinto che una bella storia valga più della verità.',
@@ -1160,13 +1160,13 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 792,
+          episode: 830,
           value: {
             it: 'Malavita, regina del quartiere dei piaceri',
             en: 'Underworld, queen of the pleasure district',
           },
         },
-        { episode: 806, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
+        { episode: 841, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
         {
           episode: 1108,
           value: {
@@ -1177,7 +1177,7 @@ export const wholeCake: Saga = {
       ],
       epithet: [
         {
-          episode: 792,
+          episode: 830,
           value: {
             it: 'Regina del quartiere dei piaceri',
             en: 'Queen of the Pleasure District',
@@ -1196,7 +1196,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 792,
+          episode: 830,
           value: {
             it: 'World Economy News Paper, presidente',
             en: 'World Economy News Paper, president',
@@ -1205,12 +1205,12 @@ export const wholeCake: Saga = {
       ],
       epithet: [
         {
-          episode: 792,
+          episode: 830,
           value: { it: 'Big News Morgans', en: 'Big News Morgans' },
         },
       ],
       devilFruit: [
-        { episode: 792, value: ['bird-bird-fruit-model-albatross'] },
+        { episode: 830, value: ['bird-bird-fruit-model-albatross'] },
       ],
     },
     'vinsmoke-judge': {
