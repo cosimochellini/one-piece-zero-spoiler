@@ -85,7 +85,7 @@ export const fishManIsland: Saga = {
     {
       id: 'hammond',
       kind: 'character',
-      revealedAtEpisode: 523,
+      revealedAtEpisode: 527,
       revealedAtChapter: 610,
       name: { it: 'Hammond', en: 'Hammond' },
       summary: {
@@ -125,8 +125,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 615,
       name: { it: 'Vander Decken IX', en: 'Vander Decken IX' },
       summary: {
-        it: 'Il capitano dei Pirati Volanti, che tocca un bersaglio una volta sola e da quel momento qualunque cosa lanci lo insegue finché non lo colpisce.',
-        en: 'The captain of the Flying Pirates, who touches a target once and from then on anything he throws chases it down until it lands.',
+        it: 'Il capitano dell’Olandese Volante, che tocca un bersaglio una volta sola e da quel momento qualunque cosa lanci lo insegue finché non lo colpisce.',
+        en: 'The captain of the Flying Dutchman, who touches a target once and from then on anything he throws chases it down until it lands.',
       },
       visual: { art: 'vander-decken-ix', tint: 'acid' },
     },
@@ -241,7 +241,7 @@ export const fishManIsland: Saga = {
     {
       id: 'shirahoshi',
       kind: 'character',
-      revealedAtEpisode: 530,
+      revealedAtEpisode: 531,
       revealedAtChapter: 618,
       name: { it: 'Shirahoshi', en: 'Shirahoshi' },
       summary: {
@@ -538,14 +538,14 @@ export const fishManIsland: Saga = {
       },
       affiliation: [
         {
-          episode: 523,
+          episode: 527,
           value: {
             it: 'Nuovi Pirati Uomini-Pesce',
             en: 'New Fish-Man Pirates',
           },
         },
       ],
-      origin: [{ episode: 523, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 527, value: FISH_MAN_ISLAND }],
     },
     'shyarly': {
       role: {
@@ -596,8 +596,8 @@ export const fishManIsland: Saga = {
     },
     'vander-decken-ix': {
       role: {
-        it: 'Capitano dei Pirati Volanti',
-        en: 'Captain of the Flying Pirates',
+        it: 'Capitano dell’Olandese Volante',
+        en: 'Captain of the Flying Dutchman',
       },
       log: {
         it: 'Vive su una nave che nessuno vede arrivare e manda lettere a chi non le ha chieste. Il frutto del diavolo che ha mangiato gli permette di marchiare con la mano una persona o una cosa: da quel momento tutto ciò che lancia, un’ascia come una casa, vola dritto verso il marchio finché non lo raggiunge. Non gli serve mirare e non ha alcuna fretta.',
@@ -607,8 +607,8 @@ export const fishManIsland: Saga = {
         {
           episode: 526,
           value: {
-            it: 'Pirati Volanti, capitano',
-            en: 'Flying Pirates, captain',
+            it: 'Olandese Volante, capitano',
+            en: 'Flying Dutchman, captain',
           },
         },
       ],
@@ -800,7 +800,7 @@ export const fishManIsland: Saga = {
       },
       affiliation: [
         {
-          episode: 530,
+          episode: 531,
           value: {
             it: 'Regno di Ryugu, principessa',
             en: 'Ryugu Kingdom, princess',
@@ -814,10 +814,10 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 531, value: FISH_MAN_ISLAND }],
       epithet: [
         {
-          episode: 530,
+          episode: 531,
           value: { it: 'Principessa Sirena', en: 'Mermaid Princess' },
         },
       ],
