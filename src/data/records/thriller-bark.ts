@@ -64,7 +64,7 @@ export const thrillerBark: Saga = {
     {
       id: 'lola',
       kind: 'character',
-      revealedAtEpisode: 340,
+      revealedAtEpisode: 345,
       revealedAtChapter: 455,
       name: { it: 'Lola', en: 'Lola' },
       summary: {
@@ -347,7 +347,7 @@ export const thrillerBark: Saga = {
       },
       affiliation: [
         {
-          episode: 340,
+          episode: 370,
           value: {
             it: 'Pirati di Rolling, capitano',
             en: 'Rolling Pirates, captain',
@@ -363,7 +363,7 @@ export const thrillerBark: Saga = {
       ],
       origin: [{ episode: 837, value: { it: 'Totto Land', en: 'Totto Land' } }],
       epithet: [
-        { episode: 340, value: { it: 'La Proponente', en: 'the Proposer' } },
+        { episode: 370, value: { it: 'La Proponente', en: 'the Proposer' } },
       ],
     },
     'gecko-moria': {
