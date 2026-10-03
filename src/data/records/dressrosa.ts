@@ -198,7 +198,7 @@ export const dressrosa: Saga = {
     {
       id: 'bartolomeo',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 633,
       revealedAtChapter: 705,
       name: { it: 'Bartolomeo', en: 'Bartolomeo' },
       summary: {
@@ -234,7 +234,7 @@ export const dressrosa: Saga = {
     {
       id: 'cavendish',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 633,
       revealedAtChapter: 708,
       name: { it: 'Cavendish', en: 'Cavendish' },
       summary: {
@@ -246,31 +246,31 @@ export const dressrosa: Saga = {
     {
       id: 'sai',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 633,
       revealedAtChapter: 708,
       name: { it: 'Sai', en: 'Sai' },
       summary: {
-        it: 'Il giovane erede della Flotta Happo, che arriva al colosseo con la naginata sulla spalla e il vecchio capo che gli grida dietro.',
-        en: 'The young heir of the Happo Navy, who comes to the colosseum with a naginata on his shoulder and the old leader shouting after him.',
+        it: 'Un giovane della famiglia Chinjao, una banda del Regno di Kano, che arriva al colosseo con la naginata sulla spalla.',
+        en: 'A young man of the Chinjao family, a gang from the Kano Kingdom, who comes to the colosseum with a naginata on his shoulder.',
       },
       visual: { art: 'sai', tint: 'blue' },
     },
     {
       id: 'don-chinjao',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 633,
       revealedAtChapter: 708,
       name: { it: 'Don Chinjao', en: 'Don Chinjao' },
       summary: {
-        it: 'Un vecchio pirata con il cranio a punta come una trivella, che si iscrive al torneo del colosseo per chiudere un conto rimasto aperto.',
-        en: 'An old pirate with a skull pointed like a drill, who enters the colosseum tournament to settle an account left open.',
+        it: 'Un vecchio pirata del Regno di Kano con il cranio a punta, che si iscrive al torneo del colosseo.',
+        en: 'An old pirate from the Kano Kingdom with a skull pointed like a drill, who enters the colosseum tournament.',
       },
       visual: { art: 'don-chinjao', tint: 'teal' },
     },
     {
       id: 'ideo',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 639,
       revealedAtChapter: 708,
       name: { it: 'Ideo', en: 'Ideo' },
       summary: {
@@ -282,7 +282,7 @@ export const dressrosa: Saga = {
     {
       id: 'blue-gilly',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 636,
       revealedAtChapter: 708,
       name: { it: 'Blue Gilly', en: 'Blue Gilly' },
       summary: {
@@ -294,7 +294,7 @@ export const dressrosa: Saga = {
     {
       id: 'elizabello-ii',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 633,
       revealedAtChapter: 708,
       name: { it: 'Elizabello II', en: 'Elizabello II' },
       summary: {
@@ -306,7 +306,7 @@ export const dressrosa: Saga = {
     {
       id: 'hajrudin',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 634,
       revealedAtChapter: 708,
       name: { it: 'Hajrudin', en: 'Hajrudin' },
       summary: {
@@ -318,7 +318,7 @@ export const dressrosa: Saga = {
     {
       id: 'bastille',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 647,
       revealedAtChapter: 708,
       name: { it: 'Bastille', en: 'Bastille' },
       summary: {
@@ -330,19 +330,19 @@ export const dressrosa: Saga = {
     {
       id: 'maynard',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 634,
       revealedAtChapter: 708,
       name: { it: 'Maynard', en: 'Maynard' },
       summary: {
-        it: 'Un viceammiraglio che si iscrive al torneo del colosseo sotto falso nome, per vedere da vicino chi combatte davvero a Dressrosa.',
-        en: 'A vice admiral who enters the colosseum tournament under a false name, to get a close look at who is really fighting in Dressrosa.',
+        it: 'Un viceammiraglio della Marina che combatte nel torneo del colosseo e studia da vicino chi combatte davvero a Dressrosa.',
+        en: 'A Marine vice admiral who fights in the colosseum tournament and gets a close look at who is really fighting in Dressrosa.',
       },
       visual: { art: 'maynard', tint: 'ivory' },
     },
     {
       id: 'hack',
       kind: 'character',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 636,
       revealedAtChapter: 708,
       name: { it: 'Hack', en: 'Hack' },
       summary: {
@@ -1140,7 +1140,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 636,
           value: { it: 'Barto Club, capitano', en: 'Barto Club, captain' },
         },
         {
@@ -1158,7 +1158,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [
-        { episode: 632, value: { it: 'Il Cannibale', en: 'the Cannibal' } },
+        { episode: 636, value: { it: 'Il Cannibale', en: 'the Cannibal' } },
       ],
       devilFruit: [{ episode: 660, value: ['barrier-barrier-fruit'] }],
       bounty: [{ episode: 636, value: 150_000_000 }],
@@ -1203,7 +1203,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 632, value: ['stick-stick-fruit'] }],
+      devilFruit: [{ episode: 669, value: ['stick-stick-fruit'] }],
     },
     'cavendish': {
       role: {
@@ -1216,7 +1216,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 634,
           value: {
             it: 'Pirati Beautiful, capitano',
             en: 'Beautiful Pirates, captain',
@@ -1226,13 +1226,13 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 632,
+          episode: 633,
           value: { it: 'Regno di Bourgeois', en: 'Bourgeois Kingdom' },
         },
       ],
       epithet: [
         {
-          episode: 632,
+          episode: 634,
           value: {
             it: 'Il Principe Pirata; Cavallo Bianco',
             en: 'the Pirate Prince; White Horse',
@@ -1242,14 +1242,24 @@ export const dressrosa: Saga = {
       bounty: [{ episode: 634, value: 280_000_000 }],
     },
     'sai': {
-      role: { it: 'Erede della Flotta Happo', en: 'Heir of the Happo Navy' },
+      role: {
+        it: 'Giovane della famiglia Chinjao',
+        en: 'Young man of the Chinjao family',
+      },
       log: {
-        it: 'Porta la naginata di famiglia e il nome di una flotta che comanda ottomila uomini. Parla poco e si inchina prima di combattere, anche quando l’avversario non se lo merita. È stato scelto come tredicesimo capo mentre il dodicesimo è ancora vivo e in forma, e la cosa lo mette più a disagio di qualunque incontro nell’arena.',
-        en: 'He carries the family naginata and the name of a navy that commands eight thousand men. He says little and bows before a fight, even when his opponent has not earned it. He has been made the thirteenth leader while the twelfth is still alive and in good shape, which unsettles him more than any bout in the arena.',
+        it: 'Porta la naginata di famiglia. Parla poco e si inchina prima di combattere, anche quando l’avversario non se lo merita.',
+        en: 'He carries the family naginata. He says little and bows before a fight, even when his opponent has not earned it.',
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 633,
+          value: {
+            it: 'Famiglia Chinjao, Regno di Kano',
+            en: 'Chinjao family, Kano Kingdom',
+          },
+        },
+        {
+          episode: 645,
           value: {
             it: 'Flotta Happo, tredicesimo capo',
             en: 'Happo Navy, thirteenth leader',
@@ -1258,21 +1268,25 @@ export const dressrosa: Saga = {
         { episode: 746, value: GRAND_FLEET },
       ],
       origin: [
-        { episode: 632, value: { it: 'Paese di Kano', en: 'Kano Country' } },
+        { episode: 633, value: { it: 'Paese di Kano', en: 'Kano Country' } },
       ],
     },
     'don-chinjao': {
-      role: {
-        it: 'Ex capo della Flotta Happo',
-        en: 'Former leader of the Happo Navy',
-      },
+      role: { it: 'Vecchio pirata di Kano', en: 'Old pirate of Kano' },
       log: {
-        it: 'Ha comandato ottomila uomini e in mare aperto apriva il ghiaccio con la testa. Adesso quella punta non c’è più, e lui non racconta a nessuno come l’abbia persa. Ha ceduto il comando al nipote e dice di essersi ritirato, ma nel colosseo scende in campo come se il conto fosse suo.',
-        en: 'He led eight thousand men and used to split the ice at sea with his head. That point is gone now, and he tells nobody how he lost it. He has handed command to his grandson and says he is retired, but he walks into the colosseum as if the score were his own.',
+        it: 'Vecchio, rumoroso e con un cranio fatto per sfondare, scende nel colosseo come se il conto fosse suo.',
+        en: 'Old, loud and with a skull made for breaking through, he walks into the colosseum as if the score were his own.',
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 633,
+          value: {
+            it: 'Famiglia Chinjao, Regno di Kano',
+            en: 'Chinjao family, Kano Kingdom',
+          },
+        },
+        {
+          episode: 645,
           value: {
             it: 'Flotta Happo, dodicesimo capo, in pensione',
             en: 'Happo Navy, twelfth leader, retired',
@@ -1280,22 +1294,22 @@ export const dressrosa: Saga = {
         },
       ],
       origin: [
-        { episode: 632, value: { it: 'Paese di Kano', en: 'Kano Country' } },
+        { episode: 633, value: { it: 'Paese di Kano', en: 'Kano Country' } },
       ],
       epithet: [
-        { episode: 632, value: { it: 'La Trivella', en: 'the Drill' } },
+        { episode: 647, value: { it: 'La Trivella', en: 'the Drill' } },
       ],
       bounty: [{ episode: 645, value: 500_000_000 }],
     },
     'ideo': {
       role: { it: 'Pugile del colosseo', en: 'Colosseum boxer' },
       log: {
-        it: 'Viene da una palestra che ha fatto delle arti marziali un affare di famiglia, e ha imparato a caricare i pugni come si carica un pezzo d’artiglieria. Nel colosseo parla poco e osserva gli avversari uno per uno, calcolando la distanza. Quando colpisce, quello che aveva davanti non è più al suo posto.',
-        en: 'He comes from a gym that made a family business of the martial arts, and has learned to load a punch the way a gun is loaded. In the colosseum he says little and looks his opponents over one by one, working out the distance. When he lands a blow, whatever stood in front of him is no longer where it was.',
+        it: 'Ha imparato a caricare i pugni come si carica un pezzo d’artiglieria. Nel colosseo parla poco e osserva gli avversari uno per uno, calcolando la distanza. Quando colpisce, quello che aveva davanti non è più al suo posto.',
+        en: 'He has learned to load a punch the way a gun is loaded. In the colosseum he says little and looks his opponents over one by one, working out the distance. When he lands a blow, whatever stood in front of him is no longer where it was.',
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 645,
           value: {
             it: 'Alleanza di arti marziali della palestra XXX',
             en: 'XXX Gym Martial Arts Alliance',
@@ -1305,23 +1319,24 @@ export const dressrosa: Saga = {
       ],
       epithet: [
         {
-          episode: 632,
+          episode: 639,
           value: { it: 'Cannone Distruttore', en: 'Destruction Cannon' },
         },
       ],
     },
     'blue-gilly': {
-      role: {
-        it: 'Combattente della Tribù dalle Gambe Lunghe',
-        en: 'Longleg Tribe fighter',
-      },
+      role: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
       log: {
-        it: 'Appartiene a un popolo che ha gambe lunghe il doppio delle nostre, e ha fatto dei calci una disciplina con un nome preciso. Nell’arena non usa mai le mani e si sposta a scatti, comparendo dove nessuno lo aspetta. Del premio in palio dice soltanto che gli serve, e non aggiunge altro.',
-        en: 'He belongs to a people whose legs are twice the length of ours, and he has made kicking a discipline with a name of its own. In the arena he never uses his hands and moves in bursts, appearing where nobody expects him. Of the prize he says only that he needs it, and nothing more.',
+        it: 'Ha gambe lunghe il doppio delle nostre e ha fatto dei calci una disciplina con un nome preciso. Nell’arena non usa mai le mani e si sposta a scatti, comparendo dove nessuno lo aspetta. Del premio in palio dice soltanto che gli serve, e non aggiunge altro.',
+        en: 'His legs are twice the length of ours, and he has made kicking a discipline with a name of its own. In the arena he never uses his hands and moves in bursts, appearing where nobody expects him. Of the prize he says only that he needs it, and nothing more.',
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 636,
+          value: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
+        },
+        {
+          episode: 690,
           value: {
             it: 'Combattente della Tribù dalle Gambe Lunghe',
             en: 'Longleg Tribe fighter',
@@ -1331,7 +1346,7 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 632,
+          episode: 690,
           value: {
             it: 'Terre della Tribù dalle Gambe Lunghe',
             en: 'Longleg Tribe lands',
@@ -1347,19 +1362,19 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 633,
           value: { it: 'Re di Prodence', en: 'King of Prodence' },
         },
       ],
       origin: [
         {
-          episode: 632,
+          episode: 633,
           value: { it: 'Regno di Prodence', en: 'Prodence Kingdom' },
         },
       ],
       epithet: [
         {
-          episode: 632,
+          episode: 633,
           value: { it: 'Il Re Combattente', en: 'the Fighting King' },
         },
       ],
@@ -1372,7 +1387,7 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 634,
           value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
         },
         {
@@ -1391,7 +1406,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 632, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [{ episode: 634, value: { it: 'Elbaf', en: 'Elbaph' } }],
     },
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -1401,26 +1416,30 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 647,
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
       epithet: [
-        { episode: 632, value: { it: 'Tagliasqualo', en: 'Shark Cutter' } },
+        { episode: 647, value: { it: 'Tagliasqualo', en: 'Shark Cutter' } },
       ],
     },
     'maynard': {
-      role: {
-        it: 'Viceammiraglio sotto copertura',
-        en: 'Vice admiral undercover',
-      },
+      role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'È un istruttore della Marina noto per aver messo in riga generazioni di reclute, e ha la fama di non perdere mai di vista una preda. Si mescola ai gladiatori con un altro nome e studia i favoriti del torneo uno per uno. Quello che vede nell’arena lo preoccupa più di quanto si aspettasse, e non riesce a farlo sapere a nessuno.',
-        en: 'He is a Marine instructor known for straightening out generations of recruits, with a name for never losing sight of his quarry. He mixes with the gladiators under another name and studies the tournament favourites one by one. What he sees in the arena worries him more than he expected, and he cannot get word of it to anybody.',
+        it: 'È un istruttore della Marina noto per aver messo in riga generazioni di reclute, e ha la fama di non perdere mai di vista una preda. Si mescola ai gladiatori e studia i favoriti del torneo uno per uno. Quello che vede nell’arena lo preoccupa più di quanto si aspettasse, e non riesce a farlo sapere a nessuno.',
+        en: 'He is a Marine instructor known for straightening out generations of recruits, with a name for never losing sight of his quarry. He mixes with the gladiators and studies the tournament favourites one by one. What he sees in the arena worries him more than he expected, and he cannot get word of it to anybody.',
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 634,
+          value: {
+            it: 'Marina, viceammiraglio, nel colosseo',
+            en: 'Marines, vice admiral, in the colosseum',
+          },
+        },
+        {
+          episode: 647,
           value: {
             it: 'Marina, viceammiraglio, sotto copertura nel colosseo',
             en: 'Marines, vice admiral, undercover in the colosseum',
@@ -1428,7 +1447,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [
-        { episode: 632, value: { it: 'Il Cacciatore', en: 'the Pursuer' } },
+        { episode: 634, value: { it: 'Il Cacciatore', en: 'the Pursuer' } },
       ],
     },
     'hack': {
@@ -1442,7 +1461,11 @@ export const dressrosa: Saga = {
       },
       affiliation: [
         {
-          episode: 632,
+          episode: 636,
+          value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
+        },
+        {
+          episode: 679,
           value: {
             it: 'Gladiatore del colosseo; Armata Rivoluzionaria',
             en: 'Colosseum gladiator; Revolutionary Army',
@@ -1451,7 +1474,7 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 632,
+          episode: 636,
           value: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
         },
       ],

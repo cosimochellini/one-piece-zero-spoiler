@@ -835,7 +835,7 @@ export const devilFruits: Saga = {
     {
       id: 'stick-stick-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 632,
+      revealedAtEpisode: 669,
       revealedAtChapter: 708,
       name: { it: 'Frutto Beta Beta', en: 'Stick-Stick Fruit' },
       summary: {
