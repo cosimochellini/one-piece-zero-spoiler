@@ -12,6 +12,13 @@ const STRAW_HATS = {
   en: 'Straw Hat Pirates',
 }
 
+const BW_AGENT_ROLE = {
+  it: 'Agente di Baroque Works',
+  en: 'Baroque Works agent',
+}
+
+const BW = { it: 'Baroque Works', en: 'Baroque Works' }
+
 const BW_OFFICER_ROLE = {
   it: 'Agente ufficiale di Baroque Works',
   en: 'Baroque Works officer agent',
@@ -747,12 +754,15 @@ export const alabasta: Saga = {
       ],
     },
     'mr-9': {
-      role: BW_FRONTIER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Gira con una corona in testa e due mazze d’acciaio, e parla di sé in terza persona come un attore di provincia. Lavora in coppia con una collega che finge di essere la sua fidanzata, e nessuno dei due ammette per chi lavori davvero. Quando la copertura salta, saluta l’avversario con un inchino prima di attaccarlo.',
         en: 'He goes about in a crown with two steel bats, talking about himself in the third person like a provincial actor. He works in a pair with a colleague who pretends to be his sweetheart, and neither of them admits who they really work for. When the cover falls, he bows to his opponent before attacking.',
       },
-      affiliation: [{ episode: 63, value: BW_FRONTIER }],
+      affiliation: [
+        { episode: 63, value: BW },
+        { episode: 91, value: BW_FRONTIER },
+      ],
     },
     'igaram': {
       role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
@@ -776,12 +786,15 @@ export const alabasta: Saga = {
       origin: [{ episode: 67, value: ALABASTA }],
     },
     'miss-monday': {
-      role: BW_FRONTIER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Serve da bere al banchetto vestita da suora e sorride finché l’ultimo pirata non cade addormentato sul tavolo. Poi si toglie il velo, e si vede che ha le spalle più larghe di chiunque altro in città. Combatte a mani nude con un paio di tirapugni, e solleva un uomo adulto come si solleva un boccale.',
         en: 'She pours the drinks at the banquet in a nun’s habit and keeps smiling until the last pirate has fallen asleep on the table. Then the veil comes off, and her shoulders turn out to be broader than anyone else’s in town. She fights bare-handed with a pair of knuckledusters, and lifts a grown man the way one lifts a tankard.',
       },
-      affiliation: [{ episode: 64, value: BW_FRONTIER }],
+      affiliation: [
+        { episode: 64, value: BW },
+        { episode: 91, value: BW_FRONTIER },
+      ],
     },
     'karoo': {
       role: { it: 'Anatra da corsa', en: 'Racing duck' },
@@ -801,21 +814,27 @@ export const alabasta: Saga = {
       origin: [{ episode: 65, value: ALABASTA }],
     },
     'mr-5': {
-      role: BW_OFFICER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Tutto quello che si stacca dal suo corpo diventa esplosivo: il fiato, le dita, una briciola tolta dal naso e lanciata come una pallottola. Lavora in coppia con una collega che ride di qualunque cosa e non si scompone mai. Ha ricevuto l’ordine di eliminare chiunque abbia scoperto il nome del capo.',
         en: 'Anything that leaves his body becomes an explosive: his breath, his fingers, a crumb picked from his nose and flicked like a bullet. He works in a pair with a colleague who laughs at everything and never loses her composure. His orders are to kill anyone who has learned the boss’s name.',
       },
-      affiliation: [{ episode: 66, value: BW_OFFICER }],
+      affiliation: [
+        { episode: 66, value: BW },
+        { episode: 91, value: BW_OFFICER },
+      ],
       devilFruit: [{ episode: 66, value: ['bomb-bomb-fruit'] }],
     },
     'miss-valentine': {
-      role: BW_OFFICER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Ride senza fermarsi mai, anche mentre lavora, e scende dal cielo appesa a un ombrello giallo limone. Può rendersi leggera come una piuma o pesante come una campana di bronzo, e si lascia cadere addosso a chi sta sotto. Viaggia sempre con un collega che fa saltare in aria tutto quello che tocca.',
         en: 'She laughs without stopping, even at work, and comes down out of the sky under a lemon-yellow umbrella. She can make herself light as a feather or heavy as a bronze bell, and drops on whoever is underneath. She travels everywhere with a colleague who blows up whatever he touches.',
       },
-      affiliation: [{ episode: 66, value: BW_OFFICER }],
+      affiliation: [
+        { episode: 66, value: BW },
+        { episode: 91, value: BW_OFFICER },
+      ],
       devilFruit: [{ episode: 66, value: ['kilo-kilo-fruit'] }],
     },
     'nefertari-vivi': {
@@ -844,25 +863,29 @@ export const alabasta: Saga = {
       chronicle: alabastaChronicles['nefertari-vivi'],
     },
     'mr-3': {
-      role: BW_OFFICER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Produce cera dal proprio corpo e la indurisce finché non diventa dura come la pietra: ne fa gabbie, scale, statue e un enorme candelabro su cui si arrampica per guardare le sue prede dall’alto. Si pettina i capelli a forma di tre e chiama arte quello che fa. Lavora con una ragazzina che dipinge mentre lui uccide.',
         en: 'He makes wax from his own body and hardens it until it is as strong as stone: cages, staircases, statues and a great candlestand he climbs to look down on his prey. He wears his hair shaped like a three and calls what he does art. He works with a small girl who paints while he kills.',
       },
       affiliation: [
-        { episode: 70, value: BW_OFFICER },
+        { episode: 70, value: BW },
+        { episode: 91, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
         { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
       ],
       devilFruit: [{ episode: 70, value: ['wax-wax-fruit'] }],
     },
     'miss-goldenweek': {
-      role: BW_OFFICER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Ha l’età di una bambina delle elementari e la calma di chi non ha mai avuto fretta in vita sua. Si siede in mezzo al combattimento con la tavolozza sulle ginocchia e un biscotto di riso in bocca, e dipinge. Il socio con cui lavora la tratta da assistente; lei lo ascolta poco e continua a colorare.',
         en: 'She has the age of a primary-school child and the calm of someone who has never hurried in her life. She sits down in the middle of a fight with a palette on her knees and a rice cracker in her mouth, and paints. The partner she works with treats her as an assistant; she barely listens and goes on colouring.',
       },
-      affiliation: [{ episode: 70, value: BW_OFFICER }],
+      affiliation: [
+        { episode: 70, value: BW },
+        { episode: 91, value: BW_OFFICER },
+      ],
     },
     'dorry': {
       role: { it: 'Guerriero gigante di Elbaf', en: 'Giant warrior of Elbaph' },
@@ -935,13 +958,14 @@ export const alabasta: Saga = {
       devilFruit: [{ episode: 79, value: ['munch-munch-fruit'] }],
     },
     'bon-clay': {
-      role: BW_OFFICER_ROLE,
+      role: BW_AGENT_ROLE,
       log: {
         it: 'Viaggia su una nave a forma di cigno, indossa un cappotto di piume e scarpette da ballo a punta, e si presenta danzando. Il suo volto diventa quello di chiunque abbia toccato con la mano destra, e torna il suo quando si tocca con la sinistra. Ha passato una giornata intera a bordo con dei pirati senza dire chi fosse, e li ha trovati simpatici.',
         en: 'He travels on a swan-shaped ship, wears a coat of feathers and pointed dancing shoes, and introduces himself in a pirouette. His face becomes the face of anyone he has touched with his right hand, and comes back when he touches himself with the left. He spent a whole day aboard with a crew of pirates without saying who he was, and rather liked them.',
       },
       affiliation: [
-        { episode: 78, value: BW_OFFICER },
+        { episode: 78, value: BW },
+        { episode: 91, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
         {
           episode: 452,
@@ -979,7 +1003,7 @@ export const alabasta: Saga = {
       devilFruit: [{ episode: 80, value: ['ox-ox-fruit-model-bison'] }],
     },
     'mr-11': {
-      role: { it: 'Agente di Baroque Works', en: 'Baroque Works agent' },
+      role: BW_AGENT_ROLE,
       log: {
         it: 'La Marina lo ha catturato pochi giorni prima e lo tiene legato all’albero maestro della nave di Smoker. Giura di non aver mai sentito parlare di nessuna organizzazione né di nessun Mister 0. Smoker, che non gli crede, finge di avergli trovato degli ordini in tasca, e lui si tradisce da solo.',
         en: 'The Marines caught him a few days before and keep him tied to the mast of Smoker’s ship. He swears he has never heard of any organisation, or of anyone called Mr. 0. Smoker, who believes none of it, bluffs that orders were found in his pocket, and he gives himself away.',
@@ -989,7 +1013,7 @@ export const alabasta: Saga = {
         { episode: 95, value: 'deceased' },
       ],
       affiliation: [
-        { episode: 79, value: { it: 'Baroque Works', en: 'Baroque Works' } },
+        { episode: 79, value: BW },
         { episode: 91, value: BW_FRONTIER },
       ],
     },
