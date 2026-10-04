@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
+import { reveal } from '~/data/reveal'
+
 import { bookmarkForRequest } from './requestBookmark'
-import { isRevealed } from './spoiler'
 
 const GOOGLEBOT =
   'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
@@ -23,14 +24,14 @@ describe('the bookmark a request stands at', () => {
   })
 
   it('opens the archive to a crawler that sends no bookmark', () => {
-    expect(isRevealed(LATE, bookmarkForRequest(undefined, GOOGLEBOT))).toBe(
+    expect(reveal(bookmarkForRequest(undefined, GOOGLEBOT)).sees(LATE)).toBe(
       true,
     )
   })
 
   it('keeps the archive closed to anything else that sends none', () => {
-    expect(isRevealed(LATE, bookmarkForRequest(undefined, CHROME))).toBe(false)
-    expect(isRevealed(LATE, bookmarkForRequest(undefined, undefined))).toBe(
+    expect(reveal(bookmarkForRequest(undefined, CHROME)).sees(LATE)).toBe(false)
+    expect(reveal(bookmarkForRequest(undefined, undefined)).sees(LATE)).toBe(
       false,
     )
   })
@@ -40,10 +41,10 @@ describe('the bookmark a request stands at', () => {
       mode: 'episode',
       episode: 45,
     })
-    expect(isRevealed(LATE, bookmarkForRequest('45', GOOGLEBOT))).toBe(false)
+    expect(reveal(bookmarkForRequest('45', GOOGLEBOT)).sees(LATE)).toBe(false)
   })
 
   it('falls back to the crawler when the cookie is one the parser rejects', () => {
-    expect(isRevealed(LATE, bookmarkForRequest('99999', GOOGLEBOT))).toBe(true)
+    expect(reveal(bookmarkForRequest('99999', GOOGLEBOT)).sees(LATE)).toBe(true)
   })
 })

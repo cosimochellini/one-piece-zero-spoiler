@@ -1,6 +1,5 @@
 import { byNumber, byValue } from 'sort-es'
 
-import { chapterAtEpisode } from '~/data/chapters'
 import {
   eatersOf,
   fruitFormOf,
@@ -9,14 +8,10 @@ import {
   getFruit,
 } from '~/data/fruits'
 import { orderByMode } from '~/data/order'
+import { gateOf, type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import {
-  type Bookmark,
-  type BookmarkMode,
-  modeOf,
-} from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterView,
   DocumentHead,
@@ -50,31 +45,27 @@ const FRUIT_HEAD: HeadKeys = {
 }
 
 /** One row of fruits split at the reader's bookmark. */
-function bandOf(
-  form: FruitForm,
-  bookmark: Bookmark,
-  locale: Locale,
-): FruitBandView {
-  const ordered = orderByMode(fruitsOfForm(form), modeOf(bookmark))
+function bandOf(form: FruitForm, at: Reveal, locale: Locale): FruitBandView {
+  const ordered = orderByMode(fruitsOfForm(form), at.mode)
 
   return {
     form,
     total: ordered.length,
-    open: ordered.flatMap((entity) => {
-      return isRevealed(entity, bookmark) ?
-          [fruitOf({ bookmark, entity, form, locale })]
-        : []
-    }),
+    open: ordered.flatMap((entity) =>
+      at.sees(entity) ? [fruitOf({ at, entity, form, locale })] : [],
+    ),
     covered: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
+      at.sees(entity) ? [] : [coveredOf(entity)],
     ),
   }
 }
 
 /** The specimen sheet: three plates, and how many fruits the archive files. */
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
+  const at = reveal(bookmark)
+
   return {
-    bands: PLATES.map((form) => bandOf(form, bookmark, locale)),
+    bands: PLATES.map((form) => bandOf(form, at, locale)),
     filed: fruits.length,
   }
 }
@@ -102,56 +93,47 @@ export function fruitPage(
     return undefined
   }
 
-  const revealed = isRevealed(entity, bookmark)
+  const at = reveal(bookmark)
+  const revealed = at.sees(entity)
 
   return {
-    head: headFor({ bookmark, entity, keys: FRUIT_HEAD, locale, revealed }),
+    head: headFor({ at, entity, keys: FRUIT_HEAD, locale, revealed }),
     detail: {
       slot:
         revealed ?
-          { open: true, record: fruitOf({ bookmark, entity, form, locale }) }
+          { open: true, record: fruitOf({ at, entity, form, locale }) }
         : { open: false, covered: coveredOf(entity) },
     },
   }
 }
 
 /**
- * When an eater may be named: the later of their own threshold and the
- * episode whose dossier entry says they ate it.
+ * Who the dossiers say ate this fruit, each under its own fog: named from the
+ * later of their own threshold and the episode whose dossier entry says they
+ * ate it (`gateOf`).
  *
  * Both halves matter. A character filed long before the story says what they
  * ate would otherwise appear on the fruit's page the moment the reader met
  * them, which tells the reader something the story has not — and a character
- * the reader has not met must not be named at all. A dossier entry has no
- * chapter, so the chapter side is the first chapter that reaches the episode
- * (`~/data/chapters`) — or one past the ceiling, which is never.
+ * the reader has not met must not be named at all.
  */
-function gateFor(entity: Entity, namedAtEpisode: number): Entity {
-  const revealedAtEpisode = Math.max(entity.revealedAtEpisode, namedAtEpisode)
-
-  return {
-    ...entity,
-    revealedAtEpisode,
-    revealedAtChapter: Math.max(
-      entity.revealedAtChapter,
-      chapterAtEpisode(revealedAtEpisode),
-    ),
-  }
-}
-
-/** Who the dossiers say ate this fruit, each under its own fog. */
 export function fruitEaters(
   id: string,
   bookmark: Bookmark,
   locale: Locale,
 ): FruitEatersView {
+  const at = reveal(bookmark)
+
   return {
     mode: 'eaters',
     eaters: eatersOf(id).map((eater): Slot<CharacterView> => {
-      const gated = gateFor(eater.entity, eater.namedAtEpisode)
+      const gated = {
+        ...eater.entity,
+        ...gateOf(eater.namedAtEpisode, eater.entity),
+      }
 
-      return isRevealed(gated, bookmark) ?
-          { open: true, record: characterOf(eater.entity, locale, bookmark) }
+      return at.sees(gated) ?
+          { open: true, record: characterOf(eater.entity, locale, at) }
         : { open: false, covered: coveredOf(gated) }
     }),
   }
@@ -172,20 +154,13 @@ export function fruitSiblings(
     return []
   }
 
-  const mode = modeOf(bookmark)
+  const at = reveal(bookmark)
 
-  return nearest(entity, fruitsOfForm(form), mode).map((near) => {
-    return slotOf(near, bookmark, (found) =>
-      fruitOf({ bookmark, entity: found, form, locale }),
+  return nearest(entity, fruitsOfForm(form), at).map((near) => {
+    return slotOf(near, at, (found) =>
+      fruitOf({ at, entity: found, form, locale }),
     )
   })
-}
-
-/** A record's threshold in the unit the reader counts in. */
-function thresholdOf(entity: Entity, mode: BookmarkMode): number {
-  return mode === 'chapter' ?
-      entity.revealedAtChapter
-    : entity.revealedAtEpisode
 }
 
 /**
@@ -198,15 +173,15 @@ function thresholdOf(entity: Entity, mode: BookmarkMode): number {
 function nearest(
   entity: Entity,
   among: readonly Entity[],
-  mode: BookmarkMode,
+  at: Reveal,
 ): readonly Entity[] {
-  const here = thresholdOf(entity, mode)
+  const here = at.threshold(entity)
 
   return among
     .filter((candidate) => candidate.id !== entity.id)
     .toSorted(
       byValue(
-        (candidate) => Math.abs(thresholdOf(candidate, mode) - here),
+        (candidate) => Math.abs(at.threshold(candidate) - here),
         byNumber(),
       ),
     )

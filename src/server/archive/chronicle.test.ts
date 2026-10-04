@@ -1,13 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { Story, Timeline } from '~/data/types'
-import type { Bookmark } from '~/lib/progress/episode'
 import type { CharacterChronicle, ChronicleEntry } from '~/lib/view/records'
 
 import { chronicleFrom, type Reader, segmentsOf } from './chronicle.server'
 
-const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+const ep = (episode: number): Reveal => reveal({ mode: 'episode', episode })
 
 /** The two names a hand-written archive files, in both locales. */
 const NAMES: Readonly<Record<string, Readonly<Record<'en' | 'it', string>>>> = {
@@ -64,19 +63,6 @@ describe('the stories a bookmark reaches', () => {
     expect(stories[0]?.title).toBe('A barrel')
   })
 
-  it('resolves a season bookmark to its episode before reading them', () => {
-    // S04E38 is episode 130.
-    const stories = storiesOf(
-      chronicleFrom(
-        chronicle,
-        { mode: 'season', season: 4, episode: 38 },
-        reader('en'),
-      ),
-    )
-
-    expect(stories).toHaveLength(3)
-  })
-
   it('answers in the reader’s locale, links included', () => {
     expect(chronicleFrom(chronicle, ep(1), reader('it'))).toStrictEqual({
       mode: 'chronicle',
@@ -92,36 +78,6 @@ describe('the stories a bookmark reaches', () => {
           ],
         },
       ],
-    })
-  })
-
-  it('reads a chapter bookmark at the episode its chapter reaches', () => {
-    for (const chapter of [1, 50, 218, 1000]) {
-      const stories = storiesOf(
-        chronicleFrom(chronicle, { mode: 'chapter', chapter }, reader('en')),
-      )
-
-      expect(
-        stories.map((entry) => entry.revealedAtEpisode),
-        `chapter ${String(chapter)}`,
-      ).toStrictEqual(
-        [1, 3, 45].filter((episode) => episode <= episodeAtChapter(chapter)),
-      )
-    }
-  })
-
-  it('marks each story with the first chapter that reaches it', () => {
-    const stories = storiesOf(chronicleFrom(chronicle, ep(45), reader('en')))
-
-    expect(stories.map((entry) => entry.revealedAtChapter)).toStrictEqual(
-      [1, 3, 45].map((episode) => chapterAtEpisode(episode)),
-    )
-  })
-
-  it('reaches none of them with no bookmark at all', () => {
-    expect(chronicleFrom(chronicle, null, reader('en'))).toStrictEqual({
-      mode: 'chronicle',
-      entries: [],
     })
   })
 

@@ -1,4 +1,4 @@
-import type { DatedEntry } from '~/lib/progress/spoiler'
+import type { Timeline } from '~/data/types'
 import type { Stroke } from '~/lib/view/records'
 
 /**
@@ -21,8 +21,6 @@ export type Drawings = Readonly<Record<string, readonly Stroke[]>>
  * order, like any other dated fact of a dossier. The drawing in `Drawings`
  * stays the one a reader below the first entry is shown.
  */
-export type Redrawings = Readonly<
-  Record<string, readonly DatedEntry<readonly Stroke[]>[]>
->
+export type Redrawings = Readonly<Record<string, Timeline<readonly Stroke[]>>>
 
 export { type Stroke } from '~/lib/view/records'

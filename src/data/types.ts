@@ -52,7 +52,7 @@ export type Visual = { readonly art: ArtId; readonly tint: TintId }
  * one the reader counts in (`orderByMode` in `~/data/characters`).
  *
  * The shape satisfies `Gated` from `~/lib/progress/spoiler` structurally, so
- * entities can be passed straight to `isRevealed`.
+ * entities can be passed straight to `reveal(bookmark).sees` (`~/data/reveal`).
  */
 export type Entity = {
   readonly id: string

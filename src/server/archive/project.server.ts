@@ -1,7 +1,7 @@
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { timelineBookmark } from '~/data/chapters'
 import { dossierOf, roleOf } from '~/data/characters'
 import { getFruit } from '~/data/fruits'
+import type { Reveal } from '~/data/reveal'
 import type {
   CharacterDossier,
   Entity,
@@ -9,8 +9,6 @@ import type {
   Timeline,
 } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
-import { episodeOf, isRevealed, latestAt } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterFacts,
@@ -44,10 +42,9 @@ import { handleOf } from './handle.server'
  * reader who has reached no redrawing — none set, or no bookmark — is shown
  * the first drawing, which fails closed.
  */
-function drawingOf(entity: Entity, bookmark: Bookmark): Drawing {
+function drawingOf(entity: Entity, at: Reveal): Drawing {
   return {
-    strokes:
-      knownAt(REDRAWINGS[entity.id], bookmark) ?? DRAWINGS[entity.visual.art],
+    strokes: at.latest(REDRAWINGS[entity.id]) ?? DRAWINGS[entity.visual.art],
     tint: entity.visual.tint,
   }
 }
@@ -66,13 +63,13 @@ export function coveredOf(entity: Entity): CoveredRecord {
 export function recordOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): RecordView {
   return {
     id: entity.id,
     kind: entity.kind,
     name: entity.name[locale],
-    visual: drawingOf(entity, bookmark),
+    visual: drawingOf(entity, at),
     revealedAtEpisode: entity.revealedAtEpisode,
     revealedAtChapter: entity.revealedAtChapter,
   }
@@ -82,12 +79,12 @@ export function recordOf(
 export function characterOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): CharacterView {
   const role = roleOf(entity)
 
   return {
-    ...recordOf(entity, locale, bookmark),
+    ...recordOf(entity, locale, at),
     ...(role !== undefined && { role: role[locale] }),
   }
 }
@@ -96,12 +93,9 @@ export function characterOf(
 export function waypointOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): WaypointView {
-  return {
-    ...recordOf(entity, locale, bookmark),
-    summary: entity.summary[locale],
-  }
+  return { ...recordOf(entity, locale, at), summary: entity.summary[locale] }
 }
 
 /** A record's searchable surface, folded: the shown name and what matches it. */
@@ -131,20 +125,10 @@ function otherNames(entity: Entity, locale: Locale): readonly string[] {
  * reader's episode would confirm a name the fog is meant to hide, and now it
  * is not sent at all rather than sent and declined.
  */
-function reachedEpithets(
-  entity: Entity,
-  bookmark: Bookmark,
-): readonly string[] {
-  const progress = episodeOf(timelineBookmark(bookmark))
-  if (progress === null) {
-    return []
-  }
-
-  return (dossierOf(entity)?.epithet ?? []).flatMap((entry) => {
-    return entry.episode <= progress ?
-        LOCALES.map((other) => entry.value[other])
-      : []
-  })
+function reachedEpithets(entity: Entity, at: Reveal): readonly string[] {
+  return at
+    .reached(dossierOf(entity)?.epithet)
+    .flatMap((entry) => LOCALES.map((other) => entry.value[other]))
 }
 
 /**
@@ -157,20 +141,20 @@ function reachedEpithets(
 export function searchableOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): SearchableCharacter {
   return {
-    ...characterOf(entity, locale, bookmark),
+    ...characterOf(entity, locale, at),
     ...foldedOf(entity.name[locale], [
       ...otherNames(entity, locale),
-      ...reachedEpithets(entity, bookmark),
+      ...reachedEpithets(entity, at),
     ]),
   }
 }
 
 /** What a fruit is projected from: the record, its plate, and the reader. */
 export type FruitSource = {
-  readonly bookmark: Bookmark
+  readonly at: Reveal
   readonly entity: Entity
   readonly form: FruitForm
   readonly locale: Locale
@@ -183,14 +167,9 @@ export type FruitSource = {
  * plate at a time and already knows which plate it is setting: a projection
  * that guessed would put a fruit on the wrong one rather than fail.
  */
-export function fruitOf({
-  bookmark,
-  entity,
-  form,
-  locale,
-}: FruitSource): FruitView {
+export function fruitOf({ at, entity, form, locale }: FruitSource): FruitView {
   return {
-    ...recordOf(entity, locale, bookmark),
+    ...recordOf(entity, locale, at),
     form,
     summary: entity.summary[locale],
     ...foldedOf(entity.name[locale], otherNames(entity, locale)),
@@ -200,10 +179,10 @@ export function fruitOf({
 /** Either the record or the little that may be said about it. */
 export function slotOf<T>(
   entity: Entity,
-  bookmark: Bookmark,
+  at: Reveal,
   open: (entity: Entity) => T,
 ): Slot<T> {
-  return isRevealed(entity, bookmark) ?
+  return at.sees(entity) ?
       { open: true, record: open(entity) }
     : { open: false, covered: coveredOf(entity) }
 }
@@ -243,9 +222,9 @@ function linksFor(
 export function factsOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): CharacterFacts {
-  return factsFrom(dossierOf(entity), locale, bookmark)
+  return factsFrom(dossierOf(entity), locale, at)
 }
 
 /**
@@ -258,28 +237,15 @@ export function factsOf(
  */
 type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
 
-/**
- * The latest entry of a timeline the dossier may not carry at all. A chapter
- * bookmark is read at the episode its chapter reaches (`~/data/chapters`).
- */
-export function knownAt<T>(
-  timeline: Timeline<T> | undefined,
-  bookmark: Bookmark,
-): T | undefined {
-  return timeline === undefined ? undefined : (
-      latestAt(timeline, timelineBookmark(bookmark))
-    )
-}
-
 /** The facts that are prose, in the reader's own language. */
 function wordFactsOf(
   dossier: CharacterDossier,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): ReachedFacts {
   const words = (
     timeline: Timeline<LocalizedText> | undefined,
-  ): string | undefined => knownAt(timeline, bookmark)?.[locale]
+  ): string | undefined => at.latest(timeline)?.[locale]
 
   const epithet = words(dossier.epithet)
   const affiliation = words(dossier.affiliation)
@@ -302,11 +268,11 @@ function wordFactsOf(
 function codedFactsOf(
   dossier: CharacterDossier,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): ReachedFacts {
-  const status = knownAt(dossier.status, bookmark)
-  const devilFruit = linksFor(knownAt(dossier.devilFruit, bookmark), locale)
-  const bounty = knownAt(dossier.bounty, bookmark)
+  const status = at.latest(dossier.status)
+  const devilFruit = linksFor(at.latest(dossier.devilFruit), locale)
+  const bounty = at.latest(dossier.bounty)
 
   return {
     ...(status !== undefined && { status }),
@@ -319,7 +285,7 @@ function codedFactsOf(
 export function factsFrom(
   dossier: CharacterDossier | undefined,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): CharacterFacts {
   if (dossier === undefined) {
     return { mode: 'facts' }
@@ -327,7 +293,7 @@ export function factsFrom(
 
   return {
     mode: 'facts',
-    ...wordFactsOf(dossier, locale, bookmark),
-    ...codedFactsOf(dossier, locale, bookmark),
+    ...wordFactsOf(dossier, locale, at),
+    ...codedFactsOf(dossier, locale, at),
   }
 }

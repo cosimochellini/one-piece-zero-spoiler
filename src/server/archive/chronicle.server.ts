@@ -1,9 +1,7 @@
-import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import { dossierOf, getCharacter } from '~/data/characters'
+import { gateOf, type Reveal } from '~/data/reveal'
 import type { Entity, Story, Timeline } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
-import { episodeOf } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
 import type {
   CharacterChronicle,
@@ -57,49 +55,25 @@ export function segmentsOf(
 }
 
 /**
- * The stories the reader has reached, in the reader's language. A `null`
- * bookmark reaches none, the same asymmetry as `isRevealed`: a reader who has
- * not said where they are is shown nothing. A chapter bookmark reaches the
- * stories of the episode its chapter reaches (`~/data/chapters`), and each
- * story carries the chapter that reaches it, so its mark can be printed in the
- * reader's own unit.
+ * The chronicle from a timeline the dossier may not carry at all: the stories
+ * the reader has reached, in the reader's language. Each story carries the
+ * chapter that reaches it, so its mark can be printed in the reader's own
+ * unit.
  */
-function reachedStories(
-  chronicle: Timeline<Story>,
-  bookmark: Bookmark,
-  { locale, resolve }: Reader,
-): readonly ChronicleEntry[] {
-  const progress = episodeOf(timelineBookmark(bookmark))
-  if (progress === null) {
-    return []
-  }
-
-  return chronicle.flatMap((entry) => {
-    return entry.episode > progress ?
-        []
-      : [
-          {
-            revealedAtEpisode: entry.episode,
-            revealedAtChapter: chapterAtEpisode(entry.episode),
-            title: entry.value.title[locale],
-            body: segmentsOf(entry.value.body[locale], resolve),
-          },
-        ]
-  })
-}
-
-/** The chronicle from a timeline the dossier may not carry at all. */
 export function chronicleFrom(
   chronicle: Timeline<Story> | undefined,
-  bookmark: Bookmark,
-  reader: Reader,
+  at: Reveal,
+  { locale, resolve }: Reader,
 ): CharacterChronicle {
   return {
     mode: 'chronicle',
-    entries:
-      chronicle === undefined ?
-        []
-      : reachedStories(chronicle, bookmark, reader),
+    entries: at.reached(chronicle).map((entry): ChronicleEntry => {
+      return {
+        ...gateOf(entry.episode),
+        title: entry.value.title[locale],
+        body: segmentsOf(entry.value.body[locale], resolve),
+      }
+    }),
   }
 }
 
@@ -112,9 +86,9 @@ function characterName(locale: Locale): ResolveName {
 export function chronicleOf(
   entity: Entity,
   locale: Locale,
-  bookmark: Bookmark,
+  at: Reveal,
 ): CharacterChronicle {
-  return chronicleFrom(dossierOf(entity)?.chronicle, bookmark, {
+  return chronicleFrom(dossierOf(entity)?.chronicle, at, {
     locale,
     resolve: characterName(locale),
   })

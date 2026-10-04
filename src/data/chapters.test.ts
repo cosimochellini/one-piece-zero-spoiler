@@ -3,11 +3,7 @@ import { describe, expect, it } from 'vitest'
 
 import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
-import {
-  chapterAtEpisode,
-  episodeAtChapter,
-  timelineBookmark,
-} from './chapters'
+import { chapterAtEpisode, episodeAtChapter } from './chapters'
 import { entities } from './entities'
 
 const CHAPTERS = Array.from(
@@ -92,24 +88,5 @@ describe('chapterAtEpisode', () => {
     expect(chapterAtEpisode(episodeAtChapter(CHAPTER_CEILING) + 1)).toBe(
       CHAPTER_CEILING + 1,
     )
-  })
-})
-
-describe('timelineBookmark', () => {
-  it('reads a chapter bookmark as the episode its chapter reaches', () => {
-    expect(timelineBookmark({ mode: 'chapter', chapter: 500 })).toStrictEqual({
-      mode: 'episode',
-      episode: episodeAtChapter(500),
-    })
-  })
-
-  it('leaves every other bookmark as it is', () => {
-    for (const bookmark of [
-      null,
-      { mode: 'episode', episode: 650 },
-      { mode: 'season', season: 4, episode: 38 },
-    ] as const) {
-      expect(timelineBookmark(bookmark)).toBe(bookmark)
-    }
   })
 })
