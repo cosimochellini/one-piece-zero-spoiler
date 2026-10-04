@@ -88,8 +88,8 @@ export const summitWar: Saga = {
       kind: 'arc',
       revealedAtEpisode: 457,
       revealedAtChapter: 550,
-      // Named as the war’s venue by 434, where Momonga sets out to escort Hancock there.
-      nameSaidAt: 434,
+      // Momonga names Marineford at 410, long before the war takes the story there.
+      nameSaidAt: 410,
       name: { it: 'Marineford', en: 'Marineford' },
       summary: {
         it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',

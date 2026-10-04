@@ -296,6 +296,17 @@ describe('the texts', () => {
   }, 15_000)
 })
 
+/** Every pair of records that go by the same English name, each pair once. */
+const NAMESAKES: readonly (readonly [Entity, Entity])[] = entities.flatMap(
+  (entity) => {
+    return entities
+      .filter(
+        (other) => other.id > entity.id && other.name.en === entity.name.en,
+      )
+      .map((other) => [entity, other] as const)
+  },
+)
+
 describe('the name facts', () => {
   it('say a name only before its own record opens', () => {
     // A `nameSaidAt` at or after the threshold would change nothing, and is
@@ -310,6 +321,18 @@ describe('the name facts', () => {
       expect(Number.isSafeInteger(saidAt), entity.id).toBe(true)
       expect(saidAt, entity.id).toBeGreaterThanOrEqual(FIRST_EPISODE)
       expect(saidAt, entity.id).toBeLessThan(entity.revealedAtEpisode)
+    }
+  })
+
+  it('agree between records that share a name', () => {
+    // The scan matches names, not ids: two records called Marineford, the
+    // arc and the place, are one name to it, and the stricter fact would
+    // silently govern both. Same name, same fact.
+    for (const [entity, other] of NAMESAKES) {
+      const pair = `${entity.id} / ${other.id}`
+
+      expect(other.nameSaidAt, pair).toBe(entity.nameSaidAt)
+      expect(other.commonWord, pair).toBe(entity.commonWord)
     }
   })
 
