@@ -5,13 +5,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import {
-  peekCharacter,
-  peekDossier,
-  peekPort,
-  peekRecord,
-  peekShip,
-} from './peek.server'
+import { peekCharacter, peekDossier, peekPort, peekRecord } from './peek.server'
 
 const law = 'trafalgar-law'
 const lawHandle = handleOf(law)
@@ -86,28 +80,12 @@ describe('a record lifted by hand', () => {
     }
   })
 
-  it('lifts a ship without her places or her fate past the bookmark', () => {
-    // Lifting the fog on the Sunny at episode 20 shows her entry, not where
-    // she goes or what becomes of her.
-    const early: Bookmark = { mode: 'episode', episode: 20 }
-    const sunny = peekShip(handleOf('thousand-sunny'), 'en', early)
-
-    expect(sunny?.name).toBe('Thousand Sunny')
-    expect(sunny?.dossier).not.toHaveProperty('fate')
-    expect(sunny?.dossier?.ports).toStrictEqual([])
-  })
-
-  it('answers nothing when asked to lift a record that is not a ship', () => {
-    expect(peekShip(lawHandle, 'en', null)).toBeUndefined()
-  })
-
   it('answers nothing at all to anything it did not mint', () => {
     for (const rubbish of ['', 'nami', 'zzzzzz', '-1', '../etc']) {
       expect(peekCharacter(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekRecord(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekDossier(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekPort(rubbish, 'en', null), rubbish).toBeUndefined()
-      expect(peekShip(rubbish, 'en', null), rubbish).toBeUndefined()
     }
   })
 

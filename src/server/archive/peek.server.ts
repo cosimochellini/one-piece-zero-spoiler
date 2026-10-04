@@ -6,11 +6,10 @@ import type {
   FruitView,
   PortView,
   RecordView,
-  ShipView,
 } from '~/lib/view/records'
 
 import { entityForHandle } from './handle.server'
-import { portOf, shipOf } from './pages.server'
+import { portOf } from './pages.server'
 import { characterOf, fruitOf, recordOf } from './project.server'
 
 /**
@@ -100,18 +99,4 @@ export function peekPort(
 ): PortView | undefined {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : portOf(entity, bookmark, locale)
-}
-
-/**
- * A peeked ship keeps the fog on the places she reaches, and her fate stays
- * at the reader's bookmark: lifting the fog on the ship is not reading ahead.
- * A handle that stands for a record which is not a ship answers nothing.
- */
-export function peekShip(
-  handle: string,
-  locale: Locale,
-  bookmark: Bookmark,
-): ShipView | undefined {
-  const entity = entityForHandle(handle)
-  return entity?.kind === 'ship' ? shipOf(entity, bookmark, locale) : undefined
 }

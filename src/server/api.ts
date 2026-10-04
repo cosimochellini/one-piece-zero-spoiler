@@ -24,7 +24,6 @@ import {
   peekFruit,
   peekPort,
   peekRecord,
-  peekShip,
 } from './archive/peek.server'
 
 /**
@@ -181,10 +180,4 @@ export const liftPort = createServerFn()
   .validator(handled)
   .handler(
     ({ data }) => peekPort(data.handle, data.locale, readBookmark()) ?? null,
-  )
-
-export const liftShip = createServerFn()
-  .validator(handled)
-  .handler(
-    ({ data }) => peekShip(data.handle, data.locale, readBookmark()) ?? null,
   )

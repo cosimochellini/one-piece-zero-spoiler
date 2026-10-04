@@ -1,15 +1,7 @@
 import { screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import {
-  at,
-  coveredSlot,
-  openSlot,
-  peekPending,
-  record,
-  ship,
-  shipEntry,
-} from '~/test/fixtures'
+import { at, peekPending, record, ship, shipEntry } from '~/test/fixtures'
 import { ep, renderWithProviders } from '~/test/providers'
 
 import { ShipLog } from './ShipLog'
@@ -52,9 +44,8 @@ describe('ShipLog', () => {
   it('opens a reached ship with her facts, her fate and an anchor', () => {
     renderWithProviders(
       <ShipLog
-        peek={peekPending()}
         peekRecord={peekPending()}
-        ships={[openSlot(merry)]}
+        ships={[merry]}
       />,
       { bookmark: ep(20) },
     )
@@ -81,9 +72,8 @@ describe('ShipLog', () => {
   it('draws no fate row when the reader has reached none', () => {
     renderWithProviders(
       <ShipLog
-        peek={peekPending()}
         peekRecord={peekPending()}
-        ships={[openSlot(ship({ ...at(324), dossier: shipEntry() }))]}
+        ships={[ship({ ...at(324), dossier: shipEntry() })]}
       />,
       { bookmark: ep(400) },
     )
@@ -94,9 +84,8 @@ describe('ShipLog', () => {
   it('lists the places she has reached, each linked to its entry', () => {
     renderWithProviders(
       <ShipLog
-        peek={peekPending()}
         peekRecord={peekPending()}
-        ships={[openSlot(sunny)]}
+        ships={[sunny]}
       />,
       { bookmark: ep(400) },
     )
@@ -108,21 +97,15 @@ describe('ShipLog', () => {
     expect(screen.queryByText('Spoiler')).not.toBeInTheDocument()
   })
 
-  it('keeps a ship the reader has not reached out of the HTML', () => {
+  it('draws no band at all when the reader has reached no ship', () => {
     const { container } = renderWithProviders(
       <ShipLog
-        peek={peekPending()}
         peekRecord={peekPending()}
-        ships={[openSlot(merry), coveredSlot({ kind: 'ship', ...at(324) })]}
+        ships={[]}
       />,
-      { bookmark: ep(20) },
+      { bookmark: ep(10) },
     )
 
-    expect(screen.getByText('A ship under fog')).toBeInTheDocument()
-    expect(screen.getByText('First seen in episode 324')).toBeVisible()
-    expect(screen.queryByText('Thousand Sunny')).not.toBeInTheDocument()
-    expect(container.querySelector(':scope #thousand-sunny')).toBeNull()
-    // The one nested drawing is the open Merry's.
-    expect(container.querySelectorAll(':scope svg svg')).toHaveLength(1)
+    expect(container).toBeEmptyDOMElement()
   })
 })

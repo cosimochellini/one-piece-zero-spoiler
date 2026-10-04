@@ -17,6 +17,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
+import type { Gated } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
 import type {
   CoveredRecord,
@@ -153,12 +154,7 @@ function Port({
 
         <SpoilerVeil
           peek={peek}
-          placeholder={
-            <FoggedSpread
-              description={threshold('places.foggedDescription', entry)}
-              name={t('places.foggedName')}
-            />
-          }
+          placeholder={<FoggedSpread entry={entry} />}
           slot={slot}
           strength="media"
         >
@@ -216,26 +212,24 @@ function Rail({
 }
 
 /**
- * What stands in for a port or a ship the reader has not reached. It is the
- * same shape as the open spread and carries none of its content: the served
- * HTML has no name, no drawing and no colour, only the bare plate and a
- * generic line.
+ * What stands in for a port the reader has not reached. It is the same shape
+ * as the open spread and carries none of its content: the served HTML has no
+ * name, no drawing and no colour, only the bare plate and a generic line.
  */
-export function FoggedSpread({
-  name,
-  description,
-}: {
-  readonly description: string
-  readonly name: string
-}): ReactElement {
+function FoggedSpread({ entry }: { readonly entry: Gated }): ReactElement {
+  const { t } = useLocale()
+  const threshold = useThreshold()
+
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
         <PortPlate />
       </div>
       <div {...stylex.props(styles.dossier)}>
-        <h2 {...stylex.props(styles.name)}>{name}</h2>
-        <p {...stylex.props(styles.summary)}>{description}</p>
+        <h2 {...stylex.props(styles.name)}>{t('places.foggedName')}</h2>
+        <p {...stylex.props(styles.summary)}>
+          {threshold('places.foggedDescription', entry)}
+        </p>
       </div>
     </div>
   )

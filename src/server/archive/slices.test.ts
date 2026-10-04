@@ -17,8 +17,6 @@ import type {
   HomeView,
   RoutePositionView,
   ShelfView,
-  ShipView,
-  Slot,
   Stroke,
 } from '~/lib/view/records'
 
@@ -394,28 +392,45 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('tells the log and its ships nothing the reader has not reached', () => {
-    for (const episode of [1, 60, 300, 500]) {
+    for (const [episode, sent] of [
+      [1, []],
+      [60, ['going-merry']],
+      [300, ['going-merry']],
+      [500, ['going-merry', 'thousand-sunny']],
+    ] as const) {
       for (const locale of LOCALES) {
         const log = placesPage(ep(episode), locale)
 
-        expect(log.ships).toHaveLength(2)
+        expect(log.ships.map((ship) => ship.id)).toStrictEqual(sent)
 
         saysNothing(log, ep(episode))
       }
     }
   })
 
-  it('opens a ship at her threshold and keeps her under fog before it', () => {
-    expect(merryAt(17)?.open).toBe(false)
-    expect(merryAt(18)?.open).toBe(true)
+  it('sends a ship from her threshold and not a card for her before it', () => {
+    // A covered second ship would tell a reader at the start that the first
+    // one does not last, so a ship not reached is not in the payload at all.
+    expect(shipIdsAt(17)).toStrictEqual([])
+    expect(shipIdsAt(18)).toStrictEqual(['going-merry'])
+    expect(shipIdsAt(323)).toStrictEqual(['going-merry'])
+    expect(shipIdsAt(324)).toStrictEqual(['going-merry', 'thousand-sunny'])
+  })
+
+  it('opens the Merry’s fate row with the ship, in chapters too', () => {
+    const merry = placesPage({ mode: 'chapter', chapter: 41 }, 'en').ships[0]
+
+    expect(merry?.id).toBe('going-merry')
+    expect(merry?.dossier?.fate).toBeDefined()
   })
 
   it('sends the Sunny’s places only once the reader has reached them', () => {
     // A covered tile would print its episode, and the last one would say
     // how long the ship lasts, so there is no covered tile at all.
-    const sunny = placesPage(ep(500), 'en').ships[1]
-    const ports =
-      sunny?.open === true ? (sunny.record.dossier?.ports ?? []) : []
+    const sunny = placesPage(ep(500), 'en').ships.find(
+      (ship) => ship.id === 'thousand-sunny',
+    )
+    const ports = sunny?.dossier?.ports ?? []
 
     expect(ports.map((port) => port.id)).toStrictEqual([
       'florian-triangle',
@@ -463,9 +478,9 @@ function logAtChapter(chapter: number): string {
   return JSON.stringify(placesPage({ mode: 'chapter', chapter }, 'en'))
 }
 
-/** The first ship in the band, as a reader at this episode is given it. */
-function merryAt(episode: number): Slot<ShipView> | undefined {
-  return placesPage(ep(episode), 'en').ships[0]
+/** The ships a reader at this episode is sent, by id. */
+function shipIdsAt(episode: number): readonly string[] {
+  return placesPage(ep(episode), 'en').ships.map((ship) => ship.id)
 }
 
 /** A record the archive is known to file, or the test is wrong. */

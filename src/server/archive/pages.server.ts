@@ -231,14 +231,16 @@ export function placesPage(
   readonly covered: readonly CoveredRecord[]
   readonly filed: number
   readonly open: readonly PortView[]
-  readonly ships: readonly Slot<ShipView>[]
+  readonly ships: readonly ShipView[]
 } {
   const mode = modeOf(bookmark)
   const ordered = orderByMode(places, mode)
 
   return {
-    ships: orderByMode(ships, mode).map((entity) =>
-      slotOf(entity, bookmark, (ship) => shipOf(ship, bookmark, locale)),
+    // Only the ships the reader has reached: a covered second ship would
+    // tell a reader at the start that the first one does not last.
+    ships: orderByMode(ships, mode).flatMap((entity) =>
+      isRevealed(entity, bookmark) ? [shipOf(entity, bookmark, locale)] : [],
     ),
     filed: ordered.length,
     open: ordered.flatMap((entity) =>
@@ -294,11 +296,7 @@ export function portOf(
  * outright (it opens no later than the ship, which a data test holds), and
  * the latest fate and the places the reader has reached, and nothing later.
  */
-export function shipOf(
-  entity: Entity,
-  bookmark: Bookmark,
-  locale: Locale,
-): ShipView {
+function shipOf(entity: Entity, bookmark: Bookmark, locale: Locale): ShipView {
   const dossier = shipDossierOf(entity)
   if (dossier === undefined) {
     return {

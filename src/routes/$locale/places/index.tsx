@@ -18,7 +18,7 @@ import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
-import { liftPort, liftRecord, liftShip, loadPlaces } from '~/server/api'
+import { liftPort, liftRecord, loadPlaces } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/places/')({
   // Awaited, not streamed: a record tile elsewhere links here with a `#id`,
@@ -57,8 +57,6 @@ function PlacesPage(): ReactElement {
 
   const peek = usePeek(liftPort)
 
-  const peekShip = usePeek(liftShip)
-
   const peekRecord = usePeek(liftRecord)
 
   return (
@@ -67,7 +65,6 @@ function PlacesPage(): ReactElement {
       title={t('places.title')}
     >
       <ShipLog
-        peek={peekShip}
         peekRecord={peekRecord}
         ships={ships}
       />

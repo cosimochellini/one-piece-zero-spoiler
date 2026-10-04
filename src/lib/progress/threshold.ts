@@ -24,7 +24,6 @@ export type ThresholdSentence =
   | 'home.storyAt'
   | 'places.firstSeen'
   | 'places.foggedDescription'
-  | 'ships.foggedDescription'
   | 'veil.locked'
 
 /** What a threshold sentence needs to name a record's threshold. */
