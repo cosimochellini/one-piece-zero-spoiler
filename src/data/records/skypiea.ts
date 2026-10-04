@@ -1150,7 +1150,9 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [{ episode: 158, value: { it: 'Dio', en: 'God' } }],
-      devilFruit: [{ episode: 158, value: ['rumble-rumble-fruit'] }],
+      devilFruit: [
+        { episode: 175, chapter: 266, value: ['rumble-rumble-fruit'] },
+      ],
     },
     'satori': {
       role: ENEL_PRIEST,

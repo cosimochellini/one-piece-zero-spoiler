@@ -960,7 +960,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
-      devilFruit: [{ episode: 584, value: ['gas-gas-fruit'] }],
+      devilFruit: [{ episode: 594, chapter: 664, value: ['gas-gas-fruit'] }],
       bounty: [{ episode: 589, value: 300_000_000 }],
     },
     'monet': {
@@ -985,7 +985,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 608, chapter: 685, value: ['snow-snow-fruit'] }],
+      devilFruit: [{ episode: 611, chapter: 685, value: ['snow-snow-fruit'] }],
     },
     'vergo': {
       role: { it: 'Vecchia conoscenza di Law', en: 'Law’s old acquaintance' },
@@ -1061,7 +1061,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 608, value: ['arms-arms-fruit'] }],
+      devilFruit: [{ episode: 620, chapter: 692, value: ['arms-arms-fruit'] }],
     },
     'buffalo': {
       role: {
@@ -1627,7 +1627,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 646, chapter: 718, value: ['art-art-fruit'] }],
+      devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
     },
     'orlumbus': {
       role: {
@@ -1843,7 +1843,8 @@ export const dressrosa: Saga = {
       ],
       devilFruit: [
         {
-          episode: 912,
+          episode: 1014,
+          chapter: 999,
           value: ['fish-fish-fruit-mythical-model-azure-dragon'],
         },
       ],

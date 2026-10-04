@@ -31,10 +31,12 @@ import type { Entity } from './types'
  * him. Filler, films and specials do not count. Where a threshold was not
  * certain, it was rounded up rather than guessed — a wrong threshold in this
  * file is a spoiler, which is the one bug this project cannot ship. The
- * episode numbers came first and the chapters follow them; both are held to
- * the One Piece Wiki's first chapter and episode of each record's page by
- * `npm run verify:chapters` (`scripts/verify-chapters.mjs`), which fails on
- * any record filed below the wiki's.
+ * episode numbers came first and the chapters follow them. The chapters are
+ * held to the One Piece Wiki's first chapter of each record's page by
+ * `npm run verify:chapters` (`scripts/verify-chapters.mjs`, run by hand, not
+ * in CI), which fails on a chapter filed below that floor; where the record
+ * is named later than it is first seen, the chapter is the editor's call,
+ * as the episode is.
  *
  * The error is not symmetric, and the editing rule follows from that: a
  * threshold set too low uncovers a record early, which is the bug; one set too

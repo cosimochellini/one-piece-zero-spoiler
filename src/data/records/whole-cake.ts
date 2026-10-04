@@ -1159,7 +1159,9 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 790, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 790, value: ['mirror-mirror-fruit'] }],
+      devilFruit: [
+        { episode: 796, chapter: 835, value: ['mirror-mirror-fruit'] },
+      ],
     },
     'stussy': {
       role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
@@ -1566,7 +1568,9 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 879, value: ['crow-crow-fruit'] }],
+      devilFruit: [
+        { episode: 1117, chapter: 1083, value: ['crow-crow-fruit'] },
+      ],
     },
     'lindbergh': {
       role: {

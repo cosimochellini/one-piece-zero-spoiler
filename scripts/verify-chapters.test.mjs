@@ -131,6 +131,31 @@ describe('the chapter a page gives', () => {
     ).toBe(31)
   })
 
+  it('takes the earliest chapter a line names, and the naming label in any case', () => {
+    expect(
+      chapterOf(
+        page(
+          '| first = [[Chapter 530]] (mentioned); [[Chapter 0]]; [[Episode 425]]',
+        ),
+        'character',
+      ),
+    ).toBe(0)
+    expect(
+      chapterOf(
+        page(
+          "| first = [[Chapter 491]]; [[Chapter 195]] ([[Hatchan's Sea-Floor Stroll|cover]])",
+        ),
+        'character',
+      ),
+    ).toBe(195)
+    expect(
+      chapterOf(
+        page('|first = [[Chapter 1]];{{Qref|name=Named|chap=5|ep=4|named}}'),
+        'fruit',
+      ),
+    ).toBe(5)
+  })
+
   it('gives nothing for a page without a chapter', () => {
     expect(chapterOf(page('text', 'text'), 'character')).toBeUndefined()
   })

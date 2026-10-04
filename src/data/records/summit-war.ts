@@ -1436,7 +1436,8 @@ export const summitWar: Saga = {
       ],
       devilFruit: [
         {
-          episode: 402,
+          episode: 923,
+          chapter: 929,
           value: ['dragon-dragon-fruit-ancient-model-allosaurus'],
         },
       ],
@@ -1569,7 +1570,9 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 401, value: { it: 'Kizaru', en: 'Kizaru' } }],
-      devilFruit: [{ episode: 401, value: ['glint-glint-fruit'] }],
+      devilFruit: [
+        { episode: 404, chapter: 511, value: ['glint-glint-fruit'] },
+      ],
     },
     'sentomaru': {
       role: { it: 'Guardia del corpo', en: 'Bodyguard' },

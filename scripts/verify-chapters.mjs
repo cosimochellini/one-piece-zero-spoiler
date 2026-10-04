@@ -7,12 +7,20 @@
 // The wiki's chapter is a floor, not the threshold itself: it is the first
 // appearance, and a record is filed where it is named and seen, which can be
 // later. So a chapter filed below the wiki's is wrong and the script fails on
-// it; one filed above is kept and only listed. A fruit's chapter is derived
-// from the dossier entry that names it (`src/data/records/fruits.ts`), so a
+// it; one filed above is kept and only listed, and whether it is the chapter
+// that names the record is a reader's check, not this script's. For a fruit
+// the floor rises to the naming citation when the page labels one `named`;
+// most pages do not, so a fruit filed between first use and first naming
+// passes here (PR #176 hand-checked those). A fruit's chapter is derived from
+// the dossier entry that names it (`src/data/records/fruits.ts`), so a
 // too-low fruit is fixed by pinning `chapter:` on that entry, not here.
 //
+// Episodes are read from the same line and only listed, never failed: they
+// were checked by hand before (#24) and the open rows are issue #175.
+//
 // Run it with `npm run verify:chapters`. It talks to the network, so it is not
-// part of `npm run check`; the pages it reads are cached under `.gate/wiki/`.
+// part of `npm run check` or CI; the pages it reads are cached under
+// `.gate/wiki/`.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
@@ -118,13 +126,31 @@ export function chapterOf(page, kind) {
   const seen =
     first === undefined ?
       numberAfter(/Debut:Chapter(?<n>\d+)/u, tagless(page.text))
-    : numberAfter(/Chapter (?<n>\d+)/u, first)
+    : storyChapterOf(first)
   const named =
     kind === 'fruit' ?
-      numberAfter(/Qref\|name=named\|chap=(?<n>\d+)/u, page.wikitext)
+      numberAfter(/Qref\|name=named\|chap=(?<n>\d+)/iu, page.wikitext)
     : undefined
 
   return named === undefined ? seen : Math.max(seen ?? 0, named)
+}
+
+/**
+ * The earliest chapter an infobox line names. A line can name several:
+ * Shiki's `[[Chapter 0]]; [[Chapter 530]] (mentioned)`, Camie's
+ * `[[Chapter 195]] ([[…|cover]])`. Chapter 0 and a cover story are manga
+ * pages a reader has turned too, so they count towards the floor; what the
+ * floor cannot say is whether the record was named there.
+ * @param {string} first The infobox line.
+ * @returns {number | undefined} The chapter.
+ */
+function storyChapterOf(first) {
+  const chapters = first
+    .matchAll(/\[\[Chapter (?<n>\d+)\]\]/gu)
+    .map((match) => Number(match.groups?.['n']))
+    .toArray()
+
+  return chapters.length === 0 ? undefined : Math.min(...chapters)
 }
 
 /**
@@ -230,6 +256,32 @@ async function request(title) {
 }
 
 /**
+ * The API's answer, if it is one: a parsed page or a missing title. Anything
+ * else (a challenge page, a throttling error) is not cached, so a bad hour
+ * does not stick to the next run.
+ * @param {string} title The page title.
+ * @param {string} body The response body.
+ * @returns {string} The body, worth caching.
+ */
+function answerOf(title, body) {
+  /** @type {{ parse?: unknown, error?: { code?: string } }} */
+  let answer
+  try {
+    answer = JSON.parse(body)
+  } catch {
+    throw new Error(`${title}: the API did not answer with JSON`)
+  }
+
+  if (answer.parse === undefined && answer.error?.code !== 'missingtitle') {
+    throw new Error(
+      `${title}: ${answer.error?.code ?? 'no page in the answer'}`,
+    )
+  }
+
+  return body
+}
+
+/**
  * One wiki page, from the cache or the API.
  * @param {string} title The page title.
  * @returns {Promise<Page | undefined>} The page, or nothing when it does not exist.
@@ -238,7 +290,7 @@ async function fetchPage(title) {
   const file = path.join(CACHE, `${encodeURIComponent(title)}.json`)
   if (!existsSync(file)) {
     mkdirSync(CACHE, { recursive: true })
-    writeFileSync(file, await download(title))
+    writeFileSync(file, answerOf(title, await download(title)))
     await sleep(250)
   }
 

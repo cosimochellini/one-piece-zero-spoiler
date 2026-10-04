@@ -1000,7 +1000,9 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 80, value: DRUM_ISLAND }],
-      devilFruit: [{ episode: 80, value: ['ox-ox-fruit-model-bison'] }],
+      devilFruit: [
+        { episode: 82, chapter: 136, value: ['ox-ox-fruit-model-bison'] },
+      ],
     },
     'mr-11': {
       role: BW_AGENT_ROLE,

@@ -1092,7 +1092,7 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 571, value: ['egg-egg-fruit'] }],
+      devilFruit: [{ episode: 820, chapter: 853, value: ['egg-egg-fruit'] }],
       bounty: [{ episode: 816, value: 429_000_000 }],
     },
     'bobbin': {
