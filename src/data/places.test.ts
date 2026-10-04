@@ -186,12 +186,12 @@ describe('the ships', () => {
   })
 
   it('keeps each dated entry from a manga reader until its chapter', () => {
-    // [episode, the chapter the manga tells it in]: the keel verdict in 327,
+    // [episode, the chapter the manga tells it in]: the keel verdict in 328,
     // the Merry's farewell in 430 (an anchor in `~/data/chapters` holds it),
     // the Sunny's name in 439. A chapter that reached the episode sooner
     // would show the entry to a reader who has not read it.
     for (const [episode, told] of [
-      [233, 327],
+      [233, 328],
       [312, 430],
       [324, 439],
     ] as const) {

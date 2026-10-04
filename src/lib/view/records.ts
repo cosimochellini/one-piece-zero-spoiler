@@ -333,7 +333,7 @@ export type PortDossier = {
 
 /** A ship the crew sails, as the band above the log draws it. */
 export type ShipView = RecordView & {
-  readonly dossier: null | ShipEntry
+  readonly dossier: ShipEntry
   readonly summary: string
 }
 

@@ -913,11 +913,13 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
       en: 'Franky, who built her with Iceburg and the Galley-La foremen',
     },
     launched: 'water-seven',
-    // Adam's wood and the stolen money at 313, the unveiling and her size at
-    // 321, the name and the flight from Garp's ship at 324.
+    // Adam's wood and the stolen money at 313 (chapter 431), the unveiling
+    // at 321 (436), the name and the flight from Garp's ship at 324 (439).
+    // The manga never gives her size against the Merry's, so the log says
+    // only "far bigger".
     log: {
-      it: 'Franky l’ha costruita per la ciurma con il legno di Adam, un albero che, a suo dire, è il più resistente al mondo, pagato con i soldi che la sua banda aveva rubato a Usop. Iceburg la mostra alla ciurma mentre Franky resta lontano, ed è grande il doppio della Merry. Il nome lo propone Iceburg, e la ciurma lo sceglie al posto di quello che voleva Franky. Lasciando Water Seven, sfugge alla nave di Garp sollevandosi in volo.',
-      en: 'Franky built her for the crew from the wood of Adam, a tree he says is the strongest in the world, paid for with the money his gang stole from Usopp. Iceburg shows her to the crew while Franky stays away, and she is twice the size of the Merry. The name is Iceburg’s idea, and the crew picks it over the one Franky wanted. Leaving Water Seven, she escapes Garp’s ship by launching herself into the air.',
+      it: 'Franky l’ha costruita per la ciurma con il legno di Adam, un albero che, a suo dire, è il più resistente al mondo, pagato con i soldi che la sua banda aveva rubato a Usop. Iceburg la mostra alla ciurma mentre Franky resta lontano, ed è molto più grande della Merry. Il nome lo propone Iceburg, e la ciurma lo sceglie al posto di quello che voleva Franky. Lasciando Water Seven, sfugge alla nave di Garp sollevandosi in volo.',
+      en: 'Franky built her for the crew from the wood of Adam, a tree he says is the strongest in the world, paid for with the money his gang stole from Usopp. Iceburg shows her to the crew while Franky stays away, and she is far bigger than the Merry. The name is Iceburg’s idea, and the crew picks it over the one Franky wanted. Leaving Water Seven, she escapes Garp’s ship by launching herself into the air.',
     },
     fate: [
       {
@@ -925,8 +927,9 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
         value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
       },
     ],
-    // Each checked against the wiki's episode summaries (PR #167): she is
-    // there, or arriving, at the episode the place itself opens at. The
+    // Each checked against the wiki's episode and chapter summaries (PR
+    // #167): she is there, or arriving, at the episode and the chapter the
+    // place itself opens at. The
     // places she misses (Amazon Lily to Marineford, Green Bit, Whole Cake
     // Island, the rest of Wano, Elbaph) are left out on purpose.
     ports: [

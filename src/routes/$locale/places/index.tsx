@@ -45,10 +45,10 @@ export const Route = createFileRoute('/$locale/places/')({
  *
  * A ship's log: the brand line and a count, the two ships the crew sails,
  * then every place as a numbered port of call down one spine, in the order
- * the ship puts in at them. No hero and no display headline; the log is the page. The reader's
- * episode is drawn as a horizon on the spine, and every port below it keeps
- * its number and its episode while its name, drawing and colour stay out of
- * the served HTML.
+ * the ship puts in at them. No hero and no display headline; the log is
+ * the page. The reader's episode is drawn as a horizon on the spine, and
+ * every port below it keeps its number and its episode while its name,
+ * drawing and colour stay out of the served HTML.
  */
 function PlacesPage(): ReactElement {
   const t = useT()

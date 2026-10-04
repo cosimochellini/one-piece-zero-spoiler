@@ -421,7 +421,7 @@ describe('the slice of the archive a page is given', () => {
     const merry = placesPage({ mode: 'chapter', chapter: 41 }, 'en').ships[0]
 
     expect(merry?.id).toBe('going-merry')
-    expect(merry?.dossier?.fate).toBeDefined()
+    expect(merry?.dossier.fate).toBeDefined()
   })
 
   it('sends the Sunny’s places only once the reader has reached them', () => {
@@ -430,7 +430,7 @@ describe('the slice of the archive a page is given', () => {
     const sunny = placesPage(ep(500), 'en').ships.find(
       (ship) => ship.id === 'thousand-sunny',
     )
-    const ports = sunny?.dossier?.ports ?? []
+    const ports = sunny?.dossier.ports ?? []
 
     expect(ports.map((port) => port.id)).toStrictEqual([
       'florian-triangle',

@@ -61,7 +61,11 @@ export function ShipLog({
   )
 }
 
-/** One ship: when she first appears, then the plate beside the dossier. */
+/**
+ * One ship: the episode her entry opens at, then the plate beside the
+ * dossier. Said as an episode rather than "first seen", because the Sunny is
+ * unveiled three episodes before her name, and her entry opens at the name.
+ */
 function Ship({
   ship,
   peekRecord,
@@ -80,7 +84,7 @@ function Ship({
       {...stylex.props(styles.ship)}
     >
       <p {...stylex.props(styles.stageEpisode)}>
-        {threshold('places.firstSeen', ship)}
+        {threshold('chart.opensAt', ship)}
       </p>
 
       <div {...stylex.props(styles.spread)}>
@@ -92,18 +96,14 @@ function Ship({
           <h2 {...stylex.props(styles.name)}>{ship.name}</h2>
           <p {...stylex.props(styles.summary)}>{ship.summary}</p>
 
-          {ship.dossier === null ? null : (
-            <>
-              <ShipFacts entry={ship.dossier} />
-              <p {...stylex.props(styles.entry)}>{ship.dossier.log}</p>
-              {ship.dossier.ports.length === 0 ? null : (
-                <FiledHere
-                  filed={ship.dossier.ports.map((place) => reached(place))}
-                  peekRecord={peekRecord}
-                  title={t('ships.ports')}
-                />
-              )}
-            </>
+          <ShipFacts entry={ship.dossier} />
+          <p {...stylex.props(styles.entry)}>{ship.dossier.log}</p>
+          {ship.dossier.ports.length === 0 ? null : (
+            <FiledHere
+              filed={ship.dossier.ports.map((place) => reached(place))}
+              peekRecord={peekRecord}
+              title={t('ships.ports')}
+            />
           )}
         </div>
       </div>
