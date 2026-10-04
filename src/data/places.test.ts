@@ -171,6 +171,9 @@ describe('the ships', () => {
         expect(port.revealedAtEpisode, port.id).toBeGreaterThanOrEqual(
           ship.revealedAtEpisode,
         )
+        expect(port.revealedAtChapter, port.id).toBeGreaterThanOrEqual(
+          ship.revealedAtChapter,
+        )
       }
     }
   })

@@ -881,6 +881,7 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
       en: 'Merry, Kaya’s butler',
     },
     launched: 'syrup-village',
+    // All told in episode 17, the episode before her threshold.
     log: {
       it: 'La nave che Kaya regala alla ciurma quando la ciurma lascia il Villaggio di Syrup, carica di provviste. L’ha progettata il suo maggiordomo Merry, che spiega a Nami come si governa. È la prima vera nave della ciurma: fino a quel momento il mare l’ha attraversato su piccole barche.',
       en: 'The ship Kaya gives the crew as it leaves Syrup Village, loaded with supplies. Kaya’s butler Merry designed her himself, and he shows Nami how she handles. She is the crew’s first real ship: until then it had crossed the sea in small boats.',
@@ -912,6 +913,8 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
       en: 'Franky, who built her with Iceburg and the Galley-La foremen',
     },
     launched: 'water-seven',
+    // Adam's wood and the stolen money at 313, the unveiling and her size at
+    // 321, the name and the flight from Garp's ship at 324.
     log: {
       it: 'Franky l’ha costruita per la ciurma con il legno di Adam, un albero che, a suo dire, è il più resistente al mondo, pagato con i soldi che la sua banda aveva rubato a Usop. Iceburg la mostra alla ciurma mentre Franky resta lontano, ed è grande il doppio della Merry. Il nome lo propone Iceburg, e la ciurma lo sceglie al posto di quello che voleva Franky. Lasciando Water Seven, sfugge alla nave di Garp sollevandosi in volo.',
       en: 'Franky built her for the crew from the wood of Adam, a tree he says is the strongest in the world, paid for with the money his gang stole from Usopp. Iceburg shows her to the crew while Franky stays away, and she is twice the size of the Merry. The name is Iceburg’s idea, and the crew picks it over the one Franky wanted. Leaving Water Seven, she escapes Garp’s ship by launching herself into the air.',
@@ -922,17 +925,21 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
         value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
       },
     ],
+    // Each checked against the wiki's episode summaries (PR #167): she is
+    // there, or arriving, at the episode the place itself opens at. The
+    // places she misses (Amazon Lily to Marineford, Green Bit, Whole Cake
+    // Island, the rest of Wano, Elbaph) are left out on purpose.
     ports: [
-      'florian-triangle',
-      'thriller-bark',
-      'sabaody-archipelago',
-      'fish-man-island',
-      'punk-hazard',
-      'dressrosa',
-      'zou',
-      'cacao-island',
-      'kuri',
-      'egghead-island',
+      'florian-triangle', // 337: she drifts into the fog
+      'thriller-bark', // 343: she is already caught in its web
+      'sabaody-archipelago', // 390: she moors at Grove 41
+      'fish-man-island', // 526: she reaches its entrance with the crew
+      'punk-hazard', // 579: she anchors off the island
+      'dressrosa', // 629: sighted from her deck, docked at 630
+      'zou', // 752: moored at Zunesha's leg when Luffy's group arrives
+      'cacao-island', // 786: she is docked there with the crew ashore
+      'kuri', // 893: she washes up on the beach with Luffy
+      'egghead-island', // 1089: she enters its waters, lifted ashore at 1090
     ],
   },
 }
