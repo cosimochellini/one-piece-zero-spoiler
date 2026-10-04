@@ -21,8 +21,10 @@ export type ShipLogProps = {
  * The ships the crew sails, in a band above the log.
  *
  * Each is drawn as a port is, a plate beside a dossier, under the same fog:
- * a ship the reader has not reached keeps its episode and nothing else. The
- * ships are not numbered, because they are not stops on the route.
+ * a ship the reader has not reached keeps its kind and its episode and
+ * nothing else, which is what a covered ship already says on the chart and
+ * beside a character. The ships are not numbered, because they are not
+ * stops on the route.
  */
 export function ShipLog({
   ships,
@@ -138,7 +140,7 @@ function ShipSpread({
             <p {...stylex.props(styles.entry)}>{ship.dossier.log}</p>
             {ship.dossier.ports.length === 0 ? null : (
               <FiledHere
-                filed={ship.dossier.ports}
+                filed={ship.dossier.ports.map((place) => reached(place))}
                 peekRecord={peekRecord}
                 title={t('ships.ports')}
               />
@@ -148,4 +150,9 @@ function ShipSpread({
       </div>
     </div>
   )
+}
+
+/** A place the reader has reached, as the tile list takes it. */
+function reached(record: RecordView): Slot<RecordView> {
+  return { open: true, record }
 }

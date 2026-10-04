@@ -79,7 +79,8 @@ export type ShipDossier = {
   /**
    * The places she reaches, each listed only where she arrives at the
    * place's own threshold: listed any later, the tile would tell a reader
-   * where she goes next. Each keeps its own fog.
+   * where she goes next. The page shows only those the reader has reached,
+   * because a covered tile's episode would say how long she lasts.
    */
   readonly ports?: readonly string[]
 }

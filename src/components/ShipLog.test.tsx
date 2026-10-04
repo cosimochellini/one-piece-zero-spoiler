@@ -1,7 +1,6 @@
 import { screen, within } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import type { RecordView } from '~/lib/view/records'
 import {
   at,
   coveredSlot,
@@ -26,17 +25,17 @@ const merry = ship({
   }),
 })
 
-const reached = openSlot(
-  record({ id: 'florian-triangle', kind: 'place', name: 'Florian Triangle' }),
-)
-
-const later = coveredSlot<RecordView>({ ...at(1089) })
+const reached = record({
+  id: 'florian-triangle',
+  kind: 'place',
+  name: 'Florian Triangle',
+})
 
 const sunny = ship({
   id: 'thousand-sunny',
   name: 'Thousand Sunny',
   ...at(324),
-  dossier: shipEntry({ ports: [reached, later] }),
+  dossier: shipEntry({ ports: [reached] }),
 })
 
 /** The ship one piece of the band belongs to. */
@@ -92,7 +91,7 @@ describe('ShipLog', () => {
     expect(screen.queryByText('Fate')).not.toBeInTheDocument()
   })
 
-  it('lists the places she reaches, each behind its own fog', () => {
+  it('lists the places she has reached, each linked to its entry', () => {
     renderWithProviders(
       <ShipLog
         peek={peekPending()}
@@ -106,8 +105,7 @@ describe('ShipLog', () => {
     expect(
       screen.getByRole('link', { name: 'Florian Triangle' }),
     ).toHaveAttribute('href', '/en/places#florian-triangle')
-    expect(screen.getByText('Episode 1089')).toBeVisible()
-    expect(screen.getAllByText('Spoiler')).toHaveLength(1)
+    expect(screen.queryByText('Spoiler')).not.toBeInTheDocument()
   })
 
   it('keeps a ship the reader has not reached out of the HTML', () => {

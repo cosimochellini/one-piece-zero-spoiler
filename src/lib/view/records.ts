@@ -351,8 +351,12 @@ export type ShipEntry = {
    * when there is none, so the row is not drawn.
    */
   readonly fate?: string
-  /** The places she reaches with the crew, each with its own fog decided. */
-  readonly ports: readonly Slot<RecordView>[]
+  /**
+   * The places she has reached by the reader's bookmark, and none past it.
+   * There is no covered tile and no count: a place under fog would still
+   * print its episode, and that alone would say how long she lasts.
+   */
+  readonly ports: readonly RecordView[]
 }
 
 /** One shelf of the signal book: an arc and the characters first met along it. */

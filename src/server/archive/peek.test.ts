@@ -86,21 +86,15 @@ describe('a record lifted by hand', () => {
     }
   })
 
-  it('keeps the fog on a lifted ship’s places, and her fate at the bookmark', () => {
+  it('lifts a ship without her places or her fate past the bookmark', () => {
     // Lifting the fog on the Sunny at episode 20 shows her entry, not where
     // she goes or what becomes of her.
     const early: Bookmark = { mode: 'episode', episode: 20 }
     const sunny = peekShip(handleOf('thousand-sunny'), 'en', early)
-    const ports = sunny?.dossier?.ports ?? []
 
     expect(sunny?.name).toBe('Thousand Sunny')
     expect(sunny?.dossier).not.toHaveProperty('fate')
-    expect(ports.length).toBeGreaterThan(0)
-    expect(openAt(ports)).toStrictEqual([])
-
-    for (const covered of coveredAt(ports)) {
-      expect(covered).not.toHaveProperty('id')
-    }
+    expect(sunny?.dossier?.ports).toStrictEqual([])
   })
 
   it('lifts a record that is not a ship with no entry', () => {

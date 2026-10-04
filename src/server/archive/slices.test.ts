@@ -410,6 +410,20 @@ describe('the slice of the archive a page is given', () => {
     expect(merryAt(18)?.open).toBe(true)
   })
 
+  it('sends the Sunny’s places only once the reader has reached them', () => {
+    // A covered tile would print its episode, and the last one would say
+    // how long the ship lasts, so there is no covered tile at all.
+    const sunny = placesPage(ep(500), 'en').ships[1]
+    const ports =
+      sunny?.open === true ? (sunny.record.dossier?.ports ?? []) : []
+
+    expect(ports.map((port) => port.id)).toStrictEqual([
+      'florian-triangle',
+      'thriller-bark',
+      'sabaody-archipelago',
+    ])
+  })
+
   it('says nothing of the Merry’s farewell to a reader at 300', () => {
     const farewell = shipDossierOf(onFile('going-merry'))?.fate.at(-1)
 

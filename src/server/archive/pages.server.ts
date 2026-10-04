@@ -274,7 +274,16 @@ export function portOf(
           arc: arc === undefined ? null : arc.name[locale],
           landmark: dossier.landmark[locale],
           log: dossier.log[locale],
-          filedHere: slotsOf(dossier.filedHere, bookmark, locale),
+          filedHere: dossier.filedHere.flatMap<Slot<RecordView>>((filed) => {
+            const record = getEntity(filed)
+            return record === undefined ?
+                []
+              : [
+                  slotOf(record, bookmark, (found) =>
+                    recordOf(found, locale, bookmark),
+                  ),
+                ]
+          }),
         }
       ),
   }
@@ -282,9 +291,8 @@ export function portOf(
 
 /**
  * One ship, with her entry resolved: the place she is received at named
- * outright (it opens no later than the ship, which a data test holds), the
- * latest fate the reader has reached and no other, and each place she
- * reaches with its own fog already decided.
+ * outright (it opens no later than the ship, which a data test holds), and
+ * the latest fate and the places the reader has reached, and nothing later.
  */
 export function shipOf(
   entity: Entity,
@@ -310,26 +318,14 @@ export function shipOf(
       launched: getEntity(dossier.launched)?.name[locale] ?? null,
       log: dossier.log[locale],
       ...(fate !== undefined && { fate }),
-      ports: slotsOf(dossier.ports ?? [], bookmark, locale),
+      ports: (dossier.ports ?? []).flatMap((id) => {
+        const place = getEntity(id)
+        return place !== undefined && isRevealed(place, bookmark) ?
+            [recordOf(place, locale, bookmark)]
+          : []
+      }),
     },
   }
-}
-
-/**
- * Records named by id, each behind its own fog. An id the archive does not
- * file is dropped rather than drawn.
- */
-function slotsOf(
-  ids: readonly string[],
-  bookmark: Bookmark,
-  locale: Locale,
-): readonly Slot<RecordView>[] {
-  return ids.flatMap((id) => {
-    const record = getEntity(id)
-    return record === undefined ?
-        []
-      : [slotOf(record, bookmark, (found) => recordOf(found, locale, bookmark))]
-  })
 }
 
 /** What a character's page calls itself, open and under fog. */
