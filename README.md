@@ -208,9 +208,10 @@ checked on every run:
 - no text names a record the reader has not reached. The links a chronicle
   builds from `[[id]]` markers are checked against the story's episode, and
   every text the archive prints, summaries, roles, logs, affiliations, origins,
-  epithets, stories and ship fates, is scanned for every later record's name in
-  both locales. A name the show says before its record opens, or one that is an
-  ordinary word, is declared on the record itself rather than excused in a test;
+  epithets, stories and ship fates, is scanned for every later record's full
+  name in both locales. A name the show says before its record opens, or one
+  that is an ordinary word, is declared on the record itself rather than excused
+  in a test;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
 - every drawing belongs to a record;

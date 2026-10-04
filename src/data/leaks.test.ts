@@ -9,7 +9,7 @@ import { CHARACTER_DOSSIERS, getCharacter } from './characters'
 import { entities, getEntity } from './entities'
 import { PLACE_DOSSIERS, SHIP_DOSSIERS } from './places'
 import { gateOf } from './reveal'
-import type { Dated, Entity, LocalizedText, Story, Timeline } from './types'
+import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 /**
  * The one scan for a name said too early, over every text the archive
@@ -44,6 +44,39 @@ function filed(id: string): Entity {
   return entity
 }
 
+/** Whether a value is a string in every locale, which is a text to scan. */
+function isLocalized(value: unknown): value is LocalizedText {
+  return (
+    typeof value === 'object'
+    && value !== null
+    && LOCALES.every((locale) => typeof Reflect.get(value, locale) === 'string')
+  )
+}
+
+/** Whether a value is a story: a title and a body, each a text. */
+function isStory(value: unknown): value is Story {
+  return (
+    typeof value === 'object'
+    && value !== null
+    && isLocalized(Reflect.get(value, 'body'))
+    && isLocalized(Reflect.get(value, 'title'))
+  )
+}
+
+/** A story as one text: its title and its paragraph. */
+function told({ body, title }: Story): LocalizedText {
+  return { en: `${title.en} ${body.en}`, it: `${title.it} ${body.it}` }
+}
+
+/** The text a dated entry carries, or `undefined` for a fact that is not prose. */
+function textOf(value: unknown): LocalizedText | undefined {
+  if (isLocalized(value)) {
+    return value
+  }
+
+  return isStory(value) ? told(value) : undefined
+}
+
 /** A text frozen at its record's threshold, like the summary. */
 function frozen(owner: Entity, field: string, text: LocalizedText): Text {
   return {
@@ -59,65 +92,70 @@ function frozen(owner: Entity, field: string, text: LocalizedText): Text {
 function dated(
   owner: Entity,
   field: string,
-  timeline: Timeline<LocalizedText> | undefined,
+  timeline: Timeline<unknown>,
 ): readonly Text[] {
-  return (timeline ?? []).map((entry) => {
+  return timeline.flatMap((entry) => {
+    const text = textOf(entry.value)
+    if (text === undefined) {
+      return []
+    }
+
     const gate = gateOf(entry, owner)
 
-    return {
-      chapter: gate.revealedAtChapter,
-      episode: gate.revealedAtEpisode,
-      label: `${owner.id}.${field}@${String(entry.episode)}`,
-      owner,
-      text: entry.value,
-    }
+    return [
+      {
+        chapter: gate.revealedAtChapter,
+        episode: gate.revealedAtEpisode,
+        label: `${owner.id}.${field}@${String(entry.episode)}`,
+        owner,
+        text,
+      },
+    ]
   })
 }
 
-/** A story as one dated text: its title and its paragraph. */
-function told(entry: Dated<Story>): Dated<LocalizedText> {
-  const { body, title } = entry.value
-
-  return {
-    ...entry,
-    value: { en: `${title.en} ${body.en}`, it: `${title.it} ${body.it}` },
-  }
+/** Whether a dossier field is a timeline: an array of dated entries. */
+function isTimeline(value: unknown): value is Timeline<unknown> {
+  return Array.isArray(value) && value.every((entry: unknown) => isDated(entry))
 }
+
+/** Whether a value is a dated entry: an object with an episode. */
+function isDated(entry: unknown): boolean {
+  return (
+    typeof entry === 'object'
+    && entry !== null
+    && typeof Reflect.get(entry, 'episode') === 'number'
+  )
+}
+
+/**
+ * Every text one dossier prints, found by shape rather than by name: a field
+ * that is a text in every locale is frozen at the threshold, a timeline is
+ * dated entry by entry, and anything else (a status, a bounty, a fruit id)
+ * is not prose. A field added to a dossier is scanned the day it is added.
+ */
+function textsOf(owner: Entity, dossier: object): readonly Text[] {
+  return Object.entries(dossier).flatMap(([field, value]) => {
+    if (isLocalized(value)) {
+      return [frozen(owner, field, value)]
+    }
+
+    return isTimeline(value) ? dated(owner, field, value) : []
+  })
+}
+
+const DOSSIERS: readonly Readonly<Record<string, object>>[] = [
+  CHARACTER_DOSSIERS,
+  PLACE_DOSSIERS,
+  SHIP_DOSSIERS,
+]
 
 const TEXTS: readonly Text[] = [
   ...entities.map((entity) => frozen(entity, 'summary', entity.summary)),
-  ...Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
-    const owner = filed(id)
-
-    return [
-      frozen(owner, 'role', dossier.role),
-      frozen(owner, 'log', dossier.log),
-      ...dated(owner, 'affiliation', dossier.affiliation),
-      ...dated(owner, 'origin', dossier.origin),
-      ...dated(owner, 'epithet', dossier.epithet),
-      ...dated(
-        owner,
-        'chronicle',
-        dossier.chronicle?.map((entry) => told(entry)),
-      ),
-    ]
-  }),
-  ...Object.entries(PLACE_DOSSIERS).flatMap(([id, dossier]) => {
-    const owner = filed(id)
-
-    return [
-      frozen(owner, 'landmark', dossier.landmark),
-      frozen(owner, 'log', dossier.log),
-    ]
-  }),
-  ...Object.entries(SHIP_DOSSIERS).flatMap(([id, dossier]) => {
-    const owner = filed(id)
-
-    return [
-      frozen(owner, 'builder', dossier.builder),
-      frozen(owner, 'log', dossier.log),
-      ...dated(owner, 'fate', dossier.fate),
-    ]
+  ...DOSSIERS.flatMap((dossiers) => {
+    return Object.entries(dossiers).flatMap(([id, dossier]) =>
+      textsOf(filed(id), dossier),
+    )
   }),
 ]
 
@@ -192,9 +230,9 @@ function filedAfter({ chapter, episode, owner }: Text): readonly Entity[] {
   })
 }
 
-/** Every later record one text names in one locale, as one line each. */
-function leaksIn(text: Text, locale: Locale): readonly string[] {
-  const { episode, label } = text
+/** The records a text names in one locale that it should not. */
+function leaked(text: Text, locale: Locale, facts: boolean): readonly Entity[] {
+  const { episode } = text
   // Reduced to words once, not once per record it is scanned for.
   const words = asWords(shownWords(text.text[locale], locale))
 
@@ -203,12 +241,26 @@ function leaksIn(text: Text, locale: Locale): readonly string[] {
   const tokens = new Set(words.split(' '))
 
   return filedAfter(text)
-    .filter((other) => other.commonWord !== true)
-    .filter((other) => episode < (other.nameSaidAt ?? Infinity))
+    .filter((other) => !facts || other.commonWord !== true)
+    .filter((other) => !facts || episode < (other.nameSaidAt ?? Infinity))
     .filter((other) => tokens.has(firstWord(other, locale)))
     .filter((other) => words.includes(nameWords(other, locale)))
     .filter((other) => !sharesAReachedName(other, episode, locale))
-    .map((other) => `${label} (${locale}) names ${other.id}`)
+}
+
+/**
+ * Every record every text names too early, as `label (locale) names id`
+ * lines, with the name facts on the records honoured or, for the test that
+ * checks the facts themselves, ignored.
+ */
+function leaks(facts: boolean): readonly string[] {
+  return TEXTS.flatMap((text) => {
+    return LOCALES.flatMap((locale) => {
+      return leaked(text, locale, facts).map(
+        (other) => `${text.label} (${locale}) names ${other.id}`,
+      )
+    })
+  })
 }
 
 describe('the texts', () => {
@@ -238,14 +290,7 @@ describe('the texts', () => {
   it('name no record the reader has not reached, linked or not', () => {
     // Gathered first and asserted once, so a failure lists every leak in
     // the batch rather than the first one found.
-    const leaks: string[] = []
-    for (const text of TEXTS) {
-      for (const locale of LOCALES) {
-        leaks.push(...leaksIn(text, locale))
-      }
-    }
-
-    expect(leaks).toStrictEqual([])
+    expect(leaks(true)).toStrictEqual([])
   }, 15_000)
 })
 
@@ -265,4 +310,23 @@ describe('the name facts', () => {
       expect(saidAt, entity.id).toBeLessThan(entity.revealedAtEpisode)
     }
   })
+
+  it('are each the reason some text passes', () => {
+    // A fact nobody needs is a scan switched off for nothing: with the
+    // facts ignored, every record that carries one must be named too early
+    // by at least one text. One that is not has outlived its reason, and
+    // comes off the record.
+    const flagged = new Set(
+      leaks(false).map((line) => line.slice(line.lastIndexOf(' ') + 1)),
+    )
+    const unneeded = entities
+      .filter(
+        (entity) =>
+          entity.commonWord === true || entity.nameSaidAt !== undefined,
+      )
+      .filter((entity) => !flagged.has(entity.id))
+      .map((entity) => entity.id)
+
+    expect(unneeded).toStrictEqual([])
+  }, 15_000)
 })
