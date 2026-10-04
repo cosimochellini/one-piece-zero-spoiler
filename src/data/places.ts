@@ -77,12 +77,21 @@ export type ShipDossier = {
    */
   readonly fate: Timeline<LocalizedText>
   /**
-   * The places she reaches, each listed only where she arrives at the
-   * place's own threshold: listed any later, the tile would tell a reader
-   * where she goes next. The page shows only those the reader has reached,
-   * because a covered tile's episode would say how long she lasts.
+   * The places she reaches, each with the episode and the chapter at which
+   * she is there or coming in, as checked against the wiki. A place opens
+   * no earlier than her arrival in either unit (a data test holds it):
+   * opened sooner, the tile would tell a reader where she goes next. The
+   * page shows only those the reader has reached, because a covered tile's
+   * episode would say how long she lasts.
    */
-  readonly ports?: readonly string[]
+  readonly ports?: readonly Arrival[]
+}
+
+/** A place a ship reaches, and when she is first there or coming in. */
+export type Arrival = {
+  readonly chapter: number
+  readonly episode: number
+  readonly place: string
 }
 
 export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
@@ -927,22 +936,30 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
         value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
       },
     ],
-    // Each checked against the wiki's episode and chapter summaries (PR
-    // #167): she is there, or arriving, at the episode and the chapter the
-    // place itself opens at. The
-    // places she misses (Amazon Lily to Marineford, Green Bit, Whole Cake
-    // Island, the rest of Wano, Elbaph) are left out on purpose.
+    // Checked against the wiki's episode and chapter summaries (PR #167).
+    // The places she misses (Amazon Lily to Marineford, Green Bit, Whole
+    // Cake Island, the rest of Wano, Elbaph) are left out on purpose.
     ports: [
-      'florian-triangle', // 337: she drifts into the fog
-      'thriller-bark', // 343: she is already caught in its web
-      'sabaody-archipelago', // 390: she moors at Grove 41
-      'fish-man-island', // 526: she reaches its entrance with the crew
-      'punk-hazard', // 579: she anchors off the island
-      'dressrosa', // 629: sighted from her deck, docked at 630
-      'zou', // 752: moored at Zunesha's leg when Luffy's group arrives
-      'cacao-island', // 786: she is docked there with the crew ashore
-      'kuri', // 893: she washes up on the beach with Luffy
-      'egghead-island', // 1089: she enters its waters, lifted ashore at 1090
+      // She drifts into the fog.
+      { place: 'florian-triangle', episode: 337, chapter: 442 },
+      // She is pulled in through its gate.
+      { place: 'thriller-bark', episode: 338, chapter: 443 },
+      // She moors at Grove 41.
+      { place: 'sabaody-archipelago', episode: 390, chapter: 496 },
+      // She reaches its entrance with the crew.
+      { place: 'fish-man-island', episode: 526, chapter: 607 },
+      // She anchors off the island.
+      { place: 'punk-hazard', episode: 579, chapter: 655 },
+      // Sighted from her deck, docked at 630.
+      { place: 'dressrosa', episode: 629, chapter: 700 },
+      // Moored at Zunesha's leg when Luffy's group arrives.
+      { place: 'zou', episode: 752, chapter: 803 },
+      // She docks with the crew going ashore.
+      { place: 'cacao-island', episode: 785, chapter: 827 },
+      // She washes up on the beach with Luffy.
+      { place: 'kuri', episode: 892, chapter: 911 },
+      // She enters its waters, and is lifted ashore at 1090.
+      { place: 'egghead-island', episode: 1089, chapter: 1061 },
     ],
   },
 }

@@ -326,8 +326,8 @@ function shipOf({
       launched: getEntity(dossier.launched)?.name[locale] ?? null,
       log: dossier.log[locale],
       ...(fate !== undefined && { fate }),
-      ports: (dossier.ports ?? []).flatMap((id) => {
-        const place = getEntity(id)
+      ports: (dossier.ports ?? []).flatMap((arrival) => {
+        const place = getEntity(arrival.place)
         return place !== undefined && isRevealed(place, bookmark) ?
             [recordOf(place, locale, bookmark)]
           : []

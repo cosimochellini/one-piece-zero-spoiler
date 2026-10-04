@@ -100,6 +100,12 @@ function filed(id: string): Entity {
   return entity
 }
 
+/** Every place a ship reaches, beside the ship that reaches it. */
+const ARRIVALS = ships.flatMap((ship) => {
+  const ports = shipDossierOf(ship)?.ports ?? []
+  return ports.map((arrival) => ({ arrival, ship }))
+})
+
 describe('the ships', () => {
   it('gives every ship a dossier in every locale, and nothing else one', () => {
     expect(ships.map((ship) => ship.id)).toStrictEqual([
@@ -159,7 +165,9 @@ describe('the ships', () => {
 
   it('lists the places she reaches after her own threshold, in order', () => {
     for (const ship of ships) {
-      const ports = (shipDossierOf(ship)?.ports ?? []).map((id) => filed(id))
+      const ports = (shipDossierOf(ship)?.ports ?? []).map((arrival) =>
+        filed(arrival.place),
+      )
       const thresholds = ports.map((port) => port.revealedAtEpisode)
 
       const distinct = new Set(ports)
@@ -176,6 +184,26 @@ describe('the ships', () => {
           ship.revealedAtChapter,
         )
       }
+    }
+  })
+
+  it('opens each place she reaches no sooner than she arrives there', () => {
+    // A place that opened before her arrival would put the tile in front of
+    // a reader who has not seen her go there, in either unit.
+    expect(ARRIVALS.length).toBeGreaterThan(0)
+
+    for (const { arrival, ship } of ARRIVALS) {
+      const place = filed(arrival.place)
+
+      expect(arrival.episode, arrival.place).toBeGreaterThanOrEqual(
+        ship.revealedAtEpisode,
+      )
+      expect(place.revealedAtEpisode, arrival.place).toBeGreaterThanOrEqual(
+        arrival.episode,
+      )
+      expect(place.revealedAtChapter, arrival.place).toBeGreaterThanOrEqual(
+        arrival.chapter,
+      )
     }
   })
 
