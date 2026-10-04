@@ -31,7 +31,8 @@ export const dressrosa: Saga = {
       id: 'koala',
       kind: 'character',
       revealedAtEpisode: 541,
-      revealedAtChapter: 622,
+      revealedAtChapter: 626,
+      // Rounded up to 626, the chapter that files Fisher Tiger, whom the text names.
       name: { it: 'Koala', en: 'Koala' },
       summary: {
         it: 'Una bambina liberata dalla schiavitù dai Pirati del Sole, che gli uomini-pesce riportano al suo villaggio con il marchio ancora impresso sulla schiena.',
@@ -380,6 +381,8 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 633,
       revealedAtChapter: 709,
+      // "Diamante" is Italian for diamond, which is Jozu’s epithet from 461.
+      commonWord: true,
       name: { it: 'Diamante', en: 'Diamante' },
       summary: {
         it: 'L’organizzatore del torneo del colosseo, un uomo in piume e cappello che rende molle il proprio corpo e la spada un drappo.',

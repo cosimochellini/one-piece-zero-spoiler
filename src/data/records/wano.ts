@@ -147,6 +147,8 @@ export const wano: Saga = {
       kind: 'character',
       revealedAtEpisode: 930,
       revealedAtChapter: 935,
+      // "Queen" is a title: Otohime and Sora are queens long before the All-Star is met.
+      commonWord: true,
       name: { it: 'Queen', en: 'Queen' },
       summary: {
         it: 'L’All-Star dei Pirati delle Cento Bestie che comanda il campo di prigionia di Udon, un omone con un braccio meccanico che sale su un palco a cantare e ballare per le sue guardie.',
@@ -159,6 +161,8 @@ export const wano: Saga = {
       kind: 'character',
       revealedAtEpisode: 923,
       revealedAtChapter: 935,
+      // "King" is in "King of the Pirates" from episode 1, so plain text is never scanned for it.
+      commonWord: true,
       name: { it: 'King', en: 'King' },
       summary: {
         it: 'Il braccio destro dell’Imperatore, un uomo mascherato che vola su ali di fuoco e piomba dal cielo come uno pteranodonte.',
@@ -447,6 +451,8 @@ export const wano: Saga = {
       kind: 'place',
       revealedAtEpisode: 909,
       revealedAtChapter: 919,
+      // Hitetsu names the Flower Capital as the one thriving place in Wano at 894.
+      nameSaidAt: 894,
       name: { it: 'Capitale dei Fiori', en: 'Flower Capital' },
       summary: {
         it: 'L’unica città di Wano che prospera ancora, dove vive lo shogun, con strade di botteghe e scuole in cui i bambini imparano a lodare il paese chiuso.',

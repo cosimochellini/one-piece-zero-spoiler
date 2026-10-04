@@ -1,8 +1,6 @@
-import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { entities, getEntity } from '~/data/entities'
-import { EPISODE_CEILING } from '~/lib/progress/episode'
 import type { Stroke } from '~/lib/view/records'
 
 import { DRAWINGS, REDRAWINGS } from '.'
@@ -115,21 +113,15 @@ describe('the redrawings', () => {
     }
   })
 
-  it('are filed in order, after the threshold, within the dial', () => {
+  it('are never filed at the threshold itself', () => {
+    // Strictly after: a redrawing at the threshold would be the first
+    // drawing, which belongs in `DRAWINGS`. The order and the dial are held
+    // with every other timeline in `chapters.test.ts`.
     for (const [id, timeline] of Object.entries(REDRAWINGS)) {
-      const episodes = timeline.map((entry) => entry.episode)
-      const distinct = new Set(episodes)
       const threshold = getEntity(id)?.revealedAtEpisode ?? Infinity
 
-      // Sorted and all distinct is the same statement as strictly ascending.
-      expect(episodes, id).toStrictEqual(episodes.toSorted(byNumber()))
-      expect(distinct.size, id).toBe(episodes.length)
-
-      for (const episode of episodes) {
-        // Strictly after: a redrawing at the threshold would be the first
-        // drawing, which belongs in `DRAWINGS`.
-        expect(episode, id).toBeGreaterThan(threshold)
-        expect(episode, id).toBeLessThanOrEqual(EPISODE_CEILING)
+      for (const entry of timeline) {
+        expect(entry.episode, id).toBeGreaterThan(threshold)
       }
     }
   })

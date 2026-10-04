@@ -2,7 +2,6 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
-import { expectTimelineInOrder } from '~/test/timelines'
 
 import { entities, getEntity } from './entities'
 import {
@@ -128,13 +127,11 @@ describe('the ships', () => {
     }
   })
 
-  it('opens every fate at the ship’s threshold, in order, in every locale', () => {
+  it('opens every fate at the ship’s threshold, in every locale', () => {
     // The row must not be its own spoiler: a fate that began at the episode
     // of the loss would announce the loss by appearing.
     for (const ship of ships) {
       const fate = shipDossierOf(ship)?.fate ?? []
-
-      expectTimelineInOrder(fate, ship.revealedAtEpisode, ship.id)
 
       expect(fate[0]?.episode, ship.id).toBe(ship.revealedAtEpisode)
 

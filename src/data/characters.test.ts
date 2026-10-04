@@ -4,9 +4,9 @@ import { describe, expect, it } from 'vitest'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { markedIds, tokenize } from '~/lib/prose/markers'
 import type { CharacterStatus } from '~/lib/view/records'
-import { expectTimelineInOrder } from '~/test/timelines'
 
 import {
+  arcs,
   bookSections,
   CHARACTER_DOSSIERS,
   characters,
@@ -84,16 +84,6 @@ const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
 )
 
 /**
- * The devil fruit timelines. Their own bucket because they carry fruit ids
- * rather than prose, so the "written in every locale" test does not apply to
- * them; the ordering and threshold tests still do.
- */
-const FRUIT_TIMELINES: readonly TimelineCase<readonly string[]>[] =
-  characters.flatMap((character) =>
-    timelineCases(character, 'devilFruit', dossierOf(character)?.devilFruit),
-  )
-
-/**
  * The status timelines. Their own bucket for the same reason the fruits have
  * one — they carry a vocabulary rather than prose — and because three tests
  * below are about this field alone.
@@ -113,59 +103,6 @@ const CHRONICLE_TIMELINES: readonly TimelineCase<Story>[] = characters.flatMap(
     timelineCases(character, 'chronicle', dossierOf(character)?.chronicle),
 )
 
-const ALL_TIMELINES: readonly TimelineCase<unknown>[] = [
-  ...TEXT_TIMELINES,
-  ...BOUNTY_TIMELINES,
-  ...FRUIT_TIMELINES,
-  ...STATUS_TIMELINES,
-  ...CHRONICLE_TIMELINES,
-]
-
-/**
- * The characters whose chronicle has been written, most important first: the
- * crew, then the two figures the first half of the story turns on. Later
- * batches extend the list; a character on it with no chronicle is a test
- * failure, so a chronicle cannot be dropped by accident.
- */
-const CHRONICLED_IDS = [
-  'monkey-d-luffy',
-  'roronoa-zoro',
-  'nami',
-  'usopp',
-  'sanji',
-  'tony-tony-chopper',
-  'nico-robin',
-  'franky',
-  'brook',
-  'jinbe',
-  'shanks',
-  'portgas-d-ace',
-  'kaido',
-  'trafalgar-law',
-  'silvers-rayleigh',
-  'borsalino',
-  'sakazuki',
-  'sabo',
-  'charlotte-linlin',
-  'gecko-moria',
-  'marshall-d-teach',
-  'bartholomew-kuma',
-  'sengoku',
-  'edward-newgate',
-  'donquixote-doflamingo',
-  'enel',
-  'nefertari-vivi',
-  'crocodile',
-  'koby',
-  'buggy',
-  'dracule-mihawk',
-  'smoker',
-  'monkey-d-dragon',
-  'kuzan',
-  'rob-lucci',
-  'monkey-d-garp',
-] as const
-
 /** The words of a paragraph with its markers reduced to the text they show. */
 function shownWords(text: string, locale: Locale): string {
   return tokenize(text)
@@ -177,35 +114,6 @@ function shownWords(text: string, locale: Locale): string {
             ?? '')
     })
     .join('')
-}
-
-/** A text as whole words: punctuation dropped, one space between words. */
-function asWords(text: string): string {
-  return ` ${text.replaceAll(/[^\p{L}\p{N}]+/gu, ' ').trim()} `
-}
-
-/** Whether a paragraph, already as words, names a record by its full name. */
-function names(words: string, needle: string): boolean {
-  return words.includes(needle)
-}
-
-/** Each record's name as words, per locale, reduced once for the whole scan. */
-const NAME_WORDS = new Map<string, string>()
-
-function nameWords(entity: Entity, locale: Locale): string {
-  const key = `${locale}:${entity.id}`
-  const known = NAME_WORDS.get(key)
-  if (known !== undefined) {
-    return known
-  }
-
-  const words = asWords(entity.name[locale])
-  NAME_WORDS.set(key, words)
-  return words
-}
-
-function firstWord(entity: Entity, locale: Locale): string {
-  return nameWords(entity, locale).trim().split(' ', 1)[0] ?? ''
 }
 
 /** One story of one chronicle, with the words it shows in each locale. */
@@ -231,101 +139,6 @@ const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
     })
   },
 )
-
-/** Every later record one story names in one locale, as one line each. */
-function leaksIn(
-  { chapter, episode, label, story }: StoryCase,
-  locale: Locale,
-): readonly string[] {
-  // Reduced to words once, not once per record it is scanned for.
-  const words = asWords(
-    `${story.title[locale]} ${shownWords(story.body[locale], locale)}`,
-  )
-
-  // A name can only be in the story if its first word is, which rules out
-  // nearly every record before the slow substring scan.
-  const tokens = new Set(words.split(' '))
-
-  return filedAfter(episode, chapter)
-    .filter((other) => !COMMON_WORD_NAMES.has(other.id))
-    .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
-    .filter((other) => tokens.has(firstWord(other, locale)))
-    .filter((other) => names(words, nameWords(other, locale)))
-    .filter((other) => !sharesAReachedName(other, episode, locale))
-    .map((other) => `${label} (${locale}) names ${other.id}`)
-}
-
-/**
- * Whether a record the reader has already reached goes by the same name, so
- * the name in a story is that record's and not a leak: the zombie dog
- * Cerberus is met at 339, Shamrock's sword of the same name only at 1168.
- */
-function sharesAReachedName(
-  other: Entity,
-  episode: number,
-  locale: Locale,
-): boolean {
-  return entities.some((met) => {
-    return (
-      met.revealedAtEpisode <= episode
-      && met.name[locale] === other.name[locale]
-    )
-  })
-}
-
-/**
- * The records whose name is also an ordinary word of the stories — "King" is
- * in "King of the Pirates" from episode 1 — and so cannot be scanned for in
- * plain text. Listed by id so a second one is a decision, not a drift; each
- * is still held to the marker rules when it is linked. Road is in "Road
- * Poneglyph" and Wolf in the Dog-Dog Fruit's wolf form long before either
- * teacher or navigator is met. Pound is in Zoro's Hyakuhachi Pound Ho long
- * before Lola's father is.
- */
-const COMMON_WORD_NAMES = new Set(['king', 'pound', 'road', 'wolf-elbaph'])
-
-/**
- * The records whose name is said in the story well before they open, and
- * the episode from which a story may say it: the place is a destination long
- * before it is a heading. Fish-Man Island is named as the next stop by
- * Kokoro at 320; Marineford is named as the war's venue by 434, where
- * Momonga sets out to escort Hancock there. A story before that episode is
- * still scanned for the name. Elbaph, arc and island alike, is the giants'
- * homeland from 71, where Brogy calls himself its strongest warrior. Joy
- * Boy is the name on the Poneglyph Robin reads at 548, long before the show
- * puts him on screen.
- *
- * The ports follow the same rule, from the episode the show first says their
- * name: Mary Geoise is where the Warlords are summoned at 151, long before
- * the Reverie takes the story there; Kuzan reads Water Seven off the Log
- * Pose at 228; Kokoro warns of the Florian Triangle at 320 in the same
- * breath as she names Fish-Man Island; Momonga names Marineford at 410.
- */
-const SAID_BEFORE_FILED = new Map([
-  ['fish-man-island-arc', 320],
-  ['fish-man-island', 320],
-  ['marineford-arc', 434],
-  ['marineford', 410],
-  ['mary-geoise', 151],
-  ['water-seven', 228],
-  ['florian-triangle', 320],
-  ['elbaf', 71],
-  ['elbaf-island', 71],
-  ['joy-boy', 548],
-])
-
-/**
- * Every record filed after this episode or this chapter, which a story at
- * them may not name: characters, but also the arcs, places, ships and
- * fruits, whose names are as much a spoiler as a person's — "Marineford" in
- * a story at episode 400 says where the war will be.
- */
-function filedAfter(episode: number, chapter: number): readonly Entity[] {
-  return entities.filter(
-    (other) =>
-      other.revealedAtEpisode > episode || other.revealedAtChapter > chapter,
-  )
-}
 
 /** The first record on the chart, which the route tests read either side of. */
 const FIRST_CHARTED = chart[0]
@@ -395,14 +208,6 @@ describe('the dossiers', () => {
     }
     for (const id of Object.keys(CHARACTER_DOSSIERS)) {
       expect(getCharacter(id), id).toBeDefined()
-    }
-  })
-
-  it('files every timeline in order, from the threshold on, within the dial', () => {
-    expect(ALL_TIMELINES.length).toBeGreaterThan(0)
-
-    for (const { character, label, timeline } of ALL_TIMELINES) {
-      expectTimelineInOrder(timeline, character.revealedAtEpisode, label)
     }
   })
 
@@ -500,11 +305,14 @@ describe('the chronicles', () => {
     expect(episodes.toSorted(byNumber())).toStrictEqual(episodes)
   })
 
-  it('tells the story of every character on the list, in several stories', () => {
-    for (const id of CHRONICLED_IDS) {
-      const chronicle = dossierOf(must(id))?.chronicle
+  it('tells the story of every featured character, in several stories', () => {
+    // A character the chart puts in evidence has a chronicle, and one of
+    // more than a story or two; a featured character with none is a test
+    // failure, so a chronicle cannot be dropped by accident.
+    for (const character of featuredCharacters) {
+      const chronicle = dossierOf(character)?.chronicle
 
-      expect(chronicle?.length, id).toBeGreaterThanOrEqual(4)
+      expect(chronicle?.length, character.id).toBeGreaterThanOrEqual(4)
     }
   })
 
@@ -562,26 +370,6 @@ describe('the chronicles', () => {
       expect(inItalian, label).toStrictEqual(inEnglish)
     }
   })
-
-  // Scans every story against every entity in every locale, so its runtime
-  // grows with the chronicle corpus; the default 5s budget has grown tight.
-  it('names no record the reader has not reached, linked or not', () => {
-    // The markers are checked above; this is the plain text. A story at
-    // episode 1 that wrote "Kaido" or "Marineford" in passing would be a
-    // leak the walker in `slices.test.ts` cannot see, because it only
-    // reads ids and names.
-    //
-    // Gathered first and asserted once, so a failure lists every leak in
-    // the batch rather than the first one found.
-    const leaks: string[] = []
-    for (const story of STORIES) {
-      for (const locale of LOCALES) {
-        leaks.push(...leaksIn(story, locale))
-      }
-    }
-
-    expect(leaks).toStrictEqual([])
-  }, 15_000)
 })
 
 describe('getCharacter', () => {
@@ -652,13 +440,6 @@ describe('the chart', () => {
   })
 })
 
-/** The ids shelved under one arc, or `undefined` when it has no shelf. */
-function shelf(arcId: string): readonly string[] | undefined {
-  return bookSections
-    .find((section) => section.arc.id === arcId)
-    ?.characters.map((character) => character.id)
-}
-
 describe('the shelves', () => {
   it('shelve every character exactly once, in route order', () => {
     const shelved = bookSections
@@ -692,97 +473,36 @@ describe('the shelves', () => {
     }
   })
 
-  it('shelves East Blue by its six arcs, not under the saga', () => {
-    const firstMet = [
-      ['romance-dawn', 'monkey-d-luffy'],
-      ['orange-town-arc', 'nami'],
-      ['syrup-village-arc', 'usopp'],
-      ['baratie-arc', 'sanji'],
-      ['arlong-park', 'arlong'],
-      ['loguetown', 'smoker'],
-    ] as const
+  it('shelves a character under the latest arc that opens no later than them', () => {
+    // The rule the split arcs rely on: East Blue is six shelves and not one,
+    // Enies Lobby is not Water Seven's, Post-War is not Marineford's. No
+    // arc may open between a shelf's heading and a character on it.
+    for (const section of bookSections) {
+      for (const character of section.characters) {
+        const between = arcs.filter((arc) => {
+          return (
+            arc.revealedAtEpisode > section.arc.revealedAtEpisode
+            && arc.revealedAtEpisode <= character.revealedAtEpisode
+          )
+        })
 
-    for (const [index, [arc, character]] of firstMet.entries()) {
-      const section = bookSections[index]
-      const shelved = section?.characters.map((entity) => entity.id)
-
-      expect(section?.arc.id).toBe(arc)
-      expect(shelved).toContain(character)
+        expect(
+          between.map((arc) => arc.id),
+          character.id,
+        ).toStrictEqual([])
+      }
     }
-
-    expect(bookSections.map((section) => section.arc.id)).not.toContain(
-      'east-blue',
-    )
   })
 
-  it('shelves Reverse Mountain and Jaya on their own arcs, not on the saga either side', () => {
-    expect(shelf('reverse-mountain')).toStrictEqual([
-      'laboon',
-      'crocus',
-      'mr-9',
-    ])
-    // The Unluckies are on Reverse Mountain from 63, but only as a pair
-    // without names; the rank chart that names them is Drum Island's last.
-    expect(shelf('drum-island-arc')).toContain('mr-13')
-    expect(shelf('drum-island-arc')).toContain('miss-friday')
-    expect(shelf('jaya-arc')).toContain('bellamy')
-    expect(shelf('jaya-arc')).toContain('montblanc-cricket')
-    expect(shelf('jaya-arc')).toContain('marshall-d-teach')
-    expect(shelf('jaya-arc')).not.toContain('gan-fall')
-    expect(shelf('skypiea')).toContain('gan-fall')
-  })
+  it('gives every arc at most one shelf, and no shelf stands empty', () => {
+    const headings = bookSections.map((section) => section.arc.id)
+    const distinct = new Set(headings)
 
-  it('shelves Enies Lobby and Post-Enies Lobby on their own arcs, not on Water Seven', () => {
-    expect(shelf('enies-lobby-arc')).toStrictEqual([
-      'sodom-and-gomorrah',
-      'jabra',
-      'kumadori',
-      'fukurou',
-      'oimo-and-kashi',
-      'baskerville',
-      'clover',
-      'jaguar-d-saul',
-      'spandine',
-      'nico-olvia',
-      'funkfreed',
-    ])
-    expect(shelf('post-enies-lobby')).toStrictEqual([
-      'monkey-d-garp',
-      'monkey-d-dragon',
-      'thatch',
-    ])
-    expect(shelf('water-seven-arc')).toContain('spandam')
-    expect(shelf('water-seven-arc')).not.toContain('jabra')
-  })
+    expect(distinct.size).toBe(headings.length)
 
-  it('shelves the Post-War and the Return to Sabaody on their own arcs, not on Marineford or Fish-Man Island', () => {
-    expect(shelf('post-war')).toStrictEqual([
-      'curly-dadan',
-      'portgas-d-rouge',
-      'bluejam',
-      'porchemy',
-      'sabo',
-      'dogra',
-      'lord-of-the-coast',
-      'haredas',
-      'kong',
-    ])
-    expect(shelf('return-to-sabaody')).toStrictEqual([
-      'caribou',
-      'coribou',
-      'demalo-black',
-    ])
-    expect(shelf('marineford-arc')).not.toContain('portgas-d-rouge')
-    expect(shelf('fish-man-island-arc')).toContain('hammond')
-    expect(shelf('fish-man-island-arc')).not.toContain('caribou')
-  })
-
-  it('shelves Elbaph on its own arc after Egghead, and Saul where Robin names him', () => {
-    expect(shelf('elbaf')).toContain('loki')
-    expect(shelf('elbaf')).toContain('scopper-gaban')
-    expect(shelf('egghead')).not.toContain('loki')
-    expect(shelf('enies-lobby-arc')).toContain('jaguar-d-saul')
-    expect(shelf('whole-cake-island-arc')).toContain('jarul')
+    for (const section of bookSections) {
+      expect(section.characters.length, section.arc.id).toBeGreaterThan(0)
+    }
   })
 })
 

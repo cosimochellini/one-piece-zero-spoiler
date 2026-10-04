@@ -202,21 +202,23 @@ checked on every run:
 - ids are unique, thresholds are within the allowed range, and every record is
   translated in both locales;
 - each record has its own drawing, never one borrowed from another record;
-- every character timeline is in ascending order and starts no earlier than the
-  record's own threshold, so a fact can never come before the character it
-  belongs to;
-- a chronicle story names only characters that appear no later than the story's
-  own episode. Both the links the server builds from `[[id]]` markers and the
-  plain text around them are checked against every later record's name, in both
-  locales, so a story the reader has reached never introduces someone they have
-  not met;
+- every timeline, a character's, a ship's or a redrawing's, is in ascending
+  order and starts no earlier than the record's own threshold, so a fact can
+  never come before the record it belongs to;
+- no text names a record the reader has not reached. The links a chronicle
+  builds from `[[id]]` markers are checked against the story's episode, and
+  every text the archive prints, summaries, roles, logs, affiliations, origins,
+  epithets, stories and ship fates, is scanned for every later record's full
+  name in both locales. A name the show says before its record opens, or one
+  that is an ordinary word, is declared on the record itself rather than excused
+  in a test;
 - every place belongs to an arc that opens no later than the place itself,
   because the place page shows that arc;
 - every drawing belongs to a record;
 - every devil fruit opens no later than any character entry that names it, which
-  lets a character page link to its fruit without checking anything. The
-  eighteen fruits whose chapter threshold rounds the wrong way are pinned in a
-  list, so a nineteenth has to be added on purpose.
+  lets a character page link to its fruit without checking anything, and no
+  sooner either, in both units, so a fruit page never tells a reader what the
+  story has not.
 
 The self-referential one: the pull request title validator reads the release
 configuration and checks that both accept exactly the same commit types. If they

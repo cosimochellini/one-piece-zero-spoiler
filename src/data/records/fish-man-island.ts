@@ -39,6 +39,8 @@ export const fishManIsland: Saga = {
       kind: 'arc',
       revealedAtEpisode: 523,
       revealedAtChapter: 603,
+      // Sanji and Yosaku explain the island of the fish-men at 31, long before the crew reaches it.
+      nameSaidAt: 31,
       name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
       summary: {
         it: 'Diecimila metri sotto l’arcipelago, la rotta scende verso un’isola di uomini-pesce e sirene, ultima tappa prima del Nuovo Mondo.',
@@ -134,7 +136,8 @@ export const fishManIsland: Saga = {
       id: 'surume',
       kind: 'character',
       revealedAtEpisode: 526,
-      revealedAtChapter: 606,
+      revealedAtChapter: 615,
+      // Rounded up to 615, the chapter that files Vander Decken IX, whom the text names.
       name: { it: 'Seppy', en: 'Surume' },
       summary: {
         it: 'Un kraken così enorme che la Thousand Sunny gli sta in testa come un cappello, battuto da tre pirati all’imbocco della corrente e ora pronto a trascinarla ovunque Rufy indichi.',
@@ -146,7 +149,8 @@ export const fishManIsland: Saga = {
       id: 'wadatsumi',
       kind: 'character',
       revealedAtEpisode: 526,
-      revealedAtChapter: 606,
+      revealedAtChapter: 615,
+      // Rounded up to 615, the chapter that files Vander Decken IX, whom the text names.
       name: { it: 'Wadatsumi', en: 'Wadatsumi' },
       summary: {
         it: 'Un gigante grande quanto un kraken al servizio del capitano dell’Olandese Volante, che allontana a pugni una rana pescatrice da una nave che il capitano vuole depredare, finché un kraken addomesticato non lo stende.',
@@ -159,6 +163,8 @@ export const fishManIsland: Saga = {
       kind: 'place',
       revealedAtEpisode: 526,
       revealedAtChapter: 607,
+      // Sanji and Yosaku explain the island of the fish-men at 31, long before the crew reaches it.
+      nameSaidAt: 31,
       name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
       summary: {
         it: 'Un’isola a diecimila metri sotto il mare, in fondo a una fossa, chiusa in un’enorme bolla d’aria e illuminata da una luce che scende dall’alto.',
@@ -391,7 +397,8 @@ export const fishManIsland: Saga = {
       id: 'minister-of-the-left',
       kind: 'character',
       revealedAtEpisode: 544,
-      revealedAtChapter: 624,
+      revealedAtChapter: 626,
+      // Rounded up to 626, the chapter that files Otohime, whom the text names.
       name: { it: 'Ministro della Sinistra', en: 'Minister of the Left' },
       summary: {
         it: 'Un tritone pesce gatto basso e tondo, con monocolo, cilindro e bastone, che fa arrestare i Cappello di Paglia e che anni prima corse ad avvertire la regina ubriaca che tutto il regno la stava ascoltando.',
@@ -427,7 +434,8 @@ export const fishManIsland: Saga = {
       id: 'bobbin',
       kind: 'character',
       revealedAtEpisode: 571,
-      revealedAtChapter: 651,
+      revealedAtChapter: 653,
+      // Rounded up to 653, the chapter that files Pekoms, whom the text names.
       name: { it: 'Bobbin', en: 'Bobbin' },
       summary: {
         it: 'Un pirata basso e largo, con una maschera bianca, un gran sorriso e una spada più alta di lui, che torna da Big Mom dopo aver bruciato un paese che non le aveva sfornato i dolci promessi.',

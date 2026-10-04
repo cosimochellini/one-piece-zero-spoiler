@@ -30,6 +30,8 @@ export const thrillerBark: Saga = {
       kind: 'place',
       revealedAtEpisode: 337,
       revealedAtChapter: 442,
+      // Kokoro warns of the Florian Triangle at 320, in the same breath as Fish-Man Island.
+      nameSaidAt: 320,
       name: { it: 'Triangolo Florian', en: 'Florian Triangle' },
       summary: {
         it: 'Un tratto della Rotta Maggiore sotto una nebbia così fitta che il giorno sembra notte, dove ogni anno spariscono più di cento navi.',
@@ -221,7 +223,8 @@ export const thrillerBark: Saga = {
       id: 'john',
       kind: 'character',
       revealedAtEpisode: 345,
-      revealedAtChapter: 451,
+      revealedAtChapter: 455,
+      // Rounded up to 455, the chapter that files Absalom, whom the text names.
       name: { it: 'John', en: 'John' },
       summary: {
         it: 'Un capitano pirata famigerato in vita, rialzato dalla tomba come zombie con due spade ancora conficcate nella pancia, che si trascina dietro agli altri tra un singhiozzo e un sorso dalla bottiglia.',

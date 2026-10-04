@@ -439,7 +439,8 @@ export const wholeCake: Saga = {
       id: 'gerd',
       kind: 'character',
       revealedAtEpisode: 836,
-      revealedAtChapter: 866,
+      revealedAtChapter: 872,
+      // Rounded up to 872, the chapter that files Carmel, whom the text names.
       name: { it: 'Gerd', en: 'Gerd' },
       summary: {
         it: 'Una bambina gigante di Elbaf che, in un ricordo lontano, si fa rincorrere dalla piccola Linlin per il villaggio e le racconta del digiuno prima della festa.',
@@ -451,7 +452,8 @@ export const wholeCake: Saga = {
       id: 'jarul',
       kind: 'character',
       revealedAtEpisode: 836,
-      revealedAtChapter: 866,
+      revealedAtChapter: 872,
+      // Rounded up to 872, the chapter that files Carmel, whom the text names.
       name: { it: 'Jarul', en: 'Jarul' },
       summary: {
         it: 'Un gigante anziano con un elmo cornuto e una barba larga come una montagna, che in un ricordo lontano raduna gli orfani di Elbaf attorno a un banchetto di semla.',
@@ -692,6 +694,8 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 797,
       revealedAtChapter: 836,
+      // "Pound" is in Zoro’s Hyakuhachi Pound Ho long before Lola’s father is met.
+      commonWord: true,
       name: { it: 'Pound', en: 'Pound' },
       summary: {
         it: 'Un uomo sepolto fino al collo nella Foresta della Seduzione perché gli piace, che un tempo sposò l’Imperatore di Totto Land e ora vuole soltanto rivedere le sue figlie.',
@@ -824,6 +828,8 @@ export const wholeCake: Saga = {
       kind: 'place',
       revealedAtEpisode: 878,
       revealedAtChapter: 903,
+      // Where the Warlords are summoned at 151, long before the Reverie takes the story there.
+      nameSaidAt: 151,
       name: { it: 'Mary Geoise', en: 'Mary Geoise' },
       summary: {
         it: 'La Terra Santa costruita in cima alla Red Line, la città dei Nobili Mondiali, dove i re del mondo si riuniscono per la Reverie.',
@@ -892,7 +898,9 @@ export const wholeCake: Saga = {
         it: 'Accompagna gli sbarcati su per la zampa dell’elefante e dentro una città ancora piena di macerie, raccontando con calma quello che è successo mentre tiene la sciabola a portata di mano. È una guerriera dei Moschettieri del ducato e non si fida di nessuno finché non ha una ragione per farlo. Chiama i propri compagni per nome uno a uno, e sono moltissimi.',
         en: 'She takes the new arrivals up the elephant’s leg and into a city still full of rubble, telling them calmly what happened with a sabre always within reach. She is a warrior of the dukedom’s Musketeers and trusts nobody until she has a reason to. She names her companions one by one, and there are a great many of them.',
       },
-      affiliation: [{ episode: 752, value: MOKOMO_MUSKETEERS }],
+      // Dated at 756, where the duke is first named; she is met at 752 as a
+      // musketeer of a duke nobody has yet called by name.
+      affiliation: [{ episode: 756, value: MOKOMO_MUSKETEERS }],
       origin: [{ episode: 752, value: ZOU }],
     },
     'carrot': {
@@ -902,7 +910,8 @@ export const wholeCake: Saga = {
         en: 'She has long ears, a grin that will not sit still and a curiosity that gets her into every place she has been told to stay out of. Like every mink she can use electro, the charge her people store in their fur and let go in a single blow. Under the cheerfulness there is a warrior who watched her own city burn.',
       },
       affiliation: [
-        { episode: 753, value: MOKOMO_MUSKETEERS },
+        // Dated at 756, where the duke is first named.
+        { episode: 756, value: MOKOMO_MUSKETEERS },
         {
           episode: 1085,
           value: {

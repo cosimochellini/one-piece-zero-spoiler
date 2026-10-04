@@ -279,7 +279,8 @@ export const eastBlue: Saga = {
       id: 'nami',
       kind: 'character',
       revealedAtEpisode: 5,
-      revealedAtChapter: 8,
+      revealedAtChapter: 9,
+      // Rounded up to 9, the chapter that files Buggy, whom the text names.
       name: { it: 'Nami', en: 'Nami' },
       summary: {
         it: 'Una ladra che ruba solo ai pirati, appena scappata con la carta nautica di un capitano, e che sa leggere una mappa meglio di chiunque abbia mai incontrato.',
@@ -327,7 +328,8 @@ export const eastBlue: Saga = {
       id: 'richie',
       kind: 'character',
       revealedAtEpisode: 6,
-      revealedAtChapter: 13,
+      revealedAtChapter: 21,
+      // Rounded up to 21, the chapter that files Mohji, whom the text names.
       name: { it: 'Richi', en: 'Richie' },
       summary: {
         it: 'Il leone dei Pirati di Bagy, abbastanza grosso da portare in groppa il suo domatore per le vie di Orange Town e abbastanza forte da spaccare una gabbia di ferro con un balzo.',
@@ -462,7 +464,8 @@ export const eastBlue: Saga = {
       id: 'buchi',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 31,
+      revealedAtChapter: 41,
+      // Rounded up to 41, the chapter that files Jango, whom the text names.
       name: { it: 'Buchi', en: 'Buchi' },
       summary: {
         it: 'Un pirata del Gatto Nero enorme e pesante, l’altra metà dei fratelli Nyaban di guardia alla nave, che salta in aria e piomba sul nemico con tanta forza da spaccare il terreno.',
@@ -474,7 +477,8 @@ export const eastBlue: Saga = {
       id: 'sham',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 31,
+      revealedAtChapter: 41,
+      // Rounded up to 41, the chapter that files Jango, whom the text names.
       name: { it: 'Sham', en: 'Sham' },
       summary: {
         it: 'Un pirata magro e ingobbito, con le orecchie da gatto in testa e i guanti artigliati, uno dei due fratelli Nyaban di guardia alla nave del Gatto Nero, che fa il vigliacco per avvicinarsi.',
@@ -1224,7 +1228,9 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 4, value: SYRUP_VILLAGE }],
+      // The village is named at 9, when the crew sets course for it; the
+      // flashback at 4 says only that he left a son behind.
+      origin: [{ episode: 9, value: SYRUP_VILLAGE }],
     },
     'higuma': {
       role: { it: 'Capo dei banditi di montagna', en: 'Mountain bandit boss' },

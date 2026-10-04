@@ -88,6 +88,8 @@ export const summitWar: Saga = {
       kind: 'arc',
       revealedAtEpisode: 457,
       revealedAtChapter: 550,
+      // Momonga names Marineford at 410, long before the war takes the story there.
+      nameSaidAt: 410,
       name: { it: 'Marineford', en: 'Marineford' },
       summary: {
         it: 'La Marina e i pirati più forti del mondo si trovano nello stesso porto, nello stesso giorno.',
@@ -885,6 +887,8 @@ export const summitWar: Saga = {
       kind: 'place',
       revealedAtEpisode: 459,
       revealedAtChapter: 550,
+      // Momonga names Marineford at 410, long before the war takes the story there.
+      nameSaidAt: 410,
       name: { it: 'Marineford', en: 'Marineford' },
       summary: {
         it: 'L’isola del Quartier Generale della Marina, una baia a mezzaluna irta di cannoni, con alle spalle una città abitata dalle famiglie dei marine.',

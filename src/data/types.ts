@@ -70,6 +70,20 @@ export type Entity = {
    */
   readonly unanchored?: true
   readonly visual: Visual
+  /**
+   * The episode from which the show says this record's name before the
+   * record itself opens: Fish-Man Island is a destination at 320 and a
+   * heading at 526. Text dated at or after it may name the record in plain
+   * words; text before it may not. Below `revealedAtEpisode` by definition,
+   * which a data test holds, and read by the leak scan alone.
+   */
+  readonly nameSaidAt?: number
+  /**
+   * Set on a record whose name is an ordinary word of the prose — "King" is
+   * in "King of the Pirates" from episode 1 — so plain text is never scanned
+   * for it. A marker naming it is still held to the marker rules.
+   */
+  readonly commonWord?: true
 }
 
 /**
