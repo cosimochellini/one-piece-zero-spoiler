@@ -9,7 +9,7 @@ import type { Gated } from '~/lib/progress/spoiler'
 
 import { chapterAtEpisode, DATED, episodeAtChapter } from './chapters'
 import { eatersOf, fruits } from './fruits'
-import { gateOf, reveal } from './reveal'
+import { gateOf, ownedBy, reveal } from './reveal'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
@@ -170,6 +170,23 @@ describe('reveal, at the edges', () => {
     expect(reveal(ep(200)).latest(BOUNTY)).toBe(100_000_000)
     expect(reveal(ep(1200)).latest(BOUNTY)).toBe(300_000_000)
     expect(reveal(ep(500)).latest([])).toBeUndefined()
+  })
+})
+
+describe('reading a record’s own timeline', () => {
+  // Shiki-like: an entry the table opens long before its owner.
+  const owner = filedAt(1, 900)
+  const timeline = [{ episode: 3, value: 'early' }]
+
+  it('reaches nothing before the owner, and the entry with it', () => {
+    const before = reveal(ch(899))
+    const at = reveal(ch(900))
+
+    expect(before.reached(timeline, owner)).toStrictEqual([])
+    expect(before.latest(timeline, owner)).toBeUndefined()
+    expect(ownedBy(before, owner).latest(timeline)).toBeUndefined()
+    expect(at.latest(timeline, owner)).toBe('early')
+    expect(ownedBy(at, owner).reached(timeline)).toStrictEqual(timeline)
   })
 })
 

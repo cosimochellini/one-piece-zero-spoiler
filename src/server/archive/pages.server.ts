@@ -305,7 +305,7 @@ function shipOf({
   readonly entity: Entity
   readonly locale: Locale
 }): ShipView {
-  const fate = at.latest(dossier.fate)?.[locale]
+  const fate = at.latest(dossier.fate, entity)?.[locale]
 
   return {
     ...recordOf(entity, locale, at),

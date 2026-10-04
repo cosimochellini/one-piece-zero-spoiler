@@ -1,7 +1,7 @@
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { dossierOf, roleOf } from '~/data/characters'
 import { getFruit } from '~/data/fruits'
-import type { Reveal } from '~/data/reveal'
+import { ownedBy, type Reveal } from '~/data/reveal'
 import type {
   CharacterDossier,
   Entity,
@@ -44,7 +44,8 @@ import { handleOf } from './handle.server'
  */
 function drawingOf(entity: Entity, at: Reveal): Drawing {
   return {
-    strokes: at.latest(REDRAWINGS[entity.id]) ?? DRAWINGS[entity.visual.art],
+    strokes:
+      at.latest(REDRAWINGS[entity.id], entity) ?? DRAWINGS[entity.visual.art],
     tint: entity.visual.tint,
   }
 }
@@ -127,7 +128,7 @@ function otherNames(entity: Entity, locale: Locale): readonly string[] {
  */
 function reachedEpithets(entity: Entity, at: Reveal): readonly string[] {
   return at
-    .reached(dossierOf(entity)?.epithet)
+    .reached(dossierOf(entity)?.epithet, entity)
     .flatMap((entry) => LOCALES.map((other) => entry.value[other]))
 }
 
@@ -224,7 +225,7 @@ export function factsOf(
   locale: Locale,
   at: Reveal,
 ): CharacterFacts {
-  return factsFrom(dossierOf(entity), locale, at)
+  return factsFrom(dossierOf(entity), locale, ownedBy(at, entity))
 }
 
 /**
