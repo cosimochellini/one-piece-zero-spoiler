@@ -1,8 +1,8 @@
+import type { Reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { Translate, TranslationKey } from '~/i18n/types'
-import { type Bookmark, modeOf } from '~/lib/progress/episode'
 import {
   describeThreshold,
   type ThresholdSentence,
@@ -28,13 +28,13 @@ export type HeadKeys = {
 
 /** Under fog both lines are generic; open, they are the record's own. */
 export function headFor({
-  bookmark,
+  at,
   entity,
   keys,
   locale,
   revealed,
 }: {
-  readonly bookmark: Bookmark
+  readonly at: Reveal
   readonly entity: Entity
   readonly keys: HeadKeys
   readonly locale: Locale
@@ -48,7 +48,7 @@ export function headFor({
       title: t(keys.foggedTitle),
       description: describeThreshold({
         gated: entity,
-        mode: modeOf(bookmark),
+        mode: at.mode,
         sentence: keys.foggedDescription,
         t,
       }),

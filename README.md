@@ -57,7 +57,7 @@ never leave the server:
 ```mermaid
 flowchart LR
   A["Request + opzs_ep cookie"] --> B["Loader calls a server function"]
-  B --> C["isRevealed() per record, on the server"]
+  B --> C["reveal(bookmark).sees() per record, on the server"]
   C --> D["Revealed records, in the route's locale"]
   C --> E["Covered records: two thresholds and an opaque handle"]
   D --> F["HTML, and a payload with nothing else in it"]

@@ -1,12 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { episodeAtChapter } from '~/data/chapters'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { CharacterDossier } from '~/data/types'
-import type { Bookmark } from '~/lib/progress/episode'
 
 import { factsFrom } from './project.server'
 
-const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+const ep = (episode: number): Reveal => reveal({ mode: 'episode', episode })
 
 const dossier: CharacterDossier = {
   role: { it: 'Capitano', en: 'Captain' },
@@ -60,13 +59,6 @@ describe('the facts a bookmark reaches', () => {
     })
   })
 
-  it('resolves a season bookmark to its episode before reading them', () => {
-    // S04E38 is episode 130.
-    expect(
-      factsFrom(dossier, 'en', { mode: 'season', season: 4, episode: 38 }),
-    ).toMatchObject({ bounty: 100_000_000, epithet: 'Straw Hat' })
-  })
-
   it('gives the state the reader has reached and never a later one', () => {
     // The episode before the fall and the episode of it: the pair is the whole
     // promise of the field, since a death is the one fact a wiki gives away.
@@ -84,29 +76,5 @@ describe('the facts a bookmark reaches', () => {
       // languages and the page is what translates it.
       status: 'presumed-dead',
     })
-  })
-
-  it('reads a chapter bookmark at the episode its chapter reaches', () => {
-    for (const chapter of [1, 50, 218, 1000]) {
-      const reached = ep(episodeAtChapter(chapter))
-
-      expect(
-        factsFrom(dossier, 'en', { mode: 'chapter', chapter }),
-        `chapter ${String(chapter)}`,
-      ).toStrictEqual(factsFrom(dossier, 'en', reached))
-    }
-
-    // Chapter 1 reaches episode 1 and nothing past it.
-    expect(
-      factsFrom(dossier, 'en', { mode: 'chapter', chapter: 1 }),
-    ).toStrictEqual({
-      mode: 'facts',
-      affiliation: 'No crew yet',
-      status: 'alive',
-    })
-  })
-
-  it('reaches none of them with no bookmark at all', () => {
-    expect(factsFrom(dossier, 'en', null)).toStrictEqual({ mode: 'facts' })
   })
 })

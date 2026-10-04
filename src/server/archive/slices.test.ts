@@ -2,14 +2,14 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
+import { chapterAtEpisode } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import { shipDossierOf } from '~/data/places'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
-import { episodeOf, isRevealed } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterChronicle,
@@ -34,6 +34,7 @@ import { peekCharacter } from './peek.server'
 import { characterOf, searchableOf } from './project.server'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+const seenAt = (episode: number): Reveal => reveal(ep(episode))
 const handleSpace = new Set(
   entities.flatMap((entity) => {
     return [
@@ -130,16 +131,17 @@ function shelvedKeys(shelf: ShelfView): readonly string[] {
  */
 function saysNothing(payload: unknown, bookmark: Bookmark): void {
   const said = named(payload)
+  const at = reveal(bookmark)
   // A name a reached record also goes by is that record's, not a leak: the
   // zombie dog Cerberus is met at 339, Shamrock's sword of the name at 1168.
   const reachedNames = new Set(
     entities
-      .filter((entity) => isRevealed(entity, bookmark))
+      .filter((entity) => at.sees(entity))
       .flatMap((entity) => Object.values(entity.name)),
   )
 
   for (const entity of entities) {
-    if (isRevealed(entity, bookmark)) {
+    if (at.sees(entity)) {
       continue
     }
 
@@ -223,12 +225,12 @@ describe('the slice of the archive a page is given', () => {
 
     for (const bookmark of marks) {
       const home = homePage(bookmark, 'en')
-      const reached = episodeOf(timelineBookmark(bookmark)) ?? 0
+      const at = reveal(bookmark)
       const episodes = home.stories.map((story) => story.revealedAtEpisode)
 
       saysNothing(home, bookmark)
 
-      expect(isRevealed(home.saga, bookmark)).toBe(true)
+      expect(at.sees(home.saga)).toBe(true)
       expect(home.cast.length).toBeLessThanOrEqual(6)
       expect(episodes.toSorted(byNumber({ desc: true }))).toStrictEqual(
         episodes,
@@ -242,7 +244,9 @@ describe('the slice of the archive a page is given', () => {
           episodes.length > 0 && episodes.every((episode) => episode < start)
         : episodes.every((episode) => episode >= start)
 
-      expect(episodes.every((episode) => episode <= reached)).toBe(true)
+      expect(at.reached(episodes.map((episode) => ({ episode })))).toHaveLength(
+        episodes.length,
+      )
       expect(inside).toBe(true)
     }
   })
@@ -317,8 +321,8 @@ describe('the slice of the archive a page is given', () => {
     // "Whitebeard" finds Edward Newgate after episode 151 and not before, and
     // before it the word is not in the browser to be matched at all.
     const newgate = onFile('edward-newgate')
-    const early = searchableOf(newgate, 'en', ep(150))
-    const later = searchableOf(newgate, 'en', ep(500))
+    const early = searchableOf(newgate, 'en', seenAt(150))
+    const later = searchableOf(newgate, 'en', seenAt(500))
 
     expect(early.folded).toBe(foldName(newgate.name.en))
     expect(early.aliases).not.toContain('whitebeard')
@@ -328,17 +332,19 @@ describe('the slice of the archive a page is given', () => {
     const at = chapterAtEpisode(151)
 
     expect(
-      searchableOf(newgate, 'en', { mode: 'chapter', chapter: at - 1 }).aliases,
+      searchableOf(newgate, 'en', reveal({ mode: 'chapter', chapter: at - 1 }))
+        .aliases,
     ).not.toContain('whitebeard')
     expect(
-      searchableOf(newgate, 'en', { mode: 'chapter', chapter: at }).aliases,
+      searchableOf(newgate, 'en', reveal({ mode: 'chapter', chapter: at }))
+        .aliases,
     ).toContain('whitebeard')
   })
 
   it('carries the other locale’s name so a reader can search in either', () => {
     const luffy = onFile('monkey-d-luffy')
 
-    expect(searchableOf(luffy, 'en', ep(1)).aliases).toContain(
+    expect(searchableOf(luffy, 'en', seenAt(1)).aliases).toContain(
       foldName(luffy.name.it),
     )
   })
@@ -498,8 +504,8 @@ function drawnAtChapter(
   chapter: number,
   id = 'marshall-d-teach',
 ): readonly Stroke[] {
-  return characterOf(filed(id), 'en', { mode: 'chapter', chapter }).visual
-    .strokes
+  return characterOf(filed(id), 'en', reveal({ mode: 'chapter', chapter }))
+    .visual.strokes
 }
 
 describe('a record drawn again later in the story', () => {
@@ -510,17 +516,17 @@ describe('a record drawn again later in the story', () => {
   it('is drawn again only from the episode it is redrawn at', () => {
     expect(redrawn?.episode).toBe(421)
 
-    expect(characterOf(teach, 'en', ep(420)).visual.strokes).toBe(first)
-    expect(characterOf(teach, 'en', ep(421)).visual.strokes).toBe(
+    expect(characterOf(teach, 'en', seenAt(420)).visual.strokes).toBe(first)
+    expect(characterOf(teach, 'en', seenAt(421)).visual.strokes).toBe(
       redrawn?.value,
     )
-    expect(characterOf(teach, 'en', ep(1200)).visual.strokes).toBe(
+    expect(characterOf(teach, 'en', seenAt(1200)).visual.strokes).toBe(
       redrawn?.value,
     )
   })
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
-    expect(characterOf(teach, 'en', null).visual.strokes).toBe(first)
+    expect(characterOf(teach, 'en', reveal(null)).visual.strokes).toBe(first)
   })
 
   it('is drawn again for a chapter reader once the chapter reaches it', () => {
@@ -548,17 +554,21 @@ describe('a record drawn again later in the story', () => {
       expect(kabuto?.episode).toBe(274)
       expect(kuroKabuto?.episode).toBe(517)
 
-      expect(characterOf(usopp, 'en', ep(273)).visual.strokes).toBe(slingshot)
-      expect(characterOf(usopp, 'en', ep(274)).visual.strokes).toBe(
+      expect(characterOf(usopp, 'en', seenAt(273)).visual.strokes).toBe(
+        slingshot,
+      )
+      expect(characterOf(usopp, 'en', seenAt(274)).visual.strokes).toBe(
         kabuto?.value,
       )
-      expect(characterOf(usopp, 'en', ep(516)).visual.strokes).toBe(
+      expect(characterOf(usopp, 'en', seenAt(516)).visual.strokes).toBe(
         kabuto?.value,
       )
-      expect(characterOf(usopp, 'en', ep(517)).visual.strokes).toBe(
+      expect(characterOf(usopp, 'en', seenAt(517)).visual.strokes).toBe(
         kuroKabuto?.value,
       )
-      expect(characterOf(usopp, 'en', null).visual.strokes).toBe(slingshot)
+      expect(characterOf(usopp, 'en', reveal(null)).visual.strokes).toBe(
+        slingshot,
+      )
     })
 
     it('keeps Kabuto from a chapter reader until the manga draws it', () => {

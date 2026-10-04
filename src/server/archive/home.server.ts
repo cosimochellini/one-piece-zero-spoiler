@@ -1,6 +1,5 @@
 import { byNumber, byValue } from 'sort-es'
 
-import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import {
   arcs,
   bookSections,
@@ -9,10 +8,10 @@ import {
   stories,
 } from '~/data/characters'
 import { orderByMode } from '~/data/order'
+import { gateOf, type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { type Bookmark, FIRST_EPISODE, modeOf } from '~/lib/progress/episode'
-import { episodeOf, isRevealed } from '~/lib/progress/spoiler'
+import { type Bookmark, FIRST_EPISODE } from '~/lib/progress/episode'
 import { markedIds } from '~/lib/prose/markers'
 import type { CharacterView, HomeStory, HomeView } from '~/lib/view/records'
 
@@ -43,14 +42,13 @@ const CAST_COUNT = 6
  * data tests hold both), so nothing past the reader can come in with it.
  */
 export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
-  const at = bookmark ?? FIRST_VISIT
+  const at = reveal(bookmark ?? FIRST_VISIT)
   const [saga, previous] = reachedArcs(at)
 
-  // A chapter bookmark reaches the episode its chapter reaches, rounded down.
-  const readerEpisode = episodeOf(timelineBookmark(at)) ?? 0
   const since = (floor: number): readonly FiledStory[] => {
-    return stories
-      .filter((s) => s.episode >= floor && s.episode <= readerEpisode)
+    return at
+      .reached(stories)
+      .filter((s) => s.episode >= floor)
       .toReversed()
   }
 
@@ -71,8 +69,7 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
     saga: waypointOf(saga, locale, at),
     stories: shown.map(({ character, episode, story }): HomeStory => {
       return {
-        revealedAtEpisode: episode,
-        revealedAtChapter: chapterAtEpisode(episode),
+        ...gateOf(episode),
         title: story.title[locale],
         body: segmentsOf(story.body[locale], resolve),
         subject: { id: character.id, name: character.name[locale] },
@@ -90,10 +87,8 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
  * one before. A bookmark the cookie grammar admits always reaches the first
  * arc; the fallback is for the type, not for a case the route can show.
  */
-function reachedArcs(at: Bookmark): readonly [Entity, Entity | undefined] {
-  const reached = orderByMode(arcs, modeOf(at)).filter((arc) =>
-    isRevealed(arc, at),
-  )
+function reachedArcs(at: Reveal): readonly [Entity, Entity | undefined] {
+  const reached = orderByMode(arcs, at.mode).filter((arc) => at.sees(arc))
   const [saga = arcs[0], previous] = reached.toReversed()
   if (saga === undefined) {
     throw new Error('The archive files no arc')
@@ -109,7 +104,7 @@ function reachedArcs(at: Bookmark): readonly [Entity, Entity | undefined] {
  */
 function castOf(
   shown: readonly FiledStory[],
-  bookmark: Bookmark,
+  at: Reveal,
   locale: Locale,
 ): readonly CharacterView[] {
   const tally = new Map<string, number>()
@@ -124,21 +119,21 @@ function castOf(
     .slice(0, CAST_COUNT)
     .flatMap(([id]) => {
       const entity = getCharacter(id)
-      return entity === undefined ? [] : [characterOf(entity, locale, bookmark)]
+      return entity === undefined ? [] : [characterOf(entity, locale, at)]
     })
 }
 
 /** With no story to go on: the characters first met in this arc so far. */
 function newcomersOf(
   saga: Entity,
-  bookmark: Bookmark,
+  at: Reveal,
   locale: Locale,
 ): readonly CharacterView[] {
   const shelved =
     bookSections.find((section) => section.arc.id === saga.id)?.characters ?? []
 
-  return orderByMode(shelved, modeOf(bookmark))
-    .filter((character) => isRevealed(character, bookmark))
+  return orderByMode(shelved, at.mode)
+    .filter((character) => at.sees(character))
     .slice(0, CAST_COUNT)
-    .map((character) => characterOf(character, locale, bookmark))
+    .map((character) => characterOf(character, locale, at))
 }

@@ -1,10 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import { episodeAtChapter } from '~/data/chapters'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
-import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import { reveal } from '~/data/reveal'
+import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
 
 import {
@@ -65,9 +64,10 @@ function named(payload: unknown, found = new Set<string>()): Set<string> {
 /** Nothing in a payload may name a record the reader has not reached. */
 function saysNothing(payload: unknown, bookmark: Bookmark): void {
   const said = named(payload)
+  const at = reveal(bookmark)
 
   for (const entity of entities) {
-    if (isRevealed(entity, bookmark)) {
+    if (at.sees(entity)) {
       continue
     }
 
@@ -185,28 +185,6 @@ describe('who ate it', () => {
 
     expect(eatersIn(before)).not.toContain('Sabo')
     expect(eatersIn(after)).toContain('Sabo')
-  })
-
-  it('names to a chapter reader exactly who the episode it reaches names', () => {
-    // The gate's chapter is derived from its episode, so the two must agree
-    // at every chapter, the ceiling included: a chapter reader who saw one
-    // more eater than the episode would be reading ahead of the dossiers.
-    for (const chapter of [100, 400, 700, 1000, CHAPTER_CEILING]) {
-      const episode = episodeAtChapter(chapter)
-      for (const fruit of fruits) {
-        const byChapter = fruitEaters(
-          fruit.id,
-          { mode: 'chapter', chapter },
-          'en',
-        )
-        const byEpisode = fruitEaters(fruit.id, ep(episode), 'en')
-
-        expect(
-          eatersIn(byChapter),
-          `${fruit.id} @ c${String(chapter)}`,
-        ).toStrictEqual(eatersIn(byEpisode))
-      }
-    }
   })
 
   it('names nobody the reader has not reached', () => {

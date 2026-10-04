@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest'
 
 import { chapterAtEpisode } from '~/data/chapters'
 import { getCharacter } from '~/data/characters'
+import { reveal } from '~/data/reveal'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { searchableOf } from '~/server/archive/project.server'
@@ -39,7 +40,7 @@ function search({
   readonly query: string
 }): ReturnType<typeof matchFolded> {
   return matchFolded(
-    searchableOf(must(id), locale, bookmark),
+    searchableOf(must(id), locale, reveal(bookmark)),
     foldName(query.trim()),
   )
 }

@@ -1,10 +1,9 @@
 import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
-import { isRevealed } from '~/lib/progress/spoiler'
-
 import { entities } from './entities'
 import { orderByMode } from './order'
+import { reveal } from './reveal'
 
 describe('orderByMode', () => {
   it('sorts by episode for an episode or season reader', () => {
@@ -35,8 +34,9 @@ describe('orderByMode', () => {
     ] as const
 
     for (const bookmark of bookmarks) {
-      const flags = orderByMode(entities, bookmark.mode).map((entity) =>
-        isRevealed(entity, bookmark),
+      const at = reveal(bookmark)
+      const flags = orderByMode(entities, at.mode).map((entity) =>
+        at.sees(entity),
       )
       const firstCovered = flags.indexOf(false)
 

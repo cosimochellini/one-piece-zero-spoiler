@@ -1,4 +1,5 @@
 import { fruitFormOf } from '~/data/fruits'
+import { reveal } from '~/data/reveal'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
@@ -40,7 +41,7 @@ export function peekCharacter(
 ): CharacterView | undefined {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : (
-      characterOf(entity, locale, bookmark)
+      characterOf(entity, locale, reveal(bookmark))
     )
 }
 
@@ -56,7 +57,7 @@ export function peekDossier(
   }
 
   return {
-    ...characterOf(entity, locale, bookmark),
+    ...characterOf(entity, locale, reveal(bookmark)),
     summary: entity.summary[locale],
   }
 }
@@ -75,7 +76,7 @@ export function peekFruit(
 
   return entity === undefined || form === undefined ?
       undefined
-    : fruitOf({ bookmark, entity, form, locale })
+    : fruitOf({ at: reveal(bookmark), entity, form, locale })
 }
 
 /** Any record, as a small tile draws it. */
@@ -85,7 +86,9 @@ export function peekRecord(
   bookmark: Bookmark,
 ): RecordView | undefined {
   const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : recordOf(entity, locale, bookmark)
+  return entity === undefined ? undefined : (
+      recordOf(entity, locale, reveal(bookmark))
+    )
 }
 
 /**
@@ -98,5 +101,7 @@ export function peekPort(
   bookmark: Bookmark,
 ): PortView | undefined {
   const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : portOf(entity, bookmark, locale)
+  return entity === undefined ? undefined : (
+      portOf(entity, reveal(bookmark), locale)
+    )
 }

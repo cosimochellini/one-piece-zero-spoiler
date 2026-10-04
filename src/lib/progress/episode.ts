@@ -11,6 +11,7 @@ import {
   resolveEpisode,
   seasonLength,
 } from './seasons'
+import { type Gated, thresholdIn } from './spoiler'
 
 export {
   CHAPTER_CEILING,
@@ -185,27 +186,13 @@ export function bookmarkValue(bookmark: NonNullable<Bookmark>): string {
  * episode past the season table (which cannot happen while the table runs to
  * the ceiling) falls back to the bare number rather than to nothing.
  */
-export function thresholdValue(
-  gated: {
-    readonly revealedAtChapter: number
-    readonly revealedAtEpisode: number
-  },
-  mode: BookmarkMode,
-): string {
-  switch (mode) {
-    case 'chapter': {
-      return String(gated.revealedAtChapter)
-    }
-    case 'episode': {
-      return String(gated.revealedAtEpisode)
-    }
-    case 'season': {
-      const at = locateEpisode(gated.revealedAtEpisode)
-      return at === null ?
-          String(gated.revealedAtEpisode)
-        : formatSeasonCode(at.season, at.episode)
-    }
-  }
+export function thresholdValue(gated: Gated, mode: BookmarkMode): string {
+  const threshold = thresholdIn(gated, mode)
+  const at = mode === 'season' ? locateEpisode(threshold) : null
+
+  return at === null ?
+      String(threshold)
+    : formatSeasonCode(at.season, at.episode)
 }
 
 /** Pulls a number into `1 … ceiling`. */

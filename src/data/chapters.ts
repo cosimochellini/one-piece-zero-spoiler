@@ -1,4 +1,4 @@
-import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
+import { CHAPTER_CEILING } from '~/lib/progress/episode'
 
 import { entities } from './entities'
 
@@ -70,7 +70,7 @@ export function episodeAtChapter(chapter: number): number {
 
 /**
  * The first chapter that reaches this episode, or one past the ceiling when
- * none does — which `isRevealed` reads as never.
+ * none does — which `reveal` (`./reveal`) reads as never.
  */
 export function chapterAtEpisode(episode: number): number {
   const chapter = EPISODE_AT.findIndex(
@@ -78,17 +78,4 @@ export function chapterAtEpisode(episode: number): number {
   )
 
   return chapter === -1 ? CHAPTER_CEILING + 1 : chapter
-}
-
-/**
- * The bookmark the timelines are cut at: a chapter bookmark read as the
- * episode it reaches, any other bookmark as it is.
- */
-export function timelineBookmark(bookmark: Bookmark): Bookmark {
-  if (bookmark?.mode !== 'chapter') {
-    return bookmark
-  }
-
-  const episode = episodeAtChapter(bookmark.chapter)
-  return episode < 1 ? null : { mode: 'episode', episode }
 }

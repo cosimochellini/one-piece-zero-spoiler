@@ -1,6 +1,7 @@
 import { byNumber, byValues } from 'sort-es'
 
 import type { BookmarkMode } from '~/lib/progress/episode'
+import { thresholdIn } from '~/lib/progress/spoiler'
 
 import type { Entity } from './types'
 
@@ -18,20 +19,12 @@ export function orderByMode(
   entries: readonly Entity[],
   mode: BookmarkMode,
 ): readonly Entity[] {
+  const other = mode === 'chapter' ? 'episode' : 'chapter'
+
   return entries.toSorted(
     byValues([
-      [(entity) => thresholdsFor(mode, entity)[0], byNumber()],
-      [(entity) => thresholdsFor(mode, entity)[1], byNumber()],
+      [(entity) => thresholdIn(entity, mode), byNumber()],
+      [(entity) => thresholdIn(entity, other), byNumber()],
     ]),
   )
-}
-
-/** Both thresholds of one record, the mode's own one first. */
-function thresholdsFor(
-  mode: BookmarkMode,
-  entity: Entity,
-): readonly [number, number] {
-  return mode === 'chapter' ?
-      [entity.revealedAtChapter, entity.revealedAtEpisode]
-    : [entity.revealedAtEpisode, entity.revealedAtChapter]
 }

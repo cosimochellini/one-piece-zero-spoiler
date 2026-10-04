@@ -17,10 +17,10 @@ import {
   shipDossierOf,
   ships,
 } from '~/data/places'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { type Bookmark, modeOf } from '~/lib/progress/episode'
-import { isRevealed } from '~/lib/progress/spoiler'
+import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterDetail,
   CharacterView,
@@ -41,7 +41,6 @@ import {
   characterOf,
   coveredOf,
   factsOf,
-  knownAt,
   recordOf,
   searchableOf,
   slotOf,
@@ -78,16 +77,15 @@ export function charactersPage(
   bookmark: Bookmark,
   locale: Locale,
 ): CharactersPage {
-  const featured = orderByMode(featuredCharacters, modeOf(bookmark))
+  const at = reveal(bookmark)
+  const featured = orderByMode(featuredCharacters, at.mode)
 
   return {
-    featuredOpen: featured.flatMap((entity) => {
-      return isRevealed(entity, bookmark) ?
-          [searchableOf(entity, locale, bookmark)]
-        : []
-    }),
+    featuredOpen: featured.flatMap((entity) =>
+      at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
+    ),
     featuredCovered: featured.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
+      at.sees(entity) ? [] : [coveredOf(entity)],
     ),
     shelfCount: bookSections.length,
     filed: characters.length,
@@ -99,35 +97,31 @@ export function shelvesPage(
   bookmark: Bookmark,
   locale: Locale,
 ): readonly ShelfView[] {
-  const mode = modeOf(bookmark)
+  const at = reveal(bookmark)
   const byArc = new Map(
     bookSections.map((section) => [section.arc.id, section]),
   )
 
   return orderByMode(
     bookSections.map((section) => section.arc),
-    mode,
+    at.mode,
   ).flatMap((arc) => {
     const section = byArc.get(arc.id)
     if (section === undefined) {
       return []
     }
 
-    const shelved = orderByMode(section.characters, mode)
+    const shelved = orderByMode(section.characters, at.mode)
 
     return [
       {
-        arc: slotOf(arc, bookmark, (entity) =>
-          recordOf(entity, locale, bookmark),
-        ),
+        arc: slotOf(arc, at, (entity) => recordOf(entity, locale, at)),
         total: shelved.length,
-        open: shelved.flatMap((entity) => {
-          return isRevealed(entity, bookmark) ?
-              [searchableOf(entity, locale, bookmark)]
-            : []
-        }),
+        open: shelved.flatMap((entity) =>
+          at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
+        ),
         covered: shelved.flatMap((entity) =>
-          isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
+          at.sees(entity) ? [] : [coveredOf(entity)],
         ),
       },
     ]
@@ -150,30 +144,31 @@ export function characterPage(
   bookmark: Bookmark,
   locale: Locale,
 ): CharacterPage | undefined {
+  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const revealed = isRevealed(entity, bookmark)
+  const revealed = at.sees(entity)
   const dossier = characterDossierOf(entity)
 
   return {
-    head: headFor({ bookmark, entity, keys: CHARACTER_HEAD, locale, revealed }),
+    head: headFor({ at, entity, keys: CHARACTER_HEAD, locale, revealed }),
     detail: {
       slot:
         revealed ?
           {
             open: true,
             record: {
-              ...characterOf(entity, locale, bookmark),
+              ...characterOf(entity, locale, at),
               summary: entity.summary[locale],
             },
           }
         : { open: false, covered: coveredOf(entity) },
       log: revealed && dossier !== undefined ? dossier.log[locale] : null,
-      facts: factsOf(entity, locale, bookmark),
-      chronicle: chronicleOf(entity, locale, bookmark),
+      facts: factsOf(entity, locale, at),
+      chronicle: chronicleOf(entity, locale, at),
     },
   }
 }
@@ -184,26 +179,27 @@ export function routePosition(
   bookmark: Bookmark,
   locale: Locale,
 ): RoutePositionView | undefined {
+  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const ordered = chartWith(entity, modeOf(bookmark))
+  const ordered = chartWith(entity, at.mode)
   const position = routePositionOf(entity, ordered)
   const beside = (near: Entity | undefined): null | Slot<RecordView> => {
     return near === undefined ? null : (
-        slotOf(near, bookmark, (record) => recordOf(record, locale, bookmark))
+        slotOf(near, at, (record) => recordOf(record, locale, at))
       )
   }
 
   return {
     index: position.index,
     total: position.total,
-    openCount: ordered.filter((record) => isRevealed(record, bookmark)).length,
+    openCount: ordered.filter((record) => at.sees(record)).length,
     // The ring takes the record's colour only once the reader has reached it,
     // so a covered record's colour is not in the HTML.
-    tint: isRevealed(entity, bookmark) ? entity.visual.tint : null,
+    tint: at.sees(entity) ? entity.visual.tint : null,
     previous: beside(position.previous),
     next: beside(position.next),
   }
@@ -219,13 +215,14 @@ export function nearbyPage(
   bookmark: Bookmark,
   locale: Locale,
 ): readonly Slot<CharacterView>[] {
+  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return []
   }
 
   return nearbyCharacters(entity, NEARBY_COUNT).map((near) =>
-    slotOf(near, bookmark, (record) => characterOf(record, locale, bookmark)),
+    slotOf(near, at, (record) => characterOf(record, locale, at)),
   )
 }
 
@@ -239,24 +236,24 @@ export function placesPage(
   readonly open: readonly PortView[]
   readonly ships: readonly ShipView[]
 } {
-  const mode = modeOf(bookmark)
-  const ordered = orderByMode(places, mode)
+  const at = reveal(bookmark)
+  const ordered = orderByMode(places, at.mode)
 
   return {
     // Only the ships the reader has reached: a covered second ship would
     // tell a reader at the start that the first one does not last.
-    ships: orderByMode(ships, mode).flatMap((entity) => {
+    ships: orderByMode(ships, at.mode).flatMap((entity) => {
       const dossier = shipDossierOf(entity)
-      return dossier !== undefined && isRevealed(entity, bookmark) ?
-          [shipOf({ bookmark, dossier, entity, locale })]
+      return dossier !== undefined && at.sees(entity) ?
+          [shipOf({ at, dossier, entity, locale })]
         : []
     }),
     filed: ordered.length,
     open: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [portOf(entity, bookmark, locale)] : [],
+      at.sees(entity) ? [portOf(entity, at, locale)] : [],
     ),
     covered: ordered.flatMap((entity) =>
-      isRevealed(entity, bookmark) ? [] : [coveredOf(entity)],
+      at.sees(entity) ? [] : [coveredOf(entity)],
     ),
   }
 }
@@ -266,16 +263,12 @@ export function placesPage(
  * no later than any place filed under it, which a data test holds), and each
  * record filed here with its own fog already decided.
  */
-export function portOf(
-  entity: Entity,
-  bookmark: Bookmark,
-  locale: Locale,
-): PortView {
+export function portOf(entity: Entity, at: Reveal, locale: Locale): PortView {
   const dossier = placeDossierOf(entity)
   const arc = dossier === undefined ? undefined : getEntity(dossier.arc)
 
   return {
-    ...recordOf(entity, locale, bookmark),
+    ...recordOf(entity, locale, at),
     summary: entity.summary[locale],
     dossier:
       dossier === undefined ? null : (
@@ -289,11 +282,7 @@ export function portOf(
             const record = getEntity(filed)
             return record === undefined ?
                 []
-              : [
-                  slotOf(record, bookmark, (found) =>
-                    recordOf(found, locale, bookmark),
-                  ),
-                ]
+              : [slotOf(record, at, (found) => recordOf(found, locale, at))]
           }),
         }
       ),
@@ -306,20 +295,20 @@ export function portOf(
  * the latest fate and the places the reader has reached, and nothing later.
  */
 function shipOf({
-  bookmark,
+  at,
   dossier,
   entity,
   locale,
 }: {
-  readonly bookmark: Bookmark
+  readonly at: Reveal
   readonly dossier: ShipDossier
   readonly entity: Entity
   readonly locale: Locale
 }): ShipView {
-  const fate = knownAt(dossier.fate, bookmark)?.[locale]
+  const fate = at.latest(dossier.fate)?.[locale]
 
   return {
-    ...recordOf(entity, locale, bookmark),
+    ...recordOf(entity, locale, at),
     summary: entity.summary[locale],
     dossier: {
       builder: dossier.builder[locale],
@@ -328,8 +317,8 @@ function shipOf({
       ...(fate !== undefined && { fate }),
       ports: (dossier.ports ?? []).flatMap((arrival) => {
         const place = getEntity(arrival.place)
-        return place !== undefined && isRevealed(place, bookmark) ?
-            [recordOf(place, locale, bookmark)]
+        return place !== undefined && at.sees(place) ?
+            [recordOf(place, locale, at)]
           : []
       }),
     },
