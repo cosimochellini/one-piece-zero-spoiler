@@ -93,7 +93,8 @@ export const waterSeven: Saga = {
       id: 'itomimizu',
       kind: 'character',
       revealedAtEpisode: 209,
-      revealedAtChapter: 306,
+      revealedAtChapter: 307,
+      // The chapter is Foxy's: the text names Foxy, who the manga files at 307.
       name: { it: 'Lombrico', en: 'Itomimizu' },
       summary: {
         it: 'Il telecronista dei Pirati di Foxy, un tipo magrissimo con un passamontagna a righe, che racconta il Davy Back Fight dal dorso di un passero gigante in volo sopra il percorso.',
@@ -117,7 +118,8 @@ export const waterSeven: Saga = {
       id: 'big-pan',
       kind: 'character',
       revealedAtEpisode: 210,
-      revealedAtChapter: 309,
+      revealedAtChapter: 315,
+      // The chapter is Hamburg's: the text names Hamburg, who the manga files at 315.
       name: { it: 'Big Pan', en: 'Big Pan' },
       summary: {
         it: 'Il più grosso dei tre Groggy Monsters di Foxy, che sovrasta perfino i compagni di squadra, con la barba arancione, una bocca piena di denti aguzzi e una pinna che gli spunta dalla schiena.',

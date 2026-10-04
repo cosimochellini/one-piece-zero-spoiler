@@ -223,7 +223,8 @@ export const thrillerBark: Saga = {
       id: 'john',
       kind: 'character',
       revealedAtEpisode: 345,
-      revealedAtChapter: 451,
+      revealedAtChapter: 455,
+      // The chapter is Absalom's: the text names Absalom, who the manga files at 455.
       name: { it: 'John', en: 'John' },
       summary: {
         it: 'Un capitano pirata famigerato in vita, rialzato dalla tomba come zombie con due spade ancora conficcate nella pancia, che si trascina dietro agli altri tra un singhiozzo e un sorso dalla bottiglia.',

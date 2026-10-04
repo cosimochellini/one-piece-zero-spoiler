@@ -203,12 +203,14 @@ function firstWord(entity: Entity, locale: Locale): string {
  */
 function sharesAReachedName(
   other: Entity,
-  episode: number,
+  { chapter, episode }: Text,
   locale: Locale,
 ): boolean {
   return entities.some((met) => {
     return (
-      met.revealedAtEpisode <= episode
+      met.id !== other.id
+      && met.revealedAtEpisode <= episode
+      && met.revealedAtChapter <= chapter
       && met.name[locale] === other.name[locale]
     )
   })
@@ -245,7 +247,7 @@ function leaked(text: Text, locale: Locale, facts: boolean): readonly Entity[] {
     .filter((other) => !facts || episode < (other.nameSaidAt ?? Infinity))
     .filter((other) => tokens.has(firstWord(other, locale)))
     .filter((other) => words.includes(nameWords(other, locale)))
-    .filter((other) => !sharesAReachedName(other, episode, locale))
+    .filter((other) => !sharesAReachedName(other, text, locale))
 }
 
 /**

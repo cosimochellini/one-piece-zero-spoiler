@@ -332,7 +332,8 @@ export const egghead: Saga = {
       id: 'bluegrass',
       kind: 'character',
       revealedAtEpisode: 1128,
-      revealedAtChapter: 1094,
+      revealedAtChapter: 1125,
+      // The chapter is the Ride-Ride Fruit's: the text names the Ride-Ride Fruit, who the manga files at 1125.
       name: { it: 'Bluegrass', en: 'Bluegrass' },
       summary: {
         it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi, che prende il comando di qualunque macchina su cui sale.',
