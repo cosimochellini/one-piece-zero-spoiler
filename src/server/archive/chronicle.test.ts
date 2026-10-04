@@ -81,6 +81,19 @@ describe('the stories a bookmark reaches', () => {
     })
   })
 
+  it('marks a story no earlier than the chronicle’s owner', () => {
+    // An unanchored owner such as Shiki has stories the table would open
+    // hundreds of chapters before him; the mark must say when he is met.
+    const owner = { revealedAtEpisode: 1, revealedAtChapter: 900 }
+    const stories = storiesOf(
+      chronicleFrom(chronicle, ep(3), { ...reader('en'), owner }),
+    )
+
+    expect(stories.map((entry) => entry.revealedAtChapter)).toStrictEqual([
+      900, 900,
+    ])
+  })
+
   it('has nothing to say for a dossier with no chronicle', () => {
     expect(chronicleFrom(undefined, ep(1000), reader('en'))).toStrictEqual({
       mode: 'chronicle',
