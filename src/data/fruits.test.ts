@@ -14,6 +14,7 @@ import { CHARACTER_DOSSIERS, dossierOf, getCharacter } from './characters'
 import { entities } from './entities'
 import { FRUIT_FORMS } from './fruit-forms'
 import { eatersOf, fruitFormOf, fruits, fruitsOfForm, getFruit } from './fruits'
+import { gateOf } from './reveal'
 import type { Entity } from './types'
 
 /**
@@ -22,10 +23,9 @@ import type { Entity } from './types'
  * Two of them are the point of the whole layer. The first is that a fruit
  * opens no later than any dossier entry that names it, which is what lets a
  * character's page print its fruit as a link without checking anything: the
- * row is only built from an entry the reader has reached. The second is the
- * chapter rule, which is the one number in this archive that rounds the wrong
- * way — the list of fruits it rounds furthest for is pinned below, so a new
- * one is a decision somebody takes rather than one that happens.
+ * row is only built from an entry the reader has reached. The second is that
+ * it opens no sooner either, in both units: a fruit page open before any
+ * entry that names it would tell a reader what the story has not.
  */
 
 /** One dossier entry that names a fruit: who, when, and which fruits. */
@@ -33,6 +33,8 @@ type Mention = {
   readonly character: Entity
   readonly episode: number
   readonly fruitIds: readonly string[]
+  /** The chapter a reader reaches the entry at (`gateOf`). */
+  readonly opens: number
 }
 
 /** Every dossier entry that names a fruit, flattened out of the archive. */
@@ -47,7 +49,12 @@ function readMentions(): readonly Mention[] {
     }
 
     for (const entry of named) {
-      found.push({ character, episode: entry.episode, fruitIds: entry.value })
+      found.push({
+        character,
+        episode: entry.episode,
+        fruitIds: entry.value,
+        opens: gateOf(entry, character).revealedAtChapter,
+      })
     }
   }
 
@@ -101,35 +108,6 @@ function writtenFor(id: string): readonly string[] {
     .map(([character, episode]) => `${character}@${String(episode)}`)
     .toSorted(byString())
 }
-
-/**
- * The fruits filed more than two hundred episodes after the character whose
- * chapter they take. Every one of them opens early for a reader counting in
- * chapters; see the note at the head of `~/data/records/fruits`.
- */
-const ROUNDED_DOWN = [
-  'age-age-fruit',
-  'bird-bird-fruit-model-phoenix',
-  'brush-brush-fruit',
-  'castle-castle-fruit',
-  'dark-dark-fruit',
-  'dog-dog-fruit-mythical-model-nine-tailed-fox',
-  'gabu-gabu-fruit',
-  'huge-huge-fruit',
-  'human-human-fruit-model-daibutsu',
-  'island-island-fruit',
-  'magnet-magnet-fruit',
-  'paw-paw-fruit',
-  'sick-sick-fruit',
-  'straw-straw-fruit',
-  'string-string-fruit',
-  'strong-strong-fruit',
-  'tremor-tremor-fruit',
-  'warp-warp-fruit',
-]
-
-/** How far a fruit may be filed after its eater before it needs a decision. */
-const WIDE_GAP = 200
 
 /** A slug the archive gate's canary can see: hyphenated and long enough. */
 const CANARY_SLUG = /^[a-z\d-]+$/u
@@ -227,7 +205,7 @@ describe('the relation between a character and a fruit', () => {
   it('reads the eaters back out of the dossiers and nowhere else', () => {
     for (const fruit of fruits) {
       const read = eatersOf(fruit.id)
-        .map((eater) => `${eater.entity.id}@${String(eater.namedAtEpisode)}`)
+        .map((eater) => `${eater.entity.id}@${String(eater.named.episode)}`)
         .toSorted(byString())
 
       expect(read, fruit.id).toStrictEqual(writtenFor(fruit.id))
@@ -259,30 +237,15 @@ describe('the fruit thresholds', () => {
     }
   })
 
-  it('takes the chapter from the character that entry belongs to', () => {
+  it('files every fruit at the earliest chapter an entry naming it opens at', () => {
+    // An entry with no chapter of its own opens at the first chapter that
+    // reaches its episode, so a fruit named long after its eater's debut
+    // waits for the chapter that names it, not the one that met the eater.
     for (const fruit of fruits) {
-      expect(fruit.revealedAtChapter, fruit.id).toBe(
-        firstMentionOf(fruit.id).character.revealedAtChapter,
-      )
+      const opens = mentionsOf(fruit.id).map((mention) => mention.opens)
+
+      expect(fruit.revealedAtChapter, fruit.id).toBe(Math.min(...opens))
     }
-  })
-
-  it('rounds down for exactly the fruits already known to', () => {
-    // The chapter rule is the one number here that rounds the wrong way, and
-    // it does so furthest for a fruit named long after its eater's debut.
-    // Pinning the list means a nineteenth is a decision and not a surprise.
-    const wide = fruits
-      .filter((fruit) => {
-        const first = firstMentionOf(fruit.id)
-
-        return (
-          fruit.revealedAtEpisode - first.character.revealedAtEpisode > WIDE_GAP
-        )
-      })
-      .map((fruit) => fruit.id)
-      .toSorted(byString())
-
-    expect(wide).toStrictEqual(ROUNDED_DOWN.toSorted(byString()))
   })
 })
 

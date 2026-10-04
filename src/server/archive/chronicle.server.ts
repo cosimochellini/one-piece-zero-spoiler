@@ -2,6 +2,7 @@ import { dossierOf, getCharacter } from '~/data/characters'
 import { gateOf, type Reveal } from '~/data/reveal'
 import type { Entity, Story, Timeline } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
+import type { Gated } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
 import type {
   CharacterChronicle,
@@ -26,7 +27,12 @@ export type ResolveName = (id: string) => string | undefined
  * in rather than looked up so the projection can be tested against a
  * hand-written dossier without the archive behind it.
  */
-export type Reader = { readonly locale: Locale; readonly resolve: ResolveName }
+export type Reader = {
+  readonly locale: Locale
+  /** Whose chronicle it is: a story is marked no earlier than its owner. */
+  readonly owner?: Gated
+  readonly resolve: ResolveName
+}
 
 /**
  * A story's paragraph cut into words and links.
@@ -63,13 +69,13 @@ export function segmentsOf(
 export function chronicleFrom(
   chronicle: Timeline<Story> | undefined,
   at: Reveal,
-  { locale, resolve }: Reader,
+  { locale, owner, resolve }: Reader,
 ): CharacterChronicle {
   return {
     mode: 'chronicle',
     entries: at.reached(chronicle).map((entry): ChronicleEntry => {
       return {
-        ...gateOf(entry.episode),
+        ...gateOf(entry, owner),
         title: entry.value.title[locale],
         body: segmentsOf(entry.value.body[locale], resolve),
       }
@@ -90,6 +96,7 @@ export function chronicleOf(
 ): CharacterChronicle {
   return chronicleFrom(dossierOf(entity)?.chronicle, at, {
     locale,
+    owner: entity,
     resolve: characterName(locale),
   })
 }

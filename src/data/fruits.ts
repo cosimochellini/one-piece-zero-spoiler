@@ -6,7 +6,8 @@ import { CHARACTER_DOSSIERS, getCharacter } from './characters'
 import { entities } from './entities'
 import { FRUIT_FORMS } from './fruit-forms'
 import { orderByMode } from './order'
-import type { Entity } from './types'
+import type { When } from './reveal'
+import type { Dated, Entity } from './types'
 
 /**
  * The specimen sheet: the devil fruit layer of the archive.
@@ -22,8 +23,8 @@ import type { Entity } from './types'
  * sides of the reference cannot disagree.
  */
 
-/** A character the dossiers name, and the episode whose entry names them. */
-export type Eater = { readonly entity: Entity; readonly namedAtEpisode: number }
+/** A character the dossiers name, and when the entry that names them is dated. */
+export type Eater = { readonly entity: Entity; readonly named: When }
 
 /** Every fruit record, in the order the story names them. */
 export const fruits: readonly Entity[] = orderByMode(
@@ -53,28 +54,32 @@ export function fruitsOfForm(form: FruitForm): readonly Entity[] {
   return fruits.filter((fruit) => FORMS.get(fruit.id) === form)
 }
 
-/** The earliest episode each character's dossier names each fruit in. */
-type NamedAt = Map<string, Map<string, number>>
+/** The earliest entry each character's dossier names each fruit in. */
+type Found = Map<string, Map<string, When>>
 
 /** Files one dossier entry under every fruit it names, keeping the earliest. */
-function file(found: NamedAt, character: string, entry: Dated): void {
+function file(
+  found: Found,
+  character: string,
+  entry: Dated<readonly string[]>,
+): void {
   for (const fruitId of entry.value) {
-    const byCharacter = found.get(fruitId) ?? new Map<string, number>()
+    const byCharacter = found.get(fruitId) ?? new Map<string, When>()
     const seen = byCharacter.get(character)
 
-    if (seen === undefined || entry.episode < seen) {
-      byCharacter.set(character, entry.episode)
+    if (seen === undefined || entry.episode < seen.episode) {
+      byCharacter.set(character, {
+        episode: entry.episode,
+        ...(entry.chapter !== undefined && { chapter: entry.chapter }),
+      })
     }
     found.set(fruitId, byCharacter)
   }
 }
 
-/** One dated dossier entry, as this module reads it. */
-type Dated = { readonly episode: number; readonly value: readonly string[] }
-
 /** Every fruit's eaters, read once out of the dossiers. */
 function readEaters(): ReadonlyMap<string, readonly Eater[]> {
-  const found: NamedAt = new Map()
+  const found: Found = new Map()
 
   for (const [character, dossier] of Object.entries(CHARACTER_DOSSIERS)) {
     const named = dossier.devilFruit
@@ -93,16 +98,16 @@ function readEaters(): ReadonlyMap<string, readonly Eater[]> {
 }
 
 /** One fruit's eaters, earliest first, ties broken by the archive's own order. */
-function listed(byCharacter: ReadonlyMap<string, number>): readonly Eater[] {
+function listed(byCharacter: ReadonlyMap<string, When>): readonly Eater[] {
   return [...byCharacter]
-    .flatMap(([character, namedAtEpisode]) => {
+    .flatMap(([character, named]) => {
       const entity = getCharacter(character)
 
-      return entity === undefined ? [] : [{ entity, namedAtEpisode }]
+      return entity === undefined ? [] : [{ entity, named }]
     })
     .toSorted(
       byValues([
-        [(eater) => eater.namedAtEpisode, byNumber()],
+        [(eater) => eater.named.episode, byNumber()],
         [(eater) => eater.entity.revealedAtEpisode, byNumber()],
       ]),
     )

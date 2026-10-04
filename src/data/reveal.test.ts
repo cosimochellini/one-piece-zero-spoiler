@@ -7,7 +7,7 @@ import {
 } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 
-import { chapterAtEpisode, episodeAtChapter } from './chapters'
+import { chapterAtEpisode, DATED, episodeAtChapter } from './chapters'
 import { eatersOf, fruits } from './fruits'
 import { gateOf, reveal } from './reveal'
 
@@ -175,17 +175,30 @@ describe('reveal, at the edges', () => {
 
 describe('gateOf', () => {
   it('opens an entry at its episode and the first chapter that reaches it', () => {
-    expect(gateOf(130)).toStrictEqual(filedAt(130, chapterAtEpisode(130)))
+    expect(gateOf({ episode: 130 })).toStrictEqual(
+      filedAt(130, chapterAtEpisode(130)),
+    )
+  })
+
+  it('opens an entry that declares its chapter at that chapter', () => {
+    // The table may reach the episode later than the chapter that tells it,
+    // or never; the entry's own word wins either way.
+    expect(gateOf({ episode: 130, chapter: 150 })).toStrictEqual(
+      filedAt(130, 150),
+    )
   })
 
   it('waits for the later of the entry and its owner', () => {
     const owner = filedAt(300, 900)
 
-    expect(gateOf(130, owner)).toStrictEqual(owner)
+    expect(gateOf({ episode: 130 }, owner)).toStrictEqual(owner)
+    expect(gateOf({ episode: 500, chapter: 600 }, owner)).toStrictEqual(
+      filedAt(500, 900),
+    )
 
     const chapter = Math.max(900, chapterAtEpisode(500))
 
-    expect(gateOf(500, owner)).toStrictEqual(filedAt(500, chapter))
+    expect(gateOf({ episode: 500 }, owner)).toStrictEqual(filedAt(500, chapter))
   })
 
   it('is never open to a chapter for an episode no chapter reaches', () => {
@@ -193,25 +206,45 @@ describe('gateOf', () => {
 
     const last = reveal(ch(CHAPTER_CEILING))
 
-    expect(last.sees(gateOf(beyond))).toBe(false)
+    expect(last.sees(gateOf({ episode: beyond }))).toBe(false)
   })
+})
 
-  it('opens an eater to a chapter exactly when the episode it reaches does', () => {
-    // The gate's chapter is derived from its episode, so the two must agree
-    // at every chapter, the ceiling included: a chapter reader who saw one
-    // more eater than the episode would be reading ahead of the dossiers.
-    const eaters = fruits.flatMap((fruit) => eatersOf(fruit.id))
-    for (const chapter of [100, 400, 700, 1000, CHAPTER_CEILING]) {
-      const byChapter = reveal(ch(chapter))
-      const byEpisode = reveal(ep(episodeAtChapter(chapter)))
-      for (const { entity, namedAtEpisode } of eaters) {
-        const gated = gateOf(namedAtEpisode, entity)
+/** Every dated entry, and the entry each fruit's eaters are named in. */
+const ENTRIES = [
+  ...DATED.map(({ entry }) => entry),
+  ...fruits.flatMap((fruit) => eatersOf(fruit.id).map(({ named }) => named)),
+]
 
-        expect(
-          byChapter.sees(gated),
-          `${entity.id} @ c${String(chapter)}`,
-        ).toBe(byEpisode.sees(gated))
-      }
+/**
+ * The chapter an entry opens at, worked out the long way rather than through
+ * `gateOf`: the chapter it declares, or the first one whose episode reaches
+ * it, or one past the ceiling.
+ */
+function opensAt(entry: (typeof ENTRIES)[number]): number {
+  if (entry.chapter !== undefined) {
+    return entry.chapter
+  }
+  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+    if (episodeAtChapter(chapter) >= entry.episode) {
+      return chapter
+    }
+  }
+
+  return CHAPTER_CEILING + 1
+}
+
+describe('every dated entry in the archive', () => {
+  it('is reached at the chapter it opens at, and never the chapter before', () => {
+    // The one invariant for a chapter reader, held over every timeline and
+    // every eater: an entry is reached exactly from its own chapter, or from
+    // the first chapter that reaches its episode.
+    for (const entry of ENTRIES) {
+      const opens = opensAt(entry)
+      const label = `${JSON.stringify(entry).slice(0, 60)} @ c${String(opens)}`
+
+      expect(reveal(ch(opens - 1)).reached([entry]), label).toStrictEqual([])
+      expect(reveal(ch(opens)).reached([entry]), label).toStrictEqual([entry])
     }
   })
 })

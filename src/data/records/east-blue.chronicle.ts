@@ -960,6 +960,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1019,
+      chapter: 1004,
       value: {
         title: { it: 'Kibi dango come munizioni', en: 'Dango for ammunition' },
         body: {

@@ -902,6 +902,7 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
       },
       {
         episode: 233,
+        chapter: 328,
         value: {
           it: 'Un carpentiere di Water Seven ha trovato la chiglia danneggiata in modo irreparabile. Non arriverebbe all’isola successiva.',
           en: 'A Water Seven shipwright has found her keel damaged beyond repair. She would not reach the next island.',
@@ -909,6 +910,7 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
       },
       {
         episode: 312,
+        chapter: 430,
         value: {
           it: 'Dopo aver portato via la ciurma da Enies Lobby, si spezza in mare. Rufy le dà fuoco e la ciurma la guarda bruciare.',
           en: 'After carrying the crew away from Enies Lobby, she breaks apart at sea. Luffy sets her alight, and the crew watches her burn.',
@@ -933,6 +935,7 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
     fate: [
       {
         episode: 324,
+        chapter: 439,
         value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
       },
     ],

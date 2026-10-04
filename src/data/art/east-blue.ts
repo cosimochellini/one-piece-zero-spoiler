@@ -1023,6 +1023,7 @@ export const eastBlueRedrawn: Redrawings = {
     // the end of 274 (ch. 390).
     {
       episode: 274,
+      chapter: 390,
       value: [
         { d: 'M80 186 V104' },
         { d: 'M80 104 C74 84 50 70 40 42 M80 104 C86 84 110 70 120 42' },
@@ -1046,6 +1047,7 @@ export const eastBlueRedrawn: Redrawings = {
     // its far side. First fired at the impostor crew at 517 (ch. 598).
     {
       episode: 517,
+      chapter: 598,
       value: [
         { d: 'M80 172 V118' },
         { d: 'M80 118 C78 98 60 90 54 66 M80 118 C82 98 100 90 106 66' },

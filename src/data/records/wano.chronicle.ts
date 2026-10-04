@@ -153,6 +153,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1019,
+      chapter: 1004,
       value: {
         title: { it: 'La medicina di Queen', en: 'Queen’s medicine' },
         body: {
@@ -219,6 +220,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1019,
+      chapter: 1004,
       value: {
         title: { it: 'Una nave per Onigashima', en: 'A ship for Onigashima' },
         body: {
@@ -229,6 +231,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1040,
+      chapter: 1018,
       value: {
         title: { it: 'Amici preziosi', en: 'Precious friends' },
         body: {
@@ -261,6 +264,7 @@ export const wanoChronicles = {
     },
     {
       episode: 949,
+      chapter: 949,
       value: {
         title: { it: 'Il colpo della peste', en: 'The Plague Shot' },
         body: {
@@ -271,6 +275,7 @@ export const wanoChronicles = {
     },
     {
       episode: 953,
+      chapter: 952,
       value: {
         title: { it: 'Tutto tranquillo a Udon', en: 'All quiet in Udon' },
         body: {
@@ -468,6 +473,7 @@ export const wanoChronicles = {
     },
     {
       episode: 976,
+      chapter: 974,
       value: {
         title: { it: 'L’uomo dietro Kyoshiro', en: 'The man behind Kyoshiro' },
         body: {

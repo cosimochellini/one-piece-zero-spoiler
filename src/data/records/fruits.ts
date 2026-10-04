@@ -13,19 +13,14 @@ import type { Saga } from './saga'
  * `revealedAtEpisode` is the earliest episode any dossier names the fruit in,
  * which is the episode a viewer learns it exists.
  *
- * `revealedAtChapter` is the debut chapter of the character whose dossier
- * names it earliest, and it is the one number in this archive that rounds the
- * wrong way. A dossier entry has an episode and no chapter — the timelines
- * have no chapter axis — so a naming chapter is not something this data can
- * derive, and the eater’s own chapter is the nearest thing to it. For a fruit
- * named at its eater’s debut it is exact. For one named long after, it opens
- * the fruit early for a reader who counts in chapters: `strong-strong-fruit`
- * is named in episode 1120 and opens at chapter 234, because that is where
- * Jesus Burgess is filed. Eighteen fruits have a gap of more than two hundred
- * episodes, and `fruits.test.ts` holds that list so a nineteenth is a
- * decision somebody makes rather than one that happens. Character pages are
- * not exposed either way: a chapter bookmark reaches no dossier timeline at
- * all, so the exposure is the specimen sheet and the fruit pages only.
+ * `revealedAtChapter` is the earliest chapter at which any of those entries
+ * opens (`gateOf` in `~/data/reveal`): the chapter the entry declares, or
+ * else the first chapter that reaches its episode, and never before the
+ * eater's own. So a fruit named long after its eater's debut waits for the
+ * chapter that names it rather than the one that met the eater, and the
+ * fruit page opens to a manga reader together with the dossier entry.
+ * `fruits.test.ts` holds the rule; the fruits are left out of the chapter
+ * table (`~/data/chapters`) because their chapters are read off it.
  *
  * Names are the Italian dub’s in `it` and the English edition’s in `en`, moved
  * here from the dossiers that used to carry them as free text. Each sentence
@@ -50,7 +45,7 @@ export const devilFruits: Saga = {
       id: 'chop-chop-fruit',
       kind: 'fruit',
       revealedAtEpisode: 5,
-      revealedAtChapter: 9,
+      revealedAtChapter: 41,
       name: { it: 'Frutto Puzzle Puzzle', en: 'Chop-Chop Fruit' },
       summary: {
         it: 'Divide il corpo in pezzi lungo qualsiasi taglio: una lama lo separa senza ferirlo e i pezzi continuano a muoversi, sospesi a mezz’aria.',
@@ -62,7 +57,7 @@ export const devilFruits: Saga = {
       id: 'slip-slip-fruit',
       kind: 'fruit',
       revealedAtEpisode: 48,
-      revealedAtChapter: 1,
+      revealedAtChapter: 97,
       name: { it: 'Frutto Slip Slip', en: 'Slip-Slip Fruit' },
       summary: {
         it: 'Rende la pelle così liscia che niente fa presa: i pugni scivolano via, le corde non stringono, e un braccio afferrato sguscia fuori da solo.',
@@ -74,7 +69,7 @@ export const devilFruits: Saga = {
       id: 'smoke-smoke-fruit',
       kind: 'fruit',
       revealedAtEpisode: 49,
-      revealedAtChapter: 97,
+      revealedAtChapter: 99,
       name: { it: 'Frutto Fumo Fumo', en: 'Smoke-Smoke Fruit' },
       summary: {
         it: 'Trasforma il corpo in fumo, così una lama lo attraversa e una presa si chiude sul nulla; il fumo stesso si versa su una strada e si stringe attorno a chi ci sta scappando.',
@@ -161,7 +156,7 @@ export const devilFruits: Saga = {
       id: 'human-human-fruit',
       kind: 'fruit',
       revealedAtEpisode: 83,
-      revealedAtChapter: 134,
+      revealedAtChapter: 136,
       name: { it: 'Frutto Homo Homo', en: 'Human-Human Fruit' },
       summary: {
         it: 'Dà a un animale forma e mente umane: si regge su due zampe, parla, e può fermarsi a metà strada fra le due forme.',
@@ -203,7 +198,7 @@ export const devilFruits: Saga = {
       id: 'flame-flame-fruit',
       kind: 'fruit',
       revealedAtEpisode: 95,
-      revealedAtChapter: 157,
+      revealedAtChapter: 162,
       name: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
       summary: {
         it: 'Trasforma il corpo in fiamma: i colpi lo attraversano senza toccarlo, e il fuoco che lascia dietro di sé si porta via una nave intera.',
@@ -251,7 +246,7 @@ export const devilFruits: Saga = {
       id: 'sand-sand-fruit',
       kind: 'fruit',
       revealedAtEpisode: 112,
-      revealedAtChapter: 155,
+      revealedAtChapter: 184,
       name: { it: 'Frutto Sand Sand', en: 'Sand-Sand Fruit' },
       summary: {
         it: 'Trasforma il corpo in sabbia: un pugno lo attraversa e si chiude sul vuoto, e anche il terreno sotto i piedi diventa sabbia e inghiotte chi ci sta sopra.',
@@ -302,7 +297,7 @@ export const devilFruits: Saga = {
       id: 'spring-spring-fruit',
       kind: 'fruit',
       revealedAtEpisode: 146,
-      revealedAtChapter: 224,
+      revealedAtChapter: 226,
       name: { it: 'Frutto Bane Bane', en: 'Spring-Spring Fruit' },
       summary: {
         it: 'Trasforma gambe e braccia in molle: si caricano contro un muro e rilanciano in avanti tutto il corpo con la forza che hanno accumulato.',
@@ -314,7 +309,7 @@ export const devilFruits: Saga = {
       id: 'horse-horse-fruit',
       kind: 'fruit',
       revealedAtEpisode: 153,
-      revealedAtChapter: 238,
+      revealedAtChapter: 241,
       name: { it: 'Frutto Ippo Ippo', en: 'Horse-Horse Fruit' },
       summary: {
         it: 'Trasforma in un cavallo chi lo mangia: un uccello che ne ha mangiato uno diventa un cavallo con le ali, anche se chi se lo aspettava leggendario resta deluso da quanto sembra normale.',
@@ -338,7 +333,7 @@ export const devilFruits: Saga = {
       id: 'slow-slow-fruit',
       kind: 'fruit',
       revealedAtEpisode: 208,
-      revealedAtChapter: 307,
+      revealedAtChapter: 315,
       name: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
       summary: {
         it: 'Spara un raggio che rallenta per trenta secondi tutto quello che colpisce: un pugno già tirato striscia nell’aria e arriva quando non serve più.',
@@ -362,7 +357,7 @@ export const devilFruits: Saga = {
       id: 'bubble-bubble-fruit',
       kind: 'fruit',
       revealedAtEpisode: 293,
-      revealedAtChapter: 327,
+      revealedAtChapter: 431,
       name: { it: 'Frutto Bolla Bolla', en: 'Bubble-Bubble Fruit' },
       summary: {
         it: 'Produce sapone dal corpo: una bolla che si posa su qualcuno gli lava via la forza e lo lascia troppo scivoloso per restare in piedi.',
@@ -374,7 +369,7 @@ export const devilFruits: Saga = {
       id: 'cat-cat-fruit-model-leopard',
       kind: 'fruit',
       revealedAtEpisode: 246,
-      revealedAtChapter: 326,
+      revealedAtChapter: 357,
       name: {
         it: 'Frutto Neko Neko, modello Leopardo',
         en: 'Cat-Cat Fruit, Model: Leopard',
@@ -389,7 +384,7 @@ export const devilFruits: Saga = {
       id: 'dog-dog-fruit-model-wolf',
       kind: 'fruit',
       revealedAtEpisode: 286,
-      revealedAtChapter: 385,
+      revealedAtChapter: 431,
       name: {
         it: 'Frutto Inu Inu, modello Lupo',
         en: 'Dog-Dog Fruit, Model: Wolf',
@@ -404,7 +399,7 @@ export const devilFruits: Saga = {
       id: 'door-door-fruit',
       kind: 'fruit',
       revealedAtEpisode: 243,
-      revealedAtChapter: 333,
+      revealedAtChapter: 357,
       name: { it: 'Frutto Porta Porta', en: 'Door-Door Fruit' },
       summary: {
         it: 'Disegna una porta su qualsiasi superficie, anche un muro pieno, la apre ed esce dall’altra parte.',
@@ -416,7 +411,7 @@ export const devilFruits: Saga = {
       id: 'ox-ox-fruit-model-giraffe',
       kind: 'fruit',
       revealedAtEpisode: 286,
-      revealedAtChapter: 326,
+      revealedAtChapter: 431,
       name: {
         it: 'Frutto Ushi Ushi, modello Giraffa',
         en: 'Ox-Ox Fruit, Model: Giraffe',
@@ -443,7 +438,7 @@ export const devilFruits: Saga = {
       id: 'revive-revive-fruit',
       kind: 'fruit',
       revealedAtEpisode: 339,
-      revealedAtChapter: 443,
+      revealedAtChapter: 444,
       name: { it: 'Frutto Yomi Yomi', en: 'Revive-Revive Fruit' },
       summary: {
         it: 'Restituisce una vita dopo la morte: l’anima torna nel corpo che aveva lasciato, per quanto tempo quel corpo sia rimasto lì.',
@@ -455,7 +450,7 @@ export const devilFruits: Saga = {
       id: 'hollow-hollow-fruit',
       kind: 'fruit',
       revealedAtEpisode: 340,
-      revealedAtChapter: 449,
+      revealedAtChapter: 452,
       name: { it: 'Frutto Horo Horo', en: 'Hollow-Hollow Fruit' },
       summary: {
         it: 'Manda in giro fantasmi che attraversano i muri e le persone, e chi ne viene attraversato cade in ginocchio a chiedere scusa di essere nato.',
@@ -491,7 +486,7 @@ export const devilFruits: Saga = {
       id: 'paw-paw-fruit',
       kind: 'fruit',
       revealedAtEpisode: 372,
-      revealedAtChapter: 233,
+      revealedAtChapter: 486,
       name: { it: 'Frutto Nikyu Nikyu', en: 'Paw-Paw Fruit' },
       summary: {
         it: 'Mette su ogni mano un cuscinetto che respinge tutto ciò che tocca: una persona, una palla di cannone, perfino l’aria, spinti via più in fretta di quanto l’occhio segua.',
@@ -515,7 +510,7 @@ export const devilFruits: Saga = {
       id: 'dragon-dragon-fruit-ancient-model-allosaurus',
       kind: 'fruit',
       revealedAtEpisode: 402,
-      revealedAtChapter: 498,
+      revealedAtChapter: 510,
       name: {
         it: 'Frutto Ryu Ryu, modello Allosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Allosaurus',
@@ -533,7 +528,7 @@ export const devilFruits: Saga = {
       id: 'love-love-fruit',
       kind: 'fruit',
       revealedAtEpisode: 412,
-      revealedAtChapter: 516,
+      revealedAtChapter: 523,
       name: { it: 'Frutto Mero Mero', en: 'Love-Love Fruit' },
       summary: {
         it: 'Trasforma in pietra chiunque guardi con desiderio chi l’ha mangiato, e quella pietra si spezza come qualsiasi altra.',
@@ -545,7 +540,7 @@ export const devilFruits: Saga = {
       id: 'snake-snake-fruit-model-anaconda',
       kind: 'fruit',
       revealedAtEpisode: 412,
-      revealedAtChapter: 521,
+      revealedAtChapter: 523,
       name: {
         it: 'Frutto Hebi Hebi, modello Anaconda',
         en: 'Snake-Snake Fruit, Model: Anaconda',
@@ -560,7 +555,7 @@ export const devilFruits: Saga = {
       id: 'snake-snake-fruit-model-king-cobra',
       kind: 'fruit',
       revealedAtEpisode: 412,
-      revealedAtChapter: 521,
+      revealedAtChapter: 523,
       name: {
         it: 'Frutto Hebi Hebi, modello Cobra Reale',
         en: 'Snake-Snake Fruit, Model: King Cobra',
@@ -587,7 +582,7 @@ export const devilFruits: Saga = {
       id: 'horm-horm-fruit',
       kind: 'fruit',
       revealedAtEpisode: 438,
-      revealedAtChapter: 540,
+      revealedAtChapter: 541,
       name: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
       summary: {
         it: 'Fa spuntare dalle dita aghi che iniettano ormoni: chiudono le ferite, rimettono forza in un corpo che non ne ha, e cambiano un viso e una corporatura in altri.',
@@ -611,7 +606,7 @@ export const devilFruits: Saga = {
       id: 'bird-bird-fruit-model-phoenix',
       kind: 'fruit',
       revealedAtEpisode: 461,
-      revealedAtChapter: 234,
+      revealedAtChapter: 577,
       name: {
         it: 'Frutto Tori Tori, modello Fenice',
         en: 'Bird-Bird Fruit, Model: Phoenix',
@@ -626,7 +621,7 @@ export const devilFruits: Saga = {
       id: 'sparkle-sparkle-fruit',
       kind: 'fruit',
       revealedAtEpisode: 461,
-      revealedAtChapter: 556,
+      revealedAtChapter: 577,
       name: { it: 'Frutto Kira Kira', en: 'Sparkle-Sparkle Fruit' },
       summary: {
         it: 'Trasforma il corpo in diamante: una lama ci si ferma sopra, e una spallata porta con sé tutta la durezza della pietra.',
@@ -638,7 +633,7 @@ export const devilFruits: Saga = {
       id: 'wash-wash-fruit',
       kind: 'fruit',
       revealedAtEpisode: 461,
-      revealedAtChapter: 556,
+      revealedAtChapter: 577,
       name: { it: 'Frutto Woshu Woshu', en: 'Wash-Wash Fruit' },
       summary: {
         it: 'Lava una persona come un panno: ne esce strizzata e piatta, un lenzuolo da stendere al filo, e tranquilla.',
@@ -650,7 +645,7 @@ export const devilFruits: Saga = {
       id: 'dark-dark-fruit',
       kind: 'fruit',
       revealedAtEpisode: 462,
-      revealedAtChapter: 234,
+      revealedAtChapter: 577,
       name: { it: 'Frutto Yami Yami', en: 'Dark-Dark Fruit' },
       summary: {
         it: 'Trasforma il corpo in tenebra che risucchia dentro di sé tutto quello che ha intorno, e una mano posata su un altro mangiatore gli toglie il potere finché la presa regge.',
@@ -662,7 +657,7 @@ export const devilFruits: Saga = {
       id: 'magma-magma-fruit',
       kind: 'fruit',
       revealedAtEpisode: 463,
-      revealedAtChapter: 556,
+      revealedAtChapter: 577,
       name: { it: 'Frutto Magu Magu', en: 'Magma-Magma Fruit' },
       summary: {
         it: 'Trasforma il corpo in magma: i colpi lo attraversano, e un pugno tirato da quel corpo brucia tutto quello su cui arriva.',
@@ -674,7 +669,7 @@ export const devilFruits: Saga = {
       id: 'tremor-tremor-fruit',
       kind: 'fruit',
       revealedAtEpisode: 466,
-      revealedAtChapter: 234,
+      revealedAtChapter: 577,
       name: { it: 'Frutto Gura Gura', en: 'Tremor-Tremor Fruit' },
       summary: {
         it: 'Permette di afferrare l’aria e incrinarla come vetro, e quella crepa prosegue nella terra e nel mare e li scuote entrambi.',
@@ -686,7 +681,7 @@ export const devilFruits: Saga = {
       id: 'human-human-fruit-model-daibutsu',
       kind: 'fruit',
       revealedAtEpisode: 469,
-      revealedAtChapter: 233,
+      revealedAtChapter: 577,
       name: {
         it: 'Frutto Hito Hito, modello Daibutsu',
         en: 'Human-Human Fruit, Model: Daibutsu',
@@ -773,7 +768,7 @@ export const devilFruits: Saga = {
       id: 'artificial-dragon-dragon-fruit',
       kind: 'fruit',
       revealedAtEpisode: 611,
-      revealedAtChapter: 685,
+      revealedAtChapter: 692,
       name: {
         it: 'Frutto Ryu Ryu artificiale',
         en: 'Artificial Dragon-Dragon Fruit',
@@ -788,7 +783,7 @@ export const devilFruits: Saga = {
       id: 'op-op-fruit',
       kind: 'fruit',
       revealedAtEpisode: 590,
-      revealedAtChapter: 498,
+      revealedAtChapter: 665,
       name: { it: 'Frutto Ope Ope', en: 'Op-Op Fruit' },
       summary: {
         it: 'Apre una sfera d’aria dentro cui tutto si può tagliare, sollevare e rimettere in un altro ordine, e ciò che viene tagliato lì dentro non sanguina.',
@@ -836,7 +831,7 @@ export const devilFruits: Saga = {
       id: 'stick-stick-fruit',
       kind: 'fruit',
       revealedAtEpisode: 669,
-      revealedAtChapter: 708,
+      revealedAtChapter: 742,
       name: { it: 'Frutto Beta Beta', en: 'Stick-Stick Fruit' },
       summary: {
         it: 'Cola dal corpo un muco appiccicoso, abbastanza da tenere una persona ferma dov’è, e lo indurisce quando l’ha presa.',
@@ -908,7 +903,7 @@ export const devilFruits: Saga = {
       id: 'glare-glare-fruit',
       kind: 'fruit',
       revealedAtEpisode: 640,
-      revealedAtChapter: 712,
+      revealedAtChapter: 716,
       name: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
       summary: {
         it: 'Dà occhi che guardano attraverso un muro e per tutta una città, e leggono quello che passa per la testa di chi inquadrano.',
@@ -956,7 +951,7 @@ export const devilFruits: Saga = {
       id: 'jacket-jacket-fruit',
       kind: 'fruit',
       revealedAtEpisode: 646,
-      revealedAtChapter: 704,
+      revealedAtChapter: 725,
       name: { it: 'Frutto Giacca Giacca', en: 'Jacket-Jacket Fruit' },
       summary: {
         it: 'Trasforma chi lo mangia in una giacca che un altro può indossare: una volta addosso, prende il controllo del corpo che lo porta, uomo o bestia, e combatte con la sua forza.',
@@ -968,7 +963,7 @@ export const devilFruits: Saga = {
       id: 'barrier-barrier-fruit',
       kind: 'fruit',
       revealedAtEpisode: 660,
-      revealedAtChapter: 705,
+      revealedAtChapter: 742,
       name: { it: 'Frutto Bari Bari', en: 'Barrier-Barrier Fruit' },
       summary: {
         it: 'Alza in aria un muro invisibile che niente attraversa: una cannonata, una spada, un pugno, tutti si fermano di netto contro di esso.',
@@ -992,7 +987,7 @@ export const devilFruits: Saga = {
       id: 'string-string-fruit',
       kind: 'fruit',
       revealedAtEpisode: 700,
-      revealedAtChapter: 233,
+      revealedAtChapter: 762,
       name: { it: 'Frutto Ito Ito', en: 'String-String Fruit' },
       summary: {
         it: 'Fa uscire fili dalle dita, sottili abbastanza da tagliare la pietra e resistenti abbastanza da appendere una persona e muoverle le braccia al posto suo.',
@@ -1016,7 +1011,7 @@ export const devilFruits: Saga = {
       id: 'elephant-elephant-fruit-ancient-model-mammoth',
       kind: 'fruit',
       revealedAtEpisode: 759,
-      revealedAtChapter: 809,
+      revealedAtChapter: 813,
       name: {
         it: 'Frutto Zou Zou, modello Mammut',
         en: 'Elephant-Elephant Fruit, Ancient Model: Mammoth',
@@ -1046,7 +1041,7 @@ export const devilFruits: Saga = {
       id: 'castle-castle-fruit',
       kind: 'fruit',
       revealedAtEpisode: 785,
-      revealedAtChapter: 498,
+      revealedAtChapter: 830,
       name: { it: 'Frutto Shiro Shiro', en: 'Castle-Castle Fruit' },
       summary: {
         it: 'Trasforma il corpo in una fortezza in cui gli altri possono entrare: uomini e cannoni ci vivono dentro, e quello che sparano esce dalle mura.',
@@ -1070,7 +1065,7 @@ export const devilFruits: Saga = {
       id: 'soul-soul-fruit',
       kind: 'fruit',
       revealedAtEpisode: 796,
-      revealedAtChapter: 831,
+      revealedAtChapter: 840,
       name: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
       summary: {
         it: 'Toglie un pezzo di anima a chi si spaventa e lo mette dentro un oggetto, che apre occhi e bocca e comincia a prendere ordini.',
@@ -1118,7 +1113,7 @@ export const devilFruits: Saga = {
       id: 'bird-bird-fruit-model-albatross',
       kind: 'fruit',
       revealedAtEpisode: 830,
-      revealedAtChapter: 860,
+      revealedAtChapter: 867,
       name: {
         it: 'Frutto Tori Tori, modello Albatro',
         en: 'Bird-Bird Fruit, Model: Albatross',
@@ -1241,7 +1236,7 @@ export const devilFruits: Saga = {
       id: 'millet-millet-fruit',
       kind: 'fruit',
       revealedAtEpisode: 894,
-      revealedAtChapter: 912,
+      revealedAtChapter: 913,
       name: { it: 'Frutto Kibi Kibi', en: 'Millet-Millet Fruit' },
       summary: {
         it: 'Ricava gnocchi di miglio dalle guance, e l’animale che ne mangia uno diventa fedele all’istante.',
@@ -1253,7 +1248,7 @@ export const devilFruits: Saga = {
       id: 'straw-straw-fruit',
       kind: 'fruit',
       revealedAtEpisode: 895,
-      revealedAtChapter: 498,
+      revealedAtChapter: 914,
       name: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
       summary: {
         it: 'Tiene bambole di paglia che fanno le veci di altre persone, così una ferita destinata a chi l’ha mangiato finisce addosso a una di loro.',
@@ -1265,7 +1260,7 @@ export const devilFruits: Saga = {
       id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
       kind: 'fruit',
       revealedAtEpisode: 924,
-      revealedAtChapter: 929,
+      revealedAtChapter: 935,
       name: {
         it: 'Frutto Ryu Ryu, modello Spinosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Spinosaurus',
@@ -1283,7 +1278,7 @@ export const devilFruits: Saga = {
       id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
       kind: 'fruit',
       revealedAtEpisode: 927,
-      revealedAtChapter: 927,
+      revealedAtChapter: 935,
       name: {
         it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
         en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
@@ -1301,7 +1296,7 @@ export const devilFruits: Saga = {
       id: 'fish-fish-fruit-mythical-model-azure-dragon',
       kind: 'fruit',
       revealedAtEpisode: 912,
-      revealedAtChapter: 795,
+      revealedAtChapter: 930,
       name: {
         it: 'Frutto Uo Uo, modello Drago Azzurro',
         en: 'Fish-Fish Fruit, Mythical Model: Azure Dragon',
@@ -1349,7 +1344,7 @@ export const devilFruits: Saga = {
       id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
       kind: 'fruit',
       revealedAtEpisode: 944,
-      revealedAtChapter: 935,
+      revealedAtChapter: 957,
       name: {
         it: 'Frutto Ryu Ryu, modello Brachiosauro',
         en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
@@ -1367,7 +1362,7 @@ export const devilFruits: Saga = {
       id: 'time-time-fruit',
       kind: 'fruit',
       revealedAtEpisode: 963,
-      revealedAtChapter: 966,
+      revealedAtChapter: 972,
       name: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
       summary: {
         it: 'Manda una persona avanti nel tempo, di anni o di secoli, e mai indietro: parte da un giorno e arriva in un altro senza che le sia cambiato niente.',
@@ -1451,7 +1446,7 @@ export const devilFruits: Saga = {
       id: 'brush-brush-fruit',
       kind: 'fruit',
       revealedAtEpisode: 985,
-      revealedAtChapter: 747,
+      revealedAtChapter: 981,
       name: { it: 'Frutto Fude Fude', en: 'Brush-Brush Fruit' },
       summary: {
         it: 'Quello che viene dipinto col pennello esce dalla carta e si muove: un uccello, un cavallo, un muro di fuoco, disegnati male come solo quella mano sa fare.',
@@ -1475,7 +1470,7 @@ export const devilFruits: Saga = {
       id: 'dog-dog-fruit-model-okuchi-no-makami',
       kind: 'fruit',
       revealedAtEpisode: 1040,
-      revealedAtChapter: 983,
+      revealedAtChapter: 1030,
       name: {
         it: 'Frutto Inu Inu, modello Okuchi no Makami',
         en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
@@ -1490,7 +1485,7 @@ export const devilFruits: Saga = {
       id: 'magnet-magnet-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1040,
-      revealedAtChapter: 498,
+      revealedAtChapter: 1030,
       name: { it: 'Frutto Jiki Jiki', en: 'Magnet-Magnet Fruit' },
       summary: {
         it: 'Richiama il metallo nell’aria da qualsiasi distanza e lo compatta, così una mano tesa si ritrova a reggere una massa di ferro grande come una casa.',
@@ -1538,7 +1533,7 @@ export const devilFruits: Saga = {
       id: 'age-age-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1099,
-      revealedAtChapter: 498,
+      revealedAtChapter: 1080,
       name: { it: 'Frutto Toshi Toshi', en: 'Age-Age Fruit' },
       summary: {
         it: 'Cambia l’età di una persona: un uomo fatto prosegue da bambino, un bambino si rialza adulto, il corpo spostato lungo i propri anni.',
@@ -1550,7 +1545,7 @@ export const devilFruits: Saga = {
       id: 'whip-whip-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1113,
-      revealedAtChapter: 1080,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Muchi Muchi', en: 'Whip-Whip Fruit' },
       summary: {
         it: 'Chi l’ha mangiato fa obbedire alla frusta anche le cose: un edificio colpito si sposta dove gli viene ordinato.',
@@ -1562,7 +1557,7 @@ export const devilFruits: Saga = {
       id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 577,
+      revealedAtChapter: 1102,
       name: {
         it: 'Frutto Inu Inu, modello Volpe a Nove Code',
         en: 'Dog-Dog Fruit, Mythical Model: Nine-Tailed Fox',
@@ -1580,7 +1575,7 @@ export const devilFruits: Saga = {
       id: 'gabu-gabu-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 577,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
       summary: {
         it: 'Trasforma in liquore il corpo di chi l’ha mangiato: viene ingoiato a fiaschi interi e risputato fuori in un getto che prende fuoco.',
@@ -1592,7 +1587,7 @@ export const devilFruits: Saga = {
       id: 'huge-huge-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 577,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Deka Deka', en: 'Huge-Huge Fruit' },
       summary: {
         it: 'Fa crescere il corpo senza un limite evidente, finché un uomo supera in altezza le navi che ha accanto e un suo passo blocca un porto.',
@@ -1604,7 +1599,7 @@ export const devilFruits: Saga = {
       id: 'island-island-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 577,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
       summary: {
         it: 'Unisce il corpo al terreno su cui sta, così un’isola si sposta dove le viene detto e la sua roccia si alza in forma di braccia.',
@@ -1616,7 +1611,7 @@ export const devilFruits: Saga = {
       id: 'sick-sick-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 234,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Shiku Shiku', en: 'Sick-Sick Fruit' },
       summary: {
         it: 'Trasmette la malattia con un tocco: un corpo che un attimo prima stava in piedi cade febbricitante e non si rialza.',
@@ -1628,7 +1623,7 @@ export const devilFruits: Saga = {
       id: 'strong-strong-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 234,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Riki Riki', en: 'Strong-Strong Fruit' },
       summary: {
         it: 'Mette nelle braccia una forza fuori da ogni proporzione: quello che sollevano e scagliano si misura in edifici, non in uomini.',
@@ -1640,7 +1635,7 @@ export const devilFruits: Saga = {
       id: 'warp-warp-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 234,
+      revealedAtChapter: 1102,
       name: { it: 'Frutto Wapu Wapu', en: 'Warp-Warp Fruit' },
       summary: {
         it: 'Sposta un corpo da un punto a un altro senza attraversare lo spazio in mezzo: sparisce da dov’era ed è già altrove.',
@@ -1652,7 +1647,7 @@ export const devilFruits: Saga = {
       id: 'ride-ride-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1128,
-      revealedAtChapter: 1094,
+      revealedAtChapter: 1125,
       name: { it: 'Frutto Nori Nori', en: 'Ride-Ride Fruit' },
       summary: {
         it: 'Chi l’ha mangiato prende il comando di qualunque cosa cavalchi, anche di una macchina che si è rivoltata contro la sua parte.',

@@ -1018,6 +1018,7 @@ export const wanoRedrawn: Redrawings = {
   kiku: [
     {
       episode: 901,
+      chapter: 914,
       value: [
         { d: 'M114 34 L58 126 M122 40 L66 132' },
         { d: 'M114 34 L122 40' },

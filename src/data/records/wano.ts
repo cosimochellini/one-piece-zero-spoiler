@@ -1058,6 +1058,7 @@ export const wano: Saga = {
         },
         {
           episode: 976,
+          chapter: 973,
           value: {
             it: 'Nove Foderi Rossi, Denjiro',
             en: 'Nine Red Scabbards, Denjiro',
@@ -1065,7 +1066,9 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 921, value: WANO }],
-      epithet: [{ episode: 976, value: { it: 'Denjiro', en: 'Denjiro' } }],
+      epithet: [
+        { episode: 976, chapter: 973, value: { it: 'Denjiro', en: 'Denjiro' } },
+      ],
     },
     'shimotsuki-yasuie': {
       role: { it: 'Ex daimyo di Hakumai', en: 'Former daimyo of Hakumai' },
@@ -1585,6 +1588,7 @@ export const wano: Saga = {
         },
         {
           episode: 1019,
+          chapter: 1004,
           value: {
             it: 'Pirati delle Cento Bestie, Headliner; addomesticato da O-Tama',
             en: 'Beasts Pirates, Headliner; tamed by Tama',
@@ -1615,6 +1619,7 @@ export const wano: Saga = {
         },
         {
           episode: 953,
+          chapter: 952,
           value: {
             it: 'Pirati delle Cento Bestie, Headliner, direttore del campo di lavoro di Udon; addomesticato da O-Tama',
             en: 'Beasts Pirates, Headliner, warden of the Udon labour camp; tamed by Tama',
@@ -1825,12 +1830,13 @@ export const wano: Saga = {
       },
       status: [
         { episode: 960, value: 'unknown' },
-        { episode: 976, value: 'alive' },
+        { episode: 976, chapter: 973, value: 'alive' },
       ],
       affiliation: [
         { episode: 960, value: RED_SCABBARDS },
         {
           episode: 976,
+          chapter: 973,
           value: {
             it: 'Nove Foderi Rossi; Famiglia Kyoshiro, boss',
             en: 'Nine Red Scabbards; Kyoshiro Family, boss',
@@ -1841,6 +1847,7 @@ export const wano: Saga = {
       epithet: [
         {
           episode: 976,
+          chapter: 973,
           value: {
             it: 'Kyoshiro; Ushimitsu Kozo',
             en: 'Kyoshiro; Ushimitsu Kozo',

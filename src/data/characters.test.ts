@@ -21,6 +21,7 @@ import {
   stories,
 } from './characters'
 import { entities, sagas } from './entities'
+import { gateOf } from './reveal'
 import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 function must(id: string): Entity {
@@ -209,6 +210,8 @@ function firstWord(entity: Entity, locale: Locale): string {
 
 /** One story of one chronicle, with the words it shows in each locale. */
 type StoryCase = {
+  /** The chapter a reader reaches it at (`gateOf`). */
+  readonly chapter: number
   readonly character: Entity
   readonly episode: number
   readonly label: string
@@ -219,6 +222,7 @@ const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
   ({ character, label, timeline }) => {
     return timeline.map((entry) => {
       return {
+        chapter: gateOf(entry, character).revealedAtChapter,
         character,
         episode: entry.episode,
         label: `${label} @${String(entry.episode)}`,
@@ -230,7 +234,7 @@ const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
 
 /** Every later record one story names in one locale, as one line each. */
 function leaksIn(
-  { episode, label, story }: StoryCase,
+  { chapter, episode, label, story }: StoryCase,
   locale: Locale,
 ): readonly string[] {
   // Reduced to words once, not once per record it is scanned for.
@@ -242,7 +246,7 @@ function leaksIn(
   // nearly every record before the slow substring scan.
   const tokens = new Set(words.split(' '))
 
-  return filedAfter(episode)
+  return filedAfter(episode, chapter)
     .filter((other) => !COMMON_WORD_NAMES.has(other.id))
     .filter((other) => episode < (SAID_BEFORE_FILED.get(other.id) ?? Infinity))
     .filter((other) => tokens.has(firstWord(other, locale)))
@@ -311,13 +315,16 @@ const SAID_BEFORE_FILED = new Map([
 ])
 
 /**
- * Every record filed after this episode, which a story at it may not name:
- * characters, but also the arcs, places, ships and fruits, whose names are
- * as much a spoiler as a person's — "Marineford" in a story at episode 400
- * says where the war will be.
+ * Every record filed after this episode or this chapter, which a story at
+ * them may not name: characters, but also the arcs, places, ships and
+ * fruits, whose names are as much a spoiler as a person's — "Marineford" in
+ * a story at episode 400 says where the war will be.
  */
-function filedAfter(episode: number): readonly Entity[] {
-  return entities.filter((other) => other.revealedAtEpisode > episode)
+function filedAfter(episode: number, chapter: number): readonly Entity[] {
+  return entities.filter(
+    (other) =>
+      other.revealedAtEpisode > episode || other.revealedAtChapter > chapter,
+  )
 }
 
 /** The first record on the chart, which the route tests read either side of. */
@@ -534,7 +541,7 @@ describe('the chronicles', () => {
   })
 
   it('links only characters the reader has already met, and never itself', () => {
-    for (const { character, episode, label, story } of STORIES) {
+    for (const { chapter, character, episode, label, story } of STORIES) {
       for (const id of markedIds(story.body.en)) {
         const linked = getCharacter(id)
         const where = `${label} -> ${id}`
@@ -542,6 +549,7 @@ describe('the chronicles', () => {
         expect(linked, where).toBeDefined()
         expect(id, where).not.toBe(character.id)
         expect(linked?.revealedAtEpisode, where).toBeLessThanOrEqual(episode)
+        expect(linked?.revealedAtChapter, where).toBeLessThanOrEqual(chapter)
       }
     }
   })
