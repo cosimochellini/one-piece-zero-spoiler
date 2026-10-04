@@ -2,9 +2,9 @@ import { byNumber, byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { type Locale, LOCALES } from '~/i18n/locales'
-import { EPISODE_CEILING } from '~/lib/progress/episode'
 import { markedIds, tokenize } from '~/lib/prose/markers'
 import type { CharacterStatus } from '~/lib/view/records'
+import { expectTimelineInOrder } from '~/test/timelines'
 
 import {
   bookSections,
@@ -392,23 +392,10 @@ describe('the dossiers', () => {
   })
 
   it('files every timeline in order, from the threshold on, within the dial', () => {
+    expect(ALL_TIMELINES.length).toBeGreaterThan(0)
+
     for (const { character, label, timeline } of ALL_TIMELINES) {
-      const episodes = timeline.map((entry) => entry.episode)
-      const distinct = new Set(episodes)
-
-      expect(episodes.length, label).toBeGreaterThan(0)
-      // Sorted and all distinct is the same statement as strictly ascending,
-      // without a look back at the previous entry inside the loop.
-      expect(episodes, label).toStrictEqual(episodes.toSorted(byNumber()))
-      expect(distinct.size, label).toBe(episodes.length)
-
-      for (const episode of episodes) {
-        expect(Number.isSafeInteger(episode), label).toBe(true)
-        expect(episode, label).toBeGreaterThanOrEqual(
-          character.revealedAtEpisode,
-        )
-        expect(episode, label).toBeLessThanOrEqual(EPISODE_CEILING)
-      }
+      expectTimelineInOrder(timeline, character.revealedAtEpisode, label)
     }
   })
 

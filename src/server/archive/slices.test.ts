@@ -5,7 +5,9 @@ import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
+import { shipDossierOf } from '~/data/places'
 import type { Entity } from '~/data/types'
+import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { episodeOf, isRevealed } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
@@ -15,6 +17,8 @@ import type {
   HomeView,
   RoutePositionView,
   ShelfView,
+  ShipView,
+  Slot,
   Stroke,
 } from '~/lib/view/records'
 
@@ -389,12 +393,51 @@ describe('the slice of the archive a page is given', () => {
     expect(baratie?.dossier?.filedHere.length).toBeGreaterThan(0)
   })
 
+  it('tells the log and its ships nothing the reader has not reached', () => {
+    for (const episode of [1, 60, 300, 500]) {
+      for (const locale of LOCALES) {
+        const log = placesPage(ep(episode), locale)
+
+        expect(log.ships).toHaveLength(2)
+
+        saysNothing(log, ep(episode))
+      }
+    }
+  })
+
+  it('opens a ship at her threshold and keeps her under fog before it', () => {
+    expect(merryAt(17)?.open).toBe(false)
+    expect(merryAt(18)?.open).toBe(true)
+  })
+
+  it('says nothing of the Merry’s farewell to a reader at 300', () => {
+    const farewell = shipDossierOf(onFile('going-merry'))?.fate.at(-1)
+
+    expect(farewell?.episode).toBe(312)
+
+    for (const locale of LOCALES) {
+      const words = farewell?.value[locale] ?? ''
+      const at = (episode: number): string =>
+        JSON.stringify(placesPage(ep(episode), locale))
+
+      expect(words).not.toBe('')
+      expect(at(300)).not.toContain(words)
+      expect(at(311)).not.toContain(words)
+      expect(at(312)).toContain(words)
+    }
+  })
+
   it('never leaks a name through a handle', () => {
     for (const covered of placesPage(null, 'en').covered) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
   })
 })
+
+/** The first ship in the band, as a reader at this episode is given it. */
+function merryAt(episode: number): Slot<ShipView> | undefined {
+  return placesPage(ep(episode), 'en').ships[0]
+}
 
 /** A record the archive is known to file, or the test is wrong. */
 function filed(id: string): Entity {

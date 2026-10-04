@@ -10,7 +10,7 @@ import {
 } from '~/data/characters'
 import { getEntity } from '~/data/entities'
 import { orderByMode } from '~/data/order'
-import { placeDossierOf, places } from '~/data/places'
+import { placeDossierOf, places, shipDossierOf, ships } from '~/data/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
@@ -25,6 +25,7 @@ import type {
   RoutePositionView,
   SearchableCharacter,
   ShelfView,
+  ShipView,
   Slot,
 } from '~/lib/view/records'
 
@@ -34,6 +35,7 @@ import {
   characterOf,
   coveredOf,
   factsOf,
+  knownAt,
   recordOf,
   searchableOf,
   slotOf,
@@ -221,7 +223,7 @@ export function nearbyPage(
   )
 }
 
-/** The ship's log. */
+/** The ship's log, and the ships that carry it. */
 export function placesPage(
   bookmark: Bookmark,
   locale: Locale,
@@ -229,10 +231,15 @@ export function placesPage(
   readonly covered: readonly CoveredRecord[]
   readonly filed: number
   readonly open: readonly PortView[]
+  readonly ships: readonly Slot<ShipView>[]
 } {
-  const ordered = orderByMode(places, modeOf(bookmark))
+  const mode = modeOf(bookmark)
+  const ordered = orderByMode(places, mode)
 
   return {
+    ships: orderByMode(ships, mode).map((entity) =>
+      slotOf(entity, bookmark, (ship) => shipOf(ship, bookmark, locale)),
+    ),
     filed: ordered.length,
     open: ordered.flatMap((entity) =>
       isRevealed(entity, bookmark) ? [portOf(entity, bookmark, locale)] : [],
@@ -267,19 +274,62 @@ export function portOf(
           arc: arc === undefined ? null : arc.name[locale],
           landmark: dossier.landmark[locale],
           log: dossier.log[locale],
-          filedHere: dossier.filedHere.flatMap<Slot<RecordView>>((filed) => {
-            const record = getEntity(filed)
-            return record === undefined ?
-                []
-              : [
-                  slotOf(record, bookmark, (found) =>
-                    recordOf(found, locale, bookmark),
-                  ),
-                ]
-          }),
+          filedHere: slotsOf(dossier.filedHere, bookmark, locale),
         }
       ),
   }
+}
+
+/**
+ * One ship, with her entry resolved: the place she is received at named
+ * outright (it opens no later than the ship, which a data test holds), the
+ * latest fate the reader has reached and no other, and each place she
+ * reaches with its own fog already decided.
+ */
+export function shipOf(
+  entity: Entity,
+  bookmark: Bookmark,
+  locale: Locale,
+): ShipView {
+  const dossier = shipDossierOf(entity)
+  if (dossier === undefined) {
+    return {
+      ...recordOf(entity, locale, bookmark),
+      summary: entity.summary[locale],
+      dossier: null,
+    }
+  }
+
+  const fate = knownAt(dossier.fate, bookmark)?.[locale]
+
+  return {
+    ...recordOf(entity, locale, bookmark),
+    summary: entity.summary[locale],
+    dossier: {
+      builder: dossier.builder[locale],
+      launched: getEntity(dossier.launched)?.name[locale] ?? null,
+      log: dossier.log[locale],
+      ...(fate !== undefined && { fate }),
+      ports: slotsOf(dossier.ports ?? [], bookmark, locale),
+    },
+  }
+}
+
+/**
+ * Records named by id, each behind its own fog. An id the archive does not
+ * file is dropped rather than drawn.
+ */
+function slotsOf(
+  ids: readonly string[],
+  bookmark: Bookmark,
+  locale: Locale,
+): readonly Slot<RecordView>[] {
+  return ids.flatMap((id) => {
+    const record = getEntity(id)
+    return record === undefined ?
+        []
+      : [slotOf(record, bookmark, (found) => recordOf(found, locale, bookmark))]
+  })
 }
 
 /** What a character's page calls itself, open and under fog. */

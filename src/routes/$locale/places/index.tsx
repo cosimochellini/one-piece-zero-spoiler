@@ -12,12 +12,13 @@ import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { PortLog } from '~/components/PortLog'
+import { ShipLog } from '~/components/ShipLog'
 import { useT } from '~/i18n/LocaleContext'
 import { isLocale } from '~/i18n/locales'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
-import { liftPort, liftRecord, loadPlaces } from '~/server/api'
+import { liftPort, liftRecord, liftShip, loadPlaces } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/places/')({
   // Awaited, not streamed: a record tile elsewhere links here with a `#id`,
@@ -42,9 +43,9 @@ export const Route = createFileRoute('/$locale/places/')({
 /**
  * The places page (Hallmark macrostructure 14, Narrative Workflow).
  *
- * A ship's log: the brand line and a count, then every place as a
- * numbered port of call down one spine, in the order the ship puts in at
- * them. No hero and no display headline; the log is the page. The reader's
+ * A ship's log: the brand line and a count, the two ships the crew sails,
+ * then every place as a numbered port of call down one spine, in the order
+ * the ship puts in at them. No hero and no display headline; the log is the page. The reader's
  * episode is drawn as a horizon on the spine, and every port below it keeps
  * its number and its episode while its name, drawing and colour stay out of
  * the served HTML.
@@ -52,9 +53,11 @@ export const Route = createFileRoute('/$locale/places/')({
 function PlacesPage(): ReactElement {
   const t = useT()
   const { bookmark } = useBookmark()
-  const { covered, filed, open } = Route.useLoaderData()
+  const { covered, filed, open, ships } = Route.useLoaderData()
 
   const peek = usePeek(liftPort)
+
+  const peekShip = usePeek(liftShip)
 
   const peekRecord = usePeek(liftRecord)
 
@@ -63,6 +66,11 @@ function PlacesPage(): ReactElement {
       count={t('places.count', { count: filed })}
       title={t('places.title')}
     >
+      <ShipLog
+        peek={peekShip}
+        peekRecord={peekRecord}
+        ships={ships}
+      />
       <PortLog
         bookmark={bookmark}
         covered={covered}

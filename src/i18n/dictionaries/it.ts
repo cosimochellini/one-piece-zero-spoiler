@@ -189,6 +189,19 @@ export const itDictionary: Dictionary = {
   'places.filedNone':
     'Nella wiki non c’è ancora niente collegato a questo luogo.',
 
+  'ships.title': 'Navi',
+  'ships.foggedName': 'Una nave nella nebbia',
+  'ships.foggedDescription.episode':
+    'Una nave di One Piece che compare per la prima volta nell’episodio {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ships.foggedDescription.season':
+    'Una nave di One Piece che compare per la prima volta in {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ships.foggedDescription.chapter':
+    'Una nave di One Piece che compare per la prima volta nel capitolo {threshold}. Imposta il segnalibro per leggerne la voce.',
+  'ships.builder': 'Progettata da',
+  'ships.launched': 'Ricevuta a',
+  'ships.fate': 'Sorte',
+  'ships.ports': 'Luoghi che raggiunge',
+
   'fruits.title': 'Frutti del diavolo',
   'fruits.count':
     '{count} frutti del diavolo, divisi per tipo e nell’ordine in cui la storia li nomina. Quelli nella nebbia non compaiono nei risultati della ricerca.',

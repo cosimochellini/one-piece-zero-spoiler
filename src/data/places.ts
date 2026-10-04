@@ -2,7 +2,7 @@ import type { PlaceForm, Sea } from '~/lib/view/records'
 
 import { entities } from './entities'
 import { orderByMode } from './order'
-import type { Entity, LocalizedText } from './types'
+import type { Entity, LocalizedText, Timeline } from './types'
 
 /**
  * The ship's log: the place layer of the archive.
@@ -17,6 +17,9 @@ import type { Entity, LocalizedText } from './types'
  * viewer at the threshold episode has already seen. A fact learned later is
  * a spoiler, so Baratie has a sous-chef and not what he turns out to be, and
  * Jaya has a town that laughs and not what lies past it.
+ *
+ * The two ships the crew sails are filed here too, with an entry of their
+ * own: they carry the log rather than being stops on it.
  */
 
 /**
@@ -46,6 +49,39 @@ export type PlaceDossier = {
    * than the place stays under fog on the place's own page.
    */
   readonly filedHere: readonly string[]
+}
+
+/**
+ * The log entry for a ship.
+ *
+ * Its own shape rather than a `PlaceDossier` with `form: 'ship'`. A ship lies
+ * in no one sea and has no landmark to look for, so those words would be
+ * wrong on it; and unlike a port, a ship has a story of its own, which is
+ * what `fate` holds. The other fields obey the ship's threshold, like a
+ * port's.
+ */
+export type ShipDossier = {
+  /** Who made her, as a viewer at the threshold has been told it. */
+  readonly builder: LocalizedText
+  /**
+   * The place the crew receives her at: a `place` record's id, named
+   * outright, because it opens no later than the ship (a data test holds it).
+   */
+  readonly launched: string
+  /** The log entry proper: two or three sentences, safe at the threshold. */
+  readonly log: LocalizedText
+  /**
+   * Where the ship stands, from her threshold on. The page prints the latest
+   * entry the reader has reached, and the first entry is at the threshold,
+   * so the row is there from the start and its arrival announces nothing.
+   */
+  readonly fate: Timeline<LocalizedText>
+  /**
+   * The places she reaches, each listed only where she arrives at the
+   * place's own threshold: listed any later, the tile would tell a reader
+   * where she goes next. Each keeps its own fog.
+   */
+  readonly ports?: readonly string[]
 }
 
 export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
@@ -837,6 +873,69 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   },
 }
 
+export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
+  'going-merry': {
+    builder: {
+      it: 'Merry, il maggiordomo di Kaya',
+      en: 'Merry, Kaya’s butler',
+    },
+    launched: 'syrup-village',
+    log: {
+      it: 'La nave che Kaya regala alla ciurma quando la ciurma lascia il Villaggio di Syrup, carica di provviste. L’ha progettata il suo maggiordomo Merry, che spiega a Nami come si governa. È la prima vera nave della ciurma: fino a quel momento il mare l’ha attraversato su piccole barche.',
+      en: 'The ship Kaya gives the crew as it leaves Syrup Village, loaded with supplies. Kaya’s butler Merry designed her himself, and he shows Nami how she handles. She is the crew’s first real ship: until then it had crossed the sea in small boats.',
+    },
+    fate: [
+      {
+        episode: 18,
+        value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
+      },
+      {
+        episode: 233,
+        value: {
+          it: 'Un carpentiere di Water Seven ha trovato la chiglia danneggiata in modo irreparabile. Non arriverebbe all’isola successiva.',
+          en: 'A Water Seven shipwright has found her keel damaged beyond repair. She would not reach the next island.',
+        },
+      },
+      {
+        episode: 312,
+        value: {
+          it: 'Dopo aver portato via la ciurma da Enies Lobby, si spezza in mare. Rufy le dà fuoco e la ciurma la guarda bruciare.',
+          en: 'After carrying the crew away from Enies Lobby, she breaks apart at sea. Luffy sets her alight, and the crew watches her burn.',
+        },
+      },
+    ],
+  },
+  'thousand-sunny': {
+    builder: {
+      it: 'Franky, che l’ha costruita con Iceburg e i capisquadra della Galley-La',
+      en: 'Franky, who built her with Iceburg and the Galley-La foremen',
+    },
+    launched: 'water-seven',
+    log: {
+      it: 'Franky l’ha costruita per la ciurma con il legno di Adam, un albero che, a suo dire, è il più resistente al mondo, pagato con i soldi che la sua banda aveva rubato a Usop. Iceburg la mostra alla ciurma mentre Franky resta lontano, ed è grande il doppio della Merry. Il nome lo propone Iceburg, e la ciurma lo sceglie al posto di quello che voleva Franky. Lasciando Water Seven, sfugge alla nave di Garp sollevandosi in volo.',
+      en: 'Franky built her for the crew from the wood of Adam, a tree he says is the strongest in the world, paid for with the money his gang stole from Usopp. Iceburg shows her to the crew while Franky stays away, and she is twice the size of the Merry. The name is Iceburg’s idea, and the crew picks it over the one Franky wanted. Leaving Water Seven, she escapes Garp’s ship by launching herself into the air.',
+    },
+    fate: [
+      {
+        episode: 324,
+        value: { it: 'La nave della ciurma.', en: 'The crew’s ship.' },
+      },
+    ],
+    ports: [
+      'florian-triangle',
+      'thriller-bark',
+      'sabaody-archipelago',
+      'fish-man-island',
+      'punk-hazard',
+      'dressrosa',
+      'zou',
+      'cacao-island',
+      'kuri',
+      'egghead-island',
+    ],
+  },
+}
+
 /** Every place record, in the order the ship puts in at them. */
 export const places: readonly Entity[] = orderByMode(
   entities.filter((entity) => entity.kind === 'place'),
@@ -858,4 +957,15 @@ export function getPlace(id: string): Entity | undefined {
  */
 export function placeDossierOf(entity: Entity): PlaceDossier | undefined {
   return PLACE_DOSSIERS[entity.id]
+}
+
+/** Every ship record, in the order the crew receives them. */
+export const ships: readonly Entity[] = orderByMode(
+  entities.filter((entity) => entity.kind === 'ship'),
+  'episode',
+)
+
+/** The log entry filed for a ship, or `undefined` for any other record. */
+export function shipDossierOf(entity: Entity): ShipDossier | undefined {
+  return SHIP_DOSSIERS[entity.id]
 }

@@ -188,6 +188,19 @@ export const enDictionary = {
   'places.filedHere': 'Found here',
   'places.filedNone': 'Nothing in the wiki is linked to this place yet.',
 
+  'ships.title': 'Ships',
+  'ships.foggedName': 'A ship under fog',
+  'ships.foggedDescription.episode':
+    'A One Piece ship that first appears in episode {threshold}. Set your bookmark to read about it.',
+  'ships.foggedDescription.season':
+    'A One Piece ship that first appears in {threshold}. Set your bookmark to read about it.',
+  'ships.foggedDescription.chapter':
+    'A One Piece ship that first appears in chapter {threshold}. Set your bookmark to read about it.',
+  'ships.builder': 'Designed by',
+  'ships.launched': 'Received at',
+  'ships.fate': 'Fate',
+  'ships.ports': 'Places she reaches',
+
   'fruits.title': 'Devil fruits',
   'fruits.count':
     '{count} devil fruits, grouped by type and listed in the order the story names them. Fruits under fog do not show up in search.',

@@ -17,7 +17,6 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
-import type { Gated } from '~/lib/progress/spoiler'
 import { describeBookmark } from '~/lib/progress/threshold'
 import type {
   CoveredRecord,
@@ -154,7 +153,12 @@ function Port({
 
         <SpoilerVeil
           peek={peek}
-          placeholder={<FoggedSpread entry={entry} />}
+          placeholder={
+            <FoggedSpread
+              description={threshold('places.foggedDescription', entry)}
+              name={t('places.foggedName')}
+            />
+          }
           slot={slot}
           strength="media"
         >
@@ -212,24 +216,26 @@ function Rail({
 }
 
 /**
- * What stands in for a port the reader has not reached. It is the same shape
- * as the open spread and carries none of its content: the served HTML has no
- * name, no drawing and no colour, only the bare plate and a generic line.
+ * What stands in for a port or a ship the reader has not reached. It is the
+ * same shape as the open spread and carries none of its content: the served
+ * HTML has no name, no drawing and no colour, only the bare plate and a
+ * generic line.
  */
-function FoggedSpread({ entry }: { readonly entry: Gated }): ReactElement {
-  const { t } = useLocale()
-  const threshold = useThreshold()
-
+export function FoggedSpread({
+  name,
+  description,
+}: {
+  readonly description: string
+  readonly name: string
+}): ReactElement {
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
         <PortPlate />
       </div>
       <div {...stylex.props(styles.dossier)}>
-        <h2 {...stylex.props(styles.name)}>{t('places.foggedName')}</h2>
-        <p {...stylex.props(styles.summary)}>
-          {threshold('places.foggedDescription', entry)}
-        </p>
+        <h2 {...stylex.props(styles.name)}>{name}</h2>
+        <p {...stylex.props(styles.summary)}>{description}</p>
       </div>
     </div>
   )
@@ -243,6 +249,8 @@ function Spread({
   readonly peekRecord: (handle: string) => Promise<RecordView>
   readonly port: PortView
 }): ReactElement {
+  const { t } = useLocale()
+
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
@@ -260,6 +268,7 @@ function Spread({
             <FiledHere
               filed={port.dossier.filedHere}
               peekRecord={peekRecord}
+              title={t('places.filedHere')}
             />
           </>
         )}
@@ -269,22 +278,24 @@ function Spread({
 }
 
 /**
- * The records the archive files at this port. Each tile keeps its own fog:
- * a swordsman who reaches the restaurant four episodes after the crew does
- * is a covered tile beside an open one.
+ * The records the archive files at this port, or the places a ship reaches.
+ * Each tile keeps its own fog: a swordsman who reaches the restaurant four
+ * episodes after the crew does is a covered tile beside an open one.
  */
-function FiledHere({
+export function FiledHere({
   filed,
   peekRecord,
+  title,
 }: {
   readonly filed: readonly Slot<RecordView>[]
   readonly peekRecord: (handle: string) => Promise<RecordView>
+  readonly title: string
 }): ReactElement {
   const { t } = useLocale()
 
   return (
     <div {...stylex.props(styles.filed)}>
-      <h3 {...stylex.props(styles.filedTitle)}>{t('places.filedHere')}</h3>
+      <h3 {...stylex.props(styles.filedTitle)}>{title}</h3>
       {filed.length === 0 ?
         <p {...stylex.props(styles.filedNone)}>{t('places.filedNone')}</p>
       : <ul {...stylex.props(styles.crew)}>

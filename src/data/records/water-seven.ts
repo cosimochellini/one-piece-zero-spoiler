@@ -620,7 +620,7 @@ export const waterSeven: Saga = {
     {
       id: 'thousand-sunny',
       kind: 'ship',
-      revealedAtEpisode: 321,
+      revealedAtEpisode: 324,
       revealedAtChapter: 439,
       name: { it: 'Thousand Sunny', en: 'Thousand Sunny' },
       summary: {
