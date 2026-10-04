@@ -296,13 +296,16 @@ describe('the texts', () => {
   }, 15_000)
 })
 
-/** Every pair of records that go by the same English name, each pair once. */
+/** Whether two records go by the same name in some locale, as the scan sees it. */
+function namesakes(entity: Entity, other: Entity): boolean {
+  return LOCALES.some((locale) => entity.name[locale] === other.name[locale])
+}
+
+/** Every pair of records that share a name in some locale, each pair once. */
 const NAMESAKES: readonly (readonly [Entity, Entity])[] = entities.flatMap(
   (entity) => {
     return entities
-      .filter(
-        (other) => other.id > entity.id && other.name.en === entity.name.en,
-      )
+      .filter((other) => other.id > entity.id && namesakes(entity, other))
       .map((other) => [entity, other] as const)
   },
 )
