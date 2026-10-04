@@ -96,6 +96,16 @@ const KINDS: readonly {
     seesRobin: true,
     seesShanks: true,
   },
+  // Chapter 155 reaches only episode 91, so read as a raw number it would
+  // reach the bounty dated 130 that it must not.
+  {
+    name: 'a chapter whose number is past the episode it reaches',
+    bookmark: ch(155),
+    mode: 'chapter',
+    progress: episodeAtChapter(155),
+    seesRobin: false,
+    seesShanks: true,
+  },
   {
     name: 'the first chapter',
     bookmark: ch(1),
