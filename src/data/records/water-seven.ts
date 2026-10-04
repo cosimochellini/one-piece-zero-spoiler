@@ -166,6 +166,8 @@ export const waterSeven: Saga = {
       kind: 'place',
       revealedAtEpisode: 229,
       revealedAtChapter: 323,
+      // Kuzan reads Water Seven off the Log Pose at 228.
+      nameSaidAt: 228,
       name: { it: 'Water Seven', en: 'Water Seven' },
       summary: {
         it: 'La città a cui porta il Log Pose dopo la stazione sul mare, costruita per metà sotto il livello dell’acqua, con una grande fontana in cima e i migliori carpentieri del mondo.',
@@ -346,6 +348,8 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 235,
       revealedAtChapter: 329,
+      // The Franky Family names itself to Zoro at 231, two episodes before Franky is met.
+      nameSaidAt: 231,
       name: { it: 'Franky', en: 'Franky' },
       summary: {
         it: 'Un cyborg in mutande e camicia hawaiana, con il ciuffo a pompadour, che smonta navi per vivere e le ricostruisce per passione, e che ha appena rapinato Usop.',
@@ -385,7 +389,7 @@ export const waterSeven: Saga = {
       name: { it: 'Spandam', en: 'Spandam' },
       summary: {
         it: 'Il capo di un’unità segreta del Governo Mondiale, che dà ordini da una lumaca telefonica dorata e porta una spada con la testa di elefante.',
-        en: 'The chief of a secret World Government unit, who gives his orders down a golden Den Den Mushi and carries a sword with an elephant’s head on it.',
+        en: 'The chief of a secret World Government unit, who gives his orders down a golden transponder snail and carries a sword with an elephant’s head on it.',
       },
       visual: { art: 'spandam', tint: 'wine' },
     },
@@ -418,6 +422,8 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 259,
       revealedAtChapter: 369,
+      // "Nero" is Italian for black: the Black Cat Pirates are the Gatto Nero from episode 9.
+      commonWord: true,
       name: { it: 'Nero', en: 'Nero' },
       summary: {
         it: 'Un agente del Cipher Pol 9 con una piuma sul cappello, che ha indovinato che Franky sarebbe passato sui tetti e lo aspetta in cima alla terza carrozza del treno del mare.',

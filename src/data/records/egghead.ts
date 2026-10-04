@@ -55,6 +55,8 @@ export const egghead: Saga = {
       kind: 'character',
       revealedAtEpisode: 1090,
       revealedAtChapter: 1068,
+      // Koby tells Luffy of Dr. Vegapunk’s seastone hulls at 315, long before he is met.
+      nameSaidAt: 315,
       name: { it: 'Vegapunk', en: 'Vegapunk' },
       summary: {
         it: 'Lo scienziato che il mondo insegue da cinquecento anni, un vecchio dalla testa enorme a forma di lampadina che vive dentro il suo laboratorio.',
@@ -475,6 +477,8 @@ export const egghead: Saga = {
       kind: 'character',
       revealedAtEpisode: 1148,
       revealedAtChapter: 1115,
+      // The name on the Poneglyph Robin reads at 548, long before the show puts him on screen.
+      nameSaidAt: 548,
       name: { it: 'Joy Boy', en: 'Joy Boy' },
       summary: {
         it: 'Il primo uomo a essere chiamato pirata, nato novecento anni fa in un regno molto più avanzato del suo tempo, che combatteva con un corpo elastico come Nika, il Dio del Sole.',

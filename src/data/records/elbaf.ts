@@ -36,6 +36,8 @@ export const elbaf: Saga = {
       kind: 'arc',
       revealedAtEpisode: 1156,
       revealedAtChapter: 1126,
+      // The giants’ homeland from 71, where Brogy calls himself its strongest warrior.
+      nameSaidAt: 71,
       name: { it: 'Elbaf', en: 'Elbaph' },
       summary: {
         it: 'La ciurma riprende il mare insieme ai giganti dei Pirati Guerrieri Giganti, diretta verso Elbaf, la patria dei guerrieri di cui parlavano Dorry e Broggy.',
@@ -60,6 +62,8 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1159,
       revealedAtChapter: 1129,
+      // "Road" is in "Road Poneglyph" long before the teacher is met.
+      commonWord: true,
       name: { it: 'Road', en: 'Road' },
       summary: {
         it: 'Il Dio del Sole della Terra degli Dei si rivela un gigante in carne e ossa, navigatore della ciurma di Hajrudin, chino su un plastico che finge di governare.',
@@ -72,6 +76,8 @@ export const elbaf: Saga = {
       kind: 'place',
       revealedAtEpisode: 1160,
       revealedAtChapter: 1130,
+      // The giants’ homeland from 71, where Brogy calls himself its strongest warrior.
+      nameSaidAt: 71,
       name: { it: 'Elbaf', en: 'Elbaph' },
       summary: {
         it: 'L’isola dei giganti nel Nuovo Mondo, dominata da un albero così alto che la chioma sparisce tra le nuvole e le navi sembrano giocattoli ai suoi piedi.',
@@ -305,6 +311,8 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1172,
       revealedAtChapter: 1142,
+      // "Wolf" is the Dog-Dog Fruit’s wolf form long before the navigator is met.
+      commonWord: true,
       name: { it: 'Wolf', en: 'Wolf' },
       summary: {
         it: 'L’insegnante di ginnastica della Scuola Walrus, un gigante robusto che esce gravemente ferito dall’attacco del serpente e chiede prima di tutto dei bambini.',

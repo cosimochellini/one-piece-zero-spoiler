@@ -1224,7 +1224,9 @@ export const eastBlue: Saga = {
           },
         },
       ],
-      origin: [{ episode: 4, value: SYRUP_VILLAGE }],
+      // The village is named at 9, when the crew sets course for it; the
+      // flashback at 4 says only that he left a son behind.
+      origin: [{ episode: 9, value: SYRUP_VILLAGE }],
     },
     'higuma': {
       role: { it: 'Capo dei banditi di montagna', en: 'Mountain bandit boss' },

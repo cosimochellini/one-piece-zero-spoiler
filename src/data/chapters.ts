@@ -39,6 +39,14 @@ import type { Dated, Entity, Timeline } from './types'
  * say anything about the chapters between them.
  */
 
+/** One timeline of the archive, with the record that owns it and its field. */
+export type OwnedTimeline = {
+  /** `id.field`, for a failure to name. */
+  readonly label: string
+  readonly owner: Entity
+  readonly timeline: Timeline<unknown>
+}
+
 /** One dated entry of the archive, with the record whose timeline holds it. */
 export type DatedEntry = {
   readonly entry: Dated<unknown>
@@ -46,45 +54,58 @@ export type DatedEntry = {
   readonly owner: Entity
 }
 
-/** The arrays among a dossier's fields, which are its timelines. */
-function timelinesOf(dossier: object): readonly Timeline<unknown>[] {
-  return Object.values(dossier).filter(
-    (field: unknown): field is Timeline<unknown> => Array.isArray(field),
+/** The arrays among a dossier's fields, which are its timelines, by name. */
+function timelinesOf(
+  dossier: object,
+): readonly (readonly [string, Timeline<unknown>])[] {
+  return Object.entries(dossier).filter(
+    (field): field is [string, Timeline<unknown>] => Array.isArray(field[1]),
   )
 }
 
-/** Every entry of every timeline one record owns, labelled for a failure. */
-function entriesOf(
+/** Every timeline one record owns, labelled for a failure. */
+function owned(
   id: string,
-  timelines: readonly Timeline<unknown>[],
-): readonly DatedEntry[] {
+  timelines: readonly (readonly [string, Timeline<unknown>])[],
+): readonly OwnedTimeline[] {
   const owner = getEntity(id)
   if (owner === undefined) {
     return []
   }
 
-  return timelines.flat().map((entry) => {
-    const label = `${id} @${String(entry.episode)}`
+  return timelines.map(([field, timeline]) => {
+    const label = `${id}.${field}`
 
-    return { entry, owner, label }
+    return { label, owner, timeline }
   })
 }
 
 /**
- * Every dated entry in the archive: the character dossiers, the ships' fates
- * and the redrawings.
+ * Every timeline in the archive: the character dossiers' fields, the ships'
+ * fates and the redrawings. One data test holds them all to the same order.
  */
-export const DATED: readonly DatedEntry[] = [
+export const TIMELINES: readonly OwnedTimeline[] = [
   ...Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) =>
-    entriesOf(id, timelinesOf(dossier)),
+    owned(id, timelinesOf(dossier)),
   ),
   ...Object.entries(SHIP_DOSSIERS).flatMap(([id, dossier]) =>
-    entriesOf(id, [dossier.fate]),
+    owned(id, [['fate', dossier.fate]]),
   ),
   ...Object.entries(REDRAWINGS).flatMap(([id, timeline]) =>
-    entriesOf(id, [timeline]),
+    owned(id, [['redrawing', timeline]]),
   ),
 ]
+
+/** Every dated entry in the archive, flattened out of `TIMELINES`. */
+export const DATED: readonly DatedEntry[] = TIMELINES.flatMap(
+  ({ owner, timeline }) => {
+    return timeline.map((entry) => {
+      const label = `${owner.id} @${String(entry.episode)}`
+
+      return { entry, owner, label }
+    })
+  },
+)
 
 /** The (episode, chapter) pairs the entries vouch for themselves. */
 const ANCHORS = DATED.flatMap(({ entry }) =>

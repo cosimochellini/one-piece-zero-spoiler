@@ -380,6 +380,8 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 633,
       revealedAtChapter: 709,
+      // "Diamante" is Italian for diamond, which is Jozu’s epithet from 461.
+      commonWord: true,
       name: { it: 'Diamante', en: 'Diamante' },
       summary: {
         it: 'L’organizzatore del torneo del colosseo, un uomo in piume e cappello che rende molle il proprio corpo e la spada un drappo.',

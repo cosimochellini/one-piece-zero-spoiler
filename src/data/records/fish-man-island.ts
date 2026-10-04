@@ -39,6 +39,8 @@ export const fishManIsland: Saga = {
       kind: 'arc',
       revealedAtEpisode: 523,
       revealedAtChapter: 603,
+      // Sanji and Yosaku explain the island of the fish-men at 31, long before the crew reaches it.
+      nameSaidAt: 31,
       name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
       summary: {
         it: 'Diecimila metri sotto l’arcipelago, la rotta scende verso un’isola di uomini-pesce e sirene, ultima tappa prima del Nuovo Mondo.',
@@ -159,6 +161,8 @@ export const fishManIsland: Saga = {
       kind: 'place',
       revealedAtEpisode: 526,
       revealedAtChapter: 607,
+      // Sanji and Yosaku explain the island of the fish-men at 31, long before the crew reaches it.
+      nameSaidAt: 31,
       name: { it: 'Isola degli Uomini-Pesce', en: 'Fish-Man Island' },
       summary: {
         it: 'Un’isola a diecimila metri sotto il mare, in fondo a una fossa, chiusa in un’enorme bolla d’aria e illuminata da una luce che scende dall’alto.',

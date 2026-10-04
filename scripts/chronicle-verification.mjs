@@ -153,7 +153,7 @@ function table(rows) {
 
 /**
  * The chronicled characters in the order the log lists them: the featured
- * order, which the signal book and `CHRONICLED_IDS` already use, then route
+ * order, which the signal book already uses, then route
  * order for anyone chronicled but not featured.
  * @param {object} archive The loaded `~/data/characters` module.
  * @returns {object[]} The character records, in the order to print them.

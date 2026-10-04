@@ -30,6 +30,8 @@ export const thrillerBark: Saga = {
       kind: 'place',
       revealedAtEpisode: 337,
       revealedAtChapter: 442,
+      // Kokoro warns of the Florian Triangle at 320, in the same breath as Fish-Man Island.
+      nameSaidAt: 320,
       name: { it: 'Triangolo Florian', en: 'Florian Triangle' },
       summary: {
         it: 'Un tratto della Rotta Maggiore sotto una nebbia così fitta che il giorno sembra notte, dove ogni anno spariscono più di cento navi.',
