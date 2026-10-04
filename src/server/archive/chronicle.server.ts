@@ -73,7 +73,7 @@ export function chronicleFrom(
 ): CharacterChronicle {
   return {
     mode: 'chronicle',
-    entries: at.reached(chronicle).map((entry): ChronicleEntry => {
+    entries: at.reached(chronicle, owner).map((entry): ChronicleEntry => {
       return {
         ...gateOf(entry, owner),
         title: entry.value.title[locale],

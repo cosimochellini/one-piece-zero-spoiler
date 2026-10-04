@@ -27,12 +27,17 @@ export type Reveal = {
   /**
    * The latest entry of a timeline the reader has reached, or `undefined`
    * for none, or for no timeline. Entries are expected in ascending episode
-   * order.
+   * order. With the record that owns the timeline, nothing is reached before
+   * the record itself (`gateOf`).
    */
-  readonly latest: <T>(timeline: Timeline<T> | undefined) => T | undefined
+  readonly latest: <T>(
+    timeline: Timeline<T> | undefined,
+    owner?: Gated,
+  ) => T | undefined
   /** Every entry of a timeline the reader has reached, in its own order. */
   readonly reached: <E extends When>(
     timeline: readonly E[] | undefined,
+    owner?: Gated,
   ) => readonly E[]
   /**
    * Whether a record may be shown. A chapter bookmark is read against the
@@ -60,15 +65,31 @@ function isRevealed(gated: Gated, bookmark: Bookmark): boolean {
 /** The reader at this bookmark. */
 export function reveal(bookmark: Bookmark): Reveal {
   const mode = modeOf(bookmark)
-  const reached: Reveal['reached'] = (timeline) =>
-    (timeline ?? []).filter((entry) => isRevealed(gateOf(entry), bookmark))
+  const reached: Reveal['reached'] = (timeline, owner) => {
+    const gate = (entry: When): Gated => gateOf(entry, owner)
+
+    return (timeline ?? []).filter((entry) => isRevealed(gate(entry), bookmark))
+  }
 
   return {
     mode,
     reached,
-    latest: (timeline) => reached(timeline).at(-1)?.value,
+    latest: (timeline, owner) => reached(timeline, owner).at(-1)?.value,
     sees: (gated) => isRevealed(gated, bookmark),
     threshold: (gated) => thresholdIn(gated, mode),
+  }
+}
+
+/**
+ * The same reader, reading one record's own timelines: every entry waits for
+ * the record too, so a record left out of the chapter table cannot have its
+ * facts reached before it is.
+ */
+export function ownedBy(at: Reveal, owner: Gated): Reveal {
+  return {
+    ...at,
+    latest: (timeline) => at.latest(timeline, owner),
+    reached: (timeline) => at.reached(timeline, owner),
   }
 }
 

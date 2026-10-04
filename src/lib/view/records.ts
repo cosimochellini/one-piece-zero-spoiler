@@ -223,9 +223,11 @@ export type ProseSegment =
   | { readonly kind: 'text'; readonly text: string }
 
 /**
- * One story the reader has reached, resolved to their language. A story is
- * dated in episodes; the chapter is the first one that reaches that episode,
- * so a manga reader's mark reads in chapters. Structurally satisfies `Gated`
+ * One story the reader has reached, resolved to their language. Its two
+ * thresholds are the story's gate (`gateOf` in `~/data/reveal`): its episode,
+ * and the chapter it declares or else the first one that reaches the episode,
+ * never before the character's own, so a manga reader's mark reads in
+ * chapters. Structurally satisfies `Gated`
  * (`~/lib/progress/spoiler`), so its mark is named by `useThreshold`.
  */
 export type ChronicleEntry = {

@@ -250,6 +250,14 @@ describe('the slice of the archive a page is given', () => {
     }
   })
 
+  it('sends no fact or story of an unanchored record before its chapter', () => {
+    // Its entries open by the table hundreds of chapters before it does, so
+    // its own covered page is the one place they could still be read.
+    const sent = UNANCHORED.flatMap((record) => sentEarly(record))
+
+    expect(sent).toStrictEqual([])
+  })
+
   it('tells a manga reader no story whose subject is still under fog', () => {
     // A story is reached by its own chapter, and Shiki, left out of the
     // chapter table, has one dated long before the chapter that meets him.
@@ -503,6 +511,28 @@ function logAtChapter(chapter: number): string {
 /** The ships a reader at this episode is sent, by id. */
 function shipIdsAt(episode: number): readonly string[] {
   return placesPage(ep(episode), 'en').ships.map((ship) => ship.id)
+}
+
+const UNANCHORED = entities.filter((entity) => entity.unanchored === true)
+
+/** Whether a character's page at this chapter carries any fact or story. */
+function saysAnything(id: string, chapter: number): boolean {
+  const detail = characterPage(id, { mode: 'chapter', chapter }, 'en')?.detail
+  const facts = Object.keys(detail?.facts ?? {}).filter((key) => key !== 'mode')
+
+  return facts.length > 0 || (detail?.chronicle.entries.length ?? 0) > 0
+}
+
+/** The chapters below its own at which a record's covered page says anything. */
+function sentEarly(record: Entity): readonly string[] {
+  const early: string[] = []
+  for (let chapter = 1; chapter < record.revealedAtChapter; chapter += 1) {
+    if (saysAnything(record.id, chapter)) {
+      early.push(`${record.id} @ c${String(chapter)}`)
+    }
+  }
+
+  return early
 }
 
 /** A record the archive is known to file, or the test is wrong. */
