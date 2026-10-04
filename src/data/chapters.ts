@@ -33,6 +33,7 @@ import { entities } from './entities'
  * seen to reach an episode too early.
  */
 const ANCHORS: readonly (readonly [episode: number, chapter: number])[] = [
+  [312, 430], // the Going Merry's farewell
   [953, 952], // Babanuki tamed by Tama
   [976, 973], // Denjiro's Kyoshiro entries (the reveal is chapter 973)
   [1019, 1004], // Daifugo tamed, the Speed and Daifugo stories

@@ -105,6 +105,7 @@ export function peekPort(
 /**
  * A peeked ship keeps the fog on the places she reaches, and her fate stays
  * at the reader's bookmark: lifting the fog on the ship is not reading ahead.
+ * A handle that stands for a record which is not a ship answers nothing.
  */
 export function peekShip(
   handle: string,
@@ -112,5 +113,5 @@ export function peekShip(
   bookmark: Bookmark,
 ): ShipView | undefined {
   const entity = entityForHandle(handle)
-  return entity === undefined ? undefined : shipOf(entity, bookmark, locale)
+  return entity?.kind === 'ship' ? shipOf(entity, bookmark, locale) : undefined
 }

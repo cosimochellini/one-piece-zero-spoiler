@@ -97,8 +97,8 @@ describe('a record lifted by hand', () => {
     expect(sunny?.dossier?.ports).toStrictEqual([])
   })
 
-  it('lifts a record that is not a ship with no entry', () => {
-    expect(peekShip(lawHandle, 'en', null)?.dossier).toBeNull()
+  it('answers nothing when asked to lift a record that is not a ship', () => {
+    expect(peekShip(lawHandle, 'en', null)).toBeUndefined()
   })
 
   it('answers nothing at all to anything it did not mint', () => {

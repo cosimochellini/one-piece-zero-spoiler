@@ -441,12 +441,27 @@ describe('the slice of the archive a page is given', () => {
     }
   })
 
+  it('keeps the Merry’s farewell from a manga reader until chapter 430', () => {
+    // Chapter 428 used to reach episode 312: the Merry arrives at Enies Lobby
+    // in chapter 428, but she burns in chapter 430.
+    const words = shipDossierOf(onFile('going-merry'))?.fate.at(-1)?.value.en
+
+    expect(words).toBeDefined()
+    expect(logAtChapter(429)).not.toContain(words)
+    expect(logAtChapter(430)).toContain(words)
+  })
+
   it('never leaks a name through a handle', () => {
     for (const covered of placesPage(null, 'en').covered) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
   })
 })
+
+/** The places page a manga reader at this chapter is sent, serialised. */
+function logAtChapter(chapter: number): string {
+  return JSON.stringify(placesPage({ mode: 'chapter', chapter }, 'en'))
+}
 
 /** The first ship in the band, as a reader at this episode is given it. */
 function merryAt(episode: number): Slot<ShipView> | undefined {
