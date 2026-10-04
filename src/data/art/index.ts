@@ -38,8 +38,9 @@ export const DRAWINGS = {
 /**
  * The records drawn again later in the story, filed beside the saga that
  * first drew them. The server picks the latest entry the reader has reached
- * and falls back to `DRAWINGS`, so a reader below the first entry — or one
- * counting in chapters — is shown the drawing they always were.
+ * (a chapter bookmark read as the episode it reaches) and falls back to
+ * `DRAWINGS`, so a reader below the first entry — or with no bookmark — is
+ * shown the drawing they always were.
  */
 export const REDRAWINGS: Redrawings = {
   ...eastBlueRedrawn,
