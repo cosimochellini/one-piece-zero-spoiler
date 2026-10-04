@@ -493,12 +493,13 @@ function filed(id: string): Entity {
   return entity
 }
 
-/** Teach's strokes as a reader at this chapter is shown them. */
-function drawnAtChapter(chapter: number): readonly Stroke[] {
-  return characterOf(filed('marshall-d-teach'), 'en', {
-    mode: 'chapter',
-    chapter,
-  }).visual.strokes
+/** A record's strokes as a reader at this chapter is shown them. */
+function drawnAtChapter(
+  chapter: number,
+  id = 'marshall-d-teach',
+): readonly Stroke[] {
+  return characterOf(filed(id), 'en', { mode: 'chapter', chapter }).visual
+    .strokes
 }
 
 describe('a record drawn again later in the story', () => {
@@ -536,5 +537,46 @@ describe('a record drawn again later in the story', () => {
     expect(peekCharacter(handle, 'en', ep(421))?.visual.strokes).toBe(
       redrawn?.value,
     )
+  })
+
+  describe('twice, following Usopp through both slingshots', () => {
+    const usopp = filed('usopp')
+    const slingshot = DRAWINGS.usopp
+    const [kabuto, kuroKabuto] = REDRAWINGS['usopp'] ?? []
+
+    it('shows the latest slingshot an episode reader has reached', () => {
+      expect(kabuto?.episode).toBe(274)
+      expect(kuroKabuto?.episode).toBe(517)
+
+      expect(characterOf(usopp, 'en', ep(273)).visual.strokes).toBe(slingshot)
+      expect(characterOf(usopp, 'en', ep(274)).visual.strokes).toBe(
+        kabuto?.value,
+      )
+      expect(characterOf(usopp, 'en', ep(516)).visual.strokes).toBe(
+        kabuto?.value,
+      )
+      expect(characterOf(usopp, 'en', ep(517)).visual.strokes).toBe(
+        kuroKabuto?.value,
+      )
+      expect(characterOf(usopp, 'en', null).visual.strokes).toBe(slingshot)
+    })
+
+    it('keeps Kabuto from a chapter reader until the manga draws it', () => {
+      // The manga draws Kabuto in chapter 390, so no chapter below it may.
+      const kabutoAt = chapterAtEpisode(274)
+
+      expect(kabutoAt).toBeGreaterThanOrEqual(390)
+      expect(drawnAtChapter(kabutoAt - 1, 'usopp')).toBe(slingshot)
+      expect(drawnAtChapter(kabutoAt, 'usopp')).toBe(kabuto?.value)
+
+      // The manga draws Kuro Kabuto in chapter 598, but the records between
+      // the timeskip and Fish-Man Island are sparse, so a chapter reader
+      // reaches 517 only at 962: late, which errs towards fog, never early.
+      const kuroKabutoAt = chapterAtEpisode(517)
+
+      expect(kuroKabutoAt).toBeGreaterThanOrEqual(598)
+      expect(drawnAtChapter(kuroKabutoAt - 1, 'usopp')).toBe(kabuto?.value)
+      expect(drawnAtChapter(kuroKabutoAt, 'usopp')).toBe(kuroKabuto?.value)
+    })
   })
 })
