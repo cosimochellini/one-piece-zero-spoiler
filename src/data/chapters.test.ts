@@ -112,7 +112,8 @@ describe('the dated entries against the table', () => {
   it('opens no entry before its own record, unless the record is unanchored', () => {
     // The table makes this hold for every record it is built from. An
     // unanchored record's entries are held by their owner instead: the home
-    // page and every reading of a record's own timelines pass it to `gateOf`.
+    // page shows a story only once `at.sees` its subject, and a record's own
+    // pages pass the record to `reached` and `latest`.
     const early = DATED.filter(({ entry, owner }) => {
       return (
         owner.unanchored !== true

@@ -34,7 +34,10 @@ export type Reveal = {
     timeline: Timeline<T> | undefined,
     owner?: Gated,
   ) => T | undefined
-  /** Every entry of a timeline the reader has reached, in its own order. */
+  /**
+   * Every entry of a timeline the reader has reached, in its own order; with
+   * its owner, none before the owner itself.
+   */
   readonly reached: <E extends When>(
     timeline: readonly E[] | undefined,
     owner?: Gated,

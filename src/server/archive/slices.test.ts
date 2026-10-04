@@ -253,6 +253,11 @@ describe('the slice of the archive a page is given', () => {
   it('sends no fact or story of an unanchored record before its chapter', () => {
     // Its entries open by the table hundreds of chapters before it does, so
     // its own covered page is the one place they could still be read.
+    // The sweep reads character pages, so every unanchored record must be one.
+    expect(UNANCHORED.map((record) => record.kind)).toStrictEqual(
+      UNANCHORED.map(() => 'character'),
+    )
+
     const sent = UNANCHORED.flatMap((record) => sentEarly(record))
 
     expect(sent).toStrictEqual([])
