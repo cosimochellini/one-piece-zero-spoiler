@@ -1020,7 +1020,7 @@ export const eastBlueRedrawn: Redrawings = {
     // Kabuto: a staff with a five-prong fork, the band pulled back from the
     // two outer prongs around a star pellet, the dial housed where the fork
     // meets the shaft. Sogeking carries it onto the Tower of Justice roof at
-    // the end of 274 (ch. 390) and burns the flag with it at 278.
+    // the end of 274 (ch. 390).
     {
       episode: 274,
       value: [
