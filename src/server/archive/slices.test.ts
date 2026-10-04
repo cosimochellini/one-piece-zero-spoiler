@@ -2,7 +2,7 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapters'
+import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import { shipDossierOf } from '~/data/places'
@@ -211,19 +211,21 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('tells the home page nothing the reader has not reached', () => {
-    const marks: readonly Bookmark[] = [
-      ep(1),
-      ep(60),
-      ep(500),
-      ep(1100),
-      ep(1300),
-      { mode: 'season', season: 4, episode: 38 },
-      { mode: 'chapter', chapter: 1 },
-      { mode: 'chapter', chapter: 155 },
-      { mode: 'chapter', chapter: 1000 },
+    // Each bookmark with the episode it reaches, worked out by hand rather
+    // than through `reveal`, so the cut is checked against something else.
+    const marks: readonly (readonly [Bookmark, number])[] = [
+      [ep(1), 1],
+      [ep(60), 60],
+      [ep(500), 500],
+      [ep(1100), 1100],
+      [ep(1300), 1300],
+      [{ mode: 'season', season: 4, episode: 38 }, 130],
+      [{ mode: 'chapter', chapter: 1 }, episodeAtChapter(1)],
+      [{ mode: 'chapter', chapter: 155 }, episodeAtChapter(155)],
+      [{ mode: 'chapter', chapter: 1000 }, episodeAtChapter(1000)],
     ]
 
-    for (const bookmark of marks) {
+    for (const [bookmark, reached] of marks) {
       const home = homePage(bookmark, 'en')
       const at = reveal(bookmark)
       const episodes = home.stories.map((story) => story.revealedAtEpisode)
@@ -244,9 +246,7 @@ describe('the slice of the archive a page is given', () => {
           episodes.length > 0 && episodes.every((episode) => episode < start)
         : episodes.every((episode) => episode >= start)
 
-      expect(at.reached(episodes.map((episode) => ({ episode })))).toHaveLength(
-        episodes.length,
-      )
+      expect(episodes.every((episode) => episode <= reached)).toBe(true)
       expect(inside).toBe(true)
     }
   })
