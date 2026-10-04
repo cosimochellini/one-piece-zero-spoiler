@@ -481,9 +481,15 @@ describe('a record drawn again later in the story', () => {
       expect(kabutoAt).toBeGreaterThanOrEqual(390)
       expect(drawnAtChapter(kabutoAt - 1, 'usopp')).toBe(slingshot)
       expect(drawnAtChapter(kabutoAt, 'usopp')).toBe(kabuto?.value)
-      expect(drawnAtChapter(chapterAtEpisode(517), 'usopp')).toBe(
-        kuroKabuto?.value,
-      )
+
+      // The manga draws Kuro Kabuto in chapter 598, but the records between
+      // the timeskip and Fish-Man Island are sparse, so a chapter reader
+      // reaches 517 only at 962: late, which errs towards fog, never early.
+      const kuroKabutoAt = chapterAtEpisode(517)
+
+      expect(kuroKabutoAt).toBeGreaterThanOrEqual(598)
+      expect(drawnAtChapter(kuroKabutoAt - 1, 'usopp')).toBe(kabuto?.value)
+      expect(drawnAtChapter(kuroKabutoAt, 'usopp')).toBe(kuroKabuto?.value)
     })
   })
 })
