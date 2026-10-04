@@ -31,9 +31,10 @@ import type { Entity } from './types'
  * him. Filler, films and specials do not count. Where a threshold was not
  * certain, it was rounded up rather than guessed — a wrong threshold in this
  * file is a spoiler, which is the one bug this project cannot ship. The
- * chapter numbers were filed from memory of the manga and are marked for a
- * check against a source before the wiki is published; the episode numbers
- * came first and the chapters follow them.
+ * episode numbers came first and the chapters follow them; both are held to
+ * the One Piece Wiki's first chapter and episode of each record's page by
+ * `npm run verify:chapters` (`scripts/verify-chapters.mjs`), which fails on
+ * any record filed below the wiki's.
  *
  * The error is not symmetric, and the editing rule follows from that: a
  * threshold set too low uncovers a record early, which is the bug; one set too
@@ -48,9 +49,8 @@ import type { Entity } from './types'
  * English edition's in `en`; the id is an English slug. Where the dub never
  * voiced a character the Star Comics spelling stands in.
  *
- * Arc thresholds are the episode the arc opens on. They should be checked
- * against a source before the wiki is published; they are the seed set, not a
- * citation.
+ * Arc thresholds are the episode and the chapter the arc opens on, checked
+ * against the wiki's chapter range by the same script.
  *
  * Images: no photographs and no official artwork appear anywhere. Every record
  * has a line drawing of an object or a place that stands for it, drawn in

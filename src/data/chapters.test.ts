@@ -72,9 +72,12 @@ describe('episodeAtChapter', () => {
     expect(episodes).toStrictEqual(episodes.toSorted(byNumber()))
   })
 
-  it('reads chapter 1 as episode 1, not the episode the anime moved it to', () => {
-    // Shanks is chapter 1 but episode 4; Zoro, chapter 3, is episode 2.
-    expect(episodeAtChapter(1)).toBe(1)
+  it('reads chapter 2 as episode 1, not the episode the anime moved it to', () => {
+    // Shanks is chapter 1 but episode 4; Koby and Alvida, chapter 2, are
+    // episode 1; Zoro, chapter 3, is episode 2. So chapter 1 has not finished
+    // episode 1, and chapter 2 has.
+    expect(episodeAtChapter(1)).toBe(0)
+    expect(episodeAtChapter(2)).toBe(1)
   })
 })
 

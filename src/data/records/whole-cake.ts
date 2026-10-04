@@ -222,8 +222,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-perospero',
       kind: 'character',
-      revealedAtEpisode: 787,
-      revealedAtChapter: 832,
+      revealedAtEpisode: 795,
+      revealedAtChapter: 834,
       name: { it: 'Charlotte Perospero', en: 'Charlotte Perospero' },
       summary: {
         it: 'Il primogenito di Big Mom, ministro delle caramelle, che strascica le parole e alza muri di zucchero leccando un bastone a spirale.',
@@ -234,8 +234,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-cracker',
       kind: 'character',
-      revealedAtEpisode: 789,
-      revealedAtChapter: 834,
+      revealedAtEpisode: 796,
+      revealedAtChapter: 835,
       name: { it: 'Charlotte Cracker', en: 'Charlotte Cracker' },
       summary: {
         it: 'Uno Sweet Commander di Big Mom che sforna eserciti di soldati di biscotto, ognuno con lo scudo e la spada seghettata.',
@@ -330,8 +330,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-katakuri',
       kind: 'character',
-      revealedAtEpisode: 796,
-      revealedAtChapter: 840,
+      revealedAtEpisode: 825,
+      revealedAtChapter: 860,
       name: { it: 'Charlotte Katakuri', en: 'Charlotte Katakuri' },
       summary: {
         it: 'Uno Sweet Commander di Big Mom, un uomo altissimo con la sciarpa tirata fino agli occhi e un tridente sempre in mano, che nessuno ha mai visto mangiare.',
@@ -378,8 +378,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-oven',
       kind: 'character',
-      revealedAtEpisode: 811,
-      revealedAtChapter: 855,
+      revealedAtEpisode: 827,
+      revealedAtChapter: 861,
       name: { it: 'Charlotte Oven', en: 'Charlotte Oven' },
       summary: {
         it: 'Il ministro della doratura di Totto Land, che scalda le mani a tal punto da far bollire il mare tutto intorno alla costa.',
@@ -390,8 +390,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-daifuku',
       kind: 'character',
-      revealedAtEpisode: 811,
-      revealedAtChapter: 855,
+      revealedAtEpisode: 826,
+      revealedAtChapter: 861,
       name: { it: 'Charlotte Daifuku', en: 'Charlotte Daifuku' },
       summary: {
         it: 'Il ministro dei fagioli di Totto Land, che si strofina la pancia come una lampada e ne fa uscire un genio di fumo armato.',
@@ -1085,7 +1085,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 786, value: ['memo-memo-fruit'] }],
+      devilFruit: [{ episode: 818, chapter: 851, value: ['memo-memo-fruit'] }],
     },
     'charlotte-linlin': {
       chronicle: wholeCakeChronicles['charlotte-linlin'],
@@ -1121,15 +1121,15 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 787,
+          episode: 795,
           value: {
             it: 'Pirati di Big Mom, ministro delle caramelle',
             en: 'Big Mom Pirates, minister of candy',
           },
         },
       ],
-      origin: [{ episode: 787, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 787, value: ['lick-lick-fruit'] }],
+      origin: [{ episode: 795, value: TOTTO_LAND }],
+      devilFruit: [{ episode: 795, chapter: 834, value: ['lick-lick-fruit'] }],
       bounty: [{ episode: 849, value: 700_000_000 }],
     },
     'charlotte-cracker': {
@@ -1138,12 +1138,12 @@ export const wholeCake: Saga = {
         it: 'È uno dei tre Sweet Commander, gli uomini più forti della ciurma di sua madre, e governa l’isola dei biscotti. Dalle sue mani escono soldati di pasta frolla che si rialzano appena cadono, e più il nemico ne abbatte più lui ne sforna. Dicono che non abbia mai dormito durante una battaglia, e a Totto Land nessuno ha voglia di verificarlo.',
         en: 'He is one of the three Sweet Commanders, the strongest men in his mother’s crew, and he governs the biscuit island. Soldiers of shortbread come out of his hands and stand straight back up when they fall, and the more an enemy breaks the more he bakes. They say he has never once slept through a battle, and nobody in Totto Land wants to test it.',
       },
-      affiliation: [{ episode: 789, value: SWEET_COMMANDER }],
-      origin: [{ episode: 789, value: TOTTO_LAND }],
+      affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
+      origin: [{ episode: 796, value: TOTTO_LAND }],
       epithet: [
-        { episode: 789, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
+        { episode: 796, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
       ],
-      devilFruit: [{ episode: 789, value: ['bis-bis-fruit'] }],
+      devilFruit: [{ episode: 799, chapter: 838, value: ['bis-bis-fruit'] }],
       bounty: [{ episode: 798, value: 860_000_000 }],
     },
     'charlotte-brulee': {
@@ -1300,9 +1300,11 @@ export const wholeCake: Saga = {
         it: 'È il più alto e il più temuto dei figli di Big Mom, e tiene la sciarpa tirata su fino agli occhi anche a tavola. Combatte con un tridente e con un corpo che diventa mochi appiccicoso, e finora nessuno lo ha visto cadere. Vede quello che sta per succedere qualche istante prima che succeda, e schiva colpi che non sono ancora partiti.',
         en: 'He is the tallest and the most feared of Big Mom’s sons, and he keeps his scarf pulled up to his eyes even at the table. He fights with a trident and with a body that turns to sticky mochi, and so far nobody has seen him go down. He sees what is about to happen a moment before it does, and dodges blows that have not been thrown yet.',
       },
-      affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
-      origin: [{ episode: 796, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 796, value: ['mochi-mochi-fruit'] }],
+      affiliation: [{ episode: 825, value: SWEET_COMMANDER }],
+      origin: [{ episode: 825, value: TOTTO_LAND }],
+      devilFruit: [
+        { episode: 833, chapter: 863, value: ['mochi-mochi-fruit'] },
+      ],
       bounty: [{ episode: 830, value: 1_057_000_000 }],
     },
     'vinsmoke-sora': {
@@ -1359,15 +1361,15 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 811,
+          episode: 827,
           value: {
             it: 'Pirati di Big Mom, ministro della doratura',
             en: 'Big Mom Pirates, minister of browning',
           },
         },
       ],
-      origin: [{ episode: 811, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 811, value: ['heat-heat-fruit'] }],
+      origin: [{ episode: 827, value: TOTTO_LAND }],
+      devilFruit: [{ episode: 834, chapter: 864, value: ['heat-heat-fruit'] }],
     },
     'charlotte-daifuku': {
       role: { it: 'Ministro dei fagioli', en: 'Minister of beans' },
@@ -1377,15 +1379,15 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 811,
+          episode: 826,
           value: {
             it: 'Pirati di Big Mom, ministro dei fagioli',
             en: 'Big Mom Pirates, minister of beans',
           },
         },
       ],
-      origin: [{ episode: 811, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 811, value: ['puff-puff-fruit'] }],
+      origin: [{ episode: 826, value: TOTTO_LAND }],
+      devilFruit: [{ episode: 834, chapter: 864, value: ['puff-puff-fruit'] }],
     },
     'charlotte-mont-dor': {
       role: { it: 'Ministro del formaggio', en: 'Minister of cheese' },
@@ -1421,7 +1423,7 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 830, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 830, value: ['cook-cook-fruit'] }],
+      devilFruit: [{ episode: 838, chapter: 868, value: ['cook-cook-fruit'] }],
     },
     'carmel': {
       role: {

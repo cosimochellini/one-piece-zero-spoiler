@@ -6,66 +6,16 @@
 // Run it with `npm run docs:chronicle`. The output is already shaped the way
 // Prettier wants it, so `format:check` passes on a freshly generated file.
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-// eslint-disable-next-line n/no-unsupported-features/node-builtins -- The archive is TypeScript with a `~/` alias and extensionless imports; a resolve hook is the only way for a plain Node script to read the very modules the site ships, and `engines` already pins Node >= 24.18.
-import { registerHooks } from 'node:module'
 import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath, pathToFileURL } from 'node:url'
+import { pathToFileURL } from 'node:url'
 import { byNumber, byValue } from 'sort-es'
 
+import { importArchive, ROOT } from './archive-loader.mjs'
 import { CHRONICLE_SOURCES } from './chronicle-sources.mjs'
-
-/** The repository root, one level above this script. */
-const ROOT = path.resolve(import.meta.dirname, '..')
 
 /** Where the rendered log is written. */
 export const DOC_PATH = path.join(ROOT, 'docs', 'chronicle-verification.md')
-
-/**
- * The file a failed import was reaching for, without its extension.
- * @param {string} specifier The specifier, already resolved through the alias.
- * @param {string | undefined} parent The importing module's URL.
- * @returns {null | string} The path, or `null` for a package specifier.
- */
-function fileFor(specifier, parent) {
-  if (specifier.startsWith('file:')) {
-    return fileURLToPath(specifier)
-  }
-
-  if (parent !== undefined && specifier.startsWith('.')) {
-    return path.resolve(path.dirname(fileURLToPath(parent)), specifier)
-  }
-
-  return null
-}
-
-/**
- * Teaches this process the two things the archive's own imports assume: that
- * `~/` means `src/`, and that a specifier with no extension names a `.ts` file.
- * @returns {void}
- */
-function registerArchiveResolution() {
-  registerHooks({
-    resolve(specifier, context, nextResolve) {
-      const aliased =
-        specifier.startsWith('~/') ?
-          pathToFileURL(path.join(ROOT, 'src', specifier.slice(2))).href
-        : specifier
-
-      try {
-        return nextResolve(aliased, context)
-      } catch (error) {
-        const file = fileFor(aliased, context.parentURL)
-
-        if (file === null || !existsSync(`${file}.ts`)) {
-          throw error
-        }
-
-        return nextResolve(pathToFileURL(`${file}.ts`).href, context)
-      }
-    },
-  })
-}
 
 /** The preamble: how the log is made, and what the tests already hold. */
 const PREAMBLE = `# Chronicle verification
@@ -206,11 +156,7 @@ function section(character, chronicle) {
  * @returns {Promise<string>} The rendered markdown.
  */
 export async function render() {
-  registerArchiveResolution()
-
-  const archive = await import(
-    pathToFileURL(path.join(ROOT, 'src', 'data', 'characters.ts')).href
-  )
+  const archive = await importArchive('data/characters.ts')
   const sections = chronicled(archive).map((character) =>
     section(character, archive.dossierOf(character).chronicle),
   )

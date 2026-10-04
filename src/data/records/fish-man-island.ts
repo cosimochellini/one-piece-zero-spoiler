@@ -481,7 +481,9 @@ export const fishManIsland: Saga = {
       epithet: [
         { episode: 517, value: { it: 'Capelli Bagnati', en: 'Wet-Haired' } },
       ],
-      devilFruit: [{ episode: 519, value: ['swamp-swamp-fruit'] }],
+      devilFruit: [
+        { episode: 531, chapter: 612, value: ['swamp-swamp-fruit'] },
+      ],
       bounty: [{ episode: 517, value: 210_000_000 }],
     },
     'coribou': {

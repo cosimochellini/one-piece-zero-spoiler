@@ -69,7 +69,8 @@ describe('the stories a bookmark reaches', () => {
       entries: [
         {
           revealedAtEpisode: 1,
-          revealedAtChapter: 1,
+          // Chapter 1 has not finished episode 1 (Koby is chapter 2).
+          revealedAtChapter: 2,
           title: 'Una botte',
           body: [
             { kind: 'text', text: 'Esce da una botte davanti a ' },

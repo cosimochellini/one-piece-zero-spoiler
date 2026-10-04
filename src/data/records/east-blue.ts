@@ -75,7 +75,7 @@ export const eastBlue: Saga = {
       id: 'koby',
       kind: 'character',
       revealedAtEpisode: 1,
-      revealedAtChapter: 1,
+      revealedAtChapter: 2,
       name: { it: 'Kobi', en: 'Koby' },
       summary: {
         it: 'Un mozzo tondo e spaventato che lucida da due anni il ponte di una nave pirata, salito a bordo per sbaglio e rimasto per paura.',
@@ -87,7 +87,7 @@ export const eastBlue: Saga = {
       id: 'alvida',
       kind: 'character',
       revealedAtEpisode: 1,
-      revealedAtChapter: 1,
+      revealedAtChapter: 2,
       name: { it: 'Alvida', en: 'Alvida' },
       summary: {
         it: 'La piratessa più temuta delle acque intorno, con una mazza di ferro chiodata sulla spalla e una ciurma che non la contraddice mai.',
@@ -871,10 +871,11 @@ export const eastBlue: Saga = {
         it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: parte dentro una botte e recluta il primo membro della ciurma nel giro di un pomeriggio. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
         en: 'Seventeen, a grin that does not switch off, and no ship: he sets out inside a barrel and recruits the first member of his crew within an afternoon. He ate a devil fruit as a child and has been rubber ever since, which means the sea rejects him and he cannot swim. He sails anyway.',
       },
-      status: [{ episode: 1, value: 'alive' }],
+      status: [{ episode: 1, chapter: 1, value: 'alive' }],
       affiliation: [
         {
           episode: 1,
+          chapter: 1,
           value: {
             it: 'Capitano di una ciurma che non esiste ancora',
             en: 'Captain of a crew that does not exist yet',
@@ -894,7 +895,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 45, value: { it: 'Cappello di Paglia', en: 'Straw Hat' } },
       ],
-      devilFruit: [{ episode: 1, value: ['gum-gum-fruit'] }],
+      devilFruit: [{ episode: 1, chapter: 1, value: ['gum-gum-fruit'] }],
       bounty: [
         { episode: 45, value: 30_000_000 },
         { episode: 128, value: 100_000_000 },
@@ -989,10 +990,11 @@ export const eastBlue: Saga = {
         it: 'Ha percorso tutti i mari e preso tutto quello che c’era da prendere, e il Governo Mondiale lo giustizia in piazza davanti a una folla enorme. Sul patibolo gli chiedono dove sia il suo tesoro, e lui sorride: è là fuori, e se lo prenda chi lo vuole. Quel giorno migliaia di uomini prendono il mare, e l’epoca che ne nasce porta il suo nome.',
         en: 'He sailed every sea and took everything there was to take, and the World Government executes him in a public square before an enormous crowd. On the scaffold they ask where his treasure is and he smiles: it is out there, and whoever wants it may have it. Thousands put to sea that day, and the age that follows is named after him.',
       },
-      status: [{ episode: 1, value: 'deceased' }],
+      status: [{ episode: 1, chapter: 1, value: 'deceased' }],
       affiliation: [
         {
           episode: 1,
+          chapter: 1,
           value: {
             it: 'Pirati di Roger, capitano; Re dei Pirati',
             en: 'Roger Pirates, captain; King of the Pirates',
@@ -2095,7 +2097,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 49, value: { it: 'Cacciatore Bianco', en: 'White Hunter' } },
       ],
-      devilFruit: [{ episode: 49, value: ['smoke-smoke-fruit'] }],
+      devilFruit: [{ episode: 53, chapter: 100, value: ['smoke-smoke-fruit'] }],
     },
     'tashigi': {
       role: { it: 'Sergente della Marina', en: 'Marine sergeant' },
