@@ -109,6 +109,20 @@ describe('the dated entries against the table', () => {
     expect(lost).toStrictEqual([])
   })
 
+  it('opens no entry before its own record, unless the record is unanchored', () => {
+    // The home page and the chronicle read an entry without its owner, which
+    // the table makes safe for every record it is built from. An unanchored
+    // one is checked against its owner wherever its entries are shown.
+    const early = DATED.filter(({ entry, owner }) => {
+      return (
+        owner.unanchored !== true
+        && gateOf(entry).revealedAtChapter < owner.revealedAtChapter
+      )
+    }).map(({ label }) => label)
+
+    expect(early).toStrictEqual([])
+  })
+
   it('declares a chapter no earlier than its record and within the dial', () => {
     for (const { chapter, label, owner } of DECLARED) {
       expect(Number.isSafeInteger(chapter), label).toBe(true)

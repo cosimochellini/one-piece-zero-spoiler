@@ -37,9 +37,10 @@ const CAST_COUNT = 6
  * The arc is the last one that opens at or before the bookmark, in the
  * reader's own unit; where two open on the same threshold the later one in
  * route order wins, which is the arc proper rather than the saga around it.
- * The stories are gated on the episode they conclude at alone: a story opens
- * at its subject's own threshold and names only characters met by then (the
- * data tests hold both), so nothing past the reader can come in with it.
+ * The stories are gated on when they conclude and on their subject: a story
+ * names only characters met by then (the data tests hold it), and a subject
+ * the reader has not met is not on the page at all — Shiki's Impel Down
+ * story is episode 425, but his chapter is 962.
  */
 export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
   const at = reveal(bookmark ?? FIRST_VISIT)
@@ -48,7 +49,7 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
   const since = (floor: number): readonly FiledStory[] => {
     return at
       .reached(stories)
-      .filter((s) => s.episode >= floor)
+      .filter((s) => s.episode >= floor && at.sees(s.character))
       .toReversed()
   }
 
@@ -71,7 +72,7 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
       const { character, story } = filed
 
       return {
-        ...gateOf(filed),
+        ...gateOf(filed, character),
         title: story.title[locale],
         body: segmentsOf(story.body[locale], resolve),
         subject: { id: character.id, name: character.name[locale] },

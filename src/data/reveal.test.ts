@@ -216,12 +216,31 @@ const ENTRIES = [
   ...fruits.flatMap((fruit) => eatersOf(fruit.id).map(({ named }) => named)),
 ]
 
+/**
+ * The chapter an entry opens at, worked out the long way rather than through
+ * `gateOf`: the chapter it declares, or the first one whose episode reaches
+ * it, or one past the ceiling.
+ */
+function opensAt(entry: (typeof ENTRIES)[number]): number {
+  if (entry.chapter !== undefined) {
+    return entry.chapter
+  }
+  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+    if (episodeAtChapter(chapter) >= entry.episode) {
+      return chapter
+    }
+  }
+
+  return CHAPTER_CEILING + 1
+}
+
 describe('every dated entry in the archive', () => {
   it('is reached at the chapter it opens at, and never the chapter before', () => {
     // The one invariant for a chapter reader, held over every timeline and
-    // every eater: what `reached` shows is exactly what `gateOf` promises.
+    // every eater: an entry is reached exactly from its own chapter, or from
+    // the first chapter that reaches its episode.
     for (const entry of ENTRIES) {
-      const opens = gateOf(entry).revealedAtChapter
+      const opens = opensAt(entry)
       const label = `${JSON.stringify(entry).slice(0, 60)} @ c${String(opens)}`
 
       expect(reveal(ch(opens - 1)).reached([entry]), label).toStrictEqual([])

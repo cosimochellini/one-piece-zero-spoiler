@@ -264,6 +264,7 @@ export const wanoChronicles = {
     },
     {
       episode: 949,
+      chapter: 949,
       value: {
         title: { it: 'Il colpo della peste', en: 'The Plague Shot' },
         body: {

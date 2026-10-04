@@ -9,7 +9,7 @@ import { shipDossierOf } from '~/data/places'
 import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import type { Bookmark } from '~/lib/progress/episode'
+import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterChronicle,
@@ -248,6 +248,23 @@ describe('the slice of the archive a page is given', () => {
       expect(episodes.every((episode) => episode <= reached)).toBe(true)
       expect(inside).toBe(true)
     }
+  })
+
+  it('tells a manga reader no story whose subject is still under fog', () => {
+    // A story is reached by its own chapter, and Shiki, left out of the
+    // chapter table, has one dated long before the chapter that meets him.
+    const fogged: string[] = []
+    for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+      const bookmark: Bookmark = { mode: 'chapter', chapter }
+      const at = reveal(bookmark)
+      for (const { subject } of homePage(bookmark, 'en').stories) {
+        if (!at.sees(filed(subject.id))) {
+          fogged.push(`${subject.id} @ c${String(chapter)}`)
+        }
+      }
+    }
+
+    expect(fogged).toStrictEqual([])
   })
 
   it('reaches back to the arc before when this one has no story yet', () => {
