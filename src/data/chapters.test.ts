@@ -56,6 +56,14 @@ describe('episodeAtChapter', () => {
     }
   })
 
+  it('keeps chapters from reaching Kabuto before the manga draws it', () => {
+    // Measured on PR #166: chapter 385 used to reach episode 274, where
+    // Usopp is drawn again with the Kabuto the manga shows in chapter 390.
+    expect(episodeAtChapter(389)).toBeLessThan(274)
+    expect(episodeAtChapter(390)).toBeGreaterThanOrEqual(274)
+    expect(chapterAtEpisode(274)).toBe(390)
+  })
+
   it('reads chapter 1 as episode 1, not the episode the anime moved it to', () => {
     // Shanks is chapter 1 but episode 4; Zoro, chapter 3, is episode 2.
     expect(episodeAtChapter(1)).toBe(1)

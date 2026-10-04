@@ -11,7 +11,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
@@ -395,7 +395,8 @@ export const eastBlueArt = {
     { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
     ...SEA.slice(1),
   ],
-  // A slingshot, the band drawn taut around a star-shaped pellet.
+  // A slingshot, the band drawn taut around a star-shaped pellet. Kabuto is
+  // drawn from 274 and Kuro Kabuto from 517, in `eastBlueRedrawn`.
   'usopp': [
     { d: 'M80 176 V126' },
     { d: 'M80 126 C78 100 62 92 56 70' },
@@ -1012,3 +1013,58 @@ export const eastBlueArt = {
     ...SEA,
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const eastBlueRedrawn: Redrawings = {
+  usopp: [
+    // Kabuto: a staff with a five-prong fork, the band pulled back from the
+    // two outer prongs around a star pellet, the dial housed where the fork
+    // meets the shaft. Sogeking carries it onto the Tower of Justice roof at
+    // the end of 274 (ch. 390).
+    {
+      episode: 274,
+      value: [
+        { d: 'M80 186 V104' },
+        { d: 'M80 104 C74 84 50 70 40 42 M80 104 C86 84 110 70 120 42' },
+        { d: 'M36 40 l8 4 M124 40 l-8 4' },
+        {
+          d: 'M80 104 C74 90 62 80 56 64 M80 104 V62 M80 104 C86 90 98 80 104 64',
+        },
+        { d: 'M52 66 l8 -4 M76 62 h8 M100 62 l8 4', role: 'soft' },
+        { d: circle(80, 116, 7) },
+        {
+          d: 'M74 142 h12 M74 150 h12 M74 158 h12 M74 166 h12',
+          role: 'ambient',
+        },
+        { d: 'M40 42 Q80 118 120 42', role: 'accent' },
+        { d: star(80, 82, 8, 3.5), role: 'accent' },
+        shadow(80, 190, 40),
+      ],
+    },
+    // Kuro Kabuto: the compact slingshot of the two years, a Pop Green
+    // sprouting from the seed held in its band, the dark fork hatched down
+    // its far side. First fired at the impostor crew at 517 (ch. 598).
+    {
+      episode: 517,
+      value: [
+        { d: 'M80 172 V118' },
+        { d: 'M80 118 C78 98 60 90 54 66 M80 118 C82 98 100 90 106 66' },
+        { d: 'M50 64 l8 4 M110 64 l-8 4' },
+        {
+          d: 'M66 86 l-6 6 M70 96 l-6 6 M74 106 l-6 6 M78 116 l-6 6',
+          role: 'ambient',
+        },
+        { d: 'M74 150 h12 M74 158 h12 M74 166 h12', role: 'ambient' },
+        { d: 'M54 66 C60 94 100 94 106 66', role: 'accent' },
+        { d: circle(80, 87, 5), role: 'accent' },
+        { d: 'M80 82 C82 66 76 54 80 34', role: 'accent' },
+        { d: 'M80 64 C66 62 60 50 64 40 C72 44 78 54 80 64 Z', role: 'accent' },
+        {
+          d: 'M80 52 C92 50 100 40 98 30 C90 32 84 42 80 52 Z',
+          role: 'accent',
+        },
+        shadow(80, 178, 36),
+      ],
+    },
+  ],
+}
