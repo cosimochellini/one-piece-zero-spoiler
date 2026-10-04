@@ -8,7 +8,7 @@ import type { Stroke } from '~/lib/view/records'
 import { DRAWINGS, REDRAWINGS } from '.'
 import { alabastaArt } from './alabasta'
 import { dressrosaArt } from './dressrosa'
-import { eastBlueArt } from './east-blue'
+import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
 import { elbafArt } from './elbaf'
 import { fishManIslandArt } from './fish-man-island'
@@ -90,7 +90,12 @@ describe('the drawings', () => {
 describe('the redrawings', () => {
   it('never file the same id in two sagas', () => {
     // Merged by spread like the drawings, and caught the same way.
-    const modules = [skypieaRedrawn, thrillerBarkRedrawn, wanoRedrawn]
+    const modules = [
+      eastBlueRedrawn,
+      skypieaRedrawn,
+      thrillerBarkRedrawn,
+      wanoRedrawn,
+    ]
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
     expect(Object.keys(REDRAWINGS)).toHaveLength(total)

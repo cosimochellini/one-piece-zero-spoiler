@@ -450,4 +450,21 @@ describe('a record drawn again later in the story', () => {
       redrawn?.value,
     )
   })
+
+  it('follows Usopp through both slingshots, the latest one reached', () => {
+    const usopp = filed('usopp')
+    const slingshot = DRAWINGS.usopp
+    const [kabuto, kuroKabuto] = REDRAWINGS['usopp'] ?? []
+
+    expect(kabuto?.episode).toBe(274)
+    expect(kuroKabuto?.episode).toBe(517)
+
+    expect(characterOf(usopp, 'en', ep(273)).visual.strokes).toBe(slingshot)
+    expect(characterOf(usopp, 'en', ep(274)).visual.strokes).toBe(kabuto?.value)
+    expect(characterOf(usopp, 'en', ep(516)).visual.strokes).toBe(kabuto?.value)
+    expect(characterOf(usopp, 'en', ep(517)).visual.strokes).toBe(
+      kuroKabuto?.value,
+    )
+    expect(characterOf(usopp, 'en', null).visual.strokes).toBe(slingshot)
+  })
 })

@@ -1,6 +1,6 @@
 import { alabastaArt } from './alabasta'
 import { dressrosaArt } from './dressrosa'
-import { eastBlueArt } from './east-blue'
+import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
 import { elbafArt } from './elbaf'
 import { fishManIslandArt } from './fish-man-island'
@@ -42,6 +42,7 @@ export const DRAWINGS = {
  * counting in chapters — is shown the drawing they always were.
  */
 export const REDRAWINGS: Redrawings = {
+  ...eastBlueRedrawn,
   ...skypieaRedrawn,
   ...thrillerBarkRedrawn,
   ...wanoRedrawn,
