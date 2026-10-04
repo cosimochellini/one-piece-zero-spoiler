@@ -10,7 +10,13 @@ import {
 } from '~/data/characters'
 import { getEntity } from '~/data/entities'
 import { orderByMode } from '~/data/order'
-import { placeDossierOf, places } from '~/data/places'
+import {
+  placeDossierOf,
+  places,
+  type ShipDossier,
+  shipDossierOf,
+  ships,
+} from '~/data/places'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { type Bookmark, modeOf } from '~/lib/progress/episode'
@@ -25,6 +31,7 @@ import type {
   RoutePositionView,
   SearchableCharacter,
   ShelfView,
+  ShipView,
   Slot,
 } from '~/lib/view/records'
 
@@ -34,6 +41,7 @@ import {
   characterOf,
   coveredOf,
   factsOf,
+  knownAt,
   recordOf,
   searchableOf,
   slotOf,
@@ -221,7 +229,7 @@ export function nearbyPage(
   )
 }
 
-/** The ship's log. */
+/** The ship's log, and the ships that carry it. */
 export function placesPage(
   bookmark: Bookmark,
   locale: Locale,
@@ -229,10 +237,20 @@ export function placesPage(
   readonly covered: readonly CoveredRecord[]
   readonly filed: number
   readonly open: readonly PortView[]
+  readonly ships: readonly ShipView[]
 } {
-  const ordered = orderByMode(places, modeOf(bookmark))
+  const mode = modeOf(bookmark)
+  const ordered = orderByMode(places, mode)
 
   return {
+    // Only the ships the reader has reached: a covered second ship would
+    // tell a reader at the start that the first one does not last.
+    ships: orderByMode(ships, mode).flatMap((entity) => {
+      const dossier = shipDossierOf(entity)
+      return dossier !== undefined && isRevealed(entity, bookmark) ?
+          [shipOf({ bookmark, dossier, entity, locale })]
+        : []
+    }),
     filed: ordered.length,
     open: ordered.flatMap((entity) =>
       isRevealed(entity, bookmark) ? [portOf(entity, bookmark, locale)] : [],
@@ -279,6 +297,42 @@ export function portOf(
           }),
         }
       ),
+  }
+}
+
+/**
+ * One ship, with her entry resolved: the place she is received at named
+ * outright (it opens no later than the ship, which a data test holds), and
+ * the latest fate and the places the reader has reached, and nothing later.
+ */
+function shipOf({
+  bookmark,
+  dossier,
+  entity,
+  locale,
+}: {
+  readonly bookmark: Bookmark
+  readonly dossier: ShipDossier
+  readonly entity: Entity
+  readonly locale: Locale
+}): ShipView {
+  const fate = knownAt(dossier.fate, bookmark)?.[locale]
+
+  return {
+    ...recordOf(entity, locale, bookmark),
+    summary: entity.summary[locale],
+    dossier: {
+      builder: dossier.builder[locale],
+      launched: getEntity(dossier.launched)?.name[locale] ?? null,
+      log: dossier.log[locale],
+      ...(fate !== undefined && { fate }),
+      ports: (dossier.ports ?? []).flatMap((arrival) => {
+        const place = getEntity(arrival.place)
+        return place !== undefined && isRevealed(place, bookmark) ?
+            [recordOf(place, locale, bookmark)]
+          : []
+      }),
+    },
   }
 }
 

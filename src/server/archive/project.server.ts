@@ -262,7 +262,7 @@ type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
  * The latest entry of a timeline the dossier may not carry at all. A chapter
  * bookmark is read at the episode its chapter reaches (`~/data/chapters`).
  */
-function knownAt<T>(
+export function knownAt<T>(
   timeline: Timeline<T> | undefined,
   bookmark: Bookmark,
 ): T | undefined {

@@ -13,6 +13,8 @@ import type {
   RecordView,
   SearchableCharacter,
   ShelfView,
+  ShipEntry,
+  ShipView,
   Slot,
   Stroke,
   TintId,
@@ -145,6 +147,25 @@ export function dossier(over: Partial<PortDossier> = {}): PortDossier {
     landmark: 'A fish-shaped roof',
     log: 'The ship put in here.',
     filedHere: [],
+    ...over,
+  }
+}
+
+export function ship(over: Partial<ShipView> = {}): ShipView {
+  return {
+    ...record({ kind: 'ship', id: 'test-ship', name: 'Going Merry' }),
+    summary: 'A caravel with a sheep’s head on the prow.',
+    dossier: shipEntry(),
+    ...over,
+  }
+}
+
+export function shipEntry(over: Partial<ShipEntry> = {}): ShipEntry {
+  return {
+    builder: 'A butler',
+    launched: 'Syrup Village',
+    log: 'A gift to the crew.',
+    ports: [],
     ...over,
   }
 }

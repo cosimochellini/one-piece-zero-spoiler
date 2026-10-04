@@ -243,6 +243,8 @@ function Spread({
   readonly peekRecord: (handle: string) => Promise<RecordView>
   readonly port: PortView
 }): ReactElement {
+  const { t } = useLocale()
+
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
@@ -260,6 +262,7 @@ function Spread({
             <FiledHere
               filed={port.dossier.filedHere}
               peekRecord={peekRecord}
+              title={t('places.filedHere')}
             />
           </>
         )}
@@ -269,22 +272,24 @@ function Spread({
 }
 
 /**
- * The records the archive files at this port. Each tile keeps its own fog:
- * a swordsman who reaches the restaurant four episodes after the crew does
- * is a covered tile beside an open one.
+ * The records the archive files at this port, or the places a ship reaches.
+ * Each tile keeps its own fog: a swordsman who reaches the restaurant four
+ * episodes after the crew does is a covered tile beside an open one.
  */
-function FiledHere({
+export function FiledHere({
   filed,
   peekRecord,
+  title,
 }: {
   readonly filed: readonly Slot<RecordView>[]
   readonly peekRecord: (handle: string) => Promise<RecordView>
+  readonly title: string
 }): ReactElement {
   const { t } = useLocale()
 
   return (
     <div {...stylex.props(styles.filed)}>
-      <h3 {...stylex.props(styles.filedTitle)}>{t('places.filedHere')}</h3>
+      <h3 {...stylex.props(styles.filedTitle)}>{title}</h3>
       {filed.length === 0 ?
         <p {...stylex.props(styles.filedNone)}>{t('places.filedNone')}</p>
       : <ul {...stylex.props(styles.crew)}>

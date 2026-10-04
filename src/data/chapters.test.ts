@@ -40,10 +40,12 @@ describe('episodeAtChapter', () => {
     expect(episodes).toStrictEqual(episodes.toSorted(byNumber()))
   })
 
-  it('keeps chapters from reaching the Wano episodes the manga tells later', () => {
-    // Measured on PR #131: [episode a chapter used to reach, the episode its
-    // entry is dated at, and the chapter the manga tells it in].
+  it('keeps chapters from reaching the episodes the manga tells later', () => {
+    // Measured on PR #131 and #167: [a chapter that used to reach the
+    // episode, the episode an entry is dated at, the chapter the manga tells
+    // it in]. The first is the Going Merry's farewell.
     for (const [chapter, entryEpisode, trueChapter] of [
+      [428, 312, 430],
       [946, 953, 952],
       [972, 976, 973],
       [995, 1019, 1004],

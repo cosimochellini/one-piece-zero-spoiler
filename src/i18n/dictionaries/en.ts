@@ -188,6 +188,12 @@ export const enDictionary = {
   'places.filedHere': 'Found here',
   'places.filedNone': 'Nothing in the wiki is linked to this place yet.',
 
+  'ships.title': 'Ships',
+  'ships.builder': 'Designed by',
+  'ships.launched': 'Received at',
+  'ships.fate': 'Fate',
+  'ships.ports': 'Places she reaches',
+
   'fruits.title': 'Devil fruits',
   'fruits.count':
     '{count} devil fruits, grouped by type and listed in the order the story names them. Fruits under fog do not show up in search.',

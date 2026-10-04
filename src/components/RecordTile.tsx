@@ -36,8 +36,8 @@ export type RecordTileProps = {
 
 /**
  * One record of any kind, small: its kind and episode on a line, then a
- * plate and a name. A character's name links to their page and a place's
- * to its entry in the log; an arc or a ship is a name. Under fog the plate
+ * plate and a name. A character's name links to their page, and a place's
+ * or a ship's to its entry in the log; an arc is a name. Under fog the plate
  * and the name go together behind a placeholder, so neither the drawing nor
  * the slug is in the served HTML, and the episode stays.
  *
@@ -87,9 +87,10 @@ export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
 }
 
 /**
- * The name, and where it leads. A character, a place and a devil fruit each
- * have a page to point at; an arc and a ship do not, so their names are plain
- * text rather than a link that would go nowhere.
+ * The name, and where it leads. A character, a place, a ship and a devil
+ * fruit each have a page to point at; an arc does not, so its name is plain
+ * text rather than a link that would go nowhere. A ship's entry is in the
+ * band above the log, on the same page as the places.
  *
  * No tile is handed a fruit today: the two callers are a port's `filedHere`
  * and the two records beside one on the landing chart, and the chart draws no
@@ -114,7 +115,7 @@ function Name({ entry }: { readonly entry: RecordView }): ReactElement {
     )
   }
 
-  if (entry.kind === 'place') {
+  if (entry.kind === 'place' || entry.kind === 'ship') {
     return (
       <Link
         hash={entry.id}

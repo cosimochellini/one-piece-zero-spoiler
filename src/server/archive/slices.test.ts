@@ -5,7 +5,9 @@ import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { chapterAtEpisode, timelineBookmark } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
+import { shipDossierOf } from '~/data/places'
 import type { Entity } from '~/data/types'
+import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { episodeOf, isRevealed } from '~/lib/progress/spoiler'
 import { foldName } from '~/lib/search/fold'
@@ -389,12 +391,97 @@ describe('the slice of the archive a page is given', () => {
     expect(baratie?.dossier?.filedHere.length).toBeGreaterThan(0)
   })
 
+  it('tells the log and its ships nothing the reader has not reached', () => {
+    for (const [episode, sent] of [
+      [1, []],
+      [60, ['going-merry']],
+      [300, ['going-merry']],
+      [500, ['going-merry', 'thousand-sunny']],
+    ] as const) {
+      for (const locale of LOCALES) {
+        const log = placesPage(ep(episode), locale)
+
+        expect(log.ships.map((ship) => ship.id)).toStrictEqual(sent)
+
+        saysNothing(log, ep(episode))
+      }
+    }
+  })
+
+  it('sends a ship from her threshold and not a card for her before it', () => {
+    // A covered second ship would tell a reader at the start that the first
+    // one does not last, so a ship not reached is not in the payload at all.
+    expect(shipIdsAt(17)).toStrictEqual([])
+    expect(shipIdsAt(18)).toStrictEqual(['going-merry'])
+    expect(shipIdsAt(323)).toStrictEqual(['going-merry'])
+    expect(shipIdsAt(324)).toStrictEqual(['going-merry', 'thousand-sunny'])
+  })
+
+  it('opens the Merry’s fate row with the ship, in chapters too', () => {
+    const merry = placesPage({ mode: 'chapter', chapter: 41 }, 'en').ships[0]
+
+    expect(merry?.id).toBe('going-merry')
+    expect(merry?.dossier.fate).toBeDefined()
+  })
+
+  it('sends the Sunny’s places only once the reader has reached them', () => {
+    // A covered tile would print its episode, and the last one would say
+    // how long the ship lasts, so there is no covered tile at all.
+    const sunny = placesPage(ep(500), 'en').ships.find(
+      (ship) => ship.id === 'thousand-sunny',
+    )
+    const ports = sunny?.dossier.ports ?? []
+
+    expect(ports.map((port) => port.id)).toStrictEqual([
+      'florian-triangle',
+      'thriller-bark',
+      'sabaody-archipelago',
+    ])
+  })
+
+  it('says nothing of the Merry’s farewell to a reader at 300', () => {
+    const farewell = shipDossierOf(onFile('going-merry'))?.fate.at(-1)
+
+    expect(farewell?.episode).toBe(312)
+
+    for (const locale of LOCALES) {
+      const words = farewell?.value[locale] ?? ''
+      const at = (episode: number): string =>
+        JSON.stringify(placesPage(ep(episode), locale))
+
+      expect(words).not.toBe('')
+      expect(at(300)).not.toContain(words)
+      expect(at(311)).not.toContain(words)
+      expect(at(312)).toContain(words)
+    }
+  })
+
+  it('keeps the Merry’s farewell from a manga reader until chapter 430', () => {
+    // Chapter 428 used to reach episode 312: the Merry arrives at Enies Lobby
+    // in chapter 428, but she burns in chapter 430.
+    const words = shipDossierOf(onFile('going-merry'))?.fate.at(-1)?.value.en
+
+    expect(words).toBeDefined()
+    expect(logAtChapter(429)).not.toContain(words)
+    expect(logAtChapter(430)).toContain(words)
+  })
+
   it('never leaks a name through a handle', () => {
     for (const covered of placesPage(null, 'en').covered) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
   })
 })
+
+/** The places page a manga reader at this chapter is sent, serialised. */
+function logAtChapter(chapter: number): string {
+  return JSON.stringify(placesPage({ mode: 'chapter', chapter }, 'en'))
+}
+
+/** The ships a reader at this episode is sent, by id. */
+function shipIdsAt(episode: number): readonly string[] {
+  return placesPage(ep(episode), 'en').ships.map((ship) => ship.id)
+}
 
 /** A record the archive is known to file, or the test is wrong. */
 function filed(id: string): Entity {

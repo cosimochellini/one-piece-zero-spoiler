@@ -206,6 +206,17 @@ export const styles = stylex.create({
   },
   crewItem: { minWidth: 0 },
 
+  // The ships, above the log: no rail and no numbers, because a ship is not
+  // a stop. The padding below keeps the band clear of the first port.
+  ships: { gap: space.lg, display: 'grid', paddingBlockEnd: space.xl2 },
+  shipList: {
+    gap: space.xl2,
+    display: 'grid',
+    listStyleType: 'none',
+    paddingInlineStart: 0,
+  },
+  ship: { gap: space.md, display: 'grid', scrollMarginBlockStart: space.xl },
+
   // The horizon: a short row, the tick on the spine, the line across the
   // body and its label.
   horizonRow: { alignItems: 'center' },

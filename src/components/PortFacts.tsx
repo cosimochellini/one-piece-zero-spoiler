@@ -3,7 +3,7 @@ import type { ReactElement } from 'react'
 
 import { styles } from '~/components/PortLog.styles'
 import { useLocale } from '~/i18n/LocaleContext'
-import type { PortDossier } from '~/lib/view/records'
+import type { PortDossier, ShipEntry } from '~/lib/view/records'
 
 /**
  * The four facts, as a definition list. The arc is named directly rather
@@ -37,6 +37,40 @@ export function PortFacts({
         label={t('places.landmark')}
         value={dossier.landmark}
       />
+    </dl>
+  )
+}
+
+/**
+ * A ship's facts, in the same ledger as a port's. The fate is the latest one
+ * the reader has reached; with none reached there is no row, so nothing on
+ * the page says one is coming.
+ */
+export function ShipFacts({
+  entry,
+}: {
+  readonly entry: ShipEntry
+}): ReactElement {
+  const { t } = useLocale()
+
+  return (
+    <dl {...stylex.props(styles.facts)}>
+      <Fact
+        label={t('ships.builder')}
+        value={entry.builder}
+      />
+      {entry.launched === null ? null : (
+        <Fact
+          label={t('ships.launched')}
+          value={entry.launched}
+        />
+      )}
+      {entry.fate === undefined ? null : (
+        <Fact
+          label={t('ships.fate')}
+          value={entry.fate}
+        />
+      )}
     </dl>
   )
 }

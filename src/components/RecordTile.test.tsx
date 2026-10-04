@@ -38,7 +38,7 @@ describe('RecordTile', () => {
     )
   })
 
-  it('leaves a ship as a name', () => {
+  it('points a ship at its entry in the log', () => {
     renderWithProviders(
       <RecordTile
         peek={peekPending()}
@@ -48,7 +48,23 @@ describe('RecordTile', () => {
       />,
     )
 
-    expect(screen.getByText('Going Merry')).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: 'Going Merry' })).toHaveAttribute(
+      'href',
+      '/en/places#going-merry',
+    )
+  })
+
+  it('leaves an arc as a name', () => {
+    renderWithProviders(
+      <RecordTile
+        peek={peekPending()}
+        slot={openSlot(
+          record({ id: 'romance-dawn', kind: 'arc', name: 'Romance Dawn' }),
+        )}
+      />,
+    )
+
+    expect(screen.getByText('Romance Dawn')).toBeInTheDocument()
     expect(screen.queryByRole('link')).not.toBeInTheDocument()
   })
 

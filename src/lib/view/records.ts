@@ -331,6 +331,34 @@ export type PortDossier = {
   readonly filedHere: readonly Slot<RecordView>[]
 }
 
+/** A ship the crew sails, as the band above the log draws it. */
+export type ShipView = RecordView & {
+  readonly dossier: ShipEntry
+  readonly summary: string
+}
+
+/** What the log knows about a ship beyond its name and its sentence. */
+export type ShipEntry = {
+  readonly builder: string
+  /**
+   * The place the crew receives her at, named outright: it opens no later
+   * than the ship, which a data test holds.
+   */
+  readonly launched: null | string
+  readonly log: string
+  /**
+   * The latest fate the reader has reached. Absent rather than `undefined`
+   * when there is none, so the row is not drawn.
+   */
+  readonly fate?: string
+  /**
+   * The places she has reached by the reader's bookmark, and none past it.
+   * There is no covered tile and no count: a place under fog would still
+   * print its episode, and that alone would say how long she lasts.
+   */
+  readonly ports: readonly RecordView[]
+}
+
 /** One shelf of the signal book: an arc and the characters first met along it. */
 export type ShelfView = {
   readonly arc: Slot<RecordView>
