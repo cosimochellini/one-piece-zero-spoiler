@@ -137,7 +137,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 526,
       revealedAtChapter: 615,
-      // The chapter is Vander Decken IX's: the text names Vander Decken IX, who the manga files at 615.
+      // Rounded up to 615, the chapter that files Vander Decken IX, whom the text names.
       name: { it: 'Seppy', en: 'Surume' },
       summary: {
         it: 'Un kraken così enorme che la Thousand Sunny gli sta in testa come un cappello, battuto da tre pirati all’imbocco della corrente e ora pronto a trascinarla ovunque Rufy indichi.',
@@ -150,7 +150,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 526,
       revealedAtChapter: 615,
-      // The chapter is Vander Decken IX's: the text names Vander Decken IX, who the manga files at 615.
+      // Rounded up to 615, the chapter that files Vander Decken IX, whom the text names.
       name: { it: 'Wadatsumi', en: 'Wadatsumi' },
       summary: {
         it: 'Un gigante grande quanto un kraken al servizio del capitano dell’Olandese Volante, che allontana a pugni una rana pescatrice da una nave che il capitano vuole depredare, finché un kraken addomesticato non lo stende.',
@@ -398,7 +398,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 544,
       revealedAtChapter: 626,
-      // The chapter is Otohime's: the text names Otohime, who the manga files at 626.
+      // Rounded up to 626, the chapter that files Otohime, whom the text names.
       name: { it: 'Ministro della Sinistra', en: 'Minister of the Left' },
       summary: {
         it: 'Un tritone pesce gatto basso e tondo, con monocolo, cilindro e bastone, che fa arrestare i Cappello di Paglia e che anni prima corse ad avvertire la regina ubriaca che tutto il regno la stava ascoltando.',
@@ -435,7 +435,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 571,
       revealedAtChapter: 653,
-      // The chapter is Pekoms's: the text names Pekoms, who the manga files at 653.
+      // Rounded up to 653, the chapter that files Pekoms, whom the text names.
       name: { it: 'Bobbin', en: 'Bobbin' },
       summary: {
         it: 'Un pirata basso e largo, con una maschera bianca, un gran sorriso e una spada più alta di lui, che torna da Big Mom dopo aver bruciato un paese che non le aveva sfornato i dolci promessi.',

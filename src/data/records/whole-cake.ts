@@ -440,7 +440,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 836,
       revealedAtChapter: 872,
-      // The chapter is Carmel's: the text names Carmel, who the manga files at 872.
+      // Rounded up to 872, the chapter that files Carmel, whom the text names.
       name: { it: 'Gerd', en: 'Gerd' },
       summary: {
         it: 'Una bambina gigante di Elbaf che, in un ricordo lontano, si fa rincorrere dalla piccola Linlin per il villaggio e le racconta del digiuno prima della festa.',
@@ -453,7 +453,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 836,
       revealedAtChapter: 872,
-      // The chapter is Carmel's: the text names Carmel, who the manga files at 872.
+      // Rounded up to 872, the chapter that files Carmel, whom the text names.
       name: { it: 'Jarul', en: 'Jarul' },
       summary: {
         it: 'Un gigante anziano con un elmo cornuto e una barba larga come una montagna, che in un ricordo lontano raduna gli orfani di Elbaf attorno a un banchetto di semla.',

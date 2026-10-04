@@ -32,7 +32,7 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 541,
       revealedAtChapter: 626,
-      // The chapter is Fisher Tiger's: the text names Fisher Tiger, who the manga files at 626.
+      // Rounded up to 626, the chapter that files Fisher Tiger, whom the text names.
       name: { it: 'Koala', en: 'Koala' },
       summary: {
         it: 'Una bambina liberata dalla schiavitù dai Pirati del Sole, che gli uomini-pesce riportano al suo villaggio con il marchio ancora impresso sulla schiena.',

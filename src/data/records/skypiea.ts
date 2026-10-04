@@ -79,7 +79,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 146,
       revealedAtChapter: 224,
-      // The chapter is Bellamy's: the text names Bellamy, who the manga files at 224.
+      // Rounded up to 224, the chapter that files Bellamy, whom the text names.
       name: { it: 'Roshio', en: 'Roshio' },
       summary: {
         it: 'Un capitano pirata con lunghi dreadlock bianchi e il simbolo di un impiccato sulla fascia, che a Mock Town vince una mano a carte contro l’uomo sbagliato.',
@@ -92,7 +92,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 146,
       revealedAtChapter: 224,
-      // The chapter is Bellamy's: the text names Bellamy, who the manga files at 224.
+      // Rounded up to 224, the chapter that files Bellamy, whom the text names.
       name: { it: 'Cirkeys', en: 'Sarquiss' },
       summary: {
         it: 'Il braccio destro di Bellamy a Mock Town, un uomo alto con una pelliccia bianca e gli occhiali colorati, che getta soldi agli sconosciuti perché si comprino dei vestiti decenti.',
@@ -225,7 +225,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 153,
       revealedAtChapter: 241,
-      // The chapter is Gan Fall's: the text names Gan Fall, who the manga files at 241.
+      // Rounded up to 241, the chapter that files Gan Fall, whom the text names.
       name: { it: 'Pierre', en: 'Pierre' },
       summary: {
         it: 'La cavalcatura di Gan Fall, un grosso uccello rosa a pois rossi che sa trasformarsi in un cavallo alato, senza stupire granché nessuno.',
@@ -394,7 +394,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 160,
       revealedAtChapter: 256,
-      // The chapter is Enel's: the text names Enel, who the manga files at 256.
+      // Rounded up to 256, the chapter that files Enel, whom the text names.
       name: { it: 'Satori', en: 'Satori' },
       summary: {
         it: 'Un sacerdote di Ener che aspetta gli intrusi in mezzo a sfere di nuvola identiche fra loro, una delle quali nasconde sempre qualcosa.',
@@ -443,7 +443,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 169,
       revealedAtChapter: 260,
-      // The chapter is Shura's: the text names Shura, who the manga files at 260.
+      // Rounded up to 260, the chapter that files Shura, whom the text names.
       name: { it: 'Fuza', en: 'Fuza' },
       summary: {
         it: 'Un enorme uccello viola che porta in groppa un sacerdote di Ener sopra la foresta e sputa fuoco su chiunque lui stia combattendo.',
@@ -468,7 +468,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 175,
       revealedAtChapter: 272,
-      // The chapter is Ohm's: the text names Ohm, who the manga files at 272.
+      // Rounded up to 272, the chapter that files Ohm, whom the text names.
       name: { it: 'Holy', en: 'Holy' },
       summary: {
         it: 'Un enorme cane dal pelo chiaro al fianco di un sacerdote di Ener, addestrato così bene che non morde nessuno finché il padrone non gliene dà un motivo.',
@@ -517,7 +517,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 187,
       revealedAtChapter: 292,
-      // The chapter is Kalgara's: the text names Kalgara, who the manga files at 292.
+      // Rounded up to 292, the chapter that files Kalgara, whom the text names.
       name: { it: 'Set', en: 'Seto' },
       summary: {
         it: 'Un giovane shandia di quattrocento anni fa che vuole diventare un guerriero come Kalgara, ed è il primo del suo villaggio a incontrare gli stranieri venuti a curarlo.',
