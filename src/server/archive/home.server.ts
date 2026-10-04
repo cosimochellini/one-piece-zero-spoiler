@@ -67,9 +67,11 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
     unset: bookmark === null,
     before: before && shown.length > 0,
     saga: waypointOf(saga, locale, at),
-    stories: shown.map(({ character, episode, story }): HomeStory => {
+    stories: shown.map((filed): HomeStory => {
+      const { character, story } = filed
+
       return {
-        ...gateOf(episode),
+        ...gateOf(filed),
         title: story.title[locale],
         body: segmentsOf(story.body[locale], resolve),
         subject: { id: character.id, name: character.name[locale] },

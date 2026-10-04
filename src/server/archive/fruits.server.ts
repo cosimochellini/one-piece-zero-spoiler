@@ -109,8 +109,8 @@ export function fruitPage(
 
 /**
  * Who the dossiers say ate this fruit, each under its own fog: named from the
- * later of their own threshold and the episode whose dossier entry says they
- * ate it (`gateOf`).
+ * later of their own threshold and the dossier entry that says they ate it
+ * (`gateOf`).
  *
  * Both halves matter. A character filed long before the story says what they
  * ate would otherwise appear on the fruit's page the moment the reader met
@@ -127,10 +127,7 @@ export function fruitEaters(
   return {
     mode: 'eaters',
     eaters: eatersOf(id).map((eater): Slot<CharacterView> => {
-      const gated = {
-        ...eater.entity,
-        ...gateOf(eater.namedAtEpisode, eater.entity),
-      }
+      const gated = { ...eater.entity, ...gateOf(eater.named, eater.entity) }
 
       return at.sees(gated) ?
           { open: true, record: characterOf(eater.entity, locale, at) }

@@ -169,6 +169,7 @@ export function roleOf(entity: Entity): LocalizedText | undefined {
 
 /** One story, with the character whose chronicle it belongs to. */
 export type FiledStory = {
+  readonly chapter?: number
   readonly character: Entity
   readonly episode: number
   readonly story: Story
@@ -187,7 +188,12 @@ export const stories: readonly FiledStory[] = characters
   .toSorted(byValue('episode', byNumber()))
 
 function filedStory(character: Entity, entry: Dated<Story>): FiledStory {
-  return { character, episode: entry.episode, story: entry.value }
+  return {
+    character,
+    episode: entry.episode,
+    ...(entry.chapter !== undefined && { chapter: entry.chapter }),
+    story: entry.value,
+  }
 }
 
 /**

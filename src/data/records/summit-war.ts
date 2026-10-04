@@ -412,6 +412,9 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 425,
       revealedAtChapter: 962,
+      // The anime names him at Impel Down, the manga only in Roger's past:
+      // too far apart to anchor the chapter table (`~/data/chapters`).
+      unanchored: true,
       name: { it: 'Shiki', en: 'Shiki' },
       summary: {
         it: 'Il pirata che Sengoku ricorda quando viene a sapere che Rufy si è infiltrato a Impel Down: vent’anni fa è stato il primo e unico prigioniero a evaderne.',

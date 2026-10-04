@@ -38,7 +38,7 @@ export const DRAWINGS = {
 /**
  * The records drawn again later in the story, filed beside the saga that
  * first drew them. The server picks the latest entry the reader has reached
- * (a chapter bookmark read as the episode it reaches) and falls back to
+ * (`reached` in `~/data/reveal`, in either unit) and falls back to
  * `DRAWINGS`, so a reader below the first entry — or with no bookmark — is
  * shown the drawing they always were.
  */

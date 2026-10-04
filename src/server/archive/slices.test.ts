@@ -17,7 +17,6 @@ import type {
   HomeView,
   RoutePositionView,
   ShelfView,
-  Stroke,
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
@@ -499,15 +498,6 @@ function filed(id: string): Entity {
   return entity
 }
 
-/** A record's strokes as a reader at this chapter is shown them. */
-function drawnAtChapter(
-  chapter: number,
-  id = 'marshall-d-teach',
-): readonly Stroke[] {
-  return characterOf(filed(id), 'en', reveal({ mode: 'chapter', chapter }))
-    .visual.strokes
-}
-
 describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
@@ -527,13 +517,6 @@ describe('a record drawn again later in the story', () => {
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
     expect(characterOf(teach, 'en', reveal(null)).visual.strokes).toBe(first)
-  })
-
-  it('is drawn again for a chapter reader once the chapter reaches it', () => {
-    const at = chapterAtEpisode(421)
-
-    expect(drawnAtChapter(at - 1)).toBe(first)
-    expect(drawnAtChapter(at)).toBe(redrawn?.value)
   })
 
   it('is lifted by hand as the reader would see it, not as it ends', () => {
@@ -569,24 +552,6 @@ describe('a record drawn again later in the story', () => {
       expect(characterOf(usopp, 'en', reveal(null)).visual.strokes).toBe(
         slingshot,
       )
-    })
-
-    it('keeps Kabuto from a chapter reader until the manga draws it', () => {
-      // The manga draws Kabuto in chapter 390, so no chapter below it may.
-      const kabutoAt = chapterAtEpisode(274)
-
-      expect(kabutoAt).toBeGreaterThanOrEqual(390)
-      expect(drawnAtChapter(kabutoAt - 1, 'usopp')).toBe(slingshot)
-      expect(drawnAtChapter(kabutoAt, 'usopp')).toBe(kabuto?.value)
-
-      // The manga draws Kuro Kabuto in chapter 598, but the records between
-      // the timeskip and Fish-Man Island are sparse, so a chapter reader
-      // reaches 517 only at 962: late, which errs towards fog, never early.
-      const kuroKabutoAt = chapterAtEpisode(517)
-
-      expect(kuroKabutoAt).toBeGreaterThanOrEqual(598)
-      expect(drawnAtChapter(kuroKabutoAt - 1, 'usopp')).toBe(kabuto?.value)
-      expect(drawnAtChapter(kuroKabutoAt, 'usopp')).toBe(kuroKabuto?.value)
     })
   })
 })

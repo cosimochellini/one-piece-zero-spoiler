@@ -61,6 +61,14 @@ export type Entity = {
   readonly revealedAtChapter: number
   readonly revealedAtEpisode: number
   readonly summary: LocalizedText
+  /**
+   * Set on a record whose two thresholds are too far out of step to say how
+   * far a chapter reaches into the anime: Shiki is episode 425 but chapter
+   * 962, and as an anchor of `~/data/chapters` he held every chapter from 599
+   * to 961 at episode 424. The table leaves such a record out, and a data
+   * test holds that nothing dated names it before its own chapter.
+   */
+  readonly unanchored?: true
   readonly visual: Visual
 }
 
@@ -68,8 +76,19 @@ export type Entity = {
  * One fact as it stands from a given episode. A timeline of them is what a
  * dossier field holds: the reader's dial picks the last entry it has reached,
  * so a bounty raised at episode 500 is not on the page of a reader at 300.
+ *
+ * `chapter` is the manga chapter that tells the fact, set only where it has
+ * been checked against a source. Without it a chapter reader reaches the
+ * entry at the first chapter that reaches its episode (`gateOf` in
+ * `~/data/reveal`); with it, at that chapter, and the chapter table then
+ * holds every earlier chapter below the episode, so the fix sits on the
+ * datum rather than in a list far from it.
  */
-export type Dated<T> = { readonly episode: number; readonly value: T }
+export type Dated<T> = {
+  readonly chapter?: number
+  readonly episode: number
+  readonly value: T
+}
 
 /** Entries in ascending episode order; the first no earlier than the record's threshold. */
 export type Timeline<T> = readonly Dated<T>[]

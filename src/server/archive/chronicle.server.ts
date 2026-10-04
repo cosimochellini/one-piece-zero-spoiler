@@ -69,7 +69,7 @@ export function chronicleFrom(
     mode: 'chronicle',
     entries: at.reached(chronicle).map((entry): ChronicleEntry => {
       return {
-        ...gateOf(entry.episode),
+        ...gateOf(entry),
         title: entry.value.title[locale],
         body: segmentsOf(entry.value.body[locale], resolve),
       }

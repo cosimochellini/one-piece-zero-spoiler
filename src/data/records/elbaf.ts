@@ -578,7 +578,10 @@ export const elbaf: Saga = {
       },
       status: [{ episode: 1170, value: 'alive' }],
       affiliation: [{ episode: 1170, value: KNIGHTS }],
-      devilFruit: [{ episode: 1173, value: ['thorn-thorn-fruit'] }],
+      // Named a Thorn Human in chapter 1143, which episode 1173 tells.
+      devilFruit: [
+        { episode: 1173, chapter: 1143, value: ['thorn-thorn-fruit'] },
+      ],
     },
     'rimoshifu-killingham': {
       role: KNIGHT_ROLE,
@@ -588,8 +591,13 @@ export const elbaf: Saga = {
       },
       status: [{ episode: 1170, value: 'alive' }],
       affiliation: [{ episode: 1170, value: KNIGHTS }],
+      // His fruit is named and shown in chapter 1143, as in episode 1173.
       devilFruit: [
-        { episode: 1173, value: ['dragon-dragon-fruit-mythical-model-kirin'] },
+        {
+          episode: 1173,
+          chapter: 1143,
+          value: ['dragon-dragon-fruit-mythical-model-kirin'],
+        },
       ],
     },
     'ragnir': {

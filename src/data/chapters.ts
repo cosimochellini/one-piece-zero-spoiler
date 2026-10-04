@@ -1,21 +1,27 @@
-import { CHAPTER_CEILING } from '~/lib/progress/episode'
+import { CHAPTER_CEILING, EPISODE_CEILING } from '~/lib/progress/episode'
 
-import { entities } from './entities'
+import { REDRAWINGS } from './art'
+import { CHARACTER_DOSSIERS } from './characters'
+import { entities, getEntity } from './entities'
+import { SHIP_DOSSIERS } from './places'
+import type { Dated, Entity, Timeline } from './types'
 
 /**
  * How far into the anime a manga chapter reaches, as far as the archive can
  * vouch for it.
  *
- * The dossier timelines and the chronicle are dated in anime episodes only,
- * so a reader who counts in chapters needs an episode to read them at. There
- * is no chapter-to-episode table here; every record already carries both of
- * its thresholds, and those pairs are the anchors. A chapter reaches the
- * episode that is below both of:
+ * The dossier timelines and the chronicle are dated in anime episodes, and
+ * only some entries say which chapter tells them; a reader who counts in
+ * chapters reads every other entry at the first chapter that reaches its
+ * episode (`gateOf` in `~/data/reveal`). There is no chapter-to-episode
+ * table to read that from, so it is derived. A chapter reaches the episode
+ * that is below both of:
  *
  * - the latest episode of a record the chapter has reached, because past it
  *   the archive has nothing that says the chapter got that far; and
- * - the episode before the earliest record the chapter has not reached,
- *   because from there on a timeline entry could name it.
+ * - the episode before the earliest record, or the earliest entry with a
+ *   chapter of its own, that the chapter has not reached, because from there
+ *   on a timeline entry could name it or be it.
  *
  * The second bound is what keeps an anime that reorders the manga honest:
  * Shanks is in chapter 1 but episode 4, and Zoro in chapter 3 but episode 2,
@@ -23,23 +29,71 @@ import { entities } from './entities'
  * which is the direction the archive always rounds in.
  *
  * Where the records are sparse a chapter would still reach episodes the
- * manga tells chapters later, so ANCHORS adds measured pairs to the second
- * bound only: an episode that opens at or after its chapter. The wiki has no
- * episode-to-chapter table (the Episode_N `chapter =` field is empty), so the
- * pairs are added where a gap was measured, not curated for every episode.
+ * manga tells chapters later. The fix is a `chapter` on the entry that was
+ * seen too early: it opens the entry at that chapter and, through the second
+ * bound, holds every earlier chapter below its episode.
  *
- * ponytail: derived from the records' own thresholds plus a few anchors, so
- * it is only as fine as they are dense; add an anchor wherever a chapter is
- * seen to reach an episode too early.
+ * Two kinds of record are left out. A fruit, because its chapter is read off
+ * this table (`~/data/records/fruits`) and would otherwise bound itself. And
+ * a record marked `unanchored`, whose two thresholds are too far apart to
+ * say anything about the chapters between them.
  */
-const ANCHORS: readonly (readonly [episode: number, chapter: number])[] = [
-  [274, 390], // Usopp's Kabuto, drawn again from 274 (debut chapter 390)
-  [312, 430], // the Going Merry's farewell
-  [953, 952], // Babanuki tamed by Tama
-  [976, 973], // Denjiro's Kyoshiro entries (the reveal is chapter 973)
-  [1019, 1004], // Daifugo tamed, the Speed and Daifugo stories
-  [1040, 1018], // the Daifugo story; chapter approximate, so it errs late
+
+/** One dated entry of the archive, with the record whose timeline holds it. */
+export type DatedEntry = {
+  readonly entry: Dated<unknown>
+  readonly label: string
+  readonly owner: Entity
+}
+
+/** The arrays among a dossier's fields, which are its timelines. */
+function timelinesOf(dossier: object): readonly Timeline<unknown>[] {
+  return Object.values(dossier).filter(
+    (field: unknown): field is Timeline<unknown> => Array.isArray(field),
+  )
+}
+
+/** Every entry of every timeline one record owns, labelled for a failure. */
+function entriesOf(
+  id: string,
+  timelines: readonly Timeline<unknown>[],
+): readonly DatedEntry[] {
+  const owner = getEntity(id)
+  if (owner === undefined) {
+    return []
+  }
+
+  return timelines.flat().map((entry) => {
+    const label = `${id} @${String(entry.episode)}`
+
+    return { entry, owner, label }
+  })
+}
+
+/**
+ * Every dated entry in the archive: the character dossiers, the ships' fates
+ * and the redrawings.
+ */
+export const DATED: readonly DatedEntry[] = [
+  ...Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) =>
+    entriesOf(id, timelinesOf(dossier)),
+  ),
+  ...Object.entries(SHIP_DOSSIERS).flatMap(([id, dossier]) =>
+    entriesOf(id, [dossier.fate]),
+  ),
+  ...Object.entries(REDRAWINGS).flatMap(([id, timeline]) =>
+    entriesOf(id, [timeline]),
+  ),
 ]
+
+/** The (episode, chapter) pairs the entries vouch for themselves. */
+const ANCHORS = DATED.flatMap(({ entry }) =>
+  entry.chapter === undefined ? [] : [[entry.episode, entry.chapter] as const],
+)
+
+const RECORDS = entities.filter(
+  (entity) => entity.kind !== 'fruit' && entity.unanchored !== true,
+)
 
 const EPISODE_AT: readonly number[] = Array.from(
   { length: CHAPTER_CEILING + 1 },
@@ -51,7 +105,7 @@ const EPISODE_AT: readonly number[] = Array.from(
         firstUnreached = Math.min(firstUnreached, episode)
       }
     }
-    for (const entity of entities) {
+    for (const entity of RECORDS) {
       if (entity.revealedAtChapter <= chapter) {
         latestReached = Math.max(latestReached, entity.revealedAtEpisode)
       } else {
@@ -63,6 +117,19 @@ const EPISODE_AT: readonly number[] = Array.from(
   },
 )
 
+// The inverse, worked out once: every timeline entry a chapter reader is
+// shown is looked up here.
+const CHAPTER_AT: readonly number[] = Array.from(
+  { length: EPISODE_CEILING + 1 },
+  (_, episode) => {
+    const chapter = EPISODE_AT.findIndex(
+      (reached, at) => at >= 1 && reached >= episode,
+    )
+
+    return chapter === -1 ? CHAPTER_CEILING + 1 : chapter
+  },
+)
+
 /** The episode a reader at this chapter has reached; 0 for none. */
 export function episodeAtChapter(chapter: number): number {
   return EPISODE_AT[Math.min(Math.max(chapter, 0), CHAPTER_CEILING)] ?? 0
@@ -70,12 +137,8 @@ export function episodeAtChapter(chapter: number): number {
 
 /**
  * The first chapter that reaches this episode, or one past the ceiling when
- * none does — which `reveal` (`./reveal`) reads as never.
+ * none does — which `isRevealed` reads as never.
  */
 export function chapterAtEpisode(episode: number): number {
-  const chapter = EPISODE_AT.findIndex(
-    (reached, at) => at >= 1 && reached >= episode,
-  )
-
-  return chapter === -1 ? CHAPTER_CEILING + 1 : chapter
+  return CHAPTER_AT[Math.max(episode, 0)] ?? CHAPTER_CEILING + 1
 }
