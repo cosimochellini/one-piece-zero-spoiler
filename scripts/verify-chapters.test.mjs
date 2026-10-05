@@ -163,8 +163,13 @@ describe('the chapter that names a fruit', () => {
       namingChapterOf(
         new Map([
           [16, 'She asks how he [[Gomu Gomu no Mi|inflated himself]], named.'],
-          [1023, 'Jack ate the [[Zou Zou no Mi, Model: Mammoth]].'],
         ]),
+        'Gomu Gomu no Mi',
+      ),
+    ).toBeUndefined()
+    expect(
+      namingChapterOf(
+        new Map([[1023, 'Jack ate the [[Zou Zou no Mi, Model: Mammoth]].']]),
         'Zou Zou no Mi',
       ),
     ).toBeUndefined()

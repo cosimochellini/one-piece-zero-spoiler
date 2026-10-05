@@ -1,8 +1,9 @@
 // The One Piece Wiki, read through its API: the HTML pages are blocked to
 // scripts, the API is not. Every answer is cached under `.gate/wiki/` so a
 // run of several hundred pages is paid once; only a real answer (a parsed
-// page, a missing title, a batch of chapter pages) is written, so a
-// challenge page or a throttling error does not stick to the next run.
+// page, a missing title, a complete batch of chapter pages) is written, so a
+// challenge page, a throttling error or a truncated batch does not stick to
+// the next run. Nothing expires: delete the folder to read afresh.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
@@ -22,7 +23,7 @@ const BATCH = 50
 
 /** @typedef {{ title: string, wikitext: string, text: string }} Page */
 /** @typedef {{ title: string, revisions?: { slots?: { main?: Record<string, string> } }[] }} ChapterPage */
-/** @typedef {{ parse?: { title: string, wikitext: Record<string, string>, text: Record<string, string> }, error?: { code?: string }, query?: { pages?: Record<string, ChapterPage> } }} Answer */
+/** @typedef {{ parse?: { title: string, wikitext: Record<string, string>, text: Record<string, string> }, error?: { code?: string }, query?: { pages?: Record<string, ChapterPage> }, batchcomplete?: string, continue?: unknown }} Answer */
 
 /**
  * One answer from the API, trying three times: the wiki drops a connection
@@ -161,10 +162,24 @@ async function fetchChapters(from, to) {
     path.join(CACHE, 'chapters', `${String(from)}-${String(to)}.json`),
     label,
     CHAPTERS_API + encodeURIComponent(titles.join('|')),
-    (answer) => answer.query?.pages !== undefined,
+    isCompleteBatch,
   )
 
   return Object.values(query?.pages ?? {})
+}
+
+/**
+ * Whether an answer holds a whole batch: pages, the API's `batchcomplete`
+ * mark and no `continue`, which would mean it was cut short.
+ * @param {Answer} answer The answer.
+ * @returns {boolean} Whether to cache it.
+ */
+function isCompleteBatch(answer) {
+  return (
+    answer.query?.pages !== undefined
+    && answer.batchcomplete !== undefined
+    && answer.continue === undefined
+  )
 }
 
 /**

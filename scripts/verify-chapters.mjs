@@ -21,7 +21,8 @@
 //
 // Run it with `npm run verify:chapters`. It talks to the network, so it is not
 // part of `npm run check` or CI; the pages it reads are cached under
-// `.gate/wiki/` (`./wiki.mjs`).
+// `.gate/wiki/` (`./wiki.mjs`) and never expire, so delete that folder to
+// read the wiki afresh, for instance after new chapters come out.
 import process from 'node:process'
 import { pathToFileURL } from 'node:url'
 
@@ -164,7 +165,8 @@ const NAMED_AT = {
 }
 
 /** A naming verb: the chapter summary says who ate the fruit or what it is. */
-const NAMING = /\b(?:ate|eaten|reveal|explain|named?|identif)/iu
+const NAMING =
+  /\b(?:ate|eaten|fed|reveal|explain|named?|identif|called|known as)/iu
 
 /**
  * The first chapter whose wiki summary names a fruit in the same sentence as

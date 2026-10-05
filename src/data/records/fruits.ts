@@ -32,7 +32,7 @@ export const devilFruits: Saga = {
     {
       id: 'gum-gum-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 4,
+      revealedAtEpisode: 1,
       revealedAtChapter: 1,
       name: { it: 'Frutto Gom Gom', en: 'Gum-Gum Fruit' },
       summary: {
@@ -1277,8 +1277,8 @@ export const devilFruits: Saga = {
     {
       id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
       kind: 'fruit',
-      revealedAtEpisode: 965,
-      revealedAtChapter: 965,
+      revealedAtEpisode: 927,
+      revealedAtChapter: 933,
       name: {
         it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
         en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',

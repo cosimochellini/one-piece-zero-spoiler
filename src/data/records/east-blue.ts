@@ -895,7 +895,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 45, value: { it: 'Cappello di Paglia', en: 'Straw Hat' } },
       ],
-      devilFruit: [{ episode: 4, chapter: 1, value: ['gum-gum-fruit'] }],
+      devilFruit: [{ episode: 1, chapter: 1, value: ['gum-gum-fruit'] }],
       bounty: [
         { episode: 45, value: 30_000_000 },
         { episode: 128, value: 100_000_000 },
