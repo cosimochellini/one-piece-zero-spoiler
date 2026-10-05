@@ -38,6 +38,20 @@ const TOP_HAT: Stroke[] = [
   { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
 ]
 
+/** Sakazuki's cap with the fist burned through it, plain first and braided later. */
+const BURNED_CAP: Stroke[] = [
+  { d: 'M36 118 C36 78 124 78 124 118z' },
+  { d: 'M28 118 h104' },
+  { d: 'M32 128 q48 16 96 0 M28 118 v10 M132 118 v10' },
+  {
+    d: 'M62 96 C56 82 62 70 74 70 C86 70 94 80 96 92 C98 104 90 112 76 112 C66 112 64 104 62 96z',
+    role: 'accent',
+  },
+  { d: 'M68 78 q10 -12 22 -4', role: 'accent' },
+  { d: 'M50 72 q-8 -12 -2 -20 M108 76 q10 -10 6 -20', role: 'accent' },
+  shadow(80, 158, 52),
+]
+
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
   // A long sword, and the scalpel that goes with the surgeon.
@@ -642,19 +656,9 @@ export const summitWarArt = {
     { d: 'M44 112 h72', role: 'soft' },
   ],
 
-  // A Marine cap with a fist burned through it.
-  'sakazuki': [
-    { d: 'M36 118 C36 78 124 78 124 118z' },
-    { d: 'M28 118 h104' },
-    { d: 'M32 128 q48 16 96 0 M28 118 v10 M132 118 v10' },
-    {
-      d: 'M62 96 C56 82 62 70 74 70 C86 70 94 80 96 92 C98 104 90 112 76 112 C66 112 64 104 62 96z',
-      role: 'accent',
-    },
-    { d: 'M68 78 q10 -12 22 -4', role: 'accent' },
-    { d: 'M50 72 q-8 -12 -2 -20 M108 76 q10 -10 6 -20', role: 'accent' },
-    shadow(80, 158, 52),
-  ],
+  // A Marine cap with a fist burned through it. The fleet admiral's braid is
+  // added from 570, in `summitWarRedrawn`.
+  'sakazuki': BURNED_CAP,
 
   // A diamond the size of a shoulder plate.
   'jozu': [
@@ -1313,6 +1317,27 @@ export const summitWarRedrawn: Redrawings = {
           ]
         }),
         shadow(78, 170, 42),
+      ],
+    },
+  ],
+
+  // The same cap, its band now the fleet admiral's braid: a twisted cord
+  // across the front and a looped cord hung from its side, the rank Sengoku
+  // wore handed down. Jinbe tells the crew he won the seat at 570 (ch. 650).
+  sakazuki: [
+    {
+      episode: 570,
+      chapter: 650,
+      value: [
+        ...BURNED_CAP,
+        {
+          d: 'M34 121 c4 0 4 6 8 6 M42 121 c4 0 4 6 8 6 M50 121 c4 0 4 6 8 6 M58 121 c4 0 4 6 8 6 M66 121 c4 0 4 6 8 6 M74 121 c4 0 4 6 8 6 M82 121 c4 0 4 6 8 6 M90 121 c4 0 4 6 8 6 M98 121 c4 0 4 6 8 6 M106 121 c4 0 4 6 8 6 M114 121 c4 0 4 6 8 6 M122 121 c4 0 4 6 8 6',
+          role: 'accent',
+        },
+        {
+          d: 'M132 122 C146 128 148 144 136 150 C128 154 124 146 130 140 M136 150 v8 M132 151 l-2 7 M140 149 l2 7',
+          role: 'accent',
+        },
       ],
     },
   ],
