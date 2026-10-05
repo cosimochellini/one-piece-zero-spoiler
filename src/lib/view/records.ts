@@ -16,6 +16,8 @@
  * here means no client module ever has cause to name `~/data` at all.
  */
 
+import type { Bookmark } from '~/lib/progress/episode'
+
 /** The ink a stroke takes. Structurally `Role` from `~/data/art/stroke`. */
 export type StrokeRole = 'accent' | 'ambient' | 'soft'
 
@@ -397,6 +399,8 @@ export interface HomeView {
   cast: CharacterView[]
   /** The arc the reader is in: the last one that opens at or before them. */
   saga: WaypointView
+  /** The reader's bookmark, which the fold states in the reader's unit. */
+  point: NonNullable<Bookmark>
   /** The stories concluded in the arc up to the bookmark, most recent first. */
   stories: HomeStory[]
 }

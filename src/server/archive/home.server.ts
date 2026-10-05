@@ -83,6 +83,7 @@ export function homePage(
 
   return {
     before: before && shown.length > 0,
+    point: bookmark,
     saga: waypointOf(saga, locale, at),
     stories: shown.map((filed): HomeStory => {
       const { character, story } = filed
