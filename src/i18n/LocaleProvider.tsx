@@ -8,9 +8,9 @@ import { getDictionary, translate } from './translate'
  * The locale comes from the URL segment the router matched, not from a
  * browser preference, so the same address always renders the same language.
  */
-export type LocaleProviderProps = {
-  readonly children: ReactNode
-  readonly locale: Locale
+export interface LocaleProviderProps {
+  children: ReactNode
+  locale: Locale
 }
 
 /**

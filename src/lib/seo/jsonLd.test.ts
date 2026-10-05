@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
 
-import { pageJsonLd } from './jsonLd'
+import { type JsonLdPage, pageJsonLd } from './jsonLd'
 
-const PAGE = {
+const PAGE: JsonLdPage = {
   description: 'A scholar.',
   kind: 'record',
   locale: 'en',
@@ -11,7 +11,7 @@ const PAGE = {
   title: 'Nico Robin | Zero Spoiler',
   trail: [{ name: 'Characters', url: 'https://example.test/en/characters' }],
   url: 'https://example.test/en/characters/nico-robin',
-} as const
+}
 
 function parsed(): unknown {
   const graph: unknown = JSON.parse(pageJsonLd(PAGE))

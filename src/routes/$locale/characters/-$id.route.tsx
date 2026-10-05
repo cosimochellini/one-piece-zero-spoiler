@@ -26,8 +26,8 @@ export function RouteDiptych({
   position,
   peek,
 }: {
-  readonly peek: (handle: string) => Promise<RecordView>
-  readonly position: Promise<null | RoutePositionView>
+  peek: (handle: string) => Promise<RecordView>
+  position: Promise<null | RoutePositionView>
 }): ReactElement {
   const { t } = useLocale()
   const at = use(position)

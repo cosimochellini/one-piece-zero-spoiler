@@ -3,7 +3,7 @@ import { itDictionary } from './dictionaries/it'
 import type { Locale } from './locales'
 import type { Dictionary, TranslationKey, TranslationParams } from './types'
 
-const DICTIONARIES: Readonly<Record<Locale, Dictionary>> = {
+const DICTIONARIES: Record<Locale, Dictionary> = {
   it: itDictionary,
   en: enDictionary,
 }

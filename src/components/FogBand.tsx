@@ -16,19 +16,19 @@ import { color, font, leading, rule, space, text } from '~/styles/tokens.stylex'
  */
 
 /** What a band calls itself at each of the three counts. */
-export type FogTitles = {
-  readonly allOpen: TranslationKey
-  readonly hint: TranslationKey
-  readonly many: TranslationKey
-  readonly one: TranslationKey
+export interface FogTitles {
+  allOpen: TranslationKey
+  hint: TranslationKey
+  many: TranslationKey
+  one: TranslationKey
 }
 
 /** The band, its heading, and whatever list of covered records it holds. */
-export type FogBandProps = {
-  readonly children: ReactNode
-  readonly count: number
-  readonly headingId: string
-  readonly words: FogTitles
+export interface FogBandProps {
+  children: ReactNode
+  count: number
+  headingId: string
+  words: FogTitles
 }
 
 /** A listing's fog band: a dashed rule, a heading, and the covered records. */

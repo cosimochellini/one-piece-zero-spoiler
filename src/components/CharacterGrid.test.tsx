@@ -65,10 +65,10 @@ function book({
   locale = 'en',
   shelves = [eastBlue, alabasta],
 }: {
-  readonly featuredCovered?: readonly CoveredRecord[]
-  readonly featuredOpen?: readonly SearchableCharacter[]
-  readonly locale?: Locale
-  readonly shelves?: readonly ShelfView[]
+  featuredCovered?: CoveredRecord[]
+  featuredOpen?: SearchableCharacter[]
+  locale?: Locale
+  shelves?: ShelfView[]
 } = {}): void {
   renderWithProviders(
     <CharacterGrid
@@ -87,7 +87,7 @@ function book({
  * settled case passes the array instead: `use()` does not resume under jsdom
  * inside an `act` scope.
  */
-async function onTheirWay(): Promise<readonly ShelfView[]> {
+async function onTheirWay(): Promise<ShelfView[]> {
   return new Promise(() => {
     // Never settles.
   })

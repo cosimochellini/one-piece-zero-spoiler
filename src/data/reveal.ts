@@ -21,35 +21,29 @@ import type { Dated, Timeline } from './types'
  * shown anything, whereas a reader who has is shown exactly as much as they
  * asked for.
  */
-export type Reveal = {
+export interface Reveal {
   /** The unit the reader counts in, and so the one thresholds are printed in. */
-  readonly mode: BookmarkMode
+  mode: BookmarkMode
   /**
    * The latest entry of a timeline the reader has reached, or `undefined`
    * for none, or for no timeline. Entries are expected in ascending episode
    * order. With the record that owns the timeline, nothing is reached before
    * the record itself (`gateOf`).
    */
-  readonly latest: <T>(
-    timeline: Timeline<T> | undefined,
-    owner?: Gated,
-  ) => T | undefined
+  latest: <T>(timeline: Timeline<T> | undefined, owner?: Gated) => T | undefined
   /**
    * Every entry of a timeline the reader has reached, in its own order; with
    * its owner, none before the owner itself.
    */
-  readonly reached: <E extends When>(
-    timeline: readonly E[] | undefined,
-    owner?: Gated,
-  ) => readonly E[]
+  reached: <E extends When>(timeline: E[] | undefined, owner?: Gated) => E[]
   /**
    * Whether a record may be shown. A chapter bookmark is read against the
    * chapter threshold and nothing else; an episode or season bookmark against
    * the episode one.
    */
-  readonly sees: (gated: Gated) => boolean
+  sees: (gated: Gated) => boolean
   /** A record's threshold in the reader's unit. */
-  readonly threshold: (gated: Gated) => number
+  threshold: (gated: Gated) => number
 }
 
 /** Whether a record may be shown at this bookmark; see `Reveal.sees`. */

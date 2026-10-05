@@ -13,37 +13,37 @@ import {
 } from '~/lib/progress/episode'
 import { type Season, SEASONS } from '~/lib/progress/seasons'
 
-const MODES: readonly BookmarkMode[] = ['episode', 'season', 'chapter']
+const MODES: BookmarkMode[] = ['episode', 'season', 'chapter']
 
-const MODE_KEY: Readonly<Record<BookmarkMode, TranslationKey>> = {
+const MODE_KEY: Record<BookmarkMode, TranslationKey> = {
   episode: 'dialog.modeEpisode',
   season: 'dialog.modeSeason',
   chapter: 'dialog.modeChapter',
 }
 
-const FIELD_KEY: Readonly<Record<BookmarkMode, TranslationKey>> = {
+const FIELD_KEY: Record<BookmarkMode, TranslationKey> = {
   episode: 'dialog.episodeLabel',
   season: 'dialog.seasonEpisodeLabel',
   chapter: 'dialog.chapterLabel',
 }
 
 /** One message per way a draft can be unusable. */
-const ERROR_KEY: Readonly<Record<DraftProblem, TranslationKey>> = {
+const ERROR_KEY: Record<DraftProblem, TranslationKey> = {
   empty: 'dialog.errorEmpty',
   range: 'dialog.errorRange',
   season: 'dialog.errorSeason',
 }
 
 /** The draft, and the one way the two unit controls are allowed to change it. */
-export type UnitFieldsProps = {
-  readonly draft: Draft
+export interface UnitFieldsProps {
+  draft: Draft
   /**
    * Called with the draft to begin again from. Choosing a unit, or a season
    * within it, starts the draft over rather than converting what is in it: an
    * episode is not a chapter, and a number carried across would be a guess
    * dressed as a fact.
    */
-  readonly onRestart: (next: Draft) => void
+  onRestart: (next: Draft) => void
 }
 
 /**
@@ -85,8 +85,8 @@ function ModeChooser({
   mode,
   onChoose,
 }: {
-  readonly mode: BookmarkMode
-  readonly onChoose: (mode: BookmarkMode) => void
+  mode: BookmarkMode
+  onChoose: (mode: BookmarkMode) => void
 }): ReactElement {
   const t = useT()
   const groupId = useId()
@@ -127,8 +127,8 @@ function SeasonPicker({
   season,
   onChoose,
 }: {
-  readonly onChoose: (season: string) => void
-  readonly season: string
+  onChoose: (season: string) => void
+  season: string
 }): ReactElement {
   const t = useT()
   const id = useId()
@@ -184,12 +184,12 @@ function seasonOption(t: Translate, season: Season): string {
 }
 
 /** The number under edit, and the two ways the field reports back. */
-export type NumberFieldProps = {
-  readonly draft: Draft
-  readonly onBlur: () => void
-  readonly onChange: (number: string) => void
+export interface NumberFieldProps {
+  draft: Draft
+  onBlur: () => void
+  onChange: (number: string) => void
   /** Null until the field has been blurred once; live on every keystroke after. */
-  readonly problem: DraftProblem | null
+  problem: DraftProblem | null
 }
 
 /**
@@ -234,13 +234,13 @@ export function NumberField({
   )
 }
 
-type StepperRowProps = {
-  readonly describedBy: string
-  readonly draft: Draft
-  readonly fieldId: string
-  readonly invalid: boolean
-  readonly onBlur: () => void
-  readonly onChange: (number: string) => void
+interface StepperRowProps {
+  describedBy: string
+  draft: Draft
+  fieldId: string
+  invalid: boolean
+  onBlur: () => void
+  onChange: (number: string) => void
 }
 
 /**
@@ -315,9 +315,9 @@ function FieldMessage({
   error,
   id,
 }: {
-  readonly draft: Draft
-  readonly error: null | TranslationKey
-  readonly id: string
+  draft: Draft
+  error: null | TranslationKey
+  id: string
 }): ReactElement {
   const t = useT()
   const { ceiling } = stepperOf(draft)

@@ -21,9 +21,9 @@ export type BodyFamily =
  * `[0, 1]`; every fraction is inside the unit circle, which is what puts a
  * whole silhouette inside its own radii.
  */
-type Profile = readonly (readonly [number, number])[]
+type Profile = [number, number][]
 
-const PROFILES: Readonly<Record<BodyFamily, Profile>> = {
+const PROFILES: Record<BodyFamily, Profile> = {
   // Nearly a circle: the plain fruit every other family is a departure from.
   round: [
     [0.62, -1],
@@ -82,8 +82,8 @@ const PROFILES: Readonly<Record<BodyFamily, Profile>> = {
 
 /** One profile point in the drawing box, optionally mirrored to the left. */
 function at(
-  fraction: readonly [number, number],
-  radii: readonly [number, number],
+  fraction: [number, number],
+  radii: [number, number],
   side: number,
 ): string {
   return point(
@@ -102,7 +102,7 @@ function at(
  */
 export function lobed(family: BodyFamily, rx: number, ry: number): string {
   const profile = PROFILES[family]
-  const radii: readonly [number, number] = [rx, ry]
+  const radii: [number, number] = [rx, ry]
   const on = (index: number, side: number): string =>
     at(profile[index] ?? [0, 1], radii, side)
   const top = point(BODY_CX, BODY_CY - ry)

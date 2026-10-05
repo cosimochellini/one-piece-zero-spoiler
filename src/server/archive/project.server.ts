@@ -100,7 +100,7 @@ export function waypointOf(
 }
 
 /** A record's searchable surface, folded: the shown name and what matches it. */
-function foldedOf(shown: string, aliases: readonly string[]): Searchable {
+function foldedOf(shown: string, aliases: string[]): Searchable {
   return {
     name: shown,
     folded: foldName(shown),
@@ -113,7 +113,7 @@ function foldedOf(shown: string, aliases: readonly string[]): Searchable {
 }
 
 /** A record's name in every locale but the one the page is drawn in. */
-function otherNames(entity: Entity, locale: Locale): readonly string[] {
+function otherNames(entity: Entity, locale: Locale): string[] {
   return LOCALES.flatMap((other) =>
     other === locale ? [] : entity.name[other],
   )
@@ -126,7 +126,7 @@ function otherNames(entity: Entity, locale: Locale): readonly string[] {
  * reader's episode would confirm a name the fog is meant to hide, and now it
  * is not sent at all rather than sent and declined.
  */
-function reachedEpithets(entity: Entity, at: Reveal): readonly string[] {
+function reachedEpithets(entity: Entity, at: Reveal): string[] {
   return at
     .reached(dossierOf(entity)?.epithet, entity)
     .flatMap((entry) => LOCALES.map((other) => entry.value[other]))
@@ -154,11 +154,11 @@ export function searchableOf(
 }
 
 /** What a fruit is projected from: the record, its plate, and the reader. */
-export type FruitSource = {
-  readonly at: Reveal
-  readonly entity: Entity
-  readonly form: FruitForm
-  readonly locale: Locale
+export interface FruitSource {
+  at: Reveal
+  entity: Entity
+  form: FruitForm
+  locale: Locale
 }
 
 /**
@@ -198,9 +198,9 @@ export function slotOf<T>(
  * and that is itself a spoiler.
  */
 function linksFor(
-  ids: readonly string[] | undefined,
+  ids: string[] | undefined,
   locale: Locale,
-): readonly FruitLink[] | undefined {
+): FruitLink[] | undefined {
   if (ids === undefined) {
     return undefined
   }

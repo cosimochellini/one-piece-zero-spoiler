@@ -80,12 +80,12 @@ function saysNothing(payload: unknown, bookmark: Bookmark): void {
 }
 
 /** The ids a rail shows, in the order it shows them. */
-function openIds(rail: readonly Slot<FruitView>[]): readonly string[] {
+function openIds(rail: Slot<FruitView>[]): string[] {
   return rail.flatMap((slot) => (slot.open ? slot.record.id : []))
 }
 
 /** The eaters a band names. */
-function eatersIn(view: FruitEatersView): readonly string[] {
+function eatersIn(view: FruitEatersView): string[] {
   return view.eaters.flatMap((slot) => (slot.open ? slot.record.name : []))
 }
 
@@ -111,7 +111,7 @@ describe('the specimen sheet', () => {
   })
 
   it('keeps every plate’s open rows a prefix, in every unit', () => {
-    const marks: readonly NonNullable<Bookmark>[] = [
+    const marks: NonNullable<Bookmark>[] = [
       { mode: 'episode', episode: 462 },
       { mode: 'season', season: 4, episode: 1 },
       { mode: 'chapter', chapter: 500 },

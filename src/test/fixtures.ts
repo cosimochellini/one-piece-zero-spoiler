@@ -35,7 +35,7 @@ import type {
  * is an icon. One accent, one ambient and one dashed, so a fixture exercises
  * every ink a stroke can take.
  */
-export const strokes: readonly Stroke[] = [
+export const strokes: Stroke[] = [
   { d: 'M10 10 H150' },
   { d: 'M10 40 H150', role: 'accent' },
   { d: 'M10 70 H150', role: 'ambient', dashed: true },
@@ -48,8 +48,8 @@ export function drawing(tint: TintId = 'orange'): Drawing {
 
 /** A record filed at the same number in both units, which most tests want. */
 export function at(episode: number): {
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
+  revealedAtChapter: number
+  revealedAtEpisode: number
 } {
   return { revealedAtEpisode: episode, revealedAtChapter: episode }
 }
@@ -198,9 +198,7 @@ export function story(over: Partial<ChronicleEntry> = {}): ChronicleEntry {
 }
 
 /** A chronicle with the stories it is given, in the order it is given them. */
-export function chronicle(
-  entries: readonly ChronicleEntry[] = [],
-): CharacterChronicle {
+export function chronicle(entries: ChronicleEntry[] = []): CharacterChronicle {
   return { mode: 'chronicle', entries }
 }
 
@@ -254,8 +252,8 @@ export function peekFails<T>(): (handle: string) => Promise<T> {
  * passes the opaque handle through untouched and never invents one.
  */
 export function spyPeek<T>(value: T): {
-  readonly asked: readonly string[]
-  readonly peek: (handle: string) => Promise<T>
+  asked: string[]
+  peek: (handle: string) => Promise<T>
 } {
   const asked: string[] = []
   const settle = peekTo(value)

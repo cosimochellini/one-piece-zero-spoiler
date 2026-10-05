@@ -42,19 +42,19 @@ const CHARACTER_FOG: FogTitles = {
 }
 
 /** What the signal book is built from: the crests, the shelves, the query. */
-export type CharacterGridProps = {
+export interface CharacterGridProps {
   /** The characters in evidence: the ones drawn as crests. */
-  readonly featuredCovered: readonly CoveredRecord[]
-  readonly featuredOpen: readonly SearchableCharacter[]
-  readonly peek: (handle: string) => Promise<CharacterView>
+  featuredCovered: CoveredRecord[]
+  featuredOpen: SearchableCharacter[]
+  peek: (handle: string) => Promise<CharacterView>
   /**
    * The shelves, streamed. The crests are above the fold and there are
    * thirty-six of them; the shelves are three hundred and twenty-six tiles
    * with a drawing each, and they are the part of this page worth not
    * waiting for.
    */
-  readonly shelfCount: number
-  readonly shelves: ShelvesSource
+  shelfCount: number
+  shelves: ShelvesSource
 }
 
 /**
@@ -147,9 +147,9 @@ function SearchStatus({
   needle,
   query,
 }: {
-  readonly needle: string
-  readonly query: string
-  readonly shelves: ShelvesSource
+  needle: string
+  query: string
+  shelves: ShelvesSource
 }): ReactElement {
   const t = useT()
   const sections = shelves instanceof Promise ? use(shelves) : shelves
@@ -183,11 +183,11 @@ function FeaturedCrests({
   needle,
   peek,
 }: {
-  readonly covered: readonly CoveredRecord[]
-  readonly fieldId: string
-  readonly needle: string
-  readonly open: readonly SearchableCharacter[]
-  readonly peek: (handle: string) => Promise<CharacterView>
+  covered: CoveredRecord[]
+  fieldId: string
+  needle: string
+  open: SearchableCharacter[]
+  peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const t = useT()
   const matches = matchesIn(open, needle)
@@ -243,7 +243,7 @@ function FeaturedCrests({
 export function CharacterCardList({
   children,
 }: {
-  readonly children: ReactNode
+  children: ReactNode
 }): ReactElement {
   return <ul {...stylex.props(styles.grid)}>{children}</ul>
 }

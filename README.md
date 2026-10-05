@@ -72,11 +72,11 @@ stroke paths. A record the reader has not reached is sent as two numbers and an
 opaque handle:
 
 ```ts
-export type CoveredRecord = {
-  readonly handle: string
-  readonly kind: EntityKind
-  readonly revealedAtEpisode: number
-  readonly revealedAtChapter: number
+export interface CoveredRecord {
+  handle: string
+  kind: EntityKind
+  revealedAtChapter: number
+  revealedAtEpisode: number
 }
 ```
 

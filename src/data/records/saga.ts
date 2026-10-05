@@ -6,7 +6,7 @@ import type { CharacterDossier, Entity } from '~/data/types'
  * them. The archive is the concatenation of these, saga by saga, so a saga's
  * records and its dossiers are read and reviewed together.
  */
-export type Saga = {
-  readonly dossiers: Readonly<Record<string, CharacterDossier>>
-  readonly entries: readonly Entity[]
+export interface Saga {
+  dossiers: Record<string, CharacterDossier>
+  entries: Entity[]
 }

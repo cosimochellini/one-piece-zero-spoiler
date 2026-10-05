@@ -6,7 +6,9 @@ import type { Drawing } from '~/lib/view/records'
 import { color, radius, rule, space } from '~/styles/tokens.stylex'
 
 /** The drawing a specimen is set in, or nothing when it is under fog. */
-export type FruitFrameProps = { readonly visual?: Drawing }
+export interface FruitFrameProps {
+  visual?: Drawing
+}
 
 /**
  * One fruit drawing inside a hairline square.

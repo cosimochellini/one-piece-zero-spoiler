@@ -80,22 +80,22 @@ export const FEATURED_CHARACTER_IDS = [
  * are written and reviewed together; the data tests hold that every
  * character has exactly one.
  */
-export const CHARACTER_DOSSIERS: Readonly<Record<string, CharacterDossier>> =
+export const CHARACTER_DOSSIERS: Record<string, CharacterDossier> =
   Object.fromEntries(sagas.flatMap((saga) => Object.entries(saga.dossiers)))
 
 /** The whole archive in the order the anime reaches it. */
-const route: readonly Entity[] = orderByMode(entities, 'episode')
+const route: Entity[] = orderByMode(entities, 'episode')
 
 /** Every character record, in route order. */
-export const characters: readonly Entity[] = route.filter(
+export const characters: Entity[] = route.filter(
   (entity) => entity.kind === 'character',
 )
 
 const FEATURED = new Set<string>(FEATURED_CHARACTER_IDS)
 
 /** The featured characters, in route order. */
-export const featuredCharacters: readonly Entity[] = characters.filter(
-  (entity) => FEATURED.has(entity.id),
+export const featuredCharacters: Entity[] = characters.filter((entity) =>
+  FEATURED.has(entity.id),
 )
 
 /**
@@ -114,7 +114,7 @@ const CHARTED_KINDS = new Set<EntityKind>(['arc', 'place', 'ship'])
  * the featured characters. The other characters are in the signal book but
  * not on the chart, which would otherwise run to several hundred waypoints.
  */
-export const chart: readonly Entity[] = route.filter(
+export const chart: Entity[] = route.filter(
   (entity) => CHARTED_KINDS.has(entity.kind) || FEATURED.has(entity.id),
 )
 
@@ -130,7 +130,7 @@ const ON_CHART = new Set(chart.map((entity) => entity.id))
 export function chartWith(
   entity: Entity,
   mode: BookmarkMode = 'episode',
-): readonly Entity[] {
+): Entity[] {
   const drawn = ON_CHART.has(entity.id)
   if (drawn && mode === 'episode') {
     return chart
@@ -168,11 +168,11 @@ export function roleOf(entity: Entity): LocalizedText | undefined {
 }
 
 /** One story, with the character whose chronicle it belongs to. */
-export type FiledStory = {
-  readonly chapter?: number
-  readonly character: Entity
-  readonly episode: number
-  readonly story: Story
+export interface FiledStory {
+  chapter?: number
+  character: Entity
+  episode: number
+  story: Story
 }
 
 /**
@@ -180,7 +180,7 @@ export type FiledStory = {
  * keep route order. The chronicles are filed per character, and the home
  * page reads them across characters, by when they happen.
  */
-export const stories: readonly FiledStory[] = characters
+export const stories: FiledStory[] = characters
   .flatMap((character) => {
     const chronicle = dossierOf(character)?.chronicle ?? []
     return chronicle.map((entry) => filedStory(character, entry))
@@ -203,15 +203,13 @@ function filedStory(character: Entity, entry: Dated<Story>): FiledStory {
  * character on it is — the heading never has to be veiled above an open
  * name.
  */
-export type BookSection = {
-  readonly arc: Entity
-  readonly characters: readonly Entity[]
+export interface BookSection {
+  arc: Entity
+  characters: Entity[]
 }
 
 /** Every arc, in route order. */
-export const arcs: readonly Entity[] = route.filter(
-  (entity) => entity.kind === 'arc',
-)
+export const arcs: Entity[] = route.filter((entity) => entity.kind === 'arc')
 
 function shelfOf(character: Entity): Entity | undefined {
   let shelf: Entity | undefined
@@ -225,7 +223,7 @@ function shelfOf(character: Entity): Entity | undefined {
 }
 
 /** The signal book shelved by arc, in route order, empty shelves left out. */
-export const bookSections: readonly BookSection[] = arcs.flatMap((arc) => {
+export const bookSections: BookSection[] = arcs.flatMap((arc) => {
   const shelved = characters.filter(
     (character) => shelfOf(character)?.id === arc.id,
   )
@@ -236,11 +234,11 @@ export const bookSections: readonly BookSection[] = arcs.flatMap((arc) => {
  * Where a record sits on the chart, and what lies either side of it.
  * `index` is zero-based; the page prints it plus one.
  */
-export type RoutePosition = {
-  readonly index: number
-  readonly next: Entity | undefined
-  readonly previous: Entity | undefined
-  readonly total: number
+export interface RoutePosition {
+  index: number
+  next: Entity | undefined
+  previous: Entity | undefined
+  total: number
 }
 
 /**
@@ -252,7 +250,7 @@ export type RoutePosition = {
  */
 export function routePositionOf(
   entity: Entity,
-  drawn: readonly Entity[] = chartWith(entity),
+  drawn: Entity[] = chartWith(entity),
 ): RoutePosition {
   const index = drawn.findIndex((candidate) => candidate.id === entity.id)
 

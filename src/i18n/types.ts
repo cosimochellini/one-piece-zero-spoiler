@@ -8,10 +8,10 @@ export type TranslationKey = keyof typeof enDictionary
  * TypeScript report a missing key, and — through the excess property check on
  * an object literal — a key that no longer exists.
  */
-export type Dictionary = Readonly<Record<TranslationKey, string>>
+export type Dictionary = Record<TranslationKey, string>
 
 /** Values a `{placeholder}` may be filled with. */
-export type TranslationParams = Readonly<Record<string, number | string>>
+export type TranslationParams = Record<string, number | string>
 
 /** Translates a key, filling any `{placeholder}` from `params`. */
 export type Translate = (

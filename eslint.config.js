@@ -272,7 +272,6 @@ const config = defineConfig(
           detectObjects: false,
           ignoreNumericLiteralTypes: true,
           ignoreTypeIndexes: true,
-          ignoreReadonlyClassProperties: true,
         },
       ],
       '@typescript-eslint/explicit-function-return-type': [

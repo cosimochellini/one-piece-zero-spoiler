@@ -8,12 +8,12 @@ import { Route as FruitsRoute } from './fruits'
 import { Route as PlacesRoute } from './places'
 
 type Head = (input: {
-  readonly match: { readonly pathname: string }
-  readonly params: { readonly locale: string }
+  match: { pathname: string }
+  params: { locale: string }
 }) => {
-  readonly links?: readonly { href: string; hrefLang?: string; rel: string }[]
-  readonly meta?: readonly { content?: string; title?: string }[]
-  readonly scripts?: readonly { children: string }[]
+  links?: { href: string; hrefLang?: string; rel: string }[]
+  meta?: { content?: string; title?: string }[]
+  scripts?: { children: string }[]
 }
 
 /**

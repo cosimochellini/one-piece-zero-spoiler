@@ -14,23 +14,26 @@ import type { Locale } from '~/i18n/locales'
 export type PageKind = 'index' | 'landing' | 'record'
 
 /** One step of the trail above a page: what it is called and where it is. */
-export type Crumb = { readonly name: string; readonly url: string }
+export interface Crumb {
+  name: string
+  url: string
+}
 
 /** Everything the graph is written from. */
-export type JsonLdPage = {
-  readonly description: string
-  readonly kind: PageKind
-  readonly locale: Locale
-  readonly siteName: string
-  readonly siteUrl: string
-  readonly title: string
-  readonly trail: readonly Crumb[]
-  readonly url: string
+export interface JsonLdPage {
+  description: string
+  kind: PageKind
+  locale: Locale
+  siteName: string
+  siteUrl: string
+  title: string
+  trail: Crumb[]
+  url: string
 }
 
 // The site itself is always the first node of the graph, so the landing page
 // is a `WebPage` like any other rather than a second `WebSite`.
-const PAGE_TYPE: Readonly<Record<PageKind, string>> = {
+const PAGE_TYPE: Record<PageKind, string> = {
   landing: 'WebPage',
   index: 'CollectionPage',
   record: 'WebPage',
@@ -47,7 +50,7 @@ function listItem(crumb: Crumb, index: number): object {
     : { '@type': 'ListItem', position, 'name': crumb.name, 'item': crumb.url }
 }
 
-function breadcrumbs(trail: readonly Crumb[], here: Crumb): readonly object[] {
+function breadcrumbs(trail: Crumb[], here: Crumb): object[] {
   if (trail.length === 0) {
     return []
   }

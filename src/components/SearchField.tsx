@@ -19,15 +19,15 @@ import { Button } from '~/components/ui/Button'
  * never takes the field down with it — an input that unmounts mid-word loses
  * the word and the focus with it.
  */
-export type SearchFieldProps = {
-  readonly clearLabel: string
-  readonly fieldId: string
-  readonly label: string
-  readonly onQuery: (query: string) => void
-  readonly placeholder: string
-  readonly query: string
+export interface SearchFieldProps {
+  clearLabel: string
+  fieldId: string
+  label: string
+  onQuery: (query: string) => void
+  placeholder: string
+  query: string
   /** The `aria-live` line under the field; the caller owns its boundary. */
-  readonly status: ReactNode
+  status: ReactNode
 }
 
 /** The field, its clear button, and whatever line the page puts under them. */
@@ -89,9 +89,9 @@ function ClearSlot({
   label,
   onClear,
 }: {
-  readonly blank: boolean
-  readonly label: string
-  readonly onClear: () => void
+  blank: boolean
+  label: string
+  onClear: () => void
 }): ReactElement {
   return (
     <span {...stylex.props(styles.clearSlot)}>

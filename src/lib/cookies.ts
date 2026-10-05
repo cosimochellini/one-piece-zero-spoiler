@@ -15,7 +15,7 @@
  */
 export function parseCookieHeader(
   header: null | string | undefined,
-): ReadonlyMap<string, string> {
+): Map<string, string> {
   const jar = new Map<string, string>()
   if (header === null || header === undefined) {
     return jar

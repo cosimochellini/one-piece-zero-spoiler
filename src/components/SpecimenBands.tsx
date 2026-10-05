@@ -34,22 +34,22 @@ const FRUIT_FOG: FogTitles = {
   one: 'fruits.foggedTitleOne',
 }
 
-const TITLE_KEY: Readonly<Record<FruitForm, TranslationKey>> = {
+const TITLE_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
 }
 
-const LEDE_KEY: Readonly<Record<FruitForm, TranslationKey>> = {
+const LEDE_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruits.lede.logia',
   paramecia: 'fruits.lede.paramecia',
   zoan: 'fruits.lede.zoan',
 }
 
 /** What the sheet is built from: the three plates, and a way to lift the fog. */
-export type SpecimenBandsProps = {
-  readonly bands: readonly FruitBandView[]
-  readonly peek: (handle: string) => Promise<FruitView>
+export interface SpecimenBandsProps {
+  bands: FruitBandView[]
+  peek: (handle: string) => Promise<FruitView>
 }
 
 /**
@@ -125,11 +125,11 @@ function Plate({
   needle,
   peek,
 }: {
-  readonly band: FruitBandView
-  readonly fieldId: string
-  readonly index: number
-  readonly needle: string
-  readonly peek: (handle: string) => Promise<FruitView>
+  band: FruitBandView
+  fieldId: string
+  index: number
+  needle: string
+  peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
@@ -193,8 +193,8 @@ function CoveredRows({
   band,
   peek,
 }: {
-  readonly band: FruitBandView
-  readonly peek: (handle: string) => Promise<FruitView>
+  band: FruitBandView
+  peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
   return (
     <ul {...stylex.props(styles.rows)}>
@@ -219,9 +219,9 @@ function PlateHead({
   headingId,
   index,
 }: {
-  readonly band: FruitBandView
-  readonly headingId: string
-  readonly index: number
+  band: FruitBandView
+  headingId: string
+  index: number
 }): ReactElement {
   const t = useT()
 

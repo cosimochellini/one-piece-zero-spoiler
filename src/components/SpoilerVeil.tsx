@@ -18,7 +18,7 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** Everything the curtain needs to decide what it covers and how thickly. */
-export type SpoilerVeilProps<T extends Gated> = {
+export interface SpoilerVeilProps<T extends Gated> {
   /**
    * Whether this place on the page shows a record or fog, and — when it is
    * fog — the two thresholds and the opaque handle that stand in for it.
@@ -28,7 +28,7 @@ export type SpoilerVeilProps<T extends Gated> = {
    * decision is the server's, taken once for every record on the page, and
    * never retaken here.
    */
-  readonly slot: Slot<T>
+  slot: Slot<T>
   /**
    * Trades a covered record's handle for the record.
    *
@@ -36,7 +36,7 @@ export type SpoilerVeilProps<T extends Gated> = {
    * the Start plugin is deliberately absent, so a server function called from
    * a component throws out of `getStartContext()`. A closure needs no mock.
    */
-  readonly peek: (handle: string) => Promise<T>
+  peek: (handle: string) => Promise<T>
   /**
    * `block` is the default: the curtain stacks its notice above its action and
    * covers a paragraph or more. `inline` puts both on one line for a table
@@ -44,13 +44,13 @@ export type SpoilerVeilProps<T extends Gated> = {
    * a small card: the verb alone, centred, with the threshold left to the
    * card's own meta line and to the control's accessible name.
    */
-  readonly density?: 'block' | 'compact' | 'inline'
+  density?: 'block' | 'compact' | 'inline'
   /**
    * How hard to blur. `text` is enough for a line of words; a photograph
    * needs `media`, because a face survives a half-rem blur and a fogged
    * waypoint must not give its subject away.
    */
-  readonly strength?: 'media' | 'text'
+  strength?: 'media' | 'text'
   /**
    * The uncovered content, built from the record once there is one.
    *
@@ -59,7 +59,7 @@ export type SpoilerVeilProps<T extends Gated> = {
    * throws it away — which is fine when the record is in the bundle anyway,
    * and impossible when it is not.
    */
-  readonly children: (record: T) => ReactNode
+  children: (record: T) => ReactNode
   /**
    * What stands under the fog. Required, where it used to be optional: with
    * no record there is nothing else to draw. That is also what closes the
@@ -67,7 +67,7 @@ export type SpoilerVeilProps<T extends Gated> = {
    * in the DOM for find-in-page to turn up, because they are no longer in the
    * browser at all.
    */
-  readonly placeholder: ReactNode
+  placeholder: ReactNode
 }
 
 /**
@@ -161,10 +161,10 @@ function Covered({
   visible,
   children,
 }: {
-  readonly children: ReactNode
-  readonly density: Density
-  readonly strength: Strength
-  readonly visible: boolean
+  children: ReactNode
+  density: Density
+  strength: Strength
+  visible: boolean
 }): ReactElement {
   return (
     <div
@@ -193,11 +193,11 @@ function Curtain({
   onUncover,
   state,
 }: {
-  readonly density: Density
-  readonly lifted: boolean
-  readonly notice: string
-  readonly onUncover: () => void
-  readonly state: PeekState
+  density: Density
+  lifted: boolean
+  notice: string
+  onUncover: () => void
+  state: PeekState
 }): ReactElement {
   const t = useT()
   const verbOnly = density !== 'block'

@@ -38,13 +38,13 @@ const BOUNTY = [
  * records, and the unit it counts in. A chapter reaches the episode its
  * chapter reaches, which is the whole reason this module exists.
  */
-const KINDS: readonly {
-  readonly bookmark: Bookmark
-  readonly mode: BookmarkMode
-  readonly name: string
-  readonly progress: null | number
-  readonly seesRobin: boolean
-  readonly seesShanks: boolean
+const KINDS: {
+  bookmark: Bookmark
+  mode: BookmarkMode
+  name: string
+  progress: null | number
+  seesRobin: boolean
+  seesShanks: boolean
 }[] = [
   // The single most important row in the project: a reader who has not said
   // where they are must be shown nothing, including episode 1.

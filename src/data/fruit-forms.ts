@@ -10,7 +10,7 @@ import type { FruitForm } from '~/lib/view/records'
  * cycle. Nothing here imports anything from `~/data`.
  *
  * `satisfies` rather than an annotation, for the same reason `DRAWINGS` uses
- * one: `Readonly<Record<string, FruitForm>>` would widen `keyof typeof` to
+ * one: `Record<string, FruitForm>` would widen `keyof typeof` to
  * `string` and every misspelt slug in a dossier would typecheck.
  */
 export const FRUIT_FORMS = {
@@ -142,7 +142,7 @@ export const FRUIT_FORMS = {
   'arrow-arrow-fruit': 'paramecia',
   'thorn-thorn-fruit': 'paramecia',
   'dragon-dragon-fruit-mythical-model-kirin': 'zoan',
-} satisfies Readonly<Record<string, FruitForm>>
+} satisfies Record<string, FruitForm>
 
 /**
  * The id of a filed devil fruit. Derived from the table itself, so a dossier

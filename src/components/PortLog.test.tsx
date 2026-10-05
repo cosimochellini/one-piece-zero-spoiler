@@ -56,7 +56,7 @@ function rowOf(element: HTMLElement): HTMLElement {
 }
 
 /** The ports and the horizon, in the order they are logged. */
-function rows(): readonly HTMLElement[] {
+function rows(): HTMLElement[] {
   return screen
     .getAllByRole('listitem')
     .filter((item) => item.parentElement?.tagName === 'OL')

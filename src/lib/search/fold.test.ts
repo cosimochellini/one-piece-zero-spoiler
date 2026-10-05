@@ -34,10 +34,10 @@ function search({
   locale,
   query,
 }: {
-  readonly bookmark: Bookmark
-  readonly id: string
-  readonly locale: Locale
-  readonly query: string
+  bookmark: Bookmark
+  id: string
+  locale: Locale
+  query: string
 }): ReturnType<typeof matchFolded> {
   return matchFolded(
     searchableOf(must(id), locale, reveal(bookmark)),

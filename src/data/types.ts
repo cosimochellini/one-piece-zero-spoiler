@@ -9,7 +9,7 @@ import type { FruitId } from './fruit-forms'
  * that is missing a translation is a typecheck failure rather than a page with
  * a blank line on it.
  */
-export type LocalizedText = Readonly<Record<Locale, string>>
+export type LocalizedText = Record<Locale, string>
 
 /**
  * The drawings, one per record, each drawn once in `~/data/art` and rendered
@@ -34,7 +34,10 @@ export type { FruitId } from './fruit-forms'
  * What a record shows: a line drawing and the one colour its main stroke
  * takes. No photographs and no official artwork appear anywhere on the site.
  */
-export type Visual = { readonly art: ArtId; readonly tint: TintId }
+export interface Visual {
+  art: ArtId
+  tint: TintId
+}
 
 /**
  * One archive record.
@@ -54,13 +57,13 @@ export type Visual = { readonly art: ArtId; readonly tint: TintId }
  * The shape satisfies `Gated` from `~/lib/progress/spoiler` structurally, so
  * entities can be passed straight to `reveal(bookmark).sees` (`~/data/reveal`).
  */
-export type Entity = {
-  readonly id: string
-  readonly kind: EntityKind
-  readonly name: LocalizedText
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
-  readonly summary: LocalizedText
+export interface Entity {
+  id: string
+  kind: EntityKind
+  name: LocalizedText
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  summary: LocalizedText
   /**
    * Set on a record whose two thresholds are too far out of step to say how
    * far a chapter reaches into the anime: Shiki is episode 425 but chapter
@@ -68,8 +71,8 @@ export type Entity = {
    * to 961 at episode 424. The table leaves such a record out, and a data
    * test holds that nothing dated names it before its own chapter.
    */
-  readonly unanchored?: true
-  readonly visual: Visual
+  unanchored?: true
+  visual: Visual
   /**
    * The episode from which the show says this record's name before the
    * record itself opens: Fish-Man Island is a destination at 320 and a
@@ -77,13 +80,13 @@ export type Entity = {
    * words; text before it may not. Below `revealedAtEpisode` by definition,
    * which a data test holds, and read by the leak scan alone.
    */
-  readonly nameSaidAt?: number
+  nameSaidAt?: number
   /**
    * Set on a record whose name is an ordinary word of the prose — "King" is
    * in "King of the Pirates" from episode 1 — so plain text is never scanned
    * for it. A marker naming it is still held to the marker rules.
    */
-  readonly commonWord?: true
+  commonWord?: true
 }
 
 /**
@@ -98,14 +101,14 @@ export type Entity = {
  * holds every earlier chapter below the episode, so the fix sits on the
  * datum rather than in a list far from it.
  */
-export type Dated<T> = {
-  readonly chapter?: number
-  readonly episode: number
-  readonly value: T
+export interface Dated<T> {
+  chapter?: number
+  episode: number
+  value: T
 }
 
 /** Entries in ascending episode order; the first no earlier than the record's threshold. */
-export type Timeline<T> = readonly Dated<T>[]
+export type Timeline<T> = Dated<T>[]
 
 /**
  * One story of a character's chronicle: a short title and one paragraph, each
@@ -119,9 +122,9 @@ export type Timeline<T> = readonly Dated<T>[]
  * tests hold: a story is read by a viewer who has reached its episode, and
  * must not introduce them to anyone they have not met.
  */
-export type Story = {
-  readonly body: LocalizedText
-  readonly title: LocalizedText
+export interface Story {
+  body: LocalizedText
+  title: LocalizedText
 }
 
 /**
@@ -134,8 +137,8 @@ export type Story = {
  * changes when she changes it and a bounty rises when the poster is printed.
  * A fact with no entry yet is simply not on the page.
  */
-export type CharacterDossier = {
-  readonly affiliation: Timeline<LocalizedText>
+export interface CharacterDossier {
+  affiliation: Timeline<LocalizedText>
   /**
    * What has happened to the character, one story per turning point, each
    * filed at the first episode by whose end a viewer knows all of it. Unlike
@@ -146,17 +149,17 @@ export type CharacterDossier = {
    * Absent means no chronicle has been written yet, and the page then draws
    * no band at all.
    */
-  readonly chronicle?: Timeline<Story>
+  chronicle?: Timeline<Story>
   /**
    * The fruits the story has said this character ate, by id rather than by
    * name: one entry may carry two, because one episode may say two. The name
    * the page prints is the fruit record's own, so the two can never drift.
    */
-  readonly devilFruit?: Timeline<readonly FruitId[]>
-  readonly epithet?: Timeline<LocalizedText>
-  readonly log: LocalizedText
-  readonly origin?: Timeline<LocalizedText>
-  readonly role: LocalizedText
+  devilFruit?: Timeline<FruitId[]>
+  epithet?: Timeline<LocalizedText>
+  log: LocalizedText
+  origin?: Timeline<LocalizedText>
+  role: LocalizedText
   /**
    * Where the character stands, and from which episode. A vocabulary rather
    * than prose so the page can say it in the reader's language: the labels
@@ -166,7 +169,7 @@ export type CharacterDossier = {
    * page then prints no row at all — an empty "Status" line would say that
    * something is coming, which is the spoiler itself.
    */
-  readonly status?: Timeline<CharacterStatus>
+  status?: Timeline<CharacterStatus>
   /** In Berry. */
-  readonly bounty?: Timeline<number>
+  bounty?: Timeline<number>
 }

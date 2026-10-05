@@ -19,7 +19,7 @@ import { waterSevenArt } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
 
 /** The rules every drawing on the site obeys, first or redrawn. */
-function isADrawing(id: string, strokes: readonly Stroke[]): void {
+function isADrawing(id: string, strokes: Stroke[]): void {
   // Fewer than four strokes is an icon, not a drawing.
   expect(strokes.length, id).toBeGreaterThan(3)
   expect(

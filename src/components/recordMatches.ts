@@ -2,9 +2,9 @@ import { matchFolded } from '~/lib/search/fold'
 import type { NameMatch, Searchable } from '~/lib/view/records'
 
 /** A record the query answered for, with the span of its name that matched. */
-export type Match<T extends Searchable> = {
-  readonly entry: T
-  readonly match: NameMatch
+export interface Match<T extends Searchable> {
+  entry: T
+  match: NameMatch
 }
 
 /**
@@ -20,9 +20,9 @@ export type Match<T extends Searchable> = {
  * dossier lookup per record.
  */
 export function matchesIn<T extends Searchable>(
-  entries: readonly T[],
+  entries: T[],
   needle: string,
-): readonly Match<T>[] {
+): Match<T>[] {
   return entries.flatMap((entry) => {
     const match = matchFolded(entry, needle)
     return match.matches ? { entry, match } : []

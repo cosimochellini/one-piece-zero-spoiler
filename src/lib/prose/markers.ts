@@ -8,12 +8,14 @@
  */
 
 /** A marker: the record it names, and the words it shows instead, if any. */
-export type Marker = { readonly id: string; readonly shown?: string }
+export interface Marker {
+  id: string
+  shown?: string
+}
 
 /** A paragraph cut into plain words and the markers between them. */
 export type Token =
-  | { readonly kind: 'marker'; readonly marker: Marker }
-  | { readonly kind: 'words'; readonly text: string }
+  { kind: 'marker'; marker: Marker } | { kind: 'words'; text: string }
 
 const OPEN = '[['
 const CLOSE = ']]'
@@ -36,10 +38,10 @@ function markerOf(inside: string): Marker | undefined {
 }
 
 /** Where the next marker sits in the text, or `undefined` when there is none. */
-type Found = {
-  readonly end: number
-  readonly marker: Marker
-  readonly start: number
+interface Found {
+  end: number
+  marker: Marker
+  start: number
 }
 
 /**
@@ -70,7 +72,7 @@ function nextMarker(text: string, from: number): Found | undefined {
 }
 
 /** The paragraph as tokens, in order. */
-export function tokenize(text: string): readonly Token[] {
+export function tokenize(text: string): Token[] {
   const tokens: Token[] = []
   let from = 0
 
@@ -94,7 +96,7 @@ export function tokenize(text: string): readonly Token[] {
 }
 
 /** The ids a paragraph's markers name, in the order they appear. */
-export function markedIds(text: string): readonly string[] {
+export function markedIds(text: string): string[] {
   return tokenize(text).flatMap((token) =>
     token.kind === 'marker' ? token.marker.id : [],
   )
