@@ -644,8 +644,8 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
     filedHere: [
       'wanda',
       'carrot',
-      'inuarashi',
       'zunesha',
+      'inuarashi',
       'jack',
       'pedro',
       'shishilian',
