@@ -81,12 +81,12 @@ function saysNothing(payload: unknown, bookmark: Bookmark): void {
 
 /** The ids a rail shows, in the order it shows them. */
 function openIds(rail: readonly Slot<FruitView>[]): readonly string[] {
-  return rail.flatMap((slot) => (slot.open ? [slot.record.id] : []))
+  return rail.flatMap((slot) => (slot.open ? slot.record.id : []))
 }
 
 /** The eaters a band names. */
 function eatersIn(view: FruitEatersView): readonly string[] {
-  return view.eaters.flatMap((slot) => (slot.open ? [slot.record.name] : []))
+  return view.eaters.flatMap((slot) => (slot.open ? slot.record.name : []))
 }
 
 describe('the specimen sheet', () => {

@@ -11,7 +11,7 @@ import { defineConfig, type Plugin } from 'vite'
 // here keeps the rest of the file, and the array, checked.
 const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
 
-export default defineConfig({
+const config = defineConfig({
   server: { port: 3000 },
   resolve: {
     // Native Vite 8 option (ResolveOptions.tsconfigPaths).
@@ -58,3 +58,5 @@ export default defineConfig({
     }),
   ],
 })
+
+export default config

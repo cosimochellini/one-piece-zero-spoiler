@@ -17,7 +17,7 @@ import {
   slugsFrom,
 } from './archive-gate.mjs'
 
-const repoRoot = path.resolve(import.meta.dirname, '..')
+const repositoryRoot = path.resolve(import.meta.dirname, '..')
 
 /**
  * A built script, as the gate reads one.
@@ -33,7 +33,10 @@ function chunk(name, text, bytes = text.length) {
 describe('the canary the archive gate looks for', () => {
   it('is a long sentence from the archive, not a key', () => {
     const phrase = canaryFrom(
-      readFileSync(path.join(repoRoot, 'src/data/records/egghead.ts'), 'utf8'),
+      readFileSync(
+        path.join(repositoryRoot, 'src/data/records/egghead.ts'),
+        'utf8',
+      ),
     )
 
     expect(phrase).not.toBeNull()
@@ -106,7 +109,7 @@ describe('the slugs the gate looks for', () => {
       'src/data/fruit-forms.ts',
       'src/data/art/fruits/index.ts',
     ]) {
-      const source = readFileSync(path.join(repoRoot, file), 'utf8')
+      const source = readFileSync(path.join(repositoryRoot, file), 'utf8')
 
       expect(slugsFrom(source).length, file).toBeGreaterThan(0)
     }
@@ -116,7 +119,7 @@ describe('the slugs the gate looks for', () => {
     // The drawing modules carry no prose at all, so the prose canaries can
     // never cover them — and their keys are the record ids, which are the
     // name slugs. One uncovered module would ship names as identifiers.
-    const artDir = path.join(repoRoot, 'src/data/art')
+    const artDir = path.join(repositoryRoot, 'src/data/art')
     const modules = readdirSync(artDir).filter(
       (name) => name.endsWith('.ts') && !name.endsWith('.test.ts'),
     )
@@ -134,7 +137,7 @@ describe('the slugs the gate looks for', () => {
 
 describe('the prose the gate looks for', () => {
   it('names every saga the archive holds, and the log', () => {
-    const recordsDir = path.join(repoRoot, 'src/data/records')
+    const recordsDir = path.join(repositoryRoot, 'src/data/records')
     const sagas = readdirSync(recordsDir).filter((name) => {
       return (
         name.endsWith('.ts') && !name.endsWith('.test.ts') && name !== 'saga.ts'
@@ -149,7 +152,10 @@ describe('the prose the gate looks for', () => {
 
       expect(phrase, name).not.toBeNull()
     }
-    const log = readFileSync(path.join(repoRoot, 'src/data/places.ts'), 'utf8')
+    const log = readFileSync(
+      path.join(repositoryRoot, 'src/data/places.ts'),
+      'utf8',
+    )
 
     expect(canaryFrom(log)).not.toBeNull()
   })

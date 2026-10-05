@@ -1,4 +1,5 @@
 import {
+  type BookSection,
   bookSections,
   dossierOf as characterDossierOf,
   characters,
@@ -107,25 +108,29 @@ export function shelvesPage(
     at.mode,
   ).flatMap((arc) => {
     const section = byArc.get(arc.id)
-    if (section === undefined) {
-      return []
-    }
 
-    const shelved = orderByMode(section.characters, at.mode)
-
-    return [
-      {
-        arc: slotOf(arc, at, (entity) => recordOf(entity, locale, at)),
-        total: shelved.length,
-        open: shelved.flatMap((entity) =>
-          at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
-        ),
-        covered: shelved.flatMap((entity) =>
-          at.sees(entity) ? [] : [coveredOf(entity)],
-        ),
-      },
-    ]
+    return section === undefined ? [] : shelfViewOf(section, at, locale)
   })
+}
+
+/** One shelf: its arc, and the records on it split into open and covered. */
+function shelfViewOf(
+  section: BookSection,
+  at: Reveal,
+  locale: Locale,
+): ShelfView {
+  const shelved = orderByMode(section.characters, at.mode)
+
+  return {
+    arc: slotOf(section.arc, at, (entity) => recordOf(entity, locale, at)),
+    total: shelved.length,
+    open: shelved.flatMap((entity) =>
+      at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
+    ),
+    covered: shelved.flatMap((entity) =>
+      at.sees(entity) ? [] : [coveredOf(entity)],
+    ),
+  }
 }
 
 /** A character's own page: what names it, and what it says. */

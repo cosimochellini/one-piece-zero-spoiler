@@ -107,7 +107,7 @@ function foldedOf(shown: string, aliases: readonly string[]): Searchable {
     aliases: aliases.flatMap((alias) => {
       const folded = foldName(alias)
 
-      return folded === '' ? [] : [folded]
+      return folded === '' ? [] : folded
     }),
   }
 }
@@ -115,7 +115,7 @@ function foldedOf(shown: string, aliases: readonly string[]): Searchable {
 /** A record's name in every locale but the one the page is drawn in. */
 function otherNames(entity: Entity, locale: Locale): readonly string[] {
   return LOCALES.flatMap((other) =>
-    other === locale ? [] : [entity.name[other]],
+    other === locale ? [] : entity.name[other],
   )
 }
 
@@ -208,9 +208,7 @@ function linksFor(
   const links = ids.flatMap((id) => {
     const fruit = getFruit(id)
 
-    return fruit === undefined ?
-        []
-      : [{ id: fruit.id, name: fruit.name[locale] }]
+    return fruit === undefined ? [] : { id: fruit.id, name: fruit.name[locale] }
   })
 
   return links.length === 0 ? undefined : links

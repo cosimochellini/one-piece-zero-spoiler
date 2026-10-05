@@ -96,6 +96,6 @@ export function tokenize(text: string): readonly Token[] {
 /** The ids a paragraph's markers name, in the order they appear. */
 export function markedIds(text: string): readonly string[] {
   return tokenize(text).flatMap((token) =>
-    token.kind === 'marker' ? [token.marker.id] : [],
+    token.kind === 'marker' ? token.marker.id : [],
   )
 }

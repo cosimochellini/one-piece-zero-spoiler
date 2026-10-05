@@ -296,7 +296,7 @@ describe('the slice of the archive a page is given', () => {
       const ids = [
         story.subject.id,
         ...story.body.flatMap((segment) =>
-          segment.kind === 'link' ? [segment.id] : [],
+          segment.kind === 'link' ? segment.id : [],
         ),
       ]
       for (const id of ids) {

@@ -30,8 +30,8 @@ const TIMEOUT_MS = 900_000
 const MAX_DURATION_SECONDS = 600
 const MAX_PRINTED = 50
 
-const repoRoot = path.resolve(import.meta.dirname, '..')
-const reportPath = path.join(repoRoot, '.gate', 'react-doctor.json')
+const repositoryRoot = path.resolve(import.meta.dirname, '..')
+const reportPath = path.join(repositoryRoot, '.gate', 'react-doctor.json')
 
 function fail(headline) {
   process.stderr.write(
@@ -50,7 +50,7 @@ function isObject(value) {
 // find the binary. Look it up by path, then fall back to PATH.
 function resolveCli() {
   const local = path.join(
-    repoRoot,
+    repositoryRoot,
     'node_modules',
     'react-doctor',
     'bin',
@@ -90,7 +90,7 @@ function runDoctor() {
       '--yes',
     ],
     {
-      cwd: repoRoot,
+      cwd: repositoryRoot,
       encoding: 'utf8',
       timeout: TIMEOUT_MS,
       stdio: ['ignore', 'inherit', 'inherit'],
@@ -115,13 +115,15 @@ function assertChildSucceeded(child) {
 
 function readReport() {
   if (!existsSync(reportPath)) {
-    fail(`no report was written to ${path.relative(repoRoot, reportPath)}`)
+    fail(
+      `no report was written to ${path.relative(repositoryRoot, reportPath)}`,
+    )
   }
   try {
     return JSON.parse(readFileSync(reportPath, 'utf8'))
   } catch (error) {
     fail(
-      `${path.relative(repoRoot, reportPath)} could not be parsed: ${String(error)}`,
+      `${path.relative(repositoryRoot, reportPath)} could not be parsed: ${String(error)}`,
     )
   }
 }
@@ -246,7 +248,7 @@ function main() {
 
   process.stdout.write(
     `\nreact-doctor gate: ${diagnostics.length} diagnostic(s), `
-      + `${blocking.length} blocking\n  report: ${path.relative(repoRoot, reportPath)}\n`,
+      + `${blocking.length} blocking\n  report: ${path.relative(repositoryRoot, reportPath)}\n`,
   )
 
   if (blocking.length === 0) {

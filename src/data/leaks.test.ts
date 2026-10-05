@@ -96,21 +96,17 @@ function dated(
 ): readonly Text[] {
   return timeline.flatMap((entry) => {
     const text = textOf(entry.value)
-    if (text === undefined) {
-      return []
-    }
-
     const gate = gateOf(entry, owner)
 
-    return [
-      {
-        chapter: gate.revealedAtChapter,
-        episode: gate.revealedAtEpisode,
-        label: `${owner.id}.${field}@${String(entry.episode)}`,
-        owner,
-        text,
-      },
-    ]
+    return text === undefined ?
+        []
+      : {
+          chapter: gate.revealedAtChapter,
+          episode: gate.revealedAtEpisode,
+          label: `${owner.id}.${field}@${String(entry.episode)}`,
+          owner,
+          text,
+        }
   })
 }
 

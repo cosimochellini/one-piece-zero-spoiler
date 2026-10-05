@@ -13,19 +13,19 @@ const PAGE = {
   url: 'https://example.test/en/characters/nico-robin',
 } as const
 
-function parsed(page: typeof PAGE): unknown {
-  const graph: unknown = JSON.parse(pageJsonLd(page))
+function parsed(): unknown {
+  const graph: unknown = JSON.parse(pageJsonLd(PAGE))
 
   return graph
 }
 
 describe('the structured data of a page', () => {
   it('parses, which is the only thing a consumer asks of it', () => {
-    expect(() => parsed(PAGE)).not.toThrow()
+    expect(() => parsed()).not.toThrow()
   })
 
   it('says the site, the page and the trail, in that order', () => {
-    const graph = JSON.stringify(parsed(PAGE))
+    const graph = JSON.stringify(parsed())
 
     expect(graph).toContain('"@type":"WebSite"')
     expect(graph).toContain('"@type":"WebPage"')

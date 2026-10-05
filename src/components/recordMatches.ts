@@ -25,6 +25,6 @@ export function matchesIn<T extends Searchable>(
 ): readonly Match<T>[] {
   return entries.flatMap((entry) => {
     const match = matchFolded(entry, needle)
-    return match.matches ? [{ entry, match }] : []
+    return match.matches ? { entry, match } : []
   })
 }

@@ -103,7 +103,7 @@ function listed(byCharacter: ReadonlyMap<string, When>): readonly Eater[] {
     .flatMap(([character, named]) => {
       const entity = getCharacter(character)
 
-      return entity === undefined ? [] : [{ entity, named }]
+      return entity === undefined ? [] : { entity, named }
     })
     .toSorted(
       byValues([

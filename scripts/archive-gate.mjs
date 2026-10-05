@@ -193,52 +193,56 @@ function report(verdict, chunks) {
 
 /**
  * One canary per archive module that carries prose: every saga, and the log.
- * @param {string} repoRoot The repository root.
+ * @param {string} repositoryRoot The repository root.
  * @returns {{file: string, phrase: null | string}[]} What to look for.
  */
-function proseCanaries(repoRoot) {
-  const sagas = readdirSync(path.join(repoRoot, PROSE_DIR))
+function proseCanaries(repositoryRoot) {
+  const sagas = readdirSync(path.join(repositoryRoot, PROSE_DIR))
     .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
     .map((name) => `${PROSE_DIR}/${name}`)
 
   return [...sagas, ...PROSE_EXTRA].flatMap((file) => {
-    const phrase = canaryFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+    const phrase = canaryFrom(
+      readFileSync(path.join(repositoryRoot, file), 'utf8'),
+    )
 
     // `saga.ts` is the shape of a saga, not a saga: no prose, nothing to say.
     if (phrase === null && file.endsWith('saga.ts')) {
       return []
     }
 
-    return [{ file, phrase }]
+    return { file, phrase }
   })
 }
 
 /**
  * One canary per drawing module: the first id long enough to be unmistakable.
- * @param {string} repoRoot The repository root.
+ * @param {string} repositoryRoot The repository root.
  * @returns {{file: string, phrase: null | string}[]} What to look for.
  */
-function slugCanaries(repoRoot) {
-  const drawings = readdirSync(path.join(repoRoot, ART_DIR))
+function slugCanaries(repositoryRoot) {
+  const drawings = readdirSync(path.join(repositoryRoot, ART_DIR))
     .filter((name) => name.endsWith('.ts') && !name.endsWith('.test.ts'))
     .map((name) => `${ART_DIR}/${name}`)
 
   return [...drawings, ...SLUG_EXTRA].flatMap((file) => {
-    const slugs = slugsFrom(readFileSync(path.join(repoRoot, file), 'utf8'))
+    const slugs = slugsFrom(
+      readFileSync(path.join(repositoryRoot, file), 'utf8'),
+    )
 
     // `index.ts`, `stroke.ts`: the table and its type, keyed by nothing.
-    return slugs.length === 0 ? [] : [{ file, phrase: slugs[0] ?? null }]
+    return slugs.length === 0 ? [] : { file, phrase: slugs[0] ?? null }
   })
 }
 
 /**
  * The built client scripts, or nothing at all when there is no build.
- * @param {string} repoRoot The repository root.
+ * @param {string} repositoryRoot The repository root.
  * @returns {{bytes: number, name: string, text: string}[]} One per script.
  */
-function readBuild(repoRoot) {
+function readBuild(repositoryRoot) {
   try {
-    return clientChunks(path.join(repoRoot, 'dist', 'client'))
+    return clientChunks(path.join(repositoryRoot, 'dist', 'client'))
   } catch {
     return []
   }
@@ -249,8 +253,8 @@ function readBuild(repoRoot) {
  * @returns {number} The process exit code.
  */
 function main() {
-  const repoRoot = path.resolve(import.meta.dirname, '..')
-  const chunks = readBuild(repoRoot)
+  const repositoryRoot = path.resolve(import.meta.dirname, '..')
+  const chunks = readBuild(repositoryRoot)
 
   if (chunks.length === 0) {
     console.error(
@@ -260,7 +264,10 @@ function main() {
     return EXIT_UNUSABLE
   }
 
-  const canaries = [...proseCanaries(repoRoot), ...slugCanaries(repoRoot)]
+  const canaries = [
+    ...proseCanaries(repositoryRoot),
+    ...slugCanaries(repositoryRoot),
+  ]
   const verdict = judge(chunks, canaries)
 
   if (verdict.unreadable.length > 0) {

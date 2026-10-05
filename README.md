@@ -162,16 +162,16 @@ in a path as coordinates.
 | Layer     | Choice                                            |
 | --------- | ------------------------------------------------- |
 | UI        | React 19.3.0                                      |
-| Framework | TanStack Start 1.168.52 (SSR, file-based routes)  |
-| Router    | TanStack Router 1.170.35                          |
-| Styling   | StyleX 0.19.0, compiled to one same-origin sheet  |
-| Build     | Vite 8.3.0                                        |
+| Framework | TanStack Start 1.168.60 (SSR, file-based routes)  |
+| Router    | TanStack Router 1.170.41                          |
+| Styling   | StyleX 0.19.1, compiled to one same-origin sheet  |
+| Build     | Vite 8.3.2                                        |
 | Language  | TypeScript 6.0.3, `strict` plus nine extra flags  |
-| Tests     | Vitest 5.0.0, jsdom, Testing Library              |
-| Lint      | ESLint 10 flat config, 1,020 rules on, type-aware |
-| Gates     | react-doctor 0.9.14, fallow 3.25.0                |
+| Tests     | Vitest 5.0.3, jsdom, Testing Library              |
+| Lint      | ESLint 10 flat config, 1,203 rules on, type-aware |
+| Gates     | react-doctor 0.9.17, fallow 3.31.0                |
 | Host      | Netlify, SSR function plus CDN assets             |
-| Runtime   | Node 24.18.0, npm 11.20.0                         |
+| Runtime   | Node 24.21.0, npm 12.2.0                          |
 
 **Five runtime dependencies.** Every version is pinned exactly, with no ranges
 and one documented `overrides` entry.
@@ -310,7 +310,7 @@ names follow the Italian dub.
 
 ## Running it locally
 
-Node 24.18.0 and npm 11.20.0, both pinned.
+Node 24.21.0 and npm 12.2.0, both pinned.
 
 ```sh
 nvm use

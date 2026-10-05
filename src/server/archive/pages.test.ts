@@ -18,8 +18,8 @@ function seasonFour(episode: number): Bookmark {
   return { mode: 'season', season: 4, episode }
 }
 
-const headFor = (id: string, bookmark: Bookmark): string =>
-  JSON.stringify(characterPage(id, bookmark, 'en')?.head ?? null)
+const robinHead = (bookmark: Bookmark): string =>
+  JSON.stringify(characterPage('nico-robin', bookmark, 'en')?.head ?? null)
 
 /**
  * A page still under fog, or a failure saying it was not. Hoisted out of the
@@ -64,7 +64,7 @@ function opened(
  */
 describe('the character page a bookmark sees', () => {
   it('keeps a covered name out of the title and description', () => {
-    const meta = headFor('nico-robin', null)
+    const meta = robinHead(null)
 
     expect(meta).not.toContain('Robin')
     expect(meta).toContain('A character under fog | Zero Spoiler')
@@ -72,21 +72,15 @@ describe('the character page a bookmark sees', () => {
   })
 
   it('describes the threshold in the unit the reader counts in', () => {
-    expect(headFor('nico-robin', { mode: 'chapter', chapter: 10 })).toContain(
-      'chapter 218',
+    expect(robinHead({ mode: 'chapter', chapter: 10 })).toContain('chapter 218')
+    expect(robinHead({ mode: 'season', season: 1, episode: 1 })).toContain(
+      'appears in S04E38',
     )
-    expect(
-      headFor('nico-robin', { mode: 'season', season: 1, episode: 1 }),
-    ).toContain('appears in S04E38')
-    expect(
-      headFor('nico-robin', { mode: 'chapter', chapter: 10 }),
-    ).not.toContain('Robin')
+    expect(robinHead({ mode: 'chapter', chapter: 10 })).not.toContain('Robin')
   })
 
   it('names the character once the reader has reached them', () => {
-    expect(headFor('nico-robin', ep(130))).toContain(
-      'Nico Robin | Zero Spoiler',
-    )
+    expect(robinHead(ep(130))).toContain('Nico Robin | Zero Spoiler')
   })
 
   it('opens the record exactly at its threshold and not before', () => {

@@ -5,7 +5,7 @@
 [build.environment]
   # Mirrors .nvmrc, which Netlify also reads. Declared explicitly so the
   # runtime is visible in the deploy config itself.
-  NODE_VERSION = "24.18.0"
+  NODE_VERSION = "24.21.0"
   # The origin every canonical link, hreflang alternate, og:url and sitemap
   # entry is written against. Vite inlines it at build time; without it the
   # constant in src/lib/seo/site.ts is used, which is this same address. It is

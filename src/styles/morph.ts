@@ -26,6 +26,8 @@ const morph = stylex.viewTransitionClass({
 
 const styles = stylex.create({
   part: (name: string) => ({
+    // The compiler reads a dynamic style only from an arrow that returns its
+    // object directly, so this one keeps the implicit return.
     // eslint-disable-next-line @stylexjs/valid-styles -- the compiler emits `view-transition-class` from this, but the rule's property table predates it, and its `propLimits` escape admits only string literals, never the class name `stylex.viewTransitionClass` returns.
     viewTransitionClass: morph,
     viewTransitionName: {

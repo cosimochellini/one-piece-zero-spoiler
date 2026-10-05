@@ -9,7 +9,7 @@
  */
 import { MAX_TITLE_LENGTH, TYPE_BUMPS } from './scripts/validate-pr-title.mjs'
 
-export default {
+const config = {
   extends: ['@commitlint/config-conventional'],
   rules: {
     'type-enum': [2, 'always', Object.keys(TYPE_BUMPS)],
@@ -22,3 +22,5 @@ export default {
     'footer-max-line-length': [2, 'always', 100],
   },
 }
+
+export default config

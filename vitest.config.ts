@@ -41,7 +41,7 @@ const stylexPlugin = stylexVite({
   aliases: { '~/*': [path.join(import.meta.dirname, 'src', '*')] },
 })
 
-export default defineConfig({
+const config = defineConfig({
   resolve: { tsconfigPaths: true },
   plugins: [
     {
@@ -90,3 +90,5 @@ export default defineConfig({
     },
   },
 })
+
+export default config
