@@ -100,7 +100,7 @@ const config = defineConfig(
   js.configs.recommended,
 
   // Type-aware rules. stylisticTypeChecked is in: its rules choose between
-  // constructs (`type` over `interface`, `??` over `||`, `T[]` over
+  // constructs (`interface` over `type`, `??` over `||`, `T[]` over
   // `Array<T>`), never whitespace, so Prettier has nothing to argue with.
   //
   // These are why TypeScript is pinned to 6.0.x. typescript-eslint declares a
