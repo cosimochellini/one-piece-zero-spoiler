@@ -604,6 +604,8 @@ describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
   const redrawn = REDRAWINGS['marshall-d-teach']?.[0]
+  const teachAt = (bookmark: Bookmark | null): Stroke[] =>
+    characterOf(teach, 'en', reveal(bookmark)).visual.strokes
 
   it('is drawn again only from the episode it is redrawn at', () => {
     expect(redrawn?.episode).toBe(421)
@@ -612,7 +614,7 @@ describe('a record drawn again later in the story', () => {
     expect(characterOf(teach, 'en', seenAt(421)).visual.strokes).toBe(
       redrawn?.value,
     )
-    expect(characterOf(teach, 'en', seenAt(1200)).visual.strokes).toBe(
+    expect(characterOf(teach, 'en', seenAt(916)).visual.strokes).toBe(
       redrawn?.value,
     )
   })
@@ -1017,5 +1019,19 @@ describe('a record drawn again later in the story', () => {
     // no earlier.
     expect(drawnAt({ mode: 'chapter', chapter: 792 })).toBe(bicycle)
     expect(drawnAt({ mode: 'chapter', chapter: 793 })).toBe(flagged?.value)
+  })
+
+  it('puts the plumed tricorne on Teach only from episode 917', () => {
+    const [tricorne, plumed] = REDRAWINGS['marshall-d-teach'] ?? []
+
+    expect(plumed?.episode).toBe(917)
+
+    expect(teachAt(ep(916))).toBe(tricorne?.value)
+    expect(teachAt(ep(917))).toBe(plumed?.value)
+    expect(teachAt(null)).toBe(DRAWINGS['marshall-d-teach'])
+    // The manga shows him clearly after the timeskip in chapter 925, no
+    // earlier: chapter 903 has only his silhouette.
+    expect(teachAt({ mode: 'chapter', chapter: 924 })).toBe(tricorne?.value)
+    expect(teachAt({ mode: 'chapter', chapter: 925 })).toBe(plumed?.value)
   })
 })
