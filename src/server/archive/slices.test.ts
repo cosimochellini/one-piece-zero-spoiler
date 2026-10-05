@@ -931,4 +931,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 649 })).toBe(cap)
     expect(drawnAt({ mode: 'chapter', chapter: 650 })).toBe(braided?.value)
   })
+
+  it('sets Bon Clay’s shoes at the Gate of Justice only from episode 451', () => {
+    const bonClay = filed('bon-clay')
+    const shoes = DRAWINGS['bon-clay']
+    const gate = REDRAWINGS['bon-clay']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(bonClay, 'en', reveal(bookmark)).visual.strokes
+
+    expect(gate?.episode).toBe(451)
+
+    expect(drawnAt(ep(450))).toBe(shoes)
+    expect(drawnAt(ep(451))).toBe(gate?.value)
+    expect(drawnAt(null)).toBe(shoes)
+    // The manga has him stay behind to open the gate in chapter 548.
+    expect(drawnAt({ mode: 'chapter', chapter: 547 })).toBe(shoes)
+    expect(drawnAt({ mode: 'chapter', chapter: 548 })).toBe(gate?.value)
+  })
 })
