@@ -22,6 +22,28 @@ const FRANKY_TOOLS: Stroke[] = [
   shadow(78, 190, 54),
 ]
 
+/**
+ * Kuzan's bicycle and the frozen sea under it, in both his drawings, so the
+ * flag is the one thing that changes at 736.
+ */
+const KUZAN_BICYCLE: Stroke[] = [
+  { d: circle(44, 114, 24) },
+  { d: circle(118, 114, 24) },
+  { d: 'M44 114 L76 70 L82 114 L106 74 L76 70 M44 114 H82 M106 74 L118 114' },
+  { d: 'M68 68 h18' },
+  { d: 'M106 74 l-12 -6 M106 74 l10 4' },
+]
+
+const KUZAN_ICE: Stroke[] = [
+  { d: 'M4 140 H156', role: 'ambient' },
+  {
+    d: 'M28 142 l8 16 M64 140 l-6 18 M98 142 l10 16 M130 140 l-8 14',
+    role: 'accent',
+  },
+  { d: 'M40 156 h26 M98 158 h24', role: 'accent' },
+  ...SEA.slice(2),
+]
+
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
   // A raft washed up on a beach, a great tree of books on the shore behind.
@@ -87,21 +109,9 @@ export const waterSevenArt = {
     shadow(80, 142, 56),
   ],
 
-  // A bicycle standing on a sea that has frozen under it.
-  'kuzan': [
-    { d: circle(44, 114, 24) },
-    { d: circle(118, 114, 24) },
-    { d: 'M44 114 L76 70 L82 114 L106 74 L76 70 M44 114 H82 M106 74 L118 114' },
-    { d: 'M68 68 h18' },
-    { d: 'M106 74 l-12 -6 M106 74 l10 4' },
-    { d: 'M4 140 H156', role: 'ambient' },
-    {
-      d: 'M28 142 l8 16 M64 140 l-6 18 M98 142 l10 16 M130 140 l-8 14',
-      role: 'accent',
-    },
-    { d: 'M40 156 h26 M98 158 h24', role: 'accent' },
-    ...SEA.slice(2),
-  ],
+  // A bicycle standing on a sea that has frozen under it. It leans against
+  // Blackbeard's flag from 736, in `waterSevenRedrawn`.
+  'kuzan': [...KUZAN_BICYCLE, ...KUZAN_ICE],
 
   // Arches over the water, a tower behind, a gondola underneath.
   'water-seven-arc': [
@@ -845,6 +855,29 @@ export const waterSevenRedrawn: Redrawings = {
           transform: MASK_LEAN,
         },
         shadow(80, 166, 70),
+      ],
+    },
+  ],
+  // The same bicycle on the same ice, its back wheel resting against a pole
+  // planted in it. The pole flies a black flag with a ragged edge, hatched,
+  // never filled, and with no mark on it. At 736 (ch. 793) the Five Elders
+  // tell Sakazuki that Kuzan joining the Blackbeard Pirates is a stain on
+  // the Marines.
+  'kuzan': [
+    {
+      episode: 736,
+      chapter: 793,
+      value: [
+        ...KUZAN_BICYCLE,
+        { d: `${circle(20, 9, 3)} M20 12 V140` },
+        {
+          d: 'M20 14 C41 8 67 22 93 14 L87 24 L95 32 L87 41 L95 48 L89 56 C67 64 43 50 20 56',
+        },
+        {
+          d: 'M29 50 l7 -28 M41 52 l8 -32 M53 54 l8 -32 M65 54 l8 -32 M77 52 l7 -28',
+          role: 'ambient',
+        },
+        ...KUZAN_ICE,
       ],
     },
   ],

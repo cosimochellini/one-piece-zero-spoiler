@@ -1000,4 +1000,22 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(mandarins)
     expect(drawnAt({ mode: 'chapter', chapter: 903 })).toBe(zeus?.value)
   })
+
+  it('leans Kuzan’s bicycle against a black flag only from episode 736', () => {
+    const kuzan = filed('kuzan')
+    const bicycle = DRAWINGS.kuzan
+    const flagged = REDRAWINGS['kuzan']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(kuzan, 'en', reveal(bookmark)).visual.strokes
+
+    expect(flagged?.episode).toBe(736)
+
+    expect(drawnAt(ep(735))).toBe(bicycle)
+    expect(drawnAt(ep(736))).toBe(flagged?.value)
+    expect(drawnAt(null)).toBe(bicycle)
+    // The manga has the Five Elders say he joined Blackbeard in chapter 793,
+    // no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 792 })).toBe(bicycle)
+    expect(drawnAt({ mode: 'chapter', chapter: 793 })).toBe(flagged?.value)
+  })
 })
