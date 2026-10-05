@@ -293,7 +293,8 @@ export const eastBlueArt = {
     shadow(76, 168, 30),
   ],
 
-  // Three mandarins on a branch, the fruit in orange.
+  // Three mandarins on a branch, the fruit in orange. The Clima-Tact with Zeus
+  // joins them from 878, in `eastBlueRedrawn`.
   'nami': [
     { d: 'M34 154 C40 120 70 96 122 70' },
     { d: 'M64 112 q-2 -16 14 -18 q-4 14 -14 18z' },
@@ -1176,6 +1177,52 @@ export const eastBlueRedrawn: Redrawings = {
           transform: CROWN_TILT,
         },
         shadow(76, 168, 30),
+      ],
+    },
+  ],
+  // The Sorcery Clima-Tact laid across the middle, its round knobs at both
+  // ends and the striped grip between two collars, Zeus heaped above it as a
+  // cloud with no face and a bolt dropping into the staff, the three
+  // mandarins kept smaller below. Zeus comes out of the staff as her servant
+  // aboard the Sunny in 878 (ch. 903).
+  'nami': [
+    {
+      episode: 878,
+      chapter: 903,
+      value: [
+        {
+          d: 'M50 55 C40.4 55 39.2 40.6 50 38.2 C48.8 25 65.6 21.4 70.4 29.8 C74 15.4 96.8 15.4 99.2 31 C111.2 27.4 120.8 39.4 112.4 50.2 C117.2 59.8 102.8 63.4 98 57.4 C90.8 64.6 76.4 64.6 70.4 58.6 C63.2 63.4 52.4 62.2 50 55 Z',
+        },
+        {
+          d: 'M53.6 50.2 C63.2 55 74 52.6 80 47.8 C87.2 53.8 99.2 53.8 108.8 46.6',
+          role: 'soft',
+        },
+        { d: 'M86 64 L77 79 H86 L79 95', role: 'accent' },
+        { d: 'M33.9 129.3 L128.9 89.1 M31.1 122.9 L126.1 82.7' },
+        { d: `${circle(28, 128, 6)} ${circle(132, 84, 6)}`, role: 'accent' },
+        {
+          d: 'M38.2 129.1 L34.4 119.9 M125.6 92.1 L121.8 82.9 M60.5 108.3 L64.8 118.4 M63.3 107.1 L67.6 117.2 M92.4 94.8 L96.7 104.9 M95.2 93.6 L99.5 103.7',
+        },
+        {
+          d: 'M67.8 107.4 L75.1 111.9 M74.2 104.7 L81.5 109.1 M80.7 101.9 L88 106.4',
+          role: 'soft',
+        },
+        { d: 'M49.7 189.4 C53.9 165.6 74.9 148.8 111.3 130.6' },
+        {
+          d: 'M70.7 160 q-1.4 -11.2 9.8 -12.6 q-2.8 9.8 -9.8 12.6z M95.9 141.8 q9.8 -7 15.4 1.4 q-8.4 4.2 -15.4 -1.4z',
+        },
+        {
+          d: `${circle(65.1, 169.8, 9)} ${circle(88.9, 155.8, 9)} ${circle(109.9, 144.6, 9)}`,
+          role: 'accent',
+        },
+        {
+          d: dots([
+            [65.1, 164.2],
+            [88.9, 150.2],
+            [109.9, 139],
+          ]),
+          role: 'accent',
+        },
       ],
     },
   ],

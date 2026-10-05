@@ -983,4 +983,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 676 })).toBe(magnet)
     expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
   })
+
+  it('puts Zeus in Nami’s Clima-Tact only from episode 878', () => {
+    const nami = filed('nami')
+    const mandarins = DRAWINGS.nami
+    const zeus = REDRAWINGS['nami']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(nami, 'en', reveal(bookmark)).visual.strokes
+
+    expect(zeus?.episode).toBe(878)
+
+    expect(drawnAt(ep(877))).toBe(mandarins)
+    expect(drawnAt(ep(878))).toBe(zeus?.value)
+    expect(drawnAt(null)).toBe(mandarins)
+    // The manga has Zeus come out of her staff in chapter 903, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(mandarins)
+    expect(drawnAt({ mode: 'chapter', chapter: 903 })).toBe(zeus?.value)
+  })
 })
