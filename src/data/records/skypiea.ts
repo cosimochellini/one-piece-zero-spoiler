@@ -794,7 +794,7 @@ export const skypiea: Saga = {
             en: 'Marines, fleet admiral',
           },
         },
-        // He tells Kong he is stepping down at 511 (chapter 594).
+        // He accepts Kong's offer to step down at 511 (chapter 594).
         {
           episode: 511,
           chapter: 594,
