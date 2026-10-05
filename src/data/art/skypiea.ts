@@ -7,7 +7,18 @@ import {
   shadow,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/** Sengoku's goat and the ground it stands on, beside the cap or alone. */
+const SENGOKU_GOAT: Stroke[] = [
+  {
+    d: 'M102 128 q-4 -10 6 -12 h34 q10 2 6 12 v16 q0 8 -10 8 h-26 q-10 0 -10 -8z',
+  },
+  { d: 'M110 152 V176 M122 152 V176 M132 152 V176 M144 152 V176' },
+  { d: 'M142 120 C150 116 154 106 148 100 C140 96 132 102 134 112' },
+  { d: 'M146 100 q10 -10 4 -20', role: 'soft' },
+  { d: 'M6 184 H154', role: 'ambient', dashed: true },
+]
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -156,17 +167,12 @@ export const skypieaArt = {
   ],
 
   // A Marine cap with its braid, and the goat that follows the man wearing it.
+  // The cap is set down at his retirement, from 511, in `skypieaRedrawn`.
   'sengoku': [
     { d: 'M14 102 C14 66 34 54 55 54 C76 54 96 66 96 102z' },
     { d: 'M10 102 H100 V116 H10z', role: 'accent' },
     { d: 'M10 116 C0 120 0 132 12 136 H62 C78 134 88 126 88 116' },
-    {
-      d: 'M102 128 q-4 -10 6 -12 h34 q10 2 6 12 v16 q0 8 -10 8 h-26 q-10 0 -10 -8z',
-    },
-    { d: 'M110 152 V176 M122 152 V176 M132 152 V176 M144 152 V176' },
-    { d: 'M142 120 C150 116 154 106 148 100 C140 96 132 102 134 112' },
-    { d: 'M146 100 q10 -10 4 -20', role: 'soft' },
-    { d: 'M6 184 H154', role: 'ambient', dashed: true },
+    ...SENGOKU_GOAT,
   ],
 
   // A bisento taller than the man, and the bottle beside it. Planted over
@@ -818,6 +824,30 @@ export const skypieaRedrawn: Redrawings = {
         },
         shadow(80, 182, 64),
       ],
+    },
+  ],
+
+  // The cap set down on the ground, the goat alone beside it: he steps down
+  // as fleet admiral before Kong at 511 (ch. 594), and after the two years he
+  // goes bareheaded. The crown's far side is hatched, never filled. The cap
+  // sits lower and smaller than the first drawing's, so the whole group is
+  // lifted to keep the box balanced.
+  'sengoku': [
+    {
+      episode: 511,
+      chapter: 594,
+      value: (
+        [
+          { d: 'M12 150 C12 120 30 110 48 110 C66 110 82 120 82 150z' },
+          { d: 'M8 150 H86 V162 H8z', role: 'accent' },
+          { d: 'M8 162 C0 166 0 176 10 180 H54 C68 178 76 172 76 162' },
+          {
+            d: 'M64 114 l-6 8 M71 118 l-7 10 M77 125 l-7 11 M80 135 l-7 11',
+            role: 'ambient',
+          },
+          ...SENGOKU_GOAT,
+        ] satisfies Stroke[]
+      ).map((stroke) => ({ ...stroke, transform: 'translate(0 -30)' })),
     },
   ],
 }
