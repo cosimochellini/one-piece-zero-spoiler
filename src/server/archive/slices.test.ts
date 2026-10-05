@@ -763,4 +763,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1052 })).toBe(cannonball)
     expect(drawnAt({ mode: 'chapter', chapter: 1053 })).toBe(crowned?.value)
   })
+
+  it('cuts Doflamingo’s strings and cracks his glasses only from episode 733', () => {
+    const doflamingo = filed('donquixote-doflamingo')
+    const puppet = DRAWINGS['donquixote-doflamingo']
+    const fallen = REDRAWINGS['donquixote-doflamingo']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(doflamingo, 'en', reveal(bookmark)).visual.strokes
+
+    expect(fallen?.episode).toBe(733)
+
+    expect(drawnAt(ep(732))).toBe(puppet)
+    expect(drawnAt(ep(733))).toBe(fallen?.value)
+    expect(drawnAt(null)).toBe(puppet)
+    // The manga shatters his glasses in chapter 790, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 789 })).toBe(puppet)
+    expect(drawnAt({ mode: 'chapter', chapter: 790 })).toBe(fallen?.value)
+  })
 })
