@@ -2,12 +2,14 @@
 //
 // The suite-wide environment is jsdom for the React components. This module is
 // plain Node, so a DOM here would only cost startup time.
-import { readFileSync } from 'node:fs'
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs'
+import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { describe, expect, it } from 'vitest'
 
 import { ROOT } from './archive-loader.mjs'
 import {
+  cellsFor,
   cellSvg,
   drawingSvg,
   oklchToHex,
@@ -15,6 +17,7 @@ import {
   readArgs,
   sheetSvg,
   stagesOf,
+  writeSheets,
 } from './art-sheet.mjs'
 
 const palette = {
@@ -140,6 +143,63 @@ describe('the command line', () => {
     expect(readArgs(['--saga', 'water-seven']).saga).toBe('water-seven')
     expect(readArgs(['--kind', 'place']).out).toBe(
       path.join(ROOT, '.gate', 'art'),
+    )
+  })
+})
+
+describe('what the command line asks for', () => {
+  const out = 'unused'
+
+  it('gives every stage of a record, then the drafts in its tint', async () => {
+    const folder = mkdtempSync(path.join(tmpdir(), 'art-draft-'))
+    const draft = path.join(folder, 'draft.mjs')
+    writeFileSync(draft, "export default { arm: [{ d: 'M0 0 L1 1' }] }")
+    const { name, cells } = await cellsFor({ draft, ids: ['franky'], out })
+
+    expect(name).toBe('franky')
+    expect(cells.map((stage) => stage.note)).toStrictEqual([
+      'ep 235',
+      'ep 517 · ch 598',
+      'draft',
+    ])
+    expect(cells[2]).toMatchObject({ label: 'draft: arm', tint: 'cyan' })
+  })
+
+  it('gives the first drawing of every record in a saga or of a kind', async () => {
+    const saga = await cellsFor({ ids: [], out, saga: 'water-seven' })
+    const ships = await cellsFor({ ids: [], kind: 'ship', out })
+
+    expect(saga.cells.map((cell) => cell.label)).toContain('franky')
+    expect(saga.cells.find((cell) => cell.label === 'franky')?.note).toBe(
+      'ep 235',
+    )
+    expect(ships.cells.map((cell) => cell.label)).toStrictEqual([
+      'going-merry',
+      'thousand-sunny',
+    ])
+  })
+
+  it('refuses an id no record has, and a saga with no drawings', async () => {
+    await expect(cellsFor({ ids: ['nobody'], out })).rejects.toThrow(
+      'no record has the id nobody',
+    )
+    await expect(cellsFor({ ids: [], out, saga: 'stroke' })).rejects.toThrow(
+      'exports no',
+    )
+  })
+})
+
+describe('the pages written', () => {
+  it('writes one page per 24 cells, and refuses an empty sheet', () => {
+    const out = mkdtempSync(path.join(tmpdir(), 'art-sheet-'))
+    const cells = Array.from({ length: 25 }, () => cell)
+    const written = writeSheets({ cells, name: 'x' }, palette, out)
+
+    expect(written).toHaveLength(2)
+    expect(existsSync(path.join(out, 'x-1.svg'))).toBe(true)
+    expect(existsSync(path.join(out, 'x-2.svg'))).toBe(true)
+    expect(() => writeSheets({ cells: [], name: 'x' }, palette, out)).toThrow(
+      'Nothing to draw',
     )
   })
 })

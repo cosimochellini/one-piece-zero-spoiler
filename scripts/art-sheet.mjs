@@ -215,6 +215,7 @@ export function readArgs(args) {
     options: {
       draft: { type: 'string' },
       kind: { type: 'string' },
+      // fallow-ignore-next-line security-sink -- a constant default under the repository
       out: { type: 'string', default: path.join(ROOT, '.gate', 'art') },
       saga: { type: 'string' },
     },
@@ -269,20 +270,19 @@ async function idsOfSaga(saga) {
  * @param {ReturnType<typeof readArgs>} options The command line.
  * @returns {Promise<{ name: string, cells: Cell[] }>} The sheet's name and cells.
  */
-async function cellsFor(options) {
+export async function cellsFor(options) {
   const art = await importArchive('data/art/index.ts')
   const { entities, getEntity } = await importArchive('data/entities.ts')
-  const ids =
-    options.saga === undefined ?
-      entities
-        .filter((entity) => entity.kind === options.kind)
-        .map((entity) => entity.id)
-    : await idsOfSaga(options.saga)
-  const listed = ids.map((id) => getEntity(id))
   if (options.saga !== undefined || options.kind !== undefined) {
+    const ids =
+      options.saga === undefined ?
+        entities
+          .filter((entity) => entity.kind === options.kind)
+          .map((entity) => entity.id)
+      : await idsOfSaga(options.saga)
     return {
       name: options.saga ?? options.kind,
-      cells: listed.map((entity) => stagesOf(entity, art)[0]),
+      cells: ids.map((id) => stagesOf(getEntity(id), art)[0]),
     }
   }
   const stages = options.ids.flatMap((id) => {
@@ -308,6 +308,7 @@ async function draftsOf(file, tint = 'ivory') {
   if (file === undefined) {
     return []
   }
+  // fallow-ignore-next-line security-sink -- a local CLI: the draft module is one the person running it chose to import
   const module = await import(pathToFileURL(path.resolve(file)).href)
   return Object.entries(module.default).map(([key, strokes]) => {
     const label = `draft: ${key}`
@@ -338,33 +339,41 @@ function writePage(file, svg, zoom) {
   }
 }
 
-async function main() {
-  const options = readArgs(process.argv.slice(2))
-  const { name, cells } = await cellsFor(options)
+/**
+ * Writes the cells as pages of a sheet, and says where each one went.
+ * @param {{ name: string, cells: Cell[] }} sheet The sheet's name and cells.
+ * @param {Palette} palette The colours.
+ * @param {string} out The folder to write into.
+ * @returns {string[]} One line per page written.
+ */
+export function writeSheets({ name, cells }, palette, out) {
   if (cells.length === 0) {
     throw new Error(
       'Nothing to draw: name record ids, or pass --saga or --kind.',
     )
   }
-  const palette = parseTokens(
-    readFileSync(path.join(ROOT, 'src', 'styles', 'tokens.stylex.ts'), 'utf8'),
-  )
   const pages = Math.ceil(cells.length / PAGE)
-  mkdirSync(options.out, { recursive: true })
-  for (let page = 0; page < pages; page += 1) {
-    const slice = cells.slice(page * PAGE, (page + 1) * PAGE)
+  const zoom = cells.length <= CLOSE_UP ? 2 : 1
+  mkdirSync(out, { recursive: true })
+  return Array.from({ length: pages }, (_, page) => {
     const suffix = pages === 1 ? '' : `-${page + 1}`
-    const zoom = cells.length <= CLOSE_UP ? 2 : 1
-    console.log(
-      writePage(
-        path.join(options.out, `${name}${suffix}`),
-        sheetSvg(slice, palette),
-        zoom,
-      ),
+    return writePage(
+      // fallow-ignore-next-line security-sink -- a local CLI: the output folder is the one the person running it named
+      path.join(out, `${name}${suffix}`),
+      sheetSvg(cells.slice(page * PAGE, (page + 1) * PAGE), palette),
+      zoom,
     )
-  }
+  })
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
-  await main()
+  const options = readArgs(process.argv.slice(2))
+  const palette = parseTokens(
+    // fallow-ignore-next-line security-sink -- a constant path under the repository
+    readFileSync(path.join(ROOT, 'src', 'styles', 'tokens.stylex.ts'), 'utf8'),
+  )
+  const sheet = await cellsFor(options)
+  for (const line of writeSheets(sheet, palette, options.out)) {
+    console.log(line)
+  }
 }

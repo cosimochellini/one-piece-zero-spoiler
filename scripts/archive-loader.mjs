@@ -10,6 +10,7 @@ import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 /** The repository root, one level above this script. */
+// fallow-ignore-next-line security-sink -- a constant: this script's own folder
 export const ROOT = path.resolve(import.meta.dirname, '..')
 
 /**
@@ -24,10 +25,22 @@ function fileFor(specifier, parent) {
   }
 
   if (parent !== undefined && specifier.startsWith('.')) {
+    // fallow-ignore-next-line security-sink -- the specifier is an import written in this repository's own source, never outside input
     return path.resolve(path.dirname(fileURLToPath(parent)), specifier)
   }
 
   return null
+}
+
+/**
+ * The files an extensionless specifier can name: a `.ts` module, or the
+ * `index.ts` of a directory, as `./fruits` is.
+ * @param {string} file The path the specifier resolves to.
+ * @returns {string[]} The candidates, in the order they are tried.
+ */
+function filesFor(file) {
+  // fallow-ignore-next-line security-sink -- the path was resolved from an import written in this repository's own source
+  return [`${file}.ts`, path.join(file, 'index.ts')]
 }
 
 /**
@@ -60,12 +73,9 @@ export function resolveArchive(specifier, context, nextResolve) {
     return nextResolve(aliased, context)
   } catch (error) {
     const file = fileFor(aliased, context.parentURL)
-    // A directory is imported for its `index.ts`, as `./fruits` is.
     const module =
       file === null ? undefined : (
-        [`${file}.ts`, path.join(file, 'index.ts')].find((candidate) =>
-          existsSync(candidate),
-        )
+        filesFor(file).find((candidate) => existsSync(candidate))
       )
 
     if (module === undefined) {
@@ -84,5 +94,6 @@ export function resolveArchive(specifier, context, nextResolve) {
 export function importArchive(module) {
   registerArchiveResolution()
 
+  // fallow-ignore-next-line security-sink -- the module is a path under src/ named by a script in this repository
   return import(pathToFileURL(path.join(ROOT, 'src', module)).href)
 }
