@@ -712,4 +712,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 975 })).toBe(wave)
     expect(drawnAt({ mode: 'chapter', chapter: 976 })).toBe(helm?.value)
   })
+
+  it('puts out Ace’s flame only from episode 483', () => {
+    const ace = filed('portgas-d-ace')
+    const flame = DRAWINGS['portgas-d-ace']
+    const out = REDRAWINGS['portgas-d-ace']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(ace, 'en', reveal(bookmark)).visual.strokes
+
+    expect(out?.episode).toBe(483)
+
+    expect(drawnAt(ep(482))).toBe(flame)
+    expect(drawnAt(ep(483))).toBe(out?.value)
+    expect(drawnAt(null)).toBe(flame)
+    // The manga kills him in chapter 574, so no chapter below it may.
+    expect(drawnAt({ mode: 'chapter', chapter: 573 })).toBe(flame)
+    expect(drawnAt({ mode: 'chapter', chapter: 574 })).toBe(out?.value)
+  })
 })
