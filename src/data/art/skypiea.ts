@@ -169,7 +169,8 @@ export const skypieaArt = {
     { d: 'M6 184 H154', role: 'ambient', dashed: true },
   ],
 
-  // A bisento taller than the man, and the bottle beside it.
+  // A bisento taller than the man, and the bottle beside it. Planted over
+  // his grave from 505, in `skypieaRedrawn`.
   'edward-newgate': [
     { d: 'M28 178 L118 42' },
     { d: 'M36 166 l8 6 M44 154 l8 6', role: 'ambient' },
@@ -732,6 +733,35 @@ export const skypieaRedrawn: Redrawings = {
           role: 'ambient',
         },
         shadow(80, 178, 50),
+      ],
+    },
+  ],
+  // The bisento planted upright in a mound of earth, the bottle at its
+  // foot: his naginata stands over his grave on a New World island, where
+  // Shanks and his crew bury him at 505 (ch. 590). The mound's far side is
+  // hatched, never filled.
+  'edward-newgate': [
+    {
+      episode: 505,
+      chapter: 590,
+      value: [
+        { d: 'M80 164 V38' },
+        {
+          d: 'M80 38 C100 32 110 18 104 2 C100 18 92 26 80 28z',
+          role: 'accent',
+        },
+        { d: 'M72 44 h16 M74 50 h12' },
+        {
+          d: 'M76 76 l8 -4 M76 94 l8 -4 M76 112 l8 -4 M76 130 l8 -4',
+          role: 'ambient',
+        },
+        { d: 'M44 180 Q80 148 112 180' },
+        {
+          d: 'M52 175 l-4 5 M59 170 l-6 9 M66 167 l-6 11 M73 165 l-6 12',
+          role: 'ambient',
+        },
+        { d: 'M116 180 V152 q0 -6 4 -8 V132 h10 V144 q4 2 4 8 V180z' },
+        shadow(84, 184, 52),
       ],
     },
   ],
