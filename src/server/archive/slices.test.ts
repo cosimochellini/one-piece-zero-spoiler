@@ -829,4 +829,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 789 })).toBe(puppet)
     expect(drawnAt({ mode: 'chapter', chapter: 790 })).toBe(fallen?.value)
   })
+
+  it('trades Koby’s mop for his bandanna only from episode 314', () => {
+    const koby = filed('koby')
+    const mop = DRAWINGS.koby
+    const bandanna = REDRAWINGS['koby']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(koby, 'en', reveal(bookmark)).visual.strokes
+
+    expect(bandanna?.episode).toBe(314)
+
+    expect(drawnAt(ep(313))).toBe(mop)
+    expect(drawnAt(ep(314))).toBe(bandanna?.value)
+    expect(drawnAt(null)).toBe(mop)
+    // The manga brings him back trained at Water 7 in chapter 432.
+    expect(drawnAt({ mode: 'chapter', chapter: 431 })).toBe(mop)
+    expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
+  })
 })
