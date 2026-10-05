@@ -428,32 +428,17 @@ export const eggheadArt = {
     },
     shadow(80, 188, 56),
   ],
-  // A giant pizza seen from above, cut into slices and scattered with
-  // toppings: the one she bakes for Bonney.
+  // A small side cap resting on a folded fur coat: the old queen
+  // dowager's.
   'conney': [
-    { d: ellipse(80, 130, 64, 40) },
-    { d: ellipse(80, 130, 54, 32), role: 'soft' },
-    { d: 'M26 130 H134 M80 98 V162 M42 107 L118 153 M118 107 L42 153' },
-    {
-      d: [
-        circle(56, 116, 5),
-        circle(104, 116, 5),
-        circle(62, 146, 5),
-        circle(100, 146, 5),
-      ].join(' '),
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [80, 112],
-        [66, 130],
-        [94, 130],
-        [80, 150],
-      ]),
-      role: 'accent',
-    },
-    shadow(80, 188, 60),
+    { d: 'M24 150 C24 128 48 118 80 118 C112 118 136 128 136 150 Z' },
+    { d: 'M36 142 q44 -14 88 0', role: 'soft' },
+    { d: 'M24 150 q56 16 112 0', role: 'soft' },
+    { d: 'M52 112 C56 92 104 92 108 112 Z', role: 'accent' },
+    { d: 'M80 94 V86', role: 'accent' },
+    shadow(80, 176, 60),
   ],
+
   // A fur hat with its brim turned up and its ear flaps hanging, ties
   // loose: the old king's cap.
   'bulldog': [

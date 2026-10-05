@@ -407,8 +407,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1100,
       name: { it: 'Alpha', en: 'Alpha' },
       summary: {
-        it: 'Un’infermiera con gli occhiali che si installa nella chiesa di Sorbet per assistere Bonney fino alla guarigione, e che pensa a quanto sia facile spezzare il collo a un bambino.',
-        en: 'A nurse in glasses who moves into the church in Sorbet to look after Bonney until she is cured, and who thinks of how easily a child’s neck snaps.',
+        it: 'Un’infermiera con gli occhiali che arriva alla chiesa di Sorbet per assistere Bonney fino alla guarigione, e che pensa a quanto sia facile spezzare il collo a un bambino.',
+        en: 'A nurse in glasses who comes to the church in Sorbet to look after Bonney until she is cured, and who thinks of how easily a child’s neck snaps.',
       },
       visual: { art: 'alpha', tint: 'teal' },
     },
@@ -455,8 +455,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1108,
       name: { it: 'Tosa', en: 'Tosa' },
       summary: {
-        it: 'Un viceammiraglio della Marina grosso e barbuto, con un berretto con la scritta MARINES, che insegue chi scappa fino a raggiungerlo e morde con le mani, dieci dita dure come artigli.',
-        en: 'A big bearded Marine vice admiral in a cap that reads MARINES, who runs down whoever flees from him and bites with his hands, ten fingers hard as claws.',
+        it: 'Un viceammiraglio della Marina grosso e barbuto, con un berretto con la scritta MARINES, che insegue la ragazza pirata in fuga e morde con le mani, dieci dita dure come artigli.',
+        en: 'A big bearded Marine vice admiral in a cap that reads MARINES, who chases down the fleeing pirate girl and bites with his hands, ten fingers hard as claws.',
       },
       visual: { art: 'tosa', tint: 'ocher' },
     },
@@ -981,8 +981,8 @@ export const egghead: Saga = {
         en: 'Queen of Alabasta, eight hundred years ago',
       },
       log: {
-        it: 'Ottocento anni fa venti sovrani fondarono il Governo Mondiale, trasferirono le loro famiglie a Mary Geoise e diventarono i Draghi Celesti. La regina di Alabasta era una dei venti, e l’unica a non restare: ripartì per il suo paese, ed è per questo che laggiù regna ancora la famiglia Nefertari. Secondo Cobra non arrivò mai, e dopo di lei regnò il fratello minore. Nessun libro scritto dopo il Secolo Vuoto riporta il suo nome.',
-        en: 'Eight hundred years ago twenty monarchs founded the World Government, moved their families to Mary Geoise and became the Celestial Dragons. The queen of Alabasta was one of the twenty, and the only one who did not stay: she set off for her own country, which is why the Nefertari family still reigns there. According to Cobra she never arrived, and her younger brother ruled after her. No book written after the Void Century records her name.',
+        it: 'Ottocento anni fa venti sovrani fondarono il Governo Mondiale, trasferirono le loro famiglie a Mary Geoise e diventarono i Draghi Celesti. La regina di Alabasta era una dei venti, e l’unica a non restare: ripartì per il suo paese, ed è per questo che laggiù regna ancora la famiglia Nefertari. Secondo Cobra non arrivò mai, e dopo di lei regnò il fratello minore. Il suo nome non compare in nessuno dei libri successivi al Secolo Vuoto che Cobra è riuscito a leggere.',
+        en: 'Eight hundred years ago twenty monarchs founded the World Government, moved their families to Mary Geoise and became the Celestial Dragons. The queen of Alabasta was one of the twenty, and the only one who did not stay: she set off for her own country, which is why the Nefertari family still reigns there. According to Cobra she never arrived, and her younger brother ruled after her. Her name appears in none of the books from after the Void Century that Cobra has been able to read.',
       },
       status: [{ episode: 1118, value: 'missing' }],
       affiliation: [
@@ -1083,8 +1083,8 @@ export const egghead: Saga = {
       chronicle: eggheadChronicles.clapp,
       role: { it: 'Padre di Kuma', en: 'Kuma’s father' },
       log: {
-        it: 'Quando nasce suo figlio, il medico capisce che si tratta del sangue del bambino e promette di non dirlo a nessuno. Anni dopo lo stesso medico corre ad avvisarlo che al suo ospedale sono arrivati gli uomini del Governo. Klap li supplica di prendere solo lui, perché il sangue dei Bucanieri ce l’ha lui e non sua moglie, ma li portano via tutti e tre come schiavi. Quando la moglie muore, dice a Kuma di resistere e sopravvivere finché Nika non verrà a liberarlo.',
-        en: 'When his son is born, the doctor guesses it is about the baby’s blood and promises never to tell. Years later the same doctor runs in to warn him that Government men have come to the hospital. Clapp begs them to take only him, since he alone has Buccaneer blood and his wife does not, but all three are taken as slaves. When his wife dies, he tells Kuma to endure and survive until Nika comes to set him free.',
+        it: 'Quando nasce suo figlio, il medico promette di non dire mai a nessuno del sangue del bambino. Anni dopo lo stesso medico corre ad avvisarlo che al suo ospedale sono arrivati gli uomini del Governo. Klap li supplica di prendere solo lui, perché il sangue dei Bucanieri ce l’ha lui e non sua moglie, ma li portano via tutti e tre come schiavi. Quando la moglie muore, dice a Kuma di resistere e sopravvivere finché Nika non verrà a liberarlo.',
+        en: 'When his son is born, the doctor promises never to tell anyone about the baby’s blood. Years later the same doctor runs in to warn him that Government men have come to the hospital. Clapp begs them to take only him, since he alone has Buccaneer blood and his wife does not, but all three are taken as slaves. When his wife dies, he tells Kuma to endure and survive until Nika comes to set him free.',
       },
       status: [{ episode: 1129, value: 'deceased' }],
       affiliation: [
@@ -1151,8 +1151,8 @@ export const egghead: Saga = {
         en: 'Former queen dowager of Sorbet',
       },
       log: {
-        it: 'È la madre di Bulldog, che era re di Sorbet due regni fa e che ora governa il paese dal palazzo per conto di re Kuma. Arriva con il figlio alla chiesa di Kuma proprio mentre Bonney ha appena scoperto di poter cambiare età, e Gyogyo scambia quella vecchina rugosa per la bambina invecchiata; lei risponde che non importa. Bulldog porta la notizia che Bekori tornerà con la Marina, e prima di partire Kuma dice a Bonney di ascoltare Bulldog e Conney.',
-        en: 'She is the mother of Bulldog, who was king of Sorbet two reigns ago and now runs the country from the palace for King Kuma. She comes with her son to Kuma’s church just as Bonney has found out she can change her age, and Gyogyo takes the wrinkled little woman for the girl grown old; she tells them it is fine. Bulldog brings word that Bekori will come back with the Navy, and before he leaves Kuma tells Bonney to listen to Bulldog and Conney.',
+        it: 'È la madre di Bulldog, che era re di Sorbet due regni fa e che ora governa il paese dal palazzo per conto di re Kuma. Arriva con il figlio alla chiesa di Kuma proprio mentre Bonney ha appena scoperto di poter cambiare età, e Gyogyo scambia quella vecchina rugosa per la bambina invecchiata; lei risponde che non importa. Bulldog porta la notizia che Bekori tornerà con le navi da guerra, e prima di partire Kuma dice a Bonney di ascoltare Bulldog e Conney.',
+        en: 'She is the mother of Bulldog, who was king of Sorbet two reigns ago and now runs the country from the palace for King Kuma. She comes with her son to Kuma’s church just as Bonney has found out she can change her age, and Gyogyo takes the wrinkled little woman for the girl grown old; she tells them it is fine. Bulldog brings word that Bekori will come back with warships, and before he leaves Kuma tells Bonney to listen to Bulldog and Conney.',
       },
       status: [{ episode: 1133, value: 'alive' }],
       affiliation: [
