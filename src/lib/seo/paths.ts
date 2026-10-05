@@ -10,7 +10,10 @@ import { DEFAULT_LOCALE, type Locale, LOCALES } from '~/i18n/locales'
  */
 
 /** One `hreflang` alternate: the language it is for, and where it lives. */
-export type Alternate = { readonly href: string; readonly hrefLang: string }
+export interface Alternate {
+  href: string
+  hrefLang: string
+}
 
 /**
  * A path without its trailing slash, because `/en/fruits` and `/en/fruits/`
@@ -48,7 +51,7 @@ function alternateFor(pathname: string, locale: Locale): Alternate {
  * a 302 to a negotiated language, and a search engine asked to treat a
  * redirect as the fallback follows it to one of the two pages already listed.
  */
-export function localeAlternates(pathname: string): readonly Alternate[] {
+export function localeAlternates(pathname: string): Alternate[] {
   const alternates = LOCALES.map((locale) => alternateFor(pathname, locale))
 
   return [

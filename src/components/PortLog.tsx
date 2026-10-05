@@ -31,13 +31,13 @@ import type {
 const NUMBER_WIDTH = 2
 
 /** What the log needs to draw one port and to place the horizon among them. */
-export type PortLogProps = {
-  readonly bookmark: Bookmark
+export interface PortLogProps {
+  bookmark: Bookmark
   /** The ports the reader has reached, then the ones they have not. */
-  readonly covered: readonly CoveredRecord[]
-  readonly open: readonly PortView[]
-  readonly peek: (handle: string) => Promise<PortView>
-  readonly peekRecord: (handle: string) => Promise<RecordView>
+  covered: CoveredRecord[]
+  open: PortView[]
+  peek: (handle: string) => Promise<PortView>
+  peekRecord: (handle: string) => Promise<RecordView>
 }
 
 /**
@@ -100,13 +100,13 @@ export function PortLog({
   )
 }
 
-type PortProps = {
+interface PortProps {
   /** Zero-based position among the places; the page prints it plus one. */
-  readonly index: number
-  readonly peek: (handle: string) => Promise<PortView>
-  readonly peekRecord: (handle: string) => Promise<RecordView>
-  readonly slot: Slot<PortView>
-  readonly total: number
+  index: number
+  peek: (handle: string) => Promise<PortView>
+  peekRecord: (handle: string) => Promise<RecordView>
+  slot: Slot<PortView>
+  total: number
 }
 
 /**
@@ -182,8 +182,8 @@ function Rail({
   number,
   open,
 }: {
-  readonly number: string
-  readonly open: boolean
+  number: string
+  open: boolean
 }): ReactElement {
   // One object for both stretches: the spine above the marker and the spine
   // below it are the same line, and nothing may ever draw them differently.
@@ -216,7 +216,7 @@ function Rail({
  * as the open spread and carries none of its content: the served HTML has no
  * name, no drawing and no colour, only the bare plate and a generic line.
  */
-function FoggedSpread({ entry }: { readonly entry: Gated }): ReactElement {
+function FoggedSpread({ entry }: { entry: Gated }): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
 
@@ -240,8 +240,8 @@ function Spread({
   port,
   peekRecord,
 }: {
-  readonly peekRecord: (handle: string) => Promise<RecordView>
-  readonly port: PortView
+  peekRecord: (handle: string) => Promise<RecordView>
+  port: PortView
 }): ReactElement {
   const { t } = useLocale()
 
@@ -281,9 +281,9 @@ export function FiledHere({
   peekRecord,
   title,
 }: {
-  readonly filed: readonly Slot<RecordView>[]
-  readonly peekRecord: (handle: string) => Promise<RecordView>
-  readonly title: string
+  filed: Slot<RecordView>[]
+  peekRecord: (handle: string) => Promise<RecordView>
+  title: string
 }): ReactElement {
   const { t } = useLocale()
 
@@ -320,7 +320,7 @@ export function FiledHere({
  * The reader's position on the spine: a gold tick and a line across the
  * body, labelled. With no bookmark it sits above the first port and says so.
  */
-function Horizon({ bookmark }: { readonly bookmark: Bookmark }): ReactElement {
+function Horizon({ bookmark }: { bookmark: Bookmark }): ReactElement {
   const { t } = useLocale()
   const set = bookmark !== null
 

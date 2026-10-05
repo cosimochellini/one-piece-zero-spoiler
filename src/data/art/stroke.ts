@@ -13,7 +13,7 @@ import type { Stroke } from '~/lib/view/records'
  * drawing crosses the wire as its strokes, so the shape belongs to both
  * sides, and declaring it twice would leave two definitions to drift apart.
  */
-export type Drawings = Readonly<Record<string, readonly Stroke[]>>
+export type Drawings = Record<string, Stroke[]>
 
 /**
  * The records drawn again later in the story, keyed by id: each entry is a
@@ -21,6 +21,6 @@ export type Drawings = Readonly<Record<string, readonly Stroke[]>>
  * order, like any other dated fact of a dossier. The drawing in `Drawings`
  * stays the one a reader below the first entry is shown.
  */
-export type Redrawings = Readonly<Record<string, Timeline<readonly Stroke[]>>>
+export type Redrawings = Record<string, Timeline<Stroke[]>>
 
 export { type Stroke } from '~/lib/view/records'

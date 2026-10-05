@@ -22,11 +22,11 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** One line of a shelf: the slot it fills, and what a search matched. */
-export type CharacterTileProps = {
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly slot: Slot<CharacterView>
+export interface CharacterTileProps {
+  peek: (handle: string) => Promise<CharacterView>
+  slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
-  readonly highlight?: null | readonly [number, number]
+  highlight?: [number, number] | null
   /**
    * Whether the drawing and the name travel to the character's page. Off for
    * a featured character, whose crest card higher up already carries the
@@ -39,7 +39,7 @@ export type CharacterTileProps = {
    * crossfade. Dropping the containment would fix it and make every layout
    * of the book several times slower.
    */
-  readonly morph?: boolean
+  morph?: boolean
 }
 
 /**
@@ -101,9 +101,9 @@ function TileLink({
   highlight,
   morph,
 }: {
-  readonly highlight: null | readonly [number, number]
-  readonly morph: boolean
-  readonly record: CharacterView
+  highlight: [number, number] | null
+  morph: boolean
+  record: CharacterView
 }): ReactElement {
   const { locale } = useLocale()
 

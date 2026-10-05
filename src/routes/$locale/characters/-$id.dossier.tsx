@@ -21,7 +21,7 @@ import { settleStyles } from '~/styles/settle'
 
 import { styles } from './-$id.styles'
 
-const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
+const KIND_KEY: Record<EntityKind, TranslationKey> = {
   arc: 'kind.arc',
   character: 'kind.character',
   place: 'kind.place',
@@ -47,8 +47,8 @@ export function DossierDiptych({
   detail,
   peek,
 }: {
-  readonly detail: CharacterDetail
-  readonly peek: (handle: string) => Promise<DossierRecord>
+  detail: CharacterDetail
+  peek: (handle: string) => Promise<DossierRecord>
 }): ReactElement {
   return (
     <section
@@ -75,8 +75,8 @@ function CrestPlate({
   slot,
   peek,
 }: {
-  readonly peek: (handle: string) => Promise<DossierRecord>
-  readonly slot: CharacterDetail['slot']
+  peek: (handle: string) => Promise<DossierRecord>
+  slot: CharacterDetail['slot']
 }): ReactElement {
   return (
     <SpoilerVeil
@@ -119,8 +119,8 @@ function DossierColumn({
   detail,
   peek,
 }: {
-  readonly detail: CharacterDetail
-  readonly peek: (handle: string) => Promise<DossierRecord>
+  detail: CharacterDetail
+  peek: (handle: string) => Promise<DossierRecord>
 }): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
@@ -165,8 +165,8 @@ function DossierWords({
   detail,
   record,
 }: {
-  readonly detail: CharacterDetail
-  readonly record: DossierRecord
+  detail: CharacterDetail
+  record: DossierRecord
 }): ReactElement {
   return (
     <div {...stylex.props(styles.words)}>

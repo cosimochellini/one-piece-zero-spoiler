@@ -12,7 +12,7 @@
  */
 export function createSecurityHeaders(
   nonce: string | undefined,
-): Readonly<Record<string, string>> {
+): Record<string, string> {
   return {
     'Content-Security-Policy': [
       "default-src 'self'",

@@ -26,24 +26,24 @@ import type {
  * promise does, but `use` does not — and a streaming boundary that cannot be
  * awaited would mean the shelves went untested altogether.
  */
-export type ShelvesSource = Promise<readonly ShelfView[]> | readonly ShelfView[]
+export type ShelvesSource = Promise<ShelfView[]> | ShelfView[]
 
 /** What the shelves need: the arcs, the live query, and a way to ask. */
-export type CharacterShelvesProps = {
+export interface CharacterShelvesProps {
   /**
    * The featured characters open above the shelves. Their crest cards carry
    * the names that travel to a character's page, and a name may be on one
    * element of a page only, so their tiles here go without.
    */
-  readonly featured: ReadonlySet<string>
+  featured: Set<string>
   /** Prefix for every heading id on the page, so the shelves cannot collide. */
-  readonly fieldId: string
+  fieldId: string
   /** The query, already folded. Empty matches everything. */
-  readonly needle: string
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly shelves: ShelvesSource
+  needle: string
+  peek: (handle: string) => Promise<CharacterView>
+  shelves: ShelvesSource
   /** How many are coming, so the pending state reserves their height. */
-  readonly shelfCount: number
+  shelfCount: number
 }
 
 /**
@@ -96,11 +96,11 @@ function Shelves({
   needle,
   peek,
 }: {
-  readonly featured: ReadonlySet<string>
-  readonly fieldId: string
-  readonly needle: string
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly shelves: ShelvesSource
+  featured: Set<string>
+  fieldId: string
+  needle: string
+  peek: (handle: string) => Promise<CharacterView>
+  shelves: ShelvesSource
 }): ReactElement {
   return (
     <>
@@ -138,7 +138,7 @@ function Shelves({
  * `use` is not a hook: it may sit in a branch, which is what lets the array
  * form skip it entirely.
  */
-function useShelves(source: ShelvesSource): readonly ShelfView[] {
+function useShelves(source: ShelvesSource): ShelfView[] {
   return source instanceof Promise ? use(source) : source
 }
 
@@ -147,7 +147,7 @@ function useShelves(source: ShelvesSource): readonly ShelfView[] {
  * do. The same `content-visibility` box as a real shelf, for the same reason:
  * the renderer skips what is far down the page.
  */
-function ShelvesPending({ count }: { readonly count: number }): ReactElement {
+function ShelvesPending({ count }: { count: number }): ReactElement {
   const t = useT()
 
   return (
@@ -181,11 +181,11 @@ function Shelf({
   needle,
   peek,
 }: {
-  readonly featured: ReadonlySet<string>
-  readonly headingId: string
-  readonly needle: string
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly section: ShelfView
+  featured: Set<string>
+  headingId: string
+  needle: string
+  peek: (handle: string) => Promise<CharacterView>
+  section: ShelfView
 }): null | ReactElement {
   const shown = matchesIn(section.open, needle)
 
@@ -230,10 +230,10 @@ function ShelfHead({
   // An arc, not a character: it has a name and a drawing and no role. The
   // peek is the page's one closure either way, and a character view is a
   // record view with a role on it, so it satisfies this.
-  readonly arc: Slot<RecordView>
-  readonly count: number
-  readonly headingId: string
-  readonly peek: (handle: string) => Promise<RecordView>
+  arc: Slot<RecordView>
+  count: number
+  headingId: string
+  peek: (handle: string) => Promise<RecordView>
 }): ReactElement {
   const t = useT()
   const threshold = useThreshold()
@@ -292,10 +292,10 @@ function ShelfTiles({
   featured,
   peek,
 }: {
-  readonly covered: readonly CoveredRecord[]
-  readonly featured: ReadonlySet<string>
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly shown: readonly Match<SearchableCharacter>[]
+  covered: CoveredRecord[]
+  featured: Set<string>
+  peek: (handle: string) => Promise<CharacterView>
+  shown: Match<SearchableCharacter>[]
 }): ReactElement {
   return (
     <ul {...stylex.props(styles.tiles)}>

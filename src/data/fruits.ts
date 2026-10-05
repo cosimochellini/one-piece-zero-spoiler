@@ -24,10 +24,13 @@ import type { Dated, Entity } from './types'
  */
 
 /** A character the dossiers name, and when the entry that names them is dated. */
-export type Eater = { readonly entity: Entity; readonly named: When }
+export interface Eater {
+  entity: Entity
+  named: When
+}
 
 /** Every fruit record, in the order the story names them. */
-export const fruits: readonly Entity[] = orderByMode(
+export const fruits: Entity[] = orderByMode(
   entities.filter((entity) => entity.kind === 'fruit'),
   'episode',
 )
@@ -50,7 +53,7 @@ export function fruitFormOf(entity: Entity): FruitForm | undefined {
 }
 
 /** Every fruit of one kind, in the order the story names them. */
-export function fruitsOfForm(form: FruitForm): readonly Entity[] {
+export function fruitsOfForm(form: FruitForm): Entity[] {
   return fruits.filter((fruit) => FORMS.get(fruit.id) === form)
 }
 
@@ -58,11 +61,7 @@ export function fruitsOfForm(form: FruitForm): readonly Entity[] {
 type Found = Map<string, Map<string, When>>
 
 /** Files one dossier entry under every fruit it names, keeping the earliest. */
-function file(
-  found: Found,
-  character: string,
-  entry: Dated<readonly string[]>,
-): void {
+function file(found: Found, character: string, entry: Dated<string[]>): void {
   for (const fruitId of entry.value) {
     const byCharacter = found.get(fruitId) ?? new Map<string, When>()
     const seen = byCharacter.get(character)
@@ -78,7 +77,7 @@ function file(
 }
 
 /** Every fruit's eaters, read once out of the dossiers. */
-function readEaters(): ReadonlyMap<string, readonly Eater[]> {
+function readEaters(): Map<string, Eater[]> {
   const found: Found = new Map()
 
   for (const [character, dossier] of Object.entries(CHARACTER_DOSSIERS)) {
@@ -98,7 +97,7 @@ function readEaters(): ReadonlyMap<string, readonly Eater[]> {
 }
 
 /** One fruit's eaters, earliest first, ties broken by the archive's own order. */
-function listed(byCharacter: ReadonlyMap<string, When>): readonly Eater[] {
+function listed(byCharacter: Map<string, When>): Eater[] {
   return [...byCharacter]
     .flatMap(([character, named]) => {
       const entity = getCharacter(character)
@@ -121,6 +120,6 @@ const EATERS = readEaters()
  * fruit nobody has eaten would give — and a data test holds that there is no
  * such fruit.
  */
-export function eatersOf(id: string): readonly Eater[] {
+export function eatersOf(id: string): Eater[] {
   return EATERS.get(id) ?? []
 }

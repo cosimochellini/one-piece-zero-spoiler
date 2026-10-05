@@ -15,21 +15,21 @@ import { morphPart } from '~/styles/morph'
 /** How wide a specimen number is printed. `01`, never `1`. */
 const NUMBER_WIDTH = 2
 
-const FORM_KEY: Readonly<Record<FruitForm, TranslationKey>> = {
+const FORM_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
 }
 
 /** One row of the sheet: what it is, where it sits, and what fills it. */
-export type FruitSpecimenProps = {
+export interface FruitSpecimenProps {
   /** The plate this row sits on, so a covered row still says which it is. */
-  readonly form: FruitForm
-  readonly highlight?: null | readonly [number, number]
+  form: FruitForm
+  highlight?: [number, number] | null
   /** Zero-based within its plate; the row prints it plus one. */
-  readonly index: number
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly slot: Slot<FruitView>
+  index: number
+  peek: (handle: string) => Promise<FruitView>
+  slot: Slot<FruitView>
 }
 
 /**
@@ -105,9 +105,9 @@ function SpecimenMargin({
   peek,
   slot,
 }: {
-  readonly index: number
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly slot: Slot<FruitView>
+  index: number
+  peek: (handle: string) => Promise<FruitView>
+  slot: Slot<FruitView>
 }): ReactElement {
   const { t } = useLocale()
 
@@ -144,8 +144,8 @@ function SpecimenWords({
   highlight,
   record,
 }: {
-  readonly highlight: null | readonly [number, number]
-  readonly record: FruitView
+  highlight: [number, number] | null
+  record: FruitView
 }): ReactElement {
   const { locale } = useLocale()
 

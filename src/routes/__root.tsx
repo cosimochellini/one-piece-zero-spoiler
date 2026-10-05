@@ -101,9 +101,7 @@ function RootComponent(): ReactElement {
 
 // The default client entry hydrates the whole document, so the root route has
 // to render <html> itself.
-function RootDocument({
-  children,
-}: Readonly<{ children: ReactNode }>): ReactElement {
+function RootDocument({ children }: { children: ReactNode }): ReactElement {
   // Read loosely because the root route has no params of its own; the locale
   // belongs to the `$locale` layout below it. Anything unrecognised falls back
   // to the site default rather than emitting an invalid `lang`.

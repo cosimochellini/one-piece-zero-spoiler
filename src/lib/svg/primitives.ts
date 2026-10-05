@@ -21,7 +21,7 @@ export const ellipse = (
 
 export const dot = (x: number, y: number): string => `M${n(x)} ${n(y)} h0.01`
 
-export const dots = (points: readonly (readonly [number, number])[]): string =>
+export const dots = (points: [number, number][]): string =>
   points.map(([x, y]) => dot(x, y)).join(' ')
 
 /**
@@ -63,7 +63,7 @@ export const wave = (y: number): string =>
   `M-4 ${n(y)} q10 -6 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0`
 
 /** Three rows of wave low in the box, the sea every place stands in. */
-export const SEA: readonly Stroke[] = [
+export const SEA: Stroke[] = [
   { d: wave(158), role: 'ambient' },
   { d: wave(172), role: 'ambient' },
   { d: wave(186), role: 'ambient' },
@@ -79,7 +79,7 @@ export const shadow = (cx: number, cy: number, rx: number): Stroke => {
 }
 
 /** A sheathed sword lying at the same angle as its two companions. */
-export function sheath(dx: number, role: StrokeRole): readonly Stroke[] {
+export function sheath(dx: number, role: StrokeRole): Stroke[] {
   const a = { x: 50 + dx, y: 158 }
   const b = { x: 100 + dx, y: 46 }
   // Perpendicular offset for the sheath's width.
@@ -112,11 +112,7 @@ export function sheath(dx: number, role: StrokeRole): readonly Stroke[] {
 }
 
 /** A small ghost, the kind that follows an umbrella. */
-export const ghost = (
-  x: number,
-  y: number,
-  role: StrokeRole,
-): readonly Stroke[] => {
+export const ghost = (x: number, y: number, role: StrokeRole): Stroke[] => {
   return [
     {
       d: `M${n(x)} ${n(y)} c0 -16 10 -22 16 -22 c6 0 16 6 16 22 v12 c-5 -4 -11 -4 -16 0 c-5 -4 -11 -4 -16 0z`,

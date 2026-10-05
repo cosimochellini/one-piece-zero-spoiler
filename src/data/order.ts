@@ -15,10 +15,7 @@ import type { Entity } from './types'
  * keeps that true in every mode; the other threshold breaks ties, so a list
  * is stable across the three.
  */
-export function orderByMode(
-  entries: readonly Entity[],
-  mode: BookmarkMode,
-): readonly Entity[] {
+export function orderByMode(entries: Entity[], mode: BookmarkMode): Entity[] {
   const other = mode === 'chapter' ? 'episode' : 'chapter'
 
   return entries.toSorted(

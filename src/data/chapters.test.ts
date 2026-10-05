@@ -39,7 +39,7 @@ function names(entry: Dated<unknown>, record: Entity): boolean {
 }
 
 /** The records a chapter's episode reaches that the chapter itself does not. */
-function openedEarly(chapter: number): readonly string[] {
+function openedEarly(chapter: number): string[] {
   const episode = episodeAtChapter(chapter)
 
   return entities

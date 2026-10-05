@@ -37,10 +37,7 @@ export function point(x: number, y: number): string {
 }
 
 /** The body a grain grows: never wider than 52, never taller than 56. */
-export function radiiFor(grain: number): {
-  readonly rx: number
-  readonly ry: number
-} {
+export function radiiFor(grain: number): { rx: number; ry: number } {
   return {
     rx: RX[grain % RX.length] ?? 44,
     ry: RY[(grain * 3 + 1) % RY.length] ?? 48,

@@ -4,9 +4,9 @@ import type { Locale } from './locales'
 import type { Translate } from './types'
 
 /** What the provider puts on the context: the active locale and its translate. */
-export type LocaleContextValue = {
-  readonly locale: Locale
-  readonly t: Translate
+export interface LocaleContextValue {
+  locale: Locale
+  t: Translate
 }
 
 export const LocaleContext = createContext<LocaleContextValue | null>(null)

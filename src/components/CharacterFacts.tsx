@@ -22,7 +22,9 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** The facts as they stand at the reader's bookmark. */
-export type CharacterFactsProps = { readonly facts: Facts }
+export interface CharacterFactsProps {
+  facts: Facts
+}
 
 /**
  * The dossier's facts as a definition list, each as it stands at the
@@ -44,7 +46,7 @@ export function CharacterFacts({
 }: CharacterFactsProps): null | ReactElement {
   const { locale, t } = useLocale()
 
-  const rows: readonly (readonly [string, ReactNode])[] = [
+  const rows: [string, ReactNode][] = [
     [t('character.status'), statusRow(facts.status, t)],
     [t('character.epithet'), facts.epithet],
     [t('character.affiliation'), facts.affiliation],
@@ -102,16 +104,12 @@ function statusRow(
  * timeline entry the reader has reached, and a fruit opens no later than the
  * entry that names it, which a data test holds.
  */
-function fruitRow(links: readonly FruitLink[] | undefined): ReactNode {
+function fruitRow(links: FruitLink[] | undefined): ReactNode {
   return links === undefined ? undefined : <FruitLinks links={links} />
 }
 
 /** One link per fruit, comma-separated: an entry may name more than one. */
-function FruitLinks({
-  links,
-}: {
-  readonly links: readonly FruitLink[]
-}): ReactElement {
+function FruitLinks({ links }: { links: FruitLink[] }): ReactElement {
   const { locale } = useLocale()
 
   return (

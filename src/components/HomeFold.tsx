@@ -19,13 +19,13 @@ import { settleStyles } from '~/styles/settle'
 const STAGGER = { copy: 1, actions: 2 } as const
 
 /** What the fold shows, all of it already reached. */
-export type HomeFoldProps = {
+export interface HomeFoldProps {
   /** Which step of the page's settle order the fold starts on. */
-  readonly band: number
+  band: number
   /** The arc the reader is in. */
-  readonly saga: WaypointView
+  saga: WaypointView
   /** No bookmark is set: the page shows the start, and says so. */
-  readonly unset: boolean
+  unset: boolean
 }
 
 /**

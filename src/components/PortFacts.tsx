@@ -10,11 +10,7 @@ import type { PortDossier, ShipEntry } from '~/lib/view/records'
  * than veiled: an arc opens no later than any place filed under it (the
  * data test holds that), so an open place always has an open arc.
  */
-export function PortFacts({
-  dossier,
-}: {
-  readonly dossier: PortDossier
-}): ReactElement {
+export function PortFacts({ dossier }: { dossier: PortDossier }): ReactElement {
   const { t } = useLocale()
 
   return (
@@ -46,11 +42,7 @@ export function PortFacts({
  * the reader has reached; with none reached there is no row, so nothing on
  * the page says one is coming.
  */
-export function ShipFacts({
-  entry,
-}: {
-  readonly entry: ShipEntry
-}): ReactElement {
+export function ShipFacts({ entry }: { entry: ShipEntry }): ReactElement {
   const { t } = useLocale()
 
   return (
@@ -80,8 +72,8 @@ function Fact({
   label,
   value,
 }: {
-  readonly label: string
-  readonly value: string
+  label: string
+  value: string
 }): ReactElement {
   return (
     <div {...stylex.props(styles.fact)}>

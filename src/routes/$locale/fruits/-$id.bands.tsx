@@ -28,7 +28,7 @@ import { morphPart } from '~/styles/morph'
 
 import { styles } from './-$id.styles'
 
-const FORM_KEY: Readonly<Record<FruitForm, TranslationKey>> = {
+const FORM_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
@@ -48,8 +48,8 @@ export function PlateBand({
   detail,
   peek,
 }: {
-  readonly detail: FruitDetail
-  readonly peek: (handle: string) => Promise<FruitView>
+  detail: FruitDetail
+  peek: (handle: string) => Promise<FruitView>
 }): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
@@ -102,7 +102,7 @@ export function PlateBand({
 }
 
 /** The name, the kind spelled out, and the sentence the archive files. */
-function PlateWords({ record }: { readonly record: FruitView }): ReactElement {
+function PlateWords({ record }: { record: FruitView }): ReactElement {
   const { t } = useLocale()
 
   return (
@@ -132,16 +132,15 @@ function PlateWords({ record }: { readonly record: FruitView }): ReactElement {
 export type EatersSource = FruitEatersView | Promise<FruitEatersView>
 
 /** The rail of the same kind, or the promise of it. Same reason. */
-export type KinSource =
-  Promise<readonly Slot<FruitView>[]> | readonly Slot<FruitView>[]
+export type KinSource = Promise<Slot<FruitView>[]> | Slot<FruitView>[]
 
 /** Who the dossiers say ate it, each character under its own fog. */
 export function EatersBand({
   eaters,
   peek,
 }: {
-  readonly eaters: EatersSource
-  readonly peek: (handle: string) => Promise<CharacterView>
+  eaters: EatersSource
+  peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const { t } = useLocale()
 
@@ -174,8 +173,8 @@ function Eaters({
   eaters,
   peek,
 }: {
-  readonly eaters: EatersSource
-  readonly peek: (handle: string) => Promise<CharacterView>
+  eaters: EatersSource
+  peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const { t } = useLocale()
   const answer = eaters instanceof Promise ? use(eaters) : eaters
@@ -209,8 +208,8 @@ export function KinBand({
   peek,
   siblings,
 }: {
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly siblings: KinSource
+  peek: (handle: string) => Promise<FruitView>
+  siblings: KinSource
 }): ReactElement {
   const { t } = useLocale()
 
@@ -243,8 +242,8 @@ function Kin({
   peek,
   siblings,
 }: {
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly siblings: KinSource
+  peek: (handle: string) => Promise<FruitView>
+  siblings: KinSource
 }): ReactElement {
   const { t } = useLocale()
   const rail = siblings instanceof Promise ? use(siblings) : siblings
@@ -265,7 +264,7 @@ function Kin({
 }
 
 /** What a band says while what fills it is still on its way. */
-function Pending({ words }: { readonly words: TranslationKey }): ReactElement {
+function Pending({ words }: { words: TranslationKey }): ReactElement {
   const { t } = useLocale()
 
   return (

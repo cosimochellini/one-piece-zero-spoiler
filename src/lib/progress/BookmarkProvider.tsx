@@ -21,8 +21,8 @@ import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
  * One bookmark is held for the whole document, so every veil on the page
  * opens and closes together rather than each reading the cookie for itself.
  */
-export type BookmarkProviderProps = {
-  readonly children: ReactNode
+export interface BookmarkProviderProps {
+  children: ReactNode
   /**
    * The bookmark as the server read it. Passing it in rather than reading
    * `document.cookie` in an effect is what keeps the first server-rendered
@@ -33,7 +33,7 @@ export type BookmarkProviderProps = {
    * loaders, which read the cookie server-side on every pass, so a stale value
    * here can never open a record the reader has not reached.
    */
-  readonly initialBookmark: Bookmark
+  initialBookmark: Bookmark
 }
 
 /**

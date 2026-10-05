@@ -12,27 +12,27 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 
 /** One entry of the document head, as the router's `meta` array takes it. */
 export type MetaTag =
-  | { readonly content: string; readonly name: string }
-  | { readonly content: string; readonly property: string }
-  | { readonly title: string }
+  | { content: string; name: string }
+  | { content: string; property: string }
+  | { title: string }
 
 /** What a page tells the platforms about itself. */
-export type SocialPage = {
-  readonly description: string
-  readonly imageAlt: string
-  readonly imageUrl: string
-  readonly locale: Locale
-  readonly siteName: string
-  readonly title: string
-  readonly type: 'article' | 'website'
-  readonly url: string
+export interface SocialPage {
+  description: string
+  imageAlt: string
+  imageUrl: string
+  locale: Locale
+  siteName: string
+  title: string
+  type: 'article' | 'website'
+  url: string
 }
 
 // Open Graph wants a language *and* a territory, which BCP 47 tags on the
 // rest of the site do not carry.
-const OG_LOCALE: Readonly<Record<Locale, string>> = { it: 'it_IT', en: 'en_US' }
+const OG_LOCALE: Record<Locale, string> = { it: 'it_IT', en: 'en_US' }
 
-function otherLocales(locale: Locale): readonly Locale[] {
+function otherLocales(locale: Locale): Locale[] {
   return LOCALES.filter((candidate) => candidate !== locale)
 }
 
@@ -41,7 +41,7 @@ function alternateLocale(locale: Locale): MetaTag {
 }
 
 /** The `og:` and `twitter:` tags for one page. */
-export function describeSocial(page: SocialPage): readonly MetaTag[] {
+export function describeSocial(page: SocialPage): MetaTag[] {
   return [
     { property: 'og:type', content: page.type },
     { property: 'og:site_name', content: page.siteName },

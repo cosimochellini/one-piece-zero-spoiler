@@ -20,11 +20,11 @@
 export type StrokeRole = 'accent' | 'ambient' | 'soft'
 
 /** One stroke of a drawing. Structurally `Stroke` from `~/data/art/stroke`. */
-export type Stroke = {
-  readonly d: string
-  readonly dashed?: boolean
-  readonly role?: StrokeRole
-  readonly transform?: string
+export interface Stroke {
+  d: string
+  dashed?: boolean
+  role?: StrokeRole
+  transform?: string
 }
 
 /* eslint-disable perfectionist/sort-union-types -- the hue wheel is the order `tint` is written in, and it is the point: alphabetising hides which hues sit next to each other. */
@@ -91,9 +91,9 @@ export type FruitForm = 'logia' | 'paramecia' | 'zoan'
  * (`src/data/entities.test.ts`), so the drawing keys *are* the name slugs —
  * a keyed map could not be shipped even with the records left behind.
  */
-export type Drawing = {
-  readonly strokes: readonly Stroke[]
-  readonly tint: TintId
+export interface Drawing {
+  strokes: Stroke[]
+  tint: TintId
 }
 
 /**
@@ -110,11 +110,11 @@ export type Drawing = {
  * Structurally satisfies `Gated` (`~/lib/progress/spoiler`), so it can be
  * handed to `useThreshold` exactly as a record could.
  */
-export type CoveredRecord = {
-  readonly handle: string
-  readonly kind: EntityKind
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
+export interface CoveredRecord {
+  handle: string
+  kind: EntityKind
+  revealedAtChapter: number
+  revealedAtEpisode: number
 }
 
 /**
@@ -123,25 +123,28 @@ export type CoveredRecord = {
  * fog from disagreeing with itself for a frame after the bookmark moves.
  */
 export type Slot<T> =
-  | { readonly covered: CoveredRecord; readonly open: false }
-  | { readonly open: true; readonly record: T }
+  { covered: CoveredRecord; open: false } | { open: true; record: T }
 
 /** A record the reader has reached. */
-export type RecordView = {
-  readonly id: string
-  readonly kind: EntityKind
+export interface RecordView {
+  id: string
+  kind: EntityKind
   /** The route locale's name, as displayed. */
-  readonly name: string
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
-  readonly visual: Drawing
+  name: string
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  visual: Drawing
 }
 
 /** A character, as a crest or a tile draws it. No summary: neither prints one. */
-export type CharacterView = RecordView & { readonly role?: string }
+export interface CharacterView extends RecordView {
+  role?: string
+}
 
 /** A waypoint on the landing chart, which does print a summary. */
-export type WaypointView = RecordView & { readonly summary: string }
+export interface WaypointView extends RecordView {
+  summary: string
+}
 
 /**
  * A record whose searchable surface the server has already folded: what is
@@ -152,28 +155,28 @@ export type WaypointView = RecordView & { readonly summary: string }
  * payload at all — where the archive used to be in the browser whole and the
  * search merely declined to match the entries above the reader.
  */
-export type Searchable = {
+export interface Searchable {
   /**
    * The displayed name, folded. A match is only marked when this is the same
    * length as the name it was folded from, so an index into it can never
    * point at the wrong letters.
    */
-  readonly folded: string
-  readonly name: string
+  folded: string
+  name: string
   /**
    * The other locale's name, and for a character the epithets the reader has
    * reached. Searched, never shown, so only the folded form travels.
    */
-  readonly aliases: readonly string[]
+  aliases: string[]
 }
 
 /** A character the search field can answer for. */
 export type SearchableCharacter = CharacterView & Searchable
 
 /** Where in a displayed name a search matched. */
-export type NameMatch = {
-  readonly highlight: null | readonly [number, number]
-  readonly matches: boolean
+export interface NameMatch {
+  highlight: [number, number] | null
+  matches: boolean
 }
 
 /**
@@ -188,26 +191,29 @@ export type NameMatch = {
  * The labels and the digit grouping stay in the component — they are the
  * reader's language, not the archive's.
  */
-export type CharacterFacts = {
-  readonly affiliation?: string
+export interface CharacterFacts {
+  affiliation?: string
   /**
    * The fruits the reader has been told this character ate, each with the
    * id of its own page. A row is only ever built from a timeline entry the
    * reader has reached, and a fruit opens no later than the entry that
    * names it, so a link here always leads somewhere the reader may go.
    */
-  readonly devilFruit?: readonly FruitLink[]
-  readonly epithet?: string
-  readonly mode: 'facts'
-  readonly origin?: string
+  devilFruit?: FruitLink[]
+  epithet?: string
+  mode: 'facts'
+  origin?: string
   /** Where the character stands at the last entry the reader has reached. */
-  readonly status?: CharacterStatus
+  status?: CharacterStatus
   /** In Berry, ungrouped. */
-  readonly bounty?: number
+  bounty?: number
 }
 
 /** A fruit named on another record's page, and the page it leads to. */
-export type FruitLink = { readonly id: string; readonly name: string }
+export interface FruitLink {
+  id: string
+  name: string
+}
 
 /**
  * One run of a story's paragraph: plain words, or a character's name that
@@ -219,8 +225,7 @@ export type FruitLink = { readonly id: string; readonly name: string }
  * reader is already allowed to open.
  */
 export type ProseSegment =
-  | { readonly id: string; readonly kind: 'link'; readonly name: string }
-  | { readonly kind: 'text'; readonly text: string }
+  { id: string; kind: 'link'; name: string } | { kind: 'text'; text: string }
 
 /**
  * One story the reader has reached, resolved to their language. Its two
@@ -230,11 +235,11 @@ export type ProseSegment =
  * chapters. Structurally satisfies `Gated`
  * (`~/lib/progress/spoiler`), so its mark is named by `useThreshold`.
  */
-export type ChronicleEntry = {
-  readonly body: readonly ProseSegment[]
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
-  readonly title: string
+export interface ChronicleEntry {
+  body: ProseSegment[]
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  title: string
 }
 
 /**
@@ -244,42 +249,46 @@ export type ChronicleEntry = {
  * no count, because "three more stories under fog" is itself the news that
  * something happens.
  */
-export type CharacterChronicle = {
-  readonly entries: readonly ChronicleEntry[]
-  readonly mode: 'chronicle'
+export interface CharacterChronicle {
+  entries: ChronicleEntry[]
+  mode: 'chronicle'
 }
 
 /**
  * A devil fruit as the specimen sheet draws it: a record, its kind, the
  * sentence that says what the power does, and its folded searchable surface.
  */
-export type FruitView = RecordView
-  & Searchable & { readonly form: FruitForm; readonly summary: string }
+export interface FruitView extends RecordView, Searchable {
+  form: FruitForm
+  summary: string
+}
 
 /**
  * One plate of the specimen sheet: the fruits of one kind, open first and
  * covered after, and how many the archive files of that kind either way.
  */
-export type FruitBandView = {
-  readonly covered: readonly CoveredRecord[]
-  readonly form: FruitForm
-  readonly open: readonly FruitView[]
-  readonly total: number
+export interface FruitBandView {
+  covered: CoveredRecord[]
+  form: FruitForm
+  open: FruitView[]
+  total: number
 }
 
 /** The specimen sheet: the three plates, and how many fruits are filed. */
-export type FruitSheetView = {
-  readonly bands: readonly FruitBandView[]
-  readonly filed: number
+export interface FruitSheetView {
+  bands: FruitBandView[]
+  filed: number
 }
 
 /** A devil fruit's own page. */
-export type FruitDetail = { readonly slot: Slot<FruitView> }
+export interface FruitDetail {
+  slot: Slot<FruitView>
+}
 
 /** The band that names who ate a fruit, each eater under their own fog. */
-export type FruitEatersView = {
-  readonly eaters: readonly Slot<CharacterView>[]
-  readonly mode: 'eaters'
+export interface FruitEatersView {
+  eaters: Slot<CharacterView>[]
+  mode: 'eaters'
 }
 
 /**
@@ -312,67 +321,67 @@ export type PlaceForm =
  * dossier is written; the log then shows the name and the sentence and
  * leaves the ledger out, which is what the page did before.
  */
-export type PortView = RecordView & {
-  readonly dossier: null | PortDossier
-  readonly summary: string
+export interface PortView extends RecordView {
+  dossier: null | PortDossier
+  summary: string
 }
 
 /** What the log knows about a port beyond its name and its sentence. */
-export type PortDossier = {
-  readonly form: PlaceForm
-  readonly sea: Sea
+export interface PortDossier {
+  form: PlaceForm
+  sea: Sea
   /**
    * The arc this port is filed under, named outright rather than veiled: an
    * arc opens no later than any place filed under it, so an open port always
    * has an open arc.
    */
-  readonly arc: null | string
-  readonly landmark: string
-  readonly log: string
+  arc: null | string
+  landmark: string
+  log: string
   /** The records filed here, each with its own fog already decided. */
-  readonly filedHere: readonly Slot<RecordView>[]
+  filedHere: Slot<RecordView>[]
 }
 
 /** A ship the crew sails, as the band above the log draws it. */
-export type ShipView = RecordView & {
-  readonly dossier: ShipEntry
-  readonly summary: string
+export interface ShipView extends RecordView {
+  dossier: ShipEntry
+  summary: string
 }
 
 /** What the log knows about a ship beyond its name and its sentence. */
-export type ShipEntry = {
-  readonly builder: string
+export interface ShipEntry {
+  builder: string
   /**
    * The place the crew receives her at, named outright: it opens no later
    * than the ship, which a data test holds.
    */
-  readonly launched: null | string
-  readonly log: string
+  launched: null | string
+  log: string
   /**
    * The latest fate the reader has reached. Absent rather than `undefined`
    * when there is none, so the row is not drawn.
    */
-  readonly fate?: string
+  fate?: string
   /**
    * The places she has reached by the reader's bookmark, and none past it.
    * There is no covered tile and no count: a place under fog would still
    * print its episode, and that alone would say how long she lasts.
    */
-  readonly ports: readonly RecordView[]
+  ports: RecordView[]
 }
 
 /** One shelf of the signal book: an arc and the characters first met along it. */
-export type ShelfView = {
-  readonly arc: Slot<RecordView>
+export interface ShelfView {
+  arc: Slot<RecordView>
   /** Every character on the shelf, open or not, for the count line. */
-  readonly covered: readonly CoveredRecord[]
-  readonly open: readonly SearchableCharacter[]
-  readonly total: number
+  covered: CoveredRecord[]
+  open: SearchableCharacter[]
+  total: number
 }
 
 /** One story on the home page: a reached entry, and whose page it leads to. */
-export type HomeStory = ChronicleEntry & {
-  readonly subject: { readonly id: string; readonly name: string }
+export interface HomeStory extends ChronicleEntry {
+  subject: { id: string; name: string }
 }
 
 /**
@@ -381,17 +390,17 @@ export type HomeStory = ChronicleEntry & {
  * character named is one the reader has reached, so there is nothing to
  * cover and no handle to lift.
  */
-export type HomeView = {
+export interface HomeView {
   /** The stories are the previous arc's, because this one has none yet. */
-  readonly before: boolean
+  before: boolean
   /** The characters the stories name most, most named first, at most six. */
-  readonly cast: readonly CharacterView[]
+  cast: CharacterView[]
   /** The arc the reader is in: the last one that opens at or before them. */
-  readonly saga: WaypointView
+  saga: WaypointView
   /** The stories concluded in the arc up to the bookmark, most recent first. */
-  readonly stories: readonly HomeStory[]
+  stories: HomeStory[]
   /** No bookmark is set; the page shows the start. */
-  readonly unset: boolean
+  unset: boolean
 }
 
 /**
@@ -401,27 +410,27 @@ export type HomeView = {
  * covered name could leak into a page that is otherwise clean. The route's
  * `head` spells these out and derives nothing.
  */
-export type DocumentHead = {
-  readonly description: string
-  readonly title: string
+export interface DocumentHead {
+  description: string
+  title: string
 }
 
 /** Where a record sits on the route, and what lies either side of it. */
-export type RoutePositionView = {
+export interface RoutePositionView {
   /** Zero-based; the page prints it plus one. */
-  readonly index: number
-  readonly openCount: number
-  readonly total: number
+  index: number
+  openCount: number
+  total: number
   /** The ring's colour, or `null` while this record is under fog. */
-  readonly next: null | Slot<RecordView>
-  readonly previous: null | Slot<RecordView>
-  readonly tint: null | TintId
+  next: null | Slot<RecordView>
+  previous: null | Slot<RecordView>
+  tint: null | TintId
 }
 
 /** A character's own page. */
-export type CharacterDetail = {
-  readonly chronicle: CharacterChronicle
-  readonly facts: CharacterFacts
-  readonly log: null | string
-  readonly slot: Slot<CharacterView & { readonly summary: string }>
+export interface CharacterDetail {
+  chronicle: CharacterChronicle
+  facts: CharacterFacts
+  log: null | string
+  slot: Slot<CharacterView & { summary: string }>
 }

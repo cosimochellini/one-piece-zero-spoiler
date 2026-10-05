@@ -10,10 +10,10 @@ import { color, font, leading, space, text } from '~/styles/tokens.stylex'
  * counts characters and the log counts ports, and the shell has no business
  * knowing which.
  */
-export type ArchivePageProps = {
-  readonly children: ReactNode
-  readonly count: string
-  readonly title: string
+export interface ArchivePageProps {
+  children: ReactNode
+  count: string
+  title: string
 }
 
 /**

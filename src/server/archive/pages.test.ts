@@ -29,7 +29,7 @@ const robinHead = (bookmark: Bookmark): string =>
 function underFog(
   id: string,
   bookmark: Bookmark,
-): { readonly covered: CoveredRecord; readonly detail: CharacterDetail } {
+): { covered: CoveredRecord; detail: CharacterDetail } {
   const detail = characterPage(id, bookmark, 'en')?.detail
   if (detail?.slot.open !== false) {
     throw new Error(`${id} is not under fog at this bookmark`)
@@ -43,10 +43,7 @@ function opened(
   id: string,
   bookmark: Bookmark,
   locale: Locale,
-): {
-  readonly detail: CharacterDetail
-  readonly record: CharacterView & { readonly summary: string }
-} {
+): { detail: CharacterDetail; record: CharacterView & { summary: string } } {
   const detail = characterPage(id, bookmark, locale)?.detail
   if (detail?.slot.open !== true) {
     throw new Error(`${id} is still under fog at this bookmark`)

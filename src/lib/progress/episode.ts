@@ -39,13 +39,9 @@ export type BookmarkMode = 'chapter' | 'episode' | 'season'
  */
 export type Bookmark =
   | null
-  | { readonly chapter: number; readonly mode: 'chapter' }
-  | { readonly episode: number; readonly mode: 'episode' }
-  | {
-      readonly episode: number
-      readonly mode: 'season'
-      readonly season: number
-    }
+  | { chapter: number; mode: 'chapter' }
+  | { episode: number; mode: 'episode' }
+  | { episode: number; mode: 'season'; season: number }
 
 /**
  * The cookie grammar. A bare integer is an anime episode — that is what the
@@ -208,10 +204,10 @@ export function clampIndex(value: number, ceiling: number): number {
  * What the dialog holds while the reader is typing: a mode, the season as
  * the `<select>` value (empty until one is chosen), and the number as typed.
  */
-export type Draft = {
-  readonly mode: BookmarkMode
-  readonly number: string
-  readonly season: string
+export interface Draft {
+  mode: BookmarkMode
+  number: string
+  season: string
 }
 
 /** Why a draft is not usable yet. `season` means no season has been chosen. */
@@ -222,9 +218,9 @@ export type DraftProblem = 'empty' | 'range' | 'season'
  * the reason it cannot be saved yet. The dialog needs the second to decide
  * whether the button is live, and the first the moment it is.
  */
-export type GradedDraft = {
-  readonly bookmark: Bookmark
-  readonly problem: DraftProblem | null
+export interface GradedDraft {
+  bookmark: Bookmark
+  problem: DraftProblem | null
 }
 
 /** The draft a dialog opens with: the current bookmark, spelled back out. */
@@ -272,11 +268,11 @@ export function ceilingOf(draft: Draft): null | number {
  * An empty or unreadable field steps from zero, so the first press lands on
  * 1 rather than on NaN.
  */
-export type Stepper = {
-  readonly atCeiling: boolean
-  readonly atFloor: boolean
-  readonly ceiling: null | number
-  readonly stepped: (delta: number) => string
+export interface Stepper {
+  atCeiling: boolean
+  atFloor: boolean
+  ceiling: null | number
+  stepped: (delta: number) => string
 }
 
 /**

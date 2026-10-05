@@ -35,7 +35,7 @@ import { characterOf, coveredOf, fruitOf, slotOf } from './project.server'
  */
 
 /** The plates, in the order the sheet sets them out. */
-const PLATES: readonly FruitForm[] = ['paramecia', 'zoan', 'logia']
+const PLATES: FruitForm[] = ['paramecia', 'zoan', 'logia']
 
 /** What a fruit's page calls itself, open and under fog. */
 const FRUIT_HEAD: HeadKeys = {
@@ -71,9 +71,9 @@ export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
 }
 
 /** A fruit's own page: what names it, and what it says. */
-export type FruitPage = {
-  readonly detail: FruitDetail
-  readonly head: DocumentHead
+export interface FruitPage {
+  detail: FruitDetail
+  head: DocumentHead
 }
 
 /**
@@ -144,7 +144,7 @@ export function fruitSiblings(
   id: string,
   bookmark: Bookmark,
   locale: Locale,
-): readonly Slot<FruitView>[] {
+): Slot<FruitView>[] {
   const entity = getFruit(id)
   const form = entity === undefined ? undefined : fruitFormOf(entity)
   if (entity === undefined || form === undefined) {
@@ -167,11 +167,7 @@ export function fruitSiblings(
  * prints this fruit's threshold in that unit and a rail sorted by the other
  * one would be a neighbourhood the reader cannot see they are in.
  */
-function nearest(
-  entity: Entity,
-  among: readonly Entity[],
-  at: Reveal,
-): readonly Entity[] {
+function nearest(entity: Entity, among: Entity[], at: Reveal): Entity[] {
   const here = at.threshold(entity)
 
   return among

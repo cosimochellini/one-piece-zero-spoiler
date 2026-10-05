@@ -56,7 +56,7 @@ describe('the dictionaries', () => {
  * and anchored to word boundaries so that ordinary words that merely contain
  * one ("profiled", "riscoprire") still pass.
  */
-const BANNED: Record<Locale, readonly RegExp[]> = {
+const BANNED: Record<Locale, RegExp[]> = {
   en: [
     /\bsignal book\b/iu,
     /\bspecimen sheet\b/iu,

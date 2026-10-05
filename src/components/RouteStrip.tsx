@@ -6,24 +6,24 @@ import type { TintId } from '~/lib/view/records'
 import { color, rule } from '~/styles/tokens.stylex'
 
 /** What the strip needs to draw itself and to say what it is showing. */
-export type RouteStripProps = {
+export interface RouteStripProps {
   /**
    * How many waypoints the route has, and how many the reader has reached.
    * Counts rather than records: the strip draws dots, and sending it the
    * chart so it can call `length` on it would be the same waste in a smaller
    * costume.
    */
-  readonly openCount: number
-  readonly total: number
+  openCount: number
+  total: number
   /** Where this record sits on the route, zero-based. */
-  readonly at: number
+  at: number
   /** What a screen reader hears instead of the dots. */
-  readonly label: string
+  label: string
   /**
    * The current record's hue, or `null` under fog — so a covered record's
    * colour is not in the HTML. The server applies the guard.
    */
-  readonly tint: null | TintId
+  tint: null | TintId
 }
 
 // Half a step first: the horizon tick falls between two marks, so the strip
@@ -123,11 +123,11 @@ function Mark({
   open,
   ringHue,
 }: {
-  readonly here: boolean
-  readonly index: number
-  readonly open: boolean
+  here: boolean
+  index: number
+  open: boolean
   /** `null` while the record is under fog, so no colour reaches the HTML. */
-  readonly ringHue: null | string
+  ringHue: null | string
 }): ReactElement {
   return (
     <g>

@@ -27,20 +27,20 @@ import type { DocumentHead } from '~/lib/view/records'
 const SOCIAL_IMAGE = '/og-card.png'
 
 /** What a route knows about itself when the head is written. */
-export type PageDescription = {
-  readonly head: DocumentHead
-  readonly kind: PageKind
-  readonly locale: Locale
-  readonly pathname: string
+export interface PageDescription {
+  head: DocumentHead
+  kind: PageKind
+  locale: Locale
+  pathname: string
   /** The pages above this one, outermost first. Empty for an index. */
-  readonly trail?: readonly Crumb[]
+  trail?: Crumb[]
 }
 
 /** Everything the router renders into `<head>` for one page. */
-export type HeadTags = {
-  readonly links: readonly { href: string; hrefLang?: string; rel: string }[]
-  readonly meta: readonly MetaTag[]
-  readonly scripts: readonly { children: string; type: string }[]
+export interface HeadTags {
+  links: { href: string; hrefLang?: string; rel: string }[]
+  meta: MetaTag[]
+  scripts: { children: string; type: string }[]
 }
 
 /** The title, the description, the canonical address and everything derived from them. */
@@ -94,12 +94,12 @@ export function describePage(page: PageDescription): HeadTags {
 }
 
 /** A page whose title and description are written in the dictionary. */
-export type NamedPage = {
-  readonly descriptionKey: TranslationKey
-  readonly kind: PageKind
-  readonly locale: Locale
-  readonly pathname: string
-  readonly titleKey: TranslationKey
+export interface NamedPage {
+  descriptionKey: TranslationKey
+  kind: PageKind
+  locale: Locale
+  pathname: string
+  titleKey: TranslationKey
 }
 
 /** The head of the landing page or of one of the three indexes. */
@@ -118,13 +118,13 @@ export function describeNamedPage(page: NamedPage): HeadTags {
 }
 
 /** A page a single record has to itself, and the index it is filed under. */
-export type RecordPage = {
-  readonly head: DocumentHead
-  readonly locale: Locale
+export interface RecordPage {
+  head: DocumentHead
+  locale: Locale
   /** The index above it, as a path without the locale: `/characters`. */
-  readonly parentPath: string
-  readonly parentTitleKey: TranslationKey
-  readonly pathname: string
+  parentPath: string
+  parentTitleKey: TranslationKey
+  pathname: string
 }
 
 /**

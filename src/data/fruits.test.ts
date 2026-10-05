@@ -29,16 +29,16 @@ import type { Entity } from './types'
  */
 
 /** One dossier entry that names a fruit: who, when, and which fruits. */
-type Mention = {
-  readonly character: Entity
-  readonly episode: number
-  readonly fruitIds: readonly string[]
+interface Mention {
+  character: Entity
+  episode: number
+  fruitIds: string[]
   /** The chapter a reader reaches the entry at (`gateOf`). */
-  readonly opens: number
+  opens: number
 }
 
 /** Every dossier entry that names a fruit, flattened out of the archive. */
-function readMentions(): readonly Mention[] {
+function readMentions(): Mention[] {
   const found: Mention[] = []
 
   for (const [id, dossier] of Object.entries(CHARACTER_DOSSIERS)) {
@@ -69,7 +69,7 @@ const MENTIONS = readMentions()
  * characters that name it there, then the id, so the rule is the same whatever
  * order the dossiers are read in.
  */
-function mentionsOf(id: string): readonly Mention[] {
+function mentionsOf(id: string): Mention[] {
   return MENTIONS.filter((mention) => mention.fruitIds.includes(id)).toSorted(
     byValues([
       [(mention) => mention.episode, byNumber()],
@@ -93,7 +93,7 @@ function firstMentionOf(id: string): Mention {
  * Who the dossiers say ate one fruit, as `id@episode`, sorted. A character
  * who names the same fruit twice is one eater, at the earlier of the two.
  */
-function writtenFor(id: string): readonly string[] {
+function writtenFor(id: string): string[] {
   const first = new Map<string, number>()
 
   for (const mention of mentionsOf(id)) {

@@ -4,12 +4,12 @@ import type { ReactElement, ReactNode } from 'react'
 import { styles } from '~/components/CharacterGrid.styles'
 
 /** One labelled band of the signal book. */
-export type CatalogueSectionProps = {
-  readonly children: ReactNode
+export interface CatalogueSectionProps {
+  children: ReactNode
   /** The id the section is labelled by, put on the heading. */
-  readonly headingId: string
-  readonly lede: string
-  readonly title: string
+  headingId: string
+  lede: string
+  title: string
 }
 
 /**

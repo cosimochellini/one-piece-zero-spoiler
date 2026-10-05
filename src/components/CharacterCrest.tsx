@@ -33,11 +33,7 @@ import type { Drawing } from '~/lib/view/records'
  * nothing in the middle. That is what stands in for a fogged character, so
  * the served HTML carries neither their drawing nor their colour.
  */
-export function CharacterCrest({
-  visual,
-}: {
-  readonly visual?: Drawing
-}): ReactElement {
+export function CharacterCrest({ visual }: { visual?: Drawing }): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (

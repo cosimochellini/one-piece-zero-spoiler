@@ -695,4 +695,4 @@ export const wholeCakeChronicles = {
       },
     },
   ],
-} satisfies Readonly<Record<string, Timeline<Story>>>
+} satisfies Record<string, Timeline<Story>>

@@ -12,15 +12,15 @@ import { EPISODE_CEILING, FIRST_EPISODE } from './bounds'
  * record keeps its absolute episode, and the season is only a way of saying
  * it.
  */
-export type Season = {
-  readonly number: number
+export interface Season {
+  number: number
   /** The absolute number of the season's first episode. */
-  readonly first: number
+  first: number
   /** The absolute number of its last episode, or `null` while it is airing. */
-  readonly last: null | number
+  last: null | number
 }
 
-export const SEASONS: readonly Season[] = [
+export const SEASONS: Season[] = [
   { number: 1, first: 1, last: 61 },
   { number: 2, first: 62, last: 77 },
   { number: 3, first: 78, last: 92 },
@@ -90,10 +90,10 @@ export function resolveEpisode(
  * form the `S04E38` chip can be built from: the two numbers are kept apart
  * because a season's length is what turns one into the other.
  */
-export type SeasonPosition = {
-  readonly season: number
+export interface SeasonPosition {
+  season: number
   /** One-based, within the season. */
-  readonly episode: number
+  episode: number
 }
 
 /** The season an absolute episode falls in, and its number within it. */

@@ -100,7 +100,7 @@ const config = defineConfig(
   js.configs.recommended,
 
   // Type-aware rules. stylisticTypeChecked is in: its rules choose between
-  // constructs (`type` over `interface`, `??` over `||`, `T[]` over
+  // constructs (`interface` over `type`, `??` over `||`, `T[]` over
   // `Array<T>`), never whitespace, so Prettier has nothing to argue with.
   //
   // These are why TypeScript is pinned to 6.0.x. typescript-eslint declares a
@@ -177,6 +177,24 @@ const config = defineConfig(
           message:
             '`for…in` walks the prototype chain. Iterate Object.keys or Object.entries instead.',
         },
+        // Every shape `readonly` takes: a field, an index, a class member, a
+        // parameter property, a mapped type (`-readonly` strips it, so it
+        // stays), `readonly T[]`, and the built-in wrappers. The name is
+        // anchored: `DeepReadonly` or `ReadonlyURLSearchParams` are not these.
+        {
+          selector: [
+            'TSPropertySignature[readonly=true]',
+            'TSIndexSignature[readonly=true]',
+            'PropertyDefinition[readonly=true]',
+            'TSParameterProperty[readonly=true]',
+            'TSMappedType[readonly=true]',
+            "TSMappedType[readonly='+']",
+            "TSTypeOperator[operator='readonly']",
+            'TSTypeReference[typeName.name=/^Readonly(Array|Map|Set)?$/]',
+          ].join(', '),
+          message:
+            '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.',
+        },
       ],
       // Every module reaches through the `~/` alias. A `../` import encodes
       // where the importer happens to live, which is the one thing a file
@@ -204,7 +222,7 @@ const config = defineConfig(
       // Stylistic prefers `x!` over `x as T`. Both are banned here, so the
       // rule could only ever recommend one banned form over another.
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
-      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       // Inline specifiers are the style already written here
       // (`import { DRAWINGS, type Stroke }`). no-import-type-side-effects is
       // the other half: under verbatimModuleSyntax an import whose every
@@ -254,7 +272,6 @@ const config = defineConfig(
           detectObjects: false,
           ignoreNumericLiteralTypes: true,
           ignoreTypeIndexes: true,
-          ignoreReadonlyClassProperties: true,
         },
       ],
       '@typescript-eslint/explicit-function-return-type': [
@@ -268,11 +285,6 @@ const config = defineConfig(
         },
       ],
       '@typescript-eslint/explicit-module-boundary-types': 'error',
-      '@typescript-eslint/prefer-readonly': 'error',
-      // Off, and not for noise: it demands `readonly` on ReactNode, on router
-      // params and on every third-party type in every signature, which cannot
-      // be satisfied without the assertions banned above.
-      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
       '@typescript-eslint/no-unnecessary-condition': [
         'error',
         { allowConstantLoopConditions: 'only-allowed-literals' },
@@ -425,6 +437,8 @@ const config = defineConfig(
       // @typescript-eslint/no-deprecated reports the same thing with the type
       // checker behind it.
       'sonarjs/deprecation': 'off',
+      // `readonly` is banned outright (no-restricted-syntax above).
+      'sonarjs/prefer-read-only-props': 'off',
     },
   },
 
@@ -514,9 +528,12 @@ const config = defineConfig(
       'perfectionist/sort-named-imports': ['error', NATURAL],
       'perfectionist/sort-named-exports': ['error', NATURAL],
       'perfectionist/sort-exports': ['error', NATURAL],
-      'perfectionist/sort-interfaces': ['error', NATURAL],
       // A blank line or a comment opens a new partition, so a type whose
       // fields are grouped on purpose keeps its groups.
+      'perfectionist/sort-interfaces': [
+        'error',
+        { ...NATURAL, partitionByNewLine: true, partitionByComment: true },
+      ],
       'perfectionist/sort-object-types': [
         'error',
         { ...NATURAL, partitionByNewLine: true, partitionByComment: true },

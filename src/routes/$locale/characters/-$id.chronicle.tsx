@@ -29,8 +29,8 @@ export function ChronicleBand({
   detail,
 }: {
   /** Which band down the page this is, for the settle delay. */
-  readonly band: number
-  readonly detail: CharacterDetail
+  band: number
+  detail: CharacterDetail
 }): null | ReactElement {
   const { t } = useLocale()
   const { chronicle } = detail

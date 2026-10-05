@@ -21,7 +21,7 @@ import { absoluteUrl } from '~/lib/seo/site'
 /** The pages that exist in every locale regardless of the archive. */
 const SECTIONS = ['', '/characters', '/fruits', '/places'] as const
 
-const ESCAPES: Readonly<Record<string, string>> = {
+const ESCAPES: Record<string, string> = {
   '&': '&amp;',
   '<': '&lt;',
   '>': '&gt;',
@@ -33,7 +33,7 @@ function escapeXml(value: string): string {
   return value.replaceAll(/["&'<>]/gu, (char) => ESCAPES[char] ?? char)
 }
 
-function suffixes(): readonly string[] {
+function suffixes(): string[] {
   return [
     ...SECTIONS,
     ...characters.map((entity) => `/characters/${entity.id}`),

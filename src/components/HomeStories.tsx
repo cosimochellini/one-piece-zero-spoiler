@@ -21,14 +21,16 @@ import {
 const OPEN_COUNT = 3
 
 /** The stories the reader has reached in the arc, or in the one before. */
-export type HomeStoriesProps = {
+export interface HomeStoriesProps {
   /** The stories are the previous arc's, because this one has none yet. */
-  readonly before: boolean
-  readonly stories: readonly HomeStory[]
+  before: boolean
+  stories: HomeStory[]
 }
 
 /** The stories past the first three, closed under their titles. */
-export type HomeMoreStoriesProps = { readonly stories: readonly HomeStory[] }
+export interface HomeMoreStoriesProps {
+  stories: HomeStory[]
+}
 
 /** A story's key in the ledger: its subject and the episode it concludes at. */
 function keyOf(story: HomeStory): string {
@@ -125,7 +127,7 @@ export function HomeMoreStories({
 }
 
 /** The mark in the reader's unit, and whose story it is, as one line. */
-function Byline({ story }: { readonly story: HomeStory }): ReactElement {
+function Byline({ story }: { story: HomeStory }): ReactElement {
   const { locale } = useLocale()
   const threshold = useThreshold()
 
@@ -146,7 +148,7 @@ function Byline({ story }: { readonly story: HomeStory }): ReactElement {
 }
 
 /** A story set whole: the byline, the title, the paragraph. */
-function OpenStory({ story }: { readonly story: HomeStory }): ReactElement {
+function OpenStory({ story }: { story: HomeStory }): ReactElement {
   return (
     <article {...stylex.props(styles.story)}>
       <Byline story={story} />
@@ -159,7 +161,7 @@ function OpenStory({ story }: { readonly story: HomeStory }): ReactElement {
 }
 
 /** A story closed under its title, which is the whole of the summary. */
-function ClosedStory({ story }: { readonly story: HomeStory }): ReactElement {
+function ClosedStory({ story }: { story: HomeStory }): ReactElement {
   return (
     <details {...stylex.props(styles.closed)}>
       <summary {...stylex.props(styles.summary)}>

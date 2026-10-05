@@ -23,13 +23,13 @@ import type { Stroke } from '~/data/art/stroke'
  */
 
 /** What one fruit's drawing is grown from: five choices and one integer. */
-export type FruitSeed = {
-  readonly body: BodyFamily
+export interface FruitSeed {
+  body: BodyFamily
   /** Picks the radii, tilts the mark, and sizes the stalk and the leaf. */
-  readonly grain: number
-  readonly leaf: LeafForm
-  readonly stem: StemForm
-  readonly swirl: SwirlFamily
+  grain: number
+  leaf: LeafForm
+  stem: StemForm
+  swirl: SwirlFamily
 }
 
 /**
@@ -42,7 +42,7 @@ export type FruitSeed = {
  */
 export function fruit(
   seed: FruitSeed,
-): readonly [Stroke, Stroke, Stroke, Stroke, Stroke] {
+): [Stroke, Stroke, Stroke, Stroke, Stroke] {
   const radii = radiiFor(seed.grain)
   const stalk = stalkOf(seed.stem, radii.ry, seed.grain)
 

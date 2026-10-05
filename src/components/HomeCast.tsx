@@ -7,7 +7,9 @@ import type { CharacterView } from '~/lib/view/records'
 import { color, font, leading, space, text } from '~/styles/tokens.stylex'
 
 /** The characters the stories name most, most named first. */
-export type HomeCastProps = { readonly cast: readonly CharacterView[] }
+export interface HomeCastProps {
+  cast: CharacterView[]
+}
 
 /**
  * Every character here is one the server has already decided the reader has

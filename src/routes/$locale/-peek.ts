@@ -19,7 +19,7 @@ import type { Locale } from '~/i18n/locales'
 
 /** One `lift*` server function, as this hook calls it. */
 export type Lift<T> = (input: {
-  readonly data: { readonly handle: string; readonly locale: Locale }
+  data: { handle: string; locale: Locale }
 }) => Promise<null | T>
 
 /** The peek a page hands to every veil on it. */

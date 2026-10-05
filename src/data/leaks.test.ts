@@ -25,13 +25,13 @@ import type { Entity, LocalizedText, Story, Timeline } from './types'
  */
 
 /** One text, the record it belongs to, and when a reader reaches it. */
-type Text = {
+interface Text {
   /** The chapter a reader reaches it at (`gateOf`). */
-  readonly chapter: number
-  readonly episode: number
-  readonly label: string
-  readonly owner: Entity
-  readonly text: LocalizedText
+  chapter: number
+  episode: number
+  label: string
+  owner: Entity
+  text: LocalizedText
 }
 
 /** A record the archive is known to file, or the test is wrong. */
@@ -93,7 +93,7 @@ function dated(
   owner: Entity,
   field: string,
   timeline: Timeline<unknown>,
-): readonly Text[] {
+): Text[] {
   return timeline.flatMap((entry) => {
     const text = textOf(entry.value)
     const gate = gateOf(entry, owner)
@@ -130,7 +130,7 @@ function isDated(entry: unknown): boolean {
  * dated entry by entry, and anything else (a status, a bounty, a fruit id)
  * is not prose. A field added to a dossier is scanned the day it is added.
  */
-function textsOf(owner: Entity, dossier: object): readonly Text[] {
+function textsOf(owner: Entity, dossier: object): Text[] {
   return Object.entries(dossier).flatMap(([field, value]) => {
     if (isLocalized(value)) {
       return [frozen(owner, field, value)]
@@ -140,13 +140,13 @@ function textsOf(owner: Entity, dossier: object): readonly Text[] {
   })
 }
 
-const DOSSIERS: readonly Readonly<Record<string, object>>[] = [
+const DOSSIERS: Record<string, object>[] = [
   CHARACTER_DOSSIERS,
   PLACE_DOSSIERS,
   SHIP_DOSSIERS,
 ]
 
-const TEXTS: readonly Text[] = [
+const TEXTS: Text[] = [
   ...entities.map((entity) => frozen(entity, 'summary', entity.summary)),
   ...DOSSIERS.flatMap((dossiers) => {
     return Object.entries(dossiers).flatMap(([id, dossier]) =>
@@ -218,7 +218,7 @@ function sharesAReachedName(
  * as a person's — "Marineford" in a text at episode 400 says where the war
  * will be. A record's own texts are behind its own threshold already.
  */
-function filedAfter({ chapter, episode, owner }: Text): readonly Entity[] {
+function filedAfter({ chapter, episode, owner }: Text): Entity[] {
   return entities.filter((other) => {
     return (
       other.id !== owner.id
@@ -229,7 +229,7 @@ function filedAfter({ chapter, episode, owner }: Text): readonly Entity[] {
 }
 
 /** The records a text names in one locale that it should not. */
-function leaked(text: Text, locale: Locale, facts: boolean): readonly Entity[] {
+function leaked(text: Text, locale: Locale, facts: boolean): Entity[] {
   const { episode } = text
   // Reduced to words once, not once per record it is scanned for.
   const words = asWords(shownWords(text.text[locale], locale))
@@ -251,7 +251,7 @@ function leaked(text: Text, locale: Locale, facts: boolean): readonly Entity[] {
  * lines, with the name facts on the records honoured or, for the test that
  * checks the facts themselves, ignored.
  */
-function leaks(facts: boolean): readonly string[] {
+function leaks(facts: boolean): string[] {
   return TEXTS.flatMap((text) => {
     return LOCALES.flatMap((locale) => {
       return leaked(text, locale, facts).map(
@@ -298,13 +298,11 @@ function namesakes(entity: Entity, other: Entity): boolean {
 }
 
 /** Every pair of records that share a name in some locale, each pair once. */
-const NAMESAKES: readonly (readonly [Entity, Entity])[] = entities.flatMap(
-  (entity) => {
-    return entities
-      .filter((other) => other.id > entity.id && namesakes(entity, other))
-      .map((other) => [entity, other] as const)
-  },
-)
+const NAMESAKES: [Entity, Entity][] = entities.flatMap((entity) => {
+  return entities
+    .filter((other) => other.id > entity.id && namesakes(entity, other))
+    .map((other): [Entity, Entity] => [entity, other])
+})
 
 describe('the name facts', () => {
   it('say a name only before its own record opens', () => {

@@ -20,10 +20,10 @@ import type { DocumentHead } from '~/lib/view/records'
  */
 
 /** What a record's page calls itself, with its record and without it. */
-export type HeadKeys = {
-  readonly foggedDescription: ThresholdSentence
-  readonly foggedTitle: TranslationKey
-  readonly pageTitle: TranslationKey
+export interface HeadKeys {
+  foggedDescription: ThresholdSentence
+  foggedTitle: TranslationKey
+  pageTitle: TranslationKey
 }
 
 /** Under fog both lines are generic; open, they are the record's own. */
@@ -34,11 +34,11 @@ export function headFor({
   locale,
   revealed,
 }: {
-  readonly at: Reveal
-  readonly entity: Entity
-  readonly keys: HeadKeys
-  readonly locale: Locale
-  readonly revealed: boolean
+  at: Reveal
+  entity: Entity
+  keys: HeadKeys
+  locale: Locale
+  revealed: boolean
 }): DocumentHead {
   const dictionary = getDictionary(locale)
   const t: Translate = (key, params) => translate(dictionary, key, params)

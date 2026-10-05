@@ -33,20 +33,18 @@ const HANDLE_SHAPE = /^[\da-z]{1,4}$/u
  * in one box rather than in two bindings: a lazily filled cell is a different
  * thing from a module-scope variable a function reaches out and assigns to.
  */
-const table: {
-  canonical: null | readonly Entity[]
-  index: null | ReadonlyMap<string, number>
-} = { canonical: null, index: null }
+const table: { canonical: Entity[] | null; index: Map<string, number> | null } =
+  { canonical: null, index: null }
 
 /** The archive in the order the anime reaches it, built once. */
-function order(): readonly Entity[] {
+function order(): Entity[] {
   table.canonical ??= orderByMode(entities, 'episode')
 
   return table.canonical
 }
 
 /** Where each record sits in that order. */
-function positions(): ReadonlyMap<string, number> {
+function positions(): Map<string, number> {
   table.index ??= new Map(order().map((entity, at) => [entity.id, at]))
 
   return table.index

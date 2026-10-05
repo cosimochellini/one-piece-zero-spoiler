@@ -11,7 +11,7 @@ const LOCALE_COUNT = 2
 
 const LOCATION = /<loc>(?<url>[^<]+)<\/loc>/gu
 
-function locations(): readonly string[] {
+function locations(): string[] {
   return Array.from(
     sitemapXml().matchAll(LOCATION),
     (match) => match.groups?.['url'] ?? '',

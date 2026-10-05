@@ -17,20 +17,20 @@ import { EatersBand, KinBand, PlateBand } from './-$id.bands'
 
 const PATHNAME = '/en/fruits/gum-gum'
 
-type Meta = {
-  readonly content?: string
-  readonly name?: string
-  readonly title?: string
+interface Meta {
+  content?: string
+  name?: string
+  title?: string
 }
 
 type Head = (input: {
-  readonly loaderData: undefined | { readonly head: DocumentHead }
-  readonly match: { readonly pathname: string }
-  readonly params: { readonly locale: string }
+  loaderData: undefined | { head: DocumentHead }
+  match: { pathname: string }
+  params: { locale: string }
 }) => {
-  readonly links?: readonly { href: string; rel: string }[]
-  readonly meta?: readonly Meta[]
-  readonly scripts?: readonly { children: string }[]
+  links?: { href: string; rel: string }[]
+  meta?: Meta[]
+  scripts?: { children: string }[]
 }
 
 /**

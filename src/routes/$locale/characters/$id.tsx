@@ -157,8 +157,8 @@ function NearbyRow({
   nearby,
   peek,
 }: {
-  readonly nearby: Promise<readonly Slot<CharacterView>[]>
-  readonly peek: (handle: string) => Promise<CharacterView>
+  nearby: Promise<Slot<CharacterView>[]>
+  peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   const { t } = useLocale()
 
@@ -209,8 +209,8 @@ function NearbyCrests({
   nearby,
   peek,
 }: {
-  readonly nearby: Promise<readonly Slot<CharacterView>[]>
-  readonly peek: (handle: string) => Promise<CharacterView>
+  nearby: Promise<Slot<CharacterView>[]>
+  peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
   return (
     <CharacterCardList>

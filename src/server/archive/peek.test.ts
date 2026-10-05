@@ -13,14 +13,12 @@ const lawHandle = handleOf(law)
 const lawSummary = getEntity(law)?.summary.en
 
 /** The records filed at a port that the reader has reached. */
-function openAt(filed: readonly Slot<RecordView>[]): readonly RecordView[] {
+function openAt(filed: Slot<RecordView>[]): RecordView[] {
   return filed.flatMap((slot) => (slot.open ? [slot.record] : []))
 }
 
 /** The little a port may say about the records filed there it has not. */
-function coveredAt(
-  filed: readonly Slot<RecordView>[],
-): readonly CoveredRecord[] {
+function coveredAt(filed: Slot<RecordView>[]): CoveredRecord[] {
   return filed.flatMap((slot) => (slot.open ? [] : [slot.covered]))
 }
 

@@ -7,11 +7,11 @@ import type { Gated } from './spoiler'
 import { describeThreshold, type ThresholdSentence } from './threshold'
 
 /** What the provider puts on the context: the bookmark, and how to move it. */
-export type BookmarkContextValue = {
-  readonly bookmark: Bookmark
+export interface BookmarkContextValue {
+  bookmark: Bookmark
   /** True while the pages are being re-read for a bookmark that just moved. */
-  readonly pending: boolean
-  readonly setBookmark: (next: Bookmark) => void
+  pending: boolean
+  setBookmark: (next: Bookmark) => void
 }
 
 export const BookmarkContext = createContext<BookmarkContextValue | null>(null)

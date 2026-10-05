@@ -9,7 +9,7 @@ import { chronicleFrom, type Reader, segmentsOf } from './chronicle.server'
 const ep = (episode: number): Reveal => reveal({ mode: 'episode', episode })
 
 /** The two names a hand-written archive files, in both locales. */
-const NAMES: Readonly<Record<string, Readonly<Record<'en' | 'it', string>>>> = {
+const NAMES: Record<string, Record<'en' | 'it', string>> = {
   'koby': { it: 'Kobi', en: 'Koby' },
   'roronoa-zoro': { it: 'Roronoa Zoro', en: 'Roronoa Zoro' },
 }
@@ -19,7 +19,7 @@ function reader(locale: 'en' | 'it'): Reader {
 }
 
 /** The stories of a chronicle. */
-function storiesOf(found: CharacterChronicle): readonly ChronicleEntry[] {
+function storiesOf(found: CharacterChronicle): ChronicleEntry[] {
   return found.entries
 }
 

@@ -168,7 +168,7 @@ const NAMING =
  * Fruit". The fruit pages do not label that moment the same way twice, so
  * the chapter pages are read instead. A summary can paraphrase a name the
  * story has not said yet, so a hit is a flag for a hand check, not a verdict.
- * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
+ * @param {Map<number, string>} chapters Every chapter's wikitext.
  * @param {string} title The fruit's page title.
  * @returns {number | undefined} The chapter, or nothing.
  */
@@ -256,7 +256,7 @@ function numberAfter(pattern, text) {
 /**
  * The chapter the wiki gives one record, trying each alternative in turn.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
- * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
+ * @param {Map<number, string>} chapters Every chapter's wikitext.
  * @returns {Promise<Source>} The page(s) read and the chapter, or neither.
  */
 async function sourceOf(record, chapters) {
@@ -275,7 +275,7 @@ async function sourceOf(record, chapters) {
  * first chapter whose summary names it, or the hand-checked one.
  * @param {{ id: string, kind: string }} record The record.
  * @param {Page[]} pages The pages read.
- * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
+ * @param {Map<number, string>} chapters Every chapter's wikitext.
  * @returns {Source} The page(s) and the chapter, or neither.
  */
 function readingOf(record, pages, chapters) {
