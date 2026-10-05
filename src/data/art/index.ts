@@ -7,7 +7,7 @@ import { fishManIslandArt } from './fish-man-island'
 import { fruitArt } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import type { Redrawings } from './stroke'
-import { summitWarArt } from './summit-war'
+import { summitWarArt, summitWarRedrawn } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
 import { waterSevenArt, waterSevenRedrawn } from './water-seven'
@@ -48,6 +48,7 @@ export const REDRAWINGS: Redrawings = {
   ...skypieaRedrawn,
   ...waterSevenRedrawn,
   ...thrillerBarkRedrawn,
+  ...summitWarRedrawn,
   ...wanoRedrawn,
 }
 

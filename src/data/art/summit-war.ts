@@ -9,7 +9,24 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/** Jinbe's great wave, drawn alone first and under the helm later. */
+const GREAT_WAVE: Stroke[] = [
+  {
+    d: 'M18 160 C26 110 60 84 88 84 C110 84 118 66 126 46 C124 74 110 90 96 96 C110 92 122 82 132 66 C128 100 100 116 72 122 C50 126 30 142 18 160z',
+    role: 'accent',
+  },
+  { d: 'M96 80 q-8 4 -4 12 M112 66 q-6 4 -2 10', role: 'accent' },
+  {
+    d: dots([
+      [134, 50],
+      [120, 40],
+      [140, 70],
+    ]),
+    role: 'accent',
+  },
+]
 
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
@@ -57,23 +74,9 @@ export const summitWarArt = {
     },
   ],
 
-  // One great wave, the way a print draws it.
-  'jinbe': [
-    {
-      d: 'M18 160 C26 110 60 84 88 84 C110 84 118 66 126 46 C124 74 110 90 96 96 C110 92 122 82 132 66 C128 100 100 116 72 122 C50 126 30 142 18 160z',
-      role: 'accent',
-    },
-    { d: 'M96 80 q-8 4 -4 12 M112 66 q-6 4 -2 10', role: 'accent' },
-    {
-      d: dots([
-        [134, 50],
-        [120, 40],
-        [140, 70],
-      ]),
-      role: 'accent',
-    },
-    ...SEA.slice(1),
-  ],
+  // One great wave, the way a print draws it. The Sunny's helm is drawn above
+  // it from 980, in `summitWarRedrawn`.
+  'jinbe': [...GREAT_WAVE, ...SEA.slice(1)],
 
   // A fortress in a crescent bay, gate to the sea.
   'marineford-arc': [
@@ -1224,3 +1227,46 @@ export const summitWarArt = {
     shadow(80, 188, 48),
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const summitWarRedrawn: Redrawings = {
+  // The Sunny's helm, the helmsman's: a spoked wheel with eight turned
+  // handles, the rim hatched on its shaded side, carried on the crest of the
+  // great wave. Jinbe joins the crew as its helmsman at 980 (ch. 976).
+  jinbe: [
+    {
+      episode: 980,
+      chapter: 976,
+      value: [
+        { d: `${circle(68, 56, 30)} ${circle(68, 56, 24)}` },
+        {
+          d: 'M74.5 58.7 L90.2 65.2 M70.7 62.5 L77.2 78.2 M65.3 62.5 L58.8 78.2 M61.5 58.7 L45.8 65.2 M61.5 53.3 L45.8 46.8 M65.3 49.5 L58.8 33.8 M70.7 49.5 L77.2 33.8 M74.5 53.3 L90.2 46.8',
+        },
+        {
+          d: [
+            'M95.7 67.5 L104 70.9 M79.5 83.7 L82.9 92 M56.5 83.7 L53.1 92 M40.3 67.5 L32 70.9 M40.3 44.5 L32 41.1 M56.5 28.3 L53.1 20 M79.5 28.3 L82.9 20 M95.7 44.5 L104 41.1',
+            circle(107.3, 72.3, 2.5),
+            circle(84.3, 95.3, 2.5),
+            circle(51.7, 95.3, 2.5),
+            circle(28.7, 72.3, 2.5),
+            circle(28.7, 39.7, 2.5),
+            circle(51.7, 16.7, 2.5),
+            circle(84.3, 16.7, 2.5),
+            circle(107.3, 39.7, 2.5),
+          ].join(' '),
+        },
+        {
+          d: 'M92.1 60.3 L97.1 61.1 M90.2 66.4 L94.7 68.5 M86.8 71.7 L90.6 75 M82.1 76.1 L84.9 80.2 M76.4 79 L78.1 83.7 M70.1 80.4 L70.6 85.4 M63.7 80.1 L62.9 85.1',
+          role: 'ambient',
+        },
+        { d: `${circle(68, 56, 7)} ${dot(68, 56)}`, role: 'accent' },
+        ...GREAT_WAVE.map((stroke) => ({
+          // The same wave, smaller, so its crest carries the wheel.
+          ...stroke,
+          transform: 'translate(16 44) scale(0.8)',
+        })),
+        ...SEA.slice(1),
+      ],
+    },
+  ],
+}
