@@ -59,11 +59,13 @@ representative at an online or offline event.
 ## Enforcement
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement through GitHub:
-use
+reported to the community leaders responsible for enforcement through a
+[private report](https://github.com/cosimochellini/one-piece-zero-spoiler/security/advisories/new)
+on this repository, which only the maintainer can read. Start its title with
+"Conduct:". You can also use
 [Report content](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam)
-on the comment, issue or pull request. All complaints will be reviewed and
-investigated promptly and fairly.
+on the comment, issue or pull request, which reaches GitHub. All complaints will
+be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the
 reporter of any incident.

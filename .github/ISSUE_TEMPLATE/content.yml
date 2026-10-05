@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thank you. Keep the spoiler out of the title: titles are public and show up in notifications. Write "Wrong episode for an Alabasta character", not the fact itself.
+        Thank you. Keep the spoiler out of the title: titles are public and show up in notifications. Write "Wrong episode for a character", not the fact itself.
   - type: dropdown
     id: problem
     attributes:

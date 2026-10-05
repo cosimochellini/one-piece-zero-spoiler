@@ -71,10 +71,10 @@ design is in [docs/architecture.md](docs/architecture.md).
 
 ## What's inside
 
-500+ characters, 120+ devil fruits, about 40 places and both Straw Hat ships,
-from Romance Dawn to Elbaf, in Italian and English. Every entry has its own line
-drawing made for this project, and some are redrawn from the episode the story
-changes them. There is no official artwork.
+500+ characters, 120+ devil fruits and about 40 places, from the first episode
+to the latest arc, in Italian and English. Every entry has its own line drawing
+made for this project, and some are redrawn from the episode the story changes
+them. There is no official artwork.
 
 |                                                                                                                                                                                              |                                                                                                                                                                                                        |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -83,7 +83,7 @@ changes them. There is no official artwork.
 
 ## Run it
 
-Node 24.21 and npm 12.2, both pinned in `.nvmrc` and `package.json`.
+Node 24.21 and npm 12.2, as set in `.nvmrc` and `packageManager`.
 
 ```sh
 nvm use
@@ -112,7 +112,7 @@ which tests guard it and how pull requests are released.
 ## Stack
 
 React 19 · TanStack Start (SSR) · StyleX · TypeScript `strict` · Vite · Vitest ·
-Netlify. Six runtime dependencies, every version pinned.
+Netlify. Six runtime dependencies, each pinned to an exact version.
 
 ## Built with Claude Code
 

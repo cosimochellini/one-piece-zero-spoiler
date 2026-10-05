@@ -23,13 +23,13 @@ By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
   than a small fix, so we can agree on the approach.
 
 **Keep spoilers out of titles.** Issue and pull request titles are public and
-show up in notifications. Write "Wrong episode for a Dressrosa character", not
-the fact itself. Details go in the body.
+show up in notifications. Write "Wrong episode for a character", not the fact
+itself. Details go in the body.
 
 ## Setup
 
-You need Node 24.21 and npm 12.2. Both are pinned in `.nvmrc` and in the
-`engines` and `packageManager` fields of `package.json`.
+You need Node 24.21 and npm 12.2, as set in `.nvmrc` and in the `packageManager`
+field of `package.json`.
 
 ```sh
 git clone https://github.com/cosimochellini/one-piece-zero-spoiler.git
