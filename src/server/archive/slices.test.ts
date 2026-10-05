@@ -674,4 +674,25 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 597 })).toBe(wrench)
     expect(drawnAt({ mode: 'chapter', chapter: 598 })).toBe(forearm?.value)
   })
+
+  it('hands Brook the Soul King’s guitar only from episode 517', () => {
+    const brook = filed('brook')
+    const violin = DRAWINGS.brook
+    const guitar = REDRAWINGS['brook']?.[0]
+    const atChapter = (chapter: number): Reveal =>
+      reveal({ mode: 'chapter', chapter })
+
+    expect(guitar?.episode).toBe(517)
+
+    expect(characterOf(brook, 'en', seenAt(516)).visual.strokes).toBe(violin)
+    expect(characterOf(brook, 'en', seenAt(517)).visual.strokes).toBe(
+      guitar?.value,
+    )
+    expect(characterOf(brook, 'en', reveal(null)).visual.strokes).toBe(violin)
+    // The manga draws the guitar in chapter 598, so no chapter below it may.
+    expect(characterOf(brook, 'en', atChapter(597)).visual.strokes).toBe(violin)
+    expect(characterOf(brook, 'en', atChapter(598)).visual.strokes).toBe(
+      guitar?.value,
+    )
+  })
 })
