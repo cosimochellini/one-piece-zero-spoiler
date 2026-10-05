@@ -2,6 +2,7 @@ import {
   BLADE,
   circle,
   cup,
+  dot,
   dots,
   ellipse,
   house,
@@ -1180,49 +1181,44 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
   ],
-  // The Sorcery Clima-Tact laid across the middle, its round knobs at both
-  // ends and the striped grip between two collars, Zeus heaped above it as a
-  // cloud with no face and a bolt dropping into the staff, the three
-  // mandarins kept smaller below. Zeus comes out of the staff as her servant
-  // aboard the Sunny in 878 (ch. 903).
+  // The Sorcery Clima-Tact leant across the box from the ground, its round
+  // knobs at both ends, collars banding the grip and both necks, the far side
+  // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
+  // the one mark in her colour, and two mandarins left at the foot. Zeus comes
+  // out of the staff as her servant aboard the Sunny in 878 (ch. 903).
   'nami': [
     {
       episode: 878,
       chapter: 903,
       value: [
         {
-          d: 'M50 55 C40.4 55 39.2 40.6 50 38.2 C48.8 25 65.6 21.4 70.4 29.8 C74 15.4 96.8 15.4 99.2 31 C111.2 27.4 120.8 39.4 112.4 50.2 C117.2 59.8 102.8 63.4 98 57.4 C90.8 64.6 76.4 64.6 70.4 58.6 C63.2 63.4 52.4 62.2 50 55 Z',
+          d: 'M35.3 159.6 L61.1 130.1 M42.1 165.5 L67.9 136 M82.1 106 L107.9 76.5 M88.9 111.9 L114.7 82.4',
+        },
+        { d: 'M61.6 126.5 L78.6 107 M71.4 135 L88.4 115.5' },
+        {
+          d: 'M58.5 127.8 Q61.1 137 70.5 138.3 M60.4 125.5 Q63.1 134.7 72.5 136 M77.5 106 Q80.1 115.1 89.6 116.5 M79.5 103.7 Q82.1 112.9 91.5 114.2',
         },
         {
-          d: 'M53.6 50.2 C63.2 55 74 52.6 80 47.8 C87.2 53.8 99.2 53.8 108.8 46.6',
+          d: 'M37.3 154.3 Q38.8 162.5 47.1 162.9 M102.9 79.1 Q104.4 87.3 112.7 87.7',
+        },
+        { d: `${circle(34, 168, 8.5)} ${circle(116, 74, 8.5)}` },
+        { d: 'M67.8 129.3 L82.2 112.7', role: 'soft' },
+        {
+          d: 'M46.7 159.8 L46.2 156 M53.9 151.5 L53.5 147.7 M61.2 143.3 L60.7 139.4 M90.6 109.5 L90.2 105.6 M97.9 101.2 L97.4 97.3 M105.1 92.9 L104.6 89 M41.8 166.1 L38.4 166.9 M41.7 170.2 L38.3 169.2 M39.5 173.8 L37.1 171.2 M123.8 72.1 L120.4 72.9 M123.7 76.2 L120.3 75.2 M121.5 79.8 L119.1 77.2',
+          role: 'ambient',
+        },
+        {
+          d: 'M69 52.5 C59.7 52.5 58.6 38.6 69 36.3 C67.8 23.5 84.1 20 88.7 28.1 C92.2 14.2 114.2 14.2 116.6 29.3 C128.2 25.8 137.4 37.4 129.3 47.9 C134 57.1 120 60.6 115.4 54.8 C108.4 61.8 94.5 61.8 88.7 56 C81.8 60.6 71.3 59.5 69 52.5 Z',
+        },
+        {
+          d: 'M72.5 47.9 C81.8 52.5 92.2 50.2 98 45.5 C105 51.3 116.6 51.3 125.8 44.4',
           role: 'soft',
         },
-        { d: 'M86 64 L77 79 H86 L79 95', role: 'accent' },
-        { d: 'M33.9 129.3 L128.9 89.1 M31.1 122.9 L126.1 82.7' },
-        { d: `${circle(28, 128, 6)} ${circle(132, 84, 6)}`, role: 'accent' },
-        {
-          d: 'M38.2 129.1 L34.4 119.9 M125.6 92.1 L121.8 82.9 M60.5 108.3 L64.8 118.4 M63.3 107.1 L67.6 117.2 M92.4 94.8 L96.7 104.9 M95.2 93.6 L99.5 103.7',
-        },
-        {
-          d: 'M67.8 107.4 L75.1 111.9 M74.2 104.7 L81.5 109.1 M80.7 101.9 L88 106.4',
-          role: 'soft',
-        },
-        { d: 'M49.7 189.4 C53.9 165.6 74.9 148.8 111.3 130.6' },
-        {
-          d: 'M70.7 160 q-1.4 -11.2 9.8 -12.6 q-2.8 9.8 -9.8 12.6z M95.9 141.8 q9.8 -7 15.4 1.4 q-8.4 4.2 -15.4 -1.4z',
-        },
-        {
-          d: `${circle(65.1, 169.8, 9)} ${circle(88.9, 155.8, 9)} ${circle(109.9, 144.6, 9)}`,
-          role: 'accent',
-        },
-        {
-          d: dots([
-            [65.1, 164.2],
-            [88.9, 150.2],
-            [109.9, 139],
-          ]),
-          role: 'accent',
-        },
+        { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
+        { d: `${ellipse(110, 178, 10, 8.5)} ${ellipse(130, 179, 9.5, 8)}` },
+        { d: `M110 169.5 q1 -3 4 -4 q7 -5 13 -1 q-7 5 -13 1 ${dot(130, 173)}` },
+        { d: 'M104 182 q4 3 9 2 M133 183 q3 -1 4 -4', role: 'ambient' },
+        shadow(80, 188, 56),
       ],
     },
   ],
