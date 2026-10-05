@@ -52,6 +52,14 @@ const BURNED_CAP: Stroke[] = [
   shadow(80, 158, 52),
 ]
 
+/** Kid's horseshoe magnet, drawn alone first and beside his metal arm later. */
+const MAGNET: Stroke[] = [
+  { d: 'M46 60 V126 a34 34 0 0 0 68 0 V60', role: 'accent' },
+  { d: 'M66 60 V126 a14 14 0 0 0 28 0 V60', role: 'accent' },
+  { d: 'M46 52 h20 v8 M94 52 h20 v8 M46 52 v8 M94 52 v8' },
+  { d: 'M56 44 q24 -12 48 0', role: 'ambient', dashed: true },
+]
+
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
   // A long sword, and the scalpel that goes with the surgeon.
@@ -66,12 +74,10 @@ export const summitWarArt = {
     },
   ],
 
-  // A horseshoe magnet, and the bolts it has pulled in.
+  // A horseshoe magnet, and the bolts it has pulled in. The metal arm is
+  // drawn beside it from 603, in `summitWarRedrawn`.
   'eustass-kid': [
-    { d: 'M46 60 V126 a34 34 0 0 0 68 0 V60', role: 'accent' },
-    { d: 'M66 60 V126 a14 14 0 0 0 28 0 V60', role: 'accent' },
-    { d: 'M46 52 h20 v8 M94 52 h20 v8 M46 52 v8 M94 52 v8' },
-    { d: 'M56 44 q24 -12 48 0', role: 'ambient', dashed: true },
+    ...MAGNET,
     { d: polygon(40, 168, 8, 6) },
     { d: polygon(74, 178, 8, 6) },
     { d: polygon(112, 170, 8, 6) },
@@ -1243,7 +1249,7 @@ export const summitWarRedrawn: Redrawings = {
   // The Sunny's helm, the helmsman's: a spoked wheel with eight turned
   // handles, the rim hatched on its shaded side, carried on the crest of the
   // great wave. Jinbe joins the crew as its helmsman at 980 (ch. 976).
-  jinbe: [
+  'jinbe': [
     {
       episode: 980,
       chapter: 976,
@@ -1282,7 +1288,7 @@ export const summitWarRedrawn: Redrawings = {
 
   // The same top hat, and the same pipe held at a slant, Ace's flame
   // running up its top third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
-  sabo: [
+  'sabo': [
     {
       episode: 678,
       chapter: 744,
@@ -1324,7 +1330,7 @@ export const summitWarRedrawn: Redrawings = {
   // The same cap, its band now the fleet admiral's braid: a twisted cord
   // across the front and a looped cord hung from its side, the rank Sengoku
   // wore handed down. Jinbe tells the crew he won the seat at 570 (ch. 650).
-  sakazuki: [
+  'sakazuki': [
     {
       episode: 570,
       chapter: 650,
@@ -1338,6 +1344,65 @@ export const summitWarRedrawn: Redrawings = {
           d: 'M132 122 C146 128 148 144 136 150 C128 154 124 146 130 140 M136 150 v8 M132 151 l-2 7 M140 149 l2 7',
           role: 'accent',
         },
+      ],
+    },
+  ],
+
+  // The same magnet, beside the metal arm Kid wears after the timeskip:
+  // wires out of the socket, two rods and a spring piston down the forearm,
+  // hatched on its shaded side, a riveted wrist block and jointed fingers.
+  // First seen clearly at 603 (ch. 677); a silhouette only at 600.
+  'eustass-kid': [
+    {
+      episode: 603,
+      chapter: 677,
+      value: [
+        ...MAGNET.map((stroke) => ({
+          // Smaller and to the left, to leave the right half to the arm.
+          ...stroke,
+          transform: 'translate(-10 22) scale(0.75)',
+        })),
+        {
+          d: `${ellipse(122, 40, 18, 6)} M104 40 V52 M140 40 V52 M104 52 q18 8 36 0`,
+        },
+        {
+          d: 'M114 35 c-6 -6 4 -10 -2 -18 M130 35 c6 -6 -4 -10 2 -18',
+          role: 'ambient',
+        },
+        { d: 'M110 57 V114 M134 57 V114' },
+        {
+          d: 'M118 60 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 V114 M126 108 V114',
+        },
+        {
+          d: 'M127 62 l6 -3 M127 74 l6 -3 M127 86 l6 -3 M127 98 l6 -3 M127 110 l6 -3',
+          role: 'ambient',
+        },
+        { d: 'M100 114 h44 v24 h-44z' },
+        { d: 'M100 128 h44', role: 'ambient' },
+        {
+          d: dots([
+            [105, 119],
+            [139, 119],
+            [105, 133],
+            [139, 133],
+          ]),
+        },
+        { d: 'M100 124 l-10 8 l3 7 l9 -5' },
+        // Four fingers, each in two joints, fanned a little from the wrist.
+        ...[
+          [104, 14],
+          [116, 5],
+          [128, -5],
+          [140, -14],
+        ].map(([x = 0, angle = 0]): Stroke => {
+          return {
+            d: `M${String(x - 4)} 141 h8 v14 h-8z M${String(x - 4)} 158 h8 v11 l-4 5 l-4 -5z`,
+            transform: `rotate(${String(angle)} ${String(x)} 138)`,
+          }
+        }),
+        { d: polygon(34, 172, 7, 6) },
+        { d: polygon(66, 180, 7, 6) },
+        { d: polygon(84, 160, 6, 6) },
       ],
     },
   ],
