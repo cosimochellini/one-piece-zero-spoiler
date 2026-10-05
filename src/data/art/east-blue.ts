@@ -53,7 +53,8 @@ export const eastBlueArt = {
     shadow(80, 150, 26),
   ],
 
-  // A mop and a wooden bucket: the deck of a ship the boy did not choose.
+  // A mop and a wooden bucket: the deck of a ship the boy did not choose. The
+  // mop gives way to his bandanna from 314, in `eastBlueRedrawn`.
   'koby': [
     { d: 'M104 26 L64 122' },
     { d: 'M58 118 L74 128' },
@@ -1037,6 +1038,40 @@ const CROWN_TILT = 'rotate(-13 70 91.5)'
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
+  // The mop gone, the bucket still there: a patterned bandanna knotted into a
+  // ring, its tails hanging from the knot, and the round glasses pushed up on
+  // its front, the way Garp's trainee wears them. He comes back trained at
+  // Water 7 in 314 (ch. 432).
+  'koby': [
+    {
+      episode: 314,
+      chapter: 432,
+      value: [
+        { d: ellipse(54, 140, 40, 13), role: 'accent' },
+        { d: 'M14 140 V160 A40 13 0 0 0 94 160 V140', role: 'accent' },
+        {
+          d: 'M14 143 q-7 3 -2 8 q5 -1 2 -8 M12 150 C5 158 5 170 9 178 M14 151 C11 162 15 172 19 178',
+          role: 'accent',
+        },
+        { d: `${circle(40, 153, 11)} ${circle(68, 153, 11)}` },
+        { d: 'M51 151 q3 -3 6 0 M29 151 L16 142 M79 151 L92 142' },
+        {
+          d: dots([
+            [21, 162],
+            [27, 166],
+            [54, 169],
+            [81, 166],
+            [87, 162],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M96 130 H152 L144 174 H104 Z' },
+        { d: 'M98 146 H150 M101 160 H147', role: 'soft' },
+        { d: 'M98 130 q26 -24 52 0' },
+        shadow(86, 182, 56),
+      ],
+    },
+  ],
   'roronoa-zoro': [
     // Shusui: the third sword now Ryuma's black blade, its guard an octofoil
     // and its lacquered sheath hatched dark. Ryuma throws it to Zoro at the
