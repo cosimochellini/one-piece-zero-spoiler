@@ -5,7 +5,7 @@ import type { Stroke } from '~/lib/view/records'
 
 import { DRAWINGS, REDRAWINGS } from '.'
 import { alabastaArt, alabastaRedrawn } from './alabasta'
-import { dressrosaArt } from './dressrosa'
+import { dressrosaArt, dressrosaRedrawn } from './dressrosa'
 import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
 import { elbafArt } from './elbaf'
@@ -95,6 +95,7 @@ describe('the redrawings', () => {
       waterSevenRedrawn,
       thrillerBarkRedrawn,
       summitWarRedrawn,
+      dressrosaRedrawn,
       wanoRedrawn,
     ]
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)

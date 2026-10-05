@@ -9,7 +9,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
@@ -161,7 +161,8 @@ export const dressrosaArt = {
     shadow(70, 192, 32),
   ],
 
-  // A small dragon's tail curled round the hilt of a sword.
+  // A small dragon's tail curled round the hilt of a sword. The whole dragon,
+  // grown, is drawn from 1047, in `dressrosaRedrawn`.
   'momonosuke': [
     { d: 'M72 42 h16 v68 h-16 z' },
     { d: 'M60 110 h40' },
@@ -1178,3 +1179,60 @@ export const dressrosaArt = {
     shadow(88, 182, 62),
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const dressrosaRedrawn: Redrawings = {
+  // The whole dragon, grown, wound twice round the same sword. Its head is
+  // hidden behind the hilt, so only the swept-back horns and the long
+  // whiskers show past it; the neck comes out on the far side, the body
+  // crosses in front of the hilt and the blade and behind them, with its
+  // belly plates hatched, and the tail curls past the point. Shinobu's fruit
+  // ages him in ch. 1023, and the anime shows the dragon from 1047.
+  momonosuke: [
+    {
+      episode: 1047,
+      chapter: 1023,
+      value: [
+        { d: 'M66 34 h28 v8 h-28 z' },
+        {
+          d: 'M72 42 V87.9 M72 99.8 V110 M88 42 V84.5 M88 96.7 V110 M72 42 H88',
+        },
+        { d: 'M60 110 h40' },
+        {
+          d: 'M74 110 L76.2 132.9 M77.4 144.7 L80 172 M86 110 L83.9 131.4 M82.8 143.5 L80 172',
+        },
+        {
+          d: 'M88 41 C98 34 104 22 102 6 C112 20 108 36 88 47 M88 50 C104 44 120 32 128 14 C132 34 116 48 88 55',
+        },
+        {
+          d: 'M95 37 l6 4 M100 28 l6 3 M101 47 l4 5 M110 41 l5 5 M119 32 l5 4',
+          role: 'ambient',
+        },
+        {
+          d: 'M72 50 C60 48 54 40 44 42 C32 44 32 58 18 56 M72 58 C62 62 58 74 48 76 C38 78 36 90 24 92',
+        },
+        {
+          d: 'M88 54 C104 57 114 66 114 76 M88 63 C102 66 114 75 114 85',
+          role: 'accent',
+        },
+        {
+          d: 'M114 76 C114 85.7 46 89.3 46 99 M114 85 C114 94.7 46 98.3 46 108 M112 122 C112 131.2 52 134.8 52 144 M112 131 C112 140.2 52 143.8 52 153',
+          role: 'accent',
+        },
+        {
+          d: 'M52.6 104.1 C57.1 105.8 63.6 107.3 70.7 108.8 M87.3 112.2 C100.2 114.9 111.2 117.8 112 121.6 M46.1 108.6 C47.2 112.6 59.6 115.5 73.3 118.3 M86.6 121.1 C94.1 122.6 101 124.2 105.8 126.1 M59.3 148.7 C63.9 150.1 70.2 151.4 76.6 152.7 M83.4 154.1 C94.4 156.4 104 158.7 104 162 M52.1 153.5 C53.2 157 65.3 159.5 77.6 161.9 M82.5 162.9 C93.8 165.2 104 167.7 104 171',
+          role: 'accent',
+        },
+        {
+          d: 'M106.6 82.8 l-1.5 6 M92.6 86.4 l-1.5 6 M75.7 89.8 l-1.5 6 M59.7 93.3 l-1.5 6 M48.7 97.3 l-1.5 6 M105.5 128.5 l-1.5 6 M93.2 132.1 l-1.5 6 M78.2 135.3 l-1.5 6 M64.1 138.6 l-1.5 6 M54.4 142.4 l-1.5 6',
+          role: 'ambient',
+        },
+        {
+          d: 'M104 162 C104 170 90 175 70 179 M104 171 C102 177 90 179 70 179 C60 181 52 174 54 167 C56 161 64 161 64 167',
+          role: 'accent',
+        },
+        shadow(80, 190, 30),
+      ],
+    },
+  ],
+}
