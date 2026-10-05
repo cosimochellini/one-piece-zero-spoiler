@@ -749,8 +749,8 @@ export const summitWarArt = {
     { d: 'M8 182 h144', role: 'ambient' },
   ],
 
-  // A top hat with goggles on the brim, and a pipe beside it. Ace's flame is
-  // lit at the pipe's tip from 678, in `summitWarRedrawn`.
+  // A top hat with goggles on the brim, and a pipe beside it. The pipe burns
+  // with Ace's flame from 678, in `summitWarRedrawn`.
   'sabo': [
     ...TOP_HAT,
     { d: 'M124 44 V172 M134 44 V172' },
@@ -1276,27 +1276,42 @@ export const summitWarRedrawn: Redrawings = {
     },
   ],
 
-  // The same top hat, and the pipe shorter beneath Ace's flame, lit at its
-  // tip. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
+  // The same top hat, and the same pipe held at a slant, Ace's flame
+  // running up its top third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
   sabo: [
     {
       episode: 678,
       chapter: 744,
       value: [
         ...TOP_HAT,
-        { d: 'M124 64 V172 M134 64 V172' },
-        { d: 'M124 64 q5 -4 10 0 M124 172 q5 4 10 0' },
-        // Ace's flame, copied from his first drawing in `alabasta.ts`.
         {
-          d: 'M80 70 C64 54 76 40 78 22 C82 36 96 40 96 56 C96 66 88 72 80 70z',
-          role: 'accent',
-          transform: 'translate(49 -8)',
+          d: 'M124 44 V172 M134 44 V172',
+          transform: 'translate(-14 0) rotate(22 129 108)',
         },
         {
-          d: 'M82 60 c-6 -8 0 -14 2 -22 c2 8 8 10 6 18',
-          role: 'accent',
-          transform: 'translate(49 -8)',
+          d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0',
+          transform: 'translate(-14 0) rotate(22 129 108)',
         },
+        // Ace's flame, copied from his first drawing in `alabasta.ts`, and
+        // lit three times along the pipe, smaller each time down.
+        ...[
+          'translate(57 -12)',
+          'translate(129 77) scale(0.7) translate(-80 -70)',
+          'translate(122 94) scale(0.5) translate(-80 -70)',
+        ].flatMap((transform): Stroke[] => {
+          return [
+            {
+              d: 'M80 70 C64 54 76 40 78 22 C82 36 96 40 96 56 C96 66 88 72 80 70z',
+              role: 'accent',
+              transform,
+            },
+            {
+              d: 'M82 60 c-6 -8 0 -14 2 -22 c2 8 8 10 6 18',
+              role: 'accent',
+              transform,
+            },
+          ]
+        }),
         shadow(78, 170, 42),
       ],
     },
