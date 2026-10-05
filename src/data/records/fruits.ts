@@ -336,8 +336,8 @@ export const devilFruits: Saga = {
       revealedAtChapter: 309,
       name: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
       summary: {
-        it: 'Spara un raggio che rallenta per trenta secondi tutto quello che colpisce: un pugno già tirato striscia nell’aria e arriva quando non serve più.',
-        en: 'Fires a beam that slows whatever it touches for thirty seconds, so a punch already thrown crawls through the air and lands long after it mattered.',
+        it: 'Spara un raggio che rallenta per circa trenta secondi tutto quello che tocca: una barca resta indietro in gara, una palla di cannone in volo striscia nell’aria.',
+        en: 'Fires a beam that slows whatever it touches for about thirty seconds, so a boat falls behind in a race and a cannonball in flight crawls through the air.',
       },
       visual: { art: 'slow-slow-fruit', tint: 'sand' },
     },

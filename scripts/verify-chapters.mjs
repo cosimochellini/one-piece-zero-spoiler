@@ -218,9 +218,8 @@ export function namingChapterOf(chapters, title) {
 }
 
 /**
- * The episode a page gives for its subject, read the same way. The archive's
- * episodes were checked by hand already, so this only informs: a record whose
- * episode sits below the wiki's is listed, not failed.
+ * The episode a page gives for its subject, read the same way. A record whose
+ * episode sits below it fails unless a hand check kept it (`EPISODE_KEPT`).
  * @param {Page} page The parsed page.
  * @param {string} kind The record's kind.
  * @returns {number | undefined} The episode, or nothing when the page has none.

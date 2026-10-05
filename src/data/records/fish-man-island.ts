@@ -123,7 +123,9 @@ export const fishManIsland: Saga = {
     {
       id: 'vander-decken-ix',
       kind: 'character',
-      revealedAtEpisode: 526,
+      // Seen and called Vander Decken at 526; the IX comes with his wanted
+      // poster at 529.
+      revealedAtEpisode: 529,
       revealedAtChapter: 615,
       name: { it: 'Vander Decken IX', en: 'Vander Decken IX' },
       summary: {
@@ -618,7 +620,7 @@ export const fishManIsland: Saga = {
       },
       affiliation: [
         {
-          episode: 526,
+          episode: 529,
           value: {
             it: 'Olandese Volante, capitano',
             en: 'Flying Dutchman, captain',

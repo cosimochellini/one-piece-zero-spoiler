@@ -555,12 +555,13 @@ export const wholeCake: Saga = {
     {
       id: 'aramaki',
       kind: 'character',
-      revealedAtEpisode: 1077,
+      // Not in 1075–1078: first on screen and called Ryokugyu at 1079.
+      revealedAtEpisode: 1079,
       revealedAtChapter: 1057,
       name: { it: 'Aramaki', en: 'Aramaki' },
       summary: {
-        it: 'Un ammiraglio della Marina che vola verso Wano, si fa mandare una nave da guerra di nascosto da Sakazuki e dice di non mangiare nulla da tre anni.',
-        en: 'A Marine admiral who flies toward Wano, has a warship sent behind Sakazuki’s back and says he has eaten nothing for three years.',
+        it: 'Un ammiraglio della Marina che vola verso Wano e che dice di non mangiare nulla da tre anni.',
+        en: 'A Marine admiral who flies toward Wano and says he has eaten nothing for three years.',
       },
       visual: { art: 'aramaki', tint: 'green' },
     },
@@ -1635,16 +1636,16 @@ export const wholeCake: Saga = {
     'aramaki': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'È uno degli ammiragli. Sakazuki gli chiede dove si trova, e lui risponde che è in aria e che vede già Wano; quando gli ordinano di non fare niente di inutile, dice di aver capito. Poi chiama per farsi mandare una nave da guerra a Wano e si raccomanda che Sakazuki non lo venga a sapere. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
-        en: 'He is one of the admirals. Sakazuki asks where he is, and he answers that he is in the air and can already see Wano; when he is told not to do anything unnecessary, he says he understands. Then he calls for a warship to be sent to Wano and asks that Sakazuki not be told. He says he has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
+        it: 'È uno degli ammiragli. Sakazuki gli chiede dove si trova, e lui risponde che è in aria e che vede già Wano; quando gli ordinano di non fare niente di inutile, dice di aver capito. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
+        en: 'He is one of the admirals. Sakazuki asks where he is, and he answers that he is in the air and can already see Wano; when he is told not to do anything unnecessary, he says he understands. He says he has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
       },
       affiliation: [
         {
-          episode: 1077,
+          episode: 1079,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
-      epithet: [{ episode: 1077, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
+      epithet: [{ episode: 1079, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
       devilFruit: [{ episode: 1081, value: ['woods-woods-fruit'] }],
     },
     // No `devilFruit` line: the story shows his hands turn into a sheep's horns
