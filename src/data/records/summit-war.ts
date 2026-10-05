@@ -1037,8 +1037,10 @@ export const summitWar: Saga = {
           episode: 392,
           value: { it: 'Pirati Heart, capitano', en: 'Heart Pirates, captain' },
         },
+        // Introduced as a Warlord at 584 (chapter 659), on Punk Hazard.
         {
-          episode: 517,
+          episode: 584,
+          chapter: 659,
           value: {
             it: 'Flotta dei Sette; Pirati Heart, capitano',
             en: 'Seven Warlords; Heart Pirates, captain',
@@ -1658,19 +1660,13 @@ export const summitWar: Saga = {
         it: 'Dirige la prigione più profonda del mondo da un ufficio al quarto livello, l’unica stanza fresca di un piano in fiamme. È un uomo veleno: il veleno gli piace al punto da mangiarlo in zuppa a colazione, e il suo fiato è un gas che stende il vicedirettore. Lo stesso veleno lo tiene chiuso in bagno dieci ore al giorno, e in quelle ore la prigione va avanti da sola.',
         en: 'He runs the deepest prison in the world from an office on the fourth level, the one cool room on a floor that is all fire. He is a poison man: he likes poison enough to eat it as soup for breakfast, and his breath is a gas that floors the vice warden. The same poison keeps him in the lavatory ten hours a day, and in those hours the prison runs itself.',
       },
+      // No vice-chief-warden entry: only the chapter 665 cover says it.
       affiliation: [
         {
           episode: 425,
           value: {
             it: 'Impel Down, direttore',
             en: 'Impel Down, chief warden',
-          },
-        },
-        {
-          episode: 517,
-          value: {
-            it: 'Impel Down, vicedirettore',
-            en: 'Impel Down, vice chief warden',
           },
         },
       ],
@@ -1685,19 +1681,13 @@ export const summitWar: Saga = {
         it: 'Ripete a chiunque lo ascolti che un giorno prenderà il posto del direttore, e lo dice anche davanti al direttore. Porta un copricapo da faraone e una lancia con due lame, e nelle liti con i colleghi si impappina e si corregge da solo. Nessuno lo prende sul serio, ma è lui a restare in piedi quando gli altri sono già a terra.',
         en: 'He tells anyone who will listen that one day he will have the chief warden’s job, and he says it in front of the chief warden too. He wears a pharaoh’s headdress and carries a two-bladed naginata, and in arguments with colleagues he trips over his words and corrects himself. Nobody takes him seriously, yet he is the one still standing when the others are down.',
       },
+      // No chief-warden entry: only the chapter 661 cover says it.
       affiliation: [
         {
           episode: 423,
           value: {
             it: 'Impel Down, vicedirettore',
             en: 'Impel Down, vice chief warden',
-          },
-        },
-        {
-          episode: 517,
-          value: {
-            it: 'Impel Down, direttore',
-            en: 'Impel Down, chief warden',
           },
         },
       ],
@@ -1968,8 +1958,10 @@ export const summitWar: Saga = {
           episode: 463,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
+        // Named fleet admiral at 570 (chapter 650); 517 only mentions a new one.
         {
-          episode: 517,
+          episode: 570,
+          chapter: 650,
           value: {
             it: 'Marina, grand’ammiraglio',
             en: 'Marines, fleet admiral',

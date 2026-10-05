@@ -794,8 +794,10 @@ export const waterSeven: Saga = {
           episode: 227,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
+        // Jinbe tells it at 570 (chapter 650).
         {
-          episode: 517,
+          episode: 570,
+          chapter: 650,
           value: { it: 'Ha lasciato la Marina', en: 'Left the Marines' },
         },
         {
@@ -1069,7 +1071,14 @@ export const waterSeven: Saga = {
         },
         { episode: 322, value: STRAW_HATS },
       ],
-      origin: [{ episode: 248, value: { it: 'South Blue', en: 'South Blue' } }],
+      // Franky says it himself at 385 (chapter 490).
+      origin: [
+        {
+          episode: 385,
+          chapter: 490,
+          value: { it: 'South Blue', en: 'South Blue' },
+        },
+      ],
       epithet: [{ episode: 320, value: { it: 'Cyborg', en: 'Cyborg' } }],
       bounty: [
         { episode: 320, value: 44_000_000 },

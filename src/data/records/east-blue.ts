@@ -1278,8 +1278,10 @@ export const eastBlue: Saga = {
             en: 'Buggy Pirates, captain',
           },
         },
+        // Named in Brannew's roll of the Warlords at 629 (chapter 700).
         {
-          episode: 517,
+          episode: 629,
+          chapter: 700,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
@@ -1881,8 +1883,10 @@ export const eastBlue: Saga = {
       },
       status: [{ episode: 24, value: 'alive' }],
       affiliation: [
+        // Yosaku names him among the Warlords at 31 (chapter 69).
         {
-          episode: 24,
+          episode: 31,
+          chapter: 69,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
@@ -2094,8 +2098,10 @@ export const eastBlue: Saga = {
           episode: 130,
           value: { it: 'Marina, commodoro', en: 'Marines, commodore' },
         },
+        // Captioned at G-5 at 572 (chapter 652).
         {
-          episode: 517,
+          episode: 572,
+          chapter: 652,
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
@@ -2122,8 +2128,10 @@ export const eastBlue: Saga = {
           episode: 130,
           value: { it: 'Marina, guardiamarina', en: 'Marines, ensign' },
         },
+        // Captioned at G-5 at 572 (chapter 652).
         {
-          episode: 517,
+          episode: 572,
+          chapter: 652,
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
       ],
