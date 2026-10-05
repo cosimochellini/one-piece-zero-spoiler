@@ -657,4 +657,21 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
     })
   })
+
+  it('gives Franky the forearm of the two years only from episode 517', () => {
+    const franky = filed('franky')
+    const wrench = DRAWINGS.franky
+    const forearm = REDRAWINGS['franky']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(franky, 'en', reveal(bookmark)).visual.strokes
+
+    expect(forearm?.episode).toBe(517)
+
+    expect(drawnAt(ep(516))).toBe(wrench)
+    expect(drawnAt(ep(517))).toBe(forearm?.value)
+    expect(drawnAt(null)).toBe(wrench)
+    // The manga shows the forearm on the cover of chapter 598, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 597 })).toBe(wrench)
+    expect(drawnAt({ mode: 'chapter', chapter: 598 })).toBe(forearm?.value)
+  })
 })

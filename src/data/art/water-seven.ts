@@ -8,7 +8,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Redrawings } from './stroke'
 
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
@@ -262,7 +262,8 @@ export const waterSevenArt = {
     shadow(74, 180, 52),
   ],
 
-  // A wrench and a bolt with a star head.
+  // A wrench and a bolt with a star head. The forearm of the two years is
+  // drawn from 517, in `waterSevenRedrawn`.
   'franky': [
     { d: 'M36 164 L96 104 M44 172 L104 112 M36 164 L44 172' },
     { d: 'M96 104 a20 20 0 1 1 28 -28 l-8 8 a6 6 0 0 0 -8 8 L104 112' },
@@ -748,3 +749,45 @@ export const waterSevenArt = {
     shadow(80, 170, 56),
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const waterSevenRedrawn: Redrawings = {
+  // The forearm of the two years: a great box seen from its corner, the star
+  // split by the edge and folded onto the far face, which is hatched; the
+  // studded fist on top and the elbow hinge with its bolt below. The wrench
+  // and the star-headed bolt lie beneath it. The opening shows it from 517,
+  // the cover of ch. 598 in the manga.
+  franky: [
+    {
+      episode: 517,
+      chapter: 598,
+      value: [
+        { d: 'M60 54 V24 Q60 14 70 14 H98 Q108 14 108 24 V54' },
+        {
+          d: 'M72 15 V34 M84 15 V34 M96 15 V34 M60 34 q6 6 12 0 q6 6 12 0 q6 6 12 0 q6 6 12 0',
+          role: 'soft',
+        },
+        { d: 'M60 46 H92 q6 0 6 -6', role: 'soft' },
+        { d: 'M44 58 H98 V124 H44 Z' },
+        { d: 'M44 58 L58 49.6 M104 46 H118 L98 58 M118 46 V112 L98 124' },
+        {
+          d: 'M98 70 L100.6 82 L108.5 77.5 L102.2 90 L104.5 102.3 L98 98 L86.2 106.2 L90.4 92.5 L79 83.8 L93.3 83.5 Z',
+          role: 'accent',
+        },
+        {
+          d: 'M102 64 l12 -7 M104 70 l12 -7 M110 84 l6 -4 M110 92 l6 -4 M106 104 l10 -6 M102 112 l14 -8 M104 118 l12 -7',
+          role: 'ambient',
+        },
+        { d: 'M52 124 V144 Q52 150 58 150 H86 Q92 150 92 144 V124' },
+        { d: `${circle(72, 137, 8)} M67 142 l10 -10`, role: 'soft' },
+        { d: 'M22 168 H80 M22 176 H80 M22 168 a4 4 0 0 0 0 8' },
+        {
+          d: 'M80 168 C82 156 100 154 106 162 l-9 4 v6 l9 4 C100 186 82 186 80 176',
+        },
+        { d: star(128, 172, 10, 4.5), role: 'accent' },
+        { d: circle(128, 172, 3), role: 'accent' },
+        shadow(78, 190, 54),
+      ],
+    },
+  ],
+}

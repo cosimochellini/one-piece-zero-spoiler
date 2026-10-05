@@ -10,7 +10,7 @@ import type { Redrawings } from './stroke'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
-import { waterSevenArt } from './water-seven'
+import { waterSevenArt, waterSevenRedrawn } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
 
 /**
@@ -46,6 +46,7 @@ export const REDRAWINGS: Redrawings = {
   ...eastBlueRedrawn,
   ...alabastaRedrawn,
   ...skypieaRedrawn,
+  ...waterSevenRedrawn,
   ...thrillerBarkRedrawn,
   ...wanoRedrawn,
 }

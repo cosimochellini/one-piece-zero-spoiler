@@ -15,7 +15,7 @@ import { skypieaArt, skypieaRedrawn } from './skypiea'
 import { summitWarArt } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
-import { waterSevenArt } from './water-seven'
+import { waterSevenArt, waterSevenRedrawn } from './water-seven'
 import { wholeCakeArt } from './whole-cake'
 
 /** The rules every drawing on the site obeys, first or redrawn. */
@@ -92,6 +92,7 @@ describe('the redrawings', () => {
       eastBlueRedrawn,
       alabastaRedrawn,
       skypieaRedrawn,
+      waterSevenRedrawn,
       thrillerBarkRedrawn,
       wanoRedrawn,
     ]
