@@ -17,14 +17,12 @@ const BEASTS_HEADLINER = {
   en: 'Beasts Pirates, headliner',
 }
 const AMAZON_LILY = { it: 'Amazon Lily', en: 'Amazon Lily' }
-const LEVEL_SIX = {
-  it: 'Prigioniero del sesto livello di Impel Down',
-  en: 'Prisoner of Impel Down level 6',
+// Shown at 484 as the Blackbeard Pirates, the erased criminals of level 6.
+const LEVEL_SIX_ESCAPEE = {
+  it: 'Pirati di Barbanera; ex prigioniero del sesto livello di Impel Down',
+  en: 'Blackbeard Pirates; former prisoner of Impel Down level 6',
 }
-const LEVEL_SIX_ROLE = {
-  it: 'Prigioniero del sesto livello',
-  en: 'Prisoner of the sixth level',
-}
+const BLACKBEARD_ROLE = { it: 'Pirata di Barbanera', en: 'Blackbeard pirate' }
 const CELESTIAL_DRAGONS = {
   it: 'Nobili Mondiali, Draghi Celesti',
   en: 'World Nobles, Celestial Dragons',
@@ -184,7 +182,7 @@ export const summitWar: Saga = {
     {
       id: 'shakky',
       kind: 'character',
-      revealedAtEpisode: 391,
+      revealedAtEpisode: 392,
       revealedAtChapter: 498,
       name: { it: 'Shakky', en: 'Shakky' },
       summary: {
@@ -388,12 +386,12 @@ export const summitWar: Saga = {
     {
       id: 'magellan',
       kind: 'character',
-      revealedAtEpisode: 424,
+      revealedAtEpisode: 425,
       revealedAtChapter: 530,
       name: { it: 'Magellan', en: 'Magellan' },
       summary: {
-        it: 'Il direttore di Impel Down, un uomo enorme e cornuto che gronda veleno da ogni dito e passa in bagno più tempo che in ufficio.',
-        en: 'The chief warden of Impel Down, a horned giant of a man who drips poison from every finger and spends more time in the lavatory than at his desk.',
+        it: 'Il direttore di Impel Down, un uomo enorme e cornuto che a colazione mangia zuppa velenosa e passa in bagno più tempo che in ufficio.',
+        en: 'The chief warden of Impel Down, a horned giant of a man who eats poison soup for breakfast and spends more time in the lavatory than at his desk.',
       },
       visual: { art: 'magellan', tint: 'violet' },
     },
@@ -431,8 +429,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 540,
       name: { it: 'Emporio Ivankov', en: 'Emporio Ivankov' },
       summary: {
-        it: 'Il sovrano di un livello nascosto della prigione, con una corona di capelli viola, che cambia il corpo di chiunque con un ago.',
-        en: 'The ruler of a hidden level of the prison, crowned with a great head of violet hair, who changes anybody’s body with a needle.',
+        it: 'Il sovrano di un livello nascosto della prigione, con una gran testa di capelli viola, leggendaria regina del Regno di Kamabakka che i detenuti chiamano la Persona dei Miracoli.',
+        en: 'The ruler of a hidden level of the prison, crowned with a great head of violet hair, the legendary Queen of Kamabakka Kingdom whom the inmates call the Miracle Person.',
       },
       visual: { art: 'emporio-ivankov', tint: 'magenta' },
     },
@@ -443,8 +441,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 541,
       name: { it: 'Inazuma', en: 'Inazuma' },
       summary: {
-        it: 'Un braccio destro con il taglio di capelli a forbice, che ritaglia il pavimento di pietra come fosse carta e lo ripiega.',
-        en: 'A right hand with a pair of scissors for hair, who cuts the stone floor of the prison like paper and folds it over.',
+        it: 'Un uomo che trova Rufy e Von Clay mezzi assiderati dentro la prigione e li porta al sicuro, in un livello che non dovrebbe esistere.',
+        en: 'A man who finds Luffy and Bon Clay half frozen inside the prison and carries them to safety, on a level that should not exist.',
       },
       visual: { art: 'inazuma', tint: 'wine' },
     },
@@ -523,48 +521,48 @@ export const summitWar: Saga = {
     {
       id: 'catarina-devon',
       kind: 'character',
-      revealedAtEpisode: 450,
+      revealedAtEpisode: 484,
       revealedAtChapter: 577,
       name: { it: 'Catarina Devon', en: 'Catarina Devon' },
       summary: {
-        it: 'Una prigioniera del sesto livello di Impel Down, rinchiusa laggiù da anni, che ride piano quando le celle si aprono.',
-        en: 'A prisoner of the sixth level of Impel Down, shut down there for years, who laughs quietly when the cells come open.',
+        it: 'Una pirata che chiamano la donna più pericolosa del mondo, comparsa sul patibolo di Marineford accanto a Barbanera fra i criminali che il mondo ha cancellato.',
+        en: 'A pirate called the most dangerous woman in the world, appearing on the Marineford scaffold beside Blackbeard among the criminals the world has erased.',
       },
       visual: { art: 'catarina-devon', tint: 'lavender' },
     },
     {
       id: 'vasco-shot',
       kind: 'character',
-      revealedAtEpisode: 450,
+      revealedAtEpisode: 484,
       revealedAtChapter: 577,
       name: { it: 'Vasco Shot', en: 'Vasco Shot' },
       summary: {
-        it: 'Un prigioniero del sesto livello con una zucca di liquore sempre in mano, che beve anche mentre le celle vengono aperte.',
-        en: 'A sixth-level prisoner with a liquor gourd never out of his hand, drinking even as the cells around him are being opened.',
+        it: 'Un pirata chiamato il Beone, uno dei criminali così crudeli che i giornali si rifiutavano di nominarli, ricomparso a Marineford fra i Pirati di Barbanera.',
+        en: 'A pirate called the Heavy Drinker, one of the criminals so cruel the papers refused to mention them, back in sight at Marineford among the Blackbeard Pirates.',
       },
       visual: { art: 'vasco-shot', tint: 'orange' },
     },
     {
       id: 'san-juan-wolf',
       kind: 'character',
-      revealedAtEpisode: 450,
+      revealedAtEpisode: 484,
       revealedAtChapter: 577,
       name: { it: 'San Juan Wolf', en: 'San Juan Wolf' },
       summary: {
-        it: 'Un gigante troppo grande perfino per il sesto livello, incatenato a un muro che gli arriva appena alle ginocchia.',
-        en: 'A giant too large even for the sixth level, chained to a wall that barely comes up as far as his knees.',
+        it: 'Un pirata chiamato Nave da Guerra Colossale, il più grande di tutti gli esseri viventi, che spunta da dietro il quartier generale della Marina insieme ai Pirati di Barbanera.',
+        en: 'A pirate called the Colossal Battleship, the biggest of all living things, rising from behind Marine headquarters with the Blackbeard Pirates.',
       },
       visual: { art: 'san-juan-wolf', tint: 'sand' },
     },
     {
       id: 'avalo-pizarro',
       kind: 'character',
-      revealedAtEpisode: 450,
+      revealedAtEpisode: 484,
       revealedAtChapter: 577,
       name: { it: 'Avalo Pizarro', en: 'Avalo Pizarro' },
       summary: {
-        it: 'Un prigioniero del sesto livello con la testa cornuta e la voce di chi comandava, chiuso nella cella più profonda della prigione.',
-        en: 'A sixth-level prisoner with a horned head and the voice of a man who used to give orders, held in the deepest cell of the prison.',
+        it: 'Un pirata chiamato il Re Corrotto, uno dei criminali che il mondo ha cancellato per la loro crudeltà, ricomparso sul patibolo di Marineford accanto a Barbanera.',
+        en: 'A pirate called the Corrupt King, one of the criminals whose existence the world erased for their brutality, back in sight on the Marineford scaffold beside Blackbeard.',
       },
       visual: { art: 'avalo-pizarro', tint: 'teal' },
     },
@@ -583,7 +581,7 @@ export const summitWar: Saga = {
     {
       id: 'jozu',
       kind: 'character',
-      revealedAtEpisode: 461,
+      revealedAtEpisode: 463,
       revealedAtChapter: 556,
       name: { it: 'Jozu', en: 'Jozu' },
       summary: {
@@ -1262,7 +1260,7 @@ export const summitWar: Saga = {
       },
       affiliation: [
         {
-          episode: 391,
+          episode: 392,
           value: {
             it: 'Bar della Rapina, proprietaria',
             en: 'Shakky’s Rip-Off Bar, owner',
@@ -1657,12 +1655,12 @@ export const summitWar: Saga = {
     'magellan': {
       role: { it: 'Direttore di Impel Down', en: 'Chief warden of Impel Down' },
       log: {
-        it: 'Dirige la prigione più profonda del mondo e ne conosce ogni livello, ogni cella e ogni detenuto per nome. Il suo corpo produce veleno senza sosta: gli cola dalle mani, gli esce dalla bocca e non gli serve altro per fermare un evaso. Quello stesso veleno lo tiene chiuso in bagno per ore, e in quelle ore la prigione va avanti da sola.',
-        en: 'He runs the deepest prison in the world and knows every level, every cell and every inmate by name. His own body makes poison without pause: it runs off his hands, it comes out of his mouth, and he needs nothing else to stop a man escaping. That same poison keeps him in the lavatory for hours, and in those hours the prison runs itself.',
+        it: 'Dirige la prigione più profonda del mondo da un ufficio al quarto livello, l’unica stanza fresca di un piano in fiamme. È un uomo veleno: il veleno gli piace al punto da mangiarlo in zuppa a colazione, e il suo fiato è un gas che stende il vicedirettore. Lo stesso veleno lo tiene chiuso in bagno dieci ore al giorno, e in quelle ore la prigione va avanti da sola.',
+        en: 'He runs the deepest prison in the world from an office on the fourth level, the one cool room on a floor that is all fire. He is a poison man: he likes poison enough to eat it as soup for breakfast, and his breath is a gas that floors the vice warden. The same poison keeps him in the lavatory ten hours a day, and in those hours the prison runs itself.',
       },
       affiliation: [
         {
-          episode: 424,
+          episode: 425,
           value: {
             it: 'Impel Down, direttore',
             en: 'Impel Down, chief warden',
@@ -1676,7 +1674,7 @@ export const summitWar: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 424, value: ['venom-venom-fruit'] }],
+      devilFruit: [{ episode: 425, value: ['venom-venom-fruit'] }],
     },
     'hannyabal': {
       role: {
@@ -1707,12 +1705,19 @@ export const summitWar: Saga = {
     'emporio-ivankov': {
       role: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
       log: {
-        it: 'Regna su un livello della prigione che sulle mappe non esiste, un bosco rovesciato dove gli evasi ballano invece di scappare. Con un ago può cambiare il corpo di chiunque, guarire quello che nessun medico guarisce o trasformare un uomo in donna. In cambio chiede sempre qualcosa, e il prezzo lo decide sul momento.',
-        en: 'He reigns over a level of the prison that appears on no map, an upside-down wood where escaped inmates dance instead of running. With a needle he can change anybody’s body, heal what no doctor heals, or turn a man into a woman. He always asks for something in return, and settles the price on the spot.',
+        it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Von Clay lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
+        en: 'He reigns over a level of the prison that appears on no map, a secret garden where the inmates drink, play games and watch the show instead of running. The guards believe the vanished prisoners were dragged off to hell, and they are all there. Bon Clay knows him by reputation as a man who works miracles, and hopes one will be enough to save the poisoned Luffy.',
       },
       affiliation: [
         {
           episode: 438,
+          value: {
+            it: 'Livello 5.5 di Impel Down, sovrano',
+            en: 'Impel Down level 5.5, queen',
+          },
+        },
+        {
+          episode: 441,
           value: {
             it: 'Livello 5.5 di Impel Down, sovrano; Armata Rivoluzionaria, comandante',
             en: 'Impel Down level 5.5, queen; Revolutionary Army, commander',
@@ -1731,24 +1736,31 @@ export const summitWar: Saga = {
           value: { it: 'Persona dei Miracoli', en: 'Miracle Person' },
         },
       ],
-      devilFruit: [{ episode: 438, value: ['horm-horm-fruit'] }],
+      devilFruit: [{ episode: 440, value: ['horm-horm-fruit'] }],
     },
     'inazuma': {
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
       log: {
-        it: 'Sta accanto al sovrano del livello nascosto e parla al posto suo quando serve una risposta seria. Ha le mani che diventano forbici e ritaglia la pietra come si ritaglia la carta, poi piega il pezzo e lo rimette dove gli serve. Di sé non dice nulla a nessuno, e dentro la prigione nessuno glielo chiede.',
-        en: 'He stands beside the ruler of the hidden level and speaks for him whenever a serious answer is needed. His hands turn into scissors and cut stone the way scissors cut paper, and then he folds the piece and sets it down where it is needed. About himself he tells nobody anything, and inside the prison nobody asks.',
+        it: 'Trova Rufy e Von Clay mezzi assiderati dentro la prigione e li porta al sicuro, dove Von Clay si risveglia dieci ore dopo. Quando gli chiede dove si trova, non risponde e lo porta davanti al palco, perché sarà qualcun altro a spiegarglielo. Di sé dice soltanto il proprio nome.',
+        en: 'He finds Luffy and Bon Clay half frozen inside the prison and moves them somewhere safe, where Bon Clay wakes ten hours later. When Bon Clay asks where he is, he gives no answer and takes him to the front of the stage, because someone else will explain. About himself he says only his name.',
       },
       affiliation: [
         {
           episode: 438,
+          value: {
+            it: 'Livello 5.5 di Impel Down',
+            en: 'Impel Down level 5.5',
+          },
+        },
+        {
+          episode: 441,
           value: {
             it: 'Armata Rivoluzionaria; livello 5.5 di Impel Down',
             en: 'Revolutionary Army; Impel Down level 5.5',
           },
         },
       ],
-      devilFruit: [{ episode: 438, value: ['snip-snip-fruit'] }],
+      devilFruit: [{ episode: 442, value: ['snip-snip-fruit'] }],
     },
     'shiryu': {
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
@@ -1764,7 +1776,7 @@ export const summitWar: Saga = {
             en: 'Impel Down, former head jailer, imprisoned',
           },
         },
-        { episode: 451, value: BLACKBEARD_CREW },
+        { episode: 452, value: BLACKBEARD_CREW },
       ],
       epithet: [
         {
@@ -1868,27 +1880,23 @@ export const summitWar: Saga = {
       ],
     },
     'catarina-devon': {
-      role: {
-        it: 'Prigioniera del sesto livello',
-        en: 'Prisoner of the sixth level',
-      },
+      role: BLACKBEARD_ROLE,
       log: {
-        it: 'Sta rinchiusa nel livello più profondo di Impel Down, quello che sui registri non compare, insieme ai detenuti che il mondo considera già morti. Porta una lama a mezzaluna e ride piano quando le sbarre si aprono e qualcuno le offre di uscire. Quello che ha fatto per finire laggiù non è scritto da nessuna parte.',
-        en: 'She is held on the deepest level of Impel Down, the one the registers do not mention, among the inmates the world already counts as dead. She carries a crescent blade and laughs quietly when the bars come open and somebody offers to take her out. What she did to end up down there is written nowhere at all.',
+        it: 'Ivankov la nomina fra i pirati del sesto livello di Impel Down e la chiama la donna più pericolosa del mondo, per crimini che i giornali si sono rifiutati di raccontare. A Marineford compare sul patibolo insieme a Barbanera, presentata come la Cacciatrice della Luna Crescente. Quello che ha fatto per finire laggiù non è scritto da nessuna parte.',
+        en: 'Ivankov names her among the pirates of Impel Down’s sixth level and calls her the most dangerous woman in the world, for crimes the papers refused to print. At Marineford she appears on the scaffold with Blackbeard, announced as the Crescent Moon Hunter. What she did to end up down there is written nowhere at all.',
       },
       affiliation: [
         {
-          episode: 450,
+          episode: 484,
           value: {
-            it: 'Prigioniera del sesto livello di Impel Down',
-            en: 'Prisoner of Impel Down level 6',
+            it: 'Pirati di Barbanera; ex prigioniera del sesto livello di Impel Down',
+            en: 'Blackbeard Pirates; former prisoner of Impel Down level 6',
           },
         },
-        { episode: 451, value: BLACKBEARD_CREW },
       ],
       epithet: [
         {
-          episode: 450,
+          episode: 484,
           value: {
             it: 'Cacciatrice della Luna Crescente',
             en: 'Crescent Moon Hunter',
@@ -1903,17 +1911,14 @@ export const summitWar: Saga = {
       ],
     },
     'vasco-shot': {
-      role: LEVEL_SIX_ROLE,
+      role: BLACKBEARD_ROLE,
       log: {
-        it: 'Nel livello più profondo della prigione beve da una zucca enorme che non gli hanno mai tolto, e la lingua gli penzola fuori mentre parla. Quando le celle si aprono non si alza di corsa: finisce prima quello che ha nel recipiente. Il Governo lo ha sepolto laggiù e ha cancellato il suo nome dagli elenchi che i giornali possono vedere.',
-        en: 'On the deepest level of the prison he drinks from an enormous gourd nobody ever took off him, tongue hanging out while he talks. When the cells come open he does not leap up: he finishes what is in the vessel first. The Government buried him down there and struck his name from every list a newspaper can see.',
+        it: 'Il suo nome è fra quelli che Ivankov pronuncia parlando del sesto livello di Impel Down, dove finisce chi ha commesso crimini troppo crudeli per i giornali. A Marineford spunta sul patibolo accanto a Barbanera, presentato come il Beone. La sua esistenza era stata cancellata, e adesso è in mezzo alla guerra.',
+        en: 'His name is among those Ivankov gives when he talks about the sixth level of Impel Down, where people end up for crimes too cruel for the papers. At Marineford he turns up on the scaffold beside Blackbeard, announced as the Heavy Drinker. His existence had been erased, and now he stands in the middle of the war.',
       },
-      affiliation: [
-        { episode: 450, value: LEVEL_SIX },
-        { episode: 451, value: BLACKBEARD_CREW },
-      ],
+      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
-        { episode: 450, value: { it: 'il Beone', en: 'Heavy Drinker' } },
+        { episode: 484, value: { it: 'il Beone', en: 'Heavy Drinker' } },
       ],
       // Pinned at 1087, where he first breathes fire with it (1121).
       devilFruit: [
@@ -1921,35 +1926,29 @@ export const summitWar: Saga = {
       ],
     },
     'san-juan-wolf': {
-      role: LEVEL_SIX_ROLE,
+      role: BLACKBEARD_ROLE,
       log: {
-        it: 'È talmente grande che il livello più profondo di Impel Down gli sta stretto: da seduto la testa arriva comunque al soffitto. Lo tengono incatenato a una parete e addormentato, perché da sveglio non esisterebbe cella capace di contenerlo. Quando le sbarre si aprono si mette in piedi, e il rumore arriva fino ai piani di sopra.',
-        en: 'He is so large that the deepest level of Impel Down is a tight fit: seated, his head still reaches the ceiling. They keep him chained to a wall and asleep, because awake there is no cell that would hold him. When the bars come open he stands up, and the sound of it carries to the floors above.',
+        it: 'Lo chiamano il più grande di tutti gli esseri viventi, e a Marineford lo si vede prima ancora di sapere chi è: qualcosa di enorme dietro il quartier generale della Marina. Ivankov lo aveva nominato fra i pirati del sesto livello di Impel Down, la Nave da Guerra Colossale. Adesso arriva insieme ai Pirati di Barbanera, e la Marina lo riconosce subito.',
+        en: 'They call him the biggest of all living things, and at Marineford he is seen before anyone knows who he is: something enormous behind Marine headquarters. Ivankov had named him among the pirates of Impel Down’s sixth level, the Colossal Battleship. Now he arrives with the Blackbeard Pirates, and the Marines know him at once.',
       },
-      affiliation: [
-        { episode: 450, value: LEVEL_SIX },
-        { episode: 451, value: BLACKBEARD_CREW },
-      ],
+      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
         {
-          episode: 450,
+          episode: 484,
           value: { it: 'Nave da Guerra Colossale', en: 'Colossal Battleship' },
         },
       ],
       devilFruit: [{ episode: 1120, value: ['huge-huge-fruit'] }],
     },
     'avalo-pizarro': {
-      role: LEVEL_SIX_ROLE,
+      role: BLACKBEARD_ROLE,
       log: {
-        it: 'Ha la testa coronata di corna e la voce di chi un tempo dava ordini a un regno intero, e adesso li dà alle pareti della cella. Nel livello più profondo di Impel Down non ha smesso di comportarsi da sovrano, e i detenuti accanto lo lasciano fare. Quando qualcuno apre le sbarre si aspetta che sia venuto a servirlo.',
-        en: 'His head is crowned with horns and he has the voice of a man who once gave orders to a kingdom, and now gives them to the walls of his cell. On the deepest level of Impel Down he has not stopped behaving like a sovereign, and the inmates beside him let him get on with it. When someone opens the bars he assumes they came to serve him.',
+        it: 'A Marineford sale sul patibolo insieme a Barbanera, uno dei criminali più feroci, la cui esistenza è stata cancellata per la loro crudeltà. La Marina lo riconosce e lo chiama per nome: il Re Corrotto. Che cosa abbia fatto per meritarsi quel nome non viene detto.',
+        en: 'At Marineford he stands on the scaffold with Blackbeard, one of the most heinous criminals, whose existence was erased because of their brutality. The Marines know him and call him by name: the Corrupt King. What he did to earn that name is not said.',
       },
-      affiliation: [
-        { episode: 450, value: LEVEL_SIX },
-        { episode: 451, value: BLACKBEARD_CREW },
-      ],
+      affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
-        { episode: 450, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
+        { episode: 484, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
       ],
       // Pinned at 1087, where the island's rock first rises as a hand (1121).
       devilFruit: [
@@ -1986,12 +1985,12 @@ export const summitWar: Saga = {
         en: 'Third division commander',
       },
       log: {
-        it: 'Comanda la terza divisione della ciurma di Barbabianca ed è largo quanto una porta, con un braccio solo che basta a spostare una nave. Si copre il corpo di diamante e incassa colpi che dovrebbero attraversarlo, restando dove si trova. Parla poco e sta vicino al vecchio, perché è lì che serve.',
-        en: 'He commands the third division of Whitebeard’s crew, as wide as a doorway, with one arm enough to shift a ship. He covers his body in diamond and takes blows that ought to go straight through him without giving ground. He says little and stays near the old man, because that is where he is needed.',
+        it: 'Comanda la terza divisione della ciurma di Barbabianca ed è largo quanto una porta. Si copre il corpo di diamante e incassa colpi che dovrebbero attraversarlo, restando dove si trova. Parla poco e sta vicino al vecchio, perché è lì che serve.',
+        en: 'He commands the third division of Whitebeard’s crew and is as wide as a doorway. He covers his body in diamond and takes blows that ought to go straight through him without giving ground. He says little and stays near the old man, because that is where he is needed.',
       },
       affiliation: [
         {
-          episode: 461,
+          episode: 463,
           value: {
             it: 'Pirati di Barbabianca, comandante della terza divisione',
             en: 'Whitebeard Pirates, third division commander',
@@ -2006,9 +2005,9 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [
-        { episode: 461, value: { it: 'Jozu il Diamante', en: 'Diamond Jozu' } },
+        { episode: 463, value: { it: 'Jozu il Diamante', en: 'Diamond Jozu' } },
       ],
-      devilFruit: [{ episode: 461, value: ['sparkle-sparkle-fruit'] }],
+      devilFruit: [{ episode: 463, value: ['sparkle-sparkle-fruit'] }],
     },
     'vista': {
       role: {
@@ -2079,8 +2078,8 @@ export const summitWar: Saga = {
     'tsuru': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'Siede nella sala del quartier generale fra il grand’ammiraglio e i tre ammiragli, unica donna al tavolo, e nessuno le parla sopra. Ha l’età per essere la nonna di chiunque nella stanza e l’autorità di chi comanda una flotta. Le sue mani strizzano un uomo come si strizza un panno bagnato, e poi lo stendono ad asciugare.',
-        en: 'She sits in the headquarters room between the fleet admiral and the three admirals, the only woman at the table, and nobody talks over her. She is old enough to be grandmother to anyone present and carries the authority of a fleet commander. Her hands wring a man out the way you wring a wet cloth, then hang him up to dry.',
+        it: 'Siede nella sala del quartier generale fra il grand’ammiraglio e i tre ammiragli, unica donna al tavolo, e nessuno le parla sopra. Ha l’età per essere la nonna di chiunque nella stanza e l’autorità di chi comanda una flotta. Prima dell’esecuzione dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci.',
+        en: 'She sits in the headquarters room between the fleet admiral and the three admirals, the only woman at the table, and nobody talks over her. She is old enough to be grandmother to anyone present and carries the authority of a fleet commander. Before the execution she tells Garp it is not his fault, and he answers that women can be very sweet at times like this.',
       },
       affiliation: [
         {
@@ -2097,7 +2096,8 @@ export const summitWar: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 461, value: ['wash-wash-fruit'] }],
+      // Wrings and hangs pirates out to dry in the bay (465, chapter 556).
+      devilFruit: [{ episode: 465, chapter: 556, value: ['wash-wash-fruit'] }],
     },
     'momonga': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },

@@ -187,12 +187,13 @@ export const dressrosa: Saga = {
     {
       id: 'issho',
       kind: 'character',
-      revealedAtEpisode: 630,
+      // Unnamed at the roulette table (630, 631); an aide says his name at 634.
+      revealedAtEpisode: 634,
       revealedAtChapter: 706,
       name: { it: 'Issho', en: 'Issho' },
       summary: {
-        it: 'Un ammiraglio della Marina cieco che gioca a dadi in una bisca e lascia decidere a un lancio se intervenire o no.',
-        en: 'A blind Marine admiral who plays dice in a gambling den and lets a throw decide whether he steps in or not.',
+        it: 'Un cieco in serie vincente alla roulette che, quando gli uomini della casa lo imbrogliano, li schiaccia sotto un peso improvviso. Poi si scopre che è un ammiraglio della Marina.',
+        en: 'A blind man on a winning streak at roulette who, when the house’s men cheat him, crushes them under a sudden weight. He turns out to be a Marine admiral.',
       },
       visual: { art: 'issho', tint: 'violet' },
     },
@@ -307,12 +308,12 @@ export const dressrosa: Saga = {
     {
       id: 'hajrudin',
       kind: 'character',
-      revealedAtEpisode: 634,
+      revealedAtEpisode: 639,
       revealedAtChapter: 708,
       name: { it: 'Hajrudin', en: 'Hajrudin' },
       summary: {
-        it: 'Un gigante mercenario alto quanto la tribuna, che si presenta al colosseo con l’elmo cornuto e guarda gli avversari dall’alto.',
-        en: 'A giant mercenary as tall as the stands, who comes to the colosseum in a horned helmet and looks down on every opponent.',
+        it: 'Un gigante di Elbaf, presentato al colosseo come il più temibile dei mercenari pirati, tra i combattenti del blocco C.',
+        en: 'A giant from Elbaph, announced at the colosseum as the most formidable pirate mercenary, among the fighters of Block C.',
       },
       visual: { art: 'hajrudin', tint: 'sand' },
     },
@@ -493,8 +494,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 716,
       name: { it: 'Leo', en: 'Leo' },
       summary: {
-        it: 'Un ometto alto un palmo con le ali sulla schiena, a capo di una squadra che cuce insieme qualsiasi cosa con ago e filo.',
-        en: 'A hand-high little man with wings on his back, leader of a squad that stitches anything to anything with a needle and thread.',
+        it: 'Una voce nascosta nel bosco di Green Bit, che chiede ai marine se sono buoni o cattivi e pretende le loro armi. Quando rifiutano, piccoli esseri troppo veloci per essere visti li spogliano di fucili, mantelli e cappelli.',
+        en: 'A hidden voice in the Green Bit forest that asks the Marines whether they are good people or bad and demands their weapons. When they refuse, little people too fast to see strip them of guns, capes and hats.',
       },
       visual: { art: 'leo', tint: 'green' },
     },
@@ -1123,17 +1124,17 @@ export const dressrosa: Saga = {
     'issho': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'Si presenta come il nuovo ammiraglio con un bastone da passeggio che è anche una spada, e gira senza scorta. Non ci vede, e dice che è meglio così, perché al mondo ci sono cose che preferisce non guardare. Con un gesto fa cadere a terra tutto quello che gli sta intorno, come se il peso delle cose obbedisse a lui.',
-        en: 'He introduces himself as the new admiral with a walking stick that is also a sword, and goes about without an escort. He cannot see, and says he prefers it, because there are things in the world he would rather not look at. With one gesture he brings everything around him down to the ground, as though the weight of things answered to him.',
+        it: 'Al tavolo della roulette i croupier continuano a dire nero e lui continua a perdere, perché non può vedere la ruota. Quando i loro uomini gli si rivoltano contro chiede a un ragazzo di spostarsi, li schiaccia sotto un peso che lascia un buco nel pavimento, dice che certe brutture è meglio non vederle e si offre di pagare i danni. Più tardi un aiutante gli porge il mantello, e lui chiede navi e medici e vuole contare prima le persone da proteggere che i nemici.',
+        en: 'At the roulette table the croupiers keep calling black and he keeps losing, because he cannot see the wheel. When their men turn on him he asks a young man to step aside, crushes them under a weight that leaves a hole in the floor, says some ugly things are better unseen and offers to pay for the repairs. Later an aide hands him his coat, and he asks for ships and medics and wants to count the people he has to protect before the enemy.',
       },
       affiliation: [
         {
-          episode: 630,
+          episode: 634,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
-      epithet: [{ episode: 630, value: { it: 'Fujitora', en: 'Fujitora' } }],
-      devilFruit: [{ episode: 630, value: ['press-press-fruit'] }],
+      epithet: [{ episode: 634, value: { it: 'Fujitora', en: 'Fujitora' } }],
+      devilFruit: [{ episode: 634, value: ['press-press-fruit'] }],
     },
     'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
@@ -1385,12 +1386,12 @@ export const dressrosa: Saga = {
     'hajrudin': {
       role: { it: 'Mercenario gigante', en: 'Giant mercenary' },
       log: {
-        it: 'Viene dall’isola dei giganti e si guadagna da vivere combattendo per chi paga, cosa che al suo paese non è motivo di orgoglio. Nel colosseo la sua ascia arriva dove gli altri non arrivano nemmeno saltando. Dice di volere il premio per una ragione che riguarda la sua gente, e non la spiega a nessuno.',
-        en: 'He comes from the island of the giants and earns his living fighting for whoever pays, which back home is nothing to be proud of. In the colosseum his axe reaches where the others cannot get even by jumping. He says he wants the prize for a reason that concerns his own people, and explains it to nobody.',
+        it: 'Viene da Elbaf, il celebre paese dei giganti. Al Colosseo Corrida l’annunciatore lo presenta tra i combattenti del blocco C come il più temibile dei mercenari pirati.',
+        en: 'He comes from Elbaph, the famous country of the giants. At the Corrida Colosseum the announcer presents him among the fighters of Block C as the most formidable pirate mercenary of all.',
       },
       affiliation: [
         {
-          episode: 634,
+          episode: 639,
           value: { it: 'Gladiatore del colosseo', en: 'Colosseum gladiator' },
         },
         {
@@ -1409,7 +1410,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 634, value: { it: 'Elbaf', en: 'Elbaph' } }],
+      origin: [{ episode: 639, value: { it: 'Elbaf', en: 'Elbaph' } }],
     },
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
@@ -1675,14 +1676,24 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 673, chapter: 740, value: ['pop-pop-fruit'] }],
     },
     'leo': {
-      role: { it: 'Capo del Corpo Tonta', en: 'Leader of the Tonta Corps' },
+      role: {
+        it: 'Voce nascosta di Green Bit',
+        en: 'Hidden voice of Green Bit',
+      },
       log: {
-        it: 'Appartiene a un popolo minuscolo che vive nel bosco e di cui quasi nessuno a Dressrosa sospetta l’esistenza. Con ago e filo cuce insieme oggetti, vestiti e persone, e la sua squadra si muove così in fretta che gli umani non la vedono passare. Comanda i suoi come un generale in miniatura, e ha una guerra tutta sua da combattere.',
-        en: 'He belongs to a tiny people who live in the wood, whose existence almost nobody in Dressrosa suspects. With a needle and thread he sews together objects, clothes and people, and his squad moves so fast that humans never see it pass. He commands his men like a general in miniature, and has a war of his own to fight.',
+        it: 'Si nasconde nel bosco di Green Bit e chiama una squadra di marine a caccia dei Cappello di Paglia: sono buoni o cattivi? Rispondono buoni, e lui ordina di consegnare le armi. Quando rifiutano, fucili, mantelli e cappelli spariscono loro di dosso più in fretta di quanto l’occhio riesca a seguire, e una vocina dice che così imparano.',
+        en: 'He hides in the Green Bit forest and calls out to a squad of Marines hunting the Straw Hats: are they good people or bad? They say good, and he tells them to hand over their weapons. When they refuse, guns, capes and hats vanish off them faster than the eye can follow, and a little voice says that will teach them.',
       },
       affiliation: [
         {
-          episode: 640,
+          episode: 641,
+          value: {
+            it: 'Regno di Tontatta, guerriero',
+            en: 'Tontatta Kingdom, warrior',
+          },
+        },
+        {
+          episode: 744,
           value: {
             it: 'Regno di Tontatta, capo del Corpo Tonta',
             en: 'Tontatta Kingdom, Tonta Corps leader',
@@ -1692,11 +1703,11 @@ export const dressrosa: Saga = {
       ],
       origin: [
         {
-          episode: 640,
+          episode: 641,
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
-      devilFruit: [{ episode: 640, value: ['stitch-stitch-fruit'] }],
+      devilFruit: [{ episode: 641, value: ['stitch-stitch-fruit'] }],
     },
     'kyros': {
       role: {

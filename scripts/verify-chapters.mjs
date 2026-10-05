@@ -16,8 +16,9 @@
 // entry that names it (`src/data/records/fruits.ts`), so a too-low fruit is
 // fixed by pinning `chapter:` on that entry, not here.
 //
-// Episodes are read from the same line and only listed, never failed: they
-// were checked by hand before (#24) and the open rows are issue #175.
+// Episodes are read from the same line and fail the same way: a record
+// filed below the wiki's first episode opens before the anime shows it,
+// unless a hand check found the wiki late (`EPISODE_KEPT`, issue #175).
 //
 // Run it with `npm run verify:chapters`. It talks to the network, so it is not
 // part of `npm run check` or CI; the pages it reads are cached under
@@ -174,6 +175,19 @@ const NAMED_AT = {
   'warp-warp-fruit': 1063,
 }
 
+/**
+ * Records kept below the wiki's first episode after a hand check found the
+ * wiki late: it dates a first appearance the archive has an earlier, named
+ * sighting for. The value is the episode checked, so a record moved since
+ * falls back to the rule.
+ * @type {Record<string, number>}
+ */
+const EPISODE_KEPT = {
+  // Episode 1's opening narration names him over his execution (chapter 1,
+  // page 1); the wiki dates his first flashback, episode 48.
+  'gold-roger': 1,
+}
+
 /** A naming verb: the chapter summary says who ate the fruit or what it is. */
 const NAMING =
   /\b(?:ate|eaten|fed|reveal|explain|named?|identif|called|known as)/iu
@@ -204,9 +218,8 @@ export function namingChapterOf(chapters, title) {
 }
 
 /**
- * The episode a page gives for its subject, read the same way. The archive's
- * episodes were checked by hand already, so this only informs: a record whose
- * episode sits below the wiki's is listed, not failed.
+ * The episode a page gives for its subject, read the same way. A record whose
+ * episode sits below it fails unless a hand check kept it (`EPISODE_KEPT`).
  * @param {Page} page The parsed page.
  * @param {string} kind The record's kind.
  * @returns {number | undefined} The episode, or nothing when the page has none.
@@ -217,6 +230,21 @@ export function episodeOf(page, kind) {
     debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
     line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
   })
+}
+
+/**
+ * Which way a record's episode disagrees with the wiki's first, if it does.
+ * @param {string} id The record's id.
+ * @param {number} episode The record's episode.
+ * @param {number} [wikiEpisode] The wiki's first episode, if the page gives one.
+ * @returns {'kept' | 'ok' | 'too low'} The verdict.
+ */
+export function episodeVerdictOf(id, episode, wikiEpisode) {
+  if (wikiEpisode === undefined || episode >= wikiEpisode) {
+    return 'ok'
+  }
+
+  return EPISODE_KEPT[id] === episode ? 'kept' : 'too low'
 }
 
 /**
@@ -332,7 +360,7 @@ export function verdictOf(filed, source) {
   return filed === source.wiki ? 'equal' : 'kept'
 }
 
-/** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, verdict: string }} Row */
+/** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, verdict: string, episodeVerdict: string }} Row */
 
 /**
  * Every record against its page, in archive order.
@@ -354,6 +382,11 @@ async function verify() {
       episode: record.revealedAtEpisode,
       ...source,
       verdict: verdictOf(record.revealedAtChapter, source),
+      episodeVerdict: episodeVerdictOf(
+        record.id,
+        record.revealedAtEpisode,
+        source.wikiEpisode,
+      ),
     })
   }
 
@@ -383,9 +416,13 @@ function table(title, rows, cells) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const rows = await verify()
-  const wrong = rows.filter(
-    (row) => row.verdict === 'too low' || row.verdict === 'unresolved',
-  )
+  const wrong = rows.filter((row) => {
+    return (
+      row.verdict === 'too low'
+      || row.verdict === 'unresolved'
+      || row.episodeVerdict === 'too low'
+    )
+  })
   const tables = ['too low', 'unresolved', 'equal', 'kept'].map((verdict) => {
     return table(
       verdict,
@@ -393,14 +430,14 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       (row) => [row.filed, row.wiki, row.page],
     )
   })
-  const episodes = table(
-    'episode below wiki, for information',
-    rows.filter(
-      (row) => row.wikiEpisode !== undefined && row.episode < row.wikiEpisode,
-    ),
-    (row) => [row.episode, row.wikiEpisode, row.page],
-  )
+  const episodes = ['too low', 'kept'].map((verdict) => {
+    return table(
+      `episode ${verdict}`,
+      rows.filter((row) => row.episodeVerdict === verdict),
+      (row) => [row.episode, row.wikiEpisode, row.page],
+    )
+  })
 
-  console.log([...tables, episodes].join('\n\n'))
+  console.log([...tables, ...episodes].join('\n\n'))
   process.exitCode = wrong.length === 0 ? 0 : 1
 }

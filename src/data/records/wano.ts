@@ -125,8 +125,8 @@ export const wano: Saga = {
       revealedAtChapter: 930,
       name: { it: 'Shinobu', en: 'Shinobu' },
       summary: {
-        it: 'Una kunoichi grande e rumorosa al servizio dei Kozuki, che si offende se la chiamano vecchia e fa maturare e marcire tutto ciò che tocca.',
-        en: 'A big, loud kunoichi in the service of the Kozuki, who takes offence at being called old and ripens and rots whatever she touches.',
+        it: 'Una kunoichi veterana al servizio dei Kozuki, un tempo come una sorella minore per Kin’emon, che come tecnica speciale usa la seduzione e si definisce una donna matura.',
+        en: 'A veteran kunoichi in the service of the Kozuki, once like a younger sister to Kin’emon, whose signature move is Seduction Jutsu and who calls herself a mature woman.',
       },
       visual: { art: 'shinobu', tint: 'lavender' },
     },
@@ -165,8 +165,8 @@ export const wano: Saga = {
       commonWord: true,
       name: { it: 'King', en: 'King' },
       summary: {
-        it: 'Il braccio destro dell’Imperatore, un uomo mascherato che vola su ali di fuoco e piomba dal cielo come uno pteranodonte.',
-        en: 'The Emperor’s right hand, a masked man who flies on wings of fire and comes down out of the sky as a pteranodon.',
+        it: 'Un uomo mascherato dei Pirati delle Cento Bestie che Jack chiama fratello maggiore, che lo rimprovera perché le offerte di Kuri sono troppo scarse e litiga a insulti con un altro uomo dell’Imperatore.',
+        en: 'A masked man of the Beasts Pirates whom Jack calls big brother, who scolds him because the offerings from Kuri are too low and trades insults with another of the Emperor’s men.',
       },
       visual: { art: 'king', tint: 'wine' },
     },
@@ -293,24 +293,24 @@ export const wano: Saga = {
     {
       id: 'kurozumi-higurashi',
       kind: 'character',
-      revealedAtEpisode: 963,
+      revealedAtEpisode: 970,
       revealedAtChapter: 972,
       name: { it: 'Kurozumi Higurashi', en: 'Kurozumi Higurashi' },
       summary: {
-        it: 'Una vecchia della famiglia Kurozumi che, dietro una maschera da volpe e un frutto del diavolo, può prendere il volto di chiunque.',
-        en: 'An old woman of the Kurozumi family who, behind a fox mask and a devil fruit, can wear anybody’s face she likes.',
+        it: 'Una vecchia della famiglia Kurozumi che sta accanto a Orochi e, con il frutto Clone Clone, ha preso l’aspetto dello shogun Sukiyaki perché Orochi fosse nominato reggente.',
+        en: 'An old woman of the Kurozumi family who stands at Orochi’s side and, with the Clone-Clone Fruit, took the shogun Sukiyaki’s shape to have Orochi named proxy.',
       },
       visual: { art: 'kurozumi-higurashi', tint: 'ocher' },
     },
     {
       id: 'kurozumi-semimaru',
       kind: 'character',
-      revealedAtEpisode: 963,
+      revealedAtEpisode: 970,
       revealedAtChapter: 972,
       name: { it: 'Kurozumi Semimaru', en: 'Kurozumi Semimaru' },
       summary: {
-        it: 'Un Kurozumi silenzioso che alza intorno a sé una cupola invisibile contro cui le lame si fermano a mezz’aria.',
-        en: 'A silent Kurozumi who raises an invisible dome around himself, against which blades stop dead in mid-air.',
+        it: 'Un monaco Kurozumi che suona il biwa e alza davanti a Orochi una barriera invisibile contro cui la lama di Oden si ferma a mezz’aria.',
+        en: 'A biwa-playing priest of the Kurozumi family who raises an invisible barrier in front of Orochi, against which Oden’s blade stops dead in mid-air.',
       },
       visual: { art: 'kurozumi-semimaru', tint: 'acid' },
     },
@@ -880,8 +880,8 @@ export const wano: Saga = {
         en: 'Kozuki alliance kunoichi',
       },
       log: {
-        it: 'Si muove per la capitale travestita e raccoglie notizie per chi complotta contro lo shogun, e sa entrare e uscire dal castello senza farsi vedere. Il suo frutto del diavolo fa maturare tutto ciò che tocca, così una porta chiusa marcisce sotto le sue dita e un uomo invecchia di colpo. Sostiene di essere ancora giovanissima nell’animo.',
-        en: 'She moves through the capital in disguise, gathering word for the people plotting against the shogun, and slips in and out of the castle unseen. Her devil fruit ripens whatever it touches, so a locked door rots under her fingers and a grown man ages in a moment. She insists she is still a young thing at heart.',
+        it: 'Kin’emon la chiama come guida mentre la ciurma si traveste per muoversi nel Paese di Wano, e lei si presenta come una vera kunoichi. Da giovane era per lui come una sorella minore. Si definisce una donna matura, e a un ragazzo che non ne capisce il fascino dice che un giorno lo capirà.',
+        en: 'Kin’emon calls her in as a guide while the crew put on disguises to move about Wano, and she introduces herself as a real kunoichi. When she was young she was like a younger sister to him. She calls herself a mature woman, and tells a young man who does not see the charm of one that someday he will.',
       },
       affiliation: [
         {
@@ -900,7 +900,7 @@ export const wano: Saga = {
         },
       ],
       origin: [{ episode: 912, value: WANO }],
-      devilFruit: [{ episode: 912, value: ['ripe-ripe-fruit'] }],
+      devilFruit: [{ episode: 916, value: ['ripe-ripe-fruit'] }],
     },
     'hyogoro': {
       role: { it: 'Vecchio capo della yakuza', en: 'Old yakuza boss' },
@@ -967,8 +967,8 @@ export const wano: Saga = {
         en: 'Beasts Pirates All-Star',
       },
       log: {
-        it: 'Vola sopra Wano con una maschera che non toglie mai e un corpo che prende fuoco quando accelera, e nessuno degli uomini dell’Imperatore osa rivolgergli la parola per primo. È il più forte dei tre luogotenenti. Di lui si sanno il nome, l’ala e poco altro.',
-        en: 'He flies over Wano behind a mask he never takes off, his body catching fire as he accelerates, and none of the Emperor’s men speaks to him first. He is the strongest of the three lieutenants. His name, his wing and very little else are known.',
+        it: 'Sta a Onigashima, il volto coperto da una maschera. Insieme a un altro dei grandi della ciurma rimprovera Jack, che lo chiama fratello maggiore, perché le offerte di Kuri sono troppo scarse. Poi i due si danno dell’idiota e del rifiuto a vicenda. Di lui si sanno il nome, la maschera e poco altro.',
+        en: 'He keeps to Onigashima, his face hidden behind a mask. With another of the crew’s big men he scolds Jack, who calls him big brother, because the offerings from Kuri are too low. Then the two of them call each other an idiot and a piece of scum. His name, his mask and very little else are known.',
       },
       affiliation: [
         {
@@ -993,7 +993,7 @@ export const wano: Saga = {
       ],
       devilFruit: [
         {
-          episode: 923,
+          episode: 924,
           value: ['dragon-dragon-fruit-ancient-model-pteranodon'],
         },
       ],
@@ -1238,24 +1238,24 @@ export const wano: Saga = {
     'kurozumi-higurashi': {
       role: { it: 'Anziana dei Kurozumi', en: 'Kurozumi elder' },
       log: {
-        it: 'Porta il nome di una famiglia che a Wano nessuno pronuncia volentieri, e cammina appoggiata a un bastone con una maschera da volpe sul viso. Il suo frutto le permette di assumere l’aspetto di chiunque abbia visto, e se ne serve per mettere gli uomini gli uni contro gli altri. È lei a spingere verso il potere un giovane Kurozumi.',
-        en: 'She carries a family name that nobody in Wano says gladly, and walks leaning on a stick with a fox mask over her face. Her fruit lets her take the shape of anyone she has laid eyes on, and she uses it to set men against each other. It is she who pushes a young Kurozumi towards power.',
+        it: 'Porta il nome di una famiglia che a Wano tutti disprezzano, e sta accanto a Orochi quando Oden torna e pretende il trono. Con il frutto Clone Clone aveva preso l’aspetto di Sukiyaki, e i daimyo hanno creduto alle sue parole quando ha nominato Orochi reggente. Così nessuno può più sapere che cosa pensasse davvero il vecchio shogun.',
+        en: 'She carries a family name that everyone in Wano despises, and stands at Orochi’s side when Oden comes home and demands the throne. With the Clone-Clone Fruit she had taken Sukiyaki’s shape, and the daimyo believed her when she named Orochi proxy. Now nobody can know what the real shogun was thinking.',
       },
       status: [
-        { episode: 963, value: 'alive' },
+        { episode: 970, value: 'alive' },
         { episode: 974, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 963,
+          episode: 970,
           value: {
             it: 'Famiglia Kurozumi, anziana',
             en: 'Kurozumi family, elder',
           },
         },
       ],
-      origin: [{ episode: 963, value: WANO }],
-      devilFruit: [{ episode: 963, value: ['clone-clone-fruit'] }],
+      origin: [{ episode: 970, value: WANO }],
+      devilFruit: [{ episode: 970, value: ['clone-clone-fruit'] }],
     },
     'kurozumi-semimaru': {
       role: {
@@ -1263,18 +1263,18 @@ export const wano: Saga = {
         en: 'Man of the Kurozumi family',
       },
       log: {
-        it: 'Sta accanto all’anziana della famiglia Kurozumi senza quasi mai parlare, e interviene soltanto quando qualcuno alza una mano su di lei. Il suo frutto del diavolo alza barriere invisibili che fermano una lama a mezz’aria e non si lasciano piegare. In un paese che odia il suo cognome, gli basta una parete d’aria per restare in piedi.',
-        en: 'He stands beside the elder of the Kurozumi family and hardly ever speaks, stepping in only when somebody raises a hand to her. His devil fruit throws up invisible barriers that stop a blade in mid-air and will not bend for anyone. In a country that hates his family name, a wall of air is enough to keep him standing.',
+        it: 'Monaco suonatore di biwa, sta accanto a Orochi con il resto della famiglia Kurozumi. Quando Oden torna e si scaglia contro Orochi, la sua spada si ferma a mezz’aria contro una barriera invisibile. Semimaru dice a Orochi di non avere paura: in teoria le sue barriere non lasciano avvicinare nessuno.',
+        en: 'A biwa-playing priest, he stands at Orochi’s side with the rest of the Kurozumi family. When Oden comes home and goes for Orochi, his sword stops in mid-air against an invisible barrier. Semimaru tells Orochi not to be afraid: in theory his barriers let nobody come closer.',
       },
-      status: [{ episode: 963, value: 'deceased' }],
+      status: [{ episode: 970, value: 'alive' }],
       affiliation: [
         {
-          episode: 963,
+          episode: 970,
           value: { it: 'Famiglia Kurozumi', en: 'Kurozumi family' },
         },
       ],
-      origin: [{ episode: 963, value: WANO }],
-      devilFruit: [{ episode: 963, value: ['barrier-barrier-fruit'] }],
+      origin: [{ episode: 970, value: WANO }],
+      devilFruit: [{ episode: 970, value: ['barrier-barrier-fruit'] }],
     },
     'izo': {
       role: {

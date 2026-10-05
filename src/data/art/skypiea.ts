@@ -195,15 +195,19 @@ export const skypieaArt = {
     { d: 'M80 44 V36', role: 'ambient' },
   ],
 
-  // A long feather with flame coming off its edge.
+  // An open shirt with a sash knotted at the waist, the way he stands on
+  // Whitebeard's deck when Shanks comes aboard (ep. 316).
   'marco': [
-    { d: 'M66 172 C74 120 82 72 88 32' },
-    { d: 'M88 32 C58 62 50 116 66 172' },
-    { d: 'M88 32 C120 64 122 120 68 168' },
-    { d: 'M76 80 l16 -10 M72 104 l22 -12 M70 128 l24 -12', role: 'soft' },
-    { d: 'M112 92 c10 -14 2 -26 -4 -34 c12 6 20 22 10 36z', role: 'accent' },
-    { d: 'M108 132 c12 -12 6 -26 0 -32 c14 8 18 26 6 36z', role: 'accent' },
-    { d: 'M92 30 c8 -10 4 -20 -2 -26 c2 10 -4 14 -4 22z', role: 'accent' },
+    {
+      d: 'M52 52 L26 88 L42 100 L52 86 V164 H108 V86 L118 100 L134 88 L108 52 L92 48 L80 66 L68 48z',
+    },
+    { d: 'M68 48 L72 164 M92 48 L88 164', role: 'soft' },
+    { d: 'M52 128 H108 V140 H52z', role: 'accent' },
+    {
+      d: `${circle(98, 134, 5)} M96 139 l-6 26 M101 139 l5 24`,
+      role: 'accent',
+    },
+    shadow(80, 176, 44),
   ],
 
   // A knight's lance standing beside a pumpkin-shaped helmet.

@@ -3,6 +3,7 @@ import { describe, expect, it } from 'vitest'
 import {
   chapterOf,
   episodeOf,
+  episodeVerdictOf,
   japaneseNameOf,
   namingChapterOf,
   readingOf,
@@ -241,5 +242,16 @@ describe('the verdict', () => {
     expect(verdictOf(2, { wiki: 2 })).toBe('equal')
     expect(verdictOf(3, { wiki: 2 })).toBe('kept')
     expect(verdictOf(3, {})).toBe('unresolved')
+  })
+})
+
+describe('the episode verdict', () => {
+  it('fails an episode below the wiki unless it was kept by hand', () => {
+    expect(episodeVerdictOf('x', 1, 2)).toBe('too low')
+    expect(episodeVerdictOf('x', 2, 2)).toBe('ok')
+    expect(episodeVerdictOf('x', 1)).toBe('ok')
+    expect(episodeVerdictOf('gold-roger', 1, 48)).toBe('kept')
+    // A kept record moved since falls back to the rule.
+    expect(episodeVerdictOf('gold-roger', 2, 48)).toBe('too low')
   })
 })

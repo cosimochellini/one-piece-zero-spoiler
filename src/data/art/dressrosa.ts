@@ -242,21 +242,19 @@ export const dressrosaArt = {
     shadow(80, 188, 40),
   ],
 
-  // A sword-cane and a pair of dice.
+  // A walking cane, and a roulette wheel beside it.
   'issho': [
     { d: 'M60 40 V172' },
     { d: 'M68 40 V172' },
     { d: 'M60 40 C60 20 92 20 92 40' },
     { d: 'M68 40 C68 28 84 28 84 40' },
-    { d: 'M100 120 h28 v28 h-28 z', role: 'accent' },
-    { d: 'M124 146 h26 v26 h-26 z', role: 'accent' },
+    { d: circle(118, 146, 26), role: 'accent' },
+    { d: circle(118, 146, 14) },
     {
-      d: dots([
-        [114, 134],
-        [137, 152],
-        [137, 166],
-      ]),
+      d: 'M118 120 V132 M118 160 V172 M92 146 H104 M132 146 H144',
+      role: 'soft',
     },
+    { d: dots([[128, 128]]), role: 'accent' },
     shadow(84, 184, 52),
   ],
 
@@ -625,24 +623,23 @@ export const dressrosaArt = {
     shadow(80, 184, 46),
   ],
 
-  // A needle and thread stitching a very small hat.
+  // A Marine's rifle and cap dropped in the grass, tiny footprints running
+  // off.
   'leo': [
-    { d: 'M30 172 L120 52' },
-    { d: circle(122, 48, 5) },
-    {
-      d: 'M122 48 C142 64 132 92 110 96 C86 100 80 126 98 138',
-      role: 'accent',
-    },
-    { d: ellipse(70, 138, 34, 9) },
-    { d: 'M48 136 C48 112 92 112 92 136' },
-    { d: 'M50 130 q20 8 40 0', role: 'soft' },
+    { d: 'M26 150 L44 140 L48 148 L30 160 Z', role: 'accent' },
+    { d: 'M44 140 L126 106 L128 112 L48 148' },
+    { d: ellipse(78, 96, 26, 7) },
+    { d: 'M58 94 C58 72 98 72 98 94' },
+    { d: 'M62 86 q16 6 32 0', role: 'soft' },
     {
       d: dots([
-        [62, 124],
-        [72, 120],
-        [82, 124],
+        [100, 140],
+        [108, 146],
+        [116, 140],
+        [124, 146],
+        [132, 140],
       ]),
-      role: 'soft',
+      role: 'accent',
     },
     shadow(72, 160, 40),
   ],

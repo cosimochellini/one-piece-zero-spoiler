@@ -260,8 +260,8 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     arc: 'jaya-arc',
     landmark: { it: 'Il porto di Mock Town', en: 'Mock Town harbour' },
     log: {
-      it: 'La ciurma vi arriva con un Log Pose che punta dritto verso il cielo e nessuna idea di come seguirlo. Mock Town è una città di pirati senza legge, dove nessuno paga il conto e chi parla di un’isola nel cielo viene deriso ad alta voce; l’altra metà dell’isola è foresta, e ci abita chi non ride.',
-      en: 'The crew arrives with a Log Pose pointing straight up at the sky and no idea how to follow it. Mock Town is a lawless pirate town where nobody pays their bill and anyone who mentions an island in the sky is laughed at out loud; the other half of the island is forest, and the people who do not laugh live there.',
+      it: 'La ciurma vi arriva con un Log Pose che punta dritto verso il cielo e nessuna idea di come seguirlo. Mock Town è una città di pirati senza legge, dove nessuno paga il conto e chi parla di un’isola nel cielo viene deriso ad alta voce.',
+      en: 'The crew arrives with a Log Pose pointing straight up at the sky and no idea how to follow it. Mock Town is a lawless pirate town where nobody pays their bill and anyone who mentions an island in the sky is laughed at out loud.',
     },
     filedHere: [
       'bellamy',

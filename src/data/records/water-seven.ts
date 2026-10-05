@@ -374,24 +374,24 @@ export const waterSeven: Saga = {
     {
       id: 'tom',
       kind: 'character',
-      revealedAtEpisode: 246,
+      revealedAtEpisode: 248,
       revealedAtChapter: 357,
       name: { it: 'Tom', en: 'Tom' },
       summary: {
-        it: 'Un maestro d’ascia uomo-pesce, enorme e con il mazzuolo sempre in spalla, che a Water Seven insegnava a costruire navi di cui non doversi vergognare.',
-        en: 'A fish-man master shipwright, huge, his mallet always over one shoulder, who taught Water Seven to build ships nobody would have to be ashamed of.',
+        it: 'Un maestro d’ascia uomo-pesce, chiamato il migliore del mondo, che costruì la nave del Re dei Pirati e poi il treno del mare che doveva salvare Water Seven.',
+        en: 'A fish-man master shipwright, called the best in the world, who built the Pirate King’s ship and then the sea train that was meant to save Water Seven.',
       },
       visual: { art: 'tom', tint: 'cyan' },
     },
     {
       id: 'spandam',
       kind: 'character',
-      revealedAtEpisode: 248,
+      revealedAtEpisode: 249,
       revealedAtChapter: 360,
       name: { it: 'Spandam', en: 'Spandam' },
       summary: {
-        it: 'Il capo di un’unità segreta del Governo Mondiale, che dà ordini da una lumaca telefonica dorata e porta una spada con la testa di elefante.',
-        en: 'The chief of a secret World Government unit, who gives his orders down a golden transponder snail and carries a sword with an elephant’s head on it.',
+        it: 'Un agente del Governo Mondiale che viene a Water Seven a cercare i progetti di un’arma antica, e che per averli è pronto a far affondare una nave giudiziaria.',
+        en: 'A World Government agent who comes to Water Seven after the blueprints of an ancient weapon, and who will sink a Judicial Ship to get them.',
       },
       visual: { art: 'spandam', tint: 'wine' },
     },
@@ -673,7 +673,7 @@ export const waterSeven: Saga = {
       epithet: [
         { episode: 207, value: { it: 'La Volpe d’Argento', en: 'Silver Fox' } },
       ],
-      devilFruit: [{ episode: 208, value: ['slow-slow-fruit'] }],
+      devilFruit: [{ episode: 210, chapter: 309, value: ['slow-slow-fruit'] }],
     },
     'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
@@ -1089,13 +1089,17 @@ export const waterSeven: Saga = {
     'tom': {
       role: { it: 'Maestro d’ascia', en: 'Master shipwright' },
       log: {
-        it: 'Aveva un cantiere sull’acqua, due allievi e una regola sola: un costruttore deve essere fiero di ogni nave che vara. Era un uomo-pesce arrivato da lontano, enorme e allegro, e non tutti a Water Seven lo vedevano di buon occhio. Sulla sua testa pendeva già un processo, e lui continuava a lavorare come se non lo riguardasse.',
-        en: 'He had a yard out on the water, two apprentices, and one rule: a builder must be proud of every ship he launches. He was a fish-man from far away, huge and cheerful, and not everyone in Water Seven was glad to have him. A trial was already hanging over him, and he went on working as though it were somebody else’s business.',
+        it: 'Guidava Tom’s Workers, il cantiere dove crebbero i suoi due allievi, e diceva che un uomo deve essere fiero della nave che ha costruito. Per aver costruito la nave del Re dei Pirati una nave giudiziaria venne a condannarlo a morte. Ottenne invece dieci anni di libertà vigilata per costruire un treno che corre sul mare da un’isola all’altra, e il Puffing Tom fece la sua prima corsa.',
+        en: 'He ran Tom’s Workers, the yard where his two apprentices grew up, and he said a man should be proud of the ship he built. For building the Pirate King’s ship, a Judicial Ship came to sentence him to death. He was given ten years’ probation instead to build a train that runs across the sea from island to island, and the Puffing Tom made its first run.',
       },
-      status: [{ episode: 246, value: 'deceased' }],
+      // Seen only in a flashback at 248; his death is said at 268.
+      status: [
+        { episode: 248, value: 'unknown' },
+        { episode: 268, value: 'deceased' },
+      ],
       affiliation: [
         {
-          episode: 246,
+          episode: 248,
           value: {
             it: 'Tom’s Workers, maestro d’ascia',
             en: 'Tom’s Workers, master shipwright',
@@ -1104,23 +1108,27 @@ export const waterSeven: Saga = {
       ],
       origin: [
         {
-          episode: 246,
+          episode: 248,
           value: {
-            it: 'Water Seven, Rotta Maggiore; nato all’Isola degli Uomini-Pesce',
-            en: 'Water Seven, Grand Line; born on Fish-Man Island',
+            it: 'Water Seven, Rotta Maggiore',
+            en: 'Water Seven, Grand Line',
           },
         },
       ],
     },
     'spandam': {
-      role: { it: 'Capo del Cipher Pol 9', en: 'Chief of Cipher Pol 9' },
+      role: { it: 'Agente del Cipher Pol N. 5', en: 'Cipher Pol No. 5 agent' },
       log: {
-        it: 'Comanda un’unità segreta del Governo Mondiale e non ha mai vinto niente da solo: manda avanti gli agenti e si prende i meriti al telefono. Ha una maschera che gli copre metà faccia e una voce che sale di tono a ogni contrattempo. Del lavoro sporco fatto a Water Seven anni fa non ha mai dovuto rispondere a nessuno.',
-        en: 'He commands a secret World Government unit and has never won anything on his own: he sends his agents in and claims the credit down the line. A mask covers half his face, and his voice climbs a register at every setback. For the dirty work done in Water Seven years ago he has never had to answer to anyone.',
+        it: 'Arriva dal Cipher Pol N. 5 a cercare Tom, e il saluto di cannone di Franky lo colpisce prima che finisca di dire il suo nome. Vuole i progetti di un’arma antica perché il Governo possa respingere la grande era dei pirati, e quando Tom gli dice di non averli fa venire altri cinque agenti. Poi usa le navi da guerra di Franky per attaccare la nave giudiziaria, e la colpa ricade su Tom’s Workers.',
+        en: 'He comes from Cipher Pol No. 5 looking for Tom, and Franky’s cannon salute hits him before he can finish saying his name. He wants the blueprints of an ancient weapon so the Government can push back the Great Pirate Era, and when Tom says he has none he calls in five more agents. Then he uses Franky’s battleships to raid the Judicial Ship, and the blame falls on Tom’s Workers.',
       },
       affiliation: [
         {
-          episode: 248,
+          episode: 249,
+          value: { it: 'Cipher Pol N. 5', en: 'Cipher Pol No. 5' },
+        },
+        {
+          episode: 250,
           value: { it: 'Cipher Pol 9, capo', en: 'Cipher Pol 9, chief' },
         },
         {

@@ -204,8 +204,8 @@ export const skypieaChronicles = {
       value: {
         title: { it: 'Il Budda dorato', en: 'The golden Buddha' },
         body: {
-          it: 'Con i marine di Marineford sul punto di crollare, [[marshall-d-teach|Barbanera]] dichiara che finirà lui stesso ciò che resta della fortezza. Sengoku risponde prima che chiunque altro possa muoversi: un’onda d’urto dal palmo aperto scaraventa a terra l’intera ciurma di Barbanera, la forma da Budda dorato che ha tenuto nascosta per anni finalmente mostrata. Passa subito dal colpo a un discorso pensato per ridare spina dorsale a marine che hanno appena visto i propri ammiragli quasi soccombere: Ammiraglio in capo fino all’ultimo, anche con la guerra ormai, in silenzio, già persa.',
-          en: 'With Marineford’s marines on the verge of breaking, [[marshall-d-teach|Blackbeard]] declares he will finish what is left of the fortress himself. Sengoku answers before anyone else can move: a shockwave from his own open palm sends Blackbeard’s whole crew sprawling, the golden Buddha form he has kept hidden for years finally shown. He turns from the blow straight into a speech meant to put backbone back into marines who have just watched their own admirals nearly lose, Fleet Admiral to the last, even with the war already, quietly, lost.',
+          it: 'Con i marine di Marineford sul punto di crollare, [[marshall-d-teach|Barbanera]] dichiara che finirà lui stesso ciò che resta della fortezza. Sengoku risponde prima che chiunque altro possa muoversi: un’onda d’urto dal palmo aperto scaraventa a terra l’intera ciurma di Barbanera, ancora una volta nella sua forma da Budda dorato. Passa subito dal colpo a un discorso pensato per ridare spina dorsale a marine che hanno appena visto i propri ammiragli quasi soccombere: Ammiraglio in capo fino all’ultimo, anche con la guerra ormai, in silenzio, già persa.',
+          en: 'With Marineford’s marines on the verge of breaking, [[marshall-d-teach|Blackbeard]] declares he will finish what is left of the fortress himself. Sengoku answers before anyone else can move: a shockwave from his own open palm sends Blackbeard’s whole crew sprawling, in his golden Buddha form once more. He turns from the blow straight into a speech meant to put backbone back into marines who have just watched their own admirals nearly lose, Fleet Admiral to the last, even with the war already, quietly, lost.',
         },
       },
     },
@@ -361,15 +361,15 @@ export const skypieaChronicles = {
 
   'enel': [
     {
-      episode: 158,
+      episode: 167,
       value: {
         title: {
-          it: 'Il giudizio scende come un fulmine',
-          en: 'Judgement comes down as lightning',
+          it: 'Nessun fallimento come quello di Satori',
+          en: 'No failures like Satori’s',
         },
         body: {
-          it: '[[conis|Conis]] guida [[monkey-d-luffy|Rufy]], [[usopp|Usop]] e [[sanji|Sanji]] verso quella che aveva promesso essere una via per l’Upper Yard, poi crolla e confessa che è una trappola, un sacrificio che le era stato ordinato. Un fulmine cade da un cielo sereno prima che finisca la frase, punizione per aver fatto arrabbiare colui che a Skypiea chiamano Dio. Si chiama Ener, e non si mostra di persona: giudica da qualche parte sopra le nuvole, e chiunque lo dispiaccia brucia senza mai vedere chi lo ha colpito.',
-          en: '[[conis|Conis]] leads [[monkey-d-luffy|Luffy]], [[usopp|Usopp]] and [[sanji|Sanji]] toward what she promised was a way up to Upper Yard, then breaks down and confesses it is a trap, a sacrifice she was ordered to make. Lightning drops from a clear sky before she finishes the sentence, punishment for having angered the one Skypiea calls God. His name is Enel, and he does not appear in person; he simply judges from somewhere above the clouds, and anyone who displeases him burns without ever seeing who struck them.',
+          it: 'Ener convoca i suoi sacerdoti e poi compare in mezzo a loro all’improvviso: lui è Dio, ed è proprio lì. Non vuole altri fallimenti come quello di [[satori|Satori]], e a [[shura|Shura]], che si vanta di aver finito lui stesso [[gan-fall|Gan Fall]], dice che il vecchio è vivo. Gli stranieri del Mare Blu cercano l’oro, spiega, perché un tempo quest’isola stava sul Mare Blu. Domani aprirà tutto l’Upper Yard alle prove dei sacerdoti, senza più regole. Il Maxim è pronto, ed è ora di finire quest’isola e partire per il Mondo dei Sogni.',
+          en: 'Enel summons his priests and then appears among them without warning: he is God, and he is right here. He wants no more failures like [[satori|Satori]]’s, and tells [[shura|Shura]], who boasts of finishing off [[gan-fall|Gan Fall]] himself, that the old man is alive. The strangers from the Blue Sea are after gold, he says, because this island used to sit on the Blue Sea. Tomorrow he will open all of Upper Yard to the priests’ ordeals, with no rules. The Maxim is finished, and it is time to finish off the island and leave for the World of Dreams.',
         },
       },
     },

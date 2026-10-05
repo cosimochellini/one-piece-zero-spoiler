@@ -461,16 +461,16 @@ export const eastBlueArt = {
     { d: 'M30 142 L14 134 M130 142 L146 134' },
     shadow(80, 182, 50),
   ],
-  // A teacup on a silver tray, the bow tie laid beside it.
+  // The anniversary present he hands over at 12: a box tied with a ribbon.
   'merry': [
-    { d: 'M62 62 L66 90 h24 L94 62 Z', role: 'accent' },
-    { d: 'M58 62 h40', role: 'accent' },
-    { d: 'M94 66 q18 2 16 13 q-2 9 -16 9', role: 'accent' },
-    { d: ellipse(80, 104, 62, 16) },
-    { d: ellipse(80, 104, 48, 11), role: 'soft' },
-    { d: 'M46 144 L74 136 L74 170 Z' },
-    { d: 'M114 144 L86 136 L86 170 Z' },
-    { d: 'M74 146 h12 v14 h-12 Z' },
+    { d: 'M40 104 H120 V172 H40 Z' },
+    { d: 'M34 88 H126 V104 H34 Z' },
+    { d: 'M74 88 V172 M86 88 V172', role: 'accent' },
+    {
+      d: 'M80 88 C66 64 46 70 56 86 Z M80 88 C94 64 114 70 104 86 Z',
+      role: 'accent',
+    },
+    { d: 'M48 116 V160 M112 116 V160', role: 'soft' },
     shadow(80, 182, 50),
   ],
 
@@ -569,17 +569,16 @@ export const eastBlueArt = {
     },
     shadow(84, 192, 48),
   ],
-  // A bundle of wanted posters, roped crosswise.
+  // A pair of round dark glasses above his sword.
   'johnny': [
-    { d: 'M44 48 H136 V132' },
-    { d: 'M36 56 H128 V140' },
-    { d: 'M26 64 H120 V150 H26 Z' },
-    { d: 'M34 78 h50 M34 92 h38', role: 'soft' },
-    { d: 'M34 130 h78', role: 'soft' },
-    { d: 'M16 106 C48 96 102 96 138 106', role: 'accent' },
-    { d: 'M72 40 C64 74 64 124 72 160', role: 'accent' },
-    { d: 'M66 100 q10 -8 16 2 q-8 10 -16 -2 Z', role: 'accent' },
-    shadow(76, 166, 54),
+    { d: `${circle(56, 76, 20)} ${circle(104, 76, 20)}`, role: 'accent' },
+    { d: 'M76 74 q4 -6 8 0', role: 'accent' },
+    { d: 'M36 72 L22 64 M124 72 L138 64' },
+    { d: 'M48 70 l8 -6 M96 70 l8 -6', role: 'soft' },
+    { d: 'M20 144 L118 144 L138 140 L118 136 L20 136 Z' },
+    { d: 'M118 128 V152', role: 'accent' },
+    { d: 'M118 140 H150' },
+    shadow(80, 172, 56),
   ],
   // A crate of limes with one cut open on the top.
   'yosaku': [
@@ -654,16 +653,28 @@ export const eastBlueArt = {
     { d: 'M44 156 H116', role: 'soft' },
     shadow(80, 168, 44),
   ],
-  // Two tonfa, each with an iron ball hung at the end.
+  // The plate of fried rice Sanji brings him at 21, a spoon resting in it.
   'gin': [
-    { d: 'M32 38 H46 V134 H32 Z' },
-    { d: 'M46 60 H72 V76 H46' },
-    { d: 'M114 38 H128 V134 H114 Z' },
-    { d: 'M114 60 H88 V76 H114' },
-    { d: 'M36 134 h6 v6 h-6 Z M118 134 h6 v6 h-6 Z', role: 'soft' },
-    { d: circle(39, 160, 20), role: 'accent' },
-    { d: circle(121, 160, 20), role: 'accent' },
-    shadow(80, 188, 52),
+    { d: ellipse(80, 144, 62, 16) },
+    { d: ellipse(80, 144, 46, 10), role: 'soft' },
+    { d: 'M46 140 C50 112 110 112 114 140', role: 'accent' },
+    {
+      d: dots([
+        [62, 128],
+        [78, 122],
+        [94, 126],
+        [70, 136],
+        [100, 136],
+      ]),
+      role: 'accent',
+    },
+    { d: 'M96 124 L132 88' },
+    { d: ellipse(138, 82, 8, 5) },
+    {
+      d: 'M64 104 c-6 -10 4 -14 -2 -26 M84 100 c-6 -10 4 -14 -2 -26',
+      role: 'ambient',
+    },
+    shadow(80, 176, 52),
   ],
 
   // An iron knuckle with four rings, and a bowl of soup with a fly above it.

@@ -35,11 +35,6 @@ const MOKOMO_MUSKETEERS = {
   en: 'Mokomo Dukedom, Inuarashi Musketeers',
 }
 
-const MUSKETEER_ROLE = {
-  it: 'Moschettiera del ducato',
-  en: 'Musketeer of the dukedom',
-}
-
 const RED_SCABBARDS = { it: 'Nove Foderi Rossi', en: 'Nine Red Scabbards' }
 
 const BIG_MOM_DAUGHTER = {
@@ -78,12 +73,12 @@ export const wholeCake: Saga = {
     {
       id: 'wanda',
       kind: 'character',
-      revealedAtEpisode: 752,
+      revealedAtEpisode: 754,
       revealedAtChapter: 806,
       name: { it: 'Wanda', en: 'Wanda' },
       summary: {
-        it: 'Una mink dal pelo bianco che accompagna i nuovi arrivati tra le rovine di Zou in sella a una cavalcatura a forma di coccodrillo.',
-        en: 'A white-furred mink who leads the newcomers through the ruins of Zou from the saddle of a crocodile-shaped mount.',
+        it: 'Una mink cane che ferma le Guardie mentre attaccano Rufy, gli racconta come è stato distrutto il paese e gli offre un passaggio sulla sua cavalcatura.',
+        en: 'A dog mink who stops the Guardians attacking Luffy, tells him how the country was ruined and offers him a ride on her mount.',
       },
       visual: { art: 'wanda', tint: 'red' },
     },
@@ -138,12 +133,12 @@ export const wholeCake: Saga = {
     {
       id: 'raizo',
       kind: 'character',
-      revealedAtEpisode: 764,
+      revealedAtEpisode: 768,
       revealedAtChapter: 824,
       name: { it: 'Raizo', en: 'Raizo' },
       summary: {
-        it: 'Il ninja di Wano nascosto da anni dentro il ducato dei mink, che riappare sano e salvo con un rotolo in spalla e molte scuse.',
-        en: 'The ninja from Wano hidden inside the mink dukedom for years, who turns up unharmed with a scroll on his back and many apologies.',
+        it: 'Il ninja di Wano nascosto in una grotta dentro l’Albero Balena, che piange e grida a Nekomamushi: perché non l’ha consegnato?',
+        en: 'The ninja from Wano hidden in a cave inside the Whale Tree, who weeps and shouts at Nekomamushi: why didn’t he hand him over?',
       },
       visual: { art: 'raizo', tint: 'violet' },
     },
@@ -186,12 +181,12 @@ export const wholeCake: Saga = {
     {
       id: 'praline',
       kind: 'character',
-      revealedAtEpisode: 785,
+      revealedAtEpisode: 790,
       revealedAtChapter: 830,
       name: { it: 'Praline', en: 'Praline' },
       summary: {
-        it: 'Una sirena con la coda da squalo, figlia di Big Mom e moglie di un uomo-pesce dei Pirati del Sole, con il pettine tra i capelli.',
-        en: 'A mermaid with a shark’s tail, a daughter of Big Mom married to a fish-man of the Sun Pirates, a comb set in her hair.',
+        it: 'Una sirena squalo martello, ventinovesima figlia di Big Mom e moglie di Aladine, che tra lui e la madre sceglierebbe lui.',
+        en: 'A hammerhead shark mermaid, Big Mom’s 29th daughter and Aladine’s wife, who would choose him over her mother.',
       },
       visual: { art: 'praline', tint: 'cyan' },
     },
@@ -246,12 +241,12 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-brulee',
       kind: 'character',
-      revealedAtEpisode: 790,
+      revealedAtEpisode: 792,
       revealedAtChapter: 834,
       name: { it: 'Charlotte Brûlée', en: 'Charlotte Brûlée' },
       summary: {
-        it: 'Una figlia di Big Mom dal volto segnato, che vive dentro gli specchi e tira dentro chi passa davanti a una cornice senza accorgersene.',
-        en: 'A daughter of Big Mom with a scarred face, who lives inside mirrors and pulls in whoever walks past a frame without noticing.',
+        it: 'Una figlia di Big Mom dal volto segnato, che si finge Rufy nella Foresta della Seduzione e promette che nessuno ne uscirà vivo.',
+        en: 'A daughter of Big Mom with a scarred face, who poses as Luffy in the Seducing Woods and promises that nobody leaves it alive.',
       },
       visual: { art: 'charlotte-brulee', tint: 'lavender' },
     },
@@ -342,12 +337,12 @@ export const wholeCake: Saga = {
     {
       id: 'vinsmoke-sora',
       kind: 'character',
-      revealedAtEpisode: 799,
-      revealedAtChapter: 842,
+      revealedAtEpisode: 819,
+      revealedAtChapter: 852,
       name: { it: 'Vinsmoke Sora', en: 'Vinsmoke Sora' },
       summary: {
-        it: 'La regina del Germa vista nel ricordo di un bambino, distesa in un letto d’ospedale con un pranzo al sacco preparato per il figlio.',
-        en: 'The queen of Germa, seen in a child’s memory, lying in a hospital bed with a packed lunch she has made for her son.',
+        it: 'La regina del Germa nel racconto della figlia, che si oppone al piano del marito sui figli e si indebolisce in un letto d’ospedale.',
+        en: 'The queen of Germa in her daughter’s account, who fights her husband’s plan for their sons and grows weak in a hospital bed.',
       },
       visual: { art: 'vinsmoke-sora', tint: 'lavender' },
     },
@@ -366,12 +361,12 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-smoothie',
       kind: 'character',
-      revealedAtEpisode: 810,
+      revealedAtEpisode: 812,
       revealedAtChapter: 854,
       name: { it: 'Charlotte Smoothie', en: 'Charlotte Smoothie' },
       summary: {
-        it: 'Una Sweet Commander altissima di Totto Land, che strizza un frutto sopra un bicchiere e se lo beve come se fosse niente.',
-        en: 'A very tall Sweet Commander of Totto Land, who wrings a piece of fruit out over a glass and drinks it as if it were nothing.',
+        it: 'Una Sweet Commander altissima di Totto Land, che strizza fino all’ultima goccia un sottoposto che la implora di avere pietà.',
+        en: 'A very tall Sweet Commander of Totto Land, who wrings a subordinate dry while he begs her for mercy.',
       },
       visual: { art: 'charlotte-smoothie', tint: 'acid' },
     },
@@ -488,19 +483,19 @@ export const wholeCake: Saga = {
     {
       id: 'belo-betty',
       kind: 'character',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Belo Betty', en: 'Belo Betty' },
       summary: {
-        it: 'La comandante dell’armata dell’Est dei rivoluzionari, che pianta una bandiera rossa e con un grido tira fuori il coraggio dalla gente.',
-        en: 'The commander of the Revolutionary Army’s eastern force, who plants a red flag and pulls the courage out of people with a shout.',
+        it: 'La comandante dell’armata dell’Est dei rivoluzionari, che sventola una bandiera e con un grido tira fuori il coraggio dalla gente.',
+        en: 'The commander of the Revolutionary Army’s eastern force, who waves a flag and pulls the courage out of people with a shout.',
       },
       visual: { art: 'belo-betty', tint: 'red' },
     },
     {
       id: 'morley',
       kind: 'character',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Morley', en: 'Morley' },
       summary: {
@@ -512,19 +507,19 @@ export const wholeCake: Saga = {
     {
       id: 'karasu',
       kind: 'character',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Karasu', en: 'Karasu' },
       summary: {
-        it: 'Il comandante dell’armata del Nord dei rivoluzionari, un uomo mascherato che si disfa in uno stormo di corvi per spostarsi.',
-        en: 'The commander of the Revolutionary Army’s northern force, a masked man who comes apart into a flock of crows to travel.',
+        it: 'Il comandante dell’armata del Nord dei rivoluzionari, un uomo mascherato che prende forma da uno stormo di corvi su un tetto.',
+        en: 'The commander of the Revolutionary Army’s northern force, a masked man who takes shape out of a flock of crows on a rooftop.',
       },
       visual: { art: 'karasu', tint: 'ivory' },
     },
     {
       id: 'lindbergh',
       kind: 'character',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Lindbergh', en: 'Lindbergh' },
       summary: {
@@ -560,12 +555,13 @@ export const wholeCake: Saga = {
     {
       id: 'aramaki',
       kind: 'character',
-      revealedAtEpisode: 1077,
+      // Not in 1075–1078: first on screen and called Ryokugyu at 1079.
+      revealedAtEpisode: 1079,
       revealedAtChapter: 1057,
       name: { it: 'Aramaki', en: 'Aramaki' },
       summary: {
-        it: 'Un ammiraglio della Marina che scende scalzo su un’isola e la copre di radici, dicendo di non mangiare nulla da tre anni.',
-        en: 'A Marine admiral who comes down barefoot onto an island and covers it in roots, saying he has eaten nothing for three years.',
+        it: 'Un ammiraglio della Marina che vola verso Wano e che dice di non mangiare nulla da tre anni.',
+        en: 'A Marine admiral who flies toward Wano and says he has eaten nothing for three years.',
       },
       visual: { art: 'aramaki', tint: 'green' },
     },
@@ -893,25 +889,30 @@ export const wholeCake: Saga = {
       bounty: [{ episode: 759, value: 1_000_000_000 }],
     },
     'wanda': {
-      role: MUSKETEER_ROLE,
-      log: {
-        it: 'Accompagna gli sbarcati su per la zampa dell’elefante e dentro una città ancora piena di macerie, raccontando con calma quello che è successo mentre tiene la sciabola a portata di mano. È una guerriera dei Moschettieri del ducato e non si fida di nessuno finché non ha una ragione per farlo. Chiama i propri compagni per nome uno a uno, e sono moltissimi.',
-        en: 'She takes the new arrivals up the elephant’s leg and into a city still full of rubble, telling them calmly what happened with a sabre always within reach. She is a warrior of the dukedom’s Musketeers and trusts nobody until she has a reason to. She names her companions one by one, and there are a great many of them.',
+      // Not a musketeer role: she is first shown as a musketeer at 758.
+      role: {
+        it: 'Mink del Ducato di Mokomo',
+        en: 'Mink of the Mokomo Dukedom',
       },
-      // Dated at 756, where the duke is first named; she is met at 752 as a
-      // musketeer of a duke nobody has yet called by name.
-      affiliation: [{ episode: 756, value: MOKOMO_MUSKETEERS }],
-      origin: [{ episode: 752, value: ZOU }],
+      log: {
+        it: 'Indica agli sbarcati la strada per la Foresta del Fianco Destro e corre via in sella a Warney. Quando le Guardie attaccano Rufy, che è entrato nella loro foresta, le ferma: il loro compito è cacciare gli invasori, e lei promette di portarlo fuori. Dice che il paese si chiama Ducato di Mokomo, che esiste da secoli e che mezzo mese fa era ancora pieno di gente felice, poi offre a Rufy un passaggio sulla sua cavalcatura.',
+        en: 'She tells the new arrivals the way to the Rightflank Forest and rides off on Warney. When the Guardians attack Luffy for entering their forest, she stops them: their job is to throw invaders out, and she promises to take him away. She says the country is the Mokomo Dukedom, centuries old, and that half a month ago it was still full of happy faces, then offers Luffy a ride on her mount.',
+      },
+      // Seen unnamed at 753, named at 754; she is first shown as one of the
+      // duke's musketeers at 758.
+      affiliation: [{ episode: 758, value: MOKOMO_MUSKETEERS }],
+      origin: [{ episode: 754, value: ZOU }],
     },
     'carrot': {
-      role: MUSKETEER_ROLE,
+      // Not a musketeer role: the musketeers are first shown at 758.
+      role: { it: 'Mink di Zou', en: 'Mink of Zou' },
       log: {
         it: 'Ha orecchie lunghe, un sorriso che non sta mai fermo e una curiosità che la porta a infilarsi dappertutto, compresi i posti in cui le hanno detto di non andare. Come ogni mink sa usare l’elettro, la scarica che il suo popolo accumula nel pelo e libera con un colpo solo. Sotto l’allegria c’è una guerriera che ha visto bruciare la propria città.',
         en: 'She has long ears, a grin that will not sit still and a curiosity that gets her into every place she has been told to stay out of. Like every mink she can use electro, the charge her people store in their fur and let go in a single blow. Under the cheerfulness there is a warrior who watched her own city burn.',
       },
       affiliation: [
-        // Dated at 756, where the duke is first named.
-        { episode: 756, value: MOKOMO_MUSKETEERS },
+        // Dated at 758, where the musketeers are first shown.
+        { episode: 758, value: MOKOMO_MUSKETEERS },
         {
           episode: 1085,
           value: {
@@ -995,12 +996,12 @@ export const wholeCake: Saga = {
     'raizo': {
       role: { it: 'Ninja del Paese di Wano', en: 'Ninja of Wano Country' },
       log: {
-        it: 'I mink hanno lasciato bruciare la propria città piuttosto che dire dove fosse, e lui era lì sotto per tutto il tempo. Viene da Wano, porta la fronte fasciata e un rotolo a tracolla, e quando finalmente si mostra si inchina e chiede scusa per il disturbo. Dentro quel rotolo può far sparire quello che vuole e tirarlo fuori quando serve.',
-        en: 'The minks let their own city burn rather than say where he was, and he was underneath it the whole time. He comes from Wano, wears a wrapped headband and a scroll across his back, and when he finally shows himself he bows and apologises for the trouble. He can make things vanish into that scroll and pull them out again when they are needed.',
+        it: 'I mink hanno lasciato distruggere la propria città piuttosto che dire dove fosse, e lui era in una grotta dentro l’Albero Balena, dietro una porta nascosta nella coda. Viene da Wano. Legato e in lacrime, grida a Nekomamushi che avrebbe dovuto consegnarlo: chi gli portava da mangiare è stato ferito, e se gli hanno mentito sul paese lo odierà. La ciurma se lo immaginava tutto diverso.',
+        en: 'The minks let their own city be wrecked rather than say where he was, and he was in a cave inside the Whale Tree, behind a hidden door in its tail. He comes from Wano. Restrained and in tears, he shouts at Nekomamushi that he should have handed him over: everyone who brought him food was hurt, and if they lied to him about the country he will hate him. The crew had pictured him quite differently.',
       },
       affiliation: [
         {
-          episode: 764,
+          episode: 768,
           value: {
             it: 'Ninja di Wano, nascosto a Zou',
             en: 'Ninja of Wano, in hiding on Zou',
@@ -1009,11 +1010,11 @@ export const wholeCake: Saga = {
         { episode: 930, value: RED_SCABBARDS },
       ],
       origin: [
-        { episode: 764, value: { it: 'Paese di Wano', en: 'Wano Country' } },
+        { episode: 768, value: { it: 'Paese di Wano', en: 'Wano Country' } },
       ],
       epithet: [
         {
-          episode: 764,
+          episode: 768,
           value: { it: 'Raizo della Nebbia', en: 'Raizo of the Mist' },
         },
       ],
@@ -1057,19 +1058,19 @@ export const wholeCake: Saga = {
     'praline': {
       role: BIG_MOM_DAUGHTER,
       log: {
-        it: 'È nata a Totto Land come una dei tantissimi figli di Big Mom, e la madre l’ha data in moglie a un uomo-pesce per legare a sé i Pirati del Sole. La coda le viene dallo squalo e i modi dal quartiere: tratta il marito con dolcezza e chiunque altro con la stessa franchezza. In casa sua si parla molto, e lei ascolta più di quanto sembri.',
-        en: 'She was born in Totto Land as one of Big Mom’s very many children, and her mother married her to a fish-man to tie the Sun Pirates to the house. The tail comes from a shark and the manners from the neighbourhood: she is gentle with her husband and just as blunt with everybody else. There is a lot of talk in her home, and she listens more than she appears to.',
+        it: 'È la ventinovesima figlia di Big Mom, una sirena squalo martello sposata con Aladine dei Pirati del Sole. Sorprende i pirati a parlare di lei e chiede se lo stanno facendo alle sue spalle. Se la madre si arrabbia, dice ad Aladine, lei sceglierà lui e partirà con lui. Ma avverte che chi ha voluto lasciare la ciurma della madre è morto, tutti quanti.',
+        en: 'She is Big Mom’s 29th daughter, a hammerhead shark mermaid married to Aladine of the Sun Pirates. She catches the pirates talking about her and asks whether they are doing it behind her back. If her mother gets angry, she tells Aladine, she will choose him and leave with him. But she warns that everyone who wished to leave her mother’s crew is dead.',
       },
       affiliation: [
         {
-          episode: 785,
+          episode: 790,
           value: {
             it: 'Pirati del Sole, moglie di Aladine; figlia di Big Mom',
             en: 'Sun Pirates, Aladine’s wife; Big Mom’s daughter',
           },
         },
       ],
-      origin: [{ episode: 785, value: TOTTO_LAND }],
+      // No `origin` line: the story never says where she was born.
     },
     'charlotte-pudding': {
       role: { it: 'Ministra del cioccolato', en: 'Minister of chocolate' },
@@ -1151,16 +1152,16 @@ export const wholeCake: Saga = {
     'charlotte-brulee': {
       role: BIG_MOM_DAUGHTER,
       log: {
-        it: 'Ogni specchio di Totto Land è una porta che dà sul suo mondo, un corridoio senza fine dove le cornici si affacciano su tutte le stanze dell’arcipelago. Da lì guarda, ascolta e tira dentro chi le serve, e chi ci finisce fatica parecchio a ritrovare l’uscita. Ha una cicatrice lunga sul viso e ride di sé prima che lo facciano gli altri.',
-        en: 'Every mirror in Totto Land is a door into her world, an endless corridor whose frames look out onto every room in the archipelago. From there she watches, listens and drags in whoever she needs, and anyone who lands inside has a hard time finding the way out. A long scar runs down her face, and she laughs at herself before anybody else can.',
+        it: 'Aspetta nella Foresta della Seduzione, dove i sentieri girano in tondo e gli alberi si muovono e parlano. Cammina accanto agli sbarcati con la faccia di Rufy finché Carrot non si accorge dell’inganno, poi annuncia che non usciranno mai dalla foresta, non prima di morire. Mostra la cicatrice che ha sul viso e dice che davanti ai visi belli le viene voglia di graffiarli.',
+        en: 'She waits in the Seducing Woods, where the paths lead back on themselves and the trees move and talk. She walks with the newcomers wearing Luffy’s face until Carrot sees through it, then announces that they will never get out of the forest, not until they die. She shows off the scar on her face and says pretty faces make her want to scratch them up.',
       },
       affiliation: [
         {
-          episode: 790,
+          episode: 792,
           value: { it: 'Pirati di Big Mom', en: 'Big Mom Pirates' },
         },
       ],
-      origin: [{ episode: 790, value: TOTTO_LAND }],
+      origin: [{ episode: 792, value: TOTTO_LAND }],
       devilFruit: [
         { episode: 796, chapter: 835, value: ['mirror-mirror-fruit'] },
       ],
@@ -1317,17 +1318,17 @@ export const wholeCake: Saga = {
         en: 'Queen of the Germa Kingdom',
       },
       log: {
-        it: 'Nel ricordo del figlio è l’unica voce gentile di quel castello: gli prepara il pranzo, gli dice che va bene così com’è e si mette tra lui e il padre. È malata e sempre più debole, e continua a sorridere dal letto come se non lo fosse. Non vuole che i suoi bambini diventino le armi che il regno ha ordinato.',
-        en: 'In her son’s memory she is the only kind voice in that castle: she packs his lunch, tells him he is fine as he is and puts herself between him and his father. She is ill and getting weaker, and she goes on smiling from the bed as though she were not. She does not want her children to become the weapons the kingdom has ordered.',
+        it: 'Incinta, si oppone al marito che vuole fare dei figli delle macchine per uccidere senza emozioni, e per fermarlo prende un farmaco potente. Il piano riesce lo stesso, e lei si indebolisce sempre di più per gli effetti del farmaco. Dal letto mostra alla figlia il pranzo che Sanji ha cucinato per lei e lo chiama il bambino migliore del mondo, poco prima di morire.',
+        en: 'Pregnant, she stands against her husband’s plan to turn their sons into killing machines without feelings, and takes a powerful drug to stop it. The plan works anyway, and the drug’s after-effects leave her weaker and weaker. From her bed she shows her daughter the meal Sanji cooked for her and calls him the greatest kid in the world, shortly before she dies.',
       },
-      status: [{ episode: 799, value: 'deceased' }],
+      status: [{ episode: 819, value: 'deceased' }],
       affiliation: [
         {
-          episode: 799,
+          episode: 819,
           value: { it: 'Regno di Germa, regina', en: 'Germa Kingdom, queen' },
         },
       ],
-      origin: [{ episode: 799, value: GERMA_KINGDOM }],
+      origin: [{ episode: 819, value: GERMA_KINGDOM }],
     },
     'charlotte-chiffon': {
       role: { it: 'Moglie di Capone Bege', en: 'Capone Bege’s wife' },
@@ -1349,12 +1350,12 @@ export const wholeCake: Saga = {
     'charlotte-smoothie': {
       role: SWEET_COMMANDER_ROLE,
       log: {
-        it: 'È una delle tre Sweet Commander e governa l’isola dei succhi, dove tutto quanto finisce spremuto. Le basta stringere qualcosa nel pugno perché ne esca il liquido, e non fa differenza se quel qualcosa è un frutto o un animale. È alta il doppio di chiunque le stia intorno e parla con la calma di chi non ha mai dovuto affrettarsi.',
-        en: 'She is one of the three Sweet Commanders and governs the island of juice, where everything ends up squeezed. She only has to close her fist on something for the liquid to come out of it, and it makes no difference whether that something is a fruit or an animal. She stands twice as tall as anyone near her and speaks with the calm of someone who has never had to hurry.',
+        it: 'È una delle tre Sweet Commander, ministra dei succhi e quattordicesima figlia della famiglia Charlotte. Un sottoposto la implora di avere pietà, e lei lo strizza finché non resta più niente. Fino al tea party non ha niente da fare, così si offre di sorvegliare lei i Poneglyph. Brook la descrive come una bella donna dalle gambe lunghe.',
+        en: 'She is one of the three Sweet Commanders, the minister of juice and the 14th daughter of the Charlotte family. A subordinate begs her for mercy, and she wrings him until nothing is left. She has nothing to do until the tea party, so she offers to guard the Poneglyphs herself. Brook describes her as a beautiful woman with long legs.',
       },
-      affiliation: [{ episode: 810, value: SWEET_COMMANDER }],
-      origin: [{ episode: 810, value: TOTTO_LAND }],
-      devilFruit: [{ episode: 810, value: ['wring-wring-fruit'] }],
+      affiliation: [{ episode: 812, value: SWEET_COMMANDER }],
+      origin: [{ episode: 812, value: TOTTO_LAND }],
+      devilFruit: [{ episode: 812, value: ['wring-wring-fruit'] }],
       bounty: [{ episode: 812, value: 932_000_000 }],
     },
     'charlotte-oven': {
@@ -1515,22 +1516,19 @@ export const wholeCake: Saga = {
         en: 'Commander of the East Army',
       },
       log: {
-        it: 'Guida l’armata dell’Est dei rivoluzionari e arriva dove la gente è già stanca di avere paura. Con una bandiera in mano e la sigaretta all’angolo della bocca chiama a raccolta i contadini, e chi la sente gridare scopre di avere una forza che non sapeva di avere. Lei e i suoi tre colleghi sono i comandanti delle quattro armate.',
-        en: 'She leads the Revolutionary Army’s eastern force and turns up wherever people are already tired of being afraid. With a flag in her hand and a cigarette at the corner of her mouth she calls the farmers together, and anyone who hears her shout finds a strength they did not know they had. She and her three colleagues command the four armies.',
+        it: 'Guida l’armata dell’Est dei rivoluzionari. In una città di porto razziata dai pirati chiede alla gente se vuole farsi ammazzare o combattere: scelgano il proprio destino. Sventola la bandiera e gli abitanti sentono salire una forza che non sapevano di avere, raccolgono bastoni e cacciano i pirati. Prima di andarsene lascia loro il modo di contattare l’Armata: chi si ribella non verrà mai abbandonato.',
+        en: 'She leads the Revolutionary Army’s eastern force. In a port town being raided by pirates, she asks the people whether they want to get killed or fight: let them choose their own destiny. She waves her flag, the townspeople feel a surge of power they did not know they had, pick up sticks and drive the pirates out. Before she leaves she gives them a way to contact the Army: they will never turn their back on the weak who stand up.',
       },
       affiliation: [
         {
-          episode: 879,
+          episode: 880,
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata dell’Est',
             en: 'Revolutionary Army, East Army commander',
           },
         },
       ],
-      epithet: [
-        { episode: 879, value: { it: 'l’Istigatrice', en: 'the Instigator' } },
-      ],
-      devilFruit: [{ episode: 879, value: ['pump-pump-fruit'] }],
+      devilFruit: [{ episode: 880, value: ['pump-pump-fruit'] }],
     },
     'morley': {
       role: {
@@ -1538,19 +1536,19 @@ export const wholeCake: Saga = {
         en: 'Commander of the West Army',
       },
       log: {
-        it: 'È un gigante e si presenta con il fiocco tra i capelli, il rossetto e una voce che non si sforza di sembrare altro. Quello che spinge con le mani si muove come argilla, terra e roccia comprese, e sotto una città può aprire gallerie in pochi istanti. Ha passato moltissimi anni rinchiuso da qualche parte e ne parla come di una noia ormai finita.',
-        en: 'He is a giant, and he turns up with a ribbon in his hair, lipstick on and a voice that makes no effort to sound like anything else. Whatever he pushes with his hands moves like clay, earth and rock included, and he can open tunnels under a city in moments. He spent a great many years shut away somewhere and speaks of it as of a boredom now over.',
+        it: 'È un gigante e si presenta con il fiocco tra i capelli, il rossetto e una voce che non si sforza di sembrare altro. Sbuca da sottoterra in mezzo a una città razziata dai pirati, con un tridente enorme in mano, e si offende quando lo prendono in giro per la minigonna. Il terreno che spinge con le mani si muove come argilla.',
+        en: 'He is a giant, and he turns up with a ribbon in his hair, lipstick on and a voice that makes no effort to sound like anything else. He rises out of the ground in a town being raided by pirates, a giant trident in his hand, and takes offence when they mock his miniskirt. The ground he pushes with his hands moves like clay.',
       },
       affiliation: [
         {
-          episode: 879,
+          episode: 880,
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata dell’Ovest',
             en: 'Revolutionary Army, West Army commander',
           },
         },
       ],
-      devilFruit: [{ episode: 879, value: ['push-push-fruit'] }],
+      devilFruit: [{ episode: 880, value: ['push-push-fruit'] }],
     },
     'karasu': {
       role: {
@@ -1558,12 +1556,12 @@ export const wholeCake: Saga = {
         en: 'Commander of the North Army',
       },
       log: {
-        it: 'Porta una maschera e un cappello a tesa larga, e parla per frasi corte con la voce filtrata. Quando deve andare da qualche parte si divide in un volo di corvi e ricompone il corpo all’arrivo, e con gli stessi corvi trasporta e consegna. Nelle riunioni dell’Armata Rivoluzionaria è quello che riporta i fatti senza aggiungerci nulla.',
-        en: 'He wears a mask and a wide-brimmed hat, and speaks in short sentences through a filter. When he needs to be somewhere he breaks apart into a flight of crows and puts himself back together on arrival, and he carries and delivers with the same birds. In the Revolutionary Army’s meetings he is the one who reports the facts and adds nothing to them.',
+        it: 'Porta una maschera e un cappello a tesa larga, e parla per frasi corte. Su un tetto si raduna uno stormo di corvi e da lì prende forma la sua figura, e sono i corvi a strappare le spade ai pirati. Dice ai pirati che sono venuti a fermarli, e più tardi ammette di essersi dimenticato di accendere l’altoparlante.',
+        en: 'He wears a mask and a wide-brimmed hat, and speaks in short sentences. A flock of crows gathers on a roof and his figure takes shape out of it, and it is the crows that take the pirates’ swords. He tells the pirates they are here to put a stop to them, and later admits he forgot to turn on his loudspeaker.',
       },
       affiliation: [
         {
-          episode: 879,
+          episode: 880,
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata del Nord',
             en: 'Revolutionary Army, North Army commander',
@@ -1580,12 +1578,12 @@ export const wholeCake: Saga = {
         en: 'Commander of the South Army',
       },
       log: {
-        it: 'È un mink dal muso di gatto e dal camice sporco, e nell’Armata Rivoluzionaria è insieme comandante e inventore. Costruisce armi e macchine che nessun altro saprebbe usare e le prova addosso a chi gli capita vicino, con risultati non sempre previsti. Alle riunioni arriva con gli occhialoni calati e qualcosa che ronza in mano.',
-        en: 'He is a mink with a cat’s face and a dirty lab coat, and in the Revolutionary Army he is commander and inventor at once. He builds weapons and machines nobody else would know how to work and tries them out on whoever is nearest, with results that are not always the intended ones. He comes to meetings with his goggles down and something humming in his hand.',
+        it: 'È un mink dal muso di gatto, e nell’Armata Rivoluzionaria è insieme comandante e inventore. Non vede l’ora di provare la sua nuova arma, e quando finalmente può usarla il suo Cool Shooter congela i fucili dei pirati. Prima chiama Sabo per avvisarlo che lui e gli altri comandanti arriveranno un po’ in ritardo.',
+        en: 'He is a mink with a cat’s face, and in the Revolutionary Army he is commander and inventor at once. He cannot wait to try out his new weapon, and when he finally gets to, his Cool Shooter freezes the pirates’ guns. Before that he phones Sabo to warn him that he and the other commanders will be a little late.',
       },
       affiliation: [
         {
-          episode: 879,
+          episode: 880,
           value: {
             it: 'Armata Rivoluzionaria, comandante dell’armata del Sud',
             en: 'Revolutionary Army, South Army commander',
@@ -1638,17 +1636,17 @@ export const wholeCake: Saga = {
     'aramaki': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'È uno degli ammiragli, arriva da solo e si muove scalzo, con una benda sugli occhi e i capelli lunghi sulle spalle. Dal suo corpo escono radici e rami che attraversano un’isola intera e prosciugano tutto quello che toccano, terra e persone comprese. Dice di non aver mangiato nulla da tre anni e di cavarsela benissimo lo stesso.',
-        en: 'He is one of the admirals, he arrives alone and he walks barefoot, a blindfold over his eyes and his hair down his shoulders. Roots and branches come out of his body and run across a whole island, draining whatever they touch, ground and people alike. He says he has not eaten anything in three years and that it suits him perfectly well.',
+        it: 'È uno degli ammiragli. Sakazuki gli chiede dove si trova, e lui risponde che è in aria e che vede già Wano; quando gli ordinano di non fare niente di inutile, dice di aver capito. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
+        en: 'He is one of the admirals. Sakazuki asks where he is, and he answers that he is in the air and can already see Wano; when he is told not to do anything unnecessary, he says he understands. He says he has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
       },
       affiliation: [
         {
-          episode: 1077,
+          episode: 1079,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
-      epithet: [{ episode: 1077, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
-      devilFruit: [{ episode: 1077, value: ['woods-woods-fruit'] }],
+      epithet: [{ episode: 1079, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
+      devilFruit: [{ episode: 1081, value: ['woods-woods-fruit'] }],
     },
     // No `devilFruit` line: the story shows his hands turn into a sheep's horns
     // from 739, and says at 779 that the Gifters eat artificial fruits, but the

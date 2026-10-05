@@ -66,19 +66,19 @@ export const wholeCakeArt = {
     shadow(82, 170, 48),
   ],
 
-  // A mink's sabre laid across a crocodile-shaped saddle.
+  // A crocodile-shaped saddle, its reins looped above it.
   'wanda': [
     {
-      d: 'M124 44 C96 74 62 110 38 148 L48 156 C74 122 108 84 132 54 Z',
+      d: 'M40 120 C60 96 104 96 124 116 C130 128 122 140 108 142 H56 C42 140 34 132 40 120 Z',
+    },
+    { d: 'M56 112 q24 -14 52 0', role: 'soft' },
+    { d: 'M50 142 l6 10 l6 -10 M70 142 l6 10 l6 -10 M90 142 l6 10 l6 -10' },
+    { d: 'M80 142 V164 M70 164 h20 l-4 10 h-12 Z' },
+    {
+      d: 'M124 116 C140 100 142 70 120 58 C100 48 76 60 70 80 C66 94 76 104 88 100',
       role: 'accent',
     },
-    { d: 'M32 142 L50 160' },
-    { d: 'M30 150 L16 166' },
-    { d: circle(14, 172, 5) },
-    { d: 'M58 158 q22 -20 50 -8 q8 14 -4 22 q-28 8 -46 -14 Z' },
-    { d: 'M70 144 q8 -14 20 -8', role: 'soft' },
-    { d: 'M104 150 l8 -9 l4 11z M118 156 l8 -9 l4 11z' },
-    shadow(82, 184, 42),
+    shadow(80, 184, 44),
   ],
 
   // A carrot beside a mitten crackling with electro.
@@ -158,16 +158,13 @@ export const wholeCakeArt = {
     shadow(58, 182, 28),
   ],
 
-  // A ninja scroll half unrolled, a throwing star above it.
+  // A hidden door swung open, a long flight of stairs going down behind it.
   'raizo': [
-    { d: ellipse(34, 110, 10, 18) },
-    { d: ellipse(126, 110, 10, 18) },
-    { d: 'M34 92 H126 M34 128 H126' },
-    { d: 'M50 104 h20 M50 114 h34 M90 104 h22 M90 114 h14', role: 'soft' },
-    { d: 'M80 128 q2 14 -8 22' },
-    { d: star(110, 54, 24, 10), role: 'accent' },
-    { d: circle(110, 54, 5), role: 'accent' },
-    shadow(80, 152, 46),
+    { d: 'M46 170 V86 C46 50 114 50 114 86 V170' },
+    { d: 'M54 112 H106 M58 128 H102 M62 144 H98 M66 160 H94', role: 'soft' },
+    { d: 'M114 88 L140 98 V176 L114 170 Z', role: 'accent' },
+    { d: circle(134, 136, 3), role: 'accent' },
+    { d: 'M24 170 H46 M114 170 H136' },
   ],
 
   // An island that is a tiered cake with a castle on top.
@@ -212,26 +209,20 @@ export const wholeCakeArt = {
     shadow(80, 176, 50),
   ],
 
-  // A comb whose back is shaped like a shark's tail.
+  // A hammerhead mermaid's tail rising out of the sea.
   'praline': [
-    { d: 'M34 60 H126 V84 H34 Z' },
-    { d: 'M34 72 H126', role: 'soft' },
     {
-      d: 'M80 60 C72 44 62 34 54 28 C62 42 64 52 64 60 M80 60 C88 44 98 34 106 28 C98 42 96 52 96 60',
+      d: 'M64 158 C60 128 66 104 82 86 C88 78 92 70 92 62 L100 62 C102 74 98 86 92 96 C80 114 80 136 88 158',
+    },
+    {
+      d: 'M92 62 C84 46 70 36 56 32 C66 44 72 54 76 66 Z M100 62 C108 46 122 38 138 36 C128 46 120 56 114 68 Z',
       role: 'accent',
     },
     {
-      d: 'M40 84 V138 M52 84 V146 M64 84 V150 M76 84 V152 M88 84 V150 M100 84 V146 M112 84 V138 M124 84 V130',
-    },
-    {
-      d: dots([
-        [48, 72],
-        [80, 72],
-        [112, 72],
-      ]),
+      d: 'M70 136 q8 -6 14 0 M72 118 q8 -6 14 0 M78 100 q7 -6 12 0',
       role: 'soft',
     },
-    shadow(80, 164, 46),
+    ...SEA,
   ],
 
   // A cake with a ribbon tied across it like a blindfold.
@@ -296,14 +287,18 @@ export const wholeCakeArt = {
     { d: 'M68 176 h24' },
   ],
 
-  // A hand mirror with a crack running across the glass.
+  // A crooked tree of the Seducing Woods, its branches reaching out like fingers.
   'charlotte-brulee': [
-    { d: ellipse(80, 78, 42, 50) },
-    { d: ellipse(80, 78, 34, 42), role: 'soft' },
-    { d: 'M62 40 L78 74 L64 84 L86 112', role: 'accent' },
-    { d: 'M78 74 L102 60 M86 112 l16 -8', role: 'accent' },
-    { d: 'M70 126 q-2 30 -4 44 h28 q-2 -14 -4 -44' },
-    { d: circle(80, 178, 7) },
+    { d: 'M64 176 C70 150 70 124 60 100 M92 176 C88 150 90 124 100 100' },
+    {
+      d: 'M60 100 C48 86 40 70 26 64 M60 100 C60 80 66 62 60 40 M100 100 C104 78 96 60 104 40 M100 100 C114 88 124 74 136 70',
+    },
+    {
+      d: 'M26 64 l-6 -8 M26 64 l-8 2 M60 40 l-6 -8 M60 40 l5 -9 M104 40 l-4 -9 M104 40 l7 -7 M136 70 l6 -7 M136 70 l8 2',
+      role: 'accent',
+    },
+    { d: 'M72 132 q6 -6 10 2', role: 'soft' },
+    shadow(78, 180, 40),
   ],
 
   // A cigarette holder laid across a poker chip.
@@ -444,23 +439,19 @@ export const wholeCakeArt = {
     shadow(74, 168, 50),
   ],
 
-  // A piece of fruit wrung out over a glass.
+  // A cloth wrung dry, the last drops falling from it.
   'charlotte-smoothie': [
+    { d: 'M56 24 H104 L94 44 H66 Z' },
     {
-      d: 'M36 44 C60 24 100 24 124 44 C116 70 100 82 80 82 C60 82 44 70 36 44 Z',
+      d: 'M66 44 C86 54 94 60 74 70 C56 80 66 88 86 96 M94 44 C74 54 66 60 86 70 C104 80 94 88 74 96',
       role: 'accent',
     },
+    { d: 'M74 96 H86 L100 116 H60 Z' },
     {
-      d: 'M80 82 L52 50 M80 82 L68 38 M80 82 L92 38 M80 82 L108 50',
+      d: 'M76 128 c-7 10 -3 17 4 17 c7 0 11 -7 4 -17 l-4 -6z M58 140 c-5 7 -2 12 3 12 c5 0 8 -5 3 -12 l-3 -4z M98 144 c-5 7 -2 12 3 12 c5 0 8 -5 3 -12 l-3 -4z',
       role: 'soft',
     },
-    {
-      d: 'M76 94 c-7 10 -3 17 4 17 c7 0 11 -7 4 -17 l-4 -6z M62 104 c-5 7 -2 12 3 12 c5 0 8 -5 3 -12 l-3 -4z',
-      role: 'accent',
-    },
-    { d: 'M52 128 h56 l-8 46 h-40z' },
-    { d: 'M56 150 h48', role: 'soft' },
-    shadow(80, 184, 32),
+    shadow(80, 180, 30),
   ],
 
   // A glowing iron above a sea of steam.
@@ -661,7 +652,7 @@ export const wholeCakeArt = {
     shadow(80, 188, 44),
   ],
 
-  // A bull's horns wreathed in vines, roots hanging under them.
+  // A bull's horns above the clouds.
   'aramaki': [
     {
       d: 'M78 76 C56 78 36 68 28 48 C24 36 32 26 42 30 C56 36 62 58 78 62 Z',
@@ -672,14 +663,11 @@ export const wholeCakeArt = {
       role: 'accent',
     },
     { d: 'M72 62 q8 -8 16 0 v18 q-8 8 -16 0 Z' },
-    { d: 'M40 44 c9 10 7 21 -2 28 M120 44 c-9 10 -7 21 2 28' },
     {
-      d: 'M36 70 c-9 2 -11 11 -4 13 c7 2 11 -7 4 -13z M124 70 c9 2 11 11 4 13 c-7 2 -11 -7 -4 -13z',
+      d: 'M24 136 q8 -14 22 -6 q10 -12 24 -2 q12 -4 14 8 Z M86 156 q8 -12 20 -4 q10 -10 22 0 q10 -2 10 8 Z',
       role: 'soft',
     },
-    { d: 'M72 82 c-7 24 -15 34 -20 48 M80 82 V132 M88 82 c7 24 15 34 20 48' },
-    { d: 'M52 130 l-11 9 M80 132 v11 M108 130 l11 9', role: 'soft' },
-    { d: 'M20 158 H140', role: 'ambient', dashed: true },
+    { d: 'M20 172 H140', role: 'ambient', dashed: true },
   ],
   // A sheep's curled horn lying above a sword laid flat.
   'sheepshead': [
