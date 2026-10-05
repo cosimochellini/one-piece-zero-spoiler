@@ -378,10 +378,10 @@ catches the same mistake earlier, at the import.
 fallow checks the structure of the codebase instead, with every rule that
 applies set to error: eight zones with a declared import direction between them,
 no export that nothing reads (entry files included), no duplicated block of five
-lines or more, near-identical ones included, and limits of 8 cyclomatic and 8
-cognitive complexity. Its CRAP score reads the coverage `npm test` writes, so a
-complex function with no test fails the gate. A second run,
-`fallow security --gate new`, fails a branch that adds a command-injection,
+lines or more outside the tests, near-identical ones included, and limits of 8
+cyclomatic and 8 cognitive complexity. Its CRAP score reads the coverage
+`npm test` writes, so a complex function with no test fails the gate. A second
+run, `fallow security --gate new`, fails a branch that adds a command-injection,
 path-traversal, secret or other sink against `origin/main`. Two tests fail when
 an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as

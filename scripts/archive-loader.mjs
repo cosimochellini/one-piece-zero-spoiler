@@ -1,10 +1,10 @@
 // The archive is TypeScript with a `~/` alias and extensionless imports. A
 // plain Node script that wants to read the very modules the site ships needs
-// a resolve hook for both, and `engines` already pins Node >= 24.18, where
+// a resolve hook for both, and `engines` already pins Node >= 24.21, where
 // `registerHooks` and type stripping are available. Shared by every script
 // that reads the archive rather than regenerating it from text.
 import { existsSync } from 'node:fs'
-// eslint-disable-next-line n/no-unsupported-features/node-builtins -- See the note above: `engines` pins Node >= 24.18.
+// eslint-disable-next-line n/no-unsupported-features/node-builtins -- See the note above: `engines` pins Node >= 24.21.
 import { registerHooks } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'

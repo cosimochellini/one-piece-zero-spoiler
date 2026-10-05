@@ -17,8 +17,16 @@
  * health score. Gating is by the presence of findings, never by score, and
  * doctor.config.ts stamps every rule that applies to this stack at error.
  */
-import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs'
+import { execFileSync, spawnSync } from 'node:child_process'
+import { createHash } from 'node:crypto'
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  statSync,
+  utimesSync,
+} from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
@@ -212,8 +220,48 @@ function prepareReportPath() {
 // Everything that has to hold before a verdict may be read out of the report.
 // Each assertion exits 2 on its own, so reaching the return means the file on
 // disk is a complete analysis and not a partial or crashed one.
+// Audit mode works by rewriting every file that carries a disable comment and
+// writing it back after the scan. The bytes come back, the timestamps do not,
+// and a crash in between would leave the rewrite behind. So the gate records
+// every file first, fails if one comes back different, and puts the
+// timestamps back, which keeps a later `npm run gate:fallow` from reading its
+// coverage as older than the code.
+function snapshotSources() {
+  const files = execFileSync(
+    'git',
+    ['ls-files', '--cached', '--others', '--exclude-standard'],
+    { cwd: repositoryRoot, encoding: 'utf8' },
+  )
+    .trim()
+    .split('\n')
+    // fallow-ignore-next-line security-sink -- the names come from `git ls-files` of this repository
+    .map((file) => path.join(repositoryRoot, file))
+    .filter((file) => existsSync(file) && statSync(file).isFile())
+
+  return files.map((file) => entryOf(file))
+}
+
+function entryOf(file) {
+  return { file, stat: statSync(file), hash: hashOf(file) }
+}
+
+function hashOf(file) {
+  return createHash('sha256').update(readFileSync(file)).digest()
+}
+
+function restoreSources(snapshot) {
+  for (const { file, stat, hash } of snapshot) {
+    if (!hash.equals(hashOf(file))) {
+      fail(`react-doctor left ${path.relative(repositoryRoot, file)} rewritten`)
+    }
+    utimesSync(file, stat.atime, stat.mtime)
+  }
+}
+
 function readTrustedReport() {
+  const snapshot = snapshotSources()
   const child = runDoctor()
+  restoreSources(snapshot)
   assertChildSucceeded(child)
 
   const report = readReport()

@@ -140,6 +140,9 @@
     // that matches a .mjs one once the type annotations are stripped.
     "near": true,
     "crossLanguage": true,
+    // `ignoreDefaults` stays on, and its defaults keep the test files out: a
+    // test that repeats its arrange block reads better than one that calls a
+    // shared fixture builder.
     "ignore": ["src/styles/global.css"],
   },
   "health": {

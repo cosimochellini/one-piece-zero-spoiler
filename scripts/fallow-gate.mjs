@@ -24,8 +24,8 @@
  * `--fail-on-issues` is deliberately not passed: it promotes every warn rule
  * to error for that run and would override the config's severity policy.
  */
-import { spawnSync } from 'node:child_process'
-import { existsSync, mkdirSync, rmSync } from 'node:fs'
+import { execFileSync, spawnSync } from 'node:child_process'
+import { existsSync, mkdirSync, rmSync, statSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
@@ -58,6 +58,38 @@ if (!existsSync(coveragePath)) {
   process.stderr.write(
     `\nfallow gate: exit 2, ${path.relative(repositoryRoot, coveragePath)} is missing. `
       + 'This is NOT a code finding: run `npm test` first, it writes the coverage the CRAP score reads.\n',
+  )
+  process.exit(2)
+}
+
+// Coverage older than the code it describes scores the new code by estimate
+// again, so a source file edited after the last `npm test` is a gate failure.
+const coveredAt = statSync(coveragePath).mtimeMs
+
+/**
+ * Whether a tracked file changed after the coverage was written. A file
+ * deleted from the working tree has nothing left to score.
+ * @param {string} file A path from `git ls-files`, relative to the root.
+ * @returns {boolean} True when it is newer than the coverage.
+ */
+function isNewerThanCoverage(file) {
+  // fallow-ignore-next-line security-sink -- the names come from `git ls-files` of this repository
+  const absolute = path.join(repositoryRoot, file)
+  return existsSync(absolute) && statSync(absolute).mtimeMs > coveredAt
+}
+
+const newer = execFileSync('git', ['ls-files', 'src', 'scripts'], {
+  cwd: repositoryRoot,
+  encoding: 'utf8',
+})
+  .trim()
+  .split('\n')
+  .filter((file) => isNewerThanCoverage(file))
+
+if (newer.length > 0) {
+  process.stderr.write(
+    `\nfallow gate: exit 2, the coverage is older than ${newer[0]}. `
+      + 'This is NOT a code finding: run `npm test` again before the gate.\n',
   )
   process.exit(2)
 }
