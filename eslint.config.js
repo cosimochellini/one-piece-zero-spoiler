@@ -69,10 +69,6 @@ const TOKENS = ['src/**/*.stylex.ts']
 // running a tool. `item2` before `item10`, `Ace` beside `ace`.
 const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 
-// One message for the four shapes `readonly` takes in a type.
-const NO_READONLY =
-  '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.'
-
 // Said three times below, once per block that bans a parent-relative import.
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
@@ -181,19 +177,23 @@ const config = defineConfig(
           message:
             '`for…in` walks the prototype chain. Iterate Object.keys or Object.entries instead.',
         },
+        // Every shape `readonly` takes: a field, an index, a class member, a
+        // parameter property, a mapped type (`-readonly` strips it, so it
+        // stays), `readonly T[]`, and the built-in wrappers. The name is
+        // anchored: `DeepReadonly` or `ReadonlyURLSearchParams` are not these.
         {
-          selector: 'TSPropertySignature[readonly=true]',
-          message: NO_READONLY,
-        },
-        { selector: 'TSIndexSignature[readonly=true]', message: NO_READONLY },
-        {
-          selector: "TSTypeOperator[operator='readonly']",
-          message: NO_READONLY,
-        },
-        {
-          selector:
+          selector: [
+            'TSPropertySignature[readonly=true]',
+            'TSIndexSignature[readonly=true]',
+            'PropertyDefinition[readonly=true]',
+            'TSParameterProperty[readonly=true]',
+            'TSMappedType[readonly=true]',
+            "TSMappedType[readonly='+']",
+            "TSTypeOperator[operator='readonly']",
             'TSTypeReference[typeName.name=/^Readonly(Array|Map|Set)?$/]',
-          message: NO_READONLY,
+          ].join(', '),
+          message:
+            '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.',
         },
       ],
       // Every module reaches through the `~/` alias. A `../` import encodes
