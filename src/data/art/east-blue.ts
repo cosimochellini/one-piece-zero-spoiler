@@ -280,7 +280,7 @@ export const eastBlueArt = {
     { d: circle(80, 36, 8), role: 'accent' },
     shadow(80, 172, 52),
   ],
-  // A cannonball with its fuse lit.
+  // A cannonball with its fuse lit. Crowned from 1080, in `eastBlueRedrawn`.
   'buggy': [
     { d: circle(76, 118, 34), role: 'accent' },
     { d: 'M56 104 q6 -14 20 -18', role: 'ambient' },
@@ -1032,6 +1032,9 @@ export const eastBlueArt = {
  */
 const THIRD_SHEATH = sheath(22, 'soft').filter((_, index) => index !== 3)
 
+/** Buggy's crown, drawn upright and tipped onto the cannonball as one piece. */
+const CROWN_TILT = 'rotate(-13 70 91.5)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
   'roronoa-zoro': [
@@ -1081,6 +1084,44 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'soft',
         },
         shadow(80, 176, 40),
+      ],
+    },
+  ],
+  // The same cannonball with a crown set on it askew, the fuse still lit: the
+  // ball's top runs under the band, the five points end in knobs and the
+  // band's far side is hatched. The world names him one of the new Four
+  // Emperors in 1080 (ch. 1053).
+  'buggy': [
+    {
+      episode: 1080,
+      chapter: 1053,
+      value: [
+        { d: 'M50 96 A34 34 0 1 0 90 87', role: 'accent' },
+        { d: 'M50 112 q3 -9 10 -13', role: 'ambient' },
+        { d: 'M100 92 C106 72 116 66 130 66' },
+        {
+          d: 'M136 52 v-8 M136 76 v8 M124 64 h-8 M148 64 h8 M128 56 l-6 -6 M144 56 l6 -6 M128 72 l-6 6 M144 72 l6 6',
+          role: 'accent',
+        },
+        {
+          d: 'M49.5 91.5 Q70 97 90.5 91.5 V81.5 Q70 87 49.5 81.5 Z',
+          transform: CROWN_TILT,
+        },
+        {
+          d: 'M49.5 81.5 L46 64 L54.5 77 L58 59 L64.5 78 L70 54 L75.5 78 L82 59 L85.5 77 L94 64 L90.5 81.5',
+          transform: CROWN_TILT,
+        },
+        {
+          d: `${circle(46, 61, 2.5)} ${circle(58, 56, 2.5)} ${circle(70, 51, 2.5)} ${circle(82, 56, 2.5)} ${circle(94, 61, 2.5)}`,
+          role: 'soft',
+          transform: CROWN_TILT,
+        },
+        {
+          d: 'M78 85.8 l-4 7.6 M83 84.8 l-4 7.6 M88 83.2 l-3.4 6.8',
+          role: 'ambient',
+          transform: CROWN_TILT,
+        },
+        shadow(76, 168, 30),
       ],
     },
   ],
