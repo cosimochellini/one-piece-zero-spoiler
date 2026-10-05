@@ -606,4 +606,27 @@ describe('a record drawn again later in the story', () => {
       )
     })
   })
+
+  it('puts Chopper in the cap of the two years only from episode 517', () => {
+    const chopper = filed('tony-tony-chopper')
+    const topHat = DRAWINGS['tony-tony-chopper']
+    const cap = REDRAWINGS['tony-tony-chopper']?.[0]
+    const atChapter = (chapter: number): Reveal =>
+      reveal({ mode: 'chapter', chapter })
+
+    expect(cap?.episode).toBe(517)
+
+    expect(characterOf(chopper, 'en', seenAt(516)).visual.strokes).toBe(topHat)
+    expect(characterOf(chopper, 'en', seenAt(517)).visual.strokes).toBe(
+      cap?.value,
+    )
+    expect(characterOf(chopper, 'en', reveal(null)).visual.strokes).toBe(topHat)
+    // The manga draws the cap in chapter 598, so no chapter below it may.
+    expect(characterOf(chopper, 'en', atChapter(597)).visual.strokes).toBe(
+      topHat,
+    )
+    expect(characterOf(chopper, 'en', atChapter(598)).visual.strokes).toBe(
+      cap?.value,
+    )
+  })
 })

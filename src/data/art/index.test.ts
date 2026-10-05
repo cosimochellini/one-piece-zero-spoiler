@@ -4,7 +4,7 @@ import { entities, getEntity } from '~/data/entities'
 import type { Stroke } from '~/lib/view/records'
 
 import { DRAWINGS, REDRAWINGS } from '.'
-import { alabastaArt } from './alabasta'
+import { alabastaArt, alabastaRedrawn } from './alabasta'
 import { dressrosaArt } from './dressrosa'
 import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
@@ -90,6 +90,7 @@ describe('the redrawings', () => {
     // Merged by spread like the drawings, and caught the same way.
     const modules = [
       eastBlueRedrawn,
+      alabastaRedrawn,
       skypieaRedrawn,
       thrillerBarkRedrawn,
       wanoRedrawn,
