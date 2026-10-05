@@ -28,6 +28,16 @@ const GREAT_WAVE: Stroke[] = [
   },
 ]
 
+/** Sabo's top hat with goggles on the brim, worn before the flame and after. */
+const TOP_HAT: Stroke[] = [
+  { d: 'M54 106 V52 h46 v54' },
+  { d: ellipse(77, 106, 38, 10) },
+  { d: 'M54 52 q23 -8 46 0' },
+  { d: circle(64, 94, 11), role: 'accent' },
+  { d: circle(90, 94, 11), role: 'accent' },
+  { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
+]
+
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
   // A long sword, and the scalpel that goes with the surgeon.
@@ -739,14 +749,10 @@ export const summitWarArt = {
     { d: 'M8 182 h144', role: 'ambient' },
   ],
 
-  // A top hat with goggles on the brim, and a pipe beside it.
+  // A top hat with goggles on the brim, and a pipe beside it. Ace's flame is
+  // lit at the pipe's tip from 678, in `summitWarRedrawn`.
   'sabo': [
-    { d: 'M54 106 V52 h46 v54' },
-    { d: ellipse(77, 106, 38, 10) },
-    { d: 'M54 52 q23 -8 46 0' },
-    { d: circle(64, 94, 11), role: 'accent' },
-    { d: circle(90, 94, 11), role: 'accent' },
-    { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
+    ...TOP_HAT,
     { d: 'M124 44 V172 M134 44 V172' },
     { d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0' },
     shadow(78, 170, 42),
@@ -1266,6 +1272,32 @@ export const summitWarRedrawn: Redrawings = {
           transform: 'translate(16 44) scale(0.8)',
         })),
         ...SEA.slice(1),
+      ],
+    },
+  ],
+
+  // The same top hat, and the pipe shorter beneath Ace's flame, lit at its
+  // tip. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
+  sabo: [
+    {
+      episode: 678,
+      chapter: 744,
+      value: [
+        ...TOP_HAT,
+        { d: 'M124 64 V172 M134 64 V172' },
+        { d: 'M124 64 q5 -4 10 0 M124 172 q5 4 10 0' },
+        // Ace's flame, copied from his first drawing in `alabasta.ts`.
+        {
+          d: 'M80 70 C64 54 76 40 78 22 C82 36 96 40 96 56 C96 66 88 72 80 70z',
+          role: 'accent',
+          transform: 'translate(49 -8)',
+        },
+        {
+          d: 'M82 60 c-6 -8 0 -14 2 -22 c2 8 8 10 6 18',
+          role: 'accent',
+          transform: 'translate(49 -8)',
+        },
+        shadow(78, 170, 42),
       ],
     },
   ],

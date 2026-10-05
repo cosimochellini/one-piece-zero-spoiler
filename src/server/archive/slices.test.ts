@@ -846,4 +846,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 431 })).toBe(mop)
     expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
   })
+
+  it('lights Ace’s flame on Sabo’s pipe only from episode 678', () => {
+    const sabo = filed('sabo')
+    const pipe = DRAWINGS.sabo
+    const flame = REDRAWINGS['sabo']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(sabo, 'en', reveal(bookmark)).visual.strokes
+
+    expect(flame?.episode).toBe(678)
+
+    expect(drawnAt(ep(677))).toBe(pipe)
+    expect(drawnAt(ep(678))).toBe(flame?.value)
+    expect(drawnAt(null)).toBe(pipe)
+    // The manga has him eat the fruit in chapter 744, so no chapter below it may.
+    expect(drawnAt({ mode: 'chapter', chapter: 743 })).toBe(pipe)
+    expect(drawnAt({ mode: 'chapter', chapter: 744 })).toBe(flame?.value)
+  })
 })
