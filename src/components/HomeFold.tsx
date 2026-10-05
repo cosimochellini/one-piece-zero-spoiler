@@ -7,8 +7,7 @@ import { EpisodeMark } from '~/components/EpisodeMark'
 import { styles } from '~/components/HomeFold.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
-import { type Bookmark, FIRST_EPISODE } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import type { TintId, WaypointView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 
@@ -22,20 +21,19 @@ const STAGGER = { copy: 1, actions: 2 } as const
 export interface HomeFoldProps {
   /** Which step of the page's settle order the fold starts on. */
   band: number
+  /** The reader's bookmark, from the loader, so it moves with the arc. */
+  point: NonNullable<Bookmark>
   /** The arc the reader is in. */
   saga: WaypointView
-  /** No bookmark is set: the page shows the start, and says so. */
-  unset: boolean
 }
 
 /**
  * The reader's point, in the unit they chose: "Episode 650", "Chapter 1044"
- * or "Season 2 · episode 3". With no bookmark it is the first episode, which
- * is where the page is standing in for one. Spelled out per mode rather than
- * through `describeBookmark`, because the season form carries two numbers.
+ * or "Season 2 · episode 3". Spelled out per mode rather than through
+ * `describeBookmark`, because the season form carries two numbers.
  */
-function pointOf(t: Translate, bookmark: Bookmark): string {
-  switch (bookmark?.mode) {
+function pointOf(t: Translate, bookmark: NonNullable<Bookmark>): string {
+  switch (bookmark.mode) {
     case 'chapter': {
       return t('home.point.chapter', { threshold: bookmark.chapter })
     }
@@ -47,9 +45,6 @@ function pointOf(t: Translate, bookmark: Bookmark): string {
         season: bookmark.season,
         episode: bookmark.episode,
       })
-    }
-    case undefined: {
-      return t('home.point.episode', { threshold: FIRST_EPISODE })
     }
   }
 }
@@ -76,9 +71,8 @@ function haloOf(hue: TintId): string {
  * Nothing here is under fog. The arc is one the reader has reached, so its
  * name, drawing and colour may all be in the served HTML.
  */
-export function HomeFold({ band, saga, unset }: HomeFoldProps): ReactElement {
+export function HomeFold({ band, point, saga }: HomeFoldProps): ReactElement {
   const t = useT()
-  const { bookmark } = useBookmark()
 
   return (
     <section
@@ -107,8 +101,7 @@ export function HomeFold({ band, saga, unset }: HomeFoldProps): ReactElement {
           settleStyles.at(band + STAGGER.copy),
         )}
       >
-        {unset && <p {...stylex.props(styles.unset)}>{t('home.unset')}</p>}
-        <p {...stylex.props(styles.point)}>{pointOf(t, bookmark)}</p>
+        <p {...stylex.props(styles.point)}>{pointOf(t, point)}</p>
         <h1
           id="home-saga"
           {...stylex.props(styles.headline)}

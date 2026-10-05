@@ -21,10 +21,11 @@ import type {
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import { homePage } from './home.server'
+import { homePage, landingPage } from './home.server'
 import {
   characterPage,
   charactersPage,
+  chartPage,
   nearbyPage,
   placesPage,
   routePosition,
@@ -33,7 +34,9 @@ import {
 import { peekCharacter } from './peek.server'
 import { characterOf, searchableOf } from './project.server'
 
-const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
+function ep(episode: number): NonNullable<Bookmark> {
+  return { mode: 'episode', episode }
+}
 const seenAt = (episode: number): Reveal => reveal(ep(episode))
 const handleSpace = new Set(
   entities.flatMap((entity) => {
@@ -192,28 +195,71 @@ describe('the slice of the archive a page is given', () => {
     saysNothing(page, null)
   })
 
-  it('opens the home page on the start for a reader with no bookmark', () => {
-    const home = homePage(null, 'en')
+  it('lands a reader with no bookmark on the chart, and one with a bookmark home', () => {
+    const unset = landingPage(null, 'en')
+    const set = landingPage(ep(1), 'en')
 
-    expect(home.unset).toBe(true)
-    expect(home.saga.id).toBe('romance-dawn')
+    expect(unset).toStrictEqual({ chart: chartPage(null, 'en') })
+    expect(set).toStrictEqual({ home: homePage(ep(1), 'en') })
+  })
 
-    // The page is computed as at the first episode, so it is held to that:
-    // a `null` bookmark reveals nothing by design and would fail everything.
-    saysNothing(home, ep(1))
+  it('splits the chart at the reader’s bookmark, open first', () => {
+    const chart = chartPage(ep(500), 'en')
+
+    expect(chart.open.length).toBeGreaterThan(0)
+    expect(chart.covered.length).toBeGreaterThan(0)
+    expect(chart.open.length + chart.covered.length).toBe(chart.filed)
+
+    for (const waypoint of chart.open) {
+      expect(waypoint.revealedAtEpisode).toBeLessThanOrEqual(500)
+    }
+    for (const covered of chart.covered) {
+      expect(covered.revealedAtEpisode).toBeGreaterThan(500)
+      expect(covered).not.toHaveProperty('id')
+      expect(covered).not.toHaveProperty('name')
+    }
+  })
+
+  it('keeps the open waypoints a prefix, whatever the reader counts in', () => {
+    // The horizon is one element between two runs rather than a marker
+    // interpolated along the route, and that only works on a prefix.
+    const marks: NonNullable<Bookmark>[] = [
+      { mode: 'episode', episode: 92 },
+      { mode: 'season', season: 4, episode: 1 },
+      { mode: 'chapter', chapter: 155 },
+    ]
+
+    for (const bookmark of marks) {
+      const chart = chartPage(bookmark, 'en')
+      const thresholds = chart.open.map((entry) => {
+        return bookmark.mode === 'chapter' ?
+            entry.revealedAtChapter
+          : entry.revealedAtEpisode
+      })
+
+      expect(thresholds.toSorted(byNumber())).toStrictEqual(thresholds)
+    }
+  })
+
+  it('tells a reader with no bookmark nothing but the thresholds', () => {
+    const chart = chartPage(null, 'en')
+
+    expect(chart.open).toHaveLength(0)
+    expect(chart.covered).toHaveLength(chart.filed)
+
+    saysNothing(chart, null)
   })
 
   it('puts a reader at the first episode in the arc, not the saga', () => {
     const home = homePage(ep(1), 'en')
 
-    expect(home.unset).toBe(false)
     expect(home.saga.id).toBe('romance-dawn')
   })
 
   it('tells the home page nothing the reader has not reached', () => {
     // Each bookmark with the episode it reaches, worked out by hand rather
     // than through `reveal`, so the cut is checked against something else.
-    const marks: [Bookmark, number][] = [
+    const marks: [NonNullable<Bookmark>, number][] = [
       [ep(1), 1],
       [ep(60), 60],
       [ep(500), 500],
@@ -269,7 +315,7 @@ describe('the slice of the archive a page is given', () => {
     // chapter table, has one dated long before the chapter that meets him.
     const fogged: string[] = []
     for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
-      const bookmark: Bookmark = { mode: 'chapter', chapter }
+      const bookmark: NonNullable<Bookmark> = { mode: 'chapter', chapter }
       const at = reveal(bookmark)
       for (const { subject } of homePage(bookmark, 'en').stories) {
         if (!at.sees(filed(subject.id))) {
@@ -503,7 +549,10 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('never leaks a name through a handle', () => {
-    for (const covered of placesPage(null, 'en').covered) {
+    const covers = [placesPage, chartPage].flatMap(
+      (page) => page(null, 'en').covered,
+    )
+    for (const covered of covers) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }
   })

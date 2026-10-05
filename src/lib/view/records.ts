@@ -16,6 +16,8 @@
  * here means no client module ever has cause to name `~/data` at all.
  */
 
+import type { Bookmark } from '~/lib/progress/episode'
+
 /** The ink a stroke takes. Structurally `Role` from `~/data/art/stroke`. */
 export type StrokeRole = 'accent' | 'ambient' | 'soft'
 
@@ -397,11 +399,24 @@ export interface HomeView {
   cast: CharacterView[]
   /** The arc the reader is in: the last one that opens at or before them. */
   saga: WaypointView
+  /** The reader's bookmark, which the fold states in the reader's unit. */
+  point: NonNullable<Bookmark>
   /** The stories concluded in the arc up to the bookmark, most recent first. */
   stories: HomeStory[]
-  /** No bookmark is set; the page shows the start. */
-  unset: boolean
 }
+
+/** The landing chart: the waypoints open to the reader, then the covered. */
+export interface ChartView {
+  covered: CoveredRecord[]
+  filed: number
+  open: WaypointView[]
+}
+
+/**
+ * The landing page: the chart for a reader with no bookmark, the home page
+ * for one with a bookmark.
+ */
+export type LandingView = { chart: ChartView } | { home: HomeView }
 
 /**
  * The document title and description, resolved on the server.

@@ -1,4 +1,4 @@
-# La nuova homepage
+# La homepage
 
 ## A cosa serve
 
@@ -15,21 +15,28 @@ rimasto. Vale allo stesso modo per chi guarda l’anime e per chi legge il manga
 Parla solo di quello che hai già visto o letto. Non dice niente su quello che
 viene dopo.
 
-## Cosa cambia rispetto a oggi
+## Due homepage, a seconda del segnalibro
 
-Oggi la homepage è una lunga mappa con tutte le voci principali della storia,
-dalla prima all’ultima. Chi ha un segnalibro deve scorrerla per trovare il
-proprio punto.
+Questa pagina descrive la homepage di chi **ha un segnalibro**.
 
-**Sparisce:**
+Chi **non ha un segnalibro** vede ancora la homepage di prima:
 
-- la mappa con la rotta, le voci in fila e la riga “Sei qui” in mezzo;
+- il disegno notturno in cima (mare, luna e Thousand Sunny), con il titolo e il
+  tasto per scegliere il segnalibro;
+- la mappa con tutte le voci principali della storia, tutte nella nebbia, e la
+  riga “Nessun segnalibro” in cima;
 - i contatori “visibili”, “nella nebbia” e “in totale”;
-- il disegno notturno in cima (mare, luna e Thousand Sunny);
 - le tre domande in fondo (“Anime o manga?”, “Dove viene salvato il
   segnalibro?”, “Posso vedere una voce nascosta?”).
 
-**Resta com’è:**
+Ogni voce della mappa si può aprire con “Mostra comunque”. Appena scegli un
+segnalibro la pagina passa alla homepage descritta qui sotto. Se lo cancelli
+(“Cancella il segnalibro”) torna la mappa.
+
+I motori di ricerca non hanno un segnalibro, ma il sito li tratta come se
+avessero visto tutto, quindi indicizzano la homepage con il segnalibro.
+
+In tutte e due restano com’erano:
 
 - la barra in alto, con Personaggi, Luoghi, Frutti, il segnalibro e la lingua;
 - il piè di pagina.
@@ -82,11 +89,9 @@ I personaggi citati nelle storie del blocco “Appena successo”.
 **Quando cambi il segnalibro**, la pagina si aggiorna subito sul nuovo punto:
 saga, storie e personaggi.
 
-**Chi arriva per la prima volta**, senza segnalibro, vede la pagina come se
-fosse all’episodio 1: la prima saga, il suo disegno e la sua descrizione. In
-cima c’è una frase chiara, per esempio “Non hai ancora scelto un segnalibro. Ti
-mostriamo l’inizio.”, con il tasto per sceglierlo. Il resto del sito resta nella
-nebbia finché il segnalibro non c’è, come oggi.
+**Chi arriva per la prima volta**, senza segnalibro, vede la mappa nella nebbia
+descritta sopra, non questa pagina. Il resto del sito resta nella nebbia finché
+il segnalibro non c’è.
 
 **Chi legge il manga** vede lo stesso contenuto. Le storie però sono datate per
 episodio dell’anime, quindi il capitolo va tradotto in un episodio. La
@@ -105,8 +110,9 @@ per la prima volta in questa saga, fino al tuo punto.
 
 - **Niente sul futuro.** Nessun nome, nessun numero, nessun conto alla rovescia.
   Non si dice nemmeno “la prossima saga inizia tra 5 episodi”.
-- **In homepage non c’è nebbia.** Tutto quello che si vede è già stato visto o
-  letto, quindi non c’è niente da coprire né un tasto “Mostra comunque”.
+- **Con il segnalibro, in homepage non c’è nebbia.** Tutto quello che si vede è
+  già stato visto o letto, quindi non c’è niente da coprire né un tasto “Mostra
+  comunque”. La nebbia c’è solo nella mappa di chi non ha un segnalibro.
 - **Quello che viene dopo il segnalibro non arriva al browser.** Come nel resto
   del sito: la pagina che ricevi contiene solo il passato.
 - **Due lingue.** Ogni testo nuovo va scritto in italiano e in inglese, seguendo

@@ -3,6 +3,7 @@ import {
   bookSections,
   dossierOf as characterDossierOf,
   characters,
+  chart,
   chartWith,
   featuredCharacters,
   getCharacter,
@@ -25,6 +26,7 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterDetail,
   CharacterView,
+  ChartView,
   CoveredRecord,
   DocumentHead,
   PortView,
@@ -45,6 +47,7 @@ import {
   recordOf,
   searchableOf,
   slotOf,
+  waypointOf,
 } from './project.server'
 
 /**
@@ -60,6 +63,20 @@ import {
  * a cookie. The wrappers read it, from the request, and never from the
  * client: a bookmark passed in over the wire would make the fog a suggestion.
  */
+
+/** The landing chart: arcs, places, ships and the characters in evidence. */
+export function chartPage(bookmark: Bookmark, locale: Locale): ChartView {
+  const at = reveal(bookmark)
+  const ordered = orderByMode(chart, at.mode)
+  const open = ordered.filter((entity) => at.sees(entity))
+  const covered = ordered.filter((entity) => !at.sees(entity))
+
+  return {
+    open: open.map((entity) => waypointOf(entity, locale, at)),
+    covered: covered.map((entity) => coveredOf(entity)),
+    filed: ordered.length,
+  }
+}
 
 /** The fold of the signal book: the crests, and how much is behind them. */
 export interface CharactersPage {

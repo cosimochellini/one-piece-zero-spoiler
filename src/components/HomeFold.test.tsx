@@ -10,8 +10,7 @@ import { HomeFold } from './HomeFold'
 const saga = { ...record({ name: 'East Blue' }), summary: 'Where it starts.' }
 
 describe('HomeFold', () => {
-  it.each<[Bookmark, string]>([
-    [null, 'Episode 1'],
+  it.each<[NonNullable<Bookmark>, string]>([
     [{ mode: 'episode', episode: 650 }, 'Episode 650'],
     [{ mode: 'chapter', chapter: 1044 }, 'Chapter 1044'],
     [{ mode: 'season', season: 2, episode: 3 }, 'Season 2 · episode 3'],
@@ -19,10 +18,9 @@ describe('HomeFold', () => {
     renderWithProviders(
       <HomeFold
         band={0}
+        point={bookmark}
         saga={saga}
-        unset={bookmark === null}
       />,
-      { bookmark },
     )
 
     expect(screen.getByText(point)).toBeInTheDocument()

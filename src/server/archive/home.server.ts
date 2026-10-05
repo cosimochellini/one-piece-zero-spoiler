@@ -11,11 +11,17 @@ import { orderByMode } from '~/data/order'
 import { gateOf, type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import { type Bookmark, FIRST_EPISODE } from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
 import { markedIds } from '~/lib/prose/markers'
-import type { CharacterView, HomeStory, HomeView } from '~/lib/view/records'
+import type {
+  CharacterView,
+  HomeStory,
+  HomeView,
+  LandingView,
+} from '~/lib/view/records'
 
 import { segmentsOf } from './chronicle.server'
+import { chartPage } from './pages.server'
 import { characterOf, waypointOf } from './project.server'
 
 /**
@@ -24,11 +30,19 @@ import { characterOf, waypointOf } from './project.server'
  * in `~/server/api.ts` reads the bookmark from the request and hands it in.
  */
 
-/** Where a reader with no bookmark is shown: the start. */
-const FIRST_VISIT: Bookmark = { mode: 'episode', episode: FIRST_EPISODE }
-
 /** One row of crests on a wide screen. */
 const CAST_COUNT = 6
+
+/**
+ * The landing page. A reader with no bookmark gets the chart, every waypoint
+ * under fog, and is asked to set one; a reader with a bookmark gets the home
+ * page at their point.
+ */
+export function landingPage(bookmark: Bookmark, locale: Locale): LandingView {
+  return bookmark === null ?
+      { chart: chartPage(bookmark, locale) }
+    : { home: homePage(bookmark, locale) }
+}
 
 /**
  * The home page: the arc the reader is in, the stories concluded in it so
@@ -42,8 +56,11 @@ const CAST_COUNT = 6
  * the reader has not met is not on the page at all — Shiki's Impel Down
  * story is episode 425, but his chapter is 962.
  */
-export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
-  const at = reveal(bookmark ?? FIRST_VISIT)
+export function homePage(
+  bookmark: NonNullable<Bookmark>,
+  locale: Locale,
+): HomeView {
+  const at = reveal(bookmark)
   const [saga, previous] = reachedArcs(at)
 
   const since = (floor: number): FiledStory[] => {
@@ -65,8 +82,8 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
     getCharacter(id)?.name[locale]
 
   return {
-    unset: bookmark === null,
     before: before && shown.length > 0,
+    point: bookmark,
     saga: waypointOf(saga, locale, at),
     stories: shown.map((filed): HomeStory => {
       const { character, story } = filed

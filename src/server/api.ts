@@ -9,7 +9,7 @@ import {
   fruitSheet,
   fruitSiblings,
 } from './archive/fruits.server'
-import { homePage } from './archive/home.server'
+import { landingPage } from './archive/home.server'
 import {
   characterPage,
   charactersPage,
@@ -24,6 +24,7 @@ import {
   peekFruit,
   peekPort,
   peekRecord,
+  peekWaypoint,
 } from './archive/peek.server'
 
 /**
@@ -109,7 +110,7 @@ function handled(input: unknown): Handled {
 
 export const loadHome = createServerFn()
   .validator(located)
-  .handler(({ data }) => homePage(readBookmark(), data.locale))
+  .handler(({ data }) => landingPage(readBookmark(), data.locale))
 
 export const loadCharacters = createServerFn()
   .validator(located)
@@ -156,6 +157,13 @@ export const loadFruitSiblings = createServerFn()
 export const loadPlaces = createServerFn()
   .validator(located)
   .handler(({ data }) => placesPage(readBookmark(), data.locale))
+
+export const liftWaypoint = createServerFn()
+  .validator(handled)
+  .handler(
+    ({ data }) =>
+      peekWaypoint(data.handle, data.locale, readBookmark()) ?? null,
+  )
 
 export const liftCharacter = createServerFn()
   .validator(handled)
