@@ -6,6 +6,7 @@ import {
   house,
   SEA,
   shadow,
+  wave,
 } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
@@ -382,7 +383,8 @@ export const alabastaArt = {
     { d: 'M36 130 q-8 21 0 42 M124 130 q8 21 0 42', role: 'ambient' },
   ],
 
-  // A pair of ballet shoes with their ribbons tied above.
+  // A pair of ballet shoes with their ribbons tied above. Set down at the
+  // Gate of Justice from 451, in `alabastaRedrawn`.
   'bon-clay': [
     {
       d: 'M20 152 C18 132 34 112 54 108 C66 106 74 114 72 126 C70 142 54 160 36 162 C26 163 20 160 20 152 Z',
@@ -1059,6 +1061,55 @@ export const alabastaRedrawn: Redrawings = {
           role: 'ambient',
           dashed: true,
         },
+      ],
+    },
+  ],
+
+  // The same shoes, set down on the threshold of the Gate of Justice: the two
+  // riveted leaves of its arch rise out of the sea and all but meet, the far
+  // edge of the gap hatched. He stays behind to open it at 451 (ch. 548).
+  'bon-clay': [
+    {
+      episode: 451,
+      chapter: 548,
+      value: [
+        {
+          d: 'M16 150 V70 A64 62 0 0 1 77 8.1 V74 M144 150 V70 A64 62 0 0 0 83 8.1 V74',
+        },
+        {
+          d: 'M24 150 V70 A56 54 0 0 1 77 16.1 M136 150 V70 A56 54 0 0 0 83 16.1',
+          role: 'soft',
+        },
+        {
+          d: dots([
+            [23.6, 50.2],
+            [34, 32.7],
+            [50, 19.8],
+            [66.5, 13.5],
+            [93.5, 13.5],
+            [110, 19.8],
+            [126, 32.7],
+            [136.4, 50.2],
+            [20, 86],
+            [140, 86],
+            [20, 102],
+            [140, 102],
+            [20, 118],
+            [140, 118],
+            [20, 134],
+            [140, 134],
+          ]),
+          role: 'ambient',
+        },
+        { d: 'M84 28 h6 M84 40 h6 M84 52 h6 M84 64 h6', role: 'ambient' },
+        { d: 'M6 150 H154' },
+        { d: wave(164), role: 'ambient' },
+        { d: wave(178), role: 'ambient' },
+        ...alabastaArt['bon-clay'].slice(0, -1).map((stroke) => ({
+          // The first drawing without its shadow, smaller, standing on the sill.
+          ...stroke,
+          transform: 'translate(24 36) scale(0.7)',
+        })),
       ],
     },
   ],
