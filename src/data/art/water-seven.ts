@@ -180,7 +180,8 @@ export const waterSevenArt = {
     shadow(84, 158, 54),
   ],
 
-  // A top hat with a pigeon settled on the crown.
+  // A top hat with a pigeon settled on the crown. The CP0 mask is set beside
+  // it from 746, in `waterSevenRedrawn`.
   'rob-lucci': [
     { d: 'M48 148 h64 V76 H48z' },
     { d: 'M24 148 h112 v12 H24z' },
@@ -750,6 +751,12 @@ export const waterSevenArt = {
   ],
 } satisfies Drawings
 
+/** Lucci's hat and pigeon, moved aside to make room for the mask. */
+const HAT_ASIDE = 'translate(-16 18) scale(0.85)'
+
+/** The CP0 mask, drawn level and stood on its edge against the hat's brim. */
+const MASK_LEAN = 'translate(128 142) rotate(-10) scale(1.2)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const waterSevenRedrawn: Redrawings = {
   // The forearm of the two years: a great box seen from its corner, the star
@@ -757,7 +764,7 @@ export const waterSevenRedrawn: Redrawings = {
   // studded fist on top and the elbow hinge with its bolt below. The wrench
   // and the star-headed bolt lie beneath it. The opening shows it from 517,
   // the cover of ch. 598 in the manga.
-  franky: [
+  'franky': [
     {
       episode: 517,
       chapter: 598,
@@ -787,6 +794,36 @@ export const waterSevenRedrawn: Redrawings = {
         { d: star(128, 172, 10, 4.5), role: 'accent' },
         { d: circle(128, 172, 3), role: 'accent' },
         shadow(78, 190, 54),
+      ],
+    },
+  ],
+  // The same top hat with the pigeon on the crown, moved aside, and the white
+  // half-mask of CP0 stood against its brim: the eye band with its two slits
+  // and the markings that curve beneath them. He is first seen wearing it in
+  // 746 (ch. 801), on Dressrosa after Doflamingo's fall.
+  'rob-lucci': [
+    {
+      episode: 746,
+      chapter: 801,
+      value: [
+        ...waterSevenArt['rob-lucci']
+          .slice(0, -1)
+          .map((stroke) => ({ ...stroke, transform: HAT_ASIDE })),
+        {
+          d: 'M-24 -8 Q0 -17 24 -8 L22 6 Q14 12 6 8 L0 2 L-6 8 Q-14 12 -22 6 Z',
+          transform: MASK_LEAN,
+        },
+        {
+          d: 'M-17 -1 Q-11 -6 -5 -1 Q-11 3 -17 -1 Z M17 -1 Q11 -6 5 -1 Q11 3 17 -1 Z',
+          role: 'accent',
+          transform: MASK_LEAN,
+        },
+        {
+          d: 'M-16 4 q4 4 9 1 M16 4 q-4 4 -9 1',
+          role: 'accent',
+          transform: MASK_LEAN,
+        },
+        shadow(80, 166, 70),
       ],
     },
   ],
