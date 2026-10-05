@@ -38,9 +38,9 @@ record was already in the browser. Now it is a request, made inside a
 
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has
-already reached, so "Whitebeard" finds Edward Newgate after episode 152 and not
-before. Those epithets are checked on the server and sent already folded, so an
-epithet the reader has not reached is not in the browser at all.
+already reached, so "Whitebeard" finds Edward Newgate from episode 151, where
+the epithet opens. Those epithets are checked on the server and sent already
+folded, so an epithet the reader has not reached is not in the browser at all.
 
 ## The archive in numbers
 

@@ -67,17 +67,17 @@ entry, which carries the episode it is learned in. The comment at the top of
 
 ## Where things live
 
-| Path              | What is there                                                              |
-| ----------------- | -------------------------------------------------------------------------- |
-| `src/data/`       | The archive: records, drawings and most editorial tests. Server only.      |
-| `src/components/` | React components, styled with StyleX.                                      |
-| `src/routes/`     | TanStack Start file routes, under `$locale/`.                              |
-| `src/server/`     | Server functions that cut the archive down to what a bookmark reaches.     |
-| `src/lib/`        | Code the client may import: bookmark logic, search, SVG helpers, views.    |
-| `src/i18n/`       | Locales and the English and Italian dictionaries.                          |
-| `src/styles/`     | Global CSS and the StyleX design tokens.                                   |
-| `scripts/`        | Quality gates, the PR title validator and the wiki checks.                 |
-| `docs/`           | [Architecture](docs/architecture.md), media and the chronicle source list. |
+| Path              | What is there                                                                      |
+| ----------------- | ---------------------------------------------------------------------------------- |
+| `src/data/`       | The archive: records, drawings and most editorial tests. Server only.              |
+| `src/components/` | React components, styled with StyleX.                                              |
+| `src/routes/`     | TanStack Start file routes, under `$locale/`.                                      |
+| `src/server/`     | Server functions that cut the archive down to what a bookmark reaches.             |
+| `src/lib/`        | Code the client may import: bookmark logic, search, SVG helpers, views.            |
+| `src/i18n/`       | Locales and the English and Italian dictionaries.                                  |
+| `src/styles/`     | Global CSS and the StyleX design tokens.                                           |
+| `scripts/`        | Quality gates, the PR title validator and the wiki checks.                         |
+| `docs/`           | [Architecture](docs/architecture.md), media and the chronicle verification report. |
 
 Components, routes and `src/lib` cannot import `~/data`. ESLint rejects the
 import and `npm run gate:archive` rejects the build, because that import would

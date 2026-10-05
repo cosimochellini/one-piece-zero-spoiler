@@ -5,4 +5,6 @@ contact_links:
     about: Ask a question or discuss an idea before opening an issue.
   - name: Security vulnerability
     url: https://github.com/cosimochellini/one-piece-zero-spoiler/security/advisories/new
-    about: Report it privately, not in a public issue.
+    about:
+      Report a vulnerability, or a code of conduct issue, privately and not in a
+      public issue.
