@@ -684,7 +684,8 @@ export const alabastaArt = {
     { d: 'M68 32 L62 10 L78 26 M92 32 L98 10 L82 26', role: 'accent' },
   ],
 
-  // A wide-brimmed hat, and a flame standing up out of it.
+  // A wide-brimmed hat, and a flame standing up out of it. The flame goes out
+  // at his death, from 483, in `alabastaRedrawn`.
   'portgas-d-ace': [
     { d: 'M28 122 Q80 104 132 122 Q80 140 28 122z' },
     { d: 'M56 118 C56 84 74 76 80 76 C86 76 104 84 104 118' },
@@ -1027,6 +1028,37 @@ export const alabastaRedrawn: Redrawings = {
           role: 'ambient',
         },
         shadow(80, 176, 44),
+      ],
+    },
+  ],
+
+  // The same hat, the flame gone: the hat itself takes his colour, and a thin
+  // wisp of smoke rises where the flame stood. He dies at Marineford at 483
+  // (ch. 574).
+  'portgas-d-ace': [
+    {
+      episode: 483,
+      chapter: 574,
+      value: [
+        { d: 'M28 122 Q80 104 132 122 Q80 140 28 122z', role: 'accent' },
+        {
+          d: 'M56 118 C56 84 74 76 80 76 C86 76 104 84 104 118',
+          role: 'accent',
+        },
+        { d: 'M40 132 Q80 150 120 132', role: 'ambient' },
+        {
+          d: dots([
+            [60, 140],
+            [80, 144],
+            [100, 140],
+          ]),
+          role: 'ambient',
+        },
+        {
+          d: 'M80 70 C76 62 84 56 80 48 C77 42 83 38 81 32',
+          role: 'ambient',
+          dashed: true,
+        },
       ],
     },
   ],
