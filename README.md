@@ -168,7 +168,7 @@ in a path as coordinates.
 | Build     | Vite 8.3.2                                        |
 | Language  | TypeScript 6.0.3, `strict` plus nine extra flags  |
 | Tests     | Vitest 5.0.3, jsdom, Testing Library              |
-| Lint      | ESLint 10 flat config, 1,203 rules on, type-aware |
+| Lint      | ESLint 10 flat config, 1,020 rules on, type-aware |
 | Gates     | react-doctor 0.9.17, fallow 3.31.0                |
 | Host      | Netlify, SSR function plus CDN assets             |
 | Runtime   | Node 24.21.0, npm 12.2.0                          |
@@ -323,20 +323,20 @@ than a dependency's postinstall, so they work on a plain install without the
 project allowing install scripts. `LEFTHOOK=0 git commit` skips them for one
 command.
 
-| Script                                      | Does                                            |
-| ------------------------------------------- | ----------------------------------------------- |
-| `npm run dev`                               | Dev server                                      |
-| `npm run build`                             | Production build                                |
-| `npm start`                                 | Serve the production build                      |
-| `npm run typecheck`                         | `tsc --noEmit`                                  |
-| `npm run lint` / `lint:fix`                 | ESLint, type-aware, zero warnings allowed       |
-| `npm run format` / `format:check`           | Prettier                                        |
-| `npm test` / `test:watch` / `test:coverage` | Vitest                                          |
-| `npm run gate:react-doctor`                 | Blocking react-doctor health gate               |
-| `npm run gate:fallow`                       | Blocking fallow codebase-intelligence gate      |
-| `npm run gate:archive`                      | Blocking gate: the archive is not in the bundle |
-| `npm run check`                             | All of the above, in the order CI runs it       |
-| `npm run verify:chapters`                   | Thresholds against the One Piece Wiki (network) |
+| Script                            | Does                                            |
+| --------------------------------- | ----------------------------------------------- |
+| `npm run dev`                     | Dev server                                      |
+| `npm run build`                   | Production build                                |
+| `npm start`                       | Serve the production build                      |
+| `npm run typecheck`               | `tsc --noEmit`                                  |
+| `npm run lint` / `lint:fix`       | ESLint, type-aware, zero warnings allowed       |
+| `npm run format` / `format:check` | Prettier                                        |
+| `npm test` / `test:watch`         | Vitest, with coverage                           |
+| `npm run gate:react-doctor`       | Blocking react-doctor health gate               |
+| `npm run gate:fallow`             | Blocking fallow codebase-intelligence gate      |
+| `npm run gate:archive`            | Blocking gate: the archive is not in the bundle |
+| `npm run check`                   | All of the above, in the order CI runs it       |
+| `npm run verify:chapters`         | Thresholds against the One Piece Wiki (network) |
 
 `npm run check` is the gate. Run it before pushing.
 
@@ -356,9 +356,11 @@ is no `CHANGELOG.md`; the Releases page is the changelog.
 
 **Three blocking gates beyond lint and test.** react-doctor and fallow run last,
 after typecheck, lint, format, test and build, both locally and in CI, and
-neither can be skipped. Every react-doctor finding blocks, whatever its tag. Its
-configuration is a typed `doctor.config.ts`, and it runs with inline disables
-ignored, so a comment cannot get a finding past the gate.
+neither can be skipped. Every react-doctor finding blocks, whatever its tag or
+file, tests included. Its configuration is a typed `doctor.config.ts` that turns
+on every opt-in rule that applies to this stack, the design family included, and
+leaves four off, each with its reason. It runs with inline disables ignored, so
+a comment cannot get a finding past the gate.
 
 The third gate is `scripts/archive-gate.mjs`. It exists because nothing else can
 see the problem it looks for: one stray value import from `~/data` typechecks,
@@ -373,15 +375,21 @@ instead, since that is how a leak there would show up. A byte limit on the whole
 client payload catches anything large that neither pattern matches. ESLint
 catches the same mistake earlier, at the import.
 
-fallow checks the structure of the codebase instead, with nearly every rule set
-to error: eight zones with a declared import direction between them, no
-duplicated block of eight lines or more, and limits of 8 cyclomatic, 8 cognitive
-and 60 lines per unit. Both gates write a machine-readable report that CI
-uploads as an artifact on every run, passing or failing.
+fallow checks the structure of the codebase instead, with every rule that
+applies set to error: eight zones with a declared import direction between them,
+no export that nothing reads (entry files included), no duplicated block of five
+lines or more, near-identical ones included, and limits of 8 cyclomatic and 8
+cognitive complexity. Its CRAP score reads the coverage `npm test` writes, so a
+complex function with no test fails the gate. A second run,
+`fallow security --gate new`, fails a branch that adds a command-injection,
+path-traversal, secret or other sink against `origin/main`. Two tests fail when
+an upgrade of either tool ships a rule or a security category the configuration
+does not turn on. Both gates write a machine-readable report that CI uploads as
+an artifact on every run, passing or failing.
 
 **A thousand rules, not four presets.** `eslint --print-config` on a source file
-reports 1,020 rules switched on. Most of them come from unicorn (328) and
-sonarjs (216), followed by typescript-eslint's type-aware sets, `@eslint-react`,
+reports 1,020 rules switched on. Most of them come from unicorn (357) and
+sonarjs (229), followed by typescript-eslint's type-aware sets, `@eslint-react`,
 regexp, jsdoc and jsx-a11y-x. `eslint-config-prettier` is applied last, so the
 two tools never disagree about formatting. On top of these are explicit limits:
 complexity 8, cognitive complexity 10, 60 lines per function, 300 per file, 15

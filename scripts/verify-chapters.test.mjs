@@ -5,12 +5,14 @@ import {
   episodeOf,
   japaneseNameOf,
   namingChapterOf,
+  readingOf,
   titlesOf,
   verdictOf,
 } from './verify-chapters.mjs'
 
 const name = (en, it) => ({ en, it })
 const page = (wikitext, text = '') => ({ title: 't', wikitext, text })
+const boxed = (title, first) => ({ ...page(`| first = ${first}`), title })
 
 describe('the page a record is read from', () => {
   it('reads a character from the English edition name, straight apostrophe', () => {
@@ -181,6 +183,55 @@ describe('the chapter that names a fruit', () => {
         'Zou Zou no Mi',
       ),
     ).toBeUndefined()
+  })
+})
+
+describe('what the pages say about a record', () => {
+  it('takes the latest floor and episode across paired pages', () => {
+    expect(
+      readingOf(
+        { id: 'kiwi-and-mozu', kind: 'character' },
+        [
+          boxed('Kiwi', '[[Chapter 3]]; [[Episode 1]]'),
+          boxed('Mozu', '[[Chapter 5]]; [[Episode 2]]'),
+        ],
+        new Map(),
+      ),
+    ).toStrictEqual({ page: 'Kiwi + Mozu', wiki: 5, wikiEpisode: 2 })
+  })
+
+  it('names only the pages when one has no chapter', () => {
+    expect(
+      readingOf(
+        { id: 'x', kind: 'character' },
+        [boxed('X', '[[Chapter 3]]'), { title: 'Y', wikitext: '', text: '' }],
+        new Map(),
+      ),
+    ).toStrictEqual({ page: 'X + Y' })
+  })
+
+  it('raises a fruit to the chapter that names it, by hand or by summary', () => {
+    expect(
+      readingOf(
+        { id: 'gum-gum-fruit', kind: 'fruit' },
+        [boxed('Gomu Gomu no Mi', '[[Chapter 1]]')],
+        new Map(),
+      ),
+    ).toStrictEqual({ page: 'Gomu Gomu no Mi (named ch 1)', wiki: 1 })
+    expect(
+      readingOf(
+        { id: 'flame-flame-fruit', kind: 'fruit' },
+        [boxed('Mera Mera no Mi', '[[Chapter 100]]')],
+        new Map([[158, 'Ace ate the [[Mera Mera no Mi]].']]),
+      ),
+    ).toStrictEqual({ page: 'Mera Mera no Mi (named ch 158)', wiki: 158 })
+    expect(
+      readingOf(
+        { id: 'flame-flame-fruit', kind: 'fruit' },
+        [boxed('Mera Mera no Mi', '[[Chapter 100]]')],
+        new Map(),
+      ),
+    ).toStrictEqual({ page: 'Mera Mera no Mi', wiki: 100 })
   })
 })
 

@@ -87,7 +87,7 @@ function parsed(label, body) {
  * @param {(answer: Answer) => boolean} isAnswer What a real answer has.
  * @returns {Promise<Answer>} The answer, parsed.
  */
-async function cached(file, label, url, isAnswer) {
+export async function cached(file, label, url, isAnswer) {
   if (!existsSync(file)) {
     const body = await download(url, label)
     const answer = parsed(label, body)
@@ -189,7 +189,7 @@ function isCompleteBatch(answer) {
  * @param {ChapterPage} page The page.
  * @returns {[number, string][]} The pair, or none.
  */
-function textOf(page) {
+export function textOf(page) {
   const match = /^Chapter (?<n>\d+)$/u.exec(page.title)
   const text = page.revisions?.[0]?.slots?.main?.['*']
 

@@ -36,26 +36,35 @@ function fileFor(specifier, parent) {
  * @returns {void}
  */
 function registerArchiveResolution() {
-  registerHooks({
-    resolve(specifier, context, nextResolve) {
-      const aliased =
-        specifier.startsWith('~/') ?
-          pathToFileURL(path.join(ROOT, 'src', specifier.slice(2))).href
-        : specifier
+  registerHooks({ resolve: resolveArchive })
+}
 
-      try {
-        return nextResolve(aliased, context)
-      } catch (error) {
-        const file = fileFor(aliased, context.parentURL)
+/**
+ * The resolve hook: the alias first, then the `.ts` file a specifier with no
+ * extension names, when the plain resolution fails and that file exists.
+ * @param {string} specifier The specifier as written.
+ * @param {{ parentURL?: string }} context The importing module.
+ * @param {(specifier: string, context: { parentURL?: string }) => unknown} nextResolve The next hook in the chain.
+ * @returns {unknown} What the next hook resolves.
+ */
+export function resolveArchive(specifier, context, nextResolve) {
+  const aliased =
+    specifier.startsWith('~/') ?
+      // fallow-ignore-next-line security-sink -- the specifier is an import written in this repository's own source, never outside input
+      pathToFileURL(path.join(ROOT, 'src', specifier.slice(2))).href
+    : specifier
 
-        if (file === null || !existsSync(`${file}.ts`)) {
-          throw error
-        }
+  try {
+    return nextResolve(aliased, context)
+  } catch (error) {
+    const file = fileFor(aliased, context.parentURL)
 
-        return nextResolve(pathToFileURL(`${file}.ts`).href, context)
-      }
-    },
-  })
+    if (file === null || !existsSync(`${file}.ts`)) {
+      throw error
+    }
+
+    return nextResolve(pathToFileURL(`${file}.ts`).href, context)
+  }
 }
 
 /**

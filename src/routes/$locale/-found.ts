@@ -8,6 +8,8 @@
  */
 import { notFound } from '@tanstack/react-router'
 
+import type { Locale } from '~/i18n/locales'
+
 /**
  * The page, or the router's not-found signal.
  *
@@ -25,4 +27,22 @@ export function orNotFound<T>(page: null | T): T {
   }
 
   return page
+}
+
+/** What a record route's loader is handed, as far as it reads it. */
+export type RecordMatch = {
+  readonly context: { readonly locale: Locale }
+  readonly params: { readonly id: string }
+}
+
+/**
+ * What every server function of a record page is called with: the record's
+ * id from the address, in the reader's locale.
+ * @param match What the route's loader is handed.
+ * @returns The argument, built once and shared by the page's calls.
+ */
+export function recordArgs(match: RecordMatch): {
+  readonly data: { readonly id: string; readonly locale: Locale }
+} {
+  return { data: { id: match.params.id, locale: match.context.locale } }
 }

@@ -10,9 +10,8 @@ import type { ReactElement } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { useLocale } from '~/i18n/LocaleContext'
-import { isLocale } from '~/i18n/locales'
-import { orNotFound } from '~/routes/$locale/-found'
-import { describeRecordPage } from '~/routes/$locale/-head'
+import { orNotFound, recordArgs } from '~/routes/$locale/-found'
+import { recordHead } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { recordStyles } from '~/routes/$locale/-record.styles'
 import {
@@ -34,36 +33,17 @@ export const Route = createFileRoute('/$locale/fruits/$id')({
   // The one decision the page turns on is made on the server, from the
   // bookmark in the request: the document title must not carry a name the
   // reader has not reached, and a title is set before any component runs.
-  loader: async ({ params, context }) => {
-    const page = await loadFruit({
-      data: { id: params.id, locale: context.locale },
-    })
-    const found = orNotFound(page)
-
+  loader: async (match) => {
+    const args = recordArgs(match)
+    // Below the plate, so they stream: neither is what the reader came for,
+    // and each is a drawing per entry.
     return {
-      detail: found.detail,
-      head: found.head,
-      // Below the plate, so they stream: neither is what the reader came for,
-      // and each is a drawing per entry.
-      eaters: loadFruitEaters({
-        data: { id: params.id, locale: context.locale },
-      }),
-      siblings: loadFruitSiblings({
-        data: { id: params.id, locale: context.locale },
-      }),
+      ...orNotFound(await loadFruit(args)),
+      eaters: loadFruitEaters(args),
+      siblings: loadFruitSiblings(args),
     }
   },
-  head: ({ loaderData, match, params }) => {
-    return loaderData === undefined || !isLocale(params.locale) ?
-        {}
-      : describeRecordPage({
-          head: loaderData.head,
-          locale: params.locale,
-          parentPath: '/fruits',
-          parentTitleKey: 'fruits.pageTitle',
-          pathname: match.pathname,
-        })
-  },
+  head: (match) => recordHead(match, 'fruits') ?? {},
   component: FruitPage,
   notFoundComponent: FruitNotFound,
 })

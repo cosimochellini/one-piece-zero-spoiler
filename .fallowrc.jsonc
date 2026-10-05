@@ -19,8 +19,13 @@
   // gate script or a config that exports something nothing reads is a finding
   // like any other unused export.
   "includeEntryExports": true,
-  // react-doctor loads its config by file name, so nothing imports it.
-  "ignoreExports": [{ "file": "doctor.config.ts", "exports": ["default"] }],
+  // Exports a tool loads by name, so nothing imports them: react-doctor's
+  // config, and the router and Start instance TanStack Start looks up.
+  "ignoreExports": [
+    { "file": "doctor.config.ts", "exports": ["default"] },
+    { "file": "src/router.tsx", "exports": ["getRouter"] },
+    { "file": "src/start.ts", "exports": ["startInstance"] },
+  ],
   // A file fallow cannot parse cleanly would drop out of every analysis
   // silently, so it fails the run instead.
   "failOnParseError": true,

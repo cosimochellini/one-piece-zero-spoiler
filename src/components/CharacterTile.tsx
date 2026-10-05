@@ -2,7 +2,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { Marked } from '~/components/CharacterCard'
+import { NameAndRole } from '~/components/CharacterCard'
 import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
@@ -125,20 +125,13 @@ function TileLink({
         />
       </span>
       <span {...stylex.props(styles.words)}>
-        <span
-          {...stylex.props(
-            styles.name,
-            morph && morphPart('character', record.id, 'name'),
-          )}
-        >
-          <Marked
-            span={highlight}
-            text={record.name}
-          />
-        </span>
-        {record.role === undefined ? null : (
-          <span {...stylex.props(styles.role)}>{record.role}</span>
-        )}
+        <NameAndRole
+          highlight={highlight}
+          nameSx={styles.name}
+          record={record}
+          roleSx={styles.role}
+          travels={morph}
+        />
       </span>
     </Link>
   )

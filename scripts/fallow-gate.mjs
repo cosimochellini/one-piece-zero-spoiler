@@ -42,6 +42,7 @@ const command = existsSync(local) ? local : 'fallow'
 
 // The path .fallowrc.jsonc names as `health.coverage`. Without it fallow
 // quietly estimates every CRAP score, so its absence is a gate failure.
+// fallow-ignore-next-line security-sink -- every segment is a literal under the repository root
 const coveragePath = path.join(
   repositoryRoot,
   'coverage',
@@ -67,6 +68,7 @@ if (!existsSync(coveragePath)) {
  * @returns {number} fallow's exit status.
  */
 function fallow(args) {
+  // fallow-ignore-next-line security-sink -- the command is the installed fallow binary and every argument is a literal in this file
   const child = spawnSync(command, args, {
     cwd: repositoryRoot,
     stdio: 'inherit',

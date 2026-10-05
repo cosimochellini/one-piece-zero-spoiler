@@ -145,15 +145,22 @@ function Byline({ story }: { readonly story: HomeStory }): ReactElement {
   )
 }
 
+/** A story's paragraph, the same open or closed. */
+function StoryBody({ story }: { readonly story: HomeStory }): ReactElement {
+  return (
+    <p {...stylex.props(styles.body)}>
+      <Prose segments={story.body} />
+    </p>
+  )
+}
+
 /** A story set whole: the byline, the title, the paragraph. */
 function OpenStory({ story }: { readonly story: HomeStory }): ReactElement {
   return (
     <article {...stylex.props(styles.story)}>
       <Byline story={story} />
       <h3 {...stylex.props(styles.title)}>{story.title}</h3>
-      <p {...stylex.props(styles.body)}>
-        <Prose segments={story.body} />
-      </p>
+      <StoryBody story={story} />
     </article>
   )
 }
@@ -167,9 +174,7 @@ function ClosedStory({ story }: { readonly story: HomeStory }): ReactElement {
       </summary>
       <div {...stylex.props(styles.story)}>
         <Byline story={story} />
-        <p {...stylex.props(styles.body)}>
-          <Prose segments={story.body} />
-        </p>
+        <StoryBody story={story} />
       </div>
     </details>
   )
