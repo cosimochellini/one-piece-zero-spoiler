@@ -24,7 +24,7 @@ import { defineConfig } from 'react-doctor/api'
  *   decision this project has not made, or duplicates a ceiling ESLint already
  *   enforces.
  */
-export default defineConfig({
+const config = defineConfig({
   // One network call per dependency, at error severity, from a scan that reads
   // a third-party service: CI would turn red without a code change.
   supplyChain: { enabled: false },
@@ -136,3 +136,5 @@ export default defineConfig({
     'react-doctor/no-danger': 'error',
   },
 })
+
+export default config

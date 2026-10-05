@@ -21,14 +21,14 @@ import { existsSync, mkdirSync, rmSync } from 'node:fs'
 import path from 'node:path'
 import process from 'node:process'
 
-const repoRoot = path.resolve(import.meta.dirname, '..')
+const repositoryRoot = path.resolve(import.meta.dirname, '..')
 
 // bin/fallow is a Node shim that require.resolve()s the platform package from
 // optionalDependencies, so never install with --omit=optional.
-const local = path.join(repoRoot, 'node_modules', '.bin', 'fallow')
+const local = path.join(repositoryRoot, 'node_modules', '.bin', 'fallow')
 const command = existsSync(local) ? local : 'fallow'
 
-const sarifPath = path.join(repoRoot, '.gate', 'fallow.sarif')
+const sarifPath = path.join(repositoryRoot, '.gate', 'fallow.sarif')
 mkdirSync(path.dirname(sarifPath), { recursive: true })
 // A stale report must never survive a failed run.
 rmSync(sarifPath, { force: true })
@@ -48,7 +48,7 @@ const child = spawnSync(
     '--sarif-file',
     sarifPath,
   ],
-  { cwd: repoRoot, stdio: 'inherit' },
+  { cwd: repositoryRoot, stdio: 'inherit' },
 )
 
 if (child.error) {

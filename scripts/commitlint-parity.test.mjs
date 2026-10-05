@@ -10,8 +10,13 @@ import { describe, expect, it } from 'vitest'
 import config from '../commitlint.config.mjs'
 import { MAX_TITLE_LENGTH, TYPE_BUMPS } from './validate-pr-title.mjs'
 
-const repoRoot = path.resolve(import.meta.dirname, '..')
-const commitlint = path.join(repoRoot, 'node_modules', '.bin', 'commitlint')
+const repositoryRoot = path.resolve(import.meta.dirname, '..')
+const commitlint = path.join(
+  repositoryRoot,
+  'node_modules',
+  '.bin',
+  'commitlint',
+)
 
 /**
  * Runs the declared commitlint binary over one message, the way the commit-msg
@@ -22,7 +27,7 @@ const commitlint = path.join(repoRoot, 'node_modules', '.bin', 'commitlint')
  */
 function lint(message) {
   const child = spawnSync(commitlint, [], {
-    cwd: repoRoot,
+    cwd: repositoryRoot,
     encoding: 'utf8',
     env: { ...process.env, LEFTHOOK: '0' },
     input: message,

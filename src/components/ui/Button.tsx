@@ -52,15 +52,15 @@ export type ButtonProps = NativeButtonProps & {
 export function Button({
   variant = 'chip',
   sx,
-  type,
+  // A button inside a form defaults to `submit`. Every button here is an
+  // in-page control, so the default is flipped rather than repeated at each
+  // call site.
+  type = 'button',
   ...rest
 }: ButtonProps): ReactElement {
   return (
     <button
-      // A button inside a form defaults to `submit`. Every button here is an
-      // in-page control, so the default is flipped rather than repeated at
-      // each call site.
-      type={type ?? 'button'}
+      type={type}
       {...rest}
       {...stylex.props(
         styles.base,

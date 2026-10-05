@@ -229,7 +229,7 @@ export const bookSections: readonly BookSection[] = arcs.flatMap((arc) => {
   const shelved = characters.filter(
     (character) => shelfOf(character)?.id === arc.id,
   )
-  return shelved.length === 0 ? [] : [{ arc, characters: shelved }]
+  return shelved.length === 0 ? [] : { arc, characters: shelved }
 })
 
 /**

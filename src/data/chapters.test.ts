@@ -23,7 +23,7 @@ const CHAPTERS = Array.from(
 const DECLARED = DATED.flatMap(({ entry, label, owner }) => {
   return entry.chapter === undefined ?
       []
-    : [{ chapter: entry.chapter, episode: entry.episode, label, owner }]
+    : { chapter: entry.chapter, episode: entry.episode, label, owner }
 })
 
 const UNANCHORED = entities.filter((entity) => entity.unanchored === true)

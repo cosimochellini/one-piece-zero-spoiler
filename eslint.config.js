@@ -73,7 +73,7 @@ const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
 
-export default defineConfig(
+const config = defineConfig(
   // Global ignores. `globalIgnores` is the only form that ignores rather than
   // scopes, which is why it is not folded into any block that carries `files`.
   globalIgnores([
@@ -866,3 +866,5 @@ export default defineConfig(
   prettierConfig,
   { rules: { curly: ['error', 'all'] } },
 )
+
+export default config

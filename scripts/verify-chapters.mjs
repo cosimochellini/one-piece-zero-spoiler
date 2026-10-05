@@ -362,7 +362,7 @@ function table(title, rows, cells) {
 
   const lines = rows.map(
     (row) =>
-      `| ${[row.kind, row.id, ...cells(row)].map((cell) => String(cell ?? '—')).join(' | ')} |`,
+      `| ${[row.kind, row.id, ...cells(row)].map((cell = '—') => String(cell)).join(' | ')} |`,
   )
 
   return `${heading}\n\n| kind | record | filed | wiki | page |\n| --- | --- | ---: | ---: | --- |\n${lines.join('\n')}`
