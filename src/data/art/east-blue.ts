@@ -99,7 +99,8 @@ export const eastBlueArt = {
     { d: 'M40 168 V178 M120 168 V178' },
     shadow(80, 186, 56),
   ],
-  // Three swords in their sheaths, the middle one in green.
+  // Three swords in their sheaths, the middle one in green. The third is
+  // drawn again as Shusui from 362 and as Enma from 956, in `eastBlueRedrawn`.
   'roronoa-zoro': [
     ...sheath(-22, 'soft'),
     ...sheath(0, 'accent'),
@@ -1025,9 +1026,65 @@ export const eastBlueArt = {
   ],
 } satisfies Drawings
 
+/**
+ * Zoro's third sword as each redrawing starts it: the sheath without its plain
+ * guard (`sheath`'s fourth stroke), which each new sword draws its own.
+ */
+const THIRD_SHEATH = sheath(22, 'soft').filter((_, index) => index !== 3)
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
-  usopp: [
+  'roronoa-zoro': [
+    // Shusui: the third sword now Ryuma's black blade, its guard an octofoil
+    // and its lacquered sheath hatched dark. Ryuma throws it to Zoro at the
+    // end of 362 (ch. 467).
+    {
+      episode: 362,
+      chapter: 467,
+      value: [
+        ...sheath(-22, 'soft'),
+        ...sheath(0, 'accent'),
+        ...THIRD_SHEATH,
+        {
+          d: 'M98.4 129.6 Q103.1 128.4 97.3 124.8 Q97.6 120.9 91.5 120.4 Q87.2 116 84.5 118.9 Q78 116.7 80.2 121.2 Q75.5 122.4 81.3 126 Q81 129.9 87.1 130.4 Q91.4 134.8 94.1 131.9 Q100.6 134.1 98.4 129.6 Z',
+        },
+        {
+          d: 'M92 113.2 L98.4 111.3 M95.8 104.8 L102.1 102.9 M99.5 96.4 L105.9 94.5 M103.3 88 L109.6 86.1 M107 79.6 L113.4 77.7 M110.8 71.2 L117.1 69.3 M114.5 62.8 L120.9 60.9',
+          role: 'ambient',
+        },
+        shadow(80, 176, 40),
+      ],
+    },
+    // Enma: the third sword now Oden's, Shusui left at Ryuma's grave; a
+    // trefoil guard and a trefoil cap past a ring at the sheath's end, the
+    // sageo tied at the mouth with its two tufted cords hanging free.
+    // Hitetsu hands it to Zoro in 956 (ch. 955).
+    {
+      episode: 956,
+      chapter: 955,
+      value: [
+        ...sheath(-22, 'soft'),
+        ...sheath(0, 'accent'),
+        ...THIRD_SHEATH,
+        {
+          d: 'M91 121.6 C91.3 109.7 73.9 122.1 85.2 125.8 C74.9 131.4 94.3 140.5 91.7 128.8 C101.8 135.1 99.6 113.6 91 121.6 Z',
+        },
+        {
+          d: 'M125.6 44.1 C125.5 49.2 132.9 43.9 128 42.4 C132.5 40 124.2 36.1 125.3 41.1 C121 38.4 121.9 47.6 125.6 44.1 Z M118.5 51.2 L125.1 54',
+        },
+        { d: 'M90 115.4 l6.6 2.6 M102 88.6 l6.6 2.6', role: 'soft' },
+        {
+          d: 'M96.6 118.9 C106.6 120.9 116.6 130.9 118.6 144.9 M96.6 118.9 C102.6 124.9 106.6 136.9 108.6 152.9',
+        },
+        {
+          d: 'M118.6 144.9 l-2.4 7 M118.6 144.9 l0.6 7.6 M118.6 144.9 l3.2 6.8 M108.6 152.9 l-2.4 7 M108.6 152.9 l0.6 7.6 M108.6 152.9 l3.2 6.8',
+          role: 'soft',
+        },
+        shadow(80, 176, 40),
+      ],
+    },
+  ],
+  'usopp': [
     // Kabuto: a staff with a five-prong fork, the band pulled back from the
     // two outer prongs around a star pellet, the dial housed where the fork
     // meets the shaft. Sogeking carries it onto the Tower of Justice roof at

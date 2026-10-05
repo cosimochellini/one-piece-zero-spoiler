@@ -17,6 +17,7 @@ import type {
   HomeView,
   RoutePositionView,
   ShelfView,
+  Stroke,
 } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
@@ -628,5 +629,32 @@ describe('a record drawn again later in the story', () => {
     expect(characterOf(chopper, 'en', atChapter(598)).visual.strokes).toBe(
       cap?.value,
     )
+  })
+
+  describe('twice, following Zoro’s third sword', () => {
+    const zoro = filed('roronoa-zoro')
+    const threeSwords = DRAWINGS['roronoa-zoro']
+    const [shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
+    const drawnAt = (bookmark: Bookmark): Stroke[] =>
+      characterOf(zoro, 'en', reveal(bookmark)).visual.strokes
+
+    it('shows the latest third sword an episode reader has reached', () => {
+      expect(shusui?.episode).toBe(362)
+      expect(enma?.episode).toBe(956)
+
+      expect(drawnAt(ep(361))).toBe(threeSwords)
+      expect(drawnAt(ep(362))).toBe(shusui?.value)
+      expect(drawnAt(ep(955))).toBe(shusui?.value)
+      expect(drawnAt(ep(956))).toBe(enma?.value)
+      expect(drawnAt(null)).toBe(threeSwords)
+    })
+
+    it('keeps each sword from a chapter reader until the manga hands it over', () => {
+      // The manga hands Zoro Shusui in chapter 467 and Enma in 955.
+      expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(threeSwords)
+      expect(drawnAt({ mode: 'chapter', chapter: 467 })).toBe(shusui?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 954 })).toBe(shusui?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
+    })
   })
 })
