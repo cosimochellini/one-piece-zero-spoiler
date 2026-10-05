@@ -12,7 +12,45 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/**
+ * Sanji's chef's knife, point up and to the right: the blade with its spine
+ * seen edge on and the bevel along its edge, the bolster, and the handle with
+ * three rivets and its underside hatched. Every drawing of his holds it, so
+ * the only thing that changes is what is behind it and the flame.
+ */
+const SANJI_KNIFE: Stroke[] = [
+  {
+    d: 'M58.5 129.5 L114.3 79.4 Q123.2 71.3 129.6 69.5 C129.4 87.2 121.9 108.8 105.6 123.5 L76.6 149.6 L72.6 145.1',
+  },
+  { d: 'M58.5 129.5 L56.2 126.9 L111.9 76.8 Q122.3 67.4 129.6 69.5' },
+  {
+    d: 'M74.1 142.4 L100.9 118.3 C114.3 106.3 122.1 91.1 125.8 75.7',
+    role: 'soft',
+  },
+  { d: 'M53.3 134.2 L58.5 129.5 L72.6 145.1 L67.4 149.8 Z' },
+  {
+    d: 'M56 137.2 L30 160.6 C25.5 164.6 26 168.2 28.4 170.8 C30.7 173.4 34.2 174.3 38.7 170.3 L64.7 146.9',
+  },
+  {
+    d: `${circle(37.3, 162.8, 1.6)} ${circle(45.5, 155.4, 1.6)} ${circle(53.7, 148, 1.6)}`,
+    role: 'soft',
+  },
+  {
+    d: 'M36.5 172.3 L36.7 168 M45 164.6 L45.2 160.4 M53.2 157.2 L53.4 153 M61 150.2 L61.2 146',
+    role: 'ambient',
+  },
+]
+
+/** The flame off the point of Sanji's knife, as it burns until Onigashima. */
+const SANJI_FLAME: Stroke[] = [
+  {
+    d: 'M114 66 c-14 -16 2 -30 6 -44 c2 12 12 16 12 30 c0 10 -8 16 -18 14z',
+    role: 'accent',
+  },
+  { d: 'M118 58 c-4 -8 2 -12 4 -18 c2 8 6 10 4 18', role: 'accent' },
+]
 
 /** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
@@ -609,19 +647,10 @@ export const eastBlueArt = {
     { d: 'M4 168 H156', role: 'ambient' },
     shadow(80, 146, 48),
   ],
-  // A chef's knife with a flame off its point.
-  'sanji': [
-    { d: 'M28 170 L54 144 M38 178 L64 152' },
-    { d: 'M54 144 L64 152' },
-    { d: 'M54 144 L122 76' },
-    { d: 'M64 152 C90 140 116 110 130 70' },
-    { d: 'M122 76 L130 70' },
-    {
-      d: 'M108 66 c-14 -16 2 -30 6 -44 c2 12 12 16 12 30 c0 10 -8 16 -18 14z',
-      role: 'accent',
-    },
-    { d: 'M112 58 c-4 -8 2 -12 4 -18 c2 8 6 10 4 18', role: 'accent' },
-  ],
+  // A chef's knife with a flame off its point. The Raid Suit's cape goes
+  // behind it from 925 and the flame burns taller from 1061, in
+  // `eastBlueRedrawn`.
+  'sanji': [...SANJI_KNIFE, ...SANJI_FLAME, shadow(80, 186, 44)],
 
   // A restaurant that is also a ship: a hull with portholes, the dining
   // deck and its chimney, and a fish's head for a prow.
@@ -1272,6 +1301,56 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'accent',
         },
         shadow(80, 178, 36),
+      ],
+    },
+  ],
+  'sanji': [
+    // The Raid Suit's black cape hung behind the knife: the stand-up collar,
+    // the shoulders, the scalloped hem, folds down its length and its far
+    // side hatched, the knife and the flame in front of it. No number, no
+    // mark. He first puts the suit on to fight Page One in 925 (ch. 931).
+    {
+      episode: 925,
+      chapter: 931,
+      value: [
+        {
+          d: 'M56 42 C54 34 50 28 46 22 C62.7 27.3 79.3 27.3 96 22 C92 28 88 34 86 42',
+        },
+        { d: 'M56 42 Q71 48 86 42', role: 'soft' },
+        {
+          d: 'M56 42 C44 44 30 50 26 60 C22 92 14 124 6 150 C16.2 144.9 25.3 145.9 33 153.1 M61.7 154.3 C63.2 155.4 64.6 156.6 66 158 C79.3 150 90.7 149.3 100 156 C112 145.3 124.7 140 138 140 C132.9 129.8 128.3 117.5 124.5 103.7 M105.1 48.6 C99.4 45.3 92.4 43.1 86 42',
+        },
+        {
+          d: 'M42 62 C38.1 95.2 34.2 124.6 34 152.1 M70 50 C70 71.8 69.4 91.8 68.5 111 M98 60 C98.4 68.1 98.8 75.9 99.1 83.5 M100 133.4 V156',
+          role: 'soft',
+        },
+        {
+          d: 'M24 80 L36 72 M21 98 L35 89 M17 116 L33 106 M13 134 L31 122',
+          role: 'ambient',
+        },
+        ...SANJI_KNIFE,
+        ...SANJI_FLAME,
+        shadow(80, 186, 44),
+      ],
+    },
+    // The cape gone and the knife alone again, its flame now Ifrit Jambe's:
+    // taller, with a tongue either side. He stamps the suit's canister to
+    // pieces in 1057 (ch. 1031) and first lights the hotter flame on Queen in
+    // 1061 (ch. 1034).
+    {
+      episode: 1061,
+      chapter: 1034,
+      value: [
+        ...SANJI_KNIFE,
+        {
+          d: 'M114 68 C98 58 98 44 102 30 C104 38 108 42 111 44 C108 30 112 14 122 0 C122 16 130 24 132 36 C134 30 134 26 136 18 C146 34 144 52 136 62 C130 68 120 70 114 68 Z',
+          role: 'accent',
+        },
+        {
+          d: 'M118 60 C112 52 114 44 118 32 C120 42 128 46 127 56',
+          role: 'accent',
+        },
+        shadow(80, 186, 44),
       ],
     },
   ],
