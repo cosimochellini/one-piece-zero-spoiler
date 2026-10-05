@@ -1,4 +1,4 @@
-import { alabastaArt } from './alabasta'
+import { alabastaArt, alabastaRedrawn } from './alabasta'
 import { dressrosaArt } from './dressrosa'
 import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
@@ -44,6 +44,7 @@ export const DRAWINGS = {
  */
 export const REDRAWINGS: Redrawings = {
   ...eastBlueRedrawn,
+  ...alabastaRedrawn,
   ...skypieaRedrawn,
   ...thrillerBarkRedrawn,
   ...wanoRedrawn,

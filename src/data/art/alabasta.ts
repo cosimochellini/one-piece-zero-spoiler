@@ -8,7 +8,7 @@ import {
   shadow,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Stroke } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
@@ -476,7 +476,8 @@ export const alabastaArt = {
     shadow(82, 184, 52),
   ],
 
-  // A top hat with a cross, and antlers coming out from under the brim.
+  // A top hat with a cross, and antlers coming out from under the brim. The
+  // cap of the two years is drawn from 517, in `alabastaRedrawn`.
   'tony-tony-chopper': [
     { d: 'M38 116 H122' },
     { d: 'M50 116 V74 H110 V116' },
@@ -971,3 +972,62 @@ export const alabastaArt = {
     { d: dot(80, 64), role: 'accent' },
   ],
 } satisfies Drawings
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const alabastaRedrawn: Redrawings = {
+  // The cap of the two years, worn over the old hat: a round crown ringed
+  // with dots, the cross on a disc at the front, the old brim showing under
+  // it, flaps buckled at the sides and the antlers out through them. The far
+  // side is hatched. He walks Sabaody eating a Grand Bun at 517 (ch. 598).
+  'tony-tony-chopper': [
+    {
+      episode: 517,
+      chapter: 598,
+      value: [
+        { d: 'M36 124 C32 76 54 48 80 48 C106 48 128 76 124 124' },
+        {
+          d: (
+            [
+              [51, 104],
+              [55, 90],
+              [62, 78],
+              [70, 71],
+              [80, 68],
+              [90, 71],
+              [98, 78],
+              [105, 90],
+              [109, 104],
+            ] satisfies [number, number][]
+          )
+            .map(([x, y]) => circle(x, y, 1.6))
+            .join(' '),
+          role: 'soft',
+        },
+        { d: circle(80, 90, 17), role: 'accent' },
+        { d: 'M72 82 l16 16 M88 82 l-16 16', role: 'accent' },
+        {
+          d: 'M36 120 Q80 100 124 120 L127 131 Q80 112 33 131 Z',
+          role: 'accent',
+        },
+        {
+          d: 'M40 130 C38 140 40 148 44 154 M118 130 C120 140 118 148 114 154',
+        },
+        {
+          d: 'M40 154 l8 -2 l2 8 l-8 2z M110 152 l8 2 l-2 8 l-8 -2z',
+          role: 'soft',
+        },
+        {
+          d: 'M37 102 C22 98 12 84 14 58 M22 96 l-14 2 M16 80 l-12 -6 M14 66 l-6 -12 M15 58 l6 -12',
+        },
+        {
+          d: 'M123 102 C138 98 148 84 146 58 M138 96 l14 2 M144 80 l12 -6 M146 66 l6 -12 M145 58 l-6 -12',
+        },
+        {
+          d: 'M104 56 l-5 6 M113 64 l-6 7 M119 75 l-6 7 M122 88 l-5 7 M124 101 l-4 6',
+          role: 'ambient',
+        },
+        shadow(80, 176, 44),
+      ],
+    },
+  ],
+}
