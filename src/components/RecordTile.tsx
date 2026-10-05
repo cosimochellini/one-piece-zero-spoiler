@@ -20,7 +20,7 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
+const KIND_KEY: Record<EntityKind, TranslationKey> = {
   character: 'kind.character',
   arc: 'kind.arc',
   place: 'kind.place',
@@ -29,9 +29,9 @@ const KIND_KEY: Readonly<Record<EntityKind, TranslationKey>> = {
 }
 
 /** The slot to file, and how to ask for what fills it. */
-export type RecordTileProps = {
-  readonly peek: (handle: string) => Promise<RecordView>
-  readonly slot: Slot<RecordView>
+export interface RecordTileProps {
+  peek: (handle: string) => Promise<RecordView>
+  slot: Slot<RecordView>
 }
 
 /**
@@ -99,7 +99,7 @@ export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
  * not another edit here, and a tile that met one would otherwise print a name
  * it had a page for and no way to reach it.
  */
-function Name({ entry }: { readonly entry: RecordView }): ReactElement {
+function Name({ entry }: { entry: RecordView }): ReactElement {
   const { locale } = useLocale()
   const label = entry.name
 

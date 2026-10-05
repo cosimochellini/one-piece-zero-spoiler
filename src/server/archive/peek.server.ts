@@ -50,7 +50,7 @@ export function peekDossier(
   handle: string,
   locale: Locale,
   bookmark: Bookmark,
-): (CharacterView & { readonly summary: string }) | undefined {
+): (CharacterView & { summary: string }) | undefined {
   const entity = entityForHandle(handle)
   if (entity === undefined) {
     return undefined

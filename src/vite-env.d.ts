@@ -19,7 +19,6 @@ declare module 'virtual:stylex:css-only' {}
 // build time by `src/lib/seo/site.ts`. Declared so it is typed as a string
 // rather than reaching `strictTypeChecked` through `ImportMetaEnv`'s index
 // signature, which is `any` and would fail every read as `no-unsafe-*`.
-/* eslint-disable-next-line @typescript-eslint/consistent-type-definitions -- the repo writes types with `type`, but declaration merging into Vite's own `ImportMetaEnv` is only possible with `interface`. */
 interface ImportMetaEnv {
-  readonly VITE_SITE_ORIGIN?: string
+  VITE_SITE_ORIGIN?: string
 }

@@ -86,7 +86,7 @@ import type { Entity } from './types'
  * They are last in this list and nowhere in it: the archive is sorted by
  * threshold everywhere it is drawn, so the order here decides nothing.
  */
-export const sagas: readonly Saga[] = [
+export const sagas: Saga[] = [
   eastBlue,
   alabasta,
   skypiea,
@@ -102,7 +102,7 @@ export const sagas: readonly Saga[] = [
   devilFruits,
 ]
 
-export const entities: readonly Entity[] = sagas.flatMap((saga) => saga.entries)
+export const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
 
 const BY_ID = new Map(entities.map((entity) => [entity.id, entity]))
 

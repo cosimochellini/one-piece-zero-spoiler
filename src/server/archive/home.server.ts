@@ -46,7 +46,7 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
   const at = reveal(bookmark ?? FIRST_VISIT)
   const [saga, previous] = reachedArcs(at)
 
-  const since = (floor: number): readonly FiledStory[] => {
+  const since = (floor: number): FiledStory[] => {
     return at
       .reached(stories)
       .filter((s) => s.episode >= floor && at.sees(s.character))
@@ -90,7 +90,7 @@ export function homePage(bookmark: Bookmark, locale: Locale): HomeView {
  * one before. A bookmark the cookie grammar admits always reaches the first
  * arc; the fallback is for the type, not for a case the route can show.
  */
-function reachedArcs(at: Reveal): readonly [Entity, Entity | undefined] {
+function reachedArcs(at: Reveal): [Entity, Entity | undefined] {
   const reached = orderByMode(arcs, at.mode).filter((arc) => at.sees(arc))
   const [saga = arcs[0], previous] = reached.toReversed()
   if (saga === undefined) {
@@ -106,10 +106,10 @@ function reachedArcs(at: Reveal): readonly [Entity, Entity | undefined] {
  * the tally keeps first-mention order and the sort is stable.
  */
 function castOf(
-  shown: readonly FiledStory[],
+  shown: FiledStory[],
   at: Reveal,
   locale: Locale,
-): readonly CharacterView[] {
+): CharacterView[] {
   const tally = new Map<string, number>()
   for (const { character, story } of shown) {
     for (const id of [character.id, ...markedIds(story.body.en)]) {
@@ -131,7 +131,7 @@ function newcomersOf(
   saga: Entity,
   at: Reveal,
   locale: Locale,
-): readonly CharacterView[] {
+): CharacterView[] {
   const shelved =
     bookSections.find((section) => section.arc.id === saga.id)?.characters ?? []
 

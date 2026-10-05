@@ -27,11 +27,11 @@ export type ThresholdSentence =
   | 'veil.locked'
 
 /** What a threshold sentence needs to name a record's threshold. */
-export type ThresholdDescription = {
-  readonly gated: Gated
-  readonly mode: BookmarkMode
-  readonly sentence: ThresholdSentence
-  readonly t: Translate
+export interface ThresholdDescription {
+  gated: Gated
+  mode: BookmarkMode
+  sentence: ThresholdSentence
+  t: Translate
 }
 
 /** A record's threshold, said in the reader's unit. */

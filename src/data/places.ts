@@ -34,21 +34,21 @@ import type { Entity, LocalizedText, Timeline } from './types'
  * viewer who has just arrived could say, so nothing here has to be veiled
  * separately from the place itself.
  */
-export type PlaceDossier = {
-  readonly form: PlaceForm
-  readonly sea: Sea
+export interface PlaceDossier {
+  form: PlaceForm
+  sea: Sea
   /** The arc the place belongs to: an `arc` record's id. */
-  readonly arc: string
+  arc: string
   /** The one thing the drawing shows and the eye would look for. */
-  readonly landmark: LocalizedText
+  landmark: LocalizedText
   /** The log entry proper: two or three sentences, safe at the threshold. */
-  readonly log: LocalizedText
+  log: LocalizedText
   /**
    * Records the archive files at this place: the characters met here, the
    * ship received here. Each keeps its own threshold, so a name filed later
    * than the place stays under fog on the place's own page.
    */
-  readonly filedHere: readonly string[]
+  filedHere: string[]
 }
 
 /**
@@ -60,22 +60,22 @@ export type PlaceDossier = {
  * what `fate` holds. The other fields obey the ship's threshold, like a
  * port's.
  */
-export type ShipDossier = {
+export interface ShipDossier {
   /** Who made her, as a viewer at the threshold has been told it. */
-  readonly builder: LocalizedText
+  builder: LocalizedText
   /**
    * The place the crew receives her at: a `place` record's id, named
    * outright, because it opens no later than the ship (a data test holds it).
    */
-  readonly launched: string
+  launched: string
   /** The log entry proper: two or three sentences, safe at the threshold. */
-  readonly log: LocalizedText
+  log: LocalizedText
   /**
    * Where the ship stands, from her threshold on. The page prints the latest
    * entry the reader has reached, and the first entry is at the threshold,
    * so the row is there from the start and its arrival announces nothing.
    */
-  readonly fate: Timeline<LocalizedText>
+  fate: Timeline<LocalizedText>
   /**
    * The places she reaches, each with the episode and the chapter at which
    * she is there or coming in, as checked against the wiki. A place opens
@@ -84,17 +84,17 @@ export type ShipDossier = {
    * page shows only those the reader has reached, because a covered tile's
    * episode would say how long she lasts.
    */
-  readonly ports?: readonly Arrival[]
+  ports?: Arrival[]
 }
 
 /** A place a ship reaches, and when she is first there or coming in. */
-export type Arrival = {
-  readonly chapter: number
-  readonly episode: number
-  readonly place: string
+export interface Arrival {
+  chapter: number
+  episode: number
+  place: string
 }
 
-export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
+export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
   'shells-town': {
     sea: 'east-blue',
     form: 'town',
@@ -883,7 +883,7 @@ export const PLACE_DOSSIERS: Readonly<Record<string, PlaceDossier>> = {
   },
 }
 
-export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
+export const SHIP_DOSSIERS: Record<string, ShipDossier> = {
   'going-merry': {
     builder: {
       it: 'Merry, il maggiordomo di Kaya',
@@ -968,7 +968,7 @@ export const SHIP_DOSSIERS: Readonly<Record<string, ShipDossier>> = {
 }
 
 /** Every place record, in the order the ship puts in at them. */
-export const places: readonly Entity[] = orderByMode(
+export const places: Entity[] = orderByMode(
   entities.filter((entity) => entity.kind === 'place'),
   'episode',
 )
@@ -991,7 +991,7 @@ export function placeDossierOf(entity: Entity): PlaceDossier | undefined {
 }
 
 /** Every ship record, in the order the crew receives them. */
-export const ships: readonly Entity[] = orderByMode(
+export const ships: Entity[] = orderByMode(
   entities.filter((entity) => entity.kind === 'ship'),
   'episode',
 )

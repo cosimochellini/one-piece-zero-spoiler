@@ -21,7 +21,7 @@ import type { Bookmark } from '~/lib/progress/episode'
  */
 export type TestRouter = ReturnType<typeof createRouter<RootRoute>>
 
-function contextRouter(initialEntries: readonly string[]): TestRouter {
+function contextRouter(initialEntries: string[]): TestRouter {
   return createRouter({
     routeTree: createRootRoute(),
     history: createMemoryHistory({ initialEntries: [...initialEntries] }),
@@ -33,11 +33,11 @@ export function ep(episode: number): Bookmark {
   return { mode: 'episode', episode }
 }
 
-export type RenderOptions = {
-  readonly bookmark?: Bookmark
-  readonly locale?: Locale
+export interface RenderOptions {
+  bookmark?: Bookmark
+  locale?: Locale
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
-  readonly path?: string
+  path?: string
 }
 
 /**
@@ -60,7 +60,7 @@ export type RenderOptions = {
 export function renderWithProviders(
   ui: ReactElement,
   { locale = 'en', bookmark = null, path }: RenderOptions = {},
-): RenderResult & { readonly router: TestRouter } {
+): RenderResult & { router: TestRouter } {
   const router = contextRouter([path ?? `/${locale}`])
 
   return {
@@ -104,9 +104,9 @@ export async function settle(): Promise<void> {
   }
 }
 
-export type RouteRenderOptions = RenderOptions & {
+export interface RouteRenderOptions extends RenderOptions {
   /** The route pattern `path` should match, e.g. `/$locale/characters/$id`. */
-  readonly pattern: string
+  pattern: string
 }
 
 /**

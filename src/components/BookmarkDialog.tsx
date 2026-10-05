@@ -22,9 +22,9 @@ import {
 } from '~/lib/progress/episode'
 
 /** The one thing the dialog owes whoever opened it. */
-export type BookmarkDialogProps = {
+export interface BookmarkDialogProps {
   /** Called once the dialog has closed, however it closed. */
-  readonly onClose: () => void
+  onClose: () => void
 }
 
 /**
@@ -63,9 +63,9 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps): ReactElement {
   )
 }
 
-type Modal = {
-  readonly close: () => void
-  readonly dialogRef: RefObject<HTMLDialogElement | null>
+interface Modal {
+  close: () => void
+  dialogRef: RefObject<HTMLDialogElement | null>
 }
 
 /**
@@ -107,11 +107,11 @@ function useModal(): Modal {
   }
 }
 
-type BookmarkFormProps = {
-  readonly ledeId: string
+interface BookmarkFormProps {
+  ledeId: string
   /** Closes the dialog. Called on every way out, including a successful save. */
-  readonly onDone: () => void
-  readonly titleId: string
+  onDone: () => void
+  titleId: string
 }
 
 /**
@@ -195,8 +195,8 @@ function DialogHead({
   ledeId,
   titleId,
 }: {
-  readonly ledeId: string
-  readonly titleId: string
+  ledeId: string
+  titleId: string
 }): ReactElement {
   const t = useT()
 
@@ -229,10 +229,10 @@ function Actions({
   onForget,
   onCancel,
 }: {
-  readonly canForget: boolean
-  readonly canSave: boolean
-  readonly onCancel: () => void
-  readonly onForget: () => void
+  canForget: boolean
+  canSave: boolean
+  onCancel: () => void
+  onForget: () => void
 }): ReactElement {
   const t = useT()
 

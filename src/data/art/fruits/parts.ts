@@ -26,10 +26,10 @@ const LEAN = [-8, -4, 0, 4, 8]
 const LEAF = [14, 18, 22]
 
 /** The stalk a fruit hangs by: where it starts, how far it rises, its lean. */
-export type Stalk = {
-  readonly baseY: number
-  readonly lean: number
-  readonly rise: number
+export interface Stalk {
+  baseY: number
+  lean: number
+  rise: number
 }
 
 /** The stalk one seed grows, measured from the top of its own body. */
@@ -61,7 +61,10 @@ export function stemPath(form: StemForm, stalk: Stalk): string {
 }
 
 /** Where on the stalk a leaf is set. */
-type Base = { readonly x: number; readonly y: number }
+interface Base {
+  x: number
+  y: number
+}
 
 /** One closed leaf off the stalk, with its midrib drawn inside it. */
 function lens(base: Base, side: number, length: number): string {

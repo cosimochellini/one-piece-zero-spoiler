@@ -106,7 +106,7 @@ const CHRONICLE_SWEEP = [
 /** The stories a page carries, or a failure when it carries the note instead. */
 function storiesOf(
   chronicle: CharacterChronicle | undefined,
-): readonly ChronicleEntry[] {
+): ChronicleEntry[] {
   if (chronicle?.mode !== 'chronicle') {
     throw new Error('the page carries no chronicle')
   }
@@ -115,7 +115,7 @@ function storiesOf(
 }
 
 /** Every character a shelf holds: the open ones by id, the rest by handle. */
-function shelvedKeys(shelf: ShelfView): readonly string[] {
+function shelvedKeys(shelf: ShelfView): string[] {
   return [
     ...shelf.open.map((entry) => entry.id),
     ...shelf.covered.map((entry) => entry.handle),
@@ -212,7 +212,7 @@ describe('the slice of the archive a page is given', () => {
   it('tells the home page nothing the reader has not reached', () => {
     // Each bookmark with the episode it reaches, worked out by hand rather
     // than through `reveal`, so the cut is checked against something else.
-    const marks: readonly (readonly [Bookmark, number])[] = [
+    const marks: [Bookmark, number][] = [
       [ep(1), 1],
       [ep(60), 60],
       [ep(500), 500],
@@ -514,7 +514,7 @@ function logAtChapter(chapter: number): string {
 }
 
 /** The ships a reader at this episode is sent, by id. */
-function shipIdsAt(episode: number): readonly string[] {
+function shipIdsAt(episode: number): string[] {
   return placesPage(ep(episode), 'en').ships.map((ship) => ship.id)
 }
 
@@ -529,7 +529,7 @@ function saysAnything(id: string, chapter: number): boolean {
 }
 
 /** The chapters below its own at which a record's covered page says anything. */
-function sentEarly(record: Entity): readonly string[] {
+function sentEarly(record: Entity): string[] {
   const early: string[] = []
   for (let chapter = 1; chapter < record.revealedAtChapter; chapter += 1) {
     if (saysAnything(record.id, chapter)) {

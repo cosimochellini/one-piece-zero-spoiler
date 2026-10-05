@@ -10,9 +10,9 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { RecordView, ShipView, Slot } from '~/lib/view/records'
 
 /** The ships the reader has reached, and how to lift the fog on a place. */
-export type ShipLogProps = {
-  readonly peekRecord: (handle: string) => Promise<RecordView>
-  readonly ships: readonly ShipView[]
+export interface ShipLogProps {
+  peekRecord: (handle: string) => Promise<RecordView>
+  ships: ShipView[]
 }
 
 /**
@@ -70,8 +70,8 @@ function Ship({
   ship,
   peekRecord,
 }: {
-  readonly peekRecord: (handle: string) => Promise<RecordView>
-  readonly ship: ShipView
+  peekRecord: (handle: string) => Promise<RecordView>
+  ship: ShipView
 }): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()

@@ -21,7 +21,9 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** The chronicle as it stands at the reader's bookmark. */
-export type CharacterChronicleProps = { readonly chronicle: Chronicle }
+export interface CharacterChronicleProps {
+  chronicle: Chronicle
+}
 
 /**
  * The stories the reader has reached, as one ledger down the page: the
@@ -54,7 +56,7 @@ export function CharacterChronicle({
 }
 
 /** One story: the mark in the reader's unit, the title, the paragraph. */
-function StoryRow({ entry }: { readonly entry: ChronicleEntry }): ReactElement {
+function StoryRow({ entry }: { entry: ChronicleEntry }): ReactElement {
   const threshold = useThreshold()
 
   return (
@@ -80,7 +82,7 @@ function StoryRow({ entry }: { readonly entry: ChronicleEntry }): ReactElement {
 export function Prose({
   segments,
 }: {
-  readonly segments: readonly ProseSegment[]
+  segments: ProseSegment[]
 }): ReactElement {
   const { locale } = useLocale()
 
@@ -108,8 +110,8 @@ export function Prose({
  * paragraph is only ever replaced whole with the story it belongs to.
  */
 function keyed(
-  segments: readonly ProseSegment[],
-): readonly { readonly key: string; readonly segment: ProseSegment }[] {
+  segments: ProseSegment[],
+): { key: string; segment: ProseSegment }[] {
   let offset = 0
 
   return segments.map((segment) => {

@@ -30,9 +30,9 @@ export function orNotFound<T>(page: null | T): T {
 }
 
 /** What a record route's loader is handed, as far as it reads it. */
-export type RecordMatch = {
-  readonly context: { readonly locale: Locale }
-  readonly params: { readonly id: string }
+export interface RecordMatch {
+  context: { locale: Locale }
+  params: { id: string }
 }
 
 /**
@@ -42,7 +42,7 @@ export type RecordMatch = {
  * @returns The argument, built once and shared by the page's calls.
  */
 export function recordArgs(match: RecordMatch): {
-  readonly data: { readonly id: string; readonly locale: Locale }
+  data: { id: string; locale: Locale }
 } {
   return { data: { id: match.params.id, locale: match.context.locale } }
 }

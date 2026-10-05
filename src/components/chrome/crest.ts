@@ -18,13 +18,13 @@ const CENTRE = 100
 
 const n = (value: number): string => String(Math.round(value * 100) / 100)
 
-type TicksOptions = {
-  readonly count: number
+interface TicksOptions {
+  count: number
   /** How far in the tick starts, measured from the centre of the seal. */
-  readonly inner: number
-  readonly outer: number
+  inner: number
+  outer: number
   /** Drops every n-th tick, index 0 included; `0` draws them all. */
-  readonly skip?: number
+  skip?: number
 }
 
 /**

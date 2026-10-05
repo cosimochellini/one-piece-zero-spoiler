@@ -94,7 +94,7 @@ describe('the slugs the gate looks for', () => {
       "  'gum-gum-fruit': 'paramecia',",
       "  'op-op-fruit': 'paramecia',",
       "  'flame-flame-fruit': 'logia',",
-      '} satisfies Readonly<Record<string, FruitForm>>',
+      '} satisfies Record<string, FruitForm>',
     ].join('\n')
 
     // `op-op-fruit` is eleven characters, under the length the gate trusts.

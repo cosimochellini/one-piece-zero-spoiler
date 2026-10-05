@@ -14,12 +14,12 @@ import type { RecordView, Slot } from '~/lib/view/records'
 import { styles } from './-$id.styles'
 
 /** What one neighbour tile is given: the slot's name, and what fills it. */
-export type NeighbourProps = {
-  readonly empty: string
-  readonly label: string
-  readonly peek: (handle: string) => Promise<RecordView>
+export interface NeighbourProps {
+  empty: string
+  label: string
+  peek: (handle: string) => Promise<RecordView>
   /** `null` at either end of the route, where there is nothing filed. */
-  readonly slot: null | Slot<RecordView>
+  slot: null | Slot<RecordView>
 }
 
 /**

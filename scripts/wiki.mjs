@@ -132,7 +132,7 @@ export async function fetchPage(title) {
  * Every chapter's wikitext, in chapter order, from the cache or the API in
  * batches of fifty titles.
  * @param {number} ceiling The last chapter to ask for.
- * @returns {Promise<ReadonlyMap<number, string>>} Chapter to wikitext.
+ * @returns {Promise<Map<number, string>>} Chapter to wikitext.
  */
 export async function chapterTexts(ceiling) {
   /** @type {[number, string][]} */

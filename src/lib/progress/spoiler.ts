@@ -9,9 +9,9 @@ import type { BookmarkMode } from './episode'
  * Whether a reader may see one is decided on the server, by `reveal` in
  * `~/data/reveal`; this side of the seam only says what the thresholds are.
  */
-export type Gated = {
-  readonly revealedAtChapter: number
-  readonly revealedAtEpisode: number
+export interface Gated {
+  revealedAtChapter: number
+  revealedAtEpisode: number
 }
 
 /**

@@ -1043,4 +1043,4 @@ export const waterSevenChronicles = {
       },
     },
   ],
-} satisfies Readonly<Record<string, Timeline<Story>>>
+} satisfies Record<string, Timeline<Story>>

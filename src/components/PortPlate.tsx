@@ -20,7 +20,7 @@ import type { Drawing } from '~/lib/view/records'
  * corner ticks and the north mark. The port's own hue tints the border, the
  * corners and the mark; everything else is the second ink.
  */
-function Frame({ hue }: { readonly hue: null | string }): ReactElement {
+function Frame({ hue }: { hue: null | string }): ReactElement {
   return (
     <>
       <path
@@ -84,11 +84,7 @@ function Frame({ hue }: { readonly hue: null | string }): ReactElement {
  * nothing in the middle. That is what stands in for a fogged place, so the
  * served HTML carries neither its drawing nor its colour.
  */
-export function PortPlate({
-  visual,
-}: {
-  readonly visual?: Drawing
-}): ReactElement {
+export function PortPlate({ visual }: { visual?: Drawing }): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (

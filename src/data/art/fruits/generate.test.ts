@@ -32,7 +32,7 @@ import { BODY_CX, BODY_CY, radiiFor } from './units'
  * alphabet is asserted before anything depends on it.
  */
 
-const BODIES: readonly BodyFamily[] = [
+const BODIES: BodyFamily[] = [
   'gourd',
   'heart',
   'oblong',
@@ -40,9 +40,9 @@ const BODIES: readonly BodyFamily[] = [
   'round',
   'star',
 ]
-const SWIRLS: readonly SwirlFamily[] = ['scales', 'spiral', 'waves', 'whorls']
-const STEMS: readonly StemForm[] = ['hooked', 'nub', 'straight']
-const LEAVES: readonly LeafForm[] = ['left', 'pair', 'right', 'sprig']
+const SWIRLS: SwirlFamily[] = ['scales', 'spiral', 'waves', 'whorls']
+const STEMS: StemForm[] = ['hooked', 'nub', 'straight']
+const LEAVES: LeafForm[] = ['left', 'pair', 'right', 'sprig']
 const GRAINS = 12
 
 /** Half the stroke plus the round cap, which is the margin every drawing keeps. */
@@ -51,7 +51,7 @@ const BOX_W = 160
 const BOX_H = 200
 
 /** Every seed the generator can be handed, which is what the sweep covers. */
-const SEEDS: readonly FruitSeed[] = BODIES.flatMap((body) => {
+const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
   return SWIRLS.flatMap((swirl) => {
     return Array.from({ length: GRAINS }, (_unused, grain) => {
       return {
@@ -84,7 +84,7 @@ const ABSOLUTE_ONLY = /^[MLCZ\d .-]+$/u
 const TOO_PRECISE = /\.\d{2,}/u
 
 /** Every coordinate in a path, as `[x, y]` pairs. */
-function coordinates(d: string): readonly (readonly [number, number])[] {
+function coordinates(d: string): [number, number][] {
   const numbers = (d.match(NUMBER) ?? []).map(Number)
   return Array.from(
     { length: Math.floor(numbers.length / 2) },
@@ -93,7 +93,7 @@ function coordinates(d: string): readonly (readonly [number, number])[] {
 }
 
 /** One drawing as one string, so two of them can be compared outright. */
-function pathsOf(strokes: readonly Stroke[]): string {
+function pathsOf(strokes: Stroke[]): string {
   return strokes.map((stroke) => stroke.d).join('|')
 }
 

@@ -15,10 +15,15 @@ import { color, font, space, text } from '~/styles/tokens.stylex'
  * reader's place, written as a numeral; in the fold it is the invitation to
  * name one, written as a verb — the same control, asked for twice.
  */
-export type EpisodeMarkProps = { readonly placement?: 'bar' | 'fold' }
+export interface EpisodeMarkProps {
+  placement?: 'bar' | 'fold'
+}
 
 /** What the mark shows, and what a screen reader is told beyond that. */
-type MarkFace = { readonly hint: string | undefined; readonly label: string }
+interface MarkFace {
+  hint: string | undefined
+  label: string
+}
 
 /**
  * Turns the bookmark into the two strings the control needs.

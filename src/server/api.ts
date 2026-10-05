@@ -41,9 +41,15 @@ import {
  * throws out of `getStartContext()` rather than running.
  */
 
-type Located = { readonly locale: Locale }
-type Addressed = Located & { readonly id: string }
-type Handled = Located & { readonly handle: string }
+interface Located {
+  locale: Locale
+}
+interface Addressed extends Located {
+  id: string
+}
+interface Handled extends Located {
+  handle: string
+}
 
 // Long enough for any id or handle the archive mints, short enough that a
 // request body cannot be used to make the server do work.

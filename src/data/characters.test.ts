@@ -33,10 +33,10 @@ function must(id: string): Entity {
 }
 
 /** One dossier timeline, named by the character and the field it came from. */
-type TimelineCase<T> = {
-  readonly character: Entity
-  readonly label: string
-  readonly timeline: Timeline<T>
+interface TimelineCase<T> {
+  character: Entity
+  label: string
+  timeline: Timeline<T>
 }
 
 /**
@@ -59,12 +59,12 @@ function timelineCases<T>(
  * rather than about dated prose in general: an affiliation says who a
  * character belongs to, and what became of them is the status field's to say.
  */
-const AFFILIATION_TIMELINES: readonly TimelineCase<LocalizedText>[] =
-  characters.flatMap((character) =>
+const AFFILIATION_TIMELINES: TimelineCase<LocalizedText>[] = characters.flatMap(
+  (character) =>
     timelineCases(character, 'affiliation', dossierOf(character)?.affiliation),
-  )
+)
 
-const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] = [
+const TEXT_TIMELINES: TimelineCase<LocalizedText>[] = [
   ...AFFILIATION_TIMELINES,
   ...characters.flatMap((character) => {
     const dossier = dossierOf(character)
@@ -78,7 +78,7 @@ const TEXT_TIMELINES: readonly TimelineCase<LocalizedText>[] = [
   }),
 ]
 
-const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
+const BOUNTY_TIMELINES: TimelineCase<number>[] = characters.flatMap(
   (character) =>
     timelineCases(character, 'bounty', dossierOf(character)?.bounty),
 )
@@ -88,17 +88,17 @@ const BOUNTY_TIMELINES: readonly TimelineCase<number>[] = characters.flatMap(
  * one — they carry a vocabulary rather than prose — and because three tests
  * below are about this field alone.
  */
-const STATUS_TIMELINES: readonly TimelineCase<CharacterStatus>[] =
-  characters.flatMap((character) =>
+const STATUS_TIMELINES: TimelineCase<CharacterStatus>[] = characters.flatMap(
+  (character) =>
     timelineCases(character, 'status', dossierOf(character)?.status),
-  )
+)
 
 /**
  * The chronicles. Their own bucket because a story is a title and a
  * paragraph rather than one line of prose, and because the tests below about
  * markers and about who may be named are about this field alone.
  */
-const CHRONICLE_TIMELINES: readonly TimelineCase<Story>[] = characters.flatMap(
+const CHRONICLE_TIMELINES: TimelineCase<Story>[] = characters.flatMap(
   (character) =>
     timelineCases(character, 'chronicle', dossierOf(character)?.chronicle),
 )
@@ -117,16 +117,16 @@ function shownWords(text: string, locale: Locale): string {
 }
 
 /** One story of one chronicle, with the words it shows in each locale. */
-type StoryCase = {
+interface StoryCase {
   /** The chapter a reader reaches it at (`gateOf`). */
-  readonly chapter: number
-  readonly character: Entity
-  readonly episode: number
-  readonly label: string
-  readonly story: Story
+  chapter: number
+  character: Entity
+  episode: number
+  label: string
+  story: Story
 }
 
-const STORIES: readonly StoryCase[] = CHRONICLE_TIMELINES.flatMap(
+const STORIES: StoryCase[] = CHRONICLE_TIMELINES.flatMap(
   ({ character, label, timeline }) => {
     return timeline.map((entry) => {
       return {

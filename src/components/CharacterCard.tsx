@@ -21,11 +21,11 @@ import {
 } from '~/styles/tokens.stylex'
 
 /** One page of the book: the slot it fills, and what a search matched. */
-export type CharacterCardProps = {
-  readonly peek: (handle: string) => Promise<CharacterView>
-  readonly slot: Slot<CharacterView>
+export interface CharacterCardProps {
+  peek: (handle: string) => Promise<CharacterView>
+  slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
-  readonly highlight?: null | readonly [number, number]
+  highlight?: [number, number] | null
   /**
    * When the crest and the name take the names that travel to the page.
    * `always` on the signal book, so the way back lands on the card too.
@@ -33,7 +33,7 @@ export type CharacterCardProps = {
    * cards as well, and carrying the names from the start would pair them with
    * the signal book's, flying in from wherever they sat on the page left.
    */
-  readonly morph?: 'always' | 'onClick'
+  morph?: 'always' | 'onClick'
 }
 
 /**
@@ -95,9 +95,9 @@ function CardLink({
   highlight,
   morph,
 }: {
-  readonly highlight: null | readonly [number, number]
-  readonly morph: 'always' | 'onClick'
-  readonly record: CharacterView
+  highlight: [number, number] | null
+  morph: 'always' | 'onClick'
+  record: CharacterView
 }): ReactElement {
   const { locale } = useLocale()
   // Set in the click, which renders before the router starts the transition,
@@ -145,11 +145,11 @@ export function NameAndRole({
   nameSx,
   roleSx,
 }: {
-  readonly highlight: null | readonly [number, number]
-  readonly nameSx: stylex.StyleXStyles
-  readonly record: CharacterView
-  readonly roleSx: stylex.StyleXStyles
-  readonly travels: boolean
+  highlight: [number, number] | null
+  nameSx: stylex.StyleXStyles
+  record: CharacterView
+  roleSx: stylex.StyleXStyles
+  travels: boolean
 }): ReactElement {
   return (
     <>
@@ -176,8 +176,8 @@ export function Marked({
   text: value,
   span,
 }: {
-  readonly span: null | readonly [number, number]
-  readonly text: string
+  span: [number, number] | null
+  text: string
 }): ReactNode {
   if (span === null) {
     return value

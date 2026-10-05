@@ -9,21 +9,21 @@ import { color, tint } from '~/styles/tokens.stylex'
  * They live apart from ChartArt.tsx so that file exports components only and
  * Vite can refresh it in place.
  */
-export type ArtProps = {
+export interface ArtProps {
   /**
    * The strokes themselves, not an id into the table of all of them: the
    * table is keyed by record id, so its keys are the name slugs, and it
    * cannot reach the browser (issue #12).
    */
-  readonly strokes: readonly Stroke[]
-  readonly tint: TintId
+  strokes: Stroke[]
+  tint: TintId
 }
 
 /** The box every drawing is composed in. A host `<svg>` uses it as its viewBox. */
 export const ART_VIEWBOX = '0 0 160 200'
 
 /** `ivory` is the second ink itself: a drawing with no colour of its own. */
-const TINT_VAR: Readonly<Record<TintId, string>> = {
+const TINT_VAR: Record<TintId, string> = {
   red: tint.red,
   vermilion: tint.vermilion,
   orange: tint.orange,

@@ -16,9 +16,9 @@ export function FruitArt({
   peek,
   slot,
 }: {
-  readonly density: 'block' | 'compact'
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly slot: Slot<FruitView>
+  density: 'block' | 'compact'
+  peek: (handle: string) => Promise<FruitView>
+  slot: Slot<FruitView>
 }): ReactElement {
   return (
     <SpoilerVeil

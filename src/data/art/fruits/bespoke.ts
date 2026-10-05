@@ -32,10 +32,7 @@ const STALK = stalkOf('straight', RY, 4)
 const HOOK = stalkOf('hooked', RY, 7)
 
 /** The three strokes every hand-drawn fruit shares with a grown one. */
-function furniture(
-  stem: StemForm,
-  leaf: LeafForm,
-): readonly [Stroke, Stroke, Stroke] {
+function furniture(stem: StemForm, leaf: LeafForm): [Stroke, Stroke, Stroke] {
   const stalk = stem === 'hooked' ? HOOK : STALK
 
   return [
@@ -90,7 +87,7 @@ function curl(cx: number, cy: number, r: number): string {
  * target with a couple of rings on it — it is covered, corner to corner, in
  * spirals of every size, and the stalk is as much of the shape as the fruit.
  */
-export const GUM_GUM: readonly Stroke[] = [
+export const GUM_GUM: Stroke[] = [
   { d: ring(80, 126, 44) },
   {
     d: [
@@ -125,7 +122,7 @@ export const GUM_GUM: readonly Stroke[] = [
  * The fruit that is all flame: a body whose crown is a row of tongues, curls
  * burning across it, and a stalk that runs off with a hook at the end.
  */
-export const FLAME_FLAME: readonly Stroke[] = [
+export const FLAME_FLAME: Stroke[] = [
   {
     // Every tongue leans the same way and hooks back at the tip, which is
     // what tells a flame from a spike: a crown of points is a crown.
@@ -166,7 +163,7 @@ export const FLAME_FLAME: readonly Stroke[] = [
 ]
 
 /** A coil wound tight inside a sphere, the way a diagram sections a thing. */
-export const OP_OP: readonly Stroke[] = [
+export const OP_OP: Stroke[] = [
   { d: lobed('heart', RX, RY) },
   { d: swirlOf('spiral', { rx: RX, ry: RY }, 5), role: 'accent' },
   { d: ring(80, 108, 33), role: 'ambient' },
@@ -174,7 +171,7 @@ export const OP_OP: readonly Stroke[] = [
 ]
 
 /** A ring broken open around a figure standing in it. No face, ever. */
-export const HUMAN_HUMAN: readonly Stroke[] = [
+export const HUMAN_HUMAN: Stroke[] = [
   { d: lobed('round', RX, RY) },
   { d: ring(80, 112, 28), role: 'accent' },
   {
@@ -189,7 +186,7 @@ export const HUMAN_HUMAN: readonly Stroke[] = [
 ]
 
 /** Six petals turned about the middle: the mark as a rosette. */
-export const FLOWER_FLOWER: readonly Stroke[] = [
+export const FLOWER_FLOWER: Stroke[] = [
   { d: lobed('round', RX, RY) },
   {
     d: [
@@ -206,7 +203,7 @@ export const FLOWER_FLOWER: readonly Stroke[] = [
 ]
 
 /** A coil wound all the way in, and nothing at the middle of it. */
-export const DARK_DARK: readonly Stroke[] = [
+export const DARK_DARK: Stroke[] = [
   { d: lobed('oblong', RX, RY) },
   {
     d: 'M108 112 C108 128 94 140 80 140 C64 140 52 128 52 112 C52 96 64 86 78 86 C90 86 100 96 100 108 C100 118 92 126 82 126 C74 126 68 120 68 112',
@@ -217,7 +214,7 @@ export const DARK_DARK: readonly Stroke[] = [
 ]
 
 /** A fault running the whole length of the fruit, with a coil either side. */
-export const TREMOR_TREMOR: readonly Stroke[] = [
+export const TREMOR_TREMOR: Stroke[] = [
   { d: lobed('oblong', RX, RY) },
   { d: 'M76 64 L88 88 L70 96 L90 120 L72 132 L84 160', role: 'accent' },
   {
@@ -230,7 +227,7 @@ export const TREMOR_TREMOR: readonly Stroke[] = [
 ]
 
 /** The outline giving way at the foot, where the fruit is already running out. */
-export const SAND_SAND: readonly Stroke[] = [
+export const SAND_SAND: Stroke[] = [
   { d: 'M80 64 C104 64 124 86 124 112 C124 126 120 136 112 144' },
   { d: 'M80 64 C56 64 36 86 36 112 C36 126 40 136 48 144' },
   { d: swirlOf('spiral', { rx: RX, ry: RY }, 2), role: 'accent' },
@@ -243,7 +240,7 @@ export const SAND_SAND: readonly Stroke[] = [
 ]
 
 /** The coil unravelled: five threads leaving the fruit at its foot. */
-export const STRING_STRING: readonly Stroke[] = [
+export const STRING_STRING: Stroke[] = [
   { d: lobed('gourd', RX, RY) },
   { d: ring(80, 104, 14), role: 'accent' },
   {
@@ -260,7 +257,7 @@ export const STRING_STRING: readonly Stroke[] = [
 ]
 
 /** The coil snapped: one bolt where the turns should have closed. */
-export const RUMBLE_RUMBLE: readonly Stroke[] = [
+export const RUMBLE_RUMBLE: Stroke[] = [
   { d: lobed('round', RX, RY) },
   {
     d: 'M96 78 L70 108 L86 110 L62 146 L88 118 L72 116 L96 78 Z',
@@ -271,7 +268,7 @@ export const RUMBLE_RUMBLE: readonly Stroke[] = [
 ]
 
 /** The fruit cut in three bands, each set a little sideways of the last. */
-export const CHOP_CHOP: readonly Stroke[] = [
+export const CHOP_CHOP: Stroke[] = [
   // The cap, pushed left of the middle.
   { d: 'M46 102 C46 78 60 62 74 62 C88 62 102 78 102 102 Z' },
   // The middle band, pushed right: the piece that is out of place.

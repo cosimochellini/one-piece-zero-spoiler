@@ -27,11 +27,11 @@ export type ResolveName = (id: string) => string | undefined
  * in rather than looked up so the projection can be tested against a
  * hand-written dossier without the archive behind it.
  */
-export type Reader = {
-  readonly locale: Locale
+export interface Reader {
+  locale: Locale
   /** Whose chronicle it is: a story is marked no earlier than its owner. */
-  readonly owner?: Gated
-  readonly resolve: ResolveName
+  owner?: Gated
+  resolve: ResolveName
 }
 
 /**
@@ -42,10 +42,7 @@ export type Reader = {
  * data tests hold that every marker names a filed character, so this is the
  * page failing closed, not a feature.
  */
-export function segmentsOf(
-  text: string,
-  resolve: ResolveName,
-): readonly ProseSegment[] {
+export function segmentsOf(text: string, resolve: ResolveName): ProseSegment[] {
   return tokenize(text).map((token) => {
     if (token.kind === 'words') {
       return { kind: 'text', text: token.text }

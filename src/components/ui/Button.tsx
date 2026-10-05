@@ -26,14 +26,14 @@ export type NativeButtonProps = Omit<
  * Everything a `<button>` takes, less the two escape hatches: styling goes
  * through `sx` so it stays in StyleX, never through `className` or `style`.
  */
-export type ButtonProps = NativeButtonProps & {
+export interface ButtonProps extends NativeButtonProps {
   /**
    * `chip` is the outlined typographic action (Hallmark C1); `quiet` is the
    * square control used by the episode stepper, where the label is an icon
    * glyph and the accessible name comes from `aria-label`.
    */
-  readonly sx?: stylex.StyleXStyles
-  readonly variant?: 'chip' | 'quiet'
+  sx?: stylex.StyleXStyles
+  variant?: 'chip' | 'quiet'
 }
 
 /**

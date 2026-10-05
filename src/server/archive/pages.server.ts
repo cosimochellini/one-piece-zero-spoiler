@@ -62,12 +62,12 @@ import {
  */
 
 /** The fold of the signal book: the crests, and how much is behind them. */
-export type CharactersPage = {
-  readonly featuredCovered: readonly CoveredRecord[]
-  readonly featuredOpen: readonly SearchableCharacter[]
-  readonly shelfCount: number
+export interface CharactersPage {
+  featuredCovered: CoveredRecord[]
+  featuredOpen: SearchableCharacter[]
+  shelfCount: number
   /** How many characters the archive files, open or not. */
-  readonly filed: number
+  filed: number
 }
 
 /**
@@ -94,10 +94,7 @@ export function charactersPage(
 }
 
 /** The signal book's shelves, in the order the reader's unit reaches them. */
-export function shelvesPage(
-  bookmark: Bookmark,
-  locale: Locale,
-): readonly ShelfView[] {
+export function shelvesPage(bookmark: Bookmark, locale: Locale): ShelfView[] {
   const at = reveal(bookmark)
   const byArc = new Map(
     bookSections.map((section) => [section.arc.id, section]),
@@ -134,9 +131,9 @@ function shelfViewOf(
 }
 
 /** A character's own page: what names it, and what it says. */
-export type CharacterPage = {
-  readonly detail: CharacterDetail
-  readonly head: DocumentHead
+export interface CharacterPage {
+  detail: CharacterDetail
+  head: DocumentHead
 }
 
 /**
@@ -219,7 +216,7 @@ export function nearbyPage(
   id: string,
   bookmark: Bookmark,
   locale: Locale,
-): readonly Slot<CharacterView>[] {
+): Slot<CharacterView>[] {
   const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
@@ -236,10 +233,10 @@ export function placesPage(
   bookmark: Bookmark,
   locale: Locale,
 ): {
-  readonly covered: readonly CoveredRecord[]
-  readonly filed: number
-  readonly open: readonly PortView[]
-  readonly ships: readonly ShipView[]
+  covered: CoveredRecord[]
+  filed: number
+  open: PortView[]
+  ships: ShipView[]
 } {
   const at = reveal(bookmark)
   const ordered = orderByMode(places, at.mode)
@@ -305,10 +302,10 @@ function shipOf({
   entity,
   locale,
 }: {
-  readonly at: Reveal
-  readonly dossier: ShipDossier
-  readonly entity: Entity
-  readonly locale: Locale
+  at: Reveal
+  dossier: ShipDossier
+  entity: Entity
+  locale: Locale
 }): ShipView {
   const fate = at.latest(dossier.fate, entity)?.[locale]
 

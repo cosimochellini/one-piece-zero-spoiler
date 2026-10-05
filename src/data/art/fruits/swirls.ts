@@ -139,14 +139,15 @@ function scales(rx: number, ry: number, grain: number): string {
     .join(' ')
 }
 
-const SWIRLS: Readonly<
-  Record<SwirlFamily, (rx: number, ry: number, grain: number) => string>
+const SWIRLS: Record<
+  SwirlFamily,
+  (rx: number, ry: number, grain: number) => string
 > = { scales, spiral, waves, whorls }
 
 /** The mark a fruit wears, in the one colour its drawing is allowed. */
 export function swirlOf(
   family: SwirlFamily,
-  radii: { readonly rx: number; readonly ry: number },
+  radii: { rx: number; ry: number },
   grain: number,
 ): string {
   return SWIRLS[family](radii.rx, radii.ry, grain)

@@ -10,9 +10,9 @@ import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitView, Slot } from '~/lib/view/records'
 
 /** A short row of fruits, each with its own fog already decided. */
-export type FruitRailProps = {
-  readonly fruits: readonly Slot<FruitView>[]
-  readonly peek: (handle: string) => Promise<FruitView>
+export interface FruitRailProps {
+  fruits: Slot<FruitView>[]
+  peek: (handle: string) => Promise<FruitView>
 }
 
 /**
@@ -51,8 +51,8 @@ function RailSpecimen({
   peek,
   slot,
 }: {
-  readonly peek: (handle: string) => Promise<FruitView>
-  readonly slot: Slot<FruitView>
+  peek: (handle: string) => Promise<FruitView>
+  slot: Slot<FruitView>
 }): ReactElement {
   const { locale, t } = useLocale()
   const threshold = useThreshold()
