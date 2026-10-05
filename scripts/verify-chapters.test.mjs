@@ -157,6 +157,21 @@ describe('the chapter that names a fruit', () => {
 
   it('is the first summary that names it with a naming verb', () => {
     expect(namingChapterOf(chapters, 'Goro Goro no Mi')).toBe(266)
+    expect(
+      namingChapterOf(
+        new Map([
+          [933, "*Orochi's Devil Fruit is called the [[Hebi Hebi no Mi]]."],
+          [521, '*Hancock was fed the [[Mero Mero no Mi]].'],
+        ]),
+        'Hebi Hebi no Mi',
+      ),
+    ).toBe(933)
+    expect(
+      namingChapterOf(
+        new Map([[521, '*Hancock was fed the [[Mero Mero no Mi]].']]),
+        'Mero Mero no Mi',
+      ),
+    ).toBe(521)
     expect(namingChapterOf(chapters, 'Gomu Gomu no Mi')).toBeUndefined()
     // A piped link or a model's link does not name the fruit.
     expect(

@@ -79,7 +79,8 @@ function parsed(label, body) {
 }
 
 /**
- * Keeps one answer in the cache once `isAnswer` says it is a real one.
+ * Keeps one answer in the cache once `isAnswer` says it is a whole one: a
+ * parsed page, a missing title, a complete batch.
  * @param {string} file Where it lives.
  * @param {string} label What is being fetched, for the error.
  * @param {string} url The request.
@@ -92,7 +93,7 @@ async function cached(file, label, url, isAnswer) {
     const answer = parsed(label, body)
     if (!isAnswer(answer)) {
       throw new Error(
-        `${label}: ${String(answer.error?.code ?? 'no page in the answer')}`,
+        `${label}: ${String(answer.error?.code ?? 'not a whole answer')}`,
       )
     }
 
