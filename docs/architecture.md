@@ -64,8 +64,8 @@ counts are on the site: each page says how many entries it has.
 
 Toei and Shueisha own every frame of the anime and every panel of the manga, so
 none of it is shipped or hotlinked. Every record has a line drawing made for
-this project instead: a straw hat, three sheathed swords, a bomb, a windmill on
-a hill. There are no faces, logos or official artwork.
+this project instead: a straw hat, three sheathed swords, a lit cannonball, a
+windmill on a hill. There are no faces, logos or official artwork.
 
 The drawings are data, not markup. They are lists of stroke paths in TypeScript,
 and one component renders all of them: a 160×200 box, a 2 px stroke kept at 2 px
