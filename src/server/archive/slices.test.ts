@@ -695,4 +695,21 @@ describe('a record drawn again later in the story', () => {
       guitar?.value,
     )
   })
+
+  it('puts Jinbe at the Sunny’s helm only from episode 980', () => {
+    const jinbe = filed('jinbe')
+    const wave = DRAWINGS.jinbe
+    const helm = REDRAWINGS['jinbe']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(jinbe, 'en', reveal(bookmark)).visual.strokes
+
+    expect(helm?.episode).toBe(980)
+
+    expect(drawnAt(ep(979))).toBe(wave)
+    expect(drawnAt(ep(980))).toBe(helm?.value)
+    expect(drawnAt(null)).toBe(wave)
+    // The manga makes him the crew's helmsman in chapter 976, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 975 })).toBe(wave)
+    expect(drawnAt({ mode: 'chapter', chapter: 976 })).toBe(helm?.value)
+  })
 })
