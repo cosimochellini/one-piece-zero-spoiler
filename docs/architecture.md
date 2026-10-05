@@ -51,7 +51,7 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 | Devil fruits        | 128                                                   |
 | Arcs, places, ships | 34 · 39 · 2                                           |
 | Saga modules        | 12, plus one for the devil fruits                     |
-| Line drawings       | 737, one per record, plus 14 redrawings of 12 records |
+| Line drawings       | 737, one per record, plus 15 redrawings of 13 records |
 | Chronicle stories   | 756, for 185 characters                               |
 | Test files          | 68                                                    |
 | Test cases          | 605                                                   |
