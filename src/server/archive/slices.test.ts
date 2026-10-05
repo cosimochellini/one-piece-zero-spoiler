@@ -863,4 +863,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 743 })).toBe(pipe)
     expect(drawnAt({ mode: 'chapter', chapter: 744 })).toBe(flame?.value)
   })
+
+  it('sets Sengoku’s cap down only from episode 511', () => {
+    const sengoku = filed('sengoku')
+    const cap = DRAWINGS.sengoku
+    const retired = REDRAWINGS['sengoku']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(sengoku, 'en', reveal(bookmark)).visual.strokes
+
+    expect(retired?.episode).toBe(511)
+
+    expect(drawnAt(ep(510))).toBe(cap)
+    expect(drawnAt(ep(511))).toBe(retired?.value)
+    expect(drawnAt(null)).toBe(cap)
+    // The manga has him resign before Kong in chapter 594, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 593 })).toBe(cap)
+    expect(drawnAt({ mode: 'chapter', chapter: 594 })).toBe(retired?.value)
+  })
 })
