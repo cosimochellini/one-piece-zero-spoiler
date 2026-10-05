@@ -103,7 +103,8 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
 - `name.en` uses the English edition's names. `name.it` uses the Italian dub's
   names (Rufy, Bagy, Usop), or the Star Comics spelling where the dub never
   voiced the character.
-- Records live in one module per saga, in `src/data/records/<saga>.ts`.
+- Records live in one module per saga, in `src/data/records/<saga>.ts`, plus
+  `src/data/records/fruits.ts` for the devil fruits.
 
 | To add            | Edit                                                                                                                                                                             | Guarded by                                                               |
 | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
@@ -115,9 +116,9 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
 
 A few rules that are easy to miss:
 
-- **Drawings** are lists of stroke paths in a 160×200 box: at least one `accent`
-  stroke, no fills, no faces, no logos, no official artwork. The helpers are in
-  `src/lib/svg/primitives.ts`.
+- **Drawings** are lists of stroke paths in a 160×200 box: at least four
+  strokes, at least one of them `accent`, no fills, no faces, no logos, no
+  official artwork. The helpers are in `src/lib/svg/primitives.ts`.
 - **Dated entries** (`{ episode, chapter?, value }`) are in ascending order and
   start no earlier than the record. Set `chapter` only when you checked it
   against a source. Without it, a manga reader reaches the entry at the first
