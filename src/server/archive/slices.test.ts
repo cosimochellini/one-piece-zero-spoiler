@@ -965,4 +965,22 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 559 })).toBe(book)
     expect(drawnAt({ mode: 'chapter', chapter: 560 })).toBe(plate?.value)
   })
+
+  it('sets Kid’s metal arm beside the magnet only from episode 603', () => {
+    const kid = filed('eustass-kid')
+    const magnet = DRAWINGS['eustass-kid']
+    const armed = REDRAWINGS['eustass-kid']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(kid, 'en', reveal(bookmark)).visual.strokes
+
+    expect(armed?.episode).toBe(603)
+
+    expect(drawnAt(ep(602))).toBe(magnet)
+    expect(drawnAt(ep(603))).toBe(armed?.value)
+    expect(drawnAt(null)).toBe(magnet)
+    // The manga shows him in clear view after the timeskip in chapter 677,
+    // no earlier: chapter 674 has only his silhouette.
+    expect(drawnAt({ mode: 'chapter', chapter: 676 })).toBe(magnet)
+    expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
+  })
 })
