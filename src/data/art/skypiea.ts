@@ -708,6 +708,31 @@ export const skypieaArt = {
   ],
 } satisfies Drawings
 
+/**
+ * Teach's knotted bandana and the hatched shade under the brim, kept under
+ * both his tricornes (16 lower under the bigger one), so the hat is the one
+ * thing that changes at 917.
+ */
+const TEACH_BANDANA: Stroke[] = [
+  { d: 'M30 134 Q80 148 130 134', role: 'accent' },
+  { d: 'M34 142 Q80 157 126 142', role: 'accent' },
+  {
+    d: `${circle(134, 139, 4)} M137 142 q10 4 12 16 M138 137 q12 -2 16 8`,
+    role: 'accent',
+  },
+  {
+    d: 'M94 133 l-5 9 M104 133 l-5 9 M114 131 l-5 9 M124 128 l-5 9',
+    role: 'ambient',
+  },
+]
+
+/** Teach's bandana, set 16 lower under the bigger tricorne. */
+function underTheBiggerHat(strokes: Stroke[]): Stroke[] {
+  const lower = 'translate(0 16)'
+
+  return strokes.map((stroke) => ({ ...stroke, transform: lower }))
+}
+
 /** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
 const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 
@@ -715,7 +740,8 @@ const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 export const skypieaRedrawn: Redrawings = {
   // A tricorne over a knotted bandana: the hat he wears from the Warlords'
   // table on (ch. 524, ep. 421), and never at Mock Town. The shade under the
-  // brim and down the crown's far side is hatched, never filled.
+  // brim and down the crown's far side is hatched, never filled. After the
+  // timeskip, the bigger plumed one.
   'marshall-d-teach': [
     {
       episode: 421,
@@ -729,21 +755,55 @@ export const skypieaRedrawn: Redrawings = {
         },
         { d: 'M52 110 Q80 118 108 110', role: 'soft' },
         { d: 'M10 124 C30 132 56 134 80 126 C104 134 130 132 150 124' },
-        { d: 'M30 134 Q80 148 130 134', role: 'accent' },
-        { d: 'M34 142 Q80 157 126 142', role: 'accent' },
-        {
-          d: `${circle(134, 139, 4)} M137 142 q10 4 12 16 M138 137 q12 -2 16 8`,
-          role: 'accent',
-        },
+        ...TEACH_BANDANA,
         {
           d: 'M98 82 l-5 8 M103 90 l-5 8 M106 99 l-4 6 M136 96 l-5 8 M141 106 l-5 8',
           role: 'ambient',
         },
+        shadow(80, 178, 50),
+      ],
+    },
+    // The bigger tricorne of the two years, two plumes standing out of a
+    // flower at its side, over the same bandana: first seen clearly on
+    // Hachinosu at 917 (ch. 925). The Jolly Roger on its front is left off;
+    // the plumes' dark tips are hatched. The bandana is kept from 421 on
+    // purpose, though the wiki has it yellow with red dots by now.
+    {
+      episode: 917,
+      chapter: 925,
+      value: [
+        { d: 'M50 128 C50 62 108 62 108 128' },
         {
-          d: 'M94 133 l-5 9 M104 133 l-5 9 M114 131 l-5 9 M124 128 l-5 9',
+          d: 'M8 140 C4 118 12 96 28 84 C36 80 42 84 42 90 C44 104 46 116 50 128',
+        },
+        {
+          d: 'M152 140 C156 118 148 96 132 84 C124 80 118 84 118 90 C116 104 112 116 108 128',
+        },
+        { d: 'M50 128 Q79 136 108 128', role: 'soft' },
+        { d: 'M8 140 C30 148 56 150 80 142 C104 150 130 148 152 140' },
+        ...underTheBiggerHat(TEACH_BANDANA),
+        {
+          d: 'M112 100 C108 80 112 62 124 48 C134 38 144 32 154 30 C148 42 138 52 130 60 C122 70 118 84 118 100',
+        },
+        {
+          d: 'M108 98 C102 74 104 50 116 30 C120 22 126 16 134 12 C132 26 126 36 122 46 C116 60 114 80 114 98',
+        },
+        {
+          d: 'M115 96 C116 76 124 60 140 44 M111 94 C110 70 116 46 128 24',
+          role: 'soft',
+        },
+        {
+          d: `${circle(113, 104, 3)} ${circle(113, 97, 4)} ${circle(119.7, 101.8, 4)} ${circle(117.1, 109.7, 4)} ${circle(108.9, 109.7, 4)} ${circle(106.3, 101.8, 4)}`,
+        },
+        {
+          d: 'M140 48 l5 5 M145 42 l4 5 M150 36 l3 4 M124 26 l6 3 M127 20 l5 3 M130 15 l4 2',
           role: 'ambient',
         },
-        shadow(80, 178, 50),
+        {
+          d: 'M94 84 l-5 8 M100 92 l-4 7 M138 98 l-5 8 M143 108 l-5 8',
+          role: 'ambient',
+        },
+        shadow(80, 186, 50),
       ],
     },
   ],
