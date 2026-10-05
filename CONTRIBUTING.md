@@ -118,7 +118,10 @@ A few rules that are easy to miss:
 
 - **Drawings** are lists of stroke paths in a 160×200 box: at least four
   strokes, at least one of them `accent`, no fills, no faces, no logos, no
-  official artwork. The helpers are in `src/lib/svg/primitives.ts`.
+  official artwork. The helpers are in `src/lib/svg/primitives.ts`. The
+  `line-drawings` skill (`.claude/skills/line-drawings/SKILL.md`) sets the
+  standard every drawing is held to, and `npm run art:sheet -- <id>` renders a
+  drawing at crest and tile size to check it without the site.
 - **Dated entries** (`{ episode, chapter?, value }`) are in ascending order and
   start no earlier than the record. Set `chapter` only when you checked it
   against a source. Without it, a manga reader reaches the entry at the first

@@ -8,6 +8,7 @@
   },
   "type": "module",
   "scripts": {
+    "art:sheet": "node scripts/art-sheet.mjs",
     "build": "vite build",
     "check": "npm run typecheck && npm run lint && npm run format:check && npm run test && npm run build && npm run gate:react-doctor && npm run gate:fallow && npm run gate:archive",
     "dev": "vite dev",

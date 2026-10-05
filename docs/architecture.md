@@ -71,7 +71,9 @@ The drawings are data, not markup. They are lists of stroke paths in TypeScript,
 and one component renders all of them: a 160×200 box, a 2 px stroke kept at 2 px
 with `vector-effect: non-scaling-stroke`, round caps and joins, no fills. Each
 drawing uses one hue for its main stroke and the neutral ink for the rest, which
-keeps several hundred illustrations consistent as a set.
+keeps several hundred illustrations consistent as a set. `npm run art:sheet`
+(`scripts/art-sheet.mjs`) renders any drawing, saga or kind to a PNG sheet at
+the sizes the site uses, in the site's colours, without starting the site.
 
 A drawing can have a date, like a fact on a character page. When the story
 changes a record, it gets a new drawing from that episode on, and the server

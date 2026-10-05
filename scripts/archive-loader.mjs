@@ -10,6 +10,7 @@ import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 /** The repository root, one level above this script. */
+// fallow-ignore-next-line security-sink -- a constant: this script's own folder
 export const ROOT = path.resolve(import.meta.dirname, '..')
 
 /**
@@ -24,6 +25,7 @@ function fileFor(specifier, parent) {
   }
 
   if (parent !== undefined && specifier.startsWith('.')) {
+    // fallow-ignore-next-line security-sink -- the specifier is an import written in this repository's own source, never outside input
     return path.resolve(path.dirname(fileURLToPath(parent)), specifier)
   }
 
@@ -31,8 +33,20 @@ function fileFor(specifier, parent) {
 }
 
 /**
+ * The files an extensionless specifier can name: a `.ts` module, or the
+ * `index.ts` of a directory, as `./fruits` is.
+ * @param {string} file The path the specifier resolves to.
+ * @returns {string[]} The candidates, in the order they are tried.
+ */
+function filesFor(file) {
+  // fallow-ignore-next-line security-sink -- the path was resolved from an import written in this repository's own source
+  return [`${file}.ts`, path.join(file, 'index.ts')]
+}
+
+/**
  * Teaches this process the two things the archive's own imports assume: that
- * `~/` means `src/`, and that a specifier with no extension names a `.ts` file.
+ * `~/` means `src/`, and that a specifier with no extension names a `.ts` file
+ * or a directory's `index.ts`.
  * @returns {void}
  */
 function registerArchiveResolution() {
@@ -41,7 +55,8 @@ function registerArchiveResolution() {
 
 /**
  * The resolve hook: the alias first, then the `.ts` file a specifier with no
- * extension names, when the plain resolution fails and that file exists.
+ * extension names, or the `index.ts` of the directory it names, when the
+ * plain resolution fails and that file exists.
  * @param {string} specifier The specifier as written.
  * @param {{ parentURL?: string }} context The importing module.
  * @param {(specifier: string, context: { parentURL?: string }) => unknown} nextResolve The next hook in the chain.
@@ -58,12 +73,16 @@ export function resolveArchive(specifier, context, nextResolve) {
     return nextResolve(aliased, context)
   } catch (error) {
     const file = fileFor(aliased, context.parentURL)
+    const module =
+      file === null ? undefined : (
+        filesFor(file).find((candidate) => existsSync(candidate))
+      )
 
-    if (file === null || !existsSync(`${file}.ts`)) {
+    if (module === undefined) {
       throw error
     }
 
-    return nextResolve(pathToFileURL(`${file}.ts`).href, context)
+    return nextResolve(pathToFileURL(module).href, context)
   }
 }
 
@@ -75,5 +94,6 @@ export function resolveArchive(specifier, context, nextResolve) {
 export function importArchive(module) {
   registerArchiveResolution()
 
+  // fallow-ignore-next-line security-sink -- the module is a path under src/ named by a script in this repository
   return import(pathToFileURL(path.join(ROOT, 'src', module)).href)
 }
