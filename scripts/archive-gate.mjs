@@ -119,7 +119,7 @@ export function slugsFrom(source) {
  * @param {string} clientDir The build's client directory.
  * @returns {{bytes: number, name: string, text: string}[]} One per script.
  */
-export function clientChunks(clientDir) {
+function clientChunks(clientDir) {
   const assets = path.join(clientDir, 'assets')
 
   return readdirSync(assets)

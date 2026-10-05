@@ -6,11 +6,11 @@
  * generated route tree.
  */
 import * as stylex from '@stylexjs/stylex'
-import { type ReactElement, Suspense, use } from 'react'
+import { type ReactElement, type ReactNode, Suspense, use } from 'react'
 
 import { CharacterCard } from '~/components/CharacterCard'
 import { CharacterCardList } from '~/components/CharacterGrid'
-import { FruitFrame } from '~/components/FruitFrame'
+import { FruitArt } from '~/components/FruitArt'
 import { FruitRail } from '~/components/FruitRail'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
@@ -32,6 +32,25 @@ const FORM_KEY: Record<FruitForm, TranslationKey> = {
   logia: 'fruitForm.logia',
   paramecia: 'fruitForm.paramecia',
   zoan: 'fruitForm.zoan',
+}
+
+/** The three lines a streamed band says: its title, its lede, and its wait. */
+interface BandWords {
+  lede: TranslationKey
+  loading: TranslationKey
+  title: TranslationKey
+}
+
+const EATERS_WORDS: BandWords = {
+  lede: 'fruit.eatersLede',
+  loading: 'fruit.eatersLoading',
+  title: 'fruit.eatersTitle',
+}
+
+const KIN_WORDS: BandWords = {
+  lede: 'fruit.siblingsLede',
+  loading: 'fruit.siblingsLoading',
+  title: 'fruit.siblingsTitle',
 }
 
 /**
@@ -58,20 +77,11 @@ export function PlateBand({
   return (
     <section {...stylex.props(styles.plate)}>
       <div {...stylex.props(styles.drawing)}>
-        <SpoilerVeil
+        <FruitArt
+          density="block"
           peek={peek}
-          placeholder={<FruitFrame />}
           slot={detail.slot}
-          strength="media"
-        >
-          {(record) => {
-            return (
-              <div {...stylex.props(morphPart('fruit', record.id, 'art'))}>
-                <FruitFrame visual={record.visual} />
-              </div>
-            )
-          }}
-        </SpoilerVeil>
+        />
       </div>
 
       <div {...stylex.props(styles.words)}>
@@ -142,29 +152,16 @@ export function EatersBand({
   eaters: EatersSource
   peek: (handle: string) => Promise<CharacterView>
 }): ReactElement {
-  const { t } = useLocale()
-
   return (
-    <section
-      aria-labelledby="eaters"
-      {...stylex.props(styles.band)}
+    <StreamedBand
+      id="eaters"
+      words={EATERS_WORDS}
     >
-      <div {...stylex.props(styles.bandHead)}>
-        <h2
-          id="eaters"
-          {...stylex.props(styles.sectionTitle)}
-        >
-          {t('fruit.eatersTitle')}
-        </h2>
-        <p {...stylex.props(styles.lede)}>{t('fruit.eatersLede')}</p>
-      </div>
-      <Suspense fallback={<Pending words="fruit.eatersLoading" />}>
-        <Eaters
-          eaters={eaters}
-          peek={peek}
-        />
-      </Suspense>
-    </section>
+      <Eaters
+        eaters={eaters}
+        peek={peek}
+      />
+    </StreamedBand>
   )
 }
 
@@ -211,29 +208,16 @@ export function KinBand({
   peek: (handle: string) => Promise<FruitView>
   siblings: KinSource
 }): ReactElement {
-  const { t } = useLocale()
-
   return (
-    <section
-      aria-labelledby="siblings"
-      {...stylex.props(styles.band)}
+    <StreamedBand
+      id="siblings"
+      words={KIN_WORDS}
     >
-      <div {...stylex.props(styles.bandHead)}>
-        <h2
-          id="siblings"
-          {...stylex.props(styles.sectionTitle)}
-        >
-          {t('fruit.siblingsTitle')}
-        </h2>
-        <p {...stylex.props(styles.lede)}>{t('fruit.siblingsLede')}</p>
-      </div>
-      <Suspense fallback={<Pending words="fruit.siblingsLoading" />}>
-        <Kin
-          peek={peek}
-          siblings={siblings}
-        />
-      </Suspense>
-    </section>
+      <Kin
+        peek={peek}
+        siblings={siblings}
+      />
+    </StreamedBand>
   )
 }
 
@@ -260,6 +244,42 @@ function Kin({
       fruits={rail}
       peek={peek}
     />
+  )
+}
+
+/**
+ * A band whose content the loader streams: the heading and the lede at once,
+ * and what fills it inside its own boundary, so the plate above never waits.
+ */
+function StreamedBand({
+  children,
+  id,
+  words,
+}: {
+  children: ReactNode
+  id: string
+  words: BandWords
+}): ReactElement {
+  const { t } = useLocale()
+
+  return (
+    <section
+      aria-labelledby={id}
+      {...stylex.props(styles.band)}
+    >
+      <div {...stylex.props(styles.bandHead)}>
+        <h2
+          id={id}
+          {...stylex.props(styles.sectionTitle)}
+        >
+          {t(words.title)}
+        </h2>
+        <p {...stylex.props(styles.lede)}>{t(words.lede)}</p>
+      </div>
+      <Suspense fallback={<Pending words={words.loading} />}>
+        {children}
+      </Suspense>
+    </section>
   )
 }
 

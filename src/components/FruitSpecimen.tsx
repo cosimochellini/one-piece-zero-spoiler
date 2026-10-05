@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
 import { Marked } from '~/components/CharacterCard'
-import { FruitFrame } from '~/components/FruitFrame'
+import { FruitArt } from '~/components/FruitArt'
 import { styles } from '~/components/SpecimenBands.styles'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
@@ -119,21 +119,11 @@ function SpecimenMargin({
         })}
       </p>
       <div {...stylex.props(styles.drawing)}>
-        <SpoilerVeil
+        <FruitArt
           density="compact"
           peek={peek}
-          placeholder={<FruitFrame />}
           slot={slot}
-          strength="media"
-        >
-          {(record) => {
-            return (
-              <div {...stylex.props(morphPart('fruit', record.id, 'art'))}>
-                <FruitFrame visual={record.visual} />
-              </div>
-            )
-          }}
-        </SpoilerVeil>
+        />
       </div>
     </div>
   )

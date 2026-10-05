@@ -62,17 +62,28 @@ function within(value: number, first: number, ceiling: number): boolean {
 // fail closed instead of falling through to a grammar that would read it as
 // something else.
 
-/** The legacy bare integer. */
-function readEpisodeForm(raw: string): Bookmark | undefined {
-  const match = EPISODE_FORM.exec(raw)
+/**
+ * The one number a single-count form captures: `undefined` when `raw` is not
+ * that form, `null` when it is but the number falls outside `range`.
+ */
+function countIn(
+  form: RegExp,
+  raw: string,
+  [first, ceiling]: [number, number],
+): null | number | undefined {
+  const match = form.exec(raw)
   if (match === null) {
     return undefined
   }
 
-  const episode = Number(match.groups?.['episode'])
-  return within(episode, FIRST_EPISODE, EPISODE_CEILING) ?
-      { mode: 'episode', episode }
-    : null
+  const count = Number(match[1])
+  return within(count, first, ceiling) ? count : null
+}
+
+/** The legacy bare integer. */
+function readEpisodeForm(raw: string): Bookmark | undefined {
+  const episode = countIn(EPISODE_FORM, raw, [FIRST_EPISODE, EPISODE_CEILING])
+  return typeof episode === 'number' ? { mode: 'episode', episode } : episode
 }
 
 /** `s2e3`, checked against the season table rather than a flat range. */
@@ -91,15 +102,8 @@ function readSeasonForm(raw: string): Bookmark | undefined {
 
 /** `c1044`. */
 function readChapterForm(raw: string): Bookmark | undefined {
-  const match = CHAPTER_FORM.exec(raw)
-  if (match === null) {
-    return undefined
-  }
-
-  const chapter = Number(match.groups?.['chapter'])
-  return within(chapter, FIRST_CHAPTER, CHAPTER_CEILING) ?
-      { mode: 'chapter', chapter }
-    : null
+  const chapter = countIn(CHAPTER_FORM, raw, [FIRST_CHAPTER, CHAPTER_CEILING])
+  return typeof chapter === 'number' ? { mode: 'chapter', chapter } : chapter
 }
 
 // In order, and the order is the grammar's: the bare integer is tried first

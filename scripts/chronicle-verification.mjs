@@ -155,7 +155,7 @@ function section(character, chronicle) {
  * The whole document, as it should sit on disk.
  * @returns {Promise<string>} The rendered markdown.
  */
-export async function render() {
+async function render() {
   const archive = await importArchive('data/characters.ts')
   const sections = chronicled(archive).map((character) =>
     section(character, archive.dossierOf(character).chronicle),

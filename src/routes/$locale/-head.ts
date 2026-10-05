@@ -14,7 +14,7 @@
  * cards, the structured data — is the same page's own title and description
  * said again in the vocabularies a crawler reads, and never anything more.
  */
-import type { Locale } from '~/i18n/locales'
+import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { TranslationKey } from '~/i18n/types'
 import { type Crumb, pageJsonLd, type PageKind } from '~/lib/seo/jsonLd'
@@ -27,7 +27,7 @@ import type { DocumentHead } from '~/lib/view/records'
 const SOCIAL_IMAGE = '/og-card.png'
 
 /** What a route knows about itself when the head is written. */
-export interface PageDescription {
+interface PageDescription {
   head: DocumentHead
   kind: PageKind
   locale: Locale
@@ -44,7 +44,7 @@ export interface HeadTags {
 }
 
 /** The title, the description, the canonical address and everything derived from them. */
-export function describePage(page: PageDescription): HeadTags {
+function describePage(page: PageDescription): HeadTags {
   const path = normalisePath(page.pathname)
   const url = absoluteUrl(path)
   const dictionary = getDictionary(page.locale)
@@ -121,10 +121,9 @@ export function describeNamedPage(page: NamedPage): HeadTags {
 export interface RecordPage {
   head: DocumentHead
   locale: Locale
-  /** The index above it, as a path without the locale: `/characters`. */
-  parentPath: string
-  parentTitleKey: TranslationKey
   pathname: string
+  /** The index above it, which is the path and the trail's one crumb. */
+  section: 'characters' | 'fruits'
 }
 
 /**
@@ -133,7 +132,7 @@ export interface RecordPage {
  * The title and the description arrive from the loader, already decided
  * against the reader's bookmark, and are passed through untouched.
  */
-export function describeRecordPage(page: RecordPage): HeadTags {
+function describeRecordPage(page: RecordPage): HeadTags {
   const dictionary = getDictionary(page.locale)
 
   return describePage({
@@ -143,9 +142,39 @@ export function describeRecordPage(page: RecordPage): HeadTags {
     pathname: page.pathname,
     trail: [
       {
-        name: translate(dictionary, page.parentTitleKey),
-        url: absoluteUrl(`/${page.locale}${page.parentPath}`),
+        name: translate(dictionary, `${page.section}.pageTitle`),
+        url: absoluteUrl(`/${page.locale}/${page.section}`),
       },
     ],
   })
+}
+
+/** What a record route's `head` option is handed, as far as it reads it. */
+export interface RecordHeadContext {
+  loaderData?: { head: DocumentHead }
+  match: { pathname: string }
+  params: { locale: string }
+}
+
+/**
+ * The head of a record route filed under `section`, once the loader has
+ * answered for a locale the site knows.
+ * @param context What the route's `head` option is handed.
+ * @param section The index the record is filed under.
+ * @returns The record's head, or nothing before there is one to give.
+ */
+export function recordHead(
+  context: RecordHeadContext,
+  section: RecordPage['section'],
+): HeadTags | undefined {
+  const { loaderData, match, params } = context
+
+  return loaderData === undefined || !isLocale(params.locale) ?
+      undefined
+    : describeRecordPage({
+        head: loaderData.head,
+        locale: params.locale,
+        pathname: match.pathname,
+        section,
+      })
 }

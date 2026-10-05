@@ -37,7 +37,7 @@ import { chapterTexts, fetchPage } from './wiki.mjs'
  * of the two.
  * @type {Record<string, string | string[]>}
  */
-export const TITLES = {
+const TITLES = {
   'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
   'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
     'Neko Neko no Mi, Model: Saber Tiger',
@@ -106,15 +106,32 @@ export function japaneseNameOf(name) {
  * @returns {number | undefined} The chapter, or nothing when the page has none.
  */
 export function chapterOf(page, kind) {
+  return numberOf(page, kind, {
+    arc: /Chapters?:(?<n>\d+)/u,
+    debut: /Debut:Chapter(?<n>\d+)/u,
+    line: storyChapterOf,
+  })
+}
+
+/**
+ * A number a page gives for its subject: an arc's from its rendered range,
+ * anything else's from the infobox first line, or from the rendered debut
+ * when the infobox is transcluded.
+ * @param {Page} page The parsed page.
+ * @param {string} kind The record's kind.
+ * @param {{ arc: RegExp, debut: RegExp, line: (first: string) => number | undefined }} read How to read each of the three.
+ * @returns {number | undefined} The number, or nothing when the page has none.
+ */
+function numberOf(page, kind, read) {
   if (kind === 'arc') {
-    return numberAfter(/Chapters?:(?<n>\d+)/u, tagless(page.text))
+    return numberAfter(read.arc, tagless(page.text))
   }
 
   const first = firstLineOf(page)
 
   return first === undefined ?
-      numberAfter(/Debut:Chapter(?<n>\d+)/u, tagless(page.text))
-    : storyChapterOf(first)
+      numberAfter(read.debut, tagless(page.text))
+    : read.line(first)
 }
 
 /**
@@ -195,15 +212,11 @@ export function namingChapterOf(chapters, title) {
  * @returns {number | undefined} The episode, or nothing when the page has none.
  */
 export function episodeOf(page, kind) {
-  if (kind === 'arc') {
-    return numberAfter(/Episodes?:(?<n>\d+)/u, tagless(page.text))
-  }
-
-  const first = firstLineOf(page)
-
-  return first === undefined ?
-      numberAfter(/Debut:Chapter\d+;Episode(?<n>\d+)/u, tagless(page.text))
-    : numberAfter(/Episode (?<n>\d+)/u, first)
+  return numberOf(page, kind, {
+    arc: /Episodes?:(?<n>\d+)/u,
+    debut: /Debut:Chapter\d+;Episode(?<n>\d+)/u,
+    line: (first) => numberAfter(/Episode (?<n>\d+)/u, first),
+  })
 }
 
 /**
@@ -278,7 +291,7 @@ async function sourceOf(record, chapters) {
  * @param {Map<number, string>} chapters Every chapter's wikitext.
  * @returns {Source} The page(s) and the chapter, or neither.
  */
-function readingOf(record, pages, chapters) {
+export function readingOf(record, pages, chapters) {
   const { kind } = record
   const floors = pages.map((page) => chapterOf(page, kind))
   const episodes = pages.map((page) => episodeOf(page, kind))
@@ -325,7 +338,7 @@ export function verdictOf(filed, source) {
  * Every record against its page, in archive order.
  * @returns {Promise<Row[]>} One row per record.
  */
-export async function verify() {
+async function verify() {
   const { entities } = await importArchive('data/entities.ts')
   const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const chapters = await chapterTexts(CHAPTER_CEILING)

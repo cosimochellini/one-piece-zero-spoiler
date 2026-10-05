@@ -123,9 +123,39 @@ function CardLink({
       >
         <CharacterCrest visual={record.visual} />
       </span>
+      <NameAndRole
+        highlight={highlight}
+        nameSx={styles.name}
+        record={record}
+        roleSx={styles.role}
+        travels={travels}
+      />
+    </Link>
+  )
+}
+
+/**
+ * The name, with a search match marked, and the role under it when there is
+ * one. The card and the shelf tile set the two in their own styles.
+ */
+export function NameAndRole({
+  record,
+  highlight,
+  travels,
+  nameSx,
+  roleSx,
+}: {
+  highlight: [number, number] | null
+  nameSx: stylex.StyleXStyles
+  record: CharacterView
+  roleSx: stylex.StyleXStyles
+  travels: boolean
+}): ReactElement {
+  return (
+    <>
       <span
         {...stylex.props(
-          styles.name,
+          nameSx,
           travels && morphPart('character', record.id, 'name'),
         )}
       >
@@ -135,9 +165,9 @@ function CardLink({
         />
       </span>
       {record.role === undefined ? null : (
-        <span {...stylex.props(styles.role)}>{record.role}</span>
+        <span {...stylex.props(roleSx)}>{record.role}</span>
       )}
-    </Link>
+    </>
   )
 }
 

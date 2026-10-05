@@ -15,6 +15,20 @@
     "doctor.config.ts",
     "commitlint.config.mjs",
   ],
+  // Entry files are not credited with their own exports: a route module, a
+  // gate script or a config that exports something nothing reads is a finding
+  // like any other unused export.
+  "includeEntryExports": true,
+  // Exports a tool loads by name, so nothing imports them: react-doctor's
+  // config, and the router and Start instance TanStack Start looks up.
+  "ignoreExports": [
+    { "file": "doctor.config.ts", "exports": ["default"] },
+    { "file": "src/router.tsx", "exports": ["getRouter"] },
+    { "file": "src/start.ts", "exports": ["startInstance"] },
+  ],
+  // A file fallow cannot parse cleanly would drop out of every analysis
+  // silently, so it fails the run instead.
+  "failOnParseError": true,
   "ignorePatterns": [
     "src/routeTree.gen.ts",
     ".output/**",
@@ -26,10 +40,12 @@
   "typeAware": {
     "enabled": true,
     "projects": ["tsconfig.json"],
-    "require": "best-effort",
+    "require": "complete",
   },
   "rules": {
     "private-type-leaks": "error",
+    "deprecated-exports-in-use": "error",
+    "package-cycle": "error",
     "unused-dev-dependencies": "error",
     "unused-optional-dependencies": "error",
     "unused-store-members": "error",
@@ -55,7 +71,7 @@
     "dev-dependencies-in-production": "error",
     "re-export-cycle": "error",
     "boundary-violation": "error",
-    "coverage-gaps": "warn",
+    "coverage-gaps": "error",
     "feature-flags": "off",
     "stale-suppressions": "error",
     "require-suppression-reason": "error",
@@ -115,14 +131,28 @@
   },
   "duplicates": {
     "mode": "mild",
-    "threshold": 1,
-    "minLines": 8,
+    // Any clone fails the run. `0` means "no limit" to fallow, so the ceiling
+    // is the smallest share it keeps: a single five-line clone is about
+    // 0.007% of the code.
+    "threshold": 0.001,
+    "minLines": 5,
+    // Also near-identical bodies that differ by a small edit, and a .ts body
+    // that matches a .mjs one once the type annotations are stripped.
+    "near": true,
+    "crossLanguage": true,
+    // `ignoreDefaults` stays on, and its defaults keep the test files out: a
+    // test that repeats its arrange block reads better than one that calls a
+    // shared fixture builder.
     "ignore": ["src/styles/global.css"],
   },
   "health": {
     "maxCyclomatic": 8,
     "maxCognitive": 8,
     "maxUnitSize": 60,
+    // Real per-function coverage for the CRAP score, written by `npm test`.
+    // scripts/fallow-gate.mjs refuses to run without it, so the score is never
+    // the estimate fallow falls back to.
+    "coverage": "coverage/coverage-final.json",
     "thresholdOverrides": [
       {
         "files": [
@@ -134,5 +164,62 @@
         "reason": "A describe() block is one unit; a test suite is long by design.",
       },
     ],
+  },
+  // `fallow security` runs only the categories listed here once a list is
+  // given, and the two include-required ones (hardcoded-secret,
+  // secret-to-network) run only when listed. So this is every id
+  // `fallow schema` knows, and scripts/fallow-config.test.mjs fails when an
+  // upgrade adds one.
+  "security": {
+    "categories": {
+      "include": [
+        "angular-trusted-html",
+        "cleartext-transport",
+        "code-injection",
+        "command-injection",
+        "dangerous-html",
+        "deprecated-cipher",
+        "dom-document-write",
+        "dynamic-module-load",
+        "dynamic-regex",
+        "electron-unsafe-webpreferences",
+        "hardcoded-secret",
+        "header-injection",
+        "insecure-cookie",
+        "insecure-randomness",
+        "insecure-temp-file",
+        "jquery-html",
+        "jwt-alg-none",
+        "jwt-verify-missing-algorithms",
+        "llm-call-injection",
+        "mass-assignment",
+        "mysql-multiple-statements",
+        "nextjs-open-redirect",
+        "nosql-injection",
+        "open-redirect",
+        "path-traversal",
+        "permissive-cors",
+        "postmessage-wildcard-origin",
+        "prototype-pollution",
+        "redos-regex",
+        "resource-amplification",
+        "route-send-file",
+        "secret-pii-log",
+        "secret-to-network",
+        "sql-injection",
+        "ssrf",
+        "ssti",
+        "template-escape-bypass",
+        "tls-validation-disabled",
+        "unsafe-buffer-alloc",
+        "unsafe-deserialization",
+        "weak-crypto",
+        "webview-injection",
+        "world-writable-permission",
+        "xpath-injection",
+        "xxe",
+        "zip-slip",
+      ],
+    },
   },
 }

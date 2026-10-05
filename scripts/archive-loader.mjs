@@ -1,10 +1,10 @@
 // The archive is TypeScript with a `~/` alias and extensionless imports. A
 // plain Node script that wants to read the very modules the site ships needs
-// a resolve hook for both, and `engines` already pins Node >= 24.18, where
+// a resolve hook for both, and `engines` already pins Node >= 24.21, where
 // `registerHooks` and type stripping are available. Shared by every script
 // that reads the archive rather than regenerating it from text.
 import { existsSync } from 'node:fs'
-// eslint-disable-next-line n/no-unsupported-features/node-builtins -- See the note above: `engines` pins Node >= 24.18.
+// eslint-disable-next-line n/no-unsupported-features/node-builtins -- See the note above: `engines` pins Node >= 24.21.
 import { registerHooks } from 'node:module'
 import path from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -35,27 +35,36 @@ function fileFor(specifier, parent) {
  * `~/` means `src/`, and that a specifier with no extension names a `.ts` file.
  * @returns {void}
  */
-export function registerArchiveResolution() {
-  registerHooks({
-    resolve(specifier, context, nextResolve) {
-      const aliased =
-        specifier.startsWith('~/') ?
-          pathToFileURL(path.join(ROOT, 'src', specifier.slice(2))).href
-        : specifier
+function registerArchiveResolution() {
+  registerHooks({ resolve: resolveArchive })
+}
 
-      try {
-        return nextResolve(aliased, context)
-      } catch (error) {
-        const file = fileFor(aliased, context.parentURL)
+/**
+ * The resolve hook: the alias first, then the `.ts` file a specifier with no
+ * extension names, when the plain resolution fails and that file exists.
+ * @param {string} specifier The specifier as written.
+ * @param {{ parentURL?: string }} context The importing module.
+ * @param {(specifier: string, context: { parentURL?: string }) => unknown} nextResolve The next hook in the chain.
+ * @returns {unknown} What the next hook resolves.
+ */
+export function resolveArchive(specifier, context, nextResolve) {
+  const aliased =
+    specifier.startsWith('~/') ?
+      // fallow-ignore-next-line security-sink -- the specifier is an import written in this repository's own source, never outside input
+      pathToFileURL(path.join(ROOT, 'src', specifier.slice(2))).href
+    : specifier
 
-        if (file === null || !existsSync(`${file}.ts`)) {
-          throw error
-        }
+  try {
+    return nextResolve(aliased, context)
+  } catch (error) {
+    const file = fileFor(aliased, context.parentURL)
 
-        return nextResolve(pathToFileURL(`${file}.ts`).href, context)
-      }
-    },
-  })
+    if (file === null || !existsSync(`${file}.ts`)) {
+      throw error
+    }
+
+    return nextResolve(pathToFileURL(`${file}.ts`).href, context)
+  }
 }
 
 /**

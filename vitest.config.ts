@@ -66,10 +66,13 @@ const config = defineConfig({
     restoreMocks: true,
     coverage: {
       provider: 'v8',
-      reporter: ['text', 'html', 'lcov'],
+      // `json` writes coverage-final.json, which the fallow gate reads for
+      // its per-function CRAP score.
+      reporter: ['text', 'html', 'lcov', 'json'],
       reportsDirectory: './coverage',
-      include: ['src/**/*.{ts,tsx}'],
+      include: ['src/**/*.{ts,tsx}', 'scripts/**/*.mjs'],
       exclude: [
+        'scripts/**/*.test.mjs',
         'src/routeTree.gen.ts',
         'src/router.tsx',
         'src/routes/**',
