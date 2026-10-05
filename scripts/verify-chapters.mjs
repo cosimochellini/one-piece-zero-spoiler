@@ -2,37 +2,33 @@
 // (onepiece.fandom.com), the way the episode thresholds were checked by hand:
 // the infobox of a character, place or ship page carries `| first = [[Chapter
 // N]]; [[Episode M]]`, an arc page renders `Manga Chapters: N-M`, and a fruit
-// page cites the chapter it is first named in with `{{Qref|name=named|chap=N}}`.
+// is named in the summary of the chapter that names it.
 //
 // The wiki's chapter is a floor, not the threshold itself: it is the first
 // appearance, and a record is filed where it is named and seen, which can be
 // later. So a chapter filed below the wiki's is wrong and the script fails on
 // it; one filed above is kept and only listed, and whether it is the chapter
 // that names the record is a reader's check, not this script's. For a fruit
-// the floor rises to the naming citation when the page labels one `named`;
-// most pages do not, so a fruit filed between first use and first naming
-// passes here (PR #176 hand-checked those). A fruit's chapter is derived from
-// the dossier entry that names it (`src/data/records/fruits.ts`), so a
-// too-low fruit is fixed by pinning `chapter:` on that entry, not here.
+// the floor rises to the first chapter whose wiki summary says who ate it or
+// what it is (`namingChapterOf`, or `NAMED_AT` where that was checked by
+// hand), because a fruit is filed where it is named, not where it is first
+// used. A fruit's chapter is derived from the dossier
+// entry that names it (`src/data/records/fruits.ts`), so a too-low fruit is
+// fixed by pinning `chapter:` on that entry, not here.
 //
 // Episodes are read from the same line and only listed, never failed: they
 // were checked by hand before (#24) and the open rows are issue #175.
 //
 // Run it with `npm run verify:chapters`. It talks to the network, so it is not
 // part of `npm run check` or CI; the pages it reads are cached under
-// `.gate/wiki/`.
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
-import path from 'node:path'
+// `.gate/wiki/` (`./wiki.mjs`).
 import process from 'node:process'
-import { setTimeout as sleep } from 'node:timers/promises'
 import { pathToFileURL } from 'node:url'
 
-import { importArchive, ROOT } from './archive-loader.mjs'
+import { importArchive } from './archive-loader.mjs'
+import { chapterTexts, fetchPage } from './wiki.mjs'
 
-const CACHE = path.join(ROOT, '.gate', 'wiki')
-
-const API =
-  'https://onepiece.fandom.com/api.php?action=parse&redirects=1&prop=wikitext|text&format=json&page='
+/** @typedef {import('./wiki.mjs').Page} Page */
 
 /**
  * Records whose English name is not their wiki page. A list names the pages
@@ -109,8 +105,6 @@ export function japaneseNameOf(name) {
     : `${japanese} no Mi, Model: ${model}`
 }
 
-/** @typedef {{ title: string, wikitext: string, text: string }} Page */
-
 /**
  * The chapter a page gives for its subject, by the kind of record it is.
  * @param {Page} page The parsed page.
@@ -123,24 +117,19 @@ export function chapterOf(page, kind) {
   }
 
   const first = firstLineOf(page)
-  const seen =
-    first === undefined ?
+
+  return first === undefined ?
       numberAfter(/Debut:Chapter(?<n>\d+)/u, tagless(page.text))
     : storyChapterOf(first)
-  const named =
-    kind === 'fruit' ?
-      numberAfter(/Qref\|name=named\|chap=(?<n>\d+)/iu, page.wikitext)
-    : undefined
-
-  return named === undefined ? seen : Math.max(seen ?? 0, named)
 }
 
 /**
  * The earliest chapter an infobox line names. A line can name several:
  * Shiki's `[[Chapter 0]]; [[Chapter 530]] (mentioned)`, Camie's
- * `[[Chapter 195]] ([[…|cover]])`. Chapter 0 and a cover story are manga
- * pages a reader has turned too, so they count towards the floor; what the
- * floor cannot say is whether the record was named there.
+ * `[[Chapter 195]] ([[…|cover]])`. A cover story is a manga page a reader
+ * has turned too, so it counts towards the floor; chapter 0 (the Strong
+ * World tie-in) counts only when the line names nothing else. What the floor
+ * cannot say is whether the record was named there.
  * @param {string} first The infobox line.
  * @returns {number | undefined} The chapter.
  */
@@ -149,8 +138,57 @@ function storyChapterOf(first) {
     .matchAll(/\[\[Chapter (?<n>\d+)\]\]/gu)
     .map((match) => Number(match.groups?.['n']))
     .toArray()
+  const numbered = chapters.filter((chapter) => chapter > 0)
 
-  return chapters.length === 0 ? undefined : Math.min(...chapters)
+  return numbered.length === 0 ? chapters.at(0) : Math.min(...numbered)
+}
+
+/**
+ * Fruits whose naming chapter was checked by hand because the chapter
+ * summaries do not say it: a fruit named in a scene the summary paraphrases
+ * (Gum-Gum, chapter 1, "named" Qref; Zou Zou, chapter 400, Funkfreed's
+ * infobox; Wapu Wapu, chapter 1063, Augur's introduction; Momonosuke's
+ * artificial fruit, chapter 684, its debut), or a fruit whose full name the
+ * story never says, held at the chapter that says what the archive can show
+ * (Jack's Zou Zou class, chapter 810; Tama's Kibi Kibi, chapter 911, its
+ * debut; both are issue #174).
+ * @type {Record<string, number>}
+ */
+const NAMED_AT = {
+  'artificial-dragon-dragon-fruit': 684,
+  'elephant-elephant-fruit': 400,
+  'elephant-elephant-fruit-ancient-model-mammoth': 810,
+  'gum-gum-fruit': 1,
+  'millet-millet-fruit': 911,
+  'warp-warp-fruit': 1063,
+}
+
+/** A naming verb: the chapter summary says who ate the fruit or what it is. */
+const NAMING = /\b(?:ate|eaten|reveal|explain|named?|identif)/iu
+
+/**
+ * The first chapter whose wiki summary names a fruit in the same sentence as
+ * a naming verb: "Enel's Devil Fruit is revealed to be the [[Goro Goro no
+ * Mi]]" is chapter 266, while chapter 264 only says "a Logia type Devil
+ * Fruit". The fruit pages do not label that moment the same way twice, so
+ * the chapter pages are read instead. A summary can paraphrase a name the
+ * story has not said yet, so a hit is a flag for a hand check, not a verdict.
+ * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
+ * @param {string} title The fruit's page title.
+ * @returns {number | undefined} The chapter, or nothing.
+ */
+export function namingChapterOf(chapters, title) {
+  // Only a bare link: `[[Gomu Gomu no Mi|inflated himself]]` is the summary
+  // using the name, not the story saying it, and a model's link shares the
+  // base fruit's prefix.
+  const link = `[[${title}]]`
+  const hit = chapters.entries().find(([, text]) => {
+    return text
+      .split(/\n|(?<=\.) /u)
+      .some((sentence) => sentence.includes(link) && NAMING.test(sentence))
+  })
+
+  return hit?.[0]
 }
 
 /**
@@ -218,101 +256,15 @@ function numberAfter(pattern, text) {
   return match?.groups === undefined ? undefined : Number(match.groups['n'])
 }
 
-/**
- * One page's JSON from the API, trying three times: the wiki drops a
- * connection now and then over a run of several hundred pages.
- * @param {string} title The page title.
- * @param {number} attempt Which try this is.
- * @returns {Promise<string>} The response body.
- */
-async function download(title, attempt = 1) {
-  try {
-    return await request(title)
-  } catch (error) {
-    if (attempt >= 3) {
-      throw error
-    }
-
-    await sleep(2000 * attempt)
-
-    return download(title, attempt + 1)
-  }
-}
-
-/**
- * One request to the API, which must answer 200.
- * @param {string} title The page title.
- * @returns {Promise<string>} The response body.
- */
-async function request(title) {
-  const response = await fetch(API + encodeURIComponent(title), {
-    headers: { 'User-Agent': 'one-piece-zero-spoiler verify-chapters' },
-  })
-  if (!response.ok) {
-    throw new Error(`${title}: HTTP ${String(response.status)}`)
-  }
-
-  return response.text()
-}
-
-/**
- * The API's answer, if it is one: a parsed page or a missing title. Anything
- * else (a challenge page, a throttling error) is not cached, so a bad hour
- * does not stick to the next run.
- * @param {string} title The page title.
- * @param {string} body The response body.
- * @returns {string} The body, worth caching.
- */
-function answerOf(title, body) {
-  /** @type {{ parse?: unknown, error?: { code?: string } }} */
-  let answer
-  try {
-    answer = JSON.parse(body)
-  } catch {
-    throw new Error(`${title}: the API did not answer with JSON`)
-  }
-
-  if (answer.parse === undefined && answer.error?.code !== 'missingtitle') {
-    throw new Error(
-      `${title}: ${answer.error?.code ?? 'no page in the answer'}`,
-    )
-  }
-
-  return body
-}
-
-/**
- * One wiki page, from the cache or the API.
- * @param {string} title The page title.
- * @returns {Promise<Page | undefined>} The page, or nothing when it does not exist.
- */
-async function fetchPage(title) {
-  const file = path.join(CACHE, `${encodeURIComponent(title)}.json`)
-  if (!existsSync(file)) {
-    mkdirSync(CACHE, { recursive: true })
-    writeFileSync(file, answerOf(title, await download(title)))
-    await sleep(250)
-  }
-
-  const { parse } = JSON.parse(readFileSync(file, 'utf8'))
-
-  return parse === undefined ? undefined : (
-      {
-        title: parse.title,
-        wikitext: parse.wikitext['*'],
-        text: parse.text['*'],
-      }
-    )
-}
-
 /** @typedef {{ page?: string, wiki?: number, wikiEpisode?: number, unverifiable?: true }} Source */
 
 /**
  * The chapter the wiki gives one record, trying each alternative in turn.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
+ * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
  * @returns {Promise<Source>} The page(s) read and the chapter, or neither.
  */
-async function sourceOf(record) {
+async function sourceOf(record, chapters) {
   const alternatives = titlesOf(record)
   if (alternatives.length === 0) {
     return { unverifiable: true }
@@ -321,23 +273,42 @@ async function sourceOf(record) {
   for (const titles of alternatives) {
     const pages = await Promise.all(titles.map((title) => fetchPage(title)))
     if (pages.every((page) => page !== undefined)) {
-      const chapters = pages.map((page) => chapterOf(page, record.kind))
-      const episodes = pages.map((page) => episodeOf(page, record.kind))
-      const page = pages.map((page) => page.title).join(' + ')
-
-      return chapters.includes(undefined) ?
-          { page }
-        : {
-            page,
-            wiki: Math.max(...chapters),
-            ...(!episodes.includes(undefined) && {
-              wikiEpisode: Math.max(...episodes),
-            }),
-          }
+      return readingOf(record, pages, chapters)
     }
   }
 
   return {}
+}
+
+/**
+ * What the pages found for a record say, with a fruit's floor raised to the
+ * first chapter whose summary names it, or the hand-checked one.
+ * @param {{ id: string, kind: string }} record The record.
+ * @param {Page[]} pages The pages read.
+ * @param {ReadonlyMap<number, string>} chapters Every chapter's wikitext.
+ * @returns {Source} The page(s) and the chapter, or neither.
+ */
+function readingOf(record, pages, chapters) {
+  const { kind } = record
+  const floors = pages.map((page) => chapterOf(page, kind))
+  const episodes = pages.map((page) => episodeOf(page, kind))
+  const page = pages.map((page) => page.title).join(' + ')
+  if (floors.includes(undefined)) {
+    return { page }
+  }
+
+  const named =
+    kind === 'fruit' ?
+      (NAMED_AT[record.id] ?? namingChapterOf(chapters, pages[0].title))
+    : undefined
+
+  return {
+    page: named === undefined ? page : `${page} (named ch ${String(named)})`,
+    wiki: Math.max(...floors, named ?? 0),
+    ...(!episodes.includes(undefined) && {
+      wikiEpisode: Math.max(...episodes),
+    }),
+  }
 }
 
 /**
@@ -370,10 +341,12 @@ export function verdictOf(filed, source) {
  */
 export async function verify() {
   const { entities } = await importArchive('data/entities.ts')
+  const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
+  const chapters = await chapterTexts(CHAPTER_CEILING)
   /** @type {Row[]} */
   const rows = []
   for (const record of entities) {
-    const source = await sourceOf(record)
+    const source = await sourceOf(record, chapters)
 
     rows.push({
       id: record.id,
@@ -389,43 +362,21 @@ export async function verify() {
 }
 
 /**
- * A markdown table of the rows with one verdict.
- * @param {Row[]} rows Every row.
- * @param {string} verdict The verdict to list.
+ * A markdown table of the rows one filter keeps, under a heading.
+ * @param {string} title The heading.
+ * @param {Row[]} rows The rows to list.
+ * @param {(row: Row) => (number | string | undefined)[]} cells The three columns after kind and record.
  * @returns {string} The heading and the table, or a one-line "none".
  */
-function table(rows, verdict) {
-  const listed = rows.filter((row) => row.verdict === verdict)
-  const heading = `### ${verdict} (${String(listed.length)})`
-  if (listed.length === 0) {
+function table(title, rows, cells) {
+  const heading = `### ${title} (${String(rows.length)})`
+  if (rows.length === 0) {
     return `${heading}\n\nnone`
   }
 
-  const lines = listed.map(
+  const lines = rows.map(
     (row) =>
-      `| ${row.kind} | ${row.id} | ${String(row.filed)} | ${String(row.wiki ?? '—')} | ${row.page ?? '—'} |`,
-  )
-
-  return `${heading}\n\n| kind | record | filed | wiki | page |\n| --- | --- | ---: | ---: | --- |\n${lines.join('\n')}`
-}
-
-/**
- * The records whose episode the wiki places later, for information.
- * @param {Row[]} rows Every row.
- * @returns {string} The heading and the table, or a one-line "none".
- */
-function episodesBelow(rows) {
-  const listed = rows.filter(
-    (row) => row.wikiEpisode !== undefined && row.episode < row.wikiEpisode,
-  )
-  const heading = `### episode below wiki, for information (${String(listed.length)})`
-  if (listed.length === 0) {
-    return `${heading}\n\nnone`
-  }
-
-  const lines = listed.map(
-    (row) =>
-      `| ${row.kind} | ${row.id} | ${String(row.episode)} | ${String(row.wikiEpisode)} | ${row.page ?? '—'} |`,
+      `| ${[row.kind, row.id, ...cells(row)].map((cell) => String(cell ?? '—')).join(' | ')} |`,
   )
 
   return `${heading}\n\n| kind | record | filed | wiki | page |\n| --- | --- | ---: | ---: | --- |\n${lines.join('\n')}`
@@ -436,14 +387,23 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const wrong = rows.filter(
     (row) => row.verdict === 'too low' || row.verdict === 'unresolved',
   )
-
-  console.log(
-    [
-      ...['too low', 'unresolved', 'unverifiable', 'equal', 'kept'].map(
-        (verdict) => table(rows, verdict),
-      ),
-      episodesBelow(rows),
-    ].join('\n\n'),
+  const tables = ['too low', 'unresolved', 'unverifiable', 'equal', 'kept'].map(
+    (verdict) => {
+      return table(
+        verdict,
+        rows.filter((row) => row.verdict === verdict),
+        (row) => [row.filed, row.wiki, row.page],
+      )
+    },
   )
+  const episodes = table(
+    'episode below wiki, for information',
+    rows.filter(
+      (row) => row.wikiEpisode !== undefined && row.episode < row.wikiEpisode,
+    ),
+    (row) => [row.episode, row.wikiEpisode, row.page],
+  )
+
+  console.log([...tables, episodes].join('\n\n'))
   process.exitCode = wrong.length === 0 ? 0 : 1
 }

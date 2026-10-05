@@ -1017,7 +1017,9 @@ export const wholeCake: Saga = {
           value: { it: 'Raizo della Nebbia', en: 'Raizo of the Mist' },
         },
       ],
-      devilFruit: [{ episode: 764, value: ['scroll-scroll-fruit'] }],
+      devilFruit: [
+        { episode: 1004, chapter: 992, value: ['scroll-scroll-fruit'] },
+      ],
     },
     'vinsmoke-reiju': {
       role: {

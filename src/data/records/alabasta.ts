@@ -1366,7 +1366,7 @@ export const alabasta: Saga = {
         { episode: 422, value: IMPEL_DOWN },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
-      devilFruit: [{ episode: 103, value: ['dice-dice-fruit'] }],
+      devilFruit: [{ episode: 116, chapter: 190, value: ['dice-dice-fruit'] }],
     },
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,

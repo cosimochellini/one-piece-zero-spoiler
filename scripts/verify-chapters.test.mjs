@@ -4,6 +4,7 @@ import {
   chapterOf,
   episodeOf,
   japaneseNameOf,
+  namingChapterOf,
   titlesOf,
   verdictOf,
 } from './verify-chapters.mjs'
@@ -99,20 +100,6 @@ describe('the chapter a page gives', () => {
     ).toBe(69)
   })
 
-  it('takes the later of debut and naming for a fruit', () => {
-    expect(
-      chapterOf(
-        page(
-          '|first = [[Chapter 1]];{{Qref|name=named|chap=5|ep=4|named}} [[Episode 1]]',
-        ),
-        'fruit',
-      ),
-    ).toBe(5)
-    expect(
-      chapterOf(page('|first = [[Chapter 9]]; [[Episode 5]]'), 'fruit'),
-    ).toBe(9)
-  })
-
   it('reads the episode beside the chapter', () => {
     expect(
       episodeOf(page('| first = [[Chapter 3]]; [[Episode 1]]'), 'character'),
@@ -131,7 +118,7 @@ describe('the chapter a page gives', () => {
     ).toBe(31)
   })
 
-  it('takes the earliest chapter a line names, and the naming label in any case', () => {
+  it('takes the earliest chapter a line names, chapter 0 only alone', () => {
     expect(
       chapterOf(
         page(
@@ -139,7 +126,8 @@ describe('the chapter a page gives', () => {
         ),
         'character',
       ),
-    ).toBe(0)
+    ).toBe(530)
+    expect(chapterOf(page('| first = [[Chapter 0]]'), 'character')).toBe(0)
     expect(
       chapterOf(
         page(
@@ -148,16 +136,38 @@ describe('the chapter a page gives', () => {
         'character',
       ),
     ).toBe(195)
-    expect(
-      chapterOf(
-        page('|first = [[Chapter 1]];{{Qref|name=Named|chap=5|ep=4|named}}'),
-        'fruit',
-      ),
-    ).toBe(5)
   })
 
   it('gives nothing for a page without a chapter', () => {
     expect(chapterOf(page('text', 'text'), 'character')).toBeUndefined()
+  })
+})
+
+describe('the chapter that names a fruit', () => {
+  const chapters = new Map([
+    [
+      264,
+      'Enel uses a Logia type Devil Fruit. [[Raki]] thinks of [[Goro Goro no Mi|his powers]].',
+    ],
+    [
+      266,
+      "*[[Enel]]'s [[Devil Fruit]] is revealed to be the [[Goro Goro no Mi]].\n*Other notes.",
+    ],
+  ])
+
+  it('is the first summary that names it with a naming verb', () => {
+    expect(namingChapterOf(chapters, 'Goro Goro no Mi')).toBe(266)
+    expect(namingChapterOf(chapters, 'Gomu Gomu no Mi')).toBeUndefined()
+    // A piped link or a model's link does not name the fruit.
+    expect(
+      namingChapterOf(
+        new Map([
+          [16, 'She asks how he [[Gomu Gomu no Mi|inflated himself]], named.'],
+          [1023, 'Jack ate the [[Zou Zou no Mi, Model: Mammoth]].'],
+        ]),
+        'Zou Zou no Mi',
+      ),
+    ).toBeUndefined()
   })
 })
 

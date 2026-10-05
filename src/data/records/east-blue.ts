@@ -895,7 +895,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 45, value: { it: 'Cappello di Paglia', en: 'Straw Hat' } },
       ],
-      devilFruit: [{ episode: 1, chapter: 1, value: ['gum-gum-fruit'] }],
+      devilFruit: [{ episode: 4, chapter: 1, value: ['gum-gum-fruit'] }],
       bounty: [
         { episode: 45, value: 30_000_000 },
         { episode: 128, value: 100_000_000 },
@@ -982,7 +982,7 @@ export const eastBlue: Saga = {
       epithet: [
         { episode: 1, value: { it: 'Mazza di Ferro', en: 'Iron Mace' } },
       ],
-      devilFruit: [{ episode: 48, value: ['slip-slip-fruit'] }],
+      devilFruit: [{ episode: 52, chapter: 98, value: ['slip-slip-fruit'] }],
     },
     'gold-roger': {
       role: { it: 'Re dei Pirati', en: 'King of the Pirates' },

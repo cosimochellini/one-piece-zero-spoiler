@@ -868,7 +868,8 @@ export const wano: Saga = {
       origin: [{ episode: 921, value: WANO }],
       devilFruit: [
         {
-          episode: 927,
+          episode: 965,
+          chapter: 965,
           value: ['snake-snake-fruit-mythical-model-yamata-no-orochi'],
         },
       ],

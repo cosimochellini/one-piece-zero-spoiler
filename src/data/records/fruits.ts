@@ -32,7 +32,7 @@ export const devilFruits: Saga = {
     {
       id: 'gum-gum-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1,
+      revealedAtEpisode: 4,
       revealedAtChapter: 1,
       name: { it: 'Frutto Gom Gom', en: 'Gum-Gum Fruit' },
       summary: {
@@ -56,8 +56,8 @@ export const devilFruits: Saga = {
     {
       id: 'slip-slip-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 48,
-      revealedAtChapter: 97,
+      revealedAtEpisode: 52,
+      revealedAtChapter: 98,
       name: { it: 'Frutto Slip Slip', en: 'Slip-Slip Fruit' },
       summary: {
         it: 'Rende la pelle così liscia che niente fa presa: i pugni scivolano via, le corde non stringono, e un braccio afferrato sguscia fuori da solo.',
@@ -209,8 +209,8 @@ export const devilFruits: Saga = {
     {
       id: 'dice-dice-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 103,
-      revealedAtChapter: 170,
+      revealedAtEpisode: 116,
+      revealedAtChapter: 190,
       name: { it: 'Frutto Dice Dice', en: 'Dice-Dice Fruit' },
       summary: {
         it: 'Trasforma qualunque parte del corpo in una lama d’acciaio: un braccio diventa una spada e la pelle stessa smussa la spada che la colpisce.',
@@ -731,8 +731,8 @@ export const devilFruits: Saga = {
     {
       id: 'turtle-turtle-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 571,
-      revealedAtChapter: 653,
+      revealedAtEpisode: 776,
+      revealedAtChapter: 822,
       name: { it: 'Frutto Kame Kame', en: 'Turtle-Turtle Fruit' },
       summary: {
         it: 'Trasforma il corpo in una tartaruga: ritirato nel guscio regge una cannonata senza un’ammaccatura, e messo a rotolare corre giù addosso a chi sta sotto.',
@@ -938,8 +938,8 @@ export const devilFruits: Saga = {
     {
       id: 'hobby-hobby-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 641,
-      revealedAtChapter: 725,
+      revealedAtEpisode: 663,
+      revealedAtChapter: 731,
       name: { it: 'Frutto Hobi Hobi', en: 'Hobby-Hobby Fruit' },
       summary: {
         it: 'Un tocco trasforma una persona in un giocattolo, e quel giocattolo deve fare quello che gli ordina chi l’ha creato.',
@@ -1028,8 +1028,8 @@ export const devilFruits: Saga = {
     {
       id: 'scroll-scroll-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 764,
-      revealedAtChapter: 824,
+      revealedAtEpisode: 1004,
+      revealedAtChapter: 992,
       name: { it: 'Frutto Maki Maki', en: 'Scroll-Scroll Fruit' },
       summary: {
         it: 'Trasforma il corpo in carta che si arrotola e si srotola, e quello che viene arrotolato dentro viene portato via e lasciato uscire più tardi.',
@@ -1277,8 +1277,8 @@ export const devilFruits: Saga = {
     {
       id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
       kind: 'fruit',
-      revealedAtEpisode: 927,
-      revealedAtChapter: 935,
+      revealedAtEpisode: 965,
+      revealedAtChapter: 965,
       name: {
         it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
         en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
@@ -1484,8 +1484,8 @@ export const devilFruits: Saga = {
     {
       id: 'magnet-magnet-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1040,
-      revealedAtChapter: 1030,
+      revealedAtEpisode: 1058,
+      revealedAtChapter: 1031,
       name: { it: 'Frutto Jiki Jiki', en: 'Magnet-Magnet Fruit' },
       summary: {
         it: 'Richiama il metallo nell’aria da qualsiasi distanza e lo compatta, così una mano tesa si ritrova a reggere una massa di ferro grande come una casa.',
@@ -1532,8 +1532,8 @@ export const devilFruits: Saga = {
     {
       id: 'age-age-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1099,
-      revealedAtChapter: 1080,
+      revealedAtEpisode: 1133,
+      revealedAtChapter: 1099,
       name: { it: 'Frutto Toshi Toshi', en: 'Age-Age Fruit' },
       summary: {
         it: 'Cambia l’età di una persona: un uomo fatto prosegue da bambino, un bambino si rialza adulto, il corpo spostato lungo i propri anni.',

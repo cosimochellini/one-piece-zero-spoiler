@@ -1071,7 +1071,9 @@ export const fishManIsland: Saga = {
         },
       ],
       origin: [{ episode: 762, value: { it: 'Zou', en: 'Zou' } }],
-      devilFruit: [{ episode: 571, value: ['turtle-turtle-fruit'] }],
+      devilFruit: [
+        { episode: 776, chapter: 822, value: ['turtle-turtle-fruit'] },
+      ],
       bounty: [{ episode: 572, value: 330_000_000 }],
     },
     'baron-tamago': {

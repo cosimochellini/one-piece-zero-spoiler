@@ -1523,7 +1523,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 641, value: ['hobby-hobby-fruit'] }],
+      devilFruit: [
+        { episode: 663, chapter: 731, value: ['hobby-hobby-fruit'] },
+      ],
     },
     'diamante': {
       role: DONQUIXOTE_ELITE_ROLE,
