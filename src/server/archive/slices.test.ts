@@ -746,4 +746,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 589 })).toBe(bisento)
     expect(drawnAt({ mode: 'chapter', chapter: 590 })).toBe(grave?.value)
   })
+
+  it('sets a crown on Buggy’s cannonball only from episode 1080', () => {
+    const buggy = filed('buggy')
+    const cannonball = DRAWINGS.buggy
+    const crowned = REDRAWINGS['buggy']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(buggy, 'en', reveal(bookmark)).visual.strokes
+
+    expect(crowned?.episode).toBe(1080)
+
+    expect(drawnAt(ep(1079))).toBe(cannonball)
+    expect(drawnAt(ep(1080))).toBe(crowned?.value)
+    expect(drawnAt(null)).toBe(cannonball)
+    // The manga names him one of the new Four Emperors in chapter 1053.
+    expect(drawnAt({ mode: 'chapter', chapter: 1052 })).toBe(cannonball)
+    expect(drawnAt({ mode: 'chapter', chapter: 1053 })).toBe(crowned?.value)
+  })
 })
