@@ -217,12 +217,9 @@ function prepareReportPath() {
   rmSync(reportPath, { force: true })
 }
 
-// Everything that has to hold before a verdict may be read out of the report.
-// Each assertion exits 2 on its own, so reaching the return means the file on
-// disk is a complete analysis and not a partial or crashed one.
 // Audit mode works by rewriting every file that carries a disable comment and
 // writing it back after the scan. The bytes come back, the timestamps do not,
-// and a crash in between would leave the rewrite behind. So the gate keeps
+// and a react-doctor crash in between would leave the rewrite behind. So the gate keeps
 // every file first, writes back any that comes back different and then fails,
 // and puts the timestamps back, which keeps a later `npm run gate:fallow` from
 // reading its coverage as older than the code.
@@ -264,6 +261,9 @@ function restoreSources(snapshot) {
   }
 }
 
+// Everything that has to hold before a verdict may be read out of the report.
+// Each assertion exits 2 on its own, so reaching the return means the file on
+// disk is a complete analysis and not a partial or crashed one.
 function readTrustedReport() {
   const snapshot = snapshotSources()
   const child = runDoctor()
