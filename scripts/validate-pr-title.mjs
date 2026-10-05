@@ -156,7 +156,7 @@ export function validatePrTitle(title) {
  * title from it without opening the repository.
  * @returns {string} The full message, already newline-terminated.
  */
-export function usage() {
+function usage() {
   const rows = TYPES.map((type) => `  ${type.padEnd(9)} -> ${TYPE_BUMPS[type]}`)
 
   return [

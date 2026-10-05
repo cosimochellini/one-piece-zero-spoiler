@@ -27,7 +27,7 @@ import type { DocumentHead } from '~/lib/view/records'
 const SOCIAL_IMAGE = '/og-card.png'
 
 /** What a route knows about itself when the head is written. */
-export type PageDescription = {
+type PageDescription = {
   readonly head: DocumentHead
   readonly kind: PageKind
   readonly locale: Locale
@@ -44,7 +44,7 @@ export type HeadTags = {
 }
 
 /** The title, the description, the canonical address and everything derived from them. */
-export function describePage(page: PageDescription): HeadTags {
+function describePage(page: PageDescription): HeadTags {
   const path = normalisePath(page.pathname)
   const url = absoluteUrl(path)
   const dictionary = getDictionary(page.locale)

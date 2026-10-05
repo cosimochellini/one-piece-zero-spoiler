@@ -21,8 +21,7 @@
     "lint:fix": "eslint . --fix",
     "prepare": "lefthook install",
     "start": "vite preview",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
+    "test": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "verify:chapters": "node scripts/verify-chapters.mjs"

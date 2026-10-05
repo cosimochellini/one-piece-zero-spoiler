@@ -37,7 +37,7 @@ import { chapterTexts, fetchPage } from './wiki.mjs'
  * of the two.
  * @type {Record<string, string | string[]>}
  */
-export const TITLES = {
+const TITLES = {
   'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
   'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
     'Neko Neko no Mi, Model: Saber Tiger',
@@ -325,7 +325,7 @@ export function verdictOf(filed, source) {
  * Every record against its page, in archive order.
  * @returns {Promise<Row[]>} One row per record.
  */
-export async function verify() {
+async function verify() {
   const { entities } = await importArchive('data/entities.ts')
   const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
   const chapters = await chapterTexts(CHAPTER_CEILING)

@@ -35,7 +35,7 @@ function fileFor(specifier, parent) {
  * `~/` means `src/`, and that a specifier with no extension names a `.ts` file.
  * @returns {void}
  */
-export function registerArchiveResolution() {
+function registerArchiveResolution() {
   registerHooks({
     resolve(specifier, context, nextResolve) {
       const aliased =
