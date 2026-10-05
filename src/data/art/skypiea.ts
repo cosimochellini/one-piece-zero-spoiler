@@ -766,7 +766,8 @@ export const skypieaRedrawn: Redrawings = {
     // The bigger tricorne of the two years, two plumes standing out of a
     // flower at its side, over the same bandana: first seen clearly on
     // Hachinosu at 917 (ch. 925). The Jolly Roger on its front is left off;
-    // the plumes' dark tips are hatched.
+    // the plumes' dark tips are hatched. The bandana is kept from 421 on
+    // purpose, though the wiki has it yellow with red dots by now.
     {
       episode: 917,
       chapter: 925,
