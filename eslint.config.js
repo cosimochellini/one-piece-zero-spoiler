@@ -69,6 +69,10 @@ const TOKENS = ['src/**/*.stylex.ts']
 // running a tool. `item2` before `item10`, `Ace` beside `ace`.
 const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 
+// One message for the four shapes `readonly` takes in a type.
+const NO_READONLY =
+  '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.'
+
 // Said three times below, once per block that bans a parent-relative import.
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
@@ -177,6 +181,20 @@ const config = defineConfig(
           message:
             '`for…in` walks the prototype chain. Iterate Object.keys or Object.entries instead.',
         },
+        {
+          selector: 'TSPropertySignature[readonly=true]',
+          message: NO_READONLY,
+        },
+        { selector: 'TSIndexSignature[readonly=true]', message: NO_READONLY },
+        {
+          selector: "TSTypeOperator[operator='readonly']",
+          message: NO_READONLY,
+        },
+        {
+          selector:
+            'TSTypeReference[typeName.name=/^Readonly(Array|Map|Set)?$/]',
+          message: NO_READONLY,
+        },
       ],
       // Every module reaches through the `~/` alias. A `../` import encodes
       // where the importer happens to live, which is the one thing a file
@@ -204,7 +222,7 @@ const config = defineConfig(
       // Stylistic prefers `x!` over `x as T`. Both are banned here, so the
       // rule could only ever recommend one banned form over another.
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
-      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       // Inline specifiers are the style already written here
       // (`import { DRAWINGS, type Stroke }`). no-import-type-side-effects is
       // the other half: under verbatimModuleSyntax an import whose every
@@ -268,11 +286,6 @@ const config = defineConfig(
         },
       ],
       '@typescript-eslint/explicit-module-boundary-types': 'error',
-      '@typescript-eslint/prefer-readonly': 'error',
-      // Off, and not for noise: it demands `readonly` on ReactNode, on router
-      // params and on every third-party type in every signature, which cannot
-      // be satisfied without the assertions banned above.
-      '@typescript-eslint/prefer-readonly-parameter-types': 'off',
       '@typescript-eslint/no-unnecessary-condition': [
         'error',
         { allowConstantLoopConditions: 'only-allowed-literals' },
@@ -425,6 +438,8 @@ const config = defineConfig(
       // @typescript-eslint/no-deprecated reports the same thing with the type
       // checker behind it.
       'sonarjs/deprecation': 'off',
+      // `readonly` is banned outright (no-restricted-syntax above).
+      'sonarjs/prefer-read-only-props': 'off',
     },
   },
 
@@ -514,9 +529,12 @@ const config = defineConfig(
       'perfectionist/sort-named-imports': ['error', NATURAL],
       'perfectionist/sort-named-exports': ['error', NATURAL],
       'perfectionist/sort-exports': ['error', NATURAL],
-      'perfectionist/sort-interfaces': ['error', NATURAL],
       // A blank line or a comment opens a new partition, so a type whose
       // fields are grouped on purpose keeps its groups.
+      'perfectionist/sort-interfaces': [
+        'error',
+        { ...NATURAL, partitionByNewLine: true, partitionByComment: true },
+      ],
       'perfectionist/sort-object-types': [
         'error',
         { ...NATURAL, partitionByNewLine: true, partitionByComment: true },
