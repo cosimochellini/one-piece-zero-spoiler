@@ -1591,7 +1591,7 @@ export const summitWar: Saga = {
           },
         },
         {
-          episode: 1090,
+          episode: 1099,
           value: {
             it: 'Marina, capo della sicurezza di Egghead',
             en: 'Marines, Egghead security chief',
@@ -1915,7 +1915,10 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 450, value: { it: 'il Beone', en: 'Heavy Drinker' } },
       ],
-      devilFruit: [{ episode: 1120, value: ['gabu-gabu-fruit'] }],
+      // Pinned at 1087, where he first breathes fire with it (1121).
+      devilFruit: [
+        { episode: 1121, chapter: 1087, value: ['gabu-gabu-fruit'] },
+      ],
     },
     'san-juan-wolf': {
       role: LEVEL_SIX_ROLE,
@@ -1948,7 +1951,10 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 450, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
       ],
-      devilFruit: [{ episode: 1120, value: ['island-island-fruit'] }],
+      // Pinned at 1087, where the island's rock first rises as a hand (1121).
+      devilFruit: [
+        { episode: 1121, chapter: 1087, value: ['island-island-fruit'] },
+      ],
     },
     'sakazuki': {
       chronicle: summitWarChronicles.sakazuki,

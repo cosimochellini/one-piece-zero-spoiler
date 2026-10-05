@@ -2,7 +2,7 @@ import { eggheadChronicles } from './egghead.chronicle'
 import type { Saga } from './saga'
 
 /**
- * The Egghead arc, episodes 1089 to 1155: the first island of the final
+ * The Egghead arc, episodes 1090 to 1155: the first island of the final
  * saga, a laboratory that lives in the future.
  */
 
@@ -29,7 +29,7 @@ export const egghead: Saga = {
     {
       id: 'egghead',
       kind: 'arc',
-      revealedAtEpisode: 1089,
+      revealedAtEpisode: 1090,
       revealedAtChapter: 1061,
       name: { it: 'Egghead', en: 'Egghead' },
       summary: {
@@ -41,26 +41,26 @@ export const egghead: Saga = {
     {
       id: 'egghead-island',
       kind: 'place',
-      revealedAtEpisode: 1089,
+      revealedAtEpisode: 1090,
       revealedAtChapter: 1061,
       name: { it: 'Isola di Egghead', en: 'Egghead Island' },
       summary: {
-        it: 'Un’isola-laboratorio nel Nuovo Mondo, tenuta calda da un vulcano sottomarino e piena di macchine che non dovrebbero esistere ancora.',
-        en: 'A laboratory island in the New World, kept warm by an undersea volcano and full of machines that should not exist yet.',
+        it: 'Un’isola-laboratorio nel Nuovo Mondo che, si dice, vive cinquecento anni nel futuro, piena di macchine che non dovrebbero esistere ancora.',
+        en: 'A laboratory island in the New World, said to be five hundred years in the future and full of machines that should not exist yet.',
       },
       visual: { art: 'egghead-island', tint: 'orange' },
     },
     {
       id: 'vegapunk',
       kind: 'character',
-      revealedAtEpisode: 1090,
-      revealedAtChapter: 1068,
+      revealedAtEpisode: 1096,
+      revealedAtChapter: 1066,
       // Koby tells Luffy of Dr. Vegapunk’s seastone hulls at 315, long before he is met.
       nameSaidAt: 315,
       name: { it: 'Vegapunk', en: 'Vegapunk' },
       summary: {
-        it: 'Lo scienziato che il mondo insegue da cinquecento anni, un vecchio dalla testa enorme a forma di lampadina che vive dentro il suo laboratorio.',
-        en: 'The scientist the world is five hundred years behind, an old man with a huge bulb-shaped head who lives inside his own laboratory.',
+        it: 'Lo scienziato che il mondo insegue a cinquecento anni di distanza, un vecchio con la testa tagliata piatta in cima e una mela sopra, che vive dentro il suo laboratorio.',
+        en: 'The scientist the world is five hundred years behind, an old man whose head is cut flat on top and crowned with an apple, who lives inside his own laboratory.',
       },
       visual: { art: 'vegapunk', tint: 'cyan' },
     },
@@ -104,11 +104,11 @@ export const egghead: Saga = {
       id: 'shaka',
       kind: 'character',
       revealedAtEpisode: 1091,
-      revealedAtChapter: 1065,
+      revealedAtChapter: 1062,
       name: { it: 'Shaka', en: 'Shaka' },
       summary: {
-        it: 'Il primo dei satelliti di Vegapunk, un uomo in tuta corazzata e elmo a cupola, che parla piano e decide per tutto il laboratorio.',
-        en: 'The first of Vegapunk’s satellites, a man in an armoured suit and a domed helmet who speaks quietly and decides for the whole laboratory.',
+        it: 'Un Vegapunk che rappresenta il bene, un uomo con la testa chiusa in un elmo di metallo, che ferma l’assalto di Lilith con poche parole calme e si fa portare i pirati.',
+        en: 'A Vegapunk that stands for good, a man whose head is hidden inside a metal helmet, who calls off Lilith’s raid with a few calm words and has the pirates brought to him.',
       },
       visual: { art: 'shaka', tint: 'ivory' },
     },
@@ -116,47 +116,47 @@ export const egghead: Saga = {
       id: 'lilith',
       kind: 'character',
       revealedAtEpisode: 1091,
-      revealedAtChapter: 1065,
+      revealedAtChapter: 1062,
       name: { it: 'Lilith', en: 'Lilith' },
       summary: {
-        it: 'Il satellite che rappresenta il male, una donna con le corna e un fucile laser, che spara agli ospiti prima ancora di chiedere un nome.',
-        en: 'The satellite that stands for evil, a horned woman with a laser rifle, who shoots at guests well before she asks anyone for a name.',
+        it: 'Un Vegapunk che rappresenta il male, una donna alta con i capelli arruffati su un occhio e un casco da aviatore, che cavalca un robot gigante e scatena le sue bestie marine meccaniche contro ogni nave che si avvicina.',
+        en: 'A Vegapunk that stands for evil, a tall woman with wild hair over one eye and a flying helmet, who rides a giant robot and sets her mechanical sea beasts on any ship that comes near.',
       },
       visual: { art: 'lilith', tint: 'magenta' },
     },
     {
       id: 's-snake',
       kind: 'character',
-      revealedAtEpisode: 1092,
-      revealedAtChapter: 1071,
+      revealedAtEpisode: 1099,
+      revealedAtChapter: 1069,
       name: { it: 'S-Snake', en: 'S-Snake' },
       summary: {
-        it: 'Un’arma del Governo Mondiale con l’aspetto di una bambina, ali alla schiena e berretto della Marina, che pietrifica chi la guarda troppo.',
-        en: 'A World Government weapon shaped like a small girl, wings at her back and a Marine cap, who turns to stone anyone who looks too long.',
+        it: 'Un’arma del Governo Mondiale con l’aspetto di una bambina, ali nere, una fiamma che le arde sulla schiena e il volto che l’Imperatrice Pirata aveva da piccola.',
+        en: 'A World Government weapon shaped like a child, with black wings, a flame burning at her back and the face the Pirate Empress had as a little girl.',
       },
       visual: { art: 's-snake', tint: 'magenta' },
     },
     {
       id: 's-hawk',
       kind: 'character',
-      revealedAtEpisode: 1092,
-      revealedAtChapter: 1071,
+      revealedAtEpisode: 1099,
+      revealedAtChapter: 1069,
       name: { it: 'S-Hawk', en: 'S-Hawk' },
       summary: {
-        it: 'Un serafino dal volto di bambino, con una spada nera enorme sulla schiena, costruito sul modello del più grande spadaccino del mondo.',
-        en: 'A Seraphim with a child’s face and an enormous black sword on his back, built on the pattern of the greatest swordsman in the world.',
+        it: 'Un serafino con la faccia da bambino e una grande spada a forma di croce.',
+        en: 'A Seraphim with a child’s face and a large cross-shaped sword.',
       },
       visual: { art: 's-hawk', tint: 'ocher' },
     },
     {
       id: 's-bear',
       kind: 'character',
-      revealedAtEpisode: 1092,
-      revealedAtChapter: 1071,
+      revealedAtEpisode: 1098,
+      revealedAtChapter: 1068,
       name: { it: 'S-Bear', en: 'S-Bear' },
       summary: {
-        it: 'Un serafino costruito sul modello di Bartholomew Kuma, con i cuscinetti sui palmi che respingono qualsiasi cosa li tocchi.',
-        en: 'A Seraphim built on the pattern of Bartholomew Kuma, with paw pads on its palms that push away anything that touches them.',
+        it: 'Un serafino con la faccia da bambino su un corpo da gigante, le orecchie d’orso e gli occhiali spessi di Bartholomew Kuma, che il CP0 riporta a Egghead sulla sua nave.',
+        en: 'A Seraphim with a child’s face on a giant’s body, Bartholomew Kuma’s bear ears and thick glasses, that CP0 bring back to Egghead on their ship.',
       },
       visual: { art: 's-bear', tint: 'sand' },
     },
@@ -164,47 +164,47 @@ export const egghead: Saga = {
       id: 's-shark',
       kind: 'character',
       revealedAtEpisode: 1095,
-      revealedAtChapter: 1071,
+      revealedAtChapter: 1065,
       name: { it: 'S-Shark', en: 'S-Shark' },
       summary: {
-        it: 'Un serafino costruito sul modello di un uomo-pesce, che nuota nel terreno e nei muri di Egghead come se fossero acqua.',
-        en: 'A Seraphim built on the pattern of a fish-man, who swims through the ground and the walls of Egghead as if they were water.',
+        it: 'Un serafino costruito sul modello di un uomo-pesce, che nuota nel terreno e nei pavimenti di Egghead come se fossero acqua.',
+        en: 'A Seraphim built on the pattern of a fish-man, who swims through the ground and the floors of Egghead as if they were water.',
       },
       visual: { art: 's-shark', tint: 'blue' },
     },
     {
       id: 'edison',
       kind: 'character',
-      revealedAtEpisode: 1094,
-      revealedAtChapter: 1070,
+      revealedAtEpisode: 1095,
+      revealedAtChapter: 1065,
       name: { it: 'Edison', en: 'Edison' },
       summary: {
-        it: 'Il satellite che pensa, un uomo enorme con una lampadina accesa al posto della testa, che invita gli ospiti a sedersi e continua a progettare.',
-        en: 'The satellite that thinks, a huge man with a lit bulb where a head should be, who sits his guests down and keeps on designing.',
+        it: 'Il satellite che ha le idee, un piccolo robot con due punte a forma di spina elettrica in cima alla testa, che grida ogni volta che gli viene un’idea e vola via a disegnare i progetti.',
+        en: 'The satellite that has the ideas, a small robot with two prongs like a plug on top of his head, who shouts whenever an idea comes and flies off to draw the blueprints.',
       },
       visual: { art: 'edison', tint: 'yellow' },
     },
     {
       id: 'pythagoras',
       kind: 'character',
-      revealedAtEpisode: 1094,
-      revealedAtChapter: 1070,
+      revealedAtEpisode: 1095,
+      revealedAtChapter: 1065,
       name: { it: 'Pythagoras', en: 'Pythagoras' },
       summary: {
-        it: 'Il satellite che sa, una testa geometrica con uno schermo al posto del viso, che tiene sotto controllo ogni misura del laboratorio.',
-        en: 'The satellite that knows, a geometric head with a screen for a face, keeping watch over every reading the laboratory produces.',
+        it: 'Il satellite che rappresenta la saggezza, un grosso robot con la testa rotonda e una chiave da carica in cima, che segue i test del laboratorio e annuncia ogni numero che ne esce.',
+        en: 'The satellite that stands for wisdom, a large robot with a round head and a wind-up key on top, who watches the laboratory’s tests and calls out every number they produce.',
       },
       visual: { art: 'pythagoras', tint: 'teal' },
     },
     {
       id: 'atlas',
       kind: 'character',
-      revealedAtEpisode: 1094,
-      revealedAtChapter: 1070,
+      revealedAtEpisode: 1091,
+      revealedAtChapter: 1062,
       name: { it: 'Atlas', en: 'Atlas' },
       summary: {
-        it: 'Il satellite della forza, una donna che si infila due guanti d’acciaio grandi quanto lei e apre le porte a pugni invece che con la chiave.',
-        en: 'The satellite of force, a woman who pulls on two steel gauntlets as big as she is and opens doors with her fists instead of a key.',
+        it: 'Un Vegapunk che rappresenta la violenza, una ragazza più grossa di Kaido con dei guanti che le permettono di prendere a pugni gli ologrammi, e che colpisce tutto ciò che la fa arrabbiare.',
+        en: 'A Vegapunk that stands for violence, a girl bigger than Kaido who wears gloves that let her punch holograms, and hits whatever frustrates her.',
       },
       visual: { art: 'atlas', tint: 'orange' },
     },
@@ -212,11 +212,11 @@ export const egghead: Saga = {
       id: 'york',
       kind: 'character',
       revealedAtEpisode: 1095,
-      revealedAtChapter: 1070,
+      revealedAtChapter: 1065,
       name: { it: 'York', en: 'York' },
       summary: {
-        it: 'Il satellite dell’avidità, una donna che dorme, mangia e si fa servire, e che si occupa delle scorte dell’isola quando le va di alzarsi.',
-        en: 'The satellite of greed, a woman who sleeps, eats and has herself waited on, and who handles the island’s stores when she feels like it.',
+        it: 'Il satellite che rappresenta l’avidità, una donna che mangia, dorme e si fa servire, e lo fa per conto degli altri satelliti perché non debbano mai smettere di lavorare.',
+        en: 'The satellite that stands for greed, a woman who eats, sleeps and has herself waited on, and does all of it on behalf of the other satellites so they never have to stop working.',
       },
       visual: { art: 'york', tint: 'acid' },
     },
@@ -224,23 +224,23 @@ export const egghead: Saga = {
       id: 'jaygarcia-saturn',
       kind: 'character',
       revealedAtEpisode: 1105,
-      revealedAtChapter: 1095,
+      revealedAtChapter: 1073,
       name: { it: 'Jaygarcia Saturn', en: 'Jaygarcia Saturn' },
       summary: {
-        it: 'Uno dei cinque uomini che stanno sopra il Governo Mondiale, arrivato su Egghead di persona, con il cilindro in testa e il bastone in mano.',
-        en: 'One of the five men who sit above the World Government, come to Egghead in person, a top hat on his head and a cane in his hand.',
+        it: 'Uno dei cinque uomini che stanno sopra il Governo Mondiale, un vecchio massiccio con una lunga barba bianca, un piccolo cappello nero e un bastone, diretto a Egghead sulla nave dell’ammiraglio Kizaru.',
+        en: 'One of the five men who sit above the World Government, a heavy old man with a long white beard, a small black hat and a cane, on his way to Egghead aboard Admiral Kizaru’s ship.',
       },
       visual: { art: 'jaygarcia-saturn', tint: 'violet' },
     },
     {
       id: 'ginny',
       kind: 'character',
-      revealedAtEpisode: 1112,
-      revealedAtChapter: 1102,
+      revealedAtEpisode: 1129,
+      revealedAtChapter: 1095,
       name: { it: 'Ginny', en: 'Ginny' },
       summary: {
-        it: 'Una ragazzina del Regno di Sorbet cresciuta accanto a Kuma, che canta per i malati della chiesa e porta un fazzoletto annodato sui capelli.',
-        en: 'A girl of the Sorbet Kingdom who grows up beside Kuma, singing for the sick at the church, a kerchief knotted over her hair.',
+        it: 'Una bambina schiava con le lentiggini e i capelli rosa corti e spettinati, che a God Valley compare accanto a un giovane Ivankov e offre agli altri schiavi un modo per uscirne vivi.',
+        en: 'A freckled slave girl with short, messy pink hair, who turns up at God Valley beside a young Ivankov and offers the other slaves a way out alive.',
       },
       visual: { art: 'ginny', tint: 'orange' },
     },
@@ -283,48 +283,48 @@ export const egghead: Saga = {
     {
       id: 'marcus-mars',
       kind: 'character',
-      revealedAtEpisode: 1122,
-      revealedAtChapter: 1125,
+      revealedAtEpisode: 1120,
+      revealedAtChapter: 1086,
       name: { it: 'Marcus Mars', en: 'Marcus Mars' },
       summary: {
-        it: 'Uno dei cinque che comandano il Governo Mondiale, sceso su Egghead con gli altri e capace di aprirsi in una forma enorme e piumata.',
-        en: 'One of the five who command the World Government, down on Egghead with the others and able to open out into a huge feathered shape.',
+        it: 'Uno dei cinque che comandano il Governo Mondiale, un vecchio altissimo e magro con i capelli bianchi lunghi e un pizzetto bianco che gli arriva al petto.',
+        en: 'One of the five who command the World Government, a very tall, thin old man with long white hair and a white goatee that reaches his chest.',
       },
       visual: { art: 'marcus-mars', tint: 'ice' },
     },
     {
       id: 'topman-warcury',
       kind: 'character',
-      revealedAtEpisode: 1122,
-      revealedAtChapter: 1125,
+      revealedAtEpisode: 1120,
+      revealedAtChapter: 1086,
       name: { it: 'Topman Warcury', en: 'Topman Warcury' },
       summary: {
-        it: 'Uno dei Cinque Astri di Saggezza, arrivato su Egghead con l’elmo allacciato sotto il mento e una forma che sfonda i muri come un cinghiale.',
-        en: 'One of the Five Elders, arrived on Egghead with a helmet strapped under his chin and a shape that goes through walls like a boar.',
+        it: 'Uno dei Cinque Astri di Saggezza, un vecchio tondo e calvo con enormi baffi bianchi e delle macchie scure sulla fronte e su una guancia.',
+        en: 'One of the Five Elders, a round, bald old man with an enormous white moustache and dark spots on his forehead and cheek.',
       },
       visual: { art: 'topman-warcury', tint: 'wine' },
     },
     {
       id: 'ethanbaron-v-nusjuro',
       kind: 'character',
-      revealedAtEpisode: 1122,
-      revealedAtChapter: 1125,
+      revealedAtEpisode: 1120,
+      revealedAtChapter: 1086,
       name: { it: 'Ethanbaron V. Nusjuro', en: 'Ethanbaron V. Nusjuro' },
       summary: {
-        it: 'Uno dei Cinque Astri di Saggezza, sbarcato su Egghead con una katana lunghissima che taglia quello che ha davanti quasi senza muoversi.',
-        en: 'One of the Five Elders, ashore on Egghead with a very long katana that cuts what stands in front of him almost without his moving.',
+        it: 'Uno dei Cinque Astri di Saggezza, un vecchio calvo dal naso adunco, con occhiali rotondi e un’ampia veste bianca da allenamento, che tiene in mano una katana.',
+        en: 'One of the Five Elders, a bald, hook-nosed old man in round glasses and a loose white training robe, who keeps a katana in his hand.',
       },
       visual: { art: 'ethanbaron-v-nusjuro', tint: 'ivory' },
     },
     {
       id: 'shepherd-ju-peter',
       kind: 'character',
-      revealedAtEpisode: 1122,
-      revealedAtChapter: 1125,
+      revealedAtEpisode: 1120,
+      revealedAtChapter: 1086,
       name: { it: 'Shepherd Ju Peter', en: 'Shepherd Ju Peter' },
       summary: {
-        it: 'Uno dei Cinque Astri di Saggezza, sceso su Egghead con un cappello a tesa larga e una forma che scava nel terreno e inghiotte ciò che trova.',
-        en: 'One of the Five Elders, down on Egghead in a wide-brimmed hat, with a shape that burrows through the ground and swallows what it finds.',
+        it: 'Uno dei Cinque Astri di Saggezza, più alto di tutti tranne uno, con i capelli corti che si uniscono alla barba sul mento e una cicatrice che si vede sopra il colletto aperto.',
+        en: 'One of the Five Elders, taller than all but one of them, with short hair joined to a chin beard and a scar showing above his open collar.',
       },
       visual: { art: 'shepherd-ju-peter', tint: 'sand' },
     },
@@ -332,11 +332,10 @@ export const egghead: Saga = {
       id: 'bluegrass',
       kind: 'character',
       revealedAtEpisode: 1128,
-      revealedAtChapter: 1125,
-      // Rounded up to 1125, the chapter that files the Ride-Ride Fruit, whom the text names.
+      revealedAtChapter: 1094,
       name: { it: 'Bluegrass', en: 'Bluegrass' },
       summary: {
-        it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi, che prende il comando di qualunque macchina su cui sale.',
+        it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi sotto un caschetto, che prende il comando di qualunque macchina su cui sale.',
         en: 'A small old Marine vice admiral in headphones and sunglasses, blonde pigtails under a bowl cut, who takes command of any machine she climbs onto.',
       },
       visual: { art: 'bluegrass', tint: 'yellow' },
@@ -408,8 +407,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1100,
       name: { it: 'Alpha', en: 'Alpha' },
       summary: {
-        it: 'Un’infermiera con gli occhiali che si installa nella chiesa di Sorbet per assistere Bonney fino alla guarigione, e che pensa a quanto sia facile spezzare il collo a un bambino.',
-        en: 'A nurse in glasses who moves into the church in Sorbet to look after Bonney until she is cured, and who thinks of how easily a child’s neck snaps.',
+        it: 'Un’infermiera con gli occhiali che arriva alla chiesa di Sorbet per assistere Bonney fino alla guarigione, e che pensa a quanto sia facile spezzare il collo a un bambino.',
+        en: 'A nurse in glasses who comes to the church in Sorbet to look after Bonney until she is cured, and who thinks of how easily a child’s neck snaps.',
       },
       visual: { art: 'alpha', tint: 'teal' },
     },
@@ -456,8 +455,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1108,
       name: { it: 'Tosa', en: 'Tosa' },
       summary: {
-        it: 'Un viceammiraglio della Marina grosso e barbuto, con un berretto con la scritta MARINES, che insegue chi scappa fino a raggiungerlo e morde con le mani, dieci dita dure come artigli.',
-        en: 'A big bearded Marine vice admiral in a cap that reads MARINES, who runs down whoever flees from him and bites with his hands, ten fingers hard as claws.',
+        it: 'Un viceammiraglio della Marina grosso e barbuto, con un berretto con la scritta MARINES, che insegue la ragazza pirata in fuga e morde con le mani, dieci dita dure come artigli.',
+        en: 'A big bearded Marine vice admiral in a cap that reads MARINES, who chases down the fleeing pirate girl and bites with his hands, ten fingers hard as claws.',
       },
       visual: { art: 'tosa', tint: 'ocher' },
     },
@@ -502,22 +501,25 @@ export const egghead: Saga = {
   ],
 
   dossiers: {
+    // Filed at 1096, where he is first seen: the shadow in Caesar’s
+    // flashback at 610 shows nothing of him, and at 1090 it is Lilith who
+    // calls herself Vegapunk.
     'vegapunk': {
       role: {
         it: 'Scienziato capo del Governo Mondiale',
         en: 'World Government chief scientist',
       },
       log: {
-        it: 'Il Governo Mondiale lo tiene su un’isola sola in mezzo al Nuovo Mondo, e da lì escono le navi, le armi e i Pacifista che la Marina usa da anni. Chi approda su Egghead trova un vecchio dalla testa enorme, gentile e distratto, che parla della propria ricerca come di una cosa che appartiene a tutti. Dice di essere lui lo scienziato di cui il mondo parla da sempre.',
-        en: 'The World Government keeps him on a single island in the middle of the New World, and out of it come the ships, the weapons and the Pacifista the Marines have used for years. Whoever lands on Egghead finds a kindly, distracted old man with an enormous head who talks about his research as something that belongs to everyone. He says he is the scientist the world has been discussing for decades.',
+        it: 'Il Governo Mondiale lo tiene su un’isola tutta sua nel Nuovo Mondo, e dal suo lavoro escono le navi, le armi e i Pacifista che la Marina usa da anni. Chi approda su Egghead trova un vecchio gentile e distratto che, dopo un teletrasporto fallito, resta incastrato dentro un robot e deve gridare aiuto. Bonney lo riconosce subito: è il vero Vegapunk, l’uomo che si dice abbia il cervello migliore del mondo.',
+        en: 'The World Government keeps him on an island of his own in the New World, and out of his work come the ships, the weapons and the Pacifista the Marines have used for years. Whoever lands on Egghead finds a kindly, scatterbrained old man who gets himself stuck inside a robot after a failed warp and has to shout for help. Bonney knows him at once as the real Vegapunk, the man said to have the best brain in the world.',
       },
       status: [
-        { episode: 1090, value: 'alive' },
+        { episode: 1096, value: 'alive' },
         { episode: 1142, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 1090,
+          episode: 1096,
           value: {
             it: 'Governo Mondiale, scienziato capo',
             en: 'World Government, chief scientist',
@@ -526,7 +528,7 @@ export const egghead: Saga = {
       ],
       origin: [
         {
-          episode: 1090,
+          episode: 1096,
           value: {
             it: 'Baldimore, Isola di Karakuri',
             en: 'Baldimore, Karakuri Island',
@@ -534,44 +536,47 @@ export const egghead: Saga = {
         },
       ],
       epithet: [
-        { episode: 1090, value: { it: 'Dr. Vegapunk', en: 'Dr. Vegapunk' } },
+        { episode: 1096, value: { it: 'Dr. Vegapunk', en: 'Dr. Vegapunk' } },
       ],
-      devilFruit: [{ episode: 1090, value: ['brain-brain-fruit'] }],
+      // The Brain-Brain Fruit is named at 1097, in chapter 1067.
+      devilFruit: [
+        { episode: 1097, chapter: 1067, value: ['brain-brain-fruit'] },
+      ],
     },
     'shaka': {
       role: {
-        it: 'Satellite di Vegapunk, Punk-01',
-        en: 'Vegapunk satellite, Punk-01',
+        it: 'Il Vegapunk che rappresenta il bene',
+        en: 'The Vegapunk that stands for good',
       },
       log: {
-        it: 'Vegapunk si è diviso in sei, e lui è la parte che rappresenta il bene: quando lo scienziato non c’è, è Shaka a rispondere per il laboratorio e a decidere chi entra e chi resta fuori. Porta un elmo a cupola che non toglie mai e ha una voce calma che non alza mai. Agli ospiti arrivati per caso offre un riparo prima ancora di chiedere chi siano.',
-        en: 'Vegapunk split himself into six, and this one is the part that stands for good: when the scientist is elsewhere it is Shaka who answers for the laboratory and decides who comes in and who stays outside. He wears a domed helmet he never takes off and has a calm voice he never raises. He offers shelter to guests who arrived by accident before asking them who they are.',
+        it: 'È il Vegapunk che rappresenta il bene, ed è Shaka a parlare a nome del laboratorio e a dire chi può entrare. Porta un elmo di metallo che gli copre tutta la testa e ha una voce calma. Riconosce i pirati dalle loro taglie prima che abbiano detto una parola, e li invita a entrare perché è curioso di conoscerli.',
+        en: 'He is the Vegapunk that stands for good, and it is Shaka who answers for the laboratory and says who is let in. He wears a metal helmet over his whole head and has a calm voice. He knows the pirates by their bounties before they have said a word, and invites them in because he is curious about them.',
       },
       affiliation: [
         {
-          episode: 1091,
+          episode: 1092,
           value: {
             it: 'Satellite di Vegapunk, Punk-01 Good',
             en: 'Vegapunk satellite, Punk-01 Good',
           },
         },
-        { episode: 1108, value: DESTROYED },
+        { episode: 1111, value: DESTROYED },
       ],
       origin: [{ episode: 1091, value: EGGHEAD }],
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
     },
     'lilith': {
       role: {
-        it: 'Satellite di Vegapunk, Punk-02',
-        en: 'Vegapunk satellite, Punk-02',
+        it: 'Il Vegapunk che rappresenta il male, Punk-02',
+        en: 'The Vegapunk that stands for evil, Punk-02',
       },
       log: {
-        it: 'La seconda delle sei parti in cui Vegapunk si è diviso è quella cattiva, e non fa nulla per nasconderlo. Accoglie chi approda su Egghead con un fucile laser e un conto da pagare, perché il laboratorio costa e i conti li tiene lei. Le corna che porta in testa non sono un travestimento, e chi la prende per una padrona di casa se ne accorge subito.',
-        en: 'The second of the six parts Vegapunk divided himself into is the evil one, and she does nothing to hide it. She greets anyone landing on Egghead with a laser rifle and a bill to settle, because the laboratory costs money and she is the one keeping the accounts. The horns on her head are not a costume, and anyone mistaking her for a host learns it quickly.',
+        it: 'È Punk-02, il Vegapunk malvagio, e non fa nulla per nasconderlo. Accoglie le navi che si avvicinano a Egghead con un esercito di bestie marine meccaniche e la richiesta di consegnare gli oggetti di valore, perché i fondi per la ricerca sono sempre pochi e a preoccuparsene è lei. Chi la ringrazia per un salvataggio scopre che non aveva nessuna intenzione di salvarlo.',
+        en: 'She is Punk-02, the evil Vegapunk, and does nothing to hide it. She greets the ships that come near Egghead with an army of mechanical sea beasts and a demand for their valuables, because the research budget is always short and she is the one worrying about it. Anyone who thanks her for a rescue learns that she never meant to save them.',
       },
       affiliation: [
         {
-          episode: 1091,
+          episode: 1092,
           value: {
             it: 'Satellite di Vegapunk, Punk-02 Evil',
             en: 'Vegapunk satellite, Punk-02 Evil',
@@ -583,71 +588,73 @@ export const egghead: Saga = {
     },
     // The four Seraphim point at the fruits themselves rather than at a
     // record of their own: what they carry is a copy grown from another
-    // body, not a second fruit, and the log above each of them already says
-    // they are built on somebody else's pattern. A record per copy would put
-    // four near-identical drawings on the sheet and say nothing more. Each
-    // of the four points at the fruit the archive files for the body it was
-    // copied from.
+    // body, not a second fruit, and the summary of each of them already says
+    // whose body it recalls. A record per copy would put four near-identical
+    // drawings on the sheet and say nothing more. Each of the four points at
+    // the fruit the archive files for the body it was copied from.
     's-snake': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'È uno dei serafini che la Marina porta a Egghead: bambini con le ali di fuoco e una pelle che le lame non scalfiscono, costruiti sul modello di membri della Flotta dei Sette. Questa ha lo sguardo che trasforma in pietra e obbedisce agli ordini senza discuterli. Sotto il berretto resta una bambina, che si offende se qualcuno la chiama brutta.',
-        en: 'She is one of the Seraphim the Marines bring to Egghead: children with wings of fire and skin no blade marks, built on the pattern of members of the Seven Warlords. This one has the stare that turns people to stone and follows every order without arguing. Under the cap she is still a child, and she takes offence at being called ugly.',
+        it: 'È uno dei serafini custoditi su Egghead: bambini con le ali nere e una fiamma sulla schiena, costruiti per prendere il posto della Flotta dei Sette; due di loro sono usciti senza un graffio dallo scontro su Amazon Lily. Su Amazon Lily questa ha tolto di mezzo una guerriera Kuja con uno schiaffo, a una mano sola, e le Kuja che l’hanno vista da vicino l’hanno trovata identica alla loro Imperatrice da bambina.',
+        en: 'She is one of the Seraphim kept on Egghead: children with black wings and a flame at their backs, made to take the place of the Seven Warlords; two of them came out of the fight on Amazon Lily without a scratch. On Amazon Lily this one slapped a Kuja warrior aside with one hand, and the Kuja who saw her up close thought she looked just like their Empress as a child.',
       },
-      affiliation: [{ episode: 1092, value: SERAPHIM }],
-      origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [{ episode: 1092, value: ['love-love-fruit'] }],
+      affiliation: [{ episode: 1099, value: SERAPHIM }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
+      devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
     's-hawk': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'Uno dei quattro serafini schierati su Egghead, alto come un bambino e armato di una lama nera che taglia qualunque cosa gli capiti davanti. Le braccia gli diventano lame quando serve, e le ali di fuoco lo tengono in aria mentre colpisce. Non parla, non esita e non smette finché l’ordine che ha ricevuto non cambia.',
-        en: 'One of the four Seraphim deployed on Egghead, no taller than a child and carrying a black blade that cuts whatever is put in front of it. His arms turn into blades when he needs them, and wings of fire hold him up while he strikes. He does not speak, does not hesitate and does not stop until the order he was given changes.',
+        it: 'Uno dei quattro serafini su Egghead, con la faccia da bambino su un corpo più alto di un uomo, ali nere e una fiamma che gli arde sulla schiena. Su Amazon Lily un solo colpo della sua spada ha respinto un Imperatore e tagliato via parte della montagna dell’isola. Non parla e non esita.',
+        en: 'One of the four Seraphim on Egghead, with a child’s face on a body taller than a man, black wings and a flame burning at his back. On Amazon Lily a single stroke of his sword knocked an Emperor back and sliced away part of the island’s mountain. He does not speak and does not hesitate.',
       },
-      affiliation: [{ episode: 1092, value: SERAPHIM }],
-      origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [{ episode: 1092, value: ['dice-dice-fruit'] }],
+      affiliation: [{ episode: 1099, value: SERAPHIM }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
+      devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'Ha la faccia di un bambino e la stazza di un gigante, e la Marina lo porta a Egghead insieme agli altri tre serafini. Sui palmi porta i cuscinetti che respingono tutto: l’aria, il dolore, le persone intere, spedite oltre l’orizzonte con uno schiaffo. Chi lo guarda muovere le mani riconosce subito il gesto di un uomo che la ciurma ha già incontrato.',
-        en: 'It has a child’s face and a giant’s build, and the Marines bring it to Egghead along with the other three Seraphim. On its palms are the pads that repel everything: air, pain, whole people, sent past the horizon with a single slap. Anyone who watches those hands move recognises the gesture of a man the crew has met before.',
+        it: 'Ha la faccia di un bambino e la stazza di un gigante. Il Cipher Pol lo riporta a Egghead su una nave del Governo Mondiale, e dal laboratorio rispondono che da lì S-Bear sa tornare a casa da solo e che gli agenti possono andarsene. Sotto i capelli bianchi e le orecchie d’orso c’è la faccia di un uomo che la ciurma ha già incontrato, tornato giovane.',
+        en: 'It has a child’s face and a giant’s build. Cipher Pol carry it back to Egghead aboard a World Government ship, and the laboratory answers that S-Bear can find its own way home from there and the agents can turn back. Under the white hair and the bear ears, the face is the face of a man the crew has met before, made young again.',
       },
-      affiliation: [{ episode: 1092, value: SERAPHIM }],
-      origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [{ episode: 1092, value: ['paw-paw-fruit'] }],
+      affiliation: [{ episode: 1098, value: SERAPHIM }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
+      devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'Il quarto dei serafini su Egghead è costruito sul modello di un uomo-pesce e combatte con il karate degli uomini-pesce. Si immerge nel terreno e attraversa i muri come si nuota in mare, e riemerge alle spalle di chi ha davanti. Come gli altri ha le ali di fuoco, la faccia di un bambino e nessuna intenzione di fermarsi.',
-        en: 'The fourth of the Seraphim on Egghead is built on the pattern of a fish-man and fights with fish-man karate. It dives into the ground and through walls the way a man swims in the sea, and comes up behind whoever it is fighting. Like the others it has wings of fire, a child’s face and no intention of stopping.',
+        it: 'Questo serafino è costruito sul modello di un uomo-pesce e combatte con il karate degli uomini-pesce. Si immerge nel terreno come si nuota in mare, e riemerge sotto chi ha davanti. Ha ali nere con il fuoco dietro e la faccia di un bambino, e si ferma solo quando glielo ordina Shaka.',
+        en: 'This Seraphim is built on the pattern of a fish-man and fights with fish-man karate. It dives into the ground the way a man swims in the sea, and comes up underneath whoever it is fighting. It has black wings with fire behind them and a child’s face, and it stops only when Shaka orders it to.',
       },
       affiliation: [{ episode: 1095, value: SERAPHIM }],
-      origin: [{ episode: 1095, value: EGGHEAD }],
-      devilFruit: [{ episode: 1095, value: ['swim-swim-fruit'] }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
+      devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
+    // Edison, Pythagoras and York are filed at 1095, where they are first
+    // seen: at 1092 they are only shadows in the picture of the six that CP0
+    // is shown.
     'edison': {
       role: {
         it: 'Satellite di Vegapunk, Punk-03',
         en: 'Vegapunk satellite, Punk-03',
       },
       log: {
-        it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È alto il doppio di un uomo, ha una lampadina al posto della testa e la accende quando gli viene in mente qualcosa, il che succede spesso. Accoglie chi arriva nel laboratorio come si accoglie una visita gradita, e intanto continua a disegnare macchine su ogni superficie libera.',
-        en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He stands twice a man’s height, carries a bulb where a head should be, and lights it whenever something occurs to him, which is often. He welcomes arrivals into the laboratory the way one welcomes a guest, and goes on sketching machines across every free surface.',
+        it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È un piccolo robot, non più alto di un bambino, e le idee gli vengono così spesso che dice di non riuscire a fermarle. Guida i nuovi arrivati nel laboratorio dagli altoparlanti, poi abbandona il test che dovrebbe seguire per andare a disegnare progetti, e fa mangiare York al posto suo per non doversi fermare.',
+        en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He is a small robot, no taller than a child, and ideas come to him so often that he says he cannot stop them. He guides newcomers through the laboratory over the speakers, then walks out of the test he is meant to be watching to draw blueprints, and has York eat for him so he does not have to stop.',
       },
       affiliation: [
         {
-          episode: 1094,
+          episode: 1095,
           value: {
-            it: 'Satellite di Vegapunk, Punk-03 Think',
-            en: 'Vegapunk satellite, Punk-03 Think',
+            it: 'Satellite di Vegapunk, Punk-03 Thinker',
+            en: 'Vegapunk satellite, Punk-03 Thinker',
           },
         },
       ],
-      origin: [{ episode: 1094, value: EGGHEAD }],
-      epithet: [{ episode: 1094, value: { it: 'Think', en: 'Think' } }],
+      origin: [{ episode: 1095, value: EGGHEAD }],
+      epithet: [{ episode: 1095, value: { it: 'Thinker', en: 'Thinker' } }],
     },
     'pythagoras': {
       role: {
@@ -655,42 +662,42 @@ export const egghead: Saga = {
         en: 'Vegapunk satellite, Punk-04',
       },
       log: {
-        it: 'La quarta parte di Vegapunk è la memoria: conosce i numeri di ogni macchina dell’isola e li recita senza esitare. Ha un corpo squadrato, un viso che è uno schermo e braccia meccaniche che continuano a lavorare mentre parla. Quando qualcosa non torna nei dati di Egghead, è lui il primo ad accorgersene e a dirlo agli altri satelliti.',
-        en: 'The fourth part of Vegapunk is the memory: it knows the numbers of every machine on the island and recites them without pausing. It has a squared-off body, a screen for a face, and mechanical arms that keep working while it speaks. When something in Egghead’s readings does not add up, it is the first to notice and to say so.',
+        it: 'La quarta parte di Vegapunk è quella che raccoglie il sapere: durante un test legge ad alta voce ogni cifra che vede e ne trae subito le conclusioni. Ha una testa rotonda con una chiave da carica in cima, gli occhi assonnati e braccia e gambe fatte di aste di metallo pieghevoli. Piuttosto che perdere un secondo di dati buoni rinuncia ad andare in bagno, e lascia che ci vada York al posto suo.',
+        en: 'The fourth part of Vegapunk is the one that collects knowledge: during a test he reads out every figure he sees and draws conclusions from it on the spot. He has a round head with a wind-up key on top, sleepy-looking eyes, and arms and legs made of bendable metal rods. He would rather skip the bathroom than miss a second of good data, so he leaves that to York.',
       },
       affiliation: [
         {
-          episode: 1094,
+          episode: 1095,
           value: {
             it: 'Satellite di Vegapunk, Punk-04 Wisdom',
             en: 'Vegapunk satellite, Punk-04 Wisdom',
           },
         },
-        { episode: 1108, value: DESTROYED },
+        { episode: 1111, value: DESTROYED },
       ],
-      origin: [{ episode: 1094, value: EGGHEAD }],
-      epithet: [{ episode: 1094, value: { it: 'Wisdom', en: 'Wisdom' } }],
+      origin: [{ episode: 1095, value: EGGHEAD }],
+      epithet: [{ episode: 1095, value: { it: 'Wisdom', en: 'Wisdom' } }],
     },
     'atlas': {
       role: {
-        it: 'Satellite di Vegapunk, Punk-05',
-        en: 'Vegapunk satellite, Punk-05',
+        it: 'Il Vegapunk che rappresenta la violenza',
+        en: 'The Vegapunk that stands for violence',
       },
       log: {
-        it: 'La quinta parte di Vegapunk è quella che perde la pazienza per prima. Combatte con guanti d’acciaio spinti da razzi, che trasformano ogni suo colpo in una carica di ariete, e li usa anche per lavori che chiunque altro farebbe con un cacciavite. Fuori dal laboratorio gira per Egghead in cerca di qualcosa da rompere.',
-        en: 'The fifth part of Vegapunk is the one that loses patience first. She fights in rocket-driven steel gauntlets that turn every punch into a battering ram, and she uses them for jobs anyone else would do with a screwdriver. Outside the laboratory she roams Egghead looking for something worth breaking.',
+        it: 'Atlas è il Vegapunk che rappresenta la violenza, e perde la pazienza in fretta. I suoi guanti a pressione di luce le permettono di toccare la luce come se fosse solida, così può colpire un ologramma con la stessa forza di una persona. Costruisce anche le macchine dell’isola, dal condizionatore che tiene calda un’isola invernale a una macchina da cucina che serve cinquecento piatti, e si lamenta che nel mondo manchino i tecnici e i soldi per produrle in serie.',
+        en: 'Atlas is the Vegapunk that stands for violence, and she loses her temper fast. Her Light-Pressure Gloves let her touch light as if it were solid, so she can punch a hologram as hard as a person. She also builds the island’s machines, from the air conditioning that keeps a winter island warm to a cooking machine that serves five hundred dishes, and complains that the world lacks the technicians and the money to mass-produce them.',
       },
       affiliation: [
         {
-          episode: 1094,
+          episode: 1092,
           value: {
             it: 'Satellite di Vegapunk, Punk-05 Violence',
             en: 'Vegapunk satellite, Punk-05 Violence',
           },
         },
       ],
-      origin: [{ episode: 1094, value: EGGHEAD }],
-      epithet: [{ episode: 1094, value: { it: 'Violence', en: 'Violence' } }],
+      origin: [{ episode: 1091, value: EGGHEAD }],
+      epithet: [{ episode: 1091, value: { it: 'Violence', en: 'Violence' } }],
     },
     'york': {
       role: {
@@ -698,8 +705,8 @@ export const egghead: Saga = {
         en: 'Vegapunk satellite, Punk-06',
       },
       log: {
-        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia il doppio degli altri e si fa portare i piatti dove si trova. Sull’isola si occupa delle scorte e della manutenzione, quando qualcuno riesce a svegliarla. Gli altri cinque la trattano come la sorella più piccola e più fastidiosa, e lei non se ne lamenta.',
-        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats twice what the others do and has the plates brought to wherever she happens to be. On the island she handles stores and maintenance, when somebody manages to wake her. The other five treat her as the smallest and most annoying sister, and she does not mind.',
+        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare, e in un solo giorno lei mangia, va in bagno e dorme quattro volte.',
+        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming, and in a single day she eats, goes to the bathroom and sleeps four times over.',
       },
       affiliation: [
         {
@@ -712,8 +719,15 @@ export const egghead: Saga = {
         {
           episode: 1111,
           value: {
-            it: 'Traditrice, alleata dei Cinque Astri di Saggezza',
-            en: 'Traitor, ally of the Five Elders',
+            it: 'Traditrice degli altri Vegapunk',
+            en: 'Traitor to the other Vegapunks',
+          },
+        },
+        {
+          episode: 1123,
+          value: {
+            it: 'Traditrice, in combutta con i Cinque Astri di Saggezza',
+            en: 'Traitor, in league with the Five Elders',
           },
         },
       ],
@@ -723,8 +737,8 @@ export const egghead: Saga = {
     'jaygarcia-saturn': {
       role: ELDER_ROLE,
       log: {
-        it: 'I cinque che decidono per il mondo non lasciano quasi mai Mary Geoise, e questo scende su Egghead perché la faccenda del laboratorio è troppo grossa per un ordine dato a distanza. Ha la barba lunga, il cilindro e un bastone, e i marine di grado più alto gli parlano a testa bassa. Sotto il cappotto non c’è un vecchio: c’è qualcosa con le zampe.',
-        en: 'The five who decide for the world almost never leave Mary Geoise, and this one comes down to Egghead because the matter of the laboratory is too large for an order sent from a distance. He has a long beard, a top hat and a cane, and the highest-ranking Marines speak to him with their heads lowered. Under the coat there is no old man: there is something with legs.',
+        it: 'Finora i cinque che decidono per il mondo non si erano mai visti fuori da Mary Geoise. Questo naviga verso Egghead sulla nave dell’ammiraglio Kizaru, dove è l’ammiraglio in persona a servirgli il tè e i dolci vengono prima controllati per escludere il veleno. Ha una lunga barba bianca, una cicatrice sull’occhio sinistro, un piccolo cappello nero e un bastone. Dice di aver incontrato Vegapunk una volta sola, molto tempo fa, e che quello che è successo è un peccato.',
+        en: 'Until now the five who decide for the world have never been seen outside Mary Geoise. This one sails toward Egghead on Admiral Kizaru’s ship, where the admiral brings him his tea himself and the cakes are checked for poison first. He has a long white beard, a scar across his left eye, a small black hat and a cane. He says he met Vegapunk once, a long time ago, and that what has happened is a shame.',
       },
       status: [
         { episode: 1105, value: 'alive' },
@@ -745,38 +759,40 @@ export const egghead: Saga = {
       ],
       origin: [{ episode: 1105, value: MARY_GEOISE }],
     },
+    // Filed at 1129, the caption "EMPORIO IVANKOV AND GINNY, SLAVES". She
+    // lives in Sorbet from 1130 but is not from there: Porco Kingdom comes
+    // from her Vivre Card alone, so there is no origin line. The anime
+    // caption at 1131 makes her a captain, not a commander.
     'ginny': {
-      role: { it: 'Amica d’infanzia di Kuma', en: 'Kuma’s childhood friend' },
+      role: { it: 'Schiava a God Valley', en: 'Slave at God Valley' },
       log: {
-        it: 'Cresce nella stessa chiesa del Regno di Sorbet in cui finisce Kuma, in mezzo a bambini che nessuno è venuto a riprendere. È la più sfacciata di tutti e la prima a difendere chi viene trattato male, e canta per i malati che il prete accoglie. Quando arriva un bambino che non parla con nessuno, decide che a lui ci penserà lei.',
-        en: 'She grows up in the same Sorbet Kingdom church that takes Kuma in, among children nobody ever came back for. She is the boldest of them and the first to stand up for anyone treated badly, and she sings for the sick the priest shelters. When a boy arrives who will not speak to anyone, she decides on the spot that he is hers to look after.',
+        it: 'È una degli schiavi portati a God Valley per la gara di caccia dei Draghi Celesti. Quando gli altri schiavi trascinano indietro il bambino bucaniere che ha cercato di scappare, lei e un giovane Ivankov, che chiama fratellone, li fermano. Dicono agli schiavi che hanno tutti l’aria infelice e chiedono se vogliono morire o vivere. Se gli altri li seguono, dicono, hanno un piano magnifico.',
+        en: 'She is one of the slaves brought to God Valley for the Celestial Dragons’ hunting competition. When the other slaves drag back the Buccaneer boy who tried to run, she and a young Ivankov, whom she calls her big bro, stop them. They tell the slaves they all look miserable and ask whether they want to die or to live. If the others follow them, they say, they have a great plan.',
       },
       status: [
-        { episode: 1112, value: 'alive' },
+        { episode: 1129, value: 'alive' },
         { episode: 1132, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 1112,
+          episode: 1129,
           value: {
-            it: 'Regno di Sorbet, amica d’infanzia di Kuma',
-            en: 'Sorbet Kingdom, Kuma’s childhood friend',
+            it: 'Schiava dei Draghi Celesti',
+            en: 'Slave of the Celestial Dragons',
           },
         },
         {
-          episode: 1117,
+          episode: 1130,
           value: {
-            it: 'Armata Rivoluzionaria, comandante dell’Armata dell’Est',
-            en: 'Revolutionary Army, East Army commander',
+            it: 'Regno di Sorbet; un tempo schiava dei Draghi Celesti',
+            en: 'Sorbet Kingdom; formerly a slave of the Celestial Dragons',
           },
         },
-      ],
-      origin: [
         {
-          episode: 1112,
+          episode: 1131,
           value: {
-            it: 'Regno di Sorbet, South Blue',
-            en: 'Sorbet Kingdom, South Blue',
+            it: 'Armata Rivoluzionaria, capitano dell’Armata dell’Est',
+            en: 'Revolutionary Army, East Army captain',
           },
         },
       ],
@@ -784,70 +800,70 @@ export const egghead: Saga = {
     'marcus-mars': {
       role: ELDER_ROLE,
       log: {
-        it: 'Per anni i cinque sono stati solo sagome sedute in una stanza di Mary Geoise, e su Egghead scendono in carne e ossa per chiudere la faccenda di persona. Questo porta gli occhiali e i capelli lunghi, e quando gli serve si apre in un uccello enorme dagli artigli spropositati. Le ferite che riceve si richiudono mentre chi lo guarda sta ancora guardando.',
-        en: 'For years the five were only silhouettes seated in a room at Mary Geoise, and on Egghead they come down in the flesh to settle the matter themselves. This one wears glasses and long hair, and when it suits him he opens out into an enormous bird with outsized talons. The wounds he takes close again while the people watching are still watching.',
+        it: 'Siede con gli altri quattro nella loro stanza del castello di Pangaea, a Mary Geoise, quando Imu chiama per far provare la Fiamma Madre di Vegapunk sul Regno di Lulusia. È Mars a far notare che il popolo di Lulusia mostra segni di rivolta. Quando Sabo li ha attaccati per Cobra, si è trasformato con gli altri in un’enorme sagoma nel buio.',
+        en: 'He sits with the other four in their room in Pangaea Castle, at Mary Geoise, when Imu calls to have Vegapunk’s Mother Flame tried out on the Kingdom of Lulusia. Mars is the one who points out that the people of Lulusia have been showing signs of revolt. When Sabo attacked them over Cobra, he changed with the others into a huge shape in the dark.',
       },
       affiliation: [
         {
-          episode: 1122,
+          episode: 1120,
           value: {
             it: 'Cinque Astri di Saggezza, Dio Guerriero dell’Ambiente',
             en: 'Five Elders, Warrior God of Environment',
           },
         },
       ],
-      origin: [{ episode: 1122, value: MARY_GEOISE }],
+      origin: [{ episode: 1120, value: MARY_GEOISE }],
     },
     'topman-warcury': {
       role: ELDER_ROLE,
       log: {
-        it: 'Scende su Egghead insieme agli altri quattro e parla poco: per lui la giustizia è quello che decidono loro, e non c’è nulla da discutere. Quando cambia forma diventa una massa di zanne e setole che attraversa le pareti del laboratorio senza rallentare. I colpi che lo prendono in pieno lo lasciano dov’era, in piedi.',
-        en: 'He comes down on Egghead with the other four and says little: justice is whatever the five decide, and there is nothing in it to discuss. When he changes shape he becomes a mass of tusks and bristles that goes through the laboratory walls without slowing. Blows that land squarely leave him standing where he was.',
+        it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia come luogo in cui provare la Fiamma Madre di Vegapunk, abitanti compresi. Il suo unico commento è che servirà da lezione per tutti. Porta il titolo di Dio Guerriero della Giustizia.',
+        en: 'He sits with the other four in their room at Mary Geoise when Imu chooses the Kingdom of Lulusia as the place to test Vegapunk’s Mother Flame, people and all. His only comment is that it will serve as a good lesson for everyone. He holds the title of Warrior God of Justice.',
       },
       affiliation: [
         {
-          episode: 1122,
+          episode: 1120,
           value: {
             it: 'Cinque Astri di Saggezza, Dio Guerriero della Giustizia',
             en: 'Five Elders, Warrior God of Justice',
           },
         },
       ],
-      origin: [{ episode: 1122, value: MARY_GEOISE }],
+      origin: [{ episode: 1120, value: MARY_GEOISE }],
     },
     'ethanbaron-v-nusjuro': {
       role: ELDER_ROLE,
       log: {
-        it: 'È il più silenzioso dei cinque e il primo a sguainare: porta una katana più alta di un uomo e la usa con un colpo solo, dall’alto verso il basso. Sotto il cappotto la sua forma è quella di un cavallo pallido, e sull’isola nessuno le resta davanti a lungo. Quando apre bocca, parla di quanto costerà rimettere tutto a posto.',
-        en: 'He is the quietest of the five and the first to draw: he carries a katana taller than a man and uses it in a single downward stroke. Under the coat his shape is that of a pale horse, and nobody on the island stands in front of it for long. When he does speak, he speaks about what all this will cost to put right.',
+        it: 'È l’unico dei cinque a non portare un completo, e tiene la spada in mano: quando gli altri hanno puntato le pistole su Cobra, lui l’ha sguainata. Quando Imu ordina di provare la Fiamma Madre di Vegapunk sul Regno di Lulusia, lui pensa già al giorno in cui quel potere sarà a loro disposizione.',
+        en: 'He is the only one of the five who wears no suit, and he keeps his sword in his hand: when the others drew pistols on Cobra, he drew it. When Imu orders Vegapunk’s Mother Flame tried out on the Kingdom of Lulusia, he is already thinking of the day that power will be theirs to use.',
       },
       affiliation: [
         {
-          episode: 1122,
+          episode: 1120,
           value: {
             it: 'Cinque Astri di Saggezza, Dio Guerriero della Finanza',
             en: 'Five Elders, Warrior God of Finance',
           },
         },
       ],
-      origin: [{ episode: 1122, value: MARY_GEOISE }],
+      origin: [{ episode: 1120, value: MARY_GEOISE }],
     },
     'shepherd-ju-peter': {
       role: ELDER_ROLE,
       log: {
-        it: 'Arriva su Egghead con gli altri quattro e si muove più sotto il pavimento che sopra: la sua forma è un verme enorme, un anello di denti che apre voragini nelle strutture dell’isola. Chi gli passa davanti finisce dentro, e il laboratorio comincia a perdere pezzi interi. Il cappello a tesa larga resta l’unica cosa che lo rende riconoscibile.',
-        en: 'He arrives on Egghead with the other four and spends more time under the floor than above it: his shape is an enormous worm, a ring of teeth that opens holes through the island’s structures. Whatever passes in front of it goes inside, and the laboratory starts losing whole sections. The wide-brimmed hat is the one thing that still identifies him.',
+        it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia per provare la Fiamma Madre di Vegapunk. Ha il viso più giovane dei cinque e l’ultima parola: quando quel potere sarà loro, dice, la lunga battaglia finirà.',
+        en: 'He sits with the other four in their room at Mary Geoise when Imu picks the Kingdom of Lulusia to test Vegapunk’s Mother Flame on. He has the youngest face of the five, and the last word: once that power is theirs, he says, the long battle will come to an end.',
       },
       affiliation: [
         {
-          episode: 1122,
+          episode: 1120,
           value: {
             it: 'Cinque Astri di Saggezza, Dio Guerriero dell’Agricoltura',
             en: 'Five Elders, Warrior God of Agriculture',
           },
         },
       ],
-      origin: [{ episode: 1122, value: MARY_GEOISE }],
+      origin: [{ episode: 1120, value: MARY_GEOISE }],
     },
     // SWORD is dated at 1114, the caption "HIBARI, NAVY HQ COMMANDER
     // (SWORD)": her 1090 caption gives the rank only, and the show first
@@ -971,8 +987,8 @@ export const egghead: Saga = {
         en: 'Queen of Alabasta, eight hundred years ago',
       },
       log: {
-        it: 'Ottocento anni fa venti sovrani fondarono il Governo Mondiale, trasferirono le loro famiglie a Mary Geoise e diventarono i Draghi Celesti. La regina di Alabasta era una dei venti, e l’unica a non restare: ripartì per il suo paese, ed è per questo che laggiù regna ancora la famiglia Nefertari. Secondo Cobra non arrivò mai, e dopo di lei regnò il fratello minore. Nessun libro scritto dopo il Secolo Vuoto riporta il suo nome.',
-        en: 'Eight hundred years ago twenty monarchs founded the World Government, moved their families to Mary Geoise and became the Celestial Dragons. The queen of Alabasta was one of the twenty, and the only one who did not stay: she set off for her own country, which is why the Nefertari family still reigns there. According to Cobra she never arrived, and her younger brother ruled after her. No book written after the Void Century records her name.',
+        it: 'Ottocento anni fa venti sovrani fondarono il Governo Mondiale, trasferirono le loro famiglie a Mary Geoise e diventarono i Draghi Celesti. La regina di Alabasta era una dei venti, e l’unica a non restare: ripartì per il suo paese, ed è per questo che laggiù regna ancora la famiglia Nefertari. Secondo Cobra non arrivò mai, e dopo di lei regnò il fratello minore. Il suo nome non compare in nessuno dei libri successivi al Secolo Vuoto che Cobra è riuscito a leggere.',
+        en: 'Eight hundred years ago twenty monarchs founded the World Government, moved their families to Mary Geoise and became the Celestial Dragons. The queen of Alabasta was one of the twenty, and the only one who did not stay: she set off for her own country, which is why the Nefertari family still reigns there. According to Cobra she never arrived, and her younger brother ruled after her. Her name appears in none of the books from after the Void Century that Cobra has been able to read.',
       },
       status: [{ episode: 1118, value: 'missing' }],
       affiliation: [
@@ -1030,7 +1046,7 @@ export const egghead: Saga = {
       chronicle: eggheadChronicles.bluegrass,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Dice di aver mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
+        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Dice di essere un’umana pilota che ha mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
         en: 'She is one of the vice admirals who land on Egghead with the Marine fleet, a small old woman with headphones on her head and her coat over her shoulders. Whatever she rides obeys her: a Pacifista the laboratory has turned against the Marines still answers to her while she sits on its back, whatever the authority hierarchy says. She calls herself a Driving Human who ate the Ride-Ride Fruit, and she wants the pirate girl who changed her men’s ages to change them back.',
       },
       status: [{ episode: 1128, value: 'alive' }],
@@ -1040,7 +1056,11 @@ export const egghead: Saga = {
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
-      devilFruit: [{ episode: 1128, value: ['ride-ride-fruit'] }],
+      // Pinned at 1094, where the manga names her and the fruit: Pomsky,
+      // named only at 1108, would otherwise hold the fruit there.
+      devilFruit: [
+        { episode: 1128, chapter: 1094, value: ['ride-ride-fruit'] },
+      ],
     },
     // No `devilFruit` line: the otter form is on screen from 1128, but the
     // fruit (the Ott-Ott Fruit) is named only in SBS volume 110, never in an
@@ -1069,8 +1089,8 @@ export const egghead: Saga = {
       chronicle: eggheadChronicles.clapp,
       role: { it: 'Padre di Kuma', en: 'Kuma’s father' },
       log: {
-        it: 'Quando nasce suo figlio, il medico capisce che si tratta del sangue del bambino e promette di non dirlo a nessuno. Anni dopo lo stesso medico corre ad avvisarlo che al suo ospedale sono arrivati gli uomini del Governo. Klap li supplica di prendere solo lui, perché il sangue dei Bucanieri ce l’ha lui e non sua moglie, ma li portano via tutti e tre come schiavi. Quando la moglie muore, dice a Kuma di resistere e sopravvivere finché Nika non verrà a liberarlo.',
-        en: 'When his son is born, the doctor guesses it is about the baby’s blood and promises never to tell. Years later the same doctor runs in to warn him that Government men have come to the hospital. Clapp begs them to take only him, since he alone has Buccaneer blood and his wife does not, but all three are taken as slaves. When his wife dies, he tells Kuma to endure and survive until Nika comes to set him free.',
+        it: 'Quando nasce suo figlio, il medico promette di non dire mai a nessuno del sangue del bambino. Anni dopo lo stesso medico corre ad avvisarlo che al suo ospedale sono arrivati gli uomini del Governo. Klap li supplica di prendere solo lui, perché il sangue dei Bucanieri ce l’ha lui e non sua moglie, ma li portano via tutti e tre come schiavi. Quando la moglie muore, dice a Kuma di resistere e sopravvivere finché Nika non verrà a liberarlo.',
+        en: 'When his son is born, the doctor promises never to tell anyone about the baby’s blood. Years later the same doctor runs in to warn him that Government men have come to the hospital. Clapp begs them to take only him, since he alone has Buccaneer blood and his wife does not, but all three are taken as slaves. When his wife dies, he tells Kuma to endure and survive until Nika comes to set him free.',
       },
       status: [{ episode: 1129, value: 'deceased' }],
       affiliation: [
@@ -1137,8 +1157,8 @@ export const egghead: Saga = {
         en: 'Former queen dowager of Sorbet',
       },
       log: {
-        it: 'È la madre di Bulldog, che era re di Sorbet due regni fa e che ora governa il paese dal palazzo per conto di re Kuma. Arriva con il figlio alla chiesa di Kuma proprio mentre Bonney ha appena scoperto di poter cambiare età, e Gyogyo scambia quella vecchina rugosa per la bambina invecchiata; lei risponde che non importa. Bulldog porta la notizia che Bekori tornerà con la Marina, e prima di partire Kuma dice a Bonney di ascoltare Bulldog e Conney.',
-        en: 'She is the mother of Bulldog, who was king of Sorbet two reigns ago and now runs the country from the palace for King Kuma. She comes with her son to Kuma’s church just as Bonney has found out she can change her age, and Gyogyo takes the wrinkled little woman for the girl grown old; she tells them it is fine. Bulldog brings word that Bekori will come back with the Navy, and before he leaves Kuma tells Bonney to listen to Bulldog and Conney.',
+        it: 'È la madre di Bulldog, che era re di Sorbet due regni fa e che ora governa il paese dal palazzo per conto di re Kuma. Arriva con il figlio alla chiesa di Kuma proprio mentre Bonney ha appena scoperto di poter cambiare età, e Gyogyo scambia quella vecchina rugosa per la bambina invecchiata; lei risponde che non importa. Bulldog porta la notizia che Bekori tornerà con le navi da guerra, e prima di partire Kuma dice a Bonney di ascoltare Bulldog e Conney.',
+        en: 'She is the mother of Bulldog, who was king of Sorbet two reigns ago and now runs the country from the palace for King Kuma. She comes with her son to Kuma’s church just as Bonney has found out she can change her age, and Gyogyo takes the wrinkled little woman for the girl grown old; she tells them it is fine. Bulldog brings word that Bekori will come back with warships, and before he leaves Kuma tells Bonney to listen to Bulldog and Conney.',
       },
       status: [{ episode: 1133, value: 'alive' }],
       affiliation: [
