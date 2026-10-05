@@ -1093,7 +1093,9 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 392, value: { it: 'Capitan Kid', en: 'Captain Kid' } },
       ],
-      devilFruit: [{ episode: 1040, value: ['magnet-magnet-fruit'] }],
+      devilFruit: [
+        { episode: 1058, chapter: 1031, value: ['magnet-magnet-fruit'] },
+      ],
       bounty: [
         { episode: 392, value: 315_000_000 },
         { episode: 603, value: 470_000_000 },
@@ -1436,7 +1438,8 @@ export const summitWar: Saga = {
       ],
       devilFruit: [
         {
-          episode: 402,
+          episode: 923,
+          chapter: 929,
           value: ['dragon-dragon-fruit-ancient-model-allosaurus'],
         },
       ],
@@ -1539,7 +1542,7 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 392, value: { it: 'la Divoratrice', en: 'Big Eater' } },
       ],
-      devilFruit: [{ episode: 1099, value: ['age-age-fruit'] }],
+      devilFruit: [{ episode: 1133, chapter: 1099, value: ['age-age-fruit'] }],
       bounty: [
         { episode: 392, value: 140_000_000 },
         { episode: 1089, value: 320_000_000 },
@@ -1569,7 +1572,9 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 401, value: { it: 'Kizaru', en: 'Kizaru' } }],
-      devilFruit: [{ episode: 401, value: ['glint-glint-fruit'] }],
+      devilFruit: [
+        { episode: 404, chapter: 511, value: ['glint-glint-fruit'] },
+      ],
     },
     'sentomaru': {
       role: { it: 'Guardia del corpo', en: 'Bodyguard' },

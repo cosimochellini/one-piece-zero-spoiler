@@ -960,7 +960,7 @@ export const dressrosa: Saga = {
         },
       ],
       epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
-      devilFruit: [{ episode: 584, value: ['gas-gas-fruit'] }],
+      devilFruit: [{ episode: 594, chapter: 664, value: ['gas-gas-fruit'] }],
       bounty: [{ episode: 589, value: 300_000_000 }],
     },
     'monet': {
@@ -985,7 +985,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 586, value: ['snow-snow-fruit'] }],
+      devilFruit: [{ episode: 611, chapter: 685, value: ['snow-snow-fruit'] }],
     },
     'vergo': {
       role: { it: 'Vecchia conoscenza di Law', en: 'Law’s old acquaintance' },
@@ -1061,7 +1061,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 608, value: ['arms-arms-fruit'] }],
+      devilFruit: [{ episode: 620, chapter: 692, value: ['arms-arms-fruit'] }],
     },
     'buffalo': {
       role: {
@@ -1523,7 +1523,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 641, value: ['hobby-hobby-fruit'] }],
+      devilFruit: [
+        { episode: 663, chapter: 731, value: ['hobby-hobby-fruit'] },
+      ],
     },
     'diamante': {
       role: DONQUIXOTE_ELITE_ROLE,
@@ -1546,7 +1548,9 @@ export const dressrosa: Saga = {
           value: { it: 'Eroe del Colosseo', en: 'Hero of the Colosseum' },
         },
       ],
-      devilFruit: [{ episode: 633, value: ['ripple-ripple-fruit'] }],
+      devilFruit: [
+        { episode: 668, chapter: 736, value: ['ripple-ripple-fruit'] },
+      ],
     },
     'pica': {
       role: DONQUIXOTE_ELITE_ROLE,
@@ -1563,7 +1567,9 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 633, value: ['stone-stone-fruit'] }],
+      devilFruit: [
+        { episode: 669, chapter: 737, value: ['stone-stone-fruit'] },
+      ],
     },
     'senor-pink': {
       role: {
@@ -1575,7 +1581,7 @@ export const dressrosa: Saga = {
         en: 'He turns up in a dark suit, sunglasses and a bib, and nobody in Dressrosa dares point out the contrast. He crosses the ground with swimming strokes, vanishes under the cobbles and surfaces behind whoever was looking for him. The women of the city find him wonderful and shout so after him, and he never once loses his composure.',
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
-      devilFruit: [{ episode: 635, value: ['swim-swim-fruit'] }],
+      devilFruit: [{ episode: 667, chapter: 735, value: ['swim-swim-fruit'] }],
     },
     'dellinger': {
       role: {
@@ -1606,7 +1612,7 @@ export const dressrosa: Saga = {
         en: 'He is as wide as two men and moves like someone in no hurry, because nobody dodges him when he comes down from above. He raises the weight of his own body at will and flattens whatever is underneath without even throwing a punch. He is one of the officers watching over the colosseum, and waits his turn laughing at the crowd’s bets.',
       },
       affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
-      devilFruit: [{ episode: 635, value: ['ton-ton-fruit'] }],
+      devilFruit: [{ episode: 682, chapter: 747, value: ['ton-ton-fruit'] }],
     },
     'jora': {
       role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
@@ -1623,7 +1629,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 635, value: ['art-art-fruit'] }],
+      devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
     },
     'orlumbus': {
       role: {
@@ -1666,7 +1672,7 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 640, value: ['pop-pop-fruit'] }],
+      devilFruit: [{ episode: 673, chapter: 740, value: ['pop-pop-fruit'] }],
     },
     'leo': {
       role: { it: 'Capo del Corpo Tonta', en: 'Leader of the Tonta Corps' },
@@ -1739,7 +1745,7 @@ export const dressrosa: Saga = {
           value: { it: 'Green Bit, Dressrosa', en: 'Green Bit, Dressrosa' },
         },
       ],
-      devilFruit: [{ episode: 675, value: ['heal-heal-fruit'] }],
+      devilFruit: [{ episode: 714, chapter: 774, value: ['heal-heal-fruit'] }],
     },
     'kanjuro': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
@@ -1839,7 +1845,8 @@ export const dressrosa: Saga = {
       ],
       devilFruit: [
         {
-          episode: 912,
+          episode: 1014,
+          chapter: 999,
           value: ['fish-fish-fruit-mythical-model-azure-dragon'],
         },
       ],

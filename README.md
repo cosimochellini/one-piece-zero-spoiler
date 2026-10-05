@@ -336,6 +336,7 @@ command.
 | `npm run gate:fallow`                       | Blocking fallow codebase-intelligence gate      |
 | `npm run gate:archive`                      | Blocking gate: the archive is not in the bundle |
 | `npm run check`                             | All of the above, in the order CI runs it       |
+| `npm run verify:chapters`                   | Thresholds against the One Piece Wiki (network) |
 
 `npm run check` is the gate. Run it before pushing.
 
@@ -436,8 +437,9 @@ to the code they explain, and this README stays short.
 
 ## Next
 
-- [ ] Verify the manga chapter thresholds against a source. They were entered
-      from memory and are marked for a check.
+- [x] Verify the manga chapter thresholds against a source. Every record is now
+      held to the One Piece Wiki's first chapter by `npm run verify:chapters`,
+      which fails on a chapter filed below it.
 - [ ] More places with full pages: 39 places have one today, across 34 arcs.
 - [ ] Chronicles for the rest of the featured characters: 12 of the 36 have one
       today, the crew and the two key figures of the first half of the story.

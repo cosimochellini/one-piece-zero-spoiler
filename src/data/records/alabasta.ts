@@ -483,7 +483,7 @@ export const alabasta: Saga = {
       id: 'kohza',
       kind: 'character',
       revealedAtEpisode: 93,
-      revealedAtChapter: 162,
+      revealedAtChapter: 163,
       name: { it: 'Kosa', en: 'Kohza' },
       summary: {
         it: 'Il capo dell’esercito ribelle, un uomo con gli occhialoni sulla fronte che da bambino giocava con la principessa che ora combatte.',
@@ -975,7 +975,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 78, value: ['clone-clone-fruit'] }],
+      devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
     'dalton': {
       role: {
@@ -1000,7 +1000,9 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 80, value: DRUM_ISLAND }],
-      devilFruit: [{ episode: 80, value: ['ox-ox-fruit-model-bison'] }],
+      devilFruit: [
+        { episode: 82, chapter: 136, value: ['ox-ox-fruit-model-bison'] },
+      ],
     },
     'mr-11': {
       role: BW_AGENT_ROLE,
@@ -1071,7 +1073,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 83, value: ['human-human-fruit'] }],
+      devilFruit: [{ episode: 84, chapter: 140, value: ['human-human-fruit'] }],
       bounty: [
         { episode: 320, value: 50 },
         { episode: 746, value: 100 },
@@ -1263,7 +1265,9 @@ export const alabasta: Saga = {
       epithet: [
         { episode: 93, value: { it: 'Pell il Falco', en: 'Falcon Pell' } },
       ],
-      devilFruit: [{ episode: 93, value: ['bird-bird-fruit-model-falcon'] }],
+      devilFruit: [
+        { episode: 106, chapter: 169, value: ['bird-bird-fruit-model-falcon'] },
+      ],
     },
     'chaka': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
@@ -1287,7 +1291,9 @@ export const alabasta: Saga = {
           value: { it: 'Chaka lo Sciacallo', en: 'Jackal Chaka' },
         },
       ],
-      devilFruit: [{ episode: 93, value: ['dog-dog-fruit-model-jackal'] }],
+      devilFruit: [
+        { episode: 120, chapter: 196, value: ['dog-dog-fruit-model-jackal'] },
+      ],
     },
     'portgas-d-ace': {
       chronicle: alabastaChronicles['portgas-d-ace'],
@@ -1360,7 +1366,7 @@ export const alabasta: Saga = {
         { episode: 422, value: IMPEL_DOWN },
         { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
       ],
-      devilFruit: [{ episode: 103, value: ['dice-dice-fruit'] }],
+      devilFruit: [{ episode: 116, chapter: 190, value: ['dice-dice-fruit'] }],
     },
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
@@ -1369,7 +1375,9 @@ export const alabasta: Saga = {
         en: 'She arrives in high heels with a cigarette and seems the calmest person in the organisation until steel spikes come out of her hands, her shoulders and her heels. She uses them as stilts too, to walk above the heads of whoever is chasing her. She works beside the highest-ranked agent and puts up with his silences.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
-      devilFruit: [{ episode: 103, value: ['spike-spike-fruit'] }],
+      devilFruit: [
+        { episode: 117, chapter: 190, value: ['spike-spike-fruit'] },
+      ],
     },
     'mr-4': {
       role: BW_OFFICER_ROLE,
@@ -1386,7 +1394,7 @@ export const alabasta: Saga = {
         en: 'She is a small elderly woman who turns into a mole and digs beneath the city faster than anyone walks above it. She collapses the ground under her enemies and comes up behind them laughing. She works with an extremely slow agent and keeps his pace by speaking for him.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
-      devilFruit: [{ episode: 103, value: ['mole-mole-fruit'] }],
+      devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
     },
     'toto': {
       role: { it: 'Abitante di Yuba', en: 'Resident of Yuba' },

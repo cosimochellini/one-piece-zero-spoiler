@@ -140,7 +140,7 @@ export const skypiea: Saga = {
       id: 'sengoku',
       kind: 'character',
       revealedAtEpisode: 151,
-      revealedAtChapter: 233,
+      revealedAtChapter: 234,
       name: { it: 'Sengoku', en: 'Sengoku' },
       summary: {
         it: 'Il grand’ammiraglio della Marina, che presiede la riunione della Flotta dei Sette con una capra al fianco che si mangia i documenti.',
@@ -626,7 +626,9 @@ export const skypiea: Saga = {
       ],
       origin: [{ episode: 146, value: { it: 'North Blue', en: 'North Blue' } }],
       epithet: [{ episode: 146, value: { it: 'La Iena', en: 'the Hyena' } }],
-      devilFruit: [{ episode: 146, value: ['spring-spring-fruit'] }],
+      devilFruit: [
+        { episode: 151, chapter: 232, value: ['spring-spring-fruit'] },
+      ],
       bounty: [
         { episode: 146, value: 55_000_000 },
         { episode: 635, value: 195_000_000 },
@@ -1148,7 +1150,9 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [{ episode: 158, value: { it: 'Dio', en: 'God' } }],
-      devilFruit: [{ episode: 158, value: ['rumble-rumble-fruit'] }],
+      devilFruit: [
+        { episode: 175, chapter: 266, value: ['rumble-rumble-fruit'] },
+      ],
     },
     'satori': {
       role: ENEL_PRIEST,

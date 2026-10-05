@@ -869,6 +869,7 @@ export const wano: Saga = {
       devilFruit: [
         {
           episode: 927,
+          chapter: 933,
           value: ['snake-snake-fruit-mythical-model-yamata-no-orochi'],
         },
       ],
@@ -1308,7 +1309,8 @@ export const wano: Saga = {
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
-          episode: 982,
+          episode: 990,
+          chapter: 983,
           value: ['dragon-dragon-fruit-ancient-model-pachycephalosaurus'],
         },
       ],
@@ -1331,7 +1333,8 @@ export const wano: Saga = {
       ],
       devilFruit: [
         {
-          episode: 982,
+          episode: 1013,
+          chapter: 998,
           value: ['cat-cat-fruit-ancient-model-sabre-tooth-tiger'],
         },
       ],
@@ -1345,7 +1348,8 @@ export const wano: Saga = {
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
-          episode: 982,
+          episode: 1013,
+          chapter: 998,
           value: ['spider-spider-fruit-ancient-model-rosamygale-grauvogeli'],
         },
       ],
@@ -1359,7 +1363,8 @@ export const wano: Saga = {
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
-          episode: 982,
+          episode: 1013,
+          chapter: 998,
           value: ['dragon-dragon-fruit-ancient-model-triceratops'],
         },
       ],

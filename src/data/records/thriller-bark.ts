@@ -340,7 +340,9 @@ export const thrillerBark: Saga = {
           value: { it: 'Principessa Fantasma', en: 'Ghost Princess' },
         },
       ],
-      devilFruit: [{ episode: 340, value: ['hollow-hollow-fruit'] }],
+      devilFruit: [
+        { episode: 356, chapter: 461, value: ['hollow-hollow-fruit'] },
+      ],
     },
     'lola': {
       role: { it: 'Sposa zombie', en: 'Zombie bride' },
@@ -415,7 +417,9 @@ export const thrillerBark: Saga = {
       epithet: [
         { episode: 341, value: { it: 'Il Cimitero', en: 'the Graveyard' } },
       ],
-      devilFruit: [{ episode: 341, value: ['clear-clear-fruit'] }],
+      devilFruit: [
+        { episode: 359, chapter: 464, value: ['clear-clear-fruit'] },
+      ],
     },
     'hogback': {
       role: { it: 'Chirurgo', en: 'Surgeon' },
