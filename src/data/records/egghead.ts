@@ -143,8 +143,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1069,
       name: { it: 'S-Hawk', en: 'S-Hawk' },
       summary: {
-        it: 'Un serafino con la faccia da bambino e una grande spada a forma di croce, che nell’aspetto ricorda il più grande spadaccino del mondo.',
-        en: 'A Seraphim with a child’s face and a large cross-shaped sword, whose looks recall the greatest swordsman in the world.',
+        it: 'Un serafino con la faccia da bambino e una grande spada a forma di croce.',
+        en: 'A Seraphim with a child’s face and a large cross-shaped sword.',
       },
       visual: { art: 's-hawk', tint: 'ocher' },
     },
