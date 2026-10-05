@@ -20,7 +20,6 @@ describe('HomeFold', () => {
       <HomeFold
         band={0}
         saga={saga}
-        unset={bookmark === null}
       />,
       { bookmark },
     )

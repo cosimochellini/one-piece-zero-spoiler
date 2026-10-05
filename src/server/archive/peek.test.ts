@@ -5,7 +5,13 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type { CoveredRecord, RecordView, Slot } from '~/lib/view/records'
 
 import { handleOf } from './handle.server'
-import { peekCharacter, peekDossier, peekPort, peekRecord } from './peek.server'
+import {
+  peekCharacter,
+  peekDossier,
+  peekPort,
+  peekRecord,
+  peekWaypoint,
+} from './peek.server'
 
 const law = 'trafalgar-law'
 const lawHandle = handleOf(law)
@@ -34,6 +40,7 @@ describe('a record lifted by hand', () => {
       kind: 'character',
       name: 'Trafalgar Law',
     })
+    expect(peekWaypoint(lawHandle, 'en', null)?.summary).toBe(lawSummary)
     expect(peekCharacter(lawHandle, 'en', null)).not.toHaveProperty('summary')
     expect(peekDossier(lawHandle, 'en', null)?.summary).toBe(lawSummary)
     expect(peekRecord(lawHandle, 'en', null)).not.toHaveProperty('role')
@@ -80,6 +87,7 @@ describe('a record lifted by hand', () => {
 
   it('answers nothing at all to anything it did not mint', () => {
     for (const rubbish of ['', 'nami', 'zzzzzz', '-1', '../etc']) {
+      expect(peekWaypoint(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekCharacter(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekRecord(rubbish, 'en', null), rubbish).toBeUndefined()
       expect(peekDossier(rubbish, 'en', null), rubbish).toBeUndefined()

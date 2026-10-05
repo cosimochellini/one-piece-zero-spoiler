@@ -5,9 +5,12 @@ import type { ReactElement } from 'react'
 import { HomeCast } from '~/components/HomeCast'
 import { HomeFold } from '~/components/HomeFold'
 import { HomeMoreStories, HomeStories } from '~/components/HomeStories'
+import { SeaChartLanding } from '~/components/SeaChartLanding'
 import { isLocale } from '~/i18n/locales'
+import type { HomeView } from '~/lib/view/records'
 import { describeNamedPage } from '~/routes/$locale/-head'
-import { loadHome } from '~/server/api'
+import { usePeek } from '~/routes/$locale/-peek'
+import { liftWaypoint, loadHome } from '~/server/api'
 import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
 
@@ -19,7 +22,8 @@ export const Route = createFileRoute('/$locale/')({
   component: Landing,
   // The page is the reader's point, so it is awaited rather than streamed.
   // The server reads the bookmark from the request and sends back only what
-  // the reader has reached: the arc they are in, the stories concluded in it,
+  // the reader has reached: with no bookmark, the chart with every waypoint
+  // under fog; with one, the arc they are in, the stories concluded in it,
   // the characters those stories name. Nothing past the bookmark is in it.
   loader: async ({ context }) => loadHome({ data: { locale: context.locale } }),
   head: ({ match, params }) => {
@@ -36,6 +40,23 @@ export const Route = createFileRoute('/$locale/')({
 })
 
 /**
+ * The landing page: the chart for a reader with no bookmark, the home page
+ * for one with a bookmark. The branch is the loader's, so it moves in the
+ * same transition as the data when the bookmark is saved or cleared.
+ */
+function Landing(): ReactElement {
+  const landing = Route.useLoaderData()
+  const peek = usePeek(liftWaypoint)
+
+  return 'chart' in landing ?
+      <SeaChartLanding
+        {...landing.chart}
+        peek={peek}
+      />
+    : <Home {...landing.home} />
+}
+
+/**
  * The home page (Hallmark macrostructure 03, Marquee Hero).
  *
  * Three questions, in order, for a reader picking the series back up: where
@@ -46,9 +67,7 @@ export const Route = createFileRoute('/$locale/')({
  * bookmark re-runs the loader, so saving one from the fold or the bar moves
  * the whole page to the new point.
  */
-function Landing(): ReactElement {
-  const { before, cast, saga, stories, unset } = Route.useLoaderData()
-
+function Home({ before, cast, saga, stories }: HomeView): ReactElement {
   return (
     <main
       id="content"
@@ -57,7 +76,6 @@ function Landing(): ReactElement {
       <HomeFold
         band={BAND.fold}
         saga={saga}
-        unset={unset}
       />
 
       <div {...stylex.props(styles.below)}>

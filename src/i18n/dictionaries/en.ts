@@ -28,13 +28,16 @@ export const enDictionary = {
   'nav.fruits': 'Fruits',
   'nav.label': 'Pages',
 
+  'hero.headline': 'The One Piece wiki without spoilers',
+  'hero.lede':
+    'You have not set a bookmark yet, so every entry is under fog. Set one in the top bar: an anime episode, a season and episode, or a manga chapter. Entries up to that point open. The ones after it stay under fog, and you can still show any of them.',
   'hero.setBookmark': 'Set your bookmark',
   'hero.changeBookmark': 'Change bookmark · {threshold}',
+  'hero.explore': 'Browse characters',
 
   'home.point.episode': 'Episode {threshold}',
   'home.point.season': 'Season {season} · episode {episode}',
   'home.point.chapter': 'Chapter {threshold}',
-  'home.unset': 'You have not set a bookmark yet. This is the start.',
   'home.recent': 'Just happened',
   'home.before': 'Just before',
   'home.noStories': 'No stories yet.',
@@ -90,6 +93,23 @@ export const enDictionary = {
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
   'chart.hereUnset': 'No bookmark set · everything is under fog',
+  'chart.title': 'The main entries, in story order',
+  'chart.foggedDescription.episode': 'An entry from episode {threshold}.',
+  'chart.foggedDescription.season': 'An entry from {threshold}.',
+  'chart.foggedDescription.chapter': 'An entry from chapter {threshold}.',
+  'legend.open': 'open',
+  'legend.covered': 'under fog',
+  'legend.filed': 'in total',
+
+  'faq.animeQ': 'Anime or manga?',
+  'faq.animeA':
+    'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
+  'faq.bookmarkQ': 'Where is my bookmark stored?',
+  'faq.bookmarkA':
+    'In a cookie on this device. The server reads it before it builds the page, so hidden entries are not in the page you receive. There is no account and no tracking.',
+  'faq.peekQ': 'Can I see a hidden entry?',
+  'faq.peekA':
+    'Yes. Press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':

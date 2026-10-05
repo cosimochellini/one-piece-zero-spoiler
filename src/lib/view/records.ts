@@ -399,9 +399,20 @@ export interface HomeView {
   saga: WaypointView
   /** The stories concluded in the arc up to the bookmark, most recent first. */
   stories: HomeStory[]
-  /** No bookmark is set; the page shows the start. */
-  unset: boolean
 }
+
+/** The landing chart: the waypoints open to the reader, then the covered. */
+export interface ChartView {
+  covered: CoveredRecord[]
+  filed: number
+  open: WaypointView[]
+}
+
+/**
+ * The landing page: the chart for a reader with no bookmark, the home page
+ * for one with a bookmark.
+ */
+export type LandingView = { chart: ChartView } | { home: HomeView }
 
 /**
  * The document title and description, resolved on the server.

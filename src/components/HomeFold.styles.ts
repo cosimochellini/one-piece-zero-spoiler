@@ -95,19 +95,6 @@ export const styles = stylex.create({
     position: 'relative',
     maxWidth: 'min(100%, 38rem)',
   },
-  // The one sentence for a reader with no bookmark, set apart by the accent
-  // rule rather than by a box.
-  unset: {
-    borderInlineStartColor: color.accent,
-    borderInlineStartStyle: 'solid',
-    borderInlineStartWidth: '3px',
-    color: color.ink2,
-    fontSize: text.base,
-    lineHeight: leading.body,
-    marginBlockEnd: space.xs,
-    paddingInlineStart: space.sm,
-    maxWidth: '44ch',
-  },
   // The reader's point in the same voice as the mark in the bar: the mono
   // outlier, in the accent, tabular.
   point: {

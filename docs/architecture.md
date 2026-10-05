@@ -219,9 +219,10 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 - The character shelves on the characters page, one tile with a drawing per
   character below the fold, come from the loader as a promise that is not
   awaited and stream into a `<Suspense>` boundary, so the search field and the
-  main characters load first. The landing page, the places list and a character
-  page are awaited instead: they are the page, and a reader with scripting off
-  should get them in full.
+  main characters load first. The landing page (the fogged chart for a reader
+  with no bookmark, the reader's arc and its stories for one with a bookmark),
+  the places list and a character page are awaited instead: they are the page,
+  and a reader with scripting off should get them in full.
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
