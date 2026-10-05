@@ -914,4 +914,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1022 })).toBe(tail)
     expect(drawnAt({ mode: 'chapter', chapter: 1023 })).toBe(grown?.value)
   })
+
+  it('braids Sakazuki’s cap only from episode 570', () => {
+    const sakazuki = filed('sakazuki')
+    const cap = DRAWINGS.sakazuki
+    const braided = REDRAWINGS['sakazuki']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(sakazuki, 'en', reveal(bookmark)).visual.strokes
+
+    expect(braided?.episode).toBe(570)
+
+    expect(drawnAt(ep(569))).toBe(cap)
+    expect(drawnAt(ep(570))).toBe(braided?.value)
+    expect(drawnAt(null)).toBe(cap)
+    // The manga has Jinbe tell the crew he won the seat in chapter 650.
+    expect(drawnAt({ mode: 'chapter', chapter: 649 })).toBe(cap)
+    expect(drawnAt({ mode: 'chapter', chapter: 650 })).toBe(braided?.value)
+  })
 })
