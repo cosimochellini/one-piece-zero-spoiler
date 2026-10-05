@@ -963,17 +963,11 @@ export const alabasta: Saga = {
         it: 'Viaggia su una nave a forma di cigno, indossa un cappotto di piume e scarpette da ballo a punta, e si presenta danzando. Il suo volto diventa quello di chiunque abbia toccato con la mano destra, e torna il suo quando si tocca con la sinistra. Ha passato una giornata intera a bordo con dei pirati senza dire chi fosse, e li ha trovati simpatici.',
         en: 'He travels on a swan-shaped ship, wears a coat of feathers and pointed dancing shoes, and introduces himself in a pirouette. His face becomes the face of anyone he has touched with his right hand, and comes back when he touches himself with the left. He spent a whole day aboard with a crew of pirates without saying who he was, and rather liked them.',
       },
+      // No queen-of-level-5.5 entry: only the chapter 666 cover says it.
       affiliation: [
         { episode: 78, value: BW },
         { episode: 91, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
-        {
-          episode: 452,
-          value: {
-            it: 'Impel Down, regina autoproclamata del livello 5.5',
-            en: 'Impel Down, self-appointed queen of level 5.5',
-          },
-        },
       ],
       devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
@@ -1487,8 +1481,10 @@ export const alabasta: Saga = {
           episode: 129,
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
+        // Captioned at 777 (chapter 823), her first scene after the two years.
         {
-          episode: 517,
+          episode: 777,
+          chapter: 823,
           value: { it: 'Marina, contrammiraglio', en: 'Marines, rear admiral' },
         },
       ],

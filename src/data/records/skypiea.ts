@@ -624,7 +624,14 @@ export const skypiea: Saga = {
           },
         },
       ],
-      origin: [{ episode: 146, value: { it: 'North Blue', en: 'North Blue' } }],
+      // Said at 148 (chapter 227), when Bellamy's crew laugh about Noland.
+      origin: [
+        {
+          episode: 148,
+          chapter: 227,
+          value: { it: 'North Blue', en: 'North Blue' },
+        },
+      ],
       epithet: [{ episode: 146, value: { it: 'La Iena', en: 'the Hyena' } }],
       devilFruit: [
         { episode: 151, chapter: 232, value: ['spring-spring-fruit'] },
@@ -787,8 +794,10 @@ export const skypiea: Saga = {
             en: 'Marines, fleet admiral',
           },
         },
+        // Captioned at 740 (chapter 796); at 736 the title goes to an unseen voice.
         {
-          episode: 517,
+          episode: 740,
+          chapter: 796,
           value: {
             it: 'Marina, ispettore generale',
             en: 'Marines, inspector general',
@@ -915,8 +924,10 @@ export const skypiea: Saga = {
             en: 'Whitebeard Pirates, first division commander',
           },
         },
+        // First said at 773 (chapter 820): the remnants "led by Marco".
         {
-          episode: 517,
+          episode: 773,
+          chapter: 820,
           value: {
             it: 'Pirati di Barbabianca, capitano ad interim',
             en: 'Whitebeard Pirates, acting captain',
