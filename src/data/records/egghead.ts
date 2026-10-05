@@ -59,7 +59,7 @@ export const egghead: Saga = {
       nameSaidAt: 315,
       name: { it: 'Vegapunk', en: 'Vegapunk' },
       summary: {
-        it: 'Lo scienziato che il mondo insegue da cinquecento anni, un vecchio con la testa tagliata piatta in cima e una mela sopra, che vive dentro il suo laboratorio.',
+        it: 'Lo scienziato che il mondo insegue a cinquecento anni di distanza, un vecchio con la testa tagliata piatta in cima e una mela sopra, che vive dentro il suo laboratorio.',
         en: 'The scientist the world is five hundred years behind, an old man whose head is cut flat on top and crowned with an apple, who lives inside his own laboratory.',
       },
       visual: { art: 'vegapunk', tint: 'cyan' },
@@ -119,8 +119,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1062,
       name: { it: 'Lilith', en: 'Lilith' },
       summary: {
-        it: 'Un Vegapunk che rappresenta il male, una donna alta con i capelli rossi e un casco da aviatore, che cavalca un robot gigante e scatena le sue bestie marine meccaniche contro ogni nave che si avvicina.',
-        en: 'A Vegapunk that stands for evil, a tall red-haired woman in a flying helmet who rides a giant robot and sets her mechanical sea beasts on any ship that comes near.',
+        it: 'Un Vegapunk che rappresenta il male, una donna alta con i capelli arruffati su un occhio e un casco da aviatore, che cavalca un robot gigante e scatena le sue bestie marine meccaniche contro ogni nave che si avvicina.',
+        en: 'A Vegapunk that stands for evil, a tall woman with wild hair over one eye and a flying helmet, who rides a giant robot and sets her mechanical sea beasts on any ship that comes near.',
       },
       visual: { art: 'lilith', tint: 'magenta' },
     },
@@ -179,7 +179,7 @@ export const egghead: Saga = {
       revealedAtChapter: 1065,
       name: { it: 'Edison', en: 'Edison' },
       summary: {
-        it: 'Il satellite che ha le idee, un piccolo robot con due punte a forma di spina in cima alla testa, che grida ogni volta che gli viene un’idea e vola via a disegnare i progetti.',
+        it: 'Il satellite che ha le idee, un piccolo robot con due punte a forma di spina elettrica in cima alla testa, che grida ogni volta che gli viene un’idea e vola via a disegnare i progetti.',
         en: 'The satellite that has the ideas, a small robot with two prongs like a plug on top of his head, who shouts whenever an idea comes and flies off to draw the blueprints.',
       },
       visual: { art: 'edison', tint: 'yellow' },
@@ -335,7 +335,7 @@ export const egghead: Saga = {
       revealedAtChapter: 1094,
       name: { it: 'Bluegrass', en: 'Bluegrass' },
       summary: {
-        it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi, che prende il comando di qualunque macchina su cui sale.',
+        it: 'Un’anziana viceammiraglio della Marina, minuta, con le cuffie, gli occhiali da sole e i codini biondi sotto un caschetto, che prende il comando di qualunque macchina su cui sale.',
         en: 'A small old Marine vice admiral in headphones and sunglasses, blonde pigtails under a bowl cut, who takes command of any machine she climbs onto.',
       },
       visual: { art: 'bluegrass', tint: 'yellow' },
@@ -501,14 +501,17 @@ export const egghead: Saga = {
   ],
 
   dossiers: {
+    // Filed at 1096, where he is first seen: the shadow in Caesar’s
+    // flashback at 610 shows nothing of him, and at 1090 it is Lilith who
+    // calls herself Vegapunk.
     'vegapunk': {
       role: {
         it: 'Scienziato capo del Governo Mondiale',
         en: 'World Government chief scientist',
       },
       log: {
-        it: 'Il Governo Mondiale lo tiene su un’isola sola del Nuovo Mondo, e dal suo lavoro escono le navi, le armi e i Pacifista che la Marina usa da anni. Chi approda su Egghead trova un vecchio gentile e distratto che, dopo un teletrasporto fallito, resta incastrato dentro un robot e deve gridare aiuto. Bonney lo riconosce subito: è il vero Vegapunk, l’uomo che si dice abbia il cervello migliore del mondo.',
-        en: 'The World Government keeps him on a single island in the New World, and out of his work come the ships, the weapons and the Pacifista the Marines have used for years. Whoever lands on Egghead finds a kindly, scatterbrained old man who gets himself stuck inside a robot after a failed warp and has to shout for help. Bonney knows him at once as the real Vegapunk, the man said to have the best brain in the world.',
+        it: 'Il Governo Mondiale lo tiene su un’isola tutta sua nel Nuovo Mondo, e dal suo lavoro escono le navi, le armi e i Pacifista che la Marina usa da anni. Chi approda su Egghead trova un vecchio gentile e distratto che, dopo un teletrasporto fallito, resta incastrato dentro un robot e deve gridare aiuto. Bonney lo riconosce subito: è il vero Vegapunk, l’uomo che si dice abbia il cervello migliore del mondo.',
+        en: 'The World Government keeps him on an island of his own in the New World, and out of his work come the ships, the weapons and the Pacifista the Marines have used for years. Whoever lands on Egghead finds a kindly, scatterbrained old man who gets himself stuck inside a robot after a failed warp and has to shout for help. Bonney knows him at once as the real Vegapunk, the man said to have the best brain in the world.',
       },
       status: [
         { episode: 1096, value: 'alive' },
@@ -546,8 +549,8 @@ export const egghead: Saga = {
         en: 'The Vegapunk that stands for good',
       },
       log: {
-        it: 'È il Vegapunk che rappresenta il bene, ed è Shaka a rispondere per il laboratorio e a dire chi può entrare. Porta un elmo di metallo che non toglie mai e ha una voce calma che non alza mai. Riconosce i pirati dalle loro taglie prima che abbiano detto una parola, e li invita a entrare perché è curioso di conoscerli.',
-        en: 'He is the Vegapunk that stands for good, and it is Shaka who answers for the laboratory and says who is let in. He wears a metal helmet he never takes off and has a calm voice he never raises. He knows the pirates by their bounties before they have said a word, and invites them in because he is curious about them.',
+        it: 'È il Vegapunk che rappresenta il bene, ed è Shaka a parlare a nome del laboratorio e a dire chi può entrare. Porta un elmo di metallo che gli copre tutta la testa e ha una voce calma. Riconosce i pirati dalle loro taglie prima che abbiano detto una parola, e li invita a entrare perché è curioso di conoscerli.',
+        en: 'He is the Vegapunk that stands for good, and it is Shaka who answers for the laboratory and says who is let in. He wears a metal helmet over his whole head and has a calm voice. He knows the pirates by their bounties before they have said a word, and invites them in because he is curious about them.',
       },
       affiliation: [
         {
@@ -568,8 +571,8 @@ export const egghead: Saga = {
         en: 'The Vegapunk that stands for evil, Punk-02',
       },
       log: {
-        it: 'Si presenta come Punk-02, il Vegapunk malvagio, e non fa nulla per nasconderlo. Accoglie le navi che si avvicinano a Egghead con un esercito di bestie marine meccaniche e la richiesta di consegnare gli oggetti di valore, perché i fondi per la ricerca sono sempre pochi e a preoccuparsene è lei. Chi la ringrazia per un salvataggio scopre che non aveva nessuna intenzione di salvarlo.',
-        en: 'She calls herself Punk-02, the evil Vegapunk, and does nothing to hide it. She greets the ships that come near Egghead with an army of mechanical sea beasts and a demand for their valuables, because the research budget is always short and she is the one worrying about it. Anyone who thanks her for a rescue learns that she never meant to save them.',
+        it: 'È Punk-02, il Vegapunk malvagio, e non fa nulla per nasconderlo. Accoglie le navi che si avvicinano a Egghead con un esercito di bestie marine meccaniche e la richiesta di consegnare gli oggetti di valore, perché i fondi per la ricerca sono sempre pochi e a preoccuparsene è lei. Chi la ringrazia per un salvataggio scopre che non aveva nessuna intenzione di salvarlo.',
+        en: 'She is Punk-02, the evil Vegapunk, and does nothing to hide it. She greets the ships that come near Egghead with an army of mechanical sea beasts and a demand for their valuables, because the research budget is always short and she is the one worrying about it. Anyone who thanks her for a rescue learns that she never meant to save them.',
       },
       affiliation: [
         {
@@ -592,8 +595,8 @@ export const egghead: Saga = {
     's-snake': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'È uno dei serafini custoditi su Egghead: bambini con le ali nere e una fiamma sulla schiena, costruiti per prendere il posto della Flotta dei Sette, usciti senza un graffio dallo scontro su Amazon Lily. Su Amazon Lily questa ha scansato una guerriera Kuja con uno schiaffo, e le Kuja che l’hanno vista da vicino l’hanno trovata identica alla loro Imperatrice da bambina.',
-        en: 'She is one of the Seraphim kept on Egghead: children with black wings and a flame at their backs, made to take the place of the Seven Warlords, who came out of the fight on Amazon Lily without a scratch. On Amazon Lily this one slapped a Kuja warrior aside with one hand, and the Kuja who saw her up close thought she looked just like their Empress as a child.',
+        it: 'È uno dei serafini custoditi su Egghead: bambini con le ali nere e una fiamma sulla schiena, costruiti per prendere il posto della Flotta dei Sette; due di loro sono usciti senza un graffio dallo scontro su Amazon Lily. Su Amazon Lily questa ha tolto di mezzo una guerriera Kuja con uno schiaffo, a una mano sola, e le Kuja che l’hanno vista da vicino l’hanno trovata identica alla loro Imperatrice da bambina.',
+        en: 'She is one of the Seraphim kept on Egghead: children with black wings and a flame at their backs, made to take the place of the Seven Warlords; two of them came out of the fight on Amazon Lily without a scratch. On Amazon Lily this one slapped a Kuja warrior aside with one hand, and the Kuja who saw her up close thought she looked just like their Empress as a child.',
       },
       affiliation: [{ episode: 1099, value: SERAPHIM }],
       origin: [{ episode: 1099, value: EGGHEAD }],
@@ -629,6 +632,9 @@ export const egghead: Saga = {
       origin: [{ episode: 1095, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
+    // Edison, Pythagoras and York are filed at 1095, where they are first
+    // seen: at 1092 they are only shadows in the picture of the six that CP0
+    // is shown.
     'edison': {
       role: {
         it: 'Satellite di Vegapunk, Punk-03',
@@ -678,8 +684,8 @@ export const egghead: Saga = {
         en: 'The Vegapunk that stands for violence',
       },
       log: {
-        it: 'Atlas è il Vegapunk che rappresenta la violenza, e perde la pazienza in fretta. I suoi guanti a pressione di luce le permettono di toccare la luce come se fosse solida, così può colpire un ologramma con la stessa forza di una persona. Costruisce anche le macchine dell’isola, dal condizionatore che tiene calda un’isola invernale a una macchina da cucina che serve cinquecento piatti, e si lamenta che nel mondo non ci siano i soldi per produrle in serie.',
-        en: 'Atlas is the Vegapunk that stands for violence, and she loses her temper fast. Her Light-Pressure Gloves let her touch light as if it were solid, so she can punch a hologram as hard as a person. She also builds the island’s machines, from the air conditioning that keeps a winter island warm to a cooking machine that serves five hundred dishes, and complains that the world has no money to mass-produce them.',
+        it: 'Atlas è il Vegapunk che rappresenta la violenza, e perde la pazienza in fretta. I suoi guanti a pressione di luce le permettono di toccare la luce come se fosse solida, così può colpire un ologramma con la stessa forza di una persona. Costruisce anche le macchine dell’isola, dal condizionatore che tiene calda un’isola invernale a una macchina da cucina che serve cinquecento piatti, e si lamenta che nel mondo manchino i tecnici e i soldi per produrle in serie.',
+        en: 'Atlas is the Vegapunk that stands for violence, and she loses her temper fast. Her Light-Pressure Gloves let her touch light as if it were solid, so she can punch a hologram as hard as a person. She also builds the island’s machines, from the air conditioning that keeps a winter island warm to a cooking machine that serves five hundred dishes, and complains that the world lacks the technicians and the money to mass-produce them.',
       },
       affiliation: [
         {
@@ -720,8 +726,8 @@ export const egghead: Saga = {
         {
           episode: 1123,
           value: {
-            it: 'Traditrice, alleata dei Cinque Astri di Saggezza',
-            en: 'Traitor, ally of the Five Elders',
+            it: 'Traditrice, in combutta con i Cinque Astri di Saggezza',
+            en: 'Traitor, in league with the Five Elders',
           },
         },
       ],
@@ -731,8 +737,8 @@ export const egghead: Saga = {
     'jaygarcia-saturn': {
       role: ELDER_ROLE,
       log: {
-        it: 'Finora i cinque che decidono per il mondo si erano visti solo nella loro stanza di Mary Geoise. Questo naviga verso Egghead sulla nave dell’ammiraglio Kizaru, dove è l’ammiraglio in persona a servirgli il tè e i dolci vengono prima controllati per il veleno. Ha una lunga barba bianca, una cicatrice sull’occhio sinistro, un piccolo cappello nero e un bastone. Dice di aver incontrato Vegapunk una volta sola, molto tempo fa, e che quello che è successo è un peccato.',
-        en: 'Until now the five who decide for the world have only been seen in their room at Mary Geoise. This one sails toward Egghead on Admiral Kizaru’s ship, where the admiral brings him his tea himself and the cakes are checked for poison first. He has a long white beard, a scar across his left eye, a small black hat and a cane. He says he met Vegapunk once, a long time ago, and that what has happened is a shame.',
+        it: 'Finora i cinque che decidono per il mondo non si erano mai visti fuori da Mary Geoise. Questo naviga verso Egghead sulla nave dell’ammiraglio Kizaru, dove è l’ammiraglio in persona a servirgli il tè e i dolci vengono prima controllati per escludere il veleno. Ha una lunga barba bianca, una cicatrice sull’occhio sinistro, un piccolo cappello nero e un bastone. Dice di aver incontrato Vegapunk una volta sola, molto tempo fa, e che quello che è successo è un peccato.',
+        en: 'Until now the five who decide for the world have never been seen outside Mary Geoise. This one sails toward Egghead on Admiral Kizaru’s ship, where the admiral brings him his tea himself and the cakes are checked for poison first. He has a long white beard, a scar across his left eye, a small black hat and a cane. He says he met Vegapunk once, a long time ago, and that what has happened is a shame.',
       },
       status: [
         { episode: 1105, value: 'alive' },
@@ -1040,7 +1046,7 @@ export const egghead: Saga = {
       chronicle: eggheadChronicles.bluegrass,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Dice di aver mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
+        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Si definisce un’Umana da Guida che ha mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
         en: 'She is one of the vice admirals who land on Egghead with the Marine fleet, a small old woman with headphones on her head and her coat over her shoulders. Whatever she rides obeys her: a Pacifista the laboratory has turned against the Marines still answers to her while she sits on its back, whatever the authority hierarchy says. She calls herself a Driving Human who ate the Ride-Ride Fruit, and she wants the pirate girl who changed her men’s ages to change them back.',
       },
       status: [{ episode: 1128, value: 'alive' }],

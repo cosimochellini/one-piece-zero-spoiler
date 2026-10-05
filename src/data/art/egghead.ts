@@ -38,16 +38,13 @@ export const eggheadArt = {
     },
   ],
 
-  // A bulb-shaped dome, the stem and the leaf still on top of it.
+  // A round head cut flat on top, an apple's stem and leaf set on it.
   'vegapunk': [
-    { d: circle(80, 116, 48) },
-    { d: 'M68 70 V54 M92 70 V54' },
-    { d: 'M66 54 h28' },
-    { d: 'M80 54 C80 44 84 38 90 34', role: 'accent' },
-    { d: 'M90 34 q18 -6 22 8 q-18 6 -22 -8z', role: 'accent' },
-    { d: 'M80 68 C56 100 56 132 80 164', role: 'soft' },
-    { d: 'M80 68 C104 100 104 132 80 164', role: 'soft' },
-    shadow(80, 172, 40),
+    { d: 'M40 84 h80 C132 104 130 150 80 166 C30 150 28 104 40 84 Z' },
+    { d: 'M50 96 h60', role: 'soft' },
+    { d: 'M80 84 C80 74 84 68 90 64', role: 'accent' },
+    { d: 'M90 64 q18 -6 22 8 q-18 6 -22 -8z', role: 'accent' },
+    shadow(80, 176, 40),
   ],
 
   // A domed helmet, a leaf growing out of its crown.
@@ -183,7 +180,7 @@ export const eggheadArt = {
     shadow(80, 166, 56),
   ],
 
-  // A heaped plate, a syringe standing next to it.
+  // A heaped plate, a pillow beside it.
   'york': [
     { d: ellipse(62, 132, 46, 14) },
     { d: ellipse(62, 130, 34, 9), role: 'soft' },
@@ -196,10 +193,8 @@ export const eggheadArt = {
       ]),
       role: 'accent',
     },
-    { d: 'M104 60 h20 v58 h-20z' },
-    { d: 'M106 60 v-16 h16 v16 M98 44 h32' },
-    { d: 'M114 118 v26' },
-    { d: 'M104 72 h8 M104 82 h8 M104 92 h8', role: 'soft' },
+    { d: 'M112 136 C112 122 152 122 152 136 C152 150 112 150 112 136 Z' },
+    { d: 'M120 136 h24', role: 'soft' },
     shadow(70, 158, 48),
   ],
 
@@ -213,17 +208,14 @@ export const eggheadArt = {
     { d: 'M20 184 H144', role: 'ambient', dashed: true },
   ],
 
-  // An iron collar shut with a padlock, a length of chain hanging from it.
+  // A length of iron chain lying on the ground.
   'ginny': [
-    { d: circle(80, 92, 32) },
-    { d: circle(80, 92, 24), role: 'soft' },
-    {
-      d: 'M72 128 h16 v14 h-16z M74 128 v-6 a6 6 0 0 1 12 0 v6',
-      role: 'accent',
-    },
-    { d: ellipse(80, 156, 6, 9) },
-    { d: ellipse(80, 174, 6, 9), role: 'soft' },
-    { d: 'M20 192 H140', role: 'ambient', dashed: true },
+    { d: ellipse(36, 150, 14, 9) },
+    { d: ellipse(62, 150, 9, 6), role: 'soft' },
+    { d: ellipse(88, 150, 14, 9), role: 'accent' },
+    { d: ellipse(114, 150, 9, 6), role: 'soft' },
+    { d: ellipse(136, 150, 12, 8) },
+    { d: 'M14 172 H146', role: 'ambient', dashed: true },
   ],
 
   // A globe with its meridians drawn and a band around its middle.
