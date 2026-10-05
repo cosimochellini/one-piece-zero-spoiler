@@ -1550,8 +1550,8 @@ export const devilFruits: Saga = {
     {
       id: 'gabu-gabu-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1120,
-      revealedAtChapter: 1086,
+      revealedAtEpisode: 1121,
+      revealedAtChapter: 1087,
       name: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
       summary: {
         it: 'Trasforma in liquore il corpo di chi l’ha mangiato: viene ingoiato a fiaschi interi e risputato fuori in un getto che prende fuoco.',

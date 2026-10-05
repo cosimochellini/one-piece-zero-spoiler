@@ -1915,7 +1915,10 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 450, value: { it: 'il Beone', en: 'Heavy Drinker' } },
       ],
-      devilFruit: [{ episode: 1120, value: ['gabu-gabu-fruit'] }],
+      // The manga shows the fruit first in chapter 1087, which is 1121.
+      devilFruit: [
+        { episode: 1121, chapter: 1087, value: ['gabu-gabu-fruit'] },
+      ],
     },
     'san-juan-wolf': {
       role: LEVEL_SIX_ROLE,
