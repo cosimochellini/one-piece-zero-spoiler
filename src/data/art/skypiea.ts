@@ -180,7 +180,8 @@ export const skypieaArt = {
     shadow(90, 186, 40),
   ],
 
-  // Sunglasses, hung from strings like a puppet.
+  // Sunglasses, hung from strings like a puppet. The strings cut and the
+  // glasses fallen and cracked from 733, in `skypieaRedrawn`.
   'donquixote-doflamingo': [
     {
       d: 'M28 100 H70 q8 0 8 8 V122 q0 8 -8 8 H28 q-8 0 -8 -8 V108 q0 -8 8 -8z',
@@ -700,6 +701,9 @@ export const skypieaArt = {
   ],
 } satisfies Drawings
 
+/** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
+const FALLEN = 'translate(0 40) rotate(-7 80 115)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const skypieaRedrawn: Redrawings = {
   // A tricorne over a knotted bandana: the hat he wears from the Warlords'
@@ -762,6 +766,57 @@ export const skypieaRedrawn: Redrawings = {
         },
         { d: 'M116 180 V152 q0 -6 4 -8 V132 h10 V144 q4 2 4 8 V180z' },
         shadow(84, 184, 52),
+      ],
+    },
+  ],
+
+  // The strings cut short under the bar, and the glasses fallen beneath them
+  // with both lenses cracked: Luffy's King Kong Gun shatters them and they
+  // fall away from him at 733 (ch. 790).
+  'donquixote-doflamingo': [
+    {
+      episode: 733,
+      chapter: 790,
+      value: [
+        { d: 'M56 44 H104' },
+        { d: 'M80 44 V36', role: 'ambient' },
+        { d: 'M62 44 L53 64 M98 44 L107 64' },
+        {
+          d: 'M53 64 l-5 3 M53 64 l-1 6 M53 64 l3 5 M107 64 l5 3 M107 64 l1 6 M107 64 l-3 5',
+          role: 'soft',
+        },
+        {
+          d: 'M28 100 H70 q8 0 8 8 V122 q0 8 -8 8 H28 q-8 0 -8 -8 V108 q0 -8 8 -8z',
+          role: 'accent',
+          transform: FALLEN,
+        },
+        {
+          d: 'M90 100 H132 q8 0 8 8 V122 q0 8 -8 8 H90 q-8 0 -8 -8 V108 q0 -8 8 -8z',
+          role: 'accent',
+          transform: FALLEN,
+        },
+        { d: 'M78 110 h4', role: 'accent', transform: FALLEN },
+        {
+          d: 'M38 100 l6 10 l-5 7 l8 13 M44 110 l13 2 M39 117 l-12 5',
+          role: 'soft',
+          transform: FALLEN,
+        },
+        {
+          d: 'M122 130 l-5 -11 l6 -6 l-7 -13 M117 119 l-14 3 M123 113 l12 4',
+          role: 'soft',
+          transform: FALLEN,
+        },
+        { d: 'M20 108 l-8 4 M140 108 l6 -4 l1 -10', transform: FALLEN },
+        {
+          d: dots([
+            [150, 168],
+            [144, 176],
+            [154, 178],
+            [12, 176],
+          ]),
+          role: 'ambient',
+        },
+        shadow(80, 182, 64),
       ],
     },
   ],
