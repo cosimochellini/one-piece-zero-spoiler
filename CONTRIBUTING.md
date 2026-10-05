@@ -136,9 +136,11 @@ A few rules that are easy to miss:
   `DRAWINGS` in `src/data/art/index.ts`, and to the module list in
   `src/data/art/index.test.ts`.
 
-`npm run verify:chapters` checks every chapter against the One Piece Wiki. It
-needs the network, so it is not part of `npm run check` or CI. Run it when you
-change a chapter.
+`npm run verify:chapters` checks every chapter and every episode against the
+first appearance on the One Piece Wiki. It needs the network, so it is not part
+of `npm run check` or CI. Run it when you change a chapter or an episode. A
+record kept below the wiki's episode after a hand check goes in `EPISODE_KEPT`
+in the script, with the reason.
 
 ## Writing copy
 
