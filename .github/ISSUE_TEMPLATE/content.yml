@@ -1,0 +1,51 @@
+name: Wrong or missing content
+description:
+  An entry that opens at the wrong episode or chapter, a wrong name or fact, or
+  a spoiler on a page.
+labels: [content]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Keep the spoiler out of the title: titles are public and show up in notifications. Write "Wrong episode for an Alabasta character", not the fact itself.
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is wrong
+      options:
+        - An entry opens too early (a spoiler)
+        - An entry opens too late
+        - A text says something the reader has not reached yet
+        - A wrong name, fact or translation
+        - Something is missing
+    validations:
+      required: true
+  - type: input
+    id: entry
+    attributes:
+      label: Entry
+      description: The page URL or the entry's name.
+      placeholder: https://one-piece-zero-spoiler.netlify.app/en/characters/...
+    validations:
+      required: true
+  - type: input
+    id: bookmark
+    attributes:
+      label: Your bookmark
+      description: The episode or chapter shown in the top bar when you saw it.
+      placeholder: EP 650
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What the page shows, and what it should show.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description:
+        A One Piece Wiki page or another source for the correct episode or
+        chapter.
+      placeholder: https://onepiece.fandom.com/wiki/...
