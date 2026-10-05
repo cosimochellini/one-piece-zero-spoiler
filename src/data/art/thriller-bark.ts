@@ -51,7 +51,8 @@ export const thrillerBarkArt = {
     ...SEA.slice(1),
   ],
 
-  // A violin, its bow laid across it; the f-holes take the colour.
+  // A violin, its bow laid across it; the f-holes take the colour. The Soul
+  // King's guitar is drawn from 517, in `thrillerBarkRedrawn`.
   'brook': [
     {
       d: 'M80 64 c-26 0 -34 20 -24 32 c-10 10 -14 34 -2 46 c12 12 40 12 52 0 c12 -12 8 -36 -2 -46 c10 -12 2 -32 -24 -32z',
@@ -454,6 +455,9 @@ export const thrillerBarkArt = {
   ],
 } satisfies Drawings
 
+/** Brook's guitar, drawn lying flat and tilted to where the bow lay. */
+const GUITAR = 'translate(-6 6) rotate(-50 80 110)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const thrillerBarkRedrawn: Redrawings = {
   // A hull the size of an island, a mansion and two dead trees on the deck,
@@ -475,6 +479,56 @@ export const thrillerBarkRedrawn: Redrawings = {
         { d: 'M136 132 V98 M136 118 l12 -13 M136 110 l-11 -14 M136 126 l10 8' },
         { d: circle(122, 30, 20), role: 'accent' },
         ...SEA.slice(1),
+      ],
+    },
+  ],
+
+  // The violin still upright, the Soul King's guitar laid across it where the
+  // bow was: a shark's head for a body, jaws open on its teeth, gills and two
+  // fins for horns. He plays it at his farewell concert at 517 (ch. 598).
+  'brook': [
+    {
+      episode: 517,
+      chapter: 598,
+      value: [
+        {
+          d: 'M88 58 c-26 0 -34 20 -24 32 c-10 10 -14 34 -2 46 c12 12 40 12 52 0 c12 -12 8 -36 -2 -46 c10 -12 2 -32 -24 -32z',
+        },
+        { d: 'M83 58 V20 M93 58 V20' },
+        { d: 'M83 20 q5 -10 10 0' },
+        { d: 'M78 24 h-6 M98 24 h6 M78 32 h-6 M98 32 h6' },
+        { d: 'M86 54 V126 M90 54 V126', role: 'ambient' },
+        { d: 'M78 116 h20' },
+        { d: 'M76 90 q-6 12 4 22 M100 90 q6 12 -4 22', role: 'accent' },
+        {
+          d: 'M54 104 C44 94 24 88 8 92 C0 94 -8 100 -10 106 L16 111 L0 119 C8 129 38 128 54 116',
+          transform: GUITAR,
+        },
+        {
+          d: 'M-6 107 l2 4 l2 -3.4 l2 4 l2 -3.2 l2 4 l2 -3 l2 3.6 M3 117 l1 -4 l2 3 l1 -4 l2 3 l1 -4 l2 2.6',
+          role: 'soft',
+          transform: GUITAR,
+        },
+        { d: circle(14, 100, 3), role: 'accent', transform: GUITAR },
+        {
+          d: 'M26 96 q-3 11 0 24 M33 95 q-3 12 0 26 M40 96 q-3 11 0 24',
+          role: 'soft',
+          transform: GUITAR,
+        },
+        {
+          d: 'M44 98 C48 92 50 86 52 78 L56 104 M44 122 C48 128 50 132 54 140 L56 116',
+          transform: GUITAR,
+        },
+        { d: 'M54 107 H144 M54 113 H144', transform: GUITAR },
+        {
+          d: 'M72 107 v6 M88 107 v6 M104 107 v6 M120 107 v6',
+          role: 'ambient',
+          transform: GUITAR,
+        },
+        {
+          d: 'M144 106 L148 102 H162 Q168 110 162 118 H148 L144 114',
+          transform: GUITAR,
+        },
       ],
     },
   ],

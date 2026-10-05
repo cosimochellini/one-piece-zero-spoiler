@@ -44,18 +44,18 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 
 ## The archive in numbers
 
-| Thing               | Count                                                |
-| ------------------- | ---------------------------------------------------- |
-| Records             | 737                                                  |
-| Characters          | 534                                                  |
-| Devil fruits        | 128                                                  |
-| Arcs, places, ships | 34 · 39 · 2                                          |
-| Saga modules        | 12, plus one for the devil fruits                    |
-| Line drawings       | 737, one per record, plus 11 redrawings of 9 records |
-| Chronicle stories   | 756, for 185 characters                              |
-| Test files          | 68                                                   |
-| Test cases          | 605                                                  |
-| Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions |
+| Thing               | Count                                                 |
+| ------------------- | ----------------------------------------------------- |
+| Records             | 737                                                   |
+| Characters          | 534                                                   |
+| Devil fruits        | 128                                                   |
+| Arcs, places, ships | 34 · 39 · 2                                           |
+| Saga modules        | 12, plus one for the devil fruits                     |
+| Line drawings       | 737, one per record, plus 12 redrawings of 10 records |
+| Chronicle stories   | 756, for 185 characters                               |
+| Test files          | 68                                                    |
+| Test cases          | 605                                                   |
+| Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions  |
 
 Counted on 2026-10-05. Coverage includes the scripts under `scripts/`. The live
 counts are on the site: each page says how many entries it has.
