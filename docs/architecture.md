@@ -11,7 +11,7 @@ None of it is compiled into the client bundle. A route loader reads the
 `opzs_ep` cookie from the request and returns the records at or below the
 bookmark, with their strings already in the page's locale and their drawings
 already turned into stroke paths. A record the reader has not reached is sent as
-two numbers and an opaque handle:
+its kind, two thresholds and an opaque handle:
 
 ```ts
 export interface CoveredRecord {
@@ -64,8 +64,8 @@ counts are on the site: each page says how many entries it has.
 
 Toei and Shueisha own every frame of the anime and every panel of the manga, so
 none of it is shipped or hotlinked. Every record has a line drawing made for
-this project instead: a straw hat, three sheathed swords, a violin, a windmill
-on a hill. There are no faces, logos or official artwork.
+this project instead: a straw hat, three sheathed swords, a bomb, a windmill on
+a hill. There are no faces, logos or official artwork.
 
 The drawings are data, not markup. They are lists of stroke paths in TypeScript,
 and one component renders all of them: a 160×200 box, a 2 px stroke kept at 2 px
@@ -279,7 +279,7 @@ an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as
 an artifact on every run, passing or failing.
 
-**A thousand rules, not four presets.** `eslint --print-config` on a source file
+**ESLint runs over a thousand rules.** `eslint --print-config` on a source file
 reports 1,059 rules switched on. Most of them come from unicorn (357) and
 sonarjs (228), followed by typescript-eslint's type-aware sets, `@eslint-react`,
 regexp, jsdoc and jsx-a11y-x. `eslint-config-prettier` is applied last, so the

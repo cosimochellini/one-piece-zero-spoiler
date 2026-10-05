@@ -7,7 +7,7 @@
 <p align="center">
   <strong>The One Piece wiki without spoilers.</strong>
   <br>
-  Tell it the last episode or chapter you reached. Everything after it stays on the server.
+  Set a bookmark at the last episode or chapter you reached. Everything after it stays on the server.
 </p>
 
 <p align="center">
@@ -52,8 +52,8 @@ curl -s https://one-piece-zero-spoiler.netlify.app/en/characters/trafalgar-law \
 ```
 
 With `Cookie: opzs_ep=650` the title is the name. The server reads the bookmark
-before it builds the page. An entry you have not reached is sent as two numbers
-and an opaque handle, with no name, no id and no text:
+before it builds the page. An entry you have not reached is sent as its kind,
+two thresholds and an opaque handle, with no name, no id and no text:
 
 ```mermaid
 flowchart LR
