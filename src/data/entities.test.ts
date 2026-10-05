@@ -59,7 +59,7 @@ describe('the archive drawings', () => {
 
 describe('getEntity', () => {
   it('finds a record by id', () => {
-    expect(getEntity('egghead')?.revealedAtEpisode).toBe(1089)
+    expect(getEntity('egghead')?.revealedAtEpisode).toBe(1090)
   })
 
   it('returns undefined for an id the archive does not hold', () => {

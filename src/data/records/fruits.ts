@@ -1496,8 +1496,8 @@ export const devilFruits: Saga = {
     {
       id: 'brain-brain-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1090,
-      revealedAtChapter: 1068,
+      revealedAtEpisode: 1097,
+      revealedAtChapter: 1067,
       name: { it: 'Frutto Nomi Nomi', en: 'Brain-Brain Fruit' },
       summary: {
         it: 'Permette alla testa di contenere qualsiasi cosa senza riempirsi mai: niente di quello che è stato letto o capito va perduto, al prezzo di un cranio che deve crescere per starci dietro.',
@@ -1521,7 +1521,7 @@ export const devilFruits: Saga = {
       id: 'whip-whip-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1113,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1080,
       name: { it: 'Frutto Muchi Muchi', en: 'Whip-Whip Fruit' },
       summary: {
         it: 'Chi l’ha mangiato fa obbedire alla frusta anche le cose: un edificio colpito si sposta dove gli viene ordinato.',
@@ -1533,7 +1533,7 @@ export const devilFruits: Saga = {
       id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: {
         it: 'Frutto Inu Inu, modello Volpe a Nove Code',
         en: 'Dog-Dog Fruit, Mythical Model: Nine-Tailed Fox',
@@ -1551,7 +1551,7 @@ export const devilFruits: Saga = {
       id: 'gabu-gabu-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
       summary: {
         it: 'Trasforma in liquore il corpo di chi l’ha mangiato: viene ingoiato a fiaschi interi e risputato fuori in un getto che prende fuoco.',
@@ -1563,7 +1563,7 @@ export const devilFruits: Saga = {
       id: 'huge-huge-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Deka Deka', en: 'Huge-Huge Fruit' },
       summary: {
         it: 'Fa crescere il corpo senza un limite evidente, finché un uomo supera in altezza le navi che ha accanto e un suo passo blocca un porto.',
@@ -1575,7 +1575,7 @@ export const devilFruits: Saga = {
       id: 'island-island-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
       summary: {
         it: 'Unisce il corpo al terreno su cui sta, così un’isola si sposta dove le viene detto e la sua roccia si alza in forma di braccia.',
@@ -1587,7 +1587,7 @@ export const devilFruits: Saga = {
       id: 'sick-sick-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Shiku Shiku', en: 'Sick-Sick Fruit' },
       summary: {
         it: 'Trasmette la malattia con un tocco: un corpo che un attimo prima stava in piedi cade febbricitante e non si rialza.',
@@ -1599,7 +1599,7 @@ export const devilFruits: Saga = {
       id: 'strong-strong-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Riki Riki', en: 'Strong-Strong Fruit' },
       summary: {
         it: 'Mette nelle braccia una forza fuori da ogni proporzione: quello che sollevano e scagliano si misura in edifici, non in uomini.',
@@ -1611,7 +1611,7 @@ export const devilFruits: Saga = {
       id: 'warp-warp-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1120,
-      revealedAtChapter: 1102,
+      revealedAtChapter: 1086,
       name: { it: 'Frutto Wapu Wapu', en: 'Warp-Warp Fruit' },
       summary: {
         it: 'Sposta un corpo da un punto a un altro senza attraversare lo spazio in mezzo: sparisce da dov’era ed è già altrove.',
@@ -1623,7 +1623,7 @@ export const devilFruits: Saga = {
       id: 'ride-ride-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1128,
-      revealedAtChapter: 1125,
+      revealedAtChapter: 1094,
       name: { it: 'Frutto Nori Nori', en: 'Ride-Ride Fruit' },
       summary: {
         it: 'Chi l’ha mangiato prende il comando di qualunque cosa cavalchi, anche di una macchina che si è rivoltata contro la sua parte.',
