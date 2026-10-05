@@ -1574,12 +1574,12 @@ export const devilFruits: Saga = {
     {
       id: 'island-island-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1120,
-      revealedAtChapter: 1086,
+      revealedAtEpisode: 1121,
+      revealedAtChapter: 1087,
       name: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
       summary: {
-        it: 'Unisce il corpo al terreno su cui sta, così un’isola si sposta dove le viene detto e la sua roccia si alza in forma di braccia.',
-        en: 'Joins the body to the ground it stands on, so an island moves where it is told to move and its rock rises up as arms.',
+        it: 'Unisce il corpo al terreno su cui sta, così la roccia di un’isola si alza in forma di braccia ai suoi ordini.',
+        en: 'Joins the body to the ground it stands on, so the rock of an island rises up as arms at its command.',
       },
       visual: { art: 'island-island-fruit', tint: 'sand' },
     },

@@ -560,7 +560,7 @@ export const egghead: Saga = {
             en: 'Vegapunk satellite, Punk-01 Good',
           },
         },
-        { episode: 1110, value: DESTROYED },
+        { episode: 1111, value: DESTROYED },
       ],
       origin: [{ episode: 1091, value: EGGHEAD }],
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
@@ -599,7 +599,7 @@ export const egghead: Saga = {
         en: 'She is one of the Seraphim kept on Egghead: children with black wings and a flame at their backs, made to take the place of the Seven Warlords; two of them came out of the fight on Amazon Lily without a scratch. On Amazon Lily this one slapped a Kuja warrior aside with one hand, and the Kuja who saw her up close thought she looked just like their Empress as a child.',
       },
       affiliation: [{ episode: 1099, value: SERAPHIM }],
-      origin: [{ episode: 1099, value: EGGHEAD }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
     },
     's-hawk': {
@@ -609,7 +609,7 @@ export const egghead: Saga = {
         en: 'One of the four Seraphim on Egghead, with a child’s face on a body taller than a man, black wings and a flame burning at his back. On Amazon Lily a single stroke of his sword knocked an Emperor back and sliced away part of the island’s mountain. He does not speak and does not hesitate.',
       },
       affiliation: [{ episode: 1099, value: SERAPHIM }],
-      origin: [{ episode: 1099, value: EGGHEAD }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
     },
     's-bear': {
@@ -619,7 +619,7 @@ export const egghead: Saga = {
         en: 'It has a child’s face and a giant’s build. Cipher Pol carry it back to Egghead aboard a World Government ship, and the laboratory answers that S-Bear can find its own way home from there and the agents can turn back. Under the white hair and the bear ears, the face is the face of a man the crew has met before, made young again.',
       },
       affiliation: [{ episode: 1098, value: SERAPHIM }],
-      origin: [{ episode: 1098, value: EGGHEAD }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
     },
     's-shark': {
@@ -629,7 +629,7 @@ export const egghead: Saga = {
         en: 'This Seraphim is built on the pattern of a fish-man and fights with fish-man karate. It dives into the ground the way a man swims in the sea, and comes up underneath whoever it is fighting. It has black wings with fire behind them and a child’s face, and it stops only when Shaka orders it to.',
       },
       affiliation: [{ episode: 1095, value: SERAPHIM }],
-      origin: [{ episode: 1095, value: EGGHEAD }],
+      origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
     },
     // Edison, Pythagoras and York are filed at 1095, where they are first
@@ -1046,7 +1046,7 @@ export const egghead: Saga = {
       chronicle: eggheadChronicles.bluegrass,
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Si definisce un’Umana da Guida che ha mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
+        it: 'È una dei viceammiragli che sbarcano su Egghead con la flotta della Marina: una donna anziana e minuta, con le cuffie in testa e il cappotto sulle spalle. Tutto ciò che cavalca le obbedisce, e un Pacifista che il laboratorio ha rivoltato contro la Marina risponde ancora a lei finché gli sta in groppa, qualunque sia la gerarchia di comando. Dice di essere un’umana pilota che ha mangiato il Frutto Nori Nori, e vuole che la ragazza pirata restituisca ai suoi uomini l’età che ha cambiato loro.',
         en: 'She is one of the vice admirals who land on Egghead with the Marine fleet, a small old woman with headphones on her head and her coat over her shoulders. Whatever she rides obeys her: a Pacifista the laboratory has turned against the Marines still answers to her while she sits on its back, whatever the authority hierarchy says. She calls herself a Driving Human who ate the Ride-Ride Fruit, and she wants the pirate girl who changed her men’s ages to change them back.',
       },
       status: [{ episode: 1128, value: 'alive' }],
