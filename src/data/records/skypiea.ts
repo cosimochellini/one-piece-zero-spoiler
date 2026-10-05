@@ -794,6 +794,15 @@ export const skypiea: Saga = {
             en: 'Marines, fleet admiral',
           },
         },
+        // He tells Kong he is stepping down at 511 (chapter 594).
+        {
+          episode: 511,
+          chapter: 594,
+          value: {
+            it: 'Marina, ex grand’ammiraglio',
+            en: 'Marines, former fleet admiral',
+          },
+        },
         // Captioned at 740 (chapter 796); at 736 the title goes to an unseen voice.
         {
           episode: 740,
