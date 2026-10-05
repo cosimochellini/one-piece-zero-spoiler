@@ -15,6 +15,7 @@ import {
   oklchToHex,
   parseTokens,
   readArgs,
+  scaleOf,
   sheetSvg,
   stagesOf,
   writeSheets,
@@ -53,7 +54,22 @@ describe('the colours', () => {
       readFileSync(path.join(ROOT, 'src/styles/tokens.stylex.ts'), 'utf8'),
     )
 
-    for (const name of ['paper', 'paper2', 'ink', 'ink2', 'rule2', 'cyan']) {
+    const tints = [
+      ...'red vermilion orange ocher yellow acid green teal cyan azure'.split(
+        ' ',
+      ),
+      ...'blue ice lavender violet magenta pink flamingo sand wine'.split(' '),
+    ]
+
+    for (const name of [
+      'paper',
+      'paper2',
+      'ink',
+      'ink2',
+      'muted',
+      'rule2',
+      ...tints,
+    ]) {
       expect(tokens[name], name).toMatch(/^#[\da-f]{6}$/u)
     }
   })
@@ -74,6 +90,33 @@ describe('a drawing placed on the sheet', () => {
   it('keeps the pen and the dash at 2px whatever the size', () => {
     expect(svg).toContain('stroke-width="4"')
     expect(svg).toContain('stroke-dasharray="6 12"')
+  })
+
+  it('keeps a scaled stroke at 2px too, as non-scaling-stroke does', () => {
+    const scaled = drawingSvg(
+      {
+        ...cell,
+        strokes: [
+          {
+            d: 'M0 0 L9 9',
+            transform: 'translate(16 44) scale(0.8)',
+            dashed: true,
+          },
+        ],
+      },
+      palette,
+      { x: 0, y: 0, width: 80, height: 100 },
+    )
+
+    expect(scaled).toContain('stroke-width="5"')
+    expect(scaled).toContain('stroke-dasharray="7.5 15"')
+    expect(scaleOf('translate(160 0) scale(-1 1)')).toBe(1)
+    expect(scaleOf('rotate(20 80 100) scale(2) scale(1.5)')).toBe(3)
+    expect(scaleOf()).toBe(1)
+  })
+
+  it('clips the drawing to its box, as the crest and the tile do', () => {
+    expect(svg).not.toContain('overflow')
   })
 
   it('falls back to the second ink for a tint the palette lacks', () => {
@@ -177,6 +220,16 @@ describe('what the command line asks for', () => {
       'going-merry',
       'thousand-sunny',
     ])
+  })
+
+  it('names a sheet of drafts alone, so it lands inside the folder', async () => {
+    const folder = mkdtempSync(path.join(tmpdir(), 'art-draft-'))
+    const draft = path.join(folder, 'alone.mjs')
+    writeFileSync(draft, "export default { arm: [{ d: 'M0 0 L1 1' }] }")
+
+    const sheet = await cellsFor({ draft, ids: [], out })
+
+    expect(sheet.name).toBe('drafts')
   })
 
   it('refuses an id no record has, and a saga with no drawings', async () => {

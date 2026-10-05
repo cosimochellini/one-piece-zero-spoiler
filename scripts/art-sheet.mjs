@@ -12,7 +12,8 @@
 // (or `--out`) as SVG, and as PNG when `rsvg-convert` (librsvg) is on PATH.
 // librsvg paints every `oklch()` black, so the colours are read from the
 // tokens and converted to hex here; and it is not trusted with
-// `non-scaling-stroke`, so each placement scales its own stroke back to 2px.
+// `non-scaling-stroke`, so each path scales its own pen back to 2px, undoing
+// both the box it is placed in and any `scale()` in its own transform.
 import { execFileSync } from 'node:child_process'
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
@@ -124,7 +125,28 @@ function inkOf(stroke, palette, tint) {
 }
 
 /**
- * One drawing placed in a box, with its pen scaled back to 2px.
+ * How much a stroke's own transform scales its line. The site draws every
+ * path with `non-scaling-stroke`, so the pen is divided by this to stay at
+ * 2px. A non-uniform scale is averaged; the archive uses none but a mirror.
+ * @param {string | undefined} transform The stroke's transform, if any.
+ * @returns {number} The factor, 1 when nothing scales.
+ */
+export function scaleOf(transform = '') {
+  const factors = transform
+    .split('scale(')
+    .slice(1)
+    .map((rest) => rest.slice(0, rest.indexOf(')')).replaceAll(',', ' '))
+  let factor = 1
+  for (const args of factors) {
+    const [x, y = x] = args.split(' ').filter(Boolean).map(Number)
+    factor *= Math.sqrt(Math.abs(x * y))
+  }
+  return factor
+}
+
+/**
+ * One drawing placed in a box, with its pen scaled back to 2px. The box
+ * clips, as the crest's and the tile's `<svg>` do.
  * @param {Cell} cell The drawing.
  * @param {Palette} palette The colours.
  * @param {{ x: number, y: number, width: number, height: number }} box Where.
@@ -133,17 +155,18 @@ function inkOf(stroke, palette, tint) {
 export function drawingSvg(cell, palette, box) {
   const unit = ART.width / box.width
   const paths = cell.strokes.map((stroke) => {
+    const pen = unit / scaleOf(stroke.transform)
     const transform =
       stroke.transform === undefined ? '' : ` transform="${stroke.transform}"`
     const dash =
       stroke.dashed === true ?
-        ` stroke-dasharray="${DASH.map((step) => step * unit).join(' ')}"`
+        ` stroke-dasharray="${DASH.map((step) => step * pen).join(' ')}"`
       : ''
-    return `<path d="${stroke.d}" stroke="${inkOf(stroke, palette, cell.tint)}"${transform}${dash}/>`
+    return `<path d="${stroke.d}" stroke="${inkOf(stroke, palette, cell.tint)}" stroke-width="${PEN * pen}"${transform}${dash}/>`
   })
   return [
-    `<svg x="${box.x}" y="${box.y}" width="${box.width}" height="${box.height}" viewBox="0 0 ${ART.width} ${ART.height}" overflow="visible">`,
-    `<g fill="none" stroke-width="${PEN * unit}" stroke-linecap="round" stroke-linejoin="round">`,
+    `<svg x="${box.x}" y="${box.y}" width="${box.width}" height="${box.height}" viewBox="0 0 ${ART.width} ${ART.height}">`,
+    '<g fill="none" stroke-linecap="round" stroke-linejoin="round">',
     ...paths,
     '</g></svg>',
   ].join('')
@@ -293,7 +316,7 @@ export async function cellsFor(options) {
     return stagesOf(entity, art)
   })
   return {
-    name: options.ids.join('+'),
+    name: options.ids.join('+') || 'drafts',
     cells: [...stages, ...(await draftsOf(options.draft, stages[0]?.tint))],
   }
 }
