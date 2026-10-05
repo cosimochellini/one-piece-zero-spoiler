@@ -1034,4 +1034,32 @@ describe('a record drawn again later in the story', () => {
     expect(teachAt({ mode: 'chapter', chapter: 924 })).toBe(tricorne?.value)
     expect(teachAt({ mode: 'chapter', chapter: 925 })).toBe(plumed?.value)
   })
+
+  describe('twice, following Sanji’s knife through the Raid Suit', () => {
+    const sanji = filed('sanji')
+    const knife = DRAWINGS.sanji
+    const [cape, ifrit] = REDRAWINGS['sanji'] ?? []
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(sanji, 'en', reveal(bookmark)).visual.strokes
+
+    it('hangs the cape from 925 and lights the taller flame from 1061', () => {
+      expect(cape?.episode).toBe(925)
+      expect(ifrit?.episode).toBe(1061)
+
+      expect(drawnAt(ep(924))).toBe(knife)
+      expect(drawnAt(ep(925))).toBe(cape?.value)
+      expect(drawnAt(ep(1060))).toBe(cape?.value)
+      expect(drawnAt(ep(1061))).toBe(ifrit?.value)
+      expect(drawnAt(null)).toBe(knife)
+    })
+
+    it('keeps each from a chapter reader until the manga shows it', () => {
+      // The manga puts him in the suit in chapter 931 and lights Ifrit Jambe
+      // in 1034.
+      expect(drawnAt({ mode: 'chapter', chapter: 930 })).toBe(knife)
+      expect(drawnAt({ mode: 'chapter', chapter: 931 })).toBe(cape?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 1033 })).toBe(cape?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 1034 })).toBe(ifrit?.value)
+    })
+  })
 })
