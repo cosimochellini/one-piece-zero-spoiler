@@ -152,7 +152,8 @@ export const skypieaArt = {
     shadow(70, 156, 48),
   ],
 
-  // A closed book with a paw print pressed into the cover.
+  // A closed book with a paw print pressed into the cover. The paw pressed
+  // into a steel plate from 469, in `skypieaRedrawn`.
   'bartholomew-kuma': [
     { d: 'M40 54 H118 q6 0 6 6 V152 q0 6 -6 6 H40z' },
     { d: 'M40 54 q-10 52 0 104' },
@@ -848,6 +849,38 @@ export const skypieaRedrawn: Redrawings = {
           ...SENGOKU_GOAT,
         ] satisfies Stroke[]
       ).map((stroke) => ({ ...stroke, transform: 'translate(0 -30)' })),
+    },
+  ],
+
+  // The paw pressed into a riveted steel plate, the book closed beneath it:
+  // Vegapunk has finished him, a weapon with his past erased, as Doflamingo
+  // tells Ivankov at Marineford at 469 (ch. 560). The plate's edge and the
+  // book's pages are hatched, never filled.
+  'bartholomew-kuma': [
+    {
+      episode: 469,
+      chapter: 560,
+      value: [
+        { d: 'M116 70 H118 q6 0 6 6 V166 q0 6 -6 6 H40 V136' },
+        { d: 'M40 172 q-6 -18 -4 -36' },
+        { d: 'M124 78 q8 4 8 10 V162 q0 6 -8 8' },
+        { d: 'M124 100 h8 M124 120 h8 M124 140 h8', role: 'ambient' },
+        { d: 'M24 34 H110 V130 H24z' },
+        { d: 'M110 34 l6 6 V136 H30 l-6 -6' },
+        {
+          d: 'M111 56 l4 4 M111 76 l4 4 M111 96 l4 4 M111 116 l4 4',
+          role: 'ambient',
+        },
+        {
+          d: `${circle(32, 42, 3)} ${circle(102, 42, 3)} ${circle(32, 122, 3)} ${circle(102, 122, 3)}`,
+        },
+        { d: ellipse(67, 98, 20, 15), role: 'accent' },
+        {
+          d: `${circle(45, 74, 7)} ${circle(59, 64, 7)} ${circle(77, 64, 7)} ${circle(91, 74, 7)}`,
+          role: 'accent',
+        },
+        shadow(80, 182, 54),
+      ],
     },
   ],
 }

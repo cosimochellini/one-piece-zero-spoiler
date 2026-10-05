@@ -948,4 +948,21 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 547 })).toBe(shoes)
     expect(drawnAt({ mode: 'chapter', chapter: 548 })).toBe(gate?.value)
   })
+
+  it('presses Kuma’s paw into a steel plate only from episode 469', () => {
+    const kuma = filed('bartholomew-kuma')
+    const book = DRAWINGS['bartholomew-kuma']
+    const plate = REDRAWINGS['bartholomew-kuma']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(kuma, 'en', reveal(bookmark)).visual.strokes
+
+    expect(plate?.episode).toBe(469)
+
+    expect(drawnAt(ep(468))).toBe(book)
+    expect(drawnAt(ep(469))).toBe(plate?.value)
+    expect(drawnAt(null)).toBe(book)
+    // The manga has Doflamingo tell Ivankov what he has become in chapter 560.
+    expect(drawnAt({ mode: 'chapter', chapter: 559 })).toBe(book)
+    expect(drawnAt({ mode: 'chapter', chapter: 560 })).toBe(plate?.value)
+  })
 })
