@@ -734,13 +734,6 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'whorls',
   }),
-  'squirrel-squirrel-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
   'dog-dog-fruit-model-okuchi-no-makami': fruit({
     body: 'star',
     grain: 5,
@@ -765,13 +758,6 @@ export const fruitArt = {
   'brain-brain-fruit': fruit({
     body: 'oblong',
     grain: 2,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
-  'water-water-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
     leaf: 'left',
     stem: 'hooked',
     swirl: 'waves',

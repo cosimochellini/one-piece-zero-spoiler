@@ -163,12 +163,12 @@ export const egghead: Saga = {
     {
       id: 's-shark',
       kind: 'character',
-      revealedAtEpisode: 1092,
+      revealedAtEpisode: 1095,
       revealedAtChapter: 1071,
       name: { it: 'S-Shark', en: 'S-Shark' },
       summary: {
-        it: 'Un serafino dai tratti di uomo-pesce, che solleva l’acqua intorno a Egghead e la usa come una frusta contro chi difende il laboratorio.',
-        en: 'A Seraphim with fish-man features, who lifts the sea around Egghead and drives it like a whip at whoever defends the laboratory.',
+        it: 'Un serafino costruito sul modello di un uomo-pesce, che nuota nel terreno e nei muri di Egghead come se fossero acqua.',
+        en: 'A Seraphim built on the pattern of a fish-man, who swims through the ground and the walls of Egghead as if they were water.',
       },
       visual: { art: 's-shark', tint: 'blue' },
     },
@@ -585,14 +585,9 @@ export const egghead: Saga = {
     // record of their own: what they carry is a copy grown from another
     // body, not a second fruit, and the log above each of them already says
     // they are built on somebody else's pattern. A record per copy would put
-    // four near-identical drawings on the sheet and say nothing more.
-    //
-    // Three of the four point at a fruit the archive already files for the
-    // body it was copied from. The fourth, `water-water-fruit`, has nobody
-    // else: whoever ate it first is not a record here yet, so its page lists
-    // the copy alone. That is the archive being honest about what it holds
-    // rather than a hole — the fruit was named on screen and the eater was
-    // not.
+    // four near-identical drawings on the sheet and say nothing more. Each
+    // of the four points at the fruit the archive files for the body it was
+    // copied from.
     's-snake': {
       role: SERAPHIM_ROLE,
       log: {
@@ -626,12 +621,12 @@ export const egghead: Saga = {
     's-shark': {
       role: SERAPHIM_ROLE,
       log: {
-        it: 'Il quarto dei serafini sbarcati su Egghead è costruito sul modello di un uomo-pesce e comanda l’acqua che ha intorno. Nuota nell’aria come farebbe in mare, e il mare gli risponde: lo alza in colonne e lo scaglia contro il laboratorio. Come gli altri ha le ali di fuoco, la faccia di un bambino e nessuna intenzione di fermarsi.',
-        en: 'The fourth of the Seraphim put ashore on Egghead is built on the pattern of a fish-man and commands the water around it. It swims through the air as it would through the sea, and the sea answers: it rises in columns and is thrown at the laboratory. Like the others it has wings of fire, a child’s face and no intention of stopping.',
+        it: 'Il quarto dei serafini su Egghead è costruito sul modello di un uomo-pesce e combatte con il karate degli uomini-pesce. Si immerge nel terreno e attraversa i muri come si nuota in mare, e riemerge alle spalle di chi ha davanti. Come gli altri ha le ali di fuoco, la faccia di un bambino e nessuna intenzione di fermarsi.',
+        en: 'The fourth of the Seraphim on Egghead is built on the pattern of a fish-man and fights with fish-man karate. It dives into the ground and through walls the way a man swims in the sea, and comes up behind whoever it is fighting. Like the others it has wings of fire, a child’s face and no intention of stopping.',
       },
-      affiliation: [{ episode: 1092, value: SERAPHIM }],
-      origin: [{ episode: 1092, value: EGGHEAD }],
-      devilFruit: [{ episode: 1092, value: ['water-water-fruit'] }],
+      affiliation: [{ episode: 1095, value: SERAPHIM }],
+      origin: [{ episode: 1095, value: EGGHEAD }],
+      devilFruit: [{ episode: 1095, value: ['swim-swim-fruit'] }],
     },
     'edison': {
       role: {

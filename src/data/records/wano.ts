@@ -1397,8 +1397,8 @@ export const wano: Saga = {
         en: 'Beasts Pirates headliner',
       },
       log: {
-        it: 'Nella fortezza dell’Imperatore fa da occhi e da voce: con il suo frutto del diavolo guarda attraverso i muri e poi trasmette quello che vede in ogni stanza dell’isola. Segnala gli intrusi corridoio per corridoio, e a ogni annuncio la caccia ricomincia da capo. Chi vuole muoversi di nascosto deve prima far tacere lei.',
-        en: 'Inside the Emperor’s fortress she works as its eyes and its voice: her devil fruit sees through walls, and she broadcasts what she finds into every room on the island. She calls out intruders corridor by corridor, and each announcement starts the hunt over again. Anyone who wants to move unseen has to silence her first.',
+        it: 'Nella fortezza dell’Imperatore fa da occhi e da voce: con la maschera di carta che porta sul viso guarda attraverso i muri e poi trasmette quello che vede in ogni stanza dell’isola. Segnala gli intrusi corridoio per corridoio, e a ogni annuncio la caccia ricomincia da capo. Chi vuole muoversi di nascosto deve prima far tacere lei.',
+        en: 'Inside the Emperor’s fortress she works as its eyes and its voice: the paper mask over her face sees through walls, and she broadcasts what she finds into every room on the island. She calls out intruders corridor by corridor, and each announcement starts the hunt over again. Anyone who wants to move unseen has to silence her first.',
       },
       affiliation: [
         {
@@ -1409,7 +1409,6 @@ export const wano: Saga = {
           },
         },
       ],
-      devilFruit: [{ episode: 995, value: ['squirrel-squirrel-fruit'] }],
     },
     'tsurujo': {
       chronicle: wanoChronicles.tsurujo,

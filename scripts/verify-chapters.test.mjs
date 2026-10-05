@@ -51,7 +51,7 @@ describe('the page a record is read from', () => {
     )
   })
 
-  it('reads a paired record from both pages and a nameless one from none', () => {
+  it('reads a paired record from both pages', () => {
     expect(
       titlesOf({
         id: 'kiwi-and-mozu',
@@ -59,13 +59,6 @@ describe('the page a record is read from', () => {
         name: name('x', 'x'),
       }),
     ).toEqual([['Kiwi', 'Mozu']])
-    expect(
-      titlesOf({
-        id: 'water-water-fruit',
-        kind: 'fruit',
-        name: name('x', 'x'),
-      }),
-    ).toEqual([])
   })
 })
 
@@ -197,6 +190,5 @@ describe('the verdict', () => {
     expect(verdictOf(2, { wiki: 2 })).toBe('equal')
     expect(verdictOf(3, { wiki: 2 })).toBe('kept')
     expect(verdictOf(3, {})).toBe('unresolved')
-    expect(verdictOf(3, { unverifiable: true })).toBe('unverifiable')
   })
 })

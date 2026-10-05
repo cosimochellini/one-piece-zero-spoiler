@@ -51,6 +51,18 @@ import type { Entity } from './types'
  * English edition's in `en`; the id is an English slug. Where the dub never
  * voiced a character the Star Comics spelling stands in.
  *
+ * A devil fruit is a record only under a name its author gave it. Where the
+ * story says the name, in a chapter or an episode, the fruit is filed there,
+ * even if an SBS printed it first (the Jiki Jiki no Mi waits for chapter
+ * 1031, the Toshi Toshi no Mi for chapter 1099). A name printed only outside
+ * the story, on a Vivre Card or in an SBS, still counts, since the story will
+ * never say it: the fruit is filed where the story shows the power and who
+ * has it, and the name adds nothing that scene has not shown (Tama's Kibi
+ * Kibi, Raizo's Maki Maki, Jack's Model: Mammoth). A fruit nobody has named
+ * is not a record and no name is made up for it; the eater's dossier says
+ * what the power does instead (Bao Huang's flying-squirrel SMILE, issue
+ * #174).
+ *
  * Arc thresholds are the episode and the chapter the arc opens on, checked
  * against the wiki's chapter range by the same script.
  *

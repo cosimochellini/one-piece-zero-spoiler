@@ -1455,18 +1455,6 @@ export const devilFruits: Saga = {
       visual: { art: 'brush-brush-fruit', tint: 'wine' },
     },
     {
-      id: 'squirrel-squirrel-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 995,
-      revealedAtChapter: 995,
-      name: { it: 'Frutto Risu Risu', en: 'Squirrel-Squirrel Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in uno scoiattolo, leggero abbastanza da correre lungo una trave e piccolo abbastanza da passare dove chi lo cerca non guarda.',
-        en: 'Turns the body into a squirrel, light enough to run along a roof beam and small enough to go where nobody looking for it will think to look.',
-      },
-      visual: { art: 'squirrel-squirrel-fruit', tint: 'teal' },
-    },
-    {
       id: 'dog-dog-fruit-model-okuchi-no-makami',
       kind: 'fruit',
       revealedAtEpisode: 1040,
@@ -1516,18 +1504,6 @@ export const devilFruits: Saga = {
         en: 'Lets the head hold anything put into it and never fill up, so nothing read or worked out is ever lost, at the price of a skull that has to keep growing.',
       },
       visual: { art: 'brain-brain-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'water-water-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1092,
-      revealedAtChapter: 1071,
-      name: { it: 'Frutto Mizu Mizu', en: 'Water-Water Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in acqua: i colpi lo attraversano, e la stessa acqua può essere scagliata fuori in un getto che taglia.',
-        en: 'Turns the body to water, so blows pass through it, and that same water can be driven out in a jet that cuts.',
-      },
-      visual: { art: 'water-water-fruit', tint: 'azure' },
     },
     {
       id: 'age-age-fruit',

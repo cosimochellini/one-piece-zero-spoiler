@@ -34,9 +34,8 @@ import { chapterTexts, fetchPage } from './wiki.mjs'
 /**
  * Records whose English name is not their wiki page. A list names the pages
  * of a paired record (two fish-men filed as one), whose chapter is the later
- * of the two. `null` marks a record the wiki has no page for: the two fruits
- * the archive names that the wiki leaves unnamed (issue #174).
- * @type {Record<string, null | string | string[]>}
+ * of the two.
+ * @type {Record<string, string | string[]>}
  */
 export const TITLES = {
   'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
@@ -55,9 +54,7 @@ export const TITLES = {
   'rock-and-scotch': ['Rock', 'Scotch'],
   'ryuma': 'Ryuma (Zombie)',
   'sodom-and-gomorrah': ['Sodom', 'Gomorrah'],
-  'squirrel-squirrel-fruit': null,
   'water-seven-arc': 'Water 7 Arc',
-  'water-water-fruit': null,
 }
 
 /**
@@ -65,14 +62,10 @@ export const TITLES = {
  * edition's name is the page for most records; an arc page ends in `Arc`; a
  * fruit page is the Japanese name, which the Italian edition keeps.
  * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
- * @returns {string[][]} Alternatives, each a list of pages whose later chapter counts; none for a record without a page.
+ * @returns {string[][]} Alternatives, each a list of pages whose later chapter counts.
  */
 export function titlesOf(record) {
   const known = TITLES[record.id]
-  if (known === null) {
-    return []
-  }
-
   if (known !== undefined) {
     return [typeof known === 'string' ? [known] : [...known]]
   }
@@ -150,9 +143,9 @@ function storyChapterOf(first) {
  * (Gum-Gum, chapter 1, "named" Qref; Zou Zou, chapter 400, Funkfreed's
  * infobox; Wapu Wapu, chapter 1063, Augur's introduction; Momonosuke's
  * artificial fruit, chapter 684, its debut), or a fruit whose full name the
- * story never says, held at the chapter that says what the archive can show
+ * story never says, held at the chapter that shows the power and who has it
  * (Jack's Zou Zou class, chapter 810; Tama's Kibi Kibi, chapter 911, its
- * debut; both are issue #174).
+ * debut; the rule is in `src/data/entities.ts`).
  * @type {Record<string, number>}
  */
 const NAMED_AT = {
@@ -258,7 +251,7 @@ function numberAfter(pattern, text) {
   return match?.groups === undefined ? undefined : Number(match.groups['n'])
 }
 
-/** @typedef {{ page?: string, wiki?: number, wikiEpisode?: number, unverifiable?: true }} Source */
+/** @typedef {{ page?: string, wiki?: number, wikiEpisode?: number }} Source */
 
 /**
  * The chapter the wiki gives one record, trying each alternative in turn.
@@ -267,12 +260,7 @@ function numberAfter(pattern, text) {
  * @returns {Promise<Source>} The page(s) read and the chapter, or neither.
  */
 async function sourceOf(record, chapters) {
-  const alternatives = titlesOf(record)
-  if (alternatives.length === 0) {
-    return { unverifiable: true }
-  }
-
-  for (const titles of alternatives) {
+  for (const titles of titlesOf(record)) {
     const pages = await Promise.all(titles.map((title) => fetchPage(title)))
     if (pages.every((page) => page !== undefined)) {
       return readingOf(record, pages, chapters)
@@ -317,13 +305,9 @@ function readingOf(record, pages, chapters) {
  * Which way a record disagrees with its source, if it does.
  * @param {number} filed The record's chapter.
  * @param {Source} source What the wiki says.
- * @returns {'equal' | 'kept' | 'too low' | 'unresolved' | 'unverifiable'} The verdict.
+ * @returns {'equal' | 'kept' | 'too low' | 'unresolved'} The verdict.
  */
 export function verdictOf(filed, source) {
-  if (source.unverifiable === true) {
-    return 'unverifiable'
-  }
-
   if (source.wiki === undefined) {
     return 'unresolved'
   }
@@ -335,7 +319,7 @@ export function verdictOf(filed, source) {
   return filed === source.wiki ? 'equal' : 'kept'
 }
 
-/** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, unverifiable?: true, verdict: string }} Row */
+/** @typedef {{ id: string, kind: string, filed: number, episode: number, page?: string, wiki?: number, wikiEpisode?: number, verdict: string }} Row */
 
 /**
  * Every record against its page, in archive order.
@@ -389,15 +373,13 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   const wrong = rows.filter(
     (row) => row.verdict === 'too low' || row.verdict === 'unresolved',
   )
-  const tables = ['too low', 'unresolved', 'unverifiable', 'equal', 'kept'].map(
-    (verdict) => {
-      return table(
-        verdict,
-        rows.filter((row) => row.verdict === verdict),
-        (row) => [row.filed, row.wiki, row.page],
-      )
-    },
-  )
+  const tables = ['too low', 'unresolved', 'equal', 'kept'].map((verdict) => {
+    return table(
+      verdict,
+      rows.filter((row) => row.verdict === verdict),
+      (row) => [row.filed, row.wiki, row.page],
+    )
+  })
   const episodes = table(
     'episode below wiki, for information',
     rows.filter(
