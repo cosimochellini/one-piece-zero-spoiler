@@ -43,6 +43,19 @@ describe('the archive resolve hook', () => {
     )
   })
 
+  it('reads a directory as its index.ts', () => {
+    const href = pathToFileURL(
+      path.join(ROOT, 'src', 'data', 'art', 'fruits', 'index.ts'),
+    ).href
+    const parent = pathToFileURL(
+      path.join(ROOT, 'src', 'data', 'art', 'index.ts'),
+    ).href
+
+    expect(
+      resolveArchive('./fruits', { parentURL: parent }, resolving([href])),
+    ).toBe(href)
+  })
+
   it('passes the failure on for a package or a file that does not exist', () => {
     expect(() =>
       resolveArchive('some-package', { parentURL }, resolving([])),

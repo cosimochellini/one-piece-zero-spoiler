@@ -32,7 +32,8 @@ function fileFor(specifier, parent) {
 
 /**
  * Teaches this process the two things the archive's own imports assume: that
- * `~/` means `src/`, and that a specifier with no extension names a `.ts` file.
+ * `~/` means `src/`, and that a specifier with no extension names a `.ts` file
+ * or a directory's `index.ts`.
  * @returns {void}
  */
 function registerArchiveResolution() {
@@ -41,7 +42,8 @@ function registerArchiveResolution() {
 
 /**
  * The resolve hook: the alias first, then the `.ts` file a specifier with no
- * extension names, when the plain resolution fails and that file exists.
+ * extension names, or the `index.ts` of the directory it names, when the
+ * plain resolution fails and that file exists.
  * @param {string} specifier The specifier as written.
  * @param {{ parentURL?: string }} context The importing module.
  * @param {(specifier: string, context: { parentURL?: string }) => unknown} nextResolve The next hook in the chain.
@@ -58,12 +60,19 @@ export function resolveArchive(specifier, context, nextResolve) {
     return nextResolve(aliased, context)
   } catch (error) {
     const file = fileFor(aliased, context.parentURL)
+    // A directory is imported for its `index.ts`, as `./fruits` is.
+    const module =
+      file === null ? undefined : (
+        [`${file}.ts`, path.join(file, 'index.ts')].find((candidate) =>
+          existsSync(candidate),
+        )
+      )
 
-    if (file === null || !existsSync(`${file}.ts`)) {
+    if (module === undefined) {
       throw error
     }
 
-    return nextResolve(pathToFileURL(`${file}.ts`).href, context)
+    return nextResolve(pathToFileURL(module).href, context)
   }
 }
 

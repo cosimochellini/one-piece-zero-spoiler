@@ -8,7 +8,19 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/**
+ * Franky's wrench and star-headed bolt, lying under the forearm of both his
+ * drawings, so the arm is the one thing that changes at 517.
+ */
+const FRANKY_TOOLS: Stroke[] = [
+  { d: 'M22 168 H80 M22 176 H80 M22 168 a4 4 0 0 0 0 8' },
+  { d: 'M80 168 C82 156 100 154 106 162 l-9 4 v6 l9 4 C100 186 82 186 80 176' },
+  { d: star(128, 172, 10, 4.5), role: 'accent' },
+  { d: circle(128, 172, 3), role: 'accent' },
+  shadow(78, 190, 54),
+]
 
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
@@ -263,14 +275,29 @@ export const waterSevenArt = {
     shadow(74, 180, 52),
   ],
 
-  // A wrench and a bolt with a star head. The forearm of the two years is
-  // drawn from 517, in `waterSevenRedrawn`.
+  // The forearm of the first years, raised: flesh over the rebuilt arm,
+  // widest at the wrist and tapering to the elbow, the star tattoo whole on
+  // its face and the side turned away hatched; an ordinary fist on top and
+  // the upper arm going down behind his tools, the wrench and the star-headed
+  // bolt. No weapon in the arm and no rivet: the arm is all the first meeting
+  // shows. The forearm of the two years is drawn from 517, in
+  // `waterSevenRedrawn`, over the same tools.
   'franky': [
-    { d: 'M36 164 L96 104 M44 172 L104 112 M36 164 L44 172' },
-    { d: 'M96 104 a20 20 0 1 1 28 -28 l-8 8 a6 6 0 0 0 -8 8 L104 112' },
-    { d: star(124, 54, 14, 7), role: 'accent' },
-    { d: circle(124, 54, 4), role: 'accent' },
-    shadow(70, 182, 30),
+    {
+      d: 'M63 56 V28 Q63 22 65 22 Q68 18 73 22 Q78 18 83 22 Q88 18 93 22 Q98 18 103 22 V56',
+    },
+    { d: 'M73 22 v8 M83 22 v8 M93 22 v8 M63 40 q12 7 24.8 0', role: 'soft' },
+    {
+      d: 'M53 54 C44 76 55 104.3 70.4 128 Q83 134 95.6 128 C111 104.3 122 76 113 54',
+    },
+    { d: 'M53 54 Q83 64 113 54', role: 'soft' },
+    { d: star(83, 88, 17, 7.5), role: 'accent' },
+    {
+      d: 'M106 66 l6 -4 M109 80 l6 -4 M107 94 l6 -4 M102 108 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M72 132 V148 M94 132 V148', role: 'soft' },
+    ...FRANKY_TOOLS,
   ],
 
   // A blueprint with a hull drawn on it, and a shipwright's mallet below.
@@ -787,13 +814,7 @@ export const waterSevenRedrawn: Redrawings = {
         },
         { d: 'M52 124 V144 Q52 150 58 150 H86 Q92 150 92 144 V124' },
         { d: `${circle(72, 137, 8)} M67 142 l10 -10`, role: 'soft' },
-        { d: 'M22 168 H80 M22 176 H80 M22 168 a4 4 0 0 0 0 8' },
-        {
-          d: 'M80 168 C82 156 100 154 106 162 l-9 4 v6 l9 4 C100 186 82 186 80 176',
-        },
-        { d: star(128, 172, 10, 4.5), role: 'accent' },
-        { d: circle(128, 172, 3), role: 'accent' },
-        shadow(78, 190, 54),
+        ...FRANKY_TOOLS,
       ],
     },
   ],
