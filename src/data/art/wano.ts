@@ -168,18 +168,13 @@ export const wanoArt = {
     { d: 'M4 190 H156', role: 'ambient' },
   ],
 
-  // A kunai, and the fruit ripening beside it.
+  // A kunai: her fruit is not named until 916 (see wanoRedrawn).
   'shinobu': [
-    { d: 'M112 26 L100 56 L112 100 L124 56 Z' },
-    { d: 'M112 34 V96', role: 'soft' },
-    { d: 'M108 100 h8 V140 h-8 Z' },
-    { d: circle(112, 148, 9) },
-    {
-      d: `${circle(48, 110, 18)} ${circle(40, 148, 16)} ${circle(74, 144, 15)}`,
-      role: 'accent',
-    },
-    { d: 'M48 92 q8 -10 18 -6 M40 132 q4 -10 14 -8' },
-    shadow(54, 176, 40),
+    { d: 'M80 26 L68 56 L80 100 L92 56 Z' },
+    { d: 'M80 34 V96', role: 'soft' },
+    { d: 'M76 100 h8 V140 h-8 Z' },
+    { d: circle(80, 148, 9), role: 'accent' },
+    shadow(80, 176, 40),
   ],
 
   // A paper lantern with the flower crest of the old yakuza.
@@ -212,22 +207,14 @@ export const wanoArt = {
     { d: 'M4 188 H156', role: 'ambient' },
   ],
 
-  // A pteranodon's wing with fire along its edge, and the mask below it.
+  // His mask: the pteranodon waits for 924 (see wanoRedrawn).
   'king': [
     {
-      d: 'M24 116 C36 70 74 40 122 36 C128 48 128 62 122 74 C96 96 60 112 24 116 Z',
+      d: 'M54 100 C54 82 64 90 80 90 C96 90 106 82 106 100 C106 118 94 128 80 128 C66 128 54 118 54 100 Z',
     },
-    {
-      d: 'M120 40 C102 60 76 84 40 106 M122 56 C106 72 82 90 50 112',
-      role: 'soft',
-    },
-    { d: 'M54 56 c-4 -12 8 -14 6 -26 c8 10 16 12 10 26', role: 'accent' },
-    { d: 'M88 40 c-4 -12 8 -14 6 -26 c8 10 16 12 10 26', role: 'accent' },
-    {
-      d: 'M54 150 C54 132 64 140 80 140 C96 140 106 132 106 150 C106 168 94 178 80 178 C66 178 54 168 54 150 Z',
-    },
-    { d: 'M62 152 q18 -8 36 0 M80 158 V172', role: 'soft' },
-    { d: 'M56 146 H30 M104 146 H130' },
+    { d: 'M62 102 q18 -8 36 0 M80 108 V122', role: 'soft' },
+    { d: 'M56 96 H30 M104 96 H130', role: 'accent' },
+    shadow(80, 170, 40),
     { d: 'M4 188 H156', role: 'ambient' },
   ],
 
@@ -381,19 +368,19 @@ export const wanoArt = {
     shadow(80, 184, 48),
   ],
 
-  // A fox mask hanging from a walking stick.
+  // Two lit candles on a headband, as she wore them when she found Orochi (965).
   'kurozumi-higurashi': [
-    { d: 'M112 186 C108 140 104 100 102 66' },
-    { d: 'M102 66 C100 50 86 46 80 56' },
-    { d: 'M106 184 h12' },
+    { d: 'M52 124 V72 h12 V124 M96 124 V72 h12 V124' },
+    { d: 'M58 72 v-6 M102 72 v-6', role: 'soft' },
     {
-      d: 'M46 88 C46 72 78 72 78 88 C78 110 68 128 62 128 C56 128 46 110 46 88 Z',
+      d: 'M58 64 c-7 -8 -2 -16 0 -26 c5 10 7 18 0 26 Z M102 64 c-7 -8 -2 -16 0 -26 c5 10 7 18 0 26 Z',
       role: 'accent',
     },
-    { d: 'M46 88 L42 62 L58 76 M78 88 L82 62 L66 76', role: 'accent' },
-    { d: 'M50 98 q12 6 24 0', role: 'soft' },
-    { d: 'M62 78 C74 72 90 70 100 68', role: 'ambient', dashed: true },
-    { d: 'M4 190 H156', role: 'ambient' },
+    { d: 'M64 80 v8 M96 84 v6', role: 'soft' },
+    { d: 'M28 120 C50 134 110 134 132 120 V130 C110 144 50 144 28 130 Z' },
+    { d: 'M28 120 C50 108 110 108 132 120', role: 'soft' },
+    { d: 'M132 124 l14 10 M132 128 l8 16', role: 'soft' },
+    shadow(80, 176, 48),
   ],
 
   // A cicada under the dome of a barrier.
@@ -1013,6 +1000,49 @@ export const wanoArt = {
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const wanoRedrawn: Redrawings = {
+  // The kunai with fruit ripening beside it: she names the Ripe-Ripe
+  // Enticement Jutsu at 916 (ch. 924, below her record's chapter).
+  shinobu: [
+    {
+      episode: 916,
+      value: [
+        { d: 'M112 26 L100 56 L112 100 L124 56 Z' },
+        { d: 'M112 34 V96', role: 'soft' },
+        { d: 'M108 100 h8 V140 h-8 Z' },
+        { d: circle(112, 148, 9) },
+        {
+          d: `${circle(48, 110, 18)} ${circle(40, 148, 16)} ${circle(74, 144, 15)}`,
+          role: 'accent',
+        },
+        { d: 'M48 92 q8 -10 18 -6 M40 132 q4 -10 14 -8' },
+        shadow(54, 176, 40),
+      ],
+    },
+  ],
+  // A pteranodon's wing with fire along its edge, and the mask below it:
+  // he is captioned with the fruit and flies at 924 (ch. 930, below his record's chapter).
+  king: [
+    {
+      episode: 924,
+      value: [
+        {
+          d: 'M24 116 C36 70 74 40 122 36 C128 48 128 62 122 74 C96 96 60 112 24 116 Z',
+        },
+        {
+          d: 'M120 40 C102 60 76 84 40 106 M122 56 C106 72 82 90 50 112',
+          role: 'soft',
+        },
+        { d: 'M54 56 c-4 -12 8 -14 6 -26 c8 10 16 12 10 26', role: 'accent' },
+        { d: 'M88 40 c-4 -12 8 -14 6 -26 c8 10 16 12 10 26', role: 'accent' },
+        {
+          d: 'M54 150 C54 132 64 140 80 140 C96 140 106 132 106 150 C106 168 94 178 80 178 C66 178 54 168 54 150 Z',
+        },
+        { d: 'M62 152 q18 -8 36 0 M80 158 V172', role: 'soft' },
+        { d: 'M56 146 H30 M104 146 H130' },
+        { d: 'M4 188 H156', role: 'ambient' },
+      ],
+    },
+  ],
   // A katana with a chrysanthemum for a guard: she draws a sword for the
   // first time at 901 (ch. 914), when Tama is taken from the tea house.
   kiku: [

@@ -282,19 +282,15 @@ export const waterSevenArt = {
     { d: 'M100 150 h32 M100 178 h32', role: 'ambient' },
   ],
 
-  // A telephone snail, and a sword with a trunk curling off the guard.
+  // A ship going down by the bow under a cannonball: the Judicial Ship he
+  // has raided, and the cannon salute that hits him on arrival (ep. 249).
   'spandam': [
-    { d: circle(52, 112, 26) },
-    { d: 'M52 112 c-8 -4 -6 -16 4 -18 c14 -2 20 10 16 20', role: 'ambient' },
-    {
-      d: 'M18 150 q2 -16 22 -16 h50 q10 0 10 8 q0 8 -10 8z M90 134 v-12 q0 -8 8 -8',
-    },
-    { d: 'M32 84 q20 -16 42 0 l-6 10 q-14 -10 -30 0z', role: 'accent' },
-    { d: 'M120 34 h14 v92 h-14z' },
-    { d: 'M108 126 h38 v8 h-38z' },
-    { d: 'M124 134 v26 M120 160 h22 v9 h-22z' },
-    { d: 'M146 130 c16 6 20 22 8 30 c-8 5 -16 -3 -11 -11' },
-    shadow(70, 182, 54),
+    { d: 'M30 128 L124 104 L118 134 L42 150z' },
+    { d: 'M76 118 L64 50' },
+    { d: 'M64 50 L96 60 L70 76', role: 'accent' },
+    { d: circle(128, 42, 10), role: 'accent' },
+    { d: 'M142 28 l8 -6 M144 40 h12 M142 54 l8 6', role: 'soft' },
+    ...SEA.slice(1),
   ],
 
   // A round island hanging over a hole in the sea, the water pouring off its

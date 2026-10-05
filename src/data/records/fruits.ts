@@ -104,12 +104,12 @@ export const devilFruits: Saga = {
     {
       id: 'wax-wax-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 70,
+      revealedAtEpisode: 73,
       revealedAtChapter: 120,
       name: { it: 'Frutto Wax Wax', en: 'Wax-Wax Fruit' },
       summary: {
-        it: 'Fa colare cera dal corpo e la indurisce come pietra: riveste quello che tocca, e ciò che riveste smette di muoversi.',
-        en: 'Pours wax out of the body and sets it as hard as stone: it coats whatever it touches, and whatever is coated stops moving.',
+        it: 'Fa uscire cera dal corpo, e chi l’ha mangiato le dà la forma che vuole.',
+        en: 'Makes wax come out of the body, and the one who ate it shapes the wax at will.',
       },
       visual: { art: 'wax-wax-fruit', tint: 'wine' },
     },
@@ -272,7 +272,7 @@ export const devilFruits: Saga = {
     {
       id: 'cage-cage-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 128,
+      revealedAtEpisode: 130,
       revealedAtChapter: 217,
       name: { it: 'Frutto Cage Cage', en: 'Cage-Cage Fruit' },
       summary: {
@@ -332,8 +332,8 @@ export const devilFruits: Saga = {
     {
       id: 'slow-slow-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 208,
-      revealedAtChapter: 315,
+      revealedAtEpisode: 210,
+      revealedAtChapter: 309,
       name: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
       summary: {
         it: 'Spara un raggio che rallenta per trenta secondi tutto quello che colpisce: un pugno già tirato striscia nell’aria e arriva quando non serve più.',
@@ -569,32 +569,32 @@ export const devilFruits: Saga = {
     {
       id: 'venom-venom-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 424,
+      revealedAtEpisode: 425,
       revealedAtChapter: 530,
       name: { it: 'Frutto Doku Doku', en: 'Venom-Venom Fruit' },
       summary: {
-        it: 'Produce veleno di ogni tipo dal corpo: cola dalle mani, resta sospeso nell’aria come una nube e brucia tutto ciò su cui si posa.',
-        en: 'Makes poison of every kind from the body: it runs off the hands, hangs in the air as a cloud, and burns what it settles on.',
+        it: 'Produce veleno dal corpo: basta un alito per mettere a terra un uomo, e chi l’ha mangiato si nutre di veleno.',
+        en: 'Makes poison from the body: one breath of it floors a grown man, and the one who ate it eats poison for breakfast.',
       },
       visual: { art: 'venom-venom-fruit', tint: 'acid' },
     },
     {
       id: 'horm-horm-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 438,
-      revealedAtChapter: 541,
+      revealedAtEpisode: 440,
+      revealedAtChapter: 549,
       name: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
       summary: {
-        it: 'Fa spuntare dalle dita aghi che iniettano ormoni: chiudono le ferite, rimettono forza in un corpo che non ne ha, e cambiano un viso e una corporatura in altri.',
-        en: 'Grows needles from the fingers that inject hormones: they close wounds, put strength back into a body that has none, and change a face and a frame into another.',
+        it: 'Fa spuntare dalle dita aghi che iniettano ormoni, e un’iniezione basta a trasformare un uomo in una donna.',
+        en: 'Grows needles from the fingers that inject hormones, and one injection is enough to turn a man into a woman.',
       },
       visual: { art: 'horm-horm-fruit', tint: 'sand' },
     },
     {
       id: 'snip-snip-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 438,
-      revealedAtChapter: 541,
+      revealedAtEpisode: 442,
+      revealedAtChapter: 549,
       name: { it: 'Frutto Choki Choki', en: 'Snip-Snip Fruit' },
       summary: {
         it: 'Trasforma le mani in forbici che tagliano pietra e ferro come carta, e ciò che è stato tagliato si può poi piegare e portare via.',
@@ -605,8 +605,8 @@ export const devilFruits: Saga = {
     {
       id: 'bird-bird-fruit-model-phoenix',
       kind: 'fruit',
-      revealedAtEpisode: 461,
-      revealedAtChapter: 577,
+      revealedAtEpisode: 463,
+      revealedAtChapter: 553,
       name: {
         it: 'Frutto Tori Tori, modello Fenice',
         en: 'Bird-Bird Fruit, Model: Phoenix',
@@ -620,20 +620,20 @@ export const devilFruits: Saga = {
     {
       id: 'sparkle-sparkle-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 461,
-      revealedAtChapter: 577,
+      revealedAtEpisode: 463,
+      revealedAtChapter: 558,
       name: { it: 'Frutto Kira Kira', en: 'Sparkle-Sparkle Fruit' },
       summary: {
-        it: 'Trasforma il corpo in diamante: una lama ci si ferma sopra, e una spallata porta con sé tutta la durezza della pietra.',
-        en: 'Turns the body to diamond: a blade stops dead on it, and a shoulder thrown forward carries all the hardness of the stone with it.',
+        it: 'Trasforma il corpo in diamante, e una lama ci si ferma sopra.',
+        en: 'Turns the body to diamond, and a blade stops dead on it.',
       },
       visual: { art: 'sparkle-sparkle-fruit', tint: 'ivory' },
     },
     {
       id: 'wash-wash-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 461,
-      revealedAtChapter: 577,
+      revealedAtEpisode: 465,
+      revealedAtChapter: 556,
       name: { it: 'Frutto Woshu Woshu', en: 'Wash-Wash Fruit' },
       summary: {
         it: 'Lava una persona come un panno: ne esce strizzata e piatta, un lenzuolo da stendere al filo, e tranquilla.',
@@ -645,7 +645,7 @@ export const devilFruits: Saga = {
       id: 'dark-dark-fruit',
       kind: 'fruit',
       revealedAtEpisode: 462,
-      revealedAtChapter: 577,
+      revealedAtChapter: 558,
       name: { it: 'Frutto Yami Yami', en: 'Dark-Dark Fruit' },
       summary: {
         it: 'Trasforma il corpo in tenebra che risucchia dentro di sé tutto quello che ha intorno, e una mano posata su un altro mangiatore gli toglie il potere finché la presa regge.',
@@ -657,7 +657,7 @@ export const devilFruits: Saga = {
       id: 'magma-magma-fruit',
       kind: 'fruit',
       revealedAtEpisode: 463,
-      revealedAtChapter: 577,
+      revealedAtChapter: 558,
       name: { it: 'Frutto Magu Magu', en: 'Magma-Magma Fruit' },
       summary: {
         it: 'Trasforma il corpo in magma: i colpi lo attraversano, e un pugno tirato da quel corpo brucia tutto quello su cui arriva.',
@@ -669,7 +669,7 @@ export const devilFruits: Saga = {
       id: 'tremor-tremor-fruit',
       kind: 'fruit',
       revealedAtEpisode: 466,
-      revealedAtChapter: 577,
+      revealedAtChapter: 560,
       name: { it: 'Frutto Gura Gura', en: 'Tremor-Tremor Fruit' },
       summary: {
         it: 'Permette di afferrare l’aria e incrinarla come vetro, e quella crepa prosegue nella terra e nel mare e li scuote entrambi.',
@@ -680,15 +680,15 @@ export const devilFruits: Saga = {
     {
       id: 'human-human-fruit-model-daibutsu',
       kind: 'fruit',
-      revealedAtEpisode: 469,
-      revealedAtChapter: 577,
+      revealedAtEpisode: 480,
+      revealedAtChapter: 571,
       name: {
         it: 'Frutto Hito Hito, modello Daibutsu',
         en: 'Human-Human Fruit, Model: Daibutsu',
       },
       summary: {
-        it: 'Trasforma il corpo in un grande buddha d’oro alto molte volte tanto, e un palmo aperto lancia un’onda d’urto che spiana un cortile.',
-        en: 'Turns the body into a golden great buddha many times its own height, and an open palm from it sends out a blast that flattens a courtyard.',
+        it: 'Trasforma il corpo in un grande buddha d’oro alto molte volte tanto, e un suo colpo spacca un patibolo.',
+        en: 'Turns the body into a golden great buddha many times its own height, and one blow from it smashes a scaffold.',
       },
       visual: { art: 'human-human-fruit-model-daibutsu', tint: 'yellow' },
     },
@@ -707,12 +707,12 @@ export const devilFruits: Saga = {
     {
       id: 'mark-mark-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 526,
-      revealedAtChapter: 615,
+      revealedAtEpisode: 532,
+      revealedAtChapter: 620,
       name: { it: 'Frutto Mato Mato', en: 'Mark-Mark Fruit' },
       summary: {
-        it: 'Segna un bersaglio con una mano e un oggetto con l’altra, e da quel momento l’oggetto vola verso quel bersaglio, per quanto lontano si trovi.',
-        en: 'Marks a target with one hand and an object with the other, and from then on the object flies at that target, however far it has to travel.',
+        it: 'Segna una persona come bersaglio, e da quel momento ciò che viene lanciato la insegue, cambiando direzione e tornando indietro se serve.',
+        en: 'Marks a person as a target, and from then on whatever is thrown goes after them, veering and turning back if it has to.',
       },
       visual: { art: 'mark-mark-fruit', tint: 'red' },
     },
@@ -818,12 +818,12 @@ export const devilFruits: Saga = {
     {
       id: 'press-press-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 630,
-      revealedAtChapter: 706,
+      revealedAtEpisode: 634,
+      revealedAtChapter: 709,
       name: { it: 'Frutto Zushi Zushi', en: 'Press-Press Fruit' },
       summary: {
-        it: 'Piega il peso delle cose: quello che sta in piedi viene schiacciato a terra, e quello che sta a terra può essere sollevato in aria.',
-        en: 'Bends the weight of things: what is standing is pressed flat into the ground, and what is lying on the ground can be lifted into the air.',
+        it: 'Piega il peso delle cose: chi sta in piedi viene schiacciato a terra così forte da lasciare un buco nel pavimento.',
+        en: 'Bends the weight of things: whoever is standing is pressed flat into the floor, hard enough to leave a hole.',
       },
       visual: { art: 'press-press-fruit', tint: 'sand' },
     },
@@ -926,12 +926,12 @@ export const devilFruits: Saga = {
     {
       id: 'stitch-stitch-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 640,
-      revealedAtChapter: 716,
+      revealedAtEpisode: 641,
+      revealedAtChapter: 725,
       name: { it: 'Frutto Nui Nui', en: 'Stitch-Stitch Fruit' },
       summary: {
-        it: 'Cuce qualsiasi cosa a qualsiasi altra con un ago: una bocca chiusa, due persone insieme, un uomo al terreno su cui sta.',
-        en: 'Sews anything to anything else with a needle: a mouth shut, two people together, a man to the ground he is standing on.',
+        it: 'Cuce con un ago, e un uomo cucito al terreno su cui sta non riesce più a muoversi.',
+        en: 'Sews with a needle, and a man stitched to the ground he is standing on can no longer move.',
       },
       visual: { art: 'stitch-stitch-fruit', tint: 'yellow' },
     },
@@ -1139,12 +1139,12 @@ export const devilFruits: Saga = {
     {
       id: 'wring-wring-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 810,
-      revealedAtChapter: 854,
+      revealedAtEpisode: 812,
+      revealedAtChapter: 855,
       name: { it: 'Frutto Shibo Shibo', en: 'Wring-Wring Fruit' },
       summary: {
-        it: 'Strizza il liquido da qualunque cosa venga stretta, un frutto, una vela, un corpo vivo, finché quello che resta è piatto e asciutto.',
-        en: 'Wrings the liquid out of anything it takes hold of, a fruit, a sail, a living body, until what is left is flat and dry.',
+        it: 'Strizza una persona come un panno, finché resta un corpo rinsecchito e il suo succo si può bere.',
+        en: 'Wrings a person out like a cloth, until what is left is a shrivelled body and a juice that can be drunk.',
       },
       visual: { art: 'wring-wring-fruit', tint: 'pink' },
     },
@@ -1211,7 +1211,7 @@ export const devilFruits: Saga = {
     {
       id: 'pump-pump-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Frutto Kobu Kobu', en: 'Pump-Pump Fruit' },
       summary: {
@@ -1223,12 +1223,12 @@ export const devilFruits: Saga = {
     {
       id: 'push-push-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 879,
+      revealedAtEpisode: 880,
       revealedAtChapter: 905,
       name: { it: 'Frutto Oshi Oshi', en: 'Push-Push Fruit' },
       summary: {
-        it: 'Spinge il terreno come fosse argilla: la roccia cede sotto le mani, e una montagna si può impastare e togliere di mezzo.',
-        en: 'Pushes the ground as though it were clay: rock gives way under the hands, and a mountain can be kneaded aside.',
+        it: 'Spinge il terreno come fosse argilla, e la roccia cede sotto le mani.',
+        en: 'Pushes the ground as though it were clay, and rock gives way under the hands.',
       },
       visual: { art: 'push-push-fruit', tint: 'yellow' },
     },
@@ -1313,27 +1313,27 @@ export const devilFruits: Saga = {
     {
       id: 'ripe-ripe-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 912,
+      revealedAtEpisode: 916,
       revealedAtChapter: 930,
       name: { it: 'Frutto Juku Juku', en: 'Ripe-Ripe Fruit' },
       summary: {
-        it: 'Fa maturare quello che tocca e poi lo spinge oltre: un frutto marcisce, una serratura si arrugginisce, un muro si sbriciola sotto una mano.',
-        en: 'Ripens what it touches and then carries it past ripe: fruit rots, a lock rusts through, a wall crumbles away under a hand.',
+        it: 'Fa maturare quello che tocca e poi lo spinge oltre, finché marcisce: il terreno toccato si sfalda e si apre in una voragine.',
+        en: 'Ripens what it touches and then carries it past ripe until it rots, so the ground under a hand crumbles and opens into a pit.',
       },
       visual: { art: 'ripe-ripe-fruit', tint: 'flamingo' },
     },
     {
       id: 'dragon-dragon-fruit-ancient-model-pteranodon',
       kind: 'fruit',
-      revealedAtEpisode: 923,
+      revealedAtEpisode: 924,
       revealedAtChapter: 935,
       name: {
         it: 'Frutto Ryu Ryu, modello Pteranodonte',
         en: 'Dragon-Dragon Fruit, Ancient Model: Pteranodon',
       },
       summary: {
-        it: 'Un modello ancestrale: il corpo diventa uno pteranodonte, ali larghe abbastanza da portare via un uomo da un tetto e un becco che arriva per primo.',
-        en: 'An Ancient Model: the body becomes a pteranodon, wings wide enough to carry a grown man off a roof and a beak that arrives first.',
+        it: 'Un modello ancestrale: il corpo diventa uno pteranodonte, abbastanza forte in volo da respingere una nave giù da una cascata.',
+        en: 'An Ancient Model: the body becomes a pteranodon, strong enough in flight to drive a ship back down a waterfall.',
       },
       visual: {
         art: 'dragon-dragon-fruit-ancient-model-pteranodon',
@@ -1362,7 +1362,7 @@ export const devilFruits: Saga = {
       id: 'time-time-fruit',
       kind: 'fruit',
       revealedAtEpisode: 963,
-      revealedAtChapter: 972,
+      revealedAtChapter: 966,
       name: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
       summary: {
         it: 'Manda una persona avanti nel tempo, di anni o di secoli, e mai indietro: parte da un giorno e arriva in un altro senza che le sia cambiato niente.',
@@ -1484,12 +1484,12 @@ export const devilFruits: Saga = {
     {
       id: 'woods-woods-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 1077,
-      revealedAtChapter: 1057,
+      revealedAtEpisode: 1081,
+      revealedAtChapter: 1061,
       name: { it: 'Frutto Mori Mori', en: 'Woods-Woods Fruit' },
       summary: {
-        it: 'Trasforma il corpo in legno e vegetazione: i colpi lo attraversano, e mette fuori radici che afferrano una persona e le tolgono l’acqua di dosso.',
-        en: 'Turns the body to wood and growing plant, so blows pass through it, and puts out roots that take hold of a person and draw the water out of them.',
+        it: 'Trasforma il corpo in legno e vegetazione, e mette fuori radici che si allargano sul terreno e afferrano chi ci sta sopra.',
+        en: 'Turns the body to wood and growing plant, and puts out roots that spread over the ground and take hold of whoever stands on it.',
       },
       visual: { art: 'woods-woods-fruit', tint: 'teal' },
     },

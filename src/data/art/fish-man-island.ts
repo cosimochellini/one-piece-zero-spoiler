@@ -40,36 +40,40 @@ export const fishManIslandArt = {
     ...SEA,
   ],
 
-  // A scythe, the mud still running off the blade.
+  // A wanted poster, water running off its bottom edge.
   'caribou': [
-    { d: 'M44 184 C58 140 76 96 96 52' },
-    { d: 'M52 186 C66 142 84 98 104 54' },
-    { d: 'M44 184 L52 186 M96 52 L104 54' },
-    { d: 'M60 156 l10 4 M72 128 l10 4', role: 'soft' },
-    { d: 'M100 53 C74 44 44 52 26 74 C48 70 76 70 96 78 Z', role: 'accent' },
-    { d: 'M94 70 C70 62 46 66 30 78', role: 'accent' },
-    { d: 'M40 84 q-3 10 1 15 q5 -5 2 -15z', role: 'soft' },
+    { d: 'M40 40 H120 V160 H40 Z' },
+    { d: 'M52 52 H108', role: 'soft' },
+    { d: 'M52 62 H108 V118 H52 Z', role: 'soft' },
+    { d: 'M54 134 H106', role: 'accent' },
+    { d: 'M54 146 H94', role: 'soft' },
+    {
+      d: 'M60 166 q-3 10 1 15 q5 -5 2 -15z M98 166 q-3 12 1 18 q5 -6 2 -18z',
+      role: 'accent',
+    },
+    shadow(80, 192, 46),
+  ],
+  // A wanted poster spattered with dark drops.
+  'coribou': [
+    { d: 'M40 40 H120 V160 H40 Z' },
+    { d: 'M52 52 H108', role: 'soft' },
+    { d: 'M52 62 H108 V118 H52 Z', role: 'soft' },
+    { d: 'M54 134 H106', role: 'accent' },
+    { d: 'M54 146 H94', role: 'soft' },
+    { d: circle(112, 70, 5), role: 'accent' },
+    { d: circle(48, 128, 4), role: 'accent' },
     {
       d: dots([
-        [56, 100],
-        [70, 94],
-        [84, 96],
+        [120, 82],
+        [104, 64],
+        [116, 54],
+        [56, 138],
+        [44, 118],
+        [110, 152],
       ]),
-      role: 'soft',
+      role: 'accent',
     },
-    shadow(70, 192, 34),
-  ],
-  // A spade, and the crosses of the row it has already filled.
-  'coribou': [
-    { d: 'M48 20 C40 30 40 42 48 52 M48 20 C56 30 56 42 48 52' },
-    { d: 'M44 52 h8 V108 h-8z' },
-    { d: 'M34 108 H62 L58 142 q-10 8 -20 0 Z', role: 'accent' },
-    { d: 'M48 112 V140', role: 'accent' },
-    { d: 'M92 118 V158 M84 130 H100', role: 'soft' },
-    { d: 'M116 124 V158 M108 134 H124', role: 'soft' },
-    { d: 'M138 130 V158 M132 138 H144', role: 'soft' },
-    { d: 'M20 158 H156', role: 'ambient' },
-    shadow(54, 168, 26),
+    shadow(80, 172, 46),
   ],
 
   // A harpoon, the barbs turned back under the point.
@@ -97,7 +101,7 @@ export const fishManIslandArt = {
     shadow(80, 186, 56),
   ],
 
-  // A ship's wheel with an axe buried in the rim.
+  // A ship's wheel, and a heap of sunken coins at its foot.
   'vander-decken-ix': [
     { d: circle(76, 100, 44), role: 'accent' },
     { d: circle(76, 100, 30) },
@@ -105,9 +109,10 @@ export const fishManIslandArt = {
     { d: 'M76 56 V70 M76 130 V144 M32 100 H46 M106 100 H120' },
     { d: 'M45 69 L55 79 M107 69 L97 79 M45 131 L55 121 M107 131 L97 121' },
     { d: 'M76 46 V56 M76 144 V154 M22 100 H32 M120 100 H130', role: 'soft' },
-    { d: 'M132 178 L74 96' },
-    { d: 'M142 172 L84 90' },
-    { d: 'M74 96 C60 88 50 72 54 58 C68 62 80 76 84 90 Z', role: 'accent' },
+    { d: ellipse(62, 176, 12, 4), role: 'accent' },
+    { d: ellipse(88, 178, 12, 4), role: 'accent' },
+    { d: ellipse(76, 170, 12, 4), role: 'accent' },
+    { d: ellipse(112, 176, 12, 4), role: 'accent' },
     shadow(86, 190, 42),
   ],
 

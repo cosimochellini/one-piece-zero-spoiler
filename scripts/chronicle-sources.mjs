@@ -1228,9 +1228,9 @@ export const CHRONICLE_SOURCES = {
     },
   },
   'enel': {
-    158: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_158',
-      note: 'Threshold entry. The god of Skypiea shows himself and judgement falls as lightning; episode 155 sets up the trap Conis reveals.',
+    167: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_167',
+      note: 'Threshold entry. Enel is first seen here, summoning his priests to the shrine and announcing that the Maxim is complete. Moved from 158 for #175: he is named from 155 but not shown before 167.',
     },
     171: {
       source: 'https://onepiece.fandom.com/wiki/Episode_171',

@@ -246,19 +246,18 @@ export const alabastaArt = {
     ...SEA.slice(2),
   ],
 
-  // A wax candelabra whose two arms curl out of the stem, three candles lit.
+  // A cup of Earl Grey on its saucer, still steaming.
   'mr-3': [
-    { d: 'M80 172 V54' },
-    { d: 'M54 172 q26 10 52 0 M58 164 q22 8 44 0' },
-    { d: 'M80 108 C52 108 44 92 44 74 V58' },
-    { d: 'M80 128 C110 128 118 110 118 90 V70' },
-    { d: 'M72 54 h16 v-10 h-16z M36 58 h16 v-10 h-16z M110 70 h16 v-10 h-16z' },
+    { d: 'M54 104 L62 142 h36 L106 104 Z', role: 'accent' },
+    { d: 'M50 104 h60', role: 'accent' },
+    { d: 'M106 110 q20 2 18 15 q-2 10 -20 10', role: 'accent' },
+    { d: ellipse(80, 148, 54, 10) },
+    { d: ellipse(80, 148, 30, 5), role: 'soft' },
     {
-      d: 'M80 44 c-6 -8 2 -12 0 -22 c8 10 12 12 6 22z M44 48 c-5 -7 2 -10 0 -18 c7 8 10 10 5 18z M118 60 c-5 -7 2 -10 0 -18 c7 8 10 10 5 18z',
-      role: 'accent',
+      d: 'M68 92 c-6 -10 4 -14 -2 -26 M88 92 c-6 -10 4 -14 -2 -26',
+      role: 'ambient',
     },
-    { d: 'M60 112 q2 8 -2 12 M96 132 q2 8 -2 12', role: 'ambient' },
-    shadow(80, 184, 34),
+    shadow(80, 176, 50),
   ],
 
   // A painter's palette with a brush across it and a rice cracker beside.
@@ -920,26 +919,21 @@ export const alabastaArt = {
     ...SEA.slice(1),
   ],
 
-  // An iron shackle ring, and a cigarette burning beside it.
+  // A cigarette burning above three ships lined up across the sea: the
+  // blockade of every dock in Alabasta at 128.
   'hina': [
-    { d: circle(70, 112, 44), role: 'accent' },
-    { d: circle(70, 112, 34), role: 'accent' },
-    { d: 'M26 104 H14 V120 H26' },
-    { d: 'M56 152 H84 V174 H56 Z' },
-    { d: `${circle(70, 160, 4)} M70 164 V172` },
+    { d: 'M30 82 L118 50 L122 62 L34 94 Z' },
+    { d: 'M106 54 L110 66', role: 'ambient' },
+    { d: 'M128 46 C120 34 130 28 124 18', role: 'ambient', dashed: true },
     {
-      d: dots([
-        [70, 72],
-        [70, 152],
-        [36, 112],
-        [104, 112],
-      ]),
-      role: 'ambient',
+      d: 'M14 156 h32 l-6 10 h-20z M64 156 h32 l-6 10 h-20z M114 156 h32 l-6 10 h-20z',
     },
-    { d: 'M112 58 L148 40 L152 50 L116 68 Z' },
-    { d: 'M120 62 L124 54', role: 'ambient' },
-    { d: 'M154 34 C146 22 156 16 150 6', role: 'ambient', dashed: true },
-    shadow(70, 188, 44),
+    { d: 'M30 156 V120 M80 156 V120 M130 156 V120' },
+    {
+      d: 'M30 122 L44 150 H30 M80 122 L94 150 H80 M130 122 L144 150 H130',
+      role: 'accent',
+    },
+    ...SEA.slice(1),
   ],
 
   // A cooking pot steaming on the stove, a ladle standing in it.

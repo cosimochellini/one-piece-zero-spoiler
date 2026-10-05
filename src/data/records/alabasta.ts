@@ -222,8 +222,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 120,
       name: { it: 'Mister 3', en: 'Mr. 3' },
       summary: {
-        it: 'Un agente con i capelli a forma di tre che produce cera dal corpo e la indurisce, costruendo trappole e statue attorno alle sue prede.',
-        en: 'An agent with hair shaped like a three who makes wax from his body and hardens it into traps and statues around his prey.',
+        it: 'Un agente con i capelli a forma di tre che sorseggia Earl Grey, si lamenta di annoiarsi e legge negli ordini del capo che Mister 5 è stato sconfitto.',
+        en: 'An agent with hair shaped like a three who sips Earl Grey, complains that he is bored, and reads in the boss’s orders that Mr. 5 has been beaten.',
       },
       visual: { art: 'mr-3', tint: 'ivory' },
     },
@@ -678,8 +678,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 217,
       name: { it: 'Hina', en: 'Hina' },
       summary: {
-        it: 'Un capitano della Marina che fuma senza fretta e lascia che i pirati le passino attraverso il corpo, ritrovandosi in catene.',
-        en: 'A Marine captain who smokes without hurry and lets pirates pass through her body, leaving them locked in iron.',
+        it: 'Un ufficiale della Marina che fuma senza fretta, parla di sé in terza persona e fa chiudere i porti di Alabasta da una flotta di trenta navi.',
+        en: 'A Marine officer who smokes without hurry, speaks of herself in the third person, and has every dock in Alabasta blockaded by thirty ships.',
       },
       visual: { art: 'hina', tint: 'wine' },
     },
@@ -865,8 +865,8 @@ export const alabasta: Saga = {
     'mr-3': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'Produce cera dal proprio corpo e la indurisce finché non diventa dura come la pietra: ne fa gabbie, scale, statue e un enorme candelabro su cui si arrampica per guardare le sue prede dall’alto. Si pettina i capelli a forma di tre e chiama arte quello che fa. Lavora con una ragazzina che dipinge mentre lui uccide.',
-        en: 'He makes wax from his own body and hardens it until it is as strong as stone: cages, staircases, statues and a great candlestand he climbs to look down on his prey. He wears his hair shaped like a three and calls what he does art. He works with a small girl who paints while he kills.',
+        it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mister 5 è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
+        en: 'He does not want his code name said in public. He drinks Earl Grey, says he is bored, and calls his idle days a privilege of an officer agent. When the boss’s orders say that Mr. 5 has been beaten he is not surprised: a criminal, he says, wins with his head, not with a devil fruit’s powers.',
       },
       affiliation: [
         { episode: 70, value: BW },
@@ -874,7 +874,7 @@ export const alabasta: Saga = {
         { episode: 422, value: IMPEL_DOWN },
         { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
       ],
-      devilFruit: [{ episode: 70, value: ['wax-wax-fruit'] }],
+      devilFruit: [{ episode: 73, chapter: 120, value: ['wax-wax-fruit'] }],
     },
     'miss-goldenweek': {
       role: BW_AGENT_ROLE,
@@ -1476,14 +1476,15 @@ export const alabasta: Saga = {
       affiliation: [{ episode: 125, value: BW_FRONTIER }],
     },
     'hina': {
-      role: { it: 'Capitano della Marina', en: 'Marine captain' },
+      role: { it: 'Ufficiale della Marina', en: 'Marine officer' },
       log: {
-        it: 'Comanda una nave della Marina e parla di sé in terza persona, con la stessa calma con cui accende una sigaretta. Chi le passa attraverso il corpo ne esce con le braccia chiuse in anelli di ferro che non si aprono. Conosce Smoker da quando erano allievi e lo tratta come un collega che si ostina a sbagliare.',
-        en: 'She commands a Marine ship and speaks of herself in the third person, with the same calm she lights a cigarette with. Anyone who passes through her body comes out with their arms locked in iron rings that will not open. She has known Smoker since they were cadets and treats him like a colleague who insists on getting it wrong.',
+        it: 'Comanda una flotta della Marina e parla di sé in terza persona, con la stessa calma con cui accende una sigaretta. Quando due dei suoi uomini tornano in ritardo con una nave catturata, dice che Hina è scontenta. Le sue trenta navi bloccano tutti i porti di Alabasta, e vuole che la nave di Cappello di Paglia sia cercata da una costa all’altra.',
+        en: 'She commands a Marine fleet and speaks of herself in the third person, with the same calm she lights a cigarette with. When two of her men come back late with a captured ship, she says Hina is unhappy. Her thirty ships blockade every dock in Alabasta, and she wants the Straw Hats’ ship searched for from coast to coast.',
       },
       affiliation: [
+        { episode: 128, value: { it: 'Marina', en: 'Marines' } },
         {
-          episode: 128,
+          episode: 129,
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
         {
@@ -1492,9 +1493,9 @@ export const alabasta: Saga = {
         },
       ],
       epithet: [
-        { episode: 128, value: { it: 'Gabbia Nera', en: 'Black Cage' } },
+        { episode: 129, value: { it: 'Gabbia Nera', en: 'Black Cage' } },
       ],
-      devilFruit: [{ episode: 128, value: ['cage-cage-fruit'] }],
+      devilFruit: [{ episode: 130, chapter: 217, value: ['cage-cage-fruit'] }],
     },
     'terracotta': {
       role: { it: 'Capocuoca del palazzo', en: 'Palace head chef' },

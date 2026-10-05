@@ -436,12 +436,13 @@ export const eastBlue: Saga = {
     {
       id: 'merry',
       kind: 'character',
-      revealedAtEpisode: 9,
+      revealedAtEpisode: 13,
       revealedAtChapter: 41,
+      // Seen handing over Kaya’s gift at 12, first called by name when Kaya finds him cut down at 13.
       name: { it: 'Merry', en: 'Merry' },
       summary: {
-        it: 'Il maggiordomo della villa, con un vassoio sempre in mano e una testa a forma di pecora, che tiene i conti della famiglia da una vita.',
-        en: 'The mansion’s butler, a tray always in his hands and a head shaped like a sheep, who has kept the family’s accounts for a lifetime.',
+        it: 'Il maggiordomo della villa, con una testa a forma di pecora, che viene trovato ferito e dice alla sua giovane padrona chi è stato.',
+        en: 'The mansion’s butler, with a head shaped like a sheep, who is found cut down and tells his young mistress who did it.',
       },
       visual: { art: 'merry', tint: 'ivory' },
     },
@@ -529,16 +530,18 @@ export const eastBlue: Saga = {
       revealedAtChapter: 43,
       name: { it: 'Johnny', en: 'Johnny' },
       summary: {
-        it: 'Un cacciatore di taglie magro con gli occhiali scuri, che batte l’East Blue insieme a un socio e a un fascio di manifesti arrotolati.',
-        en: 'A thin bounty hunter in dark glasses, working the East Blue with a partner and a bundle of rolled-up wanted posters.',
+        it: 'Un uomo magro con gli occhiali scuri, che piomba sulla nave della ciurma in cerca dei pirati che hanno sparato al suo socio, e si ferma quando tra loro riconosce un vecchio amico.',
+        en: 'A thin man in dark glasses who storms onto the crew’s ship looking for the pirates who shot at his partner, and stops when he recognises an old friend among them.',
       },
       visual: { art: 'johnny', tint: 'blue' },
     },
     {
       id: 'yosaku',
       kind: 'character',
-      revealedAtEpisode: 19,
+      revealedAtEpisode: 20,
       revealedAtChapter: 43,
+      // Johnny asks after him by name at the end of 19; he is seen and introduces himself at 20.
+      nameSaidAt: 19,
       name: { it: 'Yosaku', en: 'Yosaku' },
       summary: {
         it: 'Un cacciatore di taglie robusto con la bandana, che crolla sul ponte con i denti che si muovono e le vecchie ferite riaperte.',
@@ -597,7 +600,7 @@ export const eastBlue: Saga = {
     {
       id: 'gin',
       kind: 'character',
-      revealedAtEpisode: 20,
+      revealedAtEpisode: 21,
       revealedAtChapter: 47,
       name: { it: 'Gin', en: 'Gin' },
       summary: {
@@ -657,7 +660,7 @@ export const eastBlue: Saga = {
     {
       id: 'pearl',
       kind: 'character',
-      revealedAtEpisode: 23,
+      revealedAtEpisode: 25,
       revealedAtChapter: 58,
       name: { it: 'Pearl', en: 'Pearl' },
       summary: {
@@ -753,8 +756,9 @@ export const eastBlue: Saga = {
     {
       id: 'genzo',
       kind: 'character',
-      revealedAtEpisode: 31,
+      revealedAtEpisode: 32,
       revealedAtChapter: 77,
+      // First called Gen-san at 32, when Arlong comes to the village.
       name: { it: 'Genzo', en: 'Genzo' },
       summary: {
         it: 'Il poliziotto del villaggio, con una girandola infilata nel cappello, che ha giurato di non impugnare mai più un’arma contro gli uomini-pesce.',
@@ -1522,19 +1526,19 @@ export const eastBlue: Saga = {
     'merry': {
       role: { it: 'Maggiordomo della villa', en: 'Butler of the mansion' },
       log: {
-        it: 'Serve la famiglia da prima che la padrona nascesse e conosce ogni voce del patrimonio, comprese le navi ferme nel cantiere. Sono sue le carte, le firme e le visite, e sua anche l’insistenza perché la ragazza riposi. Le sue giornate finiscono sempre alla stessa ora, con il vassoio del tè portato di sopra.',
-        en: 'He has served the family since before his mistress was born and knows every line of the estate, the ships laid up in the yard included. The papers, the signatures and the callers are his, and so is the constant insistence that the girl should rest. His days end the same way each time, with the tea tray carried upstairs.',
+        it: 'Consegna a Klahadore il regalo di Kaya per i suoi tre anni nella villa, e resta sconvolto da quello che Klahadore ne fa. Più tardi Kaya lo trova ferito. Le dice che è stato Klahadore, che in realtà è un pirata e che le si è avvicinato per il patrimonio di famiglia.',
+        en: 'He hands Klahadore a present from Kaya for his third year in the house, and is shocked by what Klahadore does with it. Later Kaya finds him cut down. He tells her Klahadore did it, that Klahadore is really a pirate, and that he got close to her for the family fortune.',
       },
       affiliation: [
         {
-          episode: 9,
+          episode: 13,
           value: {
             it: 'Maggiordomo della villa del Villaggio di Syrup',
             en: 'Butler of the Syrup Village mansion',
           },
         },
       ],
-      origin: [{ episode: 9, value: SYRUP_VILLAGE }],
+      origin: [{ episode: 13, value: SYRUP_VILLAGE }],
     },
     'ninjin-piiman-and-tamanegi': {
       chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
@@ -1655,8 +1659,8 @@ export const eastBlue: Saga = {
     'johnny': {
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
-        it: 'Ha lavorato per un po’ a fianco di un cacciatore di pirati con tre spade e da allora lo chiama fratello, anche se non lo vede da mesi. Adesso batte le rotte con Yosaku, un manifesto alla volta, e spende quello che guadagna prima di arrivare al porto seguente. Quando il socio si accascia sul ponte, non sa che cosa fare e si mette a piangere.',
-        en: 'He worked for a while beside a pirate hunter with three swords and has called him brother ever since, though it has been months. Now he works the sea lanes with Yosaku, one poster at a time, and spends what he earns before the next port. When his partner collapses on deck, he has no idea what to do and starts to cry.',
+        it: 'Dice di aver ucciso più pirati di quanti ne possa contare, e piomba sulla nave della ciurma gridando che un pirata senza nome ha cercato di uccidere il suo socio. Poi riconosce lo spadaccino con tre spade e lo chiama fratellone. Lo spadaccino lo chiama per nome e gli chiede dove sia Yosaku.',
+        en: 'He says he has killed more pirates than he can count, and he storms the crew’s ship shouting that some nameless pirate tried to kill his partner. Then he recognises the swordsman with three swords and calls him big brother. The swordsman knows him by name and asks where Yosaku is.',
       },
       affiliation: [
         {
@@ -1671,12 +1675,12 @@ export const eastBlue: Saga = {
     'yosaku': {
       role: { it: 'Cacciatore di taglie', en: 'Bounty hunter' },
       log: {
-        it: 'Va a caccia di taglie con Johnny da anni e non ha mai pensato che un pirata potesse fare qualcosa per lui. Si accascia sul ponte di colpo, convinto di essere in punto di morte per una maledizione: è scorbuto, e bastano dei limoni. Rimesso in piedi, decide che quella ciurma merita di essere seguita almeno per un tratto di mare.',
-        en: 'He has hunted bounties with Johnny for years and never thought a pirate might do anything for him. He goes down on deck all at once, certain that a curse is killing him: it is scurvy, and limes are enough. Back on his feet, he decides that crew is worth following for at least a stretch of sea.',
+        it: 'Caccia pirati insieme a Johnny, e un tempo lavorava con lo spadaccino con tre spade. Diventa pallido e perde i sensi, i denti gli cadono e le vecchie ferite sanguinano di nuovo, e nessuno dei due sa perché: è scorbuto, e basta il succo di lime. Rimesso in piedi, indica alla ciurma con il socio un ristorante galleggiante dove cercare un cuoco.',
+        en: 'He hunts pirates with Johnny, and once worked with the swordsman with three swords. He turns pale and passes out, his teeth falling out and his old wounds bleeding again, and neither of them knows why: it is scurvy, and lime juice is enough. Back on his feet, he and his partner point the crew to a floating restaurant where they might find a cook.',
       },
       affiliation: [
         {
-          episode: 19,
+          episode: 20,
           value: {
             it: 'Cacciatore di taglie, insieme a Johnny',
             en: 'Bounty hunter, with Johnny',
@@ -1747,19 +1751,20 @@ export const eastBlue: Saga = {
     'gin': {
       role: { it: 'Naufrago armato', en: 'Armed castaway' },
       log: {
-        it: 'Arriva al ristorante quasi morto di fame, dopo giorni alla deriva, e punta la pistola contro il primo cuoco che incontra. Il piatto che si vede servire lo lascia senza parole e senza difese. Ringrazia, paga a modo suo e se ne va, dicendo a quel cuoco che farebbe bene a non restare troppo a lungo in questo mare.',
-        en: 'He reaches the restaurant half dead of hunger after days adrift, and points his pistol at the first cook he meets. The plate he is handed leaves him with nothing to say and no defences left. He thanks the man, pays in his own way and goes, telling that cook he would do well not to stay long in this sea.',
+        it: 'Fugge dalla Marina, che lo tiene da tre giorni senza mangiare, e arriva al ristorante quasi morto di fame. Al cuoco che gli chiede se può pagare offre una pallottola. Il riso fritto che il vice-cuoco gli porta fuori lo fa piangere. Prima di andarsene consiglia al ragazzo con il cappello di paglia di non andare nella Rotta Maggiore, e promette al cuoco che non lo dimenticherà.',
+        en: 'He escapes the Marines, who have held him three days without food, and reaches the restaurant half dead of hunger. When a cook asks whether he can pay, he offers a bullet. The fried rice the sous-chef brings out to him makes him cry. Before he leaves he warns the boy in the straw hat to stay out of the Grand Line, and promises the cook he will not forget this.',
       },
       affiliation: [
+        { episode: 21, value: { it: 'Pirati di Creek', en: 'Krieg Pirates' } },
         {
-          episode: 21,
+          episode: 27,
           value: {
-            it: 'Pirati di Creek, primo ufficiale',
-            en: 'Krieg Pirates, first mate',
+            it: 'Pirati di Creek, comandante in battaglia',
+            en: 'Krieg Pirates, battle commander',
           },
         },
       ],
-      epithet: [{ episode: 21, value: { it: 'Uomo Demone', en: 'Man-Demon' } }],
+      epithet: [{ episode: 27, value: { it: 'Uomo Demone', en: 'Man-Demon' } }],
     },
     'fullbody': {
       chronicle: eastBlueChronicles.fullbody,
@@ -1853,7 +1858,7 @@ export const eastBlue: Saga = {
       },
       affiliation: [
         {
-          episode: 23,
+          episode: 25,
           value: {
             it: 'Pirati di Creek, scudo imbattuto',
             en: 'Krieg Pirates, unbeaten shield',
@@ -1861,7 +1866,7 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [
-        { episode: 23, value: { it: 'Muro di Ferro', en: 'Iron Wall' } },
+        { episode: 25, value: { it: 'Muro di Ferro', en: 'Iron Wall' } },
       ],
     },
     'dracule-mihawk': {
@@ -1987,19 +1992,19 @@ export const eastBlue: Saga = {
     'genzo': {
       role: { it: 'Poliziotto del villaggio', en: 'Village sheriff' },
       log: {
-        it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e ogni anno raccoglie il denaro del tributo casa per casa. Porta una girandola sul cappello e non spiega a nessuno perché. Ha visto che fine fa chi prova a ribellarsi, e da allora impone al villaggio una pazienza che odia.',
-        en: 'He keeps order in a town with nothing left to defend, and every year he collects the tribute money house by house. He wears a pinwheel on his cap and explains it to nobody. He has seen what happens to those who resist, and since then he holds the village to a patience he hates.',
+        it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e il villaggio ha appena pagato il tributo quando arrivano gli uomini-pesce. Porta una girandola sul cappello e non spiega a nessuno perché. Otto anni fa il villaggio ha giurato di combattere con la pazienza, per sopravvivere, e lui tiene tutti a quel giuramento: nessuno deve combattere, qualunque cosa accada.',
+        en: 'He keeps order in a town with nothing left to defend, and the village has just paid its tribute when the fish-men come. He wears a pinwheel on his cap and explains it to nobody. Eight years ago the village swore to fight with patience, for its survival, and he holds everyone to that: nobody fights, whatever happens.',
       },
       affiliation: [
         {
-          episode: 31,
+          episode: 32,
           value: {
             it: 'Villaggio di Cocoyashi, poliziotto',
             en: 'Cocoyasi Village, sheriff',
           },
         },
       ],
-      origin: [{ episode: 31, value: COCOYASI_VILLAGE }],
+      origin: [{ episode: 32, value: COCOYASI_VILLAGE }],
     },
     'bell-mere': {
       role: {

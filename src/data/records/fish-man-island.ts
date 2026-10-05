@@ -51,24 +51,24 @@ export const fishManIsland: Saga = {
     {
       id: 'caribou',
       kind: 'character',
-      revealedAtEpisode: 517,
+      revealedAtEpisode: 519,
       revealedAtChapter: 602,
       name: { it: 'Caribou', en: 'Caribou' },
       summary: {
-        it: 'Un pirata dai capelli bagnati che si inginocchia e implora pietà, poi taglia la gola ai marine con la falce e li fa seppellire al fratello.',
-        en: 'A wet-haired pirate who kneels and begs for mercy, then cuts the Marines down with his scythe and has his brother bury them.',
+        it: 'Il capitano dei Pirati di Caribou, detto Capelli Bagnati, che si presenta al Grove 46 con il fratello e una taglia da duecentodieci milioni, tra i novellini venuti a unirsi ai Cappello di Paglia.',
+        en: 'The captain of the Caribou Pirates, called Wet-Haired, who turns up at Grove 46 with his brother and a bounty of two hundred and ten million, among the rookies who have come to join the Straw Hats.',
       },
       visual: { art: 'caribou', tint: 'wine' },
     },
     {
       id: 'coribou',
       kind: 'character',
-      revealedAtEpisode: 517,
+      revealedAtEpisode: 519,
       revealedAtChapter: 602,
       name: { it: 'Coribou', en: 'Coribou' },
       summary: {
-        it: 'Un gigante con la vanga in spalla che scava una fossa dietro l’altra e pianta una croce su ognuna, mentre il fratello capitano continua a parlare.',
-        en: 'A huge man with a spade who digs one grave after another and plants a cross on each, while his brother the captain keeps talking.',
+        it: 'Il fratello di Caribou, anche lui capitano dei Pirati di Caribou, detto Schizzasangue e con una taglia da centonovanta milioni. Si presenta al Grove 46 al fianco del fratello.',
+        en: 'Caribou’s brother, a captain of the Caribou Pirates as well, called Blood-Splatterer, with a bounty of a hundred and ninety million. He turns up at Grove 46 at his brother’s side.',
       },
       visual: { art: 'coribou', tint: 'ocher' },
     },
@@ -127,8 +127,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 615,
       name: { it: 'Vander Decken IX', en: 'Vander Decken IX' },
       summary: {
-        it: 'Il capitano dell’Olandese Volante, che tocca un bersaglio una volta sola e da quel momento qualunque cosa lanci lo insegue finché non lo colpisce.',
-        en: 'The captain of the Flying Dutchman, who touches a target once and from then on anything he throws chases it down until it lands.',
+        it: 'Il capitano dell’Olandese Volante, la nave fantasma di una vecchia leggenda di marinai, che canta che ogni tesoro sommerso è suo e manda il suo gigante ad abbattere la Sunny per quello che trasporta.',
+        en: 'The captain of the Flying Dutchman, the ghost ship of an old sailors’ legend, who sings that every sunken treasure is his and sends his giant to knock the Sunny down for whatever it carries.',
       },
       visual: { art: 'vander-decken-ix', tint: 'acid' },
     },
@@ -452,11 +452,11 @@ export const fishManIsland: Saga = {
         en: 'Captain of the Caribou Pirates',
       },
       log: {
-        it: 'Arriva all’arcipelago Sabaody con una taglia da duecento milioni e le lacrime già pronte: si inginocchia, supplica, e appena l’avversario abbassa la guardia lo uccide. Il fratello gli scava le fosse dietro, una croce per ciascuna. Ha una taglia da duecentodieci milioni e una ciurma che lo teme più di quanto tema chi insegue.',
-        en: 'He reaches the Sabaody Archipelago with a two hundred million bounty and his tears ready: he kneels, he begs, and the moment his opponent drops their guard he kills them. His brother digs the graves behind him, one cross each. He carries a bounty of two hundred and ten million and a crew that fears him more than it fears anyone he hunts.',
+        it: 'È una delle supernove che si presentano al Grove 46 di Sabaody, dove continuano ad arrivare capitani decisi a unirsi ai Cappello di Paglia. Comanda i Pirati di Caribou, lo chiamano Capelli Bagnati e ha una taglia da duecentodieci milioni. Con lui è arrivato il fratello, anche lui capitano.',
+        en: 'He is one of the super rookies who turn up at Grove 46 on Sabaody, where captains keep arriving to join the Straw Hats. He commands the Caribou Pirates, goes by Wet-Haired and carries a bounty of two hundred and ten million. His brother, also a captain, came with him.',
       },
       status: [
-        { episode: 517, value: 'alive' },
+        { episode: 519, value: 'alive' },
         { episode: 525, value: 'captured' },
         { episode: 531, value: 'alive' },
         { episode: 919, value: 'imprisoned' },
@@ -464,7 +464,7 @@ export const fishManIsland: Saga = {
       ],
       affiliation: [
         {
-          episode: 517,
+          episode: 519,
           value: {
             it: 'Pirati di Caribou, capitano',
             en: 'Caribou Pirates, captain',
@@ -479,35 +479,38 @@ export const fishManIsland: Saga = {
         },
       ],
       epithet: [
-        { episode: 517, value: { it: 'Capelli Bagnati', en: 'Wet-Haired' } },
+        { episode: 519, value: { it: 'Capelli Bagnati', en: 'Wet-Haired' } },
       ],
       devilFruit: [
         { episode: 531, chapter: 612, value: ['swamp-swamp-fruit'] },
       ],
-      bounty: [{ episode: 517, value: 210_000_000 }],
+      bounty: [{ episode: 519, value: 210_000_000 }],
     },
     'coribou': {
-      role: { it: 'Fratello del capitano', en: 'The captain’s brother' },
+      role: {
+        it: 'Fratello di Caribou, anche lui capitano',
+        en: 'Caribou’s brother, also a captain',
+      },
       log: {
-        it: 'Segue il fratello con la vanga in spalla e il lavoro sporco già assegnato: quando Caribou ha finito, lui interra i corpi e pianta le croci. Ha una taglia quasi pari a quella del capitano e nessuna voglia di comandare. Parla poco, e quasi sempre per dire al fratello che sta esagerando.',
-        en: 'He follows his brother with a spade over his shoulder and the dirty work already assigned: when Caribou has finished, he buries the bodies and plants the crosses. His bounty is nearly the captain’s and he has no wish to give orders. He says little, and almost always to tell his brother he has gone too far.',
+        it: 'Arriva al Grove 46 con il fratello Caribou, tra i capitani che continuano a presentarsi per unirsi ai Cappello di Paglia. Anche lui è capitano dei Pirati di Caribou, lo chiamano Schizzasangue e ha una taglia da centonovanta milioni, poco meno di quella del fratello.',
+        en: 'He arrives at Grove 46 with his brother Caribou, among the captains who keep turning up to join the Straw Hats. He is a captain of the Caribou Pirates too, goes by Blood-Splatterer and carries a bounty of a hundred and ninety million, a little under his brother’s.',
       },
       affiliation: [
         {
-          episode: 517,
+          episode: 519,
           value: {
-            it: 'Pirati di Caribou, fratello del capitano',
-            en: 'Caribou Pirates, captain’s brother',
+            it: 'Pirati di Caribou, capitano insieme al fratello',
+            en: 'Caribou Pirates, captain alongside his brother',
           },
         },
       ],
       epithet: [
         {
-          episode: 517,
+          episode: 519,
           value: { it: 'Schizzasangue', en: 'Blood-Splatterer' },
         },
       ],
-      bounty: [{ episode: 517, value: 190_000_000 }],
+      bounty: [{ episode: 519, value: 190_000_000 }],
     },
     'demalo-black': {
       chronicle: fishManIslandChronicles['demalo-black'],
@@ -598,8 +601,8 @@ export const fishManIsland: Saga = {
         {
           episode: 526,
           value: {
-            it: 'Olandese Volante, bestia di Vander Decken IX',
-            en: 'Flying Dutchman, Vander Decken IX’s beast',
+            it: 'Olandese Volante, bestia di Vander Decken',
+            en: 'Flying Dutchman, Vander Decken’s beast',
           },
         },
       ],
@@ -610,8 +613,8 @@ export const fishManIsland: Saga = {
         en: 'Captain of the Flying Dutchman',
       },
       log: {
-        it: 'Vive su una nave che nessuno vede arrivare e manda lettere a chi non le ha chieste. Il frutto del diavolo che ha mangiato gli permette di marchiare con la mano una persona o una cosa: da quel momento tutto ciò che lancia, un’ascia come una casa, vola dritto verso il marchio finché non lo raggiunge. Non gli serve mirare e non ha alcuna fretta.',
-        en: 'He lives on a ship nobody sees coming and sends letters to people who never asked for them. The devil fruit he ate lets him mark a person or a thing with his hand: after that everything he throws, an axe or a house, flies straight at the mark until it arrives. He needs no aim, and he is in no hurry at all.',
+        it: 'Naviga sull’Olandese Volante, la nave fantasma della vecchia leggenda di un capitano maledetto a vagare per sempre. Canta che ogni tesoro sommerso è suo e si proclama l’uomo più ricco del mondo. Quando il suo gigante e la sua rana pescatrice raggiungono la Sunny, vuole la nave abbattuta e non mangiata, per prendersi il tesoro, e si ritira solo quando erutta il vulcano sottomarino.',
+        en: 'He sails the Flying Dutchman, the ghost ship of an old sailors’ legend about a captain cursed to drift forever. He sings that every sunken treasure is his and calls himself the richest man in the world. When his giant and his anglerfish catch the Sunny, he wants the ship knocked down rather than eaten, so he can take its treasure, and he pulls back only when the undersea volcano erupts.',
       },
       affiliation: [
         {
@@ -622,15 +625,16 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 526, value: FISH_MAN_ISLAND }],
-      devilFruit: [{ episode: 526, value: ['mark-mark-fruit'] }],
+      // He says he is a fish-man, descendant of the legendary captain, at 534.
+      origin: [{ episode: 534, value: FISH_MAN_ISLAND }],
+      devilFruit: [{ episode: 532, value: ['mark-mark-fruit'] }],
     },
     'surume': {
       chronicle: fishManIslandChronicles.surume,
       role: { it: 'Kraken addomesticato da Rufy', en: 'Kraken tamed by Luffy' },
       log: {
-        it: 'Viveva all’imbocco della corrente che scende verso l’Isola degli Uomini-Pesce e afferrava con i tentacoli le navi che la attraversavano, finché tre dei Cappello di Paglia non lo hanno messo al tappeto. Poi tempesta di colpi un gigante finché non sviene e si porta la Sunny in testa, e Rufy gli dà il nome di Seppy, un nome da seppia per un polpo. Vander Decken IX lo conosce di fama come il mostro dell’Artico. Il vulcano sottomarino lo terrorizza: scappa a tutta velocità e si butta nella fossa appena Rufy glielo dice.',
-        en: 'He lived at the mouth of the current that runs down to Fish-Man Island, grabbing the ships that came through it in his tentacles, until three of the Straw Hats knocked him out. Then he beats a giant senseless with a flurry of blows and carries the Sunny on his head, and Luffy names him Surume, a squid’s name for an octopus. Vander Decken IX knows him by reputation as the monster of the Arctic. The undersea volcano terrifies him: he bolts flat out, and dives into the trench the moment Luffy tells him to.',
+        it: 'Viveva all’imbocco della corrente che scende verso l’Isola degli Uomini-Pesce e afferrava con i tentacoli le navi che la attraversavano, finché tre dei Cappello di Paglia non lo hanno messo al tappeto. Poi tempesta di colpi un gigante finché non sviene e si porta la Sunny in testa, e Rufy gli dà il nome di Seppy, un nome da seppia per un polpo. Vander Decken lo conosce di fama come il mostro dell’Artico. Il vulcano sottomarino lo terrorizza: scappa a tutta velocità e si butta nella fossa appena Rufy glielo dice.',
+        en: 'He lived at the mouth of the current that runs down to Fish-Man Island, grabbing the ships that came through it in his tentacles, until three of the Straw Hats knocked him out. Then he beats a giant senseless with a flurry of blows and carries the Sunny on his head, and Luffy names him Surume, a squid’s name for an octopus. Vander Decken knows him by reputation as the monster of the Arctic. The undersea volcano terrifies him: he bolts flat out, and dives into the trench the moment Luffy tells him to.',
       },
       status: [{ episode: 526, value: 'alive' }],
       affiliation: [
@@ -662,10 +666,7 @@ export const fishManIsland: Saga = {
     },
     'wadatsumi': {
       chronicle: fishManIslandChronicles.wadatsumi,
-      role: {
-        it: 'Il gigante di Vander Decken IX',
-        en: 'Vander Decken IX’s giant',
-      },
+      role: { it: 'Il gigante di Vander Decken', en: 'Vander Decken’s giant' },
       log: {
         it: 'Emerge dalle rocce degli abissi, una sagoma d’uomo grande quanto un kraken, e la ciurma che sorprende lo prende per un mostro marino. Obbedisce al capitano Vander Decken, a cui si rivolge con tutto il rispetto, e bada alla rana pescatrice Lucetto come a un animale di casa, ricordandole ogni volta che le navi non si mangiano, se no il capitano si arrabbia. Quando il capitano dice di abbattere una nave, carica il pugno; quando dice di tirare, si mette a trainare l’Olandese Volante lontano dal pericolo.',
         en: 'He rises out of the rocks of the deep, a man-shaped figure the size of a kraken, and the crew he surprises take him for a sea monster. He obeys Captain Vander Decken, whom he never names without a respectful “sir”, and minds the anglerfish Ankoro like a pet, forever reminding it that ships are not for eating, or the captain will be angry. When his captain says knock a ship down, he winds up his fist; when the captain says pull, he tows the Flying Dutchman out of harm’s way.',
@@ -675,8 +676,8 @@ export const fishManIsland: Saga = {
         {
           episode: 526,
           value: {
-            it: 'Olandese Volante, sottoposto di Vander Decken IX',
-            en: 'Flying Dutchman, Vander Decken IX’s underling',
+            it: 'Olandese Volante, sottoposto di Vander Decken',
+            en: 'Flying Dutchman, Vander Decken’s underling',
           },
         },
         { episode: 790, value: { it: 'Pirati del Sole', en: 'Sun Pirates' } },

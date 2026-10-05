@@ -427,15 +427,17 @@ export const summitWarArt = {
     shadow(80, 176, 56),
   ],
 
-  // A warden's cap, with what comes off it.
+  // A warden's cap, and the poison gas his breath leaves around it.
   'magellan': [
     { d: 'M40 104 C40 74 120 74 120 104z' },
     { d: 'M32 104 h96' },
     { d: 'M36 104 q44 18 88 2' },
     { d: 'M44 90 h72', role: 'soft' },
-    { d: 'M52 116 c-6 14 -2 22 4 22 c6 0 10 -8 4 -22z', role: 'accent' },
-    { d: 'M80 122 c-7 18 -2 28 4 28 c6 0 11 -10 4 -28z', role: 'accent' },
-    { d: 'M108 116 c-6 14 -2 22 4 22 c6 0 10 -8 4 -22z', role: 'accent' },
+    {
+      d: 'M52 128 q10 -8 20 0 t20 0 t20 0 M44 146 q12 -8 24 0 t24 0 t24 0',
+      role: 'accent',
+      dashed: true,
+    },
     shadow(80, 176, 50),
   ],
 
@@ -450,27 +452,28 @@ export const summitWarArt = {
     shadow(64, 180, 36),
   ],
 
-  // A heart-backed throne under a crown of needles.
+  // A stage under a spotlight, the curtains drawn back for the show.
   'emporio-ivankov': [
+    { d: 'M20 20 C30 60 26 110 40 150 H20z', role: 'accent' },
+    { d: 'M140 20 C130 60 134 110 120 150 H140z', role: 'accent' },
     {
-      d: 'M80 58 C68 34 34 40 34 68 C34 96 62 112 80 128 C98 112 126 96 126 68 C126 40 92 34 80 58z',
+      d: 'M20 20 h120 M20 20 q20 14 40 0 q20 14 40 0 q20 14 40 0',
+      role: 'soft',
     },
-    { d: 'M44 128 h72 v18 h-72z' },
-    { d: 'M50 146 v26 M110 146 v26' },
-    { d: 'M62 44 L56 20 M80 40 L80 14 M98 44 L104 20', role: 'accent' },
-    { d: 'M52 26 h8 M76 20 h8 M100 26 h8', role: 'accent' },
-    shadow(80, 180, 42),
+    { d: 'M14 150 h132 v12 h-132z' },
+    { d: 'M80 34 L56 150 M80 34 L104 150', role: 'ambient', dashed: true },
+    { d: ellipse(80, 150, 24, 5), role: 'soft' },
+    shadow(80, 178, 56),
   ],
 
-  // Giant scissors, and the floor they have been through.
+  // A cot with a blanket thrown over it, slept in for ten hours.
   'inazuma': [
-    { d: 'M80 100 L42 30 l10 -6 L90 94z', role: 'accent' },
-    { d: 'M80 100 L118 30 l-10 -6 L70 94z', role: 'accent' },
-    { d: circle(60, 130, 16) },
-    { d: circle(100, 130, 16) },
-    { d: 'M80 100 L66 116 M80 100 L94 116' },
-    { d: 'M14 170 h132', role: 'ambient' },
-    { d: 'M64 160 l16 10 l-16 10', role: 'ambient', dashed: true },
+    { d: 'M24 120 h112 v14 h-112z' },
+    { d: 'M30 134 V164 M130 134 V164' },
+    { d: 'M30 112 c0 -12 30 -12 30 0 c0 8 -30 8 -30 0z', role: 'soft' },
+    { d: 'M56 120 c4 -14 20 -18 40 -16 c20 2 36 6 40 16', role: 'accent' },
+    { d: 'M78 106 q4 8 2 14 M106 106 q-2 8 2 14', role: 'soft' },
+    shadow(80, 172, 56),
   ],
 
   // A long blade laid down, the rain still on it.
@@ -599,17 +602,15 @@ export const summitWarArt = {
     shadow(80, 184, 42),
   ],
 
-  // A row of cell bars, two of them no longer straight.
+  // A battleship, for the pirate named after one.
   'san-juan-wolf': [
-    { d: 'M30 28 h100 M30 182 h100' },
-    { d: 'M40 28 V182 M120 28 V182' },
-    { d: 'M60 28 V182' },
-    { d: 'M80 28 C80 68 50 86 50 108 C50 134 80 146 80 182', role: 'accent' },
-    {
-      d: 'M100 28 C100 72 118 90 110 112 C104 132 100 154 100 182',
-      role: 'accent',
-    },
-    { d: 'M30 104 h100', role: 'ambient', dashed: true },
+    { d: 'M14 120 h132 l-14 34 h-104z', role: 'accent' },
+    { d: 'M20 132 h120', role: 'soft' },
+    { d: 'M50 120 v-24 h44 v24 M62 96 v-16 h20 v16' },
+    { d: 'M70 80 v-18 h8 v18' },
+    { d: 'M94 108 h22 M50 108 h-22' },
+    { d: 'M76 58 q6 -10 0 -18 q-6 -8 -2 -14', role: 'ambient', dashed: true },
+    { d: 'M-4 162 H164', role: 'ambient' },
   ],
 
   // A horned crown put down on a cushion.
@@ -694,28 +695,14 @@ export const summitWarArt = {
     shadow(80, 168, 60),
   ],
 
-  // A washing line with two coats on it, and a cloth wrung out below.
+  // A chair at the council table, an officer's coat over its back.
   'tsuru': [
-    { d: 'M8 46 C60 62 100 62 152 46', role: 'ambient' },
-    {
-      d: 'M34 58 l-12 20 l8 4 l4 -8 v44 h28 v-44 l4 8 l8 -4 l-12 -20z',
-      role: 'accent',
-    },
-    {
-      d: 'M104 62 l-12 20 l8 4 l4 -8 v42 h26 v-42 l4 8 l8 -4 l-12 -20z',
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [34, 54],
-        [62, 56],
-        [104, 58],
-        [130, 56],
-      ]),
-    },
-    { d: 'M64 140 c10 6 -10 12 0 18 c10 6 -10 12 0 18' },
-    { d: 'M74 140 c10 6 -10 12 0 18 c10 6 -10 12 0 18' },
-    shadow(80, 186, 44),
+    { d: 'M50 36 V120 M110 36 V120 M50 36 h60' },
+    { d: 'M40 120 h80 v10 h-80z' },
+    { d: 'M44 130 V178 M116 130 V178' },
+    { d: 'M46 44 h68 l6 70 h-20 l-4 -40 h-32 l-4 40 h-20z', role: 'accent' },
+    { d: 'M66 44 l14 16 l14 -16', role: 'soft' },
+    shadow(80, 184, 46),
   ],
 
   // A cap set on a sword laid across the rail.

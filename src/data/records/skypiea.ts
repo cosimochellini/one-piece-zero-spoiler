@@ -29,12 +29,12 @@ export const skypiea: Saga = {
     {
       id: 'jaya',
       kind: 'place',
-      revealedAtEpisode: 144,
+      revealedAtEpisode: 146,
       revealedAtChapter: 222,
       name: { it: 'Jaya', en: 'Jaya' },
       summary: {
-        it: 'Un’isola della Rotta Maggiore con una città di pirati senza legge da una parte e un uomo che ride dei sogni dall’altra.',
-        en: 'A Grand Line island with a lawless pirate town on one side and a man who laughs at dreams on the other.',
+        it: 'Un’isola primaverile della Rotta Maggiore. Il suo porto, Mock Town, è pieno di pirati che sperperano il bottino, e lì le risse e gli omicidi sono normali.',
+        en: 'A spring island on the Grand Line. Its port, Mock Town, is full of pirates spending their loot, and brawls and murders there are an everyday thing.',
       },
       visual: { art: 'jaya', tint: 'ocher' },
     },
@@ -53,12 +53,12 @@ export const skypiea: Saga = {
     {
       id: 'shoujou',
       kind: 'character',
-      revealedAtEpisode: 145,
+      revealedAtEpisode: 147,
       revealedAtChapter: 226,
       name: { it: 'Shojo', en: 'Shoujou' },
       summary: {
-        it: 'Il Re del Sonar: un colosso che ascolta il fondo del mare con le onde sonore e beve rum dalla botte mentre la sua nave batte le secche di Jaya.',
-        en: 'The Sonar King, a giant who searches the sea floor with sound waves and drinks rum by the barrel while his ship sweeps the shallows of Jaya.',
+        it: 'Il Re del Sonar: un colosso che beve rum, pretende una tassa da chi passa nel suo tratto di mare e con la voce manda onde sonore che fanno a pezzi le navi.',
+        en: 'The Sonar King, a giant who drinks rum, charges a toll to anyone crossing his stretch of sea, and sends out sound waves with his voice that shake ships to pieces.',
       },
       visual: { art: 'shoujou', tint: 'violet' },
     },
@@ -187,12 +187,13 @@ export const skypiea: Saga = {
     {
       id: 'marco',
       kind: 'character',
-      revealedAtEpisode: 152,
-      revealedAtChapter: 234,
+      // Seen on Whitebeard's deck at 151, named only when Shanks greets him at 316.
+      revealedAtEpisode: 316,
+      revealedAtChapter: 434,
       name: { it: 'Marco', en: 'Marco' },
       summary: {
-        it: 'Un comandante dei Pirati di Barbabianca, il primo a parlare quando il vecchio alza la voce, con l’aria di chi si annoia anche in mezzo a una tempesta.',
-        en: 'A commander of the Whitebeard Pirates, the first to speak when the old man raises his voice, with the air of someone bored even in a storm.',
+        it: 'Il comandante della prima divisione dei Pirati di Barbabianca, che resta in piedi quando Shanks sale a bordo e risponde alla sua offerta di unirsi a lui con un “Sta’ zitto”.',
+        en: 'The first division commander of the Whitebeard Pirates, who stays on his feet when Shanks comes aboard and answers his offer to join him with “Shut up”.',
       },
       visual: { art: 'marco', tint: 'cyan' },
     },
@@ -368,8 +369,10 @@ export const skypiea: Saga = {
     {
       id: 'enel',
       kind: 'character',
-      revealedAtEpisode: 158,
+      revealedAtEpisode: 167,
       revealedAtChapter: 256,
+      // Named as Skypiea’s god at 155, long before he shows himself to his priests at 167.
+      nameSaidAt: 155,
       name: { it: 'Ener', en: 'Enel' },
       summary: {
         it: 'Il Dio di Skypiea, seduto sopra un tamburo d’oro con altri quattro alle spalle, che sa che cosa dicono i suoi sudditi senza doverli ascoltare.',
@@ -558,8 +561,8 @@ export const skypiea: Saga = {
         en: 'Captain and salvager',
       },
       log: {
-        it: 'Comanda una ciurma che lo acclama a ogni parola e lavora sulle secche attorno a Jaya, tirando su i relitti dal fondo con gru e catene. Quando un galeone affiora sotto la Going Merry si presenta come il Re dei Recuperi e pretende che quel tratto di mare sia suo. Piange con la stessa facilità con cui urla.',
-        en: 'He commands a crew that cheers every word he says, and works the shallows around Jaya, hauling wrecks off the bottom with cranes and chains. When a galleon surfaces under the Going Merry he introduces himself as the Salvage King and claims that stretch of sea as his own. He weeps as easily as he shouts.',
+        it: 'Comanda una ciurma che lo acclama a ogni parola e lavora in mare aperto, tirando su i relitti dal fondo con gru e catene. Quando un galeone affiora sotto la Going Merry si presenta come il Re dei Recuperi e pretende che quel tratto di mare sia suo. Piange con la stessa facilità con cui urla.',
+        en: 'He commands a crew that cheers every word he says, and works the open sea, hauling wrecks off the bottom with cranes and chains. When a galleon surfaces under the Going Merry he introduces himself as the Salvage King and claims that stretch of sea as his own. He weeps as easily as he shouts.',
       },
       affiliation: [
         {
@@ -578,25 +581,22 @@ export const skypiea: Saga = {
       ],
     },
     'shoujou': {
-      role: {
-        it: 'Capitano e cercatore dei fondali',
-        en: 'Captain and sea searcher',
-      },
+      role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
-        it: 'Batte le stesse acque di Masira, e i due si contendono ogni relitto a colpi di insulti senza che nessuno dei due sembri volerne davvero all’altro. La sua nave ascolta il fondo del mare con le onde sonore e trova quello che nessun occhio vedrebbe. Beve dalla mattina e ha una risata che si sente da un’isola all’altra.',
-        en: 'He works the same water as Masira, and the two of them squabble over every wreck with insults that neither of them seems to mean. His ship listens to the sea floor with sound waves and finds what no eye would ever see. He drinks from morning on, and his laugh carries from one island to the next.',
+        it: 'Come Masira, dice che quel tratto di mare è suo, e chi vuole passare deve pagare. Spera di prendere il posto lasciato libero da Crocodile nella Flotta dei Sette. Quando sente che la ciurma ha battuto Masira attacca per vendicarlo, con onde sonore che sfasciano la loro nave e anche la sua.',
+        en: 'Like Masira, he says that stretch of sea is his, and anyone who wants to pass has to pay. He hopes to take the seat Crocodile left empty among the Seven Warlords. When he hears the crew beat Masira he attacks to avenge him, with sound waves that wreck their ship and his own as well.',
       },
       affiliation: [
         {
-          episode: 145,
+          episode: 147,
           value: {
-            it: 'Pirati di Shojo, capitano; cercatore dei fondali',
-            en: 'Shoujou Pirates, captain; sea searcher',
+            it: 'Pirati di Shojo, capitano',
+            en: 'Shoujou Pirates, captain',
           },
         },
       ],
       epithet: [
-        { episode: 145, value: { it: 'Il Re del Sonar', en: 'Sonar King' } },
+        { episode: 147, value: { it: 'Il Re del Sonar', en: 'Sonar King' } },
       ],
     },
     'bellamy': {
@@ -797,7 +797,11 @@ export const skypiea: Saga = {
       ],
       epithet: [{ episode: 151, value: { it: 'Il Buddha', en: 'the Buddha' } }],
       devilFruit: [
-        { episode: 469, value: ['human-human-fruit-model-daibutsu'] },
+        {
+          episode: 480,
+          chapter: 571,
+          value: ['human-human-fruit-model-daibutsu'],
+        },
       ],
     },
     'edward-newgate': {
@@ -900,12 +904,12 @@ export const skypiea: Saga = {
         en: 'First division commander',
       },
       log: {
-        it: 'Sul ponte della Moby Dick è quello che porta le notizie al capitano e che prova a farlo ragionare, senza illudersi di riuscirci. È lui a ricordare che Ace è partito da solo dietro a un traditore e che nessuno lo ha fermato. Chiama padre il vecchio come tutti gli altri a bordo, e lo dice senza abbassare la voce.',
-        en: 'On the deck of the Moby Dick he is the one who brings the captain his news and tries to talk sense into him, without much hope of managing it. He is the one who points out that Ace went off alone after a traitor and that nobody stopped him. He calls the old man father, as everyone aboard does, and says it without lowering his voice.',
+        it: 'Quando Shanks sale sulla nave di Barbabianca, l’Haki che si porta dietro fa svenire metà dell’equipaggio. Lui resta in piedi e gli grida di smetterla. Shanks lo riconosce come Marco della prima divisione e gli chiede di passare con lui. Marco gli dice di stare zitto e chiede al vecchio che cosa devono fare; Barbabianca risponde che non ci sarà battaglia e che li lascino soli.',
+        en: 'When Shanks boards Whitebeard’s ship, the Haki he brings with him knocks out half the crew. He stays on his feet and shouts at him to stop. Shanks recognises him as Marco of the first division and asks him to join his crew. Marco tells him to shut up and asks the old man what they should do; Whitebeard says there will be no battle and tells them to leave the two of them alone.',
       },
       affiliation: [
         {
-          episode: 152,
+          episode: 316,
           value: {
             it: 'Pirati di Barbabianca, comandante della prima divisione',
             en: 'Whitebeard Pirates, first division commander',
@@ -927,9 +931,15 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [
-        { episode: 461, value: { it: 'La Fenice', en: 'the Phoenix' } },
+        { episode: 463, value: { it: 'La Fenice', en: 'the Phoenix' } },
       ],
-      devilFruit: [{ episode: 461, value: ['bird-bird-fruit-model-phoenix'] }],
+      devilFruit: [
+        {
+          episode: 463,
+          chapter: 553,
+          value: ['bird-bird-fruit-model-phoenix'],
+        },
+      ],
     },
     'gan-fall': {
       role: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },
@@ -1135,9 +1145,9 @@ export const skypiea: Saga = {
         it: 'Regna sulle nuvole come un dio e ne ha i modi: parla piano, non alza mai la testa e decide chi vive senza spiegare perché. Sente ogni voce dell’isola ovunque si trovi, e chi lo nomina male se ne accorge troppo tardi. I sacerdoti che lo servono tengono le prove che quasi nessuno riesce a superare.',
         en: 'He rules the clouds as a god and has the manner of one: he speaks softly, never lifts his head and decides who lives without explaining himself. He hears every voice on the island wherever it is, and anyone who speaks his name badly finds out too late. The priests who serve him keep the ordeals that almost nobody gets past.',
       },
-      status: [{ episode: 158, value: 'alive' }],
+      status: [{ episode: 167, value: 'alive' }],
       affiliation: [
-        { episode: 158, value: { it: 'Dio di Skypiea', en: 'God of Skypiea' } },
+        { episode: 167, value: { it: 'Dio di Skypiea', en: 'God of Skypiea' } },
         {
           episode: 193,
           value: { it: 'Fuggito sulla luna', en: 'Fled to the moon' },
@@ -1145,11 +1155,11 @@ export const skypiea: Saga = {
       ],
       origin: [
         {
-          episode: 158,
+          episode: 182,
           value: { it: 'Birka, isole del cielo', en: 'Birka, sky islands' },
         },
       ],
-      epithet: [{ episode: 158, value: { it: 'Dio', en: 'God' } }],
+      epithet: [{ episode: 167, value: { it: 'Dio', en: 'God' } }],
       devilFruit: [
         { episode: 175, chapter: 266, value: ['rumble-rumble-fruit'] },
       ],
