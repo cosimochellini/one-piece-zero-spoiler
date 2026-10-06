@@ -857,12 +857,14 @@ export const fishManIsland: Saga = {
         en: 'Assassin of the New Fish-Man Pirates',
       },
       log: {
-        it: 'È l’assassino dei Nuovi Pirati Uomini-Pesce. Al posto delle gambe ha tentacoli di polpo, porta una katana senza guardia in un fodero a macchie lunghe e una zucca, e singhiozza tra una parola e l’altra. Aspetta con Hammond tra i mostri marini all’ingresso dell’Isola degli Uomini-Pesce mentre ai Cappello di Paglia viene detto di unirsi alla ciurma o di colare a picco, e nota che stanno tramando qualcosa. Quando la loro nave si lancia dentro l’isola, chiede a Hammond se vogliono seguirla, anche se non sa se a bordo sia rimasto vivo qualcuno.',
-        en: 'He is the New Fish-Man Pirates’ assassin. He has octopus tentacles in place of legs, carries a guardless katana in a sheath with long spots and a gourd, and hiccups between his words. He waits with Hammond among the sea monsters at the entrance to Fish-Man Island while the Straw Hats are told to join the crew or be sunk, and notices they are up to something. When their ship charges into the island, he asks Hammond whether they should follow it, though he cannot tell if anyone aboard is still alive.',
+        it: 'È l’assassino dei Nuovi Pirati Uomini-Pesce. Al posto delle gambe ha tentacoli di polpo, e porta una katana senza guardia in un fodero a macchie lunghe e una zucca. È con Hammond tra i mostri marini che sbarrano l’ingresso dell’Isola degli Uomini-Pesce mentre ai Cappello di Paglia viene detto di unirsi alla ciurma o di colare a picco. I Cappello di Paglia sfuggono lanciando la nave dentro l’isola.',
+        en: 'He is the New Fish-Man Pirates’ assassin. He has octopus tentacles in place of legs, and carries a guardless katana in a sheath with long spots and a gourd. He is with Hammond among the sea monsters that block the entrance to Fish-Man Island while the Straw Hats are told to join the crew or be sunk. The Straw Hats get away by charging their ship into the island.',
       },
       affiliation: [
         {
+          // The crew's assassin: a caption says so in 527, and ch. 610, p. 5, in the manga.
           episode: 527,
+          chapter: 610,
           value: {
             it: 'Nuovi Pirati Uomini-Pesce, assassino',
             en: 'New Fish-Man Pirates, assassin',
