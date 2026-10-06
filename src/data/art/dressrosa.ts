@@ -17,14 +17,18 @@ import type { Drawings, Redrawings } from './stroke'
  */
 const JORA_CARD_EDGE = 'M82 150 V70 h17'
 
+/** One of the zigzag paper strips hanging from the front of Kaido's rope belt. */
+const KAIDO_SHIDE =
+  'M62 140 H72 L67 152 H77 L72 164 H82 L76 182 H66 L71 168 H61 L66 156 H56 Z'
+
 /** Gladius's coat laid flat, turned a little on the floor beside his hat. */
 const GLADIUS_COAT = 'translate(-12 -4) rotate(-14 70 100)'
 
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
   // A strip torn from a pair of overalls, bunched on the deck of the Sun
-  // Pirates' ship between the seams of the planks, the strap and its buckle
-  // trailing off it and a wet sweep on the boards beside. Koala tears it
+  // Pirates' ship between the seams of the planks, a strap trailing off it
+  // and a wet sweep on the boards beside. Koala tears it
   // from her own clothes in episode 541 and scrubs the deck with it, and
   // will not stop.
   'koala': [
@@ -43,9 +47,8 @@ export const dressrosaArt = {
     { d: 'M43.2 159 C69.3 167.7 101.2 161.9 127.3 153.2', role: 'ambient' },
     {
       d: 'M124.4 127.1 C138.9 130 150.5 141.6 150.5 153.2 M121.5 138.7 C133.1 141.6 138.9 147.4 140.3 156.1',
-      role: 'accent',
+      role: 'soft',
     },
-    { d: 'M134 156 h20 v10 h-20 z M138 161 h12', role: 'accent' },
     {
       d: 'M20 96 C28 86 38 82 46 84 M104 176 C112 168 124 166 132 170',
       role: 'ambient',
@@ -340,9 +343,10 @@ export const dressrosaArt = {
   ],
 
   // His dark cape standing on its hem under its great frilled ruff, the
-  // puffs of the ruff seen from a little above, the cape falling open at the
-  // front and its far side hatched. He wears it when the Chinjao family steps in for
-  // Lucy in episode 633. The polearm is not his until the C Block.
+  // puffs of the ruff seen from a little above, the cape falling open at
+  // the front and its far side hatched. He wears it when the Chinjao family
+  // steps in for Lucy in episode 633. The polearm is not his until the
+  // C Block.
   'sai': [
     {
       d: 'M44 58 C38 50 46 42 54 46 C56 38 66 36 70 42 C74 34 86 34 90 42 C94 36 104 38 106 46 C114 42 122 50 116 58 C122 64 116 74 108 72 C106 80 96 82 92 76 C88 82 72 82 68 76 C64 82 54 80 52 72 C44 74 38 64 44 58 Z',
@@ -898,27 +902,31 @@ export const dressrosaArt = {
     shadow(80, 184, 50),
   ],
 
-  // The crater he leaves in the yard of the Kid Pirates' hideout, seen
-  // side on: the ground broken open between two lips of thrown-up earth,
-  // the bowl hatched inside, a crack running off each side, a broken
-  // palisade at each edge and one stone in the air. He falls out of the sky
-  // there in episode 739. No club and no gourd: both come later.
+  // His belt in three-quarters: the thick ring of twisted rope, its strands
+  // slanting round it and its near side hatched, and the two zigzag paper
+  // strips tied to its front, hanging below it. He wears it when he climbs out of the hole he made in the
+  // Kid Pirates' hideout in episode 739. No club and no gourd: both come
+  // later.
   'kaido': [
-    { d: 'M2 130 H18 M142 130 H158', role: 'ambient' },
+    { d: ellipse(80, 100, 62, 26) },
+    { d: ellipse(80, 99, 28, 8) },
+    { d: 'M18 100 C18 156.6 142 156.6 142 100' },
     {
-      d: 'M8 130 V100 L4 94 M16 130 V96 M144 130 L148 104 M152 130 V100 M2 110 L20 114 M140 114 L158 110',
+      d: 'M110.8 100 L135.3 108.5 M109.3 102.7 L126.4 115.2 M50.7 102.7 L21.1 99.1 M49.2 100 L24.7 91.5 M50.7 97.3 L33.6 84.8 M55.1 94.8 L47.1 79.5 M61.9 92.9 L63.8 76.3 M70.5 91.6 L82.1 75.3 M80 91.2 L100.2 76.8 M89.5 91.6 L116.3 80.6 M98.1 92.9 L128.9 86.2 M104.9 94.8 L136.6 93.2 M109.3 97.3 L138.9 100.9',
       role: 'soft',
     },
     {
-      d: 'M18 130 L24 118 L32 122 L38 112 L46 120 C50 150 66 160 78 158 C96 154 110 140 114 120 L122 112 L128 122 L136 118 L142 130',
-      role: 'accent',
+      d: 'M25 111.4 Q32 122.2 35 129.1 M35 115.9 Q42 128.4 45 137 M45 118.8 Q52 132.4 55 142.1 M55 120.6 Q62 135 65 145.4 M65 121.7 Q72 136.4 75 147.2 M75 122 Q82 136.9 85 147.8 M85 121.7 Q92 136.4 95 147.2 M95 120.6 Q102 135 105 145.4 M105 118.8 Q112 132.4 115 142.1 M115 115.9 Q122 128.4 125 137 M125 111.4 Q132 122.2 135 129.1',
+      role: 'soft',
     },
     {
-      d: 'M50 128 l4 -4 M52 140 l12 -12 M60 150 l18 -18 M74 154 l16 -16 M90 150 l12 -12',
+      d: 'M28 125.5 l5 -6 M41 136.5 l5 -6 M54 142.6 l5 -6 M67 145.9 l5 -6 M80 146.9 l5 -6 M93 145.9 l5 -6 M106 142.6 l5 -6 M119 136.5 l5 -6 M132 125.5 l5 -6',
       role: 'ambient',
     },
-    { d: 'M18 130 L10 144 L14 156 M142 130 L150 146 L146 158', role: 'soft' },
-    { d: 'M120 72 l8 -3 l3 7 l-8 3 z' },
+    { d: KAIDO_SHIDE, role: 'accent', transform: 'translate(0 12)' },
+    { d: KAIDO_SHIDE, role: 'accent', transform: 'translate(34 10)' },
+    { d: 'M67 140 V152 M101 138 V150', role: 'soft' },
+    shadow(80, 150, 68),
   ],
   // A wrapped candy, twisted at both ends, with smoke curling off it.
   'mocha': [
