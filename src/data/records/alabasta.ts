@@ -769,7 +769,8 @@ export const alabasta: Saga = {
     'mr-9': {
       // Ep 63 never names Baroque Works: he says he is a king and that their
       // work is secret. Zoro names the organisation at the end of ep 64, in
-      // the ch 107 scene where Mr. 9 stands with the agents.
+      // the ch 107 scene where Mr. 9 stands with the agents. The role is
+      // frozen at the threshold, so it stays his cover, as Igaram's does.
       role: { it: 'Sedicente re', en: 'Self-styled king' },
       log: {
         it: 'Porta una corona e dice di essere un re, e per tutta risposta si sente dare del bugiardo. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',

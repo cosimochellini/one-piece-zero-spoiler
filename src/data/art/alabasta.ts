@@ -986,29 +986,31 @@ export const alabastaArt = {
     shadow(80, 182, 56),
   ],
 
-  // The wooden club of the Sand-Sand Clan, the one the boy knocks the bandit
-  // down with (ch 164 p8, ep 100), lying in 3/4 with its flat end towards
-  // you: the end grain on the face, the two carved grooves round the head,
-  // the head swelling out of a plain grip, as ep 100 draws it. Nothing else
-  // is in the drawing: by ep 100 the anime has shown only the boy, so no
-  // part of the grown man's outfit is true for both readers yet.
+  // The crude wooden club of the Sand-Sand Clan, the one the boy knocks the
+  // bandit down with (ch 164 p8, ep 100), lying in 3/4: the heavy head
+  // swelling out of a thin grip, the sawn end with its whorl of end grain,
+  // and the long split and nicked grain along the head, all as ep 100 draws
+  // it. Nothing else is in the drawing: by ep 100 the anime has shown only
+  // the boy, so no part of the grown man's outfit is true for both readers.
   'kohza': [
     {
-      d: 'M130.1 86.9 C91.1 108 81.4 115.3 73.4 121.8 C61.1 132.7 34.7 150 18.8 158.3 A5.5 5.5 0 0 0 23.9 168.1 C39.8 159.7 69 147.8 85 143.9 C94.8 141 106.4 137.2 145.9 117.1',
+      d: 'M133.4 92.5 C129.6 90.7 126.4 90.2 122.8 90.5 L120.6 93.2 L116.1 92.2 C109.5 94.1 103.4 97.8 98.9 102 C89.8 110.8 81.8 122.3 67.9 131.3 C56 138.8 37.7 142.5 16.4 151 C10.5 153.4 13.1 160.5 19 158.2 C40.8 150.9 61.3 146.7 79.4 142.8 C95.7 140.5 115.4 140.7 133.1 135.5 C139.6 133.3 143.5 130.5 146.6 125.6',
     },
+    { d: 'M133.4 92.5 C145.3 91.8 155.9 117.4 146.6 125.6' },
+    { d: 'M133.4 92.5 C130.3 101 138.3 121.3 146.6 125.6', role: 'soft' },
     {
-      d: 'M130.1 86.9 A6.5 17 -27.7 1 1 145.9 117.1 A6.5 17 -27.7 1 1 130.1 86.9',
-    },
-    {
-      d: 'M135.2 95.4 A2.6 7.1 -27.7 1 1 141.8 108 A2.6 7.1 -27.7 1 1 135.2 95.4',
+      d: 'M142.9 108.6 C145 106 147.7 111.8 144.9 113.5 C141.5 115.5 137.6 106.9 141.2 103.9 C145.7 100.8 151.9 114.7 147.3 119.3',
       role: 'soft',
     },
-    { d: 'M120.9 92 C127.1 96.3 136.5 114.2 136.5 121.7', role: 'accent' },
-    { d: 'M111.7 96.9 C117.9 101.2 127.2 119 127.3 126.6', role: 'soft' },
-    { d: 'M83.5 123.8 C91.5 117.4 100.1 112.3 112.2 106.5', role: 'soft' },
-    { d: 'M29.7 157.7 C47.2 147.9 60.4 139.9 70.8 133.9', role: 'soft' },
+    { d: 'M80.6 125.8 C94 115.4 109.7 104.8 127 98.5', role: 'accent' },
+    { d: 'M90.8 133.7 C106.5 129.8 122.5 126.5 136.5 121.4', role: 'soft' },
+    { d: 'M28.3 150.3 C41.2 145.4 54.8 142.4 68.3 139.2', role: 'soft' },
     {
-      d: 'M87.5 135.6 L93.9 138.1 M93.6 133.2 L100.3 136.4 M100 131.4 L107.4 135.9 M105.7 128.4 L113.1 132.9',
+      d: 'M98.8 112 L99 108 M113.1 104.1 L113 100.4 M113.4 128.4 L115.7 131.5',
+      role: 'soft',
+    },
+    {
+      d: 'M100.1 138.9 L106.1 140.4 M109.3 137.3 L115.4 139 M118.3 135.2 L124.5 137.1 M127.3 132.9 L133.4 134.6',
       role: 'ambient',
     },
     shadow(80, 182, 58),
