@@ -53,7 +53,10 @@ describe('the commitlint configuration', () => {
   })
 })
 
-describe('the commitlint binary', () => {
+// Each case starts the commitlint binary in a child process. That takes about
+// 250ms with no load and took up to 7.7s with several checks running at once
+// (#285), so the 5s default is too short.
+describe('the commitlint binary', { timeout: 20_000 }, () => {
   it.each(Object.keys(TYPE_BUMPS))('accepts `%s: a subject`', (type) => {
     expect(lint(`${type}: a subject`)).toBe(0)
   })
