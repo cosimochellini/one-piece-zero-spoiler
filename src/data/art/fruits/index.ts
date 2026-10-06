@@ -99,10 +99,10 @@ export const fruitArt = {
   }),
   'human-human-fruit': fruit({
     body: 'round',
-    grain: 8,
-    leaf: 'sprig',
-    stem: 'hooked',
-    swirl: 'waves',
+    grain: 5,
+    leaf: 'right',
+    stem: 'straight',
+    swirl: 'spiral',
   }),
   'bird-bird-fruit-model-falcon': fruit({
     body: 'star',
