@@ -615,7 +615,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'waves',
   }),
-  'crow-crow-fruit': fruit({
+  'soot-soot-fruit': fruit({
     body: 'star',
     grain: 11,
     leaf: 'sprig',

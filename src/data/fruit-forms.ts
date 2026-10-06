@@ -107,7 +107,7 @@ export const FRUIT_FORMS = {
   'heat-heat-fruit': 'paramecia',
   'puff-puff-fruit': 'paramecia',
   'cook-cook-fruit': 'paramecia',
-  'crow-crow-fruit': 'zoan',
+  'soot-soot-fruit': 'logia',
   'pump-pump-fruit': 'paramecia',
   'push-push-fruit': 'paramecia',
   'millet-millet-fruit': 'paramecia',
