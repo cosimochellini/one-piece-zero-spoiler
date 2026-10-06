@@ -31,6 +31,20 @@ const PYTHAGORAS_KEY = 'rotate(-40 80 100)'
 const MARS_TILT = 'rotate(-23 80 90)'
 /** Ginny's joint of meat, enlarged by a quarter toward the top left. */
 const GINNY_MEAT = 'translate(-20 -20) scale(1.25)'
+/** The slant Nusjuro's katana lies at, over his coins. */
+const NUSJURO_KATANA = 'rotate(-24 80 100)'
+/** One bearded ear of Ju Peter's wheat, and the beard on it. */
+const WHEAT_EAR = 'M80 60 q-7 -12 0 -34 q7 22 0 34'
+const WHEAT_AWNS = 'M76 36 l-8 -8 M84 36 l8 -8 M75 46 l-8 -8 M85 46 l8 -8'
+/** The two side ears, fanned out from the binding. */
+const WHEAT_LEFT = 'rotate(-36 80 118)'
+const WHEAT_RIGHT = 'rotate(36 80 118)'
+/** The slant Garling's sword lies at, the pommel up and to the right. */
+const GARLING_SWORD = 'rotate(-50 80 100)'
+/** The tilt of Bluegrass's steering wheel. */
+const BLUEGRASS_WHEEL = 'rotate(-10 80 104)'
+/** The lean of the barrel out of Urban's hat. */
+const URBAN_BARREL = 'rotate(-14 80 96)'
 
 /** The drawings of the records filed in the egghead stretch of the route. */
 export const eggheadArt = {
@@ -436,24 +450,59 @@ export const eggheadArt = {
     shadow(80, 182, 34),
   ],
 
-  // A katana laid across a stack of coins.
+  // His katana, which he always keeps in his hand, half drawn as he draws it
+  // on Cobra, laid at a slant: the pale sheath with its seam, the bare steel
+  // as the accent, the guard, and the wrapped grip. Under it, a short stack
+  // of coins with soft rims: a title emblem, not something he holds. It
+  // stands for Warrior God of Finance, the title he is named with at
+  // ch. 1086 / ep. 1120.
   'ethanbaron-v-nusjuro': [
-    { d: ellipse(80, 160, 40, 10) },
-    { d: ellipse(80, 146, 40, 10) },
-    { d: ellipse(80, 132, 40, 10), role: 'soft' },
-    { d: 'M22 106 L112 84 L114 90 L24 112 Z', role: 'accent' },
-    { d: 'M110 78 L116 94 M114 82 L136 76 M115 88 L137 82 M136 76 L137 82' },
-    { d: 'M16 184 H144', role: 'ambient', dashed: true },
+    { d: ellipse(48, 164, 24, 6) },
+    { d: 'M24 164 v4 a24 6 0 0 0 48 0 v-4' },
+    { d: ellipse(52, 156, 24, 6) },
+    { d: 'M28 156 v4 M76 156 v4', role: 'soft' },
+    { d: ellipse(46, 148, 24, 6) },
+    { d: ellipse(46, 148, 18, 4), role: 'soft' },
+    { d: 'M22 148 v4 M70 148 v4', role: 'soft' },
+    {
+      d: 'M16 96 H88 L92 100 L88 104 H16 Q12 100 16 96 Z',
+      transform: NUSJURO_KATANA,
+    },
+    { d: 'M24 100 H84', role: 'soft', transform: NUSJURO_KATANA },
+    {
+      d: 'M92 98 H120 Q124 100 120 102 H92',
+      role: 'accent',
+      transform: NUSJURO_KATANA,
+    },
+    { d: ellipse(124, 100, 3, 12), transform: NUSJURO_KATANA },
+    { d: 'M127 96 H152 Q155 100 152 104 H127 Z', transform: NUSJURO_KATANA },
+    {
+      d: 'M130 96 l5 8 M136 96 l5 8 M142 96 l5 8 M135 104 l5 -8 M141 104 l5 -8',
+      role: 'soft',
+      transform: NUSJURO_KATANA,
+    },
+    shadow(70, 182, 60),
   ],
 
-  // A sheaf of wheat tied at its middle.
+  // A sheaf of wheat bound at its waist, the binding as the accent: a title
+  // emblem, not something he holds. It stands for Warrior God of
+  // Agriculture, the title he is named with at ch. 1086 / ep. 1120. Three
+  // bearded ears fan out on top, the stalks splay out under the binding, and
+  // the far stalks are hatched.
   'shepherd-ju-peter': [
-    { d: 'M80 170 V60 M80 170 L60 70 M80 170 L100 70' },
-    { d: ellipse(80, 54, 8, 16), role: 'soft' },
-    { d: ellipse(58, 64, 7, 14), role: 'soft' },
-    { d: ellipse(102, 64, 7, 14), role: 'soft' },
-    { d: 'M66 128 h28', role: 'accent' },
-    { d: 'M16 180 H144', role: 'ambient', dashed: true },
+    { d: 'M72 118 L56 166 M76 118 L70 170 M84 118 L90 170 M88 118 L104 166' },
+    {
+      d: 'M72 118 C70 100 62 84 50 70 M80 118 V60 M88 118 C90 100 98 84 110 70',
+    },
+    { d: 'M70 112 Q80 118 90 112 M70 120 Q80 126 90 120', role: 'accent' },
+    { d: WHEAT_EAR },
+    { d: WHEAT_EAR, transform: WHEAT_LEFT },
+    { d: WHEAT_EAR, transform: WHEAT_RIGHT },
+    { d: `${WHEAT_AWNS} M76 54 l-7 -6 M84 54 l7 -6`, role: 'soft' },
+    { d: WHEAT_AWNS, role: 'soft', transform: WHEAT_LEFT },
+    { d: WHEAT_AWNS, role: 'soft', transform: WHEAT_RIGHT },
+    { d: 'M94 150 l6 -5 M96 162 l6 -5', role: 'ambient' },
+    shadow(80, 180, 40),
   ],
 
   // A pair of headphones on their band, a small teddy bear hanging from a
@@ -486,19 +535,27 @@ export const eggheadArt = {
     },
     shadow(80, 188, 50),
   ],
-  // A spiked choker laid flat, a pair of hoop earrings beside it.
+  // Her spiked choker standing on its edge in 3/4, as she wears it from her
+  // first appearance (1090): the band with its thickness, the spikes round
+  // it as the accent, the inside of the band hatched where it turns away,
+  // and one of her hoop earrings beside it.
   'doll': [
-    { d: ellipse(80, 110, 52, 20) },
-    { d: ellipse(80, 110, 42, 13), role: 'soft' },
+    { d: ellipse(72, 100, 34, 46) },
+    { d: 'M72 54 C96 54 112 76 112 100 C112 124 96 146 72 146', role: 'soft' },
+    { d: ellipse(72, 100, 26, 37) },
     {
-      d: 'M36 122 l4 12 l4 -12 M52 127 l4 12 l4 -12 M68 130 l4 12 l4 -12 M84 130 l4 12 l4 -12 M100 127 l4 12 l4 -12 M116 122 l4 12 l4 -12',
+      d: 'M67.3 54.5 L72 39.3 L76.7 54.5 M90 61 L100.8 53.5 L97.3 69.2 M104.3 85.8 L116.2 89.5 L106 98.4 M103.5 117.2 L110.9 130.4 L98.8 128.3 M88 140.6 L87.3 157.1 L79.1 145 M64.9 145 L56.7 157.1 L56 140.6 M45.2 128.3 L33.1 130.4 L40.5 117.2 M38 98.4 L27.8 89.5 L39.7 85.8 M46.7 69.2 L43.2 53.5 L54 61',
       role: 'accent',
     },
-    { d: 'M72 98 h16 v10 h-16z', role: 'soft' },
-    { d: circle(44, 164, 10), role: 'accent' },
-    { d: circle(116, 164, 10), role: 'accent' },
-    shadow(80, 188, 44),
+    {
+      d: 'M86 72 l6 -6 M90 86 l8 -8 M92 100 l8 -8 M90 114 l8 -8 M86 128 l6 -6',
+      role: 'ambient',
+    },
+    { d: circle(134, 162, 10) },
+    { d: 'M134 152 q4 -8 0 -12', role: 'soft' },
+    shadow(84, 184, 54),
   ],
+
   // A coiled whip lying on its side, the handle up and the lash running
   // loose out of the coil.
   'kujaku': [
@@ -540,33 +597,64 @@ export const eggheadArt = {
     { d: 'M35 147 l6 -6 M35 139 l5 -5 M118 151 l7 -7', role: 'ambient' },
     shadow(80, 182, 54),
   ],
-  // A straight sword standing point down, its guard a ring of gold, and a
-  // pair of round glasses left at its foot.
+  // His straight sword in its sheath, laid at a slant, as he has it when he
+  // first appears at 1120: the black sheath hatched, its two bands near the
+  // mouth, the round golden knuckle-bow guard as the accent, the wrapped
+  // grip and the round pommel. No glasses.
   'figarland-garling': [
-    { d: circle(80, 22, 5) },
-    { d: 'M76 27 h8 v28 h-8z' },
-    { d: 'M62 58 h36', role: 'accent' },
-    { d: 'M98 58 C110 44 102 26 85 26', role: 'accent' },
-    { d: 'M74 61 h12 V150 L80 164 L74 150 Z' },
-    { d: 'M80 64 V150', role: 'soft' },
-    { d: circle(62, 176, 9), role: 'accent' },
-    { d: circle(98, 176, 9), role: 'accent' },
-    { d: 'M71 176 q9 -6 18 0', role: 'accent' },
-    shadow(80, 188, 48),
-  ],
-  // A pair of headphones on their band, the cord trailing off one cup.
-  'bluegrass': [
-    { d: 'M44 104 C44 40 116 40 116 104' },
-    { d: 'M52 100 C54 56 106 56 108 100', role: 'soft' },
-    { d: ellipse(40, 120, 12, 20) },
-    { d: ellipse(120, 120, 12, 20) },
+    { d: 'M2 95 H100 V105 H2 Q-4 100 2 95 Z', transform: GARLING_SWORD },
     {
-      d: `${ellipse(40, 120, 5, 11)} ${ellipse(120, 120, 5, 11)}`,
-      role: 'accent',
+      d: 'M8 95 l8 10 M24 95 l8 10 M40 95 l8 10 M56 95 l8 10 M72 95 l8 10',
+      role: 'ambient',
+      transform: GARLING_SWORD,
     },
-    { d: 'M40 140 C40 160 70 152 74 168 C77 180 62 184 66 174', role: 'soft' },
-    shadow(80, 188, 44),
+    { d: 'M88 95 V105 M94 95 V105', role: 'soft', transform: GARLING_SWORD },
+    { d: 'M100 90 h5 v20 h-5 z', transform: GARLING_SWORD },
+    {
+      d: 'M105 106 C116 126 140 128 150 104',
+      role: 'accent',
+      transform: GARLING_SWORD,
+    },
+    { d: 'M105 97 H146 M105 103 H146', transform: GARLING_SWORD },
+    {
+      d: 'M112 97 l4 6 M121 97 l4 6 M130 97 l4 6 M139 97 l4 6',
+      role: 'soft',
+      transform: GARLING_SWORD,
+    },
+    { d: circle(151, 100, 5), transform: GARLING_SWORD },
+    shadow(80, 184, 44),
   ],
+
+  // The steering wheel she grips riding a Pacifista at 1128, when she says
+  // she is a Driving Human who ate the Ride-Ride Fruit: the rim in 3/4 with
+  // its near edge as the accent, its thickness, the hub and three spokes,
+  // the grips wrapped in soft and the underside hatched.
+  'bluegrass': [
+    { d: ellipse(80, 100, 58, 36), transform: BLUEGRASS_WHEEL },
+    { d: ellipse(80, 100, 48, 28), transform: BLUEGRASS_WHEEL },
+    {
+      d: 'M22 100 a58 36 0 0 0 116 0',
+      role: 'accent',
+      transform: BLUEGRASS_WHEEL,
+    },
+    { d: ellipse(80, 104, 12, 7), transform: BLUEGRASS_WHEEL },
+    {
+      d: 'M68 104 L33 98 M92 104 L127 98 M80 111 V128',
+      transform: BLUEGRASS_WHEEL,
+    },
+    {
+      d: 'M26 88 l6 6 M24 100 l8 2 M28 112 l7 -2 M132 88 l-6 6 M136 100 l-8 2 M132 112 l-7 -2',
+      role: 'soft',
+      transform: BLUEGRASS_WHEEL,
+    },
+    {
+      d: 'M60 128 l8 -6 M80 132 l8 -6 M100 128 l8 -6',
+      role: 'ambient',
+      transform: BLUEGRASS_WHEEL,
+    },
+    shadow(80, 170, 54),
+  ],
+
   // A maul whose head is a scallop shell, ribs fanning out from the hinge.
   'pomsky': [
     { d: 'M100 96 L66 60 Q100 20 134 60 Z' },
@@ -583,97 +671,115 @@ export const eggheadArt = {
     { d: 'M52 158 l8 7 M46 166 l8 7', role: 'soft' },
     shadow(80, 188, 44),
   ],
-  // A hand drum with its cords, two beaters above it: the rhythm of Nika he
-  // dances to make his son laugh.
+  // The iron collar of a slave and its chain, as he wears it in Kuma's
+  // memories at 1129: the heavy ring lying in 3/4 with its rim as the
+  // accent, its thickness hatched underneath, the lock in soft, and the
+  // chain running off it, one link flat and the next on its edge.
   'clapp': [
-    { d: ellipse(80, 100, 44, 12) },
-    { d: 'M36 100 V164 M124 100 V164' },
-    { d: 'M36 164 a44 12 0 0 0 88 0' },
-    { d: 'M36 112 L58 170 L80 112 L102 170 L124 112', role: 'soft' },
-    { d: 'M52 58 L78 92 M112 56 L88 90', role: 'accent' },
-    { d: [circle(48, 53, 6), circle(116, 51, 6)].join(' '), role: 'accent' },
+    { d: ellipse(66, 132, 48, 18), role: 'accent' },
+    { d: ellipse(66, 130, 32, 10) },
+    { d: 'M18 132 v12 a48 18 0 0 0 96 0 v-12' },
     {
-      d: dots([
-        [26, 70],
-        [18, 84],
-        [134, 70],
-        [142, 84],
-      ]),
-      role: 'soft',
+      d: 'M30 152 l8 -6 M50 158 l8 -6 M74 158 l8 -6 M96 152 l8 -6',
+      role: 'ambient',
     },
-    shadow(80, 188, 48),
-  ],
-  // A crown set down on a tasselled cushion, the jewels on its points: the
-  // king who bows to the Celestial Dragons.
-  'bekori': [
-    {
-      d: 'M20 162 C40 146 120 146 140 162 C120 178 40 178 20 162 Z',
-      role: 'soft',
-    },
-    { d: 'M20 162 l-6 12 M140 162 l6 12', role: 'soft' },
-    { d: 'M42 132 h76 v18 h-76z' },
-    {
-      d: 'M42 132 L34 82 L60 108 L80 70 L100 108 L126 82 L118 132',
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [34, 76],
-        [80, 63],
-        [126, 76],
-      ]),
-      role: 'accent',
-    },
-    {
-      d: [circle(62, 141, 3), circle(80, 141, 4), circle(98, 141, 3)].join(' '),
-    },
-    shadow(80, 188, 56),
-  ],
-  // A small side cap resting on a folded fur coat: the old queen
-  // dowager's.
-  'conney': [
-    { d: 'M24 150 C24 128 48 118 80 118 C112 118 136 128 136 150 Z' },
-    { d: 'M36 142 q44 -14 88 0', role: 'soft' },
-    { d: 'M24 150 q56 16 112 0', role: 'soft' },
-    { d: 'M52 112 C56 92 104 92 108 112 Z', role: 'accent' },
-    { d: 'M80 94 V86', role: 'accent' },
-    shadow(80, 176, 60),
+    { d: 'M60 150 h12 v14 h-12 z', role: 'soft' },
+    { d: ellipse(122, 122, 10, 6), transform: 'rotate(-45 122 122)' },
+    { d: ellipse(133, 109, 9, 2.5), transform: 'rotate(-45 133 109)' },
+    { d: ellipse(144, 96, 10, 6), transform: 'rotate(-45 144 96)' },
+    { d: ellipse(155, 83, 9, 2.5), transform: 'rotate(-45 155 83)' },
+    shadow(70, 182, 54),
   ],
 
-  // A fur hat with its brim turned up and its ear flaps hanging, ties
-  // loose: the old king's cap.
-  'bulldog': [
-    { d: 'M44 106 C44 60 116 60 116 106' },
-    { d: 'M40 106 h80 v20 q-40 10 -80 0z', role: 'accent' },
+  // His crown in 3/4, as he wears it from 1131: a tall gold band flaring
+  // out to its top and cut into square battlements, the far rim seen over
+  // the near one in soft, the row of round stones near the base as the
+  // accent, and the inside and the turning side hatched.
+  'bekori': [
     {
-      d: 'M46 126 C40 144 42 162 52 170 C62 166 64 146 62 128 M114 126 C120 144 118 162 108 170 C98 166 96 146 98 128',
+      d: 'M30 96 L47.5 99.5 V115.5 H52.5 V100.2 L67.5 101.6 V117.6 H72.5 V101.9 L87.5 101.9 V117.9 H92.5 V101.6 L107.5 100.2 V116.2 H112.5 V99.5 L130 96',
     },
-    { d: 'M52 170 l-4 14 M108 170 l4 14', role: 'soft' },
     {
-      d: dots([
-        [52, 114],
-        [66, 118],
-        [80, 116],
-        [94, 118],
-        [108, 114],
-      ]),
+      d: 'M30 96 L48 90.1 V100.1 H52 V89.1 L68 86.6 V96.6 H72 V86.3 L88 86.3 V96.3 H92 V86.6 L108 89.1 V99.1 H112 V90.1 L130 96',
       role: 'soft',
     },
-    { d: 'M60 86 q20 -10 40 0', role: 'soft' },
-    shadow(80, 188, 50),
+    { d: 'M30 96 L38 150 M130 96 L122 150' },
+    { d: 'M38 150 Q80 162 122 150' },
+    {
+      d: [
+        circle(54, 140, 3.5),
+        circle(67, 143, 3.5),
+        circle(80, 144, 3.5),
+        circle(93, 143, 3.5),
+        circle(106, 140, 3.5),
+      ].join(' '),
+      role: 'accent',
+    },
+    { d: 'M58 90 l8 -6 M94 90 l8 -6', role: 'ambient' },
+    { d: 'M116 122 l8 -6 M114 138 l7 -6', role: 'ambient' },
+    shadow(80, 176, 44),
   ],
-  // A capped medicine bottle with a spoon beside it: the daily dose the
-  // nurse gives Bonney.
+
+  // Her side cap in 3/4, as she wears it at 1133: the crown dark then, so
+  // hatched, and the light brim rolled up round it, its top edge as the
+  // accent, with the fold where the brim turns.
+  'conney': [
+    { d: 'M38 114 C34 80 56 58 84 58 C112 58 130 80 126 112' },
+    {
+      d: 'M30 122 C30 110 44 108 58 112 C62 106 70 104 76 108 C96 112 126 104 132 118',
+      role: 'accent',
+    },
+    { d: 'M30 122 C34 138 60 144 82 142 C104 142 128 136 132 118' },
+    { d: 'M58 112 Q62 126 60 140', role: 'soft' },
+    { d: 'M38 128 Q48 134 56 134 M64 136 Q96 140 124 126', role: 'soft' },
+    {
+      d: 'M44 96 l16 -16 M50 104 l26 -26 M70 106 l30 -30 M90 106 l24 -24 M108 104 l14 -14',
+      role: 'ambient',
+    },
+    shadow(80, 166, 54),
+  ],
+
+  // His white ushanka in 3/4, as he wears it at 1133, with its ear flaps
+  // turned up and tied over the crown: the near flap's edging as the accent,
+  // the tip of the far one showing over the top, the fold of the front in
+  // soft, and the side that turns away hatched.
+  'bulldog': [
+    { d: 'M38 126 C34 90 56 68 84 68 C112 68 130 88 126 124' },
+    { d: 'M38 126 Q82 144 126 124' },
+    { d: 'M40 112 Q82 128 124 110', role: 'soft' },
+    {
+      d: 'M80 72 C96 58 126 62 132 82 C136 96 126 104 114 98 C102 92 92 84 80 72 Z',
+      role: 'accent',
+    },
+    { d: 'M92 74 C104 68 120 72 124 84 C126 92 120 94 114 90', role: 'soft' },
+    { d: 'M48 88 C46 76 54 70 64 70', role: 'accent' },
+    { d: 'M108 112 l10 -8 M112 124 l8 -6 M60 128 l8 -6', role: 'ambient' },
+    shadow(82, 160, 52),
+  ],
+
+  // Her nurse's cap in 3/4, as she arrives at Kuma's church at 1134: the
+  // band with its fold as the accent, the crown pleated to the back, the
+  // far side hatched. Before it, the black clipboard she carries in, hatched,
+  // with its clip. No medicine: it is first shown at 1135.
   'alpha': [
-    { d: 'M56 96 h48 v72 q0 8 -8 8 h-32 q-8 0 -8 -8z' },
-    { d: 'M68 96 v-14 h24 v14' },
-    { d: 'M64 82 h32 v-16 h-32z', role: 'accent' },
-    { d: 'M56 118 h48 M56 150 h48', role: 'soft' },
-    { d: 'M60 136 q20 -4 40 0', role: 'soft', dashed: true },
-    { d: 'M112 170 L136 138', role: 'accent' },
-    { d: 'M136 138 c2 -12 16 -14 14 -2 c-2 8 -10 10 -14 2z', role: 'accent' },
-    shadow(80, 188, 44),
+    { d: 'M10 150 L74 134 L102 160 L38 178 Z' },
+    { d: 'M38 178 V184 L102 166 V160' },
+    { d: 'M34 146 l14 -4 l2 -6 l-10 3 z', role: 'soft' },
+    {
+      d: 'M26 164 l10 -10 M42 168 l18 -18 M60 164 l16 -16 M76 160 l10 -10',
+      role: 'ambient',
+    },
+    { d: 'M64 104 Q100 120 144 100 L140 126 Q102 142 68 128 Z' },
+    { d: 'M66 114 Q102 130 142 112', role: 'accent' },
+    { d: 'M64 104 C70 84 86 76 104 76 C122 76 138 86 144 100' },
+    {
+      d: 'M104 76 Q100 92 102 112 M82 82 Q92 96 102 112 M126 82 Q112 96 102 112',
+      role: 'soft',
+    },
+    { d: 'M128 124 l8 -6 M132 110 l8 -6', role: 'ambient' },
+    shadow(104, 150, 40),
   ],
+
   // The giant gauntlet punching to the left: a fist in its glove, the
   // cylinder over the forearm hatched underneath, and the Steam Knuckle's
   // steam blasting out of the back. No lettering on the cylinder.
@@ -703,53 +809,86 @@ export const eggheadArt = {
     { d: 'M38 128 l14 -5 M102 128 l14 -5', role: 'accent' },
     shadow(80, 188, 52),
   ],
-  // A crescent blade on a short mount, worn upright on the head like an
-  // ornament.
+  // The crescent he wears upright on his head, its horns up and curling in,
+  // set apart as an object, as he is first named at 1142: the inner edge as
+  // the accent, the dark outer half hatched below the line where it turns,
+  // and the short foot it sits on.
   'guillotine': [
-    { d: 'M34 124 C34 56 126 56 126 124 C114 86 46 86 34 124 Z' },
-    { d: 'M42 112 C46 72 114 72 118 112', role: 'accent' },
-    { d: 'M62 124 h36 v14 h-36 Z' },
-    { d: 'M70 138 v12 M90 138 v12', role: 'soft' },
-    shadow(80, 188, 40),
-  ],
-  // A peaked Marine cap, and five claw marks torn through the air above it.
-  'tosa': [
-    { d: 'M40 150 C40 106 120 106 120 150 Z' },
-    { d: 'M40 150 q46 22 100 4 q-6 -8 -20 -6', role: 'soft' },
-    { d: 'M52 132 h56', role: 'soft' },
+    { d: 'M40 46 C12 70 18 130 80 134 C142 130 148 70 120 46' },
+    { d: 'M40 46 C40 80 58 104 80 104 C102 104 120 80 120 46', role: 'accent' },
+    { d: 'M26 80 C32 112 54 122 80 122 C106 122 128 112 134 80', role: 'soft' },
     {
-      d: 'M30 96 l18 -44 M50 98 l18 -46 M70 100 l18 -48 M90 98 l18 -46 M110 96 l18 -44',
-      role: 'accent',
+      d: 'M24 92 l8 -8 M30 110 l10 -10 M44 122 l10 -10 M62 128 l10 -10 M84 128 l10 -10 M104 124 l10 -10 M120 112 l10 -10 M130 94 l6 -6',
+      role: 'ambient',
     },
-    shadow(80, 188, 48),
+    { d: 'M72 134 v14 h16 v-14' },
+    { d: 'M72 141 h16', role: 'soft' },
+    shadow(80, 166, 40),
   ],
-  // A top hat whose crown opens into the muzzle of a cannon, smoke curling
-  // out of it.
-  'urban': [
-    { d: ellipse(80, 152, 50, 12) },
-    { d: 'M52 150 V84 h56 V150' },
-    { d: 'M52 132 h56', role: 'soft' },
-    { d: 'M66 84 V62 h28 V84' },
-    { d: ellipse(80, 60, 16, 5), role: 'accent' },
+
+  // His cap in 3/4, as he wears it at 1142: the band across the front as
+  // the accent, left blank where it reads MARINES, the seam and the button
+  // of the crown, the short peak hatched underneath, the far side hatched.
+  'tosa': [
+    { d: 'M40 128 C38 92 58 72 86 72 C112 72 128 90 126 124' },
+    { d: 'M40 128 Q84 146 126 124' },
+    { d: 'M44 102 Q78 116 112 102 L114 124 Q78 138 42 124 Z', role: 'accent' },
+    { d: 'M86 72 Q84 96 80 112', role: 'soft' },
+    { d: dots([[86, 72]]) },
+    { d: 'M40 128 C24 134 18 146 28 152 C48 160 80 156 96 140' },
     {
-      d: `${circle(72, 42, 7)} ${circle(88, 32, 9)} ${circle(78, 18, 6)}`,
+      d: 'M30 146 l6 -5 M42 152 l7 -6 M56 152 l7 -6 M70 150 l7 -6',
+      role: 'ambient',
+    },
+    { d: 'M114 112 l10 -8 M116 96 l8 -6', role: 'ambient' },
+    shadow(80, 176, 50),
+  ],
+
+  // His black top hat in 3/4, hatched because it is black, its crown turned
+  // into the barrel of a cannon as he points it at Bonney (1129): the
+  // muzzle as the accent, a ring round the barrel, and the two lines of the
+  // band in soft, with no lettering.
+  'urban': [
+    { d: ellipse(80, 150, 50, 12) },
+    { d: 'M52 148 V96 M108 148 V96' },
+    { d: 'M52 96 a28 7 0 0 0 56 0' },
+    { d: 'M52 130 Q80 138 108 130 M52 122 Q80 130 108 122', role: 'soft' },
+    { d: 'M62 98 L66 42 M98 98 L94 42', transform: URBAN_BARREL },
+    { d: ellipse(80, 40, 16, 5), role: 'accent', transform: URBAN_BARREL },
+    {
+      d: 'M64 50 a16 5 0 0 0 32 0 M65 70 a15 4 0 0 0 30 0',
+      role: 'soft',
+      transform: URBAN_BARREL,
+    },
+    {
+      d: 'M94 108 l12 -10 M94 120 l12 -10 M94 144 l12 -10 M66 108 l10 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M86 80 l8 -6 M86 92 l8 -6',
+      role: 'ambient',
+      transform: URBAN_BARREL,
+    },
+    shadow(80, 184, 58),
+  ],
+
+  // A drum with volume, its head in 3/4 as the accent, the hoops above and
+  // below, the lacing between them and the turning side hatched: the Drums
+  // of Liberation, the rhythm Zunesha hears and names as Joy Boy's return
+  // (ch. 1043 / ep. 1070). An emblem, not something he is shown with.
+  'joy-boy': [
+    { d: ellipse(80, 82, 46, 14), role: 'accent' },
+    { d: 'M34 82 V150 M126 82 V150' },
+    { d: 'M34 150 a46 14 0 0 0 92 0' },
+    { d: 'M34 92 a46 14 0 0 0 92 0 M34 140 a46 14 0 0 0 92 0', role: 'soft' },
+    {
+      d: 'M40 102 L54 150 L68 106 L82 154 L96 106 L110 150 L120 102',
       role: 'soft',
     },
-    shadow(80, 188, 48),
+    { d: 'M112 112 l10 -8 M112 126 l10 -8', role: 'ambient' },
+    shadow(80, 184, 52),
   ],
-  // A hand drum with a laced body, a sun rising behind it.
-  'joy-boy': [
-    { d: circle(80, 64, 24), role: 'accent' },
-    {
-      d: 'M80 32 V22 M102.6 41.4 L109.7 34.3 M112 64 H122 M48 64 H38 M57.4 41.4 L50.3 34.3',
-      role: 'accent',
-    },
-    { d: ellipse(80, 108, 44, 12) },
-    { d: 'M36 108 V164 M124 108 V164' },
-    { d: 'M36 164 a44 12 0 0 0 88 0' },
-    { d: 'M36 118 L58 164 L80 122 L102 164 L124 118', role: 'soft' },
-    shadow(80, 188, 48),
-  ],
+
   // A horned iron helmet with a barred visor, one horn snapped off, moss on
   // the rust.
   'emet': [
