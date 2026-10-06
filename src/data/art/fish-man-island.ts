@@ -246,12 +246,11 @@ export const fishManIslandArt = {
     ...SEA,
   ],
 
-  // His pink newsboy cap in 3/4, the soft crown puffed out over the band in
-  // his colour, its panels meeting at the button, the far side of the crown
-  // and of the band hatched, and the short visor out front with its
-  // underside hatched. He wears it from 530 (ch. 611). The cap's small
-  // trident mark is left out: he is first seen with the trident at 535
-  // (ch. 616).
+  // His pink newsboy cap in 3/4, the soft crown puffed out over the band,
+  // its panels meeting at the button, the far side of the crown and of the
+  // band hatched, and the short visor out front with its underside hatched.
+  // He wears it from 530 (ch. 611). The cap's small trident mark is left
+  // out: he is first seen with the trident at 535 (ch. 616).
   'hody-jones': [
     {
       d: 'M44 126 C26 124 10 112 12 98 C16 72 54 52 94 54 C134 56 160 74 156 98 C154 112 140 120 124 122',
