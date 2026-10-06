@@ -995,6 +995,14 @@ export const waterSeven: Saga = {
             en: 'Cipher Pol 9, Rob Lucci’s pigeon',
           },
         },
+        {
+          episode: 746,
+          chapter: 801,
+          value: {
+            it: 'Cipher Pol 0, piccione di Rob Lucci',
+            en: 'Cipher Pol 0, Rob Lucci’s pigeon',
+          },
+        },
       ],
     },
     'kiwi-and-mozu': {
