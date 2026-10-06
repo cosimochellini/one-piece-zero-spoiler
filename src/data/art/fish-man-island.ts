@@ -207,47 +207,38 @@ export const fishManIslandArt = {
     },
     shadow(74, 196, 50),
   ],
-  // His gold trident at a slant, the long prongs in his colour, and the pale
-  // band every prince of Ryugu wears wound round the shaft below the head,
-  // its two ends hanging. The trident is what he carries from his first
-  // scene; nothing in it is a shark.
+  // His gold trident at a slant, long and thin as he carries it: three
+  // straight prongs rising from a square-cornered crossbar, the middle one
+  // the tallest, all in his colour, over a small collar and a capped butt.
+  // Nothing in it is a shark, and it is not his father's crowned one.
   'fukaboshi': [
-    { d: 'M77 74 V186 H83 V74', transform: FUKABOSHI_SLANT },
+    { d: 'M78 64 V188 H82 V64', transform: FUKABOSHI_SLANT },
+    { d: 'M76 188 h8 v6 h-8 Z', transform: FUKABOSHI_SLANT },
     {
-      d: 'M72 74 a8 3 0 0 0 16 0 V66 a8 3 0 0 0 -16 0 Z',
+      d: 'M75 64 a5 2 0 0 0 10 0 V58 a5 2 0 0 0 -10 0 Z',
       transform: FUKABOSHI_SLANT,
     },
     {
-      d: 'M77 152 h6 M77 158 h6 M77 164 h6',
+      d: 'M78 150 h4 M78 156 h4 M78 162 h4',
       role: 'soft',
       transform: FUKABOSHI_SLANT,
     },
     {
-      d: 'M80 64 C62 64 54 52 54 30 M80 64 C98 64 106 52 106 30 M80 64 V30',
+      d: 'M68 30 V50 Q68 56 74 56 H86 Q92 56 92 50 V30 M80 56 V16',
       role: 'accent',
       transform: FUKABOSHI_SLANT,
     },
     {
-      d: 'M54 30 L50 22 L54 6 L58 22 Z M106 30 L102 22 L106 6 L110 22 Z M80 30 L76 20 L80 0 L84 20 Z',
+      d: 'M71 30 V49 Q71 53 75 53 H85 Q89 53 89 49 V30',
+      role: 'soft',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M68 34 L65.5 27 L68 16 L70.5 27 Z M92 34 L89.5 27 L92 16 L94.5 27 Z M80 18 L77.5 11 L80 0 L82.5 11 Z',
       role: 'accent',
       transform: FUKABOSHI_SLANT,
     },
-    {
-      d: 'M76 82 L84 78 M76 88 L84 84',
-      role: 'soft',
-      transform: FUKABOSHI_SLANT,
-    },
-    {
-      d: 'M84 84 C100 90 98 112 108 130 C114 142 112 152 106 160 L112 164 C120 152 120 140 114 128 C104 110 106 86 84 78',
-      role: 'soft',
-      transform: FUKABOSHI_SLANT,
-    },
-    {
-      d: 'M84 90 C94 102 90 120 94 136 L88 138 C84 124 88 106 84 98',
-      role: 'soft',
-      transform: FUKABOSHI_SLANT,
-    },
-    shadow(98, 192, 34),
+    shadow(66, 196, 30),
   ],
   // A sabre, and two notes going up off the edge of it.
   'ryuboshi': [
@@ -276,7 +267,7 @@ export const fishManIslandArt = {
   ],
 
   // Her hairgrip, a taiyaki filled with red bean paste, set down on the sill
-  // of her tower window: the cake's waffle crust in fine lines, its edge
+  // of her tower window: the cake's crust in short staggered lines, its edge
   // showing the cake is thick, the pin beside it, the far side of the window
   // hatched. No eye on the fish.
   'shirahoshi': [
@@ -300,7 +291,7 @@ export const fishManIslandArt = {
       role: 'soft',
     },
     {
-      d: 'M66 120 L94 146 M78 116 L102 138 M64 136 L84 118 M74 146 L98 124',
+      d: 'M66 117 l7 7 M86 115 l7 7 M56 129 l7 7 M96 128 l6 6 M68 141 l7 7 M86 141 l7 7',
       role: 'soft',
     },
     { d: 'M42 148 H18 Q14 151 18 154 H40' },
@@ -368,29 +359,26 @@ export const fishManIslandArt = {
     },
     { d: 'M102 180 l6 -4 M102 156 l6 -4 M108 92 l6 -4', role: 'ambient' },
   ],
-  // His helmet, seen from the side: the round hood, the studded ridge, the
-  // great black flaps that sweep up on either side, hatched, and the red
-  // crest along the top. He is introduced in it at 530; the tunnels he bites
+  // His helmet seen from behind: the round hood with its rim, the two great
+  // black flaps sweeping up on either side, hatched, and the red crest along
+  // the studded ridge. He is introduced in it at 530; the tunnels he bites
   // through the ground come much later.
   'daruma': [
+    { d: 'M42 168 C36 120 52 78 84 76 C116 78 130 120 124 168 Z' },
+    { d: 'M47 156 Q84 163 119 156', role: 'soft' },
+    { d: 'M45 128 C30 116 20 94 18 64 C32 80 44 90 52 100' },
+    { d: 'M121 126 C136 112 146 90 148 60 C136 78 124 88 114 98' },
     {
-      d: 'M128 86 C120 77 110 73 100 72 C80 70 60 78 48 96 C38 112 36 140 40 168 H132 L134 132',
-    },
-    { d: 'M53 100 C46 124 46 148 50 168', role: 'soft' },
-    { d: 'M50 98 C64 86 80 80 100 80 C108 80 114 82 118 85', role: 'soft' },
-    { d: 'M86 136 C100 112 120 90 150 66 C146 98 134 128 104 150 Z' },
-    {
-      d: 'M108 126 l10 -8 M114 132 l10 -8 M104 142 l12 -9 M126 108 l8 -6',
+      d: 'M26 84 l7 -4 M30 98 l7 -4 M36 110 l6 -3 M140 80 l-7 -4 M136 94 l-7 -4 M130 106 l-6 -3',
       role: 'ambient',
     },
+    { d: 'M54 100 C66 86 102 86 114 98', role: 'soft' },
     {
-      d: 'M50 96 L44 76 L58 84 L58 62 L70 76 L76 54 L84 72 L94 52 L98 72 L110 58 L110 78 L122 72 L124 90',
+      d: 'M52 100 L48 80 L60 86 L62 64 L72 78 L78 56 L86 74 L94 54 L98 76 L108 64 L108 84 L120 80 L116 98',
       role: 'accent',
     },
-    { d: 'M45 102 C34 94 26 80 22 60 C32 70 42 76 52 86' },
-    { d: 'M30 78 l6 -3 M34 88 l6 -3', role: 'ambient' },
-    { d: 'M62 90 l2 6 M74 84 l1.5 6 M87 80.5 l0.5 6 M100 80 v6', role: 'soft' },
-    shadow(86, 184, 52),
+    { d: 'M64 93 l1 6 M76 89 l0.5 6 M90 89 v6 M103 92 l-1 6', role: 'soft' },
+    shadow(84, 184, 50),
   ],
   // Two lances, each head cut like a squid put out to dry.
   'ikaros-much': [
