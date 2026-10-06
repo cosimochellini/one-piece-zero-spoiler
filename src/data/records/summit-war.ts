@@ -246,8 +246,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Basil Hawkins', en: 'Basil Hawkins' },
       summary: {
-        it: 'Un capitano che legge i tarocchi al tavolo e dice a chi gli sta intorno cosa gli riserva il destino, fino a una camicia macchiata.',
-        en: 'A captain who reads tarot cards at his table and tells the people around him what fate has in store for them, down to a stained shirt.',
+        it: 'Un capitano che legge i tarocchi al tavolo e dice a chi gli sta intorno cosa gli riserva il destino, fino ai vestiti macchiati.',
+        en: 'A captain who reads tarot cards at his table and tells the people around him what fate has in store for them, down to stained clothes.',
       },
       visual: { art: 'basil-hawkins', tint: 'yellow' },
     },
@@ -609,8 +609,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 558,
       name: { it: 'Squardo', en: 'Squard' },
       summary: {
-        it: 'Il capitano di una ciurma del Nuovo Mondo alleata di Barbabianca, che chiama padre il vecchio e manda i suoi uomini in battaglia nella baia.',
-        en: 'The captain of a New World crew allied to Whitebeard, who calls the old man father and sends his men into the battle in the bay.',
+        it: 'Il capitano di una ciurma del Nuovo Mondo alleata di Barbabianca, che manda i suoi uomini in battaglia nella baia per salvare Ace.',
+        en: 'The captain of a New World crew allied to Whitebeard, who sends his men into the battle in the bay to save Ace.',
       },
       visual: { art: 'squard', tint: 'wine' },
     },
@@ -1080,8 +1080,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Kid Pirates',
       },
       log: {
-        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si scambia minacce con Scratchmen Apoo, un altro capitano.',
-        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he trades threats with Scratchmen Apoo, another captain.',
+        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si fronteggia con Scratchmen Apoo, un altro capitano.',
+        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he squares up with Scratchmen Apoo, another captain.',
       },
       affiliation: [
         {
@@ -1387,8 +1387,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Hawkins Pirates',
       },
       log: {
-        it: 'Siede in un ristorante del Grove 24 con i suoi tarocchi e parla del destino come di una cosa già decisa. Quando un cameriere rovescia il cibo addosso a uno dei suoi uomini, gli impedisce di vendicarsi: era il destino di quei vestiti, dice, e togliere una vita oggi porterebbe sfortuna. Parla piano e non alza mai la voce.',
-        en: 'He sits in a Grove 24 restaurant with his tarot cards and speaks of fate as something already decided. When a waiter spills food on one of his men, he stops the man from hitting back: such was the fate of those clothes, he says, and taking a life today would bring bad luck. He speaks slowly and never raises his voice.',
+        it: 'Siede in un ristorante del Grove 24 con i suoi tarocchi e parla del destino come di una cosa già decisa. Quando un cameriere rovescia il cibo addosso a uno dei suoi uomini, gli impedisce di vendicarsi e dice con calma che era il destino di quei vestiti, e che togliere una vita oggi porterebbe sfortuna.',
+        en: 'He sits in a Grove 24 restaurant with his tarot cards and speaks of fate as something already decided. When a waiter spills food on one of his men, he stops the man from hitting back and says calmly that such was the fate of those clothes, and that taking a life today would bring bad luck.',
       },
       affiliation: [
         {
@@ -2041,8 +2041,8 @@ export const summitWar: Saga = {
         en: 'Captain allied to Whitebeard',
       },
       log: {
-        it: 'Guida una delle ciurme del Nuovo Mondo alleate di Barbabianca, arrivate nella baia per salvare Ace. Chiama padre Barbabianca e manda i suoi uomini all’attacco della Marina.',
-        en: 'He leads one of the New World crews allied to Whitebeard that have come to the bay to save Ace. He calls Whitebeard father and sends his men to attack the Marines.',
+        it: 'Guida una delle ciurme del Nuovo Mondo alleate di Barbabianca, arrivate nella baia per salvare Ace. Quando la battaglia comincia, manda i suoi uomini all’attacco della Marina.',
+        en: 'He leads one of the New World crews allied to Whitebeard that have come to the bay to save Ace. When the battle starts, he sends his men to attack the Marines.',
       },
       affiliation: [
         // Episode 462 calls the crew the "Squard Pirates"; the crew's own
