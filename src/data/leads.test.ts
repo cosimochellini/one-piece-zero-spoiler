@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest'
 
 import { markedIds } from '~/lib/prose/markers'
 
-import { arcs, getCharacter, stories } from './characters'
+import { arcs, getCharacter } from './characters'
+import { stories } from './dated'
 import { ARC_LEADS } from './leads'
 
 /** The episode the arc after this one opens at, or past the last story. */

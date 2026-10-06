@@ -1,8 +1,8 @@
-import { dossierOf, getCharacter } from '~/data/characters'
-import { gateOf, type Reveal } from '~/data/reveal'
-import type { Entity, Story, Timeline } from '~/data/types'
+import { getCharacter } from '~/data/characters'
+import { reachedOf } from '~/data/dated'
+import type { Reveal } from '~/data/reveal'
+import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
-import type { Gated } from '~/lib/progress/spoiler'
 import { tokenize } from '~/lib/prose/markers'
 import type {
   CharacterChronicle,
@@ -21,18 +21,6 @@ import type {
 
 /** What a marker's id stands for: a character's name in one locale, or nothing. */
 export type ResolveName = (id: string) => string | undefined
-
-/**
- * The reader's language, and how a marker's id becomes a name in it. Passed
- * in rather than looked up so the projection can be tested against a
- * hand-written dossier without the archive behind it.
- */
-export interface Reader {
-  locale: Locale
-  /** Whose chronicle it is: a story is marked no earlier than its owner. */
-  owner?: Gated
-  resolve: ResolveName
-}
 
 /**
  * A story's paragraph cut into words and links.
@@ -57,43 +45,33 @@ export function segmentsOf(text: string, resolve: ResolveName): ProseSegment[] {
   })
 }
 
-/**
- * The chronicle from a timeline the dossier may not carry at all: the stories
- * the reader has reached, in the reader's language. Each story carries the
- * chapter that reaches it, so its mark can be printed in the reader's own
- * unit.
- */
-export function chronicleFrom(
-  chronicle: Timeline<Story> | undefined,
-  at: Reveal,
-  { locale, owner, resolve }: Reader,
-): CharacterChronicle {
-  return {
-    mode: 'chronicle',
-    entries: at.reached(chronicle, owner).map((entry): ChronicleEntry => {
-      return {
-        ...gateOf(entry, owner),
-        title: entry.value.title[locale],
-        body: segmentsOf(entry.value.body[locale], resolve),
-      }
-    }),
-  }
-}
-
 /** A filed character's name in one locale, for the markers to resolve against. */
 function characterName(locale: Locale): ResolveName {
   return (id) => getCharacter(id)?.name[locale]
 }
 
-/** A character's chronicle as it stands at the reader's bookmark. */
+/**
+ * A character's chronicle as it stands at the reader's bookmark: the stories
+ * the reader has reached, in the reader's language. Each story carries its
+ * gate, the later of its own and the character's, so its mark can be printed
+ * in the reader's own unit and never says the character is met sooner than
+ * they are.
+ */
 export function chronicleOf(
   entity: Entity,
   locale: Locale,
   at: Reveal,
 ): CharacterChronicle {
-  return chronicleFrom(dossierOf(entity)?.chronicle, at, {
-    locale,
-    owner: entity,
-    resolve: characterName(locale),
-  })
+  const resolve = characterName(locale)
+
+  return {
+    mode: 'chronicle',
+    entries: reachedOf(at, entity, 'chronicle').map((entry): ChronicleEntry => {
+      return {
+        ...entry.gate,
+        title: entry.value.title[locale],
+        body: segmentsOf(entry.value.body[locale], resolve),
+      }
+    }),
+  }
 }

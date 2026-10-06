@@ -1,14 +1,9 @@
 import { byNumber, byValue } from 'sort-es'
 
-import {
-  eatersOf,
-  fruitFormOf,
-  fruits,
-  fruitsOfForm,
-  getFruit,
-} from '~/data/fruits'
+import { eatersOf } from '~/data/dated'
+import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
 import { orderByMode } from '~/data/order'
-import { gateOf, type Reveal, reveal } from '~/data/reveal'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -110,7 +105,7 @@ export function fruitPage(
 /**
  * Who the dossiers say ate this fruit, each under its own fog: named from the
  * later of their own threshold and the dossier entry that says they ate it
- * (`gateOf`).
+ * (`eatersOf` in `~/data/dated`).
  *
  * Both halves matter. A character filed long before the story says what they
  * ate would otherwise appear on the fruit's page the moment the reader met
@@ -127,7 +122,7 @@ export function fruitEaters(
   return {
     mode: 'eaters',
     eaters: eatersOf(id).map((eater): Slot<CharacterView> => {
-      const gated = { ...eater.entity, ...gateOf(eater.named, eater.entity) }
+      const gated = { ...eater.entity, ...eater.gate }
 
       return at.sees(gated) ?
           { open: true, record: characterOf(eater.entity, locale, at) }

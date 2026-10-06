@@ -7,14 +7,14 @@ import type { Saga } from './saga'
  * stretch of the route: it is filed at the episode a dossier first names it
  * in, whoever names it and wherever they are standing. It carries no
  * dossiers of its own — who ate a fruit is written on the character, once,
- * and `~/data/fruits` reads it back — so the map below is empty and stays
+ * and `~/data/dated` reads it back — so the map below is empty and stays
  * empty.
  *
  * `revealedAtEpisode` is the earliest episode any dossier names the fruit in,
  * which is the episode a viewer learns it exists.
  *
  * `revealedAtChapter` is the earliest chapter at which any of those entries
- * opens (`gateOf` in `~/data/reveal`): the chapter the entry declares, or
+ * opens (`~/data/dated`): the chapter the entry declares, or
  * else the first chapter that reaches its episode, and never before the
  * eater's own. So a fruit named long after its eater's debut waits for the
  * chapter that names it rather than the one that met the eater, and the

@@ -1,15 +1,10 @@
 import { byNumber, byValue } from 'sort-es'
 
-import {
-  arcs,
-  bookSections,
-  type FiledStory,
-  getCharacter,
-  stories,
-} from '~/data/characters'
+import { arcs, bookSections, getCharacter } from '~/data/characters'
+import { type FiledStory, stories } from '~/data/dated'
 import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
-import { gateOf, type Reveal, reveal } from '~/data/reveal'
+import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -47,9 +42,10 @@ export function landingPage(bookmark: Bookmark, locale: Locale): LandingView {
  * The arc is the last one that opens at or before the bookmark, in the
  * reader's own unit; where two open on the same threshold the later one in
  * route order wins, which is the arc proper rather than the saga around it.
- * The stories are gated on when they conclude and on their subject: a story
- * names only characters met by then (the data tests hold it), and a subject
- * the reader has not met is not on the page at all — Shiki's Impel Down
+ * The stories are gated on when they conclude and on their subject, both in
+ * the one gate `~/data/dated` gives each: a story names only characters met
+ * by then (the data tests hold it), and a subject the reader has not met is
+ * not on the page at all — Shiki's Impel Down
  * story is episode 425, but his chapter is 962.
  */
 export function homePage(
@@ -60,9 +56,8 @@ export function homePage(
   const [saga, previous] = reachedArcs(at)
 
   const since = (floor: number): FiledStory[] => {
-    return at
-      .reached(stories)
-      .filter((s) => s.episode >= floor && at.sees(s.character))
+    return stories
+      .filter((s) => s.episode >= floor && at.sees(s.gate))
       .toReversed()
   }
 
@@ -84,10 +79,10 @@ export function homePage(
     point: bookmark,
     saga: waypointOf(saga, locale, at),
     stories: shown.map((filed): HomeStory => {
-      const { character, story } = filed
+      const { character, gate, story } = filed
 
       return {
-        ...gateOf(filed, character),
+        ...gate,
         title: story.title[locale],
         body: segmentsOf(story.body[locale], resolve),
         subject: { id: character.id, name: character.name[locale] },

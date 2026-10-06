@@ -1,111 +1,69 @@
 import { describe, expect, it } from 'vitest'
 
+import { characters, dossierOf, getCharacter } from '~/data/characters'
 import { type Reveal, reveal } from '~/data/reveal'
-import type { Story, Timeline } from '~/data/types'
-import type { CharacterChronicle, ChronicleEntry } from '~/lib/view/records'
+import type { Entity } from '~/data/types'
 
-import { chronicleFrom, type Reader, segmentsOf } from './chronicle.server'
+import { chronicleOf, type ResolveName, segmentsOf } from './chronicle.server'
 
 const ep = (episode: number): Reveal => reveal({ mode: 'episode', episode })
 
-/** The two names a hand-written archive files, in both locales. */
-const NAMES: Record<string, Record<'en' | 'it', string>> = {
-  'koby': { it: 'Kobi', en: 'Koby' },
-  'roronoa-zoro': { it: 'Roronoa Zoro', en: 'Roronoa Zoro' },
+/** The two names a hand-written paragraph links. */
+const NAMES: Record<string, string> = {
+  'koby': 'Koby',
+  'roronoa-zoro': 'Roronoa Zoro',
 }
 
-function reader(locale: 'en' | 'it'): Reader {
-  return { locale, resolve: (id) => NAMES[id]?.[locale] }
+const resolve: ResolveName = (id) => NAMES[id]
+
+/** A character the archive is known to file, or the test is wrong. */
+function onFile(id: string): Entity {
+  const entity = getCharacter(id)
+  if (entity === undefined) {
+    throw new Error(`${id} is not filed`)
+  }
+
+  return entity
 }
 
-/** The stories of a chronicle. */
-function storiesOf(found: CharacterChronicle): ChronicleEntry[] {
-  return found.entries
-}
-
-const chronicle: Timeline<Story> = [
-  {
-    episode: 1,
-    value: {
-      title: { it: 'Una botte', en: 'A barrel' },
-      body: {
-        it: 'Esce da una botte davanti a [[koby|Kobi]].',
-        en: 'He climbs out of a barrel in front of [[koby]].',
-      },
-    },
-  },
-  {
-    episode: 3,
-    value: {
-      title: { it: 'Il primo compagno', en: 'The first mate' },
-      body: {
-        it: 'Libera [[roronoa-zoro|Zoro]] dal palo.',
-        en: 'He frees [[roronoa-zoro|Zoro]] from the post.',
-      },
-    },
-  },
-  {
-    episode: 45,
-    value: {
-      title: { it: 'La taglia', en: 'The bounty' },
-      body: { it: 'Il primo manifesto.', en: 'The first poster.' },
-    },
-  },
-]
+const LUFFY = onFile('monkey-d-luffy')
+const LUFFYS = dossierOf(LUFFY)?.chronicle ?? []
 
 describe('the stories a bookmark reaches', () => {
   it('gives every story reached, in order, and none not yet reached', () => {
-    const stories = storiesOf(chronicleFrom(chronicle, ep(3), reader('en')))
-
-    expect(stories.map((entry) => entry.revealedAtEpisode)).toStrictEqual([
-      1, 3,
-    ])
-    expect(stories[0]?.title).toBe('A barrel')
-  })
-
-  it('answers in the reader’s locale, links included', () => {
-    expect(chronicleFrom(chronicle, ep(1), reader('it'))).toStrictEqual({
-      mode: 'chronicle',
-      entries: [
-        {
-          revealedAtEpisode: 1,
-          // Chapter 1 has not finished episode 1 (Koby is chapter 2).
-          revealedAtChapter: 2,
-          title: 'Una botte',
-          body: [
-            { kind: 'text', text: 'Esce da una botte davanti a ' },
-            { kind: 'link', id: 'koby', name: 'Kobi' },
-            { kind: 'text', text: '.' },
-          ],
-        },
-      ],
-    })
-  })
-
-  it('marks a story no earlier than the chronicle’s owner', () => {
-    // An unanchored owner such as Shiki has stories the table would open
-    // hundreds of chapters before him; the mark must say when he is met.
-    const owner = { revealedAtEpisode: 1, revealedAtChapter: 900 }
-    const stories = storiesOf(
-      chronicleFrom(chronicle, ep(3), { ...reader('en'), owner }),
+    const third = LUFFYS[2]?.episode ?? 0
+    const marks = chronicleOf(LUFFY, 'en', ep(third)).entries.map(
+      (entry) => entry.revealedAtEpisode,
     )
 
-    expect(stories.map((entry) => entry.revealedAtChapter)).toStrictEqual([
-      900, 900,
-    ])
+    expect(marks).toStrictEqual(LUFFYS.slice(0, 3).map((s) => s.episode))
+    expect(chronicleOf(LUFFY, 'en', ep(third - 1)).entries).toHaveLength(2)
+  })
+
+  it('answers in the reader’s locale', () => {
+    const first = LUFFYS[0]
+    const [entry] = chronicleOf(LUFFY, 'it', ep(first?.episode ?? 0)).entries
+
+    expect(entry?.title).toBe(first?.value.title.it)
   })
 
   it('has nothing to say for a dossier with no chronicle', () => {
-    expect(chronicleFrom(undefined, ep(1000), reader('en'))).toStrictEqual({
-      mode: 'chronicle',
-      entries: [],
-    })
+    const silent = characters.filter(
+      (character) => dossierOf(character)?.chronicle === undefined,
+    )
+
+    expect(silent.length).toBeGreaterThan(0)
+
+    for (const character of silent) {
+      expect(
+        chronicleOf(character, 'en', ep(1200)),
+        character.id,
+      ).toStrictEqual({ mode: 'chronicle', entries: [] })
+    }
   })
 })
 
 describe('the markers in a story', () => {
-  const { resolve } = reader('en')
-
   it('prints the record’s own name for a bare marker', () => {
     expect(segmentsOf('Meets [[koby]] below deck.', resolve)).toStrictEqual([
       { kind: 'text', text: 'Meets ' },

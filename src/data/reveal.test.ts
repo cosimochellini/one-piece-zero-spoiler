@@ -1,15 +1,9 @@
 import { describe, expect, it } from 'vitest'
 
-import {
-  type Bookmark,
-  type BookmarkMode,
-  CHAPTER_CEILING,
-} from '~/lib/progress/episode'
+import type { Bookmark, BookmarkMode } from '~/lib/progress/episode'
 import type { Gated } from '~/lib/progress/spoiler'
 
-import { chapterAtEpisode, DATED, episodeAtChapter } from './chapters'
-import { eatersOf, fruits } from './fruits'
-import { gateOf, ownedBy, reveal } from './reveal'
+import { reveal } from './reveal'
 
 const ep = (episode: number): Bookmark => ({ mode: 'episode', episode })
 const ch = (chapter: number): Bookmark => ({ mode: 'chapter', chapter })
@@ -26,23 +20,15 @@ function filedAt(revealedAtEpisode: number, revealedAtChapter: number): Gated {
 const ROBIN = filedAt(130, 218)
 const SHANKS = filedAt(4, 1)
 
-const BOUNTY = [
-  { episode: 45, value: 30_000_000 },
-  { episode: 130, value: 100_000_000 },
-  { episode: 320, value: 300_000_000 },
-]
-
 /**
- * One bookmark of each kind, and what it should make of the data: the
- * episode it reaches on a timeline (`null` for none), whether it sees the two
- * records, and the unit it counts in. A chapter reaches the episode its
- * chapter reaches, which is the whole reason this module exists.
+ * One bookmark of each kind, and what it should make of the data: whether
+ * it sees the two records, and the unit it counts in. Dated facts are read
+ * through `~/data/dated`, whose own test holds them to the same gates.
  */
 const KINDS: {
   bookmark: Bookmark
   mode: BookmarkMode
   name: string
-  progress: null | number
   seesRobin: boolean
   seesShanks: boolean
 }[] = [
@@ -52,7 +38,6 @@ const KINDS: {
     name: 'no bookmark',
     bookmark: null,
     mode: 'episode',
-    progress: null,
     seesRobin: false,
     seesShanks: false,
   },
@@ -60,7 +45,6 @@ const KINDS: {
     name: 'an episode',
     bookmark: ep(130),
     mode: 'episode',
-    progress: 130,
     seesRobin: true,
     seesShanks: true,
   },
@@ -68,7 +52,6 @@ const KINDS: {
     name: 'an episode before both',
     bookmark: ep(1),
     mode: 'episode',
-    progress: 1,
     seesRobin: false,
     seesShanks: false,
   },
@@ -76,7 +59,6 @@ const KINDS: {
     name: 'a season code (S04E38 is episode 130)',
     bookmark: se(4, 38),
     mode: 'season',
-    progress: 130,
     seesRobin: true,
     seesShanks: true,
   },
@@ -84,7 +66,6 @@ const KINDS: {
     name: 'a season code the table cannot resolve',
     bookmark: se(99, 1),
     mode: 'season',
-    progress: null,
     seesRobin: false,
     seesShanks: false,
   },
@@ -92,17 +73,15 @@ const KINDS: {
     name: 'a chapter',
     bookmark: ch(218),
     mode: 'chapter',
-    progress: episodeAtChapter(218),
     seesRobin: true,
     seesShanks: true,
   },
-  // Chapter 155 reaches only episode 91, so read as a raw number it would
-  // reach the bounty dated 130 that it must not.
+  // Chapter 155 is past Robin's episode, 130, as a raw number; read against
+  // her chapter, 218, it must not reach her.
   {
     name: 'a chapter whose number is past the episode it reaches',
     bookmark: ch(155),
     mode: 'chapter',
-    progress: episodeAtChapter(155),
     seesRobin: false,
     seesShanks: true,
   },
@@ -110,18 +89,10 @@ const KINDS: {
     name: 'the first chapter',
     bookmark: ch(1),
     mode: 'chapter',
-    progress: episodeAtChapter(1),
     seesRobin: false,
     seesShanks: true,
   },
 ]
-
-/** The bounty entries at or below an episode, in order. */
-function upTo(progress: null | number): typeof BOUNTY {
-  return progress === null ?
-      []
-    : BOUNTY.filter((entry) => entry.episode <= progress)
-}
 
 describe.each(KINDS)('reveal, at $name', (kind) => {
   const at = reveal(kind.bookmark)
@@ -134,19 +105,6 @@ describe.each(KINDS)('reveal, at $name', (kind) => {
   it('counts and prints thresholds in the reader’s unit', () => {
     expect(at.mode).toBe(kind.mode)
     expect(at.threshold(ROBIN)).toBe(kind.mode === 'chapter' ? 218 : 130)
-  })
-
-  it('reaches every timeline entry up to its episode and none past it', () => {
-    expect(at.reached(BOUNTY)).toStrictEqual(upTo(kind.progress))
-  })
-
-  it('knows the latest timeline entry reached', () => {
-    expect(at.latest(BOUNTY)).toBe(upTo(kind.progress).at(-1)?.value)
-  })
-
-  it('has nothing to say of a timeline that is not there', () => {
-    expect(at.latest(undefined)).toBeUndefined()
-    expect(at.reached(undefined)).toStrictEqual([])
   })
 })
 
@@ -162,106 +120,5 @@ describe('reveal, at the edges', () => {
     // Shanks is chapter 1 but episode 4, so the two units disagree.
     expect(reveal(ch(1)).sees(SHANKS)).toBe(true)
     expect(reveal(ep(1)).sees(SHANKS)).toBe(false)
-  })
-
-  it('holds the last entry reached between two entries and past the end', () => {
-    expect(reveal(ep(44)).latest(BOUNTY)).toBeUndefined()
-    expect(reveal(ep(45)).latest(BOUNTY)).toBe(30_000_000)
-    expect(reveal(ep(200)).latest(BOUNTY)).toBe(100_000_000)
-    expect(reveal(ep(1200)).latest(BOUNTY)).toBe(300_000_000)
-    expect(reveal(ep(500)).latest([])).toBeUndefined()
-  })
-})
-
-describe('reading a record’s own timeline', () => {
-  // Shiki-like: an entry the table opens long before its owner.
-  const owner = filedAt(1, 900)
-  const timeline = [{ episode: 3, value: 'early' }]
-
-  it('reaches nothing before the owner, and the entry with it', () => {
-    const before = reveal(ch(899))
-    const at = reveal(ch(900))
-
-    expect(before.reached(timeline, owner)).toStrictEqual([])
-    expect(before.latest(timeline, owner)).toBeUndefined()
-    expect(ownedBy(before, owner).latest(timeline)).toBeUndefined()
-    expect(at.latest(timeline, owner)).toBe('early')
-    expect(ownedBy(at, owner).reached(timeline)).toStrictEqual(timeline)
-  })
-})
-
-describe('gateOf', () => {
-  it('opens an entry at its episode and the first chapter that reaches it', () => {
-    expect(gateOf({ episode: 130 })).toStrictEqual(
-      filedAt(130, chapterAtEpisode(130)),
-    )
-  })
-
-  it('opens an entry that declares its chapter at that chapter', () => {
-    // The table may reach the episode later than the chapter that tells it,
-    // or never; the entry's own word wins either way.
-    expect(gateOf({ episode: 130, chapter: 150 })).toStrictEqual(
-      filedAt(130, 150),
-    )
-  })
-
-  it('waits for the later of the entry and its owner', () => {
-    const owner = filedAt(300, 900)
-
-    expect(gateOf({ episode: 130 }, owner)).toStrictEqual(owner)
-    expect(gateOf({ episode: 500, chapter: 600 }, owner)).toStrictEqual(
-      filedAt(500, 900),
-    )
-
-    const chapter = Math.max(900, chapterAtEpisode(500))
-
-    expect(gateOf({ episode: 500 }, owner)).toStrictEqual(filedAt(500, chapter))
-  })
-
-  it('is never open to a chapter for an episode no chapter reaches', () => {
-    const beyond = episodeAtChapter(CHAPTER_CEILING) + 1
-
-    const last = reveal(ch(CHAPTER_CEILING))
-
-    expect(last.sees(gateOf({ episode: beyond }))).toBe(false)
-  })
-})
-
-/** Every dated entry, and the entry each fruit's eaters are named in. */
-const ENTRIES = [
-  ...DATED.map(({ entry }) => entry),
-  ...fruits.flatMap((fruit) => eatersOf(fruit.id).map(({ named }) => named)),
-]
-
-/**
- * The chapter an entry opens at, worked out the long way rather than through
- * `gateOf`: the chapter it declares, or the first one whose episode reaches
- * it, or one past the ceiling.
- */
-function opensAt(entry: (typeof ENTRIES)[number]): number {
-  if (entry.chapter !== undefined) {
-    return entry.chapter
-  }
-  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
-    if (episodeAtChapter(chapter) >= entry.episode) {
-      return chapter
-    }
-  }
-
-  return CHAPTER_CEILING + 1
-}
-
-describe('every dated entry in the archive', () => {
-  it('is reached at the chapter it opens at, and never the chapter before', () => {
-    // The one invariant for a chapter reader, held over every timeline and
-    // every eater: an entry is reached exactly from its own chapter, or from
-    // the first chapter that reaches its episode.
-    for (const entry of ENTRIES) {
-      const opens = opensAt(entry)
-      const label = `${JSON.stringify(entry).slice(0, 60)} @ c${String(opens)}`
-
-      expect(reveal(ch(opens - 1)).reached([entry]), label).toStrictEqual([])
-      expect(reveal(ch(opens)).reached([entry]), label).toStrictEqual([entry])
-    }
   })
 })

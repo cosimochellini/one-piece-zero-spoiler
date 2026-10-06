@@ -10,8 +10,8 @@ import {
   episodeAtChapter,
   TIMELINES,
 } from './chapters'
+import { datedOf } from './dated'
 import { entities } from './entities'
-import { gateOf } from './reveal'
 import type { Dated, Entity } from './types'
 
 const CHAPTERS = Array.from(
@@ -24,6 +24,15 @@ const DECLARED = DATED.flatMap(({ entry, label, owner }) => {
   return entry.chapter === undefined ?
       []
     : { chapter: entry.chapter, episode: entry.episode, label, owner }
+})
+
+/** Every dated entry with the gate `~/data/dated` opens it at. */
+const OPENED = TIMELINES.flatMap(({ field, owner }) => {
+  return datedOf(owner, field).map((entry) => {
+    const label = `${owner.id} @${String(entry.episode)}`
+
+    return { entry, label, owner }
+  })
 })
 
 const UNANCHORED = entities.filter((entity) => entity.unanchored === true)
@@ -135,24 +144,21 @@ describe('the dated entries against the table', () => {
     // A record added or moved shifts the table; an entry it pushes past the
     // last chapter would be hidden from every manga reader for good, and
     // needs a chapter of its own.
-    const lost = DATED.filter(
-      ({ entry, owner }) =>
-        gateOf(entry, owner).revealedAtChapter > CHAPTER_CEILING,
+    const lost = OPENED.filter(
+      ({ entry }) => entry.gate.revealedAtChapter > CHAPTER_CEILING,
     ).map(({ label }) => label)
 
     expect(lost).toStrictEqual([])
   })
 
   it('opens no entry before its own record, unless the record is unanchored', () => {
-    // The table makes this hold for every record it is built from. An
-    // unanchored record's entries are held by their owner instead: the home
-    // page shows a story only once `at.sees` its subject, and a record's own
-    // pages pass the record to `reached` and `latest`.
+    // The table makes this hold for every record it is built from, on the
+    // entry's own gate alone. An unanchored record's entries are held by
+    // their owner instead, which `~/data/dated` folds into every gate.
     const early = DATED.filter(({ entry, owner }) => {
-      return (
-        owner.unanchored !== true
-        && gateOf(entry).revealedAtChapter < owner.revealedAtChapter
-      )
+      const opens = entry.chapter ?? chapterAtEpisode(entry.episode)
+
+      return owner.unanchored !== true && opens < owner.revealedAtChapter
     }).map(({ label }) => label)
 
     expect(early).toStrictEqual([])
@@ -172,9 +178,8 @@ describe('the dated entries against the table', () => {
     // its threshold already.
     const leaks: string[] = []
     for (const record of UNANCHORED) {
-      for (const { entry, label, owner } of DATED) {
-        const early =
-          gateOf(entry, owner).revealedAtChapter < record.revealedAtChapter
+      for (const { entry, label, owner } of OPENED) {
+        const early = entry.gate.revealedAtChapter < record.revealedAtChapter
 
         if (early && owner.id !== record.id && names(entry, record)) {
           leaks.push(`${label} names ${record.id}`)

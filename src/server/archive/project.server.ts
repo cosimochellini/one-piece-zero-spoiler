@@ -1,13 +1,9 @@
-import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { dossierOf, roleOf } from '~/data/characters'
+import { DRAWINGS } from '~/data/art'
+import { roleOf } from '~/data/characters'
+import { latestOf, reachedOf } from '~/data/dated'
 import { getFruit } from '~/data/fruits'
-import { ownedBy, type Reveal } from '~/data/reveal'
-import type {
-  CharacterDossier,
-  Entity,
-  LocalizedText,
-  Timeline,
-} from '~/data/types'
+import type { Reveal } from '~/data/reveal'
+import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { foldName } from '~/lib/search/fold'
 import type {
@@ -44,8 +40,7 @@ import { handleOf } from './handle.server'
  */
 function drawingOf(entity: Entity, at: Reveal): Drawing {
   return {
-    strokes:
-      at.latest(REDRAWINGS[entity.id], entity) ?? DRAWINGS[entity.visual.art],
+    strokes: latestOf(at, entity, 'redrawing') ?? DRAWINGS[entity.visual.art],
     tint: entity.visual.tint,
   }
 }
@@ -127,9 +122,9 @@ function otherNames(entity: Entity, locale: Locale): string[] {
  * is not sent at all rather than sent and declined.
  */
 function reachedEpithets(entity: Entity, at: Reveal): string[] {
-  return at
-    .reached(dossierOf(entity)?.epithet, entity)
-    .flatMap((entry) => LOCALES.map((other) => entry.value[other]))
+  return reachedOf(at, entity, 'epithet').flatMap((entry) =>
+    LOCALES.map((other) => entry.value[other]),
+  )
 }
 
 /**
@@ -223,7 +218,11 @@ export function factsOf(
   locale: Locale,
   at: Reveal,
 ): CharacterFacts {
-  return factsFrom(dossierOf(entity), locale, ownedBy(at, entity))
+  return {
+    mode: 'facts',
+    ...wordFactsOf(entity, locale, at),
+    ...codedFactsOf(entity, locale, at),
+  }
 }
 
 /**
@@ -237,18 +236,14 @@ export function factsOf(
 type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
 
 /** The facts that are prose, in the reader's own language. */
-function wordFactsOf(
-  dossier: CharacterDossier,
-  locale: Locale,
-  at: Reveal,
-): ReachedFacts {
+function wordFactsOf(entity: Entity, locale: Locale, at: Reveal): ReachedFacts {
   const words = (
-    timeline: Timeline<LocalizedText> | undefined,
-  ): string | undefined => at.latest(timeline)?.[locale]
+    field: 'affiliation' | 'epithet' | 'origin',
+  ): string | undefined => latestOf(at, entity, field)?.[locale]
 
-  const epithet = words(dossier.epithet)
-  const affiliation = words(dossier.affiliation)
-  const origin = words(dossier.origin)
+  const epithet = words('epithet')
+  const affiliation = words('affiliation')
+  const origin = words('origin')
 
   return {
     ...(epithet !== undefined && { epithet }),
@@ -265,34 +260,17 @@ function wordFactsOf(
  * review budget rather than a number to argue with.
  */
 function codedFactsOf(
-  dossier: CharacterDossier,
+  entity: Entity,
   locale: Locale,
   at: Reveal,
 ): ReachedFacts {
-  const status = at.latest(dossier.status)
-  const devilFruit = linksFor(at.latest(dossier.devilFruit), locale)
-  const bounty = at.latest(dossier.bounty)
+  const status = latestOf(at, entity, 'status')
+  const devilFruit = linksFor(latestOf(at, entity, 'devilFruit'), locale)
+  const bounty = latestOf(at, entity, 'bounty')
 
   return {
     ...(status !== undefined && { status }),
     ...(devilFruit !== undefined && { devilFruit }),
     ...(bounty !== undefined && { bounty }),
-  }
-}
-
-/** The same, from a dossier rather than the record it belongs to. */
-export function factsFrom(
-  dossier: CharacterDossier | undefined,
-  locale: Locale,
-  at: Reveal,
-): CharacterFacts {
-  if (dossier === undefined) {
-    return { mode: 'facts' }
-  }
-
-  return {
-    mode: 'facts',
-    ...wordFactsOf(dossier, locale, at),
-    ...codedFactsOf(dossier, locale, at),
   }
 }

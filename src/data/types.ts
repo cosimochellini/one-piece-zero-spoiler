@@ -96,10 +96,10 @@ export interface Entity {
  *
  * `chapter` is the manga chapter that tells the fact, set only where it has
  * been checked against a source. Without it a chapter reader reaches the
- * entry at the first chapter that reaches its episode (`gateOf` in
- * `~/data/reveal`); with it, at that chapter, and the chapter table then
- * holds every earlier chapter below the episode, so the fix sits on the
- * datum rather than in a list far from it.
+ * entry at the first chapter that reaches its episode (`~/data/dated`);
+ * with it, at that chapter, and the chapter table then holds every earlier
+ * chapter below the episode, so the fix sits on the datum rather than in a
+ * list far from it.
  */
 export interface Dated<T> {
   chapter?: number

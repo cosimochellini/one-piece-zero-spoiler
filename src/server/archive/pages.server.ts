@@ -10,6 +10,7 @@ import {
   nearbyCharacters,
   routePositionOf,
 } from '~/data/characters'
+import { latestOf } from '~/data/dated'
 import { getEntity } from '~/data/entities'
 import { orderByMode } from '~/data/order'
 import {
@@ -324,7 +325,7 @@ function shipOf({
   entity: Entity
   locale: Locale
 }): ShipView {
-  const fate = at.latest(dossier.fate, entity)?.[locale]
+  const fate = latestOf(at, entity, 'fate')?.[locale]
 
   return {
     ...recordOf(entity, locale, at),

@@ -231,7 +231,7 @@ export type ProseSegment =
 
 /**
  * One story the reader has reached, resolved to their language. Its two
- * thresholds are the story's gate (`gateOf` in `~/data/reveal`): its episode,
+ * thresholds are the story's gate (`~/data/dated`): its episode,
  * and the chapter it declares or else the first one that reaches the episode,
  * never before the character's own, so a manga reader's mark reads in
  * chapters. Structurally satisfies `Gated`
