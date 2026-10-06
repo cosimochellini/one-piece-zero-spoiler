@@ -1,5 +1,4 @@
 import { fruitFormOf } from '~/data/fruits'
-import { reveal } from '~/data/reveal'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
@@ -11,8 +10,9 @@ import type {
 } from '~/lib/view/records'
 
 import { entityForHandle } from './handle.server'
-import { portOf } from './pages.server'
+import { portOf } from './places.server'
 import { characterOf, fruitOf, recordOf, waypointOf } from './project.server'
+import { readerFor } from './reader.server'
 
 /**
  * Trading a handle for the record it stands for.
@@ -42,7 +42,7 @@ export function peekWaypoint(
 ): undefined | WaypointView {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : (
-      waypointOf(entity, locale, reveal(bookmark))
+      waypointOf(entity, readerFor(bookmark, locale))
     )
 }
 
@@ -54,7 +54,7 @@ export function peekCharacter(
 ): CharacterView | undefined {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : (
-      characterOf(entity, locale, reveal(bookmark))
+      characterOf(entity, readerFor(bookmark, locale))
     )
 }
 
@@ -70,7 +70,7 @@ export function peekDossier(
   }
 
   return {
-    ...characterOf(entity, locale, reveal(bookmark)),
+    ...characterOf(entity, readerFor(bookmark, locale)),
     summary: entity.summary[locale],
   }
 }
@@ -89,7 +89,7 @@ export function peekFruit(
 
   return entity === undefined || form === undefined ?
       undefined
-    : fruitOf({ at: reveal(bookmark), entity, form, locale })
+    : fruitOf(entity, form, readerFor(bookmark, locale))
 }
 
 /** Any record, as a small tile draws it. */
@@ -100,7 +100,7 @@ export function peekRecord(
 ): RecordView | undefined {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : (
-      recordOf(entity, locale, reveal(bookmark))
+      recordOf(entity, readerFor(bookmark, locale))
     )
 }
 
@@ -115,6 +115,6 @@ export function peekPort(
 ): PortView | undefined {
   const entity = entityForHandle(handle)
   return entity === undefined ? undefined : (
-      portOf(entity, reveal(bookmark), locale)
+      portOf(entity, readerFor(bookmark, locale))
     )
 }

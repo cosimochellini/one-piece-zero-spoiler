@@ -110,7 +110,7 @@ describe('the specimen sheet', () => {
     }
   })
 
-  it('keeps every plate’s open rows a prefix, in every unit', () => {
+  it('splits every plate at the bookmark and names nothing past it', () => {
     const marks: NonNullable<Bookmark>[] = [
       { mode: 'episode', episode: 462 },
       { mode: 'season', season: 4, episode: 1 },

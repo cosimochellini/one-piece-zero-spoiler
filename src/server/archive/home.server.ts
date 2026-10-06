@@ -3,8 +3,6 @@ import { byNumber, byValue } from 'sort-es'
 import { arcs, bookSections, getCharacter } from '~/data/characters'
 import { type FiledStory, stories } from '~/data/dated'
 import { ARC_LEADS } from '~/data/leads'
-import { orderByMode } from '~/data/order'
-import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -14,6 +12,7 @@ import type { HomeStory, HomeView, LandingView } from '~/lib/view/records'
 import { segmentsOf } from './chronicle.server'
 import { chartPage } from './pages.server'
 import { characterOf, waypointOf } from './project.server'
+import { type Reader, readerFor } from './reader.server'
 
 /**
  * The home page, assembled from the archive. A plain function like the rest
@@ -52,12 +51,12 @@ export function homePage(
   bookmark: NonNullable<Bookmark>,
   locale: Locale,
 ): HomeView {
-  const at = reveal(bookmark)
-  const [saga, previous] = reachedArcs(at)
+  const r = readerFor(bookmark, locale)
+  const [saga, previous] = reachedArcs(r)
 
   const since = (floor: number): FiledStory[] => {
     return stories
-      .filter((s) => s.episode >= floor && at.sees(s.gate))
+      .filter((s) => s.episode >= floor && r.sees(s.gate))
       .toReversed()
   }
 
@@ -72,12 +71,12 @@ export function homePage(
   const resolve = (id: string): string | undefined =>
     getCharacter(id)?.name[locale]
   const named = leadsNamed(shown, before ? previous : saga)
-  const cast = named.length > 0 ? named : newcomersOf(saga, at)
+  const cast = named.length > 0 ? named : newcomersOf(saga, r)
 
   return {
     before: before && shown.length > 0,
     point: bookmark,
-    saga: waypointOf(saga, locale, at),
+    saga: waypointOf(saga, r),
     stories: shown.map((filed): HomeStory => {
       const { character, gate, story } = filed
 
@@ -88,7 +87,7 @@ export function homePage(
         subject: { id: character.id, name: character.name[locale] },
       }
     }),
-    cast: cast.map((character) => characterOf(character, locale, at)),
+    cast: cast.map((character) => characterOf(character, r)),
   }
 }
 
@@ -97,8 +96,8 @@ export function homePage(
  * one before. A bookmark the cookie grammar admits always reaches the first
  * arc; the fallback is for the type, not for a case the route can show.
  */
-function reachedArcs(at: Reveal): [Entity, Entity | undefined] {
-  const reached = orderByMode(arcs, at.mode).filter((arc) => at.sees(arc))
+function reachedArcs(r: Reader): [Entity, Entity | undefined] {
+  const reached = r.order(arcs).filter((arc) => r.sees(arc))
   const [saga = arcs[0], previous] = reached.toReversed()
   if (saga === undefined) {
     throw new Error('The archive files no arc')
@@ -134,12 +133,13 @@ function leadsNamed(shown: FiledStory[], told: Entity): Entity[] {
  * With no lead to go on: the leads first met in this arc so far, which may be
  * none, and the section is then left off the page.
  */
-function newcomersOf(saga: Entity, at: Reveal): Entity[] {
+function newcomersOf(saga: Entity, r: Reader): Entity[] {
   const leads = new Set(ARC_LEADS[saga.id])
   const shelved =
     bookSections.find((section) => section.arc.id === saga.id)?.characters ?? []
 
-  return orderByMode(shelved, at.mode)
-    .filter((character) => leads.has(character.id) && at.sees(character))
+  return r
+    .order(shelved)
+    .filter((character) => leads.has(character.id) && r.sees(character))
     .slice(0, CAST_COUNT)
 }

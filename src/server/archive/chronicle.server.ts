@@ -1,6 +1,5 @@
 import { getCharacter } from '~/data/characters'
 import { reachedOf } from '~/data/dated'
-import type { Reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import { tokenize } from '~/lib/prose/markers'
@@ -9,6 +8,8 @@ import type {
   ChronicleEntry,
   ProseSegment,
 } from '~/lib/view/records'
+
+import type { Reader } from './reader.server'
 
 /**
  * A character's chronicle, cut at the reader's bookmark.
@@ -57,20 +58,16 @@ function characterName(locale: Locale): ResolveName {
  * in the reader's own unit and never says the character is met sooner than
  * they are.
  */
-export function chronicleOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): CharacterChronicle {
-  const resolve = characterName(locale)
+export function chronicleOf(entity: Entity, r: Reader): CharacterChronicle {
+  const resolve = characterName(r.locale)
 
   return {
     mode: 'chronicle',
-    entries: reachedOf(at, entity, 'chronicle').map((entry): ChronicleEntry => {
+    entries: reachedOf(r, entity, 'chronicle').map((entry): ChronicleEntry => {
       return {
         ...entry.gate,
-        title: entry.value.title[locale],
-        body: segmentsOf(entry.value.body[locale], resolve),
+        title: entry.value.title[r.locale],
+        body: segmentsOf(entry.value.body[r.locale], resolve),
       }
     }),
   }

@@ -2,14 +2,12 @@ import { DRAWINGS } from '~/data/art'
 import { roleOf } from '~/data/characters'
 import { latestOf, reachedOf } from '~/data/dated'
 import { getFruit } from '~/data/fruits'
-import type { Reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { type Locale, LOCALES } from '~/i18n/locales'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterFacts,
   CharacterView,
-  CoveredRecord,
   Drawing,
   FruitForm,
   FruitLink,
@@ -17,19 +15,19 @@ import type {
   RecordView,
   Searchable,
   SearchableCharacter,
-  Slot,
   WaypointView,
 } from '~/lib/view/records'
 
-import { handleOf } from './handle.server'
+import type { Reader } from './reader.server'
 
 /**
  * Records into the shapes a page is allowed to see.
  *
  * Every projection resolves the strings to one locale and drops everything
- * the page does not print, which is most of a record. The covered projection
- * is the important one: it is the only thing a reader is told about a record
- * they have not reached, so what it leaves out is the feature.
+ * the page does not print, which is most of a record. Each takes the reader,
+ * which carries the locale and the bookmark both. The covered projection is
+ * the reader's own (`./reader.server`): it is the only thing a reader is told
+ * about a record they have not reached, so what it leaves out is the feature.
  */
 
 /**
@@ -38,60 +36,38 @@ import { handleOf } from './handle.server'
  * reader who has reached no redrawing — none set, or no bookmark — is shown
  * the first drawing, which fails closed.
  */
-function drawingOf(entity: Entity, at: Reveal): Drawing {
+function drawingOf(entity: Entity, r: Reader): Drawing {
   return {
-    strokes: latestOf(at, entity, 'redrawing') ?? DRAWINGS[entity.visual.art],
+    strokes: latestOf(r, entity, 'redrawing') ?? DRAWINGS[entity.visual.art],
     tint: entity.visual.tint,
   }
 }
 
-/** Everything a record under fog is allowed to say about itself. */
-export function coveredOf(entity: Entity): CoveredRecord {
-  return {
-    handle: handleOf(entity.id),
-    kind: entity.kind,
-    revealedAtEpisode: entity.revealedAtEpisode,
-    revealedAtChapter: entity.revealedAtChapter,
-  }
-}
-
 /** A record as a small tile draws it: a name, a drawing, two thresholds. */
-export function recordOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): RecordView {
+export function recordOf(entity: Entity, r: Reader): RecordView {
   return {
     id: entity.id,
     kind: entity.kind,
-    name: entity.name[locale],
-    visual: drawingOf(entity, at),
+    name: entity.name[r.locale],
+    visual: drawingOf(entity, r),
     revealedAtEpisode: entity.revealedAtEpisode,
     revealedAtChapter: entity.revealedAtChapter,
   }
 }
 
 /** A character, with the role their dossier gives them. */
-export function characterOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): CharacterView {
+export function characterOf(entity: Entity, r: Reader): CharacterView {
   const role = roleOf(entity)
 
   return {
-    ...recordOf(entity, locale, at),
-    ...(role !== undefined && { role: role[locale] }),
+    ...recordOf(entity, r),
+    ...(role !== undefined && { role: role[r.locale] }),
   }
 }
 
 /** A waypoint on the landing chart, which does print a summary. */
-export function waypointOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): WaypointView {
-  return { ...recordOf(entity, locale, at), summary: entity.summary[locale] }
+export function waypointOf(entity: Entity, r: Reader): WaypointView {
+  return { ...recordOf(entity, r), summary: entity.summary[r.locale] }
 }
 
 /** A record's searchable surface, folded: the shown name and what matches it. */
@@ -121,8 +97,8 @@ function otherNames(entity: Entity, locale: Locale): string[] {
  * reader's episode would confirm a name the fog is meant to hide, and now it
  * is not sent at all rather than sent and declined.
  */
-function reachedEpithets(entity: Entity, at: Reveal): string[] {
-  return reachedOf(at, entity, 'epithet').flatMap((entry) =>
+function reachedEpithets(entity: Entity, r: Reader): string[] {
+  return reachedOf(r, entity, 'epithet').flatMap((entry) =>
     LOCALES.map((other) => entry.value[other]),
   )
 }
@@ -134,26 +110,14 @@ function reachedEpithets(entity: Entity, at: Reveal): string[] {
  * character as Luffy should still find Rufy — and the epithets the reader has
  * already reached.
  */
-export function searchableOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): SearchableCharacter {
+export function searchableOf(entity: Entity, r: Reader): SearchableCharacter {
   return {
-    ...characterOf(entity, locale, at),
-    ...foldedOf(entity.name[locale], [
-      ...otherNames(entity, locale),
-      ...reachedEpithets(entity, at),
+    ...characterOf(entity, r),
+    ...foldedOf(entity.name[r.locale], [
+      ...otherNames(entity, r.locale),
+      ...reachedEpithets(entity, r),
     ]),
   }
-}
-
-/** What a fruit is projected from: the record, its plate, and the reader. */
-export interface FruitSource {
-  at: Reveal
-  entity: Entity
-  form: FruitForm
-  locale: Locale
 }
 
 /**
@@ -163,24 +127,13 @@ export interface FruitSource {
  * plate at a time and already knows which plate it is setting: a projection
  * that guessed would put a fruit on the wrong one rather than fail.
  */
-export function fruitOf({ at, entity, form, locale }: FruitSource): FruitView {
+export function fruitOf(entity: Entity, form: FruitForm, r: Reader): FruitView {
   return {
-    ...recordOf(entity, locale, at),
+    ...recordOf(entity, r),
     form,
-    summary: entity.summary[locale],
-    ...foldedOf(entity.name[locale], otherNames(entity, locale)),
+    summary: entity.summary[r.locale],
+    ...foldedOf(entity.name[r.locale], otherNames(entity, r.locale)),
   }
-}
-
-/** Either the record or the little that may be said about it. */
-export function slotOf<T>(
-  entity: Entity,
-  at: Reveal,
-  open: (entity: Entity) => T,
-): Slot<T> {
-  return at.sees(entity) ?
-      { open: true, record: open(entity) }
-    : { open: false, covered: coveredOf(entity) }
 }
 
 /**
@@ -213,15 +166,11 @@ function linksFor(
  * A dossier's facts as they stand at the reader's bookmark. A fact they have
  * not reached is not in the result, so it is not in the payload either.
  */
-export function factsOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): CharacterFacts {
+export function factsOf(entity: Entity, r: Reader): CharacterFacts {
   return {
     mode: 'facts',
-    ...wordFactsOf(entity, locale, at),
-    ...codedFactsOf(entity, locale, at),
+    ...wordFactsOf(entity, r),
+    ...codedFactsOf(entity, r),
   }
 }
 
@@ -236,10 +185,10 @@ export function factsOf(
 type ReachedFacts = Omit<Extract<CharacterFacts, { mode: 'facts' }>, 'mode'>
 
 /** The facts that are prose, in the reader's own language. */
-function wordFactsOf(entity: Entity, locale: Locale, at: Reveal): ReachedFacts {
+function wordFactsOf(entity: Entity, r: Reader): ReachedFacts {
   const words = (
     field: 'affiliation' | 'epithet' | 'origin',
-  ): string | undefined => latestOf(at, entity, field)?.[locale]
+  ): string | undefined => latestOf(r, entity, field)?.[r.locale]
 
   const epithet = words('epithet')
   const affiliation = words('affiliation')
@@ -259,14 +208,10 @@ function wordFactsOf(entity: Entity, locale: Locale, at: Reveal): ReachedFacts {
  * facts is one `&&` over the complexity ceiling, and the ceiling is the
  * review budget rather than a number to argue with.
  */
-function codedFactsOf(
-  entity: Entity,
-  locale: Locale,
-  at: Reveal,
-): ReachedFacts {
-  const status = latestOf(at, entity, 'status')
-  const devilFruit = linksFor(latestOf(at, entity, 'devilFruit'), locale)
-  const bounty = latestOf(at, entity, 'bounty')
+function codedFactsOf(entity: Entity, r: Reader): ReachedFacts {
+  const status = latestOf(r, entity, 'status')
+  const devilFruit = linksFor(latestOf(r, entity, 'devilFruit'), r.locale)
+  const bounty = latestOf(r, entity, 'bounty')
 
   return {
     ...(status !== undefined && { status }),

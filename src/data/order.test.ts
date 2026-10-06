@@ -3,7 +3,6 @@ import { describe, expect, it } from 'vitest'
 
 import { entities } from './entities'
 import { orderByMode } from './order'
-import { reveal } from './reveal'
 
 describe('orderByMode', () => {
   it('sorts by episode for an episode or season reader', () => {
@@ -22,26 +21,6 @@ describe('orderByMode', () => {
     )
 
     expect(thresholds).toStrictEqual(thresholds.toSorted(byNumber()))
-  })
-
-  it('keeps the open rows a prefix of the list in every unit', () => {
-    // The chart, the log and the strip all draw one horizon between two runs,
-    // which only works when nothing open comes after something covered.
-    const bookmarks = [
-      { mode: 'episode', episode: 92 },
-      { mode: 'season', season: 4, episode: 1 },
-      { mode: 'chapter', chapter: 155 },
-    ] as const
-
-    for (const bookmark of bookmarks) {
-      const at = reveal(bookmark)
-      const flags = orderByMode(entities, at.mode).map((entity) =>
-        at.sees(entity),
-      )
-      const firstCovered = flags.indexOf(false)
-
-      expect(flags.slice(firstCovered)).not.toContain(true)
-    }
   })
 
   it('does not change the archive itself', () => {

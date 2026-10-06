@@ -1,6 +1,4 @@
-import type { Reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
-import type { Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import {
@@ -8,6 +6,8 @@ import {
   type ThresholdSentence,
 } from '~/lib/progress/threshold'
 import type { DocumentHead } from '~/lib/view/records'
+
+import type { Reader } from './reader.server'
 
 /**
  * The document title and description of a record's own page.
@@ -27,28 +27,20 @@ export interface HeadKeys {
 }
 
 /** Under fog both lines are generic; open, they are the record's own. */
-export function headFor({
-  at,
-  entity,
-  keys,
-  locale,
-  revealed,
-}: {
-  at: Reveal
-  entity: Entity
-  keys: HeadKeys
-  locale: Locale
-  revealed: boolean
-}): DocumentHead {
-  const dictionary = getDictionary(locale)
+export function headFor(
+  entity: Entity,
+  keys: HeadKeys,
+  r: Reader,
+): DocumentHead {
+  const dictionary = getDictionary(r.locale)
   const t: Translate = (key, params) => translate(dictionary, key, params)
 
-  if (!revealed) {
+  if (!r.sees(entity)) {
     return {
       title: t(keys.foggedTitle),
       description: describeThreshold({
         gated: entity,
-        mode: at.mode,
+        mode: r.mode,
         sentence: keys.foggedDescription,
         t,
       }),
@@ -56,7 +48,7 @@ export function headFor({
   }
 
   return {
-    title: t(keys.pageTitle, { name: entity.name[locale] }),
-    description: entity.summary[locale],
+    title: t(keys.pageTitle, { name: entity.name[r.locale] }),
+    description: entity.summary[r.locale],
   }
 }
