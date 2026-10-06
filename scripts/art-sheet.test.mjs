@@ -190,7 +190,11 @@ describe('the command line', () => {
   })
 })
 
-describe('what the command line asks for', () => {
+// The first `cellsFor` imports the whole archive. Plain Node does that in
+// about 130ms, but under Vitest every module goes through the one Vite server
+// that all test files share. That took 1s with no load and up to 24s with
+// several checks running at once (#279), so the 5s default is too short.
+describe('what the command line asks for', { timeout: 60_000 }, () => {
   const out = 'unused'
 
   it('gives every stage of a record, then the drafts in its tint', async () => {
@@ -242,7 +246,9 @@ describe('what the command line asks for', () => {
   })
 })
 
-describe('the pages written', () => {
+// Each page is turned into a PNG by running rsvg-convert, which took up to
+// 6.5s under load (#279).
+describe('the pages written', { timeout: 20_000 }, () => {
   it('writes one page per 24 cells, and refuses an empty sheet', () => {
     const out = mkdtempSync(path.join(tmpdir(), 'art-sheet-'))
     const cells = Array.from({ length: 25 }, () => cell)
