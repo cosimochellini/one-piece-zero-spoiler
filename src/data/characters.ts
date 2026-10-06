@@ -5,13 +5,7 @@ import type { EntityKind } from '~/lib/view/records'
 
 import { entities, sagas } from './entities'
 import { orderByMode } from './order'
-import type {
-  CharacterDossier,
-  Dated,
-  Entity,
-  LocalizedText,
-  Story,
-} from './types'
+import type { CharacterDossier, Entity, LocalizedText } from './types'
 
 /**
  * The character layer of the archive: which records are characters, which
@@ -165,35 +159,6 @@ export function dossierOf(entity: Entity): CharacterDossier | undefined {
  */
 export function roleOf(entity: Entity): LocalizedText | undefined {
   return dossierOf(entity)?.role
-}
-
-/** One story, with the character whose chronicle it belongs to. */
-export interface FiledStory {
-  chapter?: number
-  character: Entity
-  episode: number
-  story: Story
-}
-
-/**
- * Every story in the archive, ascending by the episode it concludes at; ties
- * keep route order. The chronicles are filed per character, and the home
- * page reads them across characters, by when they happen.
- */
-export const stories: FiledStory[] = characters
-  .flatMap((character) => {
-    const chronicle = dossierOf(character)?.chronicle ?? []
-    return chronicle.map((entry) => filedStory(character, entry))
-  })
-  .toSorted(byValue('episode', byNumber()))
-
-function filedStory(character: Entity, entry: Dated<Story>): FiledStory {
-  return {
-    character,
-    episode: entry.episode,
-    ...(entry.chapter !== undefined && { chapter: entry.chapter }),
-    story: entry.value,
-  }
 }
 
 /**

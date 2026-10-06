@@ -18,10 +18,9 @@ import {
   getCharacter,
   nearbyCharacters,
   routePositionOf,
-  stories,
 } from './characters'
+import { datedOf, stories } from './dated'
 import { entities, sagas } from './entities'
-import { gateOf } from './reveal'
 import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 function must(id: string): Entity {
@@ -118,7 +117,7 @@ function shownWords(text: string, locale: Locale): string {
 
 /** One story of one chronicle, with the words it shows in each locale. */
 interface StoryCase {
-  /** The chapter a reader reaches it at (`gateOf`). */
+  /** The chapter a reader reaches it at (its gate in `~/data/dated`). */
   chapter: number
   character: Entity
   episode: number
@@ -127,10 +126,10 @@ interface StoryCase {
 }
 
 const STORIES: StoryCase[] = CHRONICLE_TIMELINES.flatMap(
-  ({ character, label, timeline }) => {
-    return timeline.map((entry) => {
+  ({ character, label }) => {
+    return datedOf(character, 'chronicle').map((entry) => {
       return {
-        chapter: gateOf(entry, character).revealedAtChapter,
+        chapter: entry.gate.revealedAtChapter,
         character,
         episode: entry.episode,
         label: `${label} @${String(entry.episode)}`,

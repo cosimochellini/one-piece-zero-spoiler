@@ -11,10 +11,10 @@ import {
 
 import { DRAWINGS } from './art'
 import { CHARACTER_DOSSIERS, dossierOf, getCharacter } from './characters'
+import { datedOf, eatersOf } from './dated'
 import { entities } from './entities'
 import { FRUIT_FORMS } from './fruit-forms'
-import { eatersOf, fruitFormOf, fruits, fruitsOfForm, getFruit } from './fruits'
-import { gateOf } from './reveal'
+import { fruitFormOf, fruits, fruitsOfForm, getFruit } from './fruits'
 import type { Entity } from './types'
 
 /**
@@ -33,7 +33,7 @@ interface Mention {
   character: Entity
   episode: number
   fruitIds: string[]
-  /** The chapter a reader reaches the entry at (`gateOf`). */
+  /** The chapter a reader reaches the entry at (its gate in `~/data/dated`). */
   opens: number
 }
 
@@ -41,19 +41,18 @@ interface Mention {
 function readMentions(): Mention[] {
   const found: Mention[] = []
 
-  for (const [id, dossier] of Object.entries(CHARACTER_DOSSIERS)) {
+  for (const id of Object.keys(CHARACTER_DOSSIERS)) {
     const character = getCharacter(id)
-    const named = dossier.devilFruit
-    if (character === undefined || named === undefined) {
+    if (character === undefined) {
       continue
     }
 
-    for (const entry of named) {
+    for (const entry of datedOf(character, 'devilFruit')) {
       found.push({
         character,
         episode: entry.episode,
         fruitIds: entry.value,
-        opens: gateOf(entry, character).revealedAtChapter,
+        opens: entry.gate.revealedAtChapter,
       })
     }
   }
@@ -205,7 +204,10 @@ describe('the relation between a character and a fruit', () => {
   it('reads the eaters back out of the dossiers and nowhere else', () => {
     for (const fruit of fruits) {
       const read = eatersOf(fruit.id)
-        .map((eater) => `${eater.entity.id}@${String(eater.named.episode)}`)
+        .map(
+          (eater) =>
+            `${eater.entity.id}@${String(eater.gate.revealedAtEpisode)}`,
+        )
         .toSorted(byString())
 
       expect(read, fruit.id).toStrictEqual(writtenFor(fruit.id))

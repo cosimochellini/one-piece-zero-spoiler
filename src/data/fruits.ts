@@ -1,33 +1,19 @@
-import { byNumber, byValues } from 'sort-es'
-
 import type { FruitForm } from '~/lib/view/records'
 
-import { CHARACTER_DOSSIERS, getCharacter } from './characters'
 import { entities } from './entities'
 import { FRUIT_FORMS } from './fruit-forms'
 import { orderByMode } from './order'
-import type { When } from './reveal'
-import type { Dated, Entity } from './types'
+import type { Entity } from './types'
 
 /**
  * The specimen sheet: the devil fruit layer of the archive.
  *
  * `entities.ts` files a fruit at the episode that first names it and gives it
- * a name, a sentence and a drawing. This module adds the two things a record
- * cannot carry on its own — which of the three kinds it is, and who the
- * dossiers say ate it.
- *
- * The relation is read backwards on purpose. It is written once, on the
- * character, as a fruit id on a dated dossier entry; the fruit derives its
- * eaters from those entries rather than keeping a list of its own, so the two
- * sides of the reference cannot disagree.
+ * a name, a sentence and a drawing. This module adds what a record cannot
+ * carry on its own: which of the three kinds it is. Who the dossiers say ate
+ * it is a dated fact of the eater's, read back by `eatersOf` in
+ * `~/data/dated`.
  */
-
-/** A character the dossiers name, and when the entry that names them is dated. */
-export interface Eater {
-  entity: Entity
-  named: When
-}
 
 /** Every fruit record, in the order the story names them. */
 export const fruits: Entity[] = orderByMode(
@@ -55,71 +41,4 @@ export function fruitFormOf(entity: Entity): FruitForm | undefined {
 /** Every fruit of one kind, in the order the story names them. */
 export function fruitsOfForm(form: FruitForm): Entity[] {
   return fruits.filter((fruit) => FORMS.get(fruit.id) === form)
-}
-
-/** The earliest entry each character's dossier names each fruit in. */
-type Found = Map<string, Map<string, When>>
-
-/** Files one dossier entry under every fruit it names, keeping the earliest. */
-function file(found: Found, character: string, entry: Dated<string[]>): void {
-  for (const fruitId of entry.value) {
-    const byCharacter = found.get(fruitId) ?? new Map<string, When>()
-    const seen = byCharacter.get(character)
-
-    if (seen === undefined || entry.episode < seen.episode) {
-      byCharacter.set(character, {
-        episode: entry.episode,
-        ...(entry.chapter !== undefined && { chapter: entry.chapter }),
-      })
-    }
-    found.set(fruitId, byCharacter)
-  }
-}
-
-/** Every fruit's eaters, read once out of the dossiers. */
-function readEaters(): Map<string, Eater[]> {
-  const found: Found = new Map()
-
-  for (const [character, dossier] of Object.entries(CHARACTER_DOSSIERS)) {
-    const named = dossier.devilFruit
-    if (named === undefined) {
-      continue
-    }
-
-    for (const entry of named) {
-      file(found, character, entry)
-    }
-  }
-
-  return new Map(
-    [...found].map(([fruitId, byCharacter]) => [fruitId, listed(byCharacter)]),
-  )
-}
-
-/** One fruit's eaters, earliest first, ties broken by the archive's own order. */
-function listed(byCharacter: Map<string, When>): Eater[] {
-  return [...byCharacter]
-    .flatMap(([character, named]) => {
-      const entity = getCharacter(character)
-
-      return entity === undefined ? [] : { entity, named }
-    })
-    .toSorted(
-      byValues([
-        [(eater) => eater.named.episode, byNumber()],
-        [(eater) => eater.entity.revealedAtEpisode, byNumber()],
-      ]),
-    )
-}
-
-const EATERS = readEaters()
-
-/**
- * Every character the dossiers say ate this fruit, with the episode that says
- * so. Empty for an id the archive does not file, which is the same answer a
- * fruit nobody has eaten would give — and a data test holds that there is no
- * such fruit.
- */
-export function eatersOf(id: string): Eater[] {
-  return EATERS.get(id) ?? []
 }

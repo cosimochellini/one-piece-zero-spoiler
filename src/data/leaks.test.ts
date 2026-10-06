@@ -5,11 +5,12 @@ import { type Locale, LOCALES } from '~/i18n/locales'
 import { FIRST_EPISODE } from '~/lib/progress/episode'
 import { tokenize } from '~/lib/prose/markers'
 
+import { type Field, TIMELINES } from './chapters'
 import { CHARACTER_DOSSIERS, getCharacter } from './characters'
+import { datedOf } from './dated'
 import { entities, getEntity } from './entities'
 import { PLACE_DOSSIERS, SHIP_DOSSIERS } from './places'
-import { gateOf } from './reveal'
-import type { Entity, LocalizedText, Story, Timeline } from './types'
+import type { Entity, LocalizedText, Story } from './types'
 
 /**
  * The one scan for a name said too early, over every text the archive
@@ -26,7 +27,7 @@ import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 /** One text, the record it belongs to, and when a reader reaches it. */
 interface Text {
-  /** The chapter a reader reaches it at (`gateOf`). */
+  /** The chapter a reader reaches it at (its gate in `~/data/dated`). */
   chapter: number
   episode: number
   label: string
@@ -88,21 +89,16 @@ function frozen(owner: Entity, field: string, text: LocalizedText): Text {
   }
 }
 
-/** The texts of a dated timeline, each reached at its own gate. */
-function dated(
-  owner: Entity,
-  field: string,
-  timeline: Timeline<unknown>,
-): Text[] {
-  return timeline.flatMap((entry) => {
+/** The texts of one of a record's timelines, each reached at its own gate. */
+function dated(owner: Entity, field: Field): Text[] {
+  return datedOf(owner, field).flatMap((entry) => {
     const text = textOf(entry.value)
-    const gate = gateOf(entry, owner)
 
     return text === undefined ?
         []
       : {
-          chapter: gate.revealedAtChapter,
-          episode: gate.revealedAtEpisode,
+          chapter: entry.gate.revealedAtChapter,
+          episode: entry.gate.revealedAtEpisode,
           label: `${owner.id}.${field}@${String(entry.episode)}`,
           owner,
           text,
@@ -110,34 +106,17 @@ function dated(
   })
 }
 
-/** Whether a dossier field is a timeline: an array of dated entries. */
-function isTimeline(value: unknown): value is Timeline<unknown> {
-  return Array.isArray(value) && value.every((entry: unknown) => isDated(entry))
-}
-
-/** Whether a value is a dated entry: an object with an episode. */
-function isDated(entry: unknown): boolean {
-  return (
-    typeof entry === 'object'
-    && entry !== null
-    && typeof Reflect.get(entry, 'episode') === 'number'
-  )
-}
-
 /**
- * Every text one dossier prints, found by shape rather than by name: a field
- * that is a text in every locale is frozen at the threshold, a timeline is
- * dated entry by entry, and anything else (a status, a bounty, a fruit id)
- * is not prose. A field added to a dossier is scanned the day it is added.
+ * Every frozen text one dossier prints, found by shape rather than by name: a
+ * field that is a text in every locale is frozen at the threshold. A field
+ * added to a dossier is scanned the day it is added; a timeline is scanned
+ * from the field table (`TIMELINES`), which a new one does not compile
+ * without.
  */
 function textsOf(owner: Entity, dossier: object): Text[] {
-  return Object.entries(dossier).flatMap(([field, value]) => {
-    if (isLocalized(value)) {
-      return [frozen(owner, field, value)]
-    }
-
-    return isTimeline(value) ? dated(owner, field, value) : []
-  })
+  return Object.entries(dossier).flatMap(([field, value]) =>
+    isLocalized(value) ? [frozen(owner, field, value)] : [],
+  )
 }
 
 const DOSSIERS: Record<string, object>[] = [
@@ -153,6 +132,7 @@ const TEXTS: Text[] = [
       textsOf(filed(id), dossier),
     )
   }),
+  ...TIMELINES.flatMap(({ field, owner }) => dated(owner, field)),
 ]
 
 /** The words of a text with its markers reduced to the text they show. */
