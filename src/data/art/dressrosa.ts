@@ -898,20 +898,25 @@ export const dressrosaArt = {
     shadow(80, 184, 50),
   ],
 
-  // A spiked club and a sake gourd set down beside it.
+  // One of the black bands he wears above each wrist, standing on its own,
+  // with its row of big spikes round the middle. The anime shows them as he
+  // climbs out of the hole he fell into (739), and the manga's debut spread
+  // has them too (ch. 795). His club and gourd come later, so they are not
+  // here. The inside of the band is hatched where it turns away.
   'kaido': [
-    { d: 'M22 150 L60 112' },
-    { d: 'M56 108 L120 44 a10 10 0 0 1 14 14 L70 122 a10 10 0 0 1 -14 -14 z' },
+    { d: ellipse(80, 109.2, 44, 32.7) },
+    { d: ellipse(80, 109.2, 30, 22.3) },
+    { d: 'M56 122.6 A30 22.3 0 0 1 104 122.6', role: 'soft' },
+    { d: 'M124 109.2 V136 A44 32.7 0 0 1 36 136 V109.2' },
     {
-      d: 'M78 96 l-6 -12 M92 82 l-6 -12 M106 68 l-6 -12 M86 112 l12 6 M100 98 l12 6 M114 84 l12 6',
+      d: 'M124 114.1 L152 122.6 L124 131.1 M118.2 136.4 L135.2 157 L109.2 150.9 Q107.4 139.9 118.2 136.4 M95.9 152.8 L92.5 175.3 L79.4 156.9 Q84.7 144 95.9 152.8 M64.7 156.2 L44 169 L51.3 145.7 Q64.2 143.3 64.7 156.2 M40.9 142 L12.3 140.9 L36.4 125.6 Z',
       role: 'accent',
     },
-    { d: 'M124 40 l8 -8', role: 'accent' },
     {
-      d: 'M40 158 a8 8 0 1 0 12 0 c6 6 8 12 8 20 a14 14 0 0 1 -28 0 c0 -8 2 -14 8 -20 z',
+      d: 'M84 111.2 L89 90.4 M91 112.9 L96 92.1 M98 116.4 L103 95.6',
+      role: 'ambient',
     },
-    { d: 'M42 154 h8 v-8 h-8 z' },
-    shadow(80, 194, 48),
+    shadow(80, 184, 60),
   ],
   // A wrapped candy, twisted at both ends, with smoke curling off it.
   'mocha': [
