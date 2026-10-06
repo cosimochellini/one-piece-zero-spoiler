@@ -367,8 +367,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 626,
       name: { it: 'Otohime', en: 'Otohime' },
       summary: {
-        it: 'La regina del Regno di Ryugu, una sirena pesce rosso che ogni giorno scende tra la sua gente a chiedere firme per una petizione: vuole dire al vertice mondiale di quest’anno che il regno intende trasferirsi in superficie.',
-        en: 'The queen of the Ryugu Kingdom, a goldfish mermaid who goes down among her people every day asking them to sign a petition: she wants to tell this year’s World Summit that the kingdom means to move up to the surface.',
+        it: 'La regina del Regno di Ryugu, una sirena pesce rosso che scende spesso tra la sua gente a chiedere firme per una petizione: vuole far sapere al vertice mondiale che il regno intende trasferirsi in superficie.',
+        en: 'The queen of the Ryugu Kingdom, a goldfish mermaid who often goes down among her people asking them to sign a petition: she wants to tell the World Summit that the kingdom means to move up to the surface.',
       },
       visual: { art: 'otohime', tint: 'lavender' },
     },
@@ -982,8 +982,8 @@ export const fishManIsland: Saga = {
         en: 'Queen of the Ryugu Kingdom',
       },
       log: {
-        it: 'Quando un ladro le spara, schiva il colpo e lo schiaffeggia rompendosi la mano, poi piange perché, pur essendo la sua regina, non si era accorta di quanto stesse male. Quasi tutti quelli a cui chiede una firma si scusano e rifiutano. Preferisce parlare alla gente di persona piuttosto che in video dal palazzo, e il re dice che nemmeno lui può fermarla. Quando Fisher Tiger annuncia al re e alla regina che libererà gli schiavi, e dice di aver visto gli umani nei suoi viaggi, lei piange.',
-        en: 'When a thief fires at her, she dodges and slaps him, breaking her own hand, then cries because as his queen she never saw how badly off he was. Most of the people she asks to sign apologise and refuse. She would rather face people than speak by video from the palace, and the king says not even he can stop her. When Fisher Tiger tells the king and queen he will free the slaves, and says that on his travels he saw humans, she weeps.',
+        it: 'Quando un ladro le spara, schiva il colpo e lo schiaffeggia rompendosi la mano, poi piange e gli chiede scusa per non aver saputo quanto fosse dura per lui. Quasi tutti quelli a cui chiede una firma si scusano e rifiutano. Preferisce parlare alla gente di persona piuttosto che in video dal palazzo, e il re dice che nemmeno lui può fermarla. Quando Fisher Tiger annuncia al re e alla regina che libererà gli schiavi, e dice di aver visto gli umani nei suoi viaggi, lei piange.',
+        en: 'When a thief fires at her, she dodges and slaps him, breaking her own hand, then cries and apologises for not knowing how hard things were for him. Most of the people she asks to sign apologise and refuse. She would rather face people than speak by video from the palace, and the king says not even he can stop her. When Fisher Tiger tells the king and queen he will free the slaves, and says that on his travels he saw humans, she weeps.',
       },
       status: [{ episode: 540, value: 'deceased' }],
       affiliation: [
