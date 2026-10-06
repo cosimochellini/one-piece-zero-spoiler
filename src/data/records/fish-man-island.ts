@@ -871,8 +871,7 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      // No origin: the wiki sources his Fish-Man Island birth to his Vivre
-      // Card alone, and the show never says it. He is hired help (534).
+      // No origin: no source gives it before his threshold.
     },
     'zeo': {
       role: {
@@ -880,8 +879,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'È uno degli ufficiali intorno al capitano, un uomo-pesce alto coperto di strisce ondulate. Quando alcuni prigionieri umani scappano, commenta che gli umani scappano sempre. Quando la ciurma prende l’isola, occupa un centro commerciale e ordina alla gente di calpestare il ritratto della regina o di andarsene. Gli rispondono che in nessun altro punto del fondale arriva la luce e che non potrebbero vivere tra gli umani. Lui ribatte che umani e uomini-pesce non andranno mai d’accordo e che devono sottomettersi a re Hody.',
-        en: 'He is one of the officers around the captain, a tall fish-man covered in wavy stripes. When some human prisoners escape, he remarks that humans always escape. When the crew takes the island, he holds a shopping mall and tells the people there to tread on the queen’s portrait or leave. They answer that nowhere else on the seafloor has light, and that they cannot live among humans. He replies that humans and fish-men can never get along, and that they must submit to King Hody.',
+        it: 'È uno degli ufficiali intorno al capitano, un uomo-pesce alto coperto di strisce ondulate. Quando una ciurma umana è in fuga, commenta che gli umani scappano sempre. Quando la ciurma prende l’isola, occupa un centro commerciale e ordina alla gente di calpestare il ritratto della regina o di andarsene. Gli rispondono che in nessun altro punto del fondale arriva la luce e che non potrebbero vivere tra gli umani. Lui ribatte che umani e uomini-pesce non andranno mai d’accordo e che devono sottomettersi a re Hody.',
+        en: 'He is one of the officers around the captain, a tall fish-man covered in wavy stripes. When a crew of humans flees, he remarks that humans always escape. When the crew takes the island, he holds a shopping mall and tells the people there to tread on the queen’s portrait or leave. They answer that nowhere else on the seafloor has light, and that they cannot live among humans. He replies that humans and fish-men can never get along, and that they must submit to King Hody.',
       },
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
@@ -892,8 +891,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Porta un elmo con due grandi falde e una cresta, ed è molto più piccolo degli altri ufficiali. Quando alcuni prigionieri umani scappano, chiede se deve strappare loro la carne a morsi. Quando la ciurma prende l’isola, occupa la città intorno alla fabbrica di dolci e avverte la gente che chi non calpesta il ritratto della regina è un nemico della ciurma.',
-        en: 'He wears a helmet with two great flaps and a crest, and is far smaller than the other officers. When some human prisoners escape, he asks whether he should bite the flesh off them. When the crew takes the island, he holds the town around the candy factory and tells the people there that whoever will not tread on the queen’s portrait is the crew’s enemy.',
+        it: 'Porta un elmo con due grandi falde e una cresta, ed è molto più piccolo degli altri ufficiali. Quando una ciurma umana è in fuga, chiede se deve strappare loro la carne a morsi. Quando la ciurma prende l’isola, occupa la città intorno alla fabbrica di dolci e avverte la gente che chi non calpesta il ritratto della regina è un nemico della ciurma.',
+        en: 'He wears a helmet with two great flaps and a crest, and is far smaller than the other officers. When a crew of humans flees, he asks whether he should bite the flesh off them. When the crew takes the island, he holds the town around the candy factory and tells the people there that whoever will not tread on the queen’s portrait is the crew’s enemy.',
       },
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
