@@ -856,8 +856,8 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       en: 'A rope bridge over snowy peaks',
     },
     log: {
-      it: 'Il regno dei guerrieri giganti su Elbaf, «la terra da cui vengono le guerre», come la chiama con orgoglio chi ci è nato principe. È la patria dei giganti che la ciurma ha incontrato per mare, da Little Garden a Enies Lobby.',
-      en: 'The kingdom of the warrior giants on Elbaph, “the land where wars come from”, as the one born its prince proudly calls it. It is the homeland of the giants the crew has met at sea, from Little Garden to Enies Lobby.',
+      it: 'Il regno dei guerrieri giganti su Elbaf, «la terra da cui vengono le guerre», come la chiama chi ci è nato principe. È la patria dei giganti che la ciurma ha incontrato per mare, da Little Garden a Enies Lobby.',
+      en: 'The kingdom of the warrior giants on Elbaph, “the land where wars come from”, as the one born its prince calls it. It is the homeland of the giants the crew has met at sea, from Little Garden to Enies Lobby.',
     },
     filedHere: ['loki', 'ragnir'],
   },
