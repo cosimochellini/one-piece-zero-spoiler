@@ -16,11 +16,11 @@ import {
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
   getCharacter,
-  nearbyCharacters,
   routePositionOf,
 } from './characters'
 import { datedOf, stories } from './dated'
 import { entities, sagas } from './entities'
+import { orderByMode } from './order'
 import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 function must(id: string): Entity {
@@ -415,14 +415,6 @@ describe('the chart', () => {
     expect(chartWith(must('nami'))).toBe(chart)
   })
 
-  it('orders the chart by chapter when asked', () => {
-    const byChapter = chartWith(must('nami'), 'chapter')
-    const chapters = byChapter.map((entity) => entity.revealedAtChapter)
-
-    expect(chapters).toStrictEqual(chapters.toSorted(byNumber()))
-    expect(byChapter).toHaveLength(chart.length)
-  })
-
   it('sets an undrawn record in at its threshold, after its contemporaries', () => {
     const perona = must('perona')
 
@@ -507,7 +499,7 @@ describe('the shelves', () => {
 
 describe('routePositionOf', () => {
   it('places the first record at the start with nothing before it', () => {
-    const position = routePositionOf(FIRST_CHARTED)
+    const position = routePositionOf(FIRST_CHARTED, chartWith(FIRST_CHARTED))
 
     expect(position.index).toBe(0)
     expect(position.total).toBe(chart.length)
@@ -516,7 +508,7 @@ describe('routePositionOf', () => {
   })
 
   it('names the records either side of a waypoint in route order', () => {
-    const position = routePositionOf(must('sanji'))
+    const position = routePositionOf(must('sanji'), chartWith(must('sanji')))
 
     // The Baratie arc and the restaurant are filed at the same episode as
     // Sanji, the arc just before him and the place right after.
@@ -525,7 +517,7 @@ describe('routePositionOf', () => {
   })
 
   it('counts an undrawn character among the chart it is set into', () => {
-    const position = routePositionOf(must('perona'))
+    const position = routePositionOf(must('perona'), chartWith(must('perona')))
 
     expect(position.total).toBe(chart.length + 1)
     expect(position.previous?.id).toBe('brook')
@@ -536,37 +528,15 @@ describe('routePositionOf', () => {
 
     // Fourth episode of the anime, first chapter of the manga: on the manga's
     // route only records filed at chapter 1 come before or beside him.
-    const byEpisode = routePositionOf(shanks).index
-    const byChapter = routePositionOf(shanks, chartWith(shanks, 'chapter'))
+    const byChapter = orderByMode(chartWith(shanks), 'chapter')
+    const byEpisode = routePositionOf(shanks, chartWith(shanks)).index
+    const position = routePositionOf(shanks, byChapter)
 
-    expect(byChapter.index).toBeLessThan(byEpisode)
-    expect(byChapter.total).toBe(chart.length)
+    expect(position.index).toBeLessThan(byEpisode)
+    expect(position.total).toBe(chart.length)
 
-    for (const before of chartWith(shanks, 'chapter').slice(
-      0,
-      byChapter.index,
-    )) {
+    for (const before of byChapter.slice(0, position.index)) {
       expect(before.revealedAtChapter).toBeLessThanOrEqual(1)
     }
-  })
-})
-
-describe('nearbyCharacters', () => {
-  it('returns the closest listed characters by episode, never the character itself', () => {
-    const near = nearbyCharacters(must('monkey-d-luffy'), 3).map(
-      (character) => character.id,
-    )
-
-    expect(near).toStrictEqual(['koby', 'roronoa-zoro', 'shanks'])
-    expect(near).not.toContain('monkey-d-luffy')
-  })
-
-  it('leaves out characters that are not listed', () => {
-    // Kid is filed at the same episode as Law but is not featured.
-    expect(
-      nearbyCharacters(must('trafalgar-law'), 36).map(
-        (character) => character.id,
-      ),
-    ).not.toContain('eustass-kid')
   })
 })

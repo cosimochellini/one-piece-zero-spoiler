@@ -14,7 +14,6 @@ import {
   characterPage,
   charactersPage,
   nearbyPage,
-  placesPage,
   routePosition,
   shelvesPage,
 } from './archive/pages.server'
@@ -26,6 +25,7 @@ import {
   peekRecord,
   peekWaypoint,
 } from './archive/peek.server'
+import { placesPage } from './archive/places.server'
 
 /**
  * The archive's only door.

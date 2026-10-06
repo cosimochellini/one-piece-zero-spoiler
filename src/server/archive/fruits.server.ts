@@ -1,10 +1,5 @@
-import { byNumber, byValue } from 'sort-es'
-
 import { eatersOf } from '~/data/dated'
 import { fruitFormOf, fruits, fruitsOfForm, getFruit } from '~/data/fruits'
-import { orderByMode } from '~/data/order'
-import { type Reveal, reveal } from '~/data/reveal'
-import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
@@ -20,13 +15,14 @@ import type {
 } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { characterOf, coveredOf, fruitOf, slotOf } from './project.server'
+import { characterOf, fruitOf } from './project.server'
+import { type Reader, readerFor } from './reader.server'
 
 /**
  * What the specimen sheet and a fruit's own page are allowed to know.
  *
- * Its own module rather than another band of `pages.server`, which is already
- * at the file's line ceiling, and the two have nothing to say to each other.
+ * Its own module rather than another band of `pages.server`: the two have
+ * nothing to say to each other.
  */
 
 /** The plates, in the order the sheet sets them out. */
@@ -40,29 +36,18 @@ const FRUIT_HEAD: HeadKeys = {
 }
 
 /** One row of fruits split at the reader's bookmark. */
-function bandOf(form: FruitForm, at: Reveal, locale: Locale): FruitBandView {
-  const ordered = orderByMode(fruitsOfForm(form), at.mode)
-
+function bandOf(form: FruitForm, r: Reader): FruitBandView {
   return {
     form,
-    total: ordered.length,
-    open: ordered.flatMap((entity) =>
-      at.sees(entity) ? [fruitOf({ at, entity, form, locale })] : [],
-    ),
-    covered: ordered.flatMap((entity) =>
-      at.sees(entity) ? [] : [coveredOf(entity)],
-    ),
+    ...r.split(fruitsOfForm(form), (entity) => fruitOf(entity, form, r)),
   }
 }
 
 /** The specimen sheet: three plates, and how many fruits the archive files. */
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
-  const at = reveal(bookmark)
+  const r = readerFor(bookmark, locale)
 
-  return {
-    bands: PLATES.map((form) => bandOf(form, at, locale)),
-    filed: fruits.length,
-  }
+  return { bands: PLATES.map((form) => bandOf(form, r)), filed: fruits.length }
 }
 
 /** A fruit's own page: what names it, and what it says. */
@@ -88,17 +73,11 @@ export function fruitPage(
     return undefined
   }
 
-  const at = reveal(bookmark)
-  const revealed = at.sees(entity)
+  const r = readerFor(bookmark, locale)
 
   return {
-    head: headFor({ at, entity, keys: FRUIT_HEAD, locale, revealed }),
-    detail: {
-      slot:
-        revealed ?
-          { open: true, record: fruitOf({ at, entity, form, locale }) }
-        : { open: false, covered: coveredOf(entity) },
-    },
+    head: headFor(entity, FRUIT_HEAD, r),
+    detail: { slot: r.slot(entity, (open) => fruitOf(open, form, r)) },
   }
 }
 
@@ -117,16 +96,16 @@ export function fruitEaters(
   bookmark: Bookmark,
   locale: Locale,
 ): FruitEatersView {
-  const at = reveal(bookmark)
+  const r = readerFor(bookmark, locale)
 
   return {
     mode: 'eaters',
     eaters: eatersOf(id).map((eater): Slot<CharacterView> => {
+      // Slotted on the later gate, but drawn from the record itself: an open
+      // eater prints their own thresholds, a covered one the entry's.
       const gated = { ...eater.entity, ...eater.gate }
 
-      return at.sees(gated) ?
-          { open: true, record: characterOf(eater.entity, locale, at) }
-        : { open: false, covered: coveredOf(gated) }
+      return r.slot(gated, () => characterOf(eater.entity, r))
     }),
   }
 }
@@ -146,32 +125,9 @@ export function fruitSiblings(
     return []
   }
 
-  const at = reveal(bookmark)
+  const r = readerFor(bookmark, locale)
 
-  return nearest(entity, fruitsOfForm(form), at).map((near) => {
-    return slotOf(near, at, (found) =>
-      fruitOf({ at, entity: found, form, locale }),
-    )
-  })
-}
-
-/**
- * The records filed closest to this one, this one excluded.
- *
- * Nearness is measured in whatever the reader counts in, because the page
- * prints this fruit's threshold in that unit and a rail sorted by the other
- * one would be a neighbourhood the reader cannot see they are in.
- */
-function nearest(entity: Entity, among: Entity[], at: Reveal): Entity[] {
-  const here = at.threshold(entity)
-
-  return among
-    .filter((candidate) => candidate.id !== entity.id)
-    .toSorted(
-      byValue(
-        (candidate) => Math.abs(at.threshold(candidate) - here),
-        byNumber(),
-      ),
-    )
-    .slice(0, SIBLING_COUNT)
+  return r
+    .nearest(entity, fruitsOfForm(form), SIBLING_COUNT)
+    .map((near) => r.slot(near, (found) => fruitOf(found, form, r)))
 }

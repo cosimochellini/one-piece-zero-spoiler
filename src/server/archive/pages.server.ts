@@ -7,20 +7,8 @@ import {
   chartWith,
   featuredCharacters,
   getCharacter,
-  nearbyCharacters,
   routePositionOf,
 } from '~/data/characters'
-import { latestOf } from '~/data/dated'
-import { getEntity } from '~/data/entities'
-import { orderByMode } from '~/data/order'
-import {
-  placeDossierOf,
-  places,
-  type ShipDossier,
-  shipDossierOf,
-  ships,
-} from '~/data/places'
-import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -30,12 +18,10 @@ import type {
   ChartView,
   CoveredRecord,
   DocumentHead,
-  PortView,
   RecordView,
   RoutePositionView,
   SearchableCharacter,
   ShelfView,
-  ShipView,
   Slot,
 } from '~/lib/view/records'
 
@@ -43,13 +29,12 @@ import { chronicleOf } from './chronicle.server'
 import { headFor, type HeadKeys } from './head.server'
 import {
   characterOf,
-  coveredOf,
   factsOf,
   recordOf,
   searchableOf,
-  slotOf,
   waypointOf,
 } from './project.server'
+import { type Reader, readerFor } from './reader.server'
 
 /**
  * What each page is allowed to know, assembled from the archive.
@@ -63,20 +48,18 @@ import {
  * Every one of them takes the bookmark as an argument and none of them reads
  * a cookie. The wrappers read it, from the request, and never from the
  * client: a bookmark passed in over the wire would make the fog a suggestion.
+ * Each makes one reader of it (`./reader.server`), which orders, splits and
+ * covers in the reader's unit, so a page only says what it holds.
  */
 
 /** The landing chart: arcs, places, ships and the characters in evidence. */
 export function chartPage(bookmark: Bookmark, locale: Locale): ChartView {
-  const at = reveal(bookmark)
-  const ordered = orderByMode(chart, at.mode)
-  const open = ordered.filter((entity) => at.sees(entity))
-  const covered = ordered.filter((entity) => !at.sees(entity))
+  const { covered, open, total } = readerFor(bookmark, locale).split(
+    chart,
+    waypointOf,
+  )
 
-  return {
-    open: open.map((entity) => waypointOf(entity, locale, at)),
-    covered: covered.map((entity) => coveredOf(entity)),
-    filed: ordered.length,
-  }
+  return { open, covered, filed: total }
 }
 
 /** The fold of the signal book: the crests, and how much is behind them. */
@@ -96,16 +79,14 @@ export function charactersPage(
   bookmark: Bookmark,
   locale: Locale,
 ): CharactersPage {
-  const at = reveal(bookmark)
-  const featured = orderByMode(featuredCharacters, at.mode)
+  const featured = readerFor(bookmark, locale).split(
+    featuredCharacters,
+    searchableOf,
+  )
 
   return {
-    featuredOpen: featured.flatMap((entity) =>
-      at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
-    ),
-    featuredCovered: featured.flatMap((entity) =>
-      at.sees(entity) ? [] : [coveredOf(entity)],
-    ),
+    featuredOpen: featured.open,
+    featuredCovered: featured.covered,
     shelfCount: bookSections.length,
     filed: characters.length,
   }
@@ -113,38 +94,23 @@ export function charactersPage(
 
 /** The signal book's shelves, in the order the reader's unit reaches them. */
 export function shelvesPage(bookmark: Bookmark, locale: Locale): ShelfView[] {
-  const at = reveal(bookmark)
+  const r = readerFor(bookmark, locale)
   const byArc = new Map(
     bookSections.map((section) => [section.arc.id, section]),
   )
 
-  return orderByMode(
-    bookSections.map((section) => section.arc),
-    at.mode,
-  ).flatMap((arc) => {
+  return r.order(bookSections.map((section) => section.arc)).flatMap((arc) => {
     const section = byArc.get(arc.id)
 
-    return section === undefined ? [] : shelfViewOf(section, at, locale)
+    return section === undefined ? [] : shelfViewOf(section, r)
   })
 }
 
 /** One shelf: its arc, and the records on it split into open and covered. */
-function shelfViewOf(
-  section: BookSection,
-  at: Reveal,
-  locale: Locale,
-): ShelfView {
-  const shelved = orderByMode(section.characters, at.mode)
-
+function shelfViewOf(section: BookSection, r: Reader): ShelfView {
   return {
-    arc: slotOf(section.arc, at, (entity) => recordOf(entity, locale, at)),
-    total: shelved.length,
-    open: shelved.flatMap((entity) =>
-      at.sees(entity) ? [searchableOf(entity, locale, at)] : [],
-    ),
-    covered: shelved.flatMap((entity) =>
-      at.sees(entity) ? [] : [coveredOf(entity)],
-    ),
+    arc: r.slot(section.arc, recordOf),
+    ...r.split(section.characters, searchableOf),
   }
 }
 
@@ -164,33 +130,31 @@ export function characterPage(
   bookmark: Bookmark,
   locale: Locale,
 ): CharacterPage | undefined {
-  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const revealed = at.sees(entity)
+  const r = readerFor(bookmark, locale)
   const dossier = characterDossierOf(entity)
 
   return {
-    head: headFor({ at, entity, keys: CHARACTER_HEAD, locale, revealed }),
+    head: headFor(entity, CHARACTER_HEAD, r),
     detail: {
-      slot:
-        revealed ?
-          {
-            open: true,
-            record: {
-              ...characterOf(entity, locale, at),
-              summary: entity.summary[locale],
-            },
-          }
-        : { open: false, covered: coveredOf(entity) },
-      log: revealed && dossier !== undefined ? dossier.log[locale] : null,
-      facts: factsOf(entity, locale, at),
-      chronicle: chronicleOf(entity, locale, at),
+      slot: r.slot(entity, pageRecordOf),
+      log: dossier !== undefined && r.sees(entity) ? dossier.log[locale] : null,
+      facts: factsOf(entity, r),
+      chronicle: chronicleOf(entity, r),
     },
   }
+}
+
+/** A character as their own page draws them, which prints the summary. */
+function pageRecordOf(
+  entity: Entity,
+  r: Reader,
+): CharacterView & { summary: string } {
+  return { ...characterOf(entity, r), summary: entity.summary[r.locale] }
 }
 
 /** Where a character sits on the route, and the two records beside them. */
@@ -199,27 +163,24 @@ export function routePosition(
   bookmark: Bookmark,
   locale: Locale,
 ): RoutePositionView | undefined {
-  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return undefined
   }
 
-  const ordered = chartWith(entity, at.mode)
+  const r = readerFor(bookmark, locale)
+  const ordered = r.order(chartWith(entity))
   const position = routePositionOf(entity, ordered)
-  const beside = (near: Entity | undefined): null | Slot<RecordView> => {
-    return near === undefined ? null : (
-        slotOf(near, at, (record) => recordOf(record, locale, at))
-      )
-  }
+  const beside = (near: Entity | undefined): null | Slot<RecordView> =>
+    near === undefined ? null : r.slot(near, recordOf)
 
   return {
     index: position.index,
     total: position.total,
-    openCount: ordered.filter((record) => at.sees(record)).length,
+    openCount: ordered.filter((record) => r.sees(record)).length,
     // The ring takes the record's colour only once the reader has reached it,
     // so a covered record's colour is not in the HTML.
-    tint: at.sees(entity) ? entity.visual.tint : null,
+    tint: r.sees(entity) ? entity.visual.tint : null,
     previous: beside(position.previous),
     next: beside(position.next),
   }
@@ -235,114 +196,16 @@ export function nearbyPage(
   bookmark: Bookmark,
   locale: Locale,
 ): Slot<CharacterView>[] {
-  const at = reveal(bookmark)
   const entity = getCharacter(id)
   if (entity === undefined) {
     return []
   }
 
-  return nearbyCharacters(entity, NEARBY_COUNT).map((near) =>
-    slotOf(near, at, (record) => characterOf(record, locale, at)),
-  )
-}
+  const r = readerFor(bookmark, locale)
 
-/** The ship's log, and the ships that carry it. */
-export function placesPage(
-  bookmark: Bookmark,
-  locale: Locale,
-): {
-  covered: CoveredRecord[]
-  filed: number
-  open: PortView[]
-  ships: ShipView[]
-} {
-  const at = reveal(bookmark)
-  const ordered = orderByMode(places, at.mode)
-
-  return {
-    // Only the ships the reader has reached: a covered second ship would
-    // tell a reader at the start that the first one does not last.
-    ships: orderByMode(ships, at.mode).flatMap((entity) => {
-      const dossier = shipDossierOf(entity)
-      return dossier !== undefined && at.sees(entity) ?
-          [shipOf({ at, dossier, entity, locale })]
-        : []
-    }),
-    filed: ordered.length,
-    open: ordered.flatMap((entity) =>
-      at.sees(entity) ? [portOf(entity, at, locale)] : [],
-    ),
-    covered: ordered.flatMap((entity) =>
-      at.sees(entity) ? [] : [coveredOf(entity)],
-    ),
-  }
-}
-
-/**
- * One port, with its dossier resolved: the arc named outright (an arc opens
- * no later than any place filed under it, which a data test holds), and each
- * record filed here with its own fog already decided.
- */
-export function portOf(entity: Entity, at: Reveal, locale: Locale): PortView {
-  const dossier = placeDossierOf(entity)
-  const arc = dossier === undefined ? undefined : getEntity(dossier.arc)
-
-  return {
-    ...recordOf(entity, locale, at),
-    summary: entity.summary[locale],
-    dossier:
-      dossier === undefined ? null : (
-        {
-          sea: dossier.sea,
-          form: dossier.form,
-          arc: arc === undefined ? null : arc.name[locale],
-          landmark: dossier.landmark[locale],
-          log: dossier.log[locale],
-          filedHere: dossier.filedHere.flatMap<Slot<RecordView>>((filed) => {
-            const record = getEntity(filed)
-            return record === undefined ?
-                []
-              : [slotOf(record, at, (found) => recordOf(found, locale, at))]
-          }),
-        }
-      ),
-  }
-}
-
-/**
- * One ship, with her entry resolved: the place she is received at named
- * outright (it opens no later than the ship, which a data test holds), and
- * the latest fate and the places the reader has reached, and nothing later.
- */
-function shipOf({
-  at,
-  dossier,
-  entity,
-  locale,
-}: {
-  at: Reveal
-  dossier: ShipDossier
-  entity: Entity
-  locale: Locale
-}): ShipView {
-  const fate = latestOf(at, entity, 'fate')?.[locale]
-
-  return {
-    ...recordOf(entity, locale, at),
-    summary: entity.summary[locale],
-    dossier: {
-      builder: dossier.builder[locale],
-      launched: getEntity(dossier.launched)?.name[locale] ?? null,
-      log: dossier.log[locale],
-      ...(fate !== undefined && { fate }),
-      ports: (dossier.ports ?? []).flatMap((arrival) => {
-        const place = getEntity(arrival.place)
-        return place !== undefined && at.sees(place) ?
-            [recordOf(place, locale, at)]
-          : []
-      }),
-    },
-  }
+  return r
+    .nearest(entity, featuredCharacters, NEARBY_COUNT)
+    .map((near) => r.slot(near, characterOf))
 }
 
 /** What a character's page calls itself, open and under fog. */

@@ -8,7 +8,7 @@ import { entities, getEntity } from '~/data/entities'
 import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
 import { shipDossierOf } from '~/data/places'
-import { type Reveal, reveal } from '~/data/reveal'
+import { reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import {
@@ -33,12 +33,13 @@ import {
   charactersPage,
   chartPage,
   nearbyPage,
-  placesPage,
   routePosition,
   shelvesPage,
 } from './pages.server'
 import { peekCharacter } from './peek.server'
+import { placesPage } from './places.server'
 import { characterOf, recordOf, searchableOf } from './project.server'
+import { type Reader, readerFor } from './reader.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }
@@ -88,7 +89,7 @@ function everyBookmark(): NonNullable<Bookmark>[] {
 
   return marks
 }
-const seenAt = (episode: number): Reveal => reveal(ep(episode))
+const seenAt = (episode: number): Reader => readerFor(ep(episode), 'en')
 const handleSpace = new Set(
   entities.flatMap((entity) => {
     return [
@@ -271,27 +272,6 @@ describe('the slice of the archive a page is given', () => {
     }
   })
 
-  it('keeps the open waypoints a prefix, whatever the reader counts in', () => {
-    // The horizon is one element between two runs rather than a marker
-    // interpolated along the route, and that only works on a prefix.
-    const marks: NonNullable<Bookmark>[] = [
-      { mode: 'episode', episode: 92 },
-      { mode: 'season', season: 4, episode: 1 },
-      { mode: 'chapter', chapter: 155 },
-    ]
-
-    for (const bookmark of marks) {
-      const chart = chartPage(bookmark, 'en')
-      const thresholds = chart.open.map((entry) => {
-        return bookmark.mode === 'chapter' ?
-            entry.revealedAtChapter
-          : entry.revealedAtEpisode
-      })
-
-      expect(thresholds.toSorted(byNumber())).toStrictEqual(thresholds)
-    }
-  })
-
   it('tells a reader with no bookmark nothing but the thresholds', () => {
     const chart = chartPage(null, 'en')
 
@@ -326,22 +306,22 @@ describe('the slice of the archive a page is given', () => {
       const home = homePage(bookmark, 'en')
       const at = reveal(bookmark)
       const episodes = home.stories.map((story) => story.revealedAtEpisode)
+      // Most recent first, and inside the arc, in the reader's own unit.
+      const marked = home.stories.map((story) => at.threshold(story))
 
       saysNothing(home, bookmark)
 
       expect(at.sees(home.saga)).toBe(true)
       expect(home.cast.length).toBeLessThanOrEqual(6)
-      expect(episodes.toSorted(byNumber({ desc: true }))).toStrictEqual(
-        episodes,
-      )
+      expect(marked.toSorted(byNumber({ desc: true }))).toStrictEqual(marked)
 
       // Reaching back to the arc before is only ever a non-empty answer, and
       // the stories are then all below this arc's start rather than above it.
-      const start = home.saga.revealedAtEpisode
+      const start = at.threshold(home.saga)
       const inside =
         home.before ?
-          episodes.length > 0 && episodes.every((episode) => episode < start)
-        : episodes.every((episode) => episode >= start)
+          marked.length > 0 && marked.every((mark) => mark < start)
+        : marked.every((mark) => mark >= start)
 
       expect(episodes.every((episode) => episode <= reached)).toBe(true)
       expect(inside).toBe(true)
@@ -508,8 +488,8 @@ describe('the slice of the archive a page is given', () => {
     // "Whitebeard" finds Edward Newgate after episode 151 and not before, and
     // before it the word is not in the browser to be matched at all.
     const newgate = onFile('edward-newgate')
-    const early = searchableOf(newgate, 'en', seenAt(150))
-    const later = searchableOf(newgate, 'en', seenAt(500))
+    const early = searchableOf(newgate, seenAt(150))
+    const later = searchableOf(newgate, seenAt(500))
 
     expect(early.folded).toBe(foldName(newgate.name.en))
     expect(early.aliases).not.toContain('whitebeard')
@@ -519,11 +499,13 @@ describe('the slice of the archive a page is given', () => {
     const at = chapterAtEpisode(151)
 
     expect(
-      searchableOf(newgate, 'en', reveal({ mode: 'chapter', chapter: at - 1 }))
-        .aliases,
+      searchableOf(
+        newgate,
+        readerFor({ mode: 'chapter', chapter: at - 1 }, 'en'),
+      ).aliases,
     ).not.toContain('whitebeard')
     expect(
-      searchableOf(newgate, 'en', reveal({ mode: 'chapter', chapter: at }))
+      searchableOf(newgate, readerFor({ mode: 'chapter', chapter: at }, 'en'))
         .aliases,
     ).toContain('whitebeard')
   })
@@ -531,7 +513,7 @@ describe('the slice of the archive a page is given', () => {
   it('carries the other locale’s name so a reader can search in either', () => {
     const luffy = onFile('monkey-d-luffy')
 
-    expect(searchableOf(luffy, 'en', seenAt(1)).aliases).toContain(
+    expect(searchableOf(luffy, seenAt(1)).aliases).toContain(
       foldName(luffy.name.it),
     )
   })
@@ -716,22 +698,18 @@ describe('a record drawn again later in the story', () => {
   const first = DRAWINGS['marshall-d-teach']
   const redrawn = REDRAWINGS['marshall-d-teach']?.[0]
   const teachAt = (bookmark: Bookmark | null): Stroke[] =>
-    characterOf(teach, 'en', reveal(bookmark)).visual.strokes
+    characterOf(teach, readerFor(bookmark, 'en')).visual.strokes
 
   it('is drawn again only from the episode it is redrawn at', () => {
     expect(redrawn?.episode).toBe(421)
 
-    expect(characterOf(teach, 'en', seenAt(420)).visual.strokes).toBe(first)
-    expect(characterOf(teach, 'en', seenAt(421)).visual.strokes).toBe(
-      redrawn?.value,
-    )
-    expect(characterOf(teach, 'en', seenAt(916)).visual.strokes).toBe(
-      redrawn?.value,
-    )
+    expect(characterOf(teach, seenAt(420)).visual.strokes).toBe(first)
+    expect(characterOf(teach, seenAt(421)).visual.strokes).toBe(redrawn?.value)
+    expect(characterOf(teach, seenAt(916)).visual.strokes).toBe(redrawn?.value)
   })
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
-    expect(characterOf(teach, 'en', reveal(null)).visual.strokes).toBe(first)
+    expect(characterOf(teach, readerFor(null, 'en')).visual.strokes).toBe(first)
   })
 
   it('is lifted by hand as the reader would see it, not as it ends', () => {
@@ -752,19 +730,13 @@ describe('a record drawn again later in the story', () => {
       expect(kabuto?.episode).toBe(274)
       expect(kuroKabuto?.episode).toBe(517)
 
-      expect(characterOf(usopp, 'en', seenAt(273)).visual.strokes).toBe(
-        slingshot,
-      )
-      expect(characterOf(usopp, 'en', seenAt(274)).visual.strokes).toBe(
-        kabuto?.value,
-      )
-      expect(characterOf(usopp, 'en', seenAt(516)).visual.strokes).toBe(
-        kabuto?.value,
-      )
-      expect(characterOf(usopp, 'en', seenAt(517)).visual.strokes).toBe(
+      expect(characterOf(usopp, seenAt(273)).visual.strokes).toBe(slingshot)
+      expect(characterOf(usopp, seenAt(274)).visual.strokes).toBe(kabuto?.value)
+      expect(characterOf(usopp, seenAt(516)).visual.strokes).toBe(kabuto?.value)
+      expect(characterOf(usopp, seenAt(517)).visual.strokes).toBe(
         kuroKabuto?.value,
       )
-      expect(characterOf(usopp, 'en', reveal(null)).visual.strokes).toBe(
+      expect(characterOf(usopp, readerFor(null, 'en')).visual.strokes).toBe(
         slingshot,
       )
     })
@@ -774,23 +746,19 @@ describe('a record drawn again later in the story', () => {
     const chopper = filed('tony-tony-chopper')
     const topHat = DRAWINGS['tony-tony-chopper']
     const cap = REDRAWINGS['tony-tony-chopper']?.[0]
-    const atChapter = (chapter: number): Reveal =>
-      reveal({ mode: 'chapter', chapter })
+    const atChapter = (chapter: number): Reader =>
+      readerFor({ mode: 'chapter', chapter }, 'en')
 
     expect(cap?.episode).toBe(517)
 
-    expect(characterOf(chopper, 'en', seenAt(516)).visual.strokes).toBe(topHat)
-    expect(characterOf(chopper, 'en', seenAt(517)).visual.strokes).toBe(
-      cap?.value,
-    )
-    expect(characterOf(chopper, 'en', reveal(null)).visual.strokes).toBe(topHat)
-    // The manga draws the cap in chapter 598, so no chapter below it may.
-    expect(characterOf(chopper, 'en', atChapter(597)).visual.strokes).toBe(
+    expect(characterOf(chopper, seenAt(516)).visual.strokes).toBe(topHat)
+    expect(characterOf(chopper, seenAt(517)).visual.strokes).toBe(cap?.value)
+    expect(characterOf(chopper, readerFor(null, 'en')).visual.strokes).toBe(
       topHat,
     )
-    expect(characterOf(chopper, 'en', atChapter(598)).visual.strokes).toBe(
-      cap?.value,
-    )
+    // The manga draws the cap in chapter 598, so no chapter below it may.
+    expect(characterOf(chopper, atChapter(597)).visual.strokes).toBe(topHat)
+    expect(characterOf(chopper, atChapter(598)).visual.strokes).toBe(cap?.value)
   })
 
   describe('twice, following Zoro’s third sword', () => {
@@ -798,7 +766,7 @@ describe('a record drawn again later in the story', () => {
     const threeSwords = DRAWINGS['roronoa-zoro']
     const [shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
     const drawnAt = (bookmark: Bookmark): Stroke[] =>
-      characterOf(zoro, 'en', reveal(bookmark)).visual.strokes
+      characterOf(zoro, readerFor(bookmark, 'en')).visual.strokes
 
     it('shows the latest third sword an episode reader has reached', () => {
       expect(shusui?.episode).toBe(362)
@@ -825,7 +793,7 @@ describe('a record drawn again later in the story', () => {
     const grown = DRAWINGS['gum-gum-fruit']
     const real = REDRAWINGS['gum-gum-fruit']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+      recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
 
     expect(real?.episode).toBe(4)
     expect(grown).not.toBe(real?.value)
@@ -843,7 +811,7 @@ describe('a record drawn again later in the story', () => {
     const grown = DRAWINGS['flame-flame-fruit']
     const real = REDRAWINGS['flame-flame-fruit']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+      recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
 
     expect(real?.episode).toBe(629)
 
@@ -860,7 +828,7 @@ describe('a record drawn again later in the story', () => {
     const room = DRAWINGS['op-op-fruit']
     const real = REDRAWINGS['op-op-fruit']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+      recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
 
     expect(real?.episode).toBe(704)
 
@@ -877,7 +845,7 @@ describe('a record drawn again later in the story', () => {
     const wrench = DRAWINGS.franky
     const forearm = REDRAWINGS['franky']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(franky, 'en', reveal(bookmark)).visual.strokes
+      characterOf(franky, readerFor(bookmark, 'en')).visual.strokes
 
     expect(forearm?.episode).toBe(517)
 
@@ -894,7 +862,7 @@ describe('a record drawn again later in the story', () => {
     const fans = DRAWINGS.izo
     const flintlocks = REDRAWINGS['izo']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(izo, 'en', reveal(bookmark)).visual.strokes
+      characterOf(izo, readerFor(bookmark, 'en')).visual.strokes
 
     expect(flintlocks?.episode).toBe(995)
 
@@ -911,7 +879,7 @@ describe('a record drawn again later in the story', () => {
     const heels = DRAWINGS.ulti
     const beast = REDRAWINGS['ulti']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(ulti, 'en', reveal(bookmark)).visual.strokes
+      characterOf(ulti, readerFor(bookmark, 'en')).visual.strokes
 
     expect(beast?.episode).toBe(990)
 
@@ -927,19 +895,19 @@ describe('a record drawn again later in the story', () => {
     const brook = filed('brook')
     const violin = DRAWINGS.brook
     const guitar = REDRAWINGS['brook']?.[0]
-    const atChapter = (chapter: number): Reveal =>
-      reveal({ mode: 'chapter', chapter })
+    const atChapter = (chapter: number): Reader =>
+      readerFor({ mode: 'chapter', chapter }, 'en')
 
     expect(guitar?.episode).toBe(517)
 
-    expect(characterOf(brook, 'en', seenAt(516)).visual.strokes).toBe(violin)
-    expect(characterOf(brook, 'en', seenAt(517)).visual.strokes).toBe(
-      guitar?.value,
+    expect(characterOf(brook, seenAt(516)).visual.strokes).toBe(violin)
+    expect(characterOf(brook, seenAt(517)).visual.strokes).toBe(guitar?.value)
+    expect(characterOf(brook, readerFor(null, 'en')).visual.strokes).toBe(
+      violin,
     )
-    expect(characterOf(brook, 'en', reveal(null)).visual.strokes).toBe(violin)
     // The manga draws the guitar in chapter 598, so no chapter below it may.
-    expect(characterOf(brook, 'en', atChapter(597)).visual.strokes).toBe(violin)
-    expect(characterOf(brook, 'en', atChapter(598)).visual.strokes).toBe(
+    expect(characterOf(brook, atChapter(597)).visual.strokes).toBe(violin)
+    expect(characterOf(brook, atChapter(598)).visual.strokes).toBe(
       guitar?.value,
     )
   })
@@ -949,7 +917,7 @@ describe('a record drawn again later in the story', () => {
     const wave = DRAWINGS.jinbe
     const helm = REDRAWINGS['jinbe']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(jinbe, 'en', reveal(bookmark)).visual.strokes
+      characterOf(jinbe, readerFor(bookmark, 'en')).visual.strokes
 
     expect(helm?.episode).toBe(980)
 
@@ -966,7 +934,7 @@ describe('a record drawn again later in the story', () => {
     const flame = DRAWINGS['portgas-d-ace']
     const out = REDRAWINGS['portgas-d-ace']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(ace, 'en', reveal(bookmark)).visual.strokes
+      characterOf(ace, readerFor(bookmark, 'en')).visual.strokes
 
     expect(out?.episode).toBe(483)
 
@@ -983,7 +951,7 @@ describe('a record drawn again later in the story', () => {
     const barrel = DRAWINGS['edward-newgate']
     const grave = REDRAWINGS['edward-newgate']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(whitebeard, 'en', reveal(bookmark)).visual.strokes
+      characterOf(whitebeard, readerFor(bookmark, 'en')).visual.strokes
 
     expect(grave?.episode).toBe(505)
 
@@ -1000,7 +968,7 @@ describe('a record drawn again later in the story', () => {
     const cannonball = DRAWINGS.buggy
     const crowned = REDRAWINGS['buggy']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(buggy, 'en', reveal(bookmark)).visual.strokes
+      characterOf(buggy, readerFor(bookmark, 'en')).visual.strokes
 
     expect(crowned?.episode).toBe(1080)
 
@@ -1017,7 +985,7 @@ describe('a record drawn again later in the story', () => {
     const puppet = DRAWINGS['donquixote-doflamingo']
     const fallen = REDRAWINGS['donquixote-doflamingo']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(doflamingo, 'en', reveal(bookmark)).visual.strokes
+      characterOf(doflamingo, readerFor(bookmark, 'en')).visual.strokes
 
     expect(fallen?.episode).toBe(733)
 
@@ -1034,7 +1002,7 @@ describe('a record drawn again later in the story', () => {
     const mop = DRAWINGS.koby
     const bandanna = REDRAWINGS['koby']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(koby, 'en', reveal(bookmark)).visual.strokes
+      characterOf(koby, readerFor(bookmark, 'en')).visual.strokes
 
     expect(bandanna?.episode).toBe(314)
 
@@ -1051,7 +1019,7 @@ describe('a record drawn again later in the story', () => {
     const pipe = DRAWINGS.sabo
     const flame = REDRAWINGS['sabo']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sabo, 'en', reveal(bookmark)).visual.strokes
+      characterOf(sabo, readerFor(bookmark, 'en')).visual.strokes
 
     expect(flame?.episode).toBe(678)
 
@@ -1068,7 +1036,7 @@ describe('a record drawn again later in the story', () => {
     const cap = DRAWINGS.sengoku
     const retired = REDRAWINGS['sengoku']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sengoku, 'en', reveal(bookmark)).visual.strokes
+      characterOf(sengoku, readerFor(bookmark, 'en')).visual.strokes
 
     expect(retired?.episode).toBe(511)
 
@@ -1085,7 +1053,7 @@ describe('a record drawn again later in the story', () => {
     const hat = DRAWINGS['rob-lucci']
     const masked = REDRAWINGS['rob-lucci']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(lucci, 'en', reveal(bookmark)).visual.strokes
+      characterOf(lucci, readerFor(bookmark, 'en')).visual.strokes
 
     expect(masked?.episode).toBe(746)
 
@@ -1102,7 +1070,7 @@ describe('a record drawn again later in the story', () => {
     const tail = DRAWINGS.momonosuke
     const grown = REDRAWINGS['momonosuke']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(momonosuke, 'en', reveal(bookmark)).visual.strokes
+      characterOf(momonosuke, readerFor(bookmark, 'en')).visual.strokes
 
     expect(grown?.episode).toBe(1047)
 
@@ -1119,7 +1087,7 @@ describe('a record drawn again later in the story', () => {
     const cap = DRAWINGS.sakazuki
     const braided = REDRAWINGS['sakazuki']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sakazuki, 'en', reveal(bookmark)).visual.strokes
+      characterOf(sakazuki, readerFor(bookmark, 'en')).visual.strokes
 
     expect(braided?.episode).toBe(570)
 
@@ -1136,7 +1104,7 @@ describe('a record drawn again later in the story', () => {
     const shoes = DRAWINGS['bon-clay']
     const gate = REDRAWINGS['bon-clay']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(bonClay, 'en', reveal(bookmark)).visual.strokes
+      characterOf(bonClay, readerFor(bookmark, 'en')).visual.strokes
 
     expect(gate?.episode).toBe(451)
 
@@ -1153,7 +1121,7 @@ describe('a record drawn again later in the story', () => {
     const book = DRAWINGS['bartholomew-kuma']
     const plate = REDRAWINGS['bartholomew-kuma']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(kuma, 'en', reveal(bookmark)).visual.strokes
+      characterOf(kuma, readerFor(bookmark, 'en')).visual.strokes
 
     expect(plate?.episode).toBe(469)
 
@@ -1170,7 +1138,7 @@ describe('a record drawn again later in the story', () => {
     const magnet = DRAWINGS['eustass-kid']
     const armed = REDRAWINGS['eustass-kid']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(kid, 'en', reveal(bookmark)).visual.strokes
+      characterOf(kid, readerFor(bookmark, 'en')).visual.strokes
 
     expect(armed?.episode).toBe(603)
 
@@ -1188,7 +1156,7 @@ describe('a record drawn again later in the story', () => {
     const chart = DRAWINGS.nami
     const zeus = REDRAWINGS['nami']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(nami, 'en', reveal(bookmark)).visual.strokes
+      characterOf(nami, readerFor(bookmark, 'en')).visual.strokes
 
     expect(zeus?.episode).toBe(878)
 
@@ -1205,7 +1173,7 @@ describe('a record drawn again later in the story', () => {
     const bicycle = DRAWINGS.kuzan
     const flagged = REDRAWINGS['kuzan']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(kuzan, 'en', reveal(bookmark)).visual.strokes
+      characterOf(kuzan, readerFor(bookmark, 'en')).visual.strokes
 
     expect(flagged?.episode).toBe(736)
 
@@ -1237,7 +1205,7 @@ describe('a record drawn again later in the story', () => {
     const knife = DRAWINGS.sanji
     const [flame, cape, ifrit] = REDRAWINGS['sanji'] ?? []
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sanji, 'en', reveal(bookmark)).visual.strokes
+      characterOf(sanji, readerFor(bookmark, 'en')).visual.strokes
 
     it('lights the flame on the knife only from episode 298', () => {
       expect(flame?.episode).toBe(298)

@@ -1,12 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
 import { characters, dossierOf, getCharacter } from '~/data/characters'
-import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
+import type { Locale } from '~/i18n/locales'
 
 import { chronicleOf, type ResolveName, segmentsOf } from './chronicle.server'
+import { type Reader, readerFor } from './reader.server'
 
-const ep = (episode: number): Reveal => reveal({ mode: 'episode', episode })
+function ep(episode: number, locale: Locale = 'en'): Reader {
+  return readerFor({ mode: 'episode', episode }, locale)
+}
 
 /** The two names a hand-written paragraph links. */
 const NAMES: Record<string, string> = {
@@ -32,17 +35,17 @@ const LUFFYS = dossierOf(LUFFY)?.chronicle ?? []
 describe('the stories a bookmark reaches', () => {
   it('gives every story reached, in order, and none not yet reached', () => {
     const third = LUFFYS[2]?.episode ?? 0
-    const marks = chronicleOf(LUFFY, 'en', ep(third)).entries.map(
+    const marks = chronicleOf(LUFFY, ep(third)).entries.map(
       (entry) => entry.revealedAtEpisode,
     )
 
     expect(marks).toStrictEqual(LUFFYS.slice(0, 3).map((s) => s.episode))
-    expect(chronicleOf(LUFFY, 'en', ep(third - 1)).entries).toHaveLength(2)
+    expect(chronicleOf(LUFFY, ep(third - 1)).entries).toHaveLength(2)
   })
 
   it('answers in the reader’s locale', () => {
     const first = LUFFYS[0]
-    const [entry] = chronicleOf(LUFFY, 'it', ep(first?.episode ?? 0)).entries
+    const [entry] = chronicleOf(LUFFY, ep(first?.episode ?? 0, 'it')).entries
 
     expect(entry?.title).toBe(first?.value.title.it)
   })
@@ -55,10 +58,10 @@ describe('the stories a bookmark reaches', () => {
     expect(silent.length).toBeGreaterThan(0)
 
     for (const character of silent) {
-      expect(
-        chronicleOf(character, 'en', ep(1200)),
-        character.id,
-      ).toStrictEqual({ mode: 'chronicle', entries: [] })
+      expect(chronicleOf(character, ep(1200)), character.id).toStrictEqual({
+        mode: 'chronicle',
+        entries: [],
+      })
     }
   })
 })

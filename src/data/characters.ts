@@ -1,6 +1,3 @@
-import { byNumber, byValue } from 'sort-es'
-
-import type { BookmarkMode } from '~/lib/progress/episode'
 import type { EntityKind } from '~/lib/view/records'
 
 import { entities, sagas } from './entities'
@@ -115,22 +112,16 @@ export const chart: Entity[] = route.filter(
 const ON_CHART = new Set(chart.map((entity) => entity.id))
 
 /**
- * The chart with this record on it, in the order of the threshold the reader
- * counts in: the chart itself when the record is already drawn, otherwise a
- * copy with the record set in at its place. A character's page shows its
- * route position against this, so an unlisted character still has a place on
- * the chart when the reader is looking at it.
+ * The chart with this record on it, in route order like the chart itself:
+ * the chart when the record is already drawn, otherwise a copy with the
+ * record set in at its place. A character's page shows its route position
+ * against this, reordered in the reader's unit, so an unlisted character
+ * still has a place on the chart when the reader is looking at it.
  */
-export function chartWith(
-  entity: Entity,
-  mode: BookmarkMode = 'episode',
-): Entity[] {
-  const drawn = ON_CHART.has(entity.id)
-  if (drawn && mode === 'episode') {
-    return chart
-  }
-
-  return orderByMode(drawn ? chart : [...chart, entity], mode)
+export function chartWith(entity: Entity): Entity[] {
+  return ON_CHART.has(entity.id) ? chart : (
+      orderByMode([...chart, entity], 'episode')
+    )
 }
 
 const CHARACTER_BY_ID = new Map(characters.map((entity) => [entity.id, entity]))
@@ -209,13 +200,13 @@ export interface RoutePosition {
 /**
  * Where a record falls along a drawn route, and what lies either side of it.
  *
- * `drawn` is a parameter rather than always the default because a page has
- * usually ordered the chart in the reader's unit already, and computing it
- * twice would let the strip and the "waypoint 23 of 66" line disagree.
+ * `drawn` is handed in, already in the reader's unit, rather than worked out
+ * here: the page counts its open records along the same list, and computing
+ * it twice would let the strip and the "waypoint 23 of 66" line disagree.
  */
 export function routePositionOf(
   entity: Entity,
-  drawn: Entity[] = chartWith(entity),
+  drawn: Entity[],
 ): RoutePosition {
   const index = drawn.findIndex((candidate) => candidate.id === entity.id)
 
@@ -227,21 +218,4 @@ export function routePositionOf(
     previous: drawn[index - 1],
     next: drawn[index + 1],
   }
-}
-
-/**
- * The featured characters filed closest to this one, by threshold, this one
- * excluded. Ties go to whoever comes first on the route.
- */
-export function nearbyCharacters(entity: Entity, count: number): Entity[] {
-  return featuredCharacters
-    .filter((candidate) => candidate.id !== entity.id)
-    .toSorted(
-      byValue(
-        (candidate) =>
-          Math.abs(candidate.revealedAtEpisode - entity.revealedAtEpisode),
-        byNumber(),
-      ),
-    )
-    .slice(0, count)
 }
