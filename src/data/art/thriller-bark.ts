@@ -199,27 +199,33 @@ export const thrillerBarkArt = {
     shadow(80, 172, 50),
   ],
 
-  // A surgical tray in 3/4: a scalpel, a curved needle and a long suture
-  // trailing over the rim, the thread in his colour. Chopper names him a
-  // surgical genius at 340, and his maid's stitches are there to see.
+  // His violet feathery cape hung on a peg by its fluffy collar, one side
+  // turned back to show the black lining, hatched, the feathered hem in his
+  // colour; the surgical mask he wears under his chin hangs from the same
+  // peg. He greets the three at his mansion door in both at 340.
   'hogback': [
-    { d: 'M12 112 L100 88 L150 120 L62 146 Z' },
-    { d: 'M12 112 V122 L62 156 L150 130 V120 M62 146 V156' },
-    { d: 'M24 113 L99 93 L138 119 L63 141 Z', role: 'soft' },
+    { d: 'M80 22 V34 M72 34 h16', role: 'ambient' },
+    { d: dots([[80, 22]]) },
+    { d: 'M64 40 C50 70 34 120 24 168 M129 160 C122 118 110 70 96 40' },
+    { d: 'M96 40 C104 76 108 124 106 170' },
     {
-      d: 'M70 154 l6 -6 M84 150 l6 -6 M98 146 l6 -6 M112 142 l6 -6 M126 138 l6 -6 M140 134 l6 -6',
+      d: 'M100 66 l8 -4 M102 84 l10 -5 M104 102 l12 -6 M105 120 l13 -6 M106 138 l14 -6 M106 156 l16 -7',
       role: 'ambient',
     },
     {
-      d: 'M32 118 L82 103 L84 109 L34 124 Z M82 103 L104 96 Q122 94 112 104 L84 109',
-    },
-    { d: 'M42 118 l14 -4.2 M62 112 l14 -4.2 M84 103 l2 6', role: 'soft' },
-    { d: 'M64 134 a13 13 0 1 1 26 -4' },
-    {
-      d: 'M90 130 C98 122 112 120 116 126 C120 134 132 136 140 128 C146 122 154 126 152 136 C150 146 152 156 148 166',
+      d: 'M62 40 q-6 -8 2 -10 q2 -8 10 -4 q4 -6 10 0 q8 -4 10 4 q8 2 2 10 q-16 6 -34 0 Z',
       role: 'accent',
     },
-    shadow(80, 176, 66),
+    {
+      d: 'M24 168 q2 10 10 6 q3 9 11 4 q4 9 11 3 q5 8 12 2 q5 8 12 0 q6 8 12 -2 q6 7 11 -3 q7 6 10 -4 q7 4 8 -6 q8 2 8 -8',
+      role: 'accent',
+    },
+    {
+      d: 'M60 70 C54 96 46 128 42 160 M76 46 C72 90 70 130 68 170',
+      role: 'soft',
+    },
+    { d: 'M76 34 C62 40 58 54 62 60 M40 62 H70 V80 Q55 86 40 80 Z' },
+    { d: 'M41 68 H69 M41 74 H69', role: 'soft' },
   ],
 
   // A stack of serving plates, one more flying off the top and another broken
@@ -385,9 +391,10 @@ export const thrillerBarkArt = {
     shadow(60, 182, 50),
   ],
 
-  // The trophy plaque hung from a nail, a pig's head in it with floppy ears in
-  // his colour and nothing drawn on the face, and the two sabres crossed under
-  // its chin. He hangs on the dining-room wall from 340.
+  // The trophy plaque hung from a nail, a pig's head in it with its ears
+  // folded forward in his colour and the round of the snout, no eyes and no
+  // mouth, and the two sabres crossed under its chin. He hangs on the
+  // dining-room wall from 340.
   'buhichuck': [
     { d: 'M50 40 L80 20 L110 40', role: 'ambient' },
     { d: dots([[80, 20]]) },
@@ -407,10 +414,14 @@ export const thrillerBarkArt = {
       d: 'M52 100 C52 84 64 76 80 76 C96 76 108 84 108 100 C108 114 96 122 80 122 C64 122 52 114 52 100 Z',
     },
     {
-      d: 'M58 86 C50 80 44 72 40 60 C52 60 64 66 72 77 M102 86 C110 80 116 72 120 60 C108 60 96 66 88 77',
+      d: 'M72 77 C62 70 50 68 42 72 C40 82 42 92 48 100 C54 92 58 86 62 82 M88 77 C98 70 110 68 118 72 C120 82 118 92 112 100 C106 92 102 86 98 82',
       role: 'accent',
     },
-    { d: 'M40 60 q4 10 12 16 M120 60 q-4 10 -12 16', role: 'soft' },
+    {
+      d: 'M44 74 C50 78 54 84 56 90 M116 74 C110 78 106 84 104 90',
+      role: 'soft',
+    },
+    { d: ellipse(80, 106, 11, 6.5), role: 'soft' },
     { d: 'M32 184 Q74 168 124 128 M128 184 Q86 168 36 128' },
     { d: 'M26 172 l14 18 M134 172 l-14 18', role: 'soft' },
     { d: 'M32 184 l-8 6 M128 184 l8 6' },
@@ -665,7 +676,7 @@ export const thrillerBarkRedrawn: Redrawings = {
           role: 'soft',
           transform: GUITAR,
         },
-        { d: circle(14, 100, 3), role: 'accent', transform: GUITAR },
+        { d: 'M14 96 q-2 4 0 8', role: 'soft', transform: GUITAR },
         {
           d: 'M26 96 q-3 11 0 24 M33 95 q-3 12 0 26 M40 96 q-3 11 0 24',
           role: 'soft',
