@@ -19,19 +19,21 @@ const MERRY_TILT = 'rotate(-10 80 90)'
 /**
  * Kuma's Bible, closed and stood on end, without the rays on its cover: the
  * book of the first drawing, and the one stood beside the steel plate from
- * 469, which leaves off the last stroke (the page block's hatching).
+ * 469.
  */
-const KUMA_BIBLE: Stroke[] = [
+const KUMA_BIBLE_BODY: Stroke[] = [
   { d: 'M40 62 L104 54 V162 L40 170 Z' },
   { d: 'M40 62 L54 52 L118 44 L104 54 M118 44 V152 L104 162' },
   { d: 'M40 62 q-8 54 0 108' },
   { d: 'M50 61 V168', role: 'soft' },
   { d: 'M47 57 L111 49', role: 'soft' },
-  {
-    d: 'M108 64 l7 -5 M108 84 l7 -5 M108 104 l7 -5 M108 124 l7 -5 M108 144 l7 -5',
-    role: 'ambient',
-  },
 ]
+
+/** The hatching on the Bible's page block, left off the small one at 469. */
+const KUMA_BIBLE_PAGES: Stroke = {
+  d: 'M108 64 l7 -5 M108 84 l7 -5 M108 104 l7 -5 M108 124 l7 -5 M108 144 l7 -5',
+  role: 'ambient',
+}
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -206,7 +208,8 @@ export const skypieaArt = {
   // The paw pressed into a steel plate beside it from 469, in
   // `skypieaRedrawn`.
   'bartholomew-kuma': [
-    ...KUMA_BIBLE,
+    ...KUMA_BIBLE_BODY,
+    KUMA_BIBLE_PAGES,
     {
       d: 'M77 101 L77 86 M81.1 102.3 L89.9 90.2 M83.7 105.8 L97.9 101.2 M83.7 110.2 L97.9 114.8 M81.1 113.7 L89.9 125.8 M77 115 L77 130 M72.9 113.7 L64.1 125.8 M70.3 110.2 L56.1 114.8 M70.3 105.8 L56.1 101.2 M72.9 102.3 L64.1 90.2',
       role: 'accent',
@@ -604,8 +607,8 @@ export const skypieaArt = {
   ],
   // Pierre as he flies in his horse form, side on with no eye drawn: a horse
   // with a bird's wings and a saddle girthed on, spotted all over. He eats
-  // the Horse-Horse Fruit and shows it the day he is met (153). The far wing
-  // and the belly are hatched.
+  // the Horse-Horse Fruit and shows it the day he is met (153). The belly is
+  // hatched.
   'pierre': [
     {
       d: 'M42 106 C60 98 92 98 104 100 C112 90 118 76 124 64 C128 56 136 54 142 58 L154 76 C156 82 150 84 146 82 L134 76 C128 86 124 100 118 112 C110 128 70 132 52 128 C40 124 36 114 42 106 Z',
@@ -617,7 +620,7 @@ export const skypieaArt = {
     },
     { d: 'M58 128 C50 136 42 140 32 138 M48 125 C40 132 30 132 22 128' },
     { d: 'M42 108 C26 106 18 118 6 122 C16 110 24 100 40 102' },
-    { d: 'M104 98 C106 76 114 58 128 44', role: 'ambient' },
+    { d: 'M104 98 C106 76 114 58 128 44', role: 'soft' },
     {
       d: 'M92 100 C80 72 64 50 40 36 C50 36 58 38 64 42 C62 36 64 34 68 34 C74 38 78 42 82 48 C82 40 84 36 88 34 C96 48 104 70 104 98',
     },
@@ -1035,7 +1038,7 @@ export const skypieaRedrawn: Redrawings = {
           d: `${circle(35, 110, 7)} ${circle(49, 100, 7)} ${circle(67, 100, 7)} ${circle(81, 110, 7)}`,
           role: 'accent',
         },
-        ...besideThePlate(KUMA_BIBLE.slice(0, -1)),
+        ...besideThePlate(KUMA_BIBLE_BODY),
         shadow(82, 180, 72),
       ],
     },
