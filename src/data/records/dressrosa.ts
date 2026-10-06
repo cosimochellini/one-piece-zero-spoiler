@@ -457,8 +457,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Lao G', en: 'Lao G' },
       summary: {
-        it: 'Un vecchio curvo che sembra sul punto di cadere a pezzi e che si raddrizza di colpo quando qualcuno mette in dubbio le arti marziali.',
-        en: 'A bent old man who looks about to fall apart, and who snaps upright the moment anybody doubts the martial arts.',
+        it: 'Un vecchio basso e calvo della famiglia Donquijote, con la barba, gli occhi ridotti a due fessure, una tuta blu con una freccia bianca e i guanti bianchi.',
+        en: 'A short, bald old man of the Donquixote family, with a beard, eyes narrowed to slits, a blue jumpsuit with a white arrow and white gloves.',
       },
       visual: { art: 'lao-g', tint: 'green' },
     },
@@ -1646,10 +1646,10 @@ export const dressrosa: Saga = {
       ],
     },
     'lao-g': {
-      role: { it: 'Maestro di arti marziali', en: 'Martial arts master' },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Cammina piegato in due appoggiandosi a un bastone e si lamenta della schiena a ogni passo. Basta però la parola giusta e la sua postura cambia: colpisce con una velocità che non appartiene alla sua età e chiama tutto questo la sua disciplina. Serve la famiglia che comanda l’isola da così tanto tempo che gli altri lo chiamano nonno.',
-        en: 'He walks folded in half over a stick and complains about his back at every step. But the right word changes his posture: he strikes with a speed that does not belong to his years and calls the whole business his discipline. He has served the family that runs the island so long that the others call him grandfather.',
+        it: 'A palazzo gioca a carte con altri della famiglia. Quando Do Flamingo non si trova, pensa alla stanza al quarto piano, poi dice che è uscito di nuovo da solo. Quando i giornali riportano che Do Flamingo ha lasciato la Flotta dei Sette, risponde che la famiglia farà ciò che decide il suo capo. Al colosseo lo schermo lo presenta tra i combattenti della famiglia nel torneo, dopo Dellinger e prima di Machvise.',
+        en: 'At the palace he plays cards with others of the family. When Doflamingo cannot be found, he guesses the room on the fourth floor, then says he has gone out on his own again. When the papers report that Doflamingo has quit the Seven Warlords, he answers that the family does as the Young Master decides. At the colosseum the screen presents him among the family’s fighters in the tournament, after Dellinger and before Machvise.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
