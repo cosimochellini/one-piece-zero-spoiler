@@ -49,8 +49,8 @@ export const dressrosa: Saga = {
       // Rounded up to 626, the chapter that files Fisher Tiger, whom the text names.
       name: { it: 'Koala', en: 'Koala' },
       summary: {
-        it: 'Una bambina liberata dalla schiavitù dai Pirati del Sole, che gli uomini-pesce riportano al suo villaggio con il marchio ancora impresso sulla schiena.',
-        en: 'A little girl freed from slavery by the Sun Pirates, carried home to her village by fish-men with the slave brand still on her back.',
+        it: 'Una bambina fuggita da Mary Geoise quando Fisher Tiger ha liberato gli schiavi, che i Pirati del Sole prendono a bordo per riportarla a casa.',
+        en: 'A little girl who escaped Mary Geoise when Fisher Tiger freed the slaves, and whom the Sun Pirates take aboard to bring home.',
       },
       visual: { art: 'koala', tint: 'orange' },
     },
@@ -214,12 +214,17 @@ export const dressrosa: Saga = {
     {
       id: 'bartolomeo',
       kind: 'character',
-      revealedAtEpisode: 633,
-      revealedAtChapter: 705,
+      // Only a silhouette when Dagama names him at 633, and not fully seen at
+      // 634. He walks into the ring, named and shown, at the end of 635; the
+      // manga shows him only as a shadow in chapter 705 and in full at 706
+      // (#257).
+      revealedAtEpisode: 635,
+      revealedAtChapter: 706,
+      nameSaidAt: 633,
       name: { it: 'Bartolomeo', en: 'Bartolomeo' },
       summary: {
-        it: 'Un pirata con la cresta verde e i modi da teppista, che si iscrive a un torneo nel colosseo di Dressrosa e getta il pubblico nel panico solo salendo sul ring.',
-        en: 'A green-crested pirate with a thug’s manners who enters a tournament in the colosseum of Dressrosa and sends the crowd into a panic just by stepping into the ring.',
+        it: 'Un pirata con la cresta verde, diventato famigerato in un solo anno, che l’annunciatore del colosseo presenta come brutale e folle mentre lui entra nel ring del blocco B e manda tutti all’inferno.',
+        en: 'A green-crested pirate who became infamous in a single year, whom the colosseum’s announcer calls brutal and crazy as he walks into the ring for Block B and tells everyone to go to hell.',
       },
       visual: { art: 'bartolomeo', tint: 'acid' },
     },
@@ -266,8 +271,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 708,
       name: { it: 'Sai', en: 'Sai' },
       summary: {
-        it: 'Un giovane della famiglia Chinjao, una banda del Regno di Kano, che arriva al colosseo con la naginata sulla spalla.',
-        en: 'A young man of the Chinjao family, a gang from the Kano Kingdom, who comes to the colosseum with a naginata on his shoulder.',
+        it: 'Un giovane della famiglia Chinjao, una banda del Regno di Kano, che al colosseo prende le difese di Lucy davanti allo staff e poi si infuria quando Lucy lo ringrazia.',
+        en: 'A young man of the Chinjao family, a gang from the Kano Kingdom, who stands up for Lucy against the colosseum staff, then flies into a rage when Lucy thanks him.',
       },
       visual: { art: 'sai', tint: 'blue' },
     },
@@ -440,8 +445,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Dellinger', en: 'Dellinger' },
       summary: {
-        it: 'Un ragazzino con i tacchi alti e i denti aguzzi, che parla come un bambino capriccioso e combatte come una bestia.',
-        en: 'A boy in high heels with sharp teeth, who talks like a spoilt child and fights like an animal.',
+        it: 'Un ragazzino della famiglia Donquijote con un berretto bianco a corna, che il colosseo mostra sul suo schermo tra i combattenti che affronteranno i vincitori di ogni blocco.',
+        en: 'A boy of the Donquixote family in a white cap with horns, whom the colosseum shows on its screen among the fighters the winner of each block will face.',
       },
       visual: { art: 'dellinger', tint: 'magenta' },
     },
@@ -464,8 +469,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Machvise', en: 'Machvise' },
       summary: {
-        it: 'Un uomo enorme e tondo che salta in aria e ricade sugli avversari facendo pesare il proprio corpo quanto una casa.',
-        en: 'A huge round man who jumps into the air and drops onto his opponents with his body weighing as much as a house.',
+        it: 'Un uomo enorme e tondo della famiglia Donquijote, con un alto berretto rosso a visiera, che il colosseo mostra sul suo schermo tra i combattenti che affronteranno i vincitori di ogni blocco.',
+        en: 'A huge round man of the Donquixote family in a tall red peaked cap, whom the colosseum shows on its screen among the fighters the winner of each block will face.',
       },
       visual: { art: 'machvise', tint: 'ocher' },
     },
@@ -877,31 +882,36 @@ export const dressrosa: Saga = {
         en: 'Child freed from slavery',
       },
       log: {
-        it: 'Fisher Tiger la trova incatenata a Mary Geoise e la porta via insieme agli altri schiavi. Sulla nave dei Pirati del Sole ringrazia tutti e sorride anche quando ha ancora paura, e agli uomini-pesce che la guardano non sfugge il marchio sulla sua schiena. La ciurma fa rotta verso il suo villaggio nel North Blue per riportarla a casa.',
-        en: 'Fisher Tiger finds her chained at Mary Geoise and carries her out along with the other slaves. Aboard the Sun Pirates’ ship she thanks everyone and smiles even while she is still frightened, and the fish-men watching her cannot miss the brand on her back. The crew sets a course for her village in the North Blue to take her home.',
+        it: 'Tre anni dopo essere fuggita da Mary Geoise vive su un’isola lontana da casa, e gli abitanti chiedono ai Pirati del Sole di riportarla dai genitori. A bordo ringrazia Fisher Tiger, sorride sempre e pulisce il ponte senza fermarsi, perché ha paura che la uccidano se smette. Tiger copre il marchio da schiava sulla sua schiena con il simbolo del sole, le dice che può piangere e promette che la porteranno a casa.',
+        en: 'Three years after escaping Mary Geoise she lives on an island far from home, and the islanders ask the Sun Pirates to take her back to her parents. Aboard she thanks Fisher Tiger, keeps smiling and scrubs the deck without a break, because she is afraid they will kill her if she stops. Tiger covers the slave mark on her back with the sun, tells her she may cry and promises they will take her home.',
       },
       affiliation: [
         {
           episode: 541,
           value: {
-            it: 'Schiava liberata, riportata a casa dai Pirati del Sole',
-            en: 'Freed slave, taken home by the Sun Pirates',
+            it: 'Ex schiava, a bordo della nave dei Pirati del Sole',
+            en: 'Former slave, aboard the Sun Pirates’ ship',
           },
         },
         {
-          episode: 654,
+          // Shown grown up and captioned as a revolutionary at 663 (chapter
+          // 731). The officer rank is only in a magazine.
+          episode: 663,
+          chapter: 731,
           value: {
-            it: 'Armata Rivoluzionaria, ufficiale',
-            en: 'Revolutionary Army, officer',
+            it: 'Armata Rivoluzionaria, assistente maestra di karate degli uomini-pesce',
+            en: 'Revolutionary Army, assistant Fish-Man Karate instructor',
           },
         },
       ],
       origin: [
         {
-          episode: 541,
+          // Named, with the caption "THE GRAND LINE - FOOLSHOUT ISLAND", when
+          // the Sun Pirates reach it at 543.
+          episode: 543,
           value: {
-            it: 'Isola di Foolshout, North Blue',
-            en: 'Foolshout Island, North Blue',
+            it: 'Isola di Foolshout, Rotta Maggiore',
+            en: 'Foolshout Island, Grand Line',
           },
         },
       ],
@@ -1160,8 +1170,8 @@ export const dressrosa: Saga = {
     'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
-        it: 'Il pubblico lo fischia e lui risponde con la lingua di fuori. Nel blocco B del torneo nessun colpo lo raggiunge: qualcosa di invisibile li ferma tutti a un palmo da lui. Combatte per il premio del colosseo come tutti gli altri, ma quello che vuole davvero è un’altra cosa, e la tiene per sé.',
-        en: 'The crowd boos him and he answers with his tongue out. In block B of the tournament no blow reaches him: something invisible stops every one a hand’s breadth away. He fights for the colosseum’s prize like everyone else, but what he really wants is something else, and he keeps it to himself.',
+        it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha arrostito dei pirati su uno spiedo e ha diffuso il video, che ha bombardato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
+        en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he roasted pirates on a skewer and shared the video, bombed innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
       },
       affiliation: [
         {
@@ -1274,8 +1284,8 @@ export const dressrosa: Saga = {
         en: 'Young man of the Chinjao family',
       },
       log: {
-        it: 'Porta la naginata di famiglia. Parla poco e si inchina prima di combattere, anche quando l’avversario non se lo merita.',
-        en: 'He carries the family naginata. He says little and bows before a fight, even when his opponent has not earned it.',
+        it: 'Arriva al colosseo con il fratello Boo e con Don Chinjao, con un mantello scuro dal grande colletto bianco a gorgiera. Quando un addetto vuole squalificare Lucy, gli dice che la rissa l’ha cominciata Spartan e che è lui quello da cacciare. Poi Lucy lo ringrazia e lui si infuria, finché Boo non lo trascina via scusandosi: si scalda facilmente.',
+        en: 'He comes to the colosseum with his brother Boo and Don Chinjao, in a dark cape with a great white ruff. When a member of the staff moves to disqualify Lucy, he says Spartan started the fight and is the one to throw out. Then Lucy thanks him and he flies into a rage, until Boo drags him off with an apology: he gets worked up easily.',
       },
       affiliation: [
         {
@@ -1627,8 +1637,8 @@ export const dressrosa: Saga = {
     'dellinger': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Gira per il colosseo annoiato, si lamenta del caldo e chiede quando tocca a lui. Sotto i capelli biondi ha denti da squalo, e quando si arrabbia il suo corpo cambia e non riesce più a fermarsi. Gli altri della famiglia lo trattano come il cucciolo di casa, e lo tengono al guinzaglio finché possono.',
-        en: 'He wanders the colosseum bored, complaining about the heat and asking when his turn comes. Under the blond hair are a shark’s teeth, and when his temper goes his body changes and he cannot stop himself. The rest of the family treat him as the pet of the house and keep him leashed as long as they can.',
+        it: 'Quando il colosseo apre il torneo, l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia Donquijote che affronteranno il vincitore di ogni blocco, dopo Señor Pink e prima di Lao G. Sullo schermo porta un berretto bianco con un corno per lato.',
+        en: 'When the colosseum opens the tournament, the announcer presents him on the screen as one of the four members of the Donquixote family who will face the winner of each block, after Señor Pink and before Lao G. On the screen he wears a white cap with a horn on each side.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
@@ -1649,8 +1659,8 @@ export const dressrosa: Saga = {
     'machvise': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'È largo quanto due uomini e si muove con la lentezza di chi non ha fretta, perché nessuno lo evita quando arriva dall’alto. Aumenta il peso del proprio corpo a piacere e schiaccia chi si trova sotto senza nemmeno colpirlo. È tra i membri della famiglia che sorvegliano il colosseo, e aspetta il suo turno ridendo delle scommesse del pubblico.',
-        en: 'He is as wide as two men and moves like someone in no hurry, because nobody dodges him when he comes down from above. He raises the weight of his own body at will and flattens whatever is underneath without even throwing a punch. He is one of the family members watching over the colosseum, and waits his turn laughing at the crowd’s bets.',
+        it: 'È a palazzo alle spalle di Do Flamingo quando Baby 5 lo attacca, e le dice di calmarsi. Quando Do Flamingo annuncia di aver lasciato la Flotta dei Sette, dice che se la Marina viene ad attaccare vuole combattere anche lui. Al torneo del colosseo l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia che affronteranno il vincitore di ogni blocco.',
+        en: 'He is at the palace behind Doflamingo when Baby 5 attacks him, and tells her to calm down. When Doflamingo announces he has left the Seven Warlords, he says that if the Navy comes to attack, he wants to fight too. At the colosseum tournament the announcer presents him on the screen as one of the four members of the family the winner of each block will face.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
@@ -1872,8 +1882,8 @@ export const dressrosa: Saga = {
         en: 'Emperor of the New World',
       },
       log: {
-        it: 'Arriva dall’alto senza nave e senza avvertimento, e quello che resta della base che ha centrato non è più una base. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. Dicono che si sia buttato dal cielo decine di volte senza morire mai, e che sia il suo modo di passare il tempo.',
-        en: 'He comes down from above with no ship and no warning, and what is left of the base he lands on is no longer a base. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. They say he has thrown himself out of the sky dozens of times without once dying, and that this is how he passes the time.',
+        it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kid aprendo una buca nel terreno e ne risale lamentandosi del mal di testa. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto sette volte, catturato diciotto e condannato a morte quaranta, ma la catena, la lama e la lancia si sono sempre spezzate, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
+        en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it complaining that his head hurts. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated seven times, captured eighteen times and sentenced to death forty times, but the chain, the blade and the spear always broke, and nobody has managed to kill him, not even himself.',
       },
       status: [{ episode: 739, value: 'alive' }],
       affiliation: [
