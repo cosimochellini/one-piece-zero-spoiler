@@ -445,6 +445,8 @@ describe('the slice of the archive a page is given', () => {
     ])
   })
 
+  // Builds the home page for all 2,600 bookmarks, which is CPU-bound: about
+  // 0.4s alone under coverage, but past the 5s default on a loaded machine.
   it('names only the leads of the arc on every bookmark', () => {
     // An arc the home page reads stories from without a list of leads would
     // leave the section empty rather than fail, so it is caught here too.
@@ -465,7 +467,7 @@ describe('the slice of the archive a page is given', () => {
 
     expect(strays).toStrictEqual([])
     expect([...unlisted]).toStrictEqual([])
-  })
+  }, 15_000)
 
   it('carries the home page in the locale the page asked for', () => {
     const en: HomeView = homePage(ep(650), 'en')
