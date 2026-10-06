@@ -6,7 +6,6 @@ import {
   FLAME_FLAME,
   FLOWER_FLOWER,
   GUM_GUM,
-  HUMAN_HUMAN,
   OP_OP,
   OP_OP_HEART,
   OX_OX_GIRAFFE,
@@ -30,7 +29,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Twelve of them are drawn by hand and name their drawing; the rest name the
+ * Eleven of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -98,7 +97,13 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'human-human-fruit': HUMAN_HUMAN,
+  'human-human-fruit': fruit({
+    body: 'round',
+    grain: 5,
+    leaf: 'right',
+    stem: 'straight',
+    swirl: 'spiral',
+  }),
   'bird-bird-fruit-model-falcon': fruit({
     body: 'star',
     grain: 5,

@@ -168,21 +168,6 @@ export const FLAME_FLAME: Stroke[] = [
   shadowUnder(1),
 ]
 
-/** A ring broken open around a figure standing in it. No face, ever. */
-export const HUMAN_HUMAN: Stroke[] = [
-  { d: lobed('round', RX, RY) },
-  { d: ring(80, 112, 28), role: 'accent' },
-  {
-    d: [
-      ring(80, 92, 7),
-      'M80 99 L80 124',
-      'M80 106 L66 116 M80 106 L94 116',
-      'M80 124 L70 140 M80 124 L90 140',
-    ].join(' '),
-  },
-  ...furniture('straight', 'right'),
-]
-
 /** Six petals turned about the middle: the mark as a rosette. */
 export const FLOWER_FLOWER: Stroke[] = [
   { d: lobed('round', RX, RY) },

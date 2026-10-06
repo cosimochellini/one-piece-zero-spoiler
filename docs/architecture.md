@@ -87,7 +87,7 @@ written by hand.
 The devil fruits are generated rather than drawn one by one. More than a hundred
 drawings of the same kind of object have to look like one set and still be told
 apart, so each is composed from a seed written next to its id: one of six
-silhouettes, one of four marks, a stalk and a leaf. The twelve fruits a reader
+silhouettes, one of four marks, a stalk and a leaf. The eleven fruits a reader
 already knows well are drawn by hand and override their generated version, and
 three more are drawn as the real fruit only from the episode that shows it. The
 sizing is guaranteed rather than hoped for: a seed cannot set a radius, so the
