@@ -17,10 +17,6 @@ import type { Drawings, Redrawings } from './stroke'
  */
 const JORA_CARD_EDGE = 'M82 150 V70 h17'
 
-/** One of the zigzag paper strips hanging from the front of Kaido's rope belt. */
-const KAIDO_SHIDE =
-  'M62 140 H72 L67 152 H77 L72 164 H82 L76 182 H66 L71 168 H61 L66 156 H56 Z'
-
 /** Gladius's coat laid flat, turned a little on the floor beside his hat. */
 const GLADIUS_COAT = 'translate(-12 -4) rotate(-14 70 100)'
 
@@ -902,31 +898,20 @@ export const dressrosaArt = {
     shadow(80, 184, 50),
   ],
 
-  // His belt in three-quarters: the thick ring of twisted rope, its strands
-  // slanting round it and its near side hatched, and the two zigzag paper
-  // strips tied to its front, hanging below it. He wears it when he climbs out of the hole he made in the
-  // Kid Pirates' hideout in episode 739. No club and no gourd: both come
-  // later.
+  // A spiked club and a sake gourd set down beside it.
   'kaido': [
-    { d: ellipse(80, 100, 62, 26) },
-    { d: ellipse(80, 99, 28, 8) },
-    { d: 'M18 100 C18 156.6 142 156.6 142 100' },
+    { d: 'M22 150 L60 112' },
+    { d: 'M56 108 L120 44 a10 10 0 0 1 14 14 L70 122 a10 10 0 0 1 -14 -14 z' },
     {
-      d: 'M110.8 100 L135.3 108.5 M109.3 102.7 L126.4 115.2 M50.7 102.7 L21.1 99.1 M49.2 100 L24.7 91.5 M50.7 97.3 L33.6 84.8 M55.1 94.8 L47.1 79.5 M61.9 92.9 L63.8 76.3 M70.5 91.6 L82.1 75.3 M80 91.2 L100.2 76.8 M89.5 91.6 L116.3 80.6 M98.1 92.9 L128.9 86.2 M104.9 94.8 L136.6 93.2 M109.3 97.3 L138.9 100.9',
-      role: 'soft',
+      d: 'M78 96 l-6 -12 M92 82 l-6 -12 M106 68 l-6 -12 M86 112 l12 6 M100 98 l12 6 M114 84 l12 6',
+      role: 'accent',
     },
+    { d: 'M124 40 l8 -8', role: 'accent' },
     {
-      d: 'M25 111.4 Q32 122.2 35 129.1 M35 115.9 Q42 128.4 45 137 M45 118.8 Q52 132.4 55 142.1 M55 120.6 Q62 135 65 145.4 M65 121.7 Q72 136.4 75 147.2 M75 122 Q82 136.9 85 147.8 M85 121.7 Q92 136.4 95 147.2 M95 120.6 Q102 135 105 145.4 M105 118.8 Q112 132.4 115 142.1 M115 115.9 Q122 128.4 125 137 M125 111.4 Q132 122.2 135 129.1',
-      role: 'soft',
+      d: 'M40 158 a8 8 0 1 0 12 0 c6 6 8 12 8 20 a14 14 0 0 1 -28 0 c0 -8 2 -14 8 -20 z',
     },
-    {
-      d: 'M28 125.5 l5 -6 M41 136.5 l5 -6 M54 142.6 l5 -6 M67 145.9 l5 -6 M80 146.9 l5 -6 M93 145.9 l5 -6 M106 142.6 l5 -6 M119 136.5 l5 -6 M132 125.5 l5 -6',
-      role: 'ambient',
-    },
-    { d: KAIDO_SHIDE, role: 'accent', transform: 'translate(0 12)' },
-    { d: KAIDO_SHIDE, role: 'accent', transform: 'translate(34 10)' },
-    { d: 'M67 140 V152 M101 138 V150', role: 'soft' },
-    shadow(80, 150, 68),
+    { d: 'M42 154 h8 v-8 h-8 z' },
+    shadow(80, 194, 48),
   ],
   // A wrapped candy, twisted at both ends, with smoke curling off it.
   'mocha': [
