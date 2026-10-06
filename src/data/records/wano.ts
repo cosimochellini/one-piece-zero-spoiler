@@ -345,8 +345,8 @@ export const wano: Saga = {
       revealedAtChapter: 980,
       name: { it: 'Who’s-Who', en: 'Who’s-Who' },
       summary: {
-        it: 'Un uomo altissimo dei Tobiroppo con una maschera rossa con le corna e una sigaretta in bocca, che dà dei mocciosi a Ulti e Page One quando si mettono a litigare.',
-        en: 'A very tall man of the Tobiroppo in a red horned mask, a cigarette in his mouth, who calls Ulti and Page One brats when they start arguing.',
+        it: 'Un uomo altissimo dei Tobiroppo con una maschera rossa con le corna e una sigaretta in bocca, che dice a Ulti e Page One di stare zitti quando si mettono a litigare.',
+        en: 'A very tall man of the Tobiroppo in a red horned mask, a cigarette in his mouth, who tells Ulti and Page One to be quiet when they start arguing.',
       },
       visual: { art: 'whos-who', tint: 'sand' },
     },
@@ -357,8 +357,8 @@ export const wano: Saga = {
       revealedAtChapter: 980,
       name: { it: 'Black Maria', en: 'Black Maria' },
       summary: {
-        it: 'Una donna altissima dei Tobiroppo in kimono nero con una lunga pipa in mano, che trova adorabile il caratteraccio di Ulti.',
-        en: 'An enormously tall woman of the Tobiroppo in a black kimono, a long pipe in her hand, who finds Ulti’s temper cute.',
+        it: 'Una donna altissima dei Tobiroppo in kimono nero con una lunga pipa in mano, a cui piace che Ulti non si tiri mai indietro.',
+        en: 'An enormously tall woman of the Tobiroppo in a black kimono, a long pipe in her hand, who likes that Ulti never backs down.',
       },
       visual: { art: 'black-maria', tint: 'magenta' },
     },
@@ -369,8 +369,8 @@ export const wano: Saga = {
       revealedAtChapter: 980,
       name: { it: 'Sasaki', en: 'Sasaki' },
       summary: {
-        it: 'Un uomo dei Tobiroppo con un berretto militare con le corna e un mantello sulle spalle, che vorrebbe Drake e Page One fuori dalla corsa per il posto di Queen.',
-        en: 'A man of the Tobiroppo in a horned military cap and a cloak slung over his shoulders, who would like Drake and Page One to stay out of the race to replace Queen.',
+        it: 'Un uomo dei Tobiroppo con un berretto militare con le corna e un mantello sulle spalle, che punzecchia Page One mentre i sei aspettano di essere chiamati.',
+        en: 'A man of the Tobiroppo in a horned military cap and a cloak slung over his shoulders, who needles Page One while the six wait to be called.',
       },
       visual: { art: 'sasaki', tint: 'azure' },
     },
@@ -1312,8 +1312,8 @@ export const wano: Saga = {
     'ulti': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È una dei sei ufficiali di punta dell’Imperatore, e suo fratello minore Page One è un altro. Mentre i sei aspettano di essere chiamati, minaccia Sasaki perché prende in giro suo fratello, poi se la prende con Page One quando lui le dice di smettere. Quando chiede se Kaido sia stupido, qualcuno le dice di non prendersela con lui.',
-        en: 'She is one of the Emperor’s six leading officers, and her younger brother Page One is another. While the six wait to be called, she threatens Sasaki for teasing her brother, then turns on Page One himself when he tells her to stop. When she asks whether Kaido is stupid, she is told not to snap at him.',
+        it: 'È una dei sei ufficiali di punta dell’Imperatore, e Page One, che la chiama sorella maggiore, è un altro. Mentre i sei aspettano di essere chiamati, litiga con il fratello e minaccia Sasaki quando lui lo punzecchia. Quando chiede se Kaido sia stupido, gli altri la rimproverano.',
+        en: 'She is one of the Emperor’s six leading officers, and Page One, who calls her his elder sister, is another. While the six wait to be called, she quarrels with her brother and threatens Sasaki when he needles him. When she asks whether Kaido is stupid, the others turn on her.',
       },
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
@@ -1351,8 +1351,8 @@ export const wano: Saga = {
     'black-maria': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È una dei sei ufficiali di punta dell’Imperatore, in kimono nero con una fascia a fiori, le corna in testa e due spade tra i capelli. Mentre i sei aspettano di essere chiamati, dice che Ulti, che se la prende con tutti, è la sua preferita.',
-        en: 'She is one of the Emperor’s six leading officers, in a black kimono with a flowered sash, horns on her head and swords pinned in her hair. While the six wait to be called, she says that Ulti, who snaps at everyone, is her favourite.',
+        it: 'È una dei sei ufficiali di punta dell’Imperatore, in kimono nero con una fascia a fiori, le corna in testa e due spade tra i capelli. Mentre i sei aspettano di essere chiamati, dice che Ulti le piace perché non si tira mai indietro.',
+        en: 'She is one of the Emperor’s six leading officers, in a black kimono with a flowered sash, horns on her head and swords pinned in her hair. While the six wait to be called, she says she likes Ulti because she never backs down.',
       },
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
@@ -1366,8 +1366,8 @@ export const wano: Saga = {
     'sasaki': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Quando i sei parlano di chi prenderebbe il posto di Queen, è contento che Drake non voglia saperne, e dice a Page One di farsi da parte anche lui, visto che si è lasciato scappare un uomo. Ulti gli dice di lasciare in pace suo fratello.',
-        en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. When the six talk about who would take Queen’s place, he is glad that Drake wants no part of it, and tells Page One he should drop out too, since he let a man get away. Ulti tells him to leave her brother alone.',
+        it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Mentre i sei aspettano di essere chiamati, punzecchia Page One, e Ulti gli dice di lasciare in pace suo fratello.',
+        en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. While the six wait to be called, he needles Page One, and Ulti tells him to leave her brother alone.',
       },
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [

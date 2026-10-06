@@ -1531,8 +1531,8 @@ export const dressrosa: Saga = {
     'sugar': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Siede accanto a Do Flamingo fuori dal palazzo e mangia acini d’uva dalle dita mentre Baby 5 lo attacca. Più tardi è lei a dire a Jora che lui non è nella sua stanza.',
-        en: 'She sits beside Doflamingo outside the palace and eats grapes off her fingers while Baby 5 attacks him. Later she is the one who tells Jora that he is not in his room.',
+        it: 'Siede accanto a Do Flamingo fuori dal palazzo e mangia acini d’uva dalle dita mentre Baby 5 lo attacca. Quando lui lascia il palazzo, va a cercarlo e dice a Lao G che la sua stanza è vuota e la finestra spalancata.',
+        en: 'She sits beside Doflamingo outside the palace and eats grapes off her fingers while Baby 5 attacks him. When he leaves the palace, she goes looking for him and tells Lao G that his room is empty and the window wide open.',
       },
       affiliation: [
         { episode: 641, value: DONQUIXOTE_PIRATES },
@@ -1645,8 +1645,8 @@ export const dressrosa: Saga = {
     'jora': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Gioca a carte con Lao G a palazzo, e quando Do Flamingo se ne va senza dire niente indovina dove è andato. Quando Baby 5 accetta una proposta di Trebol, la cosa la irrita.',
-        en: 'She plays cards with Lao G at the palace, and when Doflamingo leaves without a word, she guesses where he has gone. When Baby 5 accepts a proposal from Trebol, it annoys her.',
+        it: 'Gioca a carte con Lao G a palazzo. Quando Trebol chiede per scherzo a Baby 5 di sposarlo e lei si domanda se lui abbia davvero bisogno di lei, i due giocatori di carte le dicono di lasciar perdere.',
+        en: 'She plays cards with Lao G at the palace. When Trebol proposes to Baby 5 as a joke and she wonders whether he really needs her, the two card players tell her to leave it alone.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
