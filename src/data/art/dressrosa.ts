@@ -709,18 +709,23 @@ export const dressrosaArt = {
     shadow(76, 158, 56),
   ],
 
-  // A martial arts belt, knotted, with the ends hanging down.
+  // His belt, seen from above as a loop, with the square buckle at the
+  // front. He wears it over the blue jumpsuit from his first scene in
+  // episode 608. The letter on the buckle is left out.
   'lao-g': [
-    { d: 'M20 96 h120 v18 h-120 z' },
-    { d: 'M62 88 h36 v34 h-36 z', role: 'accent' },
+    { d: 'M20 100 C40 116 120 116 140 100 L140 118 C120 134 40 134 20 118 Z' },
+    { d: 'M20 100 C40 84 120 84 140 100' },
     {
-      d: 'M62 96 C74 104 86 104 98 96 M62 114 C74 106 86 106 98 114',
-      role: 'accent',
+      d: 'M40 93 L38 104 M54 90 L52 102 M68 88.5 L67 101 M92 88.5 L93 101 M106 90 L108 102 M120 93 L122 104',
+      role: 'ambient',
     },
-    { d: 'M68 122 L60 176 L76 178 L82 122' },
-    { d: 'M92 122 L96 172 L112 170 L104 122' },
-    { d: 'M20 104 h42 M98 104 h42', role: 'soft' },
-    shadow(80, 188, 44),
+    { d: 'M64 104 h32 v34 h-32 z', role: 'accent' },
+    { d: 'M70 110 h20 v22 h-20 z M80 112 v18', role: 'soft' },
+    {
+      d: 'M24 109 C36 117 50 120 64 121 M96 121 C110 120 124 117 136 109',
+      role: 'soft',
+    },
+    shadow(80, 150, 50),
   ],
 
   // His tall red peaked cap in three-quarters: the flat top tilted toward
