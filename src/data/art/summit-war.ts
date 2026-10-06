@@ -372,28 +372,26 @@ export const summitWarArt = {
     shadow(80, 192, 44),
   ],
 
-  // A tarot card on the tip of a straw stalk, seen at an angle so its edge
-  // shows, its face left blank; two more cards on stalks bending out of the
-  // same tied sheaf. He reads them at Sabaody from episode 392.
+  // A tarot card stood on its edge at an angle, so its thickness shows, its
+  // face left blank; three more lying face down in front of it, their dark
+  // backs hatched. He turns them over to read the odds at Sabaody in
+  // episode 392.
   'basil-hawkins': [
+    { d: 'M58 44 L100 38 L104 118 L62 124 Z', role: 'accent' },
+    { d: 'M100 38 L103 40 L107 119 L104 118', role: 'accent' },
+    { d: 'M65 52 L95 48 L98 111 L68 115 Z', role: 'soft' },
+    shadow(84, 128, 28),
     {
-      d: 'M66 180 L74 142 M73 181 L77 142 M80 182 V142 M87 181 L83 142 M94 180 L86 142',
+      d: 'M10 152 L42 144 L52 160 L20 168 Z M108 160 L140 152 L150 168 L118 176 Z M50 174 L82 166 L92 182 L60 190 Z',
+    },
+    {
+      d: 'M18 156 L44 150 M22 162 L48 156 M116 164 L142 158 M120 170 L146 164 M58 178 L84 172 M62 184 L88 178',
+      role: 'ambient',
+    },
+    {
+      d: 'M10 152 v3 L20 171 L52 163 v-3 M108 160 v3 L118 179 L150 171 v-3',
       role: 'soft',
     },
-    { d: ellipse(80, 158, 11, 3.5) },
-    { d: 'M80 142 V88 M80 88 l-5 -7 M80 88 l5 -7' },
-    { d: 'M76 142 C70 120 56 108 44 102 M84 142 C90 122 104 110 118 106' },
-    { d: 'M56 24 L100 18 L104 80 L60 86 Z', role: 'accent' },
-    { d: 'M100 18 L103 20 L107 81 L104 80', role: 'accent' },
-    { d: 'M63 32 L95 28 L98 73 L66 77 Z', role: 'soft' },
-    {
-      d: 'M24 82 L44 78 L50 104 L30 108 Z M116 90 L136 94 L130 120 L110 116 Z',
-    },
-    {
-      d: 'M28 87 L41 84 L45 100 L32 103 Z M119 96 L131 99 L127 114 L115 111 Z',
-      role: 'soft',
-    },
-    shadow(80, 188, 34),
   ],
 
   // His cocked hat side on, the brim sweeping to a point at the front, the
