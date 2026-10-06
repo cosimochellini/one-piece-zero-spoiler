@@ -555,8 +555,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Mister 1', en: 'Mr. 1' },
       summary: {
-        it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso che taglia in due un muro di pietra con una lama uscita dal suo corpo.',
-        en: 'The highest-ranked agent of Baroque Works, a silent man who cuts a stone wall in two with a blade that comes out of his own body.',
+        it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso che taglia in due un muro con una lama uscita dal suo corpo.',
+        en: 'The highest-ranked agent of Baroque Works, a silent man who cuts a wall in two with a blade that comes out of his own body.',
       },
       visual: { art: 'mr-1', tint: 'ivory' },
     },
@@ -1226,8 +1226,8 @@ export const alabasta: Saga = {
         en: 'Leader of the rebel army',
       },
       log: {
-        it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro. Porta una sciarpa al collo.',
-        en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye. He wears a scarf round his neck.',
+        it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro.',
+        en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye.',
       },
       affiliation: [
         {
@@ -1286,8 +1286,8 @@ export const alabasta: Saga = {
     'chaka': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
-        it: 'Indossa una lunga tunica aperta sul petto e un mantello sulle spalle, e porta un’enorme spada al fianco. Quando i pirati assaltano una città di porto parte con un’altra guardia reale, ma arrivano a combattimento finito.',
-        en: 'He wears a long tunic open over his chest and a coat across his shoulders like a cape, and carries a massive sword at his hip. When pirates raid a port town he sets out with another royal guard, and the fight is over before they arrive.',
+        it: 'Indossa una lunga tunica aperta sul petto e un mantello sulle spalle, e porta un’enorme spada al fianco. Con un’altra guardia reale accorre in una città di porto assaltata dai pirati, e la trova con il combattimento già finito.',
+        en: 'He wears a long tunic open over his chest and a coat across his shoulders like a cape, and carries a massive sword at his hip. He and another royal guard hurry to a port town under attack by pirates, and find the fight already over.',
       },
       affiliation: [
         {
