@@ -52,7 +52,7 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 | Arcs, places, ships | 34 · 39 · 2                                           |
 | Saga modules        | 12, plus one for the devil fruits                     |
 | Line drawings       | 737, one per record, plus 36 redrawings of 31 records |
-| Chronicle stories   | 756, for 185 characters                               |
+| Chronicle stories   | 755, for 185 characters                               |
 | Test files          | 75                                                    |
 | Test cases          | 686                                                   |
 | Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions  |
