@@ -1080,8 +1080,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Kid Pirates',
       },
       log: {
-        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody litiga con Scratchmen Apoo, un altro capitano, in un bar.',
-        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he quarrels with Scratchmen Apoo, another captain, in a bar.',
+        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si scontra con Scratchmen Apoo, un altro capitano.',
+        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he fights Scratchmen Apoo, another captain.',
       },
       affiliation: [
         {

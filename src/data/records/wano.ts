@@ -1312,8 +1312,8 @@ export const wano: Saga = {
     'ulti': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È una dei sei ufficiali di punta dell’Imperatore, e Page One, che la chiama sorella maggiore, è un altro. Mentre i sei aspettano di essere chiamati, litiga con il fratello e minaccia Sasaki quando lui lo punzecchia. Quando chiede se Kaido sia stupido, gli altri la rimproverano.',
-        en: 'She is one of the Emperor’s six leading officers, and Page One, who calls her his elder sister, is another. While the six wait to be called, she quarrels with her brother and threatens Sasaki when he needles him. When she asks whether Kaido is stupid, the others turn on her.',
+        it: 'È una dei sei ufficiali di punta dell’Imperatore, e Page One, che la chiama sorella maggiore, è un altro. Mentre i sei aspettano di essere chiamati, litiga con il fratello e dice a Sasaki di smetterla di scherzare quando lui lo punzecchia. Quando chiede se Kaido sia stupido, gli altri la rimproverano.',
+        en: 'She is one of the Emperor’s six leading officers, and Page One, who calls her his elder sister, is another. While the six wait to be called, she quarrels with her brother and tells Sasaki to stop messing around when he needles him. When she asks whether Kaido is stupid, the others turn on her.',
       },
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
@@ -1366,8 +1366,8 @@ export const wano: Saga = {
     'sasaki': {
       role: TOBIROPPO_ROLE,
       log: {
-        it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Mentre i sei aspettano di essere chiamati, punzecchia Page One, e Ulti gli dice di lasciare in pace suo fratello.',
-        en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. While the six wait to be called, he needles Page One, and Ulti tells him to leave her brother alone.',
+        it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Mentre i sei aspettano di essere chiamati, punzecchia Page One, e Ulti gli dice di smetterla di scherzare.',
+        en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. While the six wait to be called, he needles Page One, and Ulti tells him to stop messing around.',
       },
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [

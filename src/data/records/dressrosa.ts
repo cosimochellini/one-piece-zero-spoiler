@@ -1645,8 +1645,8 @@ export const dressrosa: Saga = {
     'jora': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Gioca a carte con Lao G a palazzo. Quando Trebol chiede per scherzo a Baby 5 di sposarlo e lei si domanda se lui abbia davvero bisogno di lei, i due giocatori di carte le dicono di lasciar perdere.',
-        en: 'She plays cards with Lao G at the palace. When Trebol proposes to Baby 5 as a joke and she wonders whether he really needs her, the two card players tell her to leave it alone.',
+        it: 'Gioca a carte con Lao G a palazzo. Quando Trebol chiede per scherzo a Baby 5 di sposarlo e lei si domanda se lui abbia davvero bisogno di lei, lei e Lao G le dicono di lasciar perdere.',
+        en: 'She plays cards with Lao G at the palace. When Trebol proposes to Baby 5 as a joke and she wonders whether he really needs her, she and Lao G tell her to leave it alone.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
