@@ -1961,8 +1961,8 @@ export const summitWar: Saga = {
       chronicle: summitWarChronicles.sakazuki,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'Siede ai piedi del patibolo, fra gli altri due ammiragli, con il viso nascosto sotto la visiera del cappello. Quando Jozu scaglia contro i marine un enorme blocco di ghiaccio, si alza dalla sedia, trasforma il braccio in magma e manda in pezzi il blocco.',
-        en: 'He sits at the foot of the scaffold between the other two admirals, his face hidden under the peak of his cap. When Jozu hurls a huge block of ice at the Marines, he gets up from his chair, turns his arm to magma and breaks the block apart.',
+        it: 'Siede con gli altri ammiragli, con il viso nascosto sotto la visiera del cappello. Quando Jozu scaglia contro i marine un enorme blocco di ghiaccio, si alza dalla sedia, trasforma il braccio in magma e distrugge il blocco.',
+        en: 'He sits with the other admirals, his face hidden under the peak of his cap. When Jozu hurls a huge block of ice at the Marines, he gets up from his chair, turns his arm to magma and destroys the block.',
       },
       status: [{ episode: 463, value: 'alive' }],
       affiliation: [
