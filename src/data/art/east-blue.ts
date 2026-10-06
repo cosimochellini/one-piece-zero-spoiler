@@ -53,21 +53,33 @@ const SANJI_FLAME: Stroke[] = [
   { d: 'M118 58 c-4 -8 2 -12 4 -18 c2 8 6 10 4 18', role: 'accent' },
 ]
 
+/** The coastline and island drawn on Nami's chart. */
+const NAMI_COAST =
+  'M22 140 C36 128 48 144 64 132 C80 120 92 136 112 124 C122 118 130 122 136 128 M104 150 q-2 -7 6 -9 q6 -4 12 1 q6 4 2 9 q-10 4 -20 -1 Z'
+
 /**
- * Nami's stolen chart rolled up and tied: the roll with both ends, the paper
- * spiralling at the right one, the string round its middle and the underside
- * hatched. The first drawing unrolls it towards the reader; at 878 it lies
- * rolled at the foot of the Clima-Tact.
+ * Nami's stolen chart, half unrolled towards the reader: the tied roll with
+ * the paper spiralling at its right end, the string trailing across the
+ * sheet, the sheet's edges and curling front; then the roll's hatched
+ * underside and two meridians, the last two strokes, which the small copy at
+ * 878 leaves off.
  */
 const NAMI_CHART: Stroke[] = [
   { d: 'M28 84 H130 M28 104 H130' },
   { d: `${ellipse(28, 94, 5, 10)} ${ellipse(130, 94, 5, 10)}` },
-  { d: 'M129 94 a1.5 3 0 1 1 2.5 0 a3 6 0 1 1 -5 0', role: 'soft' },
+  {
+    d: 'M130.5 94 a1 2 0 1 0 -1.5 -1 a2.4 4.4 0 1 1 -1 4.6 a3.6 6.8 0 1 0 1.6 -9.6',
+    role: 'soft',
+  },
   { d: 'M74 84 Q71 94 74 104 M80 84 Q77 94 80 104', role: 'soft' },
+  { d: 'M77 104 C70 116 86 122 80 138', role: 'soft' },
+  { d: 'M30 104 L14 158 M128 104 L146 158' },
+  { d: 'M14 158 Q12 166 20 166 H140 Q148 166 146 158', role: 'soft' },
   {
     d: 'M40 101 l2 3 M54 101 l2 3 M94 101 l2 3 M108 101 l2 3 M122 101 l2 3',
     role: 'ambient',
   },
+  { d: 'M60 104 L56 158 M98 104 L102 158', role: 'soft', dashed: true },
 ]
 
 /** The drawings of the records filed in the east blue stretch of the route. */
@@ -411,21 +423,13 @@ export const eastBlueArt = {
     shadow(76, 168, 30),
   ],
 
-  // The sea chart she ran off with, half unrolled towards the reader: the
-  // tied roll at the back, the sheet's edges and its curling front, two
-  // meridians and a coastline with an island in orange. She has just stolen
-  // it from Buggy in episode 5. The Clima-Tact with Zeus stands over the
-  // rolled chart from 878, in `eastBlueRedrawn`.
+  // The sea chart she ran off with, half unrolled towards the reader, its
+  // coastline and island in orange. She has just stolen it from Buggy in
+  // episode 5. The Clima-Tact with Zeus stands over a small copy of the chart
+  // from 878, in `eastBlueRedrawn`.
   'nami': [
     ...NAMI_CHART,
-    { d: 'M30 104 L14 158 M128 104 L146 158' },
-    { d: 'M14 158 Q12 166 20 166 H140 Q148 166 146 158', role: 'soft' },
-    { d: 'M60 104 L56 158 M98 104 L102 158', role: 'soft', dashed: true },
-    {
-      d: 'M22 140 C36 128 48 144 64 132 C80 120 92 136 112 124 C122 118 130 122 136 128 M104 150 q-2 -7 6 -9 q6 -4 12 1 q6 4 2 9 q-10 4 -20 -1 Z',
-      role: 'accent',
-    },
-    { d: 'M77 104 C70 116 86 122 80 138', role: 'soft' },
+    { d: NAMI_COAST, role: 'accent' },
     shadow(80, 176, 62),
   ],
 
@@ -1095,16 +1099,11 @@ export const eastBlueArt = {
     shadow(70, 186, 48),
   ],
 
-  // The top of his head breaking the sea, one patch of his hide on it, his
-  // two horns curving up in his colour, and the tow line running taut to the
-  // small boat he is made to pull to Arlong Park once Luffy and Sanji have
-  // beaten him (ep. 32).
+  // The top of his head breaking the sea, his two horns curving up in his
+  // colour, and the tow line running taut to the small boat he is made to
+  // pull to Arlong Park once Luffy and Sanji have beaten him (ep. 32).
   'momoo': [
     { d: 'M72 158 C72 136 86 124 102 124 C118 124 132 136 132 158' },
-    {
-      d: 'M112 134 C118 128 128 134 130 144 C131 150 128 156 124 158 C120 154 122 148 116 146 C110 144 108 138 112 134 Z',
-      role: 'soft',
-    },
     { d: 'M82 132 C70 128 62 116 62 98 C68 110 76 118 88 126', role: 'accent' },
     {
       d: 'M122 132 C134 128 142 116 142 98 C136 110 128 118 116 126',
@@ -1222,9 +1221,12 @@ const CROWN_TILT = 'rotate(-13 70 91.5)'
 /** Koby's bandanna, drawn at ground size and lifted, larger, over the bucket. */
 const BANDANNA_LIFT = 'translate(-1 -120) scale(1.35)'
 
-/** Nami's rolled chart, drawn at full size and set down, smaller, at the staff's foot. */
-const CHART_AT_FOOT = 'translate(82 133) scale(0.5)'
-const ROLLED_CHART = NAMI_CHART.map((s) => ({ ...s, transform: CHART_AT_FOOT }))
+/** Nami's chart, drawn at full size and set down, smaller, at the staff's foot. */
+const CHART_AT_FOOT = 'translate(90 113) scale(0.42)'
+const SMALL_CHART: Stroke[] = [
+  ...NAMI_CHART.slice(0, -2),
+  { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
+].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
@@ -1369,7 +1371,10 @@ export const eastBlueRedrawn: Redrawings = {
   // The Sorcery Clima-Tact leant across the box from the ground, its round
   // knobs at both ends, collars banding the grip and both necks, the far side
   // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
-  // the one mark in her colour, and her chart rolled up at the foot. Zeus
+  // the one mark in her colour, and a small copy of her first drawing's chart
+  // at the foot. The chart is not a prop of the scene: it is her emblem as
+  // navigator and cartographer, whose dream is to draw a map of the world,
+  // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
   // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
   'nami': [
     {
@@ -1400,7 +1405,7 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'soft',
         },
         { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
-        ...ROLLED_CHART,
+        ...SMALL_CHART,
         shadow(80, 188, 56),
       ],
     },
