@@ -1,11 +1,4 @@
-import {
-  circle,
-  dots,
-  ellipse,
-  polygon,
-  SEA,
-  shadow,
-} from '~/lib/svg/primitives'
+import { circle, dots, ellipse, house, SEA, shadow } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
@@ -19,6 +12,28 @@ const SENGOKU_GOAT: Stroke[] = [
   { d: 'M146 100 q10 -10 4 -20', role: 'soft' },
   { d: 'M6 184 H154', role: 'ambient', dashed: true },
 ]
+
+/** The Going Merry's tilt as the Knock Up Stream lifts her bow first. */
+const MERRY_TILT = 'rotate(-10 80 90)'
+
+/**
+ * Kuma's Bible, closed and stood on end, without the rays on its cover: the
+ * book of the first drawing, and the one stood beside the steel plate from
+ * 469.
+ */
+const KUMA_BIBLE_BODY: Stroke[] = [
+  { d: 'M40 62 L104 54 V162 L40 170 Z' },
+  { d: 'M40 62 L54 52 L118 44 L104 54 M118 44 V152 L104 162' },
+  { d: 'M40 62 q-8 54 0 108' },
+  { d: 'M50 61 V168', role: 'soft' },
+  { d: 'M47 57 L111 49', role: 'soft' },
+]
+
+/** The hatching on the Bible's page block, left off the small one at 469. */
+const KUMA_BIBLE_PAGES: Stroke = {
+  d: 'M108 64 l7 -5 M108 84 l7 -5 M108 104 l7 -5 M108 124 l7 -5 M108 144 l7 -5',
+  role: 'ambient',
+}
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -39,19 +54,44 @@ export const skypieaArt = {
     shadow(80, 176, 36),
   ],
 
-  // An island resting on a cloud, a giant beanstalk climbing to it.
+  // The Going Merry thrown up on a column of sea water toward the cloud bank,
+  // the spray breaking around her hull and a wing of her flying model out to
+  // the side: the Knock Up Stream fires the ship into the sky at 152.
   'skypiea': [
     {
-      d: 'M30 120 q-14 0 -10 -14 q0 -14 16 -12 q4 -18 24 -14 q10 -12 28 -4 q18 -6 24 12 q16 2 12 16 q6 14 -12 14z',
+      d: 'M-4 24 q6 -12 20 -6 q8 -14 24 -6 q10 -12 26 -2 q12 -10 26 0 q12 -10 26 0 q10 -8 22 0 q8 -4 14 4',
     },
-    { d: 'M46 106 Q80 88 116 106' },
-    { d: 'M60 122 v28 M100 122 v24', role: 'ambient', dashed: true },
     {
-      d: 'M84 178 C70 164 94 152 84 138 C74 124 96 116 86 104',
+      d: 'M8 28 l6 -6 M24 30 l6 -6 M128 30 l6 -6 M144 28 l6 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M54 160 C62 140 56 122 64 102 M106 160 C98 140 104 122 96 102',
       role: 'accent',
     },
-    { d: 'M82 150 q-12 -2 -14 -12 M88 130 q12 -2 14 -12', role: 'accent' },
-    ...SEA.slice(2),
+    {
+      d: 'M64 102 q-14 4 -22 -6 q-8 6 -16 -2 M96 102 q14 4 22 -6 q8 6 16 -2',
+      role: 'accent',
+    },
+    { d: 'M72 154 v-16 M88 146 v-16 M78 126 v-12', role: 'soft', dashed: true },
+    {
+      d: 'M40 80 H120 C116 94 104 102 90 102 H62 C52 102 44 94 40 80 Z',
+      transform: MERRY_TILT,
+    },
+    { d: 'M42 86 H118', role: 'soft', transform: MERRY_TILT },
+    { d: 'M78 80 V34 M78 38 C96 44 96 70 78 76', transform: MERRY_TILT },
+    {
+      d: 'M120 80 q8 -4 6 -12 M54 88 C42 84 32 76 26 64 C38 66 50 74 58 84',
+      role: 'soft',
+      transform: MERRY_TILT,
+    },
+    {
+      d: 'M58 94 l4 6 M70 96 l4 6 M82 96 l4 6 M94 95 l4 6 M106 92 l4 6',
+      role: 'ambient',
+      transform: MERRY_TILT,
+    },
+    { d: 'M30 160 q50 8 100 0', role: 'ambient', dashed: true },
+    ...SEA.slice(1),
   ],
 
   // Huts on stilts over the water, an anchor dropped beside them.
@@ -86,16 +126,25 @@ export const skypieaArt = {
     shadow(80, 160, 46),
   ],
 
-  // A sonar dish on its post, and the sound going out from it.
+  // His microphone on its stand: a ball with a lattice grille, and the sound
+  // going out of it. He roars into it to search the sea and to break ships
+  // with his Havoc Sonar (147). The ball's far side is hatched.
   'shoujou': [
-    { d: 'M98 44 C40 62 40 130 98 148' },
-    { d: 'M98 44 V148', role: 'ambient' },
-    { d: 'M70 96 H104' },
-    { d: 'M104 88 h10 v16 h-10z' },
-    { d: 'M98 140 V174 M78 178 H118' },
-    { d: 'M112 76 q18 20 0 40', role: 'accent' },
-    { d: 'M122 62 q26 34 0 68', role: 'accent' },
-    { d: 'M132 48 q34 48 0 96', role: 'accent' },
+    { d: circle(64, 58, 22) },
+    {
+      d: 'M60.2 36.3 L84.7 65.5 M43.3 50.5 L67.8 79.7 M84.7 50.5 L60.2 79.7 M67.8 36.3 L43.3 65.5',
+      role: 'soft',
+    },
+    { d: 'M52 77 L55 86 H73 L76 77' },
+    { d: 'M76 70 l3 3 M70 76 l3 2 M81 61 l3 2', role: 'ambient' },
+    { d: 'M62 86 V170 M66 86 V170' },
+    { d: 'M58 124 h12 v6 h-12z', role: 'soft' },
+    { d: ellipse(64, 172, 24, 6) },
+    {
+      d: 'M94 48 q8 10 0 20 M106 40 q14 18 0 36 M118 32 q20 26 0 52',
+      role: 'accent',
+    },
+    shadow(64, 186, 30),
   ],
 
   // A coiled spring between its plates, and the bounce either side of it.
@@ -113,25 +162,27 @@ export const skypieaArt = {
     shadow(80, 166, 46),
   ],
 
-  // A chestnut sitting on a diver's helmet.
+  // The castle he lives in, which is a plywood board: onion domes painted on
+  // a flat front, its thin edge showing, and the small house standing behind
+  // it. The Straw Hats see through it on arrival (148).
   'montblanc-cricket': [
+    { d: 'M12 150 V92 H30 V108 H46 V80 H78 V108 H94 V92 H112 V150' },
     {
-      d: 'M80 46 C104 58 112 72 106 82 C94 92 62 92 50 82 C44 72 56 58 80 46z',
+      d: 'M12 92 C6 82 16 74 21 64 C26 74 36 82 30 92 M46 80 C36 66 54 54 62 42 C70 54 88 66 78 80 M94 92 C88 82 98 74 103 64 C108 74 118 82 112 92',
       role: 'accent',
     },
-    { d: 'M80 46 q-4 -7 -1 -12', role: 'accent' },
-    { d: 'M46 146 V124 a34 30 0 0 1 68 0 V146z' },
-    { d: 'M40 146 H120 V158 H40z' },
-    { d: circle(80, 126, 15) },
     {
-      d: dots([
-        [48, 152],
-        [64, 152],
-        [96, 152],
-        [112, 152],
-      ]),
+      d: 'M16 88 Q20 78 25 70 M54 76 Q60 62 68 48 M98 88 Q102 78 107 70',
+      role: 'soft',
     },
-    shadow(80, 172, 44),
+    { d: 'M54 150 V130 a8 8 0 0 1 16 0 V150', role: 'soft' },
+    { d: 'M18 116 v10 M24 116 v10 M100 116 v10 M106 116 v10', role: 'soft' },
+    { d: 'M112 150 l5 -4 V89 l-5 3' },
+    { d: 'M113 104 l3 -2 M113 118 l3 -2 M113 132 l3 -2', role: 'ambient' },
+    { d: house(124, 24, 122, 106) },
+    { d: 'M124 122 l10 -6 M126 136 l10 -6', role: 'ambient' },
+    { d: 'M2 150 H158', role: 'ambient', dashed: true },
+    ...SEA.slice(1),
   ],
 
   // A cherry pie with one slice gone, and the bottle that went with it.
@@ -152,19 +203,18 @@ export const skypieaArt = {
     shadow(70, 156, 48),
   ],
 
-  // A closed book with a paw print pressed into the cover. The paw pressed
-  // into a steel plate from 469, in `skypieaRedrawn`.
+  // The Bible he holds through the Warlords' meeting (151), closed and stood
+  // on end: the rays on its cover, the page block on the far side hatched.
+  // The paw pressed into a steel plate beside it from 469, in
+  // `skypieaRedrawn`.
   'bartholomew-kuma': [
-    { d: 'M40 54 H118 q6 0 6 6 V152 q0 6 -6 6 H40z' },
-    { d: 'M40 54 q-10 52 0 104' },
-    { d: 'M124 62 q8 4 8 10 V146 q0 6 -8 8' },
-    { d: 'M124 84 h8 M124 104 h8 M124 124 h8', role: 'ambient' },
-    { d: ellipse(82, 118, 20, 15), role: 'accent' },
+    ...KUMA_BIBLE_BODY,
+    KUMA_BIBLE_PAGES,
     {
-      d: `${circle(60, 94, 7)} ${circle(74, 84, 7)} ${circle(92, 84, 7)} ${circle(106, 94, 7)}`,
+      d: 'M77 101 L77 86 M81.1 102.3 L89.9 90.2 M83.7 105.8 L97.9 101.2 M83.7 110.2 L97.9 114.8 M81.1 113.7 L89.9 125.8 M77 115 L77 130 M72.9 113.7 L64.1 125.8 M70.3 110.2 L56.1 114.8 M70.3 105.8 L56.1 101.2 M72.9 102.3 L64.1 90.2',
       role: 'accent',
     },
-    shadow(80, 172, 46),
+    shadow(80, 182, 48),
   ],
 
   // A Marine cap with its braid, and the goat that follows the man wearing it.
@@ -295,18 +345,31 @@ export const skypieaArt = {
     shadow(92, 180, 44),
   ],
 
-  // A bag of pumpkins with a sky shell set down beside it.
+  // Her satchel set down with the flap over its mouth and the buckle on its
+  // tab, the strap trailing on the ground, and Vearth spilling out of one
+  // side: she fills the bag with soil on Upper Yard (163).
   'aisa': [
-    { d: 'M44 172 C34 142 40 116 54 104 H106 c14 12 20 38 10 68z' },
-    { d: 'M54 104 q26 -12 52 0' },
-    { d: ellipse(64, 88, 18, 14), role: 'accent' },
-    { d: 'M64 74 V102 M52 78 q-5 10 0 20 M76 78 q5 10 0 20', role: 'accent' },
-    { d: ellipse(100, 82, 15, 12) },
-    { d: 'M100 70 V94 M90 73 q-4 9 0 18 M110 73 q4 9 0 18' },
-    { d: 'M64 74 q2 -8 10 -9 M100 70 q-2 -7 -9 -8', role: 'soft' },
-    { d: 'M126 166 q-6 -18 8 -22 q14 -4 16 8 q2 12 -10 14 q-8 0 -8 -8' },
-    { d: 'M132 150 q8 -4 12 2 M130 158 q10 -2 14 4', role: 'ambient' },
-    shadow(80, 182, 44),
+    { d: 'M44 106 C30 140 44 172 82 172 C120 172 134 140 120 106' },
+    {
+      d: 'M40 106 Q82 84 124 106 C120 124 102 136 82 138 C62 136 44 124 40 106 Z',
+    },
+    { d: 'M46 108 Q82 92 118 108', role: 'soft' },
+    { d: 'M82 138 V146', role: 'soft' },
+    { d: 'M76 146 h12 v10 h-12z M82 146 v10', role: 'accent' },
+    { d: 'M120 106 C140 104 150 122 146 140 C142 160 128 174 108 178' },
+    { d: 'M140 150 l9 4 l-4 9 l-9 -4z', role: 'accent' },
+    { d: 'M110 148 l7 -4 M106 160 l7 -4 M96 168 l7 -4', role: 'ambient' },
+    { d: 'M42 112 q-12 4 -14 18 q-1 8 -6 14', role: 'soft' },
+    {
+      d: dots([
+        [14, 152],
+        [22, 160],
+        [12, 166],
+      ]),
+      role: 'ambient',
+    },
+    { d: 'M4 184 q6 -16 20 -12 q8 -8 18 2 q6 4 6 10', role: 'soft' },
+    shadow(84, 182, 40),
   ],
 
   // A harp, with a cloud fox curled up at its foot.
@@ -379,43 +442,48 @@ export const skypieaArt = {
     ...SEA,
   ],
 
-  // A cloud ball, something dashed hidden inside it, the surprise going off.
+  // Three of his surprise balls, the same plain cloud spheres, the nearest
+  // bursting open in a blast: Sanji kicks one out of the way and it
+  // explodes in their faces (160). Their far sides are hatched.
   'satori': [
-    { d: circle(80, 104, 42) },
+    { d: circle(120, 42, 16) },
+    { d: 'M126 52 l5 -4 M118 55 l5 -4', role: 'ambient' },
+    { d: circle(124, 104, 22) },
+    { d: 'M132 118 l6 -5 M122 122 l6 -5 M140 109 l4 -4', role: 'ambient' },
+    { d: 'M28 136 a34 34 0 0 0 68 0' },
+    { d: 'M28 136 l8 -7 l7 6 l8 -8 l8 6 l7 -7 l8 7 l7 -6 l9 9' },
     {
-      d: 'M50 74 q6 -16 22 -12 M110 74 q16 6 12 22 M110 134 q-6 16 -22 12 M50 134 q-16 -6 -12 -22',
+      d: 'M62 120 V90 M48 124 L32 102 M76 124 L92 102 M40 130 L18 120 M84 130 L106 120',
+      role: 'accent',
+    },
+    {
+      d: 'M38 100 q4 -8 12 -6 M78 92 q8 -2 10 6 M22 108 q-2 -6 2 -10',
       role: 'soft',
     },
-    {
-      d: 'M62 116 C58 96 70 84 80 84 C90 84 102 96 98 116z',
-      role: 'ambient',
-      dashed: true,
-    },
-    {
-      d: 'M80 62 V46 M108 74 L120 62 M52 74 L40 62 M124 104 H138 M36 104 H22',
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [64, 132],
-        [80, 138],
-        [96, 132],
-      ]),
-      role: 'accent',
-    },
-    shadow(80, 164, 36),
+    { d: 'M72 162 l6 -5 M82 154 l6 -5 M88 144 l6 -5', role: 'ambient' },
+    shadow(62, 184, 34),
   ],
 
-  // A heat lance, and the firebird that carries its owner.
+  // His Heat Javelin: a wooden shaft, a conical guard, and a long tapering
+  // head that a Heat Dial turns red hot, the air shimmering over it. He sets
+  // the Going Merry alight with it (162). The head's far side is hatched.
   'shura': [
-    { d: 'M20 172 L100 66' },
-    { d: 'M94 62 L106 71 L118 44z' },
-    { d: 'M30 152 l12 9 M40 139 l12 9', role: 'ambient' },
-    { d: 'M122 56 q12 -10 2 -20 M132 68 q14 -12 2 -24', role: 'accent' },
-    { d: 'M18 74 C30 58 44 56 54 66 C64 56 78 58 86 70' },
-    { d: 'M54 66 C52 80 54 92 60 102', role: 'soft' },
-    { d: 'M26 86 c-10 8 -6 20 4 22 c-4 -10 4 -14 8 -20z', role: 'accent' },
-    { d: 'M80 82 c10 8 6 20 -4 22 c4 -10 -4 -14 -8 -20z', role: 'accent' },
+    { d: 'M26 176.5 L61 127.8 M30 179.5 L65 130.7' },
+    { d: 'M26 176.5 L30 179.5' },
+    { d: 'M37.3 165 L56 139', role: 'soft' },
+    { d: 'M58.9 126.3 L61.7 103.7 M67.1 132.2 L87.7 122.3' },
+    { d: 'M61.7 103.7 a16 5 35.7 1 0 26 18.7 a16 5 35.7 1 0 -26 -18.7' },
+    { d: 'M65.5 105.2 L140 22 L85 119.2', role: 'accent' },
+    {
+      d: 'M94.3 102.5 L86.4 101.7 M103.3 86.8 L96.4 86.8 M112.2 71 L106.4 71.8 M121.1 55.3 L116.5 56.9',
+      role: 'ambient',
+    },
+    { d: 'M80.6 109.9 L134.6 30.4', role: 'soft' },
+    {
+      d: 'M63.8 90.4 q-1.1 -7 5.8 -8.1 t5.8 -8.1 t5.8 -8.1 M80.2 72.7 q-1.1 -7 5.8 -8.1 t5.8 -8.1 t5.8 -8.1 M97.5 55.5 q-1.1 -7 5.8 -8.1 t5.8 -8.1 t5.8 -8.1',
+      role: 'soft',
+    },
+    shadow(80, 188, 44),
   ],
 
   // A swamp cloud with a pair of boots going down into it.
@@ -456,18 +524,30 @@ export const skypieaArt = {
     { d: 'M124 173 V184' },
   ],
 
-  // An explorer's log book with a chestnut on the cover.
+  // His logbook open on the desk, lines of writing in it and the quill still
+  // on the page: he is writing in it during the storm when he first hears
+  // the bell (187). The pages' fall into the gutter is hatched.
   'montblanc-noland': [
-    { d: 'M28 62 L120 46 L134 146 L42 162z' },
-    { d: 'M28 62 L22 68 L36 168 L42 162' },
-    { d: 'M134 146 L128 152 L36 168' },
-    { d: 'M60 56 L74 156', role: 'soft' },
+    { d: 'M76 152 C60 142 36 142 14 150 L24 98 C44 92 62 94 76 104' },
+    { d: 'M76 152 C92 142 114 142 136 150 L128 98 C110 92 90 94 76 104' },
+    { d: 'M76 104 V152' },
+    { d: 'M14 150 l-2 6 C36 150 58 150 76 158 C94 150 116 150 138 156 l-2 -6' },
     {
-      d: 'M80 82 C104 94 112 108 106 118 C94 128 62 128 50 118 C44 108 56 94 80 82z',
+      d: 'M30 108 q4 -2 8 0 t8 0 t8 0 t8 0 M28 118 q4 -2 8 0 t8 0 t8 0 t8 0 M26 128 q4 -2 8 0 t8 0 t8 0 t8 0 M24 138 q4 -2 8 0 t8 0 t8 0',
+      role: 'soft',
+    },
+    {
+      d: 'M86 108 q4 -2 8 0 t8 0 t8 0 t8 0 M88 118 q4 -2 8 0 t8 0',
+      role: 'soft',
+    },
+    { d: 'M70 106 l4 6 M70 120 l4 6 M70 134 l4 6', role: 'ambient' },
+    { d: 'M106 120 L138 40' },
+    {
+      d: 'M138 40 C148 56 142 80 124 92 M138 40 C128 50 118 70 116 96',
       role: 'accent',
     },
-    { d: 'M80 82 q-4 -7 -1 -11', role: 'accent' },
-    shadow(84, 178, 50),
+    { d: 'M134 58 l-8 6 M130 70 l-8 6', role: 'soft' },
+    shadow(76, 170, 62),
   ],
 
   // A war spear with its feathers, and the rope of a great bell.
@@ -485,17 +565,22 @@ export const skypieaArt = {
     { d: 'M116 138 H132 q4 0 4 6 q0 8 -12 8 q-12 0 -12 -8 q0 -6 4 -6z' },
     { d: 'M118 152 V172 M124 154 V176 M130 152 V172' },
   ],
-  // A fan of playing cards on a table, a hangman's noose above them.
+  // A hand of cards fanned out on a round tavern table, the winning card on
+  // top: he wins a hand against Bellamy in a Mock Town bar (146). The rim of
+  // the table is hatched underneath.
   'roshio': [
-    { d: 'M80 12 V42' },
-    { d: 'M73 42 H87 M73 47 H87' },
-    { d: ellipse(80, 62, 10, 14), role: 'accent' },
-    { d: 'M46 100 H78 V148 H46z', transform: 'rotate(-16 62 148)' },
-    { d: 'M64 96 H96 V144 H64z' },
-    { d: 'M82 100 H114 V148 H82z', transform: 'rotate(16 98 148)' },
-    { d: polygon(80, 120, 7, 4), role: 'accent' },
-    { d: 'M16 164 H144' },
-    shadow(80, 178, 44),
+    { d: ellipse(80, 118, 64, 30) },
+    { d: 'M16 118 v8 a64 30 0 0 0 128 0 v-8' },
+    {
+      d: 'M28 142 l4 -6 M44 150 l4 -6 M112 150 l4 -6 M128 142 l4 -6',
+      role: 'ambient',
+    },
+    { d: 'M72 156 V182 M88 156 V182 M54 188 Q80 178 106 188' },
+    { d: 'M65.5 147.5 L29.1 116.4 L45.8 108.9 M64.5 144.6 L45.3 108 L65 104' },
+    { d: 'M65 141.6 L65 103.1 L85.7 103.1 M67 138.8 L86.1 102.2 L105.8 106.2' },
+    { d: 'M70.2 136.6 L106.7 105.5 L130.9 116.4 L94.5 147.5 Z' },
+    { d: 'M103.6 110 L108.6 116 L103.6 122 L98.6 116 Z', role: 'accent' },
+    shadow(80, 190, 40),
   ],
   // A big curved knife mid-spin, a couple of coins dropped beside it.
   'sarquiss': [
@@ -520,26 +605,36 @@ export const skypieaArt = {
     { d: 'M26 150 l-8 -6 M22 142 v16' },
     shadow(80, 176, 48),
   ],
-  // A horseshoe with a pair of spotted wings spread from its sides.
+  // Pierre as he flies in his horse form, side on with no eye drawn: a horse
+  // with a bird's wings and a saddle girthed on, spotted all over. He eats
+  // the Horse-Horse Fruit and shows it the day he is met (153). The belly is
+  // hatched.
   'pierre': [
     {
-      d: 'M56 150 V104 a24 24 0 0 1 48 0 V150 M68 150 V106 a12 12 0 0 1 24 0 V150',
+      d: 'M42 106 C60 98 92 98 104 100 C112 90 118 76 124 64 C128 56 136 54 142 58 L154 76 C156 82 150 84 146 82 L134 76 C128 86 124 100 118 112 C110 128 70 132 52 128 C40 124 36 114 42 106 Z',
+    },
+    { d: 'M134 58 l2 -10 l4 10' },
+    { d: 'M124 66 q-6 8 -4 18 M120 78 q-6 8 -4 16', role: 'soft' },
+    {
+      d: 'M112 122 C120 128 124 134 120 144 M100 126 C104 134 106 142 100 150',
+    },
+    { d: 'M58 128 C50 136 42 140 32 138 M48 125 C40 132 30 132 22 128' },
+    { d: 'M42 108 C26 106 18 118 6 122 C16 110 24 100 40 102' },
+    { d: 'M104 98 C106 76 114 58 128 44', role: 'soft' },
+    {
+      d: 'M92 100 C80 72 64 50 40 36 C50 36 58 38 64 42 C62 36 64 34 68 34 C74 38 78 42 82 48 C82 40 84 36 88 34 C96 48 104 70 104 98',
+    },
+    { d: 'M66 46 q8 8 14 20 M86 42 q6 14 8 30', role: 'soft' },
+    { d: 'M62 102 q12 -8 24 0 M70 102 V128', role: 'soft' },
+    {
+      d: 'M60 128 l4 -6 M74 130 l4 -6 M88 128 l4 -6 M102 122 l4 -6',
+      role: 'ambient',
+    },
+    {
+      d: `${circle(54, 114, 3)} ${circle(78, 114, 3)} ${circle(96, 110, 3)} ${circle(112, 100, 3)} ${circle(66, 120, 3)}`,
       role: 'accent',
     },
-    {
-      d: dots([
-        [62, 118],
-        [62, 134],
-        [98, 118],
-        [98, 134],
-      ]),
-    },
-    { d: 'M54 110 C34 96 18 100 10 86 C26 88 30 80 22 70 C38 76 46 88 56 98' },
-    {
-      d: 'M106 110 C126 96 142 100 150 86 C134 88 130 80 138 70 C122 76 114 88 104 98',
-    },
-    { d: `${circle(30, 88, 3)} ${circle(130, 88, 3)}`, role: 'soft' },
-    shadow(80, 168, 36),
+    shadow(80, 178, 50),
   ],
   // A little cloud with a long fox's tail curling out of it, paw prints below.
   'su': [
@@ -736,6 +831,13 @@ function underTheBiggerHat(strokes: Stroke[]): Stroke[] {
 /** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
 const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 
+/** Kuma's Bible, smaller, stood on the same ground as the steel plate. */
+function besideThePlate(strokes: Stroke[]): Stroke[] {
+  const beside = 'translate(92 89) scale(0.5)'
+
+  return strokes.map((stroke) => ({ ...stroke, transform: beside }))
+}
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const skypieaRedrawn: Redrawings = {
   // A tricorne over a knotted bandana: the hat he wears from the Warlords'
@@ -912,34 +1014,32 @@ export const skypieaRedrawn: Redrawings = {
     },
   ],
 
-  // The paw pressed into a riveted steel plate, the book closed beneath it:
-  // Vegapunk has finished him, a weapon with his past erased, as Doflamingo
-  // tells Ivankov at Marineford at 469 (ch. 560). The plate's edge and the
-  // book's pages are hatched, never filled.
+  // The paw pressed into a riveted steel plate standing on the ground, the
+  // Bible stood beside it on the same ground: Vegapunk has finished him, a
+  // weapon with his past erased, as Doflamingo tells Ivankov at Marineford at
+  // 469 (ch. 560). The plate's edge is hatched, never filled; the small
+  // book's page block is left open so the tile stays clear.
   'bartholomew-kuma': [
     {
       episode: 469,
       chapter: 560,
       value: [
-        { d: 'M116 70 H118 q6 0 6 6 V166 q0 6 -6 6 H40 V136' },
-        { d: 'M40 172 q-6 -18 -4 -36' },
-        { d: 'M124 78 q8 4 8 10 V162 q0 6 -8 8' },
-        { d: 'M124 100 h8 M124 120 h8 M124 140 h8', role: 'ambient' },
-        { d: 'M24 34 H110 V130 H24z' },
-        { d: 'M110 34 l6 6 V136 H30 l-6 -6' },
+        { d: 'M14 70 H100 V166 H14z' },
+        { d: 'M100 70 l6 6 V172 H20 l-6 -6' },
         {
-          d: 'M111 56 l4 4 M111 76 l4 4 M111 96 l4 4 M111 116 l4 4',
+          d: 'M101 92 l4 4 M101 112 l4 4 M101 132 l4 4 M101 152 l4 4',
           role: 'ambient',
         },
         {
-          d: `${circle(32, 42, 3)} ${circle(102, 42, 3)} ${circle(32, 122, 3)} ${circle(102, 122, 3)}`,
+          d: `${circle(22, 78, 3)} ${circle(92, 78, 3)} ${circle(22, 158, 3)} ${circle(92, 158, 3)}`,
         },
-        { d: ellipse(67, 98, 20, 15), role: 'accent' },
+        { d: ellipse(57, 134, 20, 15), role: 'accent' },
         {
-          d: `${circle(45, 74, 7)} ${circle(59, 64, 7)} ${circle(77, 64, 7)} ${circle(91, 74, 7)}`,
+          d: `${circle(35, 110, 7)} ${circle(49, 100, 7)} ${circle(67, 100, 7)} ${circle(81, 110, 7)}`,
           role: 'accent',
         },
-        shadow(80, 182, 54),
+        ...besideThePlate(KUMA_BIBLE_BODY),
+        shadow(82, 180, 72),
       ],
     },
   ],
