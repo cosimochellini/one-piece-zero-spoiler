@@ -898,7 +898,7 @@ export const eastBlue: Saga = {
           },
         },
         // The bounty news names him senior captain of the Grand Fleet at 1086
-        // (chapter 1058).
+        // (chapter 1058). "Capitano supremo" is an unofficial rendering of 大船長.
         {
           episode: 1086,
           chapter: 1058,
