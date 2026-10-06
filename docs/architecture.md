@@ -51,10 +51,10 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 | Devil fruits        | 128                                                   |
 | Arcs, places, ships | 34 · 39 · 2                                           |
 | Saga modules        | 12, plus one for the devil fruits                     |
-| Line drawings       | 737, one per record, plus 32 redrawings of 27 records |
+| Line drawings       | 737, one per record, plus 34 redrawings of 29 records |
 | Chronicle stories   | 756, for 185 characters                               |
-| Test files          | 68                                                    |
-| Test cases          | 605                                                   |
+| Test files          | 75                                                    |
+| Test cases          | 686                                                   |
 | Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions  |
 
 Counted on 2026-10-05. Coverage includes the scripts under `scripts/`. The live
@@ -87,8 +87,9 @@ written by hand.
 The devil fruits are generated rather than drawn one by one. More than a hundred
 drawings of the same kind of object have to look like one set and still be told
 apart, so each is composed from a seed written next to its id: one of six
-silhouettes, one of four marks, a stalk and a leaf. The eleven fruits a reader
-already knows well are drawn by hand and override their generated version. The
+silhouettes, one of four marks, a stalk and a leaf. The thirteen fruits a reader
+already knows well are drawn by hand and override their generated version, and
+two more are drawn as the real fruit only from the episode that shows it. The
 sizing is guaranteed rather than hoped for: a seed cannot set a radius, so the
 widest fruit the generator can produce is known in advance. Every path it writes
 uses absolute commands only, which lets the test read the numbers in a path as

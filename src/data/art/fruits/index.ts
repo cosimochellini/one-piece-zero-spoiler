@@ -1,4 +1,6 @@
 import {
+  BRUSH_BRUSH,
+  BUBBLE_BUBBLE,
   CHOP_CHOP,
   DARK_DARK,
   FLAME_FLAME,
@@ -6,13 +8,15 @@ import {
   GUM_GUM,
   HUMAN_HUMAN,
   OP_OP,
+  OP_OP_HEART,
+  OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
   STRING_STRING,
   TREMOR_TREMOR,
 } from '~/data/art/fruits/bespoke'
 import { fruit } from '~/data/art/fruits/generate'
-import type { Drawings } from '~/data/art/stroke'
+import type { Drawings, Redrawings } from '~/data/art/stroke'
 
 /**
  * Every devil fruit drawing, keyed by the id of the record it was drawn for,
@@ -26,8 +30,8 @@ import type { Drawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Eleven of them are drawn by hand and name their drawing; the rest name the
- * seed they are grown from.
+ * Thirteen of them are drawn by hand and name their drawing; the rest name
+ * the seed they are grown from.
  */
 export const fruitArt = {
   'gum-gum-fruit': GUM_GUM,
@@ -103,7 +107,13 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'waves',
   }),
-  'flame-flame-fruit': FLAME_FLAME,
+  'flame-flame-fruit': fruit({
+    body: 'round',
+    grain: 10,
+    leaf: 'pair',
+    stem: 'hooked',
+    swirl: 'waves',
+  }),
   'dice-dice-fruit': fruit({
     body: 'oblong',
     grain: 2,
@@ -170,13 +180,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'scales',
   }),
-  'bubble-bubble-fruit': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'cat-cat-fruit-model-leopard': fruit({
     body: 'pear',
     grain: 7,
@@ -198,13 +202,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'ox-ox-fruit-model-giraffe': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
   'elephant-elephant-fruit': fruit({
     body: 'oblong',
     grain: 5,
@@ -727,13 +725,7 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'whorls',
   }),
-  'brush-brush-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
+  'brush-brush-fruit': BRUSH_BRUSH,
   'dog-dog-fruit-model-okuchi-no-makami': fruit({
     body: 'star',
     grain: 5,
@@ -861,3 +853,17 @@ export const fruitArt = {
     swirl: 'whorls',
   }),
 } satisfies Drawings
+
+/**
+ * The fruits drawn again once the show has shown the real one: until then a
+ * reader is shown a fruit that looks like nothing in particular, because the
+ * look of the real one is something the story has not shown yet.
+ */
+export const fruitRedrawn: Redrawings = {
+  // The prize of the Corrida Colosseum, held up by Doflamingo in episode 629
+  // and chapter 700.
+  'flame-flame-fruit': [{ episode: 629, chapter: 700, value: FLAME_FLAME }],
+  // The fruit Rosinante sets out to steal for Law, in episode 704 and
+  // chapter 765.
+  'op-op-fruit': [{ episode: 704, chapter: 765, value: OP_OP_HEART }],
+}

@@ -32,7 +32,7 @@ import {
   shelvesPage,
 } from './pages.server'
 import { peekCharacter } from './peek.server'
-import { characterOf, searchableOf } from './project.server'
+import { characterOf, recordOf, searchableOf } from './project.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }
@@ -707,6 +707,40 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter: 954 })).toBe(shusui?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
     })
+  })
+
+  it('shows the real Flame-Flame Fruit only from episode 629', () => {
+    const fruit = filed('flame-flame-fruit')
+    const grown = DRAWINGS['flame-flame-fruit']
+    const real = REDRAWINGS['flame-flame-fruit']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+
+    expect(real?.episode).toBe(629)
+
+    expect(drawnAt(ep(628))).toBe(grown)
+    expect(drawnAt(ep(629))).toBe(real?.value)
+    expect(drawnAt(null)).toBe(grown)
+    // Doflamingo holds it up at the end of chapter 700, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 699 })).toBe(grown)
+    expect(drawnAt({ mode: 'chapter', chapter: 700 })).toBe(real?.value)
+  })
+
+  it('shows the real Op-Op Fruit only from episode 704', () => {
+    const fruit = filed('op-op-fruit')
+    const room = DRAWINGS['op-op-fruit']
+    const real = REDRAWINGS['op-op-fruit']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+
+    expect(real?.episode).toBe(704)
+
+    expect(drawnAt(ep(703))).toBe(room)
+    expect(drawnAt(ep(704))).toBe(real?.value)
+    expect(drawnAt(null)).toBe(room)
+    // Rosinante sets out to steal it in chapter 765, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 764 })).toBe(room)
+    expect(drawnAt({ mode: 'chapter', chapter: 765 })).toBe(real?.value)
   })
 
   it('gives Franky the forearm of the two years only from episode 517', () => {

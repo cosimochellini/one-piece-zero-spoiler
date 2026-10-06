@@ -4,7 +4,7 @@ import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
 import { elbafArt } from './elbaf'
 import { fishManIslandArt } from './fish-man-island'
-import { fruitArt } from './fruits'
+import { fruitArt, fruitRedrawn } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import type { Redrawings } from './stroke'
 import { summitWarArt, summitWarRedrawn } from './summit-war'
@@ -51,6 +51,7 @@ export const REDRAWINGS: Redrawings = {
   ...summitWarRedrawn,
   ...dressrosaRedrawn,
   ...wanoRedrawn,
+  ...fruitRedrawn,
 }
 
 /**
