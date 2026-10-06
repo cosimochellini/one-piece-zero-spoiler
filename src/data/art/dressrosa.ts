@@ -17,41 +17,40 @@ import type { Drawings, Redrawings } from './stroke'
  */
 const JORA_CARD_EDGE = 'M82 150 V70 h17'
 
+/** Gladius's coat laid flat, turned a little on the floor beside his hat. */
+const GLADIUS_COAT = 'translate(-12 -4) rotate(-14 70 100)'
+
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
-  // A strip torn from a pair of overalls, bunched on the deck planks of the
-  // Sun Pirates' ship, the strap and its buckle trailing off it and a wet
-  // sweep on the boards behind. Koala tears it from her own clothes in
-  // episode 541 and scrubs the deck with it, and will not stop.
+  // A strip torn from a pair of overalls, bunched on the deck of the Sun
+  // Pirates' ship between the seams of the planks, the strap and its buckle
+  // trailing off it and a wet sweep on the boards beside. Koala tears it
+  // from her own clothes in episode 541 and scrubs the deck with it, and
+  // will not stop.
   'koala': [
-    { d: 'M34 96 H126 L154 166 H6 Z' },
-    { d: 'M6 166 V176 H154 V166' },
     {
-      d: 'M49.3 96 L30.7 166 M64.7 96 L60.5 112 M57.7 148 L55.3 166 M80 96 V108 M80 150 V166 M95.3 96 L97.4 112 M102.3 148 L104.7 166 M110.7 96 L117 120 M126 154 L129.3 166',
+      d: 'M8 180 L14 161 M30 112 L40 80 M80 180 V162 M80 102 V80 M152 180 L148 168 M134.1 124 L120 80',
       role: 'soft',
     },
-    { d: 'M40 104 h12 M110 140 h10 M22 156 h14 M84 102 h10', role: 'soft' },
     {
-      d: 'M54 120 L66 112 L80 116 L94 108 L110 114 L118 124 L112 132 L116 142 L98 146 L82 150 L64 146 L52 142 L56 138 L48 134 L55 130 L49 126 Z',
+      d: 'M34.5 115.5 L51.9 103.9 L72.2 109.7 L92.5 98.1 L115.7 106.8 L127.3 121.3 L118.6 132.9 L124.4 147.4 L98.3 153.2 L75.1 159 L49 153.2 L31.6 147.4 L37.4 141.6 L25.8 135.8 L36 130 L27.2 124.2 Z',
       role: 'accent',
     },
     {
-      d: 'M66 112 C70 122 78 130 84 138 M94 108 C92 120 96 130 104 136',
+      d: 'M51.9 103.9 C57.7 118.4 69.3 130 78 141.6 M92.5 98.1 C89.6 115.5 95.4 130 107 138.7',
       role: 'soft',
     },
-    { d: 'M60 150 C78 156 100 152 118 146', role: 'ambient' },
+    { d: 'M43.2 159 C69.3 167.7 101.2 161.9 127.3 153.2', role: 'ambient' },
     {
-      d: 'M116 128 C126 130 134 138 134 146 M114 136 C122 138 126 142 127 148',
+      d: 'M124.4 127.1 C138.9 130 150.5 141.6 150.5 153.2 M121.5 138.7 C133.1 141.6 138.9 147.4 140.3 156.1',
       role: 'accent',
     },
-    { d: 'M122 148 h16 v8 h-16 z M126 152 h8', role: 'accent' },
+    { d: 'M134 156 h20 v10 h-20 z M138 161 h12', role: 'accent' },
     {
-      d: 'M20 150 C28 140 38 136 46 138 M28 124 C34 116 42 112 50 114',
+      d: 'M20 96 C28 86 38 82 46 84 M104 176 C112 168 124 166 132 170',
       role: 'ambient',
       dashed: true,
     },
-    { d: 'M10 170 h4 M150 170 h-4', role: 'ambient' },
-    shadow(80, 188, 70),
   ],
 
   // An island split down the middle, fire on one side and ice on the other.
@@ -340,12 +339,11 @@ export const dressrosaArt = {
     shadow(92, 184, 40),
   ],
 
-  // His dark cape hung on a peg by its great frilled ruff, the puffs of the
-  // ruff seen from a little above, the cape falling open at the front and
-  // its far side hatched. He wears it when the Chinjao family steps in for
+  // His dark cape standing on its hem under its great frilled ruff, the
+  // puffs of the ruff seen from a little above, the cape falling open at the
+  // front and its far side hatched. He wears it when the Chinjao family steps in for
   // Lucy in episode 633. The polearm is not his until the C Block.
   'sai': [
-    { d: 'M70 22 Q80 16 90 22 M80 19 V40', role: 'ambient' },
     {
       d: 'M44 58 C38 50 46 42 54 46 C56 38 66 36 70 42 C74 34 86 34 90 42 C94 36 104 38 106 46 C114 42 122 50 116 58 C122 64 116 74 108 72 C106 80 96 82 92 76 C88 82 72 82 68 76 C64 82 54 80 52 72 C44 74 38 64 44 58 Z',
       role: 'accent',
@@ -772,48 +770,48 @@ export const dressrosaArt = {
     shadow(80, 160, 54),
   ],
 
-  // His long black coat hung on a peg by its stand-up collar, the gold studs
-  // along the collar, the coat falling open and its far side hatched, and
-  // his black top hat stood on the floor beside it, hatched where it turns
-  // away. He is dressed so from his first scene in episode 608. No goggles,
-  // and nothing bursting.
+  // His long black coat laid flat on the floor, the stand-up collar with its
+  // gold studs at the top, the sleeves out and the far half hatched, and his
+  // black top hat standing beside it, hatched where it turns away. He is
+  // dressed so from his first scene in episode 608. No goggles, and nothing
+  // bursting.
   'gladius': [
-    { d: 'M52 22 h20 M62 22 v16', role: 'ambient' },
-    { d: 'M36 46 Q62 34 88 46 L86 58 Q62 48 38 58 Z' },
+    { d: 'M50 34 Q70 26 90 34 L88 44 Q70 38 52 44 Z', transform: GLADIUS_COAT },
     {
       d: (
         [
-          [39, 51],
-          [46.7, 48.5],
-          [54.3, 47],
-          [62, 46.5],
-          [69.7, 47],
-          [77.3, 48.5],
-          [85, 51],
+          [54, 40],
+          [61, 37],
+          [68, 35.6],
+          [75, 35.6],
+          [82, 37],
+          [88, 40],
         ] satisfies [number, number][]
       )
         .map(([x, y]) => circle(x, y, 2.4))
         .join(' '),
       role: 'accent',
+      transform: GLADIUS_COAT,
     },
     {
-      d: 'M38 58 C26 64 20 76 20 92 L16 174 M86 58 C98 64 104 76 104 92 L108 172',
+      d: 'M52 44 L30 52 L14 108 L26 112 L38 74 L36 170 H104 L102 74 L114 112 L126 108 L110 52 L88 44',
+      transform: GLADIUS_COAT,
     },
-    { d: 'M16 174 Q40 168 56 178 Q80 186 108 172' },
     {
-      d: 'M50 56 C48 100 46 140 44 176 M74 56 C76 100 78 136 80 180',
+      d: 'M70 40 V170 M38 74 C44 70 48 64 52 54 M102 74 C96 70 92 64 88 54',
       role: 'soft',
+      transform: GLADIUS_COAT,
     },
     {
-      d: 'M90 96 l8 -8 M92 112 l10 -10 M94 128 l10 -10 M95 144 l10 -10 M96 160 l10 -10',
+      d: 'M76 60 l10 -10 M76 80 l20 -20 M76 100 l22 -22 M76 120 l22 -22 M76 140 l22 -22 M78 158 l20 -20',
       role: 'ambient',
+      transform: GLADIUS_COAT,
     },
-    { d: 'M112 168 L114 118 C114 112 146 112 146 118 L148 168' },
-    { d: ellipse(130, 118, 16, 4.5) },
-    { d: 'M104 168 C104 162 156 162 156 168 C156 174 104 174 104 168 Z' },
-    { d: 'M113 156 C120 161 140 161 147 156', role: 'soft' },
-    { d: 'M134 132 l8 -7 M133 146 l11 -10 M136 156 l9 -8', role: 'ambient' },
-    shadow(84, 190, 70),
+    { d: 'M114 168 L116 120 C116 114 148 114 148 120 L150 168' },
+    { d: ellipse(132, 120, 16, 4.5) },
+    { d: 'M106 168 C106 162 158 162 158 168 C158 174 106 174 106 168 Z' },
+    { d: 'M136 134 l8 -7 M135 148 l11 -10 M138 158 l9 -8', role: 'ambient' },
+    shadow(132, 182, 26),
   ],
 
   // A Marine's rifle and cap dropped in the grass, tiny footprints running
@@ -902,8 +900,8 @@ export const dressrosaArt = {
 
   // The crater he leaves in the yard of the Kid Pirates' hideout, seen
   // side on: the ground broken open between two lips of thrown-up earth,
-  // the bowl hatched inside, cracks running off, a broken palisade at each
-  // side, stones in the air and the dust going up. He falls out of the sky
+  // the bowl hatched inside, a crack running off each side, a broken
+  // palisade at each edge and one stone in the air. He falls out of the sky
   // there in episode 739. No club and no gourd: both come later.
   'kaido': [
     { d: 'M2 130 H18 M142 130 H158', role: 'ambient' },
@@ -912,30 +910,15 @@ export const dressrosaArt = {
       role: 'soft',
     },
     {
-      d: 'M18 130 L24 118 L32 122 L38 112 L46 120 C52 146 64 156 80 156 C96 156 108 146 114 120 L122 112 L128 122 L136 118 L142 130',
+      d: 'M18 130 L24 118 L32 122 L38 112 L46 120 C50 150 66 160 78 158 C96 154 110 140 114 120 L122 112 L128 122 L136 118 L142 130',
       role: 'accent',
     },
     {
-      d: 'M50 128 l4 -4 M52 140 l12 -12 M60 148 l18 -18 M74 152 l16 -16 M90 150 l12 -12',
+      d: 'M50 128 l4 -4 M52 140 l12 -12 M60 150 l18 -18 M74 154 l16 -16 M90 150 l12 -12',
       role: 'ambient',
     },
-    {
-      d: 'M18 130 L10 144 L14 156 M142 130 L150 146 L146 158 M80 156 L76 170 L82 182 M46 140 L36 152 M114 140 L124 152',
-      role: 'soft',
-    },
-    {
-      d: 'M28 88 l8 -3 l3 7 l-8 3 z M122 80 l7 -2 l2 7 l-7 2 z M70 52 l6 -4 l4 6 l-6 4 z',
-    },
-    {
-      d: 'M40 112 C26 100 32 80 50 84 C48 62 74 54 82 72 C90 52 118 58 114 80 C130 74 142 94 128 108',
-      role: 'ambient',
-      dashed: true,
-    },
-    {
-      d: 'M22 70 l-6 -6 M46 46 l-3 -8 M112 44 l4 -8 M140 62 l6 -6',
-      role: 'soft',
-    },
-    { d: 'M60 182 q20 6 40 0', role: 'ambient', dashed: true },
+    { d: 'M18 130 L10 144 L14 156 M142 130 L150 146 L146 158', role: 'soft' },
+    { d: 'M120 72 l8 -3 l3 7 l-8 3 z' },
   ],
   // A wrapped candy, twisted at both ends, with smoke curling off it.
   'mocha': [
