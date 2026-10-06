@@ -849,8 +849,8 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     form: 'region',
     arc: 'elbaf',
     landmark: {
-      it: 'Due asce incrociate su uno scudo',
-      en: 'Two axes crossed over a shield',
+      it: 'Un ponte di corda tra le vette innevate',
+      en: 'A rope bridge over snowy peaks',
     },
     log: {
       it: 'Il regno dei guerrieri giganti su Elbaf, «la terra da cui vengono le guerre», come la chiama con orgoglio chi ci è nato principe. È la patria dei giganti che la ciurma ha incontrato per mare, da Little Garden a Enies Lobby.',
