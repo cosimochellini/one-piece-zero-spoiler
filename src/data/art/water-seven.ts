@@ -202,11 +202,10 @@ export const waterSevenArt = {
   ],
 
   // Gonbe, the rabbit who lives with her at the station, sitting side on at
-  // the edge of the plank platform: long ears up, a cotton tail, no face.
+  // the edge of the station platform: long ears up, a cotton tail, no face.
   // The station's signal stands beside him over the sea (229).
   'chimney': [
     { d: 'M4 146 H112 V152 H4', role: 'ambient' },
-    { d: 'M24 146 v6 M48 146 v6 M72 146 v6 M96 146 v6', role: 'soft' },
     { d: 'M128 150 V58 M120 150 h16' },
     { d: 'M118 24 h20 v38 h-20z' },
     { d: `${circle(128, 34, 5)} ${circle(128, 51, 5)}`, role: 'soft' },
