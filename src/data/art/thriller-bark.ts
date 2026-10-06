@@ -199,13 +199,12 @@ export const thrillerBarkArt = {
     shadow(80, 172, 50),
   ],
 
-  // His violet feathery cape hung on a peg by its fluffy collar, one side
-  // turned back to show the black lining, hatched, the feathered hem in his
-  // colour; the surgical mask he wears under his chin hangs from the same
-  // peg. He greets the three at his mansion door in both at 340.
+  // His violet feathery cape standing on its own hem, the fluffy collar on
+  // top, one side turned back to show the black lining, hatched, the
+  // feathered hem in his colour; the surgical mask he wears under his chin
+  // hangs off the collar by one ear loop. He greets the three at his mansion
+  // door in both at 340.
   'hogback': [
-    { d: 'M80 22 V34 M72 34 h16', role: 'ambient' },
-    { d: dots([[80, 22]]) },
     { d: 'M64 40 C50 70 34 120 24 168 M129 160 C122 118 110 70 96 40' },
     { d: 'M96 40 C104 76 108 124 106 170' },
     {
@@ -224,8 +223,10 @@ export const thrillerBarkArt = {
       d: 'M60 70 C54 96 46 128 42 160 M76 46 C72 90 70 130 68 170',
       role: 'soft',
     },
-    { d: 'M76 34 C62 40 58 54 62 60 M40 62 H70 V80 Q55 86 40 80 Z' },
-    { d: 'M41 68 H69 M41 74 H69', role: 'soft' },
+    { d: 'M38 62 Q54 58 70 62 V74 Q54 92 38 74 Z' },
+    { d: 'M70 64 C76 56 74 44 68 38 M38 64 C30 62 28 72 38 74', role: 'soft' },
+    { d: 'M40 68 Q54 64 68 68 M42 74 Q54 72 66 74', role: 'soft' },
+    shadow(78, 186, 58),
   ],
 
   // A stack of serving plates, one more flying off the top and another broken
@@ -392,8 +393,8 @@ export const thrillerBarkArt = {
   ],
 
   // The trophy plaque hung from a nail, a pig's head in it with its ears
-  // folded forward in his colour and the round of the snout, no eyes and no
-  // mouth, and the two sabres crossed under its chin. He hangs on the
+  // flopped down its sides in his colour and the round of the snout, no eyes
+  // and no mouth, and the two sabres crossed under its chin. He hangs on the
   // dining-room wall from 340.
   'buhichuck': [
     { d: 'M50 40 L80 20 L110 40', role: 'ambient' },
@@ -414,11 +415,11 @@ export const thrillerBarkArt = {
       d: 'M52 100 C52 84 64 76 80 76 C96 76 108 84 108 100 C108 114 96 122 80 122 C64 122 52 114 52 100 Z',
     },
     {
-      d: 'M72 77 C62 70 50 68 42 72 C40 82 42 92 48 100 C54 92 58 86 62 82 M88 77 C98 70 110 68 118 72 C120 82 118 92 112 100 C106 92 102 86 98 82',
+      d: 'M70 78 Q60 74 52 80 C46 86 42 96 44 106 C50 100 54 94 58 88 M90 78 Q100 74 108 80 C114 86 118 96 116 106 C110 100 106 94 102 88',
       role: 'accent',
     },
     {
-      d: 'M44 74 C50 78 54 84 56 90 M116 74 C110 78 106 84 104 90',
+      d: 'M52 80 C52 88 50 96 46 102 M108 80 C108 88 110 96 114 102',
       role: 'soft',
     },
     { d: ellipse(80, 106, 11, 6.5), role: 'soft' },
