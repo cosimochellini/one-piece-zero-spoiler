@@ -38,21 +38,41 @@ const TOP_HAT: Stroke[] = [
   { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
 ]
 
-/** Sakazuki's cap with the fist burned through it, plain first and braided later. */
-const BURNED_CAP: Stroke[] = [
-  { d: 'M36 118 C36 78 124 78 124 118z' },
-  { d: 'M28 118 h104' },
-  { d: 'M32 128 q48 16 96 0 M28 118 v10 M132 118 v10' },
+/**
+ * Sakazuki's Marine cap in three-quarters, set on his folded crimson suit,
+ * one sleeve folded across the front, plain first and braided later.
+ */
+const CAP_ON_SUIT: Stroke[] = [
+  { d: 'M40 96 C38 64 104 60 108 94' },
+  { d: 'M40 96 C56 106 92 106 108 94' },
+  { d: 'M40 96 C28 100 28 112 44 112 C62 112 76 108 82 104', role: 'soft' },
+  { d: 'M74 66 C74 76 76 88 78 103', role: 'soft' },
+  { d: 'M96 72 l-5 7 M102 80 l-5 7 M106 88 l-5 6', role: 'ambient' },
+  { d: 'M20 128 L34 114 H126 L140 128' },
+  { d: 'M20 128 H140 V172 H20 Z' },
   {
-    d: 'M62 96 C56 82 62 70 74 70 C86 70 94 80 96 92 C98 104 90 112 76 112 C66 112 64 104 62 96z',
-    role: 'accent',
+    d: 'M64 128 L80 156 L96 128 M64 128 L56 140 L66 142 M96 128 L104 140 L94 142',
+    role: 'soft',
   },
-  { d: 'M68 78 q10 -12 22 -4', role: 'accent' },
-  { d: 'M50 72 q-8 -12 -2 -20 M108 76 q10 -10 6 -20', role: 'accent' },
-  shadow(80, 158, 52),
+  { d: 'M20 156 L70 152 L72 166 L20 170' },
+  {
+    d: `M62 153 L64 167 ${dots([
+      [67, 157],
+      [68, 163],
+      [100, 152],
+      [100, 164],
+    ])}`,
+    role: 'soft',
+  },
+  { d: 'M124 132 l8 -8 M124 146 l12 -12 M124 160 l14 -14', role: 'ambient' },
+  shadow(80, 182, 64),
 ]
 
-/** Kid's horseshoe magnet, drawn alone first and beside his metal arm later. */
+/** The pink rose in his lapel: the cupped bloom, its petals and a leaf. */
+const SAKAZUKI_ROSE =
+  'M102 140 C100 152 120 152 118 140 M102 140 C100 132 108 128 110 134 C112 128 120 132 118 140 M106 140 C106 136 114 136 114 140 C114 143 108 144 108 141 M104 150 C98 154 94 152 92 148 C96 146 100 146 104 150'
+
+/** Kid's horseshoe magnet, drawn beside his metal arm from 603. */
 const MAGNET: Stroke[] = [
   { d: 'M46 60 V126 a34 34 0 0 0 68 0 V60', role: 'accent' },
   { d: 'M66 60 V126 a14 14 0 0 0 28 0 V60', role: 'accent' },
@@ -74,34 +94,87 @@ export const summitWarArt = {
     },
   ],
 
-  // A horseshoe magnet, and the bolts it has pulled in. The metal arm is
-  // drawn beside it from 603, in `summitWarRedrawn`.
+  // His long fur coat hung on a peg by its collar, the collar flared and
+  // ragged, studs on the shoulders, the far side of the coat hatched; the
+  // studded square goggles slipping off the peg on their strap. Both are what
+  // he wears into Sabaody in episode 392. The magnet and the metal arm are
+  // drawn from 603, in `summitWarRedrawn`.
   'eustass-kid': [
-    ...MAGNET,
-    { d: polygon(40, 168, 8, 6) },
-    { d: polygon(74, 178, 8, 6) },
-    { d: polygon(112, 170, 8, 6) },
-  ],
-
-  // A snake, coiled, with its tongue out.
-  'boa-hancock': [
+    { d: 'M70 22 h20 M80 22 v10', role: 'ambient' },
     {
-      d: 'M40 152 C40 128 56 118 80 118 C104 118 118 108 118 90 C118 70 100 60 82 62 C64 64 56 78 62 90 C66 100 80 100 86 92',
-      role: 'accent',
+      d: 'M44 80 L30 74 L38 66 L24 58 L36 52 L30 40 L44 42 L46 30 L58 36 L64 24 L72 32 L80 26 L88 32 L96 24 L102 36 L114 30 L116 42 L130 40 L124 52 L136 58 L122 66 L130 74 L116 80',
     },
-    { d: 'M86 92 C92 84 104 86 106 94 C104 100 94 104 88 98', role: 'accent' },
-    { d: dot(98, 92), role: 'accent' },
-    { d: 'M106 94 h10 m-3 -3 l3 3 l-3 3', role: 'accent' },
     {
-      d: dots([
-        [48, 136],
-        [60, 126],
-        [80, 120],
-        [100, 118],
-        [114, 100],
-      ]),
+      d: 'M44 50 l8 4 M40 64 l8 2 M116 50 l-8 4 M120 64 l-8 2 M66 40 l4 6 M94 40 l-4 6',
+      role: 'soft',
+    },
+    {
+      d: 'M44 80 C36 90 32 110 30 130 L26 178 M116 80 C124 90 128 110 130 130 L134 178',
+    },
+    {
+      d: 'M26 178 Q50 172 64 180 Q80 186 98 178 Q116 172 134 178',
+      role: 'soft',
+    },
+    { d: 'M62 76 L58 180 M98 76 L102 178' },
+    { d: 'M70 90 Q66 130 72 176 M88 90 Q94 130 88 176', role: 'soft' },
+    {
+      d: 'M36 94 l4 -10 l4 8 M46 86 l4 -10 l4 8 M124 94 l-4 -10 l-4 8 M114 86 l-4 -10 l-4 8',
+      role: 'soft',
+    },
+    {
+      d: 'M106 96 l-6 4 M107 110 l-6 4 M108 124 l-6 4 M109 138 l-6 4 M110 152 l-6 4 M111 166 l-6 4',
       role: 'ambient',
     },
+    { d: 'M80 32 C92 46 100 70 102 94' },
+    // The goggles, tilted as they slide.
+    {
+      d: 'M56 92 h18 q4 0 4 4 v12 q0 4 -4 4 h-18 q-4 0 -4 -4 v-12 q0 -4 4 -4z M90 92 h18 q4 0 4 4 v12 q0 4 -4 4 h-18 q-4 0 -4 -4 v-12 q0 -4 4 -4z M78 100 h8',
+      role: 'accent',
+      transform: 'translate(26 30) rotate(-20 82 102) scale(0.96)',
+    },
+    {
+      d: 'M58 104 l8 -8 M92 104 l8 -8',
+      role: 'soft',
+      transform: 'translate(26 30) rotate(-20 82 102) scale(0.96)',
+    },
+  ],
+
+  // Salome coiled on the ground, her neck rising out of the coils and her
+  // head turned away, wearing the empress's white cape: the collar standing
+  // up round her neck and the epaulettes in Hancock's colour, the far side
+  // hatched. Hancock comes on deck in that cape in episode 410, and Salome is
+  // never far from her.
+  'boa-hancock': [
+    {
+      d: 'M20 168 C20 186 140 186 140 168 C140 160 130 155 118 153 M42 153 C30 155 20 160 20 168 M140 168 C152 170 158 160 150 152',
+    },
+    {
+      d: 'M32 150 C32 166 128 166 128 150 M32 150 C32 142 46 138 58 137 M112 137 C120 138 128 142 128 150',
+    },
+    {
+      d: 'M34 178 l3 -7 M54 182 l2 -8 M106 182 l-2 -8 M126 178 l-3 -7',
+      role: 'soft',
+    },
+    {
+      d: 'M86 78 C86 66 92 58 96 50 C100 42 98 34 92 30 M106 74 C110 64 112 54 112 44 C112 32 108 26 102 24',
+    },
+    {
+      d: 'M92 30 C86 36 72 36 62 32 C54 28 52 22 58 18 C66 12 84 12 96 18 C100 20 102 22 102 24',
+    },
+    { d: 'M62 24 C72 20 86 20 96 24 M98 44 l10 2 M98 56 l10 3', role: 'soft' },
+    {
+      d: 'M86 84 L68 92 C66 108 62 126 58 144 Q84 152 112 144 C110 126 112 106 114 90 L104 80',
+    },
+    {
+      d: 'M78 96 C76 112 74 128 72 146 M104 94 C104 110 104 126 104 146',
+      role: 'soft',
+    },
+    { d: 'M106 104 l5 -3 M106 118 l5 -3 M106 132 l5 -3', role: 'ambient' },
+    {
+      d: `M86 84 C82 76 84 68 90 64 M104 80 C108 72 106 64 100 60 M86 84 C92 86 98 84 104 80 ${ellipse(68, 92, 8, 3.5)} ${ellipse(114, 88, 8, 3.5)}`,
+      role: 'accent',
+    },
+    shadow(80, 192, 62),
   ],
 
   // One great wave, the way a print draws it. The Sunny's helm is drawn above
@@ -194,27 +267,34 @@ export const summitWarArt = {
     shadow(80, 166, 48),
   ],
 
-  // A starfish wearing a hat much too small for it.
+  // A starfish turned three-quarters to the reader, its arms ridged and their
+  // undersides showing, the tam tilted on the top arm. He rides on Camie's
+  // head from episode 385.
   'pappag': [
-    { d: star(80, 118, 44, 20) },
     {
-      d: dots([
-        [66, 112],
-        [94, 112],
-        [80, 134],
-      ]),
+      d: 'M80 64 L92 104 L134 106 L100 130 L114 170 L80 146 L46 170 L60 130 L26 106 L68 104 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M114 170 l2 6 L80 152 L44 176 L46 170 M134 106 l2 4 L104 134',
       role: 'soft',
     },
     {
-      d: dots([
-        [58, 138],
-        [102, 138],
-      ]),
+      d: 'M80 82 V112 M96 114 L116 110 M92 130 L104 154 M68 130 L56 154 M64 114 L44 110',
       role: 'soft',
     },
-    { d: ellipse(80, 72, 18, 4), role: 'accent' },
-    { d: 'M68 72 V56 h24 v16', role: 'accent' },
-    shadow(80, 172, 40),
+    { d: 'M118 112 l-4 8 M110 160 l-4 -6 M50 160 l4 -6', role: 'ambient' },
+    // The tam, tilted.
+    {
+      d: 'M60 72 C56 58 64 44 84 42 C104 40 112 52 106 62 M58 70 C66 76 100 70 108 62',
+      transform: 'translate(0 8) rotate(-14 82 62)',
+    },
+    {
+      d: `${circle(82, 38, 4)} M70 50 q12 6 26 -2`,
+      role: 'soft',
+      transform: 'translate(0 8) rotate(-14 82 62)',
+    },
+    shadow(80, 186, 46),
   ],
 
   // An iron mask with its rivets, in front of a printed sheet.
@@ -298,31 +378,58 @@ export const summitWarArt = {
     shadow(80, 192, 44),
   ],
 
-  // A card turned face up, and a straw doll standing beside it.
+  // A tarot card stood on its edge at an angle, so its thickness shows, its
+  // face left blank; three more lying face down in front of it, their dark
+  // backs hatched. He turns them over to read the odds at Sabaody in
+  // episode 392.
   'basil-hawkins': [
-    { d: 'M32 56 h56 v92 h-56z' },
-    { d: 'M40 66 h40 v72 h-40z', role: 'soft' },
-    { d: star(60, 102, 18, 8), role: 'accent' },
-    { d: 'M118 72 V150' },
-    { d: 'M100 96 h36' },
-    { d: circle(118, 62, 10) },
-    { d: 'M110 150 l-6 18 M126 150 l6 18' },
-    { d: 'M112 84 h12 M110 110 h16', role: 'soft' },
-    shadow(80, 180, 52),
+    { d: 'M58 44 L100 38 L104 118 L62 124 Z', role: 'accent' },
+    { d: 'M100 38 L103 40 L107 119 L104 118', role: 'accent' },
+    { d: 'M65 52 L95 48 L98 111 L68 115 Z', role: 'soft' },
+    shadow(84, 128, 28),
+    {
+      d: 'M10 152 L42 144 L52 160 L20 168 Z M108 160 L140 152 L150 168 L118 176 Z M50 174 L82 166 L92 182 L60 190 Z',
+    },
+    {
+      d: 'M18 156 L44 150 M22 162 L48 156 M116 164 L142 158 M120 170 L146 164 M58 178 L84 172 M62 184 L88 178',
+      role: 'ambient',
+    },
+    {
+      d: 'M10 152 v3 L20 171 L52 163 v-3 M108 160 v3 L118 179 L150 171 v-3',
+      role: 'soft',
+    },
   ],
 
-  // A three-toed footprint with a Marine cap left inside it.
+  // His cocked hat side on, the brim sweeping to a point at the front, the
+  // dark crown hatched and the white plume curling off the back; under it,
+  // lying crossed on the ground, the sword and the axe he wears at his belt.
+  // He arrives at Sabaody in episode 392.
   'x-drake': [
     {
-      d: 'M52 96 C40 108 38 130 48 150 C60 166 100 166 112 150 C122 130 120 108 108 96 C96 88 64 88 52 96z',
+      d: 'M16 112 C30 80 58 62 92 62 C118 62 138 74 146 94 C130 90 114 92 102 100 C76 108 46 110 16 112 Z',
+    },
+    { d: 'M56 106 C66 92 92 86 112 92', role: 'soft' },
+    {
+      d: 'M40 102 l12 -18 M54 102 l14 -24 M68 100 l14 -26 M82 96 l14 -26 M96 90 l12 -20 M110 80 l10 -14',
+      role: 'ambient',
+    },
+    {
+      d: 'M92 62 C96 48 112 40 124 46 C130 36 146 38 150 50 C158 52 160 64 154 70 C146 66 140 70 140 78',
       role: 'accent',
     },
-    { d: 'M52 96 C44 80 46 60 56 58 C64 58 66 76 64 92', role: 'accent' },
-    { d: 'M80 88 C76 70 78 48 84 46 C92 46 92 68 88 88', role: 'accent' },
-    { d: 'M108 96 C116 80 114 60 104 58 C96 58 94 76 96 92', role: 'accent' },
-    { d: 'M60 132 h40 v-14 q-20 -10 -40 0z' },
-    { d: 'M56 132 h48' },
-    shadow(80, 182, 44),
+    {
+      d: 'M108 50 l2 8 M126 48 l-2 8 M142 52 l-4 6 M150 64 l-6 2',
+      role: 'soft',
+    },
+    { d: 'M24 120 H136', role: 'ambient', dashed: true },
+    { d: 'M32.7 158.9 L146 128 L31.3 153.1' },
+    { d: 'M34.1 164.7 L29.9 147.3 M14 160 L32 156' },
+    { d: 'M17.2 134.4 L123.2 168.4 L124.8 163.6 L18.8 129.6 Z' },
+    {
+      d: 'M122 160 C130 150 144 150 152 156 C146 164 144 172 146 180 C138 180 128 176 124 170 Z',
+    },
+    { d: 'M134 158 l4 10 M142 157 l2 12', role: 'ambient' },
+    shadow(80, 186, 60),
   ],
 
   // A monk's iron pillar, rings and all.
@@ -336,18 +443,30 @@ export const summitWarArt = {
     shadow(80, 188, 30),
   ],
 
-  // A pinstriped coat with a fortress gate where the waistcoat should be.
+  // A steak on a plate with the fork stood upright in it, and a glass of wine
+  // beside it on the restaurant table. He is at dinner in Grove 24 in
+  // episode 392, and the fork is what he hits one of his own men with.
   'capone-bege': [
-    { d: 'M40 56 L70 92 L80 80 L90 92 L120 56' },
-    { d: 'M40 56 V172 M120 56 V172' },
-    { d: 'M40 172 h80', role: 'soft' },
-    { d: 'M58 106 h44 v58 h-44z', role: 'accent' },
+    { d: 'M2 162 Q80 172 158 162', role: 'ambient' },
+    { d: ellipse(64, 146, 46, 14) },
+    { d: ellipse(64, 145, 34, 9), role: 'soft' },
     {
-      d: 'M54 106 h52 M60 106 v-8 h7 v8 M76 106 v-8 h7 v8 M92 106 v-8 h7 v8',
+      d: 'M38 142 C34 132 50 126 66 127 C84 128 92 134 90 141 C88 148 76 151 60 150 C46 149 40 147 38 142 Z',
+    },
+    {
+      d: 'M38 142 v4 C42 152 58 155 70 154 C84 153 90 149 90 145 v-4 M48 136 l10 -6 M58 140 l12 -7 M70 142 l10 -6',
+      role: 'soft',
+    },
+    {
+      d: 'M64 136 V114 M70 136 V114 M76 136 V114 M82 136 V114 M62 114 C62 106 84 106 84 114 M70 106 L70 44 C70 38 76 38 76 44 L76 106',
       role: 'accent',
     },
-    { d: 'M70 164 V142 a10 10 0 0 1 20 0 V164', role: 'accent' },
-    shadow(80, 184, 44),
+    { d: 'M118 64 C116 92 124 104 132 104 C140 104 148 92 146 64' },
+    { d: ellipse(132, 64, 14, 3.5) },
+    { d: 'M119 82 C126 85 138 85 145 82', role: 'soft' },
+    { d: 'M121 88 h20 M123 94 h16 M126 99 h10', role: 'ambient' },
+    { d: `M132 104 V140 ${ellipse(132, 142, 13, 3.5)}` },
+    shadow(64, 172, 48),
   ],
 
   // A slice standing up on a plate far too big for it.
@@ -460,18 +579,29 @@ export const summitWarArt = {
     shadow(80, 176, 56),
   ],
 
-  // A warden's cap, and the poison gas his breath leaves around it.
+  // The warden's cap between the two horn ornaments he wears either side of
+  // it, the cap's shaded side hatched, and the poison of his breath curling
+  // underneath. He breathes it on his vice warden in episode 425.
   'magellan': [
-    { d: 'M40 104 C40 74 120 74 120 104z' },
-    { d: 'M32 104 h96' },
-    { d: 'M36 104 q44 18 88 2' },
-    { d: 'M44 90 h72', role: 'soft' },
+    { d: ellipse(80, 82, 24, 7) },
     {
-      d: 'M52 128 q10 -8 20 0 t20 0 t20 0 M44 146 q12 -8 24 0 t24 0 t24 0',
+      d: 'M56 82 L54 104 M104 82 L106 104 M54 104 C60 112 100 112 106 104 C112 112 112 120 104 122 C90 126 70 126 56 122 C48 120 48 112 54 104 Z',
+    },
+    { d: 'M55 96 C64 102 96 102 105 96', role: 'soft' },
+    { d: 'M96 88 l-4 10 M102 88 l-3 9', role: 'ambient' },
+    { d: 'M54 96 C36 96 20 80 22 48 C30 64 40 74 56 82' },
+    { d: 'M106 96 C124 96 140 80 138 48 C130 64 120 74 104 82' },
+    {
+      d: 'M30 72 l8 -4 M38 82 l6 -6 M130 72 l-8 -4 M122 82 l-6 -6',
+      role: 'soft',
+    },
+    { d: 'M24 62 l6 2 M136 62 l-6 2', role: 'ambient' },
+    {
+      d: 'M86 132 C96 136 104 146 98 154 C92 162 80 158 84 150 C88 144 96 150 92 154 M66 134 C52 138 44 150 50 160 C56 168 70 166 68 156',
       role: 'accent',
       dashed: true,
     },
-    shadow(80, 176, 50),
+    shadow(80, 184, 44),
   ],
 
   // A pharaoh's headdress, and the two-bladed pole beside it.
@@ -499,14 +629,27 @@ export const summitWarArt = {
     shadow(80, 178, 56),
   ],
 
-  // A cot with a blanket thrown over it, slept in for ten hours.
+  // His wine glass, the left half of the rim, bowl, stem and foot in his
+  // colour and the right half plain, the way his hair and clothes are split;
+  // the wine inside hatched. He carries it through the frozen fifth level in
+  // episode 438.
   'inazuma': [
-    { d: 'M24 120 h112 v14 h-112z' },
-    { d: 'M30 134 V164 M130 134 V164' },
-    { d: 'M30 112 c0 -12 30 -12 30 0 c0 8 -30 8 -30 0z', role: 'soft' },
-    { d: 'M56 120 c4 -14 20 -18 40 -16 c20 2 36 6 40 16', role: 'accent' },
-    { d: 'M78 106 q4 8 2 14 M106 106 q-2 8 2 14', role: 'soft' },
-    shadow(80, 172, 56),
+    { d: 'M80 58 C62 58 50 55 50 50 C50 45 62 42 80 42', role: 'accent' },
+    { d: 'M80 42 C98 42 110 45 110 50 C110 55 98 58 80 58' },
+    { d: 'M50 50 C48 98 64 118 80 118', role: 'accent' },
+    { d: 'M110 50 C112 98 96 118 80 118' },
+    { d: 'M53 82 C60 87 100 87 107 82', role: 'soft' },
+    { d: 'M56 92 h48 M60 100 h40 M66 108 h28', role: 'ambient' },
+    {
+      d: 'M77 118 V160 C70 162 58 164 54 168 C54 172 66 174 80 174',
+      role: 'accent',
+    },
+    { d: 'M83 118 V160 C90 162 102 164 106 168 C106 172 94 174 80 174' },
+    {
+      d: 'M54 168 C54 164 66 162 80 162 C94 162 106 164 106 168',
+      role: 'soft',
+    },
+    shadow(80, 184, 38),
   ],
 
   // A long blade laid down, the rain still on it.
@@ -635,36 +778,97 @@ export const summitWarArt = {
     shadow(80, 184, 42),
   ],
 
-  // A battleship, for the pirate named after one.
+  // The top of a fortress wall, small and far off, and behind it, far bigger,
+  // the top of his head with its spiky round hair, his ears and the slope of
+  // his shoulders. No face: he rises behind Marine headquarters in
+  // episode 484.
   'san-juan-wolf': [
-    { d: 'M14 120 h132 l-14 34 h-104z', role: 'accent' },
-    { d: 'M20 132 h120', role: 'soft' },
-    { d: 'M50 120 v-24 h44 v24 M62 96 v-16 h20 v16' },
-    { d: 'M70 80 v-18 h8 v18' },
-    { d: 'M94 108 h22 M50 108 h-22' },
-    { d: 'M76 58 q6 -10 0 -18 q-6 -8 -2 -14', role: 'ambient', dashed: true },
-    { d: 'M-4 162 H164', role: 'ambient' },
-  ],
-
-  // A horned crown put down on a cushion.
-  'avalo-pizarro': [
-    { d: 'M30 138 h100 l8 30 h-116z' },
-    { d: 'M22 168 h116', role: 'soft' },
-    { d: 'M30 138 q50 12 100 0', role: 'soft' },
-    { d: 'M22 168 l-4 6 M138 168 l4 6' },
-    { d: 'M48 132 V96 h64 v36z' },
-    { d: 'M48 96 C44 66 38 50 26 38 C44 44 54 62 58 84', role: 'accent' },
     {
-      d: 'M112 96 C116 66 122 50 134 38 C116 44 106 62 102 84',
+      d: 'M-4 140 H2 V134 H8 V140 H14 V134 H20 V140 H26 V134 H32 V140 H38 V134 H44 V140 H50 V134 H56 V140 H62 V134 H68 V140 H74 V134 H80 V140 H86 V134 H92 V140 H98 V134 H104 V140 H110 V134 H116 V140 H122 V134 H128 V140 H134 V134 H140 V140 H146 V134 H152 V140 H158 V134 H164',
+    },
+    { d: 'M-4 182 H164', role: 'ambient' },
+    { d: 'M-4 150 H164 M-4 160 H164 M-4 170 H164', role: 'soft' },
+    {
+      d: 'M12 140 V150 M36 140 V150 M60 140 V150 M84 140 V150 M108 140 V150 M132 140 V150 M156 140 V150 M24 150 V160 M48 150 V160 M72 150 V160 M96 150 V160 M120 150 V160 M144 150 V160',
+      role: 'ambient',
+    },
+    {
+      d: 'M45 140 C37.5 110 45 77.5 80 72.5 C115 77.5 122.5 110 115 140',
       role: 'accent',
     },
-    { d: 'M80 96 V58 l-8 10 M80 58 l8 10', role: 'accent' },
-    { d: 'M44 112 h72', role: 'soft' },
+    {
+      d: 'M42.4 117.5 L33.5 119.4 M43.5 106.8 L34.5 106.1 M46.5 96.9 L38 94 M51.6 88.1 L43.9 83.2 M58.8 81 L52.4 74.5 M68.1 75.6 L63.5 67.8 M91.9 75.6 L91.8 66.5 M101.2 81 L103.2 72 M108.4 88.1 L112.4 80 M113.5 96.9 L119.2 89.9 M116.5 106.8 L123.9 101.5 M117.6 117.5 L126.1 114.4',
+      role: 'accent',
+    },
+    {
+      d: 'M57.5 95 l6.2 -6.2 M72.5 87.5 l6.2 -6.2 M87.5 87.5 l6.2 -6.2 M100 97.5 l6.2 -6.2 M62.5 110 l6.2 -6.2 M92.5 110 l6.2 -6.2',
+      role: 'soft',
+    },
+    {
+      d: 'M42.5 112.5 C32.5 107.5 30 125 42.5 130 M117.5 112.5 C127.5 107.5 130 125 117.5 130',
+    },
+    {
+      d: 'M45 140 C25 120 -7.5 117.5 -27.5 122.5 M115 140 C135 120 167.5 117.5 187.5 122.5',
+    },
+    {
+      d: 'M-2.5 130 l7.5 7.5 M12.5 127.5 l7.5 10 M147.5 127.5 l-7.5 10 M162.5 130 l-7.5 7.5',
+      role: 'ambient',
+    },
   ],
 
-  // A Marine cap with a fist burned through it. The fleet admiral's braid is
-  // added from 570, in `summitWarRedrawn`.
-  'sakazuki': BURNED_CAP,
+  // His patterned fur collar laid down in a ring, ragged at the edge, the
+  // bead necklaces draped across it, and the two white horns on their black
+  // plates resting on top. No crown: that comes after the timeskip. He stands
+  // on the scaffold with Blackbeard in episode 484.
+  'avalo-pizarro': [
+    {
+      d: 'M14 150 L22 144 L16 136 L28 132 L26 122 L40 122 L44 112 L56 118 L66 108 L76 116 L86 108 L96 116 L106 108 L114 118 L126 114 L128 124 L140 126 L136 136 L148 140 L140 148 L148 156 L136 160 L138 170 L124 170 L118 178 L106 172 L94 180 L84 172 L72 180 L62 172 L50 178 L42 170 L28 172 L28 162 L16 158 Z',
+    },
+    {
+      d: 'M44 146 C44 132 116 132 116 146 C116 156 44 156 44 146 Z',
+      role: 'soft',
+    },
+    {
+      d: 'M50 140 l4 6 M60 136 l3 6 M100 136 l-3 6 M110 140 l-4 6',
+      role: 'ambient',
+    },
+    { d: 'M34 128 C44 160 116 160 126 128', role: 'soft' },
+    {
+      d: dots([
+        [36, 136],
+        [42, 146],
+        [52, 154],
+        [64, 158],
+        [80, 160],
+        [96, 158],
+        [108, 154],
+        [118, 146],
+        [124, 136],
+        [46, 164],
+        [62, 170],
+        [80, 172],
+        [98, 170],
+        [114, 164],
+      ]),
+      role: 'soft',
+    },
+    {
+      d: 'M40 116 L54 112 L58 124 L44 128 Z M106 112 L120 116 L116 128 L102 124 Z',
+    },
+    { d: 'M44 118 l6 6 M108 116 l6 6', role: 'ambient' },
+    {
+      d: 'M48 114 C36 102 32 84 38 66 C44 82 52 96 56 112 M112 114 C124 102 128 84 122 66 C116 82 108 96 104 112',
+      role: 'accent',
+    },
+    { d: 'M38 88 l7 -2 M122 88 l-7 -2', role: 'soft' },
+    shadow(80, 190, 60),
+  ],
+
+  // His Marine cap set on his folded crimson suit, the rose in the lapel's
+  // buttonhole in his colour. He sits under the scaffold in that suit from
+  // episode 459. The fleet admiral's braid is added from 570, in
+  // `summitWarRedrawn`.
+  'sakazuki': [...CAP_ON_SUIT, { d: SAKAZUKI_ROSE, role: 'accent' }],
 
   // A diamond the size of a shoulder plate.
   'jozu': [
@@ -677,18 +881,23 @@ export const summitWarArt = {
     shadow(80, 182, 40),
   ],
 
-  // Two rapiers crossed above a rose.
+  // His two sabres crossed, each with its knuckle guard seen round, over his
+  // top hat with its shaded side hatched. He holds the front line in the bay
+  // with both in episode 461.
   'vista': [
-    { d: 'M26 28 L118 120' },
-    { d: 'M134 28 L42 120' },
-    { d: 'M118 120 l12 10 M42 120 l-12 10' },
-    { d: 'M106 110 q12 8 8 18 M54 110 q-12 8 -8 18' },
-    { d: circle(80, 146, 16), role: 'accent' },
+    { d: 'M35.9 121.7 L131.9 15.7 L128.1 12.3 L32.1 118.3 Z' },
+    { d: 'M127.9 118.3 L31.9 12.3 L28.1 15.7 L124.1 121.7 Z' },
     {
-      d: 'M80 134 c9 0 13 7 10 13 c-3 6 -11 7 -15 3 c-4 -5 -1 -13 7 -13',
+      d: 'M24 120 C20 132 36 140 46 130 M136 120 C140 132 124 140 114 130 M30 112 l12 12 M130 112 l-12 12',
       role: 'accent',
     },
-    { d: 'M64 152 q-12 -2 -16 -10 M96 152 q12 -2 16 -10', role: 'accent' },
+    { d: 'M34 120 l-6 8 M126 120 l6 8', role: 'soft' },
+    { d: `${ellipse(80, 116, 22, 5)} M58 116 V158 M102 116 V158` },
+    { d: 'M58 150 C70 154 90 154 102 150', role: 'soft' },
+    {
+      d: 'M40 160 C40 154 58 154 58 158 M102 158 C102 154 120 154 120 160 C120 168 40 168 40 160',
+    },
+    { d: 'M90 124 l8 -4 M90 134 l8 -4 M90 144 l8 -4', role: 'ambient' },
     shadow(80, 182, 44),
   ],
 
@@ -885,31 +1094,32 @@ export const summitWarArt = {
     { d: 'M20 176 h120', role: 'ambient', dashed: true },
   ],
 
-  // A tall mountain with an arch in the shape of a heart at its top and a
-  // walled village in the hollow at its foot.
+  // The island's great mountain from the sea, split by the deep valley where
+  // the village stands, a river running out of it, and the curved snake
+  // statues carved either side. Luffy lands on it in episode 408.
   'amazon-lily': [
     {
-      d: 'M6 150 C24 120 36 86 46 50 C52 28 72 24 80 40 C88 24 108 28 114 50 C124 86 136 120 154 150',
+      d: 'M-4 150 C8 132 16 110 22 92 C28 74 34 62 44 60 C54 62 60 68 64 76 M96 70 C100 50 106 30 118 26 C128 28 134 48 138 72 C144 104 152 132 164 150',
     },
+    { d: 'M64 76 C68 100 60 128 52 150 M96 70 C92 98 100 128 108 150' },
+    { d: 'M64 76 C72 66 88 62 96 70', role: 'soft' },
     {
-      d: 'M66 66 C60 54 72 46 80 58 C88 46 100 54 94 66 L80 84 Z',
-      role: 'accent',
-    },
-    { d: 'M48 150 V116 C48 96 112 96 112 116 V150' },
-    {
-      d: 'M56 150 V134 h10 v16 M72 150 V128 h16 v22 M94 150 V134 h10 v16',
-      role: 'soft',
-    },
-    {
-      d: 'M52 134 l9 -8 l9 8 M70 128 l10 -9 l10 9 M90 134 l9 -8 l9 8',
-      role: 'soft',
-    },
-    {
-      d: 'M20 150 V132 M20 132 q-10 -6 -14 4 M20 132 q10 -6 14 4 M140 150 V130 M140 130 q-10 -6 -14 4 M140 130 q10 -6 14 4',
+      d: 'M94 84 l-6 4 M93 98 l-6 4 M94 112 l-6 4 M98 126 l-6 4',
       role: 'ambient',
     },
-    { d: 'M-4 150 H164', role: 'ambient' },
-    ...SEA.slice(1),
+    {
+      d: 'M12 140 C10 124 18 108 30 100 C26 110 24 118 26 126 M148 116 C152 102 148 88 136 82 C140 90 142 98 140 104',
+      role: 'accent',
+    },
+    {
+      d: 'M60 140 l6 -6 l6 6 M74 142 l6 -6 l6 6 M88 140 l6 -6 l6 6 M60 140 v6 M72 140 v6 M74 142 v6 M86 142 v6 M88 140 v6 M100 140 v6 M80 148 C76 152 84 154 80 158',
+      role: 'soft',
+    },
+    {
+      d: 'M34 76 l6 -4 M30 88 l6 -4 M126 50 l-6 -4 M130 62 l-6 -4',
+      role: 'ambient',
+    },
+    ...SEA,
   ],
 
   // A cap tossed on the arena sand, three claw marks raked beside it.
@@ -1077,25 +1287,34 @@ export const summitWarArt = {
     shadow(80, 186, 44),
   ],
 
-  // A giant's sabre snapped in two, hilt on one side and blade on the other.
+  // A giant's sabre snapped in two on the ground: the hilt with its knuckle
+  // bow and hatched grip, a stub of blade, the shards, and the long curved
+  // blade lying apart, both breaks in his colour. It shatters on Oars Jr.'s
+  // blade in his first charge, episode 464.
   'lacroix': [
-    { d: 'M20 150 h28 v10 h-28z' },
-    { d: 'M48 136 v34' },
-    { d: 'M20 150 C20 134 40 130 48 136', role: 'soft' },
-    { d: 'M48 150 h14 l4 4 l-4 3 l3 3 h-17', role: 'accent' },
+    { d: 'M16 158 L44 144 L40 136 L12 150 Z' },
     {
-      d: 'M80 152 l6 -4 l-3 -4 h18 C120 144 138 140 146 132 C140 148 120 160 96 160 h-16z',
+      d: 'M17 150 l3 6 M24 146 l3 6 M31 143 l3 6 M37 140 l3 6',
+      role: 'ambient',
+    },
+    { d: 'M38 128 L48 150 M16 160 C16 176 44 172 46 148' },
+    { d: 'M44 136 L64 128 M47 144 L66 136', role: 'soft' },
+    { d: 'M84 144 C108 138 132 126 152 104 C134 132 110 148 86 154' },
+    { d: 'M90 148 C112 142 132 130 148 112', role: 'soft' },
+    {
+      d: 'M64 128 l3 3 l-4 2 l4 2 l-1 1 M84 144 l3 3 l-4 2 l4 3 l-1 2',
       role: 'accent',
     },
     {
       d: dots([
-        [68, 144],
-        [72, 162],
-        [74, 138],
+        [72, 140],
+        [76, 150],
+        [70, 146],
+        [78, 132],
       ]),
-      role: 'soft',
+      role: 'accent',
     },
-    shadow(84, 176, 64),
+    shadow(82, 178, 70),
   ],
 
   // An icebreaker's iron-shod prow, and the floes it has split.
@@ -1162,20 +1381,35 @@ export const summitWarArt = {
     shadow(80, 170, 50),
   ],
 
-  // A pair of spiked gloves, laid down side by side.
+  // One spiked glove clenched in a fist, seen from the front: the four
+  // fingers curled, the thumb across them, the side of the hand and the cuff
+  // hatched, a spike on every knuckle. He puts them on to beat Luffy in the
+  // hold of the wreck in episode 495.
   'porchemy': [
-    { d: 'M24 150 V104 C24 92 70 92 70 104 V150z' },
-    { d: 'M90 150 V104 C90 92 136 92 136 104 V150z' },
     {
-      d: 'M28 96 l4 -12 l4 12 M42 92 l4 -12 l4 12 M56 94 l4 -12 l4 12',
-      role: 'accent',
+      d: 'M42 108 V72 a9 9 0 0 1 18 0 a9 9 0 0 1 18 0 a9 9 0 0 1 18 0 a9 9 0 0 1 18 0 V100',
+    },
+    { d: 'M114 72 L122 66 C130 70 132 90 128 112 L120 128', role: 'soft' },
+    {
+      d: 'M60 72 V98 M78 72 V100 M96 72 V100 M44 86 q7 4 14 0 M62 86 q7 4 14 0 M80 86 q7 4 14 0 M98 86 q7 4 14 0',
+      role: 'soft',
     },
     {
-      d: 'M94 96 l4 -12 l4 12 M108 92 l4 -12 l4 12 M122 94 l4 -12 l4 12',
+      d: 'M38 112 C38 100 50 96 60 100 L100 112 C110 116 108 128 98 128 H56 C46 128 38 122 38 112 Z',
+    },
+    {
+      d: 'M38 112 C36 124 40 134 46 140 M114 100 C118 112 120 124 116 138 M46 140 L42 168 H122 L116 138 Z',
+    },
+    { d: 'M44 152 H120', role: 'soft' },
+    {
+      d: 'M118 74 l6 -4 M122 86 l6 -4 M124 98 l5 -3 M122 110 l5 -3 M104 156 l6 -12 M114 156 l4 -10',
+      role: 'ambient',
+    },
+    {
+      d: 'M45 64 l6 -18 l6 18 M63 64 l6 -18 l6 18 M81 64 l6 -18 l6 18 M99 64 l6 -18 l6 18',
       role: 'accent',
     },
-    { d: 'M24 138 h46 M90 138 h46', role: 'soft' },
-    shadow(80, 166, 64),
+    shadow(82, 182, 46),
   ],
 
   // An open dictionary with its ribbon hanging, and a short sword behind it.
@@ -1192,22 +1426,32 @@ export const summitWarArt = {
     shadow(76, 182, 50),
   ],
 
-  // A cord tied in three knots, a gust curling out of the one undone.
+  // His blue pointed hat on its brim, the far side of the cone hatched; beside
+  // it a wind knot, two knots still tied and the end undone, the gust it lets
+  // loose curling up. He shows Nami how they work on Weatheria.
   'haredas': [
+    { d: 'M14 132 C14 122 106 122 106 132 C106 142 14 142 14 132 Z' },
     {
-      d: 'M38 60 c0 -10 14 -14 20 -6 c4 -8 18 -6 18 4 c8 0 10 12 0 12 h-34 c-8 0 -10 -10 -4 -10z',
-      role: 'soft',
+      d: 'M26 128 C40 100 50 66 58 40 C62 30 72 24 82 30 C76 32 72 38 70 46 C74 76 84 104 94 128',
     },
-    { d: 'M24 120 C44 108 60 132 80 120 C100 108 112 128 124 118' },
-    { d: circle(43, 117, 6) },
-    { d: circle(80, 120, 6) },
-    { d: 'M118 112 c8 -2 12 6 6 10 c-6 2 -10 -6 -2 -12', role: 'soft' },
+    { d: 'M30 118 C46 126 76 126 90 116', role: 'soft' },
     {
-      d: 'M126 116 c12 -10 18 -28 6 -38 c-10 -8 -24 2 -16 12 c6 6 14 0 10 -6',
+      d: 'M78 60 l-6 4 M82 76 l-7 4 M86 92 l-7 4 M90 108 l-7 4',
+      role: 'ambient',
+    },
+    { d: 'M90 162 C104 150 116 166 128 156' },
+    { d: `${circle(102, 156, 4)} ${circle(118, 160, 4)}`, role: 'soft' },
+    {
+      d: 'M128 156 C140 146 146 128 136 120 C128 114 118 122 124 130 C128 134 134 130 132 126',
       role: 'accent',
     },
-    { d: 'M110 70 c10 -12 26 -12 34 0', role: 'accent' },
-    shadow(80, 176, 50),
+    {
+      d: 'M110 112 c8 -10 22 -10 30 -2 M118 100 c8 -6 16 -6 22 0',
+      role: 'accent',
+      dashed: true,
+    },
+    shadow(66, 150, 50),
+    shadow(112, 176, 26),
   ],
 
   // A stamp set down beside the papers it has just signed off.
@@ -1327,28 +1571,30 @@ export const summitWarRedrawn: Redrawings = {
     },
   ],
 
-  // The same cap, its band now the fleet admiral's braid: a twisted cord
-  // across the front and a looped cord hung from its side, the rank Sengoku
-  // wore handed down. Jinbe tells the crew he won the seat at 570 (ch. 650).
+  // The same cap on the same suit, its band now the fleet admiral's braid in
+  // his colour: a twisted cord along the front and a short looped cord hung
+  // from its side, the rank Sengoku wore handed down. The rose stays, plain.
+  // Jinbe tells the crew he won the seat at 570 (ch. 650).
   'sakazuki': [
     {
       episode: 570,
       chapter: 650,
       value: [
-        ...BURNED_CAP,
+        ...CAP_ON_SUIT,
+        { d: SAKAZUKI_ROSE, role: 'soft' },
         {
-          d: 'M34 121 c4 0 4 6 8 6 M42 121 c4 0 4 6 8 6 M50 121 c4 0 4 6 8 6 M58 121 c4 0 4 6 8 6 M66 121 c4 0 4 6 8 6 M74 121 c4 0 4 6 8 6 M82 121 c4 0 4 6 8 6 M90 121 c4 0 4 6 8 6 M98 121 c4 0 4 6 8 6 M106 121 c4 0 4 6 8 6 M114 121 c4 0 4 6 8 6 M122 121 c4 0 4 6 8 6',
+          d: 'M43.2 89.8 c2.4 1.2 -0.3 6.6 2.1 7.8 M47.1 91.9 c2.8 1 0.8 6.7 3.7 7.6 M52.1 93.6 c3.1 0.7 1.8 6.6 4.9 7.3 M57.7 95 c3.4 0.5 2.5 6.4 5.9 6.9 M63.9 95.9 c3.5 0.2 3.2 6.2 6.6 6.4 M70.3 96.3 c3.5 -0.1 3.7 5.9 7.2 5.9 M76.9 96.1 c3.5 -0.3 4.1 5.6 7.6 5.3 M83.3 95.5 c3.4 -0.6 4.5 5.3 7.8 4.7 M89.3 94.5 c3.1 -0.9 4.8 4.9 7.9 4 M94.8 92.9 c2.8 -1.2 5.2 4.3 8 3.1 M99.5 91 c2.4 -1.5 5.6 3.6 8 2.1',
           role: 'accent',
         },
         {
-          d: 'M132 122 C146 128 148 144 136 150 C128 154 124 146 130 140 M136 150 v8 M132 151 l-2 7 M140 149 l2 7',
+          d: 'M108 94 C116 96 118 104 113 108 C109 110 106 106 109 103 M113 108 v4 M111 108 l-2 4 M115 107 l2 4',
           role: 'accent',
         },
       ],
     },
   ],
 
-  // The same magnet, beside the metal arm Kid wears after the timeskip:
+  // A horseshoe magnet, beside the metal arm Kid wears after the timeskip:
   // wires out of the socket, two rods and a spring piston down the forearm,
   // hatched on its shaded side, a riveted wrist block and jointed fingers.
   // First seen clearly at 603 (ch. 677); a silhouette only at 600.
