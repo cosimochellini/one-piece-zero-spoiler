@@ -507,11 +507,11 @@ export const wanoArt = {
 
   // His left forearm raised, seen from the palm: the index finger up, the
   // other three folded side by side and the thumb across them. "Only once",
-  // the one chance he gives Robin when his ninja catch her in the castle
-  // (931, ep. 925). The tattoo is the one on that arm: three of its five
-  // ninja stars, the ones on the face we see, in his colour, over two zigzag
-  // stripes that stop where the arm turns away into the hatching. The
-  // earlobes he fights with come much later.
+  // the one chance he gives Robin when his ninja catch her in the castle, as
+  // the ch. 931 panel and the ep. 925 frame show it. The tattoo is the one on
+  // that arm: three of its five ninja stars, the ones on the face we see, in
+  // his colour, over two zigzag stripes that stop where the arm turns away
+  // into the hatching. The earlobes he fights with come much later.
   'fukurokuju': [
     { d: 'M66 72 V24 Q66 14 72.5 14 Q79 14 79 24 V62' },
     { d: 'M67 37 q5.5 1.5 11 0 M67 52 q5.5 1.5 11 0', role: 'soft' },
@@ -525,14 +525,14 @@ export const wanoArt = {
     { d: 'M66 112 C63 128 59 144 56 160 C54 172 53 186 53 198' },
     { d: 'M101 110 C106 126 111 144 114 160 C116 172 117 186 117 198' },
     {
-      d: 'M71 116 L72.7 120.3 L77 122 L72.7 123.7 L71 128 L69.3 123.7 L65 122 L69.3 120.3 Z M82 125 L83.7 129.3 L88 131 L83.7 132.7 L82 137 L80.3 132.7 L76 131 L80.3 129.3 Z M93 134.5 L94.5 138.5 L98.5 140 L94.5 141.5 L93 145.5 L91.5 141.5 L87.5 140 L91.5 138.5 Z',
+      d: 'M73.5 110.8 L75.5 116 L80.7 118 L75.5 120 L73.5 125.2 L71.5 120 L66.3 118 L71.5 116 Z M84.5 123.3 L86.5 128.5 L91.7 130.5 L86.5 132.5 L84.5 137.7 L82.5 132.5 L77.3 130.5 L82.5 128.5 Z M95.5 135.8 L97.5 141 L102.7 143 L97.5 145 L95.5 150.2 L93.5 145 L88.3 143 L93.5 141 Z',
       role: 'accent',
     },
     {
-      d: 'M58.4 152 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 M56.6 160 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4',
+      d: 'M57.8 156 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 M56 164 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4',
     },
     {
-      d: 'M97 124 l6 -4 M101 138 l6 -4 M104.5 152 l6 -4 M107 166 l6 -4 M108.5 180 l6 -4',
+      d: 'M97 124 l6 -4 M103 140 l5.5 -4 M104.5 152 l6 -4 M107 166 l6 -4 M108.5 180 l6 -4',
       role: 'ambient',
     },
   ],
