@@ -167,15 +167,16 @@ export const thrillerBarkChronicles = {
   ],
   'gecko-moria': [
     {
-      episode: 343,
+      episode: 349,
+      chapter: 455,
       value: {
         title: {
           it: 'Il nome che fa tremare Thriller Bark',
           en: 'The name that makes Thriller Bark tremble',
         },
         body: {
-          it: 'Nella foresta di Thriller Bark, un vecchio zombie senza più la propria ombra ferma la ciurma di [[monkey-d-luffy|Rufy]] e li implora di sconfiggere chi gliel’ha rubata prima che tocchi a loro: Moria, un membro della Flotta dei Sette che ruba le ombre ai vivi e le cuce sui cadaveri, condannando chi ne resta privo a bruciare al primo sole. Poco dopo la ciurma scopre che l’isola su cui camminano non è terra ma una nave enorme, con l’albero maestro come dimora del suo padrone. Quella notte, Moria si sveglia da un sonno di quattro giorni per dirigere la caccia di persona.',
-          en: 'In the Thriller Bark forest, an old zombie with no shadow of his own stops [[monkey-d-luffy|Luffy]]’s crew and begs them to defeat whoever took it before it’s their turn: Moria, a Warlord of the Sea who steals the shadows of the living and sews them onto corpses, leaving whoever is left without one to burn at first sunlight. Soon after, the crew discovers the island they are walking on is no island at all but an enormous ship, its mainmast the home of its master. That night, Moria wakes from a four-day sleep to direct the hunt in person.',
+          it: 'Nella foresta di Thriller Bark, un vecchio zombie senza più la propria ombra ferma la ciurma di [[monkey-d-luffy|Rufy]] e li implora di sconfiggere chi gliel’ha rubata prima che tocchi a loro: Moria, un membro della Flotta dei Sette che ruba le ombre ai vivi e le cuce sui cadaveri, condannando chi ne resta privo a bruciare al primo sole. Poco dopo la ciurma scopre che l’isola su cui camminano non è terra ma una nave enorme, con l’albero maestro come dimora del suo padrone. Quella notte Moria si sveglia da un sonno di quattro giorni. Quando i suoi tre ufficiali si radunano davanti a lui, con Rufy catturato, lo si vede finalmente per intero: un gigante pallido, con due corna e un sorriso pieno di denti aguzzi.',
+          en: 'In the Thriller Bark forest, an old zombie with no shadow of his own stops [[monkey-d-luffy|Luffy]]’s crew and begs them to defeat whoever took it before it’s their turn: Moria, a Warlord of the Sea who steals the shadows of the living and sews them onto corpses, leaving whoever is left without one to burn at first sunlight. Soon after, the crew discovers the island they are walking on is no island at all but an enormous ship, its mainmast the home of its master. That night Moria wakes from a four-day sleep. When his three officers gather before him with Luffy captured, he is finally seen whole: a pale giant with two horns and a grin full of pointed teeth.',
         },
       },
     },
@@ -281,8 +282,8 @@ export const thrillerBarkChronicles = {
           en: 'The master’s messenger',
         },
         body: {
-          it: 'Mentre [[perona|Perona]] svuota la Thousand Sunny di quel poco che contiene, Hildon arriva in volo con un messaggio: [[gecko-moria|Moria]] convoca una riunione. Porta l’avviso anche ad [[absalom|Absalom]], e con l’avviso una notizia che preoccupa entrambi: [[brook|Brook]] è sull’isola, e nessuno lo tiene d’occhio. Nessuno di loro sa che [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] sono nascosti dentro [[kumashi|Kumacy]], lì accanto, e ascoltano ogni parola.',
-          en: 'While [[perona|Perona]] empties the Thousand Sunny of what little it holds, Hildon flies in with a message: [[gecko-moria|Moria]] is calling a meeting. He brings the summons to [[absalom|Absalom]] too, and with it a piece of news that worries them both: [[brook|Brook]] is on the island, and on the loose. None of them knows that [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] are hidden inside [[kumashi|Kumashi]], standing right beside them, listening to every word.',
+          it: 'Mentre [[perona|Perona]] svuota la Thousand Sunny di quel poco che contiene, Hildon arriva in volo con un messaggio: Moria convoca una riunione. Porta l’avviso anche ad [[absalom|Absalom]], e con l’avviso una notizia che preoccupa entrambi: [[brook|Brook]] è sull’isola, e nessuno lo tiene d’occhio. Nessuno di loro sa che [[nami|Nami]], [[usopp|Usop]] e [[tony-tony-chopper|Chopper]] sono nascosti dentro [[kumashi|Kumacy]], lì accanto, e ascoltano ogni parola.',
+          en: 'While [[perona|Perona]] empties the Thousand Sunny of what little it holds, Hildon flies in with a message: Moria is calling a meeting. He brings the summons to [[absalom|Absalom]] too, and with it a piece of news that worries them both: [[brook|Brook]] is on the island, and on the loose. None of them knows that [[nami|Nami]], [[usopp|Usopp]] and [[tony-tony-chopper|Chopper]] are hidden inside [[kumashi|Kumashi]], standing right beside them, listening to every word.',
         },
       },
     },
@@ -325,8 +326,8 @@ export const thrillerBarkChronicles = {
       value: {
         title: { it: 'Una guida per la villa', en: 'A guide to the mansion' },
         body: {
-          it: '[[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] e [[franky|Franky]] entrano nella villa cercando [[gecko-moria|Moria]], e la stessa sala tende loro la sua sorpresa: Grunfchuck ride del loro coraggio e scatena contro di loro i ritratti e il tappeto d’orso. Durano pochi istanti; Rufy mette fuori combattimento il tappeto, e Grunfchuck resta solo sulla sua parete, sconvolto. Messo alle strette, giura che i tre compagni scomparsi dormono tranquilli al piano di sopra. Poi Franky si accorge che anche Sanji è sparito, e Robin decide che il maiale farà loro da guida per la villa.',
-          en: '[[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] and [[franky|Franky]] walk into the mansion looking for [[gecko-moria|Moria]], and the same room springs its surprise: Buhichuck laughs at their nerve and sends the portraits and the bear rug at them. They last a few moments; Luffy knocks the rug out, and Buhichuck is left alone on his wall, in shock. Cornered, he swears the three missing crewmates are sleeping safely upstairs. Then Franky notices that Sanji has vanished too, and Robin decides the pig will serve as their guide to the mansion.',
+          it: '[[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] e [[franky|Franky]] entrano nella villa cercando Moria, e la stessa sala tende loro la sua sorpresa: Grunfchuck ride del loro coraggio e scatena contro di loro i ritratti e il tappeto d’orso. Durano pochi istanti; Rufy mette fuori combattimento il tappeto, e Grunfchuck resta solo sulla sua parete, sconvolto. Messo alle strette, giura che i tre compagni scomparsi dormono tranquilli al piano di sopra. Poi Franky si accorge che anche Sanji è sparito, e Robin decide che il maiale farà loro da guida per la villa.',
+          en: '[[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]], [[sanji|Sanji]], [[nico-robin|Robin]] and [[franky|Franky]] walk into the mansion looking for Moria, and the same room springs its surprise: Buhichuck laughs at their nerve and sends the portraits and the bear rug at them. They last a few moments; Luffy knocks the rug out, and Buhichuck is left alone on his wall, in shock. Cornered, he swears the three missing crewmates are sleeping safely upstairs. Then Franky notices that Sanji has vanished too, and Robin decides the pig will serve as their guide to the mansion.',
         },
       },
     },

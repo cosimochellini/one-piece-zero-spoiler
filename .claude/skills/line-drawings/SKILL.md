@@ -51,7 +51,7 @@ the rest are left to review, so check them yourself.
   (a windmill's blades, a flower's petals).
 - **Coordinates to one decimal**, as the helpers in `src/lib/svg/primitives.ts`
   write them (`circle`, `ellipse`, `dot`, `dots`, `polygon`, `star`, `wave`,
-  `SEA`, `shadow`, `sheath`, `ghost`, `BLADE`, `house`, `cell`). Use them
+  `SEA`, `shadow`, `sheath`, `BLADE`, `house`, `cell`). Use them
   before writing a path by hand.
 - **A comment above every drawing** says what the object is and where the
   reader first sees it, in the dry voice of the `tone-of-voice` skill.
