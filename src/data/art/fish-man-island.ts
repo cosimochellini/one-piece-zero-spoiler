@@ -1,14 +1,13 @@
-import {
-  cell,
-  circle,
-  dots,
-  ellipse,
-  house,
-  SEA,
-  shadow,
-} from '~/lib/svg/primitives'
+import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
 import type { Drawings } from './stroke'
+
+/** The slant Fukaboshi's trident is drawn at. */
+const FUKABOSHI_SLANT = 'rotate(16 80 110)'
+/** Where Hyouzou's gourd stands, leaning toward his sword. */
+const HYOUZOU_GOURD = 'translate(118 180) rotate(-16)'
+/** The tilt of the pill Zeo holds up. */
+const ZEO_PILL = 'rotate(-12 102 33)'
 
 /** The drawings of the records filed in the fish man island stretch of the route. */
 export const fishManIslandArt = {
@@ -25,19 +24,32 @@ export const fishManIslandArt = {
     ...SEA,
   ],
 
-  // A bubble dome over a row of houses, the root of a great tree coming down
-  // through it.
+  // The Sunny going down in its coating, the bubble the whole ship sails in,
+  // with the lion's mane at the prow and the light from the surface thinning
+  // out above it, dark water below. The descent is what 523 opens on; the
+  // city under the roots is not reached until later.
   'fish-man-island-arc': [
-    { d: 'M20 150 C20 20 140 20 140 150' },
-    { d: 'M14 150 H146' },
-    { d: cell(36, 96), role: 'soft' },
-    { d: cell(104, 96), role: 'soft' },
-    { d: house(40, 24, 130, 116) },
-    { d: house(96, 24, 130, 116) },
-    { d: 'M80 12 C76 40 86 70 80 130', role: 'accent' },
-    { d: 'M80 44 C62 46 50 38 46 24', role: 'accent' },
-    { d: 'M80 66 C98 66 110 58 114 44', role: 'accent' },
-    ...SEA,
+    {
+      d: 'M24 112 C24 58 136 58 136 112 C136 150 112 168 80 168 C48 168 24 150 24 112 Z',
+      role: 'accent',
+    },
+    { d: 'M38 98 C42 84 54 74 70 70', role: 'soft' },
+    { d: 'M42 136 L50 152 Q80 162 110 152 L118 136 Z' },
+    { d: 'M48 144 Q80 152 112 144', role: 'soft' },
+    { d: 'M80 136 V80' },
+    { d: 'M62 88 Q80 84 98 88 L100 124 Q80 128 60 124 Z' },
+    {
+      d: 'M44 134 L36 136 L38 129 L31 126 L37 121 L33 115 L40 114 L40 107 L46 110 L50 104 L52 112 L48 122 L44 134',
+    },
+    {
+      d: 'M44 -4 L56 46 M80 -4 V40 M116 -4 L104 46',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M8 186 l14 -8 M34 192 l14 -8 M110 192 l14 -8 M136 186 l14 -8 M-2 166 l12 -7 M150 164 l12 -7',
+      role: 'ambient',
+    },
   ],
 
   // A wanted poster, water running off its bottom edge.
@@ -76,17 +88,27 @@ export const fishManIslandArt = {
     shadow(80, 172, 46),
   ],
 
-  // A harpoon, the barbs turned back under the point.
+  // A black fedora over a long black coat worn open on a striped undershirt,
+  // the coat's far side hatched, the band of the hat in his colour. That is
+  // all he wears at the gate; the net he fires comes a meeting later, and he
+  // never carries a harpoon.
   'hammond': [
-    { d: 'M72 190 L94 54' },
-    { d: 'M82 191 L104 55' },
-    { d: 'M72 190 L82 191' },
-    { d: 'M76 160 h10 M80 132 h10', role: 'soft' },
-    { d: 'M94 54 L99 14 L104 55 Z', role: 'accent' },
-    { d: 'M95 48 L72 38 L93 60 Z', role: 'accent' },
-    { d: 'M103 49 L126 42 L105 61 Z', role: 'accent' },
-    { d: 'M99 20 V52', role: 'soft' },
-    shadow(84, 196, 26),
+    { d: 'M44 40 C48 33 112 33 116 40 C112 47 48 47 44 40 Z' },
+    { d: 'M56 38 C54 20 62 10 72 10 Q80 16 88 10 C98 10 106 20 104 38' },
+    { d: 'M56 31 Q80 37 104 31', role: 'accent' },
+    { d: 'M94 20 l6 -4 M96 28 l7 -4', role: 'ambient' },
+    { d: 'M64 50 L40 58 Q30 62 28 76 L20 134 H34 L40 94 L36 176 H52 L60 80' },
+    {
+      d: 'M96 50 L120 58 Q130 62 132 76 L140 134 H126 L120 94 L124 176 H108 L100 80',
+    },
+    { d: 'M64 50 L56 72 L60 80 M96 50 L104 72 L100 80', role: 'soft' },
+    { d: 'M68 52 L74 62 L72 152 H57 M92 52 L86 62 L88 152 H103' },
+    { d: 'M63 84 V150 M67.5 66 V150 M97 84 V150 M92.5 66 V150', role: 'soft' },
+    {
+      d: 'M110 92 l10 -6 M110 112 l11 -6 M111 132 l11 -6 M112 152 l11 -6 M128 108 l6 -4',
+      role: 'ambient',
+    },
+    shadow(80, 188, 44),
   ],
 
   // A crystal ball on a café counter, a shark's tail rising behind it.
@@ -185,16 +207,47 @@ export const fishManIslandArt = {
     },
     shadow(74, 196, 50),
   ],
-  // A lance whose head is cut in the shape of a shark.
+  // His gold trident at a slant, the long prongs in his colour, and the pale
+  // band every prince of Ryugu wears wound round the shaft below the head,
+  // its two ends hanging. The trident is what he carries from his first
+  // scene; nothing in it is a shark.
   'fukaboshi': [
-    { d: 'M46 186 L96 62' },
-    { d: 'M56 190 L106 66' },
-    { d: 'M46 186 L56 190' },
-    { d: 'M60 158 l10 4 M72 128 l10 4', role: 'soft' },
-    { d: 'M96 62 C92 40 100 18 120 8 C124 26 122 48 106 66 Z', role: 'accent' },
-    { d: 'M110 28 L128 18 L118 40 Z', role: 'accent' },
-    { d: 'M98 52 l12 -4 M100 44 l12 -4', role: 'soft' },
-    shadow(78, 194, 30),
+    { d: 'M77 74 V186 H83 V74', transform: FUKABOSHI_SLANT },
+    {
+      d: 'M72 74 a8 3 0 0 0 16 0 V66 a8 3 0 0 0 -16 0 Z',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M77 152 h6 M77 158 h6 M77 164 h6',
+      role: 'soft',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M80 64 C62 64 54 52 54 30 M80 64 C98 64 106 52 106 30 M80 64 V30',
+      role: 'accent',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M54 30 L50 22 L54 6 L58 22 Z M106 30 L102 22 L106 6 L110 22 Z M80 30 L76 20 L80 0 L84 20 Z',
+      role: 'accent',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M76 82 L84 78 M76 88 L84 84',
+      role: 'soft',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M84 84 C100 90 98 112 108 130 C114 142 112 152 106 160 L112 164 C120 152 120 140 114 128 C104 110 106 86 84 78',
+      role: 'soft',
+      transform: FUKABOSHI_SLANT,
+    },
+    {
+      d: 'M84 90 C94 102 90 120 94 136 L88 138 C84 124 88 106 84 98',
+      role: 'soft',
+      transform: FUKABOSHI_SLANT,
+    },
+    shadow(98, 192, 34),
   ],
   // A sabre, and two notes going up off the edge of it.
   'ryuboshi': [
@@ -222,80 +275,122 @@ export const fishManIslandArt = {
     shadow(66, 192, 46),
   ],
 
-  // A great pearl on its pin, left on the sill of a tower window.
+  // Her hairgrip, a taiyaki filled with red bean paste, set down on the sill
+  // of her tower window: the cake's waffle crust in fine lines, its edge
+  // showing the cake is thick, the pin beside it, the far side of the window
+  // hatched. No eye on the fish.
   'shirahoshi': [
-    { d: 'M44 158 V76 C44 36 116 36 116 76 V158 Z' },
-    { d: 'M80 158 V44', role: 'soft' },
-    { d: 'M44 100 H116', role: 'soft' },
-    { d: 'M32 158 H128 V172 H32 Z' },
-    { d: circle(80, 110, 18), role: 'accent' },
-    { d: 'M70 102 q6 -8 14 -7', role: 'accent' },
-    { d: 'M80 128 V158', role: 'accent' },
-    { d: 'M24 172 H136', role: 'ambient' },
-    shadow(80, 180, 48),
-  ],
-  // Eight blades out of one grip, the poison still on the points.
-  'hyouzou': [
-    { d: 'M84 86 L80 46 L76 86 Z' },
-    { d: 'M76 122 L80 162 L84 122 Z' },
-    { d: 'M62 100 L22 104 L62 108 Z' },
-    { d: 'M98 100 L138 104 L98 108 Z' },
-    { d: 'M64.5 94.1 L39 63 L70.1 88.5 Z' },
-    { d: 'M89.9 88.5 L121 63 L95.5 94.1 Z' },
-    { d: 'M64.5 113.9 L39 145 L70.1 119.5 Z' },
-    { d: 'M89.9 119.5 L121 145 L95.5 113.9 Z' },
-    { d: circle(80, 104, 16), role: 'accent' },
-    { d: circle(80, 104, 8), role: 'soft' },
+    { d: 'M30 150 V70 C30 20 130 20 130 70 V150' },
+    { d: 'M40 128 V72 C40 34 120 34 120 72 V110', role: 'soft' },
+    { d: 'M80 108 V30 M40 80 H120', role: 'soft' },
+    { d: 'M120 64 l10 -6 M120 82 l10 -6 M120 100 l10 -6', role: 'ambient' },
+    { d: 'M18 158 L28 150 H132 L142 158 Z' },
+    { d: 'M18 158 V170 H142 V158' },
     {
-      d: dots([
-        [80, 52],
-        [125, 68],
-        [132, 104],
-      ]),
+      d: 'M40 132 C40 116 58 108 80 109 C94 110 104 116 108 122 L126 110 C122 122 122 134 126 146 L108 138 C104 146 92 154 80 154 C58 154 40 148 40 132 Z',
       role: 'accent',
     },
-  ],
-  // A hooded cloak with the coral pattern already coming through it.
-  'zeo': [
-    { d: 'M62 46 C62 32 98 32 98 46 C98 58 92 64 86 66' },
+    { d: 'M62 110 L72 100 L86 110', role: 'accent' },
     {
-      d: 'M62 46 C48 58 34 96 28 154 C50 166 110 166 132 154 C126 96 112 58 98 46',
-    },
-    { d: 'M28 154 C50 148 110 148 132 154', role: 'soft' },
-    { d: 'M70 70 C64 100 60 130 60 154', role: 'soft' },
-    { d: 'M92 70 C98 100 102 130 102 154', role: 'soft' },
-    { d: 'M42 116 q11 -9 19 0 q-9 11 -19 0z', role: 'accent' },
-    { d: 'M92 100 q13 -6 19 4 q-11 9 -19 -4z', role: 'accent' },
-    { d: 'M56 138 q14 -6 20 4 q-12 9 -20 -4z', role: 'accent' },
-    { d: 'M18 178 V152 C18 140 10 134 12 122', role: 'ambient' },
-    { d: 'M144 178 V148 C144 136 152 130 150 118', role: 'ambient' },
-    { d: 'M8 178 H152', role: 'ambient' },
-  ],
-  // A wall bitten through, the two rows of teeth still in the stone.
-  'daruma': [
-    { d: 'M18 34 H142 V180 H18 Z' },
-    { d: 'M18 70 H142 M18 106 H142 M18 142 H142', role: 'soft' },
-    {
-      d: 'M50 34 V70 M94 34 V70 M32 70 V106 M76 70 V106 M120 70 V106 M50 142 V180 M94 142 V180',
+      d: 'M44 142 C48 152 62 158 80 158 C94 158 104 152 108 146',
       role: 'soft',
     },
     {
-      d: 'M38 96 l8 14 l8 -14 l8 14 l8 -14 l8 14 l8 -14 l8 14 l8 -14 l8 14 l8 -14',
+      d: 'M54 116 C48 126 48 140 54 150 M110 130 L120 122 M110 134 L120 140',
+      role: 'soft',
+    },
+    {
+      d: 'M66 120 L94 146 M78 116 L102 138 M64 136 L84 118 M74 146 L98 124',
+      role: 'soft',
+    },
+    { d: 'M42 148 H18 Q14 151 18 154 H40' },
+    shadow(80, 186, 60),
+  ],
+  // The one sword he is first seen with, a katana with no guard in a sheath
+  // covered in long spots, and the gourd he drinks from leaning beside it,
+  // a cord tied round its waist. The eight swords come out much later.
+  'hyouzou': [
+    {
+      d: 'M39.6 175.5 L117.6 37.5 Q122 34 126.4 42.5 L48.4 180.5 Q42 183 39.6 175.5 Z',
+    },
+    { d: 'M56.8 145.1 L65.6 150.1 M59.1 141 L67.9 146' },
+    {
+      d: 'M42.7 170 L54.6 169.5 L49 159 L60.9 158.4 L55.2 147.9',
+      role: 'soft',
+    },
+    {
+      d: 'M67.1 132.7 l3.4 -6.1 M80.2 118.4 l3.4 -6.1 M85.8 99.6 l3.4 -6.1 M98.9 85.3 l3.4 -6.1 M104.5 66.5 l3.4 -6.1 M117.7 52.1 l3.4 -6.1',
       role: 'accent',
     },
     {
-      d: 'M38 144 l8 -14 l8 14 l8 -14 l8 14 l8 -14 l8 14 l8 -14 l8 14 l8 -14 l8 14',
+      d: 'M-6 -36 C-14 -40 -12 -57 0 -57 C12 -57 14 -40 6 -36 C20 -32 18 0 0 0 C-18 0 -20 -32 -6 -36 Z',
+      transform: HYOUZOU_GOURD,
+    },
+    { d: 'M-4 -57 V-64 H4 V-57', transform: HYOUZOU_GOURD },
+    {
+      d: 'M-14 -28 L14 -25 C22 -22 22 -14 18 -8',
+      role: 'soft',
+      transform: HYOUZOU_GOURD,
+    },
+    {
+      d: 'M7 -22 l6 -4 M8 -12 l6 -4 M5 -46 l4 -3',
+      role: 'ambient',
+      transform: HYOUZOU_GOURD,
+    },
+    shadow(90, 190, 50),
+  ],
+  // His forearm raised, the wavy stripes of a wobbegong running round it in
+  // his colour, the hand closed but for the finger and thumb that hold up an
+  // Energy Steroid, the way he holds one to explain the pills at 530. His
+  // camouflage is not shown until the invasion, so the drawing does not use
+  // it.
+  'zeo': [
+    { d: 'M58 198 V140 M108 198 V140' },
+    { d: 'M58 140 V84 Q58 78 63 78 Q68 73 73 78 Q78 73 83 78 Q88 73 90 78' },
+    { d: 'M90 78 V50 Q90 42 95.5 42 Q101 42 101 50 V88' },
+    {
+      d: 'M108 140 V114 C120 100 122 66 114 48 Q110 42 105 46 C106 62 108 80 101 92',
+    },
+    { d: 'M63 78 V92 M73 78 V92 M83 78 V92', role: 'soft' },
+    {
+      d: 'M58 188 q12 7 25 2 t25 2 M58 164 q12 7 25 2 t25 2 M58 128 q12 7 25 2 t25 2 M58 106 q8 5 16 2 t16 2',
       role: 'accent',
     },
-    { d: 'M38 96 V144 M118 96 V144', role: 'accent' },
+    { d: 'M90 64 q5 3 11 0', role: 'accent' },
     {
-      d: dots([
-        [28, 168],
-        [128, 160],
-        [122, 176],
-      ]),
+      d: 'M91 33 a5 5 0 0 1 5 -5 h12 a5 5 0 0 1 0 10 h-12 a5 5 0 0 1 -5 -5 Z',
+      transform: ZEO_PILL,
     },
-    { d: 'M8 188 H152', role: 'ambient' },
+    {
+      d: 'M102 28 V38 M107 28 V38 M102 33 H113',
+      role: 'soft',
+      transform: ZEO_PILL,
+    },
+    { d: 'M102 180 l6 -4 M102 156 l6 -4 M108 92 l6 -4', role: 'ambient' },
+  ],
+  // His helmet, seen from the side: the round hood, the studded ridge, the
+  // great black flaps that sweep up on either side, hatched, and the red
+  // crest along the top. He is introduced in it at 530; the tunnels he bites
+  // through the ground come much later.
+  'daruma': [
+    {
+      d: 'M128 86 C120 77 110 73 100 72 C80 70 60 78 48 96 C38 112 36 140 40 168 H132 L134 132',
+    },
+    { d: 'M53 100 C46 124 46 148 50 168', role: 'soft' },
+    { d: 'M50 98 C64 86 80 80 100 80 C108 80 114 82 118 85', role: 'soft' },
+    { d: 'M86 136 C100 112 120 90 150 66 C146 98 134 128 104 150 Z' },
+    {
+      d: 'M108 126 l10 -8 M114 132 l10 -8 M104 142 l12 -9 M126 108 l8 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M50 96 L44 76 L58 84 L58 62 L70 76 L76 54 L84 72 L94 52 L98 72 L110 58 L110 78 L122 72 L124 90',
+      role: 'accent',
+    },
+    { d: 'M45 102 C34 94 26 80 22 60 C32 70 42 76 52 86' },
+    { d: 'M30 78 l6 -3 M34 88 l6 -3', role: 'ambient' },
+    { d: 'M62 90 l2 6 M74 84 l1.5 6 M87 80.5 l0.5 6 M100 80 v6', role: 'soft' },
+    shadow(86, 184, 52),
   ],
   // Two lances, each head cut like a squid put out to dry.
   'ikaros-much': [
@@ -353,20 +448,33 @@ export const fishManIslandArt = {
     { d: 'M148 74 C152 68 152 74 150 78' },
     shadow(76, 188, 52),
   ],
-  // A shackle broken open, the chain still on it, and the sun that took its
-  // place.
+  // The sheer face of the Red Line rising out of the frame, its far side
+  // hatched, the holds he gouged with his bare hands climbing it in his
+  // colour, and a broken shackle lying open at its foot with its chain: the
+  // climb and the freed slaves, as Hancock tells them. No sun: that is the
+  // crew's mark.
   'fisher-tiger': [
-    { d: 'M84 122 A34 34 0 1 0 78 170 L74 160 A24 24 0 1 1 77 132 Z' },
-    { d: 'M84 122 l8 -6 l-4 10 l10 -2', role: 'soft' },
-    { d: 'M77 132 l10 -4 l-4 8 l10 0', role: 'soft' },
-    { d: `${ellipse(98, 180, 10, 6)} ${ellipse(120, 186, 10, 6)}` },
-    { d: circle(112, 62, 20), role: 'accent' },
+    { d: 'M106 -4 L112 30 L104 64 L112 98 L104 128 L110 156' },
+    { d: 'M-4 152 C34 150 76 156 110 156 L164 146' },
     {
-      d: 'M112 34 V20 M112 90 V104 M84 62 H70 M140 62 H154 M92 42 l-10 -10 M132 82 l10 10 M132 42 l10 -10 M92 82 l-10 10',
+      d: 'M116 24 l18 -10 M114 56 l20 -11 M118 88 l20 -11 M114 118 l20 -11 M116 146 l18 -10 M144 30 l16 -9 M144 66 l16 -9 M146 100 l14 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M-4 40 L18 36 L28 42 L50 38 M40 106 L60 102 L72 108 L96 104',
+      role: 'soft',
+    },
+    {
+      d: 'M58 140 l4 -9 M64 141 l4 -9 M70 142 l4 -9 M76 116 l4 -9 M82 117 l4 -9 M88 118 l4 -9 M50 90 l4 -9 M56 91 l4 -9 M62 92 l4 -9 M74 64 l4 -9 M80 65 l4 -9 M86 66 l4 -9 M52 38 l4 -9 M58 39 l4 -9 M64 40 l4 -9 M74 14 l4 -9 M80 15 l4 -9 M86 16 l4 -9',
       role: 'accent',
     },
-    { d: 'M100 52 q12 -8 24 0', role: 'soft' },
-    shadow(70, 192, 44),
+    {
+      d: 'M62 170 C54 156 26 156 20 170 C14 184 30 194 52 190 L50 183 C34 186 26 180 30 172 C34 164 52 164 56 172 Z',
+    },
+    { d: 'M38 158 v6 M24 166 l4 4', role: 'soft' },
+    { d: 'M64 166 h12 a4 4 0 0 1 0 8 h-12 a4 4 0 0 1 0 -8 Z M76 170 H96' },
+    { d: 'M100 174 a4 4 0 0 1 -4 -4 a4 4 0 0 1 4 -4 h6', role: 'soft' },
+    { d: 'M-4 196 C60 190 120 190 164 194', role: 'ambient', dashed: true },
   ],
   // A doctor's bag on the counter, a shark fin behind it.
   'aladine': [
@@ -396,20 +504,31 @@ export const fishManIslandArt = {
     },
     shadow(80, 186, 56),
   ],
-  // An egg in a top hat, with a cane stood beside it.
+  // The cup of hot tea he wears on his head, on its saucer, steam rising off
+  // it, and his long wooden cane with its crook beside it. The cup, not a
+  // top hat, is what he wears from his first scene.
   'baron-tamago': [
     {
-      d: 'M80 184 C50 184 36 154 40 120 C44 88 60 66 80 66 C100 66 116 88 120 120 C124 154 110 184 80 184 Z',
+      d: 'M24 160 A44 10 0 0 0 112 160 M24 160 A44 10 0 0 1 48 151.1 M88 151.1 A44 10 0 0 1 112 160',
+    },
+    { d: 'M26 164 C40 176 96 176 110 164', role: 'soft' },
+    { d: ellipse(68, 112, 28, 8), role: 'accent' },
+    {
+      d: 'M40 112 C40 140 52 156 68 156 C84 156 96 140 96 112',
       role: 'accent',
     },
-    { d: 'M50 72 H110' },
-    { d: 'M60 72 V30 H100 V72' },
-    { d: 'M60 50 H100', role: 'soft' },
-    { d: 'M52 132 q28 12 56 0', role: 'soft' },
-    { d: 'M142 188 V74' },
-    { d: 'M142 74 C142 58 124 58 124 74' },
-    { d: 'M138 188 h8' },
-    shadow(80, 192, 50),
+    { d: 'M46 114 Q68 122 90 114', role: 'soft' },
+    { d: 'M96 120 C110 116 114 136 92 142' },
+    { d: 'M86 122 l6 -3 M86 134 l6 -3 M80 146 l6 -3', role: 'ambient' },
+    {
+      d: 'M56 96 c-6 -8 6 -14 0 -24 M70 94 c-6 -10 6 -16 0 -30 M84 96 c-6 -8 6 -14 0 -24',
+      role: 'ambient',
+    },
+    {
+      d: 'M128 188 V56 C128 38 108 38 108 52 M134 188 V56 C134 32 102 32 102 52 M102 52 h6',
+    },
+    { d: 'M128 182 h6', role: 'soft' },
+    shadow(84, 192, 58),
   ],
   // A frayed straw hat with a striped band, and a flintlock lying under it.
   'demalo-black': [
@@ -522,19 +641,31 @@ export const fishManIslandArt = {
     { d: `${circle(24, 42, 5)} ${circle(34, 24, 3)}`, role: 'soft' },
     ...SEA,
   ],
-  // An open pocket watch at five past the hour, its chain running to a
-  // heavy key.
+  // His trishula standing upright, the spear point and the crescent blade
+  // in his colour, and the katana from his left hip leaning against its shaft
+  // in its black sheath, hatched. Both are in his hands from his first scene
+  // in the palace.
   'minister-of-the-right': [
-    { d: circle(70, 104, 38) },
-    { d: circle(70, 104, 31), role: 'soft' },
-    { d: 'M64 66 V60 H76 V66' },
-    { d: circle(70, 53, 7) },
-    { d: 'M70 77 V82 M70 126 V131 M43 104 H48 M92 104 H97', role: 'soft' },
-    { d: 'M70 104 L81 85 M70 104 L71 90', role: 'accent' },
-    { d: 'M77 51 C100 36 126 52 128 119', role: 'ambient', dashed: true },
-    { d: circle(128, 128, 9), role: 'accent' },
-    { d: 'M128 137 V180 M128 166 h9 M128 174 h7' },
-    shadow(84, 190, 54),
+    { d: 'M60 188 V72 H66 V188 Z' },
+    { d: 'M57 72 h12 v-8 h-12 Z' },
+    { d: 'M63 64 V56 L57 36 L63 6 L69 36 L63 56', role: 'accent' },
+    { d: 'M40 30 C40 58 86 58 86 30 C78 46 48 46 40 30 Z', role: 'accent' },
+    { d: 'M63 21 V48', role: 'soft' },
+    { d: 'M60 150 h6 M60 156 h6', role: 'soft' },
+    {
+      d: 'M117.3 187.3 L82.3 115.9 M87.7 113.3 L122.7 184.7 Q121 189.5 117.3 187.3',
+    },
+    { d: 'M77.8 118.1 L92.2 111.1 M76.9 116.3 L91.3 109.3' },
+    { d: 'M81.8 113.7 L67.8 85.1 Q69 81 72.2 82.9 L86.2 111.5' },
+    {
+      d: 'M82 108 l3 -1.4 M79 102 l3 -1.4 M76 96 l3 -1.4 M73 90 l3 -1.4',
+      role: 'soft',
+    },
+    {
+      d: 'M110 168 l6 -3 M104 156 l6 -3 M98 144 l6 -3 M92 132 l6 -3',
+      role: 'ambient',
+    },
+    shadow(86, 192, 48),
   ],
   // A cane with a horned grip, beside a loudspeaker still sending a voice
   // out over the island.
