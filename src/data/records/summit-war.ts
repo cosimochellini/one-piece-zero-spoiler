@@ -52,8 +52,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Eustass Kid', en: 'Eustass Kid' },
       summary: {
-        it: 'Un capitano dai capelli rossi con una taglia più alta di quella di Rufy, che attira il metallo verso di sé e non sopporta di essere guardato dall’alto.',
-        en: 'A red-haired captain with a bounty higher than Luffy’s, who pulls metal toward him and cannot stand being looked down on.',
+        it: 'Un capitano dai capelli rossi con una taglia più alta di quella di Rufy per via dei civili che ha ucciso, e che non sopporta di essere guardato dall’alto.',
+        en: 'A red-haired captain whose bounty is higher than Luffy’s because of the civilians he has killed, and who cannot stand being looked down on.',
       },
       visual: { art: 'eustass-kid', tint: 'wine' },
     },
@@ -1080,8 +1080,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Kid Pirates',
       },
       log: {
-        it: 'La taglia più alta della sua generazione, e la reputazione di aver ucciso civili per una parola di troppo. A Sabaody guarda gli altri capitani come concorrenti da eliminare, poi un ragazzo di gomma prende a pugni un Nobile e lui decide che almeno quello vale la pena di vederlo di nuovo. Il metallo gli si attacca al braccio quando lo chiama.',
-        en: 'The highest bounty of his generation, and a reputation for killing civilians over a word too many. At Sabaody he sizes up the other captains as rivals to be removed, then a rubber boy punches a Noble and he decides that one, at least, is worth seeing again. Metal flies to his arm when he calls it.',
+        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody guarda gli altri capitani come rivali, e basta un’occhiata di uno di loro per cominciare una lite.',
+        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he sizes up the other captains as rivals, and a look from one of them is enough to start a quarrel.',
       },
       affiliation: [
         {

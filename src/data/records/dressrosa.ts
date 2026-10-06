@@ -21,6 +21,25 @@ const DONQUIXOTE_ELITE_ROLE = {
   en: 'Donquixote Pirates elite officer',
 }
 
+// The family's ranks are told late: Wicca gives Diamante's and Pica's rank at
+// 652 (chapter 722), and the three armies and who serves in each are laid out
+// at 664 (chapter 732). A member filed before then has a plain role, and the
+// rank is a dated affiliation (#225).
+const DONQUIXOTE_MEMBER_ROLE = {
+  it: 'Membro della famiglia Donquijote',
+  en: 'Member of the Donquixote family',
+}
+
+const DONQUIXOTE_PIRATES = {
+  it: 'Pirati di Donquijote',
+  en: 'Donquixote Pirates',
+}
+
+const TREBOL_ARMY = {
+  it: 'Pirati di Donquijote, ufficiale dell’Armata Trebol',
+  en: 'Donquixote Pirates, Trebol Army officer',
+}
+
 const WANO = { it: 'Paese di Wano', en: 'Wano Country' }
 
 const DRESSROSA = { it: 'Dressrosa', en: 'Dressrosa' }
@@ -372,8 +391,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 725,
       name: { it: 'Sugar', en: 'Sugar' },
       summary: {
-        it: 'Una bambina che mangia acini d’uva seduta in un salotto del palazzo, e che con un tocco trasforma chiunque in un giocattolo.',
-        en: 'A small girl eating grapes in a sitting room of the palace, who turns anyone she touches into a toy.',
+        it: 'Una bambina della famiglia Donquijote che siede accanto a Do Flamingo mangiando uva, e non batte ciglio quando Baby 5 lo attacca.',
+        en: 'A small girl of the Donquixote family who sits beside Doflamingo eating grapes, and does not react when Baby 5 attacks him.',
       },
       visual: { art: 'sugar', tint: 'lavender' },
     },
@@ -386,8 +405,8 @@ export const dressrosa: Saga = {
       commonWord: true,
       name: { it: 'Diamante', en: 'Diamante' },
       summary: {
-        it: 'L’organizzatore del torneo del colosseo, un uomo in piume e cappello che rende molle il proprio corpo e la spada un drappo.',
-        en: 'The man who runs the colosseum tournament, feathered and hatted, who makes his body go limp and his sword a flapping banner.',
+        it: 'Un uomo altissimo e magro della famiglia Donquijote, con un cappello chiaro, che il colosseo presenta come il suo eroe.',
+        en: 'A very tall, thin man of the Donquixote family in a light-coloured hat, whom the colosseum presents as its hero.',
       },
       visual: { art: 'diamante', tint: 'red' },
     },
@@ -398,8 +417,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 709,
       name: { it: 'Pica', en: 'Pica' },
       summary: {
-        it: 'Un gigante muscoloso con una voce acuta che stona con il suo corpo, capace di fondersi nella pietra e muovere l’isola come un braccio.',
-        en: 'A huge muscled man with a high voice that does not suit him, able to melt into stone and move the island like his own arm.',
+        it: 'Un uomo enorme della famiglia Donquijote che siede sul seggio di picche a palazzo, con il volto nell’ombra.',
+        en: 'A huge man of the Donquixote family who sits in the spade seat in the palace, his face in shadow.',
       },
       visual: { art: 'pica', tint: 'sand' },
     },
@@ -410,8 +429,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Señor Pink', en: 'Señor Pink' },
       summary: {
-        it: 'Un gangster in giacca e cravatta che gira con la cuffietta da neonato e il ciuccio, e nuota nella pietra come fosse acqua.',
-        en: 'A gangster in a suit and tie who goes about in a baby bonnet with a dummy in his mouth, and swims through stone as if it were water.',
+        it: 'Un omone della famiglia Donquijote con la cuffietta da neonato, gli occhiali da sole, il bavaglino e il ciuccio in bocca, che la famiglia schiera nel torneo del colosseo.',
+        en: 'A big man of the Donquixote family in a baby’s bonnet, sunglasses and a bib, with a dummy in his mouth, whom the family puts forward for the colosseum tournament.',
       },
       visual: { art: 'senor-pink', tint: 'flamingo' },
     },
@@ -458,8 +477,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Jora', en: 'Jora' },
       summary: {
-        it: 'Una donna con il pennello che trasforma navi e persone in sculture sghembe e chiama arte moderna quello che ne resta.',
-        en: 'A woman with a paintbrush who turns ships and people into lopsided sculptures and calls what is left of them modern art.',
+        it: 'Una donna grossa della famiglia Donquijote, con un vestito viola a fiori e gli occhiali rosa a punta, che passa il tempo a palazzo giocando a carte con Lao G.',
+        en: 'A large woman of the Donquixote family in a flowered purple dress and pointed pink glasses, who passes her time at the palace playing cards with Lao G.',
       },
       visual: { art: 'jora', tint: 'violet' },
     },
@@ -482,8 +501,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 716,
       name: { it: 'Gladius', en: 'Gladius' },
       summary: {
-        it: 'Un uomo con la maschera e il cappello a punta che fa gonfiare ed esplodere tutto quello che tocca, chiodi della sua giacca compresi.',
-        en: 'A masked man in a pointed hat who makes whatever he touches swell up and burst, the studs of his own jacket included.',
+        it: 'Un uomo della famiglia Donquijote con il cilindro nero, gli occhialoni e una maschera borchiata sulla bocca, che spara a Baby 5 quando lei si scaglia contro Do Flamingo.',
+        en: 'A man of the Donquixote family in a black top hat, goggles and a studded mask over his mouth, who shoots Baby 5 when she turns on Doflamingo.',
       },
       visual: { art: 'gladius', tint: 'wine' },
     },
@@ -1510,33 +1529,36 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 640, value: ['glare-glare-fruit'] }],
     },
     'sugar': {
-      role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Sta quasi sempre seduta con una ciotola d’uva in mano e parla agli adulti come si parla alla servitù. Chi tocca diventa un giocattolo che obbedisce, e da quel momento nessuno ricorda più chi fosse prima, nemmeno i suoi familiari. La famiglia che comanda l’isola la tratta con un riguardo che non riserva a nessun altro.',
-        en: 'She sits almost all day with a bowl of grapes in her hand and speaks to grown men the way one speaks to servants. Whoever she touches becomes an obedient toy, and from that moment nobody remembers who they were before, not even their own family. The family that runs the island treats her with a care they show to nobody else.',
+        it: 'Siede accanto a Do Flamingo fuori dal palazzo e mangia acini d’uva dalle dita mentre Baby 5 lo attacca. Più tardi è lei a dire a Jora che lui non è nella sua stanza.',
+        en: 'She sits beside Doflamingo outside the palace and eats grapes off her fingers while Baby 5 attacks him. Later she is the one who tells Jora that he is not in his room.',
       },
       affiliation: [
-        {
-          episode: 641,
-          value: {
-            it: 'Pirati di Donquijote, ufficiale dell’Armata Trebol',
-            en: 'Donquixote Pirates, Trebol Army officer',
-          },
-        },
+        { episode: 641, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: TREBOL_ARMY },
       ],
       devilFruit: [
         { episode: 663, chapter: 731, value: ['hobby-hobby-fruit'] },
       ],
     },
     'diamante': {
-      role: DONQUIXOTE_ELITE_ROLE,
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Presenta gli incontri dagli spalti e decide chi combatte contro chi, con un gusto per lo spettacolo per cui il pubblico gli perdona tutto. Rende molle qualsiasi cosa tocchi, sé stesso compreso, così i colpi lo attraversano come vento in un lenzuolo. A Dressrosa lo chiamano l’eroe del colosseo, e lui si comporta come se fosse vero.',
-        en: 'He announces the bouts from the stands and decides who fights whom, with a taste for spectacle the crowd forgives him everything for. He makes anything he touches go limp, himself included, so blows pass through him like wind through a sheet. In Dressrosa they call him the hero of the colosseum, and he behaves as though it were true.',
+        it: 'Do Flamingo gli lascia in custodia il frutto del diavolo che è il premio del torneo del colosseo. Quando il torneo va in onda, l’annunciatore lo presenta per ultimo, dopo altri quattro membri della famiglia, come l’eroe del colosseo.',
+        en: 'Doflamingo leaves in his keeping the devil fruit that is the prize of the colosseum tournament. When the tournament is broadcast, the announcer presents him last, after four other members of the family, as the hero of the colosseum.',
       },
       affiliation: [
         {
           episode: 633,
+          value: {
+            it: 'Pirati di Donquijote; eroe del colosseo',
+            en: 'Donquixote Pirates; colosseum hero',
+          },
+        },
+        {
+          episode: 652,
+          chapter: 722,
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo; eroe del colosseo',
             en: 'Donquixote Pirates, elite officer; colosseum hero',
@@ -1554,14 +1576,16 @@ export const dressrosa: Saga = {
       ],
     },
     'pica': {
-      role: DONQUIXOTE_ELITE_ROLE,
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Sta in piedi dietro il suo capo senza dire quasi niente, e quando parla la sua voce fa ridere chiunque lo senta la prima volta. Entra nella roccia e ne esce dove vuole, e i muri e le strade di Dressrosa si muovono con lui. Chi ride di quella voce di solito non ha il tempo di scusarsi.',
-        en: 'He stands behind his boss saying almost nothing, and when he speaks his voice makes anyone hearing it for the first time laugh. He steps into rock and out of it wherever he likes, and the walls and streets of Dressrosa move with him. Whoever laughs at that voice does not usually get the time to apologise.',
+        it: 'Siede a palazzo con Diamante e Trebol mentre Do Flamingo affida a Diamante il premio del colosseo. I seggi dei membri più vicini della famiglia sono segnati con i semi delle carte, e il suo è quello di picche. Resta nell’ombra e non dice niente.',
+        en: 'He sits in the palace with Diamante and Trebol while Doflamingo leaves the colosseum’s prize with Diamante. The seats of the family’s closest members are marked with card suits, and his is the spade. He stays in shadow and says nothing.',
       },
       affiliation: [
+        { episode: 633, value: DONQUIXOTE_PIRATES },
         {
-          episode: 633,
+          episode: 652,
+          chapter: 722,
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo',
             en: 'Donquixote Pirates, elite officer',
@@ -1578,10 +1602,13 @@ export const dressrosa: Saga = {
         en: 'Gangster of the Donquixote family',
       },
       log: {
-        it: 'Si presenta con il completo scuro, gli occhiali da sole e un bavaglino, e nessuno a Dressrosa osa fargli notare il contrasto. Attraversa il terreno a bracciate, sparisce sotto i ciottoli e riemerge alle spalle di chi lo cercava. Le donne della città lo trovano meraviglioso e glielo gridano dietro, e lui non si scompone mai.',
-        en: 'He turns up in a dark suit, sunglasses and a bib, and nobody in Dressrosa dares point out the contrast. He crosses the ground with swimming strokes, vanishes under the cobbles and surfaces behind whoever was looking for him. The women of the city find him wonderful and shout so after him, and he never once loses his composure.',
+        it: 'Porta una cuffietta rosa, occhiali da aviatore, una sciarpa a pois e un bavaglino, con il ciuccio in bocca. Quando il colosseo trasmette il torneo, è il primo membro della famiglia a essere presentato, prima di Diamante.',
+        en: 'He wears a pink bonnet, aviator sunglasses, a polka-dot scarf and a bib, with a dummy in his mouth. When the colosseum broadcasts the tournament, he is the first member of the family it presents, before Diamante.',
       },
-      affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
+      affiliation: [
+        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+      ],
       devilFruit: [{ episode: 667, chapter: 735, value: ['swim-swim-fruit'] }],
     },
     'dellinger': {
@@ -1616,19 +1643,14 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 682, chapter: 747, value: ['ton-ton-fruit'] }],
     },
     'jora': {
-      role: { it: 'Ufficiale dell’Armata Trebol', en: 'Trebol Army officer' },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Si muove come una signora a una mostra, con il pennello in mano e un gusto tutto suo per le forme. Quello che tocca si deforma in un groviglio di colori e di angoli, e chi ci finisce dentro non riesce più a muoversi come prima. Sostiene che le sue vittime dovrebbero ringraziarla, perché nessuna di loro era bella quanto adesso.',
-        en: 'She moves like a lady at a private view, brush in hand, with a taste in shapes entirely her own. Whatever she touches warps into a tangle of colour and angles, and whoever ends up inside one can no longer move as they did. She holds that her victims ought to thank her, since not one of them was as beautiful before.',
+        it: 'Gioca a carte con Lao G a palazzo, e quando Do Flamingo se ne va senza dire niente indovina dove è andato. Quando Baby 5 accetta una proposta di Trebol, la cosa la irrita.',
+        en: 'She plays cards with Lao G at the palace, and when Doflamingo leaves without a word, she guesses where he has gone. When Baby 5 accepts a proposal from Trebol, it annoys her.',
       },
       affiliation: [
-        {
-          episode: 635,
-          value: {
-            it: 'Pirati di Donquijote, ufficiale dell’Armata Trebol',
-            en: 'Donquixote Pirates, Trebol Army officer',
-          },
-        },
+        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: TREBOL_ARMY },
       ],
       devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
     },
@@ -1659,14 +1681,16 @@ export const dressrosa: Saga = {
       ],
     },
     'gladius': {
-      role: { it: 'Ufficiale dell’Armata Pica', en: 'Pica Army officer' },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Sorveglia il palazzo per conto dell’uomo di pietra e parla poco, salvo quando qualcosa lo irrita: allora la sua testa si gonfia e le parole gli escono come uno scoppio. Fa esplodere sassi, pallottole e pezzi della propria armatura, e li usa come una gragnuola. Non discute mai un ordine e non chiede mai a cosa serva.',
-        en: 'He guards the palace for the man of stone and says little, except when something irritates him: then his head swells and the words come out like a burst. He detonates stones, bullets and pieces of his own armour, and uses them as a hail. He never argues with an order and never asks what it is for.',
+        it: 'Porta un lungo cappotto nero con le borchie dorate, gli occhialoni e una maschera bianca sulla metà inferiore del viso. Quando Baby 5 attacca Do Flamingo fuori dal palazzo, le spara per calmarla.',
+        en: 'He wears a long black coat studded with gold, goggles and a white mask over the lower half of his face. When Baby 5 attacks Doflamingo outside the palace, he shoots her to calm her down.',
       },
       affiliation: [
+        { episode: 640, value: DONQUIXOTE_PIRATES },
         {
-          episode: 640,
+          episode: 664,
+          chapter: 732,
           value: {
             it: 'Pirati di Donquijote, ufficiale dell’Armata Pica',
             en: 'Donquixote Pirates, Pica Army officer',

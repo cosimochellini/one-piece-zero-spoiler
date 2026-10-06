@@ -91,8 +91,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 610,
       name: { it: 'Hammond', en: 'Hammond' },
       summary: {
-        it: 'Un uomo-pesce con un arpione uncinato che ferma i nuovi arrivati all’ingresso dell’isola e li invita a schierarsi o a tornare da dove sono venuti.',
-        en: 'A fish-man with a barbed harpoon who stops newcomers at the island’s gate and invites them to pick a side or go back where they came from.',
+        it: 'Un uomo-pesce con il fedora nero e il cappotto aperto sui tatuaggi, che ferma i Cappello di Paglia mentre scendono verso l’isola e dice loro di unirsi alla sua ciurma o morire.',
+        en: 'A fish-man in a black fedora and an open coat that shows his tattoos, who stops the Straw Hats on their way down to the island and tells them to join his crew or die.',
       },
       visual: { art: 'hammond', tint: 'sand' },
     },
@@ -427,8 +427,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 653,
       name: { it: 'Baron Tamago', en: 'Baron Tamago' },
       summary: {
-        it: 'Un cavaliere con il corpo a forma di uovo, cilindro e bastone, che accompagna il ritiro delle caramelle e misura ogni cosa in minuti.',
-        en: 'A knight with the body of an egg, a top hat and a cane, along for the sweets collection and measuring everything in minutes.',
+        it: 'Un barone dal corpo a forma di uovo, con una tazza di tè in testa e un bastone, che accompagna Pekoms a ritirare le caramelle dovute a Big Mom e chiude le frasi con “bon”.',
+        en: 'A baron with an egg-shaped body, a teacup on his head and a cane, who comes with Pekoms to collect the sweets owed to Big Mom and ends his sentences with “bon”.',
       },
       visual: { art: 'baron-tamago', tint: 'ivory' },
     },
@@ -548,8 +548,8 @@ export const fishManIsland: Saga = {
         en: 'Fish-man of the New Pirates',
       },
       log: {
-        it: 'Aspetta i pirati che scendono dalla superficie con l’arpione in mano e un discorso già pronto: l’isola sta cambiando padrone, e chi vuole restare deve scegliere da che parte stare. Appartiene a una ciurma di uomini-pesce che parla di un futuro in cui gli umani non contano più nulla. A chi risponde di no fa subito capire come funziona.',
-        en: 'He waits for the pirates coming down from the surface with his harpoon ready and a speech already written: the island is changing hands, and anyone who means to stay has to pick a side. He belongs to a crew of fish-men who talk about a future in which humans count for nothing. Anyone who says no is shown at once how it works.',
+        it: 'Esce in groppa a un mostro marino con altri due uomini-pesce incontro ai pirati che scendono dalla superficie. Porta sul collo il simbolo dei Pirati di Arlong, e mette sul piatto la battaglia di Rufy contro di loro, l’aiuto dato a Hatchan e il Nobile che ha preso a pugni. L’offerta è unirsi ai Nuovi Pirati Uomini-Pesce o morire, e Rufy dice di no.',
+        en: 'He rides out on a sea beast with two other fish-men to meet the pirates coming down from the surface. He wears the Arlong Pirates’ mark on his neck, and weighs Luffy’s fight with them against the help he gave Hatchan and the Noble he punched. The offer is to join the New Fish-Man Pirates or die, and Luffy says no.',
       },
       affiliation: [
         {
@@ -1085,8 +1085,8 @@ export const fishManIsland: Saga = {
         en: 'Combatant of the Big Mom Pirates',
       },
       log: {
-        it: 'Ha il corpo di un uovo, il cilindro in testa e un bastone che non usa quasi mai per camminare. Scende sull’isola insieme al compagno venuto a ritirare il tributo di caramelle dovuto a Big Mom e lascia parlare lui. Misura ogni cosa in minuti, e quando qualcosa va per le lunghe lo fa notare con garbo.',
-        en: 'He has the body of an egg, a top hat above it and a cane he almost never walks with. He comes down to the island beside the companion collecting the tribute of sweets owed to Big Mom, and lets him do the talking. He measures everything in minutes, and when something drags on he points it out politely.',
+        it: 'Ha il corpo di un uovo, gli occhiali da sole, i baffi arricciati e una tazza di tè caldo in testa, e porta un lungo bastone. Arriva sull’isola con Pekoms per ritirare il tributo di caramelle dovuto a Big Mom, lo rimprovera perché minaccia gli abitanti e spiega loro che cosa succede se non pagano. Chiude le frasi con parole francesi: “bon”, “soir”, “s’il vous plaît”.',
+        en: 'He has an egg-shaped body, sunglasses, a curled moustache and a cup of hot tea on his head, and carries a long cane. He comes to the island with Pekoms to collect the tribute of sweets owed to Big Mom, scolds him for threatening the islanders, and explains to them what happens if they do not pay. He puts French words at the ends of his sentences: “bon”, “soir”, “s’il vous plaît”.',
       },
       affiliation: [
         {
