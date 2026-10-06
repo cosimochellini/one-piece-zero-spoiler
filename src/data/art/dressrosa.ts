@@ -1,9 +1,9 @@
 import {
   circle,
+  dot,
   dots,
   ellipse,
   house,
-  polygon,
   SEA,
   shadow,
   star,
@@ -11,23 +11,47 @@ import {
 
 import type { Drawings, Redrawings } from './stroke'
 
+/**
+ * The visible edge of a playing card held behind the next one in Jora's
+ * hand: its left side and the corner of its top, pivoting on its foot.
+ */
+const JORA_CARD_EDGE = 'M82 150 V70 h17'
+
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
-  // A newsboy cap and the headband of a fish-man karate gi.
+  // A strip torn from a pair of overalls, bunched on the deck planks of the
+  // Sun Pirates' ship, the strap and its buckle trailing off it and a wet
+  // sweep on the boards behind. Koala tears it from her own clothes in
+  // episode 541 and scrubs the deck with it, and will not stop.
   'koala': [
-    { d: 'M34 112 C34 84 58 72 80 74 C104 76 118 88 120 108 Z' },
-    { d: 'M30 112 h94 q6 8 -6 10 H38 q-12 -2 -8 -10 z' },
-    { d: circle(78, 76, 4) },
+    { d: 'M34 96 H126 L154 166 H6 Z' },
+    { d: 'M6 166 V176 H154 V166' },
     {
-      d: 'M78 76 C62 84 48 96 40 110 M78 76 C96 84 108 92 116 106',
+      d: 'M49.3 96 L30.7 166 M64.7 96 L60.5 112 M57.7 148 L55.3 166 M80 96 V108 M80 150 V166 M95.3 96 L97.4 112 M102.3 148 L104.7 166 M110.7 96 L117 120 M126 154 L129.3 166',
       role: 'soft',
     },
-    { d: 'M26 148 h108 v14 h-108 z', role: 'accent' },
+    { d: 'M40 104 h12 M110 140 h10 M22 156 h14 M84 102 h10', role: 'soft' },
     {
-      d: 'M134 148 C146 156 146 168 138 178 M134 162 C142 170 140 180 132 186',
+      d: 'M54 120 L66 112 L80 116 L94 108 L110 114 L118 124 L112 132 L116 142 L98 146 L82 150 L64 146 L52 142 L56 138 L48 134 L55 130 L49 126 Z',
       role: 'accent',
     },
-    shadow(80, 190, 50),
+    {
+      d: 'M66 112 C70 122 78 130 84 138 M94 108 C92 120 96 130 104 136',
+      role: 'soft',
+    },
+    { d: 'M60 150 C78 156 100 152 118 146', role: 'ambient' },
+    {
+      d: 'M116 128 C126 130 134 138 134 146 M114 136 C122 138 126 142 127 148',
+      role: 'accent',
+    },
+    { d: 'M122 148 h16 v8 h-16 z M126 152 h8', role: 'accent' },
+    {
+      d: 'M20 150 C28 140 38 136 46 138 M28 124 C34 116 42 112 50 114',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M10 170 h4 M150 170 h-4', role: 'ambient' },
+    shadow(80, 188, 70),
   ],
 
   // An island split down the middle, fire on one side and ice on the other.
@@ -316,14 +340,40 @@ export const dressrosaArt = {
     shadow(92, 184, 40),
   ],
 
-  // A naginata with a blade cut like a shard of stone.
+  // His dark cape hung on a peg by its great frilled ruff, the puffs of the
+  // ruff seen from a little above, the cape falling open at the front and
+  // its far side hatched. He wears it when the Chinjao family steps in for
+  // Lucy in episode 633. The polearm is not his until the C Block.
   'sai': [
-    { d: 'M28 180 L104 56' },
-    { d: 'M36 184 L112 60' },
-    { d: 'M52 152 l8 5 M70 122 l8 5', role: 'soft' },
-    { d: 'M104 56 L118 20 L138 34 L124 66 Z', role: 'accent' },
-    { d: 'M100 62 L118 74' },
-    shadow(70, 192, 32),
+    { d: 'M70 22 Q80 16 90 22 M80 19 V40', role: 'ambient' },
+    {
+      d: 'M44 58 C38 50 46 42 54 46 C56 38 66 36 70 42 C74 34 86 34 90 42 C94 36 104 38 106 46 C114 42 122 50 116 58 C122 64 116 74 108 72 C106 80 96 82 92 76 C88 82 72 82 68 76 C64 82 54 80 52 72 C44 74 38 64 44 58 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M64 56 C70 52 90 52 96 56 M54 46 C58 52 60 56 64 58 M106 46 C102 52 100 56 96 58 M70 42 L74 52 M90 42 L86 52 M52 72 L60 64 M108 72 L100 64 M68 76 L72 66 M92 76 L88 66',
+      role: 'soft',
+    },
+    {
+      d: 'M48 72 C36 78 28 90 28 104 L22 178 M112 72 C124 78 132 90 132 104 L138 178',
+    },
+    { d: 'M76 80 C74 120 68 150 62 178 M84 80 C86 120 92 150 98 178' },
+    {
+      d: 'M22 178 Q32 172 42 180 Q52 186 62 178 M98 178 Q108 172 118 180 Q128 186 138 178 M62 178 Q80 170 98 178',
+    },
+    {
+      d: 'M44 96 C42 124 40 150 38 178 M116 96 C118 124 120 150 122 178',
+      role: 'soft',
+    },
+    {
+      d: 'M66 172 l6 -8 M74 172 l8 -10 M84 172 l8 -10 M92 174 l4 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M124 108 l6 -6 M125 124 l8 -8 M126 140 l9 -9 M127 156 l9 -9 M128 170 l8 -8',
+      role: 'ambient',
+    },
+    shadow(80, 192, 62),
   ],
 
   // A drill, the point worn flat at the top.
@@ -472,52 +522,109 @@ export const dressrosaArt = {
     shadow(96, 186, 30),
   ],
 
-  // A jar of grapes with a toy key lying under it.
+  // A bunch of grapes stood on its tip, the grapes on the far side
+  // hatched, the stalk above picked bare at two twigs and one grape rolled
+  // off beside it. Sugar is eating grapes the first time she is seen, at
+  // Doflamingo's side in episode 608.
   'sugar': [
     {
-      d: 'M52 90 h40 v8 a10 10 0 0 1 8 10 v38 a10 10 0 0 1 -10 10 h-36 a10 10 0 0 1 -10 -10 v-38 a10 10 0 0 1 8 -10 z',
-    },
-    { d: 'M48 80 h48 v10 h-48 z' },
-    {
-      d: `${circle(66, 118, 8)} ${circle(82, 118, 8)} ${circle(74, 132, 8)} ${circle(90, 132, 8)}`,
+      d: (
+        [
+          [62, 86],
+          [80, 86],
+          [98, 86],
+          [53, 101.6],
+          [71, 101.6],
+          [89, 101.6],
+          [107, 101.6],
+          [62, 117.2],
+          [80, 117.2],
+          [98, 117.2],
+          [71, 132.8],
+          [89, 132.8],
+          [80, 148.4],
+        ] satisfies [number, number][]
+      )
+        .map(([x, y]) => circle(x, y, 9))
+        .join(' '),
       role: 'accent',
     },
-    { d: 'M58 142 h36', role: 'soft' },
-    { d: 'M44 176 h44 M44 170 v12 M78 176 v8 M88 176 v6' },
-    { d: circle(36, 176, 9) },
+    {
+      d: 'M99 92 l6 -6 M108 107.6 l6 -6 M99 123.2 l6 -6 M90 138.8 l6 -6 M81 154.4 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M80 77 C80 64 84 54 92 48 C98 44 102 36 100 28' },
+    {
+      d: 'M84 62 C76 60 68 62 62 68 M62 68 l-5 4 M62 68 l1 6 M70 62 l-2 -6 M90 52 C98 54 106 58 110 66 M110 66 l5 4 M110 66 l-2 6',
+      role: 'soft',
+    },
+    { d: 'M100 28 C110 22 122 26 126 34 C116 40 106 36 100 28', role: 'soft' },
+    { d: circle(124, 156, 8) },
+    shadow(80, 166, 36),
+    shadow(124, 172, 12),
   ],
 
-  // A steel banner-sword rippling on its pole.
+  // His hat set down on the stone rail of the colosseum: a small crown with
+  // its band, the top hatched, and the ring of long pointed petals standing
+  // round it, a zigzag down each. He is shown in it on the colosseum's
+  // screens in episode 632, as its hero. No sword and no banner: his cape
+  // only flaps in a fight much later.
   'diamante': [
-    { d: 'M40 182 V36' },
-    { d: circle(40, 30, 6) },
     {
-      d: 'M42 44 C70 34 78 58 104 48 C128 40 138 56 140 62 C120 70 112 92 88 90 C64 88 56 104 42 100 Z',
+      d: 'M52 106.2 Q30.1 108.6 17 94.9 Q34 86.5 53.8 96.2 M54.1 95.3 Q33 88.9 26.3 71.1 Q45.3 70 59.7 86.7 M60.4 86 Q43.4 71.9 44.2 52.9 Q62.1 59.3 68.8 80.3 M69.7 79.9 Q59.7 60.3 67.8 43.2 Q81.7 56 79.8 78 M80.2 78 Q78.3 56 92.2 43.2 Q100.3 60.3 90.3 79.9 M91.2 80.3 Q97.9 59.3 115.8 52.9 Q116.6 71.9 99.6 86 M100.3 86.7 Q114.7 70 133.7 71.1 Q127 88.9 105.9 95.3 M106.2 96.2 Q126 86.5 143 94.9 Q129.9 108.6 108 106.2',
       role: 'accent',
     },
     {
-      d: 'M56 56 C72 64 78 78 64 90 M86 52 C102 62 108 76 94 88',
+      d: 'M47.5 100.3 L40.2 102.5 L35.4 94.9 L27.4 99.5 M52.3 88 L44.7 87.2 L43.3 78.3 L34.1 79.5 M61.5 78.6 L54.8 74.9 L57 66.2 L48.1 63.7 M73.7 73.6 L69 67.5 L74.4 60.3 L67.2 54.6 M86.3 73.6 L84.2 66.2 L91.9 61.6 L87.4 53.5 M98.5 78.6 L99.4 71 L108.3 69.8 L107.3 60.6 M107.7 88 L111.5 81.4 L120.2 83.7 L122.9 74.8 M112.5 100.3 L118.6 95.6 L125.7 101.2 L131.6 94.1',
       role: 'soft',
     },
-    { d: 'M34 174 h12 M34 164 h12' },
-    shadow(44, 190, 20),
+    { d: 'M54 108 A26 26 0 0 1 106 108' },
+    { d: 'M48 110 C56 120 104 120 112 110 C104 104 56 104 48 110 Z' },
+    { d: 'M55 99 Q80 108 105 99', role: 'soft' },
+    { d: 'M64 88 l8 -6 M68 95 l14 -11 M80 95 l13 -10', role: 'ambient' },
+    { d: 'M12 120 H148 V128 H12 Z' },
+    { d: 'M18 128 V162 M142 128 V162 M10 162 H150' },
+    {
+      d: 'M18 145 H142 M60 128 V145 M100 128 V145 M40 145 V162 M80 145 V162 M120 145 V162',
+      role: 'soft',
+    },
+    {
+      d: 'M22 136 l6 -6 M22 152 l8 -8 M132 136 l6 -6 M130 154 l8 -8',
+      role: 'ambient',
+    },
+    shadow(80, 176, 66),
   ],
 
-  // A mountain with a block of stone raised out of its slope.
+  // The empty spade chair of the Hall of Suits, in three-quarters: a tall
+  // back cut to the outline of a spade, its thickness showing on the right
+  // and that side hatched, on a broad seat with carved legs. Doflamingo's
+  // executives sit in their suit chairs in episode 629, and Pica's is the
+  // spade, his own shape still in shadow.
   'pica': [
-    { d: 'M12 160 L58 68 L90 112 L116 74 L150 160 Z' },
-    { d: 'M56 160 V120 h34 v40 M64 120 V100 h20 v20', role: 'accent' },
-    { d: 'M22 146 h34 M90 146 h50 M100 128 h30', role: 'soft' },
-    { d: 'M44 92 L58 68 L70 92' },
     {
-      d: dots([
-        [126, 118],
-        [136, 136],
-        [30, 136],
-      ]),
+      d: 'M74 12 C62 32 36 48 36 74 C36 92 54 100 68 90 C66 102 58 110 50 112 H102 C94 110 86 102 84 90 C98 100 116 92 116 74 C116 48 90 32 78 12 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M78 12 L84 16 C96 36 124 52 124 78 C124 96 106 104 92 96 M102 112 H110 C102 110 95 104 92 96',
+    },
+    {
+      d: 'M76 26 C66 42 46 56 46 74 C46 86 58 90 70 82 M76 26 C86 42 106 56 106 74 C106 86 94 90 82 82',
       role: 'soft',
     },
-    { d: 'M4 160 H156', role: 'ambient' },
+    {
+      d: 'M110 52 l6 -6 M114 64 l7 -7 M116 78 l7 -7 M110 92 l7 -7',
+      role: 'ambient',
+    },
+    { d: 'M30 112 H118 L136 130 H48 Z' },
+    { d: 'M48 130 V142 H136 V130' },
+    { d: 'M30 112 V124 L48 142', role: 'soft' },
+    { d: 'M40 118 C66 124 108 124 128 124', role: 'soft' },
+    {
+      d: 'M52 142 C50 154 56 162 52 174 M132 142 C134 154 128 162 132 174 M34 124 C32 136 36 144 34 154 M118 130 V156',
+    },
+    { d: 'M128 134 l6 -4', role: 'ambient' },
+    shadow(86, 182, 56),
   ],
 
   // A baby bonnet sitting on a mobster's fedora.
@@ -534,18 +641,35 @@ export const dressrosaArt = {
     shadow(80, 152, 54),
   ],
 
-  // Two high heels, each with a fin along the back of it.
+  // His white cap in three-quarters, turned to the left, the seams of its
+  // crown meeting at the button and the brim hatched underneath, with a
+  // horn coming out of each side and curving up. That is how the
+  // colosseum's screens show him in episode 632. No fish on the front and
+  // no fin.
   'dellinger': [
-    { d: 'M30 150 C30 130 44 118 64 116 L72 116 L74 150 Z' },
-    { d: 'M70 150 L74 178 L84 178 L78 150' },
-    { d: 'M86 130 C86 110 100 98 120 96 L128 96 L130 130 Z' },
-    { d: 'M126 130 L130 158 L140 158 L134 130' },
-    { d: 'M64 116 C74 98 86 94 98 98 C88 106 84 112 78 118', role: 'accent' },
+    { d: 'M46 128 C42 94 58 72 84 72 C108 72 124 92 122 126' },
+    { d: 'M46 128 C66 136 104 136 122 126' },
     {
-      d: 'M120 96 C130 78 142 74 152 78 C142 86 138 92 132 98',
+      d: 'M84 72 C76 90 70 110 70 133 M84 72 C96 90 104 108 106 131',
+      role: 'soft',
+    },
+    { d: dot(84, 72) },
+    { d: 'M48 126 C34 126 16 132 14 142 C28 150 52 146 66 134' },
+    {
+      d: 'M22 142 l6 -6 M32 143 l7 -7 M42 141 l7 -7 M52 138 l5 -5',
+      role: 'ambient',
+    },
+    { d: 'M110 104 l8 -6 M114 116 l8 -6 M116 126 l6 -4', role: 'ambient' },
+    { d: 'M54 92 C40 86 28 72 30 50 C38 64 50 72 62 80', role: 'accent' },
+    {
+      d: 'M114 90 C126 82 136 66 132 44 C126 60 114 68 104 76',
       role: 'accent',
     },
-    shadow(84, 186, 50),
+    {
+      d: 'M37 74 l6 -4 M33 64 l5 -3 M124 72 l-5 -4 M129 60 l-5 -2',
+      role: 'soft',
+    },
+    shadow(76, 158, 56),
   ],
 
   // A martial arts belt, knotted, with the ends hanging down.
@@ -562,30 +686,74 @@ export const dressrosaArt = {
     shadow(80, 188, 44),
   ],
 
-  // A great iron weight with a handle over it.
+  // His tall red peaked cap in three-quarters: the flat top tilted toward
+  // us, the crown flaring up to it, the band round its base and the short
+  // black peak hatched underneath, its far side hatched too. He wears it
+  // from his first scene in episode 608. No crew mark on the front.
   'machvise': [
-    { d: 'M28 104 h104 l8 62 h-120 z' },
-    { d: 'M56 104 C56 66 104 66 104 104', role: 'accent' },
-    { d: 'M68 104 C68 80 92 80 92 104', role: 'accent' },
-    { d: 'M32 132 h96', role: 'soft' },
-    { d: 'M24 166 h112' },
-    { d: 'M14 178 h40 M104 178 h44', role: 'ambient', dashed: true },
-    shadow(80, 174, 60),
-  ],
-
-  // A paintbrush and a cannon coming apart into shapes.
-  'jora': [
-    { d: 'M22 36 L66 80' },
-    { d: 'M30 28 L74 72' },
-    { d: 'M66 80 L84 98 C72 106 60 98 66 80 Z' },
-    { d: 'M40 140 h64 v22 h-64 z' },
-    { d: circle(56, 172, 12) },
+    { d: ellipse(92, 60, 36, 11), transform: 'rotate(-8 92 60)' },
+    { d: 'M57 66 L50 128 M128 55 L122 126' },
+    { d: 'M50 128 C64 136 108 136 122 126' },
     {
-      d: 'M104 140 C124 122 132 150 148 142 C142 160 152 172 134 176 C116 180 112 162 96 162',
+      d: 'M51 112 C66 120 106 120 123 110 M50 128 L51 112 M122 126 L123 110',
       role: 'accent',
     },
-    { d: polygon(124, 116, 14, 3), role: 'accent' },
-    { d: 'M10 184 H150', role: 'ambient' },
+    { d: 'M78 72 L74 116 M104 70 L104 114', role: 'soft' },
+    { d: 'M112 76 l10 -10 M112 92 l11 -11 M112 106 l10 -10', role: 'ambient' },
+    { d: 'M52 124 C36 126 20 134 20 144 C36 150 64 144 80 133' },
+    {
+      d: 'M28 145 l6 -6 M38 146 l8 -8 M50 144 l8 -8 M62 140 l7 -7',
+      role: 'ambient',
+    },
+    { d: 'M54 118 C64 128 76 132 86 132', role: 'soft' },
+    shadow(76, 160, 54),
+  ],
+
+  // A hand of playing cards fanned out on the table, their faces blank, the
+  // front card standing a little proud with its edge showing, and her pink
+  // bead necklace lying in a loop at their foot. She is at cards with Lao G
+  // in episodes 608 and 629. No brush: she never holds one.
+  'jora': [
+    { d: JORA_CARD_EDGE, transform: 'rotate(-36 82 150)' },
+    { d: JORA_CARD_EDGE, transform: 'rotate(-24 82 150)' },
+    { d: JORA_CARD_EDGE, transform: 'rotate(-12 82 150)' },
+    { d: JORA_CARD_EDGE },
+    { d: 'M82 150 V70 H134 V150 Z', transform: 'rotate(12 82 150)' },
+    {
+      d: 'M134 70 l4 3 V153 l-4 -3 M82 150 l4 3 H138',
+      transform: 'rotate(12 82 150)',
+    },
+    {
+      d: 'M89 143 V77 H127 V143 Z',
+      role: 'soft',
+      transform: 'rotate(12 82 150)',
+    },
+    {
+      d: (
+        [
+          [118, 166],
+          [115.1, 169.8],
+          [106.9, 173.1],
+          [94.5, 175.2],
+          [80, 176],
+          [65.5, 175.2],
+          [53.1, 173.1],
+          [44.9, 169.8],
+          [42, 166],
+          [44.9, 162.2],
+          [53.1, 158.9],
+          [65.5, 156.8],
+          [80, 156],
+          [94.5, 156.8],
+          [106.9, 158.9],
+          [115.1, 162.2],
+        ] satisfies [number, number][]
+      )
+        .map(([x, y]) => circle(x, y, 4.3))
+        .join(' '),
+      role: 'accent',
+    },
+    shadow(80, 184, 54),
   ],
 
   // An admiral's cloak with a line of little ships along the hem.
@@ -604,24 +772,48 @@ export const dressrosaArt = {
     shadow(80, 160, 54),
   ],
 
-  // A studded jacket with the rivets going off.
+  // His long black coat hung on a peg by its stand-up collar, the gold studs
+  // along the collar, the coat falling open and its far side hatched, and
+  // his black top hat stood on the floor beside it, hatched where it turns
+  // away. He is dressed so from his first scene in episode 608. No goggles,
+  // and nothing bursting.
   'gladius': [
-    { d: 'M50 58 L40 154 H120 L110 58' },
-    { d: 'M50 58 q30 -12 60 0' },
-    { d: 'M66 58 L80 94 L94 58' },
-    { d: 'M80 94 V152', role: 'soft' },
+    { d: 'M52 22 h20 M62 22 v16', role: 'ambient' },
+    { d: 'M36 46 Q62 34 88 46 L86 58 Q62 48 38 58 Z' },
     {
-      d: dots([
-        [56, 72],
-        [62, 88],
-        [104, 72],
-        [98, 88],
-      ]),
+      d: (
+        [
+          [39, 51],
+          [46.7, 48.5],
+          [54.3, 47],
+          [62, 46.5],
+          [69.7, 47],
+          [77.3, 48.5],
+          [85, 51],
+        ] satisfies [number, number][]
+      )
+        .map(([x, y]) => circle(x, y, 2.4))
+        .join(' '),
+      role: 'accent',
+    },
+    {
+      d: 'M38 58 C26 64 20 76 20 92 L16 174 M86 58 C98 64 104 76 104 92 L108 172',
+    },
+    { d: 'M16 174 Q40 168 56 178 Q80 186 108 172' },
+    {
+      d: 'M50 56 C48 100 46 140 44 176 M74 56 C76 100 78 136 80 180',
       role: 'soft',
     },
-    { d: 'M118 62 l12 -12 M124 74 l14 -2 M120 86 l12 8', role: 'accent' },
-    { d: star(136, 44, 12, 5), role: 'accent' },
-    shadow(80, 184, 46),
+    {
+      d: 'M90 96 l8 -8 M92 112 l10 -10 M94 128 l10 -10 M95 144 l10 -10 M96 160 l10 -10',
+      role: 'ambient',
+    },
+    { d: 'M112 168 L114 118 C114 112 146 112 146 118 L148 168' },
+    { d: ellipse(130, 118, 16, 4.5) },
+    { d: 'M104 168 C104 162 156 162 156 168 C156 174 104 174 104 168 Z' },
+    { d: 'M113 156 C120 161 140 161 147 156', role: 'soft' },
+    { d: 'M134 132 l8 -7 M133 146 l11 -10 M136 156 l9 -8', role: 'ambient' },
+    shadow(84, 190, 70),
   ],
 
   // A Marine's rifle and cap dropped in the grass, tiny footprints running
@@ -708,20 +900,42 @@ export const dressrosaArt = {
     shadow(80, 184, 50),
   ],
 
-  // A spiked club and a sake gourd set down beside it.
+  // The crater he leaves in the yard of the Kid Pirates' hideout, seen
+  // side on: the ground broken open between two lips of thrown-up earth,
+  // the bowl hatched inside, cracks running off, a broken palisade at each
+  // side, stones in the air and the dust going up. He falls out of the sky
+  // there in episode 739. No club and no gourd: both come later.
   'kaido': [
-    { d: 'M22 150 L60 112' },
-    { d: 'M56 108 L120 44 a10 10 0 0 1 14 14 L70 122 a10 10 0 0 1 -14 -14 z' },
+    { d: 'M2 130 H18 M142 130 H158', role: 'ambient' },
     {
-      d: 'M78 96 l-6 -12 M92 82 l-6 -12 M106 68 l-6 -12 M86 112 l12 6 M100 98 l12 6 M114 84 l12 6',
+      d: 'M8 130 V100 L4 94 M16 130 V96 M144 130 L148 104 M152 130 V100 M2 110 L20 114 M140 114 L158 110',
+      role: 'soft',
+    },
+    {
+      d: 'M18 130 L24 118 L32 122 L38 112 L46 120 C52 146 64 156 80 156 C96 156 108 146 114 120 L122 112 L128 122 L136 118 L142 130',
       role: 'accent',
     },
-    { d: 'M124 40 l8 -8', role: 'accent' },
     {
-      d: 'M40 158 a8 8 0 1 0 12 0 c6 6 8 12 8 20 a14 14 0 0 1 -28 0 c0 -8 2 -14 8 -20 z',
+      d: 'M50 128 l4 -4 M52 140 l12 -12 M60 148 l18 -18 M74 152 l16 -16 M90 150 l12 -12',
+      role: 'ambient',
     },
-    { d: 'M42 154 h8 v-8 h-8 z' },
-    shadow(80, 194, 48),
+    {
+      d: 'M18 130 L10 144 L14 156 M142 130 L150 146 L146 158 M80 156 L76 170 L82 182 M46 140 L36 152 M114 140 L124 152',
+      role: 'soft',
+    },
+    {
+      d: 'M28 88 l8 -3 l3 7 l-8 3 z M122 80 l7 -2 l2 7 l-7 2 z M70 52 l6 -4 l4 6 l-6 4 z',
+    },
+    {
+      d: 'M40 112 C26 100 32 80 50 84 C48 62 74 54 82 72 C90 52 118 58 114 80 C130 74 142 94 128 108',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M22 70 l-6 -6 M46 46 l-3 -8 M112 44 l4 -8 M140 62 l6 -6',
+      role: 'soft',
+    },
+    { d: 'M60 182 q20 6 40 0', role: 'ambient', dashed: true },
   ],
   // A wrapped candy, twisted at both ends, with smoke curling off it.
   'mocha': [
@@ -764,23 +978,42 @@ export const dressrosaArt = {
     },
   ],
 
-  // A heap of slime with an axolotl's frilled gills, dripping and bubbling.
+  // The slime in the shape of an axolotl, side on, head to the left: the
+  // frilled gills sweeping back from its head, a ridge along its back to the
+  // tail, stubby legs, drips running off its belly and gas trailing up.
+  // Caesar lets it out on the burning half of the island in episode 594.
+  // No eyes and no mouth.
   'smiley': [
-    { d: 'M24 160 C22 128 40 100 80 98 C120 100 138 128 136 160 Z' },
     {
-      d: 'M46 110 C32 100 28 88 32 78 M52 104 C42 90 42 78 48 68 M42 118 C28 112 20 102 20 92',
+      d: 'M18 120 C14 98 30 84 52 86 C76 88 98 98 120 102 C134 104 146 102 156 94 C154 110 142 122 122 128 C104 134 92 142 70 144 C46 146 22 140 18 120 Z',
+    },
+    { d: 'M76 90 C88 82 112 86 130 96 C140 98 150 96 156 94', role: 'soft' },
+    {
+      d: 'M44 88 C40 72 46 58 58 50 M52 88 C56 74 68 64 84 62 M58 92 C66 82 80 78 96 80',
       role: 'accent',
     },
     {
-      d: 'M114 110 C128 100 132 88 128 78 M108 104 C118 90 118 78 112 68 M118 118 C132 112 140 102 140 92',
-      role: 'accent',
-    },
-    { d: 'M42 160 v10 M62 160 v15 M98 160 v12 M120 160 v8', role: 'soft' },
-    {
-      d: `${circle(66, 128, 5)} ${circle(96, 136, 4)} ${circle(82, 118, 3)}`,
+      d: 'M44 76 l-5 -2 M46 66 l-5 -3 M52 57 l-4 -4 M60 76 l-3 -5 M68 68 l-2 -5 M76 64 l-1 -5 M70 84 l-1 -5 M80 80 l0 -5 M88 79 l1 -5',
       role: 'soft',
     },
-    shadow(80, 186, 56),
+    {
+      d: 'M36 140 C34 150 38 158 46 158 M96 136 C96 148 102 154 110 152',
+      role: 'soft',
+    },
+    {
+      d: 'M24 134 v10 M60 144 v14 M74 144 v8 M86 140 v12 M124 128 v10',
+      role: 'soft',
+    },
+    {
+      d: 'M44 136 l10 -10 M58 140 l12 -12 M74 138 l10 -10 M100 132 l10 -10 M118 124 l8 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M100 86 C94 74 104 66 98 54 M118 92 C114 80 124 72 118 60 M136 98 C134 88 142 82 138 72',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(80, 170, 64),
   ],
 
   // A rocky island seen from the sea, a tall craggy rock rising over the
