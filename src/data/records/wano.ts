@@ -65,8 +65,8 @@ export const wano: Saga = {
       revealedAtChapter: 913,
       name: { it: 'Tenguyama Hitetsu', en: 'Tenguyama Hitetsu' },
       summary: {
-        it: 'Il vecchio armaiolo del villaggio di Amigasa, con una maschera da tengu appesa in bottega e un carattere che non ammette visite.',
-        en: 'The old swordsmith of Amigasa Village, a tengu mask hanging in his workshop and a temper that does not welcome visitors.',
+        it: 'Il vecchio fabbro di spade del villaggio di Amigasa, che nasconde il volto dietro una maschera da tengu dal naso lungo e sguaina la spada contro lo sconosciuto che trova accanto alla scodella vuota di Tama.',
+        en: 'The old swordsmith of Amigasa Village, who hides his face behind a long-nosed tengu mask and draws his sword on the stranger he finds beside Tama’s empty rice bowl.',
       },
       visual: { art: 'tenguyama-hitetsu', tint: 'red' },
     },
@@ -101,8 +101,8 @@ export const wano: Saga = {
       revealedAtChapter: 929,
       name: { it: 'Page One', en: 'Page One' },
       summary: {
-        it: 'Un ragazzo in giacca di pelle, uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che viene mandato con X Drake a punire in modo esemplare chi ha sfidato la ciurma.',
-        en: 'A young man in a leather jacket, one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who is sent with X Drake to make an example of whoever crossed the crew.',
+        it: 'Uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che entra nella Capitale dei Fiori insieme a X Drake, mandato a punire in modo esemplare chi ha sfidato la ciurma.',
+        en: 'One of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who walks into the Flower Capital beside X Drake, sent to make an example of whoever crossed the crew.',
       },
       visual: { art: 'page-one', tint: 'teal' },
     },
@@ -189,8 +189,8 @@ export const wano: Saga = {
       revealedAtChapter: 933,
       name: { it: 'O-Toko', en: 'Toko' },
       summary: {
-        it: 'La bambina che accompagna l’oiran della Capitale dei Fiori, con un ventaglio di carta in mano, e che ride anche quando nessuno ride.',
-        en: 'The little girl who attends the Flower Capital’s oiran, a paper fan in hand, laughing even when nobody else finds anything funny.',
+        it: 'La bambina che fa da kamuro all’oiran della Capitale dei Fiori, e che continua a sorridere anche quando dei teppisti le fanno cadere a terra la scodella di soba.',
+        en: 'The little girl who attends the Flower Capital’s oiran as her kamuro, and who keeps smiling even when thugs knock her bowl of soba to the ground.',
       },
       visual: { art: 'toko', tint: 'yellow' },
     },
@@ -321,8 +321,8 @@ export const wano: Saga = {
       revealedAtChapter: 971,
       name: { it: 'Izo', en: 'Izo' },
       summary: {
-        it: 'Un tiratore di Wano vestito da geisha, comandante di una divisione dei Pirati di Barbabianca, che non sbaglia un colpo con due pistole.',
-        en: 'A gunman from Wano dressed as a geisha, commander of a Whitebeard division, who does not miss with a flintlock in each hand.',
+        it: 'Il figlio di un maestro di danza di Wano, che da bambino segue Oden, gli corre dietro fin sulla nave di Barbabianca e resta con quella ciurma quando Oden se ne va.',
+        en: 'The son of a dance master from Wano, who follows Oden as a child, goes after him onto Whitebeard’s ship and stays with that crew when Oden leaves it.',
       },
       visual: { art: 'izo', tint: 'flamingo' },
     },
@@ -754,8 +754,8 @@ export const wano: Saga = {
     'tenguyama-hitetsu': {
       role: { it: 'Fabbro di spade', en: 'Swordsmith' },
       log: {
-        it: 'Fa da tutore alla bambina del villaggio e la rimprovera come farebbe un nonno burbero, poi torna al mantice e alle sue lame. Nella bottega di Amigasa martella l’acciaio in un paese dove le spade migliori finiscono tutte nelle mani sbagliate. Parla poco di sé e preferisce che nessuno curiosi tra i suoi arnesi.',
-        en: 'He looks after the girl of the village and scolds her the way a gruff grandfather would, then goes back to his bellows and his blades. In the Amigasa workshop he hammers steel in a country where the best swords all end up in the wrong hands. He says little about himself and would rather nobody went poking through his tools.',
+        it: 'Tama lo chiama maestro: intreccia cappelli per vivere e il giorno del suo compleanno compra il riso al mercato. Lui rientra, trova uno sconosciuto accanto alla scodella vuota, sguaina la spada e lo scaraventa fuori di casa, finché Tama non dice di avergli dato lei il riso. Racconta a Rufy che circa un anno fa X Drake ha distrutto Amigasa, e che quattro anni fa, durante una carestia, Ace è approdato lì ed è rimasto qualche settimana: da allora Tama lo aspetta. Quando Rufy dice che Ace è morto, lo rimprovera per averglielo detto così bruscamente.',
+        en: 'Tama calls him her master: she weaves hats for a living, and on her birthday she buys rice at the market. He comes home to find a stranger beside the empty bowl, draws his sword and throws him out of the house, until Tama says she gave him the rice. He tells Luffy that X Drake destroyed Amigasa about a year ago, and that four years ago, in a famine, Ace washed ashore there and stayed a few weeks; Tama has been waiting for him ever since. When Luffy says that Ace is dead, he scolds him for telling her so bluntly.',
       },
       affiliation: [
         {
@@ -1037,8 +1037,8 @@ export const wano: Saga = {
     'toko': {
       role: { it: 'Kamuro di Komurasaki', en: 'Komurasaki’s kamuro' },
       log: {
-        it: 'Fa da paggio alla cortigiana più famosa della capitale e la segue dovunque, portandole i sandali e i dolci. Ride in continuazione, per strada, davanti allo shogun e nei momenti peggiori, e a Wano ridere davanti alla persona sbagliata può costare la testa. Nessuno in città sa spiegare perché lo faccia.',
-        en: 'She serves as page to the capital’s most famous courtesan and follows her everywhere, carrying her sandals and her sweets. She laughs constantly, in the street, in front of the shogun and at the worst possible moments, and in Wano laughing at the wrong person can cost a head. Nobody in the city can explain why she does it.',
+        it: 'Fa da kamuro a Komurasaki, la cortigiana più famosa della capitale. Arriva tardi al lavoro perché voleva assaggiare la soba del banco di Sanji, e quando dei teppisti le fanno cadere la scodella continua a sorridere; Sanji le dà la soba che gli è rimasta. Scherza sul fatto che con una “O” davanti il suo nome vuol dire “uomo”, anche se lei è una bambina, poi corre a raggiungere il corteo.',
+        en: 'She serves as kamuro to Komurasaki, the most famous courtesan in the capital. She is late for work because she wanted to try the soba at Sanji’s stand, and when thugs knock her bowl to the ground she keeps smiling; Sanji gives her the soba he has left. She jokes that with an “O” in front her name means “man”, though she is a girl, then runs off to join the procession.',
       },
       affiliation: [
         {
@@ -1287,12 +1287,12 @@ export const wano: Saga = {
     },
     'izo': {
       role: {
-        it: 'Comandante della sedicesima divisione',
-        en: 'Sixteenth division commander',
+        it: 'Pirata di Barbabianca nato a Wano',
+        en: 'Whitebeard Pirate from Wano',
       },
       log: {
-        it: 'Cresciuto nella capitale, ha lasciato Wano insieme al daimyo di Kuri e non ha più fatto ritorno, restando a bordo della nave di Barbabianca. Si presenta in kimono, con gli spilloni tra i capelli e due pistole a pietra focaia che usa meglio di chiunque altro nella ciurma. Del paese che ha lasciato non ha mai smesso di chiedere notizie.',
-        en: 'Raised in the capital, he left Wano with the daimyo of Kuri and never went home, staying aboard Whitebeard’s ship instead. He turns up in a kimono, pins in his hair and a flintlock in each hand, and shoots better than anyone else in the crew. He has never stopped asking for word of the country he left behind.',
+        it: 'Da bambino balla per strada per qualche moneta, finché Oden non gli dà da mangiare e lui si unisce agli uomini che lo seguono. Più tardi, quando Oden sgattaiola via di notte dietro alla nave di Barbabianca, Izo gli corre dietro per riportarlo a casa e finisce a bordo anche lui. Da allora naviga con la ciurma di Barbabianca, e quando nasce Momonosuke insiste perché Oden torni a casa per il bene della sua famiglia. Quando Oden parte con Roger, Izo resta sulla nave di Barbabianca, perché, dice Oden, ormai è affiatato con la ciurma.',
+        en: 'As a child he dances in the streets for a few coins, until Oden feeds him and he joins the men who follow him. Later, when Oden slips out at night after Whitebeard’s ship, Izo goes after him to bring him back and ends up on board himself. From then on he sails with Whitebeard’s crew, and after Momonosuke is born he urges Oden to go home for his family’s sake. When Oden leaves with Roger, Izo stays on Whitebeard’s ship, because, Oden says, he has meshed with the crew.',
       },
       status: [
         { episode: 970, value: 'alive' },
@@ -1302,8 +1302,8 @@ export const wano: Saga = {
         {
           episode: 970,
           value: {
-            it: 'Pirati di Barbabianca, comandante della sedicesima divisione; un tempo allievo di Oden',
-            en: 'Whitebeard Pirates, sixteenth division commander; once an apprentice of Oden',
+            it: 'Pirati di Barbabianca; un tempo seguace di Oden',
+            en: 'Whitebeard Pirates; once a follower of Oden',
           },
         },
       ],
