@@ -907,7 +907,7 @@ export const wanoArt = {
     },
     { d: ellipse(46, 104, 3.5, 8), role: 'accent' },
     {
-      d: 'M46 96 H60 C63 99 63 109 60 112 H46 M51 96 L53.5 112 M55.5 96 L58 112',
+      d: 'M46 96 H60 C63 99 63 109 60 112 H46 M52.5 96 L55 112',
       role: 'accent',
     },
     {
