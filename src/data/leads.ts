@@ -9,8 +9,8 @@
  * name them. Only while no lead is named yet does it fall back to the leads
  * first met in the arc so far, so a lead is on the page only once the reader
  * has met them. The Straw Hats are listed only on the arcs that turn on them.
- * An arc with no story of its own has no entry. The data tests hold that every id is a character named by a
- * story of the arc it is listed under.
+ * An arc with no story of its own has no entry. The data tests hold that
+ * every id is a character named by a story of the arc it is listed under.
  */
 export const ARC_LEADS: Record<string, string[]> = {
   'romance-dawn': [

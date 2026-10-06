@@ -81,8 +81,8 @@ I protagonisti della saga citati nelle storie del blocco “Appena successo”.
 - Ogni saga ha una lista scritta a mano dei suoi protagonisti. Un personaggio
   citato che non è nella lista non compare: a Dressrosa i gladiatori del
   Colosseo sono citati spesso, ma non sono al centro della storia.
-- La ciurma di Rufy è nella lista solo nelle saghe in cui è al centro. Rufy c’è
-  sempre.
+- La ciurma di Rufy, Rufy compreso, è nella lista solo nelle saghe in cui è al
+  centro.
 - Ordinati da chi è citato più volte a chi meno. A parità, prima chi è citato
   più di recente.
 - Se i protagonisti citati sono meno di sei, se ne vedono meno.
