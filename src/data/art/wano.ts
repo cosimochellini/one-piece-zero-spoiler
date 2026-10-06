@@ -181,8 +181,8 @@ export const wanoArt = {
     { d: 'M4 190 H156', role: 'ambient' },
   ],
 
-  // The paper door in his castle with the shadow behind it: one body, five
-  // necks rising, each a serpent's head with a horn. At 921 (ch. 927) the
+  // The paper door in his castle with the shadow cast on it from behind, in
+  // broken line: one body, five necks rising, each a serpent's head with a horn. At 921 (ch. 927) the
   // shogun is only this shadow; his face, crown and kimono come at 922.
   'kurozumi-orochi': [
     { d: 'M16 30 H144 V150 H16 Z' },
@@ -195,26 +195,36 @@ export const wanoArt = {
     {
       d: 'M30 150 C36 130 58 122 80 122 C102 122 124 130 130 150',
       role: 'accent',
+      dashed: true,
     },
-    { d: OROCHI_NECK, role: 'accent', transform: 'translate(76 126)' },
     {
       d: OROCHI_NECK,
       role: 'accent',
+      dashed: true,
+      transform: 'translate(76 126)',
+    },
+    {
+      d: OROCHI_NECK,
+      role: 'accent',
+      dashed: true,
       transform: 'translate(60 130) scale(-0.92 0.84)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
+      dashed: true,
       transform: 'translate(98 130) scale(0.88 0.76)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
+      dashed: true,
       transform: 'translate(44 140) scale(-0.78 0.6)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
+      dashed: true,
       transform: 'translate(114 140) scale(0.74 0.56)',
     },
     { d: 'M4 150 H156', role: 'ambient' },
@@ -653,8 +663,8 @@ export const wanoArt = {
     shadow(80, 172, 64),
   ],
 
-  // The studded kanabo he carries when he first fights at 990, its far face dark,
-  // and at its foot Oden's logbook, which he tells Luffy about at 992.
+  // The studded kanabo he carries when he first fights at 990 (ch. 983),
+  // leaning on its grip, its far face dark.
   'yamato': [
     { d: 'M26 182 L50 150 M34 188 L58 156 M26 182 L34 188' },
     { d: 'M30 176 l7 5 M36 168 l7 5 M42 160 l7 5', role: 'soft' },
@@ -668,14 +678,7 @@ export const wanoArt = {
       d: `${circle(108, 50, 2.5)} ${circle(98, 68, 2.5)} ${circle(88, 86, 2.5)} ${circle(78, 104, 2.5)} ${circle(68, 122, 2.5)} ${circle(114, 62, 2.5)} ${circle(104, 80, 2.5)} ${circle(94, 98, 2.5)} ${circle(84, 116, 2.5)} ${circle(74, 134, 2.5)}`,
       role: 'accent',
     },
-    {
-      d: 'M92 172 L130 162 L148 172 L110 182 Z M110 182 V186 L148 176 V172 M92 172 V176 L110 186',
-    },
-    {
-      d: 'M96 172 l4 -1 M102 170.5 l4 -1 M108 169 l4 -1 M114 167.5 l4 -1',
-      role: 'soft',
-    },
-    shadow(82, 194, 64),
+    shadow(70, 194, 56),
   ],
 
   // Her big long-handled fan, the paper on its ribs left blank, and the
@@ -745,10 +748,11 @@ export const wanoArt = {
   ],
 
   // The belt round his belly and the lion set in its front, a round striped
-  // mane round a plain head, no face; his tall dark hat set down beside it.
+  // mane round a plain head with no face, the belt showing either side of
+  // it; his tall dark hat set down beside it.
   // Both lion and hat are his at 901.
   'holdem': [
-    { d: 'M62 96 C84 90 140 90 158 96 V116 C140 110 84 110 62 116 Z' },
+    { d: 'M72 94.6 L62 96 V116 L72 114.6 M143 93.2 L158 96 V116 L143 113.2' },
     { d: 'M148 98 l6 -4 M148 108 l6 -4', role: 'ambient' },
     {
       d: 'M138 104 Q144.1 112.2 135 117 Q136.9 127.1 126.7 127.5 Q124.1 137.3 114.7 133.2 Q108 141 101.3 133.2 Q91.9 137.3 89.3 127.5 Q79.1 127.1 81 117 Q71.9 112.2 78 104 Q71.9 95.8 81 91 Q79.1 80.9 89.3 80.5 Q91.9 70.7 101.3 74.8 Q108 67 114.7 74.8 Q124.1 70.7 126.7 80.5 Q136.9 80.9 135 91 Q144.1 95.8 138 104 Z',
@@ -759,7 +763,7 @@ export const wanoArt = {
       role: 'accent',
     },
     {
-      d: 'M92 100 C92 88 124 88 124 100 C124 114 116 122 108 122 C100 122 92 114 92 100 Z M94 94 C90 88 94 84 99 88 M122 94 C126 88 122 84 117 88',
+      d: 'M92 100 C92 88 124 88 124 100 C124 114 116 122 108 122 C100 122 92 114 92 100 Z',
     },
     { d: 'M14 70 C14 64 50 64 50 70 L48 150 C40 154 24 154 16 150 Z' },
     {
@@ -1012,8 +1016,9 @@ export const wanoArt = {
     { d: 'M58 112 L44 188 H118 L104 112 M81 122 V188', role: 'soft' },
     shadow(81, 194, 40),
   ],
-  // Her father's castle burning, as Kin'emon tells it at 910: three storeys
-  // on a stone base, fire out of the windows and off the roofs, smoke going up.
+  // Her father's castle burning twenty years ago, as the anime shows it in
+  // Kin'emon's flashback at 910 (ch. 920): three storeys on a stone base,
+  // fire out of the windows and off the roofs, smoke going up.
   'kozuki-hiyori': [
     { d: 'M26 150 L38 120 H122 L134 150 Z' },
     {
@@ -1172,34 +1177,29 @@ export const wanoArt = {
     shadow(96, 188, 52),
   ],
 
-  // What the giants have in their chamber of the fortress at 1055: a sake
-  // barrel big enough for them, open, a ladle in it, a bottle leaning on it,
-  // and a heaped platter.
+  // What the giants have with them in their chamber of the fortress at 1055
+  // (ch. 1030), where they sit eating and drinking: a lidded sake barrel
+  // bound with hoops, and a big bottle standing beside it.
   'fuga': [
-    { d: ellipse(62, 70, 40, 12) },
+    { d: ellipse(62, 72, 40, 12) },
     {
-      d: 'M22 70 C18 100 20 130 26 152 C44 162 80 162 98 152 C104 130 106 100 102 70',
+      d: 'M22 72 C18 102 20 132 26 154 C44 164 80 164 98 154 C104 132 106 102 102 72',
     },
-    { d: ellipse(62, 72, 32, 8), role: 'soft' },
     {
-      d: 'M22 92 C44 104 80 104 102 92 M24 132 C44 144 80 144 100 132',
+      d: 'M42 63 C40 70 40 76 44 82 M62 60 V84 M82 63 C84 70 84 76 80 82',
+      role: 'soft',
+    },
+    {
+      d: 'M22 94 C44 106 80 106 102 94 M24 134 C44 146 80 146 100 134',
       role: 'accent',
     },
-    { d: 'M90 104 l6 -6 M92 118 l7 -7 M90 146 l6 -6', role: 'ambient' },
+    { d: 'M90 108 l6 -6 M92 122 l7 -7 M90 148 l6 -6', role: 'ambient' },
     {
-      d: 'M70 72 L100 34 M96 30 C102 24 110 30 104 36 C100 40 96 36 96 30',
-      role: 'soft',
+      d: 'M112 160 C104 144 108 122 122 116 L124 100 H134 L134 116 C148 122 152 144 144 160',
     },
-    {
-      d: 'M112 150 C104 134 108 112 122 106 L124 90 H134 L134 106 C148 112 152 134 144 150',
-    },
-    { d: 'M122 90 H136 M112 150 C124 154 134 154 144 150', role: 'soft' },
-    { d: ellipse(110, 174, 40, 7) },
-    {
-      d: 'M78 172 C80 160 92 158 98 164 C102 152 118 152 122 162 C128 154 142 158 142 170',
-      role: 'soft',
-    },
-    shadow(84, 190, 72),
+    { d: 'M122 100 H136 M112 160 C124 164 134 164 144 160', role: 'soft' },
+    { d: 'M140 132 l5 -5 M142 144 l5 -5', role: 'ambient' },
+    shadow(84, 172, 72),
   ],
 
   // A flame standing up in the shape of a hooded monk, rising out of a pool
