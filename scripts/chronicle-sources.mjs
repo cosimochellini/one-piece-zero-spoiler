@@ -1302,7 +1302,7 @@ export const CHRONICLE_SOURCES = {
     },
     1086: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1086',
-      note: 'Cross Guild’s formation, Buggy as its figurehead Emperor and Crocodile/Mihawk as Chief Officers are all confirmed in this episode; affiliation/bounty timelines elsewhere in the dossier use episode 1088 for the same development, a pre-existing discrepancy this PR does not touch.',
+      note: 'Cross Guild’s formation, Buggy as its figurehead Emperor and Crocodile/Mihawk as Chief Officers are all confirmed in this episode; the dossier files the Cross Guild affiliations at 1083 (Buggy, Crocodile, Mihawk, from Kid’s poster) and 1086 (Mr. 1), and the new bounties at 1086.',
     },
   },
   'koby': {
