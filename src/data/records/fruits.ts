@@ -927,7 +927,7 @@ export const devilFruits: Saga = {
       id: 'stitch-stitch-fruit',
       kind: 'fruit',
       revealedAtEpisode: 641,
-      revealedAtChapter: 725,
+      revealedAtChapter: 716,
       name: { it: 'Frutto Nui Nui', en: 'Stitch-Stitch Fruit' },
       summary: {
         it: 'Cuce con un ago, e un uomo cucito al terreno su cui sta non riesce più a muoversi.',
@@ -951,7 +951,7 @@ export const devilFruits: Saga = {
       id: 'jacket-jacket-fruit',
       kind: 'fruit',
       revealedAtEpisode: 646,
-      revealedAtChapter: 725,
+      revealedAtChapter: 716,
       name: { it: 'Frutto Giacca Giacca', en: 'Jacket-Jacket Fruit' },
       summary: {
         it: 'Trasforma chi lo mangia in una giacca che un altro può indossare: una volta addosso, prende il controllo del corpo che lo porta, uomo o bestia, e combatte con la sua forza.',

@@ -16,15 +16,10 @@ const DIAMANTE_ARMY = {
   en: 'Donquixote Pirates, Diamante Army officer',
 }
 
-const DONQUIXOTE_ELITE_ROLE = {
-  it: 'Ufficiale supremo dei Pirati di Donquijote',
-  en: 'Donquixote Pirates elite officer',
-}
-
 // The family's ranks are told late: Wicca gives Diamante's and Pica's rank at
 // 652 (chapter 722), and the three armies and who serves in each are laid out
 // at 664 (chapter 732). A member filed before then has a plain role, and the
-// rank is a dated affiliation (#225).
+// rank is a dated affiliation (#225, #277).
 const DONQUIXOTE_MEMBER_ROLE = {
   it: 'Membro della famiglia Donquijote',
   en: 'Member of the Donquixote family',
@@ -387,8 +382,10 @@ export const dressrosa: Saga = {
     {
       id: 'sugar',
       kind: 'character',
-      revealedAtEpisode: 641,
-      revealedAtChapter: 725,
+      // Named with a picture of her by Kyros at 663 (chapter 731). Cotton says
+      // the name at 648 without showing her (#277).
+      revealedAtEpisode: 663,
+      revealedAtChapter: 731,
       name: { it: 'Sugar', en: 'Sugar' },
       summary: {
         it: 'Una bambina della famiglia Donquijote che siede accanto a Do Flamingo mangiando uva, e non batte ciglio quando Baby 5 lo attacca.',
@@ -413,8 +410,10 @@ export const dressrosa: Saga = {
     {
       id: 'pica',
       kind: 'character',
-      revealedAtEpisode: 633,
-      revealedAtChapter: 709,
+      // Until 651 he is only a shape in shadow. Wicca names him with a picture
+      // of him at 652 (chapter 722) (#277).
+      revealedAtEpisode: 652,
+      revealedAtChapter: 722,
       name: { it: 'Pica', en: 'Pica' },
       summary: {
         it: 'Un uomo enorme della famiglia Donquijote che siede sul seggio di picche a palazzo, con il volto nell’ombra.',
@@ -473,8 +472,10 @@ export const dressrosa: Saga = {
     {
       id: 'jora',
       kind: 'character',
-      revealedAtEpisode: 635,
-      revealedAtChapter: 711,
+      // At 635 she is only a voice on the Sunny. She names herself on board
+      // at 644 (chapter 714) (#277).
+      revealedAtEpisode: 644,
+      revealedAtChapter: 714,
       name: { it: 'Jora', en: 'Jora' },
       summary: {
         it: 'Una donna grossa della famiglia Donquijote, con un vestito viola a fiori e gli occhiali rosa a punta, che passa il tempo a palazzo giocando a carte con Lao G.',
@@ -497,8 +498,9 @@ export const dressrosa: Saga = {
     {
       id: 'gladius',
       kind: 'character',
-      revealedAtEpisode: 640,
-      revealedAtChapter: 716,
+      // First named, and captioned, at 653 (chapter 723) (#277).
+      revealedAtEpisode: 653,
+      revealedAtChapter: 723,
       name: { it: 'Gladius', en: 'Gladius' },
       summary: {
         it: 'Un uomo della famiglia Donquijote con il cilindro nero, gli occhialoni e una maschera borchiata sulla bocca, che spara a Baby 5 quando lei si scaglia contro Do Flamingo.',
@@ -1212,14 +1214,16 @@ export const dressrosa: Saga = {
       epithet: [{ episode: 662, value: { it: 'Ricky', en: 'Ricky' } }],
     },
     'trebol': {
-      role: DONQUIXOTE_ELITE_ROLE,
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri ufficiali della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
-        en: 'He never leaves his boss’s side and agrees with everything he says, laughing a laugh that sounds like a scrape. His body makes a mucus that mires whoever touches it and hardens into a cage. He speaks to the family’s other officers like an old uncle, and how much of that good humour is an act is not clear.',
+        it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
+        en: 'He never leaves his boss’s side and agrees with everything he says, laughing a laugh that sounds like a scrape. His body makes a mucus that mires whoever touches it and hardens into a cage. He speaks to the rest of the family like an old uncle, and how much of that good humour is an act is not clear.',
       },
       affiliation: [
+        { episode: 632, value: DONQUIXOTE_PIRATES },
         {
-          episode: 632,
+          episode: 652,
+          chapter: 722,
           value: {
             it: 'Pirati di Donquijote, ufficiale supremo',
             en: 'Donquixote Pirates, elite officer',
@@ -1319,8 +1323,13 @@ export const dressrosa: Saga = {
       origin: [
         { episode: 633, value: { it: 'Paese di Kano', en: 'Kano Country' } },
       ],
+      // The epithet is told in chapter 717, which 647 adapts (#277).
       epithet: [
-        { episode: 647, value: { it: 'La Trivella', en: 'the Drill' } },
+        {
+          episode: 647,
+          chapter: 717,
+          value: { it: 'La Trivella', en: 'the Drill' },
+        },
       ],
       bounty: [{ episode: 645, value: 500_000_000 }],
     },
@@ -1443,8 +1452,13 @@ export const dressrosa: Saga = {
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
+      // The epithet is told in chapter 717, which 647 adapts (#277).
       epithet: [
-        { episode: 647, value: { it: 'Tagliasqualo', en: 'Shark Cutter' } },
+        {
+          episode: 647,
+          chapter: 717,
+          value: { it: 'Tagliasqualo', en: 'Shark Cutter' },
+        },
       ],
     },
     'maynard': {
@@ -1535,7 +1549,7 @@ export const dressrosa: Saga = {
         en: 'She sits beside Doflamingo outside the palace and eats grapes off her fingers while Baby 5 attacks him. When he leaves the palace, she goes looking for him and tells Lao G that his room is empty and the window wide open.',
       },
       affiliation: [
-        { episode: 641, value: DONQUIXOTE_PIRATES },
+        { episode: 663, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: TREBOL_ARMY },
       ],
       devilFruit: [
@@ -1582,7 +1596,6 @@ export const dressrosa: Saga = {
         en: 'He sits in the palace with Diamante and Trebol while Doflamingo leaves the colosseum’s prize with Diamante. The seats of the family’s closest members are marked with card suits, and his is the spade. He stays in shadow and says nothing.',
       },
       affiliation: [
-        { episode: 633, value: DONQUIXOTE_PIRATES },
         {
           episode: 652,
           chapter: 722,
@@ -1612,34 +1625,37 @@ export const dressrosa: Saga = {
       devilFruit: [{ episode: 667, chapter: 735, value: ['swim-swim-fruit'] }],
     },
     'dellinger': {
-      role: {
-        it: 'Ufficiale dell’Armata Diamante',
-        en: 'Diamante Army officer',
-      },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Gira per il colosseo annoiato, si lamenta del caldo e chiede quando tocca a lui. Sotto i capelli biondi ha denti da squalo, e quando si arrabbia il suo corpo cambia e non riesce più a fermarsi. Gli ufficiali della famiglia lo trattano come il cucciolo di casa, e lo tengono al guinzaglio finché possono.',
-        en: 'He wanders the colosseum bored, complaining about the heat and asking when his turn comes. Under the blond hair are a shark’s teeth, and when his temper goes his body changes and he cannot stop himself. The family’s officers treat him as the pet of the house and keep him leashed as long as they can.',
+        it: 'Gira per il colosseo annoiato, si lamenta del caldo e chiede quando tocca a lui. Sotto i capelli biondi ha denti da squalo, e quando si arrabbia il suo corpo cambia e non riesce più a fermarsi. Gli altri della famiglia lo trattano come il cucciolo di casa, e lo tengono al guinzaglio finché possono.',
+        en: 'He wanders the colosseum bored, complaining about the heat and asking when his turn comes. Under the blond hair are a shark’s teeth, and when his temper goes his body changes and he cannot stop himself. The rest of the family treat him as the pet of the house and keep him leashed as long as they can.',
       },
-      affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
+      affiliation: [
+        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+      ],
     },
     'lao-g': {
       role: { it: 'Maestro di arti marziali', en: 'Martial arts master' },
       log: {
-        it: 'Cammina piegato in due appoggiandosi a un bastone e si lamenta della schiena a ogni passo. Basta però la parola giusta e la sua postura cambia: colpisce con una velocità che non appartiene alla sua età e chiama tutto questo la sua disciplina. Serve la famiglia che comanda l’isola da così tanto tempo che gli altri ufficiali lo chiamano nonno.',
-        en: 'He walks folded in half over a stick and complains about his back at every step. But the right word changes his posture: he strikes with a speed that does not belong to his years and calls the whole business his discipline. He has served the family that runs the island so long that the other officers call him grandfather.',
+        it: 'Cammina piegato in due appoggiandosi a un bastone e si lamenta della schiena a ogni passo. Basta però la parola giusta e la sua postura cambia: colpisce con una velocità che non appartiene alla sua età e chiama tutto questo la sua disciplina. Serve la famiglia che comanda l’isola da così tanto tempo che gli altri lo chiamano nonno.',
+        en: 'He walks folded in half over a stick and complains about his back at every step. But the right word changes his posture: he strikes with a speed that does not belong to his years and calls the whole business his discipline. He has served the family that runs the island so long that the others call him grandfather.',
       },
-      affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
+      affiliation: [
+        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+      ],
     },
     'machvise': {
-      role: {
-        it: 'Ufficiale dell’Armata Diamante',
-        en: 'Diamante Army officer',
-      },
+      role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'È largo quanto due uomini e si muove con la lentezza di chi non ha fretta, perché nessuno lo evita quando arriva dall’alto. Aumenta il peso del proprio corpo a piacere e schiaccia chi si trova sotto senza nemmeno colpirlo. Fa parte del gruppo di ufficiali che sorveglia il colosseo, e aspetta il suo turno ridendo delle scommesse del pubblico.',
-        en: 'He is as wide as two men and moves like someone in no hurry, because nobody dodges him when he comes down from above. He raises the weight of his own body at will and flattens whatever is underneath without even throwing a punch. He is one of the officers watching over the colosseum, and waits his turn laughing at the crowd’s bets.',
+        it: 'È largo quanto due uomini e si muove con la lentezza di chi non ha fretta, perché nessuno lo evita quando arriva dall’alto. Aumenta il peso del proprio corpo a piacere e schiaccia chi si trova sotto senza nemmeno colpirlo. È tra i membri della famiglia che sorvegliano il colosseo, e aspetta il suo turno ridendo delle scommesse del pubblico.',
+        en: 'He is as wide as two men and moves like someone in no hurry, because nobody dodges him when he comes down from above. He raises the weight of his own body at will and flattens whatever is underneath without even throwing a punch. He is one of the family members watching over the colosseum, and waits his turn laughing at the crowd’s bets.',
       },
-      affiliation: [{ episode: 635, value: DIAMANTE_ARMY }],
+      affiliation: [
+        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
+      ],
       devilFruit: [{ episode: 682, chapter: 747, value: ['ton-ton-fruit'] }],
     },
     'jora': {
@@ -1649,7 +1665,7 @@ export const dressrosa: Saga = {
         en: 'She plays cards with Lao G at the palace. When Trebol proposes to Baby 5 as a joke and she wonders whether he really needs her, she and Lao G tell her to leave it alone.',
       },
       affiliation: [
-        { episode: 635, value: DONQUIXOTE_PIRATES },
+        { episode: 644, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: TREBOL_ARMY },
       ],
       devilFruit: [{ episode: 648, chapter: 718, value: ['art-art-fruit'] }],
@@ -1687,7 +1703,7 @@ export const dressrosa: Saga = {
         en: 'He wears a long black coat studded with gold, goggles and a white mask over the lower half of his face. When Baby 5 attacks Doflamingo outside the palace, he shoots her to calm her down.',
       },
       affiliation: [
-        { episode: 640, value: DONQUIXOTE_PIRATES },
+        { episode: 653, value: DONQUIXOTE_PIRATES },
         {
           episode: 664,
           chapter: 732,
