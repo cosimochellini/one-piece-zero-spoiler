@@ -193,6 +193,30 @@ function firstWord(entity: Entity, locale: Locale): string {
 }
 
 /**
+ * The records by the first word of their name, per locale. A name can only be
+ * in a text if its first word is, so a text looks up its own words here
+ * rather than trying every record in the archive against it.
+ */
+const BY_FIRST_WORD = new Map(
+  LOCALES.map((locale) => {
+    const index = new Map<string, Entity[]>()
+
+    for (const entity of entities) {
+      const word = firstWord(entity, locale)
+      let records = index.get(word)
+      if (records === undefined) {
+        records = []
+        index.set(word, records)
+      }
+
+      records.push(entity)
+    }
+
+    return [locale, index] as const
+  }),
+)
+
+/**
  * Whether a record the reader has already reached goes by the same name, so
  * the name in a text is that record's and not a leak: the zombie dog
  * Cerberus is met at 339, Shamrock's sword of the same name only at 1168.
@@ -213,19 +237,17 @@ function sharesAReachedName(
 }
 
 /**
- * Every record filed after this text, which it may not name: characters, but
- * also the arcs, places, ships and fruits, whose names are as much a spoiler
- * as a person's — "Marineford" in a text at episode 400 says where the war
- * will be. A record's own texts are behind its own threshold already.
+ * Whether a record is filed after this text, so the text may not name it:
+ * characters, but also the arcs, places, ships and fruits, whose names are as
+ * much a spoiler as a person's — "Marineford" in a text at episode 400 says
+ * where the war will be. A record's own texts are behind its own threshold
+ * already.
  */
-function filedAfter({ chapter, episode, owner }: Text): Entity[] {
-  return entities.filter((other) => {
-    return (
-      other.id !== owner.id
-      && (other.revealedAtEpisode > episode
-        || other.revealedAtChapter > chapter)
-    )
-  })
+function filedAfter(other: Entity, { chapter, episode, owner }: Text): boolean {
+  return (
+    other.id !== owner.id
+    && (other.revealedAtEpisode > episode || other.revealedAtChapter > chapter)
+  )
 }
 
 /** The records a text names in one locale that it should not. */
@@ -234,14 +256,22 @@ function leaked(text: Text, locale: Locale, facts: boolean): Entity[] {
   // Reduced to words once, not once per record it is scanned for.
   const words = asWords(shownWords(text.text[locale], locale))
 
-  // A name can only be in the text if its first word is, which rules out
-  // nearly every record before the slow substring scan.
-  const tokens = new Set(words.split(' '))
+  // Only the records whose name starts with one of the text's words can be
+  // in it, which rules out nearly every record before the slow substring
+  // scan. Each word once, so each record comes up at most once.
+  const index = BY_FIRST_WORD.get(locale)
+  if (index === undefined) {
+    throw new Error(`no first-word index for ${locale}`)
+  }
 
-  return filedAfter(text)
+  const named = [...new Set(words.split(' '))].flatMap(
+    (word) => index.get(word) ?? [],
+  )
+
+  return named
+    .filter((other) => filedAfter(other, text))
     .filter((other) => !facts || other.commonWord !== true)
     .filter((other) => !facts || episode < (other.nameSaidAt ?? Infinity))
-    .filter((other) => tokens.has(firstWord(other, locale)))
     .filter((other) => words.includes(nameWords(other, locale)))
     .filter((other) => !sharesAReachedName(other, text, locale))
 }
@@ -283,13 +313,11 @@ describe('the texts', () => {
     ])
   })
 
-  // Scans every text against every record in every locale, so its runtime
-  // grows with the archive; the default 5s budget has grown tight.
   it('name no record the reader has not reached, linked or not', () => {
     // Gathered first and asserted once, so a failure lists every leak in
     // the batch rather than the first one found.
     expect(leaks(true)).toStrictEqual([])
-  }, 15_000)
+  })
 })
 
 /** Whether two records go by the same name in some locale, as the scan sees it. */
@@ -350,5 +378,5 @@ describe('the name facts', () => {
       .map((entity) => entity.id)
 
     expect(unneeded).toStrictEqual([])
-  }, 15_000)
+  })
 })
