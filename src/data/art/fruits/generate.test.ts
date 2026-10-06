@@ -22,9 +22,8 @@ import {
 } from './bespoke'
 import { fruit, type FruitSeed } from './generate'
 import type { LeafForm, StemForm } from './parts'
-import type { BodyFamily } from './shape'
+import { bezier, type BodyFamily } from './shape'
 import type { SwirlFamily } from './swirls'
-import { BODY_CX, BODY_CY, radiiFor } from './units'
 
 /**
  * The generator's own tests.
@@ -94,6 +93,76 @@ function coordinates(d: string): [number, number][] {
     { length: Math.floor(numbers.length / 2) },
     (_unused, at) => [numbers[at * 2] ?? 0, numbers[at * 2 + 1] ?? 0],
   )
+}
+
+type Point = [number, number]
+
+/** Points read along each cubic: enough that a sampled curve is its curve. */
+const CUBIC_STEPS = 20
+
+/** Half the 2px pen: a mark this far in only touches the skin. */
+const HALF_PEN = 1
+
+/** One `M`, `L` or `C` command with its numbers; a `Z` adds no point. */
+const COMMAND = /[MLC][^MLCZ]*/gu
+
+/** A cubic from the pen through its next three points, read at even steps. */
+function bend(from: Point, [one, two, to]: Point[]): Point[] {
+  const ends = [from, one ?? from, two ?? from, to ?? from]
+
+  return Array.from({ length: CUBIC_STEPS }, (_unused, step) =>
+    bezier(ends, (step + 1) / CUBIC_STEPS),
+  )
+}
+
+/**
+ * Every point the pen passes through, with each cubic read as a run of
+ * points. Absolute `M`, `L`, `C` and `Z` are the whole alphabet a fruit is
+ * allowed, which the alphabet test above holds.
+ */
+function traced(d: string): Point[] {
+  const commands = d.match(COMMAND)
+  const points: Point[] = []
+
+  if (commands === null) {
+    return points
+  }
+  for (const command of commands) {
+    const numbers = coordinates(command)
+    const pen = points.at(-1)
+
+    points.push(
+      ...(pen !== undefined && command.startsWith('C') ?
+        bend(pen, numbers)
+      : numbers),
+    )
+  }
+
+  return points
+}
+
+/**
+ * How far a point is inside a closed outline: its distance to the nearest
+ * edge, negative when it is outside, which an even-odd ray cast decides.
+ */
+function depth(outline: Point[], [x, y]: Point): number {
+  let inside = false
+  let nearest = Infinity
+
+  for (const [index, [x1, y1]] of outline.entries()) {
+    const [x0, y0] = outline.at(index - 1) ?? [x1, y1]
+    const [dx, dy] = [x1 - x0, y1 - y0]
+    const along =
+      ((x - x0) * dx + (y - y0) * dy) / Math.max(dx * dx + dy * dy, 1e-9)
+    const t = Math.max(0, Math.min(1, along))
+
+    if (y0 > y !== y1 > y && x < x0 + ((y - y0) * dx) / dy) {
+      inside = !inside
+    }
+    nearest = Math.min(nearest, Math.hypot(x - x0 - t * dx, y - y0 - t * dy))
+  }
+
+  return inside ? nearest : -nearest
 }
 
 /** One drawing as one string, so two of them can be compared outright. */
@@ -215,17 +284,14 @@ describe('the generator', () => {
 
   it('never lets the mark break the skin of the fruit it is on', () => {
     for (const seed of SEEDS) {
-      const { rx, ry } = radiiFor(seed.grain)
+      const [body, mark] = fruit(seed)
+      const skin = traced(body.d)
 
-      const mark = coordinates(fruit(seed)[1].d)
-
-      for (const [x, y] of mark) {
-        const reach = ((x - BODY_CX) / rx) ** 2 + ((y - BODY_CY) / ry) ** 2
-
+      for (const at of traced(mark.d)) {
         expect(
-          reach,
+          depth(skin, at),
           `${seed.body}/${seed.swirl}/${String(seed.grain)}`,
-        ).toBeLessThan(1)
+        ).toBeGreaterThanOrEqual(HALF_PEN)
       }
     }
   })

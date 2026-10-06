@@ -48,7 +48,7 @@ export function fruit(
 
   return [
     { d: lobed(seed.body, radii.rx, radii.ry) },
-    { d: swirlOf(seed.swirl, radii, seed.grain), role: 'accent' },
+    { d: swirlOf(seed, radii), role: 'accent' },
     { d: stemPath(seed.stem, stalk) },
     { d: leafPath(seed.leaf, stalk, seed.grain), role: 'soft' },
     shadowUnder(seed.grain),

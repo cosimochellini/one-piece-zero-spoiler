@@ -1,28 +1,58 @@
+import { type BodyFamily, widthAt } from '~/data/art/fruits/shape'
 import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
 
 /**
  * The mark that makes a drawing a devil fruit rather than an apple.
  *
  * Four families, and every one of them is sized off the body's own radii
- * rather than off the box, so a swirl can never break the skin of the fruit
- * it is drawn on however wide or tall that fruit is. The furthest any of them
- * reaches is 0.72 of a radius, which the generator's test holds against the
- * body's ellipse for every one of the drawings.
+ * rather than off the box. The radii alone are not enough: a pear or a gourd
+ * is much narrower than its radii in the middle, where the mark sits. So the
+ * waves stop short of the real outline at each band's height, and the other
+ * three shrink by `ROOM` on the bodies that need it. What holds all of them
+ * inside the skin is the generator's test, which walks every mark it can grow
+ * against the outline the body actually draws.
  */
 
 /** Which of the four marks a fruit wears. */
 export type SwirlFamily = 'scales' | 'spiral' | 'waves' | 'whorls'
 
+/** A body's half-width and half-height, which every mark is sized off. */
+interface Radii {
+  rx: number
+  ry: number
+}
+
 /**
  * How far out a spiral reaches, as a fraction of the shorter radius.
  *
  * A spiral's ceiling and nobody else's: the other three families each work
- * their reach out of the radii themselves, and the furthest any of the four
- * goes is `waves` at 0.72 of a radius. What holds all of them inside the body
- * is the generator's test, which walks every mark it can grow against the
- * body's own ellipse — not this number.
+ * their reach out of the radii themselves. What holds all of them inside the
+ * body is the generator's test, not this number.
  */
 const SPREAD = 0.55
+
+/**
+ * How much of its radii a mark may use on a body where the whole of them
+ * would break the skin; every other pair uses all of them. A pear and a gourd
+ * are narrow in the middle, where the mark sits, and a heart narrows towards
+ * its point, which only the bottom row of scales comes near. Each number is
+ * the largest that keeps the mark a pen's half-width inside the outline for
+ * every grain, which the generator's test checks. The mark shrinks the same
+ * way in both directions, so a ring stays a ring. There is no slack in them:
+ * if that test fails after a profile or a radius changes, tune these again.
+ */
+const ROOM: Partial<Record<BodyFamily, Partial<Record<SwirlFamily, number>>>> =
+  {
+    gourd: { scales: 0.62, spiral: 0.86, whorls: 0.74 },
+    heart: { scales: 0.99 },
+    pear: { scales: 0.59, spiral: 0.77, whorls: 0.7 },
+  }
+
+/**
+ * How far in from the skin a wave band stops: a whole pen, so its ends still
+ * clear the outline where the lift pulls the curve off its row.
+ */
+const INSET = 2
 
 /** Where a spiral starts, so two fruits of the same family are not the same. */
 const TILT = 37
@@ -59,7 +89,7 @@ export function ring(cx: number, cy: number, r: number): string {
 }
 
 /** One coil from the middle of the fruit out to 0.55 of its radii. */
-function spiral(rx: number, ry: number, grain: number): string {
+function spiral({ rx, ry }: Radii, grain: number): string {
   const reach = SPREAD * Math.min(rx, ry)
   const start = grain * TILT * RADIANS
   const turns = TURNS[grain % TURNS.length] ?? TURNS[0] ?? 2.75
@@ -78,7 +108,7 @@ function spiral(rx: number, ry: number, grain: number): string {
 }
 
 /** Three loops set around the middle, like knots in a grain. */
-function whorls(rx: number, ry: number, grain: number): string {
+function whorls({ rx, ry }: Radii, grain: number): string {
   const start = grain * TILT * RADIANS
   const loop = 0.18 * Math.min(rx, ry)
 
@@ -95,15 +125,21 @@ function whorls(rx: number, ry: number, grain: number): string {
     .join(' ')
 }
 
-/** Four bands across the body, each shorter as it nears the top or the foot. */
-function waves(rx: number, ry: number, grain: number): string {
+/**
+ * Four bands across the body, each shorter as it nears the top or the foot,
+ * and never longer than the body is wide at that height.
+ */
+function waves({ rx, ry }: Radii, grain: number, body: BodyFamily): string {
   const lift = grain % 2 === 0 ? 0.08 : -0.08
 
   return [-2, -1, 1, 2]
     .map((row) => {
       const off = row * 0.22
       const y = BODY_CY + off * ry
-      const half = 0.8 * rx * Math.sqrt(1 - off * off)
+      const half = Math.min(
+        0.8 * rx * Math.sqrt(1 - off * off),
+        widthAt(body, off) * rx - INSET,
+      )
 
       return [
         `M${point(BODY_CX - half, y)}`,
@@ -116,7 +152,7 @@ function waves(rx: number, ry: number, grain: number): string {
 }
 
 /** Nine small arcs in three rows, each row offset half a step from the last. */
-function scales(rx: number, ry: number, grain: number): string {
+function scales({ rx, ry }: Radii, grain: number): string {
   const wide = 0.15 * rx
   const tall = 0.14 * ry
 
@@ -141,14 +177,16 @@ function scales(rx: number, ry: number, grain: number): string {
 
 const SWIRLS: Record<
   SwirlFamily,
-  (rx: number, ry: number, grain: number) => string
+  (radii: Radii, grain: number, body: BodyFamily) => string
 > = { scales, spiral, waves, whorls }
 
 /** The mark a fruit wears, in the one colour its drawing is allowed. */
 export function swirlOf(
-  family: SwirlFamily,
+  mark: { body: BodyFamily; grain: number; swirl: SwirlFamily },
   radii: { rx: number; ry: number },
-  grain: number,
 ): string {
-  return SWIRLS[family](radii.rx, radii.ry, grain)
+  const room = ROOM[mark.body]?.[mark.swirl] ?? 1
+  const roomy = { rx: radii.rx * room, ry: radii.ry * room }
+
+  return SWIRLS[mark.swirl](roomy, mark.grain, mark.body)
 }

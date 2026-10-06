@@ -116,3 +116,57 @@ export function lobed(family: BodyFamily, rx: number, ry: number): string {
     'Z',
   ].join(' ')
 }
+
+/** Points read along each cubic of the right side when measuring a width. */
+const STEPS = 32
+
+/** One point of a cubic, `t` of the way along it from its first point. */
+export function bezier(cubic: [number, number][], t: number): [number, number] {
+  const weights = [
+    (1 - t) ** 3,
+    3 * (1 - t) ** 2 * t,
+    3 * (1 - t) * t ** 2,
+    t ** 3,
+  ]
+  const sum: [number, number] = [0, 0]
+
+  for (const [index, [x, y]] of cubic.entries()) {
+    sum[0] += (weights[index] ?? 0) * x
+    sum[1] += (weights[index] ?? 0) * y
+  }
+
+  return sum
+}
+
+/**
+ * How far the right side of a body reaches at height `y`, both as fractions
+ * of its radii. It is read off the outline `lobed` draws, which on a pear or
+ * a gourd runs well inside the ellipse its radii describe. Above the top
+ * or below the foot the side never crosses `y`, so the width there is 0.
+ */
+export function widthAt(family: BodyFamily, y: number): number {
+  const profile = PROFILES[family]
+  const on = (index: number): [number, number] => profile[index] ?? [0, 1]
+  const cubics: [number, number][][] = [
+    [[0, -1], on(0), on(1), on(2)],
+    [on(2), on(3), on(4), on(5)],
+  ]
+  const side: [number, number][] = []
+
+  for (const cubic of cubics) {
+    for (let step = 0; step <= STEPS; step++) {
+      side.push(bezier(cubic, step / STEPS))
+    }
+  }
+  let width = 0
+
+  for (const [index, [x1, y1]] of side.entries()) {
+    const [x0, y0] = side[index - 1] ?? [x1, y1]
+
+    if (y0 !== y1 && (y0 - y) * (y1 - y) <= 0) {
+      width = Math.max(width, x0 + ((x1 - x0) * (y - y0)) / (y1 - y0))
+    }
+  }
+
+  return width
+}
