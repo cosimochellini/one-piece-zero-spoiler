@@ -1,26 +1,84 @@
 import { circle, dots, ellipse, ghost, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/** The barrel tipped as the waves lift it. */
+const BARREL_BOB = 'rotate(-10 80 110)'
+
+/**
+ * Brook's violin standing in 3/4, the rib on its far side hatched. The 517
+ * drawing keeps it and lays the guitar across it.
+ */
+const BROOK_VIOLIN: Stroke[] = [
+  {
+    d: 'M78 64 C60 64 52 74 56 90 C60 96 62 100 58 106 C48 116 48 140 62 148 C70 153 86 153 94 148 C108 140 108 116 98 106 C94 100 96 96 100 90 C104 74 96 64 78 64 Z',
+  },
+  {
+    d: 'M83 65 C101 65 109 75 105 91 C101 97 99 101 103 107 C113 117 113 141 99 149 C95 151.4 90 153 86 153.6',
+  },
+  {
+    d: 'M101 76 l5 -1.5 M104.5 116 l5 -1.5 M105.5 128 l5 -1.5 M103 140 l5 -1.5',
+    role: 'ambient',
+  },
+  { d: 'M74 64 V30 M82 64 V30' },
+  { d: 'M74 30 C72 20 78 16 82 20 C86 24 80 28 78 24' },
+  { d: 'M74 36 h-6 M82 36 h6 M74 44 h-6 M82 44 h6' },
+  { d: 'M76.5 40 V136 M79.5 40 V136', role: 'ambient' },
+  { d: 'M70 122 h16', role: 'soft' },
+  { d: 'M74 136 L72 147 H84 L82 136 Z', role: 'soft' },
+  { d: 'M66 104 q-5 10 3 20 M90 104 q5 10 -3 20', role: 'accent' },
+]
+
+/** The plate flying off the top of the stack. */
+const PLATE_FALL = 'rotate(-30 118 76)'
+
+/** One of Cerberus's heads in profile, drawn about its middle, with no eye. */
+const DOG_HEAD =
+  'M-14 6 C-16 -6 -8 -13 2 -12 L24 -4 C28 -2 28 4 24 6 L6 9 C0 13 -10 13 -14 6 Z'
+const DOG_EARS = 'M-8 -10 L-6 -24 L2 -12'
+/** The fox's ears, taller and both showing. */
+const FOX_EARS = 'M-10 -9 L-8 -30 L0 -12 M-2 -12 L6 -28 L6 -11'
+/** The spiked collar, drawn round a neck at the origin. */
+const SPIKED_COLLAR = `${ellipse(0, 0, 4, 10)} M-2 -9 l-3 -6 M2 -9 l3 -6 M2 9 l3 6`
+
+/** One of Jigoro's sabres, hilt at the origin, and its knuckle guard. */
+const SABRE_BLADE = 'M0 0 C-4 -36 0 -72 18 -100 C12 -70 8 -36 8 0 Z'
+const SABRE_GUARD = 'M-6 0 H14 M4 0 V22 M14 0 C22 8 18 20 4 22'
 
 /** The drawings of the records filed in the thriller bark stretch of the route. */
 export const thrillerBarkArt = {
-  // A skull singing in the fog, notes rising from its open jaw: the arc's
-  // first episode shows only the fog and the skeleton aboard a ghost ship.
-  // The hull is drawn from 343, in `thrillerBarkRedrawn`.
+  // The barrel the crew fishes out of the sea at 337, lid still on, bobbing
+  // in the waves with bands of fog around it. The hoops take the colour. The
+  // hull is drawn from 343, in `thrillerBarkRedrawn`.
   'thriller-bark-arc': [
-    { d: 'M52 104 C44 64 60 42 80 42 C100 42 116 64 108 104' },
-    { d: 'M52 104 q2 10 12 12 M108 104 q-2 10 -12 12' },
-    { d: 'M64 116 H96' },
-    { d: 'M70 116 v6 M77 116 v6 M84 116 v6 M91 116 v6', role: 'soft' },
-    { d: 'M64 128 H96 Q80 154 64 128' },
-    { d: `${ellipse(68, 88, 8, 9)} ${ellipse(92, 88, 8, 9)}`, role: 'accent' },
-    { d: 'M80 98 l-4 9 h8z', role: 'soft' },
+    { d: ellipse(80, 64, 26, 8), transform: BARREL_BOB },
+    { d: 'M64 62 h32 M70 58 h20', role: 'soft', transform: BARREL_BOB },
     {
-      d: `${ellipse(124, 64, 5, 3.5)} M129 64 V40 q6 4 8 12 ${ellipse(140, 36, 4, 3)} M144 36 V18`,
-      role: 'accent',
+      d: 'M54 64 C46 88 46 118 54 140 M106 64 C114 88 114 118 106 140',
+      transform: BARREL_BOB,
     },
     {
-      d: 'M-4 34 H40 M-4 70 H30 M118 96 H164 M-4 138 H48 M112 142 H164',
+      d: 'M51 82 Q80 94 109 82 M50 126 Q80 138 110 126',
+      role: 'accent',
+      transform: BARREL_BOB,
+    },
+    {
+      d: 'M68 72 C65 98 65 120 67 144 M92 72 C95 98 95 120 93 144',
+      role: 'soft',
+      transform: BARREL_BOB,
+    },
+    {
+      d: 'M104 94 l7 -3 M105 104 l7 -3 M105 114 l7 -3 M105 124 l7 -3',
+      role: 'ambient',
+      transform: BARREL_BOB,
+    },
+    { d: 'M44 146 q12 -7 24 0 t24 0 t24 0 t24 0' },
+    {
+      d: 'M-4 152 q10 -6 20 0 t20 0 M124 152 q10 -6 20 0 t20 0',
+      role: 'ambient',
+    },
+    {
+      d: 'M-4 30 H44 M70 20 H164 M-4 92 H28 M134 84 H164 M-4 118 H22 M140 120 H164',
       role: 'ambient',
       dashed: true,
     },
@@ -51,20 +109,16 @@ export const thrillerBarkArt = {
     ...SEA.slice(1),
   ],
 
-  // A violin, its bow laid across it; the f-holes take the colour. The Soul
-  // King's guitar is drawn from 517, in `thrillerBarkRedrawn`.
+  // His violin in 3/4, the rib showing on the far side and hatched, the bow
+  // laid across it; the f-holes take the colour. He plays it from 338. The
+  // Soul King's guitar is drawn from 517, in `thrillerBarkRedrawn`, over the
+  // same violin.
   'brook': [
-    {
-      d: 'M80 64 c-26 0 -34 20 -24 32 c-10 10 -14 34 -2 46 c12 12 40 12 52 0 c12 -12 8 -36 -2 -46 c10 -12 2 -32 -24 -32z',
-    },
-    { d: 'M75 64 V26 M85 64 V26' },
-    { d: 'M75 26 q5 -10 10 0' },
-    { d: 'M70 30 h-6 M90 30 h6 M70 38 h-6 M90 38 h6' },
-    { d: 'M78 60 V132 M82 60 V132', role: 'ambient' },
-    { d: 'M70 122 h20' },
-    { d: 'M68 96 q-6 12 4 22 M92 96 q6 12 -4 22', role: 'accent' },
+    ...BROOK_VIOLIN,
     { d: 'M26 176 L134 44' },
     { d: 'M30 180 L138 48', role: 'ambient' },
+    { d: 'M28 178 l4 4 M134 44 l4 4', role: 'soft' },
+    shadow(84, 166, 32),
   ],
 
   // An umbrella, and two small ghosts drifting beside it.
@@ -78,20 +132,26 @@ export const thrillerBarkArt = {
     ...ghost(102, 134, 'accent'),
   ],
 
-  // A bridal veil hung over a pair of tusks.
+  // The bridal veil under its crown of flowers, folds falling to a wavy hem,
+  // and the two warthog's tusks curving up out from under it. She proposes
+  // to Absalom in it at 345.
   'lola': [
-    { d: 'M62 38 C62 26 98 26 98 38' },
-    { d: 'M64 40 C42 62 30 96 30 126', role: 'accent' },
-    { d: 'M96 40 C118 62 130 96 130 126', role: 'accent' },
-    { d: 'M30 126 q12 12 25 0 t25 0 t25 0 t25 0', role: 'accent' },
+    { d: ellipse(80, 40, 16, 5), role: 'accent' },
+    { d: 'M66 36 q-2 -6 4 -6 q2 -6 8 -2 q6 -4 8 2 q6 0 4 6', role: 'accent' },
+    { d: 'M64 42 C50 58 42 96 40 140 M96 42 C110 58 118 96 120 140' },
+    { d: 'M40 140 q10 7 20 1 t20 1 t20 1 t20 -3' },
     {
-      d: 'M72 48 C58 78 52 104 52 124 M88 48 C102 78 108 104 108 124',
+      d: 'M72 46 C66 76 64 106 64 140 M88 46 C94 76 96 106 96 140 M80 46 V140',
       role: 'soft',
     },
-    { d: 'M64 186 C40 178 22 158 20 136 C34 150 50 166 74 180 Z' },
-    { d: 'M96 186 C120 178 138 158 140 136 C126 150 110 166 86 180 Z' },
-    { d: 'M60 184 q20 8 40 0' },
-    shadow(80, 192, 42),
+    { d: 'M54 136 C34 136 18 118 16 84 C26 104 40 116 56 120' },
+    { d: 'M106 136 C126 136 142 118 144 84 C134 104 120 116 104 120' },
+    {
+      d: 'M24 112 l5 -5 M34 124 l4 -6 M136 112 l-5 -5 M126 124 l-4 -6',
+      role: 'ambient',
+    },
+    { d: 'M112 64 l6 -3 M116 82 l6 -3 M118 100 l6 -3', role: 'ambient' },
+    shadow(80, 172, 50),
   ],
 
   // A pair of scissors, and the shadow lying cut in two beneath them.
@@ -139,144 +199,233 @@ export const thrillerBarkArt = {
     shadow(80, 172, 50),
   ],
 
-  // A scalpel laid over a heart that has been sewn back together.
+  // His violet feathery cape standing on its own hem, the fluffy collar on
+  // top, one side turned back to show the black lining, hatched, the
+  // feathered hem in his colour; the surgical mask he wears under his chin
+  // hangs off the collar by one ear loop. He greets the three at his mansion
+  // door in both at 340.
   'hogback': [
+    { d: 'M64 40 C50 70 34 120 24 168 M129 160 C122 118 110 70 96 40' },
+    { d: 'M96 40 C104 76 108 124 106 170' },
     {
-      d: 'M80 172 C38 142 24 110 32 86 C40 62 72 62 80 90 C88 62 120 62 128 86 C136 110 122 142 80 172 Z',
+      d: 'M100 66 l8 -4 M102 84 l10 -5 M104 102 l12 -6 M105 120 l13 -6 M106 138 l14 -6 M106 156 l16 -7',
+      role: 'ambient',
     },
     {
-      d: 'M44 118 C60 106 80 106 96 116 C108 124 116 128 122 122',
-      role: 'soft',
-    },
-    {
-      d: 'M52 112 l4 12 M64 108 l2 12 M76 107 l0 12 M88 108 l-2 12 M100 113 l-4 12 M112 120 l-4 10',
+      d: 'M62 40 q-6 -8 2 -10 q2 -8 10 -4 q4 -6 10 0 q8 -4 10 4 q8 2 2 10 q-16 6 -34 0 Z',
       role: 'accent',
     },
-    { d: 'M10 20 L50 44 L44 54 L4 30 Z' },
-    { d: 'M50 44 C64 48 78 54 88 64 L78 74 C70 64 56 56 44 54 Z' },
-    { d: 'M16 30 l6 -10 M26 36 l6 -10', role: 'soft' },
-    shadow(80, 184, 50),
+    {
+      d: 'M24 168 q2 10 10 6 q3 9 11 4 q4 9 11 3 q5 8 12 2 q5 8 12 0 q6 8 12 -2 q6 7 11 -3 q7 6 10 -4 q7 4 8 -6 q8 2 8 -8',
+      role: 'accent',
+    },
+    {
+      d: 'M60 70 C54 96 46 128 42 160 M76 46 C72 90 70 130 68 170',
+      role: 'soft',
+    },
+    { d: 'M38 62 Q54 58 70 62 V74 Q54 92 38 74 Z' },
+    { d: 'M70 64 C76 56 74 44 68 38 M38 64 C30 62 28 72 38 74', role: 'soft' },
+    { d: 'M40 68 Q54 64 68 68 M42 74 Q54 72 66 74', role: 'soft' },
+    shadow(78, 186, 58),
   ],
 
-  // A stack of serving plates, the top one cracked and a shard on the floor.
+  // A stack of serving plates, one more flying off the top and another broken
+  // in two on the floor. She throws them at Usopp at the mansion door (340).
   'victoria-cindry': [
-    { d: ellipse(80, 158, 48, 12) },
-    { d: 'M32 158 q48 12 96 0' },
-    { d: ellipse(80, 136, 45, 11) },
-    { d: 'M35 136 q45 11 90 0' },
-    { d: ellipse(80, 114, 42, 10) },
-    { d: 'M38 114 q42 10 84 0' },
-    { d: ellipse(80, 92, 39, 10) },
-    { d: 'M41 92 q39 10 78 0' },
-    { d: ellipse(80, 70, 36, 9), role: 'accent' },
-    { d: 'M44 70 q36 9 72 0' },
-    { d: 'M48 68 L62 78 L74 64 L88 78 L106 66', role: 'accent' },
-    shadow(78, 188, 54),
+    { d: ellipse(58, 100, 38, 10) },
+    { d: ellipse(58, 100, 21, 5.5), role: 'soft' },
+    {
+      d: 'M20 100 q38 14 76 0 M20 112 q38 14 76 0 M22 124 q36 14 74 0 M20 136 q38 14 76 0',
+    },
+    {
+      d: 'M28 108 q30 10 60 0 M28 120 q30 10 60 0 M30 132 q28 10 58 0 M28 144 q30 10 60 0 V150 q-30 10 -60 0 Z',
+    },
+    {
+      d: 'M90 112 l6 -3 M90 124 l6 -3 M90 136 l6 -3 M90 148 l6 -3',
+      role: 'ambient',
+    },
+    { d: ellipse(118, 76, 26, 7), transform: PLATE_FALL, role: 'accent' },
+    { d: ellipse(118, 76, 14, 3.5), transform: PLATE_FALL, role: 'soft' },
+    { d: 'M96 52 l-8 -6 M104 44 l-4 -8', role: 'ambient' },
+    {
+      d: 'M100 176 Q102 168 118 168 L114 172 L120 176 L116 182 Q102 182 100 176 Z M126 168 Q144 168 148 175 Q146 182 128 182 L122 177 L128 172 Z',
+      role: 'accent',
+    },
+    { d: 'M104 164 l-4 -4 M150 164 l4 -4 M126 160 v-5', role: 'soft' },
+    shadow(58, 166, 40),
   ],
 
-  // A katana half drawn, the bare stretch of the blade in its colour.
+  // Shusui half drawn: the blade's bare stretch in its colour between the
+  // tsuba, seen as an ellipse, and the mouth of the black scabbard, hatched.
+  // The hilt keeps its diamond wrap. He carries it from 342.
   'ryuma': [
-    { d: 'M24 184 L72 92 L83.5 98 L35.5 190 Z' },
-    { d: 'M41 152 q6 -6 11 0 q-5 6 -11 0 Z', role: 'soft' },
-    { d: 'M72 92 L89.1 62.6 L97.9 67.2 L83.5 98 Z', role: 'accent' },
-    { d: 'M77.9 60.2 L106.3 75 L109.1 69.6 L80.7 54.8 Z' },
-    { d: 'M89.1 62.6 L108.5 25.4 L117.3 30 L97.9 67.2 Z' },
-    { d: 'M105.8 30.6 L114.6 35.2' },
+    { d: 'M27.7 182.9 L68 100.2 L80.6 106.4 L40.3 189.1 Z' },
+    { d: 'M31.2 175.7 L43.8 181.9' },
     {
-      d: 'M94.3 55.9 L100.5 59.1 M99.1 46.6 L105.3 49.8 M104 37.3 L110.2 40.5',
+      d: 'M39.3 175.2 L46.8 173.3 M42.8 168 L50.3 166.2 M46.3 160.8 L53.9 159 M49.8 153.6 L57.4 151.8 M53.3 146.4 L60.9 144.6 M56.8 139.3 L64.4 137.4 M60.3 132.1 L67.9 130.2 M63.8 124.9 L71.4 123 M67.3 117.7 L74.9 115.8 M70.8 110.5 L78.4 108.6',
+      role: 'ambient',
+    },
+    { d: 'M70.3 101.3 L81.7 78 M78.4 105.3 L88.4 81.2', role: 'accent' },
+    { d: 'M76.9 95.7 L84.4 80.4', role: 'soft' },
+    { d: 'M80.3 77.3 L82.5 72.8 L93.3 78.1 L91.1 82.6 Z' },
+    { d: 'M76.2 67.5 A14 5 26 1 0 101.4 79.8 A14 5 26 1 0 76.2 67.5' },
+    { d: 'M84.3 69.2 L102.2 32.4 L113 37.6 L95 74.5 Z' },
+    { d: 'M86 65.6 L100.3 63.7 L93 51.2 L107.3 49.3 L100 36.9', role: 'soft' },
+    { d: 'M101.8 32.1 L104.4 26.7 L116.1 32.4 L113.5 37.8 Z' },
+  ],
+
+  // The back of his head over the mansion roof he crashed through at 355: a
+  // shock of hair, the two great horns in his colour, and a house far too
+  // small beneath. Seen from behind, so no face.
+  'oars': [
+    {
+      d: 'M40 112 C38 86 44 68 56 60 L52 50 L64 54 L66 42 L76 50 L82 38 L88 50 L98 42 L100 54 L110 50 L104 62 C116 70 122 86 120 112',
+    },
+    {
+      d: 'M50 78 C34 70 24 52 26 22 C34 42 46 52 58 58 M112 78 C126 70 136 52 134 22 C126 42 114 52 104 58',
+      role: 'accent',
+    },
+    {
+      d: 'M48 86 C46 96 44 104 46 112 M112 86 C114 96 116 104 114 112',
       role: 'soft',
     },
+    { d: 'M20 150 V112 H86 L92 104 L98 114 L106 102 L112 112 H140 V150' },
+    {
+      d: 'M34 124 h12 v14 h-12z M114 124 h12 v14 h-12z M74 150 V130 h12 V150',
+      role: 'soft',
+    },
+    { d: 'M128 118 l6 -4 M130 132 l6 -4 M130 146 l6 -4', role: 'ambient' },
+    { d: 'M94 98 l-2 -6 M108 96 l3 -5', role: 'ambient' },
+    { d: 'M-4 150 H164', role: 'ambient', dashed: true },
   ],
 
-  // A giant's helmet, the two horns curving off it.
-  'oars': [
-    { d: 'M36 120 C36 60 124 60 124 120' },
-    { d: 'M30 120 H130 V136 H30 Z' },
-    { d: 'M74 136 V166 h12 V136' },
-    { d: 'M44 124 h22 M94 124 h22', role: 'soft' },
-    { d: 'M80 66 V120', role: 'soft' },
-    {
-      d: dots([
-        [38, 128],
-        [56, 128],
-        [104, 128],
-        [122, 128],
-      ]),
-    },
-    {
-      d: 'M38 96 C20 84 8 62 14 38 C20 52 30 62 40 68 C36 78 34 88 38 96 Z',
-      role: 'accent',
-    },
-    {
-      d: 'M122 96 C140 84 152 62 146 38 C140 52 130 62 120 68 C124 78 126 88 122 96 Z',
-      role: 'accent',
-    },
-    shadow(80, 178, 52),
-  ],
-
-  // A captain's cap resting on a closed violin case.
+  // His white cowboy hat on top of a coat stand, and the green captain's coat
+  // hung beneath it, gold epaulettes in his colour. He is first seen whole in
+  // Brook's memory at 378.
   'yorki': [
+    { d: 'M24 48 Q34 64 80 64 Q126 64 136 48' },
+    { d: 'M24 48 Q38 52 54 50 M106 50 Q122 52 136 48', role: 'soft' },
+    { d: 'M54 52 C52 36 58 22 66 22 Q80 30 94 22 C102 22 108 36 106 52' },
+    { d: 'M55 44 Q80 50 105 44 M80 28 V40', role: 'soft' },
     {
-      d: 'M80 86 c-28 0 -37 22 -26 35 c-11 11 -15 37 -2 50 c13 13 43 13 56 0 c13 -13 9 -39 -2 -50 c11 -13 2 -35 -26 -35z',
+      d: 'M66 72 C56 74 46 76 42 84 L40 170 H120 L118 84 C114 76 104 74 94 72',
     },
-    { d: 'M72 86 V64 h16 V86' },
-    { d: 'M48 120 h10 M102 120 h10 M48 154 h10 M102 154 h10', role: 'soft' },
-    { d: 'M80 96 V166', role: 'soft' },
-    { d: 'M40 56 C40 28 120 28 120 56', role: 'accent' },
-    { d: 'M34 56 H126 V68 H34 Z', role: 'accent' },
-    { d: 'M34 68 C20 72 12 80 16 84 H52', role: 'accent' },
-    shadow(80, 186, 48),
+    { d: 'M42 84 L30 146 H44 L52 100 M118 84 L130 146 H116 L108 100' },
+    { d: 'M66 72 L80 90 L94 72 M80 90 V170' },
+    { d: 'M66 72 L70 106 L80 90 M94 72 L90 106 L80 90', role: 'soft' },
+    { d: 'M36 88 Q44 76 60 78 M124 88 Q116 76 100 78', role: 'accent' },
+    {
+      d: 'M38 90 v8 M43 86 v10 M48 83 v10 M53 81 v10 M122 90 v8 M117 86 v10 M112 83 v10 M107 81 v10',
+      role: 'accent',
+    },
+    {
+      d: 'M121 104 l6 -3 M123 116 l6 -3 M125 128 l6 -3 M114 152 l6 -3',
+      role: 'ambient',
+    },
+    { d: 'M80 64 V72 M80 170 V178 M64 184 L80 178 L96 184', role: 'soft' },
+    shadow(80, 186, 40),
   ],
-  // A tall bottle of wine and the glass poured from it; the wine takes the colour.
+  // A bat-winged cape folded shut and hanging upside down from a dead branch,
+  // the wings in his colour and spiky hair poking out at the bottom, with the
+  // long-necked bottle he carries slung across it. He hangs there to greet the
+  // crew at 339.
   'hildon': [
     {
-      d: 'M66 40 V74 C66 84 54 88 54 100 V172 q0 6 6 6 h24 q6 0 6 -6 V100 C90 88 78 84 78 74 V40 Z',
+      d: 'M4 34 C40 28 90 36 156 30 M120 32 l14 -14 M36 31 l-10 -12 M128 25 l10 2',
+      role: 'ambient',
     },
-    { d: 'M64 30 h16 v10 h-16z' },
-    { d: 'M54 118 h36 v30 h-36z', role: 'soft' },
-    { d: 'M104 104 q0 32 20 32 q20 0 20 -32 Z' },
-    { d: 'M107 118 q17 6 34 0 q-3 16 -17 16 q-14 0 -17 -16 Z', role: 'accent' },
-    { d: 'M124 136 V170 M110 172 h28' },
-    shadow(96, 186, 58),
-  ],
-
-  // A spiked dog collar lying open, three tags hanging from its buckle.
-  'cerberus-thriller-bark': [
-    { d: ellipse(80, 96, 56, 24), role: 'accent' },
-    { d: ellipse(80, 96, 46, 16), role: 'accent' },
+    { d: 'M72 33 q-2 6 2 8 M84 33 q2 6 -2 8' },
     {
-      d: 'M34 84 l4 -14 l5 12 M56 76 l4 -15 l5 14 M76 74 l4 -15 l4 15 M95 76 l5 -14 l4 15 M117 82 l5 -12 l4 14',
+      d: 'M66 40 C52 60 44 92 48 132 L56 124 L62 136 L70 126 L80 140 L90 126 L98 136 L104 124 L112 132 C116 92 108 60 94 40 Z',
+      role: 'accent',
     },
-    { d: 'M70 112 h20 v14 h-20z', role: 'soft' },
-    { d: 'M76 126 L60 142 M80 126 V146 M84 126 L100 142', role: 'soft' },
-    { d: circle(58, 150, 8) },
-    { d: circle(80, 156, 9) },
-    { d: circle(102, 150, 8) },
-    shadow(80, 180, 44),
-  ],
-
-  // A pig's snout on a trophy plaque hung from a nail, two swords crossed beneath it.
-  'buhichuck': [
-    { d: 'M62 40 L80 20 L98 40', role: 'ambient' },
-    { d: dots([[80, 20]]) },
-    { d: 'M44 40 H116 V92 C116 118 100 134 80 142 C60 134 44 118 44 92 Z' },
     {
-      d: 'M54 50 H106 V92 C106 112 94 124 80 131 C66 124 54 112 54 92 Z',
+      d: 'M72 44 C66 70 64 100 66 128 M88 44 C94 70 96 100 94 128',
       role: 'soft',
     },
-    { d: ellipse(80, 98, 16, 11) },
     {
-      d: dots([
-        [74, 98],
-        [86, 98],
-        [66, 72],
-        [94, 72],
-      ]),
+      d: 'M102 64 l6 -3 M104 80 l7 -3 M105 96 l7 -3 M104 112 l7 -3',
+      role: 'ambient',
     },
-    { d: 'M26 180 L134 116', role: 'accent' },
-    { d: 'M134 180 L26 116', role: 'accent' },
-    { d: 'M36 164 l9 14 M124 164 l-9 14' },
-    { d: 'M22 184 l6 -4 M138 184 l-6 -4' },
+    {
+      d: 'M70 140 l-4 12 M76 142 l-2 14 M84 142 l2 14 M90 140 l4 12',
+      role: 'soft',
+    },
+    {
+      d: 'M55.4 50.1 L89.4 81 C93.9 85.1 92 90.1 94.9 92.8 L111.2 107.6 L107.2 112 L90.9 97.2 C87.9 94.5 83.1 96.9 78.7 92.9 L44.6 61.9 Z',
+    },
+    { d: 'M111.5 107.2 L116.7 111.9 L112 117.1 L106.8 112.4', role: 'soft' },
+    { d: 'M64.3 58.2 L53.5 70 M80.5 73 L69.8 84.8', role: 'soft' },
+  ],
+
+  // The three-headed dog side on, with no eyes: bandaged, a red spiked collar
+  // on every neck in its colour, and the middle head a fox's, with taller
+  // ears. It chases three of the crew at 339.
+  'cerberus-thriller-bark': [
+    {
+      d: 'M80 104 C68 98 46 98 32 106 C20 112 18 128 24 138 V172 h8 L36 144 C50 148 64 146 76 140 L74 172 h8 L90 132 V172 h8 L100 126',
+    },
+    { d: 'M32 106 C22 96 16 84 18 70' },
+    {
+      d: 'M80 104 L82 46 M90 102 L94 48 M90 104 L118 78 M94 114 L120 84 M98 120 L106 116',
+      role: 'soft',
+    },
+    { d: DOG_HEAD, transform: 'translate(96 38)' },
+    { d: DOG_HEAD, transform: 'translate(130 72)' },
+    { d: DOG_HEAD, transform: 'translate(118 110)' },
+    { d: DOG_EARS, transform: 'translate(96 38)' },
+    { d: FOX_EARS, transform: 'translate(130 72)' },
+    { d: DOG_EARS, transform: 'translate(118 110)' },
+    { d: SPIKED_COLLAR, transform: 'translate(87 60)', role: 'accent' },
+    {
+      d: SPIKED_COLLAR,
+      transform: 'translate(112 86) rotate(50)',
+      role: 'accent',
+    },
+    {
+      d: SPIKED_COLLAR,
+      transform: 'translate(102 122) rotate(70)',
+      role: 'accent',
+    },
+    { d: 'M44 110 l10 -6 M48 120 l12 -7 M28 150 h8 M76 152 h8', role: 'soft' },
+    { d: 'M30 124 l6 -4 M30 134 l6 -4 M64 134 l8 -5', role: 'ambient' },
+    shadow(60, 182, 50),
+  ],
+
+  // The trophy plaque hung from a nail, a pig's head in it with its ears
+  // flopped down its sides in his colour and the round of the snout, no eyes
+  // and no mouth, and the two sabres crossed under its chin. He hangs on the
+  // dining-room wall from 340.
+  'buhichuck': [
+    { d: 'M50 40 L80 20 L110 40', role: 'ambient' },
+    { d: dots([[80, 20]]) },
+    {
+      d: 'M36 40 H66 A14 14 0 0 0 94 40 H124 V92 C124 118 104 134 80 142 C56 134 36 118 36 92 Z',
+    },
+    { d: 'M124 40 l6 4 V94 C130 120 110 138 84 146 L80 142' },
+    {
+      d: 'M127 56 l-3 4 M127 72 l-3 4 M127 88 l-3 4 M124 106 l-3 3 M116 122 l-3 3',
+      role: 'ambient',
+    },
+    {
+      d: 'M44 48 H60 M100 48 H116 M44 48 V92 C44 112 60 125 80 132 C100 125 116 112 116 92 V48',
+      role: 'soft',
+    },
+    {
+      d: 'M52 100 C52 84 64 76 80 76 C96 76 108 84 108 100 C108 114 96 122 80 122 C64 122 52 114 52 100 Z',
+    },
+    {
+      d: 'M70 78 Q60 74 52 80 C46 86 42 96 44 106 C50 100 54 94 58 88 M90 78 Q100 74 108 80 C114 86 118 96 116 106 C110 100 106 94 102 88',
+      role: 'accent',
+    },
+    {
+      d: 'M52 80 C52 88 50 96 46 102 M108 80 C108 88 110 96 114 102',
+      role: 'soft',
+    },
+    { d: ellipse(80, 106, 11, 6.5), role: 'soft' },
+    { d: 'M32 184 Q74 168 124 128 M128 184 Q86 168 36 128' },
+    { d: 'M26 172 l14 18 M134 172 l-14 18', role: 'soft' },
+    { d: 'M32 184 l-8 6 M128 184 l8 6' },
   ],
 
   // A gate in the outer wall shaped like a mouth, its teeth closing on the sea.
@@ -306,42 +455,59 @@ export const thrillerBarkArt = {
     ...SEA.slice(1),
   ],
 
-  // A surgical mask on its ear loops, and the long zip that runs down a bear's back.
+  // The patchwork bear front on: the oversized striped cap, round ears, the
+  // surgical mask in his colour, and a stitched seam across the belly. No eyes.
+  // He is first seen at 343, beside Perona's rooms.
   'kumashi': [
-    { d: 'M40 44 C60 36 100 36 120 44 V80 C100 92 60 92 40 80 Z' },
+    { d: 'M40 60 C40 30 120 30 120 60 C120 66 40 66 40 60 Z' },
     {
-      d: 'M42 56 C62 50 98 50 118 56 M42 68 C62 62 98 62 118 68',
+      d: 'M60 36 C56 44 54 54 56 64 M80 32 V65 M100 36 C104 44 106 54 104 64',
+      role: 'soft',
+    },
+    { d: 'M40 56 q-8 -2 -10 -10 M120 56 q8 -2 10 -10' },
+    { d: `${circle(38, 74, 9)} ${circle(122, 74, 9)}` },
+    { d: 'M44 64 C34 76 34 104 50 116 Q80 128 110 116 C126 104 126 76 116 64' },
+    { d: 'M58 88 H102 V110 Q80 116 58 110 Z', role: 'accent' },
+    {
+      d: 'M58 88 L44 76 M102 88 L116 76 M60 96 H100 M60 103 H100',
+      role: 'soft',
+    },
+    { d: 'M50 116 C34 126 28 148 34 176 H126 C132 148 126 126 110 116' },
+    { d: 'M34 176 V180 H62 V172 M126 176 V180 H98 V172', role: 'soft' },
+    { d: 'M40 132 l-12 22 l10 4 M120 132 l12 22 l-10 4' },
+    {
+      d: 'M48 146 C62 138 76 140 88 150 C96 156 108 158 120 152 M56 141 l-2 6 M66 140 l0 6 M76 143 l2 6 M96 155 l1 6 M106 156 l-1 6',
       role: 'soft',
     },
     {
-      d: 'M40 48 C18 46 18 76 40 76 M120 48 C142 46 142 76 120 76',
+      d: 'M112 128 l6 -3 M116 142 l6 -3 M118 156 l6 -3 M118 170 l6 -3',
       role: 'ambient',
     },
-    { d: 'M80 104 V170' },
-    {
-      d: 'M74 110 h12 M74 120 h12 M74 130 h12 M74 140 h12 M74 150 h12 M74 160 h12',
-      role: 'accent',
-    },
-    { d: 'M74 170 h12 v14 h-12z', role: 'accent' },
+    shadow(80, 188, 52),
   ],
-  // A bottle of liquor standing in front of two crossed swords, the bubbles
-  // of a hiccup rising off it.
+  // His open red coat over a bandaged middle, the two swords he died with
+  // still stuck in it, in his colour, and his bottle standing beside it. He
+  // shuffles in with the others at 344.
   'john': [
-    { d: 'M44 150 L122 38 L128 42 L50 154 Z' },
-    { d: 'M116 150 L38 38 L32 42 L110 154 Z' },
-    { d: 'M38 146 L58 160 M122 146 L102 160' },
-    { d: 'M47 152 L33 172 M113 152 L127 172', role: 'soft' },
+    { d: 'M60 52 C44 56 32 62 28 74 L22 176 H114 L108 74 C104 62 92 56 76 52' },
+    { d: 'M60 52 L54 88 L50 176 M76 52 L82 88 L86 176' },
     {
-      d: 'M72 58 h16 v24 c0 8 14 12 14 28 V168 q0 8 -8 8 H66 q-8 0 -8 -8 V110 c0 -16 14 -20 14 -28 Z',
+      d: 'M54 96 Q68 102 82 96 M53 112 Q68 118 83 112 M52 128 Q68 134 84 128 M51 144 Q68 150 85 144',
+      role: 'soft',
     },
-    { d: 'M70 48 h20 v10 h-20z', role: 'soft' },
-    { d: 'M60 124 H100 V148 H60 Z', role: 'soft' },
-    { d: 'M59 106 H101', role: 'ambient' },
+    { d: 'M28 74 Q34 64 48 62 M108 74 Q102 64 88 62', role: 'soft' },
+    { d: 'M64 120 L26 30 M70 118 L32 28', role: 'accent' },
+    { d: 'M18 38 L38 26 M26 31 l-6 -14 l6 -3 l6 14', role: 'accent' },
+    { d: 'M72 132 L130 70 M76 138 L134 76', role: 'accent' },
+    { d: 'M124 64 L140 80 M133 73 l11 -11 l5 4 l-11 11', role: 'accent' },
     {
-      d: `${circle(112, 62, 5)} ${circle(124, 48, 3.5)} ${circle(133, 36, 2.5)}`,
-      role: 'accent',
+      d: 'M98 96 l7 -3 M100 112 l7 -3 M101 128 l7 -3 M102 144 l7 -3 M102 160 l7 -3',
+      role: 'ambient',
     },
-    shadow(80, 186, 46),
+    {
+      d: 'M124 176 V148 C124 140 130 136 132 130 V116 h10 V130 C144 136 150 140 150 148 V176 Z M130 110 h14 v6 h-14z',
+    },
+    shadow(84, 186, 64),
   ],
 
   // An old oil lantern with its flame lit, and a shadow on the ground beneath
@@ -365,45 +531,56 @@ export const thrillerBarkArt = {
     shadow(80, 174, 44),
   ],
 
-  // A bow drawn back, its arrow flying into a bubble that bursts.
+  // The three's things: Nin's bow with the arrow he wakes Moria with at 343,
+  // the snot bubble it pops in their colour, Bao's bucket of a head and
+  // Gyoro's sword.
   'gyoro-nin-and-bao': [
-    { d: 'M34 30 C66 60 66 130 34 160' },
-    { d: 'M34 30 L58 95 L34 160', role: 'soft' },
-    { d: 'M58 95 H118' },
-    { d: 'M118 95 l-10 -6 M118 95 l-10 6' },
+    { d: 'M30 34 C64 62 64 128 30 156' },
+    { d: 'M30 34 L30 156', role: 'soft' },
+    { d: 'M30 95 H118 M30 95 l-6 -5 M30 95 l-6 5' },
+    { d: 'M118 95 l-10 -5 v10 z' },
+    { d: 'M124 90 A14 14 0 1 1 126 106', role: 'accent' },
     {
-      d: 'M58 95 l-8 -7 M58 95 l-8 7 M66 95 l-8 -7 M66 95 l-8 7',
-      role: 'soft',
-    },
-    { d: circle(132, 95, 16), role: 'accent', dashed: true },
-    {
-      d: 'M132 71 v-8 M149 78 l6 -6 M149 112 l6 6 M132 119 v8',
+      d: dots([
+        [128, 70],
+        [150, 82],
+        [152, 108],
+        [134, 120],
+        [144, 70],
+      ]),
       role: 'accent',
     },
-    shadow(80, 182, 46),
+    {
+      d: `M62 172 L60 136 ${ellipse(76, 136, 16, 4.5)} M92 136 L90 172 Q76 177 62 172`,
+    },
+    { d: 'M84 142 l5 -3 M84 154 l5 -3 M84 166 l5 -3', role: 'ambient' },
+    { d: 'M60 136 C58 112 94 112 92 136', role: 'soft' },
+    {
+      d: 'M104 176 L148 118 M108 179 L152 121 M144 114 L156 124 M104 176 l4 3',
+    },
+    { d: 'M116 160 l4 3 M124 150 l4 3 M132 139 l4 3', role: 'soft' },
+    shadow(96, 186, 58),
   ],
 
-  // Three sabres standing side by side, each with its knuckle guard, the
-  // middle one in colour, and the wind curling over them.
+  // His three identical sabres, one upright in front in his colour with nicks
+  // in its edge, two fanned out behind, and the wind curling over them. He
+  // carries all three at 346.
   'jigoro': [
+    { d: SABRE_BLADE, transform: 'translate(54 154) rotate(-30)' },
+    { d: SABRE_GUARD, transform: 'translate(54 154) rotate(-30)' },
+    { d: SABRE_BLADE, transform: 'translate(104 154) rotate(30) scale(-1 1)' },
+    { d: SABRE_GUARD, transform: 'translate(104 154) rotate(30) scale(-1 1)' },
+    { d: 'M76 152 C72 112 78 72 98 42 C92 74 88 112 88 152 Z', role: 'accent' },
+    { d: 'M68 152 H96 M82 152 V180 M96 152 C106 164 100 180 82 180' },
     {
-      d: 'M35 152.1 C21.6 116.4 16 78.5 24.7 51 C30.7 82.6 38.1 115.8 43.6 149.6 Z',
+      d: 'M76 130 l3 -1 l-2 -3 M76 104 l3 -1 l-2 -3 M80 78 l3 0 l-1 -3',
+      role: 'soft',
     },
-    { d: 'M29.2 153.8 L48.4 148.3 M38.8 151 L46 176' },
-    { d: 'M48.4 148.3 C57.9 155.9 57.9 170.5 46 176', role: 'soft' },
-    {
-      d: 'M112.1 149.7 C115.1 111.7 126 74.9 145.5 53.7 C137.6 84.9 130.3 118.1 121 151.1 Z',
-    },
-    { d: 'M106.2 148.8 L125.9 151.9 M116.1 150.3 L112 176' },
-    { d: 'M125.9 151.9 C131.3 162.9 125.2 176.1 112 176', role: 'soft' },
-    { d: 'M76 150 C73 112 78 74 94 50 C91 82 89 116 85 150 Z', role: 'accent' },
-    { d: 'M70 150 L90 150 M80 150 L80 176' },
-    { d: 'M90 150 C97 160 93 174 80 176', role: 'soft' },
     {
       d: 'M10 34 q18 -12 36 -2 q8 5 2 10 M116 20 q18 -10 34 2 q6 6 -2 9',
       role: 'ambient',
     },
-    shadow(80, 186, 56),
+    shadow(80, 190, 50),
   ],
 
   // A spider web strung wide, one sticky thread hanging from it with a
@@ -426,34 +603,33 @@ export const thrillerBarkArt = {
     { d: 'M102 170 c-6 4 -6 12 0 14 c6 -2 6 -10 0 -14z', role: 'accent' },
   ],
 
-  // A sack of salt tied at the neck, grains spilled beside it, and a caught
-  // shadow drifting up out of it.
+  // The short one's big sword in its scabbard on the strap he wears across
+  // his chest, and the tall one's torn striped shirt hung beside it. No
+  // shadow under either: they have lost theirs. Both are met at 369.
   'risky-brothers': [
+    { d: 'M30 172 L70 40 L86 44 L50 176 Z' },
+    { d: 'M64 34 L92 42 M74 36 l4 -14 l8 2 l-4 14' },
+    { d: 'M36 152 l14 4 M44 126 l14 4', role: 'soft' },
     {
-      d: 'M50 176 C32 176 28 150 36 128 C44 108 58 100 64 92 H96 C102 100 116 108 124 128 C132 150 128 176 110 176 Z',
-    },
-    { d: 'M64 92 C58 82 62 74 72 80 L80 86 L88 80 C98 74 102 82 96 92' },
-    { d: 'M60 100 H100', role: 'soft' },
-    { d: 'M50 140 q30 8 60 0 M46 158 q34 8 68 0', role: 'soft' },
-    {
-      d: dots([
-        [122, 184],
-        [128, 178],
-        [132, 184],
-        [136, 174],
-        [142, 180],
-        [146, 172],
-        [150, 182],
-      ]),
-      role: 'accent',
-    },
-    {
-      d: 'M80 78 C66 62 94 52 80 36 C72 26 84 16 94 20',
+      d: 'M76 56 l6 -4 M72 72 l6 -4 M68 88 l6 -4 M64 104 l6 -4 M60 120 l6 -4 M54 140 l6 -4',
       role: 'ambient',
-      dashed: true,
     },
+    { d: 'M72 54 C40 76 30 128 42 162', role: 'accent' },
+    { d: 'M30 102 h12 v12 h-12z', role: 'accent' },
+    {
+      d: 'M104 48 L118 44 L132 48 C140 52 146 60 148 72 L152 130 H142 L138 84 V170 L132 162 L126 172 L120 164 L114 172 L108 164 L102 170 V84 L98 130 H88 L92 72 C94 60 98 52 104 48 Z',
+    },
+    {
+      d: 'M102 98 H138 M102 114 H138 M102 130 H138 M102 146 H138 M91 92 l9 1 M90 108 l9 1 M140 93 l9 -1 M141 109 l9 -1',
+      role: 'soft',
+    },
+    { d: 'M112 46 q6 6 12 0', role: 'soft' },
+    { d: 'M138 120 l4 -3 M138 136 l4 -3 M138 152 l4 -3', role: 'ambient' },
   ],
 } satisfies Drawings
+
+/** Brook's violin, moved up and right to make room for the guitar. */
+const VIOLIN_UP = 'translate(10 -6)'
 
 /** Brook's guitar, drawn lying flat and tilted to where the bow lay. */
 const GUITAR = 'translate(-6 6) rotate(-50 80 110)'
@@ -483,23 +659,15 @@ export const thrillerBarkRedrawn: Redrawings = {
     },
   ],
 
-  // The violin still upright, the Soul King's guitar laid across it where the
-  // bow was: a shark's head for a body, jaws open on its teeth, gills and two
+  // The same violin, still upright, the Soul King's guitar laid across it
+  // where the bow was: a shark's head for a body, jaws open on its teeth, gills and two
   // fins for horns. He plays it at his farewell concert at 517 (ch. 598).
   'brook': [
     {
       episode: 517,
       chapter: 598,
       value: [
-        {
-          d: 'M88 58 c-26 0 -34 20 -24 32 c-10 10 -14 34 -2 46 c12 12 40 12 52 0 c12 -12 8 -36 -2 -46 c10 -12 2 -32 -24 -32z',
-        },
-        { d: 'M83 58 V20 M93 58 V20' },
-        { d: 'M83 20 q5 -10 10 0' },
-        { d: 'M78 24 h-6 M98 24 h6 M78 32 h-6 M98 32 h6' },
-        { d: 'M86 54 V126 M90 54 V126', role: 'ambient' },
-        { d: 'M78 116 h20' },
-        { d: 'M76 90 q-6 12 4 22 M100 90 q6 12 -4 22', role: 'accent' },
+        ...BROOK_VIOLIN.map((stroke) => ({ ...stroke, transform: VIOLIN_UP })),
         {
           d: 'M54 104 C44 94 24 88 8 92 C0 94 -8 100 -10 106 L16 111 L0 119 C8 129 38 128 54 116',
           transform: GUITAR,
@@ -509,7 +677,7 @@ export const thrillerBarkRedrawn: Redrawings = {
           role: 'soft',
           transform: GUITAR,
         },
-        { d: circle(14, 100, 3), role: 'accent', transform: GUITAR },
+        { d: 'M14 96 q-2 4 0 8', role: 'soft', transform: GUITAR },
         {
           d: 'M26 96 q-3 11 0 24 M33 95 q-3 12 0 26 M40 96 q-3 11 0 24',
           role: 'soft',
