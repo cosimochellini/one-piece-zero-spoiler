@@ -497,16 +497,38 @@ export const skypieaArt = {
     shadow(80, 188, 54),
   ],
 
-  // A rifle with its scope, a feather tucked into the stock.
+  // Her long rifle in 3/4, lying down: a wooden stock with a dropped butt and
+  // a long dark barrel ringed with bands, the wide band at the muzzle as the
+  // accent. She first fires it at Holy (ch. 252, ep. 165). The stock's lower
+  // face and the barrel's underside are hatched. No scope, no feather.
   'laki': [
-    { d: 'M142 44 L66 120 L74 128 L150 52z' },
-    { d: 'M66 120 L38 148 q-10 10 -2 18 q10 8 18 -2 L76 130z' },
-    { d: 'M80 116 q-10 10 -2 16 q8 4 12 -4' },
-    { d: 'M120 38 L94 64 L102 72 L128 46z', role: 'accent' },
-    { d: 'M112 52 l8 8 M98 66 l8 8', role: 'accent' },
-    { d: 'M34 120 C20 100 20 74 30 60 C42 76 46 102 40 122' },
-    { d: 'M30 60 L36 121', role: 'soft' },
-    shadow(92, 180, 44),
+    {
+      d: 'M14.5 141.6 L75.1 108.6 L80.8 118.1 L57.3 133.3 C46.4 142.3 40 158.9 29.9 167.3 C23 159.8 17.9 151.2 14.5 141.6 Z',
+    },
+    {
+      d: 'M14.5 141.6 L8.4 139.4 L60.6 111.6 L68 112.3 M8.4 139.4 C10.7 150.9 18.8 162.3 23.6 166.5 L29.9 167.3',
+    },
+    { d: 'M75.4 109.1 L145.7 66.8 M80 116.8 L150.3 74.5' },
+    {
+      d: 'M145.7 66.8 A2.2 4.5 -31 1 0 150.3 74.5 A2.2 4.5 -31 1 0 145.7 66.8',
+    },
+    {
+      d: 'M129.5 74.8 C133.7 77 135.7 80.4 135.7 85.1 L142.5 81 C142.6 76.3 140.5 72.8 136.3 70.7 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M80 105.1 C84 106.8 86 110.3 85.7 114.5 M104 90.7 C108 92.4 110 95.8 109.7 100.1',
+      role: 'soft',
+    },
+    { d: 'M60.6 111.6 L55.8 107.4 L59.5 104' },
+    {
+      d: 'M54.1 135.8 C60.8 142.9 72.8 135.7 69.1 125.7 M60.7 131.3 L65 134.5',
+    },
+    {
+      d: 'M32.3 157.7 L36.6 161 M37.6 151 L42.2 154.7 M42.9 144.3 L47.2 147.6 M91.9 105.5 L95.5 107.5 M99.7 100.9 L103.2 102.9 M115.9 91.1 L119.5 93.1 M123.7 86.5 L127.2 88.4',
+      role: 'ambient',
+    },
+    shadow(84, 182, 62),
   ],
 
   // Her satchel set down with the flap over its mouth and the buckle on its
