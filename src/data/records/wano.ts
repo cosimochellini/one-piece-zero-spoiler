@@ -237,8 +237,8 @@ export const wano: Saga = {
       revealedAtChapter: 943,
       name: { it: 'Fukurokuju', en: 'Fukurokuju' },
       summary: {
-        it: 'Il capo della guardia segreta dello shogun, un ninja dalla fronte lunghissima che compare alle spalle di chiunque parli troppo.',
-        en: 'The head of the shogun’s secret guard, a ninja with an impossibly long forehead who appears behind anyone who talks too much.',
+        it: 'Il capitano dei ninja dello shogun, un uomo alto e calvo con la testa allungata e il braccio sinistro tatuato, che a un’intrusa nel castello concede una sola possibilità di spiegarsi.',
+        en: 'The captain of the shogun’s ninja, a tall bald man with an elongated head and a tattooed left arm, who gives an intruder in the castle one chance to explain herself.',
       },
       visual: { art: 'fukurokuju', tint: 'teal' },
     },
@@ -1140,8 +1140,8 @@ export const wano: Saga = {
     'fukurokuju': {
       role: { it: 'Capo dell’Oniwabanshu', en: 'Leader of the Oniwabanshu' },
       log: {
-        it: 'Comanda i ninja che sorvegliano la capitale per conto dello shogun e decidono chi arriva vivo al mattino. Si muove senza rumore, ascolta dietro le porte e riferisce ogni cosa al suo padrone, che lo tiene a un passo dal trono. Quando serve esegue di persona: un ordine dello shogun non passa mai per un tribunale.',
-        en: 'He commands the ninja who watch the capital for the shogun and decide who lives to see the morning. He moves without a sound, listens at doors and reports everything to his master, who keeps him a step from the throne. When it is called for he carries out the work himself: an order from the shogun never passes through a court.',
+        it: 'Guida l’Oniwabanshu, i ninja al servizio dello shogun Orochi, e lo serve da quando Orochi ha preso il potere. Shinobu era una dei suoi ninja e se n’è andata. Quando i suoi uomini sorprendono Robin a frugare in una stanza del castello durante un banchetto, le concede una sola possibilità di dire chi è e perché si trova lì, e le promette una morte rapida se dice la verità. Lei dà un nome falso, e quando i ninja la colpiscono la donna che hanno preso si sfalda: era una copia. I ninja si sparpagliano a cercare quella vera senza disturbare il banchetto.',
+        en: 'He leads the Oniwabanshu, the ninja who serve the shogun Orochi, and has served him since Orochi took power. Shinobu was one of his ninja and left. When his men catch Robin searching a room of the castle during a banquet, he gives her one chance to say who she is and why she is there, and promises her a quick death if she tells the truth. She gives a false name, and when his ninja strike, the woman they have caught falls apart: she was a double. The ninja spread out to find the real one without disturbing the banquet.',
       },
       affiliation: [
         {
