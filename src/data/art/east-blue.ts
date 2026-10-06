@@ -1,8 +1,6 @@
 import {
   BLADE,
   circle,
-  cup,
-  dot,
   dots,
   ellipse,
   house,
@@ -43,13 +41,48 @@ const SANJI_KNIFE: Stroke[] = [
   },
 ]
 
-/** The flame off the point of Sanji's knife, as it burns until Onigashima. */
+/**
+ * The flame off the point of Sanji's knife: Diable Jambe, lit from 298 and
+ * burning until Onigashima.
+ */
 const SANJI_FLAME: Stroke[] = [
   {
     d: 'M114 66 c-14 -16 2 -30 6 -44 c2 12 12 16 12 30 c0 10 -8 16 -18 14z',
     role: 'accent',
   },
   { d: 'M118 58 c-4 -8 2 -12 4 -18 c2 8 6 10 4 18', role: 'accent' },
+]
+
+/** The coastline and island drawn on Nami's chart. */
+const NAMI_COAST =
+  'M22 140 C36 128 48 144 64 132 C80 120 92 136 112 124 C122 118 130 122 136 128 M104 150 q-2 -7 6 -9 q6 -4 12 1 q6 4 2 9 q-10 4 -20 -1 Z'
+
+/**
+ * Nami's stolen chart, half unrolled towards the reader: the tied roll with
+ * the paper spiralling at its right end, the string trailing across the
+ * sheet, the sheet's edges and curling front. The small copy at 878 is this
+ * alone.
+ */
+const NAMI_CHART_BODY: Stroke[] = [
+  { d: 'M28 84 H130 M28 104 H130' },
+  { d: `${ellipse(28, 94, 5, 10)} ${ellipse(130, 94, 5, 10)}` },
+  {
+    d: 'M130.5 94 a1 2 0 1 0 -1.5 -1 a2.4 4.4 0 1 1 -1 4.6 a3.6 6.8 0 1 0 1.6 -9.6',
+    role: 'soft',
+  },
+  { d: 'M74 84 Q71 94 74 104 M80 84 Q77 94 80 104', role: 'soft' },
+  { d: 'M77 104 C70 116 86 122 80 138', role: 'soft' },
+  { d: 'M30 104 L14 158 M128 104 L146 158' },
+  { d: 'M14 158 Q12 166 20 166 H140 Q148 166 146 158', role: 'soft' },
+]
+
+/** The chart's finer lines: the roll's hatched underside, two meridians. */
+const NAMI_CHART_DETAIL: Stroke[] = [
+  {
+    d: 'M40 101 l2 3 M54 101 l2 3 M94 101 l2 3 M108 101 l2 3 M122 101 l2 3',
+    role: 'ambient',
+  },
+  { d: 'M60 104 L56 158 M98 104 L102 158', role: 'soft', dashed: true },
 ]
 
 /** The drawings of the records filed in the east blue stretch of the route. */
@@ -105,28 +138,39 @@ export const eastBlueArt = {
     { d: 'M88 130 q26 -24 52 0' },
     shadow(84, 182, 44),
   ],
-  // An iron club, the spikes ringing its head.
+  // Her iron mace on its side: the long grip with the ring at its end, the
+  // head swelling into a studded barrel with its collar and end seen round,
+  // spikes along both edges and off the end, the studs facing the reader as
+  // small rings, the underside hatched. She swings it in episode 1.
   'alvida': [
-    { d: 'M76 188 h12 M78 186 V116 M86 186 V116' },
-    { d: 'M74 116 h16 l4 -8 h-24z' },
-    { d: circle(82, 74, 30) },
+    { d: 'M20.4 47.4 L67.8 79.3 M15.1 55.1 L62.6 87.1' },
     {
-      d: 'M82 44 l-4 -12 l8 0z M82 104 l-4 12 l8 0z M52 74 l-12 -4 l0 8z M112 74 l12 -4 l0 8z',
-      role: 'accent',
+      d: 'M70.4 75.5 L141.8 111 C151.2 117.4 152 129.3 146.2 137.9 C140.4 146.5 129.1 150.2 119.7 143.8 L59.9 91 Q61.7 80.9 70.4 75.5',
     },
     {
-      d: 'M61 53 l-11 -6 l5 11z M103 53 l11 -6 l-5 11z M61 95 l-11 6 l5 -11z M103 95 l11 6 l-5 -11z',
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [72, 66],
-        [92, 66],
-        [82, 84],
-      ]),
+      d: 'M70.4 75.5 Q70.4 86.7 59.9 91 M141.8 111 Q137.6 132.1 119.7 143.8',
       role: 'soft',
     },
-    shadow(82, 194, 26),
+    {
+      d: 'M85.4 82.9 L95 76.2 L92.9 86.7 M104.2 92.3 L113.8 85.6 L111.7 96.1 M123 101.7 L132.6 94.9 L130.5 105.4 M147.7 133.9 L154.8 143.7 L143 140.8',
+      role: 'accent',
+    },
+    {
+      d: 'M72.5 102.1 L69.8 113.5 L78.8 107.7 M88.2 116 L85.6 127.4 L94.5 121.6 M103.9 129.9 L101.3 141.3 L110.2 135.5',
+      role: 'accent',
+    },
+    {
+      d: 'M93.4 97.2 C92.4 98.6 90.9 99.3 89.9 98.6 C89 98 89 96.3 89.9 94.9 C90.9 93.5 92.4 92.8 93.4 93.5 C94.3 94.1 94.3 95.8 93.4 97.2 Z M103.1 116.3 C102.1 117.7 100.6 118.4 99.6 117.7 C98.7 117.1 98.7 115.4 99.6 114 C100.6 112.6 102.1 111.9 103.1 112.6 C104 113.2 104 114.9 103.1 116.3 Z M125.6 116.4 C124.6 117.9 123.1 118.5 122.1 117.9 C121.2 117.2 121.2 115.5 122.1 114.1 C123.1 112.7 124.6 112 125.6 112.7 C126.5 113.3 126.5 115 125.6 116.4 Z M126.1 134.3 C125.1 135.7 123.5 136.4 122.6 135.7 C121.6 135.1 121.6 133.4 122.6 132 C123.6 130.6 125.1 129.9 126.1 130.6 C127 131.2 127 132.9 126.1 134.3 Z',
+      role: 'soft',
+    },
+    {
+      d: 'M70.2 98 L76.9 95.6 M79.7 106.4 L86.3 104 M89.1 114.7 L95.8 112.3 M98.5 123 L105.2 120.6 M108 131.4 L114.6 129 M117.4 139.7 L124 137.3',
+      role: 'ambient',
+    },
+    {
+      d: 'M14.3 48.9 C11.6 53 7.8 55.2 5.9 53.9 C4 52.6 4.7 48.3 7.4 44.3 C10.1 40.2 13.9 38 15.8 39.3 C17.7 40.5 17 44.9 14.3 48.9 Z M12.4 47.6 C11 49.8 9.1 51 8.2 50.5 C7.4 49.9 7.9 47.7 9.3 45.5 C10.8 43.4 12.6 42.1 13.5 42.7 C14.3 43.3 13.9 45.5 12.4 47.6 Z M14.3 48.9 L17.8 51.2',
+    },
+    shadow(104, 178, 44),
   ],
   // An execution scaffold: two uprights, the crossbeam, the platform.
   'gold-roger': [
@@ -164,20 +208,47 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // A boot coming down on a rice ball, and the plate under it.
+  // His white lace-up shoe side on, the heel grinding a rice ball into the
+  // ground: the toe cap, the laces, the collar seen from above with its
+  // inside hatched, the sole and heel in yellow, the rice squeezed out either
+  // side with its seaweed and the grains thrown off. He stamps on Rika's rice
+  // balls in episode 2.
   'helmeppo': [
-    { d: 'M60 42 H110 V66' },
-    { d: 'M52 66 H118 q10 0 10 12 v26 q0 14 -14 14 H52 Z' },
-    { d: 'M52 96 H128', role: 'soft' },
-    { d: 'M56 118 v-10 M116 118 v-12', role: 'soft' },
     {
-      d: 'M56 152 C60 134 72 122 84 122 C96 122 108 136 112 152 Z',
+      d: 'M8.5 144.7 C-1.2 131.1 9.6 119.3 36.3 112.5 C53.4 108.5 65 101.6 76 91 M125.2 82 C129.8 95.2 132.1 110 131.6 122.7',
+    },
+    {
+      d: 'M125.2 82 C125.7 85.1 115 89.3 101.4 91.4 C87.7 93.6 76.3 92.9 75.8 89.8 C75.3 86.7 86 82.5 99.6 80.3 C113.2 78.2 124.7 78.9 125.2 82 Z',
+    },
+    {
+      d: 'M83.4 89.9 L86.3 84.3 M93.6 90.2 L96 81.5 M104.8 89 L107.2 80.4 M115.8 86.6 L118.6 80.5',
+      role: 'ambient',
+    },
+    {
+      d: 'M8.5 144.7 Q12 150.5 21.9 149 L103.4 136.1 L105.1 147.2 L134.7 142.5 L131.6 122.7',
       role: 'accent',
     },
-    { d: 'M76 152 V138 h14 V152', role: 'accent' },
-    { d: ellipse(80, 158, 54, 10) },
-    { d: ellipse(80, 158, 40, 7), role: 'soft' },
-    shadow(80, 178, 52),
+    { d: 'M16 143.6 L130.8 125.4', role: 'soft' },
+    { d: 'M33.9 112.9 Q28.8 128.9 33.2 140.8', role: 'soft' },
+    {
+      d: 'M51 108.9 L62 114.8 M57.8 104 L68.8 109.9 M64.6 99.2 L75.5 103.8 M49.5 115.5 L71.6 95.5',
+      role: 'soft',
+    },
+    { d: 'M90 156 C86 148 94 143 104 147 M135 142.5 C149 136 159 145 155 156' },
+    { d: 'M139 145 l-3 9 M145 143 l-3 11 M151 145 l-2.5 9', role: 'ambient' },
+    {
+      d: dots([
+        [88, 144],
+        [84, 151],
+        [96, 138],
+        [158, 140],
+        [150, 132],
+        [158, 150],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M4 156 H156', role: 'ambient' },
+    shadow(76, 170, 56),
   ],
   // A great axe: the haft, the crescent blade, the rivets of a steel jaw.
   'morgan': [
@@ -224,14 +295,37 @@ export const eastBlueArt = {
     },
     shadow(86, 180, 60),
   ],
-  // A sake bottle and three cups: the pledge of brothers.
+  // The sword he wore in Foosha, sheathed on the tavern counter, its round
+  // guard in red and its wrapped grip towards the reader, the sheath's
+  // underside hatched; a tankard of grog with its head of foam at the back.
+  // His crew drinks at Makino's bar in episode 4.
   'shanks': [
-    { d: 'M40 152 V96 q0 -8 6 -12 V70 h16 V84 q6 4 6 12 V152z' },
-    { d: 'M40 112 h28 M40 132 h28', role: 'ambient' },
-    cup(84, 'accent'),
-    cup(108, 'accent'),
-    cup(132, 'accent'),
-    shadow(96, 168, 50),
+    { d: 'M2 92 H56 M96 92 H158', role: 'ambient' },
+    { d: 'M2 162 H158' },
+    { d: 'M2 176 H158', role: 'ambient' },
+    { d: 'M60 96 V56 M92 56 V96 M60 96 Q76 102 92 96' },
+    { d: ellipse(76, 56, 16, 4.5) },
+    { d: 'M60 70 Q76 76 92 70 M60 86 Q76 92 92 86', role: 'soft' },
+    { d: 'M60 64 C46 64 44 88 60 90' },
+    { d: 'M59 54 q2 -8 9 -6 q4 -6 11 -2 q6 -4 10 2 q4 3 2 7', role: 'soft' },
+    shadow(78, 101, 20),
+    {
+      d: 'M45 135.9 Q95.6 111.7 143.1 95.7 Q152 96.5 147.8 104.6 Q100.1 122.8 49.1 146.1',
+    },
+    {
+      d: 'M59.7 140.2 L60.6 134.5 M76.4 133.5 L77.3 127.7 M93.1 126.7 L94 121 M109.8 120 L110.7 114.2 M126.5 113.3 L127.4 107.5 M141.3 107.3 L142.2 101.5',
+      role: 'ambient',
+    },
+    { d: 'M52.1 137.4 Q97.5 116.3 139.1 101.7', role: 'soft' },
+    {
+      d: 'M46.6 141.2 C49.3 147.9 50 153.8 48.2 154.6 C46.5 155.3 42.8 150.5 40.1 143.8 C37.4 137.2 36.7 131.2 38.5 130.5 C40.3 129.7 43.9 134.5 46.6 141.2 Z',
+      role: 'accent',
+    },
+    { d: 'M38.4 139.7 L10.4 151.5 Q6.3 157.5 13.4 159 L41.8 148' },
+    {
+      d: 'M36.3 141.1 L35.6 150 L28.9 144 L28.2 153 L21.5 147 L20.8 156 L14.1 150',
+      role: 'soft',
+    },
   ],
 
   // A windmill on a hill, a house beside it, a fence along the road.
@@ -332,23 +426,15 @@ export const eastBlueArt = {
     shadow(76, 168, 30),
   ],
 
-  // Three mandarins on a branch, the fruit in orange. The Clima-Tact with Zeus
-  // joins them from 878, in `eastBlueRedrawn`.
+  // The sea chart she ran off with, half unrolled towards the reader, its
+  // coastline and island in orange. She has just stolen it from Buggy in
+  // episode 5. The Clima-Tact with Zeus stands over a small copy of the chart
+  // from 878, in `eastBlueRedrawn`.
   'nami': [
-    { d: 'M34 154 C40 120 70 96 122 70' },
-    { d: 'M64 112 q-2 -16 14 -18 q-4 14 -14 18z' },
-    { d: 'M100 86 q14 -10 22 2 q-12 6 -22 -2z' },
-    { d: circle(56, 126, 13), role: 'accent' },
-    { d: circle(90, 106, 13), role: 'accent' },
-    { d: circle(120, 90, 13), role: 'accent' },
-    {
-      d: dots([
-        [56, 118],
-        [90, 98],
-        [120, 82],
-      ]),
-      role: 'accent',
-    },
+    ...NAMI_CHART_BODY,
+    ...NAMI_CHART_DETAIL,
+    { d: NAMI_COAST, role: 'accent' },
+    shadow(80, 176, 62),
   ],
 
   // A row of house fronts, one roof already broken by a cannonball, and the
@@ -392,17 +478,26 @@ export const eastBlueArt = {
     shadow(80, 184, 40),
   ],
 
-  // An iron cage burst open from inside: two bars bent apart, claw marks across a bar.
+  // The iron cage his bite broke open: the box seen from a corner, the far
+  // edges showing through the bars, the side hatched, and the two middle bars
+  // of the front bitten through and splayed, in his colour. He breaks it
+  // attacking Luffy in episode 6.
   'richie': [
-    { d: 'M30 52 H130 V60 H30 Z' },
-    { d: 'M30 160 H130 V168 H30 Z' },
-    { d: 'M40 60 V160 M120 60 V160' },
+    { d: 'M30 58 H114 L140 40 H56 Z' },
+    { d: 'M30 160 H114 L140 142' },
+    { d: 'M30 58 V160 M114 58 V160 M140 40 V142' },
+    { d: 'M122.7 52 V154 M131.3 46 V148', role: 'soft' },
     {
-      d: 'M74 60 C74 96 50 116 56 160 M90 60 C90 96 112 116 104 160',
+      d: 'M118 72 l18 -12.4 M118 92 l18 -12.4 M118 112 l18 -12.4 M118 132 l18 -12.4',
+      role: 'ambient',
+    },
+    { d: 'M47 58 V160 M97 58 V160' },
+    {
+      d: 'M64 58 V76 L52 92 M80 58 V76 L92 92 M64 160 V140 L53 126 M80 160 V140 L91 126',
       role: 'accent',
     },
-    { d: 'M130 92 l-14 16 M132 108 l-14 16 M134 124 l-14 16', role: 'soft' },
-    shadow(80, 180, 56),
+    { d: 'M56 40 V142 H140 M30 160 L56 142', role: 'soft' },
+    shadow(84, 176, 58),
   ],
   // A unicycle and a sabre: the whole act in two objects.
   'cabaji': [
@@ -598,18 +693,43 @@ export const eastBlueArt = {
     { d: 'M80 58 C90 52 98 40 94 30 C84 34 78 48 80 56', role: 'accent' },
     shadow(80, 186, 56),
   ],
-  // A wooden practice sword and a katana, crossed.
+  // Her bamboo practice sword laid along the dojo's wooden step, its tip
+  // capped, tied and strung, and her white-sheathed katana leaning against
+  // the step: Wado Ichimonji, its oval guard and wrapped hilt above the edge,
+  // the step's front hatched. Both are hers in Zoro's memory of episode 19.
   'kuina': [
-    { d: 'M26 170 L120 44 M32 175 L126 49' },
-    { d: 'M26 170 L32 175 M120 44 L126 49' },
-    { d: 'M36 46 L112 147 M42 41 L118 142' },
-    { d: 'M36 46 L42 41' },
-    { d: 'M103 153 L127 135', role: 'accent' },
+    { d: 'M4 112 H129 M140 112 H156 M4 140 H122 M133 140 H156' },
+    { d: 'M4 140 V160 M156 140 V160 M4 160 H117 M128 160 H156' },
     {
-      d: 'M112 147 L142 187 M118 142 L148 182 M142 187 L148 182',
+      d: 'M12 144 l8 12 M30 144 l8 12 M48 144 l8 12 M66 144 l8 12 M84 144 l8 12 M102 144 l8 12 M138 144 l8 12',
+      role: 'ambient',
+    },
+    {
+      d: 'M13.8 122.6 L94.2 117 M14.2 129.4 L94.7 123.7 M97.5 116.4 L124.3 114.5 Q128.8 118 124.9 122 L98.1 123.9 Z',
+    },
+    {
+      d: 'M13.8 122.6 Q10.6 126.2 14.2 129.4 M28.8 121.6 L29.3 128.3 M35.6 121.1 L36 127.8 M17.4 125.8 L92.8 120.5',
+      role: 'soft',
+    },
+    {
+      d: 'M98.2 120.1 C98.5 123.8 97.7 126.9 96.6 127 C95.4 127 94.3 124.1 94 120.4 C93.8 116.7 94.5 113.6 95.7 113.6 C96.8 113.5 98 116.4 98.2 120.1 Z',
+    },
+    { d: 'M17.1 122 Q55.4 115.5 92.5 116.7', role: 'soft' },
+    {
+      d: 'M111.6 184.9 Q123.7 130.2 138.7 76.2 L147.5 78.4 Q135.4 133.1 120.4 187.1 Q115 189.9 111.6 184.9',
       role: 'accent',
     },
-    shadow(84, 192, 48),
+    { d: 'M113.3 177.1 L122.6 179.4 M137.3 82.1 L146 84.2', role: 'soft' },
+    {
+      d: 'M144.4 72 C149.5 73.3 153.4 75.4 153 76.7 C152.7 78.1 148.3 78.1 143.2 76.8 C138.1 75.6 134.3 73.5 134.6 72.1 C134.9 70.8 139.3 70.7 144.4 72 Z',
+      role: 'accent',
+    },
+    { d: 'M140.9 70.6 L150.5 31.8 Q155.2 28.8 157.9 33.6 L148.2 72.4' },
+    {
+      d: 'M142.3 65.8 L150.2 63.6 L144.2 58 L152.2 55.9 L146.1 50.3 L154.1 48.1 L148.1 42.5 L156 40.4 L150 34.7',
+      role: 'soft',
+    },
+    shadow(118, 188, 14),
   ],
   // A pair of round dark glasses above his sword.
   'johnny': [
@@ -647,10 +767,27 @@ export const eastBlueArt = {
     { d: 'M4 168 H156', role: 'ambient' },
     shadow(80, 146, 48),
   ],
-  // A chef's knife with a flame off its point. The Raid Suit's cape goes
-  // behind it from 925 and the flame burns taller from 1061, in
-  // `eastBlueRedrawn`.
-  'sanji': [...SANJI_KNIFE, ...SANJI_FLAME, shadow(80, 186, 44)],
+  // A chef's knife, and a lit cigarette left on the table in front of it, its
+  // smoke curling up past the blade in his colour. He is the Baratie's sous
+  // chef in episode 20, never without a cigarette. The flame lights on the
+  // point from 298, the Raid Suit's cape goes behind it from 925 and the
+  // flame burns taller from 1061, in `eastBlueRedrawn`.
+  'sanji': [
+    ...SANJI_KNIFE,
+    {
+      d: 'M85.5 174.1 L115.5 166.1 M86.5 177.9 L116.5 169.9 M85.5 174.1 Q83.6 176.6 86.5 177.9',
+    },
+    {
+      d: 'M93.3 172 L94.3 175.8 M115.5 166.1 Q118.4 167.4 116.5 169.9',
+      role: 'soft',
+    },
+    {
+      d: 'M119 166 C132 156 120 144 134 132 C146 122 136 110 148 98',
+      role: 'accent',
+    },
+    { d: 'M128 154 C138 146 132 138 140 130', role: 'accent' },
+    shadow(80, 186, 44),
+  ],
 
   // A restaurant that is also a ship: a hull with portholes, the dining
   // deck and its chimney, and a fish's head for a prow.
@@ -966,16 +1103,20 @@ export const eastBlueArt = {
     shadow(70, 186, 48),
   ],
 
-  // A collar big enough for a sea beast, a cowbell under it, a tow line
-  // running to a small boat.
+  // The top of his head breaking the sea, his two horns curving up in his
+  // colour, and the tow line running taut to the small boat he is made to
+  // pull to Arlong Park once Luffy and Sanji have beaten him (ep. 33).
   'momoo': [
-    { d: ellipse(64, 96, 48, 16), role: 'accent' },
-    { d: ellipse(64, 96, 41, 10), role: 'accent' },
-    { d: 'M56 112 H72 L78 138 H50 Z' },
-    { d: circle(64, 142, 3) },
-    { d: 'M112 98 Q128 108 128 132', role: 'soft' },
-    { d: 'M112 134 H152 L144 146 H120 Z' },
-    { d: 'M134 134 V110 M134 112 L148 126 H134', role: 'soft' },
+    { d: 'M72 158 C72 136 86 124 102 124 C118 124 132 136 132 158' },
+    { d: 'M82 132 C70 128 62 116 62 98 C68 110 76 118 88 126', role: 'accent' },
+    {
+      d: 'M122 132 C134 128 142 116 142 98 C136 110 128 118 116 126',
+      role: 'accent',
+    },
+    { d: 'M60 158 q6 -8 14 -4 M130 154 q8 -4 14 4', role: 'ambient' },
+    { d: 'M76 150 L36 140' },
+    { d: 'M8 146 H40 L34 158 H14 Z' },
+    { d: 'M22 146 V112 M22 114 h14 v26 h-14', role: 'soft' },
     ...SEA,
   ],
   // A single wanted poster nailed to a noticeboard, the reward line under an
@@ -1019,23 +1160,37 @@ export const eastBlueArt = {
     },
     shadow(80, 172, 56),
   ],
-  // A hooded cloak blown open, the hood empty.
+  // A hooded cloak seen from behind in the Loguetown storm, its right side
+  // thrown out by the gust and hatched underneath, folds down its length, the
+  // rain slanting past and the gust itself in green. He stands in it when the
+  // wind frees Luffy in episode 53.
   'monkey-d-dragon': [
+    { d: 'M54 74 C48 56 54 38 70 36 C84 36 92 48 90 64 C89 68 88 71 86 74' },
+    { d: 'M70 36 C68 48 68 60 71 72', role: 'soft' },
     {
-      d: 'M54 62 C54 34 106 34 106 62 C106 78 98 88 90 90 L70 90 C62 88 54 78 54 62 Z',
+      d: 'M54 74 C46 77 40 82 38 90 C36 120 34 150 32 180 C52 184 72 182 90 178',
     },
-    { d: 'M64 80 C72 92 88 92 96 80', role: 'accent' },
-    { d: 'M70 90 C50 104 30 132 12 166' },
-    { d: 'M90 90 C104 106 114 134 118 164' },
-    { d: 'M12 166 C34 180 66 184 92 176 C104 172 114 170 118 164' },
-    { d: 'M78 92 C70 118 62 144 52 172', role: 'soft' },
-    { d: 'M96 100 C104 124 110 146 112 166', role: 'soft' },
     {
-      d: 'M126 46 C140 52 146 62 142 72 M130 86 C144 92 150 102 146 112',
+      d: 'M86 74 C94 76 100 80 104 84 C120 82 136 76 154 66 C150 86 152 100 158 110 C144 116 136 128 132 142 C116 150 102 162 90 178',
+    },
+    {
+      d: 'M52 88 C50 120 48 150 48 180 M70 82 C72 114 74 146 70 180 M104 84 C112 98 116 112 118 128',
+      role: 'soft',
+    },
+    {
+      d: 'M140 98 l12 -8 M134 110 l12 -8 M126 124 l10 -7 M116 138 l10 -7',
       role: 'ambient',
-      dashed: true,
     },
-    shadow(70, 186, 54),
+    {
+      d: 'M2 96 C14 88 24 100 34 92 M4 124 C16 118 24 128 34 122',
+      role: 'accent',
+    },
+    { d: 'M96 44 C110 36 124 46 140 40 C148 38 152 32 150 26', role: 'accent' },
+    {
+      d: 'M24 20 l-5 14 M42 36 l-5 14 M118 14 l-5 14 M136 96 l-5 14 M150 136 l-5 14 M22 140 l-5 14 M140 160 l-5 14',
+      role: 'ambient',
+    },
+    shadow(66, 186, 42),
   ],
 
   // A long back arching out of the sea, fins along its ridge, and a small boat rowing past.
@@ -1069,6 +1224,13 @@ const CROWN_TILT = 'rotate(-13 70 91.5)'
 
 /** Koby's bandanna, drawn at ground size and lifted, larger, over the bucket. */
 const BANDANNA_LIFT = 'translate(-1 -120) scale(1.35)'
+
+/** Nami's chart, drawn at full size and set down, smaller, at the staff's foot. */
+const CHART_AT_FOOT = 'translate(90 113) scale(0.42)'
+const SMALL_CHART: Stroke[] = [
+  ...NAMI_CHART_BODY,
+  { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
+].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
@@ -1213,8 +1375,11 @@ export const eastBlueRedrawn: Redrawings = {
   // The Sorcery Clima-Tact leant across the box from the ground, its round
   // knobs at both ends, collars banding the grip and both necks, the far side
   // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
-  // the one mark in her colour, and two mandarins left at the foot. Zeus comes
-  // out of the staff as her servant aboard the Sunny in 878 (ch. 903).
+  // the one mark in her colour, and a small copy of her first drawing's chart
+  // at the foot. The chart is not a prop of the scene: it is her emblem as
+  // navigator and cartographer, whose dream is to draw a map of the world,
+  // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
+  // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
   'nami': [
     {
       episode: 878,
@@ -1244,9 +1409,7 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'soft',
         },
         { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
-        { d: `${ellipse(110, 178, 10, 8.5)} ${ellipse(130, 179, 9.5, 8)}` },
-        { d: `M110 169.5 q1 -3 4 -4 q7 -5 13 -1 q-7 5 -13 1 ${dot(130, 173)}` },
-        { d: 'M104 182 q4 3 9 2 M133 183 q3 -1 4 -4', role: 'ambient' },
+        ...SMALL_CHART,
         shadow(80, 188, 56),
       ],
     },
@@ -1305,6 +1468,13 @@ export const eastBlueRedrawn: Redrawings = {
     },
   ],
   'sanji': [
+    // The knife with the flame off its point: Diable Jambe, his leg set alight
+    // by spinning, first lit against Jabra in 298 (ch. 415).
+    {
+      episode: 298,
+      chapter: 415,
+      value: [...SANJI_KNIFE, ...SANJI_FLAME, shadow(80, 186, 44)],
+    },
     // The Raid Suit's black cape hung behind the knife: the stand-up collar,
     // the shoulders, the scalloped hem, folds down its length and its far
     // side hatched, the knife and the flame in front of it. No number, no

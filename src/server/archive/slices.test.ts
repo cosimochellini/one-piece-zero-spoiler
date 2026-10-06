@@ -988,18 +988,18 @@ describe('a record drawn again later in the story', () => {
 
   it('puts Zeus in Nami’s Clima-Tact only from episode 878', () => {
     const nami = filed('nami')
-    const mandarins = DRAWINGS.nami
+    const chart = DRAWINGS.nami
     const zeus = REDRAWINGS['nami']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
       characterOf(nami, 'en', reveal(bookmark)).visual.strokes
 
     expect(zeus?.episode).toBe(878)
 
-    expect(drawnAt(ep(877))).toBe(mandarins)
+    expect(drawnAt(ep(877))).toBe(chart)
     expect(drawnAt(ep(878))).toBe(zeus?.value)
-    expect(drawnAt(null)).toBe(mandarins)
+    expect(drawnAt(null)).toBe(chart)
     // The manga has Zeus come out of her staff in chapter 903, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(mandarins)
+    expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(chart)
     expect(drawnAt({ mode: 'chapter', chapter: 903 })).toBe(zeus?.value)
   })
 
@@ -1035,18 +1035,30 @@ describe('a record drawn again later in the story', () => {
     expect(teachAt({ mode: 'chapter', chapter: 925 })).toBe(plumed?.value)
   })
 
-  describe('twice, following Sanji’s knife through the Raid Suit', () => {
+  describe('three times, following Sanji’s knife through the Raid Suit', () => {
     const sanji = filed('sanji')
     const knife = DRAWINGS.sanji
-    const [cape, ifrit] = REDRAWINGS['sanji'] ?? []
+    const [flame, cape, ifrit] = REDRAWINGS['sanji'] ?? []
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
       characterOf(sanji, 'en', reveal(bookmark)).visual.strokes
+
+    it('lights the flame on the knife only from episode 298', () => {
+      expect(flame?.episode).toBe(298)
+
+      expect(drawnAt(ep(297))).toBe(knife)
+      expect(drawnAt(ep(298))).toBe(flame?.value)
+      expect(drawnAt(null)).toBe(knife)
+      // The manga lights Diable Jambe against Jabra in chapter 415, no
+      // earlier.
+      expect(drawnAt({ mode: 'chapter', chapter: 414 })).toBe(knife)
+      expect(drawnAt({ mode: 'chapter', chapter: 415 })).toBe(flame?.value)
+    })
 
     it('hangs the cape from 925 and lights the taller flame from 1061', () => {
       expect(cape?.episode).toBe(925)
       expect(ifrit?.episode).toBe(1061)
 
-      expect(drawnAt(ep(924))).toBe(knife)
+      expect(drawnAt(ep(924))).toBe(flame?.value)
       expect(drawnAt(ep(925))).toBe(cape?.value)
       expect(drawnAt(ep(1060))).toBe(cape?.value)
       expect(drawnAt(ep(1061))).toBe(ifrit?.value)
@@ -1056,7 +1068,7 @@ describe('a record drawn again later in the story', () => {
     it('keeps each from a chapter reader until the manga shows it', () => {
       // The manga puts him in the suit in chapter 931 and lights Ifrit Jambe
       // in 1034.
-      expect(drawnAt({ mode: 'chapter', chapter: 930 })).toBe(knife)
+      expect(drawnAt({ mode: 'chapter', chapter: 930 })).toBe(flame?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 931 })).toBe(cape?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 1033 })).toBe(cape?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 1034 })).toBe(ifrit?.value)

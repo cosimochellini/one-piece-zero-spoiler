@@ -128,11 +128,6 @@ export const ghost = (x: number, y: number, role: StrokeRole): Stroke[] => {
   ]
 }
 
-/** A sake cup, seen from the side. */
-export function cup(x: number, role: StrokeRole): Stroke {
-  return { d: `M${n(x)} 146 h20 l-3 12 h-14z`, role }
-}
-
 /**
  * One arm of a windmill with its sail, hub at (80, 80), pointing up and to
  * the right. The other three are the same stroke rotated about the hub.
