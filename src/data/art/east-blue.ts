@@ -60,11 +60,10 @@ const NAMI_COAST =
 /**
  * Nami's stolen chart, half unrolled towards the reader: the tied roll with
  * the paper spiralling at its right end, the string trailing across the
- * sheet, the sheet's edges and curling front; then the roll's hatched
- * underside and two meridians, the last two strokes, which the small copy at
- * 878 leaves off.
+ * sheet, the sheet's edges and curling front. The small copy at 878 is this
+ * alone.
  */
-const NAMI_CHART: Stroke[] = [
+const NAMI_CHART_BODY: Stroke[] = [
   { d: 'M28 84 H130 M28 104 H130' },
   { d: `${ellipse(28, 94, 5, 10)} ${ellipse(130, 94, 5, 10)}` },
   {
@@ -75,6 +74,10 @@ const NAMI_CHART: Stroke[] = [
   { d: 'M77 104 C70 116 86 122 80 138', role: 'soft' },
   { d: 'M30 104 L14 158 M128 104 L146 158' },
   { d: 'M14 158 Q12 166 20 166 H140 Q148 166 146 158', role: 'soft' },
+]
+
+/** The chart's finer lines: the roll's hatched underside, two meridians. */
+const NAMI_CHART_DETAIL: Stroke[] = [
   {
     d: 'M40 101 l2 3 M54 101 l2 3 M94 101 l2 3 M108 101 l2 3 M122 101 l2 3',
     role: 'ambient',
@@ -428,7 +431,8 @@ export const eastBlueArt = {
   // episode 5. The Clima-Tact with Zeus stands over a small copy of the chart
   // from 878, in `eastBlueRedrawn`.
   'nami': [
-    ...NAMI_CHART,
+    ...NAMI_CHART_BODY,
+    ...NAMI_CHART_DETAIL,
     { d: NAMI_COAST, role: 'accent' },
     shadow(80, 176, 62),
   ],
@@ -1101,7 +1105,7 @@ export const eastBlueArt = {
 
   // The top of his head breaking the sea, his two horns curving up in his
   // colour, and the tow line running taut to the small boat he is made to
-  // pull to Arlong Park once Luffy and Sanji have beaten him (ep. 32).
+  // pull to Arlong Park once Luffy and Sanji have beaten him (ep. 33).
   'momoo': [
     { d: 'M72 158 C72 136 86 124 102 124 C118 124 132 136 132 158' },
     { d: 'M82 132 C70 128 62 116 62 98 C68 110 76 118 88 126', role: 'accent' },
@@ -1224,7 +1228,7 @@ const BANDANNA_LIFT = 'translate(-1 -120) scale(1.35)'
 /** Nami's chart, drawn at full size and set down, smaller, at the staff's foot. */
 const CHART_AT_FOOT = 'translate(90 113) scale(0.42)'
 const SMALL_CHART: Stroke[] = [
-  ...NAMI_CHART.slice(0, -2),
+  ...NAMI_CHART_BODY,
   { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
 ].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
