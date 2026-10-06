@@ -11,6 +11,12 @@ const FISH_MAN_ISLAND = {
   en: 'Fish-Man Island',
 }
 
+const NEW_FISH_MAN_PIRATES = {
+  it: 'Nuovi Pirati Uomini-Pesce',
+  en: 'New Fish-Man Pirates',
+}
+
+/** "Officer" is first said of the crew in the captions of 539. */
 const NEW_FISH_MAN_OFFICER = {
   it: 'Nuovi Pirati Uomini-Pesce, ufficiale',
   en: 'New Fish-Man Pirates, officer',
@@ -261,19 +267,21 @@ export const fishManIsland: Saga = {
     {
       id: 'hyouzou',
       kind: 'character',
-      revealedAtEpisode: 530,
-      revealedAtChapter: 620,
+      // A caption names him at the island's entrance in 527; the manga names him in 610.
+      revealedAtEpisode: 527,
+      revealedAtChapter: 610,
       name: { it: 'Hyouzou', en: 'Hyouzou' },
       summary: {
-        it: 'Un uomo-pesce polpo con una sciabola avvelenata in ognuna delle otto braccia, venduto ai Nuovi Pirati Uomini-Pesce come spadaccino.',
-        en: 'An octopus fish-man with a poisoned sabre in each of his eight arms, sold to the New Fish-Man Pirates as their swordsman.',
+        it: 'Un tritone polpo con una katana senza guardia e una zucca al fianco, l’assassino dei Nuovi Pirati Uomini-Pesce, che con Hammond sbarra la strada ai Cappello di Paglia all’ingresso dell’isola.',
+        en: 'An octopus merman with a guardless katana and a gourd at his side, the New Fish-Man Pirates’ assassin, who waits with Hammond to stop the Straw Hats at the island’s entrance.',
       },
       visual: { art: 'hyouzou', tint: 'violet' },
     },
     {
       id: 'zeo',
       kind: 'character',
-      revealedAtEpisode: 530,
+      // On screen from 530, but the show first names him in a caption at 539.
+      revealedAtEpisode: 539,
       revealedAtChapter: 620,
       name: { it: 'Zeo', en: 'Zeo' },
       summary: {
@@ -285,7 +293,8 @@ export const fishManIsland: Saga = {
     {
       id: 'daruma',
       kind: 'character',
-      revealedAtEpisode: 530,
+      // On screen from 530, but the show first names him in a caption at 539.
+      revealedAtEpisode: 539,
       revealedAtChapter: 620,
       name: { it: 'Daruma', en: 'Daruma' },
       summary: {
@@ -301,20 +310,21 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Ikaros Much', en: 'Ikaros Much' },
       summary: {
-        it: 'Un uomo-pesce calamaro, ufficiale dei Nuovi Pirati Uomini-Pesce, che sovrasta il resto della ciurma, con otto braccia e una lancia in ogni mano, ognuna con la punta a forma di calamaro essiccato.',
-        en: 'A squid fish-man, an officer of the New Fish-Man Pirates who towers over the rest of the crew, with eight arms and a spear in each hand, each spearhead shaped like a dried squid.',
+        it: 'Un uomo-pesce calamaro dei Nuovi Pirati Uomini-Pesce che sovrasta il resto della ciurma, con otto braccia e una lancia in ogni mano, ognuna con la punta a forma di calamaro essiccato.',
+        en: 'A squid fish-man of the New Fish-Man Pirates who towers over the rest of the crew, with eight arms and a spear in each hand, each spearhead shaped like a dried squid.',
       },
       visual: { art: 'ikaros-much', tint: 'ivory' },
     },
     {
       id: 'dosun',
       kind: 'character',
-      revealedAtEpisode: 530,
+      // His "-dosun" at 530 is a verbal tic, not his name: Ikaros first says it at 538.
+      revealedAtEpisode: 538,
       revealedAtChapter: 620,
       name: { it: 'Dosun', en: 'Dosun' },
       summary: {
-        it: 'Un uomo-pesce squalo martello, ufficiale dei Nuovi Pirati Uomini-Pesce, che porta un enorme martello dal manico lungo e nodoso e chiude spesso le frasi con “dosun”.',
-        en: 'A hammerhead shark fish-man, an officer of the New Fish-Man Pirates, who carries a huge hammer on a long, gnarled handle and often ends his sentences with “dosun”.',
+        it: 'Un uomo-pesce squalo martello dei Nuovi Pirati Uomini-Pesce, che porta un enorme martello dal manico lungo e nodoso e chiude spesso le frasi con “dosun”.',
+        en: 'A hammerhead shark fish-man of the New Fish-Man Pirates, who carries a huge hammer on a long, gnarled handle and often ends his sentences with “dosun”.',
       },
       visual: { art: 'dosun', tint: 'sand' },
     },
@@ -842,21 +852,26 @@ export const fishManIsland: Saga = {
       ],
     },
     'hyouzou': {
-      role: { it: 'Spadaccino prezzolato', en: 'Sword for hire' },
+      role: {
+        it: 'Assassino dei Nuovi Pirati Uomini-Pesce',
+        en: 'Assassin of the New Fish-Man Pirates',
+      },
       log: {
-        it: 'Tiene una sciabola per braccio e passa il veleno su ogni lama prima di muoversi, perché gli basta un graffio. Si vende a chi paga, e adesso paga la ciurma del Quartiere degli Uomini-Pesce, che lo presenta come il proprio spadaccino. Chiede più soldi a metà lavoro e nessuno dei suoi nuovi compagni se ne stupisce.',
-        en: 'He holds a sabre in every arm and runs poison along each blade before he moves, because one scratch is all he needs. He sells himself to whoever pays, and what pays now is the crew from the Fish-Man District, who introduce him as their swordsman. He asks for more money halfway through a job and none of his new companions looks surprised.',
+        it: 'È l’assassino dei Nuovi Pirati Uomini-Pesce. Al posto delle gambe ha tentacoli di polpo, e porta una katana senza guardia in un fodero a macchie lunghe e una zucca. È con Hammond tra i mostri marini che sbarrano l’ingresso dell’Isola degli Uomini-Pesce mentre ai Cappello di Paglia viene detto di unirsi alla ciurma o di colare a picco. I Cappello di Paglia sfuggono lanciando la nave dentro l’isola.',
+        en: 'He is the New Fish-Man Pirates’ assassin. He has octopus tentacles in place of legs, and carries a guardless katana in a sheath with long spots and a gourd. He is with Hammond among the sea monsters that block the entrance to Fish-Man Island while the Straw Hats are told to join the crew or be sunk. The Straw Hats get away by charging their ship into the island.',
       },
       affiliation: [
         {
-          episode: 530,
+          // The crew's assassin: a caption says so in 527, and ch. 610, p. 5, in the manga.
+          episode: 527,
+          chapter: 610,
           value: {
             it: 'Nuovi Pirati Uomini-Pesce, assassino',
             en: 'New Fish-Man Pirates, assassin',
           },
         },
       ],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 527, value: FISH_MAN_ISLAND }],
     },
     'zeo': {
       role: {
@@ -867,8 +882,8 @@ export const fishManIsland: Saga = {
         it: 'È uno dei quattro ufficiali intorno al capitano e si muove come se l’isola lo nascondesse: sparisce contro il corallo e contro la pietra e riappare a un passo da chi lo stava cercando. Parla dei tempi in cui gli uomini-pesce facevano paura alla superficie e vuole riportarli indietro con le armi.',
         en: 'He is one of the four officers around the captain, and he moves as though the island itself hid him: he disappears against coral and stone and turns up a step away from whoever was looking for him. He talks about the days when fish-men frightened the surface, and means to bring them back by force.',
       },
-      affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
+      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
     },
     'daruma': {
       role: {
@@ -879,32 +894,38 @@ export const fishManIsland: Saga = {
         it: 'Non arriva alla cintura degli altri ufficiali e non gli serve: sparisce sotto il pavimento e riemerge dove nessuno lo aspetta, lasciando un buco con il bordo pieno di segni di denti. Mastica la pietra come fosse pane e ride mentre lo fa. Gli altri tre lo trattano da bambino e lo mandano avanti lo stesso.',
         en: 'He does not reach the other officers’ belts and does not need to: he vanishes under the floor and comes up where nobody expects him, leaving a hole rimmed with tooth marks. He chews stone as if it were bread and laughs while he does it. The other three treat him like a child and send him in first anyway.',
       },
-      affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
+      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
     },
     'ikaros-much': {
       role: {
-        it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
-        en: 'Officer of the New Fish-Man Pirates',
+        it: 'Membro dei Nuovi Pirati Uomini-Pesce',
+        en: 'Member of the New Fish-Man Pirates',
       },
       log: {
-        it: 'È il più alto degli ufficiali di Hody Jones, con un elmo rotondo e gli occhialoni, una lunga barba e una lancia in ognuna delle otto mani. Quando una ciurma di pirati umani che aveva giurato fedeltà ai Nuovi Pirati Uomini-Pesce scappa, si offre di inseguirla lui. Hody gli dice di no e ci va da solo. Ikaros chiama gli steroidi energetici, le pillole che raddoppiano la forza di un uomo-pesce, un vero tesoro.',
-        en: 'He is the tallest of Hody Jones’s officers, with a round helmet and goggles, a long beard and a spear in each of his eight hands. When a crew of human pirates who had sworn loyalty to the New Fish-Man Pirates slips away, he offers to go after them himself. Hody tells him no and goes alone. Ikaros calls the Energy Steroids, the pills that double a fish-man’s strength, a real treasure.',
+        it: 'È il più alto dei pirati intorno a Hody Jones, con un elmo rotondo e gli occhialoni, una lunga barba e una lancia in ognuna delle otto mani. Quando una ciurma di pirati umani che aveva giurato fedeltà ai Nuovi Pirati Uomini-Pesce scappa, si offre di inseguirla lui. Hody gli dice di no e ci va da solo. Ikaros chiama gli steroidi energetici, le pillole che raddoppiano la forza di un uomo-pesce, un vero tesoro.',
+        en: 'He is the tallest of the pirates around Hody Jones, with a round helmet and goggles, a long beard and a spear in each of his eight hands. When a crew of human pirates who had sworn loyalty to the New Fish-Man Pirates slips away, he offers to go after them himself. Hody tells him no and goes alone. Ikaros calls the Energy Steroids, the pills that double a fish-man’s strength, a real treasure.',
       },
-      affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
+      affiliation: [
+        { episode: 530, value: NEW_FISH_MAN_PIRATES },
+        { episode: 539, value: NEW_FISH_MAN_OFFICER },
+      ],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
     },
     'dosun': {
       role: {
-        it: 'Ufficiale dei Nuovi Pirati Uomini-Pesce',
-        en: 'Officer of the New Fish-Man Pirates',
+        it: 'Membro dei Nuovi Pirati Uomini-Pesce',
+        en: 'Member of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno degli ufficiali intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude spesso le frasi con “dosun”.',
-        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the officers around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he often ends his sentences with “dosun”.',
+        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno dei pirati intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude spesso le frasi con “dosun”.',
+        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the pirates around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he often ends his sentences with “dosun”.',
       },
-      affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
-      origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
+      affiliation: [
+        { episode: 538, value: NEW_FISH_MAN_PIRATES },
+        { episode: 539, value: NEW_FISH_MAN_OFFICER },
+      ],
+      origin: [{ episode: 538, value: FISH_MAN_ISLAND }],
     },
     'megalo': {
       chronicle: fishManIslandChronicles.megalo,
