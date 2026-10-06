@@ -218,8 +218,8 @@ export const alabastaChronicles = {
       value: {
         title: { it: 'Il fratello maggiore', en: 'The older brother' },
         body: {
-          it: 'Nel porto di Nanohana, ad Alabasta, [[monkey-d-luffy|Rufy]] incontra un uomo col cappello arancione che dorme nel piatto e poi incendia le navi di Baroque Works con il pugno. È Ace, suo fratello maggiore, capitano della seconda divisione di Barbabianca. I due mangiano, ridono e raccontano alla ciurma di essere cresciuti insieme. Ace è sulle tracce di un uomo chiamato Barbanera, ma prima di partire lascia a Rufy un pezzo della propria vivre card.',
-          en: 'In the port town of Nanohana, in Alabasta, [[monkey-d-luffy|Luffy]] meets a man in an orange hat who falls asleep in his food and then burns the Baroque Works ships with his fist. He is Ace, Luffy’s older brother and captain of Whitebeard’s second division. The two eat, laugh and tell the crew that they grew up together. Ace is hunting a man called Blackbeard, but before leaving he gives Luffy a piece of his vivre card.',
+          it: 'Nel porto di Nanohana, ad Alabasta, [[monkey-d-luffy|Rufy]] incontra un uomo col cappello arancione che dorme nel piatto e poi incendia le navi di Baroque Works con il pugno. È Ace, suo fratello maggiore, capitano della seconda divisione di Barbabianca. I due mangiano, ridono e raccontano alla ciurma di essere cresciuti insieme. Ace è sulle tracce di un uomo chiamato Barbanera.',
+          en: 'In the port town of Nanohana, in Alabasta, [[monkey-d-luffy|Luffy]] meets a man in an orange hat who falls asleep in his food and then burns the Baroque Works ships with his fist. He is Ace, Luffy’s older brother and captain of Whitebeard’s second division. The two eat, laugh and tell the crew that they grew up together. Ace is hunting a man called Blackbeard.',
         },
       },
     },

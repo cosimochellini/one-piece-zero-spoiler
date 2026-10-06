@@ -968,7 +968,7 @@ export const CHRONICLE_SOURCES = {
   'portgas-d-ace': {
     95: {
       source: 'https://onepiece.fandom.com/wiki/Episode_95',
-      note: 'Threshold entry. Second pass: Nanohana (a port, not the desert), the ships (plural), and “Blackbeard” — the name Teach is first heard in 151.',
+      note: 'Threshold entry. Second pass: Nanohana (a port, not the desert), the ships (plural), and “Blackbeard” — the name Teach is first heard in 151. #310: the paper he leaves Luffy is dropped, because the anime moves the handover to the filler episode 101 (Episode_101: “leaving Luffy a mysterious piece of paper”).',
     },
     145: {
       source: 'https://onepiece.fandom.com/wiki/Portgas_D._Ace/History',

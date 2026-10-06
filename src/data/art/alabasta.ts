@@ -986,29 +986,32 @@ export const alabastaArt = {
     shadow(80, 182, 56),
   ],
 
-  // The wooden club of the Sand-Sand Clan, its head ringed with carved
-  // grooves, the one the boy knocks the bandit down with (ch 164 p8, ep 100),
-  // laid across the folded scarf the rebel leader wears (ch 164 p19). The
-  // anime has no canon shot of the man by ep 100; anime viewers saw the
-  // scarf in his anime-original scene at the rebel base (ep 93).
+  // The wooden club of the Sand-Sand Clan, the one the boy knocks the bandit
+  // down with (ch 164 p8, ep 100), lying in 3/4 with its flat end towards
+  // you: the end grain on the face, the two carved grooves round the head,
+  // the head swelling out of a plain grip, as ep 100 draws it. Nothing else
+  // is in the drawing: by ep 100 the anime has shown only the boy, so no
+  // part of the grown man's outfit is true for both readers yet.
   'kohza': [
     {
-      d: 'M24 134 C52 130 74 126 92 118 C104 112 120 108 132 109 C144 110 148 126 138 132 C126 138 106 136 92 136 C74 140 52 144 26 144 C20 144 18 135 24 134 Z',
+      d: 'M130.1 86.9 C91.1 108 81.4 115.3 73.4 121.8 C61.1 132.7 34.7 150 18.8 158.3 A5.5 5.5 0 0 0 23.9 168.1 C39.8 159.7 69 147.8 85 143.9 C94.8 141 106.4 137.2 145.9 117.1',
     },
-    { d: 'M110 111.5 C115 118 115 128 110 135', role: 'accent' },
-    { d: 'M121 109.5 C126 116 127 127 122 134', role: 'soft' },
-    { d: 'M34 132.5 C37 136 37 140 34 143', role: 'soft' },
-    { d: 'M42 137 C60 134 76 129 92 123', role: 'soft' },
-    { d: 'M114 134 l7 -6 M124 133 l7 -7 M133 131 l5 -5', role: 'ambient' },
-    { d: 'M8 150 C12 147 16 145 20 144.5' },
-    { d: 'M140 135 C146 137 152 139 154 142 C158 148 156 156 150 158' },
-    { d: 'M8 150 C2 154 4 164 12 166 C50 162 100 164 150 158' },
     {
-      d: 'M12 166 C9 170 12 173 18 173 C56 169 104 171 150 165 C154 164 154 160 150 158',
+      d: 'M130.1 86.9 A6.5 17 -27.7 1 1 145.9 117.1 A6.5 17 -27.7 1 1 130.1 86.9',
     },
-    { d: 'M26 155 C60 152 104 154 144 148', role: 'soft' },
-    { d: 'M60 165 q6 -6 14 -6 M108 163 q6 -5 12 -5', role: 'soft' },
-    shadow(80, 184, 62),
+    {
+      d: 'M135.2 95.4 A2.6 7.1 -27.7 1 1 141.8 108 A2.6 7.1 -27.7 1 1 135.2 95.4',
+      role: 'soft',
+    },
+    { d: 'M120.9 92 C127.1 96.3 136.5 114.2 136.5 121.7', role: 'accent' },
+    { d: 'M111.7 96.9 C117.9 101.2 127.2 119 127.3 126.6', role: 'soft' },
+    { d: 'M83.5 123.8 C91.5 117.4 100.1 112.3 112.2 106.5', role: 'soft' },
+    { d: 'M29.7 157.7 C47.2 147.9 60.4 139.9 70.8 133.9', role: 'soft' },
+    {
+      d: 'M87.5 135.6 L93.9 138.1 M93.6 133.2 L100.3 136.4 M100 131.4 L107.4 135.9 M105.7 128.4 L113.1 132.9',
+      role: 'ambient',
+    },
+    shadow(80, 182, 58),
   ],
 
   // His sword with its gold cross-guard, sheathed, laid across a fold of the
