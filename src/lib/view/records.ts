@@ -395,7 +395,7 @@ export interface HomeStory extends ChronicleEntry {
 export interface HomeView {
   /** The stories are the previous arc's, because this one has none yet. */
   before: boolean
-  /** The characters the stories name most, most named first, at most six. */
+  /** The arc's leads the stories name most, most named first, at most six. */
   cast: CharacterView[]
   /** The arc the reader is in: the last one that opens at or before them. */
   saga: WaypointView

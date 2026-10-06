@@ -5,11 +5,16 @@ import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
 import { characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
+import { ARC_LEADS } from '~/data/leads'
 import { shipDossierOf } from '~/data/places'
 import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
-import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
+import {
+  type Bookmark,
+  CHAPTER_CEILING,
+  EPISODE_CEILING,
+} from '~/lib/progress/episode'
 import { foldName } from '~/lib/search/fold'
 import type {
   CharacterChronicle,
@@ -36,6 +41,19 @@ import { characterOf, recordOf, searchableOf } from './project.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }
+}
+
+/** Every episode and every chapter a bookmark can hold. */
+function everyBookmark(): NonNullable<Bookmark>[] {
+  const marks: NonNullable<Bookmark>[] = []
+  for (let episode = 1; episode <= EPISODE_CEILING; episode += 1) {
+    marks.push(ep(episode))
+  }
+  for (let chapter = 1; chapter <= CHAPTER_CEILING; chapter += 1) {
+    marks.push({ mode: 'chapter', chapter })
+  }
+
+  return marks
 }
 const seenAt = (episode: number): Reveal => reveal(ep(episode))
 const handleSpace = new Set(
@@ -336,8 +354,9 @@ describe('the slice of the archive a page is given', () => {
     expect(home.stories.length).toBeGreaterThan(0)
   })
 
-  it('names the characters the stories name most, most named first', () => {
+  it('names the leads the stories name most, most named first', () => {
     const home = homePage(ep(650), 'en')
+    const leads = new Set(ARC_LEADS[home.saga.id])
     const counts = new Map<string, number>()
     for (const story of home.stories) {
       const ids = [
@@ -354,8 +373,53 @@ describe('the slice of the archive a page is given', () => {
 
     expect(home.stories.length).toBeGreaterThan(3)
     expect(home.cast).toHaveLength(6)
+    expect(home.cast.every((character) => leads.has(character.id))).toBe(true)
     expect(tallies.every((count) => count > 0)).toBe(true)
     expect(tallies.toSorted(byNumber({ desc: true }))).toStrictEqual(tallies)
+  })
+
+  it('leaves the Colosseum line-up out of who matters at Dressrosa', () => {
+    // Every Colosseum story names the whole line-up, so on mentions alone
+    // the Funk brothers and the bounty hunters outranked Law.
+    const home = homePage({ mode: 'season', season: 17, episode: 63 }, 'en')
+    const cast = home.cast.map((character) => character.id)
+    const colosseum = new Set([
+      'kelly-funk',
+      'bobby-funk',
+      'dagama',
+      'jeet',
+      'abdullah',
+    ])
+
+    expect(home.saga.id).toBe('dressrosa-arc')
+    expect(cast.slice(0, 3)).toStrictEqual([
+      'monkey-d-luffy',
+      'donquixote-doflamingo',
+      'trafalgar-law',
+    ])
+    expect(cast.filter((id) => colosseum.has(id))).toStrictEqual([])
+  })
+
+  it('names only the leads of the arc on every bookmark', () => {
+    // An arc the home page reads stories from without a list of leads would
+    // leave the section empty rather than fail, so it is caught here too.
+    const strays: string[] = []
+    const unlisted = new Set<string>()
+    for (const bookmark of everyBookmark()) {
+      const home = homePage(bookmark, 'en')
+      const leads = new Set(ARC_LEADS[home.saga.id])
+      const own = home.before ? [] : home.cast
+      if (!home.before && home.stories.length > 0 && leads.size === 0) {
+        unlisted.add(home.saga.id)
+      }
+      const stray = own.filter((character) => !leads.has(character.id))
+      strays.push(
+        ...stray.map(({ id }) => `${id} @ ${JSON.stringify(bookmark)}`),
+      )
+    }
+
+    expect(strays).toStrictEqual([])
+    expect([...unlisted]).toStrictEqual([])
   })
 
   it('carries the home page in the locale the page asked for', () => {

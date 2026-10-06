@@ -6,7 +6,7 @@ import { useT } from '~/i18n/LocaleContext'
 import type { CharacterView } from '~/lib/view/records'
 import { color, font, leading, space, text } from '~/styles/tokens.stylex'
 
-/** The characters the stories name most, most named first. */
+/** The arc's leads the stories name most, most named first. */
 export interface HomeCastProps {
   cast: CharacterView[]
 }
@@ -22,7 +22,7 @@ async function neverPeeked(): Promise<CharacterView> {
 }
 
 /**
- * Who matters now: the characters the stories name most, as the same crests
+ * Who matters now: the arc's leads the stories name most, as the same crests
  * the characters page puts in evidence, most named first.
  */
 export function HomeCast({ cast }: HomeCastProps): null | ReactElement {

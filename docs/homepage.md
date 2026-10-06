@@ -76,10 +76,16 @@ Usa solo le storie che il sito ha già.
 
 ### 3. Chi conta adesso
 
-I personaggi citati nelle storie del blocco “Appena successo”.
+I protagonisti della saga citati nelle storie del blocco “Appena successo”.
 
+- Ogni saga ha una lista scritta a mano dei suoi protagonisti. Un personaggio
+  citato che non è nella lista non compare: a Dressrosa i gladiatori del
+  Colosseo sono citati spesso, ma non sono al centro della storia.
+- La ciurma di Rufy è nella lista solo nelle saghe in cui è al centro. Rufy c’è
+  sempre.
 - Ordinati da chi è citato più volte a chi meno. A parità, prima chi è citato
   più di recente.
+- Se i protagonisti citati sono meno di sei, se ne vedono meno.
 - Al massimo sei.
 - Per ognuno: disegno, nome e ruolo, come nelle schede che il sito ha già.
 - Ogni scheda porta alla pagina del personaggio.
@@ -103,8 +109,10 @@ davanti (“circa capitolo 1040”).
 “Poco prima”.
 
 **Se non c’è nessuna storia**, per esempio ai primi episodi, il blocco dice
-“Ancora nessuna storia.” e “Chi conta adesso” mostra i personaggi che compaiono
-per la prima volta in questa saga, fino al tuo punto.
+“Ancora nessuna storia.” e “Chi conta adesso” mostra i protagonisti della saga
+che compaiono per la prima volta in questa saga, fino al tuo punto. Lo stesso
+succede se le storie non citano ancora nessun protagonista. Se non c’è nessuno
+da mostrare, la sezione non compare.
 
 ## Regole che non si toccano
 
