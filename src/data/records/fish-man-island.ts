@@ -223,8 +223,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 616,
       name: { it: 'Fukaboshi', en: 'Fukaboshi' },
       summary: {
-        it: 'Il primogenito del re, un tritone squalo che comanda l’armata del regno con una lancia e parla a nome del padre.',
-        en: 'The king’s eldest son, a shark merman who commands the kingdom’s army with a lance and speaks in his father’s name.',
+        it: 'Il primogenito del re, un tritone squalo con un tridente d’oro che guida l’armata del regno insieme ai due fratelli minori.',
+        en: 'The king’s eldest son, a shark merman with a gold trident who leads the kingdom’s army with his two younger brothers.',
       },
       visual: { art: 'fukaboshi', tint: 'azure' },
     },
@@ -285,8 +285,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Zeo', en: 'Zeo' },
       summary: {
-        it: 'Un ufficiale dei Nuovi Pirati Uomini-Pesce che si confonde con il corallo e con la pietra finché non è troppo tardi per accorgersene.',
-        en: 'An officer of the New Fish-Man Pirates who blends into coral and stone until it is far too late to notice him.',
+        it: 'Un ufficiale dei Nuovi Pirati Uomini-Pesce che costringe la gente dell’isola a scegliere tra calpestare il ritratto della regina e andarsene, e le dice che umani e uomini-pesce non potranno mai andare d’accordo.',
+        en: 'An officer of the New Fish-Man Pirates who makes the people of the island choose between treading on the queen’s portrait and leaving, and tells them that humans and fish-men can never get along.',
       },
       visual: { art: 'zeo', tint: 'green' },
     },
@@ -298,8 +298,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Daruma', en: 'Daruma' },
       summary: {
-        it: 'Il più piccolo degli ufficiali dei Nuovi Pirati Uomini-Pesce, un pesce dai denti a sega che scava sotto il pavimento e morde da sotto.',
-        en: 'The smallest of the New Fish-Man Pirates officers, a saw-toothed fish who tunnels under the floor and bites things from below.',
+        it: 'Di gran lunga il più piccolo degli ufficiali dei Nuovi Pirati Uomini-Pesce, un uomo-pesce dai denti aguzzi che si offre di strappare a morsi la carne agli umani in fuga e chiama nemico chiunque non calpesti il ritratto della regina.',
+        en: 'By far the smallest of the New Fish-Man Pirates officers, a sharp-toothed fish-man who offers to bite the flesh off escaping humans and calls anyone who will not tread on the queen’s portrait an enemy.',
       },
       visual: { art: 'daruma', tint: 'red' },
     },
@@ -560,8 +560,8 @@ export const fishManIsland: Saga = {
     },
     'hammond': {
       role: {
-        it: 'Uomo-pesce dei Nuovi Pirati',
-        en: 'Fish-man of the New Pirates',
+        it: 'Combattente dei Nuovi Pirati Uomini-Pesce',
+        en: 'Combatant of the New Fish-Man Pirates',
       },
       log: {
         it: 'Esce in groppa a un mostro marino con altri due uomini-pesce incontro ai pirati che scendono dalla superficie. Porta sul collo il simbolo dei Pirati di Arlong, e mette sul piatto la battaglia di Rufy contro di loro, l’aiuto dato a Hatchan e il Nobile che ha preso a pugni. L’offerta è unirsi ai Nuovi Pirati Uomini-Pesce o morire, e Rufy dice di no.',
@@ -763,8 +763,8 @@ export const fishManIsland: Saga = {
     'fukaboshi': {
       role: { it: 'Principe ereditario di Ryugu', en: 'Crown prince of Ryugu' },
       log: {
-        it: 'Guida i ministri e l’armata del regno ed è il più misurato dei tre fratelli: ascolta prima di alzare la voce e non promette nulla che non possa mantenere. Porta una lancia con la punta a forma di squalo ed è il primo a rendersi conto di quanto sia grave quello che sta montando nel Quartiere degli Uomini-Pesce.',
-        en: 'He leads the ministers and the kingdom’s army and is the steadiest of the three brothers: he listens before raising his voice and promises nothing he cannot deliver. He carries a lance with a shark-shaped head, and he is the first to work out how serious the thing rising in the Fish-Man District really is.',
+        it: 'Viene di persona alla Baia delle Sirene con i fratelli a cercare degli intrusi entrati illegalmente sull’isola. Quando le sirene dicono di non aver visto nessuno, si scusa per il disturbo e fa per andarsene. Dopo la fuga dei pirati spiega alle sirene che non c’era bisogno di nasconderli: l’armata sapeva già chi fossero, e i principi li cercavano per consegnare loro un messaggio di Jinbe.',
+        en: 'He comes to Mermaid Cove in person with his brothers, looking for intruders who entered the island illegally. When the mermaids say they have seen no one, he apologises for the bother and turns to go. After the pirates get away, he tells the mermaids they had no need to hide them: the army knew who they were, and the princes were looking for them to give them a message from Jinbe.',
       },
       affiliation: [
         {
@@ -871,7 +871,7 @@ export const fishManIsland: Saga = {
           },
         },
       ],
-      origin: [{ episode: 527, value: FISH_MAN_ISLAND }],
+      // No origin: no source gives it before his threshold.
     },
     'zeo': {
       role: {
@@ -879,8 +879,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'È uno dei quattro ufficiali intorno al capitano e si muove come se l’isola lo nascondesse: sparisce contro il corallo e contro la pietra e riappare a un passo da chi lo stava cercando. Parla dei tempi in cui gli uomini-pesce facevano paura alla superficie e vuole riportarli indietro con le armi.',
-        en: 'He is one of the four officers around the captain, and he moves as though the island itself hid him: he disappears against coral and stone and turns up a step away from whoever was looking for him. He talks about the days when fish-men frightened the surface, and means to bring them back by force.',
+        it: 'È uno degli ufficiali intorno al capitano, un uomo-pesce alto coperto di strisce ondulate. Quando una ciurma umana è in fuga, commenta che gli umani scappano sempre. Quando la ciurma prende l’isola, occupa un centro commerciale e ordina alla gente di calpestare il ritratto della regina o di andarsene. Gli rispondono che in nessun altro punto del fondale arriva la luce e che non potrebbero vivere tra gli umani. Lui ribatte che umani e uomini-pesce non andranno mai d’accordo e che devono sottomettersi a re Hody.',
+        en: 'He is one of the officers around the captain, a tall fish-man covered in wavy stripes. When a crew of humans flees, he remarks that humans always escape. When the crew takes the island, he holds a shopping mall and tells the people there to tread on the queen’s portrait or leave. They answer that nowhere else on the seafloor has light, and that they cannot live among humans. He replies that humans and fish-men can never get along, and that they must submit to King Hody.',
       },
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
@@ -891,8 +891,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Non arriva alla cintura degli altri ufficiali e non gli serve: sparisce sotto il pavimento e riemerge dove nessuno lo aspetta, lasciando un buco con il bordo pieno di segni di denti. Mastica la pietra come fosse pane e ride mentre lo fa. Gli altri tre lo trattano da bambino e lo mandano avanti lo stesso.',
-        en: 'He does not reach the other officers’ belts and does not need to: he vanishes under the floor and comes up where nobody expects him, leaving a hole rimmed with tooth marks. He chews stone as if it were bread and laughs while he does it. The other three treat him like a child and send him in first anyway.',
+        it: 'Porta un elmo con due grandi falde e una cresta, ed è molto più piccolo degli altri ufficiali. Quando una ciurma umana è in fuga, chiede se deve strappare loro la carne a morsi. Quando la ciurma prende l’isola, occupa la città intorno alla fabbrica di dolci e avverte la gente che chi non calpesta il ritratto della regina è un nemico della ciurma.',
+        en: 'He wears a helmet with two great flaps and a crest, and is far smaller than the other officers. When a crew of humans flees, he asks whether he should bite the flesh off them. When the crew takes the island, he holds the town around the candy factory and tells the people there that whoever will not tread on the queen’s portrait is the crew’s enemy.',
       },
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
@@ -1021,8 +1021,8 @@ export const fishManIsland: Saga = {
         en: 'Captain of the Sun Pirates',
       },
       log: {
-        it: 'Lascia l’Isola degli Uomini-Pesce per vedere il mondo e ne torna con i segni delle catene ai polsi. Poi risale la Red Line da solo, apre le celle di Mary Geoise e porta giù chiunque riesca a camminare, di qualunque razza sia. Sulla pelle dei liberati fa marchiare un sole che copre il marchio dei Nobili, e con loro fonda una ciurma.',
-        en: 'He leaves Fish-Man Island to see the world and comes back with chain marks on his wrists. Then he climbs the Red Line alone, opens the cells of Mary Geoise and brings down everyone who can still walk, of whatever race. On the freed he has a sun burned over the Nobles’ brand, and with them he founds a crew.',
+        it: 'È un avventuriero uomo-pesce. Scala a mani nude la Red Line, entra da solo a Mary Geoise e libera migliaia di schiavi di ogni razza, anche se odia gli umani. Con gli uomini-pesce tra i liberati fonda una ciurma, e sui loro corpi trasforma il marchio dei Nobili in un sole.',
+        en: 'He is a fish-man adventurer. He climbs the Red Line with his bare hands, gets into Mary Geoise alone and frees thousands of slaves of every race, though he hates humans. With the fish-men among the freed he founds a crew, and on their bodies he turns the Nobles’ mark into a sun.',
       },
       status: [
         { episode: 539, value: 'alive' },
@@ -1112,8 +1112,8 @@ export const fishManIsland: Saga = {
         en: 'Combatant of the Big Mom Pirates',
       },
       log: {
-        it: 'Ha il corpo di un uovo, gli occhiali da sole, i baffi arricciati e una tazza di tè caldo in testa, e porta un lungo bastone. Arriva sull’isola con Pekoms per ritirare il tributo di caramelle dovuto a Big Mom, lo rimprovera perché minaccia gli abitanti e spiega loro che cosa succede se non pagano. Chiude le frasi con parole francesi: “bon”, “soir”, “s’il vous plaît”.',
-        en: 'He has an egg-shaped body, sunglasses, a curled moustache and a cup of hot tea on his head, and carries a long cane. He comes to the island with Pekoms to collect the tribute of sweets owed to Big Mom, scolds him for threatening the islanders, and explains to them what happens if they do not pay. He puts French words at the ends of his sentences: “bon”, “soir”, “s’il vous plaît”.',
+        it: 'Ha il corpo di un uovo, gli occhiali da sole, i baffi arricciati e una tazza di tè caldo in testa, e porta un lungo bastone. Arriva sull’isola con Pekoms per ritirare il tributo di caramelle dovuto a Big Mom, lo rimprovera perché minaccia gli abitanti e spiega a tre dei Cappello di Paglia che cosa succede se i dolci arrivano in ritardo. Chiude le frasi con parole francesi: “bon”, “soir”, “s’il vous plaît”.',
+        en: 'He has an egg-shaped body, sunglasses, a curled moustache and a cup of hot tea on his head, and carries a long cane. He comes to the island with Pekoms to collect the tribute of sweets owed to Big Mom, scolds him for threatening the islanders, and explains to three of the Straw Hats what happens if the sweets are late. He puts French words at the ends of his sentences: “bon”, “soir”, “s’il vous plaît”.',
       },
       affiliation: [
         {
