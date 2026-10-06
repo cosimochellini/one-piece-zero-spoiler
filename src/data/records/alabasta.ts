@@ -480,30 +480,6 @@ export const alabasta: Saga = {
       visual: { art: 'nefertari-cobra', tint: 'sand' },
     },
     {
-      id: 'pell',
-      kind: 'character',
-      revealedAtEpisode: 93,
-      revealedAtChapter: 162,
-      name: { it: 'Pell', en: 'Pell' },
-      summary: {
-        it: 'Una guardia reale di Alabasta con una lunga veste bianca a stelle e la spada al fianco.',
-        en: 'A royal guard of Alabasta in a long white robe patterned with stars, with a sword at his hip.',
-      },
-      visual: { art: 'pell', tint: 'azure' },
-    },
-    {
-      id: 'chaka',
-      kind: 'character',
-      revealedAtEpisode: 93,
-      revealedAtChapter: 162,
-      name: { it: 'Chaka', en: 'Chaka' },
-      summary: {
-        it: 'Una guardia reale di Alabasta con un’enorme spada al fianco, fedele al re.',
-        en: 'A royal guard of Alabasta with a massive sword at his hip, loyal to the king.',
-      },
-      visual: { art: 'chaka', tint: 'ivory' },
-    },
-    {
       id: 'portgas-d-ace',
       kind: 'character',
       // Episode 95 adapts chapter 159: the fire fist on the Billions' ships
@@ -547,6 +523,34 @@ export const alabasta: Saga = {
         en: 'The leader of the rebel army, who as a boy knocked down a bandit with a wooden club to protect the princess.',
       },
       visual: { art: 'kohza', tint: 'ocher' },
+    },
+    {
+      id: 'pell',
+      kind: 'character',
+      // He rides to Nanohana unnamed in ep 92 / ch 155. The first name said
+      // on screen is in Vivi's flashback at ep 100 ("Chaka! Pell!"), where
+      // ch 164 shows him only in shadow; ch 167 names him in its caption.
+      // The same holds for Chaka.
+      revealedAtEpisode: 100,
+      revealedAtChapter: 167,
+      name: { it: 'Pell', en: 'Pell' },
+      summary: {
+        it: 'Una guardia reale di Alabasta con una lunga veste bianca a stelle e la spada al fianco.',
+        en: 'A royal guard of Alabasta in a long white robe patterned with stars, with a sword at his hip.',
+      },
+      visual: { art: 'pell', tint: 'azure' },
+    },
+    {
+      id: 'chaka',
+      kind: 'character',
+      revealedAtEpisode: 100,
+      revealedAtChapter: 167,
+      name: { it: 'Chaka', en: 'Chaka' },
+      summary: {
+        it: 'Una guardia reale di Alabasta con un’enorme spada al fianco, fedele al re.',
+        en: 'A royal guard of Alabasta with a massive sword at his hip, loyal to the king.',
+      },
+      visual: { art: 'chaka', tint: 'ivory' },
     },
     {
       id: 'mr-1',
@@ -763,13 +767,17 @@ export const alabasta: Saga = {
       ],
     },
     'mr-9': {
-      role: BW_AGENT_ROLE,
+      // Ep 63 never names Baroque Works: he says he is a king and that their
+      // work is secret. Zoro names the organisation at the end of ep 64, in
+      // the ch 107 scene where Mr. 9 stands with the agents. The role is
+      // frozen at the threshold, so it stays his cover, as Igaram's does.
+      role: { it: 'Sedicente re', en: 'Self-styled king' },
       log: {
         it: 'Porta una corona e dice di essere un re, e per tutta risposta si sente dare del bugiardo. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
         en: 'He wears a crown and says he is a king, and is called a liar for it. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
       },
       affiliation: [
-        { episode: 63, value: BW },
+        { episode: 64, chapter: 107, value: BW },
         { episode: 91, value: BW_FRONTIER },
       ],
     },
@@ -1229,9 +1237,12 @@ export const alabasta: Saga = {
         it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro.',
         en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye.',
       },
+      // Ch 164 / ep 100: the boy leaves the palace to build Yuba with his
+      // father, and Vivi tells Nami he leads the rebels (ch 164 p19).
       affiliation: [
         {
           episode: 100,
+          chapter: 164,
           value: {
             it: 'Esercito ribelle di Alabasta, capo',
             en: 'Rebel army of Alabasta, leader',
@@ -1246,7 +1257,11 @@ export const alabasta: Saga = {
         },
       ],
       origin: [
-        { episode: 100, value: { it: 'Yuba, Alabasta', en: 'Yuba, Alabasta' } },
+        {
+          episode: 100,
+          chapter: 164,
+          value: { it: 'Yuba, Alabasta', en: 'Yuba, Alabasta' },
+        },
       ],
     },
     'pell': {
@@ -1256,20 +1271,20 @@ export const alabasta: Saga = {
         en: 'He wears the long white robe of the royal guard, patterned with stars, and carries his sword on his right hip. When pirates raid a port town he sets out with another royal guard, and the fight is over before they arrive.',
       },
       status: [
-        { episode: 93, value: 'alive' },
+        { episode: 100, value: 'alive' },
         { episode: 125, value: 'presumed-dead' },
         { episode: 130, value: 'alive' },
       ],
       affiliation: [
         {
-          episode: 93,
+          episode: 100,
           value: {
             it: 'Regno di Alabasta, guardia reale',
             en: 'Kingdom of Alabasta, royal guard',
           },
         },
       ],
-      origin: [{ episode: 93, value: ALABASTA }],
+      origin: [{ episode: 100, value: ALABASTA }],
       // Said first at ep 106 ("Pell the Falcon?"), when he changes into a
       // falcon in ch 169. Ch 167 prints it in his caption; ep 105 never says it.
       epithet: [
@@ -1291,14 +1306,14 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 93,
+          episode: 100,
           value: {
             it: 'Regno di Alabasta, guardia reale',
             en: 'Kingdom of Alabasta, royal guard',
           },
         },
       ],
-      origin: [{ episode: 93, value: ALABASTA }],
+      origin: [{ episode: 100, value: ALABASTA }],
       // Said first at ep 120 ("The jackal!"), when he changes into a jackal
       // in ch 196. Ch 167 prints it in his caption; ep 105 never says it.
       epithet: [

@@ -198,7 +198,7 @@ export const devilFruits: Saga = {
       id: 'flame-flame-fruit',
       kind: 'fruit',
       revealedAtEpisode: 95,
-      revealedAtChapter: 162,
+      revealedAtChapter: 161,
       name: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
       summary: {
         it: 'Trasforma il corpo in fiamma: i colpi lo attraversano senza toccarlo, e il fuoco che lascia dietro di sé si porta via una nave intera.',
