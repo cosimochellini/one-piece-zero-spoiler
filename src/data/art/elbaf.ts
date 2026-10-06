@@ -355,16 +355,33 @@ export const elbafArt = {
     shadow(76, 182, 58),
   ],
 
-  // The ribs of a hull on the slip, a mallet resting against them.
+  // His giant hammer, held level: the barrel-shaped head in 3/4 with iron
+  // hoops near both ends, the far side hatched, a long wooden haft. He holds
+  // it on the cover that makes him the crew's shipwright (897), and grips it
+  // in their first scene in the anime (885).
   'stansen': [
-    { d: 'M20 140 H140' },
+    { d: ellipse(118, 75, 17, 6) },
     {
-      d: 'M36 140 C30 110 36 90 48 80 M60 140 C56 104 60 84 68 72 M92 140 C96 104 92 84 84 72 M124 140 C130 110 124 90 112 80',
+      d: 'M101 75 C93 90.5 93 121.5 101 137 A17 6 0 0 0 135 137 C143 121.5 143 90.5 135 75',
     },
-    { d: 'M48 80 C70 64 90 64 112 80', role: 'soft' },
-    { d: 'M120 60 L100 132', role: 'accent' },
-    { d: 'M108 48 L134 56 L128 76 L102 68 Z', role: 'accent' },
-    shadow(80, 154, 64),
+    {
+      d: 'M98.6 82 A19.4 6 0 0 0 137.4 82 M97 88 A21 6 0 0 0 139 88 M97 124 A21 6 0 0 0 139 124 M98.6 130 A19.4 6 0 0 0 137.4 130',
+      role: 'accent',
+    },
+    {
+      d: 'M110.4 81 C104.3 90.5 104.3 121.5 110.4 142.4 M121.4 81 C123.5 90.5 123.5 121.5 121.4 143',
+      role: 'soft',
+    },
+    {
+      d: 'M133.7 101 l5.4 -5 M134.1 109 l5.5 -5 M133.9 117 l5.4 -5',
+      role: 'ambient',
+    },
+    { d: 'M96 98 H8 Q1 106 8 114 H96' },
+    {
+      d: 'M88 104 C66 105 38 103 18 104 M72 108.5 C56 109 48 107.5 30 108.5',
+      role: 'soft',
+    },
+    shadow(88, 156, 58),
   ],
 
   // His wooden sword snapped in two, the hilt half falling and the point
