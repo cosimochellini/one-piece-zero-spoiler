@@ -12,34 +12,67 @@ import type { Drawings } from './stroke'
 
 /** The drawings of the records filed in the whole cake stretch of the route. */
 export const wholeCakeArt = {
-  // A crown of wild flowers, big enough to sit on a giant girl’s head.
+  // The yellow checked kerchief she wears over her braids as a child, off
+  // her head and laid flat, the band still knotted. She wears it as she
+  // runs through the village with little Linlin at 836.
   'gerd': [
-    { d: ellipse(80, 110, 52, 18) },
     {
-      d: [circle(34, 106, 8), circle(80, 128, 8), circle(126, 106, 8)].join(
-        ' ',
-      ),
+      d: 'M18 100 C40 104 120 104 142 100 C130 120 100 150 80 170 C60 150 30 120 18 100 Z',
+    },
+    { d: 'M18 100 C36 86 64 84 74 88 M142 100 C124 86 96 84 86 88' },
+    {
+      d: 'M24 98 C46 96 64 94 74 94 M136 98 C114 96 96 94 86 94',
+      role: 'soft',
+    },
+    { d: 'M30 114 H130 M44 128 H116 M58 142 H102 M70 156 H90', role: 'soft' },
+    {
+      d: 'M48 104 V134 M64 104 V152 M80 104 V168 M96 104 V152 M112 104 V134',
+      role: 'soft',
+    },
+    { d: 'M110 120 l10 -6 M104 136 l10 -6 M94 152 l8 -5', role: 'ambient' },
+    {
+      d: 'M72 90 C72 82 88 82 88 90 C88 98 72 98 72 90 Z M74 84 L60 70 L68 66 Z M86 84 L98 68 L92 64 Z',
       role: 'accent',
     },
-    {
-      d: dots([
-        [34, 106],
-        [80, 128],
-        [126, 106],
-      ]),
-      role: 'accent',
-    },
-    { d: 'M52 96 q6 -10 14 -6 M94 90 q8 -4 14 6', role: 'soft' },
-    shadow(80, 150, 50),
+    shadow(80, 184, 60),
   ],
 
-  // A long walking staff before a mountain whose snow runs down like a beard.
+  // His Viking helmet with its two curved horns, set down beside the dark
+  // feather coat he wears, as the old captain comes for the orphans at 836.
   'jarul': [
-    { d: 'M-4 160 L60 50 L90 90 L110 70 L164 160' },
-    { d: 'M44 78 C52 100 60 110 60 130 C66 110 72 100 78 80', role: 'soft' },
-    { d: 'M124 40 V180', role: 'accent' },
-    { d: 'M124 40 c-10 -2 -12 -14 -2 -18 c8 -2 12 6 6 10', role: 'accent' },
-    shadow(80, 176, 60),
+    {
+      d: 'M9 162.6 C10.1 140.2 26.9 127.4 47.1 127.4 C67.3 127.4 84.1 140.2 85.2 162.6 L79.6 156.2 L75.1 165.8 L69.5 157.8 L63.9 167.4 L58.3 159.4 L52.7 169 L47.1 161 L41.5 169 L35.9 159.4 L30.3 167.4 L24.7 157.8 L19.1 165.8 L14.6 156.2 Z',
+    },
+    {
+      d: 'M15.7 151.4 l5.6 -8 M22.5 154.6 l6.7 -11.2 M29.2 156.2 l5.6 -9.6 M58.3 153 l6.7 -11.2 M66.1 154.6 l6.7 -9.6 M72.9 153 l5.6 -8',
+      role: 'ambient',
+    },
+    { d: 'M19.1 145 C35.9 135.4 58.3 135.4 75.1 145', role: 'soft' },
+    {
+      d: 'M88.2 162 C86.8 136.8 96.6 125.6 112 125.6 C127.4 125.6 137.2 136.8 135.8 162',
+    },
+    {
+      d: 'M88.2 162 C98 167.6 126 167.6 135.8 162 M88.2 156.4 C98 162 126 162 135.8 156.4',
+      role: 'soft',
+    },
+    { d: 'M112 125.6 V157.8', role: 'soft' },
+    {
+      d: 'M126 132.6 l5.6 -2.8 M128.8 141 l5.6 -2.8 M130.2 149.4 l4.9 -2.1',
+      role: 'ambient',
+    },
+    {
+      d: 'M89.6 145.2 C77 145.2 67.2 135.4 68.6 115.8 C70 107.4 75.6 101.8 81.2 99 C77 110.2 78.4 122.8 91 136.8',
+      role: 'accent',
+    },
+    {
+      d: 'M134.4 143.8 C145.6 142.4 152.6 132.6 151.2 114.4 C150.5 107.4 147 103.2 142.8 100.4 C145.6 111.6 142.8 124.2 133 135.4',
+      role: 'accent',
+    },
+    {
+      d: 'M72.8 127 l5.6 -1.4 M71.4 117.2 l5.6 0 M147 124.2 l-4.9 -1.4 M147.7 115.8 l-4.9 0',
+      role: 'soft',
+    },
+    shadow(80, 180, 66),
   ],
 
   // An elephant seen from the sea, a walled city riding on its back.
@@ -66,19 +99,29 @@ export const wholeCakeArt = {
     shadow(82, 170, 48),
   ],
 
-  // A crocodile-shaped saddle, its reins looped above it.
+  // Warney, the crocodile-boar she rides, side on: the long ridged body,
+  // the tusk at the corner of the mouth, the tail curled up, and the saddle
+  // strapped round its belly that she offers Luffy a seat on at 754.
   'wanda': [
     {
-      d: 'M40 120 C60 96 104 96 124 116 C130 128 122 140 108 142 H56 C42 140 34 132 40 120 Z',
+      d: 'M8 112 C8 104 16 98 30 96 C44 82 66 76 88 76 C112 76 132 84 140 100 C144 108 146 116 146 122 C140 132 126 138 108 138 H54 C40 138 32 132 28 124 C20 124 8 122 8 112 Z M146 122 C152 120 156 110 152 102 C148 96 140 98 142 106',
     },
-    { d: 'M56 112 q24 -14 52 0', role: 'soft' },
-    { d: 'M50 142 l6 10 l6 -10 M70 142 l6 10 l6 -10 M90 142 l6 10 l6 -10' },
-    { d: 'M80 142 V164 M70 164 h20 l-4 10 h-12 Z' },
     {
-      d: 'M124 116 C140 100 142 70 120 58 C100 48 76 60 70 80 C66 94 76 104 88 100',
+      d: 'M36 92 l4 -7 l3 5 l4 -7 l3 4 l4 -7 l3 3 M106 78 l4 -7 l4 8 l4 -7 l4 9 l4 -7 l4 10 l4 -6 l4 12',
+      role: 'soft',
+    },
+    { d: 'M10 116 C16 118 22 118 28 116', role: 'soft' },
+    { d: 'M34 124 C28 112 30 102 36 96 C36 106 38 116 42 122 Z' },
+    { d: 'M54 138 V158 h14 V138 M112 138 V158 h14 V136' },
+    { d: 'M72 138 V152 h10 V138 M128 134 V152 h8 V130', role: 'ambient' },
+    {
+      d: 'M64 78 C62 70 66 64 72 66 C76 74 92 74 98 66 C104 60 112 62 110 74',
       role: 'accent',
     },
-    shadow(80, 184, 44),
+    { d: 'M70 80 V102 C76 106 96 106 102 102 V78', role: 'accent' },
+    { d: 'M86 106 V138', role: 'soft' },
+    { d: 'M82 116 h8 v8 h-8 Z', role: 'soft' },
+    shadow(80, 172, 70),
   ],
 
   // A carrot beside a mitten crackling with electro.
@@ -137,25 +180,23 @@ export const wholeCakeArt = {
     shadow(80, 172, 48),
   ],
 
-  // A naginata under a full moon.
+  // His kiseru, the long pipe he is never without, the brass bowl still
+  // smoking. He has it from the night he is first found, at 759.
   'nekomamushi': [
-    { d: circle(112, 48, 26) },
+    { d: 'M38 150 L14 166 a4 4 0 0 0 5 6 L44 158' },
+    { d: 'M32 154 l6 8', role: 'soft' },
+    { d: 'M38 150 L104 104 M44 158 L110 112' },
+    { d: 'M60 135 l6 8 M82 120 l6 8', role: 'soft' },
+    { d: 'M104 104 C112 98 118 90 120 80 M110 112 C120 106 130 96 134 82' },
+    { d: 'M104 104 l6 8', role: 'soft' },
+    { d: ellipse(127, 79, 8, 3.5), role: 'accent' },
+    { d: 'M114 106 l7 -3 M121 101 l7 -4 M127 95 l6 -5', role: 'ambient' },
     {
-      d: dots([
-        [104, 40],
-        [120, 52],
-        [108, 60],
-      ]),
-      role: 'soft',
-    },
-    { d: 'M34 170 L96 78' },
-    {
-      d: 'M96 78 C106 62 120 54 132 54 C120 64 110 78 104 94 Z',
+      d: 'M126 72 C114 62 136 54 124 42 C114 32 130 24 120 12',
       role: 'accent',
     },
-    { d: 'M92 82 l12 9' },
-    { d: 'M46 154 l10 7 M54 142 l10 7', role: 'soft' },
-    shadow(58, 182, 28),
+    { d: 'M132 66 c10 -6 0 -14 10 -22 c6 -4 4 -10 8 -14', role: 'soft' },
+    shadow(74, 182, 54),
   ],
 
   // A hidden door swung open, a long flight of stairs going down behind it.
@@ -180,22 +221,32 @@ export const wholeCakeArt = {
     ...SEA,
   ],
 
-  // A butterfly-shaped clasp with poison falling from it.
+  // The cloak of her raid suit, cut like a moth's wings, hung from the
+  // shoulders and the knotted ascot down to the jagged black hem; the far
+  // side turns away. She lands on the Sunny in it at 784.
   'vinsmoke-reiju': [
+    { d: 'M24 56 C42 44 60 40 80 40 C100 40 118 44 136 56' },
     {
-      d: 'M78 92 C58 66 30 62 24 78 C18 94 42 106 78 100 Z M82 92 C102 66 130 62 136 78 C142 94 118 106 82 100 Z',
-      role: 'accent',
-    },
-    {
-      d: 'M78 100 C46 106 32 128 42 140 C54 152 72 126 78 108 Z M82 100 C114 106 128 128 118 140 C106 152 88 126 82 108 Z',
-      role: 'accent',
-    },
-    { d: 'M80 62 V146' },
-    { d: 'M80 66 c-8 -8 -14 -10 -18 -18 M80 66 c8 -8 14 -10 18 -18' },
-    {
-      d: 'M56 158 c-7 10 -3 18 4 18 c7 0 11 -8 4 -18 l-4 -6z M80 164 c-7 10 -3 18 4 18 c7 0 11 -8 4 -18 l-4 -6z M104 158 c-7 10 -3 18 4 18 c7 0 11 -8 4 -18 l-4 -6z',
+      d: 'M74 40 h12 l-2 7 h-8 Z M76 47 L68 68 L76 64 L78 48 M84 47 L92 66 L85 63 L82 48',
       role: 'soft',
     },
+    { d: 'M66 42 C54 24 24 16 8 28 C2 56 22 88 66 94', role: 'accent' },
+    {
+      d: 'M66 94 C36 98 18 120 24 150 L32 144 L38 154 L46 146 L52 156 L60 148 L66 158 L74 150 L80 160 L86 150 L92 156 C90 132 90 112 94 94',
+    },
+    { d: 'M94 42 C104 26 128 20 142 30 C146 56 128 86 94 94' },
+    {
+      d: 'M94 94 C120 98 136 120 132 146 L125 140 L120 150 L113 142 L108 152 L101 144 L92 156',
+    },
+    {
+      d: 'M104 50 l16 -14 M104 62 l30 -18 M106 76 l30 -16 M104 88 l24 -14 M100 110 l22 -8 M100 124 l28 -10 M102 138 l20 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M62 50 C46 44 28 36 16 32 M46 100 C40 118 40 134 44 150 M70 98 C66 116 68 134 66 152',
+      role: 'soft',
+    },
+    shadow(78, 184, 54),
   ],
 
   // A fedora set over two crossed pistols.
@@ -419,39 +470,62 @@ export const wholeCakeArt = {
     shadow(80, 184, 56),
   ],
 
-  // A slice of wedding cake and a baby's rattle.
+  // Her baby son's things: his onesie laid out flat, the little fedora he
+  // wears like his father's set beside it, and his pacifier shaped like a
+  // cigar. She stands with him on the cliff at 795.
   'charlotte-chiffon': [
-    { d: 'M30 148 L118 148 L74 68 Z', role: 'accent' },
-    { d: 'M46 120 H102 M58 96 H90', role: 'soft' },
-    { d: circle(74, 60, 8), role: 'accent' },
-    { d: ellipse(74, 152, 56, 8) },
-    { d: circle(128, 50, 14) },
-    { d: 'M128 64 V96' },
     {
-      d: dots([
-        [122, 46],
-        [134, 46],
-        [128, 56],
-      ]),
+      d: 'M25.6 70 L8 79.6 L14.4 94 L25.6 89.2 V122.8 C25.6 130.8 33.6 135.6 43.2 137.2 H59.2 C68.8 135.6 76.8 130.8 76.8 122.8 V89.2 L88 94 L94.4 79.6 L76.8 70 C70.4 76.4 32 76.4 25.6 70 Z',
+    },
+    { d: 'M43.2 137.2 V142 H59.2 V137.2', role: 'soft' },
+    {
+      d: 'M25.6 89.2 C24 84.4 24 79.6 25.6 74.8 M76.8 89.2 C78.4 84.4 78.4 79.6 76.8 74.8',
       role: 'soft',
     },
-    { d: 'M122 68 l-10 -6 v13z M134 68 l10 -6 v13z' },
-    shadow(74, 168, 50),
+    {
+      d: 'M35.2 98.8 C36.8 110 35.2 119.6 38.4 129.2 M67.2 100.4 C65.6 111.6 68.8 121.2 64 130.8',
+      role: 'soft',
+    },
+    { d: 'M30.4 71.6 C33.6 84.4 68.8 84.4 72 71.6', role: 'soft' },
+    { d: ellipse(122, 132, 28, 7) },
+    { d: 'M104 130 C102 110 108 100 122 102 C136 100 142 110 140 130' },
+    { d: 'M114 104 C118 110 128 110 132 104', role: 'soft' },
+    { d: 'M105 122 C114 126 130 126 139 122', role: 'soft' },
+    { d: 'M132 110 l6 -3 M134 118 l6 -3', role: 'ambient' },
+    { d: ellipse(58, 166, 8, 14), role: 'accent' },
+    { d: 'M64 160 L80 156 a5 5 0 0 1 2 10 L65 172', role: 'accent' },
+    { d: 'M51 158 C40 156 38 176 51 174', role: 'soft' },
+    { d: 'M70 158 V169', role: 'soft' },
+    shadow(80, 186, 66),
   ],
 
-  // A cloth wrung dry, the last drops falling from it.
+  // A cloth wrung from both ends, its juice running into a stemmed glass:
+  // she wrings a subordinate dry like a cloth and drinks what comes out,
+  // at 812.
   'charlotte-smoothie': [
-    { d: 'M56 24 H104 L94 44 H66 Z' },
     {
-      d: 'M66 44 C86 54 94 60 74 70 C56 80 66 88 86 96 M94 44 C74 54 66 60 86 70 C104 80 94 88 74 96',
-      role: 'accent',
+      d: 'M30 36 C50 28 70 50 90 40 C108 32 122 44 132 38 M30 52 C50 60 70 40 90 50 C108 58 122 48 132 54',
     },
-    { d: 'M74 96 H86 L100 116 H60 Z' },
     {
-      d: 'M76 128 c-7 10 -3 17 4 17 c7 0 11 -7 4 -17 l-4 -6z M58 140 c-5 7 -2 12 3 12 c5 0 8 -5 3 -12 l-3 -4z M98 144 c-5 7 -2 12 3 12 c5 0 8 -5 3 -12 l-3 -4z',
+      d: 'M48 34 L56 54 M68 42 L76 52 M88 42 L96 54 M106 38 L114 52',
       role: 'soft',
     },
-    shadow(80, 180, 30),
+    {
+      d: 'M30 36 C22 30 14 34 12 28 M30 52 C22 58 14 56 10 62 M30 36 V52',
+      role: 'soft',
+    },
+    {
+      d: 'M132 38 C140 32 148 36 150 30 M132 54 C140 60 148 58 152 64 M132 38 V54',
+      role: 'soft',
+    },
+    { d: 'M80 56 V100 M86 70 v6', role: 'accent' },
+    { d: ellipse(80, 94, 30, 7) },
+    { d: 'M50 94 C50 126 64 138 80 138 C96 138 110 126 110 94' },
+    { d: 'M54 108 C66 114 94 114 106 108', role: 'accent' },
+    { d: 'M98 116 l6 -4 M96 126 l6 -6', role: 'ambient' },
+    { d: 'M80 138 V164' },
+    { d: ellipse(80, 166, 20, 5) },
+    shadow(80, 182, 34),
   ],
 
   // A glowing iron above a sea of steam.
@@ -849,27 +923,31 @@ export const wholeCakeArt = {
     { d: wave(168), role: 'ambient', dashed: true },
   ],
 
-  // A tall glass of apple juice with a bent straw, and an apple beside it,
-  // on a mound of earth.
+  // The hole in a mound of earth he had buried himself in up to the neck,
+  // empty once he is pulled out of it at 797, with clods thrown about and
+  // a crooked tree of the Seducing Woods behind.
   'pound': [
-    { d: 'M8 162 C40 138 120 138 152 162' },
-    { d: 'M52 70 L58 148 H94 L100 70' },
-    { d: ellipse(76, 70, 24, 5), role: 'soft' },
-    { d: 'M55 98 Q76 104 97 98', role: 'accent' },
-    { d: 'M84 126 L90 56 L108 40', role: 'accent' },
+    { d: 'M0 158 H160', role: 'ambient', dashed: true },
+    { d: 'M10 158 C28 126 54 112 80 112 C106 112 132 126 150 158' },
+    { d: ellipse(80, 122, 28, 9), role: 'accent' },
     {
-      d: 'M120 128 C104 116 104 148 122 150 C140 148 140 116 124 128 C123 126 121 126 120 128 Z',
-      role: 'accent',
+      d: 'M60 118 l4 7 M69 115 l4 9 M79 114 l4 10 M89 115 l4 9 M98 118 l3 6',
+      role: 'ambient',
     },
-    { d: 'M122 127 q2 -8 9 -10', role: 'soft' },
+    { d: 'M54 128 C62 134 98 134 106 128', role: 'soft' },
     {
-      d: dots([
-        [30, 156],
-        [46, 150],
-        [134, 154],
-      ]),
+      d: 'M30 140 l4 -6 l8 2 l2 6 z M118 136 l6 -5 l7 3 l-1 6 z M46 152 l3 -5 l6 1 l1 4 z M124 152 l4 -4 l6 2 v3 z',
       role: 'soft',
     },
+    {
+      d: 'M116 116 C120 92 112 70 120 46 C124 34 118 22 110 14 M132 124 C134 100 130 76 136 54 C140 42 148 32 158 28',
+    },
+    {
+      d: 'M122 70 C112 64 100 64 92 56 M134 60 C142 56 148 50 152 42',
+      role: 'soft',
+    },
+    { d: 'M128 84 l-6 6 M130 98 l-6 6 M130 112 l-5 5', role: 'ambient' },
+    shadow(80, 178, 58),
   ],
 
   // A hat with a brim wider than any table, flowers at its band, over a
@@ -887,19 +965,27 @@ export const wholeCakeArt = {
     { d: 'M22 143 L27 157' },
     shadow(80, 172, 62),
   ],
-  // A crossbow laid across a heap of whipped cream.
+  // His beard, cream heaped round his chin and running down in strands to
+  // drip off the hem, a small bow tie on it, the far side turning away. He
+  // gives the alarm at 806.
   'charlotte-opera': [
     {
-      d: 'M30 152 C24 140 36 128 50 130 C52 114 72 108 84 118 C96 106 118 112 118 128 C132 128 140 142 130 152 Z',
+      d: 'M30 112 C20 94 30 74 46 76 C50 62 64 58 72 66 C70 76 74 84 80 84 C86 84 90 76 88 66 C96 58 110 62 114 76 C130 74 140 94 130 124 V150 a5 5 0 0 1 -10 0 V128 L106 130 V164 a5 5 0 0 1 -10 0 V132 L78 132 V156 a5 5 0 0 1 -10 0 V130 L56 128 V146 a5 5 0 0 1 -10 0 V126 C36 124 30 120 30 112 Z',
+    },
+    {
+      d: 'M40 102 C44 110 42 118 46 126 M54 108 C58 116 56 122 60 130',
       role: 'soft',
     },
-    { d: 'M60 126 q10 -10 20 -2 M98 124 q8 -8 14 0', role: 'soft' },
-    { d: 'M40 116 L118 78' },
-    { d: 'M97 60 Q132 70 119 106' },
-    { d: 'M97 60 L97 88 L119 106', role: 'soft' },
-    { d: 'M66 104 L132 72 M132 72 l-9 -1 M132 72 l-5 7', role: 'accent' },
-    { d: 'M58 108 l5 11' },
-    shadow(80, 164, 56),
+    {
+      d: 'M86 112 C90 118 86 124 90 132 M102 110 C104 116 100 122 104 130',
+      role: 'soft',
+    },
+    { d: 'M114 78 C120 94 122 110 120 126', role: 'soft' },
+    { d: 'M126 88 l6 -4 M126 100 l8 -5 M126 112 l8 -5', role: 'ambient' },
+    { d: 'M101 175 c-4 6 -2 10 2 10 c4 0 6 -4 2 -10 l-2 -4 z', role: 'soft' },
+    { d: 'M80 100 L64 92 L66 110 Z M80 100 L94 94 L92 108 Z', role: 'accent' },
+    { d: 'M77 97 h6 v7 h-6 Z', role: 'accent' },
+    shadow(80, 188, 50),
   ],
 
   // A footed bowl of stewed fruit, syrup running over the rim.
@@ -1007,20 +1093,32 @@ export const wholeCakeArt = {
     shadow(80, 188, 40),
   ],
 
-  // A bicorne with a plume, a sword blade drawn out of its crown.
+  // The pink bicorne Big Mom wears, in three quarters: the trim along its
+  // crest, the ruffled fastener on its side, the back panel showing past
+  // the front. No skull on it, and no blade. She calls it by name at 816.
   'napoleon': [
     {
-      d: 'M16 132 C40 104 60 96 80 96 C100 96 120 104 144 132 C112 124 48 124 16 132 Z',
+      d: 'M6 136 C24 130 32 116 38 98 C48 70 62 58 80 58 C98 58 112 70 122 98 C128 116 136 130 154 136 C130 140 108 134 80 134 C52 134 30 140 6 136 Z',
     },
-    { d: 'M30 124 C52 112 108 112 130 124', role: 'soft' },
-    { d: circle(104, 112, 6), role: 'accent' },
     {
-      d: 'M104 106 C110 82 128 70 146 68 C134 80 124 92 110 110',
+      d: 'M96 58 C112 58 126 70 134 92 C140 110 146 122 158 128',
       role: 'soft',
     },
-    { d: 'M76 96 V26 L80 16 L84 26 V96' },
-    { d: 'M64 96 H96', role: 'accent' },
-    shadow(80, 150, 60),
+    { d: 'M128 80 l7 -3 M134 94 l7 -3 M139 108 l8 -3', role: 'ambient' },
+    {
+      d: 'M16 132 C30 124 38 112 44 98 C52 78 64 66 80 66 C96 66 108 78 116 98 C122 112 130 124 144 132',
+      role: 'accent',
+    },
+    { d: 'M34 136 C54 146 108 146 128 136', role: 'soft' },
+    {
+      d: 'M48 138 l4 6 M62 136 l4 8 M76 135 l4 9 M90 135 l4 9 M104 136 l4 8 M116 137 l3 5',
+      role: 'ambient',
+    },
+    {
+      d: 'M124 108 A3.1 3.1 0 0 1 122.1 113.1 A3.1 3.1 0 0 1 117.4 115.9 A3.1 3.1 0 0 1 112 114.9 A3.1 3.1 0 0 1 108.5 110.7 A3.1 3.1 0 0 1 108.5 105.3 A3.1 3.1 0 0 1 112 101.1 A3.1 3.1 0 0 1 117.4 100.1 A3.1 3.1 0 0 1 122.1 102.9 A3.1 3.1 0 0 1 124 108',
+      role: 'soft',
+    },
+    shadow(80, 176, 62),
   ],
   // A cigar laid across a stack of coins, a thread of smoke rising from it.
   'lu-feld': [
@@ -1036,19 +1134,32 @@ export const wholeCakeArt = {
     shadow(80, 162, 48),
   ],
 
-  // A longsword planted point down before a waterfall that falls like a beard.
+  // His fur cape, the fur edge running over both shoulders, one curl of fur
+  // on the near shoulder; across it the longsword he draws on little Linlin
+  // at 836.
   'jorul': [
-    { d: 'M-4 52 H82 V62' },
     {
-      d: 'M24 62 C20 96 30 128 34 160 M44 62 C40 96 50 128 50 160 M64 62 C60 96 68 128 66 160',
+      d: 'M64 70 C50 72 38 80 34 94 C24 120 14 146 10 166 C28 168 44 176 60 168 C74 176 86 166 100 174 C116 166 130 176 150 166 C146 146 136 120 126 94 C122 80 110 72 96 70',
+    },
+    {
+      d: 'M34 96 L30.4 88.8 L38 86 L36.8 78.8 L44 80 L44.4 72.2 L52 74 L53.9 66.9 L60 71 L63.3 64.5 L68 70 L71.3 63.5 L76 69 L80 63 L84 69 L88.7 63.5 L92 70 L96.7 64.5 L100 71 L106.1 66.9 L108 74 L115.6 72.2 L116 80 L123.2 78.8 L122 86 L129.6 88.8 L126 96',
       role: 'soft',
     },
-    { d: 'M14 170 q10 -6 20 0 t20 0 t20 0', role: 'ambient' },
-    { d: 'M114 58 V160 L118 170 L122 160 V58 Z', role: 'accent' },
-    { d: 'M102 58 H134' },
-    { d: 'M118 58 V38', role: 'accent' },
-    { d: circle(118, 34, 4), role: 'accent' },
-    shadow(110, 182, 36),
+    {
+      d: 'M60 96 C54 120 48 144 44 168 M100 96 C108 120 112 144 116 172',
+      role: 'soft',
+    },
+    { d: 'M40 92 C34 86 40 78 46 82 C50 86 46 92 42 88', role: 'soft' },
+    {
+      d: 'M124 110 l8 -6 M128 128 l12 -8 M134 146 l12 -8 M130 162 l14 -10',
+      role: 'ambient',
+    },
+    { d: 'M48 144 L118 70 L128 64 L124 76 L54 150 Z' },
+    { d: 'M51 147 L123 70', role: 'soft' },
+    { d: 'M36 134 L62 160 M41 130 L67 156', role: 'accent' },
+    { d: 'M46 152 L34 164 a4 4 0 0 0 6 6 L52 158', role: 'accent' },
+    { d: circle(32, 171, 4) },
+    shadow(80, 188, 68),
   ],
 
   // A Marine coat hung from its shoulders like a cape, the hood let down.
