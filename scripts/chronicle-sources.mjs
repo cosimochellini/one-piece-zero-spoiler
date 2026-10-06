@@ -1364,7 +1364,7 @@ export const CHRONICLE_SOURCES = {
     },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
-      note: 'Long Summary: "Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment." He seeks out Shanks on a remote base island, startling the lower crew, confirms Luffy is the village boy Shanks lost his arm for, and Shanks pulls him into a celebratory drink — cited to manga ch. 96 / anime episode 45. Chapter (#169): 96, the last event: Mihawk brings Shanks Luffy’s poster, confirms he is the village boy; Shanks pulls him into a party (Dracule Mihawk: “Mihawk confirmed that Luffy was indeed the village boy that Shanks had sacrificed his arm for. In turn, Shanks pulled Mihawk into a celebratory drinking party.” (chap 96, ep 45)).',
+      note: 'Long Summary: "Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment." He seeks out Shanks on a remote base island, startling the lower crew, confirms Luffy is the village boy Shanks lost his arm for, and Shanks pulls him into a celebratory drink — cited to manga ch. 96 / anime episode 45. Chapter (#169): 96, the last event: Mihawk brings Shanks Luffy’s poster, confirms he is the village boy; Shanks pulls him into a party (Dracule Mihawk: “Mihawk confirmed that Luffy was indeed the village boy that Shanks had sacrificed his arm for. In turn, Shanks pulled Mihawk into a celebratory drinking party.” (chap 96, ep 45)). Corrected in the #169 review: chapter 96 says only that Shanks is on an isolated island, and the Red Hair Pirates protecting islands of their own is first told in the chapter 873 cover story, so the story now says a remote island.',
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
@@ -1420,7 +1420,7 @@ export const CHRONICLE_SOURCES = {
     },
     510: {
       source: 'https://onepiece.fandom.com/wiki/Episode_510',
-      note: 'Dragon calls Ivankov about the newspaper story on his son and Whitebeard’s death; the "seeing him as human" line is sourced from Monkey D. Dragon’s own wiki page, Revolutionary Army section (Qref chap=593, ep=510). Chapter (#169): 593, the last event: Dragon’s call with Ivankov: son made public, ’see me as human’, gather the commanders after Whitebeard’s death, Luffy at Marineford (Monkey D. Dragon: “Dragon noted that it would help his subordinates to see him as more human” (Qref c593, chap 593, ep 510)).',
+      note: 'Dragon calls Ivankov about the newspaper story on his son and Whitebeard’s death; the "seeing him as human" line is sourced from Monkey D. Dragon’s own wiki page, Revolutionary Army section (Qref chap=593, ep=510). Chapter (#169): 593, the last event: Dragon’s call with Ivankov: son made public, ’see me as human’, gather the commanders after Whitebeard’s death, Luffy at Marineford (Monkey D. Dragon: “Dragon noted that it would help his subordinates to see him as more human” (Qref c593, chap 593, ep 510)). Corrected in the #169 review: chapter 593 has Dragon gather the revolutionary leaders, while commanders as a rank of the Revolutionary Army first appear in chapter 904, so the story now says his leaders.',
     },
     737: {
       source: 'https://onepiece.fandom.com/wiki/Episode_737',
