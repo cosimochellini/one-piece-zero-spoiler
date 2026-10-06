@@ -101,7 +101,8 @@ describe('EpisodeMark', () => {
     await user.click(button('Save'))
     // The stored bookmark moves inside an async transition, which commits
     // after `router.invalidate()` resolves, not when the click returns. Under
-    // load the click can return first, so every save and clear waits here.
+    // load the click can return first, so every way out of the dialog waits
+    // here, and the ones that save nothing are checked in their final state too.
     await settle()
 
     expect(stored()).toBe('92')
@@ -215,6 +216,7 @@ describe('EpisodeMark', () => {
     await user.clear(field('Last episode you watched'))
     await user.type(field('Last episode you watched'), '700')
     await user.click(button('Cancel'))
+    await settle()
 
     expect(stored()).toBe('650')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -226,6 +228,7 @@ describe('EpisodeMark', () => {
 
     await open(user)
     await user.keyboard('{Escape}')
+    await settle()
 
     expect(stored()).toBe('650')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -237,6 +240,7 @@ describe('EpisodeMark', () => {
 
     const element = await open(user)
     await user.click(element)
+    await settle()
 
     expect(stored()).toBe('650')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
