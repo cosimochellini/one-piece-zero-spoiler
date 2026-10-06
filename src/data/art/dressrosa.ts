@@ -900,20 +900,20 @@ export const dressrosaArt = {
 
   // One of the black bands he wears above each wrist, standing on its own,
   // with its row of big spikes round the middle. The anime shows them as he
-  // climbs out of the hole he fell into (739), and the manga's debut spread
-  // has them too (ch. 795). His club and gourd come later, so they are not
+  // climbs out of the hole he fell into (739), and they are seen on the
+  // ch. 795 pp. 16-17 spread. His club and gourd come later, so they are not
   // here. The inside of the band is hatched where it turns away.
   'kaido': [
     { d: ellipse(80, 109.2, 44, 32.7) },
-    { d: ellipse(80, 109.2, 30, 22.3) },
-    { d: 'M56 122.6 A30 22.3 0 0 1 104 122.6', role: 'soft' },
+    { d: ellipse(80, 109.2, 36, 26.8) },
+    { d: 'M48.8 122.6 A36 26.8 0 0 1 111.2 122.6', role: 'soft' },
     { d: 'M124 109.2 V136 A44 32.7 0 0 1 36 136 V109.2' },
     {
-      d: 'M124 114.1 L152 122.6 L124 131.1 M118.2 136.4 L135.2 157 L109.2 150.9 Q107.4 139.9 118.2 136.4 M95.9 152.8 L92.5 175.3 L79.4 156.9 Q84.7 144 95.9 152.8 M64.7 156.2 L44 169 L51.3 145.7 Q64.2 143.3 64.7 156.2 M40.9 142 L12.3 140.9 L36.4 125.6 Z',
+      d: 'M124 114.1 L152 122.6 L124 131.1 Q118 122.6 124 114.1 M118.2 136.4 L135.2 157 L109.2 150.9 Q107.5 139.8 118.2 136.4 M95.9 152.8 L92.5 175.3 L79.4 156.9 Q85.1 143.9 95.9 152.8 M64.7 156.2 L44 169 L51.3 145.7 Q64 143.2 64.7 156.2 M40.9 142 L12.3 140.9 L36.4 125.6 Q44.4 132.2 40.9 142',
       role: 'accent',
     },
     {
-      d: 'M84 111.2 L89 90.4 M91 112.9 L96 92.1 M98 116.4 L103 95.6',
+      d: 'M84 106.6 L89 85.9 M91 108.1 L96 87.3 M98 110.8 L103 90',
       role: 'ambient',
     },
     shadow(80, 184, 60),
