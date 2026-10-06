@@ -987,11 +987,12 @@ export const alabastaArt = {
   ],
 
   // The crude wooden club of the Sand-Sand Clan, the one the boy knocks the
-  // bandit down with (ch 164 p8, ep 100), lying in 3/4: the heavy head
-  // swelling out of a thin grip, the sawn end with its whorl of end grain,
-  // and the long split and nicked grain along the head, all as ep 100 draws
-  // it. Nothing else is in the drawing: by ep 100 the anime has shown only
-  // the boy, so no part of the grown man's outfit is true for both readers.
+  // bandit down with (ch 164 p8, ep 100), lying in 3/4: a heavy head out of
+  // a thin grip, its outline drawn rough. The sawn end with its whorl of end
+  // grain, the long split and the nicked grain along the head are as ep 100
+  // draws them. Nothing else is in the drawing: by ep 100 the anime has
+  // shown only the boy, so no part of the grown man's outfit is true for
+  // both readers.
   'kohza': [
     {
       d: 'M133.4 92.5 C129.6 90.7 126.4 90.2 122.8 90.5 L120.6 93.2 L116.1 92.2 C109.5 94.1 103.4 97.8 98.9 102 C89.8 110.8 81.8 122.3 67.9 131.3 C56 138.8 37.7 142.5 16.4 151 C10.5 153.4 13.1 160.5 19 158.2 C40.8 150.9 61.3 146.7 79.4 142.8 C95.7 140.5 115.4 140.7 133.1 135.5 C139.6 133.3 143.5 130.5 146.6 125.6',
