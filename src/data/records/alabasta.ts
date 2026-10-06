@@ -480,18 +480,6 @@ export const alabasta: Saga = {
       visual: { art: 'nefertari-cobra', tint: 'sand' },
     },
     {
-      id: 'kohza',
-      kind: 'character',
-      revealedAtEpisode: 93,
-      revealedAtChapter: 163,
-      name: { it: 'Kosa', en: 'Kohza' },
-      summary: {
-        it: 'Il capo dell’esercito ribelle, un uomo con gli occhialoni sulla fronte che da bambino giocava con la principessa che ora combatte.',
-        en: 'The leader of the rebel army, goggles pushed up on his forehead, who played as a boy with the princess he now fights.',
-      },
-      visual: { art: 'kohza', tint: 'ocher' },
-    },
-    {
       id: 'pell',
       kind: 'character',
       revealedAtEpisode: 93,
@@ -538,6 +526,24 @@ export const alabasta: Saga = {
         en: 'A saddled desert camel with long eyelashes, saved from a giant lizard, who will carry only the women of the crew.',
       },
       visual: { art: 'matsuge', tint: 'ocher' },
+    },
+    {
+      id: 'kohza',
+      kind: 'character',
+      // His ep 93 scene at the rebel base is anime-original (Matsuge left it
+      // for the same reason in #107). The story makes him the rebel leader in
+      // ch 164 p19, and ep 100 tells it with Vivi's flashback of the boy.
+      revealedAtEpisode: 100,
+      revealedAtChapter: 164,
+      // Ep 93's anime-original scene says his name ("Where's Koza?"), and so
+      // does ch 163's flashback, which is where Toto's log names him.
+      nameSaidAt: 93,
+      name: { it: 'Kosa', en: 'Kohza' },
+      summary: {
+        it: 'Il capo dell’esercito ribelle, un uomo con gli occhialoni sulla fronte che da bambino giocava con la principessa che ora combatte.',
+        en: 'The leader of the rebel army, goggles pushed up on his forehead, who played as a boy with the princess he now fights.',
+      },
+      visual: { art: 'kohza', tint: 'ocher' },
     },
     {
       id: 'mr-1',
@@ -1222,7 +1228,7 @@ export const alabasta: Saga = {
       },
       affiliation: [
         {
-          episode: 93,
+          episode: 100,
           value: {
             it: 'Esercito ribelle di Alabasta, capo',
             en: 'Rebel army of Alabasta, leader',
@@ -1237,7 +1243,7 @@ export const alabasta: Saga = {
         },
       ],
       origin: [
-        { episode: 93, value: { it: 'Yuba, Alabasta', en: 'Yuba, Alabasta' } },
+        { episode: 100, value: { it: 'Yuba, Alabasta', en: 'Yuba, Alabasta' } },
       ],
     },
     'pell': {
