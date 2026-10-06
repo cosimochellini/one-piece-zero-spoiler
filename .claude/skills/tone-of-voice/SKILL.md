@@ -60,6 +60,9 @@ jargon for the data model, not a word a reader uses.
 
 Italian uses the names from the Italian dub: Rufy, Bagy, Zoo Zoo, Rotta
 Maggiore, Gom Gom. The comment above `fruitForm.zoan` in `it.ts` explains why.
+The dub wins over the Star Comics manga when they differ: "Grande Flotta di
+Cappello di Paglia" (the dub title of episode 745), not the manga's
+"Megaflotta".
 
 ## Two languages, both native
 

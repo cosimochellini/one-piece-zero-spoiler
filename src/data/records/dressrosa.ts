@@ -1672,7 +1672,7 @@ export const dressrosa: Saga = {
     },
     'orlumbus': {
       role: {
-        it: 'Ammiraglio della Flotta Yonta Maria',
+        it: 'Ammiraglio della Grande Flotta Yonta Maria',
         en: 'Yonta Maria Grand Fleet admiral',
       },
       log: {
