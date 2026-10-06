@@ -11,6 +11,47 @@ import {
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
+/** One of Vivi's Peacock Slashers, a pointed jewel, drawn about its centre. */
+const PEACOCK_SLASHER =
+  'M0 -30 C12 -30 18 -16 14 -2 L0 34 L-14 -2 C-18 -16 -12 -30 0 -30 Z'
+
+/**
+ * Bon Clay's ballet shoe and its ribbons, in his first drawing and, smaller,
+ * on the sill of the Gate of Justice from 451.
+ */
+const BON_CLAY_SHOE: Stroke[] = [
+  {
+    d: 'M34 128 C20 128 14 150 22 166 C50 172 96 170 118 160 C124 157 125 150 120 146 C110 142 96 136 84 134',
+  },
+  { d: 'M84 134 C70 148 46 146 34 128 C48 122 72 124 84 134 Z' },
+  { d: 'M120 146 L118 160 M122 151 h4 M121 156 h4', role: 'soft' },
+  { d: 'M28 160 Q70 172 116 156 M98 138 q5 10 2 26', role: 'soft' },
+  { d: 'M30 138 l-6 4 M28 150 l-6 3', role: 'ambient' },
+  {
+    d: 'M40 136 C22 112 26 88 42 88 C54 88 54 104 44 104 M78 136 C90 110 72 94 58 86 C50 82 50 72 60 72',
+    role: 'accent',
+  },
+]
+
+/** Mr. 13's left clam shell: its ribs, the claws on its lip, its hinge. */
+const CLAWED_SHELL: Stroke[] = [
+  {
+    d: 'M52 154 L20 108 Q22 96 30 90 Q34 80 44 78 Q52 70 62 72 Q72 68 84 74 L52 154',
+  },
+  {
+    d: 'M52 154 L28 98 M52 154 L40 84 M52 154 L54 76 M52 154 L68 74',
+    role: 'soft',
+  },
+  {
+    d: 'M22 102 l-7 -4 l9 -2 M30 90 l-5 -6 l8 -1 M44 78 l-2 -8 l7 3 M62 72 l1 -8 l6 5 M80 72 l4 -7 l3 7',
+  },
+  { d: 'M44 146 L36 162 L52 160 L68 162 L60 146' },
+]
+
+/** A vulture's left wing seen from below, spread. */
+const VULTURE_WING =
+  'M80 46 C70 30 52 22 34 26 C24 28 14 34 8 42 L20 42 L12 50 L26 48 L20 56 L34 52 C50 54 66 54 80 56'
+
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
   // Twin peaks with the canal running up to the notch between them, the sea
@@ -110,54 +151,88 @@ export const alabastaArt = {
     ...SEA.slice(2),
   ],
 
-  // A saxophone with a gun barrel where the mouthpiece should be.
+  // A tenor saxophone in 3/4, the keys down its body and the golden bell
+  // open: the instrument he carries when he greets the ship at 64. That it
+  // fires is shown the next episode.
   'igaram': [
-    { d: 'M104 32 C108 72 100 112 86 132 C72 152 46 158 32 146' },
-    { d: 'M90 34 C94 72 86 106 74 124 C62 142 44 146 34 136' },
-    { d: 'M32 146 q-14 -6 -12 -22 q2 -14 14 -16' },
-    { d: 'M20 124 q-10 14 -2 30' },
+    { d: 'M56 42 C58 90 60 128 64 148 C68 170 104 172 110 150 L120 80' },
+    { d: 'M70 44 C70 90 72 124 76 144 C80 158 94 158 98 146 L104 84' },
+    { d: 'M104 84 C102 79 100 76 98 72.5 M120 80 C124 71 128 64 133.7 59.6' },
+    {
+      d: 'M98 72.5 a19 7 -20 1 0 35.7 -12.9 a19 7 -20 1 0 -35.7 12.9',
+      role: 'accent',
+    },
+    { d: 'M106 70 l7 -5 M113 69 l8 -5.5 M121 66.5 l6 -4', role: 'ambient' },
+    { d: 'M56 42 C55 30 47 24 38 24 M70 44 C68 26 56 16 40 17' },
+    { d: 'M38 24 L27 22 L29 16 L40 17' },
+    {
+      d: `${circle(66, 70, 3.5)} ${circle(67, 88, 3.5)} ${circle(68, 106, 3.5)} ${circle(70, 124, 3.5)}`,
+      role: 'soft',
+    },
+    { d: 'M63 140 H76 M100 136 L111 139', role: 'soft' },
+    {
+      d: 'M100 152 l6 -5 M104 142 l6 -5 M107 130 l6 -5 M109 118 l6 -5',
+      role: 'ambient',
+    },
+    shadow(84, 184, 36),
+  ],
+
+  // A wine barrel from the banquet with her tankard on the lid, the fizz of
+  // the sparkling tea she drank all night, and the nun's veil she pulls off
+  // once the pirates are asleep (64).
+  'miss-monday': [
+    { d: ellipse(72, 96, 30, 8) },
+    { d: 'M42 96 C35 122 35 144 42 168 M102 96 C109 122 109 144 102 168' },
+    { d: 'M42 168 Q72 180 102 168' },
+    { d: 'M38 116 Q72 126 106 116 M38 150 Q72 160 106 150', role: 'soft' },
+    {
+      d: 'M60 104 C57 128 57 150 60 175 M86 104 C89 128 89 150 86 175',
+      role: 'soft',
+    },
+    { d: 'M99 128 l6 -4 M99 140 l6 -4', role: 'ambient' },
+    { d: 'M52 92 V64 H76 V92' },
+    { d: ellipse(64, 64, 12, 3.5) },
+    { d: 'M76 70 q11 0 11 9 q0 8 -11 8' },
     {
       d: dots([
-        [96, 56],
-        [93, 74],
-        [89, 92],
-        [84, 110],
+        [60, 52],
+        [67, 46],
+        [62, 38],
       ]),
       role: 'soft',
     },
-    { d: 'M104 32 L134 18', role: 'accent' },
-    { d: 'M99 24 L129 10', role: 'accent' },
-    { d: 'M129 10 L134 18 M104 32 L99 24', role: 'accent' },
-    { d: 'M140 6 l10 -4 M140 22 l10 4', role: 'ambient', dashed: true },
-    shadow(62, 172, 42),
+    {
+      d: 'M90 90 C104 84 120 94 122 112 C124 132 116 150 124 166 L110 170 C104 150 110 124 96 102',
+      role: 'accent',
+    },
+    { d: 'M112 100 C117 120 112 142 116 162', role: 'soft' },
+    shadow(80, 188, 46),
   ],
 
-  // A nun's habit standing beside a barrel of beer.
-  'miss-monday': [
-    { d: 'M28 154 C24 110 38 76 62 76 C86 76 100 110 96 154' },
-    { d: 'M46 88 q16 12 32 0', role: 'ambient' },
-    { d: 'M62 110 V140 M48 124 H76', role: 'accent' },
-    { d: 'M108 150 q-8 -24 0 -48 q16 -6 32 0 q8 24 0 48 q-16 6 -32 0z' },
-    { d: 'M108 118 q16 6 32 0 M110 136 q14 6 28 0', role: 'ambient' },
-    { d: 'M124 104 V150', role: 'ambient' },
-    { d: 'M112 100 q12 -4 24 0' },
-    shadow(82, 168, 56),
-  ],
-
-  // A riding saddle with a canteen slung from it.
+  // The duck himself, side on: the knitted cap, the saddle and its bag, and
+  // the barrel canteen with its straw hung at his chest (65).
   'karoo': [
     {
-      d: 'M34 110 C30 84 56 70 82 70 C110 70 130 84 128 110 C116 122 46 122 34 110 Z',
+      d: 'M36 120 C36 98 58 90 82 94 C98 96 106 104 108 112 C112 134 94 148 70 148 C48 148 36 138 36 120 Z',
     },
-    { d: 'M74 70 q8 -14 20 -10 q-2 10 -10 12' },
-    { d: 'M44 104 q38 10 76 0', role: 'ambient', dashed: true },
-    { d: 'M58 118 V146' },
-    { d: 'M48 146 h22 q6 10 -10 12 q-18 0 -12 -12' },
-    { d: 'M98 118 V140 M88 140 h20' },
-    { d: circle(118, 140, 16), role: 'accent' },
-    { d: 'M114 124 h8 v-6 h-8z', role: 'accent' },
-    { d: 'M110 126 L100 118' },
-    shadow(80, 176, 46),
+    { d: 'M38 112 L16 98 L24 112 L12 114 L36 124' },
+    {
+      d: 'M94 97 C100 86 100 74 99 64 C96 58 96 54 99 50 M124 46 L148 50 C153 54 151 59 144 61 L122 61 C116 78 118 98 108 114',
+    },
+    { d: 'M99 50 C99 30 125 28 124 46' },
+    { d: 'M99 50 Q112 45 124 46 M100 53 L97 66', role: 'soft' },
+    { d: 'M128 49 Q131 55 127 60', role: 'soft' },
+    { d: 'M52 96 C54 84 80 82 86 94 L94 88', role: 'accent' },
+    { d: 'M50 104 h20 v16 q-10 5 -20 0z', role: 'soft' },
+    {
+      d: 'M103 80 L114 104 M110 104 h16 q3 8 0 16 h-16 q-3 -8 0 -16z M122 104 L128 90',
+    },
+    { d: 'M52 114 C66 106 86 110 94 122', role: 'soft' },
+    { d: 'M98 130 l6 -4 M92 140 l6 -4', role: 'ambient' },
+    {
+      d: 'M64 148 L60 174 M84 148 L88 174 M52 176 l8 -2 l8 2 M80 176 l8 -2 l8 2',
+    },
+    shadow(74, 186, 42),
   ],
 
   // A cactus-shaped rock under the moon, grave crosses standing on its top.
@@ -219,18 +294,31 @@ export const alabastaArt = {
     shadow(80, 184, 30),
   ],
 
-  // A running duck with a saddle on its back.
+  // Her Peacock Slashers: sharp jewels on wires looped round a little
+  // finger, the near one swung out on its arc. She draws them on Zoro at
+  // Whisky Peak (65).
   'nefertari-vivi': [
-    { d: ellipse(78, 128, 32, 22) },
-    { d: 'M104 116 C116 108 118 90 112 74' },
-    { d: circle(110, 66, 10) },
-    { d: 'M120 64 l18 4 l-18 4' },
-    { d: dot(112, 63) },
-    { d: 'M106 56 q4 -8 10 -4' },
-    { d: 'M58 112 Q78 100 98 112', role: 'accent' },
-    { d: 'M62 122 Q78 130 94 122', role: 'accent' },
-    { d: 'M68 150 V172 M88 150 V172 M60 172 h16 M80 172 h16' },
-    { d: 'M30 130 h-14 M32 140 h-12', role: 'ambient' },
+    { d: 'M42 36 a10 4.5 0 1 0 20 0 a10 4.5 0 1 0 -20 0' },
+    { d: 'M42 36 v3 a10 4.5 0 0 0 20 0 v-3', role: 'soft' },
+    { d: 'M60 42 C80 60 98 80 104 98' },
+    {
+      d: PEACOCK_SLASHER,
+      role: 'accent',
+      transform: 'translate(110 128) rotate(-20)',
+    },
+    {
+      d: 'M0 -30 V-2 V34 M-14 -2 H14',
+      role: 'soft',
+      transform: 'translate(110 128) rotate(-20)',
+    },
+    { d: 'M112 100 l10 -2 M120 116 l9 -1 M121 132 l8 1', role: 'ambient' },
+    { d: 'M46 42 C38 70 36 96 40 112' },
+    { d: PEACOCK_SLASHER, transform: 'translate(42 136) rotate(8) scale(0.6)' },
+    {
+      d: 'M136 70 C156 110 144 160 104 176 M70 182 C46 180 26 166 18 146',
+      role: 'ambient',
+      dashed: true,
+    },
   ],
 
   // Two smoking volcanoes with a dinosaur skull lying between them.
@@ -277,41 +365,69 @@ export const alabastaArt = {
     { d: 'M102 164 H134 M102 176 H134', role: 'ambient' },
   ],
 
-  // A giant's round shield with a sword snapped off above the guard.
+  // A giant's round shield in 3/4, studded, its rim hatched where it turns
+  // away, and the long sword behind it, whole, the green hilt below (71).
   'dorry': [
-    { d: circle(58, 104, 42) },
-    { d: circle(58, 104, 34), role: 'ambient' },
-    { d: circle(58, 104, 10) },
+    { d: 'M92 58 L126 14 L140 6 L136 22 L108 70' },
+    { d: 'M100 64 L131 18', role: 'soft' },
+    { d: ellipse(74, 104, 34, 46) },
+    { d: 'M74 58 a34 46 0 0 1 0 92 M82 58 a34 46 0 0 1 0 92', role: 'soft' },
+    {
+      d: 'M104 80 l7 -3 M108 96 l7 -3 M108 112 l7 -3 M104 128 l7 -3',
+      role: 'ambient',
+    },
+    { d: ellipse(74, 104, 9, 12) },
     {
       d: dots([
-        [58, 70],
-        [58, 138],
-        [24, 104],
-        [92, 104],
+        [74, 66],
+        [74, 142],
+        [44, 104],
+        [100, 88],
+        [52, 76],
+        [96, 76],
+        [52, 132],
+        [96, 132],
       ]),
       role: 'soft',
     },
-    { d: 'M106 160 L128 76 L142 80 L120 164 Z', role: 'accent' },
-    { d: 'M128 76 l4 -12 l6 6 l4 -10 l4 20', role: 'accent' },
-    { d: 'M98 158 L134 170' },
-    { d: 'M104 170 L114 188' },
-    shadow(96, 192, 40),
+    { d: 'M20 144 L52 168' },
+    { d: 'M42 162 L52 146 M30 154 L40 138' },
+    { d: 'M39 160 L27 177 M33 155.5 L21 172.5', role: 'accent' },
+    { d: circle(20, 179, 5), role: 'accent' },
+    shadow(76, 190, 50),
   ],
 
-  // A giant's double-bitted axe planted in the ground.
+  // A giant's battle-axe planted in the field: one crescent blade on a round
+  // base, the haft bound in straps. His red horned helmet lies beside it (71).
   'brogy': [
-    { d: 'M78 176 V44' },
-    { d: 'M72 160 V70 M84 156 V74', role: 'ambient' },
+    { d: 'M80 176 L90 58 M88 177 L98 59' },
+    { d: 'M81 160 l8 -7 M82 144 l8 -7 M83 128 l8 -7', role: 'soft' },
+    { d: circle(95, 50, 9) },
     {
-      d: 'M78 52 C104 46 130 62 136 92 C120 104 96 106 78 100 Z',
+      d: 'M103 46 L108 20 C132 24 150 46 148 72 C146 94 132 106 116 112 L102 56',
+    },
+    { d: 'M112 28 C128 36 138 56 136 74 C134 90 126 98 118 104', role: 'soft' },
+    {
+      d: 'M138 42 l6 -4 M143 58 l6 -3 M144 74 l6 -1 M140 90 l6 1',
+      role: 'ambient',
+    },
+    { d: 'M10 176 C10 140 62 140 62 176 M6 176 H66', role: 'accent' },
+    {
+      d: 'M14 160 C4 150 2 132 10 118 C12 134 18 144 26 149 M58 160 C68 150 70 132 62 118 C60 134 54 144 46 149',
       role: 'accent',
     },
-    { d: 'M78 52 C52 46 26 62 20 92 C36 104 60 106 78 100 Z', role: 'accent' },
-    { d: 'M132 88 q-26 10 -50 8 M24 88 q26 10 50 8', role: 'ambient' },
-    { d: 'M68 100 H88 M68 48 H88' },
-    { d: 'M70 176 H86' },
+    { d: 'M12 164 Q36 156 60 164 M36 145 V158', role: 'soft' },
+    {
+      d: dots([
+        [20, 170],
+        [28, 168],
+        [44, 168],
+        [52, 170],
+      ]),
+      role: 'soft',
+    },
     { d: 'M4 176 H156', role: 'ambient' },
-    { d: 'M50 176 q28 -14 56 0', role: 'ambient', dashed: true },
+    { d: 'M70 182 q14 -4 30 0', role: 'ambient', dashed: true },
   ],
 
   // A long-necked dinosaur looking out over the jungle, a palm and ferns in front.
@@ -358,62 +474,77 @@ export const alabastaArt = {
     ...SEA.slice(2),
   ],
 
-  // A crown above a set of iron jaws.
+  // A sword used as a meat skewer, the tip of the blade bitten clean off:
+  // he eats the meat aboard the Merry at 79, then the sword with it.
   'wapol': [
+    { d: 'M18 182 L38 156 M26 188 L46 162' },
+    { d: 'M24 176 l6 3 M30 168 l6 3', role: 'soft' },
+    { d: 'M18 148 L64 176' },
+    { d: 'M34 148 L48 130 M54 162 L68 144' },
     {
-      d: 'M40 110 L48 56 L64 84 L80 46 L96 84 L112 56 L120 110 Z',
+      d: 'M44 132 C30 116 44 92 64 98 C82 86 104 104 92 122 C98 142 74 154 62 144 C50 152 36 144 44 132 Z',
+    },
+    { d: 'M56 112 l12 12 M66 104 l14 14 M78 100 l10 10', role: 'ambient' },
+    { d: 'M88 104 L112 72 M100 114 L126 82' },
+    {
+      d: 'M112 72 a3.5 3.5 0 0 0 4.7 3.3 a3.5 3.5 0 0 0 4.7 3.3 a3.5 3.5 0 0 0 4.6 3.4',
       role: 'accent',
     },
-    { d: 'M40 110 H120', role: 'accent' },
+    { d: 'M96 102 L114 78', role: 'soft' },
     {
       d: dots([
-        [48, 56],
-        [80, 46],
-        [112, 56],
+        [132, 66],
+        [140, 74],
+        [128, 56],
       ]),
+      role: 'soft',
     },
-    { d: 'M36 130 q44 -14 88 0' },
-    {
-      d: 'M44 130 V140 M56 130 V144 M68 131 V145 M80 131 V145 M92 131 V145 M104 130 V144 M116 130 V140',
-    },
-    { d: 'M36 172 q44 14 88 0' },
-    {
-      d: 'M44 172 V162 M56 172 V158 M68 171 V157 M80 171 V157 M92 171 V157 M104 172 V158 M116 172 V162',
-    },
-    { d: 'M36 130 q-8 21 0 42 M124 130 q8 21 0 42', role: 'ambient' },
+    shadow(78, 192, 52),
   ],
 
-  // A pair of ballet shoes with their ribbons tied above. Set down at the
-  // Gate of Justice from 451, in `alabastaRedrawn`.
+  // A ballet shoe on its side, its ribbons curling loose, and the neck of one
+  // of the swans on his coat rising beside it. He is first seen at 78. The
+  // shoe alone is set down at the Gate of Justice from 451, in
+  // `alabastaRedrawn`.
   'bon-clay': [
+    ...BON_CLAY_SHOE,
     {
-      d: 'M20 152 C18 132 34 112 54 108 C66 106 74 114 72 126 C70 142 54 160 36 162 C26 163 20 160 20 152 Z',
+      d: 'M146 176 C130 140 154 120 148 84 C144 60 116 52 108 70 L94 72 L106 78 C120 78 134 80 140 88',
+      role: 'soft',
     },
-    {
-      d: 'M140 152 C142 132 126 112 106 108 C94 106 86 114 88 126 C90 142 106 160 124 162 C134 163 140 160 140 152 Z',
-    },
-    {
-      d: 'M54 108 C58 84 76 74 92 80 M106 108 C102 84 84 74 68 80',
-      role: 'accent',
-    },
-    { d: 'M92 80 q10 -6 8 -18 M68 80 q-10 -6 -8 -18', role: 'accent' },
-    { d: 'M26 156 q24 -4 42 -22 M134 156 q-24 -4 -42 -22', role: 'ambient' },
-    { d: 'M20 148 q10 8 20 8 M140 148 q-10 8 -20 8' },
-    shadow(80, 176, 56),
+    { d: 'M138 176 C124 142 146 122 140 88', role: 'soft' },
+    { d: 'M126 120 l6 -4 M128 132 l6 -4 M130 144 l6 -4', role: 'ambient' },
+    shadow(72, 184, 54),
   ],
 
-  // A captain's cloak with a bison's horns above the collar.
+  // His spade in its sheath, slung by its strap: the long round-tipped blade
+  // he carries on his back when he turns the ship away at 80. The beast he
+  // becomes comes the next episode.
   'dalton': [
-    { d: 'M40 176 C34 130 44 96 62 84 H98 C116 96 126 130 120 176 Z' },
-    { d: 'M62 84 q18 14 36 0' },
-    { d: circle(80, 98, 6) },
-    { d: 'M62 112 V172 M98 112 V172', role: 'ambient' },
+    { d: circle(124, 24, 7) },
+    { d: 'M117.8 27.1 L90.5 69 M123.7 30.9 L96.4 72.8' },
+    { d: 'M85.9 66 L101 75.8 L102.2 88.6 L73.7 70 Z' },
+    { d: 'M73.7 70 L29.5 141.5 A15 15 0 0 0 54.7 157.9 L102.2 88.6' },
+    { d: 'M58.2 95.7 L85 113.2 M41.1 122.8 L67.1 139.7', role: 'accent' },
+    { d: 'M85 113.2 C118.4 127.8 96.2 173 67.1 139.7', role: 'accent' },
+    { d: 'M84.7 84.3 L37.7 156.4', role: 'soft' },
     {
-      d: 'M62 74 C40 74 26 58 30 40 C40 42 46 52 52 62 M98 74 C120 74 134 58 130 40 C120 42 114 52 108 62',
-      role: 'accent',
+      d: 'M87.9 96 l5 3.3 M74.8 116.1 l5 3.3 M66 129.5 l5 3.3 M54 147.9 l5 3.3',
+      role: 'ambient',
     },
-    { d: 'M60 72 q20 -10 40 0' },
-    shadow(80, 186, 44),
+    { d: 'M108 46 l6 4 M102 56 l6 4', role: 'soft' },
+    {
+      d: dots([
+        [24, 40],
+        [44, 24],
+        [140, 70],
+        [150, 112],
+        [20, 92],
+        [132, 150],
+      ]),
+      role: 'ambient',
+    },
+    shadow(76, 184, 52),
   ],
 
   // A ship's mast with a prisoner's ropes wound round it, and the sword taken
@@ -517,58 +648,75 @@ export const alabastaArt = {
     },
   ],
 
-  // A boxing glove grown over with curls of hair, spikes standing out of them.
+  // An afro glove in 3/4 with its bare thumb and the spikes it puts out
+  // (83), and one tuft thrown off it, crackling, to stick where it lands
+  // (87).
   'kuromarimo': [
     {
-      d: 'M52 150 C34 130 36 72 64 58 C92 44 126 60 126 94 C126 122 114 142 100 150 Z',
-    },
-    { d: 'M52 150 C40 146 30 126 40 112 C44 106 52 108 54 114' },
-    { d: 'M56 150 V178 H100 V150' },
-    { d: 'M56 162 H100', role: 'ambient' },
-    {
-      d: 'M62 82 a8 8 0 1 1 12 6 M86 70 a8 8 0 1 1 12 6 M102 98 a8 8 0 1 1 12 6 M70 108 a8 8 0 1 1 12 6 M90 124 a8 8 0 1 1 12 6',
+      d: 'M76 60 A11 11 0 0 1 95 65.1 A11 11 0 0 1 108.9 79 A11 11 0 0 1 114 98 A11 11 0 0 1 108.9 117 A11 11 0 0 1 95 130.9 A11 11 0 0 1 76 136 A11 11 0 0 1 57 130.9 A11 11 0 0 1 43.1 117 A11 11 0 0 1 38 98 A11 11 0 0 1 43.1 79 A11 11 0 0 1 57 65.1 A11 11 0 0 1 76 60',
       role: 'accent',
     },
-    { d: 'M62 60 L56 44 M94 52 L98 36 M122 74 L138 66 M126 108 L142 112' },
-    shadow(78, 188, 32),
-  ],
-
-  // Two clam shells with claws along their lips, and a parcel tied with a fuse.
-  'mr-13': [
-    { d: 'M20 80 C20 44 70 40 74 76 Z' },
-    { d: 'M86 76 C90 40 140 44 140 80 Z' },
+    { d: 'M42 108 C30 106 24 96 30 88 C34 84 40 86 42 90' },
+    { d: 'M60 134 V156 M92 134 V156' },
+    { d: 'M60 156 a16 5 0 0 0 32 0 a16 5 0 0 0 -32 0' },
     {
-      d: 'M32 76 L40 52 M46 76 L48 48 M60 76 L60 52 M100 76 L100 52 M114 76 L112 48 M128 76 L120 52',
+      d: 'M62 80 q3 -5 8 -5 M90 92 q3 -5 8 -5 M50 106 q3 -5 8 -5 M72 112 q3 -5 8 -5 M66 130 q3 -5 8 -5',
+      role: 'soft',
+    },
+    {
+      d: 'M100 74 L122 62 L106 80 M110 104 L134 108 L110 112 M70 62 L64 38 L78 60',
+    },
+    { d: 'M104 114 l6 4 M100 124 l5 5', role: 'ambient' },
+    {
+      d: 'M132 24 A4.5 4.5 0 0 1 141.4 28.5 A4.5 4.5 0 0 1 143.7 38.7 A4.5 4.5 0 0 1 137.2 46.8 A4.5 4.5 0 0 1 126.8 46.8 A4.5 4.5 0 0 1 120.3 38.7 A4.5 4.5 0 0 1 122.6 28.5 A4.5 4.5 0 0 1 132 24',
+    },
+    {
+      d: 'M114 30 l-4 -4 l2 -4 l-4 -4 M148 44 l6 2 l2 -4 l6 2 M128 18 l2 -6 l4 2 l2 -6',
       role: 'ambient',
     },
-    {
-      d: 'M20 80 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 M86 76 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 4',
-      role: 'accent',
-    },
-    { d: 'M44 118 H112 V174 H44 Z' },
-    { d: 'M78 118 V174 M44 146 H112', role: 'ambient' },
-    { d: 'M78 118 c-10 -12 -20 -2 0 0 c10 -12 20 -2 0 0' },
-    { d: 'M112 126 C126 122 128 110 140 104' },
-    { d: 'M140 104 l6 -8 M140 104 l10 0 M140 104 l2 -10', role: 'soft' },
-    shadow(78, 184, 40),
+    shadow(76, 176, 30),
   ],
 
-  // An aviator's cap with its goggles pushed up, and a belt of bullets below.
-  'miss-friday': [
-    { d: 'M34 112 C34 52 126 52 126 112' },
+  // His two clam shells, claws along their lips, struck together over a
+  // spark: the flint that lights the bombs the pair drop on agents who fail.
+  'mr-13': [
+    ...CLAWED_SHELL,
+    ...CLAWED_SHELL.map((stroke) => ({
+      // The right shell is the left one turned over.
+      ...stroke,
+      transform: 'matrix(-1 0 0 1 160 0)',
+    })),
+    { d: 'M112 100 l7 -4 M117 112 l7 -4 M120 124 l7 -4', role: 'ambient' },
     {
-      d: 'M34 112 V140 Q34 150 46 150 H56 V114 M126 112 V140 Q126 150 114 150 H104 V114',
-    },
-    { d: 'M80 56 V72', role: 'ambient' },
-    { d: 'M34 92 C58 84 102 84 126 92', role: 'ambient' },
-    {
-      d: `${circle(64, 86, 12)} ${circle(96, 86, 12)} M76 86 H84`,
+      d: 'M80 64 V44 M80 64 l-12 -12 M80 64 l12 -12 M80 64 h-16 M80 64 h16',
       role: 'accent',
     },
-    { d: 'M26 176 Q80 160 134 176' },
+    shadow(80, 182, 50),
+  ],
+
+  // A parcel bomb dropping, its cloth gathered and tied at the neck and the
+  // fuse already lit, under the spread wings of whoever let it go.
+  'miss-friday': [
+    { d: VULTURE_WING, role: 'ambient' },
+    { d: VULTURE_WING, role: 'ambient', transform: 'matrix(-1 0 0 1 160 0)' },
     {
-      d: 'M40 171 v-12 a3 3 0 0 1 6 0 v12 M58 167 v-12 a3 3 0 0 1 6 0 v12 M76 166 v-12 a3 3 0 0 1 6 0 v12 M94 166 v-12 a3 3 0 0 1 6 0 v12 M112 168 v-12 a3 3 0 0 1 6 0 v12',
+      d: 'M56 140 C44 120 58 106 72 104 L88 104 C102 106 116 120 104 140 C98 158 62 158 56 140 Z',
     },
+    { d: 'M72 104 C62 98 62 86 72 90 C74 82 86 82 88 90 C98 86 98 98 88 104' },
+    { d: 'M70 104 Q80 108 90 104', role: 'soft' },
+    { d: 'M66 118 q4 16 0 30 M94 118 q-4 16 0 30', role: 'soft' },
+    { d: 'M100 124 l6 -4 M102 136 l5 -4', role: 'ambient' },
+    { d: 'M80 88 C86 78 74 72 82 64' },
+    {
+      d: 'M82 64 l-2 -9 M82 64 l7 -6 M82 64 l9 1 M82 64 l-8 -4',
+      role: 'accent',
+    },
+    {
+      d: 'M40 110 v-16 M120 110 v-16 M46 136 v-12 M114 136 v-12',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(80, 186, 26),
   ],
 
   // Dunes, a palm, and the sun over a desert kingdom.
@@ -707,28 +855,26 @@ export const alabastaArt = {
     { d: 'M82 60 c-6 -8 0 -14 2 -22 c2 8 8 10 6 18', role: 'accent' },
   ],
 
-  // A saddle and a striped blanket with tassels, laid on a dune.
+  // The camel side on, one hump under the square saddle with its two knobbed
+  // posts, the blanket's diamond stripe and a tassel hanging below (97).
   'matsuge': [
-    { d: 'M4 172 C40 150 82 150 112 162 C132 170 146 168 156 160' },
-    { d: 'M4 190 C50 178 100 186 156 178', role: 'ambient', dashed: true },
-    { d: 'M34 116 H126 L118 146 H42 Z' },
-    { d: 'M38 126 H122 M40 136 H120', role: 'ambient' },
     {
-      d: 'M46 146 v12 M62 146 v12 M78 146 v12 M94 146 v12 M110 146 v12',
+      d: 'M28 118 C26 96 40 72 66 68 C88 64 100 84 108 96 C116 92 120 80 120 64 C120 52 126 44 136 44 C146 44 154 50 156 58 C152 62 144 62 138 62 C132 66 132 76 130 90 C128 108 120 120 108 126 C96 134 50 136 34 128 C30 126 28 122 28 118 Z',
+    },
+    { d: 'M128 46 l-2 -6 l6 2', role: 'soft' },
+    { d: 'M140 52 L136 64 M132 66 Q136 80 132 96', role: 'soft' },
+    { d: 'M48 70 L94 72 L98 108 L50 110 Z' },
+    {
+      d: 'M49 88 L96 90 M50 96 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6 l6 -6 l6 6',
       role: 'accent',
     },
-    {
-      d: dots([
-        [46, 161],
-        [62, 161],
-        [78, 161],
-        [94, 161],
-        [110, 161],
-      ]),
-      role: 'accent',
-    },
-    { d: 'M50 116 C54 92 106 92 110 116' },
-    { d: 'M54 106 C48 88 58 80 64 94 M106 106 C112 88 102 80 96 94' },
+    { d: 'M58 70 V58 M88 71 V59' },
+    { d: `${circle(58, 55, 3)} ${circle(88, 56, 3)}`, role: 'soft' },
+    { d: 'M50 110 v12 M48 126 l2 -4 l2 4', role: 'soft' },
+    { d: 'M40 130 L38 178 M54 133 L56 178 M96 132 L94 178 M108 126 L112 178' },
+    { d: 'M28 112 q-8 8 -6 22', role: 'soft' },
+    { d: 'M104 112 l6 -4 M110 100 l6 -4', role: 'ambient' },
+    { d: 'M4 180 C40 172 120 176 156 180', role: 'ambient', dashed: true },
   ],
 
   // Two steel blades crossed, each set into a cuff.
@@ -748,19 +894,23 @@ export const alabastaArt = {
     shadow(80, 190, 46),
   ],
 
-  // A cactus in a pot, every spine standing out.
+  // The Spiders Cafe at 103, where she is Paula, its owner: her
+  // diamond-patterned bandanna folded over the edge of the counter, and a
+  // glass of the tea she pours for the agents as they arrive.
   'miss-doublefinger': [
-    { d: 'M46 176 L54 128 H106 L114 176 Z' },
-    { d: 'M42 128 H118 V116 H42 Z' },
-    { d: 'M52 150 H108', role: 'ambient', dashed: true },
-    { d: 'M64 116 V72 a16 16 0 0 1 32 0 V116' },
-    { d: 'M64 96 H50 a10 10 0 0 0 -10 10 V120' },
-    { d: 'M96 86 H112 a10 10 0 0 1 10 10 V116' },
+    { d: 'M14 126 H146 M6 138 H154', role: 'ambient' },
+    { d: 'M22 138 H90 L58 182 Z' },
+    { d: 'M22 138 l-8 -6 M90 138 l8 -6' },
     {
-      d: 'M64 82 L56 78 M64 96 L56 92 M96 76 L104 72 M96 92 L104 88 M40 106 L32 102 M122 102 L130 98 M80 60 V50 M72 62 L68 52 M88 62 L92 52',
+      d: 'M34 138 L46 154 L58 138 L70 154 L82 138 M46 154 L58 170 L70 154',
       role: 'accent',
     },
-    shadow(80, 186, 40),
+    { d: 'M100 130 L96 70 H126 L122 130 Z' },
+    { d: ellipse(111, 70, 15, 3.5) },
+    { d: 'M97.5 92 H124.5', role: 'soft' },
+    { d: 'M118 78 l4 4 M119 92 l4 4 M119 106 l4 4', role: 'ambient' },
+    { d: 'M96 132 q15 4 30 0', role: 'ambient', dashed: true },
+    { d: 'M128 58 l6 -6 M134 66 l8 -2', role: 'soft' },
   ],
 
   // A baseball bat and the gun that walks on four legs.
@@ -775,31 +925,31 @@ export const alabastaArt = {
     { d: 'M80 152 q-12 -6 -16 -18' },
   ],
 
-  // A mole's burrow opening in the ground, with a bauble hung below.
+  // Her necktie, cut like a fir tree and dotted with red baubles, and the
+  // orange pekoe she bangs the Spiders Cafe counter for (103).
   'miss-merry-christmas': [
-    { d: 'M4 96 H156', role: 'ambient' },
-    { d: 'M36 96 C44 66 76 60 96 96' },
-    { d: ellipse(66, 94, 14, 6) },
+    { d: 'M66 22 L80 30 L94 22', role: 'soft' },
+    { d: 'M72 30 H88 L85 42 H75 Z' },
     {
-      d: 'M66 100 C66 126 100 130 108 152 C114 168 106 180 92 182',
-      role: 'ambient',
-      dashed: true,
+      d: 'M75 42 L62 76 H70 L54 110 H64 L46 146 L80 158 L114 146 L96 110 H106 L90 76 H98 L85 42',
     },
+    {
+      d: `${circle(76, 64, 3)} ${circle(84, 92, 3)} ${circle(66, 100, 3)} ${circle(92, 128, 3)} ${circle(70, 134, 3)} ${circle(98, 108, 3)}`,
+      role: 'accent',
+    },
+    { d: 'M100 124 l6 -4 M102 136 l6 -4', role: 'ambient' },
+    { d: 'M80 44 V156', role: 'soft' },
+    { d: 'M4 172 H156', role: 'ambient' },
+    { d: 'M118 170 L116 138 H142 L140 170 Z' },
+    { d: ellipse(129, 138, 13, 3) },
+    { d: 'M117 152 H141', role: 'soft' },
     {
       d: dots([
-        [24, 106],
-        [40, 120],
-        [122, 110],
-        [136, 128],
-        [30, 150],
-        [132, 160],
+        [126, 146],
+        [132, 144],
       ]),
-      role: 'ambient',
+      role: 'soft',
     },
-    { d: circle(96, 158, 26), role: 'accent' },
-    { d: 'M88 134 H104 V126 H88 Z', role: 'accent' },
-    { d: 'M96 126 q0 -10 -8 -10' },
-    { d: 'M74 150 q22 10 44 0', role: 'ambient' },
   ],
 
   // A shovel driven into cracked ground, and the sand it has dug out.
@@ -907,20 +1057,38 @@ export const alabastaArt = {
     },
   ],
 
-  // A lily pad on the water, and a pistol laid across it with round bullets.
+  // Her round flintlock, spotted like a frog, its muzzle a frog's head, a
+  // puff of smoke in front of it: the gun she shoots a royal guard down with.
   'miss-fathers-day': [
     {
-      d: 'M80 152 L100 130 C128 132 142 142 140 154 C136 172 24 174 20 154 C18 140 40 130 66 130 Z',
+      d: 'M30 92 C30 80 42 76 56 78 H96 C100 78 102 82 102 86 V98 C102 102 100 104 96 104 H60',
     },
-    { d: 'M80 152 L48 142 M80 152 L60 168 M80 152 L112 166', role: 'ambient' },
-    { d: 'M30 98 H104 V110 H30 Z', role: 'accent' },
-    { d: 'M30 98 q-10 6 0 12', role: 'accent' },
-    { d: 'M88 110 L96 134 H110 L104 110' },
     {
-      d: `${circle(124, 90, 5)} ${circle(138, 100, 5)} ${circle(126, 110, 5)}`,
+      d: 'M60 104 C52 118 50 138 58 152 C50 160 30 158 26 148 C22 132 30 112 40 102',
+    },
+    { d: 'M64 104 q2 14 16 10 q4 -2 4 -10' },
+    { d: 'M72 104 v6', role: 'soft' },
+    { d: 'M44 78 L36 64 L46 62 L50 72' },
+    {
+      d: 'M102 80 C104 66 112 62 118 68 C122 60 134 60 136 70 C144 74 148 86 144 98 C138 108 112 108 102 100',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [64, 88],
+        [76, 92],
+        [88, 86],
+        [38, 124],
+        [44, 140],
+      ]),
       role: 'soft',
     },
-    ...SEA.slice(1),
+    { d: 'M60 98 H96', role: 'soft' },
+    {
+      d: `${circle(154, 84, 5)} ${circle(160, 96, 4)} ${circle(152, 104, 3)}`,
+      role: 'ambient',
+    },
+    { d: 'M30 146 l6 4 M34 136 l6 4', role: 'ambient' },
   ],
 
   // A cigarette burning above three ships lined up across the sea: the
@@ -1065,9 +1233,10 @@ export const alabastaRedrawn: Redrawings = {
     },
   ],
 
-  // The same shoes, set down on the threshold of the Gate of Justice: the two
-  // riveted leaves of its arch rise out of the sea and all but meet, the far
-  // edge of the gap hatched. He stays behind to open it at 451 (ch. 548).
+  // The same shoe, without the swan, set down on the threshold of the Gate of
+  // Justice: the two riveted leaves of its arch rise out of the sea and all
+  // but meet, the far edge of the gap hatched. He stays behind to open it at
+  // 451 (ch. 548).
   'bon-clay': [
     {
       episode: 451,
@@ -1105,10 +1274,10 @@ export const alabastaRedrawn: Redrawings = {
         { d: 'M6 150 H154' },
         { d: wave(164), role: 'ambient' },
         { d: wave(178), role: 'ambient' },
-        ...alabastaArt['bon-clay'].slice(0, -1).map((stroke) => ({
-          // The first drawing without its shadow, smaller, standing on the sill.
+        ...BON_CLAY_SHOE.map((stroke) => ({
+          // The shoe of the first drawing, smaller, standing on the sill.
           ...stroke,
-          transform: 'translate(24 36) scale(0.7)',
+          transform: 'translate(30 30) scale(0.7)',
         })),
       ],
     },
