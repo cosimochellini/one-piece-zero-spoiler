@@ -885,8 +885,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'È il più alto degli ufficiali di Hody Jones, con un elmo rotondo e gli occhialoni, una lunga barba e una lancia in ognuna delle otto mani. Quando una ciurma di pirati umani costretta a servire i Nuovi Pirati Uomini-Pesce scappa, si offre di inseguirla lui. Hody gli dice di no e ci va da solo. Ikaros chiama gli steroidi energetici, le pillole che raddoppiano la forza di un uomo-pesce, un vero tesoro.',
-        en: 'He is the tallest of Hody Jones’s officers, with a round helmet and goggles, a long beard and a spear in each of his eight hands. When a crew of human pirates forced to serve the New Fish-Man Pirates slips away, he offers to go after them himself. Hody tells him no and goes alone. Ikaros calls the Energy Steroids, the pills that double a fish-man’s strength, a real treasure.',
+        it: 'È il più alto degli ufficiali di Hody Jones, con un elmo rotondo e gli occhialoni, una lunga barba e una lancia in ognuna delle otto mani. Quando una ciurma di pirati umani che aveva giurato fedeltà ai Nuovi Pirati Uomini-Pesce scappa, si offre di inseguirla lui. Hody gli dice di no e ci va da solo. Ikaros chiama gli steroidi energetici, le pillole che raddoppiano la forza di un uomo-pesce, un vero tesoro.',
+        en: 'He is the tallest of Hody Jones’s officers, with a round helmet and goggles, a long beard and a spear in each of his eight hands. When a crew of human pirates who had sworn loyalty to the New Fish-Man Pirates slips away, he offers to go after them himself. Hody tells him no and goes alone. Ikaros calls the Energy Steroids, the pills that double a fish-man’s strength, a real treasure.',
       },
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
@@ -897,8 +897,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno degli ufficiali intorno a Hody Jones. Quando i pirati umani al servizio della ciurma scappano di nuovo, dice che non imparano mai, e chiude ogni frase con “dosun”.',
-        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the officers around Hody Jones. When the human pirates working for the crew run off again, he says they never learn, and he ends each sentence with “dosun”.',
+        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno degli ufficiali intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude ogni frase con “dosun”.',
+        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the officers around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he ends each sentence with “dosun”.',
       },
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
@@ -1022,8 +1022,8 @@ export const fishManIsland: Saga = {
     'aladine': {
       role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
       log: {
-        it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala non riesce a smettere di pulire il ponte, dice agli altri di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong dice che la capisce perché anche lui è stato schiavo. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladine cerca di convincerlo ad accettarlo, perché umani e uomini-pesce hanno lo stesso sangue.',
-        en: 'He sails with Fisher Tiger’s crew as its doctor. When Koala cannot stop cleaning the deck, he tells the others to leave her alone: she needs time, because trauma does not heal that easily. Arlong says he understands her because he was a slave himself. When the captain is badly wounded and refuses human blood, Aladine tries to make him take it, since humans and fish-men share the same blood.',
+        it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladine, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladine cerca di convincerlo ad accettarlo.',
+        en: 'He sails with Fisher Tiger’s crew as its doctor. When Koala keeps on cleaning, he tells Hatchan to leave her alone: she needs time, because trauma does not heal that easily. Arlong points out that Aladine, a former slave himself, understands her well. When the captain is badly wounded and refuses human blood, Aladine tries to make him accept it.',
       },
       affiliation: [
         {
@@ -1064,8 +1064,8 @@ export const fishManIsland: Saga = {
         en: 'Combatant of the Big Mom Pirates',
       },
       log: {
-        it: 'Arriva alla fabbrica di dolci con Tamago per ritirare i dolci che l’isola paga ogni mese a Big Mom in cambio del suo nome. Quando il Ministro della Sinistra gli spiega che la fabbrica è stata distrutta, ringhia che Big Mom li distruggerà tutti, e la folla lo trova carino mentre lo dice. Quando Big Mom chiama alla lumaca, non risponde: non vuole farsi sgridare.',
-        en: 'He comes to the candy factory with Tamago to collect the sweets the island pays Big Mom every month in exchange for the use of her name. When the Minister of the Left tells him the factory has been wrecked, he growls that Big Mom will destroy them all, and the crowd finds him cute while he does it. When Big Mom calls on the transponder snail, he will not pick up, because he does not want to be yelled at.',
+        it: 'Arriva alla fabbrica di dolci con Tamago per ritirare i dolci che l’isola paga ogni mese a Big Mom in cambio del suo nome. Quando il Ministro della Sinistra chiede pietà perché la fabbrica è stata danneggiata, risponde che non è affar loro e ringhia che, se Big Mom si arrabbia, li distruggerà tutti. La folla lo trova carino mentre lo dice. Quando Big Mom chiama alla lumaca, non risponde: non vuole farsi sgridare.',
+        en: 'He comes to the candy factory with Tamago to collect the sweets the island pays Big Mom every month in exchange for the use of her name. When the Minister of the Left begs for mercy because the factory has been damaged, he answers that it is none of their concern and growls that if Big Mom gets angry she will destroy them all. The crowd finds him cute while he does it. When Big Mom calls on the transponder snail, he will not pick up, because he does not want to be yelled at.',
       },
       affiliation: [
         {
