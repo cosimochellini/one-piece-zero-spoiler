@@ -828,6 +828,7 @@ describe('a record drawn again later in the story', () => {
       recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
 
     expect(real?.episode).toBe(4)
+    expect(grown).not.toBe(real?.value)
 
     expect(drawnAt(ep(3))).toBe(grown)
     expect(drawnAt(ep(4))).toBe(real?.value)
