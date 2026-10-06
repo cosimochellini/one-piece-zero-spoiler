@@ -5,7 +5,7 @@ import { beforeEach, describe, expect, it } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
-import { ep, renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { EpisodeMark } from './EpisodeMark'
 
@@ -99,6 +99,10 @@ describe('EpisodeMark', () => {
     await open(user)
     await user.type(field('Last episode you watched'), '92')
     await user.click(button('Save'))
+    // The stored bookmark moves inside an async transition, which commits
+    // after `router.invalidate()` resolves, not when the click returns. Under
+    // load the click can return first, so every save and clear waits here.
+    await settle()
 
     expect(stored()).toBe('92')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
@@ -120,6 +124,7 @@ describe('EpisodeMark', () => {
     await user.selectOptions(field('Season'), '2')
     await user.type(field('Episode in that season'), '3')
     await user.click(button('Save'))
+    await settle()
 
     expect(stored()).toBe('s2e3')
     expect(document.cookie).toContain('opzs_ep=s2e3')
@@ -134,6 +139,7 @@ describe('EpisodeMark', () => {
     await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
     await user.type(field('Last chapter you read'), '1044')
     await user.click(button('Save'))
+    await settle()
 
     expect(stored()).toBe('c1044')
     expect(screen.getByRole('button', { name: /CH 1044/u })).toBeInTheDocument()
@@ -194,6 +200,7 @@ describe('EpisodeMark', () => {
 
     await open(user)
     await user.click(button('Clear bookmark'))
+    await settle()
 
     expect(stored()).toBe('none')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
