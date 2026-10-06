@@ -65,21 +65,28 @@ export const eggheadArt = {
     ...SEA,
   ],
 
-  // The apple on its shaft that stands on Vegapunk's sliced head, set apart
-  // as an object, as he is first met at 1096: the red top of the apple with
-  // its cut face seen from below, the stem and leaf as the accent, the far
-  // side hatched, and the shaft that is driven into his head. No head.
+  // The apple core on its shaft that stands on Vegapunk's sliced head, set
+  // apart as an object, as he is first met at 1096: the red top of the apple
+  // with its cut rim, the stem and leaf as the accent, the eaten core
+  // narrowing under it with a seed pocket in its flesh, the far side
+  // hatched, and the shaft that is driven into his head. No head.
   'vegapunk': [
-    { d: 'M38 98 C32 66 60 52 80 62 C100 52 128 66 122 98' },
-    { d: ellipse(80, 98, 42, 9) },
-    { d: ellipse(80, 98, 30, 5), role: 'soft' },
-    { d: 'M52 76 q8 -10 18 -10', role: 'soft' },
-    { d: 'M80 62 C80 54 82 48 86 44', role: 'accent' },
-    { d: 'M86 44 q16 -8 22 4 q-14 8 -22 -4z', role: 'accent' },
-    { d: 'M106 72 l8 -5 M110 84 l8 -5 M106 96 l9 -6', role: 'ambient' },
-    { d: 'M77 107 V170 L80 176 L83 170 V107' },
-    { d: 'M83 110 l3 -2 V168', role: 'soft' },
-    shadow(80, 186, 26),
+    { d: 'M38 90 C32 58 60 44 80 54 C100 44 128 58 122 90' },
+    { d: ellipse(80, 90, 42, 9) },
+    { d: 'M52 68 q8 -10 18 -10', role: 'soft' },
+    { d: 'M80 54 C80 46 82 40 86 36', role: 'accent' },
+    { d: 'M86 36 q16 -8 22 4 q-14 8 -22 -4z', role: 'accent' },
+    { d: 'M106 64 l8 -5 M110 76 l8 -5', role: 'ambient' },
+    { d: 'M48 96 C64 104 70 116 72 132 M112 96 C96 104 90 116 88 132' },
+    { d: 'M62 102 q12 4 12 20 q-10 -6 -12 -20', role: 'soft' },
+    {
+      d: 'M66 106 q4 2 3 6 q-4 -2 -3 -6 M69 114 q4 2 3 6 q-4 -2 -3 -6',
+      role: 'soft',
+    },
+    { d: 'M94 110 l6 -4 M90 122 l5 -4', role: 'ambient' },
+    { d: ellipse(80, 132, 8, 2.5), role: 'soft' },
+    { d: 'M77 134.5 V172 L80 178 L83 172 V134.5' },
+    shadow(80, 188, 24),
   ],
 
   // Shaka's helmet seen from the side, as it first shows at 1091: the black
@@ -105,42 +112,52 @@ export const eggheadArt = {
     shadow(82, 178, 50),
   ],
 
-  // Lilith's red aviator helmet seen from behind in 3/4, as she wears it at
-  // 1090: the strap of its goggles round the back as the accent, with its
-  // buckle, the near ear cup and its chin strap, the far side hatched. The
-  // goggles themselves are on the far side, out of sight.
+  // Lilith's red aviator helmet seen 3/4 from the side and behind, as she
+  // wears it at 1090: the strap of its goggles round the back as the accent,
+  // with its buckle, the near ear pad and its chin strap, the far side
+  // hatched. The goggles themselves are on the far side, out of sight.
   'lilith': [
     { d: 'M34 132 C28 88 54 58 88 58 C120 58 136 92 130 132' },
     { d: 'M34 132 Q82 148 130 132' },
     { d: 'M36 98 Q72 112 106 100 M36 108 Q72 122 106 110', role: 'accent' },
     { d: 'M48 101 v10 h8 v-10z', role: 'soft' },
-    { d: ellipse(116, 110, 10, 15) },
-    { d: 'M116 125 C118 140 112 152 102 158', role: 'soft' },
+    { d: 'M108 96 q12 -2 14 8 v12 q-2 10 -14 8 Z' },
+    { d: 'M116 124 C118 140 112 152 102 158', role: 'soft' },
     { d: 'M40 88 l8 -7 M38 122 l9 -8', role: 'ambient' },
     { d: 'M58 74 q14 -10 30 -10', role: 'soft' },
     shadow(82, 178, 50),
   ],
 
   // One of her golden serpent earrings, the same as Hancock's: a snake bent
-  // into a hoop with its head turned out at the top, scales in soft, the far
-  // side hatched, and the lunarian flame burning beside it as the accent.
-  // She wears them from her first appearance (1087).
+  // into a hoop with its head turned out at the top, the band's second face
+  // showing its thickness and hatched underneath, scales in soft, and the
+  // lunarian flame on her back rising from behind it as the accent. She
+  // wears both from her first appearance (1087).
   's-snake': [
-    { d: 'M56 54 C50 100 56 146 80 146 C104 146 110 112 108 80' },
-    { d: 'M66 56 C60 98 64 134 80 134 C94 134 98 110 98 82' },
-    { d: 'M56 54 Q60 44 66 56' },
+    { d: 'M52 54 C46 100 52 146 78 146 C102 146 108 112 106 80' },
+    { d: 'M62 56 C56 98 60 134 78 134 C92 134 96 110 96 82' },
     {
-      d: 'M98 82 C94 70 102 62 114 64 C124 66 126 74 118 78 C114 80 110 80 108 80',
-    },
-    {
-      d: 'M54 92 h8 M54 112 l9 -1 M60 132 l7 -5 M80 140 v-6 M96 130 l7 4 M100 106 l8 1',
+      d: 'M56 136 C62 148 70 154 80 154 C104 154 112 120 110 86',
       role: 'soft',
     },
-    { d: 'M94 120 l4 -6 M96 98 l3 -5', role: 'ambient' },
     {
-      d: 'M118 128 C136 122 148 106 150 84 C140 98 130 104 122 104 C124 114 124 122 118 128 Z',
+      d: 'M66 148 l4 -5 M80 152 l3 -6 M96 146 l4 -6 M106 128 l4 -5',
+      role: 'ambient',
+    },
+    { d: 'M52 54 Q56 44 62 56' },
+    {
+      d: 'M96 82 C92 70 100 62 112 64 C122 66 124 74 116 78 C112 80 108 80 106 80',
+    },
+    { d: 'M106 80 q4 -4 10 -2', role: 'soft' },
+    {
+      d: 'M50 92 h8 M50 112 l9 -1 M56 132 l7 -5 M78 140 v-6 M94 130 l7 4 M98 106 l8 1',
+      role: 'soft',
+    },
+    {
+      d: 'M108 118 C126 112 140 96 142 72 C134 86 126 92 118 92 C120 100 116 106 108 104',
       role: 'accent',
     },
+    { d: 'M114 110 C124 106 130 98 132 90', role: 'soft' },
   ],
 
   // His cross-shaped sword laid at a slant, shaped like Mihawk's but plainer
@@ -298,27 +315,23 @@ export const eggheadArt = {
     shadow(80, 162, 58),
   ],
 
-  // His small black cap in 3/4, hatched because it is black, and his twisted
-  // walking cane lying in front of it, the round grip as the accent. He has
-  // both from his first appearance (151) and on the way to Egghead (1105).
+  // His square black hat in 3/4, flat on top and hatched because it is black,
+  // and his walking cane lying in front of it, the round grip as the accent.
+  // He has both from his first appearance (151) and on the way to Egghead
+  // (1105).
   'jaygarcia-saturn': [
+    { d: 'M42 92 L80 82 L118 92 L80 102 Z' },
+    { d: 'M42 92 V118 Q60 128 80 128 V102' },
+    { d: 'M80 128 Q100 128 118 118 V92' },
+    { d: 'M42 110 Q60 120 80 120 Q100 120 118 110', role: 'soft' },
     {
-      d: 'M40 122 C38 108 40 96 46 90 C58 80 102 80 114 90 C120 96 122 108 120 122',
-    },
-    { d: 'M46 90 Q80 102 114 90', role: 'soft' },
-    { d: 'M40 122 Q80 136 120 122' },
-    {
-      d: 'M58 124 l18 -26 M72 128 l22 -30 M88 128 l22 -30 M104 124 l14 -20 M46 116 l12 -18',
+      d: 'M48 104 l12 -8 M50 116 l16 -11 M62 124 l16 -11 M84 124 l16 -11 M100 122 l16 -11 M90 108 l16 -11',
       role: 'ambient',
     },
-    { d: 'M20 174 L130 150 M22 181 L132 157' },
-    {
-      d: 'M34 178 l6 -8 M48 175 l6 -8 M62 172 l6 -8 M76 169 l6 -8 M90 166 l6 -8 M104 163 l6 -8 M118 160 l6 -8',
-      role: 'soft',
-    },
-    { d: 'M20 174 q-4 4 2 7' },
-    { d: 'M130 150 c4 -8 18 -8 20 2 c2 8 -8 12 -18 5', role: 'accent' },
-    shadow(80, 142, 44),
+    { d: 'M24 176 L132 152 M25.5 182 L133.5 158' },
+    { d: 'M24 176 L25.5 182' },
+    { d: 'M133 151 c4 -8 18 -6 18 4 c0 8 -10 10 -16 6', role: 'accent' },
+    shadow(80, 144, 44),
   ],
 
   // A joint of meat on the bone with a bite taken out of it, the bite as the
@@ -352,9 +365,10 @@ export const eggheadArt = {
     shadow(84, 180, 54),
   ],
 
-  // A globe tilted on its stand, for the Warrior God of Environment, the
-  // title he is named with at 1120: the equator as the accent, a meridian
-  // in soft, the half ring that holds it, and its night side hatched.
+  // A globe tilted on its stand: a title emblem, not an object he holds. It
+  // stands for Warrior God of Environment, the title he is named with at
+  // ch. 1086 / ep. 1120. The equator is the accent, a meridian in soft, the
+  // half ring that holds it, and its night side hatched.
   'marcus-mars': [
     { d: circle(80, 90, 44) },
     { d: ellipse(80, 90, 44, 12), role: 'accent', transform: MARS_TILT },
@@ -369,8 +383,9 @@ export const eggheadArt = {
     shadow(80, 186, 34),
   ],
 
-  // A pair of scales in 3/4, for the Warrior God of Justice, the title he is
-  // named with at 1120: the beam as the accent, tipped toward the near pan,
+  // A pair of scales in 3/4: a title emblem, not an object he holds. It
+  // stands for Warrior God of Justice, the title he is named with at
+  // ch. 1086 / ep. 1120. The beam is the accent, tipped toward the near pan,
   // which hangs lower and larger, the undersides of the pans hatched.
   'topman-warcury': [
     { d: 'M80 44 V160' },

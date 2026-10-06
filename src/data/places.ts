@@ -810,7 +810,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     form: 'island',
     arc: 'egghead',
     landmark: {
-      it: 'Un uovo incrinato sopra le nuvole',
+      it: 'Un uovo spaccato sopra le nuvole',
       en: 'A cracked egg above the clouds',
     },
     log: {
