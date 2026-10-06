@@ -102,8 +102,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 107,
       name: { it: 'Mister 9', en: 'Mr. 9' },
       summary: {
-        it: 'Un agente con la corona in testa e due mazze d’acciaio alla cintura, che parla come un attore e non dice mai per chi lavora.',
-        en: 'An agent in a crown with two steel bats at his belt, who talks like an actor and never says who he works for.',
+        it: 'Un uomo con la corona in testa che dice di essere un re, entra con la sua socia nello stomaco di una balena per ucciderla e non dice per chi lavora.',
+        en: 'A man in a crown who says he is a king, gets into a whale’s stomach with his partner to kill it, and will not say who he works for.',
       },
       visual: { art: 'mr-9', tint: 'blue' },
     },
@@ -234,8 +234,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 120,
       name: { it: 'Miss Goldenweek', en: 'Miss Goldenweek' },
       summary: {
-        it: 'Una ragazzina che si siede a dipingere in mezzo al combattimento, con la tavolozza sulle ginocchia e un biscotto di riso in bocca.',
-        en: 'A small girl who sits down to paint in the middle of a fight, a palette on her knees and a rice cracker in her mouth.',
+        it: 'Una ragazzina in vacanza con il suo socio, che dice di annoiarsi e passa giorni a fissare un foglio senza dirgli che contiene i loro ordini.',
+        en: 'A girl on holiday with her partner, who says she is bored and spends days staring at a sheet of paper without telling him it holds their orders.',
       },
       visual: { art: 'miss-goldenweek', tint: 'pink' },
     },
@@ -378,8 +378,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 145,
       name: { it: 'Hiluluk', en: 'Hiluluk' },
       summary: {
-        it: 'Un ciarlatano con la bandiera dei pirati cucita sulla giacca, convinto che nessuna malattia sia incurabile, che ha raccolto una renna e le ha dato un nome.',
-        en: 'A quack with a pirate flag stitched to his coat, certain that no illness is incurable, who took in a reindeer and gave him a name.',
+        it: 'Un ciarlatano con una bandiera pirata tutta sua, convinto che nessuna malattia sia incurabile, che ha raccolto una renna e le ha dato un nome.',
+        en: 'A quack with a pirate flag of his own, certain that no illness is incurable, who took in a reindeer and gave him a name.',
       },
       visual: { art: 'hiluluk', tint: 'pink' },
     },
@@ -486,8 +486,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 162,
       name: { it: 'Pell', en: 'Pell' },
       summary: {
-        it: 'Una guardia reale di Alabasta che si trasforma in falco e sorveglia il deserto dall’alto, con la maschera a becco e la sciabola al fianco.',
-        en: 'A royal guard of Alabasta who turns into a falcon and watches the desert from above, beak-masked with a sabre at his side.',
+        it: 'Una guardia reale di Alabasta con una lunga veste bianca a stelle e la spada al fianco.',
+        en: 'A royal guard of Alabasta in a long white robe patterned with stars, with a sword at his hip.',
       },
       visual: { art: 'pell', tint: 'azure' },
     },
@@ -498,20 +498,23 @@ export const alabasta: Saga = {
       revealedAtChapter: 162,
       name: { it: 'Chaka', en: 'Chaka' },
       summary: {
-        it: 'Una guardia reale di Alabasta che diventa uno sciacallo, fedele al re e incaricato di proteggere la principessa tornata a casa.',
-        en: 'A royal guard of Alabasta who becomes a jackal, loyal to the king and charged with protecting the princess come home.',
+        it: 'Una guardia reale di Alabasta con un’enorme spada al fianco, fedele al re.',
+        en: 'A royal guard of Alabasta with a massive sword at his hip, loyal to the king.',
       },
       visual: { art: 'chaka', tint: 'ivory' },
     },
     {
       id: 'portgas-d-ace',
       kind: 'character',
+      // Episode 95 adapts chapter 159: the fire fist on the Billions' ships
+      // and the man he is hunting. Chapter 157 names him, but his fire is
+      // chapter 158 and the rest of his texts are chapter 159.
       revealedAtEpisode: 95,
-      revealedAtChapter: 157,
+      revealedAtChapter: 159,
       name: { it: 'Portuguese D. Ace', en: 'Portgas D. Ace' },
       summary: {
-        it: 'Il fratello maggiore di Rufy, comandante di divisione in una ciurma famosa, che attraversa il deserto a torso nudo sulle tracce di un uomo che ha tradito il suo capitano.',
-        en: 'Luffy’s older brother, a division commander in a famous crew, crossing the desert bare-chested on the trail of a man who betrayed his captain.',
+        it: 'Il fratello maggiore di Rufy, comandante di divisione in una ciurma famosa, che gira a torso nudo e dà la caccia a un uomo che ha ucciso un suo compagno.',
+        en: 'Luffy’s older brother, a division commander in a famous crew, who goes about bare-chested and is hunting a man who killed one of his crewmates.',
       },
       visual: { art: 'portgas-d-ace', tint: 'orange' },
     },
@@ -540,8 +543,8 @@ export const alabasta: Saga = {
       nameSaidAt: 93,
       name: { it: 'Kosa', en: 'Kohza' },
       summary: {
-        it: 'Il capo dell’esercito ribelle, un uomo con gli occhialoni sulla fronte che da bambino giocava con la principessa che ora combatte.',
-        en: 'The leader of the rebel army, goggles pushed up on his forehead, who played as a boy with the princess he now fights.',
+        it: 'Il capo dell’esercito ribelle, che da bambino ha steso un bandito con una mazza di legno per proteggere la principessa.',
+        en: 'The leader of the rebel army, who as a boy knocked down a bandit with a wooden club to protect the princess.',
       },
       visual: { art: 'kohza', tint: 'ocher' },
     },
@@ -552,8 +555,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Mister 1', en: 'Mr. 1' },
       summary: {
-        it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso il cui corpo diventa acciaio e le cui braccia si aprono in lame.',
-        en: 'The highest-ranked agent of Baroque Works, a silent man whose body turns to steel and whose arms open into blades.',
+        it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso che taglia in due un muro di pietra con una lama uscita dal suo corpo.',
+        en: 'The highest-ranked agent of Baroque Works, a silent man who cuts a stone wall in two with a blade that comes out of his own body.',
       },
       visual: { art: 'mr-1', tint: 'ivory' },
     },
@@ -762,8 +765,8 @@ export const alabasta: Saga = {
     'mr-9': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'Gira con una corona in testa e due mazze d’acciaio, e parla di sé in terza persona come un attore di provincia. Lavora in coppia con una collega che finge di essere la sua fidanzata, e nessuno dei due ammette per chi lavori davvero. Quando la copertura salta, saluta l’avversario con un inchino prima di attaccarlo.',
-        en: 'He goes about in a crown with two steel bats, talking about himself in the third person like a provincial actor. He works in a pair with a colleague who pretends to be his sweetheart, and neither of them admits who they really work for. When the cover falls, he bows to his opponent before attacking.',
+        it: 'Porta una corona e dice di essere un re, ma nessuno gli crede. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
+        en: 'He wears a crown and says he is a king, and nobody believes him. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
       },
       affiliation: [
         { episode: 63, value: BW },
@@ -885,8 +888,8 @@ export const alabasta: Saga = {
     'miss-goldenweek': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'Ha l’età di una bambina delle elementari e la calma di chi non ha mai avuto fretta in vita sua. Si siede in mezzo al combattimento con la tavolozza sulle ginocchia e un biscotto di riso in bocca, e dipinge. Il socio con cui lavora la tratta da assistente; lei lo ascolta poco e continua a colorare.',
-        en: 'She has the age of a primary-school child and the calm of someone who has never hurried in her life. She sits down in the middle of a fight with a palette on her knees and a rice cracker in her mouth, and paints. The partner she works with treats her as an assistant; she barely listens and goes on colouring.',
+        it: 'È in vacanza su un’isola con il suo socio, che beve tè e le dice di godersi il riposo. Lei dice che si annoia. Da giorni fissa un foglio di carta, e solo quando lui glielo chiede si scopre che sono i loro nuovi ordini dal capo. Lui le chiede anche di smettere di chiamarlo in pubblico con il suo nome in codice.',
+        en: 'She is on holiday on an island with her partner, who drinks tea and tells her to enjoy the time off. She says she is bored. For days she has been staring at a sheet of paper, and only when he asks does it turn out to be their next orders from the boss. He also tells her to stop using his code name in public.',
       },
       affiliation: [
         { episode: 70, value: BW },
@@ -1083,8 +1086,8 @@ export const alabasta: Saga = {
     'hiluluk': {
       role: { it: 'Ciarlatano', en: 'Quack doctor' },
       log: {
-        it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Portava una bandiera dei pirati cucita sulla giacca e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco, l’ha chiamata Chopper e le ha insegnato a fare il medico.',
-        en: 'He treated anyone for free with remedies that nearly always made things worse, and said an illness is beaten the moment you stop fearing it. He wore a pirate flag stitched to his coat and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out, called him Chopper, and taught him to be a doctor.',
+        it: 'Curava chiunque gratis con rimedi che quasi sempre peggioravano le cose, e diceva che una malattia si vince nel momento in cui si smette di temerla. Aveva una bandiera pirata tutta sua, simbolo della sua lotta contro le malattie, e sognava di far fiorire i ciliegi su un’isola di neve. Ha raccolto una renna cacciata dal branco e l’ha chiamata Chopper.',
+        en: 'He treated anyone for free with remedies that nearly always made things worse, and said an illness is beaten the moment you stop fearing it. He had a pirate flag of his own, the sign of his fight against disease, and dreamed of making cherry trees bloom on an island of snow. He took in a reindeer his herd had driven out and called him Chopper.',
       },
       status: [
         { episode: 85, value: 'alive' },
@@ -1223,8 +1226,8 @@ export const alabasta: Saga = {
         en: 'Leader of the rebel army',
       },
       log: {
-        it: 'Comanda un esercito di contadini e cittadini che marcia sulla capitale, convinto che il re abbia lasciato morire di sete le loro città. Porta gli occhialoni sulla fronte e una sciabola alla cintura, e da bambino giocava a fare il pirata con la figlia del re. Non ha mai chiesto niente per sé, e non si ferma davanti a nessuno.',
-        en: 'He commands an army of farmers and townspeople marching on the capital, certain the king has let their towns die of thirst. He wears goggles pushed up on his forehead and a sabre at his belt, and as a boy he played at pirates with the king’s daughter. He has never asked anything for himself, and he stops for nobody.',
+        it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro. Porta una sciarpa al collo.',
+        en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye. He wears a scarf round his neck.',
       },
       affiliation: [
         {
@@ -1249,8 +1252,8 @@ export const alabasta: Saga = {
     'pell': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
-        it: 'Vola sopra il deserto sotto forma di falco e riporta al palazzo quello che vede, il che lo rende l’uomo più informato del regno. Porta una maschera a becco e una sciabola ricurva, e parla poco. Ha giurato di proteggere la famiglia reale e considera la principessa una bambina che ha visto crescere.',
-        en: 'He flies over the desert as a falcon and brings back to the palace whatever he sees, which makes him the best-informed man in the kingdom. He wears a beaked mask and a curved sabre, and says little. He has sworn to protect the royal family and thinks of the princess as a child he watched grow up.',
+        it: 'Indossa la lunga veste bianca della guardia reale, decorata a stelle, e porta la spada sul fianco destro. Quando i pirati assaltano una città di porto parte con un’altra guardia reale, ma arrivano a combattimento finito.',
+        en: 'He wears the long white robe of the royal guard, patterned with stars, and carries his sword on his right hip. When pirates raid a port town he sets out with another royal guard, and the fight is over before they arrive.',
       },
       status: [
         { episode: 93, value: 'alive' },
@@ -1267,8 +1270,14 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 93, value: ALABASTA }],
+      // Said first at ep 106 ("Pell the Falcon?"), when he changes into a
+      // falcon in ch 169. Ch 167 prints it in his caption; ep 105 never says it.
       epithet: [
-        { episode: 93, value: { it: 'Pell il Falco', en: 'Falcon Pell' } },
+        {
+          episode: 106,
+          chapter: 169,
+          value: { it: 'Pell il Falco', en: 'Falcon Pell' },
+        },
       ],
       devilFruit: [
         { episode: 106, chapter: 169, value: ['bird-bird-fruit-model-falcon'] },
@@ -1277,8 +1286,8 @@ export const alabasta: Saga = {
     'chaka': {
       role: { it: 'Guardia reale di Alabasta', en: 'Royal guard of Alabasta' },
       log: {
-        it: 'Si trasforma in sciacallo e combatte con una spada che tiene fra i denti, ed è l’ufficiale a cui il re affida gli ordini che contano. È l’unico al palazzo che discuta ancora con il sovrano invece di limitarsi a obbedire. Del popolo in rivolta parla senza rancore: dice che hanno ragione a essere arrabbiati.',
-        en: 'He turns into a jackal and fights with a sword held in his teeth, and he is the officer the king trusts with the orders that matter. He is the only man in the palace who still argues with his sovereign instead of simply obeying. Of the rebels he speaks without bitterness: he says they are right to be angry.',
+        it: 'Indossa una lunga tunica aperta sul petto e un mantello sulle spalle, e porta un’enorme spada al fianco. Quando i pirati assaltano una città di porto parte con un’altra guardia reale, ma arrivano a combattimento finito.',
+        en: 'He wears a long tunic open over his chest and a coat across his shoulders like a cape, and carries a massive sword at his hip. When pirates raid a port town he sets out with another royal guard, and the fight is over before they arrive.',
       },
       affiliation: [
         {
@@ -1290,9 +1299,12 @@ export const alabasta: Saga = {
         },
       ],
       origin: [{ episode: 93, value: ALABASTA }],
+      // Said first at ep 120 ("The jackal!"), when he changes into a jackal
+      // in ch 196. Ch 167 prints it in his caption; ep 105 never says it.
       epithet: [
         {
-          episode: 93,
+          episode: 120,
+          chapter: 196,
           value: { it: 'Chaka lo Sciacallo', en: 'Jackal Chaka' },
         },
       ],
@@ -1304,8 +1316,8 @@ export const alabasta: Saga = {
       chronicle: alabastaChronicles['portgas-d-ace'],
       role: { it: 'Comandante di divisione', en: 'Division commander' },
       log: {
-        it: 'Si addormenta a metà pasto e a metà frase, e si sveglia come se niente fosse. Il suo corpo prende fuoco quando vuole, e il suo capitano è l’uomo che tutti chiamano il più forte del mondo. È venuto ad Alabasta per un compagno che ha ucciso uno dei suoi e se n’è andato; a Rufy lascia un pezzo di carta e l’ordine di tenerlo con sé.',
-        en: 'He falls asleep mid-meal and mid-sentence, and wakes as if nothing happened. His body turns to fire at will, and his captain is the man everyone calls the strongest in the world. He came to Alabasta after a crewmate who killed one of their own and left; to Luffy he leaves a scrap of paper and an order to keep it.',
+        it: 'Si addormenta a metà pasto e a metà frase, e si sveglia come se niente fosse. Il suo corpo prende fuoco quando vuole, e con un solo pugno di fuoco affonda una fila di navi nemiche. Il suo capitano è Barbabianca. È venuto ad Alabasta inseguendo un uomo che ha ucciso un loro compagno.',
+        en: 'He falls asleep mid-meal and mid-sentence, and wakes as if nothing happened. His body turns to fire at will, and with one fist of fire he sinks a line of enemy ships. His captain is Whitebeard. He came to Alabasta on the trail of a man who killed one of their crewmates.',
       },
       status: [
         { episode: 95, value: 'alive' },
@@ -1363,8 +1375,8 @@ export const alabasta: Saga = {
     'mr-1': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È l’agente di grado più alto dell’organizzazione e non ha mai avuto bisogno di alzare la voce. Il suo corpo diventa acciaio dove vuole: le braccia si aprono in lame, le gambe si trasformano in scuri, e nessuna spada normale lo scalfisce. Lavora con una collega elegante e non le rivolge quasi mai la parola.',
-        en: 'He is the highest-ranked agent in the organisation and has never needed to raise his voice. His body turns to steel wherever he wants it: his arms open into blades, his legs become axes, and no ordinary sword marks him. He works with an elegant colleague and almost never speaks to her.',
+        it: 'È l’agente di grado più alto dell’organizzazione e non ha mai avuto bisogno di alzare la voce. Al caffè dove si riuniscono gli agenti si scontra con uno di loro, e una lama che gli esce dal corpo taglia il muro da parte a parte. La sua socia ferma la lite prima che vada oltre.',
+        en: 'He is the highest-ranked agent in the organisation and has never needed to raise his voice. At the cafe where the agents meet he gets into a fight with another of them, and a blade that comes out of his body cuts the wall clean through. His partner stops the fight before it goes further.',
       },
       affiliation: [
         { episode: 103, value: BW_OFFICER },
