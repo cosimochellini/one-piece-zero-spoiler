@@ -896,6 +896,7 @@ export const wano: Saga = {
         },
         {
           episode: 972,
+          chapter: 970,
           value: {
             it: 'Alleanza Kozuki, kunoichi; un tempo dell’Oniwabanshu',
             en: 'Kozuki alliance, kunoichi; once of the Oniwabanshu',
@@ -1405,8 +1406,8 @@ export const wano: Saga = {
           },
         },
         {
-          episode: 1006,
-          chapter: 993,
+          episode: 1007,
+          chapter: 994,
           value: { it: 'Alleanza Kozuki', en: 'Kozuki alliance' },
         },
       ],
