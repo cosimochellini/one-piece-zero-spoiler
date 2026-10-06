@@ -802,8 +802,17 @@ export const waterSeven: Saga = {
           chapter: 650,
           value: { it: 'Ha lasciato la Marina', en: 'Left the Marines' },
         },
+        // The Five Elders tell it at 736 (chapter 793).
         {
-          episode: 1120,
+          episode: 736,
+          chapter: 793,
+          value: { it: 'Pirati di Barbanera', en: 'Blackbeard Pirates' },
+        },
+        // The anime drops chapter 1081's "tenth ship": the first to say it is
+        // the caption at 1156 (chapter 1126).
+        {
+          episode: 1156,
+          chapter: 1126,
           value: {
             it: 'Pirati di Barbanera, capitano della decima nave',
             en: 'Blackbeard Pirates, tenth ship captain',
