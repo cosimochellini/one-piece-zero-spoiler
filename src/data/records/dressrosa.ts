@@ -1170,8 +1170,8 @@ export const dressrosa: Saga = {
     'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
-        it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha arrostito dei pirati su uno spiedo e ha diffuso il video, che ha attaccato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
-        en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he roasted pirates on a skewer and shared the video, attacked innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
+        it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha infilzato dei pirati e ha diffuso il video, che ha attaccato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
+        en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he skewered pirates and broadcast it, attacked innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
       },
       affiliation: [
         {
