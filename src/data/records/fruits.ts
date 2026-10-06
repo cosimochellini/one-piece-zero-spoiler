@@ -1457,8 +1457,8 @@ export const devilFruits: Saga = {
     {
       id: 'dog-dog-fruit-model-okuchi-no-makami',
       kind: 'fruit',
-      revealedAtEpisode: 1040,
-      revealedAtChapter: 1030,
+      revealedAtEpisode: 1042,
+      revealedAtChapter: 1020,
       name: {
         it: 'Frutto Inu Inu, modello Okuchi no Makami',
         en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
