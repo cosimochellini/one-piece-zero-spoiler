@@ -203,7 +203,13 @@ const BY_FIRST_WORD = new Map(
 
     for (const entity of entities) {
       const word = firstWord(entity, locale)
-      index.set(word, [...(index.get(word) ?? []), entity])
+      let records = index.get(word)
+      if (records === undefined) {
+        records = []
+        index.set(word, records)
+      }
+
+      records.push(entity)
     }
 
     return [locale, index] as const
@@ -254,8 +260,12 @@ function leaked(text: Text, locale: Locale, facts: boolean): Entity[] {
   // in it, which rules out nearly every record before the slow substring
   // scan. Each word once, so each record comes up at most once.
   const index = BY_FIRST_WORD.get(locale)
+  if (index === undefined) {
+    throw new Error(`no first-word index for ${locale}`)
+  }
+
   const named = [...new Set(words.split(' '))].flatMap(
-    (word) => index?.get(word) ?? [],
+    (word) => index.get(word) ?? [],
   )
 
   return named
