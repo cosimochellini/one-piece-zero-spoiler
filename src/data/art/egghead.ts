@@ -1,50 +1,96 @@
-import { cell, circle, dots, ellipse, shadow, wave } from '~/lib/svg/primitives'
+import { circle, dots, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Stroke } from './stroke'
+
+/**
+ * The laboratory of Egghead, a giant egg cracked open along its top, seen in
+ * 3/4 with the far half of the broken rim behind the near one. The arc draws
+ * it full size on its cloud; the place draws it small, over the island.
+ */
+const EGGHEAD_EGG: Stroke[] = [
+  { d: 'M44 70 C36 84 35 104 42 120' },
+  { d: 'M116 70 C124 84 125 104 118 120' },
+  {
+    d: 'M44 70 L52 80 L60 72 L68 84 L76 76 L84 86 L92 76 L100 82 L108 72 L116 70',
+    role: 'accent',
+  },
+  {
+    d: 'M44 70 L54 62 L64 67 L74 58 L84 65 L94 58 L104 64 L116 70',
+    role: 'soft',
+  },
+  { d: 'M112 94 l7 -7 M112 106 l8 -8 M110 118 l8 -8', role: 'ambient' },
+]
+
+/** The egg moved up over the island and drawn at half size. */
+const EGG_OVER_ISLAND = 'translate(40 -12) scale(0.5)'
+/** The slant S-Hawk's sword lies at. */
+const S_HAWK_SLANT = 'rotate(32 80 100)'
+/** The slant Pythagoras's key lies at, its bow up and to the left. */
+const PYTHAGORAS_KEY = 'rotate(-40 80 100)'
+/** The tilt of Mars's globe on its axis. */
+const MARS_TILT = 'rotate(-23 80 90)'
+/** Ginny's joint of meat, enlarged by a quarter toward the top left. */
+const GINNY_MEAT = 'translate(-20 -20) scale(1.25)'
 
 /** The drawings of the records filed in the egghead stretch of the route. */
 export const eggheadArt = {
-  // A dome on a platform, a lattice of the future behind it.
+  // The laboratory of Egghead from the sea, as the crew first sees it at
+  // 1090: the giant egg cracked open along its top, its broken rim the
+  // accent, standing on the island cloud that holds it over the water.
+  // No laser bands round the cloud: the Frontier Dome is shown at 1099.
   'egghead': [
+    ...EGGHEAD_EGG,
     {
-      d: [
-        cell(30, 60),
-        cell(52, 48),
-        cell(74, 36),
-        cell(96, 48),
-        cell(118, 60),
-      ].join(' '),
-      role: 'ambient',
+      d: 'M8 152 C0 140 10 126 26 130 C28 118 38 114 44 120 C60 130 100 130 116 120 C122 114 132 118 134 130 C150 126 160 140 152 152',
     },
-    { d: 'M40 134 a40 40 0 0 1 80 0', role: 'accent' },
-    { d: 'M52 134 q28 -40 56 0', role: 'ambient', dashed: true },
-    { d: 'M24 134 h112 v10 h-112z' },
-    { d: 'M80 94 V70' },
-    { d: circle(80, 66, 4), role: 'accent' },
+    { d: 'M8 152 Q80 166 152 152', role: 'ambient' },
+    ...SEA.slice(1),
   ],
 
-  // The island above the waterline, a dome on its crest.
+  // The island from the sea, as it first shows at 1090: a low island dotted
+  // with trees, and high over it the cloud with the cracked egg of the
+  // laboratory on top, the egg of the arc drawn small.
   'egghead-island': [
-    { d: 'M14 142 q30 -50 60 -60 q12 -16 22 0 q34 8 50 60' },
-    { d: 'M74 84 q6 -12 12 0', role: 'accent' },
-    { d: 'M-4 142 H164', role: 'ambient' },
-    { d: 'M36 142 v14 h-16 v10 M124 142 v14 h16 v10', role: 'ambient' },
+    ...EGGHEAD_EGG.map((stroke) => ({ ...stroke, transform: EGG_OVER_ISLAND })),
     {
-      d: dots([
-        [20, 166],
-        [140, 166],
-      ]),
-      role: 'ambient',
+      d: 'M28 86 C16 80 20 64 36 66 C38 56 50 52 56 58 C66 64 94 64 104 58 C110 52 122 56 124 66 C140 64 144 80 132 86 Z',
     },
+    { d: 'M40 80 q10 -6 22 -2', role: 'soft' },
+    {
+      d: 'M6 150 C16 140 28 136 42 138 C54 128 70 126 82 130 C96 124 116 128 128 138 C138 136 148 142 154 150',
+    },
+    {
+      d: 'M38 137 q4 -10 8 0 M58 130 q5 -12 10 0 M78 128 q5 -11 10 0 M100 127 q5 -12 10 0 M120 134 q4 -10 8 0',
+      role: 'soft',
+    },
+    { d: 'M-4 150 H164', role: 'ambient' },
+    ...SEA,
   ],
 
-  // A round head cut flat on top, an apple's stem and leaf set on it.
+  // The apple core on its shaft that stands on Vegapunk's sliced head, set
+  // apart as an object, as he is first met at 1096: the red top of the apple
+  // with its cut rim, the stem and leaf as the accent, the core
+  // bitten down to a narrow waist under it with a seed pocket in its flesh, the far side
+  // hatched, and the shaft that is driven into his head. No head.
   'vegapunk': [
-    { d: 'M40 84 h80 C132 104 130 150 80 166 C30 150 28 104 40 84 Z' },
-    { d: 'M50 96 h60', role: 'soft' },
-    { d: 'M80 84 C80 74 84 68 90 64', role: 'accent' },
-    { d: 'M90 64 q18 -6 22 8 q-18 6 -22 -8z', role: 'accent' },
-    shadow(80, 176, 40),
+    { d: 'M38 90 C32 58 60 44 80 54 C100 44 128 58 122 90' },
+    { d: ellipse(80, 90, 42, 9) },
+    { d: 'M52 68 q8 -10 18 -10', role: 'soft' },
+    { d: 'M80 54 C80 46 82 40 86 36', role: 'accent' },
+    { d: 'M86 36 q16 -8 22 4 q-14 8 -22 -4z', role: 'accent' },
+    { d: 'M106 64 l8 -5 M110 76 l8 -5', role: 'ambient' },
+    {
+      d: 'M48 96 q8 0 10 6 q6 2 6 8 q4 4 4 10 q2 6 4 12 M112 96 q-8 0 -10 6 q-6 2 -6 8 q-4 4 -4 10 q-2 6 -4 12',
+    },
+    { d: 'M62 102 q12 4 12 20 q-10 -6 -12 -20', role: 'soft' },
+    {
+      d: 'M66 106 q4 2 3 6 q-4 -2 -3 -6 M69 114 q4 2 3 6 q-4 -2 -3 -6',
+      role: 'soft',
+    },
+    { d: 'M94 110 l6 -4 M90 122 l5 -4', role: 'ambient' },
+    { d: ellipse(80, 132, 8, 2.5), role: 'soft' },
+    { d: 'M77 134.5 V172 L80 178 L83 172 V134.5' },
+    shadow(80, 188, 24),
   ],
 
   // Shaka's helmet seen from the side, as it first shows at 1091: the black
@@ -70,50 +116,92 @@ export const eggheadArt = {
     shadow(82, 178, 50),
   ],
 
-  // A flying helmet, the goggles pushed up on its crown.
+  // Lilith's red aviator helmet seen 3/4 from the side and behind, as she
+  // wears it at 1090: the strap of its goggles round the back as the accent,
+  // with its buckle, the near ear pad and its chin strap, the far side
+  // hatched. The goggles themselves are on the far side, out of sight.
   'lilith': [
-    { d: 'M34 128 a46 50 0 0 1 92 0' },
-    { d: 'M34 128 v26 q0 10 10 10 M126 128 v26 q0 10 -10 10' },
-    { d: 'M44 128 h72', role: 'soft' },
-    { d: circle(62, 96, 13), role: 'accent' },
-    { d: circle(98, 96, 13), role: 'accent' },
-    { d: 'M75 96 h10 M49 96 h-12 M111 96 h12', role: 'soft' },
-    shadow(80, 182, 44),
+    { d: 'M34 132 C28 88 54 58 88 58 C120 58 136 92 130 132' },
+    { d: 'M34 132 Q82 148 130 132' },
+    { d: 'M36 98 Q72 112 106 100 M36 108 Q72 122 106 110', role: 'accent' },
+    { d: 'M48 101 v10 h8 v-10z', role: 'soft' },
+    { d: 'M108 96 q12 -2 14 8 v12 q-2 10 -14 8 Z' },
+    { d: 'M116 124 C118 140 112 152 102 158', role: 'soft' },
+    { d: 'M40 88 l8 -7 M38 122 l9 -8', role: 'ambient' },
+    { d: 'M58 74 q14 -10 30 -10', role: 'soft' },
+    shadow(82, 178, 50),
   ],
 
-  // A coiled snake, wings of flame either side.
+  // One of her golden serpent earrings, the same as Hancock's: a snake with
+  // a wavy tail bent into a hoop, its head turned out at the top with the
+  // line of its mouth and no eye, the hook through the ear at the tail, the
+  // band's second face showing its thickness and hatched underneath, scales
+  // in soft, and the lunarian flame on her back rising from behind it as the
+  // accent. She wears both from her first appearance (1087).
   's-snake': [
-    { d: ellipse(80, 164, 44, 12) },
-    { d: ellipse(80, 150, 34, 11) },
-    { d: ellipse(80, 137, 24, 9) },
-    { d: 'M70 134 C64 120 70 110 84 106 M92 132 C90 122 94 116 102 112' },
     {
-      d: 'M84 106 C98 100 114 106 114 116 C114 126 102 130 92 124',
+      d: 'M53.6 49.7 L51.1 54.5 L49.9 60 L50.1 65.3 L51 70.1 L52.2 74.7 L53.3 79.1 L54 83.3 L54.1 87.3 L53.4 91.3 L51.4 96 L48.7 102.2 L47 109.3 L46.4 116.7 L47 124.2 L48.8 131.4 L51.8 138.1 L56.3 144.1 L62.2 148.8 L69.5 151.9 L78 153 L86 151.9 L93 148.9 L98.6 144 L102.9 137.8 L106 130.6 L108 122.5 L109 113.8 L109.1 104.6 L108.4 95 L106.9 85.3',
+    },
+    {
+      d: 'M62.4 54.3 L60.5 57.9 L59.9 60.9 L60 64.2 L60.7 68 L61.8 72.3 L63 77 L63.9 82.3 L64.1 88 L63 94.1 L60.6 100 L58.2 105.4 L56.9 110.9 L56.4 116.7 L56.9 122.6 L58.2 128.1 L60.5 133 L63.5 137.1 L67.3 140.2 L72.1 142.2 L78 143 L83.3 142.3 L87.6 140.4 L91.2 137.3 L94.2 133 L96.5 127.4 L98.1 120.8 L99 113.2 L99.1 104.9 L98.5 96.1 L97.1 86.7',
+    },
+    {
+      d: 'M43 124.8 L45 132.7 L48.4 140.2 L53.4 146.8 L60.2 152.3 L68.5 155.8 L78 157 L87.1 155.8 L95.1 152.2 L101.6 146.7 L106.4 139.7 L109.8 131.8 L111.9 123.2',
+      role: 'soft',
+    },
+    {
+      d: 'M48 136 l-3 3 M58 148 l-2 4 M78 153 v4 M96 148 l3 3 M107 132 l4 1',
+      role: 'ambient',
+    },
+    { d: 'M53.6 49.7 Q56 44 62.4 54.3' },
+    { d: 'M58 47 C56 34 68 28 74 36' },
+    {
+      d: 'M97.1 86.7 C92 74 100 64 112 62 C124 60 133 63 131 69 C129 76 116 80 106.9 85.3',
+    },
+    { d: 'M131 68 Q121 71 112 72', role: 'soft' },
+    {
+      d: 'M53.3 79.1 L63 77 M47 124.2 L56.9 122.6 M69.5 151.9 L72.1 142.2 M108 122.5 L98.1 120.8 M54 98 L62 99',
+      role: 'soft',
+    },
+    {
+      d: 'M109 134 C128 128 142 114 148 92 C138 104 128 110 120 110 C122 118 118 124 110 122',
       role: 'accent',
     },
-    {
-      d: 'M34 152 C22 136 24 118 36 106 C33 122 38 130 44 134 C40 142 41 147 44 152 Z',
-      role: 'soft',
-    },
-    {
-      d: 'M126 152 C138 136 136 118 124 106 C127 122 122 130 116 134 C120 142 119 147 116 152 Z',
-      role: 'soft',
-    },
-    shadow(80, 182, 46),
+    { d: 'M114 128 C126 124 134 116 138 106', role: 'soft' },
   ],
 
-  // A cross-hilted sword standing on its point, one wing of flame behind it.
+  // His cross-shaped sword laid at a slant, shaped like Mihawk's but plainer
+  // and with a pale blade: the single edge swelling toward the point, the
+  // bevel in soft, the long guard forked at both ends, the wrapped grip and
+  // the round pommel. The lunarian flame burns beside it as the accent.
+  // Both are with him from his first appearance (1087).
   's-hawk': [
-    { d: 'M80 36 L92 52 L92 128 L68 128 L68 52 Z' },
-    { d: 'M46 128 h68 v8 h-68z' },
-    { d: 'M74 136 v34 M86 136 v34 M72 170 h16' },
-    { d: circle(80, 178, 6) },
-    { d: 'M80 48 V124', role: 'soft' },
     {
-      d: 'M102 96 C122 88 136 70 140 48 C130 64 118 72 108 74 C110 84 108 90 102 96 Z',
+      d: 'M76 118 V36 C76 26 80 20 88 12 C94 30 96 48 92 70 C90 88 86 104 86 118',
+      transform: S_HAWK_SLANT,
+    },
+    {
+      d: 'M80 114 V40 C80 32 83 26 87 20',
+      role: 'soft',
+      transform: S_HAWK_SLANT,
+    },
+    { d: 'M42 118 h76 v6 h-76z', transform: S_HAWK_SLANT },
+    {
+      d: 'M42 118 q-6 -2 -8 -10 M42 124 q-6 2 -8 10 M118 118 q6 -2 8 -10 M118 124 q6 2 8 10',
+      transform: S_HAWK_SLANT,
+    },
+    { d: 'M76 124 V160 M84 124 V160', transform: S_HAWK_SLANT },
+    {
+      d: 'M76 134 l8 5 M76 144 l8 5 M76 154 l8 5',
+      role: 'soft',
+      transform: S_HAWK_SLANT,
+    },
+    { d: circle(80, 166, 6), transform: S_HAWK_SLANT },
+    {
+      d: 'M36 92 C18 84 8 66 10 44 C18 58 28 62 36 62 C34 72 36 82 36 92 Z',
       role: 'accent',
     },
-    shadow(80, 190, 30),
+    shadow(80, 188, 46),
   ],
 
   // Kuma's spotted bucket hat with its two round bear ears, the near one
@@ -161,102 +249,191 @@ export const eggheadArt = {
     },
   ],
 
-  // A light bulb with the filament lit, a switch thrown beside it.
+  // A power plug in 3/4, its two prongs as the accent: the record and the
+  // wiki both describe the two appendages on his head as a plug's prongs
+  // (1095). The body hatched on its far face, the grip in soft, the cord
+  // coiling away. A likeness, not something he carries; no bulb.
   'edison': [
-    { d: circle(76, 84, 40) },
-    { d: 'M60 116 q16 12 32 0' },
-    { d: 'M60 118 h32 v28 h-32z' },
-    { d: 'M60 126 h32 M60 134 h32', role: 'soft' },
-    { d: 'M70 146 h12 v8 h-12z' },
-    { d: 'M66 108 V92 L72 78 L80 92 L86 78 L92 92 V108', role: 'accent' },
-    { d: 'M108 152 h34 v22 h-34z' },
-    { d: 'M125 152 L134 138 M130 141 l8 4' },
-    shadow(76, 182, 36),
-  ],
-
-  // A right triangle held on a screen, a small arm working beside it.
-  'pythagoras': [
-    { d: 'M30 48 h100 v80 h-100z' },
-    { d: 'M38 56 h84 v64 h-84z', role: 'soft' },
-    { d: 'M50 110 H108 L50 66 Z', role: 'accent' },
-    { d: 'M50 102 h8 v8', role: 'accent' },
-    { d: 'M80 128 V146 M58 152 h44' },
-    { d: 'M130 96 L148 108 L138 130' },
-    { d: circle(148, 108, 4) },
-    { d: 'M138 130 l-9 6 M138 130 l3 11' },
-    { d: 'M52 152 h56 v8 h-56z' },
-    shadow(80, 172, 44),
-  ],
-
-  // A pair of gloves pressed flat against a pane of light.
-  'atlas': [
-    { d: 'M20 76 h50 v48 C70 140 58 148 45 148 C32 148 20 140 20 124 Z' },
-    { d: 'M20 98 h50', role: 'soft' },
-    { d: 'M33 124 v22 M45 124 v24 M57 124 v22', role: 'soft' },
-    { d: 'M90 76 h50 v48 C140 140 128 148 115 148 C102 148 90 140 90 124 Z' },
-    { d: 'M90 98 h50', role: 'soft' },
-    { d: 'M103 124 v22 M115 124 v24 M127 124 v22', role: 'soft' },
-    { d: 'M10 60 h140 v100 h-140z', role: 'accent', dashed: true },
-    shadow(80, 166, 56),
-  ],
-
-  // A heaped plate, a pillow beside it.
-  'york': [
-    { d: ellipse(62, 132, 46, 14) },
-    { d: ellipse(62, 130, 34, 9), role: 'soft' },
-    { d: 'M32 126 C40 92 84 92 92 126', role: 'accent' },
+    { d: 'M48 100 H94 V136 Q94 150 80 150 H62 Q48 150 48 136 Z' },
+    { d: 'M48 100 L62 92 H108 L94 100' },
+    { d: 'M108 92 V128 Q108 140 96 146' },
+    { d: 'M98 104 l6 -4 M98 116 l6 -4 M98 128 l6 -4', role: 'ambient' },
+    { d: 'M54 118 h34 M54 126 h34', role: 'soft' },
+    { d: 'M64 96 V64 h7 V96 M82 96 V64 h7 V96', role: 'accent' },
+    { d: 'M71 64 l3 -2 V94 M89 64 l3 -2 V94', role: 'soft' },
     {
-      d: dots([
-        [50, 108],
-        [70, 104],
-        [60, 118],
-      ]),
+      d: 'M71 150 C72 170 40 160 38 174 C36 186 76 188 98 178 C116 170 132 174 140 186',
+    },
+    shadow(76, 190, 40),
+  ],
+
+  // The wind-up key that turns on top of his round head, set apart as an
+  // object and laid at a slant, as he is first seen at 1095: the flat bow of
+  // two round lobes as the accent, with its slot and its thickness, the
+  // neck, the thick shaft hatched on its far side, the turning collar, and
+  // the square bit with its teeth.
+  'pythagoras': [
+    {
+      d: 'M80 40 C70 26 46 30 46 50 C46 70 70 74 80 62 C90 74 114 70 114 50 C114 30 90 26 80 40 Z',
+      role: 'accent',
+      transform: PYTHAGORAS_KEY,
+    },
+    {
+      d: 'M114 50 C117 60 113 70 104 74 M46 50 C44 58 46 66 52 70',
+      role: 'soft',
+      transform: PYTHAGORAS_KEY,
+    },
+    { d: 'M78 44 h4 v14 h-4 Z', role: 'soft', transform: PYTHAGORAS_KEY },
+    { d: 'M73 66 h14 v10 h-14 Z', transform: PYTHAGORAS_KEY },
+    { d: 'M74 76 V140 M86 76 V140', transform: PYTHAGORAS_KEY },
+    { d: 'M86 80 l4 -3 V138', role: 'soft', transform: PYTHAGORAS_KEY },
+    { d: 'M70 96 h20 v8 h-20 Z', transform: PYTHAGORAS_KEY },
+    { d: 'M70 100 h20', role: 'soft', transform: PYTHAGORAS_KEY },
+    {
+      d: 'M74 140 h12 v12 h-12 Z M74 146 h-6 v6 h6 M86 144 h5 v5 h-5',
+      transform: PYTHAGORAS_KEY,
+    },
+    {
+      d: 'M82 112 l4 -4 M82 124 l4 -4',
+      role: 'ambient',
+      transform: PYTHAGORAS_KEY,
+    },
+    shadow(84, 168, 50),
+  ],
+
+  // One of her Light-Pressure Gloves as a fist in 3/4, the white sleeve
+  // attached to it, punching through a hologram as she does at 1091: the
+  // knuckles and fingers in soft, the thumb across them, the underside
+  // hatched, and the pane of light breaking where it lands, as the accent.
+  'atlas': [
+    { d: 'M58 82 H96 Q108 82 108 94 V116 Q108 128 96 128 H62' },
+    { d: 'M58 82 L66 74 H98 Q108 74 112 84', role: 'soft' },
+    { d: 'M72 94 H104 M72 105 H106 M72 116 H104', role: 'soft' },
+    { d: 'M62 128 Q56 112 72 110 H88 q6 0 6 6 q0 6 -6 6 H72' },
+    { d: 'M58 76 C46 72 30 78 22 84 M58 134 C46 138 30 136 22 130' },
+    { d: 'M22 84 q-8 23 0 46 M40 80 q-6 26 0 52', role: 'soft' },
+    { d: 'M64 132 l6 -6 M76 132 l6 -6', role: 'ambient' },
+    { d: 'M114 40 L150 52 V172 L114 160 Z', role: 'soft' },
+    {
+      d: 'M112 104 L126 84 M112 104 L134 98 M112 104 L130 120 M112 104 L122 140',
       role: 'accent',
     },
-    { d: 'M112 136 C112 122 152 122 152 136 C152 150 112 150 112 136 Z' },
-    { d: 'M120 136 h24', role: 'soft' },
-    shadow(70, 158, 48),
-  ],
-
-  // A small square hat and a cane.
-  'jaygarcia-saturn': [
-    { d: 'M56 112 V80 h48 v32' },
-    { d: 'M44 112 q36 8 72 0 q-36 -6 -72 0z' },
-    { d: 'M56 104 h48', role: 'accent' },
-    { d: 'M140 176 V72 q-14 0 -14 12' },
-    { d: 'M136 176 h8', role: 'soft' },
-    { d: 'M20 184 H144', role: 'ambient', dashed: true },
-  ],
-
-  // A length of iron chain lying on the ground.
-  'ginny': [
-    { d: ellipse(36, 150, 14, 9) },
-    { d: ellipse(62, 150, 9, 6), role: 'soft' },
-    { d: ellipse(88, 150, 14, 9), role: 'accent' },
-    { d: ellipse(114, 150, 9, 6), role: 'soft' },
-    { d: ellipse(136, 150, 12, 8) },
-    { d: 'M14 172 H146', role: 'ambient', dashed: true },
-  ],
-
-  // A globe with its meridians drawn and a band around its middle.
-  'marcus-mars': [
-    { d: circle(80, 100, 52) },
-    { d: ellipse(80, 100, 22, 52), role: 'soft' },
-    { d: 'M28 100 h104', role: 'accent' },
-    { d: 'M36 74 h88 M36 126 h88', role: 'soft' },
-    shadow(80, 178, 52),
-  ],
-
-  // A pair of scales on a post, the two pans level.
-  'topman-warcury': [
-    { d: 'M80 46 V164 M56 164 h48' },
-    { d: 'M32 70 H128', role: 'accent' },
     {
-      d: 'M32 70 L18 116 M32 70 L46 116 M128 70 L114 116 M128 70 L142 116',
+      d: 'M136 66 l6 4 l-5 5z M140 134 l6 2 l-3 7z M126 58 l4 -4',
       role: 'soft',
     },
-    { d: 'M14 116 q18 16 36 0z M110 116 q18 16 36 0z' },
-    shadow(80, 178, 40),
+  ],
+
+  // A plate heaped with food in 3/4, the heap as the accent, a joint of meat
+  // sticking out of it and a bone she has already picked clean beside the
+  // plate: she eats for all the satellites at 1095.
+  'york': [
+    { d: ellipse(80, 140, 58, 16) },
+    { d: ellipse(80, 138, 44, 10), role: 'soft' },
+    {
+      d: 'M40 136 C40 120 50 108 64 108 C70 96 92 94 100 106 C112 108 120 120 120 136',
+      role: 'accent',
+    },
+    { d: 'M52 124 q10 -8 20 0 M84 116 q10 -8 22 2', role: 'soft' },
+    { d: 'M104 110 L126 90 M126 90 q-2 -8 4 -9 q5 0 4 6 q6 -1 7 4 q-1 6 -7 4' },
+    {
+      d: 'M14 172 L46 164 M14 172 q-7 -1 -6 -6 q2 -4 7 -1 M14 172 q-4 6 -8 3 M46 164 q2 -6 7 -4 q3 4 -2 7 q5 3 1 6 q-5 1 -6 -5',
+    },
+    { d: 'M98 150 l6 -4 M110 150 l6 -4', role: 'ambient' },
+    shadow(80, 162, 58),
+  ],
+
+  // His square black hat in 3/4, flat on top with softened corners and
+  // hatched because it is black,
+  // and his walking cane lying in front of it, the round grip as the accent.
+  // He has both from his first appearance (151) and on the way to Egghead
+  // (1105).
+  'jaygarcia-saturn': [
+    {
+      d: 'M44 92 Q42 90 46 89 L78 82 Q80 81.5 82 82 L114 89 Q118 90 116 92 L82 101 Q80 102 78 101 Z',
+    },
+    { d: 'M44 92 V116 Q44 120 48 122 Q62 128 80 128 V102' },
+    { d: 'M80 128 Q98 128 112 122 Q116 120 116 116 V92' },
+    { d: 'M44 110 Q60 120 80 120 Q100 120 116 110', role: 'soft' },
+    {
+      d: 'M48 104 l12 -8 M50 116 l16 -11 M62 124 l16 -11 M84 124 l16 -11 M100 122 l16 -11 M90 108 l16 -11',
+      role: 'ambient',
+    },
+    { d: 'M24 176 L132 152 M25.5 182 L133.5 158' },
+    { d: 'M24 176 L25.5 182' },
+    { d: 'M133 151 c4 -12 26 -10 26 4 c0 12 -16 14 -24 6', role: 'accent' },
+    shadow(80, 144, 44),
+  ],
+
+  // A joint of meat on the bone with a bite taken out of it, the bite as the
+  // accent: she has one when she first turns up beside Ivankov, biting it in
+  // her debut panel (ch. 1095 p. 15, boxed "Slave Jinny") and holding it up
+  // under the caption "Emporio Ivankov and Ginny, slaves" (ep. 1129,
+  // 21:13). The bone ends in a single knuckle, the meat's underside hatched.
+  'ginny': [
+    {
+      d: 'M44 120 C38 92 60 72 84 74 C92 72 96 76 98 80 q-6 4 -4 10 q-6 4 -2 10 q-6 4 -2 10 C102 112 98 118 92 122 C76 132 50 134 44 120 Z',
+      transform: GINNY_MEAT,
+    },
+    {
+      d: 'M98 80 q-6 4 -4 10 q-6 4 -2 10 q-6 4 -2 10',
+      role: 'accent',
+      transform: GINNY_MEAT,
+    },
+    {
+      d: 'M56 100 q10 -10 22 -8 M54 114 q10 4 20 0',
+      role: 'soft',
+      transform: GINNY_MEAT,
+    },
+    {
+      d: 'M52 126 l8 -6 M64 128 l10 -8 M80 124 l8 -6',
+      role: 'ambient',
+      transform: GINNY_MEAT,
+    },
+    { d: 'M94 118 L124 142 M100 112 L130 136', transform: GINNY_MEAT },
+    {
+      d: 'M124 142 q-4 8 4 10 q6 2 8 -4 q8 0 8 -8 q-2 -6 -10 -4 q0 -6 -8 -4',
+      transform: GINNY_MEAT,
+    },
+    shadow(84, 180, 54),
+  ],
+
+  // A globe tilted on its stand: a title emblem, not an object he holds. It
+  // stands for Warrior God of Environment, the title he is named with at
+  // ch. 1086 / ep. 1120. The equator is the accent, a meridian in soft, the
+  // half ring that holds it, and its night side hatched.
+  'marcus-mars': [
+    { d: circle(80, 90, 44) },
+    { d: ellipse(80, 90, 44, 12), role: 'accent', transform: MARS_TILT },
+    { d: ellipse(80, 90, 18, 44), role: 'soft', transform: MARS_TILT },
+    {
+      d: 'M98 52 l10 -2 M106 64 l14 -4 M110 78 l12 -4 M112 94 l10 -4 M110 110 l10 -5 M102 124 l12 -7',
+      role: 'ambient',
+    },
+    { d: 'M59.7 42.1 A52 52 0 0 0 100.3 137.9' },
+    { d: 'M100.3 137.9 Q96 150 80 150 V166' },
+    { d: 'M54 170 a26 6 0 0 0 52 0 a26 6 0 0 0 -52 0' },
+    shadow(80, 186, 34),
+  ],
+
+  // A pair of scales in 3/4: a title emblem, not an object he holds. It
+  // stands for Warrior God of Justice, the title he is named with at
+  // ch. 1086 / ep. 1120. The beam is the accent, tipped toward the near pan,
+  // which hangs lower and larger, the undersides of the pans hatched.
+  'topman-warcury': [
+    { d: 'M80 44 V160' },
+    { d: 'M76 44 L80 38 L84 44 L80 50 Z', role: 'soft' },
+    { d: 'M36 62 L126 76', role: 'accent' },
+    { d: 'M36 62 L24 104 M36 62 L48 104', role: 'soft' },
+    { d: 'M126 76 L106 120 M126 76 L146 120', role: 'soft' },
+    { d: 'M22 104 q14 10 28 0 M22 104 h28' },
+    { d: 'M102 120 q24 18 48 0 M102 120 a24 6 0 0 0 48 0' },
+    { d: 'M110 128 l6 -4 M124 132 l8 -6', role: 'ambient' },
+    { d: 'M30 110 l6 -4', role: 'ambient' },
+    {
+      d: 'M56 160 a24 6 0 0 0 48 0 a24 6 0 0 0 -48 0 M56 160 v6 a24 6 0 0 0 48 0 v-6',
+    },
+    shadow(80, 182, 34),
   ],
 
   // A katana laid across a stack of coins.

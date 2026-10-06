@@ -809,7 +809,10 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     sea: 'new-world',
     form: 'island',
     arc: 'egghead',
-    landmark: { it: 'La cupola del laboratorio', en: 'The laboratory dome' },
+    landmark: {
+      it: 'Un uovo spaccato sopra le nuvole',
+      en: 'A cracked egg above the clouds',
+    },
     log: {
       it: 'Un’isola che vive qualche secolo avanti al resto del mondo, costruita attorno al laboratorio di uno scienziato del Governo Mondiale. Le macchine che la abitano non dovrebbero esistere ancora, e la ciurma ci approda inseguita.',
       en: 'An island living a few centuries ahead of the rest of the world, built around the laboratory of a World Government scientist. The machines that live on it should not exist yet, and the crew lands there with someone on its tail.',
