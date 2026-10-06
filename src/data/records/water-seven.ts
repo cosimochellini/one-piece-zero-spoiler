@@ -74,8 +74,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 315,
       name: { it: 'Hamburg', en: 'Hamburg' },
       summary: {
-        it: 'Un gigante della ciurma di Foxy con due guantoni pesanti, che gioca la prima prova in piedi sulla sua barca e butta in mare chi gli passa accanto.',
-        en: 'A giant of a man in Foxy’s crew, two heavy gauntlets on his fists, who plays the first round standing on his boat and throws anyone near him into the sea.',
+        it: 'Un uomo enorme, dall’aria di gorilla, della ciurma di Foxy, con una sciarpa leopardata, che è al fianco del suo capitano quando Foxy sfida i Cappello di Paglia a un Davy Back Fight.',
+        en: 'A huge, gorilla-like man of Foxy’s crew in a leopard-spotted scarf, who is at his captain’s side when Foxy challenges the Straw Hats to a Davy Back Fight.',
       },
       visual: { art: 'hamburg', tint: 'ocher' },
     },
@@ -693,8 +693,8 @@ export const waterSeven: Saga = {
         en: 'Fighter of the Foxy Pirates',
       },
       log: {
-        it: 'È il più grosso della ciurma e ne fa il suo unico argomento: braccia enormi, guantoni pesanti e nessuna idea di che cosa dica il regolamento. Nella prima prova del Davy Back Fight si piazza in mezzo al campo e getta in mare chiunque gli passi accanto. Parla poco, e quasi sempre per ripetere il nome del suo capitano.',
-        en: 'He is the biggest man in the crew and treats that as his whole argument: huge arms, heavy gauntlets, no idea what the rules say. In the first round of the Davy Back Fight he plants himself in the middle of the field and throws anyone who comes near into the sea. He says little, and most of it is his captain’s name.',
+        it: 'Porta la maschera e i guanti lunghi dei Pirati di Foxy come il resto della ciurma, e una sciarpa leopardata. È con Foxy e Porche quando la loro nave blocca la Going Merry, e sta alle spalle del suo capitano mentre Foxy sfida i Cappello di Paglia.',
+        en: 'He wears the Foxy Pirates’ mask and long gloves like the rest of the crew, and a leopard-spotted scarf. He is with Foxy and Porche when their ship catches the Going Merry, and stands behind his captain while Foxy challenges the Straw Hats.',
       },
       affiliation: [
         { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
