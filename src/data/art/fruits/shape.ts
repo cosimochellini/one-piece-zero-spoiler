@@ -120,8 +120,8 @@ export function lobed(family: BodyFamily, rx: number, ry: number): string {
 /** Points read along each cubic of the right side when measuring a width. */
 const STEPS = 32
 
-/** One point of a cubic whose four points are profile fractions. */
-function bezier(cubic: [number, number][], t: number): [number, number] {
+/** One point of a cubic, `t` of the way along it from its first point. */
+export function bezier(cubic: [number, number][], t: number): [number, number] {
   const weights = [
     (1 - t) ** 3,
     3 * (1 - t) ** 2 * t,
@@ -141,7 +141,8 @@ function bezier(cubic: [number, number][], t: number): [number, number] {
 /**
  * How far the right side of a body reaches at height `y`, both as fractions
  * of its radii. It is read off the outline `lobed` draws, which on a pear or
- * a gourd runs well inside the ellipse its radii describe.
+ * a gourd runs well inside the ellipse its radii describe. Above the top
+ * or below the foot the side never crosses `y`, so the width there is 0.
  */
 export function widthAt(family: BodyFamily, y: number): number {
   const profile = PROFILES[family]

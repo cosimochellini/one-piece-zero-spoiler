@@ -38,7 +38,8 @@ const SPREAD = 0.55
  * its point, which only the bottom row of scales comes near. Each number is
  * the largest that keeps the mark a pen's half-width inside the outline for
  * every grain, which the generator's test checks. The mark shrinks the same
- * way in both directions, so a ring stays a ring.
+ * way in both directions, so a ring stays a ring. There is no slack in them:
+ * if that test fails after a profile or a radius changes, tune these again.
  */
 const ROOM: Partial<Record<BodyFamily, Partial<Record<SwirlFamily, number>>>> =
   {

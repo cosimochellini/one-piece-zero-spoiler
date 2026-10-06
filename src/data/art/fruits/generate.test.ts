@@ -22,7 +22,7 @@ import {
 } from './bespoke'
 import { fruit, type FruitSeed } from './generate'
 import type { LeafForm, StemForm } from './parts'
-import type { BodyFamily } from './shape'
+import { bezier, type BodyFamily } from './shape'
 import type { SwirlFamily } from './swirls'
 
 /**
@@ -110,23 +110,9 @@ const COMMAND = /[MLC][^MLCZ]*/gu
 function bend(from: Point, [one, two, to]: Point[]): Point[] {
   const ends = [from, one ?? from, two ?? from, to ?? from]
 
-  return Array.from({ length: CUBIC_STEPS }, (_unused, step) => {
-    const t = (step + 1) / CUBIC_STEPS
-    const weights = [
-      (1 - t) ** 3,
-      3 * (1 - t) ** 2 * t,
-      3 * (1 - t) * t ** 2,
-      t ** 3,
-    ]
-    const sum: Point = [0, 0]
-
-    for (const [index, [x, y]] of ends.entries()) {
-      sum[0] += (weights[index] ?? 0) * x
-      sum[1] += (weights[index] ?? 0) * y
-    }
-
-    return sum
-  })
+  return Array.from({ length: CUBIC_STEPS }, (_unused, step) =>
+    bezier(ends, (step + 1) / CUBIC_STEPS),
+  )
 }
 
 /**
