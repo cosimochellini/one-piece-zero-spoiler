@@ -81,6 +81,31 @@ const IZO_FLINTLOCK: Stroke[] = [
   { d: 'M-40 12 l5 4 M-36 4 l5 4 M-31 -4 l5 4', role: 'ambient' },
 ]
 
+/**
+ * One of the folding fans Izo dances with as a boy, open, the rivet at
+ * (0, 0) and the leaf above it: the paper leaf in his colour, the pleats,
+ * the sticks that run from the rivet to the leaf, and the hatching on every
+ * other pleat, the ones that fold away from the viewer.
+ */
+const IZO_FAN: Stroke[] = [
+  {
+    d: 'M-58.3 -21.2 A62 62 0 0 1 58.3 -21.2 L22.6 -8.2 A24 24 0 0 0 -22.6 -8.2 Z',
+    role: 'accent',
+  },
+  {
+    d: 'M-19 -14.6 L-49.2 -37.7 M-13.8 -19.7 L-35.6 -50.8 M-7.2 -22.9 L-18.6 -59.1 M0 -24 L0 -62 M7.2 -22.9 L18.6 -59.1 M13.8 -19.7 L35.6 -50.8 M19 -14.6 L49.2 -37.7',
+    role: 'soft',
+  },
+  {
+    d: 'M0 0 L-22.6 -8.2 M0 0 L-13.8 -19.7 M0 0 L0 -24 M0 0 L13.8 -19.7 M0 0 L22.6 -8.2',
+  },
+  { d: circle(0, 0, 3) },
+  {
+    d: 'M-33.2 -34.7 L-40.8 -42.6 M-7.3 -47.4 L-9 -58.3 M21.2 -43 L26.1 -52.9 M42.1 -23.1 L51.7 -28.4',
+    role: 'ambient',
+  },
+]
+
 /** One of Solitaire's four swords, point up, the end of the grip at (0, 0). */
 const SOLITAIRE_SWORD: Stroke[] = [
   { d: 'M-3 -26 V-116 L0 -124 L3 -116 V-26' },
@@ -656,13 +681,14 @@ export const wanoArt = {
     { d: 'M6 178 H154', role: 'ambient' },
   ],
 
-  // His two flintlocks, one laid across the other at another angle: barrel,
-  // muzzle, ramrod, the dark wooden grip hatched, and the lock with its cock
-  // in his colour. He has one in each hand when he lands in Wano (970).
+  // Two open folding fans, the smaller one tipped the other way over the
+  // corner of the first: as a boy he dances with a fan in each hand for
+  // coins in the snow of Ringo when Oden finds him (961, ch. 962). His
+  // flintlocks wait for 995, in `wanoRedrawn`.
   'izo': [
-    ...placed(IZO_FLINTLOCK, 'translate(74 98) rotate(-16)'),
-    ...placed(IZO_FLINTLOCK, 'translate(86 150) rotate(8)'),
-    shadow(80, 182, 60),
+    ...placed(IZO_FAN, 'translate(64 134) rotate(-20)'),
+    ...placed(IZO_FAN, 'translate(100 162) rotate(40) scale(0.8)'),
+    shadow(82, 188, 62),
   ],
 
   // A horned headpiece with the thick dome of a pachycephalosaur.
@@ -1480,6 +1506,20 @@ export const wanoRedrawn: Redrawings = {
         { d: 'M34 172 L42 178' },
         { d: 'M52 150 l8 6 M46 158 l8 6', role: 'soft' },
         shadow(84, 186, 40),
+      ],
+    },
+  ],
+  // His two flintlocks, one laid across the other at another angle: barrel,
+  // muzzle, ramrod, the dark wooden grip hatched, and the lock with its cock
+  // in his colour. He disarms King with a single shot at 995 (ch. 986).
+  izo: [
+    {
+      episode: 995,
+      chapter: 986,
+      value: [
+        ...placed(IZO_FLINTLOCK, 'translate(74 98) rotate(-16)'),
+        ...placed(IZO_FLINTLOCK, 'translate(86 150) rotate(8)'),
+        shadow(80, 182, 60),
       ],
     },
   ],

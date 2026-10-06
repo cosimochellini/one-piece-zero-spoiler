@@ -1049,7 +1049,7 @@ export const wano: Saga = {
           },
         },
         {
-          episode: 934,
+          episode: 939,
           value: { it: 'Figlia di Yasuie', en: 'Yasuie’s daughter' },
         },
       ],
