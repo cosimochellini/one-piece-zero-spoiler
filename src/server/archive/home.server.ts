@@ -7,18 +7,14 @@ import {
   getCharacter,
   stories,
 } from '~/data/characters'
+import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
 import { gateOf, type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import { markedIds } from '~/lib/prose/markers'
-import type {
-  CharacterView,
-  HomeStory,
-  HomeView,
-  LandingView,
-} from '~/lib/view/records'
+import type { HomeStory, HomeView, LandingView } from '~/lib/view/records'
 
 import { segmentsOf } from './chronicle.server'
 import { chartPage } from './pages.server'
@@ -46,7 +42,7 @@ export function landingPage(bookmark: Bookmark, locale: Locale): LandingView {
 
 /**
  * The home page: the arc the reader is in, the stories concluded in it so
- * far, and the characters those stories name most.
+ * far, and the arc's leads those stories name most (`~/data/leads`).
  *
  * The arc is the last one that opens at or before the bookmark, in the
  * reader's own unit; where two open on the same threshold the later one in
@@ -80,6 +76,8 @@ export function homePage(
 
   const resolve = (id: string): string | undefined =>
     getCharacter(id)?.name[locale]
+  const named = leadsNamed(shown, before ? previous : saga)
+  const cast = named.length > 0 ? named : newcomersOf(saga, at)
 
   return {
     before: before && shown.length > 0,
@@ -95,10 +93,7 @@ export function homePage(
         subject: { id: character.id, name: character.name[locale] },
       }
     }),
-    cast:
-      shown.length > 0 ?
-        castOf(shown, at, locale)
-      : newcomersOf(saga, at, locale),
+    cast: cast.map((character) => characterOf(character, locale, at)),
   }
 }
 
@@ -117,43 +112,39 @@ function reachedArcs(at: Reveal): [Entity, Entity | undefined] {
 }
 
 /**
- * The characters the stories name most: the subject counts as one mention
- * and every marker in the body as another. Ties go to the one named most
- * recently, which with the stories most recent first is the one met first:
- * the tally keeps first-mention order and the sort is stable.
+ * The leads of the arc the stories come from, as often as the stories name
+ * them: the subject counts as one mention and every marker in the body as
+ * another. Ties go to the one named most recently, which with the stories
+ * most recent first is the one met first: the tally keeps first-mention order
+ * and the sort is stable.
  */
-function castOf(
-  shown: FiledStory[],
-  at: Reveal,
-  locale: Locale,
-): CharacterView[] {
+function leadsNamed(shown: FiledStory[], told: Entity): Entity[] {
+  const leads = new Set(ARC_LEADS[told.id])
   const tally = new Map<string, number>()
   for (const { character, story } of shown) {
     for (const id of [character.id, ...markedIds(story.body.en)]) {
-      tally.set(id, (tally.get(id) ?? 0) + 1)
+      if (leads.has(id)) {
+        tally.set(id, (tally.get(id) ?? 0) + 1)
+      }
     }
   }
 
   return [...tally]
     .toSorted(byValue(([, count]) => count, byNumber({ desc: true })))
     .slice(0, CAST_COUNT)
-    .flatMap(([id]) => {
-      const entity = getCharacter(id)
-      return entity === undefined ? [] : [characterOf(entity, locale, at)]
-    })
+    .flatMap(([id]) => getCharacter(id) ?? [])
 }
 
-/** With no story to go on: the characters first met in this arc so far. */
-function newcomersOf(
-  saga: Entity,
-  at: Reveal,
-  locale: Locale,
-): CharacterView[] {
+/**
+ * With no lead to go on: the leads first met in this arc so far, which may be
+ * none, and the section is then left off the page.
+ */
+function newcomersOf(saga: Entity, at: Reveal): Entity[] {
+  const leads = new Set(ARC_LEADS[saga.id])
   const shelved =
     bookSections.find((section) => section.arc.id === saga.id)?.characters ?? []
 
   return orderByMode(shelved, at.mode)
-    .filter((character) => at.sees(character))
+    .filter((character) => leads.has(character.id) && at.sees(character))
     .slice(0, CAST_COUNT)
-    .map((character) => characterOf(character, locale, at))
 }
