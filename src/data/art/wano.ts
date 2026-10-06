@@ -8,7 +8,43 @@ import {
   shadow,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
+
+/**
+ * One neck of Orochi's shadow behind the paper door, base at (0, 0), the head
+ * turned right with one horn: a plain silhouette, no eye and no mouth.
+ */
+const OROCHI_NECK =
+  'M-6 0 C-14 -22 6 -38 -2 -58 C-6 -68 -2 -80 6 -84 C16 -90 32 -88 37 -80 C33 -74 22 -72 14 -72 C12 -68 10 -63 10 -58 C18 -38 -2 -22 6 0 M4 -85 L-2 -98 L12 -87'
+
+/**
+ * One of Komurasaki's tall geta, its toe at the back, origin under the front
+ * of the board: the board seen from above, its edge, the tall tooth, the thong.
+ */
+const KOMURASAKI_GETA: Stroke[] = [
+  { d: 'M-22 0 L-17 -40 Q-16 -46 -9 -46 H9 Q16 -46 17 -40 L22 0 Z' },
+  { d: 'M-22 0 V5 H22 V0' },
+  { d: 'M-17 5 V46 H17 V5' },
+  { d: 'M-12 -18 C-8 -28 -2 -34 0 -38 C2 -34 8 -28 12 -18' },
+]
+
+/** Komurasaki's geta set down at `transform`. */
+function komurasakiGeta(transform: string): Stroke[] {
+  return KOMURASAKI_GETA.map((stroke) => ({ ...stroke, transform }))
+}
+
+/** One of the short swords Black Maria wears in her hair: point up and right, guard, grip. */
+const MARIA_HAIR_SWORD =
+  'M0 0 L46 -30 L52 -36 L48 -28 L3 4 M-2 -5 L6 7 M-1 1 L-16 11 L-13 15 L2 5'
+
+/** Black Maria's pipe, set down on the crossing of her two hair swords. */
+const MARIA_PIPE = 'translate(0 12)'
+
+/** Who's-Who's katana, drawn level and then laid at a slant on the floor. */
+const WHOS_WHO_LAY = 'translate(0 26) rotate(-12 80 112)'
+
+/** Hotei's sword that is still whole, laid above the one that was snapped. */
+const HOTEI_WHOLE = 'translate(0 30)'
 
 /** The drawings of the records filed in the wano stretch of the route. */
 export const wanoArt = {
@@ -145,27 +181,43 @@ export const wanoArt = {
     { d: 'M4 190 H156', role: 'ambient' },
   ],
 
-  // The shogun's fan, open over a stack of serpent scales.
+  // The paper door in his castle with the shadow behind it: one body, five
+  // necks rising, each a serpent's head with a horn. At 921 (ch. 927) the
+  // shogun is only this shadow; his face, crown and kimono come at 922.
   'kurozumi-orochi': [
+    { d: 'M16 30 H144 V150 H16 Z' },
+    { d: 'M16 30 L22 24 H150 L144 30 M144 150 L150 144 V24', role: 'soft' },
+    { d: 'M80 30 V150' },
     {
-      d: 'M27.6 119.3 A64 64 0 0 1 132.4 119.3 L98 143.4 A22 22 0 0 0 62 143.4 Z',
+      d: 'M37.3 30 V150 M58.7 30 V150 M101.3 30 V150 M122.7 30 V150 M16 60 H144 M16 90 H144 M16 120 H144',
+      role: 'ambient',
     },
-    { d: 'M69 136.9 L48 100.6 M80 134 V92 M91 136.9 L112 100.6', role: 'soft' },
-    { d: circle(80, 150, 4) },
-    { d: 'M62 143.4 L58 152 M98 143.4 L102 152' },
     {
-      d: 'M50 168 q7.5 -8 15 0 M65 168 q7.5 -8 15 0 M80 168 q7.5 -8 15 0 M95 168 q7.5 -8 15 0',
+      d: 'M30 150 C36 130 58 122 80 122 C102 122 124 130 130 150',
       role: 'accent',
     },
+    { d: OROCHI_NECK, role: 'accent', transform: 'translate(76 126)' },
     {
-      d: 'M42.5 176 q7.5 -8 15 0 M57.5 176 q7.5 -8 15 0 M72.5 176 q7.5 -8 15 0 M87.5 176 q7.5 -8 15 0 M102.5 176 q7.5 -8 15 0',
+      d: OROCHI_NECK,
       role: 'accent',
+      transform: 'translate(60 130) scale(-0.92 0.84)',
     },
     {
-      d: 'M50 184 q7.5 -8 15 0 M65 184 q7.5 -8 15 0 M80 184 q7.5 -8 15 0 M95 184 q7.5 -8 15 0',
+      d: OROCHI_NECK,
       role: 'accent',
+      transform: 'translate(98 130) scale(0.88 0.76)',
     },
-    { d: 'M4 190 H156', role: 'ambient' },
+    {
+      d: OROCHI_NECK,
+      role: 'accent',
+      transform: 'translate(44 140) scale(-0.78 0.6)',
+    },
+    {
+      d: OROCHI_NECK,
+      role: 'accent',
+      transform: 'translate(114 140) scale(0.74 0.56)',
+    },
+    { d: 'M4 150 H156', role: 'ambient' },
   ],
 
   // A kunai: her fruit is not named until 916 (see wanoRedrawn).
@@ -193,18 +245,37 @@ export const wanoArt = {
     shadow(80, 170, 40),
   ],
 
-  // A microphone with a long tail coiled round it.
+  // His blond braid hanging through its eight ties down to the stinger-shaped
+  // tuft, and the cigar he always has, set down beside it, still lit. Both are
+  // his when he takes the stage at Udon (930).
   'queen': [
-    { d: circle(80, 50, 22) },
-    { d: 'M62 42 h36 M60 50 h40 M62 58 h36', role: 'soft' },
-    { d: 'M68 70 L70 96 h20 L92 70' },
-    { d: 'M72 96 v42 h16 v-42' },
     {
-      d: 'M8 186 C40 194 78 180 70 146 C64 118 94 102 120 112 L116 124 C96 116 80 128 84 148 C92 184 40 192 10 176 Z',
+      d: 'M62.6 14 C47.6 16 54.6 28 69.6 30 M69.6 30 C55.2 32 63.4 44 77.8 46 M77.8 46 C64 48 69.4 60 83.2 62 M83.2 62 C70 64 70.2 76 83.4 78 M83.4 78 C70.8 80 65.6 92 78.2 94 M78.2 94 C66.2 96 58.1 108 70.1 110 M70.1 110 C58.7 112 51.5 124 62.9 126 M62.9 126 C52.1 128 49.2 140 60 142',
+    },
+    {
+      d: 'M62.6 14 C77.6 16 84.6 28 69.6 30 M69.6 30 C84 32 92.2 44 77.8 46 M77.8 46 C91.6 48 97 60 83.2 62 M83.2 62 C96.4 64 96.6 76 83.4 78 M83.4 78 C96 80 90.8 92 78.2 94 M78.2 94 C90.2 96 82.1 108 70.1 110 M70.1 110 C81.5 112 74.3 124 62.9 126 M62.9 126 C73.7 128 70.8 140 60 142',
+    },
+    {
+      d: 'M59.6 17 C55.6 21 62.6 24 66.6 27 M65.6 17 C68.6 21 75.6 24 72.6 27 M66.6 33 C62.6 37 70.8 40 74.8 43 M72.6 33 C75.6 37 83.8 40 80.8 43 M74.8 49 C70.8 53 76.2 56 80.2 59 M80.8 49 C83.8 53 89.2 56 86.2 59 M80.2 65 C76.2 69 76.4 72 80.4 75 M86.2 65 C89.2 69 89.4 72 86.4 75 M80.4 81 C76.4 85 71.2 88 75.2 91 M86.4 81 C89.4 85 84.2 88 81.2 91 M75.2 97 C71.2 101 63.1 104 67.1 107 M81.2 97 C84.2 101 76.1 104 73.1 107 M67.1 113 C63.1 117 55.9 120 59.9 123 M73.1 113 C76.1 117 68.9 120 65.9 123 M59.9 129 C55.9 133 53 136 57 139 M65.9 129 C68.9 133 66 136 63 139',
+      role: 'soft',
+    },
+    {
+      d: 'M55.6 14 H69.6 M62.6 30 H76.6 M70.8 46 H84.8 M76.2 62 H90.2 M76.4 78 H90.4 M71.2 94 H85.2 M63.1 110 H77.1 M55.9 126 H69.9',
       role: 'accent',
     },
-    { d: 'M34 176 C52 174 62 164 64 152', role: 'accent' },
-    { d: 'M4 188 H156', role: 'ambient' },
+    {
+      d: 'M53 142 C42 154 52 170 60 184 C68 170 78 154 67 142 M53 142 H67',
+      role: 'accent',
+    },
+    { d: 'M56 150 C53 160 56 170 60 178', role: 'soft' },
+    { d: 'M100 176 L138 166 C142 165 144 171 140 172 L102 182 Z' },
+    { d: 'M130 168 l2 6', role: 'soft' },
+    {
+      d: 'M141 168 C150 160 140 152 148 142 C154 134 146 126 150 118',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(96, 190, 52),
   ],
 
   // His mask: the pteranodon waits for 924 (see wanoRedrawn).
@@ -218,17 +289,23 @@ export const wanoArt = {
     { d: 'M4 188 H156', role: 'ambient' },
   ],
 
-  // A shamisen, and the hairpin left lying by it.
+  // The oiran's tall geta, a pair set down side by side, and two of the golden
+  // hairpins she wears laid in front of them: she parades through the capital
+  // on them at 921.
   'komurasaki': [
-    { d: 'M30 138 L56 112 L90 146 L64 172 Z' },
-    { d: 'M40 138 L58 156', role: 'soft' },
-    { d: 'M56 112 L124 44 M64 120 L132 52' },
-    { d: 'M124 44 L132 52' },
-    { d: 'M118 38 l10 -8 M128 48 l10 -8' },
-    { d: 'M60 154 L120 46 M64 157 L124 49 M68 160 L128 52', role: 'accent' },
-    { d: 'M18 42 L34 100' },
-    { d: circle(16, 34, 9), role: 'accent' },
-    shadow(70, 182, 44),
+    ...komurasakiGeta('translate(54 112)'),
+    ...komurasakiGeta('translate(106 102) rotate(8)'),
+    {
+      d: 'M41 122 l-4 6 M41 136 l-4 6 M120 114 l-4 6 M118 128 l-4 6',
+      role: 'ambient',
+    },
+    shadow(80, 166, 58),
+    { d: 'M14 186 L86 174 M40 194 L112 186', role: 'accent' },
+    {
+      d: 'M86 174 L100 166 L104 178 Z M112 186 L126 178 L128 190 Z',
+      role: 'accent',
+    },
+    { d: 'M100 172 v10 M103 174 v9 M125 184 v8', role: 'soft' },
   ],
 
   // A round paper fan and a plate of dango.
@@ -261,18 +338,33 @@ export const wanoArt = {
     shadow(80, 182, 56),
   ],
 
-  // A post with a kimono and a festival mask hung on it.
+  // Tonoyasu's polka-dot bandana, still tied in the ring it makes round his
+  // head, set down on its side with the knot's two ends standing up. He wears
+  // it from the day he meets Zoro (922).
   'shimotsuki-yasuie': [
-    { d: 'M74 34 V186 M86 34 V186' },
-    { d: 'M26 62 H134 M26 72 H134' },
-    { d: 'M50 78 C46 116 46 152 50 172 H110 C114 152 114 116 110 78 Z' },
-    { d: 'M66 78 L80 112 L94 78' },
-    { d: 'M48 130 H112', role: 'soft' },
-    { d: 'M50 82 L26 90 V128 L50 122 M110 82 L134 90 V128 L110 122' },
-    { d: ellipse(128, 150, 15, 19), role: 'accent' },
-    { d: 'M114 144 h28', role: 'accent' },
-    { d: 'M128 131 C128 110 126 90 130 72', role: 'ambient', dashed: true },
-    { d: 'M4 190 H156', role: 'ambient' },
+    { d: 'M18 132 C18 100 142 100 142 132 C142 164 18 164 18 132 Z' },
+    { d: 'M38 126 C42 112 118 112 122 124 C118 140 42 142 38 126 Z' },
+    {
+      d: 'M38 126 C36 136 34 144 32 150 M122 124 C124 134 126 142 128 148',
+      role: 'soft',
+    },
+    {
+      d: 'M24 146 l6 -6 M28 152 l6 -6 M128 152 l6 -6 M124 156 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M70 110 C68 100 76 94 82 98 C88 94 96 100 92 110' },
+    {
+      d: 'M82 98 C72 80 52 72 42 80 C50 90 64 96 76 102 M84 98 C94 80 114 72 124 80 C116 90 102 96 88 102',
+    },
+    {
+      d: 'M54 82 C60 86 66 92 72 96 M112 82 C106 86 100 92 94 96',
+      role: 'soft',
+    },
+    {
+      d: `${circle(32, 132, 3.5)} ${circle(52, 144, 3.5)} ${circle(78, 148, 3.5)} ${circle(104, 146, 3.5)} ${circle(124, 136, 3.5)} ${circle(30, 116, 3)} ${circle(130, 114, 3)} ${circle(108, 105, 2.5)}`,
+      role: 'accent',
+    },
+    shadow(80, 176, 64),
   ],
 
   // A naginata on the bridge, the stolen swords piled at its foot.
@@ -304,17 +396,33 @@ export const wanoArt = {
     shadow(80, 186, 52),
   ],
 
-  // A kappa's straw hat over a sword.
+  // The arched iron door of his cell at the back of the Udon jail, the dark
+  // behind its bars, and the day's poisoned fish set down in front of it, as
+  // Udon is shown at 916.
   'kawamatsu': [
-    { d: 'M22 124 C38 70 122 70 138 124 Z' },
-    { d: 'M22 124 q58 16 116 0' },
-    { d: 'M80 86 L44 120 M80 86 V126 M80 86 L116 120', role: 'soft' },
-    { d: circle(80, 80, 5) },
-    { d: 'M140 136 L58 148 L58 156 L140 144 Z', role: 'accent' },
-    { d: 'M54 140 V164', role: 'accent' },
-    { d: 'M18 154 L50 149 L50 158 L18 163 Z' },
-    { d: 'M26 152 v8 M34 151 v8', role: 'soft' },
-    { d: 'M4 186 H156', role: 'ambient' },
+    { d: 'M30 150 V66 C30 30 110 30 110 66 V150' },
+    { d: 'M40 150 V68 C40 42 100 42 100 68 V150', role: 'soft' },
+    {
+      d: 'M52 150 V50 M64 150 V44 M76 150 V44 M88 150 V50 M40 78 H100 M40 106 H100 M40 134 H100',
+    },
+    {
+      d: 'M44 96 l6 -6 M56 96 l6 -6 M68 96 l6 -6 M80 96 l6 -6 M92 96 l6 -6 M44 124 l6 -6 M56 124 l6 -6 M68 124 l6 -6 M80 124 l6 -6 M92 124 l6 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M4 56 H24 M116 56 H156 M4 92 H30 M110 92 H156 M4 128 H30 M110 128 H156 M14 56 V92 M136 56 V92 M20 92 V128 M128 92 V128 M12 128 V150 M140 128 V150',
+      role: 'ambient',
+    },
+    { d: 'M4 150 H156', role: 'ambient' },
+    {
+      d: 'M78 170 C92 156 120 156 134 168 C120 180 92 182 78 170 Z M134 168 L150 158 L148 178 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M90 162 C86 166 86 172 90 176 M104 158 C108 152 116 152 120 160 M96 169 C108 166 120 166 132 168',
+      role: 'soft',
+    },
+    shadow(112, 186, 40),
   ],
 
   // A torn flag on a broken mast.
@@ -438,94 +546,161 @@ export const wanoArt = {
     { d: 'M4 176 H156', role: 'ambient' },
   ],
 
-  // A helmet with one long fang.
+  // His long katana in its pink scabbard with the white flowers on it, the
+  // quatrefoil guard, and a cigarette left burning beside it: he walks into
+  // Onigashima with both at 982.
   'whos-who': [
+    { d: 'M2 104 H38 V120 H2 Q-3 112 2 104 Z', transform: WHOS_WHO_LAY },
     {
-      d: 'M34 112 C34 52 126 52 126 112 C126 136 110 150 80 150 C50 150 34 136 34 112 Z',
-    },
-    { d: 'M60 66 C68 40 92 40 100 66' },
-    { d: 'M38 100 C60 108 100 108 122 100' },
-    {
-      d: dots([
-        [46, 110],
-        [66, 116],
-        [94, 116],
-        [114, 110],
-      ]),
+      d: 'M6 104 L12 120 L18 104 L24 120 L30 104 L36 120',
       role: 'soft',
+      transform: WHOS_WHO_LAY,
     },
     {
-      d: 'M64 144 C56 162 60 180 72 186 C70 170 72 154 78 144 Z',
+      d: 'M43 102 C38 94 52 92 49 102 C58 99 58 113 49 110 C52 120 38 118 43 110 C34 113 34 99 43 102 Z',
       role: 'accent',
+      transform: WHOS_WHO_LAY,
     },
-    { d: 'M68 150 C64 164 66 176 72 182', role: 'accent' },
-    shadow(80, 192, 30),
+    { d: 'M54 104 H150 Q158 112 150 120 H54 Z', transform: WHOS_WHO_LAY },
+    { d: 'M62 104 V120 M62 108 H150', role: 'soft', transform: WHOS_WHO_LAY },
+    {
+      d: 'M80 109 v8 M76.5 111 l7 4 M76.5 115 l7 -4 M106 109 v8 M102.5 111 l7 4 M102.5 115 l7 -4 M132 109 v8 M128.5 111 l7 4 M128.5 115 l7 -4',
+      role: 'soft',
+      transform: WHOS_WHO_LAY,
+    },
+    { d: 'M92 170 L128 164 L129 170 L93 176 Z M120 165 l1 6' },
+    {
+      d: 'M130 167 C138 162 132 156 138 150 C142 146 138 142 142 138',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(80, 186, 70),
   ],
 
-  // A courtesan's pipe, and the web spun over it.
+  // Her long pipe, the bowl still smoking, laid on the two short swords she
+  // wears in her hair: how she walks into Onigashima at 982.
   'black-maria': [
+    { d: MARIA_HAIR_SWORD, transform: 'translate(52 170)' },
+    { d: MARIA_HAIR_SWORD, transform: 'translate(108 170) scale(-1 1)' },
     {
-      d: 'M6 6 V110 M6 6 L44 100 M6 6 L80 76 M6 6 L104 34 M6 6 H112',
-      role: 'accent',
+      d: 'M-10 6 l2 4 M-6 4 l2 4',
+      role: 'soft',
+      transform: 'translate(52 170)',
     },
     {
-      d: 'M6 34 C26 38 34 30 36 6 M6 62 C44 68 62 48 66 6 M6 92 C62 98 92 66 98 6',
-      role: 'accent',
+      d: 'M-10 6 l2 4 M-6 4 l2 4',
+      role: 'soft',
+      transform: 'translate(108 170) scale(-1 1)',
     },
-    { d: 'M30 170 L126 62' },
-    { d: 'M36 176 L132 68' },
-    { d: 'M126 62 L132 68' },
-    { d: 'M126 60 L140 44 L150 54 L136 70 Z' },
-    { d: 'M30 170 L18 182 L26 190 L38 178 Z' },
-    { d: 'M148 36 c6 -10 -4 -14 2 -24', role: 'ambient', dashed: true },
+    {
+      d: 'M12 140 L28 133 L30 138 L14 145 Z',
+      role: 'accent',
+      transform: MARIA_PIPE,
+    },
+    { d: 'M28 133 L124 94 M30 138 L126 99', transform: MARIA_PIPE },
+    {
+      d: 'M124 94 L134 90 C134 84 136 80 140 78 L152 78 C152 86 146 94 136 98 L126 99',
+      role: 'accent',
+      transform: MARIA_PIPE,
+    },
+    { d: ellipse(146, 78, 6, 2), role: 'accent', transform: MARIA_PIPE },
+    { d: 'M60 120 l2 5 M90 108 l2 5', role: 'soft', transform: MARIA_PIPE },
+    {
+      d: 'M146 72 C138 62 150 56 142 46 C136 38 146 32 140 22',
+      role: 'ambient',
+      dashed: true,
+      transform: MARIA_PIPE,
+    },
+    shadow(80, 190, 60),
   ],
 
-  // A triceratops horn over a sabre.
+  // His cap: the puffed white crown dented along the top, the black band with
+  // its row of gold studs, the black visor, and the two slender golden horns
+  // curving up from the front, as he walks into Onigashima at 982.
   'sasaki': [
-    { d: 'M16 152 C54 136 92 134 120 140 L120 150 C92 144 54 146 16 160 Z' },
-    { d: 'M118 132 V158' },
-    { d: 'M124 138 L150 132 L152 142 L126 148 Z' },
-    { d: 'M56 128 C52 92 66 56 96 32 C102 60 92 104 78 130 Z', role: 'accent' },
-    { d: 'M70 126 C68 94 78 62 94 36', role: 'accent' },
-    { d: 'M60 106 q12 6 21 0 M64 82 q10 6 18 0', role: 'soft' },
-    { d: 'M4 184 H156', role: 'ambient' },
-  ],
-
-  // A studded club, and the chain it broke.
-  'yamato': [
-    { d: 'M44 178 L66 134 M52 182 L74 138' },
-    { d: 'M66 134 L84 142 L118 52 L104 42z', role: 'accent' },
     {
-      d: dots([
-        [84, 108],
-        [96, 114],
-        [90, 90],
-        [102, 96],
-        [96, 72],
-        [108, 78],
-        [102, 56],
-      ]),
-      role: 'accent',
+      d: 'M24 120 C14 96 26 66 58 66 C66 60 92 58 104 64 C134 62 150 92 138 118',
     },
-    { d: circle(48, 180, 6) },
-    { d: ellipse(110, 150, 8, 5) },
-    { d: ellipse(126, 158, 8, 5) },
-    { d: ellipse(142, 172, 8, 5), role: 'ambient' },
-    { d: 'M136 150 l6 -6 M132 174 l-6 6', role: 'ambient' },
-  ],
-
-  // A pair of binoculars over an open fan.
-  'bao-huang': [
-    { d: `${circle(56, 80, 24)} ${circle(112, 80, 24)}`, role: 'accent' },
-    { d: `${circle(56, 80, 15)} ${circle(112, 80, 15)}`, role: 'soft' },
-    { d: 'M76 72 h16 v16 h-16 Z' },
-    { d: 'M32 72 h-8 v16 h8 M136 72 h8 v16 h-8' },
-    { d: 'M19.4 143 A70 70 0 0 1 140.6 143 L97.3 168 A20 20 0 0 0 62.7 168 Z' },
     {
-      d: 'M70 160.7 L45 117.4 M80 158 V108 M90 160.7 L115 117.4',
+      d: 'M82 62 C76 80 74 100 78 124 M58 66 C66 72 82 72 104 64',
       role: 'soft',
     },
-    { d: circle(80, 176, 4) },
+    { d: 'M24 120 C54 132 108 132 138 118 V130 C108 144 54 144 24 132 Z' },
+    {
+      d: dots([
+        [34, 128],
+        [46, 132],
+        [58, 134],
+        [70, 136],
+        [94, 136],
+        [106, 134],
+        [118, 131],
+        [130, 127],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M126 132 l6 -8 M132 128 l4 -6', role: 'ambient' },
+    { d: 'M24 132 C30 152 70 160 104 150 C92 146 60 144 24 132' },
+    {
+      d: 'M36 146 l6 -6 M48 150 l6 -6 M60 152 l6 -6 M72 152 l6 -6 M84 152 l6 -5',
+      role: 'ambient',
+    },
+    { d: 'M66 132 C40 124 20 96 28 36 C36 90 54 114 74 126 Z', role: 'accent' },
+    {
+      d: 'M86 132 C112 122 132 94 126 38 C118 90 100 114 80 126 Z',
+      role: 'accent',
+    },
+    shadow(80, 172, 64),
+  ],
+
+  // The studded kanabo he carries when he first fights at 990, its far face dark,
+  // and at its foot Oden's logbook, which he tells Luffy about at 992.
+  'yamato': [
+    { d: 'M26 182 L50 150 M34 188 L58 156 M26 182 L34 188' },
+    { d: 'M30 176 l7 5 M36 168 l7 5 M42 160 l7 5', role: 'soft' },
+    { d: 'M46 148 L104 36 L122 30 L138 42 L62 160 Z' },
+    { d: 'M104 36 L120 46 L138 42 M120 46 L58 156', role: 'soft' },
+    {
+      d: 'M114.1 60.2 L127.4 53.2 M105.4 75.6 L116.7 69.7 M96.7 91 L106.1 86.2 M88 106.4 L95.5 102.7 M79.3 121.8 L84.8 119.2',
+      role: 'ambient',
+    },
+    {
+      d: `${circle(108, 50, 2.5)} ${circle(98, 68, 2.5)} ${circle(88, 86, 2.5)} ${circle(78, 104, 2.5)} ${circle(68, 122, 2.5)} ${circle(114, 62, 2.5)} ${circle(104, 80, 2.5)} ${circle(94, 98, 2.5)} ${circle(84, 116, 2.5)} ${circle(74, 134, 2.5)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M92 172 L130 162 L148 172 L110 182 Z M110 182 V186 L148 176 V172 M92 172 V176 L110 186',
+    },
+    {
+      d: 'M96 172 l4 -1 M102 170.5 l4 -1 M108 169 l4 -1 M114 167.5 l4 -1',
+      role: 'soft',
+    },
+    shadow(82, 194, 64),
+  ],
+
+  // Her big long-handled fan, the paper on its ribs left blank, and the
+  // flying squirrel's tail curling up behind it: both are hers from 985.
+  'bao-huang': [
+    {
+      d: 'M70 184 C44 186 22 172 18 150 q-8 -6 -2 -14 q-6 -8 0 -15 q-2 -10 6 -15 q2 -9 12 -10 q6 -7 16 -3 q10 -2 14 8 C68 110 60 118 52 114',
+    },
+    { d: 'M70 184 C54 178 42 162 42 144 C42 128 46 118 52 114', role: 'soft' },
+    {
+      d: 'M26 160 l6 -4 M24 140 l6 -2 M28 120 l5 0 M38 104 l3 3',
+      role: 'soft',
+    },
+    {
+      d: 'M44 72 C40 34 70 14 100 18 C132 22 148 50 140 82 C132 110 106 122 82 116 C58 110 46 94 44 72 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M90 112 L52 74 M90 112 L60 40 M90 112 L82 22 M90 112 L108 22 M90 112 L132 42 M90 112 L140 74',
+      role: 'soft',
+    },
+    { d: 'M48 94 C60 112 80 120 100 118', role: 'ambient' },
+    { d: 'M86 114 L80 184 M94 114 L88 184 M80 184 H88' },
+    { d: 'M82 160 h7 M81 170 h7', role: 'soft' },
+    shadow(80, 190, 56),
   ],
   // A teapot with its side handle, steam rising from the spout, and a
   // crane in flight over the hairpin that carries it.
@@ -569,22 +744,32 @@ export const wanoArt = {
     shadow(80, 176, 64),
   ],
 
-  // A long sword laid flat, a star for its guard, flames climbing off the
-  // blade.
+  // The belt round his belly and the lion set in its front, a round striped
+  // mane round a plain head, no face; his tall dark hat set down beside it.
+  // Both lion and hat are his at 901.
   'holdem': [
-    { d: 'M60 96 H146 L152 100 L146 104 H60' },
-    { d: 'M64 100 H140', role: 'soft' },
+    { d: 'M62 96 C84 90 140 90 158 96 V116 C140 110 84 110 62 116 Z' },
+    { d: 'M148 98 l6 -4 M148 108 l6 -4', role: 'ambient' },
     {
-      d: 'M48.0 84.0 L52.1 94.3 L63.2 95.1 L54.7 102.2 L57.4 112.9 L48.0 107.0 L38.6 112.9 L41.3 102.2 L32.8 95.1 L43.9 94.3 Z',
+      d: 'M138 104 Q144.1 112.2 135 117 Q136.9 127.1 126.7 127.5 Q124.1 137.3 114.7 133.2 Q108 141 101.3 133.2 Q91.9 137.3 89.3 127.5 Q79.1 127.1 81 117 Q71.9 112.2 78 104 Q71.9 95.8 81 91 Q79.1 80.9 89.3 80.5 Q91.9 70.7 101.3 74.8 Q108 67 114.7 74.8 Q124.1 70.7 126.7 80.5 Q136.9 80.9 135 91 Q144.1 95.8 138 104 Z',
       role: 'accent',
     },
-    { d: 'M34 96 H10 V104 H34' },
-    { d: 'M16 96 v8 M22 96 v8 M28 96 v8', role: 'soft' },
     {
-      d: 'M80 94 C70 80 86 72 78 56 C94 66 96 82 88 94 M110 94 C102 76 118 70 112 50 C128 64 128 84 118 94 M136 94 C130 82 142 76 138 64 C148 74 148 88 142 94',
+      d: 'M128 104 L137 104 M126 112.7 L134.1 116.6 M120.5 119.6 L126.1 126.7 M112.5 123.5 L114.5 132.3 M103.5 123.5 L101.5 132.3 M95.5 119.6 L89.9 126.7 M90 112.7 L81.9 116.6 M88 104 L79 104 M90 95.3 L81.9 91.4 M95.5 88.4 L89.9 81.3 M103.5 84.5 L101.5 75.7 M112.5 84.5 L114.5 75.7 M120.5 88.4 L126.1 81.3 M126 95.3 L134.1 91.4',
       role: 'accent',
     },
-    shadow(80, 130, 60),
+    {
+      d: 'M92 100 C92 88 124 88 124 100 C124 114 116 122 108 122 C100 122 92 114 92 100 Z M94 94 C90 88 94 84 99 88 M122 94 C126 88 122 84 117 88',
+    },
+    { d: 'M14 70 C14 64 50 64 50 70 L48 150 C40 154 24 154 16 150 Z' },
+    {
+      d: 'M14 70 C14 76 50 76 50 70 M6 152 C6 146 58 146 58 152 C58 160 6 160 6 152 Z',
+    },
+    {
+      d: 'M38 84 l8 -6 M38 100 l8 -6 M38 116 l8 -6 M38 132 l8 -6',
+      role: 'ambient',
+    },
+    shadow(84, 172, 72),
   ],
 
   // A food cart built like a ship on two wheels, a sail on its mast and
@@ -744,36 +929,58 @@ export const wanoArt = {
     shadow(80, 180, 40),
   ],
 
-  // A swollen bag of wind over two short blades crossed beneath it.
+  // Sugamichi, the giant catfish he rides on land, side on with its long
+  // whiskers and no eye, and his puffed-up cape swelling over its back like
+  // cloud. He rides it through the shogun's castle at 928.
   'fujin': [
-    { d: 'M24 96 C24 40 136 40 136 96 C120 84 40 84 24 96 Z' },
-    { d: `${circle(22, 100, 6)} ${circle(138, 100, 6)}` },
     {
-      d: 'M58 70 q8 -10 16 0 q-8 6 -12 -2 M90 62 q8 -10 16 0 q-8 6 -12 -2',
-      role: 'soft',
+      d: 'M14 134 C14 112 34 100 60 100 C90 100 120 108 136 120 L154 108 L150 132 L156 152 L136 142 C118 152 88 156 60 156 C34 156 14 150 14 134 Z',
     },
     {
-      d: 'M52 170 L114 116 L118 120 L56 174 Z M108 170 L46 116 L42 120 L104 174 Z',
+      d: 'M20 132 C8 132 2 140 4 150 M24 138 C16 146 16 156 22 162 M22 126 C10 120 6 110 12 102',
+    },
+    {
+      d: 'M70 156 C72 166 80 170 88 168 C86 162 84 158 84 155 M60 100 C66 92 78 90 86 102',
+      role: 'soft',
+    },
+    { d: 'M110 150 l6 -6 M120 146 l6 -6 M100 152 l6 -6', role: 'ambient' },
+    {
+      d: 'M52 104 C46 92 56 80 68 86 C72 72 90 70 96 82 C106 74 122 82 118 96 C128 98 132 110 124 116 C108 108 74 102 52 104 Z',
       role: 'accent',
     },
     {
-      d: 'M52 170 L40 180 L44 184 L56 174 M108 170 L120 180 L116 184 L104 174',
+      d: 'M64 96 C70 90 78 90 82 94 M98 92 C104 88 110 90 112 96',
+      role: 'soft',
     },
-    { d: 'M46 166 l12 12 M114 166 l-12 12' },
-    shadow(80, 192, 44),
+    shadow(84, 176, 70),
   ],
 
-  // A sword whole in its sash, and its twin snapped in two below it.
+  // His two swords: one still whole in its dark scabbard, the other snapped
+  // in two, the grip with a stub of blade and the rest of it lying apart.
+  // Hyogoro breaks it with a single stroke at 1022.
   'hotei': [
-    { d: 'M14 104 C54 94 106 94 146 104 L146 118 C106 108 54 108 14 118 Z' },
-    { d: 'M30 150 L134 58 M34 154 L138 62 M134 58 L138 62' },
-    { d: 'M30 150 L18 162 L22 166 L34 154' },
-    { d: 'M24 146 l12 12', role: 'soft' },
-    { d: 'M16 176 H44 V186 H16 Z' },
-    { d: 'M44 172 V190' },
-    { d: 'M44 178 H78 L84 181 L78 184 H44', role: 'accent' },
-    { d: 'M92 178 L90 181 L94 184 H140 L148 181 L140 178 Z', role: 'accent' },
-    { d: 'M20 181 H40', role: 'soft' },
+    { d: 'M14 86 L44 76 L46 82 L16 92 Z', transform: HOTEI_WHOLE },
+    {
+      d: 'M20 84 l4 6 M28 81 l4 6 M36 79 l4 6',
+      role: 'soft',
+      transform: HOTEI_WHOLE,
+    },
+    { d: ellipse(49, 78, 3, 8), transform: `${HOTEI_WHOLE} rotate(-18 49 78)` },
+    { d: 'M53 74 L146 44 Q152 46 148 52 L55 82 Z', transform: HOTEI_WHOLE },
+    {
+      d: 'M70 76 l4 -6 M90 70 l4 -6 M110 63 l4 -6 M130 57 l4 -6',
+      role: 'ambient',
+      transform: HOTEI_WHOLE,
+    },
+    { d: 'M14 160 L44 154 L45 160 L15 166 Z' },
+    { d: 'M20 158 l3 6 M28 156 l3 6 M36 155 l3 6', role: 'soft' },
+    { d: ellipse(48, 156, 3, 8), transform: 'rotate(-10 48 156)' },
+    { d: 'M52 153 L76 149 L79 152 L76 154 L78 157 L53 159 Z', role: 'accent' },
+    {
+      d: 'M92 166 L95 162 L93 160 L96 157 L140 150 L152 151 L142 156 L94 169 Z',
+      role: 'accent',
+    },
+    shadow(82, 184, 70),
   ],
 
   // A tall hat balanced on the end of a long upright staff.
@@ -805,26 +1012,34 @@ export const wanoArt = {
     { d: 'M58 112 L44 188 H118 L104 112 M81 122 V188', role: 'soft' },
     shadow(81, 194, 40),
   ],
-  // A shamisen standing on its body, its plectrum beside it, a thin moon
-  // behind the pegs.
+  // Her father's castle burning, as Kin'emon tells it at 910: three storeys
+  // on a stone base, fire out of the windows and off the roofs, smoke going up.
   'kozuki-hiyori': [
+    { d: 'M26 150 L38 120 H122 L134 150 Z' },
     {
-      d: 'M50 114 H106 Q112 114 112 120 V160 Q112 166 106 166 H50 Q44 166 44 160 V120 Q44 114 50 114 Z',
+      d: 'M122 120 L134 150 M118 128 l6 -6 M122 138 l7 -7 M126 148 l7 -7',
+      role: 'ambient',
     },
-    { d: 'M74 114 V34 H82 V114' },
-    { d: 'M73 34 L75 16 H81 L83 34' },
-    { d: 'M64 20 H75 M81 24 H92 M64 28 H75' },
-    { d: 'M76 36 V152 M78 36 V152 M80 36 V152', role: 'accent' },
-    { d: 'M68 152 H88' },
+    { d: 'M32 136 H128', role: 'soft' },
+    { d: 'M46 120 V102 H114 V120 M58 92 V80 H102 V92 M66 70 V60 H94 V70' },
     {
-      d: 'M122 154 L124 128 L106 100 Q124 92 142 100 L128 128 L126 154 Z',
+      d: 'M32 104 Q46 102 54 92 H106 Q114 102 128 104 M46 82 Q58 80 64 70 H96 Q102 80 114 82 M56 62 Q68 58 80 42 Q92 58 104 62',
+    },
+    {
+      d: 'M62 120 V108 h10 V120 M88 120 V108 h10 V120 M74 92 V84 h12 V92',
+      role: 'soft',
+    },
+    {
+      d: 'M66 106 C58 96 68 90 64 78 C74 86 78 98 70 106 M92 106 C86 98 94 90 92 80 C100 88 102 98 96 106 M108 80 C102 70 110 64 108 52 C116 60 118 72 112 80 M48 92 C42 84 50 76 46 66 C54 72 58 84 52 92',
       role: 'accent',
     },
     {
-      d: 'M122 22 C108 28 106 50 120 58 C104 56 98 32 112 22 C115 20 119 20 122 22 Z',
-      role: 'soft',
+      d: 'M80 40 C70 30 84 24 76 14 M98 54 C108 44 96 36 108 26 C114 20 110 12 116 6',
+      role: 'ambient',
+      dashed: true,
     },
-    shadow(80, 180, 48),
+    { d: 'M4 150 H156', role: 'ambient' },
+    { d: 'M14 162 H146 M30 174 H130', role: 'ambient', dashed: true },
   ],
 
   // A mine entrance cut into a rock face, framed in timber and shut with iron bars, rails running out of it.
@@ -957,19 +1172,34 @@ export const wanoArt = {
     shadow(96, 188, 52),
   ],
 
-  // Two long horns curving up over a horse's tail that sweeps down to the
-  // ground.
+  // What the giants have in their chamber of the fortress at 1055: a sake
+  // barrel big enough for them, open, a ladle in it, a bottle leaning on it,
+  // and a heaped platter.
   'fuga': [
-    { d: 'M66 100 C40 84 30 52 40 20 C46 52 58 74 78 90 Z', role: 'accent' },
+    { d: ellipse(62, 70, 40, 12) },
     {
-      d: 'M94 100 C120 84 130 52 120 20 C114 52 102 74 82 90 Z',
+      d: 'M22 70 C18 100 20 130 26 152 C44 162 80 162 98 152 C104 130 106 100 102 70',
+    },
+    { d: ellipse(62, 72, 32, 8), role: 'soft' },
+    {
+      d: 'M22 92 C44 104 80 104 102 92 M24 132 C44 144 80 144 100 132',
       role: 'accent',
     },
-    { d: ellipse(80, 106, 10, 4) },
-    { d: 'M80 110 C70 132 92 152 74 184' },
-    { d: 'M86 110 C84 136 106 152 96 186' },
-    { d: 'M74 110 C56 132 70 160 52 180', role: 'soft' },
-    shadow(80, 190, 36),
+    { d: 'M90 104 l6 -6 M92 118 l7 -7 M90 146 l6 -6', role: 'ambient' },
+    {
+      d: 'M70 72 L100 34 M96 30 C102 24 110 30 104 36 C100 40 96 36 96 30',
+      role: 'soft',
+    },
+    {
+      d: 'M112 150 C104 134 108 112 122 106 L124 90 H134 L134 106 C148 112 152 134 144 150',
+    },
+    { d: 'M122 90 H136 M112 150 C124 154 134 154 144 150', role: 'soft' },
+    { d: ellipse(110, 174, 40, 7) },
+    {
+      d: 'M78 172 C80 160 92 158 98 164 C102 152 118 152 122 162 C128 154 142 158 142 170',
+      role: 'soft',
+    },
+    shadow(84, 190, 72),
   ],
 
   // A flame standing up in the shape of a hooded monk, rising out of a pool
