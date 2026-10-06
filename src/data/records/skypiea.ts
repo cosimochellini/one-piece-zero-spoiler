@@ -253,8 +253,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 280,
       name: { it: 'Kamakiri', en: 'Kamakiri' },
       summary: {
-        it: 'Un guerriero shandia con la cresta alta e occhiali tondi dalle lenti rosse, che sorprende Aisa di ritorno da Upper Yard e la avverte che, se continua ad andarci, ci lascerà la pelle.',
-        en: 'A Shandia warrior with a high crest and round red glasses, who catches Aisa coming back from Upper Yard and warns her that if she keeps going there she will be killed.',
+        it: 'Un guerriero shandia con la cresta alta e occhiali tondi dalle lenti rosse, che avverte Aisa che, se continua ad andare a Upper Yard, ci lascerà la pelle.',
+        en: 'A Shandia warrior with a high crest and round red glasses, who warns Aisa that she will be killed if she keeps going to Upper Yard.',
       },
       visual: { art: 'kamakiri', tint: 'green' },
     },
@@ -291,8 +291,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 280,
       name: { it: 'Laki', en: 'Laki' },
       summary: {
-        it: 'Una guerriera shandia con un lungo fucile, che si prende cura di Aisa come una sorella maggiore e combatte accanto a Wiper nell’attacco a Upper Yard.',
-        en: 'A Shandia warrior with a long rifle, who looks after Aisa like an older sister and fights beside Wyper in the attack on Upper Yard.',
+        it: 'Una guerriera shandia con un lungo fucile, che promette ad Aisa di riempirle il sacchetto di terra di Upper Yard e combatte accanto a Wiper nell’attacco alla foresta.',
+        en: 'A Shandia warrior with a long rifle, who promises to fill Aisa’s little bag with soil from Upper Yard and fights beside Wyper in the attack on the forest.',
       },
       visual: { art: 'laki', tint: 'lavender' },
     },
@@ -607,8 +607,8 @@ export const skypiea: Saga = {
         en: 'Captain of the Bellamy Pirates',
       },
       log: {
-        it: 'A Mock Town nessuno osa contraddire lui o la sua ciurma. Chiama nuova era quella in cui i pirati non sognano più. Dice a Rufy che lo sta mettendo alla prova, gli offre da bere e poi gli sbatte la testa sul bancone, e Rufy dice a Zoro di non reagire.',
-        en: 'Nobody in Mock Town dares contradict him or his crew. He calls it the new age, the one where pirates no longer dream. He tells Luffy he is putting him to the test, buys him a drink and then smashes his head into the counter, and Luffy tells Zoro not to fight back.',
+        it: 'A Mock Town nessuno osa contraddire lui o la sua ciurma. Chiama nuova era quella in cui i pirati non sognano più. Offre da bere a Rufy, gli sbatte la testa sul bancone e poi dice che è solo una prova, e Rufy dice a Zoro di non reagire.',
+        en: 'Nobody in Mock Town dares contradict him or his crew. He calls it the new age, the one where pirates no longer dream. He buys Luffy a drink, smashes his head into the counter and then says it is only a test, and Luffy tells Zoro not to fight back.',
       },
       affiliation: [
         {
@@ -1045,8 +1045,8 @@ export const skypiea: Saga = {
     'braham': {
       role: SHANDIA_WARRIOR,
       log: {
-        it: 'Porta un paio di piccole pistole a due canne, e ne pulisce una mentre Wiper parla alla riunione dei guerrieri. C’è anche lui quando Aisa sente due voci spegnersi nella foresta, e parte con gli altri all’attacco di Upper Yard.',
-        en: 'He carries a pair of small double-barrelled pistols, and cleans one of them while Wyper talks at the warriors’ meeting. He is there when Aisa feels two voices go out in the forest, and he leaves with the others to attack Upper Yard.',
+        it: 'Porta un paio di piccole pistole a due canne, e ne pulisce una mentre Wiper parla alla riunione dei guerrieri. Quando i guerrieri si mettono in marcia, parte con loro all’attacco di Upper Yard.',
+        en: 'He carries a pair of small double-barrelled pistols, and cleans one of them while Wyper talks at the warriors’ meeting. When the warriors set out, he goes with them to attack Upper Yard.',
       },
       affiliation: [{ episode: 164, value: SHANDIA }],
       origin: [{ episode: 164, value: SKY_ISLAND }],
@@ -1207,8 +1207,8 @@ export const skypiea: Saga = {
     'gedatsu': {
       role: ENEL_PRIEST,
       log: {
-        it: 'Raggiunge gli altri sacerdoti dopo che hanno inseguito un intruso per Upper Yard, e li avverte che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
-        en: 'He joins the other priests after they have chased an intruder across Upper Yard, and tells them that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
+        it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
+        en: 'After the priests have chased an intruder across Upper Yard, he tells the others that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
       affiliation: [
         { episode: 166, value: ENEL_PRIESTS },
