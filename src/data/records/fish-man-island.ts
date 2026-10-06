@@ -301,8 +301,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Ikaros Much', en: 'Ikaros Much' },
       summary: {
-        it: 'Un uomo-pesce calamaro, ufficiale dei Nuovi Pirati Uomini-Pesce, che sovrasta il resto della ciurma, con otto braccia e una lancia in ogni mano, ognuna con un calamaro essiccato per punta.',
-        en: 'A squid fish-man, an officer of the New Fish-Man Pirates who towers over the rest of the crew, with eight arms and a spear in each hand, every spearhead a dried squid.',
+        it: 'Un uomo-pesce calamaro, ufficiale dei Nuovi Pirati Uomini-Pesce, che sovrasta il resto della ciurma, con otto braccia e una lancia in ogni mano, ognuna con la punta a forma di calamaro essiccato.',
+        en: 'A squid fish-man, an officer of the New Fish-Man Pirates who towers over the rest of the crew, with eight arms and a spear in each hand, each spearhead shaped like a dried squid.',
       },
       visual: { art: 'ikaros-much', tint: 'ivory' },
     },
@@ -313,8 +313,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Dosun', en: 'Dosun' },
       summary: {
-        it: 'Un uomo-pesce squalo martello, ufficiale dei Nuovi Pirati Uomini-Pesce, che porta un enorme martello dal manico lungo e nodoso e chiude le frasi con “dosun”.',
-        en: 'A hammerhead shark fish-man, an officer of the New Fish-Man Pirates, who carries a huge hammer on a long, gnarled handle and ends his sentences with “dosun”.',
+        it: 'Un uomo-pesce squalo martello, ufficiale dei Nuovi Pirati Uomini-Pesce, che porta un enorme martello dal manico lungo e nodoso e chiude spesso le frasi con “dosun”.',
+        en: 'A hammerhead shark fish-man, an officer of the New Fish-Man Pirates, who carries a huge hammer on a long, gnarled handle and often ends his sentences with “dosun”.',
       },
       visual: { art: 'dosun', tint: 'sand' },
     },
@@ -391,8 +391,8 @@ export const fishManIsland: Saga = {
       revealedAtChapter: 628,
       name: { it: 'Aladine', en: 'Aladine' },
       summary: {
-        it: 'Il medico di bordo dei Pirati del Sole, un tritone brotula che porta un tridente sulla schiena ed è stato schiavo anche lui.',
-        en: 'The ship’s doctor of the Sun Pirates, a brotula merman who carries a trident on his back and was once a slave himself.',
+        it: 'Il medico di bordo dei Pirati del Sole, un tritone che porta un tridente sulla schiena ed è stato schiavo anche lui.',
+        en: 'The ship’s doctor of the Sun Pirates, a merman who carries a trident on his back and was once a slave himself.',
       },
       visual: { art: 'aladine', tint: 'teal' },
     },
@@ -774,7 +774,7 @@ export const fishManIsland: Saga = {
     'ryuboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
-        it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kaimi è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
+        it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene notizie di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kaimi è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
         en: 'He sings the end of almost every sentence up or down a scale. At Mermaid Cove he and his brothers ask the mermaids about an illegal entry, and when Luffy knocks out Hammond and his men he starts to draw his sword. After Camie takes off in the princes’ gondola with the Straw Hats aboard, he tells the mermaids the princes were looking for the crew for another reason: they had a message from Jinbe to give them.',
       },
       affiliation: [
@@ -897,8 +897,8 @@ export const fishManIsland: Saga = {
         en: 'Officer of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno degli ufficiali intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude ogni frase con “dosun”.',
-        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the officers around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he ends each sentence with “dosun”.',
+        it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno degli ufficiali intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude spesso le frasi con “dosun”.',
+        en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the officers around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he often ends his sentences with “dosun”.',
       },
       affiliation: [{ episode: 530, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 530, value: FISH_MAN_ISLAND }],
@@ -1064,7 +1064,7 @@ export const fishManIsland: Saga = {
         en: 'Combatant of the Big Mom Pirates',
       },
       log: {
-        it: 'Arriva alla fabbrica di dolci con Tamago per ritirare i dolci che l’isola paga ogni mese a Big Mom in cambio del suo nome. Quando il Ministro della Sinistra chiede pietà perché la fabbrica è stata danneggiata, risponde che non è affar loro e ringhia che, se Big Mom si arrabbia, li distruggerà tutti. La folla lo trova carino mentre lo dice. Quando Big Mom chiama alla lumaca, non risponde: non vuole farsi sgridare.',
+        it: 'Arriva alla fabbrica di dolci con Tamago per ritirare i dolci che l’isola paga ogni mese a Big Mom in cambio del permesso di usare il suo nome. Quando il Ministro della Sinistra chiede pietà perché la fabbrica è stata danneggiata, risponde che non è affar loro e ringhia che, se Big Mom si arrabbia, li distruggerà tutti. La folla lo trova carino mentre lo dice. Quando Big Mom chiama con la lumaca telefonica, non risponde: non vuole farsi sgridare.',
         en: 'He comes to the candy factory with Tamago to collect the sweets the island pays Big Mom every month in exchange for the use of her name. When the Minister of the Left begs for mercy because the factory has been damaged, he answers that it is none of their concern and growls that if Big Mom gets angry she will destroy them all. The crowd finds him cute while he does it. When Big Mom calls on the transponder snail, he will not pick up, because he does not want to be yelled at.',
       },
       affiliation: [
