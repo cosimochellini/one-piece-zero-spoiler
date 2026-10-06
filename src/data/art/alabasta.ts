@@ -509,7 +509,7 @@ export const alabastaArt = {
   'bon-clay': [
     ...BON_CLAY_SHOE,
     {
-      d: 'M146 176 C130 140 154 120 148 84 C144 60 116 52 108 70 C104 80 112 88 120 82 M108 70 L94 72 L106 78',
+      d: 'M146 176 C130 140 154 120 148 84 C144 60 116 52 108 70 L94 72 L106 78 C120 78 134 80 140 88',
       role: 'soft',
     },
     { d: 'M138 176 C124 142 146 122 140 88', role: 'soft' },
@@ -894,8 +894,9 @@ export const alabastaArt = {
     shadow(80, 190, 46),
   ],
 
-  // The Spiders Cafe at 103: a diamond-patterned bandanna folded over the
-  // edge of the counter, and a tall glass she has just poured.
+  // The Spiders Cafe at 103, where she is Paula, its owner: her
+  // diamond-patterned bandanna folded over the edge of the counter, and a
+  // glass of the tea she pours for the agents as they arrive.
   'miss-doublefinger': [
     { d: 'M14 126 H146 M6 138 H154', role: 'ambient' },
     { d: 'M22 138 H90 L58 182 Z' },
@@ -925,7 +926,7 @@ export const alabastaArt = {
   ],
 
   // Her necktie, cut like a fir tree and dotted with red baubles, and the
-  // glass she sits over at the Spiders Cafe counter (103).
+  // orange pekoe she bangs the Spiders Cafe counter for (103).
   'miss-merry-christmas': [
     { d: 'M66 22 L80 30 L94 22', role: 'soft' },
     { d: 'M72 30 H88 L85 42 H75 Z' },
@@ -1057,7 +1058,7 @@ export const alabastaArt = {
   ],
 
   // Her round flintlock, spotted like a frog, its muzzle a frog's head, a
-  // puff of smoke at the bore: the gun she shoots a royal guard down with.
+  // puff of smoke in front of it: the gun she shoots a royal guard down with.
   'miss-fathers-day': [
     {
       d: 'M30 92 C30 80 42 76 56 78 H96 C100 78 102 82 102 86 V98 C102 102 100 104 96 104 H60',
@@ -1072,7 +1073,6 @@ export const alabastaArt = {
       d: 'M102 80 C104 66 112 62 118 68 C122 60 134 60 136 70 C144 74 148 86 144 98 C138 108 112 108 102 100',
       role: 'accent',
     },
-    { d: ellipse(138, 92, 4, 6), role: 'accent' },
     {
       d: dots([
         [64, 88],
