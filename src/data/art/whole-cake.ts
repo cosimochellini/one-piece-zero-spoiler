@@ -653,7 +653,7 @@ export const wholeCakeArt = {
   ],
 
   // A bull's horns above the clouds.
-  'aramaki': [
+  'ryokugyu': [
     {
       d: 'M78 76 C56 78 36 68 28 48 C24 36 32 26 42 30 C56 36 62 58 78 62 Z',
       role: 'accent',
