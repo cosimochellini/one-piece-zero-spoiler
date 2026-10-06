@@ -162,6 +162,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 314,
+      chapter: 432,
       value: {
         title: {
           it: 'Il nonno passa dal muro',
@@ -175,6 +176,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 349,
+      chapter: 456,
       value: {
         title: { it: 'L’ombra tagliata via', en: 'The shadow cut away' },
         body: {
@@ -185,6 +187,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 373,
+      chapter: 480,
       value: {
         title: {
           it: 'Rufy da incubo, e Oz cade',
@@ -342,6 +345,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 869,
+      chapter: 894,
       value: {
         title: { it: 'Un lampo di futuro', en: 'A flash of the future' },
         body: {
@@ -352,6 +356,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 916,
+      chapter: 924,
       value: {
         title: { it: 'Il primo pugno a Kaido', en: 'The first punch at Kaido' },
         body: {
@@ -362,6 +367,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 956,
+      chapter: 955,
       value: {
         title: { it: 'Un Haki che scorre', en: 'Haki that flows' },
         body: {
@@ -392,6 +398,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1152,
+      chapter: 1121,
       value: {
         title: {
           it: 'Chiamato con un altro nome',
@@ -503,6 +510,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 300,
+      chapter: 418,
       value: {
         title: { it: 'Asura', en: 'Asura' },
         body: {
@@ -523,6 +531,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 362,
+      chapter: 467,
       value: {
         title: {
           it: 'Ryuma cade, nasce Shusui',
@@ -622,6 +631,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1027,
+      chapter: 1010,
       value: {
         title: { it: 'Asura sul tetto', en: 'Asura on the roof' },
         body: {
@@ -665,6 +675,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
         title: {
           it: 'Un brindisi per il ragazzo col cappello',
@@ -701,6 +712,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 434,
+      chapter: 533,
       value: {
         title: {
           it: 'Ferma un altro Imperatore per strada',
@@ -727,6 +739,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 505,
+      chapter: 590,
       value: {
         title: {
           it: 'L’ultimo saluto a Barbabianca e Ace',
@@ -865,6 +878,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 361,
+      chapter: 466,
       value: {
         title: {
           it: 'Troppo negativo per le sue fantasme',
@@ -971,6 +985,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1076,
+      chapter: 1049,
       value: {
         title: {
           it: 'Due samurai fuori dal fuoco',
@@ -1121,6 +1136,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 359,
+      chapter: 464,
       value: {
         title: {
           it: 'Il frutto che Sanji voleva',
@@ -1226,6 +1242,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 832,
+      chapter: 862,
       value: {
         title: { it: 'Il primo a dirlo', en: 'The first to say it' },
         body: {
@@ -1376,6 +1393,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 296,
+      chapter: 412,
       value: {
         title: { it: 'Pioggia sul sapone', en: 'Rain against soap' },
         body: {
@@ -1386,6 +1404,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 320,
+      chapter: 436,
       value: {
         title: {
           it: 'Gatta Ladra, sedici milioni',
@@ -1399,6 +1418,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 366,
+      chapter: 471,
       value: {
         title: {
           it: 'Le nozze interrotte da Lola',
@@ -1455,6 +1475,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 865,
+      chapter: 890,
       value: {
         title: { it: 'Servi me, o muori', en: 'Serve me, or die' },
         body: {
@@ -1465,6 +1486,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1038,
+      chapter: 1016,
       value: {
         title: { it: 'Zeus nel bastone', en: 'Zeus in the staff' },
         body: {
@@ -1542,6 +1564,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1122,
+      chapter: 1088,
       value: {
         title: { it: 'Honesty Impact', en: 'Honesty Impact' },
         body: {
@@ -1567,6 +1590,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 8,
+      chapter: 20,
       value: {
         title: {
           it: 'Sparato fuori da Orange Town',
@@ -1644,6 +1668,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
         title: {
           it: 'Un brindisi per il ragazzo dal cappello di paglia',
@@ -1799,6 +1824,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 510,
+      chapter: 593,
       value: {
         title: {
           it: 'Anche un rivoluzionario è umano',
@@ -1875,6 +1901,7 @@ export const eastBlueChronicles = {
   'chouchou': [
     {
       episode: 6,
+      chapter: 21,
       value: {
         title: { it: 'L’ultimo pacco di cibo', en: 'The last box of dog food' },
         body: {
@@ -1980,6 +2007,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 16,
+      chapter: 41,
       value: {
         title: { it: 'Nel bosco', en: 'Through the forest' },
         body: {
@@ -1990,6 +2018,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 17,
+      chapter: 41,
       value: {
         title: { it: 'La ciurma si scioglie', en: 'The crew disbands' },
         body: {
@@ -2069,6 +2098,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 21,
+      chapter: 47,
       value: {
         title: {
           it: 'Il prigioniero scappato',
@@ -2082,11 +2112,12 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
-        title: { it: 'Degradato', en: 'Demoted' },
+        title: { it: 'Aprite il fuoco', en: 'Open fire' },
         body: {
-          it: 'La rissa al Baratie è costata a Fullbody il suo grado: la Marina lo ha degradato. Quando escono i manifesti con la prima taglia di [[monkey-d-luffy|Rufy]], lui ci vede un modo per risalire, e quando la nave dei pirati passa accanto alla sua ordina ai suoi uomini di aprire il fuoco. L’attacco viene respinto, e appena Fullbody vede [[sanji|Sanji]] sul ponte, batte in ritirata.',
-          en: 'The fight at the Baratie has cost Fullbody his rank: the Marines demoted him for it. When the posters go out with [[monkey-d-luffy|Luffy]]’s first bounty, he sees a way back up, and when the pirates’ ship sails past his own, he orders his men to open fire. The attack is thrown back, and as soon as Fullbody sees [[sanji|Sanji]] on deck, he retreats.',
+          it: 'Quando escono i manifesti con la prima taglia di [[monkey-d-luffy|Rufy]], Fullbody ci vede l’occasione di rifarsi della sconfitta al Baratie, e quando la nave dei pirati passa accanto alla sua ordina ai suoi uomini di aprire il fuoco. L’attacco viene respinto, e appena Fullbody vede [[sanji|Sanji]] sul ponte, batte in ritirata.',
+          en: 'When the posters go out with [[monkey-d-luffy|Luffy]]’s first bounty, Fullbody sees a chance to make up for his defeat at the Baratie, and when the pirates’ ship sails past his own, he orders his men to open fire. The attack is thrown back, and as soon as Fullbody sees [[sanji|Sanji]] on deck, he retreats.',
         },
       },
     },
@@ -2114,6 +2145,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 25,
+      chapter: 68,
       value: {
         title: { it: 'Il Sabagashira', en: 'The Sabagashira' },
         body: {
@@ -2124,6 +2156,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 28,
+      chapter: 63,
       value: {
         title: { it: 'La cura sbagliata', en: 'The wrong cure' },
         body: {
@@ -2149,6 +2182,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 22,
+      chapter: 50,
       value: {
         title: {
           it: 'Un cannone a forma di aragosta',
@@ -2162,6 +2196,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 30,
+      chapter: 68,
       value: {
         title: { it: 'La zuppa buttata via', en: 'The soup thrown out' },
         body: {
@@ -2184,6 +2219,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 524,
+      chapter: 605,
       value: {
         title: { it: 'Di nuovo quei tre', en: 'Those three again' },
         body: {

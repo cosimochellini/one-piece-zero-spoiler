@@ -60,15 +60,15 @@ export const CHRONICLE_SOURCES = {
     },
     314: {
       source: 'https://onepiece.fandom.com/wiki/Episode_314',
-      note: 'Candidate 313–314 (Qref ep=313,314). The wall punch, the rubber not helping and the word grandpa close 313; Garp’s complaints about Luffy not becoming a Marine, the childhood training (ravine, wild, balloon; Luffy History Qref chap=432 ep=314), Shanks as one of the Four Emperors and the rebuilt wall are 314. Dragon left to dragon@314, Koby to koby@315.',
+      note: 'Candidate 313–314 (Qref ep=313,314). The wall punch, the rubber not helping and the word grandpa close 313; Garp’s complaints about Luffy not becoming a Marine, the childhood training (ravine, wild, balloon; Luffy History Qref chap=432 ep=314), Shanks as one of the Four Emperors and the rebuilt wall are 314. Dragon left to dragon@314, Koby to koby@315. Chapter (#169): 432, the last event: Garp’s training complaints (ravine, wild, balloon), Shanks as one of the Four Emperors, and Garp ordered to rebuild the wall and helping (Chapter_432: “Garp claims he wanted Luffy to be a strong Marine... He explains Shanks is one of the Four Emperors... Garp orders his men to repair the wall” (Luffy/History Qref chap=432 ep=314)).',
     },
     349: {
       source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
-      note: 'Moria’s own history section confirms the shadow cut (chap 455, ep 349, Qref name=Warlord) resolves within this episode; the following episode carries him to the freezer instead.',
+      note: 'Moria’s own history section confirms the shadow cut (chap 455, ep 349, Qref name=Warlord) resolves within this episode; the following episode carries him to the freezer instead. Chapter (#169): 456. The shadow is cut at the end of chapter 455, and Moria’s pleasure at a shadow this strong may fall on the first pages of 456, so the later chapter is kept; episode 349 shows the celebration, so the episode stands.',
     },
     373: {
       source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
-      note: 'Nightmare Luffy stops Oars’s Gomu Gomu no Rifle and slams him down at ep 372 (chap 478); Moria’s history explicitly dates Luffy defeating Oars by shattering his spine to ep 373 (chap 481) — the fall is not confirmed until this episode.',
+      note: 'Nightmare Luffy stops Oars’s Gomu Gomu no Rifle and slams him down at ep 372 (chap 478); Moria’s history explicitly dates Luffy defeating Oars by shattering his spine to ep 373 (chap 481) — the fall is not confirmed until this episode. Chapter (#169): 480, the last event: Oars gets back up after Nightmare Luffy’s assault while Luffy is exhausted (Chapter_480: “Oars appears to be done for but just as the rejoicing begins, he gets up again.” (Luffy/History/Summit War Qref chap=480 ep=373)).',
     },
     396: {
       source: 'https://onepiece.fandom.com/wiki/Episode_396',
@@ -120,15 +120,15 @@ export const CHRONICLE_SOURCES = {
     },
     869: {
       source: 'https://onepiece.fandom.com/wiki/Episode_869',
-      note: 'Per the wiki’s own Observation Haki article, Luffy “unlocks Future Vision” at chapter 894 / episode 869 specifically against Katakuri — a precise episode, not the vague 870 candidate.',
+      note: 'Per the wiki’s own Observation Haki article, Luffy “unlocks Future Vision” at chapter 894 / episode 869 specifically against Katakuri — a precise episode, not the vague 870 candidate. Chapter (#169): 894, the last event: Luffy’s Observation Haki matches Katakuri’s; they trade blows evenly (Chapter_894: “Luffy’s Observation Haki finally begins to match Katakuri’s, allowing him to fight the Sweet Commander more evenly.” (Observation Haki Qref chap=894 ep=869)).',
     },
     916: {
       source: 'https://onepiece.fandom.com/wiki/Episode_916',
-      note: 'Candidate 914–915 (Qref ep=914,915), moved to 916 because the story includes the prison: ep 914 has the Elephant Gun that grounds Kaido and Speed’s account of Tama; ep 915 the Gear Fourth barrage and Raimei Hakke; only ep 916 has the unconscious Conqueror’s Haki knocking out the guards, Hawkins arresting him, Udon and the cell next to Kid (History Qref chap=924 ep=915, ep2=916). Luffy has no other story at 916. Tama’s survival (Inuarashi, ep 916) is left out: Luffy does not know it. Oden’s name kept out (filed 960): “the ruined castle on the hill”.',
+      note: 'Candidate 914–915 (Qref ep=914,915), moved to 916 because the story includes the prison: ep 914 has the Elephant Gun that grounds Kaido and Speed’s account of Tama; ep 915 the Gear Fourth barrage and Raimei Hakke; only ep 916 has the unconscious Conqueror’s Haki knocking out the guards, Hawkins arresting him, Udon and the cell next to Kid (History Qref chap=924 ep=915, ep2=916). Luffy has no other story at 916. Tama’s survival (Inuarashi, ep 916) is left out: Luffy does not know it. Oden’s name kept out (filed 960): “the ruined castle on the hill”. Chapter (#169): 924, the last event: Unconscious Conqueror’s Haki drops the guards; Luffy jailed at Udon next to Kid, both swearing revenge (Chapter_924: “In the cell next to Luffy’s is Kid, and both of them swear revenge against Kaidou” (Luffy/History/Wano Qref chap=924 ep=915)).',
     },
     956: {
       source: 'https://onepiece.fandom.com/wiki/Episode_956',
-      note: 'Candidate 937–956 (Qref ep=937,955,956), filed at the end. Ep 936–937 Hyogoro’s lesson; ep 944–945 Big Mom and the torn-off collars; ep 946 the Rayleigh memory; ep 949 the prison taken; ep 952 and 955 training on rocks and metal; only ep 956 ends with Luffy mastering it by blasting a tree, one day before the raid (History Qref chap=955 ep=956). Ep 955 is still “keeps training”. Luffy has no other story at 956.',
+      note: 'Candidate 937–956 (Qref ep=937,955,956), filed at the end. Ep 936–937 Hyogoro’s lesson; ep 944–945 Big Mom and the torn-off collars; ep 946 the Rayleigh memory; ep 949 the prison taken; ep 952 and 955 training on rocks and metal; only ep 956 ends with Luffy mastering it by blasting a tree, one day before the raid (History Qref chap=955 ep=956). Ep 955 is still “keeps training”. Luffy has no other story at 956. Chapter (#169): 955, the last event: The day before the raid Luffy masters Ryuo and blasts a tree (Luffy/History/Wano: “On the day before the raid on Onigashima... Luffy later practiced his advanced Armament Haki on a tree” (Qref chap=955 ep=956)).',
     },
     1071: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1071',
@@ -140,7 +140,7 @@ export const CHRONICLE_SOURCES = {
     },
     1152: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1152',
-      note: 'Candidate was 1152 (Qref ep=1152). Episode 1151 only has Emet rise from the sea and punch Warcury; Emet addressing Luffy as Joy Boy, its failed weapons, Ju Peter biting off its arm and Luffy and Bonney’s joint attack on Saturn are in 1152 (Luffy history and Emet page cite chap 1120–1121, ep=1152).',
+      note: 'Candidate was 1152 (Qref ep=1152). Episode 1151 only has Emet rise from the sea and punch Warcury; Emet addressing Luffy as Joy Boy, its failed weapons, Ju Peter biting off its arm and Luffy and Bonney’s joint attack on Saturn are in 1152 (Luffy history and Emet page cite chap 1120–1121, ep=1152). Chapter (#169): 1121, the last event: Luffy shields Bonney, then their joint punches blow holes in Saturn and knock him off the ship (Luffy/History/Final: “The two unleashed a flurry of punches strong enough to blow holes through Saturn’s body, knocking him back off of the ship.” (Qref chap=1121 ep=1152)).',
     },
   },
   'roronoa-zoro': {
@@ -178,7 +178,7 @@ export const CHRONICLE_SOURCES = {
     },
     300: {
       source: 'https://onepiece.fandom.com/wiki/Episode_300',
-      note: 'Candidate 299–300. Episode 299 only has the fight heating up; the Asura illusion, Kaku reading it as Zoro’s spirit, Ichibugin through Amane Dachi, and the fired/zoo exchange with the key (Kaku page Qref chap=417,418 ep=300) are all 300.',
+      note: 'Candidate 299–300. Episode 299 only has the fight heating up; the Asura illusion, Kaku reading it as Zoro’s spirit, Ichibugin through Amane Dachi, and the fired/zoo exchange with the key (Kaku page Qref chap=417,418 ep=300) are all 300. Chapter (#169): 418, the last event: Zoro delivers Paulie’s ’you’re fired’, zoo joke, Kaku hands over the key (Chapter_418: “Zoro then gives him the message Paulie gave him which is, ’You’re fired’. Kaku manages to joke around a small bit before handing over the key.” (Kaku Qref chap=418 ep=300)).',
     },
     320: {
       source: 'https://onepiece.fandom.com/wiki/Episode_320',
@@ -186,7 +186,7 @@ export const CHRONICLE_SOURCES = {
     },
     362: {
       source: 'https://onepiece.fandom.com/wiki/Ryuma_(Zombie)',
-      note: 'Zoro challenges Ryuma at ep 357 (chap 462, Qref), but the duel itself, Ryuma’s defeat and him bestowing Shusui before burning to ash are dated to ep 362 (chap 467) on Ryuma’s own history page.',
+      note: 'Zoro challenges Ryuma at ep 357 (chap 462, Qref), but the duel itself, Ryuma’s defeat and him bestowing Shusui before burning to ash are dated to ep 362 (chap 467) on Ryuma’s own history page. Chapter (#169): 467, the last event: Zoro defeats Ryuma on the roof, gets Shusui, Brook’s shadow returns, corpse burns (Chapter_467: “Zoro defeats Ryuma using ’One Sword Style: Hiryu: Kaen’. Brook finally receives his shadow back, and Zoro acquires a new katana, the Shusui.” (Ryuma Qref chap=467 ep=362)).',
     },
     377: {
       source: 'https://onepiece.fandom.com/wiki/Episode_377',
@@ -222,7 +222,7 @@ export const CHRONICLE_SOURCES = {
     },
     1027: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1027',
-      note: 'Candidate 1027, confirmed. Ep 1026 has Law and Zoro pushing Big Mom off the island; ep 1027 has Kaido about to finish the unconscious Luffy, the Nine Sword Style attack with Supreme King Haki reopening his scar, Raimei Hakke on Zoro and Law, and Luffy getting up. Kaido’s surprise and Zoro not knowing he has the Haki are from the History paragraph (Qref chap=1010 ep=1027, ep2=1028); the 1028 half is only Luffy sending them downstairs, left out. Big Mom’s rescue (1027) left out.',
+      note: 'Candidate 1027, confirmed. Ep 1026 has Law and Zoro pushing Big Mom off the island; ep 1027 has Kaido about to finish the unconscious Luffy, the Nine Sword Style attack with Supreme King Haki reopening his scar, Raimei Hakke on Zoro and Law, and Luffy getting up. Kaido’s surprise and Zoro not knowing he has the Haki are from the History paragraph (Qref chap=1010 ep=1027, ep2=1028); the 1028 half is only Luffy sending them downstairs, left out. Big Mom’s rescue (1027) left out. Chapter (#169): 1010, the last event: Zoro’s Nine Sword Style scars Kaido with Conqueror’s Haki; Raimei Hakke drops Zoro and Law; Luffy gets up (Chapter_1010: “final Nine Sword Style strike that manages to give Kaidou a notable scar... Kaidou immobilizes Zoro and Law with Raimei Hakke, but Luffy then regains consciousness” (Qref chap=1010 ep=1027)).',
     },
     1062: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1062',
@@ -264,15 +264,15 @@ export const CHRONICLE_SOURCES = {
     },
     296: {
       source: 'https://onepiece.fandom.com/wiki/Episode_296',
-      note: 'Candidate 297 moved to 296. Water weakness, Rain Tempo and the mirages are 295; the bubble wave, the horizontal bolt (Thunder Lance Tempo) and ripping Kalifa’s clothes for key #2 (Kalifa page Qref chap=412 ep=296) close in 296. Episode 297 is Jabra vs Usopp and Sanji.',
+      note: 'Candidate 297 moved to 296. Water weakness, Rain Tempo and the mirages are 295; the bubble wave, the horizontal bolt (Thunder Lance Tempo) and ripping Kalifa’s clothes for key #2 (Kalifa page Qref chap=412 ep=296) close in 296. Episode 297 is Jabra vs Usopp and Sanji. Chapter (#169): 412, the last event: Nami’s lightning beats Kalifa and she tears Kalifa’s clothes for key #2 (Kalifa: “her outfit was ripped up by Nami looking for the #2 key to Roronoa Zoro and Sogeking’s seastone handcuffs” (Qref chap=412 ep=296)).',
     },
     320: {
       source: 'https://onepiece.fandom.com/wiki/Episode_320',
-      note: 'Log Pose set after a week, needle pointing down toward Fish-Man Island, Nami’s Arlong memories, Robin’s treasure-ship remark, then the Cat Burglar 16,000,000 poster with the photographer posing as a reporter/magazine (Nami History Qref chap=435 ep=320). The dossier epithet and bounty were moved from 130 to 320 in this batch to match.',
+      note: 'Log Pose set after a week, needle pointing down toward Fish-Man Island, Nami’s Arlong memories, Robin’s treasure-ship remark, then the Cat Burglar 16,000,000 poster with the photographer posing as a reporter/magazine (Nami History Qref chap=435 ep=320). The dossier epithet and bounty were moved from 130 to 320 in this batch to match. Chapter (#169): 436, the last event: Nami explains the photographer said he was a reporter so she posed willingly (Chapter_436: “Still going over the bounties from the previous chapter... Nami thought the photographer who took the shot of her was from a newspaper” (Nami/History cites chap=435 ep=320; ch 436 is also in ep 320)).',
     },
     366: {
       source: 'https://onepiece.fandom.com/wiki/Absalom',
-      note: 'Absalom’s history dates Lola interrupting the ceremony and Nami knocking him out with Swing Arm to ep 366 (chap 471); the ceremony itself starts at ep 352 and Sanji’s own fight with Absalom ends at 359.',
+      note: 'Absalom’s history dates Lola interrupting the ceremony and Nami knocking him out with Swing Arm to ep 366 (chap 471); the ceremony itself starts at ep 352 and Sanji’s own fight with Absalom ends at 359. Chapter (#169): 471, the last event: Nami wakes at the altar, dodges the kiss, Lola crashes the wedding, Absalom blasts Lola, Nami knocks him out (Chapter_471: “the wedding ceremony is taking place and Nami regains consciousness. She avoids Absalom’s binding kiss... Lola appears and crashes the wedding... Nami... defeats Absalom in one-shot” (Absalom Qref chap=471 ep=366)).',
     },
     517: {
       source: 'https://onepiece.fandom.com/wiki/Episode_517',
@@ -292,11 +292,11 @@ export const CHRONICLE_SOURCES = {
     },
     865: {
       source: 'https://onepiece.fandom.com/wiki/Episode_865',
-      note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890). The anime shows no answer in 865 (JP 00:17:17-00:17:45 “あたしのしもべになる？ / それとも… / 死ぬ？ / よ～く考えてね”, then “追え プロメテウス！”); his choice is first shown at 878, so the story stops at the question.',
+      note: 'Corrected from the candidate 846–847: those episodes only show Nami borrowing Zeus’s lightning mid-chase. The actual capture — Zeus given the choice to serve Nami or die — happens at episode 865, confirmed by Zeus’s own wiki page (chapter 890). The anime shows no answer in 865 (JP 00:17:17-00:17:45 “あたしのしもべになる？ / それとも… / 死ぬ？ / よ～く考えてね”, then “追え プロメテウス！”); his choice is first shown at 878, so the story stops at the question. Chapter (#169): 890, the last event: Nami asks the shrunken Zeus to serve her or die; Big Mom sends Prometheus after the Sunny (Chapter_890: “Brook brings a smaller and weakened Zeus back to the ship. Nami then asks Zeus if it would like to serve her or die. However, Big Mom remains in the air on top of Prometheus” (Zeus Qref chap=890 ep=865)).',
     },
     1038: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1038',
-      note: 'Corrected from the candidate’s 1032–1033: ep 1032 is Ulti striking Tama and Nami’s first lightning, and in ep 1033 Ulti falls to Big Mom’s Maser Ho, not to Nami, while Zeus is only rejected. Zeus pleads, is refused and sacrificed in ep 1034; the Black Balls put him in the Clima-Tact, revealed in ep 1037 (History Qref chap=1013 ep=1033, ep2=1034; chap=1015 ep=1037); Nami and Zeus knock Ulti out only in ep 1038 (Qref chap=1016 ep=1037, ep2=1038). Kept the event, filed at 1038. Second pass: 1034 and the Zeus page (Qref chap=1013) have Zeus attacking Big Mom to make amends and Nami’s Black Balls meant to power him up, not to buy time or as a parting gift; both phrases corrected. The rest checked against 1032–1038.',
+      note: 'Corrected from the candidate’s 1032–1033: ep 1032 is Ulti striking Tama and Nami’s first lightning, and in ep 1033 Ulti falls to Big Mom’s Maser Ho, not to Nami, while Zeus is only rejected. Zeus pleads, is refused and sacrificed in ep 1034; the Black Balls put him in the Clima-Tact, revealed in ep 1037 (History Qref chap=1013 ep=1033, ep2=1034; chap=1015 ep=1037); Nami and Zeus knock Ulti out only in ep 1038 (Qref chap=1016 ep=1037, ep2=1038). Kept the event, filed at 1038. Second pass: 1034 and the Zeus page (Qref chap=1013) have Zeus attacking Big Mom to make amends and Nami’s Black Balls meant to power him up, not to buy time or as a parting gift; both phrases corrected. The rest checked against 1032–1038. Chapter (#169): 1016, the last event: Usopp frees Tama from Ulti and Nami’s lightning, steered by Zeus, knocks Ulti out (Chapter_1016: “Usopp forces Ulti to release Tama by throwing a Pop Green, and Nami uses Zeus to finish Ulti off with a powerful thunderbolt” (Zeus Qref chap=1016 ep=1037, ep2=1038)).',
     },
   },
   'usopp': {
@@ -338,7 +338,7 @@ export const CHRONICLE_SOURCES = {
     },
     361: {
       source: 'https://onepiece.fandom.com/wiki/Perona',
-      note: 'Perona’s history dates Usopp’s immunity reveal to ep 356 (chap 461, Qref name=cheerup) and his outmaneuvering and defeat of her to ep 361 (chap 466); filed at the later episode where the fight actually closes.',
+      note: 'Perona’s history dates Usopp’s immunity reveal to ep 356 (chap 461, Qref name=cheerup) and his outmaneuvering and defeat of her to ep 361 (chap 466); filed at the later episode where the fight actually closes. Chapter (#169): 466, the last event: Usopp exposes/pins Perona’s real body and knocks her out with fake cockroaches and the balloon hammer (Chapter_466: “He fires ’Kurobikashi Boshi’... cockroaches appearing all over her body... The ’hammer’ is revealed to be a balloon... Perona to pass out” (Perona Qref chap=466 ep=361)).',
     },
     397: {
       source: 'https://onepiece.fandom.com/wiki/Episode_397',
@@ -374,7 +374,7 @@ export const CHRONICLE_SOURCES = {
     },
     1076: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1076',
-      note: 'Candidate 1073–1076 (Qref ep=1073,1074,1076). Background from 1063: Usopp finds Kin’emon and Kiku, tells them to hold on to life instead of their honour, and Izou holds off the Beasts Pirates while they escape on Hamlet’s back. 1073 debuts Midori Boshi: Sprinkler and has Usopp’s group trapped by the fire (Hamlet’s ‘wasting energy’ line and the promise to Izou are the Qref chap=1046 ep=1073); the flood that puts the fire out starts in 1073, and 1074 shows Usopp being hit by it. 1076 has the allies surviving Raizo’s flood (Qref chap=1049 ep=1076: Usopp keeping them from drowning) and, per its anime notes, Nami, Chopper and Tama spotting Usopp, Kin’emon and Kiku. Filed at 1076. Hamlet is not a filed record, so he is named in plain text. Second pass: 1073 puts Usopp’s group in the corridors, not the basement (that is Brook and Robin’s), so ‘basements’ became ‘corridors’. The manga-cited lines check out on the Hamlet page (Qref chap=1046 ep=1073: the burning sprinkler, Hamlet calling it useless, the promise to Izou) and 1076’s anime notes (Nami, Chopper and Tama spotting them).',
+      note: 'Candidate 1073–1076 (Qref ep=1073,1074,1076). Background from 1063: Usopp finds Kin’emon and Kiku, tells them to hold on to life instead of their honour, and Izou holds off the Beasts Pirates while they escape on Hamlet’s back. 1073 debuts Midori Boshi: Sprinkler and has Usopp’s group trapped by the fire (Hamlet’s ‘wasting energy’ line and the promise to Izou are the Qref chap=1046 ep=1073); the flood that puts the fire out starts in 1073, and 1074 shows Usopp being hit by it. 1076 has the allies surviving Raizo’s flood (Qref chap=1049 ep=1076: Usopp keeping them from drowning) and, per its anime notes, Nami, Chopper and Tama spotting Usopp, Kin’emon and Kiku. Filed at 1076. Hamlet is not a filed record, so he is named in plain text. Second pass: 1073 puts Usopp’s group in the corridors, not the basement (that is Brook and Robin’s), so ‘basements’ became ‘corridors’. The manga-cited lines check out on the Hamlet page (Qref chap=1046 ep=1073: the burning sprinkler, Hamlet calling it useless, the promise to Izou) and 1076’s anime notes (Nami, Chopper and Tama spotting them). Chapter (#169): 1049, the last event: The flood swallows the corridors and Usopp fights to keep both samurai afloat (Chapter_1049: “Raizo and Jinbe’s water reaches the rest of the interior, swallowing up everyone and putting out all of the fire... Everyone tries to hold on for dear life” (story note cites Qref chap=1049 ep=1076 for Usopp keeping them from drowning; Chapter_1048 already shows it)).',
     },
   },
   'sanji': {
@@ -424,7 +424,7 @@ export const CHRONICLE_SOURCES = {
     },
     359: {
       source: 'https://onepiece.fandom.com/wiki/Absalom',
-      note: 'Absalom’s history dates Sanji identifying his Devil Fruit and defeating him with Extra Hachis to ep 359 (chap 464, Qref); Lola’s interruption and Nami’s own defeat of Absalom come later, at ep 366.',
+      note: 'Absalom’s history dates Sanji identifying his Devil Fruit and defeating him with Extra Hachis to ep 359 (chap 464, Qref); Lola’s interruption and Nami’s own defeat of Absalom come later, at ep 366. Chapter (#169): 464, the last event: Absalom stabs Sanji in the back while he holds Nami; Sanji gives up the dream and defeats him (Chapter_464: “stabbing Sanji through the back, forcing Sanji to put Nami down... Sanji comments that he no longer has any desire for his ability... unleashes ’Extra Hachis’” (Absalom Qref chap=464 ep=359)).',
     },
     403: {
       source: 'https://onepiece.fandom.com/wiki/Episode_403',
@@ -460,7 +460,7 @@ export const CHRONICLE_SOURCES = {
     },
     832: {
       source: 'https://onepiece.fandom.com/wiki/Episode_832',
-      note: 'Corrected from the candidate 834–835: the third-eye reveal and Sanji’s “beautiful” compliment happen at the altar in episode 832 (confirmed via Charlotte Pudding’s own wiki page, chapter 862). Episodes 834–835 cover a later, different scene (the Vinsmokes’ near-assassination) with no third-eye content.',
+      note: 'Corrected from the candidate 834–835: the third-eye reveal and Sanji’s “beautiful” compliment happen at the altar in episode 832 (confirmed via Charlotte Pudding’s own wiki page, chapter 862). Episodes 834–835 cover a later, different scene (the Vinsmokes’ near-assassination) with no third-eye content. Chapter (#169): 862, the last event: Sanji calls the third eye beautiful; Pudding, whose mother made her hide it, breaks down and cannot shoot (Charlotte Pudding: “Big Mom finds Pudding’s third eye creepy and went as far as convincing Pudding to grow her bangs to cover it” (Qref chap=862 ep=832); Chapter_862: ’Pudding reveals her third eye... Sanji is indeed shocked, but because he views the eye as beautiful’).',
     },
     866: {
       source: 'https://onepiece.fandom.com/wiki/Episode_866',
@@ -514,7 +514,7 @@ export const CHRONICLE_SOURCES = {
     },
     363: {
       source: 'https://onepiece.fandom.com/wiki/Hogback',
-      note: 'Hogback’s history dates his full confrontation with Chopper over his research and values as a doctor to ep 363 (chap 468); the interruption by Oars and his escape attempt follow at 364.',
+      note: 'Hogback’s history dates his full confrontation with Chopper over his research and values as a doctor to ep 363 (chap 468); the interruption by Oars and his escape attempt follow at 364. Chapter (#169): 468, the last event: Hogback’s history with Cindry (rejected him, revived for her beauty) and Chopper’s outburst: every zombie leaves someone miserable (Chapter_468: “he did not care for the personality of the girl that initially rejected him ... for every zombie he creates, he leaves a human being miserable.” (Hogback Qref c468p9, chap 468, ep 363)).',
     },
     404: {
       source: 'https://onepiece.fandom.com/wiki/Episode_404',
@@ -550,7 +550,7 @@ export const CHRONICLE_SOURCES = {
     },
     1036: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1036',
-      note: "Candidate 1034–1036 (Qref ep=1034,1035; ep=1036,1037). Chopper slamming Queen and Queen standing up unharmed are 1034; the Caesar flashback (longer Rumble Ball, accepted side effect) and Bao Huang’s announcement of Luffy’s defeat are 1035; Chopper losing heart, Queen about to bite him, Sanji’s kick, the praise and Zoro handed over are 1036, so the story is filed there. The thirty-minute figure is from Chopper’s History (Qref chap=1014 ep=1034,1035). The side effect itself (Babyjiji, ep 1039) and Chopper’s tears of joy at Momonosuke’s message are left out. Second pass: episode placement confirmed (slam 1034, Caesar and the announcement 1035, Sanji 1036); the thirty minutes stay, since the New World History cites them with Qref ep=1034,1035, but no episode summary states the figure. Italian aligned to 'loses heart' and the arrows on the samurai.",
+      note: "Candidate 1034–1036 (Qref ep=1034,1035; ep=1036,1037). Chopper slamming Queen and Queen standing up unharmed are 1034; the Caesar flashback (longer Rumble Ball, accepted side effect) and Bao Huang’s announcement of Luffy’s defeat are 1035; Chopper losing heart, Queen about to bite him, Sanji’s kick, the praise and Zoro handed over are 1036, so the story is filed there. The thirty-minute figure is from Chopper’s History (Qref chap=1014 ep=1034,1035). The side effect itself (Babyjiji, ep 1039) and Chopper’s tears of joy at Momonosuke’s message are left out. Second pass: episode placement confirmed (slam 1034, Caesar and the announcement 1035, Sanji 1036); the thirty minutes stay, since the New World History cites them with Qref ep=1034,1035, but no episode summary states the figure. Italian aligned to 'loses heart' and the arrows on the samurai. Chapter (#169): 1015, the last event: Chopper loses heart, Queen bares his teeth to kill him, Sanji’s kick, praise, Zoro handed over (Chapter_1015: “Queen then reveals his teeth ... prepares to kill him, but Sanji comes to the rescue ... Sanji commends Chopper ... He hands the bandaged Zoro off to him” (Chopper History chap 1015, ep 1036)).",
     },
   },
   'nico-robin': {
@@ -612,7 +612,7 @@ export const CHRONICLE_SOURCES = {
     },
     1083: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1083',
-      note: "Candidate 1083. Robin’s question to Hitetsu/Sukiyaki about Pluton is ep 1080 (Robin History, Qref chap=1053 ep=1080); the sunken old Wano, the Road Poneglyph and Pluton under the walls are ep 1082; Robin reporting to the crew and Luffy choosing not to uncover the weapon are the ep 1083 Long Summary, so the story is filed there. Sukiyaki is linked to the kozuki-sukiyaki record (filed at 960; the Hitetsu reveal is ep 1080). Second pass: placement confirmed (Sukiyaki reveal and Pluton confirmation 1080, sunken Wano and Road Poneglyph 1082, report to the crew and Luffy's refusal 1083); Italian changed from 'quando' to 'dopo che' so the flood follows the walls, as in ep 1082.",
+      note: "Candidate 1083. Robin’s question to Hitetsu/Sukiyaki about Pluton is ep 1080 (Robin History, Qref chap=1053 ep=1080); the sunken old Wano, the Road Poneglyph and Pluton under the walls are ep 1082; Robin reporting to the crew and Luffy choosing not to uncover the weapon are the ep 1083 Long Summary, so the story is filed there. Sukiyaki is linked to the kozuki-sukiyaki record (filed at 960; the Hitetsu reveal is ep 1080). Second pass: placement confirmed (Sukiyaki reveal and Pluton confirmation 1080, sunken Wano and Road Poneglyph 1082, report to the crew and Luffy's refusal 1083); Italian changed from 'quando' to 'dopo che' so the flood follows the walls, as in ep 1082. Chapter (#169): 1056, the last event: Robin tells the crew Pluton is in Wano; Luffy refuses to take it (Chapter_1056: “the rest of the Straw Hats learn from Robin that Pluton is indeed in Wano ... Robin asks Luffy if he desires to obtain it, and he refuses” (Robin History chap 1056, ep 1083)).",
     },
     1148: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1148',
@@ -934,7 +934,7 @@ export const CHRONICLE_SOURCES = {
     },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
-      note: 'No Qref citation (manga ch. 96); verified directly. Long Summary: "Dracule Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment" (his first bounty, 30,000,000 berries) — Mihawk sails to Shanks’s crew with word of the straw-hatted boy, at episode 45.',
+      note: 'No Qref citation (manga ch. 96); verified directly. Long Summary: "Dracule Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment" (his first bounty, 30,000,000 berries) — Mihawk sails to Shanks’s crew with word of the straw-hatted boy, at episode 45. Chapter (#169): 96, the last event: Mihawk brings Shanks Luffy’s 30,000,000 bounty; the crew parties (Chapter_96: “Mihawk informs Shanks about Luffy’s first wanted poster... Shanks... throws a party to celebrate Luffy’s arrival and first bounty.”).',
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
@@ -946,7 +946,7 @@ export const CHRONICLE_SOURCES = {
     },
     434: {
       source: 'https://onepiece.fandom.com/wiki/Shanks/History',
-      note: 'Confirmed via Qref (chap 533, ep 434): Momonga’s men report that Shanks intercepted a rival Emperor en route to Marineford, ending in a stalemate. Written without naming the Emperor, since his own revealedAtEpisode (739) is far later than 434.',
+      note: 'Confirmed via Qref (chap 533, ep 434): Momonga’s men report that Shanks intercepted a rival Emperor en route to Marineford, ending in a stalemate. Written without naming the Emperor, since his own revealedAtEpisode (739) is far later than 434. Chapter (#169): 533, the last event: Marines learn Shanks intercepted Kaido on the way to Whitebeard (Chapter_533: “a Marine informs Momonga of a recent dispute between Red-Haired Shanks and another of the Four Emperors... Kaidou was looking to intercept Whitebeard, but Shanks interfered.” (Shanks Qref chap=533 ep=434)).',
     },
     489: {
       source: 'https://onepiece.fandom.com/wiki/Episode_489',
@@ -954,7 +954,7 @@ export const CHRONICLE_SOURCES = {
     },
     505: {
       source: 'https://onepiece.fandom.com/wiki/Shanks/History',
-      note: 'Confirmed via Qref (chap 590, ep 505): the Red Hair Pirates attend Whitebeard and Ace’s funeral with the Whitebeard Pirates; Marco thanks Shanks. Second pass: the closing line invented "victories and defeats make a real man"; replaced with the episode\'s actual content — Shanks silently tells Luffy it is okay to cry, but what matters is moving on.',
+      note: 'Confirmed via Qref (chap 590, ep 505): the Red Hair Pirates attend Whitebeard and Ace’s funeral with the Whitebeard Pirates; Marco thanks Shanks. Second pass: the closing line invented "victories and defeats make a real man"; replaced with the episode\'s actual content — Shanks silently tells Luffy it is okay to cry, but what matters is moving on. Chapter (#169): 590, the last event: Whitebeard and Ace’s funeral; Marco thanks Shanks; Shanks silently tells Luffy to cry and move on (Chapter_590: “Marco thanks Red Haired Shanks... Shanks says to Luffy in his mind that he must move on by relieving his emotions and crying everything out” (Shanks Qref chap=590 ep=505)).',
     },
     1082: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1082',
@@ -972,7 +972,7 @@ export const CHRONICLE_SOURCES = {
     },
     145: {
       source: 'https://onepiece.fandom.com/wiki/Portgas_D._Ace/History',
-      note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (151, corrected from 152 in the same PR) is still after this episode.',
+      note: 'Ace hitches a ride on Buggy’s ship for a free meal, falls asleep, and Buggy’s crew are talked out of attacking him; he promises to point them toward Luffy (Qref chap=233, page=11-14, ep=145). Whitebeard/edward-newgate is not named, since his own revealedAtEpisode (151, corrected from 152 in the same PR) is still after this episode. Chapter (#169): 233, the last event: Ace on Buggy’s ship: falls asleep, Buggy refuses to attack, party, promise to point him to Luffy (Portgas D. Ace/History: “Ace later hopped on Buggy’s ship for food and promised to show him the way to Luffy.” (chap 233, ep 145)).',
     },
     325: {
       source: 'https://onepiece.fandom.com/wiki/Episode_325',
@@ -1004,7 +1004,7 @@ export const CHRONICLE_SOURCES = {
     },
     505: {
       source: 'https://onepiece.fandom.com/wiki/Episode_505',
-      note: 'Ace’s hat, knife and necklace made into his grave marker beside Whitebeard’s in the New World; the wiki cites this exactly at chapter 590 / episode 505.',
+      note: 'Ace’s hat, knife and necklace made into his grave marker beside Whitebeard’s in the New World; the wiki cites this exactly at chapter 590 / episode 505. Chapter (#169): 590, the funeral. The verifiers found that near Whitebeard’s old home was a chapter-909 / episode-890 fact (Sphinx), so the phrase was cut from both locales.',
     },
     678: {
       source: 'https://onepiece.fandom.com/wiki/Episode_678',
@@ -1328,7 +1328,7 @@ export const CHRONICLE_SOURCES = {
     },
     1122: {
       source: 'https://onepiece.fandom.com/wiki/Koby',
-      note: 'Koby character page (Egghead Arc, chap 1088, ep 1122): Perona brings Koby the keys, he leads the breakout across Hachinosu, Garp and SWORD storm in, and Koby destroys Avalo Pizarro’s giant hand with a single Haki-imbued punch before boarding the escaping ship, named "Honesty Impact" on the Techniques section.',
+      note: 'Koby character page (Egghead Arc, chap 1088, ep 1122): Perona brings Koby the keys, he leads the breakout across Hachinosu, Garp and SWORD storm in, and Koby destroys Avalo Pizarro’s giant hand with a single Haki-imbued punch before boarding the escaping ship, named "Honesty Impact" on the Techniques section. Chapter (#169): 1088, the last event: Honesty Impact shatters Pizarro’s island hand; Koby learns Garp stayed behind (Koby: “when he learned that Garp told them to abandon him and save themselves, Koby immediately told Grus to turn back” (Qref chap=1088 ep=1122)).',
     },
   },
   'buggy': {
@@ -1338,7 +1338,7 @@ export const CHRONICLE_SOURCES = {
     },
     8: {
       source: 'https://onepiece.fandom.com/wiki/Episode_8',
-      note: 'Buggy’s flashback (Buggy/History, "Past" section, Qref chap=19, ep=8): an apprentice on Roger’s crew alongside Shanks, Buggy found a treasure map during a raid and kept it secret; swallowed the real Bara Bara no Mi by accident hiding it from Shanks, then lost the map to the sea along with his ability to swim after it. Corrected after review: Buggy was one of Roger’s own apprentices, not an outsider stealing from the crew, and the incident is dated to "at least 27 years ago" — before Roger’s execution (22 years ago per this same character’s episode-52 story), not "ten years ago".',
+      note: 'Buggy’s flashback (Buggy/History, "Past" section, Qref chap=19, ep=8): an apprentice on Roger’s crew alongside Shanks, Buggy found a treasure map during a raid and kept it secret; swallowed the real Bara Bara no Mi by accident hiding it from Shanks, then lost the map to the sea along with his ability to swim after it. Corrected after review: Buggy was one of Roger’s own apprentices, not an outsider stealing from the crew, and the incident is dated to "at least 27 years ago" — before Roger’s execution (22 years ago per this same character’s episode-52 story), not "ten years ago". Chapter (#169): 20, the last event: Nami ties Buggy’s parts; Gomu Gomu no Bazooka sends him flying (Luffy/History: “Buggy then attempted to reform his body but only got his hands and feet back as Nami had tied up his other parts... Gomu Gomu no Bazooka” (Qref chap=20 ep=8)).',
     },
     52: {
       source: 'https://onepiece.fandom.com/wiki/Episode_52',
@@ -1364,7 +1364,7 @@ export const CHRONICLE_SOURCES = {
     },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
-      note: 'Long Summary: "Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment." He seeks out Shanks on a remote base island, startling the lower crew, confirms Luffy is the village boy Shanks lost his arm for, and Shanks pulls him into a celebratory drink — cited to manga ch. 96 / anime episode 45.',
+      note: 'Long Summary: "Mihawk delivers the news to the Red Hair Pirates, who celebrate Luffy’s accomplishment." He seeks out Shanks on a remote base island, startling the lower crew, confirms Luffy is the village boy Shanks lost his arm for, and Shanks pulls him into a celebratory drink — cited to manga ch. 96 / anime episode 45. Chapter (#169): 96, the last event: Mihawk brings Shanks Luffy’s poster, confirms he is the village boy; Shanks pulls him into a party (Dracule Mihawk: “Mihawk confirmed that Luffy was indeed the village boy that Shanks had sacrificed his arm for. In turn, Shanks pulled Mihawk into a celebratory drinking party.” (chap 96, ep 45)).',
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
@@ -1420,7 +1420,7 @@ export const CHRONICLE_SOURCES = {
     },
     510: {
       source: 'https://onepiece.fandom.com/wiki/Episode_510',
-      note: 'Dragon calls Ivankov about the newspaper story on his son and Whitebeard’s death; the "seeing him as human" line is sourced from Monkey D. Dragon’s own wiki page, Revolutionary Army section (Qref chap=593, ep=510).',
+      note: 'Dragon calls Ivankov about the newspaper story on his son and Whitebeard’s death; the "seeing him as human" line is sourced from Monkey D. Dragon’s own wiki page, Revolutionary Army section (Qref chap=593, ep=510). Chapter (#169): 593, the last event: Dragon’s call with Ivankov: son made public, ’see me as human’, gather the commanders after Whitebeard’s death, Luffy at Marineford (Monkey D. Dragon: “Dragon noted that it would help his subordinates to see him as more human” (Qref c593, chap 593, ep 510)).',
     },
     737: {
       source: 'https://onepiece.fandom.com/wiki/Episode_737',
@@ -1520,7 +1520,7 @@ export const CHRONICLE_SOURCES = {
   'rika': {
     2: {
       source: 'https://onepiece.fandom.com/wiki/Episode_2',
-      note: 'Long Summary: "A small girl, Rika, sneaks into the base to offer Zoro onigiri, but she is stopped by Helmeppo ... Zoro later eats the dirt-stained rice"; she tells the wolf story. Rika page Qref chap=4 page=3 ep=2: her mother hurries her away. Named on screen in episode 2: in the wolf flashback her mother shouts “Rika! Don’t!” (checked against an ep 2 transcript). Anime-only: the wolf attacked her in the bar (Anime and Manga Differences).',
+      note: 'Long Summary: "A small girl, Rika, sneaks into the base to offer Zoro onigiri, but she is stopped by Helmeppo ... Zoro later eats the dirt-stained rice"; she tells the wolf story. Rika page Qref chap=4 page=3 ep=2: her mother hurries her away. Named on screen in episode 2: in the wolf flashback her mother shouts “Rika! Don’t!” (checked against an ep 2 transcript). Anime-only: the wolf attacked her in the bar (Anime and Manga Differences). Chapter (#169): the last event is chapter 4, at or below the record’s own chapter 4, so no pin.',
     },
     3: {
       source: 'https://onepiece.fandom.com/wiki/Episode_3',
@@ -1530,7 +1530,7 @@ export const CHRONICLE_SOURCES = {
   'chouchou': {
     6: {
       source: 'https://onepiece.fandom.com/wiki/Episode_6',
-      note: 'Long Summary: "Luffy interacts with Chouchou, a dog defending the shop. The mayor explains that Chouchou\'s owner passed away from illness ... Chouchou eats the key"; "Richie raids the store for food and burns it to the ground as Chouchou fights in vain ... Luffy came to Chouchou\'s aid, defeating both Richie and Mohji before giving the dog a single box of pet food". Chapter_12: Boodle shows up "demanding that they stop hurting the dog, Chouchou" (the naming, ch 12). Chouchou page Qref chap=14 page=4 ep=6: he joins the evacuees.',
+      note: 'Long Summary: "Luffy interacts with Chouchou, a dog defending the shop. The mayor explains that Chouchou\'s owner passed away from illness ... Chouchou eats the key"; "Richie raids the store for food and burns it to the ground as Chouchou fights in vain ... Luffy came to Chouchou\'s aid, defeating both Richie and Mohji before giving the dog a single box of pet food". Chapter_12: Boodle shows up "demanding that they stop hurting the dog, Chouchou" (the naming, ch 12). Chouchou page Qref chap=14 page=4 ep=6: he joins the evacuees. Chapter (#169): 21, raised from 14 because the story names Mohji and Richie, who open at chapter 21; the last event: Chouchou takes the box of food and goes (leaves to join the evacuees) (Chouchou: “Luffy brought Chouchou a single pack of dog-food... Chouchou accepted this gesture of friendship, and left to join the evacuees” (Qref chap=14 ep=6)).',
     },
     8: {
       source: 'https://onepiece.fandom.com/wiki/Episode_8',
@@ -1540,7 +1540,7 @@ export const CHRONICLE_SOURCES = {
   'richie': {
     6: {
       source: 'https://onepiece.fandom.com/wiki/Episode_6',
-      note: 'Long Summary: "Riding his lion Richie, he finds Luffy still trapped in the cage. Mohji orders Richie to attack Luffy, inadvertently destroying his cage ... Richie raids the store for food and burns it to the ground ... Luffy ... defeating both Richie and Mohji". Existing Mohji log (east-blue.ts) already names "a lion named Richie" at ep 6. Chapter: Chapter_12/13 summaries use the name; Mohji names him when sending him at Luffy in ch 13 ("Mohji sends Richie to attack"); ch 12 likely but rounded up to 13.',
+      note: 'Long Summary: "Riding his lion Richie, he finds Luffy still trapped in the cage. Mohji orders Richie to attack Luffy, inadvertently destroying his cage ... Richie raids the store for food and burns it to the ground ... Luffy ... defeating both Richie and Mohji". Existing Mohji log (east-blue.ts) already names "a lion named Richie" at ep 6. Chapter: Chapter_12/13 summaries use the name; Mohji names him when sending him at Luffy in ch 13 ("Mohji sends Richie to attack"); ch 12 likely but rounded up to 13. Chapter (#169): the last event is chapter 13, at or below the record’s own chapter 21, so no pin.',
     },
     7: {
       source: 'https://onepiece.fandom.com/wiki/Episode_7',
@@ -1558,7 +1558,7 @@ export const CHRONICLE_SOURCES = {
   'boodle': {
     7: {
       source: 'https://onepiece.fandom.com/wiki/Episode_7',
-      note: 'Threshold: Boodle gives Buggy his name and title when he challenges him at the Drinker Pub (it wiki Barboncino: "gli rivela il suo nome e il suo ruolo"; Chapter_15: "Boodle challenges Buggy over the matter of the town"). Boodle page cites that scene as chap=15 ep=6 ep2=7; Episode_7 Long Summary opens "Luffy knocks Boodle unconscious", so the scene straddles 6/7; rounded up to 7. At his first meeting (ch 12, ep 6) he only says he is the mayor (it wiki). Story detail: Boodle page History (ch 14-15, ep 6-7).',
+      note: 'Threshold: Boodle gives Buggy his name and title when he challenges him at the Drinker Pub (it wiki Barboncino: "gli rivela il suo nome e il suo ruolo"; Chapter_15: "Boodle challenges Buggy over the matter of the town"). Boodle page cites that scene as chap=15 ep=6 ep2=7; Episode_7 Long Summary opens "Luffy knocks Boodle unconscious", so the scene straddles 6/7; rounded up to 7. At his first meeting (ch 12, ep 6) he only says he is the mayor (it wiki). Story detail: Boodle page History (ch 14-15, ep 6-7). Chapter (#169): the last event is chapter 15, at or below the record’s own chapter 15, so no pin.',
     },
     8: {
       source: 'https://onepiece.fandom.com/wiki/Episode_8',
@@ -1576,49 +1576,49 @@ export const CHRONICLE_SOURCES = {
     },
     16: {
       source: 'https://onepiece.fandom.com/wiki/Episode_16',
-      note: 'Ep 15: the Usopp Pirates beat Kuro while he is down (frying pan: Ninjin page, chap=35 ep=15); Kuro sends Jango after Kaya; Usopp orders the children to protect her. Ep 16: forest, Kaya ill, fake surrender + weapons + falling log fail, Kaya agrees to sign the will, Zoro and Usopp arrive.',
+      note: 'Ep 15: the Usopp Pirates beat Kuro while he is down (frying pan: Ninjin page, chap=35 ep=15); Kuro sends Jango after Kaya; Usopp orders the children to protect her. Ep 16: forest, Kaya ill, fake surrender + weapons + falling log fail, Kaya agrees to sign the will, Zoro and Usopp arrive. Chapter (#169): 41, raised from 39 because the story names Kaya, Kuro and Jango, who open at chapter 41; the last event: Kaya agrees to sign the will to save the boys; Zoro and Usopp arrive (Chapter_39: “Kaya agrees to sign the will if Jango stops hurting the Usopp Pirates... Zoro and Usopp spot them”).',
     },
     17: {
       source: 'https://onepiece.fandom.com/wiki/Episode_17',
-      note: 'Kayaku Boshi defeats Jango; Usopp asks the children not to tell; disbands the crew telling each to pursue their ambitions (tearful: Ninjin page chap=40 ep=17); the children take over the "pirates are coming" lie.',
+      note: 'Kayaku Boshi defeats Jango; Usopp asks the children not to tell; disbands the crew telling each to pursue their ambitions (tearful: Ninjin page chap=40 ep=17); the children take over the "pirates are coming" lie. Chapter (#169): 41, the last event: After the ship sails, the three run through the village shouting that pirates are coming (Chapter_41: “back in the village the three former Usopp pirates prepare themselves. As they call ’The pirates are coming’” (Ninjin Qref chap=41 ep=17)).',
     },
   },
   'buchi': {
     13: {
       source: 'https://onepiece.fandom.com/wiki/Episode_13',
-      note: 'Long Summary names "the Nyaban Brothers, Sham and Buchi"; fansub transcript of ep 13 has "Right, Buchi?". Buchi page (chap=31/32, ep=13): complains he wants no part, stomp dodged and splits the ground, blames Sham; Usopp’s stray shot, chest cut, Kuro arrives.',
+      note: 'Long Summary names "the Nyaban Brothers, Sham and Buchi"; fansub transcript of ep 13 has "Right, Buchi?". Buchi page (chap=31/32, ep=13): complains he wants no part, stomp dodged and splits the ground, blames Sham; Usopp’s stray shot, chest cut, Kuro arrives. Chapter (#169): the last event is chapter 32, at or below the record’s own chapter 41, so no pin.',
     },
     14: {
       source: 'https://onepiece.fandom.com/wiki/Episode_14',
-      note: 'Long Summary: rebellion against Kuro, Nukiashi, five minutes, Tora Gari; "Buchi is still conscious and begs Jango to hypnotize him"; muscles increase in size. Buchi page chap=33 ep=14: raided villages/sank ships, "no longer their captain".',
+      note: 'Long Summary: rebellion against Kuro, Nukiashi, five minutes, Tora Gari; "Buchi is still conscious and begs Jango to hypnotize him"; muscles increase in size. Buchi page chap=33 ep=14: raided villages/sank ships, "no longer their captain". Chapter (#169): the last event is chapter 33, at or below the record’s own chapter 41, so no pin.',
     },
     15: {
       source: 'https://onepiece.fandom.com/wiki/Episode_15',
-      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only).',
+      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only). Chapter (#169): the last event is chapter 36, at or below the record’s own chapter 41, so no pin.',
     },
   },
   'sham': {
     13: {
       source: 'https://onepiece.fandom.com/wiki/Episode_13',
-      note: 'Long Summary: "Jango summons the Nyaban Brothers, Sham and Buchi"; Sham takes two of Zoro’s katanas; Usopp’s missed shot hits Zoro; brothers slash his chest; Kuro arrives. Fansub transcript of ep 13: "Sham, just go do it!", "Gotcha, Sham!", "Right, Buchi?". Sham page: shirt-only cut (it wiki), chap=32 ep=13.',
+      note: 'Long Summary: "Jango summons the Nyaban Brothers, Sham and Buchi"; Sham takes two of Zoro’s katanas; Usopp’s missed shot hits Zoro; brothers slash his chest; Kuro arrives. Fansub transcript of ep 13: "Sham, just go do it!", "Gotcha, Sham!", "Right, Buchi?". Sham page: shirt-only cut (it wiki), chap=32 ep=13. Chapter (#169): the last event is chapter 32, at or below the record’s own chapter 41, so no pin.',
     },
     14: {
       source: 'https://onepiece.fandom.com/wiki/Episode_14',
-      note: 'Long Summary: brothers accuse Kuro of going soft after three years, charge, Nukiashi puts claws at their backs, five minutes to kill Zoro, Nami kicks back the swords, Tora Gari defeats both; Buchi alone gets up. "Five seconds": Sham page chap=33 ep=14.',
+      note: 'Long Summary: brothers accuse Kuro of going soft after three years, charge, Nukiashi puts claws at their backs, five minutes to kill Zoro, Nami kicks back the swords, Tora Gari defeats both; Buchi alone gets up. "Five seconds": Sham page chap=33 ep=14. Chapter (#169): the last event is chapter 33, at or below the record’s own chapter 41, so no pin.',
     },
   },
   'fullbody': {
     20: {
       source: 'https://onepiece.fandom.com/wiki/Episode_20',
-      note: 'Long Summary: Marine lieutenant Fullbody enters for a date, orders the crew’s ship destroyed, Luffy deflects the cannonball into the roof onto Zeff, fly in the soup, table smashed, Sanji beats him with his legs. Fansub transcript of ep 20: "I’m the Marine Lieutenant, Iron Fist Fullbody!". Char box first = Chapter 43; Episode 20.',
+      note: 'Long Summary: Marine lieutenant Fullbody enters for a date, orders the crew’s ship destroyed, Luffy deflects the cannonball into the roof onto Zeff, fly in the soup, table smashed, Sanji beats him with his legs. Fansub transcript of ep 20: "I’m the Marine Lieutenant, Iron Fist Fullbody!". Char box first = Chapter 43; Episode 20. Chapter (#169): the last event is chapter 43, at or below the record’s own chapter 43, so no pin.',
     },
     21: {
       source: 'https://onepiece.fandom.com/wiki/Episode_21',
-      note: 'Long Summary: Fullbody tries to flee, his crew reports the escaped starved prisoner; Gin enters, Patty beats him and throws him out. Fullbody page (chap=44 ep=21): Gin broke out of Fullbody’s ship; Fullbody flees. Krieg deliberately not named (filed at 22).',
+      note: 'Long Summary: Fullbody tries to flee, his crew reports the escaped starved prisoner; Gin enters, Patty beats him and throws him out. Fullbody page (chap=44 ep=21): Gin broke out of Fullbody’s ship; Fullbody flees. Krieg deliberately not named (filed at 22). Chapter (#169): 47, raised from 44 because the story names Gin, who opens at chapter 47; the last event: Fullbody’s man reports the starved prisoner (Gin) escaped; Patty beats Gin and throws him out while Fullbody slips away (Chapter_44: “Patty kicks the man about to the cheering of the customers while Fullbody makes an escape.’ Fullbody Qref c44 (chap 44, ep 21)).',
     },
     45: {
       source: 'https://onepiece.fandom.com/wiki/Episode_45',
-      note: 'Long Summary (anime-only scene in a canon episode adapting ch 96): Fullbody demoted after the fight at the Baratie, sees Luffy’s bounty as a way back, attacks the Going Merry, repelled, retreats on seeing Sanji.',
+      note: 'Long Summary (anime-only scene in a canon episode adapting ch 96): Fullbody demoted after the fight at the Baratie, sees Luffy’s bounty as a way back, attacks the Going Merry, repelled, retreats on seeing Sanji. Chapter (#169): 96, Luffy’s first bounty poster. The demotion for the Baratie fight is anime-only (the manga demotes him for Jango’s acquittal, chapter 168 cover story), so the story no longer says he was demoted: pinning 168 would have held 117 other entries back by about 36 chapters.',
     },
     128: {
       source: 'https://onepiece.fandom.com/wiki/Episode_128',
@@ -1632,45 +1632,45 @@ export const CHRONICLE_SOURCES = {
   'carne': {
     21: {
       source: 'https://onepiece.fandom.com/wiki/Episode_21',
-      note: 'Debut (charDebut; Char Box first = Ch 45 / Ep 21). Named on screen in ep 21: the cooks cheer "Carne, take him out! Patty, beat him!" during the kitchen quarrel (subslikescript ep 21 transcript). Fleet of 50 ships / 5000 men, elephants and ants, "just quit", waiters: same transcript + Chapter 45 summary + Carne/History (chap 45, ep 21).',
+      note: 'Debut (charDebut; Char Box first = Ch 45 / Ep 21). Named on screen in ep 21: the cooks cheer "Carne, take him out! Patty, beat him!" during the kitchen quarrel (subslikescript ep 21 transcript). Fleet of 50 ships / 5000 men, elephants and ants, "just quit", waiters: same transcript + Chapter 45 summary + Carne/History (chap 45, ep 21). Chapter (#169): the last event is chapter 45, at or below the record’s own chapter 45, so no pin.',
     },
     25: {
       source: 'https://onepiece.fandom.com/wiki/Episode_25',
-      note: 'Long Summary: patissier Patty and charcutier Carne operate Sabagashira I, Krieg throws it back into the fin, they remember how they were accepted into the Baratie, defeat many enemies, downed by Pearl. Ten years / 300 restaurants / Zeff’s call for cooks: Patty/History Qref c54 (chap 54, ep 25) and chap 68 moved to ep 25 flashback.',
+      note: 'Long Summary: patissier Patty and charcutier Carne operate Sabagashira I, Krieg throws it back into the fin, they remember how they were accepted into the Baratie, defeat many enemies, downed by Pearl. Ten years / 300 restaurants / Zeff’s call for cooks: Patty/History Qref c54 (chap 54, ep 25) and chap 68 moved to ep 25 flashback. Chapter (#169): 68, the three hundred restaurants and Zeff looking for cooks who could fight (Qref chap=68 page=12, moved by the anime to episode 25); the pin moves Pearl’s two episode-25 entries from chapter 58 to 68 as well.',
     },
     28: {
       source: 'https://onepiece.fandom.com/wiki/Episode_28',
-      note: 'Long Summary: Gin gives his mask to Luffy, inhales MH5, internal bleeding, staff rush to care for him. Sanji’s order and the pudding remark: Patty/Relationships + Trivia Qref "poison" (chap 63, ep 28).',
+      note: 'Long Summary: Gin gives his mask to Luffy, inhales MH5, internal bleeding, staff rush to care for him. Sanji’s order and the pudding remark: Patty/Relationships + Trivia Qref "poison" (chap 63, ep 28). Chapter (#169): 63, the last event: Patty proposes his food as a cure; Carne says Gin was already poisoned once today (Chapter_63: “Patty suggests making some food for him, to which Carne replies that he has already been poisoned once today.’ Patty Qref poison (chap 63, ep 28)).',
     },
   },
   'patty': {
     21: {
       source: 'https://onepiece.fandom.com/wiki/Episode_21',
-      note: 'Debut (charDebut, Char Box first = Ch 44 / Ep 21). Named on screen in ep 21: Zeff "Patty, Sanji! If you wanna fight, do it in the kitchen!" and the cooks "Is it really okay, though, Patty?" (subslikescript ep 21 transcript). Gin thrown out, kitchen warning, Luffy as chore boy: Long Summary + Patty/History (chap 44-45, ep 21).',
+      note: 'Debut (charDebut, Char Box first = Ch 44 / Ep 21). Named on screen in ep 21: Zeff "Patty, Sanji! If you wanna fight, do it in the kitchen!" and the cooks "Is it really okay, though, Patty?" (subslikescript ep 21 transcript). Gin thrown out, kitchen warning, Luffy as chore boy: Long Summary + Patty/History (chap 44-45, ep 21). Chapter (#169): the last event is chapter 45, at or below the record’s own chapter 45, so no pin.',
     },
     22: {
       source: 'https://onepiece.fandom.com/wiki/Episode_22',
-      note: 'Long Summary: Krieg fed against Patty’s wishes, Patty shoots him with Shokuatari Meatball, armour unharmed, guns emerge, Zeff submits. Marines idea and knocking Sanji down: Patty/History Qref chap 46-47 ep 22.',
+      note: 'Long Summary: Krieg fed against Patty’s wishes, Patty shoots him with Shokuatari Meatball, armour unharmed, guns emerge, Zeff submits. Marines idea and knocking Sanji down: Patty/History Qref chap 46-47 ep 22. Chapter (#169): 50, raised from 47 because the story names Don Krieg, who opens at chapter 50; the last event: Patty knocks Sanji down, fires the lobster cannon, armour unscratched, guns drive the cooks back, Zeff brings the food (Chapter_47: “Patty knocks Sanji down, and tries to attack Krieg by launching a canon bullet ... Zeff appears with a bag of food and hands it to Krieg.” (chap 47, ep 22)).',
     },
     30: {
       source: 'https://onepiece.fandom.com/wiki/Episode_30',
-      note: 'Long Summary: Patty, Carne and Zeff pretend to dislike the soup; Sanji prostrates before Zeff. Throwing out the soup, confession overheard, payback attack, tearful farewell: Patty/History Qref chap 67-68 ep 30.',
+      note: 'Long Summary: Patty, Carne and Zeff pretend to dislike the soup; Sanji prostrates before Zeff. Throwing out the soup, confession overheard, payback attack, tearful farewell: Patty/History Qref chap 67-68 ep 30. Chapter (#169): 68, the last event: Sanji leaves: Patty and Carne’s payback attack, the tearful farewell, Sanji bowing to Zeff (Chapter_68: “Patty and Carne even try an ultimate revenge attack on Sanji ... Sanji shows his gratitude ... and bows in respect.” (Patty Qref chap 67, ep 30)).',
     },
   },
   'momoo': {
     38: {
       source: 'https://onepiece.fandom.com/wiki/Episode_38',
-      note: 'THRESHOLD MOVED 32 -> 38. First episode where he is on screen AND named: Hatchan "Come out, Momoo!", "the Grand Line monster that destroyed the town of Gosa", "the sea cow, Momoo!", Arlong "Momoo. What are you doing? ... if you wanna run away, I won’t stop you" (subslikescript ep 38). Ep 31 says the name ("A monster called Mohmoo did this", "Mohmoo! Lunchtime") but he is not seen; ep 32 shows him with no name. Towing/eating the cook: ep 32 transcript + Long Summary; crash: ep 33 Long Summary + Momoo/History (chap 74-75, ep 33); windmill throw: ep 38 Long Summary (Gomu Gomu no Kazaguruma). Gosa houses upside down / road: Episode 31 Long Summary + transcript.',
+      note: 'THRESHOLD MOVED 32 -> 38. First episode where he is on screen AND named: Hatchan "Come out, Momoo!", "the Grand Line monster that destroyed the town of Gosa", "the sea cow, Momoo!", Arlong "Momoo. What are you doing? ... if you wanna run away, I won’t stop you" (subslikescript ep 38). Ep 31 says the name ("A monster called Mohmoo did this", "Mohmoo! Lunchtime") but he is not seen; ep 32 shows him with no name. Towing/eating the cook: ep 32 transcript + Long Summary; crash: ep 33 Long Summary + Momoo/History (chap 74-75, ep 33); windmill throw: ep 38 Long Summary (Gomu Gomu no Kazaguruma). Gosa houses upside down / road: Episode 31 Long Summary + transcript. Chapter (#169): the last event is chapter 82, at or below the record’s own chapter 82, so no pin.',
     },
     524: {
       source: 'https://onepiece.fandom.com/wiki/Episode_524',
-      note: 'Long Summary: Caribou’s crew pulled away by Momoo, who flees on recognising Nami, Sanji and Luffy; Caribou left alone on the Sunny; Kraken destroys the Caribou ship. Collar, captured near Sabaody, return with a new lump, freed and swims away: Momoo/History Qref chap 604-605, ep 524.',
+      note: 'Long Summary: Caribou’s crew pulled away by Momoo, who flees on recognising Nami, Sanji and Luffy; Caribou left alone on the Sunny; Kraken destroys the Caribou ship. Collar, captured near Sabaody, return with a new lump, freed and swims away: Momoo/History Qref chap 604-605, ep 524. Chapter (#169): 605, the last event: He comes back with a fresh lump; the Kraken smashes the Caribou ship and he swims off free (Momoo: “Momoo later returned at full speed ... with another lump on his head. When the Kraken destroyed the ship, Momoo was freed” (chap 605, ep 524)).',
     },
   },
   'lord-of-the-coast': {
     504: {
       source: 'https://onepiece.fandom.com/wiki/Episode_504',
-      note: 'Lord of the Coast page: name Qref "chap=1, page=49, ep=504: The Lord of the Coast is named by Luffy." Episode_504 Long Summary: "Three years later, Luffy sets out from the Goa Kingdom. He then beats up the Lord of the Coast for eating Shanks\' arm"; Anime Notes: the defeat "is properly shown for the first time in the anime version in this episode". Episode_4 calls it only "a Sea King, a carnivorous sea monster" and skips the rematch, so ep 4 is not a naming; rounded up to 504. Chapter 1 names it at the rematch (page 49). Ep 4 facts (Higuma eaten, Shanks\'s arm, the glare) are already known at 504.',
+      note: 'Lord of the Coast page: name Qref "chap=1, page=49, ep=504: The Lord of the Coast is named by Luffy." Episode_504 Long Summary: "Three years later, Luffy sets out from the Goa Kingdom. He then beats up the Lord of the Coast for eating Shanks\' arm"; Anime Notes: the defeat "is properly shown for the first time in the anime version in this episode". Episode_4 calls it only "a Sea King, a carnivorous sea monster" and skips the rematch, so ep 4 is not a naming; rounded up to 504. Chapter 1 names it at the rematch (page 49). Ep 4 facts (Higuma eaten, Shanks\'s arm, the glare) are already known at 504. Chapter (#169): the last event is chapter 1, at or below the record’s own chapter 589, so no pin.',
     },
   },
   'roshio': {
