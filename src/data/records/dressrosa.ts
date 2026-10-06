@@ -181,8 +181,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 700,
       name: { it: 'Dressrosa', en: 'Dressrosa' },
       summary: {
-        it: 'Un regno del Nuovo Mondo che dal mare appare come un’isola rocciosa, con un pirata sul trono e un colosseo sempre pieno.',
-        en: 'A New World kingdom that looks like a rocky island from the sea, with a pirate on its throne and a colosseum that is always full.',
+        it: 'Un regno del Nuovo Mondo che dal mare appare come una muraglia di rocce enormi, governato da un pirata che loda uno dei suoi per come manda avanti il colosseo.',
+        en: 'A New World kingdom that looks like a wall of huge rocks from the sea, ruled by a pirate who praises one of his men for running its colosseum.',
       },
       visual: { art: 'dressrosa-arc', tint: 'flamingo' },
     },
