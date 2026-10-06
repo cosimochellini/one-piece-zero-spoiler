@@ -281,34 +281,33 @@ export const dressrosaArt = {
     shadow(84, 184, 52),
   ],
 
-  // His long coat standing on its hem, open at the front: the plumed collar
-  // broad over the shoulders and down the lapels, the sleeves hanging
-  // straight with a stripe down each and a plumed cuff, the lining and the
-  // far sleeve hatched. He wears it when he walks into the ring for Block B
-  // at the end of episode 635 (chapter 706). No barrier: that is 637.
+  // His long coat standing on its hem, open at the front, in one outline
+  // from the shoulders down the sleeves to the hem: the plumed collar low
+  // over the shoulders and down the lapels, the sleeves hanging straight
+  // with a stripe down each and a plumed cuff, the lining and the far
+  // sleeve hatched. He wears it when he walks into the ring for Block B at
+  // the end of episode 635 (chapter 706). No barrier: that is 637.
   'bartolomeo': [
     {
-      d: 'M37.8 95.5 Q13.7 93.9 17.8 90.5 L40.7 90.4 Q19.4 86.1 26.5 83.4 L48.2 86 Q32.2 79.4 41.3 77.7 L59.3 82.8 Q50.4 74.6 60.6 74.1 L72.8 81 Q72.1 72.3 82.2 73 L87.2 81 Q94.6 72.7 103.5 74.6 L100.7 82.8 Q115.5 75.8 122 78.7 L111.8 86 Q132.3 81.2 135.8 84.7 L119.3 90.4 Q143.1 88.4 143.1 92.1 L122.2 95.5 L118 98 L96 110 L90 134 L84 112 Q80 100 76 112 L70 134 L64 110 L42 98 Z',
+      d: 'M47.6 97.7 Q24.1 96.6 27.9 94.1 L50.4 94.3 Q30.1 90.8 37 88.9 L57.5 91.5 Q43.4 86.2 52.3 85.1 L67.9 89.7 Q62 83.2 71.7 83.2 L80 89 Q83.2 82.4 92.3 83.4 L92.1 89.7 Q104 83.9 111.1 85.7 L102.5 91.5 Q121.3 87.4 125.4 89.9 L109.6 94.3 Q132.5 92.5 133 95.2 L112.4 97.7 L112 100 L96 112 L90 134 L84 112 Q80 100 76 112 L70 134 L64 112 L48 100 Z',
       role: 'accent',
     },
-    { d: 'M70 134 L64 182 M90 134 L96 182' },
     {
-      d: 'M40 182 Q52 187 64 182 M96 182 Q108 187 120 182 M64 182 Q80 177 96 182 M40 162 V182 M120 162 V182',
+      d: 'M64 182 Q51 187 38 182 L39 160 L19 158 C19 136 21 114 27 101 L47.6 97.7 M96 182 Q109 187 122 182 L121 160 L141 158 C141 136 139 114 133 101 L112.4 97.7',
     },
+    { d: 'M70 134 L64 182 Q80 177 96 182 L90 134' },
+    { d: 'M42 108 L39 158 M118 108 L121 158', role: 'soft' },
     {
-      d: 'M24 98 C21 116 20 136 20 156 H40 V108 M136 98 C139 116 140 136 140 156 H120 V108',
-    },
-    {
-      d: 'M30 102 C29 120 29 138 30 156 M130 102 C131 120 131 138 130 156',
+      d: 'M30 104 C28 122 28 140 29 158 M130 104 C132 122 132 140 131 158',
       role: 'soft',
     },
     {
-      d: 'M18 156 l3 5 l3 -3 l3 5 l3 -4 l3 5 l3 -4 l3 5 l3 -3 l3 4 M118 156 l3 4 l3 -3 l3 5 l3 -4 l3 5 l3 -4 l3 5 l3 -3 l3 5',
+      d: 'M19 158 l2.5 5 l2.5 -3 l2.5 5 l2.5 -4 l2.5 5 l2.5 -4 l2.5 5 l2.5 -3 M121 158 l2.5 4 l2.5 -3 l2.5 5 l2.5 -4 l2.5 5 l2.5 -4 l2.5 5 l2.5 -3',
       role: 'soft',
     },
     { d: 'M72 168 l8 -8 M70 180 l14 -14 M82 180 l11 -11', role: 'ambient' },
     {
-      d: 'M124 120 l12 -12 M124 136 l14 -14 M124 152 l14 -14',
+      d: 'M123 122 l12 -12 M123 138 l14 -14 M123 154 l14 -14',
       role: 'ambient',
     },
     shadow(80, 192, 62),

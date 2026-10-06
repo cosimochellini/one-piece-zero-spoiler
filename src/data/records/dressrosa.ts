@@ -1170,8 +1170,8 @@ export const dressrosa: Saga = {
     'bartolomeo': {
       role: { it: 'Capitano pirata', en: 'Pirate captain' },
       log: {
-        it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha arrostito dei pirati su uno spiedo e ha diffuso il video, che ha bombardato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
-        en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he roasted pirates on a skewer and shared the video, bombed innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
+        it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha arrostito dei pirati su uno spiedo e ha diffuso il video, che ha attaccato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
+        en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he roasted pirates on a skewer and shared the video, attacked innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
       },
       affiliation: [
         {
@@ -1882,8 +1882,8 @@ export const dressrosa: Saga = {
         en: 'Emperor of the New World',
       },
       log: {
-        it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kid aprendo una buca nel terreno e ne risale lamentandosi del mal di testa. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto sette volte, catturato diciotto e condannato a morte quaranta, ma la catena, la lama e la lancia si sono sempre spezzate, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
-        en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it complaining that his head hurts. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated seven times, captured eighteen times and sentenced to death forty times, but the chain, the blade and the spear always broke, and nobody has managed to kill him, not even himself.',
+        it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kid aprendo una buca nel terreno e ne risale imprecando perché è ancora vivo. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto, catturato e condannato a morte molte volte, ma ogni esecuzione è fallita, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
+        en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it cursing that he is still alive. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated, captured and sentenced to death many times, but every execution failed, and nobody has managed to kill him, not even himself.',
       },
       status: [{ episode: 739, value: 'alive' }],
       affiliation: [
