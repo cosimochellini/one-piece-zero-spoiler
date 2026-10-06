@@ -104,6 +104,8 @@ const RAIJIN_FIREBALL =
 export const wanoArt = {
   // A closed country seen from the sea: one tall peak, the far flank hatched,
   // a bank of cloud across it in the record's colour, and roofs at its foot.
+  // The peak and the roofs stand for the country as a whole, an arc's
+  // symbol, not one place in it: Wano itself is first seen at 891.
   'wano': [
     { d: 'M51.2 78 L80 30 L108.8 78' },
     { d: 'M38 100 L21.2 128 M122 100 L138.8 128' },
@@ -182,30 +184,29 @@ export const wanoArt = {
     shadow(72, 182, 44),
   ],
 
-  // His red tengu mask set down on its edge, turned so the long nose juts
-  // out, the rim's thickness and the hollow inside hatched, no eyes and no
-  // mouth; the sword he draws on Luffy lies in front of it. He wears the mask
-  // from his first scene, in the workshop at Amigasa (894).
+  // His red tengu mask laid flat on its back and seen from the side: the
+  // shell of the mask with its rim's thickness, the long nose rising out of
+  // it in profile as a cone in his colour, its base hatched, no eyes and no
+  // mouth. The sword he draws on Luffy lies in front of it. He wears the
+  // mask from his first scene, at Amigasa (894).
   'tenguyama-hitetsu': [
+    { d: 'M14 146 C16 120 46 104 80 104 C112 104 140 120 142 146' },
     {
-      d: 'M60 152 C42 138 34 100 40 72 C46 46 64 34 82 38 C102 42 112 66 106 98 C100 130 86 152 72 156 C68 156 64 154 60 152 Z',
+      d: 'M14 146 Q78 158 142 146 M16 152 Q78 164 140 152 M14 146 V152 M142 146 V152',
     },
-    { d: 'M60 152 C48 138 42 104 46 78 C50 56 62 44 74 40', role: 'soft' },
+    { d: 'M34 130 Q58 118 76 118', role: 'soft' },
     {
-      d: 'M41 80 l6 2 M39 96 l7 1 M40 112 l7 0 M43 128 l6 -1 M48 142 l6 -2',
-      role: 'ambient',
-    },
-    { d: 'M100 116 C94 132 86 144 74 150', role: 'soft' },
-    {
-      d: 'M78 86 C92 76 108 60 120 42 C124 34 134 34 134 44 C132 50 128 52 124 54 C114 70 104 84 92 98 C84 98 78 94 78 86 Z',
+      d: 'M66 118 C76 94 98 60 124 30 C128 26 136 28 134 36 C116 66 102 98 96 120 Q80 126 66 118 Z',
       role: 'accent',
     },
-    { d: 'M86 92 C98 80 112 64 124 48', role: 'soft' },
-    { d: 'M44 174 L148 162 L149 169 L45 181 Z' },
-    { d: ellipse(42, 177, 3, 8) },
-    { d: 'M40 174 L14 177 L15 183 L41 181' },
-    { d: 'M20 177 l1 6 M26 176 l1 6 M32 175 l1 6', role: 'soft' },
-    shadow(82, 190, 66),
+    { d: 'M70 112 l9 2 M74 102 l9 2 M79 92 l8 2', role: 'ambient' },
+    { d: 'M86 116 C94 92 108 66 128 34', role: 'soft' },
+    { d: 'M108 112 l8 4 M118 116 l8 5 M128 122 l7 5', role: 'ambient' },
+    { d: 'M44 176 L148 164 L149 171 L45 183 Z' },
+    { d: ellipse(42, 179, 3, 8) },
+    { d: 'M40 176 L14 179 L15 185 L41 183' },
+    { d: 'M20 179 l1 6 M26 178 l1 6 M32 177 l1 6', role: 'soft' },
+    shadow(82, 192, 66),
   ],
 
   // A tea tray with a pot and a cup, a chrysanthemum beside it: she serves
@@ -258,7 +259,7 @@ export const wanoArt = {
   // seller (923, ch. 929).
   'page-one': [
     {
-      d: 'M4 118 C10 110 26 104 38 104 C46 104 52 108 58 112 C76 112 104 110 124 114 C138 116 150 124 158 136 C146 134 132 132 120 136 C110 144 92 146 74 142 C62 140 50 134 42 128 C34 128 24 126 16 126 C10 126 4 124 4 118 Z',
+      d: 'M2 94 C8 86 24 82 36 82 C46 82 50 90 52 98 C54 106 56 110 58 112 C76 112 104 110 124 114 C138 116 150 124 158 136 C146 134 132 132 120 136 C110 144 92 146 74 142 C62 140 50 134 44 126 C40 116 36 106 28 102 C20 100 8 100 2 94 Z',
     },
     { d: 'M54 112 C56 70 74 44 92 44 C110 44 126 76 124 114', role: 'accent' },
     {
@@ -272,7 +273,7 @@ export const wanoArt = {
       d: 'M54 134 C52 148 52 162 54 176 H64 M44 128 C42 144 40 160 42 176 H50',
       role: 'soft',
     },
-    { d: 'M26 126 Q60 132 96 130', role: 'soft' },
+    { d: 'M46 128 Q70 134 96 130', role: 'soft' },
     {
       d: 'M60 140 l4 4 M70 142 l4 4 M110 140 l4 4 M120 138 l4 4',
       role: 'ambient',
@@ -916,35 +917,33 @@ export const wanoArt = {
     shadow(80, 174, 58),
   ],
 
-  // The shogun's castle over the capital, three roofs high on the great
-  // twisted trunk it is built on, the trunk curling over it with blossom in
-  // the record's colour, water falling down its face, the shaded side
-  // hatched, roofs at its foot. It stands over the streets Zoro walks (892).
+  // A street of the capital running away between rows of shops, the roofs'
+  // eaves in the record's colour, the fronts in shade hatched, a gate at the
+  // far end: the streets Zoro walks the night of the crossroad killings
+  // (892). The shogun's castle on its trunk is not cited before 920.
   'flower-capital': [
+    { d: 'M4 150 V82 L66 106 V122 M156 150 V82 L94 106 V122' },
     {
-      d: 'M50 150 C58 134 52 118 58 104 C50 96 56 90 62 96 H98 C104 90 110 96 102 104 C108 118 102 134 110 150',
-    },
-    {
-      d: 'M100 98 C124 82 132 48 114 24 C100 6 66 8 50 26 M104 106 C134 88 142 44 120 16 C104 -4 62 -2 44 20',
-    },
-    {
-      d: 'M24 32 q-4 -10 8 -12 q4 -8 14 -4 q8 -4 12 4 q8 2 4 10 q-4 6 -12 4 q-6 6 -14 2 q-10 2 -12 -4 Z M126 40 q-2 -8 8 -9 q4 -6 11 -2 q8 0 6 8 q-2 6 -10 5 q-8 4 -15 -2 Z',
+      d: 'M-2 76 Q30 84 70 102 M162 76 Q130 84 90 102 M-2 76 l8 -8 Q36 76 74 96 L70 102 M162 76 l-8 -8 Q124 76 86 96 L90 102',
       role: 'accent',
     },
     {
-      d: 'M62 96 V84 H98 V96 M52 84 L62 74 H98 L108 84 M66 74 V64 H94 V74 M58 64 L68 54 H92 L102 64 M72 54 V46 H88 V54 M64 46 L80 34 L96 46',
-    },
-    {
-      d: 'M72 84 v12 M80 84 v12 M88 84 v12 M74 64 v10 M86 64 v10',
+      d: 'M24 150 V90 M44 150 V98 M58 150 V103 M136 150 V90 M116 150 V98 M102 150 V103',
       role: 'soft',
     },
-    { d: 'M68 104 V142 M76 104 V148 M84 104 V148 M92 104 V142', role: 'soft' },
-    { d: 'M98 116 l6 -4 M98 130 l6 -4 M100 144 l6 -4', role: 'ambient' },
+    { d: 'M4 112 L66 124 M156 112 L94 124', role: 'soft' },
     {
-      d: 'M2 150 V138 l10 -8 h16 l10 8 V150 M124 150 V138 l10 -8 h16 l10 8 V150 M8 138 h28 M130 138 h28',
-      role: 'soft',
+      d: 'M120 104 l8 4 M120 118 l8 4 M120 132 l8 4 M140 98 l8 4 M140 114 l8 4 M140 130 l8 4',
+      role: 'ambient',
     },
-    { d: 'M-4 150 H164', role: 'ambient' },
+    { d: 'M70 122 V112 H90 V122 M66 112 L80 102 L94 112', role: 'soft' },
+    { d: 'M66 122 L30 190 M94 122 L130 190 M66 122 H94' },
+    {
+      d: 'M80 128 V140 M80 152 V166 M80 178 V190',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M-4 150 H4 M156 150 H164', role: 'ambient' },
   ],
   // Three dumplings left on a plate, two daggers crossed beneath it.
   'dobon': [
@@ -1014,8 +1013,9 @@ export const wanoArt = {
   ],
 
   // His great belt, still buckled, standing in a hoop as wide as he is, the
-  // inside of the far side hatched, studs along it, the end of the strap
-  // hanging past the round buckle in his colour (930).
+  // inside of the far side hatched, studs along it, the round buckle in his
+  // colour off to one side with its prong, the end of the strap hanging past
+  // it (930).
   'babanuki': [
     { d: 'M18 120 C18 98 142 98 142 120', role: 'soft' },
     {
@@ -1035,11 +1035,11 @@ export const wanoArt = {
       role: 'soft',
     },
     {
-      d: 'M94 144 C110 146 128 150 140 160 L136 170 C124 160 108 156 94 154',
+      d: 'M74 142 C96 146 124 150 140 160 L136 170 C120 160 96 154 74 152',
       role: 'soft',
     },
-    { d: circle(80, 148, 15), role: 'accent' },
-    { d: 'M72 148 H88', role: 'soft' },
+    { d: circle(60, 146, 13), role: 'accent' },
+    { d: 'M47 146 H73 M60 146 L76 150', role: 'soft' },
     shadow(80, 182, 64),
   ],
   // His bull-horned headpiece in 3/4, the near horn swept forward and the
@@ -1416,28 +1416,35 @@ export const wanoRedrawn: Redrawings = {
       value: [
         ...placed(SHINOBU_KATANA, 'translate(44 172) rotate(-12)'),
         {
-          d: `${circle(50, 104, 18)} ${circle(38, 140, 16)} ${circle(72, 136, 15)}`,
+          d: `${circle(50, 98, 16)} ${circle(36, 132, 13)} ${circle(70, 130, 15)}`,
           role: 'accent',
         },
-        { d: 'M50 86 q8 -10 18 -6 M38 124 q4 -10 14 -8' },
+        {
+          d: 'M44 83 l3 -4 l3 3 l3 -3 l3 4 M50 79 q6 -8 14 -6 M30 120 l3 -4 l3 3 l3 -3 l3 4 M36 116 q4 -8 12 -7 M64 116 l3 -4 l3 3 l3 -3 l3 4',
+        },
         shadow(84, 188, 60),
       ],
     },
   ],
-  // The same fire over a pteranodon's wing in place of the feathered one:
-  // he is captioned with the fruit and flies at 924 (ch. 930, below his record's chapter).
+  // The same fire over a pteranodon's wing in place of the feathered one,
+  // the long finger running out to its tip and the membrane scalloped
+  // between the bones: he is captioned with the fruit and flies at 924
+  // (ch. 930, below his record's chapter).
   king: [
     {
       episode: 924,
       value: [
         {
-          d: 'M24 116 C36 70 74 40 122 36 C128 48 128 62 122 74 C96 96 60 112 24 116 Z',
+          d: 'M24 116 C36 72 70 48 104 40 L150 26 C140 40 128 50 114 54 C116 64 104 72 92 72 C92 84 78 94 64 94 C62 106 46 116 24 116 Z',
         },
         {
-          d: 'M120 40 C102 60 76 84 40 106 M122 56 C106 72 82 90 50 112',
+          d: 'M30 108 C44 80 70 58 104 42 M104 42 C102 52 96 62 90 70 M104 42 L146 28',
           role: 'soft',
         },
-        { d: 'M64 104 l6 -6 M84 94 l6 -6 M104 82 l6 -6', role: 'ambient' },
+        {
+          d: 'M40 106 l6 -6 M56 98 l6 -6 M72 86 l6 -6 M96 66 l5 -5',
+          role: 'ambient',
+        },
         ...KING_FIRE,
         { d: 'M4 188 H156', role: 'ambient' },
       ],
