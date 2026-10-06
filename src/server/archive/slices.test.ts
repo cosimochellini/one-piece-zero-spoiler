@@ -817,18 +817,18 @@ describe('a record drawn again later in the story', () => {
 
   it('plants Whitebeard’s bisento over his grave only from episode 505', () => {
     const whitebeard = filed('edward-newgate')
-    const bisento = DRAWINGS['edward-newgate']
+    const barrel = DRAWINGS['edward-newgate']
     const grave = REDRAWINGS['edward-newgate']?.[0]
     const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
       characterOf(whitebeard, 'en', reveal(bookmark)).visual.strokes
 
     expect(grave?.episode).toBe(505)
 
-    expect(drawnAt(ep(504))).toBe(bisento)
+    expect(drawnAt(ep(504))).toBe(barrel)
     expect(drawnAt(ep(505))).toBe(grave?.value)
-    expect(drawnAt(null)).toBe(bisento)
+    expect(drawnAt(null)).toBe(barrel)
     // The manga buries him in chapter 590, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 589 })).toBe(bisento)
+    expect(drawnAt({ mode: 'chapter', chapter: 589 })).toBe(barrel)
     expect(drawnAt({ mode: 'chapter', chapter: 590 })).toBe(grave?.value)
   })
 
