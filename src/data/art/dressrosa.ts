@@ -241,17 +241,38 @@ export const dressrosaArt = {
     shadow(80, 184, 40),
   ],
 
-  // A colosseum seen from the sea.
+  // The island's edge seen from the sea as the crew comes in at 629: a wall
+  // of huge rocks with mist at their foot, the ship small on the water.
   'dressrosa-arc': [
-    { d: 'M30 132 V90 a36 18 0 0 1 72 0 V132' },
-    { d: ellipse(66, 90, 36, 18) },
     {
-      d: 'M40 132 V112 a7 7 0 0 1 14 0 V132 M59 132 V112 a7 7 0 0 1 14 0 V132 M78 132 V112 a7 7 0 0 1 14 0 V132',
+      d: 'M-4 124 L2 92 L14 78 L24 82 L36 66 L52 62 L60 74 L70 58 L88 50 L102 58 L108 74 L118 66 L134 68 L142 80 L156 78 L164 96',
+    },
+    {
+      d: 'M24 82 L22 112 M36 66 L32 114 M70 58 L64 108 M88 50 L82 110 M118 66 L114 112 M142 80 L138 112',
+      role: 'soft',
+    },
+    {
+      d: 'M40 76 l8 8 M38 90 l10 10 M74 70 l8 8 M72 84 l10 10 M92 64 l10 10 M90 80 l12 12 M122 78 l8 8 M120 92 l10 10 M146 92 l8 8',
+      role: 'ambient',
+    },
+    {
+      d: 'M-4 122 C20 116 40 126 60 118 S100 124 120 116 S150 126 164 118',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M-4 136 C24 130 48 140 76 134 S124 140 164 132',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M-4 150 H94 M134 150 H164', role: 'ambient' },
+    { d: 'M96 158 H132 L126 167 H102 Z' },
+    { d: 'M114 158 V120' },
+    {
+      d: 'M98 126 C108 130 120 130 130 126 V150 C120 154 108 154 98 150 Z',
       role: 'accent',
     },
-    { d: 'M36 104 h16 M58 104 h16 M80 104 h16', role: 'soft' },
-    { d: 'M10 152 H150', role: 'ambient' },
-    ...SEA,
+    ...SEA.slice(1),
   ],
 
   // A gladiator's helmet with a long braid falling from it.
