@@ -1384,8 +1384,8 @@ export const wano: Saga = {
     'yamato': {
       role: { it: 'Figlio di Kaido', en: 'Kaido’s child' },
       log: {
-        it: 'Kaido racconta ai suoi ufficiali che quel giorno suo figlio è sparito, e li manda a riportarglielo. Lui compare mascherato nel mezzo dello scontro di Rufy con Ulti e Page One, mette fuori combattimento Ulti con la stessa mossa con cui Kaido aveva abbattuto Rufy e porta via Rufy ai Pirati delle Cento Bestie che lo inseguono. Gli dice che lo stava aspettando da tanto tempo, e si presenta: si chiama Yamato ed è il figlio di Kaido.',
-        en: 'Kaido tells his officers that his son disappeared that day, and sends them to bring him back. He turns up masked in the middle of Luffy’s fight with Ulti and Page One, knocks Ulti out with the same move Kaido once used to bring Luffy down, and carries Luffy away from the Beasts Pirates chasing them. He tells Luffy he has been waiting for him all this time, and introduces himself: his name is Yamato, and he is Kaido’s son.',
+        it: 'Kaido racconta ai suoi ufficiali che quel giorno suo figlio è sparito, e li manda a riportarglielo. Lui compare mascherato nel mezzo dello scontro di Rufy con Ulti e Page One, mette fuori combattimento Ulti con la stessa mossa con cui Kaido aveva abbattuto Rufy e porta via Rufy ai Pirati delle Cento Bestie che lo inseguono. Gli dice che lo stava aspettando, e si presenta: si chiama Yamato ed è il figlio di Kaido.',
+        en: 'Kaido tells his officers that his son disappeared that day, and sends them to bring him back. He turns up masked in the middle of Luffy’s fight with Ulti and Page One, knocks Ulti out with the same move Kaido once used to bring Luffy down, and carries Luffy away from the Beasts Pirates chasing them. He tells Luffy he has been waiting for him, and introduces himself: his name is Yamato, and he is Kaido’s son.',
       },
       affiliation: [
         {
@@ -1411,8 +1411,8 @@ export const wano: Saga = {
         en: 'Beasts Pirates headliner',
       },
       log: {
-        it: 'Ha mangiato uno SMILE dello scoiattolo volante, che le dà una coda da scoiattolo. Quando Kaido la chiama arriva subito e legge il programma della serata: un brindisi, i discorsi di Orochi e di Kaido, l’alleanza con la ciurma di Big Mom e, per ultimo, un annuncio importante che Kaido non vuole anticipare. Più tardi Kaido le chiede se Big Mom è pronta, e lei risponde che è già in arrivo; lui le dice che avrebbe dovuto avvisarlo.',
-        en: 'She ate a flying squirrel SMILE, which gives her a squirrel’s tail. When Kaido calls her she comes at once and reads out the night’s schedule: a toast, speeches by Orochi and Kaido, the alliance with Big Mom’s crew and, last, an important announcement that Kaido will not explain in advance. Later Kaido asks her whether Big Mom is ready, and she answers that Big Mom is already on her way; he tells her she should have said so.',
+        it: 'Ha mangiato uno SMILE dello scoiattolo volante, che le dà una coda da scoiattolo. Quando Kaido la chiama arriva subito e legge il programma della serata: un brindisi, i discorsi di Orochi e di Kaido, l’alleanza con la ciurma di Big Mom e, per ultimo, un annuncio importante che Kaido non vuole anticipare. Più tardi Kaido le chiede di Big Mom, e lei risponde che è già in arrivo.',
+        en: 'She ate a flying squirrel SMILE, which gives her a squirrel’s tail. When Kaido calls her she comes at once and reads out the night’s schedule: a toast, speeches by Orochi and Kaido, the alliance with Big Mom’s crew and, last, an important announcement that Kaido will not explain in advance. Later Kaido asks her about Big Mom, and she tells him Big Mom is already on her way.',
       },
       affiliation: [
         {
