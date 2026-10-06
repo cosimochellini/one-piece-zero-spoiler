@@ -246,18 +246,39 @@ export const fishManIslandArt = {
     ...SEA,
   ],
 
-  // A trident, and one of the pills that go with it.
+  // His pink newsboy cap in 3/4, the soft crown puffed out over the band in
+  // his colour, its panels meeting at the button, the far side hatched and
+  // the short visor out front. At its foot, the handcuffs he wears to wreck
+  // a fleeing human crew's ship without using his hands: one cuff flat, one
+  // on its edge, the chain between. Both are seen at 530 (ch. 611); no
+  // trident, which he is first seen with at 535 (ch. 616).
   'hody-jones': [
-    { d: 'M74 194 V96 M86 194 V96' },
-    { d: 'M72 196 h16' },
-    { d: 'M76 150 h8 M76 124 h8', role: 'soft' },
-    { d: 'M54 96 H106' },
-    { d: 'M80 96 V26 L84 14 L80 6 L76 14 L80 26', role: 'accent' },
-    { d: 'M56 96 V46 L60 36 L56 28 L52 36 L56 46', role: 'accent' },
-    { d: 'M104 96 V46 L108 36 L104 28 L100 36 L104 46', role: 'accent' },
-    { d: circle(128, 160, 15) },
-    { d: 'M116 154 q12 8 24 0', role: 'soft' },
-    shadow(80, 198, 28),
+    {
+      d: 'M46 118 C30 116 16 106 18 94 C22 72 56 56 92 58 C128 60 152 76 148 96 C146 108 134 114 120 116',
+      role: 'accent',
+    },
+    { d: 'M46 118 C68 126 100 124 120 116' },
+    { d: 'M48 126 C70 134 102 132 122 124 V116 M48 126 V118' },
+    { d: 'M48 124 C30 128 20 138 26 146 C34 154 68 150 86 134' },
+    { d: 'M30 140 C42 142 58 140 72 135', role: 'soft' },
+    {
+      d: 'M88 58 C74 74 66 96 68 124 M88 58 C106 72 116 92 116 118 M88 58 C58 66 36 84 32 108 M84 57 h8',
+      role: 'soft',
+    },
+    {
+      d: 'M128 72 l8 -5 M136 84 l9 -5 M134 98 l9 -5 M124 108 l9 -5',
+      role: 'ambient',
+    },
+    shadow(84, 156, 58),
+    { d: ellipse(120, 168, 17, 6.5) },
+    { d: `${ellipse(120, 167.5, 10, 3.5)} M134 172 l5 -3`, role: 'soft' },
+    { d: 'M102 164 h-5 v8 h5' },
+    {
+      d: `${ellipse(90, 168, 6, 3.5)} M82 168 h-6 ${ellipse(69, 168, 6, 3.5)}`,
+    },
+    { d: ellipse(56, 160, 7, 13) },
+    { d: ellipse(56.5, 160, 3.5, 8.5), role: 'soft' },
+    { d: 'M60 170 l4 -3', role: 'ambient' },
   ],
 
   // Noah looming over the district, the enormous ark in the district's
