@@ -820,6 +820,23 @@ describe('a record drawn again later in the story', () => {
     })
   })
 
+  it('shows the real Gum-Gum Fruit only from episode 4', () => {
+    const fruit = filed('gum-gum-fruit')
+    const grown = DRAWINGS['gum-gum-fruit']
+    const real = REDRAWINGS['gum-gum-fruit']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      recordOf(fruit, 'en', reveal(bookmark)).visual.strokes
+
+    expect(real?.episode).toBe(4)
+
+    expect(drawnAt(ep(3))).toBe(grown)
+    expect(drawnAt(ep(4))).toBe(real?.value)
+    expect(drawnAt(null)).toBe(grown)
+    // The manga shows it in chapter 1, the record's own chapter, so a chapter
+    // reader never sees the grown one.
+    expect(drawnAt({ mode: 'chapter', chapter: 1 })).toBe(real?.value)
+  })
+
   it('shows the real Flame-Flame Fruit only from episode 629', () => {
     const fruit = filed('flame-flame-fruit')
     const grown = DRAWINGS['flame-flame-fruit']
