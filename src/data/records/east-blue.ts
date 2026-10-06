@@ -437,8 +437,10 @@ export const eastBlue: Saga = {
       id: 'merry',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 41,
-      // Seen handing over Kaya’s gift at 12, first called by name when Kaya finds him cut down at 13.
+      revealedAtChapter: 31,
+      // Seen unnamed at 11 and 12, first called by name when Kaya finds him cut down at 13. The manga
+      // names him at 27, but his texts tell chapter 31, the one episode 13 adapts. The log says "his
+      // young mistress" because Kaya opens only at 41.
       name: { it: 'Merry', en: 'Merry' },
       summary: {
         it: 'Il maggiordomo della villa, con una testa a forma di pecora, che viene trovato ferito e dice alla sua giovane padrona chi è stato.',
@@ -1528,8 +1530,8 @@ export const eastBlue: Saga = {
     'merry': {
       role: { it: 'Maggiordomo della villa', en: 'Butler of the mansion' },
       log: {
-        it: 'Consegna a Klahadore il regalo di Kaya per i suoi tre anni nella villa, e resta sconvolto da quello che Klahadore ne fa. Più tardi Kaya lo trova ferito. Le dice che è stato Klahadore, che in realtà è un pirata e che le si è avvicinato per il patrimonio di famiglia.',
-        en: 'He hands Klahadore a present from Kaya for his third year in the house, and is shocked by what Klahadore does with it. Later Kaya finds him cut down. He tells her Klahadore did it, that Klahadore is really a pirate, and that he got close to her for the family fortune.',
+        it: 'Consegna a Klahadore il regalo della sua giovane padrona per i suoi tre anni nella villa, e resta sconvolto da quello che Klahadore ne fa. Più tardi lei lo trova ferito. Le dice che è stato Klahadore, che in realtà è un pirata e che le si è avvicinato per il patrimonio di famiglia.',
+        en: 'He hands Klahadore a present from his young mistress for his third year in the house, and is shocked by what Klahadore does with it. Later she finds him cut down. He tells her Klahadore did it, that Klahadore is really a pirate, and that he got close to her for the family fortune.',
       },
       affiliation: [
         {
