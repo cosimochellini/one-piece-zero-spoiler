@@ -11,6 +11,10 @@ import {
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
+/** The slant Squard's katana lies at, centred in the box. */
+const SQUARD_KATANA =
+  'translate(80 104) rotate(-34) scale(1.2) translate(-77 -100)'
+
 /** Jinbe's great wave, drawn alone first and under the helm later. */
 const GREAT_WAVE: Stroke[] = [
   {
@@ -901,19 +905,37 @@ export const summitWarArt = {
     shadow(80, 182, 44),
   ],
 
-  // A flag torn along its edge, and the dagger under it.
+  // His katana, sheathed, on the slant: the dark scabbard with its slight
+  // curve and its far face hatched, the collar at its mouth, the big round
+  // guard as the accent, the wrapped grip and its cap. The guard and the
+  // grip are the ones he wears at his hip when he sends his crew into the
+  // bay in episode 462, and holds as he leaps in at ch. 553 pp. 12-13.
   'squard': [
-    { d: 'M40 20 V186' },
     {
-      d: 'M40 34 h82 v52 l-14 -8 l-12 10 l-14 -10 l-16 10 l-16 -8z',
-      role: 'accent',
+      d: 'M90 95 Q50 92 12 94 Q6 100 12 106 Q50 105 90 105 Z',
+      transform: SQUARD_KATANA,
     },
-    { d: 'M40 52 h82', role: 'soft' },
-    { d: 'M100 180 L128 124' },
-    { d: 'M106 183 L134 127' },
-    { d: 'M128 124 L134 127' },
-    { d: 'M96 172 l14 7' },
-    shadow(84, 192, 40),
+    { d: 'M86 99 Q50 97 16 98', role: 'soft', transform: SQUARD_KATANA },
+    {
+      d: 'M24 99 l-5 6 M33 99 l-5 6 M42 99 l-5 6 M51 99 l-5 6 M60 99 l-5 6 M69 99 l-5 6 M78 99 l-5 6 M87 99 l-5 6',
+      role: 'ambient',
+      transform: SQUARD_KATANA,
+    },
+    { d: 'M90 94 h4 v12 h-4', transform: SQUARD_KATANA },
+    { d: ellipse(98, 100, 4.5, 16), role: 'accent', transform: SQUARD_KATANA },
+    {
+      d: 'M98 84 h4 M98 116 h4 M102 84 a4.5 16 0 0 1 0 32',
+      role: 'accent',
+      transform: SQUARD_KATANA,
+    },
+    { d: 'M106 95 H140 M106 105 H140', transform: SQUARD_KATANA },
+    {
+      d: 'M109 95 l5 10 M116 95 l5 10 M123 95 l5 10 M130 95 l5 10 M114 105 l5 -10 M121 105 l5 -10 M128 105 l5 -10',
+      role: 'soft',
+      transform: SQUARD_KATANA,
+    },
+    { d: 'M140 94 h4 q4 6 0 12 h-4 z', transform: SQUARD_KATANA },
+    shadow(80, 164, 56),
   ],
 
   // A straw hat woven out of rope, big enough for a giant.
