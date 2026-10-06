@@ -691,12 +691,12 @@ export const eastBlueChronicles = {
       episode: 151,
       value: {
         title: {
-          it: 'Un Imperatore rivale, avvertito in silenzio',
-          en: 'A rival Emperor, warned quietly',
+          it: 'Un capitano rivale, avvertito in silenzio',
+          en: 'A rival captain, warned quietly',
         },
         body: {
-          it: 'A Mary Geoise arriva la notizia: Shanks il Rosso ha mandato uomini oltre il mare per aprire un contatto con un Imperatore rivale, nella speranza di fermare la guerra che la caccia di [[marshall-d-teach|Teach]] a una taglia rischia di scatenare fra due ciurme che nessuna delle due parti può permettersi di perdere. I cinque che governano il mondo chiamano l’incontro stesso il pericolo maggiore, e si affrettano a riempire il seggio lasciato vuoto da Crocodile prima che l’equilibrio si sposti ancora. Nessuno in quella sala ha mai visto due Imperatori sedersi faccia a faccia.',
-          en: 'Word reaches Mary Geoise: Red-Haired Shanks has sent men across the sea to open contact with a rival Emperor, hoping to head off the war [[marshall-d-teach|Teach]]’s hunt for a bounty risks starting between two crews neither side can afford to lose. The World Government’s own rulers call the meeting itself the greater danger, and scramble to fill the empty Warlord seat left by Crocodile’s fall before the balance tips any further. Nobody in that room has ever seen two Emperors sit down face to face.',
+          it: 'A Mary Geoise arriva la notizia: Shanks il Rosso ha mandato uomini oltre il mare per aprire un contatto con un capitano rivale, nella speranza di fermare la guerra che la caccia di [[marshall-d-teach|Teach]] a una taglia rischia di scatenare fra due ciurme che nessuna delle due parti può permettersi di perdere. I cinque che governano il mondo chiamano l’incontro stesso il pericolo maggiore, e si affrettano a riempire il seggio lasciato vuoto da Crocodile prima che l’equilibrio si sposti ancora. Nessuno in quella sala vuole che i due capitani si siedano faccia a faccia.',
+          en: 'Word reaches Mary Geoise: Red-Haired Shanks has sent men across the sea to open contact with a rival captain, hoping to head off the war [[marshall-d-teach|Teach]]’s hunt for a bounty risks starting between two crews neither side can afford to lose. The World Government’s own rulers call the meeting itself the greater danger, and scramble to fill the empty Warlord seat left by Crocodile’s fall before the balance tips any further. Nobody in that room wants the two captains to sit down face to face.',
         },
       },
     },

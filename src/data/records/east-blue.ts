@@ -897,6 +897,16 @@ export const eastBlue: Saga = {
             en: 'Straw Hat Pirates; Emperor',
           },
         },
+        // The bounty news names him senior captain of the Grand Fleet at 1086
+        // (chapter 1058). "Capitano supremo" is an unofficial rendering of 大船長.
+        {
+          episode: 1086,
+          chapter: 1058,
+          value: {
+            it: 'Pirati di Cappello di Paglia; Imperatore; Grande Flotta di Cappello di Paglia, capitano supremo',
+            en: 'Straw Hat Pirates; Emperor; Straw Hat Grand Fleet, senior captain',
+          },
+        },
       ],
       origin: [
         {
@@ -1169,6 +1179,16 @@ export const eastBlue: Saga = {
             en: 'Red Hair Pirates, captain',
           },
         },
+        // Garp tells the crew he is one of the Four Emperors at 314
+        // (chapter 432).
+        {
+          episode: 314,
+          chapter: 432,
+          value: {
+            it: 'Pirati del Rosso, capitano; Imperatore',
+            en: 'Red Hair Pirates, captain; Emperor',
+          },
+        },
       ],
       epithet: [{ episode: 4, value: { it: 'Il Rosso', en: 'Red-Haired' } }],
       bounty: [{ episode: 958, value: 4_048_900_000 }],
@@ -1294,6 +1314,15 @@ export const eastBlue: Saga = {
           episode: 629,
           chapter: 700,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+        },
+        // The Warlord system is abolished at 957 (chapter 956).
+        {
+          episode: 957,
+          chapter: 956,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
         },
         // Named one of the new Four Emperors at 1080 (chapter 1053), and put
         // at the head of Cross Guild by Kid's poster at 1083 (chapter 1056).
@@ -1910,6 +1939,15 @@ export const eastBlue: Saga = {
           episode: 31,
           chapter: 69,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+        },
+        // The Warlord system is abolished at 957 (chapter 956).
+        {
+          episode: 957,
+          chapter: 956,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
         },
         // Kid's poster puts him in Cross Guild at 1083 (chapter 1056).
         {

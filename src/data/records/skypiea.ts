@@ -726,7 +726,21 @@ export const skypiea: Saga = {
           episode: 430,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
-        { episode: 486, value: { it: 'Imperatore', en: 'Emperor' } },
+        // Gives up the title at Marineford at 485 (chapter 576), and is
+        // counted among the Four Emperors at 570 (chapter 650).
+        {
+          episode: 485,
+          chapter: 576,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
+        },
+        {
+          episode: 570,
+          chapter: 650,
+          value: { it: 'Imperatore', en: 'Emperor' },
+        },
       ],
       epithet: [{ episode: 151, value: { it: 'Barbanera', en: 'Blackbeard' } }],
       devilFruit: [
@@ -753,6 +767,15 @@ export const skypiea: Saga = {
         {
           episode: 151,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
+        },
+        // The Warlord system is abolished at 957 (chapter 956).
+        {
+          episode: 957,
+          chapter: 956,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
+          },
         },
         {
           episode: 1109,
@@ -831,8 +854,8 @@ export const skypiea: Saga = {
         en: 'Captain of the Whitebeard Pirates',
       },
       log: {
-        it: 'È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e l’unico ad aver combattuto il Re dei Pirati alla pari. Riceve la notizia che Shanks vuole vederlo come si riceve la visita di un vecchio conoscente, cioè male. Un suo comandante è partito da solo per inseguire un traditore, e lui ha lasciato fare.',
-        en: 'He is one of the four Emperors who divide the New World between them, and the only man to have fought the Pirate King as an equal. He takes the news that Shanks wants to see him the way one takes a call from an old acquaintance, which is badly. One of his commanders has gone off alone after a traitor, and he let him go.',
+        it: 'È l’unico ad aver combattuto il Re dei Pirati alla pari. Riceve la notizia che Shanks vuole vederlo come si riceve la visita di un vecchio conoscente, cioè male. Un suo comandante è partito da solo per inseguire un traditore, e lui ha lasciato fare.',
+        en: 'He is the only man to have fought the Pirate King as an equal. He takes the news that Shanks wants to see him the way one takes a call from an old acquaintance, which is badly. One of his commanders has gone off alone after a traitor, and he let him go.',
       },
       status: [
         { episode: 151, value: 'alive' },
@@ -841,6 +864,15 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 151,
+          value: {
+            it: 'Pirati di Barbabianca, capitano',
+            en: 'Whitebeard Pirates, captain',
+          },
+        },
+        // Garp names him among the Four Emperors at 314 (chapter 432).
+        {
+          episode: 314,
+          chapter: 432,
           value: {
             it: 'Pirati di Barbabianca, capitano; Imperatore',
             en: 'Whitebeard Pirates, captain; Emperor',

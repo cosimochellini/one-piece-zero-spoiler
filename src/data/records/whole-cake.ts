@@ -1695,8 +1695,10 @@ export const wholeCake: Saga = {
           episode: 751,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
+        // The Warlord system is abolished at 957 (chapter 956).
         {
           episode: 957,
+          chapter: 956,
           value: {
             it: 'Pirata, ex membro della Flotta dei Sette',
             en: 'Pirate, former Warlord',

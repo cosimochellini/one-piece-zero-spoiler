@@ -1116,8 +1116,10 @@ export const summitWar: Saga = {
             en: 'Seven Warlords; Kuja Pirates, captain',
           },
         },
+        // The Warlord system is abolished at 957 (chapter 956).
         {
-          episode: 958,
+          episode: 957,
+          chapter: 956,
           value: {
             it: 'Ex membro della Flotta dei Sette; Pirate Kuja',
             en: 'Former Warlord; Kuja Pirates',
