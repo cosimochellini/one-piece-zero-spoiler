@@ -709,9 +709,9 @@ export const dressrosaArt = {
     shadow(76, 158, 56),
   ],
 
-  // His belt, seen from above as a loop, with the square buckle at the
-  // front. He wears it over the blue jumpsuit from his first scene in
-  // episode 608. The letter on the buckle is left out.
+  // His belt, seen from above as a loop, with a buckle at the front. He
+  // wears it over the blue jumpsuit from his first scene in episode 608.
+  // The letter on the buckle is left out.
   'lao-g': [
     { d: 'M20 100 C40 116 120 116 140 100 L140 118 C120 134 40 134 20 118 Z' },
     { d: 'M20 100 C40 84 120 84 140 100' },
@@ -720,7 +720,6 @@ export const dressrosaArt = {
       role: 'ambient',
     },
     { d: 'M64 104 h32 v34 h-32 z', role: 'accent' },
-    { d: 'M70 110 h20 v22 h-20 z M80 112 v18', role: 'soft' },
     {
       d: 'M24 109 C36 117 50 120 64 121 M96 121 C110 120 124 117 136 109',
       role: 'soft',

@@ -457,8 +457,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 711,
       name: { it: 'Lao G', en: 'Lao G' },
       summary: {
-        it: 'Un vecchio basso e calvo della famiglia Donquijote, con la barba, gli occhi socchiusi, una tuta blu con una freccia bianca e i guanti bianchi.',
-        en: 'A short, bald old man of the Donquixote family, with a beard, eyes squeezed shut, a blue jumpsuit with a white arrow and white gloves.',
+        it: 'Un vecchio basso e calvo della famiglia Donquijote, con la barba, gli occhi ridotti a due fessure, una tuta blu con una freccia bianca e i guanti bianchi.',
+        en: 'A short, bald old man of the Donquixote family, with a beard, eyes narrowed to slits, a blue jumpsuit with a white arrow and white gloves.',
       },
       visual: { art: 'lao-g', tint: 'green' },
     },
@@ -1648,8 +1648,8 @@ export const dressrosa: Saga = {
     'lao-g': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'A palazzo gioca a carte con altri della famiglia. Quando Do Flamingo non si trova, pensa alla stanza al quarto piano, poi dice che è uscito di nuovo da solo. Quando i giornali dicono che il re ha abdicato, risponde che la famiglia seguirà il suo capo. Al colosseo lo schermo lo presenta tra i combattenti della famiglia nel torneo, dopo Dellinger e prima di Machvise.',
-        en: 'At the palace he plays cards with others of the family. When Doflamingo cannot be found, he guesses the room on the fourth floor, then says he has gone out on his own again. When the papers say the king has resigned, he says the family will follow the Young Master. At the colosseum the screen presents him among the family’s fighters in the tournament, after Dellinger and before Machvise.',
+        it: 'A palazzo gioca a carte con altri della famiglia. Quando Do Flamingo non si trova, pensa alla stanza al quarto piano, poi dice che è uscito di nuovo da solo. Quando i giornali riportano che Do Flamingo ha lasciato la Flotta dei Sette, risponde che la famiglia farà ciò che decide il suo capo. Al colosseo lo schermo lo presenta tra i combattenti della famiglia nel torneo, dopo Dellinger e prima di Machvise.',
+        en: 'At the palace he plays cards with others of the family. When Doflamingo cannot be found, he guesses the room on the fourth floor, then says he has gone out on his own again. When the papers report that Doflamingo has quit the Seven Warlords, he answers that the family does as the Young Master decides. At the colosseum the screen presents him among the family’s fighters in the tournament, after Dellinger and before Machvise.',
       },
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
