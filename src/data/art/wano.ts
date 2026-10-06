@@ -704,33 +704,25 @@ export const wanoArt = {
     shadow(82, 188, 62),
   ],
 
-  // Her red high heels set down on the trailing hem of her dark cape, one
-  // behind the other and turned the other way: the cape lies in folds, hatched
-  // where it is dark, with its light fur along the edge. She wears all of it
-  // when the Tobiroppo wait to be called at 982 (ch. 978). Her Zoan waits for
-  // 990, in `wanoRedrawn`.
+  // Her red high heels on the trailing hem of her dark cape: one standing,
+  // the other tipped onto its toe with the heel in the air. The cape lies in
+  // folds, hatched where it is dark, its light fur in uneven tufts along the
+  // edge. She wears all of it when the Tobiroppo wait to be called at 982
+  // (ch. 978). Her Zoan waits for 990, in `wanoRedrawn`.
   'ulti': [
     {
-      d: 'M4 160 C10 150 18 142 28 140 C34 136 40 132 46 132 C46.4 132.2 46.7 132.4 47 132.6 M63.6 134.8 C69.9 131 77 128 84 128 C88 130 90 134 94 136 C97.2 133.6 101 131.5 105.1 129.9 M120.7 126.1 C121.8 126 122.9 126 124 126 C129.2 129.5 131.4 132.9 134.5 136.4 M144.5 141.7 C149.3 144.6 153.5 148.9 156 154',
+      d: 'M4 160 C6.3 156.1 9 152.5 11.9 149.4 M84.2 128.1 C88.1 130.1 90.1 134 94 136 C95.2 135.1 96.6 134.2 98 133.4 M121 126.1 C122 126 123 126 124 126 C130 130 132 134 136 138 C144 140 152 146 156 154',
     },
+    { d: 'M4 160 C40 172 120 174 156 154' },
     {
-      d: 'M4 160 C6.3 160.9 8.9 161.8 11.6 162.6 M25.7 166 C65.9 174 126.1 172.3 156 154',
-    },
-    {
-      d: 'M6.2 163.8 C8.5 167.8 10.8 168.6 13.1 166.4 M13.7 166.6 C16.3 170.2 18.9 170.7 21.5 168.1 C24.4 172 27.3 172.6 30.2 169.9 C33.3 173.7 36.4 174.1 39.5 171.3 C42.7 175 45.9 175.3 49.2 172.4 C52.6 175.9 55.9 176.2 59.3 173.1 C62.7 176.6 66.1 176.7 69.6 173.5 C73.1 176.8 76.5 176.8 80 173.5 C83.5 176.7 86.9 176.6 90.4 173.1 C93.9 176.2 97.3 175.9 100.7 172.3 C104.1 175.3 107.4 174.9 110.8 171.1 C114.1 173.9 117.3 173.4 120.5 169.5 C123.6 172.1 126.7 171.4 129.8 167.4 C132.7 169.9 135.6 169 138.5 164.9 C141.2 167.2 143.9 166.2 146.6 161.8 C149 164 151.4 162.8 153.8 158.3',
+      d: 'M5.1 160.4 C6.1 166.4 13.8 169 14.7 163 C16.3 171 28.6 173.9 30.2 165.9 C31.3 170.9 40 172.3 41.1 167.3 C43.6 176.3 63.6 177.9 66.1 168.9 C67.5 173.9 78.6 174 80 169 C82.2 177 100.2 175.8 102.4 167.8 C104.6 173.8 121.6 170.8 123.7 164.8 C124.9 172.8 134.5 170 135.7 162 C137.4 168 150.9 161.7 152.6 155.7',
       role: 'soft',
     },
-    {
-      d: 'M54.8 164.8 C54 166.5 53.1 168.3 52 170 M94 136 C98 148 96 160 90 173 M139 150.5 C139 154.7 138 159.1 136 164',
-      role: 'soft',
-    },
-    {
-      d: 'M62.6 151.4 L68 146 M64 162 L72 154 M100 150 L106 144 M102 162 L110 154 M142 154 L148 148',
-      role: 'ambient',
-    },
-    ...placed(ULTI_HEEL, 'translate(14 165) scale(0.8)'),
-    ...placed(ULTI_HEEL, 'translate(144 149) scale(-0.62 0.62)'),
-    shadow(80, 190, 74),
+    { d: 'M136 138 C140 146 140 154 136 164', role: 'soft' },
+    { d: 'M142 154 L148 148', role: 'ambient' },
+    ...placed(ULTI_HEEL, 'translate(14 158) scale(1.15)'),
+    ...placed(ULTI_HEEL, 'translate(98 150) rotate(-30) scale(0.85)'),
+    shadow(80, 188, 72),
   ],
 
   // His long katana in its pink scabbard with the white flowers on it, the
@@ -1590,32 +1582,33 @@ export const wanoRedrawn: Redrawings = {
     },
   ],
   // The pachycephalosaur she turns into, side on: the thick dome of its skull
-  // in her colour over its base ridge, the heavy body, the belly hatched where
-  // it turns under, no eye. She shows the fruit when she headbutts Luffy at
-  // 990 (ch. 983).
+  // in her colour with the knobbed ridge along its base, the heavy body, the
+  // belly hatched where it turns under, no eye. She shows the fruit when she
+  // headbutts Luffy at 990 (ch. 983).
   ulti: [
     {
       episode: 990,
       chapter: 983,
       value: [
         {
-          d: 'M14 124 C12 118 14 112 18 110 C18 98 28 92 36 92 C46 92 52 100 50 110 C54 112 58 110 62 106 C76 92 100 86 118 92 C134 98 148 112 158 130 C144 126 132 122 122 126 C118 142 102 152 84 152 C68 152 58 144 54 136 C48 130 40 128 32 130 C24 132 16 130 14 124 Z',
+          d: 'M10 128 C8 120 10 114 14 110 C12 94 26 84 38 84 C52 84 62 94 58 112 C62 114 66 112 70 108 C82 96 102 88 120 94 C136 100 148 114 158 132 C144 128 132 124 122 128 C118 144 102 154 84 154 C70 154 62 148 58 140 C52 134 44 132 36 134 C24 136 12 134 10 128 Z',
         },
+        { d: 'M14 110 C12 94 26 84 38 84 C52 84 62 94 58 112', role: 'accent' },
         {
-          d: 'M18 110 C18 98 28 92 36 92 C46 92 52 100 50 110',
-          role: 'accent',
+          d: 'M15 110 q5 -5 10 -3 q5 -5 11 -2 q5 -4 11 0 q5 -3 9 4',
+          role: 'soft',
         },
-        { d: 'M19 110 C26 105 42 104 50 110', role: 'soft' },
-        { d: 'M50 110 l4 3 M16 117 l-4 1', role: 'soft' },
-        { d: 'M58 134 l-6 7 l4 2', role: 'soft' },
-        { d: 'M86 118 C106 114 118 130 110 148', role: 'soft' },
-        { d: 'M98 150 C102 162 100 172 98 184 H114 C112 172 114 160 112 146' },
-        { d: 'M78 152 C80 164 78 174 76 184 H88', role: 'soft' },
+        { d: 'M60 138 l-6 7 l4 2', role: 'soft' },
+        { d: 'M88 120 C108 116 120 132 112 150', role: 'soft' },
         {
-          d: 'M64 144 l4 4 M74 148 l4 4 M128 124 l4 4 M138 124 l4 4',
+          d: 'M100 152 C104 164 102 174 100 186 H116 C114 174 116 162 114 148',
+        },
+        { d: 'M80 154 C82 166 80 176 78 186 H90', role: 'soft' },
+        {
+          d: 'M66 146 l4 4 M76 150 l4 4 M130 126 l4 4 M140 126 l4 4',
           role: 'ambient',
         },
-        shadow(86, 190, 62),
+        shadow(86, 192, 62),
       ],
     },
   ],
