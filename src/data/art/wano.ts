@@ -505,30 +505,36 @@ export const wanoArt = {
     { d: 'M4 190 H156', role: 'ambient' },
   ],
 
-  // His left forearm raised, the index finger up and the rest curled in a
-  // fist: "only once", the one chance he gives Robin when his ninja catch her
-  // in the castle (931, ep. 925). The tattoo is the one on that arm, ninja
-  // stars in his colour above two zigzag stripes; the far side is hatched.
-  // The earlobes he fights with come much later.
+  // His left forearm raised, seen from the palm: the index finger up, the
+  // other three folded side by side and the thumb across them. "Only once",
+  // the one chance he gives Robin when his ninja catch her in the castle
+  // (931, ep. 925). The tattoo is the one on that arm: three of its five
+  // ninja stars, the ones on the face we see, in his colour, over two zigzag
+  // stripes that stop where the arm turns away into the hatching. The
+  // earlobes he fights with come much later.
   'fukurokuju': [
-    { d: 'M64 70 V30 Q64 18 74 18 Q84 18 84 30 V62' },
-    { d: 'M65.5 46 q8.5 2.5 17 0', role: 'soft' },
+    { d: 'M66 72 V24 Q66 14 72.5 14 Q79 14 79 24 V62' },
+    { d: 'M67 37 q5.5 1.5 11 0 M67 52 q5.5 1.5 11 0', role: 'soft' },
     {
-      d: 'M84 60 Q104 58 104 68 Q104 77 94 77 Q108 77 108 87 Q108 96 96 96 Q107 97 106 105 Q104 113 92 111',
+      d: 'M79 62 Q79 56 85.5 56 Q92 56 92 62 Q92 57 98 57 Q104 57 104 63 Q104 59 108.5 60 Q113 62 112 70 C112 86 109 100 101 110',
     },
-    { d: 'M64 90 Q80 82 98 86 M84 66 q6 2 10 0', role: 'soft' },
-    { d: 'M64 70 C58 84 58 102 62 114 C59 130 56 146 54 160' },
-    { d: 'M92 111 C99 126 106 144 112 160' },
-    { d: 'M100 120 l6 -4 M104 132 l6 -4 M107 144 l6 -4', role: 'ambient' },
+    { d: 'M92 62 V72 M104 63 V72', role: 'soft' },
     {
-      d: 'M68 112.5 L69.8 117.2 L74.5 119 L69.8 120.8 L68 125.5 L66.2 120.8 L61.5 119 L66.2 117.2 Z M82 122.5 L83.8 127.2 L88.5 129 L83.8 130.8 L82 135.5 L80.2 130.8 L75.5 129 L80.2 127.2 Z M96 133 L97.7 137.3 L102 139 L97.7 140.7 L96 145 L94.3 140.7 L90 139 L94.3 137.3 Z',
+      d: 'M66 72 C62 80 62 92 64 98 C76 88 90 84 102 82 Q108 82 107 88 Q106 93 98 93 C86 94 74 98 66 112',
+    },
+    { d: 'M66 112 C63 128 59 144 56 160 C54 172 53 186 53 198' },
+    { d: 'M101 110 C106 126 111 144 114 160 C116 172 117 186 117 198' },
+    {
+      d: 'M71 116 L72.7 120.3 L77 122 L72.7 123.7 L71 128 L69.3 123.7 L65 122 L69.3 120.3 Z M82 125 L83.7 129.3 L88 131 L83.7 132.7 L82 137 L80.3 132.7 L76 131 L80.3 129.3 Z M93 134.5 L94.5 138.5 L98.5 140 L94.5 141.5 L93 145.5 L91.5 141.5 L87.5 140 L91.5 138.5 Z',
       role: 'accent',
     },
     {
-      d: 'M55.6 151 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 M54.3 159 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4',
+      d: 'M58.4 152 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 M56.6 160 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4 l4.4 -4 l4.4 4',
     },
-    { d: 'M54 160 C52 172 52 186 52 198 M112 160 C114 172 116 186 116 198' },
-    { d: 'M110 170 l6 -4 M112 182 l6 -4', role: 'ambient' },
+    {
+      d: 'M97 124 l6 -4 M101 138 l6 -4 M104.5 152 l6 -4 M107 166 l6 -4 M108.5 180 l6 -4',
+      role: 'ambient',
+    },
   ],
 
   // The arched iron door of his cell at the back of the Udon jail, the dark
