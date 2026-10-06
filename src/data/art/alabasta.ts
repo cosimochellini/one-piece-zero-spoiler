@@ -986,20 +986,29 @@ export const alabastaArt = {
     shadow(80, 182, 56),
   ],
 
-  // A rebel's goggles above a curved sabre.
+  // The wooden club of the Sand-Sand Clan, its head ringed with carved
+  // grooves, the one the boy knocks the bandit down with (ch 164 p8, ep 100),
+  // laid across the folded scarf the rebel leader wears (ch 164 p19). The
+  // anime has no canon shot of the man by ep 100; anime viewers saw the
+  // scarf in his anime-original scene at the rebel base (ep 93).
   'kohza': [
-    { d: ellipse(54, 76, 22, 17) },
-    { d: ellipse(106, 76, 22, 17) },
-    { d: 'M76 76 q4 -8 8 0' },
-    { d: 'M32 70 H14 q-6 10 0 18 H32' },
-    { d: 'M128 70 H146 q6 10 0 18 H128' },
-    { d: 'M42 68 q10 -6 20 -2 M94 68 q10 -6 20 -2', role: 'ambient' },
     {
-      d: 'M42 168 C74 156 108 142 136 120 C122 148 86 172 48 178 Z',
-      role: 'accent',
+      d: 'M24 134 C52 130 74 126 92 118 C104 112 120 108 132 109 C144 110 148 126 138 132 C126 138 106 136 92 136 C74 140 52 144 26 144 C20 144 18 135 24 134 Z',
     },
-    { d: 'M34 172 q-10 4 -6 14 q6 8 16 2' },
-    { d: 'M22 186 L36 176' },
+    { d: 'M110 111.5 C115 118 115 128 110 135', role: 'accent' },
+    { d: 'M121 109.5 C126 116 127 127 122 134', role: 'soft' },
+    { d: 'M34 132.5 C37 136 37 140 34 143', role: 'soft' },
+    { d: 'M42 137 C60 134 76 129 92 123', role: 'soft' },
+    { d: 'M114 134 l7 -6 M124 133 l7 -7 M133 131 l5 -5', role: 'ambient' },
+    { d: 'M8 150 C12 147 16 145 20 144.5' },
+    { d: 'M140 135 C146 137 152 139 154 142 C158 148 156 156 150 158' },
+    { d: 'M8 150 C2 154 4 164 12 166 C50 162 100 164 150 158' },
+    {
+      d: 'M12 166 C9 170 12 173 18 173 C56 169 104 171 150 165 C154 164 154 160 150 158',
+    },
+    { d: 'M26 155 C60 152 104 154 144 148', role: 'soft' },
+    { d: 'M60 165 q6 -6 14 -6 M108 163 q6 -5 12 -5', role: 'soft' },
+    shadow(80, 184, 62),
   ],
 
   // His sword with its gold cross-guard, sheathed, laid across a fold of the
