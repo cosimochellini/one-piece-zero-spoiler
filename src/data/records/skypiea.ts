@@ -768,17 +768,29 @@ export const skypiea: Saga = {
           episode: 151,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
+        // At the Reverie, 888 (chapter 908), Rosward rides him as a rented
+        // slave; the caption still calls him a current Warlord.
+        {
+          episode: 888,
+          chapter: 908,
+          value: {
+            it: 'Flotta dei Sette; schiavo dei Nobili Mondiali',
+            en: 'Seven Warlords; slave of the World Nobles',
+          },
+        },
         // The Warlord system is abolished at 957 (chapter 956).
         {
           episode: 957,
           chapter: 956,
           value: {
-            it: 'Ex membro della Flotta dei Sette',
-            en: 'Former Warlord',
+            it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali',
+            en: 'Former Warlord; slave of the World Nobles',
           },
         },
+        // Kurouma reports his rescue to Sakazuki at 1081 (chapter 1054).
         {
-          episode: 1109,
+          episode: 1081,
+          chapter: 1054,
           value: {
             it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali, liberato',
             en: 'Former Warlord; slave of the World Nobles, freed',
