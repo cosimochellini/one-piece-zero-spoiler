@@ -181,9 +181,10 @@ export const wanoArt = {
     { d: 'M4 190 H156', role: 'ambient' },
   ],
 
-  // The paper door in his castle with the shadow cast on it from behind, in
-  // broken line: one body, five necks rising, each a serpent's head with a horn. At 921 (ch. 927) the
-  // shogun is only this shadow; his face, crown and kimono come at 922.
+  // The paper door in his castle with the shadow behind it: one body and
+  // several necks rising, each a serpent's head with a horn, no eye and no
+  // mouth. At 921 (ch. 927) the shogun is only this shadow; his face, crown
+  // and kimono come at 922.
   'kurozumi-orochi': [
     { d: 'M16 30 H144 V150 H16 Z' },
     { d: 'M16 30 L22 24 H150 L144 30 M144 150 L150 144 V24', role: 'soft' },
@@ -193,39 +194,28 @@ export const wanoArt = {
       role: 'ambient',
     },
     {
-      d: 'M30 150 C36 130 58 122 80 122 C102 122 124 130 130 150',
+      d: 'M24 150 C30 132 54 126 80 126 C106 126 130 132 136 150',
       role: 'accent',
-      dashed: true,
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
-      dashed: true,
-      transform: 'translate(76 126)',
+      transform: 'translate(44 140) scale(-0.76 0.7)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
-      dashed: true,
-      transform: 'translate(60 130) scale(-0.92 0.84)',
+      transform: 'translate(64 130) scale(-0.9 0.96)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
-      dashed: true,
-      transform: 'translate(98 130) scale(0.88 0.76)',
+      transform: 'translate(96 130) scale(0.9 0.9)',
     },
     {
       d: OROCHI_NECK,
       role: 'accent',
-      dashed: true,
-      transform: 'translate(44 140) scale(-0.78 0.6)',
-    },
-    {
-      d: OROCHI_NECK,
-      role: 'accent',
-      dashed: true,
-      transform: 'translate(114 140) scale(0.74 0.56)',
+      transform: 'translate(118 140) scale(0.76 0.68)',
     },
     { d: 'M4 150 H156', role: 'ambient' },
   ],
@@ -749,7 +739,7 @@ export const wanoArt = {
 
   // The belt round his belly and the lion set in its front, a round striped
   // mane round a plain head with no face, the belt showing either side of
-  // it; his tall dark hat set down beside it.
+  // it; his tall dark hat, narrowing to its crown, set down beside it.
   // Both lion and hat are his at 901.
   'holdem': [
     { d: 'M72 94.6 L62 96 V116 L72 114.6 M143 93.2 L158 96 V116 L143 113.2' },
@@ -765,14 +755,12 @@ export const wanoArt = {
     {
       d: 'M92 100 C92 88 124 88 124 100 C124 114 116 122 108 122 C100 122 92 114 92 100 Z',
     },
-    { d: 'M14 70 C14 64 50 64 50 70 L48 150 C40 154 24 154 16 150 Z' },
+    { d: 'M20 70 C20 64 44 64 44 70 L50 148 C40 152 24 152 14 148 Z' },
     {
-      d: 'M14 70 C14 76 50 76 50 70 M6 152 C6 146 58 146 58 152 C58 160 6 160 6 152 Z',
+      d: 'M20 70 C20 76 44 76 44 70 M6 152 C6 146 58 146 58 152 C58 160 6 160 6 152 Z',
     },
-    {
-      d: 'M38 84 l8 -6 M38 100 l8 -6 M38 116 l8 -6 M38 132 l8 -6',
-      role: 'ambient',
-    },
+    { d: 'M36 86 l8 -6 M37 102 l9 -7 M38 118 l9 -7', role: 'ambient' },
+    { d: 'M15 136 C26 140 40 140 49 136', role: 'soft' },
     shadow(84, 172, 72),
   ],
 
@@ -1177,29 +1165,19 @@ export const wanoArt = {
     shadow(96, 188, 52),
   ],
 
-  // What the giants have with them in their chamber of the fortress at 1055
-  // (ch. 1030), where they sit eating and drinking: a lidded sake barrel
-  // bound with hoops, and a big bottle standing beside it.
+  // Two long horns curving up over a horse's tail that sweeps down to the
+  // ground.
   'fuga': [
-    { d: ellipse(62, 72, 40, 12) },
+    { d: 'M66 100 C40 84 30 52 40 20 C46 52 58 74 78 90 Z', role: 'accent' },
     {
-      d: 'M22 72 C18 102 20 132 26 154 C44 164 80 164 98 154 C104 132 106 102 102 72',
-    },
-    {
-      d: 'M42 63 C40 70 40 76 44 82 M62 60 V84 M82 63 C84 70 84 76 80 82',
-      role: 'soft',
-    },
-    {
-      d: 'M22 94 C44 106 80 106 102 94 M24 134 C44 146 80 146 100 134',
+      d: 'M94 100 C120 84 130 52 120 20 C114 52 102 74 82 90 Z',
       role: 'accent',
     },
-    { d: 'M90 108 l6 -6 M92 122 l7 -7 M90 148 l6 -6', role: 'ambient' },
-    {
-      d: 'M112 160 C104 144 108 122 122 116 L124 100 H134 L134 116 C148 122 152 144 144 160',
-    },
-    { d: 'M122 100 H136 M112 160 C124 164 134 164 144 160', role: 'soft' },
-    { d: 'M140 132 l5 -5 M142 144 l5 -5', role: 'ambient' },
-    shadow(84, 172, 72),
+    { d: ellipse(80, 106, 10, 4) },
+    { d: 'M80 110 C70 132 92 152 74 184' },
+    { d: 'M86 110 C84 136 106 152 96 186' },
+    { d: 'M74 110 C56 132 70 160 52 180', role: 'soft' },
+    shadow(80, 190, 36),
   ],
 
   // A flame standing up in the shape of a hooded monk, rising out of a pool
