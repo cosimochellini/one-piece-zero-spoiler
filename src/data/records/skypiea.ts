@@ -285,7 +285,9 @@ export const skypiea: Saga = {
     {
       id: 'laki',
       kind: 'character',
-      revealedAtEpisode: 163,
+      // Named at 163, unarmed at the meeting; filed at 165 (chapter 252),
+      // where she first fires her rifle, at Holy.
+      revealedAtEpisode: 165,
       revealedAtChapter: 280,
       name: { it: 'Laki', en: 'Laki' },
       summary: {
@@ -1064,8 +1066,8 @@ export const skypiea: Saga = {
         it: 'Resta indietro rispetto agli altri e colpisce da lontano, e nella foresta di nuvole è la prima ad accorgersi di chi si avvicina. Combatte per la stessa terra per cui combattono tutti i suoi, e non ne parla mai. Quando un assalto finisce, conta i sopravvissuti a voce alta perché nessuno se ne dimentichi.',
         en: 'She hangs back from the others and shoots from a distance, and in the cloud forest she is the first to notice anyone coming. She fights for the same ground all her people fight for, and never talks about it. When a raid is over she counts the survivors out loud, so that nobody forgets them.',
       },
-      affiliation: [{ episode: 163, value: SHANDIA }],
-      origin: [{ episode: 163, value: SKY_ISLAND }],
+      affiliation: [{ episode: 165, value: SHANDIA }],
+      origin: [{ episode: 165, value: SKY_ISLAND }],
     },
     'aisa': {
       role: { it: 'Bambina shandia', en: 'Shandia child' },
