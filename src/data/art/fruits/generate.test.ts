@@ -1,9 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
 import type { Stroke } from '~/data/art/stroke'
+import type { Timeline } from '~/data/types'
 
-import { fruitArt } from '.'
+import { fruitArt, fruitRedrawn } from '.'
 import {
+  BRUSH_BRUSH,
+  BUBBLE_BUBBLE,
   CHOP_CHOP,
   DARK_DARK,
   FLAME_FLAME,
@@ -11,6 +14,8 @@ import {
   GUM_GUM,
   HUMAN_HUMAN,
   OP_OP,
+  OP_OP_HEART,
+  OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
   STRING_STRING,
@@ -66,13 +71,15 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 })
 
 const HAND_DRAWN = {
+  'brush-brush-fruit': BRUSH_BRUSH,
+  'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'chop-chop-fruit': CHOP_CHOP,
   'dark-dark-fruit': DARK_DARK,
-  'flame-flame-fruit': FLAME_FLAME,
   'flower-flower-fruit': FLOWER_FLOWER,
   'gum-gum-fruit': GUM_GUM,
   'human-human-fruit': HUMAN_HUMAN,
   'op-op-fruit': OP_OP,
+  'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
   'sand-sand-fruit': SAND_SAND,
   'string-string-fruit': STRING_STRING,
@@ -100,9 +107,27 @@ function pathsOf(strokes: Stroke[]): string {
 /** Every drawing on the sheet, hand-drawn and grown alike. */
 const SHEET = Object.entries(fruitArt)
 
+/** One fruit's drawings from later in the story, each labelled with its episode. */
+function laterOf(
+  id: string,
+  timeline: Timeline<Stroke[]>,
+): [string, Stroke[]][] {
+  const label = (episode: number): string => `${id} @${String(episode)}`
+
+  return Array.from(timeline, (entry) => [label(entry.episode), entry.value])
+}
+
+/** The sheet and every fruit drawn again later, which obey the same rules. */
+const STAGES: [string, Stroke[]][] = [
+  ...SHEET,
+  ...Object.entries(fruitRedrawn).flatMap(([id, timeline]) =>
+    laterOf(id, timeline),
+  ),
+]
+
 describe('the fruit path alphabet', () => {
   it('writes every drawing in absolute commands only', () => {
-    for (const [id, strokes] of SHEET) {
+    for (const [id, strokes] of STAGES) {
       for (const stroke of strokes) {
         expect(stroke.d, id).toMatch(ABSOLUTE_ONLY)
       }
@@ -110,7 +135,7 @@ describe('the fruit path alphabet', () => {
   })
 
   it('rounds every coordinate to one decimal', () => {
-    for (const [id, strokes] of SHEET) {
+    for (const [id, strokes] of STAGES) {
       for (const stroke of strokes) {
         expect(stroke.d, id).not.toMatch(TOO_PRECISE)
       }
@@ -118,7 +143,7 @@ describe('the fruit path alphabet', () => {
   })
 
   it('moves no stroke with a transform', () => {
-    for (const [id, strokes] of SHEET) {
+    for (const [id, strokes] of STAGES) {
       for (const stroke of strokes) {
         expect(stroke.transform, id).toBeUndefined()
       }
@@ -128,7 +153,7 @@ describe('the fruit path alphabet', () => {
 
 describe('the fruit sheet', () => {
   it('keeps every drawing inside the box', () => {
-    for (const [id, strokes] of SHEET) {
+    for (const [id, strokes] of STAGES) {
       for (const stroke of strokes) {
         for (const [x, y] of coordinates(stroke.d)) {
           expect(x, `${id} x`).toBeGreaterThanOrEqual(MARGIN)
@@ -141,7 +166,7 @@ describe('the fruit sheet', () => {
   })
 
   it('gives every drawing at least four strokes and exactly one accent', () => {
-    for (const [id, strokes] of SHEET) {
+    for (const [id, strokes] of STAGES) {
       const accents = strokes.filter((stroke) => stroke.role === 'accent')
 
       expect(strokes.length, id).toBeGreaterThan(3)
@@ -156,13 +181,20 @@ describe('the fruit sheet', () => {
     expect(distinct.size).toBe(SHEET.length)
   })
 
-  it('draws the eleven best-known fruits by hand', () => {
+  it('draws the thirteen best-known fruits by hand', () => {
     for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
       expect(fruitArt, id).toHaveProperty(id)
       expect(Object.getOwnPropertyDescriptor(fruitArt, id)?.value, id).toBe(
         strokes,
       )
     }
+  })
+})
+
+describe('the fruits drawn again', () => {
+  it('draws the real fruit once the show has shown it', () => {
+    expect(fruitRedrawn['flame-flame-fruit']?.[0]?.value).toBe(FLAME_FLAME)
+    expect(fruitRedrawn['op-op-fruit']?.[0]?.value).toBe(OP_OP_HEART)
   })
 })
 

@@ -7,18 +7,18 @@ import {
   stemPath,
 } from '~/data/art/fruits/parts'
 import { lobed } from '~/data/art/fruits/shape'
-import { ring, swirlOf } from '~/data/art/fruits/swirls'
+import { ring } from '~/data/art/fruits/swirls'
 import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
 /**
- * The eleven fruits that are drawn rather than grown.
+ * The fruits that are drawn rather than grown.
  *
  * The generator is what makes a hundred and twenty drawings one set, and it
  * is also what would make the most recognisable fruit on the sheet a sample
- * of a set. These eleven are the ones a reader arrives already knowing, so
- * each one keeps the set's body, stalk and shadow and wears a mark written
- * for it.
+ * of a set. These are the ones a reader arrives already knowing: a fruit the
+ * show has shown by its threshold is drawn as it looks, and the rest keep the
+ * set's body, stalk and shadow and wear a mark written for their power.
  *
  * Everything here obeys the rules the generator proves: absolute commands
  * only, no fills, one accent, and nothing outside the 160x200 box.
@@ -120,7 +120,9 @@ export const GUM_GUM: Stroke[] = [
 
 /**
  * The fruit that is all flame: a body whose crown is a row of tongues, curls
- * burning across it, and a stalk that runs off with a hook at the end.
+ * burning across it, and a stalk that runs off with a hook at the end. Not
+ * seen until Doflamingo holds it up in episode 629, so it is drawn from
+ * there, in `fruitRedrawn`; before that the fruit is a grown one.
  */
 export const FLAME_FLAME: Stroke[] = [
   {
@@ -162,14 +164,6 @@ export const FLAME_FLAME: Stroke[] = [
   shadowUnder(1),
 ]
 
-/** A coil wound tight inside a sphere, the way a diagram sections a thing. */
-export const OP_OP: Stroke[] = [
-  { d: lobed('heart', RX, RY) },
-  { d: swirlOf('spiral', { rx: RX, ry: RY }, 5), role: 'accent' },
-  { d: ring(80, 108, 33), role: 'ambient' },
-  ...furniture('straight', 'right'),
-]
-
 /** A ring broken open around a figure standing in it. No face, ever. */
 export const HUMAN_HUMAN: Stroke[] = [
   { d: lobed('round', RX, RY) },
@@ -202,17 +196,6 @@ export const FLOWER_FLOWER: Stroke[] = [
   ...furniture('straight', 'right'),
 ]
 
-/** A coil wound all the way in, and nothing at the middle of it. */
-export const DARK_DARK: Stroke[] = [
-  { d: lobed('oblong', RX, RY) },
-  {
-    d: 'M108 112 C108 128 94 140 80 140 C64 140 52 128 52 112 C52 96 64 86 78 86 C90 86 100 96 100 108 C100 118 92 126 82 126 C74 126 68 120 68 112',
-    role: 'accent',
-  },
-  { d: ring(80, 112, 7), role: 'ambient' },
-  ...furniture('straight', 'right'),
-]
-
 /** A fault running the whole length of the fruit, with a coil either side. */
 export const TREMOR_TREMOR: Stroke[] = [
   { d: lobed('oblong', RX, RY) },
@@ -226,36 +209,6 @@ export const TREMOR_TREMOR: Stroke[] = [
   ...furniture('hooked', 'left'),
 ]
 
-/** The outline giving way at the foot, where the fruit is already running out. */
-export const SAND_SAND: Stroke[] = [
-  { d: 'M80 64 C104 64 124 86 124 112 C124 126 120 136 112 144' },
-  { d: 'M80 64 C56 64 36 86 36 112 C36 126 40 136 48 144' },
-  { d: swirlOf('spiral', { rx: RX, ry: RY }, 2), role: 'accent' },
-  {
-    d: 'M112 144 C104 154 93 160 80 160 C67 160 56 154 48 144',
-    role: 'ambient',
-    dashed: true,
-  },
-  ...furniture('straight', 'right'),
-]
-
-/** The coil unravelled: five threads leaving the fruit at its foot. */
-export const STRING_STRING: Stroke[] = [
-  { d: lobed('gourd', RX, RY) },
-  { d: ring(80, 104, 14), role: 'accent' },
-  {
-    d: [
-      'M58 146 C52 154 48 162 46 170',
-      'M68 152 C65 160 63 166 62 172',
-      'M80 154 C80 162 80 168 80 174',
-      'M92 152 C95 160 97 166 98 172',
-      'M102 146 C108 154 112 162 114 170',
-    ].join(' '),
-    role: 'soft',
-  },
-  ...furniture('straight', 'right'),
-]
-
 /** The coil snapped: one bolt where the turns should have closed. */
 export const RUMBLE_RUMBLE: Stroke[] = [
   { d: lobed('round', RX, RY) },
@@ -267,16 +220,493 @@ export const RUMBLE_RUMBLE: Stroke[] = [
   ...furniture('straight', 'right'),
 ]
 
-/** The fruit cut in three bands, each set a little sideways of the last. */
+const DEGREES = Math.PI / 180
+
+/**
+ * A stretch of an ellipse as the points along it, from one angle to another
+ * in degrees, sampled for the reason `curl` is.
+ */
+function trace(
+  centre: [number, number],
+  radii: [number, number],
+  sweep: [from: number, to: number, steps?: number],
+): string[] {
+  const [cx, cy] = centre
+  const [rx, ry] = radii
+  const [from, to, steps = 14] = sweep
+
+  return Array.from({ length: steps + 1 }, (_unused, at) => {
+    const angle = (from + ((to - from) * at) / steps) * DEGREES
+
+    return point(cx + rx * Math.cos(angle), cy + ry * Math.sin(angle))
+  })
+}
+
+/** Points joined into one line, closed when asked. */
+function polyline(points: string[], closed = false): string {
+  const line = points.map((step, at) => (at === 0 ? `M${step}` : `L${step}`))
+
+  return (closed ? [...line, 'Z'] : line).join(' ')
+}
+
+/** A dot, as the zero-length line the pen draws one with. */
+function speck(x: number, y: number): string {
+  return `M${point(x, y)} L${point(x, y)}`
+}
+
+/** The angle on the right of the shared body at which it reaches a height. */
+function angleAt(y: number): number {
+  return Math.asin((y - 112) / RY) / DEGREES
+}
+
+/** Half the width of the shared body at a height. */
+function halfAt(y: number): number {
+  return RX * Math.sqrt(1 - ((y - 112) / RY) ** 2)
+}
+
+/** How far the middle band of the chopped fruit has slid, and dropped. */
+const SLID = 16
+const BAND_DROP = 4
+const FOOT_DROP = 8
+
+/** A whole ellipse lying flat, the face a cut leaves. */
+function face(cx: number, y: number, drop: number): string {
+  return polyline(trace([cx, y + drop], [halfAt(y), 6], [0, 360, 24]), true)
+}
+
+/**
+ * The fruit cut in three, the middle band slid off to the right and the
+ * pieces hanging apart, their cut faces showing. The power is the cut that
+ * does not wound: the pieces stay whole, only out of line.
+ */
 export const CHOP_CHOP: Stroke[] = [
-  // The cap, pushed left of the middle.
-  { d: 'M46 102 C46 78 60 62 74 62 C88 62 102 78 102 102 Z' },
-  // The middle band, pushed right: the piece that is out of place.
+  // The cap, with the front edge of its cut face.
   {
-    d: 'M64 110 C58 110 56 118 56 124 C56 130 58 138 64 138 L118 138 C124 138 126 130 126 124 C126 118 124 110 118 110 Z',
+    d: polyline(
+      [
+        ...trace([80, 112], [RX, RY], [180 - angleAt(92), 360 + angleAt(92)]),
+        ...trace([80, 92], [halfAt(92), 6], [0, 180, 10]).slice(1),
+      ],
+      true,
+    ),
+  },
+  // The band: its two sides and the front of its lower face.
+  {
+    d: polyline([
+      ...trace(
+        [80 + SLID, 112 + BAND_DROP],
+        [RX, RY],
+        [angleAt(97), angleAt(125), 6],
+      ),
+      ...trace(
+        [80 + SLID, 125 + BAND_DROP],
+        [halfAt(125), 6],
+        [0, 180, 10],
+      ).slice(1),
+      ...trace(
+        [80 + SLID, 112 + BAND_DROP],
+        [RX, RY],
+        [180 - angleAt(125), 180 - angleAt(97), 6],
+      ).slice(1),
+    ]),
+  },
+  // The foot, dropped a little under the cap.
+  {
+    d: polyline(
+      trace(
+        [80, 112 + FOOT_DROP],
+        [RX, RY],
+        [angleAt(130), 180 - angleAt(130), 12],
+      ),
+    ),
+  },
+  // The two cut faces that show: the band's and the foot's.
+  {
+    d: [face(80 + SLID, 97, BAND_DROP), face(80, 130, FOOT_DROP)].join(' '),
     role: 'accent',
   },
-  // The foot, back under the cap.
-  { d: 'M44 146 C44 160 58 168 72 168 C86 168 100 160 100 146 Z' },
+  {
+    d: [
+      curl(66, 78, 8),
+      curl(95, 76, -7),
+      curl(80, 115, 8),
+      curl(114, 116, -8),
+      curl(64, 152, -8),
+      curl(96, 153, 8),
+    ].join(' '),
+    role: 'soft',
+  },
   ...furniture('straight', 'right'),
+]
+
+/** The Room around the fruit, and the floor it closes on. */
+const ROOM = { cx: 80, cy: 108, r: 74, floor: 166 }
+
+/**
+ * The fruit standing in a Room: the sphere its eater opens before any cut,
+ * closing on the ground it stands on. The fruit itself is a plain one; the
+ * real one is not seen until episode 704, where `fruitRedrawn` draws it.
+ */
+export const OP_OP: Stroke[] = [
+  { d: lobed('round', RX, RY) },
+  {
+    d: polyline(
+      trace(
+        [ROOM.cx, ROOM.cy],
+        [ROOM.r, ROOM.r],
+        [
+          180 - Math.asin((ROOM.floor - ROOM.cy) / ROOM.r) / DEGREES,
+          360 + Math.asin((ROOM.floor - ROOM.cy) / ROOM.r) / DEGREES,
+          40,
+        ],
+      ),
+    ),
+    role: 'accent',
+  },
+  {
+    d: [
+      curl(80, 112, 13),
+      curl(58, 96, -10),
+      curl(102, 98, 10),
+      curl(101, 136, -10),
+      curl(59, 136, 10),
+    ].join(' '),
+    role: 'soft',
+  },
+  // The floor of the Room: its front edge, and the back of it either side
+  // of the fruit.
+  {
+    d: [
+      polyline(trace([80, ROOM.floor], [46, 8], [0, 180, 16])),
+      polyline(trace([80, ROOM.floor], [46, 8], [180, 222, 5])),
+      polyline(trace([80, ROOM.floor], [46, 8], [318, 360, 5])),
+    ].join(' '),
+    role: 'ambient',
+    dashed: true,
+  },
+  ...furniture('straight', 'right').slice(0, 2),
+]
+
+/**
+ * The real fruit, from episode 704: a heart under a skin of curls, the stalk
+ * a crossbar wound up at both ends.
+ */
+export const OP_OP_HEART: Stroke[] = [
+  {
+    d: [
+      'M80 82 C72 66 50 60 38 70 C24 82 26 104 38 120',
+      'C50 138 68 150 80 166 C92 150 110 138 122 120',
+      'C134 104 136 82 122 70 C110 60 88 66 80 82 Z',
+    ].join(' '),
+  },
+  {
+    d: [
+      curl(80, 108, 12),
+      curl(57, 88, -10),
+      curl(103, 88, 10),
+      curl(47, 110, 8),
+      curl(113, 110, -8),
+      curl(66, 132, -10),
+      curl(95, 132, 10),
+      curl(80, 151, -7),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      'M80 82 L80 62',
+      'M64 54 C60 50 54 54 56 59 C58 63 68 63 80 62',
+      'C92 63 102 63 104 59 C106 54 100 50 96 54',
+    ].join(' '),
+  },
+  shadowUnder(1),
+]
+
+/** One lobe of the dark fruit: a teardrop, its tip turned up and over. */
+function teardrop(cx: number, cy: number, r: number): string {
+  const at = (x: number, y: number): string => point(cx + x * r, cy + y * r)
+
+  return [
+    `M${at(0.3, -1.5)}`,
+    `C${at(0.2, -1)} ${at(1, -0.8)} ${at(1, 0)}`,
+    `C${at(1, 0.6)} ${at(0.55, 1)} ${at(0, 1)}`,
+    `C${at(-0.55, 1)} ${at(-1, 0.6)} ${at(-1, 0)}`,
+    `C${at(-1, -0.5)} ${at(-0.6, -0.9)} ${at(0.3, -1.5)}`,
+    'Z',
+  ].join(' ')
+}
+
+/** Where the inner lobes of the dark fruit sit, row by row. */
+const LOBES: [number, number][] = [
+  [66, 94],
+  [94, 94],
+  [52, 118],
+  [80, 118],
+  [108, 118],
+  [66, 142],
+  [94, 142],
+]
+
+/**
+ * The real fruit, seen in Teach's hand in episode 325: a round bunch of
+ * teardrop lobes, a curl on each, and a tuft of long leaves on top.
+ */
+export const DARK_DARK: Stroke[] = [
+  {
+    // The outline of the bunch: the outer lobes, scalloped all the way round.
+    d: polyline(
+      Array.from({ length: 91 }, (_unused, at) => {
+        const angle = (at / 90) * 2 * Math.PI
+        const reach = 46 * (0.93 + 0.07 * Math.abs(Math.sin(4.5 * angle)))
+
+        return point(
+          80 + reach * Math.cos(angle),
+          116 + reach * Math.sin(angle),
+        )
+      }),
+      true,
+    ),
+  },
+  { d: LOBES.map(([x, y]) => teardrop(x, y, 10)).join(' '), role: 'soft' },
+  {
+    d: LOBES.map(([x, y], at) => curl(x, y + 2, at % 2 === 0 ? 6 : -6)).join(
+      ' ',
+    ),
+    role: 'accent',
+  },
+  {
+    d: [
+      'M80 72 C70 58 52 52 38 58 C52 60 66 66 80 72 Z',
+      'M80 72 C92 56 110 52 124 60 C110 60 94 66 80 72 Z',
+      'M80 72 C74 60 66 50 56 44 C64 56 72 64 80 72 Z',
+      'M80 72 C86 58 94 50 104 44 C96 56 88 64 80 72 Z',
+    ].join(' '),
+  },
+  shadowUnder(1),
+]
+
+/**
+ * A fruit whose foot has already run out: the skin gives way into grains,
+ * and the grains into a heap on the ground.
+ */
+export const SAND_SAND: Stroke[] = [
+  { d: polyline(trace([80, 112], [RX, RY], [128, 412, 32])) },
+  {
+    d: [
+      ...[56, 66, 76, 104, 114, 124].map((angle) => {
+        return speck(
+          80 + RX * Math.cos(angle * DEGREES),
+          112 + RY * Math.sin(angle * DEGREES),
+        )
+      }),
+      speck(74, 150),
+      speck(86, 150),
+      speck(80, 156),
+      speck(78, 162),
+      speck(82, 167),
+      speck(70, 175),
+      speck(90, 175),
+      speck(80, 176),
+      'M44 182 C58 178 68 170 80 170 C92 170 102 178 116 182 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [curl(80, 100, 12), curl(57, 122, -9), curl(103, 124, 9)].join(' '),
+    role: 'soft',
+  },
+  ...furniture('straight', 'right').slice(0, 2),
+]
+
+/** How far the string fruit's coil winds out before the thread leaves it. */
+const SPOOL = 26
+
+/**
+ * The coil come loose: the mark wound on the skin like thread on a spool,
+ * its end leaving the fruit and lying slack on the ground.
+ */
+export const STRING_STRING: Stroke[] = [
+  { d: lobed('round', RX, RY) },
+  {
+    d: [
+      polyline(
+        Array.from({ length: 33 }, (_unused, at) => {
+          const angle = -2.2 * 2 * Math.PI * (1 - at / 32)
+          const reach = 2 + (SPOOL - 2) * (at / 32)
+
+          return point(
+            76 + reach * Math.cos(angle),
+            112 + reach * Math.sin(angle),
+          )
+        }),
+      ),
+      'C110 112 118 116 124 120 C134 126 144 138 140 150',
+      'C136 162 120 158 120 168 C120 176 134 178 146 174',
+    ].join(' '),
+    role: 'accent',
+  },
+  ...furniture('straight', 'right'),
+]
+
+/**
+ * The real fruit, handed to Kaku in episode 271: a bunch of fingers like
+ * bananas under a skin of curls, held together at the crown by its stalk.
+ */
+export const OX_OX_GIRAFFE: Stroke[] = [
+  {
+    // Four fingers, each down to its tip and back up to the notch between it
+    // and the next, the last one turned out to the right.
+    d: [
+      'M52 74 C38 96 28 124 32 146 C35 162 52 164 56 150 C58 144 59 140 60 136',
+      'C64 150 68 162 80 164 C92 166 96 152 92 140',
+      'C100 152 108 158 118 156 C130 154 130 140 120 132',
+      'C130 134 140 128 140 118 C140 106 124 98 112 92',
+      'C100 86 86 74 76 72 C70 68 58 68 52 74 Z',
+    ].join(' '),
+  },
+  {
+    d: [
+      'M60 72 C58 96 58 118 60 136',
+      'M66 72 C76 96 86 120 92 140',
+      'M72 72 C90 92 108 112 120 132',
+    ].join(' '),
+    role: 'soft',
+  },
+  {
+    d: [
+      curl(45, 112, -7),
+      curl(45, 142, 6),
+      curl(69, 110, 6),
+      curl(78, 148, -7),
+      curl(93, 116, -6),
+      curl(107, 143, 7),
+      curl(127, 120, -6),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      'M50 74 C56 80 76 80 80 74',
+      'M64 70 C64 60 62 52 56 46 C50 40 40 42 40 50 C40 56 48 57 49 51',
+    ].join(' '),
+  },
+  shadowUnder(1),
+]
+
+/** The egg the bubble fruit is shaped as: narrower at the top. */
+function eggAt(angle: number, side = 1): string {
+  const radians = angle * DEGREES
+  const width = 42 * Math.cos(radians) * (1 + 0.1 * Math.sin(radians))
+
+  return point(80 + side * width, 114 + 52 * Math.sin(radians))
+}
+
+/**
+ * The real fruit, beside Kaku's in episode 271: a melon held the long way,
+ * its rind in segments under a skin of curls, a tendril for a stalk.
+ */
+export const BUBBLE_BUBBLE: Stroke[] = [
+  {
+    d: polyline(
+      Array.from({ length: 49 }, (_unused, at) => eggAt(-90 + at * 7.5)),
+      true,
+    ),
+  },
+  {
+    d: [-0.7, 0.42]
+      .map((side) => {
+        return polyline(
+          Array.from({ length: 13 }, (_unused, at) =>
+            eggAt(-90 + at * 15, side),
+          ),
+        )
+      })
+      .join(' '),
+    role: 'soft',
+  },
+  {
+    d: [
+      curl(80, 112, 12),
+      curl(60, 92, -9),
+      curl(99, 89, 9),
+      curl(55, 128, 9),
+      curl(104, 130, -10),
+      curl(80, 150, -8),
+      curl(81, 78, -7),
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M80 62 C79 54 80 46 88 42 C96 38 104 40 104 46 C104 52 96 52 96 47' },
+  shadowUnder(1),
+]
+
+/** A fishhook, the mark on the dark half of the brush fruit. */
+function fishhook(x: number, y: number): string {
+  return [
+    `M${point(x - 2, y - 9)}`,
+    `C${point(x + 4, y - 4)} ${point(x + 4, y + 5)} ${point(x - 1, y + 5)}`,
+    `C${point(x - 5, y + 5)} ${point(x - 5, y - 1)} ${point(x - 1, y)}`,
+  ].join(' ')
+}
+
+/** Where the dark half of the brush fruit gives way to the light. */
+const DRIP_Y = 122
+
+/**
+ * The real fruit, seen once in a flashback in episode 976: the foot of a
+ * gourd, dark above with fishhooks on it and light below with curls, its
+ * stalk a crossbar wound up at one end and down at the other.
+ */
+export const BRUSH_BRUSH: Stroke[] = [
+  {
+    d: [
+      'M74 64 C76 80 60 90 44 104 C28 118 26 142 40 154',
+      'C52 164 66 166 80 166 C94 166 108 164 120 154',
+      'C134 142 132 118 116 104 C100 90 84 80 86 64 Z',
+    ].join(' '),
+  },
+  {
+    // The edge of the dark half, hanging in scallops.
+    d: [
+      `M${point(31, DRIP_Y)}`,
+      ...Array.from({ length: 5 }, (_unused, at) => {
+        const from = 31 + at * 19.6
+        const to = from + 19.6
+
+        return `C${point(from + 3, DRIP_Y + 9)} ${point(to - 3, DRIP_Y + 9)} ${point(to, DRIP_Y)}`
+      }),
+    ].join(' '),
+    role: 'soft',
+  },
+  {
+    d: [
+      fishhook(60, 110),
+      fishhook(74, 100),
+      fishhook(90, 100),
+      fishhook(104, 110),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    // The dark half is hatched where it turns away, at either side.
+    d: [
+      'M36 120 L44 110',
+      'M42 121 L50 111',
+      'M124 120 L116 110',
+      'M118 121 L110 111',
+    ].join(' '),
+    role: 'ambient',
+  },
+  {
+    d: [curl(54, 142, -8), curl(80, 147, 9), curl(106, 142, -8)].join(' '),
+    role: 'soft',
+  },
+  {
+    d: [
+      'M80 64 L80 54',
+      'M80 54 C70 54 60 54 54 50 C48 46 50 38 56 38 C62 38 62 46 57 45',
+      'M80 54 C92 54 102 54 108 58 C114 62 112 70 106 70 C100 70 100 63 105 63',
+    ].join(' '),
+  },
+  shadowUnder(1),
 ]

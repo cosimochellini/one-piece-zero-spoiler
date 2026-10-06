@@ -10,7 +10,7 @@ import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt } from './egghead'
 import { elbafArt } from './elbaf'
 import { fishManIslandArt } from './fish-man-island'
-import { fruitArt } from './fruits'
+import { fruitArt, fruitRedrawn } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import { summitWarArt, summitWarRedrawn } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
@@ -97,6 +97,7 @@ describe('the redrawings', () => {
       summitWarRedrawn,
       dressrosaRedrawn,
       wanoRedrawn,
+      fruitRedrawn,
     ]
     const total = modules.reduce((sum, m) => sum + Object.keys(m).length, 0)
 
