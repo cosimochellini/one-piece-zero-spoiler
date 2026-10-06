@@ -84,6 +84,7 @@ export const alabastaChronicles = {
     },
     {
       episode: 363,
+      chapter: 468,
       value: {
         title: { it: 'Quella non è medicina', en: 'That is not medicine' },
         body: {
@@ -198,6 +199,7 @@ export const alabastaChronicles = {
     },
     {
       episode: 1036,
+      chapter: 1015,
       value: {
         title: {
           it: 'Trenta minuti contro Queen',
@@ -223,6 +225,7 @@ export const alabastaChronicles = {
     },
     {
       episode: 145,
+      chapter: 233,
       value: {
         title: {
           it: 'Un pasto gratis, e una promessa',
@@ -315,11 +318,12 @@ export const alabastaChronicles = {
     },
     {
       episode: 505,
+      chapter: 590,
       value: {
         title: { it: 'Quel che resta di lui', en: "What's left of him" },
         body: {
-          it: "Su un'isola del New World vicino alla vecchia casa di [[edward-newgate|Barbabianca]], i Pirati di Barbabianca e la ciurma di [[shanks|Shanks]] seppelliscono i due capitani fianco a fianco. Il cappello di Ace, il suo coltello e la collana che portava sempre diventano il suo segno di tomba, piantati nella terra accanto alla lapide del vecchio e coperti di fiori e delle spade che i compagni lasciano lì. Marco ringrazia Shanks per la tregua che ha reso possibile il funerale. Prima che le navi si separino, Shanks pensa a [[monkey-d-luffy|Rufy]], lontano e in lutto, e spera che si conceda di piangere adesso, per poi trovare il modo di andare avanti.",
-          en: "On an island in the New World near [[edward-newgate|Whitebeard]]'s old home, the Whitebeard Pirates and [[shanks|Shanks]]'s crew lay both captains to rest side by side. Ace's hat, his knife and the necklace he always wore become his marker, planted in the ground next to the old man's grave and buried under flowers and the swords his crewmates leave behind. Marco thanks Shanks for arranging the ceasefire that made the burial possible at all. Before the ships part, Shanks thinks of [[monkey-d-luffy|Luffy]], grieving somewhere far off, and hopes he lets himself cry now, then finds a way to keep going.",
+          it: "Su un'isola del New World, i Pirati di Barbabianca e la ciurma di [[shanks|Shanks]] seppelliscono i due capitani fianco a fianco. Il cappello di Ace, il suo coltello e la collana che portava sempre diventano il suo segno di tomba, piantati nella terra accanto alla lapide del vecchio e coperti di fiori e delle spade che i compagni lasciano lì. Marco ringrazia Shanks per la tregua che ha reso possibile il funerale. Prima che le navi si separino, Shanks pensa a [[monkey-d-luffy|Rufy]], lontano e in lutto, e spera che si conceda di piangere adesso, per poi trovare il modo di andare avanti.",
+          en: "On an island in the New World, the Whitebeard Pirates and [[shanks|Shanks]]'s crew lay both captains to rest side by side. Ace's hat, his knife and the necklace he always wore become his marker, planted in the ground next to the old man's grave and buried under flowers and the swords his crewmates leave behind. Marco thanks Shanks for arranging the ceasefire that made the burial possible at all. Before the ships part, Shanks thinks of [[monkey-d-luffy|Luffy]], grieving somewhere far off, and hopes he lets himself cry now, then finds a way to keep going.",
         },
       },
     },
@@ -515,6 +519,7 @@ export const alabastaChronicles = {
     },
     {
       episode: 1083,
+      chapter: 1056,
       value: {
         title: { it: 'Ciò che giace sotto Wano', en: 'What lies beneath Wano' },
         body: {

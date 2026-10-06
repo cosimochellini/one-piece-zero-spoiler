@@ -162,6 +162,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 314,
+      chapter: 432,
       value: {
         title: {
           it: 'Il nonno passa dal muro',
@@ -175,6 +176,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 349,
+      chapter: 456,
       value: {
         title: { it: 'L’ombra tagliata via', en: 'The shadow cut away' },
         body: {
@@ -185,6 +187,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 373,
+      chapter: 480,
       value: {
         title: {
           it: 'Rufy da incubo, e Oz cade',
@@ -342,6 +345,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 869,
+      chapter: 894,
       value: {
         title: { it: 'Un lampo di futuro', en: 'A flash of the future' },
         body: {
@@ -352,6 +356,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 916,
+      chapter: 924,
       value: {
         title: { it: 'Il primo pugno a Kaido', en: 'The first punch at Kaido' },
         body: {
@@ -362,6 +367,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 956,
+      chapter: 955,
       value: {
         title: { it: 'Un Haki che scorre', en: 'Haki that flows' },
         body: {
@@ -392,6 +398,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1152,
+      chapter: 1121,
       value: {
         title: {
           it: 'Chiamato con un altro nome',
@@ -503,6 +510,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 300,
+      chapter: 418,
       value: {
         title: { it: 'Asura', en: 'Asura' },
         body: {
@@ -523,6 +531,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 362,
+      chapter: 467,
       value: {
         title: {
           it: 'Ryuma cade, nasce Shusui',
@@ -622,6 +631,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1027,
+      chapter: 1010,
       value: {
         title: { it: 'Asura sul tetto', en: 'Asura on the roof' },
         body: {
@@ -665,6 +675,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
         title: {
           it: 'Un brindisi per il ragazzo col cappello',
@@ -701,6 +712,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 434,
+      chapter: 533,
       value: {
         title: {
           it: 'Ferma un altro Imperatore per strada',
@@ -727,6 +739,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 505,
+      chapter: 590,
       value: {
         title: {
           it: 'L’ultimo saluto a Barbabianca e Ace',
@@ -865,6 +878,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 361,
+      chapter: 466,
       value: {
         title: {
           it: 'Troppo negativo per le sue fantasme',
@@ -971,6 +985,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1076,
+      chapter: 1049,
       value: {
         title: {
           it: 'Due samurai fuori dal fuoco',
@@ -1121,14 +1136,15 @@ export const eastBlueChronicles = {
     },
     {
       episode: 359,
+      chapter: 464,
       value: {
         title: {
           it: 'Il frutto che Sanji voleva',
           en: 'The fruit Sanji always wanted',
         },
         body: {
-          it: 'Sanji irrompe alle nozze forzate di [[absalom|Absalom]] e [[nami|Nami]] deciso a riportarla indietro, e i due si scambiano complimenti sulla bellezza della sposa prima che lui lo travolga di calci accusandolo di avergli rubato un sogno: diventare invisibile per spiare le donne senza farsi scoprire, lo stesso potere che il frutto del diavolo di Absalom gli dà già. Absalom lo deride chiamandolo pervertito proprio mentre lo accusa della stessa cosa, poi torna invisibile e lo pugnala alla schiena mentre lui protegge Nami tra le braccia. Sanji lo atterra comunque con un calcio fiammeggiante, sceglie di lasciar perdere quel sogno per sempre, e resta a proteggere Nami.',
-          en: 'Sanji bursts into [[absalom|Absalom]] and [[nami|Nami]]’s forced wedding determined to bring her back, and the two men trade compliments on the bride’s beauty before he overwhelms Absalom with kicks, accusing him of stealing a dream from him: turning invisible to spy on women without being caught, the very power Absalom’s own Devil Fruit already gives him. Absalom calls him a pervert for that while doing the same thing himself, then turns invisible again and stabs him in the back while Sanji is holding Nami in his arms. Sanji still burns him down with a flaming kick, chooses to let that dream go for good, and stays to protect Nami.',
+          it: 'Sanji irrompe alle nozze forzate di [[absalom|Absalom]] e [[nami|Nami]] deciso a riportarla indietro, e i due si scambiano complimenti sulla bellezza della sposa prima che lui lo travolga di calci accusandolo di avergli rubato un sogno: diventare invisibile per spiare le donne senza farsi scoprire, lo stesso potere che il frutto del diavolo di Absalom gli dà già. Absalom lo deride chiamandolo pervertito proprio mentre lo accusa della stessa cosa, poi torna invisibile e lo pugnala alla schiena mentre lui protegge Nami tra le braccia. Sanji lo atterra comunque a calci, sceglie di lasciar perdere quel sogno per sempre, e resta a proteggere Nami.',
+          en: 'Sanji bursts into [[absalom|Absalom]] and [[nami|Nami]]’s forced wedding determined to bring her back, and the two men trade compliments on the bride’s beauty before he overwhelms Absalom with kicks, accusing him of stealing a dream from him: turning invisible to spy on women without being caught, the very power Absalom’s own Devil Fruit already gives him. Absalom calls him a pervert for that while doing the same thing himself, then turns invisible again and stabs him in the back while Sanji is holding Nami in his arms. Sanji still kicks him down, chooses to let that dream go for good, and stays to protect Nami.',
         },
       },
     },
@@ -1226,6 +1242,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 832,
+      chapter: 862,
       value: {
         title: { it: 'Il primo a dirlo', en: 'The first to say it' },
         body: {
@@ -1376,6 +1393,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 296,
+      chapter: 412,
       value: {
         title: { it: 'Pioggia sul sapone', en: 'Rain against soap' },
         body: {
@@ -1386,6 +1404,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 320,
+      chapter: 436,
       value: {
         title: {
           it: 'Gatta Ladra, sedici milioni',
@@ -1399,6 +1418,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 366,
+      chapter: 471,
       value: {
         title: {
           it: 'Le nozze interrotte da Lola',
@@ -1455,6 +1475,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 865,
+      chapter: 890,
       value: {
         title: { it: 'Servi me, o muori', en: 'Serve me, or die' },
         body: {
@@ -1465,6 +1486,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1038,
+      chapter: 1016,
       value: {
         title: { it: 'Zeus nel bastone', en: 'Zeus in the staff' },
         body: {
@@ -1542,6 +1564,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 1122,
+      chapter: 1088,
       value: {
         title: { it: 'Honesty Impact', en: 'Honesty Impact' },
         body: {
@@ -1567,14 +1590,15 @@ export const eastBlueChronicles = {
     },
     {
       episode: 8,
+      chapter: 20,
       value: {
         title: {
           it: 'Sparato fuori da Orange Town',
           en: 'Blown out of Orange Town',
         },
         body: {
-          it: 'Bagy racconta tutto pur di guadagnare tempo: apprendista sulla nave di [[gold-roger|Gold Roger]] fin da bambino, insieme a [[shanks|Shanks]], trovò una mappa del tesoro durante un abbordaggio e la tenne segreta, pronto a lasciare la ciurma da ricco. Per nascondere il vero Bara Bara no Mi rubato alla nave lo ingoiò per sbaglio quando Shanks lo sorprese all’improvviso, perdendo così sia la mappa, volata in mare, sia la capacità di nuotare per andarla a recuperare. Ora vuole solo il suo forziere indietro. Si scaglia a pezzi sparsi contro [[nami|Nami]], ma [[monkey-d-luffy|Rufy]] lo abbatte, Nami gli lega le membra con una corda, e un solo Gomu Gomu no Bazooka scaraventa quel che resta di lui fuori da Orange Town.',
-          en: 'Buggy tells the whole story just to buy time: an apprentice on [[gold-roger|Gold Roger]]’s crew since childhood, alongside [[shanks|Shanks]], he found a treasure map during a raid and kept it secret, planning to leave the crew rich. To hide the real Bara Bara no Mi he’d stolen from the ship, he swallowed it by accident when Shanks caught him off guard, losing both the map, blown into the sea, and the ability to swim after it. Now he only wants his chest of loot back. He scatters himself in pieces at [[nami|Nami]], but [[monkey-d-luffy|Luffy]] strikes him down, Nami binds his limbs with rope, and one Gomu Gomu no Bazooka sends what’s left of him flying out of Orange Town.',
+          it: 'Bagy racconta tutto pur di guadagnare tempo: da ragazzo era apprendista sulla stessa nave pirata di [[shanks|Shanks]], e lì trovò una mappa del tesoro durante un abbordaggio e la tenne segreta, pronto a lasciare la ciurma da ricco. Per nascondere il vero Bara Bara no Mi rubato alla nave lo ingoiò per sbaglio quando Shanks lo sorprese all’improvviso, perdendo così sia la mappa, volata in mare, sia la capacità di nuotare per andarla a recuperare. Ora vuole solo il suo forziere indietro. Si scaglia a pezzi sparsi contro [[nami|Nami]], ma [[monkey-d-luffy|Rufy]] lo abbatte, Nami gli lega le membra con una corda, e un solo Gomu Gomu no Bazooka scaraventa quel che resta di lui fuori da Orange Town.',
+          en: 'Buggy tells the whole story just to buy time: as a boy he and [[shanks|Shanks]] were apprentices on the same pirate ship, where he found a treasure map during a raid and kept it secret, planning to leave the crew rich. To hide the real Bara Bara no Mi he’d stolen from the ship, he swallowed it by accident when Shanks caught him off guard, losing both the map, blown into the sea, and the ability to swim after it. Now he only wants his chest of loot back. He scatters himself in pieces at [[nami|Nami]], but [[monkey-d-luffy|Luffy]] strikes him down, Nami binds his limbs with rope, and one Gomu Gomu no Bazooka sends what’s left of him flying out of Orange Town.',
         },
       },
     },
@@ -1644,14 +1668,15 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
         title: {
           it: 'Un brindisi per il ragazzo dal cappello di paglia',
           en: 'A drink for the boy in the straw hat',
         },
         body: {
-          it: 'Mihawk rintraccia [[shanks|Shanks]] su un’isola base remota della sua ciurma, e il suo arrivo basta a zittire i marinai più giovani dei Capelli Rossi. È venuto solo per consegnare un manifesto: trenta milioni di berry, il più alto dell’East Blue, per un ragazzo con un cappello di paglia. Shanks guarda il volto e Mihawk conferma ciò che già sospettava: è lo stesso bambino per cui Shanks ha perso il braccio sinistro. Shanks ride, felice, e non lascia passare la notizia senza un brindisi. Trascina Mihawk tra i barili della sua ciurma, e per una volta lo lascia riempirgli la coppa.',
-          en: 'Mihawk tracks [[shanks|Shanks]] down to one of his crew’s remote base islands, and his arrival alone is enough to startle the lower-ranked Red Hair Pirates into silence. He has come only to deliver a wanted poster: thirty million berries, East Blue’s highest, for a boy in a straw hat. Shanks studies the face and Mihawk confirms what he already suspects, that this is the same village boy for whom Shanks gave up his left arm. Shanks laughs, delighted, and will not let the news pass without a drink. He pulls Mihawk down among his crew’s barrels and bottles, and for once he lets himself be poured a cup.',
+          it: 'Mihawk rintraccia [[shanks|Shanks]] su un’isola remota, e il suo arrivo basta a zittire i marinai più giovani dei Capelli Rossi. È venuto solo per consegnare un manifesto: trenta milioni di berry, il più alto dell’East Blue, per un ragazzo con un cappello di paglia. Shanks guarda il volto e Mihawk conferma ciò che già sospettava: è lo stesso bambino per cui Shanks ha perso il braccio sinistro. Shanks ride, felice, e non lascia passare la notizia senza un brindisi. Trascina Mihawk tra i barili della sua ciurma, e per una volta lo lascia riempirgli la coppa.',
+          en: 'Mihawk tracks [[shanks|Shanks]] down to a remote island, and his arrival alone is enough to startle the lower-ranked Red Hair Pirates into silence. He has come only to deliver a wanted poster: thirty million berries, East Blue’s highest, for a boy in a straw hat. Shanks studies the face and Mihawk confirms what he already suspects, that this is the same village boy for whom Shanks gave up his left arm. Shanks laughs, delighted, and will not let the news pass without a drink. He pulls Mihawk down among his crew’s barrels and bottles, and for once he lets himself be poured a cup.',
         },
       },
     },
@@ -1799,14 +1824,15 @@ export const eastBlueChronicles = {
     },
     {
       episode: 510,
+      chapter: 593,
       value: {
         title: {
           it: 'Anche un rivoluzionario è umano',
           en: 'Even a revolutionary is human',
         },
         body: {
-          it: 'Al quartier generale, Dragon chiama [[emporio-ivankov|Ivankov]] con la lumaca telefonica, il giornale ancora aperto sul tavolo: la notizia che ha un figlio è ormai di dominio pubblico. Non sembra scosso; dice solo che forse, per una volta, farà bene ai suoi uomini sapere che anche lui è umano. Poi passa agli affari: con [[edward-newgate|Barbabianca]] morto a Marineford il mondo intero traballa, e serve riunire tutti i comandanti prima che qualcuno ne approfitti. Ivankov gli chiede se ha letto cosa ha combinato [[monkey-d-luffy|Rufy]] a Marineford; anche lui è rimasto sorpreso.',
-          en: 'At his headquarters, Dragon calls [[emporio-ivankov|Ivankov]] on the responder snail, the newspaper still open on the table: word that he has a son is public now. He doesn’t seem shaken; he only says that, for once, it might do his men good to see he is human too. Then he moves to business: with [[edward-newgate|Whitebeard]] dead at Marineford the whole world is reeling, and he needs every commander gathered before someone takes advantage. Ivankov asks if he read what [[monkey-d-luffy|Luffy]] pulled off at Marineford; he admits he was surprised himself.',
+          it: 'Al quartier generale, Dragon chiama [[emporio-ivankov|Ivankov]] con la lumaca telefonica, il giornale ancora aperto sul tavolo: la notizia che ha un figlio è ormai di dominio pubblico. Non sembra scosso; dice solo che forse, per una volta, farà bene ai suoi uomini sapere che anche lui è umano. Poi passa agli affari: con [[edward-newgate|Barbabianca]] morto a Marineford il mondo intero traballa, e serve riunire tutti i suoi capi prima che qualcuno ne approfitti. Ivankov gli chiede se ha letto cosa ha combinato [[monkey-d-luffy|Rufy]] a Marineford; anche lui è rimasto sorpreso.',
+          en: 'At his headquarters, Dragon calls [[emporio-ivankov|Ivankov]] on the responder snail, the newspaper still open on the table: word that he has a son is public now. He doesn’t seem shaken; he only says that, for once, it might do his men good to see he is human too. Then he moves to business: with [[edward-newgate|Whitebeard]] dead at Marineford the whole world is reeling, and he needs all his leaders gathered before someone takes advantage. Ivankov asks if he read what [[monkey-d-luffy|Luffy]] pulled off at Marineford; he admits he was surprised himself.',
         },
       },
     },
@@ -1875,6 +1901,7 @@ export const eastBlueChronicles = {
   'chouchou': [
     {
       episode: 6,
+      chapter: 21,
       value: {
         title: { it: 'L’ultimo pacco di cibo', en: 'The last box of dog food' },
         body: {
@@ -1980,6 +2007,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 16,
+      chapter: 41,
       value: {
         title: { it: 'Nel bosco', en: 'Through the forest' },
         body: {
@@ -1990,6 +2018,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 17,
+      chapter: 41,
       value: {
         title: { it: 'La ciurma si scioglie', en: 'The crew disbands' },
         body: {
@@ -2069,6 +2098,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 21,
+      chapter: 47,
       value: {
         title: {
           it: 'Il prigioniero scappato',
@@ -2082,11 +2112,12 @@ export const eastBlueChronicles = {
     },
     {
       episode: 45,
+      chapter: 96,
       value: {
-        title: { it: 'Degradato', en: 'Demoted' },
+        title: { it: 'Aprite il fuoco', en: 'Open fire' },
         body: {
-          it: 'La rissa al Baratie è costata a Fullbody il suo grado: la Marina lo ha degradato. Quando escono i manifesti con la prima taglia di [[monkey-d-luffy|Rufy]], lui ci vede un modo per risalire, e quando la nave dei pirati passa accanto alla sua ordina ai suoi uomini di aprire il fuoco. L’attacco viene respinto, e appena Fullbody vede [[sanji|Sanji]] sul ponte, batte in ritirata.',
-          en: 'The fight at the Baratie has cost Fullbody his rank: the Marines demoted him for it. When the posters go out with [[monkey-d-luffy|Luffy]]’s first bounty, he sees a way back up, and when the pirates’ ship sails past his own, he orders his men to open fire. The attack is thrown back, and as soon as Fullbody sees [[sanji|Sanji]] on deck, he retreats.',
+          it: 'Quando escono i manifesti con la prima taglia di [[monkey-d-luffy|Rufy]], Fullbody ci vede l’occasione di rifarsi della sconfitta al Baratie, e quando la nave dei pirati passa accanto alla sua ordina ai suoi uomini di aprire il fuoco. L’attacco viene respinto, e appena Fullbody vede [[sanji|Sanji]] sul ponte, batte in ritirata.',
+          en: 'When the posters go out with [[monkey-d-luffy|Luffy]]’s first bounty, Fullbody sees a chance to make up for his defeat at the Baratie, and when the pirates’ ship sails past his own, he orders his men to open fire. The attack is thrown back, and as soon as Fullbody sees [[sanji|Sanji]] on deck, he retreats.',
         },
       },
     },
@@ -2114,6 +2145,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 25,
+      chapter: 68,
       value: {
         title: { it: 'Il Sabagashira', en: 'The Sabagashira' },
         body: {
@@ -2124,6 +2156,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 28,
+      chapter: 63,
       value: {
         title: { it: 'La cura sbagliata', en: 'The wrong cure' },
         body: {
@@ -2149,6 +2182,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 22,
+      chapter: 50,
       value: {
         title: {
           it: 'Un cannone a forma di aragosta',
@@ -2162,6 +2196,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 30,
+      chapter: 68,
       value: {
         title: { it: 'La zuppa buttata via', en: 'The soup thrown out' },
         body: {
@@ -2184,6 +2219,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 524,
+      chapter: 605,
       value: {
         title: { it: 'Di nuovo quei tre', en: 'Those three again' },
         body: {
