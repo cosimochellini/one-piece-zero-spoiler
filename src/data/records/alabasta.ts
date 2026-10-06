@@ -765,8 +765,8 @@ export const alabasta: Saga = {
     'mr-9': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'Porta una corona e dice di essere un re, ma nessuno gli crede. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
-        en: 'He wears a crown and says he is a king, and nobody believes him. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
+        it: 'Porta una corona e dice di essere un re, e per tutta risposta si sente dare del bugiardo. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
+        en: 'He wears a crown and says he is a king, and is called a liar for it. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
       },
       affiliation: [
         { episode: 63, value: BW },
