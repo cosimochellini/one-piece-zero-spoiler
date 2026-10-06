@@ -18,6 +18,8 @@ const WATER_SEVEN = {
 
 const CIPHER_POL_9 = { it: 'Cipher Pol 9', en: 'Cipher Pol 9' }
 
+const CIPHER_POL_0 = { it: 'Cipher Pol 0', en: 'Cipher Pol 0' }
+
 const CP9_AGENT = { it: 'Agente del Cipher Pol 9', en: 'Cipher Pol 9 agent' }
 
 const DOCK_ONE = { it: 'Caposquadra del Dock 1', en: 'Foreman of Dock One' }
@@ -903,7 +905,7 @@ export const waterSeven: Saga = {
       affiliation: [
         { episode: 230, value: GALLEY_LA_DOCK_ONE },
         { episode: 244, value: CIPHER_POL_9 },
-        { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
+        { episode: 886, chapter: 907, value: CIPHER_POL_0 },
       ],
       devilFruit: [{ episode: 286, value: ['ox-ox-fruit-model-giraffe'] }],
     },
@@ -925,7 +927,7 @@ export const waterSeven: Saga = {
             en: 'Cipher Pol 9, strongest agent',
           },
         },
-        { episode: 1090, value: { it: 'Cipher Pol 0', en: 'Cipher Pol 0' } },
+        { episode: 746, chapter: 801, value: CIPHER_POL_0 },
       ],
       devilFruit: [{ episode: 246, value: ['cat-cat-fruit-model-leopard'] }],
     },
@@ -1147,6 +1149,7 @@ export const waterSeven: Saga = {
             en: 'Demoted, under investigation',
           },
         },
+        { episode: 746, chapter: 801, value: CIPHER_POL_0 },
       ],
     },
     'jerry': {
