@@ -161,8 +161,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 829,
       name: { it: 'Vinsmoke Reiju', en: 'Vinsmoke Reiju' },
       summary: {
-        it: 'Una donna dai capelli rosa in mantello, scesa da una nave del Germa 66, che butta in mare il proprio fratello perché si rifiuta di aiutare un moribondo.',
-        en: 'A pink-haired woman in a cape, off a Germa 66 ship, who kicks her own brother into the sea for refusing to help a dying man.',
+        it: 'Una donna dai capelli rosa in mantello, scesa da una nave del Germa 66, che con un calcio butta giù dalla nave il proprio fratello perché si rifiuta di aiutare un moribondo.',
+        en: 'A pink-haired woman in a cape, off a Germa 66 ship, who kicks her own brother off his ship for refusing to help a dying man.',
       },
       visual: { art: 'vinsmoke-reiju', tint: 'pink' },
     },
@@ -353,8 +353,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 849,
       name: { it: 'Charlotte Chiffon', en: 'Charlotte Chiffon' },
       summary: {
-        it: 'Una figlia di Big Mom sposata al capo dei Fire Tank, con un neonato in braccio e un carattere che fa paura anche agli uomini del marito.',
-        en: 'A daughter of Big Mom married to the captain of the Fire Tank Pirates, a newborn son in her arms and a temper even her husband’s men are afraid of.',
+        it: 'Una figlia di Big Mom sposata al capo dei Fire Tank, con un figlio piccolo e un carattere che fa paura anche agli uomini del marito.',
+        en: 'A daughter of Big Mom married to the captain of the Fire Tank Pirates, with a small son and a temper even her husband’s men are afraid of.',
       },
       visual: { art: 'charlotte-chiffon', tint: 'pink' },
     },
@@ -1030,8 +1030,8 @@ export const wholeCake: Saga = {
         en: 'Daughter of the Vinsmoke family',
       },
       log: {
-        it: 'È su una nave del Germa 66 al confine delle acque di Big Mom, e i soldati a bordo la chiamano lady Reiju. Quando il fratello minore nega ai Cappello di Paglia un antidoto per Rufy, avvelenato dalla pelle di un pesce, lei lo butta in mare con un calcio e gli dice di smetterla di fare il tirchio. Poi salta sulla Sunny e chiede scusa per lui.',
-        en: 'She is on a Germa 66 ship at the edge of Big Mom’s waters, and the soldiers on board call her Lady Reiju. When her younger brother refuses the Straw Hats an antidote for Luffy, poisoned by the skin of a fish, she kicks him into the sea and tells him to stop being so stingy. Then she jumps down onto the Sunny and apologises for him.',
+        it: 'È su una nave del Germa 66 al confine delle acque di Big Mom, e i soldati a bordo la chiamano lady Reiju. Quando il fratello minore nega ai Cappello di Paglia un antidoto per Rufy, avvelenato dalla pelle di un pesce, lei lo butta giù dalla nave con un calcio e gli dice di smetterla di fare il tirchio. Poi salta sulla Sunny e chiede scusa per lui.',
+        en: 'She is on a Germa 66 ship at the edge of Big Mom’s waters, and the soldiers on board call her Lady Reiju. When her younger brother refuses the Straw Hats an antidote for Luffy, poisoned by the skin of a fish, she kicks him off the ship and tells him to stop being so stingy. Then she jumps down onto the Sunny and apologises for him.',
       },
       // Named at 784 ("Oh, Reiju-sama!" as she leaps), but the poison, the
       // "Poison Pink" caption and Germa as a kingdom of the North Blue are 785.
@@ -1338,8 +1338,8 @@ export const wholeCake: Saga = {
     'charlotte-chiffon': {
       role: { it: 'Moglie di Capone Bege', en: 'Capone Bege’s wife' },
       log: {
-        it: 'È la ventiduesima figlia della famiglia Charlotte e la moglie di Capone Bege, e ha un figlio appena nato che ride quando il padre gli fa le smorfie. Quando uno degli uomini del marito punta un’arma contro Sanji, lei lo trascina fuori per un orecchio: se lo sposo si fa male, Big Mom farà saltare la testa di Bege. Somiglia moltissimo a Lola, e Pound, che le chiama entrambe sue figlie, vuole vederla per darle la sua benedizione per il matrimonio.',
-        en: 'She is the 22nd daughter of the Charlotte family and Capone Bege’s wife, with a newborn son who laughs when his father pulls faces at him. When one of her husband’s men aims a gun at Sanji, she drags him out by the ear: if the groom is harmed, Big Mom will have Bege’s head. She looks a great deal like Lola, and Pound, who calls them both his daughters, wants to see her to bless her marriage.',
+        it: 'È la ventiduesima figlia della famiglia Charlotte e la moglie di Capone Bege, e ha un figlio piccolo che ride quando il padre gli fa le smorfie. Quando uno degli uomini del marito punta un’arma contro Sanji, lei lo trascina fuori per un orecchio: se lo sposo si fa male, Big Mom farà saltare la testa di Bege. Somiglia moltissimo a Lola, e Pound, che le chiama entrambe sue figlie, vuole vederla per congratularsi del matrimonio.',
+        en: 'She is the 22nd daughter of the Charlotte family and Capone Bege’s wife, with a small son who laughs when his father pulls faces at him. When one of her husband’s men aims a gun at Sanji, she drags him out by the ear: if the groom is harmed, Big Mom will have Bege’s head. She looks a great deal like Lola, and Pound, who calls them both his daughters, wants to see her to congratulate her on her marriage.',
       },
       affiliation: [
         {
