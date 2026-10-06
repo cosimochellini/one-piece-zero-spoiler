@@ -16,7 +16,6 @@ import {
   FEATURED_CHARACTER_IDS,
   featuredCharacters,
   getCharacter,
-  nearbyCharacters,
   routePositionOf,
 } from './characters'
 import { datedOf, stories } from './dated'
@@ -539,25 +538,5 @@ describe('routePositionOf', () => {
     for (const before of byChapter.slice(0, position.index)) {
       expect(before.revealedAtChapter).toBeLessThanOrEqual(1)
     }
-  })
-})
-
-describe('nearbyCharacters', () => {
-  it('returns the closest listed characters by episode, never the character itself', () => {
-    const near = nearbyCharacters(must('monkey-d-luffy'), 3).map(
-      (character) => character.id,
-    )
-
-    expect(near).toStrictEqual(['koby', 'roronoa-zoro', 'shanks'])
-    expect(near).not.toContain('monkey-d-luffy')
-  })
-
-  it('leaves out characters that are not listed', () => {
-    // Kid is filed at the same episode as Law but is not featured.
-    expect(
-      nearbyCharacters(must('trafalgar-law'), 36).map(
-        (character) => character.id,
-      ),
-    ).not.toContain('eustass-kid')
   })
 })

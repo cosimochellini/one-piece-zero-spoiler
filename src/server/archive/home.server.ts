@@ -54,18 +54,23 @@ export function homePage(
   const r = readerFor(bookmark, locale)
   const [saga, previous] = reachedArcs(r)
 
-  const since = (floor: number): FiledStory[] => {
+  // Floored and ordered in the reader's own unit: a manga reader's arc starts
+  // at its chapter, and the stories since are the ones concluded since then.
+  const since = (floor: Entity): FiledStory[] => {
     return stories
-      .filter((s) => s.episode >= floor && r.sees(s.gate))
+      .filter(
+        (s) => r.sees(s.gate) && r.threshold(s.gate) >= r.threshold(floor),
+      )
+      .toSorted(byValue((s) => r.threshold(s.gate), byNumber()))
       .toReversed()
   }
 
-  let shown = since(saga.revealedAtEpisode)
+  let shown = since(saga)
   // Nothing concluded here yet: the last stories of the arc before. No upper
   // bound is needed, because everything reached is below this arc's start.
   const before = shown.length === 0 && previous !== undefined
   if (before) {
-    shown = since(previous.revealedAtEpisode)
+    shown = since(previous)
   }
 
   const resolve = (id: string): string | undefined =>

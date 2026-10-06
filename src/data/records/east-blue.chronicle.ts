@@ -54,6 +54,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 52,
+      chapter: 100,
       value: {
         title: {
           it: 'Un fulmine sul patibolo',
@@ -1604,6 +1605,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 52,
+      chapter: 100,
       value: {
         title: {
           it: 'Il fulmine sul palco delle esecuzioni',
@@ -1743,6 +1745,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 53,
+      chapter: 100,
       value: {
         title: { it: 'Un vento senza nome', en: 'A wind with no name' },
         body: {
@@ -1944,6 +1947,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 53,
+      chapter: 100,
       value: {
         title: {
           it: 'Una torcia per la Going Merry',

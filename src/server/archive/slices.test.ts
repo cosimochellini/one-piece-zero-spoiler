@@ -306,22 +306,22 @@ describe('the slice of the archive a page is given', () => {
       const home = homePage(bookmark, 'en')
       const at = reveal(bookmark)
       const episodes = home.stories.map((story) => story.revealedAtEpisode)
+      // Most recent first, and inside the arc, in the reader's own unit.
+      const marked = home.stories.map((story) => at.threshold(story))
 
       saysNothing(home, bookmark)
 
       expect(at.sees(home.saga)).toBe(true)
       expect(home.cast.length).toBeLessThanOrEqual(6)
-      expect(episodes.toSorted(byNumber({ desc: true }))).toStrictEqual(
-        episodes,
-      )
+      expect(marked.toSorted(byNumber({ desc: true }))).toStrictEqual(marked)
 
       // Reaching back to the arc before is only ever a non-empty answer, and
       // the stories are then all below this arc's start rather than above it.
-      const start = home.saga.revealedAtEpisode
+      const start = at.threshold(home.saga)
       const inside =
         home.before ?
-          episodes.length > 0 && episodes.every((episode) => episode < start)
-        : episodes.every((episode) => episode >= start)
+          marked.length > 0 && marked.every((mark) => mark < start)
+        : marked.every((mark) => mark >= start)
 
       expect(episodes.every((episode) => episode <= reached)).toBe(true)
       expect(inside).toBe(true)

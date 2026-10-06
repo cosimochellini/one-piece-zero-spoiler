@@ -1,5 +1,3 @@
-import { byNumber, byValue } from 'sort-es'
-
 import type { EntityKind } from '~/lib/view/records'
 
 import { entities, sagas } from './entities'
@@ -220,21 +218,4 @@ export function routePositionOf(
     previous: drawn[index - 1],
     next: drawn[index + 1],
   }
-}
-
-/**
- * The featured characters filed closest to this one, by threshold, this one
- * excluded. Ties go to whoever comes first on the route.
- */
-export function nearbyCharacters(entity: Entity, count: number): Entity[] {
-  return featuredCharacters
-    .filter((candidate) => candidate.id !== entity.id)
-    .toSorted(
-      byValue(
-        (candidate) =>
-          Math.abs(candidate.revealedAtEpisode - entity.revealedAtEpisode),
-        byNumber(),
-      ),
-    )
-    .slice(0, count)
 }

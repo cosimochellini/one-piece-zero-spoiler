@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { featuredCharacters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import type { Entity } from '~/data/types'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -80,5 +81,56 @@ describe('readerFor', () => {
     const byEpisode = readerFor(null, 'en').order(entities)
 
     expect(byChapter.indexOf(shanks)).toBeLessThan(byEpisode.indexOf(shanks))
+  })
+
+  it('finds the nearest records in the reader’s own unit, never the record', () => {
+    // Luffy is episode 1 and chapter 1; Shanks is episode 4 but chapter 1.
+    const luffy = must('monkey-d-luffy')
+    const near = (mark: Bookmark): string[] => {
+      return readerFor(mark, 'en')
+        .nearest(luffy, featuredCharacters, 3)
+        .map((entity) => entity.id)
+    }
+
+    expect(near(null)).toStrictEqual(['koby', 'roronoa-zoro', 'shanks'])
+    expect(near({ mode: 'chapter', chapter: 1 })).toStrictEqual([
+      'shanks',
+      'koby',
+      'roronoa-zoro',
+    ])
+  })
+
+  it('breaks a tie by whoever the reader’s route reaches first', () => {
+    const here = {
+      ...must('nami'),
+      revealedAtEpisode: 10,
+      revealedAtChapter: 10,
+    }
+    const early = {
+      ...here,
+      id: 'early',
+      revealedAtEpisode: 8,
+      revealedAtChapter: 12,
+    }
+    const late = {
+      ...here,
+      id: 'late',
+      revealedAtEpisode: 12,
+      revealedAtChapter: 8,
+    }
+    const near = (mark: Bookmark): string[] => {
+      return readerFor(mark, 'en')
+        .nearest(here, [early, late], 2)
+        .map((entity) => entity.id)
+    }
+
+    expect(near({ mode: 'episode', episode: 1 })).toStrictEqual([
+      'early',
+      'late',
+    ])
+    expect(near({ mode: 'chapter', chapter: 1 })).toStrictEqual([
+      'late',
+      'early',
+    ])
   })
 })

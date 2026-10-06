@@ -22,7 +22,11 @@ import { handleOf } from './handle.server'
  */
 export interface Reader extends Reveal {
   locale: Locale
-  /** The records closest to this one in the reader's unit, this one excluded. */
+  /**
+   * The records closest to this one, this one excluded. Measured in the
+   * reader's unit, because the page prints thresholds in it and a rail sorted
+   * by the other would be a neighbourhood the reader cannot see they are in.
+   */
   nearest: (entity: Entity, among: Entity[], count: number) => Entity[]
   /** Records in the order the reader's unit reaches them. */
   order: (entries: Entity[]) => Entity[]
@@ -86,7 +90,9 @@ export function readerFor(bookmark: Bookmark, locale: Locale): Reader {
     nearest: (entity, among, count) => {
       const here = at.threshold(entity)
 
-      return among
+      // Ordered first, so a tie goes to whoever the reader's route reaches
+      // first rather than to the archive's own order.
+      return order(among)
         .filter((candidate) => candidate.id !== entity.id)
         .toSorted(
           byValue(

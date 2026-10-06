@@ -7,7 +7,6 @@ import {
   chartWith,
   featuredCharacters,
   getCharacter,
-  nearbyCharacters,
   routePositionOf,
 } from '~/data/characters'
 import type { Entity } from '~/data/types'
@@ -204,9 +203,9 @@ export function nearbyPage(
 
   const r = readerFor(bookmark, locale)
 
-  return nearbyCharacters(entity, NEARBY_COUNT).map((near) =>
-    r.slot(near, characterOf),
-  )
+  return r
+    .nearest(entity, featuredCharacters, NEARBY_COUNT)
+    .map((near) => r.slot(near, characterOf))
 }
 
 /** What a character's page calls itself, open and under fog. */
