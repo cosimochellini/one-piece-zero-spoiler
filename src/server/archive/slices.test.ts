@@ -3,9 +3,10 @@ import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
-import { characters } from '~/data/characters'
+import { arcs, characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import { ARC_LEADS } from '~/data/leads'
+import { orderByMode } from '~/data/order'
 import { shipDossierOf } from '~/data/places'
 import { type Reveal, reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
@@ -41,6 +42,38 @@ import { characterOf, recordOf, searchableOf } from './project.server'
 
 function ep(episode: number): NonNullable<Bookmark> {
   return { mode: 'episode', episode }
+}
+
+/**
+ * The arc whose stories the home page reads: its own, or under "Poco prima"
+ * the one reached before it.
+ */
+function toldArc(bookmark: NonNullable<Bookmark>, home: HomeView): string {
+  if (!home.before) {
+    return home.saga.id
+  }
+  const at = reveal(bookmark)
+  const reached = orderByMode(arcs, at.mode).filter((arc) => at.sees(arc))
+
+  return reached.at(-2)?.id ?? home.saga.id
+}
+
+/**
+ * The leads the cast may come from: the told arc's, when the stories name any
+ * of them, and otherwise the saga's own, as newcomers.
+ */
+function poolOf(home: HomeView, told: string): Set<string> {
+  const toldLeads = new Set(ARC_LEADS[told])
+  for (const story of home.stories) {
+    const ids = story.body.flatMap((segment) =>
+      segment.kind === 'link' ? segment.id : [],
+    )
+    if ([story.subject.id, ...ids].some((id) => toldLeads.has(id))) {
+      return toldLeads
+    }
+  }
+
+  return new Set(ARC_LEADS[home.saga.id])
 }
 
 /** Every episode and every chapter a bookmark can hold. */
@@ -400,6 +433,18 @@ describe('the slice of the archive a page is given', () => {
     expect(cast.filter((id) => colosseum.has(id))).toStrictEqual([])
   })
 
+  it('falls back to the leads first met when no lead is named yet', () => {
+    // Zou's first stories are about characters who are not its leads.
+    const home = homePage(ep(754), 'en')
+
+    expect(home.saga.id).toBe('zou-arc')
+    expect(home.stories.length).toBeGreaterThan(0)
+    expect(home.cast.map((character) => character.id)).toStrictEqual([
+      'carrot',
+      'wanda',
+    ])
+  })
+
   it('names only the leads of the arc on every bookmark', () => {
     // An arc the home page reads stories from without a list of leads would
     // leave the section empty rather than fail, so it is caught here too.
@@ -407,12 +452,12 @@ describe('the slice of the archive a page is given', () => {
     const unlisted = new Set<string>()
     for (const bookmark of everyBookmark()) {
       const home = homePage(bookmark, 'en')
-      const leads = new Set(ARC_LEADS[home.saga.id])
-      const own = home.before ? [] : home.cast
-      if (!home.before && home.stories.length > 0 && leads.size === 0) {
-        unlisted.add(home.saga.id)
+      const told = toldArc(bookmark, home)
+      const leads = poolOf(home, told)
+      if (home.stories.length > 0 && ARC_LEADS[told] === undefined) {
+        unlisted.add(told)
       }
-      const stray = own.filter((character) => !leads.has(character.id))
+      const stray = home.cast.filter((character) => !leads.has(character.id))
       strays.push(
         ...stray.map(({ id }) => `${id} @ ${JSON.stringify(bookmark)}`),
       )

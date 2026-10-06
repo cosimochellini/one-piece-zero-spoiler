@@ -7,10 +7,11 @@ import { ARC_LEADS } from './leads'
 
 /** The episode the arc after this one opens at, or past the last story. */
 function endOf(start: number): number {
-  return (
-    arcs.find((arc) => arc.revealedAtEpisode > start)?.revealedAtEpisode
-    ?? Infinity
-  )
+  const later = arcs
+    .map((arc) => arc.revealedAtEpisode)
+    .filter((episode) => episode > start)
+
+  return Math.min(Infinity, ...later)
 }
 
 /** Every character a story of the arc names, its subject included. */
