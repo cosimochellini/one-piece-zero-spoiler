@@ -1404,19 +1404,46 @@ export const wanoArt = {
     shadow(96, 188, 52),
   ],
 
-  // Two long horns curving up over a horse's tail that sweeps down to the
-  // ground.
+  // The barrel he drinks from in the Cave Chamber, in 3/4 with its far side
+  // hatched and its two iron hoops studded with rivets (accent). It is his
+  // alone: in ch. 1030 (pp. 2-3) he lifts the whole barrel to drink while the
+  // other two eat, and episode 1055 stands it at his feet. His horse's body
+  // is not shown before ch. 1032 (episode 1058).
   'fuga': [
-    { d: 'M66 100 C40 84 30 52 40 20 C46 52 58 74 78 90 Z', role: 'accent' },
+    { d: ellipse(80, 50, 34, 10) },
+    { d: ellipse(80, 51, 28, 7), role: 'soft' },
     {
-      d: 'M94 100 C120 84 130 52 120 20 C114 52 102 74 82 90 Z',
+      d: 'M46 50 C38 80 37 124 48 156 C60 168 100 168 112 156 C123 124 122 80 114 50',
+    },
+    { d: 'M43.4 66 Q80 84 116.6 66 M41.8 76 Q80 94 118.2 76', role: 'accent' },
+    {
+      d: 'M41.6 128 Q80 146 118.4 128 M43.1 138 Q80 156 116.9 138',
       role: 'accent',
     },
-    { d: ellipse(80, 106, 10, 4) },
-    { d: 'M80 110 C70 132 92 152 74 184' },
-    { d: 'M86 110 C84 136 106 152 96 186' },
-    { d: 'M74 110 C56 132 70 160 52 180', role: 'soft' },
-    shadow(80, 190, 36),
+    {
+      d: dots([
+        [51.6, 74.8],
+        [65, 78.6],
+        [80, 80],
+        [95, 78.6],
+        [108.4, 74.8],
+        [51.3, 136.8],
+        [64.9, 140.6],
+        [80, 142],
+        [95.1, 140.6],
+        [108.7, 136.8],
+      ]),
+      role: 'accent',
+    },
+    {
+      d: 'M60 62 C56 96 56 132 62 164 M100 62 C104 96 104 132 98 164',
+      role: 'soft',
+    },
+    {
+      d: 'M108 96 l8 -8 M108 108 l9 -9 M108 120 l8 -8 M106 154 l6 -6',
+      role: 'ambient',
+    },
+    shadow(80, 176, 48),
   ],
 
   // Kanjuro's brush laid down at the end of its last stroke, the ink pooled
