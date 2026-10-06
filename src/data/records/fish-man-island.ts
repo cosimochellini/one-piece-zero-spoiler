@@ -183,12 +183,14 @@ export const fishManIsland: Saga = {
     {
       id: 'hody-jones',
       kind: 'character',
-      revealedAtEpisode: 527,
-      revealedAtChapter: 615,
+      revealedAtEpisode: 530,
+      revealedAtChapter: 611,
+      // Named at 528 (ch. 609), but 527 (ch. 608) shows only his shadow: he
+      // is first seen at 530 (ch. 611). The trident comes at 535 (ch. 616).
       name: { it: 'Hody Jones', en: 'Hody Jones' },
       summary: {
-        it: 'Un uomo-pesce squalo bianco con un tridente, capitano dei Nuovi Pirati Uomini-Pesce, che promette di prendersi l’isola e di strappare la pace firmata con gli umani.',
-        en: 'A great white fish-man with a trident, captain of the New Fish-Man Pirates, who promises to take the island and tear up the peace signed with the humans.',
+        it: 'Un uomo-pesce squalo con un berretto rosa e una grande sciarpa bianca, capitano dei Nuovi Pirati Uomini-Pesce, che vuole strappare l’Isola degli Uomini-Pesce a Nettuno e dimostrare agli umani che gli uomini-pesce sono la razza superiore.',
+        en: 'A shark fish-man in a pink cap and a big white scarf, captain of the New Fish-Man Pirates, who means to take Fish-Man Island from Neptune and show the humans that fish-men are the supreme race.',
       },
       visual: { art: 'hody-jones', tint: 'teal' },
     },
@@ -710,16 +712,17 @@ export const fishManIsland: Saga = {
         en: 'Captain of the New Fish-Man Pirates',
       },
       log: {
-        it: 'Comanda dal Quartiere degli Uomini-Pesce, il fondo dell’isola dove nessuno scende volentieri, una ciurma che cresce di giorno in giorno. Dice che il regno ha tradito la propria gente inchinandosi agli umani e che il trono va rovesciato. Manda giù pastiglie di steroidi energetici come fossero caramelle, e la forza che gli danno gli basta.',
-        en: 'He commands a crew that grows by the day from the Fish-Man District, the bottom of the island where nobody goes willingly. He says the kingdom betrayed its own people by bowing to the humans, and that the throne has to come down. He swallows energy steroids like sweets, and the strength they hand him is enough for him.',
+        it: 'Dà ordini dalla Noah, l’enorme nave nel Quartiere degli Uomini-Pesce. Quando una ciurma di pirati umani costretta ad arruolarsi con lui scappa, la insegue di persona. Manda giù diverse pastiglie di steroidi energetici in un colpo, si presenta con le manette ai polsi e distrugge la loro nave senza usare le mani. Li lascia vivi apposta, perché raccontino in superficie che cosa è successo e chi è stato. Poi annuncia che la ciurma strapperà l’Isola degli Uomini-Pesce a Nettuno e trascinerà gli umani in fondo al mare.',
+        en: 'He gives his orders from Noah, the enormous ship in the Fish-Man District. When a crew of human pirates forced to join his crew slips away, he goes after them himself. He swallows several energy steroids at once, comes at them with handcuffs on his wrists, and wrecks their ship without using his hands. He leaves them alive on purpose, so they can tell the people on the surface what happened to them and who did it. Then he says the crew will take Fish-Man Island from Neptune and drag the humans down to the bottom of the sea.',
       },
       status: [
-        { episode: 527, value: 'alive' },
+        { episode: 530, chapter: 611, value: 'alive' },
         { episode: 569, value: 'imprisoned' },
       ],
       affiliation: [
         {
-          episode: 527,
+          episode: 530,
+          chapter: 611,
           value: {
             it: 'Nuovi Pirati Uomini-Pesce, capitano',
             en: 'New Fish-Man Pirates, captain',
@@ -729,7 +732,8 @@ export const fishManIsland: Saga = {
       ],
       origin: [
         {
-          episode: 527,
+          episode: 530,
+          chapter: 611,
           value: {
             it: 'Quartiere degli Uomini-Pesce',
             en: 'Fish-Man District',

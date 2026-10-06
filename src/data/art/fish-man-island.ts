@@ -246,18 +246,31 @@ export const fishManIslandArt = {
     ...SEA,
   ],
 
-  // A trident, and one of the pills that go with it.
+  // His pink newsboy cap in 3/4, the soft crown puffed out over the band,
+  // its panels meeting at the button, the far side of the crown and of the
+  // band hatched, and the short visor out front with its underside hatched.
+  // He wears it from 530 (ch. 611). The cap's small trident mark is left
+  // out: he is first seen with the trident at 535 (ch. 616).
   'hody-jones': [
-    { d: 'M74 194 V96 M86 194 V96' },
-    { d: 'M72 196 h16' },
-    { d: 'M76 150 h8 M76 124 h8', role: 'soft' },
-    { d: 'M54 96 H106' },
-    { d: 'M80 96 V26 L84 14 L80 6 L76 14 L80 26', role: 'accent' },
-    { d: 'M56 96 V46 L60 36 L56 28 L52 36 L56 46', role: 'accent' },
-    { d: 'M104 96 V46 L108 36 L104 28 L100 36 L104 46', role: 'accent' },
-    { d: circle(128, 160, 15) },
-    { d: 'M116 154 q12 8 24 0', role: 'soft' },
-    shadow(80, 198, 28),
+    {
+      d: 'M44 126 C26 124 10 112 12 98 C16 72 54 52 94 54 C134 56 160 74 156 98 C154 112 140 120 124 122',
+      role: 'accent',
+    },
+    { d: 'M44 126 C68 134 102 132 124 122' },
+    { d: 'M46 136 C70 144 104 142 126 132 V122 M46 136 V126' },
+    { d: 'M46 134 C26 138 14 150 22 160 C32 170 70 166 90 146' },
+    { d: 'M26 154 C40 156 60 152 76 146', role: 'soft' },
+    { d: 'M32 162 l8 -6 M44 164 l9 -7 M58 162 l9 -7', role: 'ambient' },
+    {
+      d: 'M90 54 C76 72 68 98 70 132 M90 54 C110 70 120 94 120 126 M90 54 C58 64 34 84 30 112 M86 53 h8',
+      role: 'soft',
+    },
+    {
+      d: 'M134 70 l8 -5 M142 84 l9 -5 M142 100 l9 -5 M132 112 l9 -5',
+      role: 'ambient',
+    },
+    { d: 'M110 136 l6 -4 M117 133 l6 -4', role: 'ambient' },
+    shadow(84, 178, 62),
   ],
 
   // Noah looming over the district, the enormous ark in the district's
