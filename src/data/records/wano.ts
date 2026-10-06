@@ -962,9 +962,10 @@ export const wano: Saga = {
       bounty: [{ episode: 930, value: 1_320_000_000 }],
     },
     'king': {
+      // The anime drops chapter 925's caption: the rank waits for 985 and the epithet for 1046.
       role: {
-        it: 'All-Star dei Pirati delle Cento Bestie',
-        en: 'Beasts Pirates All-Star',
+        it: 'Ufficiale dei Pirati delle Cento Bestie',
+        en: 'Beasts Pirates officer',
       },
       log: {
         it: 'Sta a Onigashima, il volto coperto da una maschera. Insieme a un altro dei grandi della ciurma rimprovera Jack, che lo chiama fratello maggiore, perché le offerte di Kuri sono troppo scarse. Poi i due si danno dell’idiota e del rifiuto a vicenda. Di lui si sanno il nome, la maschera e poco altro.',
@@ -973,6 +974,12 @@ export const wano: Saga = {
       affiliation: [
         {
           episode: 923,
+          value: { it: 'Pirati delle Cento Bestie', en: 'Beasts Pirates' },
+        },
+        {
+          // He tells Who's-Who and Sasaki they want "our positions as the Lead Performers".
+          episode: 985,
+          chapter: 979,
           value: {
             it: 'Pirati delle Cento Bestie, All-Star',
             en: 'Beasts Pirates, All-Star',
@@ -987,7 +994,9 @@ export const wano: Saga = {
       ],
       epithet: [
         {
-          episode: 923,
+          // Marco: "King the 'Wildfire,' huh?"
+          episode: 1046,
+          chapter: 1022,
           value: { it: 'King l’Incendio', en: 'King the Wildfire' },
         },
       ],
