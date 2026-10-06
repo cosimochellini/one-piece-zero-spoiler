@@ -590,20 +590,32 @@ export const fishManIslandArt = {
     shadow(70, 186, 56),
   ],
 
-  // A petition sheet with one signature at the foot of it, and the pen.
+  // Her petition, a stack of sheets with the top one's corner curling up,
+  // the sheet beneath peeking out askew, and the signatures in her colour.
+  // She asks the people to sign in episode 540 (chapter 621), where Arlong
+  // also snatches "the papers with signatures". No pen: none is shown.
   'otohime': [
-    { d: 'M36 22 H118 V178 H36 Z' },
-    { d: 'M50 46 H104 M50 62 H104 M50 78 H92', role: 'soft' },
-    { d: 'M50 102 H104 M50 118 H104 M50 134 H104', role: 'ambient' },
+    { d: 'M125.2 123.6 L114 50 L34 58 L49.4 159.2 L101.4 154' },
     {
-      d: 'M50 160 C58 148 64 166 72 154 C78 146 84 162 94 148',
+      d: 'M125.2 123.6 C119.8 125.9 112.3 126.4 104 123.3 C107.2 132.5 104.6 146.1 101.4 154',
+    },
+    { d: 'M125.2 123.6 C123.4 138.7 116.8 148.7 101.4 154', role: 'soft' },
+    { d: 'M125.2 123.6 L129.4 151.2 L101.4 154', role: 'soft' },
+    { d: 'M39.8 122.8 L26.3 54.1 L102.5 40.9 L105 50.9' },
+    { d: 'M34 58 V70 L49.4 171.2 L129.4 163.2 V151.2' },
+    {
+      d: 'M34.8 67.7 L49.4 163.4 L129.4 155.4 M34.8 71.9 L49.4 167.6 L129.4 159.6',
+      role: 'ambient',
+    },
+    {
+      d: 'M48 69.7 L104 64.1 M49.4 78.9 L105.4 73.3 M50.8 88.1 L86.8 84.5',
+      role: 'soft',
+    },
+    {
+      d: 'M53.6 106.5 C56 98.8 59.9 100.2 59.7 106.8 C59.2 111.5 64.1 103.6 67.5 102.3 S74.2 106.3 77.3 102.2 M85.8 105.1 C88.6 97.4 92.8 98.8 92.5 105.4 C91.9 110.1 97.3 102.1 101 100.8 S108.2 104.8 111.6 100.7 M56.1 123 C59.2 115.3 63.6 116.7 63.2 123.3 C62.5 128 68.4 119.9 72.5 118.6 S80.2 122.5 83.8 118.4 M90.4 121.5 C92.2 113.8 95.5 115.4 95.5 121.9 C95.2 126.6 99.1 118.7 101.9 117.5 S107.6 121.6 110.1 117.6 M60.9 141.2 C63.7 133.5 67.8 134.9 67.5 141.5 C66.9 146.2 72.3 138.2 76.1 136.9 S83.3 140.9 86.6 136.8',
       role: 'accent',
     },
-    { d: 'M46 166 H104', role: 'accent' },
-    { d: 'M126 170 C132 136 140 104 148 74' },
-    { d: 'M136 172 C142 138 148 108 150 78' },
-    { d: 'M148 74 C152 68 152 74 150 78' },
-    shadow(76, 188, 52),
+    shadow(89.4, 181.2, 60),
   ],
   // The sheer face of the Red Line rising out of the frame, its far side
   // hatched, the holds he gouged with his bare hands climbing it in his

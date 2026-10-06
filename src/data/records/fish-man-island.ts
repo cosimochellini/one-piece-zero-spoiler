@@ -357,15 +357,18 @@ export const fishManIsland: Saga = {
       },
       visual: { art: 'minister-of-the-right', tint: 'orange' },
     },
+    // Filed at 540, not at 539: in 539 she is only the picture on the
+    // fumi-e and a name in Jinbe's story. She is first seen in person, asking
+    // for signatures, in the flashback of 540 (chapter 621).
     {
       id: 'otohime',
       kind: 'character',
-      revealedAtEpisode: 539,
+      revealedAtEpisode: 540,
       revealedAtChapter: 626,
       name: { it: 'Otohime', en: 'Otohime' },
       summary: {
-        it: 'La regina del Regno di Ryugu, che gira l’isola con un foglio di firme per chiedere al mondo di lasciare la sua gente uscire al sole.',
-        en: 'The queen of the Ryugu Kingdom, going about the island with a petition sheet, asking the world to let her people up into the sun.',
+        it: 'La regina del Regno di Ryugu, una sirena pesce rosso che scende spesso tra la sua gente a chiedere firme per una petizione: vuole far sapere al vertice mondiale che il regno intende trasferirsi in superficie.',
+        en: 'The queen of the Ryugu Kingdom, a goldfish mermaid who often goes down among her people asking them to sign a petition: she wants to tell the World Summit that the kingdom means to move up to the surface.',
       },
       visual: { art: 'otohime', tint: 'lavender' },
     },
@@ -979,17 +982,17 @@ export const fishManIsland: Saga = {
         en: 'Queen of the Ryugu Kingdom',
       },
       log: {
-        it: 'Piccola, fragile e incapace di alzare le mani su chiunque, ha deciso che l’isola deve smettere di odiare la superficie e raccoglie le firme una per una, in mezzo a chi le sputa addosso. Vuole portare gli uomini-pesce a vivere sotto il sole e ripete che nessuno cambia idea per paura. Il marito la lascia fare e la ascolta.',
-        en: 'Small, frail and unable to raise a hand against anyone, she decided the island had to stop hating the surface and gathers signatures one at a time, among people who spit at her. She wants fish-men living under the sun, and repeats that nobody ever changes their mind out of fear. Her husband lets her go, and listens.',
+        it: 'Quando un ladro le spara, schiva il colpo e lo schiaffeggia rompendosi la mano, poi piange e gli chiede scusa per non aver saputo quanto fosse dura per lui. Quasi tutti quelli a cui chiede una firma si scusano e rifiutano. Preferisce parlare alla gente di persona piuttosto che in video dal palazzo, e il re dice che nemmeno lui può fermarla. Quando Fisher Tiger annuncia al re e alla regina che libererà gli schiavi, e dice di aver visto gli umani nei suoi viaggi, lei piange.',
+        en: 'When a thief fires at her, she dodges and slaps him, breaking her own hand, then cries and apologises for not knowing how hard things were for him. Most of the people she asks to sign apologise and refuse. She would rather face people than speak by video from the palace, and the king says not even he can stop her. When Fisher Tiger tells the king and queen he will free the slaves, and says that on his travels he saw humans, she weeps.',
       },
-      status: [{ episode: 539, value: 'deceased' }],
+      status: [{ episode: 540, value: 'deceased' }],
       affiliation: [
         {
-          episode: 539,
+          episode: 540,
           value: { it: 'Regno di Ryugu, regina', en: 'Ryugu Kingdom, queen' },
         },
       ],
-      origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
+      origin: [{ episode: 540, value: FISH_MAN_ISLAND }],
     },
     'fisher-tiger': {
       role: {
