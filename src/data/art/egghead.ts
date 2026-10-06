@@ -47,15 +47,27 @@ export const eggheadArt = {
     shadow(80, 176, 40),
   ],
 
-  // A domed helmet, a leaf growing out of its crown.
+  // Shaka's helmet seen from the side, as it first shows at 1091: the black
+  // dome hatched on the far side, the edge of the face plate, the band
+  // at its base, the gold drum at the ear with the antenna rising out of it.
+  // No number on it, and no grille.
   'shaka': [
-    { d: 'M30 152 a50 56 0 0 1 100 0' },
-    { d: 'M24 152 h112 v12 h-112z' },
-    { d: 'M80 96 C58 112 52 132 52 152', role: 'soft' },
-    { d: 'M80 96 C102 112 108 132 108 152', role: 'soft' },
-    { d: 'M80 96 V74', role: 'accent' },
-    { d: 'M80 74 q20 -10 26 4 q-20 10 -26 -4z', role: 'accent' },
-    shadow(80, 178, 46),
+    { d: 'M36 140 C30 96 46 54 84 52 C120 50 134 92 128 140' },
+    { d: 'M36 140 L34 150 Q82 162 130 150 L128 140' },
+    { d: 'M36 140 Q82 150 128 140', role: 'soft' },
+    { d: 'M58 58 C42 84 42 116 54 142', role: 'soft' },
+    {
+      d: `M96 94 a10 16 0 0 0 0 32 ${ellipse(104, 110, 10, 16)}`,
+      role: 'accent',
+    },
+    { d: 'M96 94 H104 M96 126 H104', role: 'accent' },
+    { d: 'M98 99 h4 M97 106 h4 M97 114 h4 M98 121 h4', role: 'soft' },
+    { d: 'M108 95 L134 32' },
+    {
+      d: 'M40 84 l7 -6 M37 98 l8 -7 M36 112 l8 -7 M36 126 l8 -7 M38 140 l6 -5',
+      role: 'ambient',
+    },
+    shadow(82, 178, 50),
   ],
 
   // A flying helmet, the goggles pushed up on its crown.
@@ -104,19 +116,27 @@ export const eggheadArt = {
     shadow(80, 190, 30),
   ],
 
-  // Round bear ears over a pair of thick glasses, a small wing of flame at
-  // the side.
+  // Kuma's spotted bucket hat with its two round bear ears, the near one
+  // whole, and the flame of a lunarian rising from behind its crown.
   's-bear': [
-    { d: circle(50, 76, 16) },
-    { d: circle(110, 76, 16) },
-    { d: circle(62, 120, 18) },
-    { d: circle(98, 120, 18) },
-    { d: 'M76 116 q4 -4 8 0', role: 'soft' },
     {
-      d: 'M112 152 C130 152 144 140 148 122 C140 134 128 138 118 136 C118 144 116 148 112 152 Z',
+      d: 'M116 106 C134 108 148 96 150 76 C145 84 140 86 136 86 C142 72 140 58 132 46 C132 60 126 68 120 70 C122 62 120 56 116 52 C118 66 116 76 114 84',
       role: 'accent',
     },
-    shadow(78, 168, 36),
+    { d: 'M44 112 C40 82 58 64 80 64 C102 64 118 80 116 112' },
+    { d: 'M44 112 Q80 124 116 112', role: 'soft' },
+    {
+      d: 'M44 106 Q22 108 22 124 Q30 146 80 148 Q130 146 138 122 Q138 108 116 106',
+    },
+    { d: 'M90 66 a13 13 0 1 1 20 14' },
+    { d: 'M96 64 a6 6 0 0 1 9 4', role: 'soft' },
+    { d: 'M52 82 a11 11 0 0 1 18 -14' },
+    {
+      d: 'M43 98 q8 -6 14 1 q3 8 -5 11 q-6 1 -10 -3 M34 126 q8 -5 13 1 q-2 7 -10 6 q-5 -1 -3 -7z M88 136 q7 -3 11 2 q-3 6 -9 4 q-4 -2 -2 -6z M114 128 q7 -4 11 1 q-2 6 -8 5 q-5 -1 -3 -6z',
+      role: 'soft',
+    },
+    { d: 'M48 84 l6 -5 M46 98 l7 -6', role: 'ambient' },
+    shadow(80, 180, 58),
   ],
 
   // A dorsal fin, a wing of flame, the sea climbing either side of it.
@@ -314,22 +334,34 @@ export const eggheadArt = {
     { d: dots([[126, 38]]), role: 'accent' },
     shadow(80, 188, 52),
   ],
-  // A sealed letter lying flat, a queen's crown resting above it.
+  // A queen's crown in three-quarters, its straight upright points fanning
+  // out as in her silhouette at 1118: the band seen from the front with a
+  // ridge and one set stone, the back of the band between the points, and
+  // the band's ends hatched where they turn away.
   'nefertari-lili': [
-    { d: 'M36 112 h88 v62 h-88z' },
-    { d: 'M36 112 L80 146 L124 112', role: 'soft' },
-    { d: 'M36 174 L70 140 M124 174 L90 140', role: 'soft' },
-    { d: circle(80, 146, 7), role: 'accent' },
-    { d: 'M50 98 V66 L65 82 L80 56 L95 82 L110 66 V98 Z', role: 'accent' },
+    { d: 'M32 128 Q80 160 128 128 V148 Q80 180 32 148 Z' },
+    { d: 'M32 138 Q80 170 128 138', role: 'soft' },
+    { d: 'M80 149 L85 154 L80 159 L75 154 Z', role: 'soft' },
     {
-      d: dots([
-        [65, 90],
-        [80, 88],
-        [95, 90],
-      ]),
+      d: 'M44 125.8 Q49 125 54 124.5 M66 123.4 Q70.5 123.2 75 123.1 M85 123.1 Q89.5 123.2 94 123.4 M106 124.5 Q111 125 116 125.8',
       role: 'soft',
     },
-    shadow(80, 188, 48),
+    { d: 'M34 129.3 L28 105 L29.8 98.8 L36 109.7 L42 134', role: 'accent' },
+    {
+      d: 'M55 139.7 L51.6 106.8 L54.6 99.2 L59.6 109.2 L63 142',
+      role: 'accent',
+    },
+    { d: 'M76 143.9 L76 104.9 L80 96 L84 104.9 L84 143.9', role: 'accent' },
+    {
+      d: 'M97 142 L100.4 109.2 L105.4 99.2 L108.4 106.8 L105 139.7',
+      role: 'accent',
+    },
+    {
+      d: 'M118 134 L124 109.7 L130.2 98.8 L132 105 L126 129.3',
+      role: 'accent',
+    },
+    { d: 'M35 147 l6 -6 M35 139 l5 -5 M118 151 l7 -7', role: 'ambient' },
+    shadow(80, 182, 54),
   ],
   // A straight sword standing point down, its guard a ring of gold, and a
   // pair of round glasses left at its foot.
@@ -465,28 +497,24 @@ export const eggheadArt = {
     { d: 'M136 138 c2 -12 16 -14 14 -2 c-2 8 -10 10 -14 2z', role: 'accent' },
     shadow(80, 188, 44),
   ],
-  // One oversized gauntlet in a fist, riveted at the cuff, steam rising off
-  // its knuckles.
+  // The giant gauntlet punching to the left: a fist in its glove, the
+  // cylinder over the forearm hatched underneath, and the Steam Knuckle's
+  // steam blasting out of the back. No lettering on the cylinder.
   'red-king': [
-    { d: 'M44 150 V92 q0 -14 14 -14 h44 q14 0 14 14 V150 Z' },
+    { d: 'M12 90 V120 Q14 136 30 136 H60 Q74 136 76 122 V86' },
+    { d: 'M12 90 q7 -10 15 -2 q8 -10 16 -2 q8 -10 16 -2 q8 -8 17 0' },
+    { d: 'M19 82 L32 70 H86 M76 86 L88 74', role: 'soft' },
+    { d: 'M27 88 V108 M43 86 V108 M59 84 V108', role: 'soft' },
+    { d: 'M14 110 H54 q9 0 9 8 q0 8 -9 8 H18' },
+    { d: 'M86 64 H118 M76 122 H118' },
+    { d: ellipse(118, 93, 9, 29) },
+    { d: 'M98 64 a8 29 0 0 1 0 58', role: 'soft' },
+    { d: 'M100 120 l8 -8 M108 122 l10 -10', role: 'ambient' },
     {
-      d: 'M44 100 q9 -10 18 0 q9 -10 18 0 q9 -10 18 0 q9 -10 18 0',
-      role: 'soft',
-    },
-    { d: 'M44 116 q-14 4 -12 18 q2 10 18 8', role: 'soft' },
-    { d: 'M50 150 h60 v24 h-60 Z' },
-    {
-      d: dots([
-        [60, 162],
-        [80, 162],
-        [100, 162],
-      ]),
-    },
-    {
-      d: 'M60 68 q-8 -10 0 -20 q8 -10 0 -20 M80 68 q-8 -10 0 -20 q8 -10 0 -20 M100 68 q-8 -10 0 -20 q8 -10 0 -20',
+      d: 'M128 80 q2 -12 14 -10 q10 -2 12 8 q8 6 0 14 M128 106 q10 -6 16 2 q10 2 8 12 q2 10 -10 10',
       role: 'accent',
     },
-    shadow(80, 188, 44),
+    shadow(72, 178, 58),
   ],
   // A pair of glasses whose lenses sweep out to sharp points, arms folded
   // under them.
