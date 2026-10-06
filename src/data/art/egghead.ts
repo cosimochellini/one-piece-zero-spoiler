@@ -48,7 +48,7 @@ export const eggheadArt = {
   ],
 
   // Shaka's helmet seen from the side, as it first shows at 1091: the black
-  // dome hatched where it turns away, the edge of the face plate, the band
+  // dome hatched on the far side, the edge of the face plate, the band
   // at its base, the gold drum at the ear with the antenna rising out of it.
   // No number on it, and no grille.
   'shaka': [
@@ -64,7 +64,7 @@ export const eggheadArt = {
     { d: 'M98 99 h4 M97 106 h4 M97 114 h4 M98 121 h4', role: 'soft' },
     { d: 'M108 95 L134 32' },
     {
-      d: 'M116 64 l8 -6 M121 78 l7 -5 M123 128 l6 -5 M122 142 l5 -4',
+      d: 'M40 84 l7 -6 M37 98 l8 -7 M36 112 l8 -7 M36 126 l8 -7 M38 140 l6 -5',
       role: 'ambient',
     },
     shadow(82, 178, 50),
@@ -117,10 +117,10 @@ export const eggheadArt = {
   ],
 
   // Kuma's spotted bucket hat with its two round bear ears, the near one
-  // whole, and the flame of a lunarian rising behind it.
+  // whole, and the flame of a lunarian rising from behind its crown.
   's-bear': [
     {
-      d: 'M120 104 C140 100 152 80 148 50 C142 66 132 70 124 68 C128 80 126 94 120 104 Z',
+      d: 'M116 106 C134 108 148 96 150 76 C145 84 140 86 136 86 C142 72 140 58 132 46 C132 60 126 68 120 70 C122 62 120 56 116 52 C118 66 116 76 114 84',
       role: 'accent',
     },
     { d: 'M44 112 C40 82 58 64 80 64 C102 64 118 80 116 112' },
@@ -132,7 +132,7 @@ export const eggheadArt = {
     { d: 'M96 64 a6 6 0 0 1 9 4', role: 'soft' },
     { d: 'M52 82 a11 11 0 0 1 18 -14' },
     {
-      d: 'M54 92 q10 -8 16 0 q2 10 -8 11 q-10 0 -8 -11z M86 78 q6 -4 11 0 q0 6 -6 7 q-6 -1 -5 -7z M92 104 q6 -5 12 -1 q1 7 -6 8 q-7 0 -6 -7z M34 126 q8 -5 13 1 q-2 7 -10 6 q-5 -1 -3 -7z M70 134 q7 -3 11 2 q-3 6 -9 4 q-4 -2 -2 -6z M114 128 q7 -4 11 1 q-2 6 -8 5 q-5 -1 -3 -6z',
+      d: 'M43 98 q8 -6 14 1 q3 8 -5 11 q-6 1 -10 -3 M34 126 q8 -5 13 1 q-2 7 -10 6 q-5 -1 -3 -7z M70 134 q7 -3 11 2 q-3 6 -9 4 q-4 -2 -2 -6z M114 128 q7 -4 11 1 q-2 6 -8 5 q-5 -1 -3 -6z',
       role: 'soft',
     },
     { d: 'M48 84 l6 -5 M46 98 l7 -6', role: 'ambient' },
@@ -334,20 +334,23 @@ export const eggheadArt = {
     { d: dots([[126, 38]]), role: 'accent' },
     shadow(80, 188, 52),
   ],
-  // A queen's crown, its straight prongs flaring out as in her silhouette at
-  // 1118, resting on her cape folded double.
+  // A queen's crown in three-quarters, its straight prongs fanning out as
+  // in her silhouette at 1118: the band with its thickness, three prongs in
+  // front and two behind, the band's ends hatched where they turn away.
   'nefertari-lili': [
     {
-      d: 'M44 118 Q80 130 116 118 V127 Q80 139 44 127 Z M47.2 120 L36 93.6 L41.5 91.4 L52.8 120 M62 123 L56.1 90.9 L62.1 89.8 L68 124 M77 124.5 L77 89 L83 89 L83 124.5 M92 124 L97.9 89.8 L103.9 90.9 L98 123 M107.2 120 L118.5 91.4 L124 93.6 L112.8 120',
+      d: 'M58.9 131.4 L52 92 L58.9 91.2 L65.8 130.6 M94.2 130.6 L101.1 91.2 L108 92 L101.1 131.4',
       role: 'accent',
     },
-    { d: 'M44 118 Q80 108 116 118', role: 'soft' },
+    { d: ellipse(80, 140, 42, 10) },
+    { d: ellipse(80, 140, 37, 7.5), role: 'soft' },
+    { d: 'M38 140 V150 A42 10 0 0 0 122 150 V140' },
     {
-      d: 'M44 131 H34 Q16 131 16 146 Q16 161 34 161 H140 Q147 154 141 146 Q147 138 140 131 H116',
+      d: 'M50.7 147.2 L32 100.8 L38.5 102 L57.2 148.4 M76.5 150 L76.5 96 L83.5 96 L83.5 150 M102.8 148.4 L121.5 102 L128 100.8 L109.3 147.2',
+      role: 'accent',
     },
-    { d: 'M24 146 H141', role: 'soft' },
-    { d: 'M28 158 l6 -6 M42 158 l6 -6 M30 143 l6 -6', role: 'ambient' },
-    shadow(80, 184, 64),
+    { d: 'M41 152 l5 -5 M113 156 l6 -6 M116 148 l5 -5', role: 'ambient' },
+    shadow(80, 182, 50),
   ],
   // A straight sword standing point down, its guard a ring of gold, and a
   // pair of round glasses left at its foot.
