@@ -8,7 +8,25 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Stroke } from './stroke'
+
+/**
+ * One of Scopper Gaban's axes, the haft upright through the origin and the
+ * single-edged head at the top, its bit facing right. The drawing crosses
+ * two of them, the second mirrored.
+ */
+const GABAN_AXE: Stroke[] = [
+  { d: 'M-3 -78 H3 M-3 -78 V76 M3 -78 V76 M-3 76 Q0 82 3 76' },
+  {
+    d: 'M5 -72 H-6 V-54 H5 M-6 -70 h-8 v12 h8 M5 -70 L16 -68 Q22 -80 30 -86 M5 -56 L16 -58 Q22 -46 30 -40',
+  },
+  { d: 'M30 -86 Q44 -63 30 -40', role: 'accent' },
+  { d: 'M25 -78 Q35 -63 25 -48', role: 'soft' },
+  { d: 'M12 -64 l6 -6 M12 -58 l10 -10 M16 -56 l8 -8', role: 'ambient' },
+]
+
+/** The tilt Sommers's sword and Ragnir are both drawn at. */
+const TILT = 'rotate(-24 80 100)'
 
 /** The drawings of the records filed in the elbaf stretch of the route. */
 export const elbafArt = {
@@ -87,17 +105,42 @@ export const elbafArt = {
     shadow(80, 178, 40),
   ],
 
-  // A thick root, a broken shackle and its chain still hanging from it.
+  // The foot of the colossal tree he is bound to in the Underworld, two
+  // turns of heavy chain wound round its trunk, and the drum-shaped cuff
+  // they run down to lying at its foot, every link still whole (1160).
   'loki': [
-    { d: 'M30 20 C40 70 56 110 50 190 M110 20 C100 70 92 110 104 190' },
-    { d: 'M50 110 C66 104 82 104 98 110', role: 'soft' },
-    { d: ellipse(76, 124, 30, 10), role: 'accent' },
+    { d: 'M30 -4 C34 50 34 104 24 128 C18 140 6 148 -4 150' },
+    { d: 'M130 -4 C126 50 126 104 136 128 C142 140 154 148 164 150' },
     {
-      d: [circle(72, 146, 5), circle(66, 158, 5), circle(62, 170, 5)].join(' '),
+      d: 'M50 4 C52 18 50 26 52 36 M106 2 C104 18 106 30 104 42 M54 64 C56 72 54 80 56 88',
+      role: 'soft',
+    },
+    {
+      d: 'M121 18 l7 -4 M121 30 l7 -4 M121 72 l7 -4 M122 132 l8 -4',
+      role: 'ambient',
+    },
+    {
+      d: 'M32.3 30.5 A6 3.4 44.1 1 0 40.9 38.8 A6 3.4 44.1 1 0 32.3 30.5 M41.2 39.1 L50.5 46.7 M50.3 46.5 A6 3.4 33.8 1 0 60.2 53.2 A6 3.4 33.8 1 0 50.3 46.5 M59.4 52.7 L70 58.3 M68.6 57.7 A6 3.4 20.9 1 0 79.8 62 A6 3.4 20.9 1 0 68.6 57.7 M78 61.4 L89.6 64.3 M87.5 63.9 A6 3.4 6 1 0 99.5 65.1 A6 3.4 6 1 0 87.5 63.9 M97.3 65.1 L109.2 64.7 M107.2 64.9 A6 3.4 -9.3 1 0 119 62.9 A6 3.4 -9.3 1 0 107.2 64.9 M117.3 63.3 L128.8 59.9',
       role: 'accent',
     },
-    { d: 'M104 118 l10 -6 M106 128 l12 2', role: 'ambient' },
-    { d: 'M40 60 q8 6 4 16 M100 70 q-8 6 -4 16', role: 'soft' },
+    {
+      d: 'M32.3 82.5 A6 3.4 44.1 1 0 40.9 90.8 A6 3.4 44.1 1 0 32.3 82.5 M41.2 91.1 L50.5 98.7 M50.3 98.5 A6 3.4 33.8 1 0 60.2 105.2 A6 3.4 33.8 1 0 50.3 98.5 M59.4 104.7 L70 110.3 M68.6 109.7 A6 3.4 20.9 1 0 79.8 114 A6 3.4 20.9 1 0 68.6 109.7 M78 113.4 L89.6 116.3 M87.5 115.9 A6 3.4 6 1 0 99.5 117.1 A6 3.4 6 1 0 87.5 115.9 M97.3 117.1 L109.2 116.7 M107.2 116.9 A6 3.4 -9.3 1 0 119 114.9 A6 3.4 -9.3 1 0 107.2 116.9 M117.3 115.3 L128.8 111.9',
+      role: 'accent',
+    },
+    {
+      d: 'M106.7 116 A6 3.4 56.3 1 0 113.3 126 A6 3.4 56.3 1 0 106.7 116 M110.7 122 L117.3 132',
+      role: 'accent',
+    },
+    { d: 'M104 134 H132 M104 158 H132 M132 134 a6 12 0 0 1 0 24' },
+    { d: ellipse(104, 146, 6, 12) },
+    { d: 'M110 134 a6 12 0 0 1 0 24 M126 134 a6 12 0 0 1 0 24', role: 'soft' },
+    { d: 'M114.5 134 v-3 a3 3 0 0 1 6 0 v3', role: 'accent' },
+    { d: 'M114 150 l4 -4 M120 152 l6 -6 M126 154 l5 -5', role: 'ambient' },
+    {
+      d: 'M-4 150 H20 M140 150 H164 M40 150 H96',
+      role: 'ambient',
+      dashed: true,
+    },
   ],
 
   // A cauldron over a fire, a ladle as long as an oar across its rim.
@@ -190,14 +233,28 @@ export const elbafArt = {
     shadow(80, 172, 60),
   ],
 
-  // A drawn bow, its arrow solid enough to throw a shadow.
+  // One of the bandage-like strips she cuts the castle guards down with,
+  // spiralling up off the ground and ending in an arrowhead (1165).
   'manmayer-gunko': [
-    { d: 'M50 30 C100 60 100 140 50 170' },
-    { d: 'M50 30 L50 170', role: 'soft' },
-    { d: 'M30 100 H140', role: 'accent' },
-    { d: 'M140 100 l-12 -8 M140 100 l-12 8', role: 'accent' },
-    { d: 'M30 100 l-8 -6 M36 100 l-8 -6 M30 100 l-8 6 M36 100 l-8 6' },
-    shadow(80, 184, 50),
+    {
+      d: 'M80 168 C84 166.8 98.4 163.8 104 160.5 C109.7 157.3 112.3 150.5 114 148.5 M80 177 C84 175.8 98.4 172.8 104 169.5 C109.7 166.3 112.3 159.5 114 157.5 M46 131.5 C47.7 132.1 50.3 134.6 56 135 C61.6 135.4 72 135.4 80 134 C88 132.6 98.4 129.8 104 126.5 C109.7 123.3 112.3 116.5 114 114.5 M46 140.5 C47.7 141.1 50.3 143.6 56 144 C61.6 144.4 72 144.4 80 143 C88 141.6 98.4 138.8 104 135.5 C109.7 132.3 112.3 125.5 114 123.5 M46 97.5 C47.7 98.1 50.3 100.6 56 101 C61.6 101.4 76 100.2 80 100 M46 106.5 C47.7 107.1 50.3 109.6 56 110 C61.6 110.4 76 109.2 80 109',
+    },
+    {
+      d: 'M114 148.5 C112.3 146.5 109.7 139.7 104 136.5 C98.4 133.2 88 130.4 80 129 C72 127.6 61.6 127.6 56 128 C50.3 128.4 47.7 130.9 46 131.5 M114 157.5 C112.3 155.5 109.7 148.7 104 145.5 C98.4 142.2 88 139.4 80 138 C72 136.6 61.6 136.6 56 137 C50.3 137.4 47.7 139.9 46 140.5 M114 114.5 C112.3 112.5 109.7 105.7 104 102.5 C98.4 99.2 88 96.4 80 95 C72 93.6 61.6 93.6 56 94 C50.3 94.4 47.7 96.9 46 97.5 M114 123.5 C112.3 121.5 109.7 114.7 104 111.5 C98.4 108.2 88 105.4 80 104 C72 102.6 61.6 102.6 56 103 C50.3 103.4 47.7 105.9 46 106.5',
+      role: 'soft',
+    },
+    {
+      d: 'M109.4 141.7 L109.4 147.7 M97 134.8 L97 140.8 M80 130.5 L80 136.5 M63 129.1 L63 135.1 M50.6 130.3 L50.6 136.3 M109.4 107.7 L109.4 113.7 M97 100.8 L97 106.8 M80 96.5 L80 102.5 M63 95.1 L63 101.1 M50.6 96.3 L50.6 102.3',
+      role: 'ambient',
+    },
+    { d: 'M80 168 C66 170 52 176 38 177 M80 177 C68 180 54 185 40 186' },
+    {
+      d: 'M38 177 l-3 2 l4 2 l-4 2 l5 3 M36 181 l-8 1 M37 184 l-7 4',
+      role: 'soft',
+    },
+    { d: 'M80 100 C100 99 114 88 117 64 M80 109 C106 108 126 92 127 64' },
+    { d: 'M106 68 L122 34 L138 68 L122 60 Z', role: 'accent' },
+    shadow(96, 190, 26),
   ],
 
   // An empty throne, a portrait in a heavy frame on the wall behind it.
@@ -234,29 +291,39 @@ export const elbafArt = {
     shadow(80, 188, 30),
   ],
 
-  // A double-bladed axe standing on a mountain it has bitten into.
+  // His two single-edged axes crossed, the dark cheeks of their heads
+  // hatched and the cutting edges bright. He throws one at a door the first
+  // time the crew meets him (1169).
   'scopper-gaban': [
-    { d: 'M-4 170 L40 110 L60 130 L96 84 L130 128 L164 100' },
-    { d: 'M96 84 q-10 -6 -6 -14 M96 84 q10 -4 8 -12', role: 'soft' },
-    { d: 'M80 20 V112' },
-    { d: 'M80 34 C58 26 46 40 50 58 C60 52 70 52 80 58 Z', role: 'accent' },
-    { d: 'M80 34 C102 26 114 40 110 58 C100 52 90 52 80 58 Z', role: 'accent' },
-    shadow(80, 186, 60),
+    ...GABAN_AXE.map((stroke) => ({
+      // The right axe, its haft leaning right.
+      ...stroke,
+      transform: 'translate(80 104) rotate(28)',
+    })),
+    ...GABAN_AXE.map((stroke) => ({
+      // The left axe is the right one mirrored.
+      ...stroke,
+      transform: 'translate(80 104) scale(-1 1) rotate(28)',
+    })),
+    shadow(80, 186, 50),
   ],
 
-  // A vine of thorns wound tight around a staff, nothing else touching it.
+  // The sword he keeps at his side, sheathed and tilted, its guard a disc
+  // ringed with thorns. He wears it once he has dressed after the summons
+  // (1170).
   'shepherd-sommers': [
-    { d: 'M80 20 V180' },
+    { d: 'M75 90 V176 Q80 186 85 176 V90', transform: TILT },
+    { d: 'M80 96 V176', role: 'soft', transform: TILT },
+    { d: ellipse(80, 80, 18, 6), transform: TILT },
+    { d: 'M62 80 v4 a18 6 0 0 0 36 0 v-4', transform: TILT },
     {
-      d: 'M80 30 C110 44 50 60 80 74 C110 88 50 104 80 118 C110 132 50 148 80 162',
+      d: 'M97 78.7 L104.5 81.2 L98.7 82.8 M98.8 83.7 L101.6 86.6 L96.1 87.2 M96.2 86.8 L92.9 96.9 L92.2 88.6 M88 89.4 L87.9 94.5 L83.7 89.9 M77.8 90 L71.6 96.5 L73.5 89.6 M70.3 89.1 L69 92.9 L66.1 87.9 M64.3 87.4 L56.7 88 L61.3 84.1 M61.3 81.6 L57 79 L64.1 78.3',
       role: 'accent',
+      transform: TILT,
     },
-    {
-      d: 'M96 44 l8 -4 M62 60 l-8 -2 M98 88 l8 -2 M62 104 l-8 -4 M98 132 l8 -2 M62 148 l-8 -2',
-      role: 'accent',
-    },
-    { d: 'M66 20 H94', role: 'soft' },
-    shadow(80, 186, 30),
+    { d: 'M76.5 80 V40 M83.5 80 V40', transform: TILT },
+    { d: ellipse(80, 34, 6, 6), transform: TILT },
+    shadow(80, 188, 34),
   ],
 
   // A single ridged horn over a bank of cloud, the moon it sleeps under.
@@ -271,14 +338,27 @@ export const elbafArt = {
     { d: star(34, 44, 6, 2.5), role: 'ambient' },
   ],
 
-  // A warhammer with a lightning bolt breaking out of its head.
+  // Loki's warhammer: a rectangular sledge head in 3/4 with its far end
+  // hatched, the raised plate the haft juts from, and the long haft wrapped
+  // in bandages. It lies behind the chained prince from the first time Luffy
+  // finds him, and is named when he takes hold of it (1171).
   'ragnir': [
-    { d: 'M78 90 V180 M88 90 V180' },
-    { d: 'M40 50 H126 V94 H40 Z' },
-    { d: 'M40 62 H126 M40 82 H126', role: 'soft' },
-    { d: 'M100 16 L84 40 H98 L80 64', role: 'accent' },
-    { d: 'M72 180 h22', role: 'accent' },
-    shadow(83, 190, 20),
+    { d: 'M36 30 H112 V78 H36 Z', transform: TILT },
+    { d: 'M36 30 L48 20 H124 L112 30 M124 20 V68 L112 78', transform: TILT },
+    {
+      d: 'M114 38 l8 -6 M114 50 l8 -6 M114 62 l8 -6 M114 74 l8 -6',
+      role: 'ambient',
+      transform: TILT,
+    },
+    { d: 'M50 40 H98 V68 H50 Z', role: 'soft', transform: TILT },
+    { d: 'M64 78 V88 H84 V78', role: 'accent', transform: TILT },
+    { d: 'M70 88 V184 M78 88 V184 M70 184 H78', transform: TILT },
+    {
+      d: 'M70 104 l8 -5 M70 114 l8 -5 M70 124 l8 -5 M70 134 l8 -5 M70 144 l8 -5 M70 154 l8 -5 M70 164 l8 -5 M70 174 l8 -5',
+      role: 'soft',
+      transform: TILT,
+    },
+    shadow(80, 190, 36),
   ],
 
   // A walrus tusk laid across a school bell.
