@@ -132,7 +132,7 @@ export const eggheadArt = {
     { d: 'M96 64 a6 6 0 0 1 9 4', role: 'soft' },
     { d: 'M52 82 a11 11 0 0 1 18 -14' },
     {
-      d: 'M43 98 q8 -6 14 1 q3 8 -5 11 q-6 1 -10 -3 M34 126 q8 -5 13 1 q-2 7 -10 6 q-5 -1 -3 -7z M70 134 q7 -3 11 2 q-3 6 -9 4 q-4 -2 -2 -6z M114 128 q7 -4 11 1 q-2 6 -8 5 q-5 -1 -3 -6z',
+      d: 'M43 98 q8 -6 14 1 q3 8 -5 11 q-6 1 -10 -3 M34 126 q8 -5 13 1 q-2 7 -10 6 q-5 -1 -3 -7z M88 136 q7 -3 11 2 q-3 6 -9 4 q-4 -2 -2 -6z M114 128 q7 -4 11 1 q-2 6 -8 5 q-5 -1 -3 -6z',
       role: 'soft',
     },
     { d: 'M48 84 l6 -5 M46 98 l7 -6', role: 'ambient' },
@@ -334,23 +334,34 @@ export const eggheadArt = {
     { d: dots([[126, 38]]), role: 'accent' },
     shadow(80, 188, 52),
   ],
-  // A queen's crown in three-quarters, its straight prongs fanning out as
-  // in her silhouette at 1118: the band with its thickness, three prongs in
-  // front and two behind, the band's ends hatched where they turn away.
+  // A queen's crown in three-quarters, its straight upright points fanning
+  // out as in her silhouette at 1118: the band seen from the front with a
+  // ridge and one set stone, the back of the band between the points, and
+  // the band's ends hatched where they turn away.
   'nefertari-lili': [
+    { d: 'M32 128 Q80 160 128 128 V148 Q80 180 32 148 Z' },
+    { d: 'M32 138 Q80 170 128 138', role: 'soft' },
+    { d: 'M80 149 L85 154 L80 159 L75 154 Z', role: 'soft' },
     {
-      d: 'M58.9 131.4 L52 92 L58.9 91.2 L65.8 130.6 M94.2 130.6 L101.1 91.2 L108 92 L101.1 131.4',
+      d: 'M44 125.8 Q49 125 54 124.5 M66 123.4 Q70.5 123.2 75 123.1 M85 123.1 Q89.5 123.2 94 123.4 M106 124.5 Q111 125 116 125.8',
+      role: 'soft',
+    },
+    { d: 'M34 129.3 L28 105 L29.8 98.8 L36 109.7 L42 134', role: 'accent' },
+    {
+      d: 'M55 139.7 L51.6 106.8 L54.6 99.2 L59.6 109.2 L63 142',
       role: 'accent',
     },
-    { d: ellipse(80, 140, 42, 10) },
-    { d: ellipse(80, 140, 37, 7.5), role: 'soft' },
-    { d: 'M38 140 V150 A42 10 0 0 0 122 150 V140' },
+    { d: 'M76 143.9 L76 104.9 L80 96 L84 104.9 L84 143.9', role: 'accent' },
     {
-      d: 'M50.7 147.2 L32 100.8 L38.5 102 L57.2 148.4 M76.5 150 L76.5 96 L83.5 96 L83.5 150 M102.8 148.4 L121.5 102 L128 100.8 L109.3 147.2',
+      d: 'M97 142 L100.4 109.2 L105.4 99.2 L108.4 106.8 L105 139.7',
       role: 'accent',
     },
-    { d: 'M41 152 l5 -5 M113 156 l6 -6 M116 148 l5 -5', role: 'ambient' },
-    shadow(80, 182, 50),
+    {
+      d: 'M118 134 L124 109.7 L130.2 98.8 L132 105 L126 129.3',
+      role: 'accent',
+    },
+    { d: 'M35 147 l6 -6 M35 139 l5 -5 M118 151 l7 -7', role: 'ambient' },
+    shadow(80, 182, 54),
   ],
   // A straight sword standing point down, its guard a ring of gold, and a
   // pair of round glasses left at its foot.
