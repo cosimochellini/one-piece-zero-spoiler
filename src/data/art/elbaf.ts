@@ -65,11 +65,10 @@ const SWORD_POINT_HALF =
   'translate(80 96) scale(1.15) translate(-110 -100) rotate(-4 120 150)'
 
 /**
- * How far Goldberg's mace and Stansen's hammer lean; Killingham's trident
- * and Kiba's hammer share the last one.
+ * How far Goldberg's mace leans; Killingham's trident and Kiba's hammer
+ * share the second one.
  */
 const MACE_TILT = 'rotate(26 80 110)'
-const HAMMER_TILT = 'rotate(20 80 110)'
 const LEAN = 'rotate(14 80 110)'
 
 /** The tilt Sommers's sword and Ragnir are both drawn at. */
@@ -160,64 +159,64 @@ export const elbafArt = {
     shadow(70, 180, 60),
   ],
 
-  // The colossal tree seen from the sea, its trunk running out of the top
-  // into cloud, two of its leafy tiers on thick branches with their
-  // undersides hatched, and water falling from them into the sea, as the
-  // island is first shown whole (1160).
+  // The colossal tree seen from the sea, its trunk rising off the island and
+  // splitting into limbs that run out of the top into cloud, the crown out
+  // of sight. Elbaph is first shown in Big Mom's flashback (836) and named
+  // when the crew learns where it is (1160).
   'elbaf-island': [
     { d: 'M8 152 C40 144 120 144 152 152' },
     {
-      d: 'M52 149 C60 132 61 84 62 56 M108 149 C100 132 99 84 98 56 M52 149 C46 147 38 149 28 152 M108 149 C114 147 122 149 132 152 M63 32 V-4 M97 32 V-4',
+      d: 'M54 149 C60 130 62 100 62 72 M106 149 C100 130 98 100 98 72 M54 149 C48 147 40 149 30 152 M106 149 C112 147 120 149 130 152',
     },
-    { d: 'M61 96 L38 80 M61 108 L38 88 M99 90 L122 82 M99 100 L122 90' },
     {
-      d: 'M4 78 C-2 68 8 58 18 62 C24 54 38 54 44 60 C54 58 58 66 52 74 C46 84 12 88 4 78 Z M108 84 C104 76 112 66 122 70 C128 62 142 62 148 68 C158 68 162 80 152 84 C140 92 116 92 108 84 Z',
+      d: 'M62 72 C56 54 40 40 28 -4 M98 72 C104 54 120 40 132 -4 M70 66 C70 40 66 20 64 -4 M90 66 C90 40 94 20 96 -4',
       role: 'accent',
     },
     {
-      d: 'M14 86 l8 -6 M24 86 l10 -8 M118 90 l10 -7 M130 90 l10 -7',
-      role: 'ambient',
-    },
-    {
-      d: 'M44 56 q-6 -8 4 -12 q2 -10 14 -8 q6 -8 18 -4 q8 -6 18 2 q12 -2 14 8 q10 2 8 10 q-2 4 -8 4 H48 q-3 0 -4 0',
+      d: 'M4 30 q4 -10 16 -6 q8 -10 20 -2 q6 4 2 10 H8 q-6 0 -4 -2 M108 46 q4 -10 16 -6 q8 -10 20 -2 q8 2 6 8 H112 q-6 0 -4 0 M60 20 q6 -8 16 -4 q8 -6 16 2 q4 6 -2 8 H64 q-8 0 -4 -6',
       role: 'soft',
     },
     {
-      d: 'M72 140 C74 120 72 104 74 92 M88 142 C86 124 90 106 88 92',
+      d: 'M72 140 C74 120 72 104 74 88 M86 142 C84 124 88 106 86 88',
       role: 'soft',
     },
     {
-      d: 'M12 86 C14 108 12 130 14 150 M146 92 C144 112 146 132 144 150',
+      d: 'M100 92 l5 -4 M100 106 l5 -4 M101 120 l5 -4 M102 134 l5 -4',
       role: 'ambient',
-      dashed: true,
     },
     ...SEA,
   ],
 
-  // The land where wars come from, as the crew first sees it on escaping
-  // the diorama (1160): snowy peaks with their shaded faces hatched, the
-  // castle on one of them, and the rope bridge slung from it to the foot of
-  // the colossal tree.
+  // The land where wars come from, as the crew sees it on escaping the
+  // diorama (1160): snowy peaks with their shaded faces hatched, the castle
+  // on the highest one, and the rope bridge climbing from it to the upper
+  // lands, past the foot of the colossal tree.
   'warland': [
-    { d: 'M-4 150 L32 78 M48 78 L62 108 L80 94 L104 130 L132 92 L164 150' },
-    { d: 'M30 80 V58 H50 V80 M35 58 V48 H45 V58 M30 80 H50' },
+    { d: 'M-4 150 L28 92 M60 92 L74 118 L92 100 L112 136 L132 104 L164 150' },
     {
-      d: 'M18 106 q5 6 9 0 q5 6 9 0 M70 102 q4 5 8 0 q4 5 8 2 M120 110 q5 6 9 0 q5 6 10 2',
+      d: 'M26 92 V66 H60 V92 M60 66 L68 61 V86 L60 92 M26 66 L34 61 H68 M34 66 V50 H50 V66',
+    },
+    { d: 'M36 92 v-10 a6 6 0 0 1 12 0 v10', role: 'soft' },
+    {
+      d: 'M14 120 q5 6 9 0 q5 6 9 0 M80 112 q4 5 8 0 q4 5 8 2 M122 120 q5 6 9 0 q5 6 10 2',
       role: 'soft',
     },
-    { d: 'M50 64 Q72 76 94 44 M50 70 Q72 86 94 52', role: 'accent' },
-    { d: 'M60 68 v8 M70 70 v9 M80 66 v9 M88 58 v8', role: 'soft' },
-    { d: 'M95 115 C92 70 92 30 90 -4 M140 106.5 C142 70 142 30 144 -4' },
+    { d: 'M68 64 Q102 50 108 -4 M68 72 Q110 58 116 -4', role: 'accent' },
     {
-      d: 'M104 100 C102 70 104 40 102 10 M118 80 C116 50 120 30 118 4',
+      d: 'M78 61 l3 6 M88 55 l4 6 M96 46 l4 5 M102 34 l5 3 M105 20 l5 2',
+      role: 'soft',
+    },
+    { d: 'M121 121.6 C118 70 118 30 116 -4 M156 138.5 C158 80 158 30 160 -4' },
+    {
+      d: 'M130 110 C128 80 130 50 128 20 M142 100 C140 70 144 40 142 6',
       role: 'soft',
     },
     {
-      d: 'M130 30 l10 -8 M130 46 l10 -8 M130 62 l10 -8 M130 78 l10 -8',
+      d: 'M148 30 l10 -8 M148 46 l10 -8 M148 62 l10 -8 M148 78 l10 -8 M63 76 l3 -2 M63 84 l3 -2',
       role: 'ambient',
     },
     {
-      d: 'M42 98 l-6 10 M50 112 l-8 12 M90 112 l-6 10 M146 118 l-8 12 M154 132 l-8 12',
+      d: 'M40 112 l-6 10 M46 126 l-8 12 M100 118 l-6 10 M144 122 l-8 12 M152 136 l-6 9',
       role: 'ambient',
     },
     { d: 'M-4 152 H164', role: 'ambient', dashed: true },
@@ -261,9 +260,10 @@ export const elbafArt = {
     },
   ],
 
-  // His mace, as long as he is tall, the haft swelling towards a dark head
-  // ringed with spikes. He carries it from the cover story the crew first
-  // appears in (899) and up the bridge (1161).
+  // His mace, as long as he is tall, the haft swelling towards a round head
+  // ringed with spikes, its seams in soft and its far side hatched. He
+  // carries it from the cover story the crew first appears in (899) and up
+  // the bridge (1161).
   'goldberg': [
     { d: circle(80, 50, 26), transform: MACE_TILT },
     {
@@ -272,7 +272,12 @@ export const elbafArt = {
       transform: MACE_TILT,
     },
     {
-      d: 'M60.3 59.8 L89.8 30.3 M64.4 65.6 L95.6 34.4 M70.2 69.7 L99.7 40.2 M77.9 71.9 L101.9 47.9',
+      d: 'M80 24 C64 34 64 66 80 76 M80 24 C98 32 100 66 80 76 M54 50 C64 56 96 56 106 50',
+      role: 'soft',
+      transform: MACE_TILT,
+    },
+    {
+      d: 'M92 70 l10 -10 M96 60 l8 -8 M98 48 l6 -6 M96 38 l4 -4',
       role: 'ambient',
       transform: MACE_TILT,
     },
@@ -289,9 +294,8 @@ export const elbafArt = {
     shadow(80, 186, 44),
   ],
 
-  // One of the colossal tree's branches high above the clouds, its
-  // underside hatched, two longhouses on it with crossed boards at their
-  // gables, a sprig at its tip.
+  // One of the colossal tree's branches, its underside hatched, two
+  // longhouses on it with crossed boards at their gables, a sprig at its tip.
   'sun-world': [
     {
       d: 'M-4 116 C40 112 100 104 148 92 M-4 162 C40 152 100 134 148 108 M148 92 C158 90 160 102 148 108',
@@ -318,10 +322,6 @@ export const elbafArt = {
     {
       d: 'M30 76 L21 66 M30 76 L39 66 M96 78 L89 70 M96 78 L103 70',
       role: 'accent',
-    },
-    {
-      d: 'M80 178 q4 -10 14 -6 q6 -8 16 -2 q10 -2 12 6 q6 2 4 8 H84 q-6 0 -4 -6 M14 190 q4 -8 12 -4 q8 -6 14 2 q6 0 4 6 H18 q-6 0 -4 -4',
-      role: 'soft',
     },
   ],
 
@@ -355,29 +355,16 @@ export const elbafArt = {
     shadow(76, 182, 58),
   ],
 
-  // His giant hammer, the head a barrel-shaped drum in 3/4 bound with iron
-  // hoops near both ends, its underside hatched. He holds it on the cover
-  // that makes him the crew's shipwright (897).
+  // The ribs of a hull on the slip, a mallet resting against them.
   'stansen': [
-    { d: ellipse(40, 54, 9, 24), transform: HAMMER_TILT },
-    { d: 'M40 30 H116 a9 24 0 0 1 0 48 H40', transform: HAMMER_TILT },
+    { d: 'M20 140 H140' },
     {
-      d: 'M52 30.2 a9 24 0 0 1 0 47.6 M60 30.2 a9 24 0 0 1 0 47.6 M100 30.2 a9 24 0 0 1 0 47.6 M108 30.2 a9 24 0 0 1 0 47.6',
-      role: 'accent',
-      transform: HAMMER_TILT,
+      d: 'M36 140 C30 110 36 90 48 80 M60 140 C56 104 60 84 68 72 M92 140 C96 104 92 84 84 72 M124 140 C130 110 124 90 112 80',
     },
-    { d: 'M36 40 Q34 54 36 68', role: 'soft', transform: HAMMER_TILT },
-    {
-      d: 'M68 70 l6 -6 M78 72 l6 -6 M88 72 l6 -6 M120 66 l4 -6 M120 74 l3 -3',
-      role: 'ambient',
-      transform: HAMMER_TILT,
-    },
-    {
-      d: 'M75 78 V182 M85 78 V182 M75 182 Q80 188 85 182',
-      transform: HAMMER_TILT,
-    },
-    { d: 'M80 90 C81 120 79 150 80 176', role: 'soft', transform: HAMMER_TILT },
-    shadow(80, 188, 40),
+    { d: 'M48 80 C70 64 90 64 112 80', role: 'soft' },
+    { d: 'M120 60 L100 132', role: 'accent' },
+    { d: 'M108 48 L134 56 L128 76 L102 68 Z', role: 'accent' },
+    shadow(80, 154, 64),
   ],
 
   // His wooden sword snapped in two, the hilt half falling and the point
