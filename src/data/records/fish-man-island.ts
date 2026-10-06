@@ -189,8 +189,8 @@ export const fishManIsland: Saga = {
       // is first seen at 530 (ch. 611). The trident comes at 535 (ch. 616).
       name: { it: 'Hody Jones', en: 'Hody Jones' },
       summary: {
-        it: 'Un uomo-pesce squalo con un berretto rosa e una sciarpa di pelliccia bianca, capitano dei Nuovi Pirati Uomini-Pesce, che vuole strappare l’Isola degli Uomini-Pesce a Nettuno e dimostrare agli umani che gli uomini-pesce sono la razza superiore.',
-        en: 'A shark fish-man in a pink cap and a white fur scarf, captain of the New Fish-Man Pirates, who means to take Fish-Man Island from Neptune and show the humans that fish-men are the supreme race.',
+        it: 'Un uomo-pesce squalo con un berretto rosa e una grande sciarpa bianca, capitano dei Nuovi Pirati Uomini-Pesce, che vuole strappare l’Isola degli Uomini-Pesce a Nettuno e dimostrare agli umani che gli uomini-pesce sono la razza superiore.',
+        en: 'A shark fish-man in a pink cap and a big white scarf, captain of the New Fish-Man Pirates, who means to take Fish-Man Island from Neptune and show the humans that fish-men are the supreme race.',
       },
       visual: { art: 'hody-jones', tint: 'teal' },
     },
