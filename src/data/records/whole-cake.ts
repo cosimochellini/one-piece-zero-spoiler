@@ -158,11 +158,11 @@ export const wholeCake: Saga = {
       id: 'vinsmoke-reiju',
       kind: 'character',
       revealedAtEpisode: 784,
-      revealedAtChapter: 829,
+      revealedAtChapter: 826,
       name: { it: 'Vinsmoke Reiju', en: 'Vinsmoke Reiju' },
       summary: {
-        it: 'Una donna dai capelli rosa in mantello, scesa da una nave del Germa 66, che con un calcio butta giù dalla nave il proprio fratello perché si rifiuta di aiutare un moribondo.',
-        en: 'A pink-haired woman in a cape, off a Germa 66 ship, who kicks her own brother off his ship for refusing to help a dying man.',
+        it: 'Una donna dai capelli rosa in mantello, scesa da una nave del Germa 66, che con un calcio butta giù dalla nave il fratello Yonji perché si rifiuta di aiutare un moribondo.',
+        en: 'A pink-haired woman in a cape, off a Germa 66 ship, who kicks her brother Yonji off his ship for refusing to help a dying man.',
       },
       visual: { art: 'vinsmoke-reiju', tint: 'pink' },
     },
@@ -313,12 +313,12 @@ export const wholeCake: Saga = {
     {
       id: 'vinsmoke-yonji',
       kind: 'character',
-      revealedAtEpisode: 795,
-      revealedAtChapter: 839,
+      revealedAtEpisode: 784,
+      revealedAtChapter: 826,
       name: { it: 'Vinsmoke Yonji', en: 'Vinsmoke Yonji' },
       summary: {
-        it: 'Il più giovane dei fratelli Vinsmoke, in tuta verde, con le braccia che si aprono come argani e la faccia di chi cerca rissa.',
-        en: 'The youngest Vinsmoke brother, in a green suit, arms that open into winches and the face of someone looking for a fight.',
+        it: 'Un uomo identico a Sanji, sopracciglia arricciate comprese, su una nave del Germa 66, che nega ai Cappello di Paglia un antidoto per Rufy e li sfida a prenderselo con la forza.',
+        en: 'A man who looks just like Sanji, curled eyebrows and all, on a Germa 66 ship, who refuses the Straw Hats an antidote for Luffy and dares them to take it by force.',
       },
       visual: { art: 'vinsmoke-yonji', tint: 'green' },
     },
@@ -349,8 +349,8 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-chiffon',
       kind: 'character',
-      revealedAtEpisode: 808,
-      revealedAtChapter: 849,
+      revealedAtEpisode: 795,
+      revealedAtChapter: 834,
       name: { it: 'Charlotte Chiffon', en: 'Charlotte Chiffon' },
       summary: {
         it: 'Una figlia di Big Mom sposata al capo dei Fire Tank, con un figlio piccolo e un carattere che fa paura anche agli uomini del marito.',
@@ -1030,21 +1030,31 @@ export const wholeCake: Saga = {
         en: 'Daughter of the Vinsmoke family',
       },
       log: {
-        it: 'È su una nave del Germa 66 al confine delle acque di Big Mom, e i soldati a bordo la chiamano lady Reiju. Quando il fratello minore nega ai Cappello di Paglia un antidoto per Rufy, avvelenato dalla pelle di un pesce, lei lo butta giù dalla nave con un calcio e gli dice di smetterla di fare il tirchio. Poi salta sulla Sunny e chiede scusa per lui.',
-        en: 'She is on a Germa 66 ship at the edge of Big Mom’s waters, and the soldiers on board call her Lady Reiju. When her younger brother refuses the Straw Hats an antidote for Luffy, poisoned by the skin of a fish, she kicks him off the ship and tells him to stop being so stingy. Then she jumps down onto the Sunny and apologises for him.',
+        it: 'È su una nave del Germa 66 al confine delle acque di Big Mom, e i soldati a bordo la chiamano lady Reiju. Quando il fratello minore Yonji nega ai Cappello di Paglia un antidoto per Rufy, avvelenato dalla pelle di un pesce, lei lo butta giù dalla nave con un calcio e gli dice di smetterla di fare il tirchio. Poi salta sulla Sunny e chiede scusa per lui.',
+        en: 'She is on a Germa 66 ship at the edge of Big Mom’s waters, and the soldiers on board call her Lady Reiju. When her younger brother Yonji refuses the Straw Hats an antidote for Luffy, poisoned by the skin of a fish, she kicks him off the ship and tells him to stop being so stingy. Then she jumps down onto the Sunny and apologises for him.',
       },
       // Named at 784 ("Oh, Reiju-sama!" as she leaps), but the poison, the
       // "Poison Pink" caption and Germa as a kingdom of the North Blue are 785.
+      // Chapter 826 tells both episodes.
       affiliation: [
-        { episode: 784, value: { it: 'Germa 66', en: 'Germa 66' } },
+        {
+          episode: 784,
+          chapter: 826,
+          value: { it: 'Germa 66', en: 'Germa 66' },
+        },
         {
           episode: 785,
+          chapter: 826,
           value: { it: 'Germa 66, Poison Pink', en: 'Germa 66, Poison Pink' },
         },
       ],
-      origin: [{ episode: 785, value: GERMA_KINGDOM }],
+      origin: [{ episode: 785, chapter: 826, value: GERMA_KINGDOM }],
       epithet: [
-        { episode: 785, value: { it: 'Poison Pink', en: 'Poison Pink' } },
+        {
+          episode: 785,
+          chapter: 826,
+          value: { it: 'Poison Pink', en: 'Poison Pink' },
+        },
       ],
     },
     'vito': {
@@ -1288,20 +1298,30 @@ export const wholeCake: Saga = {
       ],
     },
     'vinsmoke-yonji': {
-      role: GERMA_PRINCE,
-      log: {
-        it: 'È l’ultimo dei quattro fratelli e il più sbrigativo: risolve tutto spingendo, e le braccia della sua tuta si aprono in ganci che sollevano quello che nessun altro sposterebbe. Provoca per primo e incassa senza cambiare espressione, perché sotto la pelle ha qualcosa che il dolore non raggiunge. Con il cuoco tornato in famiglia va d’accordo pochissimo.',
-        en: 'He is the last of the four brothers and the most direct: he settles things by shoving, and the arms of his suit open into hooks that lift what nobody else would move. He starts the provocation and takes a hit without changing expression, because under the skin there is something pain does not reach. He gets on very badly indeed with the cook who has come back to the family.',
+      role: {
+        it: 'Figlio della famiglia Vinsmoke',
+        en: 'Son of the Vinsmoke family',
       },
+      log: {
+        it: 'È su una nave del Germa 66 al confine delle acque di Big Mom, e i soldati a bordo lo chiamano lord Yonji. I Cappello di Paglia lo scambiano per Sanji finché non dice il suo nome, e quello che è per Sanji, dice, è un segreto. Nami gli piace al primo sguardo, ma quando gli chiedono un antidoto per Rufy avvelenato risponde che salvare la gente non gli interessa, e chiede se vogliono prenderselo con la forza, da pirati. Per questo la sorella Reiju lo butta giù dalla nave con un calcio.',
+        en: 'He is on a Germa 66 ship at the edge of Big Mom’s waters, and the soldiers on board call him Lord Yonji. The Straw Hats take him for Sanji until he gives his name, and what he is to Sanji, he says, is a secret. He is smitten with Nami at first sight, but when they beg him for an antidote for the poisoned Luffy he says he has no interest in saving people, and asks whether they mean to take it by force, like pirates. His sister Reiju kicks him off the ship for it.',
+      },
+      // Named and captioned at 784; Germa as a kingdom of the North Blue is
+      // 785. Chapter 826 tells both episodes.
       affiliation: [
         {
-          episode: 795,
+          episode: 784,
+          chapter: 826,
           value: { it: 'Germa 66, Winch Green', en: 'Germa 66, Winch Green' },
         },
       ],
-      origin: [{ episode: 795, value: GERMA_KINGDOM }],
+      origin: [{ episode: 785, chapter: 826, value: GERMA_KINGDOM }],
       epithet: [
-        { episode: 795, value: { it: 'Winch Green', en: 'Winch Green' } },
+        {
+          episode: 784,
+          chapter: 826,
+          value: { it: 'Winch Green', en: 'Winch Green' },
+        },
       ],
     },
     'charlotte-katakuri': {
@@ -1338,19 +1358,22 @@ export const wholeCake: Saga = {
     'charlotte-chiffon': {
       role: { it: 'Moglie di Capone Bege', en: 'Capone Bege’s wife' },
       log: {
-        it: 'È la ventiduesima figlia della famiglia Charlotte e la moglie di Capone Bege, e ha un figlio piccolo che ride quando il padre gli fa le smorfie. Quando uno degli uomini del marito punta un’arma contro Sanji, lei lo trascina fuori per un orecchio: se lo sposo si fa male, Big Mom farà saltare la testa di Bege. Somiglia moltissimo a Lola, e Pound, che le chiama entrambe sue figlie, vuole vederla per congratularsi del matrimonio.',
-        en: 'She is the 22nd daughter of the Charlotte family and Capone Bege’s wife, with a small son who laughs when his father pulls faces at him. When one of her husband’s men aims a gun at Sanji, she drags him out by the ear: if the groom is harmed, Big Mom will have Bege’s head. She looks a great deal like Lola, and Pound, who calls them both his daughters, wants to see her to congratulate her on her marriage.',
+        it: 'È la ventiduesima figlia della famiglia Charlotte e la moglie di Capone Bege, e ha un figlio piccolo che ride quando il padre gli fa le smorfie. Quando uno degli uomini del marito punta un’arma contro Sanji, lei lo trascina fuori per un orecchio: se lo sposo si fa male, Big Mom farà saltare la testa di Bege.',
+        en: 'She is the 22nd daughter of the Charlotte family and Capone Bege’s wife, with a small son who laughs when his father pulls faces at him. When one of her husband’s men aims a gun at Sanji, she drags him out by the ear: if the groom is harmed, Big Mom will have Bege’s head.',
       },
+      // Named and captioned at 795 (chapter 834); the likeness to Lola and
+      // Pound's wish to see her are 797.
       affiliation: [
         {
-          episode: 808,
+          episode: 795,
+          chapter: 834,
           value: {
             it: 'Pirati Fire Tank, moglie di Bege; figlia di Big Mom',
             en: 'Fire Tank Pirates, Bege’s wife; Big Mom’s daughter',
           },
         },
       ],
-      origin: [{ episode: 808, value: TOTTO_LAND }],
+      origin: [{ episode: 795, chapter: 834, value: TOTTO_LAND }],
     },
     'charlotte-smoothie': {
       role: SWEET_COMMANDER_ROLE,

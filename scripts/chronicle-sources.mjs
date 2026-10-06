@@ -448,7 +448,7 @@ export const CHRONICLE_SOURCES = {
     },
     794: {
       source: 'https://onepiece.fandom.com/wiki/Episode_794',
-      note: 'Judge defeats Sanji in their duel and Reiju treats his wounds within this same episode; 793 only covers the challenge/buildup. Ichiji/Niji/Yonji are not named since their own threshold (795) is one episode later — the brother Sanji injured is referenced only as “a brother.”',
+      note: 'Judge defeats Sanji in their duel and Reiju treats his wounds within this same episode; 793 only covers the challenge/buildup. Ichiji and Niji are not named since their own threshold (795) is one episode later. The brother whose face Sanji smashed is Yonji: 793 shows his face being fixed (Chapter 833, pages 3-4), and Yonji opens at 784.',
     },
     795: {
       source: 'https://onepiece.fandom.com/wiki/Episode_795',
