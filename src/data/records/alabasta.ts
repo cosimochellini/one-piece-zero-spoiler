@@ -1174,7 +1174,12 @@ export const alabasta: Saga = {
             en: 'Former Warlord, under arrest',
           },
         },
-        { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
+        // Kid's poster puts him in Cross Guild at 1083 (chapter 1056).
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: { it: 'Cross Guild', en: 'Cross Guild' },
+        },
       ],
       epithet: [
         { episode: 92, value: { it: 'Sir Crocodile', en: 'Sir Crocodile' } },
@@ -1358,7 +1363,13 @@ export const alabasta: Saga = {
       affiliation: [
         { episode: 103, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
-        { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
+        // Sinks the Navy ships at Karai Bari beside Crocodile at 1086
+        // (chapter 1058); he is not on the 1083 poster.
+        {
+          episode: 1086,
+          chapter: 1058,
+          value: { it: 'Cross Guild', en: 'Cross Guild' },
+        },
       ],
       devilFruit: [{ episode: 116, chapter: 190, value: ['dice-dice-fruit'] }],
     },
