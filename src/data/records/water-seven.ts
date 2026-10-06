@@ -145,11 +145,12 @@ export const waterSeven: Saga = {
       id: 'water-seven-arc',
       kind: 'arc',
       revealedAtEpisode: 229,
-      revealedAtChapter: 322,
+      revealedAtChapter: 323,
+      // 323, where the city is first seen, as its drawing shows it.
       name: { it: 'Saga di Water Seven', en: 'Water Seven Saga' },
       summary: {
-        it: 'Una città d’acqua di maestri d’ascia, dove la ciurma si scopre meno compatta di quanto credeva.',
-        en: 'A city of shipwrights built on water, where the crew turns out to be less united than it thought.',
+        it: 'Una città d’acqua di maestri d’ascia, dove la ciurma arriva per far riparare la Going Merry.',
+        en: 'A city of shipwrights built on water, where the crew comes to have the Going Merry repaired.',
       },
       visual: { art: 'water-seven-arc', tint: 'teal' },
     },
@@ -157,7 +158,8 @@ export const waterSeven: Saga = {
       id: 'yokozuna',
       kind: 'character',
       revealedAtEpisode: 229,
-      revealedAtChapter: 322,
+      revealedAtChapter: 323,
+      // Rounded up to 323, the chapter that opens his arc.
       name: { it: 'Yokozuna', en: 'Yokozuna' },
       summary: {
         it: 'Una rana gigante con il ciuffo annodato dei lottatori di sumo, che nuota a stile libero e ogni giorno si pianta sul binario del treno del mare per misurare la sua forza contro la locomotiva.',
@@ -183,7 +185,8 @@ export const waterSeven: Saga = {
       id: 'puffing-tom',
       kind: 'place',
       revealedAtEpisode: 229,
-      revealedAtChapter: 322,
+      revealedAtChapter: 323,
+      // Rounded up to 323, the chapter that opens its arc.
       name: { it: 'Puffing Tom', en: 'Puffing Tom' },
       summary: {
         it: 'Un treno a vapore con le ruote a pale che corre su un binario posato appena sotto il mare, e ogni giorno porta passeggeri, navi e posta da un’isola all’altra.',
@@ -270,8 +273,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
-        it: 'La segretaria del presidente della Galley-La, occhiali e taccuino sempre in mano, che liquida ogni domanda scomoda definendola una molestia.',
-        en: 'The secretary of the Galley-La president, glasses on and notebook in hand, who dismisses every awkward question by calling it harassment.',
+        it: 'La segretaria di Iceburg, con gli occhiali e un raccoglitore blu, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
+        en: 'Iceburg’s secretary, in glasses and with a blue binder, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
       },
       visual: { art: 'kalifa', tint: 'pink' },
     },
@@ -425,13 +428,14 @@ export const waterSeven: Saga = {
       id: 'nero',
       kind: 'character',
       revealedAtEpisode: 259,
-      revealedAtChapter: 369,
+      revealedAtChapter: 370,
+      // 370, where episode 259 ends: his fight with Franky starts there.
       // "Nero" is Italian for black: the Black Cat Pirates are the Gatto Nero from episode 9.
       commonWord: true,
       name: { it: 'Nero', en: 'Nero' },
       summary: {
-        it: 'Un agente del Cipher Pol 9 con una piuma sul cappello, che ha indovinato che Franky sarebbe passato sui tetti e lo aspetta in cima alla terza carrozza del treno del mare.',
-        en: 'A Cipher Pol 9 agent with a plume in his hat, who guessed that Franky would come along the roofs and waits for him on top of the third car of the sea train.',
+        it: 'Un agente del Cipher Pol 9 con una piuma sul cappello, che aspetta sul tetto della terza carrozza del treno del mare, sicuro che chi arriva proverà a scavalcare il suo vagone passando di sopra.',
+        en: 'A Cipher Pol 9 agent with a plume in his hat, who waits on the roof of the third car of the sea train, sure that whoever comes will try to get past his car along the top.',
       },
       visual: { art: 'nero', tint: 'lavender' },
     },
@@ -466,8 +470,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 385,
       name: { it: 'Jabra', en: 'Jabra' },
       summary: {
-        it: 'Un agente del Cipher Pol 9 che litiga con i colleghi più volentieri che con i nemici, e piange a comando per far abbassare la guardia a chi ha davanti.',
-        en: 'A Cipher Pol 9 agent who would rather quarrel with his colleagues than with an enemy, and cries on cue to make an opponent drop his guard.',
+        it: 'Un agente del Cipher Pol 9 con una lunga treccia e una fascia rossa in vita, che difende Kumadori davanti al capo e poi se la prende con Fukuro appena questi ammette di aver spifferato il piano.',
+        en: 'A Cipher Pol 9 agent with a long braid and a red sash, who stands up for Kumadori in front of the chief and then turns on Fukurou the moment Fukurou admits he gave the plan away.',
       },
       visual: { art: 'jabra', tint: 'vermilion' },
     },
@@ -571,11 +575,12 @@ export const waterSeven: Saga = {
       id: 'spandine',
       kind: 'character',
       revealedAtEpisode: 276,
-      revealedAtChapter: 392,
+      revealedAtChapter: 394,
+      // 394, where episode 276 ends: he lands on Ohara in 393 and 394.
       name: { it: 'Spandine', en: 'Spandine' },
       summary: {
-        it: 'Il capo del Cipher Pol 9 di vent’anni prima, che sbarca a Ohara con i suoi agenti e le navi da guerra del Governo schierate al largo per dare una lezione agli studiosi dell’isola.',
-        en: 'The chief of Cipher Pol 9 twenty years earlier, who lands on Ohara with his agents and the Government’s warships lined up offshore to make an example of the island’s scholars.',
+        it: 'Il capo del Cipher Pol 9 di vent’anni prima, che sbarca a Ohara con i suoi agenti e le navi da guerra del Governo in attesa al largo per dare una lezione agli studiosi dell’isola.',
+        en: 'The chief of Cipher Pol 9 twenty years earlier, who lands on Ohara with his agents and the Government’s warships waiting offshore to make an example of the island’s scholars.',
       },
       visual: { art: 'spandine', tint: 'ocher' },
     },
@@ -943,8 +948,8 @@ export const waterSeven: Saga = {
     'kalifa': {
       role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
       log: {
-        it: 'Tiene l’agenda del presidente della Galley-La e decide chi arriva a parlargli e chi no, con un tono che non ammette repliche. Prende appunti su tutto, corregge gli orari di chiunque e non alza mai la voce. Gli operai del cantiere la temono più dei caposquadra, e nessun cliente è mai riuscito a farsi spostare un appuntamento.',
-        en: 'She keeps the diary of the Galley-La president and decides who reaches him and who does not, in a tone that allows no argument. She takes notes on everything, corrects everyone’s timings, and never raises her voice. The men in the yards fear her more than the foremen, and no customer has ever had an appointment moved.',
+        it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali, i capelli raccolti in uno chignon e un raccoglitore blu.',
+        en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun, and carries a blue binder.',
       },
       affiliation: [
         {
@@ -1250,8 +1255,8 @@ export const waterSeven: Saga = {
     'jabra': {
       role: CP9_AGENT,
       log: {
-        it: 'Passa più tempo a prendere in giro gli altri agenti che a lavorare, e con uno di loro in particolare finisce sempre a mani alzate. Racconta storie strappalacrime nel mezzo di uno scontro per far esitare l’avversario, e gli riesce. Sotto la divisa porta una fascia da combattimento, e il suo livello nell’unità è tra i più alti.',
-        en: 'He spends more time needling the other agents than working, and with one of them it always ends in raised fists. He tells tearful stories in the middle of a fight to make an opponent hesitate, and it works. Under the uniform he wears a martial arts sash, and his rating inside the unit is among the highest there is.',
+        it: 'Tornato a Enies Lobby con Kumadori e Fukuro, deve rendere conto di una missione in cui sono morte molte più persone delle tre che dovevano eliminare. Dice a Kumadori che un uomo non si scusa così facilmente, e si offre di spiegare lui stesso tutto al capo. Quando Fukuro ammette di aver parlato del piano in giro per la città, Jabra gli chiede a cosa serva la cerniera che ha sulla bocca, e quando il tentativo di harakiri di Kumadori si ferma contro il suo stesso Tekkai, gli dice di morire e basta. Porta una giacca nera aperta su una cravatta nera, una fascia rossa in vita e i capelli raccolti in una lunga treccia.',
+        en: 'Back at Enies Lobby with Kumadori and Fukurou, he has to answer for a mission in which far more people died than the three they were sent to kill. He tells Kumadori that a man does not apologise so easily, and offers to explain it all to the chief himself. When Fukurou admits he talked about the plan all over town, Jabra asks him what the zip on his mouth is for, and when Kumadori’s attempt at hara-kiri stops against his own Tekkai, Jabra tells him to just die. He wears a black tunic open over a black tie, a red sash at the waist, and his hair in a long braid.',
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
       devilFruit: [{ episode: 286, value: ['dog-dog-fruit-model-wolf'] }],
@@ -1401,8 +1406,8 @@ export const waterSeven: Saga = {
         en: 'Chief of Cipher Pol 9, twenty years earlier',
       },
       log: {
-        it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Un colpo di fucile che gli sfiora la manica non lo scompone: fa atterrare la donna che ha sparato e la getta davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
-        en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. A rifle shot that grazes his sleeve does not shake him: he has the woman who fired it knocked down and thrown before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
+        it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Quando un colpo di fucile gli trapassa la manica grida di essere spacciato, finché uno dei suoi uomini non gli fa notare che il proiettile ha preso solo la stoffa. Poi fa atterrare la donna che ha sparato e la fa gettare davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
+        en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. When a rifle shot goes through his sleeve he cries that he is done for, until one of his men points out that the bullet only caught the cloth. Then he has the woman who fired it knocked down and thrown before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
       },
       affiliation: [
         {
