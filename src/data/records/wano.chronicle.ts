@@ -52,19 +52,6 @@ export const wanoChronicles = {
   ],
   'urashima': [
     {
-      episode: 899,
-      value: {
-        title: {
-          it: 'Uno yokozuna alla casa da tè',
-          en: 'A yokozuna at the tea house',
-        },
-        body: {
-          it: 'La casa da tè di Okobore sta per chiudere, e un omone non lascia in pace la cameriera. Se diventerà sua moglie, le dice, non dovrà più lavorare né preoccuparsi della tassa sulla strada, e potrà mangiare ogni giorno il cibo della fattoria; lui i dango della casa da tè, fatti con gli avanzi di qualcun altro, non li tocca. È Urashima, le ricorda, un famoso yokozuna della capitale e il primo lottatore di sumo di Wano. Quando [[tsurujo|O-Tsuru]] torna con [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e una [[tama|O-Tama]] avvelenata, e Zoro gli dice di levare il suo grosso sedere di mezzo, se ne va, invitando la cameriera a vederlo combattere a Bakura.',
-          en: 'The Okobore tea house is closing, and a huge man will not leave the waitress alone. If she becomes his wife, he tells her, she will never have to work or worry about the street tax, and she can eat food from the farm every day; he will not touch the tea house’s dango, made from someone else’s leftovers. He is Urashima, he reminds her, a famous yokozuna of the capital and the first sumo wrestler in Wano. When [[tsurujo|Tsuru]] comes back with [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and a poisoned [[tama|Tama]], and Zoro tells him to move his backside out of the way, he leaves, inviting the waitress to come and watch him fight in Bakura Town.',
-        },
-      },
-    },
-    {
       episode: 902,
       value: {
         title: { it: 'La crocchia tagliata', en: 'The topknot' },

@@ -411,18 +411,6 @@ export const wano: Saga = {
       visual: { art: 'tsurujo', tint: 'azure' },
     },
     {
-      id: 'urashima',
-      kind: 'character',
-      revealedAtEpisode: 899,
-      revealedAtChapter: 915,
-      name: { it: 'Urashima', en: 'Urashima' },
-      summary: {
-        it: 'Un lottatore di sumo enorme, a sentir lui lo yokozuna più famoso della capitale, che corteggia la cameriera di una casa da tè vantando il proprio rango.',
-        en: 'An enormous sumo wrestler, by his own account the most famous yokozuna of the capital, who courts a tea house waitress by boasting of his rank.',
-      },
-      visual: { art: 'urashima', tint: 'flamingo' },
-    },
-    {
       id: 'holdem',
       kind: 'character',
       revealedAtEpisode: 901,
@@ -433,6 +421,21 @@ export const wano: Saga = {
         en: 'A Beasts Pirates headliner in Bakura Town, a lion’s head with a will of its own growing out of his belly, who wants to know how a little girl tamed a baboon.',
       },
       visual: { art: 'holdem', tint: 'orange' },
+    },
+    // Named at the Okobore tea house at 899, but filed at 902, his title
+    // episode: nothing he has at 899 reads as him in a drawing, and 902 puts
+    // him in the sumo ring. The tea house scene is told in his log (#271).
+    {
+      id: 'urashima',
+      kind: 'character',
+      revealedAtEpisode: 902,
+      revealedAtChapter: 915,
+      name: { it: 'Urashima', en: 'Urashima' },
+      summary: {
+        it: 'Un lottatore di sumo enorme, a sentir lui lo yokozuna più famoso della capitale, che corteggia la cameriera di una casa da tè vantando il proprio rango.',
+        en: 'An enormous sumo wrestler, by his own account the most famous yokozuna of the capital, who courts a tea house waitress by boasting of his rank.',
+      },
+      visual: { art: 'urashima', tint: 'flamingo' },
     },
     {
       id: 'speed',
@@ -1459,15 +1462,8 @@ export const wano: Saga = {
         it: 'Si presenta come un famoso yokozuna della capitale e il primo lottatore di sumo di Wano, e non tocca un dango fatto con gli avanzi di cui vive Okobore. Vuole in moglie la cameriera della casa da tè, le promette che non dovrà più lavorare né preoccuparsi della tassa sulla strada, e non prende sul serio nessuno dei suoi rifiuti. Quando uno spadaccino gli dice di togliersi di mezzo se ne va, non prima di averla invitata a vederlo combattere a Bakura.',
         en: 'He calls himself a famous yokozuna of the capital and the first sumo wrestler in Wano, and will not touch a dango made from the leftovers Okobore Town lives on. He wants the tea house waitress for his wife, promises her that she will never have to work or worry about the street tax again, and takes none of her refusals seriously. When a swordsman tells him to get out of the way he leaves, but not before inviting her to come and watch him fight in Bakura Town.',
       },
-      status: [{ episode: 899, value: 'alive' }],
+      status: [{ episode: 902, value: 'alive' }],
       affiliation: [
-        {
-          episode: 899,
-          value: {
-            it: 'Sumo di Wano, yokozuna della capitale',
-            en: 'Wano sumo, yokozuna of the capital',
-          },
-        },
         {
           episode: 902,
           value: {
@@ -1476,7 +1472,7 @@ export const wano: Saga = {
           },
         },
       ],
-      origin: [{ episode: 899, value: WANO }],
+      origin: [{ episode: 902, value: WANO }],
     },
     // No `devilFruit` line: what he ate is a SMILE, an artificial fruit, and
     // the archive files no SMILE as a devil fruit. The lion is in the log.

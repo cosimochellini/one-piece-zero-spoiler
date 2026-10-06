@@ -886,20 +886,35 @@ export const wanoArt = {
     shadow(100, 184, 50),
   ],
 
-  // A sumo ring seen at a tilt, the straw bales round its edge, and a cut
-  // topknot lying in the middle of it.
+  // The ring at Bakura where he is the star of the sumo exhibition (902):
+  // the raised square of clay seen corner-on, resting on the ground, its
+  // far side hatched, the ring of straw bales on top with the rope round
+  // each (the bales on a raised edge in the ch. 916 panel). On the clay lies
+  // his pink topknot, square at the cut, bound tight next to it, the hair
+  // fanning out loose beyond: Kiku cuts it off in the same episode.
   'urashima': [
-    { d: ellipse(80, 122, 66, 26) },
-    { d: ellipse(80, 122, 54, 19), role: 'soft', dashed: true },
-    { d: 'M14 122 V140 C14 162 146 162 146 140 V122' },
-    { d: 'M60 128 v8 M100 128 v8', role: 'soft' },
+    { d: 'M10 108 L80 80 L150 108 L80 136 Z' },
+    { d: 'M10 108 L12 122 L80 150 L148 122 L150 108 M80 136 V150' },
     {
-      d: 'M66 118 C60 106 74 98 88 102 C100 106 102 118 92 122 L72 124 Z',
+      d: 'M92 144.1 l5 -10 M106 138.3 l5 -10 M120 132.6 l5 -10 M134 126.8 l5 -10',
+      role: 'ambient',
+    },
+    { d: ellipse(80, 108, 50, 20) },
+    { d: ellipse(80, 108, 41, 15) },
+    {
+      d: 'M129.8 110 L120.8 109.5 M125 116.7 L116.9 114.5 M114.9 122.3 L108.6 118.7 M100.6 126.2 L96.9 121.7 M83.7 127.9 L83.1 123 M66.4 127.3 L68.9 122.4 M50.8 124.2 L56.1 120.2 M38.7 119.3 L46.1 116.4 M31.5 112.9 L40.3 111.7 M30.2 106 L39.2 106.5 M35 99.3 L43.1 101.5 M45.1 93.7 L51.4 97.3 M59.4 89.8 L63.1 94.3 M76.3 88.1 L76.9 93 M93.6 88.7 L91.1 93.6 M109.2 91.8 L103.9 95.8 M121.3 96.7 L113.9 99.6 M128.5 103.1 L119.7 104.3',
+      role: 'soft',
+    },
+    { d: ellipse(46, 104, 3.5, 8), role: 'accent' },
+    {
+      d: 'M46 96 H60 C63 99 63 109 60 112 H46 M52.5 96 L55 112',
       role: 'accent',
     },
-    { d: 'M84 102 L90 122', role: 'accent' },
-    { d: 'M66 118 l-12 -2 M68 123 l-12 3', role: 'accent' },
-    shadow(80, 176, 64),
+    {
+      d: 'M62 99 C74 92.5 95 89 116 99 M62 104 C74 99 95 100 116 109 M62 109 C74 105.5 95 111 116 119',
+      role: 'accent',
+    },
+    shadow(80, 157, 70),
   ],
 
   // The belt round his belly and the lion set in its front, a round striped
