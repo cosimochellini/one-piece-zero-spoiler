@@ -203,8 +203,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1062,
       name: { it: 'Atlas', en: 'Atlas' },
       summary: {
-        it: 'Un Vegapunk che rappresenta la violenza, una ragazza più grossa di Kaido con dei guanti che le permettono di prendere a pugni gli ologrammi, e che colpisce tutto ciò che la fa arrabbiare.',
-        en: 'A Vegapunk that stands for violence, a girl bigger than Kaido who wears gloves that let her punch holograms, and hits whatever frustrates her.',
+        it: 'Un Vegapunk che rappresenta la violenza, una ragazza alta quanto Kaido con dei guanti che le permettono di prendere a pugni gli ologrammi, e che colpisce tutto ciò che la fa arrabbiare.',
+        en: 'A Vegapunk that stands for violence, a girl as tall as Kaido who wears gloves that let her punch holograms, and hits whatever frustrates her.',
       },
       visual: { art: 'atlas', tint: 'orange' },
     },
@@ -215,8 +215,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1065,
       name: { it: 'York', en: 'York' },
       summary: {
-        it: 'Il satellite che rappresenta l’avidità, una donna che mangia, dorme e si fa servire, e lo fa per conto degli altri satelliti perché non debbano mai smettere di lavorare.',
-        en: 'The satellite that stands for greed, a woman who eats, sleeps and has herself waited on, and does all of it on behalf of the other satellites so they never have to stop working.',
+        it: 'Il satellite che rappresenta l’avidità, una donna che mangia, dorme e va in bagno, e lo fa per conto degli altri satelliti perché non debbano mai smettere di lavorare.',
+        en: 'The satellite that stands for greed, a woman who eats, sleeps and goes to the bathroom, and does all of it on behalf of the other satellites so they never have to stop working.',
       },
       visual: { art: 'york', tint: 'acid' },
     },
@@ -705,8 +705,8 @@ export const egghead: Saga = {
         en: 'Vegapunk satellite, Punk-06',
       },
       log: {
-        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare, e in un solo giorno lei mangia, va in bagno e dorme quattro volte.',
-        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming, and in a single day she eats, goes to the bathroom and sleeps four times over.',
+        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare, e lei mangia, va in bagno e dorme più volte al giorno.',
+        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming, and she eats, goes to the bathroom and sleeps several times a day.',
       },
       affiliation: [
         {
