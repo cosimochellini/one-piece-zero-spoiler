@@ -106,6 +106,19 @@ const IZO_FAN: Stroke[] = [
   },
 ]
 
+/**
+ * One of Ulti's red high heels, side on, the toe at (0, 0) on the floor and
+ * the heel to the right: the shoe with its stiletto, and the edge of the
+ * opening along the near side.
+ */
+const ULTI_HEEL: Stroke[] = [
+  {
+    d: 'M0 0 C-3 -7 2 -14 10 -15 C22 -20 34 -28 42 -38 C46 -44 50 -50 55 -50 C59 -50 61 -46 60 -40 L60 -30 L57 0 H53 L53 -26 C46 -22 38 -14 30 -6 C22 -1 12 0 0 0 Z',
+    role: 'accent',
+  },
+  { d: 'M10 -15 C20 -12 32 -18 42 -30 C48 -38 54 -42 60 -40', role: 'soft' },
+]
+
 /** One of Solitaire's four swords, point up, the end of the grip at (0, 0). */
 const SOLITAIRE_SWORD: Stroke[] = [
   { d: 'M-3 -26 V-116 L0 -124 L3 -116 V-26' },
@@ -691,22 +704,33 @@ export const wanoArt = {
     shadow(82, 188, 62),
   ],
 
-  // A horned headpiece with the thick dome of a pachycephalosaur.
+  // Her red high heels set down on the trailing hem of her dark cape, one
+  // behind the other and turned the other way: the cape lies in folds, hatched
+  // where it is dark, with its light fur along the edge. She wears all of it
+  // when the Tobiroppo wait to be called at 982 (ch. 978). Her Zoan waits for
+  // 990, in `wanoRedrawn`.
   'ulti': [
-    { d: 'M28 128 C28 66 132 66 132 128' },
-    { d: 'M28 128 C60 142 100 142 132 128' },
-    { d: 'M36 140 C62 150 98 150 124 140', role: 'soft' },
     {
-      d: 'M33 110 l-12 -4 l9 -8z M50 90 l-6 -11 l11 -1z M76 80 l4 -12 l4 12z M110 90 l6 -11 l-11 -1z M127 110 l12 -4 l-9 -8z',
-      role: 'accent',
+      d: 'M4 160 C10 150 18 142 28 140 C34 136 40 132 46 132 C46.4 132.2 46.7 132.4 47 132.6 M63.6 134.8 C69.9 131 77 128 84 128 C88 130 90 134 94 136 C97.2 133.6 101 131.5 105.1 129.9 M120.7 126.1 C121.8 126 122.9 126 124 126 C129.2 129.5 131.4 132.9 134.5 136.4 M144.5 141.7 C149.3 144.6 153.5 148.9 156 154',
     },
-    { d: 'M28 124 C10 118 4 102 8 88 C14 100 22 108 32 112 Z', role: 'accent' },
     {
-      d: 'M132 124 C150 118 156 102 152 88 C146 100 138 108 128 112 Z',
-      role: 'accent',
+      d: 'M4 160 C6.3 160.9 8.9 161.8 11.6 162.6 M25.7 166 C65.9 174 126.1 172.3 156 154',
     },
-    { d: 'M50 126 C52 96 60 80 78 72', role: 'soft' },
-    { d: 'M4 176 H156', role: 'ambient' },
+    {
+      d: 'M6.2 163.8 C8.5 167.8 10.8 168.6 13.1 166.4 M13.7 166.6 C16.3 170.2 18.9 170.7 21.5 168.1 C24.4 172 27.3 172.6 30.2 169.9 C33.3 173.7 36.4 174.1 39.5 171.3 C42.7 175 45.9 175.3 49.2 172.4 C52.6 175.9 55.9 176.2 59.3 173.1 C62.7 176.6 66.1 176.7 69.6 173.5 C73.1 176.8 76.5 176.8 80 173.5 C83.5 176.7 86.9 176.6 90.4 173.1 C93.9 176.2 97.3 175.9 100.7 172.3 C104.1 175.3 107.4 174.9 110.8 171.1 C114.1 173.9 117.3 173.4 120.5 169.5 C123.6 172.1 126.7 171.4 129.8 167.4 C132.7 169.9 135.6 169 138.5 164.9 C141.2 167.2 143.9 166.2 146.6 161.8 C149 164 151.4 162.8 153.8 158.3',
+      role: 'soft',
+    },
+    {
+      d: 'M54.8 164.8 C54 166.5 53.1 168.3 52 170 M94 136 C98 148 96 160 90 173 M139 150.5 C139 154.7 138 159.1 136 164',
+      role: 'soft',
+    },
+    {
+      d: 'M62.6 151.4 L68 146 M64 162 L72 154 M100 150 L106 144 M102 162 L110 154 M142 154 L148 148',
+      role: 'ambient',
+    },
+    ...placed(ULTI_HEEL, 'translate(14 165) scale(0.8)'),
+    ...placed(ULTI_HEEL, 'translate(144 149) scale(-0.62 0.62)'),
+    shadow(80, 190, 74),
   ],
 
   // His long katana in its pink scabbard with the white flowers on it, the
@@ -1562,6 +1586,36 @@ export const wanoRedrawn: Redrawings = {
         ...placed(IZO_FLINTLOCK, 'translate(74 98) rotate(-16)'),
         ...placed(IZO_FLINTLOCK, 'translate(86 150) rotate(8)'),
         shadow(80, 182, 60),
+      ],
+    },
+  ],
+  // The pachycephalosaur she turns into, side on: the thick dome of its skull
+  // in her colour over its base ridge, the heavy body, the belly hatched where
+  // it turns under, no eye. She shows the fruit when she headbutts Luffy at
+  // 990 (ch. 983).
+  ulti: [
+    {
+      episode: 990,
+      chapter: 983,
+      value: [
+        {
+          d: 'M14 124 C12 118 14 112 18 110 C18 98 28 92 36 92 C46 92 52 100 50 110 C54 112 58 110 62 106 C76 92 100 86 118 92 C134 98 148 112 158 130 C144 126 132 122 122 126 C118 142 102 152 84 152 C68 152 58 144 54 136 C48 130 40 128 32 130 C24 132 16 130 14 124 Z',
+        },
+        {
+          d: 'M18 110 C18 98 28 92 36 92 C46 92 52 100 50 110',
+          role: 'accent',
+        },
+        { d: 'M19 110 C26 105 42 104 50 110', role: 'soft' },
+        { d: 'M50 110 l4 3 M16 117 l-4 1', role: 'soft' },
+        { d: 'M58 134 l-6 7 l4 2', role: 'soft' },
+        { d: 'M86 118 C106 114 118 130 110 148', role: 'soft' },
+        { d: 'M98 150 C102 162 100 172 98 184 H114 C112 172 114 160 112 146' },
+        { d: 'M78 152 C80 164 78 174 76 184 H88', role: 'soft' },
+        {
+          d: 'M64 144 l4 4 M74 148 l4 4 M128 124 l4 4 M138 124 l4 4',
+          role: 'ambient',
+        },
+        shadow(86, 190, 62),
       ],
     },
   ],

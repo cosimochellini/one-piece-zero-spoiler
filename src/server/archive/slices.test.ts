@@ -906,6 +906,23 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 986 })).toBe(flintlocks?.value)
   })
 
+  it('turns Ulti into her pachycephalosaur only from episode 990', () => {
+    const ulti = filed('ulti')
+    const heels = DRAWINGS.ulti
+    const beast = REDRAWINGS['ulti']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(ulti, 'en', reveal(bookmark)).visual.strokes
+
+    expect(beast?.episode).toBe(990)
+
+    expect(drawnAt(ep(989))).toBe(heels)
+    expect(drawnAt(ep(990))).toBe(beast?.value)
+    expect(drawnAt(null)).toBe(heels)
+    // The manga shows her Zoan in chapter 983, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 982 })).toBe(heels)
+    expect(drawnAt({ mode: 'chapter', chapter: 983 })).toBe(beast?.value)
+  })
+
   it('hands Brook the Soul King’s guitar only from episode 517', () => {
     const brook = filed('brook')
     const violin = DRAWINGS.brook
