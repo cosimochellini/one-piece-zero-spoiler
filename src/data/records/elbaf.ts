@@ -642,8 +642,8 @@ export const elbaf: Saga = {
         en: 'Walrus School gym teacher',
       },
       log: {
-        it: 'Alla Scuola Walrus insegna ginnastica. Dopo che un serpente gigante irrompe nella scuola lo trovano gravemente ferito, e quando gli chiedono cosa sia successo parla solo degli alunni. È lui ad avvertire Saul di non toccare i bambini che camminano nel sonno verso la spiaggia.',
-        en: 'At the Walrus School he teaches gym. After a giant serpent bursts into the school he is found badly hurt, and when asked what happened he talks only about the pupils. It is he who warns Saul not to touch the children sleepwalking toward the beach.',
+        it: 'Alla Scuola Walrus insegna ginnastica. Dopo che un serpente gigante attacca la scuola lo trovano gravemente ferito, e quando gli chiedono cosa sia successo parla solo degli alunni. È lui ad avvertire Saul di non toccare i bambini che camminano nel sonno verso la spiaggia.',
+        en: 'At the Walrus School he teaches gym. After a giant serpent attacks the school he is found badly hurt, and when asked what happened he talks only about the pupils. It is he who warns Saul not to touch the children sleepwalking toward the beach.',
       },
       status: [{ episode: 1172, value: 'alive' }],
       affiliation: [
