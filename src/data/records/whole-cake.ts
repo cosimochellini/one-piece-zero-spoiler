@@ -529,6 +529,21 @@ export const wholeCake: Saga = {
       visual: { art: 'lindbergh', tint: 'acid' },
     },
     {
+      id: 'ryokugyu',
+      kind: 'character',
+      // Shown with his features hidden and captioned "Ryokugyu" at 882
+      // (chapter 905). His real name, Aramaki, is printed in chapter 1053
+      // but never said or captioned in the anime, so it is not used.
+      revealedAtEpisode: 882,
+      revealedAtChapter: 905,
+      name: { it: 'Ryokugyu', en: 'Ryokugyu' },
+      summary: {
+        it: 'Un ammiraglio della Marina mandato a cacciare Fujitora da Mary Geoise, che invece gli tiene compagnia mentre mangia e dice di non toccare cibo da tre anni.',
+        en: 'A Marine admiral sent to drive Fujitora out of Mary Geoise, who keeps him company while he eats instead, and says he has not eaten for three years.',
+      },
+      visual: { art: 'ryokugyu', tint: 'green' },
+    },
+    {
       id: 'sterry',
       kind: 'character',
       revealedAtEpisode: 883,
@@ -551,19 +566,6 @@ export const wholeCake: Saga = {
         en: 'A figure seated on the Empty Throne of Mary Geoise, before whom the Five Elders kneel down and lower their voices.',
       },
       visual: { art: 'im', tint: 'violet' },
-    },
-    {
-      id: 'aramaki',
-      kind: 'character',
-      // Not in 1075–1078: first on screen and called Ryokugyu at 1079.
-      revealedAtEpisode: 1079,
-      revealedAtChapter: 1057,
-      name: { it: 'Aramaki', en: 'Aramaki' },
-      summary: {
-        it: 'Un ammiraglio della Marina che vola verso Wano e che dice di non mangiare nulla da tre anni.',
-        en: 'A Marine admiral who flies toward Wano and says he has eaten nothing for three years.',
-      },
-      visual: { art: 'aramaki', tint: 'green' },
     },
     {
       id: 'sheepshead',
@@ -1633,19 +1635,18 @@ export const wholeCake: Saga = {
       ],
       origin: [{ episode: 885, value: MARY_GEOISE }],
     },
-    'aramaki': {
+    'ryokugyu': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'È uno degli ammiragli. Sakazuki gli chiede dove si trova, e lui risponde che è in aria e che vede già Wano; quando gli ordinano di non fare niente di inutile, dice di aver capito. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
-        en: 'He is one of the admirals. Sakazuki asks where he is, and he answers that he is in the air and can already see Wano; when he is told not to do anything unnecessary, he says he understands. He says he has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
+        it: 'È uno degli ammiragli. Sakazuki lo ha mandato a cercare Fujitora e a cacciarlo da Mary Geoise, ma lui non ha voglia di combattere e gli tiene compagnia mentre mangia. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
+        en: 'He is one of the admirals. Sakazuki sent him to find Fujitora and drive him out of Mary Geoise, but he does not want to fight him and keeps him company while he eats. He says he has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
       },
       affiliation: [
         {
-          episode: 1079,
+          episode: 882,
           value: { it: 'Marina, ammiraglio', en: 'Marines, admiral' },
         },
       ],
-      epithet: [{ episode: 1079, value: { it: 'Ryokugyu', en: 'Ryokugyu' } }],
       devilFruit: [{ episode: 1081, value: ['woods-woods-fruit'] }],
     },
     // No `devilFruit` line: the story shows his hands turn into a sheep's horns
