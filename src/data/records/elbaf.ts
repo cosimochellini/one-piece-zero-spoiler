@@ -92,8 +92,8 @@ export const elbaf: Saga = {
       revealedAtChapter: 1130,
       name: { it: 'Warland', en: 'Warland' },
       summary: {
-        it: 'Il regno guerriero dei giganti su Elbaf, che chi lo conosce chiama la terra da cui nascono le guerre, fatta di asce, scudi e canti di battaglia.',
-        en: 'The giants’ warrior kingdom on Elbaph, which those who know it call the land where wars come from, a place of axes, shields and battle songs.',
+        it: 'Il regno guerriero dei giganti su Elbaf, che Loki chiama la terra da cui nascono le guerre.',
+        en: 'The giants’ warrior kingdom on Elbaph, which Loki calls the land where wars come from.',
       },
       visual: { art: 'warland', tint: 'red' },
     },
@@ -315,8 +315,8 @@ export const elbaf: Saga = {
       commonWord: true,
       name: { it: 'Wolf', en: 'Wolf' },
       summary: {
-        it: 'L’insegnante di ginnastica della Scuola Walrus, un gigante robusto che esce gravemente ferito dall’attacco del serpente e chiede prima di tutto dei bambini.',
-        en: 'The Walrus School’s gym teacher, a sturdy giant who comes out of the serpent’s attack badly hurt and asks first about the children.',
+        it: 'L’insegnante di ginnastica della Scuola Walrus, un gigante robusto che viene trovato gravemente ferito e chiede prima di tutto dei bambini.',
+        en: 'The Walrus School’s gym teacher, a sturdy giant who is found badly hurt and asks first about the children.',
       },
       visual: { art: 'wolf-elbaph', tint: 'cyan' },
     },
@@ -642,8 +642,8 @@ export const elbaf: Saga = {
         en: 'Walrus School gym teacher',
       },
       log: {
-        it: 'Alla Scuola Walrus insegna ginnastica. Quando un serpente del Mondo Sotterraneo irrompe nella scuola resta gravemente ferito, ma si preoccupa solo degli alunni. È lui ad avvertire Saul di non toccare i bambini che camminano nel sonno verso la spiaggia.',
-        en: 'At the Walrus School he teaches gym. When a serpent from the Underworld bursts into the school he is badly hurt, yet all he worries about is the pupils. It is he who warns Saul not to touch the children sleepwalking toward the beach.',
+        it: 'Alla Scuola Walrus insegna ginnastica. Dopo che un serpente gigante attacca la scuola lo trovano gravemente ferito, e quando gli chiedono cosa sia successo parla solo degli alunni. È lui ad avvertire Saul di non toccare i bambini che camminano nel sonno verso la spiaggia.',
+        en: 'At the Walrus School he teaches gym. After a giant serpent attacks the school he is found badly hurt, and when asked what happened he talks only about the pupils. It is he who warns Saul not to touch the children sleepwalking toward the beach.',
       },
       status: [{ episode: 1172, value: 'alive' }],
       affiliation: [
