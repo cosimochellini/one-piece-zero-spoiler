@@ -42,7 +42,6 @@ const TITLES = {
   'artificial-dragon-dragon-fruit': 'Artificial Devil Fruit',
   'cat-cat-fruit-ancient-model-sabre-tooth-tiger':
     'Neko Neko no Mi, Model: Saber Tiger',
-  'crow-crow-fruit': 'Susu Susu no Mi',
   'dog-dog-fruit-mythical-model-nine-tailed-fox':
     'Inu Inu no Mi, Model: Kyubi no Kitsune',
   'egghead-island': 'Egghead',

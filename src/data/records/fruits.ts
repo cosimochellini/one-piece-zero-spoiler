@@ -1197,16 +1197,16 @@ export const devilFruits: Saga = {
       visual: { art: 'cook-cook-fruit', tint: 'orange' },
     },
     {
-      id: 'crow-crow-fruit',
+      id: 'soot-soot-fruit',
       kind: 'fruit',
       revealedAtEpisode: 1117,
       revealedAtChapter: 1083,
-      name: { it: 'Frutto Karasu Karasu', en: 'Crow-Crow Fruit' },
+      name: { it: 'Frutto Susu Susu', en: 'Soot-Soot Fruit' },
       summary: {
-        it: 'Scompone il corpo in uno stormo di corvi che si separano, passano da una finestra sbarrata e si ricompongono dall’altra parte.',
-        en: 'Breaks the body into a flock of crows that scatter, pass through a barred window and come back together on the other side.',
+        it: 'Trasforma il corpo in fuliggine, così i proiettili lo attraversano, e la fuliggine prende la forma che le si dà: corvi che si staccano dal corpo e beccano l’avversario, o punte sottili che schizzano su dal terreno.',
+        en: 'Turns the body to soot, so bullets pass through it, and the soot takes whatever shape it is given: crows that break off the body and peck at an opponent, or thin spikes that shoot up out of the ground.',
       },
-      visual: { art: 'crow-crow-fruit', tint: 'sand' },
+      visual: { art: 'soot-soot-fruit', tint: 'sand' },
     },
     {
       id: 'pump-pump-fruit',

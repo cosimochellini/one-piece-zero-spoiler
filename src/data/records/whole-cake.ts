@@ -1569,7 +1569,7 @@ export const wholeCake: Saga = {
         },
       ],
       devilFruit: [
-        { episode: 1117, chapter: 1083, value: ['crow-crow-fruit'] },
+        { episode: 1117, chapter: 1083, value: ['soot-soot-fruit'] },
       ],
     },
     'lindbergh': {
