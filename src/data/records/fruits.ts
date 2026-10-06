@@ -1464,8 +1464,8 @@ export const devilFruits: Saga = {
         en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
       },
       summary: {
-        it: 'Trasforma il corpo in un lupo bianco, la divinità che protegge Wano, e il suo soffio è un getto d’aria gelida abbastanza forte da tenere testa a quello di Kaido.',
-        en: 'Turns the body into a white wolf, the guardian deity of Wano, and its breath is a blast of freezing air strong enough to meet Kaido’s own.',
+        it: 'Trasforma il corpo in un lupo bianco, la divinità che protegge Wano, con un soffio abbastanza forte da tenere testa a quello di Kaido.',
+        en: 'Turns the body into a white wolf, the guardian deity of Wano, with a blast of breath strong enough to meet Kaido’s own.',
       },
       visual: { art: 'dog-dog-fruit-model-okuchi-no-makami', tint: 'ocher' },
     },
