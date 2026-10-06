@@ -281,18 +281,36 @@ export const dressrosaArt = {
     shadow(84, 184, 52),
   ],
 
-  // A wall of bricks, some of them see-through.
+  // His long coat standing on its hem, open at the front, in one outline
+  // from the shoulders down the sleeves to the hem: the plumed collar low
+  // over the shoulders and down the lapels, the sleeves hanging straight
+  // with a stripe down each and a plumed cuff, the lining and the far
+  // sleeve hatched. He wears it when he walks into the ring for Block B at
+  // the end of episode 635 (chapter 706). No barrier: that is 637.
   'bartolomeo': [
-    { d: 'M20 56 H140 V168 H20z', role: 'accent' },
-    { d: 'M24 64 h36 v20 h-36z M64 64 h36 v20 h-36z M104 64 h32 v20 h-32z' },
     {
-      d: 'M24 88 h16 v20 h-16z M44 88 h36 v20 h-36z M84 88 h36 v20 h-36z M124 88 h12 v20 h-12z',
+      d: 'M47.6 97.7 Q24.1 96.6 27.9 94.1 L50.4 94.3 Q30.1 90.8 37 88.9 L57.5 91.5 Q43.4 86.2 52.3 85.1 L67.9 89.7 Q62 83.2 71.7 83.2 L80 89 Q83.2 82.4 92.3 83.4 L92.1 89.7 Q104 83.9 111.1 85.7 L102.5 91.5 Q121.3 87.4 125.4 89.9 L109.6 94.3 Q132.5 92.5 133 95.2 L112.4 97.7 L112 100 L96 112 L90 134 L84 112 Q80 100 76 112 L70 134 L64 112 L48 100 Z',
+      role: 'accent',
     },
-    { d: 'M24 112 h36 v20 h-36z M64 112 h36 v20 h-36z M104 112 h32 v20 h-32z' },
     {
-      d: 'M24 136 h16 v20 h-16z M44 136 h36 v20 h-36z M84 136 h36 v20 h-36z M124 136 h12 v20 h-12z',
+      d: 'M64 182 Q51 187 38 182 L39 160 L19 158 C19 136 21 114 27 101 L47.6 97.7 M96 182 Q109 187 122 182 L121 160 L141 158 C141 136 139 114 133 101 L112.4 97.7',
     },
-    { d: 'M68 68 h28 M48 116 h28 M88 140 h28', role: 'ambient', dashed: true },
+    { d: 'M70 134 L64 182 Q80 177 96 182 L90 134' },
+    { d: 'M42 108 L39 158 M118 108 L121 158', role: 'soft' },
+    {
+      d: 'M30 104 C28 122 28 140 29 158 M130 104 C132 122 132 140 131 158',
+      role: 'soft',
+    },
+    {
+      d: 'M19 158 l2.5 5 l2.5 -3 l2.5 5 l2.5 -4 l2.5 5 l2.5 -4 l2.5 5 l2.5 -3 M121 158 l2.5 4 l2.5 -3 l2.5 5 l2.5 -4 l2.5 5 l2.5 -4 l2.5 5 l2.5 -3',
+      role: 'soft',
+    },
+    { d: 'M72 168 l8 -8 M70 180 l14 -14 M82 180 l11 -11', role: 'ambient' },
+    {
+      d: 'M123 122 l12 -12 M123 138 l14 -14 M123 154 l14 -14',
+      role: 'ambient',
+    },
+    shadow(80, 192, 62),
   ],
 
   // A king's cloak folded on a colosseum bench.
