@@ -45,8 +45,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 222,
       name: { it: 'Masira', en: 'Masira' },
       summary: {
-        it: 'Il Re dei Recuperi: un gigante con il casco da palombaro che tira su dal fondo del mare i relitti affondati, cantando a squarciagola.',
-        en: 'The Salvage King, a giant in a diving helmet who hauls sunken wrecks up off the sea floor, singing at the top of his voice.',
+        it: 'Il Re dei Recuperi: un omone dall’aria da scimmia, con tuta arancione, occhialoni e cuffie, che reclama ogni nave affondata nel suo tratto di mare e la riporta a galla soffiandoci dentro aria.',
+        en: 'The Salvage King, a huge ape-like man in an orange jumpsuit, goggles and headphones, who claims every ship that sinks in his stretch of sea and raises it by blowing air into it.',
       },
       visual: { art: 'masira', tint: 'orange' },
     },
@@ -69,8 +69,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 224,
       name: { it: 'Bellamy', en: 'Bellamy' },
       summary: {
-        it: 'Il pirata che tiene Mock Town in pugno: ha delle molle al posto delle gambe, rimbalza sui tetti e ride di chiunque parli ancora di isole d’oro.',
-        en: 'The pirate who runs Mock Town: he has springs for legs, bounces across the rooftops and laughs at anyone who still talks about islands of gold.',
+        it: 'Il pirata che tiene Mock Town in pugno: pesta un capitano che lo ha battuto a carte e ride di chiunque creda ancora in un’isola nel cielo.',
+        en: 'The pirate who runs Mock Town: he beats up a captain who won a hand of cards against him, and laughs at anyone who still believes in an island in the sky.',
       },
       visual: { art: 'bellamy', tint: 'azure' },
     },
@@ -253,8 +253,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 280,
       name: { it: 'Kamakiri', en: 'Kamakiri' },
       summary: {
-        it: 'Un guerriero shandia dalla cresta alta, che attraversa la foresta di nuvole con una lama che brucia, tenuta bassa come un insetto in agguato.',
-        en: 'A Shandia warrior with a high crest who crosses the cloud forest with a burning blade held low, like an insect waiting to strike.',
+        it: 'Un guerriero shandia con la cresta alta e occhiali tondi dalle lenti rosse, che sorprende Aisa di ritorno da Upper Yard e la avverte che, se continua ad andarci, ci lascerà la pelle.',
+        en: 'A Shandia warrior with a high crest and round red glasses, who catches Aisa coming back from Upper Yard and warns her that if she keeps going there she will be killed.',
       },
       visual: { art: 'kamakiri', tint: 'green' },
     },
@@ -265,8 +265,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 280,
       name: { it: 'Braham', en: 'Braham' },
       summary: {
-        it: 'Un guerriero shandia con gli occhiali calati sugli occhi, che apre il fuoco con due pistole capaci di accecare chiunque le guardi.',
-        en: 'A Shandia warrior with goggles down over his eyes, who opens fire with two pistols that blind anyone who looks at them.',
+        it: 'Un guerriero shandia con il cappello calato sulla metà superiore del viso, che alla riunione dei guerrieri pulisce una pistola e poi parte con gli altri all’attacco di Upper Yard.',
+        en: 'A Shandia warrior whose hat hides the top half of his face, who cleans a pistol at the warriors’ meeting and then joins the attack on Upper Yard.',
       },
       visual: { art: 'braham', tint: 'ocher' },
     },
@@ -291,8 +291,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 280,
       name: { it: 'Laki', en: 'Laki' },
       summary: {
-        it: 'Una guerriera shandia che tiene il fucile puntato da lontano, con una piuma infilata nella canna e l’occhio fermo sul mirino.',
-        en: 'A Shandia warrior who works from a distance, a feather tucked into the barrel of her rifle and her eye steady at the scope.',
+        it: 'Una guerriera shandia con un lungo fucile, che si prende cura di Aisa come una sorella maggiore e combatte accanto a Wiper nell’attacco a Upper Yard.',
+        en: 'A Shandia warrior with a long rifle, who looks after Aisa like an older sister and fights beside Wyper in the attack on Upper Yard.',
       },
       visual: { art: 'laki', tint: 'lavender' },
     },
@@ -339,8 +339,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 242,
       name: { it: 'Conis', en: 'Conis' },
       summary: {
-        it: 'Una ragazza con le ali di Angel Beach, che accoglie gli stranieri con un’arpa e una volpe delle nuvole addormentata ai suoi piedi.',
-        en: 'A winged girl from Angel Beach who greets strangers with a harp and a cloud fox asleep at her feet.',
+        it: 'Una ragazza con le ali di Angel Beach, che accoglie gli stranieri con la sua arpa e la sua volpe delle nuvole.',
+        en: 'A winged girl from Angel Beach who greets strangers with her harp and her pet cloud fox.',
       },
       visual: { art: 'conis', tint: 'ice' },
     },
@@ -351,8 +351,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 242,
       name: { it: 'Pagaya', en: 'Pagaya' },
       summary: {
-        it: 'Il padre di Conis, un artigiano mite che monta conchiglie a un banco da lavoro e ne ricava barche, lampade e tutto il resto.',
-        en: 'Conis’s father, a mild craftsman who fits shells together at a workbench and makes boats, lamps and everything else out of them.',
+        it: 'Il padre di Conis, un uomo mite che costruisce e ripara barche a dial, e lascia provare agli stranieri il suo waver.',
+        en: 'Conis’s father, a mild man who builds and repairs dial boats, and lets the strangers try out his Waver.',
       },
       visual: { art: 'pagaya', tint: 'teal' },
     },
@@ -414,8 +414,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 260,
       name: { it: 'Shura', en: 'Shura' },
       summary: {
-        it: 'Un sacerdote di Ener che pattuglia il cielo in sella a un uccello in fiamme, con una lancia che scalda l’aria attorno alla punta.',
-        en: 'One of Enel’s priests, who patrols the sky on a bird wreathed in flame, with a lance that heats the air around its point.',
+        it: 'Un sacerdote di Ener che sorvola Upper Yard in sella a un enorme uccello e combatte con una lancia che dà fuoco a tutto ciò che colpisce.',
+        en: 'One of Enel’s priests, who rides a huge bird over Upper Yard and fights with a lance that sets fire to whatever it strikes.',
       },
       visual: { art: 'shura', tint: 'red' },
     },
@@ -426,8 +426,8 @@ export const skypiea: Saga = {
       revealedAtChapter: 266,
       name: { it: 'Gedatsu', en: 'Gedatsu' },
       summary: {
-        it: 'Un sacerdote di Ener che apre una nuvola di palude sotto i piedi degli intrusi, e nel frattempo dimentica regolarmente quello che stava facendo.',
-        en: 'One of Enel’s priests, who opens a swamp cloud under an intruder’s feet and meanwhile keeps forgetting what he was doing.',
+        it: 'Un sacerdote di Ener, un uomo alto con una fila di ciuffi dritti in testa, che combatte contro gli shandia quando attaccano Upper Yard.',
+        en: 'One of Enel’s priests, a tall man with a row of tufts standing up on his head, who fights the Shandia when they raid Upper Yard.',
       },
       visual: { art: 'gedatsu', tint: 'acid' },
     },
@@ -563,8 +563,8 @@ export const skypiea: Saga = {
         en: 'Captain and salvager',
       },
       log: {
-        it: 'Comanda una ciurma che lo acclama a ogni parola e lavora in mare aperto, tirando su i relitti dal fondo con gru e catene. Quando un galeone affiora sotto la Going Merry si presenta come il Re dei Recuperi e pretende che quel tratto di mare sia suo. Piange con la stessa facilità con cui urla.',
-        en: 'He commands a crew that cheers every word he says, and works the open sea, hauling wrecks off the bottom with cranes and chains. When a galleon surfaces under the Going Merry he introduces himself as the Salvage King and claims that stretch of sea as his own. He weeps as easily as he shouts.',
+        it: 'Comanda una ciurma che canta mentre lavora. Quando una nave cade dal cielo e affonda accanto alla Going Merry, arriva, si presenta come il Re dei Recuperi e dice che tutto ciò che affonda nelle sue acque è suo. Riporta a galla il relitto soffiandoci dentro aria con un tubo, e si tuffa di persona quando qualcuno là sotto attacca i suoi uomini.',
+        en: 'He commands a crew that sings while it works. When a ship falls out of the sky and sinks beside the Going Merry, he arrives, introduces himself as the Salvage King and says that anything that sinks in his waters is his. He raises the wreck by blowing air into it through a tube, and dives in himself when something down there attacks his men.',
       },
       affiliation: [
         {
@@ -607,8 +607,8 @@ export const skypiea: Saga = {
         en: 'Captain of the Bellamy Pirates',
       },
       log: {
-        it: 'La sua ciurma occupa la taverna di Mock Town e in città nessuno osa contraddirla. Chiama nuova era quella in cui i sogni non esistono più, e si diverte a pestare chi non sta al gioco. Rufy e Zoro incassano tutto senza alzare un dito e se ne vanno in silenzio, e questo lo fa infuriare più di una rissa.',
-        en: 'His crew holds the tavern in Mock Town and nobody in the town dares contradict them. He calls it the new age, the one where dreams no longer exist, and enjoys beating anyone who will not play along. Luffy and Zoro take all of it without lifting a hand and walk out in silence, which angers him more than a brawl would.',
+        it: 'A Mock Town nessuno osa contraddire lui o la sua ciurma. Chiama nuova era quella in cui i pirati non sognano più. Dice a Rufy che lo sta mettendo alla prova, gli offre da bere e poi gli sbatte la testa sul bancone, e Rufy dice a Zoro di non reagire.',
+        en: 'Nobody in Mock Town dares contradict him or his crew. He calls it the new age, the one where pirates no longer dream. He tells Luffy he is putting him to the test, buys him a drink and then smashes his head into the counter, and Luffy tells Zoro not to fight back.',
       },
       affiliation: [
         {
@@ -1036,8 +1036,8 @@ export const skypiea: Saga = {
     'kamakiri': {
       role: SHANDIA_WARRIOR,
       log: {
-        it: 'Combatte accanto a Wiper e porta una lama che lascia il segno sul cielo stesso. È fra i primi a passare la frontiera di Dio e fra i pochi che dopo l’assalto vengono contati ancora vivi. Dei quattro stranieri saliti dal mare azzurro non sa cosa pensare, e per prudenza li tratta da nemici.',
-        en: 'He fights alongside Wyper and carries a blade that scars the sky itself. He is among the first across God’s frontier and among the few counted alive once the raid is over. He does not know what to make of the four strangers up from the blue sea, and to be safe he treats them as enemies.',
+        it: 'È uno dei guerrieri che seguono Wiper, e porta un lungo coltello con l’elsa a croce. Rimprovera Aisa perché scappa di nascosto a Upper Yard, e perde la calma quando lei gli risponde che lui non è ancora riuscito a battere Dio.',
+        en: 'He is one of the warriors who follow Wyper, and carries a long knife with a cross-guard. He scolds Aisa for slipping off to Upper Yard, and loses his temper when she answers that he still has not beaten God.',
       },
       affiliation: [{ episode: 163, value: SHANDIA }],
       origin: [{ episode: 163, value: SKY_ISLAND }],
@@ -1045,8 +1045,8 @@ export const skypiea: Saga = {
     'braham': {
       role: SHANDIA_WARRIOR,
       log: {
-        it: 'Copre l’avanzata dei suoi con due pistole a lampo che non feriscono nessuno ma tolgono la vista, e nella foresta di nuvole questo basta a vincere. Si muove veloce, parla poco e si fida solo di chi è cresciuto con lui. La guerra per quella terra dura da più tempo di quanto chiunque a Skypiea abbia voglia di raccontare.',
-        en: 'He covers his people’s advance with two flash pistols that wound nobody and take away sight, which in the cloud forest is enough to win. He moves fast, says little, and trusts only the people he grew up with. The war over that ground has run longer than anyone on Skypiea cares to say out loud.',
+        it: 'Porta un paio di piccole pistole a due canne, e ne pulisce una mentre Wiper parla alla riunione dei guerrieri. C’è anche lui quando Aisa sente due voci spegnersi nella foresta, e parte con gli altri all’attacco di Upper Yard.',
+        en: 'He carries a pair of small double-barrelled pistols, and cleans one of them while Wyper talks at the warriors’ meeting. He is there when Aisa feels two voices go out in the forest, and he leaves with the others to attack Upper Yard.',
       },
       affiliation: [{ episode: 164, value: SHANDIA }],
       origin: [{ episode: 164, value: SKY_ISLAND }],
@@ -1063,8 +1063,8 @@ export const skypiea: Saga = {
     'laki': {
       role: { it: 'Guerriera shandia', en: 'Shandia warrior' },
       log: {
-        it: 'Resta indietro rispetto agli altri e colpisce da lontano, e nella foresta di nuvole è la prima ad accorgersi di chi si avvicina. Combatte per la stessa terra per cui combattono tutti i suoi, e non ne parla mai. Quando un assalto finisce, conta i sopravvissuti a voce alta perché nessuno se ne dimentichi.',
-        en: 'She hangs back from the others and shoots from a distance, and in the cloud forest she is the first to notice anyone coming. She fights for the same ground all her people fight for, and never talks about it. When a raid is over she counts the survivors out loud, so that nobody forgets them.',
+        it: 'Alla riunione dei guerrieri sostiene che il nemico del loro nemico è un alleato, come Gan Fall, e Wiper le risponde che lei in battaglia non deve venire. Prende il sacchetto di Aisa per riempirlo di terra di Upper Yard. Nell’attacco alla foresta spara con il fucile su un enorme cane bianco che azzanna i suoi compagni.',
+        en: 'At the warriors’ meeting she argues that the enemy of their enemy is a comrade, like Gan Fall, and Wyper answers that she must not join the battle. She takes Aisa’s little bag to fill it with soil from Upper Yard. In the attack on the forest she fires her rifle at a huge white dog that is biting her comrades.',
       },
       affiliation: [{ episode: 165, value: SHANDIA }],
       origin: [{ episode: 165, value: SKY_ISLAND }],
@@ -1103,8 +1103,8 @@ export const skypiea: Saga = {
     'conis': {
       role: { it: 'Abitante di Angel Beach', en: 'Resident of Angel Beach' },
       log: {
-        it: 'Vive con il padre in una casetta sulla spiaggia degli angeli e dà da mangiare a quattro sconosciuti saliti dal mare azzurro come se li aspettasse da sempre. Spiega con pazienza come funziona il cielo: le nuvole su cui si cammina, le conchiglie che fanno ogni cosa, il denaro che qui si chiama extol. Quando il discorso arriva a Dio, la voce le si incrina.',
-        en: 'She lives with her father in a small house on Angel Beach and feeds four strangers up from the blue sea as though she had been expecting them all along. She explains the sky patiently: the clouds you can walk on, the shells that do everything, the money they call extol here. When the talk turns to God, her voice catches.',
+        it: 'Vive con il padre in una casetta sulla spiaggia degli angeli e porta a mangiare a casa gli stranieri saliti dal mare azzurro. Mostra loro come funzionano i dial, le conchiglie che conservano un suono o un soffio di vento. Quando Nami non si vede più si preoccupa: mettere piede su Upper Yard, spiega, va contro la volontà di Dio.',
+        en: 'She lives with her father in a small house on Angel Beach and takes the strangers up from the blue sea home for a meal. She shows them how dials work, the shells that keep a sound or a breath of wind. When Nami goes missing she grows worried: setting foot on Upper Yard, she explains, goes against God’s will.',
       },
       affiliation: [
         {
@@ -1123,8 +1123,8 @@ export const skypiea: Saga = {
     'pagaya': {
       role: { it: 'Artigiano di dial', en: 'Dial craftsman' },
       log: {
-        it: 'Costruisce e ripara i dial, le conchiglie in cui resta chiuso un pezzo di cielo: una soffia vento, una scalda, una restituisce il suono che ha sentito. Accoglie in casa quattro pirati e serve loro il pranzo senza fare domande. Dell’isola parla volentieri, di Dio il meno possibile.',
-        en: 'He builds and mends dials, the shells with a piece of the sky shut inside them: one blows wind, one gives heat, one gives back the sound it heard. He takes four pirates into his house and serves them lunch without asking a single question. He will talk about the island gladly, and about God as little as he can.',
+        it: 'Costruisce e ripara barche a dial, e arriva sulla spiaggia in waver per conoscere gli stranieri trovati dalla figlia. Lascia che lo provino, e resta stupito di quanto in fretta Nami impari a guidarlo. Li porta a casa, cucina per loro insieme a Sanji e dopo pranzo chiede di vedere il vecchio waver che hanno con sé.',
+        en: 'He builds and repairs dial boats, and rides a Waver up the beach to meet the strangers his daughter has found. He lets them try it, and is amazed at how fast Nami learns to ride it. He takes them home, cooks for them alongside Sanji, and after the meal asks to see the old Waver they brought with them.',
       },
       affiliation: [
         {
@@ -1198,8 +1198,8 @@ export const skypiea: Saga = {
     'shura': {
       role: ENEL_PRIEST,
       log: {
-        it: 'Tiene la prova del filo, dove un passo fuori dalla nuvola giusta vale la caduta e nient’altro. Vola su un uccello di fuoco e brucia quello che trova, comprese le case di chi non c’entra niente. Della gente di Skypiea parla come di roba di Dio, sua da amministrare.',
-        en: 'He keeps the ordeal of string, where one step off the right cloud is a fall and nothing else. He flies a bird of fire and burns whatever he finds, the houses of people who had no part in it included. He speaks of the people of Skypiea as God’s property, his to administer.',
+        it: 'Vola in groppa a un enorme uccello fino all’altare dove è stata portata la Going Merry, e si irrita di trovarci come offerta soltanto Chopper. Dà fuoco alla nave con la lancia e dice a Chopper che dovrà morire al posto di chi è scappato. Spiega che la foresta è divisa in quattro territori, uno per ogni sacerdote, e che l’altare non appartiene a nessuno di loro.',
+        en: 'He flies a huge bird to the altar where the Going Merry has been brought, and is annoyed to find only Chopper there as an offering. He sets the ship on fire with his lance and tells Chopper he must die in place of the ones who escaped. The forest, he explains, is split into four territories, one for each priest, and the altar belongs to none of them.',
       },
       affiliation: [{ episode: 162, value: ENEL_PRIESTS }],
       origin: [{ episode: 162, value: SKY_ISLAND }],
@@ -1207,8 +1207,8 @@ export const skypiea: Saga = {
     'gedatsu': {
       role: ENEL_PRIEST,
       log: {
-        it: 'Tiene la prova della palude, dove il cielo si apre e chi ci cade dentro non torna su. Ha una forza spaventosa nelle braccia e una distrazione che gli fa perdere il filo a metà di ogni frase. I suoi stessi sottoposti aspettano in silenzio che si ricordi di dare un ordine.',
-        en: 'He keeps the ordeal of swamp, where the sky opens up and whoever falls into it does not come back. His arms are frighteningly strong and his mind wanders so badly that he loses the thread halfway through every sentence. His own underlings wait in silence for him to remember to give an order.',
+        it: 'Raggiunge gli altri sacerdoti dopo che hanno inseguito un intruso per Upper Yard, e li avverte che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
+        en: 'He joins the other priests after they have chased an intruder across Upper Yard, and tells them that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
       affiliation: [
         { episode: 166, value: ENEL_PRIESTS },
