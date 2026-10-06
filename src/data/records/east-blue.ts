@@ -888,6 +888,15 @@ export const eastBlue: Saga = {
           },
         },
         { episode: 3, value: STRAW_HATS },
+        // Named one of the new Four Emperors at 1080 (chapter 1053).
+        {
+          episode: 1080,
+          chapter: 1053,
+          value: {
+            it: 'Pirati di Cappello di Paglia; Imperatore',
+            en: 'Straw Hat Pirates; Emperor',
+          },
+        },
       ],
       origin: [
         {
@@ -1286,7 +1295,18 @@ export const eastBlue: Saga = {
           chapter: 700,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
-        { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
+        // Named one of the new Four Emperors at 1080 (chapter 1053), and put
+        // at the head of Cross Guild by Kid's poster at 1083 (chapter 1056).
+        {
+          episode: 1080,
+          chapter: 1053,
+          value: { it: 'Imperatore', en: 'Emperor' },
+        },
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: { it: 'Cross Guild; Imperatore', en: 'Cross Guild; Emperor' },
+        },
       ],
       epithet: [{ episode: 5, value: { it: 'Il Clown', en: 'the Clown' } }],
       devilFruit: [{ episode: 5, value: ['chop-chop-fruit'] }],
@@ -1891,7 +1911,12 @@ export const eastBlue: Saga = {
           chapter: 69,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
-        { episode: 1088, value: { it: 'Cross Guild', en: 'Cross Guild' } },
+        // Kid's poster puts him in Cross Guild at 1083 (chapter 1056).
+        {
+          episode: 1083,
+          chapter: 1056,
+          value: { it: 'Cross Guild', en: 'Cross Guild' },
+        },
       ],
       epithet: [
         { episode: 24, value: { it: 'Occhi di Falco', en: 'Hawk-Eye' } },
