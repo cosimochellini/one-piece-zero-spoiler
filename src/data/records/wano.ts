@@ -101,8 +101,8 @@ export const wano: Saga = {
       revealedAtChapter: 929,
       name: { it: 'Page One', en: 'Page One' },
       summary: {
-        it: 'Uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che entra nella Capitale dei Fiori trasformato in dinosauro insieme a X Drake, mandato a punire in modo esemplare chi ha sfidato la ciurma.',
-        en: 'One of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who walks into the Flower Capital as a dinosaur beside X Drake, sent to make an example of whoever crossed the crew.',
+        it: 'Uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, che entra nella Capitale dei Fiori insieme a X Drake, mandato a punire in modo esemplare chi ha sfidato la ciurma.',
+        en: 'One of the Tobiroppo, the six strongest headliners of the Beasts Pirates, who walks into the Flower Capital beside X Drake, sent to make an example of whoever crossed the crew.',
       },
       visual: { art: 'page-one', tint: 'teal' },
     },
@@ -321,8 +321,8 @@ export const wano: Saga = {
       revealedAtChapter: 971,
       name: { it: 'Izo', en: 'Izo' },
       summary: {
-        it: 'Il figlio di un maestro di danza di Wano, che da ragazzo segue Oden, gli corre dietro fin sulla nave di Barbabianca e resta con la ciurma di Barbabianca quando Oden se ne va.',
-        en: 'The son of a dance master from Wano, who follows Oden as a boy, goes after him onto Whitebeard’s ship and stays with Whitebeard’s crew when Oden leaves it.',
+        it: 'Il figlio di un maestro di danza di Wano, che da bambino segue Oden, gli corre dietro fin sulla nave di Barbabianca e resta con quella ciurma quando Oden se ne va.',
+        en: 'The son of a dance master from Wano, who follows Oden as a child, goes after him onto Whitebeard’s ship and stays with that crew when Oden leaves it.',
       },
       visual: { art: 'izo', tint: 'flamingo' },
     },
@@ -1291,7 +1291,7 @@ export const wano: Saga = {
         en: 'Whitebeard Pirate from Wano',
       },
       log: {
-        it: 'Da bambino balla per strada per qualche moneta, finché Oden non gli dà da mangiare e lui si unisce agli uomini che lo seguono. Più tardi, quando Oden sgattaiola via di notte dietro alla nave di Barbabianca, Izo gli corre dietro per riportarlo indietro e finisce a bordo anche lui. Da allora naviga con la ciurma di Barbabianca, e quando nasce Momonosuke insiste perché Oden torni a casa per il bene della sua famiglia. Quando Oden parte con Roger, Izo resta sulla nave di Barbabianca, perché, dice Oden, ormai è affiatato con la ciurma.',
+        it: 'Da bambino balla per strada per qualche moneta, finché Oden non gli dà da mangiare e lui si unisce agli uomini che lo seguono. Più tardi, quando Oden sgattaiola via di notte dietro alla nave di Barbabianca, Izo gli corre dietro per riportarlo a casa e finisce a bordo anche lui. Da allora naviga con la ciurma di Barbabianca, e quando nasce Momonosuke insiste perché Oden torni a casa per il bene della sua famiglia. Quando Oden parte con Roger, Izo resta sulla nave di Barbabianca, perché, dice Oden, ormai è affiatato con la ciurma.',
         en: 'As a child he dances in the streets for a few coins, until Oden feeds him and he joins the men who follow him. Later, when Oden slips out at night after Whitebeard’s ship, Izo goes after him to bring him back and ends up on board himself. From then on he sails with Whitebeard’s crew, and after Momonosuke is born he urges Oden to go home for his family’s sake. When Oden leaves with Roger, Izo stays on Whitebeard’s ship, because, Oden says, he has meshed with the crew.',
       },
       status: [
@@ -1302,8 +1302,8 @@ export const wano: Saga = {
         {
           episode: 970,
           value: {
-            it: 'Pirati di Barbabianca; un tempo vassallo di Oden',
-            en: 'Whitebeard Pirates; once a retainer of Oden',
+            it: 'Pirati di Barbabianca; un tempo seguace di Oden',
+            en: 'Whitebeard Pirates; once a follower of Oden',
           },
         },
       ],
