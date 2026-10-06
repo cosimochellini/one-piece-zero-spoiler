@@ -1216,8 +1216,8 @@ export const dressrosa: Saga = {
     'trebol': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri ufficiali della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
-        en: 'He never leaves his boss’s side and agrees with everything he says, laughing a laugh that sounds like a scrape. His body makes a mucus that mires whoever touches it and hardens into a cage. He speaks to the family’s other officers like an old uncle, and how much of that good humour is an act is not clear.',
+        it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
+        en: 'He never leaves his boss’s side and agrees with everything he says, laughing a laugh that sounds like a scrape. His body makes a mucus that mires whoever touches it and hardens into a cage. He speaks to the rest of the family like an old uncle, and how much of that good humour is an act is not clear.',
       },
       affiliation: [
         { episode: 632, value: DONQUIXOTE_PIRATES },
