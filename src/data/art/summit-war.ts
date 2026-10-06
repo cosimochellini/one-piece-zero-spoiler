@@ -13,7 +13,7 @@ import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /** The slant Squard's katana lies at, centred in the box. */
 const SQUARD_KATANA =
-  'translate(80 110) rotate(-34) scale(1.2) translate(-77 -100)'
+  'translate(80 104) rotate(-34) scale(1.2) translate(-77 -100)'
 
 /** Jinbe's great wave, drawn alone first and under the helm later. */
 const GREAT_WAVE: Stroke[] = [
@@ -907,9 +907,9 @@ export const summitWarArt = {
 
   // His katana, sheathed, on the slant: the dark scabbard with its slight
   // curve and its far face hatched, the collar at its mouth, the big round
-  // guard as the accent, the wrapped grip and its cap. He wears it at his
-  // hip when he sends his crew into the bay in episode 462, and leaps in
-  // with it drawn at ch. 553.
+  // guard as the accent, the wrapped grip and its cap. The guard and the
+  // grip are the ones he wears at his hip when he sends his crew into the
+  // bay in episode 462, and holds as he leaps in at ch. 553 pp. 12-13.
   'squard': [
     {
       d: 'M90 95 Q50 92 12 94 Q6 100 12 106 Q50 105 90 105 Z',
@@ -917,7 +917,7 @@ export const summitWarArt = {
     },
     { d: 'M86 99 Q50 97 16 98', role: 'soft', transform: SQUARD_KATANA },
     {
-      d: 'M22 102 l-3 4 M34 102 l-3 4 M46 102 l-3 4 M58 102 l-3 4 M70 102 l-3 4 M82 102 l-3 4',
+      d: 'M24 99 l-5 6 M33 99 l-5 6 M42 99 l-5 6 M51 99 l-5 6 M60 99 l-5 6 M69 99 l-5 6 M78 99 l-5 6 M87 99 l-5 6',
       role: 'ambient',
       transform: SQUARD_KATANA,
     },
@@ -935,7 +935,7 @@ export const summitWarArt = {
       transform: SQUARD_KATANA,
     },
     { d: 'M140 94 h4 q4 6 0 12 h-4 z', transform: SQUARD_KATANA },
-    shadow(80, 182, 58),
+    shadow(80, 164, 56),
   ],
 
   // A straw hat woven out of rope, big enough for a giant.
