@@ -768,14 +768,26 @@ export const skypiea: Saga = {
           episode: 151,
           value: { it: 'Flotta dei Sette', en: 'Seven Warlords of the Sea' },
         },
+        // At 507 (chapter 591) Rayleigh repeats what Kuma told him at
+        // Sabaody: "I work for the Revolutionaries army." No rank yet.
+        {
+          episode: 507,
+          chapter: 591,
+          value: {
+            it: 'Flotta dei Sette; Armata Rivoluzionaria',
+            en: 'Seven Warlords; Revolutionary Army',
+          },
+        },
         // At the Reverie, 888 (chapter 908), Rosward rides him as a rented
-        // slave; the caption still calls him a current Warlord.
+        // slave; the caption still calls him a current Warlord, "a former top
+        // officer of the Revolutionary Army" and "former king of the Sorbet
+        // Kingdom".
         {
           episode: 888,
           chapter: 908,
           value: {
-            it: 'Flotta dei Sette; schiavo dei Nobili Mondiali',
-            en: 'Seven Warlords; slave of the World Nobles',
+            it: 'Flotta dei Sette; schiavo dei Nobili Mondiali; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
+            en: 'Seven Warlords; slave of the World Nobles; once a Revolutionary Army officer and king of Sorbet',
           },
         },
         // The Warlord system is abolished at 957 (chapter 956).
@@ -783,8 +795,8 @@ export const skypiea: Saga = {
           episode: 957,
           chapter: 956,
           value: {
-            it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali',
-            en: 'Former Warlord; slave of the World Nobles',
+            it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
+            en: 'Former Warlord; slave of the World Nobles; once a Revolutionary Army officer and king of Sorbet',
           },
         },
         // Kurouma reports his rescue to Sakazuki at 1081 (chapter 1054).
@@ -792,14 +804,18 @@ export const skypiea: Saga = {
           episode: 1081,
           chapter: 1054,
           value: {
-            it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali, liberato',
-            en: 'Former Warlord; slave of the World Nobles, freed',
+            it: 'Ex membro della Flotta dei Sette; schiavo dei Nobili Mondiali, liberato; un tempo ufficiale dell’Armata Rivoluzionaria e re di Sorbet',
+            en: 'Former Warlord; slave of the World Nobles, freed; once a Revolutionary Army officer and king of Sorbet',
           },
         },
       ],
+      // Born under the 1129 caption "47 years ago, Sorbet Kingdom, South
+      // Blue" (chapter 1095). The kingship at 888 does not say where he was
+      // born.
       origin: [
         {
-          episode: 1109,
+          episode: 1129,
+          chapter: 1095,
           value: {
             it: 'Regno di Sorbet, South Blue',
             en: 'Sorbet Kingdom, South Blue',
