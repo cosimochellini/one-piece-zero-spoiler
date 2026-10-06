@@ -705,8 +705,8 @@ export const egghead: Saga = {
         en: 'Vegapunk satellite, Punk-06',
       },
       log: {
-        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare. Quando si addormenta, è la quarta volta in quel giorno che mangia, va in bagno e dorme.',
-        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming. When she falls asleep, it is the fourth time that day she has eaten, gone to the bathroom and slept.',
+        it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare, e lei mangia, va in bagno e dorme più volte al giorno.',
+        en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming, and she eats, goes to the bathroom and sleeps several times a day.',
       },
       affiliation: [
         {
