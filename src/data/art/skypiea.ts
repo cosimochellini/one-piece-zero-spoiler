@@ -18,8 +18,8 @@ const MERRY_TILT = 'rotate(-10 80 90)'
 
 /**
  * Kuma's Bible, closed and stood on end, without the rays on its cover: the
- * book of the first drawing, and the one set down beside the steel plate
- * from 469.
+ * book of the first drawing, and the one stood beside the steel plate from
+ * 469, which leaves off the last stroke (the page block's hatching).
  */
 const KUMA_BIBLE: Stroke[] = [
   { d: 'M40 62 L104 54 V162 L40 170 Z' },
@@ -828,8 +828,12 @@ function underTheBiggerHat(strokes: Stroke[]): Stroke[] {
 /** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
 const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 
-/** Kuma's Bible, set down small beside the steel plate. */
-const BESIDE = 'translate(105 108) scale(0.42)'
+/** Kuma's Bible, smaller, stood on the same ground as the steel plate. */
+function besideThePlate(strokes: Stroke[]): Stroke[] {
+  const beside = 'translate(92 89) scale(0.5)'
+
+  return strokes.map((stroke) => ({ ...stroke, transform: beside }))
+}
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const skypieaRedrawn: Redrawings = {
@@ -1007,31 +1011,32 @@ export const skypieaRedrawn: Redrawings = {
     },
   ],
 
-  // The paw pressed into a riveted steel plate, the Bible set down beside
-  // it: Vegapunk has finished him, a weapon with his past erased, as
-  // Doflamingo tells Ivankov at Marineford at 469 (ch. 560). The plate's edge
-  // and the book's pages are hatched, never filled.
+  // The paw pressed into a riveted steel plate standing on the ground, the
+  // Bible stood beside it on the same ground: Vegapunk has finished him, a
+  // weapon with his past erased, as Doflamingo tells Ivankov at Marineford at
+  // 469 (ch. 560). The plate's edge is hatched, never filled; the small
+  // book's page block is left open so the tile stays clear.
   'bartholomew-kuma': [
     {
       episode: 469,
       chapter: 560,
       value: [
-        { d: 'M24 34 H110 V130 H24z' },
-        { d: 'M110 34 l6 6 V136 H30 l-6 -6' },
+        { d: 'M14 70 H100 V166 H14z' },
+        { d: 'M100 70 l6 6 V172 H20 l-6 -6' },
         {
-          d: 'M111 56 l4 4 M111 76 l4 4 M111 96 l4 4 M111 116 l4 4',
+          d: 'M101 92 l4 4 M101 112 l4 4 M101 132 l4 4 M101 152 l4 4',
           role: 'ambient',
         },
         {
-          d: `${circle(32, 42, 3)} ${circle(102, 42, 3)} ${circle(32, 122, 3)} ${circle(102, 122, 3)}`,
+          d: `${circle(22, 78, 3)} ${circle(92, 78, 3)} ${circle(22, 158, 3)} ${circle(92, 158, 3)}`,
         },
-        { d: ellipse(67, 98, 20, 15), role: 'accent' },
+        { d: ellipse(57, 134, 20, 15), role: 'accent' },
         {
-          d: `${circle(45, 74, 7)} ${circle(59, 64, 7)} ${circle(77, 64, 7)} ${circle(91, 74, 7)}`,
+          d: `${circle(35, 110, 7)} ${circle(49, 100, 7)} ${circle(67, 100, 7)} ${circle(81, 110, 7)}`,
           role: 'accent',
         },
-        ...KUMA_BIBLE.map((stroke) => ({ ...stroke, transform: BESIDE })),
-        shadow(84, 184, 60),
+        ...besideThePlate(KUMA_BIBLE.slice(0, -1)),
+        shadow(82, 180, 72),
       ],
     },
   ],
