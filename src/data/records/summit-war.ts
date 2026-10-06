@@ -246,8 +246,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Basil Hawkins', en: 'Basil Hawkins' },
       summary: {
-        it: 'Un capitano che decide le sue mosse girando una carta dei tarocchi e annuncia ad alta voce le probabilità di sopravvivenza degli altri.',
-        en: 'A captain who settles his moves by turning a tarot card, and reads out everyone else’s odds of survival as though they were the weather.',
+        it: 'Un capitano che legge i tarocchi al tavolo e dice a chi gli sta intorno cosa gli riserva il destino, fino a una camicia macchiata.',
+        en: 'A captain who reads tarot cards at his table and tells the people around him what fate has in store for them, down to a stained shirt.',
       },
       visual: { art: 'basil-hawkins', tint: 'yellow' },
     },
@@ -282,8 +282,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Capone Bege', en: 'Capone Bege' },
       summary: {
-        it: 'Un capitano in gessato che parla come un padrino e tratta la ciurma come una famiglia, sigaro acceso e cappello calato sugli occhi.',
-        en: 'A captain in pinstripes who talks like a don and runs his crew like a family, cigar lit and hat pulled down over his eyes.',
+        it: 'Un capitano in gessato che parla come un padrino e che la ciurma chiama padre, e che non riesce a mangiare in pace se al tavolo accanto qualcuno non ha maniere.',
+        en: 'A captain in pinstripes who talks like a don, whose crew calls him father, and who cannot eat in peace while someone at the next table has no manners.',
       },
       visual: { art: 'capone-bege', tint: 'wine' },
     },
@@ -573,8 +573,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 556,
       name: { it: 'Sakazuki', en: 'Sakazuki' },
       summary: {
-        it: 'Un ammiraglio della Marina che fuma dal cappello e considera la giustizia una faccenda da chiudere, non da discutere.',
-        en: 'A Marine admiral with smoke coming off his cap, who treats justice as a matter to be finished rather than a matter to debate.',
+        it: 'Un ammiraglio della Marina in completo cremisi, con il viso nascosto sotto la visiera del cappello, che trasforma il pugno in magma.',
+        en: 'A Marine admiral in a crimson suit, his face hidden under the peak of his cap, whose fist turns to magma.',
       },
       visual: { art: 'sakazuki', tint: 'vermilion' },
     },
@@ -609,8 +609,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 558,
       name: { it: 'Squardo', en: 'Squard' },
       summary: {
-        it: 'Il capitano di una ciurma alleata di Barbabianca, che chiama padre il vecchio e porta la sua nave in prima fila nella baia.',
-        en: 'The captain of a crew allied to Whitebeard, who calls the old man father and brings his ship into the front line of the bay.',
+        it: 'Il capitano di una ciurma del Nuovo Mondo alleata di Barbabianca, che chiama padre il vecchio e manda i suoi uomini in battaglia nella baia.',
+        en: 'The captain of a New World crew allied to Whitebeard, who calls the old man father and sends his men into the battle in the bay.',
       },
       visual: { art: 'squard', tint: 'wine' },
     },
@@ -1080,8 +1080,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Kid Pirates',
       },
       log: {
-        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si scontra con Scratchmen Apoo, un altro capitano.',
-        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he fights Scratchmen Apoo, another captain.',
+        it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si scambia minacce con Scratchmen Apoo, un altro capitano.',
+        en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he trades threats with Scratchmen Apoo, another captain.',
       },
       affiliation: [
         {
@@ -1387,8 +1387,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Hawkins Pirates',
       },
       log: {
-        it: 'Prima di muoversi gira una carta e legge quello che vi trova, e alla gente annuncia la percentuale esatta di probabilità che ha di restare viva. Parla piano, non si scompone e non alza mai il tono, nemmeno quando gli altri capitani si sfidano davanti a un bar. Si porta dietro bambole di paglia che nessuno gli ha ancora visto usare.',
-        en: 'Before he moves he turns a card and reads what is on it, then tells people the exact percentage chance they have of staying alive. He speaks slowly, never flinches and never raises his voice, not even when the other captains square up outside a bar. He carries straw dolls that nobody has yet seen him use.',
+        it: 'Siede in un ristorante del Grove 24 con i suoi tarocchi e parla del destino come di una cosa già decisa. Quando un cameriere rovescia il cibo addosso a uno dei suoi uomini, gli impedisce di vendicarsi: era il destino di quei vestiti, dice, e togliere una vita oggi porterebbe sfortuna. Parla piano e non alza mai la voce.',
+        en: 'He sits in a Grove 24 restaurant with his tarot cards and speaks of fate as something already decided. When a waiter spills food on one of his men, he stops the man from hitting back: such was the fate of those clothes, he says, and taking a life today would bring bad luck. He speaks slowly and never raises his voice.',
       },
       affiliation: [
         {
@@ -1414,12 +1414,22 @@ export const summitWar: Saga = {
         en: 'Captain of the Drake Pirates',
       },
       log: {
-        it: 'Prima di issare bandiera nera portava le stellette di contrammiraglio, e nessuno sa dire perché abbia cambiato parte. Arriva a Sabaody con gli altri capitani della sua generazione e tiene la testa bassa, come se preferisse non essere contato.',
-        en: 'Before he raised a black flag he wore a rear admiral’s stars, and nobody can say why he changed sides. He comes to Sabaody with the other captains of his generation and keeps his head down, as though he would rather not be counted.',
+        it: 'Un tempo era un marine, oggi è il capitano di una ciurma pirata. A Sabaody ferma lo scontro fra Killer e Urouge parando i colpi di entrambi, e dice loro di tenerselo per il Nuovo Mondo. Law gli chiede quante persone abbia ucciso.',
+        en: 'He was once a Marine and is now a pirate captain. At Sabaody he stops a fight between Killer and Urouge by blocking them both, and tells them to save it for the New World. Law asks him how many people he has killed.',
       },
       affiliation: [
         {
           episode: 392,
+          value: {
+            it: 'Pirati di Drake, capitano, ex marine',
+            en: 'Drake Pirates, captain, former Marine',
+          },
+        },
+        // Kizaru calls him "Rear Admiral Drake" at the end of chapter 508,
+        // which episode 401 adapts; 498 and 392 say only "former Marine".
+        {
+          episode: 401,
+          chapter: 508,
           value: {
             it: 'Pirati di Drake, capitano, ex contrammiraglio della Marina',
             en: 'Drake Pirates, captain, former Marine rear admiral',
@@ -1479,8 +1489,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Fire Tank Pirates',
       },
       log: {
-        it: 'Comanda la sua ciurma come una famiglia di malavita, con il gessato addosso e il sigaro sempre acceso, e ai suoi uomini dà del soldato. Viene dal West Blue, dove si era preso una città intera prima ancora di mettersi in mare. A Sabaody non si mescola con gli altri capitani: osserva, conta quanti sono e se ne va per la sua strada.',
-        en: 'He runs his crew like a crime family, pinstripes on and a cigar always lit, and calls his men soldiers. He comes from the West Blue, where he had taken a whole town for himself before he ever put to sea. At Sabaody he does not mix with the other captains: he watches, counts how many there are, and goes his own way.',
+        it: 'Comanda la sua ciurma come una famiglia di malavita, e i suoi uomini lo chiamano padre. Viene dal West Blue. A Sabaody si siede a cena in un ristorante del Grove 24 e vuole che Jewelry Bonney stia zitta, per come mangia. Quando uno dei suoi uomini gli ricorda che il quartier generale della Marina è a due passi e che una rissa sarebbe un errore, Bege lo colpisce con la forchetta.',
+        en: 'He runs his crew like a crime family, and his men call him father. He comes from the West Blue. At Sabaody he sits down to dinner in a Grove 24 restaurant and wants Jewelry Bonney silenced for the way she eats. When one of his men warns him that Marine headquarters is close and a fight would be a mistake, Bege hits him with his fork.',
       },
       affiliation: [
         {
@@ -1951,8 +1961,8 @@ export const summitWar: Saga = {
       chronicle: summitWarChronicles.sakazuki,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'Siede al quartier generale fra gli altri due ammiragli e non discute mai l’ordine che ha ricevuto: lo esegue fino in fondo. Il suo corpo diventa magma, e quando si muove il cappello e le spalline fumano ancora prima del colpo. Della giustizia ha una sola idea e non ammette che esistano casi particolari.',
-        en: 'He sits at headquarters between the other two admirals and never argues with an order he has been given: he carries it all the way through. His body turns to magma, and when he moves his cap and epaulettes are smoking before the blow even lands. He holds one idea of justice and allows no special cases.',
+        it: 'Siede ai piedi del patibolo, fra gli altri due ammiragli, con il viso nascosto sotto la visiera del cappello. Quando Jozu scaglia contro i marine un enorme blocco di ghiaccio, si alza dalla sedia, trasforma il braccio in magma e manda in pezzi il blocco.',
+        en: 'He sits at the foot of the scaffold between the other two admirals, his face hidden under the peak of his cap. When Jozu hurls a huge block of ice at the Marines, he gets up from his chair, turns his arm to magma and breaks the block apart.',
       },
       status: [{ episode: 463, value: 'alive' }],
       affiliation: [
@@ -2031,12 +2041,22 @@ export const summitWar: Saga = {
         en: 'Captain allied to Whitebeard',
       },
       log: {
-        it: 'Guida una delle ciurme alleate e porta la sua nave in prima fila nella baia, davanti a tutte le altre bandiere. Chiama padre Barbabianca e lo dice davanti ai suoi uomini senza abbassare la voce. È il primo degli alleati a rispondere quando il vecchio chiama, e l’ultimo a chiedere perché.',
-        en: 'He leads one of the allied crews and takes his ship into the front line of the bay, ahead of every other flag. He calls Whitebeard father and says it in front of his own men without lowering his voice. He is the first of the allies to answer when the old man calls, and the last to ask why.',
+        it: 'Guida una delle ciurme del Nuovo Mondo alleate di Barbabianca, arrivate nella baia per salvare Ace. Chiama padre Barbabianca e manda i suoi uomini all’attacco della Marina.',
+        en: 'He leads one of the New World crews allied to Whitebeard that have come to the bay to save Ace. He calls Whitebeard father and sends his men to attack the Marines.',
       },
       affiliation: [
+        // Episode 462 calls the crew the "Squard Pirates"; the crew's own
+        // name is first said in chapter 572, which episode 481 adapts.
         {
           episode: 462,
+          value: {
+            it: 'Pirati di Squardo, capitano; alleato di Barbabianca',
+            en: 'Squard Pirates, captain; Whitebeard’s ally',
+          },
+        },
+        {
+          episode: 481,
+          chapter: 572,
           value: {
             it: 'Pirati del Ragno di Mare, capitano; alleato di Barbabianca',
             en: 'Maelstrom Spider Pirates, captain; Whitebeard’s ally',

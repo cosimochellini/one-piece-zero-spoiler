@@ -380,7 +380,7 @@ export const summitWarArt = {
 
   // A tarot card stood on its edge at an angle, so its thickness shows, its
   // face left blank; three more lying face down in front of it, their dark
-  // backs hatched. He turns them over to read the odds at Sabaody in
+  // backs hatched. He reads his tarot cards at a Sabaody restaurant table in
   // episode 392.
   'basil-hawkins': [
     { d: 'M58 44 L100 38 L104 118 L62 124 Z', role: 'accent' },
