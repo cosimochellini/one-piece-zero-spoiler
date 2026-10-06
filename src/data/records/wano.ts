@@ -209,12 +209,12 @@ export const wano: Saga = {
     {
       id: 'shimotsuki-yasuie',
       kind: 'character',
-      revealedAtEpisode: 938,
+      revealedAtEpisode: 939,
       revealedAtChapter: 943,
       name: { it: 'Shimotsuki Yasuie', en: 'Shimotsuki Yasuie' },
       summary: {
-        it: 'Un vecchio scalzo del quartiere di Ebisu, che tutti chiamano Tonoyasu e amano come un padre, e che un tempo era il daimyo di Hakumai.',
-        en: 'A barefoot old man from Ebisu Town, called Tonoyasu by everyone and loved like a father, who was once the daimyo of Hakumai.',
+        it: 'Un vecchio del quartiere di Ebisu, chiamato Tonoyasu e amato da tutto il quartiere, che un tempo era il daimyo di Hakumai.',
+        en: 'An old man from Ebisu Town, called Tonoyasu and loved by the whole town, who was once the daimyo of Hakumai.',
       },
       visual: { art: 'shimotsuki-yasuie', tint: 'ocher' },
     },
@@ -1089,24 +1089,24 @@ export const wano: Saga = {
     'shimotsuki-yasuie': {
       role: { it: 'Ex daimyo di Hakumai', en: 'Former daimyo of Hakumai' },
       log: {
-        it: 'Nel quartiere più povero della capitale gira scalzo, saluta tutti per nome e promette a chi ha fame che un giorno le cose cambieranno. La gente di Ebisu lo chiama Tonoyasu e lo ascolta più di quanto ascolti lo shogun. Quando si presenta da solo davanti al patibolo, la capitale scopre che quel vecchio senza sandali era il signore di una delle regioni di Wano.',
-        en: 'In the poorest quarter of the capital he walks barefoot, greets everyone by name and promises the hungry that one day things will change. The people of Ebisu call him Tonoyasu and listen to him more than they listen to the shogun. When he walks up to the execution stand alone, the capital learns that the old man without sandals once ruled one of Wano’s regions.',
+        it: 'Nel quartiere di Ebisu, la borgata povera alle porte della Capitale dei Fiori, tutti lo chiamano Tonoyasu. Per vivere fa il giullare, e il denaro che ha lo lascia ai malati e a chi ha fame, mentre lui mangia poco. Accompagna Zoro fino a Ebisu e più tardi lascia agli amici di Zoro una casa vuota del quartiere. Quando dichiara di essere un ladro ricercato, viene arrestato e legato a una croce per essere giustiziato nella capitale, e si scopre che Tonoyasu è un nome falso: è Shimotsuki Yasuie, un tempo daimyo di Hakumai.',
+        en: 'In Ebisu Town, a poor neighbourhood just outside the Flower Capital, everyone calls him Tonoyasu. He makes his living as a male geisha, and the money he has he leaves to the sick and the hungry, though he eats little himself. He takes Zoro to Ebisu Town and later lets Zoro’s friends stay in an empty house there. When he claims to be a wanted thief, he is arrested and tied to a cross for execution in the capital, and it comes out that Tonoyasu is a false name: he is Shimotsuki Yasuie, once the daimyo of Hakumai.',
       },
       status: [
-        { episode: 938, value: 'alive' },
+        { episode: 939, value: 'alive' },
         { episode: 940, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 938,
+          episode: 939,
           value: {
             it: 'Ex daimyo di Hakumai; Tonoyasu del quartiere di Ebisu',
             en: 'Former daimyo of Hakumai; Tonoyasu of Ebisu Town',
           },
         },
       ],
-      origin: [{ episode: 938, value: WANO }],
-      epithet: [{ episode: 938, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
+      origin: [{ episode: 939, value: WANO }],
+      epithet: [{ episode: 939, value: { it: 'Tonoyasu', en: 'Tonoyasu' } }],
     },
     // Onimaru gets no record of his own: he is named only at the reveal
     // (954), when the bridge monk turns back into Ushimaru's fox, so a
