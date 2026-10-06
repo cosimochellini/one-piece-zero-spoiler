@@ -30,11 +30,17 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Thirteen of them are drawn by hand and name their drawing; the rest name
- * the seed they are grown from.
+ * Twelve of them are drawn by hand and name their drawing; the rest name the
+ * seed they are grown from.
  */
 export const fruitArt = {
-  'gum-gum-fruit': GUM_GUM,
+  'gum-gum-fruit': fruit({
+    body: 'round',
+    grain: 3,
+    leaf: 'left',
+    stem: 'nub',
+    swirl: 'scales',
+  }),
   'chop-chop-fruit': CHOP_CHOP,
   'slip-slip-fruit': fruit({
     body: 'oblong',
@@ -860,6 +866,9 @@ export const fruitArt = {
  * look of the real one is something the story has not shown yet.
  */
 export const fruitRedrawn: Redrawings = {
+  // The fruit in the Red Hair Pirates' chest that Luffy eats, in episode 4
+  // and chapter 1.
+  'gum-gum-fruit': [{ episode: 4, chapter: 1, value: GUM_GUM }],
   // The prize of the Corrida Colosseum, held up by Doflamingo in episode 629
   // and chapter 700.
   'flame-flame-fruit': [{ episode: 629, chapter: 700, value: FLAME_FLAME }],

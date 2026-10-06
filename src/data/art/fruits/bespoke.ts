@@ -86,6 +86,10 @@ function curl(cx: number, cy: number, r: number): string {
  * Ten curls and not three. The fruit everybody can draw from memory is not a
  * target with a couple of rings on it — it is covered, corner to corner, in
  * spirals of every size, and the stalk is as much of the shape as the fruit.
+ *
+ * Not seen until Luffy finds it in the Red Hair Pirates' chest in episode 4,
+ * so it is drawn from there, in `fruitRedrawn`; before that the fruit is a
+ * grown one.
  */
 export const GUM_GUM: Stroke[] = [
   { d: ring(80, 126, 44) },

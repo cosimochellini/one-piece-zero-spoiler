@@ -76,7 +76,6 @@ const HAND_DRAWN = {
   'chop-chop-fruit': CHOP_CHOP,
   'dark-dark-fruit': DARK_DARK,
   'flower-flower-fruit': FLOWER_FLOWER,
-  'gum-gum-fruit': GUM_GUM,
   'human-human-fruit': HUMAN_HUMAN,
   'op-op-fruit': OP_OP,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
@@ -181,7 +180,7 @@ describe('the fruit sheet', () => {
     expect(distinct.size).toBe(SHEET.length)
   })
 
-  it('draws the thirteen best-known fruits by hand', () => {
+  it('draws the twelve best-known fruits by hand', () => {
     for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
       expect(fruitArt, id).toHaveProperty(id)
       expect(Object.getOwnPropertyDescriptor(fruitArt, id)?.value, id).toBe(
@@ -193,6 +192,7 @@ describe('the fruit sheet', () => {
 
 describe('the fruits drawn again', () => {
   it('draws the real fruit once the show has shown it', () => {
+    expect(fruitRedrawn['gum-gum-fruit']?.[0]?.value).toBe(GUM_GUM)
     expect(fruitRedrawn['flame-flame-fruit']?.[0]?.value).toBe(FLAME_FLAME)
     expect(fruitRedrawn['op-op-fruit']?.[0]?.value).toBe(OP_OP_HEART)
   })
