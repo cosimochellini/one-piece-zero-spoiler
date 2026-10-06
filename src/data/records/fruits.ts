@@ -1446,7 +1446,7 @@ export const devilFruits: Saga = {
       id: 'brush-brush-fruit',
       kind: 'fruit',
       revealedAtEpisode: 985,
-      revealedAtChapter: 981,
+      revealedAtChapter: 980,
       name: { it: 'Frutto Fude Fude', en: 'Brush-Brush Fruit' },
       summary: {
         it: 'Quello che viene dipinto col pennello esce dalla carta e si muove: un uccello, un cavallo, un muro di fuoco, disegnati male come solo quella mano sa fare.',

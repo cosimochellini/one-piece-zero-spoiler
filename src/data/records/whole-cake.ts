@@ -1993,6 +1993,7 @@ export const wholeCake: Saga = {
         },
         {
           episode: 994,
+          chapter: 985,
           value: {
             it: 'Di nuovo agli ordini di Big Mom',
             en: 'Back under Big Mom’s command',

@@ -377,7 +377,7 @@ export const wano: Saga = {
     {
       id: 'yamato',
       kind: 'character',
-      revealedAtEpisode: 992,
+      revealedAtEpisode: 990,
       revealedAtChapter: 983,
       name: { it: 'Yamato', en: 'Yamato' },
       summary: {
@@ -389,8 +389,8 @@ export const wano: Saga = {
     {
       id: 'bao-huang',
       kind: 'character',
-      revealedAtEpisode: 995,
-      revealedAtChapter: 995,
+      revealedAtEpisode: 985,
+      revealedAtChapter: 979,
       name: { it: 'Bao Huang', en: 'Bao Huang' },
       summary: {
         it: 'Una headliner della ciurma dell’Imperatore, con una coda da scoiattolo e una maschera con un occhio disegnato sopra, che legge a Kaido il programma della serata.',
@@ -857,7 +857,7 @@ export const wano: Saga = {
       },
       status: [
         { episode: 921, value: 'alive' },
-        { episode: 994, value: 'presumed-dead' },
+        { episode: 994, chapter: 985, value: 'presumed-dead' },
         { episode: 1026, value: 'alive' },
         { episode: 1075, value: 'deceased' },
       ],
@@ -896,6 +896,7 @@ export const wano: Saga = {
         },
         {
           episode: 972,
+          chapter: 970,
           value: {
             it: 'Alleanza Kozuki, kunoichi; un tempo dell’Oniwabanshu',
             en: 'Kozuki alliance, kunoichi; once of the Oniwabanshu',
@@ -1396,6 +1397,19 @@ export const wano: Saga = {
             en: 'None: Kaido’s prisoner on Onigashima',
           },
         },
+        {
+          episode: 995,
+          chapter: 986,
+          value: {
+            it: 'Nessuna: ha rinnegato suo padre, Kaido',
+            en: 'None: has disowned his father, Kaido',
+          },
+        },
+        {
+          episode: 1007,
+          chapter: 994,
+          value: { it: 'Alleanza Kozuki', en: 'Kozuki alliance' },
+        },
       ],
       devilFruit: [
         {
@@ -1411,12 +1425,13 @@ export const wano: Saga = {
         en: 'Beasts Pirates headliner',
       },
       log: {
-        it: 'Ha mangiato uno SMILE dello scoiattolo volante, che le dà una coda da scoiattolo. Quando Kaido la chiama arriva subito e legge il programma della serata: un brindisi, i discorsi di Orochi e di Kaido, l’alleanza con la ciurma di Big Mom e, per ultimo, un annuncio importante che Kaido non vuole anticipare. Più tardi Kaido le chiede di Big Mom, e lei risponde che è già in arrivo.',
-        en: 'She ate a flying squirrel SMILE, which gives her a squirrel’s tail. When Kaido calls her she comes at once and reads out the night’s schedule: a toast, speeches by Orochi and Kaido, the alliance with Big Mom’s crew and, last, an important announcement that Kaido will not explain in advance. Later Kaido asks her about Big Mom, and she tells him Big Mom is already on her way.',
+        it: 'Ha mangiato uno SMILE dello scoiattolo volante, che le dà una coda da scoiattolo. Quando Kaido la chiama arriva subito e legge il programma della serata: un brindisi, i discorsi di Orochi e di Kaido, l’alleanza con la ciurma di Big Mom e, per ultimo, un annuncio importante che Kaido non vuole anticipare.',
+        en: 'She ate a flying squirrel SMILE, which gives her a squirrel’s tail. When Kaido calls her she comes at once and reads out the night’s schedule: a toast, speeches by Orochi and Kaido, the alliance with Big Mom’s crew and, last, an important announcement that Kaido will not explain in advance.',
       },
       affiliation: [
         {
-          episode: 995,
+          episode: 985,
+          chapter: 979,
           value: {
             it: 'Pirati delle Cento Bestie, headliner',
             en: 'Beasts Pirates, headliner',
@@ -1688,6 +1703,7 @@ export const wano: Saga = {
         },
         {
           episode: 995,
+          chapter: 986,
           value: {
             it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
             en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
@@ -1717,6 +1733,7 @@ export const wano: Saga = {
         },
         {
           episode: 995,
+          chapter: 986,
           value: {
             it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
             en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
@@ -1746,6 +1763,7 @@ export const wano: Saga = {
         },
         {
           episode: 995,
+          chapter: 986,
           value: {
             it: 'Pirati delle Cento Bestie; un tempo dell’Oniwabanshu di Orochi',
             en: 'Beasts Pirates; once of the Orochi Oniwabanshu',
