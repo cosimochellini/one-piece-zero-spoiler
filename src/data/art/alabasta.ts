@@ -987,8 +987,10 @@ export const alabastaArt = {
   ],
 
   // The wooden club of the Sand-Sand Clan, its head ringed with carved
-  // grooves, the one the boy knocks the bandit down with (ch 164, ep 100),
-  // laid across the folded scarf the rebel leader wears (ch 164, ep 93).
+  // grooves, the one the boy knocks the bandit down with (ch 164 p8, ep 100),
+  // laid across the folded scarf the rebel leader wears (ch 164 p19). The
+  // anime has no canon shot of the man by ep 100; anime viewers saw the
+  // scarf in his anime-original scene at the rebel base (ep 93).
   'kohza': [
     {
       d: 'M24 134 C52 130 74 126 92 118 C104 112 120 108 132 109 C144 110 148 126 138 132 C126 138 106 136 92 136 C74 140 52 144 26 144 C20 144 18 135 24 134 Z',
