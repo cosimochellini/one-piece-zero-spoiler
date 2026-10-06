@@ -53,8 +53,8 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 | Saga modules        | 12, plus one for the devil fruits                     |
 | Line drawings       | 737, one per record, plus 34 redrawings of 29 records |
 | Chronicle stories   | 756, for 185 characters                               |
-| Test files          | 68                                                    |
-| Test cases          | 605                                                   |
+| Test files          | 75                                                    |
+| Test cases          | 686                                                   |
 | Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions  |
 
 Counted on 2026-10-05. Coverage includes the scripts under `scripts/`. The live

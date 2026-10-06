@@ -340,7 +340,10 @@ export const CHOP_CHOP: Stroke[] = [
 ]
 
 /** The Room around the fruit, and the floor it closes on. */
-const ROOM = { cx: 80, cy: 108, r: 74, floor: 166 }
+const ROOM = { cx: 80, cy: 106, r: 72, floor: 166 }
+
+/** Half the width of the Room where it meets its floor. */
+const ROOM_FLOOR = Math.sqrt(ROOM.r ** 2 - (ROOM.floor - ROOM.cy) ** 2)
 
 /**
  * The fruit standing in a Room: the sphere its eater opens before any cut,
@@ -377,9 +380,9 @@ export const OP_OP: Stroke[] = [
   // of the fruit.
   {
     d: [
-      polyline(trace([80, ROOM.floor], [46, 8], [0, 180, 16])),
-      polyline(trace([80, ROOM.floor], [46, 8], [180, 222, 5])),
-      polyline(trace([80, ROOM.floor], [46, 8], [318, 360, 5])),
+      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [0, 180, 16])),
+      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [180, 222, 5])),
+      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [318, 360, 5])),
     ].join(' '),
     role: 'ambient',
     dashed: true,
