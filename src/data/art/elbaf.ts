@@ -133,6 +133,8 @@ export const elbafArt = {
     },
     { d: 'M104 134 H132 M104 158 H132 M132 134 a6 12 0 0 1 0 24' },
     { d: ellipse(104, 146, 6, 12) },
+    { d: 'M110 134 a6 12 0 0 1 0 24 M126 134 a6 12 0 0 1 0 24', role: 'soft' },
+    { d: 'M114.5 134 v-3 a3 3 0 0 1 6 0 v3', role: 'accent' },
     { d: 'M114 150 l4 -4 M120 152 l6 -6 M126 154 l5 -5', role: 'ambient' },
     {
       d: 'M-4 150 H20 M140 150 H164 M40 150 H96',
@@ -245,10 +247,14 @@ export const elbafArt = {
       d: 'M109.4 141.7 L109.4 147.7 M97 134.8 L97 140.8 M80 130.5 L80 136.5 M63 129.1 L63 135.1 M50.6 130.3 L50.6 136.3 M109.4 107.7 L109.4 113.7 M97 100.8 L97 106.8 M80 96.5 L80 102.5 M63 95.1 L63 101.1 M50.6 96.3 L50.6 102.3',
       role: 'ambient',
     },
-    { d: 'M80 168 V177' },
+    { d: 'M80 168 C66 170 52 176 38 177 M80 177 C68 180 54 185 40 186' },
+    {
+      d: 'M38 177 l-3 2 l4 2 l-4 2 l5 3 M36 181 l-8 1 M37 184 l-7 4',
+      role: 'soft',
+    },
     { d: 'M80 100 C100 99 114 88 117 64 M80 109 C106 108 126 92 127 64' },
     { d: 'M106 68 L122 34 L138 68 L122 60 Z', role: 'accent' },
-    shadow(80, 190, 40),
+    shadow(96, 190, 26),
   ],
 
   // An empty throne, a portrait in a heavy frame on the wall behind it.
@@ -306,16 +312,16 @@ export const elbafArt = {
   // ringed with thorns. He wears it once he has dressed after the summons
   // (1170).
   'shepherd-sommers': [
-    { d: 'M75 87 V176 Q80 186 85 176 V87', transform: TILT },
-    { d: 'M80 92 V176', role: 'soft', transform: TILT },
-    { d: ellipse(80, 80, 20, 7), role: 'accent', transform: TILT },
+    { d: 'M75 90 V176 Q80 186 85 176 V90', transform: TILT },
+    { d: 'M80 96 V176', role: 'soft', transform: TILT },
+    { d: ellipse(80, 80, 18, 6), transform: TILT },
+    { d: 'M62 80 v4 a18 6 0 0 0 36 0 v-4', transform: TILT },
     {
-      d: 'M100 79.6 L106.6 82.6 L99.3 81.8 M96.9 83.8 L97.5 91.2 L92.6 85.4 M87.3 86.5 L84.8 93.8 L81.1 87 M75 86.8 L70.9 93.3 L69.1 85.9 M64.6 84.4 L59.1 89.5 L61.3 82.5 M60 80.4 L53.4 77.4 L60.7 78.2 M63.1 76.2 L62.5 68.8 L67.4 74.6 M72.7 73.5 L75.2 66.2 L78.9 73 M85 73.2 L89.1 66.7 L90.9 74.1 M95.4 75.6 L100.9 70.5 L98.7 77.5',
+      d: 'M97 78.7 L104.5 81.2 L98.7 82.8 M98.8 83.7 L101.6 86.6 L96.1 87.2 M96.2 86.8 L92.9 96.9 L92.2 88.6 M88 89.4 L87.9 94.5 L83.7 89.9 M77.8 90 L71.6 96.5 L73.5 89.6 M70.3 89.1 L69 92.9 L66.1 87.9 M64.3 87.4 L56.7 88 L61.3 84.1 M61.3 81.6 L57 79 L64.1 78.3',
       role: 'accent',
       transform: TILT,
     },
-    { d: 'M60 80 v4 a20 7 0 0 0 40 0 v-4', role: 'soft', transform: TILT },
-    { d: 'M76.5 74 V40 M83.5 74 V40', transform: TILT },
+    { d: 'M76.5 80 V40 M83.5 80 V40', transform: TILT },
     { d: ellipse(80, 34, 6, 6), transform: TILT },
     shadow(80, 188, 34),
   ],
