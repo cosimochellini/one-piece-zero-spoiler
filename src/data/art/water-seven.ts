@@ -1,12 +1,4 @@
-import {
-  circle,
-  dots,
-  ellipse,
-  house,
-  SEA,
-  shadow,
-  star,
-} from '~/lib/svg/primitives'
+import { circle, dots, ellipse, SEA, shadow, star } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
@@ -43,6 +35,17 @@ const KUZAN_ICE: Stroke[] = [
   { d: 'M40 156 h26 M98 158 h24', role: 'accent' },
   ...SEA.slice(2),
 ]
+
+/**
+ * One of Sodom and Gomorrah, the Franky Family's King Bulls: a neck rising
+ * out of the water, a horse's head with its snout forward, no eye. The two
+ * are the same animal set side by side.
+ */
+const KING_BULL_NECK =
+  'M0 60 C-4 40 0 20 14 12 C24 6 34 8 40 14 L52 20 Q56 26 50 28 L36 26 C30 28 26 34 26 44 L28 60'
+
+/** The mane down the back of that neck. */
+const KING_BULL_MANE = 'M14 12 C6 10 0 16 -2 24 L4 22 L-2 32 L4 30 L-2 40 L2 40'
 
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
@@ -97,35 +100,59 @@ export const waterSevenArt = {
     shadow(64, 178, 28),
   ],
 
-  // A pair of heavy gauntlets, knuckles down.
+  // His leopard-spotted scarf, untied from his neck and left knotted in a
+  // loop, its two ends falling forward and the far side of the loop hatched.
+  // It is what he wears from his first scene (207); the iron gauntlets are
+  // hidden weapons, brought out in the Groggy Ring.
   'hamburg': [
-    { d: 'M22 42 h52 v18 h-52z' },
-    { d: 'M26 60 h44 v34 a22 22 0 0 1 -44 0z' },
-    { d: 'M30 104 q10 10 20 0 q10 10 18 -2', role: 'accent' },
-    { d: 'M86 42 h52 v18 h-52z' },
-    { d: 'M90 60 h44 v34 a22 22 0 0 1 -44 0z' },
-    { d: 'M94 104 q10 10 20 0 q10 10 18 -2', role: 'accent' },
-    { d: 'M34 74 h28 M98 74 h28', role: 'ambient' },
-    shadow(80, 142, 56),
+    {
+      d: 'M20 112 C20 92 50 84 80 84 C110 84 140 92 140 112 C140 130 112 138 80 138 C48 138 20 130 20 112 Z',
+    },
+    {
+      d: 'M42 112 C42 102 60 98 80 98 C100 98 118 102 118 112 C118 118 108 122 98 124 M62 124 C52 122 42 118 42 112',
+    },
+    { d: 'M64 124 C70 118 90 118 96 124 L94 140 C88 144 72 144 66 140 Z' },
+    {
+      d: 'M68 142 C58 156 46 166 30 172 L40 182 C56 176 68 162 74 146 M92 142 C102 156 114 166 130 170 L122 182 C106 176 94 162 86 146',
+    },
+    { d: 'M30 102 q8 4 10 14 M130 102 q-8 4 -10 14 M72 130 h16', role: 'soft' },
+    {
+      d: 'M29 114 a4 4 0 1 0 6 0 M51 90 a4 4 0 1 0 6 0 M81 88 a4 4 0 1 0 6 0 M107 90 a4 4 0 1 0 6 0 M125 114 a4 4 0 1 0 6 0 M47 128 a4 4 0 1 0 6 0 M109 128 a4 4 0 1 0 6 0 M49 166 a4 4 0 1 0 6 0 M107 166 a4 4 0 1 0 6 0',
+      role: 'accent',
+    },
+    { d: 'M122 128 l8 -5 M130 120 l6 -4', role: 'ambient' },
+    shadow(80, 190, 58),
   ],
 
   // A bicycle standing on a sea that has frozen under it. It leans against
   // Blackbeard's flag from 736, in `waterSevenRedrawn`.
   'kuzan': [...KUZAN_BICYCLE, ...KUZAN_ICE],
 
-  // Arches over the water, a tower behind, a gondola underneath.
+  // Tall houses standing in the water on both sides of a canal, a bridge
+  // across it, and a yagara in front with its saddle on its back and the
+  // reins run back from its snout: the city where boats are hired with an
+  // animal to pull them (229). No eye on the yagara.
   'water-seven-arc': [
+    { d: 'M4 130 V58 L20 44 L36 58 V130 M36 130 V40 L50 28 L64 40 V130' },
+    { d: 'M96 130 V36 L110 24 L124 36 V130 M124 130 V54 L140 42 L156 54 V130' },
+    { d: 'M64 96 Q80 80 96 96 M64 104 Q80 88 96 104' },
     {
-      d: 'M12 148 V100 a20 20 0 0 1 40 0 V148 M56 148 V100 a20 20 0 0 1 40 0 V148 M100 148 V100 a20 20 0 0 1 40 0 V148',
+      d: 'M14 70 h10 v10 h-10z M44 54 h10 v10 h-10z M44 80 h10 v10 h-10z M104 50 h10 v10 h-10z M104 76 h10 v10 h-10z M134 68 h10 v10 h-10z',
+      role: 'soft',
     },
-    { d: 'M4 148 H156' },
-    { d: 'M66 76 h28 v-30 l-6 -8 h-16 l-6 8z M76 32 h8 v-14 h-8z' },
+    { d: 'M4 130 H156', role: 'ambient' },
+    { d: 'M74 116 h12 M70 124 h20', role: 'ambient' },
     {
-      d: 'M22 122 q6 -4 12 0 t12 0 M66 122 q6 -4 12 0 t12 0 M110 122 q6 -4 12 0 t12 0',
+      d: 'M84 166 C80 150 86 138 98 132 C108 128 116 130 122 136 L136 142 Q140 148 134 150 L120 148 C114 150 110 156 110 166',
+    },
+    { d: 'M98 132 l-2 -10 l8 6', role: 'soft' },
+    { d: 'M36 166 Q60 158 84 166 M110 166 H124', role: 'soft' },
+    {
+      d: 'M48 162 Q50 148 62 148 Q72 148 76 156 L84 154 L82 162 Z M60 148 v-6 h6',
       role: 'accent',
     },
-    { d: 'M60 170 q20 8 40 0 M62 170 l-6 -6 M98 170 l6 -6', role: 'accent' },
-    ...SEA.slice(2),
+    { d: 'M132 146 Q108 156 82 156', role: 'soft' },
+    ...SEA.slice(1),
   ],
 
   // A shipwright's coat, and the mouse that rides in its pocket.
@@ -174,18 +201,25 @@ export const waterSevenArt = {
     shadow(78, 190, 44),
   ],
 
-  // A fishing rod, and the paw print of the animal that follows it.
+  // Gonbe, the rabbit who lives with her at the station, sitting side on at
+  // the edge of the plank platform: long ears up, a cotton tail, no face.
+  // The station's signal stands beside him over the sea (229).
   'chimney': [
-    { d: 'M20 172 L104 52' },
-    { d: 'M26 164 l10 6 M34 152 l10 6', role: 'ambient' },
-    { d: circle(44, 132, 9) },
-    { d: 'M104 52 q22 22 18 44', role: 'ambient', dashed: true },
-    { d: ellipse(116, 154, 17, 12), role: 'accent' },
+    { d: 'M4 146 H112 V152 H4', role: 'ambient' },
+    { d: 'M24 146 v6 M48 146 v6 M72 146 v6 M96 146 v6', role: 'soft' },
+    { d: 'M128 150 V58 M120 150 h16' },
+    { d: 'M118 24 h20 v38 h-20z' },
+    { d: `${circle(128, 34, 5)} ${circle(128, 51, 5)}`, role: 'soft' },
     {
-      d: `${circle(100, 134, 5)} ${circle(112, 128, 5)} ${circle(125, 131, 5)} ${circle(134, 141, 5)}`,
+      d: 'M44 146 C34 140 34 116 46 104 C50 100 56 98 60 98 C56 92 56 84 62 80 C70 76 80 82 80 92 C80 100 74 104 70 106 C80 112 84 126 80 140 C78 144 74 146 70 146 Z',
       role: 'accent',
     },
-    shadow(60, 186, 34),
+    {
+      d: 'M62 82 C58 64 60 44 66 36 C70 46 70 64 68 80 M72 84 C74 66 80 50 86 44 C88 56 82 72 76 86',
+    },
+    { d: 'M38 128 c-6 -2 -8 6 -2 8', role: 'soft' },
+    { d: 'M58 146 c4 -8 10 -10 14 -8', role: 'soft' },
+    ...SEA.slice(1),
   ],
 
   // A carpenter's square with a plane resting along its arm.
@@ -220,22 +254,26 @@ export const waterSevenArt = {
     shadow(80, 176, 56),
   ],
 
-  // A pair of glasses above a bar of soap, and the bubbles off it.
+  // Her glasses, set down on the closed blue binder she carries for the
+  // president, the binder seen from its corner with its far side hatched
+  // (230). The lenses are the accent.
   'kalifa': [
-    { d: circle(48, 64, 20) },
-    { d: circle(112, 64, 20) },
-    { d: 'M68 64 q12 -8 24 0' },
-    { d: 'M28 64 q-16 -2 -22 10 M132 64 q16 -2 22 10' },
-    { d: 'M46 130 h68 v34 h-68z' },
+    { d: 'M18 158 L52 134 H142 L108 158 Z' },
+    { d: 'M18 158 V172 H108 L142 148 V134 M108 158 V172' },
+    { d: 'M18 158 q-6 7 0 14 M22 163 H106 M22 168 H106', role: 'soft' },
+    { d: 'M118 153 V163 M128 146 V156 M136 140 V150', role: 'ambient' },
     {
-      d: 'M46 130 l10 -10 h68 l-10 10 M114 130 l10 -10 v34 l-10 10',
-      role: 'ambient',
-    },
-    {
-      d: `${circle(58, 106, 8)} ${circle(80, 96, 6)} ${circle(98, 110, 10)}`,
+      d: 'M36 112 C36 102 44 100 56 100 C68 100 74 102 74 112 C74 126 66 134 56 134 C44 134 36 126 36 112 Z',
       role: 'accent',
     },
-    shadow(80, 180, 48),
+    {
+      d: 'M88 108 C88 98 96 96 108 96 C120 96 126 98 126 108 C126 122 118 130 108 130 C96 130 88 122 88 108 Z',
+      role: 'accent',
+    },
+    { d: 'M74 108 Q81 101 88 104' },
+    { d: 'M36 106 L52 92 L58 90 M126 102 L138 86 L144 85' },
+    { d: 'M44 124 l10 -14 M96 120 l10 -14', role: 'soft' },
+    shadow(80, 184, 64),
   ],
 
   // A bar counter, and a door standing open in the air above it.
@@ -321,14 +359,33 @@ export const waterSevenArt = {
     { d: 'M100 150 h32 M100 178 h32', role: 'ambient' },
   ],
 
-  // A ship going down by the bow under a cannonball: the Judicial Ship he
-  // has raided, and the cannon salute that hits him on arrival (ep. 249).
+  // The Judicial Ship at Water Seven eight years ago, a court house on its
+  // deck between two masts with furled sails, hit at the bow by the cannon
+  // of the warships he set on it, smoke rising and a shot raising a column
+  // of water astern (249). No flag on it.
   'spandam': [
-    { d: 'M30 128 L124 104 L118 134 L42 150z' },
-    { d: 'M76 118 L64 50' },
-    { d: 'M64 50 L96 60 L70 76', role: 'accent' },
-    { d: circle(128, 42, 10), role: 'accent' },
-    { d: 'M142 28 l8 -6 M144 40 h12 M142 54 l8 6', role: 'soft' },
+    { d: 'M10 128 L132 112 L142 128 Q96 156 22 150 Z' },
+    { d: 'M20 138 Q84 140 136 124', role: 'soft' },
+    {
+      d: 'M50 124 V100 H90 V118 M46 100 L70 86 L94 100 M58 104 V122 M70 104 V121 M82 104 V119',
+      role: 'soft',
+    },
+    { d: 'M106 114 V44 M30 126 V58' },
+    {
+      d: 'M94 58 H118 M96 58 Q106 70 116 58 M18 72 H42 M20 72 Q30 84 40 72',
+      role: 'soft',
+    },
+    {
+      d: 'M122 128 l2 -16 l6 10 l6 -16 l2 14 l10 -8 l-4 14 l10 0 l-10 8',
+      role: 'accent',
+    },
+    {
+      d: 'M126 104 C114 96 130 86 120 72 C140 74 142 92 134 102',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M6 156 l-2 -20 l6 10 l4 -18 l4 16 l6 -10 l-2 22', role: 'ambient' },
+    { d: circle(148, 82, 3), role: 'soft' },
     ...SEA.slice(1),
   ],
 
@@ -354,17 +411,39 @@ export const waterSevenArt = {
     ...SEA.slice(1),
   ],
 
-  // A wolf's paw print over a knotted martial arts sash.
+  // His black jacket, cut like a kung fu tunic: a standing collar, white
+  // edges with knotted buttons, worn open over a black tie, and the red sash
+  // knotted at the waist with its ends hanging. The far side is hatched. The
+  // agent who quarrels with the others when the four meet again (264).
   'jabra': [
-    { d: 'M12 116 h136 v30 H12z' },
-    { d: 'M62 116 l36 30 M98 116 l-36 30' },
-    { d: 'M68 146 l-10 34 h18z M92 146 l10 34 h-18z' },
-    { d: ellipse(80, 76, 22, 17), role: 'accent' },
+    { d: 'M68 38 L40 50 Q30 56 28 70 L20 118 H36 L42 80 L44 142 H66 L68 42' },
     {
-      d: `${circle(56, 46, 7)} ${circle(72, 36, 7)} ${circle(90, 36, 7)} ${circle(106, 48, 7)}`,
+      d: 'M92 38 L120 50 Q130 56 132 70 L140 118 H124 L118 80 L116 142 H94 L92 42',
+    },
+    { d: 'M68 38 V28 Q80 24 92 28 V38' },
+    { d: 'M73 44 L71 142 M87 44 L89 142', role: 'soft' },
+    {
+      d: dots([
+        [66, 60],
+        [66, 78],
+        [66, 96],
+        [94, 60],
+        [94, 78],
+        [94, 96],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M77 36 H83 L85 104 L80 110 L75 104 Z' },
+    {
+      d: 'M100 66 l12 -8 M100 82 l14 -9 M100 98 l14 -9 M126 102 l8 -5 M124 88 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M64 118 Q80 123 96 118 V130 Q80 135 64 130 Z', role: 'accent' },
+    {
+      d: 'M86 126 l8 -4 v10 z M88 130 Q86 150 80 168 M92 132 Q98 150 104 164',
       role: 'accent',
     },
-    { d: 'M20 124 h12 M128 124 h12', role: 'ambient' },
+    shadow(80, 184, 40),
   ],
 
   // A ringed kabuki staff with two lengths of hair wound round it.
@@ -384,20 +463,23 @@ export const waterSevenArt = {
     shadow(80, 190, 32),
   ],
 
-  // A round owl of a body with a zip run down the front of it.
+  // A zip pulled shut, its tape curving as if round something, the teeth
+  // locked down the middle, the slider seen from its corner and the pull tab
+  // hanging. He wears it where his mouth should be (264).
   'fukurou': [
-    { d: ellipse(80, 90, 50, 60) },
-    { d: 'M56 42 l6 -16 l10 12 M104 42 l-6 -16 l-10 12' },
-    { d: 'M32 96 q-16 16 -6 34' },
-    { d: 'M128 96 q16 16 6 34' },
-    { d: 'M66 148 l-8 16 h18z M94 148 l8 16 h-18z' },
-    { d: 'M80 44 V134', role: 'accent' },
+    { d: 'M12 92 Q64 72 114 86 M12 136 Q64 116 114 130' },
+    { d: 'M12 92 Q6 114 12 136', role: 'soft' },
     {
-      d: 'M71 58 h18 M71 72 h18 M71 86 h18 M71 100 h18 M71 114 h18',
+      d: 'M18 116 l4 -6 l4 6 l4 -7 l4 7 l4 -7 l4 7 l4 -7 l4 7 l4 -7 l4 7 l4 -7 l4 7 l4 -7 l4 7 l4 -6 l4 6 l4 -6 l4 6 l4 -6 l4 6',
       role: 'accent',
     },
-    { d: 'M74 134 h12 v10 h-12z M80 144 v12', role: 'accent' },
-    shadow(80, 178, 46),
+    { d: 'M18 110 Q60 92 102 104 M18 122 Q60 104 102 116', role: 'soft' },
+    { d: 'M104 96 L126 98 L128 124 L104 126 Z' },
+    { d: 'M126 98 L136 92 L138 118 L128 124' },
+    { d: 'M130 102 l4 -3 M130 110 l5 -3 M130 118 l5 -3', role: 'ambient' },
+    { d: 'M110 126 L108 156 Q108 162 114 162 H120 Q126 162 124 156 L122 126' },
+    { d: 'M112 148 q4 4 8 0', role: 'soft' },
+    shadow(74, 180, 58),
   ],
 
   // A barred gate with a giant's club leaning on either side of it.
@@ -497,43 +579,71 @@ export const waterSevenArt = {
     { d: `M120 84 l4 -18 M112 88 l-2 -20 ${circle(124, 64, 2)}`, role: 'soft' },
     { d: 'M138 62 q8 8 0 16 M148 56 q12 14 0 28', role: 'ambient' },
   ],
-  // Two swords crossed at the hilts, spinning inside two sweeping arcs.
+  // His green striped shirt with the two round pauldrons on its shoulders,
+  // the bands across them in the accent and their far sides hatched, and the
+  // long sleeves hanging almost to the ground: long arms on short legs. Only
+  // the plain pauldrons he is introduced in (210); the spiked ones and his
+  // swords come out of hiding in the game.
   'pickles': [
-    { d: 'M44 156 L116 60' },
-    { d: 'M116 156 L44 60' },
-    { d: 'M50 136 l14 10 M110 136 l-14 10' },
-    { d: 'M44 156 l-8 10 M116 156 l8 10', role: 'soft' },
+    { d: 'M64 46 Q80 56 96 46' },
+    { d: 'M64 46 L52 52 M96 46 L108 52' },
+    { d: 'M14 82 C12 44 68 36 68 66 C68 82 46 90 14 82 Z' },
+    { d: 'M146 82 C148 44 92 36 92 66 C92 82 114 90 146 82 Z' },
     {
-      d: 'M28 108 A52 52 0 0 1 80 52 M132 100 A52 52 0 0 1 80 156',
+      d: 'M20 64 C30 50 56 48 64 58 M140 64 C130 50 104 48 96 58',
       role: 'accent',
     },
-    { d: 'M22 90 l-6 -4 M138 118 l6 4', role: 'accent' },
-    shadow(80, 186, 40),
+    {
+      d: 'M20 86 C16 118 14 150 18 174 H36 C38 150 40 120 44 90 M140 86 C144 118 146 150 142 174 H124 C122 150 120 120 116 90',
+    },
+    { d: 'M46 88 C48 110 48 130 50 150 H110 C112 130 112 110 114 88' },
+    { d: 'M64 70 V150 M80 58 V150 M96 70 V150', role: 'soft' },
+    { d: 'M132 56 l8 -5 M134 70 l8 -5', role: 'ambient' },
+    shadow(80, 186, 64),
   ],
-  // Two giant pans clapped together face to face, their handles out to the sides.
+  // Seen from behind: the back of his head over shoulders far too wide for
+  // it, arms hanging, swim briefs, the mudfish spots on his hide, and the
+  // orange fin rising off his back past the shoulder (210). No face.
   'big-pan': [
-    { d: ellipse(68, 100, 10, 44) },
-    { d: ellipse(92, 100, 10, 44) },
-    { d: 'M58 96 H14 V104 H58' },
-    { d: 'M102 96 H146 V104 H102' },
+    { d: 'M64 74 C60 56 66 40 80 40 C94 40 100 56 96 74' },
+    { d: 'M70 50 q10 -6 20 0 M68 62 q12 -6 24 0', role: 'soft' },
     {
-      d: 'M80 44 V30 M68 48 l-6 -12 M92 48 l6 -12 M80 156 V170 M68 152 l-6 12 M92 152 l6 12',
-      role: 'accent',
+      d: 'M64 74 C34 76 12 88 8 108 C4 130 10 160 14 182 H34 C34 160 34 140 38 124 M96 74 C126 76 148 88 152 108 C156 130 150 160 146 182 H126 C126 160 126 140 122 124',
     },
-    shadow(80, 186, 50),
-  ],
-  // A frog's webbed foot planted on a sea-train rail, a sumo topknot above it.
-  'yokozuna': [
-    { d: 'M4 150 H156' },
+    { d: 'M38 124 C40 140 44 152 48 162 H112 C116 152 120 140 122 124' },
+    { d: 'M48 162 L46 186 H114 L112 162 M80 170 V186', role: 'soft' },
+    { d: 'M80 84 V160', role: 'soft' },
+    { d: 'M78 128 C68 112 56 92 30 60 C52 64 72 80 82 96', role: 'accent' },
+    { d: 'M74 118 L50 74 M80 106 L62 76', role: 'soft' },
     {
-      d: 'M20 150 v8 M50 150 v8 M80 150 v8 M110 150 v8 M140 150 v8',
+      d: `${ellipse(118, 98, 6, 4)} ${ellipse(104, 124, 5, 3)} ${ellipse(52, 138, 5, 3)} ${ellipse(24, 150, 5, 3)} ${ellipse(136, 150, 5, 3)}`,
+      role: 'soft',
+    },
+    { d: 'M138 120 l8 -5 M140 134 l8 -5 M140 148 l8 -5', role: 'ambient' },
+  ],
+  // The frog side on, squatting on the sea-train's rail in a sumo stance,
+  // webbed feet planted, back hatched, and the topknot on his head as the
+  // accent (229). No face.
+  'yokozuna': [
+    { d: 'M4 150 H156 M4 144 H156' },
+    {
+      d: 'M16 150 v6 M44 150 v6 M72 150 v6 M100 150 v6 M128 150 v6',
       role: 'soft',
     },
     {
-      d: 'M80 146 C60 146 40 138 30 124 C44 126 50 118 48 108 C60 116 66 110 68 98 C74 108 86 108 92 98 C94 110 100 116 112 108 C110 118 116 126 130 124 C120 138 100 146 80 146z',
+      d: 'M54 144 C38 134 34 110 44 90 C54 70 76 62 96 64 C104 56 120 54 130 60 C140 66 142 80 136 90 C134 96 128 100 120 102 C122 116 120 128 116 138',
     },
-    { d: 'M70 100 C66 76 70 60 80 52 C90 60 94 76 90 100' },
-    { d: 'M70 36 q10 -16 20 0 q-10 8 -20 0 M80 30 V18', role: 'accent' },
+    { d: 'M44 128 C42 108 58 98 76 104 C90 108 94 124 88 138' },
+    {
+      d: 'M116 138 L106 144 M116 138 L118 144 M116 138 L128 144 M88 138 L76 144 M88 138 L90 144 M88 138 L100 144 M54 144 L42 144',
+      role: 'soft',
+    },
+    {
+      d: 'M104 58 C102 48 108 42 116 44 C122 46 122 52 116 54 C112 56 108 56 104 58 Z M116 44 C120 38 128 38 130 44',
+      role: 'accent',
+    },
+    { d: 'M52 82 l-6 -4 M46 96 l-6 -4 M44 110 l-6 -4', role: 'ambient' },
+    { d: 'M100 112 q6 6 4 14', role: 'soft' },
     ...SEA.slice(1),
   ],
 
@@ -669,18 +779,29 @@ export const waterSevenArt = {
     },
     shadow(80, 174, 44),
   ],
-  // A weasel's tail curling up off the roof of a train car.
+  // His wide-brimmed black hat, crown hatched, with the red plume in its band,
+  // set on the roof of the third car of the sea train, where he waits for
+  // whoever comes over the roofs (259).
   'nero': [
-    { d: 'M16 124 H144 V158 H16 Z' },
-    { d: 'M10 124 Q80 106 150 124' },
-    { d: 'M30 134 h20 v12 h-20z M70 134 h20 v12 h-20z M110 134 h20 v12 h-20z' },
+    { d: 'M12 124 Q80 110 148 124 M18 124 V158 H142 V124' },
     {
-      d: 'M118 116 C130 94 150 78 136 58 C124 42 100 50 106 64 C112 74 128 68 124 58',
+      d: 'M28 132 h18 v14 h-18z M58 132 h18 v14 h-18z M88 132 h18 v14 h-18z M118 132 h14 v14 h-14z',
+      role: 'soft',
+    },
+    { d: 'M18 152 H2 M142 152 H158', role: 'soft' },
+    { d: `${circle(40, 164, 7)} ${circle(120, 164, 7)}` },
+    { d: 'M-4 174 H164', role: 'ambient' },
+    {
+      d: 'M22 104 C26 94 46 104 80 104 C114 104 134 94 138 104 C134 116 26 116 22 104 Z',
+    },
+    { d: 'M48 104 C44 76 52 56 66 56 Q80 66 94 56 C108 56 116 76 112 104' },
+    { d: 'M50 92 Q80 100 110 92', role: 'soft' },
+    { d: 'M100 66 l8 -5 M104 78 l8 -5 M104 90 l8 -4', role: 'ambient' },
+    {
+      d: 'M108 94 C114 74 118 54 134 44 C140 40 150 44 146 54 C154 56 154 66 146 70 C150 80 140 86 132 82 C124 90 116 94 108 96',
       role: 'accent',
     },
-    { d: circle(42, 166, 8) },
-    { d: circle(118, 166, 8) },
-    { d: 'M-4 176 H164', role: 'ambient' },
+    { d: 'M116 88 C122 74 130 62 140 54', role: 'soft' },
   ],
   // A perfectly straight sword standing upright, a right-angled zigzag slash cut across it.
   't-bone': [
@@ -691,15 +812,19 @@ export const waterSevenArt = {
     { d: 'M18 64 H58 V104 H102 V144 H142', role: 'accent' },
     shadow(80, 186, 30),
   ],
-  // A double yoke with two collars, its tow line running back to a little house-shaped boat.
+  // The two King Bulls side by side in the waves, necks up and manes blowing,
+  // one yoke across both and a single tow line running back to the boat
+  // they haul behind the sea train (264). No faces, and no sunglasses.
   'sodom-and-gomorrah': [
-    { d: 'M20 50 H140' },
-    { d: ellipse(50, 76, 18, 22), role: 'accent' },
-    { d: ellipse(110, 76, 18, 22), role: 'accent' },
-    { d: 'M80 50 C72 72 88 90 80 110' },
-    { d: house(62, 36, 124, 110) },
-    { d: 'M48 150 H112 L104 162 H56 Z' },
-    ...SEA.slice(1),
+    { d: KING_BULL_NECK, transform: 'translate(30 96)' },
+    { d: KING_BULL_NECK, transform: 'translate(90 90)' },
+    { d: KING_BULL_MANE, role: 'accent', transform: 'translate(30 96)' },
+    { d: KING_BULL_MANE, role: 'accent', transform: 'translate(90 90)' },
+    { d: 'M42 128 L112 122', role: 'soft' },
+    { d: 'M58 128 L66 156 M118 122 L122 150', role: 'soft' },
+    { d: 'M66 156 Q40 168 -4 166 M122 150 Q90 166 66 156' },
+    { d: 'M40 110 l6 -4 M100 104 l6 -4', role: 'ambient' },
+    ...SEA,
   ],
 
   // Two giant doors standing shut in the sea, a small boat at their foot.
@@ -737,18 +862,32 @@ export const waterSevenArt = {
     { d: 'M114 104 q6 14 -2 30', role: 'accent' },
     shadow(80, 162, 62),
   ],
-  // A snail telephone with a golden shell, its button pushed down.
+  // A snail phone ringing on its foot, the receiver left on its shell and
+  // the cord hanging: the call from headquarters he tells his agents to
+  // ignore, on the way to Ohara (275). An ordinary one, not the golden snail;
+  // stalks but no eyes.
   'spandine': [
-    { d: 'M28 150 C28 134 42 128 58 128 H126 C138 128 142 140 136 150 Z' },
-    { d: circle(82, 100, 30) },
+    { d: 'M24 158 C24 144 38 138 56 138 H118 C130 138 138 146 136 158 Z' },
+    { d: 'M118 138 C124 126 124 112 118 102 C124 96 132 98 134 106' },
+    { d: 'M124 100 l2 -14 M130 100 l8 -12', role: 'soft' },
+    { d: circle(76, 110, 30) },
     {
-      d: 'M82 100 m-6 0 a6 6 0 1 1 12 0 a12 12 0 1 1 -24 0 a18 18 0 1 1 36 0',
+      d: 'M76 110 m-6 0 a6 6 0 1 1 12 0 a12 12 0 1 1 -24 0 a18 18 0 1 1 36 0',
+      role: 'soft',
+    },
+    {
+      d: 'M52 76 C52 68 62 66 66 72 H86 C90 66 100 68 100 76 C100 82 92 84 86 80 H66 C62 84 52 82 52 76 Z',
+    },
+    {
+      d: 'M52 78 c-8 6 -2 12 -8 18 c-6 6 0 12 -6 18 c-4 6 0 12 -2 20',
+      role: 'soft',
+    },
+    {
+      d: 'M44 64 l-10 -8 M48 52 l-6 -12 M108 64 l10 -8 M104 52 l6 -12',
       role: 'accent',
     },
-    { d: 'M124 128 l4 -24 M132 130 l12 -20', role: 'soft' },
-    { d: 'M74 64 h16 v6 h-16z', role: 'accent' },
-    { d: 'M82 38 v18 M76 50 l6 6 l6 -6', role: 'ambient' },
-    shadow(82, 160, 58),
+    { d: 'M96 132 l8 -6 M104 128 l6 -5', role: 'ambient' },
+    shadow(80, 172, 60),
   ],
   // A rifle leaning against a stack of three old books.
   'nico-olvia': [
