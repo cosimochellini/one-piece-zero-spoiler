@@ -1037,8 +1037,8 @@ export const wano: Saga = {
     'toko': {
       role: { it: 'Kamuro di Komurasaki', en: 'Komurasaki’s kamuro' },
       log: {
-        it: 'Fa da kamuro a Komurasaki, la cortigiana più famosa della capitale. Arriva tardi al lavoro perché voleva assaggiare la soba del banco di Sanji, e quando dei teppisti le fanno cadere la scodella continua a sorridere; Sanji le dà gli ultimi spaghetti rimasti. Scherza sul fatto che con una “O” davanti il suo nome vuol dire “uomo”, anche se lei è una bambina, poi corre a raggiungere il corteo.',
-        en: 'She serves as kamuro to Komurasaki, the most famous courtesan in the capital. She is late for work because she wanted to try the soba at Sanji’s stand, and when thugs knock her bowl to the ground she keeps smiling; Sanji gives her the last of the noodles. She jokes that with an “O” in front her name means “man”, though she is a girl, then runs off to join the procession.',
+        it: 'Fa da kamuro a Komurasaki, la cortigiana più famosa della capitale. Arriva tardi al lavoro perché voleva assaggiare la soba del banco di Sanji, e quando dei teppisti le fanno cadere la scodella continua a sorridere; Sanji le dà la soba che gli è rimasta. Scherza sul fatto che con una “O” davanti il suo nome vuol dire “uomo”, anche se lei è una bambina, poi corre a raggiungere il corteo.',
+        en: 'She serves as kamuro to Komurasaki, the most famous courtesan in the capital. She is late for work because she wanted to try the soba at Sanji’s stand, and when thugs knock her bowl to the ground she keeps smiling; Sanji gives her the soba he has left. She jokes that with an “O” in front her name means “man”, though she is a girl, then runs off to join the procession.',
       },
       affiliation: [
         {
@@ -1291,8 +1291,8 @@ export const wano: Saga = {
         en: 'Whitebeard Pirate from Wano',
       },
       log: {
-        it: 'Da bambino balla per strada per qualche moneta, finché Oden non gli dà da mangiare e lui si unisce agli uomini che lo seguono. Anni dopo, quando Oden sgattaiola via di notte dietro alla nave di Barbabianca, Izo gli corre dietro per riportarlo indietro e finisce a bordo anche lui. Da allora naviga con la ciurma di Barbabianca, e quando nasce Momonosuke insiste perché Oden torni a casa per il bene della sua famiglia. Quando Oden parte con Roger, Izo resta sulla nave di Barbabianca, dove secondo Oden ha trovato il suo posto.',
-        en: 'As a child he dances in the streets for a few coins, until Oden feeds him and he joins the men who follow him. Years later, when Oden slips out at night after Whitebeard’s ship, Izo goes after him to bring him back and ends up on board himself. From then on he sails with Whitebeard’s crew, and after Momonosuke is born he urges Oden to go home for his family’s sake. When Oden leaves with Roger, Izo stays on Whitebeard’s ship, where Oden says he has found his place.',
+        it: 'Da bambino balla per strada per qualche moneta, finché Oden non gli dà da mangiare e lui si unisce agli uomini che lo seguono. Più tardi, quando Oden sgattaiola via di notte dietro alla nave di Barbabianca, Izo gli corre dietro per riportarlo indietro e finisce a bordo anche lui. Da allora naviga con la ciurma di Barbabianca, e quando nasce Momonosuke insiste perché Oden torni a casa per il bene della sua famiglia. Quando Oden parte con Roger, Izo resta sulla nave di Barbabianca, perché, dice Oden, ormai è affiatato con la ciurma.',
+        en: 'As a child he dances in the streets for a few coins, until Oden feeds him and he joins the men who follow him. Later, when Oden slips out at night after Whitebeard’s ship, Izo goes after him to bring him back and ends up on board himself. From then on he sails with Whitebeard’s crew, and after Momonosuke is born he urges Oden to go home for his family’s sake. When Oden leaves with Roger, Izo stays on Whitebeard’s ship, because, Oden says, he has meshed with the crew.',
       },
       status: [
         { episode: 970, value: 'alive' },
@@ -1302,7 +1302,7 @@ export const wano: Saga = {
         {
           episode: 970,
           value: {
-            it: 'Pirati di Barbabianca; un tempo servitore di Oden',
+            it: 'Pirati di Barbabianca; un tempo vassallo di Oden',
             en: 'Whitebeard Pirates; once a retainer of Oden',
           },
         },
