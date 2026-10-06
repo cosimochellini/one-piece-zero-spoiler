@@ -1457,15 +1457,15 @@ export const devilFruits: Saga = {
     {
       id: 'dog-dog-fruit-model-okuchi-no-makami',
       kind: 'fruit',
-      revealedAtEpisode: 1040,
-      revealedAtChapter: 1030,
+      revealedAtEpisode: 1042,
+      revealedAtChapter: 1020,
       name: {
         it: 'Frutto Inu Inu, modello Okuchi no Makami',
         en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
       },
       summary: {
-        it: 'Trasforma il corpo in un lupo bianco, e quello che soffia fuori è freddo: il ghiaccio si forma sul terreno dove passa.',
-        en: 'Turns the body into a white wolf, and what it breathes out is cold: ice forms on the ground wherever it passes.',
+        it: 'Trasforma il corpo in un lupo bianco, la divinità che protegge Wano, con un soffio abbastanza forte da tenere testa a quello di Kaido.',
+        en: 'Turns the body into a white wolf, the guardian deity of Wano, with a blast of breath strong enough to meet Kaido’s own.',
       },
       visual: { art: 'dog-dog-fruit-model-okuchi-no-makami', tint: 'ocher' },
     },
