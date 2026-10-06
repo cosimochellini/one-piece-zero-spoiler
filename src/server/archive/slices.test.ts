@@ -871,6 +871,23 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 598 })).toBe(forearm?.value)
   })
 
+  it('hands Izo his flintlocks only from episode 995', () => {
+    const izo = filed('izo')
+    const fans = DRAWINGS.izo
+    const flintlocks = REDRAWINGS['izo']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(izo, 'en', reveal(bookmark)).visual.strokes
+
+    expect(flintlocks?.episode).toBe(995)
+
+    expect(drawnAt(ep(994))).toBe(fans)
+    expect(drawnAt(ep(995))).toBe(flintlocks?.value)
+    expect(drawnAt(null)).toBe(fans)
+    // The manga has him disarm King with one shot in chapter 986, no earlier.
+    expect(drawnAt({ mode: 'chapter', chapter: 985 })).toBe(fans)
+    expect(drawnAt({ mode: 'chapter', chapter: 986 })).toBe(flintlocks?.value)
+  })
+
   it('hands Brook the Soul King’s guitar only from episode 517', () => {
     const brook = filed('brook')
     const violin = DRAWINGS.brook
