@@ -39,8 +39,8 @@ const TOP_HAT: Stroke[] = [
 ]
 
 /**
- * Sakazuki's Marine cap in three-quarters, set on his folded crimson suit
- * with the pink rose in the lapel's buttonhole, plain first and braided later.
+ * Sakazuki's Marine cap in three-quarters, set on his folded crimson suit,
+ * one sleeve folded across the front, plain first and braided later.
  */
 const CAP_ON_SUIT: Stroke[] = [
   { d: 'M40 96 C38 64 104 60 108 94' },
@@ -54,22 +54,23 @@ const CAP_ON_SUIT: Stroke[] = [
     d: 'M64 128 L80 156 L96 128 M64 128 L56 140 L66 142 M96 128 L104 140 L94 142',
     role: 'soft',
   },
+  { d: 'M20 156 L70 152 L72 166 L20 170' },
   {
-    d: dots([
-      [60, 152],
-      [60, 164],
+    d: `M62 153 L64 167 ${dots([
+      [67, 157],
+      [68, 163],
       [100, 152],
       [100, 164],
-    ]),
+    ])}`,
     role: 'soft',
   },
   { d: 'M124 132 l8 -8 M124 146 l12 -12 M124 160 l14 -14', role: 'ambient' },
-  {
-    d: `${circle(110, 148, 8)} M110 148 c3 -4 7 0 3 4 c-4 4 -9 -1 -6 -6 c4 -6 13 -3 13 4 M104 154 l-5 8 M116 154 q5 3 8 0`,
-    role: 'accent',
-  },
   shadow(80, 182, 64),
 ]
+
+/** The pink rose in his lapel: the cupped bloom, its petals and a leaf. */
+const SAKAZUKI_ROSE =
+  'M102 140 C100 152 120 152 118 140 M102 140 C100 132 108 128 110 134 C112 128 120 132 118 140 M106 140 C106 136 114 136 114 140 C114 143 108 144 108 141 M104 150 C98 154 94 152 92 148 C96 146 100 146 104 150'
 
 /** Kid's horseshoe magnet, drawn beside his metal arm from 603. */
 const MAGNET: Stroke[] = [
@@ -138,37 +139,40 @@ export const summitWarArt = {
     },
   ],
 
-  // Her white cape with its epaulettes and tall collar, thrown over Salome
-  // coiled into a seat, the snake's head turned away and its tail curling out
-  // at the side. She comes on deck with both in episode 410.
+  // Salome coiled on the ground, her neck rising out of the coils and her
+  // head turned away, wearing the empress's white cape: the collar standing
+  // up round her neck and the epaulettes in Hancock's colour, the far side
+  // hatched. Hancock comes on deck in that cape in episode 410, and Salome is
+  // never far from her.
   'boa-hancock': [
     {
-      d: 'M24 168 C24 150 136 150 136 168 C136 182 24 182 24 168',
-      role: 'accent',
-    },
-    { d: 'M30 150 C30 134 130 134 130 150', role: 'accent' },
-    { d: 'M38 134 C38 120 122 120 122 134', role: 'accent' },
-    {
-      d: 'M136 168 C148 166 154 156 148 146 C146 142 142 142 140 146',
-      role: 'accent',
+      d: 'M20 168 C20 186 140 186 140 168 C140 160 130 155 118 153 M42 153 C30 155 20 160 20 168 M140 168 C152 170 158 160 150 152',
     },
     {
-      d: 'M40 172 l6 -6 M58 176 l6 -6 M100 176 l6 -6 M118 172 l6 -6',
-      role: 'ambient',
+      d: 'M40 150 C40 164 120 164 120 150 M40 150 C40 144 60 140 80 140 L90 140.5 M110 142 C116 144 120 146 120 150',
     },
-    { d: 'M52 100 C46 116 44 134 42 150 M108 100 C114 116 116 134 118 150' },
-    { d: 'M42 150 Q60 158 80 152 Q100 158 118 150', role: 'soft' },
-    { d: 'M52 100 C60 92 100 92 108 100' },
     {
-      d: 'M58 96 C44 80 42 56 50 42 C66 52 94 52 110 42 C118 56 116 80 102 96',
-    },
-    { d: 'M60 88 C70 82 90 82 100 88', role: 'soft' },
-    { d: `${ellipse(50, 102, 10, 4)} ${ellipse(110, 102, 10, 4)}` },
-    {
-      d: 'M42 104 v8 M46 106 v8 M50 106 v8 M54 106 v8 M58 104 v8 M102 104 v8 M106 106 v8 M110 106 v8 M114 106 v8 M118 104 v8',
+      d: 'M64 149 C64 145 96 145 96 149 M34 178 l3 -7 M54 182 l2 -8 M106 182 l-2 -8 M126 178 l-3 -7 M56 160 l2 -6 M104 160 l-2 -6',
       role: 'soft',
     },
-    { d: 'M96 56 l-4 8 M100 66 l-4 8', role: 'ambient' },
+    {
+      d: 'M90 140.5 C89 136 88 133 87 130 M110 142 C108 137 106 132 104 128 M86 80 C86 72 90 66 94 60 C100 52 98 46 92 42 M106 76 C108 70 110 64 110 56 C110 46 106 40 102 38',
+    },
+    { d: 'M92 42 C82 46 64 46 56 40 C52 36 54 32 60 30 C72 26 92 26 102 38' },
+    { d: 'M96 56 l10 2 M98 66 l9 3', role: 'soft' },
+    {
+      d: 'M84 86 L64 94 C60 106 56 118 50 130 Q92 142 136 124 C132 112 126 100 122 88 L108 82',
+    },
+    {
+      d: 'M74 98 C72 110 70 122 68 134 M114 94 C118 106 120 116 122 128',
+      role: 'soft',
+    },
+    { d: 'M118 98 l6 -3 M121 108 l7 -3 M124 118 l7 -3', role: 'ambient' },
+    {
+      d: `M84 86 C80 78 82 70 88 66 M108 82 C112 74 110 66 104 62 M84 86 C92 88 100 86 108 82 ${ellipse(66, 94, 9, 3.5)} ${ellipse(120, 88, 9, 3.5)}`,
+      role: 'accent',
+    },
+    shadow(80, 192, 62),
   ],
 
   // One great wave, the way a print draws it. The Sunny's helm is drawn above
@@ -859,9 +863,10 @@ export const summitWarArt = {
   ],
 
   // His Marine cap set on his folded crimson suit, the rose in the lapel's
-  // buttonhole in his colour. The fleet admiral's braid is added from 570, in
+  // buttonhole in his colour. He sits under the scaffold in that suit from
+  // episode 459. The fleet admiral's braid is added from 570, in
   // `summitWarRedrawn`.
-  'sakazuki': CAP_ON_SUIT,
+  'sakazuki': [...CAP_ON_SUIT, { d: SAKAZUKI_ROSE, role: 'accent' }],
 
   // A diamond the size of a shoulder plate.
   'jozu': [
@@ -1101,7 +1106,7 @@ export const summitWarArt = {
       role: 'ambient',
     },
     {
-      d: 'M34 128 C26 112 30 90 42 82 C38 92 40 104 46 110 M126 128 C134 112 130 90 118 82 C122 92 120 104 114 110',
+      d: 'M22 146 C16 132 20 116 30 110 C28 118 28 126 32 132 M138 146 C144 132 140 116 130 110 C132 118 132 126 128 132',
       role: 'accent',
     },
     {
@@ -1109,7 +1114,7 @@ export const summitWarArt = {
       role: 'soft',
     },
     {
-      d: 'M16 110 l6 -4 M20 124 l6 -4 M144 110 l-6 -4 M140 124 l-6 -4',
+      d: 'M28 86 l6 -4 M32 98 l6 -4 M132 86 l-6 -4 M128 98 l-6 -4',
       role: 'ambient',
     },
     ...SEA,
@@ -1564,9 +1569,9 @@ export const summitWarRedrawn: Redrawings = {
     },
   ],
 
-  // The same cap on the same suit, its band now the fleet admiral's braid: a
-  // twisted cord along the front and a looped cord hung from its side, the
-  // rank Sengoku wore handed down. Jinbe tells the crew he won the seat at
+  // The same cap on the same suit, its band now the fleet admiral's braid in
+  // his colour: a twisted cord along the front and a short looped cord hung
+  // from its side, the rank Sengoku wore handed down. The rose stays, plain. Jinbe tells the crew he won the seat at
   // 570 (ch. 650).
   'sakazuki': [
     {
@@ -1574,12 +1579,13 @@ export const summitWarRedrawn: Redrawings = {
       chapter: 650,
       value: [
         ...CAP_ON_SUIT,
+        { d: SAKAZUKI_ROSE, role: 'soft' },
         {
           d: 'M43.2 89.8 c2.4 1.2 -0.3 6.6 2.1 7.8 M47.1 91.9 c2.8 1 0.8 6.7 3.7 7.6 M52.1 93.6 c3.1 0.7 1.8 6.6 4.9 7.3 M57.7 95 c3.4 0.5 2.5 6.4 5.9 6.9 M63.9 95.9 c3.5 0.2 3.2 6.2 6.6 6.4 M70.3 96.3 c3.5 -0.1 3.7 5.9 7.2 5.9 M76.9 96.1 c3.5 -0.3 4.1 5.6 7.6 5.3 M83.3 95.5 c3.4 -0.6 4.5 5.3 7.8 4.7 M89.3 94.5 c3.1 -0.9 4.8 4.9 7.9 4 M94.8 92.9 c2.8 -1.2 5.2 4.3 8 3.1 M99.5 91 c2.4 -1.5 5.6 3.6 8 2.1',
           role: 'accent',
         },
         {
-          d: 'M108 94 C122 100 124 116 112 122 C104 126 100 118 106 112 M112 122 v8 M108 123 l-2 7 M116 121 l2 7',
+          d: 'M108 94 C116 96 118 104 113 108 C109 110 106 106 109 103 M113 108 v4 M111 108 l-2 4 M115 107 l2 4',
           role: 'accent',
         },
       ],
