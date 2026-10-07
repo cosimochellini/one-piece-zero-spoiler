@@ -359,10 +359,12 @@ export const summitWar: Saga = {
       },
       visual: { art: 'boa-marigold', tint: 'orange' },
     },
+    // Filed at 409 (ch. 515), where the Kuja first draw their snakes as bows:
+    // she is found in 408, but her drawing is the bow.
     {
       id: 'marguerite',
       kind: 'character',
-      revealedAtEpisode: 408,
+      revealedAtEpisode: 409,
       revealedAtChapter: 518,
       name: { it: 'Marguerite', en: 'Marguerite' },
       summary: {
@@ -395,10 +397,13 @@ export const summitWar: Saga = {
       },
       visual: { art: 'magellan', tint: 'violet' },
     },
+    // Filed at 425 (ch. 528), where he sits in the chief warden's chair and
+    // says it will be his: he greets the visitors in 422, but his drawing is
+    // the chair.
     {
       id: 'hannyabal',
       kind: 'character',
-      revealedAtEpisode: 423,
+      revealedAtEpisode: 425,
       revealedAtChapter: 530,
       name: { it: 'Hannyabal', en: 'Hannyabal' },
       summary: {
@@ -1645,8 +1650,8 @@ export const summitWar: Saga = {
         it: 'Trova un uomo svenuto nella foresta, il primo che vede in vita sua, e invece di ucciderlo lo porta al villaggio e lo nasconde. Caccia con un arco più alto di lei e tira frecce che colpiscono molto più forte di quanto il legno lasci immaginare. Fa domande su tutto quello che sta fuori dall’isola, e non ha mai potuto farle a nessuno.',
         en: 'She finds a man unconscious in the forest, the first she has ever seen, and instead of killing him she carries him to the village and hides him. She hunts with a bow taller than she is and looses arrows that land far harder than the wood suggests. She asks questions about everything outside the island, and has never had anyone to ask.',
       },
-      affiliation: [{ episode: 408, value: KUJA_WARRIOR }],
-      origin: [{ episode: 408, value: AMAZON_LILY }],
+      affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
+      origin: [{ episode: 409, value: AMAZON_LILY }],
     },
     'nyon': {
       role: { it: 'Anziana di Amazon Lily', en: 'Elder of Amazon Lily' },
@@ -1696,7 +1701,7 @@ export const summitWar: Saga = {
       // No chief-warden entry: only the chapter 661 cover says it.
       affiliation: [
         {
-          episode: 423,
+          episode: 425,
           value: {
             it: 'Impel Down, vicedirettore',
             en: 'Impel Down, vice chief warden',
