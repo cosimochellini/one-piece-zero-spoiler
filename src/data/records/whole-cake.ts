@@ -558,7 +558,10 @@ export const wholeCake: Saga = {
     {
       id: 'im',
       kind: 'character',
-      revealedAtEpisode: 885,
+      // A hooded figure walks to a giant straw hat at 885, unnamed; the Empty
+      // Throne is first shown at 886. The figure sits on it and the Five
+      // Elders kneel and call it Im at 889 (chapter 908).
+      revealedAtEpisode: 889,
       revealedAtChapter: 908,
       name: { it: 'Im', en: 'Im' },
       summary: {
@@ -812,8 +815,10 @@ export const wholeCake: Saga = {
     {
       id: 'charlotte-flampe',
       kind: 'character',
-      revealedAtEpisode: 865,
-      revealedAtChapter: 891,
+      // First seen at 865 (chapter 891), but filed where she fires her blowgun
+      // at Luffy, 867 (chapter 892), the weapon her drawing shows.
+      revealedAtEpisode: 867,
+      revealedAtChapter: 892,
       name: { it: 'Charlotte Flambè', en: 'Charlotte Flampe' },
       summary: {
         it: 'Una giovane figlia di Big Mom a capo del fan club di Katakuri, che spia i suoi duelli di nascosto con i suoi seguaci per diventare la sua sorella preferita.',
@@ -1652,14 +1657,14 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 885,
+          episode: 889,
           value: {
             it: 'Siede sul Trono Vuoto di Mary Geoise',
             en: 'Sits on the Empty Throne in Mary Geoise',
           },
         },
       ],
-      origin: [{ episode: 885, value: MARY_GEOISE }],
+      origin: [{ episode: 889, value: MARY_GEOISE }],
     },
     'ryokugyu': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
@@ -1955,17 +1960,17 @@ export const wholeCake: Saga = {
         it: 'È una delle sorelle minori di Katakuri e la presidente del suo fan club, e per lui ha solo parole di adorazione: perfetto, bellissimo, sempre impeccabile. Quaranta dei suoi fratelli l’hanno votata miglior sorellina, e lei conta di diventare la preferita anche di Katakuri aiutandolo di nascosto a finire Cappello di Paglia. Tratta i propri seguaci come servitori e punisce senza pensarci chi la delude.',
         en: 'She is one of Katakuri’s younger sisters and the president of his fan club, and she has nothing but adoration for him: perfect, gorgeous, always flawless. Forty of her brothers voted her best little sister, and she means to become Katakuri’s favourite too by secretly helping him finish off Straw Hat. She treats her followers as servants and punishes whoever lets her down without a second thought.',
       },
-      status: [{ episode: 865, value: 'unknown' }],
+      status: [{ episode: 867, value: 'unknown' }],
       affiliation: [
         {
-          episode: 865,
+          episode: 867,
           value: {
             it: 'Pirati di Big Mom; fan club di Katakuri, presidente',
             en: 'Big Mom Pirates; Katakuri’s fan club, president',
           },
         },
       ],
-      origin: [{ episode: 865, value: TOTTO_LAND }],
+      origin: [{ episode: 867, value: TOTTO_LAND }],
     },
     'randolph': {
       chronicle: wholeCakeChronicles.randolph,

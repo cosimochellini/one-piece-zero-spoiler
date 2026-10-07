@@ -1,4 +1,12 @@
-import { circle, dots, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  polygon,
+  SEA,
+  shadow,
+  wave,
+} from '~/lib/svg/primitives'
 
 import type { Drawings, Stroke } from './stroke'
 
@@ -44,6 +52,12 @@ const PRETZEL_TILT = 'rotate(51.2 118 142)'
 
 /** The lean of Judge's spear, drawn level with its blade to the right. */
 const JUDGE_SPEAR_TILT = 'rotate(-56 80 100)'
+
+/** The tilt of Randolph's spear, drawn level with a blade at each end. */
+const RANDOLPH_SPEAR_TILT = 'rotate(-20 80 142)'
+
+/** The tilt of Flampe's blowgun, drawn level with its muzzle to the right. */
+const FLAMPE_BLOWGUN_TILT = 'rotate(-28 70 150)'
 
 /** The tilt of Mjosgard's club, drawn level with its head to the right. */
 const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
@@ -1183,95 +1197,163 @@ export const wholeCakeArt = {
     },
   ],
 
-  // A wrench and a pair of goggles with cat ears, on a gadget.
+  // His Cool Shooter, side on and turned a little: the tank end hatched
+  // underneath, two grips, the hose that feeds it from his pack, and the cold
+  // it fires bursting from the muzzle. He names it and freezes the Peachbeard
+  // Pirates' guns with it at 880.
   'lindbergh': [
-    { d: 'M30 112 H130 V162 H30 Z' },
-    { d: 'M30 126 H130', role: 'soft' },
-    { d: `${circle(50, 144, 8)} ${circle(72, 144, 8)}`, role: 'soft' },
-    { d: 'M96 136 h22 v16 h-22z' },
-    { d: circle(58, 88, 18) },
-    { d: circle(102, 88, 18) },
-    { d: 'M76 88 h8 M40 88 L22 80 M120 88 L138 80' },
-    { d: 'M46 72 l-6 -18 l17 9 M114 72 l6 -18 l-17 9', role: 'accent' },
-    { d: 'M24 38 L86 52 L84 60 L22 46 Z' },
-    { d: 'M86 48 l12 -8 l9 11 l-11 8 l11 8 l-9 11 l-12 -8 Z' },
-  ],
-
-  // A small crown left on an oversized throne.
-  'sterry': [
-    { d: 'M40 146 V40 H120 V146' },
-    { d: 'M40 40 q40 -16 80 0' },
-    { d: 'M40 110 H22 V146 M120 110 H138 V146' },
-    { d: 'M34 146 H126 V158 H34 Z' },
-    { d: 'M40 158 V174 M120 158 V174' },
-    { d: 'M52 130 V56 H108 V130', role: 'soft' },
+    { d: 'M20 114 H58 M20 142 H58 M20 114 a6 14 0 0 0 0 28' },
+    { d: 'M58 114 a6 14 0 0 1 0 28', role: 'soft' },
+    { d: 'M62 120 H120 M62 136 H120' },
+    { d: 'M78 118 h6 v20 h-6 Z M102 118 h6 v20 h-6 Z', role: 'soft' },
+    { d: 'M120 120 L128 114 V142 L120 136' },
+    { d: 'M128 114 a4 14 0 0 1 0 28', role: 'soft' },
+    { d: 'M36 142 L32 166 H44 L48 142 M90 136 V158 H98 V136' },
+    { d: 'M14 128 C4 130 2 146 10 154 C18 162 12 172 2 176' },
     {
-      d: 'M66 142 V124 L74 132 L80 118 L86 132 L94 124 V142 Z',
+      d: 'M26 142 l5 -7 M36 142 l5 -7 M46 142 l5 -7 M66 136 l4 -6 M114 136 l4 -6',
+      role: 'ambient',
+    },
+    { d: 'M134 120 L156 106 M136 128 H158 M134 136 L156 150', role: 'accent' },
+    {
+      d: 'M148 88 v12 M142 94 h12 M144 90 l8 8 M152 90 l-8 8 M146 158 v12 M140 164 h12 M142 160 l8 8 M150 160 l-8 8',
       role: 'accent',
     },
-    { d: 'M66 138 H94', role: 'accent' },
-    shadow(80, 182, 50),
+    shadow(80, 178, 60),
   ],
 
-  // An empty throne with weapons laid at its base.
+  // The gold crown he wears as king of Goa, in three quarters: tall points
+  // with a diamond set in each, the far points showing between them and the
+  // band's turning side hatched. He wears it on the way to the Reverie at 883.
+  'sterry': [
+    { d: 'M28 128 V142 A52 12 0 0 0 132 142 V128' },
+    { d: 'M28 128 A52 12 0 0 1 132 128', role: 'soft' },
+    { d: 'M28 128 A52 12 0 0 0 132 128' },
+    {
+      d: 'M32 133 V72 L38 80 L44 70 L50 80 L56 72 V139 M66 140 V58 L72 66 L80 54 L88 66 L94 58 V140 M104 139 V72 L110 80 L116 70 L122 80 L128 72 V133',
+      role: 'accent',
+    },
+    {
+      d: 'M58 116 V88 L62 92 L66 86 V117 M94 117 V86 L98 92 L102 88 V116',
+      role: 'soft',
+    },
+    {
+      d: `${polygon(44, 104, 6, 4)} ${polygon(80, 94, 7, 4)} ${polygon(116, 104, 6, 4)}`,
+      role: 'soft',
+    },
+    { d: 'M112 148 l8 -6 M122 144 l6 -5', role: 'ambient' },
+    shadow(80, 168, 56),
+  ],
+
+  // The Empty Throne at the top of Pangaea Castle, in three quarters, its tall
+  // back hatched where it turns away, on its stepped platform among the swords
+  // of the founding kings planted round it. No emblem on it. The figure sits
+  // on it and the Five Elders kneel at 889.
   'im': [
-    { d: 'M54 150 V44 H106 V150' },
-    { d: 'M54 44 q26 -20 52 0' },
-    { d: 'M54 118 H40 V150 M106 118 H120 V150' },
-    { d: 'M46 150 H114 V160 H46 Z' },
-    { d: 'M64 138 V56 H96 V138', role: 'soft' },
-    { d: 'M26 174 L66 134 M134 174 L94 134', role: 'accent' },
-    { d: 'M66 134 l-4 -13 l13 4z M94 134 l4 -13 l-13 4z', role: 'accent' },
-    shadow(80, 188, 44),
+    { d: 'M14 170 H146 V182 H14 Z M14 170 L26 162 H134 L146 170' },
+    { d: 'M30 162 V154 H130 V162 M30 154 L40 148 H120 L130 154', role: 'soft' },
+    {
+      d: 'M56 124 V60 C56 42 66 30 80 14 C94 30 104 42 104 60 V124',
+      role: 'accent',
+    },
+    { d: 'M104 124 L110 120 V62 C110 46 100 32 86 20', role: 'soft' },
+    {
+      d: 'M104 66 l6 -4 M104 80 l6 -4 M104 94 l6 -4 M104 108 l6 -4',
+      role: 'ambient',
+    },
+    {
+      d: 'M64 118 V64 C64 52 72 42 80 36 C88 42 96 52 96 64 V118',
+      role: 'soft',
+    },
+    { d: 'M48 136 H112 L116 130 H54 Z M48 136 V148 M112 136 V148' },
+    {
+      d: 'M48 136 V116 C48 108 56 108 58 114 M112 136 V116 C112 108 104 108 102 114',
+    },
+    {
+      d: 'M24 166 L18 134 L22 132 L28 165 M14 136 L26 130 M20 132 C18 126 18 122 16 118 M36 162 L46 128 L50 130 L40 163 M42 124 L54 129 M50 126 L54 116',
+    },
+    {
+      d: 'M136 166 L142 134 L138 132 L132 165 M146 136 L134 130 M140 132 C142 126 142 122 144 118 M124 162 L114 128 L110 130 L120 163 M118 124 L106 129 M110 126 L106 116',
+    },
+    {
+      d: 'M20 182 l6 -10 M40 182 l6 -10 M60 182 l6 -10 M80 182 l6 -10 M100 182 l6 -10 M120 182 l6 -10',
+      role: 'ambient',
+    },
+    shadow(80, 192, 70),
   ],
 
-  // A bull's horns above the clouds.
+  // A bull's horns on their boss, in three quarters, the near horn ridged at
+  // the base and the far one hatched: the emblem of the name he is captioned
+  // with at 882, Ryokugyu, the Green Bull. His features stay hidden, so
+  // nothing of him is drawn.
   'ryokugyu': [
     {
-      d: 'M78 76 C56 78 36 68 28 48 C24 36 32 26 42 30 C56 36 62 58 78 62 Z',
+      d: 'M62 146 C40 144 18 132 16 108 C14 88 22 70 34 52 C32 72 32 92 40 106 C48 120 58 126 66 132',
       role: 'accent',
     },
     {
-      d: 'M82 76 C104 78 124 68 132 48 C136 36 128 26 118 30 C104 36 98 58 82 62 Z',
-      role: 'accent',
+      d: 'M98 134 C114 132 130 122 134 104 C136 90 132 76 124 64 C126 80 124 96 118 106 C112 116 104 122 96 124',
     },
-    { d: 'M72 62 q8 -8 16 0 v18 q-8 8 -16 0 Z' },
     {
-      d: 'M24 136 q8 -14 22 -6 q10 -12 24 -2 q12 -4 14 8 Z M86 156 q8 -12 20 -4 q10 -10 22 0 q10 -2 10 8 Z',
+      d: 'M60 140 C60 130 70 124 82 124 C94 124 102 128 102 136 C102 146 92 152 80 152 C68 152 60 148 60 140 Z',
+    },
+    {
+      d: 'M48 140 l6 -10 M36 134 l8 -8 M26 122 l10 -5 M20 106 l12 -2',
       role: 'soft',
     },
-    { d: 'M20 172 H140', role: 'ambient', dashed: true },
+    { d: 'M112 126 l4 -6 M120 120 l4 -7 M126 112 l3 -7', role: 'ambient' },
+    { d: 'M66 134 C72 130 90 130 98 134', role: 'soft' },
+    { d: 'M88 150 l6 -6 M96 148 l4 -5', role: 'ambient' },
+    shadow(80, 166, 52),
   ],
-  // A sheep's curled horn lying above a sword laid flat.
+  // A sheep's curled horn in three quarters, ridged, its underside hatched, as
+  // his hands become at 739, above the big sword he carries on his back.
   'sheepshead': [
     {
-      d: 'M36 64 C76 34 128 58 126 102 C124 136 84 144 70 122 C58 102 76 84 92 94 C102 100 98 114 88 114',
+      d: 'M34 70 C52 40 100 34 122 60 C140 82 134 120 106 130 C82 138 64 120 70 100 C74 86 90 82 98 92 C104 100 98 110 90 108',
+      role: 'accent',
     },
-    { d: 'M36 64 C46 74 52 80 58 96' },
     {
-      d: 'M60 50 l4 12 M86 44 l-2 13 M112 56 l-9 9 M126 84 l-13 2 M118 122 l-10 -6',
+      d: 'M48 82 C64 58 98 54 112 72 C124 88 120 112 102 118 C86 122 76 110 80 100 C84 94 92 96 90 108',
+    },
+    { d: 'M34 70 C36 80 42 84 48 82 M34 70 C40 66 46 74 48 82', role: 'soft' },
+    {
+      d: 'M58 50 l3 15 M80 41 l-1 16 M104 46 l-6 14 M126 68 l-12 8 M132 96 l-13 1 M120 122 l-9 -9',
       role: 'soft',
     },
-    { d: 'M34 154 H122 L136 159 L122 164 H34 Z', role: 'accent' },
-    { d: 'M34 144 V174', role: 'accent' },
-    { d: 'M34 159 H16' },
-    { d: circle(11, 159, 5) },
-    shadow(80, 182, 60),
+    { d: 'M92 128 l3 -7 M100 128 l4 -8 M108 126 l4 -8', role: 'ambient' },
+    { d: 'M30 154 H118 L134 160 L118 166 H30 Z' },
+    { d: 'M34 160 H124', role: 'soft' },
+    { d: 'M30 146 V174' },
+    { d: 'M12 156 H30 V164 H12 Z M16 156 l4 8 M22 156 l4 8', role: 'soft' },
+    { d: circle(8, 160, 4) },
+    shadow(76, 184, 64),
   ],
 
-  // A naginata planted upright in the rubble of a flattened town.
+  // His naginata, a blade of Whitebeard's kind with a spur on its back,
+  // planted in the rubble of a town he has flattened, the broken walls
+  // hatched. Shown at 751.
   'edward-weevil': [
-    { d: 'M88 48 L78 164' },
-    { d: 'M86 48 C82 30 86 16 100 4 C102 20 100 34 94 50 Z', role: 'accent' },
-    { d: 'M80 50 L98 52' },
-    { d: 'M84 60 L94 61 M83 66 L93 67', role: 'soft' },
-    { d: 'M18 172 L32 150 L46 160 L58 144 L72 158' },
-    { d: 'M86 158 L100 146 L114 160 L128 148 L142 172' },
+    { d: 'M70 164 L90 56 M76 165 L96 57' },
+    { d: 'M86 56 L102 59 L100 68 L84 65 Z' },
     {
-      d: 'M30 184 h16 v-10 h-16 z M112 184 h18 v-10 h-18 z M60 180 l10 -8 l8 6',
-      role: 'soft',
+      d: 'M88 56 C78 38 80 18 92 4 C100 12 106 20 106 28 L114 26 L108 36 C106 44 102 52 100 58',
+      role: 'accent',
     },
-    shadow(80, 188, 64),
+    { d: 'M98 16 q4 3 2 7 M100 28 q4 3 2 7 M100 40 q4 3 2 7', role: 'ambient' },
+    { d: 'M92 54 C86 40 86 24 92 10', role: 'soft' },
+    { d: 'M79 120 l8 2 M77 128 l8 2', role: 'soft' },
+    {
+      d: 'M12 172 V146 L20 138 L24 148 L32 142 V172 M120 172 V150 L128 142 L132 152 L142 144 V172',
+    },
+    { d: 'M44 172 L52 160 L62 164 L70 154 L84 160 L94 156 L104 172' },
+    {
+      d: 'M16 168 l6 -8 M24 168 l6 -8 M124 168 l6 -8 M132 168 l6 -8 M84 170 l5 -8 M92 170 l5 -8',
+      role: 'ambient',
+    },
+    { d: 'M38 166 l6 -4 l4 4 Z M108 168 l5 -5 l5 3 Z', role: 'soft' },
+    { d: 'M2 172 H158', role: 'ambient', dashed: true },
+    shadow(80, 184, 64),
   ],
 
   // An elephant's leg rising out of the sea into the fog, its toenails at the waterline.
@@ -1298,17 +1380,33 @@ export const wholeCakeArt = {
     ...SEA,
   ],
 
-  // A pair of round sunglasses resting on a stack of coins.
+  // Her little green bowler with a pink flower on its band, beside the
+  // T-handled cane she leans on. Both are in her first panel, chapter 802,
+  // and with her at 752.
   'bakkin': [
-    { d: 'M44 128 V150 a36 9 0 0 0 72 0 V128' },
-    { d: ellipse(80, 128, 36, 9) },
-    { d: 'M44 135 a36 9 0 0 0 72 0 M44 142 a36 9 0 0 0 72 0', role: 'soft' },
-    { d: 'M118 168 a16 5 0 1 0 32 0 a16 5 0 1 0 -32 0', role: 'soft' },
-    { d: `${circle(62, 106, 13)} ${circle(98, 106, 13)}`, role: 'accent' },
-    { d: 'M75 104 q5 -6 10 0', role: 'accent' },
-    { d: 'M49 102 L34 90 M111 102 L126 90' },
-    { d: 'M56 101 l7 -4 M92 101 l7 -4', role: 'soft' },
-    shadow(70, 170, 40),
+    {
+      d: 'M40 128 C40 122 46 122 50 126 C60 134 88 134 98 126 C102 122 108 122 108 128 C108 138 92 144 74 144 C56 144 40 138 40 128 Z',
+    },
+    { d: 'M50 126 C48 98 58 84 74 84 C90 84 100 98 98 126' },
+    {
+      d: 'M50 114 C62 120 86 120 98 114 M50 120 C62 126 86 126 98 120',
+      role: 'soft',
+    },
+    {
+      d: 'M94 110 C89.2 102.2 98.8 102.2 94 110 M94 110 C99.9 103.1 102.8 112.1 94 110 M94 110 C102.4 113.5 94.7 119.1 94 110 M94 110 C93.3 119.1 85.6 113.5 94 110 M94 110 C85.2 112.1 88.1 103.1 94 110',
+      role: 'accent',
+    },
+    {
+      d: 'M84 88 l6 -3 M90 96 l6 -3 M58 132 l3 4 M90 132 l-3 5',
+      role: 'ambient',
+    },
+    { d: 'M140 176 L116 108 M145 174 L121 106' },
+    {
+      d: 'M106 108 H132 C136 108 136 102 132 102 H106 C102 102 102 108 106 108 Z',
+      transform: 'rotate(-20 119 105)',
+    },
+    { d: 'M140 176 l5 -2 l2 6 l-5 2 Z', role: 'soft' },
+    shadow(80, 184, 64),
   ],
 
   // An elephant's trunk raised out of the sea, spraying water that falls back
@@ -1342,44 +1440,63 @@ export const wholeCakeArt = {
     },
     ...SEA,
   ],
-  // A musketeer's broad hat with a long curling plume, above a rapier laid
-  // across the table.
+  // His black musketeer's hat in three quarters, the broad brim showing its
+  // thickness and the crown hatched, the curly plume as the accent. No
+  // rapier: he draws it only in chapter 809.
   'shishilian': [
-    { d: 'M50 96 C50 66 110 66 110 96' },
-    { d: ellipse(80, 98, 58, 12) },
-    { d: 'M52 88 H108', role: 'soft' },
     {
-      d: 'M104 84 C104 58 126 38 150 36 C146 58 128 76 104 84 Z',
+      d: 'M8 120 C4 104 20 94 34 102 C50 112 104 114 128 108 C144 104 156 112 152 124 C146 138 116 146 80 146 C44 146 12 136 8 120 Z',
+    },
+    { d: 'M46 112 C44 86 58 70 80 70 C102 70 116 86 114 112' },
+    { d: 'M46 102 C64 108 96 108 114 102', role: 'soft' },
+    { d: 'M102 76 l8 -4 M108 88 l7 -4 M110 100 l5 -3', role: 'ambient' },
+    {
+      d: 'M14 124 C30 136 60 140 80 140 C110 140 138 134 148 124',
+      role: 'soft',
+    },
+    {
+      d: 'M54 104 C40 104 28 96 26 84 C20 78 24 68 32 68 C30 58 40 52 48 58 C50 48 62 44 68 52 C74 44 88 46 90 56 C98 52 108 56 108 64 C116 64 122 70 120 78',
       role: 'accent',
     },
     {
-      d: 'M108 78 C118 64 130 52 144 42 M116 70 l-4 -8 M126 60 l-4 -8 M136 50 l-3 -7',
+      d: 'M32 80 c3 -4 8 -1 6 3 M44 62 c3 -4 8 -1 6 3 M66 56 c3 -4 8 -1 6 3 M94 60 c3 -4 8 -1 6 3',
       role: 'soft',
     },
-    { d: 'M36 150 L144 126' },
-    { d: 'M40 140 C30 146 32 158 44 158', role: 'accent' },
-    { d: circle(28, 154, 4) },
-    shadow(84, 172, 52),
+    shadow(80, 160, 64),
   ],
 
-  // A three-barrelled gun where a forearm should be, its pull chain hanging
-  // down to a ring.
+  // The three-barrelled gun in place of his right forearm, in three quarters:
+  // the ribbed drum at the back, the bands, the underside hatched, the three
+  // muzzles standing out at the front and the pull chain sagging to the
+  // ground. Shown at 783.
   'gotti': [
-    { d: 'M18 78 H42 V136 H18 Z' },
+    { d: ellipse(28, 104, 10, 30) },
     {
-      d: 'M42 84 H122 V96 H42 Z M42 101 H122 V113 H42 Z M42 118 H122 V130 H42 Z',
-    },
-    {
-      d: `${circle(126, 90, 4)} ${circle(126, 107, 4)} ${circle(126, 124, 4)}`,
-      role: 'accent',
-    },
-    { d: 'M60 84 V130 M100 84 V130', role: 'soft' },
-    {
-      d: `${ellipse(30, 144, 3, 5)} ${ellipse(30, 155, 3, 5)} ${ellipse(30, 166, 3, 5)}`,
+      d: `${ellipse(28, 104, 4, 14)} M28 74 V90 M28 118 V134 M19 92 l5 6 M37 92 l-5 6 M19 116 l5 -6 M37 116 l-5 -6`,
       role: 'soft',
     },
-    { d: circle(30, 178, 6), role: 'accent' },
-    shadow(80, 188, 56),
+    { d: 'M28 80 H112 M28 128 H112 M112 80 a8 24 0 0 1 0 48' },
+    {
+      d: 'M58 80 a8 24 0 0 1 0 48 M66 80 a8 24 0 0 1 0 48 M92 80 a8 24 0 0 1 0 48',
+      role: 'soft',
+    },
+    {
+      d: 'M118 84 H136 M118 94 H136 M118 98 H136 M118 108 H136 M118 112 H136 M118 122 H136',
+      role: 'accent',
+    },
+    {
+      d: `${ellipse(136, 89, 2, 5)} ${ellipse(136, 103, 2, 5)} ${ellipse(136, 117, 2, 5)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M38 128 l6 -7 M50 128 l6 -7 M76 128 l6 -7 M88 128 l6 -7 M104 128 l6 -7',
+      role: 'ambient',
+    },
+    {
+      d: `M48 128 C46 150 54 166 72 172 C90 178 108 174 116 168 ${ellipse(52, 146, 3, 6)} ${ellipse(64, 166, 6, 3)} ${ellipse(94, 174, 6, 3)}`,
+      role: 'soft',
+    },
+    shadow(76, 184, 62),
   ],
 
   // A castle standing on the top layer of a cake, cream running down the edge below its gate.
@@ -1449,20 +1566,27 @@ export const wholeCakeArt = {
     shadow(80, 178, 58),
   ],
 
-  // A hat with a brim wider than any table, flowers at its band, over a
-  // long sword laid out beneath it.
+  // Her enormous hat in three quarters, flowers at its band and the brim's
+  // turning edge hatched, over the long sword Shirauo laid out beneath it. She
+  // marches with both at 809.
   'amande': [
-    { d: ellipse(80, 96, 72, 16) },
-    { d: 'M58 92 C58 66 102 66 102 92' },
-    { d: 'M60 86 Q80 80 100 86', role: 'soft' },
+    { d: ellipse(80, 104, 74, 26) },
+    { d: 'M6 106 C14 140 146 140 154 106', role: 'soft' },
     {
-      d: `${circle(68, 83, 4)} ${circle(80, 81, 4)} ${circle(92, 83, 4)}`,
+      d: 'M62 106 C60 84 70 72 80 72 C90 72 100 84 98 106 M62 106 C70 112 90 112 98 106',
+    },
+    {
+      d: 'M68 103 C65.3 98.6 70.7 98.6 68 103 M68 103 C71.4 99 73.1 104.2 68 103 M68 103 C72.8 105 68.4 108.2 68 103 M68 103 C67.6 108.2 63.2 105 68 103 M68 103 C62.9 104.2 64.6 99 68 103 M80 105 C77.3 100.6 82.7 100.6 80 105 M80 105 C83.4 101 85.1 106.2 80 105 M80 105 C84.8 107 80.4 110.2 80 105 M80 105 C79.6 110.2 75.2 107 80 105 M80 105 C74.9 106.2 76.6 101 80 105 M92 103 C89.3 98.6 94.7 98.6 92 103 M92 103 C95.4 99 97.1 104.2 92 103 M92 103 C96.8 105 92.4 108.2 92 103 M92 103 C91.6 108.2 87.2 105 92 103 M92 103 C86.9 104.2 88.6 99 92 103',
       role: 'accent',
     },
-    { d: 'M24 150 C64 138 110 132 150 130', role: 'accent' },
-    { d: 'M24 150 L8 155' },
-    { d: 'M22 143 L27 157' },
-    shadow(80, 172, 62),
+    { d: 'M120 126 l6 -6 M132 120 l6 -6 M142 112 l5 -5', role: 'ambient' },
+    { d: 'M28 164 C70 156 112 148 152 140 M28 169 C70 161 112 153 152 140' },
+    { d: ellipse(25, 166, 3, 8) },
+    {
+      d: 'M22 164 L4 168 M22 169 L5 173 M8 168 l2 5 M14 166 l2 5',
+      role: 'soft',
+    },
+    shadow(80, 186, 66),
   ],
   // His beard, cream heaped round his chin and running down in strands to
   // drip off the hem, a small bow tie on it, the far side turning away. He
@@ -1487,19 +1611,31 @@ export const wholeCakeArt = {
     shadow(80, 188, 50),
   ],
 
-  // A footed bowl of stewed fruit, syrup running over the rim.
+  // The footed parfait glass she wears on her head, in three quarters: fruit
+  // slices round the rim, cream and a cherry on top, layers inside, the far
+  // side hatched. She sits at the tea party with it at 831.
   'charlotte-compote': [
-    { d: 'M34 108 C38 140 58 152 80 152 C102 152 122 140 126 108 Z' },
-    { d: 'M68 152 L62 166 H98 L92 152' },
+    { d: ellipse(80, 98, 44, 10) },
+    { d: 'M36 98 C38 126 58 142 80 142 C102 142 122 126 124 98' },
+    { d: 'M74 142 V162 M86 142 V162' },
+    { d: ellipse(80, 166, 22, 5) },
     {
-      d: [circle(58, 100, 10), circle(80, 96, 12), circle(103, 100, 10)].join(
-        ' ',
-      ),
+      d: 'M42 116 C60 124 100 124 118 116 M52 130 C66 136 94 136 108 130',
+      role: 'soft',
+    },
+    { d: 'M110 120 l6 -6 M104 132 l6 -6 M116 106 l5 -5', role: 'ambient' },
+    {
+      d: 'M42 98 a11 11 0 0 1 22 0 M69 96 a11 11 0 0 1 22 0 M96 98 a11 11 0 0 1 22 0',
       role: 'accent',
     },
-    { d: 'M80 84 q2 -8 9 -11 q8 -1 10 5 q-9 4 -19 6', role: 'soft' },
-    { d: 'M40 116 q3 8 0 13 M118 118 q-2 6 1 10', role: 'soft' },
-    shadow(80, 176, 44),
+    {
+      d: 'M53 98 l-6 -6 M53 98 V87 M53 98 l6 -6 M80 96 l-6 -6 M80 96 V85 M80 96 l6 -6 M107 98 l-6 -6 M107 98 V87 M107 98 l6 -6',
+      role: 'soft',
+    },
+    { d: 'M58 86 C58 72 70 70 80 64 C90 70 102 72 102 86', role: 'soft' },
+    { d: circle(80, 56, 6) },
+    { d: 'M80 50 C80 44 84 40 90 38', role: 'soft' },
+    shadow(80, 178, 40),
   ],
 
   // A bicorne hat with a tornado twisting up out of its crown.
@@ -1520,15 +1656,40 @@ export const wholeCakeArt = {
     shadow(80, 150, 58),
   ],
 
-  // A long blowgun, a dart flying from its mouth and a bubble of gum.
+  // Her silent blowgun in three quarters, slung on its strap, its underside
+  // hatched, with a numbing needle in flight from the muzzle as the accent.
+  // She fires it at Luffy at 867. No gum: that is only in her Vivre Card.
   'charlotte-flampe': [
-    { d: 'M18 150 L110 70 M25 157 L117 77 M18 150 L25 157 M110 70 L117 77' },
-    { d: 'M34 136 l7 7', role: 'soft' },
-    { d: 'M128 60 L150 40 M150 40 l-9 1 M150 40 l-1 9', role: 'accent' },
-    { d: 'M120 70 l8 -7 M112 62 l8 -7', role: 'soft', dashed: true },
-    { d: circle(48, 72, 18), role: 'accent' },
-    { d: 'M38 66 q4 -6 11 -5', role: 'soft' },
-    shadow(70, 178, 50),
+    { d: 'M12 145 H128 M12 155 H128', transform: FLAMPE_BLOWGUN_TILT },
+    { d: 'M12 145 L4 141 V159 L12 155', transform: FLAMPE_BLOWGUN_TILT },
+    { d: ellipse(128, 150, 3, 5), transform: FLAMPE_BLOWGUN_TILT },
+    {
+      d: 'M32 144 h7 v12 h-7 Z M98 144 h7 v12 h-7 Z',
+      role: 'soft',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M44 155 l4 -6 M58 155 l4 -6 M72 155 l4 -6 M86 155 l4 -6 M114 155 l4 -6',
+      role: 'ambient',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M42 156 C48 170 88 170 94 156',
+      role: 'soft',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M150 150 H172 L166 147 M150 150 l-6 -4 M150 150 l-6 4 M155 150 l-6 -4 M155 150 l-6 4',
+      role: 'accent',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M134 144 h8 M134 156 h8 M136 150 h6',
+      role: 'soft',
+      dashed: true,
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    shadow(70, 186, 56),
   ],
 
   // A sheer wall rising out of the sea through the clouds, a palace of domes and spires along its top.
@@ -1554,27 +1715,64 @@ export const wholeCakeArt = {
     { d: 'M72 70 V62 h16 V70', role: 'soft' },
     ...SEA,
   ],
-  // A double-headed spear laid across a long crane feather.
+  // His double-bladed spear held across a standing crane, the mount he rides
+  // through the Seducing Woods, drawn whole and without an eye. Both at 792.
   'randolph': [
-    { d: 'M30 176 L130 28' },
-    { d: 'M130 28 l-2 16 l-9 -6 Z M30 176 l2 -16 l9 6 Z', role: 'accent' },
-    { d: 'M72 118 l10 7 M78 110 l10 7', role: 'accent' },
-    { d: 'M44 58 C70 70 104 108 118 160 C96 132 62 100 44 58 Z' },
     {
-      d: 'M58 74 l-10 8 M70 88 l-12 8 M82 104 l-12 10 M94 122 l-12 10 M104 140 l-10 10',
+      d: 'M60 104 C70 88 112 88 122 104 C126 116 112 126 92 126 C78 126 64 120 60 104 Z',
+    },
+    { d: 'M62 108 C50 116 42 128 40 140 C50 132 58 128 68 122', role: 'soft' },
+    {
+      d: 'M76 102 C88 98 104 100 114 106 M80 112 C92 110 104 112 112 116',
       role: 'soft',
     },
-    shadow(80, 184, 52),
+    {
+      d: 'M74 122 l4 -5 M84 125 l4 -6 M96 126 l4 -6 M108 122 l4 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M116 100 C124 84 112 68 116 50 C118 40 126 36 132 40 M122 106 C132 88 120 72 124 54 C126 46 132 44 136 48',
+    },
+    { d: 'M132 40 C136 36 142 38 140 44 L158 54 L138 49' },
+    { d: 'M86 126 L84 174 M96 126 L100 174 M78 176 h12 M94 176 h12' },
+    { d: 'M24 140 H136 M24 144 H136', transform: RANDOLPH_SPEAR_TILT },
+    {
+      d: 'M136 142 L144 134 L158 142 L144 150 Z M24 142 L16 134 L2 142 L16 150 Z',
+      role: 'accent',
+      transform: RANDOLPH_SPEAR_TILT,
+    },
+    {
+      d: 'M128 138 v8 M32 138 v8',
+      role: 'soft',
+      transform: RANDOLPH_SPEAR_TILT,
+    },
+    shadow(80, 184, 60),
   ],
 
-  // A heaped thundercloud with a lightning bolt dropping out of it.
+  // A thundercloud heaped in three quarters, the far puffs behind the near
+  // ones and its dark underside hatched, a lightning bolt striking the ground
+  // below it through the rain. No face.
   'zeus': [
     {
-      d: 'M30 96 C14 96 12 72 30 68 C28 46 56 40 64 54 C70 30 108 30 112 56 C132 50 148 70 134 88 C142 104 118 110 110 100 C98 112 74 112 64 102 C52 110 34 108 30 96 Z',
+      d: 'M30 64 C28 46 50 36 64 48 C72 30 104 30 110 50 C122 42 140 52 136 70',
+      role: 'soft',
     },
-    { d: 'M36 88 C52 96 70 92 80 84 C92 94 112 94 128 82', role: 'soft' },
-    { d: 'M86 108 L70 140 H88 L72 180 L112 130 H92 L104 108', role: 'accent' },
-    { d: 'M40 124 v10 M52 136 v10 M122 124 v10 M132 138 v10', role: 'ambient' },
+    {
+      d: 'M18 108 C4 104 6 82 22 80 C18 62 38 54 50 66 C52 50 78 46 88 62 C98 50 122 52 124 70 C142 70 152 94 136 106',
+    },
+    {
+      d: 'M50 66 C46 74 48 82 54 86 M88 62 C84 70 86 78 92 82 M124 70 C120 76 120 84 124 88',
+      role: 'soft',
+    },
+    { d: 'M18 108 C30 124 124 124 136 106' },
+    { d: 'M18 108 C34 98 120 96 136 106', role: 'soft' },
+    {
+      d: 'M30 116 l6 -9 M44 120 l6 -10 M58 121 l6 -10 M72 122 l6 -10 M100 121 l6 -10 M114 118 l6 -9 M126 113 l5 -7 M12 100 l6 -6 M16 106 l6 -6 M22 110 l5 -5',
+      role: 'ambient',
+    },
+    { d: 'M84 120 L70 146 H86 L70 182 L106 134 H90 L100 120', role: 'accent' },
+    { d: 'M32 132 v12 M46 140 v12 M116 132 v12 M130 140 v12', role: 'ambient' },
+    { d: 'M20 186 H140', role: 'ambient', dashed: true },
   ],
 
   // A sun with flames licking out of its rim.
@@ -1638,28 +1836,55 @@ export const wholeCakeArt = {
     shadow(80, 188, 68),
   ],
 
-  // A Marine coat hung from its shoulders like a cape, the hood let down.
+  // Her Marine coat worn as a cape, the hood let down at the collar, fringed
+  // epaulettes, the empty sleeves with pink cuffs, the inside hatched. She
+  // wears it at the Red Port at 887.
   'gion': [
-    { d: 'M80 42 c0 -8 10 -10 10 -3 c0 5 -10 6 -10 11' },
-    { d: 'M40 60 L80 44 L120 60', role: 'soft' },
-    { d: 'M44 60 C38 92 34 132 30 172 H130 C126 132 122 92 116 60' },
-    { d: 'M58 56 C62 76 98 76 102 56', role: 'soft' },
-    { d: 'M80 74 V172', role: 'soft' },
-    { d: 'M44 60 l-12 6 M116 60 l12 6', role: 'accent' },
-    { d: 'M30 172 l2 -10 h96 l2 10', role: 'accent' },
-    shadow(80, 186, 54),
+    { d: 'M62 52 C64 38 96 38 98 52 C94 62 66 62 62 52 Z' },
+    { d: 'M66 50 C72 44 88 44 94 50', role: 'soft' },
+    {
+      d: 'M62 52 C50 54 40 60 34 68 C28 102 24 142 20 178 C50 186 110 186 140 178 C136 142 132 102 126 68 C120 60 110 54 98 52',
+    },
+    {
+      d: 'M30 66 C34 60 44 58 50 62 L48 72 M34 68 l-1 9 M38 68 v10 M42 68 l1 9 M110 62 C116 58 126 60 130 66 L132 72 M118 64 l-1 10 M122 64 v10 M126 66 l1 9',
+      role: 'soft',
+    },
+    {
+      d: 'M38 74 C32 104 30 124 30 140 H44 C44 120 44 98 48 76 M122 74 C128 104 130 124 130 140 H116 C116 120 116 98 112 76',
+    },
+    { d: 'M30 132 H44 V140 M130 132 H116 V140', role: 'accent' },
+    {
+      d: 'M68 60 C66 100 66 140 64 182 M92 60 C94 100 94 140 96 182',
+      role: 'soft',
+    },
+    {
+      d: 'M70 70 l20 -6 M70 82 l20 -6 M70 94 l20 -6 M126 150 l8 -6 M128 164 l8 -6',
+      role: 'ambient',
+    },
+    shadow(80, 192, 64),
   ],
 
-  // A fedora with a checked band, and a lit pipe in front of its brim.
+  // His fedora in three quarters, pinched at the crown, the checked band as
+  // the accent and the crown's far side hatched. He wears it at the Red Port
+  // at 887, with no pipe: the episode shows none.
   'tokikake': [
-    { d: 'M46 100 C46 70 56 58 80 58 C104 58 114 70 114 100' },
-    { d: 'M66 64 Q80 78 94 64', role: 'soft' },
-    { d: ellipse(80, 112, 62, 14) },
-    { d: 'M47 86 C66 94 94 94 113 86', role: 'accent' },
-    { d: 'M58 89 v7 M69 91 v7 M80 92 v7 M91 91 v7 M102 89 v7', role: 'soft' },
-    { d: 'M104 150 h18 v12 c0 9 -18 9 -18 0 Z' },
-    { d: 'M104 156 L52 170', role: 'accent' },
-    { d: 'M114 146 c-6 -6 6 -10 0 -16', role: 'soft' },
-    shadow(80, 186, 56),
+    {
+      d: 'M46 134 C44 110 50 94 62 88 C70 96 90 96 98 88 C110 94 116 110 114 134',
+    },
+    {
+      d: 'M68 92 C74 104 86 104 92 92 M56 100 C54 112 54 120 56 128 M104 100 C106 112 106 120 104 128',
+      role: 'soft',
+    },
+    {
+      d: 'M12 136 C10 128 24 128 40 132 C60 136 100 136 120 132 C136 128 150 128 148 136 C146 148 120 156 80 156 C40 156 14 148 12 136 Z',
+    },
+    { d: 'M16 142 C34 154 126 154 144 142', role: 'soft' },
+    {
+      d: 'M46 122 C64 128 96 128 114 122 M46 132 C64 138 96 138 114 132 M56 125 v9 M68 127 v9 M80 128 v9 M92 127 v9 M104 125 v9',
+      role: 'accent',
+    },
+    { d: 'M46 127 C64 133 96 133 114 127', role: 'soft' },
+    { d: 'M100 98 l7 -4 M104 110 l7 -4 M106 122 l6 -3', role: 'ambient' },
+    shadow(80, 168, 64),
   ],
 } satisfies Drawings
