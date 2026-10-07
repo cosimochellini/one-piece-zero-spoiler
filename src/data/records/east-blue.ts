@@ -465,8 +465,8 @@ export const eastBlue: Saga = {
         en: 'Ninjin, Piiman and Tamanegi',
       },
       summary: {
-        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e corrono alla costa quando uno di loro avvista una nave pirata.',
-        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and run to the coast when one of them sees a pirate ship coming.',
+        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e vanno a spiare la nave pirata che uno di loro ha avvistato.',
+        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and go to spy on the pirate ship one of them has sighted.',
       },
       visual: { art: 'ninjin-piiman-and-tamanegi', tint: 'orange' },
     },
