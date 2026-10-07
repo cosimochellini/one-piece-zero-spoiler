@@ -35,7 +35,8 @@ export const waterSeven: Saga = {
       id: 'long-ring-long-land',
       kind: 'arc',
       revealedAtEpisode: 207,
-      revealedAtChapter: 303,
+      revealedAtChapter: 304,
+      // 304, where the island is first seen, as its drawing shows it.
       name: { it: 'Long Ring Long Land', en: 'Long Ring Long Land' },
       summary: {
         it: 'Un’isola lunghissima e sottile, dove alberi e animali sono stirati per il lungo e una ciurma sfida chi approda a una gara con gli uomini in palio.',
@@ -62,8 +63,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 315,
       name: { it: 'Porche', en: 'Porche' },
       summary: {
-        it: 'L’idolo dei Pirati di Foxy, che entra in scena roteando un bastone con un nastro e si fa applaudire dalla ciurma prima ancora di gareggiare.',
-        en: 'The idol of the Foxy Pirates, who takes the field twirling a ribboned baton and has the crew applauding before the game has even started.',
+        it: 'L’idolo dei Pirati di Foxy, che entra in scena roteando un bastone e si fa applaudire dalla ciurma prima ancora di gareggiare.',
+        en: 'The idol of the Foxy Pirates, who takes the field twirling a baton and has the crew applauding before the game has even started.',
       },
       visual: { art: 'porche', tint: 'pink' },
     },
@@ -225,8 +226,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 325,
       name: { it: 'Kokoro', en: 'Kokoro' },
       summary: {
-        it: 'La capostazione del treno del mare, che tiene una bottiglia sulla scrivania e conosce a memoria l’unico binario che esce da Water Seven.',
-        en: 'The station master of the sea train, a bottle always on her desk, who knows by heart the one track that runs out of Water Seven.',
+        it: 'La capostazione del treno del mare, una gran bevitrice, che conosce a memoria l’unico binario che esce da Water Seven.',
+        en: 'The station master of the sea train, a heavy drinker, who knows by heart the one track that runs out of Water Seven.',
       },
       visual: { art: 'kokoro', tint: 'green' },
     },
@@ -305,24 +306,36 @@ export const waterSeven: Saga = {
     {
       id: 'kiwi-and-mozu',
       kind: 'character',
-      revealedAtEpisode: 233,
-      revealedAtChapter: 335,
+      // On screen from 233 and named at 237, but their one object, the
+      // katanas, is first shown at the main gate of Enies Lobby
+      // (ch. 377 p. 12, ep. 265), so they open there.
+      revealedAtEpisode: 265,
+      revealedAtChapter: 377,
+      // Franky calls them by name on finding the Franky House in ruins
+      // (ch. 334, ep. 237).
+      nameSaidAt: 237,
       name: { it: 'Kiwi e Mozu', en: 'Kiwi and Mozu' },
       summary: {
-        it: 'Due sorelle della Franky Family con la stessa pettinatura squadrata e due spade dalla punta tagliata di netto, che parlano quasi sempre all’unisono.',
-        en: 'Two sisters of the Franky Family with the same square haircut and two swords cut flat at the tip, who nearly always speak in unison.',
+        it: 'Due sorelle della Franky Family con la stessa pettinatura squadrata e due katana dalla guardia quadrata, che parlano quasi sempre all’unisono.',
+        en: 'Two sisters of the Franky Family with the same square haircut and two katanas with square guards, who nearly always speak in unison.',
       },
       visual: { art: 'kiwi-and-mozu', tint: 'blue' },
     },
     {
       id: 'zambai',
       kind: 'character',
-      revealedAtEpisode: 233,
-      revealedAtChapter: 335,
+      // On screen from 230 and named at 234, but his one object, the
+      // bazooka, is first shown at the main gate of Enies Lobby (265), and
+      // no chapter is cited for it. He opens with the giant it helps bring
+      // down: episode 266, which adapts ch. 378.
+      revealedAtEpisode: 266,
+      revealedAtChapter: 378,
+      // His name is first said in the raid on the Franky House (234).
+      nameSaidAt: 234,
       name: { it: 'Zambai', en: 'Zambai' },
       summary: {
-        it: 'Il vice della Franky Family, con la bandana calata sugli occhi e un lanciarazzi in spalla, che guida gli smantellatori quando il capo non c’è.',
-        en: 'The Franky Family’s second in command, bandana down over his eyes and a rocket launcher on his shoulder, who leads the dismantlers when the boss is away.',
+        it: 'Il vice della Franky Family, che porta un bazooka e guida gli smantellatori quando il capo non c’è.',
+        en: 'The Franky Family’s second in command, who carries a bazooka and leads the dismantlers when the boss is away.',
       },
       visual: { art: 'zambai', tint: 'red' },
     },
@@ -532,8 +545,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 385,
       name: { it: 'Oimo e Kashi', en: 'Oimo and Kashi' },
       summary: {
-        it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, con le clave appoggiate al muro e una porta che nessuno ha mai forzato.',
-        en: 'Two giants who guard the gate of a judicial island, their clubs leaning on the wall and a door nobody has ever forced.',
+        it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, uno con una clava chiodata e l’altro con una grande ascia, davanti a una porta che nessuno ha mai forzato.',
+        en: 'Two giants who guard the gate of a judicial island, one with a studded club and the other with a broad axe, before a door nobody has ever forced.',
       },
       visual: { art: 'oimo-and-kashi', tint: 'ocher' },
     },
@@ -687,8 +700,8 @@ export const waterSeven: Saga = {
     'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
       log: {
-        it: 'Si presenta come l’idolo della ciurma e si comporta di conseguenza: nastro, sorriso e un pubblico che urla il suo nome a ogni gesto. Nella prima prova del Davy Back Fight gioca in acqua, dove è più veloce di chiunque altro, e non ha la minima intenzione di giocare pulito. Chi la guarda troppo a lungo si dimentica di correre.',
-        en: 'She introduces herself as the crew’s idol and behaves like one: ribbon, smile, and an audience chanting her name at every gesture. In the first round of the Davy Back Fight she plays in the water, where she is faster than anyone, and she has no intention whatsoever of playing fair. Anyone who watches her too long forgets to run.',
+        it: 'Si presenta come l’idolo della ciurma e si comporta di conseguenza: bastone, sorriso e un pubblico che urla il suo nome a ogni gesto. Nella prima prova del Davy Back Fight gioca in acqua, dove è più veloce di chiunque altro, e non ha la minima intenzione di giocare pulito. Chi la guarda troppo a lungo si dimentica di correre.',
+        en: 'She introduces herself as the crew’s idol and behaves like one: baton, smile, and an audience chanting her name at every gesture. In the first round of the Davy Back Fight she plays in the water, where she is faster than anyone, and she has no intention whatsoever of playing fair. Anyone who watches her too long forgets to run.',
       },
       affiliation: [
         { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
@@ -898,8 +911,8 @@ export const waterSeven: Saga = {
         en: 'The station master’s granddaughter',
       },
       log: {
-        it: 'Corre sui binari della Stazione Shift con una canna da pesca più alta di lei e non ha paura di niente, nemmeno del mare che arriva fin sulla banchina. La segue sempre Gonbe, un animale che miagola ma sembra un coniglio e mangia l’erba. Conosce i passaggi della città meglio degli adulti e li indica volentieri a chi si perde.',
-        en: 'She runs along the rails of Shift Station with a fishing rod taller than she is and is frightened of nothing, not even the sea coming up over the platform. Gonbe follows her everywhere, an animal that meows but looks like a rabbit and eats grass. She knows the city’s back ways better than the grown-ups and gladly points them out.',
+        it: 'Corre sui binari della Stazione Shift e non ha paura di niente, nemmeno del mare che arriva fin sulla banchina. La segue sempre Gonbe, un animale che miagola ma sembra un coniglio e mangia l’erba. Conosce i passaggi della città meglio degli adulti e li indica volentieri a chi si perde.',
+        en: 'She runs along the rails of Shift Station and is frightened of nothing, not even the sea coming up over the platform. Gonbe follows her everywhere, an animal that meows but looks like a rabbit and eats grass. She knows the city’s back ways better than the grown-ups and gladly points them out.',
       },
       affiliation: [
         {
@@ -1018,13 +1031,17 @@ export const waterSeven: Saga = {
         en: 'Sisters of the Franky Family',
       },
       log: {
-        it: 'Sono le due sorelle che tengono in riga la banda di smantellatori sotto il ponte, con i capelli tagliati a squadra e due spade dalla punta piatta. Finiscono le frasi l’una dell’altra e ripetono a memoria gli ordini del capo. Quando c’è da spostare qualcosa di grosso, arrivano loro per prime.',
-        en: 'They are the two sisters who keep the gang of dismantlers under the bridge in order, hair cut square and swords cut flat at the point. They finish each other’s sentences and repeat their boss’s orders word for word. When something heavy has to be shifted, they are the first to arrive.',
+        it: 'Sono le due sorelle che tengono in riga la banda di smantellatori sotto il ponte, con i capelli tagliati a squadra e due katana dalla guardia quadrata. Finiscono le frasi l’una dell’altra e ripetono a memoria gli ordini del capo. Quando c’è da spostare qualcosa di grosso, arrivano loro per prime.',
+        en: 'They are the two sisters who keep the gang of dismantlers under the bridge in order, hair cut square and katanas with square guards. They finish each other’s sentences and repeat their boss’s orders word for word. When something heavy has to be shifted, they are the first to arrive.',
       },
       affiliation: [
-        { episode: 233, value: { it: 'Franky Family', en: 'Franky Family' } },
+        {
+          episode: 265,
+          chapter: 377,
+          value: { it: 'Franky Family', en: 'Franky Family' },
+        },
       ],
-      origin: [{ episode: 233, value: WATER_SEVEN }],
+      origin: [{ episode: 265, chapter: 377, value: WATER_SEVEN }],
     },
     'zambai': {
       role: {
@@ -1032,19 +1049,20 @@ export const waterSeven: Saga = {
         en: 'Franky Family second in command',
       },
       log: {
-        it: 'Comanda la banda ogni volta che il capo sparisce, e gli smantellatori lo ascoltano perché urla più forte di tutti. Gira con un lanciarazzi in spalla e la bandana calata sugli occhi, e tratta ogni relitto come merce da portare via prima di sera. Del capo parla con un’ammirazione che non nasconde nemmeno davanti agli estranei.',
-        en: 'He runs the gang whenever the boss disappears, and the dismantlers listen because he shouts louder than any of them. He carries a rocket launcher on his shoulder and a bandana down over his eyes, and treats every wreck as goods to be hauled off before dark. He speaks of his boss with an admiration he does not hide from strangers.',
+        it: 'Comanda la banda ogni volta che il capo sparisce, e gli smantellatori lo ascoltano perché urla più forte di tutti. Porta un bazooka ed è ancora fasciato dopo la rissa con i Cappello di Paglia, e tratta ogni relitto come merce da portare via prima di sera. Del capo parla con un’ammirazione che non nasconde nemmeno davanti agli estranei.',
+        en: 'He runs the gang whenever the boss disappears, and the dismantlers listen because he shouts louder than any of them. He carries a bazooka and is still bandaged from the fight with the Straw Hats, and treats every wreck as goods to be hauled off before dark. He speaks of his boss with an admiration he does not hide from strangers.',
       },
       affiliation: [
         {
-          episode: 233,
+          episode: 266,
+          chapter: 378,
           value: {
             it: 'Franky Family, vice',
             en: 'Franky Family, second in command',
           },
         },
       ],
-      origin: [{ episode: 233, value: WATER_SEVEN }],
+      origin: [{ episode: 266, chapter: 378, value: WATER_SEVEN }],
     },
     'peepley-lulu': {
       chronicle: waterSevenChronicles['peepley-lulu'],
@@ -1303,8 +1321,8 @@ export const waterSeven: Saga = {
     'oimo-and-kashi': {
       role: { it: 'Guardiani del cancello', en: 'Gatekeepers' },
       log: {
-        it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una spada enorme. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
-        en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with an enormous sword. They have worked for the World Government for years and have never questioned an order. They come from an island of warriors and still carry themselves like it.',
+        it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una grande ascia. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
+        en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with a broad axe. They have worked for the World Government for years and have never questioned an order. They come from an island of warriors and still carry themselves like it.',
       },
       affiliation: [
         {
