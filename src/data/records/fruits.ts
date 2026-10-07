@@ -539,30 +539,30 @@ export const devilFruits: Saga = {
     {
       id: 'snake-snake-fruit-model-anaconda',
       kind: 'fruit',
-      revealedAtEpisode: 412,
-      revealedAtChapter: 523,
+      revealedAtEpisode: 413,
+      revealedAtChapter: 524,
       name: {
         it: 'Frutto Hebi Hebi, modello Anaconda',
         en: 'Snake-Snake Fruit, Model: Anaconda',
       },
       summary: {
-        it: 'Trasforma il corpo in un’anaconda, abbastanza lunga da avvolgere due volte una persona e abbastanza forte da chiudere le spire.',
-        en: 'Turns the body into an anaconda, long enough to wrap twice around a person and strong enough to close the coils.',
+        it: 'Trasforma chi l’ha mangiato in un mezzo serpente, anaconda dalla vita in giù, che con la coda afferra una persona e la stringe.',
+        en: 'Turns whoever ate it into a half snake, an anaconda from the waist down, whose tail grabs a person and squeezes.',
       },
       visual: { art: 'snake-snake-fruit-model-anaconda', tint: 'teal' },
     },
     {
       id: 'snake-snake-fruit-model-king-cobra',
       kind: 'fruit',
-      revealedAtEpisode: 412,
-      revealedAtChapter: 523,
+      revealedAtEpisode: 413,
+      revealedAtChapter: 524,
       name: {
         it: 'Frutto Hebi Hebi, modello Cobra Reale',
         en: 'Snake-Snake Fruit, Model: King Cobra',
       },
       summary: {
-        it: 'Trasforma il corpo in un cobra reale, cappuccio aperto e testa sollevata sopra il combattimento, che colpisce verso il basso da quell’altezza.',
-        en: 'Turns the body into a king cobra, hood spread and head raised above the fight, striking downward from that height.',
+        it: 'Trasforma chi l’ha mangiato in un mezzo serpente, cobra reale dalla vita in giù, che sputa veleno e colpisce con la coda.',
+        en: 'Turns whoever ate it into a half snake, a king cobra from the waist down, who spits poison and strikes with the tail.',
       },
       visual: { art: 'snake-snake-fruit-model-king-cobra', tint: 'ocher' },
     },

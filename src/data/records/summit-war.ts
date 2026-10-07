@@ -1625,7 +1625,9 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
-        { episode: 412, value: ['snake-snake-fruit-model-anaconda'] },
+        // Episode 413 captions the model; 412 names the fruit only in the
+        // preview. The true pair (413, 519) sits below her chapter, so no pin.
+        { episode: 413, value: ['snake-snake-fruit-model-anaconda'] },
       ],
     },
     'boa-marigold': {
@@ -1639,7 +1641,9 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 412, value: AMAZON_LILY }],
       devilFruit: [
-        { episode: 412, value: ['snake-snake-fruit-model-king-cobra'] },
+        // Episode 413 captions the model; 412 names the fruit only in the
+        // preview. The true pair (413, 519) sits below her chapter, so no pin.
+        { episode: 413, value: ['snake-snake-fruit-model-king-cobra'] },
       ],
     },
     'marguerite': {
