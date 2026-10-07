@@ -2119,8 +2119,8 @@ export const summitWarArt = {
     shadow(84, 176, 56),
   ],
   // An empty cell in Impel Down, the place he left: a front of bars with its
-  // door shut, the door and its lock in his colour, the stone side wall
-  // hatched. Sengoku remembers him as the "first" prisoner ever to break out,
+  // door shut, the door and its lock in his colour, and the stone side wall.
+  // Sengoku remembers him as the first and only prisoner ever to break out,
   // episode 425.
   'shiki': [
     { d: 'M20 40 H112 M20 150 H112 M20 40 V150 M112 40 V150' },
