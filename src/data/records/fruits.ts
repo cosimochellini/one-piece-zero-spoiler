@@ -237,8 +237,8 @@ export const devilFruits: Saga = {
       revealedAtChapter: 190,
       name: { it: 'Frutto Spike Spike', en: 'Spike-Spike Fruit' },
       summary: {
-        it: 'Fa spuntare spine d’acciaio da qualsiasi punto del corpo: escono da un pugno come arma e dai talloni come trampoli.',
-        en: 'Grows steel spikes from anywhere on the body: they come out of a fist as a weapon and out of the heels as stilts.',
+        it: 'Fa spuntare spine d’acciaio da qualsiasi punto del corpo, abbastanza lunghe da trapassare un muro e colpire chi ci si nasconde dietro.',
+        en: 'Grows steel spikes from anywhere on the body, long enough to go through a wall and into whoever is hiding behind it.',
       },
       visual: { art: 'spike-spike-fruit', tint: 'vermilion' },
     },
