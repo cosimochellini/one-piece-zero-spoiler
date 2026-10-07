@@ -1171,7 +1171,13 @@ export const wholeCake: Saga = {
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
       epithet: [
-        { episode: 796, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
+        // Caption and bounty at 798 (chapter 836, page 15). Episode 797 has
+        // it only in the preview.
+        {
+          episode: 798,
+          chapter: 836,
+          value: { it: 'Mille Braccia', en: 'Thousand Arms' },
+        },
       ],
       devilFruit: [{ episode: 799, chapter: 838, value: ['bis-bis-fruit'] }],
       bounty: [{ episode: 798, value: 860_000_000 }],
