@@ -120,6 +120,12 @@ const PEARLS = 'translate(80 104) scale(1.15) translate(-80 -136)'
  */
 const MARIGOLD_COIL = 'translate(12 142) scale(1 0.5)'
 
+/** One of Bepo's boots, drawn twice: the near one and the one set back. */
+const BEPO_BOOT = 'M0 0 H32 V24 C48 26 62 30 64 42 V48 H0 Z'
+const BEPO_SOLE = 'M0 42 H64 M32 24 C30 32 28 38 26 42'
+const BEPO_FAR = 'translate(84 92)'
+const BEPO_NEAR = 'translate(14 108)'
+
 /** The beads of Dadan's necklace, laid in a ring on the ground. */
 const DADAN_BEADS = (
   [
@@ -614,22 +620,22 @@ export const summitWarArt = {
     shadow(80, 168, 54),
   ],
 
-  // A boiler suit on its hanger, with a paw print across the chest.
+  // His small brown boots standing side by side, the near one with its top
+  // in his colour and its shaded side hatched, the far one set back. He wears
+  // them behind Law at Sabaody in episode 392 (chapter 498).
   'bepo': [
-    { d: 'M58 48 C58 40 102 40 102 48 V150 h-18 V104 h-8 v46 h-18z' },
-    { d: 'M58 56 L36 94 l14 10 L64 84' },
-    { d: 'M102 56 L124 94 l-14 10 L96 84' },
-    { d: 'M62 126 h36', role: 'soft' },
-    { d: circle(80, 78, 10), role: 'accent' },
+    { d: BEPO_BOOT, transform: BEPO_FAR, role: 'soft' },
+    { d: ellipse(16, 0, 16, 5), transform: BEPO_FAR, role: 'soft' },
+    { d: BEPO_SOLE, transform: BEPO_FAR, role: 'soft' },
+    { d: BEPO_BOOT, transform: BEPO_NEAR },
+    { d: ellipse(16, 0, 16, 5), transform: BEPO_NEAR, role: 'accent' },
+    { d: BEPO_SOLE, transform: BEPO_NEAR, role: 'soft' },
     {
-      d: dots([
-        [68, 62],
-        [80, 58],
-        [92, 62],
-      ]),
-      role: 'accent',
+      d: 'M4 10 l6 6 M4 22 l6 6 M4 34 l6 6',
+      transform: BEPO_NEAR,
+      role: 'ambient',
     },
-    shadow(80, 162, 40),
+    shadow(82, 168, 70),
   ],
 
   // His headphones lying in three-quarters, the band doubled, one cup turned
@@ -869,18 +875,33 @@ export const summitWarArt = {
     shadow(80, 186, 44),
   ],
 
-  // A snake wound round a pillar, tongue out at the top.
+  // Her anaconda tail rising out of its coil on the arena floor, the outer
+  // edge in her colour, bands across the scales and the shaded side hatched,
+  // the tip curling at the top. She turns into a half snake to fight Luffy
+  // in the arena in episode 412 (chapter 518).
   'boa-sandersonia': [
-    { d: 'M64 46 V168 M96 46 V168' },
-    { d: 'M54 40 h52 v8 h-52z' },
-    { d: 'M54 168 h52 v10 h-52z' },
     {
-      d: 'M52 160 C104 150 106 136 62 126 C20 116 24 100 76 92 C120 84 122 70 84 62',
+      d: 'M44 136 C14 140 10 158 36 166 C66 174 116 172 132 160 C146 150 132 136 104 134',
+    },
+    {
+      d: 'M52 148 C40 150 38 156 50 158 C70 162 104 160 116 154 C122 150 116 146 104 146',
+      role: 'soft',
+    },
+    {
+      d: 'M58 142 C50 116 54 92 78 80 C104 66 112 44 98 30 C90 22 78 26 80 36 C82 42 90 40 90 36',
       role: 'accent',
     },
-    { d: 'M84 62 C72 58 68 48 78 44 C88 40 96 48 92 56', role: 'accent' },
-    { d: 'M92 56 h10 m-3 -3 l3 3 l-3 3', role: 'accent' },
-    shadow(80, 186, 34),
+    { d: 'M86 140 C78 116 80 100 98 88 C126 70 132 40 110 20' },
+    {
+      d: 'M58 126 l24 -2 M60 108 l22 4 M68 92 l18 8 M86 80 l12 12 M102 64 l16 6 M108 48 l16 0 M24 156 l8 -8 M46 168 l4 -10 M120 164 l-4 -10',
+      role: 'soft',
+    },
+    {
+      d: 'M114 72 l8 -4 M122 56 l8 -2 M90 118 l8 -2 M128 154 l8 -4',
+      role: 'ambient',
+    },
+    { d: 'M0 180 H160 M30 190 l14 -10 M106 190 l16 -10', role: 'ambient' },
+    shadow(76, 186, 60),
   ],
 
   // Her snake form's heavy tail coiled flat on the arena floor, seen from
@@ -1591,18 +1612,22 @@ export const summitWarArt = {
     shadow(84, 182, 62),
   ],
 
-  // A small pistol laid across an open fan.
+  // One of her heart-shaped earrings on its hook, the heart in her colour
+  // and the edge that turns away hatched. She wears them at the auction
+  // house in episode 394 (chapter 501), as she has since her first scene.
   'shalria': [
-    { d: 'M40 124 Q80 84 120 124' },
+    { d: 'M78 30 C70 22 60 30 66 40 C70 46 78 46 80 54' },
+    { d: circle(80, 58, 4) },
     {
-      d: 'M80 162 L40 124 M80 162 L58 108 M80 162 L80 102 M80 162 L102 108 M80 162 L120 124',
-      role: 'soft',
+      d: 'M80 76 C72 62 50 62 50 84 C50 104 72 118 80 132 C88 118 110 104 110 84 C110 62 88 62 80 76 Z',
+      role: 'accent',
     },
-    { d: 'M52 132 h52 v8 h-52z', role: 'accent' },
-    { d: 'M96 140 l6 22 h10 l-4 -22', role: 'accent' },
-    { d: 'M86 140 q0 8 8 8', role: 'accent' },
-    { d: 'M44 128 q-6 -6 0 -12 q6 -6 0 -12', role: 'ambient', dashed: true },
-    shadow(80, 178, 48),
+    { d: 'M80 62 V66 M60 80 C62 72 68 70 72 72', role: 'soft' },
+    {
+      d: 'M108 72 l5 -2 M110 84 l6 0 M108 96 l6 2 M102 108 l5 3 M94 118 l4 4 M86 126 l3 5',
+      role: 'ambient',
+    },
+    shadow(84, 170, 32),
   ],
 
   // The auctioneer's gavel on its round block, the head and the block
@@ -1817,15 +1842,28 @@ export const summitWarArt = {
     shadow(84, 160, 70),
   ],
 
-  // A pair of cuffs lying open on an inspection tray.
+  // The Seastone handcuffs lying locked on the floor, two thick bands seen in
+  // three-quarters, the near one in her colour, the inner walls hatched and
+  // the chain between them. She brings them out to put on the empress during
+  // the search in episode 422 (chapter 526).
   'domino': [
-    { d: 'M24 150 h112 l-10 16 h-92z' },
-    { d: 'M34 158 h92', role: 'soft' },
-    { d: 'M46 138 A18 18 0 1 1 70 138', role: 'accent' },
-    { d: 'M90 138 A18 18 0 1 1 114 138', role: 'accent' },
-    { d: 'M46 138 l-6 8 M114 138 l6 8', role: 'accent' },
-    { d: 'M72 112 h4 M84 112 h4 M76 112 c2 -4 6 -4 8 0 c-2 4 -6 4 -8 0z' },
-    shadow(80, 180, 56),
+    {
+      d: `${ellipse(56, 136, 32, 13)} M24 136 V146 C24 162 88 162 88 146 V136`,
+      role: 'accent',
+    },
+    { d: `${ellipse(56, 136, 22, 8)} M34 136 V142 M78 136 V142`, role: 'soft' },
+    {
+      d: `${ellipse(118, 92, 24, 10)} M94 92 V100 C94 114 142 114 142 100 V92`,
+    },
+    { d: ellipse(118, 92, 16, 6), role: 'soft' },
+    {
+      d: `M88 128 L92 125 ${ellipse(92, 120, 3.5, 6)} ${ellipse(94, 110, 6, 3.5)} M98 106 L100 104`,
+    },
+    {
+      d: 'M30 152 l4 -7 M42 156 l4 -7 M100 108 l3 -6 M110 111 l3 -6',
+      role: 'ambient',
+    },
+    shadow(80, 178, 62),
   ],
 
   // The prison's great barred gate above the water, a warship moored on
@@ -2173,15 +2211,33 @@ export const summitWarArt = {
     shadow(112, 176, 26),
   ],
 
-  // A stamp set down beside the papers it has just signed off.
+  // The papers on his desk at Mary Geoise, the top sheet with its corner
+  // turned up and the stack's edges below, and the inkwell beside them in his
+  // colour, its far side hatched. He talks over the fleet admiral's
+  // resignation at that desk in chapter 594 (episode 511); the panel shows
+  // the papers and the inkwell, and no stamp.
   'kong': [
-    { d: 'M20 132 L108 120 L132 152 L44 164z' },
-    { d: 'M28 124 L116 112 L140 144', role: 'soft' },
-    { d: circle(84, 44, 12) },
-    { d: 'M80 56 v30 M88 56 v30' },
-    { d: 'M62 86 h44 v16 h-44z', role: 'accent' },
-    { d: ellipse(62, 146, 16, 5), role: 'accent' },
-    shadow(84, 176, 56),
+    { d: 'M12 132 L92 114 L126 142 L46 162 Z' },
+    { d: 'M12 132 V138 L46 168 L126 148 V142 M46 162 V168', role: 'soft' },
+    { d: 'M22 124 L96 106 L120 126 M20 118 L90 100 L106 112', role: 'soft' },
+    {
+      d: 'M36 136 L78 126 M42 142 L86 132 M48 148 L92 138 M54 154 L82 147',
+      role: 'ambient',
+    },
+    {
+      d: 'M126 142 C118 142 112 138 110 132 C116 134 122 136 126 142',
+      role: 'soft',
+    },
+    {
+      d: 'M108 82 C108 76 114 74 118 72 V64 H130 V72 C134 74 142 76 142 82 V108 C142 114 108 114 108 108 Z',
+      role: 'accent',
+    },
+    {
+      d: `${ellipse(124, 64, 6, 2)} M108 82 C108 88 142 88 142 82`,
+      role: 'soft',
+    },
+    { d: 'M134 90 l6 -4 M134 100 l6 -4 M136 108 l5 -3', role: 'ambient' },
+    shadow(76, 180, 64),
   ],
   // An empty cell in Impel Down, the place he left: a front of bars with its
   // door shut, the door and its lock in his colour, and the stone side wall.
