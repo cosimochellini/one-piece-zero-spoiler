@@ -342,8 +342,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 521,
       name: { it: 'Boa Sandersonia', en: 'Boa Sandersonia' },
       summary: {
-        it: 'Una delle due sorelle dell’imperatrice, altissima e magra, che nell’arena si allunga in un serpente verde e stringe.',
-        en: 'One of the empress’s two sisters, tall and thin, who stretches into a green snake in the arena and squeezes.',
+        it: 'Una delle due sorelle dell’imperatrice, altissima e magra, che nell’arena si trasforma in un lungo serpente verde.',
+        en: 'One of the empress’s two sisters, tall and thin, who turns into a long green snake in the arena.',
       },
       visual: { art: 'boa-sandersonia', tint: 'green' },
     },
@@ -2104,6 +2104,8 @@ export const summitWar: Saga = {
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
+      // Captioned with her name and this title at her first appearance, 151
+      // (chapter 234), long before her record opens.
       epithet: [
         {
           episode: 461,
