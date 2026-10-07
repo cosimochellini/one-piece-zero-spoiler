@@ -792,6 +792,7 @@ describe('a record drawn again later in the story', () => {
     it('keeps each sword from a chapter reader until the manga hands it over', () => {
       // The manga shows the three in chapter 5, hands Zoro Shusui in 467 and
       // Enma in 955.
+      expect(drawnAt({ mode: 'chapter', chapter: 3 })).toBe(post)
       expect(drawnAt({ mode: 'chapter', chapter: 4 })).toBe(post)
       expect(drawnAt({ mode: 'chapter', chapter: 5 })).toBe(threeSwords?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(

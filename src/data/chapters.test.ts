@@ -88,6 +88,12 @@ describe('episodeAtChapter', () => {
     expect(episodeAtChapter(1)).toBe(0)
     expect(episodeAtChapter(2)).toBe(1)
   })
+
+  it('keeps chapter 4 below episode 3, which shows Zoro’s three swords', () => {
+    // The manga counts them on the last page of chapter 5; episode 3 opens
+    // with them, and its other facts are chapters 5 to 7.
+    expect(episodeAtChapter(4)).toBeLessThan(3)
+  })
 })
 
 describe('chapterAtEpisode', () => {

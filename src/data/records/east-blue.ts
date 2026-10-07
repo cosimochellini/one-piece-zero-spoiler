@@ -1058,8 +1058,8 @@ export const eastBlue: Saga = {
         en: 'Swordsman, pirate hunter',
       },
       log: {
-        it: 'Ha un nome che i pirati dell’East Blue pronunciano a bassa voce. Da nove giorni è legato a un palo nel cortile della base senza mangiare, perché Hermeppo gli ha promesso di lasciarlo andare se resiste un mese. Quando uno sconosciuto con un cappello di paglia gli chiede di entrare nella sua ciurma, rifiuta: non diventerà un pirata, perché ha qualcosa di suo da fare.',
-        en: 'His name is one East Blue pirates say quietly. For nine days he has been tied to a post in the yard of the base without food, because Helmeppo promised to let him go if he lasted a month. When a stranger in a straw hat asks him to join his crew, he refuses: he will not become a pirate, because he has something of his own to do.',
+        it: 'In città la gente trasale a sentire il suo nome. Da nove giorni è legato a un palo nel cortile della base senza mangiare: ha fermato il lupo di Hermeppo che aggrediva una bambina, e Hermeppo lo ha fatto legare promettendogli di lasciarlo andare se resiste un mese. Quando uno sconosciuto con un cappello di paglia gli chiede di entrare nella sua ciurma, rifiuta: non diventerà un pirata, perché ha qualcosa di suo da fare.',
+        en: 'People in the town flinch at his name. For nine days he has been tied to a post in the yard of the base without food: he stopped Helmeppo’s wolf from attacking a little girl, and Helmeppo had him tied up with a promise to let him go if he lasted a month. When a stranger in a straw hat asks him to join his crew, he refuses: he will not become a pirate, because he has something of his own to do.',
       },
       status: [{ episode: 2, value: 'alive' }],
       affiliation: [
