@@ -60,10 +60,10 @@ export const dressrosaArt = {
   'punk-hazard-arc': [
     { d: 'M-4 110 H16 M144 110 H164', role: 'ambient', dashed: true },
     {
-      d: 'M16 110 C24 102 32 96 42 94 L52 86 C62 80 76 78 88 80 C98 82 104 86 112 90 C124 96 136 104 144 110',
+      d: 'M16 110 C24 100 32 92 42 88 L52 78 C62 71 76 69 88 71 C98 73 104 78 112 83 C124 92 136 102 144 110',
     },
     {
-      d: 'M100 84 l7 -3 M110 90 l7 -3 M120 96 l7 -3 M130 102 l6 -3',
+      d: 'M100 76 l7 -3 M110 83 l7 -3 M120 91 l7 -3 M130 99 l6 -3',
       role: 'ambient',
     },
     { d: wave(128), role: 'ambient', dashed: true },
