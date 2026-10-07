@@ -101,8 +101,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 808,
       name: { it: 'Inuarashi', en: 'Inuarashi' },
       summary: {
-        it: 'Il duca cane di Zou, che regna soltanto di giorno, con una gamba sola rimasta dopo l’assalto e la spada ancora tenuta dritta.',
-        en: 'The dog duke of Zou, who rules only by day, one leg left to him after the raid and a sword he still holds level.',
+        it: 'Il duca cane di Zou, che regna soltanto di giorno, a letto e fasciato dopo l’assalto, che non vuole sentirsi chiamare forte perché è stato sconfitto.',
+        en: 'The dog duke of Zou, who rules only by day, bandaged in his sickbed after the raid, who will not be called strong because he was beaten.',
       },
       visual: { art: 'inuarashi', tint: 'ocher' },
     },
@@ -113,8 +113,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 810,
       name: { it: 'Pedro', en: 'Pedro' },
       summary: {
-        it: 'Un mink giaguaro con una cicatrice che gli taglia il volto, a capo delle Guardie di Zou, con i candelotti di dinamite alla cintura.',
-        en: 'A jaguar mink with a scar across his face, head of the Guardians of Zou, sticks of dynamite hanging from his belt.',
+        it: 'Un mink giaguaro a capo dei Guardiani della foresta di Zou, che richiama i suoi uomini da Rufy quando Wanda garantisce per lui.',
+        en: 'A jaguar mink at the head of the Guardians of Zou’s forest, who calls his men off Luffy when Wanda vouches for him.',
       },
       visual: { art: 'pedro', tint: 'green' },
     },
@@ -149,8 +149,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 825,
       name: { it: 'Whole Cake Island', en: 'Whole Cake Island' },
       summary: {
-        it: 'Un’isola di Totto Land fatta di dolci, con alberi di caramello e un castello a piani sopra una torta, dove regna un Imperatore.',
-        en: 'An island of Totto Land built out of sweets, caramel trees and a tiered cake with a castle on top, ruled by an Emperor.',
+        it: 'Un’isola di Totto Land fatta di dolci, con torte glassate lungo la riva e un castello a piani sopra una torta, dove regna un Imperatore.',
+        en: 'An island of Totto Land built out of sweets, frosted cakes along its shore and a tiered cake with a castle on top, ruled by an Emperor.',
       },
       visual: { art: 'whole-cake-island-arc', tint: 'pink' },
     },
@@ -173,8 +173,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 830,
       name: { it: 'Vito', en: 'Vito' },
       summary: {
-        it: 'Un uomo in gessato e cappello a tesa larga, della ciurma di Bege, che tiene due pistole sotto la giacca e le sfodera ridendo.',
-        en: 'A man in pinstripes and a wide-brimmed hat, from Bege’s crew, who keeps two pistols under his jacket and draws them laughing.',
+        it: 'Un uomo della ciurma di Bege con piccoli occhiali tondi e una lunga lingua che gli pende dal sorriso, che porta due grossi revolver nelle fondine.',
+        en: 'A man of Bege’s crew in small round sunglasses, a long tongue hanging out of his grin, who carries two big revolvers in his holsters.',
       },
       visual: { art: 'vito', tint: 'violet' },
     },
@@ -197,8 +197,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 831,
       name: { it: 'Charlotte Pudding', en: 'Charlotte Pudding' },
       summary: {
-        it: 'La ministra del cioccolato di Totto Land, promessa sposa in un matrimonio combinato, che accoglie gli ospiti con una torta e un sorriso.',
-        en: 'The minister of chocolate of Totto Land, promised in an arranged marriage, who greets her guests with a cake and a kind smile.',
+        it: 'Una figlia di Big Mom promessa a Sanji in un matrimonio combinato, che ha un caffè su Cacao Island e toglie dai guai Rufy e Chopper dopo che se lo sono mangiato.',
+        en: 'A daughter of Big Mom promised to Sanji in an arranged marriage, who owns a café on Cacao Island and gets Luffy and Chopper out of trouble after they eat it.',
       },
       visual: { art: 'charlotte-pudding', tint: 'flamingo' },
     },
@@ -233,8 +233,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 835,
       name: { it: 'Charlotte Cracker', en: 'Charlotte Cracker' },
       summary: {
-        it: 'Uno Sweet Commander di Big Mom che sforna eserciti di soldati di biscotto, ognuno con lo scudo e la spada seghettata.',
-        en: 'A Sweet Commander of Big Mom who bakes armies of biscuit soldiers, each one with a shield and a serrated sword.',
+        it: 'Il decimo figlio di Big Mom, ministro dei biscotti e uno dei suoi tre Sweet Commander, un uomo massiccio.',
+        en: 'Big Mom’s tenth son, her minister of biscuits and one of her three Sweet Commanders, a hulking man.',
       },
       visual: { art: 'charlotte-cracker', tint: 'ocher' },
     },
@@ -257,8 +257,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 860,
       name: { it: 'Stussy', en: 'Stussy' },
       summary: {
-        it: 'La regina del quartiere dei piaceri, invitata alle nozze tra i pezzi grossi della malavita, con il bocchino sempre acceso tra le dita.',
-        en: 'The queen of the pleasure district, a guest at the wedding among the bosses of the underworld, a cigarette holder lit in her fingers.',
+        it: 'La regina del quartiere dei piaceri, invitata alle nozze tra i pezzi grossi della malavita, con un cappello da sole fiorito e una borsetta rosa.',
+        en: 'The queen of the pleasure district, a guest at the wedding among the bosses of the underworld, in a sunhat with a flower and carrying a pink handbag.',
       },
       visual: { art: 'stussy', tint: 'lavender' },
     },
@@ -269,8 +269,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 860,
       name: { it: 'Morgans', en: 'Morgans' },
       summary: {
-        it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro convinto che una bella storia valga più della verità.',
-        en: 'The president of the paper that prints the world’s news, an albatross of a man sure that a good story is worth more than the truth.',
+        it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro che arriva alle nozze già eccitato per la grande notizia.',
+        en: 'The president of the paper that prints the world’s news, an albatross of a man who comes to the wedding already excited about the big news.',
       },
       visual: { art: 'morgans', tint: 'yellow' },
     },
@@ -568,8 +568,8 @@ export const wholeCake: Saga = {
       id: 'im',
       kind: 'character',
       // A hooded figure walks to a giant straw hat at 885, unnamed; the Empty
-      // Throne is first shown at 886. The figure sits on it and the Five
-      // Elders kneel and call it Im at 889 (chapter 908).
+      // Throne is first shown, empty, at 886 (chapter 907). The figure sits on
+      // it and the Five Elders kneel and call it Im at 889 (chapter 908).
       revealedAtEpisode: 889,
       revealedAtChapter: 908,
       name: { it: 'Im', en: 'Im' },
@@ -946,8 +946,8 @@ export const wholeCake: Saga = {
         en: 'Ruler of the day of Mokomo',
       },
       log: {
-        it: 'Comanda i mink dall’alba al tramonto e lascia il ducato a un altro quando cala la notte, per un accordo che a Zou nessuno spiega ai forestieri. Nell’assalto ha perso una gamba e adesso si regge su una stampella, ma resta in piedi davanti a chiunque venga a chiedergli conto. Non ha consegnato l’uomo che gli veniva chiesto nemmeno mentre la città bruciava.',
-        en: 'He commands the minks from dawn to dusk and hands the dukedom over to another when night falls, under an arrangement nobody on Zou explains to outsiders. He lost a leg in the raid and leans on a crutch now, but he stays on his feet in front of anyone who comes to call him to account. He did not give up the man he was asked for, even while the city burned.',
+        it: 'È il sovrano del giorno del Ducato di Mokomo, e la notte spetta a un altro sovrano. Si è svegliato dal coma dopo l’assalto e riceve i Cappello di Paglia a letto, fasciato e avvolto in una veste, per ringraziarli di aver salvato il suo paese. Wanda lo chiama il guerriero più forte del paese, e quando Rufy gli dice che sembra fortissimo lui risponde che chi è stato sconfitto non merita quella parola.',
+        en: 'He is the ruler of the day of the Mokomo Dukedom, and another ruler holds the night. He woke from a coma after the raid and receives the Straw Hats in his sickbed, bandaged and wrapped in a robe, to thank them for saving his country. Wanda calls him the strongest warrior in the country, and when Luffy says he looks very strong he answers that a man who was beaten has no right to the word.',
       },
       affiliation: [
         {
@@ -971,8 +971,8 @@ export const wholeCake: Saga = {
     'pedro': {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
       log: {
-        it: 'Parla poco, si muove di notte e i mink lo ascoltano anche quando dice cose che nessuno ha voglia di sentire. Porta una cicatrice che gli taglia un occhio e non racconta a nessuno come se l’è fatta. Difende il ducato con i candelotti alla cintura e la convinzione che certe cose valgano più della propria pelle.',
-        en: 'He says little, moves at night, and the minks listen to him even when he tells them what nobody wants to hear. He carries a scar across one eye and tells nobody how he got it. He guards the dukedom with dynamite on his belt and a settled belief that some things are worth more than his own skin.',
+        it: 'I suoi Guardiani, che hanno il compito di cacciare gli intrusi dalla foresta, circondano Rufy. Quando arriva Wanda e garantisce per Rufy, lui dà l’ordine di ritirarsi e la squadra sparisce tra gli alberi. Rufy non si era accorto di nessuno di loro.',
+        en: 'His Guardians, whose job is to throw intruders out of the forest, surround Luffy there. When Wanda arrives and vouches for Luffy, he gives the order to retreat and the whole troop vanishes into the trees. Luffy had not sensed a single one of them.',
       },
       status: [
         { episode: 757, value: 'alive' },
@@ -1075,8 +1075,8 @@ export const wholeCake: Saga = {
     'vito': {
       role: { it: 'Pirata dei Fire Tank', en: 'Fire Tank Pirates crewman' },
       log: {
-        it: 'Fa parte della ciurma di Capone Bege e si muove come un gangster di città, con il cappello calato sugli occhi e il sigaro tra i denti. Parla in fretta, si esalta per pochissimo e adora raccontare a chiunque le storie che ha letto. Quando il capo dice di sparare spara, e quando il capo tace resta comunque il più rumoroso della stanza.',
-        en: 'He belongs to Capone Bege’s crew and carries himself like a city gangster, hat down over his eyes and a cigar between his teeth. He talks fast, gets excited over very little and loves telling anyone at all the stories he has read. When the boss says shoot he shoots, and when the boss says nothing he is still the loudest man in the room.',
+        it: 'Fa parte della ciurma di Capone Bege e accende il sigaro al capo senza che glielo chieda. Ha una lingua lunghissima che gli pende dalla bocca e mette a disagio chi gli parla. Sulla nave segue Sanji ovunque per parlargli di un fumetto del giornale in cui il Germa 66 combatte l’eroe, e lui tifa per i cattivi. Quando Sanji gli dice che con loro non ha niente a che fare e lo caccia, Gotti punta l’arma su Sanji e Vito cerca di calmarlo.',
+        en: 'He belongs to Capone Bege’s crew and lights the boss’s cigar without being asked. He has a very long tongue that hangs out of his mouth and puts people off. On the ship he follows Sanji everywhere to talk about a comic strip in the paper where the Germa 66 fight the hero, and he is on the villains’ side. When Sanji says he has nothing to do with them and throws him out, Gotti aims his gun at Sanji, and Vito tries to calm him down.',
       },
       affiliation: [
         {
@@ -1103,18 +1103,15 @@ export const wholeCake: Saga = {
       // No `origin` line: the story never says where she was born.
     },
     'charlotte-pudding': {
-      role: { it: 'Ministra del cioccolato', en: 'Minister of chocolate' },
+      role: BIG_MOM_DAUGHTER,
       log: {
-        it: 'Ha innumerevoli fratelli e sorelle più grandi di lei e una fabbrica di cioccolato tutta sua, e tiene metà del viso nascosta dietro la frangia. La madre l’ha promessa a un cuoco che non ha mai visto, e lei dice di essere felice del matrimonio a chiunque glielo chieda. Con gli ospiti è premurosa fino all’imbarazzo e chiede scusa ogni volta che qualcosa non è perfetto.',
-        en: 'She has countless elder brothers and sisters and a chocolate factory of her own, and she keeps half her face behind her fringe. Her mother has promised her to a cook she has never met, and she tells anyone who asks that she is happy about the wedding. With guests she is attentive to the point of embarrassment, apologising every time something falls short of perfect.',
+        it: 'È la trentacinquesima figlia della famiglia Charlotte, e la madre l’ha promessa in sposa a Sanji. Ha un caffè a Cacao Island, il Caramel, e il cioccolato che ci si mangia è una miscela inventata da lei. Quando Rufy e Chopper si mangiano il locale intero, dice alla polizia di averli assunti lei per smontarlo, mette loro in bocca marmellata, biscotti e cioccolato e prima di lasciarli andare offre a tutti una tazza di tè.',
+        en: 'She is the 35th daughter of the Charlotte Family, and her mother has promised her in marriage to Sanji. She owns Café Caramel on Cacao Island, and its chocolate is a blend she came up with herself. When Luffy and Chopper eat the whole place, she tells the police she hired them to take it down, puts jam, biscuit and chocolate in their mouths, and offers everyone a cup of tea before they go.',
       },
       affiliation: [
         {
           episode: 786,
-          value: {
-            it: 'Pirati di Big Mom; Totto Land, ministra del cioccolato',
-            en: 'Big Mom Pirates; Totto Land, minister of chocolate',
-          },
+          value: { it: 'Famiglia Charlotte', en: 'Charlotte Family' },
         },
       ],
       origin: [{ episode: 786, value: TOTTO_LAND }],
@@ -1168,13 +1165,19 @@ export const wholeCake: Saga = {
     'charlotte-cracker': {
       role: SWEET_COMMANDER_ROLE,
       log: {
-        it: 'È uno dei tre Sweet Commander, gli uomini più forti della ciurma di sua madre, e governa l’isola dei biscotti. Dalle sue mani escono soldati di pasta frolla che si rialzano appena cadono, e più il nemico ne abbatte più lui ne sforna. Dicono che non abbia mai dormito durante una battaglia, e a Totto Land nessuno ha voglia di verificarlo.',
-        en: 'He is one of the three Sweet Commanders, the strongest men in his mother’s crew, and he governs the biscuit island. Soldiers of shortbread come out of his hands and stand straight back up when they fall, and the more an enemy breaks the more he bakes. They say he has never once slept through a battle, and nobody in Totto Land wants to test it.',
+        it: 'È il decimo figlio di Big Mom, uno dei tre Sweet Commander della sua ciurma e il suo ministro dei biscotti.',
+        en: 'He is Big Mom’s tenth son, one of the three Sweet Commanders of her crew and her minister of biscuits.',
       },
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
       epithet: [
-        { episode: 796, value: { it: 'Mille Braccia', en: 'Thousand Arms' } },
+        // Caption and bounty at 798 (chapter 836, page 15). Episode 797 has
+        // it only in the preview.
+        {
+          episode: 798,
+          chapter: 836,
+          value: { it: 'Mille Braccia', en: 'Thousand Arms' },
+        },
       ],
       devilFruit: [{ episode: 799, chapter: 838, value: ['bis-bis-fruit'] }],
       bounty: [{ episode: 798, value: 860_000_000 }],
@@ -1199,8 +1202,8 @@ export const wholeCake: Saga = {
     'stussy': {
       role: { it: 'Pezzo grosso della malavita', en: 'Underworld boss' },
       log: {
-        it: 'Nella malavita la chiamano regina, e il titolo le basta per avere un posto a tavola accanto agli imperatori del crimine. Arriva a Totto Land in abito da sera, con il bocchino tra le dita, e saluta per nome gente che preferirebbe non essere riconosciuta. Sorride molto, beve pochissimo e ricorda tutto quello che viene detto intorno a lei.',
-        en: 'In the underworld they call her queen, and the title alone gets her a seat at the table beside the emperors of crime. She comes to Totto Land in evening dress with a cigarette holder in her fingers, and greets by name people who would rather not be recognised. She smiles a great deal, drinks very little and remembers everything said around her.',
+        it: 'Nella malavita la chiamano la regina del quartiere dei piaceri, e il titolo le vale un invito al Tea Party insieme agli altri pezzi grossi della malavita. Arriva con un abito color salmone e un cappello da sole con un fiore, una borsetta rosa al braccio. Quando due degli altri ospiti cominciano a insultarsi davanti al castello, li zittisce dando loro dei meschini, e nel salotto accetta un bicchiere del succo che Smoothie spreme da una giraffa.',
+        en: 'In the underworld they call her the queen of the pleasure district, and the title gets her an invitation to the Tea Party with the other bosses of the underworld. She arrives in a salmon dress and a sunhat with a flower on it, a pink handbag on her arm. When two of the other guests start trading insults outside the chateau she tells them to stop being so small-minded, and in the lounge she takes a cup of the juice Smoothie squeezes out of a giraffe.',
       },
       affiliation: [
         {
@@ -1235,8 +1238,8 @@ export const wholeCake: Saga = {
         en: 'World Economy News Paper president',
       },
       log: {
-        it: 'Ha la testa e le ali di un albatro e il fiuto di chi vive di tirature: decide lui che cosa il mondo leggerà domattina. Va di persona dove succedono le cose, matita in mano, e paga bene chi gli porta qualcosa di grosso. Dice apertamente che una notizia interessante conta più di una notizia esatta, e stampa di conseguenza.',
-        en: 'He has the head and the wings of an albatross and the nose of a man who lives on circulation: he decides what the world will read tomorrow morning. He goes in person to wherever things are happening, pencil in hand, and pays well for anyone who brings him something big. He says openly that an interesting story beats an accurate one, and prints accordingly.',
+        it: 'Ha la testa e le ali di un albatro e dirige il giornale che stampa le notizie di tutto il mondo. Arriva al Tea Party insieme ai pezzi grossi della malavita, con un cilindro blu ornato da una piuma a righe e un mantello scuro. Già davanti al castello è eccitato: queste nozze, dice, sono una grande notizia.',
+        en: 'He has the head and the wings of an albatross and runs the paper that prints the world’s news. He comes to the Tea Party with the bosses of the underworld, in a blue top hat with a striped feather and a dark cape. He is excited before he is even inside: this marriage, he says, is big news.',
       },
       affiliation: [
         {
