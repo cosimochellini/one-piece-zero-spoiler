@@ -721,17 +721,32 @@ export const dressrosaArt = {
     shadow(84, 192, 52),
   ],
 
-  // A pair of very long fighting boots.
+  // His dark long-sleeved jacket laid open on the floor, scattered with the
+  // orange spots he wears into the colosseum in episode 636, the far half
+  // hatched. No boots: he wears shoes, and the X on his knee pads would read
+  // as a mark.
   'blue-gilly': [
-    { d: 'M44 28 h22 v122 h18 a8 8 0 0 1 0 16 h-40 z' },
-    { d: 'M92 44 h22 v106 h18 a8 8 0 0 1 0 16 h-40 z' },
-    { d: 'M40 28 h30 v14 h-30 z M88 44 h30 v14 h-30 z', role: 'accent' },
     {
-      d: 'M50 70 h10 M50 86 h10 M50 102 h10 M98 82 h10 M98 98 h10 M98 114 h10',
+      d: 'M62 40 C54 44 44 46 38 50 C30 70 22 110 16 150 L32 152 L42 96 L40 158 H120 L118 96 L128 152 L144 150 C138 110 130 70 122 50 C116 46 106 44 98 40',
+    },
+    {
+      d: 'M62 40 C64 60 70 80 70 96 C70 120 66 140 64 158 M98 40 C96 60 90 80 90 96 C90 120 94 140 96 158',
       role: 'soft',
     },
-    { d: 'M44 162 h34 M92 162 h34' },
-    shadow(84, 180, 56),
+    {
+      d: 'M62 40 Q80 48 98 40 M62 40 C58 50 58 58 64 66 M98 40 C102 50 102 58 96 66',
+      role: 'soft',
+    },
+    {
+      d: 'M46.2 72.6 C47.4 69.3 50.7 70.5 50.5 72.6 C51.7 70.9 55 72.1 53.8 75.4 C52.6 78.7 49.3 77.5 49.5 75.4 C48.3 77.1 45 75.9 46.2 72.6 M42.5 104 C40.8 101 43.8 99.2 45.3 100.7 C44.7 98.7 47.7 97 49.5 100 C51.2 103 48.2 104.8 46.8 103.3 C47.3 105.3 44.3 107 42.5 104 M48.1 129.3 C48.7 125.9 52.1 126.5 52.3 128.5 C53.1 126.6 56.5 127.2 55.9 130.7 C55.3 134.1 51.9 133.5 51.7 131.5 C50.9 133.4 47.5 132.8 48.1 129.3 M26 92.5 C29 90.8 30.8 93.8 29.3 95.3 C31.3 94.7 33 97.7 30 99.5 C27 101.2 25.2 98.2 26.7 96.8 C24.7 97.3 23 94.3 26 92.5 M18.9 130.6 C16.7 127.9 19.4 125.6 21 126.9 C20.1 125 22.8 122.7 25.1 125.4 C27.3 128.1 24.6 130.4 23 129.1 C23.9 131 21.2 133.3 18.9 130.6 M108.2 83.4 C107 80.1 110.3 78.9 111.5 80.6 C111.3 78.5 114.6 77.3 115.8 80.6 C117 83.9 113.7 85.1 112.5 83.4 C112.7 85.5 109.4 86.7 108.2 83.4 M104.9 109.4 C107.2 106.7 109.9 109 109 110.9 C110.6 109.6 113.3 111.9 111.1 114.6 C108.8 117.3 106.1 115 107 113.1 C105.4 114.4 102.7 112.1 104.9 109.4 M110.1 138.7 C109.5 135.2 112.9 134.6 113.7 136.5 C113.9 134.5 117.3 133.9 117.9 137.3 C118.5 140.8 115.1 141.4 114.3 139.5 C114.1 141.5 110.7 142.1 110.1 138.7 M132.6 100.2 C135.9 99 137.1 102.3 135.4 103.5 C137.5 103.3 138.7 106.6 135.4 107.8 C132.1 109 130.9 105.7 132.6 104.5 C130.5 104.7 129.3 101.4 132.6 100.2 M134.2 130.6 C135.4 127.3 138.7 128.5 138.5 130.6 C139.7 128.9 143 130.1 141.8 133.4 C140.6 136.7 137.3 135.5 137.5 133.4 C136.3 135.1 133 133.9 134.2 130.6',
+      role: 'accent',
+    },
+    { d: 'M16 150 L18 140 L33 142 M144 150 L142 140 L127 142', role: 'soft' },
+    {
+      d: 'M100 62 l14 -11 M98 88 l8 -6 M98 140 l12 -9 M122 100 l6 -5 M126 122 l6 -5',
+      role: 'ambient',
+    },
+    shadow(80, 172, 56),
   ],
 
   // His gold boxing glove lying on its side, the fist to the left and the
@@ -1051,18 +1066,28 @@ export const dressrosaArt = {
     shadow(86, 182, 56),
   ],
 
-  // A baby bonnet sitting on a mobster's fedora.
+  // His pacifier in profile, standing on the edge of its guard: the ring,
+  // the knob, the guard with its far side hatched, and the teat. He has it in
+  // his mouth from his first scene in episode 632. No bonnet: seen from any
+  // side it reads as a head.
   'senor-pink': [
-    { d: ellipse(80, 130, 52, 12) },
-    { d: 'M46 128 C46 92 58 78 80 78 C102 78 114 92 114 128' },
-    { d: 'M64 84 q16 10 32 0', role: 'soft' },
-    { d: 'M48 118 q32 10 64 0' },
-    { d: 'M56 78 C56 48 104 48 104 78 Z', role: 'accent' },
     {
-      d: 'M72 46 q-16 -10 -14 6 q2 12 14 2 M88 46 q16 -10 14 6 q-2 12 -14 2',
+      d: 'M86 80 C76 80 72 100 72 120 C72 140 76 160 86 160 C96 160 100 140 100 120 C100 100 96 80 86 80 Z',
       role: 'accent',
     },
-    shadow(80, 152, 54),
+    { d: 'M86 80 C80 82 78 100 78 120 C78 140 80 158 86 160', role: 'soft' },
+    {
+      d: 'M100 112 C106 112 108 108 112 104 C118 96 134 96 138 108 C142 120 132 132 120 130 C114 129 110 126 106 124 C104 122 102 122 100 122',
+      role: 'accent',
+    },
+    { d: 'M72 114 H64 V126 H72' },
+    { d: 'M64 120 C52 100 24 104 24 128 C24 152 52 156 64 132' },
+    { d: 'M60 122 C52 112 32 114 32 128 C32 142 50 146 58 134', role: 'soft' },
+    {
+      d: 'M89 98 l5 -3.5 M90 114 l6 -4 M90 130 l6 -4 M89 146 l5 -3.5',
+      role: 'ambient',
+    },
+    shadow(82, 166, 56),
   ],
 
   // His white cap in three-quarters, turned to the left, the seams of its
@@ -1907,172 +1932,266 @@ export const dressrosaArt = {
     shadow(80, 186, 30),
   ],
 
-  // A wide sombrero with a cactus growing out of its crown.
+  // His wide sombrero in three-quarters, the cactus growing out of its
+  // crown, the triangles round the brim and the far side of the crown hatched,
+  // and a sword lying on the ring floor in front of it. He wears the hat from
+  // his first scene in episode 639, and in episode 645 he picks the fallen
+  // fighters' weapons up off the ring and throws them as his bullets. No mouth
+  // guard, and no helmet: the one he snatches is Lucy's.
   'jean-ango': [
-    { d: ellipse(80, 138, 64, 16) },
-    { d: 'M52 136 C54 108 62 96 80 96 C98 96 106 108 108 136' },
-    { d: 'M54 126 C70 132 90 132 106 126', role: 'accent' },
     {
-      d: dots([
-        [30, 138],
-        [44, 148],
-        [62, 153],
-        [98, 153],
-        [116, 148],
-        [130, 138],
-      ]),
-      role: 'accent',
+      d: 'M16 128 A62 18 0 0 0 140 128 M16 128 A62 18 0 0 1 54 111.4 M102 111.4 A62 18 0 0 1 140 128',
     },
     {
-      d: 'M74 96 V62 C74 52 86 52 86 62 V96 M74 80 h-6 q-4 0 -4 -4 v-10 M86 74 h6 q4 0 4 -4 v-10',
-    },
-    { d: 'M80 58 V92 M70 68 l-3 -2 M90 66 l3 -2', role: 'soft' },
-    shadow(80, 180, 56),
-  ],
-
-  // A spiked iron ball on a chain, the chain ending in a shackle.
-  'tank-lepanto': [
-    { d: circle(100, 124, 24) },
-    {
-      d: 'M123.6 128.4 L133.3 137.8 L119.8 137.6 M113.6 143.8 L113.8 157.3 L104.4 147.6 M95.6 147.6 L86.2 157.3 L86.4 143.8 M80.2 137.6 L66.7 137.8 L76.4 128.4 M76.4 119.6 L66.7 110.2 L80.2 110.4 M86.4 104.2 L86.2 90.7 L95.6 100.4 M104.4 100.4 L113.8 90.7 L113.6 104.2 M119.8 110.4 L133.3 110.2 L123.6 119.6',
-      role: 'accent',
-    },
-    { d: 'M90 116 C92 110 98 106 104 106', role: 'soft' },
-    { d: ellipse(80, 94, 6, 4) },
-    { d: ellipse(70, 84, 4, 6) },
-    { d: ellipse(60, 74, 6, 4) },
-    { d: ellipse(50, 64, 4, 6) },
-    { d: circle(38, 50, 9) },
-    { d: 'M32 43 L44 57', role: 'soft' },
-    shadow(100, 176, 40),
-  ],
-
-  // A cross hanging from a string of beads.
-  'gambia': [
-    {
-      d: dots([
-        [48, 30],
-        [49, 42],
-        [52, 54],
-        [57, 65],
-        [63, 75],
-        [71, 84],
-        [112, 30],
-        [111, 42],
-        [108, 54],
-        [103, 65],
-        [97, 75],
-        [89, 84],
-      ]),
-    },
-    { d: circle(80, 90, 5) },
-    { d: 'M80 95 V100' },
-    {
-      d: 'M74 100 h12 v22 h18 v12 h-18 v40 h-12 v-40 h-18 v-12 h18 Z',
-      role: 'accent',
-    },
-    { d: 'M80 106 V168 M62 128 H98', role: 'soft' },
-    shadow(80, 188, 30),
-  ],
-
-  // A tall floppy hat with a band round it, resting on a katana's hilt.
-  'wicca': [
-    { d: 'M18 164 H122 M122 160 v8 M126 164 H146' },
-    { d: 'M18 160 q-6 4 0 8 H110 M110 158 v12', role: 'soft' },
-    { d: ellipse(80, 132, 44, 10) },
-    {
-      d: 'M50 130 C52 102 60 70 78 52 C92 40 108 44 112 58 C104 56 98 62 96 74 C94 96 104 114 110 130',
-      role: 'accent',
-    },
-    { d: 'M52 118 C70 124 92 124 108 118', role: 'accent' },
-    { d: 'M112 58 c6 2 8 8 4 12', role: 'soft' },
-    shadow(80, 180, 60),
-  ],
-
-  // A canister vacuum cleaner, its hose curling up to the wand and nozzle.
-  'kyuin': [
-    {
-      d: 'M34 128 h52 a16 16 0 0 1 16 16 v10 a16 16 0 0 1 -16 16 h-52 a16 16 0 0 1 -16 -16 v-10 a16 16 0 0 1 16 -16 z',
-    },
-    { d: circle(40, 174, 6) },
-    { d: circle(80, 174, 6) },
-    { d: 'M30 142 h22 M62 142 h16', role: 'soft' },
-    {
-      d: 'M102 144 C124 142 130 110 112 96 C96 84 100 56 122 52',
-      role: 'accent',
-    },
-    { d: 'M122 52 L128 48 L138 156' },
-    { d: 'M124 156 h26 v8 h-26 z' },
-    { d: 'M128 172 v6 M138 172 v8 M148 172 v6', role: 'ambient' },
-    shadow(62, 186, 48),
-  ],
-  // A flower seller's basket, heaped with blooms, its handle arched over them.
-  'scarlett': [
-    { d: 'M40 120 h80 l-10 50 h-60 z' },
-    { d: 'M44 120 C44 64 116 64 116 120', role: 'soft' },
-    { d: 'M44 136 h72 M48 152 h64', role: 'soft' },
-    {
-      d: `${star(58, 108, 12, 6)} ${star(80, 100, 13, 6)} ${star(102, 108, 12, 6)}`,
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [58, 108],
-        [80, 100],
-        [102, 108],
-      ]),
-    },
-    { d: 'M66 120 l-4 -6 M94 120 l4 -6 M80 120 v-8' },
-    shadow(80, 180, 46),
-  ],
-
-  // A paper festival lantern hanging from a bent pole, a small flame inside.
-  'trafalgar-lami': [
-    { d: 'M30 44 C62 34 96 38 118 56' },
-    { d: 'M104 48 V72' },
-    { d: ellipse(104, 108, 26, 34) },
-    { d: 'M92 72 h24 v6 h-24 z M92 138 h24 v6 h-24 z' },
-    { d: 'M80 96 q24 6 48 0 M78 108 h52 M80 120 q24 -6 48 0', role: 'soft' },
-    { d: 'M104 118 c-7 -7 -1 -14 0 -20 c6 6 7 14 0 20 z', role: 'accent' },
-    {
-      d: 'M104 144 v8 M96 152 h16 M98 152 v14 M104 152 v16 M110 152 v14',
-      role: 'accent',
-    },
-    shadow(104, 188, 26),
-  ],
-
-  // Two plain apples set out on a cloth, the humble meal of a family that gave up a throne.
-  'donquixote-homing': [
-    {
-      d: 'M56 108 C42 100 30 112 33 130 C36 148 48 158 56 152 C64 158 76 148 79 130 C82 112 70 100 56 108 Z',
-    },
-    {
-      d: 'M106 108 C92 100 80 112 83 130 C86 148 98 158 106 152 C114 158 126 148 129 130 C132 112 120 100 106 108 Z',
-    },
-    { d: 'M56 108 q1 -10 6 -14 M106 108 q1 -10 6 -14' },
-    {
-      d: 'M60 98 q10 -8 16 -2 q-8 7 -16 2 z M110 98 q10 -8 16 -2 q-8 7 -16 2 z',
-      role: 'accent',
-    },
-    { d: 'M44 118 q-5 6 -4 14 M94 118 q-5 6 -4 14', role: 'soft' },
-    { d: 'M22 162 h116 l-8 12 h-100 z', role: 'soft' },
-    shadow(80, 186, 54),
-  ],
-
-  // A barrel of booze with a foaming tankard beside it.
-  'diez-barrels': [
-    { d: 'M42 72 C34 102 34 140 42 170 H94 C102 140 102 102 94 72 Z' },
-    { d: ellipse(68, 72, 26, 6) },
-    { d: 'M38 92 q30 6 60 0 M38 150 q30 6 60 0' },
-    {
-      d: 'M56 78 C52 106 52 136 56 168 M80 78 C84 106 84 136 80 168',
+      d: 'M16 128 C14 124 14 120 18 118 M140 128 C142 124 142 120 138 118',
       role: 'soft',
     },
-    { d: circle(68, 121, 5), role: 'accent' },
-    { d: 'M112 134 h26 v36 h-26 z' },
-    { d: 'M138 142 q12 0 12 10 q0 10 -12 10' },
-    { d: 'M110 134 q4 -8 10 -4 q6 -8 12 0 q6 -4 8 4', role: 'accent' },
-    shadow(88, 182, 62),
+    { d: 'M30 129 A49 12 0 0 0 126 129', role: 'soft' },
+    {
+      d: 'M34 134 l6 6 l6 -4 l8 6 l8 -3 l9 4 l9 -1 l9 1 l8 -3 l8 3 l7 -4 l6 2',
+      role: 'soft',
+    },
+    {
+      d: 'M54 124 C52 106 60 92 78 92 C96 92 104 106 102 124 M54 124 A24 7 0 0 0 102 124',
+    },
+    { d: 'M90 108 l8 -6 M91 118 l9 -7 M94 124 l7 -5', role: 'ambient' },
+    {
+      d: 'M71 93 V58 C71 48 85 48 85 58 V93 M71 78 H66 C62 78 60 76 60 72 V64 C60 60 66 60 66 64 V72 H71 M85 70 H90 C94 70 96 68 96 64 V56 C96 52 90 52 90 56 V64 H85',
+      role: 'accent',
+    },
+    { d: 'M78 54 V92', role: 'soft' },
+    { d: 'M30.3 178 L46.1 175.7 M29.7 174 L45.5 171.7 M30.3 178 L29.7 174' },
+    { d: 'M49 181.3 L46.7 165.5' },
+    { d: 'M50.2 176.1 L132.5 164.1 L140 160 L131.7 158.2 L49.4 170.2' },
+    { d: 'M53.8 172.5 L126.1 162', role: 'soft' },
+    shadow(80, 186, 58),
+  ],
+
+  // His spiked iron ball, the far side hatched, on the chain he swings it
+  // by, the links coiled on the floor. He swings it at Bellamy in Block B in
+  // episode 636. No shoulder guard: its pattern would read as a mark.
+  'tank-lepanto': [
+    { d: 'M76 120 a26 26 0 1 0 52 0 a26 26 0 1 0 -52 0', role: 'accent' },
+    {
+      d: 'M97 94.5 L102 81 L107 94.5 M117.6 99.2 L131 93.9 L124.3 106.6 M127.9 117.3 L140.9 123.4 L127 127.2 M122.2 136.4 L127.1 149.9 L114.6 142.7 M106.1 145.7 L100.6 159 L96.2 145.3 M87.1 141.3 L73.9 147.1 L80.2 134.2 M76.3 124.1 L63 118.6 L76.7 114.2 M80.2 105.8 L73.9 92.9 L87.1 98.7',
+      role: 'accent',
+    },
+    { d: 'M86 118 C86 110 90 104 96 101', role: 'soft' },
+    {
+      d: 'M106 140 l10 -8 M100 143 l14 -11 M116 134 l7 -6 M120 122 l4 -3',
+      role: 'ambient',
+    },
+    {
+      d: 'M87.6 99.5 A6 3.2 -112.8 1 0 82.9 88.4 A6 3.2 -112.8 1 0 87.6 99.5 M76.4 84.1 A6 3.2 -174.9 1 0 64.4 83.1 A6 3.2 -174.9 1 0 76.4 84.1 M57.5 85.4 A6 3.2 145.7 1 0 47.6 92.2 A6 3.2 145.7 1 0 57.5 85.4 M42.9 97.6 A6 3.2 120.6 1 0 36.8 108 A6 3.2 120.6 1 0 42.9 97.6 M34.3 114.7 A6 3.2 104 1 0 31.3 126.3 A6 3.2 104 1 0 34.3 114.7 M30.4 133.4 A6 3.2 93 1 0 29.8 145.4 A6 3.2 93 1 0 30.4 133.4 M30.3 154 A6 3.2 43.1 1 0 39 162.2 A6 3.2 43.1 1 0 30.3 154 M46 164.4 A6 3.2 8.6 1 0 57.9 166.2 A6 3.2 8.6 1 0 46 164.4',
+    },
+    {
+      d: 'M83.4 89.5 L75.2 83.9 M65.8 83.2 L56.2 86.1 M48.8 91.4 L42.1 98.8 M37.5 106.7 L33.9 116 M31.7 124.9 L30.3 134.8 M29.9 144 L30.1 154 M38.1 161.2 L47.4 164.8 M56.4 166 L66.4 166',
+    },
+    shadow(100, 176, 46),
+  ],
+
+  // His nunchaku lying on the floor: two dark batons in three-quarters,
+  // hatched on the shadow side, and the short chain between them. He has them
+  // on him when he walks in on the undercover vice admiral in episode 634, and
+  // swings them at him. No cross: it is a tattoo on his chest.
+  'gambia': [
+    { d: 'M15.4 163.2 L75.4 135.2 M8.6 148.8 L68.6 120.8' },
+    { d: 'M8.6 148.8 A8 3.6 65 1 0 15.4 163.2 A8 3.6 65 1 0 8.6 148.8' },
+    { d: 'M75.4 135.2 A8 3.6 65 0 0 68.6 120.8' },
+    {
+      d: 'M27.4 157.6 L28.3 150.2 M36.4 153.4 L37.3 146 M45.4 149.2 L46.3 141.8 M54.4 145 L55.3 137.6 M63.4 140.8 L64.3 133.4',
+      role: 'ambient',
+    },
+    { d: 'M148.2 164.9 L112.2 120.9 M135.8 175.1 L99.8 131.1' },
+    {
+      d: 'M135.8 175.1 A8 3.6 -39.3 1 0 148.2 164.9 A8 3.6 -39.3 1 0 135.8 175.1',
+    },
+    { d: 'M112.2 120.9 A8 3.6 -39.3 0 0 99.8 131.1' },
+    {
+      d: 'M141 156.1 L133.5 157.1 M133.8 147.3 L126.3 148.3 M126.6 138.5 L119.1 139.5 M119.4 129.7 L111.9 130.7',
+      role: 'ambient',
+    },
+    {
+      d: 'M76.2 131.4 A5.5 3 -87 1 0 76.8 120.4 A5.5 3 -87 1 0 76.2 131.4 M78 114.3 A5.5 3 -57.3 1 0 84 105 A5.5 3 -57.3 1 0 78 114.3 M91 102.3 A5.5 3 36.2 1 0 99.8 108.8 A5.5 3 36.2 1 0 91 102.3 M101.8 115 A5.5 3 81.7 1 0 103.4 125.9 A5.5 3 81.7 1 0 101.8 115 M76.6 121.8 L78.9 113.1 M83.1 105.7 L91.6 102.7 M98.6 108.2 L102.2 116.4',
+      role: 'accent',
+    },
+    shadow(76, 174, 62),
+  ],
+
+  // Her tall blue top hat with its red band, the side that turns away
+  // hatched, standing behind the sword she steals in the port town, its black
+  // scabbard hatched. Its owner catches her with both in episode 640.
+  'wicca': [
+    {
+      d: 'M30 140 A40 11 0 0 0 110 140 M30 140 A40 11 0 0 1 46 131.5 M94 131.5 A40 11 0 0 1 110 140',
+    },
+    { d: 'M30 140 v3 A40 11 0 0 0 110 143 v-3', role: 'soft' },
+    {
+      d: 'M46 136 C45 110 44 86 42 62 M94 136 C95 110 96 86 98 62 M46 136 A24 6 0 0 0 94 136',
+    },
+    { d: 'M42 62 A28 7 0 0 1 98 62 A28 7 0 0 1 42 62' },
+    {
+      d: 'M45.3 112 A25.3 6.5 0 0 0 95.3 112 M45.8 126 A24.6 6.3 0 0 0 95.6 126 M45.3 112 L45.8 126 M95.3 112 L95.6 126',
+      role: 'accent',
+    },
+    {
+      d: 'M84 74 l10 -6 M84 88 l11 -7 M85 102 l10 -7 M86 136 l9 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M14.3 178.8 L38.2 176.3 M13.7 173.2 L37.6 170.7 M14.3 178.8 L13.7 173.2',
+    },
+    {
+      d: 'M16.3 178.6 L19.7 172.6 M20.3 178.2 L15.7 173 M22.2 178 L25.6 172 M26.2 177.5 L21.7 172.4 M28.2 177.3 L31.6 171.3 M32.2 176.9 L27.6 171.8 M34.2 176.7 L37.6 170.7 M38.2 176.3 L33.6 171.1',
+      role: 'soft',
+    },
+    { d: 'M39 165.3 A8 3 84 1 0 40.7 181.3 A8 3 84 1 0 39 165.3' },
+    { d: 'M42.2 176.7 L145.4 165.9 Q149 161.9 144.6 158.7 L41.5 169.5 Z' },
+    {
+      d: 'M50.2 175.8 L53.4 168.3 M59.1 174.9 L62.4 167.3 M68.1 174 L71.3 166.4 M77 173 L80.3 165.5 M86 172.1 L89.2 164.5 M94.9 171.2 L98.2 163.6 M103.9 170.2 L107.1 162.7 M112.8 169.3 L116.1 161.7 M121.8 168.4 L125 160.8 M130.7 167.4 L134 159.8 M139.7 166.5 L142.9 158.9',
+      role: 'ambient',
+    },
+    shadow(80, 186, 62),
+  ],
+
+  // Her vacuum machine: the tank she carries on her back, its side
+  // hatched, the ribbed hose and the long wand ending in the wide nozzle. She
+  // sucks up the dwarves at the factory door with it in episode 692. No mask
+  // and no SMILE: one is a face, the other lettering.
+  'kyuin': [
+    { d: 'M12 98 H46 V152 H12 Z M12 98 L22 92 H56 V146 L46 152 M46 98 L56 92' },
+    { d: 'M18 106 H40 V144 H18 Z', role: 'soft' },
+    {
+      d: 'M48 108 l7 -5 M48 120 l7 -5 M48 132 l7 -5 M48 144 l7 -5',
+      role: 'ambient',
+    },
+    { d: 'M38 95 C38 56 58 42 74 62' },
+    {
+      d: 'M36 78 l5 1 M38 68 l5 2 M42 59 l4 3 M48 52 l3 4 M56 48 l1 5 M64 49 l-1 5 M70 53 l-3 4',
+      role: 'soft',
+    },
+    {
+      d: 'M118.3 138.8 L76.3 60.8 M113.7 141.2 L71.7 63.2 M113.7 141.2 A2.6 1.2 -28.3 1 0 118.3 138.8 A2.6 1.2 -28.3 1 0 113.7 141.2',
+    },
+    {
+      d: 'M92 160 L142 150 V140 L148 134 L98 144 L92 150 Z M92 150 L142 140 L148 134',
+      role: 'accent',
+    },
+    { d: 'M95 156 L139 147', role: 'soft' },
+    shadow(80, 174, 66),
+  ],
+  // The wooden flower cart heaped with flowers, on its big spoked wheel,
+  // the shafts down on the ground and the end of the box hatched. In episode
+  // 651 Rebecca remembers selling flowers with her mother from it.
+  'scarlett': [
+    {
+      d: 'M38 128 H22 V96 H106 V128 H90 M22 96 L34 86 H118 V118 L106 128 M106 96 L118 86',
+    },
+    {
+      d: 'M22 107 H48.7 M79.3 107 H106 M22 118 H40 M88 118 H106',
+      role: 'soft',
+    },
+    { d: 'M108 104 l8 -6 M108 114 l8 -6 M108 124 l8 -6', role: 'ambient' },
+    { d: 'M38 128 a26 26 0 1 0 52 0 a26 26 0 1 0 -52 0' },
+    { d: 'M60 128 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0' },
+    {
+      d: 'M87 128 L41 128 M75.5 147.9 L52.5 108.1 M52.5 147.9 L75.5 108.1',
+      role: 'soft',
+    },
+    { d: 'M106 120 L150 150 M118 112 L156 140 M150 150 L156 140' },
+    {
+      d: 'M24 96 C22 86 30 80 36 84 C38 74 48 72 52 80 C56 70 68 70 70 80 C74 70 86 70 88 80 C92 72 104 74 104 84 C110 80 118 84 116 90',
+      role: 'accent',
+    },
+    {
+      d: 'M40 88 l2 -3 l2 3 l-2 3 Z M62 84 l2 -3 l2 3 l-2 3 Z M84 86 l2 -3 l2 3 l-2 3 Z M100 90 l2 -3 l2 3 l-2 3 Z',
+      role: 'accent',
+    },
+    shadow(84, 162, 64),
+  ],
+
+  // Her sickbed in three-quarters: the pillow under the carved headboard,
+  // the blanket turned down, the dark under the bed hatched, and flowers in a
+  // vase on the table beside it. She lies in it, ill, in episode 701. No
+  // lantern: none is shown at the festival she begs to see.
+  'trafalgar-lami': [
+    { d: 'M42 154 V78 C42 64 64 50 68 60 V102' },
+    {
+      d: 'M42 120 L124 132 L150 114 L68 102 M124 132 V146 L150 128 V114 M42 134 L124 146',
+    },
+    {
+      d: 'M69.9 124.1 C77.9 120.1 89.9 108.1 95.9 106.1 M69.9 124.1 C67.9 130.1 71.9 136.1 69.9 144.1 C93.9 130.1 108 150 124 150',
+      role: 'soft',
+    },
+    { d: 'M48 118 C44 110 72 94 78 98 C82 104 58 124 48 118 Z' },
+    { d: 'M124 146 V162 M150 128 V142' },
+    {
+      d: 'M54 152 l8 -6 M68 154 l8 -6 M82 155 l8 -6 M96 157 l8 -6 M110 158 l8 -6',
+      role: 'ambient',
+    },
+    { d: 'M6 120 H32 M9 120 V158 M29 120 V158 M9 140 H29' },
+    {
+      d: 'M15 120 C13 114 15 110 18 108 C15 104 16 100 19 100 M23 120 C25 114 23 110 20 108 C23 104 22 100 19 100',
+    },
+    {
+      d: 'M19 100 C16 92 10 90 8 94 M19 100 C19 90 22 84 26 86 M19 100 C22 94 30 94 30 98 M5 93 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M23 85 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0 M27 98 a3 3 0 1 0 6 0 a3 3 0 1 0 -6 0',
+      role: 'accent',
+    },
+    shadow(86, 176, 70),
+  ],
+
+  // His World Noble's white coat laid flat, the broad collar folded down
+  // in a deep V, round knobs down one front, the sleeves out and the far half
+  // hatched. He wears it at Mary Geoise in episode 702, the day he gives up his
+  // rank. No bubble helmet: he is never shown in one.
+  'donquixote-homing': [
+    {
+      d: 'M58 52 C50 54 42 56 36 60 L18 128 L34 132 L44 92 L38 176 H122 L116 92 L126 132 L142 128 L124 60 C118 56 110 54 102 52',
+    },
+    { d: 'M80 112 V176', role: 'soft' },
+    {
+      d: 'M58 52 C52 58 42 60 38 64 C50 80 66 98 80 112 C94 98 110 80 122 64 C118 60 108 58 102 52 M58 52 C64 70 72 86 80 98 C88 86 96 70 102 52 M58 52 C70 48 90 48 102 52',
+      role: 'accent',
+    },
+    {
+      d: 'M64 128 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 M64 152 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0',
+    },
+    { d: 'M45 66 C56 80 68 93 80 105 C92 93 104 80 115 66', role: 'soft' },
+    {
+      d: 'M20 120 L36 124 M140 120 L124 124 M40 84 C38 96 36 108 34 118 M120 84 C122 96 124 108 126 118',
+      role: 'soft',
+    },
+    {
+      d: 'M100 96 l14 -10 M88 122 l26 -20 M88 146 l28 -22 M90 170 l26 -20',
+      role: 'ambient',
+    },
+    shadow(80, 186, 46),
+  ],
+
+  // The iron-banded chest he holds on his lap in the hideout, its rounded
+  // lid and its end hatched, the hasp in front, and a bottle of the booze from
+  // the table beside it. He waits there with his crew for the trade in episode
+  // 704. No barrel: none is shown there.
+  'diez-barrels': [
+    { d: 'M24 122 H96 V158 H24 Z M96 158 L120 144 V108 L96 122' },
+    {
+      d: 'M24 122 C24 106 30 98 38 96 H110 M96 122 C96 106 102 98 110 96 C116 98 120 102 120 108',
+    },
+    {
+      d: 'M40 158 V122 C40 108 46 100 54 96 M80 158 V122 C80 108 86 100 94 96',
+      role: 'soft',
+    },
+    { d: 'M55 116 h10 v14 h-10 Z M58 116 v-6 q2 -3 4 0 v6', role: 'accent' },
+    {
+      d: 'M100 134 l16 -10 M100 146 l16 -10 M102 156 l14 -9 M104 112 l10 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M134 108 V120 C134 124 128 126 128 132 V162 H146 V132 C146 126 140 124 140 120 V108 M133 108 h8',
+    },
+    { d: 'M128 162 A9 2.5 0 0 0 146 162', role: 'soft' },
+    { d: 'M142 136 l3 -2 M142 146 l3 -2 M142 156 l3 -2', role: 'ambient' },
+    shadow(82, 172, 66),
   ],
 } satisfies Drawings
 
