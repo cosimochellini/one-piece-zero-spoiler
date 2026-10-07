@@ -595,8 +595,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Miss Merry Christmas', en: 'Miss Merry Christmas' },
       summary: {
-        it: 'Un’agente non più giovane, con la schiena e i fianchi doloranti e la lingua svelta, che allo Spiders Cafe prende il tè più forte e parla al posto del suo compagno lentissimo.',
-        en: 'An older agent with an aching back and hips and a quick tongue, who takes the strongest tea at the Spiders Cafe and does the talking for her slow partner.',
+        it: 'Un’agente non più giovane, con la schiena e i fianchi doloranti e la lingua svelta, che allo Spiders Cafe si fa servire un tè orange pekoe e parla al posto del suo compagno lentissimo.',
+        en: 'An older agent with an aching back and hips and a quick tongue, who is served an orange pekoe tea at the Spiders Cafe and does the talking for her slow partner.',
       },
       visual: { art: 'miss-merry-christmas', tint: 'red' },
     },
@@ -1415,8 +1415,8 @@ export const alabasta: Saga = {
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e ha un tè pronto per ogni agente che arriva. Quando l’agente di grado più alto entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli, e solo allora la chiamano con il suo nome da agente. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
-        en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and has a tea ready for each agent as they arrive. When the highest-ranked agent comes in through the wall and the dancer goes for him, she is the one who stops them, and only then is she called by her agent name. She works beside him, and she passes on the order to leave and meet the boss.',
+        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e serve il tè agli agenti che lo chiedono. Quando Mister 1 entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
+        en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and serves tea to the agents who ask for it. When Mr. 1 comes in through the wall and the dancer goes for him, she is the one who stops them. She works beside him, and she passes on the order to leave and meet the boss.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [
@@ -1434,8 +1434,8 @@ export const alabasta: Saga = {
     'miss-merry-christmas': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dei fianchi e dandone la colpa al suo compagno. Parla in fretta, accetta il tè nero forte che le offrono e risponde a tono a chi le dà della vecchia. Lavora con un agente lentissimo e parla al posto suo.',
-        en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and hips and blaming her partner for it. She talks fast, takes the strong black tea she is offered, and snaps back at anyone who calls her old. She works with an extremely slow agent and speaks for him.',
+        it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dei fianchi e dandone la colpa al suo compagno. Parla in fretta e si fa servire un tè orange pekoe. Lavora con un agente lentissimo e parla al posto suo.',
+        en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and hips and blaming her partner for it. She talks fast and is served an orange pekoe tea. She works with an extremely slow agent and speaks for him.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
