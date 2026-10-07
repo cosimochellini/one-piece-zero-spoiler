@@ -8,6 +8,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
+import { DARK_DARK } from './fruits/bespoke'
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /**
@@ -66,6 +67,16 @@ const KING_BULL_NECK =
 
 /** The mane down the back of that neck. */
 const KING_BULL_MANE = 'M14 12 C6 10 0 16 -2 24 L4 22 L-2 32 L4 30 L-2 40 L2 40'
+
+/**
+ * One of Jerry's boxing gloves upright: the big mitt with the thumb along
+ * its side. The pair is the same glove twice.
+ */
+const JERRY_GLOVE =
+  'M32 140 C24 128 22 118 26 110 C18 102 20 86 32 84 C36 70 56 64 72 68 C88 72 96 88 94 104 C93 120 90 132 84 140 Z'
+
+/** The Dark-Dark Fruit's own drawing, made smaller and set in Thatch's palm. */
+const PALM = 'translate(40 28.2) scale(0.55)'
 
 /** The drawings of the records filed in the water seven stretch of the route. */
 export const waterSevenArt = {
@@ -691,69 +702,122 @@ export const waterSevenArt = {
     ...SEA.slice(2),
   ],
 
-  // A rice cracker and a cannonball, side by side, the fuse already lit.
+  // His fist come through a brick wall: the wall in 3/4 with its courses and
+  // the top of it showing, broken open in a ragged hole, the cuff in the hole
+  // and the fist side on beyond it, the folded fingers to the front and the
+  // thumb laid across them; bricks knocked loose on the ground. He punches his
+  // way through the wall of the Galley-La house to wake Luffy (313, ch. 431,
+  // "Fist of Love"). No cannonball: he throws those from 323.
   'monkey-d-garp': [
-    { d: circle(48, 110, 32) },
-    { d: 'M18 102 q30 10 60 0 M18 118 q30 10 60 0' },
     {
-      d: dots([
-        [38, 92],
-        [58, 96],
-        [34, 130],
-        [56, 128],
-      ]),
-      role: 'ambient',
+      d: 'M6 158 V34 H96 V60 L90 66 L98 74 L92 84 L100 92 L92 102 L98 110 L90 118 L96 124 V158',
     },
-    { d: circle(114, 114, 28), role: 'accent' },
-    { d: 'M114 86 c4 -16 14 -22 26 -24', role: 'accent' },
+    { d: 'M6 34 L18 26 H108 L96 34', role: 'soft' },
     {
-      d: 'M144 56 l4 -8 M136 56 l-4 -8 M150 62 l8 -2 M132 66 l-8 -2',
+      d: 'M6 50 H96 M6 66 H84 M6 82 H82 M6 98 H82 M6 114 H84 M6 130 H96 M6 146 H96 M30 34 V50 M62 34 V50 M18 50 V66 M50 50 V66 M30 66 V82 M62 66 V82 M18 82 V98 M50 82 V98 M30 98 V114 M62 98 V114 M18 114 V130 M50 114 V130 M80 114 V130 M30 130 V146 M62 130 V146 M18 146 V158 M50 146 V158 M80 146 V158',
+      role: 'soft',
+    },
+    { d: 'M84 70 C80 80 80 106 84 114 M90 68 C86 80 86 106 90 116' },
+    {
+      d: 'M90 70 C100 64 112 62 122 64 C132 62 142 66 144 74 C150 76 152 86 146 90 C152 92 152 102 146 106 C150 110 148 120 138 120 H100 C94 120 90 118 88 114',
       role: 'accent',
     },
-    shadow(80, 158, 62),
+    {
+      d: 'M144 74 H128 M146 90 H126 M146 106 H126 M100 96 C110 86 122 82 130 84',
+      role: 'soft',
+    },
+    { d: 'M112 136 l14 -4 l2 8 l-14 4 z M126 132 l4 -3 l2 8 l-4 3' },
+    { d: 'M138 148 l12 2 l-1 7 l-12 -2 z' },
+    { d: 'M150 70 h10 M152 92 h8 M150 112 l8 4', role: 'ambient' },
+    { d: 'M-4 158 H164', role: 'ambient' },
+    shadow(110, 170, 40),
   ],
 
-  // A brigantine with a lion's head at the prow.
+  // The brigantine side on, bow to the left: the round hull rising to the
+  // high stern, a square sail bellied on the foremast and a fore-and-aft sail
+  // on the main, the crow's nest at its top. The lion on the stem is a plain
+  // disc inside its mane, the accent, the face left empty (321). No mark on a
+  // sail and no number on the hull.
   'thousand-sunny': [
-    { d: 'M24 120 L34 154 Q82 172 132 154 L142 120' },
-    { d: 'M24 120 H142' },
-    { d: 'M38 140 Q82 152 128 140', role: 'ambient' },
-    { d: 'M82 120 V34' },
-    { d: 'M52 46 H112' },
-    { d: 'M82 34 l16 6 l-16 6' },
-    { d: 'M54 48 Q82 40 110 48 L114 102 Q82 112 50 102 Z' },
-    { d: circle(22, 104, 13), role: 'accent' },
     {
-      d: 'M22 91 v-9 M12 95 l-7 -6 M9 104 h-8 M12 113 l-7 6 M22 117 v9',
+      d: 'M34 112 C28 132 40 150 66 154 H124 C142 152 152 138 152 104 H136 V112 Z',
+    },
+    {
+      d: 'M42 128 C80 132 118 130 150 124 M50 142 C84 146 118 144 146 136',
+      role: 'soft',
+    },
+    {
+      d: 'M60 152 l6 -8 M80 154 l6 -8 M100 154 l6 -8 M120 153 l6 -8 M138 148 l6 -7',
+      role: 'ambient',
+    },
+    { d: 'M70 112 V20 M114 104 V12' },
+    {
+      d: 'M52 32 H88 C94 50 94 70 90 88 H50 C46 70 46 50 52 32 Z M52 32 L70 26 L88 32',
+      role: 'soft',
+    },
+    { d: 'M114 18 L146 30 C150 50 150 74 146 94 L114 96' },
+    { d: 'M108 22 h12 v8 h-12 z', role: 'soft' },
+    { d: 'M128 104 v-10 h18 v10', role: 'soft' },
+    { d: ellipse(32, 96, 12, 14), role: 'soft' },
+    {
+      d: 'M51 96 Q60.8 105 48 107.4 Q51.6 120.2 39.9 115.1 Q36.3 127.7 29.3 116.8 Q19.5 125.1 19.6 111.9 Q6.8 113.3 13.8 101.9 Q2 96 13.8 90.1 Q6.8 78.7 19.6 80.1 Q19.5 66.9 29.3 75.2 Q36.3 64.3 39.9 76.9 Q51.6 71.8 48 84.6 Q60.8 87 51 96',
       role: 'accent',
     },
     ...SEA.slice(1),
   ],
-  // Two bamboo stilts rising out of the grass until their tops vanish into a cloud.
+  // His two bamboo stilts in the grass, their nodes and foot blocks, the far
+  // side of each hatched: one runs on out of sight, the other has snapped
+  // short at a splintered break, the accent, and its top lies in the grass.
+  // Luffy breaks the bamboo, and the old man comes down after ten years (207,
+  // ch. 304).
   'tonjit': [
-    { d: 'M58 184 V44 M102 184 V44' },
+    { d: 'M58 176 V-8 M66 176 V-8' },
+    { d: 'M94 176 V74 M102 176 V80' },
+    { d: 'M94 74 l2 -10 l2 8 l2 -12 l2 10 l2 -4 V80', role: 'accent' },
     {
-      d: 'M54 160 h8 M54 128 h8 M54 96 h8 M54 64 h8 M98 150 h8 M98 118 h8 M98 86 h8 M98 56 h8',
+      d: 'M58 150 q4 3 8 0 M58 112 q4 3 8 0 M58 74 q4 3 8 0 M58 36 q4 3 8 0 M58 2 q4 3 8 0 M94 150 q4 3 8 0 M94 112 q4 3 8 0',
       role: 'soft',
     },
-    { d: 'M58 170 h-12 M102 170 h12' },
+    { d: 'M58 140 h-12 v6 h12 M102 140 h12 v6 h-12' },
     {
-      d: 'M30 54 q-14 0 -10 -14 q4 -12 18 -10 q8 -16 28 -10 q14 -12 30 -2 q18 -2 18 14 q14 6 6 18 q-6 6 -16 4z',
-      role: 'accent',
+      d: 'M64 60 l-4 4 M64 96 l-4 4 M64 128 l-4 4 M100 96 l-4 4 M100 128 l-4 4',
+      role: 'ambient',
     },
-    { d: 'M14 186 H146', role: 'ambient' },
+    { d: 'M108 172 L156 150 M110 178 L158 156 M108 172 l2 6 M156 150 l2 6' },
+    { d: 'M130 162 q1 4 2 5', role: 'soft' },
+    {
+      d: 'M14 178 l4 -10 l2 8 M30 180 l3 -8 l3 8 M78 180 l2 -10 l3 9 M140 182 l3 -8 l2 7',
+      role: 'ambient',
+    },
+    { d: 'M-4 180 H164', role: 'ambient' },
+    shadow(80, 188, 40),
   ],
-  // A snail with a microphone grille for a shell, riding on a sparrow's wing.
+  // His satchel in 3/4, the side away hatched and the strap lying loose, with
+  // the Den Den Mushi in it, a coiled shell and a head on stalks (no eyes),
+  // and the hand mic he calls the race into, the accent, lying in front on
+  // its coiled cord (209).
   'itomimizu': [
     {
-      d: 'M20 150 C50 120 100 112 146 124 C120 136 96 140 72 150 C56 156 36 158 20 150z',
+      d: 'M40 116 Q40 108 48 108 H100 Q108 108 108 116 V150 Q108 162 96 162 H52 Q40 162 40 150 Z',
     },
-    { d: 'M60 146 l14 -16 M84 142 l14 -18 M108 134 l12 -14', role: 'soft' },
-    { d: circle(84, 84, 24) },
-    { d: 'M72 84 h24 M76 74 h16 M76 94 h16', role: 'accent' },
-    { d: 'M54 112 H116 q12 0 12 -10 l-4 -18 M54 112 q-10 0 -8 -10' },
-    { d: `M120 84 l4 -18 M112 88 l-2 -20 ${circle(124, 64, 2)}`, role: 'soft' },
-    { d: 'M138 62 q8 8 0 16 M148 56 q12 14 0 28', role: 'ambient' },
+    { d: 'M108 116 L118 110 V146 Q118 156 108 160' },
+    { d: 'M110 124 l6 -4 M110 136 l6 -4 M110 148 l6 -4', role: 'ambient' },
+    { d: 'M40 122 H108 M66 122 v10 h16 v-10', role: 'soft' },
+    {
+      d: 'M40 116 C22 124 12 146 22 170 M44 116 C28 126 20 146 28 170',
+      role: 'soft',
+    },
+    {
+      d: 'M48 108 C44 86 58 70 74 72 C88 74 94 88 88 98 C82 108 68 106 66 96 C64 88 74 84 78 90',
+    },
+    {
+      d: 'M90 108 C92 98 96 90 102 86 C108 84 110 90 108 96 L104 108 M100 87 L96 70 M105 86 L112 72',
+    },
+    { d: 'M106 160 c2 6 8 5 8 0 c0 6 7 7 8 2 c0 6 7 7 8 2', role: 'soft' },
+    { d: 'M130 164 L142 150 M134 168 L146 154 M130 164 l4 4', role: 'accent' },
+    { d: circle(150, 146, 9), role: 'accent' },
+    { d: 'M144 142 l10 8 M146 138 l10 8 M142 147 l8 7', role: 'soft' },
+    shadow(90, 178, 66),
   ],
   // His green striped shirt with the two round pauldrons on its shoulders,
   // the bands across them in the accent and their far sides hatched, and the
@@ -870,90 +934,146 @@ export const waterSevenArt = {
     { d: 'M-4 156 H164', role: 'ambient', dashed: true },
     ...SEA.slice(1),
   ],
-  // A pigeon's feather beside a small necktie, and a speech bubble with no mouth under it.
+  // Hattori side on, facing the other way from the one on Lucci's brim:
+  // plump, beak out, one wing raised like an arm in the middle of a sentence,
+  // the little tie the accent, standing on the curve of a shoulder whose far
+  // side is hatched. He moves his wings in time with the voice (232, ch. 327).
+  // No eye.
   'hattori': [
-    { d: 'M40 172 C52 132 64 92 92 42' },
+    { d: 'M-4 156 C40 140 100 136 164 148' },
+    { d: 'M-4 170 C40 154 100 150 164 162', role: 'soft' },
+    { d: 'M110 150 l6 -8 M126 152 l6 -8 M142 154 l6 -8', role: 'ambient' },
     {
-      d: 'M92 42 C70 52 50 84 46 130 C60 112 72 98 78 88 M92 42 C98 72 86 106 58 138',
+      d: 'M64 52 C64 40 80 36 88 46 C92 52 92 60 90 66 C104 70 120 84 126 104 L148 126 L124 122 C112 136 92 142 76 138 C58 132 50 116 54 98 C56 86 62 78 70 72 C64 66 62 60 64 52 Z',
     },
-    { d: 'M58 112 l-8 -4 M66 96 l-8 -4 M74 80 l-8 -4', role: 'ambient' },
-    { d: 'M110 104 h16 l-3 8 h-10z', role: 'accent' },
-    { d: 'M113 112 l-5 38 l10 10 l10 -10 l-5 -38', role: 'accent' },
+    { d: 'M64 54 L50 58 L64 62', role: 'soft' },
     {
-      d: 'M104 16 h44 a8 8 0 0 1 8 8 v16 a8 8 0 0 1 -8 8 h-26 l-10 10 v-10 h-8 a8 8 0 0 1 -8 -8 v-16 a8 8 0 0 1 8 -8z',
+      d: 'M92 82 C104 70 112 54 108 36 C120 44 124 64 116 84 C112 94 104 100 96 102',
+    },
+    {
+      d: 'M110 46 C114 56 114 68 108 80 M116 60 C116 72 112 82 104 92',
       role: 'soft',
     },
     {
-      d: dots([
-        [116, 32],
-        [126, 32],
-        [136, 32],
-      ]),
-      role: 'ambient',
+      d: 'M66 72 L76 70 L74 76 L68 76 Z M70 76 L64 104 L72 112 L78 102 L74 76',
+      role: 'accent',
     },
-    shadow(84, 184, 44),
+    { d: 'M98 132 l6 -6 M110 126 l6 -6 M64 120 l6 -6', role: 'ambient' },
+    {
+      d: 'M78 138 V146 l-6 4 M78 146 l6 3 M94 138 V144 l-6 4 M94 144 l6 3',
+      role: 'soft',
+    },
+    shadow(84, 178, 40),
   ],
-  // A pair of dark glasses with a stubborn curl of hair springing up above them.
+  // His dark glasses folded on a plank in Dock One: the narrow lenses in
+  // 3/4, the accent, hatched because they are dark, the far one smaller, the
+  // temples folded flat behind them, the plank's front edge hatched (233).
+  // No hair above them: with a tuft they would make a face.
   'peepley-lulu': [
-    { d: 'M28 96 h40 v14 q0 14 -20 14 q-20 0 -20 -14z' },
-    { d: 'M92 96 h40 v14 q0 14 -20 14 q-20 0 -20 -14z' },
-    { d: 'M68 100 q12 -6 24 0 M28 98 l-14 -6 M132 98 l14 -6' },
+    { d: 'M-4 86 L164 66 M-4 140 L164 120 M-4 152 L164 132' },
     {
-      d: 'M80 82 C80 60 64 58 66 44 C68 30 88 30 90 42 C92 52 80 54 78 46',
-      role: 'accent',
-    },
-    { d: 'M40 86 q40 -12 80 0', role: 'soft' },
-    { d: 'M36 102 l8 8 M100 102 l8 8', role: 'ambient' },
-    shadow(80, 170, 50),
-  ],
-  // A government briefcase shut tight, a refused offer crossed out and sticking from its lid.
-  'corgi': [
-    { d: 'M28 92 h104 v64 h-104z' },
-    { d: 'M64 92 v-12 q0 -6 6 -6 h20 q6 0 6 6 v12' },
-    { d: 'M74 110 h12 v10 h-12z', role: 'accent' },
-    { d: 'M102 92 V44 h28 V92', role: 'soft' },
-    { d: 'M108 54 l16 16 M124 54 l-16 16', role: 'accent' },
-    { d: 'M28 128 h104', role: 'ambient' },
-    shadow(80, 170, 56),
-  ],
-  // A shipwright's giant mallet standing on its handle, the air around it ringing with a shout.
-  'tilestone': [
-    { d: 'M80 180 V88' },
-    { d: 'M36 52 h88 v36 h-88z' },
-    { d: 'M52 52 v36 M108 52 v36', role: 'ambient' },
-    { d: 'M74 150 h12 M74 160 h12 M74 170 h12', role: 'soft' },
-    { d: 'M24 34 l-10 -10 M80 38 V16 M136 34 l10 -10', role: 'accent' },
-    { d: 'M20 64 h-12 M140 64 h12', role: 'accent' },
-    shadow(80, 190, 40),
-  ],
-  // A red boxing glove hanging on its lace from the low ceiling of a train car.
-  'jerry': [
-    { d: 'M-4 30 H164' },
-    { d: 'M80 30 V56' },
-    {
-      d: 'M56 72 q0 -16 20 -16 h16 q22 0 22 30 v28 q0 16 -16 16 h-26 q-16 0 -16 -16z',
-      role: 'accent',
-    },
-    { d: 'M56 96 q-14 0 -14 14 q0 12 14 12', role: 'accent' },
-    { d: 'M62 130 h44 v24 h-44z' },
-    { d: 'M70 138 l28 10 M98 138 l-28 10', role: 'ambient' },
-    { d: 'M10 60 h24 v30 h-24z M126 60 h24 v30 h-24z', role: 'ambient' },
-    shadow(84, 186, 30),
-  ],
-  // A ramen bowl with noodles spilling over the rim and chopsticks resting in it.
-  'wanze': [
-    { d: 'M30 100 H130 C128 136 110 154 80 154 C50 154 32 136 30 100 Z' },
-    { d: 'M62 154 h36 v8 h-36z' },
-    {
-      d: 'M44 100 C38 116 52 124 44 142 M60 100 C56 120 68 130 58 152',
-      role: 'accent',
-    },
-    { d: 'M96 98 L136 36 M108 100 L146 42', role: 'accent' },
-    {
-      d: 'M62 86 c-6 -8 6 -14 0 -22 M82 82 c-6 -8 6 -14 0 -22',
+      d: 'M8 150 l6 -10 M30 148 l6 -10 M52 145 l6 -10 M74 142 l6 -10 M96 140 l6 -10 M118 137 l6 -10 M140 135 l6 -10',
       role: 'ambient',
     },
-    shadow(80, 174, 44),
+    {
+      d: 'M14 114 C14 104 26 100 44 100 C60 100 68 104 68 112 C68 124 56 130 40 130 C24 130 14 124 14 114 Z M90 108 C90 100 100 96 114 96 C128 96 134 100 134 106 C134 116 124 122 112 122 C98 122 90 116 90 108 Z',
+      role: 'accent',
+    },
+    { d: 'M68 108 C74 102 84 102 90 106' },
+    {
+      d: 'M24 120 l16 -16 M34 126 l22 -22 M48 128 l16 -16 M98 114 l14 -14 M108 120 l18 -18 M120 120 l10 -10',
+      role: 'ambient',
+    },
+    { d: 'M14 112 L26 92 L132 84 L134 100 M68 106 L72 96' },
+  ],
+  // His dark-blue hat set down crown up: a brim in 3/4 turned up at the
+  // back, a pinched crown, the band the accent, the felt hatched because it
+  // is dark. He keeps it on through every visit to Iceburg (233-234).
+  'corgi': [
+    {
+      d: 'M12 132 C10 114 60 106 98 110 C134 114 154 124 148 138 C142 152 96 160 58 154 C26 150 14 144 12 132 Z',
+    },
+    { d: 'M24 134 C34 146 74 152 108 148', role: 'soft' },
+    { d: 'M40 126 C38 100 44 76 58 70 Q76 78 86 68 C104 70 116 96 116 126' },
+    { d: 'M58 70 Q66 84 64 98', role: 'soft' },
+    { d: 'M40 116 Q78 128 116 116 M40 126 Q78 138 116 126', role: 'accent' },
+    {
+      d: 'M98 80 l8 -5 M102 92 l10 -6 M104 104 l10 -6 M48 90 l6 -4 M44 104 l8 -5',
+      role: 'ambient',
+    },
+    { d: 'M120 140 l10 -4 M128 146 l12 -4', role: 'ambient' },
+    shadow(80, 176, 66),
+  ],
+  // A whole log in 3/4, its cut end towards us with the rings as the accent,
+  // the bark down its length and the underside hatched, the arc of the swing
+  // behind it and chips coming off: the log he knocks Franky out of the
+  // fight with, in Dock One (238, ch. 337).
+  'tilestone': [
+    { d: ellipse(46, 120, 20, 26) },
+    {
+      d: `${ellipse(46, 120, 12, 16)} ${ellipse(46, 120, 5, 7)}`,
+      role: 'accent',
+    },
+    {
+      d: 'M46 94 L140 66 C156 64 162 82 160 96 C158 110 150 120 142 120 L46 146',
+    },
+    {
+      d: 'M62 104 C92 94 122 86 150 78 M66 126 C96 118 126 110 154 102',
+      role: 'soft',
+    },
+    {
+      d: 'M76 138 l6 -8 M94 133 l6 -8 M112 128 l6 -8 M130 123 l6 -8 M146 118 l6 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M18 72 C40 40 90 24 136 34 M10 96 C20 70 40 56 62 50',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M24 158 l-6 6 M36 162 l2 8', role: 'soft' },
+    shadow(100, 176, 60),
+  ],
+  // His red boxing gloves on the floor of the train car, under a ceiling so
+  // low it is just above them: the near glove upright, the accent, the thumb
+  // along its side and the cuff laced, its pair beside it a little further
+  // back with the side away hatched (253).
+  'jerry': [
+    { d: 'M-4 46 H164 M-4 56 H164' },
+    { d: 'M20 46 V56 M60 46 V56 M100 46 V56 M140 46 V56', role: 'soft' },
+    { d: 'M-4 172 H164', role: 'ambient' },
+    { d: JERRY_GLOVE, role: 'accent' },
+    {
+      d: 'M32 84 C40 90 42 102 32 112 M60 74 C74 78 84 90 84 106',
+      role: 'soft',
+    },
+    { d: 'M32 140 H84 V166 H34 Z' },
+    {
+      d: 'M44 144 l14 18 M58 144 l-14 18 M60 144 l14 18 M74 144 l-14 18',
+      role: 'soft',
+    },
+    { d: JERRY_GLOVE, transform: 'translate(78 8) scale(0.88)' },
+    { d: 'M106 132 H150 V160 H108 Z' },
+    { d: 'M144 84 l8 -5 M146 98 l8 -5 M144 112 l8 -5', role: 'ambient' },
+    shadow(84, 184, 70),
+  ],
+  // His ramen bowl in 3/4, the rim and its thickness, a band round the body
+  // and the side away hatched, noodles in the broth and one long noodle,
+  // the accent, pulled up out of it, the steam rising (258).
+  'wanze': [
+    { d: ellipse(80, 98, 52, 12) },
+    { d: ellipse(80, 99, 45, 8), role: 'soft' },
+    { d: 'M28 98 C30 132 52 152 80 152 C108 152 130 132 132 98' },
+    { d: 'M62 150 V158 Q80 162 98 158 V150' },
+    { d: 'M36 118 Q80 132 124 118', role: 'soft' },
+    { d: 'M112 128 l8 -8 M104 138 l10 -10 M96 146 l8 -8', role: 'ambient' },
+    { d: 'M44 100 q8 -4 16 0 t16 0 M84 100 q8 -4 16 0 t14 0', role: 'soft' },
+    { d: 'M74 98 C64 76 90 70 82 52 C76 38 92 28 98 12', role: 'accent' },
+    {
+      d: 'M44 82 c-6 -8 6 -14 0 -22 M118 82 c-6 -8 6 -14 0 -22',
+      role: 'ambient',
+      dashed: true,
+    },
+    shadow(80, 174, 50),
   ],
   // His wide-brimmed black hat, crown hatched, with the red plume in its band,
   // set on the roof of the third car of the sea train, where he waits for
@@ -979,14 +1099,22 @@ export const waterSevenArt = {
     },
     { d: 'M116 88 C122 74 130 62 140 54', role: 'soft' },
   ],
-  // A perfectly straight sword standing upright, a right-angled zigzag slash cut across it.
+  // His long straight sword lying in 3/4, the ridge down the blade and the
+  // far face hatched, the crossguard and the bound grip, its shadow on the
+  // ground; above it, a cut turned at a right angle, the accent: he cuts
+  // only in straight lines and right angles (261, ch. 371).
   't-bone': [
-    { d: 'M80 22 V130' },
-    { d: 'M60 130 H100', role: 'accent' },
-    { d: 'M80 130 V164' },
-    { d: circle(80, 169, 5) },
-    { d: 'M18 64 H58 V104 H102 V144 H142', role: 'accent' },
-    shadow(80, 186, 30),
+    { d: 'M48 136 L150 46 L56 146' },
+    { d: 'M52 141 L150 46', role: 'soft' },
+    {
+      d: 'M64 136 l2 4 M80 122 l2 4 M96 108 l2 4 M112 94 l2 4 M128 80 l2 4',
+      role: 'ambient',
+    },
+    { d: 'M34 128 L42 132 L58 150 L62 158 L54 154 L38 136 Z' },
+    { d: 'M48 148 L28 168 M54 152 L34 172 M28 168 Q26 176 34 172' },
+    { d: 'M44 156 l4 4 M38 162 l4 4', role: 'soft' },
+    { d: 'M40 182 L156 80', role: 'ambient', dashed: true },
+    { d: 'M14 30 H74 V88', role: 'accent' },
   ],
   // The two King Bulls side by side in the waves, necks up and manes blowing,
   // one yoke across both and a single tow line running back to the boat
@@ -1023,28 +1151,66 @@ export const waterSevenArt = {
     },
     ...SEA,
   ],
-  // A judge's gavel on its block, three different hats lined up above it.
+  // Three hats on a bench in 3/4, the bench front hatched: the sombrero's
+  // tall crown in its wide brim, And's bicorne in the middle with its plume,
+  // the accent, and the square cap tipped on its side (267). Crowns up, so
+  // none of them reads as a head.
   'baskerville': [
-    { d: 'M44 96 h72 v26 h-72z' },
-    { d: 'M56 96 v26 M104 96 v26', role: 'ambient' },
-    { d: 'M80 122 V166' },
-    { d: 'M44 166 h72 v10 h-72z' },
-    { d: 'M28 78 Q44 54 60 78 Z', role: 'accent' },
-    { d: 'M64 78 h32 M72 78 q8 -20 16 0', role: 'accent' },
-    { d: 'M104 78 v-18 h24 v18 M100 78 h32', role: 'accent' },
-    shadow(80, 186, 40),
-  ],
-  // An open book with a clover leaf pressed flat on its right-hand page.
-  'clover': [
-    { d: 'M80 150 C60 140 36 140 16 146 V70 C36 64 60 64 80 74 Z' },
-    { d: 'M80 150 C100 140 124 140 144 146 V70 C124 64 100 64 80 74' },
-    { d: 'M26 90 h40 M26 102 h40 M26 114 h34 M26 126 h38', role: 'ambient' },
     {
-      d: `${circle(104, 96, 8)} ${circle(124, 96, 8)} ${circle(114, 84, 8)} ${circle(114, 108, 8)}`,
+      d: 'M4 132 L120 148 L158 122 L42 110 Z M4 132 V142 L120 158 L158 132 V122 M120 148 V158',
+    },
+    {
+      d: 'M14 138 l6 -6 M34 141 l6 -6 M54 144 l6 -6 M74 146 l6 -6 M94 149 l6 -6 M126 152 l6 -6 M140 142 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M12 143 V172 M112 157 V184 M150 137 V160', role: 'soft' },
+    {
+      d: `${ellipse(32, 124, 30, 8)} M22 122 C22 104 26 84 32 80 C38 84 42 104 42 122`,
+    },
+    { d: 'M23 112 Q32 116 41 112', role: 'soft' },
+    {
+      d: 'M48 118 C60 112 66 96 82 96 C98 96 104 112 116 118 L112 126 C98 118 66 118 52 126 Z',
       role: 'accent',
     },
-    { d: 'M114 104 q6 14 -2 30', role: 'accent' },
-    shadow(80, 162, 62),
+    {
+      d: 'M60 114 C72 108 92 108 104 114 M84 98 C80 86 84 74 94 68 C92 80 90 90 86 98',
+      role: 'soft',
+    },
+    {
+      d: 'M118 120 L120 96 L142 92 L146 116 Z M120 96 L128 88 L150 84 L142 92 M150 84 L152 108 L146 116',
+    },
+    { d: 'M144 100 l6 -4 M145 110 l6 -4', role: 'ambient' },
+    shadow(80, 188, 70),
+  ],
+  // The great armillary globe of the library in the Tree of Knowledge,
+  // standing on its crescent: the globe with its far side hatched, two rings
+  // round it, the accent, and a small sphere on each, the pedestal, and books
+  // stacked at its foot. He celebrates Robin's exam under it (275, ch. 391).
+  'clover': [
+    {
+      d: 'M104 158 C52 156 24 112 34 66 C40 38 60 20 86 14 M98 150 C58 146 36 110 44 70 C48 46 64 30 84 24',
+    },
+    { d: 'M86 14 L84 24', role: 'soft' },
+    { d: circle(84, 86, 28) },
+    { d: 'M84 58 C72 70 72 102 84 114 M58 80 Q84 90 110 80', role: 'soft' },
+    {
+      d: 'M96 62 l6 6 M104 72 l6 6 M108 86 l4 4 M104 100 l4 4',
+      role: 'ambient',
+    },
+    {
+      d: ellipse(84, 86, 46, 14),
+      role: 'accent',
+      transform: 'rotate(-24 84 86)',
+    },
+    {
+      d: ellipse(84, 86, 44, 12),
+      role: 'accent',
+      transform: 'rotate(40 84 86)',
+    },
+    { d: `${circle(126, 60, 5)} ${circle(50, 126, 4)}`, role: 'soft' },
+    { d: `M80 150 V138 M90 150 V138 ${ellipse(86, 160, 30, 8)}` },
+    { d: 'M122 166 h34 v-10 h-34 z M126 156 h28 v-10 h-28 z' },
+    shadow(96, 182, 60),
   ],
   // A snail phone ringing on its foot, the receiver left on its shell and
   // the cord hanging: the call from headquarters he tells his agents to
@@ -1073,41 +1239,65 @@ export const waterSevenArt = {
     { d: 'M96 132 l8 -6 M104 128 l6 -5', role: 'ambient' },
     shadow(80, 172, 60),
   ],
-  // A rifle leaning against a stack of three old books.
+  // The rifle she takes from the rack in the Tree of Knowledge, lying across
+  // a stack of the library's books in 3/4: the stock with its far side
+  // hatched, the lock and the trigger guard, the long barrel, the accent
+  // (276, ch. 393).
   'nico-olvia': [
-    { d: 'M20 150 h80 v-16 h-80z' },
-    { d: 'M26 134 h70 v-14 h-70z' },
-    { d: 'M32 120 h60 v-14 h-60z' },
-    { d: 'M36 142 h22 M40 127 h18 M44 113 h16', role: 'ambient' },
-    { d: 'M110 150 L122 128 L132 132 L120 152 Z', role: 'accent' },
-    { d: 'M126 128 L146 38 L150 39 L131 130', role: 'accent' },
-    { d: 'M121 138 q-5 5 0 9', role: 'soft' },
-    shadow(84, 160, 64),
-  ],
-  // A cutlass whose guard sprouts two small tusks, a tail for a tassel.
-  'funkfreed': [
-    { d: 'M64 122 C72 84 98 50 134 28 C122 56 102 90 80 130 Z' },
-    { d: 'M50 114 L90 136' },
-    { d: 'M54 117 C42 122 38 134 44 142', role: 'accent' },
-    { d: 'M86 134 C88 148 80 156 70 158', role: 'accent' },
-    { d: 'M70 128 L54 160' },
-    { d: 'M54 160 c-4 8 -2 16 4 22 M54 160 c2 8 6 14 12 18', role: 'soft' },
-    shadow(80, 188, 40),
-  ],
-  // A dark swirled fruit resting in an open palm, a ladle hanging beside it.
-  'thatch': [
     {
-      d: 'M28 150 C36 128 56 120 78 122 L116 112 C126 110 128 122 118 124 L98 128 L128 126 C138 126 138 138 128 138 L100 142 C90 154 60 158 28 156',
+      d: 'M24 158 L104 164 L134 150 L56 144 Z M24 158 V168 L104 174 L134 160 V150 M104 164 V174',
     },
-    { d: circle(84, 100, 20), role: 'accent' },
     {
-      d: 'M72 96 c4 -8 14 -8 16 0 c2 8 -8 10 -10 4 M88 108 c4 4 10 2 10 -4',
+      d: 'M30 144 L102 150 L128 138 L58 132 Z M30 144 V156 M102 150 V162 M128 138 V149',
+    },
+    {
+      d: 'M38 130 L98 136 L120 126 L62 120 Z M38 130 V142 M98 136 V148 M120 126 V137',
+    },
+    {
+      d: 'M108 166 l4 4 M116 162 l4 4 M124 158 l4 4 M104 154 l4 4 M112 150 l4 4',
+      role: 'ambient',
+    },
+    {
+      d: 'M4 150 L10 124 L52 114 L62 108 L150 70 L152 74 L66 114 L60 122 L34 130 Z',
       role: 'accent',
     },
-    { d: 'M84 80 c0 -8 4 -12 10 -14', role: 'soft' },
-    { d: 'M136 30 L140 84', role: 'ambient' },
-    { d: ellipse(142, 92, 10, 7), role: 'ambient' },
-    shadow(80, 170, 56),
+    { d: 'M54 118 C52 128 60 130 62 122 M66 104 l4 -4 h6 l-2 6', role: 'soft' },
+    { d: 'M18 134 l6 -10 M26 132 l6 -10', role: 'ambient' },
+    shadow(78, 186, 62),
+  ],
+  // The sabre he turns into, in 3/4: the curved blade with its far face
+  // hatched, the guard and the knuckle bow round the grip, the two tusks set
+  // into the guard as the accent, and the tail hanging from the pommel for a
+  // tassel (285).
+  'funkfreed': [
+    { d: 'M60 126 C86 92 114 60 152 24 C132 64 106 102 74 138' },
+    { d: 'M68 130 C92 100 118 70 146 34', role: 'soft' },
+    { d: 'M102 94 l6 4 M118 74 l6 4 M134 54 l6 4', role: 'ambient' },
+    {
+      d: 'M52 124 L80 142 M62 134 L42 166 M70 140 L50 172 M42 166 Q44 176 50 172',
+    },
+    { d: 'M80 142 C88 160 76 182 50 176' },
+    {
+      d: 'M52 124 C36 116 30 98 38 82 C40 98 46 110 58 118 Z M60 128 C48 118 44 102 50 88 C52 102 58 114 66 122',
+      role: 'accent',
+    },
+    {
+      d: 'M46 174 C38 180 36 186 28 188 M28 188 l-6 -2 M28 188 l-4 4',
+      role: 'soft',
+    },
+    shadow(84, 192, 44),
+  ],
+  // The Devil Fruit he found, as it is shown in his hand at 325 (ch. 440),
+  // before anyone has a name for it: the swirled bunch from its own drawing,
+  // smaller, resting in an open palm, the fingers curling round the side.
+  'thatch': [
+    ...DARK_DARK.slice(0, -1).map((part) => ({ ...part, transform: PALM })),
+    {
+      d: 'M14 150 C24 128 44 118 60 118 L112 112 C122 112 124 122 116 124 L96 128 L124 124 C134 124 134 136 124 136 L100 140 C88 152 56 156 18 160',
+    },
+    { d: 'M60 118 C56 108 62 100 70 104', role: 'soft' },
+    { d: 'M104 140 l6 -4 M90 146 l6 -4', role: 'ambient' },
+    shadow(76, 176, 56),
   ],
 } satisfies Drawings
 

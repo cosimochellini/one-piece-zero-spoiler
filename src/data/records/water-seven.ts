@@ -368,7 +368,9 @@ export const waterSeven: Saga = {
       id: 'tilestone',
       kind: 'character',
       revealedAtEpisode: 238,
-      revealedAtChapter: 336,
+      revealedAtChapter: 337,
+      // 337, not 336: his drawing is the log he swings at Franky in ch. 337,
+      // which episode 238 adapts.
       name: { it: 'Tilestone', en: 'Tilestone' },
       summary: {
         it: 'Un caposquadra della Galley-La grosso come un armadio che dice tutto urlando, e che irrompe nella stanza di un convalescente con tanto baccano da farsi buttare fuori prima ancora di annunciare una rissa al cantiere.',
