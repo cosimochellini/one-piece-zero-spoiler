@@ -1446,8 +1446,9 @@ export const summitWarArt = {
   ],
 
   // A lit cigarette laid across her pink bead necklace, the burning end in
-  // her colour and its smoke rising. She smokes in Luffy's memory of her in
-  // episode 477.
+  // her colour and its smoke rising. The wiki's Appearance, cited to her
+  // introduction in episode 477: "seen smoking a cigarette … a pink beaded
+  // necklace".
   'curly-dadan': [
     { d: DADAN_BEADS, role: 'soft' },
     { d: 'M36 140 L118 120 M38 149 L120 129' },
@@ -1625,7 +1626,8 @@ export const summitWarArt = {
 
   // The roof of the building where Luffy is held, rows of tiles, the hole he
   // breaks out through, and three arrows stuck in the tiles, their feathers
-  // in her colour. She has the arrows loosed at him in episode 409.
+  // in her colour. She has the arrows loosed at him in episode 409, and a
+  // frame of that episode shows them stuck in the red tiles.
   'kikyo': [
     { d: 'M10 112 L44 62 L78 112 Z M44 62 L140 40 L156 92 L78 112' },
     { d: 'M10 112 V156 H78 V112 M78 156 L156 136 V92' },
