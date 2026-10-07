@@ -709,30 +709,59 @@ export const eastBlueArt = {
     ...SEA.slice(2),
   ],
 
-  // A tamer's whip, the lash still travelling.
+  // A tamer's whip, the lash still travelling: the handle with its cap seen
+  // end on, the grip wrapped in diamonds and its underside in shade, the
+  // thong tapering off it into a loop and a frayed tip. It stands for the
+  // title he is introduced with, the Beast Tamer, in episode 6 (chapter 12);
+  // Orange Town never shows him using one.
   'mohji': [
-    { d: 'M22 32 L48 54 M16 40 L42 62' },
-    { d: 'M16 40 L22 32 M42 62 L48 54' },
-    { d: 'M22 42 l8 6 M28 50 l8 6', role: 'soft' },
+    { d: 'M26.1 37.1 L57 74.4 M33.9 30.9 L63 69.6' },
+    { d: 'M26.1 37.1 A5 2.2 142 1 0 33.9 30.9 A5 2.2 142 1 0 26.1 37.1' },
+    { d: 'M25.5 36.3 C19.3 28.5 27.1 22.3 33.3 30.1' },
+    { d: 'M32.7 45.5 L44.7 44.6 L41.1 56.1 L53.1 55.2', role: 'soft' },
+    { d: 'M52.7 69.1 L58.9 64.2 M55.8 72.9 L61.8 68.1' },
+    { d: 'M40.5 39.3 L36.9 50.8 L48.9 49.9 L45.3 61.4', role: 'soft' },
     {
-      d: 'M45 58 C80 88 40 110 44 134 C48 158 96 160 120 138 C140 120 132 96 116 96',
+      d: 'M53.3 57.6 L52.4 61.3 M55.6 60.7 L54.7 64.4 M57.9 63.8 L57.1 67.5',
+      role: 'ambient',
+    },
+    {
+      d: 'M56.9 73.9 C58.7 76.7 64.4 85.5 67.5 91 C70.6 96.4 73.3 101.8 75.3 106.7 C77.3 111.6 78.8 116.4 79.4 120.7 C80 125 80 128.9 79 132.5 C77.9 136.1 75.8 139.3 73 142.4 C70.2 145.4 64.8 148.1 62.1 150.9 C59.5 153.8 58 158.1 57.2 159.5',
       role: 'accent',
     },
-    { d: 'M116 96 c-10 0 -14 8 -8 12', role: 'accent' },
-    shadow(88, 176, 44),
+    {
+      d: 'M63.1 70.1 C64.7 73.1 70.1 82.3 73 88.1 C75.8 93.8 78.4 99.5 80.2 104.9 C82 110.2 83.3 115.4 83.6 120.2 C84 125 83.6 129.6 82.1 133.5 C80.6 137.5 77.7 141 74.5 144.1 C71.3 147.1 65.9 149.3 63 151.9 C60.2 154.5 58.4 158.3 57.5 159.6',
+      role: 'accent',
+    },
+    {
+      d: 'M57.3 159.6 C57.6 160.8 57.3 164.8 59 167 C60.7 169.2 63.5 171.3 67.4 172.7 C71.3 174.2 76.5 175.4 82.4 175.9 C88.3 176.3 96.6 176.2 102.9 175.4 C109.2 174.5 115.3 172.9 120.2 170.7 C125.1 168.6 129.2 165.7 132.2 162.6 C135.3 159.4 137.5 155.7 138.5 151.8 C139.6 148 139.7 143.7 138.6 139.4 C137.5 135 133.1 128.2 132 126',
+      role: 'accent',
+    },
+    { d: 'M132 126 l-6 -4 M132 126 l-3 -7 M132 126 l1.5 -7', role: 'soft' },
+    shadow(92, 186, 40),
   ],
 
-  // A small shop front, and in front of its door the one sack of dog food saved from it.
+  // The pet-food shop he guards, shut and still standing: the long plank sign
+  // across the front with nothing written on it, the arched double door, a
+  // window either side, the hanging sign on its bracket, the side wall in
+  // shade and the step. He sits in front of it in episode 6 (chapter 12).
   'chouchou': [
-    { d: house(36, 88, 76, 50) },
-    { d: 'M44 94 h20 v16 h-20z M104 94 h20 v16 h-20z', role: 'soft' },
+    { d: 'M28 150 V64 M112 150 V64 M28 150 H112' },
+    { d: 'M112 150 L134 138 V58 L124 58' },
     {
-      d: 'M62 178 C56 164 58 150 66 144 L94 144 C102 150 104 164 98 178 Z',
-      role: 'accent',
+      d: 'M114.1 81 L121.2 68.6 M114 93.1 L131.3 63.2 M114.1 105 L132 74 M114 117.1 L131.9 86.1 M114.1 128.9 L132 98 M114.1 141 L131.9 110.1 M119.7 143.2 L132 121.9 M129.9 137.5 L131.9 134',
+      role: 'ambient',
     },
-    { d: 'M66 144 q14 -9 28 0', role: 'accent' },
-    { d: 'M70 162 h20', role: 'soft' },
-    shadow(80, 184, 40),
+    { d: 'M20 64 H120 V38 H20 Z', role: 'accent' },
+    { d: 'M20 38 L28 32 H128 V58 L120 64 M120 38 L128 32', role: 'accent' },
+    { d: 'M20 47 H120 M20 55.5 H120', role: 'soft' },
+    { d: 'M56 150 V110 A14 14 0 0 1 84 110 V150' },
+    { d: 'M70 96 V150 M66 128 h0.01 M74 128 h0.01', role: 'soft' },
+    { d: 'M34 102 H50 V130 H34 Z M90 102 H106 V130 H90 Z' },
+    { d: 'M42 102 V130 M34 116 H50 M98 102 V130 M90 116 H106', role: 'soft' },
+    { d: 'M28 78 H12 M14 78 v4 M24 78 v4 M10 82 H28 V96 H10 Z' },
+    { d: 'M50 150 L46 156 H94 L90 150', role: 'soft' },
+    { d: 'M2 156 H42 M98 156 H158', role: 'ambient', dashed: true },
   ],
 
   // The iron cage his bite broke open: the box seen from a corner, the far
@@ -756,29 +785,64 @@ export const eastBlueArt = {
     { d: 'M56 40 V142 H140 M30 160 L56 142', role: 'soft' },
     shadow(84, 176, 58),
   ],
-  // A unicycle and a sabre: the whole act in two objects.
+  // A unicycle and a sabre: the wheel turned a little, with the tyre's
+  // thickness on its far side, the spokes, the hub and the cranks, the saddle
+  // with its underside in shade, and the curved sabre leant behind it. He
+  // fights Zoro on it in episode 7 (chapter 16).
   'cabaji': [
-    { d: circle(66, 134, 38), role: 'accent' },
-    { d: circle(66, 134, 5), role: 'accent' },
-    { d: 'M40 120 L92 148 M40 148 L92 120 M66 96 V172', role: 'soft' },
-    { d: 'M62 130 L60 74 M72 130 L74 74' },
-    { d: 'M52 74 H84 q8 0 6 -8 H54 q-8 2 -2 8 Z' },
-    { d: 'M46 134 h-12 M86 134 h12' },
-    { d: 'M112 184 C130 146 142 100 146 46' },
-    { d: 'M102 180 C120 142 132 98 136 44' },
-    { d: 'M136 44 C140 40 144 42 146 46' },
-    { d: 'M100 178 L116 186' },
+    { d: 'M124 66 C121 106 112 142 98 176 C118 150 134 110 136 68' },
+    { d: 'M130 72 C128 106 120 138 106 164', role: 'soft' },
+    { d: 'M116 64 C118 58 140 60 142 67 C140 72 118 70 116 64 Z' },
+    { d: 'M126 62 L128 42 M134 63 L135 43 M128 42 C129 37 134 38 135 43' },
+    { d: 'M127.4 48 l7.4 0.8 M127 54 l7.6 0.8', role: 'soft' },
+    { d: ellipse(66, 130, 27, 38), role: 'accent' },
+    { d: 'M69 92 C104 93 104 167 69 168' },
+    { d: ellipse(66, 130, 21.5, 31) },
+    {
+      d: 'M70.5 130 L87.5 130 M69.2 134.2 L81.2 151.9 M66 136 L66 161 M62.8 134.2 L50.8 151.9 M61.5 130 L44.5 130 M62.8 125.8 L50.8 108.1 M66 124 L66 99 M69.2 125.8 L81.2 108.1',
+      role: 'soft',
+    },
+    { d: ellipse(66, 130, 4.5, 6) },
+    { d: 'M60 130 L57 84 M72 130 L69 84 M55 84 H71 M62 84 V68' },
+    {
+      d: 'M46 64 C46 56 60 54 70 58 L86 62 C90 64 88 68 84 68 L64 69 C52 71 46 69 46 64 Z',
+    },
+    { d: 'M47.4 67.6 C50 72.6 58 73.4 64 72.6 L84 71', role: 'soft' },
+    { d: 'M51 71 l1.2 2.4 M57 72.4 l0.8 2.4', role: 'ambient' },
+    { d: 'M66 130 L80 148 M76 149 h10 M66 130 L53 114 M49 113 h8' },
+    shadow(80, 176, 44),
   ],
 
-  // A spear planted upright beside the leather breastplate he wore to face the pirates.
+  // The leather armour he puts on to face the pirates alone: the chestplate
+  // standing empty, its neck open and dark inside, toggles down the front,
+  // the stitched band, the side that turns away in shade, and his spear laid
+  // in front of it. He faces Buggy in it in chapter 15 (episodes 6 and 7).
   'boodle': [
-    { d: 'M118 36 V186' },
-    { d: 'M118 14 L110 36 H126 Z', role: 'accent' },
-    { d: 'M34 96 Q58 86 82 96 L86 150 Q58 162 30 150 Z', role: 'accent' },
-    { d: 'M46 91 q12 12 24 0', role: 'soft' },
-    { d: 'M36 116 H80 M34 134 H84', role: 'soft' },
-    { d: 'M40 150 L36 176 M76 150 L80 176', role: 'ambient' },
-    shadow(80, 188, 50),
+    {
+      d: 'M54 63 L34 76 C46 82 48 94 40 104 C37 122 37 138 42 150 C62 160 94 160 112 150 C115 134 115 116 111 100 C104 92 104 80 109 72 L90 63',
+      role: 'accent',
+    },
+    { d: ellipse(72, 64, 18, 6) },
+    {
+      d: 'M82.4 60.2 L83.7 62.4 M76.7 59.2 L78.5 62.5 M71.4 59.1 L73.4 62.5 M66.4 59.4 L68.1 62.4 M61.7 60.3 L63 62.5',
+      role: 'ambient',
+    },
+    { d: 'M99 69 C101 100 101 130 99 156', role: 'soft' },
+    {
+      d: 'M101.4 91 L105.1 84.5 M101.3 103.1 L108.7 90.3 M101.3 115.2 L109.8 100.4 M101.3 127 L110.7 110.8 M101.3 139.1 L110.7 122.9 M103.4 147.5 L110.7 134.8',
+      role: 'ambient',
+    },
+    { d: 'M64 70 V156 M55.5 68 L39 78.6 M89 68.4 L104.6 74.6', role: 'soft' },
+    { d: 'M58 86 h12 M58 100 h12 M58 114 h12', role: 'soft' },
+    { d: 'M38.5 128 C58 137 92 137 113.5 128', role: 'soft' },
+    { d: 'M10 174 L118 162 M10 179 L118 167' },
+    { d: 'M118 160 V169 M123 159.6 V168.6' },
+    {
+      d: 'M123 160 C134 155 146 158 154 163 C146 168 134 170 123 168',
+      role: 'soft',
+    },
+    { d: 'M123 164 L152 163', role: 'soft' },
+    shadow(80, 188, 62),
   ],
   // A signpost on the slope above the shore, one board pointing each way.
   'syrup-village-arc': [
@@ -789,16 +853,32 @@ export const eastBlueArt = {
     { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
     ...SEA.slice(1),
   ],
-  // A slingshot, the band drawn taut around a star-shaped pellet. Kabuto is
-  // drawn from 274 and Kuro Kabuto from 517, in `eastBlueRedrawn`.
+  // His slingshot, the band drawn back with a lead ball in its pouch and a
+  // second ball on the ground: the fork with the thickness of its arms, the
+  // far arm in shade, the grip wrapped. Kabuto is drawn from 274 and Kuro
+  // Kabuto from 517, in `eastBlueRedrawn`.
   'usopp': [
-    { d: 'M80 176 V126' },
-    { d: 'M80 126 C78 100 62 92 56 70' },
-    { d: 'M80 126 C82 100 98 92 104 70' },
-    { d: 'M52 68 l8 4 M108 68 l-8 4' },
-    { d: 'M74 150 h12 M74 158 h12 M74 166 h12', role: 'ambient' },
-    { d: 'M56 70 Q80 116 104 70', role: 'accent' },
-    { d: star(80, 98, 9, 4), role: 'accent' },
+    {
+      d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+    },
+    { d: 'M76.5 134 V172 Q80 176 83.5 172 V134' },
+    {
+      d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+      role: 'soft',
+    },
+    {
+      d: 'M104.6 78 l7 -1 M102.6 88 l7.2 0.2 M99 97.6 l7.2 1.4 M94 106 l6.8 2.4',
+      role: 'ambient',
+    },
+    { d: 'M47.4 74 l3.4 1 M48.8 84 l3.6 1.2', role: 'soft' },
+    {
+      d: 'M52 70 C52 100 54 126 54 142 M108 70 C96 100 76 126 62 146 M52 142 C50 152 62 154 64 146',
+      role: 'accent',
+    },
+    { d: circle(57, 147, 4.5) },
+    { d: circle(108, 178, 4) },
+    { d: 'M106 176.4 q1 -1.4 2.6 -1.4', role: 'soft' },
+    shadow(84, 186, 30),
   ],
 
   // A mansion on a hill, its gate at the foot, a path down to the shore.
@@ -816,60 +896,91 @@ export const eastBlueArt = {
     ...SEA.slice(2),
   ],
 
-  // Her window in the mansion, set deep in the wall, the frame she listens
-  // at, with the branch of the tree outside it where Usopp sits to tell her
+  // Her window in the mansion, open: the wall turned a little, the depth of
+  // the jamb in shade, both casements swung out, the curtain drawn back to
+  // one side, the sill, and the branch outside where Usopp sits to tell her
   // his stories (chapter 24, episode 9).
   'kaya': [
-    { d: 'M40 150 V78 C40 44 120 44 120 78 V150', role: 'accent' },
-    { d: 'M54 144 V82 C54 58 114 56 120 80' },
-    { d: 'M40 78 L54 82 M40 150 L54 144' },
-    { d: 'M54 144 H120' },
+    { d: 'M48 56 L104 64 V132 L48 138 Z' },
+    { d: 'M48 56 L56 62 V132 M56 62 L104 68', role: 'soft' },
     {
-      d: 'M44 94 L52 86 M44 110 L52 102 M44 126 L52 118 M44 142 L52 134',
+      d: 'M48 70 l8 -4 M48 84 l8 -4 M48 98 l8 -4 M48 112 l8 -4 M48 126 l8 -4',
       role: 'ambient',
     },
-    { d: 'M86 144 V63', role: 'soft' },
-    { d: 'M54 104 H120', role: 'soft' },
-    { d: 'M28 150 H132 L124 160 H36 Z' },
-    { d: 'M36 160 V168 H124 V160' },
-    { d: 'M156 140 C148 128 138 118 126 112', role: 'ambient' },
+    { d: 'M48 56 L28 46 V146 L48 138' },
+    { d: 'M38 51 V142 M28 96 L48 97', role: 'soft' },
+    { d: 'M104 64 L120 58 V138 L104 132' },
+    { d: 'M112 61 V135 M104 98 L120 98', role: 'soft' },
     {
-      d: 'M146 126 C140 112 144 100 154 94 C158 108 154 120 146 126',
+      d: 'M58 64 C76 68 92 70 102 70 C92 76 82 90 78 108 C76 116 72 120 66 120 C70 126 68 130 62 132',
+      role: 'accent',
+    },
+    {
+      d: 'M66 68 C70 86 66 104 70 118 M76 69 C80 84 78 100 76 112',
+      role: 'soft',
+    },
+    { d: 'M40 138 L112 132 L118 136 L44 143 Z' },
+    { d: 'M44 143 V148 L118 141 V136', role: 'soft' },
+    {
+      d: 'M160 156 C148 155 138 158 126 166 M146 156.4 C148 148 150 144 154 140',
       role: 'ambient',
     },
     {
-      d: 'M136 118 C126 112 122 100 126 90 C134 96 138 106 136 118',
+      d: 'M134 160.6 C128 154 129 146 135 142 C138 149 138 155 134 160.6 Z M154 140 C148 136 148 128 152 122 C156 128 156 134 154 140 Z',
       role: 'ambient',
     },
-    shadow(80, 184, 56),
   ],
-  // A glove with five blades where the fingers should be.
+  // The Cat Claws: one black glove in shade, the fingers bent over the
+  // knuckles, a full-length blade from the tip of each finger and the thumb,
+  // and the cuff open below. He takes them out of a bag to cut Merry down in
+  // episode 12 (chapter 28).
   'kuro': [
-    { d: 'M62 112 L22 36 L32 32 L70 108 Z', role: 'accent' },
-    { d: 'M76 106 L52 20 L62 18 L84 104 Z', role: 'accent' },
-    { d: 'M90 104 L86 14 L96 14 L98 104 Z', role: 'accent' },
-    { d: 'M102 106 L120 20 L130 24 L110 108 Z' },
-    { d: 'M112 112 L142 42 L150 48 L120 116 Z' },
     {
-      d: 'M52 152 C44 132 50 116 64 112 L108 110 C122 112 126 128 120 146 C114 160 60 166 52 152 Z',
+      d: 'M45.3 115.7 Q22.8 99.7 3.7 87.8 Q20.2 104.2 42.7 120.3 M58.3 96.8 Q42.1 60.5 27.5 31.6 Q37.5 63 53.7 99.2 M72.6 91.5 Q68.3 52.1 63.4 20.1 Q63.2 53 67.4 92.5 M88.6 92.4 Q96.8 53.5 102 21.5 Q91.6 52.8 83.4 91.6 M102.3 99.1 Q122.1 64.7 137 35.9 Q117.4 62.5 97.7 96.9',
+      role: 'accent',
     },
-    { d: 'M58 154 q24 10 58 0', role: 'soft' },
-    shadow(84, 174, 40),
+    {
+      d: 'M50 104 C50 96 62 92 64 98 M64 98 C64 88 76 86 78 94 M78 94 C80 86 92 88 92 96 M92 96 C96 90 106 94 104 102',
+    },
+    { d: 'M50 104 C48 118 50 136 58 148 H100 C106 134 108 118 104 102' },
+    { d: 'M50 116 C42 114 38 118 40 124 C42 128 48 128 51 126', role: 'soft' },
+    {
+      d: 'M55.3 112.9 L59.8 105.1 M56.6 124.6 L67.9 104.9 M58 136.1 L76 104.9 M62.1 143.1 L84.1 104.9 M70.1 143.1 L92.1 105 M78.2 143.1 L100.2 105 M86.4 142.9 L100.3 118.9 M94.4 143 L98.2 136.5',
+      role: 'ambient',
+    },
+    {
+      d: 'M64 98 C66 104 66 112 64 120 M78 94 V118 M92 96 C90 104 90 112 92 120',
+      role: 'soft',
+    },
+    { d: 'M57 148 C64 153 94 153 101 148 M57 148 L56 166 M101 148 L102 166' },
+    { d: 'M56 166 C56 162 102 162 102 166 C102 171 56 171 56 166 Z' },
+    shadow(80, 182, 40),
   ],
-  // A hypnotist's ring on its string, and the heart-shaped glasses below.
+  // A hypnotist's ring mid-swing on its string, its thickness showing as it
+  // turns, and set down beside it the wide-brimmed hat he wears as captain,
+  // the crown in shade. He swings the ring at Luffy on the cliff in episode
+  // 10 (chapter 26).
   'jango': [
-    { d: 'M80 14 C86 40 74 60 80 82', role: 'soft' },
-    { d: circle(80, 100, 18), role: 'accent' },
-    { d: circle(80, 100, 12), role: 'accent' },
+    { d: 'M78 6 C88 22 98 36 106 48', role: 'soft' },
+    { d: ellipse(110, 76, 21, 25), role: 'accent' },
+    { d: ellipse(110, 76, 11, 14), role: 'accent' },
+    { d: 'M114 51.4 C128 54 136 64 136 78 C136 92 128 100 114 100.6' },
     {
-      d: 'M46 168 C30 156 28 142 36 136 C42 132 46 138 46 142 C46 138 50 132 56 136 C64 142 62 156 46 168 Z',
+      d: 'M56 34 C58 56 68 76 84 90 M66 30 C68 48 76 64 88 76',
+      role: 'ambient',
     },
     {
-      d: 'M114 168 C98 156 96 142 104 136 C110 132 114 138 114 142 C114 138 118 132 124 136 C132 142 130 156 114 168 Z',
+      d: 'M22 154 A37 12 0 0 1 40 143.7 M76 143.3 A37 12 0 0 1 96 154 A37 12 0 0 1 22 154',
     },
-    { d: 'M62 146 H98' },
-    { d: 'M30 142 L14 134 M130 142 L146 134' },
-    shadow(80, 182, 50),
+    { d: 'M28 158.6 C40 163.4 78 163.4 90 158.6', role: 'soft' },
+    { d: 'M40 143.7 C40 124 44 112 58 112 C72 112 76 124 76 143.3' },
+    { d: 'M40.6 138 C48 142 68 142 75.4 138', role: 'soft' },
+    { d: 'M40.2 132 C48 136 68 136 75.8 132', role: 'soft' },
+    {
+      d: 'M64.3 130.2 L69.9 120.5 M64.3 141.2 L74.1 124.3 M70.5 141.5 L75.2 133.3',
+      role: 'ambient',
+    },
+    shadow(60, 176, 40),
   ],
   // The anniversary present he hands over at 12: a box tied with a ribbon.
   'merry': [
@@ -884,19 +995,40 @@ export const eastBlueArt = {
     shadow(80, 182, 50),
   ],
 
-  // Three wooden swords of three heights, planted point down in a row.
+  // Two of their wooden swords lying side by side: flat blades with their
+  // thickness, a stub of a guard, nicks and grain in the wood, and one grip
+  // wrapped. Ninjin and Piiman hold them up at Usopp in episode 9 (chapter
+  // 23).
   'ninjin-piiman-and-tamanegi': [
-    { d: 'M41 86 V164 L46 172 L51 164 V86', role: 'accent' },
-    { d: 'M75 62 V164 L80 172 L85 164 V62', role: 'accent' },
-    { d: 'M109 98 V164 L114 172 L119 164 V98', role: 'accent' },
-    { d: 'M34 86 H58 M68 62 H92 M102 98 H126' },
-    { d: 'M43 86 V66 H49 V86 M77 62 V42 H83 V62 M111 98 V78 H117 V98' },
+    { d: 'M58.9 141.4 L108.5 54.3 L108 42 L97.2 47.8 L47.6 135' },
+    { d: 'M47.6 135 l-1.4 -2.4 L95.8 45.4 L106.8 41.3', role: 'ambient' },
+    { d: 'M61.1 149.6 L64.1 144.4 L42.4 132 L39.4 137.2 Z' },
     {
-      d: `${circle(46, 62, 4)} ${circle(80, 38, 4)} ${circle(114, 74, 4)}`,
+      d: 'M53.7 145.3 L37.4 173.9 M46.9 141.5 L30.6 170.1 M37.4 173.9 L30.6 170.1',
+    },
+    {
+      d: 'M41.5 166.8 L35.9 160.8 M44.7 161.1 L39.1 155.1 M48 155.3 L42.4 149.4 M51.2 149.6 L45.6 143.7',
       role: 'soft',
     },
-    { d: 'M46 98 V150 M80 74 V150 M114 110 V150', role: 'soft' },
-    shadow(80, 176, 62),
+    {
+      d: 'M58.8 132.1 L99.5 60.6 M76.3 110.9 l-0.7 -2.7 l1.2 -2.1 M89.7 87.4 l-0.7 -2.7 l1.2 -2.1',
+      role: 'soft',
+    },
+    { d: 'M91.6 153.4 L134.1 84.4 L134 74 L124.7 78.6 L82.2 147.6' },
+    { d: 'M82.2 147.6 l-1.3 -2.5 L123.4 76.2 L132.8 73.3', role: 'ambient' },
+    { d: 'M93.6 161.6 L96.7 156.5 L77.1 144.5 L74 149.6 Z' },
+    {
+      d: 'M86.6 157.3 L72.8 179.7 M81 153.9 L67.2 176.3 M72.8 179.7 L67.2 176.3',
+    },
+    {
+      d: 'M76.3 174.1 L71.9 168.6 M79 169.6 L74.7 164.1 M81.8 165.2 L77.4 159.7 M84.5 160.7 L80.2 155.2',
+      role: 'accent',
+    },
+    {
+      d: 'M92.7 144.6 L125.7 91 M106.5 129.2 l-0.7 -2.8 l1.3 -2 M117.9 110.6 l-0.7 -2.8 l1.3 -2',
+      role: 'soft',
+    },
+    shadow(84, 188, 50),
   ],
 
   // A giant paw print stamped into the ground, cracks running out from it.
