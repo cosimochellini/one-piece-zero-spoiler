@@ -906,7 +906,7 @@ export const eastBlueArt = {
     { d: 'M40 138 L112 132 L118 136 L44 143 Z' },
     { d: 'M44 143 V148 L118 141 V136', role: 'soft' },
     {
-      d: 'M160 156 C148 155 138 158 126 166 M146 156.4 C148 148 150 144 154 140',
+      d: 'M160 156 C146 155 132 159 118 170 M146 156.4 C148 148 150 144 154 140',
       role: 'ambient',
     },
     {
@@ -940,31 +940,20 @@ export const eastBlueArt = {
     { d: 'M56 166 C56 162 102 162 102 166 C102 171 56 171 56 166 Z' },
     shadow(80, 182, 40),
   ],
-  // A hypnotist's ring mid-swing on its string, its thickness showing as it
-  // turns, and set down beside it the wide-brimmed hat he wears as captain,
-  // the crown in shade. He swings the ring at Luffy on the cliff in episode
-  // 10 (chapter 26).
+  // A hypnotist's ring on its string, and the heart-shaped glasses below.
   'jango': [
-    { d: 'M78 6 C88 22 98 36 106 48', role: 'soft' },
-    { d: ellipse(110, 76, 21, 25), role: 'accent' },
-    { d: ellipse(110, 76, 11, 14), role: 'accent' },
-    { d: 'M114 51.4 C128 54 136 64 136 78 C136 92 128 100 114 100.6' },
+    { d: 'M80 14 C86 40 74 60 80 82', role: 'soft' },
+    { d: circle(80, 100, 18), role: 'accent' },
+    { d: circle(80, 100, 12), role: 'accent' },
     {
-      d: 'M56 34 C58 56 68 76 84 90 M66 30 C68 48 76 64 88 76',
-      role: 'ambient',
+      d: 'M46 168 C30 156 28 142 36 136 C42 132 46 138 46 142 C46 138 50 132 56 136 C64 142 62 156 46 168 Z',
     },
     {
-      d: 'M22 154 A37 12 0 0 1 40 143.7 M76 143.3 A37 12 0 0 1 96 154 A37 12 0 0 1 22 154',
+      d: 'M114 168 C98 156 96 142 104 136 C110 132 114 138 114 142 C114 138 118 132 124 136 C132 142 130 156 114 168 Z',
     },
-    { d: 'M28 158.6 C40 163.4 78 163.4 90 158.6', role: 'soft' },
-    { d: 'M40 143.7 C40 124 44 112 58 112 C72 112 76 124 76 143.3' },
-    { d: 'M40.6 138 C48 142 68 142 75.4 138', role: 'soft' },
-    { d: 'M40.2 132 C48 136 68 136 75.8 132', role: 'soft' },
-    {
-      d: 'M64.3 130.2 L69.9 120.5 M64.3 141.2 L74.1 124.3 M70.5 141.5 L75.2 133.3',
-      role: 'ambient',
-    },
-    shadow(60, 176, 40),
+    { d: 'M62 146 H98' },
+    { d: 'M30 142 L14 134 M130 142 L146 134' },
+    shadow(80, 182, 50),
   ],
   // The anniversary present he hands over at 12: a box tied with a ribbon.
   'merry': [
@@ -979,40 +968,19 @@ export const eastBlueArt = {
     shadow(80, 182, 50),
   ],
 
-  // Two of their wooden swords leaning side by side: flat blades with their
-  // thickness, a stub of a guard, nicks and grain in the wood, and one grip
-  // wrapped. Ninjin and Piiman hold them up at Usopp in episode 9 (chapter
-  // 23).
+  // Three wooden swords of three heights, planted point down in a row.
   'ninjin-piiman-and-tamanegi': [
-    { d: 'M58.9 141.4 L108.5 54.3 L108 42 L97.2 47.8 L47.6 135' },
-    { d: 'M47.6 135 l-1.4 -2.4 L95.8 45.4 L106.8 41.3', role: 'ambient' },
-    { d: 'M61.1 149.6 L64.1 144.4 L42.4 132 L39.4 137.2 Z' },
+    { d: 'M41 86 V164 L46 172 L51 164 V86', role: 'accent' },
+    { d: 'M75 62 V164 L80 172 L85 164 V62', role: 'accent' },
+    { d: 'M109 98 V164 L114 172 L119 164 V98', role: 'accent' },
+    { d: 'M34 86 H58 M68 62 H92 M102 98 H126' },
+    { d: 'M43 86 V66 H49 V86 M77 62 V42 H83 V62 M111 98 V78 H117 V98' },
     {
-      d: 'M53.7 145.3 L37.4 173.9 M46.9 141.5 L30.6 170.1 M37.4 173.9 L30.6 170.1',
-    },
-    {
-      d: 'M41.5 166.8 L35.9 160.8 M44.7 161.1 L39.1 155.1 M48 155.3 L42.4 149.4 M51.2 149.6 L45.6 143.7',
+      d: `${circle(46, 62, 4)} ${circle(80, 38, 4)} ${circle(114, 74, 4)}`,
       role: 'soft',
     },
-    {
-      d: 'M58.8 132.1 L99.5 60.6 M76.3 110.9 l-0.7 -2.7 l1.2 -2.1 M89.7 87.4 l-0.7 -2.7 l1.2 -2.1',
-      role: 'soft',
-    },
-    { d: 'M91.6 153.4 L134.1 84.4 L134 74 L124.7 78.6 L82.2 147.6' },
-    { d: 'M82.2 147.6 l-1.3 -2.5 L123.4 76.2 L132.8 73.3', role: 'ambient' },
-    { d: 'M93.6 161.6 L96.7 156.5 L77.1 144.5 L74 149.6 Z' },
-    {
-      d: 'M86.6 157.3 L72.8 179.7 M81 153.9 L67.2 176.3 M72.8 179.7 L67.2 176.3',
-    },
-    {
-      d: 'M76.3 174.1 L71.9 168.6 M79 169.6 L74.7 164.1 M81.8 165.2 L77.4 159.7 M84.5 160.7 L80.2 155.2',
-      role: 'accent',
-    },
-    {
-      d: 'M92.7 144.6 L125.7 91 M106.5 129.2 l-0.7 -2.8 l1.3 -2 M117.9 110.6 l-0.7 -2.8 l1.3 -2',
-      role: 'soft',
-    },
-    shadow(84, 188, 50),
+    { d: 'M46 98 V150 M80 74 V150 M114 110 V150', role: 'soft' },
+    shadow(80, 176, 62),
   ],
 
   // A giant paw print stamped into the ground, cracks running out from it.
