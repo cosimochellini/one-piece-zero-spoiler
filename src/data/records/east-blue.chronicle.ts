@@ -1212,11 +1212,12 @@ export const eastBlueChronicles = {
     },
     {
       episode: 794,
+      chapter: 837,
       value: {
         title: { it: 'Le cure di una sorella', en: 'A sister’s care' },
         body: {
-          it: 'Sanji è tornato al castello del Regno di Germa dopo anni lontano, dove suo padre [[vinsmoke-judge|Judge]] lo sfida a duello per aver rotto la faccia al fratello [[vinsmoke-yonji|Yonji]]. Sanji rifiuta di colpire con le mani, i suoi attrezzi da cuoco, e combatte solo a calci; Judge lo batte facendosi scudo con un soldato e chiudendo il conto con un fendente elettrico. A terra, ripensa alla cella buia in cui lo chiudeva da bambino e si rialza senza un briciolo di perdono. Dopo, [[vinsmoke-reiju|Reiju]] gli medica le ferite in silenzio e loda la sua forza; Sanji spera solo di arrivare in fretta al matrimonio e andarsene per sempre.',
-          en: 'Sanji is back in his family’s castle after years away, and his father [[vinsmoke-judge|Judge]] challenges him to a duel over the face he smashed in on his brother [[vinsmoke-yonji|Yonji]]. Sanji refuses to fight with the hands he cooks with, using only kicks; Judge beats him by hiding behind one of his own soldiers and finishing him off with an electric strike. On the ground, Sanji remembers the dark cell Judge once locked him in as a child, and gets up without a scrap of forgiveness. Afterward [[vinsmoke-reiju|Reiju]] treats his wounds in silence, praising his strength; Sanji only hopes to get through the wedding fast and leave for good.',
+          it: 'Sanji è tornato al castello del Regno di Germa dopo anni lontano, dove suo padre [[vinsmoke-judge|Judge]] lo sfida a duello per aver rotto la faccia al fratello [[vinsmoke-yonji|Yonji]]. Sanji rifiuta di colpire con le mani, i suoi attrezzi da cuoco, e combatte solo a calci; Judge lo batte facendosi scudo con un soldato e chiudendo il conto con un fendente elettrico. Si rialza da terra senza un briciolo di perdono. Dopo, [[vinsmoke-reiju|Reiju]] gli medica le ferite in silenzio e loda la sua forza; Sanji spera solo di arrivare in fretta al matrimonio e andarsene per sempre.',
+          en: 'Sanji is back in his family’s castle after years away, and his father [[vinsmoke-judge|Judge]] challenges him to a duel over the face he smashed in on his brother [[vinsmoke-yonji|Yonji]]. Sanji refuses to fight with the hands he cooks with, using only kicks; Judge beats him by hiding behind one of his own soldiers and finishing him off with an electric strike. Sanji gets up from the ground without a scrap of forgiveness. Afterward [[vinsmoke-reiju|Reiju]] treats his wounds in silence, praising his strength; Sanji only hopes to get through the wedding fast and leave for good.',
         },
       },
     },
@@ -1918,6 +1919,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 8,
+      chapter: 21,
       value: {
         title: { it: 'Un cane in mezzo alla strada', en: 'A dog in the road' },
         body: {
@@ -1991,6 +1993,7 @@ export const eastBlueChronicles = {
   'ninjin-piiman-and-tamanegi': [
     {
       episode: 9,
+      chapter: 24,
       value: {
         title: {
           it: 'Un salvataggio in trattoria',

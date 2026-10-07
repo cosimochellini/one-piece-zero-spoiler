@@ -129,6 +129,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 535,
+      chapter: 620,
       value: {
         title: { it: 'Il fratello di Tom', en: "Tom's brother" },
         body: {
@@ -188,6 +189,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 1068,
+      chapter: 1041,
       value: {
         title: { it: 'Un braccio oltre il bordo', en: 'An arm over the edge' },
         body: {
@@ -468,6 +470,7 @@ export const waterSevenChronicles = {
   'itomimizu': [
     {
       episode: 209,
+      chapter: 308,
       value: {
         title: { it: 'Dal dorso di un passero', en: 'From a sparrow’s back' },
         body: {
@@ -500,6 +503,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 211,
+      chapter: 315,
       value: {
         title: { it: 'Il pallone è Sanji', en: 'Sanji is the ball' },
         body: {
@@ -510,6 +514,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 212,
+      chapter: 315,
       value: {
         title: {
           it: 'Un Monster Burger mal riuscito',
@@ -615,6 +620,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 244,
+      chapter: 346,
       value: {
         title: { it: 'Soltanto un piccione', en: 'Only a pigeon' },
         body: {
@@ -647,6 +653,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 243,
+      chapter: 345,
       value: {
         title: { it: 'La guardia di notte', en: 'The night watch' },
         body: {
@@ -717,6 +724,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 243,
+      chapter: 345,
       value: {
         title: {
           it: 'Un martello contro il ferro',
@@ -730,6 +738,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 266,
+      chapter: 385,
       value: {
         title: { it: 'Un gigante inchiodato', en: 'Pinning a giant' },
         body: {
@@ -754,6 +763,7 @@ export const waterSevenChronicles = {
   'wanze': [
     {
       episode: 258,
+      chapter: 369,
       value: {
         title: { it: 'Noodle dal naso', en: 'Noodles from the nose' },
         body: {
@@ -821,6 +831,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 1116,
+      chapter: 1082,
       value: {
         title: { it: 'Per una taglia', en: 'For a bounty' },
         body: {
@@ -875,6 +886,7 @@ export const waterSevenChronicles = {
   'baskerville': [
     {
       episode: 267,
+      chapter: 385,
       value: {
         title: { it: 'Al comando', en: 'In command' },
         body: {
@@ -895,6 +907,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 284,
+      chapter: 399,
       value: {
         title: { it: 'Tre in uno', en: 'Three in one' },
         body: {
@@ -907,6 +920,7 @@ export const waterSevenChronicles = {
   'clover': [
     {
       episode: 275,
+      chapter: 392,
       value: {
         title: {
           it: 'La bambina della biblioteca',
@@ -933,6 +947,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 278,
+      chapter: 398,
       value: {
         title: { it: 'I libri nel lago', en: 'Books in the lake' },
         body: {
@@ -955,6 +970,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 278,
+      chapter: 397,
       value: {
         title: { it: 'La lumaca d’oro', en: 'The golden snail' },
         body: {
@@ -965,6 +981,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 301,
+      chapter: 419,
       value: {
         title: { it: 'Figlio di suo padre', en: 'His father’s son' },
         body: {
@@ -987,6 +1004,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 278,
+      chapter: 398,
       value: {
         title: { it: 'Vivi, Robin', en: 'Live, Robin' },
         body: {
@@ -1012,6 +1030,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 306,
+      chapter: 423,
       value: {
         title: { it: 'L’elefante si arrende', en: 'The elephant gives up' },
         body: {
@@ -1034,6 +1053,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 461,
+      chapter: 552,
       value: {
         title: {
           it: 'Il primo amico di Ace a bordo',

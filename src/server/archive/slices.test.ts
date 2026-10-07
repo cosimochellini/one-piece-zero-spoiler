@@ -2,7 +2,7 @@ import { byNumber } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { DRAWINGS, REDRAWINGS } from '~/data/art'
-import { chapterAtEpisode, episodeAtChapter } from '~/data/chapters'
+import { chapterAtEpisode } from '~/data/chapters'
 import { arcs, characters } from '~/data/characters'
 import { entities, getEntity } from '~/data/entities'
 import { ARC_LEADS } from '~/data/leads'
@@ -288,8 +288,11 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('tells the home page nothing the reader has not reached', () => {
-    // Each bookmark with the episode it reaches, worked out by hand rather
-    // than through `reveal`, so the cut is checked against something else.
+    // Each bookmark with how far it reaches in its own unit, worked out by
+    // hand rather than through `reveal`, so the cut is checked against
+    // something else. A chapter reader is held to chapters, not to the
+    // episode the table says the chapter reaches: a story that declares its
+    // chapter is told by then even when its episode is further on.
     const marks: [NonNullable<Bookmark>, number][] = [
       [ep(1), 1],
       [ep(60), 60],
@@ -297,15 +300,17 @@ describe('the slice of the archive a page is given', () => {
       [ep(1100), 1100],
       [ep(1300), 1300],
       [{ mode: 'season', season: 4, episode: 38 }, 130],
-      [{ mode: 'chapter', chapter: 1 }, episodeAtChapter(1)],
-      [{ mode: 'chapter', chapter: 155 }, episodeAtChapter(155)],
-      [{ mode: 'chapter', chapter: 1000 }, episodeAtChapter(1000)],
+      [{ mode: 'chapter', chapter: 1 }, 1],
+      [{ mode: 'chapter', chapter: 155 }, 155],
+      [{ mode: 'chapter', chapter: 1000 }, 1000],
     ]
 
     for (const [bookmark, reached] of marks) {
       const home = homePage(bookmark, 'en')
       const at = reveal(bookmark)
-      const episodes = home.stories.map((story) => story.revealedAtEpisode)
+      const unit =
+        bookmark.mode === 'chapter' ? 'revealedAtChapter' : 'revealedAtEpisode'
+      const reaches = home.stories.map((story) => story[unit])
       // Most recent first, and inside the arc, in the reader's own unit.
       const marked = home.stories.map((story) => at.threshold(story))
 
@@ -323,7 +328,7 @@ describe('the slice of the archive a page is given', () => {
           marked.length > 0 && marked.every((mark) => mark < start)
         : marked.every((mark) => mark >= start)
 
-      expect(episodes.every((episode) => episode <= reached)).toBe(true)
+      expect(reaches.every((gate) => gate <= reached)).toBe(true)
       expect(inside).toBe(true)
     }
   })

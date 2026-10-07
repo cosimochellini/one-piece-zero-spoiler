@@ -481,11 +481,12 @@ export const skypieaChronicles = {
     },
     {
       episode: 207,
+      chapter: 303,
       value: {
         title: { it: 'La sua stessa lama', en: 'His own blade' },
         body: {
-          it: 'Quando la ciurma di Cappello di paglia è ormai salita in cielo, [[donquixote-doflamingo|Do Flamingo]] si presenta a Mock Town e si appollaia su una colonna sopra i Pirati di Bellamy. Hanno perso contro [[monkey-d-luffy|Rufy]], ed è venuto per questo. [[bellamy|Bellamy]] implora un’altra possibilità. Do Flamingo decide che la ciurma non gli serve più e con i suoi fili muove il braccio di Cirkeys al posto suo: Cirkeys può solo guardare il proprio coltello abbattersi sul suo capitano.',
-          en: 'With the Straw Hats gone up to the sky, [[donquixote-doflamingo|Doflamingo]] turns up in Mock Town and perches on a column above the Bellamy Pirates. They have lost to [[monkey-d-luffy|Luffy]], and that is what he has come about. [[bellamy|Bellamy]] begs for another chance. Doflamingo decides the crew is no use to him any more, and with his strings he moves Sarquiss’s arm for him: Sarquiss can only watch his own knife come down on his captain.',
+          it: 'Quando la ciurma di Cappello di paglia è ormai salita in cielo, [[donquixote-doflamingo|Do Flamingo]] si presenta a Mock Town e si appollaia su una colonna sopra i Pirati di Bellamy. Hanno perso contro [[monkey-d-luffy|Rufy]], ed è venuto per questo. [[bellamy|Bellamy]] implora un’altra possibilità. Do Flamingo decide che la ciurma non gli serve più e con un movimento delle dita muove il braccio di Cirkeys al posto suo: Cirkeys può solo guardare il proprio coltello abbattersi sul suo capitano.',
+          en: 'With the Straw Hats gone up to the sky, [[donquixote-doflamingo|Doflamingo]] turns up in Mock Town and perches on a column above the Bellamy Pirates. They have lost to [[monkey-d-luffy|Luffy]], and that is what he has come about. [[bellamy|Bellamy]] begs for another chance. Doflamingo decides the crew is no use to him any more, and with a twitch of his fingers he moves Sarquiss’s arm for him: Sarquiss can only watch his own knife come down on his captain.',
         },
       },
     },
@@ -506,6 +507,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 1109,
+      chapter: 1079,
       value: {
         title: { it: 'Notizia di un attacco', en: 'Word of an attack' },
         body: {
@@ -538,6 +540,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 168,
+      chapter: 255,
       value: {
         title: { it: 'Morsi per i maleducati', en: 'Bites for the rude' },
         body: {
@@ -560,6 +563,7 @@ export const skypieaChronicles = {
   'su': [
     {
       episode: 154,
+      chapter: 240,
       value: {
         title: { it: 'Una volpe sulla spiaggia', en: 'A fox on the beach' },
         body: {
@@ -580,6 +584,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 179,
+      chapter: 272,
       value: {
         title: { it: 'Di guardia', en: 'Left on watch' },
         body: {
@@ -590,6 +595,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 185,
+      chapter: 283,
       value: {
         title: {
           it: 'Nessuno ascolta una volpe',
@@ -605,6 +611,7 @@ export const skypieaChronicles = {
   'mckinley': [
     {
       episode: 156,
+      chapter: 242,
       value: {
         title: { it: 'Multati per tutto', en: 'Fined for everything' },
         body: {
@@ -640,6 +647,7 @@ export const skypieaChronicles = {
   'yama': [
     {
       episode: 172,
+      chapter: 280,
       value: {
         title: { it: 'Comandante, non soldato', en: 'Commander, not soldier' },
         body: {
@@ -691,6 +699,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 175,
+      chapter: 267,
       value: {
         title: {
           it: 'Il cane che aspetta un ordine',
@@ -717,6 +726,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 179,
+      chapter: 272,
       value: {
         title: {
           it: 'Un ordine dall’uomo sbagliato',
@@ -745,6 +755,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 189,
+      chapter: 293,
       value: {
         title: {
           it: 'Una campana che arrivi fino a lui',
@@ -758,6 +769,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 193,
+      chapter: 300,
       value: {
         title: {
           it: 'Fra i feriti non ci sono parti',
@@ -771,6 +783,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 195,
+      chapter: 302,
       value: {
         title: { it: 'Un dovere già compiuto', en: 'A duty already done' },
         body: {
@@ -821,6 +834,7 @@ export const skypieaChronicles = {
   'mousse': [
     {
       episode: 187,
+      chapter: 292,
       value: {
         title: { it: 'L’offerta sull’altare', en: 'The offering on the altar' },
         body: {
@@ -831,6 +845,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 188,
+      chapter: 292,
       value: {
         title: { it: 'Sua figlia', en: 'His daughter' },
         body: {
@@ -841,6 +856,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 189,
+      chapter: 292,
       value: {
         title: {
           it: 'Il migliore amico che abbia mai avuto',
@@ -869,6 +885,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 191,
+      chapter: 296,
       value: {
         title: { it: 'Un sogno della campana', en: 'A dream of the bell' },
         body: {
@@ -879,6 +896,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 194,
+      chapter: 301,
       value: {
         title: { it: 'Danze fino all’alba', en: 'Dancing all night' },
         body: {

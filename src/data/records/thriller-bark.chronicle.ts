@@ -18,6 +18,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 362,
+      chapter: 467,
       value: {
         title: { it: 'L’ombra che torna a casa', en: 'The shadow comes home' },
         body: {
@@ -156,6 +157,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 998,
+      chapter: 989,
       value: {
         title: { it: 'Zeus tagliato in due', en: 'Zeus cut in two' },
         body: {
@@ -182,6 +184,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 350,
+      chapter: 456,
       value: {
         title: {
           it: 'Re dei Pirati senza alzare un dito',
@@ -195,6 +198,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 371,
+      chapter: 477,
       value: {
         title: { it: 'Kage Kakumei', en: 'Kage Kakumei' },
         body: {
@@ -205,6 +209,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 374,
+      chapter: 482,
       value: {
         title: {
           it: 'Mille ombre, un solo pugno',
@@ -218,6 +223,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 468,
+      chapter: 559,
       value: {
         title: { it: 'Un solo colpo di Jinbe', en: 'One blow from Jinbe' },
         body: {
@@ -228,6 +234,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 1156,
+      chapter: 1126,
       value: {
         title: { it: 'Libero da Hachinosu', en: 'Free from Hachinosu' },
         body: {
@@ -250,6 +257,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 340,
+      chapter: 452,
       value: {
         title: {
           it: 'La carrozza nel cimitero',
@@ -263,6 +271,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 341,
+      chapter: 447,
       value: {
         title: {
           it: 'Appeso al lampadario',
@@ -301,6 +310,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 341,
+      chapter: 447,
       value: {
         title: { it: 'Addomesticato con un pugno', en: 'Tamed with a punch' },
         body: {
@@ -323,6 +333,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 344,
+      chapter: 450,
       value: {
         title: { it: 'Una guida per la villa', en: 'A guide to the mansion' },
         body: {
@@ -345,6 +356,7 @@ export const thrillerBarkChronicles = {
   'kumashi': [
     {
       episode: 345,
+      chapter: 462,
       value: {
         title: { it: 'Zitto, Kumacy', en: 'Don’t talk, Kumashi' },
         body: {
@@ -355,6 +367,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 349,
+      chapter: 455,
       value: {
         title: {
           it: 'Tre clandestini nell’orso',
@@ -368,6 +381,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 360,
+      chapter: 465,
       value: {
         title: { it: 'Sale in bocca', en: 'Salt in the mouth' },
         body: {
@@ -393,6 +407,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 424,
+      chapter: 527,
       value: {
         title: { it: 'Il segno sul bracciale', en: 'The mark on the armband' },
         body: {
@@ -462,6 +477,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 373,
+      chapter: 481,
       value: {
         title: {
           it: 'L’ombra restituita al padrone',
@@ -492,6 +508,7 @@ export const thrillerBarkChronicles = {
   'risky-brothers': [
     {
       episode: 370,
+      chapter: 476,
       value: {
         title: {
           it: 'Cento ombre in un corpo solo',
@@ -505,6 +522,7 @@ export const thrillerBarkChronicles = {
     },
     {
       episode: 378,
+      chapter: 486,
       value: {
         title: {
           it: 'Una storia da tenere per sé',
