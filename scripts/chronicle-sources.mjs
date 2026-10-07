@@ -1344,9 +1344,9 @@ export const CHRONICLE_SOURCES = {
       source: 'https://onepiece.fandom.com/wiki/Episode_52',
       note: 'On the Loguetown execution platform where Gold Roger died, Cabaji pins Luffy in stocks and Buggy raises his sword to behead him; lightning strikes the platform in that instant.',
     },
-    423: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_423',
-      note: 'Corrected after review from 425 to 423: episode 423 itself is titled "Reunion in Hell!? The User of the Bara Bara No Mi!" and its own Long Summary has Luffy (undercover to save Ace) running into Buggy on Level 1, Buggy’s surprise blowing Luffy’s cover, and the two deciding to fight through together — by 425 they are already into Level 2, so the reunion itself is known by the end of 423.',
+    425: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_425',
+      note: 'Buggy and Luffy meet on Level 1 in episode 423, but the story goes on to what later episodes tell: Captain John’s treasure and Buggy’s capture are the episode-424 flashback ("In a flashback, Buggy had walked through a cave supposedly containing Captain John’s treasure"), and the cells he unlocks are on Level 2 in episode 425 ("Buggy manages to unlock several of the prisoner cells", ch. 528). Re-dated from 423 to 425 in the #217 review (PR #399), so the story is not told before its last event.',
     },
     489: {
       source: 'https://onepiece.fandom.com/wiki/Episode_489',

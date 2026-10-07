@@ -91,6 +91,18 @@ const MAGNET: Stroke[] = [
   { d: 'M56 44 q24 -12 48 0', role: 'ambient', dashed: true },
 ]
 
+/** Senriku's slant, the muzzle up to the right. */
+const SENRIKU = 'rotate(-30 80 112)'
+
+/** Devon's pearls, drawn a little larger and higher in the box. */
+const PEARLS = 'translate(80 104) scale(1.15) translate(-80 -136)'
+
+/**
+ * Marigold's coil: a flat spiral drawn round, then squashed into the floor it
+ * lies on.
+ */
+const MARIGOLD_COIL = 'translate(12 142) scale(1 0.5)'
+
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
   // His white fur hat seen from the front and a little above, the fur rim
@@ -680,40 +692,79 @@ export const summitWarArt = {
     shadow(80, 176, 66),
   ],
 
-  // A glass bubble helmet set down on a cushion.
+  // His gold pistol on its side: the round barrel in his colour, the muzzle
+  // to the left with the smoke still curling off it, the frame in
+  // three-quarters with its far side hatched, the raked grip hatched for its
+  // dark wood. He shoots Hatchan with it in episode 396.
   'saint-charloss': [
-    { d: circle(80, 92, 40), role: 'accent' },
-    { d: 'M54 68 q10 -10 22 -12', role: 'accent' },
-    { d: 'M56 126 h48 v12 h-48z' },
-    { d: 'M46 138 h68 l10 22 h-88z' },
-    { d: 'M36 160 h88', role: 'soft' },
-    { d: 'M36 160 l-6 8 M124 160 l6 8' },
-    shadow(80, 178, 50),
-  ],
-
-  // A pair of spectacles with the light coming straight through them.
-  'borsalino': [
-    { d: circle(56, 92, 22) },
-    { d: circle(112, 92, 22) },
-    { d: 'M78 92 q8 -8 16 0' },
-    { d: 'M34 86 L20 80 M134 86 L148 80' },
-    { d: 'M44 112 L26 186 M68 112 L84 186', role: 'accent' },
-    { d: 'M100 112 L84 186 M124 112 L142 186', role: 'accent' },
-    { d: 'M30 150 h104', role: 'ambient', dashed: true },
-  ],
-
-  // A broadaxe standing in a wrestler's belt.
-  'sentomaru': [
-    { d: 'M76 56 V180 h8 V56z' },
+    { d: `${ellipse(26, 100, 4, 9)} M26 91 H100 M26 109 H92`, role: 'accent' },
+    { d: 'M24 98 h4', role: 'soft' },
+    { d: 'M36 91 v-4 h6 v4' },
+    { d: 'M92 109 H128 V84 H100 V91' },
+    { d: 'M100 84 L108 78 H136 L128 84 M128 109 L136 103 V78' },
+    { d: 'M130 92 l4 -3 M130 100 l4 -3', role: 'ambient' },
+    { d: 'M128 80 l6 -8 l5 3 l-4 7', role: 'soft' },
+    { d: 'M104 109 L112 154 H134 L128 109' },
+    { d: 'M114 124 l12 -5 M116 136 l13 -5 M118 148 l13 -5', role: 'ambient' },
+    { d: 'M70 109 C68 130 92 132 100 116' },
+    { d: 'M84 109 c2 7 0 11 -4 13', role: 'soft' },
     {
-      d: 'M84 62 C110 62 126 78 128 96 C126 116 110 128 84 128z',
+      d: 'M20 92 C10 86 16 76 22 72 C28 68 26 58 18 54 C12 50 16 42 22 40',
+      role: 'soft',
+    },
+    shadow(82, 166, 58),
+  ],
+
+  // A mangrove broken by his light: the beam coming straight down from the
+  // top left in his colour, bursting where it strikes, the stump splintered
+  // across on its arching roots with its shaded side hatched, and the top of
+  // the trunk toppling away, its cut end seen. He fells one with a beam in
+  // episode 401.
+  'borsalino': [
+    { d: 'M2 14 L54 86 M12 8 L64 80', role: 'accent' },
+    {
+      d: 'M46 74 l-10 -2 M70 70 l4 -10 M44 94 l-10 4 M74 88 l8 4',
       role: 'accent',
     },
-    { d: 'M84 76 C102 76 112 86 112 96', role: 'accent' },
-    { d: 'M56 140 h48 v14 h-48z' },
-    { d: 'M56 147 h48', role: 'soft' },
-    { d: 'M62 154 v16 M76 154 v16 M90 154 v16 M104 154 v16' },
-    shadow(80, 190, 30),
+    { d: 'M56 144 C58 126 58 108 56 90 M104 144 C102 126 102 108 104 94' },
+    { d: 'M56 90 l7 7 l5 -7 l7 8 l6 -6 l6 7 l6 -5 l11 0', role: 'soft' },
+    {
+      d: 'M56 144 C46 132 32 136 24 152 M104 144 C114 132 128 136 136 152 M70 146 C72 136 88 136 90 146 M70 146 L62 152 M90 146 L98 152',
+    },
+    { d: 'M66 104 v22 M78 110 v26', role: 'soft' },
+    { d: 'M92 136 l8 -8 M92 120 l8 -8 M92 104 l8 -8', role: 'ambient' },
+    { d: 'M104 94 L150 26 M80 88 L124 20' },
+    { d: ellipse(137, 23, 14, 6), transform: 'rotate(34 137 23)' },
+    { d: 'M110 70 l10 6 M122 52 l10 6', role: 'ambient' },
+    { d: 'M14 152 H146', role: 'ambient' },
+    shadow(80, 170, 60),
+  ],
+
+  // His great two-bladed axe standing on its butt: the socket block in
+  // three-quarters, the near blade's wavy edge in his colour, the far blade's
+  // face hatched, the grip wrapped, and the red-and-white tsuna rope he wears
+  // coiled at its foot, the knot's two tails loose. He has both in
+  // episode 403.
+  'sentomaru': [
+    { d: 'M76 62 V172 M84 62 V172 M76 172 h8' },
+    {
+      d: 'M76 120 l8 -4 M76 128 l8 -4 M76 136 l8 -4 M76 144 l8 -4 M76 152 l8 -4',
+      role: 'soft',
+    },
+    { d: 'M70 50 h20 v32 h-20z M70 50 l4 -4 h20 l-4 4 M90 82 l4 -4 V46' },
+    { d: 'M70 54 C56 52 40 42 28 30 C22 58 22 84 28 112 C40 98 56 86 70 80' },
+    {
+      d: 'M28 30 C34 42 26 48 32 58 C38 68 28 76 34 86 C40 96 30 102 28 112',
+      role: 'accent',
+    },
+    {
+      d: 'M90 54 C104 52 120 42 132 30 C138 58 138 84 132 112 C120 98 104 86 90 80',
+    },
+    { d: 'M100 70 l10 -8 M104 82 l14 -12 M112 92 l14 -12', role: 'ambient' },
+    { d: `${ellipse(80, 166, 34, 8)} ${ellipse(80, 166, 26, 5)}` },
+    { d: 'M54 162 l4 6 M66 159 l4 7 M92 159 l4 7 M104 162 l4 6', role: 'soft' },
+    { d: 'M112 168 c8 4 12 10 10 18 M108 170 c6 6 6 12 2 18' },
+    shadow(80, 186, 44),
   ],
 
   // A snake wound round a pillar, tongue out at the top.
@@ -730,47 +781,95 @@ export const summitWarArt = {
     shadow(80, 186, 34),
   ],
 
-  // The same pillar, the coil heavier, and a breath of fire at the top.
+  // Her snake form's heavy tail coiled flat on the arena floor, seen from
+  // above, the tip curling out at the front and the near side hatched; beside
+  // it the guandao she carries, its great blade in her colour, the far face
+  // hatched, the back spur and the collar on the haft. She turns in the arena
+  // in episode 412.
   'boa-marigold': [
-    { d: 'M64 50 V168 M96 50 V168' },
-    { d: 'M54 44 h52 v8 h-52z' },
-    { d: 'M54 168 h52 v10 h-52z' },
     {
-      d: 'M58 160 C110 152 110 138 66 128 C24 118 28 102 80 94 C118 88 120 76 90 68',
-      role: 'accent',
+      d: 'M142 0 A62 62 0 0 0 18 0 A52 52 0 0 0 122 0 A40 40 0 0 0 42 0 A30 30 0 0 0 102 0 C102 -8 90 -9 88 0',
+      transform: MARIGOLD_COIL,
     },
-    { d: 'M90 68 C78 62 78 52 88 50 C98 48 104 56 100 62', role: 'accent' },
     {
-      d: 'M100 62 c10 -4 18 -12 22 -22 c2 12 -2 22 -10 28 c8 -2 14 -8 18 -16 c0 16 -12 26 -26 24',
-      role: 'accent',
+      d: 'M128 0 A48 48 0 0 0 32 0 A38 38 0 0 0 108 0 A26 26 0 0 0 56 0 A16 16 0 0 0 88 0',
+      transform: MARIGOLD_COIL,
+    },
+    {
+      d: 'M142 0 C144 34 140 60 120 70 C110 74 102 70 108 64 M128 0 C130 26 128 48 116 58 C112 62 108 64 108 64',
+      transform: MARIGOLD_COIL,
+    },
+    {
+      d: 'M44 46 l8 -14 M68 56 l8 -14 M96 56 l8 -14 M120 40 l8 -14',
+      role: 'ambient',
+      transform: MARIGOLD_COIL,
+    },
+    { d: 'M20 186 V74 M26 186 V74 M20 186 h6' },
+    { d: 'M26 74 V12 L2 22 C-2 42 6 62 20 74 Z', role: 'accent' },
+    { d: 'M26 30 l8 -8 v12 M9 26 C6 42 10 56 20 66', role: 'soft' },
+    { d: 'M14 46 l10 -8 M16 56 l8 -7', role: 'ambient' },
+    { d: 'M16 74 h14 v6 h-14z' },
+    shadow(92, 178, 62),
+  ],
+
+  // Her snake bow standing on its tail: the snake's body bent into the stave,
+  // its outer side in her colour, bands across it, the head at the top with
+  // the tongue out, the string behind and an arrow nocked. The Kuja first
+  // draw their snakes as bows in episode 409.
+  'marguerite': [
+    { d: 'M98 20 C40 54 40 148 98 182', role: 'accent' },
+    { d: 'M104 28 C52 60 52 142 104 174 C106 178 102 182 98 182' },
+    {
+      d: 'M98 20 C100 12 110 6 122 8 C130 10 128 18 120 20 C114 22 108 24 104 28',
+    },
+    { d: 'M128 13 l7 -1 M135 12 l3 -4 M135 12 l3 3', role: 'soft' },
+    {
+      d: 'M66 48 l7 6 M54 74 l8 4 M50 101 h9 M54 128 l8 -4 M66 154 l7 -6',
+      role: 'soft',
+    },
+    { d: 'M104 30 L104 170', role: 'soft' },
+    { d: 'M108 100 H22 M22 100 l9 -5 M22 100 l9 5' },
+    { d: 'M108 100 l8 -6 h8 l-8 6 M108 100 l8 6 h8 l-8 -6', role: 'soft' },
+    {
+      d: 'M60 86 l5 -3 M58 116 l5 3 M66 60 l4 -3 M66 142 l4 3',
+      role: 'ambient',
     },
     shadow(80, 186, 34),
   ],
 
-  // A bow whose string is a snake.
-  'marguerite': [
-    { d: 'M100 30 C56 60 56 140 100 170', role: 'accent' },
-    { d: 'M100 30 c6 4 6 8 4 12 M100 170 c6 -4 6 -8 4 -12' },
+  // The newspaper she asks the returning pirates for, folded and lying in
+  // three-quarters with a blank masthead band and its columns, and beside it her snake staff standing
+  // on its tail, the upper body coiled three times round in her colour and
+  // the head turned over, tongue out. She is handed the paper in episode 411.
+  'nyon': [
+    { d: 'M6 158 L36 130 H108 L78 158 Z' },
+    { d: 'M6 158 V164 H78 L108 136 V130' },
+    { d: 'M57 130 L27 158', role: 'soft' },
     {
-      d: 'M102 42 C88 68 112 80 100 100 C88 120 112 134 102 158',
+      d: 'M33 133 H105 M38 137 h20 M32 143 h20 M26 149 h20 M62 137 h32 M56 143 h32 M50 149 h32',
+      role: 'soft',
+    },
+    { d: 'M82 162 l8 -7 M92 152 l8 -7', role: 'ambient' },
+    {
+      d: 'M122 174 C120 140 120 110 120 76 M130 172 C130 140 130 110 130 76 M122 174 C124 176 128 176 130 172',
+    },
+    {
+      d: 'M120 96 l10 -3 M120 116 l10 -3 M120 136 l10 -3 M121 156 l9 -3',
+      role: 'soft',
+    },
+    {
+      d: 'M106 76 C106 86 144 86 144 76 M108 62 C108 71 142 71 142 62 M110 48 C110 56 140 56 140 48',
       role: 'accent',
     },
-    { d: 'M102 42 c6 -6 14 -4 14 3 c0 6 -8 9 -13 5', role: 'accent' },
-    { d: 'M116 45 h9 m-3 -3 l3 3 l-3 3' },
-    { d: 'M56 90 h10 v22 h-10z' },
-    shadow(80, 184, 40),
-  ],
-
-  // A crystal ball resting on the papers it is read beside.
-  'nyon': [
-    { d: circle(80, 78, 32), role: 'accent' },
-    { d: 'M58 58 q10 -10 22 -12', role: 'accent' },
-    { d: 'M64 110 h32 l8 12 h-48z' },
-    { d: 'M26 122 h108 v14 h-108z' },
-    { d: 'M30 136 h100 v14 h-100z' },
-    { d: 'M26 150 h108 v14 h-108z' },
-    { d: 'M40 128 h36 M40 143 h36 M40 157 h36', role: 'soft' },
-    shadow(80, 176, 56),
+    {
+      d: 'M106 76 C106 68 128 66 142 62 M108 62 C108 54 126 52 140 48',
+      role: 'soft',
+    },
+    {
+      d: 'M114 48 C112 40 112 34 106 30 M136 46 C134 34 126 24 114 22 M106 30 C98 32 88 30 86 26 C86 20 100 18 114 22',
+    },
+    { d: 'M86 26 h-7 M79 26 l-3 -3 M79 26 l-3 3', role: 'soft' },
+    shadow(72, 178, 66),
   ],
 
   // The warden's cap between the two horn ornaments he wears either side of
@@ -798,29 +897,64 @@ export const summitWarArt = {
     shadow(80, 184, 44),
   ],
 
-  // A pharaoh's headdress, and the two-bladed pole beside it.
+  // The chief warden's chair he wants for himself: the tall arch of its
+  // padded back in his colour, the back's thickness and the side going away
+  // hatched, the rolled arms, the seat cushion and the carved base on its
+  // feet in three-quarters. He sits in it and says it will be his in
+  // episode 425.
   'hannyabal': [
-    { d: 'M34 66 C34 40 92 40 92 66 V126 l-12 14 h-34 l-12 -14z' },
-    { d: 'M34 74 h58 M34 88 h58 M34 102 h58', role: 'soft' },
-    { d: 'M126 56 V150' },
-    { d: 'M126 56 c0 -18 -6 -26 -14 -30 c4 12 6 22 14 30z', role: 'accent' },
-    { d: 'M126 150 c0 18 6 26 14 30 c-4 -12 -6 -22 -14 -30z', role: 'accent' },
-    { d: 'M120 92 h12 M120 112 h12', role: 'soft' },
-    shadow(64, 180, 36),
+    { d: 'M42 112 V62 C42 18 116 18 116 62 V112', role: 'accent' },
+    { d: 'M79 29 L87 23 C112 23 124 38 124 60 V106 L116 112' },
+    { d: 'M52 110 V64 C52 32 106 32 106 64 V110', role: 'soft' },
+    { d: 'M66 40 l4 8 M79 34 v9 M92 40 l-4 8', role: 'soft' },
+    {
+      d: 'M117 100 l6 -6 M117 84 l6 -6 M117 68 l6 -6 M112 36 l6 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M30 132 V104 C30 96 42 96 42 104 V116 M116 116 V104 C116 96 128 96 128 104 V122',
+    },
+    { d: 'M33 104 a3 3 0 1 1 6 0 M119 104 a3 3 0 1 1 6 0', role: 'soft' },
+    {
+      d: 'M30 132 L42 116 H128 L116 132 Z M30 132 V142 H116 V132 M116 142 L128 130 V116',
+    },
+    {
+      d: 'M34 142 V164 H112 V142 M112 164 L124 154 V136 M40 164 v6 M106 164 v6 M120 158 v6',
+    },
+    { d: 'M44 150 C56 156 90 156 102 150 M60 158 h26', role: 'soft' },
+    { d: 'M114 158 l8 -7 M114 148 l8 -7', role: 'ambient' },
+    shadow(80, 176, 58),
   ],
 
-  // A stage under a spotlight, the curtains drawn back for the show.
+  // His two crowns set down on his stage in the spotlight: the queen's crown,
+  // its points and band in his colour, the far rim seen and the side going
+  // away hatched, and the king's crown standing up out of it. He takes that
+  // stage wearing them in episode 438.
   'emporio-ivankov': [
-    { d: 'M20 20 C30 60 26 110 40 150 H20z', role: 'accent' },
-    { d: 'M140 20 C130 60 134 110 120 150 H140z', role: 'accent' },
+    { d: 'M66 6 L38 136 M94 6 L122 136', role: 'ambient', dashed: true },
+    { d: 'M2 144 L20 128 H158 M2 144 H156 V162 H2 Z' },
+    { d: 'M30 144 V162 M60 144 V162 M90 144 V162 M120 144 V162', role: 'soft' },
     {
-      d: 'M20 20 h120 M20 20 q20 14 40 0 q20 14 40 0 q20 14 40 0',
+      d: 'M46 112 L48 74 L62 96 L70 84 M90 84 L98 96 L112 74 L114 112',
+      role: 'accent',
+    },
+    { d: 'M46 112 C46 120 114 120 114 112 V124 C114 132 46 132 46 124 Z' },
+    { d: 'M46 112 C48 106 112 106 114 112', role: 'soft' },
+    {
+      d: dots([
+        [62, 124],
+        [80, 126],
+        [98, 124],
+      ]),
       role: 'soft',
     },
-    { d: 'M14 150 h132 v12 h-132z' },
-    { d: 'M80 34 L56 150 M80 34 L104 150', role: 'ambient', dashed: true },
-    { d: ellipse(80, 150, 24, 5), role: 'soft' },
-    shadow(80, 178, 56),
+    { d: 'M104 120 l6 -6 M104 130 l8 -8', role: 'ambient' },
+    {
+      d: 'M66 104 V70 L73 58 L80 70 L87 58 L94 70 V104 M66 70 C66 74 94 74 94 70',
+      role: 'accent',
+    },
+    { d: 'M80 58 v-8 M76 54 h8', role: 'soft' },
+    shadow(80, 136, 40),
   ],
 
   // His wine glass, the left half of the rim, bowl, stem and foot in his
@@ -846,87 +980,148 @@ export const summitWarArt = {
     shadow(80, 184, 38),
   ],
 
-  // A long blade laid down, the rain still on it.
+  // Raiu leaning on the bars of his level-six cell: the diamond-wrapped
+  // handle on the floor, the square guard at a slant, the long blade up to
+  // its tip with the edge in his colour, and his cigar on the floor, not yet
+  // lit. He gets the sword back and asks for a light in episode 444.
   'shiryu': [
-    { d: 'M30 174 L120 40 M38 179 L128 45 M120 40 L128 45' },
-    { d: 'M54 152 l10 6' },
-    { d: 'M30 174 L16 184 M38 179 L24 189 M16 184 L24 189' },
     {
-      d: dots([
-        [70, 130],
-        [84, 112],
-        [98, 92],
-        [62, 142],
-        [90, 124],
-      ]),
-      role: 'accent',
-    },
-    { d: 'M76 122 q5 -8 10 0 q-5 8 -10 0', role: 'accent' },
-    shadow(80, 192, 44),
-  ],
-
-  // A championship belt, plate and strap.
-  'jesus-burgess': [
-    { d: 'M18 84 h124 v40 h-124z' },
-    { d: 'M18 92 h124 M18 116 h124', role: 'soft' },
-    {
-      d: dots([
-        [30, 104],
-        [44, 104],
-        [116, 104],
-        [130, 104],
-      ]),
-    },
-    {
-      d: 'M80 58 C110 58 122 80 122 104 C122 128 110 150 80 150 C50 150 38 128 38 104 C38 80 50 58 80 58z',
-      role: 'accent',
-    },
-    { d: star(80, 104, 22, 10), role: 'accent' },
-    { d: 'M58 76 q22 -10 44 0', role: 'soft' },
-    shadow(80, 172, 56),
-  ],
-
-  // A long rifle, and a bird already out of range.
-  'van-augur': [
-    { d: 'M20 158 L128 96' },
-    { d: 'M26 168 L118 116' },
-    { d: 'M20 158 L26 168' },
-    { d: 'M118 116 L128 96 M122 108 L134 102' },
-    { d: 'M62 132 L70 146 L82 140' },
-    { d: 'M84 110 h24 v10 h-24z' },
-    { d: 'M88 120 l-6 8 M104 120 l6 -8' },
-    { d: 'M56 46 q14 -14 26 0 q12 -14 26 0', role: 'accent' },
-    shadow(80, 184, 52),
-  ],
-
-  // A basket of apples, one of them with a fuse in it.
-  'doc-q': [
-    { d: 'M34 118 h64 l-8 46 h-48z' },
-    { d: 'M34 118 h64', role: 'soft' },
-    { d: 'M40 118 C40 98 92 98 92 118', role: 'soft' },
-    { d: circle(50, 110, 11) },
-    { d: circle(74, 108, 11) },
-    { d: circle(96, 112, 11), role: 'accent' },
-    { d: 'M96 101 c4 -10 12 -14 18 -10 c-6 6 -8 12 -8 18', role: 'accent' },
-    { d: 'M112 142 c10 -16 28 -16 34 0 c-6 10 -28 10 -34 0z' },
-    { d: 'M118 152 v14 M142 152 v14', role: 'soft' },
-    shadow(72, 176, 46),
-  ],
-
-  // A top hat and a cane, left on the floor of a dance hall.
-  'laffitte': [
-    { d: 'M56 108 V54 h48 v54' },
-    { d: ellipse(80, 108, 40, 10) },
-    { d: 'M56 92 h48', role: 'accent' },
-    { d: 'M56 54 q24 -8 48 0' },
-    { d: 'M120 62 L104 168' },
-    { d: 'M120 62 c10 -6 18 2 14 10 c-3 6 -10 6 -13 2', role: 'accent' },
-    { d: 'M12 180 h136', role: 'ambient' },
-    {
-      d: 'M30 168 h20 v12 h-20z M70 168 h20 v12 h-20z M110 168 h20 v12 h-20z',
+      d: 'M30 14 V162 M58 14 V162 M86 14 V162 M114 14 V162 M142 14 V162 M8 162 H156',
       role: 'ambient',
+    },
+    {
+      d: 'M28.3 161.9 L47.2 138.6 M23.7 158.1 L42.6 134.8 M23.7 158.1 L28.3 161.9',
+    },
+    {
+      d: 'M26 152 l10 -4 M30 146 l10 -4 M34 141 l9 -4 M26 152 l6 3 M30 146 l8 4 M34 141 l8 4',
+      role: 'soft',
+    },
+    { d: 'M54.6 140.7 L50.8 145.3 L35.3 132.7 L39 128.1 Z' },
+    { d: 'M44.5 132.5 L138 22' },
+    { d: 'M49.1 136.3 C90 92 120 50 138 22', role: 'accent' },
+    { d: 'M62 108 l3 3 M80 87 l3 3 M98 66 l3 3', role: 'ambient' },
+    {
+      d: 'M100 154 L132 148 M101 160 L133 154 M100 154 C97 155 98 160 101 160',
+    },
+    { d: 'M132 148 C135 148 136 153 133 154 M108 153 l1 6', role: 'soft' },
+    shadow(80, 172, 60),
+  ],
+
+  // His championship belt lying in a loop: the strap with its gold ribs, the
+  // far side seen inside, and the great round plate at the front, its rim in
+  // his colour, its face left blank, the edge turning away hatched. He wears
+  // it in Mock Town in episode 146.
+  'jesus-burgess': [
+    { d: 'M14 108 C14 84 146 84 146 108' },
+    { d: 'M28 108 C30 94 130 94 132 108', role: 'soft' },
+    {
+      d: 'M14 108 C14 118 28 124 46 128 M114 128 C132 124 146 118 146 108 M14 126 C14 136 28 142 46 146 M114 146 C132 142 146 136 146 126 M14 108 V126 M146 108 V126',
+    },
+    {
+      d: 'M22 115 v17 M30 119 v17 M38 122 v18 M122 122 v18 M130 119 v17 M138 115 v17',
+      role: 'soft',
+    },
+    { d: ellipse(80, 130, 34, 28), role: 'accent' },
+    { d: ellipse(80, 130, 25, 20), role: 'soft' },
+    { d: 'M46 133 C46 152 62 162 80 162 C98 162 114 152 114 133' },
+    { d: 'M98 156 l9 -9 M106 150 l6 -7', role: 'ambient' },
+    { d: 'M66 119 C72 114 88 114 94 119', role: 'soft' },
+    shadow(80, 172, 66),
+  ],
+
+  // Senriku, laid at a slant: the stock with its wood hatched, the lock and
+  // its wheel, the forestock under half the long barrel, the two sights, and
+  // the flared muzzle in his colour; three gulls far off. He shoots gulls
+  // nobody else can see in episode 146.
+  'van-augur': [
+    {
+      d: 'M8 100 L46 106 V116 L8 124 C4 116 4 108 8 100 Z',
+      transform: SENRIKU,
+    },
+    {
+      d: 'M14 104 l4 14 M22 105 l4 13 M30 106 l3 11',
+      role: 'ambient',
+      transform: SENRIKU,
+    },
+    { d: 'M46 104 H72 V118 H46', transform: SENRIKU },
+    {
+      d: 'M54 111 a4 4 0 1 0 8 0 a4 4 0 1 0 -8 0 M58 107 v-3 M52 116 C52 124 62 124 62 118',
+      role: 'soft',
+      transform: SENRIKU,
+    },
+    { d: 'M72 110 H104 V116 H72', transform: SENRIKU },
+    { d: 'M72 104 H134 M104 110 H134', transform: SENRIKU },
+    {
+      d: `M84 104 v-4 ${ellipse(84, 96.5, 1.5, 3.5)} M124 104 v-4 ${ellipse(124, 96.5, 1.5, 3.5)}`,
+      role: 'soft',
+      transform: SENRIKU,
+    },
+    {
+      d: `M134 104 C140 104 146 100 150 96 M134 110 C140 110 146 114 150 118 ${ellipse(150, 107, 3, 11)}`,
+      role: 'accent',
+      transform: SENRIKU,
+    },
+    {
+      d: 'M14 30 q4 -5 8 0 q4 -5 8 0 M38 18 q3 -4 6 0 q3 -4 6 0 M34 42 q3 -4 6 0 q3 -4 6 0',
+      role: 'soft',
+    },
+    shadow(70, 158, 54),
+  ],
+
+  // His basket of apples in three-quarters, the handle over it, the wicker's
+  // shaded side hatched, and one apple set apart in his colour with smoke
+  // coming off it: some of the apples he offers explode. He offers them in
+  // Mock Town in episode 146.
+  'doc-q': [
+    { d: 'M24 112 C24 50 104 50 104 112 M30 112 C30 58 98 58 98 112' },
+    {
+      d: 'M28 110 C26 92 52 88 54 106 M52 104 C50 82 80 82 78 102 M78 102 C80 88 104 90 100 110',
+      role: 'soft',
+    },
+    { d: 'M64 86 l2 -6 M90 92 l3 -5 M40 94 l-2 -5', role: 'soft' },
+    { d: ellipse(64, 112, 42, 11) },
+    { d: 'M22 112 L32 162 C46 172 82 172 96 162 L106 112' },
+    {
+      d: 'M26 132 C44 142 84 142 102 132 M29 148 C46 157 82 157 99 148',
+      role: 'soft',
+    },
+    { d: 'M94 128 l8 -6 M92 144 l8 -6 M90 158 l7 -5', role: 'ambient' },
+    {
+      d: `${circle(132, 156, 11)} M132 145 l2 -7 M134 140 c4 -4 10 -3 12 0 c-4 3 -8 3 -12 0`,
+      role: 'accent',
+    },
+    {
+      d: 'M120 132 c-6 -6 0 -14 6 -10 c2 -8 14 -8 14 0 c8 -2 12 8 4 12',
+      role: 'soft',
       dashed: true,
     },
+    shadow(66, 178, 46),
+    shadow(132, 172, 14),
+  ],
+
+  // His top hat standing on its brim, the band and the brim's curl, the far
+  // side of the crown hatched, and his cane lying across the floor in his
+  // colour, its crook hooked under the brim. He walks into the Warlords'
+  // meeting with both in episode 151.
+  'laffitte': [
+    { d: ellipse(76, 132, 50, 12) },
+    {
+      d: 'M26 132 C26 124 34 120 42 120 M126 132 C126 124 118 120 110 120',
+      role: 'soft',
+    },
+    { d: 'M48 126 L52 56 M104 126 L100 56' },
+    { d: ellipse(76, 56, 24, 7) },
+    {
+      d: 'M49 110 C49 116 103 116 103 110 M50 100 C50 106 102 106 102 100',
+      role: 'soft',
+    },
+    { d: 'M90 70 l8 -6 M90 84 l10 -8 M90 98 l10 -8', role: 'ambient' },
+    {
+      d: 'M150 178 L58 136 C52 132 44 130 40 134 C36 140 42 146 46 142',
+      role: 'accent',
+    },
+    { d: 'M150 178 l-4 4', role: 'soft' },
+    shadow(80, 154, 60),
   ],
 
   // A Ferris wheel with its cabins hanging from the rim, bubbles drifting past.
@@ -949,14 +1144,37 @@ export const summitWarArt = {
     ...SEA.slice(2),
   ],
 
-  // A spear whose head is a crescent moon.
+  // Her string of big pearls lying in a loose loop, the near ones larger and
+  // in her colour with the light on them, the far ones plain, one end
+  // trailing to the front with its hook and the other with its ring. She
+  // wears it on the Marineford scaffold in episode 484.
   'catarina-devon': [
-    { d: 'M80 178 V72' },
-    { d: 'M74 178 h12', role: 'soft' },
-    { d: 'M80 72 C44 66 30 40 40 12 C76 22 92 48 80 72z', role: 'accent' },
-    { d: 'M80 72 C62 60 52 40 54 22', role: 'accent' },
-    { d: 'M72 88 h16 M72 104 h16', role: 'soft' },
-    shadow(80, 190, 26),
+    {
+      d: `${circle(138.5, 134.2, 5.7)} ${circle(128.4, 141.4, 6.1)} ${circle(113, 146.8, 6.4)} ${circle(94, 149.6, 6.6)} ${circle(73.9, 149.6, 6.6)} ${circle(55, 146.8, 6.4)} ${circle(39.5, 141.4, 6.1)} ${circle(26.5, 153.5, 6.4)} ${circle(20, 166, 6.2)} ${circle(18, 179, 6)}`,
+      role: 'accent',
+      transform: PEARLS,
+    },
+    {
+      d: `${circle(26, 126, 5.3)} ${circle(29.5, 117.8, 4.9)} ${circle(39.6, 110.6, 4.5)} ${circle(55, 105.2, 4.2)} ${circle(74, 102.4, 4)} ${circle(94.1, 102.4, 4)} ${circle(113, 105.2, 4.2)} ${circle(128.5, 110.6, 4.5)} ${circle(138.5, 117.8, 4.9)} ${circle(142, 126, 5.3)}`,
+      transform: PEARLS,
+    },
+    {
+      d: 'M135.3 133.1 a3.4 3.4 0 0 1 2.9 -2.6 M125 140.2 a3.7 3.7 0 0 1 3.1 -2.8 M109.4 145.5 a3.9 3.9 0 0 1 3.2 -2.9 M90.4 148.3 a3.9 3.9 0 0 1 3.3 -3 M70.3 148.3 a3.9 3.9 0 0 1 3.3 -3 M51.4 145.5 a3.9 3.9 0 0 1 3.2 -2.9 M36.2 140.2 a3.7 3.7 0 0 1 3.1 -2.8',
+      role: 'soft',
+      transform: PEARLS,
+    },
+    {
+      d: 'M33.5 145.5 L30 148 M23.5 159 L22 160.5 M26 131.3 C25 134 24 136 22 138 M18 185 C16 190 22 192 24 188',
+      role: 'soft',
+      transform: PEARLS,
+    },
+    { d: 'M22 138 c-4 2 -4 7 0 8 c3 1 5 -2 3 -4', transform: PEARLS },
+    {
+      d: 'M60 158 l6 -3 M80 160 l6 -3 M100 158 l6 -3 M118 154 l6 -3',
+      role: 'ambient',
+      transform: PEARLS,
+    },
+    { ...shadow(84, 170, 60), transform: PEARLS },
   ],
 
   // A drinking gourd, stopper still in it.
