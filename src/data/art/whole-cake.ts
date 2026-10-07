@@ -59,6 +59,9 @@ const RANDOLPH_SPEAR_TILT = 'rotate(-20 80 142)'
 /** The tilt of Flampe's blowgun, drawn level with its muzzle to the right. */
 const FLAMPE_BLOWGUN_TILT = 'rotate(-28 70 150)'
 
+/** Where Lu Feld's rose lies, drawn upright with its cup at the origin. */
+const LU_FELD_ROSE_AT = 'translate(120 146) rotate(45) scale(1.05)'
+
 /** The tilt of Mjosgard's club, drawn level with its head to the right. */
 const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
 
@@ -1663,22 +1666,28 @@ export const wholeCakeArt = {
     shadow(80, 178, 40),
   ],
 
-  // A bicorne hat with a tornado twisting up out of its crown.
+  // His bicorne set down on the ground, plain on its front: the back panel
+  // showing past the front, the far side hatched and the trim along the
+  // brim. Beside it rises the tornado the hat blows at Niji, its far side
+  // hatched. The tornado is anime only, his trump card at 855.
   'charlotte-nusstorte': [
     {
-      d: 'M14 106 C40 140 120 140 146 106 C120 118 104 96 80 96 C56 96 40 118 14 106 Z',
+      d: 'M2 118 C10 136 20 134 26 120 C34 100 44 90 56 90 C68 90 78 100 86 120 C92 134 102 136 110 118 C108 140 90 152 56 152 C22 152 4 140 2 118 Z',
     },
-    { d: 'M40 118 C62 126 98 126 120 118', role: 'soft' },
-    { d: circle(80, 108, 5), role: 'accent' },
+    { d: 'M66 90 C78 90 88 100 94 114 C98 124 104 128 110 118', role: 'soft' },
+    { d: 'M90 106 l6 -3 M94 118 l6 -3', role: 'ambient' },
+    { d: 'M10 136 C26 146 86 146 102 136', role: 'soft' },
     {
-      d: 'M40 22 C58 50 72 70 78 94 M124 22 C106 50 90 70 84 94',
+      d: 'M114 150 C108 132 118 120 114 100 C110 80 106 56 88 30 M122 150 C130 130 136 114 140 94 C144 72 150 52 156 30',
       role: 'accent',
     },
     {
-      d: 'M40 22 C62 32 102 32 124 22 M50 40 C68 48 96 48 114 40 M60 58 C72 64 90 64 102 58 M70 76 C76 80 86 80 92 76',
-      role: 'soft',
+      d: 'M88 30 C100 22 142 22 156 30 M114 130 c6 2 10 0 14 -4 M114 108 c8 3 16 1 24 -5 M110 84 c10 3 22 1 30 -5 M100 58 c14 3 32 1 50 -6',
+      role: 'accent',
     },
-    shadow(80, 150, 58),
+    { d: 'M146 56 l5 -6 M142 80 l5 -6 M134 104 l4 -5', role: 'ambient' },
+    { d: 'M126 154 c6 -3 12 1 18 -2', role: 'ambient' },
+    shadow(80, 166, 72),
   ],
 
   // Her silent blowgun in three quarters, slung on its strap, its underside
@@ -1800,37 +1809,67 @@ export const wholeCakeArt = {
     { d: 'M20 186 H140', role: 'ambient', dashed: true },
   ],
 
-  // A sun with flames licking out of its rim.
+  // The sun Big Mom calls up on her right hand, drawn as the wiki has him,
+  // an abstract sun: wavy flame rays between short straight ones, the far
+  // limb hatched. No face. He hangs over the sea, where Pound tells of the
+  // storm he and Zeus raised to sink Urouge's ship (806, chapter 843).
   'prometheus': [
-    { d: circle(80, 96, 34) },
-    { d: circle(80, 96, 24), role: 'soft' },
+    { d: circle(80, 80, 32) },
     {
-      d: 'M80 44 q-8 -14 0 -26 q8 12 0 26 M132 96 q14 -8 26 0 q-12 8 -26 0 M80 148 q8 14 0 26 q-8 -12 0 -26 M28 96 q-14 8 -26 0 q12 -8 26 0',
+      d: 'M80 42 C86 36 74 30 80 22 M106.9 53.1 C115.4 53.1 111.1 40.4 121 39 M118 80 C124 86 130 74 138 80 M106.9 106.9 C106.9 115.4 119.6 111.1 121 121 M80 118 C74 124 86 130 80 138 M53.1 106.9 C44.6 106.9 48.9 119.6 39 121 M42 80 C36 74 30 86 22 80 M53.1 53.1 C53.1 44.6 40.4 48.9 39 39',
       role: 'accent',
     },
     {
-      d: 'M117 59 l12 -12 M117 133 l12 12 M43 133 l-12 12 M43 59 l-12 -12',
-      role: 'accent',
+      d: 'M94.5 44.9 L98.4 35.7 M115.1 65.5 L124.3 61.6 M115.1 94.5 L124.3 98.4 M94.5 115.1 L98.4 124.3 M65.5 115.1 L61.6 124.3 M44.9 94.5 L35.7 98.4 M44.9 65.5 L35.7 61.6 M65.5 44.9 L61.6 35.7',
     },
-    shadow(80, 188, 40),
+    {
+      d: 'M100.5 59.5 L94.1 64.3 M106.9 69.1 L100.5 73.9 M109 80 L102.6 84.8 M106.9 90.9 L100.5 95.7 M100.5 100.5 L94.1 105.3',
+      role: 'ambient',
+    },
+    ...SEA,
   ],
 
   // The pink bicorne Big Mom wears, in three quarters: the trim along its
   // crest, the ruffled fastener on its side, the back panel showing past
   // the front. No skull on it, and no blade. She calls it by name at 816.
   'napoleon': [...BIG_MOM_BICORNE, shadow(80, 176, 62)],
-  // A cigar laid across a stack of coins, a thread of smoke rising from it.
+  // His cigar in three quarters, the lit end seen face on with its ash line,
+  // the wrapper winding round it and the underside hatched, smoke rising.
+  // Beside it lies a cut rose like the one on his left lapel. Both are on
+  // him when he arrives at the Tea Party at 830.
   'lu-feld': [
-    { d: ellipse(80, 104, 40, 12) },
-    { d: 'M40 104 V140 a40 12 0 0 0 80 0 V104' },
-    { d: 'M40 116 a40 12 0 0 0 80 0 M40 128 a40 12 0 0 0 80 0', role: 'soft' },
     {
-      d: 'M34 90 L116 74 c7 -1 9 9 2 10 L36 100 c-7 1 -9 -9 -2 -10 Z',
-      role: 'accent',
+      d: 'M27.4 129.9 L125.4 97.9 C134.9 94.8 140.1 111 130.6 114.1 L32.6 146.1',
     },
-    { d: 'M100 77 l2 10', role: 'accent' },
-    { d: 'M30 92 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
-    shadow(80, 162, 48),
+    {
+      d: 'M27.4 129.9 A4 8.5 -18.1 0 0 32.6 146.1 A4 8.5 -18.1 0 0 27.4 129.9',
+    },
+    { d: 'M34.2 127.7 L39.5 143.8', role: 'soft' },
+    {
+      d: 'M56.8 120.3 L68.9 134.2 M74.4 114.6 L86.5 128.5 M92 108.8 L104.2 122.7 M109.7 103 L121.8 117',
+      role: 'soft',
+    },
+    {
+      d: 'M52.2 139.7 L53.7 134.3 M67.9 134.6 L69.4 129.2 M83.6 129.4 L85.1 124 M99.3 124.3 L100.8 118.9',
+      role: 'ambient',
+    },
+    { d: 'M24 124 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
+    {
+      d: 'M-14 0 C-18 16 -8 26 0 26 C8 26 18 16 14 0',
+      role: 'accent',
+      transform: LU_FELD_ROSE_AT,
+    },
+    {
+      d: 'M-14 0 C-10 -4 -6 -3 -4 0 M14 0 C10 -4 6 -3 4 0 M-12 6 C-6 6 -2 14 4 22 M-8 1 C-8 -10 8 -12 8 1 C8 -4 2 -6 0 -2',
+      role: 'accent',
+      transform: LU_FELD_ROSE_AT,
+    },
+    {
+      d: 'M-3 25 C-8 27 -12 25 -15 20 M3 25 C8 27 12 25 15 20 M0 26 V54 M0 38 C-8 34 -14 36 -16 42 C-10 44 -4 42 0 38',
+      role: 'soft',
+      transform: LU_FELD_ROSE_AT,
+    },
+    shadow(80, 184, 64),
   ],
 
   // His fur cape, the fur edge running over both shoulders, one curl of fur
