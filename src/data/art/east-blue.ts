@@ -1038,17 +1038,32 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // A treasure chest with a shrub growing out of the lid.
+  // The treasure chest he has been stuck in for twenty years, closed, in
+  // 3/4: the curved lid and the iron bands over it, the planks, the far side
+  // hatched, and the lock plate in his colour, lock and bands as the show
+  // draws them. He keeps guard over the island of rare animals in it in
+  // episode 18.
   'gaimon': [
-    { d: 'M26 178 H134 V112 H26 Z' },
-    { d: 'M26 112 C26 80 134 80 134 112' },
-    { d: 'M68 112 H92 V134 H68 Z' },
-    { d: circle(80, 123, 4) },
-    { d: 'M34 178 V112 M126 178 V112', role: 'soft' },
-    { d: 'M80 84 C76 68 84 56 80 42', role: 'accent' },
-    { d: 'M80 64 C70 58 62 46 66 36 C76 40 80 52 80 60', role: 'accent' },
-    { d: 'M80 58 C90 52 98 40 94 30 C84 34 78 48 80 56', role: 'accent' },
-    shadow(80, 186, 56),
+    { d: 'M30 112 V170 H110 V112' },
+    { d: 'M110 170 L136 156 V98' },
+    { d: 'M30 112 C28 92 38 80 52 78 L126 78 C134 80 138 88 136 98' },
+    { d: 'M30 112 H110 C108 92 116 80 126 78' },
+    {
+      d: 'M46 112 V170 M94 112 V170 M46 112 C45 94 52 82 66 79 M94 112 C93 94 100 82 114 79',
+    },
+    {
+      d: 'M30 132 H46 M30 152 H46 M94 132 H110 M94 152 H110 M46 132 H62 M78 132 H94 M46 152 H94 M110 132 L136 118 M110 152 L136 138 M34 96 C40 88 46 84 54 82',
+      role: 'soft',
+    },
+    {
+      d: `M62 104 H78 V126 H62 Z ${circle(70, 112, 2.6)} M70 114.6 V120`,
+      role: 'accent',
+    },
+    {
+      d: 'M114 120 l16 -9 M114 134 l18 -10 M114 148 l18 -10 M116 162 l14 -8 M116 100 l12 -8',
+      role: 'ambient',
+    },
+    shadow(84, 178, 58),
   ],
   // Her bamboo practice sword laid along the dojo's wooden step, its tip
   // capped, tied and strung, and her white-sheathed katana leaning against
@@ -1088,30 +1103,61 @@ export const eastBlueArt = {
     },
     shadow(118, 188, 14),
   ],
-  // A pair of round dark glasses above his sword.
+  // One of the two Nakiri swords, laid on the diagonal: the broad blade
+  // widening to its squared tip, the spine side hatched, the bevel along the
+  // edge, the round guard in his colour seen in 3/4, the wrapped grip and its
+  // cap. It has no sheath. He storms the ship with it in episode 19.
   'johnny': [
-    { d: `${circle(56, 76, 20)} ${circle(104, 76, 20)}`, role: 'accent' },
-    { d: 'M76 74 q4 -6 8 0', role: 'accent' },
-    { d: 'M36 72 L22 64 M124 72 L138 64' },
-    { d: 'M48 70 l8 -6 M96 70 l8 -6', role: 'soft' },
-    { d: 'M20 144 L118 144 L138 140 L118 136 L20 136 Z' },
-    { d: 'M118 128 V152', role: 'accent' },
-    { d: 'M118 140 H150' },
-    shadow(80, 172, 56),
-  ],
-  // A crate of limes with one cut open on the top.
-  'yosaku': [
-    { d: 'M30 118 H130 V176 H30 Z' },
-    { d: 'M30 136 H130 M30 156 H130', role: 'soft' },
-    { d: 'M44 118 V176 M116 118 V176', role: 'soft' },
-    { d: circle(52, 104, 15) },
-    { d: circle(108, 104, 15) },
-    { d: circle(76, 78, 18), role: 'accent' },
     {
-      d: 'M76 78 L76 60 M76 78 L89 65 M76 78 L94 78 M76 78 L89 91 M76 78 L76 96 M76 78 L63 91 M76 78 L58 78 M76 78 L63 65',
+      d: 'M58.4 116.7 L137.1 68.9 Q144 64.9 148.5 72.7 L155.7 87.1 L63.9 126.2 Z',
+    },
+    { d: 'M64.9 119.9 L150.1 83.4', role: 'soft' },
+    {
+      d: 'M69.1 111.1 L75.7 112.5 M84.4 101.7 L91.3 103.5 M99.8 92.2 L106.8 94.5 M115.1 82.8 L122.4 85.5 M130.4 73.4 L138 76.5',
+      role: 'ambient',
+    },
+    {
+      d: 'M54.5 124.8 A3.5 14 -30 1 0 60.5 121.3 A3.5 14 -30 1 0 54.5 124.8',
       role: 'accent',
     },
-    shadow(80, 184, 56),
+    { d: 'M54.5 124.8 Q47.6 114.9 48.8 111.9', role: 'accent' },
+    { d: 'M52.9 121 L20.8 139.5 M56.9 128 L24.8 146.5' },
+    { d: 'M18.9 145.3 A2.5 5 -30 1 0 23.3 142.8 A2.5 5 -30 1 0 18.9 145.3' },
+    {
+      d: 'M50.3 122.5 L49.1 132.5 L39.9 128.5 L38.7 138.5 L29.5 134.5 L28.3 144.5',
+      role: 'soft',
+    },
+    shadow(82, 172, 54),
+  ],
+  // The barrel of limes the crew cures his scurvy with: the barrel in 3/4
+  // with its staves and hoops and its far side hatched, the limes heaped over
+  // its rim, a loose one on the deck, and a squeezed half in his colour, still
+  // dripping. The barrel is the one in the episode 20 frame of the cure.
+  'yosaku': [
+    { d: ellipse(70, 98, 32, 9) },
+    {
+      d: 'M38 98 C33 118 33 142 40 162 Q70 174 100 162 C107 142 107 118 102 98',
+    },
+    { d: 'M37 114 Q70 126 103 114 M36 148 Q70 160 104 148' },
+    {
+      d: 'M56 107 C54 126 54 146 56 168 M84 107 C86 126 86 146 84 168',
+      role: 'soft',
+    },
+    {
+      d: 'M41 97 C41 87 59 87 59 97 M59 93 C59 83 77 83 77 93 M77 96 C77 86 95 86 95 96 M51 85 C51 75 67 75 67 85 M69 83 C69 73 85 73 85 83 M77 73 l1 -3',
+    },
+    { d: 'M95 124 l8 -5 M96 136 l8 -5 M96 158 l6 -4', role: 'ambient' },
+    { d: 'M114 166 C114 180 142 180 142 166' },
+    {
+      d: `${ellipse(128, 166, 14, 5)} M128 166 L117 164.5 M128 166 L128 161 M128 166 L139 164.5 M128 166 L120 169.5 M128 166 L136 169.5`,
+      role: 'accent',
+    },
+    {
+      d: 'M128 144 q-3 6 0 7 q3 -1 0 -7 M122 152 q-2 4 0 5 q2 -1 0 -5',
+      role: 'soft',
+    },
+    { d: 'M12 172 C12 165 28 165 28 172 C28 179 12 179 12 172 M28 172 l3 0' },
+    shadow(76, 182, 56),
   ],
   // An empty plate laid on the table, a fork on one side and a knife on the
   // other.
@@ -1165,146 +1211,221 @@ export const eastBlueArt = {
     ...SEA,
   ],
 
-  // A chef's hat, the band braided.
+  // His toque, nearly as tall as he is: the pleated puff on top, the tall
+  // crown with its folds, the band, the far side hatched, and the crossed
+  // stitches the show draws down its front, in his colour. He kicks Luffy
+  // into service in it in episode 20.
   'zeff': [
-    { d: 'M44 122 H116 V156 H44 Z' },
+    { d: 'M52 152 C50 120 48 92 46 68 M108 152 C110 120 112 92 114 68' },
     {
-      d: 'M44 122 C28 112 28 86 44 78 C38 58 60 44 76 54 C90 38 114 44 116 64 C134 70 134 100 116 106 C120 114 118 120 116 122',
+      d: 'M46 68 C34 64 32 46 46 40 C50 26 110 26 114 40 C128 46 126 64 114 68 C96 74 64 74 46 68',
     },
     {
-      d: 'M66 76 C62 92 64 108 66 122 M94 72 C92 90 94 108 94 122',
+      d: 'M58 66 C54 54 56 42 64 34 M80 70 V30 M102 66 C106 54 104 42 96 34',
       role: 'soft',
     },
-    { d: 'M48 130 l11 9 l11 -9 l11 9 l11 -9 l11 9 l9 -7', role: 'accent' },
-    { d: 'M48 148 l11 -9 l11 9 l11 -9 l11 9 l11 -9 l9 7', role: 'accent' },
-    { d: 'M44 156 H116', role: 'soft' },
-    shadow(80, 168, 44),
-  ],
-  // The plate of fried rice Sanji brings him at 21, a spoon resting in it.
-  'gin': [
-    { d: ellipse(80, 144, 62, 16) },
-    { d: ellipse(80, 144, 46, 10), role: 'soft' },
-    { d: 'M46 140 C50 112 110 112 114 140', role: 'accent' },
     {
-      d: dots([
-        [62, 128],
-        [78, 122],
-        [94, 126],
-        [70, 136],
-        [100, 136],
-      ]),
+      d: 'M52 152 V166 M108 152 V166 M52 152 Q80 162 108 152 M52 166 Q80 176 108 166',
+    },
+    {
+      d: 'M64 146 C62 122 60 98 58 76 M96 146 C98 122 100 98 102 76',
+      role: 'soft',
+    },
+    { d: 'M80 78 V150', role: 'soft' },
+    {
+      d: 'M74 86 l12 10 M86 86 l-12 10 M74 102 l12 10 M86 102 l-12 10',
       role: 'accent',
     },
-    { d: 'M96 124 L132 88' },
-    { d: ellipse(138, 82, 8, 5) },
     {
-      d: 'M64 104 c-6 -10 4 -14 -2 -26 M84 100 c-6 -10 4 -14 -2 -26',
+      d: 'M104 90 l8 -6 M105 108 l8 -6 M106 126 l7 -5 M107 144 l6 -4 M116 54 l6 -4',
       role: 'ambient',
     },
-    shadow(80, 176, 52),
+    shadow(80, 184, 40),
+  ],
+  // The plate of rice Sanji brings him outside at 21 (a pilaf in the manga, a
+  // risotto in the show), heaped in his colour with its far side hatched, a
+  // spoon standing in it and the steam still rising.
+  'gin': [
+    { d: ellipse(80, 140, 62, 18) },
+    {
+      d: 'M18 140 Q19 147 24 150 M142 140 Q141 147 136 150 M24 150 Q80 170 136 150',
+    },
+    { d: ellipse(80, 141, 44, 12), role: 'soft' },
+    {
+      d: 'M44 141 C46 116 66 104 82 104 C98 104 114 116 116 141',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [62, 126],
+        [74, 116],
+        [86, 112],
+        [68, 136],
+        [92, 128],
+        [56, 138],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M104 116 l6 6 M108 110 l6 6 M110 124 l5 5', role: 'ambient' },
+    { d: 'M92 116 L124 80 Q128 74 133 79 Q135 84 131 87 L98 122' },
+    {
+      d: 'M64 96 c-6 -10 4 -14 -2 -26 M84 94 c-6 -10 4 -14 -2 -26',
+      role: 'ambient',
+    },
+    shadow(80, 176, 56),
   ],
 
-  // An iron knuckle with four rings, and a bowl of soup with a fly above it.
+  // His iron knuckle in his colour, four rings on a curved grip with a bolt
+  // over each, its far end hatched; behind it, the soup he drops a fly into to
+  // blame Sanji. Both are at his table at the Baratie in episode 20.
   'fullbody': [
+    { d: ellipse(54, 90, 40, 11) },
+    { d: 'M14 90 Q16 96 22 98 M94 90 Q92 96 86 98 M22 98 Q54 110 86 98' },
+    { d: ellipse(54, 91, 26, 6), role: 'soft' },
+    { d: 'M58 90 h0.01 M58 90 q-7 -7 -10 -1 M58 90 q3 -9 9 -6', role: 'soft' },
     {
-      d: `${circle(48, 66, 10)} ${circle(70, 66, 10)} ${circle(92, 66, 10)} ${circle(114, 66, 10)}`,
+      d: `${ellipse(62, 138, 11, 12)} ${ellipse(84, 134, 11, 12)} ${ellipse(106, 131, 11, 12)} ${ellipse(127, 129, 10, 12)}`,
       role: 'accent',
     },
-    { d: 'M36 72 C44 102 116 102 124 72', role: 'accent' },
     {
-      d: dots([
-        [48, 56],
-        [70, 56],
-        [92, 56],
-        [114, 56],
-      ]),
-      role: 'soft',
+      d: `${ellipse(62, 139, 6, 7)} ${ellipse(84, 135, 6, 7)} ${ellipse(106, 132, 6, 7)} ${ellipse(127, 130, 5, 7)}`,
     },
-    { d: ellipse(80, 142, 34, 6) },
-    { d: 'M46 142 C48 164 60 172 80 172 C100 172 112 164 114 142' },
     {
-      d: 'M126 122 h0.01 M126 122 q-6 -8 -10 -2 M126 122 q6 -8 10 -2',
-      role: 'soft',
+      d: 'M52 146 C54 164 70 170 92 166 C116 162 132 154 136 138 M60 150 C66 160 80 160 92 158 C110 154 124 148 130 140',
     },
-    shadow(80, 182, 44),
+    { d: 'M62 126 l-1 -7 M84 122 v-7 M106 119 l1 -7 M127 117 l1 -7' },
+    { d: 'M137 124 l5 -3 M138 134 l4 -3', role: 'ambient' },
+    shadow(94, 180, 50),
   ],
 
-  // A glaive taller than its owner, a string of sausages hung from the shaft.
+  // A Baratie cook's cap, short and puffed, its folds soft, the band in his
+  // colour, its far side hatched: the plain one the cooks wear, not Zeff's
+  // toque. He warns the kitchen about Krieg in it in episode 21.
   'carne': [
-    { d: 'M52 190 L104 50' },
+    { d: 'M46 124 V150 M114 124 V150 M46 150 Q80 160 114 150' },
+    { d: 'M46 124 Q80 134 114 124' },
     {
-      d: 'M100 60 C102 36 116 20 136 12 C132 32 124 48 110 64 Z',
-      role: 'accent',
+      d: 'M46 124 C30 116 28 92 44 84 C42 66 62 56 78 64 C90 50 114 56 116 72 C134 78 134 110 114 124',
     },
-    { d: 'M96 56 L112 64', role: 'accent' },
-    { d: 'M36 118 Q54 104 80 118', role: 'soft' },
-    { d: ellipse(36, 132, 6, 12), role: 'soft' },
-    { d: ellipse(36, 160, 6, 12), role: 'soft' },
-    { d: 'M36 144 V148', role: 'soft' },
-    shadow(78, 192, 40),
+    {
+      d: 'M60 128 C56 110 56 90 60 74 M80 130 C80 110 82 88 86 70 M98 128 C102 110 104 92 106 80',
+      role: 'soft',
+    },
+    { d: 'M46 124 Q80 134 114 124 L114 132 Q80 142 46 132 Z', role: 'accent' },
+    {
+      d: 'M104 136 l8 -6 M104 146 l8 -6 M118 104 l8 -6 M114 116 l8 -6',
+      role: 'ambient',
+    },
+    shadow(80, 168, 42),
   ],
 
-  // A trident as tall as its owner, a carving knife leaning at its foot.
+  // The chair he breaks with one blow while Gin is still sitting in it: the
+  // seat split in two and sagging, the break in his colour, the backrest
+  // leaning off one half, the legs splayed and splinters flying. Episode 21.
   'patty': [
-    { d: 'M80 188 V60' },
-    { d: 'M62 60 H98 M62 60 V36 M80 60 V26 M98 60 V36', role: 'accent' },
+    { d: 'M30 124 L54 108 L84 120 L64 138 Z' },
+    { d: 'M30 124 V130 L64 144 V138' },
+    { d: 'M54 108 L48 52 M68 114 L64 58 M48 52 Q56 48 64 58' },
+    { d: 'M50 70 L65 74 M51 84 L66 88', role: 'soft' },
+    { d: 'M92 122 L124 108 L132 122 L100 140 Z' },
+    { d: 'M100 140 V146 L132 128 V122' },
     {
-      d: 'M57 42 L62 28 L67 42 M75 32 L80 16 L85 32 M93 42 L98 28 L103 42',
+      d: 'M84 120 L80 124 L83 127 L77 131 L80 134 L64 138 M92 122 L96 126 L92 130 L98 134 L94 137 L100 140',
       role: 'accent',
     },
-    { d: 'M75 120 h10 M75 128 h10 M75 136 h10', role: 'soft' },
-    { d: 'M110 188 L114 166 M108 166 h12' },
-    { d: 'M114 166 L128 102 Q134 98 132 110 L120 166', role: 'soft' },
-    shadow(92, 190, 34),
+    {
+      d: 'M33 130 L22 174 M62 144 L66 178 M128 128 L140 172 M106 142 L104 178 M120 112 L124 150',
+    },
+    {
+      d: 'M86 112 l-4 -8 M90 112 l3 -9 M88 140 l-3 8 M94 142 l4 6',
+      role: 'soft',
+    },
+    { d: 'M106 144 l-1 30 M135 132 l10 36', role: 'ambient' },
+    shadow(82, 184, 64),
   ],
-  // A steel spear and the shoulder plate of a gilded suit.
+  // One shoulder plate of his gilded armour in his colour, turned so its face
+  // is away from us: the rivets along its ridge, the fur along its rim, its
+  // far side hatched, and the two gun barrels that slide out beneath it,
+  // smoking. He opens fire on the cooks with them in episode 22.
   'don-krieg': [
-    { d: 'M102 192 V80 M114 192 V80' },
+    { d: 'M20 112 C14 66 56 34 104 38 C138 42 152 74 146 102', role: 'accent' },
+    { d: 'M20 112 C40 128 118 126 146 102', role: 'accent' },
+    { d: 'M30 82 C40 62 62 50 84 46', role: 'soft' },
+    { d: 'M34 104 C40 78 72 60 108 62 C124 64 136 72 140 84', role: 'soft' },
     {
-      d: 'M102 80 C88 64 94 40 108 18 C122 40 128 64 114 80 Z',
+      d: dots([
+        [42, 90],
+        [58, 74],
+        [78, 66],
+        [100, 63],
+        [120, 68],
+      ]),
+      role: 'soft',
+    },
+    {
+      d: 'M24 118 q4 6 9 3 q4 6 9 3 q4 6 9 3 q4 6 9 3 q4 6 9 2 q4 6 9 1 q4 5 9 0 q4 5 9 -2 q4 4 9 -3 q4 3 9 -5 q4 2 7 -7',
+      role: 'soft',
+    },
+    { d: 'M134 54 l10 -6 M140 70 l10 -6 M142 86 l8 -5', role: 'ambient' },
+    {
+      d: 'M46 134 L126 142 M46 144 L124 152 M52 150 L126 166 M50 160 L122 176',
+    },
+    { d: `${ellipse(126, 147, 3, 5)} ${ellipse(125, 171, 3, 5.5)}` },
+    {
+      d: 'M132 140 q8 -6 12 2 q6 2 2 8 M132 166 q8 -4 12 2 q4 4 -2 8',
+      role: 'ambient',
+    },
+    shadow(84, 186, 50),
+  ],
+  // One of his iron shields seen almost edge-on, the face a sliver and the
+  // rim's thickness hatched as it turns away, the pearl set in its face
+  // standing off it in his colour, and the fire he lights when he first bleeds
+  // licking up behind it. Episode 25.
+  'pearl': [
+    {
+      d: 'M66 66 C52 62 40 54 42 38 C46 44 50 46 54 44 C50 34 54 22 64 16 C64 26 68 32 74 34 C74 26 80 18 88 16 C84 28 90 38 94 48',
+      role: 'soft',
+    },
+    { d: 'M91.5 62.5 C75.7 60.3 60.6 167.2 76.5 169.5' },
+    {
+      d: 'M91.5 62.5 C117.3 66.1 121.8 91 117.7 120.7 C113.5 150.4 102.2 173.1 76.5 169.5',
+    },
+    {
+      d: 'M91.5 62.5 C103.4 64.2 106 88.8 101.8 118.5 C97.6 148.2 88.4 171.1 76.5 169.5',
+      role: 'soft',
+    },
+    {
+      d: 'M111.9 89.6 L118.4 86.5 M113.7 106 L120.2 102.9 M111.2 123.9 L117.7 120.7 M106.7 141.4 L113.2 138.3 M98.5 156.4 L105 153.3',
+      role: 'ambient',
+    },
+    { d: 'M73.5 104.4 C56 99.9 52.6 123.7 70.7 124.2', role: 'accent' },
+    { d: 'M75.1 100.6 L70.2 128.2', role: 'soft' },
+    shadow(86, 180, 40),
+  ],
+  // Yoru on the diagonal: the curved black blade hatched along its length,
+  // the long crossguard forked at both ends in his colour, the wrapped grip and
+  // the stone of the pommel. He draws it on Zoro in episode 24.
+  'dracule-mihawk': [
+    {
+      d: 'M50.8 134 L129.4 68.1 Q142.6 55.8 146.2 43.3 Q149.7 61.5 138.6 79.1 L57.1 141.6 Z',
+    },
+    { d: 'M55.3 133.8 L131.1 70.1 Q141.6 60.2 144.4 49.6', role: 'soft' },
+    {
+      d: 'M63.5 135.1 L64.1 127.5 M72 128.5 L72.4 120.6 M80.6 121.9 L80.7 113.6 M89.1 115.3 L88.9 106.7 M97.7 108.7 L97.2 99.7 M106.3 102.1 L105.5 92.8 M114.8 95.5 L113.8 85.9 M123.4 88.9 L122 78.9 M132 82.3 L130.3 72 M139.9 75.1 L138.3 64.7 M145.4 67.5 L143.6 58.4',
+      role: 'ambient',
+    },
+    {
+      d: 'M32.8 112.6 L74.5 162.3 M28.7 116.1 L70.4 165.7 M32.8 112.6 Q32.1 106.2 33.7 102.5 M28.7 116.1 Q22.5 114.3 18.6 115.2 M74.5 162.3 Q80.7 164.1 84.6 163.2 M70.4 165.7 Q71.1 172.2 69.5 175.9 M32.8 112.6 L28.7 116.1 M74.5 162.3 L70.4 165.7',
       role: 'accent',
     },
-    { d: 'M108 72 V30', role: 'accent' },
-    { d: 'M98 86 H118 M100 96 H116' },
-    { d: 'M18 172 C12 126 46 96 86 104 L82 128 C54 124 34 144 40 172 Z' },
-    { d: 'M28 170 C26 136 50 116 80 120', role: 'soft' },
+    { d: 'M47.2 138.2 L16.9 163.6 M51.8 143.7 L21.5 169.1' },
     {
-      d: dots([
-        [40, 152],
-        [54, 136],
-        [72, 128],
-      ]),
+      d: 'M44.5 140.5 L44.9 149.5 L36.2 147.4 L36.7 156.4 L27.9 154.4 L28.4 163.4 L19.6 161.3 M49.1 146 L40.3 144 L40.8 152.9 L32 150.9 L32.5 159.9 L23.8 157.8 L24.3 166.8',
+      role: 'soft',
     },
-    { d: 'M14 180 H88', role: 'ambient', dashed: true },
-  ],
-  // A round iron shield, cracked across.
-  'pearl': [
-    { d: circle(80, 104, 56) },
-    { d: circle(80, 104, 44), role: 'soft' },
-    { d: circle(80, 104, 10) },
-    {
-      d: dots([
-        [80, 56],
-        [117, 80],
-        [117, 128],
-        [80, 152],
-        [43, 128],
-        [43, 80],
-      ]),
-    },
-    { d: 'M50 68 L72 94 L58 112 L86 134 L76 154', role: 'accent' },
-    { d: 'M72 94 L98 84 M86 134 L114 130', role: 'accent' },
-    shadow(80, 172, 48),
-  ],
-  // A great sword with a cross for a hilt.
-  'dracule-mihawk': [
-    { d: 'M73 44 L73 136 M87 44 L87 136', role: 'accent' },
-    { d: 'M73 44 L80 26 L87 44', role: 'accent' },
-    { d: 'M80 44 V136', role: 'ambient' },
-    { d: 'M40 140 H120 M40 140 q-10 0 -8 10 M120 140 q10 0 8 10' },
-    { d: 'M74 140 V172 M86 140 V172' },
-    { d: 'M74 148 l12 4 M74 156 l12 4 M74 164 l12 4', role: 'ambient' },
-    { d: circle(80, 180, 6) },
+    { d: 'M9.5 174.5 A6.3 6.3 -40 1 0 19.2 166.4 A6.3 6.3 -40 1 0 9.5 174.5' },
+    { d: 'M11.1 170.8 Q11.4 168.3 13.7 166.9', role: 'soft' },
+    shadow(84, 184, 54),
   ],
 
   // A walled compound on the shore, a gate in the wall and a tower rising
@@ -1322,22 +1443,22 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // A saw-toothed sword, laid over on the diagonal.
+  // His fur cap: the crown in his colour with its seams, the thick fur turned
+  // up around it, the far side hatched. He wears it from his first scene at
+  // Arlong Park in episode 31.
   'arlong': [
-    { d: 'M80 20 L64 48 V150', transform: 'rotate(-28 80 106)' },
-    { d: 'M80 20 L94 48', transform: 'rotate(-28 80 106)' },
+    { d: 'M46 100 C44 66 62 48 82 48 C102 48 120 66 118 100', role: 'accent' },
+    { d: 'M66 54 Q60 76 62 96 M100 54 Q106 76 104 96', role: 'soft' },
     {
-      d: 'M94 48 l10 8.5 l-10 8.5 l10 8.5 l-10 8.5 l10 8.5 l-10 8.5 l10 8.5 l-10 8.5 l10 8.5 l-10 8.5 l10 8.5 l-10 8.5',
-      role: 'accent',
-      transform: 'rotate(-28 80 106)',
+      d: 'M36 104 q4 -8 10 -6 q4 -8 12 -5 q6 -7 13 -4 q6 -6 13 -2 q7 -5 13 0 q7 -3 12 3 q7 0 9 8 q6 6 2 14 q4 8 -2 14 q-6 6 -14 4 q-6 6 -14 3 q-8 6 -16 2 q-8 4 -15 -1 q-8 2 -13 -4 q-8 0 -10 -8 q-6 -6 -2 -12 q-4 -6 1 -6',
     },
-    { d: 'M54 150 H106 V162 H54 Z', transform: 'rotate(-28 80 106)' },
-    { d: 'M66 162 V188 H94 V162 M62 188 H98', transform: 'rotate(-28 80 106)' },
     {
-      d: 'M66 170 H94 M66 178 H94',
+      d: 'M46 112 l2 6 M58 114 l1 6 M72 116 l1 6 M86 116 v6 M100 115 l-1 6 M114 112 l-2 6',
       role: 'soft',
-      transform: 'rotate(-28 80 106)',
     },
+    { d: 'M120 112 l8 -4 M120 124 l8 -4', role: 'ambient' },
+    { d: 'M108 64 l8 -4 M112 76 l8 -4 M114 88 l6 -3', role: 'ambient' },
+    shadow(82, 152, 50),
   ],
   // Six swords fanned out in a ring, one for each arm.
   'hatchan': [
