@@ -94,6 +94,13 @@ describe('episodeAtChapter', () => {
     // with them, and its other facts are chapters 5 to 7.
     expect(episodeAtChapter(4)).toBeLessThan(3)
   })
+
+  it('keeps chapters 5 and 6 below episode 3, which ends in chapter 7', () => {
+    // Koby joins the Marines, Morgan's men take over the base and Luffy and
+    // Zoro leave Shells Town in chapter 7; episode 3 tells all of it.
+    expect(episodeAtChapter(6)).toBeLessThan(3)
+    expect(chapterAtEpisode(3)).toBeGreaterThanOrEqual(7)
+  })
 })
 
 describe('chapterAtEpisode', () => {

@@ -66,8 +66,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 1,
       name: { it: 'Monkey D. Rufy', en: 'Monkey D. Luffy' },
       summary: {
-        it: 'Un ragazzo di gomma che salpa da solo dentro una botte, con un cappello di paglia che non è suo, e annuncia al primo che incontra che diventerà il Re dei Pirati.',
-        en: 'A rubber boy who sets out alone inside a barrel, wearing a straw hat that is not his, and tells the first person he meets that he will be King of the Pirates.',
+        it: 'Un ragazzo di gomma che salpa da solo su una barchetta, con un cappello di paglia che non è suo, e annuncia che diventerà il Re dei Pirati.',
+        en: 'A rubber boy who sets out to sea alone in a small boat, wearing a straw hat that is not his, and declares that he will be King of the Pirates.',
       },
       visual: { art: 'monkey-d-luffy', tint: 'red' },
     },
@@ -885,8 +885,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles['monkey-d-luffy'],
       role: { it: 'Capitano', en: 'Captain' },
       log: {
-        it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: parte dentro una botte e recluta il primo membro della ciurma nel giro di un pomeriggio. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
-        en: 'Seventeen, a grin that does not switch off, and no ship: he sets out inside a barrel and recruits the first member of his crew within an afternoon. He ate a devil fruit as a child and has been rubber ever since, which means the sea rejects him and he cannot swim. He sails anyway.',
+        it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: prende il mare da solo su una barchetta. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
+        en: 'Seventeen, a grin that does not switch off, and no ship: he sets out to sea alone in a small boat. He ate a devil fruit as a child and has been rubber ever since, which means the sea rejects him and he cannot swim. He sails anyway.',
       },
       status: [{ episode: 1, chapter: 1, value: 'alive' }],
       affiliation: [
@@ -958,8 +958,13 @@ export const eastBlue: Saga = {
             en: 'Alvida Pirates, unwilling cabin boy',
           },
         },
+        // The Marines take him in on the last pages of chapter 7, after Luffy
+        // and Zoro leave Shells Town: "After the pirates leave, Koby asks to
+        // join the Marines, and is allowed in." The pin holds chapters 5 and
+        // 6 below episode 3, whose other Shells Town facts close there too.
         {
           episode: 3,
+          chapter: 7,
           value: { it: 'Marina, recluta', en: 'Marines, recruit' },
         },
         {
@@ -1103,8 +1108,10 @@ export const eastBlue: Saga = {
             en: 'Captain Morgan’s son',
           },
         },
+        // Episode 3 does not show it. He is a chore boy beside Koby from the
+        // cover story of chapter 83, adapted in episode 68.
         {
-          episode: 3,
+          episode: 68,
           value: { it: 'Marina, tuttofare', en: 'Marines, chore boy' },
         },
         {
