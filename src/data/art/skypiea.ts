@@ -712,33 +712,29 @@ export const skypieaArt = {
     shadow(80, 188, 44),
   ],
 
-  // His wide white cloth belt with the red disc at its front, standing on its
-  // own, the loose end tucked under at one side and hanging past it. It shows
-  // in full when he fights the Shandia raid (165). The inside of the far wall
-  // and the side turning away are hatched.
+  // His wide white cloth belt with the red disc on it, untied and dropped in a
+  // loose loop, the end crossing over at the front and twisting once as it
+  // trails away. It shows in full when he fights the Shandia raid (165). The
+  // twisted underside and the side turning away are hatched.
   'gedatsu': [
-    { d: 'M18 98 C22 82 46 74 68 76 C78 77 84 73 94 73 C118 74 138 80 142 94' },
-    { d: 'M18 98 C30 112 52 118 80 118 C108 118 130 110 142 94' },
     {
-      d: 'M18 98 C16 112 17 126 22 136 C36 152 58 158 80 158 C106 158 128 150 139 132 C143 120 144 106 142 94',
+      d: 'M56 148 C24 144 10 124 18 106 C28 86 70 80 102 84 C134 88 148 106 142 124 C136 142 110 152 84 152',
     },
-    { d: circle(80, 138, 9), role: 'accent' },
     {
-      d: 'M32 118 C40 120 50 120 58 124 M30 130 C42 132 52 136 60 142 M34 144 C44 146 52 150 56 156',
+      d: 'M70 138 C50 134 40 126 44 116 C50 104 76 100 98 103 C114 105 122 112 118 120 C114 128 100 131 88 131',
+    },
+    { d: 'M142 124 L141 130 C134 148 110 157 84 157', role: 'soft' },
+    { d: circle(112, 138, 6), role: 'accent' },
+    { d: 'M88 131 C72 134 58 142 44 156 M84 152 C74 156 64 162 58 172' },
+    { d: 'M44 156 L58 172' },
+    { d: 'M44 156 L16 162 L22 180 L58 172' },
+    { d: 'M24 164 l4 11 M34 162 l4 11 M44 160 l4 11', role: 'ambient' },
+    {
+      d: 'M76 142 C68 144 62 148 58 154 M92 141 C98 143 102 146 104 150',
       role: 'soft',
     },
-    { d: 'M132 116 l6 -5 M130 129 l7 -6 M124 142 l8 -7', role: 'ambient' },
-    {
-      d: 'M38 86 l2 10 M54 81 l2 10 M110 80 l-2 10 M126 85 l-2 10',
-      role: 'ambient',
-    },
-    { d: 'M24 108 C12 122 6 146 12 170 L28 166 C24 146 26 128 32 116' },
-    {
-      d: 'M24 108 C26 114 30 116 32 116 M18 134 C17 146 18 156 20 164',
-      role: 'soft',
-    },
-    { d: 'M24 140 l-4 4 M24 152 l-4 4', role: 'ambient' },
-    shadow(78, 180, 64),
+    { d: 'M128 104 l8 -5 M134 113 l8 -5 M136 123 l7 -5', role: 'ambient' },
+    shadow(80, 180, 64),
   ],
 
   // His sword, the Eisen Whip, with the dial at its pommel as the accent, and

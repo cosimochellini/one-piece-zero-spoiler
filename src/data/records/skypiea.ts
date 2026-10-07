@@ -424,8 +424,9 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 166,
       revealedAtChapter: 254,
-      // The anime captions him at 164, but his texts are true at 166. The
-      // manga names him only at 254, in a caption when Enel summons the priests.
+      // The anime captions him at 164, but his texts are true at 166. The manga
+      // names him in a caption at the shrine, once the priests have been
+      // summoned (ch 254 p.9).
       name: { it: 'Gedatsu', en: 'Gedatsu' },
       summary: {
         it: 'Un sacerdote di Ener, un uomo alto con una fila di ciuffi dritti in testa, che combatte contro gli shandia quando attaccano Upper Yard.',
