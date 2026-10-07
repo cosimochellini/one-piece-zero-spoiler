@@ -1065,7 +1065,7 @@ export const summitWarArt = {
       d: 'M14 30 q4 -5 8 0 q4 -5 8 0 M38 18 q3 -4 6 0 q3 -4 6 0 M34 42 q3 -4 6 0 q3 -4 6 0',
       role: 'soft',
     },
-    shadow(66, 160, 52),
+    shadow(70, 158, 54),
   ],
 
   // His basket of apples in three-quarters, the handle over it, the wicker's
