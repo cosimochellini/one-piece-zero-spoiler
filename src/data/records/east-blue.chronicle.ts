@@ -1104,6 +1104,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 261,
+      chapter: 372,
       value: {
         title: { it: 'I tre peccati di un cuoco', en: 'A cook’s three sins' },
         body: {

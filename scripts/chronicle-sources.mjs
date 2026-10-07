@@ -412,7 +412,7 @@ export const CHRONICLE_SOURCES = {
     },
     261: {
       source: 'https://onepiece.fandom.com/wiki/Episode_261',
-      note: 'Wanze appears at the end of 258, the fight runs through 259–260 and ends in 261 with the three sins and Santen Découpage throwing Wanze into the CP9 car. Candidate 257–258 → 261.',
+      note: 'Wanze appears at the end of 258, the fight runs through 259–260 and ends in 261 with the three sins and Santen Découpage throwing Wanze into the CP9 car. Candidate 257–258 → 261. Chapter (#366): 372, where Sanji cuts the suit apart, lists the three crimes and sends Wanze flying into the CP9 car (Chapter_372).',
     },
     298: {
       source: 'https://onepiece.fandom.com/wiki/Episode_298',
@@ -1986,7 +1986,7 @@ export const CHRONICLE_SOURCES = {
     },
     261: {
       source: 'https://onepiece.fandom.com/wiki/Episode_261',
-      note: 'Episode_259: Ramen Beam, the ramen Men’s Formal Suit, Sanji caught in the noodles and slammed around, then picks up kitchen knives. Episode_260: Sanji cuts the suit apart. Episode_261: knives are not for cutting people; Wanze throws knives (Hocho Nage), calls Robin a terrible woman better off dead; Parage Shot rearranges his face; Santen Découpage returns it to normal and sends him flying through two cars into the one CP9 is in. Filed at 261, where the fight ends.',
+      note: 'Episode_259: Ramen Beam, the ramen Men’s Formal Suit, Sanji caught in the noodles and slammed around, then picks up kitchen knives. Episode_260: Sanji cuts the suit apart. Episode_261: knives are not for cutting people; Wanze throws knives (Hocho Nage), calls Robin a terrible woman better off dead; Parage Shot rearranges his face; Santen Découpage returns it to normal and sends him flying through two cars into the one CP9 is in. Filed at 261, where the fight ends. Chapter (#366): 372, the last event: Wanze “is sent flying into the second car where the CP9 are” (Chapter_372).',
     },
   },
   'nero': {
@@ -1996,7 +1996,7 @@ export const CHRONICLE_SOURCES = {
     },
     261: {
       source: 'https://onepiece.fandom.com/wiki/Episode_261',
-      note: 'Episode_260: Nero has not mastered Shigan, takes out two pistols, targets Franky’s back; Franky Invincible; Centaur Mode, which Nero yells is backwards. Episode_261: Nero nearly knocks Franky off, Franky pins him with his four legs and takes him down with Ultimate Hammer, crashing him down into the train. Filed at 261, where the fight ends.',
+      note: 'Episode_260: Nero has not mastered Shigan, takes out two pistols, targets Franky’s back; Franky Invincible; Centaur Mode, which Nero yells is backwards. Episode_261: Nero nearly knocks Franky off, Franky pins him with his four legs and takes him down with Ultimate Hammer, crashing him down into the train. Filed at 261, where the fight ends. Chapter (#366): 373, the last event: Franky locks down his arms and legs and “smashes him through the roof of the third car” (Chapter_373); the pistols, the back and the centaur are 372.',
     },
     262: {
       source: 'https://onepiece.fandom.com/wiki/Episode_262',
@@ -2006,7 +2006,7 @@ export const CHRONICLE_SOURCES = {
   't-bone': {
     261: {
       source: 'https://onepiece.fandom.com/wiki/Episode_261',
-      note: 'Threshold entry: first episode that names him on screen (Zambai: “Ship-Slasher” T Bone, the Funimation wording of the epithet the record gives as Ship Cutter, from the Navy, can slash through any ship). Folds in eps 257 (bandages a bitten arm with a piece of his cape, peace and kindness, Marines freaked out by his face), 258 (Chokkaku Senko cuts the door, the three are on car 5, the cars are detached) and 260 (the Sea King cut in half on the tracks). Episode_261: running on the tracks, ashamed of falling for a trap; proud captain of the Navy; Zoro blocks his attack and takes him down, he goes flying into the water; Zoro compliments his strength and T Bone, floating, compliments Zoro.',
+      note: 'Threshold entry: first episode that names him on screen (Zambai: “Ship-Slasher” T Bone, the Funimation wording of the epithet the record gives as Ship Cutter, from the Navy, can slash through any ship). Folds in eps 257 (bandages a bitten arm with a piece of his cape, peace and kindness, Marines freaked out by his face), 258 (Chokkaku Senko cuts the door, the three are on car 5, the cars are detached) and 260 (the Sea King cut in half on the tracks). Episode_261: running on the tracks, ashamed of falling for a trap; proud captain of the Navy; Zoro blocks his attack and takes him down, he goes flying into the water; Zoro compliments his strength and T Bone, floating, compliments Zoro. Chapter (#366): 371, where he “is easily defeated by Zoro” (Chapter_371); his dossier entries at 261 carry the same chapter, because the rest of episode 261 runs to 373.',
     },
     1116: {
       source: 'https://onepiece.fandom.com/wiki/Episode_1116',

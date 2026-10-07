@@ -1234,13 +1234,16 @@ export const waterSeven: Saga = {
         it: 'Scorta il treno del mare con i suoi uomini e si preoccupa di ogni loro ferita, promettendo pace e gentilezza mentre loro cercano di non guardarlo in faccia. La sua spada taglia solo in linea retta e ad angolo retto, che si tratti di una porta o di un mostro marino. Quando gli intrusi lo ingannano e lo lasciano indietro, corre da solo lungo i binari battuti dalla tempesta per sbarrare loro la strada.',
         en: 'He escorts the sea train with his men and fusses over every wound they get, promising peace and kindness while they try not to look at his face. His sword cuts only in straight lines and right angles, whether through a door or a sea monster. When the intruders trick him and leave him behind, he runs down the storm-lashed tracks alone to stand in their way.',
       },
+      // Episode 261 runs on to chapter 373, but Zambai names him and Zoro
+      // beats him in chapter 371, so his entries there say so.
       status: [
-        { episode: 261, value: 'alive' },
+        { episode: 261, chapter: 371, value: 'alive' },
         { episode: 1116, value: 'deceased' },
       ],
       affiliation: [
         {
           episode: 261,
+          chapter: 371,
           value: { it: 'Marina, capitano', en: 'Marines, captain' },
         },
         {
@@ -1249,7 +1252,11 @@ export const waterSeven: Saga = {
         },
       ],
       epithet: [
-        { episode: 261, value: { it: 'Trancia-navi', en: 'Ship Cutter' } },
+        {
+          episode: 261,
+          chapter: 371,
+          value: { it: 'Trancia-navi', en: 'Ship Cutter' },
+        },
       ],
     },
     'jabra': {
