@@ -664,6 +664,9 @@ export const wholeCakeChronicles = {
   'gion': [
     {
       episode: 887,
+      // The Red Port scene is chapter 907, but its closing remark is not
+      // traced to a panel there, so chapter readers get it a chapter later.
+      chapter: 908,
       value: {
         title: { it: 'Garp-chan, tuo nipote', en: 'Garp-chan, your grandson' },
         body: {
@@ -676,6 +679,9 @@ export const wholeCakeChronicles = {
   'tokikake': [
     {
       episode: 887,
+      // The Red Port scene is chapter 907, but its closing remark is not
+      // traced to a panel there, so chapter readers get it a chapter later.
+      chapter: 908,
       value: {
         title: { it: 'Chiedo scusa, signorina', en: 'Pardon me, young lady' },
         body: {
