@@ -255,8 +255,9 @@ export const waterSevenArt = {
 
   // Her narrow rimless glasses, folded and lying flat on the closed blue
   // binder she holds when she tells Iceburg about Dock One (230, and in the
-  // manga at 326). The binder in 3/4 with leather caps on two corners, the
-  // paper between its covers and the spine hatched. The lenses are the accent.
+  // manga at 325 and 326). The binder in 3/4 with leather caps on two
+  // corners, the paper between its covers and the spine hatched. The lenses
+  // are the accent, the temples folded flat behind them.
   'kalifa': [
     { d: 'M8 126 L96 152 L152 120 L64 94 Z' },
     { d: 'M8 126 V140 L96 166 L152 134 V120 M96 152 V166' },
@@ -265,16 +266,18 @@ export const waterSevenArt = {
       d: 'M104 158 l5 -8 M115 152 l5 -8 M126 146 l5 -8 M137 140 l5 -8 M147 134 l4 -6.4',
       role: 'ambient',
     },
-    { d: 'M82.6 148 L108.2 145.1 M138.6 116 L139.8 126.9', role: 'soft' },
+    {
+      d: 'M82.6 148 Q96 143.4 108.2 145.1 M138.6 116 Q135.6 121.4 139.8 126.9',
+    },
     {
       d: 'M39.8 117 L73.9 123 Q76.8 123.5 74.1 125.6 L68.2 128.8 Q59.1 133.2 44.8 130.7 Q29.2 128 32.6 122.6 Z M125.2 132 L91 126 Q88.2 125.5 85.5 127.6 L82.4 131.4 Q79 136.7 93.3 139.3 Q108.9 142 118 137.6 Z',
       role: 'accent',
     },
     { d: 'M75 124.9 Q84.3 123.1 86.4 126.9' },
     {
-      d: 'M38.9 117.7 L50.3 112.8 L117.2 124.6 Q125.8 126.1 131.7 122.9 M124.3 132.7 L133.4 121.5 L69.4 110.2 Q60.8 108.7 63.9 105',
+      d: 'M38.9 117.7 L49.4 113.5 L123.4 126.6 M124.3 132.7 L130.8 123.6 L59.6 111',
     },
-    shadow(80, 184, 66),
+    shadow(80, 176, 66),
   ],
 
   // A bar counter, and a door standing open in the air above it.
