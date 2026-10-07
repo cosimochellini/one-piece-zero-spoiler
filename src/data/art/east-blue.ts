@@ -1,6 +1,7 @@
 import {
   BLADE,
   circle,
+  dot,
   dots,
   ellipse,
   house,
@@ -131,25 +132,66 @@ const CHEW_BEADS = (
   .map(([x, y]) => circle(x, y, 2.2))
   .join(' ')
 
+/**
+ * Koby's wooden bucket: the body, the rim seen round, the water, the far
+ * wall hatched, two staves and two hoops, and the handle. The same bucket
+ * stands beside the mop at 1 and under the bandanna at 314.
+ */
+const KOBY_BUCKET: Stroke[] = [
+  { d: 'M88 132 L93 172 A21 5.5 0 0 0 135 172 L140 132' },
+  { d: ellipse(114, 132, 26, 7) },
+  { d: 'M92 138 A22 5 0 0 1 136 138', role: 'soft' },
+  {
+    d: 'M96.6 128.6 l2 5 M105 126.6 l2 5.6 M114 126 l2 6 M123 126.6 l2 5.6 M131.4 128.6 l2 5',
+    role: 'ambient',
+  },
+  { d: 'M105 138.8 L107 177 M123 138.8 L121 177', role: 'soft' },
+  {
+    d: 'M89.4 143 A24.6 6.6 0 0 0 138.6 143 M91.6 162 A22.4 6 0 0 0 136.4 162',
+  },
+  { d: 'M88 132 C88 112 140 112 140 132' },
+]
+
+/**
+ * One of Rika's rice balls: the front in her colour, its side, the shade on
+ * the side, the strip of seaweed round its base. The second is the same,
+ * smaller, beside it (`SECOND_RICE_BALL`).
+ */
+const RICE_BALL: Stroke[] = [
+  {
+    d: 'M30 150 Q22 150 26 141 L52 98 Q58 88 64 98 L90 141 Q94 150 86 150 Z',
+    role: 'accent',
+  },
+  { d: 'M61 93 Q67 86 74 94 L100 136 Q104 145 96 147 L86 150' },
+  { d: 'M78 112 l6 -3 M84 122 l6 -3 M90 132 l6 -3', role: 'ambient' },
+  {
+    d: 'M42 150 V124 H74 V150 M74 124 L80.6 121 L91.4 138.6 M93.6 147.8 L95.6 147.2',
+  },
+]
+const SECOND_RICE_BALL = 'translate(86 42) scale(0.72)'
+
 /** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
-  // Four small islands, a dotted course between them, a compass watching.
+  // One island of the weakest sea seen from the water: the ridge and its
+  // peak, the cliff's jagged rim, the strata down its face and its far side
+  // hatched; in front, a dinghy setting out under one sail. Luffy rows away in
+  // a dinghy in chapter 1 and leaves with Koby in one in episode 1.
   'east-blue': [
-    { d: 'M22 106 q10 -14 26 -6 q8 6 -2 14 q-14 6 -24 -8z' },
-    { d: 'M84 84 q14 -10 26 0 q6 8 -6 14 q-16 4 -20 -14z' },
-    { d: 'M112 124 q8 -8 20 -2 q6 6 0 12 q-14 6 -20 -10z' },
-    { d: 'M54 136 q6 -8 16 -4 q6 4 0 10 q-12 4 -16 -6z' },
     {
-      d: 'M34 110 C60 100 70 90 96 90 S120 110 122 128 S80 140 62 138',
+      d: 'M44 118 C52 104 60 100 68 102 L80 84 C86 78 92 80 98 88 L108 96 C116 94 124 100 134 114',
+    },
+    { d: 'M44 118 L56 124 L76 120 L94 126 L114 120 L134 114' },
+    { d: 'M44 118 L42 150 M134 114 L138 150 M42 150 H138' },
+    { d: 'M56 124 L55 150 M76 120 L77 150 M94 126 L94 150', role: 'soft' },
+    {
+      d: 'M116 130 l18 -12 M116 140 l20 -13 M118 149 l19 -12.6',
       role: 'ambient',
-      dashed: true,
     },
-    { d: circle(128, 44, 16) },
-    {
-      d: 'M128 28 L131 41 L144 44 L131 47 L128 60 L125 47 L112 44 L125 41 Z',
-      role: 'accent',
-    },
-    ...SEA,
+    { d: 'M80 84 L84 98 M98 88 L94 100', role: 'soft' },
+    { d: 'M2 152 H48 L42 164 Q26 168 8 164 Z' },
+    { d: 'M24 152 V108' },
+    { d: 'M26 110 Q44 126 44 148 H26 Z', role: 'accent' },
+    ...SEA.slice(1),
   ],
 
   // A barrel adrift, its lid shut, two hoops round the staves.
@@ -161,28 +203,40 @@ export const eastBlueArt = {
     ...SEA,
   ],
 
-  // A straw hat: the brim as one ellipse, the crown as one curve, the band in
-  // the captain's red.
+  // The straw hat in 3/4: the brim with the thickness of its rim along the
+  // front, the domed crown, the band in the captain's red, rings of straw on
+  // the brim and the crown, and the crown's far side hatched. On his head from
+  // episode 1.
   'monkey-d-luffy': [
-    { d: ellipse(80, 104, 60, 16) },
-    { d: 'M50 100 C50 60 110 60 110 100' },
-    { d: 'M55 93 Q80 101 105 93', role: 'accent' },
-    { d: 'M56 85 Q80 93 104 85', role: 'accent' },
-    shadow(80, 150, 26),
+    { d: 'M47 104.9 A66 22 0 1 0 113 104.9' },
+    { d: 'M14 124 V129 A66 22 0 0 0 146 129 V124', role: 'soft' },
+    { d: 'M47 108 C44 58 116 58 113 108' },
+    {
+      d: 'M47 108 Q80 122 113 108 L113.4 95 Q80 109 46.6 95 Z',
+      role: 'accent',
+    },
+    { d: 'M34 124 A46 15 0 0 0 126 124', role: 'soft' },
+    { d: 'M56.3 79.7 Q80 88 103.7 79.7 M69.8 72 Q80 76 90.2 72', role: 'soft' },
+    {
+      d: 'M102.6 79.4 l-3.4 5 M106.8 84 l-3.6 5.4 M109.8 89.4 l-3.4 5',
+      role: 'ambient',
+    },
+    shadow(80, 172, 56),
   ],
 
-  // A mop and a wooden bucket: the deck of a ship the boy did not choose. The
-  // mop gives way to his bandanna from 314, in `eastBlueRedrawn`.
+  // A mop leaning by a wooden bucket: the strands of the mop head in pink,
+  // the bucket's rim seen round with the water inside and its far wall
+  // hatched, two staves and two hoops. The chore boy cleans Alvida's ship in
+  // episode 1. The mop gives way to his bandanna from 314, in `eastBlueRedrawn`.
   'koby': [
-    { d: 'M104 26 L64 122' },
-    { d: 'M58 118 L74 128' },
-    { d: 'M58 120 C50 140 52 158 48 172', role: 'accent' },
-    { d: 'M64 124 C60 144 64 160 62 174', role: 'accent' },
-    { d: 'M70 128 C70 146 76 160 76 172', role: 'accent' },
-    { d: 'M86 130 H142 L134 174 H94 Z' },
-    { d: 'M88 146 H140 M91 160 H137', role: 'soft' },
-    { d: 'M88 130 q26 -24 52 0' },
-    shadow(84, 182, 44),
+    { d: 'M106 22 L67.4 119.6 M109.6 23.4 L71 121' },
+    { d: 'M60 116 L76 123.6 L73 130.6 L57 123 Z' },
+    {
+      d: 'M59 125 C52 142 50 158 44 172 M63 127 C59 144 60 160 56 174 M67 129 C66 146 70 160 68 174 M71 130 C73 146 80 158 82 170',
+      role: 'accent',
+    },
+    ...KOBY_BUCKET,
+    shadow(92, 182, 52),
   ],
   // Her iron mace on its side: the long grip with the ring at its end, the
   // head swelling into a studded barrel with its collar and end seen round,
@@ -218,19 +272,33 @@ export const eastBlueArt = {
     },
     shadow(104, 178, 44),
   ],
-  // An execution scaffold: two uprights, the crossbeam, the platform.
+  // The deck of the execution platform in 3/4, its planks and its far side
+  // hatched, and the executioners' two blades crossed above it, their shafts in
+  // red. He dies on it at the start of episode 1 and chapter 1.
   'gold-roger': [
-    { d: 'M26 148 H134 V168 H26 Z' },
-    { d: 'M46 148 V46 M114 148 V46' },
-    { d: 'M34 42 H126', role: 'accent' },
-    { d: 'M46 62 H114', role: 'accent' },
-    { d: 'M46 62 L62 46 M114 62 L98 46' },
-    { d: 'M6 178 V168 H20 V158 H34' },
-    { d: 'M40 168 V178 M120 168 V178' },
-    shadow(80, 186, 56),
+    {
+      d: 'M14 124 H120 L146 104 H40 Z M14 124 V142 H120 V124 M120 142 L146 122 V104',
+    },
+    {
+      d: 'M41 124 L67 104 M67 124 L93 104 M93 124 L119 104 M14 133 H120',
+      role: 'soft',
+    },
+    {
+      d: 'M124 134.8 l18 -13.8 M124 128 l18 -13.8 M124 121.2 l18 -13.8',
+      role: 'ambient',
+    },
+    shadow(80, 152, 66),
+    { d: 'M10 12 L44 44 M152 22 L116 50', role: 'accent' },
+    { d: 'M39.9 48.4 L48.1 39.6 M112.3 45.3 L119.7 54.7' },
+    {
+      d: 'M42.9 47.4 L86.8 94.5 L100 104 L91.2 89.9 L47.3 42.7 M112.9 48.4 L67.4 94.1 L58 108 L71.3 99.1 L116.8 53.4',
+    },
+    { d: 'M45.1 45 L89 92.2 M114.8 50.9 L69.4 96.6', role: 'soft' },
   ],
-  // Three swords in their sheaths, the middle one in green. The third is
-  // drawn again as Shusui from 362 and as Enma from 956, in `eastBlueRedrawn`.
+  // Three swords in their sheaths, the middle one in green, each guard seen
+  // as an oval across its sheath and each grip wrapped in diamonds. Luffy
+  // fetches them from the base in episode 2. The third is drawn again as
+  // Shusui from 362 and as Enma from 956, in `eastBlueRedrawn`.
   'roronoa-zoro': [
     ...sheath(-22, 'soft'),
     ...sheath(0, 'accent'),
@@ -296,50 +364,67 @@ export const eastBlueArt = {
     { d: 'M4 156 H156', role: 'ambient' },
     shadow(76, 170, 56),
   ],
-  // A great axe: the haft, the crescent blade, the rivets of a steel jaw.
+  // His axe-hand: the broad blade in his colour with the thickness of its
+  // edge hatched, the spike behind the haft, the rivets, and the steel cuff
+  // where his right hand should be, open below with its inside hatched. He
+  // carries it from episode 2.
   'morgan': [
-    { d: 'M76 188 V50 M88 188 V50' },
-    { d: 'M74 190 h16' },
-    { d: 'M76 62 h12 M76 76 h12', role: 'soft' },
+    { d: 'M75 30 V116 M85 30 V116 M75 30 Q80 25 85 30' },
     {
-      d: 'M88 42 C120 38 140 60 138 92 C122 78 106 70 88 68 Z',
+      d: 'M85 46 C100 42 116 34 130 22 C146 46 150 84 138 116 C124 102 104 92 85 88',
       role: 'accent',
     },
-    { d: 'M88 54 C106 58 122 68 132 82', role: 'accent' },
-    { d: 'M76 44 C54 42 40 56 42 74 C54 64 66 58 76 56 Z' },
-    { d: 'M76 36 q6 -10 12 0', role: 'soft' },
+    { d: 'M130 22 L134 26 C148 50 152 86 141 118 L138 116' },
+    {
+      d: 'M137 34 l4 -1 M141 48 l4 -1 M143 62 l4 -1 M144 76 l4 -1 M144 90 l4 -1 M142 104 l4 -1',
+      role: 'ambient',
+    },
+    { d: 'M126 30 C138 50 142 80 134 106', role: 'soft' },
+    { d: 'M75 48 L58 56 L75 64' },
     {
       d: dots([
-        [102, 58],
-        [116, 68],
-        [126, 82],
-      ]),
-    },
-    shadow(82, 194, 26),
-  ],
-
-  // Two rice balls, each with its strip of seaweed, a few grains fallen beside them.
-  'rika': [
-    {
-      d: 'M30 150 Q26 146 30 140 L58 96 Q62 90 66 96 L94 140 Q98 146 92 150 Z',
-      role: 'accent',
-    },
-    { d: 'M46 150 V126 H78 V150' },
-    {
-      d: 'M84 166 Q80 162 84 156 L108 118 Q112 112 116 118 L140 156 Q144 162 138 166 Z',
-      role: 'accent',
-    },
-    { d: 'M98 166 V146 H126 V166' },
-    {
-      d: dots([
-        [40, 172],
-        [50, 168],
-        [60, 174],
-        [150, 176],
+        [92, 54],
+        [92, 66],
+        [92, 78],
       ]),
       role: 'soft',
     },
-    shadow(86, 180, 60),
+    { d: 'M68 116 Q80 111 92 116 L98 156 M68 116 L62 156' },
+    { d: ellipse(80, 156, 18, 5.5) },
+    { d: 'M70 154.6 l4 4 M78 152.6 l6 6 M86 152.8 l5.4 5.4', role: 'ambient' },
+    { d: 'M66 128 Q80 133 94 128 M64 142 Q80 147.6 96 142', role: 'soft' },
+    {
+      d: dots([
+        [70, 136],
+        [80, 138.2],
+        [90, 136],
+      ]),
+      role: 'soft',
+    },
+    {
+      d: 'M93.6 121 l3 -1.6 M94.8 132 l3 -1.6 M96 143 l3 -1.6',
+      role: 'ambient',
+    },
+    shadow(80, 176, 34),
+  ],
+
+  // Her two rice balls in 3/4, each with its strip of seaweed and its side
+  // in shade, a few grains fallen beside them. She made them with sugar for the
+  // pirate hunter in episode 2.
+  'rika': [
+    ...RICE_BALL,
+    ...RICE_BALL.map((stroke) => ({ ...stroke, transform: SECOND_RICE_BALL })),
+    {
+      d: dots([
+        [30, 160],
+        [40, 166],
+        [18, 164],
+        [110, 168],
+        [150, 166],
+      ]),
+      role: 'soft',
+    },
+    { d: 'M-4 156 H164', role: 'ambient', dashed: true },
   ],
   // The sword he wore in Foosha, sheathed on the tavern counter, its round
   // guard in red and its wrapped grip towards the reader, the sheath's
@@ -389,76 +474,174 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // A tavern mug with its head of foam, standing on a tray.
+  // A green bottle tipped over a tavern mug, pouring: the bottle's base seen
+  // round, its blank label and its underside hatched, the stream, and the head
+  // of foam rising over the mug's rim. She pours for the Red Hair crew in
+  // episode 4.
   'makino': [
-    { d: 'M54 78 L60 148 H100 L106 78 Z' },
-    { d: 'M56 98 H104 M58 124 H102', role: 'soft' },
-    { d: 'M106 90 C128 96 128 132 106 138' },
-    { d: 'M52 78 q6 -14 18 -6 q8 -14 20 -4 q10 -10 16 10 Z', role: 'accent' },
-    { d: ellipse(80, 158, 56, 11) },
-    { d: ellipse(80, 158, 44, 8), role: 'soft' },
-    shadow(80, 178, 54),
+    {
+      d: 'M153 54.5 L119 82.5 Q113.9 84.1 108.4 82.2 L97.8 91.4 M139 37.5 L105 65.5 Q102.4 70.2 103.3 76 L92.2 84.6',
+      role: 'accent',
+    },
+    {
+      d: 'M153 54.5 A11 4.2 50.6 1 0 139 37.5 A11 4.2 50.6 1 0 153 54.5',
+      role: 'accent',
+    },
+    { d: 'M97.8 91.4 A4.4 1.8 50.6 1 0 92.2 84.6 A4.4 1.8 50.6 1 0 97.8 91.4' },
+    { d: 'M143.7 62.1 L129.7 45.1 M132.9 71 L118.9 54', role: 'soft' },
+    {
+      d: 'M146.8 59.6 L142.3 58.1 M140.6 64.7 L136.2 63.2 M134.5 69.8 L130 68.3 M128.3 74.8 L123.8 73.3',
+      role: 'ambient',
+    },
+    { d: 'M95 88 C89 94 72 92 66 100' },
+    { d: 'M40 106 L42 152 A20 5.5 0 0 0 82 152 L84 106' },
+    { d: ellipse(62, 106, 22, 6) },
+    {
+      d: 'M40 106 C36 96 46 90 52 95 C56 87 70 87 74 94 C80 90 90 96 84 106',
+      role: 'soft',
+    },
+    { d: 'M40.5 116 C24 116 24 142 41.6 142 M41 122 C33 122 33 136 41.4 136' },
+    { d: 'M54 113 V157 M70 113 V157', role: 'soft' },
+    { d: 'M-4 160 H164', role: 'ambient', dashed: true },
   ],
-  // A long rifle laid across a table.
+  // His flintlock rifle laid down: the barrel in his colour with its muzzle
+  // seen round, the lock and the hammer, the grain of the stock and its
+  // underside hatched; in front, a cigarette still smoking. He clubs the
+  // bandits with the rifle and stubs a cigarette out on one in episode 4.
   'benn-beckman': [
-    { d: 'M60 104 L146 86 M60 112 L146 94', role: 'accent' },
-    { d: 'M144 84 L148 96' },
-    { d: 'M40 106 L62 101 L64 115 L42 120 Z' },
-    { d: 'M50 120 q8 14 18 6' },
-    { d: 'M14 128 C6 122 8 112 18 110 L42 105 L46 121 L22 130 Z' },
-    { d: 'M8 152 H152' },
-    { d: 'M22 152 V184 M138 152 V184' },
-    shadow(78, 146, 52),
+    { d: 'M62 106 L146 88 M63 112 L147 94', role: 'accent' },
+    { d: 'M146 88 A3.4 1.6 78 1 1 147 94 A3.4 1.6 78 1 1 146 88' },
+    { d: 'M63 112 L64 117 L124 104.2 L123 99', role: 'soft' },
+    {
+      d: 'M62 106 C48 108 30 111 14 113 Q8 124 16 136 C30 132 46 126 60 122 L64 117',
+    },
+    {
+      d: 'M22 124 C34 121 46 117 56 113.6 M106 103.4 l1.2 5 M118 100.8 l1.2 5',
+      role: 'soft',
+    },
+    {
+      d: 'M58 110 L72 107 L73 112 L59 115 Z M60 109 C56 102 60 96 66 98',
+      role: 'soft',
+    },
+    { d: 'M66 120 C66 128 76 128 78 116', role: 'soft' },
+    {
+      d: 'M20 134 l1.6 -4 M28 131.6 l1.6 -4 M36 129 l1.6 -4 M44 126.4 l1.6 -4 M52 123.6 l1.6 -4',
+      role: 'ambient',
+    },
+    shadow(80, 146, 64),
+    { d: 'M98 162 L124 158 M98.6 166 L124.6 162 M98 162 Q96 164 98.6 166' },
+    { d: 'M124 158 Q126.6 160 124.6 162', role: 'soft' },
+    { d: dot(125.6, 160), role: 'soft' },
+    {
+      d: 'M128 157 C134 150 126 146 132 138 C136 132 132 128 136 122',
+      role: 'ambient',
+    },
   ],
-  // A joint of meat, the bone knuckled at both ends.
+  // A joint of meat with a bite taken out of it, the bone knuckled at both
+  // ends and the underside hatched. He is chewing one in the tavern in
+  // episode 4.
   'lucky-roux': [
     {
-      d: 'M40 132 C36 100 58 72 92 70 C120 70 132 92 126 116 C120 140 92 152 66 146 C50 142 42 138 40 132z',
+      d: 'M30 122 C26 92 50 68 82 66 C88 66 94 67 98 68 Q103 78 108 74 Q112 84 118 80 Q120 89 127 88 C132 96 134 104 132 112 C128 136 100 150 70 148 C48 146 32 138 30 122 Z',
       role: 'accent',
     },
-    { d: 'M126 116 L146 104 M132 128 L150 122' },
-    { d: `${circle(148, 100, 6)} ${circle(152, 124, 6)}` },
-    { d: 'M62 96 q14 -10 30 -2', role: 'soft' },
-    { d: 'M56 118 q10 12 26 12', role: 'soft', dashed: true },
-    shadow(88, 170, 44),
+    { d: 'M98 68 Q104 86 127 88', role: 'soft' },
+    { d: 'M104 75 Q108 82 114 82 M110 84 Q116 87 120 87', role: 'soft' },
+    {
+      d: 'M50 140 l4 -4 M60 144 l4 -4.4 M71 146.6 l4 -4.4 M83 147 l4 -4.4 M95 145 l4 -4.2 M106 141 l4 -4',
+      role: 'ambient',
+    },
+    { d: 'M32 124 L20 132 M36 130 L24 138' },
+    { d: 'M20 132 C12 124 2 134 10 140 C6 148 18 150 24 138' },
+    { d: 'M128 98 L140 90 M131 104 L143 96' },
+    { d: 'M140 90 C136 80 150 76 152 86 C160 84 160 98 143 96' },
+    shadow(84, 166, 52),
   ],
-  // A flintlock pistol and the coin its shot went through.
+  // A flintlock pistol side on, the smoke of its shot in his colour at the
+  // muzzle, the hammer cocked, the barrel's underside hatched, the ball on the
+  // ground. Luffy remembers the marksman who never missed in episode 9.
   'yasopp': [
-    { d: 'M30 96 H118 V108 H30 Z' },
-    { d: 'M52 92 H84 L88 112 H50 Z' },
-    { d: 'M50 110 C44 128 40 142 32 156 L52 160 C62 142 66 124 68 112 Z' },
-    { d: 'M62 112 q10 14 22 6' },
-    { d: 'M84 92 C84 80 96 76 100 86' },
-    { d: `${circle(116, 44, 20)} ${circle(116, 44, 13)}`, role: 'accent' },
-    { d: circle(116, 44, 4), role: 'accent' },
-    { d: 'M122 94 C130 80 130 68 124 60', role: 'ambient', dashed: true },
-    shadow(58, 170, 34),
-  ],
-  // A bandit's sabre and a sack with the coins running out of it.
-  'higuma': [
-    { d: 'M126 30 C108 56 84 84 62 108' },
-    { d: 'M136 40 C118 66 94 94 72 118' },
-    { d: 'M126 30 L136 40' },
-    { d: 'M62 108 L72 118 L60 130 L50 120 Z' },
-    { d: 'M50 120 L32 140 M28 136 L38 146', role: 'soft' },
+    { d: 'M54 92 L120 85 M55 100 L121 93' },
+    { d: 'M120 85 A4.2 1.8 84 1 1 121 93 A4.2 1.8 84 1 1 120 85' },
+    { d: 'M55 100 L56 104 L104 99 L103 95', role: 'soft' },
     {
-      d: 'M46 188 C28 184 26 164 38 148 C46 138 56 134 64 132 L92 138 C104 148 110 168 102 182 C96 190 62 192 46 188 Z',
+      d: 'M54 92 C44 94 38 96 36 104 C32 120 22 130 18 142 Q22 152 34 148 C40 134 52 122 58 108 L56 104',
     },
-    { d: 'M64 132 q14 -6 28 6', role: 'soft' },
+    { d: 'M18 142 Q26 140 34 148 M40 108 C36 120 30 130 24 140', role: 'soft' },
+    { d: 'M59 91.6 C53 82 60 74 67 80 M70 91 l2 -9 l5 1', role: 'soft' },
+    { d: 'M60 105 C60 117 76 117 78 103 M68 105 q2 6 -1 9' },
     {
-      d: `${circle(110, 126, 7)} ${circle(126, 140, 7)} ${circle(118, 156, 7)}`,
+      d: 'M68 100.6 l-1.4 4 M80 99.4 l-1.4 4 M92 98 l-1.4 4 M104 96.6 l-1.4 4 M116 95.4 l-1.4 4',
+      role: 'ambient',
+    },
+    {
+      d: 'M128 86 C124 76 134 70 140 76 C142 66 154 68 152 78 C156 84 150 92 142 88 C138 94 128 92 128 86 Z',
       role: 'accent',
     },
-    shadow(74, 192, 44),
+    { d: circle(98, 156, 3.6) },
+    shadow(68, 164, 52),
   ],
-  // An iron cage hung from a ring, the bars shut all the way round.
+  // His sabre, its knuckle-bow guard in his colour, and the bottle he smashed
+  // lying on its side: its neck broken off, its underside hatched, the drink
+  // spreading over the floor and two shards of glass. He smashes it in the
+  // tavern in episode 4.
+  'higuma': [
+    { d: 'M58 116 C86 92 114 64 138 22 C134 60 104 98 66 124 Z' },
+    { d: 'M64 116 C92 94 116 66 134 34', role: 'soft' },
+    { d: 'M50 110 L74 130', role: 'accent' },
+    { d: 'M72 129 C76 146 62 160 42 152 L38 148', role: 'accent' },
+    {
+      d: 'M58 120 L40 140 M64 126 L46 146 M40 140 L46 146 M38 140 Q34 148 40 150',
+    },
+    { d: 'M53 126 l6 6 M48 132 l6 6', role: 'soft' },
+    {
+      d: 'M148 146 L114 146 Q104 146 100 152 L92 152.5 M148 166 L114 166 Q104 166 100 160 L92 159.5',
+    },
+    { d: ellipse(148, 156, 4, 10) },
+    {
+      d: 'M92 152.5 L89 154.6 L92.4 156.2 L88.4 157.8 L92 159.5',
+      role: 'soft',
+    },
+    {
+      d: 'M116 162 l4 4 M124 162 l4 4 M132 162 l4 4 M140 162 l4 4',
+      role: 'ambient',
+    },
+    {
+      d: 'M88 162 C80 162 70 166 62 168 C52 170 52 177 62 177.4 C78 178 98 176 110 171',
+      role: 'soft',
+    },
+    { d: 'M70 158 l3 -6 l4 2 l-2 4 z M80 150 l6 -1 l-2 4 z', role: 'soft' },
+    { d: 'M-4 172 H52 M112 172 H164', role: 'ambient', dashed: true },
+  ],
+  // The pirates' cannon on its wheeled carriage, aimed high: the barrel's
+  // muzzle seen round, its bands, its underside hatched, and the smoke of the
+  // shot in orange. They fire it at the bird carrying Luffy over the town in
+  // episode 4 and chapter 8.
   'orange-town-arc': [
-    { d: 'M40 60 H120 V156 H40 Z' },
-    { d: 'M34 60 H126 M34 156 H126', role: 'accent' },
-    { d: 'M56 60 V156 M72 60 V156 M88 60 V156 M104 60 V156', role: 'soft' },
-    { d: 'M80 60 V44' },
-    { d: circle(80, 36, 8), role: 'accent' },
-    shadow(80, 172, 52),
+    {
+      d: 'M39.7 99.8 L115.8 57.2 M52.3 120.2 L124.2 70.8 M39.7 99.8 C30 104 34 124 52.3 120.2',
+    },
+    {
+      d: 'M116.7 54.8 A9.5 3.6 58.2 1 0 126.7 71 A9.5 3.6 58.2 1 0 116.7 54.8',
+    },
+    { d: `M37.6 113.6 L33.6 116 ${circle(30.6, 118.4, 3.6)}` },
+    { d: 'M57.1 90 L68.9 108.8 M83.4 75.4 L93.6 91.8', role: 'soft' },
+    {
+      d: 'M62 116 l4 -6 M74 108 l4 -6 M86 100 l4 -6 M98 92 l4 -6 M110 84 l3.6 -5.6',
+      role: 'ambient',
+    },
+    { d: 'M34 126 L56 116 L82 104 L96 112 L94 140 L36 142 Z' },
+    { d: circle(52, 140, 15) },
+    {
+      d: 'M52 125 V155 M37 140 H67 M41.4 129.4 L62.6 150.6 M41.4 150.6 L62.6 129.4',
+      role: 'soft',
+    },
+    { d: dot(52, 140) },
+    {
+      d: 'M126 52 C122 42 132 36 138 42 C142 32 156 34 154 44 C160 48 156 58 148 56 C144 64 132 62 130 56 C124 58 122 52 126 52 Z',
+      role: 'accent',
+    },
+    shadow(70, 162, 50),
   ],
   // A cannonball with its fuse lit. Crowned from 1080, in `eastBlueRedrawn`.
   'buggy': [
@@ -1276,6 +1459,10 @@ const CROWN_TILT = 'rotate(-13 70 91.5)'
 /** Koby's bandanna, drawn at ground size and lifted, larger, over the bucket. */
 const BANDANNA_LIFT = 'translate(-1 -120) scale(1.35)'
 
+/** His bucket, moved aside from where the mop stood to sit under the bandanna. */
+const ASIDE = 'translate(10 0)'
+const MOVED_BUCKET = KOBY_BUCKET.map((s) => ({ ...s, transform: ASIDE }))
+
 /** Nami's chart, drawn at full size and set down, smaller, at the staff's foot. */
 const CHART_AT_FOOT = 'translate(90 113) scale(0.42)'
 const SMALL_CHART: Stroke[] = [
@@ -1328,9 +1515,7 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'soft',
           transform: BANDANNA_LIFT,
         },
-        { d: 'M96 130 H152 L144 174 H104 Z' },
-        { d: 'M98 146 H150 M101 160 H147', role: 'soft' },
-        { d: 'M98 130 q26 -24 52 0' },
+        ...MOVED_BUCKET,
         shadow(86, 182, 56),
       ],
     },
