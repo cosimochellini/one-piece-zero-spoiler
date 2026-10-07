@@ -735,9 +735,9 @@ export const waterSevenArt = {
 
   // The brigantine side on, bow to the left: the round hull rising to the
   // high stern, a square sail bellied on the foremast and a fore-and-aft sail
-  // on the main, the crow's nest at its top. The lion on the stem is a plain
-  // disc inside its mane, the accent, the face left empty (321). No mark on a
-  // sail and no number on the hull.
+  // on the main, the crow's nest at its top. The lion rises on its neck from
+  // the stem: a plain disc inside its mane, the accent, the face left empty
+  // (321). No mark on a sail and no number on the hull.
   'thousand-sunny': [
     {
       d: 'M34 112 C28 132 40 150 66 154 H124 C142 152 152 138 152 104 H136 V112 Z',
@@ -758,8 +758,10 @@ export const waterSevenArt = {
     { d: 'M114 18 L146 30 C150 50 150 74 146 94 L114 96' },
     { d: 'M108 22 h12 v8 h-12 z', role: 'soft' },
     { d: 'M128 104 v-10 h18 v10', role: 'soft' },
-    { d: ellipse(32, 96, 12, 14), role: 'soft' },
+    { d: 'M36 112 C32 104 34 98 40 92 M46 112 C42 104 42 96 46 88' },
+    { d: ellipse(28, 80, 12, 14), role: 'soft' },
     {
+      transform: 'translate(-4 -16)',
       d: 'M51 96 Q60.8 105 48 107.4 Q51.6 120.2 39.9 115.1 Q36.3 127.7 29.3 116.8 Q19.5 125.1 19.6 111.9 Q6.8 113.3 13.8 101.9 Q2 96 13.8 90.1 Q6.8 78.7 19.6 80.1 Q19.5 66.9 29.3 75.2 Q36.3 64.3 39.9 76.9 Q51.6 71.8 48 84.6 Q60.8 87 51 96',
       role: 'accent',
     },
@@ -1047,10 +1049,7 @@ export const waterSevenArt = {
       role: 'soft',
     },
     { d: 'M32 140 H84 V166 H34 Z' },
-    {
-      d: 'M44 144 l14 18 M58 144 l-14 18 M60 144 l14 18 M74 144 l-14 18',
-      role: 'soft',
-    },
+    { d: 'M50 146 h18 M50 152 h18 M50 158 h18', role: 'soft' },
     { d: JERRY_GLOVE, transform: 'translate(78 8) scale(0.88)' },
     { d: 'M106 132 H150 V160 H108 Z' },
     { d: 'M144 84 l8 -5 M146 98 l8 -5 M144 112 l8 -5', role: 'ambient' },
@@ -1165,7 +1164,7 @@ export const waterSevenArt = {
     },
     { d: 'M12 143 V172 M112 157 V184 M150 137 V160', role: 'soft' },
     {
-      d: `${ellipse(32, 124, 30, 8)} M22 122 C22 104 26 84 32 80 C38 84 42 104 42 122`,
+      d: `${ellipse(32, 124, 30, 8)} M20 122 C18 100 24 88 32 88 C40 88 46 100 44 122`,
     },
     { d: 'M23 112 Q32 116 41 112', role: 'soft' },
     {
@@ -1173,7 +1172,7 @@ export const waterSevenArt = {
       role: 'accent',
     },
     {
-      d: 'M60 114 C72 108 92 108 104 114 M84 98 C80 86 84 74 94 68 C92 80 90 90 86 98',
+      d: 'M60 114 C72 108 92 108 104 114 M84 104 C80 88 84 74 94 68 C92 82 90 92 88 104',
       role: 'soft',
     },
     {
@@ -1266,26 +1265,25 @@ export const waterSevenArt = {
     shadow(78, 186, 62),
   ],
   // The sabre he turns into, in 3/4: the curved blade with its far face
-  // hatched, the guard and the knuckle bow round the grip, the two tusks set
-  // into the guard as the accent, and the tail hanging from the pommel for a
-  // tassel (285).
+  // hatched, the guard and the D of the knuckle bow round the grip, the two
+  // tusks set into the guard as straight tapering points, the accent, and
+  // the tail hanging from the pommel for a tassel (285).
   'funkfreed': [
-    { d: 'M60 126 C86 92 114 60 152 24 C132 64 106 102 74 138' },
-    { d: 'M68 130 C92 100 118 70 146 34', role: 'soft' },
-    { d: 'M102 94 l6 4 M118 74 l6 4 M134 54 l6 4', role: 'ambient' },
+    { d: 'M62 126 C92 110 126 80 152 30 C150 70 118 116 74 140' },
+    { d: 'M68 133 C100 114 130 80 152 30', role: 'soft' },
     {
-      d: 'M52 124 L80 142 M62 134 L42 166 M70 140 L50 172 M42 166 Q44 176 50 172',
+      d: 'M78 117 l-1 9 M94 106 l-1 9 M110 93 l-1 9 M124 78 l-1 8 M136 62 l-1 7 M145 47 l-1 6',
+      role: 'ambient',
     },
-    { d: 'M80 142 C88 160 76 182 50 176' },
+    { d: 'M52 120 L82 144' },
+    { d: 'M60 130 L40 158 M70 138 L50 166 M40 158 Q38 170 50 166' },
+    { d: 'M82 144 C102 158 90 188 52 172' },
+    { d: 'M52 120 L18 112 L57 131 Z M58 115 L34 86 L69 123 Z', role: 'accent' },
     {
-      d: 'M52 124 C36 116 30 98 38 82 C40 98 46 110 58 118 Z M60 128 C48 118 44 102 50 88 C52 102 58 114 66 122',
-      role: 'accent',
-    },
-    {
-      d: 'M46 174 C38 180 36 186 28 188 M28 188 l-6 -2 M28 188 l-4 4',
+      d: 'M42 168 C36 176 32 182 24 184 M24 184 l-6 -2 M24 184 l-4 5',
       role: 'soft',
     },
-    shadow(84, 192, 44),
+    shadow(86, 192, 50),
   ],
   // The Devil Fruit he found, as it is shown in his hand at 325 (ch. 440),
   // before anyone has a name for it: the swirled bunch from its own drawing,
