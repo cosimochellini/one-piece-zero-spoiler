@@ -56,6 +56,9 @@ const JUDGE_SPEAR_TILT = 'rotate(-56 80 100)'
 /** The tilt of Randolph's spear, drawn level with a blade at each end. */
 const RANDOLPH_SPEAR_TILT = 'rotate(-20 80 142)'
 
+/** The tilt of Flampe's blowgun, drawn level with its muzzle to the right. */
+const FLAMPE_BLOWGUN_TILT = 'rotate(-28 70 150)'
+
 /** The tilt of Mjosgard's club, drawn level with its head to the right. */
 const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
 
@@ -1653,15 +1656,40 @@ export const wholeCakeArt = {
     shadow(80, 150, 58),
   ],
 
-  // A long blowgun, a dart flying from its mouth and a bubble of gum.
+  // Her silent blowgun in three quarters, slung on its strap, its underside
+  // hatched, with a numbing needle in flight from the muzzle as the accent.
+  // She fires it at Luffy at 867. No gum: that is only in her Vivre Card.
   'charlotte-flampe': [
-    { d: 'M18 150 L110 70 M25 157 L117 77 M18 150 L25 157 M110 70 L117 77' },
-    { d: 'M34 136 l7 7', role: 'soft' },
-    { d: 'M128 60 L150 40 M150 40 l-9 1 M150 40 l-1 9', role: 'accent' },
-    { d: 'M120 70 l8 -7 M112 62 l8 -7', role: 'soft', dashed: true },
-    { d: circle(48, 72, 18), role: 'accent' },
-    { d: 'M38 66 q4 -6 11 -5', role: 'soft' },
-    shadow(70, 178, 50),
+    { d: 'M12 145 H128 M12 155 H128', transform: FLAMPE_BLOWGUN_TILT },
+    { d: 'M12 145 L4 141 V159 L12 155', transform: FLAMPE_BLOWGUN_TILT },
+    { d: ellipse(128, 150, 3, 5), transform: FLAMPE_BLOWGUN_TILT },
+    {
+      d: 'M32 144 h7 v12 h-7 Z M98 144 h7 v12 h-7 Z',
+      role: 'soft',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M44 155 l4 -6 M58 155 l4 -6 M72 155 l4 -6 M86 155 l4 -6 M114 155 l4 -6',
+      role: 'ambient',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M42 156 C48 170 88 170 94 156',
+      role: 'soft',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M150 150 H172 L166 147 M150 150 C146 144 140 146 143 150 C140 154 146 156 150 150',
+      role: 'accent',
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    {
+      d: 'M134 144 h8 M134 156 h8 M136 150 h6',
+      role: 'soft',
+      dashed: true,
+      transform: FLAMPE_BLOWGUN_TILT,
+    },
+    shadow(70, 186, 56),
   ],
 
   // A sheer wall rising out of the sea through the clouds, a palace of domes and spires along its top.
