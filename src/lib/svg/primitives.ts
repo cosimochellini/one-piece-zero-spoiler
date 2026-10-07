@@ -78,7 +78,11 @@ export const shadow = (cx: number, cy: number, rx: number): Stroke => {
   }
 }
 
-/** A sheathed sword lying at the same angle as its two companions. */
+/**
+ * A sheathed sword lying at the same angle as its two companions: the
+ * sheath and its two ends, the round guard seen edge on as an oval across
+ * it, and the grip's wrap crossing in diamonds.
+ */
 export function sheath(dx: number, role: StrokeRole): Stroke[] {
   const a = { x: 50 + dx, y: 158 }
   const b = { x: 100 + dx, y: 46 }
@@ -88,8 +92,20 @@ export function sheath(dx: number, role: StrokeRole): Stroke[] {
     return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t }
   }
   const guard = at(0.3)
-  const wrap1 = at(0.1)
-  const wrap2 = at(0.19)
+  const width = Math.hypot(o.x, o.y)
+  const centre = { x: guard.x + o.x / 2, y: guard.y + o.y / 2 }
+  const reach = { x: (8 * o.x) / width, y: (8 * o.y) / width }
+  const rim = `A8 2.6 ${n((Math.atan2(o.y, o.x) * 180) / Math.PI)} 1 0`
+  const start = `${n(centre.x - reach.x)} ${n(centre.y - reach.y)}`
+  const end = `${n(centre.x + reach.x)} ${n(centre.y + reach.y)}`
+  // One zigzag from each edge of the grip, crossing into four diamonds.
+  const wrap = (from: number): string => {
+    return Array.from({ length: 5 }, (_, index) => {
+      const point = at(0.02 + 0.065 * index)
+      const side = (index + from) % 2
+      return `${index === 0 ? 'M' : 'L'}${n(point.x + o.x * side)} ${n(point.y + o.y * side)}`
+    }).join(' ')
+  }
   return [
     { d: `M${n(a.x)} ${n(a.y)} L${n(b.x)} ${n(b.y)}`, role },
     {
@@ -100,14 +116,8 @@ export function sheath(dx: number, role: StrokeRole): Stroke[] {
       d: `M${n(a.x)} ${n(a.y)} L${n(a.x + o.x)} ${n(a.y + o.y)} M${n(b.x)} ${n(b.y)} L${n(b.x + o.x)} ${n(b.y + o.y)}`,
       role,
     },
-    {
-      d: `M${n(guard.x - 5)} ${n(guard.y - 2.4)} L${n(guard.x + 9.6)} ${n(guard.y + 4.4)}`,
-      role,
-    },
-    {
-      d: `M${n(wrap1.x - 1)} ${n(wrap1.y)} l6.6 2.6 M${n(wrap2.x - 1)} ${n(wrap2.y)} l6.6 2.6`,
-      role,
-    },
+    { d: `M${start} ${rim} ${end} ${rim} ${start}`, role },
+    { d: `${wrap(0)} ${wrap(1)}`, role: 'soft' },
   ]
 }
 
