@@ -554,12 +554,16 @@ export const dressrosa: Saga = {
     {
       id: 'kanjuro',
       kind: 'character',
-      revealedAtEpisode: 676,
-      revealedAtChapter: 747,
+      // Until episode 691 he is only Kin’emon’s comrade caught in Dressrosa:
+      // nobody sees him, his brush or his power. He appears in chapter 754,
+      // but 691 runs on into chapter 755 (the ladders), so 755 is the chapter
+      // that reaches all of it, and no other entry opens earlier.
+      revealedAtEpisode: 691,
+      revealedAtChapter: 755,
       name: { it: 'Kanjuro', en: 'Kanjuro' },
       summary: {
-        it: 'Un samurai con il pennello al posto della spada, che disegna male qualunque cosa e poi la fa uscire dalla carta.',
-        en: 'A samurai who carries a brush instead of a sword, draws everything badly and then brings it up off the paper.',
+        it: 'Un samurai con un pennello grande quanto un remo, che disegna male qualunque cosa e poi la fa prendere vita.',
+        en: 'A samurai with a brush as big as an oar, who draws everything badly and then brings it to life.',
       },
       visual: { art: 'kanjuro', tint: 'ocher' },
     },
@@ -1813,16 +1817,16 @@ export const dressrosa: Saga = {
     'kanjuro': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
-        it: 'Compare a Dressrosa insieme al samurai che cerca suo figlio, e si presenta con un pennello grande quanto un remo. Quello che disegna prende vita e si muove, anche se i suoi disegni fanno ridere chiunque li guardi. Parla poco, si commuove facilmente e non racconta quasi nulla del paese da cui viene.',
-        en: 'He turns up in Dressrosa with the samurai who is searching for his son, carrying a brush the size of an oar. Whatever he draws comes alive and moves about, though his drawings make anyone who sees them laugh. He says little, is easily moved to tears, and tells almost nothing about the country he comes from.',
+        it: 'È il compagno che i soldati di Dressrosa hanno catturato mentre copriva la fuga di Kinemon. Kinemon lo ritrova nella discarica sotto la città, nascosto dentro un muro, dove si è sfamato con i cavoli che disegna e fa prendere vita. Porta sulle spalle un pennello grande quanto un remo. Per uscire disegna un uccello sul muro e lo fa prendere vita, ma è disegnato così male che sembra a malapena in grado di volare.',
+        en: 'He is the comrade Dressrosa’s soldiers caught while he covered Kin’emon’s escape. Kin’emon finds him in the scrap heap under the town, hiding inside a wall, where he has fed himself on cabbages he draws and brings to life. He carries a brush as big as an oar on his back. To get out he draws a bird on the wall and brings it to life, but it is drawn so badly that it hardly looks able to fly.',
       },
       status: [
-        { episode: 676, value: 'alive' },
+        { episode: 691, value: 'alive' },
         { episode: 1055, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 676,
+          episode: 691,
           value: {
             it: 'Samurai di Wano, compagno di Kin’emon',
             en: 'Samurai of Wano, Kin’emon’s companion',
@@ -1840,16 +1844,16 @@ export const dressrosa: Saga = {
           },
         },
       ],
-      origin: [{ episode: 676, value: WANO }],
+      origin: [{ episode: 691, value: WANO }],
       epithet: [
         {
-          episode: 676,
+          episode: 691,
           value: { it: 'Acquazzone della Sera', en: 'Evening Shower' },
         },
       ],
-      // Filed at 985 and not at 676: the drawings come alive long before the
+      // Filed at 985 and not at 691: the drawings come alive long before the
       // story says what the fruit is called, and the field carries fruit ids
-      // now, so an entry at 676 would print the name early.
+      // now, so an entry at 691 would print the name early.
       devilFruit: [{ episode: 985, value: ['brush-brush-fruit'] }],
     },
     'donquixote-rosinante': {
