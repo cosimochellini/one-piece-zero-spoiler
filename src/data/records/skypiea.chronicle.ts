@@ -332,8 +332,8 @@ export const skypieaChronicles = {
       value: {
         title: { it: 'Un’offerta a Crocodile', en: 'An offer to Crocodile' },
         body: {
-          it: 'A Marineford, [[crocodile|Crocodile]] si fa strada tra i ranghi minori di Barbabianca per raggiungere il vecchio, e [[jozu|Jozu]] lo respinge con un colpo che lo ferisce. Prima che arrivi il secondo, Do Flamingo salta sulla schiena di Jozu, e il gigantesco comandante si blocca: il suo corpo non risponde più a lui. Do Flamingo propone a Crocodile di allearsi. Crocodile ride dell’offerta e spazza via tutti e due con una tempesta di sabbia.',
-          en: 'At Marineford, [[crocodile|Crocodile]] cuts through Whitebeard’s lower ranks to reach the old man himself, and [[jozu|Jozu]] drives him back with a blow that hurts. Before the second one lands, Doflamingo jumps onto Jozu’s back, and the giant commander stops dead: his body no longer answers to him. Doflamingo asks Crocodile to team up. Crocodile laughs the offer off and blows them both away with a storm of sand.',
+          it: 'A Marineford, [[crocodile|Crocodile]] si fa strada tra i ranghi minori di Barbabianca per raggiungere il vecchio, e [[jozu|Jozu]] lo respinge con un colpo che lo ferisce. Prima che arrivi il secondo, Do Flamingo, in sella a Jozu, lo ferma. Do Flamingo propone a Crocodile di allearsi. Crocodile ride dell’offerta e spazza via tutti e due con una tempesta di sabbia.',
+          en: 'At Marineford, [[crocodile|Crocodile]] cuts through Whitebeard’s lower ranks to reach the old man himself, and [[jozu|Jozu]] drives him back with a blow that hurts. Before the second one lands, Doflamingo, riding on Jozu’s back, holds him still. Doflamingo asks Crocodile to team up. Crocodile laughs the offer off and blows them both away with a storm of sand.',
         },
       },
     },
