@@ -280,21 +280,30 @@ export const waterSevenArt = {
     shadow(80, 176, 66),
   ],
 
-  // A bar counter, and a door standing open in the air above it.
+  // The counter of his bar in downtown Water Seven (339, 240), seen from its
+  // corner with the far end hatched: the glass he polishes with the cloth
+  // draped over its rim, the bottles on the shelf behind him and one of the
+  // stools along the front. The glass is the accent.
   'blueno': [
-    { d: 'M16 120 H144 v12 H16z' },
-    { d: 'M26 132 V174 H134 V132' },
-    { d: 'M26 152 H134', role: 'ambient' },
-    { d: 'M118 98 h18 l-3 22 h-12z' },
-    { d: 'M28 92 h12 v28 h-12z M31 92 v-8 h6 v8' },
-    { d: 'M52 24 h60 v96 H52z', role: 'accent' },
-    { d: circle(100, 74, 3), role: 'accent' },
+    { d: 'M30 40 H134', role: 'ambient' },
     {
-      d: 'M52 24 q-8 -6 -6 -14 M112 24 q8 -6 6 -14',
-      role: 'ambient',
-      dashed: true,
+      d: 'M38 40 v-14 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v14 M56 40 v-18 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v18 M114 40 v-12 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v12',
     },
-    shadow(76, 186, 56),
+    { d: 'M26 100 L114 100 L148 80 L60 80 Z' },
+    { d: 'M26 100 V126 M26 138 V148 H114 V100 M114 148 L148 128 V80' },
+    { d: 'M26 106 H114 L148 86 M70 112 V142', role: 'soft' },
+    { d: 'M122 139 V102 M131 134 V97 M140 129 V92', role: 'ambient' },
+    {
+      d: `${ellipse(84, 52, 15, 5)} M69 52 L73 92 q11 4 22 0 L99 52`,
+      role: 'accent',
+    },
+    {
+      d: 'M78 50 q8 -10 20 -6 q10 3 12 12 L117 84 l-5 5 l-3 -5 l-5 5 l-4 -5 L99 54 M106 60 L110 82',
+      role: 'soft',
+    },
+    { d: 'M70 95 q14 5 28 0', role: 'ambient', dashed: true },
+    { d: `${ellipse(22, 132, 15, 5)} M22 137 V176 M12 178 h20` },
+    shadow(82, 186, 66),
   ],
 
   // Two swords crossed, each one cut off square at the point.

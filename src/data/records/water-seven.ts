@@ -281,12 +281,12 @@ export const waterSeven: Saga = {
     {
       id: 'blueno',
       kind: 'character',
-      revealedAtEpisode: 232,
-      revealedAtChapter: 333,
+      revealedAtEpisode: 240,
+      revealedAtChapter: 339,
       name: { it: 'Blueno', en: 'Blueno' },
       summary: {
-        it: 'Il barista di un locale di Water Seven, con la barba intrecciata e un bancone dove chi ha bevuto troppo finisce per raccontare tutto.',
-        en: 'The barkeeper of a place in Water Seven, his beard in a braid, behind a counter where anyone who has drunk enough ends up telling everything.',
+        it: 'Il barista di un locale nel centro di Water Seven, con i capelli alzati in due corna, che lucida i bicchieri dietro il bancone e chiede a Franky se ha i soldi prima di riempirgli le bottiglie di cola.',
+        en: 'The barkeeper of a bar in downtown Water Seven, his hair rising in two horns, who polishes glasses behind the counter and asks Franky whether he can pay before filling his cola bottles.',
       },
       visual: { art: 'blueno', tint: 'sand' },
     },
@@ -966,12 +966,12 @@ export const waterSeven: Saga = {
     'blueno': {
       role: { it: 'Barista', en: 'Barkeeper' },
       log: {
-        it: 'Tiene un bar vicino al canale, asciuga i bicchieri e ascolta senza interrompere mai nessuno. Ha la barba intrecciata, due corna di capelli e una voce così piatta che i clienti non si accorgono di quanto stiano parlando. Sa dove abita ogni persona di Water Seven, perché prima o poi si siedono tutti al suo bancone.',
-        en: 'He keeps a bar by the canal, dries the glasses, and listens without ever cutting anyone off. His beard is braided, his hair rises in two horns, and his voice is so flat that customers never notice how much they are saying. He knows where everyone in Water Seven lives, because sooner or later they all sit at his counter.',
+        it: 'Gestisce un bar nel centro di Water Seven e lucida i bicchieri dietro un lungo bancone, con le bottiglie sugli scaffali alle spalle e gli sgabelli davanti. Franky è un cliente fisso: entra chiedendo il solito, e Blueno gli domanda se ha i soldi prima di riempirgli di cola le tre bottiglie vuote. Kiwi e Mozu hanno ancora un milione di berry avanzato dal giorno prima, così Franky offre da bere a tutto il locale. Anche Kokoro beve lì, e molte delle voci che girano in città partono dal suo bancone.',
+        en: 'He runs a bar in downtown Water Seven and polishes the glasses behind a long counter, with bottles on the shelves at his back and stools along the front. Franky is a regular: he walks in calling for the usual, and Blueno asks whether he has any money before filling his three empty bottles with cola. Kiwi and Mozu still have a million berries left over from the day before, so Franky buys a round for the whole bar. Kokoro drinks there too, and a good deal of the town’s gossip starts at his counter.',
       },
       affiliation: [
         {
-          episode: 232,
+          episode: 240,
           value: {
             it: 'Bar di Blueno, barista',
             en: 'Blueno’s Bar, barkeeper',
