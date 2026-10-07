@@ -31,14 +31,15 @@ export const summitWarChronicles = {
     },
     {
       episode: 466,
+      chapter: 557,
       value: {
         title: {
           it: 'Le dimissioni gridate a Sengoku',
           en: 'Resignation shouted at Sengoku',
         },
         body: {
-          it: 'Appena sbarcato a Marineford, Jinbe ripesca dall’acqua uno per uno gli utilizzatori di frutti del diavolo caduti in mare durante l’assalto, che da soli affogherebbero senza rimedio. Poi si volta verso [[sengoku|Sengoku]], in mezzo al caos della battaglia appena cominciata, e grida che si dimette dalla Flotta dei Sette, lì, davanti a tutti. Non aspetta una risposta: si getta subito nella baia per raggiungere [[monkey-d-luffy|Rufy]] e il resto dell’alleanza, da uomo libero per la prima volta da anni.',
-          en: 'The moment he lands at Marineford, Jinbe fishes out of the water, one by one, the devil fruit users who fell in during the assault and would otherwise drown without hope. Then he turns to [[sengoku|Sengoku]], in the middle of the battle that has only just begun, and shouts that he resigns from the Seven Warlords, right there, in front of everyone. He does not wait for an answer: he throws himself straight into the bay to reach [[monkey-d-luffy|Luffy]] and the rest of the alliance, a free man for the first time in years.',
+          it: 'Appena sbarcato a Marineford, Jinbe ripesca dall’acqua uno per uno gli utilizzatori di frutti del diavolo caduti in mare durante l’assalto, che da soli affogherebbero senza rimedio. Poi si volta verso [[sengoku|Sengoku]], in mezzo al caos della battaglia appena cominciata, e grida che si dimette dalla Flotta dei Sette, lì, davanti a tutti.',
+          en: 'The moment he lands at Marineford, Jinbe fishes out of the water, one by one, the devil fruit users who fell in during the assault and would otherwise drown without hope. Then he turns to [[sengoku|Sengoku]], in the middle of the battle that has only just begun, and shouts that he resigns from the Seven Warlords, right there, in front of everyone.',
         },
       },
     },
@@ -223,14 +224,15 @@ export const summitWarChronicles = {
     },
     {
       episode: 1066,
+      chapter: 1039,
       value: {
         title: {
           it: 'Puncture Wille contro Big Mom',
           en: 'Puncture Wille against Big Mom',
         },
         body: {
-          it: 'Ridotto quasi allo stremo, il capitano dal cappello a macchie pianta la propria lama nel corpo di [[charlotte-linlin|Big Mom]] e la lascia scendere in profondità, prima di liberare un’onda d’urto che apre un cratere nel terreno. È Puncture Wille, una delle tecniche più devastanti che conosca, e insieme al magnetismo di [[eustass-kid|Kid]] basta a piegare l’imperatrice più temuta del Nuovo Mondo. I due rivali di sempre, per una volta, combattono fianco a fianco.',
-          en: 'Pushed almost to his limit, the captain in the spotted hat drives his blade into [[charlotte-linlin|Big Mom]]’s body and lets it sink deep, before releasing a shockwave that tears a crater into the ground. It is Puncture Wille, one of the most destructive techniques he knows, and together with [[eustass-kid|Kid]]’s magnetism it is enough to bring down the most feared empress of the New World. The two lifelong rivals, for once, fight side by side.',
+          it: 'Ridotto quasi allo stremo, il capitano dal cappello a macchie pianta la propria lama nel corpo di [[charlotte-linlin|Big Mom]] e la lascia scendere in profondità, prima di liberare un’onda d’urto che apre un cratere nel terreno. È Puncture Wille, una delle tecniche più devastanti che conosca, e insieme al magnetismo di [[eustass-kid|Kid]] colpisce in pieno l’imperatrice più temuta del Nuovo Mondo. I due rivali di sempre, per una volta, combattono fianco a fianco.',
+          en: 'Pushed almost to his limit, the captain in the spotted hat drives his blade into [[charlotte-linlin|Big Mom]]’s body and lets it sink deep, before releasing a shockwave that tears a crater into the ground. It is Puncture Wille, one of the most destructive techniques he knows, and together with [[eustass-kid|Kid]]’s magnetism it hits the most feared empress of the New World head-on. The two lifelong rivals, for once, fight side by side.',
         },
       },
     },
@@ -337,6 +339,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 476,
+      chapter: 567,
       value: {
         title: {
           it: 'Serve più della volontà',
@@ -373,6 +376,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 1141,
+      chapter: 1107,
       value: {
         title: {
           it: 'Il raggio spezzato da un calcio',
@@ -513,6 +517,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 738,
+      chapter: 794,
       value: {
         title: { it: 'Una carta per Zoro', en: 'A card for Zoro' },
         body: {
@@ -523,6 +528,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 1120,
+      chapter: 1086,
       value: {
         title: { it: 'Quel nome, Im', en: 'That name, Im' },
         body: {

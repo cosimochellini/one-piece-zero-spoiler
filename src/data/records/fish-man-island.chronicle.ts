@@ -65,6 +65,7 @@ export const fishManIslandChronicles = {
     },
     {
       episode: 557,
+      chapter: 636,
       value: {
         title: {
           it: 'I fratelli al Polo Nord',
@@ -131,6 +132,7 @@ export const fishManIslandChronicles = {
   'megalo': [
     {
       episode: 530,
+      chapter: 615,
       value: {
         title: {
           it: 'Lo squalo con la maglietta',
@@ -240,6 +242,7 @@ export const fishManIslandChronicles = {
     },
     {
       episode: 547,
+      chapter: 627,
       value: {
         title: { it: 'Davanti alla torre', en: 'Outside the tower' },
         body: {
