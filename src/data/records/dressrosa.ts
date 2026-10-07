@@ -263,8 +263,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 708,
       name: { it: 'Cavendish', en: 'Cavendish' },
       summary: {
-        it: 'Un pirata così bello che le addette del colosseo svengono quando entra, che avverte Lucy che la sua armatura supera il limite di peso e dice che il Frutto Foco Foco sarà soltanto suo.',
-        en: 'A pirate so beautiful that the colosseum’s female staff faint when he walks in, who warns Lucy that his armour is over the weight limit and says the Flame-Flame Fruit will be his alone.',
+        it: 'Un pirata così bello che le addette del colosseo svengono quando entra, che avverte Lucy che c’è un limite di peso per l’equipaggiamento e dice che il Frutto Foco Foco sarà soltanto suo.',
+        en: 'A pirate so beautiful that the colosseum’s female staff faint when he walks in, who warns Lucy that there is a weight limit on gear and says the Flame-Flame Fruit will be his alone.',
       },
       visual: { art: 'cavendish', tint: 'ivory' },
     },
@@ -543,9 +543,10 @@ export const dressrosa: Saga = {
     {
       id: 'kyros',
       kind: 'character',
-      // His name is said at 673, but his past, as the colosseum's champion
-      // and then the king's captain of the guard, is 675, which adapts
-      // chapter 742 (#386).
+      // Rebecca names him at 634 as a colosseum legend nobody has seen, and
+      // the dwarves say the Thunder Soldier is Kyros at 673. His past, as the
+      // champion and then the king's captain of the guard, is told at 675,
+      // which adapts chapter 742 (#386).
       revealedAtEpisode: 675,
       revealedAtChapter: 742,
       name: { it: 'Kyros', en: 'Kyros' },
@@ -586,7 +587,8 @@ export const dressrosa: Saga = {
     {
       id: 'donquixote-rosinante',
       kind: 'character',
-      // Episode 704 adapts chapter 765. The chapter stays at 768: later than
+      // The commander reveal is chapter 764, episode 703, and episode 704
+      // adapts chapter 765. The chapter stays at 768 on purpose: later than
       // it needs to be, and nothing here needs it lower (#390).
       revealedAtEpisode: 704,
       revealedAtChapter: 768,
@@ -998,8 +1000,8 @@ export const dressrosa: Saga = {
     'caesar-clown': {
       role: { it: 'Scienziato di Punk Hazard', en: 'Scientist of Punk Hazard' },
       log: {
-        it: 'I suoi uomini lo chiamano Maestro, e lui dà gli ordini dal laboratorio sotto forma di gas. Voleva che i marine se ne andassero prima di vedere qualcosa, e quando sente che hanno visto i bambini manda in pezzi il bicchiere. Smoker trova le lettere CC su una nave nascosta accanto al laboratorio e fa il suo nome: uno scienziato che un tempo lavorava con Vegapunk.',
-        en: 'His men call him the Master, and he gives his orders from the laboratory as a shape of gas. He wanted the Marines sent away before they saw anything, and when he hears that they have seen the children he smashes his glass. Smoker finds the letters CC on a ship hidden beside the laboratory and names him: a scientist who once worked with Vegapunk.',
+        it: 'I suoi uomini lo chiamano Maestro, e lui dà gli ordini dal laboratorio sotto forma di gas. Quando i marine della G-5 si fanno strada fino all’isola, fa nascondere le navi ormeggiate davanti e si rifiuta di farsi vedere. Smoker trova le lettere CC su una nave nascosta accanto al laboratorio e fa il suo nome: uno scienziato che un tempo lavorava con Vegapunk.',
+        en: 'His men call him the Master, and he gives his orders from the laboratory as a shape of gas. When the G-5 Marines force their way to the island, he has the ships moored at the front hidden and refuses to show himself. Smoker finds the letters CC on a ship hidden beside the laboratory and names him: a scientist who once worked with Vegapunk.',
       },
       affiliation: [
         {
@@ -1031,8 +1033,8 @@ export const dressrosa: Saga = {
     'monet': {
       role: { it: 'Assistente del laboratorio', en: 'Laboratory assistant' },
       log: {
-        it: 'Sorvola l’isola prima che qualcuno sappia il suo nome, poi fa rapporto al padrone del laboratorio: il drago che sorvegliava l’isola e i centauri sono stati battuti, e i pirati presi con la loro nave avevano dei compagni sul lato in fiamme, che arriveranno fra pochi minuti. Li ha riconosciuti: gli mostra il giornale con le foto dei Cappello di Paglia.',
-        en: 'She flies over the island before anyone knows her name, then reports to the master of the laboratory: the dragon that guarded the island and the centaurs are beaten, and the pirates taken with their ship had friends on the burning side, who will be there in minutes. She knows who they are: she shows him the newspaper with the Straw Hats’ pictures.',
+        it: 'Torna in volo al laboratorio e fa rapporto al suo padrone: il drago che sorvegliava l’isola e i centauri sono stati battuti, e i pirati presi con la loro nave avevano dei compagni sul lato in fiamme, che arriveranno fra pochi minuti. Li ha riconosciuti: gli mostra il giornale con le foto dei Cappello di Paglia.',
+        en: 'She flies back to the laboratory and reports to its master: the dragon that guarded the island and the centaurs are beaten, and the pirates taken with their ship had friends on the burning side, who will be there in minutes. She knows who they are: she shows him the newspaper with the Straw Hats’ pictures.',
       },
       status: [
         { episode: 587, value: 'alive' },
@@ -1383,8 +1385,8 @@ export const dressrosa: Saga = {
     'ideo': {
       role: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
       log: {
-        it: 'Prima che cominci il blocco C, Gats lo nomina per primo fra i combattenti da tenere d’occhio: Cannone Distruttore, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo.',
-        en: 'Before Block C begins, Gatz names him first among the fighters to watch: Destruction Cannon, twice champion of the New World Central Fighting Tournament.',
+        it: 'Gats lo nomina per primo fra i combattenti da tenere d’occhio nel blocco C: Cannone Distruttore, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo.',
+        en: 'Gatz names him first among the fighters to watch in Block C: Destruction Cannon, twice champion of the New World Central Fighting Tournament.',
       },
       affiliation: [
         {
