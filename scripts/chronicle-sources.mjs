@@ -1152,7 +1152,7 @@ export const CHRONICLE_SOURCES = {
   'sengoku': {
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Threshold entry, no Qref on the wiki (chapter 234): Sengoku chairs the Warlord summit at Mary Geoise, which Dracule Mihawk gatecrashes. Chapter (#169): the last event is chapter 234, at or below the record’s own chapter 234, so no pin.',
+      note: 'Threshold entry, no Qref on the wiki (chapter 234): Sengoku chairs the Warlord summit at Mary Geoise, which Dracule Mihawk gatecrashes. Chapter (#169): the last event is chapter 234, at or below the record’s own chapter 234, so no pin. Corrected in #430: the strings are first named and explained in chapter 724, episode 655 (Ito Ito no Mi: “first seen in the Jaya Arc … but not named or explained in any way until the Dressrosa Arc”), so the “string-wielding man” is now a man in a feathered coat.',
     },
     323: {
       source: 'https://onepiece.fandom.com/wiki/Episode_323',
@@ -1204,11 +1204,11 @@ export const CHRONICLE_SOURCES = {
   'donquixote-doflamingo': {
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug, same as Edward Newgate. Episode 151’s own charDebut list and Long Summary already carry Doflamingo puppeteering two Marines into fighting each other for his own amusement; episode 152 has no Doflamingo content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed no other chronicle entry anywhere names or marks donquixote-doflamingo below episode 655, so the move is safe); the story’s episode moved to match.',
+      note: 'Second pass: the issue’s repo threshold of 152 was itself a bug, same as Edward Newgate. Episode 151’s own charDebut list and Long Summary already carry Doflamingo puppeteering two Marines into fighting each other for his own amusement; episode 152 has no Doflamingo content. revealedAtEpisode corrected to 151 for this character in skypiea.ts (confirmed no other chronicle entry anywhere names or marks donquixote-doflamingo below episode 655, so the move is safe); the story’s episode moved to match. Corrected in #430: the strings are first named and explained in chapter 724, episode 655 (Ito Ito no Mi: “first seen in the Jaya Arc … but not named or explained in any way until the Dressrosa Arc”), so the story now says what Chapter_234 shows: the marines’ “hands are moving by themselves”.',
     },
     207: {
       source: 'https://onepiece.fandom.com/wiki/Episode_207',
-      note: 'Flashback: Doflamingo makes Bellamy and Sarquiss fight each other in Mock Town after Bellamy’s defeat by Luffy.',
+      note: 'Flashback: Doflamingo makes Bellamy and Sarquiss fight each other in Mock Town after Bellamy’s defeat by Luffy. Corrected in #430: the strings are first named and explained in chapter 724, episode 655 (Ito Ito no Mi: “first seen in the Jaya Arc … but not named or explained in any way until the Dressrosa Arc”), so he now turns his power on them (Episode_207: “uses his powers on Bellamy and Sarquiss”).',
     },
     398: {
       source: 'https://onepiece.fandom.com/wiki/Episode_398',
@@ -1216,7 +1216,7 @@ export const CHRONICLE_SOURCES = {
     },
     470: {
       source: 'https://onepiece.fandom.com/wiki/Episode_470',
-      note: 'Doflamingo rides Jozu like a horse at Marineford and calls Kuma dead.',
+      note: 'Doflamingo rides Jozu like a horse at Marineford and calls Kuma dead. Corrected in #430: the strings are first named and explained in chapter 724, episode 655 (Ito Ito no Mi: “first seen in the Jaya Arc … but not named or explained in any way until the Dressrosa Arc”), so the story no longer says how he holds Jozu. Rewritten from Donquixote Doflamingo/History and Crocodile/History: Jozu hurts Crocodile, and before his second blow Doflamingo, riding on his back, stops him and asks Crocodile to team up (Qref chap=560 ep=469); Crocodile laughs it off and blows them both away with Sables (Qref chap=561 ep=470). The old text had him step in for sport and make Jozu fight, and called his line that Kuma is dead “careless and wrong”; on screen he explains Kuma’s conversion to Ivankov (chap 559, ep 469), and calling it wrong hinted at later chapters, so the Kuma clause is gone.',
     },
     681: {
       source: 'https://onepiece.fandom.com/wiki/Episode_681',
@@ -1368,7 +1368,7 @@ export const CHRONICLE_SOURCES = {
     },
     151: {
       source: 'https://onepiece.fandom.com/wiki/Episode_151',
-      note: 'Long Summary: at Mary Geoise, Doflamingo (bored, toying with two marines via his strings) and Kuma are already present when Mihawk joins them, making it three Warlords; he says he came only as an onlooker interested in the pirates who beat Crocodile; Laffitte then bursts in to nominate Marshall D. Teach for the empty seat.',
+      note: 'Long Summary: at Mary Geoise, Doflamingo (bored, toying with two marines via his strings) and Kuma are already present when Mihawk joins them, making it three Warlords; he says he came only as an onlooker interested in the pirates who beat Crocodile; Laffitte then bursts in to nominate Marshall D. Teach for the empty seat. Corrected in #430: the strings are first named and explained in chapter 724, episode 655 (Ito Ito no Mi: “first seen in the Jaya Arc … but not named or explained in any way until the Dressrosa Arc”), so the story now says the marines’ hands move by themselves (Chapter_234).',
     },
     463: {
       source: 'https://onepiece.fandom.com/wiki/Episode_463',

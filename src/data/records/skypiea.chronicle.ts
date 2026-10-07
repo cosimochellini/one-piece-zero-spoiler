@@ -161,8 +161,8 @@ export const skypieaChronicles = {
           en: 'Herding wolves into one room',
         },
         body: {
-          it: 'A Mary Geoise, l’Ammiraglio in capo Sengoku presiede un summit di quel che resta dei Sette Corsari, per scegliere il sostituto di [[crocodile|Crocodile]] dopo la sua caduta ad Alabasta. Due arrivano come convocati: un uomo dai fili che per noia fa combattere due marine, e [[bartholomew-kuma|Kuma]], silenzioso come un muro. Poi un terzo entra semplicemente senza essere stato chiamato: [[dracule-mihawk|Mihawk]], che vuole solo osservare, curioso della ciurma che ha abbattuto Crocodile. Sengoku ordina al primo di fermarsi e ammette, tra sé, che tenere tre Corsari nella stessa stanza è già come radunare lupi.',
-          en: 'At Mary Geoise, Fleet Admiral Sengoku chairs a summit of what is left of the Seven Warlords, choosing [[crocodile|Crocodile]]’s replacement after his fall in Alabasta. Two arrive as summoned: a string-wielding man who toys with two marines out of boredom, and [[bartholomew-kuma|Kuma]], silent as a wall. Then a third simply walks in uninvited, [[dracule-mihawk|Mihawk]], who wants only to watch, curious about the crew that took Crocodile down. Sengoku orders the first man to stand down and admits, privately, that keeping three Warlords in one room already feels like herding wolves.',
+          it: 'A Mary Geoise, l’Ammiraglio in capo Sengoku presiede un summit di quel che resta dei Sette Corsari, per scegliere il sostituto di [[crocodile|Crocodile]] dopo la sua caduta ad Alabasta. Due arrivano come convocati: un uomo con un cappotto di piume che per noia fa combattere due marine, e [[bartholomew-kuma|Kuma]], silenzioso come un muro. Poi un terzo entra semplicemente senza essere stato chiamato: [[dracule-mihawk|Mihawk]], che vuole solo osservare, curioso della ciurma che ha abbattuto Crocodile. Sengoku ordina al primo di fermarsi e ammette, tra sé, che tenere tre Corsari nella stessa stanza è già come radunare lupi.',
+          en: 'At Mary Geoise, Fleet Admiral Sengoku chairs a summit of what is left of the Seven Warlords, choosing [[crocodile|Crocodile]]’s replacement after his fall in Alabasta. Two arrive as summoned: a man in a feathered coat who toys with two marines out of boredom, and [[bartholomew-kuma|Kuma]], silent as a wall. Then a third simply walks in uninvited, [[dracule-mihawk|Mihawk]], who wants only to watch, curious about the crew that took Crocodile down. Sengoku orders the first man to stand down and admits, privately, that keeping three Warlords in one room already feels like herding wolves.',
         },
       },
     },
@@ -295,12 +295,12 @@ export const skypieaChronicles = {
       episode: 151,
       value: {
         title: {
-          it: 'Marionette su fili invisibili',
-          en: 'Puppets on invisible strings',
+          it: 'Mani che si muovono da sole',
+          en: 'Hands that move by themselves',
         },
         body: {
-          it: 'A Mary Geoise, un uomo alto in un cappotto piumato arriva per il summit dei Corsari e trova l’attesa noiosa. Doflamingo alza due dita, e due marine sull’attenti si scagliano l’uno contro l’altro, scambiandosi colpi che nessuno dei due ha scelto, marionette su fili troppo sottili per essere visti. [[sengoku|Sengoku]] gli ordina di smettere; Doflamingo scrolla le spalle e dice di essere venuto solo perché i suoi affari sull’isola andavano così bene da annoiarlo. Nessuno nella sala capisce ancora fino in fondo cosa possano fare quei fili a una persona, né fino a che punto.',
-          en: 'At Mary Geoise, a tall man in a feathered coat arrives for the Warlord summit and finds the wait tedious. Doflamingo raises two fingers, and two marines standing at attention suddenly turn on each other, trading blows neither of them chose, puppets on threads too thin to see. [[sengoku|Sengoku]] orders him to stop; Doflamingo shrugs and says he only came because his own island business was running smoothly enough to bore him. No one in the room yet fully understands what those threads can do to a person, or how far.',
+          it: 'A Mary Geoise, un uomo alto in un cappotto piumato arriva per il summit dei Corsari e trova l’attesa noiosa. Doflamingo alza due dita, e due marine sull’attenti si scagliano l’uno contro l’altro, scambiandosi colpi che nessuno dei due ha scelto, con le mani che si muovono da sole. [[sengoku|Sengoku]] gli ordina di smettere; Doflamingo scrolla le spalle e dice di essere venuto solo perché i suoi affari sull’isola andavano così bene da annoiarlo. Nessuno nella sala sa ancora come ci riesca, né fin dove possa arrivare.',
+          en: 'At Mary Geoise, a tall man in a feathered coat arrives for the Warlord summit and finds the wait tedious. Doflamingo raises two fingers, and two marines standing at attention suddenly turn on each other, trading blows neither of them chose, their hands moving by themselves. [[sengoku|Sengoku]] orders him to stop; Doflamingo shrugs and says he only came because his own island business was running smoothly enough to bore him. No one in the room yet knows how he does it, or how far it goes.',
         },
       },
     },
@@ -309,8 +309,8 @@ export const skypieaChronicles = {
       value: {
         title: { it: 'Punizione a Mock Town', en: 'Punishment in Mock Town' },
         body: {
-          it: 'A Mock Town, Doflamingo si appollaia su una colonna e rivolge i suoi fili contro [[bellamy|Bellamy]] e [[sarquiss|Cirkeys]], come punizione per la sconfitta contro [[monkey-d-luffy|Rufy]]. Bellamy implora un’altra possibilità; Doflamingo ha già deciso che è superato, e costringe la mano di Cirkeys a colpire il proprio capitano. È una crudeltà piccola e casuale, finita quasi prima di iniziare, che dice a chiunque guardi quanto poco un Corsaro valuti i pirati che lo deludono.',
-          en: 'In Mock Town, Doflamingo perches on a column and turns his strings on [[bellamy|Bellamy]] and [[sarquiss|Sarquiss]] as punishment for losing to [[monkey-d-luffy|Luffy]]. Bellamy begs for another chance; Doflamingo has already decided he is obsolete, and forces Sarquiss’s own hand to slash his captain instead. It is a small, casual cruelty, over almost before it starts, and it tells anyone watching exactly how little a Warlord values the pirates who fail him.',
+          it: 'A Mock Town, Doflamingo si appollaia su una colonna e rivolge il suo potere contro [[bellamy|Bellamy]] e [[sarquiss|Cirkeys]], come punizione per la sconfitta contro [[monkey-d-luffy|Rufy]]. Bellamy implora un’altra possibilità; Doflamingo ha già deciso che è superato, e costringe la mano di Cirkeys a colpire il proprio capitano. È una crudeltà piccola e casuale, finita quasi prima di iniziare, che dice a chiunque guardi quanto poco un Corsaro valuti i pirati che lo deludono.',
+          en: 'In Mock Town, Doflamingo perches on a column and turns his power on [[bellamy|Bellamy]] and [[sarquiss|Sarquiss]] as punishment for losing to [[monkey-d-luffy|Luffy]]. Bellamy begs for another chance; Doflamingo has already decided he is obsolete, and forces Sarquiss’s own hand to slash his captain instead. It is a small, casual cruelty, over almost before it starts, and it tells anyone watching exactly how little a Warlord values the pirates who fail him.',
         },
       },
     },
@@ -330,10 +330,10 @@ export const skypieaChronicles = {
     {
       episode: 470,
       value: {
-        title: { it: 'Cavalca Jozu per gioco', en: 'Rides Jozu for sport' },
+        title: { it: 'Un’offerta a Crocodile', en: 'An offer to Crocodile' },
         body: {
-          it: 'A Marineford, [[crocodile|Crocodile]] si fa strada tra i ranghi minori di Barbabianca per raggiungere il vecchio, ma viene bloccato da [[jozu|Jozu]]. Doflamingo interviene per gioco, cavalcando la schiena dello stesso Jozu con i suoi fili come fosse un cavallo, costringendo il gigantesco comandante a combattere mezzo controllato dal proprio corpo. Nel caos accenna, quasi annoiato, che [[bartholomew-kuma|Kuma]] ormai dev’essere morto, una voce sbadata e sbagliata, buttata lì tra un trucco di fili e l’altro.',
-          en: 'At Marineford, [[crocodile|Crocodile]] cuts through Whitebeard’s lower ranks to reach the old man himself, only to be blocked by [[jozu|Jozu]]. Doflamingo steps in for sport, straddling Jozu’s own back with his strings as if riding a horse, forcing the giant commander to fight half-controlled by his own body. Amid the chaos he mentions, almost bored, that [[bartholomew-kuma|Kuma]] must be dead by now, a rumor, careless and wrong, tossed off between one puppet-string trick and the next.',
+          it: 'A Marineford, [[crocodile|Crocodile]] si fa strada tra i ranghi minori di Barbabianca per raggiungere il vecchio, e [[jozu|Jozu]] lo respinge con un colpo che lo ferisce. Prima che arrivi il secondo, Do Flamingo, in sella a Jozu, lo ferma. Do Flamingo propone a Crocodile di allearsi. Crocodile ride dell’offerta e spazza via tutti e due con una tempesta di sabbia.',
+          en: 'At Marineford, [[crocodile|Crocodile]] cuts through Whitebeard’s lower ranks to reach the old man himself, and [[jozu|Jozu]] drives him back with a blow that hurts. Before the second one lands, Doflamingo, riding on Jozu’s back, holds him still. Doflamingo asks Crocodile to team up. Crocodile laughs the offer off and blows them both away with a storm of sand.',
         },
       },
     },
