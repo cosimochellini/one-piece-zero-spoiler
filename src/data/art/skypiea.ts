@@ -1041,8 +1041,9 @@ export const skypieaArt = {
     shadow(80, 182, 46),
   ],
   // Holy sitting side on, with no eye or nose drawn, his ear hanging and his
-  // collar as the accent: the huge dog waits at Ohm's side in the ruins (173).
-  // His back is hatched.
+  // collar as the accent: the huge dog sits panting at Ohm's side as Ohm
+  // senses the raid (164, ch 251). The collar is the anime's; the manga draws
+  // none. His back is hatched.
   'holy': [
     {
       d: 'M63.9 111.3 C57 134.3 59.3 155 66.2 171.1 H84.6 M82.3 134.3 C84.6 150.4 84.6 161.9 91.5 171.1 H107.6 C126 168.8 137.5 148.1 132.9 122.8 C128.3 97.5 107.6 86 89.2 88.3 C80 90.6 73.1 95.2 70.8 99.8',
