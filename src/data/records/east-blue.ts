@@ -114,8 +114,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 3,
       name: { it: 'Roronoa Zoro', en: 'Roronoa Zoro' },
       summary: {
-        it: 'Un cacciatore di pirati legato a un palo nel cortile di una base della Marina, che resiste da settimane senza mangiare per una promessa fatta a una bambina.',
-        en: 'A pirate hunter tied to a post in the yard of a Marine base, weeks without food, over a promise made to a little girl.',
+        it: 'Un cacciatore di pirati legato a un palo nel cortile di una base della Marina, che resiste da nove giorni senza mangiare per una promessa fatta a una bambina.',
+        en: 'A pirate hunter tied to a post in the yard of a Marine base, nine days without food, over a promise made to a little girl.',
       },
       visual: { art: 'roronoa-zoro', tint: 'green' },
     },
@@ -1058,8 +1058,8 @@ export const eastBlue: Saga = {
         en: 'Swordsman, pirate hunter',
       },
       log: {
-        it: 'Combatte con tre spade, una delle quali tiene in bocca, e ha un nome che i pirati dell’East Blue pronunciano a bassa voce. Si è fatto legare a un palo per un mese piuttosto che chiedere scusa a un ufficiale che non lo meritava. Accetta di imbarcarsi con un patto: se il capitano gli farà mai rinunciare al suo sogno, sarà lui a farlo pagare.',
-        en: 'He fights with three swords, one of them held in his teeth, and his name is one East Blue pirates say quietly. He let himself be tied to a post for a month rather than apologise to an officer who did not deserve it. He signs on with a condition: if the captain ever makes him give up his dream, he will make him pay for it.',
+        it: 'In città la gente trasale a sentire il suo nome. Da nove giorni è legato a un palo nel cortile della base senza mangiare: ha fermato il lupo di Hermeppo che aggrediva una bambina, e Hermeppo lo ha fatto legare promettendogli di lasciarlo andare se resiste un mese. Quando uno sconosciuto con un cappello di paglia gli chiede di entrare nella sua ciurma, rifiuta: non diventerà un pirata, perché ha qualcosa di suo da fare.',
+        en: 'People in the town flinch at his name. For nine days he has been tied to a post in the yard of the base without food: he stopped Helmeppo’s wolf from attacking a little girl, and Helmeppo had him tied up with a promise to let him go if he lasted a month. When a stranger in a straw hat asks him to join his crew, he refuses: he will not become a pirate, because he has something of his own to do.',
       },
       status: [{ episode: 2, value: 'alive' }],
       affiliation: [
@@ -1157,8 +1157,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.rika,
       role: { it: 'Bambina di Shells Town', en: 'Shells Town girl' },
       log: {
-        it: 'È la bambina che Zoro ha salvato quando il lupo di Hermeppo l’ha aggredita nel locale, ed è per questo che lui è finito legato nel cortile. Dopo settimane senza cibo, gli prepara delle polpette di riso per la prima volta in vita sua, con lo zucchero perché pensava che fossero più buone, e scavalca il muro con una scala per portargliele. Piange quando gliele calpestano, ed esulta ad alta voce quando uno sconosciuto con un cappello di paglia prende a pugni chi l’ha fatto.',
-        en: 'She is the girl Zoro saved when Helmeppo’s wolf went for her in the bar, which is how he ended up tied in the yard. After weeks without food for him, she makes him rice balls for the first time in her life, sweet instead of salty because she thought they would taste better, and climbs the wall on a ladder to bring them. She cries when they are trampled, and cheers out loud when a stranger in a straw hat punches the man who trampled them.',
+        it: 'È la bambina che Zoro ha salvato quando il lupo di Hermeppo l’ha aggredita nel locale, ed è per questo che lui è finito legato nel cortile. Dopo nove giorni senza cibo, gli prepara delle polpette di riso per la prima volta in vita sua, con lo zucchero perché pensava che fossero più buone, e scavalca il muro con una scala per portargliele. Piange quando gliele calpestano, ed esulta ad alta voce quando uno sconosciuto con un cappello di paglia prende a pugni chi l’ha fatto.',
+        en: 'She is the girl Zoro saved when Helmeppo’s wolf went for her in the bar, which is how he ended up tied in the yard. After nine days without food for him, she makes him rice balls for the first time in her life, sweet instead of salty because she thought they would taste better, and climbs the wall on a ladder to bring them. She cries when they are trampled, and cheers out loud when a stranger in a straw hat punches the man who trampled them.',
       },
       status: [{ episode: 2, value: 'alive' }],
       affiliation: [

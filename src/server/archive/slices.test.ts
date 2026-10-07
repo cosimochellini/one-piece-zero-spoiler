@@ -766,27 +766,38 @@ describe('a record drawn again later in the story', () => {
     expect(characterOf(chopper, atChapter(598)).visual.strokes).toBe(cap?.value)
   })
 
-  describe('twice, following Zoro’s third sword', () => {
+  describe('three times, following Zoro’s swords', () => {
     const zoro = filed('roronoa-zoro')
-    const threeSwords = DRAWINGS['roronoa-zoro']
-    const [shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
+    const post = DRAWINGS['roronoa-zoro']
+    const [threeSwords, shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
     const drawnAt = (bookmark: Bookmark): Stroke[] =>
       characterOf(zoro, readerFor(bookmark, 'en')).visual.strokes
 
-    it('shows the latest third sword an episode reader has reached', () => {
+    it('files each sword at the episode that shows it', () => {
+      expect(threeSwords?.episode).toBe(3)
       expect(shusui?.episode).toBe(362)
       expect(enma?.episode).toBe(956)
+    })
 
-      expect(drawnAt(ep(361))).toBe(threeSwords)
+    it('shows the latest sword an episode reader has reached', () => {
+      expect(drawnAt(ep(2))).toBe(post)
+      expect(drawnAt(ep(3))).toBe(threeSwords?.value)
+      expect(drawnAt(ep(361))).toBe(threeSwords?.value)
       expect(drawnAt(ep(362))).toBe(shusui?.value)
       expect(drawnAt(ep(955))).toBe(shusui?.value)
       expect(drawnAt(ep(956))).toBe(enma?.value)
-      expect(drawnAt(null)).toBe(threeSwords)
+      expect(drawnAt(null)).toBe(post)
     })
 
     it('keeps each sword from a chapter reader until the manga hands it over', () => {
-      // The manga hands Zoro Shusui in chapter 467 and Enma in 955.
-      expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(threeSwords)
+      // The manga shows the three in chapter 5, hands Zoro Shusui in 467 and
+      // Enma in 955.
+      expect(drawnAt({ mode: 'chapter', chapter: 3 })).toBe(post)
+      expect(drawnAt({ mode: 'chapter', chapter: 4 })).toBe(post)
+      expect(drawnAt({ mode: 'chapter', chapter: 5 })).toBe(threeSwords?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(
+        threeSwords?.value,
+      )
       expect(drawnAt({ mode: 'chapter', chapter: 467 })).toBe(shusui?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 954 })).toBe(shusui?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
