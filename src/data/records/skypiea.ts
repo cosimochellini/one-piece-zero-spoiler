@@ -955,7 +955,9 @@ export const skypiea: Saga = {
         },
       ],
       epithet: [
-        { episode: 586, value: { it: 'Joker', en: 'Joker' } },
+        // Joker is a name Caesar answers to from 587; that it is Doflamingo is
+        // told at 599, chapter 673 (#384).
+        { episode: 599, chapter: 673, value: { it: 'Joker', en: 'Joker' } },
         {
           episode: 632,
           value: { it: 'Il Demone Celeste', en: 'Heavenly Demon' },

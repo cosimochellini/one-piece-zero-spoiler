@@ -105,24 +105,28 @@ export const dressrosa: Saga = {
     {
       id: 'caesar-clown',
       kind: 'character',
-      revealedAtEpisode: 584,
-      revealedAtChapter: 662,
+      // Only "the Master", a shape of gas, from 584. Smoker names him at the
+      // end of 588 (chapter 663); he is shown in full at 589 (#148, #384).
+      revealedAtEpisode: 588,
+      revealedAtChapter: 663,
       name: { it: 'Caesar Clown', en: 'Caesar Clown' },
       summary: {
-        it: 'Uno scienziato con le corna e la pelle blu che ride a scatti e si scioglie in gas velenoso, padrone di un laboratorio su un’isola vietata.',
-        en: 'A horned, blue-skinned scientist who laughs in fits and dissolves into poison gas, master of a laboratory on a forbidden island.',
+        it: 'Uno scienziato fatto di gas, padrone di un laboratorio su un’isola vietata, che Smoker riconosce come un ex collega di Vegapunk.',
+        en: 'A scientist made of gas, master of a laboratory on a forbidden island, whom Smoker names as a former colleague of Vegapunk.',
       },
       visual: { art: 'caesar-clown', tint: 'acid' },
     },
     {
       id: 'monet',
       kind: 'character',
-      revealedAtEpisode: 586,
+      // Named at 587 (chapter 662). The chapter stays at 664, later than it
+      // needs to be (#384).
+      revealedAtEpisode: 587,
       revealedAtChapter: 664,
       name: { it: 'Monet', en: 'Monet' },
       summary: {
-        it: 'Una donna con le ali e le zampe da uccello che tiene i registri del laboratorio, e che si sfalda in neve quando qualcuno prova a colpirla.',
-        en: 'A winged woman with a bird’s legs who keeps the laboratory’s records, and comes apart into snow when anyone tries to hit her.',
+        it: 'Una donna con le ali al posto delle braccia e le zampe da uccello, che torna in volo al laboratorio per dire al suo padrone che i pirati sull’isola sono i Cappello di Paglia.',
+        en: 'A woman with wings for arms and a bird’s legs who flies back to the laboratory to tell its master that the pirates on the island are the Straw Hats.',
       },
       visual: { art: 'monet', tint: 'ice' },
     },
@@ -259,8 +263,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 708,
       name: { it: 'Cavendish', en: 'Cavendish' },
       summary: {
-        it: 'Un capitano bellissimo e vanitoso che arriva al colosseo con la spada in una mano e la criniera del suo cavallo bianco nell’altra.',
-        en: 'A beautiful, vain captain who arrives at the colosseum with a sword in one hand and his white horse’s mane in the other.',
+        it: 'Un pirata così bello che le addette del colosseo svengono quando entra, che avverte Lucy che la sua armatura supera il limite di peso e dice che il Frutto Foco Foco sarà soltanto suo.',
+        en: 'A pirate so beautiful that the colosseum’s female staff faint when he walks in, who warns Lucy that his armour is over the weight limit and says the Flame-Flame Fruit will be his alone.',
       },
       visual: { art: 'cavendish', tint: 'ivory' },
     },
@@ -283,20 +287,25 @@ export const dressrosa: Saga = {
       revealedAtChapter: 708,
       name: { it: 'Don Chinjao', en: 'Don Chinjao' },
       summary: {
-        it: 'Un vecchio pirata del Regno di Kano con il cranio a punta, che si iscrive al torneo del colosseo.',
-        en: 'An old pirate from the Kano Kingdom with a skull pointed like a drill, who enters the colosseum tournament.',
+        it: 'Un vecchio calvo con la testa ammaccata, a capo della famiglia Chinjao, una banda del Regno di Kano, che si iscrive al torneo del colosseo.',
+        en: 'An old man with a dented bald head who leads the Chinjao family, a gang from the Kano Kingdom, and enters the colosseum tournament.',
       },
       visual: { art: 'don-chinjao', tint: 'teal' },
     },
     {
       id: 'ideo',
       kind: 'character',
+      // The anime moves Gatz's introduction of Block C up to 639, which
+      // adapts chapter 710; the manga gives his epithet and titles in
+      // chapter 715. The pair says nothing about the chapters between, so
+      // the record stays out of the chapter table (#386).
       revealedAtEpisode: 639,
-      revealedAtChapter: 708,
+      revealedAtChapter: 715,
+      unanchored: true,
       name: { it: 'Ideo', en: 'Ideo' },
       summary: {
-        it: 'Un pugile con le braccia lunghe e sottili che chiama cannonate i propri colpi, e nel colosseo non sbaglia un bersaglio.',
-        en: 'A boxer with long thin arms who calls his punches cannon shots, and in the colosseum does not miss a target.',
+        it: 'Un combattente dalle braccia lunghe, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo, che il colosseo presenta come Cannone Distruttore fra i combattenti del blocco C.',
+        en: 'A fighter with long arms, twice champion of the New World Central Fighting Tournament, whom the colosseum announces as Destruction Cannon among the fighters of Block C.',
       },
       visual: { art: 'ideo', tint: 'orange' },
     },
@@ -327,8 +336,12 @@ export const dressrosa: Saga = {
     {
       id: 'hajrudin',
       kind: 'character',
+      // Gatz announces him at 639, which adapts chapter 710; the manga makes
+      // the same announcement in chapter 714. Like Ideo, kept out of the
+      // chapter table (#386).
       revealedAtEpisode: 639,
-      revealedAtChapter: 708,
+      revealedAtChapter: 714,
+      unanchored: true,
       name: { it: 'Hajrudin', en: 'Hajrudin' },
       summary: {
         it: 'Un gigante di Elbaf, presentato al colosseo come il più temibile dei mercenari pirati, tra i combattenti del blocco C.',
@@ -345,8 +358,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 717,
       name: { it: 'Bastille', en: 'Bastille' },
       summary: {
-        it: 'Un viceammiraglio con una maschera da squalo e una spada più alta di lui, che guarda il colosseo da fuori aspettando un ordine.',
-        en: 'A vice admiral in a shark mask carrying a sword taller than he is, watching the colosseum from outside and waiting for an order.',
+        it: 'Un viceammiraglio con una maschera di metallo cornuta e una spada enorme, che aspetta fuori dal colosseo con i suoi marine e non capisce perché nessuno degli sconfitti sia ancora uscito.',
+        en: 'A vice admiral in a horned metal mask carrying a huge sword, who waits outside the colosseum with his Marines and cannot see why none of the losers has come out.',
       },
       visual: { art: 'bastille', tint: 'teal' },
     },
@@ -369,8 +382,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 708,
       name: { it: 'Hack', en: 'Hack' },
       summary: {
-        it: 'Un uomo-pesce che nel colosseo combatte con il karate degli uomini-pesce, colpendo l’acqua nell’aria invece del corpo dell’avversario.',
-        en: 'A fish-man who fights in the colosseum with fish-man karate, striking the water in the air instead of his opponent’s body.',
+        it: 'Un uomo-pesce che il colosseo presenta fra i combattenti del blocco B come maestro di karate degli uomini-pesce ed esperto di jujitsu degli uomini-pesce.',
+        en: 'A fish-man whom the colosseum introduces among the fighters of Block B as a master of fish-man karate and a martial artist of fish-man jujutsu.',
       },
       visual: { art: 'hack', tint: 'cyan' },
     },
@@ -530,7 +543,10 @@ export const dressrosa: Saga = {
     {
       id: 'kyros',
       kind: 'character',
-      revealedAtEpisode: 674,
+      // His name is said at 673, but his past, as the colosseum's champion
+      // and then the king's captain of the guard, is 675, which adapts
+      // chapter 742 (#386).
+      revealedAtEpisode: 675,
       revealedAtChapter: 742,
       name: { it: 'Kyros', en: 'Kyros' },
       summary: {
@@ -546,8 +562,8 @@ export const dressrosa: Saga = {
       revealedAtChapter: 746,
       name: { it: 'Mansherry', en: 'Mansherry' },
       summary: {
-        it: 'La principessa minuscola del popolo del bosco, chiusa in una gabbia perché le sue lacrime rimettono in sesto qualunque ferita.',
-        en: 'The tiny princess of the forest people, shut in a cage because her tears put any wound back the way it was.',
+        it: 'La principessa del Regno di Tontatta, che Leo chiama egoista e irascibile, e che i Tontatta partono per liberare dalla fabbrica insieme ai loro compagni.',
+        en: 'The princess of the Tontatta Kingdom, whom Leo calls selfish and short-tempered, and whom the Tontatta set out to free from the factory along with their friends.',
       },
       visual: { art: 'mansherry', tint: 'pink' },
     },
@@ -570,12 +586,14 @@ export const dressrosa: Saga = {
     {
       id: 'donquixote-rosinante',
       kind: 'character',
+      // Episode 704 adapts chapter 765. The chapter stays at 768: later than
+      // it needs to be, and nothing here needs it lower (#390).
       revealedAtEpisode: 704,
       revealedAtChapter: 768,
       name: { it: 'Donquijote Rosinante', en: 'Donquixote Rosinante' },
       summary: {
-        it: 'Un uomo altissimo travestito da clown che non parla mai, e che sotto il costume nasconde il cappotto di un ufficiale della Marina.',
-        en: 'A very tall man dressed as a clown who never speaks, and who hides a Marine officer’s coat underneath the costume.',
+        it: 'Un uomo altissimo travestito da clown che la famiglia crede muto, e che in realtà è un comandante della Marina.',
+        en: 'A very tall man dressed as a clown whom the family takes for mute, and who is in truth a Marine commander.',
       },
       visual: { art: 'donquixote-rosinante', tint: 'red' },
     },
@@ -980,12 +998,21 @@ export const dressrosa: Saga = {
     'caesar-clown': {
       role: { it: 'Scienziato di Punk Hazard', en: 'Scientist of Punk Hazard' },
       log: {
-        it: 'Tiene decine di bambini rapiti in una stanza piena di dolci e li chiama i suoi ospiti, mentre nell’aria dell’isola cresce qualcosa che non dovrebbe esserci. Il suo corpo diventa gas quando vuole, quindi colpirlo non serve a niente, e lui lo sa benissimo. Si vanta di lavorare per sé, ma prende ordini da qualcuno che non nomina mai per intero.',
-        en: 'He keeps dozens of stolen children in a room full of sweets and calls them his guests, while something that should not exist grows in the island’s air. His body turns to gas whenever he likes, so hitting him achieves nothing, and he knows it perfectly well. He boasts of working for himself, yet takes orders from someone whose name he never says in full.',
+        it: 'I suoi uomini lo chiamano Maestro, e lui dà gli ordini dal laboratorio sotto forma di gas. Voleva che i marine se ne andassero prima di vedere qualcosa, e quando sente che hanno visto i bambini manda in pezzi il bicchiere. Smoker trova le lettere CC su una nave nascosta accanto al laboratorio e fa il suo nome: uno scienziato che un tempo lavorava con Vegapunk.',
+        en: 'His men call him the Master, and he gives his orders from the laboratory as a shape of gas. He wanted the Marines sent away before they saw anything, and when he hears that they have seen the children he smashes his glass. Smoker finds the letters CC on a ship hidden beside the laboratory and names him: a scientist who once worked with Vegapunk.',
       },
       affiliation: [
         {
-          episode: 584,
+          episode: 588,
+          value: {
+            it: 'Punk Hazard, padrone del laboratorio',
+            en: 'Punk Hazard, master of the laboratory',
+          },
+        },
+        {
+          // Law names Joker, the man Caesar answers to, as Doflamingo.
+          episode: 599,
+          chapter: 673,
           value: {
             it: 'Punk Hazard, padrone del laboratorio; al servizio di Do Flamingo',
             en: 'Punk Hazard, master of the laboratory; Doflamingo’s employee',
@@ -997,29 +1024,36 @@ export const dressrosa: Saga = {
           value: { it: 'Prigioniero di Big Mom', en: 'Big Mom’s prisoner' },
         },
       ],
-      epithet: [{ episode: 584, value: { it: 'Maestro', en: 'Master' } }],
+      epithet: [{ episode: 588, value: { it: 'Maestro', en: 'Master' } }],
       devilFruit: [{ episode: 594, chapter: 664, value: ['gas-gas-fruit'] }],
       bounty: [{ episode: 589, value: 300_000_000 }],
     },
     'monet': {
-      role: {
-        it: 'Segretaria del laboratorio',
-        en: 'Secretary of the laboratory',
-      },
+      role: { it: 'Assistente del laboratorio', en: 'Laboratory assistant' },
       log: {
-        it: 'Siede accanto al padrone del laboratorio, prende appunti e risponde al telefono con la stessa voce gentile con cui minaccia. Il suo corpo è neve: le lame la attraversano e lei si ricompone, e con la neve riempie i corridoi per fermare chi corre. Sorride sempre, anche quando dice cose che non lasciano una via d’uscita.',
-        en: 'She sits beside the master of the laboratory, takes notes and answers the phone in the same gentle voice she uses to threaten. Her body is snow: blades pass through her and she puts herself back together, and she fills the corridors with drifts to stop anyone running. She is always smiling, even while saying things that leave no way out.',
+        it: 'Sorvola l’isola prima che qualcuno sappia il suo nome, poi fa rapporto al padrone del laboratorio: il drago che sorvegliava l’isola e i centauri sono stati battuti, e i pirati presi con la loro nave avevano dei compagni sul lato in fiamme, che arriveranno fra pochi minuti. Li ha riconosciuti: gli mostra il giornale con le foto dei Cappello di Paglia.',
+        en: 'She flies over the island before anyone knows her name, then reports to the master of the laboratory: the dragon that guarded the island and the centaurs are beaten, and the pirates taken with their ship had friends on the burning side, who will be there in minutes. She knows who they are: she shows him the newspaper with the Straw Hats’ pictures.',
       },
       status: [
-        { episode: 586, value: 'alive' },
+        { episode: 587, value: 'alive' },
         { episode: 620, value: 'deceased' },
       ],
       affiliation: [
         {
-          episode: 586,
+          episode: 587,
           value: {
-            it: 'Pirati di Donquijote, segretaria di Caesar',
-            en: 'Donquixote Pirates, Caesar’s secretary',
+            it: 'Punk Hazard, assistente del laboratorio',
+            en: 'Punk Hazard, laboratory assistant',
+          },
+        },
+        {
+          // Vergo says at 598 that Monet is the agent watching Caesar; at 599
+          // Law names the man behind them as Doflamingo.
+          episode: 599,
+          chapter: 673,
+          value: {
+            it: 'Agente di Do Flamingo al fianco di Caesar',
+            en: 'Doflamingo’s agent at Caesar’s side',
           },
         },
       ],
@@ -1250,12 +1284,12 @@ export const dressrosa: Saga = {
     },
     'cavendish': {
       role: {
-        it: 'Capitano dei Pirati Beautiful',
-        en: 'Captain of the Beautiful Pirates',
+        it: 'Pirata iscritto al torneo del colosseo',
+        en: 'Pirate in the colosseum tournament',
       },
       log: {
-        it: 'Era il principe di un regno che lo ha cacciato perché tutte le ragazze lo seguivano, e da allora lo racconta a chiunque, anche a chi non ha chiesto. Si presenta a Dressrosa con il suo cavallo e un’eleganza che il colosseo non aveva mai visto. Odia i pirati della nuova generazione più di ogni altra cosa, e ne fa l’elenco ad alta voce.',
-        en: 'He was the prince of a kingdom that threw him out because every girl in it followed him about, and he has told everyone since, asked or not. He arrives in Dressrosa with his horse and an elegance the colosseum has never seen. He hates the pirates of the new generation more than anything else, and lists them aloud.',
+        it: 'Quando entra nella sala d’attesa le addette svengono, e i combattenti lo riconoscono subito, stupiti che sia ancora vivo. Ferma Lucy, che sta provando un’armatura e una grossa spada, per avvertirlo che c’è un limite di peso per l’equipaggiamento. Poi dice che vincerà il Frutto Foco Foco, un potere bellissimo che spetta soltanto a lui.',
+        en: 'When he walks into the waiting room the women of the staff faint, and the fighters know him at once, surprised that he is still alive. He stops Lucy, who is trying on armour and a big sword, to warn him that there is a weight limit on gear. Then he says he will win the Flame-Flame Fruit, a beautiful power that belongs to him alone.',
       },
       affiliation: [
         {
@@ -1266,12 +1300,6 @@ export const dressrosa: Saga = {
           },
         },
         { episode: 746, value: GRAND_FLEET },
-      ],
-      origin: [
-        {
-          episode: 633,
-          value: { it: 'Regno di Bourgeois', en: 'Bourgeois Kingdom' },
-        },
       ],
       epithet: [
         {
@@ -1315,10 +1343,13 @@ export const dressrosa: Saga = {
       ],
     },
     'don-chinjao': {
-      role: { it: 'Vecchio pirata di Kano', en: 'Old pirate of Kano' },
+      role: {
+        it: 'Capo della famiglia Chinjao',
+        en: 'Leader of the Chinjao family',
+      },
       log: {
-        it: 'Vecchio, rumoroso e con un cranio fatto per sfondare, scende nel colosseo come se il conto fosse suo.',
-        en: 'Old, loud and with a skull made for breaking through, he walks into the colosseum as if the score were his own.',
+        it: 'Arriva al colosseo con Sai e Boo della famiglia Chinjao, e i combattenti nella sala d’attesa conoscono il suo nome e lo chiamano una leggenda. Non dice una parola mentre Sai difende Lucy davanti allo staff del colosseo.',
+        en: 'He comes to the colosseum with Sai and Boo of the Chinjao family, and the fighters in the waiting room know his name and call him a legend. He says nothing while Sai stands up for Lucy against the colosseum staff.',
       },
       affiliation: [
         {
@@ -1350,14 +1381,16 @@ export const dressrosa: Saga = {
       bounty: [{ episode: 645, value: 500_000_000 }],
     },
     'ideo': {
-      role: { it: 'Pugile del colosseo', en: 'Colosseum boxer' },
+      role: { it: 'Combattente del colosseo', en: 'Colosseum fighter' },
       log: {
-        it: 'Ha imparato a caricare i pugni come si carica un pezzo d’artiglieria. Nel colosseo parla poco e osserva gli avversari uno per uno, calcolando la distanza. Quando colpisce, quello che aveva davanti non è più al suo posto.',
-        en: 'He has learned to load a punch the way a gun is loaded. In the colosseum he says little and looks his opponents over one by one, working out the distance. When he lands a blow, whatever stood in front of him is no longer where it was.',
+        it: 'Prima che cominci il blocco C, Gats lo nomina per primo fra i combattenti da tenere d’occhio: Cannone Distruttore, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo.',
+        en: 'Before Block C begins, Gatz names him first among the fighters to watch: Destruction Cannon, twice champion of the New World Central Fighting Tournament.',
       },
       affiliation: [
         {
-          episode: 645,
+          // The alliance is formed on Orlumbus's ship, chapter 799.
+          episode: 744,
+          chapter: 799,
           value: {
             it: 'Alleanza di arti marziali della palestra XXX',
             en: 'XXX Gym Martial Arts Alliance',
@@ -1459,8 +1492,8 @@ export const dressrosa: Saga = {
     'bastille': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'Arriva a Dressrosa al seguito del nuovo ammiraglio e passa il tempo a ricordargli che la Marina ha delle regole. Porta una maschera che gli copre tutta la testa e una spada enorme che non sguaina quasi mai. Sull’isola non può fare nulla senza il permesso del re, e la cosa lo fa infuriare.',
-        en: 'He arrives in Dressrosa in the new admiral’s train and spends his time reminding him that the Marines have rules. He wears a mask that covers his whole head and an enormous sword he almost never draws. On the island he can do nothing without the king’s leave, and it makes him furious.',
+        it: 'Aspetta fuori dal Colosseo Corrida con una folla di marine, pronto ad arrestare i criminali man mano che escono, ma centinaia di combattenti hanno perso nei blocchi A e B e nessuno è uscito. È furioso con il viceammiraglio Maynard, che si è infiltrato fra i combattenti di testa sua e da allora non si è più fatto sentire, e comincia a sospettare che dentro stia succedendo qualcosa.',
+        en: 'He waits outside the Corrida Colosseum with a crowd of Marines, ready to arrest the criminals as they come out, but hundreds of fighters have lost in Blocks A and B and not one has left. He is angry with Vice Admiral Maynard, who went undercover as a fighter on his own and has not been heard from since, and he begins to suspect that something is going on inside.',
       },
       affiliation: [
         {
@@ -1509,8 +1542,8 @@ export const dressrosa: Saga = {
         en: 'Fish-man karate master',
       },
       log: {
-        it: 'Insegna il karate degli uomini-pesce e lo pratica come una disciplina, senza rabbia e senza vantarsi. Nell’arena colpisce l’acqua che c’è nell’aria e il colpo arriva a chi ha davanti senza toccarlo. È sceso nel colosseo per il premio in palio, per conto di persone che non nomina, e fra i gladiatori tiene la testa bassa.',
-        en: 'He teaches fish-man karate and practises it as a discipline, without anger and without boasting. In the arena he strikes the water in the air and the blow reaches the man opposite without touching him. He came down into the colosseum for the prize, on behalf of people he does not name, and keeps his head down among the gladiators.',
+        it: 'Quando l’annunciatore presenta i combattenti del blocco B, lo chiama maestro di karate degli uomini-pesce ed esperto di jujitsu degli uomini-pesce.',
+        en: 'When the announcer introduces the fighters of Block B, he calls him a master of fish-man karate and a martial artist of fish-man jujutsu.',
       },
       affiliation: [
         {
@@ -1771,21 +1804,21 @@ export const dressrosa: Saga = {
         en: 'Wooden soldier of Dressrosa',
       },
       log: {
-        it: 'Per tutti è il Soldatino, un giocattolo di legno con la gamba di ricambio e un tamburo, che si batte contro il re dei giocattoli con una spada sola. Il suo vero nome è Kyros, e a Dressrosa era il campione imbattuto del colosseo e il comandante dell’esercito del re. Nessuno se lo ricorda, e lui combatte lo stesso per una famiglia che non sa più chi sia.',
-        en: 'To everyone he is the Thunder Soldier, a wooden toy with a spare leg and a drum who fights the king of the toys with a single sword. His real name is Kyros, and in Dressrosa he was the colosseum’s undefeated champion and the commander of the king’s army. Nobody remembers him, and he fights all the same for a family that no longer knows who he is.',
+        it: 'Per tutti è il Soldatino, un soldatino giocattolo con una gamba sola, un pattino a rotelle e un fucile giocattolo, che guida la lotta contro il re. Il suo vero nome è Kyros: ha vinto tremila incontri nel colosseo, poi lo ha lasciato su richiesta del re per diventare capitano della guardia. Nessuno se lo ricorda, e lui combatte lo stesso per una famiglia che non sa più chi sia.',
+        en: 'To everyone he is the Thunder Soldier, a one-legged toy soldier on a roller skate with a toy rifle, who leads the fight against the king. His real name is Kyros: he won three thousand bouts in the colosseum, then left it at the king’s wish to become captain of the guard. Nobody remembers him, and he fights all the same for a family that no longer knows who he is.',
       },
       affiliation: [
         {
-          episode: 674,
+          episode: 675,
           value: {
             it: 'Famiglia reale Riku, ex comandante dell’esercito; un tempo campione imbattuto del colosseo',
             en: 'Riku royal family, former army commander; once the colosseum’s undefeated champion',
           },
         },
       ],
-      origin: [{ episode: 674, value: DRESSROSA }],
+      origin: [{ episode: 675, value: DRESSROSA }],
       epithet: [
-        { episode: 674, value: { it: 'Soldatino', en: 'Thunder Soldier' } },
+        { episode: 675, value: { it: 'Soldatino', en: 'Thunder Soldier' } },
       ],
     },
     'mansherry': {
@@ -1794,8 +1827,8 @@ export const dressrosa: Saga = {
         en: 'Princess of the Tontatta Kingdom',
       },
       log: {
-        it: 'È alta quanto una mano e porta una corona, e il suo popolo la adora. Le sue lacrime guariscono le ferite, riparano gli oggetti rotti e rimettono in piedi chi non dovrebbe più alzarsi, e per questo qualcuno l’ha chiusa in una gabbia e la tiene addormentata. I suoi la cercano da tempo senza sapere dove sia.',
-        en: 'She is the height of a hand and wears a crown, and her people adore her. Her tears heal wounds, mend broken things and put back on their feet those who should not be getting up, which is why somebody has shut her in a cage and keeps her asleep. Her own people have been looking for her for a long time without knowing where she is.',
+        it: 'Leo la chiama antipatica, egoista, cattiva, lunatica e irascibile, ma i Tontatta vogliono salvarla lo stesso, perché è una di loro. Credono che sia tenuta nella fabbrica insieme ai loro compagni. Lì chi comanda dice ai Tontatta che è malata, che solo gli SMILE che coltivano possono guarirla e che non possono vederla: una bugia che li tiene al lavoro.',
+        en: 'Leo calls her obnoxious, selfish, mean, moody and short-tempered, and still the Tontatta mean to save her, because she is one of them. They believe she is held at the factory with their friends. There the men in charge tell the Tontatta that she is ill, that only the SMILEs they grow can cure her and that they may not see her: a lie that keeps them at work.',
       },
       affiliation: [
         {
