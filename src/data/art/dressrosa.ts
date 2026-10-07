@@ -1254,31 +1254,30 @@ export const dressrosaArt = {
   ],
 
   // A Marine's rifle and cap dropped in the long grass of the Green Bit
-  // forest: the rifle with its butt, grip, trigger guard and barrel band,
-  // the cap with its peak and the cloth at the back. In episode 640 a voice
-  // that gives its name as Leo asks the Marines to lay down their weapons,
-  // and when they refuse they are stripped of them too fast to see. Leo
-  // himself is not shown until 641.
+  // forest: the rifle with its curved butt, comb, trigger guard and barrel
+  // bands, the cap on the grass beside it with its peak and the cloth at
+  // the back. In episode 640 a voice that gives its name as Leo asks the
+  // Marines to lay down their weapons, and when they refuse they are
+  // stripped of them too fast to see. Leo himself is not shown until 641.
   'leo': [
     {
-      d: 'M10 176 L18 156 L38 160 L52 152 L64 152 L62 160 L44 172 Z',
+      d: 'M66 150 L148 116 L150 122 L62 162 C48 166 32 172 16 176 Q14 164 22 154 C38 154 54 153 66 150 Z',
       role: 'accent',
     },
-    { d: 'M62 152 L148 116 L150 122 L62 160', role: 'accent' },
+    { d: 'M24 158 C36 158 48 157 58 155', role: 'soft' },
     {
-      d: 'M60 160 C60 170 70 170 72 158 M96 140 L98 146 M120 130 L122 136',
+      d: 'M70 158 C70 168 80 168 82 156 M104 133 L107 140 M128 123 L131 130',
       role: 'soft',
     },
-    { d: 'M64 152 L72 140 L78 142 L72 152', role: 'soft' },
-    { d: 'M84 120 C82 98 96 88 112 88 C128 88 140 98 138 120 Z' },
-    { d: 'M84 120 C80 126 70 128 66 124 C70 118 78 116 84 116', role: 'soft' },
-    { d: 'M138 120 L144 140 C134 144 120 138 116 130 L122 120', role: 'soft' },
-    { d: 'M72 124 l4 -4 M78 124 l4 -5', role: 'ambient' },
+    { d: 'M98 178 C96 160 106 150 120 150 C134 150 144 160 142 178 Z' },
+    { d: 'M98 178 C92 182 82 182 78 178 C82 172 90 172 98 174', role: 'soft' },
+    { d: 'M142 172 L150 184 C142 188 134 186 130 180', role: 'soft' },
+    { d: 'M84 180 l4 -4 M90 180 l4 -5', role: 'ambient' },
+    shadow(116, 186, 34),
     {
-      d: 'M10 190 C14 178 16 170 14 158 M28 192 C30 182 34 176 40 170 M116 192 C118 180 124 172 132 166 M134 192 C136 182 140 174 148 168 M82 192 C84 184 88 178 94 174',
+      d: 'M8 190 C12 178 14 170 12 158 M30 192 C32 184 36 178 42 174 M52 192 C54 184 56 178 60 174 M150 192 C152 182 154 174 158 168',
       role: 'ambient',
     },
-    { d: 'M4 192 H156', role: 'ambient', dashed: true },
   ],
 
   // The toy soldier's one roller skate in three-quarters: the black shoe
@@ -1313,27 +1312,28 @@ export const dressrosaArt = {
     shadow(80, 192, 64),
   ],
 
-  // A small crown in three-quarters: the band with its rim, the points
-  // standing round it, the far side hatched. The forest people speak of
-  // their princess, held in the factory, from episode 647. No flower, no
-  // cage and no tears: why she is kept, and what her tears do, are told
-  // much later.
+  // A small crown in three-quarters: the rim an ellipse with the backs of
+  // the far points showing inside it, three points standing at the front,
+  // the band with its second face and one jewel, the far side hatched. The
+  // forest people speak of their princess, held in the factory, from
+  // episode 647. No flower, no cage and no tears: why she is kept, and what
+  // her tears do, are told much later.
   'mansherry': [
+    { d: 'M34 120 C34 104 126 104 126 120', role: 'soft' },
+    { d: 'M58 108 L64 94 L70 107 M90 107 L96 94 L102 108', role: 'soft' },
     {
-      d: 'M34 150 C34 160 126 160 126 150 L126 126 M34 150 V126',
+      d: 'M34 120 L48 84 L64 117 L80 76 L96 117 L112 84 L126 120',
       role: 'accent',
     },
     {
-      d: 'M34 126 L30 84 L54 112 L66 72 L80 106 L94 72 L106 112 L130 84 L126 126 C126 136 34 136 34 126 Z',
+      d: 'M34 120 C34 136 126 136 126 120 M34 120 L36 146 M126 120 L124 146',
       role: 'accent',
     },
-    { d: 'M44 118 C60 114 100 114 116 118', role: 'soft' },
-    { d: 'M34 138 C34 148 126 148 126 138', role: 'soft' },
-    {
-      d: 'M110 120 l10 -10 M112 132 l12 -12 M112 144 l12 -12 M116 152 l9 -9',
-      role: 'ambient',
-    },
-    shadow(80, 170, 54),
+    { d: 'M36 146 C36 162 124 162 124 146', role: 'accent' },
+    { d: 'M35 128 C36 143 124 143 125 128', role: 'soft' },
+    { d: 'M80 139 l5 7 l-5 7 l-5 -7 Z', role: 'accent' },
+    { d: 'M108 140 l8 -8 M110 150 l12 -12 M114 156 l10 -10', role: 'ambient' },
+    shadow(80, 160, 54),
   ],
 
   // A calligraphy brush and the bird it has just drawn.
