@@ -681,13 +681,19 @@ export const wholeCakeArt = {
   ],
 
   // His spear, stood on its butt and leaning: a long blade ridged down the
-  // middle with its lower facet hatched, a crossguard and a collar under
-  // it, the grip wrapped near the foot. He goes at Sanji with it at 793. No
-  // crown, which he never wears, and no charge in the blade.
+  // middle with its lower facet hatched, a crossguard with its thickness
+  // and a collar under it, the grip wrapped near the foot. He goes at Sanji
+  // with it at 793, a long pointed head on a collar as the fight's frames
+  // show it. No crown, which he never wears, and no charge in the blade.
   'vinsmoke-judge': [
     { d: 'M-24 97 H96 M-24 103 H96 M-24 97 V103', transform: JUDGE_SPEAR_TILT },
     {
       d: 'M-8 97 l5 6 M0 97 l5 6 M8 97 l5 6 M16 97 l5 6',
+      role: 'soft',
+      transform: JUDGE_SPEAR_TILT,
+    },
+    {
+      d: 'M104 86 l3 -3 h5 v28 l-3 3 M109 86 l3 -3',
       role: 'soft',
       transform: JUDGE_SPEAR_TILT,
     },
@@ -790,32 +796,34 @@ export const wholeCakeArt = {
     shadow(82, 174, 66),
   ],
 
-  // The great ruff of ragged fur he wears as a scarf, its tufts flaring out
-  // and down, on the dark cloak he arrives at the chateau in at 825: the
-  // cloak hatched, its hem ragged. No trident: he first draws it at 832.
+  // The fur he wears as a scarf, draped over the shoulders of the dark
+  // cloak he arrives at the chateau in at 825: its lower edge hangs in long
+  // tufts, the opening at the neck is a dark hatched slit, and the cloak
+  // below is hatched to its ragged hem. No trident: he first draws it at
+  // 832.
   'charlotte-katakuri': [
     {
       d: 'M34 104 C28 128 20 150 12 172 C26 166 36 176 50 168 C62 176 72 166 82 174 C94 166 104 176 114 168 C126 176 138 166 150 172 C142 150 134 128 128 104',
     },
     {
-      d: 'M54 110 C50 132 46 152 44 170 M82 112 V172 M110 110 C114 132 118 152 120 170',
+      d: 'M54 116 C50 136 46 154 44 170 M82 124 V172 M110 116 C114 136 118 154 120 170',
       role: 'soft',
     },
     {
-      d: 'M30 132 l10 -8 M24 156 l14 -12 M58 132 l14 -12 M56 158 l16 -14 M88 132 l14 -12 M88 158 l16 -14 M116 132 l10 -8 M120 156 l12 -10',
+      d: 'M30 132 l10 -8 M24 156 l14 -12 M58 140 l12 -10 M56 160 l16 -14 M88 140 l12 -10 M88 160 l16 -14 M116 132 l10 -8 M120 156 l12 -10',
       role: 'ambient',
     },
     {
-      d: 'M48 66 L28 70 L38 78 L14 88 L34 92 L20 106 L42 102 L38 116 L56 104 L58 118 L70 106 L78 120 L84 106 L92 120 L98 106 L110 118 L112 104 L130 116 L126 102 L148 106 L134 92 L154 88 L130 78 L140 70 L118 66',
+      d: 'M44 62 C30 66 22 78 20 92 C26 98 30 104 28 112 C36 106 40 102 44 104 C46 110 46 116 42 122 C52 116 58 112 62 112 C64 118 64 124 62 130 C70 124 76 118 82 118 C86 124 88 128 90 134 C94 126 98 120 104 118 C106 122 108 126 110 130 C112 122 116 116 122 112 C124 116 128 120 132 122 C132 114 134 108 138 104 C140 106 142 108 144 110 C142 104 142 98 144 92 C142 78 134 66 120 62 C104 56 60 56 44 62 Z',
       role: 'accent',
     },
+    { d: 'M52 62 C66 68 98 68 112 62', role: 'soft' },
     {
-      d: 'M48 66 C40 60 52 54 60 58 C66 52 76 54 80 58 C86 52 96 54 100 58 C106 52 118 56 118 66',
+      d: 'M60 62 l4 3 M70 60 l6 5 M82 60 l6 5 M94 60 l6 4 M104 61 l4 3',
+      role: 'ambient',
     },
-    { d: ellipse(83, 70, 22, 5), role: 'soft' },
-    { d: 'M68 71 l6 -4 M80 73 l8 -6 M94 72 l6 -4', role: 'ambient' },
     {
-      d: 'M40 82 l10 4 M50 94 l8 2 M116 94 l-8 2 M126 82 l-10 4 M70 90 l2 8 M96 90 l-2 8',
+      d: 'M36 92 C40 98 40 104 38 110 M60 100 C64 106 64 112 60 120 M104 100 C100 106 100 112 104 120 M128 92 C124 98 124 104 126 110',
       role: 'soft',
     },
     shadow(81, 186, 66),
@@ -1033,13 +1041,17 @@ export const wholeCakeArt = {
 
   // The great studded club he strikes Charlos down with at 886, lying in
   // front, its head studded and hatched underneath, and the bubble helmet
-  // every World Noble wears standing on its collar ring behind it, a
-  // gleam on the glass.
+  // every World Noble wears standing on its collar ring on the ground
+  // behind it, a gleam on the glass.
   'donquixote-mjosgard': [
     { d: circle(56, 72, 34) },
     { d: 'M36 54 C42 46 52 42 62 42', role: 'soft' },
     { d: ellipse(56, 106, 22, 6) },
     { d: 'M34 106 V112 C40 118 72 118 78 112 V106', role: 'soft' },
+    {
+      d: 'M24 122 H88 M34 122 l-5 5 M46 122 l-5 5 M58 122 l-5 5 M70 122 l-5 5 M82 122 l-5 5',
+      role: 'ambient',
+    },
     {
       d: 'M4 146 H40 C56 142 72 134 96 134 C124 134 146 142 146 150 C146 158 124 166 96 166 C72 166 56 158 40 154 H4 Z',
       transform: MJOSGARD_CLUB_TILT,
