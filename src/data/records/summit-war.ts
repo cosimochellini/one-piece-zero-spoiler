@@ -1140,7 +1140,11 @@ export const summitWar: Saga = {
           value: { it: 'Imperatrice Pirata', en: 'Pirate Empress' },
         },
       ],
-      devilFruit: [{ episode: 412, value: ['love-love-fruit'] }],
+      devilFruit: [
+        // Episodes 412 and 413 name only the beam; Hancock names the fruit at
+        // 415, adapting chapter 521.
+        { episode: 415, chapter: 521, value: ['love-love-fruit'] },
+      ],
       bounty: [
         { episode: 416, value: 80_000_000 },
         { episode: 1087, value: 1_659_000_000 },
