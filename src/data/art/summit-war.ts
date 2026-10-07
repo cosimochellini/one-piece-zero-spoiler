@@ -15,21 +15,28 @@ import type { Drawings, Redrawings, Stroke } from './stroke'
 const SQUARD_KATANA =
   'translate(80 104) rotate(-34) scale(1.2) translate(-77 -100)'
 
-/** Jinbe's great wave, drawn alone first and under the helm later. */
+/**
+ * Jinbe's great wave, beside his chains first and under the helm later: the
+ * body of the wave plain, the curling crest in his colour, its face hatched.
+ */
 const GREAT_WAVE: Stroke[] = [
   {
-    d: 'M18 160 C26 110 60 84 88 84 C110 84 118 66 126 46 C124 74 110 90 96 96 C110 92 122 82 132 66 C128 100 100 116 72 122 C50 126 30 142 18 160z',
+    d: 'M88 84 C60 84 26 110 18 160 C30 142 50 126 72 122 C100 116 128 100 132 66',
+  },
+  {
+    d: 'M88 84 C110 84 118 66 126 46 C124 74 110 90 96 96 C110 92 122 82 132 66',
     role: 'accent',
   },
-  { d: 'M96 80 q-8 4 -4 12 M112 66 q-6 4 -2 10', role: 'accent' },
+  { d: 'M96 80 q-8 4 -4 12 M112 66 q-6 4 -2 10', role: 'soft' },
   {
     d: dots([
       [134, 50],
       [120, 40],
       [140, 70],
     ]),
-    role: 'accent',
+    role: 'soft',
   },
+  { d: 'M40 136 l8 -7 M54 128 l9 -6 M70 122 l8 -4', role: 'ambient' },
 ]
 
 /** Sabo's top hat with goggles on the brim, worn before the flame and after. */
@@ -86,16 +93,46 @@ const MAGNET: Stroke[] = [
 
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
-  // A long sword, and the scalpel that goes with the surgeon.
+  // His white fur hat seen from the front and a little above, the fur rim
+  // ragged, the spots along the rim and the bottom of the crown in his colour,
+  // the side turning away hatched; in front of it on the ground, Kikoku in its
+  // black sheath, the red cord loose, the fur guard and the wrapped hilt. He
+  // arrives at Sabaody with both in episode 392.
   'trafalgar-law': [
-    { d: 'M28 178 L120 38 M36 182 L128 42 M120 38 L128 42' },
-    { d: 'M52 142 l12 8' },
-    { d: 'M40 160 l8 4 M46 150 l8 4', role: 'ambient' },
-    { d: 'M136 160 L100 124', role: 'accent' },
+    { d: 'M40 120 C38 86 54 64 80 64 C106 64 122 86 120 120' },
     {
-      d: 'M100 124 C90 114 84 108 82 100 C90 104 98 112 104 120z',
+      d: 'M36 122 Q80 138 124 122 M36 122 V140 c4 4 8 2 10 6 c4 0 6 4 10 3 c4 2 8 1 12 4 c4 -1 8 1 12 0 c4 1 8 -1 12 -1 c4 -3 8 -2 12 -4 c4 -1 6 -5 10 -5 c2 -4 6 -2 10 -6 V122',
+    },
+    {
+      d: 'M36 122 c2 -4 6 -4 8 -1 c2 -3 6 -3 8 0 M108 121 c2 -3 6 -3 8 0 c2 -3 6 -3 8 1',
+      role: 'soft',
+    },
+    {
+      d: `${circle(45, 136, 2.6)} ${circle(60, 142, 2.6)} ${circle(75, 145, 2.6)} ${circle(90, 145, 2.6)} ${circle(105, 142, 2.6)} ${circle(118, 136, 2.6)} ${circle(50, 112, 2)} ${circle(65, 117, 2)} ${circle(80, 119, 2)} ${circle(95, 117, 2)} ${circle(110, 112, 2)}`,
       role: 'accent',
     },
+    {
+      d: 'M108 76 l-6 5 M114 88 l-6 5 M118 100 l-6 5 M119 111 l-5 4',
+      role: 'ambient',
+    },
+    { d: 'M6 170 L104 158 M6 177 L104 165 M6 170 V177 M14 169 V176' },
+    {
+      d: 'M20 175 l6 -7 M34 173 l6 -7 M48 172 l6 -7 M62 170 l6 -7 M76 168 l6 -7 M90 166 l6 -7',
+      role: 'ambient',
+    },
+    {
+      d: 'M86 160 L88 167 M94 159 L96 166 M88 167 C84 178 70 182 60 182 M94 166 C92 176 84 184 74 188',
+      role: 'soft',
+    },
+    {
+      d: 'M104 158 C101 152 104 147 108 148 C109 143 115 143 116 147 C121 147 123 153 120 158 C123 163 123 170 119 174 C119 179 113 180 111 176 C106 177 103 171 104 165',
+    },
+    { d: 'M120 157.6 L156 153 V160 L120 164.6' },
+    {
+      d: 'M124 157 l3 7 l3 -7.4 l3 7 l3 -7.4 l3 7 l3 -7.4 l3 7 l3 -7.4 l3 7',
+      role: 'soft',
+    },
+    shadow(80, 190, 70),
   ],
 
   // His long fur coat hung on a peg by its collar, the collar flared and
@@ -181,9 +218,38 @@ export const summitWarArt = {
     shadow(80, 192, 62),
   ],
 
-  // One great wave, the way a print draws it. The Sunny's helm is drawn above
-  // it from 980, in `summitWarRedrawn`.
-  'jinbe': [...GREAT_WAVE, ...SEA.slice(1)],
+  // A stretch of the Level 6 cell wall, its square iron plate and a heavy
+  // chain sagging from it to a cuff on the floor, and beside it the great
+  // wave of his epithet, the crest in his colour. He is chained in that cell
+  // next to Ace in episode 430. The Sunny's helm rides the same wave from 980,
+  // in `summitWarRedrawn`.
+  'jinbe': [
+    { d: 'M6 150 V24 H78 V150', role: 'soft' },
+    {
+      d: 'M6 48 H78 M6 72 H78 M6 96 H78 M6 120 H78 M32 24 V48 M60 24 V48 M18 48 V72 M46 48 V72 M74 48 V72 M32 72 V96 M60 96 V120 M18 96 V120 M46 120 V150',
+      role: 'ambient',
+    },
+    { d: 'M20 36 h22 v22 h-22z M24 40 h14 v14 h-14z' },
+    { d: ellipse(31, 62, 4, 6) },
+    {
+      d: [
+        ellipse(33, 78, 6, 10),
+        ellipse(42, 108, 6, 10),
+        ellipse(52, 136, 6, 9),
+      ].join(' '),
+    },
+    { d: 'M36 90 l3 6 M46 120 l3 6', role: 'soft' },
+    {
+      d: `${ellipse(68, 150, 16, 6)} ${ellipse(68, 150, 10, 3.5)} M52 150 v5 C52 162 84 162 84 155 V150`,
+    },
+    { d: 'M78 156 l4 -4 M72 158 l4 -4', role: 'ambient' },
+    { d: 'M0 166 H160', role: 'ambient', dashed: true },
+    ...GREAT_WAVE.map((stroke): Stroke => {
+      // The same wave, smaller, beside the wall.
+      return { ...stroke, transform: 'translate(78 58) scale(0.62)' }
+    }),
+    shadow(68, 172, 26),
+  ],
 
   // A fortress in a crescent bay, gate to the sea.
   'marineford-arc': [
@@ -224,51 +290,99 @@ export const summitWarArt = {
     ...SEA,
   ],
 
-  // A jungle gate with a snake coiled over the lintel.
+  // The jungle shore from the sea: a canopy of broad trees with lianas
+  // hanging out of it, the far side hatched, and one palm in front in the
+  // record's colour. Luffy falls into that jungle in episode 408.
   'amazon-lily-arc': [
-    { d: 'M18 152 C36 118 60 104 80 104 C100 104 124 118 142 152' },
-    { d: 'M56 152 V96 M104 152 V96' },
-    { d: 'M48 96 h64' },
+    { d: 'M-4 150 C30 144 130 144 164 150', role: 'ambient' },
     {
-      d: 'M58 96 C58 72 78 72 80 86 C82 96 94 96 96 86 C98 72 104 74 104 84',
-      role: 'accent',
+      d: 'M-4 104 C-2 82 14 70 28 76 C32 58 56 52 66 66 C76 54 98 54 104 68 C114 58 134 60 138 74 C150 70 164 78 164 92',
     },
-    { d: 'M104 84 h10 m-3 -3 l3 3 l-3 3', role: 'accent' },
-    { d: 'M32 150 V128 M32 128 q-12 -6 -16 4 M32 128 q12 -6 16 4' },
-    { d: 'M130 150 V130 M130 130 q-12 -6 -16 4 M130 130 q12 -6 16 4' },
-    ...SEA,
-  ],
-
-  // A prison tower going down into the water, one level line after another.
-  'impel-down-arc': [
-    { d: 'M46 56 h68 v134 h-68z' },
-    { d: 'M60 56 V38 h40 v18' },
-    { d: 'M46 80 h68 M46 104 h68 M46 128 h68 M46 152 h68', role: 'soft' },
-    { d: 'M70 56 V80 M80 56 V80 M90 56 V80', role: 'accent' },
-    { d: 'M62 56 h36', role: 'accent' },
     {
-      d: dots([
-        [54, 92],
-        [54, 116],
-        [54, 140],
-        [54, 164],
-      ]),
+      d: 'M28 76 C34 86 44 88 52 82 M66 66 C70 76 80 80 88 76 M104 68 C106 78 116 82 124 78 M138 74 C140 84 148 88 156 86',
+      role: 'soft',
+    },
+    {
+      d: 'M24 146 C26 124 22 108 26 92 M36 146 C34 124 38 108 34 92 M118 146 C120 124 116 108 120 92 M130 146 C128 124 132 108 128 92',
+      role: 'soft',
+    },
+    {
+      d: 'M46 90 C44 108 50 120 46 136 M58 86 C60 100 56 110 60 122 M96 86 C94 98 100 108 96 120 M146 92 C144 106 148 116 144 128',
+      role: 'soft',
+    },
+    {
+      d: 'M8 96 l8 -8 M48 76 l8 -8 M86 74 l8 -8 M126 80 l8 -8 M18 104 l8 -8 M106 88 l8 -8',
       role: 'ambient',
     },
+    {
+      d: 'M74 146 C74 128 78 116 80 104 M80 104 C66 92 52 100 46 110 C58 106 70 106 80 104 C88 90 104 88 114 96 C102 98 90 100 80 104 C78 88 86 78 94 76',
+      role: 'accent',
+    },
     ...SEA,
   ],
 
-  // A tray of takoyaki on their skewers, and a scale beside it.
+  // The prison tower in three-quarters, its side hatched, going on down under
+  // the sea, the floors below the waterline in the record's colour, and the
+  // back of a Sea King in the water beside it. The marine ship brings Hancock
+  // there in episode 422.
+  'impel-down-arc': [
+    { d: 'M48 150 V40 H104 V150 M104 40 L120 32 V150' },
+    { d: 'M44 40 V30 H108 V40 M108 30 L124 22 V32', role: 'soft' },
+    {
+      d: 'M54 30 V22 H62 V30 M70 30 V22 H78 V30 M86 30 V22 H94 V30',
+      role: 'soft',
+    },
+    {
+      d: 'M108 52 l8 -4 M108 66 l8 -4 M108 80 l8 -4 M108 94 l8 -4 M108 108 l8 -4 M108 122 l8 -4 M108 136 l8 -4',
+      role: 'ambient',
+    },
+    { d: 'M64 150 V128 a12 12 0 0 1 24 0 V150', role: 'soft' },
+    {
+      d: 'M48 150 V198 M104 150 V198 M120 150 V192',
+      role: 'ambient',
+      dashed: true,
+    },
+    {
+      d: 'M48 166 H104 L120 158 M48 182 H104 L120 174 M48 198 H104 L120 190',
+      role: 'accent',
+    },
+    {
+      d: 'M126 190 C130 166 150 160 160 172 M134 176 l-4 -6 M142 168 l-2 -7 M150 166 l1 -7',
+      role: 'soft',
+    },
+    ...SEA,
+  ],
+
+  // Her clam-shell backpack, the one she carries her takoyaki in, sat on its
+  // hinge with the straps up and the ribs fanning out, the far side hatched;
+  // beside it the end of a mermaid's tail curling up, the fin in her colour.
+  // A sea rabbit spits her out onto the Sunny in episode 385.
   'camie': [
-    { d: 'M32 122 h96 v34 h-96z' },
-    { d: 'M32 138 h96', role: 'soft' },
-    { d: circle(56, 112, 11), role: 'accent' },
-    { d: circle(80, 112, 11), role: 'accent' },
-    { d: circle(104, 112, 11), role: 'accent' },
-    { d: 'M56 101 V74 M80 101 V74 M104 101 V74' },
-    { d: 'M26 76 c-6 -16 10 -28 22 -19 c11 8 7 26 -6 28 c-8 2 -13 -2 -16 -9z' },
-    { d: 'M32 68 q10 -6 18 -2 M30 58 q8 -4 14 -2', role: 'soft' },
-    shadow(80, 166, 48),
+    {
+      d: 'M24 150 C14 116 28 80 64 74 C100 70 118 102 110 140 C98 152 44 158 24 150z',
+    },
+    { d: 'M24 150 C32 162 100 160 110 140 M60 154 h20 v6 h-20z', role: 'soft' },
+    {
+      d: 'M70 154 L40 86 M70 154 L60 74 M70 154 L82 72 M70 154 L100 84 M70 154 L110 108',
+      role: 'soft',
+    },
+    {
+      d: 'M30 100 C24 74 48 62 58 74 M104 98 C112 76 98 66 88 72',
+      role: 'ambient',
+    },
+    { d: 'M106 118 l6 -4 M108 130 l5 -4', role: 'ambient' },
+    {
+      d: 'M118 162 C114 146 116 126 124 110 C128 102 132 96 132 88 C140 90 152 84 156 72 C146 78 138 78 132 76 C132 66 126 58 118 56 C122 66 122 78 120 88 C112 104 104 126 106 150',
+    },
+    {
+      d: 'M110 142 q8 -4 10 -12 M112 126 q8 -4 10 -12 M116 110 q6 -4 8 -10',
+      role: 'soft',
+    },
+    {
+      d: 'M132 88 C140 90 152 84 156 72 C146 78 138 78 132 76 C132 66 126 58 118 56 C122 66 122 78 120 88',
+      role: 'accent',
+    },
+    shadow(84, 176, 64),
   ],
 
   // A starfish turned three-quarters to the reader, its arms ridged and their
@@ -301,85 +415,155 @@ export const summitWarArt = {
     shadow(80, 186, 46),
   ],
 
-  // An iron mask with its rivets, in front of a printed sheet.
+  // His harpoon gun lying in three-quarters, the stock hatched and four
+  // harpoons loaded, a spare one on the ground in front, the barbs in his
+  // colour. He fires them at Sanji in episode 389.
   'duval': [
-    { d: 'M50 50 h60 v66 a30 30 0 0 1 -60 0z' },
-    { d: 'M58 74 h44 M58 86 h44 M58 98 h44', role: 'accent' },
+    { d: 'M6 160 L38 140 L48 150 L18 170 Z' },
+    { d: 'M14 162 l8 -6 M22 166 l8 -6', role: 'ambient' },
+    { d: 'M38 140 L66 120 L118 114 L120 132 L68 138 L48 150' },
+    { d: 'M68 138 L62 158 L74 160 L78 136', role: 'soft' },
+    { d: 'M76 122 h36 M76 130 h36', role: 'soft' },
     {
-      d: dots([
-        [56, 58],
-        [104, 58],
-        [56, 112],
-        [104, 112],
-      ]),
+      d: 'M118 114 L148 108 M119 120 L150 115 M119 126 L152 122 M120 132 L150 130',
     },
-    { d: 'M96 130 h46 v54 h-46z' },
-    { d: 'M104 142 h30 M104 152 h30 M104 162 h22', role: 'soft' },
-    shadow(72, 178, 34),
-  ],
-
-  // A bar counter, an ashtray and a cigarette still going.
-  'shakky': [
-    { d: 'M20 120 h120 v10 h-120z' },
-    { d: 'M28 130 V166 M132 130 V166' },
-    { d: 'M20 148 h120', role: 'soft' },
-    { d: ellipse(80, 112, 22, 7) },
-    { d: 'M58 112 q22 12 44 0' },
-    { d: 'M70 106 L104 86', role: 'accent' },
-    { d: 'M96 90 l4 3', role: 'soft' },
-    { d: 'M106 80 q6 -10 0 -18 q-6 -8 -2 -14', role: 'ambient', dashed: true },
-    shadow(80, 176, 56),
-  ],
-
-  // A coating brush leaning on a barrel, with a glass already poured.
-  'silvers-rayleigh': [
-    { d: 'M44 92 c-6 26 -6 46 0 70 h72 c6 -24 6 -44 0 -70z' },
-    { d: 'M40 112 h80 M40 142 h80', role: 'soft' },
-    { d: 'M30 88 L64 40' },
-    { d: 'M22 96 L36 106 L50 86 L36 76z', role: 'accent' },
-    { d: 'M92 54 h28 l-6 22 h-16z' },
-    { d: 'M106 76 V88 M96 88 h20' },
-    shadow(80, 176, 44),
-  ],
-
-  // Two long blades, one on each gauntlet.
-  'killer': [
-    { d: 'M40 128 h30 v26 h-30z' },
-    { d: 'M92 128 h30 v26 h-30z' },
-    { d: 'M40 140 h30 M92 140 h30', role: 'soft' },
-    { d: 'M46 128 L26 56 C24 44 34 38 40 46 L62 126', role: 'accent' },
-    { d: 'M116 128 L136 56 C138 44 128 38 122 46 L100 126', role: 'accent' },
-    shadow(80, 168, 54),
-  ],
-
-  // A boiler suit on its hanger, with a paw print across the chest.
-  'bepo': [
-    { d: 'M58 48 C58 40 102 40 102 48 V150 h-18 V104 h-8 v46 h-18z' },
-    { d: 'M58 56 L36 94 l14 10 L64 84' },
-    { d: 'M102 56 L124 94 l-14 10 L96 84' },
-    { d: 'M62 126 h36', role: 'soft' },
-    { d: circle(80, 78, 10), role: 'accent' },
     {
-      d: dots([
-        [68, 62],
-        [80, 58],
-        [92, 62],
-      ]),
+      d: 'M148 108 l9 -4 l-4 7 M150 115 l9 -3 l-5 6 M152 122 l8 -1 l-6 5 M150 130 l9 1 l-7 4',
       role: 'accent',
     },
-    shadow(80, 162, 40),
+    { d: 'M30 182 L128 170', role: 'soft' },
+    { d: 'M128 170 l10 -4 l-4 8 M24 180 l6 2 l-4 4', role: 'accent' },
+    shadow(80, 192, 72),
   ],
 
-  // Headphones over a pair of crossed sticks.
+  // Close on the corner of her counter, the side going away hatched, and a
+  // cigarette resting on its edge, in her colour, the smoke going up. She is
+  // behind that counter, cigarette lit, in episode 392.
+  'shakky': [
+    { d: 'M-4 118 L104 118 L164 86 M104 118 V176 M-4 132 H104 L164 100' },
+    {
+      d: 'M110 128 l10 -6 v40 M126 120 l10 -6 v40 M142 112 l10 -6 v40',
+      role: 'ambient',
+    },
+    { d: 'M22 132 V176 M50 132 V176 M78 132 V176', role: 'soft' },
+    {
+      d: 'M28 112 L96 98 C100 98 102 104 98 106 L30 120 Z M28 112 L30 120 L18 122 L16 114 Z',
+      role: 'accent',
+    },
+    { d: 'M38 110 L40 118 M90 99 L92 107', role: 'soft' },
+    {
+      d: 'M18 112 C10 100 22 92 14 80 C6 68 18 58 10 46 C4 36 12 28 8 20',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M24 104 C20 94 28 88 24 78', role: 'ambient', dashed: true },
+  ],
+
+  // The explosive collar sprung open on its hinge and tossed on the floor, the
+  // lock box bursting in his colour, the far side hatched. He takes it off
+  // Camie's neck in the auction house in episode 398.
+  'silvers-rayleigh': [
+    {
+      d: 'M60 140 C34 140 18 126 20 110 C22 94 44 84 70 84 C94 84 112 90 120 100',
+    },
+    {
+      d: 'M60 128 C42 128 32 120 34 110 C36 100 52 96 70 96 C88 96 102 100 108 106',
+      role: 'soft',
+    },
+    { d: 'M60 140 V128 M120 100 L108 106' },
+    {
+      d: 'M60 140 C70 152 92 160 112 156 C128 152 136 140 134 128 M60 128 C68 138 86 144 102 142 C114 140 120 134 122 128',
+    },
+    { d: 'M134 128 L122 128 M134 128 C136 120 130 108 120 100', role: 'soft' },
+    { d: 'M84 146 h24 v18 h-24z M108 146 l8 -4 v18 l-8 4' },
+    { d: 'M88 152 h16', role: 'soft' },
+    { d: 'M24 122 l8 -4 M30 132 l8 -4 M42 138 l8 -4', role: 'ambient' },
+    {
+      d: 'M118 142 l14 -8 M120 152 l16 0 M118 162 l12 8 M100 140 l4 -12 M110 168 l4 10',
+      role: 'accent',
+    },
+    shadow(80, 182, 60),
+  ],
+
+  // One of his gauntlets stood on its end, the long curved scythe rising out
+  // of it, and the other lying beside with its blade along the ground, both
+  // blades in his colour, the shaded sides hatched. He fights Urouge with them
+  // in episode 392.
+  'killer': [
+    {
+      d: 'M24 112 h44 v36 h-44z M68 112 l14 -10 v36 l-14 10 M24 112 l14 -10 h44',
+    },
+    {
+      d: 'M32 122 C32 118 34 116 38 116 H54 C58 116 60 118 60 122 V138 C60 142 58 144 54 144 H38 C34 144 32 142 32 138 Z',
+      role: 'soft',
+    },
+    { d: 'M70 118 l10 -7 M70 130 l10 -7 M70 142 l10 -7', role: 'ambient' },
+    { d: 'M44 102 C38 66 52 30 94 12 C72 38 62 68 62 102', role: 'accent' },
+    { d: 'M53 102 C50 74 62 44 86 22', role: 'soft' },
+    {
+      d: 'M80 160 h36 v20 h-36z M116 160 l12 -8 v20 l-12 8 M80 160 l12 -8 h36',
+    },
+    {
+      d: 'M86 166 C86 164 88 163 90 163 H106 C108 163 110 164 110 166 V174 C110 176 108 177 106 177 H90 C88 177 86 176 86 174 Z',
+      role: 'soft',
+    },
+    { d: 'M118 166 l8 -6 M118 176 l8 -6', role: 'ambient' },
+    {
+      d: 'M128 166 C140 170 150 168 160 162 M128 172 C140 178 152 176 164 168',
+      role: 'accent',
+    },
+    shadow(80, 192, 66),
+  ],
+
+  // The crew's boiler suit folded on itself, collar in his colour, the zip
+  // down the front, the sleeves folded across and the side hatched; one of his
+  // small boots beside it. He is at Law's side at Sabaody in episode 392.
+  'bepo': [
+    {
+      d: 'M8 116 C8 108 14 104 22 100 L30 96 H104 L116 102 C124 106 128 110 128 116',
+    },
+    {
+      d: 'M8 116 V150 C8 156 12 160 20 160 H116 C124 160 128 156 128 150 V116 C128 110 124 106 116 102',
+    },
+    { d: 'M8 116 H128', role: 'soft' },
+    {
+      d: 'M52 116 L68 140 L84 116 M52 116 L42 128 L56 130 M84 116 L94 128 L80 130',
+      role: 'accent',
+    },
+    { d: 'M68 140 V160 M64 146 h8', role: 'soft' },
+    {
+      d: 'M8 138 L50 134 C54 134 56 136 56 140 V144 C56 148 54 150 50 150 L8 152 M128 138 L88 134 C84 134 82 136 82 140 V144 C82 148 84 150 88 150 L128 152',
+    },
+    { d: 'M48 135 V149 M90 135 V149', role: 'soft' },
+    { d: 'M116 120 l8 -8 M118 132 l8 -8 M120 156 l6 -6', role: 'ambient' },
+    {
+      d: 'M132 162 V182 H156 V176 C156 171 150 169 144 169 V162 Z M134 162 V156 H142 V162',
+    },
+    { d: 'M132 177 H156', role: 'soft' },
+    shadow(76, 178, 66),
+  ],
+
+  // His headphones lying in three-quarters, the band doubled, one cup turned
+  // to the reader and the other on its edge with its side hatched, both cups
+  // in his colour. He wears them into Sabaody in episode 392.
   'scratchmen-apoo': [
-    { d: 'M42 96 V74 a38 38 0 0 1 76 0 V96', role: 'accent' },
-    { d: 'M32 96 h20 v32 h-20z', role: 'accent' },
-    { d: 'M108 96 h20 v32 h-20z', role: 'accent' },
-    { d: 'M40 186 L120 142' },
-    { d: 'M120 186 L40 142' },
-    { d: circle(120, 142, 4) },
-    { d: circle(40, 142, 4) },
-    shadow(80, 192, 44),
+    { d: 'M42 124 C36 70 60 36 96 38 C126 40 138 70 128 120' },
+    { d: 'M50 122 C46 76 66 48 96 48 C120 50 130 74 122 118', role: 'soft' },
+    { d: ellipse(42, 140, 20, 24), role: 'accent' },
+    { d: ellipse(42, 140, 12, 15), role: 'soft' },
+    {
+      d: 'M22 140 C22 160 30 168 40 170 M62 140 C64 156 58 166 48 168',
+      role: 'soft',
+    },
+    {
+      d: 'M122 116 L138 116 C144 130 144 150 138 162 L122 162 C116 150 116 130 122 116 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M138 116 C146 118 148 160 138 162 M126 124 l8 -4 M124 138 l10 -5 M124 152 l10 -5',
+      role: 'ambient',
+    },
+    shadow(84, 180, 60),
   ],
 
   // A tarot card stood on its edge at an angle, so its thickness shows, its
@@ -436,15 +620,38 @@ export const summitWarArt = {
     shadow(80, 186, 60),
   ],
 
-  // A monk's iron pillar, rings and all.
+  // His pillar stood on end, a long six-sided stone with the far faces
+  // hatched and a few cracks, his big bead necklace draped over the top in his
+  // colour. He carries it on his shoulder at Sabaody in episode 392.
   'urouge': [
-    { d: 'M64 40 h32 v140 h-32z' },
-    { d: 'M60 64 h40 M60 92 h40 M60 120 h40 M60 148 h40', role: 'soft' },
-    { d: 'M56 40 h48 v-12 h-48z', role: 'accent' },
-    { d: circle(40, 34, 10), role: 'accent' },
-    { d: circle(120, 34, 10), role: 'accent' },
-    { d: 'M50 34 h6 M104 34 h6' },
-    shadow(80, 188, 30),
+    { d: 'M54 40 L66 32 H94 L106 40 L94 48 H66 Z' },
+    { d: 'M54 40 V170 L66 178 H94 L106 170 V40 M66 48 V178 M94 48 V178' },
+    {
+      d: 'M98 60 l6 -4 M98 80 l6 -4 M98 100 l6 -4 M98 120 l6 -4 M98 140 l6 -4 M98 160 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M74 120 l4 10 l-2 8 M84 150 l-4 8 M60 130 l2 10', role: 'soft' },
+    {
+      d: [
+        [52, 52],
+        [52, 64],
+        [53, 76],
+        [56, 88],
+        [62, 98],
+        [70, 105],
+        [80, 108],
+        [90, 105],
+        [98, 98],
+        [104, 88],
+        [107, 76],
+        [108, 64],
+        [108, 52],
+      ]
+        .map(([x = 0, y = 0]) => circle(x, y, 4))
+        .join(' '),
+      role: 'accent',
+    },
+    shadow(80, 188, 44),
   ],
 
   // A steak on a plate with the fork stood upright in it, and a glass of wine
@@ -473,21 +680,37 @@ export const summitWarArt = {
     shadow(64, 172, 48),
   ],
 
-  // A slice standing up on a plate far too big for it.
+  // A pizza in three-quarters with one slice pulled out of it, in her colour,
+  // the gap left behind, and a stack of plates she has already emptied. She is
+  // eating everything in sight at a Sabaody restaurant in episode 392.
   'jewelry-bonney': [
-    { d: ellipse(80, 140, 56, 18) },
-    { d: ellipse(80, 140, 44, 12), role: 'soft' },
-    { d: 'M80 42 L112 122 h-64z', role: 'accent' },
-    { d: 'M52 116 q28 12 56 0', role: 'accent' },
     {
-      d: dots([
-        [80, 80],
-        [70, 102],
-        [92, 102],
-      ]),
-      role: 'accent',
+      d: `${ellipse(46, 86, 30, 8)} M16 86 v5 C16 100 76 100 76 91 v-5`,
+      role: 'soft',
     },
-    shadow(80, 168, 52),
+    {
+      d: 'M16 96 C16 104 76 104 76 96 M16 100 C16 106 30 108 40 108 M76 100 C76 104 70 106 64 107',
+      role: 'soft',
+    },
+    {
+      d: 'M14 136 C14 118 46 108 80 108 C114 108 146 118 146 136 C146 154 114 164 80 164 C46 164 14 154 14 136 Z',
+    },
+    {
+      d: 'M24 136 C24 122 50 116 80 116 C110 116 136 122 136 136 C136 150 110 156 80 156 C50 156 24 150 24 136 Z',
+      role: 'soft',
+    },
+    { d: 'M14 136 v6 C14 160 146 160 146 142 v-6', role: 'soft' },
+    { d: 'M80 136 L136 136 L120 120 Z' },
+    { d: 'M86 128 L144 102 C136 92 120 90 108 92 Z', role: 'accent' },
+    {
+      d: 'M108 92 C122 88 138 92 144 102 M118 122 C112 116 104 112 100 118 M126 128 C118 124 112 120 108 124',
+      role: 'soft',
+    },
+    {
+      d: `${circle(46, 136, 4)} ${circle(60, 148, 4)} ${circle(84, 148, 4)} ${circle(66, 126, 4)} ${circle(116, 104, 3)}`,
+      role: 'soft',
+    },
+    shadow(80, 176, 66),
   ],
 
   // A glass bubble helmet set down on a cushion.
@@ -1514,7 +1737,8 @@ export const summitWarArt = {
 export const summitWarRedrawn: Redrawings = {
   // The Sunny's helm, the helmsman's: a spoked wheel with eight turned
   // handles, the rim hatched on its shaded side, carried on the crest of the
-  // great wave. Jinbe joins the crew as its helmsman at 980 (ch. 976).
+  // same great wave; the cell wall and its chain are gone. Jinbe joins the
+  // crew as its helmsman at 980 (ch. 976).
   'jinbe': [
     {
       episode: 980,
