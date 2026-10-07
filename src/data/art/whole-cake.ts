@@ -59,9 +59,6 @@ const RANDOLPH_SPEAR_TILT = 'rotate(-20 80 142)'
 /** The tilt of Flampe's blowgun, drawn level with its muzzle to the right. */
 const FLAMPE_BLOWGUN_TILT = 'rotate(-28 70 150)'
 
-/** Where Lu Feld's rose lies, drawn upright with its cup at the origin. */
-const LU_FELD_ROSE_AT = 'translate(120 146) rotate(45) scale(1.05)'
-
 /** The tilt of Mjosgard's club, drawn level with its head to the right. */
 const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
 
@@ -1803,10 +1800,9 @@ export const wholeCakeArt = {
     { d: 'M20 186 H140', role: 'ambient', dashed: true },
   ],
 
-  // The sun Big Mom calls up on her right hand, drawn as the wiki has him,
-  // an abstract sun: wavy flame rays between short straight ones, the far
-  // limb hatched. No face. He hangs over the sea, where Pound tells of the
-  // storm he and Zeus raised to sink Urouge's ship (806, chapter 843).
+  // The sun on Big Mom's right hand: wavy flame rays between short straight
+  // ones, the far limb hatched, no face. He hangs over the sea of the storm
+  // Pound tells of, the one that sank Urouge's ship (806, chapter 843).
   'prometheus': [
     { d: circle(80, 80, 32) },
     {
@@ -1827,44 +1823,18 @@ export const wholeCakeArt = {
   // crest, the ruffled fastener on its side, the back panel showing past
   // the front. No skull on it, and no blade. She calls it by name at 816.
   'napoleon': [...BIG_MOM_BICORNE, shadow(80, 176, 62)],
-  // His cigar in three quarters, the lit end seen face on with its ash line,
-  // the wrapper winding round it and the underside hatched, smoke rising.
-  // Beside it lies a cut rose like the one on his left lapel, a plain
-  // cupped bloom with its bud showing. Both are on him when he arrives at
-  // the Tea Party at 830.
+  // A cigar laid across a stack of coins, a thread of smoke rising from it.
   'lu-feld': [
+    { d: ellipse(80, 104, 40, 12) },
+    { d: 'M40 104 V140 a40 12 0 0 0 80 0 V104' },
+    { d: 'M40 116 a40 12 0 0 0 80 0 M40 128 a40 12 0 0 0 80 0', role: 'soft' },
     {
-      d: 'M27.4 129.9 L125.4 97.9 C134.9 94.8 140.1 111 130.6 114.1 L32.6 146.1',
-    },
-    {
-      d: 'M27.4 129.9 A4 8.5 -18.1 0 0 32.6 146.1 A4 8.5 -18.1 0 0 27.4 129.9',
-    },
-    { d: 'M34.2 127.7 L39.5 143.8', role: 'soft' },
-    {
-      d: 'M56.8 120.3 L68.9 134.2 M74.4 114.6 L86.5 128.5 M92 108.8 L104.2 122.7 M109.7 103 L121.8 117',
-      role: 'soft',
-    },
-    {
-      d: 'M52.2 139.7 L53.7 134.3 M67.9 134.6 L69.4 129.2 M83.6 129.4 L85.1 124 M99.3 124.3 L100.8 118.9',
-      role: 'ambient',
-    },
-    { d: 'M24 124 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
-    {
-      d: 'M-15 -4 C-16 14 -8 24 0 24 C8 24 16 14 15 -4',
+      d: 'M34 90 L116 74 c7 -1 9 9 2 10 L36 100 c-7 1 -9 -9 -2 -10 Z',
       role: 'accent',
-      transform: LU_FELD_ROSE_AT,
     },
-    {
-      d: 'M-15 -4 C-8 4 8 4 15 -4 M-8 1 C-8 -10 8 -10 8 1',
-      role: 'accent',
-      transform: LU_FELD_ROSE_AT,
-    },
-    {
-      d: 'M0 24 V52 M0 38 C-8 34 -14 36 -16 42 C-10 44 -4 42 0 38',
-      role: 'soft',
-      transform: LU_FELD_ROSE_AT,
-    },
-    shadow(80, 184, 64),
+    { d: 'M100 77 l2 10', role: 'accent' },
+    { d: 'M30 92 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
+    shadow(80, 162, 48),
   ],
 
   // His fur cape, the fur edge running over both shoulders, one curl of fur
