@@ -114,8 +114,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 490,
       name: { it: 'Arcipelago Sabaody', en: 'Sabaody Archipelago' },
       summary: {
-        it: 'Un arcipelago di mangrovie giganti da cui salgono bolle di sapone, ultima tappa prima che la rotta scenda sotto il mare.',
-        en: 'An archipelago of giant mangroves with soap bubbles rising from the roots, the last stop before the route goes under the sea.',
+        it: 'La ciurma arriva alla Red Line, a metà della Rotta Maggiore, e cerca una via per scendere all’isola che sta in fondo al mare.',
+        en: 'The crew reach the Red Line, halfway along the Grand Line, and look for a way down to the island on the ocean floor.',
       },
       visual: { art: 'sabaody', tint: 'acid' },
     },
@@ -126,8 +126,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 514,
       name: { it: 'Amazon Lily', en: 'Amazon Lily' },
       summary: {
-        it: 'Un’isola di giungla chiusa da un portale a forma di serpente, dove vive un popolo di sole donne e nessun uomo può sbarcare.',
-        en: 'A jungle island behind a gate shaped like a snake, home to a people of women only, where no man is allowed ashore.',
+        it: 'Un’isola di giungla abitata da una tribù di guerriere, dove un uomo che mette piede a terra rischia la vita.',
+        en: 'A jungle island home to a tribe of women warriors, where any man who sets foot ashore risks his life.',
       },
       visual: { art: 'amazon-lily-arc', tint: 'magenta' },
     },
@@ -198,8 +198,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 504,
       name: { it: 'Silvers Rayleigh', en: 'Silvers Rayleigh' },
       summary: {
-        it: 'Un vecchio artigiano del rivestimento, calmo davanti a un bicchiere, che stende una sala intera di uomini armati senza toccarne uno.',
-        en: 'An old coating craftsman, calm over a glass of wine, who drops a whole hall of armed men without laying a hand on any of them.',
+        it: 'Un vecchio artigiano del rivestimento, chiuso fra gli schiavi in vendita alla casa d’aste, che stende una sala intera di uomini armati senza toccarne uno.',
+        en: 'An old coating craftsman, held backstage among the slaves for sale at the auction house, who drops a whole hall of armed men without laying a hand on any of them.',
       },
       visual: { art: 'silvers-rayleigh', tint: 'ivory' },
     },
@@ -318,8 +318,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 510,
       name: { it: 'Borsalino', en: 'Borsalino' },
       summary: {
-        it: 'Un ammiraglio della Marina che arriva sull’arcipelago come un raggio di luce, con gli occhiali storti e la voce di chi non ha fretta.',
-        en: 'A Marine admiral who lands on the archipelago as a beam of light, spectacles askew and the voice of a man in no hurry at all.',
+        it: 'Un ammiraglio della Marina che atterra sull’arcipelago in piedi su una palla di cannone, con gli occhiali storti e la voce di chi non ha fretta.',
+        en: 'A Marine admiral who lands on the archipelago riding a cannonball, spectacles askew and the voice of a man in no hurry at all.',
       },
       visual: { art: 'borsalino', tint: 'yellow' },
     },
@@ -354,8 +354,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 521,
       name: { it: 'Boa Marigold', en: 'Boa Marigold' },
       summary: {
-        it: 'L’altra sorella dell’imperatrice, enorme e pesante, che nell’arena diventa un serpente arancione e soffia fuoco.',
-        en: 'The empress’s other sister, huge and heavy, who turns into an orange snake in the arena and breathes fire from her mouth.',
+        it: 'L’altra sorella dell’imperatrice, enorme e pesante, che nell’arena diventa un serpente arancione.',
+        en: 'The empress’s other sister, huge and heavy, who turns into an orange snake in the arena.',
       },
       visual: { art: 'boa-marigold', tint: 'orange' },
     },
@@ -407,8 +407,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 530,
       name: { it: 'Hannyabal', en: 'Hannyabal' },
       summary: {
-        it: 'Il vicedirettore di Impel Down, con un copricapo da faraone e una lancia a due lame, che sogna a voce alta il posto del suo capo.',
-        en: 'The vice chief warden of Impel Down, in a pharaoh’s headdress and carrying a two-bladed naginata, who covets his boss’s chair out loud.',
+        it: 'Il vicedirettore di Impel Down, con un copricapo da faraone, che sogna a voce alta il posto del suo capo.',
+        en: 'The vice chief warden of Impel Down, in a pharaoh’s headdress, who covets his boss’s chair out loud.',
       },
       visual: { art: 'hannyabal', tint: 'sand' },
     },
@@ -458,8 +458,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 549,
       name: { it: 'Shiryu', en: 'Shiryu' },
       summary: {
-        it: 'L’ex capo dei secondini di Impel Down, rinchiuso nella sua stessa prigione per aver ucciso troppi detenuti, con una lama lunghissima.',
-        en: 'The former head jailer of Impel Down, locked inside his own prison for killing too many inmates, a very long blade left beside him.',
+        it: 'L’ex capo dei secondini di Impel Down, rinchiuso nella sua stessa prigione per aver ucciso troppi detenuti, a cui il direttore rende la sua lunga spada quando lo libera per combattere.',
+        en: 'The former head jailer of Impel Down, locked inside his own prison for killing too many inmates, given back his long sword when the chief warden lets him out to fight.',
       },
       visual: { art: 'shiryu', tint: 'ice' },
     },
@@ -470,8 +470,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 234,
       name: { it: 'Jesus Burgess', en: 'Jesus Burgess' },
       summary: {
-        it: 'Un gigante in calzamaglia che a Mock Town sfida i passanti a braccio di ferro e ride più forte di tutti al tavolo di Barbanera.',
-        en: 'A giant in a wrestler’s leotard who challenges passers-by to arm wrestling in Mock Town and laughs loudest at Blackbeard’s table.',
+        it: 'Un omone mascherato che si fa chiamare il Campione e a Mock Town grida dai tetti in cerca di un avversario degno.',
+        en: 'A huge masked man who calls himself the Champion and shouts from the rooftops of Mock Town for an opponent worth the trouble.',
       },
       visual: { art: 'jesus-burgess', tint: 'red' },
     },
@@ -506,8 +506,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 234,
       name: { it: 'Laffitte', en: 'Laffitte' },
       summary: {
-        it: 'Un uomo pallido in cilindro e bastone che entra dalla finestra alla riunione della Flotta dei Sette e propone il nome del suo capitano.',
-        en: 'A pale man in a top hat with a cane, who steps in through the window at the Warlords’ meeting and puts his captain’s name forward.',
+        it: 'Un uomo pallido in cilindro e bastone che si infila non visto nella riunione della Flotta dei Sette e propone il nome del suo capitano.',
+        en: 'A pale man in a top hat with a cane, who slips unseen into the Warlords’ meeting and puts his captain’s name forward.',
       },
       visual: { art: 'laffitte', tint: 'ivory' },
     },
@@ -1281,8 +1281,8 @@ export const summitWar: Saga = {
       chronicle: summitWarChronicles['silvers-rayleigh'],
       role: { it: 'Artigiano del rivestimento', en: 'Coating craftsman' },
       log: {
-        it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi torna al suo bicchiere come se non fosse successo niente. Dice di aver navigato, tanti anni fa, sulla nave del Re dei Pirati, e lo dice come si dice un vecchio mestiere.',
-        en: 'At Sabaody they call him the old man who coats ships, and for that work he asks prices nobody dares argue with. In the auction house he drops a whole hall of armed men without touching one of them, then goes back to his glass as though nothing had happened. He says he sailed, many years ago, on the ship of the Pirate King, and says it the way a man names an old trade.',
+        it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi strappa a una sirena il collare esplosivo un attimo prima che salti. Quando Kid lo riconosce come il Re Oscuro, gli chiede di non andarlo a dire in giro: adesso riveste soltanto le navi.',
+        en: 'At Sabaody they call him the old man who coats ships, and for that work he asks prices nobody dares argue with. In the auction house he drops a whole hall of armed men without touching one of them, then pulls the explosive collar off a mermaid’s neck a moment before it goes off. When Kid recognises him as the Dark King, he asks them not to go around saying so: these days he only coats ships.',
       },
       status: [{ episode: 398, value: 'alive' }],
       affiliation: [
@@ -1468,8 +1468,8 @@ export const summitWar: Saga = {
         en: 'Captain of the Fallen Monk Pirates',
       },
       log: {
-        it: 'Viene dalle isole del cielo, cosa che sulla Rotta Maggiore quasi nessuno crede possibile, e si porta dietro un pilastro di ferro come bastone. Sorride sempre, anche mentre colpisce, e più duro è il colpo che incassa più il suo corpo cresce. A Sabaody passeggia tranquillo in mezzo a capitani che non si sopportano.',
-        en: 'He comes from the islands in the sky, which almost nobody on the Grand Line believes is possible, and carries an iron pillar as a staff. He smiles constantly, even mid-swing, and the harder the blow he takes the larger his body grows. At Sabaody he strolls calmly among captains who cannot stand each other.',
+        it: 'Viene dalle isole del cielo, cosa che sulla Rotta Maggiore quasi nessuno crede possibile, e si porta dietro un pilastro di ferro come bastone. Sorride sempre, anche mentre colpisce. A Sabaody passeggia tranquillo in mezzo a capitani che non si sopportano.',
+        en: 'He comes from the islands in the sky, which almost nobody on the Grand Line believes is possible, and carries an iron pillar as a staff. He smiles constantly, even mid-swing. At Sabaody he strolls calmly among captains who cannot stand each other.',
       },
       affiliation: [
         {
@@ -1578,8 +1578,8 @@ export const summitWar: Saga = {
       chronicle: summitWarChronicles.borsalino,
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
       log: {
-        it: 'Arriva sull’arcipelago in un lampo e attraversa le mangrovie alla velocità della luce, senza per questo smettere di parlare lento. Prende a calci chi gli sta davanti con una gamba che scotta e sembra sempre un po’ annoiato da quello che deve fare. Non ha bisogno di alzare la voce: davanti a lui i pirati smettono di correre.',
-        en: 'He arrives on the archipelago in a flash and crosses the mangroves at the speed of light, without once speeding up his drawl. He kicks whoever stands in front of him with a leg that burns, and always looks faintly bored by the errand. He never needs to raise his voice: pirates stop running when he appears.',
+        it: 'Atterra sull’arcipelago in piedi su una palla di cannone, e il proiettile che un pirata gli spara in testa gli passa attraverso. Con un calcio lancia dal piede un raggio di luce che abbatte una mangrovia intera, senza smettere di parlare lento. Sembra sempre un po’ annoiato da quello che deve fare, e non ha mai bisogno di alzare la voce.',
+        en: 'He lands on the archipelago riding a cannonball, and the bullet a pirate fires at his head passes straight through him. He kicks a beam of light from his foot that brings down a whole mangrove, without once speeding up his drawl. He always looks faintly bored by the errand, and he never needs to raise his voice.',
       },
       status: [{ episode: 401, value: 'alive' }],
       affiliation: [
@@ -1633,8 +1633,8 @@ export const summitWar: Saga = {
     'boa-marigold': {
       role: { it: 'Sorella dell’imperatrice', en: 'Sister of the empress' },
       log: {
-        it: 'È la più grossa delle tre sorelle e si muove con una lentezza che inganna, perché nell’arena arriva prima di quanto sembri. Diventa un serpente arancione che soffia fuoco dalla bocca, e con la coda spazza via metà del terreno. Anche lei tiene la schiena nascosta sotto il mantello, e alla sorella basta uno sguardo per ricordarglielo.',
-        en: 'She is the largest of the three sisters and moves with a slowness that deceives, because in the arena she gets there sooner than she looks. She becomes an orange snake that breathes fire, and her tail sweeps away half the ground. She too keeps her back hidden under a cloak, and a glance from her sister is enough to remind her.',
+        it: 'È la più grossa delle tre sorelle e insieme a Sandersonia fa la guardia al bagno dell’imperatrice. Quando l’imperatrice ordina alle due di giustiziare l’intruso con le loro mani, nell’arena si trasformano in serpenti. Come le sorelle tiene la schiena coperta dal mantello: sull’isola si dice che lì le abbia segnate la maledizione di una Gorgone.',
+        en: 'She is the largest of the three sisters, and with Sandersonia she stands guard over the empress’s bath. When the empress orders the two of them to execute the intruder themselves, they turn into snakes in the arena. Like her sisters she keeps her back under her cloak: the island says a Gorgon’s curse marked them there.',
       },
       affiliation: [
         { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
@@ -1695,8 +1695,8 @@ export const summitWar: Saga = {
         en: 'Vice chief warden of Impel Down',
       },
       log: {
-        it: 'Ripete a chiunque lo ascolti che un giorno prenderà il posto del direttore, e lo dice anche davanti al direttore. Porta un copricapo da faraone e una lancia con due lame, e nelle liti con i colleghi si impappina e si corregge da solo. Nessuno lo prende sul serio, ma è lui a restare in piedi quando gli altri sono già a terra.',
-        en: 'He tells anyone who will listen that one day he will have the chief warden’s job, and he says it in front of the chief warden too. He wears a pharaoh’s headdress and carries a two-bladed naginata, and in arguments with colleagues he trips over his words and corrects himself. Nobody takes him seriously, yet he is the one still standing when the others are down.',
+        it: 'Ripete a chiunque lo ascolti che un giorno prenderà il posto del direttore, e lo dice anche davanti al direttore. Porta un copricapo da faraone, e nelle liti con i colleghi si impappina e si corregge da solo. Quando per la prima volta qualcuno si infiltra nella prigione, la chiama una calamità e ne dà la colpa al direttore.',
+        en: 'He tells anyone who will listen that one day he will have the chief warden’s job, and he says it in front of the chief warden too. He wears a pharaoh’s headdress, and in arguments with colleagues he trips over his words and corrects himself. When someone breaks into the prison for the first time, he calls it a calamity and blames the chief warden for it.',
       },
       // No chief-warden entry: only the chapter 661 cover says it.
       affiliation: [
@@ -1772,8 +1772,8 @@ export const summitWar: Saga = {
     'shiryu': {
       role: { it: 'Ex capo dei secondini', en: 'Former head jailer' },
       log: {
-        it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Siede nella cella con la spada che gli hanno lasciato accanto, e i guardiani passano davanti senza guardarlo. Il direttore lo considera l’unico detenuto che non vorrebbe mai vedere fuori.',
-        en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. He sits in his cell with the sword they left beside him, and the guards walk past without looking in. The warden counts him as the one inmate he never wants to see outside.',
+        it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Quando Barbanera entra nella prigione, il direttore lo fa uscire dalla cella per fermarlo e gli rende la spada, e lui la usa subito sui secondini venuti a liberarlo.',
+        en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. When Blackbeard breaks into the prison, the chief warden lets him out of his cell to stop him and gives him back his sword, and he turns it at once on the jailers sent to free him.',
       },
       affiliation: [
         {
@@ -1799,8 +1799,8 @@ export const summitWar: Saga = {
         en: 'Helmsman of the Blackbeard Pirates',
       },
       log: {
-        it: 'A Mock Town gira per le strade in calzamaglia e sfida i passanti a braccio di ferro, spaccando i tavoli quando vince. Si definisce il campione e nel locale nessuno ha voglia di smentirlo, perché solleva pesi che non dovrebbe riuscire a sollevare. Siede al tavolo del suo capitano e ride della battuta prima ancora che finisca.',
-        en: 'In Mock Town he walks the streets in a wrestler’s leotard and challenges passers-by to arm wrestling, splitting the tables when he wins. He calls himself the champion and nobody in the bar cares to argue, because he lifts weights he should not be able to lift. He sits at his captain’s table and laughs at the joke before it is finished.',
+        it: 'A Mock Town batte un uomo di un’altra ciurma e si lamenta che fosse troppo debole. Poi sale sul tetto di un palazzo e grida in cerca di qualcuno che valga la pena di affrontare. Si fa chiamare il Campione.',
+        en: 'In Mock Town he beats a man from another crew and complains that he was too weak. Then he climbs onto a rooftop and shouts for someone worth fighting. He calls himself the Champion.',
       },
       affiliation: [
         {
@@ -1861,27 +1861,27 @@ export const summitWar: Saga = {
       devilFruit: [{ episode: 1120, value: ['sick-sick-fruit'] }],
     },
     'laffitte': {
-      role: {
-        it: 'Navigatore dei Pirati di Barbanera',
-        en: 'Navigator of the Blackbeard Pirates',
-      },
+      // Not "navigator": only the volume 46 character blurb says it.
+      role: BLACKBEARD_ROLE,
       log: {
-        it: 'Entra dalla finestra nella sala dove il Governo ha convocato la Flotta dei Sette, con il cilindro in testa e il bastone in mano, e nessuno lo ferma. Propone il nome del suo capitano per il posto rimasto vuoto al tavolo e se ne va come se avesse consegnato un invito. Prima di fare il pirata era uno sceriffo nel West Blue.',
-        en: 'He comes in through the window of the room where the Government has summoned the Seven Warlords, top hat on and cane in hand, and nobody stops him. He puts his captain’s name forward for the empty seat at the table and leaves as though he had delivered an invitation. Before he turned pirate he was a sheriff in the West Blue.',
+        it: 'Arriva nella sala dove il Governo ha convocato la Flotta dei Sette senza che nessuno se ne accorga, con il cilindro in testa e il bastone in mano. Propone il nome del suo capitano per il posto rimasto vuoto e chiede a tutti di ricordarsi dei Pirati di Barbanera. Prima di fare il pirata era uno sceriffo nel West Blue, cacciato per la sua crudeltà.',
+        en: 'He gets into the room where the Government has summoned the Seven Warlords without anyone noticing, top hat on and cane in hand. He puts his captain’s name forward for the empty seat and tells them all to remember the Blackbeard Pirates. Before he turned pirate he was a sheriff in the West Blue, exiled for his cruelty.',
       },
       affiliation: [
         {
           episode: 151,
           value: {
-            it: 'Pirati di Barbanera, navigatore; ex sceriffo del West Blue',
-            en: 'Blackbeard Pirates, navigator; former West Blue sheriff',
+            it: 'Pirati di Barbanera; ex sceriffo del West Blue',
+            en: 'Blackbeard Pirates; former West Blue sheriff',
           },
         },
       ],
       origin: [{ episode: 151, value: { it: 'West Blue', en: 'West Blue' } }],
+      // Named among the Titanic Captains in chapter 803, episode 752.
       epithet: [
         {
-          episode: 151,
+          episode: 752,
+          chapter: 803,
           value: { it: 'lo Sceriffo Demone', en: 'Demon Sheriff' },
         },
       ],
