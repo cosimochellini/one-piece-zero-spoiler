@@ -10,8 +10,8 @@ export const waterSevenChronicles = {
       episode: 235,
       value: {
         title: {
-          it: 'Il capo sotto il ponte',
-          en: 'The boss under the bridge',
+          it: 'Il capo della Franky Family',
+          en: 'The boss of the Franky Family',
         },
         body: {
           it: 'Comanda la Franky Family, una banda di smantellatori di Water Seven che spoglia le navi dei pirati di passaggio. I suoi uomini pestano [[usopp|Usop]] e gli portano via i duecento milioni che serviranno per la nuova nave; lui prende i soldi e va a fare compere, lasciando che la sua famiglia finisca di picchiarlo. Quando [[monkey-d-luffy|Rufy]], Zoro, Sanji e Chopper radono al suolo la Franky House, lui non c’è. Il furto spacca la ciurma: Usop, umiliato, lascia i compagni e sfida il suo capitano per la Going Merry.',

@@ -166,7 +166,7 @@ export const waterSevenArt = {
   ],
 
   // Her Cutie Baton lying in 3/4: the yellow shaft between its two white
-  // balls, each ball with its seam, a gleam and its lower side hatched (207).
+  // balls, each ball with its seam, a gleam and its lower side hatched (208).
   // No ribbon: the baton has none.
   'porche': [
     { d: 'M40 146 L118 74 M46 152 L124 80', role: 'accent' },
@@ -182,7 +182,7 @@ export const waterSevenArt = {
 
   // His leopard-spotted scarf, untied from his neck and left knotted in a
   // loop, its two ends falling forward and the far side of the loop hatched.
-  // It is what he wears from his first scene (207); the iron gauntlets are
+  // It is what he wears from his first scene (208); the iron gauntlets are
   // hidden weapons, brought out in the Groggy Ring.
   'hamburg': [
     {
