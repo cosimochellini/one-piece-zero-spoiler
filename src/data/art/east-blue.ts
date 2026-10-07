@@ -1040,8 +1040,9 @@ export const eastBlueArt = {
 
   // The treasure chest he has been stuck in for twenty years, closed, in
   // 3/4: the curved lid and the iron bands over it, the planks, the far side
-  // hatched, and the lock plate in his colour. He keeps guard over the island
-  // of rare animals in it in episode 18.
+  // hatched, and the lock plate in his colour, lock and bands as the show
+  // draws them. He keeps guard over the island of rare animals in it in
+  // episode 18.
   'gaimon': [
     { d: 'M30 112 V170 H110 V112' },
     { d: 'M110 170 L136 156 V98' },
@@ -1131,7 +1132,7 @@ export const eastBlueArt = {
   // The barrel of limes the crew cures his scurvy with: the barrel in 3/4
   // with its staves and hoops and its far side hatched, the limes heaped over
   // its rim, a loose one on the deck, and a squeezed half in his colour, still
-  // dripping. Episode 20.
+  // dripping. The barrel is the one in the episode 20 frame of the cure.
   'yosaku': [
     { d: ellipse(70, 98, 32, 9) },
     {
@@ -1212,8 +1213,8 @@ export const eastBlueArt = {
 
   // His toque, nearly as tall as he is: the pleated puff on top, the tall
   // crown with its folds, the band, the far side hatched, and the crossed
-  // stitches down its front in his colour. He kicks Luffy into service in it in
-  // episode 20.
+  // stitches the show draws down its front, in his colour. He kicks Luffy
+  // into service in it in episode 20.
   'zeff': [
     { d: 'M52 152 C50 120 48 92 46 68 M108 152 C110 120 112 92 114 68' },
     {
@@ -1376,46 +1377,30 @@ export const eastBlueArt = {
     },
     shadow(84, 186, 50),
   ],
-  // One of his iron shields stood on its rim in 3/4: the rim's thickness
-  // hatched, its rivets, and the pearl set in its middle in his colour, with
-  // the fire he lights when he first bleeds licking up behind it. Episode 25.
+  // One of his iron shields seen almost edge-on, the face a sliver and the
+  // rim's thickness hatched as it turns away, the pearl set in its face
+  // standing off it in his colour, and the fire he lights when he first bleeds
+  // licking up behind it. Episode 25.
   'pearl': [
     {
-      d: 'M58 70 C44 66 32 58 34 42 C38 48 42 50 46 48 C42 38 46 26 56 20 C56 30 60 36 66 38 C66 30 72 22 80 20 C76 32 82 42 86 52',
+      d: 'M66 66 C52 62 40 54 42 38 C46 44 50 46 54 44 C50 34 54 22 64 16 C64 26 68 32 74 34 C74 26 80 18 88 16 C84 28 90 38 94 48',
       role: 'soft',
     },
-    { d: 'M50.5 110.8 A24 52 10 1 0 97.7 119.1 A24 52 10 1 0 50.5 110.8' },
+    { d: 'M91.5 62.5 C75.7 60.3 60.6 167.2 76.5 169.5' },
     {
-      d: 'M83.1 63.7 C102.8 67.2 114.4 93.6 109.5 121.2 C104.7 148.8 84.8 169.6 65.1 166.2',
+      d: 'M91.5 62.5 C117.3 66.1 121.8 91 117.7 120.7 C113.5 150.4 102.2 173.1 76.5 169.5',
     },
     {
-      d: 'M106.2 94.2 L112.8 91.3 M106.4 110.5 L113 107.6 M103.6 126.3 L110.2 123.4 M97.8 141.5 L104.4 138.6',
+      d: 'M91.5 62.5 C103.4 64.2 106 88.8 101.8 118.5 C97.6 148.2 88.4 171.1 76.5 169.5',
+      role: 'soft',
+    },
+    {
+      d: 'M111.9 89.6 L118.4 86.5 M113.7 106 L120.2 102.9 M111.2 123.9 L117.7 120.7 M106.7 141.4 L113.2 138.3 M98.5 156.4 L105 153.3',
       role: 'ambient',
     },
-    {
-      d: 'M57.3 112 A17 42 10 1 0 90.8 117.9 A17 42 10 1 0 57.3 112',
-      role: 'soft',
-    },
-    {
-      d: dots([
-        [82.3, 68.7],
-        [94.1, 81.9],
-        [92.8, 118.3],
-        [81.6, 152.8],
-        [65.9, 161.2],
-        [54.1, 148],
-        [55.4, 111.7],
-        [66.6, 77.1],
-      ]),
-      role: 'soft',
-    },
-    { d: 'M67.2 113.7 A4 11 10 1 0 75.1 115.1 A4 11 10 1 0 67.2 113.7' },
-    {
-      d: 'M59.3 112.4 A8 8 10 1 0 75.1 115.1 A8 8 10 1 0 59.3 112.4',
-      role: 'accent',
-    },
-    { d: 'M63.8 110.1 Q65.3 107.3 68.2 107.8', role: 'soft' },
-    shadow(84, 180, 40),
+    { d: 'M73.5 104.4 C56 99.9 52.6 123.7 70.7 124.2', role: 'accent' },
+    { d: 'M75.1 100.6 L70.2 128.2', role: 'soft' },
+    shadow(86, 180, 40),
   ],
   // Yoru on the diagonal: the curved black blade hatched along its length,
   // the long crossguard forked at both ends in his colour, the wrapped grip and
