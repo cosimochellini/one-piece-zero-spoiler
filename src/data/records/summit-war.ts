@@ -959,7 +959,7 @@ export const summitWar: Saga = {
       name: { it: 'Salomè', en: 'Salome' },
       summary: {
         it: 'Il serpente gigante dell’imperatrice, un teschio cornuto e incrinato in testa, che le fa da trono e sibila quando lei confessa di essere in pena per Rufy.',
-        en: 'The empress’s giant snake, a cracked horned skull on her head, who serves as her throne and hisses when she admits she is worried sick about Luffy.',
+        en: 'The empress’s giant snake wears a cracked horned skull on her head. She serves as the empress’s throne and hisses when the empress admits she is worried sick about Luffy.',
       },
       visual: { art: 'salome', tint: 'azure' },
     },
@@ -2533,7 +2533,7 @@ export const summitWar: Saga = {
       role: { it: 'Serpente di Boa Hancock', en: 'Boa Hancock’s snake' },
       log: {
         it: 'È il serpente che accompagna l’imperatrice dalla nave fino al campo di battaglia, bianco a macchie rosa, con un teschio cornuto calato sulla testa come un elmo. Si arrotola sotto di lei per farle da trono, e non se ne allontana mai di molto. È a Salomè che l’imperatrice, in mezzo alla guerra, confida di non riuscire a smettere di preoccuparsi per Rufy.',
-        en: 'She is the snake that goes with the empress from her ship to the battlefield, white with pink spots, a horned skull pulled down over her head like a helmet. She coils beneath her to serve as her throne, and never strays far from her. It is to Salome that the empress, in the middle of a war, confides that she cannot stop worrying about Luffy.',
+        en: 'She is the snake that goes with the empress from her ship to the battlefield, white with pink spots, a horned skull pulled down over her head like a helmet. Salome coils beneath the empress to serve as her throne, and never strays far from her. It is to Salome that the empress, in the middle of a war, confides that she cannot stop worrying about Luffy.',
       },
       status: [{ episode: 484, value: 'alive' }],
       affiliation: [
