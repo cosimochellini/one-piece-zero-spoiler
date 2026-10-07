@@ -1316,15 +1316,46 @@ export const waterSevenArt = {
     { d: 'M18 134 l6 -10 M26 132 l6 -10', role: 'ambient' },
     shadow(78, 186, 62),
   ],
-  // A cutlass whose guard sprouts two small tusks, a tail for a tassel.
+  // The elephant himself, side on and facing left, trunk hanging with a curl
+  // at the tip, as he keeps Spandam company at dinner from 254 (ch. 365):
+  // the leather harness strapped in a grid over his back, its lower edge
+  // above the belly, which is hatched where it turns away; the legs taper to
+  // round feet, a fold at each ankle, the far legs behind the near ones. The
+  // short tusk at the mouth is the accent, the one part of him the cutlass
+  // keeps at its guard when he turns into it at 285 (ch. 400). No eye.
   'funkfreed': [
-    { d: 'M64 122 C72 84 98 50 134 28 C122 56 102 90 80 130 Z' },
-    { d: 'M50 114 L90 136' },
-    { d: 'M54 117 C42 122 38 134 44 142', role: 'accent' },
-    { d: 'M86 134 C88 148 80 156 70 158', role: 'accent' },
-    { d: 'M70 128 L54 160' },
-    { d: 'M54 160 c-4 8 -2 16 4 22 M54 160 c2 8 6 14 12 18', role: 'soft' },
-    shadow(80, 188, 40),
+    {
+      d: 'M58 88 C70 68 122 64 142 86 C152 98 150 120 140 130 C143 146 138 156 138 166 Q138 172 133 172 H129 Q124 172 124 166 C124 156 120 148 122 140 C110 151 92 151 80 140 C81 150 77 158 77 166 Q77 172 72 172 H69 Q64 172 64 166 C64 154 60 140 64 128',
+    },
+    {
+      d: 'M58 88 C54 74 44 68 34 70 C24 72 18 82 20 98 C22 118 16 140 18 154 Q18 162 10 160',
+    },
+    {
+      d: 'M18 154 Q22 160 28 156 C26 138 30 120 36 112 C42 120 52 124 64 128',
+      role: 'soft',
+    },
+    { d: 'M48 78 C64 78 72 98 66 114 C62 122 52 122 48 116', role: 'soft' },
+    {
+      d: 'M39 115 C38 125 37 131 32 136 C41 134 45 127 47 120',
+      role: 'accent',
+    },
+    {
+      d: 'M74 75.9 L73 119.9 M98 71.2 L98 122.7 M122 74.2 L121 120.3 M74 99.8 C94 96 124.6 95.4 144 99',
+      role: 'ambient',
+    },
+    { d: 'M66 118 C88 125 118 125 146 112', role: 'soft' },
+    { d: 'M20 128 h5 M19 138 h5', role: 'soft' },
+    { d: 'M65 162 q5 2 11 0 M125 162 q5 2 12 0', role: 'soft' },
+    { d: 'M94 143 l6 -4 M104 143 l6 -4', role: 'ambient' },
+    {
+      d: 'M95 147 L96 166 Q97 171 91 171 H82 M109 147 L108 166 Q107 171 113 171 H122',
+      role: 'ambient',
+    },
+    {
+      d: 'M148 98 C154 108 154 120 150 130 M150 130 l-3 6 M150 130 l2 6',
+      role: 'soft',
+    },
+    shadow(82, 182, 68),
   ],
   // The Devil Fruit he found, as it is shown in his hand at 325 (ch. 440),
   // before anyone has a name for it: the swirled bunch from its own drawing,
