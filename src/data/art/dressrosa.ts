@@ -798,14 +798,15 @@ export const dressrosaArt = {
     shadow(82, 190, 72),
   ],
 
-  // His gauntlet lying on the ground, the fist away from us: the vambrace
-  // with its open end toward us and hatched inside, two gold bands of
-  // studs, the far side hatched, and the wrapped fist with the fingers
-  // curled and the thumb across them. He wears it when the Block C
-  // fighters are brought on in episode 639. No helmet: with its crest and
-  // eye shades it reads as a head, and its shield reads as a watch face.
+  // His gauntlet lying on the ground, the fist away from us: the cuff
+  // tapering from its open end, hatched inside, to a plain rim at the
+  // wrist, one wide studded plate standing proud near the elbow, the far
+  // side hatched, and the big fist with the fingers curled and the thumb
+  // across them. He wears it when the Block C fighters are brought on in
+  // episode 639. No helmet: with its crest and eye shades it reads as a
+  // head, and the shield on the cuff reads as a watch face.
   'hajrudin': [
-    { d: 'M16 78 H98 M16 134 H98', transform: HAJRUDIN_ARM },
+    { d: 'M16 78 L92 84 M16 134 L92 128', transform: HAJRUDIN_ARM },
     { d: ellipse(16, 106, 9, 28), transform: HAJRUDIN_ARM },
     {
       d: 'M14 90 l6 -6 M12 104 l10 -10 M12 118 l10 -10 M14 130 l6 -6',
@@ -813,46 +814,44 @@ export const dressrosaArt = {
       transform: HAJRUDIN_ARM,
     },
     {
-      d: 'M30 78 C35 88 35 124 30 134 M42 78 C47 88 47 124 42 134 M78 78 C83 88 83 124 78 134 M90 78 C95 88 95 124 90 134',
+      d: 'M28 75 C34 86 34 126 28 137 L48 135 C54 124 54 88 48 77 Z M48 77 L53 79.5 C59 90 59 122 53 132.5 L48 135',
       role: 'accent',
       transform: HAJRUDIN_ARM,
     },
     {
       d: dots([
-        [37, 86],
-        [38.6, 106],
-        [37, 126],
-        [85, 86],
-        [86.6, 106],
-        [85, 126],
+        [40, 86],
+        [42, 99],
+        [42, 113],
+        [40, 126],
       ]),
       role: 'soft',
       transform: HAJRUDIN_ARM,
     },
     {
-      d: 'M52 132 l8 -8 M62 132 l8 -8 M72 130 l6 -6',
+      d: 'M86 83.5 C90 92 90 120 86 128.5',
+      role: 'soft',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M58 130 l8 -8 M68 130 l8 -8 M78 129 l6 -6',
       role: 'ambient',
       transform: HAJRUDIN_ARM,
     },
     {
-      d: 'M98 84 C112 78 128 76 140 78 C150 80 152 90 146 92 C154 94 154 104 148 106 C153 108 152 118 147 119 C151 121 148 131 140 131 C128 136 112 136 98 128',
+      d: 'M92 84 C100 76 114 73 130 73 C144 73 154 76 152 88 C158 90 158 102 153 104 C159 106 159 118 153 120 C158 122 157 134 148 136 C134 140 108 138 92 128',
       transform: HAJRUDIN_ARM,
     },
     {
-      d: 'M146 92 H131 C126 94 126 104 131 106 M148 106 H131 C126 108 126 117 131 119 M147 119 H131 C126 121 126 129 132 131',
+      d: 'M106 86 C118 82 132 82 142 84 C148 86 147 93 141 95 C130 96 118 98 108 101',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M153 104 H136 C131 106 131 118 136 120 M153 120 H136 C131 122 131 133 138 136 M136 104 C132 102 132 98 135 96',
       role: 'soft',
       transform: HAJRUDIN_ARM,
     },
-    {
-      d: 'M110 89 C120 85 130 84 138 86 C143 88 142 94 137 95 C128 96 118 98 110 101',
-      transform: HAJRUDIN_ARM,
-    },
-    {
-      d: 'M104 81 C107 96 107 116 104 131',
-      role: 'soft',
-      transform: HAJRUDIN_ARM,
-    },
-    { ...shadow(82, 142, 72), transform: HAJRUDIN_ARM },
+    { ...shadow(84, 142, 74), transform: HAJRUDIN_ARM },
   ],
 
   // His zanbato driven point first into the ground and leaning: the long
