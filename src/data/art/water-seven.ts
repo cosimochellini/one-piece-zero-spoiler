@@ -1,4 +1,12 @@
-import { circle, dots, ellipse, SEA, shadow, star } from '~/lib/svg/primitives'
+import {
+  circle,
+  dot,
+  dots,
+  ellipse,
+  SEA,
+  shadow,
+  star,
+} from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
@@ -69,14 +77,14 @@ export const waterSevenArt = {
   'jaguar-d-saul': [
     { d: 'M-4 150 C40 142 112 140 164 146' },
     {
-      d: 'M114 142 C118 120 116 96 108 78 M136 142 C132 120 136 96 144 78 M114 142 C108 145 100 147 92 147 M136 142 C142 145 150 146 158 146',
+      d: 'M106 142 C110 120 108 96 100 78 M128 142 C124 120 128 96 136 78 M106 142 C102 145 98 146 94 146 M128 142 C134 145 142 146 150 146',
     },
     {
-      d: 'M104 80 C84 82 76 60 90 52 C86 32 106 22 120 30 C130 16 154 22 156 38 C168 42 168 66 152 72 C148 82 126 84 118 78 C112 84 106 84 104 80 Z',
+      d: 'M96 80 C76 82 68 60 82 52 C78 32 98 22 112 30 C122 16 146 22 148 38 C160 42 160 66 144 72 C140 82 118 84 110 78 C104 84 98 84 96 80 Z',
     },
-    { d: 'M120 104 q4 10 2 22', role: 'soft' },
+    { d: 'M112 104 q4 10 2 22', role: 'soft' },
     {
-      d: 'M152 50 l8 -5 M154 60 l8 -5 M146 72 l8 -5 M138 108 l6 -4 M138 122 l6 -4',
+      d: 'M144 50 l8 -5 M146 60 l8 -5 M138 72 l8 -5 M130 108 l6 -4 M130 122 l6 -4',
       role: 'ambient',
     },
     {
@@ -126,20 +134,23 @@ export const waterSevenArt = {
   ],
 
   // The bow of the Sexy Foxy side on: the hull with its rail and planking,
-  // the turn of the bow hatched, a mast with its sail behind, and the fox's head
-  // at the prow as figurehead, ears up and snout out over the water. No eye
-  // and no flag (207).
+  // the turn of the bow hatched and a wave under it, a mast with its sail
+  // behind, and the fox's head at the prow as figurehead, ears up, the line
+  // of the brow running down the long snout to its nose, out over the water.
+  // No eye and no flag (207).
   'foxy': [
-    { d: 'M-4 104 H92 C102 116 106 134 102 152 C76 160 30 160 -4 156' },
-    { d: 'M-4 96 H92 M-4 104 V96 M18 96 v8 M40 96 v8 M62 96 v8', role: 'soft' },
-    { d: 'M-4 122 H98 M-4 138 C40 142 76 142 100 138', role: 'soft' },
+    { d: 'M-4 104 H78 C88 116 92 134 88 152 C62 160 22 160 -4 156' },
+    { d: 'M-4 96 H78 M-4 104 V96 M16 96 v8 M36 96 v8 M56 96 v8', role: 'soft' },
+    { d: 'M-4 122 H84 M-4 138 C36 142 64 142 86 138', role: 'soft' },
     {
-      d: 'M92 104 C88 86 96 70 106 62 L102 26 L120 50 L132 24 L136 58 C150 64 162 76 166 88 C156 96 140 96 130 96 C122 104 120 120 104 130 C100 120 96 112 92 104 Z',
+      d: 'M78 104 C74 86 80 70 90 62 L86 28 L102 50 L114 26 L120 58 C128 60 134 64 138 70 L154 82 Q158 86 154 89 L136 92 C126 96 118 106 112 118 C106 124 96 128 90 130 C86 120 82 112 78 104 Z',
       role: 'accent',
     },
-    { d: 'M108 44 l4 10 M126 42 l-2 10', role: 'soft' },
-    { d: 'M30 96 V14 M30 18 Q60 30 56 70 Q44 60 30 64', role: 'soft' },
-    { d: 'M84 124 l10 -6 M86 136 l12 -7 M72 146 l14 -8', role: 'ambient' },
+    { d: 'M92 40 l4 10 M110 40 l-2 10 M104 62 Q124 64 140 74', role: 'soft' },
+    { d: dot(154, 85) },
+    { d: 'M24 96 V14 M24 18 Q54 30 50 70 Q38 60 24 64', role: 'soft' },
+    { d: 'M70 124 l10 -6 M72 136 l12 -7 M60 146 l14 -8', role: 'ambient' },
+    { d: 'M70 156 Q84 150 96 154 Q104 156 112 152', role: 'soft' },
     ...SEA.slice(1),
   ],
 
@@ -310,8 +321,8 @@ export const waterSevenArt = {
 
   // His plain white cap sitting on a roof ridge, peak forward, wind going
   // past. The roof is seen from its corner: the gable end and the wall
-  // under it hatched, the ridge running back, the near slope tiled down to
-  // the eave. He goes over the rooftops to look at the Going Merry (231).
+  // under it hatched, the ridge running back, rows of tiles on the near
+  // slope down to the eave, and the house's shadow below. He goes over the rooftops to look at the Going Merry (231).
   'kaku': [
     { d: 'M40 74 L4 112 H78 Z M40 74 L146 50 L160 88 L78 112' },
     { d: 'M8 112 V150 H74 V112 M74 150 L156 126 V89' },
@@ -319,17 +330,19 @@ export const waterSevenArt = {
       d: 'M30 92 l-8 14 M44 88 l-10 18 M58 96 l-6 10 M20 120 l-8 12 M40 122 l-10 14 M60 120 l-10 14',
       role: 'ambient',
     },
+    { d: 'M64 87 L150 67 M72 100 L155 80', role: 'soft' },
     {
-      d: 'M66 90 Q70 86 74 88 Q78 84 82 86 Q86 82 90 84 Q94 80 98 82 Q102 78 106 80 Q110 76 114 78 Q118 74 122 76 Q126 72 130 74 M72 104 Q76 100 80 102 Q84 98 88 100 Q92 96 96 98 Q100 94 104 96 Q108 92 112 94 Q116 90 120 92 Q124 88 128 90 Q132 86 136 88 Q140 84 144 86 Q148 82 152 84',
+      d: 'M84 84 v-6 M100 80 v-6 M116 76 v-6 M132 72 v-6 M90 97 v-6 M106 93 v-6 M122 89 v-6 M138 85 v-6',
       role: 'soft',
     },
     {
-      d: 'M70 70 C66 50 80 38 96 40 C110 42 114 54 112 64 M70 70 Q92 68 112 64 M112 64 C120 62 132 62 140 66 C132 72 120 72 110 70',
+      d: 'M72 70 C68 52 80 40 94 42 C108 44 112 54 110 64 M72 70 Q92 68 110 64 M110 64 C116 62 124 62 130 66 C124 70 116 70 108 68',
       role: 'accent',
     },
-    { d: 'M94 40 v-3 M92 42 Q88 54 90 68', role: 'soft' },
+    { d: 'M92 42 v-3 M90 44 Q86 56 88 68', role: 'soft' },
     { d: 'M2 40 H42 M14 28 H52 M8 54 H30', role: 'ambient' },
-    { d: 'M102 48 l6 -4 M106 56 l6 -4', role: 'ambient' },
+    { d: 'M100 50 l6 -4 M104 58 l6 -4', role: 'ambient' },
+    shadow(82, 170, 72),
   ],
 
   // His black top hat in 3/4, the crown hatched, the band below it, and
@@ -464,7 +477,7 @@ export const waterSevenArt = {
 
   // A rolled blueprint lying along the two rails of the sea train's track
   // out over the water, its spiral end to the left and the sheet unrolled
-  // at the right, hanging over the rail with a hull drawn on it; the rails
+  // at the right, hanging over the rail with a grid ruled on it; the rails
   // on their sleepers, the roll's underside hatched. He draws the train and
   // builds its track with his apprentices (248).
   'tom': [
@@ -476,14 +489,17 @@ export const waterSevenArt = {
     { d: 'M-4 156 L164 130', role: 'ambient' },
     { d: 'M30 110 L120 96 M32 130 L122 116' },
     {
-      d: `${ellipse(31, 120, 6, 10)} M31 120 m-2 0 a2 3 0 1 1 4 0`,
+      d: `${ellipse(31, 120, 6, 10)} M31 120 c0 -3 3 -3 3 0 c0 5 -6 5 -6 0 c0 -8 9 -8 9 0`,
       role: 'accent',
     },
     {
       d: 'M120 96 C130 98 132 108 126 116 L132 148 L156 144 L150 112 C146 104 134 96 120 96',
       role: 'accent',
     },
-    { d: 'M136 136 q6 4 14 0 M142 128 v8', role: 'soft' },
+    {
+      d: 'M131 128 L153 124 M133 138 L155 134 M139 114 L142 147 M146 113 L149 145',
+      role: 'soft',
+    },
     {
       d: 'M48 128 l8 -14 M68 125 l8 -14 M88 122 l8 -14 M108 119 l6 -11',
       role: 'ambient',
@@ -523,7 +539,10 @@ export const waterSevenArt = {
 
   // The sea ending at the rim of a great hole and pouring over the near rim
   // all along in a curtain, the accent; the island in the middle on its
-  // broken rock, the Tower of Justice rising over the town (264).
+  // broken rock, and the Tower of Justice, the tallest thing on it, rising
+  // over the town: the train pulls in to see an island in a hole in the sea
+  // (ch. 375), and Paulie's sketch puts the tower between it and the Gates
+  // of Justice (264).
   'enies-lobby-arc': [
     { d: 'M-4 92 C40 80 120 80 164 92', role: 'ambient' },
     { d: 'M-4 118 C40 132 120 132 164 118' },
@@ -632,8 +651,14 @@ export const waterSevenArt = {
     },
     { d: 'M104 152 Q112 156 120 152 M106 160 Q114 164 120 160', role: 'soft' },
     {
-      d: `${circle(110, 68, 2)} ${circle(124, 44, 2)} ${circle(132, 62, 2)} ${circle(118, 92, 2)} ${circle(126, 112, 2)}`,
-      role: 'soft',
+      d: dots([
+        [110, 68],
+        [124, 44],
+        [132, 62],
+        [118, 92],
+        [126, 112],
+        [112, 126],
+      ]),
     },
     {
       d: 'M140 50 l-8 6 M142 66 l-10 6 M134 88 l-8 6 M128 112 l-6 4',
@@ -979,8 +1004,7 @@ export const waterSevenArt = {
 
   // The Gates of Justice, shut, rising out of the sea above the clouds: the
   // two leaves under one arch, the accent, their thickness on the right and
-  // the far leaf hatched, the Tower of Justice small at their foot to show
-  // their size (264). No mark on them.
+  // the far leaf hatched (264). No mark on them.
   'enies-lobby': [
     {
       d: 'M30 154 V44 C30 18 52 6 80 6 C108 6 130 18 130 44 V154',
@@ -996,7 +1020,6 @@ export const waterSevenArt = {
       d: 'M14 100 q4 -10 16 -6 q8 -10 20 -2 q12 -4 14 8 Z M98 88 q4 -10 16 -6 q8 -10 20 -2 q12 -4 14 8 Z',
       role: 'soft',
     },
-    { d: 'M74 154 V136 H86 V154 M72 136 V130 H88 V136 M76 130 V124 H84 V130' },
     ...SEA,
   ],
   // A judge's gavel on its block, three different hats lined up above it.
