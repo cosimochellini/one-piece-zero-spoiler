@@ -230,12 +230,15 @@ export const eastBlue: Saga = {
     {
       id: 'yasopp',
       kind: 'character',
-      revealedAtEpisode: 4,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 9,
+      revealedAtChapter: 25,
+      // Seen in the tavern at 4 and in chapter 1, where his name is only
+      // written on his bandana. Luffy first says it to Usopp at 9 (chapter
+      // 25), over the flashback that tells everything his texts say.
       name: { it: 'Yasop', en: 'Yasopp' },
       summary: {
-        it: 'Il tiratore della ciurma del Rosso, capace di colpire una formica a cento passi, che parla del figlio lasciato a casa a chiunque passi.',
-        en: 'The Red Hair crew’s marksman, able to hit an ant at a hundred paces, who tells anyone standing near him about the son he left at home.',
+        it: 'Il tiratore della ciurma del Rosso, che si vanta di poter colpire una formica a cento piedi e parla del figlio lasciato a casa.',
+        en: 'The Red Hair crew’s marksman, who boasts he can hit an ant at a hundred feet and talks about the son he left at home.',
       },
       visual: { art: 'yasopp', tint: 'ocher' },
     },
@@ -401,7 +404,7 @@ export const eastBlue: Saga = {
       id: 'kaya',
       kind: 'character',
       revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtChapter: 24,
       name: { it: 'Kaya', en: 'Kaya' },
       summary: {
         it: 'La ragazza malata della villa sulla collina, sola da quando i genitori sono morti, che ogni mattina ascolta le bugie di un ragazzo dal naso lungo.',
@@ -412,20 +415,25 @@ export const eastBlue: Saga = {
     {
       id: 'kuro',
       kind: 'character',
-      revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 12,
+      revealedAtChapter: 28,
+      // Seen as Klahadore from 9 (chapter 23) and called Kuro at 10 (chapter
+      // 26), but his texts and drawing show the bladed glove he first puts
+      // on to cut Merry down, at 12 (chapter 28).
       name: { it: 'Kuro', en: 'Kuro' },
       summary: {
-        it: 'Un maggiordomo impeccabile con gli occhiali sempre storti, che di notte infila la mano in un guanto con cinque lame lunghe come dita.',
-        en: 'An impeccable butler whose glasses are always crooked, who slips a hand at night into a glove with five blades as long as fingers.',
+        it: 'Il maggiordomo della villa, che di notte infila la mano in un guanto armato di lame.',
+        en: 'The mansion’s butler, who at night slips a hand into a bladed glove.',
       },
       visual: { art: 'kuro', tint: 'violet' },
     },
     {
       id: 'jango',
       kind: 'character',
-      revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 10,
+      revealedAtChapter: 26,
+      // Seen walking backwards at the end of 9 (chapter 25), first called by
+      // name when he meets Klahadore below the cliff at 10 (chapter 26).
       name: { it: 'Jango', en: 'Jango' },
       summary: {
         it: 'Un ipnotizzatore con gli occhiali a forma di cuore, che fa oscillare un anello davanti agli occhi di chiunque e spesso addormenta anche sé stesso.',
@@ -439,8 +447,7 @@ export const eastBlue: Saga = {
       revealedAtEpisode: 13,
       revealedAtChapter: 31,
       // Seen unnamed at 11 and 12, first called by name when Kaya finds him cut down at 13. The manga
-      // names him at 27, but his texts tell chapter 31, the one episode 13 adapts. The log says "his
-      // young mistress" because Kaya opens only at 41.
+      // names him at 27, but his texts tell chapter 31, the one episode 13 adapts.
       name: { it: 'Merry', en: 'Merry' },
       summary: {
         it: 'Il maggiordomo della villa, con una testa a forma di pecora, che viene trovato ferito e dice alla sua giovane padrona chi è stato.',
@@ -458,8 +465,8 @@ export const eastBlue: Saga = {
         en: 'Ninjin, Piiman and Tamanegi',
       },
       summary: {
-        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e irrompono in una trattoria per salvare il loro capitano.',
-        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and burst into a restaurant to rescue their captain.',
+        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e vanno a spiare la nave pirata che uno di loro ha avvistato.',
+        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and go to spy on the pirate ship one of them has sighted.',
       },
       visual: { art: 'ninjin-piiman-and-tamanegi', tint: 'orange' },
     },
@@ -467,8 +474,9 @@ export const eastBlue: Saga = {
       id: 'buchi',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 41,
-      // Rounded up to 41, the chapter that files Jango, whom the text names.
+      revealedAtChapter: 32,
+      // Named and seen at 31; his texts tell the fight with Zoro in 32, which
+      // episode 13 adapts too.
       name: { it: 'Buchi', en: 'Buchi' },
       summary: {
         it: 'Un pirata del Gatto Nero enorme e pesante, l’altra metà dei fratelli Nyaban di guardia alla nave, che salta in aria e piomba sul nemico con tanta forza da spaccare il terreno.',
@@ -480,8 +488,9 @@ export const eastBlue: Saga = {
       id: 'sham',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 41,
-      // Rounded up to 41, the chapter that files Jango, whom the text names.
+      revealedAtChapter: 32,
+      // Named and seen at 31; his texts tell the fight with Zoro in 32, which
+      // episode 13 adapts too.
       name: { it: 'Sham', en: 'Sham' },
       summary: {
         it: 'Un pirata magro e ingobbito, con le orecchie da gatto in testa e i guanti artigliati, uno dei due fratelli Nyaban di guardia alla nave del Gatto Nero, che fa il vigliacco per avvicinarsi.',
@@ -1253,12 +1262,12 @@ export const eastBlue: Saga = {
     'yasopp': {
       role: { it: 'Tiratore scelto', en: 'Sniper' },
       log: {
-        it: 'Ha lasciato il villaggio e un bambino piccolo per salire su una nave pirata, e da allora non ha smesso un giorno di raccontare quanto è in gamba suo figlio. Con la pistola non sbaglia: al villaggio dicono che possa staccare le corna a un insetto senza toccare il resto. Beve alla taverna insieme agli altri, e nessuno lo sente mai parlare di tornare indietro.',
-        en: 'He left a village and a small son to board a pirate ship, and has not gone a day since without telling someone how fine that boy is. With a pistol he does not miss: they say he can take the horns off a beetle without touching the rest of it. He drinks at the tavern with the others, and nobody ever hears him talk about going back.',
+        it: 'Ha lasciato il villaggio e un figlio piccolo per salire su una nave pirata, e parla di quel bambino a Rufy finché Rufy non si annoia. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Alla taverna beve con gli altri.',
+        en: 'He left a village and a small son to board a pirate ship, and he talks to Luffy about that boy until Luffy is bored of it. With a pistol he does not miss: he boasts he can shoot the antennae off an ant without touching the rest of it. At the tavern he drinks with the others.',
       },
       affiliation: [
         {
-          episode: 4,
+          episode: 9,
           value: {
             it: 'Pirati del Rosso, tiratore scelto',
             en: 'Red Hair Pirates, sniper',
@@ -1293,8 +1302,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Buggy Pirates',
       },
       log: {
-        it: 'Ha svuotato Orange Town a cannonate e ci ha piantato un tendone da circo, con un domatore, un acrobata e un leone al seguito. Il suo corpo si separa in pezzi che volano da soli, cosa che rende inutile tagliarlo. Odia ogni parola che assomigli a «naso», e la sua ciurma ha imparato a non pronunciarla.',
-        en: 'He emptied Orange Town with cannon fire and pitched a circus tent in it, a lion tamer, an acrobat and a lion in tow. His body comes apart into pieces that fly on their own, which makes cutting him pointless. He hates any word that sounds like “nose”, and his crew has learned not to say it.',
+        it: 'La sua ciurma tiene Orange Town, e gli abitanti si sono chiusi in un rifugio fuori dalle case. Odia ogni parola che assomigli a «naso», e la sua ciurma ha imparato a non pronunciarla. Usa volentieri il cannone: si dice che una volta abbia raso al suolo un’intera città perché un bambino aveva riso del suo naso.',
+        en: 'His crew holds Orange Town, and its people are hiding in a shelter away from their houses. He hates any word that sounds like “nose”, and his crew has learned not to say it. He is quick with his cannon: they say he once levelled a whole town because a boy laughed at his nose.',
       },
       status: [
         { episode: 5, value: 'alive' },
@@ -1338,7 +1347,9 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [{ episode: 5, value: { it: 'Il Clown', en: 'the Clown' } }],
-      devilFruit: [{ episode: 5, value: ['chop-chop-fruit'] }],
+      // His power shows at chapter 9, but the fruit is named only once Zoro
+      // has cut him apart, at chapter 11 (episode 5).
+      devilFruit: [{ episode: 5, chapter: 11, value: ['chop-chop-fruit'] }],
       bounty: [
         { episode: 45, value: 15_000_000 },
         { episode: 1086, value: 3_189_000_000 },
@@ -1481,8 +1492,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
-        it: 'Comanda una ciurma pirata di tre bambini con una bandiera, e racconta ogni giorno a una ragazza malata le sue avventure inventate. Suo padre è salpato con dei pirati veri quando lui era piccolo, e lui ha deciso di diventare un uomo di mare coraggioso. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
-        en: 'He captains a pirate crew of three children with a flag, and tells a sick girl a new invented adventure every day. His father sailed with real pirates when he was small, and he has decided to become a brave man of the sea. With a slingshot he never misses; the bravery is still a work in progress.',
+        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
+        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. With a slingshot he never misses; the bravery is still a work in progress.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
@@ -1517,8 +1528,8 @@ export const eastBlue: Saga = {
     'kaya': {
       role: { it: 'Erede della villa', en: 'Heiress of the mansion' },
       log: {
-        it: 'Ha ereditato una casa enorme e un patrimonio che non le interessa, e non esce dalla sua stanza da quando ha perso i genitori. Il maggiordomo le porta la medicina a ore fisse e le ricorda di riposare. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
-        en: 'She inherited an enormous house and a fortune she has no interest in, and has not left her room since her parents died. The butler brings her medicine at fixed hours and reminds her to rest. The only thing she truly waits for is the voice under her window, a boy telling her about seas he has never seen.',
+        it: 'Ha ereditato una grande casa e il patrimonio dei genitori. Il maggiordomo tiene fuori il bugiardo del villaggio e mette due guardie al cancello: dice che proteggerla è il suo dovere verso il padre di lei, che non c’è più. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
+        en: 'She has inherited a large house and her parents’ fortune. Her butler keeps the village liar out and two guards at the gate, saying he owes it to her late father to keep her safe. The only thing she truly waits for is the voice under her window, a boy telling her about seas he has never seen.',
       },
       affiliation: [
         {
@@ -1537,12 +1548,12 @@ export const eastBlue: Saga = {
         en: 'Captain of the Black Cat Pirates',
       },
       log: {
-        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si spinge gli occhiali sul naso con il palmo aperto, perché con le lame che porta non può usare le dita. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
-        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He pushes his glasses up with an open palm, because the blades he wears leave him no use of his fingers. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
+        it: 'Da tre anni serve la padrona della villa sotto il nome di Klahadore. Si rimette di continuo gli occhiali sul naso. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
+        en: 'For three years he has served the mistress of the mansion under the name Klahadore. He keeps pushing his glasses back up his nose. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
       },
       affiliation: [
         {
-          episode: 9,
+          episode: 12,
           value: {
             it: 'Pirati del Gatto Nero, capitano, nascosto da maggiordomo',
             en: 'Black Cat Pirates, captain, hidden as a butler',
@@ -1555,7 +1566,8 @@ export const eastBlue: Saga = {
       ],
       epithet: [
         {
-          episode: 9,
+          episode: 15,
+          chapter: 37,
           value: { it: 'Kuro dai Cento Piani', en: 'Kuro of a Hundred Plans' },
         },
       ],
@@ -1563,16 +1575,13 @@ export const eastBlue: Saga = {
     'jango': {
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
       log: {
-        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio in avanscoperta per conto del suo capitano e passa le giornate a farsi notare nel modo peggiore, ballando in mezzo alla strada. Sotto la giacca tiene una fila di anelli affilati.',
-        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came to the village ahead of his captain and spends his days being noticed in the worst possible way, dancing in the middle of the road. Under his coat he keeps a row of sharpened rings.',
+        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
+        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came into the village walking backwards down the middle of the road. He has come to meet his old captain, who now lives there as a butler.',
       },
       affiliation: [
         {
-          episode: 9,
-          value: {
-            it: 'Pirati del Gatto Nero, primo ufficiale',
-            en: 'Black Cat Pirates, first mate',
-          },
+          episode: 10,
+          value: { it: 'Pirati del Gatto Nero', en: 'Black Cat Pirates' },
         },
       ],
     },
@@ -1597,8 +1606,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
       role: { it: 'Pirati di Usop', en: 'Usopp Pirates' },
       log: {
-        it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque e dicono ad alta voce che adorano le sue bugie. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono. Più tardi fanno irruzione nella trattoria con le spade di legno per salvare Usop, e vanno nel panico quando sentono che se lo sono mangiato.',
-        en: 'They are the whole of the Usopp Pirates: three boys who follow their captain everywhere and say out loud that they love his lies. When one of them spots a ship with a skull on its flag, they rush to the coast to drive the pirates off, and run the moment the pirates spot them. Later they storm the restaurant with wooden swords to rescue Usopp, and panic when they are told he has been eaten.',
+        it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono.',
+        en: 'They are the whole of the Usopp Pirates: three boys who follow their captain everywhere. When one of them spots a ship with a skull on its flag, they rush to the coast to drive the pirates off, and run the moment the pirates spot them.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
@@ -1628,8 +1637,8 @@ export const eastBlue: Saga = {
         en: 'Guard of the Black Cat ship',
       },
       log: {
-        it: 'Lui e Sham fanno la guardia alla nave dei Pirati del Gatto Nero e la lasciano solo quando Jango li chiama. Brontola che non vuole saperne di combattere, poi guarda la paura del compagno trasformarsi in un agguato. Il suo colpo è un salto e un pestone: quando Zoro si sposta in tempo, il terreno si spacca dove atterra, e lui se la prende con Sham che non l’ha tenuto abbastanza fermo.',
-        en: 'He and Sham guard the Black Cat Pirates’ ship and leave it only when Jango calls them down. He grumbles that he wants no part of the fight, then watches his partner’s show of fear turn into an ambush. His move is a leap and a stomp: when Zoro slips out of the way, the ground splits where he lands, and he blames Sham for not holding the swordsman tighter.',
+        it: 'Lui e Sham fanno la guardia alla nave dei Pirati del Gatto Nero e la lasciano solo quando Jango li chiama. Brontola che non vuole saperne di combattere, poi guarda la paura del compagno trasformarsi in un agguato. Il suo colpo è un salto e un pestone: quando Zoro si sposta in tempo, il terreno si spacca dove atterra.',
+        en: 'He and Sham guard the Black Cat Pirates’ ship and leave it only when Jango calls them down. He grumbles that he wants no part of the fight, then watches his partner’s show of fear turn into an ambush. His move is a leap and a stomp: when Zoro slips out of the way, the ground splits where he lands.',
       },
       status: [{ episode: 13, value: 'alive' }],
       affiliation: [

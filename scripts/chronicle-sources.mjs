@@ -302,7 +302,7 @@ export const CHRONICLE_SOURCES = {
   'usopp': {
     9: {
       source: 'https://onepiece.fandom.com/wiki/Episode_9',
-      note: 'Threshold entry. Morning lie, Yasopp, Kaya, Klahadore bars him.',
+      note: 'Threshold entry. Morning lie, Yasopp, Kaya, Klahadore bars him. Chapter (#236): 25, the last event: Luffy tells Usopp he knows his father Yasopp (Yasopp Qref name=c25 chap=25 ep=9: “Yasopp is revealed to be Usopp’s father”); Klahadore throws Usopp out at chapters 24–25.',
     },
     18: {
       source: 'https://onepiece.fandom.com/wiki/Episode_18',
@@ -1572,11 +1572,11 @@ export const CHRONICLE_SOURCES = {
     },
     11: {
       source: 'https://onepiece.fandom.com/wiki/Episode_11',
-      note: 'Ep 10 Long Summary: Tamanegi spots the moonwalking man, Jango hypnotises the children and himself. Ep 11: Usopp shot in the arm by Merry; the children express their disappointment in Usopp for lying and leave.',
+      note: 'Ep 10 Long Summary: Tamanegi spots the moonwalking man, Jango hypnotises the children and himself. Ep 11: Usopp shot in the arm by Merry; the children express their disappointment in Usopp for lying and leave. Chapter (#236): 27, the last event: Usopp, shot in the arm, says his warning was a lie and the boys go home (Chapter_27: “Usopp is hit by a shot in the arm... He hides his wound from them and tries to say it was a lie... The three kids wonder off home”).',
     },
     16: {
       source: 'https://onepiece.fandom.com/wiki/Episode_16',
-      note: 'Ep 15: the Usopp Pirates beat Kuro while he is down (frying pan: Ninjin page, chap=35 ep=15); Kuro sends Jango after Kaya; Usopp orders the children to protect her. Ep 16: forest, Kaya ill, fake surrender + weapons + falling log fail, Kaya agrees to sign the will, Zoro and Usopp arrive. Chapter (#169): 41, raised from 39 because the story names Kaya, Kuro and Jango, who open at chapter 41; the last event: Kaya agrees to sign the will to save the boys; Zoro and Usopp arrive (Chapter_39: “Kaya agrees to sign the will if Jango stops hurting the Usopp Pirates... Zoro and Usopp spot them”).',
+      note: 'Ep 15: the Usopp Pirates beat Kuro while he is down (frying pan: Ninjin page, chap=35 ep=15); Kuro sends Jango after Kaya; Usopp orders the children to protect her. Ep 16: forest, Kaya ill, fake surrender + weapons + falling log fail, Kaya agrees to sign the will, Zoro and Usopp arrive. Chapter (#169, #236): 39. It was raised to 41 while Kaya, Kuro and Jango opened at chapter 41; since #236 they open at 24, 28 and 26, so the story sits at its own last event: Kaya agrees to sign the will to save the boys; Zoro and Usopp arrive (Chapter_39: “Kaya agrees to sign the will if Jango stops hurting the Usopp Pirates... Zoro and Usopp spot them”).',
     },
     17: {
       source: 'https://onepiece.fandom.com/wiki/Episode_17',
@@ -1586,25 +1586,25 @@ export const CHRONICLE_SOURCES = {
   'buchi': {
     13: {
       source: 'https://onepiece.fandom.com/wiki/Episode_13',
-      note: 'Long Summary names "the Nyaban Brothers, Sham and Buchi"; fansub transcript of ep 13 has "Right, Buchi?". Buchi page (chap=31/32, ep=13): complains he wants no part, stomp dodged and splits the ground, blames Sham; Usopp’s stray shot, chest cut, Kuro arrives. Chapter (#169): the last event is chapter 32, at or below the record’s own chapter 41, so no pin.',
+      note: 'Long Summary names "the Nyaban Brothers, Sham and Buchi"; fansub transcript of ep 13 has "Right, Buchi?". Buchi page (chap=31/32, ep=13): complains he wants no part, stomp dodged and splits the ground, blames Sham; Usopp’s stray shot, chest cut, Kuro arrives. Chapter (#169, #236): the last event is chapter 32, the record’s own chapter, so no pin.',
     },
     14: {
       source: 'https://onepiece.fandom.com/wiki/Episode_14',
-      note: 'Long Summary: rebellion against Kuro, Nukiashi, five minutes, Tora Gari; "Buchi is still conscious and begs Jango to hypnotize him"; muscles increase in size. Buchi page chap=33 ep=14: raided villages/sank ships, "no longer their captain". Chapter (#169): the last event is chapter 33, at or below the record’s own chapter 41, so no pin.',
+      note: 'Long Summary: rebellion against Kuro, Nukiashi, five minutes, Tora Gari; "Buchi is still conscious and begs Jango to hypnotize him"; muscles increase in size. Buchi page chap=33 ep=14: raided villages/sank ships, "no longer their captain". Chapter (#236): 33, the last event: Buchi, hypnotised, comes back at Zoro (Chapter_33: “Zoro defeats the Nyaban Brothers but then Buchi gets hypnotized by Jango and the fight continues”).',
     },
     15: {
       source: 'https://onepiece.fandom.com/wiki/Episode_15',
-      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only). Chapter (#169): the last event is chapter 36, at or below the record’s own chapter 41, so no pin.',
+      note: 'Long Summary: strengthened Buchi stops Zoro from aiding Luffy, disrupts the battlefield, Zoro cuts him down, then leaves to protect Kaya. Buchi page (ch 35-36): Zoro pins him, is thrown into the cliff, "get out of the way", final cut. Kuro’s order at Usopp (ch 35) is not in the Episode 15 summary, so the story leaves it out, as it does Zoro carrying Usopp (Chapter_36 only). Chapter (#236): 36, the last event: Zoro cuts Buchi down and leaves after Kaya (Chapter_36: “Zoro defeats Buchi”, “Zoro takes Usopp and heads out after Kaya”).',
     },
   },
   'sham': {
     13: {
       source: 'https://onepiece.fandom.com/wiki/Episode_13',
-      note: 'Long Summary: "Jango summons the Nyaban Brothers, Sham and Buchi"; Sham takes two of Zoro’s katanas; Usopp’s missed shot hits Zoro; brothers slash his chest; Kuro arrives. Fansub transcript of ep 13: "Sham, just go do it!", "Gotcha, Sham!", "Right, Buchi?". Sham page: shirt-only cut (it wiki), chap=32 ep=13. Chapter (#169): the last event is chapter 32, at or below the record’s own chapter 41, so no pin.',
+      note: 'Long Summary: "Jango summons the Nyaban Brothers, Sham and Buchi"; Sham takes two of Zoro’s katanas; Usopp’s missed shot hits Zoro; brothers slash his chest; Kuro arrives. Fansub transcript of ep 13: "Sham, just go do it!", "Gotcha, Sham!", "Right, Buchi?". Sham page: shirt-only cut (it wiki), chap=32 ep=13. Chapter (#169, #236): the last event is chapter 32, the record’s own chapter, so no pin.',
     },
     14: {
       source: 'https://onepiece.fandom.com/wiki/Episode_14',
-      note: 'Long Summary: brothers accuse Kuro of going soft after three years, charge, Nukiashi puts claws at their backs, five minutes to kill Zoro, Nami kicks back the swords, Tora Gari defeats both; Buchi alone gets up. "Five seconds": Sham page chap=33 ep=14. Chapter (#169): the last event is chapter 33, at or below the record’s own chapter 41, so no pin.',
+      note: 'Long Summary: brothers accuse Kuro of going soft after three years, charge, Nukiashi puts claws at their backs, five minutes to kill Zoro, Nami kicks back the swords, Tora Gari defeats both; Buchi alone gets up. "Five seconds": Sham page chap=33 ep=14. Chapter (#236): 33, the last event: Zoro cuts both brothers down and Sham stays down (Chapter_33: “Zoro defeats the Nyaban Brothers”).',
     },
   },
   'fullbody': {

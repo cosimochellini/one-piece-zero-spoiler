@@ -777,11 +777,12 @@ export const eastBlueChronicles = {
   'usopp': [
     {
       episode: 9,
+      chapter: 25,
       value: {
         title: { it: 'Il bugiardo del villaggio', en: 'The village liar' },
         body: {
-          it: 'Ogni mattina corre sulla spiaggia gridando che i pirati stanno arrivando, e ogni mattina il villaggio lo insegue con le scope. Poi i pirati arrivano davvero: [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[nami|Nami]] cercano una nave, e lui li accoglie con una flotta inventata di ottanta milioni di uomini a cui nessuno crede. [[monkey-d-luffy|Rufy]] gli dice di conoscere suo padre, [[yasopp|Yasop]], il tiratore salpato con la ciurma di [[shanks|Shanks]]. Poi lo seguono fino alla villa sulla collina, dove ogni giorno racconta le sue storie a [[kaya|Kaya]], una ragazza malata, finché il maggiordomo [[kuro|Klahadore]] non lo scaccia come un teppista.',
-          en: 'Every morning he runs down to the shore shouting that pirates are coming, and every morning the village chases him off with brooms. Then pirates really come: [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[nami|Nami]] are looking for a ship, and he greets them with an invented fleet of eighty million men that nobody believes in. [[monkey-d-luffy|Luffy]] tells him he knows his father, [[yasopp|Yasopp]], the marksman who sailed away with [[shanks|Shanks]]’s crew. Then they follow him up to the mansion on the hill, where he tells his stories every day to [[kaya|Kaya]], a sick girl, until the butler [[kuro|Klahadore]] throws him out as a delinquent.',
+          it: 'Ogni mattina corre sulla spiaggia gridando che i pirati stanno arrivando, e ogni mattina il villaggio lo insegue con le scope. Poi i pirati arrivano davvero: [[monkey-d-luffy|Rufy]], [[roronoa-zoro|Zoro]] e [[nami|Nami]] cercano una nave, e lui li accoglie con una flotta inventata di ottanta milioni di uomini a cui nessuno crede. [[monkey-d-luffy|Rufy]] gli dice di conoscere suo padre, [[yasopp|Yasop]], il tiratore salpato con la ciurma di [[shanks|Shanks]]. Poi lo seguono fino alla villa sulla collina, dove ogni giorno racconta le sue storie a [[kaya|Kaya]], una ragazza malata, finché il maggiordomo Klahadore non lo scaccia come un teppista.',
+          en: 'Every morning he runs down to the shore shouting that pirates are coming, and every morning the village chases him off with brooms. Then pirates really come: [[monkey-d-luffy|Luffy]], [[roronoa-zoro|Zoro]] and [[nami|Nami]] are looking for a ship, and he greets them with an invented fleet of eighty million men that nobody believes in. [[monkey-d-luffy|Luffy]] tells him he knows his father, [[yasopp|Yasopp]], the marksman who sailed away with [[shanks|Shanks]]’s crew. Then they follow him up to the mansion on the hill, where he tells his stories every day to [[kaya|Kaya]], a sick girl, until the butler Klahadore throws him out as a delinquent.',
         },
       },
     },
@@ -2002,6 +2003,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 11,
+      chapter: 27,
       value: {
         title: { it: 'Il capitano che ha mentito', en: 'The captain who lied' },
         body: {
@@ -2012,7 +2014,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 16,
-      chapter: 41,
+      chapter: 39,
       value: {
         title: { it: 'Nel bosco', en: 'Through the forest' },
         body: {
@@ -2046,6 +2048,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 14,
+      chapter: 33,
       value: {
         title: { it: 'Ipnotizzato', en: 'Hypnotised' },
         body: {
@@ -2056,6 +2059,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 15,
+      chapter: 36,
       value: {
         title: { it: 'Sulla strada di Zoro', en: 'In Zoro’s way' },
         body: {
@@ -2078,6 +2082,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 14,
+      chapter: 33,
       value: {
         title: {
           it: 'Contro il loro capitano',

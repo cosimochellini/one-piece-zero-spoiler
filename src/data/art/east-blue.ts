@@ -559,16 +559,32 @@ export const eastBlueArt = {
     ...SEA.slice(2),
   ],
 
-  // A mansion window, and the glass of medicine left on the sill.
+  // Her window in the mansion, set deep in the wall, the frame she listens
+  // at, with the branch of the tree outside it where Usopp sits to tell her
+  // his stories (chapter 24, episode 9).
   'kaya': [
-    { d: 'M36 152 V76 C36 44 124 44 124 76 V152' },
-    { d: 'M80 152 V46', role: 'soft' },
-    { d: 'M36 104 H124', role: 'soft' },
-    { d: 'M24 152 H136 V164 H24 Z' },
-    { d: 'M48 52 C58 84 48 118 56 150', role: 'soft' },
-    { d: 'M88 116 L92 152 H106 L110 116 Z', role: 'accent' },
-    { d: 'M89 130 H109', role: 'accent' },
-    shadow(80, 172, 56),
+    { d: 'M40 150 V78 C40 44 120 44 120 78 V150', role: 'accent' },
+    { d: 'M54 144 V82 C54 58 114 56 120 80' },
+    { d: 'M40 78 L54 82 M40 150 L54 144' },
+    { d: 'M54 144 H120' },
+    {
+      d: 'M44 94 L52 86 M44 110 L52 102 M44 126 L52 118 M44 142 L52 134',
+      role: 'ambient',
+    },
+    { d: 'M86 144 V63', role: 'soft' },
+    { d: 'M54 104 H120', role: 'soft' },
+    { d: 'M28 150 H132 L124 160 H36 Z' },
+    { d: 'M36 160 V168 H124 V160' },
+    { d: 'M156 140 C148 128 138 118 126 112', role: 'ambient' },
+    {
+      d: 'M146 126 C140 112 144 100 154 94 C158 108 154 120 146 126',
+      role: 'ambient',
+    },
+    {
+      d: 'M136 118 C126 112 122 100 126 90 C134 96 138 106 136 118',
+      role: 'ambient',
+    },
+    shadow(80, 184, 56),
   ],
   // A glove with five blades where the fingers should be.
   'kuro': [

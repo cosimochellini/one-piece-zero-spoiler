@@ -45,7 +45,7 @@ export const devilFruits: Saga = {
       id: 'chop-chop-fruit',
       kind: 'fruit',
       revealedAtEpisode: 5,
-      revealedAtChapter: 41,
+      revealedAtChapter: 11,
       name: { it: 'Frutto Puzzle Puzzle', en: 'Chop-Chop Fruit' },
       summary: {
         it: 'Divide il corpo in pezzi lungo qualsiasi taglio: una lama lo separa senza ferirlo e i pezzi continuano a muoversi, sospesi a mezz’aria.',
