@@ -42,6 +42,12 @@ function withVitoGun(transform: string): Stroke[] {
 /** The tilt of Cracker's sword Pretzel, drawn level about its guard. */
 const PRETZEL_TILT = 'rotate(51.2 118 142)'
 
+/** The lean of Judge's spear, drawn level with its blade to the right. */
+const JUDGE_SPEAR_TILT = 'rotate(-56 80 100)'
+
+/** The tilt of Mjosgard's club, drawn level with its head to the right. */
+const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
+
 /**
  * The pink bicorne Big Mom wears, in three quarters: the trim along its
  * crest, the ruffled fastener on its side, the back panel showing past the
@@ -674,76 +680,153 @@ export const wholeCakeArt = {
     shadow(80, 172, 62),
   ],
 
-  // A lance and a crown banded with plain stripes.
+  // His spear, stood on its butt and leaning: a long blade ridged down the
+  // middle with its lower facet hatched, a crossguard with its thickness
+  // and a collar under it, the grip wrapped near the foot. He jabs at Sanji
+  // with it at 793 (ch. 833). The wiki gives him a golden helmet, never a
+  // crown, so there is none, and no charge in the blade.
   'vinsmoke-judge': [
-    { d: 'M28 172 L112 46' },
-    { d: 'M112 46 L126 24 L134 46 L120 58 Z', role: 'accent' },
-    { d: 'M108 52 l14 10' },
-    { d: 'M62 150 V118 L76 132 L88 110 L100 132 L114 118 V150 Z' },
-    { d: 'M62 142 H114' },
-    { d: 'M76 150 v-8 M84 150 v-8 M92 150 v-8 M100 150 v-8', role: 'soft' },
+    { d: 'M-24 97 H96 M-24 103 H96 M-24 97 V103', transform: JUDGE_SPEAR_TILT },
     {
-      d: dots([
-        [76, 132],
-        [88, 118],
-        [100, 132],
-      ]),
+      d: 'M-8 97 l5 6 M0 97 l5 6 M8 97 l5 6 M16 97 l5 6',
       role: 'soft',
+      transform: JUDGE_SPEAR_TILT,
     },
-    shadow(88, 164, 42),
+    {
+      d: 'M104 86 l3 -3 h5 v28 l-3 3 M109 86 l3 -3',
+      role: 'soft',
+      transform: JUDGE_SPEAR_TILT,
+    },
+    {
+      d: 'M96 94 h8 v12 h-8 Z M104 86 h5 v28 h-5 Z',
+      transform: JUDGE_SPEAR_TILT,
+    },
+    {
+      d: 'M109 100 L128 90 L194 100 L128 110 Z',
+      role: 'accent',
+      transform: JUDGE_SPEAR_TILT,
+    },
+    { d: 'M109 100 H194', role: 'soft', transform: JUDGE_SPEAR_TILT },
+    {
+      d: 'M126 103 l3 5 M138 102 l3 6 M150 102 l3 5 M162 101 l3 5 M174 101 l2 3',
+      role: 'ambient',
+      transform: JUDGE_SPEAR_TILT,
+    },
+    shadow(36, 186, 30),
   ],
 
-  // A raid suit cape marked with a single chevron.
+  // His white raid-suit cape laid out from the front: the high collar, the
+  // folds, the front edges turned back on the dark lining, which is
+  // hatched, and the red scarf knotted at the throat with its ends falling
+  // to one side. He wears it on Broc Coli Island at 787. No number and no
+  // glasses.
   'vinsmoke-ichiji': [
-    { d: 'M50 46 C34 90 30 134 34 160 L126 160 C130 134 126 90 110 46 Z' },
-    { d: 'M50 46 q30 -14 60 0' },
-    { d: 'M50 46 L38 22 M110 46 L122 22' },
+    { d: 'M58 52 C56 42 58 32 62 26 C74 32 86 32 98 26 C102 32 104 42 102 52' },
+    { d: 'M62 26 C70 22 90 22 98 26', role: 'soft' },
     {
-      d: 'M64 62 C58 100 56 132 58 158 M96 62 C102 100 104 132 102 158',
+      d: 'M58 52 C46 54 38 60 36 72 C30 104 24 134 18 160 C28 168 40 158 52 166 C60 172 68 166 74 164 M102 52 C114 54 122 60 124 72 C130 104 136 134 142 160 C132 168 120 158 108 166 C100 172 92 166 86 164',
+    },
+    { d: 'M74 164 C72 128 74 92 78 58 M86 164 C88 128 86 92 82 58' },
+    {
+      d: 'M74 164 C66 130 66 94 72 60 M86 164 C94 130 94 94 88 60',
       role: 'soft',
     },
-    { d: 'M64 100 L80 82 L96 100', role: 'accent' },
-    { d: circle(80, 62, 6) },
-    shadow(80, 172, 50),
-  ],
-
-  // A raid suit cape marked with two chevrons and a bolt.
-  'vinsmoke-niji': [
-    { d: 'M50 46 C34 90 30 134 34 160 L126 160 C130 134 126 90 110 46 Z' },
-    { d: 'M50 46 q30 -14 60 0' },
-    { d: 'M50 46 L38 22 M110 46 L122 22' },
-    { d: 'M62 62 C56 100 54 132 56 158', role: 'soft' },
-    { d: 'M60 92 L74 78 L88 92 M60 110 L74 96 L88 110', role: 'accent' },
-    { d: 'M112 74 L98 110 h12 l-16 34', role: 'accent' },
-    { d: circle(80, 62, 6) },
-    shadow(80, 172, 50),
-  ],
-
-  // A raid suit cape marked with four bars, and a winch drum.
-  'vinsmoke-yonji': [
-    { d: 'M44 46 C28 90 24 134 28 160 L110 160 C114 134 110 90 94 46 Z' },
-    { d: 'M44 46 q25 -14 50 0' },
-    { d: 'M44 46 L32 22 M94 46 L106 22' },
-    { d: 'M52 84 v20 M62 84 v20 M72 84 v20 M82 84 v20', role: 'accent' },
-    { d: 'M104 132 v14 a13 9 0 0 0 26 0 v-14' },
-    { d: ellipse(117, 132, 13, 9) },
-    { d: 'M117 155 v14 c-9 0 -9 12 0 12 c7 0 7 -8 2 -10' },
-    shadow(74, 172, 48),
-  ],
-
-  // A trident with a scarf wrapped high around the shaft.
-  'charlotte-katakuri': [
-    { d: 'M80 176 V70' },
-    { d: 'M80 70 V26' },
-    { d: 'M58 70 V46 C58 34 62 28 66 24 M102 70 V46 C102 34 98 28 94 24' },
-    { d: 'M56 70 H104' },
-    { d: 'M80 26 l-5 9 h10z M66 24 l-6 7 M94 24 l6 7', role: 'soft' },
     {
-      d: 'M62 84 q18 10 36 0 q-6 14 0 24 q-18 -8 -36 0 q6 -14 0 -24 Z',
+      d: 'M68 80 l6 -4 M67 96 l7 -5 M67 112 l7 -5 M67 128 l7 -5 M68 144 l6 -4 M86 76 l5 -3 M87 92 l6 -4 M87 108 l6 -4 M87 124 l6 -4 M87 140 l6 -4 M88 156 l5 -3',
+      role: 'ambient',
+    },
+    {
+      d: 'M44 72 C40 100 36 130 34 158 M116 72 C120 100 124 130 126 158',
+      role: 'soft',
+    },
+    {
+      d: 'M74 46 L86 46 L84 56 L76 56 Z M84 56 C92 66 98 78 96 92 C92 84 88 76 82 70 M78 56 C78 68 82 80 80 94 C78 86 76 80 74 76',
       role: 'accent',
     },
-    { d: 'M98 108 c14 10 18 26 12 40', role: 'accent' },
-    shadow(80, 182, 18),
+    shadow(80, 180, 64),
+  ],
+
+  // His earphones set down in three quarters: the band arching over, the
+  // near cup with its depth hatched, the far cup turned away, and the horn
+  // standing up off each cup. He wears them on Broc Coli Island at 787. No
+  // goggles, no bolt: his lightning comes later.
+  'vinsmoke-niji': [
+    { d: 'M56 112 C52 70 72 44 100 46 C120 48 132 66 128 96' },
+    { d: 'M66 108 C64 76 78 56 100 56 C114 58 122 70 120 92', role: 'soft' },
+    { d: ellipse(50, 128, 18, 26) },
+    { d: 'M50 102 C62 102 70 114 70 128 C70 142 62 154 50 154' },
+    {
+      d: 'M58 108 l6 -3 M62 118 l7 -4 M64 130 l7 -4 M62 142 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M38 112 C34 122 34 136 40 146', role: 'soft' },
+    {
+      d: 'M120 96 C124 88 136 88 138 98 C140 112 134 124 126 124 C120 124 116 112 120 96 Z',
+    },
+    { d: 'M128 104 l8 -4 M128 114 l8 -4', role: 'ambient' },
+    { d: 'M42 106 L32 46 L50 103', role: 'accent' },
+    { d: 'M126 92 L130 50 L134 90', role: 'accent' },
+    shadow(88, 168, 52),
+  ],
+
+  // A hand winch on its plank, in three quarters: the drum between two
+  // frames with the cable wound on and its free end hanging off, the crank
+  // on the near side, the underside hatched. It is an emblem of the epithet
+  // the caption gives him when he is named at 784, Winch Green, not
+  // something he carries.
+  'vinsmoke-yonji': [
+    { d: 'M14 150 L40 132 H150 L124 150 Z' },
+    { d: 'M14 150 V158 H124 V150 M124 158 L150 140 V132' },
+    {
+      d: 'M54 116 L42 146 M66 116 L78 146 M112 114 L104 138 M120 112 L130 134',
+    },
+    { d: ellipse(60, 92, 10, 24) },
+    { d: 'M60 68 H116 M60 116 H116' },
+    {
+      d: 'M116 68 C124 68 128 80 128 92 C128 104 124 116 116 116',
+      role: 'soft',
+    },
+    {
+      d: 'M68 69 L76 115 M78 69 L86 115 M88 69 L96 115 M98 69 L106 115 M108 69 L114 104',
+      role: 'accent',
+    },
+    { d: 'M72 114 l6 -10 M90 114 l6 -10 M108 114 l6 -10', role: 'ambient' },
+    { d: 'M60 92 L36 74 V58 M31 58 h10' },
+    { d: 'M114 104 C120 124 128 128 140 122', role: 'accent' },
+    shadow(82, 174, 66),
+  ],
+
+  // The fur he wears as a scarf, draped over the shoulders of the dark
+  // cloak he arrives at the chateau in at 825: its lower edge hangs in long
+  // tufts, the opening at the neck is a dark hatched slit, and the cloak
+  // below is hatched to its ragged hem. No trident: he first draws it at
+  // 832.
+  'charlotte-katakuri': [
+    {
+      d: 'M34 104 C28 128 20 150 12 172 C26 166 36 176 50 168 C62 176 72 166 82 174 C94 166 104 176 114 168 C126 176 138 166 150 172 C142 150 134 128 128 104',
+    },
+    {
+      d: 'M54 116 C50 136 46 154 44 170 M82 124 V172 M110 116 C114 136 118 154 120 170',
+      role: 'soft',
+    },
+    {
+      d: 'M30 132 l10 -8 M24 156 l14 -12 M58 140 l12 -10 M56 160 l16 -14 M88 140 l12 -10 M88 160 l16 -14 M116 132 l10 -8 M120 156 l12 -10',
+      role: 'ambient',
+    },
+    {
+      d: 'M44 62 C30 66 22 78 20 92 C26 98 30 104 28 112 C36 106 40 102 44 104 C46 110 46 116 42 122 C52 116 58 112 62 112 C64 118 64 124 62 130 C70 124 76 118 82 118 C86 124 88 128 90 134 C94 126 98 120 104 118 C106 122 108 126 110 130 C112 122 116 116 122 112 C124 116 128 120 132 122 C132 114 134 108 138 104 C140 106 142 108 144 110 C142 104 142 98 144 92 C142 78 134 66 120 62 C104 56 60 56 44 62 Z',
+      role: 'accent',
+    },
+    { d: 'M52 62 C66 68 98 68 112 62', role: 'soft' },
+    {
+      d: 'M60 62 l4 3 M70 60 l6 5 M82 60 l6 5 M94 60 l6 4 M104 61 l4 3',
+      role: 'ambient',
+    },
+    {
+      d: 'M36 92 C40 98 40 104 38 110 M60 100 C64 106 64 112 60 120 M104 100 C100 106 100 112 104 120 M128 92 C124 98 124 104 126 110',
+      role: 'soft',
+    },
+    shadow(81, 186, 66),
   ],
 
   // A hospital bed with a packed lunch left on the sheet.
@@ -818,99 +901,189 @@ export const wholeCakeArt = {
     shadow(80, 182, 34),
   ],
 
-  // A glowing iron above a sea of steam.
+  // His orange cape from the front: the tall collar standing round the
+  // neck and flaring at the top, the front edges with the inside hatched,
+  // and the big yellow bow it ties with at the throat. He wears it to the
+  // chateau at 827. Nothing of his heat, which chapter readers meet later.
   'charlotte-oven': [
-    { d: 'M44 96 L116 96 L124 124 L36 124 Z' },
-    { d: 'M60 96 C60 70 100 70 100 96' },
-    { d: 'M66 82 H94' },
-    { d: 'M36 124 H124', role: 'soft' },
     {
-      d: 'M52 88 c-7 -10 4 -17 -3 -27 M80 66 c-7 -10 4 -17 -3 -27 M108 88 c-7 -10 4 -17 -3 -27',
+      d: 'M40 32 C56 24 104 24 120 32 C116 44 112 56 112 64 M40 32 C44 44 48 56 48 64',
+    },
+    { d: 'M40 32 C56 40 104 40 120 32', role: 'soft' },
+    {
+      d: 'M48 64 L62 60 M112 64 L98 60 M62 60 C58 52 56 44 56 38 M98 60 C102 52 104 44 104 38',
+      role: 'soft',
+    },
+    { d: 'M104 44 l8 -5 M104 54 l8 -5', role: 'ambient' },
+    {
+      d: 'M48 64 C36 68 30 78 28 90 C24 116 20 140 14 164 C28 170 40 162 52 168 C60 172 66 166 70 162 M112 64 C124 68 130 78 132 90 C136 116 140 140 146 164 C132 170 120 162 108 168 C100 172 94 166 90 162',
+    },
+    { d: 'M70 162 C68 128 68 96 72 64 M90 162 C92 128 92 96 88 64' },
+    {
+      d: 'M42 84 C38 110 34 136 30 160 M118 84 C122 110 126 136 130 160',
+      role: 'soft',
+    },
+    {
+      d: 'M72 80 l6 -4 M72 96 l8 -6 M72 112 l8 -6 M72 128 l8 -6 M72 144 l8 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M76 62 H84 V70 H76 Z M76 64 C64 56 54 62 58 70 C62 76 70 72 76 68 M84 64 C94 58 104 62 102 70 C100 78 92 74 84 68 M78 70 C74 84 70 94 64 100 M82 70 C88 82 94 90 102 94',
       role: 'accent',
     },
-    ...SEA,
+    shadow(80, 182, 66),
   ],
 
-  // A lamp with a curl of smoke rising from the spout.
+  // A genie's lamp in three quarters, the one worked on his belt: the
+  // squat bowl with its lid and foot, hatched underneath, the spout and the
+  // handle, and the smoke his genie comes out of rising off the spout. The
+  // genie forces the chateau gate at 826, and the manga shows it at 864.
   'charlotte-daifuku': [
-    { d: 'M28 138 q14 -28 42 -28 q28 0 42 28 Z' },
-    { d: 'M110 124 l24 -11 l3 7 l-23 12' },
-    { d: 'M30 126 c-15 -8 -15 -24 0 -28' },
-    { d: 'M66 110 v-8 h8 v8' },
-    { d: circle(70, 98, 6) },
-    { d: 'M34 138 h72 v10 h-72z' },
-    { d: 'M136 112 c11 -14 -6 -23 4 -35 c8 -10 -6 -19 0 -29', role: 'accent' },
-    { d: 'M140 46 c-10 -6 -18 4 -12 13', role: 'accent' },
-    shadow(70, 158, 46),
-  ],
-
-  // A stack of books with a hand coming out of the pages.
-  'charlotte-mont-dor': [
-    { d: 'M30 148 H126 V162 H30 Z' },
-    { d: 'M36 132 H132 V148 H36 Z' },
-    { d: 'M28 114 H120 V132 H28 Z' },
-    { d: 'M34 155 H122 M40 140 H128 M32 123 H116', role: 'soft' },
-    { d: 'M64 114 q16 -10 32 0 v-2 h-32z' },
-    { d: 'M66 108 q14 -8 28 0 v8 h-28z', role: 'accent' },
     {
-      d: 'M68 104 v-30 M76 102 v-40 M86 102 v-36 M94 106 v-28',
+      d: 'M30 128 C30 112 50 104 74 104 C98 104 118 112 118 128 C118 144 98 152 74 152 C50 152 30 144 30 128 Z',
+    },
+    { d: ellipse(74, 108, 22, 6) },
+    { d: 'M62 102 C62 94 86 94 86 102 M74 94 V88 M70 88 h8', role: 'soft' },
+    { d: 'M34 136 C50 144 98 144 114 136', role: 'soft' },
+    {
+      d: 'M44 146 l6 -6 M58 150 l8 -8 M74 152 l8 -8 M90 150 l8 -8 M104 146 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M60 152 L56 162 H92 L88 152' },
+    { d: 'M116 124 C128 120 136 112 148 98 L152 102 C142 118 132 132 116 136' },
+    { d: 'M30 122 C14 118 10 136 22 142 C26 144 30 142 32 138', role: 'soft' },
+    {
+      d: 'M148 98 C140 86 150 76 142 64 C134 52 144 40 132 32 C122 26 110 30 112 40 C114 46 122 46 124 40 M152 102 C160 88 158 76 156 64 C154 50 160 38 152 28 C146 20 134 18 126 22',
       role: 'accent',
     },
-    shadow(80, 172, 50),
+    shadow(76, 172, 52),
   ],
 
-  // A knife slicing a castle wall into cake.
+  // An open book hovering over a closed one, both off the ground: the open
+  // one fanned in three quarters with lines on its pages, the closed one
+  // floating under it as a foothold, its spine hatched. He stands on flying
+  // books and pulls Luffy into one at 811.
+  'charlotte-mont-dor': [
+    {
+      d: 'M80 70 C64 60 40 58 18 64 L26 108 C46 102 66 104 80 114 C94 104 114 102 134 108 L142 64 C120 58 96 60 80 70 Z',
+    },
+    { d: 'M80 70 V114' },
+    {
+      d: 'M80 70 C66 62 46 60 24 64 M80 70 C94 62 114 60 136 64',
+      role: 'accent',
+    },
+    {
+      d: 'M34 74 C46 72 58 74 70 80 M34 84 C46 82 58 84 70 90 M90 80 C102 74 114 72 126 74 M90 90 C102 84 114 82 126 84',
+      role: 'soft',
+    },
+    {
+      d: 'M26 108 L24 114 C46 108 66 110 80 120 C94 110 114 108 136 114 L134 108',
+      role: 'soft',
+    },
+    { d: 'M30 140 L50 128 H130 L110 140 Z' },
+    { d: 'M30 140 V152 H110 V140 M110 152 L130 140 V128' },
+    { d: 'M34 146 H106', role: 'soft' },
+    { d: 'M114 144 l12 -8 M116 150 l10 -7', role: 'ambient' },
+    shadow(80, 182, 50),
+  ],
+
+  // His very large hat, the brim seen from a little above, the soft crown
+  // hatched on the far side and the big feather sweeping up and back from
+  // the band; his stopwatch lies beside it on its chain. He wears both over
+  // the wedding cake at 827.
   'streusen': [
-    { d: 'M26 76 H128 L134 88 H26 Z', role: 'accent' },
-    { d: 'M26 88 H128', role: 'accent' },
-    { d: 'M128 76 H152 V88 H134' },
+    { d: ellipse(70, 120, 60, 15) },
+    { d: 'M36 116 C32 84 42 60 68 58 C94 60 104 84 100 116' },
+    { d: 'M36 104 C50 112 86 112 100 104', role: 'soft' },
+    { d: 'M14 126 C30 138 110 138 126 126', role: 'soft' },
+    { d: 'M90 72 l6 -3 M94 84 l7 -4 M96 96 l6 -4', role: 'ambient' },
     {
-      d: dots([
-        [136, 82],
-        [146, 82],
-      ]),
+      d: 'M98 106 C112 92 118 70 132 50 C140 38 148 30 156 28 C156 44 150 62 140 78 C130 94 116 104 100 110',
+      role: 'accent',
+    },
+    {
+      d: 'M108 98 C122 84 138 60 152 34 M118 92 l2 -10 M126 82 l3 -10 M134 70 l3 -10 M142 56 l2 -9',
       role: 'soft',
     },
-    { d: 'M32 76 V52 H112 V76' },
-    { d: 'M32 52 v-9 h10 v9 M58 52 v-9 h10 v9 M84 52 v-9 h10 v9' },
-    { d: 'M22 94 H110 V156 H22 Z' },
-    { d: 'M22 112 H110 M22 132 H110', role: 'soft' },
-    shadow(66, 168, 48),
+    { d: ellipse(132, 152, 15, 8) },
+    {
+      d: 'M132 144 V139 M128 139 h8 M132 152 l6 -3 M132 152 v-5',
+      role: 'soft',
+    },
+    { d: 'M128 139 C118 138 114 144 106 140', role: 'soft' },
+    shadow(74, 164, 62),
   ],
 
-  // A nun's veil and a bag of sweets beside it.
+  // Her portrait's frame, stood up in three quarters with its side
+  // hatched, the glass cracked out from where it was struck and shards on
+  // the floor. Big Mom holds the broken picture as she remembers her at
+  // 836. The picture itself is not drawn.
   'carmel': [
+    { d: 'M34 30 L118 42 V152 L34 160 Z' },
+    { d: 'M44 42 L108 51 V143 L44 149 Z', role: 'soft' },
+    { d: 'M118 42 L128 48 V148 L118 152' },
     {
-      d: 'M34 58 C34 34 98 34 98 58 C106 94 108 126 104 148 L28 148 C24 126 26 94 34 58 Z',
+      d: 'M120 58 l6 -3 M120 74 l6 -3 M120 90 l6 -3 M120 106 l6 -3 M120 122 l6 -3 M120 138 l6 -3',
+      role: 'ambient',
     },
     {
-      d: 'M48 60 C46 90 48 120 52 148 M84 60 C86 90 84 120 80 148',
+      d: 'M34 30 l6 6 M118 42 l-6 4 M34 160 l6 -6 M118 152 l-6 -4',
       role: 'soft',
     },
-    { d: 'M34 60 q32 -12 64 0', role: 'accent' },
-    { d: 'M106 170 q-12 -26 6 -36 h20 q16 10 6 36 Z' },
-    { d: 'M110 134 q14 -8 26 0', role: 'accent' },
     {
-      d: dots([
-        [116, 152],
-        [128, 158],
-        [122, 166],
-      ]),
-      role: 'soft',
+      d: 'M80 92 L62 60 M80 92 L102 66 M80 92 L106 112 M80 92 L90 144 M80 92 L50 128 M80 92 L46 84 M62 60 l-6 -6 M102 66 l6 -4 M50 128 l-4 8',
+      role: 'accent',
     },
-    shadow(66, 160, 40),
+    { d: 'M70 74 L90 78 L96 98 L86 120 L64 112 L58 92 Z', role: 'accent' },
+    { d: 'M60 176 l8 -6 l6 8 Z M98 178 l10 -4 l-2 8 Z', role: 'soft' },
+    shadow(80, 172, 56),
   ],
 
-  // A cracked bubble helmet with a plaster on the collar.
+  // The great studded club he strikes Charlos down with at 886, lying in
+  // front, its head studded and hatched underneath, and the bubble helmet
+  // every World Noble wears standing on its collar ring on the ground
+  // behind it, a gleam on the glass.
   'donquixote-mjosgard': [
-    { d: circle(80, 88, 46) },
-    { d: 'M52 62 q12 -12 26 -14', role: 'soft' },
-    { d: 'M46 66 L70 88 L54 98 L78 124', role: 'accent' },
-    { d: 'M70 88 L98 72', role: 'accent' },
-    { d: 'M54 128 q26 14 52 0 v12 q-26 14 -52 0 Z' },
-    { d: 'M96 136 l22 -10 l6 13 l-22 10 Z' },
-    { d: 'M104 132 l6 13 M114 128 l6 13', role: 'soft' },
-    shadow(80, 160, 40),
+    { d: circle(56, 72, 34) },
+    { d: 'M36 54 C42 46 52 42 62 42', role: 'soft' },
+    { d: ellipse(56, 106, 22, 6) },
+    { d: 'M34 106 V112 C40 118 72 118 78 112 V106', role: 'soft' },
+    {
+      d: 'M24 122 H88 M34 122 l-5 5 M46 122 l-5 5 M58 122 l-5 5 M70 122 l-5 5 M82 122 l-5 5',
+      role: 'ambient',
+    },
+    {
+      d: 'M4 146 H40 C56 142 72 134 96 134 C124 134 146 142 146 150 C146 158 124 166 96 166 C72 166 56 158 40 154 H4 Z',
+      transform: MJOSGARD_CLUB_TILT,
+    },
+    {
+      d: 'M4 146 V154 M14 146 V154',
+      role: 'soft',
+      transform: MJOSGARD_CLUB_TILT,
+    },
+    {
+      d: 'M94 134 l3 -7 l3 7 M114 135 l4 -7 l2 8 M132 140 l6 -5 l-1 8 M94 166 l3 7 l3 -7 M114 165 l4 7 l2 -8 M132 160 l6 5 l-1 -8 M146 150 l8 0',
+      role: 'accent',
+      transform: MJOSGARD_CLUB_TILT,
+    },
+    {
+      d: dots([
+        [88, 144],
+        [104, 148],
+        [120, 146],
+        [96, 156],
+        [112, 158],
+        [130, 152],
+      ]),
+      role: 'soft',
+      transform: MJOSGARD_CLUB_TILT,
+    },
+    {
+      d: 'M60 158 l6 -6 M74 162 l8 -8 M90 166 l8 -8 M106 166 l8 -8 M122 164 l8 -8',
+      role: 'ambient',
+      transform: MJOSGARD_CLUB_TILT,
+    },
+    shadow(80, 184, 66),
   ],
 
   // A round council table ringed with empty thrones, under a banner.
@@ -924,54 +1097,90 @@ export const wholeCakeArt = {
     shadow(80, 160, 52),
   ],
 
-  // A flag on a pole and a cigarette burning beside it.
+  // Her flag on its pole, the cloth turning over at the fly to show its
+  // back, which is hatched, with no symbol drawn on it. She waves it to
+  // rouse the townspeople at 880.
   'belo-betty': [
-    { d: 'M46 178 V24' },
+    { d: 'M38 30 V180 M44 30 V180' },
+    { d: 'M38 30 C38 22 44 22 44 30 M41 23 V16', role: 'soft' },
     {
-      d: 'M46 28 C72 18 96 38 122 28 L122 72 C96 82 72 62 46 72 Z',
+      d: 'M44 34 C64 26 84 40 104 34 C112 32 118 30 124 34 C120 50 122 66 128 80 C120 76 112 78 106 82 C86 88 64 74 44 82 Z',
+    },
+    {
+      d: 'M44 34 C64 26 84 40 104 34 C100 50 100 66 106 82 C86 88 64 74 44 82',
       role: 'accent',
     },
-    { d: 'M72 26 v46 M98 36 v46', role: 'soft' },
-    { d: circle(46, 20, 6) },
-    { d: 'M84 152 l28 -10 l3 9 l-28 10 Z' },
-    { d: 'M108 143 l3 9', role: 'soft' },
-    { d: 'M118 140 c9 -10 -5 -15 4 -25', role: 'soft' },
-    shadow(56, 184, 28),
+    {
+      d: 'M104 34 C112 32 118 30 124 34 C120 50 122 66 128 80 C120 76 112 78 106 82',
+      role: 'soft',
+    },
+    {
+      d: 'M108 44 l10 -6 M106 56 l12 -7 M106 68 l14 -8 M110 78 l12 -7',
+      role: 'ambient',
+    },
+    { d: 'M62 31 C66 48 70 64 80 82 M84 38 C86 50 90 62 96 72', role: 'soft' },
+    shadow(41, 184, 26),
   ],
 
-  // A giant's trident with a broad ribbon tied to the shaft.
+  // The paved street pushed up off the ground and curling over like
+  // dough, its cobbles following the curl, the turned underside hatched and
+  // loose cobbles flung off it. She moves the ground like this against the
+  // Peachbeard Pirates at 880.
   'morley': [
-    { d: 'M80 178 V62' },
-    { d: 'M46 62 H114' },
-    { d: 'M80 62 V16' },
-    { d: 'M48 62 V34 C48 22 54 16 60 12 M112 62 V34 C112 22 106 16 100 12' },
     {
-      d: 'M64 92 q16 12 32 0 q-10 18 6 32 q-22 -12 -38 0 q12 -20 0 -32 Z',
-      role: 'accent',
+      d: 'M-4 150 H30 C44 150 54 138 60 118 C68 90 84 60 112 48 C134 40 152 50 152 66 C152 80 140 86 130 80',
     },
     {
-      d: 'M58 126 c-12 14 -14 28 -10 40 M104 124 c12 14 14 28 10 40',
-      role: 'accent',
+      d: 'M130 80 C138 72 136 62 126 62 C112 62 104 78 104 96 C104 118 112 136 124 150 H164',
     },
-    shadow(80, 186, 22),
+    { d: 'M60 118 C68 90 84 60 112 48 C134 40 152 50 152 66', role: 'accent' },
+    {
+      d: 'M68 122 C76 96 90 72 112 60 C126 54 138 56 142 64 M78 134 C86 110 98 88 114 76 M10 158 H40 C54 158 66 150 74 138',
+      role: 'soft',
+    },
+    {
+      d: 'M66 104 l9 3 M74 86 l9 4 M86 70 l8 5 M100 58 l6 7 M118 50 l2 8 M136 50 l-2 8 M76 116 l9 3 M84 98 l9 4 M96 82 l8 5 M20 150 v8 M36 150 l-2 8 M52 146 l4 7',
+      role: 'soft',
+    },
+    {
+      d: 'M108 106 l10 -6 M110 120 l12 -7 M114 134 l12 -7 M120 146 l8 -5 M110 92 l8 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M30 132 h8 v6 h-8 Z M46 114 l7 -2 l2 6 l-7 2 Z M146 128 h8 v6 h-8 Z',
+      role: 'soft',
+    },
+    { d: 'M134 150 l-2 8 M150 150 l-2 8', role: 'soft' },
   ],
 
-  // A crow's feather laid over a gas mask.
+  // A crow in flight, its near wing raised with the long feathers spread
+  // and hatched, the far wing low behind it, and two more small in the
+  // distance: the flock he takes shape out of at 880. No eye.
   'karasu': [
     {
-      d: 'M46 86 C46 66 114 66 114 86 C114 112 102 128 80 136 C58 128 46 112 46 86 Z',
+      d: 'M40 104 L28 102 L40 98 C46 92 56 92 64 96 C80 102 96 110 110 120 L132 126 L126 132 L132 140 L110 134 C92 132 72 124 56 116 C48 112 42 110 40 104 Z',
     },
-    { d: 'M46 86 L28 78 M114 86 L132 78' },
-    { d: 'M28 72 h-8 v12 h8z M132 72 h8 v12 h-8z' },
-    { d: 'M64 136 h32 v24 h-32 Z' },
-    { d: 'M64 145 h32 M64 153 h32', role: 'soft' },
-    { d: 'M46 98 C68 108 92 108 114 98', role: 'soft' },
-    { d: 'M132 22 L64 92', role: 'accent' },
     {
-      d: 'M126 28 c-14 -2 -22 6 -26 14 c12 2 20 -4 26 -14z M112 42 c-14 -2 -22 6 -26 14 c12 2 20 -4 26 -14z M98 56 c-14 -2 -22 6 -26 14 c12 2 20 -4 26 -14z',
+      d: 'M66 100 C72 76 84 54 104 36 L106 46 L114 34 L114 46 L124 38 L120 52 L130 48 L122 62 C110 80 96 96 86 108',
       role: 'accent',
     },
-    shadow(80, 170, 42),
+    {
+      d: 'M76 98 l10 -8 M84 88 l12 -10 M92 78 l12 -10 M100 68 l12 -10',
+      role: 'ambient',
+    },
+    {
+      d: 'M60 112 C54 126 50 140 52 152 L60 144 L62 156 L70 142 L76 150 L78 134 C80 126 82 122 84 120',
+      role: 'soft',
+    },
+    { d: 'M96 116 l12 4 M110 124 l14 4', role: 'soft' },
+    {
+      d: 'M118 66 L128 58 L134 64 L138 54 L144 52 L142 62 L150 66 M132 64 C136 68 140 68 144 66',
+      role: 'soft',
+    },
+    {
+      d: 'M14 46 L22 38 L28 44 L30 34 L36 32 L36 42 L44 46 M26 44 C30 48 34 48 38 46',
+      role: 'soft',
+    },
   ],
 
   // A wrench and a pair of goggles with cat ears, on a gadget.

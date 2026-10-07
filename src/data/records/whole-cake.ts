@@ -386,7 +386,7 @@ export const wholeCake: Saga = {
       id: 'charlotte-daifuku',
       kind: 'character',
       revealedAtEpisode: 826,
-      revealedAtChapter: 861,
+      revealedAtChapter: 864,
       name: { it: 'Charlotte Daifuku', en: 'Charlotte Daifuku' },
       summary: {
         it: 'Il ministro dei fagioli di Totto Land, che si strofina la pancia come una lampada e ne fa uscire un genio di fumo armato.',
