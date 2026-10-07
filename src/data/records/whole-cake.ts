@@ -233,8 +233,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 835,
       name: { it: 'Charlotte Cracker', en: 'Charlotte Cracker' },
       summary: {
-        it: 'Il decimo figlio di Big Mom, ministro dei biscotti e Sweet Commander, un uomo massiccio davanti al quale gli homie della Foresta della Seduzione si fanno piccoli.',
-        en: 'Big Mom’s tenth son, her minister of biscuits and a Sweet Commander, a hulking man the homies of the Seducing Woods shrink away from.',
+        it: 'Il decimo figlio di Big Mom, ministro dei biscotti e uno dei suoi tre Sweet Commander, un uomo massiccio.',
+        en: 'Big Mom’s tenth son, her minister of biscuits and one of her three Sweet Commanders, a hulking man.',
       },
       visual: { art: 'charlotte-cracker', tint: 'ocher' },
     },
@@ -269,8 +269,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 860,
       name: { it: 'Morgans', en: 'Morgans' },
       summary: {
-        it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro che arriva alle nozze già eccitato per il titolo che ne farà.',
-        en: 'The president of the paper that prints the world’s news, an albatross of a man who comes to the wedding already excited about the headline it will make.',
+        it: 'Il presidente del giornale che stampa le notizie di tutto il mondo, un uomo albatro che arriva alle nozze già eccitato per la grande notizia.',
+        en: 'The president of the paper that prints the world’s news, an albatross of a man who comes to the wedding already excited about the big news.',
       },
       visual: { art: 'morgans', tint: 'yellow' },
     },
@@ -971,8 +971,8 @@ export const wholeCake: Saga = {
     'pedro': {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },
       log: {
-        it: 'Guarda Rufy dai rami della foresta mentre i suoi Guardiani circondano l’intruso: in quella foresta non può entrare nessuno, e cacciare gli invasori è il loro compito. Quando arriva Wanda e garantisce per Rufy, lui dà l’ordine di ritirarsi e la squadra sparisce tra gli alberi. Rufy non si era accorto di nessuno di loro.',
-        en: 'He watches Luffy from the branches of the forest while his Guardians surround the intruder: nobody may enter that forest, and throwing invaders out is their job. When Wanda arrives and vouches for Luffy, he gives the order to retreat and the whole troop vanishes into the trees. Luffy had not sensed a single one of them.',
+        it: 'I suoi Guardiani, che hanno il compito di cacciare gli intrusi dalla foresta, circondano Rufy. Quando arriva Wanda e garantisce per Rufy, lui dà l’ordine di ritirarsi e la squadra sparisce tra gli alberi. Rufy non si era accorto di nessuno di loro.',
+        en: 'His Guardians, whose job is to throw intruders out of the forest, surround Luffy there. When Wanda arrives and vouches for Luffy, he gives the order to retreat and the whole troop vanishes into the trees. Luffy had not sensed a single one of them.',
       },
       status: [
         { episode: 757, value: 'alive' },
@@ -1165,8 +1165,8 @@ export const wholeCake: Saga = {
     'charlotte-cracker': {
       role: SWEET_COMMANDER_ROLE,
       log: {
-        it: 'È uno dei tre Sweet Commander, i guerrieri più forti della ciurma di sua madre, e il suo ministro dei biscotti. La madre lo manda nella Foresta della Seduzione, e gli homie si fanno piccoli al suo passaggio.',
-        en: 'He is one of the three Sweet Commanders, the greatest warriors of his mother’s crew, and her minister of biscuits. His mother sends him into the Seducing Woods, and the homies cower as he passes.',
+        it: 'È il decimo figlio di Big Mom, uno dei tre Sweet Commander della sua ciurma e il suo ministro dei biscotti.',
+        en: 'He is Big Mom’s tenth son, one of the three Sweet Commanders of her crew and her minister of biscuits.',
       },
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
@@ -1232,8 +1232,8 @@ export const wholeCake: Saga = {
         en: 'World Economy News Paper president',
       },
       log: {
-        it: 'Ha la testa e le ali di un albatro e dirige il giornale che stampa le notizie di tutto il mondo. Arriva al Tea Party insieme ai pezzi grossi della malavita, con un cilindro blu ornato da una piuma a righe e un mantello scuro. Già davanti al castello è eccitato: queste nozze faranno un titolo, dice, e il suo giornale e il Germa sono molto legati.',
-        en: 'He has the head and the wings of an albatross and runs the paper that prints the world’s news. He comes to the Tea Party with the bosses of the underworld, in a blue top hat with a striped feather and a dark cape. He is excited before he is even inside: this marriage will make a headline, he says, and his paper and Germa are closely tied.',
+        it: 'Ha la testa e le ali di un albatro e dirige il giornale che stampa le notizie di tutto il mondo. Arriva al Tea Party insieme ai pezzi grossi della malavita, con un cilindro blu ornato da una piuma a righe e un mantello scuro. Già davanti al castello è eccitato: queste nozze, dice, sono una grande notizia.',
+        en: 'He has the head and the wings of an albatross and runs the paper that prints the world’s news. He comes to the Tea Party with the bosses of the underworld, in a blue top hat with a striped feather and a dark cape. He is excited before he is even inside: this marriage, he says, is big news.',
       },
       affiliation: [
         {

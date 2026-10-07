@@ -1060,7 +1060,7 @@ export const CHRONICLE_SOURCES = {
     },
     838: {
       source: 'https://onepiece.fandom.com/wiki/Episode_838',
-      note: "Matches the issue's candidate exactly. The flashback (started 836) resolves by 838's end: Carmel, the other children and the table vanish without explanation the night before the planned sale, and Streusen seizes the opportunity to shape Linlin's ambitions. Second pass: the story originally stated the sale to Cipher Pol as the confirmed cause, but the source (episode 837) leaves the disappearance itself unexplained — the sale was only the plan for the following day, and the Charlotte Linlin wiki page itself calls it a mysterious disappearance; corrected to match. #409 audit: Episode 837 has Carmel take the children from Elbaph to another island, where the giants build a new Sheep’s House, before the birthday; the story now says so.",
+      note: "Matches the issue's candidate exactly. The flashback (started 836) resolves by 838's end: Carmel, the other children and the table vanish without explanation the night before the planned sale, and Streusen seizes the opportunity to shape Linlin's ambitions. Second pass: the story originally stated the sale to Cipher Pol as the confirmed cause, but the source (episode 837) leaves the disappearance itself unexplained — the sale was only the plan for the following day, and the Charlotte Linlin wiki page itself calls it a mysterious disappearance; corrected to match. #409 audit: Episode 837 has Carmel take the children from Elbaph to another island, where the giants build a new Sheep's House, before the birthday; the story now says so.",
     },
     946: {
       source: 'https://onepiece.fandom.com/wiki/Episode_946',
