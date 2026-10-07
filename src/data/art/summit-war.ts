@@ -15,6 +15,19 @@ import type { Drawings, Redrawings, Stroke } from './stroke'
 const SALDEATH_TRIDENT =
   'translate(80 104) rotate(56) scale(1.15) translate(-80 -104)'
 
+/** Mirrors a stroke across the middle of the box. */
+const MIRROR = 'translate(160 0) scale(-1 1)'
+
+/** One of the rocky peaks either side of Marine Headquarters. */
+const MARINEFORD_PEAK = 'M2 132 C8 108 12 84 20 64 C26 80 30 104 34 132'
+
+/** The small tower and plain flag on top of that peak. */
+const MARINEFORD_TOWER = 'M16 68 V58 h8 v10 M20 58 V44 l10 3 l-10 3'
+
+/** A Marine warship side on, two masts with a square sail each. */
+const WARSHIP =
+  'M0 0 h28 l-5 8 h-18 z M9 0 v-22 M19 0 v-18 M4 -18 h10 v8 h-10 z M14 -14 h10 v7 h-10 z'
+
 /** The slant Squard's katana lies at, centred in the box. */
 const SQUARD_KATANA =
   'translate(80 104) rotate(-34) scale(1.2) translate(-77 -100)'
@@ -305,16 +318,35 @@ export const summitWarArt = {
     shadow(68, 172, 26),
   ],
 
-  // A fortress in a crescent bay, gate to the sea.
+  // Marine Headquarters, the castle of many storeys at the back of
+  // Marineford: the stacked roofs in the record's colour, the near side
+  // hatched, the two rocky peaks either side with a flagged tower on top, and
+  // the brick quay in front. On screen from episode 45; no kanji, no gull and
+  // no cannons, which come in episode 459.
   'marineford-arc': [
-    { d: 'M-6 152 C34 100 126 100 166 152' },
+    { d: 'M6 132 H154 V150 H6 Z' },
+    { d: 'M20 141 h20 M54 141 h24 M94 141 h22 M128 141 h18', role: 'soft' },
+    { d: 'M38 132 V90 H122 V132' },
     {
-      d: 'M28 122 V82 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 h12 v-10 h12 v10 V122z',
+      d: 'M38 104 H122 M38 118 H122 M50 94 v6 M62 94 v6 M98 94 v6 M110 94 v6',
+      role: 'soft',
+    },
+    { d: 'M122 90 l10 -6 V126 l-10 6', role: 'soft' },
+    { d: 'M126 96 l4 -3 M126 108 l4 -3 M126 120 l4 -3', role: 'ambient' },
+    { d: 'M62 90 V76 H98 V90 M68 66 V56 H92 V66 M74 46 V40 H86 V46' },
+    {
+      d: 'M50 78 q8 -2 14 -10 H96 q6 8 14 10 M58 58 q6 -2 10 -8 H92 q4 6 10 8 M64 42 q5 -2 8 -8 H88 q3 6 8 8 M80 34 V26',
       role: 'accent',
     },
-    { d: 'M70 122 V100 a10 10 0 0 1 20 0 V122', role: 'accent' },
-    { d: 'M40 68 V46 h14 v22 M106 68 V46 h14 v22 M76 68 V30 h8 v38' },
-    ...SEA.slice(1),
+    { d: MARINEFORD_PEAK },
+    { d: MARINEFORD_PEAK, transform: MIRROR },
+    { d: MARINEFORD_TOWER },
+    { d: MARINEFORD_TOWER, transform: MIRROR },
+    {
+      d: 'M6 100 l6 -4 M8 114 l6 -4 M146 100 l6 -4 M146 114 l6 -4',
+      role: 'ambient',
+    },
+    ...SEA,
   ],
   // A newspaper folded open over the sea, the headline across the top, and a
   // gull carrying the next edition in.
@@ -331,16 +363,44 @@ export const summitWarArt = {
     ...SEA,
   ],
 
-  // A mangrove on its stilt roots, with soap bubbles going up from the bark.
+  // The Sea Rabbit at the foot of the Red Line: it comes up out of the dark
+  // after the Shark Submerge and surfaces beside the Sunny, where Luffy beats
+  // it and it spits out Camie and Pappag (episode 385). Its scaled neck is
+  // arched, the far side hatched, the furred head turned to the left with no
+  // face, the long ears in the record's colour; behind it the wall's rough
+  // top, its sheer face and strata. The archipelago is not in sight until
+  // episode 390.
   'sabaody': [
-    { d: 'M72 148 V64 M88 148 V64' },
-    { d: ellipse(80, 56, 42, 22) },
     {
-      d: 'M72 118 C60 128 54 138 50 150 M88 118 C100 128 106 138 110 150 M72 132 C64 140 60 146 58 152 M88 132 C96 140 100 146 102 152',
+      d: 'M-4 58 L12 54 L24 60 L40 52 L50 55 M96 50 L102 49 L118 54 L134 48 L150 53 L164 50',
     },
-    { d: circle(42, 92, 9), role: 'accent' },
-    { d: circle(120, 74, 12), role: 'accent' },
-    { d: circle(114, 114, 7), role: 'accent' },
+    {
+      d: 'M24 60 C22 90 26 120 24 150 M134 48 C136 82 132 116 136 150',
+      role: 'soft',
+    },
+    {
+      d: 'M-4 74 H36 M-4 94 H34 M-4 114 H40 M-4 134 H58 M128 70 H164 M126 90 H164 M132 110 H164 M134 130 H164',
+      role: 'ambient',
+      dashed: true,
+    },
+    { d: 'M122 152 C126 118 110 98 90 92 M94 152 C96 130 88 114 74 106' },
+    {
+      d: 'M74 106 C62 106 50 104 44 98 C36 92 36 80 46 74 C54 68 70 68 80 74 C88 78 92 86 90 92',
+    },
+    {
+      d: 'M60 70 C54 52 52 34 58 22 C66 32 70 52 68 70 M72 70 C74 52 80 36 90 26 C94 40 88 58 80 74',
+      role: 'accent',
+    },
+    { d: 'M74 106 q4 -5 8 0 q4 -5 8 0 q3 -4 6 -2', role: 'soft' },
+    {
+      d: 'M100 108 q6 5 12 0 M102 124 q6 5 12 0 M104 140 q6 5 12 0 M86 120 q5 4 10 0 M90 136 q5 4 10 0',
+      role: 'soft',
+    },
+    { d: 'M114 112 l6 -4 M118 126 l6 -4 M120 140 l6 -4', role: 'ambient' },
+    {
+      d: 'M80 154 C84 148 90 148 94 152 M122 152 C126 148 132 148 136 154',
+      role: 'soft',
+    },
     ...SEA,
   ],
 
@@ -374,23 +434,28 @@ export const summitWarArt = {
     shadow(80, 166, 70),
   ],
 
-  // A prison tower going down into the water, one level line after another.
+  // Impel Down from the deck of the warship coming in: the round wall standing
+  // out of the sea, its barred gate in the record's colour, the near side
+  // hatched, the tower in the middle, and Marine warships moored round it.
+  // Episode 422 shows the fleet; the levels below come in episode 423.
   'impel-down-arc': [
-    { d: 'M46 56 h68 v134 h-68z' },
-    { d: 'M60 56 V38 h40 v18' },
-    { d: 'M46 80 h68 M46 104 h68 M46 128 h68 M46 152 h68', role: 'soft' },
-    { d: 'M70 56 V80 M80 56 V80 M90 56 V80', role: 'accent' },
-    { d: 'M62 56 h36', role: 'accent' },
+    // The rims break behind the tower.
+    { d: 'M72 76.2 A54 20 0 1 0 88 76.2' },
+    { d: 'M72 82.3 A36 12 0 1 0 88 82.3', role: 'soft' },
+    { d: 'M26 96 V114 C26 130 134 130 134 114 V96' },
+    { d: 'M110 122 l6 -8 M120 118 l6 -8 M128 112 l5 -7', role: 'ambient' },
+    { d: 'M70 126 V112 a10 10 0 0 1 20 0 V126', role: 'accent' },
+    { d: 'M75 105 V126 M80 103 V126 M85 105 V126 M70 114 H90', role: 'soft' },
+    { d: 'M72 92 V70 H88 V92 M76 70 V62 H84 V70' },
     {
-      d: dots([
-        [54, 92],
-        [54, 116],
-        [54, 140],
-        [54, 164],
-      ]),
-      role: 'ambient',
+      d: 'M10 116 q5 -3 10 0 q5 3 10 0 M140 116 q5 -3 10 0 q5 3 10 0 M36 130 q5 -3 10 0 q5 3 10 0 M104 130 q5 -3 10 0 q5 3 10 0',
+      role: 'soft',
     },
-    ...SEA,
+    { d: WARSHIP, transform: 'translate(0 152) scale(1.15)' },
+    { d: WARSHIP, transform: 'translate(126 152) scale(1.15)' },
+    { d: WARSHIP, transform: 'translate(-2 98) scale(0.9)' },
+    { d: WARSHIP, transform: 'translate(136 96) scale(0.9)' },
+    ...SEA.slice(1),
   ],
 
   // Her clam-shell backpack, the one she carries her takoyaki in, sat on its
