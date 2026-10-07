@@ -322,7 +322,8 @@ export const waterSevenArt = {
   // His plain white cap sitting on a roof ridge, peak forward, wind going
   // past. The roof is seen from its corner: the gable end and the wall
   // under it hatched, the ridge running back, rows of tiles on the near
-  // slope down to the eave, and the house's shadow below. He goes over the rooftops to look at the Going Merry (231).
+  // slope down to the eave, and the house's shadow below. He goes over the
+  // rooftops to look at the Going Merry (231).
   'kaku': [
     { d: 'M40 74 L4 112 H78 Z M40 74 L146 50 L160 88 L78 112' },
     { d: 'M8 112 V150 H74 V112 M74 150 L156 126 V89' },
