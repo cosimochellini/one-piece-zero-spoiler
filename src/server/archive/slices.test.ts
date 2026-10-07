@@ -1014,6 +1014,23 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
   })
 
+  it('lets Chew’s Water Gun fly past his vest only from episode 34', () => {
+    const chew = filed('chew')
+    const vest = DRAWINGS.chew
+    const shot = REDRAWINGS['chew']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(chew, readerFor(bookmark, 'en')).visual.strokes
+
+    expect(shot?.episode).toBe(34)
+
+    expect(drawnAt(ep(33))).toBe(vest)
+    expect(drawnAt(ep(34))).toBe(shot?.value)
+    expect(drawnAt(null)).toBe(vest)
+    // The manga names him and shows the shot in the same chapter, 75, so a
+    // chapter reader meets him with it.
+    expect(drawnAt({ mode: 'chapter', chapter: 75 })).toBe(shot?.value)
+  })
+
   it('lights Ace’s flame on Sabo’s pipe only from episode 678', () => {
     const sabo = filed('sabo')
     const pipe = DRAWINGS.sabo

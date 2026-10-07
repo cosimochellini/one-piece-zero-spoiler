@@ -85,6 +85,52 @@ const NAMI_CHART_DETAIL: Stroke[] = [
   { d: 'M60 104 L56 158 M98 104 L102 158', role: 'soft', dashed: true },
 ]
 
+/**
+ * Chew's vest, open down the front: two horizontally striped panels, the dark
+ * trim down the V and round the armholes, and the inside of the back hatched
+ * where the V shows it. Both his drawings hold it, so the only thing that
+ * changes is what lies beside it.
+ */
+const CHEW_VEST: Stroke[] = [
+  { d: 'M56 32 L42 36 C44 58 40 70 30 76 L31 150 L68 152 L68 98 Z' },
+  { d: 'M84 32 L98 36 C96 58 100 70 110 76 L109 150 L72 152 L72 98 Z' },
+  { d: 'M56 32 Q70 40 84 32' },
+  {
+    d: 'M59.8 46 L80.2 40 M61.6 56 L78.4 50 M63.5 66 L76.5 60 M65.3 76 L74.7 70 M67.1 86 L72.9 80',
+    role: 'ambient',
+  },
+  {
+    d: 'M50 34 L62 98 V151 M90 34 L78 98 V151 M47 36 C49 58 46 72 35 79 M93 36 C91 58 94 72 105 79',
+    role: 'soft',
+  },
+  {
+    d: 'M47.5 64 Q51.5 66 55.6 64 M84.4 64 Q88.5 66 92.5 64 M40 76 Q49 79 57.9 76 M82.1 76 Q91 79 100 76 M33 88 Q46.6 91 60.1 88 M79.9 88 Q93.4 91 107 88 M33 100 Q47.5 103 62 100 M78 100 Q92.5 103 107 100 M33 112 Q47.5 115 62 112 M78 112 Q92.5 115 107 112 M33 124 Q47.5 127 62 124 M78 124 Q92.5 127 107 124 M33 136 Q47.5 139 62 136 M78 136 Q92.5 139 107 136',
+    role: 'soft',
+  },
+]
+
+/** His string of beads, laid in a loop beside the vest. */
+const CHEW_BEADS = (
+  [
+    [148, 170],
+    [145.6, 173.5],
+    [139, 176.3],
+    [129.3, 177.8],
+    [118.7, 177.8],
+    [109, 176.3],
+    [102.4, 173.5],
+    [100, 170],
+    [102.4, 166.5],
+    [109, 163.7],
+    [118.7, 162.2],
+    [129.3, 162.2],
+    [139, 163.7],
+    [145.6, 166.5],
+  ] as const
+)
+  .map(([x, y]) => circle(x, y, 2.2))
+  .join(' ')
+
 /** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
   // Four small islands, a dotted course between them, a compass watching.
@@ -1019,25 +1065,14 @@ export const eastBlueArt = {
     { d: 'M68 116 C62 142 58 164 52 186 L66 190 C72 166 76 142 78 116 Z' },
     { d: 'M92 116 C98 142 102 164 108 186 L94 190 C88 166 84 142 82 116 Z' },
   ],
-  // A jug with a jet of water already out of it.
+  // His striped vest, open down the front, and beside it the string of beads
+  // that he wears with it. He brings Usopp to Arlong Park in it
+  // in 33 (ch. 73), where Arlong first calls him by name. The water he spits
+  // is drawn from 34, in `eastBlueRedrawn`.
   'chew': [
-    {
-      d: 'M46 110 C38 130 40 160 54 170 C68 180 98 178 108 166 C120 152 118 128 110 108 Z',
-    },
-    { d: 'M60 108 L64 82 H96 L102 108' },
-    { d: 'M58 80 H100' },
-    { d: 'M102 88 C124 90 126 116 106 122' },
-    { d: 'M50 132 C64 126 92 126 106 132', role: 'soft' },
-    { d: 'M96 76 C118 54 140 58 146 80', role: 'accent' },
-    { d: 'M88 68 C112 42 142 48 150 78', role: 'accent' },
-    {
-      d: dots([
-        [142, 92],
-        [150, 96],
-      ]),
-      role: 'accent',
-    },
-    shadow(80, 184, 42),
+    ...CHEW_VEST,
+    { d: CHEW_BEADS, role: 'accent' },
+    shadow(124, 186, 30),
   ],
   // A watering can standing among the mandarin trees.
   'nojiko': [
@@ -1537,6 +1572,34 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'accent',
         },
         shadow(80, 186, 44),
+      ],
+    },
+  ],
+  // The vest and the beads again, and the shot of water he spits from his
+  // mouth like a bullet, his Water Gun, flying past. He fires it first on the
+  // deck of the 77th Branch's ship in 34 (ch. 75).
+  'chew': [
+    {
+      episode: 34,
+      chapter: 75,
+      value: [
+        ...CHEW_VEST,
+        { d: CHEW_BEADS },
+        shadow(124, 186, 30),
+        {
+          d: 'M154 22 C154 14 144 13 134 16 C124 19 112 20 100 22 C112 24 124 25 134 28 C144 31 154 30 154 22 Z',
+          role: 'accent',
+        },
+        { d: 'M92 16 H56 M88 28 H40 M94 22 H72', role: 'accent' },
+        {
+          d: dots([
+            [118, 9],
+            [128, 35],
+            [108, 32],
+            [100, 10],
+          ]),
+          role: 'accent',
+        },
       ],
     },
   ],

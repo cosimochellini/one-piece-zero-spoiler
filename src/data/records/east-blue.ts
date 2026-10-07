@@ -743,12 +743,14 @@ export const eastBlue: Saga = {
     {
       id: 'chew',
       kind: 'character',
-      revealedAtEpisode: 31,
-      revealedAtChapter: 74,
+      revealedAtEpisode: 33,
+      revealedAtChapter: 75,
+      // Seen from 31 (ch. 69) but first named at 33, when Arlong greets him
+      // back with Usopp; the manga names him in a caption in ch. 75.
       name: { it: 'Chu', en: 'Chew' },
       summary: {
-        it: 'Un uomo-pesce dalle labbra enormi, che si riempie la bocca d’acqua e la sputa attraverso i muri come una cannonata.',
-        en: 'A fish-man with enormous lips, who fills his mouth with seawater and spits it through walls like a cannon shot.',
+        it: 'Un uomo-pesce dalle labbra carnose, con un gilet a righe e una collana di grani, che intercala le frasi con lo schiocco di un bacio e porta Usop prigioniero ad Arlong Park.',
+        en: 'A fish-man with thick lips, a striped vest and a string of beads, who punctuates his words with a kissing sound and brings Usopp to Arlong Park as a prisoner.',
       },
       visual: { art: 'chew', tint: 'blue' },
     },
@@ -2039,15 +2041,20 @@ export const eastBlue: Saga = {
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
     'chew': {
-      role: {
-        it: 'Tiratore dei Pirati di Arlong',
-        en: 'Marksman of the Arlong Pirates',
-      },
+      role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
       log: {
-        it: 'Aspira l’acqua del mare e la rilascia in un getto che buca il legno a decine di metri di distanza, e per questo nel parco di Arlong nessuno gli sta mai davanti. Beve mentre combatte e non ha bisogno di ricaricare finché ha il mare sotto di sé. Sotto il tavolo tiene anche un fucile, per quando l’acqua non basta.',
-        en: 'He draws in seawater and lets it go in a jet that punches through timber at dozens of paces, which is why nobody in Arlong’s park stands in front of him. He drinks while he fights and never needs to reload as long as the sea is beneath him. Under the table he keeps a rifle too, for when water is not enough.',
+        it: 'Intercala quello che dice con lo schiocco di un bacio. Dopo che Usop ha attaccato Arlong, è lui a catturarlo e a portarlo ad Arlong Park davanti al suo capitano. Quando Usop sostiene di non sapere dove sia Zoro, gli dice di smetterla con le bugie: ha attaccato Arlong, e ormai nessuno può salvarlo.',
+        en: 'He punctuates what he says with a kissing sound. After Usopp attacks Arlong, he is the one who catches him and brings him into Arlong Park to his captain. When Usopp says he doesn’t know where Zoro is, he tells him to stop lying: he attacked Arlong, and nobody can save him now.',
       },
-      affiliation: [{ episode: 31, value: ARLONG_OFFICER }],
+      affiliation: [
+        {
+          episode: 33,
+          value: { it: 'Pirati di Arlong', en: 'Arlong Pirates' },
+        },
+        // The crew call the three of them their officers in 34, and a
+        // caption in ch. 75 says so.
+        { episode: 34, chapter: 75, value: ARLONG_OFFICER },
+      ],
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
     'nojiko': {
