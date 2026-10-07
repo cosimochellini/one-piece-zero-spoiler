@@ -437,12 +437,14 @@ export const skypiea: Saga = {
     {
       id: 'ohm',
       kind: 'character',
-      revealedAtEpisode: 169,
-      revealedAtChapter: 272,
+      revealedAtEpisode: 166,
+      revealedAtChapter: 253,
+      // The anime captions him at 164, but his texts are true at 166. Both
+      // name him on screen in the same scene: "Wait, Ohm" (ch 253 p.3).
       name: { it: 'Om', en: 'Ohm' },
       summary: {
-        it: 'Un sacerdote di Ener che combatte con una spada capace di indurire la nuvola in ferro, con un enorme cane bianco al fianco.',
-        en: 'One of Enel’s priests, who fights with a sword that hardens cloud into iron, an enormous white dog at his side.',
+        it: 'Un sacerdote di Ener, un uomo calvo con piccoli occhiali scuri, che combatte con una spada e va in battaglia in piedi sulla testa di un enorme cane bianco.',
+        en: 'One of Enel’s priests, a bald man with small dark glasses who fights with a sword and rides into battle on the head of an enormous white dog.',
       },
       visual: { art: 'ohm', tint: 'ivory' },
     },
@@ -476,7 +478,8 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 175,
       revealedAtChapter: 272,
-      // Rounded up to 272, the chapter that files Ohm, whom the text names.
+      // Rounded up to 272 for Ohm, whom the text names, when he was filed
+      // there. He opens at 253 now, and Holy's own thresholds are #375.
       name: { it: 'Holy', en: 'Holy' },
       summary: {
         it: 'Un enorme cane dal pelo chiaro al fianco di un sacerdote di Ener, addestrato così bene che non morde nessuno finché il padrone non gliene dà un motivo.',
@@ -1273,17 +1276,17 @@ export const skypiea: Saga = {
         it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
         en: 'After the priests have chased an intruder across Upper Yard, he tells the others that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
-      affiliation: [{ episode: 166, value: ENEL_PRIESTS }],
-      origin: [{ episode: 166, value: SKY_ISLAND }],
+      affiliation: [{ episode: 166, chapter: 254, value: ENEL_PRIESTS }],
+      origin: [{ episode: 166, chapter: 254, value: SKY_ISLAND }],
     },
     'ohm': {
       role: ENEL_PRIEST,
       log: {
-        it: 'Tiene la prova del ferro, la più dura delle quattro, e la considera un atto di misericordia verso chi non dovrebbe trovarsi lassù. La sua spada trasforma la nuvola in una frusta di metallo lunga quanto vuole lui. Combatte insieme a un cane enorme che porta un’armatura come la sua.',
-        en: 'He keeps the ordeal of iron, the hardest of the four, and thinks of it as an act of mercy toward people who should not be up there at all. His sword turns cloud into a whip of metal as long as he wants it. He fights beside an enormous dog wearing armour of the same make as his own.',
+        it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Fall è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
+        en: 'He chases a trespasser across Upper Yard with his dog, and the other priests join in until a bolt of lightning strikes the man down. From far away he can tell that Gan Fall has lost to one priest and that the strangers have beaten another, and he says the Shandia raiding the forest will not see the dawn. In the raid his dog snatches warriors up in its jaws while he fights with a sword. When the Shandia fall back he moves to stop Wyper, but another priest calls him off: Enel has summoned them.',
       },
-      affiliation: [{ episode: 169, value: ENEL_PRIESTS }],
-      origin: [{ episode: 169, value: SKY_ISLAND }],
+      affiliation: [{ episode: 166, chapter: 253, value: ENEL_PRIESTS }],
+      origin: [{ episode: 166, chapter: 253, value: SKY_ISLAND }],
     },
     'fuza': {
       role: { it: 'Cavalcatura di Shura', en: 'Shura’s mount' },

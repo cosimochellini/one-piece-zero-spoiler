@@ -737,7 +737,7 @@ export const skypieaArt = {
     shadow(84, 188, 60),
   ],
 
-  // His sword, the Eisen Whip, with the dial at its pommel as the accent, and
+  // His sword, the Eisen Whip, with its round pommel as the accent, and
   // its plain white scabbard beside it; the grip is hatched. He fights the
   // Shandia with it at 165. The shapes it takes come later.
   'ohm': [
