@@ -466,8 +466,8 @@ export const wholeCakeChronicles = {
       value: {
         title: { it: 'Un ago senza rumore', en: 'A silent needle' },
         body: {
-          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio Flambè lo guarda con i suoi seguaci. È la presidente del fan club di Katakuri, votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, e vuole guadagnarsi il suo favore aiutandolo a finire Cappello di Paglia. Il suo cecchino continua a mancare il colpo, così tira lei: un ago paralizzante della sua cerbottana silenziosa colpisce Rufy alla gamba, lui scivola, e Katakuri gli squarcia il fianco. Lei esulta perché il fratellone non si è nemmeno accorto del suo aiuto. Quando Rufy si rialza ancora, gli spara un ago dieci volte più forte. Lui lo schiva, poi cade lo stesso, e lei e i seguaci ridono così forte che Katakuri li sente.',
-          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place Flampe watches with her followers. She is president of Katakuri’s fan club, voted best little sister by forty of her forty-one elder brothers, and she means to win his favour by helping him finish off Straw Hat. Her sniper keeps missing, so she takes the shot herself: a numbing needle from her silent blowgun hits Luffy in the leg, he slips, and Katakuri tears open his side. She is thrilled that big brother has not even noticed her help. When Luffy gets up yet again, she fires a needle ten times stronger. He dodges it, then falls over anyway, and she and her followers laugh so loudly that Katakuri hears them.',
+          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio Flambè lo guarda con i suoi seguaci. È la presidente del fan club di Katakuri, votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, e vuole guadagnarsi il suo favore aiutandolo a finire Cappello di Paglia. Il suo cecchino continua a mancare il colpo, così tira lei: un ago paralizzante della sua cerbottana silenziosa colpisce Rufy alla gamba, lui scivola, e Katakuri gli squarcia il fianco mentre lei ride.',
+          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place Flampe watches with her followers. She is president of Katakuri’s fan club, voted best little sister by forty of her forty-one elder brothers, and she means to win his favour by helping him finish off Straw Hat. Her sniper keeps missing, so she takes the shot herself: a numbing needle from her silent blowgun hits Luffy in the leg, he slips, and Katakuri tears open his side while she laughs.',
         },
       },
     },
@@ -479,8 +479,8 @@ export const wholeCakeChronicles = {
           en: 'No longer her big brother',
         },
         body: {
-          it: 'Flambè è sicura che [[charlotte-katakuri|Katakuri]] stia venendo a lodarla, e gli dice fiera che l’ago è merito suo. Lui invece si pianta l’arma nella pancia, nello stesso punto in cui ha colpito [[monkey-d-luffy|Rufy]], si abbassa la sciarpa e le urla di non immischiarsi in un duello tra uomini. L’adorazione di lei si trasforma in disprezzo in un attimo: gli deride la bocca, ordina ai seguaci di scattare foto da diffondere in tutta Totto Land e giura che quello non è più suo fratello. Poi Rufy e Katakuri si trovano d’accordo sul fatto che il pubblico fa troppo rumore, e un’ondata di Haki del Re Conquistatore stende lei e i suoi seguaci.',
-          en: 'Flampe is sure [[charlotte-katakuri|Katakuri]] is coming over to praise her, and proudly tells him the needle was her doing. Instead he drives his own weapon into his belly, in the same place he struck [[monkey-d-luffy|Luffy]], pulls down his scarf and shouts at her not to meddle in a man’s fight. Her adoration turns to contempt in an instant: she mocks his mouth, orders her followers to take photos to spread all over Totto Land and declares he is no longer her brother. Then Luffy and Katakuri agree that the crowd is too loud, and a wave of Conqueror’s Haki knocks her and her followers out.',
+          it: 'Quando [[monkey-d-luffy|Rufy]] si rialza ancora, Flambè gli spara un ago dieci volte più forte. Lui lo schiva ma cade, e le loro risate arrivano a [[charlotte-katakuri|Katakuri]]. Lei, sicura che venga a lodarla, gli dice fiera che l’ago è merito suo. Lui invece si pianta l’arma nella pancia, nello stesso punto in cui ha colpito Rufy, si abbassa la sciarpa e le urla di non immischiarsi in un duello tra uomini. L’adorazione di lei si trasforma in disprezzo in un attimo: gli deride la bocca, ordina ai seguaci di scattare foto da diffondere in tutta Totto Land e giura che quello non è più suo fratello. Poi Rufy e Katakuri si trovano d’accordo sul fatto che il pubblico fa troppo rumore, e un’ondata di Haki del Re Conquistatore stende lei e i suoi seguaci.',
+          en: 'When [[monkey-d-luffy|Luffy]] gets up yet again, Flampe fires a needle ten times stronger. He dodges it but falls anyway, and [[charlotte-katakuri|Katakuri]] hears them laughing. Sure that he is coming to praise her, she proudly tells him the needle was her doing. Instead he drives his own weapon into his belly, in the same place he struck Luffy, pulls down his scarf and shouts at her not to meddle in a man’s fight. Her adoration turns to contempt in an instant: she mocks his mouth, orders her followers to take photos to spread all over Totto Land and declares he is no longer her brother. Then Luffy and Katakuri agree that the crowd is too loud, and a wave of Conqueror’s Haki knocks her and her followers out.',
         },
       },
     },
@@ -664,9 +664,6 @@ export const wholeCakeChronicles = {
   'gion': [
     {
       episode: 887,
-      // The Red Port scene is chapter 907, but its closing remark is not
-      // traced to a panel there, so chapter readers get it a chapter later.
-      chapter: 908,
       value: {
         title: { it: 'Garp-chan, tuo nipote', en: 'Garp-chan, your grandson' },
         body: {
@@ -679,9 +676,6 @@ export const wholeCakeChronicles = {
   'tokikake': [
     {
       episode: 887,
-      // The Red Port scene is chapter 907, but its closing remark is not
-      // traced to a panel there, so chapter readers get it a chapter later.
-      chapter: 908,
       value: {
         title: { it: 'Chiedo scusa, signorina', en: 'Pardon me, young lady' },
         body: {
