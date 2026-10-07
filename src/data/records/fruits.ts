@@ -1065,7 +1065,7 @@ export const devilFruits: Saga = {
       id: 'soul-soul-fruit',
       kind: 'fruit',
       revealedAtEpisode: 796,
-      revealedAtChapter: 839,
+      revealedAtChapter: 837,
       name: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
       summary: {
         it: 'Toglie un pezzo di anima a chi si spaventa e lo mette dentro un oggetto, che apre occhi e bocca e comincia a prendere ordini.',

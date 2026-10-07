@@ -281,32 +281,36 @@ export const wholeCake: Saga = {
       revealedAtChapter: 837,
       name: { it: 'Vinsmoke Judge', en: 'Vinsmoke Judge' },
       summary: {
-        it: 'Il re del Regno di Germa, che comanda un esercito di soldati identici e parla dei propri figli come dei pezzi di un progetto.',
-        en: 'The king of the Germa Kingdom, who commands an army of identical soldiers and speaks of his own children as parts of a design.',
+        it: 'Il re del Regno di Germa, un paese senza terra che naviga, che accoglie con la lancia in mano il figlio tornato a casa dopo anni.',
+        en: 'The king of the Germa Kingdom, a country with no land that sails, who meets the son come home after years with a spear in his hand.',
       },
       visual: { art: 'vinsmoke-judge', tint: 'ice' },
     },
     {
       id: 'vinsmoke-ichiji',
       kind: 'character',
-      revealedAtEpisode: 795,
+      // Seen unnamed on Broc Coli Island at 787; Reiju says the brothers'
+      // names at 799, and 800 (chapter 838) captions them as they come home.
+      revealedAtEpisode: 800,
       revealedAtChapter: 839,
       name: { it: 'Vinsmoke Ichiji', en: 'Vinsmoke Ichiji' },
       summary: {
-        it: 'Il primogenito dei Vinsmoke, in tuta da combattimento rossa e mantello, che guarda chiunque dall’alto senza cambiare espressione.',
-        en: 'The eldest Vinsmoke son, in a red combat suit and cape, who looks down on everyone without ever changing expression.',
+        it: 'Il primogenito dei Vinsmoke, che torna a casa con il fratello Niji dopo aver chiuso la guerra sull’isola di Broc Coli, e parla poco.',
+        en: 'The eldest Vinsmoke son, who comes home with his brother Niji after ending the war on Broc Coli Island, and says little.',
       },
       visual: { art: 'vinsmoke-ichiji', tint: 'red' },
     },
     {
       id: 'vinsmoke-niji',
       kind: 'character',
-      revealedAtEpisode: 795,
+      // Seen unnamed on Broc Coli Island at 787; Reiju says the brothers'
+      // names at 799, and 800 (chapter 838) captions them as they come home.
+      revealedAtEpisode: 800,
       revealedAtChapter: 839,
       name: { it: 'Vinsmoke Niji', en: 'Vinsmoke Niji' },
       summary: {
-        it: 'Il secondogenito dei Vinsmoke, in tuta blu, che si sposta più in fretta di quanto l’occhio riesca a seguire e se ne diverte.',
-        en: 'The second Vinsmoke son, in a blue suit, who moves faster than the eye can follow and thoroughly enjoys doing it.',
+        it: 'Il secondogenito dei Vinsmoke, che a tavola deride il fratello Sanji e se la prende con la cuoca per un piatto che non vuole mangiare.',
+        en: 'The second Vinsmoke son, who mocks his brother Sanji at table and turns on the cook over a dish he will not eat.',
       },
       visual: { art: 'vinsmoke-niji', tint: 'blue' },
     },
@@ -329,8 +333,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 860,
       name: { it: 'Charlotte Katakuri', en: 'Charlotte Katakuri' },
       summary: {
-        it: 'Uno Sweet Commander di Big Mom, un uomo altissimo con la sciarpa tirata fino agli occhi e un tridente sempre in mano, che nessuno ha mai visto mangiare.',
-        en: 'A Sweet Commander of Big Mom’s, a very tall man with a scarf pulled up to his eyes and a trident always in hand, whom nobody has ever seen eat.',
+        it: 'Uno Sweet Commander di Big Mom e il suo secondo figlio, un uomo altissimo con una grande sciarpa che gli copre la bocca.',
+        en: 'A Sweet Commander of Big Mom’s and her second son, a very tall man with a large scarf that covers his mouth.',
       },
       visual: { art: 'charlotte-katakuri', tint: 'wine' },
     },
@@ -374,11 +378,13 @@ export const wholeCake: Saga = {
       id: 'charlotte-oven',
       kind: 'character',
       revealedAtEpisode: 827,
-      revealedAtChapter: 861,
+      // Named as a guest at 861, but his title and his heat are 864. The
+      // anime captions the title and shows the heat at 827.
+      revealedAtChapter: 864,
       name: { it: 'Charlotte Oven', en: 'Charlotte Oven' },
       summary: {
-        it: 'Il ministro della doratura di Totto Land, che scalda le mani a tal punto da far bollire il mare tutto intorno alla costa.',
-        en: 'The minister of browning of Totto Land, who heats his hands enough to bring the sea all around the coast to the boil.',
+        it: 'Il ministro della doratura di Totto Land e il quarto figlio di Big Mom, che rende rovente tutto quello che tocca.',
+        en: 'The minister of browning of Totto Land and Big Mom’s fourth son, who makes whatever he touches burning hot.',
       },
       visual: { art: 'charlotte-oven', tint: 'vermilion' },
     },
@@ -389,8 +395,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 864,
       name: { it: 'Charlotte Daifuku', en: 'Charlotte Daifuku' },
       summary: {
-        it: 'Il ministro dei fagioli di Totto Land, che si strofina la pancia come una lampada e ne fa uscire un genio di fumo armato.',
-        en: 'The minister of beans of Totto Land, who rubs his belly like a lamp and lets an armed genie of smoke out of it.',
+        it: 'Il ministro dei fagioli di Totto Land e il terzo figlio di Big Mom, dal cui corpo esce un genio gigantesco.',
+        en: 'The minister of beans of Totto Land and Big Mom’s third son, out of whose body comes a giant genie.',
       },
       visual: { art: 'charlotte-daifuku', tint: 'teal' },
     },
@@ -401,8 +407,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 855,
       name: { it: 'Charlotte Mont-d’Or', en: 'Charlotte Mont-d’Or' },
       summary: {
-        it: 'Il ministro del formaggio di Totto Land, che rinchiude nemici e stanze intere dentro i libri e li tiene impilati sulla scrivania.',
-        en: 'The minister of cheese of Totto Land, who shuts enemies and whole rooms inside books and keeps them stacked on his desk.',
+        it: 'Il ministro del formaggio di Totto Land, che si muove tra libri che gli volano attorno e spedisce Rufy dentro il mondo di un libro.',
+        en: 'The minister of cheese of Totto Land, who moves among books flying around him and sends Luffy into the world of a book.',
       },
       visual: { art: 'charlotte-mont-dor', tint: 'sand' },
     },
@@ -413,8 +419,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 867,
       name: { it: 'Streusen', en: 'Streusen' },
       summary: {
-        it: 'Il capocuoco di Totto Land, un vecchio in divisa bianca che affetta il muro di un castello e lo serve come fosse una torta.',
-        en: 'The head chef of Totto Land, an old man in cook’s whites who slices through a castle wall and serves it like a cake.',
+        it: 'Il capocuoco dei Pirati di Big Mom, un vecchietto con un enorme cappello piumato che guida i cuochi nella torta nuziale e canta mentre lavora.',
+        en: 'The head chef of the Big Mom Pirates, a little old man in a huge feathered hat who leads the cooks on the wedding cake and sings while he works.',
       },
       visual: { art: 'streusen', tint: 'yellow' },
     },
@@ -425,8 +431,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 872,
       name: { it: 'Carmel', en: 'Carmel' },
       summary: {
-        it: 'Una suora dal velo bianco che in un ricordo lontano raccoglie bambini abbandonati a Elbaf e offre caramelle a chi ha paura.',
-        en: 'A white-veiled nun who, in a distant memory, takes in abandoned children on Elbaph and hands sweets to whoever is frightened.',
+        it: 'Una suora che, in un ricordo lontano, accoglie a Elbaf i bambini che nessuno vuole e perdona alla piccola Linlin ogni danno.',
+        en: 'A nun who, in a distant memory, takes in the children nobody wants on Elbaph and forgives little Linlin every harm she does.',
       },
       visual: { art: 'carmel', tint: 'ivory' },
     },
@@ -471,12 +477,15 @@ export const wholeCake: Saga = {
     {
       id: 'reverie',
       kind: 'arc',
-      revealedAtEpisode: 878,
+      // Opens at 879 (chapter 903), where the royal ships sail to it, as its
+      // drawing shows them. Episode 878 already names it.
+      revealedAtEpisode: 879,
       revealedAtChapter: 903,
+      nameSaidAt: 878,
       name: { it: 'Reverie', en: 'Reverie' },
       summary: {
-        it: 'Il consiglio che ogni quattro anni raduna a Mary Geoise i re dei paesi aderenti, attorno a un tavolo rotondo sotto le bandiere.',
-        en: 'The council that gathers the kings of the member countries at Mary Geoise every four years, around one round table under the flags.',
+        it: 'Il consiglio che ogni quattro anni raduna a Mary Geoise i re dei paesi aderenti, che ci arrivano per mare.',
+        en: 'The council that gathers the kings of the member countries at Mary Geoise every four years, who sail there from all over the world.',
       },
       visual: { art: 'reverie', tint: 'ivory' },
     },
@@ -499,8 +508,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 905,
       name: { it: 'Morley', en: 'Morley' },
       summary: {
-        it: 'Il comandante dell’armata dell’Ovest dei rivoluzionari, un gigante con il fiocco tra i capelli che rimodella la terra come pasta.',
-        en: 'The commander of the Revolutionary Army’s western force, a giant with a ribbon in his hair who pushes the ground around like dough.',
+        it: 'Al comando dell’armata dell’Ovest dei rivoluzionari, un gigante in bombetta e minigonna che esce da sottoterra e spinge il terreno come argilla.',
+        en: 'Commander of the Revolutionary Army’s western force, a giant in a bowler hat and a miniskirt who rises out of the ground and pushes it around like clay.',
       },
       visual: { art: 'morley', tint: 'flamingo' },
     },
@@ -829,7 +838,8 @@ export const wholeCake: Saga = {
     {
       id: 'mary-geoise',
       kind: 'place',
-      revealedAtEpisode: 878,
+      // 879, with the Reverie, the arc it belongs to.
+      revealedAtEpisode: 879,
       revealedAtChapter: 903,
       // Where the Warlords are summoned at 151, long before the Reverie takes the story there.
       nameSaidAt: 151,
@@ -1250,8 +1260,8 @@ export const wholeCake: Saga = {
     'vinsmoke-judge': {
       role: { it: 'Re del Regno di Germa', en: 'King of the Germa Kingdom' },
       log: {
-        it: 'Porta corona e mantello e cammina con una lancia in mano, alla testa di un esercito di soldati identici che non discutono mai un ordine. Il suo regno non ha più terra: naviga, e si vende a chi paga. Dei figli parla come di uno strumento riuscito o mal riuscito, e di quello che se n’è andato di casa parla come di un errore.',
-        en: 'He wears a crown and a cape and walks with a lance in his hand, at the head of an army of identical soldiers who never argue with an order. His kingdom has no land any more: it sails, and it hires itself out to whoever pays. He speaks of his children as of a design that worked or failed, and of the one who left home as of a mistake.',
+        it: 'Porta un elmo dorato e un grande mantello, e affronta con la lancia il figlio che si rifiuta di sposarsi. Il suo regno non ha più terra: è una flotta di navi, abitata soprattutto da soldati, che manda le sue truppe nei paesi in guerra per non restare mai senza soldi. Al figlio che se n’è andato di casa da bambino aveva detto che era una vergogna per la famiglia e che non valeva la pena di crescerlo.',
+        en: 'He wears a golden helmet and a large cape, and goes at the son who refuses to marry with a spear. His kingdom has no land any more: it is a fleet of ships, its people mostly soldiers, that sends its troops to countries at war so as never to run short of money. He once told the son who left home as a child that he was a disgrace to the family and not worth raising.',
       },
       affiliation: [
         {
@@ -1263,43 +1273,45 @@ export const wholeCake: Saga = {
         },
       ],
       origin: [{ episode: 793, value: GERMA_KINGDOM }],
-      epithet: [{ episode: 793, value: { it: 'Garuda', en: 'Garuda' } }],
+      // A soldier says it at 794 (chapter 833). Episode 793 has it only in
+      // the preview of the next one.
+      epithet: [{ episode: 794, value: { it: 'Garuda', en: 'Garuda' } }],
     },
     'vinsmoke-ichiji': {
       role: GERMA_PRINCE,
       log: {
-        it: 'Comanda il Germa 66 insieme ai fratelli e in battaglia indossa una tuta rossa che gli accende i pugni. Non alza mai la voce e quasi mai risponde, e quando lo fa è per dire che una certa cosa non lo riguarda. Del fratello che ha lasciato il regno da bambino parla come di una questione chiusa da moltissimo tempo.',
-        en: 'He leads Germa 66 alongside his brothers, and in battle he wears a red suit that sets his fists alight. He never raises his voice and hardly ever answers, and when he does it is to say that something is no concern of his. Of the brother who left the kingdom as a child he speaks as of a matter settled a very long time ago.',
+        it: 'È il figlio maggiore della famiglia Vinsmoke e torna nel Regno di Germa con Niji dopo aver chiuso la guerra sull’isola di Broc Coli, mentre i soldati li salutano per nome. Al padre dice soltanto che sono tornati, e quando Niji si lamenta che Sanji non è venuto ad accoglierli lo ferma con una parola.',
+        en: 'He is the eldest son of the Vinsmoke family and comes back to the Germa Kingdom with Niji after ending the war on Broc Coli Island, while the soldiers greet them by name. To his father he says only that they are back, and when Niji complains that Sanji has not come out to greet them he stops him with a word.',
       },
       affiliation: [
         {
-          episode: 795,
+          episode: 800,
           value: { it: 'Germa 66, Sparking Red', en: 'Germa 66, Sparking Red' },
         },
       ],
-      origin: [{ episode: 795, value: GERMA_KINGDOM }],
+      origin: [{ episode: 800, value: GERMA_KINGDOM }],
       epithet: [
-        { episode: 795, value: { it: 'Sparking Red', en: 'Sparking Red' } },
+        { episode: 800, value: { it: 'Sparking Red', en: 'Sparking Red' } },
       ],
     },
     'vinsmoke-niji': {
       role: GERMA_PRINCE,
       log: {
-        it: 'Della sua tuta si vede soprattutto la scia: attraversa una stanza in un lampo e colpisce prima che l’avversario abbia finito di girarsi. È il più chiassoso dei quattro e il più crudele nei giochi, e ride mentre umilia chi non può rispondergli. In famiglia obbedisce al padre senza discutere e tratta i fratelli come rivali da battere.',
-        en: 'Mostly what can be seen of his suit is the streak: he crosses a room in a flash and strikes before an opponent has finished turning around. He is the loudest of the four and the cruellest at games, and he laughs while humiliating anyone who cannot hit back. At home he obeys his father without argument and treats his brothers as rivals to beat.',
+        it: 'È il secondo figlio della famiglia Vinsmoke e torna nel Regno di Germa con Ichiji dopo aver chiuso la guerra sull’isola di Broc Coli. A colazione racconta a Sanji che i fratelli si chiedevano dove e come sarebbe morto nel modo più buffo. Poi lascia il piatto perché la salsa gli fa schifo, e quando Sanji gli dice di mangiare fa chiamare la capocuoca Cosette per prendersela con lei.',
+        en: 'He is the second son of the Vinsmoke family and comes back to the Germa Kingdom with Ichiji after ending the war on Broc Coli Island. At breakfast he tells Sanji that the brothers used to wonder where and how he would die in the funniest way. Then he leaves his plate because the sauce disgusts him, and when Sanji tells him to eat it he calls for the head chef, Cosette, to take it out on her.',
       },
       affiliation: [
         {
-          episode: 795,
+          episode: 800,
           value: {
             it: 'Germa 66, Electric Blue',
             en: 'Germa 66, Electric Blue',
           },
         },
       ],
-      origin: [{ episode: 795, value: GERMA_KINGDOM }],
+      origin: [{ episode: 800, value: GERMA_KINGDOM }],
       epithet: [
-        { episode: 795, value: { it: 'Electric Blue', en: 'Electric Blue' } },
+        { episode: 800, value: { it: 'Electric Blue', en: 'Electric Blue' } },
       ],
     },
     'vinsmoke-yonji': {
@@ -1332,8 +1344,8 @@ export const wholeCake: Saga = {
     'charlotte-katakuri': {
       role: SWEET_COMMANDER_ROLE,
       log: {
-        it: 'È il più alto e il più temuto dei figli di Big Mom, e tiene la sciarpa tirata su fino agli occhi anche a tavola. Combatte con un tridente e con un corpo che diventa mochi appiccicoso, e finora nessuno lo ha visto cadere. Vede quello che sta per succedere qualche istante prima che succeda, e schiva colpi che non sono ancora partiti.',
-        en: 'He is the tallest and the most feared of Big Mom’s sons, and he keeps his scarf pulled up to his eyes even at the table. He fights with a trident and with a body that turns to sticky mochi, and so far nobody has seen him go down. He sees what is about to happen a moment before it does, and dodges blows that have not been thrown yet.',
+        it: 'È il secondo figlio della famiglia Charlotte e uno degli Sweet Commander dei Pirati di Big Mom. Arriva al castello per il tea party della madre, altissimo, con una sciarpa di piume che gli copre la bocca e gli scende sulle spalle.',
+        en: 'He is the second son of the Charlotte family and one of the Big Mom Pirates’ Sweet Commanders. He comes to the chateau for his mother’s tea party, very tall, with a feathered scarf that covers his mouth and falls to his shoulders.',
       },
       affiliation: [{ episode: 825, value: SWEET_COMMANDER }],
       origin: [{ episode: 825, value: TOTTO_LAND }],
@@ -1394,8 +1406,8 @@ export const wholeCake: Saga = {
     'charlotte-oven': {
       role: { it: 'Ministro della doratura', en: 'Minister of browning' },
       log: {
-        it: 'Governa l’isola dove ogni cosa viene cotta e dorata, e il suo carattere funziona allo stesso modo: si accende subito e non si raffredda. Quello che tocca diventa rovente, e se mette le mani in acqua il mare comincia a fumare e nessuno può più nuotarci. Agli ordini della madre risponde prima ancora che lei abbia finito di darli.',
-        en: 'He governs the island where everything is baked and browned, and his temper works the same way: it catches at once and does not cool. Whatever he touches goes red hot, and if he puts his hands in the water the sea begins to steam and nobody can swim in it any more. He answers his mother’s orders before she has finished giving them.',
+        it: 'È il quarto figlio della famiglia Charlotte e il ministro della doratura di Totto Land. È enorme e porta un mantello arancione dal colletto alto, chiuso sul davanti da un grande fiocco giallo. Il calore viene dal suo corpo, e quello che tocca diventa rovente.',
+        en: 'He is the fourth son of the Charlotte family and Totto Land’s minister of browning. He is huge, and wears a high-collared orange cape tied at the front with a big yellow bow. The heat comes from his own body, and whatever he touches turns burning hot.',
       },
       affiliation: [
         {
@@ -1412,8 +1424,8 @@ export const wholeCake: Saga = {
     'charlotte-daifuku': {
       role: { it: 'Ministro dei fagioli', en: 'Minister of beans' },
       log: {
-        it: 'Ha la barba lunga e il compito di sorvegliare l’isola dei fagioli, e a tavola siede accanto al fratello che si accende per un nulla. Quando si strofina la pancia dal corpo gli esce un gigante di fumo che combatte al posto suo e maneggia armi enormi. Dei nemici della madre parla come di una seccatura da togliere di mezzo in fretta.',
-        en: 'He wears a long beard and the duty of watching over the bean island, and at table he sits beside the brother who catches fire over nothing. When he rubs his belly a giant of smoke comes out of him, fights in his place and swings enormous weapons. He speaks of his mother’s enemies as of a nuisance to be cleared away quickly.',
+        it: 'È il terzo figlio della famiglia Charlotte e il ministro dei fagioli di Totto Land. È altissimo e massiccio, con la testa rasata, dei baffetti e una lampada da genio sulla fibbia della cintura. Dal suo corpo esce un genio gigantesco che fa le cose al posto suo.',
+        en: 'He is the third son of the Charlotte family and Totto Land’s minister of beans. He is very tall and broad, with a shaved head, a small moustache and a genie’s lamp on his belt buckle. A giant genie comes out of his body and does things for him.',
       },
       affiliation: [
         {
@@ -1430,8 +1442,8 @@ export const wholeCake: Saga = {
     'charlotte-mont-dor': {
       role: { it: 'Ministro del formaggio', en: 'Minister of cheese' },
       log: {
-        it: 'Porta gli occhiali e un cappello a punta, e tiene la contabilità dei nemici come se fosse una biblioteca. Chi gli capita a tiro finisce dentro un volume che lui richiude e ripone, e dalle pagine possono uscire mani e creature a dare battaglia. Durante le feste della madre è quello che controlla la lista degli invitati.',
-        en: 'He wears glasses and a pointed hat, and keeps his account of the family’s enemies as though it were a library. Whoever comes within reach ends up inside a volume that he closes and shelves, and hands and creatures can come out of the pages to fight. During his mother’s parties he is the one checking the guest list.',
+        it: 'È il diciannovesimo figlio della famiglia Charlotte e porta un cilindro scuro con un nastro e una tuta disegnata come uno scheletro. Marcia con l’esercito dei fratelli contro Rufy, che ha sconfitto Cracker, e intorno a lui volano dei libri. Quando Rufy sta per colpire, apre un libro sopra di lui e lo trascina nel mondo delle sue pagine.',
+        en: 'He is the 19th son of the Charlotte family and wears a dark top hat with a ribbon and a jumpsuit patterned like a skeleton. He marches with his siblings’ army against Luffy, who has beaten Cracker, with books flying around him. When Luffy is about to strike, he opens a book over him and pulls him into the world of its pages.',
       },
       affiliation: [
         {
@@ -1448,8 +1460,8 @@ export const wholeCake: Saga = {
     'streusen': {
       role: { it: 'Capocuoco di Totto Land', en: 'Head chef of Totto Land' },
       log: {
-        it: 'Cucina per Big Mom da moltissimo tempo, e da allora porta la stessa divisa bianca e lo stesso coltello. Tutto quello che tocca diventa cibo: una roccia diventa pane, una parete diventa torta, e in cucina non gli serve altro. Parla poco ai figli della sua padrona e li chiama ancora con i nomi che avevano da piccoli.',
-        en: 'He has cooked for Big Mom for a very long time, and has worn the same whites and carried the same knife throughout. Everything he touches turns into food: a rock becomes bread, a wall becomes cake, and the kitchen needs nothing else. He says little to his mistress’s children and still calls them by the names they had as infants.',
+        it: 'Guida i cuochi che preparano la torta per il matrimonio di Sanji, e i cuochi lo chiamano capocuoco. Mentre si lavora canta che la vita è amara, fatta di tormenti e di lacrime, e che almeno il dolce dovrebbe essere una torta. Porta un cappello enorme con una grande piuma e un cronometro al fianco.',
+        en: 'He leads the cooks making the cake for Sanji’s wedding, and they call him head chef. While they work he sings that life is bitter, all torment and tears, so the dessert at least should be sweet cake. He wears a huge hat with a big feather and a stopwatch at his side.',
       },
       affiliation: [
         {
@@ -1469,8 +1481,8 @@ export const wholeCake: Saga = {
         en: 'Mother of the Sheep’s House',
       },
       log: {
-        it: 'Nel ricordo gestisce un orfanotrofio sull’isola dei giganti e accoglie chiunque venga lasciato alla sua porta, chiamandoli tutti figli suoi. Ha il velo bianco, un sorriso larghissimo e un sacchetto di dolci sempre a portata di mano. I bambini la chiamano Mamma, e una di loro, una bambina già più alta di lei, non si stacca mai dalla sua gonna.',
-        en: 'In the memory she runs an orphanage on the island of giants and takes in whoever is left at her door, calling them all her own children. She has a white veil, a very wide smile and a bag of sweets always within reach. The children call her Mother, and one of them, a little girl already taller than she is, never leaves her skirts.',
+        it: 'Nel ricordo è una suora venuta da fuori che ferma la Marina mentre sta per giustiziare alcuni giganti catturati, e per questo i giganti di Elbaf la rispettano. Sull’isola apre un orfanotrofio dove accoglie bambini di ogni razza che non hanno un posto dove andare, e tutti la chiamano Mamma. Quando la piccola Linlin, abbandonata dai genitori, fa del male agli altri, lei la perdona ogni volta e ripete che è una bambina buona.',
+        en: 'In the memory she is a wandering nun who stops the Navy as it is about to execute some captured giants, and the giants of Elbaph respect her for it. On the island she opens an orphanage that takes in children of any race with nowhere else to go, and they all call her Mother. When little Linlin, abandoned by her parents, hurts the others, she forgives her every time and says she is a kind girl.',
       },
       status: [
         { episode: 836, value: 'alive' },
@@ -1490,7 +1502,10 @@ export const wholeCake: Saga = {
       epithet: [
         { episode: 836, value: { it: 'Mamma Carmel', en: 'Mother Carmel' } },
       ],
-      devilFruit: [{ episode: 836, value: ['soul-soul-fruit'] }],
+      // She makes a homie of the fire at 837 (chapter 867), but what her
+      // power is comes out at 838, when Linlin can do the same trick. No
+      // chapter: 868 is below her own 872.
+      devilFruit: [{ episode: 838, value: ['soul-soul-fruit'] }],
     },
     'gerd': {
       role: { it: 'Bambina gigante di Elbaf', en: 'Giant girl of Elbaph' },
@@ -1569,8 +1584,8 @@ export const wholeCake: Saga = {
         en: 'Commander of the West Army',
       },
       log: {
-        it: 'È un gigante e si presenta con il fiocco tra i capelli, il rossetto e una voce che non si sforza di sembrare altro. Sbuca da sottoterra in mezzo a una città razziata dai pirati, con un tridente enorme in mano, e si offende quando lo prendono in giro per la minigonna. Il terreno che spinge con le mani si muove come argilla.',
-        en: 'He is a giant, and he turns up with a ribbon in his hair, lipstick on and a voice that makes no effort to sound like anything else. He rises out of the ground in a town being raided by pirates, a giant trident in his hand, and takes offence when they mock his miniskirt. The ground he pushes with his hands moves like clay.',
+        it: 'Morley è un gigante con i baffi, una bombetta scura e una minigonna, e parla in modo gentile. Sbuca da sottoterra in mezzo a una città razziata dai pirati, con un tridente enorme in mano, e ai pirati che continuano a guardare chiede se si sono presi una cotta. Il terreno che spinge con le mani si muove come argilla.',
+        en: 'Morley is a giant with a moustache, a dark bowler hat and a miniskirt, and speaks gently. Morley rises out of the ground in a town being raided by pirates, a giant trident in hand, and asks the pirates who keep staring whether they have a crush. The ground Morley pushes with both hands moves like clay.',
       },
       affiliation: [
         {
@@ -1589,8 +1604,8 @@ export const wholeCake: Saga = {
         en: 'Commander of the North Army',
       },
       log: {
-        it: 'Porta una maschera e un cappello a tesa larga, e parla per frasi corte. Su un tetto si raduna uno stormo di corvi e da lì prende forma la sua figura, e sono i corvi a strappare le spade ai pirati. Dice ai pirati che sono venuti a fermarli, e più tardi ammette di essersi dimenticato di accendere l’altoparlante.',
-        en: 'He wears a mask and a wide-brimmed hat, and speaks in short sentences. A flock of crows gathers on a roof and his figure takes shape out of it, and it is the crows that take the pirates’ swords. He tells the pirates they are here to put a stop to them, and later admits he forgot to turn on his loudspeaker.',
+        it: 'È calvo, porta un cappotto di piume scure aperto sul petto e una maschera che gli copre metà del viso e gli fa da altoparlante. Su un tetto si raduna uno stormo di corvi e da lì prende forma la sua figura, e sono i corvi a strappare le spade ai pirati. Dice ai pirati che sono venuti a fermarli, e più tardi ammette di essersi dimenticato di accendere l’altoparlante.',
+        en: 'He is bald, wears a dark feather coat open on his chest and a mask over half his face that works as his loudspeaker. A flock of crows gathers on a roof and his figure takes shape out of it, and it is the crows that take the pirates’ swords. He tells the pirates they are here to put a stop to them, and later admits he forgot to turn on his loudspeaker.',
       },
       affiliation: [
         {

@@ -170,10 +170,11 @@ describe('a fruit’s own page', () => {
 
 describe('who ate it', () => {
   it('waits for the episode that says so, not only for the character', () => {
-    // Carmel is filed long before any dossier says she ate the Soul-Soul
-    // Fruit, so a reader who has met her must still not read it here.
-    const before = fruitEaters('soul-soul-fruit', ep(800), 'en')
-    const after = fruitEaters('soul-soul-fruit', ep(836), 'en')
+    // Carmel is met at 836, two episodes before her dossier says she ate
+    // the Soul-Soul Fruit, so a reader who has met her must still not read
+    // it here.
+    const before = fruitEaters('soul-soul-fruit', ep(837), 'en')
+    const after = fruitEaters('soul-soul-fruit', ep(838), 'en')
 
     expect(eatersIn(before)).not.toContain('Carmel')
     expect(eatersIn(after)).toContain('Carmel')

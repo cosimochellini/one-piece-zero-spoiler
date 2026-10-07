@@ -1100,15 +1100,40 @@ export const wholeCakeArt = {
     shadow(80, 184, 66),
   ],
 
-  // A round council table ringed with empty thrones, under a banner.
+  // Two royal ships sailing to the Reverie side by side, seen from the sea:
+  // the near one with its stern castle, its top face showing, the hull
+  // hatched below the wale, two big sails bellied by the wind under their
+  // topsails and plain pennants; the far one smaller beside its bow. The
+  // ships of Dressrosa and Prodence sail there together at 879 and lie
+  // anchored together in chapter 903. The council itself, its table and the
+  // Empty Throne come later.
   'reverie': [
-    { d: ellipse(80, 132, 54, 18) },
-    { d: 'M26 132 v8 a54 18 0 0 0 108 0 v-8' },
-    { d: 'M32 116 v-22 h14 v22 M114 116 v-22 h14 v22' },
-    { d: 'M60 110 v-26 h14 v26 M86 110 v-26 h14 v26' },
-    { d: 'M80 22 V44' },
-    { d: 'M50 44 H110 V74 L80 64 L50 74 Z', role: 'accent' },
-    shadow(80, 160, 52),
+    { d: 'M116 138 H158 L152 152 H122 Z', role: 'soft' },
+    { d: 'M128 138 V76 M148 138 V86', role: 'soft' },
+    {
+      d: 'M120 84 H136 C138 96 138 108 136 118 H120 C122 108 122 96 120 84 M141 94 H155 C157 104 157 112 155 120 H141 C143 112 143 104 141 94',
+      role: 'soft',
+    },
+    { d: 'M128 76 l10 2 l-10 2 M148 86 l8 2 l-8 2', role: 'soft' },
+    { d: 'M6 126 V100 H30 V114 H96 L112 104 L104 140 Q60 156 16 148 Z' },
+    { d: 'M30 100 L36 96 V110 M6 100 L12 96 H36', role: 'soft' },
+    { d: 'M12 134 Q58 146 106 128', role: 'soft' },
+    {
+      d: 'M20 142 l8 -8 M36 146 l8 -8 M52 147 l8 -8 M68 147 l8 -8 M84 144 l8 -8',
+      role: 'ambient',
+    },
+    { d: 'M108 106 L126 96' },
+    { d: 'M40 114 V28 M76 114 V38' },
+    {
+      d: 'M22 52 H58 C62 68 62 86 58 100 H22 C26 86 26 68 22 52 Z M60 60 H92 C96 74 96 90 92 104 H60 C64 90 64 74 60 60 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M28 34 H52 C54 40 54 44 52 48 H28 C30 44 30 40 28 34 M64 44 H88 C90 48 90 52 88 56 H64 C66 52 66 48 64 44',
+      role: 'soft',
+    },
+    { d: 'M40 28 l14 3 l-14 3 M76 38 l12 3 l-12 3', role: 'soft' },
+    ...SEA,
   ],
 
   // Her flag on its pole, the cloth turning over at the fly to show its
@@ -1138,7 +1163,7 @@ export const wholeCakeArt = {
 
   // The paved street pushed up off the ground and curling over like
   // dough, its cobbles following the curl, the turned underside hatched and
-  // loose cobbles flung off it. She moves the ground like this against the
+  // loose cobbles flung off it. Morley moves the ground like this against the
   // Peachbeard Pirates at 880.
   'morley': [
     {
