@@ -595,8 +595,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Miss Merry Christmas', en: 'Miss Merry Christmas' },
       summary: {
-        it: 'Un’agente non più giovane, con il mal di schiena e la lingua svelta, che allo Spiders Cafe prende il tè più forte e parla al posto del suo compagno lentissimo.',
-        en: 'An older agent with a bad back and a quick tongue, who takes the strongest tea at the Spiders Cafe and does the talking for her slow partner.',
+        it: 'Un’agente non più giovane, con la schiena e i fianchi doloranti e la lingua svelta, che allo Spiders Cafe prende il tè più forte e parla al posto del suo compagno lentissimo.',
+        en: 'An older agent with an aching back and hips and a quick tongue, who takes the strongest tea at the Spiders Cafe and does the talking for her slow partner.',
       },
       visual: { art: 'miss-merry-christmas', tint: 'red' },
     },
@@ -951,8 +951,8 @@ export const alabasta: Saga = {
     'wapol': {
       role: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
       log: {
-        it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Finito in mare, affonda come un’incudine, e la ciurma deve ripescarlo.',
-        en: 'His ship, the Bliking, comes up beside the Going Merry and his men board her, while he asks the crew for the way to Drum Kingdom. One of his men says he ate a devil fruit that lets him eat anything: he eats a sword along with the meat on it, then starts eating the ship. Knocked into the sea, he sinks like an anvil, and his crew has to fish him out.',
+        it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Rufy lo fa volare via con un colpo, e la sua ciurma si ritira.',
+        en: 'His ship, the Bliking, comes up beside the Going Merry and his men board her, while he asks the crew for the way to Drum Kingdom. One of his men says he ate a devil fruit that lets him eat anything: he eats a sword along with the meat on it, then starts eating the ship. Luffy sends him flying with a punch, and his crew retreats.',
       },
       // Episode 79 shows a pirate captain looking for Drum Kingdom; Dalton
       // tells the Straw Hats that Wapol was its king and fled in episode 80,
@@ -1426,16 +1426,16 @@ export const alabasta: Saga = {
     'mr-4': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È lentissimo: gli serve molto tempo anche solo per dire poche parole. Porta con sé una mazza da baseball e un fucile a forma di cane, allo Spiders Cafe gli servono un tè alla mela, e ride dello spettacolo del ballerino. La collega con cui lavora parla per tutti e due, e dà a lui la colpa del suo mal di schiena.',
-        en: 'He is extremely slow: it takes him a long time to get out even a few words. He carries a baseball bat and a dog-shaped gun, is served an apple tea at the Spiders Cafe, and laughs at the dancer’s show. The colleague he works with does the talking for both of them, and blames him for her bad back.',
+        it: 'È lentissimo: gli serve molto tempo anche solo per dire poche parole. Porta con sé una mazza da baseball e un fucile a forma di cane, allo Spiders Cafe gli servono un tè alla mela, e ride dello spettacolo del ballerino. La collega con cui lavora parla per tutti e due, e dà a lui la colpa dei suoi dolori.',
+        en: 'He is extremely slow: it takes him a long time to get out even a few words. He carries a baseball bat and a dog-shaped gun, is served an apple tea at the Spiders Cafe, and laughs at the dancer’s show. The colleague he works with does the talking for both of them, and blames him for her aches.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
     },
     'miss-merry-christmas': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dandone la colpa al suo compagno. Parla in fretta, accetta il tè nero forte che le offrono e risponde a tono a chi le dà della vecchia. Lavora con un agente lentissimo e parla al posto suo.',
-        en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and blaming her partner for it. She talks fast, takes the strong black tea she is offered, and snaps back at anyone who calls her old. She works with an extremely slow agent and speaks for him.',
+        it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dei fianchi e dandone la colpa al suo compagno. Parla in fretta, accetta il tè nero forte che le offrono e risponde a tono a chi le dà della vecchia. Lavora con un agente lentissimo e parla al posto suo.',
+        en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and hips and blaming her partner for it. She talks fast, takes the strong black tea she is offered, and snaps back at anyone who calls her old. She works with an extremely slow agent and speaks for him.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
