@@ -1790,9 +1790,9 @@ export const summitWarArt = {
     ...SEA.slice(1),
   ],
 
-  // The seastone net he drops on the intruders, lying in a heap, and his
-  // barbed trident across it, the prongs in his colour. He springs the trap in
-  // episode 431.
+  // The seastone net he drops on the intruders, lying in a heap, and the
+  // barbed trident he carries laid across it, the prongs in his colour. He
+  // comes with both to spring the trap in episode 431.
   'saldeath': [
     {
       d: 'M12 162 C14 152 24 150 30 144 C36 134 50 134 58 138 C66 128 84 128 92 136 C102 130 118 132 124 142 C134 144 146 152 146 162 Z',
@@ -1838,9 +1838,9 @@ export const summitWarArt = {
     shadow(80, 192, 56),
   ],
 
-  // His club, a spiked iron ball on a short haft, lying on the floor with the
-  // far side of the ball hatched, the spikes in his colour. He swings it at
-  // Luffy and Bon Kurei in episode 433.
+  // His spiked club, ball-headed, lying on the floor with the far side of the
+  // ball hatched, the spikes in his colour. He swings it at Luffy and Bon Kurei
+  // in episode 433.
   'minotaurus': [
     { d: circle(112, 136, 20) },
     { d: 'M92 136 C96 142 128 142 132 136', role: 'soft' },
@@ -1875,9 +1875,9 @@ export const summitWarArt = {
     ...SEA.slice(1),
   ],
 
-  // His great red band, knotted and laid on the floor with its tails loose,
-  // and beside it his necklace of square stones. He comes out of the fog with
-  // the fleet in episode 460.
+  // His great red band laid on the floor, a fat knot at the back and its two
+  // tails loose, and beside it his necklace of square stones. He comes out of
+  // the fog with the fleet in episode 460.
   'doma': [
     {
       d: 'M14 118 C14 108 96 108 96 118 C96 128 14 128 14 118 Z',
@@ -1891,15 +1891,19 @@ export const summitWarArt = {
       d: 'M24 128 C30 134 44 136 54 136 M64 128 l3 9 M38 126 l-2 8',
       role: 'soft',
     },
-    { d: 'M94 124 C102 116 112 118 112 124 C110 132 100 134 94 130' },
     {
-      d: 'M110 122 C122 116 132 124 146 116 M110 128 C120 136 124 146 138 150',
-      role: 'soft',
+      d: 'M92 118 C100 110 114 112 116 122 C116 132 104 138 94 134 M100 118 C104 122 104 128 100 132',
+    },
+    {
+      d: 'M114 116 C126 108 136 114 150 104 L146 114 L152 120 C138 126 128 122 116 126',
+    },
+    {
+      d: 'M112 132 C120 138 122 150 134 156 L130 160 L140 164 C124 162 114 152 106 136',
     },
     { d: 'M80 134 l6 -5 M88 132 l5 -5', role: 'ambient' },
-    { d: 'M54 154 C70 172 110 176 148 160', role: 'soft' },
+    { d: 'M40 156 C56 172 96 176 128 166', role: 'soft' },
     {
-      d: `${polygon(66, 164, 6, 4)} ${polygon(86, 171, 6, 4)} ${polygon(108, 172, 6, 4)} ${polygon(130, 167, 6, 4)}`,
+      d: 'M48 164 l4 -6 l6 4 l-4 6 z M68 170 l4 -6 l6 4 l-4 6 z M90 172 l4 -6 l6 4 l-4 6 z M112 169 l4 -6 l6 4 l-4 6 z',
     },
     shadow(80, 188, 66),
   ],
@@ -1958,9 +1962,9 @@ export const summitWarArt = {
     shadow(90, 186, 62),
   ],
 
-  // His huge curved sabre lying on the frozen bay, the cup guard in his
-  // colour, the far face of the blade hatched. He has it in hand in the charge
-  // across the ice, episode 475.
+  // His huge sword, a long curved blade, lying on the frozen bay, the cup
+  // guard in his colour, the far face of the blade hatched. He has it in hand
+  // in the charge across the ice, episode 475.
   'blenheim': [
     { d: 'M60 136 C94 132 128 116 152 84 C134 120 100 142 62 148' },
     { d: 'M66 141 C98 137 126 122 146 96', role: 'soft' },
@@ -2114,25 +2118,23 @@ export const summitWarArt = {
     { d: ellipse(62, 146, 16, 5), role: 'accent' },
     shadow(84, 176, 56),
   ],
-  // An empty cell in Impel Down: the bars running away from us and, on the
-  // floor, a heavy shackle, closed and empty, chained to a ring at their foot.
-  // Sengoku remembers him as the only man ever to break out, episode 425.
+  // An empty cell in Impel Down, the place he left: a front of bars with its
+  // door shut, the door and its lock in his colour, the stone side wall
+  // hatched. Sengoku remembers him as the "first" prisoner ever to break out,
+  // episode 425.
   'shiki': [
+    { d: 'M20 40 H112 M20 150 H112 M20 40 V150 M112 40 V150' },
+    { d: 'M32 40 V150 M44 40 V150 M100 40 V150', role: 'soft' },
+    { d: 'M56 46 H88 V150 M56 46 V150 M72 46 V150 M56 98 H88', role: 'accent' },
+    { d: 'M84 92 h8 v12 h-8 z', role: 'accent' },
+    { d: 'M112 40 L146 58 V136 L112 150' },
     {
-      d: 'M20 24 V140 M44 30 V136 M68 36 V132 M92 42 V128 M116 48 V124 M140 54 V120 M14 22 L146 52 M14 142 L146 118',
+      d: 'M112 66 L146 80 M112 94 L146 102 M112 122 L146 124 M128 52 V74 M134 84 V98 M124 108 V128',
       role: 'soft',
     },
-    { d: 'M24 70 l6 2 M48 74 l6 2 M24 100 l6 2', role: 'ambient' },
-    { d: 'M124 128 a6 3 0 1 0 12 0', role: 'soft' },
-    {
-      d: `${ellipse(122, 137, 7, 3.5)} ${ellipse(112, 143, 3.5, 6)} ${ellipse(102, 149, 7, 3.5)}`,
-    },
-    { d: ellipse(64, 158, 34, 13), role: 'accent' },
-    { d: ellipse(64, 156, 22, 7), role: 'accent' },
-    { d: 'M30 158 V164 C30 180 98 180 98 164 V158', role: 'soft' },
-    { d: 'M92 152 h10 v12 h-10 z' },
-    { d: 'M84 172 l6 -4 M76 175 l6 -4', role: 'ambient' },
-    shadow(66, 188, 44),
+    { d: 'M120 70 l8 -4 M130 76 l8 -4 M120 140 l8 -4', role: 'ambient' },
+    { d: 'M20 150 L54 132 H112 M54 132 V48', role: 'ambient' },
+    shadow(80, 176, 66),
   ],
 } satisfies Drawings
 
