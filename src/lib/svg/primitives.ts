@@ -111,23 +111,6 @@ export function sheath(dx: number, role: StrokeRole): Stroke[] {
   ]
 }
 
-/** A small ghost, the kind that follows an umbrella. */
-export const ghost = (x: number, y: number, role: StrokeRole): Stroke[] => {
-  return [
-    {
-      d: `M${n(x)} ${n(y)} c0 -16 10 -22 16 -22 c6 0 16 6 16 22 v12 c-5 -4 -11 -4 -16 0 c-5 -4 -11 -4 -16 0z`,
-      role,
-    },
-    {
-      d: dots([
-        [x + 11, y - 8],
-        [x + 21, y - 8],
-      ]),
-      role,
-    },
-  ]
-}
-
 /**
  * One arm of a windmill with its sail, hub at (80, 80), pointing up and to
  * the right. The other three are the same stroke rotated about the hub.

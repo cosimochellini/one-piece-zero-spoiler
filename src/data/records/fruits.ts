@@ -473,7 +473,7 @@ export const devilFruits: Saga = {
     {
       id: 'shadow-shadow-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 343,
+      revealedAtEpisode: 349,
       revealedAtChapter: 455,
       name: { it: 'Frutto Kage Kage', en: 'Shadow-Shadow Fruit' },
       summary: {

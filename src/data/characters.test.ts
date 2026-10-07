@@ -424,10 +424,10 @@ describe('the chart', () => {
     const index = drawn.findIndex((entity) => entity.id === 'perona')
 
     expect(drawn).toHaveLength(chart.length + 1)
-    expect(drawn[index - 1]?.revealedAtEpisode).toBeLessThanOrEqual(340)
-    expect(drawn[index + 1]?.revealedAtEpisode).toBeGreaterThan(340)
-    // Brook is filed at 339, one episode before her, so he comes first.
-    expect(drawn[index - 1]?.id).toBe('brook')
+    expect(drawn[index - 1]?.revealedAtEpisode).toBeLessThanOrEqual(343)
+    expect(drawn[index + 1]?.revealedAtEpisode).toBeGreaterThan(343)
+    // Thriller Bark is filed at 343 too, so the island comes first.
+    expect(drawn[index - 1]?.id).toBe('thriller-bark')
   })
 })
 
@@ -520,7 +520,7 @@ describe('routePositionOf', () => {
     const position = routePositionOf(must('perona'), chartWith(must('perona')))
 
     expect(position.total).toBe(chart.length + 1)
-    expect(position.previous?.id).toBe('brook')
+    expect(position.previous?.id).toBe('thriller-bark')
   })
 
   it('counts along whatever order it is handed', () => {

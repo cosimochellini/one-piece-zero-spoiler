@@ -1,9 +1,12 @@
-import { circle, dots, ellipse, ghost, SEA, shadow } from '~/lib/svg/primitives'
+import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /** The barrel tipped as the waves lift it. */
 const BARREL_BOB = 'rotate(-10 80 110)'
+
+/** Perona's parasol, tipped as if over her shoulder. */
+const PARASOL_TILT = 'rotate(-24 80 112)'
 
 /**
  * Brook's violin standing in 3/4, the rib on its far side hatched. The 517
@@ -121,15 +124,48 @@ export const thrillerBarkArt = {
     shadow(84, 166, 32),
   ],
 
-  // An umbrella, and two small ghosts drifting beside it.
+  // Her parasol, open and tilted in 3/4: the dome with two small devil
+  // horns, its far side hatched, the band of square teeth round the rim and
+  // the shaft down to its curled handle. Two of her ghosts drift beside it as
+  // eyeless wisps, in her colour. She carries it when she is first seen at
+  // 343 (ch. 449), as her ghosts drift home to her.
   'perona': [
-    { d: 'M28 104 Q80 44 132 104' },
-    { d: 'M28 104 q13 -12 26 0 t26 0 t26 0 t26 0' },
-    { d: 'M80 52 L54 100 M80 52 L106 100', role: 'ambient' },
-    { d: 'M80 104 V166 q0 12 -12 12 q-8 0 -8 -8' },
-    { d: 'M80 52 v-10' },
-    ...ghost(28, 158, 'accent'),
-    ...ghost(102, 134, 'accent'),
+    {
+      d: 'M20 96 C24 64 50 44 80 44 C110 44 136 64 140 96',
+      transform: PARASOL_TILT,
+    },
+    { d: ellipse(80, 96, 60, 14), transform: PARASOL_TILT },
+    {
+      d: 'M138.3 99.4 V106.4 L133.1 109.5 V102.5 M124.9 105.3 V112.3 L114.1 114.5 V107.5 M101.3 109.1 V116.1 L87.2 116.9 V109.9 M72.8 109.9 V116.9 L58.7 116.1 V109.1 M45.9 107.5 V114.5 L35.1 112.3 V105.3 M26.9 102.5 V109.5 L21.7 106.4 V99.4',
+      role: 'soft',
+      transform: PARASOL_TILT,
+    },
+    {
+      d: 'M80 44 C68 58 60 80 58 109 M80 44 C92 58 100 80 102 109',
+      role: 'soft',
+      transform: PARASOL_TILT,
+    },
+    {
+      d: 'M120 60 l6 -4 M128 72 l6 -4 M133 84 l6 -4',
+      role: 'ambient',
+      transform: PARASOL_TILT,
+    },
+    {
+      d: 'M64 50 c-6 -3 -10 -10 -9 -17 c4 5 9 8 14 9 M96 50 c6 -3 10 -10 9 -17 c-4 5 -9 8 -14 9',
+      transform: PARASOL_TILT,
+    },
+    {
+      d: 'M80 110 V166 c0 9 -5 13 -11 13 c-6 0 -8 -6 -4 -9 c3 -2 7 0 6 3',
+      transform: PARASOL_TILT,
+    },
+    {
+      d: 'M18 172 C10 162 14 146 26 146 C38 146 42 160 34 168 C29 173 30 182 40 188 C28 190 20 182 18 172 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M146 132 C154 124 154 112 144 110 C134 108 128 118 134 126 C138 132 134 140 124 142 C136 146 142 138 146 132 Z',
+      role: 'accent',
+    },
   ],
 
   // The bridal veil under its crown of flowers, folds falling to a wavy hem,
@@ -154,49 +190,66 @@ export const thrillerBarkArt = {
     shadow(80, 172, 50),
   ],
 
-  // A pair of scissors, and the shadow lying cut in two beneath them.
+  // His giant scissors on their side and nearly shut, the near blade's
+  // serrated edge in his colour, the far blade hatched. A strip of shadow,
+  // hatched because it is black, lies on the floor and is pulled up into the
+  // jaws, cut straight across. He cuts Luffy's shadow loose with them at 349
+  // (ch. 455), where he is first seen whole.
   'gecko-moria': [
-    { d: 'M18 26 L88 92 L78 102 Z', role: 'accent' },
-    { d: 'M142 26 L72 92 L82 102 Z', role: 'accent' },
-    { d: circle(80, 100, 4) },
-    { d: 'M78 102 C68 116 50 122 40 118' },
-    { d: 'M82 102 C92 116 110 122 120 118' },
-    { d: ellipse(30, 130, 14, 17) },
-    { d: ellipse(130, 130, 14, 17) },
+    { d: 'M70 92 L150 70 L152 78 L74 98', role: 'accent' },
     {
-      d: 'M20 168 C34 158 56 156 70 162 L66 180 C46 182 28 178 20 174 Z',
+      d: 'M74 98 L79.1 99.8 L82.7 95.8 L87.7 97.6 L91.3 93.6 L96.4 95.4 L100 91.3 L105.1 93.1 L108.7 89.1 L113.7 90.9 L117.3 86.9 L122.4 88.7 L126 84.7 L131.1 86.5 L134.7 82.4 L139.7 84.2 L143.3 80.2 L148.4 82 L152 78',
+      role: 'accent',
+    },
+    { d: 'M74 104 L150 116 L148 108 L76 100' },
+    {
+      d: 'M94 108 l1 5 M110 110 l1 5 M126 113 l1 5 M140 115 l1 4',
+      role: 'ambient',
+    },
+    { d: circle(68, 100, 4) },
+    { d: 'M64 96 L50 84 M64 104 L50 116', role: 'soft' },
+    { d: ellipse(34, 78, 17, 12) },
+    { d: ellipse(34, 122, 17, 12) },
+    {
+      d: 'M16 170 C46 168 76 160 100 146 C112 138 117 124 115 104 L127 102 C130 126 124 146 108 158 C84 174 50 182 18 184 C10 184 8 172 16 170 Z',
       role: 'ambient',
       dashed: true,
     },
+    { d: 'M115 104 L127 102', role: 'ambient' },
     {
-      d: 'M140 168 C126 158 104 156 90 162 L94 180 C114 182 132 178 140 174 Z',
+      d: 'M24 182 l6 -12 M38 181 l6 -12 M52 179 l6 -12 M66 176 l6 -12 M80 172 l7 -13 M94 166 l7 -13 M106 158 l8 -12 M115 148 l8 -10 M120 136 l7 -6 M121 122 l6 -3',
       role: 'ambient',
-      dashed: true,
     },
   ],
 
-  // A long coat with nobody in it, and the bazooka out of one sleeve.
+  // His ankle-length coat standing open and empty, in one outline from the
+  // high collar over the shoulders and down the hanging sleeves: the inside
+  // hatched, buttons down one lapel, the hem cut like a parapet in his
+  // colour. He wears it when he shows himself in the graveyard at 343
+  // (ch. 449). No bazookas: they are seen at 347 and 359.
   'absalom': [
     {
-      d: 'M62 40 C46 44 38 58 36 76 L30 160 H128 L122 76 C120 58 112 44 96 40',
+      d: 'M36 168 L38 126 H24 L26 70 C27 60 30 52 36 48 L62 42 L58 14 L72 30 Q82 34 92 30 L104 14 L100 42 L124 48 C130 52 133 60 134 70 L136 126 H122 L124 168',
     },
-    { d: 'M62 40 L80 64 L96 40' },
-    { d: 'M80 64 V160', role: 'soft' },
+    { d: 'M72 30 L68 80 L64 168 M92 30 L96 80 L100 168' },
+    { d: 'M64 164 Q82 160 100 164', role: 'ambient' },
+    {
+      d: 'M74 58 l16 -6 M72 82 l20 -7 M71 106 l22 -8 M70 130 l24 -8 M68 154 l26 -9',
+      role: 'ambient',
+    },
     {
       d: dots([
-        [72, 88],
-        [72, 108],
-        [72, 128],
+        [73, 88],
+        [72, 104],
+        [71, 120],
       ]),
     },
-    {
-      d: 'M40 78 C34 102 32 128 32 152 M118 78 C124 102 126 128 126 152',
-      role: 'soft',
-    },
-    { d: 'M106 98 H150 V126 H106 Z', role: 'accent' },
-    { d: 'M150 92 L158 96 V128 L150 132 Z', role: 'accent' },
-    { d: 'M118 98 V86 h10', role: 'accent' },
-    shadow(80, 172, 50),
+    { d: 'M38 126 L40 66 M122 126 L120 66', role: 'soft' },
+    { d: 'M25 116 H38.5 M121.5 116 H135.5', role: 'soft' },
+    { d: 'M124 84 l8 -6 M124 100 l9 -6 M124 116 l10 -6', role: 'ambient' },
+    { d: 'M36 168 v-8 h7 v8 h7 v-8 h7 v8 h7', role: 'accent' },
+    { d: 'M124 168 v-8 h-6 v8 h-6 v-8 h-6 v8 h-6', role: 'accent' },
+    shadow(80, 184, 54),
   ],
 
   // His violet feathery cape standing on its own hem, the fluffy collar on

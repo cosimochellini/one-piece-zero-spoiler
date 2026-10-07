@@ -54,12 +54,13 @@ export const thrillerBark: Saga = {
     {
       id: 'perona',
       kind: 'character',
-      revealedAtEpisode: 340,
+      // A ghost from 338 and named at 341, she is first seen whole at 343.
+      revealedAtEpisode: 343,
       revealedAtChapter: 449,
       name: { it: 'Perona', en: 'Perona' },
       summary: {
-        it: 'La principessa fantasma di Thriller Bark, con un ombrello e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
-        en: 'The ghost princess of Thriller Bark, an umbrella and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
+        it: 'La principessa fantasma di Thriller Bark, con un ombrellino e un orso di peluche al seguito, i cui spettri fanno sentire chiunque tocchino indegno di vivere.',
+        en: 'The ghost princess of Thriller Bark, a parasol and a stuffed bear in tow, whose spectres leave anyone they touch feeling unworthy of living.',
       },
       visual: { art: 'perona', tint: 'pink' },
     },
@@ -78,24 +79,29 @@ export const thrillerBark: Saga = {
     {
       id: 'gecko-moria',
       kind: 'character',
-      revealedAtEpisode: 343,
+      // Woken at 343 as a shape in the dark; his face and body are first
+      // shown at 349, when his three officers stand before him.
+      revealedAtEpisode: 349,
       revealedAtChapter: 455,
+      // Named at 343, by the old man in the forest and in the title.
+      nameSaidAt: 343,
       name: { it: 'Gekko Moria', en: 'Gecko Moria' },
       summary: {
-        it: 'Il padrone di Thriller Bark, un gigante pallido con un sorriso cucito, che taglia l’ombra a chi perde contro di lui e se la tiene.',
-        en: 'The master of Thriller Bark, a pale giant with a stitched grin, who cuts the shadow off whoever loses to him and keeps it.',
+        it: 'Il padrone di Thriller Bark, un gigante pallido con due corna e una fila di punti di sutura lungo il viso, che stacca le ombre alle persone con un paio di forbici e le mette dentro i morti.',
+        en: 'The master of Thriller Bark, a pale giant with two horns and a row of stitches down his face, who cuts people’s shadows off with a pair of scissors and puts them into the dead.',
       },
       visual: { art: 'gecko-moria', tint: 'violet' },
     },
     {
       id: 'absalom',
       kind: 'character',
-      revealedAtEpisode: 341,
-      revealedAtChapter: 455,
+      // Invisible from 339 and named at 341, he is first seen at 343.
+      revealedAtEpisode: 343,
+      revealedAtChapter: 449,
       name: { it: 'Absalom', en: 'Absalom' },
       summary: {
-        it: 'Un uomo che sparisce a comando, tradito soltanto dal cappotto e dal bazooka che porta al braccio, e che entra dove gli pare.',
-        en: 'A man who vanishes on command, given away only by his coat and by the bazooka strapped to his arm, and who walks in wherever he likes.',
+        it: 'Un uomo dal lungo cappotto che diventa invisibile a comando, entra dove gli pare e richiama gli zombie del cimitero da sotto terra.',
+        en: 'A man in a long coat who turns invisible at will, walks in wherever he likes, and calls the graveyard’s zombies up out of the ground.',
       },
       visual: { art: 'absalom', tint: 'wine' },
     },
@@ -142,8 +148,8 @@ export const thrillerBark: Saga = {
       revealedAtChapter: 472,
       name: { it: 'Oz', en: 'Oars' },
       summary: {
-        it: 'Il cadavere di un gigante antico, alto quanto la villa e con due corna sull’elmo, che si rialza appena gli cuciono dentro un’ombra nuova.',
-        en: 'The corpse of an ancient giant, as tall as the mansion and horned at the helm, which stands back up once a new shadow is sewn inside it.',
+        it: 'Il cadavere di un gigante antico, alto quanto la villa e con due grandi corna sulla testa, che si rialza appena gli cuciono dentro un’ombra nuova.',
+        en: 'The corpse of an ancient giant, as tall as the mansion, with two great horns on his head, which stands back up once a new shadow is sewn inside it.',
       },
       visual: { art: 'oars', tint: 'red' },
     },
@@ -224,7 +230,8 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 345,
       revealedAtChapter: 455,
-      // Rounded up to 455, the chapter that files Absalom, whom the text names.
+      // Kept at 455, past his debut chapter: it holds chapters 451 to 454 at
+      // episode 344, and lowering it needs its own check of what they reach.
       name: { it: 'John', en: 'John' },
       summary: {
         it: 'Un capitano pirata famigerato in vita, rialzato dalla tomba come zombie con due spade ancora conficcate nella pancia, che si trascina dietro agli altri tra un singhiozzo e un sorso dalla bottiglia.',
@@ -325,18 +332,18 @@ export const thrillerBark: Saga = {
     'perona': {
       role: { it: 'Principessa fantasma', en: 'Ghost princess' },
       log: {
-        it: 'Comanda gli zombie animali di Thriller Bark da un giardino pieno di peluche, e trova carino tutto ciò che è morto e tondo. I suoi fantasmi passano attraverso i muri e attraverso le persone, e chi ne viene toccato si accascia a maledire la propria esistenza. Contro un tiratore che non ha nulla da perdere, la tattica funziona meno.',
-        en: 'She commands the animal zombies of Thriller Bark from a garden full of stuffed toys, and finds anything dead and round adorable. Her ghosts pass through walls and through people, and whoever they touch slumps to the floor cursing their own existence. Against a marksman with nothing to lose, the tactic works less well.',
+        it: 'I suoi fantasmi attraversano i muri e le persone, e chi ne viene attraversato si accascia a terra, dispiaciuto di essere al mondo. Uno di loro riferisce al dottore della villa che ognuno dei nuovi arrivati ha una taglia sulla testa. Quando tornano nelle sue stanze, il grosso orso rattoppato che la accoglie si sente dire di stare zitto: chi non è carino non è degno di lavorare per lei.',
+        en: 'Her ghosts drift through walls and through people, and whoever they pass through drops to the floor, sorry to be alive. One of them tells the doctor of the mansion that every one of the newcomers has a bounty on their head. When they float back to her rooms, the big patchwork bear who greets her is told to keep quiet: whoever is not cute is not fit to work for her.',
       },
       affiliation: [
         {
-          episode: 340,
+          episode: 343,
           value: { it: 'Pirati di Thriller Bark', en: 'Thriller Bark Pirates' },
         },
       ],
       epithet: [
         {
-          episode: 340,
+          episode: 343,
           value: { it: 'Principessa Fantasma', en: 'Ghost Princess' },
         },
       ],
@@ -375,13 +382,15 @@ export const thrillerBark: Saga = {
       chronicle: thrillerBarkChronicles['gecko-moria'],
       role: { it: 'Padrone di Thriller Bark', en: 'Master of Thriller Bark' },
       log: {
-        it: 'Governa la nave-isola dall’alto di un trono, circondato da un esercito di cadaveri cuciti a cui ha prestato le ombre rubate ai vivi. Con le forbici che porta al fianco stacca l’ombra di chi sconfigge, e chi la perde non può più restare al sole senza sbriciolarsi. Fa parte della Flotta dei Sette, e preferisce che a combattere per lui siano i morti.',
-        en: 'He rules the island-ship from a high throne, surrounded by an army of stitched corpses wearing the shadows he has taken from the living. The scissors at his side cut the shadow off anyone he beats, and a person without one crumbles the moment sunlight touches them. He sits among the Seven Warlords, and would rather the dead did his fighting.',
+        it: 'Governa la nave-isola dall’albero maestro, con un esercito di cadaveri cuciti che si muovono grazie alle ombre rubate ai vivi. Afferra un’ombra dal pavimento, la stacca con un paio di forbici e il suo padrone perde i sensi; chi resta senza ombra svanisce alla prima luce del sole. Fa parte della Flotta dei Sette, e ai suoi ufficiali dice quanto vuole diventare Re dei Pirati.',
+        en: 'He rules the island-ship from its main mast, with an army of stitched corpses that move with shadows taken from the living. He grabs a shadow off the floor, cuts it loose with a pair of scissors, and its owner falls unconscious; whoever lives on without one vanishes in the first sunlight. He sits among the Seven Warlords, and tells his officers how badly he wants to be Pirate King.',
       },
-      status: [{ episode: 343, value: 'alive' }],
+      // Episode 349 adapts chapter 455, where he is first seen whole.
+      status: [{ episode: 349, chapter: 455, value: 'alive' }],
       affiliation: [
         {
-          episode: 343,
+          episode: 349,
+          chapter: 455,
           value: {
             it: 'Pirati di Thriller Bark, capitano; Flotta dei Sette',
             en: 'Thriller Bark Pirates, captain; Seven Warlords of the Sea',
@@ -398,19 +407,20 @@ export const thrillerBark: Saga = {
           },
         },
       ],
-      origin: [{ episode: 343, value: { it: 'West Blue', en: 'West Blue' } }],
-      devilFruit: [{ episode: 343, value: ['shadow-shadow-fruit'] }],
+      devilFruit: [
+        { episode: 349, chapter: 455, value: ['shadow-shadow-fruit'] },
+      ],
       bounty: [{ episode: 917, value: 320_000_000 }],
     },
     'absalom': {
       role: { it: 'Generale degli zombie', en: 'General of the zombies' },
       log: {
-        it: 'Comanda i soldati zombie del cimitero e li manda avanti a ondate, mentre lui cammina invisibile in mezzo ai vivi. Il potere non gli toglie il peso dei passi né l’odore del sigaro, così chi lo cerca impara a fidarsi delle orecchie più che degli occhi. Il bazooka che porta al braccio è l’unica parte di lui che si vede sempre.',
-        en: 'He commands the zombie soldiers of the graveyard and sends them forward in waves while he walks unseen among the living. The power does not quiet his footsteps or hide his cigar smoke, so anyone hunting him learns to trust their ears rather than their eyes. The bazooka on his arm is the one part of him that is always visible.',
+        it: 'Senza farsi vedere trattiene cinque pirati sulla loro nave, poi sorprende una ragazza nel bagno della villa e le annuncia che sarà la sua sposa. Al cimitero richiama i soldati zombie fuori dalle tombe, e si lascia vedere solo quando sono in piedi. Loro scandiscono il suo nome e, nello stesso fiato, gli danno del pervertito.',
+        en: 'Unseen, he holds five pirates back on their own ship, then corners a woman in the mansion bath and tells her she will be his bride. In the graveyard he calls the zombie soldiers up out of their graves, and lets himself be seen only once they are standing. They chant his name, and in the same breath they call him a pervert.',
       },
       affiliation: [
         {
-          episode: 341,
+          episode: 343,
           value: {
             it: 'Pirati di Thriller Bark, generale dei soldati zombie',
             en: 'Thriller Bark Pirates, general of the zombie soldiers',
@@ -418,7 +428,7 @@ export const thrillerBark: Saga = {
         },
       ],
       epithet: [
-        { episode: 341, value: { it: 'Il Cimitero', en: 'the Graveyard' } },
+        { episode: 343, value: { it: 'Il Cimitero', en: 'the Graveyard' } },
       ],
       devilFruit: [
         { episode: 359, chapter: 464, value: ['clear-clear-fruit'] },

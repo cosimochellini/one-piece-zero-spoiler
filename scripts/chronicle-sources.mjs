@@ -1072,9 +1072,9 @@ export const CHRONICLE_SOURCES = {
     },
   },
   'gecko-moria': {
-    343: {
-      source: 'https://onepiece.fandom.com/wiki/Episode_343',
-      note: 'Threshold entry. An old, already-shadowless zombie warns the crew about Moria and that Thriller Bark is a ship, not an island; Moria himself is shown waking from his four-day sleep at the end of the episode.',
+    349: {
+      source: 'https://onepiece.fandom.com/wiki/Episode_349',
+      note: 'Threshold entry, moved from 343 for #246. At 343 an old, already-shadowless zombie warns the crew about Moria and that Thriller Bark is a ship, not an island, and Moria wakes from his four-day sleep as a shape in the dark. At 349 (chap 455 p12-13, Qref name=first appearance) Hogback, Perona and Absalom stand before him, with the captured Luffy, and his face and gigantic body are finally revealed.',
     },
     350: {
       source: 'https://onepiece.fandom.com/wiki/Gecko_Moria',
