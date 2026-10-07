@@ -558,7 +558,10 @@ export const wholeCake: Saga = {
     {
       id: 'im',
       kind: 'character',
-      revealedAtEpisode: 885,
+      // A hooded figure walks to a giant straw hat at 885, unnamed; the Empty
+      // Throne is first shown at 886. The figure sits on it and the Five
+      // Elders kneel and call it Im at 889 (chapter 908).
+      revealedAtEpisode: 889,
       revealedAtChapter: 908,
       name: { it: 'Im', en: 'Im' },
       summary: {
@@ -1652,14 +1655,14 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 885,
+          episode: 889,
           value: {
             it: 'Siede sul Trono Vuoto di Mary Geoise',
             en: 'Sits on the Empty Throne in Mary Geoise',
           },
         },
       ],
-      origin: [{ episode: 885, value: MARY_GEOISE }],
+      origin: [{ episode: 889, value: MARY_GEOISE }],
     },
     'ryokugyu': {
       role: { it: 'Ammiraglio della Marina', en: 'Marine admiral' },
