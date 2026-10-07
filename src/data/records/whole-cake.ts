@@ -1280,8 +1280,8 @@ export const wholeCake: Saga = {
     'vinsmoke-ichiji': {
       role: GERMA_PRINCE,
       log: {
-        it: 'È il figlio maggiore della famiglia Vinsmoke e torna nel Regno di Germa con Niji dopo aver chiuso la guerra sull’isola di Broc Coli, mentre i soldati li salutano per nome. Al padre dice soltanto che sono tornati, e quando Niji si lamenta che Sanji non è venuto ad accoglierli lo ferma con una parola.',
-        en: 'He is the eldest son of the Vinsmoke family and comes back to the Germa Kingdom with Niji after ending the war on Broc Coli Island, while the soldiers greet them by name. To his father he says only that they are back, and when Niji complains that Sanji has not come out to greet them he stops him with a word.',
+        it: 'È il figlio maggiore della famiglia Vinsmoke e torna nel Regno di Germa con Niji dopo aver chiuso la guerra sull’isola di Broc Coli, mentre i soldati li salutano per nome. Il padre li ringrazia per il lavoro fatto, e quando Niji si lamenta che Sanji non è venuto ad accoglierli lo ferma con una parola.',
+        en: 'He is the eldest son of the Vinsmoke family and comes back to the Germa Kingdom with Niji after ending the war on Broc Coli Island, while the soldiers greet them by name. Their father thanks them for their work, and when Niji complains that Sanji has not come out to greet them he stops him with a word.',
       },
       affiliation: [
         {
