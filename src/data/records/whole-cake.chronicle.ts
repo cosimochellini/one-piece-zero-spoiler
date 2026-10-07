@@ -462,22 +462,12 @@ export const wholeCakeChronicles = {
   ],
   'charlotte-flampe': [
     {
-      episode: 865,
-      value: {
-        title: { it: 'La miglior sorellina', en: 'The best little sister' },
-        body: {
-          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio una ragazza lo guarda con i suoi seguaci: Flambè, presidente del fan club di Katakuri, per la quale il fratello maggiore è perfetto e bellissimo. Il suo cecchino non è ancora riuscito a colpire, e lei lo liquida come inutile. Bisogna finire Cappello di Paglia prima che lo faccia Katakuri: e quando chiede chi si farà accarezzare la testa dal fratellone, i seguaci rispondono in coro che sarà lei. Votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, vuole guadagnare punti aiutandolo, anche se vederlo in difficoltà la deluderebbe: deve essere sempre perfetto.',
-          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place a girl watches with her followers: Flampe, president of Katakuri’s fan club, who finds her big brother perfect and gorgeous. Her sniper still has not landed a shot, and she dismisses him as useless. They must finish Straw Hat before Katakuri does, and when she asks who will get her head patted by big brother, her followers chorus that it will be Lady Flampe. Voted best little sister by forty of her forty-one elder brothers, she means to earn points by helping, though seeing him struggle would disappoint her: he must always be perfect.',
-        },
-      },
-    },
-    {
       episode: 867,
       value: {
         title: { it: 'Un ago senza rumore', en: 'A silent needle' },
         body: {
-          it: 'Nascosta nel Mirro-World, Flambè ha finalmente il suo colpo: un ago paralizzante della sua cerbottana silenziosa colpisce [[monkey-d-luffy|Rufy]] alla gamba, lui scivola, e [[charlotte-katakuri|Katakuri]] gli squarcia il fianco. Lei esulta per il piano riuscito alla perfezione, e perché il fratellone non si è nemmeno accorto del suo aiuto, e sogna a occhi aperti che lui la chiami la sua sorella più cara. Quando Rufy si rialza ancora, gli spara un ago dieci volte più forte. Lui lo schiva, poi cade lo stesso, e lei e i seguaci non riescono a smettere di ridere, tanto forte che Katakuri li sente.',
-          en: 'Hidden in the Mirro-World, Flampe finally gets her shot: a numbing needle from her silent blowgun hits [[monkey-d-luffy|Luffy]] in the leg, he slips, and [[charlotte-katakuri|Katakuri]] tears open his side. She is thrilled that the plan worked perfectly and that big brother has not even noticed her help, and daydreams about him calling her his dearest sister. When Luffy gets up yet again, she fires a needle ten times stronger. He dodges it, then falls over anyway, and she and her followers cannot stop laughing, so loudly that Katakuri hears them.',
+          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio Flambè lo guarda con i suoi seguaci. È la presidente del fan club di Katakuri, votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, e vuole guadagnarsi il suo favore aiutandolo a finire Cappello di Paglia. Il suo cecchino continua a mancare il colpo, così tira lei: un ago paralizzante della sua cerbottana silenziosa colpisce Rufy alla gamba, lui scivola, e Katakuri gli squarcia il fianco. Lei esulta perché il fratellone non si è nemmeno accorto del suo aiuto. Quando Rufy si rialza ancora, gli spara un ago dieci volte più forte. Lui lo schiva, poi cade lo stesso, e lei e i seguaci ridono così forte che Katakuri li sente.',
+          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place Flampe watches with her followers. She is president of Katakuri’s fan club, voted best little sister by forty of her forty-one elder brothers, and she means to win his favour by helping him finish off Straw Hat. Her sniper keeps missing, so she takes the shot herself: a numbing needle from her silent blowgun hits Luffy in the leg, he slips, and Katakuri tears open his side. She is thrilled that big brother has not even noticed her help. When Luffy gets up yet again, she fires a needle ten times stronger. He dodges it, then falls over anyway, and she and her followers laugh so loudly that Katakuri hears them.',
         },
       },
     },
