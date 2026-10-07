@@ -1111,7 +1111,7 @@ export const waterSevenArt = {
   ],
 } satisfies Drawings
 
-/** Lucci's hat and pigeon, moved aside and made smaller to make room for the mask. */
+/** Lucci's hat and pigeon, moved aside and made smaller for the mask. */
 const HAT_ASIDE = 'translate(-8 34) scale(0.72)'
 
 /** The CP0 mask, drawn level and stood on its edge against the hat's brim. */
@@ -1152,9 +1152,9 @@ export const waterSevenRedrawn: Redrawings = {
     },
   ],
   // The same top hat with the pigeon on its brim, moved aside and made
-  // smaller, and the white half-mask of CP0 stood beside it: the eye band with its two slits
-  // and the markings that curve beneath them. He is first seen wearing it in
-  // 746 (ch. 801), on Dressrosa after Doflamingo's fall.
+  // smaller, and the white half-mask of CP0 stood beside it: the eye band
+  // with its two slits and the markings that curve beneath them. He is first
+  // seen wearing it in 746 (ch. 801), on Dressrosa after Doflamingo's fall.
   'rob-lucci': [
     {
       episode: 746,
