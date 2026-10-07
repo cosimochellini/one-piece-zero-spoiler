@@ -7,6 +7,7 @@ import {
   SEA,
   shadow,
   star,
+  wave,
 } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings } from './stroke'
@@ -52,193 +53,322 @@ export const dressrosaArt = {
     },
   ],
 
-  // An island split down the middle, fire on one side and ice on the other.
+  // The New World as the crew comes up into it at 579: the sea in front
+  // burning, flames standing on the water, and behind it the island low on
+  // the horizon, its far slope hatched. Its volcano erupts a chapter later
+  // (ch 655), and the frozen half is only clouds over the far side.
   'punk-hazard-arc': [
-    { d: 'M16 140 C24 100 46 78 80 78 C114 78 136 100 144 140' },
-    { d: 'M80 78 V140', role: 'accent' },
+    { d: 'M-4 110 H16 M144 110 H164', role: 'ambient', dashed: true },
     {
-      d: 'M96 134 c5 -13 -2 -17 2 -27 c9 9 11 19 6 27 M114 134 c6 -15 0 -21 4 -31 c10 11 12 23 6 31',
+      d: 'M16 110 C24 100 32 92 42 88 L52 78 C62 71 76 69 88 71 C98 73 104 78 112 83 C124 92 136 102 144 110',
     },
-    { d: 'M34 134 l10 -28 l10 28 M56 134 l8 -20 l8 20' },
-    { d: 'M16 140 H144', role: 'ambient' },
+    {
+      d: 'M100 76 l7 -3 M110 83 l7 -3 M120 91 l7 -3 M130 99 l6 -3',
+      role: 'ambient',
+    },
+    { d: wave(128), role: 'ambient', dashed: true },
+    {
+      d: 'M34 128 c-2.8 -4.2 -1.4 -8.4 1.4 -11.2 c0 3.5 1.4 4.9 2.8 4.9 c-0.7 -5.6 0.7 -9.8 4.2 -14 c0.7 5.6 3.5 8.4 4.2 12.6 c1.4 -1.4 2.1 -3.5 2.1 -5.6 c3.5 4.2 3.5 9.8 -0.7 13.3 M108 128 c-2.4 -3.6 -1.2 -7.2 1.2 -9.6 c0 3 1.2 4.2 2.4 4.2 c-0.6 -4.8 0.6 -8.4 3.6 -12 c0.6 4.8 3 7.2 3.6 10.8 c1.2 -1.2 1.8 -3 1.8 -4.8 c3 3.6 3 8.4 -0.6 11.4',
+      role: 'accent',
+    },
+    { d: wave(150), role: 'ambient' },
+    {
+      d: 'M6 150 c-4.4 -6.6 -2.2 -13.2 2.2 -17.6 c0 5.5 2.2 7.7 4.4 7.7 c-1.1 -8.8 1.1 -15.4 6.6 -22 c1.1 8.8 5.5 13.2 6.6 19.8 c2.2 -2.2 3.3 -5.5 3.3 -8.8 c5.5 6.6 5.5 15.4 -1.1 20.9 M62 150 c-5.2 -7.8 -2.6 -15.6 2.6 -20.8 c0 6.5 2.6 9.1 5.2 9.1 c-1.3 -10.4 1.3 -18.2 7.8 -26 c1.3 10.4 6.5 15.6 7.8 23.4 c2.6 -2.6 3.9 -6.5 3.9 -10.4 c6.5 7.8 6.5 18.2 -1.3 24.7 M124 150 c-4 -6 -2 -12 2 -16 c0 5 2 7 4 7 c-1 -8 1 -14 6 -20 c1 8 5 12 6 18 c2 -2 3 -5 3 -8 c5 6 5 14 -1 19',
+      role: 'accent',
+    },
+    ...SEA.slice(1),
+  ],
+
+  // His katana drawn, the flame he cuts split in two along the blade, one
+  // half each side of it: the wrapped hilt, the round guard in 3/4, and the
+  // empty scabbard on the ground with its flame pattern. He cuts Smiley's
+  // fire with it in episode 598.
+  'kinemon': [
+    {
+      d: 'M12 170 L144 156 M13 177 L145 163 M12 170 q-3 3 1 7 M144 156 q4 3 1 7',
+    },
+    {
+      d: 'M44 172 c-1 -5 3 -7 5 -5 c0 -3 4 -5 6 -2 M84 168 c-1 -5 3 -7 5 -5 c0 -3 4 -5 6 -2 M120 164 c-1 -5 3 -7 5 -5 c0 -3 4 -5 6 -2',
+      role: 'soft',
+    },
+    { d: 'M20 148 L40 126 M28 155 L48 133 M20 148 L28 155' },
+    { d: 'M25 145 l7 7 M31 138 l7 7 M37 131 l7 7', role: 'soft' },
+    { d: 'M36 124 C42 112 58 118 56 128 C54 140 34 138 36 124 Z' },
+    { d: 'M42 126 L50 133', role: 'soft' },
+    { d: 'M49 122 C84 90 112 60 136 16 C126 52 98 90 56 130' },
+    {
+      d: 'M76 104 c-14 -6 -20 -22 -12 -38 c2 8 8 10 10 7 c-3 -12 3 -24 12 -30',
+      role: 'accent',
+    },
+    {
+      d: 'M100 70 c5 -8 3 -18 -2 -26 c11 6 18 20 15 32 c-3 11 -11 19 -20 24',
+      role: 'accent',
+    },
+    shadow(78, 186, 64),
+  ],
+
+  // The island from the sea at 579: the World Government's fence along the
+  // shore with its hazard stripes, the door Zoro cuts through to get in,
+  // and behind it the melted buildings, their roofs torn ragged and the
+  // fire rising behind them, the far sides hatched. No sign and no emblem.
+  'punk-hazard': [
+    {
+      d: 'M12 96 V70 L18 64 L22 70 L28 62 L34 68 L40 60 L46 66 L52 62 L58 70 V96 M84 96 V56 L90 50 L96 56 L102 46 L108 54 L114 48 L120 56 L126 50 L132 58 L138 54 L144 62 V96',
+    },
+    {
+      d: 'M16 70 c1 6 -1 9 0 14 M34 68 c1 7 -1 11 0 16 M52 64 c1 5 -1 8 0 12 M90 52 c1 8 -1 12 0 18 M114 50 c1 9 -1 14 0 20 M138 56 c1 6 -1 9 0 14',
+      role: 'soft',
+    },
+    { d: 'M130 66 l7 -4 M130 78 l8 -5 M130 90 l8 -5', role: 'ambient' },
+    {
+      d: 'M18 64 C14 56 18 48 22 44 C22 50 26 52 28 50 C28 42 32 36 36 32 C36 42 40 48 38 54 C40 52 42 50 42 46 C46 52 44 58 40 60',
+      role: 'accent',
+    },
+    {
+      d: 'M90 50 C86 42 90 34 96 30 C96 36 99 38 101 37 C100 28 104 20 110 14 C111 22 116 28 116 34 C118 32 120 30 120 26 C125 32 124 42 114 48 M126 50 C124 44 127 39 130 37 C131 41 133 42 135 41 C138 45 139 50 138 54',
+      role: 'accent',
+    },
+    { d: 'M6 150 V96 H154 V150' },
+    { d: 'M6 108 H64 M96 108 H154', role: 'soft' },
+    {
+      d: 'M14 96 l10 12 M30 96 l10 12 M46 96 l10 12 M104 96 l10 12 M120 96 l10 12 M136 96 l10 12',
+      role: 'soft',
+    },
+    {
+      d: 'M24 150 V108 M44 150 V108 M116 150 V108 M136 150 V108',
+      role: 'soft',
+    },
+    { d: 'M64 150 V96 M96 150 V96 M64 134 L96 120' },
+    { d: 'M-4 150 H164', role: 'ambient' },
     ...SEA,
   ],
 
-  // A samurai's katana with a small flame at the tip.
-  'kinemon': [
-    { d: 'M40 172 C66 138 96 96 124 46' },
-    { d: 'M32 166 C58 132 88 90 118 42' },
-    { d: 'M118 42 L124 46' },
-    { d: 'M50 158 L28 142' },
-    { d: 'M40 172 L24 186 M32 166 L16 180 M24 186 L16 180' },
-    { d: 'M34 176 l-6 -5 M28 182 l-6 -5', role: 'soft' },
-    { d: 'M122 40 c6 -12 -1 -18 4 -27 c10 10 11 23 3 30', role: 'accent' },
-    shadow(80, 192, 30),
-  ],
-
-  // A tall fenced gate with hazard stripes and a warning sign, flames rising
-  // behind it.
-  'punk-hazard': [
-    { d: 'M16 150 V58 H144 V150', role: 'accent' },
-    { d: 'M16 74 H144 M16 90 H144', role: 'accent' },
+  // His tricorne set down on the snow, the brims turned up and their
+  // undersides hatched, and his alligator's tail curling heavily round it
+  // from behind, the ridge of scutes along the top and the scales across it.
+  // He meets the crew on the frozen half at 584.
+  'brownbeard': [
     {
-      d: 'M28 74 L40 90 M52 74 L64 90 M76 74 L88 90 M100 74 L112 90 M124 74 L136 90',
+      d: 'M130 112 C150 116 158 136 150 152 C140 172 108 178 76 178 C46 178 22 174 14 164 C8 156 16 148 24 154',
+      role: 'accent',
+    },
+    {
+      d: 'M136 126 C142 140 138 154 124 160 C108 166 90 166 76 166 C54 166 34 164 24 160',
+      role: 'accent',
+    },
+    {
+      d: 'M146 120 l7 -3 l-2 8 M154 136 l7 1 l-5 6 M108 165 l2 -7 l4 6 M88 166 l2 -7 l4 7 M66 166 l1 -7 l5 7 M46 165 l1 -7 l5 6',
       role: 'soft',
     },
-    { d: 'M34 150 V90 M52 150 V90 M108 150 V90 M126 150 V90', role: 'soft' },
-    { d: 'M66 150 V100 H94 V150', role: 'accent' },
-    { d: 'M80 104 L94 128 H66 Z', role: 'soft' },
-    { d: 'M80 112 V120', role: 'soft' },
     {
-      d: 'M24 58 C20 44 30 36 28 22 C38 32 42 44 38 58 M64 58 C60 40 74 30 70 12 C84 26 86 44 80 58 M110 58 C106 46 116 38 114 26 C124 36 128 48 124 58',
+      d: 'M142 160 l-8 -6 M124 170 l-4 -6 M100 176 l-2 -10 M76 178 v-12 M52 177 l1 -11 M32 174 l3 -10',
+      role: 'soft',
+    },
+    { d: 'M52 106 C50 64 110 64 108 106' },
+    { d: 'M22 96 C30 88 42 84 52 84 M108 84 C118 84 130 88 138 96' },
+    { d: 'M22 96 C36 122 60 138 80 148 C100 138 124 122 138 96' },
+    { d: 'M22 96 C44 102 66 110 80 120 C94 110 116 102 138 96' },
+    { d: 'M80 120 V148', role: 'soft' },
+    {
+      d: 'M90 124 l2 9 M100 118 l2 9 M110 113 l2 8 M120 108 l2 7 M129 103 l1 6',
       role: 'ambient',
     },
-    { d: 'M-4 150 H164', role: 'ambient' },
+    { d: 'M30 92 l4 5 M40 88 l4 6 M116 88 l4 6 M126 91 l4 5', role: 'ambient' },
+    { d: 'M2 186 H158', role: 'ambient', dashed: true },
+  ],
+
+  // A laboratory flask in 3/4 on the bench, the lip seen from above, the
+  // liquid's surface and its bubbles inside the glass, and poison gas
+  // curling up out of its mouth. At 584 he is only the voice of the
+  // laboratory's master, and his gas is out over the sea.
+  'caesar-clown': [
+    { d: ellipse(80, 62, 15, 4.5) },
+    { d: 'M68 65 V98 L36 156 Q34 166 46 168 H114 Q126 166 124 156 L92 98 V65' },
+    { d: 'M38 162 Q80 152 122 162', role: 'soft' },
+    { d: 'M51 130 Q80 124 109 130 Q80 136 51 130', role: 'soft' },
     {
-      d: 'M-4 166 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0',
+      d: `${circle(88, 154, 3.5)} ${circle(84, 143, 2.5)} ${circle(87, 135, 1.8)}`,
+      role: 'soft',
+    },
+    { d: 'M74 72 V96 L52 138', role: 'soft' },
+    { d: 'M76 56 C66 44 80 36 72 24 C66 14 78 6 88 10', role: 'accent' },
+    { d: 'M86 56 C96 46 86 36 96 28 C102 24 108 26 108 32', role: 'accent' },
+    shadow(80, 172, 50),
+  ],
+
+  // One harpy's wing, spread: the leading edge up to the tip, the long
+  // flight feathers' rounded ends, the coverts' scalloped edge, the shoulder
+  // side hatched where it turns away, and a feather fallen on the snow below
+  // with flakes coming down. Usopp sees her on a rooftop at 581.
+  'monet': [
+    {
+      d: 'M30 150 C34 112 54 78 84 58 C102 46 122 34 146 24 Q152 36 144 46 Q150 58 140 64 Q144 78 132 82 Q134 96 120 98 Q120 112 106 112 Q104 126 90 124 Q86 138 72 134 Q66 146 54 142 Q44 152 30 150 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M40 132 q6 -2 6 -8 q7 -1 8 -8 q7 -1 9 -8 q7 0 10 -7 q7 0 11 -6 q7 0 12 -6 q7 1 13 -5',
+      role: 'soft',
+    },
+    {
+      d: 'M110 64 L144 46 M106 72 L140 64 M100 80 L132 82 M94 88 L120 98 M86 96 L106 112 M78 104 L90 124 M70 112 L72 134 M60 120 L54 142',
+      role: 'soft',
+    },
+    {
+      d: 'M40 120 l8 4 M46 108 l9 4 M54 96 l9 4 M62 86 l9 3 M72 76 l8 3',
+      role: 'ambient',
+    },
+    {
+      d: 'M98 166 C110 156 130 154 146 158 C132 166 112 170 98 166 Z M94 168 L146 158',
+    },
+    {
+      d: 'M112 161 l-3 -4 M124 159 l-3 -4 M114 166 l2 3 M126 164 l2 3',
+      role: 'soft',
+    },
+    { d: 'M2 176 C40 170 100 180 158 174', role: 'ambient', dashed: true },
+    {
+      d: dots([
+        [18, 168],
+        [64, 160],
+        [150, 116],
+        [154, 88],
+        [12, 120],
+      ]),
+      role: 'ambient',
+    },
+  ],
+
+  // His bamboo stick, leaning, gone black with Haki and hatched all along,
+  // its cut top seen in 3/4 and its nodes, and beside it on the floor a
+  // half-eaten hamburger patty, the bites out of its edge, like the one stuck
+  // to his cheek when he walks in at 598.
+  'vergo': [
+    { d: 'M28 184 L112 24 M42 190 L126 30' },
+    { d: 'M112 24 C114 18 126 22 126 30 C124 36 112 32 112 24 Z' },
+    { d: 'M28 184 Q34 192 42 190', role: 'soft' },
+    {
+      d: 'M48 146 Q55 152 62 151 M68 108 Q75 114 82 113 M88 70 Q95 76 102 75',
+      role: 'soft',
+    },
+    {
+      d: 'M36 176 l8 -4 M42 164 l8 -4 M54 140 l8 -4 M60 128 l8 -4 M74 102 l8 -4 M80 90 l8 -4 M94 64 l8 -4 M100 52 l8 -4 M106 40 l8 -4',
+      role: 'ambient',
+    },
+    {
+      d: 'M90 152 C90 144 104 140 118 140 Q124 146 132 142 Q134 150 142 148 Q140 156 148 158 C146 164 134 168 118 168 C102 168 90 162 90 152 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M90 152 V158 C90 168 102 174 118 174 C134 174 146 170 148 164 V158',
+      role: 'accent',
+    },
+    { d: 'M100 148 l8 6 M110 145 l10 8 M122 150 l8 7', role: 'soft' },
+    shadow(119, 182, 32),
+    shadow(36, 194, 14),
+  ],
+
+  // The small dragon he turns into, curled on the ground in two coils, the
+  // belly plates on the near side hatched, the tail tip curling out at the
+  // bottom. The neck dips into the hollow of the top coil and the head lies
+  // behind its front, so only the swept-back horns and a whisker show. The
+  // girl who saw a boy turn into a dragon asks after Momonosuke at 609, and
+  // Luffy meets the dragon at the end of it. His sword is a flashback later.
+  'momonosuke': [
+    {
+      d: 'M129.5 165.6 C112 170 70 169 46.8 158.4 C43 156.6 40.5 154 39.9 151.5 M134.5 166.4 C131.1 173.5 123.1 174.5 115.9 175.9 C103.2 177.8 90.8 177.9 78 177.3 C59.4 175.5 25.9 172.8 25.5 148.3 M113.5 136 C114.5 133.5 115.5 132 115.5 130.7 C100 135 70 134.5 56.5 126.3 C54 124.8 52 123.3 51 121.7 M132.5 135.2 C130.6 141.5 129.7 143.8 124.2 147.6 C112 152.5 90 153.5 79.5 152 C59.9 149.2 33.3 143.6 32.1 119.7',
+      role: 'accent',
+    },
+    {
+      d: 'M122.1 162.2 C124.8 163.1 127.2 163.9 129.5 165.6 M122.8 159.1 C128.8 160.4 134.6 161 134.5 166.4 M39.9 151.5 C42.7 148.6 46.5 146.9 50.4 145.2 M25.5 148.3 C27.8 142.2 30.4 138.7 35.4 134.5 M56.8 124.7 C72.7 120.3 88.2 118.8 104.6 119.5 C116 120.8 127 124.4 129.7 128.1 C131.6 132.9 131.7 134.2 132.5 135.2 M51 121.7 C56.9 112.6 71.7 110.4 81.3 108.9 M32.1 119.7 C37.4 99.1 59.9 93 78.7 90.1',
+      role: 'accent',
+    },
+    {
+      d: 'M129.1 169.3 L128.8 171.1 M121.1 171.8 L120.3 174.1 M109.1 173.5 L108.1 176.1 M94.4 174.0 L93.1 176.9 M78.5 173.1 L76.9 176.3 M63.0 170.8 L61.1 174.2 M49.4 167.1 L46.9 170.7 M39.1 162.3 L35.6 165.8 M32.9 156.4 L27.8 158.7 M123.7 137.9 L127.6 141.4 M118.9 141.2 L120.1 146.9 M110.7 143.4 L110.6 149.5 M99.7 144.6 L98.8 150.8 M87.0 144.5 L85.5 150.7 M73.9 143.1 L71.6 149.1 M61.6 140.1 L58.5 146.0 M51.3 135.9 L47.1 141.3 M44.0 130.5 L38.3 134.7 M40.3 124.0 L33.1 125.4',
+      role: 'ambient',
+    },
+    {
+      d: 'M78.7 90.1 C96 89 108 100 106 118 L105 133 M81.3 108.9 C88 110 91 118 91 126 L91 133',
+      role: 'accent',
+    },
+    {
+      d: 'M98 112 C106 106 112 96 110 82 C119 94 116 108 98 117 M100 120 C114 114 126 104 132 90 C135 106 124 118 102 124',
+    },
+    {
+      d: 'M104 106 l5 3 M108 98 l5 2 M116 112 l3 4 M124 104 l4 4',
+      role: 'ambient',
+    },
+    {
+      d: 'M104 126 C118 130 128 124 138 128 C146 131 150 138 154 146 M104 130 C114 138 124 136 132 142',
+      role: 'soft',
+    },
+    shadow(80, 188, 54),
+  ],
+
+  // Her lace headband lying open on the table, seen from a little above,
+  // the frill standing up along it, and in front of it the cannon her arm
+  // becomes, the bands round the barrel, the muzzle turned to us with its
+  // bore hatched. She bursts in on Doflamingo with it at 608.
+  'baby-5': [
+    { d: 'M26 128 C18 98 42 78 80 78 C118 78 142 98 134 128' },
+    { d: 'M36 126 C30 104 50 90 80 90 C110 90 130 104 124 126' },
+    { d: 'M26 128 Q30 133 36 126 M134 128 Q130 133 124 126', role: 'soft' },
+    {
+      d: 'M24 112 q-7 -5 -3 -11 q-5 -7 2 -12 q-2 -8 7 -10 q1 -8 10 -8 q3 -7 11 -5 q5 -6 12 -2 q6 -5 12 0 q6 -5 12 0 q7 -4 12 2 q8 -2 11 5 q9 0 10 8 q9 2 7 10 q7 5 2 12 q4 6 -3 11',
+      role: 'soft',
+    },
+    {
+      d: 'M34 98 l5 2 M44 88 l4 4 M58 82 l3 5 M80 80 v6 M102 82 l-3 5 M116 88 l-4 4 M126 98 l-5 2',
+      role: 'soft',
+    },
+    {
+      d: 'M44 150 L112 132 M50 172 L118 154 M44 150 C32 152 32 172 50 172',
+      role: 'accent',
+    },
+    {
+      d: ellipse(115, 143, 8, 11.5),
+      transform: 'rotate(-16 115 143)',
+      role: 'accent',
+    },
+    {
+      d: 'M66 144 C60 150 62 164 72 166 M90 138 C84 144 86 158 96 160',
+      role: 'soft',
+    },
+    { d: 'M112 140 l4 -3 M111 145 l6 -4 M113 149 l4 -3', role: 'ambient' },
+    { d: 'M36 160 a5 5 0 1 0 -6 6', role: 'soft' },
+    shadow(80, 184, 52),
+  ],
+
+  // A propeller seen from a little above, spinning: four blades round the
+  // hub, foreshortened, the arc they sweep, the gust under it and the gas it
+  // blows off in streaks. He spins himself like one and blows the gas back
+  // off the tanker at 618.
+  'buffalo': [
+    { d: ellipse(80, 96, 78, 28), role: 'ambient', dashed: true },
+    {
+      d: 'M86 90 C104 74 140 74 156 86 C142 100 108 104 90 100',
+      role: 'accent',
+    },
+    { d: 'M74 102 C56 118 20 118 4 106 C18 92 52 88 70 92', role: 'accent' },
+    {
+      d: 'M88 104 C98 114 104 128 98 138 C86 136 78 122 78 108',
+      role: 'accent',
+    },
+    { d: 'M72 90 C64 82 62 70 68 62 C78 66 84 76 84 88', role: 'accent' },
+    {
+      d: 'M100 84 C118 80 136 80 148 86 M12 106 C28 110 50 108 66 100',
+      role: 'soft',
+    },
+    { d: 'M70 94 V108 C70 115 90 115 90 108 V94' },
+    { d: ellipse(80, 94, 10, 4) },
+    { d: 'M84 104 l4 -3 M84 110 l5 -4', role: 'ambient' },
+    {
+      d: 'M30 150 C56 142 104 142 130 150 M46 166 C66 160 94 160 114 166',
       role: 'ambient',
       dashed: true,
     },
     {
-      d: 'M-4 182 q10 -8 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0',
-      role: 'ambient',
-    },
-  ],
-
-  // A pirate's coat with a crocodile's tail coming out of the hem.
-  'brownbeard': [
-    { d: 'M48 62 L40 152 H112 L104 62' },
-    { d: 'M64 62 L76 98 L92 62' },
-    { d: 'M48 62 q28 -14 56 0' },
-    {
-      d: dots([
-        [76, 106],
-        [76, 122],
-        [76, 138],
-      ]),
+      d: 'M118 176 c8 -6 16 0 24 -4 c6 -3 8 -10 16 -8 M110 186 c10 -2 18 2 28 -2 M132 158 c6 -4 12 -2 18 -6',
       role: 'soft',
     },
-    {
-      d: 'M104 138 C130 142 142 158 130 176 C122 188 106 186 100 176',
-      role: 'accent',
-    },
-    { d: 'M112 142 l6 -8 M126 152 l9 -4 M132 168 l9 2', role: 'accent' },
-    shadow(80, 186, 44),
-  ],
-
-  // A laboratory flask with the gas curling out of its neck.
-  'caesar-clown': [
-    {
-      d: 'M66 62 V98 L44 152 a10 10 0 0 0 10 12 h52 a10 10 0 0 0 10 -12 L94 98 V62',
-    },
-    { d: 'M62 58 h36' },
-    { d: 'M52 136 h56', role: 'soft' },
-    {
-      d: dots([
-        [66, 146],
-        [80, 152],
-        [94, 144],
-      ]),
-      role: 'soft',
-    },
-    { d: 'M72 54 C64 40 84 36 78 24 C74 16 86 12 90 18', role: 'accent' },
-    { d: 'M92 52 C100 42 88 32 96 24', role: 'accent' },
-    shadow(80, 176, 40),
-  ],
-
-  // A harpy's wing spread over an open book.
-  'monet': [
-    {
-      d: 'M22 128 C44 120 66 122 80 132 C94 122 116 120 138 128 L138 152 C116 144 94 146 80 156 C66 146 44 144 22 152 Z',
-    },
-    { d: 'M80 132 V156' },
-    { d: 'M34 136 h32 M94 136 h32', role: 'soft' },
-    {
-      d: 'M40 114 C56 70 96 52 130 56 C112 74 104 92 96 114 Z',
-      role: 'accent',
-    },
-    {
-      d: 'M66 106 C76 86 92 72 114 62 M82 112 C90 94 102 82 120 72',
-      role: 'accent',
-    },
-    shadow(80, 168, 50),
-  ],
-
-  // A bamboo staff with a hamburger stuck on the end of it.
-  'vergo': [
-    { d: 'M26 180 L116 52' },
-    { d: 'M36 186 L126 58' },
-    { d: 'M48 158 l10 7 M70 128 l10 7 M92 98 l10 7' },
-    { d: 'M96 46 a24 14 0 0 1 48 0 z', role: 'accent' },
-    { d: 'M94 46 h52 M94 56 h52', role: 'accent' },
-    { d: 'M96 56 a24 10 0 0 0 48 0 z' },
-    {
-      d: dots([
-        [112, 38],
-        [122, 34],
-        [132, 38],
-      ]),
-      role: 'soft',
-    },
-    shadow(70, 192, 32),
-  ],
-
-  // A small dragon's tail curled round the hilt of a sword. The whole dragon,
-  // grown, is drawn from 1047, in `dressrosaRedrawn`.
-  'momonosuke': [
-    { d: 'M72 42 h16 v68 h-16 z' },
-    { d: 'M60 110 h40' },
-    { d: 'M74 110 L80 172 L86 110' },
-    { d: 'M66 34 h28 v8 h-28 z' },
-    {
-      d: 'M112 58 C134 74 126 106 100 108 C74 110 62 90 74 78 C82 70 96 76 94 88',
-      role: 'accent',
-    },
-    { d: 'M112 58 l12 -10 l2 14 z', role: 'accent' },
-    {
-      d: dots([
-        [104, 74],
-        [100, 90],
-        [86, 96],
-      ]),
-      role: 'soft',
-    },
-    shadow(80, 186, 30),
-  ],
-
-  // A maid's headband with a pistol where the ribbon should be.
-  'baby-5': [
-    { d: 'M26 120 C30 78 130 78 134 120' },
-    { d: 'M38 122 C42 90 118 90 122 122' },
-    { d: 'M26 120 q6 10 12 2 M122 122 q6 10 12 -2', role: 'soft' },
-    {
-      d: dots([
-        [56, 92],
-        [80, 86],
-        [104, 92],
-      ]),
-      role: 'soft',
-    },
-    { d: 'M100 138 h48 v12 h-48 z', role: 'accent' },
-    { d: 'M110 150 l-8 24 l16 2 l6 -26 z', role: 'accent' },
-    { d: 'M120 150 v8 a7 7 0 0 0 14 0 v-8' },
-    shadow(80, 188, 40),
-  ],
-
-  // A round body with a propeller spinning over it.
-  'buffalo': [
-    { d: 'M48 96 V166 a32 8 0 0 0 64 0 V96' },
-    { d: ellipse(80, 96, 32, 8) },
-    { d: 'M48 118 h64 M48 144 h64', role: 'soft' },
-    { d: 'M80 88 V64' },
-    { d: circle(80, 60, 5) },
-    { d: 'M75 58 C56 48 34 50 28 60 C34 68 56 66 75 62 Z', role: 'accent' },
-    {
-      d: 'M85 58 C104 48 126 50 132 60 C126 68 104 66 85 62 Z',
-      role: 'accent',
-    },
-    { d: 'M34 40 q46 -14 92 0', role: 'ambient', dashed: true },
-    shadow(80, 184, 40),
   ],
 
   // The island's edge seen from the sea as the crew comes in at 629: a wall
@@ -275,31 +405,62 @@ export const dressrosaArt = {
     ...SEA.slice(1),
   ],
 
-  // A gladiator's helmet with a long braid falling from it.
+  // Her ridge helmet in 3/4, the ridge running front to back, the brow band
+  // and a cheek guard, its far side hatched; her long braid falling from
+  // under the back of it to the ground, and her round shield standing
+  // behind. She wears them in the colosseum at 634.
   'rebecca': [
-    { d: 'M44 96 a36 36 0 0 1 72 0 v18 h-72 z' },
-    { d: 'M80 68 V114' },
-    { d: 'M52 100 v22 h14 v-22 M108 100 v22 h-14 v-22' },
-    { d: 'M60 64 C68 40 92 40 100 64', role: 'accent' },
-    { d: 'M116 108 C140 122 132 156 108 172', role: 'accent' },
-    { d: 'M122 120 l8 -4 M129 134 l9 0 M126 150 l8 4 M118 162 l6 6' },
-    shadow(80, 188, 40),
-  ],
-
-  // A walking cane, and a roulette wheel beside it.
-  'issho': [
-    { d: 'M60 40 V172' },
-    { d: 'M68 40 V172' },
-    { d: 'M60 40 C60 20 92 20 92 40' },
-    { d: 'M68 40 C68 28 84 28 84 40' },
-    { d: circle(118, 146, 26), role: 'accent' },
-    { d: circle(118, 146, 14) },
     {
-      d: 'M118 120 V132 M118 160 V172 M92 146 H104 M132 146 H144',
+      d: 'M152.0 96.0 L151.8 101.1 L151.3 106.1 L150.5 111.0 L149.3 115.8 L147.9 120.5 L146.1 125.0 L144.0 129.3 L141.7 133.3 L139.1 137.0 L136.3 140.4 L133.2 143.5 L130.0 146.2 L126.6 148.6 L123.0 150.5 M66.7 76.2 L68.1 71.5 L69.9 67.0 L72.0 62.7 L74.3 58.7 L76.9 55.0 L79.7 51.6 L82.8 48.5 L86.0 45.8 L89.4 43.4 L93.0 41.5 L96.6 40.0 L100.4 38.9 L104.2 38.2 L108.0 38.0 L111.8 38.2 L115.6 38.9 L119.4 40.0 L123.0 41.5 L126.6 43.4 L130.0 45.8 L133.2 48.5 L136.3 51.6 L139.1 55.0 L141.7 58.7 L144.0 62.7 L146.1 67.0 L147.9 71.5 L149.3 76.2 L150.5 81.0 L151.3 85.9 L151.8 90.9 L152.0 96.0',
+    },
+    {
+      d: 'M144.0 96.0 L143.9 100.3 L143.5 104.5 L142.8 108.7 L141.8 112.8 L140.6 116.7 L139.2 120.5 L137.5 124.1 L135.6 127.5 L133.5 130.6 L131.1 133.5 L128.6 136.1 L126.0 138.4 L123.2 140.4 L120.3 142.0 M75.4 75.3 L76.8 71.5 L78.5 67.9 L80.4 64.5 L82.5 61.4 L84.9 58.5 L87.4 55.9 L90.0 53.6 L92.8 51.6 L95.7 50.0 L98.7 48.7 L101.7 47.7 L104.9 47.2 L108.0 47.0 L111.1 47.2 L114.3 47.7 L117.3 48.7 L120.3 50.0 L123.2 51.6 L126.0 53.6 L128.6 55.9 L131.1 58.5 L133.5 61.4 L135.6 64.5 L137.5 67.9 L139.2 71.5 L140.6 75.3 L141.8 79.2 L142.8 83.3 L143.5 87.5 L143.9 91.7 L144.0 96.0',
       role: 'soft',
     },
-    { d: dots([[128, 128]]), role: 'accent' },
-    shadow(84, 184, 52),
+    {
+      d: 'M144 70 l6 -2 M147 86 l6 -1 M147 102 l6 0 M146 118 l6 1 M142 134 l6 2',
+      role: 'ambient',
+    },
+    { d: 'M24 140 C22 104 42 80 66 80 C90 80 106 100 104 138' },
+    { d: 'M60 78 C52 96 50 118 52 142 M68 78 C60 96 58 118 60 142' },
+    { d: 'M20 140 C40 148 82 150 108 138 L108 148 C82 160 40 158 20 150 Z' },
+    { d: 'M26 154 C28 166 32 172 40 176 C44 168 44 160 42 156', role: 'soft' },
+    { d: 'M90 100 l7 -3 M94 112 l7 -3 M96 124 l7 -3', role: 'ambient' },
+    {
+      d: 'M97.0 121.5 Q98.8 131.1 108.0 134.5 Q106.2 124.9 97.0 121.5 M100.0 135.5 Q101.8 145.1 111.0 148.5 Q109.2 138.9 100.0 135.5 M103.0 149.5 Q104.8 159.1 114.0 162.5 Q112.2 152.9 103.0 149.5 M106.0 163.5 Q107.8 173.1 117.0 176.5 Q115.2 166.9 106.0 163.5',
+      role: 'accent',
+    },
+    {
+      d: 'M116.5 128.5 Q107.3 131.9 105.5 141.5 Q114.7 138.1 116.5 128.5 M119.5 142.5 Q110.3 145.9 108.5 155.5 Q117.7 152.1 119.5 142.5 M122.5 156.5 Q113.3 159.9 111.5 169.5 Q120.7 166.1 122.5 156.5 M125.5 170.5 Q116.3 173.9 114.5 183.5 Q123.7 180.1 125.5 170.5 M118.5 184 l-3 7 M118.5 184 l1 8 M118.5 184 l5 6',
+      role: 'accent',
+    },
+    shadow(66, 188, 50),
+  ],
+
+  // A roulette wheel in 3/4, the rim, the wooden base under it with its
+  // dark side hatched, the ring of pockets and the turret in the middle, the
+  // ball on its track; and standing beside it the plain straight cane he
+  // carries a sword in. He plays roulette blind at 630 and 631.
+  'issho': [
+    { d: ellipse(98, 116, 56, 28), role: 'accent' },
+    { d: 'M42 116 V132 C42 148 154 148 154 132 V116' },
+    {
+      d: 'M50 138 l5 -6 M62 143 l5 -6 M76 146 l5 -6 M118 146 l5 -6 M132 143 l5 -6 M144 138 l5 -6',
+      role: 'ambient',
+    },
+    { d: ellipse(98, 118, 40, 19), role: 'soft' },
+    { d: ellipse(98, 119, 24, 11), role: 'soft' },
+    {
+      d: 'M98 99 V108 M120 103 l-5 6 M134 112 l-9 3 M136 121 l-12 0 M76 103 l5 6 M62 112 l9 3 M60 121 l12 0 M98 137 V130 M120 134 l-5 -5 M76 134 l5 -5',
+      role: 'soft',
+    },
+    { d: 'M92 118 L95 104 H101 L104 118 M86 100 H110 M98 100 V92' },
+    { d: dot(124, 125), role: 'accent' },
+    {
+      d: 'M18 156 L36 26 M25 157 L43 27 M36 26 Q39 22 43 27 M18 156 Q21 161 25 157',
+    },
+    { d: 'M33 50 L40 51', role: 'soft' },
+    shadow(90, 162, 70),
   ],
 
   // His long coat standing on its hem, open at the front, in one outline
@@ -334,47 +495,92 @@ export const dressrosaArt = {
     shadow(80, 192, 62),
   ],
 
-  // A king's cloak folded on a colosseum bench.
+  // Ricky's masked helmet seen from behind and to one side, its face turned
+  // away: the bowl, the mask's edge coming down on the far side, the neck
+  // guard flaring out at the back and hatched, the flame up its side, the
+  // crack Blue Gilly's kick leaves across it at 644; and his old blunt sword
+  // beside it in two pieces, broken on the King Punch.
   'riku-doldo-iii': [
-    { d: 'M20 140 H140 V152 H20 Z' },
-    { d: 'M30 152 V174 M130 152 V174' },
-    { d: 'M40 140 C44 108 60 96 80 96 C100 96 116 108 120 140 Z' },
     {
-      d: 'M40 140 q10 10 20 0 q10 10 20 0 q10 10 20 0 q10 10 20 0',
+      d: 'M34 104 C32 68 58 46 86 46 C114 46 132 66 130 98 C134 106 142 112 148 118 L120 130 C96 138 60 142 38 142 C34 130 33 116 34 104 Z',
+    },
+    { d: 'M130 98 C112 110 70 116 36 114', role: 'soft' },
+    { d: 'M120 130 C124 122 128 112 130 98', role: 'soft' },
+    {
+      d: 'M54 106 C46 94 50 80 58 70 C58 80 62 84 66 84 C64 74 70 62 80 54 C80 68 86 76 92 78',
       role: 'accent',
     },
-    { d: 'M62 100 q18 12 36 0', role: 'accent' },
+    { d: 'M98 48 l-4 10 l6 4 l-5 9 l5 6', role: 'soft' },
     {
-      d: 'M62 138 C64 118 70 106 80 100 M98 138 C96 118 90 106 80 100',
+      d: 'M114 64 l8 -4 M118 76 l8 -4 M120 88 l8 -4 M126 108 l7 -4 M134 114 l7 -4',
+      role: 'ambient',
+    },
+    { d: 'M24 168 L74 156 M26 175 L76 163 M74 156 l3 3 l-4 2 l3 2' },
+    { d: 'M18 160 L30 184 M10 174 L22 170 M8 176 C4 180 8 184 12 180' },
+    { d: 'M90 166 l3 -2 l2 4 l3 -2 L146 156 L150 162 L98 176 Z' },
+    shadow(84, 190, 70),
+  ],
+
+  // His long ragged coat standing on its hem, seen from the side: the back
+  // hunched high like a shell, the front falling open with the dark lining
+  // hatched, an empty sleeve, the hem torn, and his mucus running off it,
+  // one strand stretched along the floor. He stands at Doflamingo's
+  // shoulder at 632.
+  'trebol': [
+    {
+      d: 'M104 50 C88 36 56 36 42 54 C28 72 26 108 28 138 L24 166 L32 160 L38 168 L46 160 L52 170 L60 160 L66 168 L74 160 L80 168 L88 160 L94 168 L102 160 L110 166 L118 160 C116 136 114 110 110 86 C108 70 108 58 104 50 Z',
+    },
+    { d: 'M104 50 C98 60 96 76 96 96 C96 120 98 140 102 160' },
+    {
+      d: 'M100 66 l8 4 M98 82 l10 4 M98 98 l11 4 M98 114 l12 4 M99 130 l13 4 M100 146 l14 4',
+      role: 'ambient',
+    },
+    {
+      d: 'M58 58 C50 76 46 104 48 128 L54 134 L58 128 L64 134 L68 126 C70 100 70 76 66 58',
       role: 'soft',
     },
-    shadow(80, 180, 58),
-  ],
-
-  // A chair with a cloak of mucus dripping off it.
-  'trebol': [
-    { d: 'M40 118 h64 v10 h-64 z' },
-    { d: 'M96 118 V44 h8 v84' },
-    { d: 'M46 128 V172 M98 128 V172' },
-    { d: 'M38 120 C40 84 58 62 80 62 C102 62 112 86 110 120 Z' },
     {
-      d: 'M44 122 c0 12 -6 14 -6 24 a6 6 0 0 0 12 0 c0 -12 -6 -12 -6 -24 M70 126 c0 16 -6 18 -6 30 a6 6 0 0 0 12 0 c0 -14 -6 -14 -6 -30 M98 122 c0 10 -5 12 -5 20 a5 5 0 0 0 10 0 c0 -8 -5 -10 -5 -20',
+      d: 'M38 80 C36 104 38 128 38 152 M82 70 C84 100 84 128 82 154',
+      role: 'soft',
+    },
+    {
+      d: 'M30 96 l8 -6 M28 112 l9 -6 M28 128 l9 -6 M28 144 l8 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M38 168 c0 7 -4 9 -4 14 a4 4 0 0 0 8 0 c0 -5 -4 -7 -4 -14 M88 162 c0 6 -3 8 -3 11 a3 3 0 0 0 6 0 c0 -3 -3 -5 -3 -11 M66 168 C66 176 68 182 72 186 C78 190 92 190 98 187 C102 185 100 182 96 182',
       role: 'accent',
     },
-    shadow(80, 188, 46),
+    shadow(72, 192, 58),
   ],
 
-  // A rose on a rapier's hilt, a bridle hanging beside it.
+  // His black tricorne set down on the ground, the brims turned up and
+  // hatched, the big plume sweeping back over the crown; and Durandal
+  // standing beside it in its scabbard, the swept hilt with its knuckle bow
+  // and ring. He walks into the colosseum with both at the end of 633.
   'cavendish': [
-    { d: 'M96 44 L100 32 L104 44 V130 h-8 z' },
-    { d: 'M84 130 C72 140 78 156 92 154 M116 130 C128 140 122 156 108 154' },
-    { d: 'M94 130 v30 h12 v-30' },
-    { d: circle(100, 166, 7) },
-    { d: 'M100 128 a7 7 0 1 1 -7 7 a12 12 0 1 0 12 -12', role: 'accent' },
-    { d: 'M30 60 C18 88 22 130 40 150', role: 'soft' },
-    { d: 'M30 60 C46 72 50 98 44 122' },
-    { d: `${circle(30, 56, 5)} ${circle(41, 152, 5)}` },
-    shadow(92, 184, 40),
+    { d: 'M118 74 L128 184 M124 73 L134 183 M128 184 Q131 188 134 183' },
+    { d: 'M114 70 L128 69 L128 75 L114 76 Z' },
+    { d: 'M116 68 L112 34 M122 67 L118 33', role: 'soft' },
+    { d: ellipse(115, 28, 5, 4.5) },
+    {
+      d: 'M128 70 C144 62 144 40 130 32 C126 30 122 30 120 32 M114 72 C100 76 98 90 106 96 C112 100 120 94 120 84',
+    },
+    { d: 'M30 150 C28 120 74 120 72 150' },
+    { d: 'M8 142 C14 140 22 140 30 142 M72 142 C80 140 88 140 94 142' },
+    { d: 'M8 142 C18 160 36 170 51 176 C66 170 84 160 94 142' },
+    { d: 'M8 142 C24 148 40 154 51 160 C62 154 78 148 94 142' },
+    { d: 'M51 160 V176', role: 'soft' },
+    {
+      d: 'M14 150 l4 6 M22 156 l4 6 M32 161 l3 6 M60 162 l3 6 M70 158 l3 6 M80 152 l3 6 M36 136 l5 -5 M46 132 l5 -5 M58 132 l5 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M30 138 C16 112 28 76 60 66 C80 60 98 70 102 88 C92 82 80 82 72 88 C82 90 88 98 88 108 C78 100 66 100 58 106 C64 110 66 116 64 122 C56 116 44 118 38 128 Z',
+      role: 'accent',
+    },
+    { d: 'M32 132 C30 104 46 82 78 76', role: 'accent' },
+    shadow(70, 186, 66),
   ],
 
   // His dark cape standing on its hem under its great frilled ruff, the
@@ -1439,8 +1645,9 @@ export const dressrosaArt = {
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const dressrosaRedrawn: Redrawings = {
-  // The whole dragon, grown, wound twice round the same sword. Its head is
-  // hidden behind the hilt, so only the swept-back horns and the long
+  // The whole dragon, grown, wound twice round his father's sword, which he
+  // carries from 1023 on. Its head is hidden behind the hilt, as the small
+  // dragon's is in its coils, so only the swept-back horns and the long
   // whiskers show past it; the neck comes out on the far side, the body
   // crosses in front of the hilt and the blade and behind them, with its
   // belly plates hatched, and the tail curls past the point. Shinobu's fruit
