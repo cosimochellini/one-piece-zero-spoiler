@@ -273,8 +273,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
-        it: 'La segretaria di Iceburg, con gli occhiali, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
-        en: 'Iceburg’s secretary, in glasses, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
+        it: 'La segretaria di Iceburg, con gli occhiali e un raccoglitore blu, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
+        en: 'Iceburg’s secretary, with glasses and a blue binder, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
       },
       visual: { art: 'kalifa', tint: 'pink' },
     },
