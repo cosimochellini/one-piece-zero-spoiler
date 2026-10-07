@@ -60,13 +60,14 @@ export const waterSeven: Saga = {
       id: 'porche',
       kind: 'character',
       // 208, not 207: episode 207 shows her only as a silhouette and never
-      // says her name; Foxy calls her by name in 208.
+      // says her name; Foxy calls her by name in 208. 315 is a conservative
+      // chapter kept from before; the wiki debut is 305.
       revealedAtEpisode: 208,
       revealedAtChapter: 315,
       name: { it: 'Porche', en: 'Porche' },
       summary: {
-        it: 'L’idolo dei Pirati di Foxy, che porta un bastone e si fa acclamare dalla ciurma prima ancora che il Davy Back Fight cominci.',
-        en: 'The idol of the Foxy Pirates, who carries a baton and has the crew chanting her name before the Davy Back Fight has even started.',
+        it: 'L’idolo dei Pirati di Foxy, che porta un bastone ed è adorata da tutti gli uomini della ciurma.',
+        en: 'The idol of the Foxy Pirates, who carries a baton and whom every man in the crew adores.',
       },
       visual: { art: 'porche', tint: 'pink' },
     },
@@ -74,7 +75,8 @@ export const waterSeven: Saga = {
       id: 'hamburg',
       kind: 'character',
       // 208, not 207: episode 207 shows him only as a silhouette; Foxy says
-      // his name in 208.
+      // his name in 208. 315 is a conservative chapter kept from before; the
+      // wiki debut is 305.
       revealedAtEpisode: 208,
       revealedAtChapter: 315,
       name: { it: 'Hamburg', en: 'Hamburg' },
@@ -704,8 +706,8 @@ export const waterSeven: Saga = {
     'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
       log: {
-        it: 'La ciurma la tratta da idolo: alla cerimonia d’apertura del Davy Back Fight gli uomini urlano il suo nome prima ancora che si giochi una sola prova. È al fianco di Foxy quando lui spara al cavallo di Tonjit e sfida i Cappello di Paglia, e quando Foxy sostiene che Rufy ha già accettato, lei gli dà ragione: l’ha sentito anche lei.',
-        en: 'The crew treats her as its idol: at the opening ceremony of the Davy Back Fight the men chant her name before a single round is played. She is at Foxy’s side when he shoots Tonjit’s horse and challenges the Straw Hats, and when Foxy claims that Luffy has already agreed, she backs him up: she heard it too.',
+        it: 'La ciurma la tratta da idolo, e tutti gli uomini la adorano. È al fianco di Foxy quando lui fa cadere il cavallo di Tonjit e sfida i Cappello di Paglia, e quando Foxy sostiene che Rufy ha già accettato, lei gli dà ragione: l’ha sentito anche lei.',
+        en: 'The crew treats her as its idol, and every man in it adores her. She is at Foxy’s side when he brings down Tonjit’s horse and challenges the Straw Hats, and when Foxy claims that Luffy has already agreed, she backs him up: she heard it too.',
       },
       affiliation: [
         { episode: 208, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
