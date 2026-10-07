@@ -289,21 +289,21 @@ export const waterSevenArt = {
     {
       d: 'M38 40 v-14 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v14 M56 40 v-18 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v18 M114 40 v-12 q0 -5 4 -7 v-8 h4 v8 q4 2 4 7 v12',
     },
-    { d: 'M26 100 L114 100 L148 80 L60 80 Z' },
-    { d: 'M26 100 V126 M26 138 V148 H114 V100 M114 148 L148 128 V80' },
-    { d: 'M26 106 H114 L148 86 M70 112 V142', role: 'soft' },
-    { d: 'M122 139 V102 M131 134 V97 M140 129 V92', role: 'ambient' },
+    { d: 'M20 100 L124 100 L148 86 L44 86 Z' },
+    { d: 'M20 100 V126 M20 138 V148 H124 V100 M124 148 L148 134 V86' },
+    { d: 'M20 106 H124 L148 92 M56 112 V142 M90 112 V142', role: 'soft' },
+    { d: 'M131 141 V104 M140 136 V99', role: 'ambient' },
     {
-      d: `${ellipse(84, 52, 15, 5)} M69 52 L73 92 q11 4 22 0 L99 52`,
+      d: `${ellipse(84, 60, 12, 4)} M72 60 L75 92 q9 3 18 0 L96 60`,
       role: 'accent',
     },
     {
-      d: 'M78 50 q8 -10 20 -6 q10 3 12 12 L117 84 l-5 5 l-3 -5 l-5 5 l-4 -5 L99 54 M106 60 L110 82',
+      d: 'M76 58 q7 -9 17 -5 q8 3 10 10 L109 86 l-4 4 l-3 -4 l-4 4 l-3 -4 L96 62 M101 66 L104 84',
       role: 'soft',
     },
-    { d: 'M70 95 q14 5 28 0', role: 'ambient', dashed: true },
+    { d: 'M73 95 q11 4 22 0', role: 'ambient', dashed: true },
     { d: `${ellipse(22, 132, 15, 5)} M22 137 V176 M12 178 h20` },
-    shadow(82, 186, 66),
+    shadow(84, 186, 68),
   ],
 
   // Two swords crossed, each one cut off square at the point.
