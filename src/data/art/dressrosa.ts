@@ -10,7 +10,7 @@ import {
   wave,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /**
  * The visible edge of a playing card held behind the next one in Jora's
@@ -26,6 +26,34 @@ const HACK_GI = 'rotate(-8 80 110)'
 
 /** Viola's stiletto, set back and to the right of the rose in front of it. */
 const VIOLA_SHOE = 'translate(16 -14)'
+
+/** Kanjuro's brush, drawn level and turned to lie across the ground. */
+const KANJURO_BRUSH = 'rotate(-14 80 150)'
+
+/**
+ * The near half of Corazon's open feather mantle, from the collar round the
+ * feathered edge to the front; the far half is the same turned over.
+ */
+const CORAZON_MANTLE =
+  'M64 46 C50 48 36 56 28 66 q-8 5 -3 15 q-8 5 -3 15 q-8 5 -3 15 q-8 5 -3 15 q-8 5 -3 15 q-8 5 -3 14 q5 8 10 1 q5 8 10 1 q5 8 10 1 q5 8 10 1 q5 8 10 1 L56 100 Z'
+
+/** One of Mocha's wrapped candies, with its shadow; the back two are smaller. */
+const MOCHA_CANDY: Stroke[] = [
+  { d: ellipse(78, 150, 26, 17), role: 'accent' },
+  {
+    d: 'M53 144 L30 132 C26 142 26 158 30 168 L53 156 M103 144 L126 132 C130 142 130 158 126 168 L103 156',
+  },
+  {
+    d: 'M36 136 L52 147 M33 150 H52 M36 164 L52 153 M120 136 L104 147 M123 150 H104 M120 164 L104 153',
+    role: 'soft',
+  },
+  { d: 'M64 142 C70 138 80 137 88 139', role: 'soft' },
+  {
+    d: 'M62 161 l6 -5 M72 165 l6 -5 M84 165 l6 -5 M95 159 l5 -4',
+    role: 'ambient',
+  },
+  shadow(78, 174, 34),
+]
 
 /** The drawings of the records filed in the dressrosa stretch of the route. */
 export const dressrosaArt = {
@@ -1330,40 +1358,80 @@ export const dressrosaArt = {
     shadow(80, 160, 54),
   ],
 
-  // A calligraphy brush and the bird it has just drawn.
+  // His brush lying on the ground, the size of an oar: bristles with a dark
+  // tip, a ferrule and a sword guard, a wrapped grip and a tassel off the
+  // pommel, ink pooled under the tip. Behind it stands the sparrow he has
+  // just drawn and brought to life, lumpy and lopsided, one wing up, about
+  // to try to fly. Kin’emon finds him in the wall of the scrap heap in
+  // episode 691, and this is the bird he draws to get them out.
   'kanjuro': [
-    { d: 'M30 26 h16 v86 h-16 z' },
-    { d: 'M28 112 h20 v12 h-20 z' },
-    { d: 'M28 124 C28 148 34 172 38 182 C42 172 48 148 48 124 Z' },
     {
-      d: 'M76 92 q20 -22 46 -6 q-14 2 -20 12 q14 -2 20 6 q-20 6 -34 -2 z',
-      role: 'accent',
+      d: 'M52 141 C38 139 22 142 12 151 C22 158 38 161 52 159',
+      transform: KANJURO_BRUSH,
     },
-    { d: 'M90 104 l-4 16 M108 104 l4 16', role: 'accent' },
     {
-      d: dots([
-        [66, 150],
-        [80, 166],
-        [96, 144],
-      ]),
+      d: 'M16 148 l5 7 M23 145 l5 10 M30 143 l4 11',
+      role: 'ambient',
+      transform: KANJURO_BRUSH,
+    },
+    { d: 'M52 140 H63 V160 H52', transform: KANJURO_BRUSH },
+    { d: ellipse(67, 150, 4, 16), transform: KANJURO_BRUSH },
+    {
+      d: 'M69 134.3 C73 136 73 164 69 165.7',
+      role: 'soft',
+      transform: KANJURO_BRUSH,
+    },
+    {
+      d: 'M71 143 H142 M71 157 H142 C150 157 150 143 142 143',
+      transform: KANJURO_BRUSH,
+    },
+    {
+      d: 'M76 143 L83 157 L90 143 L97 157 L104 143 L111 157 L118 143 L125 157 L132 143 L139 157',
+      role: 'soft',
+      transform: KANJURO_BRUSH,
+    },
+    {
+      d: 'M150 132 C156 136 156 144 152 150 M152 150 l-5 9 M152 150 l1 10 M152 150 l6 8',
       role: 'soft',
     },
-    shadow(38, 190, 20),
-  ],
-
-  // A clown's hat above a coat with a heart on it.
-  'donquixote-rosinante': [
-    { d: 'M48 82 L38 172 H122 L112 82 Z' },
-    { d: 'M64 82 L80 118 L96 82' },
-    { d: 'M38 172 h84', role: 'soft' },
+    { d: 'M4 178 C10 174 24 174 28 178 C24 182 8 182 4 178', role: 'ambient' },
+    { d: 'M18 182 C60 172 110 156 150 146', role: 'ambient', dashed: true },
     {
-      d: 'M80 154 C64 140 60 126 68 120 C74 115 80 120 80 126 C80 120 86 115 92 120 C100 126 96 140 80 154 Z',
+      d: 'M36 116 C28 100 38 84 56 84 C76 84 86 100 78 116 C72 126 44 128 36 116 Z',
       role: 'accent',
     },
-    { d: 'M60 78 L80 28 L100 78 Z' },
-    { d: circle(80, 22, 7) },
-    { d: 'M54 78 h52' },
-    shadow(80, 184, 50),
+    {
+      d: 'M40 92 C32 88 30 76 40 72 C50 68 56 78 52 86 M33 78 l-9 2 l8 4',
+      role: 'accent',
+    },
+    { d: 'M58 92 C62 72 76 56 98 48 C96 64 90 82 74 98', role: 'accent' },
+    { d: 'M66 90 l10 -10 M70 94 l14 -14', role: 'soft' },
+    { d: 'M78 110 L96 104 L92 114 Z', role: 'accent' },
+    { d: 'M52 123 v10 l-4 2 M52 133 l4 2 M64 123 v10 l-4 2 M64 133 l4 2' },
+    shadow(58, 138, 22),
+  ],
+
+  // His dark feather mantle, open, its far half hatched, over the white
+  // shirt printed with hearts, and the cigarette he keeps setting the
+  // feathers alight with, dropped on the floor. Both are in the flashback
+  // of episode 700.
+  'donquixote-rosinante': [
+    { d: CORAZON_MANTLE },
+    { d: CORAZON_MANTLE, transform: 'matrix(-1 0 0 1 160 0)' },
+    {
+      d: 'M108 112 l14 -12 M108 128 l18 -16 M110 144 l20 -18 M118 154 l16 -14',
+      role: 'ambient',
+    },
+    { d: 'M66 46 L74 60 L80 52 L86 60 L94 46', role: 'soft' },
+    { d: 'M80 52 V156 M36 80 q4 6 2 12 M40 120 q4 6 2 12', role: 'soft' },
+    {
+      d: 'M68 83 C60 79 62 73 68 76.5 C74 73 76 79 68 83 Z M92 103 C84 99 86 93 92 96.5 C98 93 100 99 92 103 Z M70 129 C62 125 64 119 70 122.5 C76 119 78 125 70 129 Z M90 147 C82 143 84 137 90 140.5 C96 137 98 143 90 147 Z',
+      role: 'accent',
+    },
+    { d: 'M22 186 L44 180 L45.5 184 L23.5 190 Z' },
+    { d: 'M27 184.5 l1.2 4', role: 'soft' },
+    { d: 'M20 185 C14 178 24 174 18 166', role: 'soft' },
+    shadow(84, 174, 66),
   ],
 
   // One of the black bands he wears above each wrist, standing on its own,
@@ -1386,45 +1454,63 @@ export const dressrosaArt = {
     },
     shadow(80, 184, 60),
   ],
-  // A wrapped candy, twisted at both ends, with smoke curling off it.
+  // Three plain wrapped candies on the floor, twisted shut at both ends.
+  // The children of the laboratory are given one every day, and in episode
+  // 591 they double up in pain asking for it, which is how the pirates
+  // learn the candy carries a drug.
   'mocha': [
-    { d: ellipse(80, 112, 30, 20) },
-    { d: 'M50 112 L26 94 L32 112 L26 130 Z' },
-    { d: 'M110 112 L134 94 L128 112 L134 130 Z' },
-    {
-      d: 'M62 104 C72 96 88 96 98 104 M62 120 C72 128 88 128 98 120',
-      role: 'soft',
-    },
-    {
-      d: 'M72 88 C62 74 80 68 72 54 M90 90 C100 76 84 68 94 54',
-      role: 'accent',
-    },
-    shadow(80, 146, 42),
+    ...MOCHA_CANDY.map((stroke) => {
+      return {
+        ...stroke,
+        transform:
+          'translate(48 104) rotate(-16) scale(0.66) translate(-78 -150)',
+      }
+    }),
+    ...MOCHA_CANDY.map((stroke) => {
+      return {
+        ...stroke,
+        transform:
+          'translate(116 110) rotate(14) scale(0.62) translate(-78 -150)',
+      }
+    }),
+    ...MOCHA_CANDY,
   ],
 
-  // Two bowler hats frozen stiff, icicles hanging off the brims, above a
-  // footprint in the snow bigger than either of them.
+  // One of their bare footprints pressed into the snow, bigger than a man,
+  // its toes in a row and its inner wall hatched, and beside it a bowler
+  // hat with frost on its crown. The footprints lead the pirates to the
+  // cliff in episode 591, and the frosted hats show above the shadow that
+  // hides their faces.
   'rock-and-scotch': [
-    { d: 'M30 120 C30 88 70 88 70 120' },
-    { d: 'M18 122 C34 115 66 115 82 122 C66 129 34 129 18 122 Z' },
-    { d: 'M92 104 C92 72 132 72 132 104' },
-    { d: 'M80 106 C96 99 128 99 144 106 C128 113 96 113 80 106 Z' },
+    { d: 'M2 70 Q80 60 158 70', role: 'ambient', dashed: true },
     {
-      d: 'M26 126 v6 M38 128 v9 M50 129 v6 M62 128 v9 M74 126 v5 M88 110 v6 M100 112 v9 M112 113 v6 M124 112 v9 M136 110 v5',
+      d: 'M60 176 C38 176 30 160 36 144 C42 130 34 118 40 106 C48 92 94 90 106 104 C114 114 110 128 102 140 C94 152 98 172 80 176 Z',
       role: 'accent',
     },
-    { d: 'M10 152 Q80 142 150 152', role: 'ambient' },
-    { d: ellipse(80, 176, 26, 11), role: 'soft' },
     {
-      d: dots([
-        [56, 160],
-        [66, 157],
-        [78, 156],
-        [90, 157],
-        [101, 160],
-      ]),
+      d: [
+        ellipse(44, 88, 9, 6.5),
+        ellipse(62, 80, 6.5, 5),
+        ellipse(78, 78, 6, 4.5),
+        ellipse(92, 81, 5.5, 4),
+        ellipse(104, 88, 5, 3.6),
+      ].join(' '),
+      role: 'accent',
+    },
+    {
+      d: 'M24 150 C18 124 28 96 42 84 M110 132 C116 156 104 178 84 186',
       role: 'soft',
     },
+    {
+      d: 'M44 112 l7 6 M40 124 l8 6 M38 136 l8 6 M40 148 l8 6 M46 160 l7 5',
+      role: 'ambient',
+    },
+    { d: ellipse(130, 170, 22, 6.5) },
+    { d: 'M112 168 C112 146 148 146 148 168' },
+    { d: 'M112 163 C123 168 137 168 148 163', role: 'soft' },
+    { d: 'M114 154 q4 -5 8 -2 q4 -5 8 -2 q4 -5 8 -2 q4 -5 7 0', role: 'soft' },
+    { d: 'M138 151 l6 5 M140 158 l6 3', role: 'ambient' },
+    shadow(130, 186, 24),
   ],
 
   // The slime in the shape of an axolotl, side on, head to the left: the
@@ -1488,209 +1574,337 @@ export const dressrosaArt = {
     ...SEA,
   ],
 
-  // A studded gladiator's wristband on a folded cloak.
+  // One of his studded wristbands, standing on its edge in the folds of his
+  // orange cloak, its studs going round and its far side hatched. He wears
+  // both when he goes at the newcomer in the waiting room in episode 633.
   'spartan': [
-    { d: 'M20 156 L46 122 H140 L114 156 Z', role: 'accent' },
-    { d: 'M34 139 H126', role: 'accent' },
-    { d: ellipse(80, 100, 30, 10) },
-    { d: 'M50 100 V128 M110 100 V128' },
-    { d: 'M50 128 a30 10 0 0 0 60 0' },
     {
-      d: dots([
-        [60, 117],
-        [72, 120],
-        [88, 120],
-        [100, 117],
-      ]),
+      d: 'M8 160 C12 144 26 136 42 138 C56 128 76 128 88 136 C106 128 132 132 146 146 C150 152 150 158 146 162 C110 172 46 172 8 160 Z',
+      role: 'accent',
     },
-    { d: 'M50 110 a30 10 0 0 0 60 0', role: 'soft' },
-    shadow(80, 172, 56),
+    {
+      d: 'M28 152 C40 146 52 144 62 146 M100 142 C114 140 126 144 134 150 M70 160 C80 154 92 152 104 156',
+      role: 'soft',
+    },
+    { d: ellipse(80, 98, 26, 40) },
+    { d: ellipse(80, 98, 18, 31) },
+    { d: 'M80 58 C96 58 110 76 110 98 C110 120 96 138 80 138', role: 'soft' },
+    { d: 'M106 98 C106 120 94 138 80 138' },
+    {
+      d: [
+        circle(58, 74, 2.8),
+        circle(55, 98, 2.8),
+        circle(58, 122, 2.8),
+        circle(68, 62.5, 2.8),
+        circle(68, 133.5, 2.8),
+      ].join(' '),
+    },
+    {
+      d: 'M86 72 l8 -4 M90 86 l8 -4 M92 100 l8 -4 M90 114 l8 -4 M86 126 l6 -3',
+      role: 'ambient',
+    },
+    shadow(80, 176, 66),
   ],
 
-  // A plumed helmet beside the announcer's microphone.
+  // His gold breastplate standing on the booth floor, its skirt scalloped
+  // and its far side hatched, and in front of it the hand microphone he
+  // calls every bout into, its cable trailing. Episode 638 has him in both
+  // for the Block B announcements.
   'gatz': [
     {
-      d: 'M44 118 C44 82 104 82 104 118 L104 152 L90 152 L88 128 L60 128 L58 152 L44 152 Z',
+      d: 'M52 52 C62 60 98 60 108 52 L122 64 C114 80 114 94 120 108 L116 136 C100 144 60 144 44 136 L40 108 C46 94 46 80 38 64 Z',
     },
-    { d: 'M74 88 V112', role: 'soft' },
-    { d: 'M46 94 C46 62 70 44 104 50 C92 58 100 72 106 98', role: 'accent' },
+    { d: 'M80 58 V140 M48 104 C62 112 98 112 112 104', role: 'soft' },
     {
-      d: 'M58 76 C64 62 80 56 96 56 M54 86 C58 70 72 62 88 62',
-      role: 'accent',
+      d: 'M44 136 q5 10 10 2 q5 10 10 2 q5 10 10 2 q5 10 10 2 q5 10 10 2 q5 10 10 2 q5 10 12 -2',
+      role: 'soft',
     },
-    { d: circle(130, 112, 9) },
-    { d: 'M130 121 V170 M118 170 H142' },
-    shadow(84, 180, 52),
+    {
+      d: 'M100 70 l12 -6 M100 84 l14 -6 M102 98 l14 -6 M104 112 l12 -6 M104 126 l10 -6',
+      role: 'ambient',
+    },
+    { d: ellipse(36, 168, 12, 11), role: 'accent' },
+    { d: 'M47 162 L94 152 L96 158 L48 176', role: 'accent' },
+    {
+      d: 'M26 166 C32 172 40 176 46 174 M30 158 C36 164 42 172 44 178 M28 174 C34 168 40 162 44 160',
+      role: 'soft',
+    },
+    {
+      d: 'M96 155 C110 152 118 166 108 172 C98 178 96 164 108 164 C122 164 130 178 148 172',
+    },
+    shadow(80, 156, 46),
+    shadow(70, 188, 50),
   ],
 
-  // A long iron bridge running out over the sea to an island of huge wild
-  // plants.
+  // The iron bridge running out from Dressrosa over the sea on its piers,
+  // the underside of its deck hatched, to an island of huge wild plants.
+  // The handover team crosses it in episode 639.
   'green-bit': [
-    { d: 'M-4 120 L100 96 M-4 128 L100 104', role: 'accent' },
+    { d: 'M-4 112 L98 92 M-4 120 L98 100' },
     {
-      d: 'M12 125 V150 M40 118 V150 M68 112 V150 M96 105 V150',
+      d: 'M-4 100 L98 80 M10 109 v-11 M30 105 v-11 M50 101 v-11 M70 97 v-11 M90 93 v-11',
+      role: 'soft',
+    },
+    { d: 'M14 116.5 V152 M44 110.6 V152 M74 104.7 V152' },
+    {
+      d: 'M18 124 l8 -8 M26 128 l8 -9 M48 118 l8 -8 M56 122 l8 -8 M78 112 l8 -8 M86 114 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M92 152 C100 136 114 128 164 124' },
+    {
+      d: 'M114 130 C108 104 100 84 104 62 M138 126 C142 98 148 70 140 42',
       role: 'accent',
     },
     {
-      d: 'M12 116 L26 113 M40 110 L54 107 M68 103 L82 100',
-      role: 'soft',
-      dashed: true,
-    },
-    { d: 'M96 150 C104 120 124 104 164 100', role: 'ambient' },
-    {
-      d: 'M120 104 C118 80 116 60 124 40 M144 100 C146 76 150 60 146 36',
-      role: 'soft',
-    },
-    {
-      d: 'M124 40 C108 36 100 46 102 56 C112 50 120 48 124 40 M124 40 C136 30 150 34 152 44 C142 44 132 44 124 40',
+      d: 'M104 62 C88 54 76 62 74 74 C88 74 98 70 104 62 M104 78 C116 66 130 66 134 72 C124 80 114 82 104 78',
       role: 'accent',
     },
     {
-      d: 'M146 36 C140 22 150 12 162 14 C160 24 154 32 146 36',
+      d: 'M140 42 C128 36 126 24 134 18 C140 26 142 34 140 42 C150 32 160 30 164 36 C156 44 148 44 140 42 C138 30 146 20 154 18',
       role: 'accent',
     },
     {
-      d: 'M108 100 C104 90 106 80 112 76 M134 102 C130 90 134 82 140 80',
+      d: 'M150 124 C150 110 158 100 166 98 M124 126 C120 116 124 108 130 104',
+      role: 'accent',
+    },
+    {
+      d: 'M86 68 C92 66 98 64 104 62 M114 74 C120 72 126 71 132 71',
       role: 'soft',
     },
-    { d: 'M104 124 q4 -14 16 -10 q6 -14 20 -6 q10 -12 26 -2', role: 'soft' },
+    { d: 'M100 142 l10 -6 l4 6 M128 134 l12 -4', role: 'soft' },
     ...SEA,
   ],
 
-  // A bull's pair of horns, one snapped off, over a red cape; the broken tip
-  // lies on the ground.
+  // The fighting bull side on, head down, with no eyes: one long horn
+  // sweeping forward and the near one snapped short, his dark hide hatched.
+  // The giant's shield breaks it in episode 644, the same block in which
+  // he is tamed and named.
   'ucy': [
-    { d: 'M54 86 Q80 78 106 86 V100 Q80 92 54 100 Z' },
-    { d: 'M106 90 C128 86 140 66 134 40 C130 62 120 76 104 80' },
-    { d: 'M54 90 C42 86 36 78 36 70 L42 74 L44 68 C46 76 50 80 56 81' },
-    { d: 'M24 158 C28 146 36 142 44 144 L40 154 Z', role: 'soft' },
-    { d: 'M64 118 H136' },
     {
-      d: 'M70 118 H130 C128 144 134 164 142 180 C118 174 96 178 78 184 C84 164 80 140 70 118 Z',
+      d: 'M50 84 C58 62 78 54 96 62 C112 68 132 70 144 82 C152 92 150 116 142 128 C132 134 108 134 90 132 C72 132 60 130 52 124',
+    },
+    {
+      d: 'M50 84 C40 84 30 96 26 110 C22 122 24 136 34 138 C42 140 48 132 52 124',
+    },
+    { d: 'M42 90 C26 82 16 66 20 42 C28 58 38 70 50 80', role: 'accent' },
+    {
+      d: 'M50 98 C42 96 36 92 32 86 L37 86 L33 80 L40 82 C42 88 46 92 54 94',
       role: 'accent',
     },
-    shadow(96, 190, 44),
+    {
+      d: 'M60 128 L58 154 h10 L70 131 M124 128 C128 138 124 146 126 154 h10 C136 146 140 136 138 126',
+    },
+    {
+      d: 'M76 132 L78 154 h8 L86 132 M110 132 L108 154 h8 L118 132',
+      role: 'soft',
+    },
+    { d: 'M146 88 C156 94 156 112 152 124 l2 7 l-6 -4', role: 'soft' },
+    {
+      d: 'M64 70 l10 -8 M60 80 l14 -12 M98 130 l8 -8 M110 130 l10 -10 M122 127 l12 -12 M134 120 l8 -8',
+      role: 'ambient',
+    },
+    shadow(88, 164, 62),
   ],
-  // A boxing glove whose cuff closes with a zip, the pull hanging off it.
+  // His pair of red boxing gloves, one lying on its side with its cuff open
+  // toward us, the other standing on its cuff, their laces knotted together
+  // in a bow on the floor. He wears them bare-chested in the waiting room
+  // in episode 633.
   'kelly-funk': [
     {
-      d: 'M56 146 V100 C56 72 72 58 94 60 C116 62 124 82 120 106 C118 122 110 132 104 136 V146 Z',
+      d: 'M76 124 C66 114 44 112 30 118 C14 126 12 150 26 160 C40 168 64 166 76 158',
     },
-    { d: 'M56 112 C42 110 38 126 48 134 C54 138 60 134 62 126' },
-    { d: 'M72 74 C86 68 104 72 112 86', role: 'soft' },
-    { d: 'M52 146 h56 v24 h-56 z' },
-    { d: 'M80 146 V170 M75 151 h10 M75 157 h10 M75 163 h10', role: 'accent' },
-    { d: 'M80 170 v6', role: 'accent' },
-    { d: circle(80, 180, 4), role: 'accent' },
-    shadow(80, 192, 40),
+    { d: 'M58 118 C60 108 72 106 78 114 C80 118 78 122 76 124', role: 'soft' },
+    { d: 'M76 122 L94 126 V156 L76 158' },
+    { d: ellipse(94, 141, 4, 15), role: 'soft' },
+    { d: 'M30 124 C24 134 24 148 30 156', role: 'soft' },
+    { d: 'M36 164 l8 -6 M48 166 l8 -6 M60 165 l8 -6', role: 'ambient' },
+    {
+      d: 'M106 160 V140 M138 160 V140 M106 160 C106 166 138 166 138 160 M106 140 C112 144 132 144 138 140',
+    },
+    {
+      d: 'M106 140 C100 120 100 90 110 76 C120 64 140 68 144 84 C148 100 144 124 138 140',
+    },
+    { d: 'M106 118 C94 116 92 100 100 94 C104 92 108 94 108 98', role: 'soft' },
+    {
+      d: 'M136 92 l8 -4 M138 104 l7 -4 M138 116 l6 -3 M136 128 l5 -3',
+      role: 'ambient',
+    },
+    {
+      d: 'M94 134 C98 146 96 158 99 166 M106 148 C104 156 101 161 99 166 M99 166 C90 160 86 172 99 168 C112 172 110 160 99 166 M99 168 l-6 12 M99 168 l7 11',
+      role: 'accent',
+    },
+    shadow(80, 176, 66),
   ],
 
-  // A broad-brimmed fedora, and an axe head snapped in two in front of it.
+  // His broad-brimmed fedora in 3/4, the crown dented and its far side
+  // hatched, the brim hatched underneath, and his tie lying on the floor in
+  // front of it. He wears both behind his brother in episode 633.
   'bobby-funk': [
-    { d: 'M50 116 C50 84 58 70 80 70 C102 70 110 84 110 116' },
-    { d: ellipse(80, 118, 58, 12) },
-    { d: 'M66 76 Q80 90 94 76', role: 'soft' },
-    { d: 'M51 104 C66 112 94 112 109 104', role: 'accent' },
-    { d: 'M30 180 L80 152', role: 'soft' },
-    { d: 'M80 152 L72 136 C86 128 100 132 106 142 Z' },
-    { d: 'M112 176 C112 164 122 156 136 158 L132 178 Z' },
     {
-      d: dots([
-        [108, 150],
-        [110, 160],
-        [109, 168],
-      ]),
-      role: 'soft',
+      d: 'M18 116 C24 104 136 104 142 116 C140 130 104 140 80 138 C56 140 20 130 18 116 Z',
     },
-    shadow(80, 186, 56),
+    { d: 'M30 126 C50 138 110 138 130 126', role: 'soft' },
+    {
+      d: 'M36 130 l4 -4 M48 134 l4 -5 M60 136 l4 -5 M96 136 l4 -5 M108 134 l4 -5 M120 131 l4 -4',
+      role: 'ambient',
+    },
+    {
+      d: 'M48 114 C46 94 50 74 58 66 C68 60 92 60 102 66 C110 74 114 94 112 114',
+    },
+    { d: 'M62 70 C70 82 90 82 98 70 M80 78 V94', role: 'soft' },
+    {
+      d: 'M48 102 C64 110 96 110 112 102 L112 112 C96 120 64 120 48 112 Z',
+      role: 'accent',
+    },
+    { d: 'M100 72 l8 -4 M104 84 l6 -3 M106 94 l6 -3', role: 'ambient' },
+    {
+      d: 'M56 160 L72 156 L74 166 L60 170 Z M60 170 L74 166 L120 174 L128 180 L120 186 Z',
+    },
+    { d: 'M78 168 L84 182 M96 171 L100 184', role: 'soft' },
+    shadow(80, 150, 62),
+    shadow(90, 192, 40),
   ],
 
-  // A battle map with the arrows of a plan converging on one point, and a
-  // stack of coins weighing down its corner.
+  // The yellow coat he wears over his shoulders, open, its sleeves hanging
+  // empty, its far half hatched and its red polka dots as the accent, and
+  // his beaded necklace on the floor in front with its round pendant. Both
+  // are on him in the waiting room in episode 633.
   'dagama': [
-    { d: 'M24 62 H116 V148 H24 Z' },
-    { d: 'M24 90 H116 M24 120 H116 M54 62 V148 M86 62 V148', role: 'soft' },
     {
-      d: 'M36 136 C50 124 60 114 72 104 M110 136 C98 124 88 114 76 104 M72 72 C72 82 72 90 74 100',
+      d: 'M64 42 C40 44 22 60 20 84 L16 156 H70 L74 52 M96 42 C120 44 138 60 140 84 L144 156 H90 L86 52',
+    },
+    { d: 'M64 42 C70 48 90 48 96 42 M74 52 C78 56 82 56 86 52', role: 'soft' },
+    {
+      d: 'M26 86 C20 100 18 120 22 134 L32 134 C30 120 32 104 34 92 M134 86 C140 100 142 120 138 134 L128 134 C130 120 128 104 126 92',
+      role: 'soft',
+    },
+    {
+      d: [
+        circle(36, 70, 3.2),
+        circle(56, 86, 3.2),
+        circle(40, 110, 3.2),
+        circle(60, 128, 3.2),
+        circle(36, 146, 3.2),
+        circle(124, 70, 3.2),
+        circle(104, 86, 3.2),
+        circle(120, 110, 3.2),
+        circle(100, 128, 3.2),
+        circle(124, 146, 3.2),
+        circle(58, 58, 3.2),
+        circle(102, 58, 3.2),
+      ].join(' '),
       role: 'accent',
     },
     {
-      d: 'M66 102 l8 0 l-2 -8 M82 102 l-8 0 l2 -8 M70 94 l4 6 l3 -7',
-      role: 'accent',
+      d: 'M100 100 l12 -10 M98 116 l16 -14 M98 140 l18 -16 M110 152 l16 -14',
+      role: 'ambient',
     },
-    { d: ellipse(124, 164, 18, 5) },
-    { d: 'M106 164 v-10 M142 164 v-10' },
-    { d: ellipse(124, 154, 18, 5) },
-    { d: 'M106 154 v-10 M142 154 v-10', role: 'soft' },
-    { d: ellipse(124, 144, 18, 5), role: 'soft' },
-    shadow(76, 184, 60),
+    { d: 'M36 174 C50 182 110 182 124 174 M80 180 V183', role: 'soft' },
+    { d: circle(80, 188, 5) },
+    shadow(80, 166, 66),
   ],
 
-  // A headsman's broad sword planted point down, a war medal hung from its
-  // crossguard.
+  // His broad curved sword lying on the floor, the dark wave along its back
+  // hatched, its knuckle-guard hilt to the right, and his two war medals,
+  // a star and a round one, below it. He grips the hilt and wears the
+  // medals when he is named the Beheader in episode 633.
   'suleiman': [
-    { d: 'M72 64 H88 V160 L80 176 L72 160 Z' },
-    { d: 'M80 70 V156', role: 'soft' },
-    { d: 'M48 56 H112 V64 H48 Z' },
-    { d: 'M75 56 V32 H85 V56' },
-    { d: circle(80, 26, 6) },
-    { d: 'M100 64 L96 84 H108 L104 64', role: 'soft' },
-    { d: circle(102, 94, 9), role: 'accent' },
-    { d: star(102, 94, 5, 2.2), role: 'accent' },
-    shadow(80, 186, 30),
-  ],
-
-  // A wanted poster torn down the middle, and a round bomb with its fuse
-  // lit at its foot.
-  'abdullah': [
     {
-      d: 'M30 40 H78 L72 56 L80 70 L72 86 L80 102 L72 118 L80 134 L72 150 L76 166 H30 Z',
+      d: 'M110 98 C78 98 40 90 18 70 C14 68 10 70 10 76 C30 104 74 112 110 110',
     },
     {
-      d: 'M86 44 H128 V170 H82 L78 154 L86 138 L78 122 L86 106 L78 90 L86 74 L78 60 Z',
-    },
-    { d: 'M40 52 H66 M94 56 H118', role: 'soft' },
-    { d: 'M42 66 H70 M92 70 H118 M42 118 H68 M92 122 H118', role: 'soft' },
-    { d: circle(126, 168, 14), role: 'accent' },
-    { d: 'M134 156 q6 -10 14 -8', role: 'accent' },
-    {
-      d: dots([
-        [150, 142],
-        [154, 148],
-        [146, 138],
-      ]),
+      d: 'M24 78 q4 -4 9 -1 q4 -4 9 0 q4 -3 9 0 q4 -3 9 1 q4 -3 9 1 q4 -3 9 1 q4 -2 9 1 q4 -2 9 1 q4 -2 9 1',
       role: 'soft',
     },
-    shadow(80, 190, 56),
+    {
+      d: 'M28 76 l3 -6 M40 81 l2 -6 M52 85 l2 -6 M64 88 l1 -6 M76 90 l1 -6 M88 92 v-6 M100 92 v-6',
+      role: 'ambient',
+    },
+    { d: 'M110 90 V118 L116 118 V90 Z' },
+    { d: 'M116 100 H144 M116 108 H144 M144 100 C150 100 150 108 144 108' },
+    { d: 'M122 100 l4 8 M130 100 l4 8 M138 100 l4 8', role: 'soft' },
+    { d: 'M116 116 C124 134 144 134 150 106', role: 'soft' },
+    {
+      d: 'M38 128 h14 v12 l-7 5 l-7 -5 Z M70 136 h14 v12 l-7 5 l-7 -5 Z',
+      role: 'soft',
+    },
+    { d: star(45, 160, 12, 5), role: 'accent' },
+    { d: circle(77, 166, 9), role: 'accent' },
+    { d: 'M16 120 C50 128 110 126 152 122', role: 'ambient', dashed: true },
+    { d: 'M24 182 C50 188 90 188 104 182', role: 'ambient', dashed: true },
   ],
 
-  // Two curved sabres crossed blade over blade, their knuckle guards at the
-  // foot.
-  'jeet': [
-    { d: 'M50 158 C76 124 100 86 124 38 C112 84 90 124 60 164 Z' },
-    { d: 'M110 158 C84 124 60 86 36 38 C48 84 70 124 100 164 Z' },
-    { d: 'M54 162 L38 182 M106 162 L122 182' },
+  // His baggy trousers standing on their cuffs, the far leg hatched, and
+  // his suspenders hanging loose down the front with their clips. That is
+  // how he is dressed when he is pointed out in the waiting room in
+  // episode 633; his tridents come later.
+  'abdullah': [
+    { d: 'M34 64 H126 V76 H34 Z' },
     {
-      d: 'M44 154 C30 160 32 180 42 180 M116 154 C130 160 128 180 118 180',
+      d: 'M34 76 C20 104 22 136 36 160 C46 166 66 166 74 160 L80 112 L86 160 C94 166 114 166 124 160 C138 136 140 104 126 76',
+    },
+    {
+      d: 'M80 76 V112 M38 152 C48 156 64 156 72 152 M88 152 C96 156 112 156 122 152',
+      role: 'soft',
+    },
+    {
+      d: 'M98 92 l14 -10 M100 108 l18 -14 M104 124 l18 -14 M106 140 l14 -10',
+      role: 'ambient',
+    },
+    {
+      d: 'M52 64 C50 52 56 46 62 50 C64 66 62 88 58 104 M108 64 C110 52 104 46 98 50 C96 66 98 88 102 104',
       role: 'accent',
     },
-    { d: 'M60 146 C80 116 100 82 116 52', role: 'soft' },
-    shadow(80, 192, 44),
+    { d: 'M52 102 h12 v12 h-12 Z M96 102 h12 v12 h-12 Z', role: 'accent' },
+    shadow(80, 176, 56),
   ],
-  // A double-bladed axe standing on its haft, the grip bound in leather.
+
+  // His curved sabre driven point first into the arena floor, the notched
+  // back of the blade as the accent and its flat hatched, a knuckle guard
+  // round the wrapped grip. It is the blade he licks when he is pointed out
+  // in the waiting room in episode 633; his second one comes later.
+  'jeet': [
+    { d: 'M86 156 C100 120 96 86 82 64' },
+    {
+      d: 'M86 156 C83 140 82 132 79 118 l-4 -2 l3 -5 l-4 -3 l2 -6 l-4 -3 l2 -6 l-4 -3 l1 -6 l-4 -3 L68 66',
+      role: 'accent',
+    },
+    { d: 'M85 140 C89 120 87 94 78 70', role: 'soft' },
+    {
+      d: 'M91 130 l-6 -2 M93 116 l-6 -2 M93 102 l-7 -2 M90 88 l-7 -2',
+      role: 'ambient',
+    },
+    { d: 'M58 66 L94 58 L95 63 L59 71 Z' },
+    { d: 'M70 64 L66 28 M80 62 L76 27 M64 28 C62 20 78 18 78 26' },
+    { d: 'M68 52 l10 -3 M67 44 l10 -3 M66 36 l10 -3', role: 'soft' },
+    { d: 'M92 60 C108 48 100 18 78 20 M88 60 C100 50 96 26 80 24' },
+    { d: 'M44 156 C60 152 112 152 128 156', role: 'ambient' },
+    { d: 'M80 158 l-4 6 M92 158 l4 6', role: 'soft' },
+    shadow(86, 168, 34),
+  ],
+  // One of the double axes he carries on his back, standing on its ring
+  // pommel: the scalloped blades in 3/4, the far one hatched, the haft
+  // bound with cord. Episode 633 has one thrown in the waiting room and
+  // handed back to him.
   'boo': [
-    { d: 'M77 48 V178 M83 48 V178 M77 48 h6 M77 178 h6' },
-    { d: 'M77 60 L50 50 C38 64 38 88 50 102 L77 92 Z', role: 'accent' },
-    { d: 'M83 60 L110 50 C122 64 122 88 110 102 L83 92 Z', role: 'accent' },
+    { d: 'M77 40 V168 M83 40 V168 M77 40 C77 36 83 36 83 40' },
     {
-      d: 'M58 60 C50 70 50 82 58 92 M102 60 C110 70 110 82 102 92',
+      d: 'M77 56 L58 46 C46 50 46 58 48 62 C38 66 38 78 44 82 C36 88 40 100 50 104 L77 92',
+      role: 'accent',
+    },
+    { d: 'M74 62 L60 55 C52 66 50 84 56 96 L74 88', role: 'soft' },
+    {
+      d: 'M83 60 L98 54 C104 58 104 62 102 66 C110 70 110 78 104 82 C110 88 106 96 98 98 L83 88',
+      role: 'accent',
+    },
+    { d: 'M88 64 l8 -3 M88 74 l10 -3 M88 84 l9 -3', role: 'ambient' },
+    {
+      d: 'M77 116 l6 -4 M77 124 l6 -4 M77 132 l6 -4 M77 140 l6 -4 M77 148 l6 -4 M77 156 l6 -4',
       role: 'soft',
     },
-    {
-      d: 'M77 140 l6 -5 M77 150 l6 -5 M77 160 l6 -5 M77 170 l6 -5',
-      role: 'soft',
-    },
-    shadow(80, 188, 34),
+    { d: 'M77 112 h6 M77 160 h6', role: 'soft' },
+    { d: circle(80, 175, 6) },
+    shadow(80, 186, 30),
   ],
 
   // A wide sombrero with a cactus growing out of its crown.
