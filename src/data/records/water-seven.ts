@@ -273,8 +273,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 327,
       name: { it: 'Califa', en: 'Kalifa' },
       summary: {
-        it: 'La segretaria di Iceburg, con gli occhiali e un raccoglitore blu, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
-        en: 'Iceburg’s secretary, in glasses and with a blue binder, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
+        it: 'La segretaria di Iceburg, con gli occhiali, che gli riferisce che i pirati del Dock 1 si rifiutano di pagare le riparazioni e definisce il loro rifiuto una molestia sessuale.',
+        en: 'Iceburg’s secretary, in glasses, who tells him that the pirates at Dock One won’t pay for their repairs and calls it sexual harassment.',
       },
       visual: { art: 'kalifa', tint: 'pink' },
     },
@@ -429,7 +429,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 259,
       revealedAtChapter: 370,
-      // 370, where episode 259 ends: his fight with Franky starts there.
+      // 370, where episode 259 ends: the log runs through his chapter-370 techniques.
       // "Nero" is Italian for black: the Black Cat Pirates are the Gatto Nero from episode 9.
       commonWord: true,
       name: { it: 'Nero', en: 'Nero' },
@@ -470,8 +470,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 385,
       name: { it: 'Jabra', en: 'Jabra' },
       summary: {
-        it: 'Un agente del Cipher Pol 9 con una lunga treccia e una fascia rossa in vita, che difende Kumadori davanti al capo e poi se la prende con Fukuro appena questi ammette di aver spifferato il piano.',
-        en: 'A Cipher Pol 9 agent with a long braid and a red sash, who stands up for Kumadori in front of the chief and then turns on Fukurou the moment Fukurou admits he gave the plan away.',
+        it: 'Un agente del Cipher Pol 9 con una lunga treccia e una fascia rossa in vita, che rimprovera Kumadori perché un uomo non si scusa così facilmente, e si offre di spiegare lui stesso al capo la missione andata storta.',
+        en: 'A Cipher Pol 9 agent with a long braid and a red sash, who tells Kumadori that a man does not apologise so easily, and offers to explain the botched mission to the chief himself.',
       },
       visual: { art: 'jabra', tint: 'vermilion' },
     },
@@ -948,8 +948,8 @@ export const waterSeven: Saga = {
     'kalifa': {
       role: { it: 'Segretaria di Iceburg', en: 'Iceburg’s secretary' },
       log: {
-        it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali, i capelli raccolti in uno chignon e un raccoglitore blu.',
-        en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun, and carries a blue binder.',
+        it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali e i capelli raccolti in uno chignon.',
+        en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun.',
       },
       affiliation: [
         {
@@ -1406,8 +1406,8 @@ export const waterSeven: Saga = {
         en: 'Chief of Cipher Pol 9, twenty years earlier',
       },
       log: {
-        it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Quando un colpo di fucile gli trapassa la manica grida di essere spacciato, finché uno dei suoi uomini non gli fa notare che il proiettile ha preso solo la stoffa. Poi fa atterrare la donna che ha sparato e la fa gettare davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
-        en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. When a rifle shot goes through his sleeve he cries that he is done for, until one of his men points out that the bullet only caught the cloth. Then he has the woman who fired it knocked down and thrown before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
+        it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Quando un colpo di fucile gli trapassa la manica grida di essere spacciato, finché uno dei suoi uomini non gli fa notare che il proiettile ha preso solo la stoffa. Poi fa atterrare la donna che ha sparato e la fa portare davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
+        en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. When a rifle shot goes through his sleeve he cries that he is done for, until one of his men points out that the bullet only caught the cloth. Then he has the woman who fired it knocked down and brought before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
       },
       affiliation: [
         {
