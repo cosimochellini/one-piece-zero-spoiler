@@ -1415,8 +1415,8 @@ export const alabasta: Saga = {
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e serve il tè agli agenti che lo chiedono. Quando Mister 1 entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
-        en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and serves tea to the agents who ask for it. When Mr. 1 comes in through the wall and the dancer goes for him, she is the one who stops them. She works beside him, and she passes on the order to leave and meet the boss.',
+        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e offre il tè agli agenti. Quando Mister 1 entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
+        en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and offers tea to the agents. When Mr. 1 comes in through the wall and the dancer goes for him, she is the one who stops them. She works beside him, and she passes on the order to leave and meet the boss.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [
