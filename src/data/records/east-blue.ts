@@ -1528,8 +1528,8 @@ export const eastBlue: Saga = {
     'kaya': {
       role: { it: 'Erede della villa', en: 'Heiress of the mansion' },
       log: {
-        it: 'Ha ereditato una casa enorme e un patrimonio che non le interessa, e non esce dalla sua stanza da quando ha perso i genitori. Il maggiordomo le porta la medicina a ore fisse e le ricorda di riposare. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
-        en: 'She inherited an enormous house and a fortune she has no interest in, and has not left her room since her parents died. The butler brings her medicine at fixed hours and reminds her to rest. The only thing she truly waits for is the voice under her window, a boy telling her about seas he has never seen.',
+        it: 'Ha ereditato una grande casa e il patrimonio dei genitori. Il maggiordomo tiene fuori il bugiardo del villaggio e mette due guardie al cancello: dice che proteggerla è il suo dovere verso il padre di lei, che non c’è più. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
+        en: 'She has inherited a large house and her parents’ fortune. Her butler keeps the village liar out and two guards at the gate, saying he owes it to her late father to keep her safe. The only thing she truly waits for is the voice under her window, a boy telling her about seas he has never seen.',
       },
       affiliation: [
         {
@@ -1606,8 +1606,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles['ninjin-piiman-and-tamanegi'],
       role: { it: 'Pirati di Usop', en: 'Usopp Pirates' },
       log: {
-        it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque e dicono ad alta voce che adorano le sue bugie. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono. Più tardi fanno irruzione nella trattoria con le spade di legno per salvare Usop, e vanno nel panico quando sentono che se lo sono mangiato.',
-        en: 'They are the whole of the Usopp Pirates: three boys who follow their captain everywhere and say out loud that they love his lies. When one of them spots a ship with a skull on its flag, they rush to the coast to drive the pirates off, and run the moment the pirates spot them. Later they storm the restaurant with wooden swords to rescue Usopp, and panic when they are told he has been eaten.',
+        it: 'Sono tutti i Pirati di Usop: tre ragazzini che seguono il loro capitano ovunque. Quando uno di loro avvista una nave con il teschio sulla bandiera, corrono alla costa per respingere i pirati, e scappano appena i pirati li scoprono.',
+        en: 'They are the whole of the Usopp Pirates: three boys who follow their captain everywhere. When one of them spots a ship with a skull on its flag, they rush to the coast to drive the pirates off, and run the moment the pirates spot them.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
