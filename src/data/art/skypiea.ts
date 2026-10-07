@@ -712,20 +712,29 @@ export const skypieaArt = {
     shadow(80, 188, 44),
   ],
 
-  // A swamp cloud with a pair of boots going down into it.
+  // His wide white cloth belt, untied and dropped in a loose loop that crosses
+  // itself once, both ends trailing, the red disc on the band where it
+  // crosses. It shows in full when he fights the Shandia raid (165). The
+  // longer end is folded over, its underside hatched.
   'gedatsu': [
+    { d: 'M25.8 177.6 L14.2 154.4' },
+    { d: 'M25.8 177.6 C44 168 62 158 79.4 149.9' },
+    { d: 'M14.2 154.4 C28 148 40 142 51.1 138' },
+    { d: 'M28 167 C38 161 48 156 58 151.5', role: 'soft' },
     {
-      d: 'M22 118 q-12 -18 8 -24 q0 -22 24 -18 q10 -16 30 -8 q22 -10 30 10 q20 0 18 18 q10 12 -6 22z',
+      d: 'M108.5 136.2 C122 129 136 123 142 114 C148 102 140 90 120 86 C96 80 60 80 38 86 C24 90 16 98 17.8 110 C19 122 34 130 50 137 C66 144 82 150 96.5 156.4',
     },
-    { d: ellipse(80, 112, 26, 10), role: 'accent' },
-    { d: 'M58 112 V86 c0 -10 -8 -14 -18 -14 c-8 0 -10 10 -2 13 l8 3 v24z' },
-    { d: 'M102 112 V86 c0 -10 8 -14 18 -14 c8 0 10 10 2 13 l-8 3 v24z' },
-    { d: 'M42 92 H58 M102 92 H118', role: 'soft' },
     {
-      d: 'M60 138 V152 M80 144 V160 M100 138 V152',
+      d: 'M80.8 126.4 C98 119.6 116 112 126 107 C131 104.5 128 100.5 118 98.6 C100 94.6 62 93.4 46 97.4 C34 100.4 30 104 36 107.6 C52 116 80 127 104.8 135.5',
+    },
+    { d: circle(92.8, 142.9, 6), role: 'accent' },
+    { d: 'M96.5 156.4 L104.8 135.5' },
+    { d: 'M96.5 156.4 L112.5 194.4 L150.8 155.5 L104.8 135.5' },
+    {
+      d: 'M104.8 162.5 L115.2 146.8 M111.4 172.8 L127.2 153.9 M118 183 L139 161',
       role: 'ambient',
-      dashed: true,
     },
+    shadow(84, 188, 60),
   ],
 
   // His sword, the Eisen Whip, with the dial at its pommel as the accent, and

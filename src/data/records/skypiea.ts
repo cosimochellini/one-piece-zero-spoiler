@@ -423,7 +423,10 @@ export const skypiea: Saga = {
       id: 'gedatsu',
       kind: 'character',
       revealedAtEpisode: 166,
-      revealedAtChapter: 266,
+      revealedAtChapter: 254,
+      // The anime captions him at 164, but his texts are true at 166. The manga
+      // names him in a caption at the shrine, once the priests have been
+      // summoned (ch 254 p.9).
       name: { it: 'Gedatsu', en: 'Gedatsu' },
       summary: {
         it: 'Un sacerdote di Ener, un uomo alto con una fila di ciuffi dritti in testa, che combatte contro gli shandia quando attaccano Upper Yard.',
@@ -1270,16 +1273,7 @@ export const skypiea: Saga = {
         it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
         en: 'After the priests have chased an intruder across Upper Yard, he tells the others that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
-      affiliation: [
-        { episode: 166, value: ENEL_PRIESTS },
-        {
-          episode: 178,
-          value: {
-            it: 'Addetto alle terme, sottoterra ad Alabasta',
-            en: 'Hot spring worker underground on Alabasta',
-          },
-        },
-      ],
+      affiliation: [{ episode: 166, value: ENEL_PRIESTS }],
       origin: [{ episode: 166, value: SKY_ISLAND }],
     },
     'ohm': {
