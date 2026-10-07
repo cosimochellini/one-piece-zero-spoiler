@@ -464,10 +464,10 @@ export const wholeCakeChronicles = {
     {
       episode: 867,
       value: {
-        title: { it: 'Un ago senza rumore', en: 'A silent needle' },
+        title: { it: 'Un tiro alla gamba', en: 'A shot in the leg' },
         body: {
-          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio Flambè lo guarda con i suoi seguaci. È la presidente del fan club di Katakuri, votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, e vuole guadagnarsi il suo favore aiutandolo a finire Cappello di Paglia. Il suo cecchino continua a mancare il colpo, così tira lei: un ago paralizzante della sua cerbottana silenziosa colpisce Rufy alla gamba, lui scivola, e Katakuri gli squarcia il fianco mentre lei ride.',
-          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place Flampe watches with her followers. She is president of Katakuri’s fan club, voted best little sister by forty of her forty-one elder brothers, and she means to win his favour by helping him finish off Straw Hat. Her sniper keeps missing, so she takes the shot herself: a numbing needle from her silent blowgun hits Luffy in the leg, he slips, and Katakuri tears open his side while she laughs.',
+          it: 'Nel Mirro-World, [[charlotte-katakuri|Katakuri]] sta massacrando [[monkey-d-luffy|Rufy]], e da un nascondiglio Flambè lo guarda con i suoi seguaci. È la presidente del fan club di Katakuri, votata miglior sorellina da quaranta dei suoi quarantuno fratelli maggiori, e vuole guadagnarsi il suo favore aiutandolo a finire Cappello di Paglia. Il suo cecchino continua a mancare il colpo. Poi un tiro raggiunge Rufy alla gamba, lui scivola, e Katakuri gli squarcia il fianco mentre lei ride.',
+          en: 'In the Mirro-World, [[charlotte-katakuri|Katakuri]] is battering [[monkey-d-luffy|Luffy]], and from a hiding place Flampe watches with her followers. She is president of Katakuri’s fan club, voted best little sister by forty of her forty-one elder brothers, and she means to win his favour by helping him finish off Straw Hat. Her sniper keeps missing. Then a shot hits Luffy in the leg, he slips, and Katakuri tears open his side while she laughs.',
         },
       },
     },
