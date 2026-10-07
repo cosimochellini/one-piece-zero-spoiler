@@ -226,8 +226,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 325,
       name: { it: 'Kokoro', en: 'Kokoro' },
       summary: {
-        it: 'La capostazione del treno del mare, sempre con una bottiglia in mano, che conosce a memoria l’unico binario che esce da Water Seven.',
-        en: 'The station master of the sea train, a bottle always in her hand, who knows by heart the one track that runs out of Water Seven.',
+        it: 'La capostazione del treno del mare, una gran bevitrice, che conosce a memoria l’unico binario che esce da Water Seven.',
+        en: 'The station master of the sea train, a heavy drinker, who knows by heart the one track that runs out of Water Seven.',
       },
       visual: { art: 'kokoro', tint: 'green' },
     },
@@ -334,8 +334,8 @@ export const waterSeven: Saga = {
       nameSaidAt: 234,
       name: { it: 'Zambai', en: 'Zambai' },
       summary: {
-        it: 'Il vice della Franky Family, che porta un bazooka e lo usa anche come clava, e guida gli smantellatori quando il capo non c’è.',
-        en: 'The Franky Family’s second in command, who carries a bazooka and swings it like a club, and leads the dismantlers when the boss is away.',
+        it: 'Il vice della Franky Family, che porta un bazooka e guida gli smantellatori quando il capo non c’è.',
+        en: 'The Franky Family’s second in command, who carries a bazooka and leads the dismantlers when the boss is away.',
       },
       visual: { art: 'zambai', tint: 'red' },
     },
