@@ -1253,31 +1253,25 @@ export const dressrosaArt = {
     shadow(132, 182, 26),
   ],
 
-  // A Marine's rifle and cap dropped in the long grass of the Green Bit
-  // forest: the rifle with its curved butt, comb, trigger guard and barrel
-  // bands, the cap on the grass beside it with its peak and the cloth at
-  // the back. In episode 640 a voice that gives its name as Leo asks the
-  // Marines to lay down their weapons, and when they refuse they are
-  // stripped of them too fast to see. Leo himself is not shown until 641.
+  // A Marine's rifle and cap dropped in the grass, tiny footprints running
+  // off.
   'leo': [
+    { d: 'M26 150 L44 140 L48 148 L30 160 Z', role: 'accent' },
+    { d: 'M44 140 L126 106 L128 112 L48 148' },
+    { d: ellipse(78, 96, 26, 7) },
+    { d: 'M58 94 C58 72 98 72 98 94' },
+    { d: 'M62 86 q16 6 32 0', role: 'soft' },
     {
-      d: 'M66 150 L148 116 L150 122 L62 162 C48 166 32 172 16 176 Q14 164 22 154 C38 154 54 153 66 150 Z',
+      d: dots([
+        [100, 140],
+        [108, 146],
+        [116, 140],
+        [124, 146],
+        [132, 140],
+      ]),
       role: 'accent',
     },
-    { d: 'M24 158 C36 158 48 157 58 155', role: 'soft' },
-    {
-      d: 'M70 158 C70 168 80 168 82 156 M104 133 L107 140 M128 123 L131 130',
-      role: 'soft',
-    },
-    { d: 'M98 178 C96 160 106 150 120 150 C134 150 144 160 142 178 Z' },
-    { d: 'M98 178 C92 182 82 182 78 178 C82 172 90 172 98 174', role: 'soft' },
-    { d: 'M142 172 L150 184 C142 188 134 186 130 180', role: 'soft' },
-    { d: 'M84 180 l4 -4 M90 180 l4 -5', role: 'ambient' },
-    shadow(116, 186, 34),
-    {
-      d: 'M8 190 C12 178 14 170 12 158 M30 192 C32 184 36 178 42 174 M52 192 C54 184 56 178 60 174 M150 192 C152 182 154 174 158 168',
-      role: 'ambient',
-    },
+    shadow(72, 160, 40),
   ],
 
   // The toy soldier's one roller skate in three-quarters: the black shoe
@@ -1332,7 +1326,7 @@ export const dressrosaArt = {
     { d: 'M36 146 C36 162 124 162 124 146', role: 'accent' },
     { d: 'M35 128 C36 143 124 143 125 128', role: 'soft' },
     { d: 'M80 139 l5 7 l-5 7 l-5 -7 Z', role: 'accent' },
-    { d: 'M108 140 l8 -8 M110 150 l12 -12 M114 156 l10 -10', role: 'ambient' },
+    { d: 'M104 144 l16 -16 M112 154 l12 -12', role: 'ambient' },
     shadow(80, 160, 54),
   ],
 
