@@ -209,7 +209,7 @@ export const waterSeven: Saga = {
     {
       id: 'paulie',
       kind: 'character',
-      revealedAtEpisode: 230,
+      revealedAtEpisode: 232,
       revealedAtChapter: 326,
       name: { it: 'Paulie', en: 'Paulie' },
       summary: {
@@ -245,7 +245,7 @@ export const waterSeven: Saga = {
     {
       id: 'kaku',
       kind: 'character',
-      revealedAtEpisode: 230,
+      revealedAtEpisode: 231,
       revealedAtChapter: 326,
       name: { it: 'Kaku', en: 'Kaku' },
       summary: {
@@ -867,8 +867,8 @@ export const waterSeven: Saga = {
         it: 'Dirige gli operai del Dock 1 con un sigaro in bocca e una matassa di corda alla cintura, e nessuno in cantiere lavora più in fretta di lui. Ha debiti di gioco in mezza città e passa metà della giornata a scappare da chi li riscuote. Basta una gonna corta perché gridi all’oscenità e si copra gli occhi.',
         en: 'He runs the men of Dock One with a cigar in his teeth and a coil of rope at his belt, and nobody in the yard works faster. He owes gambling debts across half the city and spends half his day dodging the people who collect them. One short skirt is enough to make him shout about indecency and cover his eyes.',
       },
-      affiliation: [{ episode: 230, value: GALLEY_LA_DOCK_ONE }],
-      origin: [{ episode: 230, value: WATER_SEVEN }],
+      affiliation: [{ episode: 232, value: GALLEY_LA_DOCK_ONE }],
+      origin: [{ episode: 232, value: WATER_SEVEN }],
     },
     'kokoro': {
       role: {
@@ -913,11 +913,11 @@ export const waterSeven: Saga = {
     'kaku': {
       role: DOCK_ONE,
       log: {
-        it: 'Lavora al Dock 1 insieme a Paulie e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
-        en: 'He works Dock One alongside Paulie and climbs anything, with a calm that does not leave him twenty metres up either. He speaks little, in a drawl of his own, and when he is asked to price a ship he says what he thinks without dressing it up. Nobody in Water Seven finds it odd that a shipwright spends his day on the rooftops.',
+        it: 'Lavora al Dock 1 con gli altri caposquadra e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
+        en: 'He works Dock One alongside the other foremen and climbs anything, with a calm that does not leave him twenty metres up either. He speaks little, in a drawl of his own, and when he is asked to price a ship he says what he thinks without dressing it up. Nobody in Water Seven finds it odd that a shipwright spends his day on the rooftops.',
       },
       affiliation: [
-        { episode: 230, value: GALLEY_LA_DOCK_ONE },
+        { episode: 231, value: GALLEY_LA_DOCK_ONE },
         { episode: 244, value: CIPHER_POL_9 },
         { episode: 886, chapter: 907, value: CIPHER_POL_0 },
       ],
