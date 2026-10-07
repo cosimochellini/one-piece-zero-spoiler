@@ -1626,7 +1626,7 @@ export const dressrosaArt = {
     { d: ellipse(36, 168, 12, 11), role: 'accent' },
     { d: 'M47 162 L94 152 L96 158 L48 176', role: 'accent' },
     {
-      d: 'M26 166 C32 172 40 176 46 174 M30 158 C36 164 42 172 44 178 M28 174 C34 168 40 162 44 160',
+      d: 'M27 162 C33 160 41 160 46 162 M25 168 C32 166 41 166 47 168 M26 174 C33 172 41 172 46 174',
       role: 'soft',
     },
     {
@@ -1686,9 +1686,9 @@ export const dressrosaArt = {
     {
       d: 'M50 84 C40 84 30 96 26 110 C22 122 24 136 34 138 C42 140 48 132 52 124',
     },
-    { d: 'M42 90 C26 82 16 66 20 42 C28 58 38 70 50 80', role: 'accent' },
+    { d: 'M52 84 C38 76 30 60 34 38 C40 54 50 68 60 78', role: 'accent' },
     {
-      d: 'M50 98 C42 96 36 92 32 86 L37 86 L33 80 L40 82 C42 88 46 92 54 94',
+      d: 'M44 106 C38 104 32 102 26 98 L29 94 L24 91 L30 88 L27 84 C33 87 40 91 46 96',
       role: 'accent',
     },
     {
@@ -1799,9 +1799,9 @@ export const dressrosaArt = {
       d: 'M100 100 l12 -10 M98 116 l16 -14 M98 140 l18 -16 M110 152 l16 -14',
       role: 'ambient',
     },
-    { d: 'M36 174 C50 182 110 182 124 174 M80 180 V183', role: 'soft' },
-    { d: circle(80, 188, 5) },
-    shadow(80, 166, 66),
+    { d: 'M36 162 C50 170 110 170 124 162 M80 168 V171', role: 'soft' },
+    { d: circle(80, 176, 5) },
+    shadow(80, 184, 66),
   ],
 
   // His broad curved sword lying on the floor, the dark wave along its back
@@ -1884,8 +1884,8 @@ export const dressrosaArt = {
   ],
   // One of the double axes he carries on his back, standing on its ring
   // pommel: the scalloped blades in 3/4, the far one hatched, the haft
-  // bound with cord. Episode 633 has one thrown in the waiting room and
-  // handed back to him.
+  // bound with cord. He carries three of them on his back (ch. 708), and
+  // episode 633 has one thrown in the waiting room and handed back to him.
   'boo': [
     { d: 'M77 40 V168 M83 40 V168 M77 40 C77 36 83 36 83 40' },
     {
