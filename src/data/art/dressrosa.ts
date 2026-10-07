@@ -24,9 +24,6 @@ const GLADIUS_COAT = 'translate(-12 -4) rotate(-14 70 100)'
 /** Hack's gi laid flat, turned a little on the floor. */
 const HACK_GI = 'rotate(-8 80 110)'
 
-/** Hajrudin's helmet, tipped a little so the crest runs away from us. */
-const HAJRUDIN_HELMET = 'rotate(-8 80 120)'
-
 /** Viola's stiletto, set back and to the right of the rose in front of it. */
 const VIOLA_SHOE = 'translate(16 -14)'
 
@@ -749,45 +746,27 @@ export const dressrosaArt = {
     shadow(82, 190, 72),
   ],
 
-  // His helmet seen from behind and to the left, turned a little: the dome,
-  // the brim round it, the neck guard flaring at the back and the crest
-  // running over the top, its far side hatched. The shades over the eyes
-  // are on the front, out of sight. He wears it from his debut in the
-  // C Block line-up, at 639. No horns: the helmet has none.
+  // A giant's horned helmet resting on a gladiator's shield.
   'hajrudin': [
+    { d: 'M34 66 H126 V128 C126 158 104 176 80 184 C56 176 34 158 34 128 Z' },
+    { d: circle(80, 120, 12) },
     {
-      d: 'M30 120 C28 82 54 56 86 56 C116 56 136 80 134 116',
-      transform: HAJRUDIN_HELMET,
-    },
-    {
-      d: 'M22 122 C40 132 112 134 142 118 C146 126 140 134 132 138 C110 146 52 146 30 138 C22 134 18 128 22 122 Z',
-      transform: HAJRUDIN_HELMET,
-    },
-    {
-      d: 'M30 138 C24 154 30 170 48 176 C70 182 96 176 112 164 C118 158 122 150 122 142',
-      transform: HAJRUDIN_HELMET,
-    },
-    {
-      d: 'M100 60 C96 46 86 36 70 32 C58 30 48 36 44 46 C40 56 40 66 42 74',
-      role: 'accent',
-      transform: HAJRUDIN_HELMET,
-    },
-    {
-      d: 'M100 60 C92 56 80 54 66 58 C56 62 48 68 42 74',
-      role: 'accent',
-      transform: HAJRUDIN_HELMET,
-    },
-    {
-      d: 'M86 42 l-2 14 M74 36 l-2 18 M60 34 l0 22 M50 40 l2 22',
+      d: dots([
+        [46, 78],
+        [114, 78],
+        [46, 140],
+        [114, 140],
+      ]),
       role: 'soft',
-      transform: HAJRUDIN_HELMET,
     },
+    { d: 'M52 66 C52 34 108 34 108 66 Z' },
+    { d: 'M80 46 V66' },
+    { d: 'M54 48 C38 40 30 24 36 14 C48 20 56 32 58 44', role: 'accent' },
     {
-      d: 'M116 72 l8 -8 M122 86 l10 -10 M126 100 l8 -8 M100 168 l8 -8 M110 156 l8 -8',
-      role: 'ambient',
-      transform: HAJRUDIN_HELMET,
+      d: 'M106 48 C122 40 130 24 124 14 C112 20 104 32 102 44',
+      role: 'accent',
     },
-    shadow(82, 190, 62),
+    shadow(80, 192, 40),
   ],
 
   // His zanbato driven point first into the ground and leaning: the long
@@ -1044,38 +1023,18 @@ export const dressrosaArt = {
     shadow(86, 182, 56),
   ],
 
-  // His bonnet in three-quarters, the crown behind and the opening turned
-  // toward us, hatched inside, the frill all round its edge, the ties lying
-  // in a bow on the floor, and the yellow dummy beside it. He is dressed so
-  // from his first scene, in episode 632. No hat under it: the bonnet is
-  // all he wears on his head.
+  // A baby bonnet sitting on a mobster's fedora.
   'senor-pink': [
+    { d: ellipse(80, 130, 52, 12) },
+    { d: 'M46 128 C46 92 58 78 80 78 C102 78 114 92 114 128' },
+    { d: 'M64 84 q16 10 32 0', role: 'soft' },
+    { d: 'M48 118 q32 10 64 0' },
+    { d: 'M56 78 C56 48 104 48 104 78 Z', role: 'accent' },
     {
-      d: 'M96 62 C70 50 38 62 30 92 C24 116 30 136 46 148 C64 158 86 156 100 150',
-    },
-    {
-      d: 'M96 62 C116 64 128 84 128 108 C128 132 116 150 100 150 C84 150 74 130 74 106 C74 82 82 64 96 62 Z',
-    },
-    {
-      d: 'M96 56 q10 -4 14 4 q10 0 10 8 q10 2 8 12 q8 4 4 12 q8 6 2 12 q6 8 -2 12 q4 8 -4 12 q2 8 -8 10 q-2 8 -12 6 q-6 6 -12 0',
+      d: 'M72 46 q-16 -10 -14 6 q2 12 14 2 M88 46 q16 -10 14 6 q-2 12 -14 2',
       role: 'accent',
     },
-    {
-      d: 'M84 84 l10 -10 M80 98 l18 -18 M80 112 l26 -26 M82 126 l30 -30 M88 136 l28 -28 M96 142 l22 -22',
-      role: 'ambient',
-    },
-    { d: 'M60 66 C52 90 52 120 62 150', role: 'soft' },
-    {
-      d: 'M86 152 C80 164 70 170 60 172 M60 172 C50 164 38 166 40 174 C42 182 54 180 60 172 C66 180 78 182 78 174 C78 168 68 166 60 172 M60 172 C54 180 46 186 36 188 M60 172 C64 180 70 186 78 188',
-      role: 'soft',
-    },
-    { d: ellipse(138, 176, 12, 5) },
-    { d: 'M130 174 C128 164 132 158 138 158 C144 158 148 164 146 174' },
-    {
-      d: 'M138 158 C138 150 144 146 148 150 C152 154 148 160 144 160',
-      role: 'soft',
-    },
-    shadow(84, 190, 62),
+    shadow(80, 152, 54),
   ],
 
   // His white cap in three-quarters, turned to the left, the seams of its
@@ -1295,28 +1254,31 @@ export const dressrosaArt = {
   ],
 
   // A Marine's rifle and cap dropped in the long grass of the Green Bit
-  // forest, the cap's brim hatched underneath. In episode 640 a voice that
-  // gives its name as Leo asks the Marines to lay down their weapons, and
-  // when they refuse they are stripped of them too fast to see. Leo himself
-  // is not shown until 641.
+  // forest: the rifle with its butt, grip, trigger guard and barrel band,
+  // the cap with its peak and the cloth at the back. In episode 640 a voice
+  // that gives its name as Leo asks the Marines to lay down their weapons,
+  // and when they refuse they are stripped of them too fast to see. Leo
+  // himself is not shown until 641.
   'leo': [
     {
-      d: 'M14 168 L30 150 L46 152 L40 166 Z M46 152 L140 112 L142 117 L44 160',
+      d: 'M10 176 L18 156 L38 160 L52 152 L64 152 L62 160 L44 172 Z',
       role: 'accent',
     },
-    { d: 'M64 146 C66 154 74 156 78 150 M100 132 V140', role: 'accent' },
-    { d: 'M88 152 C86 134 98 124 112 124 C126 124 136 134 134 150' },
-    { d: 'M80 152 C92 158 132 158 144 150 C132 146 92 146 80 152 Z' },
+    { d: 'M62 152 L148 116 L150 122 L62 160', role: 'accent' },
     {
-      d: 'M86 154 l4 -4 M98 157 l4 -5 M120 157 l4 -5 M132 155 l4 -4',
+      d: 'M60 160 C60 170 70 170 72 158 M96 140 L98 146 M120 130 L122 136',
+      role: 'soft',
+    },
+    { d: 'M64 152 L72 140 L78 142 L72 152', role: 'soft' },
+    { d: 'M84 120 C82 98 96 88 112 88 C128 88 140 98 138 120 Z' },
+    { d: 'M84 120 C80 126 70 128 66 124 C70 118 78 116 84 116', role: 'soft' },
+    { d: 'M138 120 L144 140 C134 144 120 138 116 130 L122 120', role: 'soft' },
+    { d: 'M72 124 l4 -4 M78 124 l4 -5', role: 'ambient' },
+    {
+      d: 'M10 190 C14 178 16 170 14 158 M28 192 C30 182 34 176 40 170 M116 192 C118 180 124 172 132 166 M134 192 C136 182 140 174 148 168 M82 192 C84 184 88 178 94 174',
       role: 'ambient',
     },
-    { d: 'M112 124 C104 132 100 142 100 152', role: 'soft' },
-    {
-      d: 'M10 182 C14 170 16 162 14 150 M22 186 C26 172 30 166 34 156 M120 186 C122 174 128 166 136 160 M136 186 C138 176 142 168 150 162 M60 188 C62 178 60 170 56 164 M86 188 C88 180 92 174 98 170',
-      role: 'ambient',
-    },
-    { d: 'M4 188 H156', role: 'ambient', dashed: true },
+    { d: 'M4 192 H156', role: 'ambient', dashed: true },
   ],
 
   // The toy soldier's one roller skate in three-quarters: the black shoe
@@ -1351,38 +1313,27 @@ export const dressrosaArt = {
     shadow(80, 192, 64),
   ],
 
-  // A big five-petalled flower open toward us in three-quarters, its far
-  // petals hatched, and a tiny crown sitting in its heart. The forest
-  // people speak of their princess, held in the factory, from episode 647.
-  // No cage and no tears: what her tears do, and why she is kept, are told
+  // A small crown in three-quarters: the band with its rim, the points
+  // standing round it, the far side hatched. The forest people speak of
+  // their princess, held in the factory, from episode 647. No flower, no
+  // cage and no tears: why she is kept, and what her tears do, are told
   // much later.
   'mansherry': [
-    { d: 'M64 108 C56 86 66 70 80 70 C94 70 104 86 96 108' },
     {
-      d: 'M60 112 C40 96 18 102 18 116 C18 128 36 132 56 124 M100 112 C120 96 142 102 142 116 C142 128 124 132 104 124',
-    },
-    {
-      d: 'M58 124 C42 136 44 156 60 158 C72 160 78 146 78 132 M102 124 C118 136 116 156 100 158 C88 160 82 146 82 132',
-    },
-    {
-      d: 'M60 114 C64 104 96 104 100 114 C96 126 64 126 60 114 Z',
-      role: 'soft',
-    },
-    {
-      d: 'M28 114 C38 114 48 116 56 118 M132 114 C122 114 112 116 104 118 M64 150 C68 144 72 138 74 132 M96 150 C92 144 88 138 86 132',
-      role: 'soft',
-    },
-    { d: 'M110 130 l6 -6 M116 136 l8 -8 M106 140 l6 -6', role: 'ambient' },
-    {
-      d: 'M71 118 L69 102 L75 109 L80 98 L85 109 L91 102 L89 118 C84 121 76 121 71 118 Z',
+      d: 'M34 150 C34 160 126 160 126 150 L126 126 M34 150 V126',
       role: 'accent',
     },
-    { d: 'M80 158 C80 170 78 178 80 190' },
     {
-      d: 'M80 176 C92 164 110 164 118 172 C106 182 92 182 80 176 Z M84 176 C96 172 106 172 114 173',
-      role: 'soft',
+      d: 'M34 126 L30 84 L54 112 L66 72 L80 106 L94 72 L106 112 L130 84 L126 126 C126 136 34 136 34 126 Z',
+      role: 'accent',
     },
-    shadow(80, 192, 30),
+    { d: 'M44 118 C60 114 100 114 116 118', role: 'soft' },
+    { d: 'M34 138 C34 148 126 148 126 138', role: 'soft' },
+    {
+      d: 'M110 120 l10 -10 M112 132 l12 -12 M112 144 l12 -12 M116 152 l9 -9',
+      role: 'ambient',
+    },
+    shadow(80, 170, 54),
   ],
 
   // A calligraphy brush and the bird it has just drawn.
