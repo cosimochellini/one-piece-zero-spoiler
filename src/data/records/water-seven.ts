@@ -47,8 +47,10 @@ export const waterSeven: Saga = {
     {
       id: 'foxy',
       kind: 'character',
-      revealedAtEpisode: 207,
+      revealedAtEpisode: 208,
       revealedAtChapter: 307,
+      // 208: episode 207 shows him only unclearly and says his name only in
+      // the next-episode preview. 208 shows him and has him say it.
       name: { it: 'Foxy', en: 'Foxy' },
       summary: {
         it: 'Un capitano dal mento smisurato che sfida le ciurme di passaggio a una gara in tre prove, e a ogni prova vinta si prende un uomo dell’avversario.',
@@ -686,20 +688,26 @@ export const waterSeven: Saga = {
         en: 'Captain of the Foxy Pirates',
       },
       log: {
-        it: 'Sfida chi passa da Long Ring Long Land al Davy Back Fight, tre prove con gli uomini dell’avversario come posta. La sua ciurma è enorme perché l’ha messa insieme così, una vittoria alla volta, e lo acclama a comando. Piange a dirotto ogni volta che perde qualcosa, e imbrogliare gli riesce meglio che vincere.',
-        en: 'He challenges whoever passes Long Ring Long Land to the Davy Back Fight, three rounds with the other crew’s people as the stake. His own crew is enormous because he assembled it exactly this way, one win at a time, and it cheers him on command. He sobs whenever he loses anything, and cheating comes to him more easily than winning.',
+        it: 'Sfida chi passa da Long Ring Long Land al Davy Back Fight, tre prove con gli uomini dell’avversario come posta. La sua ciurma è enorme perché l’ha messa insieme così, una vittoria alla volta, e lo acclama. Basta una parola sgarbata per abbatterlo, e un attimo dopo è di nuovo in piedi.',
+        en: 'He challenges whoever passes Long Ring Long Land to the Davy Back Fight, three rounds with the other crew’s people as the stake. His own crew is enormous because he assembled it exactly this way, one win at a time, and it cheers him on. One rude word is enough to leave him slumped and gloomy, and he is back on his feet moments later.',
       },
       affiliation: [
         {
-          episode: 207,
+          episode: 208,
           value: {
             it: 'Pirati di Foxy, capitano',
             en: 'Foxy Pirates, captain',
           },
         },
       ],
+      // First said in 209, where the announcer calls him "Silver Fox" Foxy
+      // as he rides in on Hamburg, the scene that closes chapter 307.
       epithet: [
-        { episode: 207, value: { it: 'La Volpe d’Argento', en: 'Silver Fox' } },
+        {
+          episode: 209,
+          chapter: 307,
+          value: { it: 'La Volpe d’Argento', en: 'Silver Fox' },
+        },
       ],
       devilFruit: [{ episode: 210, chapter: 309, value: ['slow-slow-fruit'] }],
     },
@@ -1525,12 +1533,15 @@ export const waterSeven: Saga = {
           },
         },
       ],
+      // Nothing at 313 says where he is from. The king of Goa tells him he
+      // is a citizen of that kingdom in 883, on pages 9 and 10 of chapter 905.
       origin: [
         {
-          episode: 313,
+          episode: 883,
+          chapter: 905,
           value: {
-            it: 'Villaggio Fuschia, East Blue',
-            en: 'Foosha Village, East Blue',
+            it: 'Regno di Goa, East Blue',
+            en: 'Goa Kingdom, East Blue',
           },
         },
       ],

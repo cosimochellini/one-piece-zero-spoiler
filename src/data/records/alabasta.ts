@@ -1006,7 +1006,8 @@ export const alabasta: Saga = {
         en: 'He is a huge man in a long fur-lined tunic, with an outsized spade in a sheath on his back, and the villagers do as he says. He first orders the pirates off the island, then takes them to his own house in Bighorn once they bow their heads and ask for a doctor. He tells them about the witch who lives in the castle on the mountain, about the five pirates who ravaged the country, and about the king who fled from them, whose return the island fears most of all.',
       },
       // No election entry at 91: the episode has the villagers ask him what
-      // to do, and only the chapter 243 cover shows him elected.
+      // to do, and only the chapter 243 cover shows him elected. Kureha first
+      // calls him king in 324, on page 8 of chapter 440.
       affiliation: [
         {
           episode: 80,
@@ -1014,6 +1015,11 @@ export const alabasta: Saga = {
             it: 'Capitano della guardia dell’isola di Drum',
             en: 'Captain of Drum Island’s guard',
           },
+        },
+        {
+          episode: 324,
+          chapter: 440,
+          value: { it: 'Isola di Drum, re', en: 'Drum Island, king' },
         },
       ],
       origin: [{ episode: 80, value: DRUM_ISLAND }],
