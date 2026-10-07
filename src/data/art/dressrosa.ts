@@ -27,6 +27,15 @@ const HACK_GI = 'rotate(-8 80 110)'
 /** Viola's stiletto, set back and to the right of the rose in front of it. */
 const VIOLA_SHOE = 'translate(16 -14)'
 
+/**
+ * Hajrudin's gauntlet, drawn level and turned so it lies away from us with
+ * the fist at the far end; its shadow is drawn level with it.
+ */
+const HAJRUDIN_ARM = 'translate(10.6 20) scale(0.88) rotate(-28 88 108)'
+
+/** The Marine's rifle, drawn level and turned a little in the grass. */
+const LEO_RIFLE = 'translate(8 16) scale(0.9) rotate(-14 80 160)'
+
 /** Kanjuro's brush, drawn level and turned to lie across the ground. */
 const KANJURO_BRUSH = 'rotate(-14 80 150)'
 
@@ -789,27 +798,61 @@ export const dressrosaArt = {
     shadow(82, 190, 72),
   ],
 
-  // A giant's horned helmet resting on a gladiator's shield.
+  // His gauntlet lying on the ground, the fist away from us: the vambrace
+  // with its open end toward us and hatched inside, two gold bands of
+  // studs, the far side hatched, and the wrapped fist with the fingers
+  // curled and the thumb across them. He wears it when the Block C
+  // fighters are brought on in episode 639. No helmet: with its crest and
+  // eye shades it reads as a head, and its shield reads as a watch face.
   'hajrudin': [
-    { d: 'M34 66 H126 V128 C126 158 104 176 80 184 C56 176 34 158 34 128 Z' },
-    { d: circle(80, 120, 12) },
+    { d: 'M16 78 H98 M16 134 H98', transform: HAJRUDIN_ARM },
+    { d: ellipse(16, 106, 9, 28), transform: HAJRUDIN_ARM },
+    {
+      d: 'M14 90 l6 -6 M12 104 l10 -10 M12 118 l10 -10 M14 130 l6 -6',
+      role: 'ambient',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M30 78 C35 88 35 124 30 134 M42 78 C47 88 47 124 42 134 M78 78 C83 88 83 124 78 134 M90 78 C95 88 95 124 90 134',
+      role: 'accent',
+      transform: HAJRUDIN_ARM,
+    },
     {
       d: dots([
-        [46, 78],
-        [114, 78],
-        [46, 140],
-        [114, 140],
+        [37, 86],
+        [38.6, 106],
+        [37, 126],
+        [85, 86],
+        [86.6, 106],
+        [85, 126],
       ]),
       role: 'soft',
+      transform: HAJRUDIN_ARM,
     },
-    { d: 'M52 66 C52 34 108 34 108 66 Z' },
-    { d: 'M80 46 V66' },
-    { d: 'M54 48 C38 40 30 24 36 14 C48 20 56 32 58 44', role: 'accent' },
     {
-      d: 'M106 48 C122 40 130 24 124 14 C112 20 104 32 102 44',
-      role: 'accent',
+      d: 'M52 132 l8 -8 M62 132 l8 -8 M72 130 l6 -6',
+      role: 'ambient',
+      transform: HAJRUDIN_ARM,
     },
-    shadow(80, 192, 40),
+    {
+      d: 'M98 84 C112 78 128 76 140 78 C150 80 152 90 146 92 C154 94 154 104 148 106 C153 108 152 118 147 119 C151 121 148 131 140 131 C128 136 112 136 98 128',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M146 92 H131 C126 94 126 104 131 106 M148 106 H131 C126 108 126 117 131 119 M147 119 H131 C126 121 126 129 132 131',
+      role: 'soft',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M110 89 C120 85 130 84 138 86 C143 88 142 94 137 95 C128 96 118 98 110 101',
+      transform: HAJRUDIN_ARM,
+    },
+    {
+      d: 'M104 81 C107 96 107 116 104 131',
+      role: 'soft',
+      transform: HAJRUDIN_ARM,
+    },
+    { ...shadow(82, 142, 72), transform: HAJRUDIN_ARM },
   ],
 
   // His zanbato driven point first into the ground and leaning: the long
@@ -1306,25 +1349,47 @@ export const dressrosaArt = {
     shadow(132, 182, 26),
   ],
 
-  // A Marine's rifle and cap dropped in the grass, tiny footprints running
-  // off.
+  // A Marine's rifle left lying in the grass of Green Bit: the butt and
+  // stock with their top face, the fore-stock, the barrel, the trigger
+  // guard, the underside hatched. Behind it the forest's giant ferns, one
+  // still curled and one opened out. In episode 640 a voice in that forest
+  // asks a squad of Marines for their weapons and strips them of all they
+  // carry. Nothing of the voice itself: he is not seen until 641.
   'leo': [
-    { d: 'M26 150 L44 140 L48 148 L30 160 Z', role: 'accent' },
-    { d: 'M44 140 L126 106 L128 112 L48 148' },
-    { d: ellipse(78, 96, 26, 7) },
-    { d: 'M58 94 C58 72 98 72 98 94' },
-    { d: 'M62 86 q16 6 32 0', role: 'soft' },
     {
-      d: dots([
-        [100, 140],
-        [108, 146],
-        [116, 140],
-        [124, 146],
-        [132, 140],
-      ]),
-      role: 'accent',
+      d: 'M40 150 C34 118 30 90 38 64 C44 44 68 38 76 52 C82 62 74 74 64 70 C56 67 58 56 66 58 M48 150 C42 120 38 92 44 70 C47 60 54 54 62 54',
     },
-    shadow(72, 160, 40),
+    {
+      d: 'M38 122 C30 120 26 114 28 108 M36 100 C28 98 25 92 27 86',
+      role: 'soft',
+    },
+    {
+      d: 'M30 152 C32 146 34 142 38 140 M54 150 C54 144 56 140 60 138 M108 146 C108 140 110 136 114 134 M130 144 C132 138 134 134 138 132',
+      role: 'ambient',
+    },
+    { d: 'M120 143 C118 118 126 96 148 80' },
+    {
+      d: 'M119 134 q-12 -2 -16 -10 M120 124 q12 -4 16 -14 M121 114 q-11 -2 -14 -9 M124 106 q10 -4 13 -12 M128 98 q-9 -2 -11 -8 M133 91 q8 -3 10 -9 M139 86 q-6 -1 -8 -6',
+      role: 'soft',
+    },
+    {
+      d: 'M14 150 C34 150 54 153 70 156 H122 V163 H74 C62 165 44 172 18 176 Q12 164 14 150 Z',
+      role: 'accent',
+      transform: LEO_RIFLE,
+    },
+    {
+      d: 'M14 150 L19 146 C38 146 56 149 72 152 H122 L122 156',
+      role: 'accent',
+      transform: LEO_RIFLE,
+    },
+    { d: 'M122 157.5 H152 V161.5 H122 M146 157.5 v-3', transform: LEO_RIFLE },
+    { d: 'M78 163 C78 170 86 170 88 163', role: 'soft', transform: LEO_RIFLE },
+    {
+      d: 'M26 172 l6 -8 M38 169 l6 -7 M50 166 l5 -5 M90 163 l3 -4 M102 163 l3 -4',
+      role: 'ambient',
+      transform: LEO_RIFLE,
+    },
+    shadow(84, 184, 66),
   ],
 
   // The toy soldier's one roller skate in three-quarters: the black shoe
