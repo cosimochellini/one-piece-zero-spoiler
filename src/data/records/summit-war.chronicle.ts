@@ -31,6 +31,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 466,
+      chapter: 557,
       value: {
         title: {
           it: 'Le dimissioni gridate a Sengoku',
@@ -223,14 +224,15 @@ export const summitWarChronicles = {
     },
     {
       episode: 1066,
+      chapter: 1039,
       value: {
         title: {
           it: 'Puncture Wille contro Big Mom',
           en: 'Puncture Wille against Big Mom',
         },
         body: {
-          it: 'Ridotto quasi allo stremo, il capitano dal cappello a macchie pianta la propria lama nel corpo di [[charlotte-linlin|Big Mom]] e la lascia scendere in profondità, prima di liberare un’onda d’urto che apre un cratere nel terreno. È Puncture Wille, una delle tecniche più devastanti che conosca, e insieme al magnetismo di [[eustass-kid|Kid]] basta a piegare l’imperatrice più temuta del Nuovo Mondo. I due rivali di sempre, per una volta, combattono fianco a fianco.',
-          en: 'Pushed almost to his limit, the captain in the spotted hat drives his blade into [[charlotte-linlin|Big Mom]]’s body and lets it sink deep, before releasing a shockwave that tears a crater into the ground. It is Puncture Wille, one of the most destructive techniques he knows, and together with [[eustass-kid|Kid]]’s magnetism it is enough to bring down the most feared empress of the New World. The two lifelong rivals, for once, fight side by side.',
+          it: 'Ridotto quasi allo stremo, il capitano dal cappello a macchie pianta la propria lama nel corpo di [[charlotte-linlin|Big Mom]] e la lascia scendere in profondità, prima di liberare un’onda d’urto che apre un cratere nel terreno. È Puncture Wille, una delle tecniche più devastanti che conosca, e insieme al magnetismo di [[eustass-kid|Kid]] colpisce in pieno l’imperatrice più temuta del Nuovo Mondo. I due rivali di sempre, per una volta, combattono fianco a fianco.',
+          en: 'Pushed almost to his limit, the captain in the spotted hat drives his blade into [[charlotte-linlin|Big Mom]]’s body and lets it sink deep, before releasing a shockwave that tears a crater into the ground. It is Puncture Wille, one of the most destructive techniques he knows, and together with [[eustass-kid|Kid]]’s magnetism it hits the most feared empress of the New World head-on. The two lifelong rivals, for once, fight side by side.',
         },
       },
     },
@@ -337,6 +339,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 476,
+      chapter: 567,
       value: {
         title: {
           it: 'Serve più della volontà',
@@ -373,6 +376,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 1141,
+      chapter: 1107,
       value: {
         title: {
           it: 'Il raggio spezzato da un calcio',
@@ -513,6 +517,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 738,
+      chapter: 794,
       value: {
         title: { it: 'Una carta per Zoro', en: 'A card for Zoro' },
         body: {
@@ -523,6 +528,7 @@ export const summitWarChronicles = {
     },
     {
       episode: 1120,
+      chapter: 1086,
       value: {
         title: { it: 'Quel nome, Im', en: 'That name, Im' },
         body: {

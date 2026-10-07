@@ -137,6 +137,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 957,
+      chapter: 956,
       value: {
         title: { it: 'Non più alleati', en: 'No longer on their side' },
         body: {
@@ -162,6 +163,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 890,
+      chapter: 909,
       value: {
         title: { it: 'Quasi quarant’anni fa', en: 'Nearly forty years ago' },
         body: {
@@ -184,6 +186,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 774,
+      chapter: 821,
       value: {
         title: { it: 'Una volta sola', en: 'Just this once' },
         body: {
@@ -194,6 +197,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 776,
+      chapter: 822,
       value: {
         title: { it: 'Le bende sulla zampa', en: 'Bandages for a foreleg' },
         body: {
@@ -206,6 +210,7 @@ export const wholeCakeChronicles = {
   'shishilian': [
     {
       episode: 758,
+      chapter: 809,
       value: {
         title: {
           it: 'Niente di dolce in sua presenza',
@@ -219,6 +224,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 776,
+      chapter: 822,
       value: {
         title: {
           it: 'Troppo rumoroso per la missione',
@@ -232,6 +238,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 1032,
+      chapter: 1012,
       value: {
         title: {
           it: 'Notizie dal territorio di Big Mom',
@@ -260,6 +267,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 828,
+      chapter: 858,
       value: {
         title: { it: 'Nessuno insulta il Padre', en: 'Nobody insults Father' },
         body: {
@@ -270,6 +278,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 831,
+      chapter: 861,
       value: {
         title: {
           it: 'Una porta che ha sentito troppo',
@@ -295,6 +304,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 798,
+      chapter: 837,
       value: {
         title: { it: 'Tradimento verso Mama', en: 'Treason against Mama' },
         body: {
@@ -333,6 +343,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 811,
+      chapter: 846,
       value: {
         title: { it: 'Il taglio più lento', en: 'The slowest cut' },
         body: {
@@ -343,6 +354,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 850,
+      chapter: 878,
       value: {
         title: { it: 'Nel cielo', en: 'Into the sky' },
         body: {
@@ -353,6 +365,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 859,
+      chapter: 885,
       value: {
         title: { it: 'Sorella Amande', en: 'Big sister Amande' },
         body: {
@@ -451,6 +464,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 873,
+      chapter: 898,
       value: {
         title: { it: 'Gettati in mare', en: 'Thrown into the sea' },
         body: {
@@ -473,6 +487,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 868,
+      chapter: 893,
       value: {
         title: {
           it: 'Non è più il fratellone',
@@ -501,6 +516,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 797,
+      chapter: 836,
       value: {
         title: {
           it: 'È stata un’idea della gru',
@@ -552,6 +568,7 @@ export const wholeCakeChronicles = {
     },
     {
       episode: 878,
+      chapter: 903,
       value: {
         title: { it: 'Una casa nel bastone', en: 'A home inside the staff' },
         body: {

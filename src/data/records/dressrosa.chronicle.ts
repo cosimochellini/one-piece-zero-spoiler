@@ -105,6 +105,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 622,
+      chapter: 696,
       value: {
         title: { it: 'L’ultima a svegliarsi', en: 'The last to wake' },
         body: {
@@ -168,6 +169,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 602,
+      chapter: 676,
       value: {
         title: { it: 'L’ultima caramella', en: 'The last candy' },
         body: {
@@ -260,6 +262,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 685,
+      chapter: 749,
       value: {
         title: { it: 'Su per il gigante di pietra', en: 'Up the stone giant' },
         body: {
@@ -270,6 +273,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 689,
+      chapter: 752,
       value: {
         title: { it: 'Un vicolo cieco', en: 'A dead end' },
         body: {
@@ -292,6 +296,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 645,
+      chapter: 715,
       value: {
         title: {
           it: 'Nessuno gli dia del basso',
@@ -305,6 +310,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 646,
+      chapter: 716,
       value: {
         title: { it: 'Una giacca che combatte', en: 'A jacket that fights' },
         body: {
@@ -365,6 +371,7 @@ export const dressrosaChronicles = {
   'dagama': [
     {
       episode: 633,
+      chapter: 708,
       value: {
         title: {
           it: 'Trame nella sala d’attesa',
@@ -388,6 +395,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 638,
+      chapter: 709,
       value: {
         title: { it: 'Pedine e un complice', en: 'Pawns and a partner' },
         body: {
@@ -461,6 +469,7 @@ export const dressrosaChronicles = {
   'abdullah': [
     {
       episode: 633,
+      chapter: 708,
       value: {
         title: { it: 'Ex cacciatori di taglie', en: 'Former bounty hunters' },
         body: {
@@ -503,6 +512,7 @@ export const dressrosaChronicles = {
   'jeet': [
     {
       episode: 633,
+      chapter: 708,
       value: {
         title: { it: 'Nominati in un fiato', en: 'Named in one breath' },
         body: {
@@ -558,6 +568,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 645,
+      chapter: 715,
       value: {
         title: { it: 'Un’ascia che si spezza', en: 'An axe that breaks' },
         body: {
@@ -583,6 +594,7 @@ export const dressrosaChronicles = {
   'gambia': [
     {
       episode: 634,
+      chapter: 708,
       value: {
         title: { it: 'Una domanda di troppo', en: 'One question too many' },
         body: {
@@ -606,6 +618,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 637,
+      chapter: 708,
       value: {
         title: { it: 'La coppia dei malvagi', en: 'The pair of evils' },
         body: {
@@ -616,6 +629,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 658,
+      chapter: 726,
       value: {
         title: {
           it: 'Il capitano che riconobbe il suo re',
@@ -641,6 +655,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 652,
+      chapter: 722,
       value: {
         title: {
           it: 'La sinistra è dove non ci sono le spade',
@@ -682,6 +697,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 646,
+      chapter: 716,
       value: {
         title: { it: 'Una lista di evasi', en: 'A list of escaped prisoners' },
         body: {
@@ -766,6 +782,7 @@ export const dressrosaChronicles = {
   'donquixote-homing': [
     {
       episode: 702,
+      chapter: 764,
       value: {
         title: { it: 'Umano dalla nascita', en: 'Human since birth' },
         body: {
@@ -811,6 +828,7 @@ export const dressrosaChronicles = {
     },
     {
       episode: 736,
+      chapter: 793,
       value: {
         title: { it: 'Nessun rancore', en: 'No grudge' },
         body: {

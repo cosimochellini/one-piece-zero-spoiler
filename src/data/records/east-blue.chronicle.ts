@@ -1688,6 +1688,7 @@ export const eastBlueChronicles = {
     },
     {
       episode: 151,
+      chapter: 234,
       value: {
         title: { it: 'Solo per curiosità', en: 'Only out of curiosity' },
         body: {

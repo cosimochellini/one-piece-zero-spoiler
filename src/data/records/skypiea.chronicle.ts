@@ -293,6 +293,7 @@ export const skypieaChronicles = {
   'donquixote-doflamingo': [
     {
       episode: 151,
+      chapter: 234,
       value: {
         title: {
           it: 'Mani che si muovono da sole',
@@ -306,6 +307,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 207,
+      chapter: 303,
       value: {
         title: { it: 'Punizione a Mock Town', en: 'Punishment in Mock Town' },
         body: {
@@ -329,6 +331,7 @@ export const skypieaChronicles = {
     },
     {
       episode: 470,
+      chapter: 561,
       value: {
         title: { it: 'Un’offerta a Crocodile', en: 'An offer to Crocodile' },
         body: {
