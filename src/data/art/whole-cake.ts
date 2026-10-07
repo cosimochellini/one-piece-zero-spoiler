@@ -251,7 +251,7 @@ export const wholeCakeArt = {
   // The duke's robe, hung open from the shoulders: the thick fur down both
   // edges and round the collar, the fur at the cuffs, the dark inside showing
   // between the edges. He wears it in his sickbed when the crew are let in
-  // to see him (chapter 808); ep 756 shows him only as a shadowed portrait.
+  // to see him, at 758.
   'inuarashi': [
     {
       d: 'M58 48 C40 52 26 62 22 82 L12 140 C14 148 26 150 32 144 L38 112 L36 172 H124 L122 112 L128 144 C134 150 146 148 148 140 L138 82 C134 62 120 52 102 48',
@@ -287,8 +287,8 @@ export const wholeCakeArt = {
 
   // The green cape of the Guardians, high collar up, open at the front on
   // its dark inside and blown out to one side as he stands on a bough of
-  // the Whale Forest; a lit cigarette smoulders on the bough. He watches Luffy from up there
-  // the day he is first seen, at 754.
+  // the Whale Forest. He watches Luffy from up there the day he is first
+  // seen, at 754.
   'pedro': [
     { d: 'M0 158 C40 152 90 154 160 148', role: 'ambient' },
     {
@@ -308,8 +308,6 @@ export const wholeCakeArt = {
       d: 'M62 70 C58 96 56 124 54 150 M112 76 C118 100 124 120 134 138',
       role: 'soft',
     },
-    { d: 'M14 156 l14 -2', role: 'soft' },
-    { d: 'M22 152 c-4 -8 4 -12 0 -20 c-4 -8 4 -12 0 -20', role: 'soft' },
     shadow(96, 178, 50),
   ],
 
