@@ -527,8 +527,8 @@ export const devilFruits: Saga = {
     {
       id: 'love-love-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 412,
-      revealedAtChapter: 523,
+      revealedAtEpisode: 415,
+      revealedAtChapter: 521,
       name: { it: 'Frutto Mero Mero', en: 'Love-Love Fruit' },
       summary: {
         it: 'Trasforma in pietra chiunque guardi con desiderio chi l’ha mangiato, e quella pietra si spezza come qualsiasi altra.',
