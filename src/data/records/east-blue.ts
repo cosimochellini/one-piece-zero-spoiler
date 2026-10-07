@@ -237,8 +237,8 @@ export const eastBlue: Saga = {
       // 25), over the flashback that tells everything his texts say.
       name: { it: 'Yasop', en: 'Yasopp' },
       summary: {
-        it: 'Il tiratore della ciurma del Rosso, capace di colpire una formica a cento passi, che parla del figlio lasciato a casa a chiunque passi.',
-        en: 'The Red Hair crew’s marksman, able to hit an ant at a hundred paces, who tells anyone standing near him about the son he left at home.',
+        it: 'Il tiratore della ciurma del Rosso, che si vanta di poter colpire una formica a cento piedi e parla del figlio lasciato a casa.',
+        en: 'The Red Hair crew’s marksman, who boasts he can hit an ant at a hundred feet and talks about the son he left at home.',
       },
       visual: { art: 'yasopp', tint: 'ocher' },
     },
@@ -422,8 +422,8 @@ export const eastBlue: Saga = {
       // on to cut Merry down, at 12 (chapter 28).
       name: { it: 'Kuro', en: 'Kuro' },
       summary: {
-        it: 'Un maggiordomo impeccabile con gli occhiali sempre storti, che di notte infila la mano in un guanto con cinque lame lunghe come dita.',
-        en: 'An impeccable butler whose glasses are always crooked, who slips a hand at night into a glove with five blades as long as fingers.',
+        it: 'Il maggiordomo della villa, che di notte infila la mano in un guanto armato di lame.',
+        en: 'The mansion’s butler, who at night slips a hand into a bladed glove.',
       },
       visual: { art: 'kuro', tint: 'violet' },
     },
@@ -465,8 +465,8 @@ export const eastBlue: Saga = {
         en: 'Ninjin, Piiman and Tamanegi',
       },
       summary: {
-        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e irrompono in una trattoria per salvare il loro capitano.',
-        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and burst into a restaurant to rescue their captain.',
+        it: 'Tre ragazzini del Villaggio di Syrup, con le spade di legno e l’aria di tre ortaggi, che formano la ciurma pirata di Usop e corrono alla costa quando uno di loro avvista una nave pirata.',
+        en: 'Three small boys of Syrup Village with wooden swords and the look of three vegetables, who make up Usopp’s pirate crew and run to the coast when one of them sees a pirate ship coming.',
       },
       visual: { art: 'ninjin-piiman-and-tamanegi', tint: 'orange' },
     },
@@ -1262,8 +1262,8 @@ export const eastBlue: Saga = {
     'yasopp': {
       role: { it: 'Tiratore scelto', en: 'Sniper' },
       log: {
-        it: 'Ha lasciato il villaggio e un bambino piccolo per salire su una nave pirata, e da allora non ha smesso un giorno di raccontare quanto è in gamba suo figlio. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Beve alla taverna insieme agli altri, e nessuno lo sente mai parlare di tornare indietro.',
-        en: 'He left a village and a small son to board a pirate ship, and has not gone a day since without telling someone how fine that boy is. With a pistol he does not miss: he boasts he can shoot the antennae off an ant without touching the rest of it. He drinks at the tavern with the others, and nobody ever hears him talk about going back.',
+        it: 'Ha lasciato il villaggio e un figlio piccolo per salire su una nave pirata, e parla di quel bambino a Rufy finché Rufy non si annoia. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Alla taverna beve con gli altri.',
+        en: 'He left a village and a small son to board a pirate ship, and he talks to Luffy about that boy until Luffy is bored of it. With a pistol he does not miss: he boasts he can shoot the antennae off an ant without touching the rest of it. At the tavern he drinks with the others.',
       },
       affiliation: [
         {
@@ -1548,8 +1548,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Black Cat Pirates',
       },
       log: {
-        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si rimette di continuo gli occhiali sul naso. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
-        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He keeps pushing his glasses back up his nose. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
+        it: 'Da tre anni serve la padrona della villa sotto il nome di Klahadore. Si rimette di continuo gli occhiali sul naso. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
+        en: 'For three years he has served the mistress of the mansion under the name Klahadore. He keeps pushing his glasses back up his nose. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
       },
       affiliation: [
         {
@@ -1575,8 +1575,8 @@ export const eastBlue: Saga = {
     'jango': {
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
       log: {
-        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada, e i bambini si fermano a guardarlo. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
-        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came into the village walking backwards down the middle of the road, and the children stop to stare. He has come to meet his old captain, who now lives there as a butler.',
+        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
+        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came into the village walking backwards down the middle of the road. He has come to meet his old captain, who now lives there as a butler.',
       },
       affiliation: [
         {
@@ -1637,8 +1637,8 @@ export const eastBlue: Saga = {
         en: 'Guard of the Black Cat ship',
       },
       log: {
-        it: 'Lui e Sham fanno la guardia alla nave dei Pirati del Gatto Nero e la lasciano solo quando Jango li chiama. Brontola che non vuole saperne di combattere, poi guarda la paura del compagno trasformarsi in un agguato. Il suo colpo è un salto e un pestone: quando Zoro si sposta in tempo, il terreno si spacca dove atterra, e lui se la prende con Sham che non l’ha tenuto abbastanza fermo.',
-        en: 'He and Sham guard the Black Cat Pirates’ ship and leave it only when Jango calls them down. He grumbles that he wants no part of the fight, then watches his partner’s show of fear turn into an ambush. His move is a leap and a stomp: when Zoro slips out of the way, the ground splits where he lands, and he blames Sham for not holding the swordsman tighter.',
+        it: 'Lui e Sham fanno la guardia alla nave dei Pirati del Gatto Nero e la lasciano solo quando Jango li chiama. Brontola che non vuole saperne di combattere, poi guarda la paura del compagno trasformarsi in un agguato. Il suo colpo è un salto e un pestone: quando Zoro si sposta in tempo, il terreno si spacca dove atterra.',
+        en: 'He and Sham guard the Black Cat Pirates’ ship and leave it only when Jango calls them down. He grumbles that he wants no part of the fight, then watches his partner’s show of fear turn into an ambush. His move is a leap and a stomp: when Zoro slips out of the way, the ground splits where he lands.',
       },
       status: [{ episode: 13, value: 'alive' }],
       affiliation: [
