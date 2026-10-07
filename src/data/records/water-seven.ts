@@ -59,19 +59,23 @@ export const waterSeven: Saga = {
     {
       id: 'porche',
       kind: 'character',
-      revealedAtEpisode: 207,
+      // 208, not 207: episode 207 shows her only as a silhouette and never
+      // says her name; Foxy calls her by name in 208.
+      revealedAtEpisode: 208,
       revealedAtChapter: 315,
       name: { it: 'Porche', en: 'Porche' },
       summary: {
-        it: 'L’idolo dei Pirati di Foxy, che entra in scena roteando un bastone e si fa applaudire dalla ciurma prima ancora di gareggiare.',
-        en: 'The idol of the Foxy Pirates, who takes the field twirling a baton and has the crew applauding before the game has even started.',
+        it: 'L’idolo dei Pirati di Foxy, che porta un bastone e si fa acclamare dalla ciurma prima ancora che il Davy Back Fight cominci.',
+        en: 'The idol of the Foxy Pirates, who carries a baton and has the crew chanting her name before the Davy Back Fight has even started.',
       },
       visual: { art: 'porche', tint: 'pink' },
     },
     {
       id: 'hamburg',
       kind: 'character',
-      revealedAtEpisode: 207,
+      // 208, not 207: episode 207 shows him only as a silhouette; Foxy says
+      // his name in 208.
+      revealedAtEpisode: 208,
       revealedAtChapter: 315,
       name: { it: 'Hamburg', en: 'Hamburg' },
       summary: {
@@ -372,8 +376,8 @@ export const waterSeven: Saga = {
       nameSaidAt: 231,
       name: { it: 'Franky', en: 'Franky' },
       summary: {
-        it: 'Un cyborg in mutande e camicia hawaiana, con il ciuffo a pompadour, che smonta navi per vivere e le ricostruisce per passione, e che ha appena rapinato Usop.',
-        en: 'A cyborg in swim briefs and a Hawaiian shirt, hair in a pompadour, who strips ships for a living and rebuilds them for love, and who has just robbed Usopp.',
+        it: 'Il capo mascherato della Franky Family, una banda di smantellatori di navi di Water Seven, che se ne va con i duecento milioni che i suoi uomini hanno rubato a Usop.',
+        en: 'The masked boss of the Franky Family, a gang of ship dismantlers in Water Seven, who walks off with the two hundred million his men stole from Usopp.',
       },
       visual: { art: 'franky', tint: 'cyan' },
     },
@@ -642,8 +646,8 @@ export const waterSeven: Saga = {
       revealedAtChapter: 431,
       name: { it: 'Monkey D. Garp', en: 'Monkey D. Garp' },
       summary: {
-        it: 'Un viceammiraglio che sale a bordo sbriciolando biscotti di riso e lancia palle di cannone a mano, e che dice di essere il nonno di Rufy.',
-        en: 'A vice admiral who comes aboard dropping rice cracker crumbs and throws cannonballs with his bare arm, and who says he is Luffy’s grandfather.',
+        it: 'Un viceammiraglio della Marina, il leggendario marine che mise alle strette Gold Roger, che sfonda un muro per svegliare Rufy con un pugno che fa male anche alla gomma, e che Rufy chiama nonno.',
+        en: 'A Marine vice admiral, the legendary Marine who cornered Gold Roger, who punches through a wall to wake Luffy with a fist that hurts even rubber, and whom Luffy calls Grandpa.',
       },
       visual: { art: 'monkey-d-garp', tint: 'red' },
     },
@@ -700,11 +704,11 @@ export const waterSeven: Saga = {
     'porche': {
       role: { it: 'Idolo dei Pirati di Foxy', en: 'Idol of the Foxy Pirates' },
       log: {
-        it: 'Si presenta come l’idolo della ciurma e si comporta di conseguenza: bastone, sorriso e un pubblico che urla il suo nome a ogni gesto. Nella prima prova del Davy Back Fight gioca in acqua, dove è più veloce di chiunque altro, e non ha la minima intenzione di giocare pulito. Chi la guarda troppo a lungo si dimentica di correre.',
-        en: 'She introduces herself as the crew’s idol and behaves like one: baton, smile, and an audience chanting her name at every gesture. In the first round of the Davy Back Fight she plays in the water, where she is faster than anyone, and she has no intention whatsoever of playing fair. Anyone who watches her too long forgets to run.',
+        it: 'La ciurma la tratta da idolo: alla cerimonia d’apertura del Davy Back Fight gli uomini urlano il suo nome prima ancora che si giochi una sola prova. È al fianco di Foxy quando lui spara al cavallo di Tonjit e sfida i Cappello di Paglia, e quando Foxy sostiene che Rufy ha già accettato, lei gli dà ragione: l’ha sentito anche lei.',
+        en: 'The crew treats her as its idol: at the opening ceremony of the Davy Back Fight the men chant her name before a single round is played. She is at Foxy’s side when he shoots Tonjit’s horse and challenges the Straw Hats, and when Foxy claims that Luffy has already agreed, she backs him up: she heard it too.',
       },
       affiliation: [
-        { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
+        { episode: 208, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
     },
     'hamburg': {
@@ -717,7 +721,7 @@ export const waterSeven: Saga = {
         en: 'He wears the Foxy Pirates’ mask and long gloves like the rest of the crew, and a leopard-spotted scarf. He is with Foxy and Porche when their ship catches the Going Merry, and stands behind his captain while Foxy challenges the Straw Hats.',
       },
       affiliation: [
-        { episode: 207, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
+        { episode: 208, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
     },
     'tonjit': {
@@ -1104,8 +1108,8 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles.franky,
       role: { it: 'Smantellatore di navi', en: 'Ship dismantler' },
       log: {
-        it: 'Comanda la Franky Family, una banda di smantellatori che vive sotto un ponte di Water Seven e ruba a chi capita. Si è ricostruito il corpo da solo con pezzi di ferro, e funziona a cola: quando è scarico gli cambiano l’acconciatura e l’umore. Sa cosa vuol dire perdere una nave, e non lo racconta.',
-        en: 'He runs the Franky Family, a gang of dismantlers who live under a bridge in Water Seven and rob whoever comes along. He rebuilt his own body out of scrap iron, and it runs on cola: when he is empty his hair and his mood both go flat. He knows what it is to lose a ship, and does not talk about it.',
+        it: 'Nasconde la faccia dietro una maschera e comanda la Franky Family, una banda di smantellatori di navi che spoglia i pirati di passaggio di quello che hanno con sé. Quando i suoi uomini gli portano i duecento milioni presi a Usop, dice che finalmente potranno comprare la cosa che hanno sempre voluto, e ne dà loro cinque milioni da spendere come preferiscono. Quando Usop torna a riprendersi i soldi, Franky gli dice che nessuno aiuterà un pirata, poi se ne va con le valigette e lascia che la sua famiglia lo picchi.',
+        en: 'He hides his face behind a mask and runs the Franky Family, a gang of ship dismantlers who strip passing pirates of whatever they carry. When his men bring him the two hundred million they took from Usopp, he says that at last they can buy the thing they have always wanted, and gives them five million to spend as they like. When Usopp comes back for the money, Franky tells him that nobody will help a pirate, then walks off with the cases and leaves his family to beat him.',
       },
       status: [{ episode: 235, value: 'alive' }],
       affiliation: [
@@ -1502,8 +1506,8 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles['monkey-d-garp'],
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'Arriva ridendo, si siede come se fosse a casa sua e sbriciola biscotti di riso sul ponte di una nave pirata. È il nonno di Rufy, e il suo metodo educativo consisteva nel buttarlo giù da un dirupo perché diventasse forte. Le palle di cannone le tira con il braccio, e la Marina per questo gli ha dato un nome che conoscono tutti.',
-        en: 'He arrives laughing, sits down as though he were at home, and drops rice cracker crumbs on the deck of a pirate ship. He is Luffy’s grandfather, and his idea of raising a child was throwing him off a cliff to toughen him up. He throws his cannonballs with his arm, and the Marines gave him a name for it that everyone knows.',
+        it: 'A Water Seven riconoscono la sua nave e il suo nome: è il leggendario marine che mise più volte alle strette Gold Roger. Viene a cercare i Cappello di Paglia, lascia due dei suoi uomini fuori ed entra sfondando il muro. Il suo pugno dell’amore, come lo chiama lui, fa male anche a un corpo di gomma, e Rufy, svegliato così, lo chiama nonno.',
+        en: 'Water Seven knows his ship and his name: he is the legendary Marine who cornered Gold Roger time and again. He comes looking for the Straw Hats, leaves two of his men outside and comes in through the wall. His fist of love, as he calls it, hurts even a rubber body, and Luffy, woken by it, calls him Grandpa.',
       },
       status: [{ episode: 313, value: 'alive' }],
       affiliation: [
@@ -1528,9 +1532,12 @@ export const waterSeven: Saga = {
           },
         },
       ],
+      // The caption that gives both names is in episode 314, on page 2 of
+      // chapter 432, which that episode adapts.
       epithet: [
         {
-          episode: 313,
+          episode: 314,
+          chapter: 432,
           value: {
             it: 'il Pugno, Eroe della Marina',
             en: 'the Fist, Hero of the Marines',
