@@ -103,6 +103,39 @@ const PEARLS = 'translate(80 104) scale(1.15) translate(-80 -136)'
  */
 const MARIGOLD_COIL = 'translate(12 142) scale(1 0.5)'
 
+/** The beads of Dadan's necklace, laid in a ring on the ground. */
+const DADAN_BEADS = (
+  [
+    [130, 152],
+    [127, 156.8],
+    [118.3, 161],
+    [105, 164.1],
+    [88.7, 165.8],
+    [71.3, 165.8],
+    [55, 164.1],
+    [41.7, 161],
+    [33, 156.8],
+    [30, 152],
+    [33, 147.2],
+    [41.7, 143],
+    [55, 139.9],
+    [71.3, 138.2],
+    [88.7, 138.2],
+    [105, 139.9],
+    [118.3, 143],
+    [127, 147.2],
+  ] as const
+)
+  .map(([x, y]) => circle(x, y, 3.5))
+  .join(' ')
+
+/** One petal of Rouge's hibiscus, turned five ways round the flower's heart. */
+const HIBISCUS_PETAL =
+  'M78 104 C64 96 56 80 60 68 C62 60 68 58 72 60 C74 56 80 55 84 58 C88 56 94 58 96 62 C102 74 92 94 78 104 Z'
+
+/** The hibiscus tipped back into three-quarters. */
+const HIBISCUS_TILT = 'translate(0 30) scale(1 0.7)'
+
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
   // His white fur hat seen from the front and a little above, the fur rim
@@ -1177,17 +1210,27 @@ export const summitWarArt = {
     { ...shadow(84, 170, 60), transform: PEARLS },
   ],
 
-  // A drinking gourd, stopper still in it.
+  // His drinking gourd in three-quarters, the stopper in, a cord round its
+  // waist and the rope he carries it by trailing off to the side in his
+  // colour, the far side hatched. No lettering. He drinks from it at
+  // Marineford in episode 484.
   'vasco-shot': [
     {
-      d: 'M80 44 C66 44 62 56 66 66 C46 78 40 104 44 128 C48 156 62 172 80 172 C98 172 112 156 116 128 C120 104 114 78 94 66 C98 56 94 44 80 44z',
+      d: 'M74 56 C62 60 60 82 70 95 C44 104 38 150 62 165 C72 171 88 171 98 165 C122 150 116 104 90 95 C100 82 98 60 86 56',
+    },
+    { d: `${ellipse(80, 56, 6, 2)} M75 56 V47 M85 56 V47` },
+    { d: ellipse(80, 46, 5, 2), role: 'soft' },
+    {
+      d: 'M69 94 C74 99 86 99 91 94 M69 94 C72 90 88 90 91 94',
       role: 'accent',
     },
-    { d: 'M68 40 h24 v8 h-24z' },
-    { d: 'M46 96 C60 90 100 90 114 96', role: 'soft', dashed: true },
-    { d: 'M54 66 C40 58 34 66 40 74 M106 66 c14 -8 20 0 14 8' },
-    { d: 'M124 150 q6 -12 12 0 q-6 14 -12 0z M130 150 v18', role: 'soft' },
-    shadow(80, 184, 42),
+    {
+      d: 'M91 96 C106 98 116 110 120 128 C124 148 130 164 146 170 M90 98 C98 106 102 116 100 124',
+      role: 'accent',
+    },
+    { d: 'M52 132 C52 118 56 110 64 104', role: 'soft' },
+    { d: 'M102 122 l9 -7 M104 138 l10 -8 M98 156 l10 -8', role: 'ambient' },
+    shadow(80, 180, 46),
   ],
 
   // The top of a fortress wall, small and far off, and behind it, far bigger,
@@ -1346,15 +1389,31 @@ export const summitWarArt = {
     shadow(80, 164, 56),
   ],
 
-  // A straw hat woven out of rope, big enough for a giant.
+  // The kasa Ace made for him, a wide cone of woven straw, its brim in his
+  // colour and its chin cords trailing, lying on the frozen bay. He
+  // remembers the gift in episode 464.
   'little-oars-jr': [
-    { d: ellipse(80, 130, 66, 22), role: 'accent' },
-    { d: 'M34 124 C36 66 124 66 126 124' },
-    { d: 'M34 124 q46 22 92 0', role: 'soft' },
-    { d: 'M46 100 q34 14 68 0 M40 112 q40 16 80 0', role: 'soft' },
-    { d: 'M50 84 q30 12 60 0', role: 'soft' },
-    { d: 'M52 72 V126 M80 66 V130 M108 72 V126', role: 'soft' },
-    shadow(80, 168, 60),
+    { d: 'M14 128 C40 116 66 100 80 84 C94 100 120 116 146 128' },
+    { d: 'M14 128 C14 152 146 152 146 128', role: 'accent' },
+    {
+      d: 'M14 128 C16 118 40 112 52 111 M146 128 C144 118 120 112 108 111',
+      role: 'soft',
+    },
+    {
+      d: 'M38 121 C52 134 108 134 122 121 M58 105 C68 113 92 113 102 105',
+      role: 'soft',
+    },
+    { d: 'M80 84 L64 146 M80 84 L96 146', role: 'soft' },
+    { d: 'M114 110 l5 8 M124 116 l5 8 M134 122 l4 7', role: 'ambient' },
+    {
+      d: 'M100 147 C108 158 120 162 138 160 M104 146 C116 152 128 152 146 148',
+      role: 'soft',
+    },
+    {
+      d: 'M4 172 L40 166 L58 176 M100 178 L124 168 L156 174 M28 188 L52 182',
+      role: 'ambient',
+    },
+    shadow(80, 160, 68),
   ],
 
   // A chair at the council table, an officer's coat over its back.
@@ -1367,35 +1426,43 @@ export const summitWarArt = {
     shadow(80, 184, 46),
   ],
 
-  // A cap set on a sword laid across the rail.
+  // His katana in its scabbard, the flower-shaped guard in his colour and the
+  // hilt wrapped, and beside it the tanto he stabs himself with to stay free
+  // of the empress's charm in episode 410.
   'momonga': [
-    { d: 'M18 142 h124' },
-    { d: 'M18 150 h124', role: 'soft' },
-    { d: 'M34 150 V182 M126 150 V182' },
-    { d: 'M28 126 h104 M28 132 h104 M132 126 l8 3 l-8 3', role: 'accent' },
-    { d: 'M44 120 h8 v18 h-8z' },
-    { d: 'M28 126 L18 126 M28 132 L18 132' },
-    { d: 'M56 114 C56 88 116 88 116 114z' },
-    { d: 'M50 114 h72' },
-    { d: 'M54 122 q32 10 64 0' },
-    shadow(80, 192, 56),
-  ],
-
-  // A bandits' pot over the fire, with the bowls waiting.
-  'curly-dadan': [
-    { d: 'M46 76 h52 l-6 42 h-40z' },
-    { d: 'M40 76 h64' },
-    { d: 'M52 76 C52 58 92 58 92 76', role: 'soft' },
-    { d: 'M98 86 q12 4 10 14' },
+    { d: 'M44 136 L120 108 M48 146 L124 118' },
+    { d: 'M120 108 C130 106 134 114 124 118', role: 'soft' },
+    { d: 'M98 116 l3 8 M106 113 l3 8', role: 'soft' },
     {
-      d: 'M56 158 c4 -16 14 -22 12 -34 c10 8 12 18 10 26 c6 -4 8 -12 6 -20 c10 10 12 22 6 30z',
+      d: 'M44 132 C40 124 48 118 54 122 C56 114 66 116 66 124 C72 122 76 132 70 136 C76 140 72 150 66 148 C66 156 56 158 54 150 C48 154 40 148 44 142 C38 140 38 132 44 132 Z',
       role: 'accent',
     },
-    { d: 'M92 154 c2 -10 8 -14 8 -22 c6 6 8 14 6 22z', role: 'accent' },
+    { d: 'M42 138 L12 149 M44 147 L16 158 M12 149 L16 158' },
+    { d: 'M16 151 l6 4 l3 -7 l6 4 l3 -7 l6 4', role: 'soft' },
+    { d: 'M70 170 L124 156 M72 176 L126 162 M124 156 L132 158 L126 162' },
+    { d: 'M84 163 C82 160 82 170 86 170', role: 'soft' },
+    { d: 'M80 133 l4 -5 M90 129 l4 -5 M110 122 l4 -5', role: 'ambient' },
+    shadow(76, 182, 66),
+  ],
+
+  // A lit cigarette laid across her pink bead necklace, the burning end in
+  // her colour and its smoke rising. The wiki's Appearance, cited to her
+  // introduction in episode 477: "seen smoking a cigarette … a pink beaded
+  // necklace".
+  'curly-dadan': [
+    { d: DADAN_BEADS, role: 'soft' },
+    { d: 'M36 140 L118 120 M38 149 L120 129' },
+    { d: `${ellipse(37, 144.5, 2.5, 4.5)} M50 137 l2 9`, role: 'soft' },
     {
-      d: 'M16 164 h30 l-6 18 h-18z M66 164 h30 l-6 18 h-18z M116 164 h30 l-6 18 h-18z',
+      d: `M110 121.5 l2 9 ${ellipse(119, 124.5, 2.5, 4.5)} M114 120 l1 4`,
+      role: 'accent',
     },
-    { d: 'M8 182 h144', role: 'ambient' },
+    {
+      d: 'M121 120 C114 106 130 98 124 84 C118 70 132 62 126 48',
+      role: 'soft',
+    },
+    { d: 'M60 146 l4 6 M80 141 l4 6 M100 136 l4 6', role: 'ambient' },
+    shadow(80, 182, 58),
   ],
 
   // A top hat with goggles on the brim, and a pipe beside it. The pipe burns
@@ -1407,29 +1474,52 @@ export const summitWarArt = {
     shadow(78, 170, 42),
   ],
 
-  // A crown of flowers laid on a cradle.
+  // A hibiscus in three-quarters, five petals opening round the long stamen
+  // in her colour, a leaf on the stem. She wears one in her hair when she
+  // is first shown, in episode 459.
   'portgas-d-rouge': [
-    { d: 'M30 110 h100 l-10 48 h-80z' },
-    { d: 'M30 110 h100', role: 'soft' },
-    { d: 'M40 158 C40 176 120 176 120 158', role: 'soft' },
-    { d: 'M24 168 C24 184 136 184 136 168', role: 'ambient', dashed: true },
-    { d: 'M40 88 C52 60 108 60 120 88', role: 'accent' },
+    { d: HIBISCUS_PETAL, transform: HIBISCUS_TILT },
+    { d: HIBISCUS_PETAL, transform: `${HIBISCUS_TILT} rotate(72 78 104)` },
+    { d: HIBISCUS_PETAL, transform: `${HIBISCUS_TILT} rotate(144 78 104)` },
+    { d: HIBISCUS_PETAL, transform: `${HIBISCUS_TILT} rotate(216 78 104)` },
+    { d: HIBISCUS_PETAL, transform: `${HIBISCUS_TILT} rotate(288 78 104)` },
+    { d: 'M78 103 C88 90 98 80 112 72', role: 'accent' },
     {
-      d: `${circle(48, 86, 8)} ${circle(80, 66, 8)} ${circle(112, 86, 8)}`,
+      d: dots([
+        [110, 70],
+        [116, 70],
+        [114, 66],
+        [110, 76],
+        [116, 76],
+      ]),
       role: 'accent',
     },
+    {
+      d: 'M58 128 C50 140 40 150 28 154 M44 146 C30 140 22 144 18 152 C28 158 38 156 44 146',
+    },
+    { d: 'M26 151 L40 148', role: 'soft' },
+    { d: 'M66 112 l4 -4 M74 116 l4 -4 M84 116 l4 -4', role: 'ambient' },
+    shadow(80, 176, 54),
   ],
 
-  // A cane with a gilded knob, leaning on an empty seat of the VIP row.
+  // His cane with its gilded knob in his colour, leaning on a front-row seat
+  // of the auction house, the seat's far side hatched. He takes his seat in
+  // episode 394.
   'rosward': [
-    { d: 'M42 118 V58 q30 -12 60 0 V118' },
-    { d: 'M50 70 q22 -8 44 0 V112 H50z', role: 'soft' },
-    { d: 'M36 118 h72 v10 h-72z' },
-    { d: 'M40 128 v44 M104 128 v44' },
-    { d: 'M130 176 L117 66', role: 'accent' },
-    { d: circle(116, 58, 8), role: 'accent' },
-    { d: 'M113 76 l9 -1', role: 'accent' },
-    shadow(84, 180, 54),
+    { d: 'M36 118 V62 C36 46 90 46 90 62 V118' },
+    { d: 'M90 62 C96 54 104 52 108 58 V112' },
+    { d: 'M44 112 V68 C44 58 82 58 82 68 V112', role: 'soft' },
+    {
+      d: 'M30 118 H96 V130 H30 Z M30 118 L40 112 M96 118 L110 110 V122 L96 130',
+    },
+    {
+      d: 'M94 72 l10 -6 M94 86 l10 -6 M94 100 l10 -6 M100 124 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M34 130 V172 M92 130 V172 M108 124 V164' },
+    { d: 'M132 178 L117 70 M129 178 h6' },
+    { d: `${circle(116, 61, 9)} M110 72 h12`, role: 'accent' },
+    shadow(84, 182, 62),
   ],
 
   // A small pistol laid across an open fan.
@@ -1446,82 +1536,121 @@ export const summitWarArt = {
     shadow(80, 178, 48),
   ],
 
-  // An auctioneer's gavel on its block, and a pair of star-shaped glasses.
+  // The auctioneer's gavel on its round block, the head and the block
+  // hatched underneath, and his star-shaped glasses folded beside it so only
+  // one lens shows, in his colour. He holds the gavel over the stage in
+  // episode 395.
   'disco': [
-    { d: 'M34 150 h60 v12 h-60z' },
-    { d: 'M40 106 h44 v18 h-44z', role: 'accent' },
-    { d: 'M50 106 v18 M74 106 v18', role: 'soft' },
-    { d: 'M84 115 L132 132' },
-    { d: `${star(106, 70, 14, 6)} ${star(140, 70, 14, 6)}`, role: 'accent' },
-    { d: 'M120 68 q3 -3 6 0' },
-    shadow(64, 172, 40),
+    {
+      d: `${ellipse(70, 150, 40, 10)} M30 150 V160 M110 150 V160 M30 160 C30 174 110 174 110 160`,
+    },
+    { d: 'M40 164 l6 -5 M56 168 l6 -6 M90 167 l6 -6', role: 'ambient' },
+    { d: `${ellipse(46, 106, 9, 15)} M46 91 H98 M46 121 H98` },
+    { d: 'M98 91 C106 91 106 121 98 121', role: 'soft' },
+    { d: 'M62 91 V121 M80 91 V121', role: 'soft' },
+    { d: 'M78 121 L104 146 M86 121 L110 142 M104 146 L110 142' },
+    { d: 'M64 112 l6 -6 M72 116 l6 -6', role: 'ambient' },
+    { d: star(128, 150, 13, 6), role: 'accent' },
+    { d: 'M139 146 L154 150 L152 156 M139 154 L150 160', role: 'soft' },
+    shadow(80, 184, 70),
   ],
 
-  // An explosive collar lying open, its chain still wound round the stake.
+  // The post outside the auction house, square and hatched on its far side,
+  // the chain in his colour wound twice round it and run out slack along
+  // the ground. He is chained to it from episode 395.
   'jean-bart': [
-    { d: 'M36 124 a34 12 0 0 0 68 0', role: 'accent' },
-    { d: 'M36 124 C36 100 60 88 84 92', role: 'accent' },
-    { d: 'M62 132 h16 v10 h-16z' },
-    { d: dot(70, 137), role: 'accent' },
+    { d: 'M60 52 H88 V158 H60 Z' },
+    { d: 'M60 52 L70 44 H98 L88 52 M88 158 L98 150 V44' },
     {
-      d: `${ellipse(98, 116, 6, 3)} ${ellipse(110, 108, 6, 3)} ${ellipse(121, 100, 6, 3)}`,
-    },
-    { d: 'M128 60 V168 M122 60 h12 M124 168 l4 8 l4 -8' },
-    { d: 'M122 92 q6 4 12 0 M122 102 q6 4 12 0', role: 'soft' },
-    shadow(80, 184, 50),
-  ],
-
-  // A cluster of forest mushrooms, and the smoke she followed to find them.
-  'sweet-pea': [
-    { d: 'M40 120 C40 94 88 94 88 120z', role: 'accent' },
-    { d: 'M56 120 V160 M72 120 V160' },
-    { d: 'M92 136 C92 120 118 120 118 136z', role: 'accent' },
-    { d: 'M100 136 V160 M110 136 V160' },
-    {
-      d: dots([
-        [54, 108],
-        [70, 103],
-        [80, 112],
-        [104, 129],
-      ]),
-      role: 'soft',
-    },
-    {
-      d: 'M126 112 c-10 -12 10 -20 0 -32 c-10 -12 10 -20 0 -32',
+      d: 'M90 64 l6 -6 M90 120 l6 -6 M90 136 l6 -6 M90 150 l6 -6',
       role: 'ambient',
-      dashed: true,
     },
-    { d: 'M16 160 h128', role: 'ambient' },
-  ],
-
-  // A pair of sandals, one big enough to stand the other inside it.
-  'aphelandra': [
+    { d: 'M68 60 V84 M68 110 V150 M78 64 V84 M78 112 V154', role: 'soft' },
     {
-      d: 'M40 64 C40 36 96 36 96 64 L92 160 C92 186 44 186 44 160z',
+      d: `${ellipse(62, 88, 5, 3.5)} M67 89 h4 ${ellipse(76, 90, 5, 3.5)} M81 90 h4 ${ellipse(90, 88, 5, 3.5)} ${ellipse(62, 102, 5, 3.5)} M67 103 h4 ${ellipse(76, 105, 5, 3.5)} M81 105 h4 ${ellipse(90, 103, 5, 3.5)} M95 106 l3 4 ${ellipse(101, 116, 3.5, 5)} M102 121 l1 4 ${ellipse(104, 131, 3.5, 5)} M105 136 l1 4 ${ellipse(107, 146, 3.5, 5)} M109 151 l3 3 ${ellipse(118, 157, 5, 3.5)} M123 158 h4 ${ellipse(132, 158, 5, 3.5)} M137 158 h4 ${ellipse(146, 157, 5, 3.5)}`,
       role: 'accent',
     },
-    { d: 'M44 90 C60 76 76 76 92 90 M46 124 h44', role: 'accent' },
-    { d: 'M68 50 v14', role: 'soft' },
-    { d: 'M58 112 C58 100 78 100 78 112 L76 152 C76 162 60 162 60 152z' },
-    { d: 'M60 126 h16', role: 'soft' },
-    shadow(70, 192, 40),
+    { d: 'M70 48 H92', role: 'soft' },
+    { d: 'M18 160 H56 M98 162 H104', role: 'ambient' },
+    shadow(84, 170, 56),
   ],
 
-  // Three arrows in a roof beam, beside the hole a man went out through.
-  'kikyo': [
-    { d: 'M10 60 L80 24 L150 60' },
-    { d: 'M96 40 l6 -6 l8 4 l6 -4 l4 10 l-8 6 l-10 -2z', role: 'soft' },
-    { d: 'M10 64 h140 v16 h-140z' },
-    { d: 'M30 150 L48 80 M60 156 L66 80 M94 152 L84 80', role: 'accent' },
+  // A campfire of two crossed logs, the flame in her colour, its smoke
+  // climbing past the treetops. She follows the smoke to Luffy in episode
+  // 408.
+  'sweet-pea': [
     {
-      d: 'M30 150 l-6 4 M30 150 l2 8 M60 156 l-6 2 M60 156 l4 6 M94 152 l-4 6 M94 152 l6 2',
+      d: 'M2 86 C8 70 22 70 26 80 C30 66 46 64 52 78 C56 70 66 70 68 78 M96 80 C100 68 114 66 118 78 C124 66 140 66 144 80 C150 74 158 76 162 84',
+      role: 'ambient',
+    },
+    { d: 'M30 160 L118 136 M36 170 L124 146' },
+    { d: `${ellipse(33, 165, 4, 6)} ${ellipse(121, 141, 4, 6)}`, role: 'soft' },
+    { d: 'M44 136 L126 166 M40 146 L122 176' },
+    { d: `${ellipse(42, 141, 4, 6)} ${ellipse(124, 171, 4, 6)}`, role: 'soft' },
+    {
+      d: 'M80 150 C64 140 62 124 72 112 C72 122 78 124 80 118 C80 106 86 98 94 92 C92 104 100 112 98 124 C102 120 104 116 104 110 C112 124 104 142 90 150',
       role: 'accent',
     },
     {
-      d: 'M44 80 l-4 -4 M52 80 l4 -4 M64 80 l-2 -6 M86 80 l4 -5',
+      d: 'M86 88 C76 78 92 70 84 60 C76 50 92 42 84 32 C78 24 86 16 92 12',
       role: 'soft',
     },
-    { d: 'M20 176 h120', role: 'ambient', dashed: true },
+    shadow(80, 186, 60),
+  ],
+
+  // One of her tall brown boots, laced up the front, its back hatched and its
+  // top in her colour, her sword in its scabbard lying behind it. She wears
+  // both from her first scene in episode 408.
+  'aphelandra': [
+    { d: 'M70 46 V128 C70 136 64 140 52 142 C34 144 26 150 26 158 H92 V46' },
+    { d: ellipse(81, 46, 11, 4), role: 'accent' },
+    { d: 'M92 46 L100 52 V150 L92 158' },
+    {
+      d: 'M94 64 l5 -5 M94 80 l5 -5 M94 96 l5 -5 M94 112 l5 -5 M94 128 l5 -5 M94 144 l5 -5',
+      role: 'ambient',
+    },
+    {
+      d: 'M72 60 L90 70 M90 60 L72 70 M72 76 L90 86 M90 76 L72 86 M72 92 L90 102 M90 92 L72 102',
+      role: 'soft',
+    },
+    { d: 'M26 158 V164 H100 V150 M68 164 V158', role: 'soft' },
+    {
+      d: 'M8 146 H26 M8 152 H26 M8 146 C4 147 4 151 8 152 M100 146 H116 M100 152 H116',
+    },
+    {
+      d: `${ellipse(118, 149, 2, 8)} M120 146 H146 M120 152 H146 M146 146 C150 147 150 151 146 152`,
+    },
+    { d: 'M124 146 l3 6 l3 -6 l3 6 l3 -6 l3 6 l3 -6', role: 'soft' },
+    shadow(78, 188, 60),
+  ],
+
+  // The roof of the building where Luffy is held, rows of tiles, the hole he
+  // breaks out through, and three arrows stuck in the tiles, their feathers
+  // in her colour. She has the arrows loosed at him in episode 409, and a
+  // frame of that episode shows them stuck in the red tiles.
+  'kikyo': [
+    { d: 'M10 112 L44 62 L78 112 Z M44 62 L140 40 L156 92 L78 112' },
+    { d: 'M10 112 V156 H78 V112 M78 156 L156 136 V92' },
+    {
+      d: 'M86 150 l6 -8 M104 146 l6 -8 M122 141 l6 -8 M140 137 l6 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M52.5 74.5 A6 4 0 0 0 65.6 71.4 A6 4 0 0 0 78.6 68.4 A6 4 0 0 0 91.7 65.3 A6 4 0 0 0 104.8 62.2 A6 4 0 0 0 117.9 59.1 A6 4 0 0 0 130.9 56.1 A6 4 0 0 0 144 53 M61 87 A6 4 0 0 0 73.4 84 A6 4 0 0 0 85.9 81 M123.1 72 A6 4 0 0 0 135.6 69 A6 4 0 0 0 148 66 M69.5 99.5 A6 4 0 0 0 81.3 96.6 A6 4 0 0 0 93.1 93.6 A6 4 0 0 0 104.9 90.7 A6 4 0 0 0 116.6 87.8 A6 4 0 0 0 128.4 84.9 A6 4 0 0 0 140.2 81.9 A6 4 0 0 0 152 79',
+      role: 'soft',
+    },
+    { d: 'M88 82 L94 72 L104 74 L110 66 L120 72 L118 80 L108 86 L96 86 Z' },
+    { d: 'M96 82 l6 -6 M104 82 l8 -8 M112 78 l4 -4', role: 'ambient' },
+    {
+      d: 'M124 92 l6 -2 l2 4 l-6 2 z M80 104 l5 -1 l1 4 l-5 1 z',
+      role: 'soft',
+    },
+    { d: 'M70 92 L50 42 M128 70 L124 18 M142 84 L154 38' },
+    {
+      d: 'M50 42 l-7 -3 M50 42 l1 -8 M53 50 l-7 -3 M53 50 l1 -8 M124 18 l-5 -5 M124 18 l5 -5 M125 27 l-5 -5 M125 27 l5 -5 M154 38 l-3 -7 M154 38 l7 -3 M152 47 l-3 -7 M152 47 l7 -3',
+      role: 'accent',
+    },
+    { d: 'M2 160 H158', role: 'ambient' },
   ],
 
   // The island's great mountain from the sea, split by the deep valley where
@@ -1552,32 +1681,71 @@ export const summitWarArt = {
     ...SEA,
   ],
 
-  // A cap tossed on the arena sand, three claw marks raked beside it.
+  // The black panther side on, no face, her long tail curled and her flank
+  // hatched, her domed brown cap in her colour with a row of studs along the
+  // rim. She is let loose in the arena in episode 412.
   'bacura': [
-    { d: ellipse(80, 156, 66, 20), role: 'soft' },
     {
-      d: 'M44 124 C44 96 88 90 96 114 C98 122 92 128 80 128 H50 C46 128 44 126 44 124z',
+      d: 'M20 106 C18 96 26 86 38 82 C48 78 60 80 68 88 C80 80 94 78 108 80 C126 82 142 88 150 100 C156 108 156 118 152 126',
+    },
+    {
+      d: 'M20 106 C22 114 30 118 38 118 C46 120 52 118 56 116 C70 124 92 126 112 122 C124 120 134 120 142 124',
+    },
+    {
+      d: 'M30 86 C32 64 64 62 72 88 M30 86 C42 80 60 80 72 88 M50 66 L52 58 L55 66',
       role: 'accent',
     },
-    { d: 'M94 120 c14 -2 26 4 30 10 c-10 4 -22 2 -30 -4', role: 'accent' },
-    { d: 'M50 128 c-8 10 -10 20 -6 30', role: 'accent' },
-    { d: 'M58 110 q14 -8 28 0', role: 'soft' },
-    { d: 'M104 150 l16 -20 M114 154 l16 -20 M124 158 l16 -20' },
-    shadow(80, 186, 50),
-  ],
-
-  // A beetle's horned helmet set down on a broad leaf.
-  'heracles': [
     {
-      d: 'M22 160 C40 128 120 124 140 150 C118 172 44 176 22 160z',
+      d: dots([
+        [37, 83.4],
+        [44, 81.9],
+        [51, 81.6],
+        [58, 82.4],
+        [65, 84.4],
+      ]),
       role: 'soft',
     },
-    { d: 'M26 158 C60 150 100 148 136 150', role: 'soft' },
-    { d: 'M52 142 C52 104 108 104 108 142z' },
-    { d: 'M60 130 h40', role: 'soft' },
-    { d: 'M80 110 C78 84 88 60 108 46 C104 62 96 80 90 110', role: 'accent' },
-    { d: 'M72 112 C68 98 60 90 48 86 C54 96 60 106 64 114', role: 'accent' },
-    shadow(80, 184, 48),
+    {
+      d: 'M54 116 C56 130 54 142 48 152 H62 C64 142 66 130 68 122 M142 124 C146 136 144 144 136 152 H150 C154 142 156 132 152 124',
+    },
+    {
+      d: 'M76 124 C78 136 76 146 72 152 H80 M124 122 C126 134 124 144 120 152 H128',
+      role: 'soft',
+    },
+    { d: 'M126 90 C142 96 148 110 144 124', role: 'soft' },
+    { d: 'M152 110 C160 96 160 74 150 62 C144 54 134 58 138 66' },
+    {
+      d: 'M86 98 l8 -7 M98 104 l8 -7 M110 108 l8 -7 M122 110 l6 -5',
+      role: 'ambient',
+    },
+    shadow(86, 166, 70),
+  ],
+
+  // The giant beetle he saves Usopp from and then eats, side on, its domed
+  // shell in his colour and hatched below, six jointed legs, no face. He
+  // kills it in episode 420.
+  'heracles': [
+    {
+      d: 'M50 114 C52 86 92 74 120 82 C136 88 142 100 140 114',
+      role: 'accent',
+    },
+    { d: 'M50 114 H140' },
+    { d: 'M50 114 C44 98 30 96 24 104 C22 110 26 114 32 114 H50' },
+    { d: 'M24 104 C16 104 12 110 16 116 C20 118 24 116 26 114' },
+    { d: 'M16 106 C10 98 8 90 12 82 M19 104 C17 94 20 86 26 80', role: 'soft' },
+    { d: 'M60 96 C84 88 112 90 132 100', role: 'soft' },
+    {
+      d: 'M70 110 l6 -8 M84 110 l6 -8 M98 110 l6 -8 M112 110 l6 -8 M126 110 l5 -7',
+      role: 'ambient',
+    },
+    {
+      d: 'M36 114 L28 132 L18 150 M76 114 L72 132 L80 150 M114 114 L124 132 L136 150',
+    },
+    {
+      d: 'M44 114 L42 132 L36 150 M90 114 L92 132 L100 150 M126 114 L140 130 L150 148',
+      role: 'soft',
+    },
+    shadow(84, 160, 70),
   ],
 
   // A pair of cuffs lying open on an inspection tray.
