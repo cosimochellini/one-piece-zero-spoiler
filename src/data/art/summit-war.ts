@@ -327,6 +327,10 @@ export const summitWarArt = {
     { d: 'M6 132 H154 V150 H6 Z' },
     { d: 'M20 141 h20 M54 141 h24 M94 141 h22 M128 141 h18', role: 'soft' },
     { d: 'M38 132 V90 H122 V132' },
+    {
+      d: 'M38 104 H122 M38 118 H122 M50 94 v6 M62 94 v6 M98 94 v6 M110 94 v6',
+      role: 'soft',
+    },
     { d: 'M122 90 l10 -6 V126 l-10 6', role: 'soft' },
     { d: 'M126 96 l4 -3 M126 108 l4 -3 M126 120 l4 -3', role: 'ambient' },
     { d: 'M62 90 V76 H98 V90 M68 66 V56 H92 V66 M74 46 V40 H86 V46' },
@@ -359,14 +363,20 @@ export const summitWarArt = {
     ...SEA,
   ],
 
-  // The Sea Rabbit rising out of the sea at the foot of the Red Line: its
-  // scaled neck arched, the far side hatched, the furred head turned to the
-  // left with no face, the long ears in the record's colour, and the wall's
-  // rough top and strata behind it. It spits out Camie and Pappag in
-  // episode 385; the archipelago is not in sight until episode 390.
+  // The Sea Rabbit at the foot of the Red Line: it comes up out of the dark
+  // after the Shark Submerge and surfaces beside the Sunny, where Luffy beats
+  // it and it spits out Camie and Pappag (episode 385). Its scaled neck is
+  // arched, the far side hatched, the furred head turned to the left with no
+  // face, the long ears in the record's colour; behind it the wall's rough
+  // top, its sheer face and strata. The archipelago is not in sight until
+  // episode 390.
   'sabaody': [
     {
       d: 'M-4 58 L12 54 L24 60 L40 52 L50 55 M96 50 L102 49 L118 54 L134 48 L150 53 L164 50',
+    },
+    {
+      d: 'M24 60 C22 90 26 120 24 150 M134 48 C136 82 132 116 136 150',
+      role: 'soft',
     },
     {
       d: 'M-4 74 H36 M-4 94 H34 M-4 114 H40 M-4 134 H58 M128 70 H164 M126 90 H164 M132 110 H164 M134 130 H164',
@@ -437,10 +447,14 @@ export const summitWarArt = {
     { d: 'M70 126 V112 a10 10 0 0 1 20 0 V126', role: 'accent' },
     { d: 'M75 105 V126 M80 103 V126 M85 105 V126 M70 114 H90', role: 'soft' },
     { d: 'M72 92 V70 H88 V92 M76 70 V62 H84 V70' },
-    { d: WARSHIP, transform: 'translate(2 150)' },
-    { d: WARSHIP, transform: 'translate(128 150)' },
-    { d: WARSHIP, transform: 'translate(0 96) scale(0.75)' },
-    { d: WARSHIP, transform: 'translate(140 94) scale(0.75)' },
+    {
+      d: 'M10 116 q5 -3 10 0 q5 3 10 0 M140 116 q5 -3 10 0 q5 3 10 0 M36 130 q5 -3 10 0 q5 3 10 0 M104 130 q5 -3 10 0 q5 3 10 0',
+      role: 'soft',
+    },
+    { d: WARSHIP, transform: 'translate(0 152) scale(1.15)' },
+    { d: WARSHIP, transform: 'translate(126 152) scale(1.15)' },
+    { d: WARSHIP, transform: 'translate(-2 98) scale(0.9)' },
+    { d: WARSHIP, transform: 'translate(136 96) scale(0.9)' },
     ...SEA.slice(1),
   ],
 
