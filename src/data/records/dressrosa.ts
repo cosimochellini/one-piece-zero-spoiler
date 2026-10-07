@@ -339,8 +339,10 @@ export const dressrosa: Saga = {
     {
       id: 'bastille',
       kind: 'character',
+      // He comes back into the story outside the colosseum in chapter 717,
+      // which 647 adapts; until then he is a face in the Marineford line.
       revealedAtEpisode: 647,
-      revealedAtChapter: 708,
+      revealedAtChapter: 717,
       name: { it: 'Bastille', en: 'Bastille' },
       summary: {
         it: 'Un viceammiraglio con una maschera da squalo e una spada più alta di lui, che guarda il colosseo da fuori aspettando un ordine.',
@@ -2078,7 +2080,10 @@ export const dressrosa: Saga = {
           value: { it: 'Regno di Mogaro', en: 'Mogaro Kingdom' },
         },
       ],
-      devilFruit: [{ episode: 646, value: ['jacket-jacket-fruit'] }],
+      // The fruit is told in chapter 716, which 646 adapts whole.
+      devilFruit: [
+        { episode: 646, chapter: 716, value: ['jacket-jacket-fruit'] },
+      ],
     },
     'bobby-funk': {
       chronicle: dressrosaChronicles['bobby-funk'],
