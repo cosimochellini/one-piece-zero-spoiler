@@ -682,9 +682,9 @@ export const wholeCakeArt = {
 
   // His spear, stood on its butt and leaning: a long blade ridged down the
   // middle with its lower facet hatched, a crossguard with its thickness
-  // and a collar under it, the grip wrapped near the foot. He goes at Sanji
-  // with it at 793, a long pointed head on a collar as the fight's frames
-  // show it. No crown, which he never wears, and no charge in the blade.
+  // and a collar under it, the grip wrapped near the foot. He jabs at Sanji
+  // with it at 793 (ch. 833). The wiki gives him a golden helmet, never a
+  // crown, so there is none, and no charge in the blade.
   'vinsmoke-judge': [
     { d: 'M-24 97 H96 M-24 103 H96 M-24 97 V103', transform: JUDGE_SPEAR_TILT },
     {
