@@ -98,20 +98,10 @@ const SENRIKU = 'rotate(-30 80 112)'
 const PEARLS = 'translate(80 104) scale(1.15) translate(-80 -136)'
 
 /**
- * The coil both Boa sisters share in their snake forms: two turns of the body
- * on the arena floor seen from above, the inner rims soft, the near underside
- * hatched. Marigold's is the same, drawn heavier.
+ * Marigold's coil: a flat spiral drawn round, then squashed into the floor it
+ * lies on.
  */
-const SISTERS_COIL: Stroke[] = [
-  { d: 'M24 150 C24 132 136 132 136 150 C136 170 24 170 24 150' },
-  { d: 'M40 150 C44 142 116 142 120 150', role: 'soft' },
-  { d: 'M40 128 C40 114 120 114 120 128 C120 142 40 142 40 128' },
-  { d: 'M54 128 C58 122 102 122 106 128', role: 'soft' },
-  {
-    d: 'M40 160 l8 -7 M56 166 l8 -7 M98 167 l8 -7 M114 162 l8 -7',
-    role: 'ambient',
-  },
-]
+const MARIGOLD_COIL = 'translate(12 142) scale(1 0.5)'
 
 /** The drawings of the records filed in the summit war stretch of the route. */
 export const summitWarArt = {
@@ -777,47 +767,49 @@ export const summitWarArt = {
     shadow(80, 186, 44),
   ],
 
-  // Her snake form on the arena floor: the shared coil, the body rising from
-  // the back of it and the head bent over with the tongue out, and the
-  // anaconda's zigzag along the body in her colour. She turns into it in
-  // the arena in episode 412.
+  // A snake wound round a pillar, tongue out at the top.
   'boa-sandersonia': [
-    ...SISTERS_COIL,
-    { d: 'M96 118 C104 96 102 74 92 60 M110 120 C120 96 116 66 102 52' },
-    { d: 'M92 60 C84 58 70 54 64 48 C62 42 72 38 86 42 C96 44 104 48 102 52' },
-    { d: 'M64 46 L54 46 M54 46 l-5 -4 M54 46 l-5 4', role: 'soft' },
+    { d: 'M64 46 V168 M96 46 V168' },
+    { d: 'M54 40 h52 v8 h-52z' },
+    { d: 'M54 168 h52 v10 h-52z' },
     {
-      d: 'M30 152 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 l8 -6 l8 6 M46 128 l8 -5 l8 5 l8 -5 l8 5 l8 -5 l8 5 l8 -5 l8 5 M100 110 l8 -4 M104 94 l8 -4 M102 78 l8 -4',
+      d: 'M52 160 C104 150 106 136 62 126 C20 116 24 100 76 92 C120 84 122 70 84 62',
       role: 'accent',
     },
-    shadow(80, 178, 58),
+    { d: 'M84 62 C72 58 68 48 78 44 C88 40 96 48 92 56', role: 'accent' },
+    { d: 'M92 56 h10 m-3 -3 l3 3 l-3 3', role: 'accent' },
+    shadow(80, 186, 34),
   ],
 
-  // Her snake form, the same coil as her sister's drawn heavier, its spots,
-  // the body rising and the head bent over; beside it the guandao she
-  // carries, its great blade in her colour, the far face hatched, the back
-  // spur and the collar on the haft. She turns in the arena in episode 412;
-  // her fire comes later.
+  // Her snake form's heavy tail coiled flat on the arena floor, seen from
+  // above, the tip curling out at the front and the near side hatched; beside
+  // it the guandao she carries, its great blade in her colour, the far face
+  // hatched, the back spur and the collar on the haft. She turns in the arena
+  // in episode 412.
   'boa-marigold': [
-    ...SISTERS_COIL.map((stroke) => ({
-      // Wider and taller, and moved right to leave room for the guandao.
-      ...stroke,
-      transform: 'translate(92 150) scale(1.1 1.2) translate(-80 -150)',
-    })),
-    { d: 'M104 112 C114 90 112 70 102 58 M124 116 C136 90 130 60 114 46' },
     {
-      d: 'M102 58 C92 56 80 52 76 46 C74 38 86 34 100 38 C110 40 118 42 114 46',
+      d: 'M142 0 A62 62 0 0 0 18 0 A52 52 0 0 0 122 0 A40 40 0 0 0 42 0 A30 30 0 0 0 102 0 C102 -8 90 -9 88 0',
+      transform: MARIGOLD_COIL,
     },
     {
-      d: `${circle(52, 152, 3)} ${circle(76, 162, 3)} ${circle(114, 160, 3)} ${circle(134, 146, 3)} ${circle(94, 124, 3)}`,
-      role: 'soft',
+      d: 'M128 0 A48 48 0 0 0 32 0 A38 38 0 0 0 108 0 A26 26 0 0 0 56 0 A16 16 0 0 0 88 0',
+      transform: MARIGOLD_COIL,
+    },
+    {
+      d: 'M142 0 C144 34 140 60 120 70 C110 74 102 70 108 64 M128 0 C130 26 128 48 116 58 C112 62 108 64 108 64',
+      transform: MARIGOLD_COIL,
+    },
+    {
+      d: 'M44 46 l8 -14 M68 56 l8 -14 M96 56 l8 -14 M120 40 l8 -14',
+      role: 'ambient',
+      transform: MARIGOLD_COIL,
     },
     { d: 'M20 186 V74 M26 186 V74 M20 186 h6' },
     { d: 'M26 74 V12 L2 22 C-2 42 6 62 20 74 Z', role: 'accent' },
     { d: 'M26 30 l8 -8 v12 M9 26 C6 42 10 56 20 66', role: 'soft' },
     { d: 'M14 46 l10 -8 M16 56 l8 -7', role: 'ambient' },
     { d: 'M16 74 h14 v6 h-14z' },
-    shadow(86, 182, 66),
+    shadow(92, 178, 62),
   ],
 
   // Her snake bow standing on its tail: the snake's body bent into the stave,
@@ -846,7 +838,7 @@ export const summitWarArt = {
   ],
 
   // The newspaper she asks the returning pirates for, folded and lying in
-  // three-quarters with its columns, and beside it her snake staff standing
+  // three-quarters with a blank masthead band and its columns, and beside it her snake staff standing
   // on its tail, the upper body coiled three times round in her colour and
   // the head turned over, tongue out. She is handed the paper in episode 411.
   'nyon': [
@@ -854,7 +846,7 @@ export const summitWarArt = {
     { d: 'M6 158 V164 H78 L108 136 V130' },
     { d: 'M57 130 L27 158', role: 'soft' },
     {
-      d: 'M38 136 h20 M32 142 h20 M26 148 h20 M62 136 h32 M56 142 h32 M50 148 h32',
+      d: 'M33 133 H105 M38 137 h20 M32 143 h20 M26 149 h20 M62 137 h32 M56 143 h32 M50 149 h32',
       role: 'soft',
     },
     { d: 'M82 162 l8 -7 M92 152 l8 -7', role: 'ambient' },
@@ -905,24 +897,33 @@ export const summitWarArt = {
     shadow(80, 184, 44),
   ],
 
-  // The chief warden's chair he wants for himself: the tall padded arch of
-  // its back in his colour, the seat and the carved base in three-quarters,
-  // the side going away hatched, and his pitchfork leaning on it. He sits in
-  // it and says it will be his in episode 425.
+  // The chief warden's chair he wants for himself: the tall arch of its
+  // padded back in his colour, the back's thickness and the side going away
+  // hatched, the rolled arms, the seat cushion and the carved base on its
+  // feet in three-quarters. He sits in it and says it will be his in
+  // episode 425.
   'hannyabal': [
-    { d: 'M40 116 V64 C40 18 120 18 120 64 V116', role: 'accent' },
-    { d: 'M50 114 V66 C50 32 110 32 110 66 V114', role: 'soft' },
-    { d: 'M64 40 l4 8 M80 34 v9 M96 40 l-4 8', role: 'soft' },
-    { d: 'M30 126 L40 116 H124 L114 126 Z' },
-    { d: 'M30 126 V138 H114 V126 M114 138 L124 128 V116' },
-    { d: 'M36 138 V160 H110 V138 M110 160 L120 150 V130' },
-    { d: 'M44 146 h58 M44 153 h58', role: 'soft' },
-    { d: 'M112 150 l6 -6 M112 140 l6 -6', role: 'ambient' },
-    { d: 'M150 176 L132.4 26.1' },
+    { d: 'M42 112 V62 C42 18 116 18 116 62 V112', role: 'accent' },
+    { d: 'M79 29 L87 23 C112 23 124 38 124 60 V106 L116 112' },
+    { d: 'M52 110 V64 C52 32 106 32 106 64 V110', role: 'soft' },
+    { d: 'M66 40 l4 8 M79 34 v9 M92 40 l-4 8', role: 'soft' },
     {
-      d: 'M125.6 45.1 L143.4 42.9 M125.6 45.1 L123.5 27.2 M143.4 42.9 L141.3 25',
+      d: 'M117 100 l6 -6 M117 84 l6 -6 M117 68 l6 -6 M112 36 l6 -6',
+      role: 'ambient',
     },
-    shadow(84, 174, 60),
+    {
+      d: 'M30 132 V104 C30 96 42 96 42 104 V116 M116 116 V104 C116 96 128 96 128 104 V122',
+    },
+    { d: 'M33 104 a3 3 0 1 1 6 0 M119 104 a3 3 0 1 1 6 0', role: 'soft' },
+    {
+      d: 'M30 132 L42 116 H128 L116 132 Z M30 132 V142 H116 V132 M116 142 L128 130 V116',
+    },
+    {
+      d: 'M34 142 V164 H112 V142 M112 164 L124 154 V136 M40 164 v6 M106 164 v6 M120 158 v6',
+    },
+    { d: 'M44 150 C56 156 90 156 102 150 M60 158 h26', role: 'soft' },
+    { d: 'M114 158 l8 -7 M114 148 l8 -7', role: 'ambient' },
+    shadow(80, 176, 58),
   ],
 
   // His two crowns set down on his stage in the spotlight: the queen's crown,
@@ -981,8 +982,8 @@ export const summitWarArt = {
 
   // Raiu leaning on the bars of his level-six cell: the diamond-wrapped
   // handle on the floor, the square guard at a slant, the long blade up to
-  // its tip with the edge in his colour, and his cigar lit on the floor. He
-  // gets the sword back and asks for a light in episode 444.
+  // its tip with the edge in his colour, and his cigar on the floor, not yet
+  // lit. He gets the sword back and asks for a light in episode 444.
   'shiryu': [
     {
       d: 'M30 14 V162 M58 14 V162 M86 14 V162 M114 14 V162 M142 14 V162 M8 162 H156',
@@ -1003,7 +1004,6 @@ export const summitWarArt = {
       d: 'M100 154 L132 148 M101 160 L133 154 M100 154 C97 155 98 160 101 160',
     },
     { d: 'M132 148 C135 148 136 153 133 154 M108 153 l1 6', role: 'soft' },
-    { d: 'M136 146 c6 -6 -2 -12 4 -18 c6 -6 -2 -12 4 -18', role: 'soft' },
     shadow(80, 172, 60),
   ],
 
@@ -1065,7 +1065,7 @@ export const summitWarArt = {
       d: 'M14 30 q4 -5 8 0 q4 -5 8 0 M38 18 q3 -4 6 0 q3 -4 6 0 M34 42 q3 -4 6 0 q3 -4 6 0',
       role: 'soft',
     },
-    shadow(80, 168, 62),
+    shadow(66, 160, 52),
   ],
 
   // His basket of apples in three-quarters, the handle over it, the wicker's

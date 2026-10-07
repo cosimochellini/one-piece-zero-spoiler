@@ -1620,7 +1620,8 @@ export const eastBlueChronicles = {
       },
     },
     {
-      episode: 423,
+      episode: 425,
+      chapter: 528,
       value: {
         title: { it: 'Ritrovarsi all’inferno', en: 'A reunion in hell' },
         body: {
