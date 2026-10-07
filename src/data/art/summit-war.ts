@@ -7,7 +7,6 @@ import {
   SEA,
   shadow,
   star,
-  wave,
 } from '~/lib/svg/primitives'
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
@@ -326,65 +325,50 @@ export const summitWarArt = {
     shadow(80, 166, 70),
   ],
 
-  // The top of the prison tower just out of the water and the rest of it
-  // going down under the sea a floor at a time, the floors in the record's
-  // colour and the side turned away hatched; beside it, the back of a Sea King
-  // arching in the water. The marine ship brings Hancock there in episode 422.
+  // A prison tower going down into the water, one level line after another.
   'impel-down-arc': [
-    { d: 'M58 56 V36 L72 28 H126 V46 M58 36 H112 L126 28 M112 36 V56' },
-    { d: wave(56), role: 'ambient' },
-    { d: wave(66), role: 'ambient' },
-    { d: 'M58 70 V198 M112 70 V198 M126 62 V190' },
+    { d: 'M46 56 h68 v134 h-68z' },
+    { d: 'M60 56 V38 h40 v18' },
+    { d: 'M46 80 h68 M46 104 h68 M46 128 h68 M46 152 h68', role: 'soft' },
+    { d: 'M70 56 V80 M80 56 V80 M90 56 V80', role: 'accent' },
+    { d: 'M62 56 h36', role: 'accent' },
     {
-      d: 'M58 98 H112 L126 90 M58 126 H112 L126 118 M58 154 H112 L126 146 M58 182 H112 L126 174',
-      role: 'accent',
-    },
-    {
-      d: 'M114 84 l10 -6 M114 110 l10 -6 M114 138 l10 -6 M114 166 l10 -6 M114 192 l10 -6',
+      d: dots([
+        [54, 92],
+        [54, 116],
+        [54, 140],
+        [54, 164],
+      ]),
       role: 'ambient',
     },
-    {
-      d: 'M-4 120 C6 100 30 98 40 116 C48 132 44 160 50 200 M-4 140 C4 122 22 120 28 134 C34 150 30 172 34 200',
-    },
-    {
-      d: 'M2 108 a5 5 0 0 1 8 -6 a5 5 0 0 1 9 -2 a5 5 0 0 1 9 2 a5 5 0 0 1 8 6 a5 5 0 0 1 5 8',
-      role: 'soft',
-    },
-    {
-      d: 'M30 140 l12 -4 M32 156 l12 -4 M32 172 l14 -4 M34 188 l14 -4',
-      role: 'ambient',
-    },
+    ...SEA,
   ],
 
   // Her clam-shell backpack, the one she carries her takoyaki in, sat on its
-  // hinge with the ribs fanning out and the far side hatched; apart from it,
-  // the end of a mermaid's tail curling up, the fin in her colour. A sea
-  // rabbit spits her out onto the Sunny in episode 385.
+  // hinge, the ribs fanning out to a scalloped rim, the lower valve and the far
+  // side hatched; from behind it, the end of a mermaid's tail curling up, the
+  // fin in her colour. A sea rabbit spits her out onto the Sunny in episode
+  // 385.
   'camie': [
     {
-      d: 'M14 150 C4 116 18 80 54 74 C90 70 108 102 100 140 C88 152 34 158 14 150z',
+      d: 'M12.4 143.1 Q8.9 126.5 17.6 116.8 Q18.6 100.3 27.8 95.1 Q32.5 81.4 41.9 80.9 Q49.2 71.5 58 76 Q66.8 71.5 74.1 80.9 Q83.5 81.4 88.2 95.1 Q97.4 100.3 98.4 116.8 Q107.1 126.5 103.6 143.1 L64 154 H52 Z',
     },
     {
-      d: 'M14 150 C14 158 22 162 34 162 C60 164 90 160 100 148 L100 140',
+      d: 'M58 154 L17.6 116.8 M58 154 L27.8 95.1 M58 154 L41.9 80.9 M58 154 L58 76 M58 154 L74.1 80.9 M58 154 L88.2 95.1 M58 154 L98.4 116.8',
       role: 'soft',
     },
     {
-      d: 'M60 154 L30 86 M60 154 L50 74 M60 154 L72 72 M60 154 L90 84 M60 154 L100 108',
-      role: 'soft',
+      d: 'M12.4 143.1 C14 154 30 160 46 160 M103.6 143.1 C102 154 86 160 70 160',
     },
-    { d: 'M50 154 h20 v6 h-20z' },
-    { d: 'M94 112 l6 -4 M96 124 l5 -4 M90 150 l6 -4', role: 'ambient' },
-    { d: 'M126 170 C120 150 120 128 128 110 C130 104 134 98 136 92' },
-    { d: 'M140 170 C136 150 136 128 140 112 C142 104 142 98 140 92' },
+    { d: 'M46 160 H70 L66 154 H50 Z' },
+    { d: 'M86 152 l6 -5 M94 146 l6 -5 M20 150 l6 -4', role: 'ambient' },
+    { d: 'M99 104 C106 96 114 86 120 72 M106 128 C114 112 120 94 124 72' },
+    { d: 'M104 114 q6 -2 10 -6 M110 100 q5 -2 8 -6', role: 'soft' },
     {
-      d: 'M124 148 q8 -4 14 -2 M124 130 q8 -4 14 -2 M128 114 q6 -3 10 -2',
-      role: 'soft',
-    },
-    {
-      d: 'M136 92 C130 80 120 74 112 72 C120 82 126 90 128 96 M140 92 C146 80 156 74 162 72 C156 84 150 92 144 98 M136 92 Q138 94 140 92',
+      d: 'M120 72 C114 60 104 54 96 52 C104 62 110 70 112 76 M124 72 C130 60 140 54 146 52 C140 64 134 72 128 78 M120 72 Q122 74 124 72',
       role: 'accent',
     },
-    shadow(80, 178, 72),
+    shadow(70, 178, 62),
   ],
 
   // A starfish turned three-quarters to the reader, its arms ridged and their
@@ -417,11 +401,12 @@ export const summitWarArt = {
     shadow(80, 186, 46),
   ],
 
-  // His harpoon gun in three-quarters: the stock and the boxy receiver
-  // hatched on the far side, the barrel, and four harpoons out of the muzzle,
-  // the barbs in his colour. He fires them at Sanji in episode 389.
+  // His harpoon gun in three-quarters: the stock joined to a boxy receiver,
+  // its far side hatched, the barrel, and four harpoons out of the muzzle,
+  // the barbs in his colour. He first appears in episode 386, and the gun is
+  // out in episodes 388 and 389 (ch. 494–495).
   'duval': [
-    { d: 'M4 166 L36 144 L46 154 L16 178 Z M4 166 L8 172 L16 178' },
+    { d: 'M4 166 L40 140 V154 L16 178 Z M4 166 L8 172 L16 178' },
     { d: 'M14 166 l10 -7 M22 170 l10 -7', role: 'ambient' },
     {
       d: 'M40 130 H82 V154 H40 Z M40 130 L50 122 H92 L82 130 M92 122 V146 L82 154',
@@ -447,8 +432,8 @@ export const summitWarArt = {
 
   // Her bar counter in three-quarters, the top overhanging, the panelled
   // front and the side going away hatched, and a cigarette resting on top in
-  // her colour, the smoke going up. She is behind that counter, cigarette lit,
-  // in episode 392.
+  // her colour, the smoke going up. She is behind that counter with a
+  // cigarette in episode 392.
   'shakky': [
     { d: 'M2 108 L24 94 H158 L136 108 Z' },
     { d: 'M2 108 V114 H136 V108 M136 114 L158 100 V94' },
@@ -458,7 +443,7 @@ export const summitWarArt = {
       d: 'M132 124 l18 -11 M132 138 l18 -11 M132 152 l18 -11',
       role: 'ambient',
     },
-    { d: 'M58 102 L112 94 C115 94 116 98 113 99 L59 107 Z', role: 'accent' },
+    { d: 'M58 102 L94 97 C97 97 98 100 95 101 L59 107 Z', role: 'accent' },
     {
       d: 'M58 102 L59 107 M52 103 L58 102 M53 108 L59 107 M52 103 L53 108',
       role: 'soft',
@@ -466,16 +451,14 @@ export const summitWarArt = {
     {
       d: 'M52 100 C44 90 56 82 48 72 C40 62 52 52 44 42 C38 34 46 26 42 18',
       role: 'ambient',
-      dashed: true,
     },
     shadow(80, 176, 74),
   ],
 
-  // The explosive collar standing open on the floor, the band hatched on
-  // its shaded side, the lock block on its front and the blast at the lock in
-  // his colour; the key lying beside it gives its size. He takes it off
-  // Camie's neck in the auction house in episode 398, as Franky finds the
-  // keys backstage.
+  // The explosive collar a moment before it goes off: a band standing open
+  // on the floor, hatched on its shaded side, the lock block on its front and
+  // the blast at the lock in his colour; the key lying beside it gives its
+  // size. He takes it off Camie's neck in the auction house in episode 398.
   'silvers-rayleigh': [
     {
       d: 'M58 136 C30 132 20 118 24 106 C30 90 60 84 84 86 C108 88 128 96 132 110',
@@ -503,37 +486,32 @@ export const summitWarArt = {
     shadow(80, 182, 66),
   ],
 
-  // One of his handguards in three-quarters, the knuckle bow under it and
-  // the side hatched, the long curved scythe rising out of it in his colour.
-  // He fights Urouge with them in episode 392.
+  // Two long blades, one on each gauntlet.
   'killer': [
-    { d: 'M30 124 L80 112 L88 138 L38 150 Z' },
-    { d: 'M80 112 L92 104 L100 130 L88 138 M30 124 L42 116 L92 104' },
-    { d: 'M90 116 l6 -4 M92 126 l6 -4', role: 'ambient' },
-    { d: 'M38 150 C30 166 50 176 70 170 C84 166 92 152 88 138', role: 'soft' },
-    { d: 'M54 146 C52 156 60 162 70 160', role: 'soft' },
-    { d: 'M62 118 C40 84 44 44 76 18 C64 48 62 82 76 114', role: 'accent' },
-    { d: 'M68 116 C54 88 56 56 70 32', role: 'soft' },
-    shadow(70, 188, 54),
+    { d: 'M40 128 h30 v26 h-30z' },
+    { d: 'M92 128 h30 v26 h-30z' },
+    { d: 'M40 140 h30 M92 140 h30', role: 'soft' },
+    { d: 'M46 128 L26 56 C24 44 34 38 40 46 L62 126', role: 'accent' },
+    { d: 'M116 128 L136 56 C138 44 128 38 122 46 L100 126', role: 'accent' },
+    shadow(80, 168, 54),
   ],
 
-  // The crew's boiler suit folded on itself: the shoulders, the sleeves
-  // folded across the front, the zip, the collar in his colour and the
-  // thickness of the fold hatched on its side. He is at Law's side at Sabaody
-  // in episode 392.
+  // A boiler suit on its hanger, with a paw print across the chest.
   'bepo': [
+    { d: 'M58 48 C58 40 102 40 102 48 V150 h-18 V104 h-8 v46 h-18z' },
+    { d: 'M58 56 L36 94 l14 10 L64 84' },
+    { d: 'M102 56 L124 94 l-14 10 L96 84' },
+    { d: 'M62 126 h36', role: 'soft' },
+    { d: circle(80, 78, 10), role: 'accent' },
     {
-      d: 'M20 96 C30 88 44 86 58 84 L80 92 L102 84 C116 86 130 88 140 96 L140 160 H20 Z',
+      d: dots([
+        [68, 62],
+        [80, 58],
+        [92, 62],
+      ]),
+      role: 'accent',
     },
-    { d: 'M58 84 C62 96 74 104 80 104 C86 104 98 96 102 84', role: 'accent' },
-    { d: 'M80 104 V160 M76 118 h8', role: 'soft' },
-    {
-      d: 'M20 112 C40 118 58 128 70 142 L62 150 C50 138 34 130 20 126 M140 112 C120 118 102 128 90 142 L98 150 C110 138 126 130 140 126',
-    },
-    { d: 'M62 150 l-4 -6 M98 150 l4 -6', role: 'soft' },
-    { d: 'M140 96 L148 102 V164 L140 160 M20 160 L28 166 H148', role: 'soft' },
-    { d: 'M142 112 l4 -3 M142 128 l4 -3 M142 144 l4 -3', role: 'ambient' },
-    shadow(84, 182, 66),
+    shadow(80, 162, 40),
   ],
 
   // His headphones lying in three-quarters, the band doubled, one cup turned
