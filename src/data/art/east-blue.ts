@@ -722,17 +722,27 @@ export const eastBlueArt = {
     shadow(88, 176, 44),
   ],
 
-  // A small shop front, and in front of its door the one sack of dog food saved from it.
+  // The pet-food shop he guards, shut and still standing: the long plank sign
+  // across the front with nothing written on it, the arched double door, a
+  // window either side, the hanging sign on its bracket, the side wall in
+  // shade and the step. He sits in front of it in episode 6 (chapter 12).
   'chouchou': [
-    { d: house(36, 88, 76, 50) },
-    { d: 'M44 94 h20 v16 h-20z M104 94 h20 v16 h-20z', role: 'soft' },
+    { d: 'M28 150 V64 M112 150 V64 M28 150 H112' },
+    { d: 'M112 150 L134 138 V58 L124 58' },
     {
-      d: 'M62 178 C56 164 58 150 66 144 L94 144 C102 150 104 164 98 178 Z',
-      role: 'accent',
+      d: 'M114.1 81 L121.2 68.6 M114 93.1 L131.3 63.2 M114.1 105 L132 74 M114 117.1 L131.9 86.1 M114.1 128.9 L132 98 M114.1 141 L131.9 110.1 M119.7 143.2 L132 121.9 M129.9 137.5 L131.9 134',
+      role: 'ambient',
     },
-    { d: 'M66 144 q14 -9 28 0', role: 'accent' },
-    { d: 'M70 162 h20', role: 'soft' },
-    shadow(80, 184, 40),
+    { d: 'M20 64 H120 V38 H20 Z', role: 'accent' },
+    { d: 'M20 38 L28 32 H128 V58 L120 64 M120 38 L128 32', role: 'accent' },
+    { d: 'M20 47 H120 M20 55.5 H120', role: 'soft' },
+    { d: 'M56 150 V110 A14 14 0 0 1 84 110 V150' },
+    { d: `M70 96 V150 ${dot(75, 128)}`, role: 'soft' },
+    { d: 'M34 102 H50 V130 H34 Z M90 102 H106 V130 H90 Z' },
+    { d: 'M42 102 V130 M34 116 H50 M98 102 V130 M90 116 H106', role: 'soft' },
+    { d: 'M28 78 H12 M14 78 v4 M24 78 v4 M10 82 H28 V96 H10 Z' },
+    { d: 'M50 150 L46 156 H94 L90 150', role: 'soft' },
+    { d: 'M2 156 H42 M98 156 H158', role: 'ambient', dashed: true },
   ],
 
   // The iron cage his bite broke open: the box seen from a corner, the far
@@ -756,29 +766,64 @@ export const eastBlueArt = {
     { d: 'M56 40 V142 H140 M30 160 L56 142', role: 'soft' },
     shadow(84, 176, 58),
   ],
-  // A unicycle and a sabre: the whole act in two objects.
+  // A unicycle and a sabre: the wheel turned a little, with the tyre's
+  // thickness on its far side, the spokes, the hub and the cranks, the saddle
+  // with its underside in shade, and the curved sabre leant behind it. He
+  // fights Zoro on it in episode 7 (chapter 16).
   'cabaji': [
-    { d: circle(66, 134, 38), role: 'accent' },
-    { d: circle(66, 134, 5), role: 'accent' },
-    { d: 'M40 120 L92 148 M40 148 L92 120 M66 96 V172', role: 'soft' },
-    { d: 'M62 130 L60 74 M72 130 L74 74' },
-    { d: 'M52 74 H84 q8 0 6 -8 H54 q-8 2 -2 8 Z' },
-    { d: 'M46 134 h-12 M86 134 h12' },
-    { d: 'M112 184 C130 146 142 100 146 46' },
-    { d: 'M102 180 C120 142 132 98 136 44' },
-    { d: 'M136 44 C140 40 144 42 146 46' },
-    { d: 'M100 178 L116 186' },
+    { d: 'M124 66 C121 106 112 142 98 176 C118 150 134 110 136 68' },
+    { d: 'M130 72 C128 106 120 138 106 164', role: 'soft' },
+    { d: 'M116 64 C118 58 140 60 142 67 C140 72 118 70 116 64 Z' },
+    { d: 'M126 62 L128 42 M134 63 L135 43 M128 42 C129 37 134 38 135 43' },
+    { d: 'M127.4 48 l7.4 0.8 M127 54 l7.6 0.8', role: 'soft' },
+    { d: ellipse(66, 130, 27, 38), role: 'accent' },
+    { d: 'M69 92 C104 93 104 167 69 168' },
+    { d: ellipse(66, 130, 21.5, 31) },
+    {
+      d: 'M70.5 130 L87.5 130 M69.2 134.2 L81.2 151.9 M66 136 L66 161 M62.8 134.2 L50.8 151.9 M61.5 130 L44.5 130 M62.8 125.8 L50.8 108.1 M66 124 L66 99 M69.2 125.8 L81.2 108.1',
+      role: 'soft',
+    },
+    { d: ellipse(66, 130, 4.5, 6) },
+    { d: 'M60 130 L57 84 M72 130 L69 84 M55 84 H71 M62 84 V68' },
+    {
+      d: 'M46 64 C46 56 60 54 70 58 L86 62 C90 64 88 68 84 68 L64 69 C52 71 46 69 46 64 Z',
+    },
+    { d: 'M47.4 67.6 C50 72.6 58 73.4 64 72.6 L84 71', role: 'soft' },
+    { d: 'M51 71 l1.2 2.4 M57 72.4 l0.8 2.4', role: 'ambient' },
+    { d: 'M66 130 L80 148 M76 149 h10 M66 130 L53 114 M49 113 h8' },
+    shadow(80, 176, 44),
   ],
 
-  // A spear planted upright beside the leather breastplate he wore to face the pirates.
+  // The leather armour he puts on to face the pirates alone: the chestplate
+  // standing empty, its neck open and dark inside, toggles down the front,
+  // the stitched band, the side that turns away in shade, and his spear laid
+  // in front of it. He faces Buggy in it in chapter 15 (episodes 6 and 7).
   'boodle': [
-    { d: 'M118 36 V186' },
-    { d: 'M118 14 L110 36 H126 Z', role: 'accent' },
-    { d: 'M34 96 Q58 86 82 96 L86 150 Q58 162 30 150 Z', role: 'accent' },
-    { d: 'M46 91 q12 12 24 0', role: 'soft' },
-    { d: 'M36 116 H80 M34 134 H84', role: 'soft' },
-    { d: 'M40 150 L36 176 M76 150 L80 176', role: 'ambient' },
-    shadow(80, 188, 50),
+    {
+      d: 'M54 63 L34 76 C46 82 48 94 40 104 C37 122 37 138 42 150 C62 160 94 160 112 150 C115 134 115 116 111 100 C104 92 104 80 109 72 L90 63',
+      role: 'accent',
+    },
+    { d: ellipse(72, 64, 18, 6) },
+    {
+      d: 'M82.4 60.2 L83.7 62.4 M76.7 59.2 L78.5 62.5 M71.4 59.1 L73.4 62.5 M66.4 59.4 L68.1 62.4 M61.7 60.3 L63 62.5',
+      role: 'ambient',
+    },
+    { d: 'M99 69 C101 100 101 130 99 156', role: 'soft' },
+    {
+      d: 'M101.4 91 L105.1 84.5 M101.3 103.1 L108.7 90.3 M101.3 115.2 L109.8 100.4 M101.3 127 L110.7 110.8 M101.3 139.1 L110.7 122.9 M103.4 147.5 L110.7 134.8',
+      role: 'ambient',
+    },
+    { d: 'M64 70 V156 M55.5 68 L39 78.6 M89 68.4 L104.6 74.6', role: 'soft' },
+    { d: 'M58 86 h12 M58 100 h12 M58 114 h12', role: 'soft' },
+    { d: 'M38.5 128 C58 137 92 137 113.5 128', role: 'soft' },
+    { d: 'M34 171 L118 161 M34 178 L118 168 M34 171 Q30 174.5 34 178' },
+    { d: 'M118 159 V170 M123 158.6 V169.6' },
+    {
+      d: 'M123 160 C134 155 146 158 154 163 C146 168 134 170 123 168',
+      role: 'soft',
+    },
+    { d: 'M123 164 L152 163', role: 'soft' },
+    shadow(80, 188, 62),
   ],
   // A signpost on the slope above the shore, one board pointing each way.
   'syrup-village-arc': [
@@ -789,16 +834,35 @@ export const eastBlueArt = {
     { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
     ...SEA.slice(1),
   ],
-  // A slingshot, the band drawn taut around a star-shaped pellet. Kabuto is
-  // drawn from 274 and Kuro Kabuto from 517, in `eastBlueRedrawn`.
+  // His slingshot, the band drawn straight back with a lead ball in its
+  // pouch and a second ball on the ground, its far side in shade: the fork
+  // with the thickness of its arms, the far face of the arm and the grip
+  // hatched, the grip wrapped. Kabuto is drawn from 274 and Kuro
+  // Kabuto from 517, in `eastBlueRedrawn`.
   'usopp': [
-    { d: 'M80 176 V126' },
-    { d: 'M80 126 C78 100 62 92 56 70' },
-    { d: 'M80 126 C82 100 98 92 104 70' },
-    { d: 'M52 68 l8 4 M108 68 l-8 4' },
-    { d: 'M74 150 h12 M74 158 h12 M74 166 h12', role: 'ambient' },
-    { d: 'M56 70 Q80 116 104 70', role: 'accent' },
-    { d: star(80, 98, 9, 4), role: 'accent' },
+    {
+      d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+    },
+    {
+      d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+    },
+    {
+      d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
+      role: 'ambient',
+    },
+    {
+      d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+      role: 'soft',
+    },
+    {
+      d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+      role: 'accent',
+    },
+    { d: circle(80, 102, 6) },
+    { d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2', role: 'ambient' },
+    { d: circle(110, 177, 6) },
+    { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
+    shadow(88, 188, 32),
   ],
 
   // A mansion on a hill, its gate at the foot, a path down to the shore.
@@ -816,45 +880,65 @@ export const eastBlueArt = {
     ...SEA.slice(2),
   ],
 
-  // Her window in the mansion, set deep in the wall, the frame she listens
-  // at, with the branch of the tree outside it where Usopp sits to tell her
-  // his stories (chapter 24, episode 9).
+  // Her window in the mansion, open: the wall turned a little, the depth of
+  // the jamb in shade, both casements swung out and the curtain drawn back to
+  // one side as the episode 9 frames show them, the sill, and the branch
+  // outside where Usopp sits to tell her his stories (chapter 24, episode 9).
   'kaya': [
-    { d: 'M40 150 V78 C40 44 120 44 120 78 V150', role: 'accent' },
-    { d: 'M54 144 V82 C54 58 114 56 120 80' },
-    { d: 'M40 78 L54 82 M40 150 L54 144' },
-    { d: 'M54 144 H120' },
+    { d: 'M48 56 L104 64 V132 L48 138 Z' },
+    { d: 'M48 56 L56 62 V132 M56 62 L104 68', role: 'soft' },
     {
-      d: 'M44 94 L52 86 M44 110 L52 102 M44 126 L52 118 M44 142 L52 134',
+      d: 'M48 70 l8 -4 M48 84 l8 -4 M48 98 l8 -4 M48 112 l8 -4 M48 126 l8 -4',
       role: 'ambient',
     },
-    { d: 'M86 144 V63', role: 'soft' },
-    { d: 'M54 104 H120', role: 'soft' },
-    { d: 'M28 150 H132 L124 160 H36 Z' },
-    { d: 'M36 160 V168 H124 V160' },
-    { d: 'M156 140 C148 128 138 118 126 112', role: 'ambient' },
+    { d: 'M48 56 L28 46 V146 L48 138' },
+    { d: 'M38 51 V142 M28 96 L48 97', role: 'soft' },
+    { d: 'M104 64 L120 58 V138 L104 132' },
+    { d: 'M112 61 V135 M104 98 L120 98', role: 'soft' },
     {
-      d: 'M146 126 C140 112 144 100 154 94 C158 108 154 120 146 126',
+      d: 'M58 64 C76 68 92 70 102 70 C92 76 82 90 78 108 C76 116 72 120 66 120 C70 126 68 130 62 132',
+      role: 'accent',
+    },
+    {
+      d: 'M66 68 C70 86 66 104 70 118 M76 69 C80 84 78 100 76 112',
+      role: 'soft',
+    },
+    { d: 'M40 138 L112 132 L118 136 L44 143 Z' },
+    { d: 'M44 143 V148 L118 141 V136', role: 'soft' },
+    {
+      d: 'M160 156 C146 155 132 159 118 170 M146 156.4 C148 148 150 144 154 140',
       role: 'ambient',
     },
     {
-      d: 'M136 118 C126 112 122 100 126 90 C134 96 138 106 136 118',
+      d: 'M134 160.6 C128 154 129 146 135 142 C138 149 138 155 134 160.6 Z M154 140 C148 136 148 128 152 122 C156 128 156 134 154 140 Z',
       role: 'ambient',
     },
-    shadow(80, 184, 56),
   ],
-  // A glove with five blades where the fingers should be.
+  // The Cat Claws: one black glove, its far half in shade, the fingers bent
+  // over the knuckles, a full-length blade from the tip of each finger and
+  // the thumb, and the cuff open below. He takes them out of a bag to cut
+  // Merry down in episode 12 (chapter 28).
   'kuro': [
-    { d: 'M62 112 L22 36 L32 32 L70 108 Z', role: 'accent' },
-    { d: 'M76 106 L52 20 L62 18 L84 104 Z', role: 'accent' },
-    { d: 'M90 104 L86 14 L96 14 L98 104 Z', role: 'accent' },
-    { d: 'M102 106 L120 20 L130 24 L110 108 Z' },
-    { d: 'M112 112 L142 42 L150 48 L120 116 Z' },
     {
-      d: 'M52 152 C44 132 50 116 64 112 L108 110 C122 112 126 128 120 146 C114 160 60 166 52 152 Z',
+      d: 'M45.3 115.7 Q22.8 99.7 3.7 87.8 Q20.2 104.2 42.7 120.3 M58.3 96.8 Q42.1 60.5 27.5 31.6 Q37.5 63 53.7 99.2 M72.6 91.5 Q68.3 52.1 63.4 20.1 Q63.2 53 67.4 92.5 M88.6 92.4 Q96.8 53.5 102 21.5 Q91.6 52.8 83.4 91.6 M102.3 99.1 Q122.1 64.7 137 35.9 Q117.4 62.5 97.7 96.9',
+      role: 'accent',
     },
-    { d: 'M58 154 q24 10 58 0', role: 'soft' },
-    shadow(84, 174, 40),
+    {
+      d: 'M50 104 C50 96 62 92 64 98 M64 98 C64 88 76 86 78 94 M78 94 C80 86 92 88 92 96 M92 96 C96 90 106 94 104 102',
+    },
+    { d: 'M50 104 C48 118 50 136 58 148 H100 C106 134 108 118 104 102' },
+    { d: 'M50 116 C42 114 38 118 40 124 C42 128 48 128 51 126', role: 'soft' },
+    {
+      d: 'M79.6 112.7 L84.1 104.9 M79.5 126.9 L92.1 105 M79.6 140.7 L100.2 105 M86.4 142.9 L100.3 118.9 M94.4 143 L98.2 136.5',
+      role: 'ambient',
+    },
+    {
+      d: 'M64 98 C66 104 66 112 64 120 M78 94 V118 M92 96 C90 104 90 112 92 120',
+      role: 'soft',
+    },
+    { d: 'M57 148 C64 153 94 153 101 148 M57 148 L56 166 M101 148 L102 166' },
+    { d: 'M56 166 C56 162 102 162 102 166 C102 171 56 171 56 166 Z' },
+    shadow(80, 182, 40),
   ],
   // A hypnotist's ring on its string, and the heart-shaped glasses below.
   'jango': [
