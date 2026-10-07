@@ -97,7 +97,7 @@ export const wholeCake: Saga = {
     {
       id: 'inuarashi',
       kind: 'character',
-      revealedAtEpisode: 756,
+      revealedAtEpisode: 758,
       revealedAtChapter: 808,
       name: { it: 'Inuarashi', en: 'Inuarashi' },
       summary: {
@@ -936,7 +936,7 @@ export const wholeCake: Saga = {
       },
       affiliation: [
         {
-          episode: 756,
+          episode: 758,
           value: {
             it: 'Ducato di Mokomo, sovrano del giorno',
             en: 'Mokomo Dukedom, ruler of the day',
@@ -951,7 +951,7 @@ export const wholeCake: Saga = {
           },
         },
       ],
-      origin: [{ episode: 756, value: ZOU }],
+      origin: [{ episode: 758, value: ZOU }],
     },
     'pedro': {
       role: { it: 'Capitano dei Guardiani', en: 'Captain of the Guardians' },

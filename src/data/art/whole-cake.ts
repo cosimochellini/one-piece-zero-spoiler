@@ -1,14 +1,91 @@
-import {
-  circle,
-  dots,
-  ellipse,
-  SEA,
-  shadow,
-  star,
-  wave,
-} from '~/lib/svg/primitives'
+import { circle, dots, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
 
-import type { Drawings } from './stroke'
+import type { Drawings, Stroke } from './stroke'
+
+/**
+ * One tusk of the Mammoth's figurehead, curving out ahead of the bow and
+ * back up at the tip. Jack's drawing sets a second one behind it.
+ */
+const MAMMOTH_TUSK: Stroke = {
+  d: 'M66 104 C50 124 26 132 12 114 C0 96 4 66 22 48 C28 42 34 38 42 36 C30 48 20 62 18 80 C16 98 26 114 42 112 C52 110 60 104 66 96',
+  role: 'accent',
+}
+
+/**
+ * One of Vito's revolvers, side on and pointing left: the barrel hatched
+ * underneath, the fluted drum, the hammer, the trigger guard and the
+ * checkered grip. His drawing lays two of them one over the other.
+ */
+const VITO_GUN: Stroke[] = [
+  { d: 'M14 76 H74 V86 H14 Z' },
+  { d: ellipse(14, 81, 2.5, 5), role: 'accent' },
+  { d: 'M74 70 H98 C102 70 104 72 104 76 V90 C104 94 102 96 98 96 H74 Z' },
+  { d: 'M78 76 H100 M78 83 H100 M78 90 H100', role: 'soft' },
+  {
+    d: 'M104 74 L114 74 L120 64 L125 67 L118 80 V92 C124 106 126 118 122 128 H108 C106 116 104 104 100 96',
+  },
+  {
+    d: 'M84 96 C84 106 96 108 98 98 M90 96 l2 6 M110 102 l8 -2 M110 110 l9 -2 M111 118 l9 -2',
+    role: 'soft',
+  },
+  {
+    d: 'M20 86 l4 -8 M30 86 l4 -8 M40 86 l4 -8 M50 86 l4 -8 M60 86 l4 -8',
+    role: 'ambient',
+  },
+]
+
+/** Vito's revolver turned and placed by a transform. */
+function withVitoGun(transform: string): Stroke[] {
+  return VITO_GUN.map((stroke) => ({ ...stroke, transform }))
+}
+
+/** The tilt of Cracker's sword Pretzel, drawn level about its guard. */
+const PRETZEL_TILT = 'rotate(51.2 118 142)'
+
+/**
+ * The pink bicorne Big Mom wears, in three quarters: the trim along its
+ * crest, the ruffled fastener on its side, the back panel showing past the
+ * front. Napoleon is drawn as it, and her own drawing sets it down small
+ * beside her sweets.
+ */
+const BIG_MOM_BICORNE: Stroke[] = [
+  {
+    d: 'M6 136 C24 130 32 116 38 98 C48 70 62 58 80 58 C98 58 112 70 122 98 C128 116 136 130 154 136 C130 140 108 134 80 134 C52 134 30 140 6 136 Z',
+  },
+  { d: 'M96 58 C112 58 126 70 134 92 C140 110 146 122 158 128', role: 'soft' },
+  { d: 'M128 80 l7 -3 M134 94 l7 -3 M139 108 l8 -3', role: 'ambient' },
+  {
+    d: 'M16 132 C30 124 38 112 44 98 C52 78 64 66 80 66 C96 66 108 78 116 98 C122 112 130 124 144 132',
+    role: 'accent',
+  },
+  { d: 'M34 136 C54 146 108 146 128 136', role: 'soft' },
+  {
+    d: 'M48 138 l4 6 M62 136 l4 8 M76 135 l4 9 M90 135 l4 9 M104 136 l4 8 M116 137 l3 5',
+    role: 'ambient',
+  },
+  {
+    d: 'M124 108 A3.1 3.1 0 0 1 122.1 113.1 A3.1 3.1 0 0 1 117.4 115.9 A3.1 3.1 0 0 1 112 114.9 A3.1 3.1 0 0 1 108.5 110.7 A3.1 3.1 0 0 1 108.5 105.3 A3.1 3.1 0 0 1 112 101.1 A3.1 3.1 0 0 1 117.4 100.1 A3.1 3.1 0 0 1 122.1 102.9 A3.1 3.1 0 0 1 124 108',
+    role: 'soft',
+  },
+]
+
+/**
+ * The bicorne set down small at the foot of Big Mom's heap of sweets, plain:
+ * its trim loses the accent, which goes to the sweets, and the hatching,
+ * which would close up at that size.
+ */
+function setDownByTheSweets(hat: Stroke[]): Stroke[] {
+  const transform = 'translate(96 118) rotate(12 30 60) scale(0.4)'
+  const plain: Stroke[] = []
+
+  for (const { role, ...stroke } of hat) {
+    if (role !== 'ambient') {
+      plain.push({ ...stroke, ...(role !== 'accent' && { role }), transform })
+    }
+  }
+
+  return plain
+}
 
 /** The drawings of the records filed in the whole cake stretch of the route. */
 export const wholeCakeArt = {
@@ -88,15 +165,31 @@ export const wholeCakeArt = {
     ...SEA,
   ],
 
-  // A mammoth's tusk mounted on the prow of a ship.
+  // The bow of the Mammoth, the ship he commands, its figurehead's two
+  // tusks curving out over the water ahead of the stem, the far one behind
+  // the near; the planking turns under the hull. He sails it from his first
+  // pages at 746, and he is named as its captain at 757.
   'jack': [
-    { d: 'M28 154 L132 108 L140 124 C120 150 70 162 28 154 Z' },
-    { d: 'M36 132 L134 112', role: 'soft' },
-    { d: 'M44 144 L138 120', role: 'soft' },
-    { d: 'M120 106 C104 84 86 72 60 68', role: 'accent' },
-    { d: 'M126 114 C112 92 92 78 60 68', role: 'accent' },
-    { d: 'M116 108 l9 11' },
-    shadow(82, 170, 48),
+    {
+      d: 'M56 80 C80 90 116 90 156 82 V140 C128 146 104 148 88 144 C74 126 64 104 56 80 Z',
+    },
+    { d: 'M56 80 C80 82 116 78 156 72 V82', role: 'soft' },
+    {
+      d: 'M70 108 C96 114 128 112 156 106 M80 126 C106 130 132 128 156 122',
+      role: 'soft',
+    },
+    {
+      d: 'M94 145 l-4 -9 M108 146 l-4 -9 M122 145 l-4 -9 M136 143 l-4 -9 M150 141 l-4 -9',
+      role: 'ambient',
+    },
+    { ...MAMMOTH_TUSK, transform: 'translate(30 -16)' },
+    MAMMOTH_TUSK,
+    { d: 'M6 86 l8 1 M10 108 l7 -3 M24 74 l8 1', role: 'soft' },
+    ...SEA.slice(1),
+    {
+      d: 'M76 150 q10 -5 20 0 q10 5 20 0 M120 150 q10 -5 20 0 q10 5 20 0',
+      role: 'ambient',
+    },
   ],
 
   // Warney, the crocodile-boar she rides, side on: the long ridged body,
@@ -124,60 +217,98 @@ export const wholeCakeArt = {
     shadow(80, 172, 70),
   ],
 
-  // A carrot beside a mitten crackling with electro.
+  // The rabbit-paw gauntlet she fights in, upright in three quarters: the
+  // three claws over the knuckles, the thumb, the cuff seen from below and
+  // the far side turning away, electro crackling round it. She clashes with
+  // Zoro's sword through it on the night she is first seen, at 753.
   'carrot': [
     {
-      d: 'M56 64 C74 74 86 102 88 142 C72 148 58 140 52 122 C46 100 46 78 56 64 Z',
-      role: 'accent',
+      d: 'M52 150 C48 128 44 108 46 92 C44 74 50 62 60 60 C64 52 74 50 80 54 C86 48 98 50 102 58 C110 60 114 70 112 82 C116 100 112 124 106 150',
     },
-    { d: 'M58 84 l16 8 M56 102 l22 10 M58 120 l22 8', role: 'soft' },
+    { d: ellipse(79, 150, 27, 7) },
+    { d: 'M62 151 l6 -4 M74 153 l6 -5 M88 153 l6 -5', role: 'ambient' },
+    { d: 'M54 134 C68 140 92 140 106 134', role: 'soft' },
     {
-      d: 'M56 64 C48 44 42 36 34 28 M60 62 C58 42 58 32 56 20 M66 64 C72 46 80 38 88 30',
-    },
-    { d: 'M100 140 v-28 q0 -14 14 -14 h12 q14 0 14 14 v28z' },
-    { d: 'M100 120 q-9 2 -9 11 q0 9 9 9', role: 'soft' },
-    { d: 'M100 130 h40', role: 'soft' },
-    { d: star(124, 66, 14, 6) },
-    shadow(96, 156, 44),
-  ],
-
-  // A duke's cloak hung behind a sword held point down.
-  'inuarashi': [
-    {
-      d: 'M40 66 C30 96 30 130 38 156 L80 148 L122 156 C130 130 130 96 120 66',
-    },
-    { d: 'M40 66 q40 -18 80 0' },
-    { d: 'M74 62 V140 L80 152 L86 140 V62 Z', role: 'accent' },
-    { d: 'M58 62 H102', role: 'accent' },
-    { d: 'M76 62 V38 H84 V62' },
-    { d: circle(80, 32, 7) },
-    { d: circle(80, 74, 5), role: 'soft' },
-    shadow(80, 170, 40),
-  ],
-
-  // A jaguar's spotted cloak and a stick of dynamite.
-  'pedro': [
-    { d: 'M44 58 C32 92 32 130 42 158 L118 158 C128 130 128 92 116 58' },
-    { d: 'M44 58 q36 -16 72 0' },
-    { d: 'M80 42 q-14 4 -20 16 M80 42 q14 4 20 16' },
-    {
-      d: 'M56 88 q7 -7 13 0 q-6 8 -13 0z M88 104 q7 -7 13 0 q-6 8 -13 0z M64 128 q7 -7 13 0 q-6 8 -13 0z',
-      role: 'accent',
-    },
-    {
-      d: dots([
-        [76, 78],
-        [102, 84],
-        [58, 116],
-        [98, 132],
-        [80, 146],
-      ]),
+      d: 'M62 60 C62 70 66 78 70 82 M80 54 C80 64 84 72 88 76 M102 58 C100 66 102 74 104 80',
       role: 'soft',
     },
-    { d: 'M122 154 h18 v-38 h-18z' },
-    { d: 'M122 126 h18 M122 144 h18', role: 'soft' },
-    { d: 'M131 116 c7 -10 -4 -17 3 -25' },
-    shadow(80, 172, 48),
+    { d: 'M46 96 C38 100 36 110 40 116 C44 120 50 118 52 112', role: 'soft' },
+    { d: 'M108 92 l8 -3 M108 108 l8 -3 M108 124 l7 -3', role: 'ambient' },
+    {
+      d: 'M60 62 C54 50 54 40 58 32 C60 42 64 50 68 58 M80 54 C76 40 78 28 84 20 C84 32 86 42 90 52 M100 58 C100 46 104 38 110 32 C108 42 108 52 106 62',
+    },
+    {
+      d: 'M38 60 l-10 10 l8 2 l-12 14 M34 124 l-12 6 l8 4 l-12 8',
+      role: 'accent',
+    },
+    {
+      d: 'M124 44 l12 6 l-8 4 l14 8 M126 112 l12 4 l-8 4 l12 6',
+      role: 'accent',
+    },
+    shadow(80, 172, 46),
+  ],
+
+  // The duke's robe, hung open from the shoulders: the thick fur down both
+  // edges and round the collar, the fur at the cuffs, the dark inside showing
+  // between the edges. He wears it in his sickbed when the crew are let in
+  // to see him, at 758.
+  'inuarashi': [
+    {
+      d: 'M58 48 C40 52 26 62 22 82 L12 140 C14 148 26 150 32 144 L38 112 L36 172 H124 L122 112 L128 144 C134 150 146 148 148 140 L138 82 C134 62 120 52 102 48',
+    },
+    {
+      d: 'M60 52 A4.5 4.5 0 0 1 60.2 59.5 A4.5 4.5 0 0 1 60.5 67 A4.5 4.5 0 0 1 60.8 74.5 A4.5 4.5 0 0 1 61 82 A4.5 4.5 0 0 1 61.2 89.5 A4.5 4.5 0 0 1 61.5 97 A4.5 4.5 0 0 1 61.8 104.5 A4.5 4.5 0 0 1 62 112 A4.5 4.5 0 0 1 62.2 119.5 A4.5 4.5 0 0 1 62.5 127 A4.5 4.5 0 0 1 62.8 134.5 A4.5 4.5 0 0 1 63 142 A4.5 4.5 0 0 1 63.2 149.5 A4.5 4.5 0 0 1 63.5 157 A4.5 4.5 0 0 1 63.8 164.5 A4.5 4.5 0 0 1 64 172',
+      role: 'accent',
+    },
+    {
+      d: 'M96 172 A4.5 4.5 0 0 1 96.2 164.5 A4.5 4.5 0 0 1 96.5 157 A4.5 4.5 0 0 1 96.8 149.5 A4.5 4.5 0 0 1 97 142 A4.5 4.5 0 0 1 97.2 134.5 A4.5 4.5 0 0 1 97.5 127 A4.5 4.5 0 0 1 97.8 119.5 A4.5 4.5 0 0 1 98 112 A4.5 4.5 0 0 1 98.2 104.5 A4.5 4.5 0 0 1 98.5 97 A4.5 4.5 0 0 1 98.8 89.5 A4.5 4.5 0 0 1 99 82 A4.5 4.5 0 0 1 99.2 74.5 A4.5 4.5 0 0 1 99.5 67 A4.5 4.5 0 0 1 99.8 59.5 A4.5 4.5 0 0 1 100 52',
+      role: 'accent',
+    },
+    {
+      d: 'M56 50 A5 5 0 0 1 60 42 A5 5 0 0 1 68 36 A5 5 0 0 1 80 34 A5 5 0 0 1 92 36 A5 5 0 0 1 100 42 A5 5 0 0 1 104 50',
+      role: 'accent',
+    },
+    { d: 'M64 50 C70 44 90 44 96 50', role: 'soft' },
+    {
+      d: 'M72 62 l10 -6 M72 78 l14 -8 M72 94 l14 -8 M72 110 l14 -8 M72 126 l14 -8 M72 142 l14 -8 M72 158 l14 -8',
+      role: 'ambient',
+    },
+    {
+      d: 'M44 92 C46 120 46 150 48 170 M116 92 C114 120 114 150 112 170',
+      role: 'soft',
+    },
+    {
+      d: 'M12 140 A3.5 3.5 0 0 1 18 146 A3.5 3.5 0 0 1 26 147 A3.5 3.5 0 0 1 32 144 M128 144 A3.5 3.5 0 0 1 134 147 A3.5 3.5 0 0 1 142 146 A3.5 3.5 0 0 1 148 140',
+      role: 'soft',
+    },
+    { d: 'M128 88 l8 -4 M130 104 l8 -4 M132 120 l8 -4', role: 'ambient' },
+    shadow(80, 184, 52),
+  ],
+
+  // The green cape of the Guardians, high collar up, open at the front on
+  // its dark inside and blown out to one side as he stands on a bough of
+  // the Whale Forest. He watches Luffy from up there the day he is first
+  // seen, at 754.
+  'pedro': [
+    { d: 'M0 158 C40 152 90 154 160 148', role: 'ambient' },
+    {
+      d: 'M60 50 C52 70 48 100 48 124 C48 136 46 146 42 154 C56 150 66 156 80 152 C92 158 104 150 116 146 C126 142 138 136 152 136 C142 124 138 108 140 92 C142 78 150 66 158 60 C138 60 116 56 100 46',
+    },
+    {
+      d: `${ellipse(80, 46, 20, 6)} M60 46 V36 M100 46 V36 M60 36 C66 32 94 32 100 36`,
+      role: 'accent',
+    },
+    { d: 'M100 52 C112 70 122 82 140 92', role: 'soft' },
+    { d: 'M74 52 C72 90 70 122 68 152 M88 52 C92 90 96 120 100 150' },
+    {
+      d: 'M74 70 l14 -6 M73 90 l18 -8 M72 110 l20 -8 M70 130 l24 -9 M69 148 l26 -9',
+      role: 'ambient',
+    },
+    {
+      d: 'M62 70 C58 96 56 124 54 150 M112 76 C118 100 124 120 134 138',
+      role: 'soft',
+    },
+    shadow(96, 178, 50),
   ],
 
   // His kiseru, the long pipe he is never without, the brass bowl still
@@ -199,25 +330,83 @@ export const wholeCakeArt = {
     shadow(74, 182, 54),
   ],
 
-  // A hidden door swung open, a long flight of stairs going down behind it.
+  // The hidden door at the back of the Whale Tree's tail, swung open in
+  // three quarters, a long flight of stairs going down into the dark behind
+  // it. The minks bring the crew down it to the cave he is kept in at 768.
   'raizo': [
-    { d: 'M46 170 V86 C46 50 114 50 114 86 V170' },
-    { d: 'M54 112 H106 M58 128 H102 M62 144 H98 M66 160 H94', role: 'soft' },
-    { d: 'M114 88 L140 98 V176 L114 170 Z', role: 'accent' },
-    { d: circle(134, 136, 3), role: 'accent' },
-    { d: 'M24 170 H46 M114 170 H136' },
+    {
+      d: 'M14 36 C10 80 10 120 14 150 M146 36 C150 80 150 120 146 150',
+      role: 'ambient',
+    },
+    {
+      d: 'M24 50 c-3 16 3 26 0 40 M30 104 c-3 14 3 24 0 36 M134 56 c3 16 -3 24 0 38 M136 110 c3 14 -3 22 0 34',
+      role: 'soft',
+    },
+    { d: 'M50 150 V94 C50 64 98 64 98 94 V150' },
+    { d: 'M98 94 L106 98 V150', role: 'soft' },
+    {
+      d: 'M50 150 L62 134 H86 L98 150 M62 134 L68 124 H80 L86 134 M68 124 L72 116 H76 L80 124',
+      role: 'soft',
+    },
+    {
+      d: 'M56 88 l10 -10 M56 102 l18 -18 M66 106 l22 -22 M80 108 l14 -14',
+      role: 'ambient',
+    },
+    {
+      d: 'M98 90 L128 100 V162 L98 150 Z M128 100 l6 -2 V160 l-6 2',
+      role: 'accent',
+    },
+    { d: circle(122, 132, 2.5), role: 'accent' },
+    { d: 'M8 150 H50 M106 150 H152', role: 'ambient' },
+    shadow(80, 172, 50),
   ],
 
-  // An island that is a tiered cake with a castle on top.
+  // Whole Cake Island from the sea: a gathering of frosted cakes on the
+  // shore, the tall tiered chateau in the middle with the cream running down
+  // each tier and candles on top, cotton-candy snow falling. The island is
+  // seen from the Emperor's first pages (571), the snow as her ship comes
+  // home at 783.
   'whole-cake-island-arc': [
-    { d: 'M26 140 H134 V118 H26 Z' },
-    { d: 'M40 118 H120 V98 H40 Z' },
-    { d: 'M54 98 H106 V80 H54 Z' },
-    { d: 'M54 80 q6 9 12 0 q6 9 12 0 q6 9 12 0 q6 9 12 0', role: 'accent' },
-    { d: 'M68 80 V50 H92 V80' },
-    { d: 'M62 50 v-11 h6 v11 M92 50 h6 v-11 h-6' },
-    { d: 'M80 50 V28' },
-    { d: circle(80, 22, 7), role: 'accent' },
+    { d: 'M44 150 V124 M116 150 V124' },
+    { d: `${ellipse(80, 124, 36, 6)} M52 124 V102 M108 124 V102` },
+    { d: `${ellipse(80, 102, 28, 5)} M60 102 V80 M100 102 V80` },
+    {
+      d: `${ellipse(80, 80, 20, 4)} M66 80 V60 M94 80 V60 ${ellipse(80, 60, 14, 3)}`,
+    },
+    {
+      d: 'M44 128 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0 M52 106 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0 M60 84 q4 8 8 0 q4 10 8 0 q4 8 8 0 q4 10 8 0 q4 8 8 0',
+      role: 'accent',
+    },
+    {
+      d: 'M70 58 V40 M80 57 V34 M90 58 V40 M70 40 q-3 -5 0 -9 q3 4 0 9 M80 34 q-3 -5 0 -9 q3 4 0 9 M90 40 q-3 -5 0 -9 q3 4 0 9',
+      role: 'accent',
+    },
+    {
+      d: 'M110 136 l6 -4 M110 146 l6 -4 M102 112 l6 -4 M96 92 l4 -4 M96 70 l4 -3',
+      role: 'ambient',
+    },
+    {
+      d: 'M8 150 V132 C8 120 40 120 40 132 V150 M8 134 q4 6 8 0 q4 7 8 0 q4 6 8 0 q4 7 8 0',
+      role: 'soft',
+    },
+    {
+      d: 'M120 150 V128 C120 116 152 116 152 128 V150 M120 130 q4 6 8 0 q4 7 8 0 q4 6 8 0 q4 7 8 0',
+      role: 'soft',
+    },
+    { d: 'M0 150 H160', role: 'ambient' },
+    {
+      d: dots([
+        [20, 40],
+        [40, 22],
+        [120, 30],
+        [140, 52],
+        [30, 80],
+        [128, 86],
+        [56, 16],
+        [108, 12],
+      ]),
+      role: 'soft',
+    },
     ...SEA,
   ],
 
@@ -249,139 +438,240 @@ export const wholeCakeArt = {
     shadow(78, 184, 54),
   ],
 
-  // A fedora set over two crossed pistols.
+  // His two big revolvers, the guns he is named for, one laid over the
+  // other: the drums, the grips, the dark barrels hatched underneath, the
+  // muzzles as the accent. He wears them in their holsters on Bege's ship
+  // at 763.
   'vito': [
-    { d: 'M50 104 C50 66 110 66 110 104' },
-    { d: 'M64 78 q16 -10 32 0', role: 'soft' },
-    { d: ellipse(80, 106, 52, 14) },
-    { d: 'M52 100 q28 10 56 0', role: 'accent' },
-    { d: 'M22 138 h44 v10 h-16 l-6 16 h-10 l2 -16 h-14 Z' },
-    { d: 'M138 138 h-44 v10 h16 l6 16 h10 l-2 -16 h14 Z' },
-    shadow(80, 176, 50),
+    ...withVitoGun('translate(160 -14) scale(-1 1) rotate(-16 80 90)'),
+    ...withVitoGun('translate(6 46) rotate(-6 80 90)'),
+    shadow(80, 184, 56),
   ],
 
-  // A hammerhead mermaid's tail rising out of the sea.
+  // Her tail rising out of the sea in three quarters, dark and hatched on
+  // the side that turns away, the frilled cloth she wears across its front,
+  // the fluke spread above as the accent. She comes up to Aladine with it
+  // at 790.
   'praline': [
+    { d: 'M54 160 C50 130 60 110 76 94 C86 84 90 76 90 64' },
+    { d: 'M98 160 C90 136 94 118 104 104 C110 94 108 80 102 68' },
     {
-      d: 'M64 158 C60 128 66 104 82 86 C88 78 92 70 92 62 L100 62 C102 74 98 86 92 96 C80 114 80 136 88 158',
-    },
-    {
-      d: 'M92 62 C84 46 70 36 56 32 C66 44 72 54 76 66 Z M100 62 C108 46 122 38 138 36 C128 46 120 56 114 68 Z',
+      d: 'M90 64 C80 52 62 44 42 46 C56 52 66 60 72 70 C80 66 88 68 90 64 M102 68 C106 52 120 40 140 36 C130 48 122 60 116 74 C110 70 104 72 102 68',
       role: 'accent',
     },
     {
-      d: 'M70 136 q8 -6 14 0 M72 118 q8 -6 14 0 M78 100 q7 -6 12 0',
+      d: 'M72 70 C84 76 104 78 116 74 M62 54 C74 60 84 66 92 70',
       role: 'soft',
     },
+    {
+      d: 'M56 140 q4 6 8 0 q4 6 8 0 q4 6 8 0 q4 6 8 0 q4 6 8 0 M58 128 C70 134 86 134 96 128',
+      role: 'soft',
+    },
+    {
+      d: 'M96 112 l8 -5 M94 124 l8 -5 M94 136 l8 -5 M98 96 l8 -5 M102 84 l6 -4 M124 52 l6 -6 M120 62 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M40 160 C52 154 96 154 112 160', role: 'soft' },
     ...SEA,
   ],
 
-  // A cake with a ribbon tied across it like a blindfold.
+  // The tea she pours the crew to wash the chocolate down, a cup on its
+  // saucer still steaming, and a bar of chocolate broken open beside it,
+  // the minister of chocolate's own. She serves both in Chocolat Town at
+  // 786.
   'charlotte-pudding': [
-    { d: 'M40 148 H120 V90 H40 Z' },
-    { d: 'M40 90 q40 -26 80 0' },
-    { d: 'M40 102 q8 10 16 0 q8 10 16 0 q8 10 16 0 q8 10 16 0', role: 'soft' },
-    { d: 'M26 112 H134', role: 'accent' },
-    { d: 'M74 106 l-18 -9 v18z M86 106 l18 -9 v18z', role: 'accent' },
-    { d: circle(80, 106, 5), role: 'accent' },
-    { d: ellipse(80, 152, 52, 8) },
-    shadow(80, 170, 50),
+    { d: ellipse(54, 98, 26, 7) },
+    { d: 'M28 98 C30 122 40 134 54 134 C68 134 78 122 80 98' },
+    { d: 'M79 106 C92 104 94 120 76 122', role: 'soft' },
+    { d: 'M34 100 C44 104 64 104 74 100', role: 'soft' },
+    { d: ellipse(54, 136, 42, 9) },
+    { d: 'M16 140 C32 148 76 148 92 140', role: 'soft' },
+    { d: 'M46 86 c-6 -8 6 -12 0 -20 M60 86 c-6 -8 6 -12 0 -20', role: 'soft' },
+    {
+      d: 'M96 164 L112 122 L140 125 l-3 6 l6 4 l-4 6 l6 5 l-5 7 l3 9 Z M112 122 l8 -6 L148 119 l-8 6',
+      role: 'accent',
+    },
+    { d: 'M108 133 l30 3 M103 147 l33 3 M126 124 l-14 40', role: 'soft' },
+    { d: 'M148 119 l-3 6 l6 4 M143 158 l6 -5', role: 'ambient' },
+    shadow(80, 176, 70),
   ],
 
-  // A great bicorne hat resting on a heap of sweets.
+  // A heap of the sweets she demands, a wrapped candy, a cupcake and a
+  // lollipop on top, and her bicorne set down at its foot, small and plain:
+  // the same hat Napoleon is drawn as. Her tribute of sweets is the first
+  // thing told of her (571); she rules over her heap at 786.
   'charlotte-linlin': [
-    { d: 'M14 160 C30 132 48 118 70 114 C96 110 118 128 134 160 Z' },
     {
-      d: `${circle(44, 148, 7)} ${circle(66, 140, 6)} ${circle(92, 142, 7)} ${circle(112, 152, 6)}`,
+      d: 'M6 160 C10 140 18 128 30 122 C28 108 38 98 50 100 C54 82 72 74 86 80 C98 70 118 76 120 92 C134 94 142 108 138 122 C136 134 128 142 116 148',
+    },
+    {
+      d: `${ellipse(42, 128, 11, 8)} M31 128 l-12 -9 v18 z M53 128 l12 -9 v18 z`,
+      role: 'accent',
+    },
+    {
+      d: `${circle(96, 56, 14)} M96 56 m-7 0 a7 7 0 1 1 7 7 M96 70 V96`,
+      role: 'accent',
+    },
+    {
+      d: 'M64 156 l-6 -28 h40 l-6 28 Z M58 128 C54 108 104 108 98 128',
+      role: 'accent',
+    },
+    { d: 'M68 132 l2 22 M78 132 v22 M88 132 l-2 22', role: 'soft' },
+    {
+      d: 'M14 152 h22 v10 h-22 Z M108 104 C108 96 126 96 126 104 C126 110 108 110 108 104 M110 110 C110 116 124 116 124 110',
       role: 'soft',
     },
-    { d: 'M52 130 l-9 -6 v13z M80 126 l9 -6 v13z', role: 'soft' },
     {
-      d: 'M22 88 C34 54 60 40 80 40 C100 40 126 54 138 88 C112 100 48 100 22 88 Z',
-      role: 'accent',
+      d: 'M30 140 l6 -6 M40 146 l8 -8 M120 118 l6 -6 M124 128 l8 -8',
+      role: 'ambient',
     },
-    { d: 'M26 90 C56 78 104 78 134 90', role: 'accent' },
-    { d: 'M80 40 q-7 -14 0 -24 q7 10 0 24' },
-    shadow(80, 174, 56),
+    ...setDownByTheSweets(BIG_MOM_BICORNE),
+    shadow(80, 180, 68),
   ],
 
-  // A candy cane staff, its hook curling over.
+  // His candy cane, the top a flat spiral like a lollipop, in three
+  // quarters with the edge of the disc showing; the stripes run round the
+  // spiral and up the shaft. He licks it as he shows Caesar his new
+  // laboratory at 795.
   'charlotte-perospero': [
-    { d: 'M42 178 V88 C42 56 62 40 84 40 C106 40 122 56 122 84' },
-    { d: 'M58 178 V88 C58 64 70 54 84 54 C98 54 106 64 106 84' },
-    { d: 'M42 178 H58 M122 84 H106' },
-    { d: 'M42 160 l16 -10 M42 136 l16 -10 M42 112 l16 -10', role: 'accent' },
+    { d: ellipse(80, 58, 38, 32) },
+    { d: 'M42 58 v8 a38 32 0 0 0 76 0 v-8', role: 'soft' },
     {
-      d: 'M45 90 l13 -13 M62 66 l10 -9 M92 56 l6 12 M108 68 l12 -5',
+      d: 'M46 76 l2 7 M56 88 l2 7 M68 95 l1 7 M80 98 v7 M92 95 l-1 7 M104 88 l-2 7 M114 76 l-2 7',
+      role: 'ambient',
+    },
+    {
+      d: 'M80 58 a5 4.2 0 0 1 10 0 a10 8.4 0 0 1 -20 0 a15 12.6 0 0 1 30 0 a20 16.8 0 0 1 -40 0 a25 21 0 0 1 50 0 a30 25.2 0 0 1 -60 0',
       role: 'accent',
     },
-    shadow(50, 188, 16),
+    { d: 'M75 98 L70 184 M85 98 L80 184 M70 184 H80' },
+    {
+      d: 'M74 110 l10 -7 M73 126 l10 -7 M72 142 l10 -7 M71 158 l10 -7 M70 174 l10 -7',
+      role: 'accent',
+    },
+    { d: 'M52 40 C58 32 66 28 74 28', role: 'soft' },
+    shadow(76, 190, 24),
   ],
 
-  // A biscuit shield with a serrated blade behind it.
+  // The great biscuit shield his armour carries, thick in three quarters
+  // with the edge turning away, and the long sword Pretzel crossed behind
+  // it, its round guard as the accent. He first comes on with both at 796.
   'charlotte-cracker': [
-    { d: 'M46 52 H114 V110 C114 140 92 156 80 162 C68 156 46 140 46 110 Z' },
-    { d: circle(80, 100, 13) },
+    {
+      d: 'M77 136 H112 M77 148 H112 M13 136 H-31 L-43 142 L-31 148 H13',
+      transform: PRETZEL_TILT,
+    },
+    { d: 'M13 142 H-28 M80 142 H110', role: 'soft', transform: PRETZEL_TILT },
+    {
+      d: 'M124 138 H154 C158 138 160 140 160 142 C160 144 158 146 154 146 H124',
+      transform: PRETZEL_TILT,
+    },
+    {
+      d: 'M118 126 q4 2 2 6 q4 3 1 7 q4 3 0 7 q3 4 -2 7 q2 4 -3 5 q-6 0 -6 -16 q0 -16 8 -16 Z M114 127 C126 127 126 157 114 157',
+      role: 'accent',
+      transform: PRETZEL_TILT,
+    },
+    {
+      d: 'M28 64 q4 -5 8 0 q4 -5 8 0 q4 -5 8 0 q4 -5 8 0 q4 -5 8 0 q4 -5 8 0 q4 -5 8 0 L94 58 M28 64 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 q-5 4 0 8 M28 152 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 q4 5 8 0 L94 146',
+    },
+    { d: 'M84 64 V152 M94 58 V146', role: 'soft' },
+    {
+      d: 'M86 74 l6 -6 M86 94 l6 -6 M86 114 l6 -6 M86 134 l6 -6',
+      role: 'ambient',
+    },
     {
       d: dots([
-        [58, 66],
-        [102, 66],
-        [58, 124],
-        [102, 124],
+        [40, 80],
+        [56, 80],
+        [72, 80],
+        [40, 100],
+        [56, 100],
+        [72, 100],
+        [40, 120],
+        [56, 120],
+        [72, 120],
+        [40, 138],
+        [56, 138],
+        [72, 138],
       ]),
       role: 'soft',
     },
-    { d: 'M114 76 a9 9 0 1 0 0 18 a9 9 0 1 0 0 -18', role: 'soft' },
-    { d: 'M70 46 L80 22 L90 46 V52 H70 Z', role: 'accent' },
-    { d: 'M70 32 l-7 3 l7 3 l-7 3 M90 32 l7 3 l-7 3 l7 3', role: 'accent' },
-    { d: 'M74 162 V176 H86 V162' },
-    { d: 'M68 176 h24' },
+    shadow(80, 182, 56),
   ],
 
-  // A crooked tree of the Seducing Woods, its branches reaching out like fingers.
+  // The crooked tree Carrot takes her for in the Seducing Woods, the trunk
+  // rounding at its roots and hatched on the side away from the light, its
+  // long branches reaching out like fingers, sharp at the tips. Carrot
+  // mistakes her for one at 792.
   'charlotte-brulee': [
-    { d: 'M64 176 C70 150 70 124 60 100 M92 176 C88 150 90 124 100 100' },
+    { d: 'M62 176 C66 150 64 126 56 108 C50 94 38 80 16 66' },
+    { d: 'M96 176 C92 150 96 128 104 112 C112 98 126 88 148 86' },
     {
-      d: 'M60 100 C48 86 40 70 26 64 M60 100 C60 80 66 62 60 40 M100 100 C104 78 96 60 104 40 M100 100 C114 88 124 74 136 70',
+      d: 'M16 66 C34 70 50 76 60 84 C60 66 54 46 42 28 M70 82 C70 60 76 40 86 22 M80 86 C86 70 98 56 112 46 M94 96 C108 84 120 74 134 66',
     },
     {
-      d: 'M26 64 l-6 -8 M26 64 l-8 2 M60 40 l-6 -8 M60 40 l5 -9 M104 40 l-4 -9 M104 40 l7 -7 M136 70 l6 -7 M136 70 l8 2',
+      d: 'M16 66 l-7 -4 M42 28 l-4 -7 M86 22 l2 -8 M112 46 l6 -5 M134 66 l7 -3 M148 86 l7 1',
       role: 'accent',
     },
-    { d: 'M72 132 q6 -6 10 2', role: 'soft' },
-    shadow(78, 180, 40),
+    {
+      d: 'M70 168 C72 146 70 124 64 104 M84 166 C84 144 86 124 92 106',
+      role: 'soft',
+    },
+    {
+      d: 'M94 160 l8 -4 M94 146 l9 -4 M96 132 l9 -4 M100 118 l8 -4 M108 104 l6 -4',
+      role: 'ambient',
+    },
+    {
+      d: 'M44 182 C52 178 58 176 62 172 M114 182 C104 178 100 176 96 172 M56 180 C68 186 92 186 104 180',
+      role: 'soft',
+    },
+    shadow(80, 190, 50),
   ],
 
-  // A cigarette holder laid across a poker chip.
+  // The white sunhat she wears to the Tea Party, a rose on its band, the
+  // brim seen from a little above, and the pink handbag she carries set down
+  // beside it. She arrives in both with the bosses of the underworld at 830.
   'stussy': [
-    { d: circle(80, 128, 42) },
-    { d: circle(80, 128, 31), role: 'soft' },
+    { d: ellipse(70, 118, 54, 15) },
+    { d: 'M42 114 C40 82 100 82 98 114' },
+    { d: 'M43 104 C58 110 84 110 97 104', role: 'soft' },
     {
-      d: 'M38 128 h-6 M122 128 h6 M80 86 v-6 M80 170 v6 M50 98 l-4 -4 M110 98 l4 -4 M50 158 l-4 4 M110 158 l4 4',
-      role: 'soft',
-    },
-    { d: 'M24 106 l8 9 l74 -63 l-8 -9 Z', role: 'accent' },
-    { d: 'M38 100 l8 9', role: 'accent' },
-    { d: 'M106 42 c9 -10 -5 -16 3 -26', role: 'soft' },
-    shadow(80, 178, 36),
-  ],
-
-  // A newspaper sheet with a quill pen laid over it.
-  'morgans': [
-    { d: 'M28 78 H132 V150 H28 Z' },
-    { d: 'M80 78 V150', role: 'soft' },
-    { d: 'M36 88 H124' },
-    {
-      d: 'M36 104 h36 M36 116 h36 M36 128 h30 M88 104 h36 M88 116 h30 M88 128 h36',
-      role: 'soft',
-    },
-    {
-      d: 'M96 62 C112 34 132 22 146 18 C142 34 130 54 112 68 Z',
+      d: `${circle(94, 100, 9)} M94 100 m-4 0 a4 4 0 1 1 4 4 M98 108 C104 112 110 110 112 106`,
       role: 'accent',
     },
-    { d: 'M96 62 L84 76', role: 'accent' },
-    { d: 'M140 26 C124 40 110 54 94 66', role: 'soft' },
-    shadow(80, 164, 52),
+    { d: 'M18 122 C30 132 110 132 122 122', role: 'soft' },
+    { d: 'M116 162 L120 138 H150 L154 162 Z' },
+    { d: 'M124 138 C124 122 146 122 146 138', role: 'soft' },
+    { d: 'M128 146 h14 v6 h-14 Z', role: 'soft' },
+    shadow(84, 176, 70),
+  ],
+
+  // His top hat, standing on a folded newspaper, the striped feather tucked
+  // in its band as the accent and the dark crown hatched on the far side.
+  // He comes to the Tea Party in it at 830, as president of the paper.
+  'morgans': [
+    { d: 'M8 158 L38 128 H150 L120 158 Z' },
+    { d: 'M79 128 L64 158', role: 'soft' },
+    {
+      d: 'M30 150 h24 M38 142 h22 M92 150 h22 M100 142 h22 M108 134 h22',
+      role: 'soft',
+    },
+    { d: ellipse(86, 54, 20, 5) },
+    { d: 'M66 54 L68 116 M106 54 L104 116' },
+    {
+      d: 'M48 124 C56 132 116 132 124 124 C128 116 116 112 104 114 M48 124 C44 116 56 112 68 114',
+    },
+    {
+      d: 'M68 102 C78 106 94 106 104 102 M68 110 C78 114 94 114 104 110',
+      role: 'soft',
+    },
+    {
+      d: 'M98 64 l6 -4 M98 76 l6 -4 M98 88 l6 -4 M98 98 l6 -4',
+      role: 'ambient',
+    },
+    { d: 'M70 104 C58 82 50 60 54 32 C64 50 72 76 74 102', role: 'accent' },
+    { d: 'M56 44 l10 2 M58 58 l12 2 M62 72 l10 2 M66 86 l8 2', role: 'accent' },
+    shadow(80, 172, 62),
   ],
 
   // A lance and a crown banded with plain stripes.
@@ -1096,30 +1386,7 @@ export const wholeCakeArt = {
   // The pink bicorne Big Mom wears, in three quarters: the trim along its
   // crest, the ruffled fastener on its side, the back panel showing past
   // the front. No skull on it, and no blade. She calls it by name at 816.
-  'napoleon': [
-    {
-      d: 'M6 136 C24 130 32 116 38 98 C48 70 62 58 80 58 C98 58 112 70 122 98 C128 116 136 130 154 136 C130 140 108 134 80 134 C52 134 30 140 6 136 Z',
-    },
-    {
-      d: 'M96 58 C112 58 126 70 134 92 C140 110 146 122 158 128',
-      role: 'soft',
-    },
-    { d: 'M128 80 l7 -3 M134 94 l7 -3 M139 108 l8 -3', role: 'ambient' },
-    {
-      d: 'M16 132 C30 124 38 112 44 98 C52 78 64 66 80 66 C96 66 108 78 116 98 C122 112 130 124 144 132',
-      role: 'accent',
-    },
-    { d: 'M34 136 C54 146 108 146 128 136', role: 'soft' },
-    {
-      d: 'M48 138 l4 6 M62 136 l4 8 M76 135 l4 9 M90 135 l4 9 M104 136 l4 8 M116 137 l3 5',
-      role: 'ambient',
-    },
-    {
-      d: 'M124 108 A3.1 3.1 0 0 1 122.1 113.1 A3.1 3.1 0 0 1 117.4 115.9 A3.1 3.1 0 0 1 112 114.9 A3.1 3.1 0 0 1 108.5 110.7 A3.1 3.1 0 0 1 108.5 105.3 A3.1 3.1 0 0 1 112 101.1 A3.1 3.1 0 0 1 117.4 100.1 A3.1 3.1 0 0 1 122.1 102.9 A3.1 3.1 0 0 1 124 108',
-      role: 'soft',
-    },
-    shadow(80, 176, 62),
-  ],
+  'napoleon': [...BIG_MOM_BICORNE, shadow(80, 176, 62)],
   // A cigar laid across a stack of coins, a thread of smoke rising from it.
   'lu-feld': [
     { d: ellipse(80, 104, 40, 12) },
