@@ -1262,8 +1262,8 @@ export const eastBlue: Saga = {
     'yasopp': {
       role: { it: 'Tiratore scelto', en: 'Sniper' },
       log: {
-        it: 'Ha lasciato il villaggio e un bambino piccolo per salire su una nave pirata, e da allora non ha smesso un giorno di raccontare quanto è in gamba suo figlio. Con la pistola non sbaglia: al villaggio dicono che possa staccare le corna a un insetto senza toccare il resto. Beve alla taverna insieme agli altri, e nessuno lo sente mai parlare di tornare indietro.',
-        en: 'He left a village and a small son to board a pirate ship, and has not gone a day since without telling someone how fine that boy is. With a pistol he does not miss: they say he can take the horns off a beetle without touching the rest of it. He drinks at the tavern with the others, and nobody ever hears him talk about going back.',
+        it: 'Ha lasciato il villaggio e un bambino piccolo per salire su una nave pirata, e da allora non ha smesso un giorno di raccontare quanto è in gamba suo figlio. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Beve alla taverna insieme agli altri, e nessuno lo sente mai parlare di tornare indietro.',
+        en: 'He left a village and a small son to board a pirate ship, and has not gone a day since without telling someone how fine that boy is. With a pistol he does not miss: he boasts he can shoot the antennae off an ant without touching the rest of it. He drinks at the tavern with the others, and nobody ever hears him talk about going back.',
       },
       affiliation: [
         {
@@ -1492,8 +1492,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
-        it: 'Comanda una ciurma pirata di tre bambini con una bandiera, e racconta ogni giorno a una ragazza malata le sue avventure inventate. Suo padre è salpato con dei pirati veri quando lui era piccolo, e lui ha deciso di diventare un uomo di mare coraggioso. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
-        en: 'He captains a pirate crew of three children with a flag, and tells a sick girl a new invented adventure every day. His father sailed with real pirates when he was small, and he has decided to become a brave man of the sea. With a slingshot he never misses; the bravery is still a work in progress.',
+        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
+        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. With a slingshot he never misses; the bravery is still a work in progress.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
@@ -1548,8 +1548,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Black Cat Pirates',
       },
       log: {
-        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si spinge gli occhiali sul naso con il palmo della mano, mai con un dito. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
-        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He pushes his glasses up with the palm of his hand, never with a finger. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
+        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si rimette di continuo gli occhiali sul naso. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
+        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He keeps pushing his glasses back up his nose. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
       },
       affiliation: [
         {
