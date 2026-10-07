@@ -610,14 +610,30 @@ export const summitWarArt = {
     shadow(80, 182, 66),
   ],
 
-  // Two long blades, one on each gauntlet.
+  // One of his gauntlets lying on its side, the cuff flaring open towards the
+  // reader and its inside hatched, and on the axle at its end the long sickle
+  // blade curling over it in his colour, its edge bevelled. He has the blade
+  // on the gauntlet when Drake breaks up his fight with Urouge in episode 392
+  // (chapter 498).
   'killer': [
-    { d: 'M40 128 h30 v26 h-30z' },
-    { d: 'M92 128 h30 v26 h-30z' },
-    { d: 'M40 140 h30 M92 140 h30', role: 'soft' },
-    { d: 'M46 128 L26 56 C24 44 34 38 40 46 L62 126', role: 'accent' },
-    { d: 'M116 128 L136 56 C138 44 128 38 122 46 L100 126', role: 'accent' },
-    shadow(80, 168, 54),
+    { d: ellipse(32, 150, 8, 18) },
+    { d: 'M30 140 l4 -3 M29 150 l6 -5 M30 160 l5 -4', role: 'ambient' },
+    {
+      d: 'M32 132 C40 136 46 137 54 136 L76 133 M32 168 C40 164 46 163 54 164 L76 167',
+    },
+    {
+      d: 'M76 133 C83 137 83 163 76 167 M76 133 H82 C90 137 90 163 82 167 H76',
+    },
+    { d: 'M54 136 C60 141 60 159 54 164', role: 'soft' },
+    { d: 'M44 164 l5 -5 M58 165 l5 -5 M70 166 l4 -4', role: 'ambient' },
+    { d: 'M88 150 H102' },
+    { d: ellipse(103, 150, 3, 6), role: 'soft' },
+    {
+      d: 'M104 146 C142 120 140 44 94 36 C80 34 66 40 56 52 C74 46 92 50 102 62 C118 80 118 116 98 150 Z',
+      role: 'accent',
+    },
+    { d: 'M70 44 C88 42 104 52 114 68 C126 90 124 118 110 138', role: 'soft' },
+    shadow(66, 182, 48),
   ],
 
   // His small brown boots standing side by side, the near one with its top
