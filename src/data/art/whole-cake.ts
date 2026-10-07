@@ -1800,19 +1800,23 @@ export const wholeCakeArt = {
     { d: 'M20 186 H140', role: 'ambient', dashed: true },
   ],
 
-  // A sun with flames licking out of its rim.
+  // The sun on Big Mom's right hand: wavy flame rays between short straight
+  // ones, the far limb hatched, no face. He hangs over the sea of the storm
+  // Pound tells of, the one that sank Urouge's ship (806, chapter 843).
   'prometheus': [
-    { d: circle(80, 96, 34) },
-    { d: circle(80, 96, 24), role: 'soft' },
+    { d: circle(80, 80, 32) },
     {
-      d: 'M80 44 q-8 -14 0 -26 q8 12 0 26 M132 96 q14 -8 26 0 q-12 8 -26 0 M80 148 q8 14 0 26 q-8 -12 0 -26 M28 96 q-14 8 -26 0 q12 -8 26 0',
+      d: 'M80 42 C86 36 74 30 80 22 M106.9 53.1 C115.4 53.1 111.1 40.4 121 39 M118 80 C124 86 130 74 138 80 M106.9 106.9 C106.9 115.4 119.6 111.1 121 121 M80 118 C74 124 86 130 80 138 M53.1 106.9 C44.6 106.9 48.9 119.6 39 121 M42 80 C36 74 30 86 22 80 M53.1 53.1 C53.1 44.6 40.4 48.9 39 39',
       role: 'accent',
     },
     {
-      d: 'M117 59 l12 -12 M117 133 l12 12 M43 133 l-12 12 M43 59 l-12 -12',
-      role: 'accent',
+      d: 'M94.5 44.9 L98.4 35.7 M115.1 65.5 L124.3 61.6 M115.1 94.5 L124.3 98.4 M94.5 115.1 L98.4 124.3 M65.5 115.1 L61.6 124.3 M44.9 94.5 L35.7 98.4 M44.9 65.5 L35.7 61.6 M65.5 44.9 L61.6 35.7',
     },
-    shadow(80, 188, 40),
+    {
+      d: 'M100.5 59.5 L94.1 64.3 M106.9 69.1 L100.5 73.9 M109 80 L102.6 84.8 M106.9 90.9 L100.5 95.7 M100.5 100.5 L94.1 105.3',
+      role: 'ambient',
+    },
+    ...SEA,
   ],
 
   // The pink bicorne Big Mom wears, in three quarters: the trim along its
