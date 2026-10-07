@@ -432,34 +432,88 @@ export const waterSevenArt = {
     shadow(84, 186, 68),
   ],
 
-  // Two swords crossed, each one cut off square at the point.
+  // Their katanas, lying one above the other in 3/4: one drawn, its curved
+  // blade with the edge line and its wrapped grip; the other in its boxy
+  // sheath, top and end faces showing, the near side hatched. The square
+  // guards are the accent. They are first shown at the main gate of Enies
+  // Lobby (265, ch. 377); the blades are not cut flat at the tip.
   'kiwi-and-mozu': [
     {
-      d: 'M74 36 h12 v84 h-12z',
-      role: 'accent',
-      transform: 'rotate(-26 80 104)',
+      d: 'M58 100 C84 98 112 94 140 84 L134 92 C110 101 84 106 58 108',
+      transform: 'rotate(-24 80 110) translate(4 0)',
     },
-    { d: 'M62 120 h36 v7 h-36z', transform: 'rotate(-26 80 104)' },
-    { d: 'M76 127 v28 M73 155 h14 v10 h-14z', transform: 'rotate(-26 80 104)' },
     {
-      d: 'M74 36 h12 v84 h-12z',
-      role: 'accent',
-      transform: 'rotate(26 80 104)',
+      d: 'M60 104 C86 102 112 98 136 88',
+      role: 'soft',
+      transform: 'rotate(-24 80 110) translate(4 0)',
     },
-    { d: 'M62 120 h36 v7 h-36z', transform: 'rotate(26 80 104)' },
-    { d: 'M76 127 v28 M73 155 h14 v10 h-14z', transform: 'rotate(26 80 104)' },
-    shadow(80, 184, 54),
+    {
+      d: 'M24 100 H50 V108 H24 Q20 104 24 100',
+      transform: 'rotate(-24 80 110) translate(4 0)',
+    },
+    {
+      d: 'M30 100 l6 8 M36 100 l6 8 M42 100 l6 8 M30 108 l6 -8 M36 108 l6 -8 M42 108 l6 -8',
+      role: 'soft',
+      transform: 'rotate(-24 80 110) translate(4 0)',
+    },
+    {
+      d: 'M58 98 H136 V112 H58 Z M58 98 l6 -5 H142 l-6 5 M142 93 V107 l-6 5',
+      transform: 'rotate(-24 80 110) translate(0 28)',
+    },
+    {
+      d: 'M70 112 l4 -4 M88 112 l4 -4 M106 112 l4 -4 M124 112 l4 -4',
+      role: 'ambient',
+      transform: 'rotate(-24 80 110) translate(0 28)',
+    },
+    {
+      d: 'M22 100 H50 V110 H22 Q18 105 22 100 M28 100 l6 10 M36 100 l6 10 M44 100 l6 10',
+      transform: 'rotate(-24 80 110) translate(0 28)',
+    },
+    {
+      d: 'M50 94 l8 -4 v18 l-8 4 Z',
+      role: 'accent',
+      transform: 'rotate(-24 80 110) translate(4 0)',
+    },
+    {
+      d: 'M50 94 l8 -4 v20 l-8 4 Z',
+      role: 'accent',
+      transform: 'rotate(-24 80 110) translate(0 28)',
+    },
+    shadow(80, 170, 60),
   ],
 
-  // A headband with its tails loose, and a rocket launcher below it.
+  // His bazooka lying in 3/4, muzzle towards the viewer: the thick tube with
+  // its rounded back, two bands and the sight, the underside hatched, the
+  // grip and trigger guard below; the wider muzzle collar and its face, the
+  // accent, with the bore inside. He swings it like a club at the main gate
+  // of Enies Lobby (265) and fires it at the giant (266, ch. 378).
   'zambai': [
-    { d: 'M22 56 h116 v18 H22z' },
-    { d: 'M138 58 c16 4 18 16 8 24 M138 72 c18 8 16 22 4 28', role: 'soft' },
-    { d: 'M30 116 h84 v26 H30z' },
-    { d: 'M114 116 l24 13 l-24 13z', role: 'accent' },
-    { d: 'M52 142 q-2 16 -14 20 M40 116 v-12 h16 v12' },
-    { d: 'M22 122 q-14 6 -18 20', role: 'ambient', dashed: true },
-    shadow(74, 180, 52),
+    {
+      d: 'M30 104 H112 M30 136 H112 M30 104 Q16 120 30 136',
+      transform: 'rotate(-22 80 120)',
+    },
+    {
+      d: 'M36 136 l5 -6 M50 136 l5 -6 M64 136 l5 -6 M92 136 l5 -6 M106 136 l5 -6',
+      role: 'ambient',
+      transform: 'rotate(-22 80 120)',
+    },
+    {
+      d: 'M46 104 a6 16 0 0 1 0 32 M84 104 a6 16 0 0 1 0 32',
+      role: 'soft',
+      transform: 'rotate(-22 80 120)',
+    },
+    {
+      d: `M112 100 H136 M112 140 H136 M112 100 a8 20 0 0 1 0 40 ${ellipse(136, 120, 8, 20)}`,
+      role: 'accent',
+      transform: 'rotate(-22 80 120)',
+    },
+    { d: ellipse(137, 120, 4, 11), transform: 'rotate(-22 80 120)' },
+    {
+      d: 'M58 138 l-3 18 h10 l3 -18 M72 138 q2 10 12 0',
+      transform: 'rotate(-22 80 120)',
+    },
+    { d: 'M96 104 v-7 h9 v7', transform: 'rotate(-22 80 120)' },
+    shadow(80, 164, 58),
   ],
 
   // The forearm of the first years, raised: flesh over the rebuilt arm,
