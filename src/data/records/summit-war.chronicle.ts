@@ -38,8 +38,8 @@ export const summitWarChronicles = {
           en: 'Resignation shouted at Sengoku',
         },
         body: {
-          it: 'Appena sbarcato a Marineford, Jinbe ripesca dall’acqua uno per uno gli utilizzatori di frutti del diavolo caduti in mare durante l’assalto, che da soli affogherebbero senza rimedio. Poi si volta verso [[sengoku|Sengoku]], in mezzo al caos della battaglia appena cominciata, e grida che si dimette dalla Flotta dei Sette, lì, davanti a tutti. Non aspetta una risposta: si getta subito nella baia per raggiungere [[monkey-d-luffy|Rufy]] e il resto dell’alleanza, da uomo libero per la prima volta da anni.',
-          en: 'The moment he lands at Marineford, Jinbe fishes out of the water, one by one, the devil fruit users who fell in during the assault and would otherwise drown without hope. Then he turns to [[sengoku|Sengoku]], in the middle of the battle that has only just begun, and shouts that he resigns from the Seven Warlords, right there, in front of everyone. He does not wait for an answer: he throws himself straight into the bay to reach [[monkey-d-luffy|Luffy]] and the rest of the alliance, a free man for the first time in years.',
+          it: 'Appena sbarcato a Marineford, Jinbe ripesca dall’acqua uno per uno gli utilizzatori di frutti del diavolo caduti in mare durante l’assalto, che da soli affogherebbero senza rimedio. Poi si volta verso [[sengoku|Sengoku]], in mezzo al caos della battaglia appena cominciata, e grida che si dimette dalla Flotta dei Sette, lì, davanti a tutti.',
+          en: 'The moment he lands at Marineford, Jinbe fishes out of the water, one by one, the devil fruit users who fell in during the assault and would otherwise drown without hope. Then he turns to [[sengoku|Sengoku]], in the middle of the battle that has only just begun, and shouts that he resigns from the Seven Warlords, right there, in front of everyone.',
         },
       },
     },
