@@ -1276,8 +1276,8 @@ export const skypiea: Saga = {
         it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
         en: 'After the priests have chased an intruder across Upper Yard, he tells the others that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
-      affiliation: [{ episode: 166, value: ENEL_PRIESTS }],
-      origin: [{ episode: 166, value: SKY_ISLAND }],
+      affiliation: [{ episode: 166, chapter: 254, value: ENEL_PRIESTS }],
+      origin: [{ episode: 166, chapter: 254, value: SKY_ISLAND }],
     },
     'ohm': {
       role: ENEL_PRIEST,
@@ -1285,8 +1285,8 @@ export const skypiea: Saga = {
         it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Fall è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
         en: 'He chases a trespasser across Upper Yard with his dog, and the other priests join in until a bolt of lightning strikes the man down. From far away he can tell that Gan Fall has lost to one priest and that the strangers have beaten another, and he says the Shandia raiding the forest will not see the dawn. In the raid his dog snatches warriors up in its jaws while he fights with a sword. When the Shandia fall back he moves to stop Wyper, but another priest calls him off: Enel has summoned them.',
       },
-      affiliation: [{ episode: 166, value: ENEL_PRIESTS }],
-      origin: [{ episode: 166, value: SKY_ISLAND }],
+      affiliation: [{ episode: 166, chapter: 253, value: ENEL_PRIESTS }],
+      origin: [{ episode: 166, chapter: 253, value: SKY_ISLAND }],
     },
     'fuza': {
       role: { it: 'Cavalcatura di Shura', en: 'Shura’s mount' },
