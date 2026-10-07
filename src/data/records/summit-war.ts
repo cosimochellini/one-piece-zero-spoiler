@@ -210,8 +210,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Killer', en: 'Killer' },
       summary: {
-        it: 'Il secondo dei Pirati di Kid, con un casco che gli copre tutta la testa e due lame lunghe e ricurve fissate ai guanti.',
-        en: 'The first mate of the Kid Pirates, a helmet covering his whole head and a long curved blade fixed to each of his gauntlets.',
+        it: 'Un combattente dei Pirati di Kid, con un casco che gli copre tutta la testa e due lame lunghe e ricurve fissate ai guanti.',
+        en: 'A combatant of the Kid Pirates, a helmet covering his whole head and a long curved blade fixed to each of his gauntlets.',
       },
       visual: { art: 'killer', tint: 'azure' },
     },
@@ -222,8 +222,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Bepo', en: 'Bepo' },
       summary: {
-        it: 'Un orso polare in tuta arancione che sta in piedi come un uomo, naviga per i Pirati Heart e si scusa a ogni rimprovero.',
-        en: 'A polar bear in an orange boiler suit who stands like a man, navigates for the Heart Pirates and apologises at every scolding.',
+        it: 'Un orso polare in tuta arancione e stivaletti marroni che sta in piedi come un uomo, uno della ciurma dei Pirati Heart.',
+        en: 'A polar bear in an orange boiler suit and small brown boots who stands like a man, one of the crew of the Heart Pirates.',
       },
       visual: { art: 'bepo', tint: 'orange' },
     },
@@ -638,8 +638,8 @@ export const summitWar: Saga = {
       revealedAtChapter: 556,
       name: { it: 'Tsuru', en: 'Tsuru' },
       summary: {
-        it: 'Un viceammiraglio anziano che siede fra gli ammiragli, unica donna al tavolo, e parla con la calma di chi non deve alzare la voce.',
-        en: 'An elderly vice admiral seated among the admirals, the only woman at the table, speaking with the calm of one who never has to shout.',
+        it: 'Un viceammiraglio anziano della Marina, che al quartier generale, prima dell’esecuzione di Ace, dice a Garp che non è colpa sua.',
+        en: 'An elderly Marine vice admiral who, at headquarters before Ace’s execution, tells Garp that it is not his fault.',
       },
       visual: { art: 'tsuru', tint: 'ivory' },
     },
@@ -1300,19 +1300,19 @@ export const summitWar: Saga = {
     },
     'killer': {
       role: {
-        it: 'Secondo dei Pirati di Kid',
-        en: 'First mate of the Kid Pirates',
+        it: 'Combattente dei Pirati di Kid',
+        en: 'Combatant of the Kid Pirates',
       },
       log: {
-        it: 'Sta sempre un passo dietro al suo capitano e parla molto meno di lui, con un casco che non si toglie nemmeno per mangiare. Ai polsi porta due lame lunghe e ricurve, e quando le usa la faccenda si chiude in fretta. A Sabaody guarda le altre ciurme come si guarda il tempo prima di salpare, senza dire una parola.',
-        en: 'He stands a step behind his captain and says far less than he does, in a helmet he does not take off even to eat. Two long curved blades ride on his wrists, and when he uses them the business ends quickly. At Sabaody he watches the other crews the way a sailor watches the weather before casting off, without a word.',
+        it: 'Porta un casco a strisce, con file di fori, che gli copre tutta la testa, e una lama lunga e ricurva fissata a ciascuno dei guanti. A Sabaody sta combattendo contro il monaco Urouge quando X Drake si mette in mezzo, para i colpi di tutti e due e dice loro di tenersi la battaglia per il Nuovo Mondo.',
+        en: 'He wears a striped helmet with rows of holes in it that covers his whole head, and a long curved blade fixed to each of his gauntlets. At Sabaody he is fighting the monk Urouge when X Drake jumps between them, blocks them both and tells them to save it for the New World.',
       },
       affiliation: [
         {
           episode: 392,
           value: {
-            it: 'Pirati di Kid, secondo',
-            en: 'Kid Pirates, first mate',
+            it: 'Pirati di Kid, combattente',
+            en: 'Kid Pirates, combatant',
           },
         },
       ],
@@ -1328,22 +1328,20 @@ export const summitWar: Saga = {
         { episode: 603, value: 200_000_000 },
       ],
     },
+    // Not "navigator": only the SBS (volume 71) says it, never the story.
     'bepo': {
       role: {
-        it: 'Navigatore dei Pirati Heart',
-        en: 'Navigator of the Heart Pirates',
+        it: 'Membro dei Pirati Heart',
+        en: 'Member of the Heart Pirates',
       },
       log: {
-        it: 'È un orso polare che cammina su due zampe, parla e indossa la tuta arancione della ciurma come il resto dell’equipaggio. Fa il navigatore per Trafalgar Law e ogni volta che qualcuno alza la voce si scusa, anche quando la colpa non è sua. In mare aperto non ha paura di niente, ma basta un rimprovero del capitano per farlo sedere.',
-        en: 'He is a polar bear who walks on two legs, talks, and wears the crew’s orange boiler suit like everyone else aboard. He navigates for Trafalgar Law and apologises whenever a voice is raised, even when nothing was his fault. At sea he is afraid of nothing, yet one word from his captain is enough to sit him down.',
+        it: 'È un orso polare che sta in piedi su due zampe, con una tuta arancione e piccoli stivali marroni. A Sabaody sta alle spalle di Trafalgar Law, il capitano dei Pirati Heart, quando Law chiede a X Drake quante persone ha ucciso.',
+        en: 'He is a polar bear who stands on two legs, in an orange boiler suit and small brown boots. At Sabaody he stands behind Trafalgar Law, the captain of the Heart Pirates, when Law asks X Drake how many people he has killed.',
       },
       affiliation: [
         {
           episode: 392,
-          value: {
-            it: 'Pirati Heart, navigatore',
-            en: 'Heart Pirates, navigator',
-          },
+          value: { it: 'Pirati Heart, membro', en: 'Heart Pirates, member' },
         },
       ],
       origin: [
@@ -2097,8 +2095,8 @@ export const summitWar: Saga = {
     'tsuru': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'Siede nella sala del quartier generale fra il grand’ammiraglio e i tre ammiragli, unica donna al tavolo, e nessuno le parla sopra. Ha l’età per essere la nonna di chiunque nella stanza e l’autorità di chi comanda una flotta. Prima dell’esecuzione dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci.',
-        en: 'She sits in the headquarters room between the fleet admiral and the three admirals, the only woman at the table, and nobody talks over her. She is old enough to be grandmother to anyone present and carries the authority of a fleet commander. Before the execution she tells Garp it is not his fault, and he answers that women can be very sweet at times like this.',
+        it: 'Al quartier generale della Marina, prima dell’esecuzione, dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci. Quando la flotta alleata di Barbabianca esce dalla nebbia e di lui non c’è traccia, si chiede se la Marina non abbia sbagliato schieramento.',
+        en: 'At Marine headquarters, before the execution, she tells Garp it is not his fault, and he answers that women are very sweet at times like this. When Whitebeard’s allied fleet comes out of the fog and he himself is nowhere to be seen, she wonders whether the Marines have got their lineup wrong.',
       },
       affiliation: [
         {
