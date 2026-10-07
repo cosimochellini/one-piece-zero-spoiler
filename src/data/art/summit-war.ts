@@ -11,6 +11,10 @@ import {
 
 import type { Drawings, Redrawings, Stroke } from './stroke'
 
+/** The slant Saldeath's trident lies at, its butt resting on the net. */
+const SALDEATH_TRIDENT =
+  'translate(80 104) rotate(56) scale(1.15) translate(-80 -104)'
+
 /** The slant Squard's katana lies at, centred in the box. */
 const SQUARD_KATANA =
   'translate(80 104) rotate(-34) scale(1.2) translate(-77 -100)'
@@ -1786,67 +1790,70 @@ export const summitWarArt = {
     ...SEA.slice(1),
   ],
 
-  // A devil's trident with a torn net hanging off its prongs.
+  // The seastone net he drops on the intruders, lying in a heap, and his
+  // barbed trident across it, the prongs in his colour. He springs the trap in
+  // episode 431.
   'saldeath': [
-    { d: 'M80 186 V56' },
-    { d: 'M60 40 V60 q20 14 40 0 V40 M80 30 V56', role: 'accent' },
     {
-      d: 'M60 40 l-4 6 M60 40 l4 6 M100 40 l-4 6 M100 40 l4 6 M80 30 l-4 6 M80 30 l4 6',
+      d: 'M12 162 C14 152 24 150 30 144 C36 134 50 134 58 138 C66 128 84 128 92 136 C102 130 118 132 124 142 C134 144 146 152 146 162 Z',
+    },
+    {
+      d: 'M24 150 L40 162 M40 138 L64 162 M66 132 L94 162 M92 136 L118 162 M118 138 L136 156 M22 162 L52 136 M44 162 L82 130 M72 162 L108 132 M100 162 L128 140',
+      role: 'soft',
+    },
+    { d: 'M146 162 C152 164 156 168 150 172 H128', role: 'soft' },
+    { d: 'M128 148 l6 -4 M134 156 l6 -4', role: 'ambient' },
+    { d: 'M78 172 V70 M82 172 V70 M78 172 h4', transform: SALDEATH_TRIDENT },
+    { d: 'M76 76 h8 v-6 h-8 z', transform: SALDEATH_TRIDENT },
+    {
+      d: 'M80 70 V30 M80 70 C66 70 62 62 62 40 M80 70 C94 70 98 62 98 40 M75 40 L80 26 L85 40 M57 48 L62 34 L67 48 M93 48 L98 34 L103 48',
       role: 'accent',
+      transform: SALDEATH_TRIDENT,
     },
-    { d: 'M60 64 C40 84 36 110 44 132 M100 64 C120 84 124 110 116 132' },
-    {
-      d: 'M60 64 L116 132 M100 64 L44 132 M50 86 L110 86 M44 110 L116 110',
-      role: 'soft',
-    },
-    {
-      d: 'M44 132 l6 10 M116 132 l-4 12 M80 132 v8',
-      role: 'soft',
-      dashed: true,
-    },
-    shadow(80, 190, 30),
+    shadow(80, 178, 66),
   ],
 
-  // A whip coiled on the floor, its tip cracking in the air.
+  // Her whip coiled on the floor, the pitchfork it hides in lying in front,
+  // the lash in her colour rising to crack. She takes it to a Marine in
+  // episode 432.
   'sadi': [
-    { d: 'M28 168 l30 -14 l4 8 l-30 14z' },
-    { d: ellipse(92, 158, 34, 10), role: 'accent' },
-    { d: ellipse(92, 150, 28, 8), role: 'accent' },
+    { d: ellipse(78, 158, 36, 10) },
+    { d: ellipse(84, 152, 34, 9) },
+    { d: ellipse(80, 146, 30, 8) },
     {
-      d: 'M62 158 C70 150 78 150 92 142 C120 124 96 90 118 66 C126 58 134 52 140 40',
-      role: 'accent',
+      d: 'M52 160 C58 166 72 168 80 168 M58 152 C64 158 76 160 84 160',
+      role: 'soft',
     },
-    { d: 'M140 40 l8 -6 M140 40 l10 2 M140 40 l2 -10', role: 'soft' },
-    shadow(88, 178, 48),
-  ],
-
-  // A spiked club leaning over a belt with a hoof-shaped buckle.
-  'minotaurus': [
+    { d: 'M104 164 l6 -4 M110 158 l6 -4 M108 152 l6 -4', role: 'ambient' },
+    { d: 'M24 182 L118 168 M25 186 L119 172 M24 182 C20 183 20 186 25 186' },
     {
-      d: 'M94 174 C98 150 104 110 106 72 C108 54 132 54 130 74 C126 110 110 150 102 176z',
-    },
-    {
-      d: dots([
-        [112, 70],
-        [124, 74],
-        [116, 90],
-        [108, 102],
-        [120, 104],
-      ]),
-    },
-    { d: 'M20 140 h76 v14 h-76z' },
-    {
-      d: dots([
-        [28, 147],
-        [36, 147],
-      ]),
+      d: 'M118 168 L122 172 M122 170 L146 166 M122 170 C128 162 138 160 146 160 M122 170 C128 178 138 178 146 174',
       role: 'soft',
     },
     {
-      d: 'M46 154 v-18 c0 -10 12 -10 12 0 v18 M58 154 v-18 c0 -10 12 -10 12 0 v18',
+      d: 'M108 144 C122 130 112 108 124 92 C132 80 140 74 140 56 C140 46 134 40 128 38',
       role: 'accent',
     },
-    shadow(78, 186, 54),
+    { d: 'M124 32 l-6 -6 M130 30 l2 -8 M120 38 l-8 0', role: 'soft' },
+    shadow(80, 192, 56),
+  ],
+
+  // His club, a spiked iron ball on a short haft, lying on the floor with the
+  // far side of the ball hatched, the spikes in his colour. He swings it at
+  // Luffy and Bon Kurei in episode 433.
+  'minotaurus': [
+    { d: circle(112, 136, 20) },
+    { d: 'M92 136 C96 142 128 142 132 136', role: 'soft' },
+    { d: 'M118 152 l8 -8 M110 155 l12 -12 M124 146 l5 -5', role: 'ambient' },
+    {
+      d: 'M132 135.3 L141.5 141.2 L130.5 143.5 M126.6 149.6 L129.2 160.6 L119.8 154.4 M112.7 156 L106.8 165.5 L104.5 154.5 M98.4 150.6 L87.4 153.2 L93.6 143.8 M92 136.7 L82.5 130.8 L93.5 128.5 M97.4 122.4 L94.8 111.4 L104.2 117.6 M111.3 116 L117.2 106.5 L119.5 117.5 M125.6 121.4 L136.6 118.8 L130.4 128.2',
+      role: 'accent',
+    },
+    { d: 'M93 133 L24 150 M95 141 L26 158' },
+    { d: 'M24 150 C16 152 18 160 26 158 M88 134 L90 143' },
+    { d: 'M36 147 l2 8 M44 145 l2 8 M52 143 l2 8', role: 'soft' },
+    { d: 'M62 149 l8 -2 M72 146.5 l8 -2 M82 144 l6 -1.5', role: 'ambient' },
+    shadow(78, 176, 64),
   ],
 
   // The Headquarters building, a castle of stacked curved roofs on a broad
@@ -1868,21 +1875,33 @@ export const summitWarArt = {
     ...SEA.slice(1),
   ],
 
-  // A red band knotted with its tails loose, and a string of square stones
-  // hanging under it.
+  // His great red band, knotted and laid on the floor with its tails loose,
+  // and beside it his necklace of square stones. He comes out of the fog with
+  // the fleet in episode 460.
   'doma': [
-    { d: 'M30 78 v12 C30 108 130 108 130 90 v-12', role: 'accent' },
-    { d: ellipse(80, 78, 50, 14), role: 'accent' },
-    { d: 'M126 84 l16 -8 v18z' },
     {
-      d: 'M140 88 C152 104 146 122 152 138 M136 94 C142 112 134 128 138 146',
+      d: 'M14 118 C14 108 96 108 96 118 C96 128 14 128 14 118 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M14 118 C12 124 16 128 16 132 C26 142 84 142 94 132 C94 128 96 124 96 118',
+      role: 'accent',
+    },
+    {
+      d: 'M24 128 C30 134 44 136 54 136 M64 128 l3 9 M38 126 l-2 8',
       role: 'soft',
     },
-    { d: 'M44 128 C56 166 104 166 116 128', role: 'soft' },
+    { d: 'M94 124 C102 116 112 118 112 124 C110 132 100 134 94 130' },
     {
-      d: `${polygon(56, 148, 6, 4)} ${polygon(80, 158, 6, 4)} ${polygon(104, 148, 6, 4)}`,
+      d: 'M110 122 C122 116 132 124 146 116 M110 128 C120 136 124 146 138 150',
+      role: 'soft',
     },
-    shadow(80, 186, 44),
+    { d: 'M80 134 l6 -5 M88 132 l5 -5', role: 'ambient' },
+    { d: 'M54 154 C70 172 110 176 148 160', role: 'soft' },
+    {
+      d: `${polygon(66, 164, 6, 4)} ${polygon(86, 171, 6, 4)} ${polygon(108, 172, 6, 4)} ${polygon(130, 167, 6, 4)}`,
+    },
+    shadow(80, 188, 66),
   ],
 
   // A giant's sabre snapped in two on the ground: the hilt with its knuckle
@@ -1915,33 +1934,54 @@ export const summitWarArt = {
     shadow(82, 178, 70),
   ],
 
-  // An icebreaker's iron-shod prow, and the floes it has split.
+  // Her icebreaker side on, turned a little toward us, the steel bow in her
+  // colour and the floes it has split tilting up round it. It cuts a road
+  // through the frozen bay in episode 465.
   'whitey-bay': [
-    { d: 'M18 118 H116 L148 134 L116 150 H26 Z' },
-    { d: 'M130 124 l6 4 l-4 2 l8 2 l-8 2 l4 2 l-6 4', role: 'accent' },
-    { d: 'M116 118 L148 134 L116 150', role: 'accent' },
-    { d: 'M60 118 V40' },
-    { d: 'M60 46 q30 20 0 56', role: 'soft' },
-    { d: 'M148 134 l6 -10 M148 134 l8 4 M146 140 l4 10', role: 'soft' },
-    { d: 'M4 172 l20 -6 l18 4 l-4 8 h-30z M100 174 l22 -8 l26 6 l-6 10 h-38z' },
-    { d: 'M4 158 h152', role: 'ambient' },
+    { d: 'M22 92 L150 100 V152 H52 C40 140 30 120 22 92' },
+    { d: 'M22 92 L44 84 L150 92 V100', role: 'soft' },
+    { d: 'M22 92 C30 120 40 140 52 152', role: 'accent' },
+    { d: 'M34 122 H150', role: 'soft' },
+    {
+      d: 'M64 150 l10 -10 M80 150 l10 -10 M96 150 l10 -10 M112 150 l10 -10 M128 150 l10 -10',
+      role: 'ambient',
+    },
+    { d: 'M96 95 V72 H132 V97 M100 80 H128', role: 'soft' },
+    { d: 'M114 72 V24 M114 30 C134 40 136 58 114 66' },
+    { d: 'M-4 152 H14 M150 152 H164', role: 'ambient' },
+    { d: 'M2 146 L16 130 L34 140 L28 156 Z M18 164 L44 156 L54 166 L28 174 Z' },
+    { d: 'M10 140 l6 4 M20 136 l6 4 M30 162 l8 -2', role: 'ambient' },
+    {
+      d: 'M60 152 l14 8 l18 -2 l10 6 M100 152 l16 6 l20 -2 M58 158 l-6 12',
+      role: 'soft',
+    },
+    shadow(90, 186, 62),
   ],
 
-  // A heavy cutlass driven into the frozen bay, cracks running from the
-  // blade.
+  // His huge curved sabre lying on the frozen bay, the cup guard in his
+  // colour, the far face of the blade hatched. He has it in hand in the charge
+  // across the ice, episode 475.
   'blenheim': [
-    { d: 'M78 28 V8 M86 28 V8 M78 8 h8' },
-    { d: 'M58 30 H106 M106 30 C114 20 104 8 86 8' },
+    { d: 'M60 136 C94 132 128 116 152 84 C134 120 100 142 62 148' },
+    { d: 'M66 141 C98 137 126 122 146 96', role: 'soft' },
     {
-      d: 'M72 30 H92 C96 70 96 110 84 150 C78 120 74 80 72 30z',
+      d: 'M98 141 l4 -6 M110 137 l4 -6 M122 131 l4 -6 M134 120 l4 -6',
+      role: 'ambient',
+    },
+    {
+      d: 'M58 122 C44 126 42 154 56 160 C64 156 66 130 58 122',
       role: 'accent',
     },
-    { d: 'M10 150 H150', role: 'soft' },
+    { d: 'M52 128 C48 136 48 150 52 156', role: 'accent' },
+    { d: 'M48 136 L20 146 M50 146 L22 156' },
+    { d: 'M28 144 l4 8 M36 141 l4 8 M44 138 l4 8', role: 'soft' },
+    { d: circle(17, 152, 5) },
+    { d: 'M0 170 H160', role: 'ambient' },
     {
-      d: 'M84 150 l-14 14 l-10 -4 l-18 16 M84 150 l18 10 l8 -6 l20 14 M84 150 l2 22',
+      d: 'M86 170 l-10 8 l-14 2 M86 170 l16 6 l6 8 M126 170 l10 10',
+      role: 'soft',
     },
-    { d: 'M20 170 l20 6 M118 176 l20 -6', role: 'ambient' },
-    shadow(84, 190, 40),
+    shadow(84, 186, 62),
   ],
 
   // A horned helmet cracked across the crown, its blue mane hanging behind.
@@ -1959,24 +1999,25 @@ export const summitWarArt = {
     shadow(80, 186, 48),
   ],
 
-  // A flintlock, the smoke still coming off the muzzle.
+  // A flintlock on the ground, the cock and frizzen on its lock, the grip
+  // hatched, smoke in his colour still curling off the muzzle. He shoots
+  // Porchemy with it in episode 494.
   'bluejam': [
-    { d: 'M40 80 h92 v12 h-92z' },
-    { d: 'M40 92 C34 110 28 128 34 150 h20 C52 130 58 110 64 92' },
-    { d: 'M56 80 l-8 -12 l6 -2 l8 12' },
-    { d: 'M64 92 q6 18 18 0', role: 'soft' },
+    { d: 'M58 132 L146 118 M59 138 L147 124' },
+    { d: ellipse(147, 121, 2, 3.5) },
     {
-      d: 'M134 84 c8 -8 18 -4 18 4 c8 0 10 10 2 14 c4 8 -6 14 -12 8',
-      role: 'accent',
+      d: 'M58 132 L46 134 C36 140 26 156 30 172 L44 172 C44 160 50 150 62 144 L100 138 L59 138',
     },
+    { d: 'M32 162 l8 -4 M34 168 l8 -4 M36 154 l8 -4', role: 'ambient' },
+    { d: 'M62 132 L58 120 C56 116 60 112 64 114 L66 120 M60 116 l6 -2' },
     {
-      d: dots([
-        [148, 68],
-        [154, 60],
-      ]),
-      role: 'ambient',
+      d: 'M72 130 V120 l6 -2 M70 132 h10 M108 125 v6 M130 121 v6',
+      role: 'soft',
     },
-    shadow(80, 170, 50),
+    { d: 'M66 144 C68 154 80 154 84 142 M72 144 l2 6' },
+    { d: 'M100 136 L144 128 M30 172 h14', role: 'soft' },
+    { d: 'M150 116 c4 -10 -4 -14 2 -22 c6 -8 -2 -14 4 -20', role: 'accent' },
+    shadow(86, 180, 60),
   ],
 
   // One spiked glove clenched in a fist, seen from the front: the four
@@ -2010,18 +2051,29 @@ export const summitWarArt = {
     shadow(82, 182, 46),
   ],
 
-  // An open dictionary with its ribbon hanging, and a short sword behind it.
+  // His thick dictionary standing in three-quarters, the spine in his colour,
+  // the far edge of the cover hatched, and in front the short sword he carries
+  // on his back. Both are with him from his first scenes with Dadan's bandits.
   'dogra': [
-    { d: 'M132 150 L146 40' },
-    { d: 'M124 146 l16 6 M132 150 l-3 22' },
-    { d: 'M20 120 L80 132 L140 120 V64 L80 76 L20 64z' },
-    { d: 'M80 76 V132' },
     {
-      d: 'M30 78 l40 8 M30 90 l40 8 M30 102 l40 8 M90 86 l40 -8 M90 98 l40 -8 M90 110 l40 -8',
+      d: 'M44 58 C38 58 36 62 36 66 V150 C36 154 38 158 44 158 H62 V58 Z',
+      role: 'accent',
+    },
+    { d: 'M62 58 L118 68 V164 L62 158' },
+    { d: 'M44 58 L100 66 L118 68 M100 66 V68', role: 'soft' },
+    { d: 'M38 80 H62 M38 136 H62', role: 'soft' },
+    { d: 'M70 72 l40 7 M70 150 l40 7', role: 'soft' },
+    {
+      d: 'M104 84 l8 -4 M104 100 l8 -4 M104 116 l8 -4 M104 132 l8 -4 M104 148 l8 -4',
+      role: 'ambient',
+    },
+    { d: 'M30 178 L132 162 M31 182 L133 166 M132 162 L140 163 L133 166' },
+    { d: ellipse(38, 179, 3, 7) },
+    {
+      d: 'M34 180 L14 183 M35 184 L15 187 M20 183 l1 4 M26 182 l1 4',
       role: 'soft',
     },
-    { d: 'M76 132 v36 l5 -6 l5 6 v-36', role: 'accent' },
-    shadow(76, 182, 50),
+    shadow(80, 192, 60),
   ],
 
   // His blue pointed hat on its brim, the far side of the cone hatched; beside
@@ -2062,27 +2114,25 @@ export const summitWarArt = {
     { d: ellipse(62, 146, 16, 5), role: 'accent' },
     shadow(84, 176, 56),
   ],
-  // A shackle hanging open below a row of cell bars, one bar bent aside, the
-  // end of its chain snapped.
+  // An empty cell in Impel Down: the bars running away from us and, on the
+  // floor, a heavy shackle, closed and empty, chained to a ring at their foot.
+  // Sengoku remembers him as the only man ever to break out, episode 425.
   'shiki': [
     {
-      d: 'M34 16 V96 M60 16 V96 M86 16 V40 q14 16 0 32 V96 M112 16 V96 M138 16 V96 M26 16 H146 M26 96 H146',
+      d: 'M20 24 V140 M44 30 V136 M68 36 V132 M92 42 V128 M116 48 V124 M140 54 V120 M14 22 L146 52 M14 142 L146 118',
       role: 'soft',
     },
+    { d: 'M24 70 l6 2 M48 74 l6 2 M24 100 l6 2', role: 'ambient' },
+    { d: 'M124 128 a6 3 0 1 0 12 0', role: 'soft' },
     {
-      d: 'M100.4 115.1 A26 26 0 1 0 100.4 132.9 M92.9 117.8 A18 18 0 1 0 92.9 130.2 M100.4 115.1 L92.9 117.8 M100.4 132.9 L92.9 130.2',
+      d: `${ellipse(122, 137, 7, 3.5)} ${ellipse(112, 143, 3.5, 6)} ${ellipse(102, 149, 7, 3.5)}`,
     },
-    { d: [ellipse(80, 156, 4, 7), ellipse(90, 166, 7, 4)].join(' ') },
-    { d: 'M100 169 a4 7 0 1 0 5 3', role: 'accent' },
-    {
-      d: dots([
-        [112, 174],
-        [116, 182],
-        [108, 186],
-      ]),
-      role: 'accent',
-    },
-    shadow(80, 188, 48),
+    { d: ellipse(64, 158, 34, 13), role: 'accent' },
+    { d: ellipse(64, 156, 22, 7), role: 'accent' },
+    { d: 'M30 158 V164 C30 180 98 180 98 164 V158', role: 'soft' },
+    { d: 'M92 152 h10 v12 h-10 z' },
+    { d: 'M84 172 l6 -4 M76 175 l6 -4', role: 'ambient' },
+    shadow(66, 188, 44),
   ],
 } satisfies Drawings
 
