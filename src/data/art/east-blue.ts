@@ -709,36 +709,17 @@ export const eastBlueArt = {
     ...SEA.slice(2),
   ],
 
-  // A tamer's whip, the lash still travelling: the handle with its cap seen
-  // end on, the grip wrapped in diamonds and its underside in shade, the
-  // thong tapering off it into a loop and a frayed tip. It stands for the
-  // title he is introduced with, the Beast Tamer, in episode 6 (chapter 12);
-  // Orange Town never shows him using one.
+  // A tamer's whip, the lash still travelling.
   'mohji': [
-    { d: 'M26.1 37.1 L57 74.4 M33.9 30.9 L63 69.6' },
-    { d: 'M26.1 37.1 A5 2.2 142 1 0 33.9 30.9 A5 2.2 142 1 0 26.1 37.1' },
-    { d: 'M25.5 36.3 C19.3 28.5 27.1 22.3 33.3 30.1' },
-    { d: 'M32.7 45.5 L44.7 44.6 L41.1 56.1 L53.1 55.2', role: 'soft' },
-    { d: 'M52.7 69.1 L58.9 64.2 M55.8 72.9 L61.8 68.1' },
-    { d: 'M40.5 39.3 L36.9 50.8 L48.9 49.9 L45.3 61.4', role: 'soft' },
+    { d: 'M22 32 L48 54 M16 40 L42 62' },
+    { d: 'M16 40 L22 32 M42 62 L48 54' },
+    { d: 'M22 42 l8 6 M28 50 l8 6', role: 'soft' },
     {
-      d: 'M53.3 57.6 L52.4 61.3 M55.6 60.7 L54.7 64.4 M57.9 63.8 L57.1 67.5',
-      role: 'ambient',
-    },
-    {
-      d: 'M56.9 73.9 C58.7 76.7 64.4 85.5 67.5 91 C70.6 96.4 73.3 101.8 75.3 106.7 C77.3 111.6 78.8 116.4 79.4 120.7 C80 125 80 128.9 79 132.5 C77.9 136.1 75.8 139.3 73 142.4 C70.2 145.4 64.8 148.1 62.1 150.9 C59.5 153.8 58 158.1 57.2 159.5',
+      d: 'M45 58 C80 88 40 110 44 134 C48 158 96 160 120 138 C140 120 132 96 116 96',
       role: 'accent',
     },
-    {
-      d: 'M63.1 70.1 C64.7 73.1 70.1 82.3 73 88.1 C75.8 93.8 78.4 99.5 80.2 104.9 C82 110.2 83.3 115.4 83.6 120.2 C84 125 83.6 129.6 82.1 133.5 C80.6 137.5 77.7 141 74.5 144.1 C71.3 147.1 65.9 149.3 63 151.9 C60.2 154.5 58.4 158.3 57.5 159.6',
-      role: 'accent',
-    },
-    {
-      d: 'M57.3 159.6 C57.6 160.8 57.3 164.8 59 167 C60.7 169.2 63.5 171.3 67.4 172.7 C71.3 174.2 76.5 175.4 82.4 175.9 C88.3 176.3 96.6 176.2 102.9 175.4 C109.2 174.5 115.3 172.9 120.2 170.7 C125.1 168.6 129.2 165.7 132.2 162.6 C135.3 159.4 137.5 155.7 138.5 151.8 C139.6 148 139.7 143.7 138.6 139.4 C137.5 135 133.1 128.2 132 126',
-      role: 'accent',
-    },
-    { d: 'M132 126 l-6 -4 M132 126 l-3 -7 M132 126 l1.5 -7', role: 'soft' },
-    shadow(92, 186, 40),
+    { d: 'M116 96 c-10 0 -14 8 -8 12', role: 'accent' },
+    shadow(88, 176, 44),
   ],
 
   // The pet-food shop he guards, shut and still standing: the long plank sign
@@ -756,7 +737,7 @@ export const eastBlueArt = {
     { d: 'M20 38 L28 32 H128 V58 L120 64 M120 38 L128 32', role: 'accent' },
     { d: 'M20 47 H120 M20 55.5 H120', role: 'soft' },
     { d: 'M56 150 V110 A14 14 0 0 1 84 110 V150' },
-    { d: 'M70 96 V150 M66 128 h0.01 M74 128 h0.01', role: 'soft' },
+    { d: `M70 96 V150 ${dot(75, 128)}`, role: 'soft' },
     { d: 'M34 102 H50 V130 H34 Z M90 102 H106 V130 H90 Z' },
     { d: 'M42 102 V130 M34 116 H50 M98 102 V130 M90 116 H106', role: 'soft' },
     { d: 'M28 78 H12 M14 78 v4 M24 78 v4 M10 82 H28 V96 H10 Z' },
@@ -835,8 +816,8 @@ export const eastBlueArt = {
     { d: 'M64 70 V156 M55.5 68 L39 78.6 M89 68.4 L104.6 74.6', role: 'soft' },
     { d: 'M58 86 h12 M58 100 h12 M58 114 h12', role: 'soft' },
     { d: 'M38.5 128 C58 137 92 137 113.5 128', role: 'soft' },
-    { d: 'M10 174 L118 162 M10 179 L118 167' },
-    { d: 'M118 160 V169 M123 159.6 V168.6' },
+    { d: 'M34 171 L118 161 M34 178 L118 168 M34 171 Q30 174.5 34 178' },
+    { d: 'M118 159 V170 M123 158.6 V169.6' },
     {
       d: 'M123 160 C134 155 146 158 154 163 C146 168 134 170 123 168',
       role: 'soft',
@@ -853,32 +834,35 @@ export const eastBlueArt = {
     { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
     ...SEA.slice(1),
   ],
-  // His slingshot, the band drawn back with a lead ball in its pouch and a
-  // second ball on the ground: the fork with the thickness of its arms, the
-  // far arm in shade, the grip wrapped. Kabuto is drawn from 274 and Kuro
+  // His slingshot, the band drawn straight back with a lead ball in its
+  // pouch and a second ball on the ground, its far side in shade: the fork
+  // with the thickness of its arms, the far face of the arm and the grip
+  // hatched, the grip wrapped. Kabuto is drawn from 274 and Kuro
   // Kabuto from 517, in `eastBlueRedrawn`.
   'usopp': [
     {
       d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
     },
-    { d: 'M76.5 134 V172 Q80 176 83.5 172 V134' },
+    {
+      d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+    },
+    {
+      d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
+      role: 'ambient',
+    },
     {
       d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
       role: 'soft',
     },
     {
-      d: 'M104.6 78 l7 -1 M102.6 88 l7.2 0.2 M99 97.6 l7.2 1.4 M94 106 l6.8 2.4',
-      role: 'ambient',
-    },
-    { d: 'M47.4 74 l3.4 1 M48.8 84 l3.6 1.2', role: 'soft' },
-    {
-      d: 'M52 70 C52 100 54 126 54 142 M108 70 C96 100 76 126 62 146 M52 142 C50 152 62 154 64 146',
+      d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
       role: 'accent',
     },
-    { d: circle(57, 147, 4.5) },
-    { d: circle(108, 178, 4) },
-    { d: 'M106 176.4 q1 -1.4 2.6 -1.4', role: 'soft' },
-    shadow(84, 186, 30),
+    { d: circle(80, 102, 6) },
+    { d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2', role: 'ambient' },
+    { d: circle(110, 177, 6) },
+    { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
+    shadow(88, 188, 32),
   ],
 
   // A mansion on a hill, its gate at the foot, a path down to the shore.
@@ -897,9 +881,9 @@ export const eastBlueArt = {
   ],
 
   // Her window in the mansion, open: the wall turned a little, the depth of
-  // the jamb in shade, both casements swung out, the curtain drawn back to
-  // one side, the sill, and the branch outside where Usopp sits to tell her
-  // his stories (chapter 24, episode 9).
+  // the jamb in shade, both casements swung out and the curtain drawn back to
+  // one side as the episode 9 frames show them, the sill, and the branch
+  // outside where Usopp sits to tell her his stories (chapter 24, episode 9).
   'kaya': [
     { d: 'M48 56 L104 64 V132 L48 138 Z' },
     { d: 'M48 56 L56 62 V132 M56 62 L104 68', role: 'soft' },
@@ -930,10 +914,10 @@ export const eastBlueArt = {
       role: 'ambient',
     },
   ],
-  // The Cat Claws: one black glove in shade, the fingers bent over the
-  // knuckles, a full-length blade from the tip of each finger and the thumb,
-  // and the cuff open below. He takes them out of a bag to cut Merry down in
-  // episode 12 (chapter 28).
+  // The Cat Claws: one black glove, its far half in shade, the fingers bent
+  // over the knuckles, a full-length blade from the tip of each finger and
+  // the thumb, and the cuff open below. He takes them out of a bag to cut
+  // Merry down in episode 12 (chapter 28).
   'kuro': [
     {
       d: 'M45.3 115.7 Q22.8 99.7 3.7 87.8 Q20.2 104.2 42.7 120.3 M58.3 96.8 Q42.1 60.5 27.5 31.6 Q37.5 63 53.7 99.2 M72.6 91.5 Q68.3 52.1 63.4 20.1 Q63.2 53 67.4 92.5 M88.6 92.4 Q96.8 53.5 102 21.5 Q91.6 52.8 83.4 91.6 M102.3 99.1 Q122.1 64.7 137 35.9 Q117.4 62.5 97.7 96.9',
@@ -945,7 +929,7 @@ export const eastBlueArt = {
     { d: 'M50 104 C48 118 50 136 58 148 H100 C106 134 108 118 104 102' },
     { d: 'M50 116 C42 114 38 118 40 124 C42 128 48 128 51 126', role: 'soft' },
     {
-      d: 'M55.3 112.9 L59.8 105.1 M56.6 124.6 L67.9 104.9 M58 136.1 L76 104.9 M62.1 143.1 L84.1 104.9 M70.1 143.1 L92.1 105 M78.2 143.1 L100.2 105 M86.4 142.9 L100.3 118.9 M94.4 143 L98.2 136.5',
+      d: 'M79.6 112.7 L84.1 104.9 M79.5 126.9 L92.1 105 M79.6 140.7 L100.2 105 M86.4 142.9 L100.3 118.9 M94.4 143 L98.2 136.5',
       role: 'ambient',
     },
     {
@@ -995,7 +979,7 @@ export const eastBlueArt = {
     shadow(80, 182, 50),
   ],
 
-  // Two of their wooden swords lying side by side: flat blades with their
+  // Two of their wooden swords leaning side by side: flat blades with their
   // thickness, a stub of a guard, nicks and grain in the wood, and one grip
   // wrapped. Ninjin and Piiman hold them up at Usopp in episode 9 (chapter
   // 23).
