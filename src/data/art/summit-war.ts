@@ -361,7 +361,10 @@ export const summitWarArt = {
       d: 'M12.4 143.1 C14 154 30 160 46 160 M103.6 143.1 C102 154 86 160 70 160',
     },
     { d: 'M46 160 H70 L66 154 H50 Z' },
-    { d: 'M86 152 l6 -5 M94 146 l6 -5 M20 150 l6 -4', role: 'ambient' },
+    {
+      d: 'M78 157 L82 151 M87 156 L91 149.6 M96 152.5 L99 146.6',
+      role: 'ambient',
+    },
     { d: 'M99 104 C106 96 114 86 120 72 M106 128 C114 112 120 94 124 72' },
     { d: 'M104 114 q6 -2 10 -6 M110 100 q5 -2 8 -6', role: 'soft' },
     {
@@ -403,8 +406,9 @@ export const summitWarArt = {
 
   // His harpoon gun in three-quarters: the stock joined to a boxy receiver,
   // its far side hatched, the barrel, and four harpoons out of the muzzle,
-  // the barbs in his colour. He first appears in episode 386, and the gun is
-  // out in episodes 388 and 389 (ch. 494–495).
+  // the barbs in his colour; the rifle-like gun he loads with four harpoons
+  // at a time. He arrives in episode 386 (ch. 491), and his face is out from
+  // under the mask by episode 388 (ch. 494).
   'duval': [
     { d: 'M4 166 L40 140 V154 L16 178 Z M4 166 L8 172 L16 178' },
     { d: 'M14 166 l10 -7 M22 170 l10 -7', role: 'ambient' },
