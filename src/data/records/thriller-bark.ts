@@ -230,8 +230,8 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 345,
       revealedAtChapter: 455,
-      // Kept at 455, past his debut chapter: a chapter is lowered only where
-      // a leak needs it.
+      // Kept at 455, past his debut chapter: it holds chapters 451 to 454 at
+      // episode 344, and lowering it needs its own check of what they reach.
       name: { it: 'John', en: 'John' },
       summary: {
         it: 'Un capitano pirata famigerato in vita, rialzato dalla tomba come zombie con due spade ancora conficcate nella pancia, che si trascina dietro agli altri tra un singhiozzo e un sorso dalla bottiglia.',
@@ -382,8 +382,8 @@ export const thrillerBark: Saga = {
       chronicle: thrillerBarkChronicles['gecko-moria'],
       role: { it: 'Padrone di Thriller Bark', en: 'Master of Thriller Bark' },
       log: {
-        it: 'Governa la nave-isola dall’albero maestro, con un esercito di cadaveri cuciti che si muovono grazie alle ombre rubate ai vivi. Afferra un’ombra dal pavimento, la stacca con un paio di forbici e il suo padrone perde i sensi; chi resta senza ombra svanisce alla prima luce del sole. Fa parte della Flotta dei Sette, e ai suoi ufficiali chiede di farlo diventare Re dei Pirati.',
-        en: 'He rules the island-ship from its main mast, with an army of stitched corpses that move with shadows taken from the living. He grabs a shadow off the floor, cuts it loose with a pair of scissors, and its owner falls unconscious; whoever lives on without one vanishes in the first sunlight. He sits among the Seven Warlords, and tells his officers to make him Pirate King.',
+        it: 'Governa la nave-isola dall’albero maestro, con un esercito di cadaveri cuciti che si muovono grazie alle ombre rubate ai vivi. Afferra un’ombra dal pavimento, la stacca con un paio di forbici e il suo padrone perde i sensi; chi resta senza ombra svanisce alla prima luce del sole. Fa parte della Flotta dei Sette, e ai suoi ufficiali dice quanto vuole diventare Re dei Pirati.',
+        en: 'He rules the island-ship from its main mast, with an army of stitched corpses that move with shadows taken from the living. He grabs a shadow off the floor, cuts it loose with a pair of scissors, and its owner falls unconscious; whoever lives on without one vanishes in the first sunlight. He sits among the Seven Warlords, and tells his officers how badly he wants to be Pirate King.',
       },
       // Episode 349 adapts chapter 455, where he is first seen whole.
       status: [{ episode: 349, chapter: 455, value: 'alive' }],

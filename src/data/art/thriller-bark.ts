@@ -191,9 +191,10 @@ export const thrillerBarkArt = {
   ],
 
   // His giant scissors on their side and nearly shut, the near blade's
-  // serrated edge in his colour, the far blade hatched, closing on a strip of
-  // shadow peeled up off the floor and cut straight across. He cuts Luffy's
-  // shadow loose with them at 349 (ch. 455), where he is first seen whole.
+  // serrated edge in his colour, the far blade hatched. A strip of shadow,
+  // hatched because it is black, lies on the floor and is pulled up into the
+  // jaws, cut straight across. He cuts Luffy's shadow loose with them at 349
+  // (ch. 455), where he is first seen whole.
   'gecko-moria': [
     { d: 'M70 92 L150 70 L152 78 L74 98', role: 'accent' },
     {
@@ -210,11 +211,15 @@ export const thrillerBarkArt = {
     { d: ellipse(34, 78, 17, 12) },
     { d: ellipse(34, 122, 17, 12) },
     {
-      d: 'M10 172 C42 170 72 162 98 148 C112 140 118 124 116 104 M14 184 C48 182 82 174 108 158 C124 146 130 126 128 102',
+      d: 'M16 170 C46 168 76 160 100 146 C112 138 117 124 115 104 L127 102 C130 126 124 146 108 158 C84 174 50 182 18 184 C10 184 8 172 16 170 Z',
       role: 'ambient',
       dashed: true,
     },
-    { d: 'M116 104 L128 102', role: 'ambient' },
+    { d: 'M115 104 L127 102', role: 'ambient' },
+    {
+      d: 'M24 182 l6 -12 M38 181 l6 -12 M52 179 l6 -12 M66 176 l6 -12 M80 172 l7 -13 M94 166 l7 -13 M106 158 l8 -12 M115 148 l8 -10 M120 136 l7 -6 M121 122 l6 -3',
+      role: 'ambient',
+    },
   ],
 
   // His ankle-length coat standing open and empty, in one outline from the
