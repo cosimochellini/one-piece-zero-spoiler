@@ -764,6 +764,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 261,
+      chapter: 372,
       value: {
         title: { it: 'Coltelli da cucina', en: 'Kitchen knives' },
         body: {
@@ -786,6 +787,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 261,
+      chapter: 373,
       value: {
         title: { it: 'Quattro zampe', en: 'Four legs' },
         body: {
@@ -808,6 +810,7 @@ export const waterSevenChronicles = {
   't-bone': [
     {
       episode: 261,
+      chapter: 371,
       value: {
         title: { it: 'Ad angolo retto', en: 'At right angles' },
         body: {
