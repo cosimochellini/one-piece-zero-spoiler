@@ -104,12 +104,12 @@ const CHEW_VEST: Stroke[] = [
     role: 'soft',
   },
   {
-    d: 'M33 88 Q46.6 91 60.1 88 M79.9 88 Q93.4 91 107 88 M33 100 Q47.5 103 62 100 M78 100 Q92.5 103 107 100 M33 112 Q47.5 115 62 112 M78 112 Q92.5 115 107 112 M33 124 Q47.5 127 62 124 M78 124 Q92.5 127 107 124 M33 136 Q47.5 139 62 136 M78 136 Q92.5 139 107 136',
+    d: 'M47.5 64 Q51.5 66 55.6 64 M84.4 64 Q88.5 66 92.5 64 M40 76 Q49 79 57.9 76 M82.1 76 Q91 79 100 76 M33 88 Q46.6 91 60.1 88 M79.9 88 Q93.4 91 107 88 M33 100 Q47.5 103 62 100 M78 100 Q92.5 103 107 100 M33 112 Q47.5 115 62 112 M78 112 Q92.5 115 107 112 M33 124 Q47.5 127 62 124 M78 124 Q92.5 127 107 124 M33 136 Q47.5 139 62 136 M78 136 Q92.5 139 107 136',
     role: 'soft',
   },
 ]
 
-/** His string of beads, laid in a loop beside the vest, and its tooth. */
+/** His string of beads, laid in a loop beside the vest. */
 const CHEW_BEADS = (
   [
     [148, 170],
@@ -130,8 +130,6 @@ const CHEW_BEADS = (
 )
   .map(([x, y]) => circle(x, y, 2.2))
   .join(' ')
-const CHEW_TOOTH =
-  'M120 179 C120 186 123 191 128 193 C126.5 187 127.5 183 128 179 Z'
 
 /** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
@@ -1068,13 +1066,12 @@ export const eastBlueArt = {
     { d: 'M92 116 C98 142 102 164 108 186 L94 190 C88 166 84 142 82 116 Z' },
   ],
   // His striped vest, open down the front, and beside it the string of beads
-  // with a tooth that he wears with it. He brings Usopp to Arlong Park in it
+  // that he wears with it. He brings Usopp to Arlong Park in it
   // in 33 (ch. 73), where Arlong first calls him by name. The water he spits
   // is drawn from 34, in `eastBlueRedrawn`.
   'chew': [
     ...CHEW_VEST,
     { d: CHEW_BEADS, role: 'accent' },
-    { d: CHEW_TOOTH, role: 'accent' },
     shadow(124, 186, 30),
   ],
   // A watering can standing among the mandarin trees.
@@ -1588,7 +1585,6 @@ export const eastBlueRedrawn: Redrawings = {
       value: [
         ...CHEW_VEST,
         { d: CHEW_BEADS },
-        { d: CHEW_TOOTH },
         shadow(124, 186, 30),
         {
           d: 'M154 22 C154 14 144 13 134 16 C124 19 112 20 100 22 C112 24 124 25 134 28 C144 31 154 30 154 22 Z',

@@ -2043,8 +2043,8 @@ export const eastBlue: Saga = {
     'chew': {
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
       log: {
-        it: 'Intercala quello che dice con lo schiocco di un bacio. Dopo che Usop ha attaccato Arlong, è lui a catturarlo e a portarlo ad Arlong Park davanti al suo capitano. Quando Usop giura di non avere niente a che fare con Zoro, gli dice di smetterla con le bugie: ha attaccato Arlong, e ormai nessuno può salvarlo.',
-        en: 'He punctuates what he says with a kissing sound. After Usopp attacks Arlong, he is the one who catches him and brings him into Arlong Park to his captain. When Usopp swears he has nothing to do with Zoro, he tells him to stop lying: he attacked Arlong, and nobody can save him now.',
+        it: 'Intercala quello che dice con lo schiocco di un bacio. Dopo che Usop ha attaccato Arlong, è lui a catturarlo e a portarlo ad Arlong Park davanti al suo capitano. Quando Usop sostiene di non sapere dove sia Zoro, gli dice di smetterla con le bugie: ha attaccato Arlong, e ormai nessuno può salvarlo.',
+        en: 'He punctuates what he says with a kissing sound. After Usopp attacks Arlong, he is the one who catches him and brings him into Arlong Park to his captain. When Usopp says he doesn’t know where Zoro is, he tells him to stop lying: he attacked Arlong, and nobody can save him now.',
       },
       affiliation: [
         {
