@@ -295,15 +295,43 @@ export const eastBlueArt = {
     },
     { d: 'M45.1 45 L89 92.2 M114.8 50.9 L69.4 96.6', role: 'soft' },
   ],
-  // Three swords in their sheaths, the middle one in green, each guard seen
-  // as an oval across its sheath and each grip wrapped in diamonds. Luffy
-  // fetches them from the base in episode 2. The third is drawn again as
-  // Shusui from 362 and as Enma from 956, in `eastBlueRedrawn`.
+  // The post in the yard of the Shells Town base that he is tied to, seen
+  // square in 3/4 with its far face hatched, against the base's wall: rope
+  // wound three times round it at the chest and twice lower down, knotted in
+  // front with its two ends hanging. No figure, and no swords: the manga
+  // shows how many he carries only in chapter 5, so the three swords follow
+  // in `eastBlueRedrawn`.
   'roronoa-zoro': [
-    ...sheath(-22, 'soft'),
-    ...sheath(0, 'accent'),
-    ...sheath(22, 'soft'),
-    shadow(80, 176, 40),
+    {
+      d: 'M62 150 V40 H92 V150 M62 40 L74 33 H104 L92 40 M104 33 V143 L92 150',
+    },
+    {
+      d: 'M92 52 l12 -7 M92 60 l12 -7 M92 98 l12 -7 M92 106 l12 -7 M92 114 l12 -7 M92 142 l12 -7',
+      role: 'ambient',
+    },
+    { d: 'M70 46 V58 M88 92 V108 M72 134 V148 M86 132 V146', role: 'soft' },
+    {
+      d: 'M59 64 Q77 71 95 66 L105 59 M59 71 Q77 78 95 73 L105 66 M59 78 Q77 85 95 80 L105 73',
+      role: 'accent',
+    },
+    {
+      d: `${ellipse(76, 86, 4.5, 3.2)} M73 88 C69 97 71 104 66 112 M79 88 Q84 94 82 100`,
+      role: 'accent',
+    },
+    {
+      d: 'M59 118 Q77 125 95 120 L105 113 M59 125 Q77 132 95 127 L105 120',
+      role: 'accent',
+    },
+    {
+      d: 'M66 112 l-3 3 M66 112 l0 4 M82 100 l3 2 M82 100 l-1 4',
+      role: 'soft',
+    },
+    { d: 'M6 112 H62 M104 112 H154' },
+    {
+      d: 'M6 126 H62 M104 126 H154 M6 138 H62 M104 138 H154 M22 112 V126 M46 112 V126 M34 126 V138 M58 126 V138 M120 112 V126 M144 112 V126 M110 126 V138 M134 126 V138 M22 138 V150 M46 138 V150 M120 138 V150 M144 138 V150',
+      role: 'ambient',
+    },
+    { d: 'M6 150 H62 M98 150 H154', role: 'ambient' },
   ],
 
   // A Marine base: a crenellated tower with its pennant, and the post in the
@@ -1521,6 +1549,21 @@ export const eastBlueRedrawn: Redrawings = {
     },
   ],
   'roronoa-zoro': [
+    // His three swords in their sheaths, the middle one in green, each guard
+    // seen as an oval across its sheath and each grip wrapped in diamonds.
+    // Luffy brings all three from the base, and Zoro says he uses three, on
+    // the last page of chapter 5; episode 3 is the first after the threshold
+    // that shows them.
+    {
+      episode: 3,
+      chapter: 5,
+      value: [
+        ...sheath(-22, 'soft'),
+        ...sheath(0, 'accent'),
+        ...sheath(22, 'soft'),
+        shadow(80, 176, 40),
+      ],
+    },
     // Shusui: the third sword now Ryuma's black blade, its guard an octofoil
     // and its lacquered sheath hatched dark. Ryuma throws it to Zoro at the
     // end of 362 (ch. 467).
