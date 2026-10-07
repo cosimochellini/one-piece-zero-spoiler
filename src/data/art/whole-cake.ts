@@ -1666,28 +1666,22 @@ export const wholeCakeArt = {
     shadow(80, 178, 40),
   ],
 
-  // His bicorne set down on the ground, plain on its front: the back panel
-  // showing past the front, the far side hatched and the trim along the
-  // brim. Beside it rises the tornado the hat blows at Niji, its far side
-  // hatched. The tornado is anime only, his trump card at 855.
+  // A bicorne hat with a tornado twisting up out of its crown.
   'charlotte-nusstorte': [
     {
-      d: 'M2 118 C10 136 20 134 26 120 C34 100 44 90 56 90 C68 90 78 100 86 120 C92 134 102 136 110 118 C108 140 90 152 56 152 C22 152 4 140 2 118 Z',
+      d: 'M14 106 C40 140 120 140 146 106 C120 118 104 96 80 96 C56 96 40 118 14 106 Z',
     },
-    { d: 'M66 90 C78 90 88 100 94 114 C98 124 104 128 110 118', role: 'soft' },
-    { d: 'M90 106 l6 -3 M94 118 l6 -3', role: 'ambient' },
-    { d: 'M10 136 C26 146 86 146 102 136', role: 'soft' },
+    { d: 'M40 118 C62 126 98 126 120 118', role: 'soft' },
+    { d: circle(80, 108, 5), role: 'accent' },
     {
-      d: 'M114 150 C108 132 118 120 114 100 C110 80 106 56 88 30 M122 150 C130 130 136 114 140 94 C144 72 150 52 156 30',
+      d: 'M40 22 C58 50 72 70 78 94 M124 22 C106 50 90 70 84 94',
       role: 'accent',
     },
     {
-      d: 'M88 30 C100 22 142 22 156 30 M114 130 c6 2 10 0 14 -4 M114 108 c8 3 16 1 24 -5 M110 84 c10 3 22 1 30 -5 M100 58 c14 3 32 1 50 -6',
-      role: 'accent',
+      d: 'M40 22 C62 32 102 32 124 22 M50 40 C68 48 96 48 114 40 M60 58 C72 64 90 64 102 58 M70 76 C76 80 86 80 92 76',
+      role: 'soft',
     },
-    { d: 'M146 56 l5 -6 M142 80 l5 -6 M134 104 l4 -5', role: 'ambient' },
-    { d: 'M126 154 c6 -3 12 1 18 -2', role: 'ambient' },
-    shadow(80, 166, 72),
+    shadow(80, 150, 58),
   ],
 
   // Her silent blowgun in three quarters, slung on its strap, its underside
@@ -1835,8 +1829,9 @@ export const wholeCakeArt = {
   'napoleon': [...BIG_MOM_BICORNE, shadow(80, 176, 62)],
   // His cigar in three quarters, the lit end seen face on with its ash line,
   // the wrapper winding round it and the underside hatched, smoke rising.
-  // Beside it lies a cut rose like the one on his left lapel. Both are on
-  // him when he arrives at the Tea Party at 830.
+  // Beside it lies a cut rose like the one on his left lapel, a plain
+  // cupped bloom with its bud showing. Both are on him when he arrives at
+  // the Tea Party at 830.
   'lu-feld': [
     {
       d: 'M27.4 129.9 L125.4 97.9 C134.9 94.8 140.1 111 130.6 114.1 L32.6 146.1',
@@ -1855,17 +1850,17 @@ export const wholeCakeArt = {
     },
     { d: 'M24 124 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
     {
-      d: 'M-14 0 C-18 16 -8 26 0 26 C8 26 18 16 14 0',
+      d: 'M-15 -4 C-16 14 -8 24 0 24 C8 24 16 14 15 -4',
       role: 'accent',
       transform: LU_FELD_ROSE_AT,
     },
     {
-      d: 'M-14 0 C-10 -4 -6 -3 -4 0 M14 0 C10 -4 6 -3 4 0 M-12 6 C-6 6 -2 14 4 22 M-8 1 C-8 -10 8 -12 8 1 C8 -4 2 -6 0 -2',
+      d: 'M-15 -4 C-8 4 8 4 15 -4 M-8 1 C-8 -10 8 -10 8 1',
       role: 'accent',
       transform: LU_FELD_ROSE_AT,
     },
     {
-      d: 'M-3 25 C-8 27 -12 25 -15 20 M3 25 C8 27 12 25 15 20 M0 26 V54 M0 38 C-8 34 -14 36 -16 42 C-10 44 -4 42 0 38',
+      d: 'M0 24 V52 M0 38 C-8 34 -14 36 -16 42 C-10 44 -4 42 0 38',
       role: 'soft',
       transform: LU_FELD_ROSE_AT,
     },
