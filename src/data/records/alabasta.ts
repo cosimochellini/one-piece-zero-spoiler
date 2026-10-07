@@ -294,8 +294,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 133,
       name: { it: 'Wapol', en: 'Wapol' },
       summary: {
-        it: 'Un re tornato a reclamare un’isola che aveva abbandonato, con la corona storta e una bocca capace di mordere e inghiottire il metallo.',
-        en: 'A king come back to claim an island he abandoned, his crown askew and a mouth that bites through metal and swallows it.',
+        it: 'Un capitano pirata con la mascella di latta, che emerge accanto alla Going Merry cercando la rotta per il Regno di Drum, mangia una spada insieme alla carne infilzata e poi comincia a mangiarsi la nave.',
+        en: 'A pirate captain with a tin-plate jaw, who comes up beside the Going Merry looking for the way to Drum Kingdom, eats a sword along with the meat on it and then starts on the ship.',
       },
       visual: { art: 'wapol', tint: 'wine' },
     },
@@ -318,8 +318,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 135,
       name: { it: 'Dalton', en: 'Dalton' },
       summary: {
-        it: 'L’ex capo delle guardie di Drum, un uomo enorme con il mantello pesante e la scure, che difende i villaggi dal re tornato a riprenderseli.',
-        en: 'Drum’s former captain of the guard, a huge man in a heavy cloak with an axe, defending the villages from the king who has returned.',
+        it: 'Il capitano della guardia dell’isola di Drum, un uomo enorme con una grossa vanga nel fodero sulla schiena, che ordina ai pirati di andarsene e poi, quando chinano la testa, li accoglie.',
+        en: 'The captain of Drum Island’s guard, a huge man with an outsized spade sheathed on his back, who orders the pirates away and then, once they bow their heads, takes them in.',
       },
       visual: { art: 'dalton', tint: 'teal' },
     },
@@ -571,8 +571,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Miss Doublefinger', en: 'Miss Doublefinger' },
       summary: {
-        it: 'Un’agente elegante che fa spuntare spine d’acciaio da qualunque punto del corpo, e le usa come trampoli per camminare più in alto.',
-        en: 'An elegant agent who grows steel spikes from any part of her body, and uses them as stilts to walk above the ground.',
+        it: 'La proprietaria dello Spiders Cafe, che si fa chiamare Paula e serve il tè agli agenti, finché non ferma una lite fra due di loro e si rivela un’agente anche lei.',
+        en: 'The owner of the Spiders Cafe, who goes by Paula and serves the agents their tea, until she stops a fight between two of them and turns out to be an agent herself.',
       },
       visual: { art: 'miss-doublefinger', tint: 'magenta' },
     },
@@ -583,8 +583,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Mister 4', en: 'Mr. 4' },
       summary: {
-        it: 'Un agente lentissimo con una mazza da baseball, affiancato da un cane-fucile che sputa una palla esplosiva ogni quattro minuti.',
-        en: 'An extremely slow agent with a baseball bat, paired with a dog-shaped gun that spits an exploding ball every four minutes.',
+        it: 'Un agente lentissimo con una mazza da baseball, che porta con sé un fucile a forma di cane e lascia parlare la sua compagna.',
+        en: 'An extremely slow agent with a baseball bat, who carries a dog-shaped gun and leaves the talking to his partner.',
       },
       visual: { art: 'mr-4', tint: 'blue' },
     },
@@ -595,8 +595,8 @@ export const alabasta: Saga = {
       revealedAtChapter: 170,
       name: { it: 'Miss Merry Christmas', en: 'Miss Merry Christmas' },
       summary: {
-        it: 'Un’agente anziana che si trasforma in talpa e scava gallerie sotto la città, comparendo alle spalle di chi la cerca in superficie.',
-        en: 'An older agent who turns into a mole and digs tunnels under the city, surfacing behind whoever is looking for her above.',
+        it: 'Un’agente non più giovane, con il mal di schiena e la lingua svelta, che allo Spiders Cafe prende il tè più forte e parla al posto del suo compagno lentissimo.',
+        en: 'An older agent with a bad back and a quick tongue, who takes the strongest tea at the Spiders Cafe and does the talking for her slow partner.',
       },
       visual: { art: 'miss-merry-christmas', tint: 'red' },
     },
@@ -949,14 +949,22 @@ export const alabasta: Saga = {
       ],
     },
     'wapol': {
-      role: { it: 'Re in esilio', en: 'King in exile' },
+      role: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
       log: {
-        it: 'È tornato su un’isola che aveva lasciato quando i pirati sono arrivati, e pretende che gli venga restituita. La sua bocca può mordere e inghiottire qualunque cosa, metallo compreso, e quello che mangia gli esce di nuovo trasformato in altro. Dell’isola parla come di una proprietà, e di chi ci vive come di gente che gli deve ancora qualcosa.',
-        en: 'He has come back to an island he left when pirates arrived, and demands it be handed to him again. His mouth can bite through and swallow anything, metal included, and what he eats comes back out as something else. He speaks of the island as a possession, and of the people on it as debtors.',
+        it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Finito in mare, affonda come un’incudine, e la ciurma deve ripescarlo.',
+        en: 'His ship, the Bliking, comes up beside the Going Merry and his men board her, while he asks the crew for the way to Drum Kingdom. One of his men says he ate a devil fruit that lets him eat anything: he eats a sword along with the meat on it, then starts eating the ship. Knocked into the sea, he sinks like an anvil, and his crew has to fish him out.',
       },
+      // Episode 79 shows a pirate captain looking for Drum Kingdom; Dalton
+      // tells the Straw Hats that Wapol was its king and fled in episode 80,
+      // which adapts chapter 133 (page 20).
       affiliation: [
         {
           episode: 79,
+          value: { it: 'Capitano del Bliking', en: 'Captain of the Bliking' },
+        },
+        {
+          episode: 80,
+          chapter: 133,
           value: { it: 'Re di Drum, in esilio', en: 'King of Drum, in exile' },
         },
         { episode: 91, value: { it: 'Deposto', en: 'Deposed' } },
@@ -968,7 +976,7 @@ export const alabasta: Saga = {
           },
         },
       ],
-      origin: [{ episode: 79, value: DRUM_KINGDOM }],
+      origin: [{ episode: 80, chapter: 133, value: DRUM_KINGDOM }],
       epithet: [
         { episode: 79, value: { it: 'Wapol di Latta', en: 'Tin-Plate' } },
       ],
@@ -990,24 +998,22 @@ export const alabasta: Saga = {
     },
     'dalton': {
       role: {
-        it: 'Ex capo della guardia di Drum',
-        en: 'Former captain of Drum’s guard',
+        it: 'Capitano della guardia dell’isola di Drum',
+        en: 'Captain of Drum Island’s guard',
       },
       log: {
-        it: 'È un uomo enorme, con il mantello pesante e la scure, e conosce ogni villaggio dell’isola e ogni persona che ci abita. Ha servito il re fino al giorno in cui non è più riuscito a giustificarlo, e da allora si è messo fra il trono e la gente. Quando il re è tornato, è sceso da solo ad affrontarlo.',
-        en: 'He is a huge man in a heavy cloak with an axe, and he knows every village on the island and everyone living in them. He served the king until the day he could no longer justify him, and since then has stood between the throne and the people. When the king came back, he went down alone to face him.',
+        it: 'È un uomo enorme con una lunga tunica bordata di pelliccia e una grossa vanga nel fodero sulla schiena, e gli abitanti fanno quello che dice. Prima ordina ai pirati di lasciare l’isola, poi li porta a casa sua a Bighorn quando chinano la testa e chiedono un medico. Racconta loro della strega che vive nel castello sulla montagna, dei cinque pirati che hanno devastato il paese e del re che è fuggito davanti a loro, il cui ritorno è ciò che l’isola teme di più.',
+        en: 'He is a huge man in a long fur-lined tunic, with an outsized spade in a sheath on his back, and the villagers do as he says. He first orders the pirates off the island, then takes them to his own house in Bighorn once they bow their heads and ask for a doctor. He tells them about the witch who lives in the castle on the mountain, about the five pirates who ravaged the country, and about the king who fled from them, whose return the island fears most of all.',
       },
+      // No election entry at 91: the episode has the villagers ask him what
+      // to do, and only the chapter 243 cover shows him elected.
       affiliation: [
         {
           episode: 80,
           value: {
-            it: 'Ex capitano della guardia di Drum',
-            en: 'Former captain of Drum’s guard',
+            it: 'Capitano della guardia dell’isola di Drum',
+            en: 'Captain of Drum Island’s guard',
           },
-        },
-        {
-          episode: 91,
-          value: { it: 'Capo eletto di Drum', en: 'Drum’s elected leader' },
         },
       ],
       origin: [{ episode: 80, value: DRUM_ISLAND }],
@@ -1409,8 +1415,8 @@ export const alabasta: Saga = {
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'Si presenta con i tacchi alti e una sigaretta, e sembra la più tranquilla dell’organizzazione finché non le spuntano spine d’acciaio dalle mani, dalle spalle e dai talloni. Le usa anche come trampoli, per camminare sopra la testa di chi la insegue. Lavora accanto all’agente di grado più alto e ne accetta i silenzi.',
-        en: 'She arrives in high heels with a cigarette and seems the calmest person in the organisation until steel spikes come out of her hands, her shoulders and her heels. She uses them as stilts too, to walk above the heads of whoever is chasing her. She works beside the highest-ranked agent and puts up with his silences.',
+        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e ha un tè pronto per ogni agente che arriva. Quando l’agente di grado più alto entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli, e solo allora la chiamano con il suo nome da agente. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
+        en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and has a tea ready for each agent as they arrive. When the highest-ranked agent comes in through the wall and the dancer goes for him, she is the one who stops them, and only then is she called by her agent name. She works beside him, and she passes on the order to leave and meet the boss.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [
@@ -1420,16 +1426,16 @@ export const alabasta: Saga = {
     'mr-4': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È lentissimo: impiega quattro secondi a rispondere a una domanda e altrettanti a decidere di muoversi, e questo lo rende difficile da prevedere. Combatte con una mazza da baseball e con un cane-fucile che ogni quattro minuti sputa una palla esplosiva. La collega con cui lavora parla per tutti e due.',
-        en: 'He is extremely slow: it takes him four seconds to answer a question and as long again to decide to move, which makes him hard to read. He fights with a baseball bat and with a dog-shaped gun that spits an exploding ball every four minutes. The colleague he works with does the talking for both of them.',
+        it: 'È lentissimo: gli serve molto tempo anche solo per dire poche parole. Porta con sé una mazza da baseball e un fucile a forma di cane, allo Spiders Cafe gli servono un tè alla mela, e ride dello spettacolo del ballerino. La collega con cui lavora parla per tutti e due, e dà a lui la colpa del suo mal di schiena.',
+        en: 'He is extremely slow: it takes him a long time to get out even a few words. He carries a baseball bat and a dog-shaped gun, is served an apple tea at the Spiders Cafe, and laughs at the dancer’s show. The colleague he works with does the talking for both of them, and blames him for her bad back.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
     },
     'miss-merry-christmas': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'È una donna anziana e piccola che si trasforma in talpa e scava sotto la città più in fretta di quanto si cammini in superficie. Fa crollare il terreno sotto i piedi dei nemici e riemerge alle loro spalle ridendo. Lavora con un agente lentissimo e gli tiene il ritmo parlando al posto suo.',
-        en: 'She is a small elderly woman who turns into a mole and digs beneath the city faster than anyone walks above it. She collapses the ground under her enemies and comes up behind them laughing. She works with an extremely slow agent and keeps his pace by speaking for him.',
+        it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dandone la colpa al suo compagno. Parla in fretta, accetta il tè nero forte che le offrono e risponde a tono a chi le dà della vecchia. Lavora con un agente lentissimo e parla al posto suo.',
+        en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and blaming her partner for it. She talks fast, takes the strong black tea she is offered, and snaps back at anyone who calls her old. She works with an extremely slow agent and speaks for him.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
