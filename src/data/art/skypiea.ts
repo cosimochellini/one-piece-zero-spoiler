@@ -44,7 +44,11 @@ const SENGOKU_GOAT: Stroke[] = [
   { d: 'M-2 182 H158', role: 'ambient', dashed: true },
 ]
 
-/** The bar Doflamingo's strings hang from, and its hook. */
+/**
+ * The bar Doflamingo's strings hang from, and its hook, drawn only from 733
+ * with the strings cut short: the strings are not named or explained before
+ * chapter 724 (ep. 655), so the first drawing has none.
+ */
 const DOFLAMINGO_BAR: Stroke[] = [
   { d: 'M44 42 L116 32' },
   { d: 'M80 37 V26', role: 'ambient' },
@@ -52,8 +56,8 @@ const DOFLAMINGO_BAR: Stroke[] = [
 
 /**
  * Doflamingo's sunglasses in 3/4: the rims with their depth, the bridge, one
- * temple folded, the dark lenses hatched. Hung from the strings in the first
- * drawing, fallen and cracked from 733.
+ * temple folded, the dark lenses hatched. Drawn upright here, they appear
+ * only from 733, tipped onto the ground by `fallenOff()` and cracked.
  */
 const DOFLAMINGO_GLASSES: Stroke[] = [
   {
@@ -369,18 +373,45 @@ export const skypieaArt = {
     shadow(70, 186, 46),
   ],
 
-  // His sunglasses in 3/4, hung by the rims from strings like a puppet's: the
-  // rims have depth, one temple is folded and the dark lenses are hatched. He
-  // works two Marines like puppets at the Warlords' meeting (151). The
-  // strings cut and the glasses fallen and cracked from 733, in
-  // `skypieaRedrawn`.
+  // His pink feather coat on its own, open and turned 3/4, the way he wears
+  // it when he arrives for the Warlords' meeting (233, ep. 151): the feathered
+  // lapels in his colour, plumes along the sleeves and the hem, the inside of
+  // the back hatched. No strings: they are not named or explained before
+  // chapter 724 (ep. 655). The strings cut and his glasses fallen and cracked
+  // from 733, in `skypieaRedrawn`.
   'donquixote-doflamingo': [
-    ...DOFLAMINGO_BAR,
     {
-      d: 'M50 41 L32 98 M110 33 L124 92 M62 40 L76 92 M98 35 L96 90',
+      d: 'M68 52 Q88 46 106 50 M68 52 Q62 50.2 57.1 64.2 L64.7 63.3 Q58.6 61.6 53.8 75.5 L61.3 74.7 Q55.3 72.9 50.5 86.9 L58 86 Q51.7 86.4 51.8 100.6 L58.7 97.3 Q52.4 97.7 52.5 111.9 L59.3 108.7 Q53 109 53.2 123.2 L60 120 M106 50 Q111.3 51 109.4 64.4 L104 60.7 Q109.3 61.7 107.4 75.1 L102 71.3 Q107.3 72.3 105.4 85.8 L100 82 Q105.4 81.8 106.4 94.3 L100.3 92 Q105.7 91.8 106.7 104.3 L100.7 102 Q106.1 101.8 107.1 114.3 L101 112',
+      role: 'accent',
+    },
+    {
+      d: 'M68 52 C72 74 70 98 60 120 M106 50 C104 70 104 92 101 112',
       role: 'soft',
     },
-    ...DOFLAMINGO_GLASSES,
+    {
+      d: 'M68 52 C56 56 44 62 36 70 Q30.7 68.9 26.6 86.3 L33.2 84 Q27.9 82.9 23.8 100.3 L30.4 98 Q25.1 96.9 21 114.3 L27.6 112 Q22.3 110.9 18.2 128.3 L24.8 126 Q19.5 124.9 15.4 142.3 L22 140 Q20.6 147.1 32.9 150.3 L32 142 Q30.6 149.1 42.9 152.3 L42 144',
+    },
+    { d: 'M46 96 L42 144', role: 'soft' },
+    {
+      d: 'M40 146 Q35.8 144.4 30.3 157.6 L36 156.7 Q31.8 155.1 26.3 168.2 L32 167.3 Q27.8 165.8 22.3 178.9 L28 178',
+    },
+    {
+      d: 'M106 50 C114 54 122 58 128 64 Q132.4 63.2 135.9 80.1 L130.4 77.6 Q134.8 76.8 138.3 93.7 L132.8 91.2 Q137.2 90.4 140.7 107.3 L135.2 104.8 Q139.6 104 143.1 120.9 L137.6 118.4 Q142 117.6 145.5 134.5 L140 132 Q141.5 138.1 131.7 141.3 L132 134 Q133.5 140.1 123.7 143.3 L124 136',
+    },
+    { d: 'M120 88 L124 134', role: 'soft' },
+    {
+      d: 'M128 136 Q132.4 134.9 136.2 148.1 L130.7 146.7 Q135 145.6 138.9 158.8 L133.3 157.3 Q137.7 156.2 141.5 169.5 L136 168',
+    },
+    {
+      d: 'M28 178 Q28.6 170.8 44.9 171.3 L41 179 Q41.6 171.8 57.9 172.3 L54 180 Q54.6 172.8 70.9 173.3 L67 181 Q67.6 173.8 83.9 174.3 L80 182 Q78.3 175 95.6 169.9 L94 178.5 Q92.3 171.5 109.6 166.4 L108 175 Q106.3 168 123.6 162.9 L122 171.5 Q120.3 164.5 137.6 159.4 L136 168',
+    },
+    { d: 'M60 120 L56 180 M101 112 L106 174' },
+    {
+      d: 'M72 72 l28 -19 M72 92 l30 -20 M66 116 l36 -24 M62 140 l40 -27 M60 162 l44 -29 M64 178 l40 -27',
+      role: 'ambient',
+    },
+    { d: 'M46 128 l4 7 M30 98 l4 7 M114 140 l4 6 M42 164 l4 6', role: 'soft' },
+    shadow(82, 192, 56),
   ],
 
   // His open jacket with the sash knotted at the waist, the way he stands on
@@ -1212,7 +1243,10 @@ function underTheBiggerHat(strokes: Stroke[]): Stroke[] {
 /** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
 const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 
-/** Doflamingo's glasses, fallen to the ground under the cut strings. */
+/**
+ * Doflamingo's glasses, fallen to the ground under the cut strings: the
+ * upright `DOFLAMINGO_GLASSES` laid down, as they appear from 733.
+ */
 function fallenOff(strokes: Stroke[]): Stroke[] {
   return strokes.map((stroke) => ({ ...stroke, transform: FALLEN }))
 }
@@ -1332,9 +1366,10 @@ export const skypieaRedrawn: Redrawings = {
     },
   ],
 
-  // The strings cut short under the bar, and the same glasses fallen beneath
-  // them with both lenses cracked: Luffy's King Kong Gun shatters them and
-  // they fall away from him at 733 (ch. 790).
+  // The strings cut short under the bar, and his glasses fallen beneath them
+  // with both lenses cracked: Luffy's King Kong Gun shatters them and they
+  // fall away from him at 733 (ch. 790). The first drawing, his feather coat,
+  // has no strings, which are named only from chapter 724 (ep. 655).
   'donquixote-doflamingo': [
     {
       episode: 733,
