@@ -1613,9 +1613,8 @@ export const summitWarArt = {
   ],
 
   // One of her heart-shaped earrings on its hook, the heart in her colour
-  // with its thickness showing and the edge that turns away hatched. She
-  // wears them under the bubble from her first scene, episode 391
-  // (chapter 497).
+  // and the edge that turns away hatched. She wears them at the auction
+  // house in episode 394 (chapter 501), as she has since her first scene.
   'shalria': [
     { d: 'M78 30 C70 22 60 30 66 40 C70 46 78 46 80 54' },
     { d: circle(80, 58, 4) },
@@ -1623,11 +1622,11 @@ export const summitWarArt = {
       d: 'M80 76 C72 62 50 62 50 84 C50 104 72 118 80 132 C88 118 110 104 110 84 C110 62 88 62 80 76 Z',
       role: 'accent',
     },
-    {
-      d: 'M110 84 C112 70 104 64 96 64 M110 84 C116 92 114 104 106 114 C98 124 92 130 86 138 L80 132',
-    },
     { d: 'M80 62 V66 M60 80 C62 72 68 70 72 72', role: 'soft' },
-    { d: 'M106 96 l6 -2 M104 108 l6 -3 M98 120 l5 -4', role: 'ambient' },
+    {
+      d: 'M108 72 l5 -2 M110 84 l6 0 M108 96 l6 2 M102 108 l5 3 M94 118 l4 4 M86 126 l3 5',
+      role: 'ambient',
+    },
     shadow(84, 170, 32),
   ],
 

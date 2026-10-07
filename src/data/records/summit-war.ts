@@ -1335,8 +1335,8 @@ export const summitWar: Saga = {
         en: 'Member of the Heart Pirates',
       },
       log: {
-        it: 'È un orso polare che sta in piedi su due zampe, con una tuta arancione e piccoli stivali marroni. A Sabaody sta alle spalle di Trafalgar Law, il capitano dei Pirati Heart, quando Law chiede a X Drake quante persone ha ucciso.',
-        en: 'He is a polar bear who stands on two legs, in an orange boiler suit and small brown boots. At Sabaody he stands behind Trafalgar Law, the captain of the Heart Pirates, when Law asks X Drake how many people he has killed.',
+        it: 'È un orso polare che sta in piedi su due zampe, con una tuta arancione e piccoli stivali marroni. A Sabaody è uno degli uomini intorno a Trafalgar Law, il capitano dei Pirati Heart.',
+        en: 'He is a polar bear who stands on two legs, in an orange boiler suit and small brown boots. At Sabaody he is one of the crew around Trafalgar Law, the captain of the Heart Pirates.',
       },
       affiliation: [
         {
@@ -2095,8 +2095,8 @@ export const summitWar: Saga = {
     'tsuru': {
       role: { it: 'Viceammiraglio della Marina', en: 'Marine vice admiral' },
       log: {
-        it: 'Al quartier generale della Marina, prima dell’esecuzione, dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci. Quando la flotta alleata di Barbabianca esce dalla nebbia e di lui non c’è traccia, si chiede se la Marina non abbia sbagliato schieramento.',
-        en: 'At Marine headquarters, before the execution, she tells Garp it is not his fault, and he answers that women are very sweet at times like this. When Whitebeard’s allied fleet comes out of the fog and he himself is nowhere to be seen, she wonders whether the Marines have got their lineup wrong.',
+        it: 'Al quartier generale della Marina, prima dell’esecuzione, dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci. Quando la flotta alleata di Barbabianca esce dalla nebbia e di lui non c’è traccia, dice che forse hanno sbagliato schieramento.',
+        en: 'At Marine headquarters, before the execution, she tells Garp it is not his fault, and he answers that women are very sweet at times like this. When Whitebeard’s allied fleet comes out of the fog and he himself is nowhere to be seen, she says that maybe they got the wrong lineup.',
       },
       affiliation: [
         {
