@@ -230,8 +230,11 @@ export const eastBlue: Saga = {
     {
       id: 'yasopp',
       kind: 'character',
-      revealedAtEpisode: 4,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 9,
+      revealedAtChapter: 25,
+      // Seen in the tavern at 4 and in chapter 1, where his name is only
+      // written on his bandana. Luffy first says it to Usopp at 9 (chapter
+      // 25), over the flashback that tells everything his texts say.
       name: { it: 'Yasop', en: 'Yasopp' },
       summary: {
         it: 'Il tiratore della ciurma del Rosso, capace di colpire una formica a cento passi, che parla del figlio lasciato a casa a chiunque passi.',
@@ -401,7 +404,7 @@ export const eastBlue: Saga = {
       id: 'kaya',
       kind: 'character',
       revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtChapter: 24,
       name: { it: 'Kaya', en: 'Kaya' },
       summary: {
         it: 'La ragazza malata della villa sulla collina, sola da quando i genitori sono morti, che ogni mattina ascolta le bugie di un ragazzo dal naso lungo.',
@@ -412,8 +415,11 @@ export const eastBlue: Saga = {
     {
       id: 'kuro',
       kind: 'character',
-      revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 12,
+      revealedAtChapter: 28,
+      // Seen as Klahadore from 9 (chapter 23) and called Kuro at 10 (chapter
+      // 26), but his texts and drawing show the bladed glove he first puts
+      // on to cut Merry down, at 12 (chapter 28).
       name: { it: 'Kuro', en: 'Kuro' },
       summary: {
         it: 'Un maggiordomo impeccabile con gli occhiali sempre storti, che di notte infila la mano in un guanto con cinque lame lunghe come dita.',
@@ -424,8 +430,10 @@ export const eastBlue: Saga = {
     {
       id: 'jango',
       kind: 'character',
-      revealedAtEpisode: 9,
-      revealedAtChapter: 41,
+      revealedAtEpisode: 10,
+      revealedAtChapter: 26,
+      // Seen walking backwards at the end of 9 (chapter 25), first called by
+      // name when he meets Klahadore below the cliff at 10 (chapter 26).
       name: { it: 'Jango', en: 'Jango' },
       summary: {
         it: 'Un ipnotizzatore con gli occhiali a forma di cuore, che fa oscillare un anello davanti agli occhi di chiunque e spesso addormenta anche sé stesso.',
@@ -439,8 +447,7 @@ export const eastBlue: Saga = {
       revealedAtEpisode: 13,
       revealedAtChapter: 31,
       // Seen unnamed at 11 and 12, first called by name when Kaya finds him cut down at 13. The manga
-      // names him at 27, but his texts tell chapter 31, the one episode 13 adapts. The log says "his
-      // young mistress" because Kaya opens only at 41.
+      // names him at 27, but his texts tell chapter 31, the one episode 13 adapts.
       name: { it: 'Merry', en: 'Merry' },
       summary: {
         it: 'Il maggiordomo della villa, con una testa a forma di pecora, che viene trovato ferito e dice alla sua giovane padrona chi è stato.',
@@ -467,8 +474,9 @@ export const eastBlue: Saga = {
       id: 'buchi',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 41,
-      // Rounded up to 41, the chapter that files Jango, whom the text names.
+      revealedAtChapter: 32,
+      // Named and seen at 31; his texts tell the fight with Zoro in 32, which
+      // episode 13 adapts too.
       name: { it: 'Buchi', en: 'Buchi' },
       summary: {
         it: 'Un pirata del Gatto Nero enorme e pesante, l’altra metà dei fratelli Nyaban di guardia alla nave, che salta in aria e piomba sul nemico con tanta forza da spaccare il terreno.',
@@ -480,8 +488,9 @@ export const eastBlue: Saga = {
       id: 'sham',
       kind: 'character',
       revealedAtEpisode: 13,
-      revealedAtChapter: 41,
-      // Rounded up to 41, the chapter that files Jango, whom the text names.
+      revealedAtChapter: 32,
+      // Named and seen at 31; his texts tell the fight with Zoro in 32, which
+      // episode 13 adapts too.
       name: { it: 'Sham', en: 'Sham' },
       summary: {
         it: 'Un pirata magro e ingobbito, con le orecchie da gatto in testa e i guanti artigliati, uno dei due fratelli Nyaban di guardia alla nave del Gatto Nero, che fa il vigliacco per avvicinarsi.',
@@ -1258,7 +1267,7 @@ export const eastBlue: Saga = {
       },
       affiliation: [
         {
-          episode: 4,
+          episode: 9,
           value: {
             it: 'Pirati del Rosso, tiratore scelto',
             en: 'Red Hair Pirates, sniper',
@@ -1293,8 +1302,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Buggy Pirates',
       },
       log: {
-        it: 'Ha svuotato Orange Town a cannonate e ci ha piantato un tendone da circo, con un domatore, un acrobata e un leone al seguito. Il suo corpo si separa in pezzi che volano da soli, cosa che rende inutile tagliarlo. Odia ogni parola che assomigli a «naso», e la sua ciurma ha imparato a non pronunciarla.',
-        en: 'He emptied Orange Town with cannon fire and pitched a circus tent in it, a lion tamer, an acrobat and a lion in tow. His body comes apart into pieces that fly on their own, which makes cutting him pointless. He hates any word that sounds like “nose”, and his crew has learned not to say it.',
+        it: 'La sua ciurma tiene Orange Town, e gli abitanti si sono chiusi in un rifugio fuori dalle case. Odia ogni parola che assomigli a «naso», e la sua ciurma ha imparato a non pronunciarla. Usa volentieri il cannone: si dice che una volta abbia raso al suolo un’intera città perché un bambino aveva riso del suo naso.',
+        en: 'His crew holds Orange Town, and its people are hiding in a shelter away from their houses. He hates any word that sounds like “nose”, and his crew has learned not to say it. He is quick with his cannon: they say he once levelled a whole town because a boy laughed at his nose.',
       },
       status: [
         { episode: 5, value: 'alive' },
@@ -1338,7 +1347,9 @@ export const eastBlue: Saga = {
         },
       ],
       epithet: [{ episode: 5, value: { it: 'Il Clown', en: 'the Clown' } }],
-      devilFruit: [{ episode: 5, value: ['chop-chop-fruit'] }],
+      // His power shows at chapter 9, but the fruit is named only once Zoro
+      // has cut him apart, at chapter 11 (episode 5).
+      devilFruit: [{ episode: 5, chapter: 11, value: ['chop-chop-fruit'] }],
       bounty: [
         { episode: 45, value: 15_000_000 },
         { episode: 1086, value: 3_189_000_000 },
@@ -1537,12 +1548,12 @@ export const eastBlue: Saga = {
         en: 'Captain of the Black Cat Pirates',
       },
       log: {
-        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si spinge gli occhiali sul naso con il palmo aperto, perché con le lame che porta non può usare le dita. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
-        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He pushes his glasses up with an open palm, because the blades he wears leave him no use of his fingers. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
+        it: 'Da tre anni serve il tè alla padrona della villa sotto il nome di Klahadore, e nessuno in paese ricorda chi fosse prima. Si spinge gli occhiali sul naso con il palmo della mano, mai con un dito. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
+        en: 'For three years he has served tea to the mistress of the mansion under the name Klahadore, and nobody in the village remembers who he was before. He pushes his glasses up with the palm of his hand, never with a finger. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
       },
       affiliation: [
         {
-          episode: 9,
+          episode: 12,
           value: {
             it: 'Pirati del Gatto Nero, capitano, nascosto da maggiordomo',
             en: 'Black Cat Pirates, captain, hidden as a butler',
@@ -1555,7 +1566,8 @@ export const eastBlue: Saga = {
       ],
       epithet: [
         {
-          episode: 9,
+          episode: 15,
+          chapter: 37,
           value: { it: 'Kuro dai Cento Piani', en: 'Kuro of a Hundred Plans' },
         },
       ],
@@ -1563,16 +1575,13 @@ export const eastBlue: Saga = {
     'jango': {
       role: { it: 'Ipnotizzatore', en: 'Hypnotist' },
       log: {
-        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio in avanscoperta per conto del suo capitano e passa le giornate a farsi notare nel modo peggiore, ballando in mezzo alla strada. Sotto la giacca tiene una fila di anelli affilati.',
-        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came to the village ahead of his captain and spends his days being noticed in the worst possible way, dancing in the middle of the road. Under his coat he keeps a row of sharpened rings.',
+        it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada, e i bambini si fermano a guardarlo. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
+        en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came into the village walking backwards down the middle of the road, and the children stop to stare. He has come to meet his old captain, who now lives there as a butler.',
       },
       affiliation: [
         {
-          episode: 9,
-          value: {
-            it: 'Pirati del Gatto Nero, primo ufficiale',
-            en: 'Black Cat Pirates, first mate',
-          },
+          episode: 10,
+          value: { it: 'Pirati del Gatto Nero', en: 'Black Cat Pirates' },
         },
       ],
     },
