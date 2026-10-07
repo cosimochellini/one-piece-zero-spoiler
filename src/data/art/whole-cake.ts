@@ -1302,10 +1302,7 @@ export const wholeCakeArt = {
       role: 'soft',
     },
     { d: 'M112 126 l4 -6 M120 120 l4 -7 M126 112 l3 -7', role: 'ambient' },
-    {
-      d: 'M66 134 C72 130 90 130 98 134 M74 128 l2 6 M84 127 l1 6 M92 128 l0 6',
-      role: 'soft',
-    },
+    { d: 'M66 134 C72 130 90 130 98 134', role: 'soft' },
     { d: 'M88 150 l6 -6 M96 148 l4 -5', role: 'ambient' },
     shadow(80, 166, 52),
   ],
@@ -1383,8 +1380,9 @@ export const wholeCakeArt = {
     ...SEA,
   ],
 
-  // Her little green bowler with a flower on its band, beside the crook-
-  // handled cane she leans on. She has both at 752.
+  // Her little green bowler with a pink flower on its band, beside the
+  // T-handled cane she leans on. Both are in her first panel, chapter 802,
+  // and with her at 752.
   'bakkin': [
     {
       d: 'M40 128 C40 122 46 122 50 126 C60 134 88 134 98 126 C102 122 108 122 108 128 C108 138 92 144 74 144 C56 144 40 138 40 128 Z',
@@ -1402,13 +1400,13 @@ export const wholeCakeArt = {
       d: 'M84 88 l6 -3 M90 96 l6 -3 M58 132 l3 4 M90 132 l-3 5',
       role: 'ambient',
     },
-    { d: 'M14 172 L122 154 M15 177 L123 159' },
+    { d: 'M140 176 L116 108 M145 174 L121 106' },
     {
-      d: 'M122 154 C134 150 142 142 138 134 C134 126 124 130 126 138 M123 159 C138 156 148 146 143 134 C138 122 120 126 121 138',
-      role: 'soft',
+      d: 'M106 108 H132 C136 108 136 102 132 102 H106 C102 102 102 108 106 108 Z',
+      transform: 'rotate(-20 119 105)',
     },
-    { d: 'M14 172 L10 174 L15 177', role: 'soft' },
-    shadow(74, 186, 58),
+    { d: 'M140 176 l5 -2 l2 6 l-5 2 Z', role: 'soft' },
+    shadow(80, 184, 64),
   ],
 
   // An elephant's trunk raised out of the sea, spraying water that falls back
@@ -1442,9 +1440,9 @@ export const wholeCakeArt = {
     },
     ...SEA,
   ],
-  // His black musketeer's hat in three quarters, the brim turned up at one
-  // side and the crown hatched, the curly plume as the accent. No rapier: he
-  // draws it only in chapter 809.
+  // His black musketeer's hat in three quarters, the broad brim showing its
+  // thickness and the crown hatched, the curly plume as the accent. No
+  // rapier: he draws it only in chapter 809.
   'shishilian': [
     {
       d: 'M8 120 C4 104 20 94 34 102 C50 112 104 114 128 108 C144 104 156 112 152 124 C146 138 116 146 80 146 C44 146 12 136 8 120 Z',
@@ -1483,11 +1481,11 @@ export const wholeCakeArt = {
       role: 'soft',
     },
     {
-      d: 'M118 86 H136 M118 98 H136 M118 110 H136 M118 122 H136 M118 102 H134',
+      d: 'M118 84 H136 M118 94 H136 M118 98 H136 M118 108 H136 M118 112 H136 M118 122 H136',
       role: 'accent',
     },
     {
-      d: `${ellipse(136, 92, 2.5, 6)} ${ellipse(136, 116, 2.5, 6)}`,
+      d: `${ellipse(136, 89, 2, 5)} ${ellipse(136, 103, 2, 5)} ${ellipse(136, 117, 2, 5)}`,
       role: 'accent',
     },
     {
@@ -1572,21 +1570,23 @@ export const wholeCakeArt = {
   // turning edge hatched, over the long sword Shirauo laid out beneath it. She
   // marches with both at 809.
   'amande': [
-    { d: ellipse(80, 102, 74, 15) },
-    { d: 'M8 104 C20 118 140 118 152 104', role: 'soft' },
-    { d: 'M64 98 C62 80 70 72 80 72 C90 72 98 80 96 98' },
+    { d: ellipse(80, 104, 74, 26) },
+    { d: 'M6 106 C14 140 146 140 154 106', role: 'soft' },
     {
-      d: 'M68 94 C65.3 89.6 70.7 89.6 68 94 M68 94 C71.4 90 73.1 95.2 68 94 M68 94 C72.8 96 68.4 99.2 68 94 M68 94 C67.6 99.2 63.2 96 68 94 M68 94 C62.9 95.2 64.6 90 68 94 M80 96 C77.3 91.6 82.7 91.6 80 96 M80 96 C83.4 92 85.1 97.2 80 96 M80 96 C84.8 98 80.4 101.2 80 96 M80 96 C79.6 101.2 75.2 98 80 96 M80 96 C74.9 97.2 76.6 92 80 96 M92 94 C89.3 89.6 94.7 89.6 92 94 M92 94 C95.4 90 97.1 95.2 92 94 M92 94 C96.8 96 92.4 99.2 92 94 M92 94 C91.6 99.2 87.2 96 92 94 M92 94 C86.9 95.2 88.6 90 92 94',
+      d: 'M62 106 C60 84 70 72 80 72 C90 72 100 84 98 106 M62 106 C70 112 90 112 98 106',
+    },
+    {
+      d: 'M68 103 C65.3 98.6 70.7 98.6 68 103 M68 103 C71.4 99 73.1 104.2 68 103 M68 103 C72.8 105 68.4 108.2 68 103 M68 103 C67.6 108.2 63.2 105 68 103 M68 103 C62.9 104.2 64.6 99 68 103 M80 105 C77.3 100.6 82.7 100.6 80 105 M80 105 C83.4 101 85.1 106.2 80 105 M80 105 C84.8 107 80.4 110.2 80 105 M80 105 C79.6 110.2 75.2 107 80 105 M80 105 C74.9 106.2 76.6 101 80 105 M92 103 C89.3 98.6 94.7 98.6 92 103 M92 103 C95.4 99 97.1 104.2 92 103 M92 103 C96.8 105 92.4 108.2 92 103 M92 103 C91.6 108.2 87.2 105 92 103 M92 103 C86.9 104.2 88.6 99 92 103',
       role: 'accent',
     },
-    { d: 'M126 112 l6 -6 M138 108 l6 -5 M114 115 l5 -5', role: 'ambient' },
-    { d: 'M28 158 C70 150 112 142 152 134 M28 163 C70 155 112 147 152 134' },
-    { d: ellipse(25, 160, 3, 8) },
+    { d: 'M120 126 l6 -6 M132 120 l6 -6 M142 112 l5 -5', role: 'ambient' },
+    { d: 'M28 164 C70 156 112 148 152 140 M28 169 C70 161 112 153 152 140' },
+    { d: ellipse(25, 166, 3, 8) },
     {
-      d: 'M22 158 L4 162 M22 163 L5 167 M8 162 l2 5 M14 160 l2 5',
+      d: 'M22 164 L4 168 M22 169 L5 173 M8 168 l2 5 M14 166 l2 5',
       role: 'soft',
     },
-    shadow(80, 180, 66),
+    shadow(80, 186, 66),
   ],
   // His beard, cream heaped round his chin and running down in strands to
   // drip off the hem, a small bow tie on it, the far side turning away. He
@@ -1679,7 +1679,7 @@ export const wholeCakeArt = {
       transform: FLAMPE_BLOWGUN_TILT,
     },
     {
-      d: 'M150 150 H172 L166 147 M150 150 C146 144 140 146 143 150 C140 154 146 156 150 150',
+      d: 'M150 150 H172 L166 147 M150 150 l-6 -4 M150 150 l-6 4 M155 150 l-6 -4 M155 150 l-6 4',
       role: 'accent',
       transform: FLAMPE_BLOWGUN_TILT,
     },
@@ -1749,41 +1749,45 @@ export const wholeCakeArt = {
     shadow(80, 184, 60),
   ],
 
-  // A heaped thundercloud, its dark base hatched, a lightning bolt striking
-  // the ground below it through the rain. No face.
+  // A thundercloud heaped in three quarters, the far puffs behind the near
+  // ones and its dark underside hatched, a lightning bolt striking the ground
+  // below it through the rain. No face.
   'zeus': [
     {
-      d: 'M24 100 C8 98 8 74 26 70 C22 50 46 38 60 52 C64 30 102 26 110 48 C124 38 148 50 142 72 C158 78 154 102 136 104 C130 116 108 118 98 110 C86 120 62 120 54 110 C42 116 26 112 24 100 Z',
-    },
-    { d: 'M28 96 C40 104 120 104 136 96', role: 'soft' },
-    {
-      d: 'M30 104 l6 -6 M42 108 l6 -7 M56 110 l6 -7 M70 110 l6 -7 M112 108 l6 -7 M124 104 l6 -6 M136 98 l6 -6',
-      role: 'ambient',
-    },
-    { d: 'M90 114 L76 142 H92 L76 178 L112 132 H96 L106 114', role: 'accent' },
-    { d: 'M36 128 v12 M50 136 v12 M120 128 v12 M134 136 v12', role: 'ambient' },
-    { d: 'M20 180 H140', role: 'ambient', dashed: true },
-    { d: 'M66 184 l-6 4 M84 184 l6 4', role: 'soft' },
-  ],
-
-  // A sun of compressed flame, its tongues licking round the rim and rays
-  // beyond, the lower side hatched. No face.
-  'prometheus': [
-    { d: circle(80, 96, 30) },
-    {
-      d: 'M114 96 C125.1 98.3 128 109.9 121.9 123.3 C116.6 115 112 114.7 107.5 116 C111.9 121.7 107 130.8 95.7 137.1 C97.2 130.4 94.9 129.9 90.5 128.3 C92.5 142.3 81.7 150 65.9 148.1 C73 138.4 72.1 132.2 69.5 128.3 C64.9 135.6 54.1 134 44.2 124.9 C51.9 123.7 52.4 120.6 52.5 116 C41 121.5 31.1 113.6 28.1 98.6 C38.4 102.3 43.2 99.7 46 96 C39.8 94 38.7 84 44 72.5 C46.2 78.5 48 77.3 52.5 76 C41.5 65 45.7 51.8 60.1 43.7 C60.3 56.7 65.1 62.1 69.5 63.7 C69.1 55.7 78.6 51 91.7 52.6 C86.4 57.6 87.9 59.8 90.5 63.7 C95.8 54.4 107.5 55.5 118.2 65.3 C109 67.4 107.6 71.4 107.5 76 C114.3 73.6 121.4 81.1 123.9 93.8 C118.1 90.2 116.8 92.3 114 96 Z',
-      role: 'accent',
-    },
-    { d: circle(80, 96, 20), role: 'soft' },
-    {
-      d: 'M94 110 l6 -6 M88 116 l8 -8 M100 100 l4 -4 M82 120 l6 -6',
-      role: 'ambient',
-    },
-    {
-      d: 'M80 34 V26 M28 70 l-8 -4 M132 70 l8 -4 M30 132 l-8 5 M130 132 l8 5',
+      d: 'M30 64 C28 46 50 36 64 48 C72 30 104 30 110 50 C122 42 140 52 136 70',
       role: 'soft',
     },
-    shadow(80, 186, 40),
+    {
+      d: 'M18 108 C4 104 6 82 22 80 C18 62 38 54 50 66 C52 50 78 46 88 62 C98 50 122 52 124 70 C142 70 152 94 136 106',
+    },
+    {
+      d: 'M50 66 C46 74 48 82 54 86 M88 62 C84 70 86 78 92 82 M124 70 C120 76 120 84 124 88',
+      role: 'soft',
+    },
+    { d: 'M18 108 C30 124 124 124 136 106' },
+    { d: 'M18 108 C34 98 120 96 136 106', role: 'soft' },
+    {
+      d: 'M30 116 l6 -9 M44 120 l6 -10 M58 121 l6 -10 M72 122 l6 -10 M100 121 l6 -10 M114 118 l6 -9 M126 113 l5 -7',
+      role: 'ambient',
+    },
+    { d: 'M84 120 L70 146 H86 L70 182 L106 134 H90 L100 120', role: 'accent' },
+    { d: 'M32 132 v12 M46 140 v12 M116 132 v12 M130 140 v12', role: 'ambient' },
+    { d: 'M20 186 H140', role: 'ambient', dashed: true },
+  ],
+
+  // A sun with flames licking out of its rim.
+  'prometheus': [
+    { d: circle(80, 96, 34) },
+    { d: circle(80, 96, 24), role: 'soft' },
+    {
+      d: 'M80 44 q-8 -14 0 -26 q8 12 0 26 M132 96 q14 -8 26 0 q-12 8 -26 0 M80 148 q8 14 0 26 q-8 -12 0 -26 M28 96 q-14 8 -26 0 q12 -8 26 0',
+      role: 'accent',
+    },
+    {
+      d: 'M117 59 l12 -12 M117 133 l12 12 M43 133 l-12 12 M43 59 l-12 -12',
+      role: 'accent',
+    },
+    shadow(80, 188, 40),
   ],
 
   // The pink bicorne Big Mom wears, in three quarters: the trim along its
