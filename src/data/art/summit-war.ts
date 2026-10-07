@@ -610,27 +610,29 @@ export const summitWarArt = {
     shadow(80, 182, 66),
   ],
 
-  // One of his gauntlets lying on its side, the open cuff towards the reader
-  // and its inside hatched, and on the axle at its end the long sickle blade
-  // curling over it in his colour, its edge bevelled. He has the blade on
-  // the gauntlet when Drake breaks up his fight with Urouge in episode 392
+  // One of his gauntlets lying on its side, the cuff flaring open towards the
+  // reader and its inside hatched, and on the axle at its end the long sickle
+  // blade curling over it in his colour, its edge bevelled. He has the blade
+  // on the gauntlet when Drake breaks up his fight with Urouge in episode 392
   // (chapter 498).
   'killer': [
-    { d: ellipse(34, 150, 7, 14) },
-    { d: 'M32 142 l4 -3 M31 150 l6 -5 M32 158 l5 -4', role: 'ambient' },
-    { d: 'M34 136 L76 133 M34 164 L76 167' },
+    { d: ellipse(32, 150, 8, 18) },
+    { d: 'M30 140 l4 -3 M29 150 l6 -5 M30 160 l5 -4', role: 'ambient' },
+    {
+      d: 'M32 132 C40 136 46 137 54 136 L76 133 M32 168 C40 164 46 163 54 164 L76 167',
+    },
     {
       d: 'M76 133 C83 137 83 163 76 167 M76 133 H82 C90 137 90 163 82 167 H76',
     },
-    { d: 'M52 135 C58 140 58 160 52 165', role: 'soft' },
-    { d: 'M44 163 l5 -5 M58 165 l5 -5 M70 166 l4 -4', role: 'ambient' },
+    { d: 'M54 136 C60 141 60 159 54 164', role: 'soft' },
+    { d: 'M44 164 l5 -5 M58 165 l5 -5 M70 166 l4 -4', role: 'ambient' },
     { d: 'M88 150 H102' },
     { d: ellipse(103, 150, 3, 6), role: 'soft' },
     {
       d: 'M104 146 C142 120 140 44 94 36 C80 34 66 40 56 52 C74 46 92 50 102 62 C118 80 118 116 98 150 Z',
       role: 'accent',
     },
-    { d: 'M66 48 C84 46 98 54 108 68 C120 88 118 118 106 140', role: 'soft' },
+    { d: 'M70 44 C88 42 104 52 114 68 C126 90 124 118 110 138', role: 'soft' },
     shadow(66, 182, 48),
   ],
 
