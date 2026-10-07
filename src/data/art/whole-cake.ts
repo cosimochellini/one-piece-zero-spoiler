@@ -926,17 +926,29 @@ export const wholeCakeArt = {
     shadow(80, 182, 66),
   ],
 
-  // A lamp with a curl of smoke rising from the spout.
+  // A genie's lamp in three quarters, the one worked on his belt: the
+  // squat bowl with its lid and foot, hatched underneath, the spout and the
+  // handle, and the smoke his genie comes out of rising off the spout. The
+  // genie forces the chateau gate at 826, and the manga shows it at 864.
   'charlotte-daifuku': [
-    { d: 'M28 138 q14 -28 42 -28 q28 0 42 28 Z' },
-    { d: 'M110 124 l24 -11 l3 7 l-23 12' },
-    { d: 'M30 126 c-15 -8 -15 -24 0 -28' },
-    { d: 'M66 110 v-8 h8 v8' },
-    { d: circle(70, 98, 6) },
-    { d: 'M34 138 h72 v10 h-72z' },
-    { d: 'M136 112 c11 -14 -6 -23 4 -35 c8 -10 -6 -19 0 -29', role: 'accent' },
-    { d: 'M140 46 c-10 -6 -18 4 -12 13', role: 'accent' },
-    shadow(70, 158, 46),
+    {
+      d: 'M30 128 C30 112 50 104 74 104 C98 104 118 112 118 128 C118 144 98 152 74 152 C50 152 30 144 30 128 Z',
+    },
+    { d: ellipse(74, 108, 22, 6) },
+    { d: 'M62 102 C62 94 86 94 86 102 M74 94 V88 M70 88 h8', role: 'soft' },
+    { d: 'M34 136 C50 144 98 144 114 136', role: 'soft' },
+    {
+      d: 'M44 146 l6 -6 M58 150 l8 -8 M74 152 l8 -8 M90 150 l8 -8 M104 146 l6 -6',
+      role: 'ambient',
+    },
+    { d: 'M60 152 L56 162 H92 L88 152' },
+    { d: 'M116 124 C128 120 136 112 148 98 L152 102 C142 118 132 132 116 136' },
+    { d: 'M30 122 C14 118 10 136 22 142 C26 144 30 142 32 138', role: 'soft' },
+    {
+      d: 'M148 98 C140 86 150 76 142 64 C134 52 144 40 132 32 C122 26 110 30 112 40 C114 46 122 46 124 40 M152 102 C160 88 158 76 156 64 C154 50 160 38 152 28 C146 20 134 18 126 22',
+      role: 'accent',
+    },
+    shadow(76, 172, 52),
   ],
 
   // An open book hovering over a closed one, both off the ground: the open
