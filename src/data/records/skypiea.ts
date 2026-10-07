@@ -476,14 +476,15 @@ export const skypiea: Saga = {
     {
       id: 'holy',
       kind: 'character',
-      revealedAtEpisode: 175,
-      revealedAtChapter: 272,
-      // Rounded up to 272 for Ohm, whom the text names, when he was filed
-      // there. He opens at 253 now, and Holy's own thresholds are #375.
+      revealedAtEpisode: 164,
+      revealedAtChapter: 251,
+      // Both name him on screen in the same scene, with the dog panting at the
+      // priest's side: "Do you hear the lamentations of the fallen, Holly?"
+      // (ch 251 p.9). Ohm opens later (166/253), so the texts do not name him.
       name: { it: 'Holy', en: 'Holy' },
       summary: {
-        it: 'Un enorme cane dal pelo chiaro al fianco di un sacerdote di Ener, addestrato così bene che non morde nessuno finché il padrone non gliene dà un motivo.',
-        en: 'An enormous pale dog at the side of one of Enel’s priests, trained so well that he bites nobody until his master gives him a reason.',
+        it: 'Un enorme cane dal pelo chiaro con la lingua di fuori, che corre con un sacerdote di Ener e gli siede accanto ansimando.',
+        en: 'An enormous pale dog with his tongue hanging out, who runs with one of Enel’s priests and sits panting at his side.',
       },
       visual: { art: 'holy', tint: 'sand' },
     },
@@ -1326,14 +1327,26 @@ export const skypiea: Saga = {
       ],
     },
     'holy': {
-      role: { it: 'Cane di Om', en: 'Ohm’s dog' },
+      role: {
+        it: 'Cane di un sacerdote di Ener',
+        en: 'Dog of one of Enel’s priests',
+      },
       log: {
-        it: 'Aspetta al fianco di Om fra le rovine sopra la foresta e si muove solo quando il padrone glielo dice. Quando arriva un piccolo medico il cane gli torreggia sopra, e Om lo rassicura: non morde nessuno senza un motivo. Corre con i sacerdoti almeno dal giorno in cui inseguirono un intruso per l’Upper Yard, e quell’uomo per poco non finì fra le sue fauci.',
-        en: 'He waits at Ohm’s side in the ruins above the forest and moves only when his master tells him to. When a small doctor wanders in, the dog looms over him, and Ohm tells the doctor not to worry: he bites nobody without a reason. He has run with the priests at least since the day they chased a trespasser across Upper Yard, and that man very nearly ended up in his jaws.',
+        it: 'Quando i sacerdoti inseguono un intruso per l’Upper Yard, il cane esce ululando dalla foresta e si lancia dietro di lui, e l’uomo per poco non finisce fra le sue fauci prima che un altro sacerdote allontani il cane con un calcio. Al tramonto del giorno in cui gli shandia attaccano la foresta, siede ansimando accanto al suo padrone, che lo chiama Holy, gli chiede se sente le voci dei caduti e dice che gli assalitori non vedranno l’alba.',
+        en: 'When the priests chase a trespasser across Upper Yard, the dog comes howling out of the forest after him, and the man very nearly ends up in his jaws before another priest kicks the dog aside. As the sun goes down on the day the Shandia raid the forest, he sits panting beside his master, who calls him Holy, asks him whether he can hear the voices of the fallen and says the raiders will not see the dawn.',
       },
       affiliation: [
         {
-          episode: 175,
+          episode: 164,
+          chapter: 251,
+          value: {
+            it: 'Sacerdoti di Ener, cane di un sacerdote',
+            en: 'Enel’s priests, a priest’s dog',
+          },
+        },
+        {
+          episode: 166,
+          chapter: 253,
           value: {
             it: 'Sacerdoti di Ener, cane di Om',
             en: 'Enel’s priests, Ohm’s dog',
