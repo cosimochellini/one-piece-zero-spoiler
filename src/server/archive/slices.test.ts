@@ -1043,6 +1043,23 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
   })
 
+  it('arms Hatchan with his six swords only from episode 39', () => {
+    const hatchan = filed('hatchan')
+    const pot = DRAWINGS.hatchan
+    const swords = REDRAWINGS['hatchan']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(hatchan, readerFor(bookmark, 'en')).visual.strokes
+
+    expect(swords?.episode).toBe(39)
+
+    expect(drawnAt(ep(38))).toBe(pot)
+    expect(drawnAt(ep(39))).toBe(swords?.value)
+    expect(drawnAt(null)).toBe(pot)
+    // The manga gives him the six swords against Zoro in chapter 84.
+    expect(drawnAt({ mode: 'chapter', chapter: 83 })).toBe(pot)
+    expect(drawnAt({ mode: 'chapter', chapter: 84 })).toBe(swords?.value)
+  })
+
   it('lets Chew’s Water Gun fly past his vest only from episode 34', () => {
     const chew = filed('chew')
     const vest = DRAWINGS.chew
