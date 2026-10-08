@@ -25,7 +25,8 @@
     "test": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "verify:chapters": "node scripts/verify-chapters.mjs"
+    "verify:chapters": "node scripts/verify-chapters.mjs",
+    "verify:names": "node scripts/verify-names.mjs"
   },
   "overrides": {
     "unplugin": "3.4.0"

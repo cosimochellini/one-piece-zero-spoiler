@@ -4,6 +4,7 @@
 // page, a missing title, a complete batch of chapter pages) is written, so a
 // challenge page, a throttling error or a truncated batch does not stick to
 // the next run. Nothing expires: delete the folder to read afresh.
+import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
@@ -18,12 +19,21 @@ const API =
 const CHAPTERS_API =
   'https://onepiece.fandom.com/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&format=json&titles='
 
+const LANGLINKS_API =
+  'https://onepiece.fandom.com/api.php?action=query&prop=langlinks&lllang=it&lllimit=max&redirects=1&format=json&titles='
+
+/** The Italian One Piece Wiki, whose titles follow Star Comics. */
+const ITALIAN_API =
+  'https://onepiece.fandom.com/it/api.php?action=query&prop=revisions&rvprop=content&rvslots=main&redirects=1&format=json&titles='
+
 /** How many chapter pages one API call asks for. */
 const BATCH = 50
 
 /** @typedef {{ title: string, wikitext: string, text: string }} Page */
-/** @typedef {{ title: string, revisions?: { slots?: { main?: Record<string, string> } }[] }} ChapterPage */
-/** @typedef {{ parse?: { title: string, wikitext: Record<string, string>, text: Record<string, string> }, error?: { code?: string }, query?: { pages?: Record<string, ChapterPage> }, batchcomplete?: string, continue?: unknown }} Answer */
+/** @typedef {{ title: string, revisions?: { slots?: { main?: Record<string, string> } }[], langlinks?: Record<string, string>[] }} ChapterPage */
+/** @typedef {{ from: string, to: string }} Rename */
+/** @typedef {{ pages?: Record<string, ChapterPage>, normalized?: Rename[], redirects?: Rename[] }} Query */
+/** @typedef {{ parse?: { title: string, wikitext: Record<string, string>, text: Record<string, string> }, error?: { code?: string }, query?: Query, batchcomplete?: string, continue?: unknown }} Answer */
 
 /**
  * One answer from the API, trying three times: the wiki drops a connection
@@ -159,14 +169,24 @@ async function fetchChapters(from, to) {
     { length: to - from + 1 },
     (_, index) => `Chapter ${String(from + index)}`,
   )
-  const { query } = await cached(
+  const { query } = await fetchBatch(
     path.join(CACHE, 'chapters', `${String(from)}-${String(to)}.json`),
     label,
     CHAPTERS_API + encodeURIComponent(titles.join('|')),
-    isCompleteBatch,
   )
 
   return Object.values(query?.pages ?? {})
+}
+
+/**
+ * One batch query, from the cache or the API, kept only when it is whole.
+ * @param {string} file Where it lives.
+ * @param {string} label What is being fetched, for the error.
+ * @param {string} url The request.
+ * @returns {Promise<Answer>} The answer, parsed.
+ */
+function fetchBatch(file, label, url) {
+  return cached(file, label, url, isCompleteBatch)
 }
 
 /**
@@ -196,4 +216,89 @@ export function textOf(page) {
   return text === undefined || match?.groups === undefined ?
       []
     : [[Number(match.groups['n']), text]]
+}
+
+/**
+ * The Italian wiki's page for each English one, through the English page's
+ * interlanguage link. A page with no link is left out.
+ * @param {string[]} titles English page titles.
+ * @returns {Promise<Map<string, string>>} English title to Italian title.
+ */
+export async function italianTitles(titles) {
+  const pages = await queried(LANGLINKS_API, 'langlinks', titles)
+
+  return new Map(
+    pages.flatMap(([asked, page]) => {
+      const link = page.langlinks?.[0]?.['*']
+
+      return link === undefined ? [] : [[asked, link]]
+    }),
+  )
+}
+
+/**
+ * Each Italian wiki page's title and wikitext. A missing page is left out.
+ * @param {string[]} titles Italian page titles.
+ * @returns {Promise<Map<string, Page>>} Asked title to page; `text` is empty.
+ */
+export async function italianPages(titles) {
+  const pages = await queried(ITALIAN_API, 'it', titles)
+
+  return new Map(
+    pages.flatMap(([asked, page]) => {
+      const wikitext = page.revisions?.[0]?.slots?.main?.['*']
+
+      return wikitext === undefined ?
+          []
+        : [[asked, { title: page.title, wikitext, text: '' }]]
+    }),
+  )
+}
+
+/**
+ * Every page a list of titles asks for, fifty to a call, each paired with
+ * the title it was asked under: the API answers under the title it lands on
+ * after normalising and following redirects.
+ * @param {string} api The query, missing only its titles.
+ * @param {string} folder The cache folder under `.gate/wiki/`.
+ * @param {string[]} titles The titles.
+ * @returns {Promise<[string, ChapterPage][]>} Asked title and page.
+ */
+async function queried(api, folder, titles) {
+  /** @type {[string, ChapterPage][]} */
+  const pages = []
+  for (let from = 0; from < titles.length; from += BATCH) {
+    const batch = titles.slice(from, from + BATCH)
+    const key = createHash('sha256').update(batch.join('|')).digest('hex')
+    const { query } = await fetchBatch(
+      // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
+      path.join(CACHE, folder, `${key}.json`),
+      `${folder} ${String(from)}`,
+      api + encodeURIComponent(batch.join('|')),
+    )
+    for (const asked of batch) {
+      const page = pageOf(query, asked)
+      if (page !== undefined) {
+        pages.push([asked, page])
+      }
+    }
+  }
+
+  return pages
+}
+
+/**
+ * The page a query answered for one asked title, through its renames.
+ * @param {Query | undefined} query The answer's query.
+ * @param {string} asked The title as asked.
+ * @returns {ChapterPage | undefined} The page, or nothing.
+ */
+export function pageOf(query, asked) {
+  const { normalized = [], redirects = [], pages = {} } = query ?? {}
+  let title = asked
+  for (const { from, to } of [normalized, redirects].flat()) {
+    title = title === from ? to : title
+  }
+
+  return Object.values(pages).find((page) => page.title === title)
 }

@@ -50,7 +50,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 392,
       revealedAtChapter: 498,
-      name: { it: 'Eustass Kid', en: 'Eustass Kid' },
+      name: { it: 'Eustass Kidd', en: 'Eustass Kid' },
       summary: {
         it: 'Un capitano dai capelli rossi con una taglia più alta di quella di Rufy per via dei civili che ha ucciso, e che non sopporta di essere guardato dall’alto.',
         en: 'A red-haired captain whose bounty is higher than Luffy’s because of the civilians he has killed, and who cannot stand being looked down on.',
@@ -148,7 +148,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 385,
       revealedAtChapter: 493,
-      name: { it: 'Kaimi', en: 'Camie' },
+      name: { it: 'Kayme', en: 'Camie' },
       summary: {
         it: 'Una sirena dalla coda verde che serve takoyaki al banco di un vecchio amico e parla con i pesci come si parla ai vicini di casa.',
         en: 'A green-tailed mermaid who serves takoyaki at an old friend’s counter and talks to fish the way other people talk to neighbours.',
@@ -160,7 +160,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 385,
       revealedAtChapter: 493,
-      name: { it: 'Pappag', en: 'Pappag' },
+      name: { it: 'Pappagu', en: 'Pappag' },
       summary: {
         it: 'Una stella marina che parla, con un cappellino in testa, convinta di essere il padrone della sirena che se la porta in giro.',
         en: 'A talking starfish in a tiny hat, convinced that he is the master of the mermaid who carries him around everywhere she goes.',
@@ -210,7 +210,7 @@ export const summitWar: Saga = {
       revealedAtChapter: 498,
       name: { it: 'Killer', en: 'Killer' },
       summary: {
-        it: 'Un combattente dei Pirati di Kid, con un casco che gli copre tutta la testa e due lame lunghe e ricurve fissate ai guanti.',
+        it: 'Un combattente dei Pirati di Kidd, con un casco che gli copre tutta la testa e due lame lunghe e ricurve fissate ai guanti.',
         en: 'A combatant of the Kid Pirates, a helmet covering his whole head and a long curved blade fixed to each of his gauntlets.',
       },
       visual: { art: 'killer', tint: 'azure' },
@@ -366,7 +366,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 409,
       revealedAtChapter: 518,
-      name: { it: 'Marguerite', en: 'Marguerite' },
+      name: { it: 'Margaret', en: 'Marguerite' },
       summary: {
         it: 'Una guerriera kuja con un arco più alto di lei, la prima a trovare un uomo svenuto nella foresta e a non ucciderlo subito.',
         en: 'A Kuja warrior with a bow taller than she is, the first to find a man lying unconscious in the forest and not kill him at once.',
@@ -446,7 +446,7 @@ export const summitWar: Saga = {
       revealedAtChapter: 541,
       name: { it: 'Inazuma', en: 'Inazuma' },
       summary: {
-        it: 'Un uomo che trova Rufy e Von Clay mezzi assiderati dentro la prigione e li porta al sicuro, in un livello che non dovrebbe esistere.',
+        it: 'Un uomo che trova Rufy e Bon Kure mezzi assiderati dentro la prigione e li porta al sicuro, in un livello che non dovrebbe esistere.',
         en: 'A man who finds Luffy and Bon Clay half frozen inside the prison and carries them to safety, on a level that should not exist.',
       },
       visual: { art: 'inazuma', tint: 'wine' },
@@ -480,7 +480,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 151,
       revealedAtChapter: 234,
-      name: { it: 'Van Augur', en: 'Van Augur' },
+      name: { it: 'Van Ooger', en: 'Van Augur' },
       summary: {
         it: 'Il tiratore della ciurma di Barbanera, altissimo e silenzioso, che a Mock Town tiene il fucile sulle ginocchia e guarda lontano.',
         en: 'The gunman of Blackbeard’s crew, very tall and very quiet, who sits in Mock Town with a rifle across his knees, watching the distance.',
@@ -504,7 +504,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 151,
       revealedAtChapter: 234,
-      name: { it: 'Laffitte', en: 'Laffitte' },
+      name: { it: 'Lafitte', en: 'Laffitte' },
       summary: {
         it: 'Un uomo pallido in cilindro e bastone che si infila non visto nella riunione della Flotta dei Sette e propone il nome del suo capitano.',
         en: 'A pale man in a top hat with a cane, who slips unseen into the Warlords’ meeting and puts his captain’s name forward.',
@@ -528,7 +528,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 484,
       revealedAtChapter: 577,
-      name: { it: 'Catarina Devon', en: 'Catarina Devon' },
+      name: { it: 'Katarina Devon', en: 'Catarina Devon' },
       summary: {
         it: 'Una pirata che chiamano la donna più pericolosa del mondo, comparsa sul patibolo di Marineford accanto a Barbanera fra i criminali che il mondo ha cancellato.',
         en: 'A pirate called the most dangerous woman in the world, appearing on the Marineford scaffold beside Blackbeard among the criminals the world has erased.',
@@ -624,7 +624,7 @@ export const summitWar: Saga = {
       kind: 'character',
       revealedAtEpisode: 466,
       revealedAtChapter: 560,
-      name: { it: 'Piccolo Oz Jr.', en: 'Little Oars Jr.' },
+      name: { it: 'Ozu Junior', en: 'Little Oars Jr.' },
       summary: {
         it: 'Un gigante alto quanto una torre, con un cappello di paglia intrecciata in testa, che avanza da solo verso la baia della Marina.',
         en: 'A giant as tall as a tower, a hat of woven straw on his head, walking alone towards the bay the Marines are holding.',
@@ -1081,7 +1081,7 @@ export const summitWar: Saga = {
     },
     'eustass-kid': {
       role: {
-        it: 'Capitano dei Pirati di Kid',
+        it: 'Capitano dei Pirati di Kidd',
         en: 'Captain of the Kid Pirates',
       },
       log: {
@@ -1091,12 +1091,12 @@ export const summitWar: Saga = {
       affiliation: [
         {
           episode: 392,
-          value: { it: 'Pirati di Kid, capitano', en: 'Kid Pirates, captain' },
+          value: { it: 'Pirati di Kidd, capitano', en: 'Kid Pirates, captain' },
         },
       ],
       origin: [{ episode: 392, value: { it: 'South Blue', en: 'South Blue' } }],
       epithet: [
-        { episode: 392, value: { it: 'Capitan Kid', en: 'Captain Kid' } },
+        { episode: 392, value: { it: 'Capitan Kidd', en: 'Captain Kid' } },
       ],
       devilFruit: [
         { episode: 1058, chapter: 1031, value: ['magnet-magnet-fruit'] },
@@ -1225,14 +1225,14 @@ export const summitWar: Saga = {
     'pappag': {
       role: { it: 'Stella marina parlante', en: 'Talking starfish' },
       log: {
-        it: 'Sta appollaiato sulla testa di Kaimi e sostiene di esserne il padrone, anche se è lei a portarlo in giro e a dargli da mangiare. Parla senza fermarsi mai, distribuisce consigli che nessuno gli ha chiesto e si offende se qualcuno lo scambia per un cappello. Quando la sirena sparisce è il primo a correre da chiunque possa aiutarla.',
+        it: 'Sta appollaiato sulla testa di Kayme e sostiene di esserne il padrone, anche se è lei a portarlo in giro e a dargli da mangiare. Parla senza fermarsi mai, distribuisce consigli che nessuno gli ha chiesto e si offende se qualcuno lo scambia per un cappello. Quando la sirena sparisce è il primo a correre da chiunque possa aiutarla.',
         en: 'He perches on Camie’s head and insists that he is her master, though she is the one who carries him about and feeds him. He talks without pause, hands out advice nobody asked for, and takes offence when he is mistaken for a hat. When the mermaid goes missing he is the first to run to anyone who might help.',
       },
       affiliation: [
         {
           episode: 385,
           value: {
-            it: 'Animale e padrone di Kaimi',
+            it: 'Animale e padrone di Kayme',
             en: 'Camie’s pet and master',
           },
         },
@@ -1285,7 +1285,7 @@ export const summitWar: Saga = {
       chronicle: summitWarChronicles['silvers-rayleigh'],
       role: { it: 'Artigiano del rivestimento', en: 'Coating craftsman' },
       log: {
-        it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi strappa a una sirena il collare esplosivo un attimo prima che salti. Quando Kid lo riconosce come il Re Oscuro, gli chiede di non andarlo a dire in giro: adesso riveste soltanto le navi.',
+        it: 'A Sabaody lo chiamano il vecchio che riveste le navi, e per quel lavoro chiede cifre che nessuno si azzarda a discutere. Nella casa d’aste stende una sala intera di uomini armati senza toccarne uno, poi strappa a una sirena il collare esplosivo un attimo prima che salti. Quando Kidd lo riconosce come il Re Oscuro, gli chiede di non andarlo a dire in giro: adesso riveste soltanto le navi.',
         en: 'At Sabaody they call him the old man who coats ships, and for that work he asks prices nobody dares argue with. In the auction house he drops a whole hall of armed men without touching one of them, then pulls the explosive collar off a mermaid’s neck a moment before it goes off. When Kid recognises him as the Dark King, he asks them not to go around saying so: these days he only coats ships.',
       },
       status: [{ episode: 398, value: 'alive' }],
@@ -1304,7 +1304,7 @@ export const summitWar: Saga = {
     },
     'killer': {
       role: {
-        it: 'Combattente dei Pirati di Kid',
+        it: 'Combattente dei Pirati di Kidd',
         en: 'Combatant of the Kid Pirates',
       },
       log: {
@@ -1315,7 +1315,7 @@ export const summitWar: Saga = {
         {
           episode: 392,
           value: {
-            it: 'Pirati di Kid, combattente',
+            it: 'Pirati di Kidd, combattente',
             en: 'Kid Pirates, combatant',
           },
         },
@@ -1718,7 +1718,7 @@ export const summitWar: Saga = {
     'emporio-ivankov': {
       role: { it: 'Sovrano del livello 5.5', en: 'Ruler of level 5.5' },
       log: {
-        it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Von Clay lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
+        it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Bon Kure lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
         en: 'He reigns over a level of the prison that appears on no map, a secret garden where the inmates drink, play games and watch the show instead of running. The guards believe the vanished prisoners were dragged off to hell, and they are all there. Bon Clay knows him by reputation as a man who works miracles, and hopes one will be enough to save the poisoned Luffy.',
       },
       affiliation: [
@@ -1754,7 +1754,7 @@ export const summitWar: Saga = {
     'inazuma': {
       role: { it: 'Braccio destro di Ivankov', en: 'Ivankov’s right hand' },
       log: {
-        it: 'Trova Rufy e Von Clay mezzi assiderati dentro la prigione e li porta al sicuro, dove Von Clay si risveglia dieci ore dopo. Quando gli chiede dove si trova, non risponde e lo porta davanti al palco, perché sarà qualcun altro a spiegarglielo. Di sé dice soltanto il proprio nome.',
+        it: 'Trova Rufy e Bon Kure mezzi assiderati dentro la prigione e li porta al sicuro, dove Bon Kure si risveglia dieci ore dopo. Quando gli chiede dove si trova, non risponde e lo porta davanti al palco, perché sarà qualcun altro a spiegarglielo. Di sé dice soltanto il proprio nome.',
         en: 'He finds Luffy and Bon Clay half frozen inside the prison and moves them somewhere safe, where Bon Clay wakes ten hours later. When Bon Clay asks where he is, he gives no answer and takes him to the front of the stage, because someone else will explain. About himself he says only his name.',
       },
       affiliation: [

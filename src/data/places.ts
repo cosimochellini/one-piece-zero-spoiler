@@ -549,7 +549,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
     arc: 'fish-man-island-arc',
     landmark: { it: 'L’enorme nave Noah', en: 'The enormous ship Noah' },
     log: {
-      it: 'Kaimi lo descrive come una zona poco raccomandabile e dice che Octy si sta rimettendo lì, perché è da lì che viene. Gli uomini-pesce che hanno cercato di fermare la ciurma all’ingresso dell’isola ci tornano subito, su un’enorme nave chiamata Noah, per avvertire il loro capo che è arrivato chi ha battuto Arlong. Il capo vuole che glielo portino.',
+      it: 'Kayme lo descrive come una zona poco raccomandabile e dice che Octy si sta rimettendo lì, perché è da lì che viene. Gli uomini-pesce che hanno cercato di fermare la ciurma all’ingresso dell’isola ci tornano subito, su un’enorme nave chiamata Noah, per avvertire il loro capo che è arrivato chi ha battuto Arlong. Il capo vuole che glielo portino.',
       en: 'Camie calls it a rough area and says Hatchan is resting there, because it is where he comes from. The fish-men who tried to stop the crew at the island’s entrance head straight back there, to an enormous ship called Noah, to tell their boss that the man who beat Arlong has arrived. The boss wants him brought in.',
     },
     filedHere: [
@@ -597,7 +597,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       en: 'A rocky island on the horizon',
     },
     log: {
-      it: 'La ciurma la vede per la prima volta come un’isola rocciosa all’orizzonte: un regno dell’amore e della passione, governato da Do Flamingo, il cui ritiro dalla Flotta dei Sette è la grande notizia del mattino. Il piano è consegnare un prigioniero su un’isoletta a nord e distruggere una fabbrica che nessuno sa dove sia. Kinemon vuole solo riprendersi il compagno catturato lì mentre copriva la sua fuga.',
+      it: 'La ciurma la vede per la prima volta come un’isola rocciosa all’orizzonte: un regno dell’amore e della passione, governato da Do Flamingo, il cui ritiro dalla Flotta dei Sette è la grande notizia del mattino. Il piano è consegnare un prigioniero su un’isoletta a nord e distruggere una fabbrica che nessuno sa dove sia. Kin’emon vuole solo riprendersi il compagno catturato lì mentre copriva la sua fuga.',
       en: 'The crew first sees it as a rocky island on the horizon: a kingdom of love and passion, ruled by Doflamingo, whose withdrawal from the Seven Warlords is the morning’s big news. The plan is to hand over a prisoner on a small island to the north and destroy a factory whose whereabouts nobody knows. Kin’emon only wants to get back the comrade who was caught there covering his escape.',
     },
     filedHere: [
@@ -842,7 +842,7 @@ export const PLACE_DOSSIERS: Record<string, PlaceDossier> = {
       en: 'A tree taller than the clouds',
     },
     log: {
-      it: 'L’isola dei giganti di cui Dorry e Brogy parlavano, e la ciurma capisce di esserci già arrivata solo dopo aver lasciato un regno in miniatura. Un albero sconfinato la sovrasta, e nel buio gelido ai suoi piedi c’è un principe incatenato da anni.',
+      it: 'L’isola dei giganti di cui Dori e Brogy parlavano, e la ciurma capisce di esserci già arrivata solo dopo aver lasciato un regno in miniatura. Un albero sconfinato la sovrasta, e nel buio gelido ai suoi piedi c’è un principe incatenato da anni.',
       en: 'The island of giants Dorry and Brogy spoke of, and the crew only realises it has already arrived after leaving a miniature kingdom behind. A boundless tree towers over it, and in the freezing dark at its foot a prince has been chained for years.',
     },
     filedHere: ['road', 'iscat', 'goldberg', 'stansen'],

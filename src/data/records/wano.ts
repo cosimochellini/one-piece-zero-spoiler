@@ -63,7 +63,7 @@ export const wano: Saga = {
       kind: 'character',
       revealedAtEpisode: 894,
       revealedAtChapter: 913,
-      name: { it: 'Tenguyama Hitetsu', en: 'Tenguyama Hitetsu' },
+      name: { it: 'Tengu Yama Hitetsu', en: 'Tenguyama Hitetsu' },
       summary: {
         it: 'Il vecchio fabbro di spade del villaggio di Amigasa, che nasconde il volto dietro una maschera da tengu dal naso lungo e sguaina la spada contro lo sconosciuto che trova accanto alla scodella vuota di Tama.',
         en: 'The old swordsmith of Amigasa Village, who hides his face behind a long-nosed tengu mask and draws his sword on the stranger he finds beside Tama’s empty rice bowl.',
@@ -343,7 +343,7 @@ export const wano: Saga = {
       kind: 'character',
       revealedAtEpisode: 982,
       revealedAtChapter: 980,
-      name: { it: 'Who’s-Who', en: 'Who’s-Who' },
+      name: { it: 'Who’s Who', en: 'Who’s-Who' },
       summary: {
         it: 'Un uomo altissimo dei Tobiroppo con una maschera rossa con le corna e una sigaretta in bocca, che dice a Ulti e Page One di stare zitti quando si mettono a litigare.',
         en: 'A very tall man of the Tobiroppo in a red horned mask, a cigarette in his mouth, who tells Ulti and Page One to be quiet when they start arguing.',
@@ -1465,7 +1465,7 @@ export const wano: Saga = {
         {
           episode: 913,
           value: {
-            it: 'Casa da tè di Okobore, proprietaria; moglie di Kinemon',
+            it: 'Casa da tè di Okobore, proprietaria; moglie di Kin’emon',
             en: 'Tea house of Okobore Town, owner; Kin’emon’s wife',
           },
         },
@@ -1860,7 +1860,7 @@ export const wano: Saga = {
         en: 'Samurai in Oden’s service',
       },
       log: {
-        it: 'Cresce da solo per le strade della Capitale dei Fiori, strappando una moneta alla volta ai bottegai e tenendo d’occhio le famiglie della yakuza. È amico di Kinemon, e lo avverte in tempo quando un cinghiale bianco rubato sta per tirarsi dietro sulla città il suo genitore gigante. È uno dei nove samurai che servirono Oden, e dalla morte del suo signore nessuno sa che fine abbia fatto.',
+        it: 'Cresce da solo per le strade della Capitale dei Fiori, strappando una moneta alla volta ai bottegai e tenendo d’occhio le famiglie della yakuza. È amico di Kin’emon, e lo avverte in tempo quando un cinghiale bianco rubato sta per tirarsi dietro sulla città il suo genitore gigante. È uno dei nove samurai che servirono Oden, e dalla morte del suo signore nessuno sa che fine abbia fatto.',
         en: 'He grows up alone on the streets of the Flower Capital, cheating shopkeepers out of a coin at a time and keeping an ear on the yakuza families. He is a friend of Kin’emon’s, and warns him in time when a stolen white boar is about to bring its giant parent down on the city. He is one of the nine samurai who served Oden, and since his lord’s death nobody knows what has become of him.',
       },
       status: [
@@ -1913,7 +1913,7 @@ export const wano: Saga = {
         {
           episode: 1080,
           value: {
-            it: 'Famiglia Kozuki, ex shogun; Tenguyama Hitetsu, fabbro di Amigasa',
+            it: 'Famiglia Kozuki, ex shogun; Tengu Yama Hitetsu, fabbro di Amigasa',
             en: 'Kozuki family, former shogun; Tenguyama Hitetsu, swordsmith of Amigasa',
           },
         },
@@ -1922,7 +1922,7 @@ export const wano: Saga = {
       epithet: [
         {
           episode: 1080,
-          value: { it: 'Tenguyama Hitetsu', en: 'Tenguyama Hitetsu' },
+          value: { it: 'Tengu Yama Hitetsu', en: 'Tenguyama Hitetsu' },
         },
       ],
     },

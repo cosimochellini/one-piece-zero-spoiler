@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os'
 import path from 'node:path'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { cached, textOf } from './wiki.mjs'
+import { cached, pageOf, textOf } from './wiki.mjs'
 
 const isPage = (answer) => answer.parse !== undefined
 
@@ -84,5 +84,20 @@ describe('a chapter page', () => {
         revisions: [{ slots: { main: { '*': 'text' } } }],
       }),
     ).toStrictEqual([])
+  })
+})
+
+describe('the page a query answered', () => {
+  it('follows the title through normalising and redirects', () => {
+    const page = { title: 'Vegapunk' }
+    const query = {
+      normalized: [{ from: 'shaka', to: 'Shaka' }],
+      redirects: [{ from: 'Shaka', to: 'Vegapunk' }],
+      pages: { 1: page, 2: { title: 'Other' } },
+    }
+
+    expect(pageOf(query, 'shaka')).toBe(page)
+    expect(pageOf(query, 'Missing')).toBeUndefined()
+    expect(pageOf(undefined, 'shaka')).toBeUndefined()
   })
 })

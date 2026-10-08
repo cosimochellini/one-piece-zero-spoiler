@@ -943,7 +943,7 @@ export const egghead: Saga = {
         {
           episode: 1142,
           value: {
-            it: 'Marina, viceammiraglio, comandante della base G-14; un tempo sotto Jaguar D. Saul',
+            it: 'Marina, viceammiraglio, comandante della base G-14; un tempo sotto Hagwor D. Sauro',
             en: 'Marines, vice admiral, commander of Naval Branch G-14; once under Jaguar D. Saul',
           },
         },
@@ -1020,7 +1020,7 @@ export const egghead: Saga = {
         en: 'Supreme Commander of the Knights of God',
       },
       log: {
-        it: 'A Mary Geoise viene giustiziato un Drago Celeste, e la notizia non arriverà mai al resto del mondo. Il giudice è San Figarland Garling, un tempo campione su un’isola chiamata God Valley e oggi comandante supremo dei Cavalieri di Dio: capelli tirati in punte rigide, occhiali rotondi rossi. Il giustiziato è Donquijote Mjosgard, che aveva difeso gli uomini-pesce. Intorno, gli altri nobili si lamentano perché il cibo sta finendo. Chi difende la feccia, dice Garling, vale meno della feccia che protegge.',
+        it: 'A Mary Geoise viene giustiziato un Drago Celeste, e la notizia non arriverà mai al resto del mondo. Il giudice è San Figarland Garling, un tempo campione su un’isola chiamata God Valley e oggi comandante supremo dei Cavalieri di Dio: capelli tirati in punte rigide, occhiali rotondi rossi. Il giustiziato è Donquijote Myosgard, che aveva difeso gli uomini-pesce. Intorno, gli altri nobili si lamentano perché il cibo sta finendo. Chi difende la feccia, dice Garling, vale meno della feccia che protegge.',
         en: 'A Celestial Dragon is executed at Mary Geoise, and the news will never reach the rest of the world. The judge is Saint Figarland Garling, once a champion on an island called God Valley and now the Supreme Commander of the Knights of God, his hair set in stiff spikes behind round red glasses. The man executed is Donquixote Mjosgard, who defended the fish-men, while the other nobles complain that their food is running out. Anyone who defends scum, Garling says, is lower than the scum he protects.',
       },
       status: [{ episode: 1120, value: 'alive' }],

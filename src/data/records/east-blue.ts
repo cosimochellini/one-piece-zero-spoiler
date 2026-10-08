@@ -220,7 +220,7 @@ export const eastBlue: Saga = {
       kind: 'character',
       revealedAtEpisode: 4,
       revealedAtChapter: 1,
-      name: { it: 'Lucky Roux', en: 'Lucky Roux' },
+      name: { it: 'Lucky Lou', en: 'Lucky Roux' },
       summary: {
         it: 'Un pirata rotondo della ciurma del Rosso che non smette mai di mordere un cosciotto di carne, nemmeno mentre spara.',
         en: 'A round pirate of the Red Hair crew who never stops chewing on a joint of meat, not even while he is shooting.',
@@ -308,7 +308,7 @@ export const eastBlue: Saga = {
       kind: 'character',
       revealedAtEpisode: 6,
       revealedAtChapter: 21,
-      name: { it: 'Mohji', en: 'Mohji' },
+      name: { it: 'Moji', en: 'Mohji' },
       summary: {
         it: 'Il domatore dei Pirati di Bagy, che perlustra Orange Town in groppa a un leone e comanda ogni animale che incontra.',
         en: 'The Buggy Pirates’ beast tamer, who sweeps Orange Town on the back of a lion and commands any animal he meets.',
@@ -345,7 +345,7 @@ export const eastBlue: Saga = {
       kind: 'character',
       revealedAtEpisode: 7,
       revealedAtChapter: 21,
-      name: { it: 'Cabaji', en: 'Cabaji' },
+      name: { it: 'Kabaji', en: 'Cabaji' },
       summary: {
         it: 'L’acrobata dei Pirati di Bagy, che combatte in equilibrio su un monociclo e sputa fuoco fra un colpo di sciabola e l’altro.',
         en: 'The Buggy Pirates’ acrobat, who fights balanced on a unicycle and breathes fire between one stroke of his sabre and the next.',
@@ -601,7 +601,7 @@ export const eastBlue: Saga = {
       kind: 'character',
       revealedAtEpisode: 20,
       revealedAtChapter: 46,
-      name: { it: 'Zeff', en: 'Zeff' },
+      name: { it: 'Zef', en: 'Zeff' },
       summary: {
         it: 'Il proprietario del Baratie, un vecchio con una gamba di legno e un cappello altissimo, che prende a calci i suoi cuochi dentro la cucina.',
         en: 'The owner of the Baratie, an old man with a peg leg and a very tall hat, who kicks his own cooks around the kitchen.',
@@ -752,7 +752,7 @@ export const eastBlue: Saga = {
       revealedAtChapter: 75,
       // Seen from 31 (ch. 69) but first named at 33, when Arlong greets him
       // back with Usopp; the manga names him in a caption in ch. 75.
-      name: { it: 'Chu', en: 'Chew' },
+      name: { it: 'Pciù', en: 'Chew' },
       summary: {
         it: 'Un uomo-pesce dalle labbra carnose, con un gilet a righe e una collana di grani, che intercala le frasi con lo schiocco di un bacio e porta Usop prigioniero ad Arlong Park.',
         en: 'A fish-man with thick lips, a striped vest and a string of beads, who punctuates his words with a kissing sound and brings Usopp to Arlong Park as a prisoner.',
@@ -789,7 +789,7 @@ export const eastBlue: Saga = {
       kind: 'character',
       revealedAtEpisode: 34,
       revealedAtChapter: 80,
-      name: { it: 'Bellemere', en: 'Bell-mère' },
+      name: { it: 'Bellmer', en: 'Bell-mère' },
       summary: {
         it: 'Un’ex soldatessa della Marina che coltiva mandarini e cresce due bambine trovate su un campo di battaglia, con una sigaretta sempre accesa.',
         en: 'A former Marine who grows mandarins and raises two girls she found on a battlefield, a cigarette always burning between her fingers.',
@@ -1447,9 +1447,9 @@ export const eastBlue: Saga = {
     },
     'richie': {
       chronicle: eastBlueChronicles.richie,
-      role: { it: 'Leone di Mohji', en: 'Mohji’s lion' },
+      role: { it: 'Leone di Moji', en: 'Mohji’s lion' },
       log: {
-        it: 'Porta Mohji in groppa per le vie svuotate di Orange Town e attacca chiunque il suo domatore gli indichi. Con un balzo spacca la gabbia di ferro in cui è chiuso un ragazzo, e con una zampata lo manda dentro il muro di una casa. Ma quello che vuole davvero è il cibo del negozio di animali, e ci si butta appena gli viene permesso.',
+        it: 'Porta Moji in groppa per le vie svuotate di Orange Town e attacca chiunque il suo domatore gli indichi. Con un balzo spacca la gabbia di ferro in cui è chiuso un ragazzo, e con una zampata lo manda dentro il muro di una casa. Ma quello che vuole davvero è il cibo del negozio di animali, e ci si butta appena gli viene permesso.',
         en: 'He carries Mohji through the emptied streets of Orange Town and attacks whatever his tamer points him at. One pounce breaks open the iron cage a boy has been locked in, and one swipe sends the boy through the wall of a house. What he really wants, though, is the food in the pet shop, and he goes in after it the moment he is allowed.',
       },
       status: [{ episode: 6, value: 'alive' }],
@@ -1457,7 +1457,7 @@ export const eastBlue: Saga = {
         {
           episode: 6,
           value: {
-            it: 'Pirati di Bagy, leone di Mohji',
+            it: 'Pirati di Bagy, leone di Moji',
             en: 'Buggy Pirates, Mohji’s lion',
           },
         },
@@ -2053,7 +2053,7 @@ export const eastBlue: Saga = {
         en: 'Arlong Pirates officer',
       },
       log: {
-        it: 'Quando Zoro si libera, sospetta che sia stata Nami a lasciarlo andare. Ha frugato nella sua stanza e trovato una mappa dell’isola con il villaggio di Cocoyashi segnato, e la mostra ad Arlong. Quando una nave da guerra della Marina viene ad attaccare il parco, esce con Octy e Chu e la affonda.',
+        it: 'Quando Zoro si libera, sospetta che sia stata Nami a lasciarlo andare. Ha frugato nella sua stanza e trovato una mappa dell’isola con il villaggio di Cocoyashi segnato, e la mostra ad Arlong. Quando una nave da guerra della Marina viene ad attaccare il parco, esce con Octy e Pciù e la affonda.',
         en: 'When Zoro gets free, he suspects Nami of letting him go. He has searched her room and found a map of the island with Cocoyasi Village marked on it, and he shows it to Arlong. When a Marine warship comes to attack the park, he goes out with Hatchan and Chew and sinks it.',
       },
       // The ch. 75 caption that names him calls him an officer.

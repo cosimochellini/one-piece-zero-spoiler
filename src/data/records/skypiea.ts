@@ -55,7 +55,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 147,
       revealedAtChapter: 226,
-      name: { it: 'Shojo', en: 'Shoujou' },
+      name: { it: 'Orangutan', en: 'Shoujou' },
       summary: {
         it: 'Il Re del Sonar: un colosso che beve rum, pretende una tassa da chi passa nel suo tratto di mare e con la voce manda onde sonore che fanno a pezzi le navi.',
         en: 'The Sonar King, a giant who drinks rum, charges a toll to anyone crossing his stretch of sea, and sends out sound waves with his voice that shake ships to pieces.',
@@ -214,7 +214,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 153,
       revealedAtChapter: 241,
-      name: { it: 'Gan Fall', en: 'Gan Fall' },
+      name: { it: 'Gan Foll', en: 'Gan Fall' },
       summary: {
         it: 'Un vecchio cavaliere che gira le nuvole con una lancia e un elmo a forma di zucca, in sella a un cavallo alato, e soccorre chi trova nei guai.',
         en: 'An old knight who rides the clouds with a lance and a pumpkin-shaped helmet, on a winged horse, and helps whoever he finds in trouble.',
@@ -229,7 +229,7 @@ export const skypiea: Saga = {
       // Rounded up to 241, the chapter that files Gan Fall, whom the text names.
       name: { it: 'Pierre', en: 'Pierre' },
       summary: {
-        it: 'La cavalcatura di Gan Fall, un grosso uccello rosa a pois rossi che sa trasformarsi in un cavallo alato, senza stupire granché nessuno.',
+        it: 'La cavalcatura di Gan Foll, un grosso uccello rosa a pois rossi che sa trasformarsi in un cavallo alato, senza stupire granché nessuno.',
         en: 'Gan Fall’s mount, a big pink bird spotted with red that can turn itself into a winged horse, to nobody’s great amazement.',
       },
       visual: { art: 'pierre', tint: 'pink' },
@@ -337,7 +337,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 155,
       revealedAtChapter: 242,
-      name: { it: 'Conis', en: 'Conis' },
+      name: { it: 'Konis', en: 'Conis' },
       summary: {
         it: 'Una ragazza con le ali di Angel Beach, che accoglie gli stranieri con la sua arpa e la sua volpe delle nuvole.',
         en: 'A winged girl from Angel Beach who greets strangers with her harp and her pet cloud fox.',
@@ -351,7 +351,7 @@ export const skypiea: Saga = {
       revealedAtChapter: 242,
       name: { it: 'Pagaya', en: 'Pagaya' },
       summary: {
-        it: 'Il padre di Conis, un uomo mite che costruisce e ripara barche a dial, e lascia provare agli stranieri il suo waver.',
+        it: 'Il padre di Konis, un uomo mite che costruisce e ripara barche a dial, e lascia provare agli stranieri il suo waver.',
         en: 'Conis’s father, a mild man who builds and repairs dial boats, and lets the strangers try out his Waver.',
       },
       visual: { art: 'pagaya', tint: 'teal' },
@@ -441,7 +441,7 @@ export const skypiea: Saga = {
       revealedAtChapter: 253,
       // The anime captions him at 164, but his texts are true at 166. Both
       // name him on screen in the same scene: "Wait, Ohm" (ch 253 p.3).
-      name: { it: 'Om', en: 'Ohm' },
+      name: { it: 'Ohm', en: 'Ohm' },
       summary: {
         it: 'Un sacerdote di Ener, un uomo calvo con piccoli occhiali scuri, che combatte con una spada e va in battaglia in piedi sulla testa di un enorme cane bianco.',
         en: 'One of Enel’s priests, a bald man with small dark glasses who fights with a sword and rides into battle on the head of an enormous white dog.',
@@ -517,7 +517,7 @@ export const skypiea: Saga = {
       kind: 'character',
       revealedAtEpisode: 187,
       revealedAtChapter: 292,
-      name: { it: 'Kalgara', en: 'Kalgara' },
+      name: { it: 'Calgara', en: 'Kalgara' },
       summary: {
         it: 'Il capo dei guerrieri shandia di quattrocento anni fa, che difende la sua città con una lancia più alta di lui e la voce di una grande campana.',
         en: 'The chief of the Shandia warriors four hundred years ago, who defends his city with a spear taller than himself and the voice of a great bell.',
@@ -532,7 +532,7 @@ export const skypiea: Saga = {
       // Rounded up to 292, the chapter that files Kalgara, whom the text names.
       name: { it: 'Set', en: 'Seto' },
       summary: {
-        it: 'Un giovane shandia di quattrocento anni fa che vuole diventare un guerriero come Kalgara, ed è il primo del suo villaggio a incontrare gli stranieri venuti a curarlo.',
+        it: 'Un giovane shandia di quattrocento anni fa che vuole diventare un guerriero come Calgara, ed è il primo del suo villaggio a incontrare gli stranieri venuti a curarlo.',
         en: 'A young Shandia of four hundred years ago who wants to become a warrior like Kalgara, and is the first of his village to meet the strangers who come to cure it.',
       },
       visual: { art: 'seto', tint: 'acid' },
@@ -599,7 +599,7 @@ export const skypiea: Saga = {
         {
           episode: 147,
           value: {
-            it: 'Pirati di Shojo, capitano',
+            it: 'Pirati di Orangutan, capitano',
             en: 'Shoujou Pirates, captain',
           },
         },
@@ -1061,7 +1061,7 @@ export const skypiea: Saga = {
     },
     'pierre': {
       chronicle: skypieaChronicles.pierre,
-      role: { it: 'Destriero di Gan Fall', en: 'Gan Fall’s steed' },
+      role: { it: 'Destriero di Gan Foll', en: 'Gan Fall’s steed' },
       log: {
         it: 'Porta il Cavaliere del cielo sopra le nuvole e dentro ogni battaglia, con un uomo in armatura e una lancia sul dorso. Ha mangiato un frutto del diavolo che lo trasforma in cavallo, cosa che, visto che volava già, cambia soprattutto il suo aspetto. La ciurma di Cappello di paglia si aspettava un Pegaso più impressionante.',
         en: 'He carries the Knight of the Sky over the clouds and into every fight, a man in armour with a lance on his back. He ate a devil fruit that turns him into a horse, which, since he could already fly, mostly changes how he looks. The Straw Hats were hoping for a more impressive Pegasus.',
@@ -1069,7 +1069,7 @@ export const skypiea: Saga = {
       affiliation: [
         {
           episode: 153,
-          value: { it: 'Gan Fall, destriero', en: 'Gan Fall, steed' },
+          value: { it: 'Gan Foll, destriero', en: 'Gan Fall, steed' },
         },
       ],
       devilFruit: [{ episode: 153, value: ['horse-horse-fruit'] }],
@@ -1132,7 +1132,7 @@ export const skypiea: Saga = {
     'laki': {
       role: { it: 'Guerriera shandia', en: 'Shandia warrior' },
       log: {
-        it: 'Alla riunione dei guerrieri sostiene che il nemico del loro nemico è un alleato, come Gan Fall, e Wiper le risponde che lei in battaglia non deve venire. Prende il sacchetto di Aisa per riempirlo di terra di Upper Yard. Nell’attacco alla foresta spara con il fucile su un enorme cane bianco che azzanna i suoi compagni.',
+        it: 'Alla riunione dei guerrieri sostiene che il nemico del loro nemico è un alleato, come Gan Foll, e Wiper le risponde che lei in battaglia non deve venire. Prende il sacchetto di Aisa per riempirlo di terra di Upper Yard. Nell’attacco alla foresta spara con il fucile su un enorme cane bianco che azzanna i suoi compagni.',
         en: 'At the warriors’ meeting she argues that the enemy of their enemy is a comrade, like Gan Fall, and Wyper answers that she must not join the battle. She takes Aisa’s little bag to fill it with soil from Upper Yard. In the attack on the forest she fires her rifle at a huge white dog that is biting her comrades.',
       },
       affiliation: [{ episode: 165, value: SHANDIA }],
@@ -1285,7 +1285,7 @@ export const skypiea: Saga = {
     'ohm': {
       role: ENEL_PRIEST,
       log: {
-        it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Fall è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
+        it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Foll è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
         en: 'He chases a trespasser across Upper Yard with his dog, and the other priests join in until a bolt of lightning strikes the man down. From far away he can tell that Gan Fall has lost to one priest and that the strangers have beaten another, and he says the Shandia raiding the forest will not see the dawn. In the raid his dog snatches warriors up in its jaws while he fights with a sword. When the Shandia fall back he moves to stop Wyper, but another priest calls him off: Enel has summoned them.',
       },
       affiliation: [{ episode: 166, chapter: 253, value: ENEL_PRIESTS }],
@@ -1350,7 +1350,7 @@ export const skypiea: Saga = {
           episode: 166,
           chapter: 253,
           value: {
-            it: 'Sacerdoti di Ener, cane di Om',
+            it: 'Sacerdoti di Ener, cane di Ohm',
             en: 'Enel’s priests, Ohm’s dog',
           },
         },
@@ -1427,7 +1427,7 @@ export const skypiea: Saga = {
     'seto': {
       role: { it: 'Giovane shandia', en: 'Young Shandia' },
       log: {
-        it: 'Quando le macchie verdi della febbre degli alberi gli comparvero sul braccio, corse sotto la pioggia e provò a raschiarle via con un sasso. Disse a Kalgara che avrebbe voluto diventare come lui, un giorno, e che invece sarebbe morto così. Gli stranieri lo trovarono nella foresta e lo curarono, e una delle prime cose che fece da guarito fu chiedere a Kalgara che cosa intendesse quell’uomo per progresso.',
+        it: 'Quando le macchie verdi della febbre degli alberi gli comparvero sul braccio, corse sotto la pioggia e provò a raschiarle via con un sasso. Disse a Calgara che avrebbe voluto diventare come lui, un giorno, e che invece sarebbe morto così. Gli stranieri lo trovarono nella foresta e lo curarono, e una delle prime cose che fece da guarito fu chiedere a Calgara che cosa intendesse quell’uomo per progresso.',
         en: 'When the green blotches of the tree fever turned up on his arm, he ran out into the rain and tried to scrape them off with a rock. He told Kalgara he had wanted to be like him one day, and now he would die like this instead. The strangers found him in the forest and cured him, and one of the first things he did once he was well was ask Kalgara what their captain meant by progress.',
       },
       status: [{ episode: 187, value: 'deceased' }],

@@ -107,7 +107,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 529,
       revealedAtChapter: 612,
-      name: { it: 'Sharley', en: 'Shyarly' },
+      name: { it: 'Shirley', en: 'Shyarly' },
       summary: {
         it: 'La proprietaria del Caffè delle Sirene, una sirena con la coda da squalo le cui visioni nella sfera di cristallo hanno previsto l’era dei pirati e la morte di Barbabianca.',
         en: 'The owner of the Mermaid Café, a mermaid with a shark’s tail whose visions in a crystal ball foretold the age of pirates and Whitebeard’s death.',
@@ -133,7 +133,7 @@ export const fishManIsland: Saga = {
       // poster at 529.
       revealedAtEpisode: 529,
       revealedAtChapter: 615,
-      name: { it: 'Vander Decken IX', en: 'Vander Decken IX' },
+      name: { it: 'Van Der Decken IX', en: 'Vander Decken IX' },
       summary: {
         it: 'Il capitano dell’Olandese Volante, la nave fantasma di una vecchia leggenda di marinai, che canta che ogni tesoro sommerso è suo e manda il suo gigante ad abbattere la Sunny per quello che trasporta.',
         en: 'The captain of the Flying Dutchman, the ghost ship of an old sailors’ legend, who sings that every sunken treasure is his and sends his giant to knock the Sunny down for whatever it carries.',
@@ -272,7 +272,7 @@ export const fishManIsland: Saga = {
       // A caption names him at the island's entrance in 527; the manga names him in 610.
       revealedAtEpisode: 527,
       revealedAtChapter: 610,
-      name: { it: 'Hyouzou', en: 'Hyouzou' },
+      name: { it: 'Hyozo', en: 'Hyouzou' },
       summary: {
         it: 'Un tritone polpo con una katana senza guardia e una zucca al fianco, l’assassino dei Nuovi Pirati Uomini-Pesce, che con Hammond sbarra la strada ai Cappello di Paglia all’ingresso dell’isola.',
         en: 'An octopus merman with a guardless katana and a gourd at his side, the New Fish-Man Pirates’ assassin, who waits with Hammond to stop the Straw Hats at the island’s entrance.',
@@ -310,7 +310,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 530,
       revealedAtChapter: 620,
-      name: { it: 'Ikaros Much', en: 'Ikaros Much' },
+      name: { it: 'Ikaros Muhhi', en: 'Ikaros Much' },
       summary: {
         it: 'Un uomo-pesce calamaro dei Nuovi Pirati Uomini-Pesce che sovrasta il resto della ciurma, con otto braccia e una lancia in ogni mano, ognuna con la punta a forma di calamaro essiccato.',
         en: 'A squid fish-man of the New Fish-Man Pirates who towers over the rest of the crew, with eight arms and a spear in each hand, each spearhead shaped like a dried squid.',
@@ -323,7 +323,7 @@ export const fishManIsland: Saga = {
       // His "-dosun" at 530 is a verbal tic, not his name: Ikaros first says it at 538.
       revealedAtEpisode: 538,
       revealedAtChapter: 620,
-      name: { it: 'Dosun', en: 'Dosun' },
+      name: { it: 'Sbam', en: 'Dosun' },
       summary: {
         it: 'Un uomo-pesce squalo martello dei Nuovi Pirati Uomini-Pesce, che porta un enorme martello dal manico lungo e nodoso e chiude spesso le frasi con “dosun”.',
         en: 'A hammerhead shark fish-man of the New Fish-Man Pirates, who carries a huge hammer on a long, gnarled handle and often ends his sentences with “dosun”.',
@@ -404,7 +404,7 @@ export const fishManIsland: Saga = {
       kind: 'character',
       revealedAtEpisode: 543,
       revealedAtChapter: 628,
-      name: { it: 'Aladine', en: 'Aladine' },
+      name: { it: 'Aladin', en: 'Aladine' },
       summary: {
         it: 'Il medico di bordo dei Pirati del Sole, un tritone che porta un tridente sulla schiena ed è stato schiavo anche lui.',
         en: 'The ship’s doctor of the Sun Pirates, a merman who carries a trident on his back and was once a slave himself.',
@@ -621,7 +621,7 @@ export const fishManIsland: Saga = {
         {
           episode: 526,
           value: {
-            it: 'Olandese Volante, bestia di Vander Decken',
+            it: 'Olandese Volante, bestia di Van Der Decken',
             en: 'Flying Dutchman, Vander Decken’s beast',
           },
         },
@@ -653,7 +653,7 @@ export const fishManIsland: Saga = {
       chronicle: fishManIslandChronicles.surume,
       role: { it: 'Kraken addomesticato da Rufy', en: 'Kraken tamed by Luffy' },
       log: {
-        it: 'Viveva all’imbocco della corrente che scende verso l’Isola degli Uomini-Pesce e afferrava con i tentacoli le navi che la attraversavano, finché tre dei Cappello di Paglia non lo hanno messo al tappeto. Poi tempesta di colpi un gigante finché non sviene e si porta la Sunny in testa, e Rufy gli dà il nome di Seppy, un nome da seppia per un polpo. Vander Decken lo conosce di fama come il mostro dell’Artico. Il vulcano sottomarino lo terrorizza: scappa a tutta velocità e si butta nella fossa appena Rufy glielo dice.',
+        it: 'Viveva all’imbocco della corrente che scende verso l’Isola degli Uomini-Pesce e afferrava con i tentacoli le navi che la attraversavano, finché tre dei Cappello di Paglia non lo hanno messo al tappeto. Poi tempesta di colpi un gigante finché non sviene e si porta la Sunny in testa, e Rufy gli dà il nome di Seppy, un nome da seppia per un polpo. Van Der Decken lo conosce di fama come il mostro dell’Artico. Il vulcano sottomarino lo terrorizza: scappa a tutta velocità e si butta nella fossa appena Rufy glielo dice.',
         en: 'He lived at the mouth of the current that runs down to Fish-Man Island, grabbing the ships that came through it in his tentacles, until three of the Straw Hats knocked him out. Then he beats a giant senseless with a flurry of blows and carries the Sunny on his head, and Luffy names him Surume, a squid’s name for an octopus. Vander Decken knows him by reputation as the monster of the Arctic. The undersea volcano terrifies him: he bolts flat out, and dives into the trench the moment Luffy tells him to.',
       },
       status: [{ episode: 526, value: 'alive' }],
@@ -686,9 +686,9 @@ export const fishManIsland: Saga = {
     },
     'wadatsumi': {
       chronicle: fishManIslandChronicles.wadatsumi,
-      role: { it: 'Il gigante di Vander Decken', en: 'Vander Decken’s giant' },
+      role: { it: 'Il gigante di Van Der Decken', en: 'Vander Decken’s giant' },
       log: {
-        it: 'Emerge dalle rocce degli abissi, una sagoma d’uomo grande quanto un kraken, e la ciurma che sorprende lo prende per un mostro marino. Obbedisce al capitano Vander Decken, a cui si rivolge con tutto il rispetto, e bada alla rana pescatrice Lucetto come a un animale di casa, ricordandole ogni volta che le navi non si mangiano, se no il capitano si arrabbia. Quando il capitano dice di abbattere una nave, carica il pugno; quando dice di tirare, si mette a trainare l’Olandese Volante lontano dal pericolo.',
+        it: 'Emerge dalle rocce degli abissi, una sagoma d’uomo grande quanto un kraken, e la ciurma che sorprende lo prende per un mostro marino. Obbedisce al capitano Van Der Decken, a cui si rivolge con tutto il rispetto, e bada alla rana pescatrice Lucetto come a un animale di casa, ricordandole ogni volta che le navi non si mangiano, se no il capitano si arrabbia. Quando il capitano dice di abbattere una nave, carica il pugno; quando dice di tirare, si mette a trainare l’Olandese Volante lontano dal pericolo.',
         en: 'He rises out of the rocks of the deep, a man-shaped figure the size of a kraken, and the crew he surprises take him for a sea monster. He obeys Captain Vander Decken, whom he never names without a respectful “sir”, and minds the anglerfish Ankoro like a pet, forever reminding it that ships are not for eating, or the captain will be angry. When his captain says knock a ship down, he winds up his fist; when the captain says pull, he tows the Flying Dutchman out of harm’s way.',
       },
       status: [{ episode: 526, value: 'alive' }],
@@ -696,7 +696,7 @@ export const fishManIsland: Saga = {
         {
           episode: 526,
           value: {
-            it: 'Olandese Volante, sottoposto di Vander Decken',
+            it: 'Olandese Volante, sottoposto di Van Der Decken',
             en: 'Flying Dutchman, Vander Decken’s underling',
           },
         },
@@ -791,7 +791,7 @@ export const fishManIsland: Saga = {
     'ryuboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
-        it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene notizie di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kaimi è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
+        it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene notizie di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kayme è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
         en: 'He sings the end of almost every sentence up or down a scale. At Mermaid Cove he and his brothers ask the mermaids about an illegal entry, and when Luffy knocks out Hammond and his men he starts to draw his sword. After Camie takes off in the princes’ gondola with the Straw Hats aboard, he tells the mermaids the princes were looking for the crew for another reason: they had a message from Jinbe to give them.',
       },
       affiliation: [
@@ -808,7 +808,7 @@ export const fishManIsland: Saga = {
     'manboshi': {
       role: { it: 'Principe di Ryugu', en: 'Prince of Ryugu' },
       log: {
-        it: 'Arriva alla Baia delle Sirene con i due fratelli sulla gondola reale, in cerca di chi è entrato illegalmente sull’isola. Mentre i fratelli interrogano le sirene non riesce a stare fermo: dice che vuole restare a giocare e chiama tutti a ballare. Quando Kaimi parte con la gondola e i Cappello di Paglia a bordo, resta alla baia con i fratelli.',
+        it: 'Arriva alla Baia delle Sirene con i due fratelli sulla gondola reale, in cerca di chi è entrato illegalmente sull’isola. Mentre i fratelli interrogano le sirene non riesce a stare fermo: dice che vuole restare a giocare e chiama tutti a ballare. Quando Kayme parte con la gondola e i Cappello di Paglia a bordo, resta alla baia con i fratelli.',
         en: 'He comes to Mermaid Cove with his two brothers on the royal gondola, looking for whoever entered the island illegally. While his brothers question the mermaids he cannot keep still: he says he wants to stay and play, and calls on everyone to dance. When Camie takes off in the gondola with the Straw Hats aboard, he is left at the cove with his brothers.',
       },
       affiliation: [
@@ -980,7 +980,7 @@ export const fishManIsland: Saga = {
       chronicle: fishManIslandChronicles['minister-of-the-right'],
       role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
       log: {
-        it: 'Rimprovera il re come si fa con un ragazzino: è uscito dal palazzo da solo, senza scorta, proprio mentre il paese attraversa un momento delicato. Quando la principessa grida corre alla torre con le guardie, è sicuro di aver sentito una voce che non dovrebbe esserci e lascia perdere quando lei gli dice che era la sua pancia. Le spiega che i Cappello di Paglia verranno arrestati, sospettati di aver rapito le sirene scomparse e indicati da una predizione di madame Sharley, e gli dispiace mettere le corde a chi ha salvato Megalo. Allo scadere dei cinque minuti se ne va e ordina di chiudere la porta a doppia mandata.',
+        it: 'Rimprovera il re come si fa con un ragazzino: è uscito dal palazzo da solo, senza scorta, proprio mentre il paese attraversa un momento delicato. Quando la principessa grida corre alla torre con le guardie, è sicuro di aver sentito una voce che non dovrebbe esserci e lascia perdere quando lei gli dice che era la sua pancia. Le spiega che i Cappello di Paglia verranno arrestati, sospettati di aver rapito le sirene scomparse e indicati da una predizione di madame Shirley, e gli dispiace mettere le corde a chi ha salvato Megalo. Allo scadere dei cinque minuti se ne va e ordina di chiudere la porta a doppia mandata.',
         en: 'He scolds the king the way one scolds a boy: he left the palace alone, with no escort, at the very moment the country is on edge. When the princess cries out he runs to her tower with the guards, is sure he heard a voice that should not be there, and lets it go when she tells him it was her stomach. He explains that the Straw Hats are to be arrested, suspected of carrying off the missing mermaids and named by a prediction of Madam Shyarly, and he is sorry to put ropes on the people who saved Megalo. When his five minutes are up he leaves, and orders the door locked tight.',
       },
       status: [{ episode: 532, value: 'alive' }],
@@ -1050,7 +1050,7 @@ export const fishManIsland: Saga = {
     'aladine': {
       role: { it: 'Medico di bordo', en: 'Ship’s doctor' },
       log: {
-        it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladine, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladine cerca di convincerlo ad accettarlo.',
+        it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladin, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladin cerca di convincerlo ad accettarlo.',
         en: 'He sails with Fisher Tiger’s crew as its doctor. When Koala keeps on cleaning, he tells Hatchan to leave her alone: she needs time, because trauma does not heal that easily. Arlong points out that Aladine, a former slave himself, understands her well. When the captain is badly wounded and refuses human blood, Aladine tries to make him accept it.',
       },
       affiliation: [
@@ -1072,7 +1072,7 @@ export const fishManIsland: Saga = {
       chronicle: fishManIslandChronicles['minister-of-the-left'],
       role: { it: 'Ministro di re Nettuno', en: 'Minister of King Neptune' },
       log: {
-        it: 'Sbuffa mentre il re viene rimproverato per le sue uscite senza scorta, e quando arriva la notizia della predizione è lui a dichiarare in arresto i Cappello di Paglia: la loro resistenza, dice, è il prologo del futuro annunciato. Legato dopo la sconfitta, spiega a Nami che con un Log Pose così semplice il Nuovo Mondo non si attraversa, e concede a Zoro che offrire un tè e parlare sarebbe forse stata una strada. Quando nel palazzo compaiono Vander Decken e Hody, accusa la ciurma di essere loro complice. Anni prima avrebbe voluto che la regina Otohime facesse i suoi discorsi in video, e il giorno in cui lei parlò ubriaca a tutto il regno fu lui a correre ad avvertirla.',
+        it: 'Sbuffa mentre il re viene rimproverato per le sue uscite senza scorta, e quando arriva la notizia della predizione è lui a dichiarare in arresto i Cappello di Paglia: la loro resistenza, dice, è il prologo del futuro annunciato. Legato dopo la sconfitta, spiega a Nami che con un Log Pose così semplice il Nuovo Mondo non si attraversa, e concede a Zoro che offrire un tè e parlare sarebbe forse stata una strada. Quando nel palazzo compaiono Van Der Decken e Hody, accusa la ciurma di essere loro complice. Anni prima avrebbe voluto che la regina Otohime facesse i suoi discorsi in video, e il giorno in cui lei parlò ubriaca a tutto il regno fu lui a correre ad avvertirla.',
         en: 'He groans along while the king is scolded for slipping out without an escort, and when word of the prediction arrives it is he who declares the Straw Hats under arrest: their resistance, he says, is the prologue of the future foretold. Tied up after the defeat, he tells Nami that a Log Pose that simple will never cross the New World, and grants Zoro that offering tea and talking might have been one way. When Vander Decken and Hody turn up in the palace, he accuses the crew of being in league with them. Years before, he wished the queen, Otohime, would give her speeches by video, and on the day she spoke drunk to the whole kingdom it was he who ran to warn her.',
       },
       status: [{ episode: 544, value: 'alive' }],

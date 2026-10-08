@@ -149,6 +149,14 @@ of `npm run check` or CI. Run it when you change a chapter or an episode. A
 record kept below the wiki's episode after a hand check goes in `EPISODE_KEPT`
 in the script, with the reason.
 
+`npm run verify:names` checks every character's Italian name against the Italian
+One Piece Wiki: the page title, the dub's name in "Nome doppiaggio italiano", or
+an alias, or the bare part of one of them when the rest is a surname or a real
+name said later. It also needs the network. Run it when you add a character or
+change an Italian name. A character the English wiki does not link to its
+Italian page goes in `ITALIAN_TITLES` in the script; one with no page of its own
+goes in `NAMES_KEPT`, with the reason.
+
 ## Writing copy
 
 The site's text, the README and the record texts follow the
@@ -171,19 +179,20 @@ This runs everything CI runs, in the same order: typecheck, lint, format check,
 tests with coverage, production build, then three gates (react-doctor, fallow
 and the archive gate). Run it before you push.
 
-| Script                            | Does                                            |
-| --------------------------------- | ----------------------------------------------- |
-| `npm run dev`                     | Dev server                                      |
-| `npm run build` / `npm start`     | Production build, and serve it                  |
-| `npm run typecheck`               | `tsc --noEmit`                                  |
-| `npm run lint` / `lint:fix`       | ESLint, type-aware, zero warnings allowed       |
-| `npm run format` / `format:check` | Prettier                                        |
-| `npm test` / `test:watch`         | Vitest, with coverage                           |
-| `npm run gate:react-doctor`       | Blocking react-doctor health gate               |
-| `npm run gate:fallow`             | Blocking fallow codebase-intelligence gate      |
-| `npm run gate:archive`            | Blocking gate: the archive is not in the bundle |
-| `npm run verify:chapters`         | Chapters against the One Piece Wiki (network)   |
-| `npm run docs:chronicle`          | Regenerate `docs/chronicle-verification.md`     |
+| Script                            | Does                                             |
+| --------------------------------- | ------------------------------------------------ |
+| `npm run dev`                     | Dev server                                       |
+| `npm run build` / `npm start`     | Production build, and serve it                   |
+| `npm run typecheck`               | `tsc --noEmit`                                   |
+| `npm run lint` / `lint:fix`       | ESLint, type-aware, zero warnings allowed        |
+| `npm run format` / `format:check` | Prettier                                         |
+| `npm test` / `test:watch`         | Vitest, with coverage                            |
+| `npm run gate:react-doctor`       | Blocking react-doctor health gate                |
+| `npm run gate:fallow`             | Blocking fallow codebase-intelligence gate       |
+| `npm run gate:archive`            | Blocking gate: the archive is not in the bundle  |
+| `npm run verify:chapters`         | Chapters against the One Piece Wiki (network)    |
+| `npm run verify:names`            | Italian names against the Italian wiki (network) |
+| `npm run docs:chronicle`          | Regenerate `docs/chronicle-verification.md`      |
 
 - The gates run after the build and the tests because they need them:
   `gate:archive` reads `dist/` and `gate:fallow` reads `coverage/`.
