@@ -691,6 +691,7 @@ export const waterSeven: Saga = {
         it: 'Sfida chi passa da Long Ring Long Land al Davy Back Fight, tre prove con gli uomini dell’avversario come posta. La sua ciurma è enorme perché l’ha messa insieme così, una vittoria alla volta, e lo acclama. Basta una parola sgarbata per abbatterlo, e un attimo dopo è di nuovo in piedi.',
         en: 'He challenges whoever passes Long Ring Long Land to the Davy Back Fight, three rounds with the other crew’s people as the stake. His own crew is enormous because he assembled it exactly this way, one win at a time, and it cheers him on. One rude word is enough to leave him slumped and gloomy, and he is back on his feet moments later.',
       },
+      status: [{ episode: 208, value: 'alive' }],
       affiliation: [
         {
           episode: 208,
@@ -717,6 +718,7 @@ export const waterSeven: Saga = {
         it: 'La ciurma la tratta da idolo, e tutti gli uomini la adorano. È al fianco di Foxy quando lui fa cadere il cavallo di Tonjit e sfida i Cappello di Paglia, e quando Foxy sostiene che Rufy ha già accettato, lei gli dà ragione: l’ha sentito anche lei.',
         en: 'The crew treats her as its idol, and every man in it adores her. She is at Foxy’s side when he brings down Tonjit’s horse and challenges the Straw Hats, and when Foxy claims that Luffy has already agreed, she backs him up: she heard it too.',
       },
+      status: [{ episode: 208, value: 'alive' }],
       affiliation: [
         { episode: 208, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
@@ -730,6 +732,7 @@ export const waterSeven: Saga = {
         it: 'Porta la maschera e i guanti lunghi dei Pirati di Foxy come il resto della ciurma, e una sciarpa leopardata. È con Foxy e Polluce quando la loro nave blocca la Going Merry, e sta alle spalle del suo capitano mentre Foxy sfida i Cappello di Paglia.',
         en: 'He wears the Foxy Pirates’ mask and long gloves like the rest of the crew, and a leopard-spotted scarf. He is with Foxy and Porche when their ship catches the Going Merry, and stands behind his captain while Foxy challenges the Straw Hats.',
       },
+      status: [{ episode: 208, value: 'alive' }],
       affiliation: [
         { episode: 208, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
@@ -744,6 +747,7 @@ export const waterSeven: Saga = {
         it: 'Ha fatto i trampoli con il bambù dell’isola e ci è salito per il record, senza pensare nemmeno per un attimo a come sarebbe sceso. Dopo dieci anni è venuto giù con appena un po’ di sangue dal naso, e ha salutato tre sconosciuti come se li conoscesse da una vita. Su Long Ring Long Land, spiega, la prateria è così vasta e la vita così tranquilla che tutto si allunga.',
         en: 'He made his stilts from the island’s own bamboo and climbed them for the record, without once thinking about how he would get down. He came down after ten years with nothing worse than a nosebleed, and greeted three strangers as though he had known them all his life. On Long Ring Long Land, he explains, the plain is so wide and life so easy that everything grows long.',
       },
+      status: [{ episode: 207, value: 'alive' }],
       affiliation: [
         {
           episode: 208,
@@ -773,6 +777,7 @@ export const waterSeven: Saga = {
         it: 'Cavalca Chuchun, un passero abbastanza grande da portare un uomo, e segue la gara dall’alto perché niente del percorso gli sfugga. Parla in fretta e senza pause, fa il tifo per i trucchi della sua ciurma e li annuncia uno per uno mentre accadono. Per i Cappello di Paglia non ha parole gentili, ma non finge di non vedere quello che riescono a fare.',
         en: 'He rides Chuchun, a sparrow big enough to carry a man, and follows the race from overhead so that nothing on the course escapes him. He talks fast and without a pause, cheers his own crew’s tricks and names each one as it happens. He has no kind words for the Straw Hats, but he does not pretend not to see what they pull off.',
       },
+      status: [{ episode: 209, value: 'alive' }],
       affiliation: [
         { episode: 209, value: { it: 'Pirati di Foxy', en: 'Foxy Pirates' } },
       ],
@@ -787,6 +792,7 @@ export const waterSeven: Saga = {
         it: 'È uno dei Groggy Monsters, i tre uomini più grossi della ciurma di Foxy, che il capitano chiama per nome per il Groggy Ring. Veste di verde, con due spallacci tondi, e ha braccia lunghe che pendono sopra due gambe corte. La sua squadra avrà tre giocatori contro due, perché nella prima prova i Cappello di Paglia hanno perso Chopper.',
         en: 'He is one of the Groggy Monsters, the three biggest men in Foxy’s crew, whom the captain calls out by name for the Groggy Ring. He dresses in green, with round plates on his shoulders, and his long arms hang over a pair of short legs. His side will field three players against two, because the first round has cost the Straw Hats Chopper.',
       },
+      status: [{ episode: 210, value: 'alive' }],
       affiliation: [
         {
           episode: 210,
@@ -807,6 +813,7 @@ export const waterSeven: Saga = {
         it: 'Foxy lo chiama in campo con Hamburg e Pickles per la seconda prova, il Groggy Ring, dove in ogni squadra un giocatore fa da pallone. È più alto di qualunque altro uomo della ciurma, con slip, stivali e guanti gialli e la maschera dei Pirati di Foxy sul viso. Accanto a lui, i due Cappello di Paglia che devono giocare sembrano minuscoli.',
         en: 'Foxy calls him out with Hamburg and Pickles for the second round, the Groggy Ring, where one player on each side is the ball. He stands taller than any other man in the crew, in yellow swim briefs, boots and gloves, with the Foxy Pirates’ mask over his face. Beside him, the two Straw Hats who have to play look tiny.',
       },
+      status: [{ episode: 210, value: 'alive' }],
       affiliation: [
         {
           episode: 210,
@@ -863,6 +870,7 @@ export const waterSeven: Saga = {
         it: 'Nuota come un uomo più che come una rana, ed è per questo che la ciurma lo nota, e il primo pensiero di Rufy è la cena. Quando arriva il treno del mare non si sposta: si mette in guardia sui binari e incassa il colpo in pieno. Alla stazione dicono che non c’è verso di ucciderlo, e che è il guaio peggiore che abbiano.',
         en: 'He swims like a man rather than a frog, which is why the crew notices him at all, and Luffy’s first thought is dinner. When the sea train comes he does not move: he squares up on the rails and takes the full blow. At the station they say there is no killing him, and that he is the worst trouble they have.',
       },
+      status: [{ episode: 229, value: 'alive' }],
       affiliation: [
         {
           episode: 248,
@@ -879,6 +887,7 @@ export const waterSeven: Saga = {
         it: 'Guida la Galley-La Company, che costruisce le navi migliori del mare, e la città intera lo tratta come una cosa propria. Riceve i clienti con calma, chiama tutti per nome e tiene un topolino di nome Tyrannosaurus nella tasca della giacca. Quando gli chiedono di valutare una caravella malridotta, risponde senza addolcire nulla.',
         en: 'He runs the Galley-La Company, which builds the best ships on the sea, and the whole city treats him as its own. He receives customers calmly, calls everyone by name, and keeps a mouse called Tyrannosaurus in his coat pocket. Asked to look over a battered caravel, he gives his verdict without softening a word of it.',
       },
+      status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         {
           episode: 230,
@@ -896,6 +905,16 @@ export const waterSeven: Saga = {
         it: 'Dirige gli operai del Dock 1 con un sigaro in bocca e una matassa di corda alla cintura, e nessuno in cantiere lavora più in fretta di lui. Ha debiti di gioco in mezza città e passa metà della giornata a scappare da chi li riscuote. Basta una gonna corta perché gridi all’oscenità e si copra gli occhi.',
         en: 'He runs the men of Dock One with a cigar in his teeth and a coil of rope at his belt, and nobody in the yard works faster. He owes gambling debts across half the city and spends half his day dodging the people who collect them. One short skirt is enough to make him shout about indecency and cover his eyes.',
       },
+      status: [
+        { episode: 232, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [{ episode: 232, value: GALLEY_LA_DOCK_ONE }],
       origin: [{ episode: 232, value: WATER_SEVEN }],
     },
@@ -908,6 +927,7 @@ export const waterSeven: Saga = {
         it: 'Sta alla Stazione Shift, da cui parte l’unico treno che attraversa il mare, e beve dalla mattina con la faccia di chi ha già visto tutto. Ride forte, dà del ragazzino a chiunque e dell’isola sa molto più di quanto lasci intendere. La nipotina le corre intorno tutto il giorno e lei non se ne preoccupa mai.',
         en: 'She sits at Shift Station, where the only train that crosses the sea departs, and drinks from the morning on with the face of someone who has seen it all. She laughs loudly, calls everyone a kid, and knows far more about the island than she lets on. Her granddaughter runs circles around her all day and she never once worries.',
       },
+      status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         {
           episode: 230,
@@ -928,6 +948,7 @@ export const waterSeven: Saga = {
         it: 'Corre sui binari della Stazione Shift e non ha paura di niente, nemmeno del mare che arriva fin sulla banchina. La segue sempre Gonbe, un animale che miagola ma sembra un coniglio e mangia l’erba. Conosce i passaggi della città meglio degli adulti e li indica volentieri a chi si perde.',
         en: 'She runs along the rails of Shift Station and is frightened of nothing, not even the sea coming up over the platform. Gonbe follows her everywhere, an animal that meows but looks like a rabbit and eats grass. She knows the city’s back ways better than the grown-ups and gladly points them out.',
       },
+      status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         {
           episode: 230,
@@ -945,6 +966,7 @@ export const waterSeven: Saga = {
         it: 'Lavora al Dock 1 con gli altri caposquadra e si arrampica ovunque, con una calma che non lo abbandona nemmeno a venti metri d’altezza. Parla poco e con una cadenza tutta sua, e quando gli chiedono di valutare una nave dice quello che pensa senza girarci intorno. A Water Seven nessuno trova strano che un maestro d’ascia passi la giornata sui tetti.',
         en: 'He works Dock One alongside the other foremen and climbs anything, with a calm that does not leave him twenty metres up either. He speaks little, in a drawl of his own, and when he is asked to price a ship he says what he thinks without dressing it up. Nobody in Water Seven finds it odd that a shipwright spends his day on the rooftops.',
       },
+      status: [{ episode: 231, value: 'alive' }],
       affiliation: [
         { episode: 231, value: GALLEY_LA_DOCK_ONE },
         { episode: 244, value: CIPHER_POL_9 },
@@ -980,6 +1002,7 @@ export const waterSeven: Saga = {
         it: 'Quando al Dock 1 si raduna la folla, è al fianco di Iceburg e gli spiega cosa succede: i pirati a cui il cantiere ha appena riparato la nave dicono che non pagheranno. Lei lo definisce una molestia sessuale, e Iceburg è d’accordo. Porta gli occhiali e i capelli raccolti in uno chignon.',
         en: 'When a crowd gathers at Dock One, she is at Iceburg’s side and tells him what is going on: the pirates whose ship the yard has just repaired say they won’t pay. She calls it sexual harassment, and Iceburg agrees. She wears glasses and her hair up in a bun.',
       },
+      status: [{ episode: 230, value: 'alive' }],
       affiliation: [
         {
           episode: 230,
@@ -998,6 +1021,7 @@ export const waterSeven: Saga = {
         it: 'Gestisce un bar nel centro di Water Seven e lucida i bicchieri dietro un lungo bancone, con le bottiglie sugli scaffali alle spalle e gli sgabelli davanti. Franky è un cliente fisso: entra chiedendo di riempirgli di cola le bottiglie, e Blueno gli domanda prima se ha i soldi. Kiwi e Mozu hanno ancora un milione di berry, così Franky offre da bere a tutto il locale. Anche Kokoro è nel locale e attacca discorso con Franky, e molte delle voci che girano in città partono dal suo bancone.',
         en: 'He runs a bar in downtown Water Seven and polishes the glasses behind a long counter, with bottles on the shelves at his back and stools along the front. Franky is a regular: he walks in asking for his cola bottles to be filled, and Blueno asks whether he has any money first. Kiwi and Mozu still have a million berries left, so Franky buys a round for the whole bar. Kokoro is in the bar too and strikes up a talk with Franky, and a good deal of the town’s gossip starts at his counter.',
       },
+      status: [{ episode: 240, value: 'alive' }],
       affiliation: [
         {
           episode: 240,
@@ -1017,6 +1041,7 @@ export const waterSeven: Saga = {
         it: 'Sta appollaiato sulla spalla di Lucci al Dock 1 e parla lui: chiede scusa ai clienti e rimprovera Pauly, mentre il padrone tiene la bocca chiusa. È Nami a capire il trucco: la voce è di Lucci, da ventriloquo, e l’uccello si limita a muovere becco e ali a tempo. Pauly non ci fa più caso, perché per quanto ne sa il cantiere Lucci ha sempre parlato attraverso il suo piccione.',
         en: 'He perches on Lucci’s shoulder at Dock One and does the talking, apologising to customers and telling Paulie off, while his master keeps his mouth shut. Nami is the one who works out the trick: the voice is Lucci’s, thrown like a ventriloquist’s, and the bird only moves his beak and wings in time with it. Paulie shrugs it off, because as far as the dock is concerned Lucci has always talked through his pigeon.',
       },
+      status: [{ episode: 232, value: 'alive' }],
       affiliation: [
         {
           episode: 232,
@@ -1048,6 +1073,16 @@ export const waterSeven: Saga = {
         it: 'Sono le due sorelle che tengono in riga la banda di smantellatori sotto il ponte, con i capelli tagliati a squadra e due katana dalla guardia quadrata. Finiscono le frasi l’una dell’altra e ripetono a memoria gli ordini del capo. Quando c’è da spostare qualcosa di grosso, arrivano loro per prime.',
         en: 'They are the two sisters who keep the gang of dismantlers under the bridge in order, hair cut square and katanas with square guards. They finish each other’s sentences and repeat their boss’s orders word for word. When something heavy has to be shifted, they are the first to arrive.',
       },
+      status: [
+        { episode: 265, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 265,
@@ -1066,6 +1101,16 @@ export const waterSeven: Saga = {
         it: 'Comanda la banda ogni volta che il capo sparisce, e gli smantellatori lo ascoltano perché urla più forte di tutti. Porta un bazooka ed è ancora fasciato dopo la rissa con i Cappello di Paglia, e tratta ogni relitto come merce da portare via prima di sera. Del capo parla con un’ammirazione che non nasconde nemmeno davanti agli estranei.',
         en: 'He runs the gang whenever the boss disappears, and the dismantlers listen because he shouts louder than any of them. He carries a bazooka and is still bandaged from the fight with the Straw Hats, and treats every wreck as goods to be hauled off before dark. He speaks of his boss with an admiration he does not hide from strangers.',
       },
+      status: [
+        { episode: 266, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 266,
@@ -1085,6 +1130,16 @@ export const waterSeven: Saga = {
         it: 'È uno dei caposquadra del Dock 1, con Pauly, Kaku e Lucci, e quando dei funzionari del Governo si presentano da Iceburg è il primo a chiedere il permesso di cacciarli. Porta occhiali scuri e un ciuffo di capelli che gli sta dritto in testa. Non è l’uomo più attento del cantiere: tornando al lavoro ha incrociato la Franky Family che si portava via un tizio dal naso lungo, e l’ha preso per Kaku.',
         en: 'He is one of the foremen of Dock One, with Paulie, Kaku and Lucci, and when government officials turn up to see Iceburg he is the first to ask leave to throw them out. He wears dark glasses and a tuft of hair that sticks straight up off his head. He is not the most observant man in the yard: on his way back he passed the Franky Family carrying off a long-nosed man, and took him for Kaku.',
       },
+      status: [
+        { episode: 233, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [{ episode: 233, value: GALLEY_LA_DOCK_ONE }],
     },
     'corgi': {
@@ -1097,6 +1152,7 @@ export const waterSeven: Saga = {
         it: 'Si presenta alla Galley-La con due colleghi e chiede di parlare con Iceburg in privato, senza mai dire ad alta voce che cosa cerchi: soltanto «quella cosa». Iceburg lo respinge ogni volta, e ogni volta lui se ne va più arrabbiato di quando è arrivato. Dopo quest’ultima visita Iceburg ammette con Califa che l’oggetto di tante offerte ce l’ha davvero.',
         en: 'He arrives at Galley-La with two colleagues and asks to see Iceburg in private, and he never says aloud what he is after, only “it”. Iceburg turns him down every time, and every time he leaves angrier than he came. After this latest visit Iceburg admits to Kalifa that the thing behind all those offers really is in his hands.',
       },
+      status: [{ episode: 234, value: 'alive' }],
       affiliation: [
         {
           episode: 234,
@@ -1151,6 +1207,16 @@ export const waterSeven: Saga = {
         it: 'È l’ultimo dei caposquadra del Dock 1 a essere presentato, e il più rumoroso: non sa dare una notizia, buona o cattiva, senza urlarla. Quando sente che Iceburg si è svegliato piomba nella stanza gridando, e Pauly lo rispedisce fuori per il baccano. In cantiere è più utile, e con un tronco intero spazza via Franky da una rissa.',
         en: 'He is the last of the Dock One foremen to be introduced, and the loudest: he cannot deliver news, good or bad, without bellowing it. When he hears that Iceburg is awake he charges into the room shouting, and Paulie sends him straight back out for the noise. In the yard he is more use, and swings a whole log to knock Franky out of a fight.',
       },
+      status: [
+        { episode: 238, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [{ episode: 238, value: GALLEY_LA_DOCK_ONE }],
     },
     'tom': {
@@ -1189,6 +1255,7 @@ export const waterSeven: Saga = {
         it: 'Arriva dal Cipher Pol N. 5 a cercare Tom, e il saluto di cannone di Franky lo colpisce prima che finisca di dire il suo nome. Vuole i progetti di un’arma antica perché il Governo possa respingere la grande era dei pirati, e quando Tom gli dice di non averli fa venire altri cinque agenti. Poi usa le navi da guerra di Franky per attaccare la nave giudiziaria, e la colpa ricade su Tom’s Workers.',
         en: 'He comes from Cipher Pol No. 5 looking for Tom, and Franky’s cannon salute hits him before he can finish saying his name. He wants the blueprints of an ancient weapon so the Government can push back the Great Pirate Era, and when Tom says he has none he calls in five more agents. Then he uses Franky’s battleships to raid the Judicial Ship, and the blame falls on Tom’s Workers.',
       },
+      status: [{ episode: 249, value: 'alive' }],
       affiliation: [
         {
           episode: 249,
@@ -1215,6 +1282,7 @@ export const waterSeven: Saga = {
         it: 'Comanda gli agenti del Governo che sorvegliano l’ultima carrozza del treno del mare, ed è così grosso che il suo busto ne riempie il soffitto. Quando un intruso fa irruzione, dice ai suoi uomini che non serve disturbare il CP9 per una cosa così piccola, e si presenta come il campione imbattuto di pugilato del South Blue. La carrozza stretta non si addice al suo stile: i suoi pugni finiscono sui suoi stessi agenti, e un calcio dell’intruso basta a metterlo fuori combattimento.',
         en: 'He is in charge of the government agents guarding the last car of the sea train, and he is so big that his upper body fills its ceiling. When an intruder breaks in, he tells his men there is no need to trouble CP9 with something so small, and announces himself as the South Blue’s undefeated boxing champion. The cramped car does not suit his style: his punches land on his own agents, and one kick from the intruder finishes him.',
       },
+      status: [{ episode: 253, value: 'alive' }],
       affiliation: [
         {
           episode: 253,
@@ -1235,6 +1303,7 @@ export const waterSeven: Saga = {
         it: 'Fa la guardia alla quarta carrozza del treno che porta via Robin, e chi vuole arrivare a lei deve passare prima da lui. Schiva colpi di pistola e calci con un ghigno, poi giura di aver creduto che il cuore gli saltasse fuori dal petto. Si definisce un cuoco, e Sanji gli risponde che un cuoco vero si comporterebbe con più dignità.',
         en: 'He guards the fourth car of the train taking Robin away, and anyone who wants to reach her has to get past him first. He dodges bullets and kicks with a grin, then swears he thought his heart would leap out of his chest. He calls himself a chef, and Sanji tells him that a real one would carry himself with more dignity.',
       },
+      status: [{ episode: 258, value: 'alive' }],
       affiliation: [
         { episode: 258, value: { it: 'Cipher Pol 7', en: 'Cipher Pol 7' } },
       ],
@@ -1247,6 +1316,13 @@ export const waterSeven: Saga = {
         it: 'Si presenta come Nero la Donnola di mare, e si becca un pugno a tradimento appena Franky gli dice di guardare dall’altra parte. Si muove con le stesse tecniche degli altri agenti: sparisce in uno scatto, si piega attorno ai colpi e scalcia lame d’aria. Salta perfino giù dal treno, sopra il mare aperto, e ci risale camminando sull’aria.',
         en: 'He introduces himself as Nero the Sea Weasel, and takes a sucker punch the moment Franky tells him to look the other way. He moves with the same techniques as the other agents: he vanishes in a burst of speed, bends around blows and kicks out blades of air. He even jumps off the train over the open sea and climbs back up walking on the air.',
       },
+      status: [
+        { episode: 259, value: 'alive' },
+        // Episode 262 adapts chapter 373: Lucci stabs him in the back with
+        // Shigan and throws him out of the window into the sea. The story
+        // never comes back to him.
+        { episode: 262, chapter: 373, value: 'unknown' },
+      ],
       affiliation: [
         { episode: 259, value: CIPHER_POL_9 },
         {
@@ -1299,6 +1375,7 @@ export const waterSeven: Saga = {
         it: 'Tornato a Enies Lobby con Kumadori e Fukuro, deve rendere conto di una missione in cui sono morte molte più persone delle tre che dovevano eliminare. Dice a Kumadori che un uomo non si scusa così facilmente, e si offre di spiegare lui stesso tutto al capo. Quando Fukuro ammette di aver parlato del piano in giro per la città, Jabura gli chiede a cosa serva la cerniera che ha sulla bocca, e quando il tentativo di harakiri di Kumadori si ferma contro il suo stesso Tekkai, gli dice di morire e basta. Porta una giacca nera aperta su una cravatta nera, una fascia rossa in vita e i capelli raccolti in una lunga treccia.',
         en: 'Back at Enies Lobby with Kumadori and Fukurou, he has to answer for a mission in which far more people died than the three they were sent to kill. He tells Kumadori that a man does not apologise so easily, and offers to explain it all to the chief himself. When Fukurou admits he talked about the plan all over town, Jabra asks him what the zip on his mouth is for, and when Kumadori’s attempt at hara-kiri stops against his own Tekkai, Jabra tells him to just die. He wears a black tunic open over a black tie, a red sash at the waist, and his hair in a long braid.',
       },
+      status: [{ episode: 264, value: 'alive' }],
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
       devilFruit: [{ episode: 286, value: ['dog-dog-fruit-model-wolf'] }],
     },
@@ -1308,6 +1385,7 @@ export const waterSeven: Saga = {
         it: 'Entra in scena declamando, chiama in causa la madre a ogni occasione e piange sul proprio destino davanti a chiunque. Combatte con un bastone e con i capelli, che manovra come due braccia in più. Quando ritiene di avere fallito tenta subito di togliersi la vita, senza mai riuscirci, e riprende a recitare.',
         en: 'He makes his entrance declaiming, invokes his mother at every opportunity, and weeps over his own fate in front of anyone at all. He fights with a staff and with his hair, which he works like a second pair of arms. Whenever he decides he has failed he tries at once to take his own life, never manages it, and goes back to performing.',
       },
+      status: [{ episode: 264, value: 'alive' }],
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
     'fukurou': {
@@ -1316,6 +1394,7 @@ export const waterSeven: Saga = {
         it: 'Ha una cerniera sulla bocca che apre e chiude di continuo, e ogni volta che la apre racconta qualcosa che avrebbe dovuto tenere per sé. Ride con un verso tutto suo, ripetuto a ogni battuta, e nonostante la stazza si muove più in fretta di quanto chiunque si aspetti. Sa a memoria i numeri e i livelli di tutti gli agenti dell’unità.',
         en: 'A zip runs across his mouth and he opens and shuts it constantly, and every time it opens he gives away something he was meant to keep. He laughs with a noise of his own, repeated after every remark, and for all his bulk he moves faster than anyone expects. He knows every agent’s number and rating in the unit by heart.',
       },
+      status: [{ episode: 264, value: 'alive' }],
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
     },
     'sodom-and-gomorrah': {
@@ -1328,6 +1407,16 @@ export const waterSeven: Saga = {
         it: 'Escono a nuoto da Water Seven legati alla barca della Franky Family, che è agganciata al Rocketman lanciato sui binari. Prendono ordini da Zanbai come tutti gli altri della famiglia. Quando la ciurma arriva all’isola giudiziaria, è lui a mandarli a saltare la recinzione e ad abbattere il cancello.',
         en: 'They swim out of Water Seven harnessed to the Franky Family’s boat, which is hooked to the Rocketman as it races along the rails. They take their orders from Zambai like everyone else in the family. When the crew reaches the judicial island, he is the one who sends them to jump the fence and break down the gate.',
       },
+      status: [
+        { episode: 264, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [
         { episode: 264, value: { it: 'Franky Family', en: 'Franky Family' } },
       ],
@@ -1338,6 +1427,16 @@ export const waterSeven: Saga = {
         it: 'Stanno davanti al cancello di Enies Lobby e fermano chiunque provi a entrare, uno con una clava e l’altro con una grande ascia. Lavorano per il Governo Mondiale da anni e non hanno mai discusso un ordine. Vengono da un’isola di guerrieri e si comportano ancora come tali.',
         en: 'They stand in front of the gate of Enies Lobby and stop anyone who tries to pass, one with a club and one with a broad axe. They have worked for the World Government for years and have never questioned an order. They come from an island of warriors and still carry themselves like it.',
       },
+      status: [
+        { episode: 265, value: 'alive' },
+        // Episode 307 adapts chapters 424 and 425: the warships at the main
+        // gate blast the group off the cliff and report the pirates there
+        // wiped out.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: the whole group turns out to have
+        // survived, caught below the cliff by Paulie’s ropes.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 265,
@@ -1366,6 +1465,7 @@ export const waterSeven: Saga = {
         it: 'Presiede il tribunale di Enies Lobby, un’unica figura altissima con tre teste e tre cappelli diversi. Con l’isola sotto attacco e Spandam irraggiungibile, la difesa ricade su di lui. Viene a sapere che uno dei giganti del cancello è a terra e l’altro sta cedendo, e manda al fronte cento uomini della guardia del tribunale.',
         en: 'He presides over the courthouse of Enies Lobby, a single towering figure with three heads under three different hats. With the island under attack and Spandam out of reach, the defence falls to him. He hears that one of the giants at the gate is down and the other is losing, and sends a hundred men of the Watchdog Unit of the Law to the front.',
       },
+      status: [{ episode: 267, value: 'alive' }],
       affiliation: [
         {
           episode: 267,
@@ -1450,6 +1550,7 @@ export const waterSeven: Saga = {
         it: 'Viene a Ohara per dimostrare che gli studiosi indagano sul Secolo Buio, e perché nessun altro al mondo ci provi più. Quando un colpo di fucile gli trapassa la manica grida di essere spacciato, finché uno dei suoi uomini non gli fa notare che il proiettile ha preso solo la stoffa. Poi fa atterrare la donna che ha sparato e la fa portare davanti agli studiosi catturati come prova della loro colpa. Alle sue spalle, le navi da guerra del Governo aspettano al largo un suo ordine.',
         en: 'He comes to Ohara to prove the scholars have been studying the Void Century, and to make sure nobody anywhere tries it again. When a rifle shot goes through his sleeve he cries that he is done for, until one of his men points out that the bullet only caught the cloth. Then he has the woman who fired it knocked down and brought before the captured scholars as proof of their guilt. Behind him, the Government’s warships wait offshore for his word.',
       },
+      status: [{ episode: 276, value: 'alive' }],
       affiliation: [
         {
           episode: 276,
@@ -1501,6 +1602,7 @@ export const waterSeven: Saga = {
         it: 'È un elefante finché Spandam vuole compagnia e una sciabola appena vuole un’arma. Quando i Cappello di Paglia irrompono nella Torre della Giustizia, Spandam lo chiama e l’elefante si ritrae in una lama con due zanne sull’elsa. Spandam spiega a Robin che la spada ha mangiato un frutto del diavolo di tipo Zoan, quello dell’elefante, e ora è tutte e due le cose.',
         en: 'He is an elephant as long as Spandam wants company and a cutlass the moment he wants a weapon. When the Straw Hats break into the Tower of Justice, Spandam calls him, and the elephant shrinks into a blade with two tusks at the guard. Spandam explains to Robin that the sword has eaten a Zoan-type Devil Fruit, the elephant one, and is now both at once.',
       },
+      status: [{ episode: 285, value: 'alive' }],
       affiliation: [
         {
           episode: 285,
