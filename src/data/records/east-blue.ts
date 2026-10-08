@@ -1009,6 +1009,7 @@ export const eastBlue: Saga = {
         it: 'Governa la sua nave con una mazza chiodata e una domanda sola, ripetuta finché qualcuno non risponde che la più bella di tutti i mari è lei. Da due anni terrorizza un tratto d’acqua in cui nessun altro pirata si azzarda a entrare. Il primo ragazzo che le dice in faccia di non avere idea di chi sia la manda a volare oltre l’orizzonte.',
         en: 'She runs her ship with a spiked club and a single question, repeated until somebody answers that the most beautiful woman on any sea is her. For two years she has terrorised a stretch of water no other pirate will enter. The first boy who tells her to her face that he has never heard of her sends her flying past the horizon.',
       },
+      status: [{ episode: 1, value: 'alive' }],
       affiliation: [
         {
           episode: 1,
@@ -1105,6 +1106,7 @@ export const eastBlue: Saga = {
         it: 'Non ha alcun grado e nessuno glielo chiede: basta il nome di suo padre perché i marinai della base chiudano gli occhi su tutto. Ha promesso a un prigioniero legato nel cortile di liberarlo dopo un mese di digiuno, e si diverte a raccontare in giro che non ha nessuna intenzione di mantenere la parola. Chi lo contraddice finisce davanti a una condanna a morte firmata da suo padre.',
         en: 'He holds no rank and nobody asks him to: his father’s name is enough for the Marines of the base to look the other way. He promised the prisoner tied up in the yard his freedom after a month without food, and enjoys telling people he has no intention of keeping his word. Anyone who argues ends up in front of an execution notice signed by his father.',
       },
+      status: [{ episode: 2, value: 'alive' }],
       affiliation: [
         {
           episode: 2,
@@ -1147,6 +1149,16 @@ export const eastBlue: Saga = {
         it: 'Ha fatto scolpire una statua di sé stesso e costringe i suoi uomini a issarla sul tetto della base, perché il grado e la gloria per lui sono la stessa cosa. Chi discute un suo ordine viene giustiziato, e chi lo esegue male anche. La città lo mantiene con tributi che non ha mai chiesto a nessuno il permesso di riscuotere.',
         en: 'He has had a statue of himself carved and makes his men haul it onto the roof of the base, because rank and glory are the same thing to him. Anyone who questions an order is executed, and so is anyone who carries it out badly. The town keeps him fed with tribute he never asked anyone’s permission to collect.',
       },
+      status: [
+        { episode: 2, value: 'alive' },
+        // Episode 3 adapts chapter 7: once Zoro cuts him down, his own men
+        // cheer, arrest him and hold him in the base he commanded.
+        { episode: 3, chapter: 7, value: 'imprisoned' },
+        // Episode 68 adapts the Koby-Meppo cover story: on the way to his
+        // court-martial Morgan slashes Garp, takes Helmeppo hostage and
+        // sails off in a lifeboat, the cover of chapter 96.
+        { episode: 68, chapter: 96, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 2,
@@ -1222,6 +1234,7 @@ export const eastBlue: Saga = {
         it: 'Il suo locale è l’unico del villaggio, e per un anno intero una ciurma di pirati ci ha bevuto dentro senza che lei alzasse mai la voce. Asciuga il bancone, ride alle battute e non giudica nessuno, nemmeno il bambino che urla di voler diventare un pirata. Quando i banditi di montagna entrano a rovinare tutto, è lei a finire per terra fra i cocci.',
         en: 'Hers is the only bar in the village, and for a whole year a pirate crew drank in it without her once raising her voice. She wipes the counter, laughs at the jokes and judges nobody, not even the boy who shouts that he will be a pirate. When the mountain bandits come in and wreck the place, she is the one left on the floor among the broken glass.',
       },
+      status: [{ episode: 4, value: 'alive' }],
       affiliation: [
         {
           episode: 4,
@@ -1247,6 +1260,7 @@ export const eastBlue: Saga = {
         it: 'Sta in disparte con la sigaretta accesa mentre gli altri bevono, e parla solo quando c’è qualcosa da dire. Quando una ciurma pirata punta i cannoni sulla taverna, gli basta appoggiarsi al bancone e spiegare con calma quanti uomini ha già messo a terra perché nella sala cali il silenzio. Il suo capitano lo ascolta più di chiunque altro.',
         en: 'He stands apart with a cigarette while the others drink, and speaks only when there is something to say. When a pirate crew turns its guns on the tavern, he leans on the counter and calmly explains how many men he has already put down, and the room goes quiet. His captain listens to him more than to anyone else.',
       },
+      status: [{ episode: 4, value: 'alive' }],
       affiliation: [
         {
           episode: 4,
@@ -1266,6 +1280,7 @@ export const eastBlue: Saga = {
         it: 'Ride più forte di tutti, mangia più di tutti e sembra il meno pericoloso della tavolata. Quando però un bandito di montagna punta una pistola in faccia al suo capitano, è lui a muoversi per primo, con il cosciotto ancora in una mano. Nessuno alla taverna lo ha visto prendere la mira, e dopo quel giorno nessuno discute più con quella ciurma.',
         en: 'He laughs loudest, eats most and looks the least dangerous man at the table. But when a mountain bandit puts a pistol in his captain’s face, he is the one who moves first, the joint of meat still in one hand. Nobody in the tavern saw him take aim, and after that day nobody argues with the crew.',
       },
+      status: [{ episode: 4, value: 'alive' }],
       affiliation: [
         {
           episode: 4,
@@ -1279,6 +1294,7 @@ export const eastBlue: Saga = {
         it: 'Ha lasciato il villaggio e un figlio piccolo per salire su una nave pirata, e parla di quel bambino a Rufy finché Rufy non si annoia. Con la pistola non sbaglia: si vanta di poter staccare con un colpo le antenne a una formica senza toccarne il resto. Alla taverna beve con gli altri.',
         en: 'He left a village and a small son to board a pirate ship, and he talks to Luffy about that boy until Luffy is bored of it. With a pistol he does not miss: he boasts he can shoot the antennae off an ant without touching the rest of it. At the tavern he drinks with the others.',
       },
+      status: [{ episode: 9, value: 'alive' }],
       affiliation: [
         {
           episode: 9,
@@ -1298,6 +1314,7 @@ export const eastBlue: Saga = {
         it: 'Scende dalla montagna con i suoi uomini quando le provviste finiscono e prende quello che vuole, perché in paese nessuno ha armi. Ha ucciso più di cinquanta persone e lo dice come un altro direbbe il proprio mestiere. Alla taverna trova una ciurma di pirati che ride invece di reagire, e si convince di avere davanti dei codardi.',
         en: 'He comes down from the mountains with his men when the stores run out and takes what he wants, because nobody in the village is armed. He has killed more than fifty people and says so the way another man names his trade. In the tavern he finds a pirate crew that laughs instead of fighting back, and decides he is looking at cowards.',
       },
+      status: [{ episode: 4, value: 'deceased' }],
       affiliation: [
         {
           episode: 4,
@@ -1411,6 +1428,7 @@ export const eastBlue: Saga = {
         it: 'Sostiene che nessun animale gli abbia mai disobbedito e porta in giro un leone di nome Richi come prova. Perlustra la città svuotata per conto del suo capitano, cercando chi si nasconde ancora nelle case. Il primo cane che incontra, seduto davanti a un negozio chiuso, non si sposta di un passo, e lui scopre che la sua parola non vale su tutti.',
         en: 'He claims no animal has ever disobeyed him, and carries a lion named Richie about as proof. He sweeps the emptied town for his captain, looking for whoever is still hiding in the houses. The first dog he meets, sitting outside a shut-up shop, does not move a step, and he learns that his word does not carry with everyone.',
       },
+      status: [{ episode: 6, value: 'alive' }],
       affiliation: [
         {
           episode: 6,
@@ -1476,6 +1494,7 @@ export const eastBlue: Saga = {
         it: 'Non scende mai dal suo monociclo, nemmeno per duellare, e usa ogni trucco da circo che conosce: fumo, fuoco, sabbia negli occhi. L’unica cosa che trova disonorevole è perdere. Quando un avversario ferito si rifiuta di arrendersi, lui colpisce per prime le ferite e chiama strategia quello che tutti gli altri chiamano viltà.',
         en: 'He never gets off his unicycle, not even to duel, and uses every circus trick he knows: smoke, fire, sand in the eyes. The only thing he finds dishonourable is losing. When a wounded opponent refuses to yield, he goes for the wounds first and calls strategy what everyone else calls cowardice.',
       },
+      status: [{ episode: 7, value: 'alive' }],
       affiliation: [
         {
           episode: 7,
@@ -1545,6 +1564,7 @@ export const eastBlue: Saga = {
         it: 'Ha ereditato una grande casa e il patrimonio dei genitori. Il maggiordomo tiene fuori il bugiardo del villaggio e mette due guardie al cancello: dice che proteggerla è il suo dovere verso il padre di lei, che non c’è più. L’unica cosa che aspetta davvero è la voce sotto la finestra di un ragazzo che le racconta mari che non ha mai visto.',
         en: 'She has inherited a large house and her parents’ fortune. Her butler keeps the village liar out and two guards at the gate, saying he owes it to her late father to keep her safe. The only thing she truly waits for is the voice under her window, a boy telling her about seas he has never seen.',
       },
+      status: [{ episode: 9, value: 'alive' }],
       affiliation: [
         {
           episode: 9,
@@ -1565,6 +1585,7 @@ export const eastBlue: Saga = {
         it: 'Da tre anni serve la padrona della villa sotto il nome di Klahadore. Si rimette di continuo gli occhiali sul naso. Il piano che sta eseguendo è cominciato prima che il villaggio sapesse il suo nome, e non prevede testimoni.',
         en: 'For three years he has served the mistress of the mansion under the name Klahadore. He keeps pushing his glasses back up his nose. The plan he is carrying out began before the village knew his name, and it allows for no witnesses.',
       },
+      status: [{ episode: 12, value: 'alive' }],
       affiliation: [
         {
           episode: 12,
@@ -1592,6 +1613,7 @@ export const eastBlue: Saga = {
         it: 'Conta fino a uno facendo dondolare un anello, e chi lo guarda fa esattamente quello che dice, compreso lui stesso. È arrivato al villaggio camminando all’indietro in mezzo alla strada. È venuto a incontrare il suo vecchio capitano, che ora vive lì da maggiordomo.',
         en: 'He counts down to one with a swinging ring, and whoever watches does exactly what he says, himself included. He came into the village walking backwards down the middle of the road. He has come to meet his old captain, who now lives there as a butler.',
       },
+      status: [{ episode: 10, value: 'alive' }],
       affiliation: [
         {
           episode: 10,
@@ -1605,6 +1627,7 @@ export const eastBlue: Saga = {
         it: 'Consegna a Klahadore il regalo della sua giovane padrona per i suoi tre anni nella villa, e resta sconvolto da quello che Klahadore ne fa. Più tardi lei lo trova ferito. Le dice che è stato Klahadore, che in realtà è un pirata e che le si è avvicinato per il patrimonio di famiglia.',
         en: 'He hands Klahadore a present from his young mistress for his third year in the house, and is shocked by what Klahadore does with it. Later she finds him cut down. He tells her Klahadore did it, that Klahadore is really a pirate, and that he got close to her for the family fortune.',
       },
+      status: [{ episode: 13, value: 'alive' }],
       affiliation: [
         {
           episode: 13,
@@ -1704,6 +1727,7 @@ export const eastBlue: Saga = {
         it: 'È arrivato sull’isola da giovane con una ciurma, è caduto in una fenditura ed è rimasto incastrato dentro un baule, e la nave è ripartita senza di lui. Da vent’anni aspetta di aprire i forzieri che vede sulla scogliera, convinto che dentro ci sia il tesoro per cui ha perso tutto. Nel frattempo ha fatto amicizia con ogni animale dell’isola.',
         en: 'He came ashore young with a crew, fell into a crevice and wedged himself inside a chest, and the ship sailed without him. For twenty years he has been waiting to open the strongboxes he can see on the cliff, certain that the treasure he lost everything for is inside them. In the meantime he has befriended every animal on the island.',
       },
+      status: [{ episode: 18, value: 'alive' }],
       affiliation: [
         {
           episode: 18,
@@ -1738,6 +1762,7 @@ export const eastBlue: Saga = {
         it: 'Dice di aver ucciso più pirati di quanti ne possa contare, e piomba sulla nave della ciurma gridando che un pirata senza nome ha cercato di uccidere il suo socio. Poi riconosce lo spadaccino con tre spade e lo chiama fratellone. Lo spadaccino lo chiama per nome e gli chiede dove sia Yosaku.',
         en: 'He says he has killed more pirates than he can count, and he storms the crew’s ship shouting that some nameless pirate tried to kill his partner. Then he recognises the swordsman with three swords and calls him big brother. The swordsman knows him by name and asks where Yosaku is.',
       },
+      status: [{ episode: 19, value: 'alive' }],
       affiliation: [
         {
           episode: 19,
@@ -1754,6 +1779,7 @@ export const eastBlue: Saga = {
         it: 'Caccia pirati insieme a Johnny, e un tempo lavorava con lo spadaccino con tre spade. Diventa pallido e perde i sensi, i denti gli cadono e le vecchie ferite sanguinano di nuovo, e nessuno dei due sa perché: è scorbuto, e basta il succo di lime. Rimesso in piedi, indica alla ciurma con il socio un ristorante galleggiante dove cercare un cuoco.',
         en: 'He hunts pirates with Johnny, and once worked with the swordsman with three swords. He turns pale and passes out, his teeth falling out and his old wounds bleeding again, and neither of them knows why: it is scurvy, and lime juice is enough. Back on his feet, he and his partner point the crew to a floating restaurant where they might find a cook.',
       },
+      status: [{ episode: 20, value: 'alive' }],
       affiliation: [
         {
           episode: 20,
@@ -1806,6 +1832,7 @@ export const eastBlue: Saga = {
         it: 'Comanda il suo ristorante galleggiante come si comanda una nave, a urla e a calci, e nessun cuoco osa rispondergli. Ha una gamba di legno e non spiega a nessuno come l’ha persa. A bordo vale una regola sola, che nemmeno lui si permette di discutere: nessuno che abbia fame se ne va senza mangiare, pirata o marinaio che sia.',
         en: 'He runs his floating restaurant the way a ship is run, by shouting and by kicking, and no cook dares answer back. He has a peg leg and explains to nobody how he lost it. One rule holds aboard, and not even he argues with it: nobody who is hungry leaves without eating, pirate or Marine.',
       },
+      status: [{ episode: 20, value: 'alive' }],
       affiliation: [
         {
           episode: 20,
@@ -1830,6 +1857,16 @@ export const eastBlue: Saga = {
         it: 'Fugge dalla Marina, che lo tiene da tre giorni senza mangiare, e arriva al ristorante quasi morto di fame. Al cuoco che gli chiede se può pagare offre una pallottola. Il riso fritto che il vice-cuoco gli porta fuori lo fa piangere. Prima di andarsene consiglia al ragazzo con il cappello di paglia di non andare nella Rotta Maggiore, e promette al cuoco che non lo dimenticherà.',
         en: 'He escapes the Marines, who have held him three days without food, and reaches the restaurant half dead of hunger. When a cook asks whether he can pay, he offers a bullet. The fried rice the sous-chef brings out to him makes him cry. Before he leaves he warns the boy in the straw hat to stay out of the Grand Line, and promises the cook he will not forget this.',
       },
+      status: [
+        { episode: 21, value: 'alive' },
+        // Episode 29 adapts chapter 67: still poisoned by the MH5 gas, said
+        // to kill within the hour, he sails off with Krieg and the story
+        // leaves him there.
+        { episode: 29, chapter: 67, value: 'unknown' },
+        // Episode 1150 adapts chapter 1117, where he is on Hachinosu with
+        // Krieg and Pearl, listening to Vegapunk's broadcast.
+        { episode: 1150, chapter: 1117, value: 'alive' },
+      ],
       affiliation: [
         { episode: 21, value: { it: 'Pirati di Creek', en: 'Krieg Pirates' } },
         {
@@ -1901,6 +1938,7 @@ export const eastBlue: Saga = {
         it: 'Ha messo insieme la flotta più grande dell’East Blue issando bandiera bianca e attaccando chiunque si avvicinasse. È entrato nella Rotta Maggiore con cinquanta navi e ne è uscito con una sola, ridotta a un relitto, e non vuole dire che cosa l’abbia distrutta. Appena rimesso in piedi, ordina ai suoi uomini di prendersi il ristorante che gli ha dato da mangiare.',
         en: 'He built the largest fleet in the East Blue by running up a white flag and attacking whoever came close. He entered the Grand Line with fifty ships and came out with one wreck, and will not say what destroyed it. The moment he is back on his feet, he orders his men to take the restaurant that fed him.',
       },
+      status: [{ episode: 22, value: 'alive' }],
       affiliation: [
         {
           episode: 22,
@@ -1932,6 +1970,7 @@ export const eastBlue: Saga = {
         it: 'Porta addosso tre scudi rotondi e sostiene di non aver mai perso una goccia di sangue in tutta la sua carriera. È il vanto dei Pirati di Creek, quello che mandano avanti quando serve un muro. Se però vede il proprio sangue perde la testa, e allora incendia tutto quello che ha intorno senza guardare chi ci sia in mezzo.',
         en: 'He wears three round shields and claims he has never lost a drop of blood in his whole career. He is the Krieg crew’s boast, the one they send forward when a wall is needed. The moment he sees his own blood, though, he loses his head and sets fire to everything around him without looking at who is in the way.',
       },
+      status: [{ episode: 25, value: 'alive' }],
       affiliation: [
         {
           episode: 25,
@@ -1993,6 +2032,12 @@ export const eastBlue: Saga = {
         it: 'Ha costruito un parco sul mare e paga un ufficiale della Marina, che prende i soldi e riparte prima che qualcuno riconosca la sua nave. I suoi uomini hanno devastato un villaggio dell’isola. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
         en: 'He built a park on the water and pays a Marine officer, who takes the money and leaves before anyone recognises his ship. His men have wrecked a village on the island. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
       },
+      status: [
+        { episode: 31, value: 'alive' },
+        // Episode 387 adapts chapter 492, where Hatchan says the Marines
+        // arrested Arlong and the rest of the crew, and only he escaped.
+        { episode: 387, chapter: 492, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 31,
@@ -2021,6 +2066,7 @@ export const eastBlue: Saga = {
         it: 'Arlong lo manda a riaccompagnare alla nave un capitano della Marina, e lui gli ride in faccia perché sembra un topo. Quando Arlong gli dice di tenere a freno la lingua, chiede subito scusa. Cucina per la bestia marina della ciurma e la chiama a mangiare con uno squillo di tromba che fa con la bocca.',
         en: 'Arlong sends him to see a Marine captain back to his ship, and he laughs that the captain’s face looks like a mouse’s. When Arlong tells him to watch his tongue, he apologises at once. He cooks for the crew’s sea beast and calls it to its meal with a trumpet blast he makes with his mouth.',
       },
+      status: [{ episode: 31, value: 'alive' }],
       affiliation: [
         {
           episode: 31,
@@ -2056,6 +2102,12 @@ export const eastBlue: Saga = {
         it: 'Quando Zoro si libera, sospetta che sia stata Nami a lasciarlo andare. Ha frugato nella sua stanza e trovato una mappa dell’isola con il villaggio di Cocoyashi segnato, e la mostra ad Arlong. Quando una nave da guerra della Marina viene ad attaccare il parco, esce con Octy e Pciù e la affonda.',
         en: 'When Zoro gets free, he suspects Nami of letting him go. He has searched her room and found a map of the island with Cocoyasi Village marked on it, and he shows it to Arlong. When a Marine warship comes to attack the park, he goes out with Hatchan and Chew and sinks it.',
       },
+      status: [
+        { episode: 36, value: 'alive' },
+        // Episode 387 adapts chapter 492, where Hatchan says the Marines
+        // arrested Arlong and the rest of the crew, and only he escaped.
+        { episode: 387, chapter: 492, value: 'imprisoned' },
+      ],
       // The ch. 75 caption that names him calls him an officer.
       affiliation: [{ episode: 36, chapter: 75, value: ARLONG_OFFICER }],
       origin: [{ episode: 36, value: FISH_MAN_ISLAND }],
@@ -2066,6 +2118,12 @@ export const eastBlue: Saga = {
         it: 'Intercala quello che dice con lo schiocco di un bacio. Dopo che Usop ha attaccato Arlong, è lui a catturarlo e a portarlo ad Arlong Park davanti al suo capitano. Quando Usop sostiene di non sapere dove sia Zoro, gli dice di smetterla con le bugie: ha attaccato Arlong, e ormai nessuno può salvarlo.',
         en: 'He punctuates what he says with a kissing sound. After Usopp attacks Arlong, he is the one who catches him and brings him into Arlong Park to his captain. When Usopp says he doesn’t know where Zoro is, he tells him to stop lying: he attacked Arlong, and nobody can save him now.',
       },
+      status: [
+        { episode: 33, value: 'alive' },
+        // Episode 387 adapts chapter 492, where Hatchan says the Marines
+        // arrested Arlong and the rest of the crew, and only he escaped.
+        { episode: 387, chapter: 492, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 33,
@@ -2083,6 +2141,7 @@ export const eastBlue: Saga = {
         it: 'Lavora da sola il frutteto sulla collina e ogni anno paga agli uomini-pesce il tributo senza discutere, come tutto il villaggio. Di sua sorella non parla con nessuno, né con gli estranei né con gli amici, e lascia che gli altri la credano una ladra qualunque. Quando qualcuno le chiede spiegazioni, risponde con il silenzio o con una pala in mano.',
         en: 'She works the hillside orchard alone and pays the fish-men their tribute every year without arguing, as the whole village does. She speaks of her sister to nobody, stranger or friend, and lets the rest of them take her for an ordinary thief. When somebody asks her for an explanation, she answers with silence or with a shovel in her hand.',
       },
+      status: [{ episode: 31, value: 'alive' }],
       affiliation: [
         {
           episode: 31,
@@ -2100,6 +2159,7 @@ export const eastBlue: Saga = {
         it: 'Tiene l’ordine in un paese che non ha più niente da difendere, e il villaggio ha appena pagato il tributo quando arrivano gli uomini-pesce. Porta una girandola sul cappello e non spiega a nessuno perché. Otto anni fa il villaggio ha giurato di combattere con la pazienza, per sopravvivere, e lui tiene tutti a quel giuramento: nessuno deve combattere, qualunque cosa accada.',
         en: 'He keeps order in a town with nothing left to defend, and the village has just paid its tribute when the fish-men come. He wears a pinwheel on his cap and explains it to nobody. Eight years ago the village swore to fight with patience, for its survival, and he holds everyone to that: nobody fights, whatever happens.',
       },
+      status: [{ episode: 32, value: 'alive' }],
       affiliation: [
         {
           episode: 32,
@@ -2141,6 +2201,7 @@ export const eastBlue: Saga = {
         it: 'Comanda la sedicesima base e da anni chiude gli occhi su tutto quello che accade nelle isole che dovrebbe proteggere, in cambio di una parte del riscosso. Si presenta con i soldati in divisa e chiama legge quello che è un saccheggio. Appena qualcuno gli mette una mano addosso, ricorda subito a tutti chi rappresenta.',
         en: 'He commands the sixteenth branch and has for years closed his eyes to everything that happens on the islands he is meant to protect, in exchange for a share. He arrives with uniformed men and calls a robbery the law. The moment anyone lays a hand on him, he reminds everybody who he represents.',
       },
+      status: [{ episode: 36, value: 'alive' }],
       affiliation: [
         {
           episode: 36,
@@ -2217,6 +2278,7 @@ export const eastBlue: Saga = {
         it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana più alta di lei. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',
         en: 'She serves at Loguetown under a captain who smokes two cigars at once, and follows him with a katana taller than she is. She knows a fine sword at a glance and has decided to take every one of them out of the wrong hands. She trips, loses her glasses and apologises, and none of her men would dare laugh.',
       },
+      status: [{ episode: 49, value: 'alive' }],
       affiliation: [
         {
           episode: 49,
