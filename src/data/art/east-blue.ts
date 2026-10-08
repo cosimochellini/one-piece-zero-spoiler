@@ -2362,7 +2362,8 @@ export const eastBlueRedrawn: Redrawings = {
     // The Viking outfit of Elbaf laid out as a still life: the black helmet
     // with its studded gold band and great curved horns, the axe he carries
     // on his back, and the hat hung by its string from the haft. From 1157
-    // (ch. 1127) until the helmet is knocked off in 1170 (ch. 1140).
+    // (ch. 1127) until the hat is the one Gaban sees on him in 1170
+    // (ch. 1140), an end inferred rather than pinned to a page.
     {
       episode: 1157,
       chapter: 1127,

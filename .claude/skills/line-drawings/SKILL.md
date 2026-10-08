@@ -105,8 +105,7 @@ Grade every drawing you make or review. Only A ships.
   56 px, drop the stage rather than draw something false. Each redrawing
   is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
   drew the record: `{ episode, chapter, value }`, strictly after
-  `revealedAtEpisode`,
-  ascending. The `chapter:` must be a true pair with the episode, the chapter
+  `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
   that same scene is in, or chapter readers see it early. Add one `it` in
   `src/server/archive/slices.test.ts` on Franky's model (episode − 1, episode,
   no bookmark, chapter − 1, chapter); a record with many stages walks its
