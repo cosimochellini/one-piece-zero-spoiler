@@ -1522,16 +1522,12 @@ export const summitWarArt = {
     shadow(80, 160, 68),
   ],
 
-  // Her vice admiral's coat as she wears it, on the shoulders, seen from
-  // behind with nobody in it: the collar standing open, the sleeves hanging
-  // empty, the far half hatched, and on each shoulder her epaulette, the
-  // inner board in her colour with its two dots and the gold fringe falling
-  // over. That is how she stands at Marineford in episode 461. The washing
-  // she does to pirates comes four episodes later.
+  // Her vice admiral's coat worn on the shoulders, seen from behind with
+  // nobody in it, her two-tone epaulettes on top. At Marineford, episode 461.
   'tsuru': [
-    { d: ellipse(80, 34, 22, 6) },
-    { d: 'M58 34 C58 40 60 44 64 48 Q80 52 96 48 C100 44 102 40 102 34' },
-    { d: 'M68 36 l6 -5 M78 38 l8 -7 M90 37 l6 -5', role: 'ambient' },
+    { d: ellipse(80, 36, 18, 5) },
+    { d: 'M62 36 C62 42 64 46 67 50 Q80 53 93 50 C96 46 98 42 98 36' },
+    { d: 'M70 38 l5 -4 M79 39 l7 -6 M89 38 l5 -4', role: 'ambient' },
     {
       d: 'M64 50 C50 50 40 52 32 60 L24 176 Q80 186 136 176 L128 60 C120 52 110 50 96 50',
     },
@@ -1540,24 +1536,20 @@ export const summitWarArt = {
     },
     { d: 'M18 128 L35 131 M142 128 L125 131', role: 'soft' },
     {
-      d: 'M30 60 C24 50 40 44 62 48 L62 56 C50 58 38 64 30 60 M130 60 C136 50 120 44 98 48 L98 56 C110 58 122 64 130 60',
+      d: 'M18 60 C12 48 34 40 62 46 L62 56 C46 58 30 66 18 60 M142 60 C148 48 126 40 98 46 L98 56 C114 58 130 66 142 60',
       role: 'accent',
     },
     {
       d: dots([
-        [46, 53],
-        [53, 52],
-        [114, 53],
-        [107, 52],
+        [40, 52],
+        [48, 51],
+        [120, 52],
+        [112, 51],
       ]),
       role: 'accent',
     },
     {
-      d: 'M29 63 l-3 17 M34 64 l-2 17 M39 64 l-1 17 M44 63 v16 M49 62 v14 M131 63 l3 17 M126 64 l2 17 M121 64 l1 17 M116 63 v16 M111 62 v14',
-    },
-    {
-      d: 'M58 120 C56 144 54 162 52 180 M80 150 V182 M102 120 C104 144 106 162 108 180',
-      role: 'soft',
+      d: 'M18 63 l-4 20 M24 64 l-3 20 M30 64 l-2 20 M36 63 l-1 19 M42 62 v18 M48 61 v16 M142 63 l4 20 M136 64 l3 20 M130 64 l2 20 M124 63 l1 19 M118 62 v18 M112 61 v16',
     },
     {
       d: 'M112 96 l10 -6 M112 116 l12 -6 M114 136 l12 -6 M116 156 l12 -6',
@@ -2141,12 +2133,8 @@ export const summitWarArt = {
     shadow(84, 186, 62),
   ],
 
-  // Salome reared up out of her coil, turned away in 3/4: the horned skull
-  // pulled down over her wedge of a head like a helmet, two cracks on the
-  // dome, the ringed horns, her blue hair in her colour jutting out behind
-  // it, the scarf knotted round her neck, her spots and the lines of her
-  // belly on the coil. She is at the empress's side at Marineford, where the
-  // empress talks to her in episode 484.
+  // Salome reared out of her coil, turned away: the cracked horned skull
+  // over her head, her blue hair, her scarf and spots. Episode 484.
   'salome': [
     {
       d: 'M56 54 C54 36 72 22 94 24 C114 26 126 42 122 58 C120 66 116 72 110 76',
