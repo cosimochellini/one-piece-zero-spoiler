@@ -477,10 +477,16 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 519, value: 'alive' },
-        { episode: 525, value: 'captured' },
-        { episode: 531, value: 'alive' },
-        { episode: 919, value: 'imprisoned' },
-        { episode: 949, value: 'alive' },
+        // Episode 524 adapts chapter 604: left behind by his crew, he is
+        // tied up by the Straw Hats.
+        { episode: 524, chapter: 604, value: 'captured' },
+        // Episode 531 adapts chapter 612: mermaids let him out of the barrel.
+        { episode: 531, chapter: 612, value: 'alive' },
+        // Episode 919 adapts chapter 926: a prisoner in the Udon mine.
+        { episode: 919, chapter: 926, value: 'imprisoned' },
+        // Episode 949 adapts chapter 949: Luffy's alliance takes Udon and
+        // frees its prisoners.
+        { episode: 949, chapter: 949, value: 'alive' },
       ],
       affiliation: [
         {
@@ -727,7 +733,9 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 530, chapter: 611, value: 'alive' },
-        { episode: 569, value: 'imprisoned' },
+        // Episode 569 adapts chapter 649: he and his officers wake in a cell
+        // of the prison tower.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
       ],
       affiliation: [
         {
@@ -738,7 +746,11 @@ export const fishManIsland: Saga = {
             en: 'New Fish-Man Pirates, captain',
           },
         },
-        { episode: 574, value: { it: 'Imprigionato', en: 'Imprisoned' } },
+        {
+          episode: 569,
+          chapter: 649,
+          value: { it: 'Imprigionato', en: 'Imprisoned' },
+        },
       ],
       origin: [
         {

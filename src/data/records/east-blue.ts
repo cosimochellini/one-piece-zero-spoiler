@@ -954,7 +954,15 @@ export const eastBlue: Saga = {
         it: 'È salito a dieci anni sulla barca da pesca sbagliata e da allora lucida il ponte di Alvida, che lo picchia quando una risposta non le piace. Sa che potrebbe scappare e non lo fa. Poi un ragazzo di gomma esce da una botte nella stiva e gli chiede che cosa vorrebbe fare davvero: lui risponde che vorrebbe entrare nella Marina, e si sente dire quelle parole ad alta voce per la prima volta.',
         en: 'He climbed into the wrong fishing boat at ten and has been scrubbing Alvida’s deck ever since, beaten whenever an answer displeases her. He knows he could run, and he does not. Then a rubber boy climbs out of a barrel in the hold and asks what he actually wants: he says he wants to join the Marines, and hears himself say it out loud for the first time.',
       },
-      status: [{ episode: 1, value: 'alive' }],
+      status: [
+        { episode: 1, value: 'alive' },
+        // Episode 1088 adapts chapter 1059: the papers report him taken by
+        // the Blackbeard Pirates, who hold him on Hachinosu.
+        { episode: 1088, chapter: 1059, value: 'captured' },
+        // Episode 1122 adapts chapter 1088: he leaves Hachinosu on Garp's
+        // ship with Grus and Helmeppo.
+        { episode: 1122, chapter: 1088, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1,
@@ -2046,8 +2054,11 @@ export const eastBlue: Saga = {
             en: 'Arlong Pirates, captain',
           },
         },
+        // The anime never shows the arrest; Hatchan first tells it at 387,
+        // the same scene as the status.
         {
-          episode: 44,
+          episode: 387,
+          chapter: 492,
           value: {
             it: 'Sconfitto, in arresto dalla Marina',
             en: 'Defeated, under Marine arrest',
@@ -2076,13 +2087,8 @@ export const eastBlue: Saga = {
         // says so in a caption in ch. 69, below his record's chapter, so the
         // entry carries no pin.
         { episode: 33, value: ARLONG_OFFICER },
-        {
-          episode: 44,
-          value: {
-            it: 'Sconfitto, in arresto dalla Marina',
-            en: 'Defeated, under Marine arrest',
-          },
-        },
+        // No arrest entry: at 387 (chapter 492) he says the Marines took the
+        // crew and he got away.
         {
           episode: 386,
           value: {

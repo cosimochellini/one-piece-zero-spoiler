@@ -988,7 +988,9 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 757, value: 'alive' },
-        { episode: 850, value: 'deceased' },
+        // Episode 849 adapts chapter 877: overpowered, he sets off the
+        // dynamite strapped to him to stop Perospero.
+        { episode: 849, chapter: 877, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -2218,7 +2220,9 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 836, value: 'unknown' },
-        { episode: 837, value: 'deceased' },
+        // Episode 837 adapts chapter 867: young Linlin deals him the fatal
+        // blow.
+        { episode: 837, chapter: 867, value: 'deceased' },
       ],
       affiliation: [
         {

@@ -53,6 +53,12 @@ const IMPEL_DOWN = {
   en: 'Prisoner of Impel Down',
 }
 
+// From the breakout through the Gates of Justice (451, chapter 548).
+const FORMER_BW_OFFICER = {
+  it: 'Ex agente ufficiale di Baroque Works',
+  en: 'Former Baroque Works officer agent',
+}
+
 const ALABASTA = { it: 'Alabasta', en: 'Alabasta' }
 
 const DRUM_ISLAND = { it: 'Isola di Drum', en: 'Drum Island' }
@@ -914,7 +920,8 @@ export const alabasta: Saga = {
       affiliation: [
         { episode: 70, value: BW },
         { episode: 91, value: BW_OFFICER },
-        { episode: 422, value: IMPEL_DOWN },
+        { episode: 424, chapter: 527, value: IMPEL_DOWN },
+        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
         { episode: 517, value: { it: 'Ciurma di Bagy', en: 'Buggy’s crew' } },
       ],
       devilFruit: [{ episode: 73, chapter: 120, value: ['wax-wax-fruit'] }],
@@ -1039,7 +1046,8 @@ export const alabasta: Saga = {
       affiliation: [
         { episode: 78, value: BW },
         { episode: 91, value: BW_OFFICER },
-        { episode: 422, value: IMPEL_DOWN },
+        { episode: 431, chapter: 530, value: IMPEL_DOWN },
+        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
       ],
       devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
@@ -1254,6 +1262,15 @@ export const alabasta: Saga = {
           value: {
             it: 'Ex membro della Flotta dei Sette, in arresto',
             en: 'Former Warlord, under arrest',
+          },
+        },
+        // Out of Impel Down through the Gates of Justice at 451 (chapter 548).
+        {
+          episode: 451,
+          chapter: 548,
+          value: {
+            it: 'Ex membro della Flotta dei Sette',
+            en: 'Former Warlord',
           },
         },
         // Kid's poster puts him in Cross Guild at 1083 (chapter 1056).
@@ -1472,7 +1489,10 @@ export const alabasta: Saga = {
       ],
       affiliation: [
         { episode: 103, value: BW_OFFICER },
-        { episode: 422, value: IMPEL_DOWN },
+        // Episode 434 adapts chapter 533, where he is first seen in Impel
+        // Down, hauling lumber on Level 4.
+        { episode: 434, chapter: 533, value: IMPEL_DOWN },
+        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
         // Sinks the Navy ships at Karai Bari beside Crocodile at 1086
         // (chapter 1058); he is not on the 1083 poster.
         {

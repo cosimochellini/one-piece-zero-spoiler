@@ -84,7 +84,7 @@ const BOUNTY_TIMELINES: TimelineCase<number>[] = characters.flatMap(
 
 /**
  * The status timelines. Their own bucket for the same reason the fruits have
- * one — they carry a vocabulary rather than prose — and because three tests
+ * one — they carry a vocabulary rather than prose — and because four tests
  * below are about this field alone.
  */
 const STATUS_TIMELINES: TimelineCase<CharacterStatus>[] = characters.flatMap(
@@ -236,6 +236,20 @@ describe('the dossiers', () => {
       const restated = values.filter((value, at) => value === values[at - 1])
 
       expect(restated, label).toStrictEqual([])
+    }
+  })
+
+  it('pins every change of status to the chapter that tells it', () => {
+    // The opening entry waits on its record. A later one without a chapter
+    // waits on the derived table instead, which can reach its episode
+    // chapters before the manga tells the change.
+    for (const { label, timeline } of STATUS_TIMELINES) {
+      const unpinned = timeline
+        .slice(1)
+        .filter((entry) => entry.chapter === undefined)
+        .map((entry) => entry.episode)
+
+      expect(unpinned, label).toStrictEqual([])
     }
   })
 

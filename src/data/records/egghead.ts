@@ -515,7 +515,9 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1096, value: 'alive' },
-        { episode: 1142, value: 'deceased' },
+        // Episode 1142 adapts chapter 1108: Kizaru runs him through, and his
+        // heart monitor flatlines.
+        { episode: 1142, chapter: 1108, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -818,7 +820,8 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1105, value: 'alive' },
-        { episode: 1155, value: 'deceased' },
+        // Episode 1155 adapts chapter 1125: Imu kills him for his failure.
+        { episode: 1155, chapter: 1125, value: 'deceased' },
       ],
       affiliation: [
         {

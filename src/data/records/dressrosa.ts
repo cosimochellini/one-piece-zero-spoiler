@@ -996,7 +996,8 @@ export const dressrosa: Saga = {
           },
         },
         {
-          episode: 625,
+          episode: 622,
+          chapter: 696,
           value: {
             it: 'In arresto per mano della Marina',
             en: 'Under Marine arrest',
@@ -2295,7 +2296,15 @@ export const dressrosa: Saga = {
         it: 'Lui e il fratello minore Bobby sono i fratelli Funk, assassini venuti da un paese vicino per contendersi il Frutto Foco Foco. Nella sala d’attesa accusa Dagama di allearsi con i più forti del suo blocco e di pagare la gente, e dice che la cosa gli fa schifo. Dagama ribatte che anche i due fratelli sono lì per ordine del proprio paese, e chiede se abbiano comprato il posto nello stesso blocco; è una coincidenza, risponde Kelly.',
         en: 'He and his younger brother Bobby are the Funk Brothers, assassins from a neighbouring country come to fight for the Flame-Flame Fruit. In the waiting room he accuses Dagama of ganging up with the strongest fighters in his block and paying people off, and says it makes him sick. Dagama answers that the brothers are here on their country’s orders too, and asks whether they bought their places in the same block; it is a coincidence, Kelly says.',
       },
-      status: [{ episode: 633, value: 'unknown' }],
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 658 adapts chapter 726: more of the losers are dropped
+        // into the dungeon under the ring.
+        { episode: 658, chapter: 726, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
+        // country turns back.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
       ],
@@ -2320,7 +2329,8 @@ export const dressrosa: Saga = {
         it: 'È il minore dei fratelli Funk, assassini venuti da un paese vicino, e supera di tutta la testa il fratello Kelly. Quando Kelly se la prende con Dagama perché si compra gli alleati, Bobby aggiunge soltanto che un combattimento è una faccenda personale. Alla domanda se i due abbiano pagato qualcuno per finire nello stesso blocco, risponde che è solo una coincidenza.',
         en: 'He is the younger of the Funk Brothers, assassins from a neighbouring country, and stands head and shoulders above his brother Kelly. When Kelly rounds on Dagama for buying allies, Bobby adds only that a fight is a personal matter. Asked whether the two of them paid somebody off to share a block, he says it is just a coincidence.',
       },
-      status: [{ episode: 633, value: 'unknown' }],
+      // Never shown in the dungeon or as a toy, so no capture is filed.
+      status: [{ episode: 633, value: 'alive' }],
       affiliation: [
         { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
       ],
@@ -2341,7 +2351,15 @@ export const dressrosa: Saga = {
         it: 'Serve il Regno di Prodence come stratega, ed è venuto al colosseo con il suo re per vincere il Frutto Foco Foco, che darebbe a qualunque paese il coltello dalla parte del manico nella diplomazia. Kelly Funk lo accusa di stringere alleanze nel suo blocco e di corrompere i combattenti, e lui liquida l’accusa. Risponde indicando ogni nome famigerato nella sala e chiedendo se qualcuno creda davvero che loro non stiano tramando niente.',
         en: 'He serves the Prodence Kingdom as its tactician, and has come to the colosseum with his king to win the Flame-Flame Fruit, which would give any country the upper hand in diplomacy. Kelly Funk accuses him of forming alliances in his block and bribing fighters, and he brushes it off. He answers by pointing out every notorious name in the room and asking whether anyone really believes they are not plotting something too.',
       },
-      status: [{ episode: 633, value: 'unknown' }],
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725: the beaten fighters are dropped
+        // into the dungeon under the ring.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
+        // country turns back.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -2365,10 +2383,8 @@ export const dressrosa: Saga = {
         it: 'È un criminale di guerra di prima classe che ha combattuto nella battaglia navale di Dias, e lo chiamano il tagliatore di teste. Si è iscritto al torneo del colosseo per il Frutto Foco Foco, insieme agli altri nomi famigerati della sala d’attesa. Dagama lo indica per primo quando vuole dimostrare che lì dentro tutti stanno tramando qualcosa.',
         en: 'He is a class-A war criminal who fought in the Sea Battle of Dias, and he is known as the Beheader. He has entered the colosseum tournament for the Flame-Flame Fruit, along with the other notorious names in the waiting room. Dagama points to him first when he sets out to prove that everyone there is plotting something.',
       },
-      status: [
-        { episode: 633, value: 'unknown' },
-        { episode: 744, value: 'alive' },
-      ],
+      // Never shown in the dungeon or as a toy, so no capture is filed.
+      status: [{ episode: 633, value: 'alive' }],
       affiliation: [
         {
           episode: 633,
@@ -2395,8 +2411,13 @@ export const dressrosa: Saga = {
         en: 'He and his partner Jeet were bounty hunters until they bombed a government institution. Now the two of them have entered the colosseum tournament together, for the Flame-Flame Fruit. Dagama counts them among the notorious names in the waiting room who must surely be plotting something.',
       },
       status: [
-        { episode: 633, value: 'unknown' },
-        { episode: 744, value: 'alive' },
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725: the beaten fighters are dropped
+        // into the dungeon under the ring.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
+        // country turns back.
+        { episode: 677, chapter: 743, value: 'alive' },
       ],
       affiliation: [
         {
@@ -2421,8 +2442,13 @@ export const dressrosa: Saga = {
         en: 'He was a bounty hunter with his partner Abdullah until the two of them bombed a government institution. They have entered the colosseum tournament together, among the notorious fighters gathered for the Flame-Flame Fruit. Dagama names them in one breath when he lists the people in the room who must be plotting something.',
       },
       status: [
-        { episode: 633, value: 'unknown' },
-        { episode: 744, value: 'alive' },
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725: the beaten fighters are dropped
+        // into the dungeon under the ring.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
+        // country turns back.
+        { episode: 677, chapter: 743, value: 'alive' },
       ],
       affiliation: [
         {
