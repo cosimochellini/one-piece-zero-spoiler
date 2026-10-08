@@ -548,6 +548,7 @@ export const elbaf: Saga = {
         it: 'Shamrock la porta al fianco come una spada qualunque, finché non decide di usarla. Allora la lama diventa un cane rosso a tre teste con le spade tra le fauci, e anche dopo che Shamrock è volato via le teste continuano a tornare indietro per colpire Loki. Shamrock lo lascia lì a finire il lavoro.',
         en: 'Shamrock wears it at his hip like any other sword, until he decides to use it. Then the blade becomes a red three-headed dog with swords in its jaws, and even after Shamrock has flown off its heads keep circling back to strike Loki. Shamrock leaves it there to finish the job.',
       },
+      status: [{ episode: 1168, value: 'alive' }],
       affiliation: [
         {
           episode: 1168,
@@ -614,6 +615,7 @@ export const elbaf: Saga = {
         it: 'È il martello da guerra di Loki, un maglio enorme che sta accanto al principe incatenato fin dalla prima volta che Rufy lo trova. Appena le catene si aprono, Loki si rimette in piedi con il martello in mano. Hajrudin, arrivato troppo tardi, lo supplica di lasciarlo andare.',
         en: 'It is Loki’s warhammer, an enormous maul that has stood beside the chained prince since the first time Luffy found him. As soon as the chains come off, Loki gets to his feet with it in hand. Hajrudin, arriving too late, begs him to let it go.',
       },
+      status: [{ episode: 1171, value: 'alive' }],
       affiliation: [
         {
           episode: 1171,

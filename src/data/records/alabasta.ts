@@ -732,6 +732,7 @@ export const alabasta: Saga = {
         it: 'Da cinquant’anni resta ferma davanti alla Montagna Inversa e sbatte la testa contro la scogliera, lanciando un richiamo a cui nessuno risponde. È grande quanto un’isola e ha la fronte coperta di cicatrici che non si chiudono. Il vecchio che vive dentro di lei dice che aspetta una ciurma partita per la Rotta Maggiore e mai tornata.',
         en: 'For fifty years he has held station in front of Reverse Mountain, beating his head against the cliff and calling out to nobody who answers. He is the size of an island and his forehead is covered in scars that never close. The old man who lives inside him says he is waiting for a crew that sailed the Grand Line and never came back.',
       },
+      status: [{ episode: 62, value: 'alive' }],
       affiliation: [
         {
           episode: 62,
@@ -749,6 +750,7 @@ export const alabasta: Saga = {
         it: 'Vive dentro la balena che sorveglia, in una casa costruita nel suo stomaco, e la cura da cinquant’anni perché non si uccida contro la roccia. Porta una camicia a fiori, un fiore in testa e l’aria di chi ha già visto tutto quello che c’era da vedere. Del proprio passato non racconta niente, e nessuno glielo chiede.',
         en: 'He lives inside the whale he watches over, in a house built in its stomach, and has tended it for fifty years so that it does not kill itself against the rock. He wears a flowered shirt, a flower on his head and the look of a man who has already seen everything worth seeing. Of his own past he says nothing, and nobody asks.',
       },
+      status: [{ episode: 62, value: 'alive' }],
       affiliation: [
         {
           episode: 62,
@@ -776,6 +778,7 @@ export const alabasta: Saga = {
         it: 'Porta una corona e dice di essere un re, e per tutta risposta si sente dare del bugiardo. Con la sua socia entra nello stomaco di una balena gigante per ucciderla, perché la sua carne servirebbe alla loro città, e dall’interno prova ad aprirle un buco a colpi di bazooka. Messi fuori combattimento e buttati in mare, i due chiedono un passaggio fino a casa, e sul loro lavoro dicono solo che è segreto.',
         en: 'He wears a crown and says he is a king, and is called a liar for it. With his partner he gets inside the stomach of a giant whale to kill it, because its meat would serve their town, and tries to blast a hole in it from inside with a bazooka. Knocked out and thrown overboard, the two of them beg a ride home, and say only that their work is secret.',
       },
+      status: [{ episode: 63, value: 'alive' }],
       affiliation: [
         { episode: 64, chapter: 107, value: BW },
         { episode: 91, value: BW_FRONTIER },
@@ -787,6 +790,16 @@ export const alabasta: Saga = {
         it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mr. Eight comanda cento agenti travestiti da cittadini ospitali.',
         en: 'He greets every ship that reaches Whisky Peak with a choir, a banquet and all the liquor the pirates can drink, then waits for them to fall over. He wears curlers by daylight and plays a saxophone that fires bullets. Under the code name Mr. 8 he commands a hundred agents dressed as hospitable townsfolk.',
       },
+      status: [
+        { episode: 64, value: 'alive' },
+        // Episode 67 adapts chapters 113 and 114: his decoy ship blows up as it
+        // leaves Whisky Peak, and chapter 114 opens on the wreck with Vivi
+        // taking him for dead.
+        { episode: 67, chapter: 114, value: 'presumed-dead' },
+        // Episode 111 adapts chapters 179 and 180; page 8 of chapter 180 shows
+        // him alive in Nanohana, having survived the explosion.
+        { episode: 111, chapter: 180, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 64,
@@ -808,6 +821,7 @@ export const alabasta: Saga = {
         it: 'Serve da bere al banchetto vestita da suora e sorride finché l’ultimo pirata non cade addormentato sul tavolo. Poi si toglie il velo, e si vede che ha le spalle più larghe di chiunque altro in città. Combatte a mani nude con un paio di tirapugni, e solleva un uomo adulto come si solleva un boccale.',
         en: 'She pours the drinks at the banquet in a nun’s habit and keeps smiling until the last pirate has fallen asleep on the table. Then the veil comes off, and her shoulders turn out to be broader than anyone else’s in town. She fights bare-handed with a pair of knuckledusters, and lifts a grown man the way one lifts a tankard.',
       },
+      status: [{ episode: 64, value: 'alive' }],
       affiliation: [
         { episode: 64, value: BW },
         { episode: 91, value: BW_FRONTIER },
@@ -819,6 +833,7 @@ export const alabasta: Saga = {
         it: 'È un’anatra grande quanto un uomo, con la sella sul dorso e la borraccia al collo, e corre più veloce di un cavallo quando la sua padrona glielo chiede. Capisce tutto quello che gli si dice e risponde a gesti, e beve dalla borraccia molto più di quanto dovrebbe. Quando lei è in pericolo si mette davanti senza pensarci.',
         en: 'He is a duck the size of a man, a saddle on his back and a canteen at his neck, and he runs faster than a horse when his mistress asks it of him. He understands everything said to him and answers in gestures, and drinks from his canteen far more than he should. When she is in danger he puts himself in front of her without thinking.',
       },
+      status: [{ episode: 65, value: 'alive' }],
       affiliation: [
         {
           episode: 65,
@@ -836,6 +851,7 @@ export const alabasta: Saga = {
         it: 'Tutto quello che si stacca dal suo corpo diventa esplosivo: il fiato, le dita, una briciola tolta dal naso e lanciata come una pallottola. Lavora in coppia con una collega che ride di qualunque cosa e non si scompone mai. Ha ricevuto l’ordine di eliminare chiunque abbia scoperto il nome del capo.',
         en: 'Anything that leaves his body becomes an explosive: his breath, his fingers, a crumb picked from his nose and flicked like a bullet. He works in a pair with a colleague who laughs at everything and never loses her composure. His orders are to kill anyone who has learned the boss’s name.',
       },
+      status: [{ episode: 66, value: 'alive' }],
       affiliation: [
         { episode: 66, value: BW },
         { episode: 91, value: BW_OFFICER },
@@ -848,6 +864,7 @@ export const alabasta: Saga = {
         it: 'Ride senza fermarsi mai, anche mentre lavora, e scende dal cielo appesa a un ombrello giallo limone. Può rendersi leggera come una piuma o pesante come una campana di bronzo, e si lascia cadere addosso a chi sta sotto. Viaggia sempre con un collega che fa saltare in aria tutto quello che tocca.',
         en: 'She laughs without stopping, even at work, and comes down out of the sky under a lemon-yellow umbrella. She can make herself light as a feather or heavy as a bronze bell, and drops on whoever is underneath. She travels everywhere with a colleague who blows up whatever he touches.',
       },
+      status: [{ episode: 66, value: 'alive' }],
       affiliation: [
         { episode: 66, value: BW },
         { episode: 91, value: BW_OFFICER },
@@ -885,6 +902,15 @@ export const alabasta: Saga = {
         it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mr. Five è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
         en: 'He does not want his code name said in public. He drinks Earl Grey, says he is bored, and calls his idle days a privilege of an officer agent. When the boss’s orders say that Mr. 5 has been beaten he is not surprised: a criminal, he says, wins with his head, not with a devil fruit’s powers.',
       },
+      status: [
+        { episode: 70, value: 'alive' },
+        // Episode 424 adapts chapter 527 (page 19), which shows him in a cell
+        // on Level 2 of Impel Down.
+        { episode: 424, chapter: 527, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: the escapees sail out through the
+        // Gates of Justice.
+        { episode: 451, chapter: 548, value: 'alive' },
+      ],
       affiliation: [
         { episode: 70, value: BW },
         { episode: 91, value: BW_OFFICER },
@@ -899,6 +925,7 @@ export const alabasta: Saga = {
         it: 'È in vacanza su un’isola con il suo socio, che beve tè e le dice di godersi il riposo. Lei dice che si annoia. Da giorni fissa un foglio di carta, e solo quando lui glielo chiede si scopre che sono i loro nuovi ordini dal capo. Lui le chiede anche di smettere di chiamarlo in pubblico con il suo nome in codice.',
         en: 'She is on holiday on an island with her partner, who drinks tea and tells her to enjoy the time off. She says she is bored. For days she has been staring at a sheet of paper, and only when he asks does it turn out to be their next orders from the boss. He also tells her to stop using his code name in public.',
       },
+      status: [{ episode: 70, value: 'alive' }],
       affiliation: [
         { episode: 70, value: BW },
         { episode: 91, value: BW_OFFICER },
@@ -910,6 +937,15 @@ export const alabasta: Saga = {
         it: 'È alto come una torre, porta uno scudo rotondo e una spada, e vive in una grotta di Little Garden dove arrostisce bestie preistoriche intere. Da cento anni duella ogni giorno con un altro gigante per una ragione che nessuno dei due ricorda più, e nessuno dei due ha ceduto un passo. Tra un duello e l’altro brindano insieme.',
         en: 'He stands as tall as a tower, carries a round shield and a sword, and lives in a cave on Little Garden where he roasts prehistoric beasts whole. For a hundred years he has duelled another giant every day over a reason neither of them remembers, and neither has given a step. Between duels they drink together.',
       },
+      status: [
+        { episode: 71, value: 'alive' },
+        // Episode 73 adapts chapter 120: Brogy's blow to the chest fells him
+        // and he lies still as if dead.
+        { episode: 73, chapter: 120, value: 'presumed-dead' },
+        // Episode 77 adapts chapter 127, where he sits up: the old weapons only
+        // knocked him out.
+        { episode: 77, chapter: 127, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 71,
@@ -932,6 +968,7 @@ export const alabasta: Saga = {
         it: 'Ha la barba rossa e una risata che si sente dall’altra parte dell’isola, e porta un’ascia che nessun uomo riuscirebbe a sollevare. Ogni volta che il vulcano erutta scende nel campo di battaglia e affronta il suo vecchio amico, come fa da cento anni. Dice che il duello è l’unica cosa che li tiene vivi tutti e due.',
         en: 'He has a red beard and a laugh you can hear from the far side of the island, and he carries an axe no man could lift. Every time the volcano erupts he walks down to the field and faces his old friend, as he has for a hundred years. He says the duel is the only thing keeping the two of them alive.',
       },
+      status: [{ episode: 71, value: 'alive' }],
       affiliation: [
         {
           episode: 71,
@@ -954,6 +991,7 @@ export const alabasta: Saga = {
         it: 'La sua nave, il Bliking, emerge accanto alla Going Merry e i suoi uomini salgono a bordo, mentre lui chiede alla ciurma la rotta per il Regno di Drum. Uno dei suoi dice che ha mangiato un frutto del diavolo che gli permette di mangiare qualunque cosa: si mangia una spada insieme alla carne infilzata, poi comincia a mangiarsi la nave. Rufy lo fa volare via con un colpo, e la sua ciurma si ritira.',
         en: 'His ship, the Bliking, comes up beside the Going Merry and his men board her, while he asks the crew for the way to Drum Kingdom. One of his men says he ate a devil fruit that lets him eat anything: he eats a sword along with the meat on it, then starts eating the ship. Luffy sends him flying with a punch, and his crew retreats.',
       },
+      status: [{ episode: 79, value: 'alive' }],
       // Episode 79 shows a pirate captain looking for Drum Kingdom; Dalton
       // tells the Straw Hats that Wapol was its king and fled in episode 80,
       // which adapts chapter 133 (page 20).
@@ -988,6 +1026,15 @@ export const alabasta: Saga = {
         it: 'Viaggia su una nave a forma di cigno, indossa un cappotto di piume e scarpette da ballo a punta, e si presenta danzando. Il suo volto diventa quello di chiunque abbia toccato con la mano destra, e torna il suo quando si tocca con la sinistra. Ha passato una giornata intera a bordo con dei pirati senza dire chi fosse, e li ha trovati simpatici.',
         en: 'He travels on a swan-shaped ship, wears a coat of feathers and pointed dancing shoes, and introduces himself in a pirouette. His face becomes the face of anyone he has touched with his right hand, and comes back when he touches himself with the left. He spent a whole day aboard with a crew of pirates without saying who he was, and rather liked them.',
       },
+      status: [
+        { episode: 78, value: 'alive' },
+        // Episode 431 adapts chapter 530 (pages 18-19), which finds him dancing
+        // in a cell on Level 3 of Impel Down.
+        { episode: 431, chapter: 530, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: he stays behind at the Gates of
+        // Justice to face Magellan, and the anime never shows his fate.
+        { episode: 451, chapter: 548, value: 'unknown' },
+      ],
       // No queen-of-level-5.5 entry: only the chapter 666 cover says it.
       affiliation: [
         { episode: 78, value: BW },
@@ -1005,6 +1052,7 @@ export const alabasta: Saga = {
         it: 'È un uomo enorme con una lunga tunica bordata di pelliccia e una grossa vanga nel fodero sulla schiena, e gli abitanti fanno quello che dice. Prima ordina ai pirati di lasciare l’isola, poi li porta a casa sua a Bighorn quando chinano la testa e chiedono un medico. Racconta loro della strega che vive nel castello sulla montagna, dei cinque pirati che hanno devastato il paese e del re che è fuggito davanti a loro, il cui ritorno è ciò che l’isola teme di più.',
         en: 'He is a huge man in a long fur-lined tunic, with an outsized spade in a sheath on his back, and the villagers do as he says. He first orders the pirates off the island, then takes them to his own house in Bighorn once they bow their heads and ask for a doctor. He tells them about the witch who lives in the castle on the mountain, about the five pirates who ravaged the country, and about the king who fled from them, whose return the island fears most of all.',
       },
+      status: [{ episode: 80, value: 'alive' }],
       // No election entry at 91: the episode has the villagers ask him what
       // to do, and only the chapter 243 cover shows him elected. Kureha first
       // calls him king in 324, on page 8 of chapter 440.
@@ -1048,6 +1096,7 @@ export const alabasta: Saga = {
         it: 'Ha centotrentanove anni, li dichiara a voce alta e ne va fiera. Vive nel castello in cima alla vetta, è l’unico medico rimasto sull’isola e scende in paese solo quando le va. Si fa pagare portando via ai ricchi quello che le serve, beve vino di prugne durante le visite e chiama vecchi quelli che hanno la metà dei suoi anni.',
         en: 'She is a hundred and thirty-nine, says so out loud and is proud of it. She lives in the castle at the top of the peak, she is the only doctor left on the island, and she comes down to the town only when she feels like it. She charges by taking what she needs from the rich, drinks plum wine during consultations, and calls people half her age old.',
       },
+      status: [{ episode: 82, value: 'alive' }],
       affiliation: [
         {
           episode: 82,
@@ -1130,6 +1179,7 @@ export const alabasta: Saga = {
         it: 'Sta accanto al suo re con una penna e mette per iscritto ogni legge che Wapol si inventa, per quanto crudele sia. In combattimento scocca raffiche di frecce da un arco lungo, alcune in fiamme, senza quasi cambiare espressione. È fuggito da Drum con Wapol quando sono arrivati i pirati, e con lui è tornato a riprendersi il castello.',
         en: 'He stands beside his king with a quill and writes down every law Wapol invents, however cruel. In a fight he looses volleys of arrows from a longbow, some of them burning, and hardly changes his expression. He fled Drum with Wapol when the pirates came, and has come back with him to take the castle again.',
       },
+      status: [{ episode: 87, value: 'alive' }],
       affiliation: [
         {
           episode: 87,
@@ -1147,6 +1197,7 @@ export const alabasta: Saga = {
         it: 'È un pugile con una capigliatura afro in testa e altre sulle spalle e sui guantoni, e i ciuffi che lancia restano attaccati a chiunque colpiscano. Incendiati dalle frecce del suo collega, bruciano dove si sono attaccati. Quando loro due non bastano, Wapol li inghiotte entrambi e li risputa come un unico guerriero con quattro braccia.',
         en: 'He is a boxer with an afro on his head and more on his shoulders and gloves, and the tufts he throws cling to whatever they hit. Set alight by his colleague’s arrows, they burn where they cling. When the two of them are not enough, Wapol swallows them both and spits them out as a single fighter with four arms.',
       },
+      status: [{ episode: 87, value: 'alive' }],
       affiliation: [
         {
           episode: 87,
@@ -1164,6 +1215,7 @@ export const alabasta: Saga = {
         it: 'Lui e la sua compagna sono gli Unluckies, la coppia che porta gli ordini di Mr. Zero e si occupa degli agenti che falliscono. Accende le bombe che sganciano sui traditori con due conchiglie artigliate, e con le stesse conchiglie combatte. A Whisky Peak ha sentito pronunciare il nome del capo e ha disegnato i volti dei pirati che lo avevano sentito.',
         en: 'He and his partner are the Unluckies, the pair who carry Mr. 0’s orders and deal with the agents who fail. He lights the bombs they drop on traitors with a pair of clawed clam shells, and fights with the same shells. At Whisky Peak he overheard the boss’s name said aloud, and sketched the faces of the pirates who heard it.',
       },
+      status: [{ episode: 91, value: 'alive' }],
       affiliation: [{ episode: 91, value: UNLUCKIES }],
     },
     'miss-friday': {
@@ -1172,6 +1224,7 @@ export const alabasta: Saga = {
         it: 'È l’avvoltoio degli Unluckies e porta in volo il suo compagno lontra ovunque Mr. Zero li mandi. Dall’alto sganciano pacchi bomba sugli agenti che falliscono o scappano, e da vicino apre il fuoco con le mitragliatrici legate sulla schiena. Capisce ogni parola che si dice vicino a lei, e la riferisce.',
         en: 'She is the vulture of the Unluckies, and flies her otter partner wherever Mr. 0 sends them. From the air they drop parcel bombs on the agents who fail or run, and at close range she opens fire with the machine guns strapped to her back. She understands every word said near her, and passes it on.',
       },
+      status: [{ episode: 91, value: 'alive' }],
       affiliation: [{ episode: 91, value: UNLUCKIES }],
     },
     'crocodile': {
@@ -1249,6 +1302,7 @@ export const alabasta: Saga = {
         it: 'Guida i ribelli, convinti che il re rubi la pioggia alle loro città. Da bambino era a capo di una banda di ragazzini che combattevano con mazze di legno, e quando dei banditi hanno provato a rapire la figlia del re ne ha steso uno con la sua mazza, prendendosi un taglio sopra l’occhio sinistro.',
         en: 'He leads the rebels, who believe the king has been stealing the rain from their towns. As a boy he led a gang of children who fought with wooden clubs, and when bandits tried to carry off the king’s daughter he knocked one of them down with his club and took a cut over his left eye.',
       },
+      status: [{ episode: 100, value: 'alive' }],
       // Ch 164 / ep 100: the boy leaves the palace to build Yuba with his
       // father, and Vivi tells Nami he leads the rebels (ch 164 p19).
       affiliation: [
@@ -1316,6 +1370,7 @@ export const alabasta: Saga = {
         it: 'Indossa una lunga tunica aperta sul petto e un mantello sulle spalle, e porta un’enorme spada al fianco. Con un’altra guardia reale accorre in una città di porto assaltata dai pirati, e la trova con il combattimento già finito.',
         en: 'He wears a long tunic open over his chest and a coat across his shoulders like a cape, and carries a massive sword at his hip. He and another royal guard hurry to a port town under attack by pirates, and find the fight already over.',
       },
+      status: [{ episode: 100, value: 'alive' }],
       affiliation: [
         {
           episode: 100,
@@ -1376,6 +1431,7 @@ export const alabasta: Saga = {
         it: 'La ciurma lo ha strappato alle fauci di una lucertola gigante nel deserto, e per ringraziare si è offerto di portarla. Intendeva solo le donne: lascia salire Nami e Bibi e degli uomini non si cura. Nami lo ha chiamato Ciglione, per via delle ciglia.',
         en: 'The crew pulled him out of the jaws of a giant lizard in the desert, and in thanks he offered to carry them. He meant only the women: he lets Nami and Vivi ride and pays the men no attention. Nami named him Matsuge, for his eyelashes.',
       },
+      status: [{ episode: 97, value: 'alive' }],
       affiliation: [
         {
           episode: 97,
@@ -1405,6 +1461,15 @@ export const alabasta: Saga = {
         it: 'È l’agente di grado più alto dell’organizzazione e non ha mai avuto bisogno di alzare la voce. Al caffè dove si riuniscono gli agenti si scontra con uno di loro, e una lama che gli esce dal corpo taglia il muro da parte a parte. La sua socia ferma la lite prima che vada oltre.',
         en: 'He is the highest-ranked agent in the organisation and has never needed to raise his voice. At the cafe where the agents meet he gets into a fight with another of them, and a blade that comes out of his body cuts the wall clean through. His partner stops the fight before it goes further.',
       },
+      status: [
+        { episode: 103, value: 'alive' },
+        // Episode 127 adapts chapter 211 (pages 14-15), where the Marines
+        // arrest the beaten officer agents along with Crocodile.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: he breaks out of Impel Down with
+        // Crocodile and sails through the Gates of Justice.
+        { episode: 451, chapter: 548, value: 'alive' },
+      ],
       affiliation: [
         { episode: 103, value: BW_OFFICER },
         { episode: 422, value: IMPEL_DOWN },
@@ -1424,6 +1489,12 @@ export const alabasta: Saga = {
         it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e offre il tè agli agenti. Quando Mr. One entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
         en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and offers tea to the agents. When Mr. 1 comes in through the wall and the dancer goes for him, she is the one who stops them. She works beside him, and she passes on the order to leave and meet the boss.',
       },
+      status: [
+        { episode: 103, value: 'alive' },
+        // Episode 127 adapts chapter 211 (pages 14-15), where the Marines
+        // arrest the beaten officer agents along with Crocodile.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+      ],
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [
         { episode: 117, chapter: 190, value: ['spike-spike-fruit'] },
@@ -1435,6 +1506,12 @@ export const alabasta: Saga = {
         it: 'È lentissimo: gli serve molto tempo anche solo per dire poche parole. Porta con sé una mazza da baseball e un fucile a forma di cane, allo Spiders Cafe gli servono un tè alla mela, e ride dello spettacolo del ballerino. La collega con cui lavora parla per tutti e due, e dà a lui la colpa dei suoi dolori.',
         en: 'He is extremely slow: it takes him a long time to get out even a few words. He carries a baseball bat and a dog-shaped gun, is served an apple tea at the Spiders Cafe, and laughs at the dancer’s show. The colleague he works with does the talking for both of them, and blames him for her aches.',
       },
+      status: [
+        { episode: 103, value: 'alive' },
+        // Episode 127 adapts chapter 211 (page 14), where the Marines arrest
+        // the beaten officer agents along with Crocodile.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+      ],
       affiliation: [{ episode: 103, value: BW_OFFICER }],
     },
     'miss-merry-christmas': {
@@ -1443,6 +1520,16 @@ export const alabasta: Saga = {
         it: 'È una donna bassa e robusta che entra allo Spiders Cafe lamentandosi della schiena e dei fianchi e dandone la colpa al suo compagno. Parla in fretta e si fa servire un tè orange pekoe. Lavora con un agente lentissimo e parla al posto suo.',
         en: 'She is a short, stout woman who walks into the Spiders Cafe complaining about her back and hips and blaming her partner for it. She talks fast and is served an orange pekoe tea. She works with an extremely slow agent and speaks for him.',
       },
+      status: [
+        { episode: 103, value: 'alive' },
+        // Episode 127 adapts chapter 211 (pages 14-15), where the Marines
+        // arrest the beaten officer agents along with Crocodile.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+        // Episode 1149 adapts chapter 1115 (page 15), where she listens to
+        // Vegapunk's broadcast at large beside Miss Goldenweek and Miss
+        // Valentine.
+        { episode: 1149, chapter: 1115, value: 'alive' },
+      ],
       affiliation: [{ episode: 103, value: BW_OFFICER }],
       devilFruit: [{ episode: 113, chapter: 184, value: ['mole-mole-fruit'] }],
     },
@@ -1467,6 +1554,7 @@ export const alabasta: Saga = {
         it: 'È un granchio corridore grande come una casa, amico di Ciglione da quando erano a Rainbase. Corre di lato sulla sabbia con tutta la ciurma sul dorso. L’acqua è un’altra faccenda: quando Nami balla per spingerlo ad attraversare un fiume, affonda prima dell’altra riva.',
         en: 'He is a Moving Crab as big as a house, a friend of Matsuge’s from Rainbase. He runs sideways over the sand with the whole crew on his back. Water is another matter: when Nami dances to push him across a river, he sinks before the far bank.',
       },
+      status: [{ episode: 111, value: 'alive' }],
       affiliation: [
         {
           episode: 111,
@@ -1480,6 +1568,12 @@ export const alabasta: Saga = {
         it: 'È un bazooka a cui è stato fatto mangiare un frutto del diavolo, e così è diventato un bassotto vivo, perennemente raffreddato. Quando starnutisce spara palle da baseball pesanti come palle di cannone, che esplodono qualche secondo dopo essere cadute. Mr. Four le rilancia con la mazza contro chiunque abbia davanti.',
         en: 'He is a bazooka that was fed a devil fruit, and so became a living dachshund with a permanent cold. When he sneezes he fires baseballs as heavy as cannonballs, which go off a few seconds after they land. Mr. 4 bats them at whoever is in front of him.',
       },
+      status: [
+        { episode: 113, value: 'alive' },
+        // Episode 127 adapts chapter 211 (page 14), where the Marines take him
+        // in with the beaten officer agents.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 113,
@@ -1515,6 +1609,7 @@ export const alabasta: Saga = {
         it: 'Lui e la sua compagna sono i cecchini che Crocodile ha piazzato nella torre dell’orologio, accanto a un cannone che deve sparare sulla piazza alle quattro e mezza. Si veste di sette, ride mentre aspetta di accendere la miccia e spara a chiunque provi ad avvicinarsi alla torre. I loro proiettili si uniscono in aria in qualcosa di peggio di ciascuno dei due.',
         en: 'He and his partner are the snipers Crocodile has placed in the clock tower, beside a cannon set to fire on the square at half past four. He dresses in sevens, laughs as he waits to light the fuse and shoots at anyone who comes near the tower. Their bullets join in mid-air into something worse than either.',
       },
+      status: [{ episode: 125, value: 'alive' }],
       affiliation: [{ episode: 125, value: BW_FRONTIER }],
     },
     'miss-fathers-day': {
@@ -1523,6 +1618,7 @@ export const alabasta: Saga = {
         it: 'Veste da rana, ride come una rana e spara proiettili a forma di rana da un’arma intonata. Dalla torre dell’orologio ha abbattuto in volo una guardia reale. Lei e il suo compagno contano su quest’ultima missione per ottenere una promozione.',
         en: 'She wears a frog costume, laughs like a frog and fires frog-shaped bullets from a gun to match. From the clock tower she shot a royal guard out of the sky. She and her partner are counting on this last mission to earn them a promotion.',
       },
+      status: [{ episode: 125, value: 'alive' }],
       affiliation: [{ episode: 125, value: BW_FRONTIER }],
     },
     'hina': {
@@ -1531,6 +1627,7 @@ export const alabasta: Saga = {
         it: 'Comanda una flotta della Marina e parla di sé in terza persona, con la stessa calma con cui accende una sigaretta. Quando due dei suoi uomini tornano in ritardo con una nave catturata, dice che Hina è scontenta. Le sue trenta navi bloccano tutti i porti di Alabasta, e vuole che la nave di Cappello di Paglia sia cercata da una costa all’altra.',
         en: 'She commands a Marine fleet and speaks of herself in the third person, with the same calm she lights a cigarette with. When two of her men come back late with a captured ship, she says Hina is unhappy. Her thirty ships blockade every dock in Alabasta, and she wants the Straw Hats’ ship searched for from coast to coast.',
       },
+      status: [{ episode: 128, value: 'alive' }],
       affiliation: [
         { episode: 128, value: { it: 'Marina', en: 'Marines' } },
         {
@@ -1555,6 +1652,7 @@ export const alabasta: Saga = {
         it: 'Dirige le cucine del palazzo di Alubarna ed è sposata con Igaram, al quale somiglia tanto da essere scambiata per lui travestito da donna. Quando Rufy si sveglia dopo tre giorni di sonno, entra con un vassoio di cibo prima ancora che lo chieda. A cena prende il suo appetito come una sfida e continua a far arrivare piatti.',
         en: 'She runs the kitchens of the palace of Alubarna, and is married to Igaram, whom she resembles so closely that she is taken for him in a dress. When Luffy wakes after three days of sleep she comes in with a tray of food before he can even ask for it. At dinner she takes his appetite as a challenge and keeps the dishes coming.',
       },
+      status: [{ episode: 128, value: 'alive' }],
       affiliation: [
         {
           episode: 128,

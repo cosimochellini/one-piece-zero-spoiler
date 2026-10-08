@@ -1088,6 +1088,24 @@ export const summitWar: Saga = {
         it: 'La taglia più alta della sua generazione, e la reputazione dei civili che lui e la sua ciurma hanno ucciso lungo la strada. A Sabaody si fronteggia con Scratchmen Apoo, un altro capitano.',
         en: 'The highest bounty of his generation, and a reputation for the civilians he and his crew have killed along the way. At Sabaody he squares up with Scratchmen Apoo, another captain.',
       },
+      status: [
+        { episode: 392, value: 'alive' },
+        // Episode 779 adapts chapter 824, where Kaido is shown holding a
+        // beaten Kid as his prisoner.
+        { episode: 779, chapter: 824, value: 'imprisoned' },
+        // Episode 929 adapts chapter 934: the papers report that Kid has
+        // escaped from the Udon prison.
+        { episode: 929, chapter: 934, value: 'alive' },
+        // Episode 942 adapts chapter 944, where Kid, caught again, is brought
+        // back to the prison with Killer.
+        { episode: 942, chapter: 944, value: 'imprisoned' },
+        // Episode 950 adapts chapter 950: Killer unlocks Kid's cuffs and the
+        // two leave the prisoner mine.
+        { episode: 950, chapter: 950, value: 'alive' },
+        // Episode 1112 adapts chapter 1079: Shanks fells Kid with one blow,
+        // the giants split his ship in two and the crew sinks with it.
+        { episode: 1112, chapter: 1079, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 392,
@@ -1113,6 +1131,7 @@ export const summitWar: Saga = {
         it: 'Governa un’isola dove nessun uomo ha mai messo piede, e comanda le Pirate Kuja come membro della Flotta dei Sette. Sputa sui suoi sudditi e si china per farsi perdonare, e le viene perdonato. Ha un ragazzo di gomma rinchiuso in gabbia nell’arena, e non riesce a trasformarlo in pietra.',
         en: 'She rules an island where no man has ever set foot, and captains the Kuja Pirates as one of the Seven Warlords. She spits on her subjects and bows to be forgiven, and is forgiven. She has a rubber boy caged in her arena, and cannot turn him to stone.',
       },
+      status: [{ episode: 410, value: 'alive' }],
       affiliation: [
         {
           episode: 410,
@@ -1199,6 +1218,15 @@ export const summitWar: Saga = {
         it: 'Viene inseguita per mare da una banda a cavallo di pesci volanti e se la cava perché un ragazzo di gomma decide che non se ne parla nemmeno. Serve al banco dei takoyaki di Octy, che la tratta come una figlia, e si scusa in continuazione per il disturbo che crede di dare. Nei guai ci finisce con facilità, e qualcuno deve sempre andare a riprenderla.',
         en: 'She is chased across the sea by a gang riding flying fish and gets away because a rubber boy decides the matter is not up for discussion. She works the takoyaki counter for Hatchan, who treats her like a daughter, and apologises constantly for trouble she thinks she is causing. Danger finds her easily, and somebody always has to fetch her back.',
       },
+      status: [
+        { episode: 385, value: 'alive' },
+        // Episode 393 adapts chapter 499, where Peterman's gang kidnaps
+        // Camie at Sabaody Park to sell her at the auction.
+        { episode: 393, chapter: 499, value: 'captured' },
+        // Episode 398 adapts chapter 504: Rayleigh takes off her explosive
+        // collar and she escapes the auction house.
+        { episode: 398, chapter: 504, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 385,
@@ -1228,6 +1256,7 @@ export const summitWar: Saga = {
         it: 'Sta appollaiato sulla testa di Kayme e sostiene di esserne il padrone, anche se è lei a portarlo in giro e a dargli da mangiare. Parla senza fermarsi mai, distribuisce consigli che nessuno gli ha chiesto e si offende se qualcuno lo scambia per un cappello. Quando la sirena sparisce è il primo a correre da chiunque possa aiutarla.',
         en: 'He perches on Camie’s head and insists that he is her master, though she is the one who carries him about and feeds him. He talks without pause, hands out advice nobody asked for, and takes offence when he is mistaken for a hat. When the mermaid goes missing he is the first to run to anyone who might help.',
       },
+      status: [{ episode: 385, value: 'alive' }],
       affiliation: [
         {
           episode: 385,
@@ -1254,6 +1283,7 @@ export const summitWar: Saga = {
         it: 'Comanda una banda che vola sopra il mare su pesci addestrati e dà la caccia a un cuoco che non ha mai incontrato. La colpa è di un disegno: la sua faccia è identica a quella stampata su una taglia, e da allora la Marina e i cacciatori non gli danno tregua. Per questo porta una maschera di ferro e non se la toglie davanti a nessuno.',
         en: 'He leads a gang that flies over the sea on trained fish, and hunts a cook he has never met. The fault lies with a drawing: his face is the one printed on a wanted poster, and Marines and bounty hunters have not left him alone since. So he wears an iron mask, and takes it off for nobody.',
       },
+      status: [{ episode: 391, value: 'alive' }],
       affiliation: [
         {
           episode: 391,
@@ -1271,6 +1301,7 @@ export const summitWar: Saga = {
         it: 'Tiene un locale fra le mangrovie dove il conto è sempre più alto di quanto dovrebbe, e l’insegna lo ammette apertamente. Conosce per nome ogni pirata sbarcato sull’arcipelago e ne segue le taglie sui giornali come altri seguono il tempo. Sa dove si trova l’uomo capace di rivestire una nave, e non spiega a nessuno come faccia a saperlo.',
         en: 'She keeps a place among the mangroves where the bill always comes out higher than it should, which the sign admits outright. She knows by name every pirate who has landed on the archipelago and follows their bounties in the papers the way others follow the weather. She knows where to find the man who can coat a ship, and never explains how.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -1311,6 +1342,18 @@ export const summitWar: Saga = {
         it: 'Porta un casco a strisce, con file di fori, che gli copre tutta la testa, e una lama lunga e ricurva fissata a ciascuno dei guanti. A Sabaody sta combattendo contro il monaco Urouge quando X Drake si mette in mezzo, para i colpi di tutti e due e dice loro di tenersi la battaglia per il Nuovo Mondo.',
         en: 'He wears a striped helmet with rows of holes in it that covers his whole head, and a long curved blade fixed to each of his gauntlets. At Sabaody he is fighting the monk Urouge when X Drake jumps between them, blocks them both and tells them to save it for the New World.',
       },
+      status: [
+        { episode: 392, value: 'alive' },
+        // Episode 942 adapts chapter 944, where Killer, still Kamazo, is sent
+        // to the Udon prison for failing to kill Toko.
+        { episode: 942, chapter: 944, value: 'imprisoned' },
+        // Episode 950 adapts chapter 950: Killer unlocks the cuffs and leaves
+        // the prisoner mine with Kid.
+        { episode: 950, chapter: 950, value: 'alive' },
+        // Episode 1112 adapts chapter 1079: Shanks's blow fells Killer with
+        // Kid, and the crew sinks with their split ship.
+        { episode: 1112, chapter: 1079, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 392,
@@ -1342,6 +1385,7 @@ export const summitWar: Saga = {
         it: 'È un orso polare che sta in piedi su due zampe, con una tuta arancione e piccoli stivali marroni. A Sabaody è uno degli uomini intorno a Trafalgar Law, il capitano dei Pirati Heart.',
         en: 'He is a polar bear who stands on two legs, in an orange boiler suit and small brown boots. At Sabaody he is one of the crew around Trafalgar Law, the captain of the Heart Pirates.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -1364,6 +1408,7 @@ export const summitWar: Saga = {
         it: 'Arriva a Sabaody nello stesso mese degli altri capitani con la taglia sopra i cento milioni, e si fa notare più di tutti perché non smette mai di fare rumore. Ha braccia lunghissime che cambiano forma, e il suo stesso corpo gli serve da strumento. Delle risse altrui ride come se avesse pagato il biglietto per vederle.',
         en: 'He reaches Sabaody in the same month as the other captains with bounties above a hundred million, and stands out because he never stops making noise. His arms are long and change shape, and his own body serves him as an instrument. He laughs at other people’s brawls like a spectator who paid for the seat.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -1397,6 +1442,12 @@ export const summitWar: Saga = {
         it: 'Siede in un ristorante del Grove 24 con i suoi tarocchi e parla del destino come di una cosa già decisa. Quando un cameriere rovescia il cibo addosso a uno dei suoi uomini, gli impedisce di vendicarsi e dice con calma che era il destino di quei vestiti, e che togliere una vita oggi porterebbe sfortuna.',
         en: 'He sits in a Grove 24 restaurant with his tarot cards and speaks of fate as something already decided. When a waiter spills food on one of his men, he stops the man from hitting back and says calmly that such was the fate of those clothes, and that taking a life today would bring bad luck.',
       },
+      status: [
+        { episode: 392, value: 'alive' },
+        // Episode 1079 adapts chapter 1052, where Hawkins, gravely hurt,
+        // talks to Drake and collapses; his fate is left open.
+        { episode: 1079, chapter: 1052, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 392,
@@ -1424,6 +1475,15 @@ export const summitWar: Saga = {
         it: 'Un tempo era un marine, oggi è il capitano di una ciurma pirata. A Sabaody ferma lo scontro fra Killer e Urouge parando i colpi di entrambi, e dice loro di tenerselo per il Nuovo Mondo. Law gli chiede quante persone abbia ucciso.',
         en: 'He was once a Marine and is now a pirate captain. At Sabaody he stops a fight between Killer and Urouge by blocking them both, and tells them to save it for the New World. Law asks him how many people he has killed.',
       },
+      status: [
+        { episode: 392, value: 'alive' },
+        // Episode 1090 adapts chapter 1061, where Grus says SWORD has lost
+        // contact with Drake since Onigashima.
+        { episode: 1090, chapter: 1061, value: 'missing' },
+        // Episode 1150 adapts chapter 1117: Drake, back with the Marines,
+        // recovers in hospital and hears Vegapunk's broadcast.
+        { episode: 1150, chapter: 1117, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 392,
@@ -1473,6 +1533,7 @@ export const summitWar: Saga = {
         it: 'Viene dalle isole del cielo, cosa che sulla Rotta Maggiore quasi nessuno crede possibile, e si porta dietro un pilastro di ferro come bastone. Sorride sempre, anche mentre colpisce. A Sabaody passeggia tranquillo in mezzo a capitani che non si sopportano.',
         en: 'He comes from the islands in the sky, which almost nobody on the Grand Line believes is possible, and carries an iron pillar as a staff. He smiles constantly, even mid-swing. At Sabaody he strolls calmly among captains who cannot stand each other.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -1499,6 +1560,7 @@ export const summitWar: Saga = {
         it: 'Comanda la sua ciurma come una famiglia di malavita, e i suoi uomini lo chiamano padre. Viene dal West Blue. A Sabaody si siede a cena in un ristorante del Grove 24 e vuole che Jewelry Bonney stia zitta, per come mangia. Quando uno dei suoi uomini gli ricorda che il quartier generale della Marina è a due passi e che una rissa sarebbe un errore, Bege lo colpisce con la forchetta.',
         en: 'He runs his crew like a crime family, and his men call him father. He comes from the West Blue. At Sabaody he sits down to dinner in a Grove 24 restaurant and wants Jewelry Bonney silenced for the way she eats. When one of his men warns him that Marine headquarters is close and a fight would be a mistake, Bege hits him with his fork.',
       },
+      status: [{ episode: 392, value: 'alive' }],
       affiliation: [
         {
           episode: 392,
@@ -1541,6 +1603,15 @@ export const summitWar: Saga = {
         it: 'È l’unica donna fra gli undici capitani arrivati a Sabaody con una taglia sopra i cento milioni, e mangia mentre parla, mentre cammina e mentre minaccia. Ha modi da ragazzina e una ciurma che la segue senza fiatare. Mangia e beve a spese di chiunque le capiti davanti, e non ringrazia.',
         en: 'She is the only woman among the eleven captains who reach Sabaody with a bounty above a hundred million, and she eats while she talks, while she walks and while she threatens. Her manners are a girl’s and her crew follows her without a murmur. She eats and drinks at the expense of whoever is nearest, and never says thank you.',
       },
+      status: [
+        { episode: 392, value: 'alive' },
+        // Episode 513 adapts chapter 595, where Blackbeard's crew leaves the
+        // captured Bonney behind for Akainu's ship.
+        { episode: 513, chapter: 595, value: 'captured' },
+        // Episode 629 adapts chapter 700, where a free Bonney reads the news
+        // about Doflamingo over a slice of pizza.
+        { episode: 629, chapter: 700, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 392,
@@ -1573,6 +1644,7 @@ export const summitWar: Saga = {
         it: 'Cammina sull’arcipelago dentro una bolla di vetro, perché l’aria che respirano gli altri non è degna di lui, e spara a chiunque gli passi troppo vicino. Alla casa d’aste compra persone come si comprano i mobili e pretende che la sala si inginocchi. Nessuno reagisce, perché alzare una mano su di lui significa chiamare un ammiraglio.',
         en: 'He walks the archipelago inside a glass bubble, because the air everyone else breathes is beneath him, and shoots whoever comes too close. At the auction house he buys people the way other men buy furniture and expects the room to kneel. Nobody moves against him, because raising a hand to him calls down an admiral.',
       },
+      status: [{ episode: 396, value: 'alive' }],
       affiliation: [{ episode: 396, value: CELESTIAL_DRAGONS }],
       origin: [{ episode: 396, value: MARY_GEOISE }],
     },
@@ -1601,6 +1673,15 @@ export const summitWar: Saga = {
         it: 'Si presenta come la guardia del corpo dello scienziato del Governo e si vanta di avere la difesa più solida del mondo. Porta un’ascia enorme sulla schiena e una cintura da lottatore, e risponde alle domande con una scortesia che sembra studiata. Comanda i giganti corazzati che camminano fra le mangrovie, e li chiama con un ordine secco.',
         en: 'He introduces himself as the Government scientist’s bodyguard and boasts of having the sturdiest defence in the world. A huge axe rides on his back above a wrestler’s belt, and he answers questions with a rudeness that seems rehearsed. He commands the armoured giants walking the mangroves, and calls them with a single flat order.',
       },
+      status: [
+        { episode: 403, value: 'alive' },
+        // Episode 1137 adapts chapter 1103, where the Marines tie up the
+        // wounded Sentomaru and hold him at gunpoint.
+        { episode: 1137, chapter: 1103, value: 'captured' },
+        // Episode 1154 adapts chapter 1124: with the Marines knocked out,
+        // Sentomaru rows away from Egghead.
+        { episode: 1154, chapter: 1124, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 403,
@@ -1624,6 +1705,7 @@ export const summitWar: Saga = {
         it: 'È la più alta e la più magra delle tre sorelle, con i capelli verdi raccolti in cima, e sull’isola tutti la chiamano principessa. Nell’arena combatte insieme alla sorella minore e si trasforma in un serpente lungo quanto la gradinata. Sulla schiena porta qualcosa che non mostra a nessuno, e se il mantello scivola si copre di corsa.',
         en: 'She is the tallest and thinnest of the three sisters, her green hair bound up above her head, and everyone on the island calls her princess. In the arena she fights beside her younger sister and turns into a snake as long as the stands. On her back is something she shows to nobody, and when her cloak slips she covers up in a hurry.',
       },
+      status: [{ episode: 412, value: 'alive' }],
       affiliation: [
         { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
       ],
@@ -1640,6 +1722,7 @@ export const summitWar: Saga = {
         it: 'È la più grossa delle tre sorelle e insieme a Sandersonia fa la guardia al bagno dell’imperatrice. Quando l’imperatrice ordina alle due di giustiziare l’intruso con le loro mani, nell’arena si trasformano in serpenti. Come le sorelle tiene la schiena coperta dal mantello: sull’isola si dice che lì le abbia segnate la maledizione di una Gorgone.',
         en: 'She is the largest of the three sisters, and with Sandersonia she stands guard over the empress’s bath. When the empress orders the two of them to execute the intruder themselves, they turn into snakes in the arena. Like her sisters she keeps her back under her cloak: the island says a Gorgon’s curse marked them there.',
       },
+      status: [{ episode: 412, value: 'alive' }],
       affiliation: [
         { episode: 412, value: { it: 'Pirate Kuja', en: 'Kuja Pirates' } },
       ],
@@ -1656,6 +1739,7 @@ export const summitWar: Saga = {
         it: 'Trova un uomo svenuto nella foresta, il primo che vede in vita sua, e invece di ucciderlo lo porta al villaggio e lo nasconde. Caccia con un arco più alto di lei e tira frecce che colpiscono molto più forte di quanto il legno lasci immaginare. Fa domande su tutto quello che sta fuori dall’isola, e non ha mai potuto farle a nessuno.',
         en: 'She finds a man unconscious in the forest, the first she has ever seen, and instead of killing him she carries him to the village and hides him. She hunts with a bow taller than she is and looses arrows that land far harder than the wood suggests. She asks questions about everything outside the island, and has never had anyone to ask.',
       },
+      status: [{ episode: 409, value: 'alive' }],
       affiliation: [{ episode: 409, value: KUJA_WARRIOR }],
       origin: [{ episode: 409, value: AMAZON_LILY }],
     },
@@ -1665,6 +1749,7 @@ export const summitWar: Saga = {
         it: 'Vive in una casa in cima al villaggio e legge i giornali che arrivano dal mondo, cosa che sull’isola non fa nessun altro. È stata imperatrice prima di quella attuale, e oggi le due si trattano male in pubblico e si cercano in privato. Da giovane ha lasciato l’isola ed è tornata, e di quegli anni parla poco e malvolentieri.',
         en: 'She lives in a house above the village and reads the newspapers that reach it from the world, which nobody else on the island does. She was empress before the present one, and now the two of them are rude to each other in public and seek each other out in private. She left the island young and came back, and speaks of those years rarely and unwillingly.',
       },
+      status: [{ episode: 412, value: 'alive' }],
       affiliation: [
         {
           episode: 412,
@@ -1684,6 +1769,7 @@ export const summitWar: Saga = {
         en: 'He runs the deepest prison in the world from an office on the fourth level, the one cool room on a floor that is all fire. He is a poison man: he likes poison enough to eat it as soup for breakfast, and his breath is a gas that floors the vice warden. The same poison keeps him in the lavatory ten hours a day, and in those hours the prison runs itself.',
       },
       // No vice-chief-warden entry: only the chapter 665 cover says it.
+      status: [{ episode: 425, value: 'alive' }],
       affiliation: [
         {
           episode: 425,
@@ -1705,6 +1791,7 @@ export const summitWar: Saga = {
         en: 'He tells anyone who will listen that one day he will have the chief warden’s job, and he says it in front of the chief warden too. He wears a pharaoh’s headdress, and in arguments with colleagues he trips over his words and corrects himself. When someone breaks into the prison for the first time, he calls it a calamity and blames the chief warden for it.',
       },
       // No chief-warden entry: only the chapter 661 cover says it.
+      status: [{ episode: 425, value: 'alive' }],
       affiliation: [
         {
           episode: 425,
@@ -1721,6 +1808,12 @@ export const summitWar: Saga = {
         it: 'Regna su un livello della prigione che sulle mappe non esiste, un giardino segreto dove i detenuti bevono, giocano e guardano lo spettacolo invece di scappare. Le guardie credono che i prigionieri scomparsi siano finiti all’inferno, e invece sono tutti lì. Bon Kure lo conosce di fama come uno capace di miracoli, e spera che uno basti a salvare Rufy avvelenato.',
         en: 'He reigns over a level of the prison that appears on no map, a secret garden where the inmates drink, play games and watch the show instead of running. The guards believe the vanished prisoners were dragged off to hell, and they are all there. Bon Clay knows him by reputation as a man who works miracles, and hopes one will be enough to save the poisoned Luffy.',
       },
+      status: [
+        { episode: 438, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: the escapees' ship gets through the
+        // Gates of Justice and out of Impel Down.
+        { episode: 451, chapter: 548, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 438,
@@ -1757,6 +1850,12 @@ export const summitWar: Saga = {
         it: 'Trova Rufy e Bon Kure mezzi assiderati dentro la prigione e li porta al sicuro, dove Bon Kure si risveglia dieci ore dopo. Quando gli chiede dove si trova, non risponde e lo porta davanti al palco, perché sarà qualcun altro a spiegarglielo. Di sé dice soltanto il proprio nome.',
         en: 'He finds Luffy and Bon Clay half frozen inside the prison and moves them somewhere safe, where Bon Clay wakes ten hours later. When Bon Clay asks where he is, he gives no answer and takes him to the front of the stage, because someone else will explain. About himself he says only his name.',
       },
+      status: [
+        { episode: 438, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: the escapees' ship gets through the
+        // Gates of Justice and out of Impel Down.
+        { episode: 451, chapter: 548, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 438,
@@ -1781,6 +1880,7 @@ export const summitWar: Saga = {
         it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Quando Barbanera entra nella prigione, il direttore lo fa uscire dalla cella per fermarlo e gli rende la spada, e lui la usa subito sui secondini venuti a liberarlo.',
         en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. When Blackbeard breaks into the prison, the chief warden lets him out of his cell to stop him and gives him back his sword, and he turns it at once on the jailers sent to free him.',
       },
+      status: [{ episode: 445, value: 'alive' }],
       affiliation: [
         {
           episode: 445,
@@ -1808,6 +1908,7 @@ export const summitWar: Saga = {
         it: 'A Mock Town batte un uomo di un’altra ciurma e si lamenta che fosse troppo debole. Poi sale sul tetto di un palazzo e grida in cerca di qualcuno che valga la pena di affrontare. Si fa chiamare il Campione.',
         en: 'In Mock Town he beats a man from another crew and complains that he was too weak. Then he climbs onto a rooftop and shouts for someone worth fighting. He calls himself the Champion.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -1829,6 +1930,7 @@ export const summitWar: Saga = {
         it: 'È il più alto e il più silenzioso del gruppo che beve a Mock Town, e tiene il fucile appoggiato alle ginocchia anche al tavolo. Vede a distanze che gli altri non coprono nemmeno con il cannocchiale, e quando parla è per dire dove si trova qualcosa. Gli ordini del suo capitano li esegue senza commentarli mai.',
         en: 'He is the tallest and the quietest of the group drinking in Mock Town, and keeps his rifle across his knees even at the table. He sees distances the others cannot cover with a spyglass, and when he speaks it is to say where something is. He carries out his captain’s orders and never once comments on them.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -1852,6 +1954,7 @@ export const summitWar: Saga = {
         it: 'È il medico della ciurma ed è anche l’uomo più malato che si veda a Mock Town: tossisce a ogni frase e si regge appena in sella. Gira su un cavallo magro quanto lui e offre mele a chi incontra, lasciando scegliere se accettarle. Il suo capitano lo tiene accanto e ride della sua sfortuna come di uno scherzo riuscito.',
         en: 'He is the crew’s doctor and also the sickest man in Mock Town: he coughs through every sentence and barely stays in the saddle. He rides a horse as thin as himself and offers apples to whoever he meets, leaving them to decide whether to take one. His captain keeps him close and laughs at his bad luck as if it were a good joke.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -1873,6 +1976,7 @@ export const summitWar: Saga = {
         it: 'Arriva nella sala dove il Governo ha convocato la Flotta dei Sette senza che nessuno se ne accorga, con il cilindro in testa e il bastone in mano. Propone il nome del suo capitano per il posto rimasto vuoto e chiede a tutti di ricordarsi dei Pirati di Barbanera. Prima di fare il pirata era uno sceriffo nel West Blue, cacciato per la sua crudeltà.',
         en: 'He gets into the room where the Government has summoned the Seven Warlords without anyone noticing, top hat on and cane in hand. He puts his captain’s name forward for the empty seat and tells them all to remember the Blackbeard Pirates. Before he turned pirate he was a sheriff in the West Blue, exiled for his cruelty.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -1898,6 +2002,7 @@ export const summitWar: Saga = {
         it: 'Ivankov la nomina fra i pirati del sesto livello di Impel Down e la chiama la donna più pericolosa del mondo, per crimini che i giornali si sono rifiutati di raccontare. A Marineford compare sul patibolo insieme a Barbanera, presentata come la Cacciatrice della Luna Crescente. Quello che ha fatto per finire laggiù non è scritto da nessuna parte.',
         en: 'Ivankov names her among the pirates of Impel Down’s sixth level and calls her the most dangerous woman in the world, for crimes the papers refused to print. At Marineford she appears on the scaffold with Blackbeard, announced as the Crescent Moon Hunter. What she did to end up down there is written nowhere at all.',
       },
+      status: [{ episode: 484, value: 'alive' }],
       affiliation: [
         {
           episode: 484,
@@ -1929,6 +2034,7 @@ export const summitWar: Saga = {
         it: 'Il suo nome è fra quelli che Ivankov pronuncia parlando del sesto livello di Impel Down, dove finisce chi ha commesso crimini troppo crudeli per i giornali. A Marineford spunta sul patibolo accanto a Barbanera, presentato come il Beone. La sua esistenza era stata cancellata, e adesso è in mezzo alla guerra.',
         en: 'His name is among those Ivankov gives when he talks about the sixth level of Impel Down, where people end up for crimes too cruel for the papers. At Marineford he turns up on the scaffold beside Blackbeard, announced as the Heavy Drinker. His existence had been erased, and now he stands in the middle of the war.',
       },
+      status: [{ episode: 484, value: 'alive' }],
       affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
         { episode: 484, value: { it: 'il Beone', en: 'Heavy Drinker' } },
@@ -1944,6 +2050,7 @@ export const summitWar: Saga = {
         it: 'Lo chiamano il più grande di tutti gli esseri viventi, e a Marineford lo si vede prima ancora di sapere chi è: qualcosa di enorme dietro il quartier generale della Marina. Ivankov lo aveva nominato fra i pirati del sesto livello di Impel Down, la Nave da Guerra Colossale. Adesso arriva insieme ai Pirati di Barbanera, e la Marina lo riconosce subito.',
         en: 'They call him the biggest of all living things, and at Marineford he is seen before anyone knows who he is: something enormous behind Marine headquarters. Ivankov had named him among the pirates of Impel Down’s sixth level, the Colossal Battleship. Now he arrives with the Blackbeard Pirates, and the Marines know him at once.',
       },
+      status: [{ episode: 484, value: 'alive' }],
       affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
         {
@@ -1959,6 +2066,7 @@ export const summitWar: Saga = {
         it: 'A Marineford sale sul patibolo insieme a Barbanera, uno dei criminali più feroci, la cui esistenza è stata cancellata per la loro crudeltà. La Marina lo riconosce e lo chiama per nome: il Re Corrotto. Che cosa abbia fatto per meritarsi quel nome non viene detto.',
         en: 'At Marineford he stands on the scaffold with Blackbeard, one of the most heinous criminals, whose existence was erased because of their brutality. The Marines know him and call him by name: the Corrupt King. What he did to earn that name is not said.',
       },
+      status: [{ episode: 484, value: 'alive' }],
       affiliation: [{ episode: 484, value: LEVEL_SIX_ESCAPEE }],
       epithet: [
         { episode: 484, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
@@ -2003,6 +2111,7 @@ export const summitWar: Saga = {
         it: 'Comanda la terza divisione della ciurma di Barbabianca ed è largo quanto una porta. Si copre il corpo di diamante e incassa colpi che dovrebbero attraversarlo, restando dove si trova. Parla poco e sta vicino al vecchio, perché è lì che serve.',
         en: 'He commands the third division of Whitebeard’s crew and is as wide as a doorway. He covers his body in diamond and takes blows that ought to go straight through him without giving ground. He says little and stays near the old man, because that is where he is needed.',
       },
+      status: [{ episode: 463, value: 'alive' }],
       affiliation: [
         {
           episode: 463,
@@ -2033,6 +2142,7 @@ export const summitWar: Saga = {
         it: 'Comanda la quinta divisione con due spade e i baffi arricciati, e si muove come se fosse a un ballo invece che in battaglia. Nella baia tiene la prima linea davanti alla nave del vecchio, e nessuno la passa. Fra i comandanti è quello che alza meno la voce e che sorride di più.',
         en: 'He commands the fifth division with two swords and curled moustaches, and moves as though he were at a ball rather than a battle. In the bay he holds the front line before the old man’s ship, and nobody gets past it. Of all the commanders he raises his voice least and smiles most.',
       },
+      status: [{ episode: 461, value: 'alive' }],
       affiliation: [
         {
           episode: 461,
@@ -2055,6 +2165,7 @@ export const summitWar: Saga = {
         it: 'Guida una delle ciurme del Nuovo Mondo alleate di Barbabianca, arrivate nella baia per salvare Ace. Quando la battaglia comincia, manda i suoi uomini all’attacco della Marina.',
         en: 'He leads one of the New World crews allied to Whitebeard that have come to the bay to save Ace. When the battle starts, he sends his men to attack the Marines.',
       },
+      status: [{ episode: 462, value: 'alive' }],
       affiliation: [
         // Episode 462 calls the crew the "Squard Pirates"; the crew's own
         // name is first said in chapter 572, which episode 481 adapts.
@@ -2090,6 +2201,12 @@ export const summitWar: Saga = {
         it: 'È un gigante talmente alto che le navi nella baia gli arrivano alla vita, e porta in testa un cappello di paglia intrecciata grande come una vela. Si è alleato con Barbabianca e avanza da solo verso il muro della Marina, senza aspettare che gli altri lo seguano. Discende da un uomo di cui a bordo si racconta ancora.',
         en: 'He is a giant so tall that the ships in the bay reach only his waist, and he wears a hat of woven straw as broad as a sail. He has allied himself with Whitebeard and walks alone at the Marine wall, without waiting for anyone to follow him. He is descended from a man the crews still tell stories about.',
       },
+      status: [
+        { episode: 466, value: 'alive' },
+        // Episode 489 adapts chapter 580, the last time Oars is seen, knocked
+        // out on the battlefield; the story never says what became of him.
+        { episode: 489, chapter: 580, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 466,
@@ -2106,6 +2223,7 @@ export const summitWar: Saga = {
         it: 'Al quartier generale della Marina, prima dell’esecuzione, dice a Garp che non è colpa sua, e lui le risponde che in momenti così le donne sanno essere dolci. Quando la flotta alleata di Barbabianca esce dalla nebbia e di lui non c’è traccia, dice che forse hanno sbagliato schieramento.',
         en: 'At Marine headquarters, before the execution, she tells Garp it is not his fault, and he answers that women are very sweet at times like this. When Whitebeard’s allied fleet comes out of the fog and he himself is nowhere to be seen, she says that maybe they got the wrong lineup.',
       },
+      status: [{ episode: 461, value: 'alive' }],
       affiliation: [
         {
           episode: 461,
@@ -2132,6 +2250,7 @@ export const summitWar: Saga = {
         it: 'Sbarca su un’isola dove agli uomini è vietato mettere piede, con l’ordine di consegnare una convocazione all’imperatrice e nessuna voglia di discutere. Tiene gli occhi bassi per tutto il tempo, e quando lo sguardo di lei lo raggiunge si conficca una lama nella gamba per non cedere. Aspetta la risposta e riparte senza aggiungere altro.',
         en: 'He lands on an island where men are forbidden to set foot, carrying a summons for the empress and no wish to argue about it. He keeps his eyes down the whole time, and when her gaze reaches him he drives a blade into his own leg rather than give way. He waits for the answer and sails off without another word.',
       },
+      status: [{ episode: 410, value: 'alive' }],
       affiliation: [
         {
           episode: 410,
@@ -2148,6 +2267,7 @@ export const summitWar: Saga = {
         it: 'Comanda una banda di briganti sul monte Colubo e paga la Marina per essere lasciata in pace, cosa che le è costata due bambini da crescere. Urla a tutti, si lamenta di tutto e mette in tavola più cibo di quanto quei due possano mangiare. Quando tornano pieni di lividi finge di non guardarli, e intanto li conta.',
         en: 'She runs a band of bandits on Mount Colubo and pays the Marines to be left alone, which has cost her two children to raise. She shouts at everyone, complains about everything, and puts more food on the table than the two of them could ever finish. When they come home covered in bruises she pretends not to look, and counts them.',
       },
+      status: [{ episode: 493, value: 'alive' }],
       affiliation: [
         {
           episode: 493,
@@ -2668,6 +2788,7 @@ export const summitWar: Saga = {
         it: 'Impel Down si vanta che da lì non esce nessuno: la grande prigione ha tenuto centinaia di migliaia di detenuti senza una sola evasione. Quando arriva la notizia che Cappello di Paglia Rufy ci è entrato di nascosto, il grand’ammiraglio è sicuro che il ragazzo non ne uscirà vivo, e poi si corregge: uno c’è stato. Vent’anni fa un pirata chiamato Shiki il Leone dorato è diventato il primo e unico prigioniero nella storia della prigione a evadere.',
         en: 'Impel Down boasts that nobody leaves it: the great prison has held hundreds of thousands of prisoners without a single breakout. When word comes that Straw Hat Luffy has slipped inside, the Fleet Admiral is sure the boy will not walk out alive, and then corrects himself: there was one man. Twenty years ago a pirate called Shiki the Golden Lion became the first and only prisoner in the prison’s history to escape.',
       },
+      status: [{ episode: 425, value: 'alive' }],
       affiliation: [
         {
           episode: 958,

@@ -515,6 +515,7 @@ export const fishManIsland: Saga = {
         it: 'Arriva al Grove 46 con il fratello Caribou, tra i capitani che continuano a presentarsi per unirsi ai Cappello di Paglia. Anche lui è capitano dei Pirati di Caribou, lo chiamano Schizzasangue e ha una taglia da centonovanta milioni, poco meno di quella del fratello.',
         en: 'He arrives at Grove 46 with his brother Caribou, among the captains who keep turning up to join the Straw Hats. He is a captain of the Caribou Pirates too, goes by Blood-Splatterer and carries a bounty of a hundred and ninety million, a little under his brother’s.',
       },
+      status: [{ episode: 519, value: 'alive' }],
       affiliation: [
         {
           episode: 519,
@@ -569,6 +570,7 @@ export const fishManIsland: Saga = {
         it: 'Esce in groppa a un mostro marino con altri due uomini-pesce incontro ai pirati che scendono dalla superficie. Porta sul collo il simbolo dei Pirati di Arlong, e mette sul piatto la battaglia di Rufy contro di loro, l’aiuto dato a Hatchan e il Nobile che ha preso a pugni. L’offerta è unirsi ai Nuovi Pirati Uomini-Pesce o morire, e Rufy dice di no.',
         en: 'He rides out on a sea beast with two other fish-men to meet the pirates coming down from the surface. He wears the Arlong Pirates’ mark on his neck, and weighs Luffy’s fight with them against the help he gave Hatchan and the Noble he punched. The offer is to join the New Fish-Man Pirates or die, and Luffy says no.',
       },
+      status: [{ episode: 527, value: 'alive' }],
       affiliation: [
         {
           episode: 527,
@@ -589,6 +591,7 @@ export const fishManIsland: Saga = {
         it: 'Gestisce il Caffè delle Sirene e presta il retro del locale alla ciurma mentre il suo cuoco si riprende. Le sue visioni nella sfera di cristallo sono famose sull’isola: da bambina previde l’arrivo dei pirati, e di recente la guerra di Marineford e la morte di Barbabianca. Dice di aver smesso, perché il futuro è meglio non conoscerlo. Dopo aver incontrato il ragazzo con il cappello di paglia guarda di nuovo, e quello che vede la manda in strada a gridare che va cacciato dall’isola.',
         en: 'She runs the Mermaid Café and lends its back room to the crew while their cook recovers. Her visions in a crystal ball are famous on the island: as a child she foresaw the pirates who would come, and more recently the war at Marineford and Whitebeard’s death. She says she has given it up, because the future is better not known. After meeting the boy in the straw hat she looks again, and what she sees sends her into the street shouting that he must be thrown off the island.',
       },
+      status: [{ episode: 529, value: 'alive' }],
       affiliation: [
         {
           episode: 529,
@@ -610,6 +613,7 @@ export const fishManIsland: Saga = {
         it: 'A meno di tremila metri di profondità, in un buio dove non brilla nulla, tiene accesa la sua esca luminosa e aspetta che una nave venga a cercare la luce. Una ciurma in cerca dei compagni dispersi la scambia per le luci dell’Isola degli Uomini-Pesce e ci punta dritta, finché dietro la luce non si spalancano le fauci. Risponde a un gigante che la stacca a pugni dalla preda e la sgrida come un animale di casa: le navi non si mangiano, quante volte deve ripeterlo, il capitano si arrabbierà.',
         en: 'Less than three thousand metres down, in a dark where nothing shines, it hangs out its glowing lure and waits for a ship to come looking for the light. A crew searching for their lost friends takes it for the lights of Fish-Man Island and sails straight at it, until the jaws open behind the glow. It answers to a giant who punches it off its prey and scolds it like a pet: ships are not for eating, how many times must he say it, the captain will be angry.',
       },
+      status: [{ episode: 525, value: 'alive' }],
       affiliation: [
         {
           episode: 525,
@@ -636,6 +640,12 @@ export const fishManIsland: Saga = {
         it: 'Naviga sull’Olandese Volante, la nave fantasma della vecchia leggenda di un capitano maledetto a vagare per sempre. Canta che ogni tesoro sommerso è suo e si proclama l’uomo più ricco del mondo. Quando il suo gigante e la sua rana pescatrice raggiungono la Sunny, vuole la nave abbattuta e non mangiata, per prendersi il tesoro, e si ritira solo quando erutta il vulcano sottomarino.',
         en: 'He sails the Flying Dutchman, the ghost ship of an old sailors’ legend about a captain cursed to drift forever. He sings that every sunken treasure is his and calls himself the richest man in the world. When his giant and his anglerfish catch the Sunny, he wants the ship knocked down rather than eaten, so he can take its treasure, and he pulls back only when the undersea volcano erupts.',
       },
+      status: [
+        { episode: 529, value: 'alive' },
+        // Episode 569 adapts chapter 649: Decken lies in a palace prison cell
+        // with Hody and the New Fish-Man Pirates' officers.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 529,
@@ -747,6 +757,15 @@ export const fishManIsland: Saga = {
         it: 'Scende dal palazzo in groppa alla sua balena, senza guardie, e nella piazza la gente non lo ha mai visto di persona. Arrivando grida il proprio nome. È venuto per gli umani che lo squalo Megalo gli indica, e li invita al Palazzo di Ryugu.',
         en: 'He rides down from the palace on his whale with no guards, and in the square below people have never seen him in person. He shouts his own name as he arrives. He has come for the humans the shark Megalo points out, and he invites them to the Ryugu Palace.',
       },
+      status: [
+        { episode: 530, value: 'alive' },
+        // Episode 533 adapts chapter 614: Zoro beats him and the crew hold
+        // him in chains as a hostage. Hody's crew take him over in 538.
+        { episode: 533, chapter: 614, value: 'captured' },
+        // Episode 553 adapts chapter 633: with Nami's key, Robin unlocks the
+        // chains at Gyoncorde Plaza and Hoe carries the royal family off.
+        { episode: 553, chapter: 633, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 530,
@@ -770,6 +789,7 @@ export const fishManIsland: Saga = {
         it: 'Viene di persona alla Baia delle Sirene con i fratelli a cercare degli intrusi entrati illegalmente sull’isola. Quando le sirene dicono di non aver visto nessuno, si scusa per il disturbo e fa per andarsene. Dopo la fuga dei pirati spiega alle sirene che non c’era bisogno di nasconderli: l’armata sapeva già chi fossero, e i principi li cercavano per consegnare loro un messaggio di Jinbe.',
         en: 'He comes to Mermaid Cove in person with his brothers, looking for intruders who entered the island illegally. When the mermaids say they have seen no one, he apologises for the bother and turns to go. After the pirates get away, he tells the mermaids they had no need to hide them: the army knew who they were, and the princes were looking for them to give them a message from Jinbe.',
       },
+      status: [{ episode: 529, value: 'alive' }],
       affiliation: [
         {
           episode: 529,
@@ -794,6 +814,7 @@ export const fishManIsland: Saga = {
         it: 'Canta la fine di quasi ogni frase salendo o scendendo una scala. Alla Baia delle Sirene lui e i fratelli chiedono alle sirene notizie di un ingresso illegale, e quando Rufy mette al tappeto Hammond e i suoi uomini comincia a sguainare la spada. Dopo che Kayme è partita sulla gondola dei principi con i Cappello di Paglia a bordo, spiega alle sirene che i principi cercavano la ciurma per un altro motivo: dovevano consegnarle un messaggio di Jinbe.',
         en: 'He sings the end of almost every sentence up or down a scale. At Mermaid Cove he and his brothers ask the mermaids about an illegal entry, and when Luffy knocks out Hammond and his men he starts to draw his sword. After Camie takes off in the princes’ gondola with the Straw Hats aboard, he tells the mermaids the princes were looking for the crew for another reason: they had a message from Jinbe to give them.',
       },
+      status: [{ episode: 529, value: 'alive' }],
       affiliation: [
         {
           episode: 529,
@@ -811,6 +832,7 @@ export const fishManIsland: Saga = {
         it: 'Arriva alla Baia delle Sirene con i due fratelli sulla gondola reale, in cerca di chi è entrato illegalmente sull’isola. Mentre i fratelli interrogano le sirene non riesce a stare fermo: dice che vuole restare a giocare e chiama tutti a ballare. Quando Kayme parte con la gondola e i Cappello di Paglia a bordo, resta alla baia con i fratelli.',
         en: 'He comes to Mermaid Cove with his two brothers on the royal gondola, looking for whoever entered the island illegally. While his brothers question the mermaids he cannot keep still: he says he wants to stay and play, and calls on everyone to dance. When Camie takes off in the gondola with the Straw Hats aboard, he is left at the cove with his brothers.',
       },
+      status: [{ episode: 529, value: 'alive' }],
       affiliation: [
         {
           episode: 529,
@@ -831,6 +853,7 @@ export const fishManIsland: Saga = {
         it: 'È la figlia più piccola del re e l’unica femmina, una sirena alta quanto il salone che la ospita e pronta a piangere per un nonnulla. Da dieci anni non esce dalla torre in cui vive: le hanno detto che là fuori c’è qualcuno che la vuole morta e lei ha smesso di chiedere perché. Dalla finestra guarda un mare che non le è mai stato concesso.',
         en: 'She is the king’s youngest child and his only daughter, a mermaid as tall as the hall that holds her and ready to cry at nothing at all. She has not left her tower in ten years: she was told that somebody out there wants her dead and she stopped asking why. From the window she watches a sea she has never been allowed into.',
       },
+      status: [{ episode: 531, value: 'alive' }],
       affiliation: [
         {
           episode: 531,
@@ -864,6 +887,12 @@ export const fishManIsland: Saga = {
         it: 'È l’assassino dei Nuovi Pirati Uomini-Pesce. Al posto delle gambe ha tentacoli di polpo, e porta una katana senza guardia in un fodero a macchie lunghe e una zucca. È con Hammond tra i mostri marini che sbarrano l’ingresso dell’Isola degli Uomini-Pesce mentre ai Cappello di Paglia viene detto di unirsi alla ciurma o di colare a picco. I Cappello di Paglia sfuggono lanciando la nave dentro l’isola.',
         en: 'He is the New Fish-Man Pirates’ assassin. He has octopus tentacles in place of legs, and carries a guardless katana in a sheath with long spots and a gourd. He is with Hammond among the sea monsters that block the entrance to Fish-Man Island while the Straw Hats are told to join the crew or be sunk. The Straw Hats get away by charging their ship into the island.',
       },
+      status: [
+        { episode: 527, value: 'alive' },
+        // Episode 569 adapts chapter 649: Hyouzou lies in a palace prison cell
+        // with Hody and the other leaders after the battle.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           // The crew's assassin: a caption says so in 527, and ch. 610, p. 5, in the manga.
@@ -886,6 +915,12 @@ export const fishManIsland: Saga = {
         it: 'È uno degli ufficiali intorno al capitano, un uomo-pesce alto coperto di strisce ondulate. Quando una ciurma umana è in fuga, commenta che gli umani scappano sempre. Quando la ciurma prende l’isola, occupa un centro commerciale e ordina alla gente di calpestare il ritratto della regina o di andarsene. Gli rispondono che in nessun altro punto del fondale arriva la luce e che non potrebbero vivere tra gli umani. Lui ribatte che umani e uomini-pesce non andranno mai d’accordo e che devono sottomettersi a re Hody.',
         en: 'He is one of the officers around the captain, a tall fish-man covered in wavy stripes. When a crew of humans flees, he remarks that humans always escape. When the crew takes the island, he holds a shopping mall and tells the people there to tread on the queen’s portrait or leave. They answer that nowhere else on the seafloor has light, and that they cannot live among humans. He replies that humans and fish-men can never get along, and that they must submit to King Hody.',
       },
+      status: [
+        { episode: 539, value: 'alive' },
+        // Episode 569 adapts chapter 649: Zeo lies in a palace prison cell
+        // with Hody and the other leaders after the battle.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
     },
@@ -898,6 +933,12 @@ export const fishManIsland: Saga = {
         it: 'Porta un elmo con due grandi falde e una cresta, ed è molto più piccolo degli altri ufficiali. Quando una ciurma umana è in fuga, chiede se deve strappare loro la carne a morsi. Quando la ciurma prende l’isola, occupa la città intorno alla fabbrica di dolci e avverte la gente che chi non calpesta il ritratto della regina è un nemico della ciurma.',
         en: 'He wears a helmet with two great flaps and a crest, and is far smaller than the other officers. When a crew of humans flees, he asks whether he should bite the flesh off them. When the crew takes the island, he holds the town around the candy factory and tells the people there that whoever will not tread on the queen’s portrait is the crew’s enemy.',
       },
+      status: [
+        { episode: 539, value: 'alive' },
+        // Episode 569 adapts chapter 649: Daruma lies in a palace prison cell
+        // with Hody and the other leaders after the battle.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [{ episode: 539, value: NEW_FISH_MAN_OFFICER }],
       origin: [{ episode: 539, value: FISH_MAN_ISLAND }],
     },
@@ -910,6 +951,12 @@ export const fishManIsland: Saga = {
         it: 'È il più alto dei pirati intorno a Hody Jones, con un elmo rotondo e gli occhialoni, una lunga barba e una lancia in ognuna delle otto mani. Quando una ciurma di pirati umani che aveva giurato fedeltà ai Nuovi Pirati Uomini-Pesce scappa, si offre di inseguirla lui. Hody gli dice di no e ci va da solo. Ikaros chiama gli steroidi energetici, le pillole che raddoppiano la forza di un uomo-pesce, un vero tesoro.',
         en: 'He is the tallest of the pirates around Hody Jones, with a round helmet and goggles, a long beard and a spear in each of his eight hands. When a crew of human pirates who had sworn loyalty to the New Fish-Man Pirates slips away, he offers to go after them himself. Hody tells him no and goes alone. Ikaros calls the Energy Steroids, the pills that double a fish-man’s strength, a real treasure.',
       },
+      status: [
+        { episode: 530, value: 'alive' },
+        // Episode 569 adapts chapter 649: Ikaros lies in a palace prison cell
+        // with Hody and the other leaders after the battle.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 530, value: NEW_FISH_MAN_PIRATES },
         { episode: 539, value: NEW_FISH_MAN_OFFICER },
@@ -925,6 +972,12 @@ export const fishManIsland: Saga = {
         it: 'Ha la testa a martello e un martello che tiene appoggiato sulla spalla: una testa enorme e scura con le estremità piegate verso il basso, su un manico lungo e nodoso. È uno dei pirati intorno a Hody Jones. Quando i pirati umani che hanno giurato fedeltà alla ciurma scappano di nuovo, dice che non imparano mai, e chiude spesso le frasi con “dosun”.',
         en: 'He has a hammerhead and a hammer he rests on his shoulder: a massive dark head with the ends curving down, on a long, gnarled handle. He is one of the pirates around Hody Jones. When the human pirates who swore loyalty to the crew run off again, he says they never learn, and he often ends his sentences with “dosun”.',
       },
+      status: [
+        { episode: 538, value: 'alive' },
+        // Episode 569 adapts chapter 649: Dosun lies in a palace prison cell
+        // with Hody and the other leaders after the battle.
+        { episode: 569, chapter: 649, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 538, value: NEW_FISH_MAN_PIRATES },
         { episode: 539, value: NEW_FISH_MAN_OFFICER },
@@ -941,6 +994,7 @@ export const fishManIsland: Saga = {
         it: 'Nelle profondità, i Cappello di Paglia mettono al tappeto il kraken che lo teneva stretto, e lui si ferma davanti a loro come per ringraziarli. Ricompare sull’Isola degli Uomini-Pesce accanto al re, che gli chiede se sono davvero quelli giusti. Quando gli ordina di portarli, risponde con un verso allegro e parte con tutto il gruppo sul dorso verso il Palazzo di Ryugu, dove li aspetta un banchetto.',
         en: 'Down in the deep, the Straw Hats knock out the kraken that had him in its grip, and he stops in front of them as if to say thank you. He turns up again on Fish-Man Island beside the king, who asks him whether these are really the right people. Told to carry them, he answers with a cheerful sound and sets off with the whole group on his back for the Ryugu Palace, where a feast is ready.',
       },
+      status: [{ episode: 530, value: 'alive' }],
       affiliation: [
         { episode: 530, value: { it: 'Regno di Ryugu', en: 'Ryugu Kingdom' } },
         {
@@ -965,6 +1019,7 @@ export const fishManIsland: Saga = {
         it: 'Studia la Foresta Marina, dove la corrente porta le navi che affondano intorno all’isola, ed è carpentiere come il fratello maggiore Tom. Dalle lettere di Kokoro sa che cosa è stato di Tom, e ha già sentito parlare di Franky e Iceburg. A Tom non somiglia per niente, e spiega che sull’Isola degli Uomini-Pesce i figli prendono spesso da un antenato lontano invece che dai genitori. Si offre di rivestire lui stesso la Thousand Sunny.',
         en: 'He studies the Sea Forest, where the tide carries the ships that sink around the island, and he is a shipwright like his elder brother Tom. Kokoro’s letters have told him what became of Tom, and about Franky and Iceburg. He looks nothing like Tom, and he explains that on Fish-Man Island children often take after a distant ancestor rather than their parents. He offers to coat the Thousand Sunny himself.',
       },
+      status: [{ episode: 535, value: 'alive' }],
       affiliation: [
         {
           episode: 535,
@@ -1053,6 +1108,7 @@ export const fishManIsland: Saga = {
         it: 'Naviga con la ciurma di Fisher Tiger e ne è il medico. Quando Koala continua a pulire, dice a Octy di lasciarla in pace: ha bisogno di tempo, perché un trauma non guarisce così in fretta. Arlong osserva che Aladin, schiavo a sua volta, la capisce bene. Quando il capitano è ferito gravemente e rifiuta il sangue umano, Aladin cerca di convincerlo ad accettarlo.',
         en: 'He sails with Fisher Tiger’s crew as its doctor. When Koala keeps on cleaning, he tells Hatchan to leave her alone: she needs time, because trauma does not heal that easily. Arlong points out that Aladine, a former slave himself, understands her well. When the captain is badly wounded and refuses human blood, Aladine tries to make him accept it.',
       },
+      status: [{ episode: 543, value: 'alive' }],
       affiliation: [
         {
           episode: 543,
@@ -1095,6 +1151,27 @@ export const fishManIsland: Saga = {
         it: 'Arriva alla fabbrica di dolci con Tamago per ritirare i dolci che l’isola paga ogni mese a Big Mom in cambio del permesso di usare il suo nome. Quando il Ministro della Sinistra chiede pietà perché la fabbrica è stata danneggiata, risponde che non è affar loro e ringhia che, se Big Mom si arrabbia, li distruggerà tutti. La folla lo trova carino mentre lo dice. Quando Big Mom chiama con la lumaca telefonica, non risponde: non vuole farsi sgridare.',
         en: 'He comes to the candy factory with Tamago to collect the sweets the island pays Big Mom every month in exchange for the use of her name. When the Minister of the Left begs for mercy because the factory has been damaged, he answers that it is none of their concern and growls that if Big Mom gets angry she will destroy them all. The crowd finds him cute while he does it. When Big Mom calls on the transponder snail, he will not pick up, because he does not want to be yelled at.',
       },
+      status: [
+        { episode: 571, value: 'alive' },
+        // Episode 787 adapts chapter 828: he is gone from the Sunny, leaving
+        // only a scrawled warning to turn back.
+        { episode: 787, chapter: 828, value: 'missing' },
+        // Episode 795 adapts chapter 834: Bege shoots him, chained, off a
+        // cliff into water full of sharks.
+        { episode: 795, chapter: 834, value: 'presumed-dead' },
+        // Episode 824 adapts chapter 856: asked if Pekoms is all right, Jinbe
+        // says yes, his crew pulled him out of the sea in time.
+        { episode: 824, chapter: 856, value: 'alive' },
+        // Episode 829 adapts chapter 860: the Sun Pirates leave him tied to
+        // a rock as they get ready to sail.
+        { episode: 829, chapter: 860, value: 'captured' },
+        // Episode 843 adapts chapter 873: free again, he joins the Charlotte
+        // family outside the fallen chateau.
+        { episode: 843, chapter: 873, value: 'alive' },
+        // Episode 872 adapts chapter 897: Oven's army overpowers him on
+        // Cacao Island, and the story never comes back to him.
+        { episode: 872, chapter: 897, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 571,
@@ -1119,6 +1196,7 @@ export const fishManIsland: Saga = {
         it: 'Ha il corpo di un uovo, gli occhiali da sole, i baffi arricciati e una tazza di tè caldo in testa, e porta un lungo bastone. Arriva sull’isola con Pekoms per ritirare il tributo di caramelle dovuto a Big Mom, lo rimprovera perché minaccia gli abitanti e spiega a tre dei Cappello di Paglia che cosa succede se i dolci arrivano in ritardo. Chiude le frasi con parole francesi: “bon”, “soir”, “s’il vous plaît”.',
         en: 'He has an egg-shaped body, sunglasses, a curled moustache and a cup of hot tea on his head, and carries a long cane. He comes to the island with Pekoms to collect the tribute of sweets owed to Big Mom, scolds him for threatening the islanders, and explains to three of the Straw Hats what happens if the sweets are late. He puts French words at the ends of his sentences: “bon”, “soir”, “s’il vous plaît”.',
       },
+      status: [{ episode: 571, value: 'alive' }],
       affiliation: [
         {
           episode: 571,
@@ -1141,6 +1219,12 @@ export const fishManIsland: Saga = {
         it: 'Chiama Mama l’Imperatrice che serve e torna da lei a lavoro finito: il paese che le aveva promesso dei dolci senza riuscire a sfornarli è stato battuto e dato alle fiamme. A lei dispiace soltanto per i suoi biscotti. La prima cosa che lui chiede, dopo, è se c’è qualcosa da mangiare. Poi riferisce una chiamata di Pekoms e domanda, con la stessa leggerezza, se deve bruciare anche l’Isola degli Uomini-Pesce.',
         en: 'He calls the Emperor he serves Mama, and comes home to her with the job done: the country that promised her sweets and failed to bake them has been beaten and burned. She only regrets its pastries. The first thing he asks afterwards is whether there are any snacks. Then he passes on a call from Pekoms and asks, just as lightly, whether Fish-Man Island should burn too.',
       },
+      status: [
+        { episode: 571, value: 'alive' },
+        // Episode 824 adapts chapter 856: hunting Sanji through Sweet City at
+        // night, he collapses in a dark street. No one says if he died.
+        { episode: 824, chapter: 856, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 571,

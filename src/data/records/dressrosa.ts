@@ -911,6 +911,7 @@ export const dressrosa: Saga = {
         it: 'Tre anni dopo essere fuggita da Mary Geoise vive su un’isola lontana da casa, e gli abitanti chiedono ai Pirati del Sole di riportarla dai genitori. A bordo ringrazia Fisher Tiger, sorride sempre e pulisce il ponte senza fermarsi, perché ha paura che la uccidano se smette. Tiger copre il marchio da schiava sulla sua schiena con il simbolo del sole, le dice che può piangere e promette che la porteranno a casa.',
         en: 'Three years after escaping Mary Geoise she lives on an island far from home, and the islanders ask the Sun Pirates to take her back to her parents. Aboard she thanks Fisher Tiger, keeps smiling and scrubs the deck without a break, because she is afraid they will kill her if she stops. Tiger covers the slave mark on her back with the sun, tells her she may cry and promises they will take her home.',
       },
+      status: [{ episode: 541, value: 'alive' }],
       affiliation: [
         {
           episode: 541,
@@ -952,6 +953,7 @@ export const dressrosa: Saga = {
         it: 'È stato tagliato in tre, e la testa, il busto e le gambe finiscono in angoli diversi dell’isola. Non sopporta i pirati e glielo dice in faccia, poi si inginocchia per ringraziare chi gli riporta il busto. Con la spada taglia anche le fiamme, ed è venuto sull’isola per suo figlio, senza il quale non intende ripartire.',
         en: 'He has been cut into three, and his head, his torso and his legs end up in different corners of the island. He cannot stand pirates and says so to their faces, then kneels to thank the one who brings back his torso. He cuts flame itself with his sword, and he came to the island for his son, whom he will not leave without.',
       },
+      status: [{ episode: 598, value: 'alive' }],
       affiliation: [
         {
           episode: 598,
@@ -979,6 +981,12 @@ export const dressrosa: Saga = {
         it: 'Comanda i centauri che sorvegliano l’isola, e ha una taglia che risale ai suoi anni da pirata. Scambia ogni straniero per un complice del samurai che sta facendo a pezzi i suoi uomini, e ordina di sparare prima che qualcuno possa spiegarsi.',
         en: 'He commands the centaurs who guard the island, and he has a bounty from his years as a pirate. He takes every stranger for an accomplice of the samurai who has been cutting down his men, and gives the order to shoot before anyone can explain.',
       },
+      status: [
+        { episode: 584, value: 'alive' },
+        // Episode 622 adapts chapter 696, where he gives himself up to the G-5
+        // Marines: they can cure him, and jail beats Caesar's lab.
+        { episode: 622, chapter: 696, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 584,
@@ -1003,6 +1011,15 @@ export const dressrosa: Saga = {
         it: 'I suoi uomini lo chiamano Maestro, e lui dà gli ordini dal laboratorio sotto forma di gas. Quando i marine della G-5 si fanno strada fino all’isola, fa nascondere le navi ormeggiate davanti e si rifiuta di farsi vedere. Smoker trova le lettere CC su una nave nascosta accanto al laboratorio e fa il suo nome: uno scienziato che un tempo lavorava con Vegapunk.',
         en: 'His men call him the Master, and he gives his orders from the laboratory as a shape of gas. When the G-5 Marines force their way to the island, he has the ships moored at the front hidden and refuses to show himself. Smoker finds the letters CC on a ship hidden beside the laboratory and names him: a scientist who once worked with Vegapunk.',
       },
+      status: [
+        { episode: 588, value: 'alive' },
+        // Episode 621 adapts chapter 695, where Usopp's last shot locks him in
+        // seastone handcuffs as Buffalo flies off with him; he stays a hostage.
+        { episode: 621, chapter: 695, value: 'captured' },
+        // Episode 843 adapts chapter 872, where Bege hands him back his heart
+        // and he flies off a free man.
+        { episode: 843, chapter: 872, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 588,
@@ -1094,6 +1111,15 @@ export const dressrosa: Saga = {
         it: 'Una bambina arrivata sulla stessa nave lo ha visto infilarsi nella stanza segreta del laboratorio e trasformarsi in un piccolo drago, e non lo ha detto a nessuno. Kin’emon cerca per tutta l’isola un figlio con lo stesso nome.',
         en: 'A girl who came on the same ship saw him slip into the laboratory’s secret room and turn into a small dragon, and kept it to herself. Kin’emon is searching the island for a son with the same name.',
       },
+      status: [
+        { episode: 609, value: 'alive' },
+        // Episode 977 adapts chapter 974, where Kanjuro ties Shinobu up with
+        // drawn snakes and captures Momonosuke.
+        { episode: 977, chapter: 974, value: 'captured' },
+        // Episode 998 adapts chapter 988, where his chains break on the Skull
+        // Dome stage and Sanji passes him to Shinobu, who flies him away.
+        { episode: 998, chapter: 988, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 620,
@@ -1119,6 +1145,7 @@ export const dressrosa: Saga = {
         it: 'Piomba davanti a Do Flamingo con il braccio trasformato in un cannone e giura che questa volta non lo perdonerà. Le sparano, si rialza e lo attacca con un’ascia, e lui la schiva senza interrompere la telefonata. La chiama una testa calda e la manda sull’isola per i suoi affari.',
         en: 'She bursts in on Doflamingo with her arm turned into a cannon and swears she will not forgive him this time. She is shot down, gets up again and swings an axe at him, and he dodges without breaking off his phone call. He calls her hot-blooded and sends her to the island on his business.',
       },
+      status: [{ episode: 608, value: 'alive' }],
       affiliation: [
         {
           episode: 618,
@@ -1146,6 +1173,12 @@ export const dressrosa: Saga = {
         it: 'Porta in volo Baby 5 fino all’isola girando su sé stesso come un’elica, e chiude quasi ogni frase con lo stesso intercalare. Le dice che deve imparare a dire di no, e un attimo dopo le chiede dei soldi in prestito. Girando solleva un vento abbastanza forte da spazzare via parte del gas sull’isola.',
         en: 'He flies Baby 5 to the island by spinning like a propeller, and ends almost every sentence with the same verbal tic. He tells her she has to learn to say no, then asks to borrow money from her in the same breath. His spinning raises a wind strong enough to blow back the gas over the island.',
       },
+      status: [
+        { episode: 618, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Buffalo among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 618,
@@ -1163,6 +1196,7 @@ export const dressrosa: Saga = {
         it: 'Nel colosseo non ha mai perso un incontro, e altri due combattenti la prendono in giro dicendo che tutti aspettano di vederla battuta. Ringrazia il nuovo arrivato che ha messo al tappeto Spartan, un gladiatore che l’ha tormentata per anni, e gli racconta della statua di un campione che nel paese nessuno ricorda. Questo torneo sarà il suo ultimo, dice: vuole vincere il Frutto Foco Foco e uccidere Do Flamingo.',
         en: 'She has never lost a match in the colosseum, and two other fighters tease her that everyone is waiting to see her beaten. She thanks the newcomer who knocked out Spartan, a gladiator who bullied her for years, and tells him about the statue of a champion nobody in the country remembers. This tournament will be her last, she says: she means to win the Flame-Flame Fruit and kill Doflamingo.',
       },
+      status: [{ episode: 634, value: 'alive' }],
       affiliation: [
         {
           episode: 634,
@@ -1200,6 +1234,7 @@ export const dressrosa: Saga = {
         it: 'Al tavolo della roulette i croupier continuano a dire nero e lui continua a perdere, perché non può vedere la ruota. Quando i loro uomini gli si rivoltano contro chiede a un ragazzo di spostarsi, li schiaccia sotto un peso che lascia un buco nel pavimento, dice che certe brutture è meglio non vederle e si offre di pagare i danni. Più tardi un aiutante gli porge il mantello, e lui chiede navi e medici e vuole contare prima le persone da proteggere che i nemici.',
         en: 'At the roulette table the croupiers keep calling black and he keeps losing, because he cannot see the wheel. When their men turn on him he asks a young man to step aside, crushes them under a weight that leaves a hole in the floor, says some ugly things are better unseen and offers to pay for the repairs. Later an aide hands him his coat, and he asks for ships and medics and wants to count the people he has to protect before the enemy.',
       },
+      status: [{ episode: 634, value: 'alive' }],
       affiliation: [
         {
           episode: 634,
@@ -1215,6 +1250,7 @@ export const dressrosa: Saga = {
         it: 'Nel colosseo un viceammiraglio sotto copertura mette fuori combattimento Gambia, uno dei suoi uomini, e Bartolomeo lo stende a sua volta. Quando entra nel ring per il blocco B, l’annunciatore racconta che ha infilzato dei pirati e ha diffuso il video, che ha attaccato dei civili innocenti e che è primo nella classifica dei pirati che la gente vorrebbe veder sparire. Lui alza le braccia e manda tutti all’inferno.',
         en: 'In the colosseum a vice admiral undercover takes out Gambia, one of his men, and Bartolomeo floors the vice admiral in return. As he walks into the ring for Block B, the announcer tells how he skewered pirates and broadcast it, attacked innocent civilians and came first in a ranking of the pirates people most want gone. He raises his arms and tells everyone to go to hell.',
       },
+      status: [{ episode: 635, value: 'alive' }],
       affiliation: [
         {
           episode: 636,
@@ -1246,6 +1282,12 @@ export const dressrosa: Saga = {
         it: 'Regnava su un’isola tranquilla finché una notte il suo stesso esercito ha attaccato la sua gente e lui è stato costretto a lasciare il trono. Da allora in città nessuno pronuncia il suo nome senza sputare. Si iscrive al torneo del colosseo come un gladiatore qualunque, con la barba lunga e il nome di Ricky, e sugli spalti non lo riconosce nessuno.',
         en: 'He ruled a quiet island until the night his own army turned on his own people and he was made to give up the throne. Since then nobody in the city says his name without spitting. He enters the colosseum tournament like any other gladiator, long-bearded and calling himself Ricky, and nobody in the stands knows him.',
       },
+      status: [
+        { episode: 662, value: 'captured' },
+        // Episode 679 adapts chapter 744, where Kyros takes the chains off him
+        // in the palace.
+        { episode: 679, chapter: 744, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 662,
@@ -1271,6 +1313,12 @@ export const dressrosa: Saga = {
         it: 'Non si stacca mai dal fianco del suo capo e lo asseconda in tutto, con una risata che somiglia a un raschio. Il suo corpo produce un muco che invischia chiunque lo tocchi e che indurisce fino a diventare una gabbia. Agli altri della famiglia parla come un vecchio zio, e non è chiaro quanto di quella bonarietà sia recitato.',
         en: 'He never leaves his boss’s side and agrees with everything he says, laughing a laugh that sounds like a scrape. His body makes a mucus that mires whoever touches it and hardens into a cage. He speaks to the rest of the family like an old uncle, and how much of that good humour is an act is not clear.',
       },
+      status: [
+        { episode: 632, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Trebol among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 632, value: DONQUIXOTE_PIRATES },
         {
@@ -1293,6 +1341,15 @@ export const dressrosa: Saga = {
         it: 'Quando entra nella sala d’attesa le addette svengono, e i combattenti lo riconoscono subito, stupiti che sia ancora vivo. Ferma Lucy, che sta provando un’armatura e una grossa spada, per avvertirlo che c’è un limite di peso per l’equipaggiamento. Poi dice che vincerà il Frutto Foco Foco, un potere bellissimo che spetta soltanto a lui.',
         en: 'When he walks into the waiting room the women of the staff faint, and the fighters know him at once, surprised that he is still alive. He stops Lucy, who is trying on armour and a big sword, to warn him that there is a weight limit on gear. Then he says he will win the Flame-Flame Fruit, a beautiful power that belongs to him alone.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 669 adapts chapter 737, where Sugar turns him into a toy
+        // bound by contract and he is put to work in the underground port.
+        { episode: 669, chapter: 737, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 634,
@@ -1323,6 +1380,15 @@ export const dressrosa: Saga = {
         it: 'Arriva al colosseo con il fratello Boo e con Don Chinjao, con un mantello scuro dal grande colletto bianco a gorgiera. Quando un addetto vuole squalificare Lucy, gli dice che la rissa l’ha cominciata Spartan e che è lui quello da cacciare. Poi Lucy lo ringrazia e lui si infuria, finché Boo non lo trascina via scusandosi: si scalda facilmente.',
         en: 'He comes to the colosseum with his brother Boo and Don Chinjao, in a dark cape with a great white ruff. When a member of the staff moves to disqualify Lucy, he says Spartan started the fight and is the one to throw out. Then Lucy thanks him and he flies into a rage, until Boo drags him off with an apology: he gets worked up easily.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725, where the table he lies on for his
+        // treatment drops him into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -1353,6 +1419,15 @@ export const dressrosa: Saga = {
         it: 'Arriva al colosseo con Sai e Boo della famiglia Chinjao, e i combattenti nella sala d’attesa conoscono il suo nome e lo chiamano una leggenda. Non dice una parola mentre Sai difende Lucy davanti allo staff del colosseo.',
         en: 'He comes to the colosseum with Sai and Boo of the Chinjao family, and the fighters in the waiting room know his name and call him a legend. He says nothing while Sai stands up for Lucy against the colosseum staff.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725: the tournament's losers, Chinjao
+        // among them, are dropped into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -1388,6 +1463,15 @@ export const dressrosa: Saga = {
         it: 'Gats lo nomina per primo fra i combattenti da tenere d’occhio nel blocco C: Cannone Distruttore, due volte campione del Torneo Centrale di Lotta del Nuovo Mondo.',
         en: 'Gatz names him first among the fighters to watch in Block C: Destruction Cannon, twice champion of the New World Central Fighting Tournament.',
       },
+      status: [
+        { episode: 639, value: 'alive' },
+        // Episode 658 adapts chapter 726, where Ideo is shown in the
+        // dungeon under the colosseum with the tournament's other losers.
+        { episode: 658, chapter: 726, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           // The alliance is formed on Orlumbus's ship, chapter 799.
@@ -1413,6 +1497,15 @@ export const dressrosa: Saga = {
         it: 'Ha gambe lunghe il doppio delle nostre e ha fatto dei calci una disciplina con un nome preciso. Nell’arena non usa mai le mani e si sposta a scatti, comparendo dove nessuno lo aspetta. Del premio in palio dice soltanto che gli serve, e non aggiunge altro.',
         en: 'His legs are twice the length of ours, and he has made kicking a discipline with a name of its own. In the arena he never uses his hands and moves in bursts, appearing where nobody expects him. Of the prize he says only that he needs it, and nothing more.',
       },
+      status: [
+        { episode: 636, value: 'alive' },
+        // Episode 657 adapts chapter 725: the tournament's losers, Blue Gilly
+        // among them, are dropped into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 636,
@@ -1443,6 +1536,15 @@ export const dressrosa: Saga = {
         it: 'Regna su Prodence e scende nell’arena come un gladiatore qualunque, con la corona in testa. Il suo unico colpo richiede un’ora di preparazione e i suoi uomini gli fanno da scudo finché non è pronto. Quando finalmente parte, quel pugno butta giù un muro, e il pubblico del colosseo lo sa e conta i minuti.',
         en: 'He rules Prodence and steps into the arena like any other gladiator, crown and all. His one punch takes an hour to prepare and his men hold the field until it is ready. When it finally comes it knocks a wall down, and the colosseum crowd knows it and counts the minutes.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 657 adapts chapter 725: the tournament's losers, Elizabello
+        // among them, are dropped into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -1468,6 +1570,15 @@ export const dressrosa: Saga = {
         it: 'Viene da Elbaf, il celebre paese dei giganti. Al Colosseo Corrida l’annunciatore lo presenta tra i combattenti del blocco C come il più temibile dei mercenari pirati.',
         en: 'He comes from Elbaph, the famous country of the giants. At the Corrida Colosseum the announcer presents him among the fighters of Block C as the most formidable pirate mercenary of all.',
       },
+      status: [
+        { episode: 639, value: 'alive' },
+        // Episode 657 adapts chapter 725: the tournament's losers, Hajrudin
+        // among them, are dropped into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 639,
@@ -1497,6 +1608,7 @@ export const dressrosa: Saga = {
         it: 'Aspetta fuori dal Colosseo Corrida con una folla di marine, pronto ad arrestare i criminali man mano che escono, ma centinaia di combattenti hanno perso nei blocchi A e B e nessuno è uscito. È furioso con il viceammiraglio Maynard, che si è infiltrato fra i combattenti di testa sua e da allora non si è più fatto sentire, e comincia a sospettare che dentro stia succedendo qualcosa.',
         en: 'He waits outside the Corrida Colosseum with a crowd of Marines, ready to arrest the criminals as they come out, but hundreds of fighters have lost in Blocks A and B and not one has left. He is angry with Vice Admiral Maynard, who went undercover as a fighter on his own and has not been heard from since, and he begins to suspect that something is going on inside.',
       },
+      status: [{ episode: 647, value: 'alive' }],
       affiliation: [
         {
           episode: 647,
@@ -1518,6 +1630,7 @@ export const dressrosa: Saga = {
         it: 'È un istruttore della Marina noto per aver messo in riga generazioni di reclute, e ha la fama di non perdere mai di vista una preda. Si mescola ai gladiatori e studia i favoriti del torneo uno per uno. Quello che vede nell’arena lo preoccupa più di quanto si aspettasse, e non riesce a farlo sapere a nessuno.',
         en: 'He is a Marine instructor known for straightening out generations of recruits, with a name for never losing sight of his quarry. He mixes with the gladiators and studies the tournament favourites one by one. What he sees in the arena worries him more than he expected, and he cannot get word of it to anybody.',
       },
+      status: [{ episode: 634, value: 'alive' }],
       affiliation: [
         {
           episode: 634,
@@ -1547,6 +1660,15 @@ export const dressrosa: Saga = {
         it: 'Quando l’annunciatore presenta i combattenti del blocco B, lo chiama maestro di karate degli uomini-pesce ed esperto di jujitsu degli uomini-pesce.',
         en: 'When the announcer introduces the fighters of Block B, he calls him a master of fish-man karate and a martial artist of fish-man jujutsu.',
       },
+      status: [
+        { episode: 636, value: 'alive' },
+        // Episode 657 adapts chapter 725: the tournament's losers, Hack
+        // among them, are dropped into a dungeon under the colosseum.
+        { episode: 657, chapter: 725, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 636,
@@ -1573,6 +1695,7 @@ export const dressrosa: Saga = {
         it: 'Balla per la famiglia che comanda l’isola e riferisce tutto quello che i suoi occhi trovano, dai porti alle stanze chiuse a chiave. Con lo sguardo entra anche nei pensieri di chi ha davanti e ne legge le intenzioni. Obbedisce senza discutere, ma c’è qualcosa nel modo in cui parla del re che non somiglia alla fedeltà.',
         en: 'She dances for the family that runs the island and reports whatever her eyes find, from the harbours to the locked rooms. Her gaze goes into the thoughts of the person in front of her and reads what they mean to do. She obeys without argument, though something in the way she speaks of the king does not sound like loyalty.',
       },
+      status: [{ episode: 640, value: 'alive' }],
       affiliation: [
         {
           episode: 640,
@@ -1599,6 +1722,12 @@ export const dressrosa: Saga = {
         it: 'Siede accanto a Do Flamingo fuori dal palazzo e mangia acini d’uva dalle dita mentre Baby 5 lo attacca. Quando lui lascia il palazzo, va a cercarlo e dice a Lao G che la sua stanza è vuota e la finestra spalancata.',
         en: 'She sits beside Doflamingo outside the palace and eats grapes off her fingers while Baby 5 attacks him. When he leaves the palace, she goes looking for him and tells Lao G that his room is empty and the window wide open.',
       },
+      status: [
+        { episode: 663, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Sugar among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 663, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: TREBOL_ARMY },
@@ -1613,6 +1742,12 @@ export const dressrosa: Saga = {
         it: 'Do Flamingo gli lascia in custodia il frutto del diavolo che è il premio del torneo del colosseo. Quando il torneo va in onda, l’annunciatore lo presenta per ultimo, dopo altri quattro membri della famiglia, come l’eroe del colosseo.',
         en: 'Doflamingo leaves in his keeping the devil fruit that is the prize of the colosseum tournament. When the tournament is broadcast, the announcer presents him last, after four other members of the family, as the hero of the colosseum.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Diamante among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -1646,6 +1781,12 @@ export const dressrosa: Saga = {
         it: 'Siede a palazzo con Diamante e Trebol mentre Do Flamingo affida a Diamante il premio del colosseo. I seggi dei membri più vicini della famiglia sono segnati con i semi delle carte, e il suo è quello di picche. Resta nell’ombra e non dice niente.',
         en: 'He sits in the palace with Diamante and Trebol while Doflamingo leaves the colosseum’s prize with Diamante. The seats of the family’s closest members are marked with card suits, and his is the spade. He stays in shadow and says nothing.',
       },
+      status: [
+        { episode: 652, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Pica among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 652,
@@ -1669,6 +1810,12 @@ export const dressrosa: Saga = {
         it: 'Porta una cuffietta rosa, occhiali da aviatore, una sciarpa a pois e un bavaglino, con il ciuccio in bocca. Quando il colosseo trasmette il torneo, è il primo membro della famiglia a essere presentato, prima di Diamante.',
         en: 'He wears a pink bonnet, aviator sunglasses, a polka-dot scarf and a bib, with a dummy in his mouth. When the colosseum broadcasts the tournament, he is the first member of the family it presents, before Diamante.',
       },
+      status: [
+        { episode: 635, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Senor Pink among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
@@ -1681,6 +1828,12 @@ export const dressrosa: Saga = {
         it: 'Quando il colosseo apre il torneo, l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia Donquijote che affronteranno il vincitore di ogni blocco, dopo Senor Pink e prima di Lao G. Sullo schermo porta un berretto bianco con un corno per lato.',
         en: 'When the colosseum opens the tournament, the announcer presents him on the screen as one of the four members of the Donquixote family who will face the winner of each block, after Señor Pink and before Lao G. On the screen he wears a white cap with a horn on each side.',
       },
+      status: [
+        { episode: 635, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Dellinger among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
@@ -1692,6 +1845,12 @@ export const dressrosa: Saga = {
         it: 'A palazzo gioca a carte con altri della famiglia. Quando Do Flamingo non si trova, pensa alla stanza al quarto piano, poi dice che è uscito di nuovo da solo. Quando i giornali riportano che Do Flamingo ha lasciato la Flotta dei Sette, risponde che la famiglia farà ciò che decide il suo capo. Al colosseo lo schermo lo presenta tra i combattenti della famiglia nel torneo, dopo Dellinger e prima di Machvise.',
         en: 'At the palace he plays cards with others of the family. When Doflamingo cannot be found, he guesses the room on the fourth floor, then says he has gone out on his own again. When the papers report that Doflamingo has quit the Seven Warlords, he answers that the family does as the Young Master decides. At the colosseum the screen presents him among the family’s fighters in the tournament, after Dellinger and before Machvise.',
       },
+      status: [
+        { episode: 635, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Lao G among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
@@ -1703,6 +1862,12 @@ export const dressrosa: Saga = {
         it: 'È a palazzo alle spalle di Do Flamingo quando Baby 5 lo attacca, e le dice di calmarsi. Quando Do Flamingo annuncia di aver lasciato la Flotta dei Sette, dice che se la Marina viene ad attaccare vuole combattere anche lui. Al torneo del colosseo l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia che affronteranno il vincitore di ogni blocco.',
         en: 'He is at the palace behind Doflamingo when Baby 5 attacks him, and tells her to calm down. When Doflamingo announces he has left the Seven Warlords, he says that if the Navy comes to attack, he wants to fight too. At the colosseum tournament the announcer presents him on the screen as one of the four members of the family the winner of each block will face.',
       },
+      status: [
+        { episode: 635, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Machvise among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 635, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: DIAMANTE_ARMY },
@@ -1715,6 +1880,12 @@ export const dressrosa: Saga = {
         it: 'Gioca a carte con Lao G a palazzo. Quando Trebol chiede per scherzo a Baby 5 di sposarlo e lei si domanda se lui abbia davvero bisogno di lei, lei e Lao G le dicono di lasciar perdere.',
         en: 'She plays cards with Lao G at the palace. When Trebol proposes to Baby 5 as a joke and she wonders whether he really needs her, she and Lao G tell her to leave it alone.',
       },
+      status: [
+        { episode: 644, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Jora among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 644, value: DONQUIXOTE_PIRATES },
         { episode: 664, chapter: 732, value: TREBOL_ARMY },
@@ -1730,6 +1901,7 @@ export const dressrosa: Saga = {
         it: 'Comanda una flotta intera e parla di sé come di un navigatore, non di un pirata, elencando le isole che ha toccato. Combatte lanciandosi con tutto il corpo, e il colpo che ne esce somiglia più a un abbordaggio che a una mossa di lotta. Nel torneo si muove come uno che sta valutando qualcuno, più che come uno che vuole vincere.',
         en: 'He commands an entire fleet and speaks of himself as a navigator rather than a pirate, listing the islands he has touched. He fights by throwing his whole body forward, and what comes of it looks more like a boarding than a wrestling move. In the tournament he moves like a man sizing somebody up rather than chasing a prize.',
       },
+      status: [{ episode: 636, value: 'alive' }],
       affiliation: [
         {
           episode: 636,
@@ -1753,6 +1925,12 @@ export const dressrosa: Saga = {
         it: 'Porta un lungo cappotto nero con le borchie dorate, gli occhialoni e una maschera bianca sulla metà inferiore del viso. Quando Baby 5 attacca Do Flamingo fuori dal palazzo, le spara per calmarla.',
         en: 'He wears a long black coat studded with gold, goggles and a white mask over the lower half of his face. When Baby 5 attacks Doflamingo outside the palace, he shoots her to calm her down.',
       },
+      status: [
+        { episode: 653, value: 'alive' },
+        // Episode 735 adapts chapter 792, where the Marines round up the
+        // Donquixote officers, Gladius among them, in seastone.
+        { episode: 735, chapter: 792, value: 'imprisoned' },
+      ],
       affiliation: [
         { episode: 653, value: DONQUIXOTE_PIRATES },
         {
@@ -1775,6 +1953,7 @@ export const dressrosa: Saga = {
         it: 'Si nasconde nel bosco di Green Bit e chiama una squadra di marine a caccia dei Cappello di Paglia: sono buoni o cattivi? Rispondono buoni, e lui ordina di consegnare le armi. Quando rifiutano, fucili, mantelli e cappelli spariscono loro di dosso più in fretta di quanto l’occhio riesca a seguire, e una vocina dice che così imparano.',
         en: 'He hides in the Green Bit forest and calls out to a squad of Marines hunting the Straw Hats: are they good people or bad? They say good, and he tells them to hand over their weapons. When they refuse, guns, capes and hats vanish off them faster than the eye can follow, and a little voice says that will teach them.',
       },
+      status: [{ episode: 640, value: 'alive' }],
       affiliation: [
         {
           episode: 641,
@@ -1809,6 +1988,7 @@ export const dressrosa: Saga = {
         it: 'Per tutti è il Soldatino, un soldatino giocattolo con una gamba sola, un pattino a rotelle e un fucile giocattolo, che guida la lotta contro il re. Il suo vero nome è Kyros: ha vinto tremila incontri nel colosseo, poi lo ha lasciato su richiesta del re per diventare capitano della guardia. Nessuno se lo ricorda, e lui combatte lo stesso per una famiglia che non sa più chi sia.',
         en: 'To everyone he is the Thunder Soldier, a one-legged toy soldier on a roller skate with a toy rifle, who leads the fight against the king. His real name is Kyros: he won three thousand bouts in the colosseum, then left it at the king’s wish to become captain of the guard. Nobody remembers him, and he fights all the same for a family that no longer knows who he is.',
       },
+      status: [{ episode: 675, value: 'alive' }],
       affiliation: [
         {
           episode: 675,
@@ -1832,6 +2012,12 @@ export const dressrosa: Saga = {
         it: 'Leo la chiama antipatica, egoista, cattiva, lunatica e irascibile, ma i Tontatta vogliono salvarla lo stesso, perché è una di loro. Credono che sia tenuta nella fabbrica insieme ai loro compagni. Lì chi comanda dice ai Tontatta che è malata, che solo gli SMILE che coltivano possono guarirla e che non possono vederla: una bugia che li tiene al lavoro.',
         en: 'Leo calls her obnoxious, selfish, mean, moody and short-tempered, and still the Tontatta mean to save her, because she is one of them. They believe she is held at the factory with their friends. There the men in charge tell the Tontatta that she is ill, that only the SMILEs they grow can cure her and that they may not see her: a lie that keeps them at work.',
       },
+      status: [
+        { episode: 675, value: 'captured' },
+        // Episode 714 adapts chapter 774, where Leo knocks Jora down and
+        // catches her as Jora lets go of her.
+        { episode: 714, chapter: 774, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 675,
@@ -2263,6 +2449,15 @@ export const dressrosa: Saga = {
         it: 'Arriva al colosseo con il resto della famiglia Chinjao, un clan del Paese di Kano che il pubblico sembra conoscere per nome. Quando uno sconosciuto con la barba finta stende uno dei beniamini del colosseo e una guardia fa per cacciarlo, Boo e suo fratello dicono che ha cominciato quello grosso. Il fratello si scaglia contro lo sconosciuto solo perché li ha ringraziati, ed è Boo a trattenerlo e a scusarsi: suo fratello, dice, si scalda facilmente.',
         en: 'He arrives at the colosseum with the rest of the Chinjao Family, a clan from Kano Country the crowd seems to know by name. When a stranger in a fake beard knocks down one of the house favourites and a guard moves to throw him out, Boo and his brother say the big man started it. His brother flies at the stranger for thanking them, and Boo is the one who holds him back and apologises: his brother, he says, is easily excited.',
       },
+      status: [
+        { episode: 633, value: 'alive' },
+        // Episode 658 adapts chapter 726, where Boo is shown in the
+        // dungeon under the colosseum with the tournament's other losers.
+        { episode: 658, chapter: 726, value: 'captured' },
+        // Episode 677 adapts chapter 743: Sugar faints, and every toy in the
+        // country turns back into a person, memories and all.
+        { episode: 677, chapter: 743, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 633,
@@ -2294,6 +2489,7 @@ export const dressrosa: Saga = {
         it: 'È l’ufficiale di stato maggiore di una ciurma pirata il cui capitano si è appena iscritto al torneo, e ha una taglia di 67 milioni. In un corridoio del colosseo sorprende un uomo che prende appunti e sussurra nomi famosi, compreso il suo, e ipotizza ad alta voce che sia un marine. L’uomo dice a chi è in linea che richiamerà fra dieci minuti, e un attimo dopo Gambia ha smesso di fare domande.',
         en: 'He is the staff officer of a pirate crew whose captain has just entered the tournament, and he carries a bounty of 67 million. In a corridor of the colosseum he catches a man taking notes and whispering famous names, his own among them, and guesses aloud that he must be a Marine. The man tells his caller he will ring back in ten minutes, and a moment later Gambia has stopped asking.',
       },
+      status: [{ episode: 634, value: 'alive' }],
       affiliation: [
         {
           episode: 634,
@@ -2325,6 +2521,15 @@ export const dressrosa: Saga = {
         it: 'È il comandante dell’Esercito di autodifesa di Dressrosa, e lo mettono fra i nomi da tenere d’occhio nel blocco B. Sul ring si schiera con gli uomini di un re straniero e apre loro la strada verso il pirata che vogliono eliminare per primo. Quando gli chiedono perché il comandante dell’esercito di Dressrosa aiuti degli stranieri, risponde che è il denaro a far girare il mondo, e che preferisce i soldi facili a un grande sogno.',
         en: 'He is the military captain of Dressrosa’s Self-Defence Army, and he is counted among the names to watch in block B. In the ring he sides with a foreign king’s men and clears their way to the pirate they want out first. Asked why the captain of Dressrosa’s army is helping foreigners, he says that money makes the world go round, and that he would rather take easy money than chase a big dream.',
       },
+      status: [
+        { episode: 636, value: 'alive' },
+        // Episode 658 adapts chapter 726, where Tank is shown in the
+        // dungeon under the colosseum with the tournament's other losers.
+        { episode: 658, chapter: 726, value: 'captured' },
+        // Episode 686 adapts chapter 750, where the manga first shows him out
+        // of the dungeon, on the old King's Plateau with Riku and Viola.
+        { episode: 686, chapter: 750, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 636,
@@ -2350,6 +2555,7 @@ export const dressrosa: Saga = {
         it: 'È una delle creature minuscole che gli isolani chiamano fate, che si prendono quello che vogliono e sostengono che sia stato loro regalato. Fa la ricognitrice, e quando un pirata la acchiappa con la sua spada non riesce più a smettere di parlare: che viene dalla tribù dei Tontatta, che la famiglia Donquijote sta andando ad attaccare la nave della sua ciurma. Con una caviglia storta non può correre, e lo supplica di portarla dal suo comandante al campo di fiori.',
         en: 'She is one of the tiny people the islanders call fairies, who take what they please and insist it was given to them. She is a scout, and once a pirate has caught her with his sword she cannot stop telling him things: that she comes from the Tontatta tribe, that the Donquixote Family is on its way to attack his crew’s ship. With a twisted ankle she cannot run, so she begs him to carry her to her commander at the flower field.',
       },
+      status: [{ episode: 640, value: 'alive' }],
       affiliation: [
         {
           episode: 640,
@@ -2374,6 +2580,7 @@ export const dressrosa: Saga = {
         it: 'I grandi pirati del Nuovo Mondo ce l’hanno tutti con lui, dice il cronista, e lui si definisce un cecchino i cui proiettili sono le armi che trova in giro. Quando un gladiatore lo insegue per avergli mandato in prigione il compagno, gli rivolge contro quelle armi e lo deride: un vero amico avrebbe assaltato la prigione, come ha fatto un idiota due anni fa. Poi strappa l’elmo a un combattente travestito e ripete una voce: Cappello di Paglia Rufy sarebbe nel torneo in incognito.',
         en: 'The big pirates of the New World all bear him a grudge, the announcer says, and he calls himself a sniper whose bullets are whatever weapons he finds lying about. When a gladiator comes after him for sending his partner to prison, he turns those weapons on him and sneers that a real friend would have raided the prison, as some idiot did two years ago. Then he snatches a disguised fighter’s helmet and repeats a rumour: Straw Hat Luffy is secretly in the tournament.',
       },
+      status: [{ episode: 645, value: 'alive' }],
       affiliation: [
         {
           episode: 645,
@@ -2397,6 +2604,7 @@ export const dressrosa: Saga = {
         it: 'È la direttrice della fabbrica di Smile, e dice ai piccoli operai che sono sempre stati soltanto schiavi per fabbricare Smile. Quando si ribellano e girano la ruota che apre la porta della fabbrica, piomba su di loro con un aspirapolvere e li risucchia a manciate. Non ha intenzione di lasciarne uscire nemmeno uno.',
         en: 'She is the manager of the SMILE Factory, and she tells the little workers they were only ever slaves for making SMILEs. When they rise and turn the wheel that opens the factory door, she comes down on them with a vacuum machine and sucks them up by the handful. She means to let not one of them out.',
       },
+      status: [{ episode: 692, value: 'alive' }],
       affiliation: [
         {
           episode: 692,
