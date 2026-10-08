@@ -735,6 +735,15 @@ export const wano: Saga = {
         it: 'Vive in un villaggio dove l’acqua del fiume è veleno e il cibo arriva una volta ogni tanto, e regala comunque a un affamato la sua unica scodella di riso. Ha un frutto del diavolo che le permette di staccarsi una guancia e farne uno gnocco di miglio, e l’animale che lo mangia le obbedisce come se fosse addomesticato.',
         en: 'She lives in a village where the river water is poison and food arrives once in a while, and still gives her only bowl of rice to a starving stranger. A devil fruit lets her pull a millet dumpling out of her own cheek, and any animal that eats one follows her as if tamed.',
       },
+      status: [
+        { episode: 894, value: 'alive' },
+        // Episode 900 adapts chapter 914: while Luffy and Zoro fight, the
+        // Gifter Gazelleman snatches the sleeping Tama and runs off with her.
+        { episode: 900, chapter: 914, value: 'captured' },
+        // Episode 905 adapts chapter 917: Luffy pulls Tama out of the
+        // lion's mouth on the Bakura rooftops and knocks Holdem out.
+        { episode: 905, chapter: 917, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 894,
@@ -760,6 +769,7 @@ export const wano: Saga = {
         it: 'Tama lo chiama maestro: intreccia cappelli per vivere e il giorno del suo compleanno compra il riso al mercato. Lui rientra, trova uno sconosciuto accanto alla scodella vuota, sguaina la spada e lo scaraventa fuori di casa, finché Tama non dice di avergli dato lei il riso. Racconta a Rufy che circa un anno fa X Drake ha distrutto Amigasa, e che quattro anni fa, durante una carestia, Ace è approdato lì ed è rimasto qualche settimana: da allora Tama lo aspetta. Quando Rufy dice che Ace è morto, lo rimprovera per averglielo detto così bruscamente.',
         en: 'Tama calls him her master: she weaves hats for a living, and on her birthday she buys rice at the market. He comes home to find a stranger beside the empty bowl, draws his sword and throws him out of the house, until Tama says she gave him the rice. He tells Luffy that X Drake destroyed Amigasa about a year ago, and that four years ago, in a famine, Ace washed ashore there and stayed a few weeks; Tama has been waiting for him ever since. When Luffy says that Ace is dead, he scolds him for telling her so bluntly.',
       },
+      status: [{ episode: 894, value: 'alive' }],
       affiliation: [
         {
           episode: 894,
@@ -784,6 +794,7 @@ export const wano: Saga = {
         it: 'Serve in una casa da tè di Okobore. Un famoso yokozuna della capitale entra e insiste perché diventi sua moglie, promettendole che non dovrà più lavorare. Lei risponde che le loro condizioni sociali sono troppo diverse e gli chiede di ordinare qualcosa o di andarsene.',
         en: 'She serves at a tea house in Okobore Town. A famous yokozuna from the capital comes in and presses her to become his wife, promising that she would never have to work again. She answers that their stations are too far apart, and asks him to order something or leave.',
       },
+      status: [{ episode: 899, value: 'alive' }],
       affiliation: [
         {
           episode: 899,
@@ -841,6 +852,7 @@ export const wano: Saga = {
         it: 'È uno dei Tobiroppo, i sei headliner più forti dei Pirati delle Cento Bestie, e viene mandato in missione insieme a X Drake, un altro dei sei. Quando Drake chiede perché per questo lavoro servano proprio loro due, Page One risponde che serve a dare una lezione esemplare: tutta Wano deve vedere che cosa succede a chi si mette contro la ciurma.',
         en: 'He is one of the Tobiroppo, the six strongest headliners of the Beasts Pirates, and he is sent out with X Drake, another of the six. When Drake asks why the job needs the two of them, Page One says it is to set an example: everyone in Wano should see what happens to anyone who crosses the crew.',
       },
+      status: [{ episode: 923, value: 'alive' }],
       affiliation: [{ episode: 923, value: TOBIROPPO }],
       devilFruit: [
         {
@@ -886,6 +898,7 @@ export const wano: Saga = {
         it: 'Kin’emon la chiama come guida mentre la ciurma si traveste per muoversi nel Paese di Wano, e lei si presenta come una vera kunoichi. Da giovane era per lui come una sorella minore. Si definisce una donna matura, e a un ragazzo che non ne capisce il fascino dice che un giorno lo capirà.',
         en: 'Kin’emon calls her in as a guide while the crew put on disguises to move about Wano, and she introduces herself as a real kunoichi. When she was young she was like a younger sister to him. She calls herself a mature woman, and tells a young man who does not see the charm of one that someday he will.',
       },
+      status: [{ episode: 912, value: 'alive' }],
       affiliation: [
         {
           episode: 912,
@@ -912,6 +925,12 @@ export const wano: Saga = {
         it: 'Nel campo di lavoro di Udon è solo un vecchio fragile che a stento trascina le sue pietre, finché un nuovo arrivato comincia a regalargli i suoi buoni pasto e lui si fa picchiare piuttosto che dire chi è stato. Vent’anni fa era lo yakuza più potente del paese, seguito dai capi di ogni regione, e si rifiutò di servire lo shogun.',
         en: 'In the Udon labour camp he is only a frail old man who can barely haul his stones, until a newcomer starts giving him his meal tickets and he takes a beating rather than say who. Twenty years ago he was the most powerful yakuza in the country, followed by the bosses of every region, and he refused to serve the shogun.',
       },
+      status: [
+        { episode: 931, value: 'imprisoned' },
+        // Episode 949 adapts chapter 949: the prisoners turn on the Udon
+        // wardens and beat Daifugo and Solitaire, and the mine is theirs.
+        { episode: 949, chapter: 949, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 931,
@@ -942,6 +961,12 @@ export const wano: Saga = {
         it: 'Governa il campo di Udon come uno spettacolo: arriva tra musica e guardie che lo acclamano, e si esibisce sul palco in un numero di canto e ballo. È uno dei tre All-Star dell’Imperatore, ha un braccio meccanico e porta una taglia che pochi al mondo raggiungono. Quando un prigioniero prova a scavalcare il muro, gli sguinzaglia dietro i suoi uomini.',
         en: 'He runs the Udon camp like a stage show: he arrives to music and cheering guards, and puts on a song-and-dance number on stage. He is one of the Emperor’s three All-Stars, with a mechanical arm and a bounty few men in the world reach. When a prisoner tries to climb the wall out, he sends his men after him.',
       },
+      status: [
+        { episode: 930, value: 'alive' },
+        // Episode 1080 adapts chapter 1053: beaten, Queen is held in the old
+        // Udon prison mine, and Ryokugyu orders the Marines to take him.
+        { episode: 1080, chapter: 1053, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 930,
@@ -975,6 +1000,12 @@ export const wano: Saga = {
         it: 'Sta a Onigashima, il volto coperto da una maschera. Insieme a un altro dei grandi della ciurma rimprovera Jack, che lo chiama fratello maggiore, perché le offerte di Kuri sono troppo scarse. Poi i due si danno dell’idiota e del rifiuto a vicenda. Di lui si sanno il nome, la maschera e poco altro.',
         en: 'He keeps to Onigashima, his face hidden behind a mask. With another of the crew’s big men he scolds Jack, who calls him big brother, because the offerings from Kuri are too low. Then the two of them call each other an idiot and a piece of scum. His name, his mask and very little else are known.',
       },
+      status: [
+        { episode: 923, value: 'alive' },
+        // Episode 1080 adapts chapter 1053: beaten, King is held in the old
+        // Udon prison mine, and Ryokugyu orders the Marines to take him.
+        { episode: 1080, chapter: 1053, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 923,
@@ -1020,6 +1051,15 @@ export const wano: Saga = {
         it: 'Quando esce dalla casa di piacere la città intera si ferma a guardarla, e i mercanti si rovinano per una sua serata. Ha fama di essere avida e crudele, e ha già respinto uomini abbastanza potenti da farla uccidere per molto meno. Si porta dietro una bambina che le fa da paggio e che sembra l’unica a non temerla.',
         en: 'When she leaves the pleasure house the whole city stops to watch, and merchants ruin themselves for one evening of her time. She has a name for greed and cruelty, and has already turned down men powerful enough to kill her for far less. A small girl attends her as her page, and seems to be the only person not afraid of her.',
       },
+      status: [
+        { episode: 921, value: 'alive' },
+        // Episode 928 adapts chapter 933: Kyoshiro cuts Komurasaki down in
+        // front of Orochi, and the whole banquet takes her for dead.
+        { episode: 928, chapter: 933, value: 'presumed-dead' },
+        // Episode 935 adapts chapter 938: Komurasaki tends Zoro's wound in
+        // a cottage in Ringo and tells him she is Hiyori.
+        { episode: 935, chapter: 938, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 921,
@@ -1044,6 +1084,7 @@ export const wano: Saga = {
         it: 'Fa da kamuro a Komurasaki, la cortigiana più famosa della capitale. Arriva tardi al lavoro perché voleva assaggiare la soba del banco di Sanji, e quando dei teppisti le fanno cadere la scodella continua a sorridere; Sanji le dà la soba che gli è rimasta. Scherza sul fatto che con una “O” davanti il suo nome vuol dire “uomo”, anche se lei è una bambina, poi corre a raggiungere il corteo.',
         en: 'She serves as kamuro to Komurasaki, the most famous courtesan in the capital. She is late for work because she wanted to try the soba at Sanji’s stand, and when thugs knock her bowl to the ground she keeps smiling; Sanji gives her the soba he has left. She jokes that with an “O” in front her name means “man”, though she is a girl, then runs off to join the procession.',
       },
+      status: [{ episode: 921, value: 'alive' }],
       affiliation: [
         {
           episode: 921,
@@ -1068,6 +1109,7 @@ export const wano: Saga = {
         it: 'Comanda la famiglia più potente della capitale e gestisce il denaro dello shogun, che lo tiene vicino e lo porta alle proprie feste. I suoi uomini sorvegliano le case di piacere e riscuotono dove nessun altro oserebbe. Beve con i pirati dell’Imperatore come se fossero soci, e chi gli dà fastidio per strada non arriva alla fine della serata.',
         en: 'He runs the most powerful family in the capital and handles the shogun’s money, which keeps him close to the man and welcome at his parties. His men watch over the pleasure houses and collect where nobody else would dare. He drinks with the Emperor’s pirates as though they were partners, and anyone who troubles him in the street does not see the end of the evening.',
       },
+      status: [{ episode: 921, value: 'alive' }],
       affiliation: [
         {
           episode: 921,
@@ -1122,6 +1164,7 @@ export const wano: Saga = {
         it: 'Sta in piedi sul ponte di Oihagi con una naginata e il cappuccio calato, e lascia passare soltanto chi gli consegna la spada. Alle sue spalle si è accumulata una montagna di lame prese a samurai, banditi e viandanti. Combatte bene, parla poco e non dice a nessuno che cosa se ne faccia di tutto quel ferro.',
         en: 'He stands on the Oihagi Bridge with a naginata and his hood down, and lets across only those who hand over their sword. Behind him a mountain of blades has piled up, taken from samurai, bandits and travellers alike. He fights well, says little, and tells nobody what he does with all that steel.',
       },
+      status: [{ episode: 934, value: 'alive' }],
       affiliation: [
         {
           episode: 934,
@@ -1147,6 +1190,7 @@ export const wano: Saga = {
         it: 'Guida l’Oniwabanshu, i ninja al servizio dello shogun Orochi, e lo serve da quando Orochi ha preso il potere. Shinobu era una dei suoi ninja e se n’è andata. Quando i suoi uomini sorprendono Robin a frugare in una stanza del castello durante un banchetto, le concede una sola possibilità di dire chi è e perché si trova lì, e le promette una morte rapida se dice la verità. Lei dà un nome falso, e quando i ninja la colpiscono la donna che hanno preso si sfalda: era una copia. I ninja si sparpagliano a cercare quella vera senza disturbare il banchetto.',
         en: 'He leads the Oniwabanshu, the ninja who serve the shogun Orochi, and has served him since Orochi took power. Shinobu was one of his ninja and left. When his men catch Robin searching a room of the castle during a banquet, he gives her one chance to say who she is and why she is there, and promises her a quick death if she tells the truth. She gives a false name, and when his ninja strike, the woman they have caught falls apart: she was a double. The ninja spread out to find the real one without disturbing the banquet.',
       },
+      status: [{ episode: 934, value: 'alive' }],
       affiliation: [
         {
           episode: 934,
@@ -1164,6 +1208,12 @@ export const wano: Saga = {
         it: 'È rinchiuso da anni in fondo alla prigione di Udon, in una gabbia troppo piccola per lui, e i carcerieri lo tengono d’occhio più di chiunque altro. Divide il poco cibo con i detenuti più deboli e sopporta le percosse ridendo, con la testa piatta che gli è valsa il soprannome di kappa. I carcerieri sanno che è più pericoloso di quanto sembri, e nessuno gli passa vicino.',
         en: 'He has spent years at the bottom of the Udon jail, in a cage far too small for him, watched more closely than any other prisoner. He shares what little food he gets with the weakest convicts and takes his beatings laughing, the flat head that earned him the kappa name held high. The jailers know he is more dangerous than he looks, and none of them goes near him.',
       },
+      status: [
+        { episode: 936, value: 'imprisoned' },
+        // Episode 948 adapts chapter 948: Raizo throws Kawamatsu his sword
+        // and the key to his cuffs, and he fights his way out of the cell.
+        { episode: 948, chapter: 948, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 936,
@@ -1319,6 +1369,7 @@ export const wano: Saga = {
         it: 'È una dei sei ufficiali di punta dell’Imperatore, e Page One, che la chiama sorella maggiore, è un altro. Mentre i sei aspettano di essere chiamati, litiga con il fratello e dice a Sasaki di smetterla di scherzare quando lui lo punzecchia. Quando chiede se Kaido sia stupido, gli altri la rimproverano.',
         en: 'She is one of the Emperor’s six leading officers, and Page One, who calls her his elder sister, is another. While the six wait to be called, she quarrels with her brother and tells Sasaki to stop messing around when he needles him. When she asks whether Kaido is stupid, the others turn on her.',
       },
+      status: [{ episode: 982, value: 'alive' }],
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
@@ -1334,6 +1385,7 @@ export const wano: Saga = {
         it: 'È uno dei sei ufficiali di punta dell’Imperatore. Porta una maschera rossa sulla metà superiore del viso, con due corna che coprono le sue, e tiene sempre una sigaretta in bocca. Mentre i sei aspettano di essere chiamati, dice a Ulti e a Page One di stare zitti.',
         en: 'He is one of the Emperor’s six leading officers. He wears a red mask over the top half of his face, with horns that fit over his own, and keeps a cigarette in his mouth. While the six wait to be called, he tells Ulti and Page One to be quiet.',
       },
+      status: [{ episode: 982, value: 'alive' }],
       affiliation: [
         { episode: 982, value: TOBIROPPO },
         {
@@ -1358,6 +1410,7 @@ export const wano: Saga = {
         it: 'È una dei sei ufficiali di punta dell’Imperatore, in kimono nero con una fascia a fiori, le corna in testa e due spade tra i capelli. Mentre i sei aspettano di essere chiamati, dice che Ulti le piace perché non si tira mai indietro.',
         en: 'She is one of the Emperor’s six leading officers, in a black kimono with a flowered sash, horns on her head and swords pinned in her hair. While the six wait to be called, she says she likes Ulti because she never backs down.',
       },
+      status: [{ episode: 982, value: 'alive' }],
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
@@ -1373,6 +1426,7 @@ export const wano: Saga = {
         it: 'È uno dei sei ufficiali di punta dell’Imperatore, con un berretto militare con le corna, due lunghe zanne e un mantello sulle spalle. Mentre i sei aspettano di essere chiamati, punzecchia Page One, e Ulti gli dice di smetterla di scherzare.',
         en: 'He is one of the Emperor’s six leading officers, with a horned military cap, two long fangs and a cloak slung over his shoulders. While the six wait to be called, he needles Page One, and Ulti tells him to stop messing around.',
       },
+      status: [{ episode: 982, value: 'alive' }],
       affiliation: [{ episode: 982, value: TOBIROPPO }],
       devilFruit: [
         {
@@ -1388,6 +1442,7 @@ export const wano: Saga = {
         it: 'Kaido racconta ai suoi ufficiali che quel giorno suo figlio è sparito, e li manda a riportarglielo. Lui compare mascherato nel mezzo dello scontro di Rufy con Ulti e Page One, mette fuori combattimento Ulti con la stessa mossa con cui Kaido aveva abbattuto Rufy e porta via Rufy ai Pirati delle Cento Bestie che lo inseguono. Gli dice che lo stava aspettando, e si presenta: si chiama Yamato ed è il figlio di Kaido.',
         en: 'Kaido tells his officers that his son disappeared that day, and sends them to bring him back. He turns up masked in the middle of Luffy’s fight with Ulti and Page One, knocks Ulti out with the same move Kaido once used to bring Luffy down, and carries Luffy away from the Beasts Pirates chasing them. He tells Luffy he has been waiting for him, and introduces himself: his name is Yamato, and he is Kaido’s son.',
       },
+      status: [{ episode: 990, value: 'alive' }],
       affiliation: [
         {
           episode: 993,
@@ -1428,6 +1483,7 @@ export const wano: Saga = {
         it: 'Ha mangiato uno SMILE dello scoiattolo volante, che le dà una coda da scoiattolo. Quando Kaido la chiama arriva subito e legge il programma della serata: un brindisi, i discorsi di Orochi e di Kaido, l’alleanza con la ciurma di Big Mom e, per ultimo, un annuncio importante che Kaido non vuole anticipare.',
         en: 'She ate a flying squirrel SMILE, which gives her a squirrel’s tail. When Kaido calls her she comes at once and reads out the night’s schedule: a toast, speeches by Orochi and Kaido, the alliance with Big Mom’s crew and, last, an important announcement that Kaido will not explain in advance.',
       },
+      status: [{ episode: 985, value: 'alive' }],
       affiliation: [
         {
           episode: 985,
