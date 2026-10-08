@@ -68,8 +68,9 @@ export function chronicleOf(entity: Entity, r: Reader): CharacterChronicle {
   return {
     mode: 'chronicle',
     entries: reachedOf(r, entity, 'chronicle')
-      .toSorted(byValue((entry) => r.threshold(entry.gate), byNumber()))
-      .toReversed()
+      .toSorted(
+        byValue((entry) => r.threshold(entry.gate), byNumber({ desc: true })),
+      )
       .map((entry): ChronicleEntry => {
         return {
           ...entry.gate,
