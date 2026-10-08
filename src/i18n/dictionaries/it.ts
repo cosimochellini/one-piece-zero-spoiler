@@ -168,7 +168,7 @@ export const itDictionary: Dictionary = {
   'character.factsLabel': 'Fatti fino al tuo segnalibro',
   'character.chronicleTitle': 'La storia finora',
   'character.chronicleLede':
-    'Le sue vicende fino al tuo segnalibro. Ogni parte inizia dall’episodio in cui avviene.',
+    'Le sue vicende fino al tuo segnalibro, dalla più recente. Ogni parte inizia dall’episodio in cui avviene.',
   'character.before': 'Prima',
   'character.after': 'Dopo',
   'character.routeStart': 'Niente, questa è la prima voce.',

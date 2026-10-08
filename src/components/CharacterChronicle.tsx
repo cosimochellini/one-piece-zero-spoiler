@@ -26,8 +26,8 @@ export interface CharacterChronicleProps {
 }
 
 /**
- * The stories the reader has reached, as one ledger down the page: the
- * mark in mono, the title as a heading, the paragraph under it.
+ * The stories the reader has reached, latest first, as one ledger down the
+ * page: the mark in mono, the title as a heading, the paragraph under it.
  *
  * Every story here is one the server has already decided the reader may
  * read; the component draws what it is given and never a count of what it

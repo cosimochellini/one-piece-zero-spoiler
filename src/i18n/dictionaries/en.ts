@@ -171,7 +171,7 @@ export const enDictionary = {
   'character.factsLabel': 'Facts up to your bookmark',
   'character.chronicleTitle': 'Story so far',
   'character.chronicleLede':
-    'What happens to them up to your bookmark. Each part starts at the episode where it takes place.',
+    'What happens to them up to your bookmark, latest first. Each part starts at the episode where it takes place.',
   'character.before': 'Before',
   'character.after': 'After',
   'character.routeStart': 'Nothing. This is the first entry.',

@@ -246,7 +246,7 @@ export interface ChronicleEntry {
 
 /**
  * A character's chronicle as it stands at the reader's bookmark: every story
- * they have reached, in episode order, and none they have not. A story above
+ * they have reached, latest first, and none they have not. A story above
  * the reader's episode is not in the payload — there is no placeholder and
  * no count, because "three more stories under fog" is itself the news that
  * something happens.
