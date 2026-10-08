@@ -62,7 +62,12 @@ import type { Entity } from './types'
  * voiced a character the Star Comics spelling stands in, and where the dub's
  * spelling has not been checked it stands in until it is: the Italian One
  * Piece Wiki's page title, which follows Star Comics, unless the page's
- * "Nome doppiaggio italiano" gives the dub's.
+ * "Nome doppiaggio italiano" gives the dub's; where it lists several, the
+ * last is the dub's current one (TonyTony Chopper from episode 751). A title
+ * that carries a surname or a real name said later gives only the bare name
+ * or the alias (Sanji, Mr. Three). `npm run verify:names`
+ * (`scripts/verify-names.mjs`, run by hand, like the chapter check) reads
+ * every character's page and lists the names that follow neither.
  *
  * A devil fruit is a record only under a name its author gave it. Where the
  * story says the name, in a chapter or an episode, the fruit is filed there,
