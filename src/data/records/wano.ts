@@ -828,8 +828,11 @@ export const wano: Saga = {
       },
       status: [
         { episode: 910, value: 'unknown' },
-        { episode: 912, value: 'alive' },
-        { episode: 1025, value: 'deceased' },
+        // Episode 912 adapts chapter 921: he lives on as the bandit Shutenmaru.
+        { episode: 912, chapter: 921, value: 'alive' },
+        // Episode 1025 adapts chapter 1008: he takes the exploding Oden
+        // out of the window.
+        { episode: 1025, chapter: 1008, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -870,8 +873,10 @@ export const wano: Saga = {
       status: [
         { episode: 921, value: 'alive' },
         { episode: 994, chapter: 985, value: 'presumed-dead' },
-        { episode: 1026, value: 'alive' },
-        { episode: 1075, value: 'deceased' },
+        // Episode 1025 adapts chapter 1008: he sets the castle on fire, alive.
+        { episode: 1025, chapter: 1008, value: 'alive' },
+        // Episode 1075 adapts chapter 1048: Denjiro cuts off his last head.
+        { episode: 1075, chapter: 1048, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1140,7 +1145,9 @@ export const wano: Saga = {
       },
       status: [
         { episode: 939, value: 'alive' },
-        { episode: 940, value: 'deceased' },
+        // Shot at 940 (chapter 942); pinned at the record's own chapter, which
+        // is later.
+        { episode: 940, chapter: 943, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1306,7 +1313,8 @@ export const wano: Saga = {
       },
       status: [
         { episode: 970, value: 'alive' },
-        { episode: 974, value: 'deceased' },
+        // Episode 974 adapts chapter 972, where Kaido says he killed her.
+        { episode: 974, chapter: 972, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1350,7 +1358,8 @@ export const wano: Saga = {
       },
       status: [
         { episode: 970, value: 'alive' },
-        { episode: 1068, value: 'deceased' },
+        // Episode 1068 adapts chapter 1041: he and Maha take each other out.
+        { episode: 1068, chapter: 1041, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1507,8 +1516,12 @@ export const wano: Saga = {
       },
       status: [
         { episode: 899, value: 'alive' },
-        { episode: 960, value: 'presumed-dead' },
-        { episode: 1084, value: 'alive' },
+        // Episode 960 adapts chapter 959: Okobore Town was burned with its
+        // people.
+        { episode: 960, chapter: 959, value: 'presumed-dead' },
+        // Episode 1083 adapts chapter 1056: Kin'emon says she survived, and
+        // she is seen at the town's remains.
+        { episode: 1083, chapter: 1056, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1886,7 +1899,8 @@ export const wano: Saga = {
       },
       status: [
         { episode: 910, value: 'unknown' },
-        { episode: 935, value: 'alive' },
+        // Episode 935 adapts chapter 938: she says she is Hiyori.
+        { episode: 935, chapter: 938, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1955,8 +1969,10 @@ export const wano: Saga = {
       },
       status: [
         { episode: 960, value: 'unknown' },
-        { episode: 965, value: 'presumed-dead' },
-        { episode: 1080, value: 'alive' },
+        // Episode 965 adapts chapter 965: news of his death spreads.
+        { episode: 965, chapter: 965, value: 'presumed-dead' },
+        // Episode 1080 adapts chapter 1053: Hitetsu says he is Sukiyaki.
+        { episode: 1080, chapter: 1053, value: 'alive' },
       ],
       affiliation: [
         {

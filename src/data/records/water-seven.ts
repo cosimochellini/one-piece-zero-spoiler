@@ -1225,10 +1225,11 @@ export const waterSeven: Saga = {
         it: 'Guidava Tom’s Workers, il cantiere dove crebbero i suoi due allievi, e diceva che un uomo deve essere fiero della nave che ha costruito. Per aver costruito la nave del Re dei Pirati una nave giudiziaria venne a condannarlo a morte. Ottenne invece dieci anni di libertà vigilata per costruire un treno che corre sul mare da un’isola all’altra, e il Puffing Tom fece la sua prima corsa.',
         en: 'He ran Tom’s Workers, the yard where his two apprentices grew up, and he said a man should be proud of the ship he built. For building the Pirate King’s ship, a Judicial Ship came to sentence him to death. He was given ten years’ probation instead to build a train that runs across the sea from island to island, and the Puffing Tom made its first run.',
       },
-      // Seen only in a flashback at 248; his death is said at 268.
+      // Seen only in a flashback at 248. Episode 267 adapts chapter 379,
+      // where Spandam says he deserved to be killed.
       status: [
         { episode: 248, value: 'unknown' },
-        { episode: 268, value: 'deceased' },
+        { episode: 267, chapter: 379, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1348,7 +1349,8 @@ export const waterSeven: Saga = {
       // beats him in chapter 371, so his entries there say so.
       status: [
         { episode: 261, chapter: 371, value: 'alive' },
-        { episode: 1116, value: 'deceased' },
+        // Episode 1116 adapts chapter 1082: the papers report his death.
+        { episode: 1116, chapter: 1082, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1493,8 +1495,11 @@ export const waterSeven: Saga = {
       },
       status: [
         { episode: 275, value: 'alive' },
-        { episode: 278, value: 'presumed-dead' },
-        { episode: 1163, value: 'alive' },
+        // Episode 278 adapts chapter 397: Kuzan freezes him.
+        { episode: 278, chapter: 397, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1124: at the feast Robin says she will
+        // see Saul once they reach Elbaph.
+        { episode: 1155, chapter: 1124, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1522,7 +1527,9 @@ export const waterSeven: Saga = {
       },
       status: [
         { episode: 275, value: 'alive' },
-        { episode: 278, value: 'deceased' },
+        // Episode 278 adapts chapter 397: the tree falls with the scholars
+        // inside.
+        { episode: 278, chapter: 397, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1577,7 +1584,9 @@ export const waterSeven: Saga = {
       },
       status: [
         { episode: 276, value: 'alive' },
-        { episode: 278, value: 'deceased' },
+        // Episode 278 adapts chapter 398, where the Marines report no
+        // survivors.
+        { episode: 278, chapter: 398, value: 'deceased' },
       ],
       affiliation: [
         {

@@ -1181,7 +1181,9 @@ export const summitWar: Saga = {
       },
       status: [
         { episode: 430, value: 'imprisoned' },
-        { episode: 451, value: 'alive' },
+        // Episode 451 adapts chapter 548: the escapees sail out through the
+        // Gates of Justice.
+        { episode: 451, chapter: 548, value: 'alive' },
       ],
       affiliation: [
         { episode: 430, value: WARLORDS },
@@ -1880,7 +1882,14 @@ export const summitWar: Saga = {
         it: 'Era il capo dei secondini di Impel Down e la prigione lo ha rinchiuso nei propri livelli bassi, perché uccideva i detenuti per il gusto di farlo. Quando Barbanera entra nella prigione, il direttore lo fa uscire dalla cella per fermarlo e gli rende la spada, e lui la usa subito sui secondini venuti a liberarlo.',
         en: 'He was the head jailer of Impel Down, and the prison shut him away on its own lower levels because he killed inmates for the pleasure of it. When Blackbeard breaks into the prison, the chief warden lets him out of his cell to stop him and gives him back his sword, and he turns it at once on the jailers sent to free him.',
       },
-      status: [{ episode: 445, value: 'alive' }],
+      status: [
+        // Met as an inmate the warden lets out to fight Blackbeard.
+        { episode: 445, value: 'imprisoned' },
+        // He joins Blackbeard's crew at 452 (chapter 549) but stays inside
+        // the prison with them. Episode 484 adapts chapter 575, where he is
+        // first seen outside it, at Marineford.
+        { episode: 484, chapter: 575, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 445,
@@ -2299,8 +2308,12 @@ export const summitWar: Saga = {
       },
       status: [
         { episode: 497, value: 'alive' },
-        { episode: 503, value: 'presumed-dead' },
-        { episode: 663, value: 'alive' },
+        // Episode 503 adapts chapter 588: the World Noble's ship fires on his
+        // boat, and Dogra brings the news back to Mount Colubo.
+        { episode: 503, chapter: 588, value: 'presumed-dead' },
+        // Episode 663 adapts chapter 731: the masked man at the Colosseum is
+        // Sabo, the brother thought long dead.
+        { episode: 663, chapter: 731, value: 'alive' },
       ],
       affiliation: [
         {
@@ -2681,7 +2694,9 @@ export const summitWar: Saga = {
       },
       status: [
         { episode: 495, value: 'alive' },
-        { episode: 503, value: 'unknown' },
+        // Episode 503 adapts chapter 588: Ace and Dadan come back from the
+        // fire having beaten him, and the story leaves him there.
+        { episode: 503, chapter: 588, value: 'unknown' },
       ],
       affiliation: [
         {
