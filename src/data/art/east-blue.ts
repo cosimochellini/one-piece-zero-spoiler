@@ -1462,16 +1462,30 @@ export const eastBlueArt = {
     { d: 'M108 64 l8 -4 M112 76 l8 -4 M114 88 l6 -3', role: 'ambient' },
     shadow(82, 152, 50),
   ],
-  // Six swords fanned out in a ring, one for each arm.
+  // His octopus pot afloat: the rolled lip in 3/4, the dark opening hatched,
+  // the squat body with the edge of its dark glaze running down, the far side
+  // hatched, sitting in the water. He takes the Marine captain back to his
+  // ship in it in episode 31 (ch. 69). His six swords are drawn from 39, in
+  // `eastBlueRedrawn`.
   'hatchan': [
-    { d: 'M84 84 L80 44 L76 84 Z' },
-    { d: 'M101.1 98.5 L133.7 75 L97.1 91.5 Z' },
-    { d: 'M97.1 120.5 L133.7 137 L101.1 113.5 Z' },
-    { d: 'M76 128 L80 168 L84 128 Z' },
-    { d: 'M58.9 113.5 L26.3 137 L62.9 120.5 Z' },
-    { d: 'M62.9 91.5 L26.3 75 L58.9 98.5 Z' },
-    { d: circle(80, 106, 20), role: 'accent' },
-    { d: circle(80, 106, 10), role: 'soft' },
+    { d: ellipse(80, 70, 44, 13), role: 'accent' },
+    { d: 'M36 71 C36 82 56 88 80 88 C104 88 124 82 124 71' },
+    { d: ellipse(80, 69, 27, 7) },
+    {
+      d: 'M60 66 L66 72 M68 63.5 L76 75 M78 62.5 L86 75.5 M88 63 L95 72.5 M97 65 L101 70',
+      role: 'ambient',
+    },
+    { d: 'M42 85 C24 96 16 126 30 150 M118 85 C136 96 144 126 130 150' },
+    {
+      d: 'M27 106 Q31 116 36 108 Q40 122 46 112 Q51 126 58 114 Q63 128 70 116 Q76 129 82 117 Q88 128 94 115 Q100 126 106 113 Q111 123 116 111 Q121 119 126 108 Q130 114 133 105',
+      role: 'soft',
+    },
+    {
+      d: 'M126 116 L136 107 M126 127 L138 116 M125 138 L138 127 M126 147 L135 139',
+      role: 'ambient',
+    },
+    { d: 'M14 149 Q80 166 146 149', role: 'ambient', dashed: true },
+    ...SEA,
   ],
   // A black belt, tied, the two ends hanging.
   'kuroobi': [
@@ -2045,6 +2059,24 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'accent',
         },
         shadow(80, 186, 44),
+      ],
+    },
+  ],
+  // Six swords fanned out in a ring, one for each arm. He first takes up all
+  // six against Zoro in 39 (ch. 84).
+  'hatchan': [
+    {
+      episode: 39,
+      chapter: 84,
+      value: [
+        { d: 'M84 84 L80 44 L76 84 Z' },
+        { d: 'M101.1 98.5 L133.7 75 L97.1 91.5 Z' },
+        { d: 'M97.1 120.5 L133.7 137 L101.1 113.5 Z' },
+        { d: 'M76 128 L80 168 L84 128 Z' },
+        { d: 'M58.9 113.5 L26.3 137 L62.9 120.5 Z' },
+        { d: 'M62.9 91.5 L26.3 75 L58.9 98.5 Z' },
+        { d: circle(80, 106, 20), role: 'accent' },
+        { d: circle(80, 106, 10), role: 'soft' },
       ],
     },
   ],

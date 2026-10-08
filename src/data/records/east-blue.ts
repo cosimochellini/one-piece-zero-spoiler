@@ -726,20 +726,22 @@ export const eastBlue: Saga = {
       revealedAtChapter: 74,
       name: { it: 'Octy', en: 'Hatchan' },
       summary: {
-        it: 'Un uomo-pesce polpo con sei braccia e sei spade, che combatte come se ballasse e si distrae ogni volta che qualcuno nomina il cibo.',
-        en: 'An octopus fish-man with six arms and six swords, who fights as though he were dancing and loses focus whenever food is mentioned.',
+        it: 'Un uomo-pesce polpo con sei braccia, vestito a righe, che riporta un capitano della Marina alla sua nave dentro un vaso da polpi.',
+        en: 'An octopus fish-man with six arms, dressed in stripes, who takes a Marine captain back to his ship in an octopus pot.',
       },
       visual: { art: 'hatchan', tint: 'pink' },
     },
     {
       id: 'kuroobi',
       kind: 'character',
-      revealedAtEpisode: 31,
-      revealedAtChapter: 74,
+      revealedAtEpisode: 36,
+      revealedAtChapter: 75,
+      // Seen from 31 (ch. 69) but first named at 36, when Arlong calls him by
+      // name in the flashback; the manga introduces him in a caption in ch. 75.
       name: { it: 'Kuroobi', en: 'Kuroobi' },
       summary: {
-        it: 'Un uomo-pesce razza che combatte a mani nude con il karate degli uomini-pesce, la cintura nera annodata stretta sopra la veste.',
-        en: 'A ray fish-man who fights bare-handed with fish-man karate, the black belt knotted tight over his robe.',
+        it: 'Un uomo-pesce razza con una veste scura stretta da una cintura nera e i capelli raccolti in una coda, che sospetta Nami di lavorare contro Arlong.',
+        en: 'A ray fish-man in a dark robe tied with a black belt, his hair in a ponytail, who suspects Nami of working against Arlong.',
       },
       visual: { art: 'kuroobi', tint: 'violet' },
     },
@@ -2014,16 +2016,20 @@ export const eastBlue: Saga = {
       bounty: [{ episode: 31, value: 20_000_000 }],
     },
     'hatchan': {
-      role: {
-        it: 'Spadaccino dei Pirati di Arlong',
-        en: 'Swordsman of the Arlong Pirates',
-      },
+      role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
       log: {
-        it: 'Tiene una spada per ognuna delle sue sei braccia e le fa girare tutte insieme in uno stile che ha inventato da sé. È il più semplice della ciurma di Arlong, ride forte e si commuove in fretta, e niente di tutto questo gli impedisce di fare quello che il suo capitano ordina. Canta mentre combatte, e la canzone è l’unica cosa che lo tradisce.',
-        en: 'He holds a sword in each of his six arms and swings them all at once in a style he invented himself. He is the simplest of Arlong’s crew, quick to laugh and quick to cry, and none of that stops him doing what his captain orders. He sings while he fights, and the song is the one thing that gives him away.',
+        it: 'Arlong lo manda a riaccompagnare alla nave un capitano della Marina, e lui gli ride in faccia perché sembra un topo. Quando Arlong gli dice di tenere a freno la lingua, chiede subito scusa. Cucina per la bestia marina della ciurma e la chiama a mangiare con uno squillo di tromba che fa con la bocca.',
+        en: 'Arlong sends him to see a Marine captain back to his ship, and he laughs that the captain’s face looks like a mouse’s. When Arlong tells him to watch his tongue, he apologises at once. He cooks for the crew’s sea beast and calls it to its meal with a trumpet blast he makes with his mouth.',
       },
       affiliation: [
-        { episode: 31, value: ARLONG_OFFICER },
+        {
+          episode: 31,
+          value: { it: 'Pirati di Arlong', en: 'Arlong Pirates' },
+        },
+        // He calls himself one of the crew's top officers in 33. The manga
+        // says so in a caption in ch. 69, below his record's chapter, so the
+        // entry carries no pin.
+        { episode: 33, value: ARLONG_OFFICER },
         {
           episode: 44,
           value: {
@@ -2042,13 +2048,16 @@ export const eastBlue: Saga = {
       origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
     },
     'kuroobi': {
-      role: { it: 'Maestro di karate', en: 'Karate master' },
-      log: {
-        it: 'Ha studiato il karate degli uomini-pesce fino a poter colpire attraverso l’acqua, e considera il combattimento una disciplina, non una rissa. Parla poco e spiega volentieri quanto un uomo gli sia inferiore, con la calma di chi enuncia una regola. Nel parco di Arlong è l’unico a cui importi ancora della forma.',
-        en: 'He has studied fish-man karate until he can strike through water itself, and treats fighting as a discipline rather than a brawl. He says little, and explains gladly how far beneath him a human is, with the calm of a man reciting a rule. In Arlong’s park he is the only one who still cares about form.',
+      role: {
+        it: 'Ufficiale dei Pirati di Arlong',
+        en: 'Arlong Pirates officer',
       },
-      affiliation: [{ episode: 31, value: ARLONG_OFFICER }],
-      origin: [{ episode: 34, value: FISH_MAN_ISLAND }],
+      log: {
+        it: 'Quando Zoro si libera, sospetta che sia stata Nami a lasciarlo andare. Ha frugato nella sua stanza e trovato una mappa dell’isola con il villaggio di Cocoyashi segnato, e la mostra ad Arlong. Quando una nave da guerra della Marina viene ad attaccare il parco, esce con Octy e Chu e la affonda.',
+        en: 'When Zoro gets free, he suspects Nami of letting him go. He has searched her room and found a map of the island with Cocoyasi Village marked on it, and he shows it to Arlong. When a Marine warship comes to attack the park, he goes out with Hatchan and Chew and sinks it.',
+      },
+      affiliation: [{ episode: 36, value: ARLONG_OFFICER }],
+      origin: [{ episode: 36, value: FISH_MAN_ISLAND }],
     },
     'chew': {
       role: { it: 'Membro dei Pirati di Arlong', en: 'Arlong Pirates crewman' },
