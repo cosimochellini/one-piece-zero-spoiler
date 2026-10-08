@@ -1988,8 +1988,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Arlong Pirates',
       },
       log: {
-        it: 'Ha costruito un parco sul mare, e un ufficiale della Marina prende i suoi soldi e guarda altrove. La sua ciurma ha devastato un villaggio dell’isola. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
-        en: 'He built a park on the water, and a Marine officer takes his money and looks elsewhere. His crew has wrecked a village on the island. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
+        it: 'Ha costruito un parco sul mare e paga un ufficiale della Marina, che prende i soldi e riparte prima che qualcuno riconosca la sua nave. I suoi uomini hanno devastato un villaggio dell’isola. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
+        en: 'He built a park on the water and pays a Marine officer, who takes the money and leaves before anyone recognises his ship. His men have wrecked a village on the island. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
       },
       affiliation: [
         {
