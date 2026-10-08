@@ -916,7 +916,8 @@ export const skypiea: Saga = {
       },
       status: [
         { episode: 151, value: 'alive' },
-        { episode: 485, value: 'deceased' },
+        // Episode 485 adapts chapter 576, where he dies standing.
+        { episode: 485, chapter: 576, value: 'deceased' },
       ],
       affiliation: [
         {

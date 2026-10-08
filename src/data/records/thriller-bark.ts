@@ -586,7 +586,9 @@ export const thrillerBark: Saga = {
       },
       status: [
         { episode: 339, value: 'unknown' },
-        { episode: 343, value: 'deceased' },
+        // Episode 343 adapts chapter 449: Moria's zombies are the dead, brought
+        // back with stolen shadows.
+        { episode: 343, chapter: 449, value: 'deceased' },
       ],
       affiliation: [
         { episode: 339, value: { it: 'Thriller Bark', en: 'Thriller Bark' } },
@@ -608,7 +610,9 @@ export const thrillerBark: Saga = {
       },
       status: [
         { episode: 339, value: 'unknown' },
-        { episode: 343, value: 'deceased' },
+        // Episode 343 adapts chapter 449: Moria's zombies are the dead, brought
+        // back with stolen shadows.
+        { episode: 343, chapter: 449, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -657,7 +661,8 @@ export const thrillerBark: Saga = {
       },
       status: [
         { episode: 345, value: 'unknown' },
-        { episode: 348, value: 'deceased' },
+        // Episode 348 adapts chapter 454: the trio realise he is a zombie.
+        { episode: 348, chapter: 454, value: 'deceased' },
       ],
       affiliation: [
         {

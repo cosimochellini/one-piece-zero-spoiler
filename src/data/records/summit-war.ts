@@ -1885,9 +1885,10 @@ export const summitWar: Saga = {
       status: [
         // Met as an inmate the warden lets out to fight Blackbeard.
         { episode: 445, value: 'imprisoned' },
-        // Episode 452 adapts chapter 549: he joins Blackbeard's crew rather
-        // than go back to a cell, and leaves the prison with them.
-        { episode: 452, chapter: 549, value: 'alive' },
+        // He joins Blackbeard's crew at 452 (chapter 549) but stays inside
+        // the prison with them. Episode 484 adapts chapter 575, where he is
+        // first seen outside it, at Marineford.
+        { episode: 484, chapter: 575, value: 'alive' },
       ],
       affiliation: [
         {

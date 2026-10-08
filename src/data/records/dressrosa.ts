@@ -1056,7 +1056,8 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 587, value: 'alive' },
-        { episode: 620, value: 'deceased' },
+        // Episode 620 adapts chapter 694: Caesar stabs her heart.
+        { episode: 620, chapter: 694, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1087,7 +1088,9 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 598, value: 'alive' },
-        { episode: 620, value: 'deceased' },
+        // Episode 620 only has an explosion. Episode 624 adapts chapter 698,
+        // where the G-5 men say he died.
+        { episode: 624, chapter: 698, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -2044,7 +2047,9 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 691, value: 'alive' },
-        { episode: 1055, value: 'deceased' },
+        // Episode 1055 adapts chapter 1030: he collapses after his last
+        // drawing.
+        { episode: 1055, chapter: 1030, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -2211,7 +2216,8 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 594, value: 'alive' },
-        { episode: 602, value: 'deceased' },
+        // Episode 602 adapts chapter 676, where it explodes.
+        { episode: 602, chapter: 676, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -2329,7 +2335,8 @@ export const dressrosa: Saga = {
         it: 'È il minore dei fratelli Funk, assassini venuti da un paese vicino, e supera di tutta la testa il fratello Kelly. Quando Kelly se la prende con Dagama perché si compra gli alleati, Bobby aggiunge soltanto che un combattimento è una faccenda personale. Alla domanda se i due abbiano pagato qualcuno per finire nello stesso blocco, risponde che è solo una coincidenza.',
         en: 'He is the younger of the Funk Brothers, assassins from a neighbouring country, and stands head and shoulders above his brother Kelly. When Kelly rounds on Dagama for buying allies, Bobby adds only that a fight is a personal matter. Asked whether the two of them paid somebody off to share a block, he says it is just a coincidence.',
       },
-      // Never shown in the dungeon or as a toy, so no capture is filed.
+      // A toy until 677 (chapter 743), but the show only reveals it as he
+      // turns back, so no capture is filed.
       status: [{ episode: 633, value: 'alive' }],
       affiliation: [
         { episode: 633, value: { it: 'Fratelli Funk', en: 'Funk Brothers' } },
@@ -2726,7 +2733,8 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 704, value: 'unknown' },
-        { episode: 706, value: 'deceased' },
+        // Episode 706 adapts chapter 767: Doflamingo shoots him.
+        { episode: 706, chapter: 767, value: 'deceased' },
       ],
       affiliation: [
         {

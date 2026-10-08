@@ -988,9 +988,10 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 757, value: 'alive' },
-        // Episode 849 adapts chapter 877: overpowered, he sets off the
-        // dynamite strapped to him to stop Perospero.
-        { episode: 849, chapter: 877, value: 'deceased' },
+        // He blows himself up at 849 (chapter 877), but he has faked his
+        // death with an explosion before. Episode 850 adapts chapter 878,
+        // where Nami says he gave his life.
+        { episode: 850, chapter: 878, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1554,8 +1555,11 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 836, value: 'alive' },
-        { episode: 837, value: 'missing' },
-        { episode: 838, value: 'deceased' },
+        // Only scraps of her clothes are left at 837 (chapter 867), and her
+        // fruit's power has passed to Linlin at 838 (chapter 868). Both are
+        // pinned at the record's own chapter, which is later.
+        { episode: 837, chapter: 872, value: 'missing' },
+        { episode: 838, chapter: 872, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1941,7 +1945,8 @@ export const wholeCake: Saga = {
       },
       status: [
         { episode: 797, value: 'alive' },
-        { episode: 861, value: 'unknown' },
+        // Episode 861 adapts chapter 887: Oven strikes him from behind.
+        { episode: 861, chapter: 887, value: 'unknown' },
       ],
       affiliation: [
         {

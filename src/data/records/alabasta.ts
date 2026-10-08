@@ -1091,7 +1091,9 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 79, value: 'captured' },
-        { episode: 95, value: 'deceased' },
+        // Episode 95 adapts chapter 159: he was done in while tied up on the
+        // ship.
+        { episode: 95, chapter: 159, value: 'deceased' },
       ],
       affiliation: [
         { episode: 79, value: BW },
@@ -1168,7 +1170,8 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 85, value: 'alive' },
-        { episode: 86, value: 'deceased' },
+        // Episode 86 adapts chapter 145, his last stand.
+        { episode: 86, chapter: 145, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1246,8 +1249,11 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 92, value: 'alive' },
-        { episode: 127, value: 'imprisoned' },
-        { episode: 451, value: 'alive' },
+        // Episode 127 adapts chapter 211, where Tashigi arrests him.
+        { episode: 127, chapter: 211, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: the escapees sail out through the
+        // Gates of Justice.
+        { episode: 451, chapter: 548, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1295,7 +1301,9 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 93, value: 'alive' },
-        { episode: 1088, value: 'deceased' },
+        // Episode 1081 adapts chapter 1054: the headline says Sabo murdered
+        // him, and Kurouma speaks of the assassination.
+        { episode: 1081, chapter: 1054, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1355,8 +1363,10 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 100, value: 'alive' },
-        { episode: 125, value: 'presumed-dead' },
-        { episode: 130, value: 'alive' },
+        // Episode 125 adapts chapter 208: he flies the bomb into the sky.
+        { episode: 125, chapter: 208, value: 'presumed-dead' },
+        // Episode 130 adapts chapter 217: he stands at his own grave.
+        { episode: 130, chapter: 217, value: 'alive' },
       ],
       affiliation: [
         {
@@ -1420,7 +1430,8 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 95, value: 'alive' },
-        { episode: 483, value: 'deceased' },
+        // Episode 483 adapts chapter 574, where he dies in Luffy's arms.
+        { episode: 483, chapter: 574, value: 'deceased' },
       ],
       affiliation: [
         {

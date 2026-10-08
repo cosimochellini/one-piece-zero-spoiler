@@ -1346,8 +1346,12 @@ export const eastBlue: Saga = {
       },
       status: [
         { episode: 5, value: 'alive' },
-        { episode: 422, value: 'imprisoned' },
-        { episode: 451, value: 'alive' },
+        // Episode 422 adapts chapter 525: his crew say he has been taken to
+        // Impel Down.
+        { episode: 422, chapter: 525, value: 'imprisoned' },
+        // Episode 451 adapts chapter 548: the escapees sail out through the
+        // Gates of Justice.
+        { episode: 451, chapter: 548, value: 'alive' },
       ],
       affiliation: [
         {
@@ -2188,7 +2192,9 @@ export const eastBlue: Saga = {
       },
       status: [
         { episode: 34, value: 'alive' },
-        { episode: 36, value: 'deceased' },
+        // Shot in Nami's memory at 36 (chapter 78); pinned at the record's own
+        // chapter, which is later.
+        { episode: 36, chapter: 80, value: 'deceased' },
       ],
       affiliation: [
         {

@@ -551,7 +551,9 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 521, value: 'alive' },
-        { episode: 523, value: 'captured' },
+        // Episode 523 adapts chapter 603: Sentomaru says they caught the rest
+        // of the fakes.
+        { episode: 523, chapter: 603, value: 'captured' },
       ],
       affiliation: [
         {
@@ -1097,7 +1099,9 @@ export const fishManIsland: Saga = {
       },
       status: [
         { episode: 539, value: 'alive' },
-        { episode: 543, value: 'deceased' },
+        // He dies at 543 (chapter 623); pinned at the record's own chapter,
+        // which is later.
+        { episode: 543, chapter: 626, value: 'deceased' },
       ],
       affiliation: [
         {

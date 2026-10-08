@@ -850,7 +850,8 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1129, value: 'alive' },
-        { episode: 1132, value: 'deceased' },
+        // Episode 1132 adapts chapter 1098: Kuma finds her dead.
+        { episode: 1132, chapter: 1098, value: 'deceased' },
       ],
       affiliation: [
         {
@@ -1206,7 +1207,8 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1131, value: 'alive' },
-        { episode: 1133, value: 'unknown' },
+        // Episode 1133 adapts chapter 1099: Kuma sinks his fleet.
+        { episode: 1133, chapter: 1099, value: 'unknown' },
       ],
       affiliation: [
         {
@@ -1365,7 +1367,9 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1142, value: 'unknown' },
-        { episode: 1155, value: 'alive' },
+        // Episode 1155 adapts chapter 1125: he is at the vice admirals'
+        // meeting with Saturn.
+        { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [
         {
