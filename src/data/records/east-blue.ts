@@ -2056,7 +2056,8 @@ export const eastBlue: Saga = {
         it: 'Quando Zoro si libera, sospetta che sia stata Nami a lasciarlo andare. Ha frugato nella sua stanza e trovato una mappa dell’isola con il villaggio di Cocoyashi segnato, e la mostra ad Arlong. Quando una nave da guerra della Marina viene ad attaccare il parco, esce con Octy e Chu e la affonda.',
         en: 'When Zoro gets free, he suspects Nami of letting him go. He has searched her room and found a map of the island with Cocoyasi Village marked on it, and he shows it to Arlong. When a Marine warship comes to attack the park, he goes out with Hatchan and Chew and sinks it.',
       },
-      affiliation: [{ episode: 36, value: ARLONG_OFFICER }],
+      // The ch. 75 caption that names him calls him an officer.
+      affiliation: [{ episode: 36, chapter: 75, value: ARLONG_OFFICER }],
       origin: [{ episode: 36, value: FISH_MAN_ISLAND }],
     },
     'chew': {
