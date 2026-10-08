@@ -102,7 +102,8 @@ Every record has the same shape, defined as `Entity` in `src/data/types.ts`:
 - `id` is an English slug.
 - `name.en` uses the English edition's names. `name.it` uses the Italian dub's
   names (Rufy, Bagy, Usop), or the Star Comics spelling where the dub never
-  voiced the character or its spelling could not be checked. The Italian
+  voiced the character. Where the dub's spelling has not been checked, the Star
+  Comics spelling stands in until it is. The Italian
   [One Piece Wiki](https://onepiece.fandom.com/it)'s page titles follow Star
   Comics; its "Nome doppiaggio italiano" field gives the dub's name where it
   differs.

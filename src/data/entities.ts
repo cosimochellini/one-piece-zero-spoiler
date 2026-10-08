@@ -40,11 +40,13 @@ import type { Entity } from './types'
  *
  * A name the anime says before the manga does sets only the episode. Where
  * the manga names the record later, the chapter is the one that names it
- * (Shiki, chapter 962). Where the manga never names it, the chapter is the
- * one the naming episode's scene adapts, the same scene without the name,
- * and never earlier: Spoil is named by Lola in episode 375, and chapter 483
- * shows that scene with him as "the old man". As with a fruit named only
- * outside the story, the name adds nothing that chapter has not shown.
+ * (Shiki, chapter 962, kept unanchored). Where the manga never names it, the
+ * chapter is the one the naming episode's scene adapts, the same scene
+ * without the name, and never earlier; if the scene spans several chapters,
+ * the last. Spoil is named by Lola in episode 375, and chapter 483 shows
+ * that scene with him as "the old man". As with a fruit named only outside
+ * the story, the name adds nothing the manga reader has not already seen in
+ * that chapter.
  *
  * The error is not symmetric, and the editing rule follows from that: a
  * threshold set too low uncovers a record early, which is the bug; one set too
@@ -57,10 +59,10 @@ import type { Entity } from './types'
  *
  * Names are the Italian anime dub's in `it` (Rufy, Bagy, Usop) and the
  * English edition's in `en`; the id is an English slug. Where the dub never
- * voiced a character, or its spelling could not be checked, the Star Comics
- * spelling stands in: the Italian One Piece Wiki's page title, which follows
- * Star Comics, unless the page's "Nome doppiaggio italiano" gives the dub's
- * (Grunfchuck, Kumacy, Cerbero and Fratelli Risky are the wiki's, issue #116).
+ * voiced a character the Star Comics spelling stands in, and where the dub's
+ * spelling has not been checked it stands in until it is: the Italian One
+ * Piece Wiki's page title, which follows Star Comics, unless the page's
+ * "Nome doppiaggio italiano" gives the dub's.
  *
  * A devil fruit is a record only under a name its author gave it. Where the
  * story says the name, in a chapter or an episode, the fruit is filed there,
