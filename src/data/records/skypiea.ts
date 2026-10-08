@@ -573,6 +573,7 @@ export const skypiea: Saga = {
         it: 'Comanda una ciurma che canta mentre lavora. Quando una nave cade dal cielo e affonda accanto alla Going Merry, arriva, si presenta come il Re dei Recuperi e dice che tutto ciò che affonda nelle sue acque è suo. Riporta a galla il relitto soffiandoci dentro aria con un tubo, e si tuffa di persona quando qualcuno là sotto attacca i suoi uomini.',
         en: 'He commands a crew that sings while it works. When a ship falls out of the sky and sinks beside the Going Merry, he arrives, introduces himself as the Salvage King and says that anything that sinks in his waters is his. He raises the wreck by blowing air into it through a tube, and dives in himself when something down there attacks his men.',
       },
+      status: [{ episode: 144, value: 'alive' }],
       affiliation: [
         {
           episode: 144,
@@ -595,6 +596,7 @@ export const skypiea: Saga = {
         it: 'Come Masira, dice che quel tratto di mare è suo, e chi vuole passare deve pagare. Spera di prendere il posto lasciato libero da Crocodile nella Flotta dei Sette. Quando sente che la ciurma ha battuto Masira attacca per vendicarlo, con onde sonore che sfasciano la loro nave e anche la sua.',
         en: 'Like Masira, he says that stretch of sea is his, and anyone who wants to pass has to pay. He hopes to take the seat Crocodile left empty among the Seven Warlords. When he hears the crew beat Masira he attacks to avenge him, with sound waves that wreck their ship and his own as well.',
       },
+      status: [{ episode: 147, value: 'alive' }],
       affiliation: [
         {
           episode: 147,
@@ -617,6 +619,15 @@ export const skypiea: Saga = {
         it: 'A Mock Town nessuno osa contraddire lui o la sua ciurma. Chiama nuova era quella in cui i pirati non sognano più. Offre da bere a Rufy, gli sbatte la testa sul bancone e poi dice che è solo una prova, e Rufy dice a Zoro di non reagire.',
         en: 'Nobody in Mock Town dares contradict him or his crew. He calls it the new age, the one where pirates no longer dream. He buys Luffy a drink, smashes his head into the counter and then says it is only a test, and Luffy tells Zoro not to fight back.',
       },
+      status: [
+        { episode: 146, value: 'alive' },
+        // Episode 207 adapts chapter 303: Doflamingo makes Sarquiss cut him
+        // down in Mock Town, and the story leaves him there.
+        { episode: 207, chapter: 303, value: 'unknown' },
+        // Episode 633 adapts chapter 704: he is back, named among the
+        // fighters in the Corrida Colosseum.
+        { episode: 633, chapter: 704, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 146,
@@ -657,6 +668,15 @@ export const skypiea: Saga = {
         it: 'A Mock Town lo chiamano un pazzo, e raccontano che una volta ha ammazzato sul posto un uomo solo perché lo aveva battuto a carte. Stavolta è lui a vincere la mano, e l’uomo seduto di fronte lo accusa di aver barato. Quell’uomo è Bellamy, e in questa città è così che una partita a carte finisce con il vincitore fuori dalla finestra.',
         en: 'In Mock Town they call him a madman, and say he once killed a man on the spot for beating him at cards. This time he is the one who wins the hand, and the man across the table calls it cheating. The man across the table is Bellamy, and in this town that is how a card game ends with its winner going out through a window.',
       },
+      status: [
+        // Shot, thrown out of a window and finished off by Bellamy in the
+        // same episode that introduces him, so his fate is open from the
+        // start.
+        { episode: 146, value: 'unknown' },
+        // Episode 1149 adapts chapter 1115, where he watches Vegapunk's
+        // broadcast in Mock Town.
+        { episode: 1149, chapter: 1115, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 146,
@@ -678,6 +698,7 @@ export const skypiea: Saga = {
         it: 'Dà ragione al suo capitano su tutto, compresa un’accusa di barare fatta per pura convenienza. Crede che una taglia dica quanto è forte un uomo, e secondo quel metro tre straccioni appena sbarcati non meritano uno sguardo. Ride di chiunque a Mock Town parli ancora di sogni.',
         en: 'He backs his captain in everything, a cheating charge made purely for convenience included. He believes a bounty tells you how strong a man is, and by that measure three shabby newcomers are beneath his notice. He laughs at anyone in Mock Town who still talks about dreams.',
       },
+      status: [{ episode: 146, value: 'alive' }],
       affiliation: [
         {
           episode: 146,
@@ -694,6 +715,7 @@ export const skypiea: Saga = {
         it: 'È l’ultimo discendente di Noland, l’esploratore che quattrocento anni fa fu giustiziato per aver raccontato di una città d’oro che nessuno riuscì a trovare. Ha lasciato tutto per immergersi ogni giorno sulle secche di Jaya, e il male dei fondali gli ha rovinato il corpo. Giura di non credere a quella storia: vuole soltanto arrivare in fondo.',
         en: 'He is the last descendant of Noland, the explorer executed four hundred years ago for telling of a city of gold that nobody could find. He gave up everything to dive the shallows off Jaya day after day, and the diving sickness has wrecked his body. He swears he does not believe the story: he only wants to see it finished.',
       },
+      status: [{ episode: 148, value: 'alive' }],
       affiliation: [
         {
           episode: 148,
@@ -976,6 +998,7 @@ export const skypiea: Saga = {
         it: 'È entrato da poco nella ciurma di Shanks ed è convinto che il suo nome il mondo lo conosca già da prima. Gli uomini di Barbabianca non l’hanno mai sentito nominare, e Barbabianca strappa la lettera che ha portato. Vorrebbe restare a rispondere all’offesa; il suo capitano ride e lo richiama indietro.',
         en: 'He joined Shanks’s crew only recently and is sure the world knows his name from before. Whitebeard’s men have never heard of him, and Whitebeard tears up the letter he brought. He wants to stay and answer the insult; his captain laughs and calls him back.',
       },
+      status: [{ episode: 151, value: 'alive' }],
       affiliation: [
         {
           episode: 151,
@@ -996,6 +1019,7 @@ export const skypiea: Saga = {
         it: 'Quando Shanks sale sulla nave di Barbabianca, l’Haki che si porta dietro fa svenire metà dell’equipaggio. Lui resta in piedi e gli grida di smetterla. Shanks lo riconosce come Marco della prima divisione e gli chiede di passare con lui. Marco gli dice di stare zitto e chiede al vecchio che cosa devono fare; Barbabianca risponde che non ci sarà battaglia e che li lascino soli.',
         en: 'When Shanks boards Whitebeard’s ship, the Haki he brings with him knocks out half the crew. He stays on his feet and shouts at him to stop. Shanks recognises him as Marco of the first division and asks him to join his crew. Marco tells him to shut up and asks the old man what they should do; Whitebeard says there will be no battle and tells them to leave the two of them alone.',
       },
+      status: [{ episode: 316, value: 'alive' }],
       affiliation: [
         {
           episode: 316,
@@ -1038,6 +1062,7 @@ export const skypiea: Saga = {
         it: 'Si presenta come il Cavaliere del Cielo e arriva dove qualcuno è nei guai, senza chiedere chi sia. Vola in sella a un cavallo alato e conosce le regole di Skypiea meglio di chiunque altro: su quest’isola tutto appartiene a Dio, e chi non paga viene dichiarato criminale. Di quel Dio parla con una durezza che non spiega a nessuno.',
         en: 'He introduces himself as the Knight of the Sky and turns up wherever somebody is in trouble, without asking who they are. He flies a winged horse and knows the rules of Skypiea better than anyone: on this island everything belongs to God, and whoever does not pay is declared a criminal. He speaks of that God with a hardness he explains to nobody.',
       },
+      status: [{ episode: 153, value: 'alive' }],
       affiliation: [
         {
           episode: 153,
@@ -1066,6 +1091,7 @@ export const skypiea: Saga = {
         it: 'Porta il Cavaliere del cielo sopra le nuvole e dentro ogni battaglia, con un uomo in armatura e una lancia sul dorso. Ha mangiato un frutto del diavolo che lo trasforma in cavallo, cosa che, visto che volava già, cambia soprattutto il suo aspetto. La ciurma di Cappello di paglia si aspettava un Pegaso più impressionante.',
         en: 'He carries the Knight of the Sky over the clouds and into every fight, a man in armour with a lance on his back. He ate a devil fruit that turns him into a horse, which, since he could already fly, mostly changes how he looks. The Straw Hats were hoping for a more impressive Pegasus.',
       },
+      status: [{ episode: 153, value: 'alive' }],
       affiliation: [
         {
           episode: 153,
@@ -1083,6 +1109,7 @@ export const skypiea: Saga = {
         it: 'Guida i guerrieri che attaccano la terra del cielo senza preavviso, e nel suo racconto quel suolo è stato rubato ai suoi. Combatte con i pattini ai piedi e un’arma che spara fuoco, e non aspetta ordini da nessuno, nemmeno dai propri. Chi gli si mette davanti, straniero o no, viene trattato come parte della guerra.',
         en: 'He leads the warriors who strike at the sky land without warning, and in his telling that ground was stolen from his people. He fights on skates with a weapon that fires flame, and takes orders from nobody, his own kin included. Whoever stands in front of him, stranger or not, is treated as part of the war.',
       },
+      status: [{ episode: 163, value: 'alive' }],
       affiliation: [
         {
           episode: 163,
@@ -1108,6 +1135,7 @@ export const skypiea: Saga = {
         it: 'È uno dei guerrieri che seguono Wiper, e porta un lungo coltello con l’elsa a croce. Rimprovera Aisa perché scappa di nascosto a Upper Yard, e perde la calma quando lei gli risponde che lui non è ancora riuscito a battere Dio.',
         en: 'He is one of the warriors who follow Wyper, and carries a long knife with a cross-guard. He scolds Aisa for slipping off to Upper Yard, and loses his temper when she answers that he still has not beaten God.',
       },
+      status: [{ episode: 163, value: 'alive' }],
       affiliation: [{ episode: 163, value: SHANDIA }],
       origin: [{ episode: 163, value: SKY_ISLAND }],
     },
@@ -1117,6 +1145,7 @@ export const skypiea: Saga = {
         it: 'Porta un paio di piccole pistole a due canne, e ne pulisce una mentre Wiper parla alla riunione dei guerrieri. Quando i guerrieri si mettono in marcia, parte con loro all’attacco di Upper Yard.',
         en: 'He carries a pair of small double-barrelled pistols, and cleans one of them while Wyper talks at the warriors’ meeting. When the warriors set out, he goes with them to attack Upper Yard.',
       },
+      status: [{ episode: 164, value: 'alive' }],
       affiliation: [{ episode: 164, value: SHANDIA }],
       origin: [{ episode: 164, value: SKY_ISLAND }],
     },
@@ -1126,6 +1155,7 @@ export const skypiea: Saga = {
         it: 'Porta da solo l’arma più pesante della banda e apre la strada agli altri fra le nuvole. Nell’assalto alla terra del cielo è la voce che chiama i compagni per nome e li tiene insieme. Della gente di Skypiea non vuole sapere niente: per lui quel suolo ha un solo proprietario, e non è chi ci abita adesso.',
         en: 'He carries the heaviest weapon in the band on his own and clears the way for the rest through the clouds. In the raid on the sky land his is the voice that calls the others by name and holds them together. He wants nothing to do with the people of Skypiea: to him that ground has one owner, and it is not whoever lives on it now.',
       },
+      status: [{ episode: 164, value: 'alive' }],
       affiliation: [{ episode: 164, value: SHANDIA }],
       origin: [{ episode: 164, value: SKY_ISLAND }],
     },
@@ -1135,6 +1165,7 @@ export const skypiea: Saga = {
         it: 'Alla riunione dei guerrieri sostiene che il nemico del loro nemico è un alleato, come Gan Foll, e Wiper le risponde che lei in battaglia non deve venire. Prende il sacchetto di Aisa per riempirlo di terra di Upper Yard. Nell’attacco alla foresta spara con il fucile su un enorme cane bianco che azzanna i suoi compagni.',
         en: 'At the warriors’ meeting she argues that the enemy of their enemy is a comrade, like Gan Fall, and Wyper answers that she must not join the battle. She takes Aisa’s little bag to fill it with soil from Upper Yard. In the attack on the forest she fires her rifle at a huge white dog that is biting her comrades.',
       },
+      status: [{ episode: 165, value: 'alive' }],
       affiliation: [{ episode: 165, value: SHANDIA }],
       origin: [{ episode: 165, value: SKY_ISLAND }],
     },
@@ -1144,6 +1175,7 @@ export const skypiea: Saga = {
         it: 'Vive al villaggio con gli altri bambini ma non sta ferma un momento: scappa verso la guerra ogni volta che può, perché dice di sentire quello che succede laggiù. Sente le vite accendersi e spegnersi una a una, e nessuno degli adulti sa come consolarla. Dei guerrieri parla come si parla dei fratelli maggiori.',
         en: 'She lives in the village with the other children and never stays put: she slips away toward the war whenever she can, because she says she can feel what happens out there. She feels lives flare up and go out one by one, and none of the grown-ups knows how to comfort her. She speaks of the warriors the way one speaks of older brothers.',
       },
+      status: [{ episode: 163, value: 'alive' }],
       affiliation: [
         {
           episode: 163,
@@ -1162,6 +1194,7 @@ export const skypiea: Saga = {
         it: 'È la prima creatura dell’isola ad avvicinarsi agli stranieri e a squadrarli, prima che qualcuno rivolga loro la parola. Sta in braccio alla ragazza che suona sulla spiaggia, e va con loro quando tutta la compagnia torna a casa a mangiare. La bocca non la apre mai.',
         en: 'She is the first creature on the island to come and look the newcomers over, before anyone has said a word to them. She rides in the arms of the girl who plays music on the beach, and goes along when the whole party heads home to eat. She never once opens her mouth.',
       },
+      status: [{ episode: 154, value: 'alive' }],
       affiliation: [
         {
           episode: 154,
@@ -1175,6 +1208,7 @@ export const skypiea: Saga = {
         it: 'Vive con il padre in una casetta sulla spiaggia degli angeli e porta a mangiare a casa gli stranieri saliti dal mare azzurro. Mostra loro come funzionano i dial, le conchiglie che conservano un suono o un soffio di vento. Quando Nami non si vede più si preoccupa: mettere piede su Upper Yard, spiega, va contro la volontà di Dio.',
         en: 'She lives with her father in a small house on Angel Beach and takes the strangers up from the blue sea home for a meal. She shows them how dials work, the shells that keep a sound or a breath of wind. When Nami goes missing she grows worried: setting foot on Upper Yard, she explains, goes against God’s will.',
       },
+      status: [{ episode: 155, value: 'alive' }],
       affiliation: [
         {
           episode: 155,
@@ -1195,6 +1229,15 @@ export const skypiea: Saga = {
         it: 'Costruisce e ripara barche a dial, e arriva sulla spiaggia in waver per conoscere gli stranieri trovati dalla figlia. Lascia che lo provino, e resta stupito di quanto in fretta Nami impari a guidarlo. Li porta a casa, cucina per loro insieme a Sanji e dopo pranzo chiede di vedere il vecchio waver che hanno con sé.',
         en: 'He builds and repairs dial boats, and rides a Waver up the beach to meet the strangers his daughter has found. He lets them try it, and is amazed at how fast Nami learns to ride it. He takes them home, cooks for them alongside Sanji, and after the meal asks to see the old Waver they brought with them.',
       },
+      status: [
+        { episode: 155, value: 'alive' },
+        // Episode 178 adapts chapter 272: Enel's lightning lands on him
+        // after he pushes Conis clear, and she screams for him.
+        { episode: 178, chapter: 272, value: 'presumed-dead' },
+        // Episode 193 adapts chapter 300, where he turns up alive, having
+        // only fallen to the White Sea.
+        { episode: 193, chapter: 300, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 155,
@@ -1222,6 +1265,7 @@ export const skypiea: Saga = {
         it: 'Applica la legge di Skypiea alla lettera, e per la ciurma di Cappello di paglia ogni lettera è una multa: entrare senza pagare, possedere un waver, perfino dormire sulla spiaggia. Quando Nami lo investe con un waver, diventa un reato di quinta classe. Battuti i suoi uomini, ride lo stesso: adesso a giudicarli saranno i sacerdoti.',
         en: 'He enforces the law of Skypiea to the letter, and for the Straw Hats every letter carries a fine: coming in without paying, owning a Waver, even sleeping on the beach. When Nami runs him over with a Waver, that is a crime of the fifth class. Once his men are beaten he laughs anyway: the priests will be the ones to judge them now.',
       },
+      status: [{ episode: 156, value: 'alive' }],
       affiliation: [
         {
           episode: 156,
@@ -1261,6 +1305,12 @@ export const skypiea: Saga = {
         it: 'Tiene la prova delle sfere, dove ogni nuvola può contenere un premio o una bestia, e ride mentre chi è entrato deve scegliere. Prevede i colpi prima che partano, come se leggesse le intenzioni nell’aria. Dice che nessuno degli stranieri arrivati fin lassù ha mai raggiunto l’altare.',
         en: 'He keeps the ordeal of balls, where every cloud may hold a prize or a beast, and laughs while whoever entered has to choose. He sees blows coming before they are thrown, as though he read intentions straight out of the air. He says that none of the strangers who got that far has ever reached the altar.',
       },
+      status: [
+        { episode: 160, value: 'alive' },
+        // Episode 193 adapts chapter 300, where the Shandia order the beaten
+        // priests set adrift on a cloud, the sky's death penalty.
+        { episode: 193, chapter: 300, value: 'unknown' },
+      ],
       affiliation: [{ episode: 160, value: ENEL_PRIESTS }],
       origin: [{ episode: 160, value: SKY_ISLAND }],
     },
@@ -1270,6 +1320,12 @@ export const skypiea: Saga = {
         it: 'Vola in groppa a un enorme uccello fino all’altare dove è stata portata la Going Merry, e si irrita di trovarci come offerta soltanto Chopper. Dà fuoco alla nave con la lancia e dice a Chopper che dovrà morire al posto di chi è scappato. Spiega che la foresta è divisa in quattro territori, uno per ogni sacerdote, e che l’altare non appartiene a nessuno di loro.',
         en: 'He flies a huge bird to the altar where the Going Merry has been brought, and is annoyed to find only Chopper there as an offering. He sets the ship on fire with his lance and tells Chopper he must die in place of the ones who escaped. The forest, he explains, is split into four territories, one for each priest, and the altar belongs to none of them.',
       },
+      status: [
+        { episode: 162, value: 'alive' },
+        // Episode 193 adapts chapter 300, where the Shandia order the beaten
+        // priests set adrift on a cloud, the sky's death penalty.
+        { episode: 193, chapter: 300, value: 'unknown' },
+      ],
       affiliation: [{ episode: 162, value: ENEL_PRIESTS }],
       origin: [{ episode: 162, value: SKY_ISLAND }],
     },
@@ -1279,6 +1335,12 @@ export const skypiea: Saga = {
         it: 'Dopo che i sacerdoti hanno inseguito un intruso per Upper Yard, avverte gli altri che sette persone venute dal mare azzurro sono entrate senza permesso. Quando gli shandia attaccano la foresta, li combatte insieme agli altri sacerdoti. Quando i guerrieri ripiegano, porta l’ordine di Ener: i sacerdoti devono presentarsi da lui.',
         en: 'After the priests have chased an intruder across Upper Yard, he tells the others that seven people from the blue sea have come in without leave. When the Shandia raid the forest, he fights them alongside the other priests. Once the warriors fall back, he brings word that Enel has called the priests to him.',
       },
+      status: [
+        { episode: 166, value: 'alive' },
+        // Episode 172 adapts chapter 263: beaten by Chopper, he flies off
+        // upside down and falls to the Blue Sea, and the story leaves him.
+        { episode: 172, chapter: 263, value: 'unknown' },
+      ],
       affiliation: [{ episode: 166, chapter: 254, value: ENEL_PRIESTS }],
       origin: [{ episode: 166, chapter: 254, value: SKY_ISLAND }],
     },
@@ -1288,6 +1350,12 @@ export const skypiea: Saga = {
         it: 'Insegue un intruso per Upper Yard insieme al suo cane, e gli altri sacerdoti si uniscono alla caccia finché un fulmine non abbatte l’uomo. Da lontano sente che Gan Foll è stato battuto da un sacerdote e che gli stranieri ne hanno battuto un altro, e dice che gli shandia che attaccano la foresta non vedranno l’alba. Nell’attacco il suo cane afferra i guerrieri fra le fauci mentre lui combatte con la spada. Quando gli shandia ripiegano fa per fermare Wiper, ma un altro sacerdote lo richiama: Ener li ha convocati.',
         en: 'He chases a trespasser across Upper Yard with his dog, and the other priests join in until a bolt of lightning strikes the man down. From far away he can tell that Gan Fall has lost to one priest and that the strangers have beaten another, and he says the Shandia raiding the forest will not see the dawn. In the raid his dog snatches warriors up in its jaws while he fights with a sword. When the Shandia fall back he moves to stop Wyper, but another priest calls him off: Enel has summoned them.',
       },
+      status: [
+        { episode: 166, value: 'alive' },
+        // Episode 193 adapts chapter 300, where the Shandia order the beaten
+        // priests set adrift on a cloud, the sky's death penalty.
+        { episode: 193, chapter: 300, value: 'unknown' },
+      ],
       affiliation: [{ episode: 166, chapter: 253, value: ENEL_PRIESTS }],
       origin: [{ episode: 166, chapter: 253, value: SKY_ISLAND }],
     },
@@ -1297,6 +1365,7 @@ export const skypiea: Saga = {
         it: 'Porta Shura ovunque il sacerdote voglia andare, sopra la foresta e sopra i fili della sua prova, dove nessuno a piedi può seguirlo. C’era quando la Going Merry ha preso fuoco all’altare, e ha tenuto in aria il suo padrone per un intero duello con il Cavaliere del Cielo. Quando Shura è caduto davvero, l’uccello non è rimasto a vedere cosa sarebbe successo.',
         en: 'He carries Shura wherever the priest wants to go, over the forest and above the strings of his ordeal, where nobody on foot can follow. He was there when the Going Merry burned at the altar, and he kept his master in the air through a whole duel with the Knight of the Sky. When Shura fell for good, the bird did not stay to see what came next.',
       },
+      status: [{ episode: 169, value: 'alive' }],
       affiliation: [
         {
           episode: 169,
@@ -1318,6 +1387,7 @@ export const skypiea: Saga = {
         it: 'Sta accanto al trono di Ener e rimprovera i sacerdoti che litigano davanti al dio. Si offende se lo si chiama un semplice membro dell’esercito del dio: lui è il capo dei guerrieri sacri. Per la sua mole salta e calcia come un acrobata, e intende schiacciare gli stranieri di Upper Yard insieme a qualunque cosa si trovi in mezzo.',
         en: 'He stands beside Enel’s throne and scolds the priests for squabbling in God’s presence. He takes offence at being called just one of God’s army: he leads the Divine Soldiers. For a man his size he jumps and kicks like an acrobat, and he means to flatten the strangers in Upper Yard along with whatever else is in the way.',
       },
+      status: [{ episode: 172, value: 'alive' }],
       affiliation: [
         {
           episode: 172,
@@ -1337,6 +1407,7 @@ export const skypiea: Saga = {
         it: 'Quando i sacerdoti inseguono un intruso per l’Upper Yard, il cane esce ululando dalla foresta e si lancia dietro di lui, e l’uomo per poco non finisce fra le sue fauci prima che un altro sacerdote allontani il cane con un calcio. Al tramonto del giorno in cui gli shandia attaccano la foresta, siede ansimando accanto al suo padrone, che lo chiama Holy, gli chiede se sente le voci dei caduti e dice che gli assalitori non vedranno l’alba.',
         en: 'When the priests chase a trespasser across Upper Yard, the dog comes howling out of the forest after him, and the man very nearly ends up in his jaws before another priest kicks the dog aside. As the sun goes down on the day the Shandia raid the forest, he sits panting beside his master, who calls him Holy, asks him whether he can hear the voices of the fallen and says the raiders will not see the dawn.',
       },
+      status: [{ episode: 164, value: 'alive' }],
       affiliation: [
         {
           episode: 164,
@@ -1363,6 +1434,7 @@ export const skypiea: Saga = {
         it: 'Anni fa radunò i bambini del villaggio, Wiper fra loro, e raccontò di una pietra antica che i loro antenati avevano difeso a costo di moltissimi uomini. Raccontò anche di come quattrocento anni fa la loro terra fu scagliata nel cielo e tolta al suo popolo, e con lei il fuoco di Shandora. Qualunque cosa i giovani guerrieri abbiano fatto da allora di quella storia, l’hanno imparata da lui.',
         en: 'Years ago he sat the village children down, Wyper among them, and told them of an ancient stone their ancestors defended at the cost of a great many men. He told them too how their land was blasted into the sky four hundred years ago and taken from his people, and with it the fire of Shandora. Whatever the young warriors have made of that story since, they learned it from him.',
       },
+      status: [{ episode: 181, value: 'alive' }],
       affiliation: [
         { episode: 181, value: { it: 'Shandia, capo', en: 'Shandia, chief' } },
       ],
@@ -1478,6 +1550,7 @@ export const skypiea: Saga = {
         it: 'Ha dato la caccia agli intrusi per tutto l’Upper Yard e ne ha inghiottiti diversi interi, uno dei quali continuava a tempestargli lo stomaco di pugni, convinto di essersi perso in una caverna. Quando un fulmine l’ha fatto precipitare fra le rovine della città d’oro si è guardato attorno cercando qualcuno, non ha trovato nessuno e ha pianto finché Ener non l’ha abbattuto. Quattrocento anni fa era un giovane serpente che viveva fra quelle stesse rovine, e due Shandia lo salutavano ogni giorno andando a suonare la campana.',
         en: 'It hunted the intruders across Upper Yard and swallowed several of them whole, one of whom kept punching its stomach, convinced he was lost in a cave. When lightning dropped it into the ruins of the golden city it looked around for someone, found nobody, and cried until Enel struck it down. Four hundred years ago it was a young snake living in those same ruins, and two Shandia greeted it every day on their way to ring the bell.',
       },
+      status: [{ episode: 189, value: 'alive' }],
       affiliation: [
         {
           episode: 189,
