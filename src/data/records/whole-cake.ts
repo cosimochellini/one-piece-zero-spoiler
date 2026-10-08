@@ -885,6 +885,7 @@ export const wholeCake: Saga = {
         it: 'Sbarca sul dorso dell’elefante alla testa di una flotta e mette a ferro e fuoco il ducato dei mink per giorni, senza mai alzare la voce. Chiede che gli venga consegnato un uomo che si nasconde lassù e, davanti al rifiuto, continua a distruggere. Quando gli serve diventa un mammut alto quanto una nave e apre le mura come se fossero di carta.',
         en: 'He lands on the elephant’s back at the head of a fleet and burns through the mink dukedom for days without ever raising his voice. He demands that a man hiding up there be handed over, and when he is refused he simply goes on wrecking the place. When it suits him he becomes a mammoth the size of a ship and opens walls as though they were paper.',
       },
+      status: [{ episode: 757, value: 'alive' }],
       affiliation: [
         {
           episode: 757,
@@ -917,6 +918,7 @@ export const wholeCake: Saga = {
       },
       // Seen unnamed at 753, named at 754; she is first shown as one of the
       // duke's musketeers at 758.
+      status: [{ episode: 754, value: 'alive' }],
       affiliation: [{ episode: 758, value: MOKOMO_MUSKETEERS }],
       origin: [{ episode: 754, value: ZOU }],
     },
@@ -927,6 +929,15 @@ export const wholeCake: Saga = {
         it: 'Ha orecchie lunghe, un sorriso che non sta mai fermo e una curiosità che la porta a infilarsi dappertutto, compresi i posti in cui le hanno detto di non andare. Come ogni mink sa usare l’elettro, la scarica che il suo popolo accumula nel pelo e libera con un colpo solo. Sotto l’allegria c’è una guerriera che ha visto bruciare la propria città.',
         en: 'She has long ears, a grin that will not sit still and a curiosity that gets her into every place she has been told to stay out of. Like every mink she can use electro, the charge her people store in their fur and let go in a single blow. Under the cheerfulness there is a warrior who watched her own city burn.',
       },
+      status: [
+        { episode: 753, value: 'alive' },
+        // Episode 796 adapts chapter 835: Brulee traps Carrot inside the
+        // Mirro-World, where she is soon shackled with Chopper.
+        { episode: 796, chapter: 835, value: 'captured' },
+        // Episode 815 adapts chapter 849: Carrot and Chopper beat Brulee in
+        // her own house and are free to roam the Mirro-World.
+        { episode: 815, chapter: 849, value: 'alive' },
+      ],
       affiliation: [
         // Dated at 758, where the musketeers are first shown.
         { episode: 758, value: MOKOMO_MUSKETEERS },
@@ -949,6 +960,7 @@ export const wholeCake: Saga = {
         it: 'È il sovrano del giorno del Ducato di Mokomo, e la notte spetta a un altro sovrano. Si è svegliato dal coma dopo l’assalto e riceve i Cappello di Paglia a letto, fasciato e avvolto in una veste, per ringraziarli di aver salvato il suo paese. Wanda lo chiama il guerriero più forte del paese, e quando Rufy gli dice che sembra fortissimo lui risponde che chi è stato sconfitto non merita quella parola.',
         en: 'He is the ruler of the day of the Mokomo Dukedom, and another ruler holds the night. He woke from a coma after the raid and receives the Straw Hats in his sickbed, bandaged and wrapped in a robe, to thank them for saving his country. Wanda calls him the strongest warrior in the country, and when Luffy says he looks very strong he answers that a man who was beaten has no right to the word.',
       },
+      status: [{ episode: 758, value: 'alive' }],
       affiliation: [
         {
           episode: 758,
@@ -999,6 +1011,7 @@ export const wholeCake: Saga = {
         it: 'Dorme tutto il giorno in una stanza piena di cuscini e prende il ducato quando il sole se n’è andato, perché a Zou il comando si divide in due. È grosso, rumoroso e affettuoso con i suoi, e passa dalla risata alla rabbia in un istante. Con il duca del giorno non si parla da anni, e nessuno dei due dice davvero il perché.',
         en: 'He sleeps through the day in a room full of cushions and takes the dukedom once the sun is gone, because on Zou command is split in two. He is huge, loud and fond of his own people, and goes from laughter to fury in a heartbeat. He has not spoken to the duke of the day in years, and neither of them will say quite why.',
       },
+      status: [{ episode: 761, value: 'alive' }],
       affiliation: [
         {
           episode: 761,
@@ -1016,6 +1029,7 @@ export const wholeCake: Saga = {
         it: 'I mink hanno lasciato distruggere la propria città piuttosto che dire dove fosse, e lui era in una grotta dentro l’Albero Balena, dietro una porta nascosta nella coda. Viene da Wano. Legato e in lacrime, grida a Gatto-vipera che avrebbe dovuto consegnarlo: chi gli portava da mangiare è stato ferito, e se gli hanno mentito sul paese lo odierà. La ciurma se lo immaginava tutto diverso.',
         en: 'The minks let their own city be wrecked rather than say where he was, and he was in a cave inside the Whale Tree, behind a hidden door in its tail. He comes from Wano. Restrained and in tears, he shouts at Nekomamushi that he should have handed him over: everyone who brought him food was hurt, and if they lied to him about the country he will hate him. The crew had pictured him quite differently.',
       },
+      status: [{ episode: 768, value: 'alive' }],
       affiliation: [
         {
           episode: 768,
@@ -1051,6 +1065,7 @@ export const wholeCake: Saga = {
       // Named at 784 ("Oh, Reiju-sama!" as she leaps), but the poison, the
       // "Poison Pink" caption and Germa as a kingdom of the North Blue are 785.
       // Chapter 826 tells both episodes.
+      status: [{ episode: 784, value: 'alive' }],
       affiliation: [
         {
           episode: 784,
@@ -1078,6 +1093,7 @@ export const wholeCake: Saga = {
         it: 'Fa parte della ciurma di Capone Bege e accende il sigaro al capo senza che glielo chieda. Ha una lingua lunghissima che gli pende dalla bocca e mette a disagio chi gli parla. Sulla nave segue Sanji ovunque per parlargli di un fumetto del giornale in cui il Germa 66 combatte l’eroe, e lui tifa per i cattivi. Quando Sanji gli dice che con loro non ha niente a che fare e lo caccia, Gotti punta l’arma su Sanji e Vito cerca di calmarlo.',
         en: 'He belongs to Capone Bege’s crew and lights the boss’s cigar without being asked. He has a very long tongue that hangs out of his mouth and puts people off. On the ship he follows Sanji everywhere to talk about a comic strip in the paper where the Germa 66 fight the hero, and he is on the villains’ side. When Sanji says he has nothing to do with them and throws him out, Gotti aims his gun at Sanji, and Vito tries to calm him down.',
       },
+      status: [{ episode: 785, value: 'alive' }],
       affiliation: [
         {
           episode: 785,
@@ -1091,6 +1107,7 @@ export const wholeCake: Saga = {
         it: 'È la ventinovesima figlia di Big Mom, una sirena squalo martello sposata con Aladin dei Pirati del Sole. Sorprende i pirati a parlare di lei e chiede se lo stanno facendo alle sue spalle. Se la madre si arrabbia, dice ad Aladin, lei sceglierà lui e partirà con lui. Ma avverte che chi ha voluto lasciare la ciurma della madre è morto, tutti quanti.',
         en: 'She is Big Mom’s 29th daughter, a hammerhead shark mermaid married to Aladine of the Sun Pirates. She catches the pirates talking about her and asks whether they are doing it behind her back. If her mother gets angry, she tells Aladine, she will choose him and leave with him. But she warns that everyone who wished to leave her mother’s crew is dead.',
       },
+      status: [{ episode: 790, value: 'alive' }],
       affiliation: [
         {
           episode: 790,
@@ -1108,6 +1125,12 @@ export const wholeCake: Saga = {
         it: 'È la trentacinquesima figlia della famiglia Charlotte, e la madre l’ha promessa in sposa a Sanji. Ha un caffè a Cacao Island, il Caramel, e il cioccolato che ci si mangia è una miscela inventata da lei. Quando Rufy e Chopper si mangiano il locale intero, dice alla polizia di averli assunti lei per smontarlo, mette loro in bocca marmellata, biscotti e cioccolato e prima di lasciarli andare offre a tutti una tazza di tè.',
         en: 'She is the 35th daughter of the Charlotte Family, and her mother has promised her in marriage to Sanji. She owns Café Caramel on Cacao Island, and its chocolate is a blend she came up with herself. When Luffy and Chopper eat the whole place, she tells the police she hired them to take it down, puts jam, biscuit and chocolate in their mouths, and offers everyone a cup of tea before they go.',
       },
+      status: [
+        { episode: 786, value: 'alive' },
+        // Episode 1093 adapts chapter 1064: Pudding is shown in a cell on the
+        // Blackbeard Pirates' ship, abducted by Kuzan and Van Augur.
+        { episode: 1093, chapter: 1064, value: 'captured' },
+      ],
       affiliation: [
         {
           episode: 786,
@@ -1149,6 +1172,7 @@ export const wholeCake: Saga = {
         it: 'È il figlio più grande della famiglia e si comporta come tale, con il cilindro in testa e un modo di parlare che allunga l’ultima sillaba di ogni frase. Governa l’isola delle caramelle e trasforma in zucchero tutto quello che lecca, muri, scale e trappole comprese. Accoglie gli ospiti con una cortesia esagerata e li conta uno per uno.',
         en: 'He is the eldest child of the house and behaves like it, a top hat above and a drawl that stretches the last syllable of every sentence. He governs the candy island and turns whatever he licks into sugar, walls and stairs and traps included. He welcomes guests with exaggerated courtesy and counts them one by one.',
       },
+      status: [{ episode: 795, value: 'alive' }],
       affiliation: [
         {
           episode: 795,
@@ -1168,6 +1192,12 @@ export const wholeCake: Saga = {
         it: 'È il decimo figlio di Big Mom, uno dei tre Sweet Commander della sua ciurma e il suo ministro dei biscotti.',
         en: 'He is Big Mom’s tenth son, one of the three Sweet Commanders of her crew and her minister of biscuits.',
       },
+      status: [
+        { episode: 796, value: 'alive' },
+        // Episode 1093 shows Kuzan freezing Cracker with Chocolat Town, from
+        // the cover story of chapter 1063; the story never thaws him.
+        { episode: 1093, chapter: 1063, value: 'unknown' },
+      ],
       affiliation: [{ episode: 796, value: SWEET_COMMANDER }],
       origin: [{ episode: 796, value: TOTTO_LAND }],
       epithet: [
@@ -1188,6 +1218,21 @@ export const wholeCake: Saga = {
         it: 'Aspetta nella Foresta della Seduzione, dove i sentieri girano in tondo e gli alberi si muovono e parlano. Cammina accanto agli sbarcati con la faccia di Rufy finché Carrot non si accorge dell’inganno, poi annuncia che non usciranno mai dalla foresta, non prima di morire. Mostra la cicatrice che ha sul viso e dice che davanti ai visi belli le viene voglia di graffiarli.',
         en: 'She waits in the Seducing Woods, where the paths lead back on themselves and the trees move and talk. She walks with the newcomers wearing Luffy’s face until Carrot sees through it, then announces that they will never get out of the forest, not until they die. She shows off the scar on her face and says pretty faces make her want to scratch them up.',
       },
+      status: [
+        { episode: 792, value: 'alive' },
+        // Episode 816 adapts chapter 850: Chopper and Carrot carry the beaten
+        // Brulee through the Mirro-World as their prisoner.
+        { episode: 816, chapter: 850, value: 'captured' },
+        // Episode 839 adapts chapter 869: Katakuri snatches her off Caesar's
+        // back at the tea party.
+        { episode: 839, chapter: 869, value: 'alive' },
+        // Episode 858 adapts chapter 885: Luffy grabs her to flee Katakuri
+        // and keeps her as his way through the mirrors.
+        { episode: 858, chapter: 885, value: 'captured' },
+        // Episode 872 adapts chapter 897: Oven strikes Pekoms on Cacao
+        // Island and Brulee is let go.
+        { episode: 872, chapter: 897, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 792,
@@ -1205,6 +1250,12 @@ export const wholeCake: Saga = {
         it: 'Nella malavita la chiamano la regina del quartiere dei piaceri, e il titolo le vale un invito al Tea Party insieme agli altri pezzi grossi della malavita. Arriva con un abito color salmone e un cappello da sole con un fiore, una borsetta rosa al braccio. Quando due degli altri ospiti cominciano a insultarsi davanti al castello, li zittisce dando loro dei meschini, e nel salotto accetta un bicchiere del succo che Smoothie spreme da una giraffa.',
         en: 'In the underworld they call her the queen of the pleasure district, and the title gets her an invitation to the Tea Party with the other bosses of the underworld. She arrives in a salmon dress and a sunhat with a flower on it, a pink handbag on her arm. When two of the other guests start trading insults outside the chateau she tells them to stop being so small-minded, and in the lounge she takes a cup of the juice Smoothie squeezes out of a giraffe.',
       },
+      status: [
+        { episode: 830, value: 'alive' },
+        // Episode 1155 adapts chapter 1125: back on the CP0 ship, Lucci says
+        // he killed Stussy; the story does not show what became of her.
+        { episode: 1155, chapter: 1125, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 830,
@@ -1241,6 +1292,7 @@ export const wholeCake: Saga = {
         it: 'Ha la testa e le ali di un albatro e dirige il giornale che stampa le notizie di tutto il mondo. Arriva al Tea Party insieme ai pezzi grossi della malavita, con un cilindro blu ornato da una piuma a righe e un mantello scuro. Già davanti al castello è eccitato: queste nozze, dice, sono una grande notizia.',
         en: 'He has the head and the wings of an albatross and runs the paper that prints the world’s news. He comes to the Tea Party with the bosses of the underworld, in a blue top hat with a striped feather and a dark cape. He is excited before he is even inside: this marriage, he says, is big news.',
       },
+      status: [{ episode: 830, value: 'alive' }],
       affiliation: [
         {
           episode: 830,
@@ -1266,6 +1318,7 @@ export const wholeCake: Saga = {
         it: 'Porta un elmo dorato e un grande mantello, e affronta con la lancia il figlio che si rifiuta di sposarsi. Il suo regno non ha più terra: è una flotta di navi, abitata soprattutto da soldati, che manda le sue truppe nei paesi in guerra per non restare mai senza soldi. Al figlio che se n’è andato di casa da bambino aveva detto che era una vergogna per la famiglia e che non valeva la pena di crescerlo.',
         en: 'He wears a golden helmet and a large cape, and goes at the son who refuses to marry with a spear. His kingdom has no land any more: it is a fleet of ships, its people mostly soldiers, that sends its troops to countries at war so as never to run short of money. He once told the son who left home as a child that he was a disgrace to the family and not worth raising.',
       },
+      status: [{ episode: 793, value: 'alive' }],
       affiliation: [
         {
           episode: 793,
@@ -1286,6 +1339,7 @@ export const wholeCake: Saga = {
         it: 'È il figlio maggiore della famiglia Vinsmoke e torna nel Regno di Germa con Niji dopo aver chiuso la guerra sull’isola di Broc Coli, mentre i soldati li salutano per nome. Il padre li ringrazia per il lavoro fatto, e quando Niji si lamenta che Sanji non è venuto ad accoglierli lo ferma con una parola.',
         en: 'He is the eldest son of the Vinsmoke family and comes back to the Germa Kingdom with Niji after ending the war on Broc Coli Island, while the soldiers greet them by name. Their father thanks them for their work, and when Niji complains that Sanji has not come out to greet them he stops him with a word.',
       },
+      status: [{ episode: 800, value: 'alive' }],
       affiliation: [
         {
           episode: 800,
@@ -1303,6 +1357,7 @@ export const wholeCake: Saga = {
         it: 'È il secondo figlio della famiglia Vinsmoke e torna nel Regno di Germa con Ichiji dopo aver chiuso la guerra sull’isola di Broc Coli. A colazione racconta a Sanji che i fratelli si chiedevano dove e come sarebbe morto nel modo più buffo. Poi lascia il piatto perché la salsa gli fa schifo, e quando Sanji gli dice di mangiare fa chiamare la capocuoca Cosette per prendersela con lei.',
         en: 'He is the second son of the Vinsmoke family and comes back to the Germa Kingdom with Ichiji after ending the war on Broc Coli Island. At breakfast he tells Sanji that the brothers used to wonder where and how he would die in the funniest way. Then he leaves his plate because the sauce disgusts him, and when Sanji tells him to eat it he calls for the head chef, Cosette, to take it out on her.',
       },
+      status: [{ episode: 800, value: 'alive' }],
       affiliation: [
         {
           episode: 800,
@@ -1328,6 +1383,7 @@ export const wholeCake: Saga = {
       },
       // Named and captioned at 784; Germa as a kingdom of the North Blue is
       // 785. Chapter 826 tells both episodes.
+      status: [{ episode: 784, value: 'alive' }],
       affiliation: [
         {
           episode: 784,
@@ -1350,6 +1406,7 @@ export const wholeCake: Saga = {
         it: 'È il secondo figlio della famiglia Charlotte e uno degli Sweet Commander dei Pirati di Big Mom. Arriva al castello per il tea party della madre, altissimo, con una sciarpa di piume che gli copre la bocca e gli scende sulle spalle.',
         en: 'He is the second son of the Charlotte family and one of the Big Mom Pirates’ Sweet Commanders. He comes to the chateau for his mother’s tea party, very tall, with a feathered scarf that covers his mouth and falls to his shoulders.',
       },
+      status: [{ episode: 825, value: 'alive' }],
       affiliation: [{ episode: 825, value: SWEET_COMMANDER }],
       origin: [{ episode: 825, value: TOTTO_LAND }],
       devilFruit: [
@@ -1383,6 +1440,7 @@ export const wholeCake: Saga = {
       },
       // Named and captioned at 795 (chapter 834); the likeness to Lola and
       // Pound's wish to see her are 797.
+      status: [{ episode: 795, value: 'alive' }],
       affiliation: [
         {
           episode: 795,
@@ -1401,6 +1459,7 @@ export const wholeCake: Saga = {
         it: 'È una delle tre Sweet Commander, ministra dei succhi e quattordicesima figlia della famiglia Charlotte. Un sottoposto la implora di avere pietà, e lei lo strizza finché non resta più niente. Fino al tea party non ha niente da fare, così si offre di sorvegliare lei i Poneglyph. Brook la descrive come una bella donna dalle gambe lunghe.',
         en: 'She is one of the three Sweet Commanders, the minister of juice and the 14th daughter of the Charlotte family. A subordinate begs her for mercy, and she wrings him until nothing is left. She has nothing to do until the tea party, so she offers to guard the Poneglyphs herself. Brook describes her as a beautiful woman with long legs.',
       },
+      status: [{ episode: 812, value: 'alive' }],
       affiliation: [{ episode: 812, value: SWEET_COMMANDER }],
       origin: [{ episode: 812, value: TOTTO_LAND }],
       devilFruit: [{ episode: 812, value: ['wring-wring-fruit'] }],
@@ -1412,6 +1471,7 @@ export const wholeCake: Saga = {
         it: 'È il quarto figlio della famiglia Charlotte e il ministro della doratura di Totto Land. È enorme e porta un mantello arancione dal colletto alto, chiuso sul davanti da un grande fiocco giallo. Il calore viene dal suo corpo, e quello che tocca diventa rovente.',
         en: 'He is the fourth son of the Charlotte family and Totto Land’s minister of browning. He is huge, and wears a high-collared orange cape tied at the front with a big yellow bow. The heat comes from his own body, and whatever he touches turns burning hot.',
       },
+      status: [{ episode: 827, value: 'alive' }],
       affiliation: [
         {
           episode: 827,
@@ -1430,6 +1490,7 @@ export const wholeCake: Saga = {
         it: 'È il terzo figlio della famiglia Charlotte e il ministro dei fagioli di Totto Land. È altissimo e massiccio, con la testa rasata, dei baffetti e una lampada da genio sulla fibbia della cintura. Dal suo corpo esce un genio gigantesco che fa le cose al posto suo.',
         en: 'He is the third son of the Charlotte family and Totto Land’s minister of beans. He is very tall and broad, with a shaved head, a small moustache and a genie’s lamp on his belt buckle. A giant genie comes out of his body and does things for him.',
       },
+      status: [{ episode: 826, value: 'alive' }],
       affiliation: [
         {
           episode: 826,
@@ -1448,6 +1509,7 @@ export const wholeCake: Saga = {
         it: 'È il diciannovesimo figlio della famiglia Charlotte e porta un cilindro scuro con un nastro e una tuta disegnata come uno scheletro. Marcia con l’esercito dei fratelli contro Rufy, che ha sconfitto Cracker, e intorno a lui volano dei libri. Quando Rufy sta per colpire, apre un libro sopra di lui e lo trascina nel mondo delle sue pagine.',
         en: 'He is the 19th son of the Charlotte family and wears a dark top hat with a ribbon and a jumpsuit patterned like a skeleton. He marches with his siblings’ army against Luffy, who has beaten Cracker, with books flying around him. When Luffy is about to strike, he opens a book over him and pulls him into the world of its pages.',
       },
+      status: [{ episode: 811, value: 'alive' }],
       affiliation: [
         {
           episode: 811,
@@ -1466,6 +1528,7 @@ export const wholeCake: Saga = {
         it: 'Guida i cuochi che preparano la torta per il matrimonio di Sanji, e i cuochi lo chiamano capocuoco. Mentre si lavora canta che la vita è amara, fatta di tormenti e di lacrime, e che almeno il dolce dovrebbe essere una torta. Porta un cappello enorme con una grande piuma e un cronometro al fianco.',
         en: 'He leads the cooks making the cake for Sanji’s wedding, and they call him head chef. While they work he sings that life is bitter, all torment and tears, so the dessert at least should be sweet cake. He wears a huge hat with a big feather and a stopwatch at his side.',
       },
+      status: [{ episode: 830, value: 'alive' }],
       affiliation: [
         {
           episode: 830,
@@ -1516,6 +1579,7 @@ export const wholeCake: Saga = {
         it: 'Nel ricordo è una bambina gigante del villaggio di Elbaf, e la piccola Linlin le corre dietro come dietro a un’amica. È lei a spiegarle che sull’isola si digiuna dodici giorni prima della festa del solstizio d’inverno, e a descriverle la semla finché a tutte e due non viene l’acquolina. Il settimo giorno di digiuno corre in preda al panico da Mamma Carmel.',
         en: 'In the memory she is a giant girl from the village on Elbaph, and little Linlin runs after her as after a friend. She is the one who explains that the island fasts for twelve days before the Winter Solstice Festival, and who describes semla until both of them are drooling. On the seventh day of the fast she runs to Mother Carmel in a panic.',
       },
+      status: [{ episode: 836, value: 'alive' }],
       affiliation: [
         {
           episode: 1161,
@@ -1533,6 +1597,7 @@ export const wholeCake: Saga = {
         it: 'Nel ricordo è uno dei due vecchi capitani che i giganti di Elbaf trattano da eroi, alto il doppio di chiunque altro e con una barba che gli copre quasi tutto il corpo. Ai giovani ricorda che il commercio al posto del saccheggio, come predica Carmel, va benissimo, ma i giganti non devono mai dimenticare di essere guerrieri. Poi viene con il vecchio compagno a prendere gli orfani della Casa delle Pecore per mangiare la semla prima del digiuno.',
         en: 'In the memory he is one of the two old captains the giants of Elbaph treat as heroes, twice as tall as anyone else, with a beard that covers nearly his whole body. He tells the young that trade over plunder, as Carmel preaches, is all very well, but giants must never forget they are warriors. Then he comes with his old comrade to fetch the Sheep’s House orphans for semla before the fast.',
       },
+      status: [{ episode: 836, value: 'alive' }],
       affiliation: [
         { episode: 836, value: { it: 'Elbaf, anziano', en: 'Elbaph, elder' } },
       ],
@@ -1550,6 +1615,12 @@ export const wholeCake: Saga = {
         it: 'Appartiene ai Draghi Celesti, la stirpe che si crede al di sopra di chiunque e che non respira la stessa aria degli altri. Anni fa una regina uomo-pesce gli ha salvato la vita prendendosi un colpo destinato a lui, e lui dice che è stata lei a insegnargli a diventare una persona per bene. A Mary Geoise colpisce un altro Drago Celeste che ha afferrato la figlia di quella regina, poi chiede scusa alla sua famiglia, cosa che nessun altro della sua casta farebbe.',
         en: 'He belongs to the Celestial Dragons, the line that believes itself above everyone and will not breathe the same air as the rest. Years ago a fish-man queen saved him by taking a shot meant for him, and he says she taught him to be a decent human being. At Mary Geoise he strikes a fellow Celestial Dragon who has seized that queen’s daughter, then apologises to her family, which nobody else of his caste would do.',
       },
+      status: [
+        { episode: 886, value: 'alive' },
+        // Episode 1120 adapts chapter 1086: Garling executes Mjosgard in Mary
+        // Geoise for defending the Ryugu royal family.
+        { episode: 1120, chapter: 1086, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 886,
@@ -1570,6 +1641,7 @@ export const wholeCake: Saga = {
         it: 'Guida l’armata dell’Est dei rivoluzionari. In una città di porto razziata dai pirati chiede alla gente se vuole farsi ammazzare o combattere: scelgano il proprio destino. Sventola la bandiera e gli abitanti sentono salire una forza che non sapevano di avere, raccolgono bastoni e cacciano i pirati. Prima di andarsene lascia loro il modo di contattare l’Armata: chi si ribella non verrà mai abbandonato.',
         en: 'She leads the Revolutionary Army’s eastern force. In a port town being raided by pirates, she asks the people whether they want to get killed or fight: let them choose their own destiny. She waves her flag, the townspeople feel a surge of power they did not know they had, pick up sticks and drive the pirates out. Before she leaves she gives them a way to contact the Army: they will never turn their back on the weak who stand up.',
       },
+      status: [{ episode: 880, value: 'alive' }],
       affiliation: [
         {
           episode: 880,
@@ -1590,6 +1662,7 @@ export const wholeCake: Saga = {
         it: 'Morley è un gigante con i baffi, una bombetta scura e una minigonna, e parla in modo gentile. Sbuca da sottoterra in mezzo a una città razziata dai pirati, con un tridente enorme in mano, e ai pirati che continuano a guardare chiede se si sono presi una cotta. Il terreno che spinge con le mani si muove come argilla.',
         en: 'Morley is a giant with a moustache, a dark bowler hat and a miniskirt, and speaks gently. Morley rises out of the ground in a town being raided by pirates, a giant trident in hand, and asks the pirates who keep staring whether they have a crush. The ground Morley pushes with both hands moves like clay.',
       },
+      status: [{ episode: 880, value: 'alive' }],
       affiliation: [
         {
           episode: 880,
@@ -1610,6 +1683,7 @@ export const wholeCake: Saga = {
         it: 'È calvo, porta un cappotto di piume scure aperto sul petto e una maschera che gli copre metà del viso e gli fa da altoparlante. Su un tetto si raduna uno stormo di corvi e da lì prende forma la sua figura, e sono i corvi a strappare le spade ai pirati. Dice ai pirati che sono venuti a fermarli, e più tardi ammette di essersi dimenticato di accendere l’altoparlante.',
         en: 'He is bald, wears a dark feather coat open on his chest and a mask over half his face that works as his loudspeaker. A flock of crows gathers on a roof and his figure takes shape out of it, and it is the crows that take the pirates’ swords. He tells the pirates they are here to put a stop to them, and later admits he forgot to turn on his loudspeaker.',
       },
+      status: [{ episode: 880, value: 'alive' }],
       affiliation: [
         {
           episode: 880,
@@ -1632,6 +1706,7 @@ export const wholeCake: Saga = {
         it: 'È un mink dal muso di gatto, e nell’Armata Rivoluzionaria è insieme comandante e inventore. Non vede l’ora di provare la sua nuova arma, e quando finalmente può usarla il suo Cool Shooter congela i fucili dei pirati. Prima chiama Sabo per avvisarlo che lui e gli altri comandanti arriveranno un po’ in ritardo.',
         en: 'He is a mink with a cat’s face, and in the Revolutionary Army he is commander and inventor at once. He cannot wait to try out his new weapon, and when he finally gets to, his Cool Shooter freezes the pirates’ guns. Before that he phones Sabo to warn him that he and the other commanders will be a little late.',
       },
+      status: [{ episode: 880, value: 'alive' }],
       affiliation: [
         {
           episode: 880,
@@ -1648,6 +1723,7 @@ export const wholeCake: Saga = {
         it: 'Adottato da bambino dai genitori nobili di Sabo, ha sposato una principessa del Regno di Goa e ne è diventato re pochi mesi fa, dopo che il vecchio re e il principe sono morti in circostanze che nessuno spiega. Sulla strada per la Reverie ferma Garp, che gli dà del moccioso, e gli ricorda che è un suo suddito. Salendo lungo la Red Line ha il terrore dell’altezza, vede nel muro un gigante che nessun altro vede e ordina alla sua guardia di sparare ai corvi prima che buchino la bolla.',
         en: 'Adopted as a child by Sabo’s noble parents, he married a princess of the Goa Kingdom and became its king a few months ago, after the old king and the prince died in circumstances nobody explains. On the way to the Reverie he stops Garp, who calls him a brat, and reminds him that he is one of his subjects. Riding up the Red Line he is terrified of the height, sees a giant in the wall that nobody else sees, and orders his guard to shoot the crows before they pop the bubble.',
       },
+      status: [{ episode: 883, value: 'alive' }],
       affiliation: [
         {
           episode: 883,
@@ -1673,6 +1749,7 @@ export const wholeCake: Saga = {
         it: 'Nella sala più alta di Mary Geoise c’è un trono che per legge deve restare vuoto, e qualcuno vi è seduto sopra. I Cinque Astri di Saggezza, che al mondo non prendono ordini da nessuno, entrano in quella stanza e si inginocchiano. Chiamano quella figura Im e le si rivolgono come a un sovrano, e di lei non si vede altro che una sagoma.',
         en: 'In the highest hall of Mary Geoise there is a throne that by law must stay empty, and somebody is sitting on it. The Five Elders, who take orders from nobody in the world, walk into that room and kneel. They call the figure Im and address it as their sovereign, and nothing of it can be seen but an outline.',
       },
+      status: [{ episode: 889, value: 'alive' }],
       affiliation: [
         {
           episode: 889,
@@ -1690,6 +1767,7 @@ export const wholeCake: Saga = {
         it: 'È uno degli ammiragli. Sakazuki lo ha mandato a cercare Fujitora e a cacciarlo da Mary Geoise, ma lui non ha voglia di combattere e gli fa compagnia mentre Fujitora mangia. Dice di non aver mangiato nulla da tre anni, per pigrizia, e che mangerebbe solo se lo imboccasse una signorina.',
         en: 'He is one of the admirals. Sakazuki sent him to find Fujitora and drive him out of Mary Geoise, but he does not want to fight him and sits with him while Fujitora eats. He says he himself has not eaten anything in three years, out of laziness, and that he would eat if a young lady helped him.',
       },
+      status: [{ episode: 882, value: 'alive' }],
       affiliation: [
         {
           episode: 882,
@@ -1739,6 +1817,12 @@ export const wholeCake: Saga = {
         it: 'Nei rapporti della Marina ha già annientato sedici ciurme di vecchi alleati di Barbabianca, e ogni volta una lite finisce con l’intera città spazzata via e centinaia di vittime. È un membro della Flotta dei Sette, e la Marina si chiede quanto a lungo potrà chiudere un occhio. Dice di essere il vero figlio di Barbabianca, un titolo a cui molti non credono; sulla sua forza invece nessuno ha dubbi, e un ammiraglio lo paragona a Barbabianca da giovane.',
         en: 'By the Marines’ reports he has already wiped out sixteen crews of Whitebeard’s old allies, and each time a quarrel ends with the whole town blown away and hundreds of casualties. He is one of the Seven Warlords, and the Marines wonder how long they can look away. He says he is Whitebeard’s own son, a title many people doubt; nobody doubts his strength, and an admiral compares him to the young Whitebeard.',
       },
+      status: [
+        { episode: 751, value: 'alive' },
+        // Episode 1105 adapts chapter 1073: Ryokugyu beats Weevil on Sphinx
+        // and the Marines take him away as a prisoner.
+        { episode: 1105, chapter: 1073, value: 'imprisoned' },
+      ],
       affiliation: [
         {
           episode: 751,
@@ -1769,6 +1853,7 @@ export const wholeCake: Saga = {
         it: 'È una vecchietta minuscola con gli occhiali da sole e il cappello verde, e dice al figlio, un membro della Flotta dei Sette, che lui è l’unico vero figlio di Barbabianca e lei la donna che Barbabianca amava. Per provarlo gli mostra una foto del vecchio, lo sgrida e lo perdona nello stesso momento. La vendetta per lei è tempo perso, perché non rende nemmeno un berry, mentre la fortuna di un Imperatore morto aspetta il suo legittimo erede.',
         en: 'She is a tiny old woman in sunglasses and a green hat, and she tells her son, a Warlord, that he is the one true son of Whitebeard and she the woman Whitebeard loved. She holds up a picture of the old man to prove it, and scolds her boy and forgives him in the same breath. Revenge, to her, is a waste of time, since it earns not a single berry, while a dead Emperor’s fortune is waiting for its rightful heir.',
       },
+      status: [{ episode: 752, value: 'alive' }],
       affiliation: [
         {
           episode: 752,
@@ -2107,6 +2192,7 @@ export const wholeCake: Saga = {
         it: 'È uno dei pezzi grossi della malavita, il re degli strozzini, e lo chiamano il Dio dell’abbondanza. Arriva al Tea Party di Big Mom con gli ultimi invitati, chiede ad alta voce perché mai sia stato invitato anche un becchino e si unisce al coro che loda la scala mobile di caramelle che li porta su. Chiude le frasi con un piccolo «nen», e varcato il cancello osserva che quel posto ha sempre un aspetto delizioso.',
         en: 'He is one of the bosses of the underworld, the Loan Shark King, and they call him the God of Fortune. He comes to Big Mom’s Tea Party with the last of the guests, asks out loud why an undertaker was invited at all, and joins the chorus praising the candy escalator that carries them up. He ends his sentences with a little “nen”, and once through the gate he remarks that the place always looks good enough to eat.',
       },
+      status: [{ episode: 830, value: 'alive' }],
       affiliation: [
         {
           episode: 830,
@@ -2158,6 +2244,7 @@ export const wholeCake: Saga = {
         it: 'È un viceammiraglio del quartier generale della Marina, conosciuta come Momousagi, e porta il cappotto sulle spalle come un mantello. Al Red Port, mentre la Reverie tiene la Marina occupata a scortare i reali, chiama Garp «Garp-chan» e lo rimprovera perché ride mentre due Imperatori danno la caccia a suo nipote. Riferisce la risposta di Sakazuki, che Wano è fuori dalla loro giurisdizione, e ammette di non aver mai pensato che Cappello di Paglia sarebbe diventato così grande.',
         en: 'She is a vice admiral of Marine Headquarters, known as Momousagi, and wears her coat over her shoulders like a cape. At the Red Port, while the Reverie keeps the Marines busy guarding royalty, she calls Garp “Garp-chan” and tells him off for laughing while two Emperors go after his grandson. She passes on Sakazuki’s answer, that Wano lies outside their jurisdiction, and admits she never thought Straw Hat would grow so big.',
       },
+      status: [{ episode: 887, value: 'alive' }],
       affiliation: [
         {
           episode: 887,
@@ -2173,6 +2260,7 @@ export const wholeCake: Saga = {
         it: 'È un viceammiraglio del quartier generale della Marina, conosciuto come Chaton, con un cappello di feltro e un cappotto a quadri. Al Red Port si intromette nella discussione di Gion chiedendo scusa, e dice che Big Mom ha di sicuro messo in conto una Marina a corto di uomini per via della Reverie. Chiama Sakazuki «il capo» e ricorda a Garp chi ha messo più scompiglio a Marineford: suo nipote.',
         en: 'He is a vice admiral of Marine Headquarters, known as Chaton, in a fedora and a coat with a checked pattern. At the Red Port he cuts into Gion’s argument with an apology and says Big Mom has surely counted on the Reverie leaving the Marines short of men. He calls Sakazuki “the boss”, and reminds Garp who stirred up Marineford the most: his own grandson.',
       },
+      status: [{ episode: 887, value: 'alive' }],
       affiliation: [
         {
           episode: 887,
