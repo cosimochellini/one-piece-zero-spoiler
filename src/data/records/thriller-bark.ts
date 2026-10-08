@@ -292,6 +292,8 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 375,
       revealedAtChapter: 483,
+      // Only the anime names him; 483 is the chapter episode 375 adapts, by
+      // the rule for anime-only names in `~/data/entities`.
       name: { it: 'Spoil', en: 'Spoil' },
       summary: {
         it: 'Un vecchio così magro e segnato dalle cicatrici che tutti lo prendono per uno zombie, che ha girato la foresta di Thriller Bark con una lanterna finché gli è mancata l’ombra.',

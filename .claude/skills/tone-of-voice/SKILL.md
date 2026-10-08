@@ -62,7 +62,8 @@ Italian uses the names from the Italian dub: Rufy, Bagy, Zoo Zoo, Rotta
 Maggiore, Gom Gom. The comment above `fruitForm.zoan` in `it.ts` explains why.
 The dub wins over the Star Comics manga when they differ: "Grande Flotta di
 Cappello di Paglia" (the dub title of episode 745), not the manga's
-"Megaflotta".
+"Megaflotta". Where the dub's spelling has not been checked, the Star Comics
+one stands in until it is (the Italian One Piece Wiki's page title).
 
 ## Two languages, both native
 
