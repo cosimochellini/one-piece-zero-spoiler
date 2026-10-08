@@ -1522,14 +1522,48 @@ export const summitWarArt = {
     shadow(80, 160, 68),
   ],
 
-  // A chair at the council table, an officer's coat over its back.
+  // Her vice admiral's coat as she wears it, on the shoulders, seen from
+  // behind with nobody in it: the collar standing open, the sleeves hanging
+  // empty, the far half hatched, and on each shoulder her epaulette, the
+  // inner board in her colour with its two dots and the gold fringe falling
+  // over. That is how she stands at Marineford in episode 461. The washing
+  // she does to pirates comes four episodes later.
   'tsuru': [
-    { d: 'M50 36 V120 M110 36 V120 M50 36 h60' },
-    { d: 'M40 120 h80 v10 h-80z' },
-    { d: 'M44 130 V178 M116 130 V178' },
-    { d: 'M46 44 h68 l6 70 h-20 l-4 -40 h-32 l-4 40 h-20z', role: 'accent' },
-    { d: 'M66 44 l14 16 l14 -16', role: 'soft' },
-    shadow(80, 184, 46),
+    { d: ellipse(80, 34, 22, 6) },
+    { d: 'M58 34 C58 40 60 44 64 48 Q80 52 96 48 C100 44 102 40 102 34' },
+    { d: 'M68 36 l6 -5 M78 38 l8 -7 M90 37 l6 -5', role: 'ambient' },
+    {
+      d: 'M64 50 C50 50 40 52 32 60 L24 176 Q80 186 136 176 L128 60 C120 52 110 50 96 50',
+    },
+    {
+      d: 'M32 62 C26 80 20 106 18 136 L34 139 C36 112 38 88 40 70 M128 62 C134 80 140 106 142 136 L126 139 C124 112 122 88 120 70',
+    },
+    { d: 'M18 128 L35 131 M142 128 L125 131', role: 'soft' },
+    {
+      d: 'M30 60 C24 50 40 44 62 48 L62 56 C50 58 38 64 30 60 M130 60 C136 50 120 44 98 48 L98 56 C110 58 122 64 130 60',
+      role: 'accent',
+    },
+    {
+      d: dots([
+        [46, 53],
+        [53, 52],
+        [114, 53],
+        [107, 52],
+      ]),
+      role: 'accent',
+    },
+    {
+      d: 'M29 63 l-3 17 M34 64 l-2 17 M39 64 l-1 17 M44 63 v16 M49 62 v14 M131 63 l3 17 M126 64 l2 17 M121 64 l1 17 M116 63 v16 M111 62 v14',
+    },
+    {
+      d: 'M58 120 C56 144 54 162 52 180 M80 150 V182 M102 120 C104 144 106 162 108 180',
+      role: 'soft',
+    },
+    {
+      d: 'M112 96 l10 -6 M112 116 l12 -6 M114 136 l12 -6 M116 156 l12 -6',
+      role: 'ambient',
+    },
+    shadow(80, 192, 58),
   ],
 
   // His katana in its scabbard, the flower-shaped guard in his colour and the
@@ -2107,19 +2141,52 @@ export const summitWarArt = {
     shadow(84, 186, 62),
   ],
 
-  // A horned helmet cracked across the crown, its blue mane hanging behind.
+  // Salome reared up out of her coil, turned away in 3/4: the horned skull
+  // pulled down over her wedge of a head like a helmet, two cracks on the
+  // dome, the ringed horns, her blue hair in her colour jutting out behind
+  // it, the scarf knotted round her neck, her spots and the lines of her
+  // belly on the coil. She is at the empress's side at Marineford, where the
+  // empress talks to her in episode 484.
   'salome': [
-    { d: 'M40 120 C40 70 120 70 120 120 Z' },
     {
-      d: 'M50 96 C34 80 30 60 40 40 C44 60 54 76 64 86 M110 96 C126 80 130 60 120 40 C116 60 106 76 96 86',
+      d: 'M56 54 C54 36 72 22 94 24 C114 26 126 42 122 58 C120 66 116 72 110 76',
     },
-    { d: 'M80 78 l-6 10 l8 6 l-4 10', role: 'soft' },
-    { d: 'M36 120 h88 v8 h-88z' },
+    { d: 'M56 54 C62 60 72 63 82 64 L86 69 C94 72 102 74 110 76' },
+    { d: 'M96 24 l-3 8 l5 5 l-3 7 M97 35 l8 -4', role: 'soft' },
     {
-      d: 'M44 128 q-6 20 2 40 M60 128 q-4 22 2 44 M76 128 q-2 22 2 46 M92 128 q2 22 -2 44 M108 128 q6 20 -2 40',
+      d: 'M119 42 C134 32 152 38 155 54 C157 62 154 70 149 76 C148 66 144 58 137 55 C131 52 126 53 122 57',
+    },
+    { d: 'M72 26 C64 14 50 9 34 11 C46 15 56 23 62 34' },
+    {
+      d: 'M130 38 l-2 11 M141 39 l-5 11 M150 46 l-8 8 M60 17 l-4 7',
+      role: 'soft',
+    },
+    { d: 'M58 58 L43 61 C37 62 36 68 40 70 C50 74 64 76 75 85' },
+    {
+      d: 'M110 74 C120 70 132 70 146 72 C136 76 130 78 126 80 C136 82 144 86 150 94 C140 92 132 90 124 90 C132 96 136 104 136 114 C130 106 122 100 116 98 C118 104 118 110 115 116 C112 108 108 100 105 92',
       role: 'accent',
     },
-    shadow(80, 186, 48),
+    {
+      d: 'M74 84 C60 102 64 118 86 130 C106 142 114 152 102 160 M106 92 C104 102 108 112 120 120 C138 134 142 158 122 170',
+    },
+    { d: 'M68 96 C78 102 92 104 104 100 M66 104 C76 110 92 112 106 108' },
+    {
+      d: 'M67 100 L52 106 L56 112 L66 106 M67 102 L58 122 L64 122 L68 108',
+      role: 'soft',
+    },
+    { d: 'M68 114 l5 -3 M75 123 l5 -3', role: 'ambient' },
+    {
+      d: 'M102 160 C80 172 46 172 36 162 C28 152 44 146 66 148 M122 170 C98 186 40 184 26 168 C16 154 34 140 64 140',
+    },
+    {
+      d: 'M30 172 l3 -4 M42 178 l2 -4 M56 181 l1 -4 M72 182 l0 -4 M88 181 l-1 -4 M104 178 l-1 -4',
+      role: 'soft',
+    },
+    {
+      d: 'M84 118 c5 -3 11 0 9 5 c-2 4 -8 4 -10 1 c-1 -2 -1 -4 1 -6 Z M118 140 c4 -2 9 1 7 5 c-2 3 -7 3 -8 0 c0 -2 0 -4 1 -5 Z M48 154 c5 -3 12 -1 10 4 c-2 3 -9 3 -10 0 Z M110 160 c4 -2 9 0 8 4 c-1 3 -7 3 -8 0 Z',
+      role: 'soft',
+    },
+    shadow(76, 190, 56),
   ],
 
   // A flintlock on the ground, the cock and frizzen on its lock, the grip
