@@ -171,6 +171,37 @@ const RICE_BALL: Stroke[] = [
 const SECOND_RICE_BALL = 'translate(86 42) scale(0.72)'
 
 /** The drawings of the records filed in the east blue stretch of the route. */
+/**
+ * Luffy's straw hat in its parts, so a costume can sit on, over or under it
+ * while the hat stays the same hat: the brim with its rim and inner ring, the
+ * crown with its rings of straw and far side hatched, and the band.
+ */
+const LUFFY_BRIM: Stroke[] = [
+  { d: 'M47 104.9 A66 22 0 1 0 113 104.9' },
+  { d: 'M14 124 V129 A66 22 0 0 0 146 129 V124', role: 'soft' },
+  { d: 'M34 124 A46 15 0 0 0 126 124', role: 'soft' },
+]
+const LUFFY_CROWN: Stroke[] = [
+  { d: 'M47 108 C44 58 116 58 113 108' },
+  { d: 'M56.3 79.7 Q80 88 103.7 79.7 M69.8 72 Q80 76 90.2 72', role: 'soft' },
+  {
+    d: 'M102.6 79.4 l-3.4 5 M106.8 84 l-3.6 5.4 M109.8 89.4 l-3.4 5',
+    role: 'ambient',
+  },
+]
+const LUFFY_BAND: Stroke = {
+  d: 'M47 108 Q80 122 113 108 L113.4 95 Q80 109 46.6 95 Z',
+  role: 'accent',
+}
+
+/** The band's lower edge, all of it that shows under a hat worn over it. */
+const LUFFY_BAND_EDGE: Stroke = {
+  d: 'M47 108 Q80 122 113 108 L113.2 102 Q80 116 46.8 102 Z',
+  role: 'accent',
+}
+const LUFFY_HAT_ALONE: Stroke[] = [...LUFFY_BRIM, ...LUFFY_CROWN, LUFFY_BAND]
+const LUFFY_HAT: Stroke[] = [...LUFFY_HAT_ALONE, shadow(80, 172, 56)]
+
 export const eastBlueArt = {
   // One island of the weakest sea seen from the water: the ridge and its
   // peak, the cliff's jagged rim, the strata down its face and its far side
@@ -206,23 +237,9 @@ export const eastBlueArt = {
   // The straw hat in 3/4: the brim with the thickness of its rim along the
   // front, the domed crown, the band in the captain's red, rings of straw on
   // the brim and the crown, and the crown's far side hatched. On his head from
-  // episode 1.
-  'monkey-d-luffy': [
-    { d: 'M47 104.9 A66 22 0 1 0 113 104.9' },
-    { d: 'M14 124 V129 A66 22 0 0 0 146 129 V124', role: 'soft' },
-    { d: 'M47 108 C44 58 116 58 113 108' },
-    {
-      d: 'M47 108 Q80 122 113 108 L113.4 95 Q80 109 46.6 95 Z',
-      role: 'accent',
-    },
-    { d: 'M34 124 A46 15 0 0 0 126 124', role: 'soft' },
-    { d: 'M56.3 79.7 Q80 88 103.7 79.7 M69.8 72 Q80 76 90.2 72', role: 'soft' },
-    {
-      d: 'M102.6 79.4 l-3.4 5 M106.8 84 l-3.6 5.4 M109.8 89.4 l-3.4 5',
-      role: 'ambient',
-    },
-    shadow(80, 172, 56),
-  ],
+  // episode 1, and drawn again whenever he puts something on, over or under
+  // it, in `eastBlueRedrawn`.
+  'monkey-d-luffy': LUFFY_HAT,
 
   // A mop leaning by a wooden bucket: the strands of the mop head in pink,
   // the bucket's rim seen round with the water inside and its far wall
@@ -1719,6 +1736,12 @@ const SMALL_CHART: Stroke[] = [
   { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
 ].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
+/** Luffy's hat tipped back as it bounces on the cloud of Gear 5. */
+const LUFFY_BOUNCE = 'rotate(-14 80 110)'
+
+/** Luffy's hat, smaller, hung by its string from the haft of the Elbaf axe. */
+const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
@@ -2107,5 +2130,264 @@ export const eastBlueRedrawn: Redrawings = {
         },
       ],
     },
+  ],
+  // Every stage of Luffy's hat is the hat with what the story put on, over
+  // or under it; a stage that is only for an arc is followed by the hat
+  // alone again, from the episode the costume is gone.
+  'monkey-d-luffy': [
+    // A shawl wrapped over the crown against the desert sun, its ends
+    // falling over the brim and round under it, the band showing at the
+    // front. On from 96 (ch. 161), off by Rainbase in 106 (ch. 169).
+    {
+      episode: 96,
+      chapter: 161,
+      value: [
+        ...LUFFY_BRIM,
+        LUFFY_BAND,
+        { d: 'M42 102 C34 40 126 40 118 102' },
+        {
+          d: 'M42 102 C32 124 34 152 52 166 Q80 176 108 166 C126 152 128 124 118 102',
+        },
+        { d: 'M58 54 Q66 76 62 98 M96 52 Q92 76 98 98', role: 'soft' },
+        {
+          d: 'M108 56 l-4 6 M114 68 l-4 6 M118 82 l-4 6 M122 118 l-4 6 M120 134 l-4 6',
+          role: 'ambient',
+        },
+        shadow(80, 186, 50),
+      ],
+    },
+    { episode: 106, chapter: 169, value: LUFFY_HAT },
+    // The closed knight's helm he is dressed in on Thriller Bark, the hat
+    // hidden under it: the visor slit, the breathing holes, the ridge down
+    // the front, and the plume in the captain's red. From 346 (ch. 452) until
+    // it is torn off in 349 (ch. 455).
+    {
+      episode: 346,
+      chapter: 452,
+      value: [
+        { d: 'M54 142 V76 C54 44 106 44 106 76 V142 Q80 152 54 142 Z' },
+        { d: 'M74 47 Q71 100 74 149', role: 'soft' },
+        { d: 'M58 86 Q72 92 102 84 M58 94 Q72 100 102 92' },
+        {
+          d: dots([
+            [84, 110],
+            [92, 108],
+            [100, 106],
+            [84, 120],
+            [92, 118],
+            [100, 116],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M54 128 Q72 136 106 128', role: 'soft' },
+        {
+          d: 'M78 47 C74 28 88 10 116 10 C106 18 102 24 108 32 C96 28 88 36 86 46',
+          role: 'accent',
+        },
+        { d: 'M86 30 Q96 22 106 20 M84 38 Q92 32 100 30', role: 'soft' },
+        {
+          d: 'M100 56 l-4 6 M104 68 l-4 6 M104 104 l-4 6 M104 116 l-4 6',
+          role: 'ambient',
+        },
+        shadow(80, 166, 40),
+      ],
+    },
+    { episode: 349, chapter: 455, value: LUFFY_HAT },
+    // The hat sat on top of a samurai kabuto Kin'emon made him: the gold
+    // crescent standing up in front of the crown, the side flaps turned out
+    // under the brim. From 625 (ch. 699), at the end of Punk Hazard.
+    {
+      episode: 625,
+      chapter: 699,
+      value: [
+        ...LUFFY_HAT_ALONE,
+        {
+          d: 'M80 104 C58 104 46 84 48 56 C56 76 66 88 80 90 C94 88 104 76 112 56 C114 84 102 104 80 104 Z',
+        },
+        { d: 'M76 104 L80 112 L84 104', role: 'soft' },
+        {
+          d: 'M30 128 C14 126 8 140 14 150 C22 158 38 152 44 138 M130 128 C146 126 152 140 146 150 C138 158 122 152 116 138',
+        },
+        {
+          d: dots([
+            [22, 140],
+            [30, 144],
+            [138, 140],
+            [130, 144],
+          ]),
+          role: 'soft',
+        },
+        shadow(80, 176, 56),
+      ],
+    },
+    // A black bowler over the dome to pass unknown in Dressrosa, its own
+    // curled brim on the straw one and the red band's edge below it. From
+    // 630 (ch. 701).
+    {
+      episode: 630,
+      chapter: 701,
+      value: [
+        ...LUFFY_BRIM,
+        LUFFY_BAND_EDGE,
+        { d: 'M48 104 C44 42 116 42 112 104' },
+        {
+          d: 'M40 106 Q36 98 44 98 Q80 112 116 98 Q124 98 120 106 Q80 122 40 106 Z',
+        },
+        {
+          d: 'M100 60 l-4 6 M106 70 l-4 6 M110 80 l-4 6 M112 90 l-4 6',
+          role: 'ambient',
+        },
+        shadow(80, 172, 56),
+      ],
+    },
+    // Lucy's gold Viking helmet, worn over the hat for the Corrida Colosseum,
+    // in 3/4 and turned from the face guard: the ridge, a row of rivets, the
+    // nose guard, two horns, and the red cape below. From 633 (ch. 704) until
+    // he hands the costume on in 663 (ch. 731).
+    {
+      episode: 633,
+      chapter: 704,
+      value: [
+        { d: 'M50 112 C46 50 114 50 110 112 Q80 124 50 112 Z' },
+        { d: 'M62 58 Q58 84 60 116', role: 'soft' },
+        { d: 'M50 100 Q80 112 110 100', role: 'soft' },
+        {
+          d: dots([
+            [58, 104],
+            [70, 108],
+            [84, 109],
+            [98, 107],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M60 116 L58 138 L66 120' },
+        {
+          d: 'M54 62 C40 52 38 36 44 26 C48 40 56 48 64 54 M106 62 C120 52 122 36 116 26 C112 40 104 48 96 54',
+        },
+        {
+          d: 'M44 120 C34 140 28 164 24 182 Q80 192 136 182 C132 164 126 140 116 120',
+          role: 'accent',
+        },
+        { d: 'M60 130 Q56 156 52 184 M100 130 Q104 156 108 184', role: 'soft' },
+        { d: 'M100 64 l-4 6 M106 76 l-4 6 M108 88 l-4 6', role: 'ambient' },
+      ],
+    },
+    { episode: 663, chapter: 731, value: LUFFY_HAT },
+    // A white scarf wound round the crown above the band, knotted at the side
+    // with its ends over the brim. From the Seducing Woods in 786 (ch. 827);
+    // gone by the end of the fight with Cracker, 805 (ch. 841).
+    {
+      episode: 786,
+      chapter: 827,
+      value: [
+        ...LUFFY_HAT_ALONE,
+        { d: 'M48 92 C60 100 100 100 112 92 M50 78 C62 86 98 86 110 78' },
+        {
+          d: 'M58 80 Q64 88 60 96 M76 84 Q82 90 78 98 M94 82 Q100 88 96 96',
+          role: 'soft',
+        },
+        {
+          d: 'M110 86 q12 -6 14 4 q-4 8 -14 4 M118 94 q8 16 2 34 M112 96 q2 18 -6 30',
+        },
+        shadow(80, 172, 56),
+      ],
+    },
+    { episode: 805, chapter: 841, value: LUFFY_HAT },
+    // A black fedora fitted over the dome for the meeting with the Fire Tank
+    // Pirates: the pinched crown, its band, the short brim on the straw one.
+    // From 827 (ch. 858) until it goes over Katakuri's face in 871 (ch. 896).
+    {
+      episode: 827,
+      chapter: 858,
+      value: [
+        ...LUFFY_BRIM,
+        LUFFY_BAND_EDGE,
+        { d: 'M50 100 L54 64 Q66 54 80 64 Q94 54 106 64 L110 100' },
+        { d: 'M80 64 V78', role: 'soft' },
+        {
+          d: 'M52 90 Q80 98 108 90 M51.6 96 Q80 104 108.4 96',
+          role: 'ambient',
+        },
+        {
+          d: 'M38 106 Q36 98 46 100 Q80 112 114 100 Q124 98 122 106 Q80 122 38 106 Z',
+        },
+        shadow(80, 172, 56),
+      ],
+    },
+    { episode: 871, chapter: 896, value: LUFFY_HAT },
+    // The samurai kabuto Hitetsu gives him for Onigashima, worn instead of
+    // the hat: the bowl with its ribs, the neck guard, the gold crescent, and
+    // the side flaps in the captain's red. From 959 (ch. 959) until the raid
+    // sets out in 978 (ch. 975).
+    {
+      episode: 959,
+      chapter: 959,
+      value: [
+        { d: 'M48 112 C46 62 114 62 112 112' },
+        { d: 'M64 70 Q60 92 62 112 M96 70 Q100 92 98 112', role: 'soft' },
+        { d: 'M44 112 Q80 124 116 112' },
+        { d: 'M42 118 Q80 136 118 118 L124 134 Q80 156 36 134 Z' },
+        { d: 'M34 144 Q80 168 126 144', role: 'soft' },
+        {
+          d: 'M48 106 L28 96 Q22 112 34 124 L46 118 M112 106 L132 96 Q138 112 126 124 L114 118',
+          role: 'accent',
+        },
+        { d: 'M76 112 C58 108 42 84 38 44 M84 112 C102 108 118 84 122 44' },
+        { d: 'M72 112 L80 98 L88 112', role: 'soft' },
+        { d: 'M104 76 l-4 6 M108 88 l-4 6 M110 100 l-4 6', role: 'ambient' },
+        shadow(80, 176, 48),
+      ],
+    },
+    { episode: 978, chapter: 975, value: LUFFY_HAT },
+    // The hat tipped back, bouncing on a cloud, the way it rides through
+    // Gear 5. From 1071 (ch. 1044) until Kaido falls in 1076 (ch. 1049).
+    {
+      episode: 1071,
+      chapter: 1044,
+      value: [
+        ...LUFFY_HAT_ALONE.map((s) => ({ ...s, transform: LUFFY_BOUNCE })),
+        {
+          d: 'M20 176 q-6 -14 10 -16 q2 -14 20 -10 q8 -12 26 -4 q12 -10 26 2 q16 -4 18 12 q14 4 8 16 Z',
+        },
+        {
+          d: 'M30 158 q4 -6 10 -6 M134 64 q8 4 10 12 M140 52 q10 6 12 16',
+          role: 'soft',
+        },
+      ],
+    },
+    { episode: 1076, chapter: 1049, value: LUFFY_HAT },
+    // The Viking outfit of Elbaf: the black helmet with its studded gold
+    // band and great curved horns set down, the axe standing beside it, and
+    // the hat hung by its string from the haft. From 1157 (ch. 1127) until
+    // the helmet is knocked off in 1170 (ch. 1140).
+    {
+      episode: 1157,
+      chapter: 1127,
+      value: [
+        {
+          d: 'M128 180 L136 30 M135.4 40 C146 30 158 40 154 64 C148 56 142 54 134.6 56',
+        },
+        { d: 'M30 122 C28 80 92 80 90 122 Z' },
+        { d: 'M28 114 Q60 126 92 114 M29 104 Q60 116 91 104', role: 'soft' },
+        {
+          d: dots([
+            [36, 112],
+            [48, 116],
+            [60, 117],
+            [72, 116],
+            [84, 112],
+          ]),
+          role: 'soft',
+        },
+        {
+          d: 'M32 96 C6 92 0 56 24 34 C18 54 26 72 40 82 M88 96 C114 92 120 56 96 34 C102 54 94 72 80 82',
+        },
+        { d: 'M76 88 l-4 6 M82 96 l-4 6 M86 106 l-4 6', role: 'ambient' },
+        { d: 'M106 118 C110 96 124 86 133.6 84', role: 'soft' },
+        ...LUFFY_HAT_ALONE.map((s) => ({ ...s, transform: LUFFY_HUNG })),
+        shadow(70, 180, 58),
+      ],
+    },
+    { episode: 1170, chapter: 1140, value: LUFFY_HAT },
   ],
 }

@@ -1043,6 +1043,55 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
   })
 
+  it('puts every costume on Luffy’s hat from its episode and takes it off again', () => {
+    const luffy = filed('monkey-d-luffy')
+    const hat = DRAWINGS['monkey-d-luffy']
+    const stages = REDRAWINGS['monkey-d-luffy'] ?? []
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(luffy, readerFor(bookmark, 'en')).visual.strokes
+
+    // Each costume, then the hat alone again; Punk Hazard's kabuto runs
+    // straight into the Dressrosa bowler and that into Lucy's helmet.
+    expect(
+      stages.map(({ episode, chapter }) => [episode, chapter]),
+    ).toStrictEqual([
+      [96, 161],
+      [106, 169],
+      [346, 452],
+      [349, 455],
+      [625, 699],
+      [630, 701],
+      [633, 704],
+      [663, 731],
+      [786, 827],
+      [805, 841],
+      [827, 858],
+      [871, 896],
+      [959, 959],
+      [978, 975],
+      [1071, 1044],
+      [1076, 1049],
+      [1157, 1127],
+      [1170, 1140],
+    ])
+    expect(drawnAt(null)).toBe(hat)
+
+    for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
+      const before = index === 0 ? hat : stages[index - 1]?.value
+      const label = `ep ${String(episode)} / ch ${String(chapter)}`
+
+      expect(drawnAt(ep(episode - 1)), label).toBe(before)
+      expect(drawnAt(ep(episode)), label).toBe(value)
+      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
+        before,
+      )
+      expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
+    }
+
+    // A return is the first drawing itself, not a copy of it.
+    expect(stages.at(-1)?.value).toBe(hat)
+  })
+
   it('arms Hatchan with his six swords only from episode 39', () => {
     const hatchan = filed('hatchan')
     const pot = DRAWINGS.hatchan
