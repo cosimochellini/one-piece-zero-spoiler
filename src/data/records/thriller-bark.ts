@@ -335,6 +335,7 @@ export const thrillerBark: Saga = {
         it: 'I suoi fantasmi attraversano i muri e le persone, e chi ne viene attraversato si accascia a terra, dispiaciuto di essere al mondo. Uno di loro riferisce al dottore della villa che ognuno dei nuovi arrivati ha una taglia sulla testa. Quando tornano nelle sue stanze, il grosso orso rattoppato che la accoglie si sente dire di stare zitto: chi non è carino non è degno di lavorare per lei.',
         en: 'Her ghosts drift through walls and through people, and whoever they pass through drops to the floor, sorry to be alive. One of them tells the doctor of the mansion that every one of the newcomers has a bounty on their head. When they float back to her rooms, the big patchwork bear who greets her is told to keep quiet: whoever is not cute is not fit to work for her.',
       },
+      status: [{ episode: 343, value: 'alive' }],
       affiliation: [
         {
           episode: 343,
@@ -357,6 +358,12 @@ export const thrillerBark: Saga = {
         it: 'Si aggira per i corridoi della villa con l’abito da sposa addosso e il velo fermato tra le zanne, e chiede la mano a chiunque incontri, uomo o scheletro che sia. Il rifiuto la rattrista per qualche secondo soltanto, poi ricomincia con il primo che passa. Sotto il velo ha la forza di un cinghiale, e una proposta respinta sa diventare una carica.',
         en: 'She wanders the mansion corridors in a wedding dress, her veil caught between two tusks, and asks for the hand of everyone she meets, man or skeleton alike. A refusal saddens her for a few seconds only, and then she starts over with whoever comes past next. Under the veil is a warthog’s strength, and a rejected proposal turns into a charge.',
       },
+      // The zombie carries someone's shadow, and whose is not known until the
+      // real Lola comes on at 370, which adapts chapter 476.
+      status: [
+        { episode: 345, value: 'unknown' },
+        { episode: 370, chapter: 476, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 370,
@@ -418,6 +425,12 @@ export const thrillerBark: Saga = {
         it: 'Senza farsi vedere trattiene cinque pirati sulla loro nave, poi sorprende una ragazza nel bagno della villa e le annuncia che sarà la sua sposa. Al cimitero richiama i soldati zombie fuori dalle tombe, e si lascia vedere solo quando sono in piedi. Loro scandiscono il suo nome e, nello stesso fiato, gli danno del pervertito.',
         en: 'Unseen, he holds five pirates back on their own ship, then corners a woman in the mansion bath and tells her she will be his bride. In the graveyard he calls the zombie soldiers up out of their graves, and lets himself be seen only once they are standing. They chant his name, and in the same breath they call him a pervert.',
       },
+      status: [
+        { episode: 343, value: 'alive' },
+        // Episode 917 adapts chapter 925, where Moria finds Shiryu turning
+        // invisible with his fruit and learns he was killed for it.
+        { episode: 917, chapter: 925, value: 'deceased' },
+      ],
       affiliation: [
         {
           episode: 343,
@@ -440,6 +453,7 @@ export const thrillerBark: Saga = {
         it: 'Era un medico famoso in tutto il mondo, capace di rimettere in piedi chi nessun altro sapeva salvare, poi è sparito senza spiegazioni. Lo si ritrova nella villa di Thriller Bark, con il camice addosso, a cucire pezzi di cadaveri diversi in un corpo solo e a firmarlo come un’opera d’arte. Serve il padrone dell’isola e sembra divertirsi molto.',
         en: 'He was a doctor known across the world, able to put back on their feet the patients nobody else could save, and then he vanished without explanation. He turns up in the Thriller Bark mansion in a white coat, sewing pieces of different corpses into a single body and signing the result like a work of art. He serves the master of the island and enjoys himself enormously.',
       },
+      status: [{ episode: 340, value: 'alive' }],
       affiliation: [
         {
           episode: 340,
