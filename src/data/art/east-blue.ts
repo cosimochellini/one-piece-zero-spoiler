@@ -1066,9 +1066,9 @@ export const eastBlueArt = {
     { d: 'M38 130 L116 125 M38 130 l-4 4 M116 125 l4 4', role: 'soft' },
     shadow(78, 168, 56),
   ],
-  // The glasses case he collects for Klahadore, open, with the lid swung up
-  // and the new glasses folded inside: Kaya's present for his third year in
-  // the house (chapter 27, episode 11).
+  // The slim glasses case he collects for Klahadore, opened, with the lid
+  // swung up and the new glasses folded inside: Kaya's present for his third
+  // year in the house. He holds it out in episode 12 (chapter 28).
   'merry': [
     { d: 'M38 108 H122 A11 11 0 0 1 122 130 H38 A11 11 0 0 1 38 108 Z' },
     { d: 'M27 119 C27 138 38 145 54 145 H106 C122 145 133 138 133 119' },
@@ -1803,10 +1803,6 @@ export const eastBlueArt = {
     {
       d: 'M100 82.1 A9.7 9.7 0 1 0 84.4 77.1 M69.6 77.1 A8.2 8.2 0 1 0 56.8 83.2',
       role: 'accent',
-    },
-    {
-      d: 'M96.6 79 A5.1 5.1 0 1 0 87.6 75.9 M66.4 76.1 A4.3 4.3 0 1 0 59.6 80.1',
-      role: 'soft',
     },
     {
       d: 'M56 89.1 L51 86 M53 96.5 L49 93.3 M52 103.8 L49 101.7',
