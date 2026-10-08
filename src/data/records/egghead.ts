@@ -552,6 +552,15 @@ export const egghead: Saga = {
         it: 'È il Vegapunk che rappresenta il bene, ed è Shaka a parlare a nome del laboratorio e a dire chi può entrare. Porta un elmo di metallo che gli copre tutta la testa e ha una voce calma. Riconosce i pirati dalle loro taglie prima che abbiano detto una parola, e li invita a entrare perché è curioso di conoscerli.',
         en: 'He is the Vegapunk that stands for good, and it is Shaka who answers for the laboratory and says who is let in. He wears a metal helmet over his whole head and has a calm voice. He knows the pirates by their bounties before they have said a word, and invites them in because he is curious about them.',
       },
+      status: [
+        { episode: 1091, value: 'alive' },
+        // Episode 1110 adapts chapter 1077, where Shaka is shot in the head
+        // in the basement while trying to free Vegapunk.
+        { episode: 1110, chapter: 1077, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1125: on Punk Records, Edison rebuilds
+        // his body from the destroyed satellites and Shaka speaks from it.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1092,
@@ -574,6 +583,7 @@ export const egghead: Saga = {
         it: 'È Punk-02, il Vegapunk malvagio, e non fa nulla per nasconderlo. Accoglie le navi che si avvicinano a Egghead con un esercito di bestie marine meccaniche e la richiesta di consegnare gli oggetti di valore, perché i fondi per la ricerca sono sempre pochi e a preoccuparsene è lei. Chi la ringrazia per un salvataggio scopre che non aveva nessuna intenzione di salvarlo.',
         en: 'She is Punk-02, the evil Vegapunk, and does nothing to hide it. She greets the ships that come near Egghead with an army of mechanical sea beasts and a demand for their valuables, because the research budget is always short and she is the one worrying about it. Anyone who thanks her for a rescue learns that she never meant to save them.',
       },
+      status: [{ episode: 1091, value: 'alive' }],
       affiliation: [
         {
           episode: 1092,
@@ -598,6 +608,15 @@ export const egghead: Saga = {
         it: 'È uno dei serafini custoditi su Egghead: bambini con le ali nere e una fiamma sulla schiena, costruiti per prendere il posto della Flotta dei Sette; due di loro sono usciti senza un graffio dallo scontro su Amazon Lily. Su Amazon Lily questa ha tolto di mezzo una guerriera Kuja con uno schiaffo, a una mano sola, e le Kuja che l’hanno vista da vicino l’hanno trovata identica alla loro Imperatrice da bambina.',
         en: 'She is one of the Seraphim kept on Egghead: children with black wings and a flame at their backs, made to take the place of the Seven Warlords; two of them came out of the fight on Amazon Lily without a scratch. On Amazon Lily this one slapped a Kuja warrior aside with one hand, and the Kuja who saw her up close thought she looked just like their Empress as a child.',
       },
+      status: [
+        { episode: 1099, value: 'alive' },
+        // Episode 1124 adapts chapter 1090, where the four Seraphim sit
+        // trapped in seastone bubbles in the laboratory basement.
+        { episode: 1124, chapter: 1090, value: 'captured' },
+        // Episode 1155 adapts chapter 1125, where CP0 order the Seraphim
+        // moved to their ship once they are recharged.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [{ episode: 1099, value: SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['love-love-fruit'] }],
@@ -608,6 +627,15 @@ export const egghead: Saga = {
         it: 'Uno dei quattro serafini su Egghead, con la faccia da bambino su un corpo più alto di un uomo, ali nere e una fiamma che gli arde sulla schiena. Su Amazon Lily un solo colpo della sua spada ha respinto un Imperatore e tagliato via parte della montagna dell’isola. Non parla e non esita.',
         en: 'One of the four Seraphim on Egghead, with a child’s face on a body taller than a man, black wings and a flame burning at his back. On Amazon Lily a single stroke of his sword knocked an Emperor back and sliced away part of the island’s mountain. He does not speak and does not hesitate.',
       },
+      status: [
+        { episode: 1099, value: 'alive' },
+        // Episode 1124 adapts chapter 1090, where the four Seraphim sit
+        // trapped in seastone bubbles in the laboratory basement.
+        { episode: 1124, chapter: 1090, value: 'captured' },
+        // Episode 1155 adapts chapter 1125, where CP0 order the Seraphim
+        // moved to their ship once they are recharged.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [{ episode: 1099, value: SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1108, value: ['dice-dice-fruit'] }],
@@ -618,6 +646,15 @@ export const egghead: Saga = {
         it: 'Ha la faccia di un bambino e la stazza di un gigante. Il Cipher Pol lo riporta a Egghead su una nave del Governo Mondiale, e dal laboratorio rispondono che da lì S-Bear sa tornare a casa da solo e che gli agenti possono andarsene. Sotto i capelli bianchi e le orecchie d’orso c’è la faccia di un uomo che la ciurma ha già incontrato, tornato giovane.',
         en: 'It has a child’s face and a giant’s build. Cipher Pol carry it back to Egghead aboard a World Government ship, and the laboratory answers that S-Bear can find its own way home from there and the agents can turn back. Under the white hair and the bear ears, the face is the face of a man the crew has met before, made young again.',
       },
+      status: [
+        { episode: 1098, value: 'alive' },
+        // Episode 1124 adapts chapter 1090, where the four Seraphim sit
+        // trapped in seastone bubbles in the laboratory basement.
+        { episode: 1124, chapter: 1090, value: 'captured' },
+        // Episode 1155 adapts chapter 1125, where CP0 order the Seraphim
+        // moved to their ship once they are recharged.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [{ episode: 1098, value: SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1099, value: ['paw-paw-fruit'] }],
@@ -628,6 +665,15 @@ export const egghead: Saga = {
         it: 'Questo serafino è costruito sul modello di un uomo-pesce e combatte con il karate degli uomini-pesce. Si immerge nel terreno come si nuota in mare, e riemerge sotto chi ha davanti. Ha ali nere con il fuoco dietro e la faccia di un bambino, e si ferma solo quando glielo ordina Shaka.',
         en: 'This Seraphim is built on the pattern of a fish-man and fights with fish-man karate. It dives into the ground the way a man swims in the sea, and comes up underneath whoever it is fighting. It has black wings with fire behind them and a child’s face, and it stops only when Shaka orders it to.',
       },
+      status: [
+        { episode: 1095, value: 'alive' },
+        // Episode 1124 adapts chapter 1090, where the four Seraphim sit
+        // trapped in seastone bubbles in the laboratory basement.
+        { episode: 1124, chapter: 1090, value: 'captured' },
+        // Episode 1155 adapts chapter 1125, where CP0 order the Seraphim
+        // moved to their ship once they are recharged.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [{ episode: 1095, value: SERAPHIM }],
       origin: [{ episode: 1107, value: EGGHEAD }],
       devilFruit: [{ episode: 1101, value: ['swim-swim-fruit'] }],
@@ -644,6 +690,15 @@ export const egghead: Saga = {
         it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È un piccolo robot, non più alto di un bambino, e le idee gli vengono così spesso che dice di non riuscire a fermarle. Guida i nuovi arrivati nel laboratorio dagli altoparlanti, poi abbandona il test che dovrebbe seguire per andare a disegnare progetti, e fa mangiare York al posto suo per non doversi fermare.',
         en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He is a small robot, no taller than a child, and ideas come to him so often that he says he cannot stop them. He guides newcomers through the laboratory over the speakers, then walks out of the test he is meant to be watching to draw blueprints, and has York eat for him so he does not have to stop.',
       },
+      status: [
+        { episode: 1095, value: 'alive' },
+        // Episode 1153 adapts chapter 1122: the Sunny lands on the sea and
+        // Nami's group grieve for Atlas and Edison, both left for dead.
+        { episode: 1153, chapter: 1122, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1125, where Edison turns out to have
+        // survived and rebuilds his body on Punk Records, out of York's reach.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1095,
@@ -665,6 +720,15 @@ export const egghead: Saga = {
         it: 'La quarta parte di Vegapunk è quella che raccoglie il sapere: durante un test legge ad alta voce ogni cifra che vede e ne trae subito le conclusioni. Ha una testa rotonda con una chiave da carica in cima, gli occhi assonnati e braccia e gambe fatte di aste di metallo pieghevoli. Piuttosto che perdere un secondo di dati buoni rinuncia ad andare in bagno, e lascia che ci vada York al posto suo.',
         en: 'The fourth part of Vegapunk is the one that collects knowledge: during a test he reads out every figure he sees and draws conclusions from it on the spot. He has a round head with a wind-up key on top, sleepy-looking eyes, and arms and legs made of bendable metal rods. He would rather skip the bathroom than miss a second of good data, so he leaves that to York.',
       },
+      status: [
+        { episode: 1095, value: 'alive' },
+        // Episode 1111 adapts chapter 1078, where S-Snake stamps on
+        // Pythagoras's severed head and crushes it.
+        { episode: 1111, chapter: 1078, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1125: on Punk Records, Edison rebuilds
+        // his body from the destroyed satellites and Pythagoras speaks from it.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1095,
@@ -687,6 +751,15 @@ export const egghead: Saga = {
         it: 'Atlas è il Vegapunk che rappresenta la violenza, e perde la pazienza in fretta. I suoi guanti a pressione di luce le permettono di toccare la luce come se fosse solida, così può colpire un ologramma con la stessa forza di una persona. Costruisce anche le macchine dell’isola, dal condizionatore che tiene calda un’isola invernale a una macchina da cucina che serve cinquecento piatti, e si lamenta che nel mondo manchino i tecnici e i soldi per produrle in serie.',
         en: 'Atlas is the Vegapunk that stands for violence, and she loses her temper fast. Her Light-Pressure Gloves let her touch light as if it were solid, so she can punch a hologram as hard as a person. She also builds the island’s machines, from the air conditioning that keeps a winter island warm to a cooking machine that serves five hundred dishes, and complains that the world lacks the technicians and the money to mass-produce them.',
       },
+      status: [
+        { episode: 1091, value: 'alive' },
+        // Episode 1152 adapts chapter 1120, where Atlas holds off Nusjuro so
+        // the Sunny can take off, loses an arm and explodes.
+        { episode: 1152, chapter: 1120, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1125: on Punk Records, Edison rebuilds
+        // his body from the destroyed satellites and Atlas speaks from it.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1092,
@@ -708,6 +781,15 @@ export const egghead: Saga = {
         it: 'La sesta e ultima parte di Vegapunk è quella che vuole tutto: dorme quanto può, mangia per tutti e si fa portare i piatti dove si trova. Quando Edison è troppo occupato per mangiare o Pythagoras per andare in bagno, ci pensa York al posto loro. I ricercatori la chiamano York-sama e continuano a portarle da mangiare, e lei mangia, va in bagno e dorme più volte al giorno.',
         en: 'The sixth and last part of Vegapunk is the one that wants everything: she sleeps as much as she can, eats for all of them and has the plates brought to wherever she happens to be. When Edison is too busy to eat or Pythagoras too busy to go to the bathroom, York does it for them. The researchers call her York-sama and keep the food coming, and she eats, goes to the bathroom and sleeps several times a day.',
       },
+      status: [
+        { episode: 1095, value: 'alive' },
+        // Episode 1123 adapts chapter 1089, where York, chained up by the
+        // Straw Hats, begs the Five Elders to rescue her.
+        { episode: 1123, chapter: 1089, value: 'captured' },
+        // Episode 1146 adapts chapter 1112, where York is free and with Mars;
+        // the anime adds Mars flying in and breaking her shackles.
+        { episode: 1146, chapter: 1112, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1095,
@@ -803,6 +885,7 @@ export const egghead: Saga = {
         it: 'Siede con gli altri quattro nella loro stanza del castello di Pangaea, a Mary Geoise, quando Imu chiama per far provare la Fiamma Madre di Vegapunk sul Regno di Lulusia. È Mars a far notare che il popolo di Lulusia mostra segni di rivolta. Quando Sabo li ha attaccati per Cobra, si è trasformato con gli altri in un’enorme sagoma nel buio.',
         en: 'He sits with the other four in their room in Pangaea Castle, at Mary Geoise, when Imu calls to have Vegapunk’s Mother Flame tried out on the Kingdom of Lulusia. Mars is the one who points out that the people of Lulusia have been showing signs of revolt. When Sabo attacked them over Cobra, he changed with the others into a huge shape in the dark.',
       },
+      status: [{ episode: 1120, value: 'alive' }],
       affiliation: [
         {
           episode: 1120,
@@ -820,6 +903,7 @@ export const egghead: Saga = {
         it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia come luogo in cui provare la Fiamma Madre di Vegapunk, abitanti compresi. Il suo unico commento è che servirà da lezione per tutti. Porta il titolo di Dio Guerriero della Giustizia.',
         en: 'He sits with the other four in their room at Mary Geoise when Imu chooses the Kingdom of Lulusia as the place to test Vegapunk’s Mother Flame, people and all. His only comment is that it will serve as a good lesson for everyone. He holds the title of Warrior God of Justice.',
       },
+      status: [{ episode: 1120, value: 'alive' }],
       affiliation: [
         {
           episode: 1120,
@@ -837,6 +921,7 @@ export const egghead: Saga = {
         it: 'È l’unico dei cinque a non portare un completo, e tiene la spada in mano: quando gli altri hanno puntato le pistole su Cobra, lui l’ha sguainata. Quando Imu ordina di provare la Fiamma Madre di Vegapunk sul Regno di Lulusia, lui pensa già al giorno in cui quel potere sarà a loro disposizione.',
         en: 'He is the only one of the five who wears no suit, and he keeps his sword in his hand: when the others drew pistols on Cobra, he drew it. When Imu orders Vegapunk’s Mother Flame tried out on the Kingdom of Lulusia, he is already thinking of the day that power will be theirs to use.',
       },
+      status: [{ episode: 1120, value: 'alive' }],
       affiliation: [
         {
           episode: 1120,
@@ -854,6 +939,7 @@ export const egghead: Saga = {
         it: 'Siede con gli altri quattro nella loro stanza di Mary Geoise quando Imu sceglie il Regno di Lulusia per provare la Fiamma Madre di Vegapunk. Ha il viso più giovane dei cinque e l’ultima parola: quando quel potere sarà loro, dice, la lunga battaglia finirà.',
         en: 'He sits with the other four in their room at Mary Geoise when Imu picks the Kingdom of Lulusia to test Vegapunk’s Mother Flame on. He has the youngest face of the five, and the last word: once that power is theirs, he says, the long battle will come to an end.',
       },
+      status: [{ episode: 1120, value: 'alive' }],
       affiliation: [
         {
           episode: 1120,
@@ -1331,6 +1417,12 @@ export const egghead: Saga = {
         it: 'Vegapunk lo tiene nascosto su Egghead: un robot enorme costruito novecento anni fa, che duecento anni fa scalò la Linea Rossa e attaccò Mary Geoise, poi rimase senza energia prima di fare danni. Il Governo Mondiale ne ordinò la distruzione, ma alcuni scienziati lo conservarono, e nemmeno Vegapunk è riuscito a copiarne la fonte di energia. Quando si risveglia attraversa le fiamme chiedendo scusa a Joy Boy, e protegge il lumacofono che trasmette il messaggio di Vegapunk.',
         en: 'Vegapunk keeps it hidden on Egghead: an enormous robot built nine hundred years ago, which two hundred years ago climbed the Red Line and attacked Mary Geoise, then ran out of power before doing any damage. The World Government ordered it destroyed, but scientists kept it, and not even Vegapunk has managed to copy its power source. When it wakes it walks through the flames apologising to Joy Boy, and it guards the transponder snail that sends out Vegapunk’s broadcast.',
       },
+      status: [
+        { episode: 1151, value: 'alive' },
+        // Episode 1153 adapts chapter 1122, where Emet unties Joy Boy's knot
+        // of Haki to save Luffy and then powers down on Egghead.
+        { episode: 1153, chapter: 1122, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 1151,
