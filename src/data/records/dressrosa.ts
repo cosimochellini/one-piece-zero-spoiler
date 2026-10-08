@@ -1113,8 +1113,8 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 609, value: 'alive' },
-        // Episode 977 adapts chapter 974, where Kanjuro ties up Shinobu with
-        // drawn snakes and carries him off.
+        // Episode 977 adapts chapter 974, where Kanjuro ties Shinobu up with
+        // drawn snakes and captures Momonosuke.
         { episode: 977, chapter: 974, value: 'captured' },
         // Episode 998 adapts chapter 988, where his chains break on the Skull
         // Dome stage and Sanji passes him to Shinobu, who flies him away.
