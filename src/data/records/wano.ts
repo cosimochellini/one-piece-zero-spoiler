@@ -604,8 +604,8 @@ export const wano: Saga = {
       revealedAtChapter: 962,
       name: { it: 'Shimotsuki Ushimaru', en: 'Shimotsuki Ushimaru' },
       summary: {
-        it: 'Il defunto daimyo di Ringo, un maestro di spada del clan Shimotsuki che si vedeva sempre in compagnia di una volpe.',
-        en: 'The late daimyo of Ringo, a master swordsman of the Shimotsuki Clan who was always seen in the company of a fox.',
+        it: 'Il defunto daimyo di Ringo, del clan Shimotsuki, che si vedeva sempre in compagnia di una volpe.',
+        en: 'The late daimyo of Ringo, of the Shimotsuki Clan, always seen in the company of a fox.',
       },
       visual: { art: 'shimotsuki-ushimaru', tint: 'blue' },
     },
@@ -1930,8 +1930,8 @@ export const wano: Saga = {
       chronicle: wanoChronicles['shimotsuki-ushimaru'],
       role: { it: 'Defunto daimyo di Ringo', en: 'Late daimyo of Ringo' },
       log: {
-        it: 'Ringo, nel nord di Wano, era governata dal clan Shimotsuki, famoso per la sua tempra, e il suo daimyo era un maestro di spada che andava ovunque in compagnia di una volpe. Come le altre regioni, Ringo è stata distrutta da Kaido, e di lui ormai si parla soltanto come del defunto signore. Nella sua terra i morti vengono sepolti sotto la spada che hanno portato fin dalla nascita, e la sua volpe ha continuato a sorvegliarne le tombe anche dopo di lui.',
-        en: 'Ringo, in the north of Wano, was governed by the Shimotsuki Clan, famous for their toughness, and its daimyo was a master swordsman who went everywhere in the company of a fox. Like the other regions, Ringo was destroyed by Kaido, and he is spoken of now only as the late lord. In his land the dead are buried under the swords they carried from birth, and his fox went on guarding their graves long after he was gone.',
+        it: 'Ringo, nel nord di Wano, era governata dal clan Shimotsuki, famoso per la sua tempra, e il suo daimyo andava ovunque in compagnia di una volpe. Come le altre regioni, Ringo è stata distrutta da Kaido, e di lui ormai si parla soltanto come del defunto signore. Nella sua terra i morti vengono sepolti sotto la spada che hanno portato fin dalla nascita, e la sua volpe ha continuato a sorvegliarne le tombe anche dopo di lui.',
+        en: 'Ringo, in the north of Wano, was governed by the Shimotsuki Clan, famous for their toughness, and its daimyo went everywhere in the company of a fox. Like the other regions, Ringo was destroyed by Kaido, and he is spoken of now only as the late lord. In his land the dead are buried under the swords they carried from birth, and his fox went on guarding their graves long after he was gone.',
       },
       status: [{ episode: 954, value: 'deceased' }],
       affiliation: [
