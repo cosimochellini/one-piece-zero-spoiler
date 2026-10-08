@@ -1525,9 +1525,9 @@ export const summitWarArt = {
   // Her vice admiral's coat worn on the shoulders, seen from behind with
   // nobody in it, her two-tone epaulettes on top. At Marineford, episode 461.
   'tsuru': [
-    { d: ellipse(80, 36, 18, 5) },
-    { d: 'M62 36 C62 42 64 46 67 50 Q80 53 93 50 C96 46 98 42 98 36' },
-    { d: 'M70 38 l5 -4 M79 39 l7 -6 M89 38 l5 -4', role: 'ambient' },
+    { d: ellipse(80, 41, 22, 4.5) },
+    { d: 'M58 41 C58 45 61 48 65 51 Q80 54 95 51 C99 48 102 45 102 41' },
+    { d: 'M72 43 l5 -4 M84 43 l6 -5', role: 'ambient' },
     {
       d: 'M64 50 C50 50 40 52 32 60 L24 176 Q80 186 136 176 L128 60 C120 52 110 50 96 50',
     },
@@ -1540,19 +1540,19 @@ export const summitWarArt = {
       role: 'accent',
     },
     {
-      d: dots([
-        [40, 52],
-        [48, 51],
-        [120, 52],
-        [112, 51],
-      ]),
+      d: [
+        circle(39, 52, 1.5),
+        circle(47, 51, 1.5),
+        circle(121, 52, 1.5),
+        circle(113, 51, 1.5),
+      ].join(' '),
       role: 'accent',
     },
     {
       d: 'M18 63 l-4 20 M24 64 l-3 20 M30 64 l-2 20 M36 63 l-1 19 M42 62 v18 M48 61 v16 M142 63 l4 20 M136 64 l3 20 M130 64 l2 20 M124 63 l1 19 M118 62 v18 M112 61 v16',
     },
     {
-      d: 'M112 96 l10 -6 M112 116 l12 -6 M114 136 l12 -6 M116 156 l12 -6',
+      d: 'M104 100 l10 -6 M104 120 l12 -6 M106 140 l12 -6 M108 160 l14 -7',
       role: 'ambient',
     },
     shadow(80, 192, 58),
@@ -2149,7 +2149,7 @@ export const summitWarArt = {
       d: 'M130 38 l-2 11 M141 39 l-5 11 M150 46 l-8 8 M60 17 l-4 7',
       role: 'soft',
     },
-    { d: 'M58 58 L43 61 C37 62 36 68 40 70 C50 74 64 76 75 85' },
+    { d: 'M58 58 C48 58 38 60 36 66 C36 72 44 74 52 74 C62 76 70 80 75 85' },
     {
       d: 'M110 74 C120 70 132 70 146 72 C136 76 130 78 126 80 C136 82 144 86 150 94 C140 92 132 90 124 90 C132 96 136 104 136 114 C130 106 122 100 116 98 C118 104 118 110 115 116 C112 108 108 100 105 92',
       role: 'accent',
@@ -2171,7 +2171,12 @@ export const summitWarArt = {
       role: 'soft',
     },
     {
-      d: 'M84 118 c5 -3 11 0 9 5 c-2 4 -8 4 -10 1 c-1 -2 -1 -4 1 -6 Z M118 140 c4 -2 9 1 7 5 c-2 3 -7 3 -8 0 c0 -2 0 -4 1 -5 Z M48 154 c5 -3 12 -1 10 4 c-2 3 -9 3 -10 0 Z M110 160 c4 -2 9 0 8 4 c-1 3 -7 3 -8 0 Z',
+      d: [
+        ellipse(97, 121, 8, 5),
+        ellipse(121, 149, 7, 5),
+        ellipse(60, 176, 8, 3.5),
+        ellipse(50, 144, 7, 2.5),
+      ].join(' '),
       role: 'soft',
     },
     shadow(76, 190, 56),
