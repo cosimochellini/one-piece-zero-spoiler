@@ -708,11 +708,14 @@ export const eastBlue: Saga = {
       id: 'arlong',
       kind: 'character',
       revealedAtEpisode: 31,
-      revealedAtChapter: 70,
+      revealedAtChapter: 71,
+      // Named and seen in chapter 69, but rounded up to 71: his log tells
+      // Zoro's questioning, where he calls humans inferior and Nami his
+      // cartographer, which episode 31 adapts from chapter 71.
       name: { it: 'Arlong', en: 'Arlong' },
       summary: {
-        it: 'Un uomo-pesce squalo che tiene un intero villaggio a tributo, con una spada seghettata sulla schiena e un naso lungo come una lama.',
-        en: 'A shark fish-man holding an entire village to tribute, a saw-toothed sword across his back and a nose as long as a blade.',
+        it: 'Un uomo-pesce squalo, il pirata più temuto dell’East Blue, con un colbacco in testa e un naso seghettato lungo come una lama.',
+        en: 'A shark fish-man, the most feared pirate in the East Blue, with a fur cap on his head and a saw-edged nose as long as a blade.',
       },
       visual: { art: 'arlong', tint: 'teal' },
     },
@@ -1985,8 +1988,8 @@ export const eastBlue: Saga = {
         en: 'Captain of the Arlong Pirates',
       },
       log: {
-        it: 'Ha costruito un parco sul mare e da otto anni riscuote una tassa su ogni testa dei villaggi vicini: chi non paga muore, e la Marina della zona guarda altrove. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
-        en: 'He built a park on the water and for eight years has collected a tax on every head in the villages nearby: those who cannot pay die, and the local Marines look elsewhere. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
+        it: 'Ha costruito un parco sul mare e paga un ufficiale della Marina, che prende i soldi e riparte prima che qualcuno riconosca la sua nave. I suoi uomini hanno devastato un villaggio dell’isola. Considera gli uomini una specie inferiore e lo ripete come si ripete un dato di fatto. Tiene nella sua ciurma una ragazza umana che disegna le mappe per lui, e la chiama la sua cartografa.',
+        en: 'He built a park on the water and pays a Marine officer, who takes the money and leaves before anyone recognises his ship. His men have wrecked a village on the island. He holds humans to be a lesser species and says so the way a man states a fact. He keeps a human girl in his crew who draws his maps for him, and calls her his cartographer.',
       },
       affiliation: [
         {
