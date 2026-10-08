@@ -41,6 +41,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1084,
+      chapter: 1056,
       value: {
         title: { it: 'La zuppa migliore', en: 'The best red-bean soup' },
         body: {
@@ -63,6 +64,7 @@ export const wanoChronicles = {
     },
     {
       episode: 903,
+      chapter: 916,
       value: {
         title: { it: 'Fuori dal ring', en: 'Out of the ring' },
         body: {
@@ -95,6 +97,7 @@ export const wanoChronicles = {
     },
     {
       episode: 960,
+      chapter: 959,
       value: {
         title: { it: 'Chi ha mangiato il cibo', en: 'Who ate the food' },
         body: {
@@ -165,6 +168,7 @@ export const wanoChronicles = {
   'alpacaman': [
     {
       episode: 929,
+      chapter: 935,
       value: {
         title: { it: 'Sputi e regole', en: 'Spit and the rules' },
         body: {
@@ -175,6 +179,7 @@ export const wanoChronicles = {
     },
     {
       episode: 936,
+      chapter: 939,
       value: {
         title: { it: 'La scherma dell’alpaca', en: 'Alpaca Fencing' },
         body: {
@@ -241,6 +246,7 @@ export const wanoChronicles = {
     },
     {
       episode: 945,
+      chapter: 946,
       value: {
         title: { it: 'Non per il cibo', en: 'Not over food' },
         body: {
@@ -297,6 +303,7 @@ export const wanoChronicles = {
     },
     {
       episode: 943,
+      chapter: 945,
       value: {
         title: { it: 'Inseguite quella donna', en: 'Chase that woman' },
         body: {
@@ -329,6 +336,7 @@ export const wanoChronicles = {
     },
     {
       episode: 943,
+      chapter: 945,
       value: {
         title: { it: 'L’alleata di Zoro', en: 'Zoro’s ally' },
         body: {
@@ -351,6 +359,7 @@ export const wanoChronicles = {
     },
     {
       episode: 943,
+      chapter: 945,
       value: {
         title: { it: 'La donna di Zorojuro', en: 'Zorojuro’s woman' },
         body: {
@@ -361,6 +370,7 @@ export const wanoChronicles = {
     },
     {
       episode: 951,
+      chapter: 951,
       value: {
         title: {
           it: 'La battuta di caccia dello shogun',
@@ -376,6 +386,7 @@ export const wanoChronicles = {
   'hotei': [
     {
       episode: 1023,
+      chapter: 1007,
       value: {
         title: { it: 'Il capitano Hotei', en: 'Captain Hotei' },
         body: {
@@ -428,6 +439,7 @@ export const wanoChronicles = {
     },
     {
       episode: 935,
+      chapter: 943,
       value: {
         title: { it: 'Il segreto dell’oiran', en: 'The oiran’s secret' },
         body: {
@@ -471,6 +483,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1076,
+      chapter: 1049,
       value: {
         title: { it: 'L’ultima testa', en: 'The last head' },
         body: {
@@ -503,6 +516,7 @@ export const wanoChronicles = {
     },
     {
       episode: 1080,
+      chapter: 1053,
       value: {
         title: {
           it: 'La stanza segreta del tengu',
@@ -521,8 +535,8 @@ export const wanoChronicles = {
       value: {
         title: { it: 'Il daimyo con la volpe', en: 'The daimyo with the fox' },
         body: {
-          it: '[[kawamatsu|Kawamatsu]] racconta la storia di Ringo: come la vicina Hakumai, la regione del nord era governata dal clan Shimotsuki, famoso per la sua tempra, e il suo daimyo, Shimotsuki Ushimaru, era un maestro di spada che si vedeva sempre in compagnia di una volpe. [[kaido|Kaido]] ha distrutto Ringo come ha distrutto le altre regioni. Anni dopo Kawamatsu ha ritrovato quella volpe, [[gyukimaru|Onimaru]], che da sola respingeva ancora i ladri di tombe alle Tombe Eterne, dove ogni morto riposa sotto la spada che ha portato fin dalla nascita. Sorvegliava la tomba del suo defunto padrone, e alla fine ha lasciato che Kawamatsu raccogliesse quelle spade per la battaglia che verrà.',
-          en: '[[kawamatsu|Kawamatsu]] tells the story of Ringo: like neighbouring Hakumai, the northern region was governed by the Shimotsuki Clan, famous for their toughness, and its daimyo, Shimotsuki Ushimaru, was a master swordsman always seen in the company of a fox. [[kaido|Kaido]] destroyed Ringo as he destroyed the other regions. Years later Kawamatsu found that fox, [[gyukimaru|Onimaru]], still fighting off grave robbers alone at the Eternal Graves, where each of the dead lies under the sword they carried from birth. It was guarding its late master’s grave, and in the end it let Kawamatsu gather those swords for the battle to come.',
+          it: '[[kawamatsu|Kawamatsu]] racconta la storia di Ringo: come la vicina Hakumai, la regione del nord era governata dal clan Shimotsuki, famoso per la sua tempra, e il suo daimyo, Shimotsuki Ushimaru, si vedeva sempre in compagnia di una volpe. [[kaido|Kaido]] ha distrutto Ringo come ha distrutto le altre regioni. Anni dopo Kawamatsu ha ritrovato quella volpe, [[gyukimaru|Onimaru]], che da sola respingeva ancora i ladri di tombe alle Tombe Eterne, dove ogni morto riposa sotto la spada che ha portato fin dalla nascita. Sorvegliava la tomba del suo defunto padrone, e alla fine ha lasciato che Kawamatsu raccogliesse quelle spade per la battaglia che verrà.',
+          en: '[[kawamatsu|Kawamatsu]] tells the story of Ringo: like neighbouring Hakumai, the northern region was governed by the Shimotsuki Clan, famous for their toughness, and its daimyo, Shimotsuki Ushimaru, was always seen in the company of a fox. [[kaido|Kaido]] destroyed Ringo as he destroyed the other regions. Years later Kawamatsu found that fox, [[gyukimaru|Onimaru]], still fighting off grave robbers alone at the Eternal Graves, where each of the dead lies under the sword they carried from birth. It was guarding its late master’s grave, and in the end it let Kawamatsu gather those swords for the battle to come.',
         },
       },
     },
