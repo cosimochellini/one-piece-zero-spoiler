@@ -66,7 +66,7 @@ export const waterSeven: Saga = {
       // chapter kept from before; the wiki debut is 305.
       revealedAtEpisode: 208,
       revealedAtChapter: 315,
-      name: { it: 'Porche', en: 'Porche' },
+      name: { it: 'Polluce', en: 'Porche' },
       summary: {
         it: 'L’idolo dei Pirati di Foxy, che porta un bastone ed è adorata da tutti gli uomini della ciurma.',
         en: 'The idol of the Foxy Pirates, who carries a baton and whom every man in the crew adores.',
@@ -220,7 +220,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 232,
       revealedAtChapter: 326,
-      name: { it: 'Paulie', en: 'Paulie' },
+      name: { it: 'Pauly', en: 'Paulie' },
       summary: {
         it: 'Un caposquadra della Galley-La che combatte con le corde e si scandalizza per qualunque cosa gli sembri indecente, mentre i creditori lo inseguono per la città.',
         en: 'A Galley-La foreman who fights with rope and is scandalised by anything he finds indecent, while his creditors chase him across the city.',
@@ -340,7 +340,7 @@ export const waterSeven: Saga = {
       revealedAtChapter: 378,
       // His name is first said in the raid on the Franky House (234).
       nameSaidAt: 234,
-      name: { it: 'Zambai', en: 'Zambai' },
+      name: { it: 'Zanbai', en: 'Zambai' },
       summary: {
         it: 'Il vice della Franky Family, che porta un bazooka e guida gli smantellatori quando il capo non c’è.',
         en: 'The Franky Family’s second in command, who carries a bazooka and leads the dismantlers when the boss is away.',
@@ -491,7 +491,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 264,
       revealedAtChapter: 385,
-      name: { it: 'Jabra', en: 'Jabra' },
+      name: { it: 'Jabura', en: 'Jabra' },
       summary: {
         it: 'Un agente del Cipher Pol 9 con una lunga treccia e una fascia rossa in vita, che rimprovera Kumadori perché un uomo non si scusa così facilmente, e si offre di spiegare lui stesso al capo la missione andata storta.',
         en: 'A Cipher Pol 9 agent with a long braid and a red sash, who tells Kumadori that a man does not apologise so easily, and offers to explain the botched mission to the chief himself.',
@@ -551,7 +551,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 265,
       revealedAtChapter: 385,
-      name: { it: 'Oimo e Kashi', en: 'Oimo and Kashi' },
+      name: { it: 'Oimo e Karsee', en: 'Oimo and Kashi' },
       summary: {
         it: 'Due giganti che sorvegliano il cancello di un’isola giudiziaria, uno con una clava chiodata e l’altro con una grande ascia, davanti a una porta che nessuno ha mai forzato.',
         en: 'Two giants who guard the gate of a judicial island, one with a studded club and the other with a broad axe, before a door nobody has ever forced.',
@@ -575,7 +575,7 @@ export const waterSeven: Saga = {
       kind: 'character',
       revealedAtEpisode: 275,
       revealedAtChapter: 392,
-      name: { it: 'Jaguar D. Saul', en: 'Jaguar D. Saul' },
+      name: { it: 'Hagwor D. Sauro', en: 'Jaguar D. Saul' },
       summary: {
         it: 'Un gigante naufragato sulla spiaggia di Ohara, vent’anni prima, che ride facendo «dereshishi» e diventa il primo amico della piccola Robin.',
         en: 'A giant washed up on the beach of Ohara twenty years earlier, who laughs “dereshishi” and becomes little Robin’s first friend.',
@@ -727,7 +727,7 @@ export const waterSeven: Saga = {
         en: 'Fighter of the Foxy Pirates',
       },
       log: {
-        it: 'Porta la maschera e i guanti lunghi dei Pirati di Foxy come il resto della ciurma, e una sciarpa leopardata. È con Foxy e Porche quando la loro nave blocca la Going Merry, e sta alle spalle del suo capitano mentre Foxy sfida i Cappello di Paglia.',
+        it: 'Porta la maschera e i guanti lunghi dei Pirati di Foxy come il resto della ciurma, e una sciarpa leopardata. È con Foxy e Polluce quando la loro nave blocca la Going Merry, e sta alle spalle del suo capitano mentre Foxy sfida i Cappello di Paglia.',
         en: 'He wears the Foxy Pirates’ mask and long gloves like the rest of the crew, and a leopard-spotted scarf. He is with Foxy and Porche when their ship catches the Going Merry, and stands behind his captain while Foxy challenges the Straw Hats.',
       },
       affiliation: [
@@ -1014,7 +1014,7 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles.hattori,
       role: { it: 'Il piccione di Rob Lucci', en: 'Rob Lucci’s pigeon' },
       log: {
-        it: 'Sta appollaiato sulla spalla di Lucci al Dock 1 e parla lui: chiede scusa ai clienti e rimprovera Paulie, mentre il padrone tiene la bocca chiusa. È Nami a capire il trucco: la voce è di Lucci, da ventriloquo, e l’uccello si limita a muovere becco e ali a tempo. Paulie non ci fa più caso, perché per quanto ne sa il cantiere Lucci ha sempre parlato attraverso il suo piccione.',
+        it: 'Sta appollaiato sulla spalla di Lucci al Dock 1 e parla lui: chiede scusa ai clienti e rimprovera Pauly, mentre il padrone tiene la bocca chiusa. È Nami a capire il trucco: la voce è di Lucci, da ventriloquo, e l’uccello si limita a muovere becco e ali a tempo. Pauly non ci fa più caso, perché per quanto ne sa il cantiere Lucci ha sempre parlato attraverso il suo piccione.',
         en: 'He perches on Lucci’s shoulder at Dock One and does the talking, apologising to customers and telling Paulie off, while his master keeps his mouth shut. Nami is the one who works out the trick: the voice is Lucci’s, thrown like a ventriloquist’s, and the bird only moves his beak and wings in time with it. Paulie shrugs it off, because as far as the dock is concerned Lucci has always talked through his pigeon.',
       },
       affiliation: [
@@ -1082,7 +1082,7 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles['peepley-lulu'],
       role: DOCK_ONE,
       log: {
-        it: 'È uno dei caposquadra del Dock 1, con Paulie, Kaku e Lucci, e quando dei funzionari del Governo si presentano da Iceburg è il primo a chiedere il permesso di cacciarli. Porta occhiali scuri e un ciuffo di capelli che gli sta dritto in testa. Non è l’uomo più attento del cantiere: tornando al lavoro ha incrociato la Franky Family che si portava via un tizio dal naso lungo, e l’ha preso per Kaku.',
+        it: 'È uno dei caposquadra del Dock 1, con Pauly, Kaku e Lucci, e quando dei funzionari del Governo si presentano da Iceburg è il primo a chiedere il permesso di cacciarli. Porta occhiali scuri e un ciuffo di capelli che gli sta dritto in testa. Non è l’uomo più attento del cantiere: tornando al lavoro ha incrociato la Franky Family che si portava via un tizio dal naso lungo, e l’ha preso per Kaku.',
         en: 'He is one of the foremen of Dock One, with Paulie, Kaku and Lucci, and when government officials turn up to see Iceburg he is the first to ask leave to throw them out. He wears dark glasses and a tuft of hair that sticks straight up off his head. He is not the most observant man in the yard: on his way back he passed the Franky Family carrying off a long-nosed man, and took him for Kaku.',
       },
       affiliation: [{ episode: 233, value: GALLEY_LA_DOCK_ONE }],
@@ -1148,7 +1148,7 @@ export const waterSeven: Saga = {
       chronicle: waterSevenChronicles.tilestone,
       role: DOCK_ONE,
       log: {
-        it: 'È l’ultimo dei caposquadra del Dock 1 a essere presentato, e il più rumoroso: non sa dare una notizia, buona o cattiva, senza urlarla. Quando sente che Iceburg si è svegliato piomba nella stanza gridando, e Paulie lo rispedisce fuori per il baccano. In cantiere è più utile, e con un tronco intero spazza via Franky da una rissa.',
+        it: 'È l’ultimo dei caposquadra del Dock 1 a essere presentato, e il più rumoroso: non sa dare una notizia, buona o cattiva, senza urlarla. Quando sente che Iceburg si è svegliato piomba nella stanza gridando, e Pauly lo rispedisce fuori per il baccano. In cantiere è più utile, e con un tronco intero spazza via Franky da una rissa.',
         en: 'He is the last of the Dock One foremen to be introduced, and the loudest: he cannot deliver news, good or bad, without bellowing it. When he hears that Iceburg is awake he charges into the room shouting, and Paulie sends him straight back out for the noise. In the yard he is more use, and swings a whole log to knock Franky out of a fight.',
       },
       affiliation: [{ episode: 238, value: GALLEY_LA_DOCK_ONE }],
@@ -1296,7 +1296,7 @@ export const waterSeven: Saga = {
     'jabra': {
       role: CP9_AGENT,
       log: {
-        it: 'Tornato a Enies Lobby con Kumadori e Fukuro, deve rendere conto di una missione in cui sono morte molte più persone delle tre che dovevano eliminare. Dice a Kumadori che un uomo non si scusa così facilmente, e si offre di spiegare lui stesso tutto al capo. Quando Fukuro ammette di aver parlato del piano in giro per la città, Jabra gli chiede a cosa serva la cerniera che ha sulla bocca, e quando il tentativo di harakiri di Kumadori si ferma contro il suo stesso Tekkai, gli dice di morire e basta. Porta una giacca nera aperta su una cravatta nera, una fascia rossa in vita e i capelli raccolti in una lunga treccia.',
+        it: 'Tornato a Enies Lobby con Kumadori e Fukuro, deve rendere conto di una missione in cui sono morte molte più persone delle tre che dovevano eliminare. Dice a Kumadori che un uomo non si scusa così facilmente, e si offre di spiegare lui stesso tutto al capo. Quando Fukuro ammette di aver parlato del piano in giro per la città, Jabura gli chiede a cosa serva la cerniera che ha sulla bocca, e quando il tentativo di harakiri di Kumadori si ferma contro il suo stesso Tekkai, gli dice di morire e basta. Porta una giacca nera aperta su una cravatta nera, una fascia rossa in vita e i capelli raccolti in una lunga treccia.',
         en: 'Back at Enies Lobby with Kumadori and Fukurou, he has to answer for a mission in which far more people died than the three they were sent to kill. He tells Kumadori that a man does not apologise so easily, and offers to explain it all to the chief himself. When Fukurou admits he talked about the plan all over town, Jabra asks him what the zip on his mouth is for, and when Kumadori’s attempt at hara-kiri stops against his own Tekkai, Jabra tells him to just die. He wears a black tunic open over a black tie, a red sash at the waist, and his hair in a long braid.',
       },
       affiliation: [{ episode: 264, value: CIPHER_POL_9 }],
@@ -1325,7 +1325,7 @@ export const waterSeven: Saga = {
         en: 'Mounts of the Franky Family',
       },
       log: {
-        it: 'Escono a nuoto da Water Seven legati alla barca della Franky Family, che è agganciata al Rocketman lanciato sui binari. Prendono ordini da Zambai come tutti gli altri della famiglia. Quando la ciurma arriva all’isola giudiziaria, è lui a mandarli a saltare la recinzione e ad abbattere il cancello.',
+        it: 'Escono a nuoto da Water Seven legati alla barca della Franky Family, che è agganciata al Rocketman lanciato sui binari. Prendono ordini da Zanbai come tutti gli altri della famiglia. Quando la ciurma arriva all’isola giudiziaria, è lui a mandarli a saltare la recinzione e ad abbattere il cancello.',
         en: 'They swim out of Water Seven harnessed to the Franky Family’s boat, which is hooked to the Rocketman as it races along the rails. They take their orders from Zambai like everyone else in the family. When the crew reaches the judicial island, he is the one who sends them to jump the fence and break down the gate.',
       },
       affiliation: [

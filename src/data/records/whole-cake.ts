@@ -31,7 +31,7 @@ const SWEET_COMMANDER_ROLE = {
 }
 
 const MOKOMO_MUSKETEERS = {
-  it: 'Ducato di Mokomo, Moschettieri di Inuarashi',
+  it: 'Ducato di Mokomo, Moschettieri di Cane-tempesta',
   en: 'Mokomo Dukedom, Inuarashi Musketeers',
 }
 
@@ -99,7 +99,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 758,
       revealedAtChapter: 808,
-      name: { it: 'Inuarashi', en: 'Inuarashi' },
+      name: { it: 'Cane-tempesta', en: 'Inuarashi' },
       summary: {
         it: 'Il duca cane di Zou, che regna soltanto di giorno, a letto e fasciato dopo l’assalto, che non vuole sentirsi chiamare forte perché è stato sconfitto.',
         en: 'The dog duke of Zou, who rules only by day, bandaged in his sickbed after the raid, who will not be called strong because he was beaten.',
@@ -123,7 +123,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 761,
       revealedAtChapter: 813,
-      name: { it: 'Nekomamushi', en: 'Nekomamushi' },
+      name: { it: 'Gatto-vipera', en: 'Nekomamushi' },
       summary: {
         it: 'Il signore della notte di Zou, un enorme mink gatto che si sveglia al tramonto e ride mentre gli portano notizie di guerra.',
         en: 'The night lord of Zou, an enormous cat mink who wakes at sunset and laughs while they bring him news of the war.',
@@ -137,7 +137,7 @@ export const wholeCake: Saga = {
       revealedAtChapter: 824,
       name: { it: 'Raizo', en: 'Raizo' },
       summary: {
-        it: 'Il ninja di Wano nascosto in una grotta dentro l’Albero Balena, che piange e grida a Nekomamushi: perché non l’ha consegnato?',
+        it: 'Il ninja di Wano nascosto in una grotta dentro l’Albero Balena, che piange e grida a Gatto-vipera: perché non l’ha consegnato?',
         en: 'The ninja from Wano hidden in a cave inside the Whale Tree, who weeps and shouts at Nekomamushi: why didn’t he hand him over?',
       },
       visual: { art: 'raizo', tint: 'violet' },
@@ -185,7 +185,7 @@ export const wholeCake: Saga = {
       revealedAtChapter: 830,
       name: { it: 'Praline', en: 'Praline' },
       summary: {
-        it: 'Una sirena squalo martello, ventinovesima figlia di Big Mom e moglie di Aladine, che tra lui e la madre sceglierebbe lui.',
+        it: 'Una sirena squalo martello, ventinovesima figlia di Big Mom e moglie di Aladin, che tra lui e la madre sceglierebbe lui.',
         en: 'A hammerhead shark mermaid, Big Mom’s 29th daughter and Aladine’s wife, who would choose him over her mother.',
       },
       visual: { art: 'praline', tint: 'cyan' },
@@ -243,7 +243,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 792,
       revealedAtChapter: 834,
-      name: { it: 'Charlotte Brûlée', en: 'Charlotte Brûlée' },
+      name: { it: 'Charlotte Brulee', en: 'Charlotte Brûlée' },
       summary: {
         it: 'Una figlia di Big Mom dal volto segnato, che si finge Rufy nella Foresta della Seduzione e promette che nessuno ne uscirà vivo.',
         en: 'A daughter of Big Mom with a scarred face, who poses as Luffy in the Seducing Woods and promises that nobody leaves it alive.',
@@ -405,7 +405,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 811,
       revealedAtChapter: 855,
-      name: { it: 'Charlotte Mont-d’Or', en: 'Charlotte Mont-d’Or' },
+      name: { it: 'Charlotte Mont d’Or', en: 'Charlotte Mont-d’Or' },
       summary: {
         it: 'Il ministro del formaggio di Totto Land, che si muove tra libri che gli volano attorno e spedisce Rufy dentro il mondo di un libro.',
         en: 'The minister of cheese of Totto Land, who moves among books flying around him and sends Luffy into the world of a book.',
@@ -455,7 +455,7 @@ export const wholeCake: Saga = {
       revealedAtEpisode: 836,
       revealedAtChapter: 872,
       // Rounded up to 872, the chapter that files Carmel, whom the text names.
-      name: { it: 'Jarul', en: 'Jarul' },
+      name: { it: 'Jarl', en: 'Jarul' },
       summary: {
         it: 'Un gigante anziano con un elmo cornuto e una barba larga come una montagna, che in un ricordo lontano raduna gli orfani di Elbaf attorno a un banchetto di semla.',
         en: 'An ancient giant in a horned helmet with a beard as broad as a mountain, who in a distant memory gathers Elbaph’s orphans around a feast of semla.',
@@ -467,7 +467,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 886,
       revealedAtChapter: 907,
-      name: { it: 'Donquijote Mjosgard', en: 'Donquixote Mjosgard' },
+      name: { it: 'Donquijote Myosgard', en: 'Donquixote Mjosgard' },
       summary: {
         it: 'Un Nobile Mondiale con il casco a bolla che a Mary Geoise tende la mano a una famiglia di uomini-pesce invece di alzare la pistola.',
         en: 'A World Noble in a bubble helmet who at Mary Geoise offers a hand to a family of fish-men instead of raising a gun.',
@@ -557,7 +557,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 883,
       revealedAtChapter: 906,
-      name: { it: 'Sterry', en: 'Sterry' },
+      name: { it: 'Stelly', en: 'Sterry' },
       summary: {
         it: 'Il giovane re del Regno di Goa e fratello adottivo di Sabo, che sulla strada per la Reverie pretende che un eroe della Marina lo riconosca come suo re.',
         en: 'The young king of the Goa Kingdom and Sabo’s adoptive brother, who on the way to the Reverie demands that a Marine hero recognise him as his king.',
@@ -802,7 +802,7 @@ export const wholeCake: Saga = {
       kind: 'character',
       revealedAtEpisode: 836,
       revealedAtChapter: 866,
-      name: { it: 'Jorul', en: 'Jorul' },
+      name: { it: 'Jorl', en: 'Jorul' },
       summary: {
         it: 'Un gigante antichissimo con una barba che scende fino a terra come una cascata, che in un ricordo lontano va al villaggio di Elbaf con un vecchio compagno a dividere la semla con gli orfani.',
         en: 'An ancient giant with a beard that pours to the ground like a waterfall, who in a distant memory comes down to Elbaph’s village with an old comrade to share semla with the orphans.',
@@ -1013,7 +1013,7 @@ export const wholeCake: Saga = {
     'raizo': {
       role: { it: 'Ninja del Paese di Wano', en: 'Ninja of Wano Country' },
       log: {
-        it: 'I mink hanno lasciato distruggere la propria città piuttosto che dire dove fosse, e lui era in una grotta dentro l’Albero Balena, dietro una porta nascosta nella coda. Viene da Wano. Legato e in lacrime, grida a Nekomamushi che avrebbe dovuto consegnarlo: chi gli portava da mangiare è stato ferito, e se gli hanno mentito sul paese lo odierà. La ciurma se lo immaginava tutto diverso.',
+        it: 'I mink hanno lasciato distruggere la propria città piuttosto che dire dove fosse, e lui era in una grotta dentro l’Albero Balena, dietro una porta nascosta nella coda. Viene da Wano. Legato e in lacrime, grida a Gatto-vipera che avrebbe dovuto consegnarlo: chi gli portava da mangiare è stato ferito, e se gli hanno mentito sul paese lo odierà. La ciurma se lo immaginava tutto diverso.',
         en: 'The minks let their own city be wrecked rather than say where he was, and he was in a cave inside the Whale Tree, behind a hidden door in its tail. He comes from Wano. Restrained and in tears, he shouts at Nekomamushi that he should have handed him over: everyone who brought him food was hurt, and if they lied to him about the country he will hate him. The crew had pictured him quite differently.',
       },
       affiliation: [
@@ -1088,14 +1088,14 @@ export const wholeCake: Saga = {
     'praline': {
       role: BIG_MOM_DAUGHTER,
       log: {
-        it: 'È la ventinovesima figlia di Big Mom, una sirena squalo martello sposata con Aladine dei Pirati del Sole. Sorprende i pirati a parlare di lei e chiede se lo stanno facendo alle sue spalle. Se la madre si arrabbia, dice ad Aladine, lei sceglierà lui e partirà con lui. Ma avverte che chi ha voluto lasciare la ciurma della madre è morto, tutti quanti.',
+        it: 'È la ventinovesima figlia di Big Mom, una sirena squalo martello sposata con Aladin dei Pirati del Sole. Sorprende i pirati a parlare di lei e chiede se lo stanno facendo alle sue spalle. Se la madre si arrabbia, dice ad Aladin, lei sceglierà lui e partirà con lui. Ma avverte che chi ha voluto lasciare la ciurma della madre è morto, tutti quanti.',
         en: 'She is Big Mom’s 29th daughter, a hammerhead shark mermaid married to Aladine of the Sun Pirates. She catches the pirates talking about her and asks whether they are doing it behind her back. If her mother gets angry, she tells Aladine, she will choose him and leave with him. But she warns that everyone who wished to leave her mother’s crew is dead.',
       },
       affiliation: [
         {
           episode: 790,
           value: {
-            it: 'Pirati del Sole, moglie di Aladine; figlia di Big Mom',
+            it: 'Pirati del Sole, moglie di Aladin; figlia di Big Mom',
             en: 'Sun Pirates, Aladine’s wife; Big Mom’s daughter',
           },
         },
@@ -1814,7 +1814,7 @@ export const wholeCake: Saga = {
         {
           episode: 758,
           value: {
-            it: 'Ducato di Mokomo, capitano dei Moschettieri di Inuarashi',
+            it: 'Ducato di Mokomo, capitano dei Moschettieri di Cane-tempesta',
             en: 'Mokomo Dukedom, Inuarashi Musketeers captain',
           },
         },
@@ -1860,14 +1860,14 @@ export const wholeCake: Saga = {
         {
           episode: 797,
           value: {
-            it: 'Ex marito di Big Mom; padre di Lola',
+            it: 'Ex marito di Big Mom; padre di Laura',
             en: 'Big Mom’s ex-husband; Lola’s father',
           },
         },
         {
           episode: 857,
           value: {
-            it: 'Venticinquesimo ex marito di Big Mom; padre di Lola e Chiffon',
+            it: 'Venticinquesimo ex marito di Big Mom; padre di Laura e Chiffon',
             en: 'Big Mom’s twenty-fifth ex-husband; father of Lola and Chiffon',
           },
         },

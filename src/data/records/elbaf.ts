@@ -40,7 +40,7 @@ export const elbaf: Saga = {
       nameSaidAt: 71,
       name: { it: 'Elbaf', en: 'Elbaph' },
       summary: {
-        it: 'La ciurma riprende il mare insieme ai giganti dei Pirati Guerrieri Giganti, diretta verso Elbaf, la patria dei guerrieri di cui parlavano Dorry e Broggy.',
+        it: 'La ciurma riprende il mare insieme ai giganti dei Pirati Guerrieri Giganti, diretta verso Elbaf, la patria dei guerrieri di cui parlavano Dori e Brogi.',
         en: 'The crew sails on with the giants of the Giant Warrior Pirates, bound for Elbaph, the warriors’ homeland Dorry and Brogy spoke of long ago.',
       },
       visual: { art: 'elbaf', tint: 'green' },
@@ -50,7 +50,7 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1158,
       revealedAtChapter: 1128,
-      name: { it: 'Iscat', en: 'Iscat' },
+      name: { it: 'Iskat', en: 'Iscat' },
       summary: {
         it: 'Un gatto enorme, con corona e mantello, che regna sul Castello di Bigstein nella Terra degli Dei, un regno di mattoncini dove ogni animale è un gigante.',
         en: 'An enormous crowned and robed cat reigning over Bigstein Castle in the Land of Gods, a block-built kingdom where every animal is a giant.',
@@ -64,7 +64,7 @@ export const elbaf: Saga = {
       revealedAtChapter: 1129,
       // "Road" is in "Road Poneglyph" long before the teacher is met.
       commonWord: true,
-      name: { it: 'Road', en: 'Road' },
+      name: { it: 'Lord', en: 'Road' },
       summary: {
         it: 'Il Dio del Sole della Terra degli Dei si rivela un gigante in carne e ossa, navigatore della ciurma di Hajrudin, chino su un plastico che finge di governare.',
         en: 'The Sun God of the Land of Gods turns out to be a flesh-and-blood giant, navigator of Hajrudin’s crew, bent over a diorama he pretends to rule.',
@@ -142,7 +142,7 @@ export const elbaf: Saga = {
       revealedAtChapter: 1134,
       name: { it: 'Ange', en: 'Ange' },
       summary: {
-        it: 'Una giovane insegnante della Scuola Walrus, una pila di libri tra le braccia, assistente di Saul, che insegna le lingue e tiene la biblioteca.',
+        it: 'Una giovane insegnante della Scuola Walrus, una pila di libri tra le braccia, assistente di Sauro, che insegna le lingue e tiene la biblioteca.',
         en: 'A young teacher at the Walrus School, books stacked in her arms, Saul’s assistant, who teaches languages and keeps the library.',
       },
       visual: { art: 'ange', tint: 'pink' },
@@ -176,7 +176,7 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1165,
       revealedAtChapter: 1135,
-      name: { it: 'Colon', en: 'Colon' },
+      name: { it: 'Collon', en: 'Colon' },
       summary: {
         it: 'Un ragazzo mezzo gigante, il teppista della Scuola Walrus, che attacca briga mentre i compagni rifiutano la violenza e vuole a tutti i costi diventare un guerriero.',
         en: 'A half-giant boy, the Walrus School’s delinquent, who picks fights while his classmates shun violence and wants more than anything to become a warrior.',
@@ -188,7 +188,7 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1165,
       revealedAtChapter: 1135,
-      name: { it: 'Biblo', en: 'Biblo' },
+      name: { it: 'Bibelot', en: 'Biblo' },
       summary: {
         it: 'Un gufo antichissimo, bibliotecario capo della Biblioteca del Gufo, che fa crescere i libri fino alla misura dei giganti col potere di un frutto del diavolo.',
         en: 'An ancient owl, chief librarian of the Owl Library, who makes books grow to the size giants read them at with the power of a devil fruit.',
@@ -237,7 +237,7 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1168,
       revealedAtChapter: 1138,
-      name: { it: 'Cerberus', en: 'Cerberus' },
+      name: { it: 'Cerbero', en: 'Cerberus' },
       summary: {
         it: 'La spada di Figarland Shamrock, che nel mezzo di uno scontro smette di essere una lama e diventa un cane a tre teste pronto a mordere.',
         en: 'Figarland Shamrock’s sword, which in the middle of a fight stops being a blade and becomes a three-headed dog ready to bite.',
@@ -249,9 +249,9 @@ export const elbaf: Saga = {
       kind: 'character',
       revealedAtEpisode: 1169,
       revealedAtChapter: 1139,
-      name: { it: 'Scopper Gaban', en: 'Scopper Gaban' },
+      name: { it: 'Scopper Gabin', en: 'Scopper Gaban' },
       summary: {
-        it: 'Un vecchio umano con due asce, che su Elbaf si faceva chiamare Mr. Ya e si rivela Scopper Gaban, la Mano Sinistra del Re dei Pirati.',
+        it: 'Un vecchio umano con due asce, che su Elbaf si faceva chiamare Mr. Ya e si rivela Scopper Gabin, la Mano Sinistra del Re dei Pirati.',
         en: 'An old human with two axes, who went by Mr. Ya on Elbaph and turns out to be Scopper Gaban, the Left Hand of the Pirate King.',
       },
       visual: { art: 'scopper-gaban', tint: 'azure' },
@@ -340,7 +340,7 @@ export const elbaf: Saga = {
         en: 'Ruler of Bigstein Castle',
       },
       log: {
-        it: 'Nella Terra degli Dei, un regno fatto di mattoncini, gli animali sono grandi come mostri e gli abitanti li venerano come dèi. Iscat, con corona e mantello, è il signore del Castello di Bigstein, e butta giù dal castello Nami e Usop prima di trasformarsi in un leone. Alla fine è Rufy a costringerlo a portare la ciurma in groppa.',
+        it: 'Nella Terra degli Dei, un regno fatto di mattoncini, gli animali sono grandi come mostri e gli abitanti li venerano come dèi. Iskat, con corona e mantello, è il signore del Castello di Bigstein, e butta giù dal castello Nami e Usop prima di trasformarsi in un leone. Alla fine è Rufy a costringerlo a portare la ciurma in groppa.',
         en: 'In the Land of Gods, a kingdom built of toy blocks, the animals are as big as monsters and the locals worship them as gods. Iscat, crowned and robed, is lord of Bigstein Castle, and knocks Nami and Usopp off its walls before turning into a lion. In the end it is Luffy who forces it to carry the crew on its back.',
       },
       status: [{ episode: 1158, value: 'alive' }],
@@ -360,7 +360,7 @@ export const elbaf: Saga = {
         en: 'New Giant Warrior Pirates navigator',
       },
       log: {
-        it: 'Per gli abitanti della Terra degli Dei è il Dio del Sole, un gigante mascherato da un teschio di cervo che regna dall’alto sul loro piccolo regno. Quando la ciurma alza gli occhi lo trova curvo su un plastico, che si diverte a giocare al dio con un mondo grande quanto un tavolo. Si chiama Road, e governa la rotta della nave di Hajrudin.',
+        it: 'Per gli abitanti della Terra degli Dei è il Dio del Sole, un gigante mascherato da un teschio di cervo che regna dall’alto sul loro piccolo regno. Quando la ciurma alza gli occhi lo trova curvo su un plastico, che si diverte a giocare al dio con un mondo grande quanto un tavolo. Si chiama Lord, e governa la rotta della nave di Hajrudin.',
         en: 'To the people of the Land of Gods he is the Sun God, a giant masked in a deer skull who rules their small kingdom from above. When the crew looks up they find him hunched over a diorama, enjoying playing god to a world the size of a table. His name is Road, and he steers the course of Hajrudin’s ship.',
       },
       status: [{ episode: 1159, value: 'alive' }],
@@ -400,7 +400,7 @@ export const elbaf: Saga = {
         en: 'New Giant Warrior Pirates cook',
       },
       log: {
-        it: 'È il cuoco della ciurma di Hajrudin, e la ciurma di Cappello di Paglia lo incontra sul ponte di corda che sale lungo l’albero, mentre parla con Gerd. Dice che gli intrusi vanno arrestati e consegnati a Jarul, e che Road continua a portarne di nascosto sull’isola. Nemmeno a lui Road va molto a genio.',
+        it: 'È il cuoco della ciurma di Hajrudin, e la ciurma di Cappello di Paglia lo incontra sul ponte di corda che sale lungo l’albero, mentre parla con Gerd. Dice che gli intrusi vanno arrestati e consegnati a Jarl, e che Lord continua a portarne di nascosto sull’isola. Nemmeno a lui Lord va molto a genio.',
         en: 'He is the cook of Hajrudin’s crew, and the Straw Hats first see him on the rope bridge climbing the tree, deep in talk with Gerd. He says intruders are to be arrested and reported to Jarul, and that Road keeps smuggling them onto the island. He has little love for Road either.',
       },
       status: [{ episode: 1161, value: 'alive' }],
@@ -413,7 +413,7 @@ export const elbaf: Saga = {
         en: 'Walrus School language teacher',
       },
       log: {
-        it: 'Alla Scuola Walrus fa da assistente a Saul, e tra una lezione e l’altra insegna le lingue ai bambini del villaggio. È lei che corre a gridare che Saul è crollato, ed era d’accordo con lui fin dall’inizio per lo scherzo. Poi si offre di guidare la ciurma per il villaggio.',
+        it: 'Alla Scuola Walrus fa da assistente a Sauro, e tra una lezione e l’altra insegna le lingue ai bambini del villaggio. È lei che corre a gridare che Sauro è crollato, ed era d’accordo con lui fin dall’inizio per lo scherzo. Poi si offre di guidare la ciurma per il villaggio.',
         en: 'At the Walrus School she assists Saul, and between lessons she teaches languages to the village children. She is the one who runs shouting that Saul has collapsed, and she was in on his prank from the start. Then she offers to show the crew around the village.',
       },
       status: [{ episode: 1164, value: 'alive' }],
@@ -561,7 +561,7 @@ export const elbaf: Saga = {
     'scopper-gaban': {
       role: { it: 'Ex membro dei Pirati di Roger', en: 'Former Roger Pirate' },
       log: {
-        it: 'Su Elbaf viveva da anni come Mr. Ya, un vecchio umano con due asce, ex pirata, che i giganti chiamavano con rispetto Ya-san. Poi si rivela Scopper Gaban, il Mangiamontagne, la Mano Sinistra del Re dei Pirati, che navigò con Roger fino alla fine. È il marito di Ripley e il padre di Colon.',
+        it: 'Su Elbaf viveva da anni come Mr. Ya, un vecchio umano con due asce, ex pirata, che i giganti chiamavano con rispetto Ya-san. Poi si rivela Scopper Gabin, il Mangiamontagne, la Mano Sinistra del Re dei Pirati, che navigò con Roger fino alla fine. È il marito di Ripley e il padre di Collon.',
         en: 'For years he lived on Elbaph as Mr. Ya, an old human with two axes, a former pirate the giants respectfully called Ya-san. Then he is revealed as Scopper Gaban, the Mountain-Eater, the Left Hand of the Pirate King, who sailed with Roger to the end. He is Ripley’s husband and Colon’s father.',
       },
       status: [{ episode: 1169, value: 'alive' }],
@@ -642,7 +642,7 @@ export const elbaf: Saga = {
         en: 'Walrus School gym teacher',
       },
       log: {
-        it: 'Alla Scuola Walrus insegna ginnastica. Dopo che un serpente gigante attacca la scuola lo trovano gravemente ferito, e quando gli chiedono cosa sia successo parla solo degli alunni. È lui ad avvertire Saul di non toccare i bambini che camminano nel sonno verso la spiaggia.',
+        it: 'Alla Scuola Walrus insegna ginnastica. Dopo che un serpente gigante attacca la scuola lo trovano gravemente ferito, e quando gli chiedono cosa sia successo parla solo degli alunni. È lui ad avvertire Sauro di non toccare i bambini che camminano nel sonno verso la spiaggia.',
         en: 'At the Walrus School he teaches gym. After a giant serpent attacks the school he is found badly hurt, and when asked what happened he talks only about the pupils. It is he who warns Saul not to touch the children sleepwalking toward the beach.',
       },
       status: [{ episode: 1172, value: 'alive' }],

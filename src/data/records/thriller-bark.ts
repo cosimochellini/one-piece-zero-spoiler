@@ -69,7 +69,7 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 345,
       revealedAtChapter: 455,
-      name: { it: 'Lola', en: 'Lola' },
+      name: { it: 'Laura', en: 'Lola' },
       summary: {
         it: 'Una sposa zombie con il velo impigliato nelle zanne di un cinghiale, che insegue chiunque passi per chiedergli di sposarla.',
         en: 'A zombie bride whose veil hangs from a warthog’s tusks, chasing down anyone who walks past to ask for their hand in marriage.',
@@ -146,7 +146,7 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 358,
       revealedAtChapter: 472,
-      name: { it: 'Oz', en: 'Oars' },
+      name: { it: 'Ozu', en: 'Oars' },
       summary: {
         it: 'Il cadavere di un gigante antico, alto quanto la villa e con due grandi corna sulla testa, che si rialza appena gli cuciono dentro un’ombra nuova.',
         en: 'The corpse of an ancient giant, as tall as the mansion, with two great horns on his head, which stands back up once a new shadow is sewn inside it.',
@@ -158,7 +158,7 @@ export const thrillerBark: Saga = {
       kind: 'character',
       revealedAtEpisode: 380,
       revealedAtChapter: 489,
-      name: { it: 'Yorki', en: 'Yorki' },
+      name: { it: 'Yooki', en: 'Yorki' },
       summary: {
         it: 'Il capitano che cinquant’anni fa portò nella Rotta Maggiore una ciurma di musicisti, e teneva il tempo cantando mentre gli altri sparavano.',
         en: 'The captain who took a crew of musicians into the Grand Line fifty years ago, keeping time by singing while everyone around him was shooting.',
@@ -779,7 +779,7 @@ export const thrillerBark: Saga = {
         en: 'Rolling Pirates crewmen',
       },
       log: {
-        it: 'Sono salpati con i Pirati di Rolling agli ordini di Lola, e da tre anni si nascondono nella foresta di Thriller Bark senza ombra, insieme alle altre vittime dell’isola. Hanno imparato che l’ombra di uno zombie purificato si può catturare e infilare in un corpo vivo, e ne hanno messe da parte parecchie. Da soli non possono battere Moria, così aspettano qualcuno abbastanza forte a cui prestarle.',
+        it: 'Sono salpati con i Pirati di Rolling agli ordini di Laura, e da tre anni si nascondono nella foresta di Thriller Bark senza ombra, insieme alle altre vittime dell’isola. Hanno imparato che l’ombra di uno zombie purificato si può catturare e infilare in un corpo vivo, e ne hanno messe da parte parecchie. Da soli non possono battere Moria, così aspettano qualcuno abbastanza forte a cui prestarle.',
         en: 'They sailed with the Rolling Pirates under Lola, and for three years they have hidden without shadows in the forest of Thriller Bark, with the island’s other victims. They have learned that the shadow of a purified zombie can be caught and pushed into a living body, and they have put a good many aside. They cannot beat Moria on their own, so they wait for someone strong enough to lend them to.',
       },
       status: [{ episode: 370, value: 'alive' }],

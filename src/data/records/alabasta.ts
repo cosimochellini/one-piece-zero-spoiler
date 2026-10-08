@@ -76,7 +76,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 62,
       revealedAtChapter: 105,
-      name: { it: 'Labon', en: 'Laboon' },
+      name: { it: 'Lovon', en: 'Laboon' },
       summary: {
         it: 'Una balena grande come un’isola che aspetta davanti alla Montagna Inversa, con la fronte piena di cicatrici perché la sbatte contro la scogliera.',
         en: 'A whale the size of an island waiting at Reverse Mountain, his forehead scarred from beating it against the cliff.',
@@ -100,7 +100,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 63,
       revealedAtChapter: 107,
-      name: { it: 'Mister 9', en: 'Mr. 9' },
+      name: { it: 'Mr. Nine', en: 'Mr. 9' },
       summary: {
         it: 'Un uomo con la corona in testa che dice di essere un re, entra con la sua socia nello stomaco di una balena per ucciderla e non dice per chi lavora.',
         en: 'A man in a crown who says he is a king, gets into a whale’s stomach with his partner to kill it, and will not say who he works for.',
@@ -148,7 +148,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 65,
       revealedAtChapter: 114,
-      name: { it: 'Carue', en: 'Karoo' },
+      name: { it: 'Karl', en: 'Karoo' },
       summary: {
         it: 'Un’anatra da corsa con la sella sul dorso e la borraccia al collo, che porta la sua padrona più veloce di un cavallo.',
         en: 'A racing duck with a saddle on his back and a canteen at his neck, carrying his mistress faster than a horse.',
@@ -172,7 +172,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 66,
       revealedAtChapter: 114,
-      name: { it: 'Mister 5', en: 'Mr. 5' },
+      name: { it: 'Mr. Five', en: 'Mr. 5' },
       summary: {
         it: 'Un agente il cui corpo è esplosivo: si stacca di dosso un pezzetto qualsiasi e lo lancia come una pallottola che scoppia.',
         en: 'An agent whose body is an explosive: he flicks away some small piece of himself and it goes off like a bullet.',
@@ -220,9 +220,9 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 70,
       revealedAtChapter: 120,
-      name: { it: 'Mister 3', en: 'Mr. 3' },
+      name: { it: 'Mr. Three', en: 'Mr. 3' },
       summary: {
-        it: 'Un agente con i capelli a forma di tre che sorseggia Earl Grey, si lamenta di annoiarsi e legge negli ordini del capo che Mister 5 è stato sconfitto.',
+        it: 'Un agente con i capelli a forma di tre che sorseggia Earl Grey, si lamenta di annoiarsi e legge negli ordini del capo che Mr. Five è stato sconfitto.',
         en: 'An agent with hair shaped like a three who sips Earl Grey, complains that he is bored, and reads in the boss’s orders that Mr. 5 has been beaten.',
       },
       visual: { art: 'mr-3', tint: 'ivory' },
@@ -232,7 +232,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 70,
       revealedAtChapter: 120,
-      name: { it: 'Miss Goldenweek', en: 'Miss Goldenweek' },
+      name: { it: 'Miss Golden Week', en: 'Miss Goldenweek' },
       summary: {
         it: 'Una ragazzina in vacanza con il suo socio, che dice di annoiarsi e passa giorni a fissare un foglio senza dirgli che contiene i loro ordini.',
         en: 'A girl on holiday with her partner, who says she is bored and spends days staring at a sheet of paper without telling him it holds their orders.',
@@ -244,7 +244,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 71,
       revealedAtChapter: 120,
-      name: { it: 'Dorry', en: 'Dorry' },
+      name: { it: 'Dori', en: 'Dorry' },
       summary: {
         it: 'Un gigante alto quanto una torre che vive a Little Garden, con uno scudo rotondo e una spada, e duella da cento anni con un vecchio amico.',
         en: 'A giant as tall as a tower living on Little Garden, round shield and sword in hand, a hundred years into a duel with an old friend.',
@@ -256,7 +256,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 71,
       revealedAtChapter: 120,
-      name: { it: 'Broggy', en: 'Brogy' },
+      name: { it: 'Brogi', en: 'Brogy' },
       summary: {
         it: 'Un gigante dalla barba rossa che ride fino a scuotere la terra, con un’ascia enorme e un duello che va avanti da cento anni.',
         en: 'A red-bearded giant whose laugh shakes the ground, an enormous axe on his shoulder and a duel a hundred years old.',
@@ -304,7 +304,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 78,
       revealedAtChapter: 133,
-      name: { it: 'Mister 2 Von Clay', en: 'Bon Clay' },
+      name: { it: 'Mr. Two Bon Kure', en: 'Bon Clay' },
       summary: {
         it: 'Un ballerino con il cappotto da cigno e le scarpe a punta, che copia il volto di chiunque tocchi e lo indossa come una maschera.',
         en: 'A dancer in a swan coat and pointed shoes, who copies the face of anyone he touches and wears it like a mask.',
@@ -316,7 +316,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 80,
       revealedAtChapter: 135,
-      name: { it: 'Dalton', en: 'Dalton' },
+      name: { it: 'Dolton', en: 'Dalton' },
       summary: {
         it: 'Il capitano della guardia dell’isola di Drum, un uomo enorme con una grossa vanga nel fodero sulla schiena, che ordina ai pirati di andarsene e poi, quando chinano la testa, li accoglie.',
         en: 'The captain of Drum Island’s guard, a huge man with an outsized spade sheathed on his back, who orders the pirates away and then, once they bow their heads, takes them in.',
@@ -328,7 +328,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 79,
       revealedAtChapter: 130,
-      name: { it: 'Mister 11', en: 'Mr. 11' },
+      name: { it: 'Mr. Eleven', en: 'Mr. 11' },
       summary: {
         it: 'Un agente catturato dalla Marina e legato all’albero maestro della nave di Smoker, che giura di non aver mai sentito parlare dell’organizzazione per cui lavora.',
         en: 'An agent caught by the Marines and tied to the mast of Smoker’s ship, who swears he has never heard of the organisation he works for.',
@@ -364,7 +364,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 83,
       revealedAtChapter: 134,
-      name: { it: 'Tony Tony Chopper', en: 'Tony Tony Chopper' },
+      name: { it: 'TonyTony Chopper', en: 'Tony Tony Chopper' },
       summary: {
         it: 'Una renna dal naso blu che ha mangiato un frutto del diavolo, parla, cammina su due zampe e ha imparato la medicina da una dottoressa di 139 anni.',
         en: 'A blue-nosed reindeer who ate a devil fruit, talks, walks on two legs and learned medicine from a 139-year-old doctor.',
@@ -376,7 +376,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 85,
       revealedAtChapter: 145,
-      name: { it: 'Hiluluk', en: 'Hiluluk' },
+      name: { it: 'Hirurukù', en: 'Hiluluk' },
       summary: {
         it: 'Un ciarlatano con una bandiera pirata tutta sua, convinto che nessuna malattia sia incurabile, che ha raccolto una renna e le ha dato un nome.',
         en: 'A quack with a pirate flag of his own, certain that no illness is incurable, who took in a reindeer and gave him a name.',
@@ -412,7 +412,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 91,
       revealedAtChapter: 155,
-      name: { it: 'Mister 13', en: 'Mr. 13' },
+      name: { it: 'Mr. Thirteen', en: 'Mr. 13' },
       summary: {
         it: 'Una lontra con gli occhiali da sole e una tuta a pois che, in coppia con un avvoltoio, porta gli ordini del capo e punisce gli agenti che falliscono.',
         en: 'An otter in sunglasses and a polka-dot jumpsuit who, with a vulture for a partner, carries the boss’s orders and punishes the agents who fail him.',
@@ -557,7 +557,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 103,
       revealedAtChapter: 170,
-      name: { it: 'Mister 1', en: 'Mr. 1' },
+      name: { it: 'Mr. One', en: 'Mr. 1' },
       summary: {
         it: 'L’agente di grado più alto di Baroque Works, un uomo silenzioso che taglia in due un muro con una lama uscita dal suo corpo.',
         en: 'The highest-ranked agent of Baroque Works, a silent man who cuts a wall in two with a blade that comes out of his own body.',
@@ -569,7 +569,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 103,
       revealedAtChapter: 170,
-      name: { it: 'Miss Doublefinger', en: 'Miss Doublefinger' },
+      name: { it: 'Miss Double Finger', en: 'Miss Doublefinger' },
       summary: {
         it: 'La proprietaria dello Spiders Cafe, che si fa chiamare Paula e serve il tè agli agenti, finché non ferma una lite fra due di loro e si rivela un’agente anche lei.',
         en: 'The owner of the Spiders Cafe, who goes by Paula and serves the agents their tea, until she stops a fight between two of them and turns out to be an agent herself.',
@@ -581,7 +581,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 103,
       revealedAtChapter: 170,
-      name: { it: 'Mister 4', en: 'Mr. 4' },
+      name: { it: 'Mr. Four', en: 'Mr. 4' },
       summary: {
         it: 'Un agente lentissimo con una mazza da baseball, che porta con sé un fucile a forma di cane e lascia parlare la sua compagna.',
         en: 'An extremely slow agent with a baseball bat, who carries a dog-shaped gun and leaves the talking to his partner.',
@@ -665,7 +665,7 @@ export const alabasta: Saga = {
       kind: 'character',
       revealedAtEpisode: 125,
       revealedAtChapter: 206,
-      name: { it: 'Mister 7', en: 'Mr. 7' },
+      name: { it: 'Mr. Seven', en: 'Mr. 7' },
       summary: {
         it: 'Un cecchino nella torre dell’orologio sopra la piazza di Alubarna, che ride accanto a un cannone che ha l’ordine di sparare alle quattro e mezza.',
         en: 'A sniper in the clock tower above the square of Alubarna, laughing beside a cannon he has orders to fire at half past four.',
@@ -784,13 +784,13 @@ export const alabasta: Saga = {
     'igaram': {
       role: { it: 'Capo di Whisky Peak', en: 'Head of Whisky Peak' },
       log: {
-        it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mister 8 comanda cento agenti travestiti da cittadini ospitali.',
+        it: 'Accoglie ogni nave che arriva a Whisky Peak con un coro, un banchetto e tutto il liquore che i pirati riescono a bere, poi aspetta che crollino. Porta i bigodini anche di giorno e suona un sassofono che spara. Sotto il nome in codice di Mr. Eight comanda cento agenti travestiti da cittadini ospitali.',
         en: 'He greets every ship that reaches Whisky Peak with a choir, a banquet and all the liquor the pirates can drink, then waits for them to fall over. He wears curlers by daylight and plays a saxophone that fires bullets. Under the code name Mr. 8 he commands a hundred agents dressed as hospitable townsfolk.',
       },
       affiliation: [
         {
           episode: 64,
-          value: { it: 'Baroque Works, Mister 8', en: 'Baroque Works, Mr. 8' },
+          value: { it: 'Baroque Works, Mr. Eight', en: 'Baroque Works, Mr. 8' },
         },
         {
           episode: 67,
@@ -857,7 +857,7 @@ export const alabasta: Saga = {
     'nefertari-vivi': {
       role: { it: 'Principessa di Alabasta', en: 'Princess of Alabasta' },
       log: {
-        it: 'Per due anni è stata Miss Wednesday, un’agente dell’organizzazione di cui voleva scoprire il capo. Ora che lo conosce, quel nome la condanna a morte e l’unico modo per tornare a casa è una nave di pirati che ha appena incontrato. Ha un’anatra da corsa che risponde al nome di Carue.',
+        it: 'Per due anni è stata Miss Wednesday, un’agente dell’organizzazione di cui voleva scoprire il capo. Ora che lo conosce, quel nome la condanna a morte e l’unico modo per tornare a casa è una nave di pirati che ha appena incontrato. Ha un’anatra da corsa che risponde al nome di Karl.',
         en: 'For two years she was Miss Wednesday, an agent of the organisation whose leader she set out to unmask. Now that she knows him, that name marks her for death and the only way home is a pirate ship she has just met. She has a racing duck who answers to Carue.',
       },
       status: [{ episode: 67, value: 'alive' }],
@@ -882,7 +882,7 @@ export const alabasta: Saga = {
     'mr-3': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mister 5 è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
+        it: 'Non vuole che il suo nome in codice venga detto in pubblico. Beve Earl Grey, dice di annoiarsi e chiama le sue giornate oziose un privilegio da agente ufficiale. Quando gli ordini del capo dicono che Mr. Five è stato sconfitto non si stupisce: secondo lui un criminale vince con l’intelligenza, non con i poteri di un frutto.',
         en: 'He does not want his code name said in public. He drinks Earl Grey, says he is bored, and calls his idle days a privilege of an officer agent. When the boss’s orders say that Mr. 5 has been beaten he is not surprised: a criminal, he says, wins with his head, not with a devil fruit’s powers.',
       },
       affiliation: [
@@ -1030,7 +1030,7 @@ export const alabasta: Saga = {
     'mr-11': {
       role: BW_AGENT_ROLE,
       log: {
-        it: 'La Marina lo ha catturato pochi giorni prima e lo tiene legato all’albero maestro della nave di Smoker. Giura di non aver mai sentito parlare di nessuna organizzazione né di nessun Mister 0. Smoker, che non gli crede, finge di avergli trovato degli ordini in tasca, e lui si tradisce da solo.',
+        it: 'La Marina lo ha catturato pochi giorni prima e lo tiene legato all’albero maestro della nave di Smoker. Giura di non aver mai sentito parlare di nessuna organizzazione né di nessun Mr. Zero. Smoker, che non gli crede, finge di avergli trovato degli ordini in tasca, e lui si tradisce da solo.',
         en: 'The Marines caught him a few days before and keep him tied to the mast of Smoker’s ship. He swears he has never heard of any organisation, or of anyone called Mr. 0. Smoker, who believes none of it, bluffs that orders were found in his pocket, and he gives himself away.',
       },
       status: [
@@ -1161,7 +1161,7 @@ export const alabasta: Saga = {
     'mr-13': {
       role: UNLUCKIES_ROLE,
       log: {
-        it: 'Lui e la sua compagna sono gli Unluckies, la coppia che porta gli ordini di Mister 0 e si occupa degli agenti che falliscono. Accende le bombe che sganciano sui traditori con due conchiglie artigliate, e con le stesse conchiglie combatte. A Whisky Peak ha sentito pronunciare il nome del capo e ha disegnato i volti dei pirati che lo avevano sentito.',
+        it: 'Lui e la sua compagna sono gli Unluckies, la coppia che porta gli ordini di Mr. Zero e si occupa degli agenti che falliscono. Accende le bombe che sganciano sui traditori con due conchiglie artigliate, e con le stesse conchiglie combatte. A Whisky Peak ha sentito pronunciare il nome del capo e ha disegnato i volti dei pirati che lo avevano sentito.',
         en: 'He and his partner are the Unluckies, the pair who carry Mr. 0’s orders and deal with the agents who fail. He lights the bombs they drop on traitors with a pair of clawed clam shells, and fights with the same shells. At Whisky Peak he overheard the boss’s name said aloud, and sketched the faces of the pirates who heard it.',
       },
       affiliation: [{ episode: 91, value: UNLUCKIES }],
@@ -1169,7 +1169,7 @@ export const alabasta: Saga = {
     'miss-friday': {
       role: UNLUCKIES_ROLE,
       log: {
-        it: 'È l’avvoltoio degli Unluckies e porta in volo il suo compagno lontra ovunque Mister 0 li mandi. Dall’alto sganciano pacchi bomba sugli agenti che falliscono o scappano, e da vicino apre il fuoco con le mitragliatrici legate sulla schiena. Capisce ogni parola che si dice vicino a lei, e la riferisce.',
+        it: 'È l’avvoltoio degli Unluckies e porta in volo il suo compagno lontra ovunque Mr. Zero li mandi. Dall’alto sganciano pacchi bomba sugli agenti che falliscono o scappano, e da vicino apre il fuoco con le mitragliatrici legate sulla schiena. Capisce ogni parola che si dice vicino a lei, e la riferisce.',
         en: 'She is the vulture of the Unluckies, and flies her otter partner wherever Mr. 0 sends them. From the air they drop parcel bombs on the agents who fail or run, and at close range she opens fire with the machine guns strapped to her back. She understands every word said near her, and passes it on.',
       },
       affiliation: [{ episode: 91, value: UNLUCKIES }],
@@ -1421,7 +1421,7 @@ export const alabasta: Saga = {
     'miss-doublefinger': {
       role: BW_OFFICER_ROLE,
       log: {
-        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e offre il tè agli agenti. Quando Mister 1 entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
+        it: 'Allo Spiders Cafe si fa chiamare Paula, porta occhiali colorati e una bandana a rombi, e offre il tè agli agenti. Quando Mr. One entra sfondando il muro e il ballerino gli si scaglia contro, è lei a fermarli. Lavora accanto a lui, ed è lei a riferire l’ordine di partire per incontrare il capo.',
         en: 'At the Spiders Cafe she goes by Paula, wears tinted glasses and a diamond-patterned bandanna, and offers tea to the agents. When Mr. 1 comes in through the wall and the dancer goes for him, she is the one who stops them. She works beside him, and she passes on the order to leave and meet the boss.',
       },
       affiliation: [{ episode: 103, value: BW_OFFICER }],
@@ -1475,16 +1475,16 @@ export const alabasta: Saga = {
       ],
     },
     'lassoo': {
-      role: { it: 'Cane-fucile di Mister 4', en: 'Mr. 4’s gun-dog' },
+      role: { it: 'Cane-fucile di Mr. Four', en: 'Mr. 4’s gun-dog' },
       log: {
-        it: 'È un bazooka a cui è stato fatto mangiare un frutto del diavolo, e così è diventato un bassotto vivo, perennemente raffreddato. Quando starnutisce spara palle da baseball pesanti come palle di cannone, che esplodono qualche secondo dopo essere cadute. Mister 4 le rilancia con la mazza contro chiunque abbia davanti.',
+        it: 'È un bazooka a cui è stato fatto mangiare un frutto del diavolo, e così è diventato un bassotto vivo, perennemente raffreddato. Quando starnutisce spara palle da baseball pesanti come palle di cannone, che esplodono qualche secondo dopo essere cadute. Mr. Four le rilancia con la mazza contro chiunque abbia davanti.',
         en: 'He is a bazooka that was fed a devil fruit, and so became a living dachshund with a permanent cold. When he sneezes he fires baseballs as heavy as cannonballs, which go off a few seconds after they land. Mr. 4 bats them at whoever is in front of him.',
       },
       affiliation: [
         {
           episode: 113,
           value: {
-            it: 'Baroque Works, arma di Mister 4',
+            it: 'Baroque Works, arma di Mr. Four',
             en: 'Baroque Works, Mr. 4’s weapon',
           },
         },

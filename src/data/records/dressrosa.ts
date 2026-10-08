@@ -71,7 +71,7 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 598,
       revealedAtChapter: 672,
-      name: { it: 'Kinemon', en: 'Kin’emon' },
+      name: { it: 'Kin’emon', en: 'Kin’emon' },
       summary: {
         it: 'Un samurai tagliato in pezzi che continua a parlare, trovato nella metà ghiacciata dell’isola mentre cerca il resto del proprio corpo e suo figlio.',
         en: 'A samurai chopped into pieces who goes on talking, found in the frozen half of the island looking for the rest of his body and for his son.',
@@ -237,7 +237,7 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 662,
       revealedAtChapter: 730,
-      name: { it: 'Riku Doldo III', en: 'Riku Doldo III' },
+      name: { it: 'Riku Dold III', en: 'Riku Doldo III' },
       summary: {
         it: 'Il vecchio re di Dressrosa, cacciato dal trono dieci anni fa, che ora gira per il colosseo con la barba lunga e un altro nome.',
         en: 'The old king of Dressrosa, driven from his throne ten years ago, who now walks the colosseum long-bearded and under another name.',
@@ -446,7 +446,7 @@ export const dressrosa: Saga = {
       kind: 'character',
       revealedAtEpisode: 635,
       revealedAtChapter: 711,
-      name: { it: 'Señor Pink', en: 'Señor Pink' },
+      name: { it: 'Senor Pink', en: 'Señor Pink' },
       summary: {
         it: 'Un omone della famiglia Donquijote con la cuffietta da neonato, gli occhiali da sole, il bavaglino e il ciuccio in bocca, che la famiglia schiera nel torneo del colosseo.',
         en: 'A big man of the Donquixote family in a baby’s bonnet, sunglasses and a bib, with a dummy in his mouth, whom the family puts forward for the colosseum tournament.',
@@ -1091,7 +1091,7 @@ export const dressrosa: Saga = {
         en: 'Child turned into a dragon',
       },
       log: {
-        it: 'Una bambina arrivata sulla stessa nave lo ha visto infilarsi nella stanza segreta del laboratorio e trasformarsi in un piccolo drago, e non lo ha detto a nessuno. Kinemon cerca per tutta l’isola un figlio con lo stesso nome.',
+        it: 'Una bambina arrivata sulla stessa nave lo ha visto infilarsi nella stanza segreta del laboratorio e trasformarsi in un piccolo drago, e non lo ha detto a nessuno. Kin’emon cerca per tutta l’isola un figlio con lo stesso nome.',
         en: 'A girl who came on the same ship saw him slip into the laboratory’s secret room and turn into a small dragon, and kept it to herself. Kin’emon is searching the island for a son with the same name.',
       },
       affiliation: [
@@ -1678,7 +1678,7 @@ export const dressrosa: Saga = {
     'dellinger': {
       role: DONQUIXOTE_MEMBER_ROLE,
       log: {
-        it: 'Quando il colosseo apre il torneo, l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia Donquijote che affronteranno il vincitore di ogni blocco, dopo Señor Pink e prima di Lao G. Sullo schermo porta un berretto bianco con un corno per lato.',
+        it: 'Quando il colosseo apre il torneo, l’annunciatore lo presenta sullo schermo come uno dei quattro membri della famiglia Donquijote che affronteranno il vincitore di ogni blocco, dopo Senor Pink e prima di Lao G. Sullo schermo porta un berretto bianco con un corno per lato.',
         en: 'When the colosseum opens the tournament, the announcer presents him on the screen as one of the four members of the Donquixote family who will face the winner of each block, after Señor Pink and before Lao G. On the screen he wears a white cap with a horn on each side.',
       },
       affiliation: [
@@ -1852,7 +1852,7 @@ export const dressrosa: Saga = {
     'kanjuro': {
       role: { it: 'Samurai di Wano', en: 'Samurai of Wano' },
       log: {
-        it: 'È il compagno che i soldati di Dressrosa hanno catturato mentre copriva la fuga di Kinemon. Kinemon lo ritrova nella discarica sotto la città, nascosto dentro un muro, dove si è sfamato con i cavoli che disegna e fa prendere vita. Porta sulle spalle un pennello grande quanto un remo. Per uscire disegna un uccello sul muro e lo fa prendere vita, ma è disegnato così male che sembra a malapena in grado di volare.',
+        it: 'È il compagno che i soldati di Dressrosa hanno catturato mentre copriva la fuga di Kin’emon. Kin’emon lo ritrova nella discarica sotto la città, nascosto dentro un muro, dove si è sfamato con i cavoli che disegna e fa prendere vita. Porta sulle spalle un pennello grande quanto un remo. Per uscire disegna un uccello sul muro e lo fa prendere vita, ma è disegnato così male che sembra a malapena in grado di volare.',
         en: 'He is the comrade Dressrosa’s soldiers caught while he covered Kin’emon’s escape. Kin’emon finds him in the scrap heap under the town, hiding inside a wall, where he has fed himself on cabbages he draws and brings to life. He carries a brush as big as an oar on his back. To get out he draws a bird on the wall and brings it to life, but it is drawn so badly that it hardly looks able to fly.',
       },
       status: [
@@ -1923,7 +1923,7 @@ export const dressrosa: Saga = {
         en: 'Emperor of the New World',
       },
       log: {
-        it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kid aprendo una buca nel terreno e ne risale imprecando perché è ancora vivo. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto, catturato e condannato a morte molte volte, ma ogni esecuzione è fallita, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
+        it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kidd aprendo una buca nel terreno e ne risale imprecando perché è ancora vivo. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto, catturato e condannato a morte molte volte, ma ogni esecuzione è fallita, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
         en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it cursing that he is still alive. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated, captured and sentenced to death many times, but every execution failed, and nobody has managed to kill him, not even himself.',
       },
       status: [{ episode: 739, value: 'alive' }],
