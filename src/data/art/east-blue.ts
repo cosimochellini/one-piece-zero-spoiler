@@ -834,35 +834,37 @@ export const eastBlueArt = {
     { d: 'M78 69 h26 M44 96 h18', role: 'soft' },
     ...SEA.slice(1),
   ],
-  // His slingshot, the band drawn straight back with a lead ball in its
-  // pouch and a second ball on the ground, its far side in shade: the fork
-  // with the thickness of its arms, the far face of the arm and the grip
-  // hatched, the grip wrapped. Kabuto is drawn from 274 and Kuro
-  // Kabuto from 517, in `eastBlueRedrawn`.
+  // His satchel, hung as he wears it across his chest: the strap running up
+  // and away out of the box, the bag a pouch under a kiss-lock frame (the
+  // accent) with its two knobs standing on top of the bar, rings at the
+  // hinges, the side panel turned away and hatched. Chapter 23 shows it on
+  // him from his first panel; it shows no slingshot until chapter 27, so the
+  // slingshot follows in `eastBlueRedrawn`, then Kabuto from 274 and Kuro
+  // Kabuto from 517.
   'usopp': [
+    { d: 'M60 112 C46 128 42 154 52 170 C60 182 104 184 116 174' },
+    { d: 'M116 174 C130 164 136 140 128 120 C125 114 122 110 118 108' },
+    { d: 'M110 116 C118 134 120 156 116 174', role: 'soft' },
     {
-      d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+      d: 'M58 112 Q86 100 112 114 L120 108 Q90 96 58 112 M58 112 L60 116',
+      role: 'accent',
     },
+    { d: circle(86, 101.5, 3.4), role: 'accent' },
+    { d: 'M90.6 99.9 a3.4 3.4 0 1 1 0.2 5.5', role: 'accent' },
     {
-      d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+      d: `${ellipse(57, 107, 3, 4.5)} ${ellipse(120, 103, 3, 4.5)}`,
+      role: 'soft',
     },
+    { d: 'M56 103 C46 78 30 48 6 20 M120 99 C96 70 62 38 32 6' },
+    { d: 'M62 102 C52 80 38 54 16 26', role: 'soft' },
     {
-      d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
-      role: 'ambient',
-    },
-    {
-      d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+      d: 'M70 118 q-4 12 -2 22 M88 116 q0 10 2 18 M104 118 q4 10 3 20',
       role: 'soft',
     },
     {
-      d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
-      role: 'accent',
+      d: 'M124 126 l4 -3 M126 136 l5 -3.5 M127 146 l5 -3.5 M126 156 l5 -3.5 M123 166 l4 -3',
+      role: 'ambient',
     },
-    { d: circle(80, 102, 6) },
-    { d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2', role: 'ambient' },
-    { d: circle(110, 177, 6) },
-    { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
-    shadow(88, 188, 32),
   ],
 
   // A mansion on a hill, its gate at the foot, a path down to the shore.
@@ -1899,6 +1901,44 @@ export const eastBlueRedrawn: Redrawings = {
     },
   ],
   'usopp': [
+    // His slingshot, the band drawn straight back with a lead ball in its
+    // pouch and a second ball on the ground, its far side in shade: the fork
+    // with the thickness of its arms, the far face of the arm and the grip
+    // hatched, the grip wrapped. Episode 9 shows it on him, but the manga
+    // first shows it in chapter 27, when he knocks out the mansion's guards
+    // with it; episode 11 adapts that scene.
+    {
+      episode: 11,
+      chapter: 27,
+      value: [
+        {
+          d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+        },
+        {
+          d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+        },
+        {
+          d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
+          role: 'ambient',
+        },
+        {
+          d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+          role: 'soft',
+        },
+        {
+          d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+          role: 'accent',
+        },
+        { d: circle(80, 102, 6) },
+        {
+          d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2',
+          role: 'ambient',
+        },
+        { d: circle(110, 177, 6) },
+        { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
+        shadow(88, 188, 32),
+      ],
+    },
     // Kabuto: a staff with a five-prong fork, the band pulled back from the
     // two outer prongs around a star pellet, the dial housed where the fork
     // meets the shaft. Sogeking carries it onto the Tower of Justice roof at

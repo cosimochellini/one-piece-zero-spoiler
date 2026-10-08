@@ -101,6 +101,13 @@ describe('episodeAtChapter', () => {
     expect(episodeAtChapter(6)).toBeLessThan(3)
     expect(chapterAtEpisode(3)).toBeGreaterThanOrEqual(7)
   })
+
+  it('keeps chapter 26 below episode 11, which shows Usopp’s slingshot', () => {
+    // The manga first shows it in chapter 27, when he knocks out the
+    // mansion's guards with it; episode 11 adapts that scene.
+    expect(episodeAtChapter(26)).toBeLessThan(11)
+    expect(chapterAtEpisode(11)).toBe(27)
+  })
 })
 
 describe('chapterAtEpisode', () => {
