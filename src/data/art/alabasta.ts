@@ -986,35 +986,48 @@ export const alabastaArt = {
     shadow(80, 182, 56),
   ],
 
-  // The crude wooden club of the Sand-Sand Clan, the one the boy knocks the
-  // bandit down with (ch 164 p8, ep 100), lying in 3/4: a heavy head out of
-  // a thin grip, its outline drawn rough. The sawn end with its whorl of end
-  // grain, the long split and the nicked grain along the head are as ep 100
-  // draws them. Nothing else is in the drawing: by ep 100 the anime has
-  // shown only the boy, so no part of the grown man's outfit is true for
-  // both readers.
+  // The crude wooden club of the Sand-Sand Clan, stood on its grip against
+  // the end of a broken wall in the ruins where the boy knocks the bandit
+  // off the top of it (ch 164, ep 100). The club is a log: heavy head, thin
+  // grip, the sawn end turned up with its whorl of end grain, a split and
+  // nicked grain down the head, the far side hatched. The wall is a few
+  // courses of rough blocks with a ragged top, its end hatched. By ep 100
+  // the anime has shown only the boy, so nothing of the grown man is in it.
   'kohza': [
     {
-      d: 'M133.4 92.5 C129.6 90.7 126.4 90.2 122.8 90.5 L120.6 93.2 L116.1 92.2 C109.5 94.1 103.4 97.8 98.9 102 C89.8 110.8 81.8 122.3 67.9 131.3 C56 138.8 37.7 142.5 16.4 151 C10.5 153.4 13.1 160.5 19 158.2 C40.8 150.9 61.3 146.7 79.4 142.8 C95.7 140.5 115.4 140.7 133.1 135.5 C139.6 133.3 143.5 130.5 146.6 125.6',
+      d: 'M12 150 V112 L19 109 L23 113 L31 112 L35 104 L45 103 L49 108 L57 107 L60 97 L66 95 L67 91 H80 V150',
     },
-    { d: 'M133.4 92.5 C145.3 91.8 155.9 117.4 146.6 125.6' },
-    { d: 'M133.4 92.5 C130.3 101 138.3 121.3 146.6 125.6', role: 'soft' },
+    { d: 'M80 91 L92 84 V143 L80 150 M67 91 L79 84 H92' },
     {
-      d: 'M142.9 108.6 C145 106 147.7 111.8 144.9 113.5 C141.5 115.5 137.6 106.9 141.2 103.9 C145.7 100.8 151.9 114.7 147.3 119.3',
+      d: 'M12 132 H80 M35 116 H80 M60 102 H80 M30 150 V132 M58 150 V132 M22 132 V111 M48 132 V116 M70 132 V116 M66 116 V102',
       role: 'soft',
     },
-    { d: 'M80.6 125.8 C94 115.4 109.7 104.8 127 98.5', role: 'accent' },
-    { d: 'M90.8 133.7 C106.5 129.8 122.5 126.5 136.5 121.4', role: 'soft' },
-    { d: 'M28.3 150.3 C41.2 145.4 54.8 142.4 68.3 139.2', role: 'soft' },
+    { d: 'M83 104 l6 -4 M83 120 l6 -4 M83 136 l6 -4', role: 'ambient' },
     {
-      d: 'M98.8 112 L99 108 M113.1 104.1 L113 100.4 M113.4 128.4 L115.7 131.5',
+      d: 'M78.7 55.1 C79.6 57.2 81.9 63.5 83.8 67.5 C85.8 71.6 88.4 75.5 90.4 79.3 C92.5 83.1 93.6 87.5 96 90.3 C98.3 93.1 102.1 94 104.7 96.1 C107.2 98.2 109.3 100.3 111.4 102.8 C113.5 105.3 115.5 108.1 117.4 111.1 C119.3 114.2 119.8 115.2 122.7 121 C125.6 126.9 132.5 141.2 134.8 146.3 C137.1 151.4 136.3 150.7 136.6 151.6 Q140.6 151.2 143.4 148.4 C142.9 147.6 142.9 148.6 140.4 143.6 C138 138.6 131.3 124.2 128.7 118.2 C126 112.2 125.6 111.2 124.4 107.8 C123.3 104.4 122.5 101.1 121.9 97.9 C121.3 94.7 120.9 91.7 121 88.4 C121 85.1 122.7 81.6 122 78 C121.4 74.4 118.7 70.7 117 66.7 C115.4 62.8 114.1 58.2 112.2 54.2 C110.4 50.1 106.9 44.3 105.9 42.3',
+    },
+    {
+      d: 'M105.9 42.3 A15 6.6 -25.2 1 0 78.7 55.1 A15 6.6 -25.2 1 0 105.9 42.3',
+      role: 'accent',
+    },
+    {
+      d: 'M92.8 48.4 c1.4 -1.4 3.8 -0.4 3.2 1.4 c-0.8 2.4 -6 1.8 -6.2 -0.9 c-0.2 -3.2 6.2 -4.4 8.8 -1.4',
       role: 'soft',
     },
     {
-      d: 'M100.1 138.9 L106.1 140.4 M109.3 137.3 L115.4 139 M118.3 135.2 L124.5 137.1 M127.3 132.9 L133.4 134.6',
+      d: 'M89.4 53.1 C90.7 55.4 94.5 61.4 96.9 66.4 C99.2 71.3 102.6 80.1 103.8 82.9',
+      role: 'soft',
+    },
+    {
+      d: 'M101.1 53.2 C102.4 55.7 106.4 62.5 108.8 68.2 C111.1 73.9 114.3 84.2 115.4 87.3 M121.5 109.2 C123.4 113.3 130.9 129.5 132.8 133.6',
+      role: 'soft',
+    },
+    { d: 'M87.1 73.4 L90.8 74.2 M120 72.8 L118.4 76', role: 'soft' },
+    {
+      d: 'M121.1 82.2 L122 77.4 M117.8 75.1 L118.6 70.3 M114.4 68 L115.3 63.2 M111.1 60.9 L111.9 56.2 M107.7 53.8 L108.6 49.1',
       role: 'ambient',
     },
-    shadow(80, 182, 58),
+    { d: 'M4 150 H156', role: 'ambient', dashed: true },
   ],
 
   // His sword with its gold cross-guard, sheathed, laid across a fold of the
