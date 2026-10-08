@@ -89,15 +89,29 @@ Grade every drawing you make or review. Only A ships.
 - **Characters** are an object that stands for them, never the person. Prefer
   the thing the reader would name first: the straw hat, three swords, the
   forearm with the star.
-- **Redrawings** are for when the story changes the object (see #74). A whole
-  drawing in the `<saga>Redrawn` timeline of the saga that first drew the
-  record: `{ episode, chapter, value }`, strictly after `revealedAtEpisode`,
-  ascending. The `chapter:` must be a true pair with the episode, the chapter
+- **Redrawings** are for whenever the story gives the character a new
+  visible feature, **for good or only for a while** (#74, #468). It counts
+  when it changes the object or adds something readable at 56 px: headwear,
+  a new weapon, a scar that stands for something, a transformation, an
+  arc-long disguise. It does not count when it is an outfit that never
+  touches the object, a new technique, a one-scene moment, or anime filler
+  (no chapter to pair). As a rule it lasts two or three episodes or more,
+  unless it is a story symbol. A temporary feature is **two entries**: the
+  change, then the drawing before it again (the same `const`, so the return
+  is the first drawing itself) from the episode it is gone. Luffy's hat is
+  the worked example (`east-blue.ts`, `LUFFY_HAT`). When the object is
+  hidden under the costume (Luffy's knight helm), the accent moves to the
+  costume's own mark (the plume). If the honest composition does not read at
+  56 px, drop the stage rather than draw something false. Each redrawing
+  is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
+  drew the record: `{ episode, chapter, value }`, strictly after
+  `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
   that same scene is in, or chapter readers see it early. Add one `it` in
   `src/server/archive/slices.test.ts` on Franky's model (episode − 1, episode,
-  no bookmark, chapter − 1, chapter). A saga's first redrawing is also spread
-  into `REDRAWINGS` and added to `src/data/art/index.test.ts`. Recount the
-  "Line drawings" line in `docs/architecture.md`.
+  no bookmark, chapter − 1, chapter); a record with many stages walks its
+  timeline in one `it` instead, on Luffy's model. A saga's first redrawing is
+  also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
+  Recount the "Line drawings" line in `docs/architecture.md`.
 - **Places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
