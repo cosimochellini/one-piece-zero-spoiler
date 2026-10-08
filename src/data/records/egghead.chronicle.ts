@@ -15,6 +15,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1114,
+      chapter: 1081,
       value: {
         title: { it: 'Fiori dai fucili', en: 'Flowers from the guns' },
         body: {
@@ -25,6 +26,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1121,
+      chapter: 1087,
       value: {
         title: { it: 'Il disgelo', en: 'Thawed out' },
         body: {
@@ -35,6 +37,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1122,
+      chapter: 1088,
       value: {
         title: { it: 'Di nuovo a bordo', en: 'Back on deck' },
         body: {
@@ -57,6 +60,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1114,
+      chapter: 1081,
       value: {
         title: { it: 'Pupazzi di fango', en: 'Mud puppets' },
         body: {
@@ -67,6 +71,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1122,
+      chapter: 1088,
       value: {
         title: { it: 'Una rete di argilla', en: 'A web of clay' },
         body: {
@@ -89,6 +94,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1103,
+      chapter: 1071,
       value: {
         title: { it: 'Sono già qui', en: 'I am already here' },
         body: {
@@ -99,6 +105,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1142,
+      chapter: 1108,
       value: {
         title: { it: 'Un gigante per capo', en: 'A giant for a boss' },
         body: {
@@ -109,6 +116,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1151,
+      chapter: 1118,
       value: {
         title: { it: 'Di nuovo bambina', en: 'A child again' },
         body: {
@@ -131,6 +139,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1114,
+      chapter: 1081,
       value: {
         title: { it: 'La piazza chiusa', en: 'The closed square' },
         body: {
@@ -141,6 +150,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1121,
+      chapter: 1087,
       value: {
         title: { it: 'Tornerà presto', en: 'He will be back soon' },
         body: {
@@ -163,6 +173,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1119,
+      chapter: 1085,
       value: {
         title: {
           it: 'La firma sulla lettera',
@@ -198,6 +209,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1155,
+      chapter: 1125,
       value: {
         title: { it: 'Scienza e Difesa', en: 'Science and Defence' },
         body: {
@@ -223,6 +235,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1142,
+      chapter: 1108,
       value: {
         title: { it: 'Per mare', en: 'By sea' },
         body: {
@@ -233,6 +246,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1151,
+      chapter: 1118,
       value: {
         title: { it: 'Una bambina', en: 'A child again' },
         body: {
@@ -265,6 +279,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1146,
+      chapter: 1112,
       value: {
         title: { it: 'Non chiamarlo arma', en: 'Not a weapon' },
         body: {
@@ -334,6 +349,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1135,
+      chapter: 1101,
       value: {
         title: { it: 'Il lupo saggio', en: 'A wise wolf' },
         body: {
@@ -390,6 +406,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1146,
+      chapter: 1112,
       value: {
         title: {
           it: 'Il destro di Franky',
@@ -415,6 +432,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1152,
+      chapter: 1120,
       value: {
         title: { it: 'Nessuna informazione', en: 'No information' },
         body: {
@@ -425,6 +443,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1155,
+      chapter: 1125,
       value: {
         title: { it: 'Duecento anni fermo', en: 'Two hundred years still' },
         body: {
@@ -447,6 +466,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1146,
+      chapter: 1112,
       value: {
         title: { it: 'Una scena penosa', en: 'Too pathetic to watch' },
         body: {
@@ -469,6 +489,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1155,
+      chapter: 1125,
       value: {
         title: { it: 'Di nuovo tra i nove', en: 'Back among the nine' },
         body: {
@@ -503,6 +524,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1149,
+      chapter: 1116,
       value: {
         title: { it: 'La sconfitta', en: 'The defeat' },
         body: {
@@ -513,6 +535,7 @@ export const eggheadChronicles = {
     },
     {
       episode: 1153,
+      chapter: 1122,
       value: {
         title: { it: 'Quando sarà il momento', en: 'When the time is right' },
         body: {

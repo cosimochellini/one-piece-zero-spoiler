@@ -342,6 +342,7 @@ export const waterSevenChronicles = {
     },
     {
       episode: 1114,
+      chapter: 1081,
       value: {
         title: { it: 'Galaxy Impact', en: 'Galaxy Impact' },
         body: {
