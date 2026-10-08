@@ -185,7 +185,7 @@ async function fetchChapters(from, to) {
  * @param {string} url The request.
  * @returns {Promise<Answer>} The answer, parsed.
  */
-export function fetchBatch(file, label, url) {
+function fetchBatch(file, label, url) {
   return cached(file, label, url, isCompleteBatch)
 }
 
@@ -271,6 +271,7 @@ async function queried(api, folder, titles) {
     const batch = titles.slice(from, from + BATCH)
     const key = createHash('sha256').update(batch.join('|')).digest('hex')
     const { query } = await fetchBatch(
+      // fallow-ignore-next-line security-sink -- a folder named in this module and a hex digest
       path.join(CACHE, folder, `${key}.json`),
       `${folder} ${String(from)}`,
       api + encodeURIComponent(batch.join('|')),
