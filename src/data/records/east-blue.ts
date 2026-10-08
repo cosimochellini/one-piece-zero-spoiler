@@ -1501,8 +1501,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
-        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Accoglie gli stranieri vantando un esercito di seguaci che non esiste, e si tradisce da solo. Il coraggio è ancora in lavorazione.',
-        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. He greets strangers with an army of followers that does not exist, and gives the lie away himself. The bravery is still a work in progress.',
+        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Si vanta di un esercito di seguaci che non esiste, e si tradisce da solo. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Il coraggio è ancora in lavorazione.',
+        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He boasts of an army of followers that does not exist, and gives the lie away himself. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. The bravery is still a work in progress.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
