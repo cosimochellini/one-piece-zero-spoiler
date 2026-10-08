@@ -1736,9 +1736,6 @@ const SMALL_CHART: Stroke[] = [
   { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
 ].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
-/** Luffy's hat tipped back as it bounces on the cloud of Gear 5. */
-const LUFFY_BOUNCE = 'rotate(-14 80 110)'
-
 /** Luffy's hat, smaller, hung by its string from the haft of the Elbaf axe. */
 const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
 
@@ -2339,20 +2336,21 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
     { episode: 978, chapter: 975, value: LUFFY_HAT },
-    // The hat tipped back, bouncing on a cloud, the way it rides through
-    // Gear 5. From 1071 (ch. 1044) until Kaido falls in 1076 (ch. 1049).
+    // The hat as it always is, over the white hair of Gear 5: five great
+    // locks behind the crown, each winding into its curl. From 1071
+    // (ch. 1044) until Kaido falls in 1076 (ch. 1049).
     {
       episode: 1071,
       chapter: 1044,
       value: [
-        ...LUFFY_HAT_ALONE.map((s) => ({ ...s, transform: LUFFY_BOUNCE })),
         {
-          d: 'M20 176 q-6 -14 10 -16 q2 -14 20 -10 q8 -12 26 -4 q12 -10 26 2 q16 -4 18 12 q14 4 8 16 Z',
+          d: 'M18.5 109.4 A21 21 0 0 1 22.4 67.8 A23 23 0 0 1 55.6 36.7 A25 25 0 0 1 104.4 36.7 A23 23 0 0 1 137.6 67.8 A21 21 0 0 1 141.5 109.4',
         },
         {
-          d: 'M30 158 q4 -6 10 -6 M134 64 q8 4 10 12 M140 52 q10 6 12 16',
+          d: 'M22 98.4 L18.3 99.2 L14.7 98.9 L11.5 97.5 L9.1 95.3 L7.5 92.5 L6.9 89.5 L7.3 86.6 L8.4 84.1 L10.3 82.3 L12.5 81.1 L14.8 80.8 L16.9 81.2 L18.7 82.2 L19.9 83.6 L20.6 85.2 L20.7 86.8 L20.3 88.2 L19.5 89.3 L18.5 89.9 M37.9 65.9 L34.2 64.2 L31.3 61.5 L29.4 58.2 L28.7 54.7 L29.2 51.2 L30.6 48.2 L32.8 45.9 L35.5 44.6 L38.3 44.1 L40.9 44.6 L43.2 45.8 L44.8 47.5 L45.7 49.6 L45.8 51.6 L45.4 53.5 L44.4 54.9 L43.1 55.9 L41.7 56.3 L40.4 56.2 M69.7 49.3 L67.6 45.3 L66.8 41.1 L67.3 37 L69.1 33.4 L71.7 30.7 L74.9 29.1 L78.3 28.5 L81.6 29.1 L84.3 30.6 L86.3 32.7 L87.5 35.2 L87.7 37.8 L87.2 40.1 L86 42 L84.3 43.3 L82.5 44 L80.8 44 L79.3 43.4 L78.2 42.5 M107 54.6 L108.7 58.3 L111.4 61.2 L114.7 63.1 L118.2 63.8 L121.7 63.3 L124.7 61.9 L127 59.7 L128.3 57 L128.8 54.2 L128.3 51.6 L127.1 49.3 L125.4 47.7 L123.3 46.8 L121.3 46.7 L119.4 47.1 L118 48.1 L117 49.4 L116.6 50.8 L116.7 52.1 M133.2 81.8 L132.4 85.5 L132.7 89.1 L134.1 92.3 L136.3 94.7 L139.1 96.3 L142.1 96.9 L145 96.5 L147.5 95.4 L149.3 93.5 L150.5 91.3 L150.8 89 L150.4 86.9 L149.4 85.1 L148 83.9 L146.4 83.2 L144.8 83.1 L143.4 83.5 L142.3 84.3 L141.7 85.3',
           role: 'soft',
         },
+        ...LUFFY_HAT,
       ],
     },
     { episode: 1076, chapter: 1049, value: LUFFY_HAT },
