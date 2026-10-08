@@ -62,6 +62,9 @@ const FLAMPE_BLOWGUN_TILT = 'rotate(-28 70 150)'
 /** The tilt of Mjosgard's club, drawn level with its head to the right. */
 const MJOSGARD_CLUB_TILT = 'rotate(-12 80 150)'
 
+/** The tilt of Lu Feld's cigar, drawn level with its lit end to the left. */
+const LU_FELD_CIGAR_TILT = 'rotate(-30 80 106)'
+
 /**
  * The pink bicorne Big Mom wears, in three quarters: the trim along its
  * crest, the ruffled fastener on its side, the back panel showing past the
@@ -1663,22 +1666,24 @@ export const wholeCakeArt = {
     shadow(80, 178, 40),
   ],
 
-  // A bicorne hat with a tornado twisting up out of its crown.
+  // His brown tobacco pipe in three quarters, bent, the rim and the bowl's
+  // wall seen from above, smoke rising. He has it from his debut at the
+  // Big Mom Pirates' meeting, 822 (chapter 854). No hat: the hat has a face.
   'charlotte-nusstorte': [
+    { d: ellipse(112, 70, 20, 7), role: 'accent' },
+    { d: ellipse(112, 71, 15, 4.4), role: 'soft' },
+    { d: 'M92 70 C92 102 100 122 112 122 C124 122 132 102 132 70' },
+    { d: 'M104 80 C102 96 104 110 110 118', role: 'soft' },
+    { d: 'M124 84 l6 -5 M125 98 l6 -5 M121 111 l6 -5', role: 'ambient' },
+    { d: 'M94 100 C80 106 68 108 58 108 M96 112 C82 118 70 120 58 119' },
+    { d: 'M58 108 C56 112 56 116 58 119', role: 'soft' },
+    { d: 'M58 108 C44 107 30 102 20 96 L17 101 C28 108 44 116 58 119' },
+    { d: 'M24 99 l-3 5', role: 'soft' },
     {
-      d: 'M14 106 C40 140 120 140 146 106 C120 118 104 96 80 96 C56 96 40 118 14 106 Z',
-    },
-    { d: 'M40 118 C62 126 98 126 120 118', role: 'soft' },
-    { d: circle(80, 108, 5), role: 'accent' },
-    {
-      d: 'M40 22 C58 50 72 70 78 94 M124 22 C106 50 90 70 84 94',
-      role: 'accent',
-    },
-    {
-      d: 'M40 22 C62 32 102 32 124 22 M50 40 C68 48 96 48 114 40 M60 58 C72 64 90 64 102 58 M70 76 C76 80 86 80 92 76',
+      d: 'M108 60 C98 50 116 44 106 32 C98 22 112 18 104 8 M116 58 c4 -6 -2 -10 2 -16',
       role: 'soft',
     },
-    shadow(80, 150, 58),
+    shadow(76, 124, 58),
   ],
 
   // Her silent blowgun in three quarters, slung on its strap, its underside
@@ -1823,18 +1828,55 @@ export const wholeCakeArt = {
   // crest, the ruffled fastener on its side, the back panel showing past
   // the front. No skull on it, and no blade. She calls it by name at 816.
   'napoleon': [...BIG_MOM_BICORNE, shadow(80, 176, 62)],
-  // A cigar laid across a stack of coins, a thread of smoke rising from it.
+  // His cigar in three quarters: the lit end turned to the reader, ash at
+  // the foot, the wrapper spiralling up to a band, a thread of smoke. He
+  // smokes it at the Tea Party gate at 830 (chapter 860). No coins.
   'lu-feld': [
-    { d: ellipse(80, 104, 40, 12) },
-    { d: 'M40 104 V140 a40 12 0 0 0 80 0 V104' },
-    { d: 'M40 116 a40 12 0 0 0 80 0 M40 128 a40 12 0 0 0 80 0', role: 'soft' },
+    { d: ellipse(20, 106, 7, 14), transform: LU_FELD_CIGAR_TILT },
     {
-      d: 'M34 90 L116 74 c7 -1 9 9 2 10 L36 100 c-7 1 -9 -9 -2 -10 Z',
-      role: 'accent',
+      d: 'M20 92 H125.8 C135.6 92 141 98.4 141 106 C141 113.6 135.6 120 125.8 120 H20',
+      transform: LU_FELD_CIGAR_TILT,
     },
-    { d: 'M100 77 l2 10', role: 'accent' },
-    { d: 'M30 92 c-8 -10 6 -16 -2 -28 c-6 -8 4 -14 0 -22', role: 'soft' },
-    shadow(80, 162, 48),
+    {
+      d: ellipse(20, 106, 3.7, 8),
+      role: 'soft',
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    {
+      d: dots([
+        [17.8, 95.6],
+        [22.6, 115.5],
+        [16.1, 109.9],
+      ]),
+      role: 'soft',
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    {
+      d: 'M33 92 C37.3 97.4 31.9 101.7 37.3 106 C31.9 110.3 37.3 114.6 33 120',
+      role: 'soft',
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    {
+      d: 'M50.2 92 C57.8 100.6 57.8 111.4 65.4 120 M74 92 C81.6 100.6 81.6 111.4 89.1 120 M121.5 92 C128 100.6 128 111.4 133.4 117.9',
+      role: 'soft',
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    {
+      d: 'M99.9 92 A7 14 0 0 1 99.9 120 M110.7 92 A7 14 0 0 1 110.7 120',
+      role: 'accent',
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    { d: 'M28 117 H122', role: 'ambient', transform: LU_FELD_CIGAR_TILT },
+    {
+      d: 'M24.3 126.5 q56.2 6.5 112.3 0',
+      role: 'ambient',
+      dashed: true,
+      transform: LU_FELD_CIGAR_TILT,
+    },
+    {
+      d: 'M22 124 C12 112 28 104 20 90 C12 76 28 68 20 54 C16 44 24 38 22 30',
+      role: 'soft',
+    },
   ],
 
   // His fur cape, the fur edge running over both shoulders, one curl of fur
