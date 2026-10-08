@@ -170,7 +170,6 @@ const RICE_BALL: Stroke[] = [
 ]
 const SECOND_RICE_BALL = 'translate(86 42) scale(0.72)'
 
-/** The drawings of the records filed in the east blue stretch of the route. */
 /**
  * Luffy's straw hat in its parts, so a costume can sit on, over or under it
  * while the hat stays the same hat: the brim with its rim and inner ring, the
@@ -202,6 +201,7 @@ const LUFFY_BAND_EDGE: Stroke = {
 const LUFFY_HAT_ALONE: Stroke[] = [...LUFFY_BRIM, ...LUFFY_CROWN, LUFFY_BAND]
 const LUFFY_HAT: Stroke[] = [...LUFFY_HAT_ALONE, shadow(80, 172, 56)]
 
+/** The drawings of the records filed in the east blue stretch of the route. */
 export const eastBlueArt = {
   // One island of the weakest sea seen from the water: the ridge and its
   // peak, the cliff's jagged rim, the strata down its face and its far side
@@ -2156,8 +2156,8 @@ export const eastBlueRedrawn: Redrawings = {
     { episode: 106, chapter: 169, value: LUFFY_HAT },
     // The closed knight's helm he is dressed in on Thriller Bark, the hat
     // hidden under it: the visor slit, the breathing holes, the ridge down
-    // the front, and the plume in the captain's red. From 346 (ch. 452) until
-    // it is torn off in 349 (ch. 455).
+    // the front, and the plume in the captain's red. From 346 (ch. 452); he
+    // is out of the armor by the end of 349 (ch. 455).
     {
       episode: 346,
       chapter: 452,
@@ -2292,9 +2292,9 @@ export const eastBlueRedrawn: Redrawings = {
     { episode: 805, chapter: 841, value: LUFFY_HAT },
     // A black fedora fitted over the dome for the meeting with the Fire Tank
     // Pirates: the pinched crown, its band, the short brim on the straw one.
-    // From 827 (ch. 858) until it goes over Katakuri's face in 871 (ch. 896).
+    // From 828 (ch. 858) until it goes over Katakuri's face in 871 (ch. 896).
     {
-      episode: 827,
+      episode: 828,
       chapter: 858,
       value: [
         ...LUFFY_BRIM,
@@ -2354,9 +2354,9 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
     { episode: 1076, chapter: 1049, value: LUFFY_HAT },
-    // The Viking outfit of Elbaf: the black helmet with its studded gold
-    // band and great curved horns set down, the axe standing beside it, and
-    // the hat hung by its string from the haft. From 1157 (ch. 1127) until
+    // The Viking outfit of Elbaf laid out as a still life: the black helmet
+    // with its studded gold band and great curved horns, the axe he carries
+    // on his back, and the hat hung by its string from the haft. From 1157 (ch. 1127) until
     // the helmet is knocked off in 1170 (ch. 1140).
     {
       episode: 1157,
