@@ -103,15 +103,16 @@ Grade every drawing you make or review. Only A ships.
   hidden under the costume (Luffy's knight helm), the accent moves to the
   costume's own mark (the plume). If the honest composition does not read at
   56 px, drop the stage rather than draw something false. Each redrawing
-  is a whole drawing in the `<saga>Redrawn` timeline of the saga that first drew the
-  record: `{ episode, chapter, value }`, strictly after `revealedAtEpisode`,
+  is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
+  drew the record: `{ episode, chapter, value }`, strictly after
+  `revealedAtEpisode`,
   ascending. The `chapter:` must be a true pair with the episode, the chapter
   that same scene is in, or chapter readers see it early. Add one `it` in
   `src/server/archive/slices.test.ts` on Franky's model (episode − 1, episode,
   no bookmark, chapter − 1, chapter); a record with many stages walks its
   timeline in one `it` instead, on Luffy's model. A saga's first redrawing is
-  also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`. Recount the
-  "Line drawings" line in `docs/architecture.md`.
+  also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
+  Recount the "Line drawings" line in `docs/architecture.md`.
 - **Places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.

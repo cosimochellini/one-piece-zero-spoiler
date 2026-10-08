@@ -2155,9 +2155,10 @@ export const eastBlueRedrawn: Redrawings = {
     },
     { episode: 106, chapter: 169, value: LUFFY_HAT },
     // The closed knight's helm he is dressed in on Thriller Bark, the hat
-    // hidden under it: the visor slit, the breathing holes, the ridge down
-    // the front, and the plume in the captain's red. From 346 (ch. 452); he
-    // is out of the armor by the end of 349 (ch. 455).
+    // hidden under it, as the colour page of chapter 452 shows it: the visor
+    // slit, the breathing holes, the ridge down the front, and the plume in
+    // the captain's red. From 346 (ch. 452); he is out of the armor by the
+    // end of 349 (ch. 455).
     {
       episode: 346,
       chapter: 452,
@@ -2237,9 +2238,11 @@ export const eastBlueRedrawn: Redrawings = {
         shadow(80, 172, 56),
       ],
     },
-    // Lucy's gold Viking helmet, worn over the hat for the Corrida Colosseum,
-    // in 3/4 and turned from the face guard: the ridge, a row of rivets, the
-    // nose guard, two horns, and the red cape below. From 633 (ch. 704) until
+    // Lucy's gold Viking helmet, worn over the hat for the Corrida Colosseum
+    // (the hat is under it: ch. 715-716), with the red cape, as he keeps them
+    // once the rest of the armor comes off for the weigh-in (634, ch. 704).
+    // In 3/4 and turned from the face guard: the ridge, a row of rivets, the
+    // nose guard, the two horns of the ep 633 frame. From 633 (ch. 704) until
     // he hands the costume on in 663 (ch. 731).
     {
       episode: 633,
