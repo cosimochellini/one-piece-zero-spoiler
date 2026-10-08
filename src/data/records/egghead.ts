@@ -690,15 +690,9 @@ export const egghead: Saga = {
         it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È un piccolo robot, non più alto di un bambino, e le idee gli vengono così spesso che dice di non riuscire a fermarle. Guida i nuovi arrivati nel laboratorio dagli altoparlanti, poi abbandona il test che dovrebbe seguire per andare a disegnare progetti, e fa mangiare York al posto suo per non doversi fermare.',
         en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He is a small robot, no taller than a child, and ideas come to him so often that he says he cannot stop them. He guides newcomers through the laboratory over the speakers, then walks out of the test he is meant to be watching to draw blueprints, and has York eat for him so he does not have to stop.',
       },
-      status: [
-        { episode: 1095, value: 'alive' },
-        // Episode 1153 adapts chapter 1122: the Sunny lands on the sea and
-        // Nami's group grieve for Atlas and Edison, both left for dead.
-        { episode: 1153, chapter: 1122, value: 'presumed-dead' },
-        // Episode 1155 adapts chapter 1125, where Edison turns out to have
-        // survived and rebuilds his body on Punk Records, out of York's reach.
-        { episode: 1155, chapter: 1125, value: 'alive' },
-      ],
+      // Only the anime has the crew grieve for him (1153), and he is seen
+      // after the dome at 1146-1149, so he is filed alive throughout.
+      status: [{ episode: 1095, value: 'alive' }],
       affiliation: [
         {
           episode: 1095,
