@@ -2269,9 +2269,11 @@ export const eastBlueRedrawn: Redrawings = {
         { d: 'M100 64 l-4 6 M106 76 l-4 6 M108 88 l-4 6', role: 'ambient' },
       ],
     },
+    // The koi costume that follows Lucy (663 to 668) hides the hat
+    // altogether, so it gets no drawing of its own: the hat stands for him.
     { episode: 663, chapter: 731, value: LUFFY_HAT },
-    // A white scarf wound round the crown above the band, knotted at the side
-    // with its ends over the brim. From the Seducing Woods in 786 (ch. 827);
+    // The white turban wound round the crown above the band, knotted at the
+    // side with its ends over the brim. From the Seducing Woods in 786 (ch. 827);
     // gone by the end of the fight with Cracker, 805 (ch. 841).
     {
       episode: 786,
@@ -2356,8 +2358,8 @@ export const eastBlueRedrawn: Redrawings = {
     { episode: 1076, chapter: 1049, value: LUFFY_HAT },
     // The Viking outfit of Elbaf laid out as a still life: the black helmet
     // with its studded gold band and great curved horns, the axe he carries
-    // on his back, and the hat hung by its string from the haft. From 1157 (ch. 1127) until
-    // the helmet is knocked off in 1170 (ch. 1140).
+    // on his back, and the hat hung by its string from the haft. From 1157
+    // (ch. 1127) until the helmet is knocked off in 1170 (ch. 1140).
     {
       episode: 1157,
       chapter: 1127,

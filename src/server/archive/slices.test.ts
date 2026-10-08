@@ -1088,8 +1088,12 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
     }
 
-    // A return is the first drawing itself, not a copy of it.
-    expect(stages.at(-1)?.value).toBe(hat)
+    // Every return is the first drawing itself, not a copy of it.
+    const returns = [106, 349, 663, 805, 871, 978, 1076, 1170]
+
+    expect(
+      stages.filter(({ value }) => value === hat).map(({ episode }) => episode),
+    ).toStrictEqual(returns)
   })
 
   it('arms Hatchan with his six swords only from episode 39', () => {
