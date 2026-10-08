@@ -203,17 +203,29 @@ const LUFFY_HAT: Stroke[] = [...LUFFY_HAT_ALONE, shadow(80, 172, 56)]
 
 /** The drawings of the records filed in the east blue stretch of the route. */
 /**
- * The front cannonball's far side and the ball behind it, the same under the
- * crown from 1080.
+ * Buggy's cannon front on, the cheeks of its carriage and a wheel each side,
+ * the barrel's far flank, and the shadow under all of it, with the far side
+ * of the cannonball set down at its mouth. The same under the crown from 1080.
  */
-const BUGGY_BALLS: Stroke[] = [
+const BUGGY_CANNON: Stroke[] = [
+  { d: 'M130 62 A50 50 0 0 1 106.9 104.2 M47.2 99.7 A50 50 0 1 1 130 62' },
   {
-    d: 'M108.4 120.8 l-6.4 -6.4 M106.1 130.2 l-6.4 -6.4 M101.3 138.5 l-6.4 -6.4 M94.2 144.9 l-6.4 -6.4 M85.5 149.1 l-6.4 -6.4',
+    d: 'M38.7 50.1 A43 43 0 0 1 54.7 27.2 M96.1 22.1 A43 43 0 0 1 112.9 34.4',
+    role: 'soft',
+  },
+  { d: 'M66 12.4 A48 48 0 0 1 120.2 91.3' },
+  {
+    d: 'M124.5 37 l11.7 11.7 M129.2 48 l7.3 7.3 M131.1 59 l4.4 4.4',
     role: 'ambient',
   },
-  { d: 'M116 99.8 A23 23 0 0 1 133.5 102.1', role: 'soft' },
+  { d: 'M43.3 96 L34 150 M116.7 96 L126 150' },
   {
-    d: 'M150.1 117.1 l-4.9 -4.9 M149.5 129.4 l-4.9 -4.9 M143.8 140.3 l-4.9 -4.9',
+    d: 'M27 128 A5 21 0 1 1 17 128 A5 21 0 1 1 27 128 M143 128 A5 21 0 1 1 133 128 A5 21 0 1 1 143 128',
+  },
+  { d: 'M27 128 L37.5 128 M121.5 128 L133 128', role: 'soft' },
+  shadow(80, 160, 66),
+  {
+    d: 'M108.4 120.8 l-6.4 -6.4 M106.1 130.2 l-6.4 -6.4 M101.3 138.5 l-6.4 -6.4 M94.2 144.9 l-6.4 -6.4 M85.5 149.1 l-6.4 -6.4',
     role: 'ambient',
   },
 ]
@@ -724,24 +736,21 @@ export const eastBlueArt = {
     },
     shadow(70, 162, 50),
   ],
-  // A pile of three cannonballs with his own in front, each with its far
-  // side hatched and a highlight. He keeps Orange Town under his cannon from
-  // episode 5 (chapter 9). A Buggy Ball has no fuse. Crowned from 1080, in
+  // His huge cannon front on, the bore dark and hatched, with one plain
+  // cannonball set down at its mouth, the only mark in his colour. His crew
+  // puts a cannon to one of their own in chapter 9 and fires it over Orange
+  // Town in episode 5. The ball is drawn without the Jolly Roger it carries
+  // from chapter 10, and no fuse is lit. Crowned from 1080, in
   // `eastBlueRedrawn`.
   'buggy': [
-    { d: circle(76, 118, 34), role: 'accent' },
-    { d: 'M50.4 113.5 A26 26 0 0 1 67.1 93.6', role: 'soft' },
-    ...BUGGY_BALLS,
+    ...BUGGY_CANNON,
+    { d: 'M116 62 A36 36 0 0 1 98.5 92.9 M57.1 89.8 A36 36 0 1 1 116 62' },
     {
-      d: 'M103.7 98.2 A30 30 0 0 1 114.5 93 M116.8 92.5 A30 30 0 1 1 99.9 142.3',
-    },
-    { d: 'M92.5 88.3 A30 30 0 1 1 94.8 89.6' },
-    { d: 'M87.7 55.5 A23 23 0 0 1 101.4 41.8', role: 'soft' },
-    {
-      d: 'M136.1 53.7 l-4.9 -4.9 M137.7 65.9 l-4.9 -4.9 M134 77.6 l-4.9 -4.9',
+      d: 'M91.3 28.3 L113.9 50.9 M75.7 26.7 L115.3 66.3 M64.9 29.9 L112.2 77.2 M56.4 35.4 L106.5 85.4 M50.1 43.1 L99 92 M45.7 52.7 L77.3 84.3 M44.6 65.6 L64.9 85.9',
       role: 'ambient',
     },
-    shadow(96, 160, 60),
+    { d: circle(76, 118, 34), role: 'accent' },
+    { d: 'M50.4 113.5 A26 26 0 0 1 67.1 93.6', role: 'soft' },
   ],
 
   // The sea chart she ran off with, half unrolled towards the reader, its
@@ -2142,19 +2151,23 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
   ],
-  // The front cannonball of the pile with a crown set on it askew, the ball
-  // behind it as before: the ball's top runs under the band, the five points
-  // end in knobs and the band's far side is hatched. The world names him one
-  // of the new Four Emperors in 1080 (ch. 1053).
+  // The cannonball at the mouth of his cannon with a crown set on it askew:
+  // the ball's top runs under the band, the five points end in knobs, the
+  // band's far side is hatched, and the bore shows dark behind the points.
+  // The world names him one of the new Four Emperors in 1080 (ch. 1053).
   'buggy': [
     {
       episode: 1080,
       chapter: 1053,
       value: [
+        ...BUGGY_CANNON,
+        { d: 'M116 62 A36 36 0 0 1 98.5 92.9 M47 76.4 A36 36 0 1 1 116 62' },
+        {
+          d: 'M91.3 28.3 L113.9 50.9 M75.7 26.7 L115.3 66.3 M64.9 29.9 L112.2 77.2 M56.4 35.4 L72.1 51.1 M76.8 55.8 L85.3 64.3 M87.5 66.5 L106.5 85.4 M50.1 43.1 L57.8 50.8 M62.2 55.2 L73.2 66.2 M88.9 81.9 L99 92 M45.7 52.7 L49.3 56.3 M53.7 60.7 L61.4 68.4 M44.6 65.6 L51.2 72.2',
+          role: 'ambient',
+        },
         { d: 'M50 96 A34 34 0 1 0 90 87', role: 'accent' },
         { d: 'M50 118 A26 26 0 0 1 54.7 103.1', role: 'soft' },
-        ...BUGGY_BALLS,
-        { d: 'M103.7 98.2 A30 30 0 1 1 99.9 142.3' },
         {
           d: 'M49.5 91.5 Q70 97 90.5 91.5 V81.5 Q70 87 49.5 81.5 Z',
           transform: CROWN_TILT,
@@ -2173,7 +2186,6 @@ export const eastBlueRedrawn: Redrawings = {
           role: 'ambient',
           transform: CROWN_TILT,
         },
-        shadow(96, 160, 60),
       ],
     },
   ],
