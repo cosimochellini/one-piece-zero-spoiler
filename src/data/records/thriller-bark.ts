@@ -395,7 +395,21 @@ export const thrillerBark: Saga = {
         en: 'He rules the island-ship from its main mast, with an army of stitched corpses that move with shadows taken from the living. He grabs a shadow off the floor, cuts it loose with a pair of scissors, and its owner falls unconscious; whoever lives on without one vanishes in the first sunlight. He sits among the Seven Warlords, and tells his officers how badly he wants to be Pirate King.',
       },
       // Episode 349 adapts chapter 455, where he is first seen whole.
-      status: [{ episode: 349, chapter: 455, value: 'alive' }],
+      status: [
+        { episode: 349, chapter: 455, value: 'alive' },
+        // Episode 509 adapts chapter 592, where Perona cries over the
+        // newspaper that says he died in the war, and Mihawk doubts it.
+        { episode: 509, chapter: 592, value: 'presumed-dead' },
+        // Episode 917 adapts chapter 925, where Perona reads that he is
+        // alive and he raids Hachinosu looking for Absalom.
+        { episode: 917, chapter: 925, value: 'alive' },
+        // Episode 1113 adapts chapter 1080, where Perona frees Koby so he
+        // will free Moria, locked up for turning Blackbeard down.
+        { episode: 1113, chapter: 1080, value: 'imprisoned' },
+        // Episode 1156 adapts chapter 1126, where Blackbeard learns that he
+        // has escaped.
+        { episode: 1156, chapter: 1126, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 349,
