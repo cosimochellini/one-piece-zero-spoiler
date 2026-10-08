@@ -726,24 +726,37 @@ describe('a record drawn again later in the story', () => {
     )
   })
 
-  describe('twice, following Usopp through both slingshots', () => {
+  describe('three times, following Usopp to his slingshots', () => {
     const usopp = filed('usopp')
-    const slingshot = DRAWINGS.usopp
-    const [kabuto, kuroKabuto] = REDRAWINGS['usopp'] ?? []
+    const satchel = DRAWINGS.usopp
+    const [slingshot, kabuto, kuroKabuto] = REDRAWINGS['usopp'] ?? []
+    const drawnAt = (bookmark: Bookmark): Stroke[] =>
+      characterOf(usopp, readerFor(bookmark, 'en')).visual.strokes
 
-    it('shows the latest slingshot an episode reader has reached', () => {
+    it('files each slingshot at the episode that shows it', () => {
+      expect(slingshot?.episode).toBe(11)
       expect(kabuto?.episode).toBe(274)
       expect(kuroKabuto?.episode).toBe(517)
+    })
 
-      expect(characterOf(usopp, seenAt(273)).visual.strokes).toBe(slingshot)
-      expect(characterOf(usopp, seenAt(274)).visual.strokes).toBe(kabuto?.value)
-      expect(characterOf(usopp, seenAt(516)).visual.strokes).toBe(kabuto?.value)
-      expect(characterOf(usopp, seenAt(517)).visual.strokes).toBe(
-        kuroKabuto?.value,
-      )
-      expect(characterOf(usopp, readerFor(null, 'en')).visual.strokes).toBe(
-        slingshot,
-      )
+    it('shows the latest slingshot an episode reader has reached', () => {
+      expect(drawnAt(ep(9))).toBe(satchel)
+      expect(drawnAt(ep(10))).toBe(satchel)
+      expect(drawnAt(ep(11))).toBe(slingshot?.value)
+      expect(drawnAt(ep(273))).toBe(slingshot?.value)
+      expect(drawnAt(ep(274))).toBe(kabuto?.value)
+      expect(drawnAt(ep(516))).toBe(kabuto?.value)
+      expect(drawnAt(ep(517))).toBe(kuroKabuto?.value)
+      expect(drawnAt(null)).toBe(satchel)
+    })
+
+    it('keeps the slingshot from a chapter reader until chapter 27', () => {
+      // The manga first shows it when he knocks out the mansion's guards.
+      expect(drawnAt({ mode: 'chapter', chapter: 23 })).toBe(satchel)
+      expect(drawnAt({ mode: 'chapter', chapter: 26 })).toBe(satchel)
+      expect(drawnAt({ mode: 'chapter', chapter: 27 })).toBe(slingshot?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 389 })).toBe(slingshot?.value)
+      expect(drawnAt({ mode: 'chapter', chapter: 390 })).toBe(kabuto?.value)
     })
   })
 

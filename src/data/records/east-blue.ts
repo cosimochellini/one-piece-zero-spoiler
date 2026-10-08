@@ -383,8 +383,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 23,
       name: { it: 'Usop', en: 'Usopp' },
       summary: {
-        it: 'Il bugiardo del villaggio, con un naso lungo e una fionda, che ogni mattina corre in spiaggia a gridare che i pirati stanno arrivando.',
-        en: 'The village liar, long of nose and quick with a slingshot, who runs to the shore every morning shouting that pirates are coming.',
+        it: 'Il bugiardo del villaggio, con un naso lungo, che ogni mattina corre in spiaggia a gridare che i pirati stanno arrivando.',
+        en: 'The village liar, long of nose, who runs to the shore every morning shouting that pirates are coming.',
       },
       visual: { art: 'usopp', tint: 'ocher' },
     },
@@ -1501,8 +1501,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.usopp,
       role: { it: 'Tiratore', en: 'Marksman' },
       log: {
-        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Con la fionda non sbaglia un colpo; il coraggio è ancora in lavorazione.',
-        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. With a slingshot he never misses; the bravery is still a work in progress.',
+        it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Accoglie gli stranieri vantando un esercito di seguaci che non esiste, e si tradisce da solo. Il coraggio è ancora in lavorazione.',
+        en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. He greets strangers with an army of followers that does not exist, and gives the lie away himself. The bravery is still a work in progress.',
       },
       status: [{ episode: 9, value: 'alive' }],
       affiliation: [
