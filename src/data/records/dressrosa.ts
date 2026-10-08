@@ -1,3 +1,5 @@
+import type { CharacterDossier } from '~/data/types'
+
 import { dressrosaChronicles } from './dressrosa.chronicle'
 import type { Saga } from './saga'
 
@@ -36,6 +38,18 @@ const TREBOL_ARMY = {
 }
 
 const WANO = { it: 'Paese di Wano', en: 'Wano Country' }
+
+// Dagama's, Abdullah's and Jeet's status: they lose in the colosseum and
+// share the dungeon until the toys turn back.
+const DROPPED_AT_657: CharacterDossier['status'] = [
+  { episode: 633, value: 'alive' },
+  // Episode 657 adapts chapter 725: the beaten fighters are dropped into the
+  // dungeon under the ring.
+  { episode: 657, chapter: 725, value: 'captured' },
+  // Episode 677 adapts chapter 743: Sugar faints and every toy in the country
+  // turns back.
+  { episode: 677, chapter: 743, value: 'alive' },
+]
 
 const DRESSROSA = { it: 'Dressrosa', en: 'Dressrosa' }
 
@@ -2358,15 +2372,7 @@ export const dressrosa: Saga = {
         it: 'Serve il Regno di Prodence come stratega, ed è venuto al colosseo con il suo re per vincere il Frutto Foco Foco, che darebbe a qualunque paese il coltello dalla parte del manico nella diplomazia. Kelly Funk lo accusa di stringere alleanze nel suo blocco e di corrompere i combattenti, e lui liquida l’accusa. Risponde indicando ogni nome famigerato nella sala e chiedendo se qualcuno creda davvero che loro non stiano tramando niente.',
         en: 'He serves the Prodence Kingdom as its tactician, and has come to the colosseum with his king to win the Flame-Flame Fruit, which would give any country the upper hand in diplomacy. Kelly Funk accuses him of forming alliances in his block and bribing fighters, and he brushes it off. He answers by pointing out every notorious name in the room and asking whether anyone really believes they are not plotting something too.',
       },
-      status: [
-        { episode: 633, value: 'alive' },
-        // Episode 657 adapts chapter 725: the beaten fighters are dropped
-        // into the dungeon under the ring.
-        { episode: 657, chapter: 725, value: 'captured' },
-        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
-        // country turns back.
-        { episode: 677, chapter: 743, value: 'alive' },
-      ],
+      status: DROPPED_AT_657,
       affiliation: [
         {
           episode: 633,
@@ -2417,15 +2423,7 @@ export const dressrosa: Saga = {
         it: 'Lui e il suo compagno Jeet erano cacciatori di taglie, finché non hanno fatto saltare in aria un’istituzione governativa. Adesso si sono iscritti insieme al torneo del colosseo per il Frutto Foco Foco. Dagama li conta tra i nomi famigerati della sala d’attesa che di sicuro stanno tramando qualcosa.',
         en: 'He and his partner Jeet were bounty hunters until they bombed a government institution. Now the two of them have entered the colosseum tournament together, for the Flame-Flame Fruit. Dagama counts them among the notorious names in the waiting room who must surely be plotting something.',
       },
-      status: [
-        { episode: 633, value: 'alive' },
-        // Episode 657 adapts chapter 725: the beaten fighters are dropped
-        // into the dungeon under the ring.
-        { episode: 657, chapter: 725, value: 'captured' },
-        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
-        // country turns back.
-        { episode: 677, chapter: 743, value: 'alive' },
-      ],
+      status: DROPPED_AT_657,
       affiliation: [
         {
           episode: 633,
@@ -2448,15 +2446,7 @@ export const dressrosa: Saga = {
         it: 'Era un cacciatore di taglie insieme al suo compagno Abdullah, finché i due non hanno fatto saltare in aria un’istituzione governativa. Si sono iscritti insieme al torneo del colosseo, tra i combattenti famigerati radunati per il Frutto Foco Foco. Dagama li nomina tutti e due di fila quando elenca chi, nella sala, di sicuro sta tramando qualcosa.',
         en: 'He was a bounty hunter with his partner Abdullah until the two of them bombed a government institution. They have entered the colosseum tournament together, among the notorious fighters gathered for the Flame-Flame Fruit. Dagama names them in one breath when he lists the people in the room who must be plotting something.',
       },
-      status: [
-        { episode: 633, value: 'alive' },
-        // Episode 657 adapts chapter 725: the beaten fighters are dropped
-        // into the dungeon under the ring.
-        { episode: 657, chapter: 725, value: 'captured' },
-        // Episode 677 adapts chapter 743: Sugar faints and every toy in the
-        // country turns back.
-        { episode: 677, chapter: 743, value: 'alive' },
-      ],
+      status: DROPPED_AT_657,
       affiliation: [
         {
           episode: 633,
