@@ -13,11 +13,12 @@ import { CharacterChronicle } from './CharacterChronicle'
  */
 describe('CharacterChronicle', () => {
   it('lists every story it is given, in the order it is given them', () => {
+    // The server sends them latest first; the component does not re-sort.
     renderWithProviders(
       <CharacterChronicle
         chronicle={chronicle([
-          story({ revealedAtEpisode: 1, title: 'A boy in a barrel' }),
           story({ revealedAtEpisode: 45, title: 'The first poster' }),
+          story({ revealedAtEpisode: 1, title: 'A boy in a barrel' }),
         ])}
       />,
     )
@@ -25,8 +26,8 @@ describe('CharacterChronicle', () => {
     const titles = screen.getAllByRole('heading', { level: 3 })
 
     expect(titles.map((title) => title.textContent)).toStrictEqual([
-      'A boy in a barrel',
       'The first poster',
+      'A boy in a barrel',
     ])
     expect(screen.getByText('Episode 1')).toBeInTheDocument()
     expect(screen.getByText('Episode 45')).toBeInTheDocument()

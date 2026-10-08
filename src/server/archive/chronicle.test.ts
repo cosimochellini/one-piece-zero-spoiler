@@ -11,6 +11,10 @@ function ep(episode: number, locale: Locale = 'en'): Reader {
   return readerFor({ mode: 'episode', episode }, locale)
 }
 
+function ch(chapter: number): Reader {
+  return readerFor({ mode: 'chapter', chapter }, 'en')
+}
+
 /** The two names a hand-written paragraph links. */
 const NAMES: Record<string, string> = {
   'koby': 'Koby',
@@ -33,14 +37,33 @@ const LUFFY = onFile('monkey-d-luffy')
 const LUFFYS = dossierOf(LUFFY)?.chronicle ?? []
 
 describe('the stories a bookmark reaches', () => {
-  it('gives every story reached, in order, and none not yet reached', () => {
+  it('gives every story reached, latest first, and none not yet reached', () => {
     const third = LUFFYS[2]?.episode ?? 0
     const marks = chronicleOf(LUFFY, ep(third)).entries.map(
       (entry) => entry.revealedAtEpisode,
     )
 
-    expect(marks).toStrictEqual(LUFFYS.slice(0, 3).map((s) => s.episode))
+    expect(marks).toStrictEqual(
+      LUFFYS.slice(0, 3)
+        .map((s) => s.episode)
+        .toReversed(),
+    )
     expect(chronicleOf(LUFFY, ep(third - 1)).entries).toHaveLength(2)
+  })
+
+  it('counts down in the reader’s own unit', () => {
+    // Fullbody's second story is a later episode but an earlier chapter: a
+    // manga reader's column still runs latest first.
+    const fullbody = onFile('fullbody')
+    const chapters = chronicleOf(fullbody, ch(300)).entries.map(
+      (entry) => entry.revealedAtChapter,
+    )
+    const episodes = chronicleOf(fullbody, ep(200)).entries.map(
+      (entry) => entry.revealedAtEpisode,
+    )
+
+    expect(chapters).toStrictEqual([218, 96, 53, 47])
+    expect(episodes).toStrictEqual([129, 45, 21, 20])
   })
 
   it('answers in the reader’s locale', () => {

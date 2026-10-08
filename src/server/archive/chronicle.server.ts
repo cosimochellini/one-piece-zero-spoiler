@@ -1,3 +1,5 @@
+import { byNumber, byValue } from 'sort-es'
+
 import { getCharacter } from '~/data/characters'
 import { reachedOf } from '~/data/dated'
 import type { Entity } from '~/data/types'
@@ -15,9 +17,9 @@ import type { Reader } from './reader.server'
  * A character's chronicle, cut at the reader's bookmark.
  *
  * The other dossier timelines collapse to their latest entry; this one keeps
- * every entry the reader has reached, because a chronicle is read in order
- * rather than looked up. The cut is made here, on the server, so a story
- * above the reader's episode is not in the payload at all.
+ * every entry the reader has reached, because a chronicle is read rather
+ * than looked up. The cut is made here, on the server, so a story above the
+ * reader's episode is not in the payload at all.
  */
 
 /** What a marker's id stands for: a character's name in one locale, or nothing. */
@@ -53,22 +55,27 @@ function characterName(locale: Locale): ResolveName {
 
 /**
  * A character's chronicle as it stands at the reader's bookmark: the stories
- * the reader has reached, in the reader's language. Each story carries its
- * gate, the later of its own and the character's, so its mark can be printed
- * in the reader's own unit and never says the character is met sooner than
- * they are.
+ * the reader has reached, latest first, in the reader's language. Latest is
+ * by the reader's own unit, as on the home page: the anime moves some stories
+ * out of chapter order, and a manga reader's column must still count down.
+ * Each story carries its gate, the later of its own and the character's, so
+ * its mark can be printed in the reader's own unit and never says the
+ * character is met sooner than they are.
  */
 export function chronicleOf(entity: Entity, r: Reader): CharacterChronicle {
   const resolve = characterName(r.locale)
 
   return {
     mode: 'chronicle',
-    entries: reachedOf(r, entity, 'chronicle').map((entry): ChronicleEntry => {
-      return {
-        ...entry.gate,
-        title: entry.value.title[r.locale],
-        body: segmentsOf(entry.value.body[r.locale], resolve),
-      }
-    }),
+    entries: reachedOf(r, entity, 'chronicle')
+      .toSorted(byValue((entry) => r.threshold(entry.gate), byNumber()))
+      .toReversed()
+      .map((entry): ChronicleEntry => {
+        return {
+          ...entry.gate,
+          title: entry.value.title[r.locale],
+          body: segmentsOf(entry.value.body[r.locale], resolve),
+        }
+      }),
   }
 }
