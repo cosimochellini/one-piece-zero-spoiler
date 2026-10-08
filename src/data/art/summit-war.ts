@@ -1522,8 +1522,8 @@ export const summitWarArt = {
     shadow(80, 160, 68),
   ],
 
-  // Her vice admiral's coat worn on the shoulders, seen from behind with
-  // nobody in it, her two-tone epaulettes on top. At Marineford, episode 461.
+  // Her vice admiral's coat seen from behind, empty, her two-tone
+  // epaulettes on top. At Marineford, episode 461.
   'tsuru': [
     { d: ellipse(80, 41, 22, 4.5) },
     { d: 'M58 41 C58 45 61 48 65 51 Q80 54 95 51 C99 48 102 45 102 41' },
