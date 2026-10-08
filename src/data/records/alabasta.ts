@@ -1046,8 +1046,8 @@ export const alabasta: Saga = {
       affiliation: [
         { episode: 78, value: BW },
         { episode: 91, value: BW_OFFICER },
+        // Still a prisoner at 451: he stays behind at the Gates of Justice.
         { episode: 431, chapter: 530, value: IMPEL_DOWN },
-        { episode: 451, chapter: 548, value: FORMER_BW_OFFICER },
       ],
       devilFruit: [{ episode: 92, chapter: 156, value: ['clone-clone-fruit'] }],
     },
