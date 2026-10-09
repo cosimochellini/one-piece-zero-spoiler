@@ -124,7 +124,7 @@ export const FILLER: FillerEntry[] = [
     chapter: 39,
     title: { en: 'One Piece: The Movie', it: 'Per tutto l’oro del mondo' },
     summary: {
-      en: 'The Straw Hats are robbed by three thieves and end up against El Dorago, a pirate who wants the gold of the legendary Woonan, hidden on a lost island.',
+      en: 'The Straw Hats are robbed by three thieves and end up against Eldoraggo, a pirate who wants the gold of the legendary Woonan, hidden on a lost island.',
       it: 'I Cappello di paglia vengono derubati da tre ladri e si scontrano con El Dorago, un pirata a caccia dell’oro del leggendario Woonan, nascosto su un’isola sperduta.',
     },
   },
@@ -203,7 +203,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Avventura nell’ombelico dell’oceano',
     },
     summary: {
-      en: 'The Going Merry is dragged into a huge hole in the ocean, and the crew ends up on the island at its bottom, called the Ocean’s Navel, where a treasure is said to grant any wish.',
+      en: 'A huge hole opens in the ocean and the crew drops to the island at its bottom, the Ocean’s Navel, where a treasure is said to grant any wish.',
       it: 'La Going Merry viene trascinata in un enorme buco in mezzo all’oceano e la ciurma finisce sull’isola sul fondo, l’ombelico dell’oceano, dove si dice che un tesoro esaudisca ogni desiderio.',
     },
   },
@@ -308,7 +308,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Avventura all’isola Spirale',
     },
     summary: {
-      en: 'Thieves steal the Going Merry, so the crew teams up with two thieving brothers and sails for Spiral Island, where a pirate captain called Bear King wants to marry Nami.',
+      en: 'Thieves steal the Going Merry, so the crew teams up with two thieving brothers and sails for Clockwork Island, where a pirate captain called Bear King wants to marry Nami.',
       it: 'Dei ladri rubano la Going Merry, così la ciurma si allea con due fratelli ladri e raggiunge l’isola Spirale, dove il capitano pirata Bear King vuole sposare Nami.',
     },
   },
@@ -606,8 +606,8 @@ export const FILLER: FillerEntry[] = [
     chapter: 233,
     title: { en: 'Dead End Adventure', it: 'Trappola mortale' },
     summary: {
-      en: 'Short of money, the crew enters the Dead End Race, a secret contest between pirate crews, whose competitors include Gaspardi, a former Marine turned pirate, and a bounty hunter after him.',
-      it: 'A corto di soldi, la ciurma partecipa alla Dead End Race, una gara segreta tra ciurme pirata, a cui prende parte anche Gaspardi, ex marine diventato pirata, braccato da un cacciatore di taglie.',
+      en: 'Short of money, the crew enters the Dead End Race, a secret contest between pirate crews, whose competitors include Gasparde, a former Marine turned pirate, and a bounty hunter after him.',
+      it: 'A corto di soldi, la ciurma partecipa a una gara segreta tra ciurme pirata, a cui prende parte anche Gaspardi, ex marine diventato pirata, braccato da un cacciatore di taglie.',
     },
   },
   {
@@ -645,8 +645,8 @@ export const FILLER: FillerEntry[] = [
     chapter: 281,
     title: { en: 'The Cursed Holy Sword', it: 'La spada delle sette stelle' },
     summary: {
-      en: 'On Aska Island the crew hears of the Seven Star Sword, a priceless blade that carries a curse. Then Zoro disappears, and Marines attack the village that keeps it sealed.',
-      it: 'Sull’isola Aska la ciurma sente parlare della spada delle sette stelle, un tesoro di valore incalcolabile ma maledetto. Poi Zoro sparisce e dei marine attaccano il villaggio che la tiene sigillata.',
+      en: 'On Asuka Island the crew hears of the Shichiseiken, a valuable sword that carries a curse. Then Zoro disappears, and Marines attack the village that keeps it sealed.',
+      it: 'Sull’isola Aska la ciurma sente parlare della spada delle sette stelle, la più preziosa al mondo ma maledetta. Poi Zoro sparisce e dei marine attaccano il villaggio che la tiene sigillata.',
     },
   },
   {
@@ -1312,7 +1312,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'Luffy, Usopp, Sanji and Zoro retell how they met Laboon at the Red Line, an added flashback. The canon part is Brook’s duel with a swordsman and Luffy deciding that Brook will join the crew.',
-      it: 'Rufy, Usop, Sanji e Zoro raccontano come hanno conosciuto Lovoon, un flashback aggiunto. La parte del manga è il duello di Brook con uno spadaccino e la decisione di Rufy di farlo entrare nella ciurma.',
+      it: 'Rufy, Usop, Sanji e Zoro raccontano come hanno conosciuto Lovon, un flashback aggiunto. La parte del manga è il duello di Brook con uno spadaccino e la decisione di Rufy di farlo entrare nella ciurma.',
     },
   },
   {
@@ -1389,8 +1389,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Nami e la scienza del vento',
     },
     summary: {
-      en: 'Nami wakes on Weatheria and learns weather tricks from an old scientist, while Franky lands on a snowy island. Luffy’s voyage with Hancock frames the added scenes.',
-      it: 'Nami si risveglia a Weatheria e impara trucchi sul meteo da un vecchio scienziato, mentre Franky atterra su un’isola innevata. Il viaggio di Rufy con Hancock fa da cornice alle scene aggiunte.',
+      en: 'Nami wakes on Weatheria and learns weather tricks from an old scientist, while Franky lands on a snowy island. On Momonga’s ship, Luffy has a nightmare and Hancock tries to reassure him.',
+      it: 'Nami si risveglia a Weatheria e impara trucchi sul meteo da un vecchio scienziato, mentre Franky atterra su un’isola innevata. Sulla nave di Momonga Rufy ha un incubo e Hancock cerca di rassicurarlo.',
     },
   },
   {
@@ -1428,8 +1428,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Zoro sull’isola sconosciuta',
     },
     summary: {
-      en: 'Zoro lands near Perona, who bandages him and humiliates him, and Brook is mistaken for Satan on Namakura. The canon part is Marine officers gathering and Ace begging Garp to kill him.',
-      it: 'Zoro atterra vicino a Perona, che lo cura e lo umilia, e Brook viene scambiato per Satan. La parte del manga è il raduno degli ufficiali della Marina e Ace che implora Garp di ucciderlo.',
+      en: 'Zoro lands near Perona, who bandages him and humiliates him, and Brook is mistaken for Satan on Namakura. Marine officers gather at headquarters, and Ace begs Garp to kill him.',
+      it: 'Zoro atterra vicino a Perona, che lo cura e lo umilia, e Brook viene scambiato per Satan a Namakura. Gli ufficiali della Marina si radunano al quartier generale e Ace implora Garp di ucciderlo.',
     },
   },
   {
@@ -1467,8 +1467,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Rubber e la difesa di Boss',
     },
     summary: {
-      en: 'Largo traps Zoro and Sanji in nets made from his own body. Boss molts and frees the crew, then tries to surrender to protect the village, but Luffy refuses and the crew prepares to fight.',
-      it: 'Largo intrappola Zoro e Sanji con reti create dal suo corpo. Boss fa la muta e libera la ciurma, poi prova a consegnarsi per salvare il villaggio, ma Rufy rifiuta e si lotta.',
+      en: 'Largo traps Zoro and Sanji in nets made from his own body. Boss tries to surrender to protect the village and Luffy refuses. Boss then molts and frees the crew, and they prepare to fight.',
+      it: 'Largo intrappola Zoro e Sanji in reti fatte con il suo corpo. Boss prova a consegnarsi per salvare il villaggio e Rufy rifiuta. Poi Boss fa la muta e libera la ciurma, pronta a combattere.',
     },
   },
   {
@@ -1547,7 +1547,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'Zoro and Perona find an enormous grave marker on their way to the sea, while Brook decides to stay on Namakura until he repays the debt he owes the islanders.',
-      it: 'Zoro e Perona trovano una gigantesca croce di legno mentre vanno verso il mare, mentre Brook decide di restare a Namakura finché non avrà saldato il debito con gli abitanti.',
+      it: 'Zoro e Perona, diretti al mare, trovano una gigantesca croce di legno, mentre Brook decide di restare a Namakura finché non avrà saldato il debito con gli abitanti.',
     },
   },
   {
@@ -1600,7 +1600,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'Luffy wakes up to find his straw hat missing, and the whole crew searches for it. A bird carrying the hat sets off a chase involving Marines and Sea Kings.',
-      it: 'Rufy non trova più il suo cappello di paglia e tutta la ciurma si mette a cercarlo. Un uccello con il cappello nel becco dà il via a un inseguimento tra marine e re del mare.',
+      it: 'Rufy non trova più il cappello di paglia e tutta la ciurma lo cerca. Un uccello con il cappello nel becco dà il via a un inseguimento tra marine e re del mare.',
     },
   },
   {
@@ -1831,8 +1831,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Scontro ad alta tensione! Aokiji vs Do Flamingo',
     },
     summary: {
-      en: 'The canon part is Aokiji freezing Doflamingo to stop him from killing Smoker, and Doflamingo leaving. The added part shows the Thousand Sunny, where Kin’emon accuses Zoro and an unseen watcher follows the ship.',
-      it: 'La parte del manga mostra Aokiji che congela Do Flamingo per impedirgli di uccidere Smoker. Quella aggiunta segue la Thousand Sunny, dove Kin’emon accusa Zoro e uno sconosciuto osserva la nave.',
+      en: 'The canon part is Aokiji freezing Doflamingo to stop him killing Smoker. The added part follows the Thousand Sunny, where Usopp and Chopper fear an attack and a mysterious figure watches the ship.',
+      it: 'La parte del manga è Aokiji che congela Do Flamingo per impedirgli di uccidere Smoker. Quella aggiunta segue la Thousand Sunny, dove Usop e Chopper temono un attacco e una figura misteriosa osserva la nave.',
     },
   },
   {
@@ -1883,8 +1883,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Lucy! Il guerriero sconosciuto',
     },
     summary: {
-      en: 'Luffy registers for the tournament as “Lucy” and meets another fighter, as in the manga. The anime adds a longer waiting-room fight with the gladiator Spartan and the start of Block A.',
-      it: 'Rufy si iscrive al torneo come “Lucy” e incontra un altro combattente, come nel manga. L’anime allunga la rissa in sala d’attesa con il gladiatore Spartan e mostra l’inizio del blocco A.',
+      en: 'Luffy registers for the tournament as “Lucy” and knocks out Spartan in the waiting room, as in the manga. The anime adds scenes with Franky and the start of Block A.',
+      it: 'Rufy si iscrive al torneo come “Lucy” e mette al tappeto Spartan in sala d’attesa, come nel manga. L’anime aggiunge scene con Franky e l’inizio del blocco A.',
     },
   },
   {
@@ -1896,8 +1896,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Scontro decisivo! Jora vs la ciurma di Cappello di Paglia',
     },
     summary: {
-      en: 'Doflamingo tells Law how the World Government began, while Brook and Nami beat Giolla aboard the Sunny. The anime stretches that fight, with Giolla turning into a creature of abstract art.',
-      it: 'Do Flamingo racconta a Law le origini del Governo Mondiale, mentre Brook e Nami sconfiggono Jora sulla Sunny. L’anime allunga lo scontro, con Jora trasformata in una creatura d’arte astratta.',
+      en: 'Doflamingo tells Law how the World Government began, while Brook and Nami beat Giolla aboard the Sunny. The anime stretches that fight, with Giolla turning into an entity of art.',
+      it: 'Do Flamingo racconta a Law le origini del Governo Mondiale, mentre Brook e Nami sconfiggono Jora sulla Sunny. L’anime allunga lo scontro, con Jora trasformata in una creatura d’arte.',
     },
   },
   {
@@ -1985,8 +1985,8 @@ export const FILLER: FillerEntry[] = [
     chapter: 781,
     title: { en: 'Adventure of Nebulandia', it: 'Avventura a Nebulandia' },
     summary: {
-      en: 'The Marines hatch a plan to eliminate the Straw Hats, who are lured to Mushroom Island by Foxy’s crew, now with new members, for another Davy Back Fight.',
-      it: 'La Marina escogita un piano per eliminare i Cappello di paglia, attirati sull’isola dei funghi dalla ciurma di Foxy, ora con nuovi membri, per un altro Davy Back Fight.',
+      en: 'The Marines hatch a plan to eliminate the Straw Hats, who are lured to Kinoko Island by Foxy’s crew, now with new members, for another Davy Back Fight.',
+      it: 'La Marina escogita un piano per eliminare i Cappello di paglia, attirati su un’isola dalla ciurma di Foxy, ora con nuovi membri, per un altro Davy Back Fight.',
     },
   },
   {
@@ -2064,7 +2064,7 @@ export const FILLER: FillerEntry[] = [
       it: 'I prigionieri della miniera - Luffy vs Averon',
     },
     summary: {
-      en: 'Averon, a subordinate of Bill who turns into a mine cart, attacks Luffy, Bartolomeo and Desire underground. They find enslaved miners, and Luffy breaks free of his silver ball and beats Averon with Bartolomeo.',
+      en: 'Aveyron, a subordinate of Bill who turns into a mine cart, attacks Luffy, Bartolomeo and Desire underground. They find enslaved miners, and Luffy breaks free of his silver ball and beats Aveyron with Bartolomeo.',
       it: 'Averon, un sottoposto di Bill che si trasforma in carrello minerario, attacca Rufy, Bartolomeo e Desire nel sottosuolo. Trovano dei minatori schiavizzati, e Rufy si libera dalla sfera d’argento e batte Averon con Bartolomeo.',
     },
   },
@@ -2113,7 +2113,7 @@ export const FILLER: FillerEntry[] = [
     title: { en: 'One Piece Film: Gold', it: 'One Piece Film: Gold' },
     summary: {
       en: 'The Straw Hats reach Gran Tesoro, a giant city of entertainment and casinos, and meet its ruler Gild Tesoro, whose money has won over pirates, Marines and even the World Government.',
-      it: 'I Cappello di paglia raggiungono Gran Tesoro, un’enorme città dell’intrattenimento e dei casinò, e conoscono il suo sovrano Gild Tesoro, che con il denaro si è guadagnato pirati, marine e persino il Governo Mondiale.',
+      it: 'I Cappello di paglia raggiungono Gran Tesoro, la nave dell’intrattenimento più grande al mondo, e conoscono il suo proprietario Gild Tesoro, che con il denaro si è guadagnato pirati, marine e persino il Governo Mondiale.',
     },
   },
   {
@@ -2125,8 +2125,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Una nuova avventura - La leggendaria isola di Zo!',
     },
     summary: {
-      en: 'The canon part is Shanks losing his arm and Luffy’s ship reaching an island in the fog. The added part has Bartolomeo telling how the Straw Hats came together, and a Marine briefing with Kizaru.',
-      it: 'La parte canonica è Shanks che perde il braccio e la nave di Rufy che raggiunge un’isola nella nebbia. L’aggiunta è Bartolomeo che racconta come si è formata la ciurma, più un rapporto della Marina.',
+      en: 'The canon part is a Marine briefing with Kizaru and the Barto Club’s ship reaching an island in the fog. The added part is Bartolomeo telling how the Straw Hats came together.',
+      it: 'La parte canonica è un rapporto della Marina con Kizaru e la nave di Bartolomeo che raggiunge un’isola nella nebbia. L’aggiunta è Bartolomeo che racconta come si è formata la ciurma.',
     },
   },
   {
@@ -2151,7 +2151,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Verso il Reverie - La principessa Bibi e la principessa Shirahoshi',
     },
     summary: {
-      en: 'Vivi sails from Arabasta for the Levely and recalls her adventure with the Straw Hats, while Shirahoshi is persuaded to attend. On the Sunny, the crew finds Carrot aboard in secret.',
+      en: 'Vivi sails from Arabasta for the royal summit and recalls her adventure with the Straw Hats, while Shirahoshi is persuaded to attend. On the Sunny, the crew finds Carrot aboard in secret.',
       it: 'Bibi parte da Alabasta per il vertice dei reali e ricorda la sua avventura con i Cappello di Paglia, mentre Shirahoshi viene convinta a partecipare. Sulla Sunny la ciurma trova Carrot a bordo.',
     },
   },
@@ -2164,8 +2164,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Verso il Reverie - Rebecca e il regno di Sakura',
     },
     summary: {
-      en: 'Carrot asks to stay with the Sanji retrieval team and Luffy lets her. Kureha forces Dalton to take her to the Levely, and Wapol recalls his rise to power.',
-      it: 'Carrot chiede di restare con la squadra di recupero di Sanji e Rufy accetta. Kureha costringe Dorton a portarla al vertice dei reali, e Wapol ricorda la sua ascesa.',
+      en: 'Carrot asks to stay with the Sanji retrieval team and Luffy lets her. Kureha forces Dalton to take her to the royal summit, and Wapol recalls his rise to power.',
+      it: 'Carrot chiede di restare con la squadra di recupero di Sanji e Rufy accetta. Kureha costringe Dolton a portarla al vertice dei reali, e Wapol ricorda la sua ascesa.',
     },
   },
   {
@@ -2227,8 +2227,8 @@ export const FILLER: FillerEntry[] = [
     chapter: 840,
     title: { en: 'Episode of East Blue', it: 'Episodio dell’East Blue' },
     summary: {
-      en: 'As the crew prepares to leave East Blue for the Grand Line, each Straw Hat recalls their journey so far and renews their dream.',
-      it: 'Mentre la ciurma si prepara a lasciare l’East Blue per entrare nella Rotta Maggiore, ogni Cappello di paglia ripensa al proprio viaggio e rinnova il proprio sogno.',
+      en: 'As the crew prepares to leave East Blue for the Grand Line, each of the five Straw Hats recalls their journey so far and renews their dream.',
+      it: 'Mentre la ciurma si prepara a lasciare l’East Blue per entrare nella Rotta Maggiore, ognuno dei cinque Cappello di paglia ripensa al proprio viaggio e rinnova il proprio sogno.',
     },
   },
   {
@@ -2290,7 +2290,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Verso il Reverie! I fedeli alleati di Cappello di Paglia si riuniscono',
     },
     summary: {
-      en: 'Koby and Helmeppo save the royals of Dressrosa and Prodence from pirates on the way to the Levely. The Four Emperors read the news about Luffy, whose bounty is now 1.5 billion.',
+      en: 'Koby and Helmeppo save the royals of Dressrosa and Prodence from pirates on the way to the Reverie. The Four Emperors read the news about Luffy, whose bounty is now 1.5 billion.',
       it: 'Kobi e Hermeppo salvano dai pirati i reali di Dressrosa e Prodence in viaggio verso il Reverie. I quattro imperatori leggono la notizia su Rufy, la cui taglia ora è di 1,5 miliardi.',
     },
   },
@@ -2304,7 +2304,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'Sakazuki learns that Fujitora has gone to Mary Geoise and orders another admiral to send him away. Sengoku recalls what happened at Impel Down and Marineford two years earlier.',
-      it: 'Sakazuki scopre che Fujitora è andato a Marijoa e ordina a un altro ammiraglio di allontanarlo. Sengoku ripensa a quanto accaduto a Impel Down e a Marineford due anni prima.',
+      it: 'Sakazuki scopre che Fujitora è andato a Mary Geoise e ordina a un altro ammiraglio di allontanarlo. Sengoku ripensa a quanto accaduto a Impel Down e a Marineford due anni prima.',
     },
   },
   {
@@ -2329,8 +2329,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Il grande sogno di Shirahoshi! Uscire alla luce del sole',
     },
     summary: {
-      en: 'The king of Goa meets Garp, then the Neptune family and Shirahoshi head up the Red Line. Shirahoshi sees the surface world in the sun for the first time, while Sabo watches in disguise.',
-      it: 'Il re di Goa incontra Garp, poi la famiglia Nettuno e Shirahoshi salgono lungo la Linea Rossa. Shirahoshi vede per la prima volta la superficie sotto il sole, mentre Sabo osserva sotto copertura.',
+      en: 'The king of Goa meets Garp, then the Neptune family and Shirahoshi head up the Red Line. Shirahoshi sees the surface world in the sun for the first time, while Sabo watches the king.',
+      it: 'Il re di Goa incontra Garp, poi la famiglia Nettuno e Shirahoshi salgono lungo la Linea Rossa. Shirahoshi vede per la prima volta la superficie sotto il sole, mentre Sabo osserva il re.',
     },
   },
   {
@@ -2343,7 +2343,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'The Neptune family and other royals climb the Red Line into Mary Geoise and reach Pangaea Castle. Shirahoshi joins Vivi, Rebecca and Leo as they talk about Luffy.',
-      it: 'La famiglia Nettuno e altri reali salgono lungo la Linea Rossa fino a Marijoa e raggiungono il castello di Pangea. Shirahoshi si unisce a Bibi, Rebecca e Leo mentre parlano di Rufy.',
+      it: 'La famiglia Nettuno e altri reali salgono lungo la Linea Rossa fino a Mary Geoise e raggiungono il castello di Pangea. Shirahoshi si unisce a Bibi, Rebecca e Leo mentre parlano di Rufy.',
     },
   },
   {
@@ -2355,8 +2355,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Tenebre nella terra sacra. Un misterioso cappello di paglia gigante',
     },
     summary: {
-      en: 'Vivi, Rebecca and Shirahoshi talk about Luffy, joined by Dalton and Kureha. Wapol mocks Vivi until Dalton drives him off, and a figure with wanted posters enters a room holding a giant straw hat.',
-      it: 'Bibi, Rebecca e Shirahoshi parlano di Rufy, raggiunte da Dorton e Kureha. Wapol deride Bibi finché Dorton lo allontana, e una figura con dei manifesti entra in una stanza con un enorme cappello di paglia.',
+      en: 'Vivi, Rebecca and Shirahoshi talk about Luffy, joined by Dalton and Kureha. Wapol mocks Vivi until Dalton drives him off, and a figure with wanted posters enters a room that holds a giant straw hat.',
+      it: 'Bibi, Rebecca e Shirahoshi parlano di Rufy, raggiunte da Dolton e Kureha. Wapol deride Bibi finché Dolton lo allontana, e una figura con dei manifesti entra in una stanza con un enorme cappello di paglia.',
     },
   },
   {
@@ -2381,8 +2381,8 @@ export const FILLER: FillerEntry[] = [
       it: 'La furia di Sabo! Salvare Orso, l’ufficiale dell’Armata rivoluzionaria',
     },
     summary: {
-      en: 'Myosgard promises to protect Shirahoshi at the Levely, while Sabo sneaks around Mary Geoise. Bonney, disguised as the queen of Sorbet, slips into the Domain of the Gods, where Rosward shows his slave Kuma.',
-      it: 'Myosgard promette di proteggere Shirahoshi durante il Reverie, mentre Sabo si muove di nascosto a Marijoa. Bonney, travestita da regina di Sorbet, entra nel dominio dei draghi celesti, dove Roswald mostra lo schiavo Orso.',
+      en: 'Myosgard promises to protect Shirahoshi at the Reverie, while Sabo sneaks around Mary Geoise. Bonney, disguised as the queen of Sorbet, slips into the Domain of the Gods, where Rosward shows his slave Kuma.',
+      it: 'Myosgard promette di proteggere Shirahoshi durante il Reverie, mentre Sabo si muove di nascosto a Mary Geoise. Bonney, travestita da regina di Sorbet, entra nel dominio dei draghi celesti, dove Roswald mostra lo schiavo Orso.',
     },
   },
   {
@@ -2394,7 +2394,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Finalmente inizia! Il Reverie delle cospirazioni!',
     },
     summary: {
-      en: 'The royals open the Levely under the king of Ballywood, while Sabo and the Revolutionary officers plan their move underground. The Five Elders meet in secret with a mysterious figure, Imu.',
+      en: 'The royals open the Reverie under the king of Ballywood, while Sabo and the Revolutionary officers plan their move underground. The Five Elders meet in secret with a mysterious figure, Imu.',
       it: 'I reali aprono il Reverie sotto la guida del re di Ballywood, mentre Sabo e gli ufficiali rivoluzionari preparano il piano sottoterra. I cinque astri di saggezza incontrano in segreto Im.',
     },
   },
@@ -2433,8 +2433,8 @@ export const FILLER: FillerEntry[] = [
       it: 'La saga di Cidre - II parte',
     },
     summary: {
-      en: 'Luffy beats Cidre, who wears his strongest carbonated armour, with a Gear Third punch, while Hancock turns two of the guild’s fighters to stone. Luffy takes an invitation to the Pirates Festival.',
-      it: 'Rufy batte Cidre, che indossa la sua armatura gassata più potente, con un pugno in Gear Third, mentre Hancock pietrifica due combattenti della gilda. Rufy ottiene un invito alla Fiera Mondiale Pirata.',
+      en: 'Luffy beats Cidre, who equips his most powerful carbonated rig, with a Gear Third punch, while Hancock turns two of the guild’s fighters to stone. Luffy takes an invitation to the Pirates Festival.',
+      it: 'Rufy batte Cidre, che usa la sua arma gassata più potente, con un pugno in Gear Third, mentre Hancock pietrifica due combattenti della gilda. Rufy ottiene un invito alla Fiera Mondiale Pirata.',
     },
   },
   {
@@ -2563,7 +2563,7 @@ export const FILLER: FillerEntry[] = [
     title: { en: 'One Piece Film: Red', it: 'One Piece Film: Red' },
     summary: {
       en: 'Uta, the world’s greatest singer, gives her first live concert on the Island of Music, Elegia, in front of the Straw Hats, Marines and fans. It opens with the revelation that she is Shanks’ daughter.',
-      it: 'Uta, la più grande cantante del mondo, tiene il suo primo concerto a Elegia, l’isola della musica, davanti ai Cappello di paglia, ai marine e ai fan. Si apre con la rivelazione che è la figlia di Shanks.',
+      it: 'Uta, la più grande cantante del mondo, tiene il primo concerto a Elegia, l’isola della musica, davanti ai Cappello di paglia, ai marine e ai fan. Si apre rivelando che è figlia di Shanks.',
     },
   },
   {
@@ -2576,7 +2576,7 @@ export const FILLER: FillerEntry[] = [
     },
     summary: {
       en: 'Luffy meets Shanks and his daughter Uta in Foosha Village as a child, and the two become friends. It is a flashback that opens with the Straw Hats hearing Uta’s song on a Tone Dial.',
-      it: 'Da bambino Rufy incontra Shanks e sua figlia Uta nel villaggio di Foosha, e i due diventano amici. È un flashback che inizia con i Cappello di Paglia che ascoltano la canzone di Uta.',
+      it: 'Da bambino Rufy incontra Shanks e sua figlia Uta nel villaggio Fuschia, e i due diventano amici. È un flashback che inizia con i Cappello di Paglia che ascoltano la canzone di Uta.',
     },
   },
   {
@@ -2588,8 +2588,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Una promessa per la nuova era! Rufy e Uta',
     },
     summary: {
-      en: 'Uta tells Luffy of her dream of a new era made with her songs. Shanks’s crew sails off with her, and Luffy cries when she does not return, while Elegia is reported destroyed.',
-      it: 'Uta racconta a Rufy il sogno di una nuova era con le sue canzoni. La ciurma di Shanks parte con lei, e Rufy piange quando non torna, mentre i giornali riportano la distruzione di Elegia.',
+      en: 'Uta tells Luffy she dreams of travelling the world with Shanks and bringing joy with her singing. The crew leaves and returns without her, Luffy cries, and Elegia is reported destroyed.',
+      it: 'Uta dice a Rufy che sogna di viaggiare per il mondo con Shanks e portare gioia con il canto. La ciurma parte e torna senza di lei, Rufy piange e Elegia risulta distrutta.',
     },
   },
   {
@@ -2699,8 +2699,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Tempo di partire - Il Paese di Wa e i Pirati di Cappello di paglia',
     },
     summary: {
-      en: 'Before leaving Wano, Luffy says goodbye to the Nine Red Scabbards and the minks at Kuri Castle’s ruins. Zoro visits two graves, Usopp picks fabric for a new outfit, and Sanji sells his last soba.',
-      it: 'Prima di lasciare Wa, Rufy saluta i foderi rossi e i visoni tra le rovine del castello di Kuri. Zoro visita due tombe, Usop sceglie una stoffa e Sanji vende l’ultima soba.',
+      en: 'Before leaving Wano, Luffy says goodbye to the Nine Red Scabbards and the minks at Kuri Castle’s ruins. Zoro visits two graves, Usopp buys cloth, and Sanji sells his last soba.',
+      it: 'Prima di lasciare Wa, Rufy saluta i foderi rossi e i visoni tra le rovine del castello di Kuri. Zoro visita due tombe, Usop compra della stoffa e Sanji vende l’ultima soba.',
     },
   },
   {
@@ -2755,8 +2755,8 @@ export const FILLER: FillerEntry[] = [
       it: 'Facciamo la storia: i vecchi e nuovi quattro Imperatori nella tempesta',
     },
     summary: {
-      en: 'Zoro and Brook give a recap of the Four Emperors, the old ones and the new ones, and how they came to rule the seas.',
-      it: 'Zoro e Brook fanno un riassunto sui quattro Imperatori, quelli vecchi e quelli nuovi, e su come sono arrivati a dominare i mari.',
+      en: 'Zoro and Brook recap the Four Emperors, the old ones and the new ones, and the history of each.',
+      it: 'Zoro e Brook fanno un riassunto sui quattro Imperatori, quelli vecchi e quelli nuovi, e sulla storia di ciascuno.',
     },
   },
   {
