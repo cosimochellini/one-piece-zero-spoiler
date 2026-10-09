@@ -2050,6 +2050,89 @@ const SMALL_CHART: Stroke[] = [
   { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
 ].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
+/**
+ * The Grow Up Sorcery Clima-Tact leant across the box, without its knobs:
+ * the shafts, the wider grip, collars at the grip and both necks, the grip's
+ * seam and the far side hatched. 776 and 878 hold it; only the knobs' ink
+ * and Zeus change.
+ */
+const SORCERY_STAFF: Stroke[] = [
+  {
+    d: 'M35.3 159.6 L61.1 130.1 M42.1 165.5 L67.9 136 M82.1 106 L107.9 76.5 M88.9 111.9 L114.7 82.4',
+  },
+  { d: 'M61.6 126.5 L78.6 107 M71.4 135 L88.4 115.5' },
+  {
+    d: 'M58.5 127.8 Q61.1 137 70.5 138.3 M60.4 125.5 Q63.1 134.7 72.5 136 M77.5 106 Q80.1 115.1 89.6 116.5 M79.5 103.7 Q82.1 112.9 91.5 114.2',
+  },
+  {
+    d: 'M37.3 154.3 Q38.8 162.5 47.1 162.9 M102.9 79.1 Q104.4 87.3 112.7 87.7',
+  },
+  { d: 'M67.8 129.3 L82.2 112.7', role: 'soft' },
+  {
+    d: 'M46.7 159.8 L46.2 156 M53.9 151.5 L53.5 147.7 M61.2 143.3 L60.7 139.4 M90.6 109.5 L90.2 105.6 M97.9 101.2 L97.4 97.3 M105.1 92.9 L104.6 89 M41.8 166.1 L38.4 166.9 M41.7 170.2 L38.3 169.2 M39.5 173.8 L37.1 171.2 M123.8 72.1 L120.4 72.9 M123.7 76.2 L120.3 75.2 M121.5 79.8 L119.1 77.2',
+    role: 'ambient',
+  },
+]
+
+/** The Sorcery Clima-Tact's two round knobs, the ends that grow. */
+const SORCERY_KNOBS = `${circle(34, 168, 8.5)} ${circle(116, 74, 8.5)}`
+
+/**
+ * The first Clima-Tact on the same line as the later staff: three hollow
+ * poles pushed end to end, the open mouth of the top one, the bottom rim,
+ * a highlight down each pole and the far side hatched, with the two sleeves
+ * where the pieces join as its mark. The first Sorcery model of 517 looks
+ * the same, three plain parts and no dials, so it returns there.
+ */
+const CLIMA_TACT: Stroke[] = [
+  {
+    d: 'M30.6 165 L56.1 135.8 M59.7 131.6 L83.5 104.4 M87.1 100.3 L112.6 71 M37.4 171 L62.9 141.7 M66.5 137.6 L90.3 110.4 M93.9 106.2 L119.4 77',
+  },
+  { d: 'M112.6 71 Q118.3 71.4 119.4 77 Q113.7 76.6 112.6 71' },
+  { d: 'M30.6 165 Q30.6 171.9 37.4 171' },
+  {
+    d: 'M36.7 162.1 L57.2 138.6 M63 132 L84.3 107.6 M90 101 L110.5 77.5',
+    role: 'soft',
+  },
+  {
+    d: 'M43.5 163 L43 159.1 M50.1 155.5 L49.6 151.6 M56.6 148 L56.1 144.1 M71.4 131.1 L70.9 127.2 M77.9 123.6 L77.4 119.7 M84.5 116 L84 112.1 M98.4 100.1 L97.9 96.2 M105 92.5 L104.5 88.6 M111.6 85 L111.1 81.1',
+    role: 'ambient',
+  },
+  {
+    d: 'M55 134.8 Q55.8 143 64.1 142.7 M58.6 130.7 Q59.4 138.9 67.7 138.5 M55 134.8 L58.6 130.7 M64.1 142.7 L67.7 138.5 M82.3 103.5 Q83.1 111.7 91.4 111.3 M85.9 99.3 Q86.7 107.5 95 107.2 M82.3 103.5 L85.9 99.3 M91.4 111.3 L95 107.2',
+    role: 'accent',
+  },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
+/** The Grow Up staff with its knobs in her colour, and no Zeus. */
+const GROW_UP: Stroke[] = [
+  ...SORCERY_STAFF,
+  { d: SORCERY_KNOBS, role: 'accent' },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
+/**
+ * The Grow Up staff with Zeus over its top knob, his bolt in her colour:
+ * from 878, and again once he is back in the staff.
+ */
+const SORCERY_WITH_ZEUS: Stroke[] = [
+  ...SORCERY_STAFF,
+  { d: SORCERY_KNOBS },
+  {
+    d: 'M69 52.5 C59.7 52.5 58.6 38.6 69 36.3 C67.8 23.5 84.1 20 88.7 28.1 C92.2 14.2 114.2 14.2 116.6 29.3 C128.2 25.8 137.4 37.4 129.3 47.9 C134 57.1 120 60.6 115.4 54.8 C108.4 61.8 94.5 61.8 88.7 56 C81.8 60.6 71.3 59.5 69 52.5 Z',
+  },
+  {
+    d: 'M72.5 47.9 C81.8 52.5 92.2 50.2 98 45.5 C105 51.3 116.6 51.3 125.8 44.4',
+    role: 'soft',
+  },
+  { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
 /** Luffy's hat, smaller, hung by its string from the haft of the Elbaf axe. */
 const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
 
@@ -2209,47 +2292,66 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
   ],
-  // The Sorcery Clima-Tact leant across the box from the ground, its round
-  // knobs at both ends, collars banding the grip and both necks, the far side
-  // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
-  // the one mark in her colour, and a small copy of her first drawing's chart
-  // at the foot. The chart is not a prop of the scene: it is her emblem as
-  // navigator and cartographer, whose dream is to draw a map of the world,
-  // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
-  // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
   'nami': [
+    // The first Clima-Tact, leant across the box on the line the later staff
+    // keeps: three hollow poles of blue steel pushed end to end, the two
+    // sleeves where they join in her colour, and the chart at its foot. Usopp
+    // hands it over and she first fights with it against Miss Doublefinger in
+    // 117 (ch. 190).
+    { episode: 117, chapter: 190, value: CLIMA_TACT },
+    // The Perfect Clima-Tact: the same three poles, each now ending in a ball
+    // that holds a dial, the balls at both joints and the top in her colour,
+    // a glint on each. She shows it off chasing the Puffing Tom on the
+    // Rocketman in 258 (ch. 368).
     {
-      episode: 878,
-      chapter: 903,
+      episode: 258,
+      chapter: 368,
       value: [
         {
-          d: 'M35.3 159.6 L61.1 130.1 M42.1 165.5 L67.9 136 M82.1 106 L107.9 76.5 M88.9 111.9 L114.7 82.4',
+          d: 'M30.6 165 L53 139.4 M37.4 171 L59.8 145.3 M62.9 128.1 L80.3 108 M69.7 134 L87.1 113.9 M90.2 96.7 L107.7 76.7 M97 102.6 L114.5 82.6',
         },
-        { d: 'M61.6 126.5 L78.6 107 M71.4 135 L88.4 115.5' },
+        { d: 'M30.6 165 Q30.6 171.9 37.4 171' },
         {
-          d: 'M58.5 127.8 Q61.1 137 70.5 138.3 M60.4 125.5 Q63.1 134.7 72.5 136 M77.5 106 Q80.1 115.1 89.6 116.5 M79.5 103.7 Q82.1 112.9 91.5 114.2',
+          d: 'M36.7 162.1 L52 144.5 M66.5 127.9 L79.6 112.9 M93.9 96.5 L107 81.5',
+          role: 'soft',
         },
         {
-          d: 'M37.3 154.3 Q38.8 162.5 47.1 162.9 M102.9 79.1 Q104.4 87.3 112.7 87.7',
-        },
-        { d: `${circle(34, 168, 8.5)} ${circle(116, 74, 8.5)}` },
-        { d: 'M67.8 129.3 L82.2 112.7', role: 'soft' },
-        {
-          d: 'M46.7 159.8 L46.2 156 M53.9 151.5 L53.5 147.7 M61.2 143.3 L60.7 139.4 M90.6 109.5 L90.2 105.6 M97.9 101.2 L97.4 97.3 M105.1 92.9 L104.6 89 M41.8 166.1 L38.4 166.9 M41.7 170.2 L38.3 169.2 M39.5 173.8 L37.1 171.2 M123.8 72.1 L120.4 72.9 M123.7 76.2 L120.3 75.2 M121.5 79.8 L119.1 77.2',
+          d: 'M43.5 163 L43 159.1 M50.1 155.5 L49.6 151.6 M72.2 130.1 L71.7 126.2 M79.6 121.7 L79.1 117.8 M99.3 99.1 L98.8 95.2 M105.8 91.6 L105.3 87.7',
           role: 'ambient',
         },
         {
-          d: 'M69 52.5 C59.7 52.5 58.6 38.6 69 36.3 C67.8 23.5 84.1 20 88.7 28.1 C92.2 14.2 114.2 14.2 116.6 29.3 C128.2 25.8 137.4 37.4 129.3 47.9 C134 57.1 120 60.6 115.4 54.8 C108.4 61.8 94.5 61.8 88.7 56 C81.8 60.6 71.3 59.5 69 52.5 Z',
+          d: `${circle(61.3, 136.7, 7.5)} ${circle(88.7, 105.3, 7.5)} ${circle(116, 74, 7.5)}`,
+          role: 'accent',
         },
         {
-          d: 'M72.5 47.9 C81.8 52.5 92.2 50.2 98 45.5 C105 51.3 116.6 51.3 125.8 44.4',
+          d: 'M56.5 133.5 Q57.5 131.2 60 130.8 M83.9 102.1 Q84.9 99.8 87.4 99.4 M111.2 70.8 Q112.2 68.5 114.7 68.1',
           role: 'soft',
         },
-        { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
         ...SMALL_CHART,
         shadow(80, 188, 56),
       ],
     },
+    // The first Sorcery Clima-Tact of the two years: three plain parts again,
+    // no dials, so the drawing is the first Clima-Tact's. She brings it back
+    // from Weatheria and first shows it on Sabaody in 517 (ch. 598).
+    { episode: 517, chapter: 598, value: CLIMA_TACT },
+    // The Grow Up Sorcery Clima-Tact as Usopp hands it over at Zou: the staff
+    // Zeus will sit on, its two round knobs (the ends that make it grow) in
+    // her colour. First shown in 776 (ch. 822).
+    { episode: 776, chapter: 822, value: GROW_UP },
+    // The Sorcery Clima-Tact leant across the box from the ground, its round
+    // knobs at both ends, collars banding the grip and both necks, the far side
+    // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
+    // the one mark in her colour, and a small copy of her first drawing's chart
+    // at the foot. The chart is not a prop of the scene: it is her emblem as
+    // navigator and cartographer, whose dream is to draw a map of the world,
+    // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
+    // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
+    { episode: 878, chapter: 903, value: SORCERY_WITH_ZEUS },
+    // The staff alone again: Big Mom grabs Zeus back in 993 (ch. 985).
+    { episode: 993, chapter: 985, value: GROW_UP },
+    // Zeus back in the staff, a Homie of hers now, from 1037 (ch. 1015).
+    { episode: 1037, chapter: 1015, value: SORCERY_WITH_ZEUS },
   ],
   'usopp': [
     // His slingshot, the band drawn straight back with a lead ball in its

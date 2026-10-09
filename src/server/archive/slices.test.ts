@@ -1274,21 +1274,22 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
   })
 
-  it('puts Zeus in Nami’s Clima-Tact only from episode 878', () => {
-    const nami = filed('nami')
-    const chart = DRAWINGS.nami
-    const zeus = REDRAWINGS['nami']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(nami, readerFor(bookmark, 'en')).visual.strokes
+  it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
+    const stages = walkStages('nami', [
+      [117, 190],
+      [258, 368],
+      [517, 598],
+      [776, 822],
+      [878, 903],
+      [993, 985],
+      [1037, 1015],
+    ])
 
-    expect(zeus?.episode).toBe(878)
-
-    expect(drawnAt(ep(877))).toBe(chart)
-    expect(drawnAt(ep(878))).toBe(zeus?.value)
-    expect(drawnAt(null)).toBe(chart)
-    // The manga has Zeus come out of her staff in chapter 903, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(chart)
-    expect(drawnAt({ mode: 'chapter', chapter: 903 })).toBe(zeus?.value)
+    // The first Sorcery model is the first Clima-Tact again, and the staff
+    // with and without Zeus are one drawing each.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[5]?.value).toBe(stages[3]?.value)
+    expect(stages[6]?.value).toBe(stages[4]?.value)
   })
 
   it('leans Kuzan’s bicycle against a black flag only from episode 736', () => {
