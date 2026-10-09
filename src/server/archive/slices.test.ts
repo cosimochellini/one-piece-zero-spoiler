@@ -853,21 +853,40 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 765 })).toBe(real?.value)
   })
 
-  it('gives Franky the forearm of the two years only from episode 517', () => {
-    const franky = filed('franky')
-    const wrench = DRAWINGS.franky
-    const forearm = REDRAWINGS['franky']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(franky, readerFor(bookmark, 'en')).visual.strokes
+  it('follows Franky’s forearm to the box, painted for the raid and back, and to the barrel', () => {
+    const stages = walkStages('franky', [
+      [517, 598],
+      [978, 975],
+      [1086, 1058],
+      [1165, 1135],
+    ])
 
-    expect(forearm?.episode).toBe(517)
+    // The box is back after the raid as the drawing of 517 itself.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+  })
 
-    expect(drawnAt(ep(516))).toBe(wrench)
-    expect(drawnAt(ep(517))).toBe(forearm?.value)
-    expect(drawnAt(null)).toBe(wrench)
-    // The manga shows the forearm on the cover of chapter 598, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 597 })).toBe(wrench)
-    expect(drawnAt({ mode: 'chapter', chapter: 598 })).toBe(forearm?.value)
+  it('follows Kaku’s cap, black once he is CP9, to the top hat and the mask', () => {
+    expect(
+      walkStages('kaku', [
+        [243, 345],
+        [886, 907],
+        [1098, 1067],
+      ]),
+    ).toHaveLength(3)
+  })
+
+  it('puts Hattori in a top hat of his own only from episode 886', () => {
+    expect(walkStages('hattori', [[886, 907]])).toHaveLength(1)
+  })
+
+  it('turns Funkfreed into the sword from episode 288, and back into the elephant', () => {
+    const stages = walkStages('funkfreed', [
+      [288, 404],
+      [306, 423],
+    ])
+
+    // The elephant again is his first drawing itself.
+    expect(stages[1]?.value).toBe(DRAWINGS.funkfreed)
   })
 
   it('hands Izo his flintlocks only from episode 995', () => {

@@ -9,7 +9,7 @@ import {
 } from '~/lib/svg/primitives'
 
 import { DARK_DARK } from './fruits/bespoke'
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * Franky's wrench and star-headed bolt, lying under the forearm of both his
@@ -1377,6 +1377,111 @@ const HAT_ASIDE = 'translate(-8 34) scale(0.72)'
 /** The CP0 mask, drawn level and stood on its edge against the hat's brim. */
 const MASK_LEAN = 'translate(128 146) rotate(-10) scale(1.1)'
 
+/** Franky's fist on the forearm of the two years, from 517. */
+const FRANKY_FIST: Stroke[] = [
+  { d: 'M60 54 V24 Q60 14 70 14 H98 Q108 14 108 24 V54' },
+  {
+    d: 'M72 15 V34 M84 15 V34 M96 15 V34 M60 34 q6 6 12 0 q6 6 12 0 q6 6 12 0 q6 6 12 0',
+    role: 'soft',
+  },
+  { d: 'M60 46 H92 q6 0 6 -6', role: 'soft' },
+]
+
+/** That forearm's box, seen from its corner, without the star. */
+const FRANKY_BOX: Stroke[] = [
+  { d: 'M44 58 H98 V124 H44 Z' },
+  { d: 'M44 58 L58 49.6 M104 46 H118 L98 58 M118 46 V112 L98 124' },
+]
+
+/** The elbow hinge under the box, and its bolt. */
+const FRANKY_HINGE: Stroke[] = [
+  { d: 'M52 124 V144 Q52 150 58 150 H86 Q92 150 92 144 V124' },
+  { d: `${circle(72, 137, 8)} M67 142 l10 -10`, role: 'soft' },
+]
+
+/**
+ * The forearm of the two years: a great box seen from its corner, the star
+ * split by the edge and folded onto the far face, which is hatched; the
+ * studded fist on top and the elbow hinge with its bolt below. The wrench
+ * and the star-headed bolt lie beneath it. The opening shows it from 517,
+ * the cover of ch. 598 in the manga, and it is back after the raid on
+ * Onigashima.
+ */
+const FRANKY_BOX_ARM: Stroke[] = [
+  ...FRANKY_FIST,
+  ...FRANKY_BOX,
+  {
+    d: 'M98 70 L100.6 82 L108.5 77.5 L102.2 90 L104.5 102.3 L98 98 L86.2 106.2 L90.4 92.5 L79 83.8 L93.3 83.5 Z',
+    role: 'accent',
+  },
+  {
+    d: 'M102 64 l12 -7 M104 70 l12 -7 M110 84 l6 -4 M110 92 l6 -4 M106 104 l10 -6 M102 112 l14 -8 M104 118 l12 -7',
+    role: 'ambient',
+  },
+  ...FRANKY_HINGE,
+  ...FRANKY_TOOLS,
+]
+
+/** Kaku's roof without the cap: the house, its tiles, the wind, the shadow. */
+const KAKU_ROOF: Stroke[] = [
+  ...waterSevenArt.kaku.slice(0, 5),
+  ...waterSevenArt.kaku.slice(7, 8),
+  ...waterSevenArt.kaku.slice(9),
+]
+
+/** The CP0 top hat, drawn about its brim's centre, tilted to sit on the ridge. */
+const ON_RIDGE = 'translate(92 53) rotate(-12.8)'
+
+/** Kaku's CP0 top hat on the ridge where the cap was, from 886. */
+const KAKU_TOP_HAT: Stroke[] = [
+  ...KAKU_ROOF,
+  {
+    d: 'M-15 -7.6 A28 9 0 0 0 -28 0 A28 9 0 0 0 28 0 A28 9 0 0 0 15 -7.6',
+    role: 'accent',
+    transform: ON_RIDGE,
+  },
+  {
+    d: `M-15 0 V-24 M15 0 V-24 ${ellipse(0, -24, 15, 4.5)}`,
+    role: 'accent',
+    transform: ON_RIDGE,
+  },
+  {
+    d: 'M-15 0 A15 4.5 0 0 0 15 0 M-24 1 A24 6.5 0 0 0 24 1',
+    role: 'soft',
+    transform: ON_RIDGE,
+  },
+]
+
+/**
+ * Kaku's CP0 mask off the face, drawn level about the plate's centre: the
+ * square plate and its thickness, the slot on the forehead, three bars on
+ * each cheek, the studs along the bottom edge and the beard hanging from it.
+ * No eye holes and no hole for the nose, or it would be a face.
+ */
+const KAKU_MASK: Stroke[] = [
+  { d: 'M-17 -16 H17 V16 H-17 Z' },
+  { d: 'M-17 -16 l4 -3 H21 V13 l-4 3' },
+  { d: ellipse(0, -9, 2.5, 4.5), role: 'accent' },
+  {
+    d: 'M-14 2 h8 M-14 6.5 h8 M-14 11 h8 M6 2 h8 M6 6.5 h8 M6 11 h8',
+    role: 'soft',
+  },
+  {
+    d: 'M-14 16 v3 M-8.4 16 v3 M-2.8 16 v3 M2.8 16 v3 M8.4 16 v3 M14 16 v3',
+    role: 'soft',
+  },
+  {
+    d: 'M-16 19 C-22 28 -12 36 -18 46 C-24 56 -10 60 -12 70 C-6 66 -4 72 0 74 C2 68 8 68 8 62 C12 56 18 50 13 42 C8 34 20 28 16 19',
+  },
+  {
+    d: 'M-8 21 C-12 29 -4 35 -9 45 C-13 53 -5 57 -6 64 M1 21 C-2 30 6 38 1 48 C-3 56 4 62 2 68 M9 21 C12 28 6 34 9 42',
+    role: 'soft',
+  },
+]
+
+/** Hattori's top hat, drawn about its brim's centre, perched on his head. */
+const ON_HEAD = 'translate(76.4 36.8) rotate(8) scale(1.25)'
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const waterSevenRedrawn: Redrawings = {
   // The forearm of the two years: a great box seen from its corner, the star
@@ -1385,28 +1490,75 @@ export const waterSevenRedrawn: Redrawings = {
   // and the star-headed bolt lie beneath it. The opening shows it from 517,
   // the cover of ch. 598 in the manga.
   'franky': [
+    { episode: 517, chapter: 598, value: FRANKY_BOX_ARM },
+    // The same box painted for the raid on Onigashima: both faces black,
+    // hatched, but for one broad white band across the middle, and no star.
+    // The fist, the elbow hinge and the tools are the same. He wears it from
+    // 978 (ch. 975); the box with the star is back from 1086 (ch. 1058).
     {
-      episode: 517,
-      chapter: 598,
+      episode: 978,
+      chapter: 975,
       value: [
-        { d: 'M60 54 V24 Q60 14 70 14 H98 Q108 14 108 24 V54' },
+        ...FRANKY_FIST,
+        ...FRANKY_BOX,
+        { d: 'M44 80 H98 L118 68 M44 102 H98 L118 90', role: 'accent' },
         {
-          d: 'M72 15 V34 M84 15 V34 M96 15 V34 M60 34 q6 6 12 0 q6 6 12 0 q6 6 12 0 q6 6 12 0',
-          role: 'soft',
+          d: 'M48 78 L66 60 M64 78 L82 60 M80 78 L96 62 M100 67.8 L116 58.2',
+          role: 'ambient',
         },
-        { d: 'M60 46 H92 q6 0 6 -6', role: 'soft' },
-        { d: 'M44 58 H98 V124 H44 Z' },
-        { d: 'M44 58 L58 49.6 M104 46 H118 L98 58 M118 46 V112 L98 124' },
         {
-          d: 'M98 70 L100.6 82 L108.5 77.5 L102.2 90 L104.5 102.3 L98 98 L86.2 106.2 L90.4 92.5 L79 83.8 L93.3 83.5 Z',
+          d: 'M48 122 L66 104 M64 122 L82 104 M80 122 L96 106 M100 111.8 L116 102.2',
+          role: 'ambient',
+        },
+        ...FRANKY_HINGE,
+        ...FRANKY_TOOLS,
+      ],
+    },
+    { episode: 1086, chapter: 1058, value: FRANKY_BOX_ARM },
+    // The forearm Gerd makes him on Elbaf: a wide barrel standing upright in
+    // 3/4, ringed by two broad studded hoops, the section under the fist dark
+    // and hatched, the same fist on top. No star on it. The wrench and the
+    // star-headed bolt lie beneath it. He first wears it in 1165 (ch. 1135).
+    {
+      episode: 1165,
+      chapter: 1135,
+      value: [
+        ...FRANKY_FIST,
+        {
+          d: 'M52 60 A32 9 0 0 1 60 54 M108 54 A32 9 0 0 1 116 60 M52 60 A32 9 0 0 0 116 60',
+        },
+        {
+          d: 'M58 75.8 L64 69 M74 78.6 L80 70.9 M90 78.9 L96 70.3 M106 76.9 L112 66.4',
+          role: 'ambient',
+        },
+        {
+          d: 'M52 60 V72 M52 84 V106 M52 118 V138 M116 60 V72 M116 84 V106 M116 118 V138',
+        },
+        {
+          d: 'M50 72 V84 M118 72 V84 M50 72 A34 9 0 0 0 118 72 M50 84 A34 9 0 0 0 118 84 M50 106 V118 M118 106 V118 M50 106 A34 9 0 0 0 118 106 M50 118 A34 9 0 0 0 118 118',
           role: 'accent',
         },
         {
-          d: 'M102 64 l12 -7 M104 70 l12 -7 M110 84 l6 -4 M110 92 l6 -4 M106 104 l10 -6 M102 112 l14 -8 M104 118 l12 -7',
+          d: dots([
+            [56, 83.1],
+            [70, 86.2],
+            [84, 87],
+            [98, 86.2],
+            [112, 83.1],
+            [56, 117.1],
+            [70, 120.2],
+            [84, 121],
+            [98, 120.2],
+            [112, 117.1],
+          ]),
+          role: 'accent',
+        },
+        { d: 'M52 138 A32 9 0 0 0 116 138' },
+        { d: 'M60 90 V100 M60 124 V134', role: 'soft' },
+        {
+          d: 'M110 92 l4 -3 M110 100 l4 -3 M110 126 l4 -3 M110 134 l4 -3',
           role: 'ambient',
         },
-        { d: 'M52 124 V144 Q52 150 58 150 H86 Q92 150 92 144 V124' },
-        { d: `${circle(72, 137, 8)} M67 142 l10 -10`, role: 'soft' },
         ...FRANKY_TOOLS,
       ],
     },
@@ -1463,5 +1615,117 @@ export const waterSevenRedrawn: Redrawings = {
         ...KUZAN_ICE,
       ],
     },
+  ],
+  // The same roof, the cap on its ridge now black, hatched inside its
+  // outline. It is black from the moment he takes off the skull mask and
+  // shows he is CP9 (243, ch. 345).
+  'kaku': [
+    {
+      episode: 243,
+      chapter: 345,
+      value: [
+        ...waterSevenArt.kaku,
+        {
+          d: 'M75 67 l8 -5.3 M87 66 l8 -5.3 M99 65 l8 -5.3 M75 57 l8 -5.3 M87 57 l8 -5.3 M80 48 l8 -5.3 M92 46 l6 -4 M114 68.5 l3 -5 M120 68.5 l3 -5',
+          role: 'ambient',
+        },
+      ],
+    },
+    // The white top hat of CP0 on the ridge where the cap was: a squat
+    // crown, the brim turned up all round, no band. He wears it at the
+    // Reverie (886, ch. 907).
+    { episode: 886, chapter: 907, value: KAKU_TOP_HAT },
+    // The roof and the hat moved aside and made smaller, and the CP0 mask
+    // leaning against the end of the house, its beard hanging to the
+    // ground. He wears it under the hat on Egghead from 1098 (ch. 1067).
+    {
+      episode: 1098,
+      chapter: 1067,
+      value: [
+        ...moved(
+          // The hat gives the accent up to the mask's slot.
+          KAKU_TOP_HAT.map((stroke) =>
+            stroke.role === 'accent' ? { ...stroke, role: 'soft' } : stroke,
+          ),
+          'translate(0 40) scale(0.74)',
+        ),
+        ...moved(KAKU_MASK, 'translate(136 105.4) rotate(-6) scale(0.85)'),
+        shadow(142, 172, 14),
+      ],
+    },
+  ],
+  // The same Hattori with a small top hat of his own, its band dark and
+  // hatched, perched on his head; the tie stays. He wears it at the Reverie
+  // (886, ch. 907). No eye.
+  'hattori': [
+    {
+      episode: 886,
+      chapter: 907,
+      value: [
+        ...waterSevenArt.hattori,
+        {
+          d: 'M-7 -2.6 A12 3.2 0 0 0 -12 0 A12 3.2 0 0 0 12 0 A12 3.2 0 0 0 7 -2.6',
+          transform: ON_HEAD,
+        },
+        {
+          d: `M-7 0 V-15 M7 0 V-15 ${ellipse(0, -15, 7, 2)} M-7 -5 A7 2 0 0 0 7 -5`,
+          transform: ON_HEAD,
+        },
+        {
+          d: 'M-5 0.5 l1.5 -4.5 M-1.5 1.2 l1.5 -4.5 M2 1.2 l1.5 -4.5 M5 0.4 l1 -3.5',
+          role: 'ambient',
+          transform: ON_HEAD,
+        },
+      ],
+    },
+  ],
+  // Funkfreed as the sword, lying on its side: a curved cutlass with a wavy
+  // temper line, a round guard with his two tusks pointing along the blade,
+  // an ivory bow from the guard to the pommel, a dotted grip and a cord
+  // ending in a tuft like a tail. Spandam carries him so from 288 (ch. 404);
+  // he is the elephant again when Franky swings him at Spandam in 306
+  // (ch. 423).
+  'funkfreed': [
+    {
+      episode: 288,
+      chapter: 404,
+      value: [
+        { d: 'M56 114 C92 122 124 132 154 156 C118 144 88 134 53 124' },
+        { d: 'M57 117.4 C92 125.6 122 135.6 148 152', role: 'soft' },
+        {
+          d: 'M60 122 Q65.6 120.1 69.7 124.5 Q75.5 122.8 79.4 127.2 Q85.1 125.6 88.8 130.1 Q94.6 128.5 98.4 133.1 Q104.1 131.7 107.9 136.4 Q113.8 135.1 117.3 139.9 Q123.1 138.7 126.6 143.5 Q132.5 142.5 135.7 147.3',
+          role: 'soft',
+        },
+        {
+          d: 'M54.8 106.9 A13 5 111.4 0 0 45.2 131.1 A13 5 111.4 0 0 54.8 106.9',
+        },
+        { d: 'M57.6 109.1 A10 3.6 111.4 0 0 50.2 127.7', role: 'soft' },
+        { d: 'M19.3 102.7 L46.3 113.3 M16.7 109.3 L43.7 119.9' },
+        {
+          d: dots([
+            [23.6, 108.4],
+            [29.6, 110.8],
+            [35.6, 113.2],
+            [41.6, 115.6],
+          ]),
+          role: 'soft',
+        },
+        { d: circle(15, 106, 4.5) },
+        {
+          d: 'M52 109 C49 80 22 77 14 101.5 M47.5 111 C45.5 87 25 85 18.5 102.5',
+        },
+        {
+          d: 'M50 128 C56 141 68 149 84 149 C70 144 61 136 56 126 M55 110 C64 103 78 103 90 110 C77 108 67 110 58 114',
+          role: 'accent',
+        },
+        { d: 'M12 110 C4 124 8 140 24 146 M24 142 l-2 8 M28 143 l-2 8' },
+        {
+          d: 'M28 147 C34 140 44 140 52 144 M28 147 C36 146 46 148 54 152 M28 147 C34 152 42 156 50 158',
+        },
+        { d: 'M38 143.5 q6 0 10 3 M38 150 q6 2 10 5', role: 'soft' },
+        shadow(86, 172, 66),
+      ],
+    },
+    { episode: 306, chapter: 423, value: waterSevenArt.funkfreed },
   ],
 }

@@ -207,9 +207,12 @@ describe('what the command line asks for', { timeout: 60_000 }, () => {
     expect(cells.map((stage) => stage.note)).toStrictEqual([
       'ep 235',
       'ep 517 · ch 598',
+      'ep 978 · ch 975',
+      'ep 1086 · ch 1058',
+      'ep 1165 · ch 1135',
       'draft',
     ])
-    expect(cells[2]).toMatchObject({ label: 'draft: arm', tint: 'cyan' })
+    expect(cells.at(-1)).toMatchObject({ label: 'draft: arm', tint: 'cyan' })
   })
 
   it('gives the first drawing of every record in a saga or of a kind', async () => {
