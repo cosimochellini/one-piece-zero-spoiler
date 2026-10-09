@@ -1879,7 +1879,7 @@ export const eastBlueArt = {
   // His two cigars lit together, laid crossed in 3/4: banded at the head,
   // hatched underneath, burning to ash at the other end, with smoke curling
   // off both. He has them in his mouth when he is introduced in episode 49.
-  // His jitte waits for chapter 98.
+  // His jitte joins them from 52 (ch. 98), in `eastBlueRedrawn`.
   'smoker': [
     {
       d: 'M42.8 163 L127.3 111.9 M33 146.7 L117.5 95.7 M42.8 163 A9.5 7.6 58.9 0 1 33 146.7',
@@ -2137,6 +2137,73 @@ const SORCERY_WITH_ZEUS: Stroke[] = [
 const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
+/** The grog on the counter, kept behind whichever sword Shanks wears. */
+const SHANKS_GROG: Stroke[] = eastBlueArt.shanks.slice(0, 9)
+
+/** Arlong's ushanka, without the shadow its first drawing throws. */
+const ARLONG_USHANKA: Stroke[] = eastBlueArt.arlong.slice(0, -1)
+
+/** Smoker's two lit cigars, crossed, with their smoke, without their shadow. */
+const SMOKER_CIGARS: Stroke[] = eastBlueArt.smoker.slice(0, -1)
+
+/**
+ * The near end of Smoker's jitte, lying under the cigars: the wrapped grip
+ * with its rounded butt, and the hook, from its knob on the shaft out towards
+ * the reader and along the shaft. Whole or broken, this end stays.
+ */
+const JITTE_GRIP: Stroke[] = [
+  { d: 'M42 170.5 L10 170.5 Q5 170.5 5 175.5 Q5 180.5 10 180.5 L42 180.5 Z' },
+  {
+    d: 'M11 170.5 L15.8 180.5 L20.6 170.5 L25.4 180.5 L30.2 170.5 L35 180.5 L39.8 170.5',
+    role: 'soft',
+  },
+  {
+    d: 'M42.6 175.5 A4.4 4.4 0 1 1 51.4 175.5 A4.4 4.4 0 1 1 42.6 175.5 M45 179.7 L45 185 Q45 189 49 189 L84 189 Q87.5 189 87.5 186 M49 179.7 L49 182.5 Q49 185 52 185 L84 185',
+  },
+]
+
+/** The jitte whole, its Seastone tip hatched, under the cigars. */
+const SMOKER_JITTE: Stroke[] = [
+  ...SMOKER_CIGARS,
+  ...JITTE_GRIP,
+  {
+    d: 'M51.4 171.7 L152 171.7 M51.4 179.3 L152 179.3 M150.2 175.5 A1.8 3.8 0 1 1 153.8 175.5 A1.8 3.8 0 1 1 150.2 175.5',
+  },
+  { d: 'M130 171.7 L130 179.3', role: 'soft' },
+  {
+    d: 'M134 179.3 L136.5 171.7 M139 179.3 L141.5 171.7 M144 179.3 L146.5 171.7 M149 179.3 L151.5 171.7',
+    role: 'ambient',
+  },
+  shadow(80, 195, 64),
+]
+
+/** The jitte snapped in two, the tip half fallen askew, crumbs at the break. */
+const SMOKER_JITTE_BROKEN: Stroke[] = [
+  ...SMOKER_CIGARS,
+  ...JITTE_GRIP,
+  {
+    d: 'M51.4 171.7 L94 171.7 L91.5 174.1 L95.2 175.9 L92.2 177.5 L94.6 179.3 L51.4 179.3',
+  },
+  {
+    d: 'M155.3 167.3 L104.6 172.6 L107.3 174.7 L103.8 176.9 L107 178.2 L104.8 180.2 L156.1 174.8 M153.9 171.2 A1.8 3.8 -6 1 1 157.5 170.9 A1.8 3.8 -6 1 1 153.9 171.2',
+  },
+  { d: 'M133.4 169.6 L134.2 177.1', role: 'soft' },
+  {
+    d: 'M138.2 176.7 L139.9 168.9 M143.2 176.2 L144.9 168.4 M148.1 175.7 L149.8 167.8 M153.1 175.1 L154.8 167.3',
+    role: 'ambient',
+  },
+  {
+    d: 'M97 182.5 h0.01 M101.5 185 h0.01 M105 182 h0.01 M99 188.5 h0.01',
+    role: 'soft',
+  },
+  shadow(80, 195, 64),
+]
+
+/** Gin's plate of rice, set back on the table to make room in front of it. */
+const GIN_RICE_SET_BACK: Stroke[] = eastBlueArt.gin
+  .slice(0, -1)
+  .map((stroke) => ({ ...stroke, transform: 'translate(0 -26)' }))
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -2825,5 +2892,163 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
     { episode: 1170, chapter: 1140, value: LUFFY_HAT },
+  ],
+  'shanks': [
+    // Gryphon, laid where the Foosha sword lay and the grog still behind it: a
+    // long saber in its curved sheath, throat and chape banded, the underside
+    // hatched, the long wrapped hilt ending in a pommel cap, and the guard in
+    // red, a round disc in 3/4 with the thin bow that sweeps from it down to
+    // the pommel. It hangs at his hip when he sits drinking with Ace in 151
+    // (ch. 234).
+    {
+      episode: 151,
+      chapter: 234,
+      value: [
+        ...SHANKS_GROG,
+        {
+          d: 'M52.5 137.7 L49.1 128.3 Q94 105.5 143.1 94.1 Q150.4 96.7 146.5 103.5 Q97.5 114.9 52.5 137.7 Z',
+        },
+        {
+          d: 'M64.9 127.9 L67 130.8 M77.8 122.2 L79.9 125.1 M90.8 117 L92.9 119.9 M103.9 112.2 L106 115.1 M117.2 107.9 L119.3 110.7 M130.7 104 L132.8 106.8',
+          role: 'ambient',
+        },
+        {
+          d: 'M58.3 127.1 Q95.2 108.7 135.3 99 M54.5 125.6 L57.9 135 M136.2 95.7 L139.7 105.1',
+          role: 'soft',
+        },
+        {
+          d: 'M45.6 134.9 A2.6 9.5 -20 1 1 50.4 133.1 A2.6 9.5 -20 1 1 45.6 134.9 M51.2 142.9 C44.1 152.5 21.2 159.7 8.8 152.1',
+          role: 'accent',
+        },
+        {
+          d: 'M44.3 131.5 L9.2 144.3 Q5 145.8 6.2 149.2 Q7.4 152.6 11.6 151.1 L46.8 138.3',
+        },
+        {
+          d: 'M42.1 132.3 L40.8 140.5 L34.6 135.1 L33.3 143.2 L27 137.8 L25.7 145.9 L19.5 140.5 L18.2 148.7 L12 143.3 M9.2 144.3 L11.6 151.1',
+          role: 'soft',
+        },
+      ],
+    },
+  ],
+  'helmeppo': [
+    // His pair of kukri crossed, as the reformed trainee wears them at the
+    // back of his belt: each blade bent forward from the handle and swelling
+    // to its point, the notch cut at the foot of the edge, the near blade in
+    // yellow with its bevel, the far one hatched where it turns away, the
+    // grips ringed with flared butts. He draws them on Zoro at Water 7 in 314
+    // (ch. 432); the shoe and the rice ball stay with the boy he was.
+    {
+      episode: 314,
+      chapter: 432,
+      value: [
+        {
+          d: 'M91.4 124.5 C90.3 123.5 89.2 122.6 88.1 121.7 M72.9 112.3 C58.8 105.8 39.6 102 12.3 105 C13.6 115.1 25.4 125.1 40.4 127 C46.7 127.8 53.6 127.7 60 127.4 M79.6 125.9 C80.9 125.7 81.5 126.6 81.5 128.5 L86.6 131.5',
+        },
+        {
+          d: 'M91.4 124.5 L112.7 139.9 L117.5 140.5 C117.5 145 115.5 148.1 111.3 149.7 L108.9 145.6 L86.6 131.5 L91.4 124.5',
+        },
+        {
+          d: 'M62.3 109.8 L59.3 121.9 M52 106.8 L49.1 118.7 M41.7 103.8 L38.9 115.6 M31.5 100.8 L28.8 112.4',
+          role: 'ambient',
+        },
+        { d: 'M94.9 126.9 L90.2 133.8 M105.2 134.3 L101 140.7', role: 'soft' },
+        {
+          d: 'M16.7 109 C22.6 117 31 122.7 40.9 123.3 C48.2 124.2 56.2 124 63.3 124',
+          role: 'soft',
+        },
+        {
+          d: 'M68.9 121 C80.1 105.8 100.3 89.8 142.3 85.5 C143 95.7 133.6 107.9 119.3 113 C106.8 117.4 90.5 118.3 82.8 120.2 Q78.5 119.1 79.5 123 L75.1 127',
+          role: 'accent',
+        },
+        {
+          d: 'M68.9 121 L51.2 140.6 L46.8 142.2 Q48.1 148.8 54.7 149.8 L56.1 145.3 L75.1 127 Z',
+        },
+        {
+          d: 'M138.7 90.4 C134.7 99.5 127.6 106.8 118 109.4 C107.3 113.2 94.1 114.6 86 117.4',
+          role: 'soft',
+        },
+        { d: 'M66.1 124.2 L72 130 M57.4 133.6 L62.9 138.9', role: 'soft' },
+        shadow(80, 170, 56),
+      ],
+    },
+  ],
+  'gin': [
+    // The plate set back, and in front of it his pair of tonfa laid side by
+    // side: each a long bar with a short handle across its end and an iron
+    // ball weighting the other, the balls hatched dark, the near one over the
+    // far. He breaks Pearl's iron shield with them in 27 (ch. 59).
+    {
+      episode: 27,
+      chapter: 59,
+      value: [
+        ...GIN_RICE_SET_BACK,
+        {
+          d: 'M135.3 150 L29.7 159.3 C27 159.5 25.8 160.7 26 163 C26.2 165.3 27.6 166.3 30.3 166 L135.9 156.8 M37.7 158.6 L36.6 147 C36.5 145 37.4 143.9 39.4 143.8 C41.4 143.6 42.4 144.5 42.6 146.5 L43.6 158',
+        },
+        {
+          d: 'M157.5 151.5 C158 157.5 153.6 162.9 147.5 163.4 C141.4 163.9 136.1 159.5 135.6 153.4 C135.1 147.4 139.5 142 145.6 141.5 C151.6 141 157 145.4 157.5 151.5',
+        },
+        {
+          d: 'M113.3 174 L7.7 183.3 C5 183.5 3.8 184.7 4 187 C4.2 189.3 5.6 190.3 8.3 190 L113.9 180.8 M15.7 182.6 L14.6 171 C14.5 169 15.4 167.9 17.4 167.8 C19.4 167.6 20.4 168.5 20.6 170.5 L21.6 182',
+        },
+        {
+          d: 'M135.5 175.5 C136 181.5 131.6 186.9 125.5 187.4 C119.4 187.9 114.1 183.5 113.6 177.4 C113.1 171.4 117.5 166 123.6 165.5 C129.6 165 135 169.4 135.5 175.5',
+        },
+        { d: 'M133.2 149 L134 158.2 M111.2 173 L112 182.2', role: 'soft' },
+        {
+          d: 'M141.3 161.9 L145.4 156.6 M147 163.5 L152 157 M152.8 161.4 L156 157.1 M119.3 185.9 L123.4 180.6 M125 187.5 L130 181 M130.8 185.4 L134 181.1',
+          role: 'ambient',
+        },
+        shadow(80, 194, 62),
+      ],
+    },
+  ],
+  'arlong': [
+    // The ushanka with the Kiribachi laid in front of it: the long black
+    // blade, six shark's teeth along one side, flat towards the grip, hatched
+    // dark with their edges drawn in; a katana's grip with its wrap and no
+    // guard. He takes it out of his armoury against Luffy in 42 (ch. 92).
+    {
+      episode: 42,
+      chapter: 92,
+      value: [
+        ...ARLONG_USHANKA,
+        { d: 'M35.8 157.3 L159.6 150.8 Q161.8 153.7 159.9 156.8 L36.1 163.3' },
+        {
+          d: 'M41.1 163.1 L42.3 185 Q48.8 171.5 59.1 162.1 M60.7 162 L61.8 184 Q68.3 170.4 78.7 161.1 M80.3 161 L81.4 183 Q87.9 169.4 98.2 160.1 M99.8 160 L101 182 Q107.5 168.4 117.8 159 M119.4 159 L120.6 180.9 Q127 167.4 137.4 158 M139 157.9 L140.1 179.9 Q146.6 166.3 156.9 157',
+        },
+        {
+          d: 'M45.2 179.4 Q50.4 169.2 55.1 162.9 M64.7 178.3 Q70 168.2 74.7 161.9 M84.3 177.3 Q89.6 167.1 94.3 160.9 M103.9 176.3 Q109.2 166.1 113.8 159.8 M123.5 175.3 Q128.7 165.1 133.4 158.8 M143 174.2 Q148.3 164.1 153 157.8',
+          role: 'soft',
+        },
+        {
+          d: 'M45.3 165.8 L45.8 175.8 M64.8 164.8 L65.4 174.8 M84.4 163.8 L84.9 173.8 M104 162.8 L104.5 172.8 M123.6 161.7 L124.1 171.7 M143.1 160.7 L143.6 170.7',
+          role: 'ambient',
+        },
+        {
+          d: 'M35.7 156.3 L8.8 157.7 Q3.8 158 4 162 Q4.2 166 9.2 165.7 L36.2 164.3 Z',
+        },
+        {
+          d: 'M10.8 157.6 L15.8 165.4 L20 157.2 L25 164.9 L29.2 156.7 L34.2 164.4 M11.2 165.6 L15.4 157.4 L20.4 165.1 L24.6 156.9 L29.6 164.7 L33.7 156.4',
+          role: 'soft',
+        },
+        shadow(82, 190, 70),
+      ],
+    },
+  ],
+  'smoker': [
+    // The cigars over his jitte: a long rod with the hook beside its grip,
+    // the knob where the two meet, the grip wrapped, and the Seastone tip
+    // hatched dark. He pins Luffy with it in Loguetown in 52 (ch. 98).
+    { episode: 52, chapter: 98, value: SMOKER_JITTE },
+    // The jitte snapped in two at a jagged break, the tip half lying apart,
+    // crumbs where it gave. Hancock's kick breaks it at Marineford in 469
+    // (ch. 560).
+    { episode: 469, chapter: 560, value: SMOKER_JITTE_BROKEN },
+    // Whole again after the two years, as it is when he is next seen in 572
+    // (ch. 652).
+    { episode: 572, chapter: 652, value: SMOKER_JITTE },
+    // Broken a second time, against Vergo on Punk Hazard in 616 (ch. 690).
+    { episode: 616, chapter: 690, value: SMOKER_JITTE_BROKEN },
   ],
 }

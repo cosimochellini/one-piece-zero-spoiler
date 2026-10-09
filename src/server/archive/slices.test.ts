@@ -1274,6 +1274,35 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
   })
 
+  it('gives Shanks Gryphon only from episode 151', () => {
+    expect(walkStages('shanks', [[151, 234]])).toHaveLength(1)
+  })
+
+  it('trades Helmeppo’s shoe for his kukri only from episode 314', () => {
+    expect(walkStages('helmeppo', [[314, 432]])).toHaveLength(1)
+  })
+
+  it('lays the Kiribachi under Arlong’s hat only from episode 42', () => {
+    expect(walkStages('arlong', [[42, 92]])).toHaveLength(1)
+  })
+
+  it('arms Gin with his tonfa only from episode 27', () => {
+    expect(walkStages('gin', [[27, 59]])).toHaveLength(1)
+  })
+
+  it('follows Smoker’s jitte, broken twice and mended once', () => {
+    const stages = walkStages('smoker', [
+      [52, 98],
+      [469, 560],
+      [572, 652],
+      [616, 690],
+    ])
+
+    // Mended is the whole jitte itself, and both breaks are one drawing.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[3]?.value).toBe(stages[1]?.value)
+  })
+
   it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
     const stages = walkStages('nami', [
       [117, 190],
