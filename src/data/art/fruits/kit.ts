@@ -296,6 +296,9 @@ export interface Growth {
  * wings, what a Zoan grows.
  */
 export function grown(body: Body, way: number, growth: Growth): string {
+  if (growth.through.length % 3 !== 2) {
+    throw new Error('A growth runs through whole cubics: 3n - 1 points.')
+  }
   const ends = [
     ...growth.through.map(([dx, y]) => point(BODY_CX + way * dx, y)),
     point(...onRim(body, growth.to, way)),
