@@ -23,4 +23,15 @@ export type Drawings = Record<string, Stroke[]>
  */
 export type Redrawings = Record<string, Timeline<Stroke[]>>
 
+/** Moves strokes as one piece, after any transform they already carry. */
+export function moved(strokes: Stroke[], by: string): Stroke[] {
+  return strokes.map((stroke) => {
+    return {
+      ...stroke,
+      transform:
+        stroke.transform === undefined ? by : `${by} ${stroke.transform}`,
+    }
+  })
+}
+
 export { type Stroke } from '~/lib/view/records'

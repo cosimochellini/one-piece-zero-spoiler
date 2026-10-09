@@ -11,7 +11,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * Sanji's chef's knife, point up and to the right: the blade with its spine
@@ -2208,17 +2208,6 @@ const SMOKER_JITTE_BROKEN: Stroke[] = [
 const GIN_RICE_SET_BACK: Stroke[] = eastBlueArt.gin
   .slice(0, -1)
   .map((stroke) => ({ ...stroke, transform: 'translate(0 -26)' }))
-
-/** Moves strokes as one piece, after any transform they already carry. */
-function moved(strokes: Stroke[], by: string): Stroke[] {
-  return strokes.map((stroke) => {
-    return {
-      ...stroke,
-      transform:
-        stroke.transform === undefined ? by : `${by} ${stroke.transform}`,
-    }
-  })
-}
 
 /** Hatchan's six swords held out, from 39. */
 const HATCHAN_SWORDS: Stroke[] = [
