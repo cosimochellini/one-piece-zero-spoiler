@@ -69,15 +69,20 @@ export function bookmarkFromSearch(search: URLSearchParams): Bookmark {
 }
 
 /**
- * The redirect that turns a shared link into a bookmark, or `undefined` when
+ * The response that turns a shared link into a bookmark, or `undefined` when
  * the request carries none.
  *
  * Every server function reads the bookmark from the request's cookie, so the
  * link has to become that cookie before anything renders. The reader is sent
- * back to the same address without the link's parameters, with the cookie set
+ * on to the same address without the link's parameters, with the cookie set
  * when the link named a valid bookmark. Dropping them keeps a reload from
  * undoing a bookmark the reader has moved since, and an invalid link is
  * dropped the same way, leaving the bookmark where it was.
+ *
+ * The hop is a meta refresh, not a 3xx. Netlify appends the request's query
+ * string to any `Location` that has none of its own, whatever the status and
+ * whether the URL is relative or absolute, so `/en?ch=1044` sent to `/en`
+ * would come back as `/en?ch=1044` and loop (#492). The body is not rewritten.
  */
 export function linkRedirect(request: Request): Response | undefined {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -97,16 +102,19 @@ export function linkRedirect(request: Request): Response | undefined {
     url.searchParams.delete(name)
   }
 
-  // A path that opens with `//` would read as another host in `Location`,
-  // so the leading slashes collapse to one and the redirect stays here.
-  url.pathname = url.pathname.replace(/^\/+/u, '/')
+  // A path that opens with `//` would read as another host, so the leading
+  // slashes collapse to one and the reader stays here. The URL parser has
+  // already percent-encoded quotes and angle brackets, which leaves `&` as
+  // the one character the attribute needs escaped.
+  const target =
+    `${url.pathname.replace(/^\/+/u, '/')}${url.search}`.replaceAll(
+      '&',
+      '&amp;',
+    )
 
   const headers = new Headers({
     'Cache-Control': 'no-store',
-    // Absolute on purpose. Netlify appends the request's query string to a
-    // relative `Location` that has none of its own, so `/en` would come back
-    // as `/en?ch=1044` and the link would redirect to itself forever.
-    'Location': url.href,
+    'Content-Type': 'text/html; charset=utf-8',
   })
   if (bookmark !== null) {
     headers.set(
@@ -119,5 +127,8 @@ export function linkRedirect(request: Request): Response | undefined {
     )
   }
 
-  return new Response(null, { status: 302, headers })
+  return new Response(
+    `<!doctype html><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0; url=${target}"><a href="${target}">Zero Spoiler</a>`,
+    { status: 200, headers },
+  )
 }
