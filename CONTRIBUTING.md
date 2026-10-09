@@ -158,6 +158,13 @@ change an Italian name. A character the English wiki does not link to its
 Italian page goes in `ITALIAN_TITLES` in the script; one with no page of its own
 goes in `NAMES_KEPT`, with the reason.
 
+`npm run verify:filler` checks the filler guide in `src/data/filler.ts`. The
+kinds are checked against AnimeFillerList, with its "anime canon" episodes
+settled by the Italian wiki's `tipo`. The titles are checked against both wikis,
+each entry's chapter against the chapters the anime had adapted by then, and
+where a film or special sits against the Episode Guide. It needs the network.
+Run it when a new filler, film or special airs, or when you edit the guide.
+
 ## Writing copy
 
 The site's text, the README and the record texts follow the
@@ -193,6 +200,7 @@ and the archive gate). Run it before you push.
 | `npm run gate:archive`            | Blocking gate: the archive is not in the bundle  |
 | `npm run verify:chapters`         | Chapters against the One Piece Wiki (network)    |
 | `npm run verify:names`            | Italian names against the Italian wiki (network) |
+| `npm run verify:filler`           | The filler guide against its sources (network)   |
 | `npm run docs:chronicle`          | Regenerate `docs/chronicle-verification.md`      |
 
 - The gates run after the build and the tests because they need them:

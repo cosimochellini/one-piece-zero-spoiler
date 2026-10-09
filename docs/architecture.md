@@ -52,6 +52,15 @@ already reached, so "Whitebeard" finds Edward Newgate from episode 151, where
 the epithet opens. Those epithets are checked on the server and sent already
 folded, so an epithet the reader has not reached is not in the browser at all.
 
+The filler guide at `/filler` follows the same rule. It is linked from no other
+page. Its entries live in `src/data/filler.ts` and reach the page as a covered
+row until the reader gets there: the episode number and the kind, never the
+title or the plot. An entry opens at its own episode, or at the one a film or
+special is watched after. A chapter reader has no episode, so an entry opens for
+them at the later of two chapters: the one its canon arc opens at, and the last
+one the anime had adapted when the entry aired. The skip ranges and the strip of
+the whole series are numbers and kinds only, so they are sent at every bookmark.
+
 ## The archive in numbers
 
 | Thing               | Count                                                 |

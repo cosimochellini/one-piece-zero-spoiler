@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-09",
+    "macrostructure": "Map / Diagram (filler guide: the whole series as a strip of cells, a hundred to a row)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG: one stretched SVG row per hundred episodes, filler cells in the accent, mixed as a half cell",
+    "nav": "N9 edge-aligned (shared), page not linked from it",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "count · notice + bookmark chip when none · strip + legend · skip ranges as links to #ep-N · catalogue by canon arc, filler arcs as gold-ruled runs, rows veiled past the bookmark",
+    "brief": "Issue #495: a filler guide reached by URL only. Decisions with the user: guide + catalogue, filler/mixed/recap/films/specials, fog past the bookmark, unit follows the bookmark, grouped by arc, titles per locale, films at their viewing point, in the sitemap."
+  },
+  {
     "date": "2026-09-30",
     "macrostructure": "Marquee Hero (landing: the arc's own drawing as the fold backdrop)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
