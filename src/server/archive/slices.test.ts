@@ -9,7 +9,7 @@ import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
 import { shipDossierOf } from '~/data/places'
 import { reveal } from '~/data/reveal'
-import type { Entity } from '~/data/types'
+import type { Entity, Timeline } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import {
   type Bookmark,
@@ -698,6 +698,40 @@ function filed(id: string): Entity {
   return entity
 }
 
+/**
+ * Walks a character's redrawings in order, on Luffy's model: each stage from
+ * its own episode and its own chapter, the drawing before it one short of
+ * either, and the first drawing for a reader the timelines cannot place. The
+ * stages come back so a test can say which of them is an earlier drawing
+ * again.
+ */
+function walkStages(id: string, pairs: [number, number][]): Timeline<Stroke[]> {
+  const record = filed(id)
+  const first = Object.entries(DRAWINGS).find(([key]) => key === id)?.[1]
+  const stages = REDRAWINGS[id] ?? []
+  const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+    characterOf(record, readerFor(bookmark, 'en')).visual.strokes
+
+  expect(
+    stages.map(({ episode, chapter }) => [episode, chapter]),
+  ).toStrictEqual(pairs)
+  expect(drawnAt(null)).toBe(first)
+
+  for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
+    const before = index === 0 ? first : stages[index - 1]?.value
+    const label = `${id} ep ${String(episode)} / ch ${String(chapter)}`
+
+    expect(drawnAt(ep(episode - 1)), label).toBe(before)
+    expect(drawnAt(ep(episode)), label).toBe(value)
+    expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
+      before,
+    )
+    expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
+  }
+
+  return stages
+}
+
 describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
@@ -726,38 +760,15 @@ describe('a record drawn again later in the story', () => {
     )
   })
 
-  describe('three times, following Usopp to his slingshots', () => {
-    const usopp = filed('usopp')
-    const satchel = DRAWINGS.usopp
-    const [slingshot, kabuto, kuroKabuto] = REDRAWINGS['usopp'] ?? []
-    const drawnAt = (bookmark: Bookmark): Stroke[] =>
-      characterOf(usopp, readerFor(bookmark, 'en')).visual.strokes
-
-    it('files each slingshot at the episode that shows it', () => {
-      expect(slingshot?.episode).toBe(11)
-      expect(kabuto?.episode).toBe(274)
-      expect(kuroKabuto?.episode).toBe(517)
-    })
-
-    it('shows the latest slingshot an episode reader has reached', () => {
-      expect(drawnAt(ep(9))).toBe(satchel)
-      expect(drawnAt(ep(10))).toBe(satchel)
-      expect(drawnAt(ep(11))).toBe(slingshot?.value)
-      expect(drawnAt(ep(273))).toBe(slingshot?.value)
-      expect(drawnAt(ep(274))).toBe(kabuto?.value)
-      expect(drawnAt(ep(516))).toBe(kabuto?.value)
-      expect(drawnAt(ep(517))).toBe(kuroKabuto?.value)
-      expect(drawnAt(null)).toBe(satchel)
-    })
-
-    it('keeps the slingshot from a chapter reader until chapter 27', () => {
-      // The manga first shows it when he knocks out the mansion's guards.
-      expect(drawnAt({ mode: 'chapter', chapter: 23 })).toBe(satchel)
-      expect(drawnAt({ mode: 'chapter', chapter: 26 })).toBe(satchel)
-      expect(drawnAt({ mode: 'chapter', chapter: 27 })).toBe(slingshot?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 389 })).toBe(slingshot?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 390 })).toBe(kabuto?.value)
-    })
+  it('follows Usopp to his slingshots, and behind Sogeking’s mask', () => {
+    expect(
+      walkStages('usopp', [
+        [11, 27],
+        [257, 367],
+        [274, 390],
+        [517, 598],
+      ]),
+    ).toHaveLength(4)
   })
 
   it('puts Chopper in the cap of the two years only from episode 517', () => {
@@ -779,42 +790,21 @@ describe('a record drawn again later in the story', () => {
     expect(characterOf(chopper, atChapter(598)).visual.strokes).toBe(cap?.value)
   })
 
-  describe('three times, following Zoro’s swords', () => {
-    const zoro = filed('roronoa-zoro')
-    const post = DRAWINGS['roronoa-zoro']
-    const [threeSwords, shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
-    const drawnAt = (bookmark: Bookmark): Stroke[] =>
-      characterOf(zoro, readerFor(bookmark, 'en')).visual.strokes
+  it('follows Zoro’s swords, lost, found and swapped, from episode 3', () => {
+    const stages = walkStages('roronoa-zoro', [
+      [3, 5],
+      [24, 51],
+      [49, 97],
+      [309, 426],
+      [362, 467],
+      [932, 936],
+      [956, 955],
+    ])
 
-    it('files each sword at the episode that shows it', () => {
-      expect(threeSwords?.episode).toBe(3)
-      expect(shusui?.episode).toBe(362)
-      expect(enma?.episode).toBe(956)
-    })
-
-    it('shows the latest sword an episode reader has reached', () => {
-      expect(drawnAt(ep(2))).toBe(post)
-      expect(drawnAt(ep(3))).toBe(threeSwords?.value)
-      expect(drawnAt(ep(361))).toBe(threeSwords?.value)
-      expect(drawnAt(ep(362))).toBe(shusui?.value)
-      expect(drawnAt(ep(955))).toBe(shusui?.value)
-      expect(drawnAt(ep(956))).toBe(enma?.value)
-      expect(drawnAt(null)).toBe(post)
-    })
-
-    it('keeps each sword from a chapter reader until the manga hands it over', () => {
-      // The manga shows the three in chapter 5, hands Zoro Shusui in 467 and
-      // Enma in 955.
-      expect(drawnAt({ mode: 'chapter', chapter: 3 })).toBe(post)
-      expect(drawnAt({ mode: 'chapter', chapter: 4 })).toBe(post)
-      expect(drawnAt({ mode: 'chapter', chapter: 5 })).toBe(threeSwords?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(
-        threeSwords?.value,
-      )
-      expect(drawnAt({ mode: 'chapter', chapter: 467 })).toBe(shusui?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 954 })).toBe(shusui?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
-    })
+    // Three again at Loguetown is the episode 3 drawing itself, and the two
+    // stretches with a sword missing are one drawing.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[5]?.value).toBe(stages[3]?.value)
   })
 
   it('shows the real Gum-Gum Fruit from episode 1, with no redrawing', () => {
@@ -1020,21 +1010,15 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 790 })).toBe(fallen?.value)
   })
 
-  it('trades Koby’s mop for his bandanna only from episode 314', () => {
-    const koby = filed('koby')
-    const mop = DRAWINGS.koby
-    const bandanna = REDRAWINGS['koby']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(koby, readerFor(bookmark, 'en')).visual.strokes
+  it('trades Koby’s mop for his bandanna, and chains him on Hachinosu', () => {
+    const stages = walkStages('koby', [
+      [314, 432],
+      [1113, 1080],
+      [1121, 1087],
+    ])
 
-    expect(bandanna?.episode).toBe(314)
-
-    expect(drawnAt(ep(313))).toBe(mop)
-    expect(drawnAt(ep(314))).toBe(bandanna?.value)
-    expect(drawnAt(null)).toBe(mop)
-    // The manga brings him back trained at Water 7 in chapter 432.
-    expect(drawnAt({ mode: 'chapter', chapter: 431 })).toBe(mop)
-    expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
+    // Out of the shackle is the bandanna of 314 itself.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
   })
 
   it('puts every costume on Luffy’s hat from its episode and takes it off again', () => {
@@ -1090,21 +1074,14 @@ describe('a record drawn again later in the story', () => {
     ).toStrictEqual(returns)
   })
 
-  it('arms Hatchan with his six swords only from episode 39', () => {
-    const hatchan = filed('hatchan')
-    const pot = DRAWINGS.hatchan
-    const swords = REDRAWINGS['hatchan']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(hatchan, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(swords?.episode).toBe(39)
-
-    expect(drawnAt(ep(38))).toBe(pot)
-    expect(drawnAt(ep(39))).toBe(swords?.value)
-    expect(drawnAt(null)).toBe(pot)
-    // The manga gives him the six swords against Zoro in chapter 84.
-    expect(drawnAt({ mode: 'chapter', chapter: 83 })).toBe(pot)
-    expect(drawnAt({ mode: 'chapter', chapter: 84 })).toBe(swords?.value)
+  it('follows Hatchan from six swords to none, and on to takoyaki', () => {
+    expect(
+      walkStages('hatchan', [
+        [39, 84],
+        [40, 86],
+        [390, 496],
+      ]),
+    ).toHaveLength(3)
   })
 
   it('lets Chew’s Water Gun fly past his vest only from episode 34', () => {
@@ -1261,21 +1238,75 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
   })
 
-  it('puts Zeus in Nami’s Clima-Tact only from episode 878', () => {
-    const nami = filed('nami')
-    const chart = DRAWINGS.nami
-    const zeus = REDRAWINGS['nami']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(nami, readerFor(bookmark, 'en')).visual.strokes
+  it('trades Yasopp’s pistol for his musket only from episode 151', () => {
+    expect(walkStages('yasopp', [[151, 234]])).toHaveLength(1)
+  })
 
-    expect(zeus?.episode).toBe(878)
+  it('gives Shanks Gryphon only from episode 151', () => {
+    expect(walkStages('shanks', [[151, 234]])).toHaveLength(1)
+  })
 
-    expect(drawnAt(ep(877))).toBe(chart)
-    expect(drawnAt(ep(878))).toBe(zeus?.value)
-    expect(drawnAt(null)).toBe(chart)
-    // The manga has Zeus come out of her staff in chapter 903, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 902 })).toBe(chart)
-    expect(drawnAt({ mode: 'chapter', chapter: 903 })).toBe(zeus?.value)
+  it('trades Helmeppo’s shoe for his kukri only from episode 314', () => {
+    expect(walkStages('helmeppo', [[314, 432]])).toHaveLength(1)
+  })
+
+  it('lays the Kiribachi under Arlong’s hat only from episode 42', () => {
+    expect(walkStages('arlong', [[42, 92]])).toHaveLength(1)
+  })
+
+  it('arms Gin with his tonfa only from episode 27', () => {
+    expect(walkStages('gin', [[27, 59]])).toHaveLength(1)
+  })
+
+  it('follows Smoker’s jitte, broken twice and mended once', () => {
+    const stages = walkStages('smoker', [
+      [52, 98],
+      [469, 560],
+      [572, 652],
+      [616, 690],
+    ])
+
+    // Mended is the whole jitte itself, and both breaks are one drawing.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[3]?.value).toBe(stages[1]?.value)
+  })
+
+  it('plants Genzo’s pinwheel only from episode 44', () => {
+    expect(walkStages('genzo', [[44, 95]])).toHaveLength(1)
+  })
+
+  it('puts Jango in a Marine cap only from episode 128', () => {
+    expect(walkStages('jango', [[128, 214]])).toHaveLength(1)
+  })
+
+  it('burns Chouchou’s shop only from episode 7', () => {
+    expect(walkStages('chouchou', [[7, 15]])).toHaveLength(1)
+  })
+
+  it('locks Krieg’s plates into the Daisenso only from episode 28', () => {
+    expect(walkStages('don-krieg', [[28, 64]])).toHaveLength(1)
+  })
+
+  it('gives Fullbody a knuckle for each hand only from episode 128', () => {
+    expect(walkStages('fullbody', [[128, 214]])).toHaveLength(1)
+  })
+
+  it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
+    const stages = walkStages('nami', [
+      [117, 190],
+      [258, 368],
+      [517, 598],
+      [776, 822],
+      [878, 903],
+      [993, 985],
+      [1037, 1015],
+    ])
+
+    // The first Sorcery model is the first Clima-Tact again, and the staff
+    // with and without Zeus are one drawing each.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[5]?.value).toBe(stages[3]?.value)
+    expect(stages[6]?.value).toBe(stages[4]?.value)
   })
 
   it('leans Kuzan’s bicycle against a black flag only from episode 736', () => {
@@ -1348,5 +1379,16 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter: 1033 })).toBe(cape?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 1034 })).toBe(ifrit?.value)
     })
+  })
+
+  it('hangs the Elbaf katana behind Sanji’s knife only from episode 1157', () => {
+    expect(
+      walkStages('sanji', [
+        [298, 415],
+        [925, 931],
+        [1061, 1034],
+        [1157, 1127],
+      ]),
+    ).toHaveLength(4)
   })
 })

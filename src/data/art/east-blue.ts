@@ -416,10 +416,10 @@ export const eastBlueArt = {
   ],
 
   // His white lace-up shoe side on, the heel grinding a rice ball into the
-  // ground: the toe cap, the laces, the collar seen from above with its
-  // inside hatched, the sole and heel in yellow, the rice squeezed out either
-  // side with its seaweed and the grains thrown off. He stamps on Rika's rice
-  // balls in episode 2.
+  // ground: the toe cap, the laces, the collar seen from above with its inside
+  // hatched, the sole and heel in yellow, the rice squeezed out either side
+  // with its seaweed and the grains thrown off. He stamps on Rika's rice balls
+  // in episode 2. The kukri replace the shoe from 314, in `eastBlueRedrawn`.
   'helmeppo': [
     {
       d: 'M8.5 144.7 C-1.2 131.1 9.6 119.3 36.3 112.5 C53.4 108.5 65 101.6 76 91 M125.2 82 C129.8 95.2 132.1 110 131.6 122.7',
@@ -521,8 +521,9 @@ export const eastBlueArt = {
   ],
   // The sword he wore in Foosha, sheathed on the tavern counter, its round
   // guard in red and its wrapped grip towards the reader, the sheath's
-  // underside hatched; a tankard of grog with its head of foam at the back.
-  // His crew drinks at Makino's bar in episode 4.
+  // underside hatched; a tankard of grog with its head of foam at the back. His
+  // crew drinks at Makino's bar in episode 4. Gryphon takes the sword's place
+  // from 151, in `eastBlueRedrawn`.
   'shanks': [
     { d: 'M2 92 H56 M96 92 H158', role: 'ambient' },
     { d: 'M2 162 H158' },
@@ -652,7 +653,8 @@ export const eastBlueArt = {
   ],
   // A flintlock pistol side on, the smoke of its shot in his colour at the
   // muzzle, the hammer cocked, the barrel's underside hatched, the ball on the
-  // ground. Luffy remembers the marksman who never missed in episode 9.
+  // ground. Luffy remembers the marksman who never missed in episode 9. The
+  // musket takes its place from 151, in `eastBlueRedrawn`.
   'yasopp': [
     { d: 'M54 92 L120 85 M55 100 L121 93' },
     { d: 'M120 85 A4.2 1.8 84 1 1 121 93 A4.2 1.8 84 1 1 120 85' },
@@ -755,8 +757,8 @@ export const eastBlueArt = {
 
   // The sea chart she ran off with, half unrolled towards the reader, its
   // coastline and island in orange. She has just stolen it from Buggy in
-  // episode 5. The Clima-Tact with Zeus stands over a small copy of the chart
-  // from 878, in `eastBlueRedrawn`.
+  // episode 5. Each Clima-Tact she carries stands over a small copy of the
+  // chart from 117, in `eastBlueRedrawn`.
   'nami': [
     ...NAMI_CHART_BODY,
     ...NAMI_CHART_DETAIL,
@@ -813,8 +815,9 @@ export const eastBlueArt = {
 
   // The pet-food shop he guards, shut and still standing: the long plank sign
   // across the front with nothing written on it, the arched double door, a
-  // window either side, the hanging sign on its bracket, the side wall in
-  // shade and the step. He sits in front of it in episode 6 (chapter 12).
+  // window either side, the hanging sign on its bracket, the side wall in shade
+  // and the step. He sits in front of it in episode 6 (chapter 12). Burnt from
+  // 7, in `eastBlueRedrawn`.
   'chouchou': [
     { d: 'M28 150 V64 M112 150 V64 M28 150 H112' },
     { d: 'M112 150 L134 138 V58 L124 58' },
@@ -1044,10 +1047,10 @@ export const eastBlueArt = {
     { d: 'M56 166 C56 162 102 162 102 166 C102 171 56 171 56 166 Z' },
     shadow(80, 182, 40),
   ],
-  // His ring mid-swing on its string, the edge of its thickness showing and
-  // its path trailing behind it, over his heart-shaped glasses folded on the
-  // ground with the dark lenses hatched. He swings it at Luffy on the cliff in
-  // episode 10 (chapter 26).
+  // His ring mid-swing on its string, the edge of its thickness showing and its
+  // path trailing behind it, over his heart-shaped glasses folded on the ground
+  // with the dark lenses hatched. He swings it at Luffy on the cliff in episode
+  // 10 (chapter 26). The Marine cap joins them from 128, in `eastBlueRedrawn`.
   'jango': [
     { d: 'M40 4 C52 28 72 46 90.1 65' },
     {
@@ -1409,7 +1412,8 @@ export const eastBlueArt = {
   ],
   // The plate of rice Sanji brings him outside at 21 (a pilaf in the manga, a
   // risotto in the show), heaped in his colour with its far side hatched, a
-  // spoon standing in it and the steam still rising.
+  // spoon standing in it and the steam still rising. His tonfa join the plate
+  // from 27, in `eastBlueRedrawn`.
   'gin': [
     { d: ellipse(80, 140, 62, 18) },
     {
@@ -1442,7 +1446,8 @@ export const eastBlueArt = {
 
   // His iron knuckle in his colour, four rings on a curved grip with a bolt
   // over each, its far end hatched; behind it, the soup he drops a fly into to
-  // blame Sanji. Both are at his table at the Baratie in episode 20.
+  // blame Sanji. Both are at his table at the Baratie in episode 20. A second
+  // knuckle replaces the soup from 128, in `eastBlueRedrawn`.
   'fullbody': [
     { d: ellipse(54, 90, 40, 11) },
     { d: 'M14 90 Q16 96 22 98 M94 90 Q92 96 86 98 M22 98 Q54 110 86 98' },
@@ -1518,9 +1523,10 @@ export const eastBlueArt = {
     shadow(82, 184, 64),
   ],
   // One shoulder plate of his gilded armour in his colour, turned so its face
-  // is away from us: the rivets along its ridge, the fur along its rim, its
-  // far side hatched, and the two gun barrels that slide out beneath it,
-  // smoking. He opens fire on the cooks with them in episode 22.
+  // is away from us: the rivets along its ridge, the fur along its rim, its far
+  // side hatched, and the two gun barrels that slide out beneath it, smoking.
+  // He opens fire on the cooks with them in episode 22. The two plates lock
+  // into the Daisenso from 28, in `eastBlueRedrawn`.
   'don-krieg': [
     { d: 'M20 112 C14 66 56 34 104 38 C138 42 152 74 146 102', role: 'accent' },
     { d: 'M20 112 C40 128 118 126 146 102', role: 'accent' },
@@ -1633,10 +1639,10 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // His ushanka in 3/4: the crown with its seams, the fur front flap turned
-  // up as the accent, an ear flap folded up at each side, the far flap and the
-  // far side of the crown hatched. He wears it from his first scene at Arlong
-  // Park in episode 31.
+  // His ushanka in 3/4: the crown with its seams, the fur front flap turned up
+  // as the accent, an ear flap folded up at each side, the far flap and the far
+  // side of the crown hatched. He wears it from his first scene at Arlong Park
+  // in episode 31. The Kiribachi lies under it from 42, in `eastBlueRedrawn`.
   'arlong': [
     { d: 'M50 102 C46 72 62 54 84 54 C106 54 120 70 116 102' },
     {
@@ -1746,9 +1752,9 @@ export const eastBlueArt = {
     { d: 'M2 154 H158', role: 'ambient' },
   ],
   // His peaked police cap, turned 3/4: the wide flat crown, the band with its
-  // pattern, the black peak jutting forward and hatched, and the pinwheel
-  // stuck in the top on its stick. He wears it from his first scene in 32
-  // (ch. 71).
+  // pattern, the black peak jutting forward and hatched, and the pinwheel stuck
+  // in the top on its stick. He wears it from his first scene in 32 (ch. 71).
+  // The pinwheel comes off the cap at 44, in `eastBlueRedrawn`.
   'genzo': [
     {
       d: 'M16 80 C26 64 112 60 144 72 C150 76 144 84 124 86 C92 90 38 90 16 80 Z',
@@ -1879,7 +1885,7 @@ export const eastBlueArt = {
   // His two cigars lit together, laid crossed in 3/4: banded at the head,
   // hatched underneath, burning to ash at the other end, with smoke curling
   // off both. He has them in his mouth when he is introduced in episode 49.
-  // His jitte waits for chapter 98.
+  // His jitte joins them from 52 (ch. 98), in `eastBlueRedrawn`.
   'smoker': [
     {
       d: 'M42.8 163 L127.3 111.9 M33 146.7 L117.5 95.7 M42.8 163 A9.5 7.6 58.9 0 1 33 146.7',
@@ -2016,6 +2022,23 @@ export const eastBlueArt = {
  */
 const THIRD_SHEATH = sheath(22, 'soft').filter((_, index) => index !== 3)
 
+/** Wado Ichimonji in the middle, the one sword Zoro never loses. */
+const WADO = sheath(0, 'accent')
+
+/** The ground under Zoro's swords, however many of them there are. */
+const ZORO_SHADOW = shadow(80, 176, 40)
+
+/** His three swords, from episode 3 and again whenever he is three again. */
+const ZORO_THREE: Stroke[] = [
+  ...sheath(-22, 'soft'),
+  ...WADO,
+  ...sheath(22, 'soft'),
+  ZORO_SHADOW,
+]
+
+/** Wado and the sword on its left, when the third has gone. */
+const ZORO_TWO: Stroke[] = [...sheath(-22, 'soft'), ...WADO, ZORO_SHADOW]
+
 /** Buggy's crown, drawn upright and tipped onto the cannonball as one piece. */
 const CROWN_TILT = 'rotate(-13 70 91.5)'
 
@@ -2033,8 +2056,314 @@ const SMALL_CHART: Stroke[] = [
   { d: NAMI_COAST, role: 'soft' } satisfies Stroke,
 ].map((s) => ({ ...s, transform: CHART_AT_FOOT }))
 
+/**
+ * The Grow Up Sorcery Clima-Tact leant across the box, without its knobs:
+ * the shafts, the wider grip, collars at the grip and both necks, the grip's
+ * seam and the far side hatched. 776 and 878 hold it; only the knobs' ink
+ * and Zeus change.
+ */
+const SORCERY_STAFF: Stroke[] = [
+  {
+    d: 'M35.3 159.6 L61.1 130.1 M42.1 165.5 L67.9 136 M82.1 106 L107.9 76.5 M88.9 111.9 L114.7 82.4',
+  },
+  { d: 'M61.6 126.5 L78.6 107 M71.4 135 L88.4 115.5' },
+  {
+    d: 'M58.5 127.8 Q61.1 137 70.5 138.3 M60.4 125.5 Q63.1 134.7 72.5 136 M77.5 106 Q80.1 115.1 89.6 116.5 M79.5 103.7 Q82.1 112.9 91.5 114.2',
+  },
+  {
+    d: 'M37.3 154.3 Q38.8 162.5 47.1 162.9 M102.9 79.1 Q104.4 87.3 112.7 87.7',
+  },
+  { d: 'M67.8 129.3 L82.2 112.7', role: 'soft' },
+  {
+    d: 'M46.7 159.8 L46.2 156 M53.9 151.5 L53.5 147.7 M61.2 143.3 L60.7 139.4 M90.6 109.5 L90.2 105.6 M97.9 101.2 L97.4 97.3 M105.1 92.9 L104.6 89 M41.8 166.1 L38.4 166.9 M41.7 170.2 L38.3 169.2 M39.5 173.8 L37.1 171.2 M123.8 72.1 L120.4 72.9 M123.7 76.2 L120.3 75.2 M121.5 79.8 L119.1 77.2',
+    role: 'ambient',
+  },
+]
+
+/** The Sorcery Clima-Tact's two round knobs, the ends that grow. */
+const SORCERY_KNOBS = `${circle(34, 168, 8.5)} ${circle(116, 74, 8.5)}`
+
+/**
+ * The first Clima-Tact on the same line as the later staff: three hollow
+ * poles pushed end to end, the open mouth of the top one, the bottom rim,
+ * a highlight down each pole and the far side hatched, with the two sleeves
+ * where the pieces join as its mark. The first Sorcery model of 517 looks
+ * the same, three plain parts and no dials, so it returns there.
+ */
+const CLIMA_TACT: Stroke[] = [
+  {
+    d: 'M30.6 165 L56.1 135.8 M59.7 131.6 L83.5 104.4 M87.1 100.3 L112.6 71 M37.4 171 L62.9 141.7 M66.5 137.6 L90.3 110.4 M93.9 106.2 L119.4 77',
+  },
+  { d: 'M112.6 71 Q118.3 71.4 119.4 77 Q113.7 76.6 112.6 71' },
+  { d: 'M30.6 165 Q30.6 171.9 37.4 171' },
+  {
+    d: 'M36.7 162.1 L57.2 138.6 M63 132 L84.3 107.6 M90 101 L110.5 77.5',
+    role: 'soft',
+  },
+  {
+    d: 'M43.5 163 L43 159.1 M50.1 155.5 L49.6 151.6 M56.6 148 L56.1 144.1 M71.4 131.1 L70.9 127.2 M77.9 123.6 L77.4 119.7 M84.5 116 L84 112.1 M98.4 100.1 L97.9 96.2 M105 92.5 L104.5 88.6 M111.6 85 L111.1 81.1',
+    role: 'ambient',
+  },
+  {
+    d: 'M55 134.8 Q55.8 143 64.1 142.7 M58.6 130.7 Q59.4 138.9 67.7 138.5 M55 134.8 L58.6 130.7 M64.1 142.7 L67.7 138.5 M82.3 103.5 Q83.1 111.7 91.4 111.3 M85.9 99.3 Q86.7 107.5 95 107.2 M82.3 103.5 L85.9 99.3 M91.4 111.3 L95 107.2',
+    role: 'accent',
+  },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
+/** The Grow Up staff with its knobs in her colour, and no Zeus. */
+const GROW_UP: Stroke[] = [
+  ...SORCERY_STAFF,
+  { d: SORCERY_KNOBS, role: 'accent' },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
+/**
+ * The Grow Up staff with Zeus over its top knob, his bolt in her colour:
+ * from 878, and again once he is back in the staff.
+ */
+const SORCERY_WITH_ZEUS: Stroke[] = [
+  ...SORCERY_STAFF,
+  { d: SORCERY_KNOBS },
+  {
+    d: 'M69 52.5 C59.7 52.5 58.6 38.6 69 36.3 C67.8 23.5 84.1 20 88.7 28.1 C92.2 14.2 114.2 14.2 116.6 29.3 C128.2 25.8 137.4 37.4 129.3 47.9 C134 57.1 120 60.6 115.4 54.8 C108.4 61.8 94.5 61.8 88.7 56 C81.8 60.6 71.3 59.5 69 52.5 Z',
+  },
+  {
+    d: 'M72.5 47.9 C81.8 52.5 92.2 50.2 98 45.5 C105 51.3 116.6 51.3 125.8 44.4',
+    role: 'soft',
+  },
+  { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
+  ...SMALL_CHART,
+  shadow(80, 188, 56),
+]
+
 /** Luffy's hat, smaller, hung by its string from the haft of the Elbaf axe. */
 const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
+
+/** The grog on the counter, kept behind whichever sword Shanks wears. */
+const SHANKS_GROG: Stroke[] = eastBlueArt.shanks.slice(0, 9)
+
+/** Arlong's ushanka, without the shadow its first drawing throws. */
+const ARLONG_USHANKA: Stroke[] = eastBlueArt.arlong.slice(0, -1)
+
+/** Smoker's two lit cigars, crossed, with their smoke, without their shadow. */
+const SMOKER_CIGARS: Stroke[] = eastBlueArt.smoker.slice(0, -1)
+
+/**
+ * The near end of Smoker's jitte, lying under the cigars: the wrapped grip
+ * with its rounded butt, and the hook, from its knob on the shaft out towards
+ * the reader and along the shaft. Whole or broken, this end stays.
+ */
+const JITTE_GRIP: Stroke[] = [
+  { d: 'M42 170.5 L10 170.5 Q5 170.5 5 175.5 Q5 180.5 10 180.5 L42 180.5 Z' },
+  {
+    d: 'M11 170.5 L15.8 180.5 L20.6 170.5 L25.4 180.5 L30.2 170.5 L35 180.5 L39.8 170.5',
+    role: 'soft',
+  },
+  {
+    d: 'M42.6 175.5 A4.4 4.4 0 1 1 51.4 175.5 A4.4 4.4 0 1 1 42.6 175.5 M45 179.7 L45 185 Q45 189 49 189 L84 189 Q87.5 189 87.5 186 M49 179.7 L49 182.5 Q49 185 52 185 L84 185',
+  },
+]
+
+/** The jitte whole, its tip hatched dark, under the cigars. */
+const SMOKER_JITTE: Stroke[] = [
+  ...SMOKER_CIGARS,
+  ...JITTE_GRIP,
+  {
+    d: 'M51.4 171.7 L152 171.7 M51.4 179.3 L152 179.3 M150.2 175.5 A1.8 3.8 0 1 1 153.8 175.5 A1.8 3.8 0 1 1 150.2 175.5',
+  },
+  { d: 'M130 171.7 L130 179.3', role: 'soft' },
+  {
+    d: 'M134 179.3 L136.5 171.7 M139 179.3 L141.5 171.7 M144 179.3 L146.5 171.7 M149 179.3 L151.5 171.7',
+    role: 'ambient',
+  },
+  shadow(80, 195, 64),
+]
+
+/** The jitte snapped in two, the tip half fallen askew, crumbs at the break. */
+const SMOKER_JITTE_BROKEN: Stroke[] = [
+  ...SMOKER_CIGARS,
+  ...JITTE_GRIP,
+  {
+    d: 'M51.4 171.7 L94 171.7 L91.5 174.1 L95.2 175.9 L92.2 177.5 L94.6 179.3 L51.4 179.3',
+  },
+  {
+    d: 'M155.3 167.3 L104.6 172.6 L107.3 174.7 L103.8 176.9 L107 178.2 L104.8 180.2 L156.1 174.8 M153.9 171.2 A1.8 3.8 -6 1 1 157.5 170.9 A1.8 3.8 -6 1 1 153.9 171.2',
+  },
+  { d: 'M133.4 169.6 L134.2 177.1', role: 'soft' },
+  {
+    d: 'M138.2 176.7 L139.9 168.9 M143.2 176.2 L144.9 168.4 M148.1 175.7 L149.8 167.8 M153.1 175.1 L154.8 167.3',
+    role: 'ambient',
+  },
+  {
+    d: 'M97 182.5 h0.01 M101.5 185 h0.01 M105 182 h0.01 M99 188.5 h0.01',
+    role: 'soft',
+  },
+  shadow(80, 195, 64),
+]
+
+/** Gin's plate of rice, set back on the table to make room in front of it. */
+const GIN_RICE_SET_BACK: Stroke[] = eastBlueArt.gin
+  .slice(0, -1)
+  .map((stroke) => ({ ...stroke, transform: 'translate(0 -26)' }))
+
+/** Moves strokes as one piece, after any transform they already carry. */
+function moved(strokes: Stroke[], by: string): Stroke[] {
+  return strokes.map((stroke) => {
+    return {
+      ...stroke,
+      transform:
+        stroke.transform === undefined ? by : `${by} ${stroke.transform}`,
+    }
+  })
+}
+
+/** Hatchan's six swords held out, from 39. */
+const HATCHAN_SWORDS: Stroke[] = [
+  {
+    d: 'M48.2 39.4 C82.5 33.6 108.8 24.1 130.8 11 C108.3 21.1 81.5 28.1 47.3 34.3 M42.2 64.7 C78.4 61.1 106.5 53.3 130.4 41.2 C106.2 50.3 77.8 55.5 41.6 59.5 M38.1 90 C76.1 88.8 105.9 83 131.5 72.1 C105.8 80 75.9 83.2 37.9 84.8 M37.9 115.2 C75.9 116.8 106 113 132.4 103.9 C106.1 110 76.1 111.2 38.1 110 M41.6 140.5 C77.8 144.5 107 142.7 132.8 135.8 C107.3 139.7 78.4 138.9 42.2 135.3 M47.3 165.7 C81.5 171.9 109.5 172 134.7 167.2 C110 169 82.5 166.4 48.2 160.6',
+  },
+  {
+    d: 'M55.6 35.3 C81.9 30.4 105 23.3 124 15 M49.8 61.1 C78.1 57.9 102.6 52.3 123 44.9 M46 86.9 C76 85.6 101.8 81.7 123.6 75.4 M46 112.7 C76 113.6 102.1 111.5 124.3 106.6 M49.9 138.5 C78.1 141.3 103.3 140.9 124.8 137.9 M55.6 164.3 C82.1 168.8 106.1 170 126.9 168.7',
+    role: 'soft',
+  },
+  {
+    d: 'M45.2 39.8 L31.4 42.2 L30.6 37.5 L44.4 35 M39.2 64.8 L25.2 66.3 L24.7 61.5 L38.7 60 M35.1 89.9 L21.1 90.4 L20.9 85.6 L34.9 85.1 M34.9 114.9 L20.9 114.4 L21.1 109.6 L35.1 110.1 M38.7 140 L24.7 138.5 L25.2 133.7 L39.2 135.2 M44.4 165 L30.6 162.5 L31.4 157.8 L45.2 160.2',
+  },
+  {
+    d: 'M41.2 40.5 L36.5 36.4 M36.3 41.3 L31.6 37.3 M35.2 65.2 L30.7 60.9 M30.2 65.8 L25.7 61.4 M31.1 90 L26.9 85.4 M26.1 90.2 L21.9 85.5 M30.9 114.8 L27.1 109.8 M25.9 114.6 L22.1 109.7 M34.7 139.5 L31.2 134.3 M29.7 139 L26.2 133.8 M40.4 164.3 L37.3 158.9 M35.5 163.4 L32.4 158',
+    role: 'soft',
+  },
+  {
+    d: 'M47.3 46.1 A9 3.6 80 1 0 44.2 28.4 A9 3.6 80 1 0 47.3 46.1 M40.9 71.3 A9 3.6 84 1 0 39 53.4 A9 3.6 84 1 0 40.9 71.3 M36.3 96.4 A9 3.6 88 1 0 35.7 78.4 A9 3.6 88 1 0 36.3 96.4 M35.7 121.6 A9 3.6 92 1 0 36.3 103.6 A9 3.6 92 1 0 35.7 121.6 M39 146.6 A9 3.6 96 1 0 40.9 128.7 A9 3.6 96 1 0 39 146.6 M44.2 171.6 A9 3.6 100 1 0 47.3 153.9 A9 3.6 100 1 0 44.2 171.6',
+    role: 'accent',
+  },
+  shadow(84, 186, 48),
+]
+
+/** His six hilts alone: the grips, their wrapping and the round guards. */
+const HATCHAN_HILTS = HATCHAN_SWORDS.slice(2, 5)
+
+/** Genzo's peaked cap, and the pinwheel it wears until 44. */
+const GENZO_CAP: Stroke[] = eastBlueArt.genzo.slice(0, 7)
+const GENZO_PINWHEEL: Stroke[] = eastBlueArt.genzo.slice(8, 10)
+
+/** Jango's ring on its string, and his heart-shaped glasses. */
+const JANGO_RING: Stroke[] = eastBlueArt.jango.slice(0, 5)
+const JANGO_GLASSES: Stroke[] = eastBlueArt.jango.slice(5, 10)
+
+/** Krieg's gilded shoulder plate, its fur and rivets, without the guns. */
+const KRIEG_PLATE: Stroke[] = eastBlueArt['don-krieg'].slice(0, 7)
+
+/** Fullbody's iron knuckle and its shadow, without the soup. */
+const FULLBODY_KNUCKLE: Stroke[] = eastBlueArt.fullbody.slice(4)
+
+/** A knuckle stroke as the left hand's: mirrored, smaller, set back, plain. */
+function leftHand(stroke: Stroke): Stroke {
+  return { d: stroke.d, transform: 'translate(150 -46) scale(-0.85 0.85)' }
+}
+
+/** The left hand's knuckle, behind the right's. */
+const LEFT_KNUCKLE: Stroke[] = FULLBODY_KNUCKLE.slice(0, 4).map((stroke) =>
+  leftHand(stroke),
+)
+
+/**
+ * The trained Koby: the bandanna knotted into a ring with the glasses pushed
+ * up on it, lifted over the bucket. From 314, and again once he is free of
+ * Hachinosu.
+ */
+const KOBY_TRAINED: Stroke[] = [
+  { d: ellipse(54, 140, 40, 13), role: 'accent', transform: BANDANNA_LIFT },
+  {
+    d: 'M14 140 V160 A40 13 0 0 0 94 160 V140',
+    role: 'accent',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: 'M14 143 q-7 3 -2 8 q5 -1 2 -8 M12 150 C5 158 5 170 9 178 M14 151 C11 162 15 172 19 178',
+    role: 'accent',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: `${circle(40, 153, 11)} ${circle(68, 153, 11)}`,
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: 'M51 151 q3 -3 6 0 M29 151 L16 142 M79 151 L92 142',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: dots([
+      [21, 162],
+      [27, 166],
+      [54, 169],
+      [81, 166],
+      [87, 162],
+    ]),
+    role: 'soft',
+    transform: BANDANNA_LIFT,
+  },
+  ...MOVED_BUCKET,
+  shadow(86, 182, 56),
+]
+
+/** Sanji's knife with Ifrit Jambe's taller flame, from 1061. */
+const SANJI_IFRIT: Stroke[] = [
+  ...SANJI_KNIFE,
+  {
+    d: 'M114 68 C98 58 98 44 102 30 C104 38 108 42 111 44 C108 30 112 14 122 0 C122 16 130 24 132 36 C134 30 134 26 136 18 C146 34 144 52 136 62 C130 68 120 70 114 68 Z',
+    role: 'accent',
+  },
+  { d: 'M118 60 C112 52 114 44 118 32 C120 42 128 46 127 56', role: 'accent' },
+  shadow(80, 186, 44),
+]
+
+/** Usopp's slingshot of episode 11, the band drawn back around its ball. */
+const USOPP_SLINGSHOT: Stroke[] = [
+  {
+    d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+  },
+  {
+    d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+  },
+  {
+    d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
+    role: 'ambient',
+  },
+  {
+    d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+    role: 'soft',
+  },
+  {
+    d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+    role: 'accent',
+  },
+  { d: circle(80, 102, 6) },
+  { d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2', role: 'ambient' },
+  { d: circle(110, 177, 6) },
+  { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
+  shadow(88, 188, 32),
+]
+
+/** A stroke out of the accent: the same line, in plain ink. */
+function plain(stroke: Stroke): Stroke {
+  const { role, ...line } = stroke
+
+  return role === undefined || role === 'accent' ? line : { ...line, role }
+}
+
+/** The slingshot set down smaller beside Sogeking's mask, its band plain. */
+const SLINGSHOT_ASIDE: Stroke[] = moved(
+  USOPP_SLINGSHOT.slice(0, -1).map((stroke) => plain(stroke)),
+  'translate(54 34) scale(0.8)',
+)
+
+/** Yasopp's smoke, his ball on the ground and their shadow, from the pistol. */
+const YASOPP_SMOKE: Stroke[] = eastBlueArt.yasopp.slice(8, 9)
+const YASOPP_BALL: Stroke[] = eastBlueArt.yasopp.slice(9)
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
@@ -2043,48 +2372,32 @@ export const eastBlueRedrawn: Redrawings = {
   // its front, the way Garp's trainee wears them, lifted and enlarged over
   // the bucket. He comes back trained at Water 7 in 314 (ch. 432).
   'koby': [
+    { episode: 314, chapter: 432, value: KOBY_TRAINED },
+    // The trained Koby's bandanna and bucket, and beside them the iron ball he
+    // is chained to, dark and hatched, its chain run out to an open cuff on
+    // the ground. Blackbeard holds him on Hachinosu in 1113 (ch. 1080).
     {
-      episode: 314,
-      chapter: 432,
+      episode: 1113,
+      chapter: 1080,
       value: [
+        ...KOBY_TRAINED,
         {
-          d: ellipse(54, 140, 40, 13),
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M18 152 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0 M26.4 145.7 A15 15 0 0 1 34.9 137.9',
         },
         {
-          d: 'M14 140 V160 A40 13 0 0 0 94 160 V140',
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M35.4 172.6 L60.6 147.4 M40.7 173.3 L61.3 152.7 M47.9 172.1 L60.1 159.9',
+          role: 'ambient',
         },
         {
-          d: 'M14 143 q-7 3 -2 8 q5 -1 2 -8 M12 150 C5 158 5 170 9 178 M14 151 C11 162 15 172 19 178',
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M58 134 A5.5 4.2 11.7 1 0 68.8 136.2 A5.5 4.2 11.7 1 0 58 134 M77.7 142.6 A5.5 4.2 66.9 1 0 82 152.6 A5.5 4.2 66.9 1 0 77.7 142.6 M67.1 135.1 L79.3 143.8 M81.9 150.6 L82.3 165.6',
         },
         {
-          d: `${circle(40, 153, 11)} ${circle(68, 153, 11)}`,
-          transform: BANDANNA_LIFT,
+          d: 'M95.5 170.1 A11 6.5 0 1 0 95.5 178.9 M75 175.5 A11 6.5 0 0 0 95.5 181.9',
         },
-        {
-          d: 'M51 151 q3 -3 6 0 M29 151 L16 142 M79 151 L92 142',
-          transform: BANDANNA_LIFT,
-        },
-        {
-          d: dots([
-            [21, 162],
-            [27, 166],
-            [54, 169],
-            [81, 166],
-            [87, 162],
-          ]),
-          role: 'soft',
-          transform: BANDANNA_LIFT,
-        },
-        ...MOVED_BUCKET,
-        shadow(86, 182, 56),
       ],
     },
+    // The ball gone: he is out of the shackle by 1121 (ch. 1087).
+    { episode: 1121, chapter: 1087, value: KOBY_TRAINED },
   ],
   'roronoa-zoro': [
     // His three swords in their sheaths, the middle one in green, each guard
@@ -2092,16 +2405,16 @@ export const eastBlueRedrawn: Redrawings = {
     // Luffy brings all three from the base, and Zoro says he uses three, on
     // the last page of chapter 5; episode 3 is the first after the threshold
     // that shows them.
-    {
-      episode: 3,
-      chapter: 5,
-      value: [
-        ...sheath(-22, 'soft'),
-        ...sheath(0, 'accent'),
-        ...sheath(22, 'soft'),
-        shadow(80, 176, 40),
-      ],
-    },
+    { episode: 3, chapter: 5, value: ZORO_THREE },
+    // Wado alone: Mihawk breaks the other two at the Baratie in 24 (ch. 51),
+    // and Zoro sheathes the one sword he has left.
+    { episode: 24, chapter: 51, value: [...WADO, ZORO_SHADOW] },
+    // Three again: the Loguetown sword shop gives him Kitetsu and Yubashiri
+    // in 49 (ch. 97).
+    { episode: 49, chapter: 97, value: ZORO_THREE },
+    // Two: Shu rusts Yubashiri to nothing on Enies Lobby in 309 (ch. 426),
+    // and the third place stays empty until Thriller Bark.
+    { episode: 309, chapter: 426, value: ZORO_TWO },
     // Shusui: the third sword now Ryuma's black blade, its guard an octofoil
     // and its lacquered sheath hatched dark. Ryuma throws it to Zoro at the
     // end of 362 (ch. 467).
@@ -2122,6 +2435,9 @@ export const eastBlueRedrawn: Redrawings = {
         shadow(80, 176, 40),
       ],
     },
+    // Two again: Gyukimaru steals Shusui and takes it back to Ryuma's grave
+    // in 932 (ch. 936), and Zoro goes without until Enma.
+    { episode: 932, chapter: 936, value: ZORO_TWO },
     // Enma: the third sword now Oden's, Shusui left at Ryuma's grave; a
     // trefoil guard and a trefoil cap past a ring at the sheath's end, the
     // sageo tied at the mouth with its two tufted cords hanging free.
@@ -2189,47 +2505,66 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
   ],
-  // The Sorcery Clima-Tact leant across the box from the ground, its round
-  // knobs at both ends, collars banding the grip and both necks, the far side
-  // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
-  // the one mark in her colour, and a small copy of her first drawing's chart
-  // at the foot. The chart is not a prop of the scene: it is her emblem as
-  // navigator and cartographer, whose dream is to draw a map of the world,
-  // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
-  // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
   'nami': [
+    // The first Clima-Tact, leant across the box on the line the later staff
+    // keeps: three hollow poles of blue steel pushed end to end, the two
+    // sleeves where they join in her colour, and the chart at its foot. Usopp
+    // hands it over and she first fights with it against Miss Doublefinger in
+    // 117 (ch. 190).
+    { episode: 117, chapter: 190, value: CLIMA_TACT },
+    // The Perfect Clima-Tact: the same three poles, each now ending in a ball
+    // that holds a dial, the balls at both joints and the top in her colour,
+    // a glint on each. She shows it off chasing the Puffing Tom on the
+    // Rocketman in 258 (ch. 368).
     {
-      episode: 878,
-      chapter: 903,
+      episode: 258,
+      chapter: 368,
       value: [
         {
-          d: 'M35.3 159.6 L61.1 130.1 M42.1 165.5 L67.9 136 M82.1 106 L107.9 76.5 M88.9 111.9 L114.7 82.4',
+          d: 'M30.6 165 L53 139.4 M37.4 171 L59.8 145.3 M62.9 128.1 L80.3 108 M69.7 134 L87.1 113.9 M90.2 96.7 L107.7 76.7 M97 102.6 L114.5 82.6',
         },
-        { d: 'M61.6 126.5 L78.6 107 M71.4 135 L88.4 115.5' },
+        { d: 'M30.6 165 Q30.6 171.9 37.4 171' },
         {
-          d: 'M58.5 127.8 Q61.1 137 70.5 138.3 M60.4 125.5 Q63.1 134.7 72.5 136 M77.5 106 Q80.1 115.1 89.6 116.5 M79.5 103.7 Q82.1 112.9 91.5 114.2',
+          d: 'M36.7 162.1 L52 144.5 M66.5 127.9 L79.6 112.9 M93.9 96.5 L107 81.5',
+          role: 'soft',
         },
         {
-          d: 'M37.3 154.3 Q38.8 162.5 47.1 162.9 M102.9 79.1 Q104.4 87.3 112.7 87.7',
-        },
-        { d: `${circle(34, 168, 8.5)} ${circle(116, 74, 8.5)}` },
-        { d: 'M67.8 129.3 L82.2 112.7', role: 'soft' },
-        {
-          d: 'M46.7 159.8 L46.2 156 M53.9 151.5 L53.5 147.7 M61.2 143.3 L60.7 139.4 M90.6 109.5 L90.2 105.6 M97.9 101.2 L97.4 97.3 M105.1 92.9 L104.6 89 M41.8 166.1 L38.4 166.9 M41.7 170.2 L38.3 169.2 M39.5 173.8 L37.1 171.2 M123.8 72.1 L120.4 72.9 M123.7 76.2 L120.3 75.2 M121.5 79.8 L119.1 77.2',
+          d: 'M43.5 163 L43 159.1 M50.1 155.5 L49.6 151.6 M72.2 130.1 L71.7 126.2 M79.6 121.7 L79.1 117.8 M99.3 99.1 L98.8 95.2 M105.8 91.6 L105.3 87.7',
           role: 'ambient',
         },
         {
-          d: 'M69 52.5 C59.7 52.5 58.6 38.6 69 36.3 C67.8 23.5 84.1 20 88.7 28.1 C92.2 14.2 114.2 14.2 116.6 29.3 C128.2 25.8 137.4 37.4 129.3 47.9 C134 57.1 120 60.6 115.4 54.8 C108.4 61.8 94.5 61.8 88.7 56 C81.8 60.6 71.3 59.5 69 52.5 Z',
+          d: `${circle(61.3, 136.7, 7.5)} ${circle(88.7, 105.3, 7.5)} ${circle(116, 74, 7.5)}`,
+          role: 'accent',
         },
         {
-          d: 'M72.5 47.9 C81.8 52.5 92.2 50.2 98 45.5 C105 51.3 116.6 51.3 125.8 44.4',
+          d: 'M56.5 133.5 Q57.5 131.2 60 130.8 M83.9 102.1 Q84.9 99.8 87.4 99.4 M111.2 70.8 Q112.2 68.5 114.7 68.1',
           role: 'soft',
         },
-        { d: 'M70 58 L58 76 H68 L54 98', role: 'accent' },
         ...SMALL_CHART,
         shadow(80, 188, 56),
       ],
     },
+    // The first Sorcery Clima-Tact of the two years: three plain parts again,
+    // no dials, so the drawing is the first Clima-Tact's. She brings it back
+    // from Weatheria and first shows it on Sabaody in 517 (ch. 598).
+    { episode: 517, chapter: 598, value: CLIMA_TACT },
+    // The Grow Up Sorcery Clima-Tact as Usopp hands it over at Zou: the staff
+    // Zeus will sit on, its two round knobs (the ends that make it grow) in
+    // her colour. First shown in 776 (ch. 822).
+    { episode: 776, chapter: 822, value: GROW_UP },
+    // The Sorcery Clima-Tact leant across the box from the ground, its round
+    // knobs at both ends, collars banding the grip and both necks, the far side
+    // hatched; Zeus heaped above the top knob as a cloud with no face, his bolt
+    // the one mark in her colour, and a small copy of her first drawing's chart
+    // at the foot. The chart is not a prop of the scene: it is her emblem as
+    // navigator and cartographer, whose dream is to draw a map of the world,
+    // carried over as Sengoku's cap and Sakazuki's braid are (#203, #207). Zeus
+    // comes out of the staff as her servant aboard the Sunny in 878 (ch. 903).
+    { episode: 878, chapter: 903, value: SORCERY_WITH_ZEUS },
+    // The staff alone again: Big Mom grabs Zeus back in 993 (ch. 985).
+    { episode: 993, chapter: 985, value: GROW_UP },
+    // Zeus back in the staff, a Homie of hers now, from 1037 (ch. 1015).
+    { episode: 1037, chapter: 1015, value: SORCERY_WITH_ZEUS },
   ],
   'usopp': [
     // His slingshot, the band drawn straight back with a lead ball in its
@@ -2238,36 +2573,44 @@ export const eastBlueRedrawn: Redrawings = {
     // hatched, the grip wrapped. Episode 9 shows it on him, but the manga
     // first shows it in chapter 27, when he knocks out the mansion's guards
     // with it; episode 11 adapts that scene.
+    { episode: 11, chapter: 27, value: USOPP_SLINGSHOT },
+    // Sogeking's sun mask stood on its chin beside the slingshot: the egg of
+    // the plate in his colour with its three wavy blades standing out behind
+    // it, a soft edge down each blade, the band across the brow, the far
+    // cheek hatched, and no eye holes, so no face. The slingshot is the one of
+    // episode 11, set down smaller. He first puts the mask on as the Sea Train
+    // heads for Enies Lobby in 257 (ch. 367); Kabuto takes over at 274.
     {
-      episode: 11,
-      chapter: 27,
+      episode: 257,
+      chapter: 367,
       value: [
+        ...SLINGSHOT_ASIDE,
         {
-          d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
-        },
-        {
-          d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
-        },
-        {
-          d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
-          role: 'ambient',
-        },
-        {
-          d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
-          role: 'soft',
-        },
-        {
-          d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+          d: 'M50 92 C63 92 71 101 71 114 C71 132 61 148 50 148 C39 148 29 132 29 114 C29 101 37 92 50 92 Z',
           role: 'accent',
+          transform: 'translate(2 54) scale(0.8)',
         },
-        { d: circle(80, 102, 6) },
         {
-          d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2',
-          role: 'ambient',
+          d: 'M41 94.5 C36 80 46 70 42 56 C40 48 44 40 54 34 C49 44 54 52 56 62 C58 74 54 84 59 94.5 M31.5 103 C24 94 14 98 6 94 C2 92 0 88 0 84 C6 98 12 106 20 112 C24 115 27 117 29.5 120 M68.5 103 C76 94 86 98 94 94 C98 92 100 88 100 84 C94 98 88 106 80 112 C76 115 73 117 70.5 120',
+          role: 'accent',
+          transform: 'translate(2 54) scale(0.8)',
         },
-        { d: circle(110, 177, 6) },
-        { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
-        shadow(88, 188, 32),
+        {
+          d: 'M49 90 C50 82 49 74 48.5 66 M10 100 C17 102 23 106 29 111 M90 100 C83 102 77 106 71 111',
+          role: 'soft',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        {
+          d: 'M36.4 97.5 L70.4 120 M31.4 104.5 L69.4 129.6',
+          role: 'soft',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        {
+          d: 'M31 126 l4.4 -1.8 M33.2 133.5 l4.6 -1.9 M36.4 140.5 l4.4 -1.8',
+          role: 'ambient',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        shadow(80, 186, 64),
       ],
     },
     // Kabuto: a staff with a five-prong fork, the band pulled back from the
@@ -2362,20 +2705,26 @@ export const eastBlueRedrawn: Redrawings = {
     // taller, with a tongue either side. He stamps the suit's canister to
     // pieces in 1057 (ch. 1031) and first lights the hotter flame on Queen in
     // 1061 (ch. 1034).
+    { episode: 1061, chapter: 1034, value: SANJI_IFRIT },
+    // The knife and its flame, and crossed behind them the katana he carries
+    // in the Land of Gods: the wrapped grip, a square guard, the long sheath
+    // with its leather sling hanging off two bands and a buckle at the bottom
+    // of the loop. Road dresses him for Elbaf in 1157 (ch. 1127).
     {
-      episode: 1061,
-      chapter: 1034,
+      episode: 1157,
+      chapter: 1127,
       value: [
-        ...SANJI_KNIFE,
+        ...SANJI_IFRIT,
+        { d: 'M38.7 47.4 L18.6 29.3 Q13.3 29.3 13.8 34.7 L33.9 52.7' },
+        { d: 'M23.8 34 L23.5 43.4 M29.8 39.4 L29.4 48.7', role: 'soft' },
+        { d: 'M41.6 44.1 L44.6 46.8 L33.9 58.7 L30.9 56 Z' },
         {
-          d: 'M114 68 C98 58 98 44 102 30 C104 38 108 42 111 44 C108 30 112 14 122 0 C122 16 130 24 132 36 C134 30 134 26 136 18 C146 34 144 52 136 62 C130 68 120 70 114 68 Z',
-          role: 'accent',
+          d: 'M42.3 49.3 L92.4 94.4 M113.2 113.1 L153.8 149.7 M36.2 56.2 L85.5 100.6 M107.7 120.6 L147.7 156.5 M153.8 149.7 Q155.9 157.8 147.7 156.5',
         },
         {
-          d: 'M118 60 C112 52 114 44 118 32 C120 42 128 46 127 56',
-          role: 'accent',
+          d: 'M128.5 127 L122.4 133.8 M146.4 143 L140.2 149.8 M122.4 133.8 C120 148 120.5 158 123.8 163.8 M132.8 163.8 C136.8 161 139.6 157 140.2 149.8',
         },
-        shadow(80, 186, 44),
+        { d: 'M123.8 159.3 H132.8 V168.3 H123.8 Z M128.3 159.3 V168.3' },
       ],
     },
   ],
@@ -2384,29 +2733,53 @@ export const eastBlueRedrawn: Redrawings = {
   // wrapped grips. He bursts out of the rubble with all six against Zoro in
   // 39 (ch. 84); the ring of the Octopus Pot Stance waits for chapter 85.
   'hatchan': [
+    { episode: 39, chapter: 84, value: HATCHAN_SWORDS },
+    // The same six hilts with every blade snapped off short at a ragged
+    // break, and the pieces on the ground beneath them, the longest still
+    // with its tip. Zoro's Oni Giri breaks all six in chapter 85; the
+    // anime's first episode after it is 40 (ch. 86).
     {
-      episode: 39,
-      chapter: 84,
+      episode: 40,
+      chapter: 86,
       value: [
         {
-          d: 'M48.2 39.4 C82.5 33.6 108.8 24.1 130.8 11 C108.3 21.1 81.5 28.1 47.3 34.3 M42.2 64.7 C78.4 61.1 106.5 53.3 130.4 41.2 C106.2 50.3 77.8 55.5 41.6 59.5 M38.1 90 C76.1 88.8 105.9 83 131.5 72.1 C105.8 80 75.9 83.2 37.9 84.8 M37.9 115.2 C75.9 116.8 106 113 132.4 103.9 C106.1 110 76.1 111.2 38.1 110 M41.6 140.5 C77.8 144.5 107 142.7 132.8 135.8 C107.3 139.7 78.4 138.9 42.2 135.3 M47.3 165.7 C81.5 171.9 109.5 172 134.7 167.2 C110 169 82.5 166.4 48.2 160.6',
+          d: 'M70.2 35.4 C76 34.4 81.6 33.3 87 32.1 L93.6 29.6 L82.6 31 L91.2 28 L84.1 28.6 L85.8 27.1 C80.5 28.2 75 29.3 69.3 30.3 M64.2 60.7 C73.6 59.8 82.5 58.5 90.9 57 L85.7 56.9 L96.3 54 L87.3 54.6 L94 52.4 L89.8 52.2 C81.5 53.4 72.8 54.5 63.6 55.5 M60.1 86 C64.7 85.9 69.1 85.6 73.4 85.4 L79.3 83.9 L70.3 83.5 L80.1 81.8 L72.1 81.3 L73 80.2 C68.7 80.4 64.4 80.6 59.9 80.8 M59.9 111.2 C68.3 111.6 76.2 111.6 83.9 111.5 L79.8 110.6 L90.8 109.3 L81.7 108.5 L88.7 107.3 L83.6 106.4 C76.1 106.4 68.3 106.3 60.1 106 M63.6 136.5 C69 137.1 74.3 137.6 79.4 137.9 L84.5 137.2 L75.5 135.6 L87.6 135.3 L79.6 133.7 L79.7 132.7 C74.7 132.3 69.5 131.8 64.2 131.3 M69.3 161.7 C78.9 163.4 88 164.7 96.6 165.5 L93.7 164.2 L102.8 164.1 L91.9 162.1 L99.9 161.9 L97 160.6 C88.5 159.5 79.6 158.2 70.2 156.6',
+        },
+        ...moved(HATCHAN_HILTS, 'translate(22 -4)'),
+        {
+          d: 'M66 180 C86 179.2 104 176.4 120 171.6 L117.6 176 C102 180 86 182.6 68 183.8 L71 181.8 Z M126 186 L148 177 L146.4 181 L128 188 Z M50 176 L62 172 L59 177.6 Z M100 167 L111 162 L109.4 167.4 Z M134 165 L144 163 L140 167.6 Z',
+        },
+        shadow(96, 186, 50),
+      ],
+    },
+    // A paper boat of takoyaki from his stall, the Takoyaki 8: eight balls
+    // in two rows, the sauce drizzled over them in a zigzag, a pick stuck in
+    // the back row, the boat's far end hatched. He feeds the crew from it in
+    // 390 (ch. 496), and keeps selling it from then on.
+    {
+      episode: 390,
+      chapter: 496,
+      value: [
+        { d: 'M140.1 103.3 H147 L130.9 128.6 H9 L25.1 103.3 H29.7' },
+        { d: 'M9 128.6 L18.2 151.6 L124 151.6 L130.9 128.6' },
+        { d: 'M124 151.6 L140.1 126.3 L147 103.3' },
+        { d: 'M12.2 136 H128.7', role: 'soft' },
+        {
+          d: 'M128.3 143.1 L133.1 127 M132.3 136.8 L137.1 120.7 M136.3 130.4 L141.1 114.3',
+          role: 'ambient',
         },
         {
-          d: 'M55.6 35.3 C81.9 30.4 105 23.3 124 15 M49.8 61.1 C78.1 57.9 102.6 52.3 123 44.9 M46 86.9 C76 85.6 101.8 81.7 123.6 75.4 M46 112.7 C76 113.6 102.1 111.5 124.3 106.6 M49.9 138.5 C78.1 141.3 103.3 140.9 124.8 137.9 M55.6 164.3 C82.1 168.8 106.1 170 126.9 168.7',
-          role: 'soft',
+          d: 'M19.4 128.6 A13.8 13.8 0 1 1 40 128.6 M47 128.6 A13.8 13.8 0 1 1 67.6 128.6 M74.6 128.6 A13.8 13.8 0 1 1 95.2 128.6 M102.2 128.6 A13.8 13.8 0 1 1 122.8 128.6',
         },
         {
-          d: 'M45.2 39.8 L31.4 42.2 L30.6 37.5 L44.4 35 M39.2 64.8 L25.2 66.3 L24.7 61.5 L38.7 60 M35.1 89.9 L21.1 90.4 L20.9 85.6 L34.9 85.1 M34.9 114.9 L20.9 114.4 L21.1 109.6 L35.1 110.1 M38.7 140 L24.7 138.5 L25.2 133.7 L39.2 135.2 M44.4 165 L30.6 162.5 L31.4 157.8 L45.2 160.2',
+          d: 'M29.9 105.6 A13.8 13.8 0 0 1 57.1 105.6 M57.5 105.6 A13.8 13.8 0 0 1 84.7 105.6 M85.1 105.6 A13.8 13.8 0 0 1 112.3 105.6 M112.7 105.6 A13.8 13.8 0 0 1 139.3 108',
         },
         {
-          d: 'M41.2 40.5 L36.5 36.4 M36.3 41.3 L31.6 37.3 M35.2 65.2 L30.7 60.9 M30.2 65.8 L25.7 61.4 M31.1 90 L26.9 85.4 M26.1 90.2 L21.9 85.5 M30.9 114.8 L27.1 109.8 M25.9 114.6 L22.1 109.7 M34.7 139.5 L31.2 134.3 M29.7 139 L26.2 133.8 M40.4 164.3 L37.3 158.9 M35.5 163.4 L32.4 158',
-          role: 'soft',
-        },
-        {
-          d: 'M47.3 46.1 A9 3.6 80 1 0 44.2 28.4 A9 3.6 80 1 0 47.3 46.1 M40.9 71.3 A9 3.6 84 1 0 39 53.4 A9 3.6 84 1 0 40.9 71.3 M36.3 96.4 A9 3.6 88 1 0 35.7 78.4 A9 3.6 88 1 0 36.3 96.4 M35.7 121.6 A9 3.6 92 1 0 36.3 103.6 A9 3.6 92 1 0 35.7 121.6 M39 146.6 A9 3.6 96 1 0 40.9 128.7 A9 3.6 96 1 0 39 146.6 M44.2 171.6 A9 3.6 100 1 0 47.3 153.9 A9 3.6 100 1 0 44.2 171.6',
+          d: 'M20.5 119.4 L34.3 98.7 L43.5 117.1 L59.6 96.4 L71.1 114.8 L87.2 94.1 L98.7 112.5 L114.8 91.8 L126.3 110.2',
           role: 'accent',
         },
-        shadow(84, 186, 48),
+        { d: 'M106.8 91.8 L128.6 59.6' },
+        shadow(76, 156, 62),
       ],
     },
   ],
@@ -2703,5 +3076,330 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
     { episode: 1170, chapter: 1140, value: LUFFY_HAT },
+  ],
+  'shanks': [
+    // Gryphon, laid where the Foosha sword lay and the grog still behind it: a
+    // long saber in its curved sheath, throat and chape banded, the underside
+    // hatched, the long wrapped hilt ending in a pommel cap, and the guard in
+    // red, a round disc in 3/4 with the thin bow that sweeps from it down to
+    // the pommel. It hangs at his hip when he sits drinking with Ace in 151
+    // (ch. 234).
+    {
+      episode: 151,
+      chapter: 234,
+      value: [
+        ...SHANKS_GROG,
+        {
+          d: 'M52.5 137.7 L49.1 128.3 Q94 105.5 143.1 94.1 Q150.4 96.7 146.5 103.5 Q97.5 114.9 52.5 137.7 Z',
+        },
+        {
+          d: 'M64.9 127.9 L67 130.8 M77.8 122.2 L79.9 125.1 M90.8 117 L92.9 119.9 M103.9 112.2 L106 115.1 M117.2 107.9 L119.3 110.7 M130.7 104 L132.8 106.8',
+          role: 'ambient',
+        },
+        {
+          d: 'M58.3 127.1 Q95.2 108.7 135.3 99 M54.5 125.6 L57.9 135 M136.2 95.7 L139.7 105.1',
+          role: 'soft',
+        },
+        {
+          d: 'M45.6 134.9 A2.6 9.5 -20 1 1 50.4 133.1 A2.6 9.5 -20 1 1 45.6 134.9 M51.2 142.9 C44.1 152.5 21.2 159.7 8.8 152.1',
+          role: 'accent',
+        },
+        {
+          d: 'M44.3 131.5 L9.2 144.3 Q5 145.8 6.2 149.2 Q7.4 152.6 11.6 151.1 L46.8 138.3',
+        },
+        {
+          d: 'M42.1 132.3 L40.8 140.5 L34.6 135.1 L33.3 143.2 L27 137.8 L25.7 145.9 L19.5 140.5 L18.2 148.7 L12 143.3 M9.2 144.3 L11.6 151.1',
+          role: 'soft',
+        },
+      ],
+    },
+  ],
+  'helmeppo': [
+    // His pair of kukri crossed, as the reformed trainee wears them at the
+    // back of his belt: each blade bent forward from the handle and swelling
+    // to its point, the notch cut at the foot of the edge, the near blade in
+    // yellow with its bevel, the far one hatched where it turns away, the
+    // grips ringed with flared butts. He draws them on Zoro at Water 7 in 314
+    // (ch. 432); the shoe and the rice ball stay with the boy he was.
+    {
+      episode: 314,
+      chapter: 432,
+      value: [
+        {
+          d: 'M91.4 124.5 C90.3 123.5 89.2 122.6 88.1 121.7 M72.9 112.3 C58.8 105.8 39.6 102 12.3 105 C13.6 115.1 25.4 125.1 40.4 127 C46.7 127.8 53.6 127.7 60 127.4 M79.6 125.9 C80.9 125.7 81.5 126.6 81.5 128.5 L86.6 131.5',
+        },
+        {
+          d: 'M91.4 124.5 L112.7 139.9 L117.5 140.5 C117.5 145 115.5 148.1 111.3 149.7 L108.9 145.6 L86.6 131.5 L91.4 124.5',
+        },
+        {
+          d: 'M62.3 109.8 L59.3 121.9 M52 106.8 L49.1 118.7 M41.7 103.8 L38.9 115.6 M31.5 100.8 L28.8 112.4',
+          role: 'ambient',
+        },
+        { d: 'M94.9 126.9 L90.2 133.8 M105.2 134.3 L101 140.7', role: 'soft' },
+        {
+          d: 'M16.7 109 C22.6 117 31 122.7 40.9 123.3 C48.2 124.2 56.2 124 63.3 124',
+          role: 'soft',
+        },
+        {
+          d: 'M68.9 121 C80.1 105.8 100.3 89.8 142.3 85.5 C143 95.7 133.6 107.9 119.3 113 C106.8 117.4 90.5 118.3 82.8 120.2 Q78.5 119.1 79.5 123 L75.1 127',
+          role: 'accent',
+        },
+        {
+          d: 'M68.9 121 L51.2 140.6 L46.8 142.2 Q48.1 148.8 54.7 149.8 L56.1 145.3 L75.1 127 Z',
+        },
+        {
+          d: 'M138.7 90.4 C134.7 99.5 127.6 106.8 118 109.4 C107.3 113.2 94.1 114.6 86 117.4',
+          role: 'soft',
+        },
+        { d: 'M66.1 124.2 L72 130 M57.4 133.6 L62.9 138.9', role: 'soft' },
+        shadow(80, 170, 56),
+      ],
+    },
+  ],
+  'gin': [
+    // The plate set back, and in front of it his pair of tonfa laid side by
+    // side: each a long bar with a short handle across its end and an iron
+    // ball weighting the other, the balls hatched dark, the near one over the
+    // far. He breaks Pearl's iron shield with them in 27 (ch. 59).
+    {
+      episode: 27,
+      chapter: 59,
+      value: [
+        ...GIN_RICE_SET_BACK,
+        {
+          d: 'M135.3 150 L29.7 159.3 C27 159.5 25.8 160.7 26 163 C26.2 165.3 27.6 166.3 30.3 166 L135.9 156.8 M37.7 158.6 L36.6 147 C36.5 145 37.4 143.9 39.4 143.8 C41.4 143.6 42.4 144.5 42.6 146.5 L43.6 158',
+        },
+        {
+          d: 'M157.5 151.5 C158 157.5 153.6 162.9 147.5 163.4 C141.4 163.9 136.1 159.5 135.6 153.4 C135.1 147.4 139.5 142 145.6 141.5 C151.6 141 157 145.4 157.5 151.5',
+        },
+        {
+          d: 'M113.3 174 L7.7 183.3 C5 183.5 3.8 184.7 4 187 C4.2 189.3 5.6 190.3 8.3 190 L113.9 180.8 M15.7 182.6 L14.6 171 C14.5 169 15.4 167.9 17.4 167.8 C19.4 167.6 20.4 168.5 20.6 170.5 L21.6 182',
+        },
+        {
+          d: 'M135.5 175.5 C136 181.5 131.6 186.9 125.5 187.4 C119.4 187.9 114.1 183.5 113.6 177.4 C113.1 171.4 117.5 166 123.6 165.5 C129.6 165 135 169.4 135.5 175.5',
+        },
+        { d: 'M133.2 149 L134 158.2 M111.2 173 L112 182.2', role: 'soft' },
+        {
+          d: 'M141.3 161.9 L145.4 156.6 M147 163.5 L152 157 M152.8 161.4 L156 157.1 M119.3 185.9 L123.4 180.6 M125 187.5 L130 181 M130.8 185.4 L134 181.1',
+          role: 'ambient',
+        },
+        shadow(80, 194, 62),
+      ],
+    },
+  ],
+  'arlong': [
+    // The ushanka with the Kiribachi laid in front of it: the long black
+    // blade, six shark's teeth along one side, flat towards the grip, hatched
+    // dark with their edges drawn in; a katana's grip with its wrap and no
+    // guard. He takes it out of his armoury against Luffy in 42 (ch. 92).
+    {
+      episode: 42,
+      chapter: 92,
+      value: [
+        ...ARLONG_USHANKA,
+        { d: 'M35.8 157.3 L159.6 150.8 Q161.8 153.7 159.9 156.8 L36.1 163.3' },
+        {
+          d: 'M41.1 163.1 L42.3 185 Q48.8 171.5 59.1 162.1 M60.7 162 L61.8 184 Q68.3 170.4 78.7 161.1 M80.3 161 L81.4 183 Q87.9 169.4 98.2 160.1 M99.8 160 L101 182 Q107.5 168.4 117.8 159 M119.4 159 L120.6 180.9 Q127 167.4 137.4 158 M139 157.9 L140.1 179.9 Q146.6 166.3 156.9 157',
+        },
+        {
+          d: 'M45.2 179.4 Q50.4 169.2 55.1 162.9 M64.7 178.3 Q70 168.2 74.7 161.9 M84.3 177.3 Q89.6 167.1 94.3 160.9 M103.9 176.3 Q109.2 166.1 113.8 159.8 M123.5 175.3 Q128.7 165.1 133.4 158.8 M143 174.2 Q148.3 164.1 153 157.8',
+          role: 'soft',
+        },
+        {
+          d: 'M45.3 165.8 L45.8 175.8 M64.8 164.8 L65.4 174.8 M84.4 163.8 L84.9 173.8 M104 162.8 L104.5 172.8 M123.6 161.7 L124.1 171.7 M143.1 160.7 L143.6 170.7',
+          role: 'ambient',
+        },
+        {
+          d: 'M35.7 156.3 L8.8 157.7 Q3.8 158 4 162 Q4.2 166 9.2 165.7 L36.2 164.3 Z',
+        },
+        {
+          d: 'M10.8 157.6 L15.8 165.4 L20 157.2 L25 164.9 L29.2 156.7 L34.2 164.4 M11.2 165.6 L15.4 157.4 L20.4 165.1 L24.6 156.9 L29.6 164.7 L33.7 156.4',
+          role: 'soft',
+        },
+        shadow(82, 190, 70),
+      ],
+    },
+  ],
+  'smoker': [
+    // The cigars over his jitte: a long rod with the hook beside its grip,
+    // the knob where the two meet, the grip wrapped, and the tip hatched
+    // dark. He carries it from his first scene at the Loguetown base, in 52
+    // (ch. 98).
+    { episode: 52, chapter: 98, value: SMOKER_JITTE },
+    // The jitte snapped in two at a jagged break, the tip half lying apart,
+    // crumbs where it gave. Hancock's kick breaks it at Marineford in 469
+    // (ch. 560).
+    { episode: 469, chapter: 560, value: SMOKER_JITTE_BROKEN },
+    // Whole again after the two years, as it is when he is next seen in 572
+    // (ch. 652).
+    { episode: 572, chapter: 652, value: SMOKER_JITTE },
+    // Broken a second time, against Vergo on Punk Hazard in 616 (ch. 690).
+    { episode: 616, chapter: 690, value: SMOKER_JITTE_BROKEN },
+  ],
+  'genzo': [
+    // The cap without its pinwheel, and the pinwheel standing on its stick
+    // in a mound of earth in front of it. He leaves it at Bell-mère's grave
+    // once Nami has sailed, in 44 (ch. 95).
+    {
+      episode: 44,
+      chapter: 95,
+      value: [
+        ...moved(GENZO_CAP, 'translate(-6 -16)'),
+        shadow(62, 142, 44),
+        { d: 'M124 133 V178', role: 'soft' },
+        ...moved(GENZO_PINWHEEL, 'translate(42 94)'),
+        { d: 'M110 178 Q124 171 138 178', role: 'ambient' },
+        { d: 'M98 180 H150', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  'jango': [
+    // The ring and the glasses again, and behind them the cap he wears now
+    // that he is a Marine: a soft white seaman's cap with the two stripes
+    // running over its top, no lettering. He is back as one, "Jango the
+    // Turncoat", in 128 (ch. 214).
+    {
+      episode: 128,
+      chapter: 214,
+      value: [
+        ...moved(JANGO_RING, 'translate(12 -16)'),
+        {
+          d: 'M28 108 C28 98 76 98 76 108 C76 114 28 114 28 108 Z',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M28 108 C26 114 28 120 30 124 L32 140 Q52 147 72 140 L74 124 C76 120 78 114 76 108',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M31 131 Q52 138 73 131',
+          role: 'soft',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M44 100.6 Q42 108 43 113.2 L44 129 M60 100.6 Q62 108 61 113.2 L60 129',
+          role: 'soft',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M70 118 l5 -5 M68 128 l6 -6 M66 139 l6 -6',
+          role: 'ambient',
+          transform: 'rotate(-14 52 124)',
+        },
+        ...moved(JANGO_GLASSES, 'translate(0 22)'),
+        shadow(78, 190, 56),
+      ],
+    },
+  ],
+  'chouchou': [
+    // What the Buggy Pirates left of the shop: three charred posts with their
+    // tops burnt ragged, a roof beam fallen across, the plank sign down in
+    // front with nothing on it, and the one pack of dog food Luffy brought
+    // him out of the ruins, as the accent. It burns in his first episode, 6
+    // (ch. 13), so the ruins can only follow from 7 (ch. 15).
+    {
+      episode: 7,
+      chapter: 15,
+      value: [
+        {
+          d: 'M22 141 V68 L25 62 L27 67 L29 60 V140 M62 137 V104 L64.5 98 L66.5 103 L69 97 V136.5 M110 133 V58 L113 52 L115 57 L118 48 V133',
+        },
+        { d: 'M118 92 L134 84 V96 L136.5 91 L138 96 V133', role: 'soft' },
+        {
+          d: 'M22 84 l7 -5 M22 98 l7 -5 M22 112 l7 -5 M22 126 l7 -5 M62 118 l7 -5 M62 130 l7 -5 M110 74 l8 -6 M110 88 l8 -6 M110 102 l8 -6 M110 114 l8 -6 M110 128 l8 -6',
+          role: 'ambient',
+        },
+        { d: 'M110 66 L70 96 M110 72 L72 100.5' },
+        { d: 'M94 140.5 L8 148 L10 166 L96 158.5 L92 154 L97 150 L91.5 146 Z' },
+        { d: 'M8 148 L14 142 L88 135.5 L94 140.5' },
+        { d: 'M9 154 L92.5 146.7 M9.6 160 L93.8 152.7', role: 'soft' },
+        {
+          d: 'M98 140 H132 V182 H98 Z M98 140 L107 133 H141 L132 140',
+          role: 'accent',
+        },
+        { d: 'M132 182 L141 175 V133' },
+        { d: 'M134 151 l6 -5 M134 163 l6 -5 M134 175 l6 -5', role: 'ambient' },
+        { d: 'M104 150 H126 V170 H104 Z', role: 'soft' },
+        shadow(54, 170, 46),
+        shadow(120, 188, 26),
+      ],
+    },
+  ],
+  'don-krieg': [
+    // The Daisenso: his two shoulder plates locked face to face, the near one
+    // in his colour with its rivets and fur, the far one below the seam
+    // hatched where it turns away, and the shaft run out between them, its
+    // butt capped and a leaf blade at its head. He assembles it against Luffy
+    // in 28 (ch. 64).
+    {
+      episode: 28,
+      chapter: 64,
+      value: [
+        ...moved(
+          [
+            ...KRIEG_PLATE,
+            { d: 'M20 112 C22 150 60 172 96 168 C130 164 150 136 146 102' },
+            { d: 'M122 154 l8 7 M136 140 l9 5 M104 162 l6 8', role: 'ambient' },
+            {
+              d: 'M146 98.5 L180 95.8 M146 105.5 L180 102.8 M20 108.5 L-8 110.7 M20 115.5 L-8 117.7 M-8 110.7 Q-14 114.2 -8 117.7',
+            },
+            {
+              d: 'M180 91.3 C196 80 222 84 250 93.7 C222 104 196 110 180 107.3 Z',
+            },
+            { d: 'M184 99 L238 94.6', role: 'soft' },
+          ],
+          'translate(-2 27) scale(0.82) rotate(-48 83 105)',
+        ),
+        shadow(64, 186, 48),
+      ],
+    },
+  ],
+  'fullbody': [
+    // A knuckle for each hand: the iron knuckle in his colour where it always
+    // lay, and its twin for the left hand set back behind it. The soup is gone
+    // with the Baratie. He is "Double Ironfist" Fullbody under Hina at
+    // Arabasta in 128 (ch. 214).
+    {
+      episode: 128,
+      chapter: 214,
+      value: [...LEFT_KNUCKLE, ...FULLBODY_KNUCKLE],
+    },
+  ],
+  'yasopp': [
+    // The musket that replaces his pistol, stood upright on its butt: the
+    // muzzle seen round from above with the smoke of its shot in his colour,
+    // the lock with the hammer cocked, the trigger guard, the long stock
+    // flaring to a curved butt and its underside hatched; the ball still on
+    // the ground. He holds it in the Red Hair camp in 151 (ch. 234).
+    {
+      episode: 151,
+      chapter: 234,
+      value: [
+        { d: 'M68 41 V64 M74 41 V102' },
+        { d: 'M68 41 a3 1.4 0 1 0 6 0 a3 1.4 0 1 0 -6 0' },
+        {
+          d: 'M68 64 L64 66 V108 C64 128 54 144 48 162 Q67 167 86 162 C84 150 84 140 84 132 C80 128 77 122 76 114 L74 102',
+        },
+        { d: 'M64 90 H74', role: 'soft' },
+        {
+          d: 'M64.6 72 l3 -3 M64.6 80 l3 -3 M64.6 98 l3 -3 M64.6 106 l3 -3',
+          role: 'ambient',
+        },
+        {
+          d: 'M74.4 106 C84 102 90 110 84 116 M74.4 102 l7 -2 l-1 -5',
+          role: 'soft',
+        },
+        { d: 'M64 110 C54 112 54 126 64.6 126' },
+        { d: 'M64 114 q-5 2 -4 7', role: 'soft' },
+        { d: 'M72 120 C71 136 68 150 66.6 164.4', role: 'soft' },
+        {
+          d: 'M60 134 l5 -3.4 M57 142 l7 -4.4 M54 150 l9 -5.4 M51.4 158 l10 -6',
+          role: 'ambient',
+        },
+        { d: 'M49.6 156 Q67 160.4 85.4 156', role: 'soft' },
+        ...moved(YASOPP_SMOKE, 'translate(-50 -52)'),
+        ...YASOPP_BALL,
+      ],
+    },
   ],
 }
