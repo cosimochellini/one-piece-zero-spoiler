@@ -2016,6 +2016,23 @@ export const eastBlueArt = {
  */
 const THIRD_SHEATH = sheath(22, 'soft').filter((_, index) => index !== 3)
 
+/** Wado Ichimonji in the middle, the one sword Zoro never loses. */
+const WADO = sheath(0, 'accent')
+
+/** The ground under Zoro's swords, however many of them there are. */
+const ZORO_SHADOW = shadow(80, 176, 40)
+
+/** His three swords, from episode 3 and again whenever he is three again. */
+const ZORO_THREE: Stroke[] = [
+  ...sheath(-22, 'soft'),
+  ...WADO,
+  ...sheath(22, 'soft'),
+  ZORO_SHADOW,
+]
+
+/** Wado and the sword on its left, when the third has gone. */
+const ZORO_TWO: Stroke[] = [...sheath(-22, 'soft'), ...WADO, ZORO_SHADOW]
+
 /** Buggy's crown, drawn upright and tipped onto the cannonball as one piece. */
 const CROWN_TILT = 'rotate(-13 70 91.5)'
 
@@ -2092,16 +2109,16 @@ export const eastBlueRedrawn: Redrawings = {
     // Luffy brings all three from the base, and Zoro says he uses three, on
     // the last page of chapter 5; episode 3 is the first after the threshold
     // that shows them.
-    {
-      episode: 3,
-      chapter: 5,
-      value: [
-        ...sheath(-22, 'soft'),
-        ...sheath(0, 'accent'),
-        ...sheath(22, 'soft'),
-        shadow(80, 176, 40),
-      ],
-    },
+    { episode: 3, chapter: 5, value: ZORO_THREE },
+    // Wado alone: Mihawk breaks the other two at the Baratie in 24 (ch. 51),
+    // and Zoro sheathes the one sword he has left.
+    { episode: 24, chapter: 51, value: [...WADO, ZORO_SHADOW] },
+    // Three again: the Loguetown sword shop gives him Kitetsu and Yubashiri
+    // in 49 (ch. 97).
+    { episode: 49, chapter: 97, value: ZORO_THREE },
+    // Two: Shu rusts Yubashiri to nothing on Enies Lobby in 309 (ch. 426),
+    // and the third place stays empty until Thriller Bark.
+    { episode: 309, chapter: 426, value: ZORO_TWO },
     // Shusui: the third sword now Ryuma's black blade, its guard an octofoil
     // and its lacquered sheath hatched dark. Ryuma throws it to Zoro at the
     // end of 362 (ch. 467).
@@ -2122,6 +2139,9 @@ export const eastBlueRedrawn: Redrawings = {
         shadow(80, 176, 40),
       ],
     },
+    // Two again: Gyukimaru steals Shusui and takes it back to Ryuma's grave
+    // in 932 (ch. 936), and Zoro goes without until Enma.
+    { episode: 932, chapter: 936, value: ZORO_TWO },
     // Enma: the third sword now Oden's, Shusui left at Ryuma's grave; a
     // trefoil guard and a trefoil cap past a ring at the sheath's end, the
     // sageo tied at the mouth with its two tufted cords hanging free.

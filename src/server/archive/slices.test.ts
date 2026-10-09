@@ -9,7 +9,7 @@ import { ARC_LEADS } from '~/data/leads'
 import { orderByMode } from '~/data/order'
 import { shipDossierOf } from '~/data/places'
 import { reveal } from '~/data/reveal'
-import type { Entity } from '~/data/types'
+import type { Entity, Timeline } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
 import {
   type Bookmark,
@@ -698,6 +698,40 @@ function filed(id: string): Entity {
   return entity
 }
 
+/**
+ * Walks a character's redrawings in order, on Luffy's model: each stage from
+ * its own episode and its own chapter, the drawing before it one short of
+ * either, and the first drawing for a reader the timelines cannot place. The
+ * stages come back so a test can say which of them is an earlier drawing
+ * again.
+ */
+function walkStages(id: string, pairs: [number, number][]): Timeline<Stroke[]> {
+  const record = filed(id)
+  const first = Object.entries(DRAWINGS).find(([key]) => key === id)?.[1]
+  const stages = REDRAWINGS[id] ?? []
+  const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+    characterOf(record, readerFor(bookmark, 'en')).visual.strokes
+
+  expect(
+    stages.map(({ episode, chapter }) => [episode, chapter]),
+  ).toStrictEqual(pairs)
+  expect(drawnAt(null)).toBe(first)
+
+  for (const [index, { chapter = 0, episode, value }] of stages.entries()) {
+    const before = index === 0 ? first : stages[index - 1]?.value
+    const label = `${id} ep ${String(episode)} / ch ${String(chapter)}`
+
+    expect(drawnAt(ep(episode - 1)), label).toBe(before)
+    expect(drawnAt(ep(episode)), label).toBe(value)
+    expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 }), label).toBe(
+      before,
+    )
+    expect(drawnAt({ mode: 'chapter', chapter }), label).toBe(value)
+  }
+
+  return stages
+}
+
 describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
@@ -779,42 +813,21 @@ describe('a record drawn again later in the story', () => {
     expect(characterOf(chopper, atChapter(598)).visual.strokes).toBe(cap?.value)
   })
 
-  describe('three times, following Zoro’s swords', () => {
-    const zoro = filed('roronoa-zoro')
-    const post = DRAWINGS['roronoa-zoro']
-    const [threeSwords, shusui, enma] = REDRAWINGS['roronoa-zoro'] ?? []
-    const drawnAt = (bookmark: Bookmark): Stroke[] =>
-      characterOf(zoro, readerFor(bookmark, 'en')).visual.strokes
+  it('follows Zoro’s swords, lost, found and swapped, from episode 3', () => {
+    const stages = walkStages('roronoa-zoro', [
+      [3, 5],
+      [24, 51],
+      [49, 97],
+      [309, 426],
+      [362, 467],
+      [932, 936],
+      [956, 955],
+    ])
 
-    it('files each sword at the episode that shows it', () => {
-      expect(threeSwords?.episode).toBe(3)
-      expect(shusui?.episode).toBe(362)
-      expect(enma?.episode).toBe(956)
-    })
-
-    it('shows the latest sword an episode reader has reached', () => {
-      expect(drawnAt(ep(2))).toBe(post)
-      expect(drawnAt(ep(3))).toBe(threeSwords?.value)
-      expect(drawnAt(ep(361))).toBe(threeSwords?.value)
-      expect(drawnAt(ep(362))).toBe(shusui?.value)
-      expect(drawnAt(ep(955))).toBe(shusui?.value)
-      expect(drawnAt(ep(956))).toBe(enma?.value)
-      expect(drawnAt(null)).toBe(post)
-    })
-
-    it('keeps each sword from a chapter reader until the manga hands it over', () => {
-      // The manga shows the three in chapter 5, hands Zoro Shusui in 467 and
-      // Enma in 955.
-      expect(drawnAt({ mode: 'chapter', chapter: 3 })).toBe(post)
-      expect(drawnAt({ mode: 'chapter', chapter: 4 })).toBe(post)
-      expect(drawnAt({ mode: 'chapter', chapter: 5 })).toBe(threeSwords?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 466 })).toBe(
-        threeSwords?.value,
-      )
-      expect(drawnAt({ mode: 'chapter', chapter: 467 })).toBe(shusui?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 954 })).toBe(shusui?.value)
-      expect(drawnAt({ mode: 'chapter', chapter: 955 })).toBe(enma?.value)
-    })
+    // Three again at Loguetown is the episode 3 drawing itself, and the two
+    // stretches with a sword missing are one drawing.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[5]?.value).toBe(stages[3]?.value)
   })
 
   it('shows the real Gum-Gum Fruit from episode 1, with no redrawing', () => {
