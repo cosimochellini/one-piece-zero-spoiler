@@ -5,7 +5,6 @@ import {
   type FillerArc,
   type FillerEntry,
   LAST_AIRED,
-  type NumberedFiller,
 } from '~/data/filler'
 import { reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
@@ -207,9 +206,17 @@ function skipRanges(): SkipRange[] {
   return ranges
 }
 
-/** A numbered entry as the strip draws it: a number and a kind. */
-function markOf(entry: NumberedFiller): FillerMark {
-  return { episode: entry.episode, kind: entry.kind }
+/** The numbered entries as the strip draws them: a number and a kind. */
+function marks(): FillerMark[] {
+  const drawn: FillerMark[] = []
+
+  for (const entry of FILLER) {
+    if ('episode' in entry) {
+      drawn.push({ episode: entry.episode, kind: entry.kind })
+    }
+  }
+
+  return drawn
 }
 
 /** The guide at this bookmark. */
@@ -222,9 +229,7 @@ export function fillerPage(bookmark: Bookmark, locale: Locale): FillerPageView {
     groups: chunkBy(indexed, (item) => canonArcOf(positionOf(item.entry))).map(
       (group) => groupOf(group, look),
     ),
-    marks: FILLER.filter((entry) => 'episode' in entry).map((entry) =>
-      markOf(entry),
-    ),
+    marks: marks(),
     ranges: skipRanges(),
     unnumbered: FILLER.filter((entry) => !('episode' in entry)).length,
   }

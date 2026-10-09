@@ -18,28 +18,19 @@ import type { FillerKind } from '~/lib/view/filler'
  * English release's.
  */
 
-interface Shared {
-  /** The last chapter the anime had adapted when it aired. */
+/**
+ * One entry of the guide: a numbered episode, or a film or special with the
+ * episode it is watched after and its Japanese release or air date. `chapter`
+ * is the last chapter the anime had adapted when it aired.
+ */
+export type FillerEntry = (
+  { after: number; released: string } | { episode: number }
+) & {
   chapter: number
   kind: FillerKind
   summary: LocalizedText
   title: LocalizedText
 }
-
-/** A numbered episode. */
-export interface NumberedFiller extends Shared {
-  episode: number
-}
-
-/** A film or a special, with the episode it is watched after. */
-export interface UnnumberedFiller extends Shared {
-  after: number
-  /** Japanese release or air date. */
-  released: string
-}
-
-/** One entry of the guide. */
-export type FillerEntry = NumberedFiller | UnnumberedFiller
 
 /** A filler arc: a run of episodes the wikis name as one story. */
 export interface FillerArc {
@@ -1085,11 +1076,11 @@ export const FILLER: FillerEntry[] = [
     kind: 'film',
     chapter: 414,
     title: {
-      en: 'Episode of Arabasta: The Desert Princess and the Pirates',
+      en: 'Episode of Alabasta: The Desert Princess and the Pirates',
       it: 'Un’amicizia oltre i confini del mare',
     },
     summary: {
-      en: 'A retelling of the Arabasta story: the crew reaches a kingdom torn by revolution and has to cross the desert to stop Crocodile, who is behind the unrest.',
+      en: 'A retelling of the Alabasta story: the crew reaches a kingdom torn by revolution and has to cross the desert to stop Crocodile, who is behind the unrest.',
       it: 'Il racconto della saga di Alabasta: la ciurma arriva in un regno sconvolto da una rivoluzione e deve attraversare il deserto per fermare Crocodile, il vero responsabile dei disordini.',
     },
   },
@@ -2151,7 +2142,7 @@ export const FILLER: FillerEntry[] = [
       it: 'Verso il Reverie - La principessa Bibi e la principessa Shirahoshi',
     },
     summary: {
-      en: 'Vivi sails from Arabasta for the royal summit and recalls her adventure with the Straw Hats, while Shirahoshi is persuaded to attend. On the Sunny, the crew finds Carrot aboard in secret.',
+      en: 'Vivi sails from Alabasta for the royal summit and recalls her adventure with the Straw Hats, while Shirahoshi is persuaded to attend. On the Sunny, the crew finds Carrot aboard in secret.',
       it: 'Bibi parte da Alabasta per il vertice dei reali e ricorda la sua avventura con i Cappello di Paglia, mentre Shirahoshi viene convinta a partecipare. Sulla Sunny la ciurma trova Carrot a bordo.',
     },
   },

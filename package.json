@@ -26,6 +26,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
     "verify:chapters": "node scripts/verify-chapters.mjs",
+    "verify:filler": "node scripts/verify-filler.mjs",
     "verify:names": "node scripts/verify-names.mjs"
   },
   "overrides": {
