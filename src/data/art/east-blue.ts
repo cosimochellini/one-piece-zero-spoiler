@@ -653,7 +653,8 @@ export const eastBlueArt = {
   ],
   // A flintlock pistol side on, the smoke of its shot in his colour at the
   // muzzle, the hammer cocked, the barrel's underside hatched, the ball on the
-  // ground. Luffy remembers the marksman who never missed in episode 9.
+  // ground. Luffy remembers the marksman who never missed in episode 9. The
+  // musket takes its place from 151, in `eastBlueRedrawn`.
   'yasopp': [
     { d: 'M54 92 L120 85 M55 100 L121 93' },
     { d: 'M120 85 A4.2 1.8 84 1 1 121 93 A4.2 1.8 84 1 1 120 85' },
@@ -2361,6 +2362,10 @@ const SLINGSHOT_ASIDE: Stroke[] = moved(
   'translate(54 34) scale(0.8)',
 )
 
+/** Yasopp's smoke, his ball on the ground and their shadow, from the pistol. */
+const YASOPP_SMOKE: Stroke[] = eastBlueArt.yasopp.slice(8, 9)
+const YASOPP_BALL: Stroke[] = eastBlueArt.yasopp.slice(9)
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -3357,6 +3362,43 @@ export const eastBlueRedrawn: Redrawings = {
       episode: 128,
       chapter: 214,
       value: [...LEFT_KNUCKLE, ...FULLBODY_KNUCKLE],
+    },
+  ],
+  'yasopp': [
+    // The musket that replaces his pistol, stood upright on its butt: the
+    // muzzle seen round from above with the smoke of its shot in his colour,
+    // the lock with the hammer cocked, the trigger guard, the long stock
+    // flaring to a curved butt and its underside hatched; the ball still on
+    // the ground. He holds it in the Red Hair camp in 151 (ch. 234).
+    {
+      episode: 151,
+      chapter: 234,
+      value: [
+        { d: 'M68 41 V64 M74 41 V102' },
+        { d: 'M68 41 a3 1.4 0 1 0 6 0 a3 1.4 0 1 0 -6 0' },
+        {
+          d: 'M68 64 L64 66 V108 C64 128 54 144 48 162 Q67 167 86 162 C84 150 84 140 84 132 C80 128 77 122 76 114 L74 102',
+        },
+        { d: 'M64 90 H74', role: 'soft' },
+        {
+          d: 'M64.6 72 l3 -3 M64.6 80 l3 -3 M64.6 98 l3 -3 M64.6 106 l3 -3',
+          role: 'ambient',
+        },
+        {
+          d: 'M74.4 106 C84 102 90 110 84 116 M74.4 102 l7 -2 l-1 -5',
+          role: 'soft',
+        },
+        { d: 'M64 110 C54 112 54 126 64.6 126' },
+        { d: 'M64 114 q-5 2 -4 7', role: 'soft' },
+        { d: 'M72 120 C71 136 68 150 66.6 164.4', role: 'soft' },
+        {
+          d: 'M60 134 l5 -3.4 M57 142 l7 -4.4 M54 150 l9 -5.4 M51.4 158 l10 -6',
+          role: 'ambient',
+        },
+        { d: 'M49.6 156 Q67 160.4 85.4 156', role: 'soft' },
+        ...moved(YASOPP_SMOKE, 'translate(-50 -52)'),
+        ...YASOPP_BALL,
+      ],
     },
   ],
 }

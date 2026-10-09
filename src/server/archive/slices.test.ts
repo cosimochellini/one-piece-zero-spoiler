@@ -1238,6 +1238,10 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
   })
 
+  it('trades Yasopp’s pistol for his musket only from episode 151', () => {
+    expect(walkStages('yasopp', [[151, 234]])).toHaveLength(1)
+  })
+
   it('gives Shanks Gryphon only from episode 151', () => {
     expect(walkStages('shanks', [[151, 234]])).toHaveLength(1)
   })
