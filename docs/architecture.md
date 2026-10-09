@@ -51,7 +51,7 @@ folded, so an epithet the reader has not reached is not in the browser at all.
 | Devil fruits        | 128                                                   |
 | Arcs, places, ships | 34 · 39 · 2                                           |
 | Saga modules        | 12, plus one for the devil fruits                     |
-| Line drawings       | 737, one per record, plus 59 redrawings of 35 records |
+| Line drawings       | 737, one per record, plus 58 redrawings of 34 records |
 | Chronicle stories   | 755, for 185 characters                               |
 | Test files          | 75                                                    |
 | Test cases          | 686                                                   |
@@ -87,14 +87,14 @@ written by hand.
 The devil fruits are generated rather than drawn one by one. More than a hundred
 drawings of the same kind of object have to look like one set and still be told
 apart, so each is composed from a seed written next to its id: one of six
-silhouettes, one of four marks, a stalk and a leaf. Fourteen are drawn by hand
-and override their generated version: the eleven a reader already knows well,
-and the first three drawn as fruit + power, the power acting on the fruit's own
-body (#461). Three more are drawn as the real fruit only from the episode that
-shows it. The sizing is guaranteed rather than hoped for: a seed cannot set a
-radius, so the widest fruit the generator can produce is known in advance. Every
-path it writes uses absolute commands only, which lets the test read the numbers
-in a path as coordinates.
+silhouettes, one of four marks, a stalk and a leaf. Nineteen are drawn by hand
+and override their generated version: the twelve a reader already knows well,
+and seven drawn as fruit + power on the body kit (`src/data/art/fruits/kit.ts`),
+the power acting on the fruit's own body (#461). Two more are drawn as the real
+fruit only from the episode that shows it. The sizing is guaranteed rather than
+hoped for: a seed cannot set a radius, so the widest fruit the generator can
+produce is known in advance. Every path it writes uses absolute commands only,
+which lets the test read the numbers in a path as coordinates.
 
 ## Stack
 

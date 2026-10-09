@@ -115,13 +115,40 @@ Grade every drawing you make or review. Only A ships.
 - **Places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
-- **Devil fruits**: most are grown from a seed in `src/data/art/fruits/index.ts`
-  (`fruit({ body, grain, leaf, stem, swirl })`, five strokes). They are the
-  standard for fruits by construction; do not hand-draw a generated fruit
-  unless readers would recognise its real look. A hand drawing goes in
-  `bespoke.ts` and obeys what `fruits/generate.test.ts` holds: absolute
-  commands only, one decimal, no `transform`, inside the box, **exactly one**
-  accent, the shared body radii and `furniture()`.
+- **Devil fruits** are a fruit and its power (#461). The fruit is a body
+  from the kit in `src/data/art/fruits/kit.ts`: one of six (`round`, `pear`,
+  `gourd`, `heart`, `oblong`, `segmented`), shared radii, seen a little from
+  above. `crown()` draws the rim of the dimple the stalk sits in, `shine()`
+  the highlight on the near shoulder, `hatching()` the far side turning away,
+  `skin()` a few `soft` curls, and `sprout()` the stalk and leaf. Pick the
+  body by hand. The power is the **only accent**, and it acts **on the fruit's
+  own body**, as the owner picked in #462:
+  - **Logia**: the fruit sunk in its element where the shadow would be (smoke
+    in a bank of cloud, ice in a cluster of shards).
+  - **Paramecia**: the power breaking out of the fruit or done to it (a blast
+    out of an open side, a bite out of the shoulder, the stalk wound into a
+    spring). Cut the outline where the power has it, with `outline(body,
+    keep)`, so the skin is open there rather than drawn under it.
+  - **Zoan**: the animal's attribute grown out of the fruit, both ends on the
+    rim (`onRim()`): bison horns, falcon wings. Never a head, never a face.
+  - **The power as the threshold episode shows it**: no later technique,
+    form or awakening. Redraw a fruit later only on an identity turn (its
+    true name, its true model, a declared awakening), never for a new
+    technique.
+  - **The real fruit** is a redrawing at the episode the show first shows it,
+    with a true chapter pair, and it is the pure real fruit with no power
+    (`FLAME_FLAME`, `OP_OP_HEART`). The owner ruled that Gum-Gum is the real
+    fruit from episode 1, with no redrawing.
+  - **10–14 strokes**; `generate.test.ts` fails a kit fruit under ten. Watch
+    for faces: two curls over a row of points reads as eyes and teeth, so
+    keep curls off a level line and away from a jagged edge (the first ice
+    drawing failed on this).
+  - Every fruit drawing, kit or not, obeys what `generate.test.ts` holds:
+    absolute commands only (so `shadowUnder()`, never `shadow()`, whose `q`
+    is relative), one decimal, no `transform`, inside the box, **exactly
+    one** accent. Kit fruits go in `bespoke.ts`. A fruit still grown from a
+    seed (`fruit({ body, grain, leaf, stem, swirl })`) is at most B, and #464
+    files the rest onto the kit.
 
 ## Spoilers in a drawing
 

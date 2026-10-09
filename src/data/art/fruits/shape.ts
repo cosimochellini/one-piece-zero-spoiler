@@ -139,25 +139,33 @@ export function bezier(cubic: [number, number][], t: number): [number, number] {
 }
 
 /**
- * How far the right side of a body reaches at height `y`, both as fractions
- * of its radii. It is read off the outline `lobed` draws, which on a pear or
- * a gourd runs well inside the ellipse its radii describe. Above the top
- * or below the foot the side never crosses `y`, so the width there is 0.
+ * The right side of a body as the points along it, from the crown down to the
+ * foot, each as fractions of its radii: the outline `lobed` draws, read at
+ * `steps` even points along each of its two cubics.
  */
-export function widthAt(family: BodyFamily, y: number): number {
+export function sideOf(family: BodyFamily, steps = STEPS): [number, number][] {
   const profile = PROFILES[family]
   const on = (index: number): [number, number] => profile[index] ?? [0, 1]
   const cubics: [number, number][][] = [
     [[0, -1], on(0), on(1), on(2)],
     [on(2), on(3), on(4), on(5)],
   ]
-  const side: [number, number][] = []
 
-  for (const cubic of cubics) {
-    for (let step = 0; step <= STEPS; step++) {
-      side.push(bezier(cubic, step / STEPS))
-    }
-  }
+  return cubics.flatMap((cubic) => {
+    return Array.from({ length: steps + 1 }, (_unused, step) =>
+      bezier(cubic, step / steps),
+    )
+  })
+}
+
+/**
+ * How far the right side of a body reaches at height `y`, both as fractions
+ * of its radii. It is read off the outline `lobed` draws, which on a pear or
+ * a gourd runs well inside the ellipse its radii describe. Above the top
+ * or below the foot the side never crosses `y`, so the width there is 0.
+ */
+export function widthAt(family: BodyFamily, y: number): number {
+  const side = sideOf(family)
   let width = 0
 
   for (const [index, [x1, y1]] of side.entries()) {
