@@ -74,7 +74,7 @@ describe('the redirect a link answers with', () => {
     const response = visit('/?ep=650')
 
     expect(response?.status).toBe(302)
-    expect(response?.headers.get('Location')).toBe('/')
+    expect(response?.headers.get('Location')).toBe(`${SITE}/`)
     expect(response?.headers.get('Set-Cookie')).toBe(
       'opzs_ep=650; Path=/; SameSite=Lax; Max-Age=31536000',
     )
@@ -84,7 +84,9 @@ describe('the redirect a link answers with', () => {
   it('keeps the path and every other parameter', () => {
     const response = visit('/it/characters?x=1&s=2&ep=3&y=2')
 
-    expect(response?.headers.get('Location')).toBe('/it/characters?x=1&y=2')
+    expect(response?.headers.get('Location')).toBe(
+      `${SITE}/it/characters?x=1&y=2`,
+    )
     expect(response?.headers.get('Set-Cookie')).toMatch(/^opzs_ep=s2e3;/u)
   })
 
@@ -98,17 +100,17 @@ describe('the redirect a link answers with', () => {
     const response = visit('/en?ep=9999')
 
     expect(response?.status).toBe(302)
-    expect(response?.headers.get('Location')).toBe('/en')
+    expect(response?.headers.get('Location')).toBe(`${SITE}/en`)
     expect(response?.headers.has('Set-Cookie')).toBe(false)
   })
 
   it('never redirects to another host', () => {
     expect(visit('//evil.example/x?ep=650')?.headers.get('Location')).toBe(
-      '/evil.example/x',
+      `${SITE}/evil.example/x`,
     )
     expect(
       visit(String.raw`/\evil.example/x?ep=650`)?.headers.get('Location'),
-    ).toBe('/evil.example/x')
+    ).toBe(`${SITE}/evil.example/x`)
   })
 
   it('answers HEAD like GET', () => {

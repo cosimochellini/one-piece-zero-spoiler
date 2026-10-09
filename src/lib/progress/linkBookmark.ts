@@ -97,11 +97,16 @@ export function linkRedirect(request: Request): Response | undefined {
     url.searchParams.delete(name)
   }
 
+  // A path that opens with `//` would read as another host in `Location`,
+  // so the leading slashes collapse to one and the redirect stays here.
+  url.pathname = url.pathname.replace(/^\/+/u, '/')
+
   const headers = new Headers({
     'Cache-Control': 'no-store',
-    // A path that opens with `//` would read as another host in `Location`,
-    // so the leading slashes collapse to one and the redirect stays here.
-    'Location': `${url.pathname.replace(/^\/+/u, '/')}${url.search}`,
+    // Absolute on purpose. Netlify appends the request's query string to a
+    // relative `Location` that has none of its own, so `/en` would come back
+    // as `/en?ch=1044` and the link would redirect to itself forever.
+    'Location': url.href,
   })
   if (bookmark !== null) {
     headers.set(
