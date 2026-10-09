@@ -1,4 +1,5 @@
 import {
+  BOMB_BOMB,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CHOP_CHOP,
@@ -8,9 +9,11 @@ import {
   GUM_GUM,
   OP_OP,
   OP_OP_HEART,
+  OX_OX_BISON,
   OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SMOKE_SMOKE,
   STRING_STRING,
   TREMOR_TREMOR,
 } from '~/data/art/fruits/bespoke'
@@ -29,7 +32,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Eleven of them are drawn by hand and name their drawing; the rest name the
+ * Fourteen of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -48,20 +51,8 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'smoke-smoke-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'bomb-bomb-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'smoke-smoke-fruit': SMOKE_SMOKE,
+  'bomb-bomb-fruit': BOMB_BOMB,
   'kilo-kilo-fruit': fruit({
     body: 'star',
     grain: 11,
@@ -90,13 +81,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'ox-ox-fruit-model-bison': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'ox-ox-fruit-model-bison': OX_OX_BISON,
   'human-human-fruit': fruit({
     body: 'round',
     grain: 5,
