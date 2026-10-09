@@ -99,7 +99,9 @@ export function linkRedirect(request: Request): Response | undefined {
 
   const headers = new Headers({
     'Cache-Control': 'no-store',
-    'Location': `${url.pathname}${url.search}`,
+    // A path that opens with `//` would read as another host in `Location`,
+    // so the leading slashes collapse to one and the redirect stays here.
+    'Location': `${url.pathname.replace(/^\/+/u, '/')}${url.search}`,
   })
   if (bookmark !== null) {
     headers.set(

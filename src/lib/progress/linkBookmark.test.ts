@@ -102,6 +102,15 @@ describe('the redirect a link answers with', () => {
     expect(response?.headers.has('Set-Cookie')).toBe(false)
   })
 
+  it('never redirects to another host', () => {
+    expect(visit('//evil.example/x?ep=650')?.headers.get('Location')).toBe(
+      '/evil.example/x',
+    )
+    expect(
+      visit(String.raw`/\evil.example/x?ep=650`)?.headers.get('Location'),
+    ).toBe('/evil.example/x')
+  })
+
   it('answers HEAD like GET', () => {
     expect(visit('/?ep=650', 'HEAD')?.status).toBe(302)
   })
