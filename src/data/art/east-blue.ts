@@ -2204,6 +2204,55 @@ const GIN_RICE_SET_BACK: Stroke[] = eastBlueArt.gin
   .slice(0, -1)
   .map((stroke) => ({ ...stroke, transform: 'translate(0 -26)' }))
 
+/** Moves strokes as one piece, after any transform they already carry. */
+function moved(strokes: Stroke[], by: string): Stroke[] {
+  return strokes.map((stroke) => {
+    return {
+      ...stroke,
+      transform:
+        stroke.transform === undefined ? by : `${by} ${stroke.transform}`,
+    }
+  })
+}
+
+/** Hatchan's six swords held out, from 39. */
+const HATCHAN_SWORDS: Stroke[] = [
+  {
+    d: 'M48.2 39.4 C82.5 33.6 108.8 24.1 130.8 11 C108.3 21.1 81.5 28.1 47.3 34.3 M42.2 64.7 C78.4 61.1 106.5 53.3 130.4 41.2 C106.2 50.3 77.8 55.5 41.6 59.5 M38.1 90 C76.1 88.8 105.9 83 131.5 72.1 C105.8 80 75.9 83.2 37.9 84.8 M37.9 115.2 C75.9 116.8 106 113 132.4 103.9 C106.1 110 76.1 111.2 38.1 110 M41.6 140.5 C77.8 144.5 107 142.7 132.8 135.8 C107.3 139.7 78.4 138.9 42.2 135.3 M47.3 165.7 C81.5 171.9 109.5 172 134.7 167.2 C110 169 82.5 166.4 48.2 160.6',
+  },
+  {
+    d: 'M55.6 35.3 C81.9 30.4 105 23.3 124 15 M49.8 61.1 C78.1 57.9 102.6 52.3 123 44.9 M46 86.9 C76 85.6 101.8 81.7 123.6 75.4 M46 112.7 C76 113.6 102.1 111.5 124.3 106.6 M49.9 138.5 C78.1 141.3 103.3 140.9 124.8 137.9 M55.6 164.3 C82.1 168.8 106.1 170 126.9 168.7',
+    role: 'soft',
+  },
+  {
+    d: 'M45.2 39.8 L31.4 42.2 L30.6 37.5 L44.4 35 M39.2 64.8 L25.2 66.3 L24.7 61.5 L38.7 60 M35.1 89.9 L21.1 90.4 L20.9 85.6 L34.9 85.1 M34.9 114.9 L20.9 114.4 L21.1 109.6 L35.1 110.1 M38.7 140 L24.7 138.5 L25.2 133.7 L39.2 135.2 M44.4 165 L30.6 162.5 L31.4 157.8 L45.2 160.2',
+  },
+  {
+    d: 'M41.2 40.5 L36.5 36.4 M36.3 41.3 L31.6 37.3 M35.2 65.2 L30.7 60.9 M30.2 65.8 L25.7 61.4 M31.1 90 L26.9 85.4 M26.1 90.2 L21.9 85.5 M30.9 114.8 L27.1 109.8 M25.9 114.6 L22.1 109.7 M34.7 139.5 L31.2 134.3 M29.7 139 L26.2 133.8 M40.4 164.3 L37.3 158.9 M35.5 163.4 L32.4 158',
+    role: 'soft',
+  },
+  {
+    d: 'M47.3 46.1 A9 3.6 80 1 0 44.2 28.4 A9 3.6 80 1 0 47.3 46.1 M40.9 71.3 A9 3.6 84 1 0 39 53.4 A9 3.6 84 1 0 40.9 71.3 M36.3 96.4 A9 3.6 88 1 0 35.7 78.4 A9 3.6 88 1 0 36.3 96.4 M35.7 121.6 A9 3.6 92 1 0 36.3 103.6 A9 3.6 92 1 0 35.7 121.6 M39 146.6 A9 3.6 96 1 0 40.9 128.7 A9 3.6 96 1 0 39 146.6 M44.2 171.6 A9 3.6 100 1 0 47.3 153.9 A9 3.6 100 1 0 44.2 171.6',
+    role: 'accent',
+  },
+  shadow(84, 186, 48),
+]
+
+/** His six hilts alone: the grips, their wrapping and the round guards. */
+const HATCHAN_HILTS = HATCHAN_SWORDS.slice(2, 5)
+
+/** Genzo's peaked cap, and the pinwheel it wears until 44. */
+const GENZO_CAP: Stroke[] = eastBlueArt.genzo.slice(0, 7)
+const GENZO_PINWHEEL: Stroke[] = eastBlueArt.genzo.slice(8, 10)
+
+/** Jango's ring on its string, and his heart-shaped glasses. */
+const JANGO_RING: Stroke[] = eastBlueArt.jango.slice(0, 5)
+const JANGO_GLASSES: Stroke[] = eastBlueArt.jango.slice(5, 10)
+
+/** Chouchou's shop: its blank plank sign, and the ground floor under it. */
+const CHOUCHOU_SIGN: Stroke[] = eastBlueArt.chouchou.slice(3, 6)
+const CHOUCHOU_FRONT: Stroke[] = eastBlueArt.chouchou.slice(6, 13)
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -2573,29 +2622,53 @@ export const eastBlueRedrawn: Redrawings = {
   // wrapped grips. He bursts out of the rubble with all six against Zoro in
   // 39 (ch. 84); the ring of the Octopus Pot Stance waits for chapter 85.
   'hatchan': [
+    { episode: 39, chapter: 84, value: HATCHAN_SWORDS },
+    // The same six hilts with every blade snapped off short at a ragged
+    // break, and the pieces on the ground beneath them, the longest still
+    // with its tip. Zoro's Oni Giri breaks all six in chapter 85; the
+    // anime's first episode after it is 40 (ch. 86).
     {
-      episode: 39,
-      chapter: 84,
+      episode: 40,
+      chapter: 86,
       value: [
         {
-          d: 'M48.2 39.4 C82.5 33.6 108.8 24.1 130.8 11 C108.3 21.1 81.5 28.1 47.3 34.3 M42.2 64.7 C78.4 61.1 106.5 53.3 130.4 41.2 C106.2 50.3 77.8 55.5 41.6 59.5 M38.1 90 C76.1 88.8 105.9 83 131.5 72.1 C105.8 80 75.9 83.2 37.9 84.8 M37.9 115.2 C75.9 116.8 106 113 132.4 103.9 C106.1 110 76.1 111.2 38.1 110 M41.6 140.5 C77.8 144.5 107 142.7 132.8 135.8 C107.3 139.7 78.4 138.9 42.2 135.3 M47.3 165.7 C81.5 171.9 109.5 172 134.7 167.2 C110 169 82.5 166.4 48.2 160.6',
+          d: 'M70.2 35.4 C76 34.4 81.6 33.3 87 32.1 L93.6 29.6 L82.6 31 L91.2 28 L84.1 28.6 L85.8 27.1 C80.5 28.2 75 29.3 69.3 30.3 M64.2 60.7 C73.6 59.8 82.5 58.5 90.9 57 L85.7 56.9 L96.3 54 L87.3 54.6 L94 52.4 L89.8 52.2 C81.5 53.4 72.8 54.5 63.6 55.5 M60.1 86 C64.7 85.9 69.1 85.6 73.4 85.4 L79.3 83.9 L70.3 83.5 L80.1 81.8 L72.1 81.3 L73 80.2 C68.7 80.4 64.4 80.6 59.9 80.8 M59.9 111.2 C68.3 111.6 76.2 111.6 83.9 111.5 L79.8 110.6 L90.8 109.3 L81.7 108.5 L88.7 107.3 L83.6 106.4 C76.1 106.4 68.3 106.3 60.1 106 M63.6 136.5 C69 137.1 74.3 137.6 79.4 137.9 L84.5 137.2 L75.5 135.6 L87.6 135.3 L79.6 133.7 L79.7 132.7 C74.7 132.3 69.5 131.8 64.2 131.3 M69.3 161.7 C78.9 163.4 88 164.7 96.6 165.5 L93.7 164.2 L102.8 164.1 L91.9 162.1 L99.9 161.9 L97 160.6 C88.5 159.5 79.6 158.2 70.2 156.6',
+        },
+        ...moved(HATCHAN_HILTS, 'translate(22 -4)'),
+        {
+          d: 'M66 180 C86 179.2 104 176.4 120 171.6 L117.6 176 C102 180 86 182.6 68 183.8 L71 181.8 Z M126 186 L148 177 L146.4 181 L128 188 Z M50 176 L62 172 L59 177.6 Z M100 167 L111 162 L109.4 167.4 Z M134 165 L144 163 L140 167.6 Z',
+        },
+        shadow(96, 186, 50),
+      ],
+    },
+    // A paper boat of takoyaki from his stall, the Takoyaki 8: eight balls
+    // in two rows, the sauce drizzled over them in a zigzag, a pick stuck in
+    // the back row, the boat's far end hatched. He feeds the crew from it in
+    // 390 (ch. 496), and keeps selling it from then on.
+    {
+      episode: 390,
+      chapter: 496,
+      value: [
+        { d: 'M140.1 103.3 H147 L130.9 128.6 H9 L25.1 103.3 H29.7' },
+        { d: 'M9 128.6 L18.2 151.6 L124 151.6 L130.9 128.6' },
+        { d: 'M124 151.6 L140.1 126.3 L147 103.3' },
+        { d: 'M12.2 136 H128.7', role: 'soft' },
+        {
+          d: 'M128.3 143.1 L133.1 127 M132.3 136.8 L137.1 120.7 M136.3 130.4 L141.1 114.3',
+          role: 'ambient',
         },
         {
-          d: 'M55.6 35.3 C81.9 30.4 105 23.3 124 15 M49.8 61.1 C78.1 57.9 102.6 52.3 123 44.9 M46 86.9 C76 85.6 101.8 81.7 123.6 75.4 M46 112.7 C76 113.6 102.1 111.5 124.3 106.6 M49.9 138.5 C78.1 141.3 103.3 140.9 124.8 137.9 M55.6 164.3 C82.1 168.8 106.1 170 126.9 168.7',
-          role: 'soft',
+          d: 'M19.4 128.6 A13.8 13.8 0 1 1 40 128.6 M47 128.6 A13.8 13.8 0 1 1 67.6 128.6 M74.6 128.6 A13.8 13.8 0 1 1 95.2 128.6 M102.2 128.6 A13.8 13.8 0 1 1 122.8 128.6',
         },
         {
-          d: 'M45.2 39.8 L31.4 42.2 L30.6 37.5 L44.4 35 M39.2 64.8 L25.2 66.3 L24.7 61.5 L38.7 60 M35.1 89.9 L21.1 90.4 L20.9 85.6 L34.9 85.1 M34.9 114.9 L20.9 114.4 L21.1 109.6 L35.1 110.1 M38.7 140 L24.7 138.5 L25.2 133.7 L39.2 135.2 M44.4 165 L30.6 162.5 L31.4 157.8 L45.2 160.2',
+          d: 'M29.9 105.6 A13.8 13.8 0 0 1 57.1 105.6 M57.5 105.6 A13.8 13.8 0 0 1 84.7 105.6 M85.1 105.6 A13.8 13.8 0 0 1 112.3 105.6 M112.7 105.6 A13.8 13.8 0 0 1 139.3 108',
         },
         {
-          d: 'M41.2 40.5 L36.5 36.4 M36.3 41.3 L31.6 37.3 M35.2 65.2 L30.7 60.9 M30.2 65.8 L25.7 61.4 M31.1 90 L26.9 85.4 M26.1 90.2 L21.9 85.5 M30.9 114.8 L27.1 109.8 M25.9 114.6 L22.1 109.7 M34.7 139.5 L31.2 134.3 M29.7 139 L26.2 133.8 M40.4 164.3 L37.3 158.9 M35.5 163.4 L32.4 158',
-          role: 'soft',
-        },
-        {
-          d: 'M47.3 46.1 A9 3.6 80 1 0 44.2 28.4 A9 3.6 80 1 0 47.3 46.1 M40.9 71.3 A9 3.6 84 1 0 39 53.4 A9 3.6 84 1 0 40.9 71.3 M36.3 96.4 A9 3.6 88 1 0 35.7 78.4 A9 3.6 88 1 0 36.3 96.4 M35.7 121.6 A9 3.6 92 1 0 36.3 103.6 A9 3.6 92 1 0 35.7 121.6 M39 146.6 A9 3.6 96 1 0 40.9 128.7 A9 3.6 96 1 0 39 146.6 M44.2 171.6 A9 3.6 100 1 0 47.3 153.9 A9 3.6 100 1 0 44.2 171.6',
+          d: 'M20.5 119.4 L34.3 98.7 L43.5 117.1 L59.6 96.4 L71.1 114.8 L87.2 94.1 L98.7 112.5 L114.8 91.8 L126.3 110.2',
           role: 'accent',
         },
-        shadow(84, 186, 48),
+        { d: 'M106.8 91.8 L128.6 59.6' },
+        shadow(76, 156, 62),
       ],
     },
   ],
@@ -3050,5 +3123,115 @@ export const eastBlueRedrawn: Redrawings = {
     { episode: 572, chapter: 652, value: SMOKER_JITTE },
     // Broken a second time, against Vergo on Punk Hazard in 616 (ch. 690).
     { episode: 616, chapter: 690, value: SMOKER_JITTE_BROKEN },
+  ],
+  'genzo': [
+    // The cap without its pinwheel, and the pinwheel standing on its stick
+    // in a mound of earth in front of it. He leaves it at Bell-mère's grave
+    // once Nami has sailed, in 44 (ch. 95).
+    {
+      episode: 44,
+      chapter: 95,
+      value: [
+        ...moved(GENZO_CAP, 'translate(-6 -16)'),
+        shadow(62, 142, 44),
+        { d: 'M124 133 V178', role: 'soft' },
+        ...moved(GENZO_PINWHEEL, 'translate(42 94)'),
+        { d: 'M110 178 Q124 171 138 178', role: 'ambient' },
+        { d: 'M98 180 H150', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  'jango': [
+    // The ring and the glasses again, and behind them the cap he wears now
+    // that he is a Marine: a soft white seaman's cap with the two stripes
+    // running over its top, no lettering. He is back as one, "Jango the
+    // Turncoat", in 128 (ch. 214).
+    {
+      episode: 128,
+      chapter: 214,
+      value: [
+        ...moved(JANGO_RING, 'translate(12 -16)'),
+        {
+          d: 'M28 108 C28 98 76 98 76 108 C76 114 28 114 28 108 Z',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M28 108 C26 114 28 120 30 124 L32 140 Q52 147 72 140 L74 124 C76 120 78 114 76 108',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M31 131 Q52 138 73 131',
+          role: 'soft',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M44 100.6 Q42 108 43 113.2 L44 129 M60 100.6 Q62 108 61 113.2 L60 129',
+          role: 'soft',
+          transform: 'rotate(-14 52 124)',
+        },
+        {
+          d: 'M70 118 l5 -5 M68 128 l6 -6 M66 139 l6 -6',
+          role: 'ambient',
+          transform: 'rotate(-14 52 124)',
+        },
+        ...moved(JANGO_GLASSES, 'translate(0 22)'),
+        shadow(78, 190, 56),
+      ],
+    },
+  ],
+  'chouchou': [
+    // What the Buggy Pirates left of the shop: three charred posts with their
+    // tops burnt ragged, a roof beam fallen across, the plank sign down in
+    // front with nothing on it, and the one pack of dog food Luffy brought
+    // him out of the ruins, as the accent. It burns in his first episode, 6
+    // (ch. 13), so the ruins can only follow from 7 (ch. 15).
+    {
+      episode: 7,
+      chapter: 15,
+      value: [
+        {
+          d: 'M22 141 V68 L25 62 L27 67 L29 60 V140 M62 137 V104 L64.5 98 L66.5 103 L69 97 V136.5 M110 133 V58 L113 52 L115 57 L118 48 V133',
+        },
+        { d: 'M118 92 L134 84 V96 L136.5 91 L138 96 V133', role: 'soft' },
+        {
+          d: 'M22 84 l7 -5 M22 98 l7 -5 M22 112 l7 -5 M22 126 l7 -5 M62 118 l7 -5 M62 130 l7 -5 M110 74 l8 -6 M110 88 l8 -6 M110 102 l8 -6 M110 114 l8 -6 M110 128 l8 -6',
+          role: 'ambient',
+        },
+        { d: 'M110 66 L70 96 M110 72 L72 100.5' },
+        { d: 'M94 140.5 L8 148 L10 166 L96 158.5 L92 154 L97 150 L91.5 146 Z' },
+        { d: 'M8 148 L14 142 L88 135.5 L94 140.5' },
+        { d: 'M9 154 L92.5 146.7 M9.6 160 L93.8 152.7', role: 'soft' },
+        {
+          d: 'M98 140 H132 V182 H98 Z M98 140 L107 133 H141 L132 140',
+          role: 'accent',
+        },
+        { d: 'M132 182 L141 175 V133' },
+        { d: 'M134 151 l6 -5 M134 163 l6 -5 M134 175 l6 -5', role: 'ambient' },
+        { d: 'M104 150 H126 V170 H104 Z', role: 'soft' },
+        shadow(54, 170, 46),
+        shadow(120, 188, 26),
+      ],
+    },
+    // The shop rebuilt, and bigger: a second storey with two windows over the
+    // same door, windows and hanging sign, and the plank sign back on top,
+    // still blank. It stands again when he listens to Vegapunk's broadcast
+    // outside it in 1148 (ch. 1114).
+    {
+      episode: 1148,
+      chapter: 1114,
+      value: [
+        { d: 'M28 150 V40 M112 150 V40 M28 150 H112' },
+        { d: 'M112 150 L134 138 V34 L124 34' },
+        {
+          d: 'M114 76 L131.9 45 M114 88 L132 57 M114.1 100 L132 69 M114 112 L131.9 81 M114.1 124 L132 93 M114 136 L131.9 105 M118 142 L132 117.8 M127 140.4 L132 131.7',
+          role: 'ambient',
+        },
+        ...moved(CHOUCHOU_SIGN, 'translate(0 -24)'),
+        { d: 'M28 88 H112', role: 'soft' },
+        { d: 'M38 52 H54 V76 H38 Z M86 52 H102 V76 H86 Z' },
+        { d: 'M46 52 V76 M38 64 H54 M94 52 V76 M86 64 H102', role: 'soft' },
+        ...CHOUCHOU_FRONT,
+      ],
+    },
   ],
 }

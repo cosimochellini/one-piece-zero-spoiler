@@ -1103,21 +1103,14 @@ describe('a record drawn again later in the story', () => {
     ).toStrictEqual(returns)
   })
 
-  it('arms Hatchan with his six swords only from episode 39', () => {
-    const hatchan = filed('hatchan')
-    const pot = DRAWINGS.hatchan
-    const swords = REDRAWINGS['hatchan']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(hatchan, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(swords?.episode).toBe(39)
-
-    expect(drawnAt(ep(38))).toBe(pot)
-    expect(drawnAt(ep(39))).toBe(swords?.value)
-    expect(drawnAt(null)).toBe(pot)
-    // The manga gives him the six swords against Zoro in chapter 84.
-    expect(drawnAt({ mode: 'chapter', chapter: 83 })).toBe(pot)
-    expect(drawnAt({ mode: 'chapter', chapter: 84 })).toBe(swords?.value)
+  it('follows Hatchan from six swords to none, and on to takoyaki', () => {
+    expect(
+      walkStages('hatchan', [
+        [39, 84],
+        [40, 86],
+        [390, 496],
+      ]),
+    ).toHaveLength(3)
   })
 
   it('lets Chew’s Water Gun fly past his vest only from episode 34', () => {
@@ -1301,6 +1294,23 @@ describe('a record drawn again later in the story', () => {
     // Mended is the whole jitte itself, and both breaks are one drawing.
     expect(stages[2]?.value).toBe(stages[0]?.value)
     expect(stages[3]?.value).toBe(stages[1]?.value)
+  })
+
+  it('plants Genzo’s pinwheel only from episode 44', () => {
+    expect(walkStages('genzo', [[44, 95]])).toHaveLength(1)
+  })
+
+  it('puts Jango in a Marine cap only from episode 128', () => {
+    expect(walkStages('jango', [[128, 214]])).toHaveLength(1)
+  })
+
+  it('burns Chouchou’s shop from episode 7 and builds it again at 1148', () => {
+    expect(
+      walkStages('chouchou', [
+        [7, 15],
+        [1148, 1114],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
