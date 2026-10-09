@@ -5,6 +5,7 @@ import type { Timeline } from '~/data/types'
 
 import { fruitArt, fruitRedrawn } from '.'
 import {
+  BOMB_BOMB,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CHOP_CHOP,
@@ -14,9 +15,11 @@ import {
   GUM_GUM,
   OP_OP,
   OP_OP_HEART,
+  OX_OX_BISON,
   OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SMOKE_SMOKE,
   STRING_STRING,
   TREMOR_TREMOR,
 } from './bespoke'
@@ -69,15 +72,18 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 })
 
 const HAND_DRAWN = {
+  'bomb-bomb-fruit': BOMB_BOMB,
   'brush-brush-fruit': BRUSH_BRUSH,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'chop-chop-fruit': CHOP_CHOP,
   'dark-dark-fruit': DARK_DARK,
   'flower-flower-fruit': FLOWER_FLOWER,
   'op-op-fruit': OP_OP,
+  'ox-ox-fruit-model-bison': OX_OX_BISON,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
   'sand-sand-fruit': SAND_SAND,
+  'smoke-smoke-fruit': SMOKE_SMOKE,
   'string-string-fruit': STRING_STRING,
   'tremor-tremor-fruit': TREMOR_TREMOR,
 }
@@ -247,7 +253,7 @@ describe('the fruit sheet', () => {
     expect(distinct.size).toBe(SHEET.length)
   })
 
-  it('draws the eleven best-known fruits by hand', () => {
+  it('draws the hand-drawn fruits by hand', () => {
     for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
       expect(fruitArt, id).toHaveProperty(id)
       expect(Object.getOwnPropertyDescriptor(fruitArt, id)?.value, id).toBe(

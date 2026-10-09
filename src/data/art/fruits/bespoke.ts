@@ -19,6 +19,8 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
+ * The last three are the first drawn as fruit + power (#461), on a kit body
+ * of their own, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
  * only, no fills, one accent, and nothing outside the 160x200 box.
@@ -700,5 +702,215 @@ export const BRUSH_BRUSH: Stroke[] = [
       'M80 54 C92 54 102 54 108 58 C114 62 112 70 106 70 C100 70 100 63 105 63',
     ].join(' '),
   },
+  shadowUnder(1),
+]
+
+/**
+ * The body a fruit drawn as fruit + power is set on (#461): a little wider
+ * than tall, seen a little from above, so the rim of the dimple the stalk
+ * sits in shows and the far side can turn away into hatching.
+ */
+const KIT_RX = 44
+const KIT_RY = 46
+
+/** The kit body's outline, from one angle to another, at a given height. */
+function rim(cy: number, from: number, to: number): string {
+  return polyline(trace([80, cy], [KIT_RX, KIT_RY], [from, to, 44]))
+}
+
+/** The rim of the dimple at the crown, which is what says "seen from above". */
+function crown(cy: number): Stroke {
+  const top = cy - KIT_RY
+
+  return {
+    d: `M${point(67, top + 3)} C${point(72, top + 9)} ${point(88, top + 9)} ${point(93, top + 3)}`,
+    role: 'soft',
+  }
+}
+
+/** A highlight on the near shoulder, set in from the rim. */
+function shine(cy: number): Stroke {
+  return {
+    d: polyline(trace([80, cy], [KIT_RX * 0.78, KIT_RY * 0.78], [200, 242, 8])),
+    role: 'soft',
+  }
+}
+
+/** Short diagonals inside the far side, where the fruit turns away. */
+function hatching(cy: number, heights: number[]): Stroke {
+  return {
+    d: heights
+      .map((height) => {
+        const y = cy + height * KIT_RY
+        const x = 80 + KIT_RX * Math.sqrt(1 - height ** 2) - 3
+
+        return `M${point(x, y)} L${point(x - 9, y - 9)}`
+      })
+      .join(' '),
+    role: 'ambient',
+  }
+}
+
+/** The stalk out of the dimple, and its leaf. */
+function sprout(cy: number, lean: number, leaf: LeafForm): [Stroke, Stroke] {
+  const stalk = { baseY: cy - KIT_RY + 6, lean, rise: 20 }
+
+  return [
+    { d: stemPath('straight', stalk) },
+    { d: leafPath(leaf, stalk, 4), role: 'soft' },
+  ]
+}
+
+/** Curls of skin, each a stroke of its own. */
+function skin(curls: [number, number, number][]): Stroke[] {
+  return curls.map(([x, y, r]) => ({ d: curl(x, y, r), role: 'soft' }))
+}
+
+/**
+ * A billowing line through points: each span bows out to the left of the
+ * way it is drawn, so a shape drawn clockwise puffs outwards.
+ */
+function billow(anchors: [number, number][]): string {
+  const [first = [80, 112]] = anchors
+  const spans = anchors.slice(1).map(([x1, y1], at) => {
+    const [x0, y0] = anchors[at] ?? first
+    const [dx, dy] = [x1 - x0, y1 - y0]
+    const [nx, ny] = [dy * 0.42, -dx * 0.42]
+
+    return `C${point(x0 + dx * 0.1 + nx, y0 + dy * 0.1 + ny)} ${point(x0 + dx * 0.9 + nx, y0 + dy * 0.9 + ny)} ${point(x1, y1)}`
+  })
+
+  return [`M${point(...first)}`, ...spans].join(' ')
+}
+
+/** Where the smoke fruit sits: high enough to sink its foot in the cloud. */
+const SMOKE_CY = 100
+
+/**
+ * The fruit sunk in its own smoke: a bank of cloud where the shadow would
+ * be, the skin going down into it. Smoker fills the street with clouds of
+ * it in episode 53, so the smoke is a cloud and not yet anything he rides.
+ */
+export const SMOKE_SMOKE: Stroke[] = [
+  { d: rim(SMOKE_CY, 128, 412) },
+  crown(SMOKE_CY),
+  shine(SMOKE_CY),
+  hatching(SMOKE_CY, [-0.35, -0.1, 0.15, 0.4]),
+  ...skin([
+    [66, 98, 9],
+    [94, 110, -8],
+    [80, 76, 6],
+  ]),
+  ...sprout(SMOKE_CY, 6, 'right'),
+  {
+    d: `${billow([
+      [16, 172],
+      [24, 152],
+      [44, 140],
+      [64, 146],
+      [84, 136],
+      [104, 146],
+      [124, 138],
+      [140, 150],
+      [144, 172],
+    ])} C110 177 50 177 16 172 Z`,
+    role: 'accent',
+  },
+  // The near edge of the bank, a lower row of cloud in front of the first.
+  {
+    d: billow([
+      [28, 166],
+      [48, 160],
+      [70, 164],
+      [92, 158],
+      [114, 164],
+      [132, 160],
+    ]),
+    role: 'soft',
+  },
+  { d: 'M36 186 C60 189 100 189 124 186', role: 'ambient', dashed: true },
+]
+
+/** Where the bomb fruit's blast is centred: on its right side, at the waist. */
+const BLAST = { cx: 122, cy: 116, tilt: 8 }
+
+/** A ragged star about the blast, one radius per point, inner and outer. */
+function blast(reach: number[]): string {
+  return polyline(
+    reach.map((r, at) => {
+      const angle = (BLAST.tilt + (360 * at) / reach.length) * DEGREES
+
+      return point(
+        BLAST.cx + r * Math.cos(angle),
+        BLAST.cy + r * Math.sin(angle),
+      )
+    }),
+    true,
+  )
+}
+
+/**
+ * The fruit going off: a blast breaks out of its right side, where the skin
+ * is open, and flecks fly from it. In episode 66 Mr. 5's arm goes off like a
+ * shell when it lands, and so does what he flicks from his nose.
+ */
+export const BOMB_BOMB: Stroke[] = [
+  { d: rim(116, 40, 320) },
+  crown(116),
+  shine(116),
+  hatching(116, [0.68, 0.84]),
+  ...skin([
+    [64, 116, 9],
+    [88, 136, -8],
+    [70, 150, -7],
+  ]),
+  ...sprout(116, -4, 'left'),
+  {
+    d: [
+      blast([30, 15, 22, 14, 31, 16, 19, 13, 27, 15, 24, 13, 29, 16, 20, 14]),
+      speck(146, 78),
+      speck(150, 150),
+      speck(140, 162),
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: blast([12, 6, 10, 6, 12, 6, 10, 6]), role: 'soft' },
+  shadowUnder(1),
+]
+
+/**
+ * One horn grown out of the shoulder: both ends of it sit on the rim, so the
+ * horn comes out of the skin rather than resting on it. Out, up, and the tip
+ * turned in.
+ */
+function horn(side: number): string {
+  const at = (dx: number, y: number): string => point(80 + side * dx, y)
+
+  return [
+    `M${at(36, 90)}`,
+    `C${at(50, 88)} ${at(58, 80)} ${at(60, 68)}`,
+    `C${at(61, 60)} ${at(58, 54)} ${at(54, 50)}`,
+    `C${at(52, 58)} ${at(50, 66)} ${at(44, 72)}`,
+    `C${at(38, 77)} ${at(30, 78)} ${at(23, 77)}`,
+  ].join(' ')
+}
+
+/**
+ * The fruit with a bison's horns: two short horns out of its shoulders,
+ * curving out and up as Dalton's do when he turns into the beast in episodes
+ * 81 and 82. The horns and nothing else, never the head.
+ */
+export const OX_OX_BISON: Stroke[] = [
+  { d: rim(116, 0, 360) },
+  crown(116),
+  shine(116),
+  hatching(116, [0, 0.25, 0.5]),
+  ...skin([
+    [64, 116, 9],
+    [92, 134, -8],
+    [68, 148, -7],
+  ]),
+  ...sprout(116, 0, 'right'),
+  { d: `${horn(-1)} ${horn(1)}`, role: 'accent' },
   shadowUnder(1),
 ]
