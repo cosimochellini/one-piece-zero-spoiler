@@ -1,4 +1,23 @@
 import {
+  billow,
+  type Body,
+  crown,
+  crownY,
+  curl,
+  grown,
+  type Growth,
+  halfWidth,
+  hatching,
+  onRim,
+  outline,
+  type Point,
+  polyline,
+  ribs,
+  shine,
+  skin,
+  sprout,
+} from '~/data/art/fruits/kit'
+import {
   type LeafForm,
   leafPath,
   shadowUnder,
@@ -19,8 +38,8 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last three are the first drawn as fruit + power (#461), on a kit body
- * of their own, the power acting on the fruit itself.
+ * The last seven are drawn as fruit + power (#461), on the bodies of
+ * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
  * only, no fills, one accent, and nothing outside the 160x200 box.
@@ -44,43 +63,6 @@ function furniture(stem: StemForm, leaf: LeafForm): [Stroke, Stroke, Stroke] {
   ]
 }
 
-/** How far a curl winds before it reaches its rim. Nearly two full turns. */
-const CURL_TURNS = 1.9
-
-/** Segments a curl is drawn with; round joins make them read as a curve. */
-const CURL_STEPS = 22
-
-/** Where a curl starts, so the eye reads a spiral and not a comma. */
-const CURL_TILT = 0.6
-
-/**
- * One curl of skin, wound out from a point.
- *
- * The mark a devil fruit is known by is not one spiral but a skin covered in
- * them, at every size and winding both ways. A negative radius winds the
- * other way round, which is what keeps ten of them on one fruit from reading
- * as ten copies of one stamp.
- *
- * Sampled rather than written as arcs for the reason the generator gives: an
- * arc command is relative, and a relative command in a fruit defeats the
- * bounds test that reads the numbers in a path as coordinates.
- */
-function curl(cx: number, cy: number, r: number): string {
-  const way = r < 0 ? -1 : 1
-  const reach = Math.abs(r)
-  const steps = Array.from({ length: CURL_STEPS + 1 }, (_unused, at) => {
-    const along = at / CURL_STEPS
-    const angle = way * (CURL_TILT + CURL_TURNS * 2 * Math.PI * along)
-
-    return point(
-      cx + reach * along * Math.cos(angle),
-      cy + reach * along * Math.sin(angle),
-    )
-  })
-
-  return steps.map((step, at) => (at === 0 ? `M${step}` : `L${step}`)).join(' ')
-}
-
 /**
  * The classic: a sphere under a skin of curls, hung from a long stalk that
  * runs off sideways and winds up at the end of itself.
@@ -89,9 +71,9 @@ function curl(cx: number, cy: number, r: number): string {
  * target with a couple of rings on it — it is covered, corner to corner, in
  * spirals of every size, and the stalk is as much of the shape as the fruit.
  *
- * Not seen until Luffy finds it in the Red Hair Pirates' chest in episode 4,
- * so it is drawn from there, in `fruitRedrawn`; before that the fruit is a
- * grown one.
+ * Drawn from the first episode, although the show only opens the Red Hair
+ * Pirates' chest in episode 4: the look of the fruit Luffy ate tells a
+ * reader nothing the first episode has not, and every reader knows it.
  */
 export const GUM_GUM: Stroke[] = [
   { d: ring(80, 126, 44) },
@@ -231,13 +213,6 @@ function trace(
 
     return point(cx + rx * Math.cos(angle), cy + ry * Math.sin(angle))
   })
-}
-
-/** Points joined into one line, closed when asked. */
-function polyline(points: string[], closed = false): string {
-  const line = points.map((step, at) => (at === 0 ? `M${step}` : `L${step}`))
-
-  return (closed ? [...line, 'Z'] : line).join(' ')
 }
 
 /** A dot, as the zero-length line the pen draws one with. */
@@ -705,86 +680,11 @@ export const BRUSH_BRUSH: Stroke[] = [
   shadowUnder(1),
 ]
 
-/**
- * The body a fruit drawn as fruit + power is set on (#461): a little wider
- * than tall, seen a little from above, so the rim of the dimple the stalk
- * sits in shows and the far side can turn away into hatching.
- */
-const KIT_RX = 44
-const KIT_RY = 46
-
-/** The kit body's outline, from one angle to another, at a given height. */
-function rim(cy: number, from: number, to: number): string {
-  return polyline(trace([80, cy], [KIT_RX, KIT_RY], [from, to, 44]))
-}
-
-/** The rim of the dimple at the crown, which is what says "seen from above". */
-function crown(cy: number): Stroke {
-  const top = cy - KIT_RY
-
-  return {
-    d: `M${point(67, top + 3)} C${point(72, top + 9)} ${point(88, top + 9)} ${point(93, top + 3)}`,
-    role: 'soft',
-  }
-}
-
-/** A highlight on the near shoulder, set in from the rim. */
-function shine(cy: number): Stroke {
-  return {
-    d: polyline(trace([80, cy], [KIT_RX * 0.78, KIT_RY * 0.78], [200, 242, 8])),
-    role: 'soft',
-  }
-}
-
-/** Short diagonals inside the far side, where the fruit turns away. */
-function hatching(cy: number, heights: number[]): Stroke {
-  return {
-    d: heights
-      .map((height) => {
-        const y = cy + height * KIT_RY
-        const x = 80 + KIT_RX * Math.sqrt(1 - height ** 2) - 3
-
-        return `M${point(x, y)} L${point(x - 9, y - 9)}`
-      })
-      .join(' '),
-    role: 'ambient',
-  }
-}
-
-/** The stalk out of the dimple, and its leaf. */
-function sprout(cy: number, lean: number, leaf: LeafForm): [Stroke, Stroke] {
-  const stalk = { baseY: cy - KIT_RY + 6, lean, rise: 20 }
-
-  return [
-    { d: stemPath('straight', stalk) },
-    { d: leafPath(leaf, stalk, 4), role: 'soft' },
-  ]
-}
-
-/** Curls of skin, each a stroke of its own. */
-function skin(curls: [number, number, number][]): Stroke[] {
-  return curls.map(([x, y, r]) => ({ d: curl(x, y, r), role: 'soft' }))
-}
-
-/**
- * A billowing line through points: each span bows out to the left of the
- * way it is drawn, so a shape drawn clockwise puffs outwards.
- */
-function billow(anchors: [number, number][]): string {
-  const [first = [80, 112]] = anchors
-  const spans = anchors.slice(1).map(([x1, y1], at) => {
-    const [x0, y0] = anchors[at] ?? first
-    const [dx, dy] = [x1 - x0, y1 - y0]
-    const [nx, ny] = [dy * 0.42, -dx * 0.42]
-
-    return `C${point(x0 + dx * 0.1 + nx, y0 + dy * 0.1 + ny)} ${point(x0 + dx * 0.9 + nx, y0 + dy * 0.9 + ny)} ${point(x1, y1)}`
-  })
-
-  return [`M${point(...first)}`, ...spans].join(' ')
-}
+/** The round kit body, where most of the pilot fruits sit. */
+const ROUND: Body = { family: 'round', cy: 116 }
 
 /** Where the smoke fruit sits: high enough to sink its foot in the cloud. */
-const SMOKE_CY = 100
+const SMOKE_BODY: Body = { family: 'segmented', cy: 100 }
 
 /**
  * The fruit sunk in its own smoke: a bank of cloud where the shadow would
@@ -792,16 +692,16 @@ const SMOKE_CY = 100
  * it in episode 53, so the smoke is a cloud and not yet anything he rides.
  */
 export const SMOKE_SMOKE: Stroke[] = [
-  { d: rim(SMOKE_CY, 128, 412) },
-  crown(SMOKE_CY),
-  shine(SMOKE_CY),
-  hatching(SMOKE_CY, [-0.35, -0.1, 0.15, 0.4]),
+  { d: outline(SMOKE_BODY, (_x, y) => y < 140) },
+  crown(SMOKE_BODY),
+  shine(SMOKE_BODY),
+  ribs(SMOKE_BODY),
+  hatching(SMOKE_BODY, [84, 96, 108, 120]),
   ...skin([
-    [66, 98, 9],
-    [94, 110, -8],
-    [80, 76, 6],
+    [62, 104, 8],
+    [98, 116, -7],
   ]),
-  ...sprout(SMOKE_CY, 6, 'right'),
+  ...sprout(SMOKE_BODY, 6, 'right'),
   {
     d: `${billow([
       [16, 172],
@@ -855,16 +755,16 @@ function blast(reach: number[]): string {
  * shell when it lands, and so does what he flicks from his nose.
  */
 export const BOMB_BOMB: Stroke[] = [
-  { d: rim(116, 40, 320) },
-  crown(116),
-  shine(116),
-  hatching(116, [0.68, 0.84]),
+  { d: outline(ROUND, (x, y) => x < 112 || Math.abs(y - 116) > 30) },
+  crown(ROUND),
+  shine(ROUND),
+  hatching(ROUND, [150, 158]),
   ...skin([
     [64, 116, 9],
     [88, 136, -8],
     [70, 150, -7],
   ]),
-  ...sprout(116, -4, 'left'),
+  ...sprout(ROUND, -4, 'left'),
   {
     d: [
       blast([30, 15, 22, 14, 31, 16, 19, 13, 27, 15, 24, 13, 29, 16, 20, 14]),
@@ -883,16 +783,22 @@ export const BOMB_BOMB: Stroke[] = [
  * horn comes out of the skin rather than resting on it. Out, up, and the tip
  * turned in.
  */
-function horn(side: number): string {
-  const at = (dx: number, y: number): string => point(80 + side * dx, y)
-
-  return [
-    `M${at(36, 90)}`,
-    `C${at(50, 88)} ${at(58, 80)} ${at(60, 68)}`,
-    `C${at(61, 60)} ${at(58, 54)} ${at(54, 50)}`,
-    `C${at(52, 58)} ${at(50, 66)} ${at(44, 72)}`,
-    `C${at(38, 77)} ${at(30, 78)} ${at(23, 77)}`,
-  ].join(' ')
+const HORN: Growth = {
+  from: 90,
+  to: 77,
+  through: [
+    [50, 88],
+    [58, 80],
+    [60, 68],
+    [61, 60],
+    [58, 54],
+    [54, 50],
+    [52, 58],
+    [50, 66],
+    [44, 72],
+    [38, 77],
+    [30, 78],
+  ],
 }
 
 /**
@@ -901,16 +807,247 @@ function horn(side: number): string {
  * 81 and 82. The horns and nothing else, never the head.
  */
 export const OX_OX_BISON: Stroke[] = [
-  { d: rim(116, 0, 360) },
-  crown(116),
-  shine(116),
-  hatching(116, [0, 0.25, 0.5]),
+  { d: outline(ROUND) },
+  crown(ROUND),
+  shine(ROUND),
+  hatching(ROUND, [116, 128, 140]),
   ...skin([
     [64, 116, 9],
     [92, 134, -8],
     [68, 148, -7],
   ]),
-  ...sprout(116, 0, 'right'),
-  { d: `${horn(-1)} ${horn(1)}`, role: 'accent' },
+  ...sprout(ROUND, 0, 'right'),
+  { d: `${grown(ROUND, -1, HORN)} ${grown(ROUND, 1, HORN)}`, role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The ice fruit: a heart, standing high enough to be frozen in. */
+const ICE_BODY: Body = { family: 'heart', cy: 100 }
+
+/**
+ * The top of the ice, left to right: shards pointing up at angles, with the
+ * gaps between them low enough to show the fruit behind.
+ */
+const SHARDS: Point[] = [
+  [14, 178],
+  [16, 150],
+  [30, 130],
+  [40, 150],
+  [56, 112],
+  [70, 142],
+  [88, 106],
+  [100, 140],
+  [124, 114],
+  [130, 140],
+  [146, 128],
+  [146, 178],
+]
+
+/** How high the ice stands at a point across it, read off the shards. */
+function iceAt(x: number): number {
+  const right = SHARDS.findIndex(([at]) => at >= x)
+  const [x1, y1] = SHARDS[right] ?? [x, 178]
+  const [x0, y0] = SHARDS[right - 1] ?? [x1, y1]
+
+  return x1 === x0 ? y1 : y0 + ((y1 - y0) * (x - x0)) / (x1 - x0)
+}
+
+/**
+ * The fruit frozen into the ground: a cluster of ice shards where the shadow
+ * would be, broken off at angles, and the foot of the fruit locked in it. In
+ * episode 227 whatever Aokiji touches freezes over, the sea and Robin with
+ * it, and the frozen sea stands up in points like these.
+ */
+export const ICE_ICE: Stroke[] = [
+  { d: outline(ICE_BODY, (x, y) => y < iceAt(x) - 2) },
+  crown(ICE_BODY),
+  shine(ICE_BODY),
+  hatching(ICE_BODY, [80, 92, 104]),
+  ...skin([
+    [64, 88, 9],
+    [100, 120, -6],
+  ]),
+  ...sprout(ICE_BODY, -4, 'left'),
+  {
+    d: polyline(
+      SHARDS.map(([x, y]) => point(x, y)),
+      true,
+    ),
+    role: 'accent',
+  },
+  // The faces of the shards, where the ice turns.
+  {
+    d: [
+      'M30 130 L34 154 L28 176',
+      'M56 112 L60 146 L52 174',
+      'M88 106 L84 144 L92 174',
+      'M124 114 L118 148 L124 176',
+    ].join(' '),
+    role: 'soft',
+  },
+  { d: 'M20 186 C50 189 110 189 140 186', role: 'ambient', dashed: true },
+]
+
+/** The spring fruit: a gourd, its stalk wound into a coil. */
+const SPRING_BODY: Body = { family: 'gourd', cy: 124 }
+
+/** The coil: turns, the height it climbs, its width and how far it leans. */
+const COIL = { turns: 4.5, height: 40, rx: 8, ry: 3.5, steps: 72 }
+
+/**
+ * The stalk wound into a spring, as Bellamy's legs are when he bounds off a
+ * roof and across Mock Town in episode 151. The coil is seen a little from
+ * above, so every turn is an ellipse and the near half of each crosses the
+ * far one.
+ */
+export const SPRING_SPRING: Stroke[] = [
+  { d: outline(SPRING_BODY) },
+  crown(SPRING_BODY),
+  shine(SPRING_BODY),
+  hatching(SPRING_BODY, [140, 152, 162]),
+  // The waist, where the two bulbs meet.
+  {
+    d: [
+      `M${point(...onRim(SPRING_BODY, 118, -1))}`,
+      `C${point(70, 124)} ${point(90, 124)}`,
+      point(...onRim(SPRING_BODY, 118, 1)),
+    ].join(' '),
+    role: 'soft',
+  },
+  ...skin([
+    [70, 98, 6],
+    [62, 144, 9],
+    [96, 154, -7],
+  ]),
+  {
+    d: polyline(
+      Array.from({ length: COIL.steps + 1 }, (_unused, at) => {
+        const along = at / COIL.steps
+        const angle = along * COIL.turns * 2 * Math.PI
+
+        return point(
+          80 + COIL.rx * Math.sin(angle),
+          crownY(SPRING_BODY)
+            + 6
+            - along * COIL.height
+            + COIL.ry * Math.cos(angle),
+        )
+      }),
+    ),
+    role: 'accent',
+  },
+  {
+    // The leaf, still on the end of the coil.
+    d: leafPath(
+      'right',
+      { baseY: crownY(SPRING_BODY) + 18 - COIL.height, lean: 0, rise: 20 },
+      4,
+    ),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The munch fruit: an oblong, a bite gone out of its shoulder. */
+const MUNCH_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** The bite: where the teeth closed, and how wide the mouth was. */
+const BITE = { cx: 116, cy: 84, r: 30 }
+
+/** The stretch of the bite's edge that runs through the fruit, as points. */
+function biteEdge(r: number, step: number): Point[] {
+  return Array.from({ length: 360 / step + 1 }, (_unused, at): Point => {
+    const angle = (at * step * Math.PI) / 180
+
+    return [BITE.cx + r * Math.cos(angle), BITE.cy + r * Math.sin(angle)]
+  }).filter(([x, y]) => Math.abs(x - 80) < halfWidth(MUNCH_BODY, y) - 1)
+}
+
+/**
+ * The fruit with a bite gone out of it, the edge scalloped where each tooth
+ * went in. In episode 79 Wapol eats a sword off its skewer and starts on the
+ * Going Merry, and what he bites, he takes a bite out of.
+ */
+export const MUNCH_MUNCH: Stroke[] = [
+  {
+    d: outline(
+      MUNCH_BODY,
+      (x, y) => Math.hypot(x - BITE.cx, y - BITE.cy) > BITE.r,
+    ),
+  },
+  crown(MUNCH_BODY),
+  shine(MUNCH_BODY),
+  hatching(MUNCH_BODY, [126, 138, 150]),
+  ...skin([
+    [62, 112, 9],
+    [92, 140, -8],
+    [64, 148, -7],
+  ]),
+  ...sprout(MUNCH_BODY, -6, 'left'),
+  { d: billow(biteEdge(BITE.r, 20).toReversed()), role: 'accent' },
+  // Where the skin stops and the flesh the teeth went into starts.
+  {
+    d: polyline(biteEdge(BITE.r + 6, 10).map(([x, y]) => point(x, y))),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The falcon fruit: a pear, narrow at the shoulder. */
+const FALCON_BODY: Body = { family: 'pear', cy: 118 }
+
+/**
+ * One wing out of the shoulder, both ends of it on the rim: up to the tip
+ * along its leading edge, then back down in three steps, one per flight
+ * feather.
+ */
+const WING: Growth = {
+  from: 92,
+  to: 112,
+  through: [
+    [34, 74],
+    [48, 56],
+    [66, 44],
+    [68, 54],
+    [66, 60],
+    [62, 64],
+    [64, 72],
+    [60, 78],
+    [54, 82],
+    [54, 90],
+    [48, 96],
+    [40, 100],
+    [36, 104],
+    [32, 108],
+  ],
+}
+
+/**
+ * The fruit with a falcon's wings: two wings out of its shoulders, spread
+ * as Pell's are when he first dives out of the sky in episode 106. The wings
+ * and nothing else, never the head.
+ */
+export const BIRD_FALCON: Stroke[] = [
+  { d: outline(FALCON_BODY) },
+  crown(FALCON_BODY),
+  shine(FALCON_BODY),
+  hatching(FALCON_BODY, [130, 142, 154]),
+  ...skin([
+    [66, 136, 9],
+    [94, 150, -8],
+  ]),
+  ...sprout(FALCON_BODY, 0, 'right'),
+  {
+    d: `${grown(FALCON_BODY, -1, WING)} ${grown(FALCON_BODY, 1, WING)}`,
+    role: 'accent',
+  },
+  // The coverts, where the flight feathers start.
+  {
+    d: [
+      `M${point(80 - 30, 80)} L${point(80 - 52, 64)}`,
+      `M${point(80 + 30, 80)} L${point(80 + 52, 64)}`,
+    ].join(' '),
+    role: 'soft',
+  },
   shadowUnder(1),
 ]

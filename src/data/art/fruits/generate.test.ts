@@ -5,6 +5,7 @@ import type { Timeline } from '~/data/types'
 
 import { fruitArt, fruitRedrawn } from '.'
 import {
+  BIRD_FALCON,
   BOMB_BOMB,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
@@ -13,6 +14,8 @@ import {
   FLAME_FLAME,
   FLOWER_FLOWER,
   GUM_GUM,
+  ICE_ICE,
+  MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
@@ -20,6 +23,7 @@ import {
   RUMBLE_RUMBLE,
   SAND_SAND,
   SMOKE_SMOKE,
+  SPRING_SPRING,
   STRING_STRING,
   TREMOR_TREMOR,
 } from './bespoke'
@@ -71,19 +75,32 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
   })
 })
 
-const HAND_DRAWN = {
+/** The fruits drawn as fruit + power, on the body kit (#461). */
+const KIT = {
+  'bird-bird-fruit-model-falcon': BIRD_FALCON,
   'bomb-bomb-fruit': BOMB_BOMB,
+  'ice-ice-fruit': ICE_ICE,
+  'munch-munch-fruit': MUNCH_MUNCH,
+  'ox-ox-fruit-model-bison': OX_OX_BISON,
+  'smoke-smoke-fruit': SMOKE_SMOKE,
+  'spring-spring-fruit': SPRING_SPRING,
+}
+
+/** A kit fruit has volume, a skin, a stalk and its power: ten strokes or more. */
+const KIT_FLOOR = 10
+
+const HAND_DRAWN = {
+  ...KIT,
   'brush-brush-fruit': BRUSH_BRUSH,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'chop-chop-fruit': CHOP_CHOP,
   'dark-dark-fruit': DARK_DARK,
   'flower-flower-fruit': FLOWER_FLOWER,
+  'gum-gum-fruit': GUM_GUM,
   'op-op-fruit': OP_OP,
-  'ox-ox-fruit-model-bison': OX_OX_BISON,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
   'sand-sand-fruit': SAND_SAND,
-  'smoke-smoke-fruit': SMOKE_SMOKE,
   'string-string-fruit': STRING_STRING,
   'tremor-tremor-fruit': TREMOR_TREMOR,
 }
@@ -253,6 +270,12 @@ describe('the fruit sheet', () => {
     expect(distinct.size).toBe(SHEET.length)
   })
 
+  it('draws every kit fruit with ten strokes or more', () => {
+    for (const [id, strokes] of Object.entries(KIT)) {
+      expect(strokes.length, id).toBeGreaterThanOrEqual(KIT_FLOOR)
+    }
+  })
+
   it('draws the hand-drawn fruits by hand', () => {
     for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
       expect(fruitArt, id).toHaveProperty(id)
@@ -265,7 +288,6 @@ describe('the fruit sheet', () => {
 
 describe('the fruits drawn again', () => {
   it('draws the real fruit once the show has shown it', () => {
-    expect(fruitRedrawn['gum-gum-fruit']?.[0]?.value).toBe(GUM_GUM)
     expect(fruitRedrawn['flame-flame-fruit']?.[0]?.value).toBe(FLAME_FLAME)
     expect(fruitRedrawn['op-op-fruit']?.[0]?.value).toBe(OP_OP_HEART)
   })

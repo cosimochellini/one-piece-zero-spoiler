@@ -1,4 +1,5 @@
 import {
+  BIRD_FALCON,
   BOMB_BOMB,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
@@ -7,6 +8,8 @@ import {
   FLAME_FLAME,
   FLOWER_FLOWER,
   GUM_GUM,
+  ICE_ICE,
+  MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
@@ -14,6 +17,7 @@ import {
   RUMBLE_RUMBLE,
   SAND_SAND,
   SMOKE_SMOKE,
+  SPRING_SPRING,
   STRING_STRING,
   TREMOR_TREMOR,
 } from '~/data/art/fruits/bespoke'
@@ -32,17 +36,11 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Fourteen of them are drawn by hand and name their drawing; the rest name the
+ * Nineteen of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
-  'gum-gum-fruit': fruit({
-    body: 'round',
-    grain: 3,
-    leaf: 'left',
-    stem: 'nub',
-    swirl: 'scales',
-  }),
+  'gum-gum-fruit': GUM_GUM,
   'chop-chop-fruit': CHOP_CHOP,
   'slip-slip-fruit': fruit({
     body: 'oblong',
@@ -74,13 +72,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'munch-munch-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'munch-munch-fruit': MUNCH_MUNCH,
   'ox-ox-fruit-model-bison': OX_OX_BISON,
   'human-human-fruit': fruit({
     body: 'round',
@@ -89,13 +81,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'bird-bird-fruit-model-falcon': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'bird-bird-fruit-model-falcon': BIRD_FALCON,
   'dog-dog-fruit-model-jackal': fruit({
     body: 'round',
     grain: 0,
@@ -147,13 +133,7 @@ export const fruitArt = {
     swirl: 'scales',
   }),
   'flower-flower-fruit': FLOWER_FLOWER,
-  'spring-spring-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'spring-spring-fruit': SPRING_SPRING,
   'horse-horse-fruit': fruit({
     body: 'pear',
     grain: 4,
@@ -169,13 +149,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'scales',
   }),
-  'ice-ice-fruit': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'ice-ice-fruit': ICE_ICE,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'cat-cat-fruit-model-leopard': fruit({
     body: 'pear',
@@ -856,9 +830,6 @@ export const fruitArt = {
  * look of the real one is something the story has not shown yet.
  */
 export const fruitRedrawn: Redrawings = {
-  // The fruit in the Red Hair Pirates' chest that Luffy eats, in episode 4
-  // and chapter 1.
-  'gum-gum-fruit': [{ episode: 4, chapter: 1, value: GUM_GUM }],
   // The prize of the Corrida Colosseum, held up by Doflamingo in episode 629
   // and chapter 700.
   'flame-flame-fruit': [{ episode: 629, chapter: 700, value: FLAME_FLAME }],
