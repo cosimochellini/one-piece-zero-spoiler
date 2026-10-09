@@ -1024,7 +1024,7 @@ const WING: Growth = {
 
 /**
  * The fruit with a falcon's wings: two wings out of its shoulders, spread
- * as Pell's are when he comes down on the rebels in episode 106. The wings
+ * as Pell's are when he first dives out of the sky in episode 106. The wings
  * and nothing else, never the head.
  */
 export const BIRD_FALCON: Stroke[] = [
