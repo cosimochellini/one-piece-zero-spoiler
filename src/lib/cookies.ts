@@ -42,14 +42,16 @@ export function parseCookieHeader(
 }
 
 /**
- * Serialises one cookie for `document.cookie`.
+ * Serialises one cookie, for `document.cookie` or a `Set-Cookie` header.
  *
  * `HttpOnly` is deliberately absent. Both cookies this app writes are set by
  * the browser when the reader changes a control, and a round trip to the
  * server to store a number the server does not trust anyway would only add
- * latency. `SameSite=Lax` still keeps them off cross-site requests.
+ * latency. The one cookie the server does set, when a shared link names a
+ * bookmark, carries the same attributes so the dialog can overwrite it.
+ * `SameSite=Lax` still keeps them off cross-site requests.
  */
-function serializeCookie(
+export function serializeCookie(
   name: string,
   value: string,
   maxAgeSeconds: number,

@@ -44,8 +44,9 @@ npm run dev     # http://localhost:3000
   dependency.
 - The dev server and the production build can lay out styles slightly
   differently. To check a visual change, run `npm run build && npm start`.
-- Your bookmark is the `opzs_ep` cookie. You can set it in the bookmark dialog
-  or in the browser's dev tools.
+- Your bookmark is the `opzs_ep` cookie. You can set it in the bookmark dialog,
+  in the browser's dev tools, or with a link such as `/en?ep=650`,
+  `/en?s=2&ep=3` or `/en?ch=1044`.
 
 ## The one rule
 

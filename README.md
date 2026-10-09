@@ -36,6 +36,11 @@ fog.
 | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | <img src="docs/media/fog-before.png" alt="The character grid at episode 45: the crests after that point are blurred and unnamed" width="420"> | <img src="docs/media/fog-after.png" alt="The same crop at episode 650: the same crests are open, named and drawn" width="420"> |
 
+A link can set the bookmark too. Add `?ep=650` for an episode, `?s=2&ep=3` for
+an episode in a season, or `?ch=1044` for a chapter to any address on the site.
+The link replaces the bookmark you had, so a link from someone further ahead can
+open entries you have not reached.
+
 ## Hidden entries never reach the browser
 
 The fog is not a blur over the full page. Ask the live site for a character you

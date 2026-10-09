@@ -36,6 +36,14 @@ The cost is one round trip. Moving the bookmark used to be instant because every
 record was already in the browser. Now it is a request, made inside a
 `useTransition`, so the current page stays on screen until the new one is ready.
 
+A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on any
+page. A request middleware in `src/start.ts` runs before routing, writes the
+`opzs_ep` cookie and answers with a 302 to the same address without those
+parameters, so the page that renders reads the new cookie like any other, and a
+reload cannot undo a bookmark moved since. A value outside the dialog's ranges,
+a season without an episode, a chapter next to an episode or a repeated
+parameter leaves the cookie as it was and still drops the parameters.
+
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has
 already reached, so "Whitebeard" finds Edward Newgate from episode 151, where
