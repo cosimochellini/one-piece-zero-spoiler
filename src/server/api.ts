@@ -3,6 +3,7 @@ import { createServerFn } from '@tanstack/react-start'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { readBookmark } from '~/lib/progress/readBookmark'
 
+import { fillerPage, peekFiller } from './archive/filler.server'
 import {
   fruitEaters,
   fruitPage,
@@ -157,6 +158,14 @@ export const loadFruitSiblings = createServerFn()
 export const loadPlaces = createServerFn()
   .validator(located)
   .handler(({ data }) => placesPage(readBookmark(), data.locale))
+
+export const loadFiller = createServerFn()
+  .validator(located)
+  .handler(({ data }) => fillerPage(readBookmark(), data.locale))
+
+export const liftFiller = createServerFn()
+  .validator(handled)
+  .handler(({ data }) => peekFiller(data.handle, data.locale) ?? null)
 
 export const liftWaypoint = createServerFn()
   .validator(handled)

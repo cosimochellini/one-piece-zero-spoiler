@@ -664,6 +664,8 @@ export const wano: Saga = {
       kind: 'character',
       revealedAtEpisode: 1055,
       revealedAtChapter: 1030,
+      // "Fuga" is Italian for escape: episode 56 is “Fuga dall’isola”.
+      commonWord: true,
       name: { it: 'Fuga', en: 'Fuga' },
       summary: {
         it: 'Uno dei tre giganti enormi che mangiano e bevono in una sala della fortezza di Kaido mentre fuori infuria la battaglia, e che Scratchmen Apoo mostra a X Drake come la forza che gli resta.',

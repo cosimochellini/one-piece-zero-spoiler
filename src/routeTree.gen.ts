@@ -14,6 +14,7 @@ import { Route as LocaleRouteImport } from './routes/$locale'
 import { Route as RobotsDottxtRouteImport } from './routes/robots[.]txt'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as LocaleIndexRouteImport } from './routes/$locale/index'
+import { Route as LocaleFillerRouteImport } from './routes/$locale/filler'
 import { Route as LocaleCharactersIndexRouteImport } from './routes/$locale/characters/index'
 import { Route as LocaleCharactersIdRouteImport } from './routes/$locale/characters/$id'
 import { Route as LocaleFruitsIndexRouteImport } from './routes/$locale/fruits/index'
@@ -43,6 +44,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const LocaleIndexRoute = LocaleIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => LocaleRoute,
+} as any)
+const LocaleFillerRoute = LocaleFillerRouteImport.update({
+  id: '/filler',
+  path: '/filler',
   getParentRoute: () => LocaleRoute,
 } as any)
 const LocaleCharactersIndexRoute = LocaleCharactersIndexRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/$locale': typeof LocaleRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/$locale': typeof LocaleRouteWithChildren
   '/robots.txt': typeof RobotsDottxtRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/$locale/filler': typeof LocaleFillerRoute
   '/$locale/': typeof LocaleIndexRoute
   '/$locale/characters/$id': typeof LocaleCharactersIdRoute
   '/$locale/fruits/$id': typeof LocaleFruitsIdRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/$locale/filler'
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
     | '/'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/$locale/filler'
     | '/$locale'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/$locale'
     | '/robots.txt'
     | '/sitemap.xml'
+    | '/$locale/filler'
     | '/$locale/'
     | '/$locale/characters/$id'
     | '/$locale/fruits/$id'
@@ -189,6 +201,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocaleIndexRouteImport
       parentRoute: typeof LocaleRoute
     }
+    '/$locale/filler': {
+      id: '/$locale/filler'
+      path: '/filler'
+      fullPath: '/$locale/filler'
+      preLoaderRoute: typeof LocaleFillerRouteImport
+      parentRoute: typeof LocaleRoute
+    }
     '/$locale/characters/': {
       id: '/$locale/characters/'
       path: '/characters'
@@ -228,6 +247,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface LocaleRouteChildren {
+  LocaleFillerRoute: typeof LocaleFillerRoute
   LocaleIndexRoute: typeof LocaleIndexRoute
   LocaleCharactersIdRoute: typeof LocaleCharactersIdRoute
   LocaleFruitsIdRoute: typeof LocaleFruitsIdRoute
@@ -237,6 +257,7 @@ interface LocaleRouteChildren {
 }
 
 const LocaleRouteChildren: LocaleRouteChildren = {
+  LocaleFillerRoute: LocaleFillerRoute,
   LocaleIndexRoute: LocaleIndexRoute,
   LocaleCharactersIdRoute: LocaleCharactersIdRoute,
   LocaleFruitsIdRoute: LocaleFruitsIdRoute,

@@ -19,7 +19,7 @@ import { absoluteUrl } from '~/lib/seo/site'
  */
 
 /** The pages that exist in every locale regardless of the archive. */
-const SECTIONS = ['', '/characters', '/fruits', '/places'] as const
+const SECTIONS = ['', '/characters', '/fruits', '/places', '/filler'] as const
 
 const ESCAPES: Record<string, string> = {
   '&': '&amp;',

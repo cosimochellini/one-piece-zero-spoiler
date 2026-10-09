@@ -6,7 +6,7 @@ import { SITE_ORIGIN } from '~/lib/seo/site'
 
 import { sitemapXml } from './sitemap.server'
 
-const SECTION_COUNT = 4
+const SECTION_COUNT = 5
 const LOCALE_COUNT = 2
 
 const LOCATION = /<loc>(?<url>[^<]+)<\/loc>/gu

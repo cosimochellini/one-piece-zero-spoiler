@@ -152,12 +152,11 @@ describe('the prose the gate looks for', () => {
 
       expect(phrase, name).not.toBeNull()
     }
-    const log = readFileSync(
-      path.join(repositoryRoot, 'src/data/places.ts'),
-      'utf8',
-    )
+    for (const extra of ['src/data/places.ts', 'src/data/filler.ts']) {
+      const source = readFileSync(path.join(repositoryRoot, extra), 'utf8')
 
-    expect(canaryFrom(log)).not.toBeNull()
+      expect(canaryFrom(source), extra).not.toBeNull()
+    }
   })
 })
 

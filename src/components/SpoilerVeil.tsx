@@ -5,7 +5,6 @@ import { useT } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { Gated } from '~/lib/progress/spoiler'
-import type { Slot } from '~/lib/view/records'
 import {
   color,
   dur,
@@ -27,8 +26,13 @@ export interface SpoilerVeilProps<T extends Gated> {
    * cannot be told apart by a type: a covered slot has no record to pass. The
    * decision is the server's, taken once for every record on the page, and
    * never retaken here.
+   *
+   * Any covered shape with a handle and the two thresholds will do: a record
+   * slot from `~/lib/view/records` is one, a filler row is another.
    */
-  slot: Slot<T>
+  slot:
+    | { covered: Gated & { handle: string }; open: false }
+    | { open: true; record: T }
   /**
    * Trades a covered record's handle for the record.
    *

@@ -478,10 +478,11 @@ export const wholeCake: Saga = {
       id: 'reverie',
       kind: 'arc',
       // Opens at 879 (chapter 903), where the royal ships sail to it, as its
-      // drawing shows them. Episode 878 already names it.
+      // drawing shows them. Episodes 777 and 778 already name it in their
+      // titles, "To the Reverie!", and 878 in the story.
       revealedAtEpisode: 879,
       revealedAtChapter: 903,
-      nameSaidAt: 878,
+      nameSaidAt: 777,
       name: { it: 'Reverie', en: 'Reverie' },
       summary: {
         it: 'Il consiglio che ogni quattro anni raduna a Mary Geoise i re dei paesi aderenti, che ci arrivano per mare.',

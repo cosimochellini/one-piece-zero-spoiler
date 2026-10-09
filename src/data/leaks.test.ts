@@ -9,6 +9,7 @@ import { type Field, TIMELINES } from './chapters'
 import { CHARACTER_DOSSIERS, getCharacter } from './characters'
 import { datedOf } from './dated'
 import { entities, getEntity } from './entities'
+import { FILLER, type FillerEntry } from './filler'
 import { PLACE_DOSSIERS, SHIP_DOSSIERS } from './places'
 import type { Entity, LocalizedText, Story } from './types'
 
@@ -31,7 +32,8 @@ interface Text {
   chapter: number
   episode: number
   label: string
-  owner: Entity
+  /** The record the text belongs to; a filler entry belongs to none. */
+  owner: Pick<Entity, 'id'>
   text: LocalizedText
 }
 
@@ -125,6 +127,29 @@ const DOSSIERS: Record<string, object>[] = [
   SHIP_DOSSIERS,
 ]
 
+/**
+ * A filler entry's title and line, each at the entry's own episode and the
+ * chapter the anime had adapted by then. The page opens a chapter reader no
+ * earlier than that chapter, so the scan holds the text to it.
+ */
+function fillerTexts(entry: FillerEntry): Text[] {
+  const where =
+    'episode' in entry ?
+      `filler-${String(entry.episode)}`
+    : `filler-after-${String(entry.after)}-${entry.released}`
+  const episode = 'episode' in entry ? entry.episode : entry.after
+
+  return (['title', 'summary'] as const).map((field) => {
+    return {
+      chapter: entry.chapter,
+      episode,
+      label: `${where}.${field}`,
+      owner: { id: where },
+      text: entry[field],
+    }
+  })
+}
+
 const TEXTS: Text[] = [
   ...entities.map((entity) => frozen(entity, 'summary', entity.summary)),
   ...DOSSIERS.flatMap((dossiers) => {
@@ -133,6 +158,7 @@ const TEXTS: Text[] = [
     )
   }),
   ...TIMELINES.flatMap(({ field, owner }) => dated(owner, field)),
+  ...FILLER.flatMap((entry) => fillerTexts(entry)),
 ]
 
 /** The words of a text with its markers reduced to the text they show. */
@@ -290,6 +316,7 @@ describe('the texts', () => {
       'origin',
       'role',
       'summary',
+      'title',
     ])
   })
 
