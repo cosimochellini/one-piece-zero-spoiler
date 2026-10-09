@@ -816,7 +816,7 @@ export const eastBlueArt = {
   // across the front with nothing written on it, the arched double door, a
   // window either side, the hanging sign on its bracket, the side wall in shade
   // and the step. He sits in front of it in episode 6 (chapter 12). Burnt from
-  // 7 and rebuilt at 1148, in `eastBlueRedrawn`.
+  // 7, in `eastBlueRedrawn`.
   'chouchou': [
     { d: 'M28 150 V64 M112 150 V64 M28 150 H112' },
     { d: 'M112 150 L134 138 V58 L124 58' },
@@ -2254,10 +2254,6 @@ const GENZO_PINWHEEL: Stroke[] = eastBlueArt.genzo.slice(8, 10)
 const JANGO_RING: Stroke[] = eastBlueArt.jango.slice(0, 5)
 const JANGO_GLASSES: Stroke[] = eastBlueArt.jango.slice(5, 10)
 
-/** Chouchou's shop: its blank plank sign, and the ground floor under it. */
-const CHOUCHOU_SIGN: Stroke[] = eastBlueArt.chouchou.slice(3, 6)
-const CHOUCHOU_FRONT: Stroke[] = eastBlueArt.chouchou.slice(6, 13)
-
 /** Krieg's gilded shoulder plate, its fur and rivets, without the guns. */
 const KRIEG_PLATE: Stroke[] = eastBlueArt['don-krieg'].slice(0, 7)
 
@@ -2274,54 +2270,89 @@ const LEFT_KNUCKLE: Stroke[] = FULLBODY_KNUCKLE.slice(0, 4).map((stroke) =>
   leftHand(stroke),
 )
 
+/**
+ * The trained Koby: the bandanna knotted into a ring with the glasses pushed
+ * up on it, lifted over the bucket. From 314, and again once he is free of
+ * Hachinosu.
+ */
+const KOBY_TRAINED: Stroke[] = [
+  { d: ellipse(54, 140, 40, 13), role: 'accent', transform: BANDANNA_LIFT },
+  {
+    d: 'M14 140 V160 A40 13 0 0 0 94 160 V140',
+    role: 'accent',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: 'M14 143 q-7 3 -2 8 q5 -1 2 -8 M12 150 C5 158 5 170 9 178 M14 151 C11 162 15 172 19 178',
+    role: 'accent',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: `${circle(40, 153, 11)} ${circle(68, 153, 11)}`,
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: 'M51 151 q3 -3 6 0 M29 151 L16 142 M79 151 L92 142',
+    transform: BANDANNA_LIFT,
+  },
+  {
+    d: dots([
+      [21, 162],
+      [27, 166],
+      [54, 169],
+      [81, 166],
+      [87, 162],
+    ]),
+    role: 'soft',
+    transform: BANDANNA_LIFT,
+  },
+  ...MOVED_BUCKET,
+  shadow(86, 182, 56),
+]
+
+/** Sanji's knife with Ifrit Jambe's taller flame, from 1061. */
+const SANJI_IFRIT: Stroke[] = [
+  ...SANJI_KNIFE,
+  {
+    d: 'M114 68 C98 58 98 44 102 30 C104 38 108 42 111 44 C108 30 112 14 122 0 C122 16 130 24 132 36 C134 30 134 26 136 18 C146 34 144 52 136 62 C130 68 120 70 114 68 Z',
+    role: 'accent',
+  },
+  { d: 'M118 60 C112 52 114 44 118 32 C120 42 128 46 127 56', role: 'accent' },
+  shadow(80, 186, 44),
+]
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
   // its front, the way Garp's trainee wears them, lifted and enlarged over
   // the bucket. He comes back trained at Water 7 in 314 (ch. 432).
   'koby': [
+    { episode: 314, chapter: 432, value: KOBY_TRAINED },
+    // The trained Koby's bandanna and bucket, and beside them the iron ball he
+    // is chained to, dark and hatched, its chain run out to an open cuff on
+    // the ground. Blackbeard holds him on Hachinosu in 1113 (ch. 1080).
     {
-      episode: 314,
-      chapter: 432,
+      episode: 1113,
+      chapter: 1080,
       value: [
+        ...KOBY_TRAINED,
         {
-          d: ellipse(54, 140, 40, 13),
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M18 152 a22 22 0 1 0 44 0 a22 22 0 1 0 -44 0 M26.4 145.7 A15 15 0 0 1 34.9 137.9',
         },
         {
-          d: 'M14 140 V160 A40 13 0 0 0 94 160 V140',
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M35.4 172.6 L60.6 147.4 M40.7 173.3 L61.3 152.7 M47.9 172.1 L60.1 159.9',
+          role: 'ambient',
         },
         {
-          d: 'M14 143 q-7 3 -2 8 q5 -1 2 -8 M12 150 C5 158 5 170 9 178 M14 151 C11 162 15 172 19 178',
-          role: 'accent',
-          transform: BANDANNA_LIFT,
+          d: 'M58 134 A5.5 4.2 11.7 1 0 68.8 136.2 A5.5 4.2 11.7 1 0 58 134 M77.7 142.6 A5.5 4.2 66.9 1 0 82 152.6 A5.5 4.2 66.9 1 0 77.7 142.6 M67.1 135.1 L79.3 143.8 M81.9 150.6 L82.3 165.6',
         },
         {
-          d: `${circle(40, 153, 11)} ${circle(68, 153, 11)}`,
-          transform: BANDANNA_LIFT,
+          d: 'M95.5 170.1 A11 6.5 0 1 0 95.5 178.9 M75 175.5 A11 6.5 0 0 0 95.5 181.9',
         },
-        {
-          d: 'M51 151 q3 -3 6 0 M29 151 L16 142 M79 151 L92 142',
-          transform: BANDANNA_LIFT,
-        },
-        {
-          d: dots([
-            [21, 162],
-            [27, 166],
-            [54, 169],
-            [81, 166],
-            [87, 162],
-          ]),
-          role: 'soft',
-          transform: BANDANNA_LIFT,
-        },
-        ...MOVED_BUCKET,
-        shadow(86, 182, 56),
       ],
     },
+    // The ball gone: he is out of the shackle by 1121 (ch. 1087).
+    { episode: 1121, chapter: 1087, value: KOBY_TRAINED },
   ],
   'roronoa-zoro': [
     // His three swords in their sheaths, the middle one in green, each guard
@@ -2621,20 +2652,26 @@ export const eastBlueRedrawn: Redrawings = {
     // taller, with a tongue either side. He stamps the suit's canister to
     // pieces in 1057 (ch. 1031) and first lights the hotter flame on Queen in
     // 1061 (ch. 1034).
+    { episode: 1061, chapter: 1034, value: SANJI_IFRIT },
+    // The knife and its flame, and crossed behind them the katana he carries
+    // in the Land of Gods: the wrapped grip, a square guard, the long sheath
+    // with its leather sling hanging off two bands and a buckle at the bottom
+    // of the loop. Road dresses him for Elbaf in 1157 (ch. 1127).
     {
-      episode: 1061,
-      chapter: 1034,
+      episode: 1157,
+      chapter: 1127,
       value: [
-        ...SANJI_KNIFE,
+        ...SANJI_IFRIT,
+        { d: 'M38.7 47.4 L18.6 29.3 Q13.3 29.3 13.8 34.7 L33.9 52.7' },
+        { d: 'M23.8 34 L23.5 43.4 M29.8 39.4 L29.4 48.7', role: 'soft' },
+        { d: 'M41.6 44.1 L44.6 46.8 L33.9 58.7 L30.9 56 Z' },
         {
-          d: 'M114 68 C98 58 98 44 102 30 C104 38 108 42 111 44 C108 30 112 14 122 0 C122 16 130 24 132 36 C134 30 134 26 136 18 C146 34 144 52 136 62 C130 68 120 70 114 68 Z',
-          role: 'accent',
+          d: 'M42.3 49.3 L92.4 94.4 M113.2 113.1 L153.8 149.7 M36.2 56.2 L85.5 100.6 M107.7 120.6 L147.7 156.5 M153.8 149.7 Q155.9 157.8 147.7 156.5',
         },
         {
-          d: 'M118 60 C112 52 114 44 118 32 C120 42 128 46 127 56',
-          role: 'accent',
+          d: 'M128.5 127 L122.4 133.8 M146.4 143 L140.2 149.8 M122.4 133.8 C120 148 120.5 158 123.8 163.8 M132.8 163.8 C136.8 161 139.6 157 140.2 149.8',
         },
-        shadow(80, 186, 44),
+        { d: 'M123.8 159.3 H132.8 V168.3 H123.8 Z M128.3 159.3 V168.3' },
       ],
     },
   ],
@@ -3231,27 +3268,6 @@ export const eastBlueRedrawn: Redrawings = {
         { d: 'M104 150 H126 V170 H104 Z', role: 'soft' },
         shadow(54, 170, 46),
         shadow(120, 188, 26),
-      ],
-    },
-    // The shop rebuilt, and bigger: a second storey with two windows over the
-    // same door, windows and hanging sign, and the plank sign back on top,
-    // still blank. It stands again when he listens to Vegapunk's broadcast
-    // outside it in 1148 (ch. 1114).
-    {
-      episode: 1148,
-      chapter: 1114,
-      value: [
-        { d: 'M28 150 V40 M112 150 V40 M28 150 H112' },
-        { d: 'M112 150 L134 138 V34 L124 34' },
-        {
-          d: 'M114 76 L131.9 45 M114 88 L132 57 M114.1 100 L132 69 M114 112 L131.9 81 M114.1 124 L132 93 M114 136 L131.9 105 M118 142 L132 117.8 M127 140.4 L132 131.7',
-          role: 'ambient',
-        },
-        ...moved(CHOUCHOU_SIGN, 'translate(0 -24)'),
-        { d: 'M28 88 H112', role: 'soft' },
-        { d: 'M38 52 H54 V76 H38 Z M86 52 H102 V76 H86 Z' },
-        { d: 'M46 52 V76 M38 64 H54 M94 52 V76 M86 64 H102', role: 'soft' },
-        ...CHOUCHOU_FRONT,
       ],
     },
   ],

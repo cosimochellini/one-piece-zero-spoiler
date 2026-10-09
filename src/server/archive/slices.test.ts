@@ -1033,21 +1033,15 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 790 })).toBe(fallen?.value)
   })
 
-  it('trades Koby’s mop for his bandanna only from episode 314', () => {
-    const koby = filed('koby')
-    const mop = DRAWINGS.koby
-    const bandanna = REDRAWINGS['koby']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(koby, readerFor(bookmark, 'en')).visual.strokes
+  it('trades Koby’s mop for his bandanna, and chains him on Hachinosu', () => {
+    const stages = walkStages('koby', [
+      [314, 432],
+      [1113, 1080],
+      [1121, 1087],
+    ])
 
-    expect(bandanna?.episode).toBe(314)
-
-    expect(drawnAt(ep(313))).toBe(mop)
-    expect(drawnAt(ep(314))).toBe(bandanna?.value)
-    expect(drawnAt(null)).toBe(mop)
-    // The manga brings him back trained at Water 7 in chapter 432.
-    expect(drawnAt({ mode: 'chapter', chapter: 431 })).toBe(mop)
-    expect(drawnAt({ mode: 'chapter', chapter: 432 })).toBe(bandanna?.value)
+    // Out of the shackle is the bandanna of 314 itself.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
   })
 
   it('puts every costume on Luffy’s hat from its episode and takes it off again', () => {
@@ -1304,13 +1298,8 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('jango', [[128, 214]])).toHaveLength(1)
   })
 
-  it('burns Chouchou’s shop from episode 7 and builds it again at 1148', () => {
-    expect(
-      walkStages('chouchou', [
-        [7, 15],
-        [1148, 1114],
-      ]),
-    ).toHaveLength(2)
+  it('burns Chouchou’s shop only from episode 7', () => {
+    expect(walkStages('chouchou', [[7, 15]])).toHaveLength(1)
   })
 
   it('locks Krieg’s plates into the Daisenso only from episode 28', () => {
@@ -1409,5 +1398,16 @@ describe('a record drawn again later in the story', () => {
       expect(drawnAt({ mode: 'chapter', chapter: 1033 })).toBe(cape?.value)
       expect(drawnAt({ mode: 'chapter', chapter: 1034 })).toBe(ifrit?.value)
     })
+  })
+
+  it('hangs the Elbaf katana behind Sanji’s knife only from episode 1157', () => {
+    expect(
+      walkStages('sanji', [
+        [298, 415],
+        [925, 931],
+        [1061, 1034],
+        [1157, 1127],
+      ]),
+    ).toHaveLength(4)
   })
 })
