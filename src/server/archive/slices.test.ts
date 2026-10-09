@@ -1313,6 +1313,14 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(2)
   })
 
+  it('locks Krieg’s plates into the Daisenso only from episode 28', () => {
+    expect(walkStages('don-krieg', [[28, 64]])).toHaveLength(1)
+  })
+
+  it('gives Fullbody a knuckle for each hand only from episode 128', () => {
+    expect(walkStages('fullbody', [[128, 214]])).toHaveLength(1)
+  })
+
   it('follows Nami’s Clima-Tacts, and Zeus out of the staff and back', () => {
     const stages = walkStages('nami', [
       [117, 190],

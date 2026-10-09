@@ -2253,6 +2253,22 @@ const JANGO_GLASSES: Stroke[] = eastBlueArt.jango.slice(5, 10)
 const CHOUCHOU_SIGN: Stroke[] = eastBlueArt.chouchou.slice(3, 6)
 const CHOUCHOU_FRONT: Stroke[] = eastBlueArt.chouchou.slice(6, 13)
 
+/** Krieg's gilded shoulder plate, its fur and rivets, without the guns. */
+const KRIEG_PLATE: Stroke[] = eastBlueArt['don-krieg'].slice(0, 7)
+
+/** Fullbody's iron knuckle and its shadow, without the soup. */
+const FULLBODY_KNUCKLE: Stroke[] = eastBlueArt.fullbody.slice(4)
+
+/** A knuckle stroke as the left hand's: mirrored, smaller, set back, plain. */
+function leftHand(stroke: Stroke): Stroke {
+  return { d: stroke.d, transform: 'translate(150 -46) scale(-0.85 0.85)' }
+}
+
+/** The left hand's knuckle, behind the right's. */
+const LEFT_KNUCKLE: Stroke[] = FULLBODY_KNUCKLE.slice(0, 4).map((stroke) =>
+  leftHand(stroke),
+)
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -3232,6 +3248,46 @@ export const eastBlueRedrawn: Redrawings = {
         { d: 'M46 52 V76 M38 64 H54 M94 52 V76 M86 64 H102', role: 'soft' },
         ...CHOUCHOU_FRONT,
       ],
+    },
+  ],
+  'don-krieg': [
+    // The Daisenso: his two shoulder plates locked face to face, the near one
+    // in his colour with its rivets and fur, the far one below the seam
+    // hatched where it turns away, and the shaft run out between them, its
+    // butt capped and a leaf blade at its head. He assembles it against Luffy
+    // in 28 (ch. 64).
+    {
+      episode: 28,
+      chapter: 64,
+      value: [
+        ...moved(
+          [
+            ...KRIEG_PLATE,
+            { d: 'M20 112 C22 150 60 172 96 168 C130 164 150 136 146 102' },
+            { d: 'M122 154 l8 7 M136 140 l9 5 M104 162 l6 8', role: 'ambient' },
+            {
+              d: 'M146 98.5 L180 95.8 M146 105.5 L180 102.8 M20 108.5 L-8 110.7 M20 115.5 L-8 117.7 M-8 110.7 Q-14 114.2 -8 117.7',
+            },
+            {
+              d: 'M180 91.3 C196 80 222 84 250 93.7 C222 104 196 110 180 107.3 Z',
+            },
+            { d: 'M184 99 L238 94.6', role: 'soft' },
+          ],
+          'translate(-2 27) scale(0.82) rotate(-48 83 105)',
+        ),
+        shadow(64, 186, 48),
+      ],
+    },
+  ],
+  'fullbody': [
+    // A knuckle for each hand: the iron knuckle in his colour where it always
+    // lay, and its twin for the left hand set back behind it. The soup is gone
+    // with the Baratie. He is "Double Ironfist" Fullbody under Hina at
+    // Arabasta in 128 (ch. 214).
+    {
+      episode: 128,
+      chapter: 214,
+      value: [...LEFT_KNUCKLE, ...FULLBODY_KNUCKLE],
     },
   ],
 }
