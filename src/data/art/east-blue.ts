@@ -2321,6 +2321,46 @@ const SANJI_IFRIT: Stroke[] = [
   shadow(80, 186, 44),
 ]
 
+/** Usopp's slingshot of episode 11, the band drawn back around its ball. */
+const USOPP_SLINGSHOT: Stroke[] = [
+  {
+    d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
+  },
+  {
+    d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
+  },
+  {
+    d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
+    role: 'ambient',
+  },
+  {
+    d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
+    role: 'soft',
+  },
+  {
+    d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+    role: 'accent',
+  },
+  { d: circle(80, 102, 6) },
+  { d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2', role: 'ambient' },
+  { d: circle(110, 177, 6) },
+  { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
+  shadow(88, 188, 32),
+]
+
+/** A stroke out of the accent: the same line, in plain ink. */
+function plain(stroke: Stroke): Stroke {
+  const { role, ...line } = stroke
+
+  return role === undefined || role === 'accent' ? line : { ...line, role }
+}
+
+/** The slingshot set down smaller beside Sogeking's mask, its band plain. */
+const SLINGSHOT_ASIDE: Stroke[] = moved(
+  USOPP_SLINGSHOT.slice(0, -1).map((stroke) => plain(stroke)),
+  'translate(54 34) scale(0.8)',
+)
+
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -2528,36 +2568,44 @@ export const eastBlueRedrawn: Redrawings = {
     // hatched, the grip wrapped. Episode 9 shows it on him, but the manga
     // first shows it in chapter 27, when he knocks out the mansion's guards
     // with it; episode 11 adapts that scene.
+    { episode: 11, chapter: 27, value: USOPP_SLINGSHOT },
+    // Sogeking's sun mask stood on its chin beside the slingshot: the egg of
+    // the plate in his colour with its three wavy blades standing out behind
+    // it, a soft edge down each blade, the band across the brow, the far
+    // cheek hatched, and no eye holes, so no face. The slingshot is the one of
+    // episode 11, set down smaller. He first puts the mask on as the Sea Train
+    // heads for Enies Lobby in 257 (ch. 367); Kabuto takes over at 274.
     {
-      episode: 11,
-      chapter: 27,
+      episode: 257,
+      chapter: 367,
       value: [
+        ...SLINGSHOT_ASIDE,
         {
-          d: 'M76.5 134 C68 114 50 100 47 66 A5 5 0 0 1 57 66 C59 92 72 106 80 118 C88 106 101 92 103 66 A5 5 0 0 1 113 66 C110 100 92 114 83.5 134',
-        },
-        {
-          d: 'M113 66 L118.5 67.5 C115.5 101 97.5 115 89 135 V172 Q87 175.5 83.5 175 M76.5 134 V172 Q80 176 83.5 172 V134',
-        },
-        {
-          d: 'M112.1 75.7 L116.3 73.3 M109.6 82.9 L114 80.4 M106.3 90.6 L111.1 87.8 M102.1 98.8 L107.3 95.8 M97.6 107.1 L102.9 104.1 M93.2 115.5 L98.5 112.4 M89.2 123.6 L94.3 120.6 M85.9 131.3 L90.5 128.6 M84.7 137.7 L88.2 135.7 M84.8 143.4 L88.1 141.5 M84.7 149.2 L88.3 147.2 M84.8 155 L88.2 153 M84.7 160.8 L88.3 158.7 M84.8 166.5 L88.2 164.6',
-          role: 'ambient',
-        },
-        {
-          d: 'M76.5 140 L83.5 144 M76.5 147 L83.5 151 M76.5 154 L83.5 158 M76.5 161 L83.5 165',
-          role: 'soft',
-        },
-        {
-          d: 'M54 70 C60 82 66 92 73 99 M106 70 C100 82 94 92 87 99 M73 99 C71 110 89 110 87 99',
+          d: 'M50 92 C63 92 71 101 71 114 C71 132 61 148 50 148 C39 148 29 132 29 114 C29 101 37 92 50 92 Z',
           role: 'accent',
+          transform: 'translate(2 54) scale(0.8)',
         },
-        { d: circle(80, 102, 6) },
         {
-          d: 'M108.5 181.2 L114.2 175.6 M112.2 181 L113.9 179.2',
-          role: 'ambient',
+          d: 'M41 94.5 C36 80 46 70 42 56 C40 48 44 40 54 34 C49 44 54 52 56 62 C58 74 54 84 59 94.5 M31.5 103 C24 94 14 98 6 94 C2 92 0 88 0 84 C6 98 12 106 20 112 C24 115 27 117 29.5 120 M68.5 103 C76 94 86 98 94 94 C98 92 100 88 100 84 C94 98 88 106 80 112 C76 115 73 117 70.5 120',
+          role: 'accent',
+          transform: 'translate(2 54) scale(0.8)',
         },
-        { d: circle(110, 177, 6) },
-        { d: 'M106.4 174.4 q1.4 -2 4 -2.2', role: 'soft' },
-        shadow(88, 188, 32),
+        {
+          d: 'M49 90 C50 82 49 74 48.5 66 M10 100 C17 102 23 106 29 111 M90 100 C83 102 77 106 71 111',
+          role: 'soft',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        {
+          d: 'M36.4 97.5 L70.4 120 M31.4 104.5 L69.4 129.6',
+          role: 'soft',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        {
+          d: 'M31 126 l4.4 -1.8 M33.2 133.5 l4.6 -1.9 M36.4 140.5 l4.4 -1.8',
+          role: 'ambient',
+          transform: 'translate(2 54) scale(0.8)',
+        },
+        shadow(80, 186, 64),
       ],
     },
     // Kabuto: a staff with a five-prong fork, the band pulled back from the
