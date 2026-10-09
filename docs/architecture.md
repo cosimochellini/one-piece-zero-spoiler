@@ -89,12 +89,12 @@ drawings of the same kind of object have to look like one set and still be told
 apart, so each is composed from a seed written next to its id: one of six
 silhouettes, one of four marks, a stalk and a leaf. Fourteen are drawn by hand
 and override their generated version: the eleven a reader already knows well,
-and the first three redrawn as fruit + power, the power acting on the fruit's
-own body (#461). Three more are drawn as the real fruit only from the episode
-that shows it. The sizing is guaranteed rather than hoped for: a seed cannot set
-a radius, so the widest fruit the generator can produce is known in advance.
-Every path it writes uses absolute commands only, which lets the test read the
-numbers in a path as coordinates.
+and the first three drawn as fruit + power, the power acting on the fruit's own
+body (#461). Three more are drawn as the real fruit only from the episode that
+shows it. The sizing is guaranteed rather than hoped for: a seed cannot set a
+radius, so the widest fruit the generator can produce is known in advance. Every
+path it writes uses absolute commands only, which lets the test read the numbers
+in a path as coordinates.
 
 ## Stack
 

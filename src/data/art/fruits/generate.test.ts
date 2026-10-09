@@ -253,7 +253,7 @@ describe('the fruit sheet', () => {
     expect(distinct.size).toBe(SHEET.length)
   })
 
-  it('draws the fourteen hand-drawn fruits by hand', () => {
+  it('draws the hand-drawn fruits by hand', () => {
     for (const [id, strokes] of Object.entries(HAND_DRAWN)) {
       expect(fruitArt, id).toHaveProperty(id)
       expect(Object.getOwnPropertyDescriptor(fruitArt, id)?.value, id).toBe(

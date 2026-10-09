@@ -19,6 +19,8 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
+ * The last three are the first drawn as fruit + power (#461), on a kit body
+ * of their own, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
  * only, no fills, one accent, and nothing outside the 160x200 box.
@@ -849,8 +851,8 @@ function blast(reach: number[]): string {
 
 /**
  * The fruit going off: a blast breaks out of its right side, where the skin
- * is open, and flecks fly from it. In episode 66 Mr. 5 sets off whatever he
- * touches, an arm or a flick of the fingers, and walks out of it unhurt.
+ * is open, and flecks fly from it. In episode 66 Mr. 5's arm goes off like a
+ * shell when it lands, and so does what he flicks from his nose.
  */
 export const BOMB_BOMB: Stroke[] = [
   { d: rim(116, 40, 320) },
