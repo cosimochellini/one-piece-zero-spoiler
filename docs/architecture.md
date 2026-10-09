@@ -38,10 +38,12 @@ record was already in the browser. Now it is a request, made inside a
 
 A link can set the bookmark as well: `?ep=650`, `?s=2&ep=3` or `?ch=1044` on any
 page. A request middleware in `src/start.ts` runs before routing, writes the
-`opzs_ep` cookie and answers with a 302 to the same address without those
+`opzs_ep` cookie and sends the reader on to the same address without those
 parameters, so the page that renders reads the new cookie like any other, and a
-reload cannot undo a bookmark moved since. A value outside the dialog's ranges,
-a season without an episode, a chapter next to an episode or a repeated
+reload cannot undo a bookmark moved since. The hop is a meta refresh rather than
+a 302, because Netlify appends the request's query string to any `Location`
+without one, and the link would redirect to itself. A value outside the dialog's
+ranges, a season without an episode, a chapter next to an episode or a repeated
 parameter leaves the cookie as it was and still drops the parameters.
 
 Search follows the same rule, by construction: a covered character is not on the

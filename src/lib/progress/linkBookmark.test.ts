@@ -69,22 +69,35 @@ describe('the bookmark a link names', () => {
   })
 })
 
+/** Where the meta refresh sends the reader, with the attribute unescaped. */
+async function target(response: Response | undefined): Promise<string> {
+  const body = (await response?.text()) ?? ''
+  return (/url=(?<to>[^"]*)"/u.exec(body)?.groups?.['to'] ?? '').replaceAll(
+    '&amp;',
+    '&',
+  )
+}
+
 describe('the redirect a link answers with', () => {
-  it('sets the cookie and drops the link from the address', () => {
+  it('sets the cookie and drops the link from the address', async () => {
     const response = visit('/?ep=650')
 
-    expect(response?.status).toBe(302)
-    expect(response?.headers.get('Location')).toBe('/')
+    expect(response?.status).toBe(200)
+    await expect(target(response)).resolves.toBe('/')
     expect(response?.headers.get('Set-Cookie')).toBe(
       'opzs_ep=650; Path=/; SameSite=Lax; Max-Age=31536000',
     )
     expect(response?.headers.get('Cache-Control')).toBe('no-store')
   })
 
-  it('keeps the path and every other parameter', () => {
+  it('sends no Location, which Netlify would append the query to (#492)', () => {
+    expect(visit('/en?ch=1044')?.headers.has('Location')).toBe(false)
+  })
+
+  it('keeps the path and every other parameter', async () => {
     const response = visit('/it/characters?x=1&s=2&ep=3&y=2')
 
-    expect(response?.headers.get('Location')).toBe('/it/characters?x=1&y=2')
+    await expect(target(response)).resolves.toBe('/it/characters?x=1&y=2')
     expect(response?.headers.get('Set-Cookie')).toMatch(/^opzs_ep=s2e3;/u)
   })
 
@@ -94,25 +107,24 @@ describe('the redirect a link answers with', () => {
     )
   })
 
-  it('drops an invalid link without touching the bookmark', () => {
+  it('drops an invalid link without touching the bookmark', async () => {
     const response = visit('/en?ep=9999')
 
-    expect(response?.status).toBe(302)
-    expect(response?.headers.get('Location')).toBe('/en')
+    await expect(target(response)).resolves.toBe('/en')
     expect(response?.headers.has('Set-Cookie')).toBe(false)
   })
 
-  it('never redirects to another host', () => {
-    expect(visit('//evil.example/x?ep=650')?.headers.get('Location')).toBe(
+  it('never sends the reader to another host', async () => {
+    await expect(target(visit('//evil.example/x?ep=650'))).resolves.toBe(
       '/evil.example/x',
     )
-    expect(
-      visit(String.raw`/\evil.example/x?ep=650`)?.headers.get('Location'),
-    ).toBe('/evil.example/x')
+    await expect(
+      target(visit(String.raw`/\evil.example/x?ep=650`)),
+    ).resolves.toBe('/evil.example/x')
   })
 
   it('answers HEAD like GET', () => {
-    expect(visit('/?ep=650', 'HEAD')?.status).toBe(302)
+    expect(visit('/?ep=650', 'HEAD')?.headers.has('Set-Cookie')).toBe(true)
   })
 
   it('leaves alone a request with no link, a server function and a POST', () => {
