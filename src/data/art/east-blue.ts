@@ -416,10 +416,10 @@ export const eastBlueArt = {
   ],
 
   // His white lace-up shoe side on, the heel grinding a rice ball into the
-  // ground: the toe cap, the laces, the collar seen from above with its
-  // inside hatched, the sole and heel in yellow, the rice squeezed out either
-  // side with its seaweed and the grains thrown off. He stamps on Rika's rice
-  // balls in episode 2.
+  // ground: the toe cap, the laces, the collar seen from above with its inside
+  // hatched, the sole and heel in yellow, the rice squeezed out either side
+  // with its seaweed and the grains thrown off. He stamps on Rika's rice balls
+  // in episode 2. The kukri replace the shoe from 314, in `eastBlueRedrawn`.
   'helmeppo': [
     {
       d: 'M8.5 144.7 C-1.2 131.1 9.6 119.3 36.3 112.5 C53.4 108.5 65 101.6 76 91 M125.2 82 C129.8 95.2 132.1 110 131.6 122.7',
@@ -521,8 +521,9 @@ export const eastBlueArt = {
   ],
   // The sword he wore in Foosha, sheathed on the tavern counter, its round
   // guard in red and its wrapped grip towards the reader, the sheath's
-  // underside hatched; a tankard of grog with its head of foam at the back.
-  // His crew drinks at Makino's bar in episode 4.
+  // underside hatched; a tankard of grog with its head of foam at the back. His
+  // crew drinks at Makino's bar in episode 4. Gryphon takes the sword's place
+  // from 151, in `eastBlueRedrawn`.
   'shanks': [
     { d: 'M2 92 H56 M96 92 H158', role: 'ambient' },
     { d: 'M2 162 H158' },
@@ -755,8 +756,8 @@ export const eastBlueArt = {
 
   // The sea chart she ran off with, half unrolled towards the reader, its
   // coastline and island in orange. She has just stolen it from Buggy in
-  // episode 5. The Clima-Tact with Zeus stands over a small copy of the chart
-  // from 878, in `eastBlueRedrawn`.
+  // episode 5. Each Clima-Tact she carries stands over a small copy of the
+  // chart from 117, in `eastBlueRedrawn`.
   'nami': [
     ...NAMI_CHART_BODY,
     ...NAMI_CHART_DETAIL,
@@ -813,8 +814,9 @@ export const eastBlueArt = {
 
   // The pet-food shop he guards, shut and still standing: the long plank sign
   // across the front with nothing written on it, the arched double door, a
-  // window either side, the hanging sign on its bracket, the side wall in
-  // shade and the step. He sits in front of it in episode 6 (chapter 12).
+  // window either side, the hanging sign on its bracket, the side wall in shade
+  // and the step. He sits in front of it in episode 6 (chapter 12). Burnt from
+  // 7 and rebuilt at 1148, in `eastBlueRedrawn`.
   'chouchou': [
     { d: 'M28 150 V64 M112 150 V64 M28 150 H112' },
     { d: 'M112 150 L134 138 V58 L124 58' },
@@ -1044,10 +1046,10 @@ export const eastBlueArt = {
     { d: 'M56 166 C56 162 102 162 102 166 C102 171 56 171 56 166 Z' },
     shadow(80, 182, 40),
   ],
-  // His ring mid-swing on its string, the edge of its thickness showing and
-  // its path trailing behind it, over his heart-shaped glasses folded on the
-  // ground with the dark lenses hatched. He swings it at Luffy on the cliff in
-  // episode 10 (chapter 26).
+  // His ring mid-swing on its string, the edge of its thickness showing and its
+  // path trailing behind it, over his heart-shaped glasses folded on the ground
+  // with the dark lenses hatched. He swings it at Luffy on the cliff in episode
+  // 10 (chapter 26). The Marine cap joins them from 128, in `eastBlueRedrawn`.
   'jango': [
     { d: 'M40 4 C52 28 72 46 90.1 65' },
     {
@@ -1409,7 +1411,8 @@ export const eastBlueArt = {
   ],
   // The plate of rice Sanji brings him outside at 21 (a pilaf in the manga, a
   // risotto in the show), heaped in his colour with its far side hatched, a
-  // spoon standing in it and the steam still rising.
+  // spoon standing in it and the steam still rising. His tonfa join the plate
+  // from 27, in `eastBlueRedrawn`.
   'gin': [
     { d: ellipse(80, 140, 62, 18) },
     {
@@ -1442,7 +1445,8 @@ export const eastBlueArt = {
 
   // His iron knuckle in his colour, four rings on a curved grip with a bolt
   // over each, its far end hatched; behind it, the soup he drops a fly into to
-  // blame Sanji. Both are at his table at the Baratie in episode 20.
+  // blame Sanji. Both are at his table at the Baratie in episode 20. A second
+  // knuckle replaces the soup from 128, in `eastBlueRedrawn`.
   'fullbody': [
     { d: ellipse(54, 90, 40, 11) },
     { d: 'M14 90 Q16 96 22 98 M94 90 Q92 96 86 98 M22 98 Q54 110 86 98' },
@@ -1518,9 +1522,10 @@ export const eastBlueArt = {
     shadow(82, 184, 64),
   ],
   // One shoulder plate of his gilded armour in his colour, turned so its face
-  // is away from us: the rivets along its ridge, the fur along its rim, its
-  // far side hatched, and the two gun barrels that slide out beneath it,
-  // smoking. He opens fire on the cooks with them in episode 22.
+  // is away from us: the rivets along its ridge, the fur along its rim, its far
+  // side hatched, and the two gun barrels that slide out beneath it, smoking.
+  // He opens fire on the cooks with them in episode 22. The two plates lock
+  // into the Daisenso from 28, in `eastBlueRedrawn`.
   'don-krieg': [
     { d: 'M20 112 C14 66 56 34 104 38 C138 42 152 74 146 102', role: 'accent' },
     { d: 'M20 112 C40 128 118 126 146 102', role: 'accent' },
@@ -1633,10 +1638,10 @@ export const eastBlueArt = {
     ...SEA.slice(1),
   ],
 
-  // His ushanka in 3/4: the crown with its seams, the fur front flap turned
-  // up as the accent, an ear flap folded up at each side, the far flap and the
-  // far side of the crown hatched. He wears it from his first scene at Arlong
-  // Park in episode 31.
+  // His ushanka in 3/4: the crown with its seams, the fur front flap turned up
+  // as the accent, an ear flap folded up at each side, the far flap and the far
+  // side of the crown hatched. He wears it from his first scene at Arlong Park
+  // in episode 31. The Kiribachi lies under it from 42, in `eastBlueRedrawn`.
   'arlong': [
     { d: 'M50 102 C46 72 62 54 84 54 C106 54 120 70 116 102' },
     {
@@ -1746,9 +1751,9 @@ export const eastBlueArt = {
     { d: 'M2 154 H158', role: 'ambient' },
   ],
   // His peaked police cap, turned 3/4: the wide flat crown, the band with its
-  // pattern, the black peak jutting forward and hatched, and the pinwheel
-  // stuck in the top on its stick. He wears it from his first scene in 32
-  // (ch. 71).
+  // pattern, the black peak jutting forward and hatched, and the pinwheel stuck
+  // in the top on its stick. He wears it from his first scene in 32 (ch. 71).
+  // The pinwheel comes off the cap at 44, in `eastBlueRedrawn`.
   'genzo': [
     {
       d: 'M16 80 C26 64 112 60 144 72 C150 76 144 84 124 86 C92 90 38 90 16 80 Z',
