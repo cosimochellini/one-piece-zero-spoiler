@@ -2142,7 +2142,6 @@ const SORCERY_WITH_ZEUS: Stroke[] = [
 /** Luffy's hat, smaller, hung by its string from the haft of the Elbaf axe. */
 const LUFFY_HUNG = 'translate(72 92) scale(0.46) rotate(-8 80 110)'
 
-/** The records of this stretch drawn again, from the episode the story changes them. */
 /** The grog on the counter, kept behind whichever sword Shanks wears. */
 const SHANKS_GROG: Stroke[] = eastBlueArt.shanks.slice(0, 9)
 
@@ -2168,7 +2167,7 @@ const JITTE_GRIP: Stroke[] = [
   },
 ]
 
-/** The jitte whole, its Seastone tip hatched, under the cigars. */
+/** The jitte whole, its tip hatched dark, under the cigars. */
 const SMOKER_JITTE: Stroke[] = [
   ...SMOKER_CIGARS,
   ...JITTE_GRIP,
@@ -2366,6 +2365,7 @@ const SLINGSHOT_ASIDE: Stroke[] = moved(
 const YASOPP_SMOKE: Stroke[] = eastBlueArt.yasopp.slice(8, 9)
 const YASOPP_BALL: Stroke[] = eastBlueArt.yasopp.slice(9)
 
+/** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
   // ring, its tails hanging from the knot, and the round glasses pushed up on
@@ -3222,8 +3222,9 @@ export const eastBlueRedrawn: Redrawings = {
   ],
   'smoker': [
     // The cigars over his jitte: a long rod with the hook beside its grip,
-    // the knob where the two meet, the grip wrapped, and the Seastone tip
-    // hatched dark. He pins Luffy with it in Loguetown in 52 (ch. 98).
+    // the knob where the two meet, the grip wrapped, and the tip hatched
+    // dark. He carries it from his first scene at the Loguetown base, in 52
+    // (ch. 98).
     { episode: 52, chapter: 98, value: SMOKER_JITTE },
     // The jitte snapped in two at a jagged break, the tip half lying apart,
     // crumbs where it gave. Hancock's kick breaks it at Marineford in 469
