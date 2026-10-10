@@ -68,18 +68,18 @@ reader gets no countdown, because the manga has no filler.
 
 ## The archive in numbers
 
-| Thing               | Count                                                 |
-| ------------------- | ----------------------------------------------------- |
-| Records             | 737                                                   |
-| Characters          | 534                                                   |
-| Devil fruits        | 128                                                   |
-| Arcs, places, ships | 34 · 39 · 2                                           |
-| Saga modules        | 12, plus one for the devil fruits                     |
-| Line drawings       | 737, one per record, plus 99 redrawings of 50 records |
-| Chronicle stories   | 755, for 185 characters                               |
-| Test files          | 75                                                    |
-| Test cases          | 686                                                   |
-| Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions  |
+| Thing               | Count                                                  |
+| ------------------- | ------------------------------------------------------ |
+| Records             | 737                                                    |
+| Characters          | 534                                                    |
+| Devil fruits        | 128                                                    |
+| Arcs, places, ships | 34 · 39 · 2                                            |
+| Saga modules        | 12, plus one for the devil fruits                      |
+| Line drawings       | 737, one per record, plus 101 redrawings of 51 records |
+| Chronicle stories   | 755, for 185 characters                                |
+| Test files          | 75                                                     |
+| Test cases          | 686                                                    |
+| Coverage            | 80.8 % statements, 78.2 % branches, 82.5 % functions   |
 
 Counted on 2026-10-05. Coverage includes the scripts under `scripts/`. The live
 counts are on the site: each page says how many entries it has.

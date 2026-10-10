@@ -893,6 +893,16 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
   })
 
+  it('grows Saturn’s horns from episode 1128, and takes them away at 1153', () => {
+    const stages = walkStages('jaygarcia-saturn', [
+      [1128, 1094],
+      [1153, 1122],
+    ])
+
+    // Out of the hybrid form he is his first drawing itself.
+    expect(stages[1]?.value).toBe(DRAWINGS['jaygarcia-saturn'])
+  })
+
   it('hands Izo his flintlocks only from episode 995', () => {
     const izo = filed('izo')
     const fans = DRAWINGS.izo
