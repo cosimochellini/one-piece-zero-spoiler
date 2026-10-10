@@ -2220,8 +2220,8 @@ export const eastBlue: Saga = {
     'nezumi': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
-        it: 'Comanda la sedicesima base e prende regolarmente denaro da Arlong, che lo chiama un ospite di riguardo. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
-        en: 'He commands the sixteenth branch and takes regular payments from Arlong, who calls him a valued guest. He arrives at Nami’s orchard with uniformed men and calls a robbery the law: to him, money stolen from pirates now belongs to the government.',
+        it: 'Comanda la sedicesima base e prende regolarmente denaro da Arlong, e la ciurma di Arlong lo chiama un ospite di riguardo. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
+        en: 'He commands the sixteenth branch and takes regular payments from Arlong, whose crew call him a valued guest. He arrives at Nami’s orchard with uniformed men and calls a robbery the law: to him, money stolen from pirates now belongs to the government.',
       },
       status: [{ episode: 36, value: 'alive' }],
       affiliation: [
