@@ -16,7 +16,7 @@ import { summitWarArt, summitWarRedrawn } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
 import { waterSevenArt, waterSevenRedrawn } from './water-seven'
-import { wholeCakeArt } from './whole-cake'
+import { wholeCakeArt, wholeCakeRedrawn } from './whole-cake'
 
 /** The rules every drawing on the site obeys, first or redrawn. */
 function isADrawing(id: string, strokes: Stroke[]): void {
@@ -96,6 +96,7 @@ describe('the redrawings', () => {
       thrillerBarkRedrawn,
       summitWarRedrawn,
       dressrosaRedrawn,
+      wholeCakeRedrawn,
       wanoRedrawn,
       eggheadRedrawn,
       elbafRedrawn,

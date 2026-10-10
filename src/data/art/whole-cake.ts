@@ -8,7 +8,7 @@ import {
   wave,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * One tusk of the Mammoth's figurehead, curving out ahead of the bow and
@@ -789,8 +789,8 @@ export const wholeCakeArt = {
   // A hand winch on its plank, in three quarters: the drum between two
   // frames with the cable wound on and its free end hanging off, the crank
   // on the near side, the underside hatched. It is an emblem of the epithet
-  // the caption gives him when he is named at 784, Winch Green, not
-  // something he carries.
+  // the caption gives him when he is named at 784, Winch Green: the winch
+  // he fights with is built into his gauntlets, shown only at 839.
   'vinsmoke-yonji': [
     { d: 'M14 150 L40 132 H150 L124 150 Z' },
     { d: 'M14 150 V158 H124 V150 M124 158 L150 140 V132' },
@@ -817,7 +817,7 @@ export const wholeCakeArt = {
   // cloak he arrives at the chateau in at 825: its lower edge hangs in long
   // tufts, the opening at the neck is a dark hatched slit, and the cloak
   // below is hatched to its ragged hem. No trident: he first draws it at
-  // 832.
+  // 832, in `wholeCakeRedrawn`.
   'charlotte-katakuri': [
     {
       d: 'M34 104 C28 128 20 150 12 172 C26 166 36 176 50 168 C62 176 72 166 82 174 C94 166 104 176 114 168 C126 176 138 166 150 172 C142 150 134 128 128 104',
@@ -1959,3 +1959,442 @@ export const wholeCakeArt = {
     shadow(80, 168, 64),
   ],
 } satisfies Drawings
+
+/**
+ * Mogura, Katakuri's trident: its head drawn point up with the tip at 0 0, a
+ * long diamond spearhead between two side prongs bent back like barbs, and
+ * the socket the shaft runs down from at y 50.
+ */
+const MOGURA: Stroke[] = [
+  { d: 'M0 0 L7 22 L0 40 L-7 22 Z' },
+  { d: 'M0 6 V34', role: 'soft' },
+  { d: 'M3 44 L12 12 L13 34 L19 44 Z M-3 44 L-12 12 L-13 34 L-19 44 Z' },
+  { d: 'M-4 44 H4 V50 H-4 Z' },
+]
+
+/** Where Mogura leans behind the scarf in Katakuri's 832 drawing. */
+const MOGURA_LEANING = 'translate(136 4) rotate(30) scale(1.2)'
+
+/** Where Mogura stands planted beside the scarf he has taken off. */
+const MOGURA_PLANTED = 'translate(126 6) scale(1.2)'
+
+/** Katakuri's fur scarf, its neck slit and its tufts, without the cloak. */
+const KATAKURI_SCARF = wholeCakeArt['charlotte-katakuri'].slice(3, 7)
+
+/** The fur scarf with Mogura crossed behind it, from 832 and again from 1151. */
+const KATAKURI_MOGURA: Stroke[] = [
+  ...moved(MOGURA, MOGURA_LEANING),
+  {
+    d: 'M-2 50 V69 M2 50 V68 M-2 128 V164 M2 128 V164 M-3 164 H3 V171 H-3 Z',
+    transform: MOGURA_LEANING,
+  },
+  ...moved(KATAKURI_SCARF, 'translate(0 14)'),
+  shadow(80, 188, 52),
+]
+
+/** Zeus's cloud with its hatched underside, without the bolt and the rain. */
+const ZEUS_CLOUD = wholeCakeArt.zeus.slice(0, 6)
+
+/**
+ * Zeus living in Nami's Clima-Tact, from 878 and again from 1037: the same
+ * cloud, smaller, billowing out of the knob at the end of the staff.
+ */
+const ZEUS_IN_THE_STAFF: Stroke[] = [
+  ...moved(ZEUS_CLOUD, 'translate(42.8 31) scale(0.62)'),
+  {
+    d: 'M48.7 122.8 L26.1 179.3 M52.5 124.2 L29.9 180.7 M26.1 179.3 C26.4 181 28.4 181.6 29.9 180.7',
+  },
+  { d: 'M40.4 141.4 L45.6 143.4 M32.9 160.2 L38.1 162.2', role: 'soft' },
+  { d: circle(52.2, 119.4, 4.5) },
+  {
+    d: 'M48 117 C40 116 38 106 46 104 C46 98 52 96 55 99 M56.6 116.6 C62 114 64 108 60 104',
+    role: 'soft',
+  },
+  ...moved(wholeCakeArt.zeus.slice(6, 7), 'translate(24 -16)'),
+  shadow(62, 186, 44),
+]
+
+/** The tilt that sinks the Mammoth's bow nose first. */
+const MAMMOTH_SINKING = 'translate(3 4) rotate(-24 96 112) translate(-4 6)'
+
+/** The ring trim down the front edge of Pedro's disguise cape, a ring every 8. */
+const PEDRO_RINGS = [62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142]
+  .map((y) => circle(88 + (y - 56) * 0.021, y, 3))
+  .join(' ')
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const wholeCakeRedrawn: Redrawings = {
+  // The same bow broken off and going down, tipped nose first, its planks
+  // splintering where it snapped and pieces of it in the air, the tusks
+  // sinking under a wave. One swing of Zunesha's trunk wrecks the Mammoth
+  // at 774 (ch. 821).
+  'jack': [
+    {
+      episode: 774,
+      chapter: 821,
+      value: [
+        ...moved(wholeCakeArt.jack.slice(0, 6), MAMMOTH_SINKING),
+        {
+          d: 'M156 84 l6 4 l-3 4 l9 5 l-6 3 l4 6 l-4 2 M156 110 l10 2 l-4 4 l12 4 l-8 3 l5 5 M156 130 l6 -1 l-2 5 l8 2 l-6 4',
+          transform: MAMMOTH_SINKING,
+        },
+        {
+          d: 'M118 30 l16 -8 l3 5 l-16 8 Z M144 14 l12 8 l-3 4 l-12 -8 Z',
+          role: 'soft',
+        },
+        {
+          d: 'M108 40 l-4 -7 M158 34 l6 -3 M132 48 l5 -4 M150 52 l2 -6',
+          role: 'soft',
+        },
+        {
+          d: 'M-4 150 C10 138 30 132 46 138 C56 142 58 150 52 154 C50 148 44 146 40 150',
+          role: 'ambient',
+        },
+        {
+          d: 'M88 150 q6 -10 12 -2 q6 -12 14 0 M136 136 q6 -8 10 -2 q4 -8 12 0',
+          role: 'ambient',
+        },
+        ...SEA,
+      ],
+    },
+  ],
+
+  // The duke's robe again, hung open from the shoulders, and under its hem
+  // the long blade that stands in for his left leg, growing out of a pale
+  // round socket and curving down like a sabre. He fights on it in the raid
+  // on Onigashima at 993 (ch. 985).
+  'inuarashi': [
+    {
+      episode: 993,
+      chapter: 985,
+      value: [
+        ...moved(
+          wholeCakeArt.inuarashi.slice(0, 9),
+          'translate(18 -4) scale(0.72)',
+        ),
+        { d: 'M82 119 V128 C82 136 98 136 98 128 V119' },
+        { d: 'M82 124 C87 127 93 127 98 124', role: 'soft' },
+        { d: 'M96 134 C126 132 150 150 148 188 C140 162 118 146 86 136' },
+        {
+          d: 'M111.3 135.6 l0.6 4.7 M120.5 138.3 l-0.3 4.7 M128.7 142.7 l-1.3 4.6 M135.6 148.8 l-2.3 4.1 M141.1 156.6 l-3.2 3.5 M145 166 l-3.9 2.7',
+          role: 'ambient',
+        },
+        shadow(100, 190, 48),
+      ],
+    },
+  ],
+
+  // His Totto Land disguise: a dark cape, floor length and high in the
+  // collar, hatched all over, its front edge trimmed with a row of rings,
+  // on the same bough. A mink in the street knows him in it all the same
+  // at 786 (ch. 827). Then his fedora from the suit days, dark, the
+  // crown pinched at the front and the brim turned down, a plain band round
+  // it; he wears it with his suit to the meeting at 828 (ch. 858).
+  'pedro': [
+    {
+      episode: 786,
+      chapter: 827,
+      value: [
+        ...wholeCakeArt.pedro.slice(0, 1),
+        {
+          d: 'M68 54 C58 58 50 64 46 74 C42 100 38 126 34 150 C46 154 58 148 70 152 C80 155 92 150 104 153 C114 155 122 150 128 150 C124 126 120 100 116 74 C112 64 104 58 94 54',
+        },
+        { d: `${ellipse(81, 36, 16, 5)} M65 36 L68 56 M97 36 L94 56` },
+        {
+          d: 'M67 40 l6 -4 M68 46 l12 -8 M69 52 l18 -12 M80 54 l14 -9',
+          role: 'ambient',
+        },
+        {
+          d: 'M84 56 C84.5 90 85.5 120 86 152 M92 56 C92.5 90 93.5 120 94 152',
+        },
+        { d: PEDRO_RINGS, role: 'accent' },
+        {
+          d: 'M48 80 l30 -15 M45 100 l35 -18 M42 120 l38 -20 M39 140 l41 -21 M52 150 l28 -14',
+          role: 'ambient',
+        },
+        {
+          d: 'M98 74 l14 -10 M99 92 l16 -11 M100 110 l18 -12 M100 128 l20 -14 M101 146 l22 -15',
+          role: 'ambient',
+        },
+        { d: 'M60 62 C56 90 54 120 52 150', role: 'soft' },
+        ...wholeCakeArt.pedro.slice(-1),
+      ],
+    },
+    {
+      episode: 828,
+      chapter: 858,
+      value: [
+        {
+          d: 'M20 118 C14 128 30 140 56 146 C66 148 74 150 80 150 C86 150 94 148 104 146 C130 140 146 128 140 118',
+        },
+        { d: 'M20 118 C36 106 124 106 140 118', role: 'soft' },
+        {
+          d: 'M47 122 C46 104 50 88 58 74 C62 68 70 66 80 71 C90 66 98 68 102 74 C110 88 114 104 113 122',
+        },
+        {
+          d: 'M80 71 C82 68 86 66 90 66 M64 76 C68 82 70 90 68 98 M96 76 C92 82 90 90 92 98',
+          role: 'soft',
+        },
+        {
+          d: 'M46 108 C60 116 100 116 114 108 M47 122 C60 130 100 130 113 122',
+          role: 'accent',
+        },
+        {
+          d: 'M52 96 l12 -14 M62 104 l16 -20 M80 108 l14 -18 M92 108 l14 -18 M104 104 l8 -10',
+          role: 'ambient',
+        },
+        {
+          d: 'M28 132 l10 -10 M40 138 l12 -10 M56 143 l12 -10 M106 143 l12 -10 M122 137 l10 -10',
+          role: 'ambient',
+        },
+        shadow(80, 168, 58),
+      ],
+    },
+  ],
+
+  // His kiseru still smoking, and beside it what replaces his left forearm:
+  // a ringed, banded cuff ending in two short barrels, a small blank tag
+  // hanging from it. He fights with it in the raid on Onigashima at 992
+  // (ch. 984).
+  'nekomamushi': [
+    {
+      episode: 992,
+      chapter: 984,
+      value: [
+        ...moved(
+          wholeCakeArt.nekomamushi.slice(0, 9),
+          'translate(2 -6) scale(0.72)',
+        ),
+        {
+          d: 'M96 132 C100 132 104 140 104 150 C104 160 100 168 96 168 C92 168 88 160 88 150 C88 140 92 132 96 132 Z M96 132 L138 128 M96 168 L138 172',
+        },
+        {
+          d: 'M110 130.6 C114 132 117 140 117 150 C117 160 114 168 110 169.4 M124 129.2 C128 131 131 140 131 150 C131 160 128 169 124 170.8 M138 128 C143 128 147 140 147 150 C147 160 143 172 138 172',
+          role: 'soft',
+        },
+        { d: 'M100 166 l6 4 M113 166 l6 4.5 M126 166 l6 5', role: 'ambient' },
+        {
+          d: `${ellipse(62, 142, 3.5, 6.5)} M62 135.5 H94 M62 148.5 H92 ${ellipse(62, 158, 3.5, 6.5)} M62 151.5 H92 M62 164.5 H94`,
+        },
+        {
+          d: `${ellipse(62, 142, 1.5, 3)} ${ellipse(62, 158, 1.5, 3)}`,
+          role: 'soft',
+        },
+        { d: 'M100 168 L98 176 M92 176 H104 V188 H92 Z' },
+        shadow(104, 192, 40),
+      ],
+    },
+  ],
+
+  // The sunhat and handbag as before, and beside them the CP0 mask she has
+  // taken off, seen from behind so it shows no face: a hood of scalloped
+  // tufts, two small dark ears, long wavy strands down its back. It lies on
+  // the table in front of her at 1092 (ch. 1062). Then the jacket she wears
+  // on Egghead in place of the hat and the bag: black, cropped, the sleeves
+  // puffed and gathered into cuffs, laid out flat, its high collar the
+  // accent. She wears it on Egghead from 1106 (ch. 1074).
+  'stussy': [
+    {
+      episode: 1092,
+      chapter: 1062,
+      value: [
+        ...moved(
+          wholeCakeArt.stussy.slice(0, 8),
+          'translate(60.1 63.2) scale(0.62)',
+        ),
+        {
+          d: 'M10 170 A6 6 0 0 1 12.1 154.7 A6 6 0 0 1 18.2 141.7 A6 6 0 0 1 27.3 133 A6 6 0 0 1 38 130 A6 6 0 0 1 48.7 133 A6 6 0 0 1 57.8 141.7 A6 6 0 0 1 63.9 154.7 A6 6 0 0 1 66 170 A6 6 0 0 1 56.7 170 A6 6 0 0 1 47.3 170 A6 6 0 0 1 38 170 A6 6 0 0 1 28.7 170 A6 6 0 0 1 19.3 170 A6 6 0 0 1 10 170',
+        },
+        { d: 'M17 145 L15 125 L28 135 M48 135 L61 125 L59 145' },
+        {
+          d: 'M17 139 l5 -5 M16 132 l2.5 -2.5 M59 139 l-5 -5 M60 132 l-2.5 -2.5',
+          role: 'ambient',
+        },
+        {
+          d: 'M26 146 C22 154 30 160 24 170 M38 140 C34 150 42 158 37 170 M50 146 C54 154 46 160 52 170',
+          role: 'soft',
+        },
+        shadow(80, 182, 76),
+      ],
+    },
+    {
+      episode: 1106,
+      chapter: 1074,
+      value: [
+        {
+          d: 'M64 62 C70 57 90 57 96 62 L94 80 C88 84 72 84 66 80 Z',
+          role: 'accent',
+        },
+        { d: 'M67 64 C74 67 86 67 93 64', role: 'soft' },
+        {
+          d: 'M66 80 C60 82 54 84 50 88 L56 136 H104 L110 88 C106 84 100 82 94 80',
+        },
+        { d: 'M56 128 H104 M80 83 V136', role: 'soft' },
+        {
+          d: 'M50 88 C34 86 18 104 18 124 C18 138 24 148 32 152 L46 142 C50 134 54 124 54 112',
+        },
+        {
+          d: 'M110 88 C126 86 142 104 142 124 C142 138 136 148 128 152 L114 142 C110 134 106 124 106 112',
+        },
+        {
+          d: 'M32 152 L36 158 L50 148 L46 142 M128 152 L124 158 L110 148 L114 142',
+        },
+        {
+          d: 'M26 112 C32 116 38 116 44 111 M24 132 C30 136 36 134 42 128 M134 112 C128 116 122 116 116 111 M136 132 C130 136 124 134 118 128',
+          role: 'soft',
+        },
+        {
+          d: 'M24 122 l8 -8 M28 140 l10 -10 M128 122 l8 -8 M122 140 l10 -10 M60 108 l8 -8 M60 122 l8 -8 M86 122 l8 -8 M86 108 l8 -8',
+          role: 'ambient',
+        },
+        shadow(80, 186, 60),
+      ],
+    },
+  ],
+
+  // The fur scarf without the cloak, and Mogura crossed behind it: a shaft
+  // longer than he is tall, capped at the butt, a diamond head between two
+  // barbed prongs. He first fights with it at 832 (ch. 862). Then the scarf
+  // taken off and lying slack beside Mogura planted upright, nothing under
+  // it: he takes it off to fight Luffy at 868 (ch. 893), and it is back
+  // on his shoulders when he is next seen, at 1151 (ch. 1119).
+  'charlotte-katakuri': [
+    { episode: 832, chapter: 862, value: KATAKURI_MOGURA },
+    {
+      episode: 868,
+      chapter: 893,
+      value: [
+        ...moved(MOGURA, MOGURA_PLANTED),
+        { d: 'M-2 50 V146 M2 50 V146', transform: MOGURA_PLANTED },
+        ...moved(
+          KATAKURI_SCARF,
+          'rotate(-6 60 160) translate(-13.8 97.3) scale(0.9 0.66)',
+        ),
+        shadow(74, 188, 64),
+      ],
+    },
+    { episode: 1151, chapter: 1119, value: KATAKURI_MOGURA },
+  ],
+
+  // The same helmet set down beside the feather coat, a sword run down
+  // through the top of it: the wrapped grip and the round, holed pommel
+  // stick out to the left. He meets the crew with it there at 1165
+  // (ch. 1135).
+  'jarul': [
+    {
+      episode: 1165,
+      chapter: 1135,
+      value: [
+        ...wholeCakeArt.jarul,
+        {
+          d: 'M92.4 110.4 L103.4 129.5 M97.6 107.4 L108.6 126.5 M90 108.3 L74.5 81.5 M97 104.3 L81.5 77.5',
+        },
+        { d: ellipse(94.5, 108.1, 10, 3), transform: 'rotate(-30 94.5 108.1)' },
+        {
+          d: 'M88.5 105.8 L94 99.2 M85.5 100.6 L91 94 M82.5 95.4 L88 88.8 M79.5 90.2 L85 83.6',
+          role: 'soft',
+        },
+        { d: circle(74, 72.6, 8) },
+        {
+          d: dots([
+            [79, 72.6],
+            [76.5, 76.9],
+            [71.5, 76.9],
+            [69, 72.6],
+            [71.5, 68.2],
+            [76.5, 68.2],
+          ]),
+          role: 'soft',
+        },
+      ],
+    },
+  ],
+
+  // Her axe, the grown giantess's own, in place of the child's kerchief: a
+  // long wooden haft with a knob at the butt and a great dark crescent
+  // blade, hooked at the point and spiked behind. She carries it over her
+  // shoulder on Elbaph at 1160 (ch. 1130).
+  'gerd': [
+    {
+      episode: 1160,
+      chapter: 1130,
+      value: [
+        { d: 'M60 170 L82 32 L88 33 L66 171' },
+        { d: circle(62, 177, 6) },
+        { d: 'M64 150 l6 1 M68 128 l6 1 M71.5 106 l6 1', role: 'soft' },
+        { d: 'M87 42 C96 38 104 30 108 18 M108 124 C102 110 94 98 82 92' },
+        {
+          d: 'M108 18 C130 28 148 50 148 72 C148 96 132 114 108 124',
+          role: 'accent',
+        },
+        {
+          d: 'M110 30 C126 42 138 56 138 72 C138 92 126 104 108 112',
+          role: 'soft',
+        },
+        {
+          d: 'M90 50 l14 -12 M90 60 l20 -16 M89 70 l22 -18 M88 80 l24 -20 M88 90 l24 -20 M96 98 l18 -14',
+          role: 'ambient',
+        },
+        { d: 'M81 50 L58 58 L80 66' },
+        shadow(68, 186, 40),
+      ],
+    },
+  ],
+
+  // His grave on a hillside: a block of stone with his horned helmet laid on
+  // top, the longsword of his first drawing planted upright beside it and
+  // shrubs at its foot. It stands on the hill above the wrecked village at
+  // 838 (ch. 868).
+  'jorul': [
+    {
+      episode: 838,
+      chapter: 868,
+      value: [
+        { d: 'M0 156 C40 152 110 148 160 140', role: 'ambient' },
+        {
+          d: 'M26 152 V118 H96 V152 M26 118 L40 106 H112 L96 118 M112 106 V140 L96 152',
+        },
+        { d: 'M100 126 l8 -6 M100 138 l8 -6 M102 148 l8 -6', role: 'ambient' },
+        { d: ellipse(68, 108, 26, 6) },
+        { d: 'M42 108 C42 86 54 76 68 76 C82 76 94 86 94 108' },
+        { d: 'M68 76 L68 64' },
+        {
+          d: 'M48 98 C34 92 24 76 26 56 C28 44 36 36 44 32 C40 42 38 52 42 62 C46 72 52 80 56 86 M88 98 C102 92 112 76 110 56 C108 44 100 36 92 32 C96 42 98 52 94 62 C90 72 84 80 80 86',
+        },
+        {
+          d: 'M33 87 Q42 87 49 80 M30 78 Q37 78 43 71 M103 87 Q94 87 87 80 M106 78 Q99 78 93 71',
+          role: 'soft',
+        },
+        {
+          d: `M43 100 C52 106 84 106 93 100 ${dots([
+            [50, 106],
+            [59, 108],
+            [68, 108.6],
+            [77, 108],
+            [86, 106],
+          ])}`,
+          role: 'soft',
+        },
+        ...moved(
+          wholeCakeArt.jorul.slice(5, 10),
+          'translate(236.1 121.8) rotate(138) scale(0.74)',
+        ),
+        {
+          d: 'M4 154 A6 6 0 0 1 14 146 A6 6 0 0 1 24 144 A5 5 0 0 1 26 150 M100 150 A5 5 0 0 1 110 144 A6 6 0 0 1 122 144 A6 6 0 0 1 132 140 A6 6 0 0 1 144 140',
+          role: 'soft',
+        },
+      ],
+    },
+  ],
+
+  // Zeus moved into Nami's new Clima-Tact, the same cloud smaller and
+  // billowing out of the knob at the end of the thin staff, two joints where
+  // it splits in three, the bolt still dropping from him, at 878 (ch. 903).
+  // Big Mom has him back as her own cloud at 993 (ch. 985), and he talks
+  // out of the staff again, Nami's for good, at 1037 (ch. 1015).
+  'zeus': [
+    { episode: 878, chapter: 903, value: ZEUS_IN_THE_STAFF },
+    { episode: 993, chapter: 985, value: wholeCakeArt.zeus },
+    { episode: 1037, chapter: 1015, value: ZEUS_IN_THE_STAFF },
+  ],
+}
