@@ -1317,6 +1317,50 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1023 })).toBe(grown?.value)
   })
 
+  it('puts Baby 5’s flying goggles beside her headband from episode 618, and takes them off at 622', () => {
+    const stages = walkStages('baby-5', [
+      [618, 692],
+      [622, 696],
+    ])
+
+    // Out of the goggles is her first drawing itself.
+    expect(stages[1]?.value).toBe(DRAWINGS['baby-5'])
+  })
+
+  it('shatters Bastille’s zanbato only from episode 687', () => {
+    expect(walkStages('bastille', [[687, 751]])).toHaveLength(1)
+  })
+
+  it('zips Blue Gilly’s jacket up under a collar only from episode 744', () => {
+    expect(walkStages('blue-gilly', [[744, 799]])).toHaveLength(1)
+  })
+
+  it('puts Kaido’s band on the Azure Dragon’s foreleg only from episode 912', () => {
+    expect(walkStages('kaido', [[912, 921]])).toHaveLength(1)
+  })
+
+  it('snaps Kin’emon’s katana from episode 1035, and arms him again at 1079', () => {
+    const stages = walkStages('kinemon', [
+      [1035, 1014],
+      [1079, 1052],
+    ])
+
+    // A sword in his sash again is his first drawing itself.
+    expect(stages[1]?.value).toBe(DRAWINGS.kinemon)
+  })
+
+  it('gives Koala her grown-up cap only from episode 663', () => {
+    expect(walkStages('koala', [[663, 731]])).toHaveLength(1)
+  })
+
+  it('gives Leo his pirate hat only from episode 884', () => {
+    expect(walkStages('leo', [[884, 906]])).toHaveLength(1)
+  })
+
+  it('takes Rebecca’s shield away only from episode 651', () => {
+    expect(walkStages('rebecca', [[651, 721]])).toHaveLength(1)
+  })
+
   it('braids Sakazuki’s cap only from episode 570', () => {
     const sakazuki = filed('sakazuki')
     const cap = DRAWINGS.sakazuki

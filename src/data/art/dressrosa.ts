@@ -10,7 +10,7 @@ import {
   wave,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * The visible edge of a playing card held behind the next one in Jora's
@@ -2260,8 +2260,350 @@ export const dressrosaArt = {
   ],
 } satisfies Drawings
 
+/**
+ * Kaido's foreleg as the Azure Dragon wears his band on it, drawn in the
+ * band's own frame and then turned to reach down out of the coil: the upper
+ * arm rising out of the band, its scales, the band's outer rim without the
+ * arc the arm hides, the near half of the hole's rim, the first drawing's
+ * wall and spikes, and the paw under it with three toes and their talons.
+ */
+const KAIDO_FORELEG: Stroke[] = moved(
+  [
+    { d: 'M44 109.2 C41 86 41 52 44 24 M116 109.2 C121 86 121 52 116 24' },
+    {
+      d: 'M52 82 a7 7 0 0 0 14 0 M73 82 a7 7 0 0 0 14 0 M94 82 a7 7 0 0 0 14 0 M62 58 a7 7 0 0 0 14 0 M84 58 a7 7 0 0 0 14 0 M52 36 a7 7 0 0 0 14 0 M73 36 a7 7 0 0 0 14 0 M94 36 a7 7 0 0 0 14 0',
+      role: 'soft',
+    },
+    { d: 'M44 90.4 A44 32.7 0 1 0 116 90.4' },
+    { d: 'M44 109.2 A36 26.8 0 0 0 116 109.2', role: 'soft' },
+    ...dressrosaArt.kaido.slice(3, 5),
+    {
+      d: 'M46 157 C42 174 34 186 28 196 C22 206 28 214 36 210 C44 204 50 196 58 192 C58 208 62 222 70 228 C80 234 92 228 88 218 C86 210 86 200 88 194 C96 206 106 214 118 214 C128 214 130 202 122 198 C114 192 112 178 114 157',
+    },
+    {
+      d: 'M28 212 C22 218 22 228 26 236 C28 228 32 222 38 216 M74 230 C70 238 72 248 78 254 C78 246 82 240 88 236 M126 212 C134 218 136 228 132 238 C130 230 126 224 120 220',
+    },
+    { d: 'M66 210 q6 -2 10 2 M110 204 q4 -4 2 -10', role: 'soft' },
+  ],
+  'translate(96 106) rotate(35) scale(0.54) translate(-80 -109.2)',
+)
+
+/** The rest of Bastille's zanbato: the guard, the grip and its wrap. */
+const BASTILLE_HILT: Stroke[] = dressrosaArt.bastille.slice(4, 7)
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const dressrosaRedrawn: Redrawings = {
+  // Her flying goggles, a one-piece frame like a domino mask with rivets
+  // round its rim and the strap's two ends, lying beside the headband, which
+  // is set back and made smaller; the cannon stays in front. She flies in
+  // to Punk Hazard in them, the headband on as well (618, ch. 692), and
+  // is out of them by 622 (ch. 696).
+  'baby-5': [
+    {
+      episode: 618,
+      chapter: 692,
+      value: [
+        ...moved(
+          dressrosaArt['baby-5'].slice(0, 5),
+          'translate(-6 -14) scale(0.85)',
+        ),
+        ...moved(
+          [
+            {
+              d: 'M-30 -8 C-22 -14 -10 -13 0 -8 C10 -13 22 -14 30 -8 C34 -2 33 8 26 11 C18 14 8 12 3 6 Q0 3 -3 6 C-8 12 -18 14 -26 11 C-33 8 -34 -2 -30 -8 Z',
+            },
+            {
+              d: 'M-26 -5 C-20 -9 -11 -8 -5 -4 C-5 2 -7 7 -12 8 C-18 9 -24 7 -26 3 C-27 0 -27 -3 -26 -5 Z M26 -5 C20 -9 11 -8 5 -4 C5 2 7 7 12 8 C18 9 24 7 26 3 C27 0 27 -3 26 -5 Z',
+              role: 'soft',
+            },
+            {
+              d: dots([
+                [-29.5, -2],
+                [-25, -10],
+                [-17, -11.5],
+                [-9, -10.5],
+                [9, -10.5],
+                [17, -11.5],
+                [25, -10],
+                [29.5, -2],
+                [-29, 5],
+                [-22, 10.5],
+                [-14, 11],
+                [14, 11],
+                [22, 10.5],
+                [29, 5],
+              ]),
+              role: 'soft',
+            },
+            {
+              d: 'M-31 -4 C-38 0 -41 8 -37 15 M31 -4 C38 0 41 8 37 15 M33.5 2 C33 10 30 13.5 25 14.5 C18 16 9 14.5 4 9.5 M-4 9.5 C-9 14.5 -18 16 -25 14.5 C-30 13.5 -33 10 -33.5 2',
+              role: 'soft',
+            },
+          ],
+          'translate(114 108) rotate(18)',
+        ),
+        ...dressrosaArt['baby-5'].slice(5),
+      ],
+    },
+    { episode: 622, chapter: 696, value: dressrosaArt['baby-5'] },
+  ],
+  // The zanbato as Sabo's claw breaks it in his hands: the hilt held up, a
+  // ragged stump under the guard with its saw back, and the blade bursting
+  // into shards below, three of them still toothed. He never carries a
+  // sword again (687, ch. 751).
+  'bastille': [
+    {
+      episode: 687,
+      chapter: 751,
+      value: [
+        ...BASTILLE_HILT,
+        { d: 'M70 54 L68.1 76 L71 84 L74 78 L78 88 L82 80 L86 86 L90.3 80' },
+        { d: 'M94 58 L97 60 L93.4 81.5 L90.3 80' },
+        {
+          d: 'M94 58 L89.6 63.3 L92.8 65.3 L88.3 70.6 L91.5 72.7 L87.1 78 L90.3 80',
+          role: 'accent',
+        },
+        { d: 'M73 64 l8 -6 M72 72 l9 -7 M72 80 l5 -4', role: 'ambient' },
+        {
+          d: 'M112 116 L105 119 L98 100 L102 90 M58 118 L50 121 L46 104 L54 96 M90 144 L83 146 L79 128 L86 122',
+        },
+        {
+          d: 'M102 90 L102.2 97.9 L105.3 98.7 L105.6 106.5 L108.7 107.3 L108.9 115.2 L112 116 M54 96 L52.5 102.3 L55.3 103.3 L53.8 109.7 L56.7 110.7 L55.2 117 L58 118 M86 122 L84.5 128.3 L87.3 129.3 L85.8 135.7 L88.7 136.7 L87.2 143 L90 144',
+          role: 'accent',
+        },
+        {
+          d: 'M118 128 L138 116 L128 136 Z M26 132 L44 138 L36 146 L24 144 Z M62 134 L70 154 L59 149 Z M106 146 L126 152 L112 160 Z M73 96 L82 99 L70 110 Z',
+        },
+        { d: 'M101 104 l5 -2 M82 134 l5 -2', role: 'ambient' },
+        {
+          d: 'M48 174 L64 170 L58 177 Z M98 176 L114 173 L106 179 Z',
+          role: 'soft',
+        },
+        shadow(80, 182, 54),
+      ],
+    },
+  ],
+  // His jacket after Dressrosa, laid flat as the first: zipped to the
+  // collarbone under a tall collar, its inside hatched, two stripes and a
+  // column of three stars down the near sleeve, and no spots. He wears it
+  // at the eastern port with the fleet (744, ch. 799).
+  'blue-gilly': [
+    {
+      episode: 744,
+      chapter: 799,
+      value: [
+        ...dressrosaArt['blue-gilly'].slice(0, 1),
+        { d: 'M62 40 C58 34 54 30 52 23 Q80 13 108 23 C106 30 102 34 98 40' },
+        { d: 'M62 33 Q80 26 98 33', role: 'soft' },
+        {
+          d: 'M64 29 l5 -5 M74 26 l5 -5 M86 26 l5 -5 M94 29 l5 -5',
+          role: 'ambient',
+        },
+        { d: 'M62 40 C68 46 74 52 80 60 C86 52 92 46 98 40' },
+        { d: 'M80 60 V158 M78 60 h4 v7 h-4 Z', role: 'soft' },
+        {
+          d: 'M45 47 C42 56 39 65 37 74 M51 46 C48 56 45 66 42 76',
+          role: 'soft',
+        },
+        {
+          d: `${star(36, 88, 5, 2.1)} ${star(32.5, 104, 5, 2.1)} ${star(29, 120, 5, 2.1)}`,
+          role: 'accent',
+        },
+        ...dressrosaArt['blue-gilly'].slice(4),
+      ],
+    },
+  ],
+  // The Azure Dragon he turns into, with his band on its foreleg: the leg
+  // reaching down out of a coil of the body, which crosses the top of the
+  // picture with its belly plates and a mane of flame-shaped tufts, the
+  // talons hooked over a bank of cloud. No head and no eye. He flies to Kuri
+  // as the dragon at the end of 912 (ch. 921).
+  'kaido': [
+    {
+      episode: 912,
+      chapter: 921,
+      // Shrunk a little so the coil and the mane stay inside the box.
+      value: moved(
+        [
+          {
+            d: 'M-4 62 C30 30 100 22 164 40 M-4 94 C26 70 70 58 106.5 57.2 M138.3 79.5 C146 76 156 74 164 74',
+          },
+          {
+            d: 'M12 82 C6 72 8 58 16 50 M32 72 C26 62 28 48 36 40 M54 64 C48 54 50 40 58 32 M78 60 C72 50 74 36 82 28',
+            role: 'soft',
+          },
+          {
+            d: 'M0 56.5 C-4 46.5 10 40.5 4 30.5 C14 34.5 20 42.5 18 48.5 C22 44.5 24 31.6 30 39.6 C26 29.6 40 23.6 34 13.6 C44 17.6 50 25.6 48 31.6 C52 27.6 54 23.6 60 31.6 C56 21.6 70 15.6 64 5.6 C74 9.6 80 17.6 78 23.6 C82 19.6 84 20.7 90 28.7 C86 18.7 100 12.7 94 2.7 C104 6.7 110 14.7 108 20.7 C112 16.7 114 21.7 120 29.7 C116 19.7 130 13.7 124 3.7 C134 7.7 140 15.7 138 21.7 C142 17.7 142 26.1 148 34.1',
+          },
+          {
+            d: 'M6 44.5 l5 4 M36 27.6 l5 4 M66 19.6 l5 4 M96 16.7 l5 4 M126 17.7 l5 4',
+            role: 'ambient',
+          },
+          ...KAIDO_FORELEG,
+          {
+            d: 'M2 180 C2 170 14 166 20 172 C22 164 36 162 40 170 C46 166 54 170 52 176 M52 176 c6 0 6 -8 0 -8 c-3 0 -3 4 0 4 M98 180 C100 170 112 168 118 172 C122 164 136 164 140 172 C146 170 154 174 152 180 M98 180 c-6 0 -6 -8 0 -8 c3 0 3 4 0 4 M140 130 c10 0 12 -12 2 -14 c-6 0 -8 8 -2 8',
+            role: 'ambient',
+          },
+        ],
+        'translate(8 10) scale(0.9)',
+      ),
+    },
+  ],
+  // His katana snapped by Kaido's club: the hilt and the guard as first
+  // drawn, the blade cut short in a jagged break with chips flying off it,
+  // the rest of it lying on the ground in front of the empty scabbard, and
+  // no flame. Kaido breaks it at 1035 (ch. 1014); he has a sword in his
+  // sash again at the graveyard at 1079 (ch. 1052).
+  'kinemon': [
+    {
+      episode: 1035,
+      chapter: 1014,
+      value: [
+        ...dressrosaArt.kinemon.slice(0, 6),
+        {
+          d: 'M49 122 C63 109.2 75.9 96.7 87.8 83.5 M56 130 C72.8 114 87.4 98.3 99.4 83',
+        },
+        { d: 'M53 125.5 C66 113 78 101 91.6 86.6', role: 'soft' },
+        {
+          d: 'M87.8 83.5 L93.4 77.8 L96.6 77.7 L94.8 81.7 L97.1 81.6 L101.9 76.7 L99.4 83 M104 70 l3 -3 M96.6 70 l0 -4.5 M108.6 78 l4.5 -0.5',
+          role: 'accent',
+        },
+        {
+          d: 'M70 188.3 C99.3 187.3 124.4 182.5 144.8 173.2 M62.1 179.7 C88.8 180.8 115.3 179.2 144.8 173.2',
+        },
+        {
+          d: 'M62.1 179.7 L70 180.3 L72.2 182.7 L68 183.9 L69.6 185.6 L76.4 186.1 L70 188.3',
+        },
+        shadow(78, 194, 66),
+      ],
+    },
+    { episode: 1079, chapter: 1052, value: dressrosaArt.kinemon },
+  ],
+  // Her cap as she is now, grown: a soft newsboy crown turned three-quarters,
+  // its short brim down at the front, the panels meeting at a button, and
+  // round goggles strapped across the front, rivets round their rims and the
+  // lenses empty. The rag of the first drawing lies small on the deck beside
+  // it. She is first seen grown at the end of 663 (ch. 731).
+  'koala': [
+    {
+      episode: 663,
+      chapter: 731,
+      value: [
+        {
+          d: 'M34 116 C24 96 34 70 62 60 C92 50 132 56 144 80 C152 96 146 112 136 120',
+        },
+        { d: 'M34 116 C62 128 110 128 136 120' },
+        { d: 'M34 116 C22 124 20 136 30 142 C46 150 76 144 88 127' },
+        {
+          d: `M102 62 C78 62 54 72 42 92 M102 62 C122 64 136 72 144 84 M102 62 C98 68 95 74 93 79 ${dot(102, 61)}`,
+          role: 'soft',
+        },
+        { d: 'M146 96 l-5 5 M142 106 l-5 5 M138 115 l-4 4', role: 'ambient' },
+        {
+          d: `${circle(60, 98, 12)} ${circle(92, 93, 13)} M72 96.4 L79 94.6`,
+          role: 'accent',
+        },
+        { d: `${circle(60, 98, 7)} ${circle(92, 93, 7.5)}`, role: 'soft' },
+        {
+          d: dots([
+            [69.1, 100.8],
+            [63.5, 106.8],
+            [55.2, 106.2],
+            [50.6, 99.4],
+            [53, 91.5],
+            [60.7, 88.5],
+            [67.9, 92.7],
+            [101.8, 96],
+            [96.8, 102.1],
+            [89, 102.8],
+            [82.9, 97.8],
+            [82.2, 90],
+            [87.2, 83.9],
+            [95, 83.2],
+            [101.1, 88.2],
+          ]),
+          role: 'soft',
+        },
+        {
+          d: 'M105 89 C120 86 134 86 147 89 M105 96 C120 93 136 94 148 97 M48 101 C43 103 38 106 35 110',
+          role: 'soft',
+        },
+        shadow(74, 158, 46),
+        ...moved(
+          // The rag gives the accent up to the goggles.
+          [
+            ...dressrosaArt.koala.slice(1, 3),
+            ...dressrosaArt.koala.slice(4, 5),
+          ].map((stroke): Stroke =>
+            stroke.role === 'accent' ? { ...stroke, role: 'soft' } : stroke,
+          ),
+          'translate(82 106) scale(0.55)',
+        ),
+      ],
+    },
+  ],
+  // His pirate hat set in the grass behind the rifle: the crown dotted, the
+  // brim turned up into two wide wings curling at the tips, two feathers at
+  // the back, and its far side hatched. No crew mark, and no goggles: they
+  // are his old outfit's, and on the brim they read as eyes. The curled fern
+  // stands beside it. He wears it at the Reverie (884, ch. 906).
+  'leo': [
+    {
+      episode: 884,
+      chapter: 906,
+      value: [
+        ...moved(dressrosaArt.leo.slice(0, 2), 'translate(-18 16) scale(0.9)'),
+        ...moved(
+          [
+            { d: 'M50 102 C46 70 60 52 80 52 C100 52 114 70 110 102' },
+            {
+              d: 'M50 102 C40 96 32 86 28 74 C26 66 18 64 15 71 C12 79 18 87 26 89 C32 110 54 124 80 124 C106 124 128 110 134 89 C142 87 148 79 145 71 C142 64 134 66 132 74 C128 86 120 96 110 102',
+              role: 'accent',
+            },
+            { d: 'M50 102 Q80 112 110 102', role: 'soft' },
+            {
+              d: dots([
+                [70, 66],
+                [86, 62],
+                [94, 78],
+                [64, 84],
+                [78, 92],
+                [38, 96],
+                [46, 108],
+                [122, 96],
+                [114, 108],
+                [24, 76],
+                [136, 76],
+                [56, 116],
+                [104, 116],
+              ]),
+              role: 'soft',
+            },
+            {
+              d: 'M101 64 l4 -3 M104 74 l5 -4 M106 85 l4 -3 M107 96 l4 -3 M126 104 l4 -4 M131 96 l3 -4',
+              role: 'ambient',
+            },
+            {
+              d: 'M104 62 C112 44 126 32 146 26 C140 42 124 56 106 68 M108 72 C120 60 136 54 154 54 C146 64 130 72 109 78',
+            },
+            {
+              d: 'M106 66 C118 52 130 40 146 26 M108 75 C122 66 138 58 154 54',
+              role: 'soft',
+            },
+          ],
+          'translate(22 30.6) scale(0.85)',
+        ),
+        ...dressrosaArt.leo.slice(2, 3),
+        // The rifle gives the accent up to the hat.
+        ...dressrosaArt.leo
+          .slice(5, 10)
+          .map((stroke): Stroke =>
+            stroke.role === 'accent' ? { ...stroke, role: 'soft' } : stroke,
+          ),
+        ...dressrosaArt.leo.slice(10),
+      ],
+    },
+  ],
   // The whole dragon, grown, wound twice round his father's sword, which he
   // carries from 1023 on. Its head is hidden behind the hilt, as the small
   // dragon's is in its coils, so only the swept-back horns and the long
@@ -2269,7 +2611,7 @@ export const dressrosaRedrawn: Redrawings = {
   // crosses in front of the hilt and the blade and behind them, with its
   // belly plates hatched, and the tail curls past the point. Shinobu's fruit
   // ages him in ch. 1023, and the anime shows the dragon from 1047.
-  momonosuke: [
+  'momonosuke': [
     {
       episode: 1047,
       chapter: 1023,
@@ -2313,6 +2655,19 @@ export const dressrosaRedrawn: Redrawings = {
           role: 'accent',
         },
         shadow(80, 190, 30),
+      ],
+    },
+  ],
+  // The helmet and the braid without the shield, moved over to the middle.
+  // She throws the shield down on her way into the D Block and fights with
+  // the sword alone (651, ch. 721).
+  'rebecca': [
+    {
+      episode: 651,
+      chapter: 721,
+      value: [
+        ...moved(dressrosaArt.rebecca.slice(3, 10), 'translate(16 0)'),
+        shadow(86, 188, 56),
       ],
     },
   ],
