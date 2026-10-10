@@ -675,8 +675,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 58,
       name: { it: 'Pearl', en: 'Pearl' },
       summary: {
-        it: 'Un pirata coperto di piastre d’acciaio che dice di non aver mai sanguinato, e che al primo graffio prende fuoco per il panico.',
-        en: 'A pirate armoured in steel plates who says he has never bled, and who bursts into flame out of panic at the first scratch.',
+        it: 'Un pirata coperto di piastre di ferro che dice di non aver mai sanguinato, e che al primo graffio prende fuoco per il panico.',
+        en: 'A pirate armoured in iron plates who says he has never bled, and who bursts into flame out of panic at the first scratch.',
       },
       visual: { art: 'pearl', tint: 'pink' },
     },
@@ -762,12 +762,13 @@ export const eastBlue: Saga = {
     {
       id: 'nojiko',
       kind: 'character',
-      revealedAtEpisode: 31,
+      // Named at 32, when Usopp wakes up in her house: "I'm Nojiko."
+      revealedAtEpisode: 32,
       revealedAtChapter: 77,
       name: { it: 'Nojiko', en: 'Nojiko' },
       summary: {
-        it: 'Una coltivatrice di mandarini con i capelli azzurri e un tatuaggio sulla spalla, che cura il frutteto di famiglia e non nomina mai sua sorella.',
-        en: 'A blue-haired mandarin grower with a tattoo across her shoulder, who tends the family orchard and never talks about her sister.',
+        it: 'Una coltivatrice di mandarini con i capelli azzurri e un tatuaggio sulla spalla, che stende Usop per tenerlo lontano da un uomo-pesce e gli racconta che lei e Nami sono sorelle adottive.',
+        en: 'A blue-haired mandarin grower with a tattoo across her shoulder, who knocks Usopp out to keep him from a fish-man and tells him that she and Nami are adopted sisters.',
       },
       visual: { art: 'nojiko', tint: 'azure' },
     },
@@ -779,8 +780,8 @@ export const eastBlue: Saga = {
       // First called Gen-san at 32, when Arlong comes to the village.
       name: { it: 'Genzo', en: 'Genzo' },
       summary: {
-        it: 'Il poliziotto del villaggio, con una girandola infilata nel cappello, che ha giurato di non impugnare mai più un’arma contro gli uomini-pesce.',
-        en: 'The village sheriff, a pinwheel stuck in his cap, who swore never to raise a weapon against the fish-men again.',
+        it: 'Il poliziotto del villaggio, con una girandola infilata nel cappello, che Arlong viene a uccidere perché tiene delle armi, e che implora il villaggio di non reagire.',
+        en: 'The village sheriff, a pinwheel stuck in his cap, whom Arlong comes to kill for keeping weapons, and who begs the village not to fight back.',
       },
       visual: { art: 'genzo', tint: 'yellow' },
     },
@@ -791,8 +792,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 78,
       name: { it: 'Bellmer', en: 'Bell-mère' },
       summary: {
-        it: 'Un’ex soldatessa della Marina che coltiva mandarini e cresce due bambine trovate su un campo di battaglia, con una sigaretta sempre accesa.',
-        en: 'A former Marine who grows mandarins and raises two girls she found on a battlefield, a cigarette always burning between her fingers.',
+        it: 'La donna che ha accolto due orfane, Nojiko e Nami, e le ha cresciute in una casa tra i mandarini di Cocoyashi, e che nessuna delle due dimenticherà mai.',
+        en: 'The woman who took in two orphan girls, Nojiko and Nami, and brought them up in a house among the mandarin trees of Cocoyasi, and whom neither of them will ever forget.',
       },
       visual: { art: 'bell-mere', tint: 'orange' },
     },
@@ -803,8 +804,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 84,
       name: { it: 'Nezumi', en: 'Nezumi' },
       summary: {
-        it: 'Un capitano della Marina con i baffi da topo, che arriva a Cocoyashi per requisire il denaro del villaggio e riparte con le tasche piene.',
-        en: 'A Marine captain with a rat’s whiskers, who comes to Cocoyasi to confiscate the village’s money and leaves with his pockets full.',
+        it: 'Un capitano della Marina con i baffi da topo, che arriva a Cocoyashi per requisire per il governo il denaro che Nami ha nascosto, perché rubato.',
+        en: 'A Marine captain with a rat’s whiskers, who comes to Cocoyasi to claim the money Nami has hidden for the government, as stolen goods.',
       },
       visual: { art: 'nezumi', tint: 'sand' },
     },
@@ -839,8 +840,8 @@ export const eastBlue: Saga = {
       revealedAtChapter: 97,
       name: { it: 'Smoker', en: 'Smoker' },
       summary: {
-        it: 'Un capitano della Marina con due sigari accesi e una giacca piena di ricambi, che non ha mai lasciato scappare un pirata dalla sua città e si scioglie in fumo quando lo colpiscono.',
-        en: 'A Marine captain with two lit cigars and a jacket full of spares, who has never let a pirate leave his town and turns to smoke when he is hit.',
+        it: 'Un capitano della Marina con due sigari accesi e una giacca piena di ricambi, che non ha mai lasciato scappare un pirata dalla sua città.',
+        en: 'A Marine captain with two lit cigars and a jacket full of spares, who has never let a pirate leave his town.',
       },
       visual: { art: 'smoker', tint: 'azure' },
     },
@@ -1979,8 +1980,8 @@ export const eastBlue: Saga = {
         en: 'Shield of the Krieg Pirates',
       },
       log: {
-        it: 'Porta addosso tre scudi rotondi e sostiene di non aver mai perso una goccia di sangue in tutta la sua carriera. È il vanto dei Pirati di Creek, quello che mandano avanti quando serve un muro. Se però vede il proprio sangue perde la testa, e allora incendia tutto quello che ha intorno senza guardare chi ci sia in mezzo.',
-        en: 'He wears three round shields and claims he has never lost a drop of blood in his whole career. He is the Krieg crew’s boast, the one they send forward when a wall is needed. The moment he sees his own blood, though, he loses his head and sets fire to everything around him without looking at who is in the way.',
+        it: 'Porta due grandi piastre di ferro, una sul petto e una sulla schiena, e uno scudo più piccolo su ogni pugno, e sostiene di non aver mai perso una goccia di sangue in battaglia. È il vanto dei Pirati di Creek, quello che mandano avanti quando serve un muro. Se però vede il proprio sangue perde la testa, e allora incendia tutto quello che ha intorno senza guardare chi ci sia in mezzo.',
+        en: 'He wears two great iron plates, one on his chest and one on his back, and a smaller shield on each fist, and claims he has never lost a drop of blood in battle. He is the Krieg crew’s boast, the one they send forward when a wall is needed. The moment he sees his own blood, though, he loses his head and sets fire to everything around him without looking at who is in the way.',
       },
       status: [{ episode: 25, value: 'alive' }],
       affiliation: [
@@ -2148,20 +2149,20 @@ export const eastBlue: Saga = {
     'nojiko': {
       role: { it: 'Sorella di Nami', en: 'Nami’s sister' },
       log: {
-        it: 'Lavora da sola il frutteto sulla collina e ogni anno paga agli uomini-pesce il tributo senza discutere, come tutto il villaggio. Di sua sorella non parla con nessuno, né con gli estranei né con gli amici, e lascia che gli altri la credano una ladra qualunque. Quando qualcuno le chiede spiegazioni, risponde con il silenzio o con una pala in mano.',
-        en: 'She works the hillside orchard alone and pays the fish-men their tribute every year without arguing, as the whole village does. She speaks of her sister to nobody, stranger or friend, and lets the rest of them take her for an ordinary thief. When somebody asks her for an explanation, she answers with silence or with a shovel in her hand.',
+        it: 'Coltiva mandarini nella casa dove lei e Nami sono cresciute, due orfane allevate da un genitore adottivo che ora non c’è più. Tra le rovine di Gosa stende Usop prima che si metta contro un uomo-pesce, perché chi li sfida viene ucciso. Poi gli racconta che Nami è sua sorella adottiva e una dei capi dei Pirati di Arlong, e che il villaggio compra la propria vita da Arlong pagando un tributo ogni mese.',
+        en: 'She grows mandarins in the house where she and Nami grew up, two orphans brought up by a foster parent who has since died. In the ruins of Gosa she knocks Usopp out before he can take on a fish-man, because anyone who fights them is killed. Then she tells him that Nami is her adopted sister and one of the leaders of the Arlong Pirates, and that the village buys its life from Arlong with a tribute every month.',
       },
-      status: [{ episode: 31, value: 'alive' }],
+      status: [{ episode: 32, value: 'alive' }],
       affiliation: [
         {
-          episode: 31,
+          episode: 32,
           value: {
             it: 'Coltivatrice di mandarini; sorella di Nami',
             en: 'Mandarin grower; Nami’s sister',
           },
         },
       ],
-      origin: [{ episode: 31, value: COCOYASI_VILLAGE }],
+      origin: [{ episode: 32, value: COCOYASI_VILLAGE }],
     },
     'genzo': {
       role: { it: 'Poliziotto del villaggio', en: 'Village sheriff' },
@@ -2183,12 +2184,12 @@ export const eastBlue: Saga = {
     },
     'bell-mere': {
       role: {
-        it: 'Ex marine, coltivatrice di mandarini',
-        en: 'Former Marine, mandarin grower',
+        it: 'Madre adottiva di Nojiko e Nami',
+        en: 'Nojiko’s and Nami’s foster mother',
       },
       log: {
-        it: 'Torna dalla guerra senza niente e con due bambine che non sono sue, e le tiene lo stesso, in una casa dove spesso si mangia una volta al giorno. Coltiva un frutteto di mandarini che rende poco e litiga con le figlie come si litiga in famiglia. Quando gli uomini-pesce arrivano a contare le teste, non dice mai di non essere la loro madre.',
-        en: 'She comes home from a war with nothing and two girls who are not hers, and keeps them anyway, in a house where a meal a day is often all there is. She works a mandarin orchard that barely pays and argues with her daughters the way families argue. When the fish-men come counting heads, she never once says she is not their mother.',
+        it: 'Ha cresciuto due orfane, Nojiko e Nami, nella casa tra i mandarini, e per un periodo le tre ci hanno vissuto felici. All’arrivo della ciurma a Cocoyashi è già morta, e Nojiko dice che nessuna delle due sorelle la dimenticherà mai. Quando Nojiko comincia a spiegare alla ciurma perché Nami si è unita ad Arlong, il racconto parte da lei, otto anni prima.',
+        en: 'She brought up two orphans, Nojiko and Nami, in the house among the mandarin trees, and for a while the three of them lived there happily. By the time the crew reaches Cocoyasi she is dead, and Nojiko says that neither sister will ever forget her. When Nojiko starts to tell the crew why Nami joined Arlong, the story begins with her, eight years ago.',
       },
       status: [
         // Dead before she is met: Nojiko says their foster parent is dead at
@@ -2200,6 +2201,15 @@ export const eastBlue: Saga = {
         {
           episode: 34,
           value: {
+            it: 'Madre adottiva di Nojiko e Nami',
+            en: 'Nojiko’s and Nami’s foster mother',
+          },
+        },
+        // Genzo tells Nami she was a Marine at 35 (chapter 77, below the
+        // record's own chapter, so the record's chapter gates it).
+        {
+          episode: 35,
+          value: {
             it: 'Ex marine; coltivatrice di mandarini, madre di Nami e Nojiko',
             en: 'Former Marine; mandarin grower, Nami’s and Nojiko’s mother',
           },
@@ -2210,8 +2220,8 @@ export const eastBlue: Saga = {
     'nezumi': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
-        it: 'Comanda la sedicesima base e da anni chiude gli occhi su tutto quello che accade nelle isole che dovrebbe proteggere, in cambio di una parte del riscosso. Si presenta con i soldati in divisa e chiama legge quello che è un saccheggio. Appena qualcuno gli mette una mano addosso, ricorda subito a tutti chi rappresenta.',
-        en: 'He commands the sixteenth branch and has for years closed his eyes to everything that happens on the islands he is meant to protect, in exchange for a share. He arrives with uniformed men and calls a robbery the law. The moment anyone lays a hand on him, he reminds everybody who he represents.',
+        it: 'Comanda la sedicesima base e da anni chiude gli occhi su tutto quello che accade nelle isole che dovrebbe proteggere, in cambio di una parte del riscosso. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
+        en: 'He commands the sixteenth branch and has for years closed his eyes to everything that happens on the islands he is meant to protect, in exchange for a share. He arrives at Nami’s orchard with uniformed men and calls a robbery the law: to him, money stolen from pirates now belongs to the government.',
       },
       status: [{ episode: 36, value: 'alive' }],
       affiliation: [
@@ -2259,8 +2269,8 @@ export const eastBlue: Saga = {
       chronicle: eastBlueChronicles.smoker,
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
-        it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Il suo corpo diventa fumo, e nessuno di quelli che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
-        en: 'He commands the base at Loguetown, the town where the Pirate King was executed and from which every East Blue pirate sets out for the Grand Line. His body turns to smoke, and none of the pirates he has chased has reached open water. He makes no exceptions for rubber boys.',
+        it: 'Comanda la base di Loguetown, la città dove il Re dei Pirati fu eseguito e da cui ogni pirata dell’East Blue parte per la Rotta Maggiore. Nessuno dei pirati che ha inseguito è arrivato al mare aperto. Non fa eccezioni per i ragazzi di gomma.',
+        en: 'He commands the base at Loguetown, the town where the Pirate King was executed and from which every East Blue pirate sets out for the Grand Line. None of the pirates he has chased has reached open water. He makes no exceptions for rubber boys.',
       },
       status: [{ episode: 49, value: 'alive' }],
       affiliation: [
@@ -2287,8 +2297,8 @@ export const eastBlue: Saga = {
     'tashigi': {
       role: { it: 'Sergente della Marina', en: 'Marine sergeant' },
       log: {
-        it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana più alta di lei. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',
-        en: 'She serves at Loguetown under a captain who smokes two cigars at once, and follows him with a katana taller than she is. She knows a fine sword at a glance and has decided to take every one of them out of the wrong hands. She trips, loses her glasses and apologises, and none of her men would dare laugh.',
+        it: 'Serve a Loguetown agli ordini di un capitano che fuma due sigari alla volta, e lo segue con una katana al fianco. Riconosce una spada pregiata a colpo d’occhio e si è messa in testa di strapparle tutte alle mani sbagliate. Cade, perde gli occhiali e chiede scusa, e nessuno dei suoi uomini si permette di riderne.',
+        en: 'She serves at Loguetown under a captain who smokes two cigars at once, and follows him with a katana at her side. She knows a fine sword at a glance and has decided to take every one of them out of the wrong hands. She trips, loses her glasses and apologises, and none of her men would dare laugh.',
       },
       status: [{ episode: 49, value: 'alive' }],
       affiliation: [
