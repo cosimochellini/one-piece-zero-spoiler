@@ -554,6 +554,9 @@ export const fishManIsland: Saga = {
         // Episode 523 adapts chapter 603: Sentomaru says they caught the rest
         // of the fakes.
         { episode: 523, chapter: 603, value: 'captured' },
+        // Episode 1148 adapts chapter 1115 (page 2): a caption names him in a
+        // cell of the G-4 prison.
+        { episode: 1148, chapter: 1115, value: 'imprisoned' },
       ],
       affiliation: [
         {
@@ -1098,10 +1101,9 @@ export const fishManIsland: Saga = {
         en: 'He is a fish-man adventurer. He climbs the Red Line with his bare hands, gets into Mary Geoise alone and frees thousands of slaves of every race, though he hates humans. With the fish-men among the freed he founds a crew, and on their bodies he turns the Nobles’ mark into a sun.',
       },
       status: [
-        { episode: 539, value: 'alive' },
-        // He dies at 543 (chapter 623); pinned at the record's own chapter,
-        // which is later.
-        { episode: 543, chapter: 626, value: 'deceased' },
+        // Dead before he is met: the show says so at 528 and 530, and he is
+        // seen only in the flashback.
+        { episode: 539, value: 'deceased' },
       ],
       affiliation: [
         {

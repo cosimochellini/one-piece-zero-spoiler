@@ -850,6 +850,9 @@ export const egghead: Saga = {
       },
       status: [
         { episode: 1129, value: 'alive' },
+        // Episode 1131 adapts chapter 1097, which ends with her taken by an
+        // unknown enemy.
+        { episode: 1131, chapter: 1097, value: 'captured' },
         // Episode 1132 adapts chapter 1098: Kuma finds her dead.
         { episode: 1132, chapter: 1098, value: 'deceased' },
       ],

@@ -1301,6 +1301,12 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 93, value: 'alive' },
+        // Episode 107 adapts chapter 172 (page 8), where Mr. 4 and Miss Merry
+        // Christmas carry him off while Mr. 2 wears his face in Nanohana.
+        { episode: 107, chapter: 172, value: 'captured' },
+        // Episode 127 adapts chapter 211, where he comes up out of the tomb
+        // carrying Luffy.
+        { episode: 127, chapter: 211, value: 'alive' },
         // Episode 1081 adapts chapter 1054: the headline says Sabo murdered
         // him, and Kurouma speaks of the assassination.
         { episode: 1081, chapter: 1054, value: 'deceased' },
@@ -1430,6 +1436,11 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 95, value: 'alive' },
+        // Episode 378 adapts chapter 486: the paper Absalom reads says he is
+        // now held in Impel Down.
+        // His cuffs come off at 480 (chapter 571), but he never leaves
+        // Marineford, so he stays a prisoner until he dies.
+        { episode: 378, chapter: 486, value: 'imprisoned' },
         // Episode 483 adapts chapter 574, where he dies in Luffy's arms.
         { episode: 483, chapter: 574, value: 'deceased' },
       ],

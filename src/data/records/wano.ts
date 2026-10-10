@@ -877,6 +877,12 @@ export const wano: Saga = {
         { episode: 994, chapter: 985, value: 'presumed-dead' },
         // Episode 1025 adapts chapter 1008: he sets the castle on fire, alive.
         { episode: 1025, chapter: 1008, value: 'alive' },
+        // Episode 1026 adapts chapter 1009, where the Scabbards cut off his
+        // heads and he collapses.
+        { episode: 1026, chapter: 1009, value: 'presumed-dead' },
+        // Episode 1051 adapts chapter 1026 (page 17), where he watches Jack
+        // fall from a window, alive.
+        { episode: 1051, chapter: 1026, value: 'alive' },
         // Episode 1075 adapts chapter 1048: Denjiro cuts off his last head.
         { episode: 1075, chapter: 1048, value: 'deceased' },
       ],

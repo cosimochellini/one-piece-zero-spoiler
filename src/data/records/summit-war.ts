@@ -455,7 +455,7 @@ export const summitWar: Saga = {
       id: 'shiryu',
       kind: 'character',
       revealedAtEpisode: 445,
-      revealedAtChapter: 549,
+      revealedAtChapter: 543,
       name: { it: 'Shiryu', en: 'Shiryu' },
       summary: {
         it: 'L’ex capo dei secondini di Impel Down, rinchiuso nella sua stessa prigione per aver ucciso troppi detenuti, a cui il direttore rende la sua lunga spada quando lo libera per combattere.',
