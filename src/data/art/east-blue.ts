@@ -250,6 +250,10 @@ const WOODEN_SWORD: Stroke[] = [
 const SWORD_RAISED = 'translate(62 136) rotate(32) scale(1.2)'
 const SWORD_LAID = 'translate(24 162) rotate(84)'
 
+/** The outline of Bell-mère's mandarin, the accent until her cigarette is. */
+const BELL_MERE_MANDARIN =
+  'M22 118 C22 92 44 80 72 80 C100 80 122 92 122 118 C122 142 100 156 72 156 C44 156 22 142 22 118 Z'
+
 export const eastBlueArt = {
   // One island of the weakest sea seen from the water: the ridge and its
   // peak, the cliff's jagged rim, the strata down its face and its far side
@@ -1777,14 +1781,11 @@ export const eastBlueArt = {
     shadow(80, 158, 56),
   ],
   // A mandarin from her grove in 3/4, its leaf and stem, the far side
-  // hatched, and her cigarette lying in front of it, burning: the ember and
-  // the smoke as the accent. She first opens her door with one in her mouth in
-  // 35 (ch. 77), a step after her record opens at 34; #503 moves the
-  // cigarette to 35. Her Marine coat waits for Genzo's story in 35.
+  // hatched, the fruit itself as the accent. Episode 34 gives only her name,
+  // and 32 the mandarin house the girls grew up in. Her cigarette joins it
+  // from 35, in `eastBlueRedrawn`.
   'bell-mere': [
-    {
-      d: 'M22 118 C22 92 44 80 72 80 C100 80 122 92 122 118 C122 142 100 156 72 156 C44 156 22 142 22 118 Z',
-    },
+    { d: BELL_MERE_MANDARIN, role: 'accent' },
     { d: 'M72 80 V70 M66 82 q6 3 12 0', role: 'soft' },
     {
       d: 'M72 70 C82 56 100 54 112 60 C100 72 86 74 72 70 Z M76 69 C88 66 98 63 106 61',
@@ -1795,14 +1796,7 @@ export const eastBlueArt = {
       d: 'M104 112 l10 -6 M102 126 l14 -8 M96 140 l14 -8 M88 150 l10 -6',
       role: 'ambient',
     },
-    { d: 'M48 178 L126 160 L128 168 L50 186 Z' },
-    { d: 'M112 163 L114 171', role: 'soft' },
-    { d: 'M126 160 L128 168 M130 158 l2 -1', role: 'accent' },
-    {
-      d: 'M131 156 C125 140 141 130 133 114 C127 102 139 92 135 78 C133 70 139 62 137 54',
-      role: 'accent',
-    },
-    shadow(78, 192, 60),
+    shadow(72, 166, 50),
   ],
   // His Marine cap with the mouse ears it was cut into, in 3/4 with its back
   // hatched, sitting on two banded bundles of notes, the kind Arlong pays him
@@ -3240,6 +3234,28 @@ export const eastBlueRedrawn: Redrawings = {
         ...moved(GENZO_PINWHEEL, 'translate(42 94)'),
         { d: 'M110 178 Q124 171 138 178', role: 'ambient' },
         { d: 'M98 180 H150', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  // The same mandarin in plain ink, and her cigarette lying in front of it,
+  // burning: the ember and the smoke as the accent. She first opens her door
+  // with one in her mouth in 35 (ch. 77, pinned at her own 78, which 35 also
+  // adapts).
+  'bell-mere': [
+    {
+      episode: 35,
+      chapter: 78,
+      value: [
+        { d: BELL_MERE_MANDARIN },
+        ...eastBlueArt['bell-mere'].slice(1, -1),
+        { d: 'M48 178 L126 160 L128 168 L50 186 Z' },
+        { d: 'M112 163 L114 171', role: 'soft' },
+        { d: 'M126 160 L128 168 M130 158 l2 -1', role: 'accent' },
+        {
+          d: 'M131 156 C125 140 141 130 133 114 C127 102 139 92 135 78 C133 70 139 62 137 54',
+          role: 'accent',
+        },
+        shadow(78, 192, 60),
       ],
     },
   ],

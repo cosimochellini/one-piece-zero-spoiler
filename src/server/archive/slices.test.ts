@@ -1294,6 +1294,10 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('genzo', [[44, 95]])).toHaveLength(1)
   })
 
+  it('lights Bell-mère’s cigarette only from episode 35', () => {
+    expect(walkStages('bell-mere', [[35, 78]])).toHaveLength(1)
+  })
+
   it('puts Jango in a Marine cap only from episode 128', () => {
     expect(walkStages('jango', [[128, 214]])).toHaveLength(1)
   })
