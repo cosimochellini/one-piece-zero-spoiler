@@ -73,6 +73,39 @@ const NATURAL = { type: 'natural', order: 'asc', ignoreCase: true }
 const ALIAS_ONLY =
   'Import through the `~/` alias instead of a parent-relative path.'
 
+// The syntax bans every file carries. A block that adds one spreads this list,
+// because a later block replaces a rule's options instead of merging them.
+const RESTRICTED_SYNTAX = [
+  {
+    selector: 'TSEnumDeclaration',
+    message:
+      'Enums are banned: erasableSyntaxOnly rejects them. Use a union of string literals, or an object with `as const`.',
+  },
+  {
+    selector: 'ForInStatement',
+    message:
+      '`for…in` walks the prototype chain. Iterate Object.keys or Object.entries instead.',
+  },
+  // Every shape `readonly` takes: a field, an index, a class member, a
+  // parameter property, a mapped type (`-readonly` strips it, so it
+  // stays), `readonly T[]`, and the built-in wrappers. The name is
+  // anchored: `DeepReadonly` or `ReadonlyURLSearchParams` are not these.
+  {
+    selector: [
+      'TSPropertySignature[readonly=true]',
+      'TSIndexSignature[readonly=true]',
+      'PropertyDefinition[readonly=true]',
+      'TSParameterProperty[readonly=true]',
+      'TSMappedType[readonly=true]',
+      "TSMappedType[readonly='+']",
+      "TSTypeOperator[operator='readonly']",
+      'TSTypeReference[typeName.name=/^Readonly(Array|Map|Set)?$/]',
+    ].join(', '),
+    message:
+      '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.',
+  },
+]
+
 const config = defineConfig(
   // Global ignores. `globalIgnores` is the only form that ignores rather than
   // scopes, which is why it is not folded into any block that carries `files`.
@@ -165,43 +198,35 @@ const config = defineConfig(
           overrides: { namedExports: 'declaration' },
         },
       ],
-      'no-restricted-syntax': [
-        'error',
-        {
-          selector: 'TSEnumDeclaration',
-          message:
-            'Enums are banned: erasableSyntaxOnly rejects them. Use a union of string literals, or an object with `as const`.',
-        },
-        {
-          selector: 'ForInStatement',
-          message:
-            '`for…in` walks the prototype chain. Iterate Object.keys or Object.entries instead.',
-        },
-        // Every shape `readonly` takes: a field, an index, a class member, a
-        // parameter property, a mapped type (`-readonly` strips it, so it
-        // stays), `readonly T[]`, and the built-in wrappers. The name is
-        // anchored: `DeepReadonly` or `ReadonlyURLSearchParams` are not these.
-        {
-          selector: [
-            'TSPropertySignature[readonly=true]',
-            'TSIndexSignature[readonly=true]',
-            'PropertyDefinition[readonly=true]',
-            'TSParameterProperty[readonly=true]',
-            'TSMappedType[readonly=true]',
-            "TSMappedType[readonly='+']",
-            "TSTypeOperator[operator='readonly']",
-            'TSTypeReference[typeName.name=/^Readonly(Array|Map|Set)?$/]',
-          ].join(', '),
-          message:
-            '`readonly` is banned: it is noise the code never relies on. `as const` is the one exception.',
-        },
-      ],
+      'no-restricted-syntax': ['error', ...RESTRICTED_SYNTAX],
       // Every module reaches through the `~/` alias. A `../` import encodes
       // where the importer happens to live, which is the one thing a file
       // should stay free to change.
       'no-restricted-imports': [
         'error',
         { patterns: [{ regex: String.raw`^\.\./`, message: ALIAS_ONLY }] },
+      ],
+    },
+  },
+
+  // react-doctor's js-combine-iterations fails `.filter().map()`, but only in
+  // `npm run check`, so this catches it on commit and in the editor instead.
+  // Shipped `src` only: react-doctor drops the rule in test files (it is
+  // tagged test-noise) and never scans `scripts/`, so a ban there would refuse
+  // what the gate accepts.
+  {
+    files: ['src/**/*.{ts,tsx}'],
+    ignores: TESTS,
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        ...RESTRICTED_SYNTAX,
+        {
+          selector:
+            "CallExpression[callee.property.name='map'] > MemberExpression.callee > CallExpression.object[callee.property.name='filter']",
+          message:
+            '.filter().map() makes two passes and react-doctor (js-combine-iterations) fails it in `npm run check`. Use one for…of loop with push; flatMap with [x]/[], unshift and concat are banned by unicorn.',
+        },
       ],
     },
   },
