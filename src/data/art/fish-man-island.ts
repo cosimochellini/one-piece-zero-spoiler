@@ -1023,9 +1023,10 @@ export const fishManIslandRedrawn: Redrawings = {
         shadow(84, 190, 70),
       ],
     },
-    // The cap is gone after his overdose and never comes back, so the
-    // trident is all he has left, leaning on its butt, the prongs in his
-    // colour. He is bareheaded from 551 (ch. 631).
+    // The cap is gone by the time he reaches Gyoncorde Plaza, before his
+    // overdose, and he does not wear it again, so the trident is all he has
+    // left, leaning on its butt, the prongs in his colour. He is bareheaded
+    // from 551 (ch. 631).
     {
       episode: 551,
       chapter: 631,
