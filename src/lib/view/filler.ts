@@ -44,21 +44,21 @@ export type FillerSlot =
   | { open: true; record: FillerRowView }
 
 /**
- * A run of rows. A whole filler arc is a run with a name, `null` while its
- * first episode is under fog; anything else is a run with no name at all.
+ * A run of rows. A whole filler arc is a run with its name; anything else is
+ * a run with no name at all. Saga names are always shown.
  */
 export interface FillerRun {
-  name: null | string | undefined
+  name: string | undefined
   rows: FillerSlot[]
 }
 
 /**
- * The rows that fall inside one canon arc, the arc named once it is open.
- * `current` marks the arc the reader is in, the one the page opens.
+ * The rows that fall inside one canon arc, and the arc's name. `current`
+ * marks the arc the reader is in, the one the page opens.
  */
 export interface FillerGroup extends Gated {
   current: boolean
-  name: null | string
+  name: string
   runs: FillerRun[]
 }
 
@@ -68,9 +68,9 @@ export interface SkipRange {
   last: number
 }
 
-/** The runs to skip inside one canon arc, the arc named once it is open. */
+/** The runs to skip inside one canon arc, and the arc's name. */
 export interface SkipGroup extends Gated {
-  name: null | string
+  name: string
   ranges: SkipRange[]
 }
 

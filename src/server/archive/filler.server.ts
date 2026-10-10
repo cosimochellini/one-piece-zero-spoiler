@@ -18,7 +18,6 @@ import {
   canonArcOf,
   type Chunk,
   chunkBy,
-  gateOf,
   INDEXED,
   type Indexed,
   type Looker,
@@ -34,8 +33,10 @@ import {
  * are in `./fillerRows.server`, the countdown in `./fillerCountdown.server`.
  *
  * The skip ranges and the strip are numbers and kinds only. They are sent
- * whatever the bookmark, because "episodes 54–60 are filler" names nothing;
- * only the name of the arc they sit in waits for the arc.
+ * whatever the bookmark, because "episodes 54–60 are filler" names nothing.
+ * The names of the sagas, canon and filler, are always shown too (owner,
+ * 2026-10-10): a reader finds their way by them, and the titles and plots
+ * under them still wait for the bookmark.
  */
 
 const HANDLE_SHAPE = /^[\da-z]{1,3}$/u
@@ -53,25 +54,20 @@ function fillerArcOf({ entry }: Indexed): FillerArc | undefined {
   return FILLER_ARCS.find((arc) => arc.first <= episode && episode <= arc.last)
 }
 
-/** A run: a filler arc, named once its first episode is open, or no arc. */
+/** A run: a filler arc, named, or a stretch of rows that belong to none. */
 function runOf(
   { key: arc, items }: Chunk<FillerArc | undefined, Indexed>,
   look: Looker,
 ): FillerRun {
-  const rows = items.map((item) => slotOf(item, look))
-  if (arc === undefined) {
-    return { name: undefined, rows }
+  return {
+    name: arc?.name[look.locale],
+    rows: items.map((item) => slotOf(item, look)),
   }
-
-  const open = items[0] !== undefined && look.sees(gateOf(items[0].entry))
-  return { name: open ? arc.name[look.locale] : null, rows }
 }
 
-/** An arc's name for this reader, or `null` while it is under fog. */
-function arcName(arc: Entity | undefined, look: Looker): null | string {
-  return arc !== undefined && look.sees(arcGateOf(arc)) ?
-      arc.name[look.locale]
-    : null
+/** A canon arc's name, in the page's locale. */
+function arcName(arc: Entity | undefined, locale: Locale): string {
+  return arc?.name[locale] ?? ''
 }
 
 /** The catalogue: one group per canon arc, the reader's own one current. */
@@ -82,7 +78,7 @@ function groupsFor(look: Looker): FillerGroup[] {
     return {
       ...arcGateOf(chunk.key),
       current: at === current,
-      name: arcName(chunk.key, look),
+      name: arcName(chunk.key, look.locale),
       runs: chunkBy(chunk.items, fillerArcOf).map((run) => runOf(run, look)),
     }
   })
@@ -95,7 +91,11 @@ function skipGroupsFor(look: Looker): SkipGroup[] {
   for (const { key, items } of BY_ARC) {
     const ranges = skipRangesOf(items.map((item) => item.entry))
     if (ranges.length > 0) {
-      groups.push({ ...arcGateOf(key), name: arcName(key, look), ranges })
+      groups.push({
+        ...arcGateOf(key),
+        name: arcName(key, look.locale),
+        ranges,
+      })
     }
   }
 

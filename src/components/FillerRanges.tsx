@@ -25,7 +25,7 @@ function follow(event: MouseEvent<HTMLAnchorElement>): void {
  * saga's name pinned to the top of the screen while its runs scroll under
  * it. Each run links down to its first row in the catalogue, opening the
  * saga there if it is closed. Numbers only, so they are on the page at every
- * bookmark; a saga's name waits for the saga.
+ * bookmark, and so are the saga names.
  */
 export function FillerRanges({
   groups,
@@ -46,12 +46,9 @@ export function FillerRanges({
           >
             <h3
               id={`skip-${String(first)}`}
-              {...stylex.props(
-                styles.saga,
-                group.name === null && styles.fogged,
-              )}
+              {...stylex.props(styles.saga)}
             >
-              {group.name ?? t('filler.foggedArc')}
+              {group.name}
             </h3>
             <ol {...stylex.props(styles.ranges)}>
               {group.ranges.map((range) => {
@@ -104,7 +101,6 @@ const styles = stylex.create({
     position: 'sticky',
     zIndex: z.sticky,
   },
-  fogged: { color: color.muted },
   ranges: {
     margin: 0,
     gap: space.xs,

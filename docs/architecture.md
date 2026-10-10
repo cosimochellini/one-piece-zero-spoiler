@@ -60,9 +60,11 @@ special is watched after. A chapter reader has no episode, so an entry opens for
 them at the later of two chapters: the one its canon arc opens at, and the last
 one the anime had adapted when the entry aired. The skip ranges and the strip of
 the whole series are numbers and kinds only, so they are sent at every bookmark.
-The countdown at the top, the reader's episode and the five after it, is built
-from the same rows, so a cell past the bookmark is a covered row like any other.
-A chapter reader gets no countdown, because the manga has no filler.
+So are the saga names, canon and filler, by the owner's choice: a reader finds
+their way by them, and the titles and plots under them still wait. The countdown
+at the top, the reader's episode and the five after it, is built from the same
+rows, so a cell past the bookmark is a covered row like any other. A chapter
+reader gets no countdown, because the manga has no filler.
 
 ## The archive in numbers
 

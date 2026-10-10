@@ -58,14 +58,7 @@ export function FillerCatalogue({
               >
                 ▸
               </span>
-              <span
-                {...stylex.props(
-                  styles.arcName,
-                  group.name === null && styles.fogged,
-                )}
-              >
-                {group.name ?? t('filler.foggedArc')}
-              </span>
+              <span {...stylex.props(styles.arcName)}>{group.name}</span>
               <span {...stylex.props(styles.arcCount)}>
                 {count === 1 ?
                   t('filler.entriesOne')
@@ -118,7 +111,6 @@ function Run({
   peek: (handle: string) => Promise<FillerRowView>
   run: FillerRun
 }): ReactElement {
-  const t = useT()
   const rows = (
     <ol {...stylex.props(styles.rows)}>
       {stretches(run.rows).map((stretch) => {
@@ -154,9 +146,7 @@ function Run({
 
   return (
     <div {...stylex.props(styles.run)}>
-      <h4 {...stylex.props(styles.runName, run.name === null && styles.fogged)}>
-        {run.name ?? t('filler.foggedRun')}
-      </h4>
+      <h4 {...stylex.props(styles.runName)}>{run.name}</h4>
       {rows}
     </div>
   )

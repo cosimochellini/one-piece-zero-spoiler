@@ -88,7 +88,6 @@ export const styles = stylex.create({
     textTransform: 'uppercase',
   },
   foldRows: { marginBlockStart: space.md },
-  fogged: { color: color.muted },
   // A filler arc: a gold rule down the side, because every row in it can
   // be skipped together.
   run: {

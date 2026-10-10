@@ -259,9 +259,6 @@ export const enDictionary = {
   'filler.entriesOne': '1 entry',
   'filler.foggedRows': '{count} entries under fog',
 
-  'filler.foggedArc': 'An arc under fog',
-  'filler.foggedRun': 'A filler arc under fog',
-
   'ships.title': 'Ships',
   'ships.builder': 'Designed by',
   'ships.launched': 'Received at',

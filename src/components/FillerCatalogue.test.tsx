@@ -59,7 +59,7 @@ const groups: FillerGroup[] = [
   {
     ...at(144),
     current: false,
-    name: null,
+    name: 'Skypiea',
     runs: [{ name: undefined, rows: [covered(196, '3'), covered(197, '4')] }],
   },
 ]
@@ -101,7 +101,7 @@ describe('FillerCatalogue', () => {
     ])
     expect(screen.getByText('3 entries')).toBeInTheDocument()
     expect(screen.getByText('2 entries under fog')).toBeInTheDocument()
-    expect(screen.getByText('An arc under fog')).toBeInTheDocument()
+    expect(screen.getByText('Skypiea')).toBeInTheDocument()
   })
 })
 
@@ -111,7 +111,7 @@ describe('FillerRanges', () => {
       <FillerRanges
         groups={[
           { ...at(45), name: 'Loguetown', ranges: [{ first: 54, last: 60 }] },
-          { ...at(92), name: null, ranges: [{ first: 102, last: 102 }] },
+          { ...at(92), name: 'Alabasta', ranges: [{ first: 102, last: 102 }] },
         ]}
         mode="season"
       />,
@@ -122,7 +122,7 @@ describe('FillerRanges', () => {
     expect(screen.getByText('S01E54–S01E60')).toBeInTheDocument()
     expect(screen.getByText('7 episodes')).toBeInTheDocument()
     expect(screen.getByText('1 episode')).toBeInTheDocument()
-    expect(screen.getByText('An arc under fog')).toBeInTheDocument()
+    expect(screen.getByRole('heading', { name: 'Alabasta' })).toBeVisible()
     expect(screen.getByText('S04E10').closest('a')).toHaveAttribute(
       'href',
       '#ep-102',

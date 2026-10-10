@@ -260,9 +260,6 @@ export const itDictionary: Dictionary = {
   'filler.entriesOne': '1 voce',
   'filler.foggedRows': '{count} voci nella nebbia',
 
-  'filler.foggedArc': 'Una saga nella nebbia',
-  'filler.foggedRun': 'Una saga filler nella nebbia',
-
   'ships.title': 'Navi',
   'ships.builder': 'Progettata da',
   'ships.launched': 'Ricevuta a',

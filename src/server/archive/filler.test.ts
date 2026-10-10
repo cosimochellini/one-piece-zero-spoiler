@@ -54,16 +54,15 @@ function firstHandle(): string {
 }
 
 describe('the filler page', () => {
-  it('covers every row and every name without a bookmark', () => {
+  it('covers every row without a bookmark, and still names every saga', () => {
     const page = fillerPage(null, 'en')
     const runNames = page.groups.flatMap((group) => runNamesOf(group))
 
     expect(slots(page)).toHaveLength(FILLER.length)
     expect(slots(page).every((slot) => !slot.open)).toBe(true)
-    expect(page.groups.every((group) => group.name === null)).toBe(true)
-    expect(runNames.filter((name) => typeof name === 'string')).toStrictEqual(
-      [],
-    )
+    expect(page.groups.every((group) => group.name !== '')).toBe(true)
+    expect(runNames).toContain('G-8')
+    expect(runNames).toContain('Uta’s Past')
   })
 
   it('sends no title or line the reader has not reached', () => {
@@ -108,13 +107,13 @@ describe('the filler page', () => {
     }
   })
 
-  it('names a filler arc once its first episode is open', () => {
-    const runs = fillerPage({ mode: 'episode', episode: 200 }, 'it')
+  it('names every filler arc in the page’s locale', () => {
+    const runs = fillerPage(null, 'it')
       .groups.flatMap((group) => group.runs)
       .filter((run) => run.name !== undefined)
 
     expect(runs.map((run) => run.name)).toContain('Navarone')
-    expect(runs.map((run) => run.name)).toContain(null)
+    expect(runs.map((run) => run.name)).toContain('Passato di Uta')
   })
 
   it('leaves mixed episodes out of the skip ranges', () => {
@@ -133,13 +132,12 @@ describe('the filler page', () => {
     }
   })
 
-  it('groups the skip ranges by saga, named once the saga is open', () => {
-    const covered = fillerPage(null, 'en').skipGroups
-    const open = fillerPage(ep(200), 'it').skipGroups
+  it('groups the skip ranges by saga, named at every bookmark', () => {
+    const none = fillerPage(null, 'it').skipGroups
 
-    expect(covered.every((group) => group.name === null)).toBe(true)
-    expect(open[0]?.name).toBe('Loguetown')
-    expect(open.at(-1)?.name).toBeNull()
+    expect(none[0]?.name).toBe('Loguetown')
+    expect(none.at(-1)?.name).toBe('Saga del Paese di Wano')
+    expect(fillerPage(ep(200), 'it').skipGroups).toStrictEqual(none)
     expect(rangesOf(ep(200))).toStrictEqual(rangesOf(null))
   })
 

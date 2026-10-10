@@ -100,7 +100,7 @@ export function arcGateOf(arc: Entity | undefined): Gated {
 }
 
 /** When a reader reaches an entry, in both units. */
-export function gateOf(entry: FillerEntry): Gated {
+function gateOf(entry: FillerEntry): Gated {
   const arc = canonArcOf(positionOf(entry))
 
   return {
