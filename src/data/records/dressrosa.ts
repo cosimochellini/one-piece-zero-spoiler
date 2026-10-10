@@ -2061,6 +2061,12 @@ export const dressrosa: Saga = {
       },
       status: [
         { episode: 691, value: 'alive' },
+        // Episode 994 adapts chapter 986 (pages 2-3): Kiku cuts him down and
+        // Kin'emon drops his hat on him as they leave.
+        { episode: 994, chapter: 986, value: 'presumed-dead' },
+        // Episode 1024 adapts chapter 1008: the Oden who greets the Scabbards
+        // is his drawing, and he is still alive to work it.
+        { episode: 1024, chapter: 1008, value: 'alive' },
         // Episode 1055 adapts chapter 1030: he collapses after his last
         // drawing.
         { episode: 1055, chapter: 1030, value: 'deceased' },

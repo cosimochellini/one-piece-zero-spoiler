@@ -582,7 +582,7 @@ export const devilFruits: Saga = {
       id: 'horm-horm-fruit',
       kind: 'fruit',
       revealedAtEpisode: 440,
-      revealedAtChapter: 549,
+      revealedAtChapter: 543,
       name: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
       summary: {
         it: 'Fa spuntare dalle dita aghi che iniettano ormoni, e un’iniezione basta a trasformare un uomo in una donna.',
@@ -594,7 +594,7 @@ export const devilFruits: Saga = {
       id: 'snip-snip-fruit',
       kind: 'fruit',
       revealedAtEpisode: 442,
-      revealedAtChapter: 549,
+      revealedAtChapter: 543,
       name: { it: 'Frutto Choki Choki', en: 'Snip-Snip Fruit' },
       summary: {
         it: 'Trasforma le mani in forbici che tagliano pietra e ferro come carta, e ciò che è stato tagliato si può poi piegare e portare via.',

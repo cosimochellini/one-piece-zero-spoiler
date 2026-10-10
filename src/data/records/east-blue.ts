@@ -788,7 +788,7 @@ export const eastBlue: Saga = {
       id: 'bell-mere',
       kind: 'character',
       revealedAtEpisode: 34,
-      revealedAtChapter: 80,
+      revealedAtChapter: 78,
       name: { it: 'Bellmer', en: 'Bell-mère' },
       summary: {
         it: 'Un’ex soldatessa della Marina che coltiva mandarini e cresce due bambine trovate su un campo di battaglia, con una sigaretta sempre accesa.',
@@ -2191,10 +2191,10 @@ export const eastBlue: Saga = {
         en: 'She comes home from a war with nothing and two girls who are not hers, and keeps them anyway, in a house where a meal a day is often all there is. She works a mandarin orchard that barely pays and argues with her daughters the way families argue. When the fish-men come counting heads, she never once says she is not their mother.',
       },
       status: [
-        { episode: 34, value: 'alive' },
-        // Shot in Nami's memory at 36 (chapter 78); pinned at the record's own
-        // chapter, which is later.
-        { episode: 36, chapter: 80, value: 'deceased' },
+        // Dead before she is met: Nojiko says their foster parent is dead at
+        // 32 (chapter 71), and 34 names her as the woman they will never
+        // forget. Her death in 36 (chapter 78) is a flashback.
+        { episode: 34, value: 'deceased' },
       ],
       affiliation: [
         {
