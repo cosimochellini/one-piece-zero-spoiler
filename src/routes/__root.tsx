@@ -124,9 +124,15 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
     void import('virtual:stylex:css-only')
   }, [])
 
+  // `suppressHydrationWarning` on <html> and <body> only: browser extensions
+  // (Grammarly writes `data-gr-ext-installed` on the body, others add classes
+  // to <html>) change these two elements before React hydrates, and the
+  // warning would blame the site for it. It covers their own attributes, one
+  // level deep, so a real mismatch anywhere inside the page still shows up.
   return (
     <html
       lang={locale}
+      suppressHydrationWarning
       {...stylex.props(styles.document)}
     >
       <head>
@@ -137,7 +143,10 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
         everywhere. src/styles/global.css is a reset plus @font-face only, so
         every value the page renders still comes from tokens.stylex.ts.
       */}
-      <body {...stylex.props(styles.body)}>
+      <body
+        suppressHydrationWarning
+        {...stylex.props(styles.body)}
+      >
         {children}
         <Scripts />
       </body>
