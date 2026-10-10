@@ -2015,7 +2015,8 @@ const ZEUS_IN_THE_STAFF: Stroke[] = [
 ]
 
 /** The tilt that sinks the Mammoth's bow nose first. */
-const MAMMOTH_SINKING = 'translate(3 4) rotate(-24 96 112) translate(-4 6)'
+const MAMMOTH_SINKING =
+  'translate(82 136) scale(0.82) translate(-82 -136) translate(3 4) rotate(-24 96 112) translate(-4 6)'
 
 /** The ring trim down the front edge of Pedro's disguise cape, a ring every 8. */
 const PEDRO_RINGS = [62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142]
@@ -2035,15 +2036,15 @@ export const wholeCakeRedrawn: Redrawings = {
       value: [
         ...moved(wholeCakeArt.jack.slice(0, 6), MAMMOTH_SINKING),
         {
-          d: 'M156 84 l6 4 l-3 4 l9 5 l-6 3 l4 6 l-4 2 M156 110 l10 2 l-4 4 l12 4 l-8 3 l5 5 M156 130 l6 -1 l-2 5 l8 2 l-6 4',
+          d: 'M156 84 l5 4 l-3 4 l6 5 l-5 3 l4 6 l-4 2 M156 110 l6 2 l-3 4 l7 4 l-6 3 l4 5 M156 130 l5 -1 l-2 5 l6 2 l-5 4',
           transform: MAMMOTH_SINKING,
         },
         {
-          d: 'M118 30 l16 -8 l3 5 l-16 8 Z M144 14 l12 8 l-3 4 l-12 -8 Z',
+          d: 'M106 30 l16 -8 l3 5 l-16 8 Z M132 14 l12 8 l-3 4 l-12 -8 Z',
           role: 'soft',
         },
         {
-          d: 'M108 40 l-4 -7 M158 34 l6 -3 M132 48 l5 -4 M150 52 l2 -6',
+          d: 'M96 40 l-4 -7 M146 34 l6 -3 M120 48 l5 -4 M138 52 l2 -6',
           role: 'soft',
         },
         {
@@ -2051,7 +2052,7 @@ export const wholeCakeRedrawn: Redrawings = {
           role: 'ambient',
         },
         {
-          d: 'M88 150 q6 -10 12 -2 q6 -12 14 0 M136 136 q6 -8 10 -2 q4 -8 12 0',
+          d: 'M76 150 q6 -10 12 -2 q6 -12 14 0 M124 136 q6 -8 10 -2 q4 -8 12 0',
           role: 'ambient',
         },
         ...SEA,
