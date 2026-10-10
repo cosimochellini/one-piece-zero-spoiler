@@ -2422,27 +2422,31 @@ export const dressrosaRedrawn: Redrawings = {
     {
       episode: 912,
       chapter: 921,
-      value: [
-        {
-          d: 'M-4 62 C30 30 100 22 164 40 M-4 94 C26 70 70 58 106.5 57.2 M138.3 79.5 C146 76 156 74 164 74',
-        },
-        {
-          d: 'M12 82 C6 72 8 58 16 50 M32 72 C26 62 28 48 36 40 M54 64 C48 54 50 40 58 32 M78 60 C72 50 74 36 82 28',
-          role: 'soft',
-        },
-        {
-          d: 'M0 56.5 C-4 46.5 10 40.5 4 30.5 C14 34.5 20 42.5 18 48.5 C22 44.5 24 31.6 30 39.6 C26 29.6 40 23.6 34 13.6 C44 17.6 50 25.6 48 31.6 C52 27.6 54 23.6 60 31.6 C56 21.6 70 15.6 64 5.6 C74 9.6 80 17.6 78 23.6 C82 19.6 84 20.7 90 28.7 C86 18.7 100 12.7 94 2.7 C104 6.7 110 14.7 108 20.7 C112 16.7 114 21.7 120 29.7 C116 19.7 130 13.7 124 3.7 C134 7.7 140 15.7 138 21.7 C142 17.7 142 26.1 148 34.1',
-        },
-        {
-          d: 'M6 44.5 l5 4 M36 27.6 l5 4 M66 19.6 l5 4 M96 16.7 l5 4 M126 17.7 l5 4',
-          role: 'ambient',
-        },
-        ...KAIDO_FORELEG,
-        {
-          d: 'M2 180 C2 170 14 166 20 172 C22 164 36 162 40 170 C46 166 54 170 52 176 M52 176 c6 0 6 -8 0 -8 c-3 0 -3 4 0 4 M98 180 C100 170 112 168 118 172 C122 164 136 164 140 172 C146 170 154 174 152 180 M98 180 c-6 0 -6 -8 0 -8 c3 0 3 4 0 4 M140 130 c10 0 12 -12 2 -14 c-6 0 -8 8 -2 8',
-          role: 'ambient',
-        },
-      ],
+      // Shrunk a little so the coil and the mane stay inside the box.
+      value: moved(
+        [
+          {
+            d: 'M-4 62 C30 30 100 22 164 40 M-4 94 C26 70 70 58 106.5 57.2 M138.3 79.5 C146 76 156 74 164 74',
+          },
+          {
+            d: 'M12 82 C6 72 8 58 16 50 M32 72 C26 62 28 48 36 40 M54 64 C48 54 50 40 58 32 M78 60 C72 50 74 36 82 28',
+            role: 'soft',
+          },
+          {
+            d: 'M0 56.5 C-4 46.5 10 40.5 4 30.5 C14 34.5 20 42.5 18 48.5 C22 44.5 24 31.6 30 39.6 C26 29.6 40 23.6 34 13.6 C44 17.6 50 25.6 48 31.6 C52 27.6 54 23.6 60 31.6 C56 21.6 70 15.6 64 5.6 C74 9.6 80 17.6 78 23.6 C82 19.6 84 20.7 90 28.7 C86 18.7 100 12.7 94 2.7 C104 6.7 110 14.7 108 20.7 C112 16.7 114 21.7 120 29.7 C116 19.7 130 13.7 124 3.7 C134 7.7 140 15.7 138 21.7 C142 17.7 142 26.1 148 34.1',
+          },
+          {
+            d: 'M6 44.5 l5 4 M36 27.6 l5 4 M66 19.6 l5 4 M96 16.7 l5 4 M126 17.7 l5 4',
+            role: 'ambient',
+          },
+          ...KAIDO_FORELEG,
+          {
+            d: 'M2 180 C2 170 14 166 20 172 C22 164 36 162 40 170 C46 166 54 170 52 176 M52 176 c6 0 6 -8 0 -8 c-3 0 -3 4 0 4 M98 180 C100 170 112 168 118 172 C122 164 136 164 140 172 C146 170 154 174 152 180 M98 180 c-6 0 -6 -8 0 -8 c3 0 3 4 0 4 M140 130 c10 0 12 -12 2 -14 c-6 0 -8 8 -2 8',
+            role: 'ambient',
+          },
+        ],
+        'translate(8 10) scale(0.9)',
+      ),
     },
   ],
   // His katana snapped by Kaido's club: the hilt and the guard as first
@@ -2538,11 +2542,11 @@ export const dressrosaRedrawn: Redrawings = {
       ],
     },
   ],
-  // His pirate hat in the grass behind the rifle: the crown dotted, the brim
-  // turned up into two wide wings curling at the tips, goggles on the front
-  // of the brim, two feathers at the back, and its far side hatched. No
-  // crew mark. The curled fern stands beside it. He wears it at the
-  // Reverie (884, ch. 906).
+  // His pirate hat set in the grass behind the rifle: the crown dotted, the
+  // brim turned up into two wide wings curling at the tips, two feathers at
+  // the back, and its far side hatched. No crew mark, and no goggles: they
+  // are his old outfit's, and on the brim they read as eyes. The curled fern
+  // stands beside it. He wears it at the Reverie (884, ch. 906).
   'leo': [
     {
       episode: 884,
@@ -2556,10 +2560,7 @@ export const dressrosaRedrawn: Redrawings = {
               d: 'M50 102 C40 96 32 86 28 74 C26 66 18 64 15 71 C12 79 18 87 26 89 C32 110 54 124 80 124 C106 124 128 110 134 89 C142 87 148 79 145 71 C142 64 134 66 132 74 C128 86 120 96 110 102',
               role: 'accent',
             },
-            {
-              d: `M50 102 Q80 112 110 102 ${circle(70.5, 114, 5.5)} ${circle(89.5, 114, 5.5)} M76 114 H84`,
-              role: 'soft',
-            },
+            { d: 'M50 102 Q80 112 110 102', role: 'soft' },
             {
               d: dots([
                 [70, 66],

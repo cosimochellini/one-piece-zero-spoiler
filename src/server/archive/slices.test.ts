@@ -1353,7 +1353,7 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('koala', [[663, 731]])).toHaveLength(1)
   })
 
-  it('sets Leo’s pirate hat in the grass only from episode 884', () => {
+  it('gives Leo his pirate hat only from episode 884', () => {
     expect(walkStages('leo', [[884, 906]])).toHaveLength(1)
   })
 
