@@ -2188,8 +2188,8 @@ export const eastBlue: Saga = {
         en: 'Nojiko’s and Nami’s foster mother',
       },
       log: {
-        it: 'Ha cresciuto due orfane, Nojiko e Nami, nella casa tra i mandarini, e per un periodo le tre ci hanno vissuto felici. All’arrivo della ciurma a Cocoyashi è già morta, e Nojiko dice che nessuna delle due sorelle la dimenticherà mai. Quando Nojiko comincia a spiegare alla ciurma perché Nami si è unita ad Arlong, il racconto parte da lei, otto anni prima.',
-        en: 'She brought up two orphans, Nojiko and Nami, in the house among the mandarin trees, and for a while the three of them lived there happily. By the time the crew reaches Cocoyasi she is dead, and Nojiko says that neither sister will ever forget her. When Nojiko starts to tell the crew why Nami joined Arlong, the story begins with her, eight years ago.',
+        it: 'Nojiko e Nami erano orfane, e lei le ha cresciute nella casa tra i mandarini, dove le tre vivevano felici a Cocoyashi. Nojiko racconta a Usop che chi le ha adottate è morto. Alla ciurma dice che nessuna delle due sorelle la dimenticherà mai, e che tutto risale a otto anni prima.',
+        en: 'Nojiko and Nami were orphans, and she brought them up in the house among the mandarin trees, where the three of them lived happily in Cocoyasi. Nojiko tells Usopp that their foster parent is dead. She tells the crew that neither sister will ever forget her, and that it all goes back to eight years ago.',
       },
       status: [
         // Dead before she is met: Nojiko says their foster parent is dead at
@@ -2220,8 +2220,8 @@ export const eastBlue: Saga = {
     'nezumi': {
       role: { it: 'Capitano della Marina', en: 'Marine captain' },
       log: {
-        it: 'Comanda la sedicesima base e da anni chiude gli occhi su tutto quello che accade nelle isole che dovrebbe proteggere, in cambio di una parte del riscosso. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
-        en: 'He commands the sixteenth branch and has for years closed his eyes to everything that happens on the islands he is meant to protect, in exchange for a share. He arrives at Nami’s orchard with uniformed men and calls a robbery the law: to him, money stolen from pirates now belongs to the government.',
+        it: 'Comanda la sedicesima base e prende regolarmente denaro da Arlong, che lo chiama un ospite di riguardo. Si presenta nel frutteto di Nami con i soldati in divisa e chiama legge quello che è un saccheggio: per lui il denaro rubato ai pirati ora appartiene al governo.',
+        en: 'He commands the sixteenth branch and takes regular payments from Arlong, who calls him a valued guest. He arrives at Nami’s orchard with uniformed men and calls a robbery the law: to him, money stolen from pirates now belongs to the government.',
       },
       status: [{ episode: 36, value: 'alive' }],
       affiliation: [
