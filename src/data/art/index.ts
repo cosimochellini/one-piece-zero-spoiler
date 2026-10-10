@@ -3,7 +3,7 @@ import { dressrosaArt, dressrosaRedrawn } from './dressrosa'
 import { eastBlueArt, eastBlueRedrawn } from './east-blue'
 import { eggheadArt, eggheadRedrawn } from './egghead'
 import { elbafArt, elbafRedrawn } from './elbaf'
-import { fishManIslandArt } from './fish-man-island'
+import { fishManIslandArt, fishManIslandRedrawn } from './fish-man-island'
 import { fruitArt, fruitRedrawn } from './fruits'
 import { skypieaArt, skypieaRedrawn } from './skypiea'
 import type { Redrawings } from './stroke'
@@ -49,6 +49,7 @@ export const REDRAWINGS: Redrawings = {
   ...waterSevenRedrawn,
   ...thrillerBarkRedrawn,
   ...summitWarRedrawn,
+  ...fishManIslandRedrawn,
   ...dressrosaRedrawn,
   ...wholeCakeRedrawn,
   ...wanoRedrawn,

@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, house, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /** The slant Fukaboshi's trident is drawn at. */
 const FUKABOSHI_SLANT = 'rotate(16 80 110)'
@@ -201,7 +201,8 @@ export const fishManIslandArt = {
   // Her crystal ball in her colour, the far side of the glass hatched and a
   // highlight on the near side, the long thin pipe she smokes lying in front
   // of it, and a shark's tail behind with its crescent fin, the dark top
-  // hatched. Luffy and Usopp find the ball in her café at 529.
+  // hatched. Luffy and Usopp find the ball in her café at 529. It is
+  // broken by 573, in `fishManIslandRedrawn`.
   'shyarly': [
     { d: circle(62, 112, 36), role: 'accent' },
     { d: 'M38 98 C42 86 52 80 62 78', role: 'soft' },
@@ -250,7 +251,8 @@ export const fishManIslandArt = {
   // its panels meeting at the button, the far side of the crown and of the
   // band hatched, and the short visor out front with its underside hatched.
   // He wears it from 530 (ch. 611). The cap's small trident mark is left
-  // out: he is first seen with the trident at 535 (ch. 616).
+  // out: he is first seen with the trident at 535 (ch. 616), in
+  // `fishManIslandRedrawn`.
   'hody-jones': [
     {
       d: 'M44 126 C26 124 10 112 12 98 C16 72 54 52 94 54 C134 56 160 74 156 98 C154 112 140 120 124 122',
@@ -688,8 +690,8 @@ export const fishManIslandArt = {
   // His black high-heeled boots, one standing behind the other, the white
   // ruffles round their tops in his colour and the dark leather hatched on
   // the side that turns away. He wears them under the pink suit at 571. The
-  // shell he hides in comes the next episode, and the dark glasses are left
-  // out.
+  // shell he hides in comes the next episode, in `fishManIslandRedrawn`, and
+  // the dark glasses are left out.
   'pekoms': [
     ...PEKOMS_BOOT.map((stroke) => ({
       // The boot standing behind.
@@ -971,3 +973,129 @@ export const fishManIslandArt = {
     shadow(100, 192, 56),
   ],
 } satisfies Drawings
+
+/** Hody's cap as his first drawing has it, without its shadow. */
+const HODY_CAP = fishManIslandArt['hody-jones'].slice(0, -1)
+
+/**
+ * The head of Hody's trident upright on x 80: the outer prongs, each a thin
+ * pole with a plain point, and the one curved base they rise out of. No
+ * crossbar and no collar.
+ */
+const HODY_PRONGS: Stroke = {
+  d: 'M66 46 V26 L68 18 L70 26 V46 M90 46 V26 L92 18 L94 26 V46',
+}
+const HODY_PRONG_BASE: Stroke = {
+  d: 'M66 46 C66 56 72 62 78 62 M70 46 C70 52 74 57 78 57 M94 46 C94 56 88 62 82 62 M90 46 C90 52 86 57 82 57',
+}
+
+/** The long thin pole of Hody's trident, its middle prong and its capped butt. */
+const HODY_TRIDENT_POLE: Stroke[] = [
+  { d: 'M78 186 V24 L80 14 L82 24 V186' },
+  { d: 'M77 186 h6 v4 h-6 Z' },
+  { d: 'M78 68 h4 M78 72 h4', role: 'soft' },
+]
+
+/** Shyarly's shark tail behind, drawn a little smaller to make room. */
+const SHYARLY_TAIL = moved(
+  fishManIslandArt.shyarly.slice(4, 8),
+  'translate(158 182) scale(0.85) translate(-158 -182)',
+)
+
+/** Pekoms's two boots as his first drawing stands them, without the shadow. */
+const PEKOMS_BOOTS = fishManIslandArt.pekoms.slice(0, -1)
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const fishManIslandRedrawn: Redrawings = {
+  // His cap smaller, and his trident standing beside it: a long thin red
+  // pole taller than he is, three plain prongs. He holds it when he raids
+  // the palace at 535 (ch. 616).
+  'hody-jones': [
+    {
+      episode: 535,
+      chapter: 616,
+      value: [
+        ...moved(HODY_CAP, 'translate(-6 36) scale(0.8)'),
+        ...moved(
+          [HODY_PRONGS, HODY_PRONG_BASE, ...HODY_TRIDENT_POLE],
+          'translate(56 -2)',
+        ),
+        shadow(84, 190, 70),
+      ],
+    },
+    // The cap is gone after his overdose and never comes back, so the
+    // trident is all he has left, leaning on its butt, the prongs in his
+    // colour. He is bareheaded from 551 (ch. 631).
+    {
+      episode: 551,
+      chapter: 631,
+      value: [
+        ...moved(
+          [
+            { ...HODY_PRONGS, role: 'accent' },
+            { ...HODY_PRONG_BASE, role: 'accent' },
+            ...HODY_TRIDENT_POLE,
+          ],
+          'rotate(8 80 188)',
+        ),
+        { d: 'M30 190 H130', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  // Her crystal ball broken in two on the floor: one half standing on its
+  // cut edge, the far side hatched, the other lying open like a bowl with a
+  // jagged rim, shards between them. The pipe and the tail are as before.
+  // She has given up on the future by 573 (ch. 653).
+  'shyarly': [
+    {
+      episode: 573,
+      chapter: 653,
+      value: [
+        {
+          d: 'M10 154 C6 122 22 96 44 94 C56 93 64 100 68 110 L62 118 L68 126 L61 133 L66 141 L60 147 L64 154 Z',
+          role: 'accent',
+        },
+        { d: 'M20 124 C22 112 30 104 40 101', role: 'soft' },
+        { d: 'M48 106 l7 -4 M50 122 l8 -5 M48 138 l8 -5', role: 'ambient' },
+        {
+          d: 'M66 132 C66 148 78 156 90 156 C102 156 112 148 114 134',
+          role: 'accent',
+        },
+        { d: 'M66 132 L74 127 L78 131 L88 124 L94 129 L104 126 L114 134' },
+        { d: 'M70 132 C78 138 104 140 112 134', role: 'soft' },
+        { d: 'M74 146 l8 -6 M86 150 l9 -7', role: 'ambient' },
+        {
+          d: 'M60 162 l4 -5 l4 4 Z M98 164 l3 -4 l5 3 l-2 3 Z M74 166 l4 -3 l2 4 Z',
+        },
+        { d: 'M6 158 H104', role: 'ambient', dashed: true },
+        ...SHYARLY_TAIL,
+        ...fishManIslandArt.shyarly.slice(8, 11),
+      ],
+    },
+  ],
+  // The shell he pulls into when the Marines open fire, a high dome of
+  // uneven plates with the far side hatched, and his boots standing beside
+  // it, smaller. No head and no paw: he is all inside. He shows the turtle
+  // at 572 (ch. 652, below his record's chapter, so no pin).
+  'pekoms': [
+    {
+      episode: 572,
+      value: [
+        {
+          d: 'M102 160 C70 164 30 160 14 152 C6 116 18 64 58 50 C96 38 128 62 132 102 C133 108 133 114 132 120',
+        },
+        {
+          d: 'M12 116 L36 106 L56 118 L84 104 L106 116 L132 108 M36 106 L30 74 M56 118 L52 160 M84 104 L88 60 M30 74 L62 70 L88 60 L116 78 M62 70 L58 50 M106 116 L104 130',
+          role: 'soft',
+        },
+        { d: 'M116 70 l8 -4 M122 90 l8 -4 M124 112 l8 -4', role: 'ambient' },
+        { d: 'M24 140 l6 -4 M70 146 l6 -4', role: 'soft' },
+        ...moved(
+          PEKOMS_BOOTS,
+          'translate(104 120) scale(0.56) translate(-38 -58)',
+        ),
+        shadow(84, 186, 70),
+      ],
+    },
+  ],
+}
