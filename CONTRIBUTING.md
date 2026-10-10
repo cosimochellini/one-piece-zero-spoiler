@@ -232,3 +232,6 @@ The project was built with [Claude Code](https://claude.com/claude-code), and
 agents are welcome. The skills in `.claude/skills/` load in Claude Code, and
 `tone-of-voice` is the one to use for any copy. An agent's pull request goes
 through the same checks and the same review as anyone else's.
+
+[CODING_STANDARDS.md](CODING_STANDARDS.md) is what the reviewer reads: the
+judgement calls the tests do not hold, and where owner rulings live.
