@@ -208,6 +208,57 @@ export const enDictionary = {
   'places.filedHere': 'Found here',
   'places.filedNone': 'Nothing in the wiki is linked to this place yet.',
 
+  'filler.title': 'Filler episodes',
+  'filler.count':
+    '{episodes} episodes that are filler in whole or in part, and {unnumbered} films and specials. Each one opens at the episode where it airs.',
+  'filler.pageTitle': 'Filler episodes | Zero Spoiler',
+  'filler.pageDescription':
+    'Which One Piece episodes are filler, mixed or recaps, the runs you can skip, and where the films and specials fit.',
+  'filler.noBookmark':
+    'You have not set a bookmark yet, so every title and plot is under fog. The runs to skip and the strip are only numbers, so they stay visible.',
+  'filler.stripTitle': 'The whole series',
+  'filler.stripLede': 'Every episode from 1 to {aired}, a hundred to a row.',
+  'filler.stripLabel':
+    'Episodes 1 to {aired}: {filler} filler, {mixed} mixed and {recap} recaps.',
+  'filler.legendCanon': 'Canon',
+  'filler.legendHere': 'Your bookmark',
+  'filler.kind.filler': 'Filler',
+  'filler.kind.mixed': 'Mixed',
+  'filler.kind.recap': 'Recap',
+  'filler.kind.film': 'Film',
+  'filler.kind.special': 'Special',
+  'filler.skipTitle': 'What you can skip',
+  'filler.skipLede':
+    'Pure filler and recaps, in runs. A mixed episode breaks a run, because skipping it loses part of the story.',
+  'filler.skipCount': '{count} episodes',
+  'filler.skipCountOne': '1 episode',
+  'filler.episode': 'EP {value}',
+  'filler.episodes': 'EP {first}–{last}',
+  'filler.after': 'After {value}',
+  'filler.catalogueTitle': 'Episode by episode',
+  'filler.catalogueLede':
+    'Grouped by the arc they air in. The entries after your bookmark are under fog.',
+  'filler.countdown.next': 'The next filler is {count} episodes away.',
+  'filler.countdown.nextOne': 'The next episode is filler.',
+  'filler.countdown.inRun':
+    'You are in a filler run. The canon picks up again at {resume}, {count} episodes away.',
+  'filler.countdown.inRunOne':
+    'You are in a filler run. The canon picks up again with the next episode.',
+  'filler.countdown.none':
+    'There is no filler ahead, up to episode {aired}, the last one aired.',
+  'filler.countdown.span': 'Next run to skip: {span}.',
+  'filler.countdown.label': 'Your episode and the five after it',
+  'filler.countdown.here': 'your bookmark',
+  'filler.cell.here': 'Now',
+  'filler.cell.filler': 'Filler',
+  'filler.cell.mixed': 'Mixed',
+  'filler.cell.recap': 'Recap',
+  'filler.cell.film': 'Film',
+  'filler.cell.special': 'Special',
+  'filler.entries': '{count} entries',
+  'filler.entriesOne': '1 entry',
+  'filler.foggedRows': '{count} entries under fog',
+
   'ships.title': 'Ships',
   'ships.builder': 'Designed by',
   'ships.launched': 'Received at',

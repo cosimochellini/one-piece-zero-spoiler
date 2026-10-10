@@ -209,6 +209,57 @@ export const itDictionary: Dictionary = {
   'places.filedNone':
     'Nella wiki non c’è ancora niente collegato a questo luogo.',
 
+  'filler.title': 'Episodi filler',
+  'filler.count':
+    '{episodes} episodi filler in tutto o in parte, e {unnumbered} tra film e speciali. Ognuno è visibile dall’episodio in cui va in onda.',
+  'filler.pageTitle': 'Episodi filler | Zero Spoiler',
+  'filler.pageDescription':
+    'Quali episodi di One Piece sono filler, misti o riassunti, i gruppi che puoi saltare e dove vanno i film e gli speciali.',
+  'filler.noBookmark':
+    'Non hai ancora impostato un segnalibro, quindi ogni titolo e ogni trama sono nella nebbia. I gruppi da saltare e la striscia sono solo numeri, quindi restano visibili.',
+  'filler.stripTitle': 'Tutta la serie',
+  'filler.stripLede': 'Ogni episodio da 1 a {aired}, cento per riga.',
+  'filler.stripLabel':
+    'Episodi da 1 a {aired}: {filler} filler, {mixed} misti e {recap} riassunti.',
+  'filler.legendCanon': 'Canonico',
+  'filler.legendHere': 'Il tuo segnalibro',
+  'filler.kind.filler': 'Filler',
+  'filler.kind.mixed': 'Misto',
+  'filler.kind.recap': 'Riassunto',
+  'filler.kind.film': 'Film',
+  'filler.kind.special': 'Speciale',
+  'filler.skipTitle': 'Cosa puoi saltare',
+  'filler.skipLede':
+    'Filler puri e riassunti, raggruppati. Un episodio misto interrompe il gruppo, perché saltarlo fa perdere una parte della storia.',
+  'filler.skipCount': '{count} episodi',
+  'filler.skipCountOne': '1 episodio',
+  'filler.episode': 'EP {value}',
+  'filler.episodes': 'EP {first}–{last}',
+  'filler.after': 'Dopo {value}',
+  'filler.catalogueTitle': 'Episodio per episodio',
+  'filler.catalogueLede':
+    'Raggruppati per la saga in cui vanno in onda. Le voci dopo il tuo segnalibro sono nella nebbia.',
+  'filler.countdown.next': 'Il prossimo filler è tra {count} episodi.',
+  'filler.countdown.nextOne': 'Il prossimo episodio è un filler.',
+  'filler.countdown.inRun':
+    'Sei dentro un gruppo filler. Il canon riprende da {resume}, tra {count} episodi.',
+  'filler.countdown.inRunOne':
+    'Sei dentro un gruppo filler. Il canon riprende con il prossimo episodio.',
+  'filler.countdown.none':
+    'Non ci sono filler in vista fino all’episodio {aired}, l’ultimo uscito.',
+  'filler.countdown.span': 'Il prossimo gruppo da saltare: {span}.',
+  'filler.countdown.label': 'Il tuo episodio e i cinque successivi',
+  'filler.countdown.here': 'il tuo segnalibro',
+  'filler.cell.here': 'Ora',
+  'filler.cell.filler': 'Filler',
+  'filler.cell.mixed': 'Misto',
+  'filler.cell.recap': 'Recap',
+  'filler.cell.film': 'Film',
+  'filler.cell.special': 'Speciale',
+  'filler.entries': '{count} voci',
+  'filler.entriesOne': '1 voce',
+  'filler.foggedRows': '{count} voci nella nebbia',
+
   'ships.title': 'Navi',
   'ships.builder': 'Progettata da',
   'ships.launched': 'Ricevuta a',

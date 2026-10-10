@@ -187,12 +187,18 @@ export function bookmarkValue(bookmark: NonNullable<Bookmark>): string {
  * the ceiling) falls back to the bare number rather than to nothing.
  */
 export function thresholdValue(gated: Gated, mode: BookmarkMode): string {
-  const threshold = thresholdIn(gated, mode)
-  const at = mode === 'season' ? locateEpisode(threshold) : null
+  return episodeValue(thresholdIn(gated, mode), mode)
+}
 
-  return at === null ?
-      String(threshold)
-    : formatSeasonCode(at.season, at.episode)
+/**
+ * An absolute episode as the reader counts: `S04E38` for a season reader,
+ * the bare number for anyone else. A chapter reader has no episode of their
+ * own, so they are shown the absolute one.
+ */
+export function episodeValue(episode: number, mode: BookmarkMode): string {
+  const at = mode === 'season' ? locateEpisode(episode) : null
+
+  return at === null ? String(episode) : formatSeasonCode(at.season, at.episode)
 }
 
 /** Pulls a number into `1 … ceiling`. */
