@@ -1728,8 +1728,8 @@ export const eastBlueArt = {
     shadow(124, 186, 30),
   ],
   // Her house among the mandarin trees in 3/4, the far wall and roof
-  // hatched, the fruit as the accent. Usopp wakes up in it in 31 (ch. 70): "I
-  // grow oranges here."
+  // hatched, the fruit as the accent. Usopp wakes up in it in 32 (ch. 70): "I
+  // grow tangerines here."
   'nojiko': [
     { d: 'M50 152 V108 H102 V152 M102 108 L122 96 V142 L102 152' },
     { d: 'M44 110 L76 82 L108 110 M76 82 L96 70 L128 96 L122 100' },
@@ -1779,7 +1779,8 @@ export const eastBlueArt = {
   // A mandarin from her grove in 3/4, its leaf and stem, the far side
   // hatched, and her cigarette lying in front of it, burning: the ember and
   // the smoke as the accent. She first opens her door with one in her mouth in
-  // 34 (ch. 77). Her Marine coat waits for Genzo's story in 35.
+  // 35 (ch. 77), a step after her record opens at 34; #503 moves the
+  // cigarette to 35. Her Marine coat waits for Genzo's story in 35.
   'bell-mere': [
     {
       d: 'M22 118 C22 92 44 80 72 80 C100 80 122 92 122 118 C122 142 100 156 72 156 C44 156 22 142 22 118 Z',
