@@ -197,6 +197,10 @@ describe('the countdown', () => {
     expect(countdown?.next).toBeNull()
   })
 
+  it('has no countdown for a bookmark past the last aired episode', () => {
+    expect(fillerPage(ep(LAST_AIRED + 1), 'en').countdown).toBeNull()
+  })
+
   it('marks a film between two cells, under fog past the bookmark', () => {
     const countdown = fillerPage(ep(1026), 'en').countdown
     const film = countdown?.marks.find((mark) => mark.after === 1027)

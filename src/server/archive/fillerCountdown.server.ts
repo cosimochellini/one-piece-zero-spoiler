@@ -55,15 +55,26 @@ function marksBetween(
   return marks
 }
 
+/**
+ * The reader's aired episode, or `null`: no bookmark, a chapter one, or one
+ * past the last aired episode, which the bookmark accepts and the row cannot
+ * draw.
+ */
+function airedEpisodeOf(bookmark: Bookmark): null | number {
+  if (bookmark === null || bookmark.mode === 'chapter') {
+    return null
+  }
+
+  const here = absoluteEpisodeOf(bookmark)
+  return here !== null && here <= LAST_AIRED ? here : null
+}
+
 /** The countdown at this bookmark, or `null` where there is none. */
 export function countdownOf(
   bookmark: Bookmark,
   look: Looker,
 ): Countdown | null {
-  const here =
-    bookmark === null || bookmark.mode === 'chapter' ?
-      null
-    : absoluteEpisodeOf(bookmark)
+  const here = airedEpisodeOf(bookmark)
   if (here === null) {
     return null
   }
