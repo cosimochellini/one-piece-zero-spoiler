@@ -2365,16 +2365,7 @@ export const wholeCakeRedrawn: Redrawings = {
           d: 'M33 87 Q42 87 49 80 M30 78 Q37 78 43 71 M103 87 Q94 87 87 80 M106 78 Q99 78 93 71',
           role: 'soft',
         },
-        {
-          d: `M43 100 C52 106 84 106 93 100 ${dots([
-            [50, 106],
-            [59, 108],
-            [68, 108.6],
-            [77, 108],
-            [86, 106],
-          ])}`,
-          role: 'soft',
-        },
+        { d: 'M43 100 C52 106 84 106 93 100', role: 'soft' },
         ...moved(
           wholeCakeArt.jorul.slice(5, 10),
           'translate(236.1 121.8) rotate(138) scale(0.74)',
