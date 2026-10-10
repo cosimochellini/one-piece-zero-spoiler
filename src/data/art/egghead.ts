@@ -130,20 +130,49 @@ export const eggheadArt = {
     shadow(82, 178, 50),
   ],
 
-  // Lilith's red aviator helmet seen 3/4 from the side and behind, as she
-  // wears it at 1090: the strap of its goggles round the back as the accent,
-  // with its buckle, the near ear pad and its chin strap, the far side
-  // hatched. The goggles themselves are on the far side, out of sight.
+  // The two fists of the Vegaforce-01, her giant robot, rising out of the
+  // sea with the Sunny held across them, as she carries the ship at 1091:
+  // the fists as the accent, their fingers in soft, the right side of each
+  // fist and forearm showing its thickness, the forearms ringed, the far
+  // side of the right one hatched. The Sunny side on, the lion's mane at the
+  // prow and no flag. No helmet: she wears hers only in the cockpit at 1090.
   'lilith': [
-    { d: 'M34 132 C28 88 54 58 88 58 C120 58 136 92 130 132' },
-    { d: 'M34 132 Q82 148 130 132' },
-    { d: 'M36 98 Q72 112 106 100 M36 108 Q72 122 106 110', role: 'accent' },
-    { d: 'M48 101 v10 h8 v-10z', role: 'soft' },
-    { d: 'M108 96 q12 -2 14 8 v12 q-2 10 -14 8 Z' },
-    { d: 'M116 124 C118 140 112 152 102 158', role: 'soft' },
-    { d: 'M40 88 l8 -7 M38 122 l9 -8', role: 'ambient' },
-    { d: 'M58 74 q14 -10 30 -10', role: 'soft' },
-    shadow(82, 178, 50),
+    {
+      d: 'M136 84 H28 C29 96 34 106 42 112 M80 116 H90 M128 108 C132 102 135 94 136 84',
+    },
+    { d: 'M118 84 V70 H136 V84', role: 'soft' },
+    {
+      d: 'M24 65 Q28.3 60.7 29.3 66.7 Q35.3 65.8 32.6 71.2 Q38 74 32.6 76.8 Q35.3 82.2 29.3 81.3 Q28.3 87.3 24 83 Q19.7 87.3 18.7 81.3 Q12.7 82.2 15.4 76.8 Q10 74 15.4 71.2 Q12.7 65.8 18.7 66.7 Q19.7 60.7 24 65',
+    },
+    { d: circle(24, 74, 5), role: 'soft' },
+    { d: 'M80 84 V24 M106 84 V40' },
+    {
+      d: 'M66 32 H94 C97 44 97 58 94 70 H66 C63 58 63 44 66 32 Z',
+      role: 'soft',
+    },
+    {
+      d: 'M42 102 C42 95 46 92 52 92 H64 C70 92 74 95 74 102 V124 C74 131 70 134 64 134 H52 C46 134 42 131 42 124 Z M90 102 C90 95 94 92 100 92 H112 C118 92 122 95 122 102 V124 C122 131 118 134 112 134 H100 C94 134 90 131 90 124 Z',
+      role: 'accent',
+    },
+    {
+      d: 'M64 92 C72 90 80 94 80 102 V122 C80 130 76 134 70 135 M112 92 C120 90 128 94 128 102 V122 C128 130 124 134 118 135',
+    },
+    {
+      d: 'M50 92 C48 100 48 106 50 110 M58 92 V110 M66 92 C68 100 68 106 66 110 M98 92 C96 100 96 106 98 110 M106 92 V110 M114 92 C116 100 116 106 114 110',
+      role: 'soft',
+    },
+    {
+      d: 'M44 134 V158 M72 134 V158 M78 132 V156 M92 134 V158 M120 134 V158 M126 132 V156',
+    },
+    {
+      d: 'M44 142 Q58 148 72 142 M44 150 Q58 156 72 150 M92 142 Q106 148 120 142 M92 150 Q106 156 120 150',
+      role: 'soft',
+    },
+    {
+      d: 'M122 106 l6 -5 M122 118 l6 -5 M122 130 l6 -5 M120 144 l6 -5',
+      role: 'ambient',
+    },
+    ...SEA,
   ],
 
   // One of her golden serpent earrings, the same as Hancock's: a snake with
