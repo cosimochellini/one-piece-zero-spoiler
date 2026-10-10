@@ -50,7 +50,7 @@ export function placeLabel(
 export function sentenceOf(
   t: Translate,
   countdown: Countdown,
-  aired: number,
+  { aired, mode }: { aired: number; mode: BookmarkMode },
 ): string {
   const { inRun, next } = countdown
   if (inRun !== null) {
@@ -58,7 +58,10 @@ export function sentenceOf(
         t('filler.countdown.inRunOne')
       : t('filler.countdown.inRun', {
           count: inRun.distance,
-          resume: inRun.resume,
+          resume: episodesLabel(t, mode, {
+            first: inRun.resume,
+            last: inRun.resume,
+          }),
         })
   }
 
@@ -93,6 +96,22 @@ export function handleOf(slot: FillerSlot): string {
 /** What a slot says about itself, open or covered. */
 export function entryOf(slot: FillerSlot): CoveredFillerRow | FillerRowView {
   return slot.open ? slot.record : slot.covered
+}
+
+/**
+ * Follows the address's `#ep-N` to its row: opens what folds it away, then
+ * scrolls to it. For a link from outside the page, a reload or a step back,
+ * where no click on a skip range ran `openTo` first.
+ */
+export function followHash(): void {
+  // Row ids are `ep-N`, so the hash needs no decoding (and a stray `%` cannot throw).
+  const id = location.hash.slice(1)
+  if (id === '') {
+    return
+  }
+
+  openTo(id)
+  document.querySelector(`#${CSS.escape(id)}`)?.scrollIntoView()
 }
 
 /**

@@ -242,7 +242,7 @@ export const itDictionary: Dictionary = {
   'filler.countdown.next': 'Il prossimo filler è tra {count} episodi.',
   'filler.countdown.nextOne': 'Il prossimo episodio è un filler.',
   'filler.countdown.inRun':
-    'Sei dentro un gruppo filler. Il canon riprende all’episodio {resume}, tra {count} episodi.',
+    'Sei dentro un gruppo filler. Il canon riprende da {resume}, tra {count} episodi.',
   'filler.countdown.inRunOne':
     'Sei dentro un gruppo filler. Il canon riprende con il prossimo episodio.',
   'filler.countdown.none':

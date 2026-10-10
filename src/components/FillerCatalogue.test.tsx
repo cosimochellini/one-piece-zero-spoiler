@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import type { FillerGroup, FillerRowView, FillerSlot } from '~/lib/view/filler'
 import { at, peekPending } from '~/test/fixtures'
@@ -102,6 +102,39 @@ describe('FillerCatalogue', () => {
     expect(screen.getByText('3 entries')).toBeInTheDocument()
     expect(screen.getByText('2 entries under fog')).toBeInTheDocument()
     expect(screen.getByText('Skypiea')).toBeInTheDocument()
+  })
+})
+
+describe('FillerCatalogue, reached at a row', () => {
+  it('opens the folded saga and fog a `#ep-N` address points into', () => {
+    location.hash = '#ep-197'
+    // jsdom does not lay out, so it has no scrollIntoView to call.
+    Object.defineProperty(Element.prototype, 'scrollIntoView', {
+      configurable: true,
+      value: vi.fn<() => void>(),
+    })
+    renderWithProviders(
+      <FillerCatalogue
+        groups={groups}
+        mode="episode"
+        peek={peekPending()}
+      />,
+      { bookmark: ep(60) },
+    )
+    const row = document.querySelector('#ep-197')
+    const folds = []
+    for (
+      let node = row?.parentElement ?? null;
+      node !== null;
+      node = node.parentElement
+    ) {
+      if (node instanceof HTMLDetailsElement) {
+        folds.push(node.open)
+      }
+    }
+    location.hash = ''
+
+    expect(folds).toStrictEqual([true, true])
   })
 })
 

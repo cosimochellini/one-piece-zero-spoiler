@@ -75,7 +75,7 @@ export function FillerCountdown({
         id="filler-countdown"
         {...stylex.props(styles.sentence)}
       >
-        {sentenceOf(t, countdown, aired)}
+        {sentenceOf(t, countdown, { aired, mode })}
       </h2>
       {countdown.inRun === null && countdown.next !== null && (
         <p {...stylex.props(styles.span)}>

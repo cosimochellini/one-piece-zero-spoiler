@@ -241,7 +241,7 @@ export const enDictionary = {
   'filler.countdown.next': 'The next filler is {count} episodes away.',
   'filler.countdown.nextOne': 'The next episode is filler.',
   'filler.countdown.inRun':
-    'You are in a filler run. The canon picks up again at episode {resume}, {count} episodes away.',
+    'You are in a filler run. The canon picks up again at {resume}, {count} episodes away.',
   'filler.countdown.inRunOne':
     'You are in a filler run. The canon picks up again with the next episode.',
   'filler.countdown.none':

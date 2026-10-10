@@ -472,6 +472,8 @@ async function verify() {
       ...titleProblems(numbered, english, italian),
       ...chapterProblems(all, italian),
       ...specials.problems,
+      // The strip, the countdown and "no filler ahead" all end at LAST_AIRED.
+      ...(data['LAST_AIRED'] === top ? [] : [`LAST_AIRED is ${aired} on AFL`]),
     ],
     kept: specials.kept,
     count: all.length,

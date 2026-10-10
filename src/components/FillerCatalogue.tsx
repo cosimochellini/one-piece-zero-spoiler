@@ -1,8 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect } from 'react'
 
 import { styles } from '~/components/FillerCatalogue.styles'
-import { placeLabel } from '~/components/fillerLabels'
+import { followHash, placeLabel } from '~/components/fillerLabels'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useT } from '~/i18n/LocaleContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
@@ -39,6 +39,17 @@ export function FillerCatalogue({
   peek,
 }: FillerCatalogueProps): ReactElement {
   const t = useT()
+
+  // A row's saga may be folded, and the browser cannot scroll into a closed
+  // `<details>`: open the way to `#ep-N` on arrival and on every hash change.
+  useEffect(() => {
+    const stop = new AbortController()
+    followHash()
+    addEventListener('hashchange', followHash, { signal: stop.signal })
+    return () => {
+      stop.abort()
+    }
+  }, [])
 
   return (
     <div {...stylex.props(styles.groups)}>
@@ -146,7 +157,7 @@ function Run({
 
   return (
     <div {...stylex.props(styles.run)}>
-      <h4 {...stylex.props(styles.runName)}>{run.name}</h4>
+      <h3 {...stylex.props(styles.runName)}>{run.name}</h3>
       {rows}
     </div>
   )

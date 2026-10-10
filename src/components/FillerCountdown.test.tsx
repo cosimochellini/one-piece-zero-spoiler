@@ -79,10 +79,29 @@ describe('FillerCountdown', () => {
 
     expect(
       screen.getByText(
-        'You are in a filler run. The canon picks up again at episode 61, 9 episodes away.',
+        'You are in a filler run. The canon picks up again at EP 61, 9 episodes away.',
       ),
     ).toBeVisible()
     expect(screen.queryByText(/Next run to skip/u)).not.toBeInTheDocument()
+  })
+
+  it('says the episode the canon picks up at in a season reader’s unit', () => {
+    // Episode 144 is S06E01.
+    renderWithProviders(
+      <FillerCountdown
+        aired={1168}
+        countdown={countdown({ inRun: { resume: 144, distance: 9 } })}
+        mode="season"
+        peek={peekPending()}
+      />,
+      { bookmark: { mode: 'season', season: 5, episode: 5 } },
+    )
+
+    expect(
+      screen.getByText(
+        'You are in a filler run. The canon picks up again at S06E01, 9 episodes away.',
+      ),
+    ).toBeVisible()
   })
 
   it('says when there is nothing ahead', () => {
