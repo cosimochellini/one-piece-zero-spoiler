@@ -1884,9 +1884,9 @@ export const wanoRedrawn: Redrawings = {
     },
   ],
   // The same paper door, and behind it what the Scabbards leave of him: the
-  // serpent's body slumped on the floor and its necks cut short, each with
-  // its blunt end and no head, one of them hanging over the side. They cut
-  // his heads off at 1026 (ch. 1009).
+  // serpent's body slumped on the floor, three of its four necks cut short
+  // to a blunt end and the fourth hanging limp over the side. They cut off
+  // all but one of his heads at 1026 (ch. 1009); the one left is not shown.
   'kurozumi-orochi': [
     {
       episode: 1026,
@@ -1915,11 +1915,6 @@ export const wanoRedrawn: Redrawings = {
           d: OROCHI_STUB,
           role: 'accent',
           transform: 'translate(80 104) rotate(-4) scale(1.1)',
-        },
-        {
-          d: OROCHI_STUB,
-          role: 'accent',
-          transform: 'translate(100 106) rotate(24) scale(1.5)',
         },
         {
           d: 'M108 114 C118 98 136 100 138 116 C139 128 136 140 132 150 M114 118 C120 108 130 110 131 120 C132 130 128 142 124 150 M124 150 Q128 146 132 150',
@@ -1970,10 +1965,10 @@ export const wanoRedrawn: Redrawings = {
     },
     { episode: 1019, chapter: 1004, value: wanoArt.daifugo },
   ],
-  // Out of the cell: his straw kasa set down behind, the wide cone, its far
-  // side hatched and the frayed rim in his colour, and Soto Muso laid in
-  // front in its scabbard, with no guard. Raizo throws him the key and the
-  // sword at 948 (ch. 948).
+  // Out of the cell, with his sword back: Soto Muso laid in front in its
+  // scabbard, with no guard, and behind it the straw kasa he wears, the wide
+  // cone, its far side hatched and the frayed rim in his colour. Raizo throws
+  // him the key and the sword at 948 (ch. 948).
   'kawamatsu': [
     {
       episode: 948,
