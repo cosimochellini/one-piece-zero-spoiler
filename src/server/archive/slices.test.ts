@@ -889,6 +889,10 @@ describe('a record drawn again later in the story', () => {
     expect(stages[1]?.value).toBe(DRAWINGS.funkfreed)
   })
 
+  it('takes the chains off Loki’s tree only from episode 1171', () => {
+    expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
+  })
+
   it('hands Izo his flintlocks only from episode 995', () => {
     const izo = filed('izo')
     const fans = DRAWINGS.izo

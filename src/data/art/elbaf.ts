@@ -1,6 +1,6 @@
 import { circle, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Stroke } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /**
  * One of Scopper Gaban's axes, the haft upright through the origin and the
@@ -224,7 +224,8 @@ export const elbafArt = {
 
   // The foot of the colossal tree he is bound to in the Underworld, two
   // turns of heavy chain wound round its trunk, and the drum-shaped cuff
-  // they run down to lying at its foot, every link still whole (1160).
+  // they run down to lying at its foot, every link still whole (1160). The
+  // chains come off in `elbafRedrawn`.
   'loki': [
     { d: 'M30 -4 C34 50 34 104 24 128 C18 140 6 148 -4 150' },
     { d: 'M130 -4 C126 50 126 104 136 128 C142 140 154 148 164 150' },
@@ -678,3 +679,40 @@ export const elbafArt = {
     shadow(70, 184, 56),
   ],
 } satisfies Drawings
+
+/** The foot of the tree Loki was bound to, bark and hatching, without its chains. */
+const LOKI_TRUNK = elbafArt.loki.slice(0, 4)
+
+/** The drum-shaped cuff at the tree's foot, as his first drawing has it. */
+const LOKI_CUFF = elbafArt.loki.slice(7, 12)
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const elbafRedrawn: Redrawings = {
+  // The same tree with its trunk bare: Luffy unlocks the chains and they lie
+  // slack in a loose ring at its foot, every link whole, and the one chain
+  // left on him, to the shackle on his left ankle, runs taut out of the
+  // picture. He is freed of all but that one in 1171 (ch. 1141).
+  loki: [
+    {
+      episode: 1171,
+      chapter: 1141,
+      value: [
+        ...LOKI_TRUNK,
+        {
+          d: 'M17.2 150.5 A6 3.4 52.8 1 0 24.4 160 A6 3.4 52.8 1 0 17.2 150.5 M24.9 159.4 L35.3 165.2 M35.4 165.5 A6 3.4 14.5 1 0 47.1 168.5 A6 3.4 14.5 1 0 35.4 165.5 M46.9 168.2 L58.9 169.3 M59.1 169.5 A6 3.4 -3.4 1 0 71.1 168.8 A6 3.4 -3.4 1 0 59.1 169.5 M70.8 168.6 L82.5 166 M82.9 166.3 A6 3.4 -25.7 1 0 93.7 161.1 A6 3.4 -25.7 1 0 82.9 166.3',
+          role: 'accent',
+        },
+        {
+          d: 'M29.5 151.6 A6 3.4 -56.9 1 0 36.1 141.5 A6 3.4 -56.9 1 0 29.5 151.6 M36.6 142.2 L47.1 136.4 M47.2 136 A6 3.4 -11.6 1 0 58.9 133.6 A6 3.4 -11.6 1 0 47.2 136 M58.8 133.9 L70.7 134.1 M71 133.7 A6 3.4 14.1 1 0 82.7 136.7 A6 3.4 14.1 1 0 71 133.7 M82.3 137 L92.1 143.7',
+          role: 'accent',
+        },
+        {
+          d: 'M118 129 A6 3.4 -36.6 1 0 127.6 121.8 A6 3.4 -36.6 1 0 118 129 M127.5 122 L137.1 114.9 M137.3 114.7 A6 3.4 -36 1 0 147 107.7 A6 3.4 -36 1 0 137.3 114.7 M146.8 107.8 L156.6 100.8 M156.7 100.7 A6 3.4 -35.7 1 0 166.5 93.7 A6 3.4 -35.7 1 0 156.7 100.7 M166.3 93.8 L176.1 86.8',
+          role: 'accent',
+        },
+        ...LOKI_CUFF,
+        { d: 'M-4 150 H12 M140 150 H164', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+}
