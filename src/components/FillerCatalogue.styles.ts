@@ -64,7 +64,7 @@ export const styles = stylex.create({
     display: 'inline-block',
     transform: {
       'default': 'none',
-      ':is([open] > summary) > &': 'rotate(90deg)',
+      ':is([open] > summary > *)': 'rotate(90deg)',
     },
     transitionDuration: dur.short,
     transitionProperty: 'transform',
