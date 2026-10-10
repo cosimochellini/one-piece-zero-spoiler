@@ -1645,24 +1645,31 @@ export const wanoRedrawn: Redrawings = {
       ],
     },
   ],
-  // A katana with a chrysanthemum for a guard: she draws a sword for the
-  // first time at 901 (ch. 914), when Tama is taken from the tea house.
+  // Her katana, with the gold clover she has for a guard: four round lobes
+  // and a rim inside the edge, the blade and hilt running into its notches,
+  // three diamond windows in the hilt's wrap. She draws it for the first
+  // time at 901 (ch. 914), when Tama is taken from the tea house.
   'kiku': [
     {
       episode: 901,
       chapter: 914,
       value: [
-        { d: 'M114 34 L58 126 M122 40 L66 132' },
+        { d: 'M114 34 L66 112.9 M122 40 L73.9 119' },
         { d: 'M114 34 L122 40' },
-        { d: circle(62, 133, 16), role: 'accent' },
         {
-          d: 'M62 117 V149 M46 133 H78 M50.7 121.7 L73.3 144.3 M73.3 121.7 L50.7 144.3',
+          d: 'M70.4 119.1 A11.5 11.5 0 0 1 75.9 141.4 A11.5 11.5 0 0 1 53.6 146.9 A11.5 11.5 0 0 1 48.1 124.6 A11.5 11.5 0 0 1 70.4 119.1',
           role: 'accent',
         },
-        { d: circle(62, 133, 5), role: 'accent' },
-        { d: 'M56 142 L34 172 M64 148 L42 178' },
+        {
+          d: 'M67 124.8 A8 8 0 1 1 70.2 138 A8 8 0 1 1 57 141.2 A8 8 0 1 1 53.8 128 A8 8 0 1 1 67 124.8',
+          role: 'accent',
+        },
+        { d: 'M34 172 L52.3 147 M42 178 L59.6 154' },
         { d: 'M34 172 L42 178' },
-        { d: 'M52 150 l8 6 M46 158 l8 6', role: 'soft' },
+        {
+          d: 'M53.2 154.3 L53.5 158.2 L49.7 159.1 L49.3 155.2 Z M48.1 161.2 L48.4 165.2 L44.6 166 L44.2 162.1 Z M43 168.1 L43.3 172.1 L39.5 173 L39.2 169 Z',
+          role: 'soft',
+        },
         shadow(84, 186, 40),
       ],
     },
