@@ -343,8 +343,13 @@ export const egghead: Saga = {
     {
       id: 'pomsky',
       kind: 'character',
+      // The anime names him with a caption at 1128, which adapts chapter
+      // 1094; the manga names him only in chapter 1108. The pair says
+      // nothing about the chapters between, so the record stays out of the
+      // chapter table (#509).
       revealedAtEpisode: 1128,
       revealedAtChapter: 1108,
+      unanchored: true,
       name: { it: 'Pomsky', en: 'Pomsky' },
       summary: {
         it: 'Un viceammiraglio della Marina massiccio, con i baffi a manubrio e una cicatrice sulla guancia, che diventa per metà lontra e colpisce con una mazza dalla testa a conchiglia.',
@@ -1143,8 +1148,7 @@ export const egghead: Saga = {
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
       ],
-      // Pinned at 1094, where the manga names her and the fruit: Pomsky,
-      // named only at 1108, would otherwise hold the fruit there.
+      // Pinned at 1094, where the manga names her and the fruit.
       devilFruit: [
         { episode: 1128, chapter: 1094, value: ['ride-ride-fruit'] },
       ],

@@ -108,6 +108,13 @@ describe('episodeAtChapter', () => {
     expect(episodeAtChapter(26)).toBeLessThan(11)
     expect(chapterAtEpisode(11)).toBe(27)
   })
+
+  it('reads chapters 1094 to 1107 past episode 1127, despite Pomsky', () => {
+    // Episode 1128 names him and adapts chapter 1094; the manga names him in
+    // chapter 1108. As an anchor he held the chapters between at 1127.
+    expect(episodeAtChapter(1094)).toBe(1128)
+    expect(episodeAtChapter(1107)).toBe(1141)
+  })
 })
 
 describe('chapterAtEpisode', () => {
