@@ -1,11 +1,13 @@
 import { describe, expect, it } from 'vitest'
 
-import { FILLER } from '~/data/filler'
+import { FILLER, LAST_AIRED } from '~/data/filler'
+import type { Bookmark } from '~/lib/progress/episode'
 import type {
   FillerGroup,
   FillerPageView,
   FillerRun,
   FillerSlot,
+  SkipRange,
 } from '~/lib/view/filler'
 
 import { fillerPage, peekFiller } from './filler.server'
@@ -33,6 +35,16 @@ function placeOf(slot: FillerSlot): number {
 /** The names of a group's runs. */
 function runNamesOf(group: FillerGroup): FillerRun['name'][] {
   return group.runs.map((run) => run.name)
+}
+
+/** An episode bookmark. */
+function ep(episode: number): Bookmark {
+  return { mode: 'episode', episode }
+}
+
+/** Every skip range on the page, saga by saga, flattened. */
+function rangesOf(bookmark: Bookmark): SkipRange[] {
+  return fillerPage(bookmark, 'en').skipGroups.flatMap((group) => group.ranges)
 }
 
 /** The handle of the first row of a page with no bookmark. */
@@ -109,7 +121,7 @@ describe('the filler page', () => {
     const mixed = FILLER.filter(
       (entry) => 'episode' in entry && entry.kind === 'mixed',
     ).map((entry) => ('episode' in entry ? entry.episode : 0))
-    const { ranges } = fillerPage(null, 'en')
+    const ranges = rangesOf(null)
 
     expect(ranges.length).toBeGreaterThan(0)
 
@@ -119,6 +131,82 @@ describe('the filler page', () => {
         String(episode),
       ).toBe(false)
     }
+  })
+
+  it('groups the skip ranges by saga, named once the saga is open', () => {
+    const covered = fillerPage(null, 'en').skipGroups
+    const open = fillerPage(ep(200), 'it').skipGroups
+
+    expect(covered.every((group) => group.name === null)).toBe(true)
+    expect(open[0]?.name).toBe('Loguetown')
+    expect(open.at(-1)?.name).toBeNull()
+    expect(rangesOf(ep(200))).toStrictEqual(rangesOf(null))
+  })
+
+  it('opens the reader’s own saga and no other', () => {
+    const at = fillerPage(ep(300), 'en').groups
+
+    expect(at.filter((group) => group.current)).toHaveLength(1)
+    expect(at.find((group) => group.current)?.name).toBe('Enies Lobby')
+    expect(fillerPage(null, 'en').groups.some((group) => group.current)).toBe(
+      false,
+    )
+  })
+})
+
+describe('the countdown', () => {
+  it('is there only for an episode or season reader', () => {
+    expect(fillerPage(null, 'en').countdown).toBeNull()
+    expect(
+      fillerPage({ mode: 'chapter', chapter: 400 }, 'en').countdown,
+    ).toBeNull()
+    expect(
+      fillerPage({ mode: 'season', season: 5, episode: 1 }, 'en').countdown
+        ?.here,
+    ).toBe(131)
+  })
+
+  it('counts down to the next run to skip', () => {
+    const countdown = fillerPage(ep(52), 'en').countdown
+
+    expect(countdown?.cells.map((cell) => cell.episode)).toStrictEqual([
+      52, 53, 54, 55, 56, 57,
+    ])
+    expect(countdown?.cells.map((cell) => cell.slot !== null)).toStrictEqual([
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+    ])
+    expect(countdown?.inRun).toBeNull()
+    expect(countdown?.next).toStrictEqual({ first: 54, last: 60, distance: 2 })
+  })
+
+  it('says where the canon picks up inside a run', () => {
+    const countdown = fillerPage(ep(135), 'en').countdown
+
+    expect(countdown?.inRun).toStrictEqual({ resume: 144, distance: 9 })
+  })
+
+  it('stops at the last aired episode, with nothing ahead', () => {
+    const countdown = fillerPage(ep(LAST_AIRED), 'en').countdown
+
+    expect(countdown?.cells.map((cell) => cell.episode)).toStrictEqual([
+      LAST_AIRED,
+    ])
+    expect(countdown?.next).toBeNull()
+  })
+
+  it('marks a film between two cells, under fog past the bookmark', () => {
+    const countdown = fillerPage(ep(1026), 'en').countdown
+    const film = countdown?.marks.find((mark) => mark.after === 1027)
+    const payload = JSON.stringify(countdown)
+
+    expect(film?.slot.open).toBe(false)
+    expect(payload).not.toContain('Film: Red')
+    expect(payload).not.toContain('A Faint Memory')
   })
 })
 

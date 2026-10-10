@@ -178,8 +178,12 @@ export const font = stylex.defineVars({
  * and has the whole width of the page to fall through. At that size the
  * display face is set semi-condensed on its width axis, which is what keeps
  * two lines of it inside 16 characters a line.
+ *
+ * `xs2` is below the scale on purpose and for one use: the kind written
+ * inside a countdown cell, six of which share a 320px row.
  */
 export const text = stylex.defineVars({
+  xs2: '0.625rem',
   xs: '0.75rem',
   base: '1rem',
   lg: '1.25rem',

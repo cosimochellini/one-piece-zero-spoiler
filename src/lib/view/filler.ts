@@ -52,8 +52,12 @@ export interface FillerRun {
   rows: FillerSlot[]
 }
 
-/** The rows that fall inside one canon arc, the arc named once it is open. */
+/**
+ * The rows that fall inside one canon arc, the arc named once it is open.
+ * `current` marks the arc the reader is in, the one the page opens.
+ */
 export interface FillerGroup extends Gated {
+  current: boolean
   name: null | string
   runs: FillerRun[]
 }
@@ -62,6 +66,39 @@ export interface FillerGroup extends Gated {
 export interface SkipRange {
   first: number
   last: number
+}
+
+/** The runs to skip inside one canon arc, the arc named once it is open. */
+export interface SkipGroup extends Gated {
+  name: null | string
+  ranges: SkipRange[]
+}
+
+/** One episode of the countdown: canon (`null`) or an entry's slot. */
+export interface CountdownCell {
+  episode: number
+  slot: FillerSlot | null
+}
+
+/** A film or special watched after one of the countdown's episodes. */
+export interface CountdownMark {
+  after: number
+  slot: FillerSlot
+}
+
+/**
+ * The reader's next few episodes, for an episode or season bookmark.
+ *
+ * `cells` starts at the reader's own episode. `next` is the next run that can
+ * be skipped after it; `inRun` is set when the reader is inside one, with the
+ * episode the canon picks up again at. Distances are in episodes.
+ */
+export interface Countdown {
+  cells: CountdownCell[]
+  here: number
+  inRun: null | { distance: number; resume: number }
+  marks: CountdownMark[]
+  next: null | (SkipRange & { distance: number })
 }
 
 /** One numbered episode that is not plain canon, for the strip. */
@@ -74,9 +111,11 @@ export interface FillerMark {
 export interface FillerPageView {
   /** The last episode the strip draws. */
   aired: number
+  /** `null` with no bookmark or a chapter one: the manga has no filler. */
+  countdown: Countdown | null
   groups: FillerGroup[]
   marks: FillerMark[]
+  skipGroups: SkipGroup[]
   /** How many entries have no episode number: films and specials. */
-  ranges: SkipRange[]
   unnumbered: number
 }

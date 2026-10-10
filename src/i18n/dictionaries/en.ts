@@ -238,6 +238,26 @@ export const enDictionary = {
   'filler.catalogueTitle': 'Episode by episode',
   'filler.catalogueLede':
     'Grouped by the arc they air in. The entries after your bookmark are under fog.',
+  'filler.countdown.next': 'The next filler is {count} episodes away.',
+  'filler.countdown.nextOne': 'The next episode is filler.',
+  'filler.countdown.inRun':
+    'You are in a filler run. The canon picks up again at episode {resume}, {count} episodes away.',
+  'filler.countdown.inRunOne':
+    'You are in a filler run. The canon picks up again with the next episode.',
+  'filler.countdown.none':
+    'There is no filler ahead, up to episode {aired}, the last one aired.',
+  'filler.countdown.span': 'Next run to skip: {span}.',
+  'filler.countdown.label': 'Your episode and the five after it',
+  'filler.countdown.here': 'your bookmark',
+  'filler.cell.filler': 'Filler',
+  'filler.cell.mixed': 'Mixed',
+  'filler.cell.recap': 'Recap',
+  'filler.cell.film': 'Film',
+  'filler.cell.special': 'Special',
+  'filler.entries': '{count} entries',
+  'filler.entriesOne': '1 entry',
+  'filler.foggedRows': '{count} entries under fog',
+
   'filler.foggedArc': 'An arc under fog',
   'filler.foggedRun': 'A filler arc under fog',
 

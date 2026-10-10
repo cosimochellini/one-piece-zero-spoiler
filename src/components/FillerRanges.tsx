@@ -1,60 +1,117 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { MouseEvent, ReactElement } from 'react'
 
-import { episodesLabel } from '~/components/fillerLabels'
+import { episodesLabel, openTo } from '~/components/fillerLabels'
 import { useT } from '~/i18n/LocaleContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
-import type { SkipRange } from '~/lib/view/filler'
-import { color, font, radius, rule, space, text } from '~/styles/tokens.stylex'
+import type { SkipGroup } from '~/lib/view/filler'
+import {
+  color,
+  font,
+  radius,
+  rule,
+  space,
+  text,
+  z,
+} from '~/styles/tokens.stylex'
+
+/** Opens the saga a link points into, before the browser follows it. */
+function follow(event: MouseEvent<HTMLAnchorElement>): void {
+  openTo(event.currentTarget.hash.slice(1))
+}
 
 /**
- * The runs that can be skipped whole, each a link down to the first of its
- * rows in the catalogue. Numbers only, so they are on the page at every
- * bookmark.
+ * The runs that can be skipped whole, grouped by the saga they air in, the
+ * saga's name pinned to the top of the screen while its runs scroll under
+ * it. Each run links down to its first row in the catalogue, opening the
+ * saga there if it is closed. Numbers only, so they are on the page at every
+ * bookmark; a saga's name waits for the saga.
  */
 export function FillerRanges({
+  groups,
   mode,
-  ranges,
 }: {
+  groups: SkipGroup[]
   mode: BookmarkMode
-  ranges: SkipRange[]
 }): ReactElement {
   const t = useT()
-
   return (
-    <ol {...stylex.props(styles.ranges)}>
-      {ranges.map((range) => {
-        const count = range.last - range.first + 1
-
+    <div {...stylex.props(styles.groups)}>
+      {groups.map((group) => {
+        const first = group.ranges[0]?.first ?? 0
         return (
-          <li key={range.first}>
-            <a
-              href={`#ep-${String(range.first)}`}
-              {...stylex.props(styles.range)}
+          <section
+            key={first}
+            aria-labelledby={`skip-${String(first)}`}
+          >
+            <h3
+              id={`skip-${String(first)}`}
+              {...stylex.props(
+                styles.saga,
+                group.name === null && styles.fogged,
+              )}
             >
-              <span {...stylex.props(styles.span)}>
-                {episodesLabel(t, mode, range)}
-              </span>
-              <span {...stylex.props(styles.count)}>
-                {count === 1 ?
-                  t('filler.skipCountOne')
-                : t('filler.skipCount', { count })}
-              </span>
-            </a>
-          </li>
+              {group.name ?? t('filler.foggedArc')}
+            </h3>
+            <ol {...stylex.props(styles.ranges)}>
+              {group.ranges.map((range) => {
+                const count = range.last - range.first + 1
+
+                return (
+                  <li key={range.first}>
+                    <a
+                      href={`#ep-${String(range.first)}`}
+                      onClick={follow}
+                      {...stylex.props(styles.range)}
+                    >
+                      <span {...stylex.props(styles.span)}>
+                        {episodesLabel(t, mode, range)}
+                      </span>
+                      <span {...stylex.props(styles.count)}>
+                        {count === 1 ?
+                          t('filler.skipCountOne')
+                        : t('filler.skipCount', { count })}
+                      </span>
+                    </a>
+                  </li>
+                )
+              })}
+            </ol>
+          </section>
         )
       })}
-    </ol>
+    </div>
   )
 }
 
 const styles = stylex.create({
+  groups: { gap: space.lg, display: 'grid' },
+  // Pinned under nothing: the bar scrolls away, so the saga takes the top.
+  saga: {
+    margin: 0,
+    paddingBlock: space.xs,
+    backgroundColor: color.paper,
+    borderBlockEndColor: color.rule,
+    borderBlockEndStyle: 'solid',
+    borderBlockEndWidth: rule.hair,
+    color: color.ink,
+    fontFamily: font.display,
+    fontSize: text.base,
+    fontWeight: 800,
+    insetBlockStart: 0,
+    letterSpacing: '-0.01em',
+    overflowWrap: 'anywhere',
+    position: 'sticky',
+    zIndex: z.sticky,
+  },
+  fogged: { color: color.muted },
   ranges: {
     margin: 0,
     gap: space.xs,
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(11rem, 1fr))',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr))',
     listStyleType: 'none',
+    marginBlockStart: space.sm,
     paddingInlineStart: 0,
   },
   range: {

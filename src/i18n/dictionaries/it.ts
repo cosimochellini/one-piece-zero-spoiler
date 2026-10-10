@@ -239,6 +239,26 @@ export const itDictionary: Dictionary = {
   'filler.catalogueTitle': 'Episodio per episodio',
   'filler.catalogueLede':
     'Raggruppati per la saga in cui vanno in onda. Le voci dopo il tuo segnalibro sono nella nebbia.',
+  'filler.countdown.next': 'Il prossimo filler è tra {count} episodi.',
+  'filler.countdown.nextOne': 'Il prossimo episodio è un filler.',
+  'filler.countdown.inRun':
+    'Sei dentro un gruppo filler. Il canon riprende all’episodio {resume}, tra {count} episodi.',
+  'filler.countdown.inRunOne':
+    'Sei dentro un gruppo filler. Il canon riprende con il prossimo episodio.',
+  'filler.countdown.none':
+    'Non ci sono filler in vista fino all’episodio {aired}, l’ultimo uscito.',
+  'filler.countdown.span': 'Il prossimo gruppo da saltare: {span}.',
+  'filler.countdown.label': 'Il tuo episodio e i cinque successivi',
+  'filler.countdown.here': 'il tuo segnalibro',
+  'filler.cell.filler': 'Filler',
+  'filler.cell.mixed': 'Misto',
+  'filler.cell.recap': 'Recap',
+  'filler.cell.film': 'Film',
+  'filler.cell.special': 'Speciale',
+  'filler.entries': '{count} voci',
+  'filler.entriesOne': '1 voce',
+  'filler.foggedRows': '{count} voci nella nebbia',
+
   'filler.foggedArc': 'Una saga nella nebbia',
   'filler.foggedRun': 'Una saga filler nella nebbia',
 

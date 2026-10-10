@@ -1,150 +1,50 @@
-import { entities } from '~/data/entities'
-import {
-  FILLER,
-  FILLER_ARCS,
-  type FillerArc,
-  type FillerEntry,
-  LAST_AIRED,
-} from '~/data/filler'
+import { FILLER, FILLER_ARCS, type FillerArc, LAST_AIRED } from '~/data/filler'
 import { reveal } from '~/data/reveal'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
-import type { Gated } from '~/lib/progress/spoiler'
 import type {
   FillerGroup,
   FillerMark,
   FillerPageView,
-  FillerPlace,
   FillerRowView,
   FillerRun,
-  FillerSlot,
-  SkipRange,
+  SkipGroup,
 } from '~/lib/view/filler'
 
+import { countdownOf } from './fillerCountdown.server'
+import {
+  arcGateOf,
+  canonArcOf,
+  type Chunk,
+  chunkBy,
+  gateOf,
+  INDEXED,
+  type Indexed,
+  type Looker,
+  positionOf,
+  RADIX,
+  rowOf,
+  skipRangesOf,
+  slotOf,
+} from './fillerRows.server'
+
 /**
- * What the filler guide may say at one bookmark.
- *
- * An entry opens at its own episode for an episode or season reader, which
- * is the episode it airs as or the one it is watched after. A chapter reader
- * has no episode, so an entry opens for them with its canon arc, or at the
- * last chapter the anime had adapted when it aired, whichever is later: the
- * text of a filler near the end of an arc can still say how the arc went.
+ * What the filler guide may say at one bookmark. The rules for one entry
+ * are in `./fillerRows.server`, the countdown in `./fillerCountdown.server`.
  *
  * The skip ranges and the strip are numbers and kinds only. They are sent
- * whatever the bookmark, because "episodes 54–60 are filler" names nothing.
+ * whatever the bookmark, because "episodes 54–60 are filler" names nothing;
+ * only the name of the arc they sit in waits for the arc.
  */
 
-// Base 36, as the archive's own handles: short, and nothing but an index.
-const RADIX = 36
 const HANDLE_SHAPE = /^[\da-z]{1,3}$/u
 
-/** The reader, as far as this page needs one. */
-interface Looker {
-  locale: Locale
-  sees: (gated: Gated) => boolean
-}
-
-/** An entry and its index in `FILLER`, which is its handle. */
-interface Indexed {
-  entry: FillerEntry
-  index: number
-}
-
-/** A run of consecutive items that share a key. */
-interface Chunk<K, T> {
-  items: T[]
-  key: K
-}
-
-/** Splits a list where the key changes, keeping the order. */
-function chunkBy<K, T>(items: T[], keyOf: (item: T) => K): Chunk<K, T>[] {
-  const chunks: Chunk<K, T>[] = []
-
-  for (const item of items) {
-    const key = keyOf(item)
-    const last = chunks.at(-1)
-    // Not `last?.key === key`: the key can be `undefined`, and so can `last`.
-    if (last === undefined) {
-      chunks.push({ key, items: [item] })
-      continue
-    }
-
-    if (last.key === key) {
-      last.items.push(item)
-    } else {
-      chunks.push({ key, items: [item] })
-    }
-  }
-
-  return chunks
-}
-
-/** The episode an entry sits at: its own, or the one it follows. */
-function positionOf(entry: FillerEntry): number {
-  return 'episode' in entry ? entry.episode : entry.after
-}
-
-/** The canon arcs, in the order the anime reaches them. */
-const CANON_ARCS = entities
-  .filter((entity) => entity.kind === 'arc')
-  .toSorted((a, b) => a.revealedAtEpisode - b.revealedAtEpisode)
-
-/** The canon arc an episode falls in: the last one opened by then. */
-function canonArcOf(episode: number): Entity | undefined {
-  return CANON_ARCS.findLast((arc) => arc.revealedAtEpisode <= episode)
-}
-
-/** When a reader reaches an entry, in both units. */
-function gateOf(entry: FillerEntry): Gated {
-  const arc = canonArcOf(positionOf(entry))
-
-  return {
-    revealedAtEpisode: positionOf(entry),
-    revealedAtChapter: Math.max(entry.chapter, arc?.revealedAtChapter ?? 0),
-  }
-}
-
-function placeOf(entry: FillerEntry): FillerPlace {
-  return 'episode' in entry ?
-      { episode: entry.episode }
-    : { after: entry.after }
-}
-
-/** An entry as the page prints it once it is open. */
-function rowOf({ entry, index }: Indexed, locale: Locale): FillerRowView {
-  return {
-    ...placeOf(entry),
-    ...gateOf(entry),
-    handle: index.toString(RADIX),
-    kind: entry.kind,
-    title: entry.title[locale],
-    summary: entry.summary[locale],
-    ...('released' in entry && { released: entry.released }),
-  }
-}
-
-/** An entry, open or covered, for this reader. */
-function slotOf(item: Indexed, look: Looker): FillerSlot {
-  const { entry, index } = item
-  const gate = gateOf(entry)
-  if (look.sees(gate)) {
-    return { open: true, record: rowOf(item, look.locale) }
-  }
-
-  return {
-    open: false,
-    covered: {
-      ...placeOf(entry),
-      ...gate,
-      kind: entry.kind,
-      handle: index.toString(RADIX),
-    },
-  }
-}
+/** The entries chunked by the canon arc they air in. */
+const BY_ARC = chunkBy(INDEXED, (item) => canonArcOf(positionOf(item.entry)))
 
 /** The filler arc a numbered episode belongs to. */
-function fillerArcOf(entry: FillerEntry): FillerArc | undefined {
+function fillerArcOf({ entry }: Indexed): FillerArc | undefined {
   if (!('episode' in entry)) {
     return undefined
   }
@@ -167,43 +67,39 @@ function runOf(
   return { name: open ? arc.name[look.locale] : null, rows }
 }
 
-/** A canon arc's group, named once the arc is open. */
-function groupOf(
-  { key: arc, items }: Chunk<Entity | undefined, Indexed>,
-  look: Looker,
-): FillerGroup {
-  const gate = {
-    revealedAtEpisode: arc?.revealedAtEpisode ?? 1,
-    revealedAtChapter: arc?.revealedAtChapter ?? 1,
-  }
-
-  return {
-    ...gate,
-    name: arc !== undefined && look.sees(gate) ? arc.name[look.locale] : null,
-    runs: chunkBy(items, (item) => fillerArcOf(item.entry)).map((run) =>
-      runOf(run, look),
-    ),
-  }
+/** An arc's name for this reader, or `null` while it is under fog. */
+function arcName(arc: Entity | undefined, look: Looker): null | string {
+  return arc !== undefined && look.sees(arcGateOf(arc)) ?
+      arc.name[look.locale]
+    : null
 }
 
-/** Consecutive pure filler and recaps, as inclusive ranges. */
-function skipRanges(): SkipRange[] {
-  const ranges: SkipRange[] = []
+/** The catalogue: one group per canon arc, the reader's own one current. */
+function groupsFor(look: Looker): FillerGroup[] {
+  const current = BY_ARC.findLastIndex(({ key }) => look.sees(arcGateOf(key)))
 
-  for (const entry of FILLER) {
-    if (!('episode' in entry) || entry.kind === 'mixed') {
-      continue
+  return BY_ARC.map((chunk, at) => {
+    return {
+      ...arcGateOf(chunk.key),
+      current: at === current,
+      name: arcName(chunk.key, look),
+      runs: chunkBy(chunk.items, fillerArcOf).map((run) => runOf(run, look)),
     }
+  })
+}
 
-    const last = ranges.at(-1)
-    if (last?.last === entry.episode - 1) {
-      last.last = entry.episode
-    } else {
-      ranges.push({ first: entry.episode, last: entry.episode })
+/** The runs to skip, per canon arc, leaving out arcs with none. */
+function skipGroupsFor(look: Looker): SkipGroup[] {
+  const groups: SkipGroup[] = []
+
+  for (const { key, items } of BY_ARC) {
+    const ranges = skipRangesOf(items.map((item) => item.entry))
+    if (ranges.length > 0) {
+      groups.push({ ...arcGateOf(key), name: arcName(key, look), ranges })
     }
   }
 
-  return ranges
+  return groups
 }
 
 /** The numbered entries as the strip draws them: a number and a kind. */
@@ -222,15 +118,13 @@ function marks(): FillerMark[] {
 /** The guide at this bookmark. */
 export function fillerPage(bookmark: Bookmark, locale: Locale): FillerPageView {
   const look = { locale, sees: reveal(bookmark).sees }
-  const indexed = FILLER.map((entry, index) => ({ entry, index }))
 
   return {
     aired: LAST_AIRED,
-    groups: chunkBy(indexed, (item) => canonArcOf(positionOf(item.entry))).map(
-      (group) => groupOf(group, look),
-    ),
+    countdown: countdownOf(bookmark, look),
+    groups: groupsFor(look),
     marks: marks(),
-    ranges: skipRanges(),
+    skipGroups: skipGroupsFor(look),
     unnumbered: FILLER.filter((entry) => !('episode' in entry)).length,
   }
 }
