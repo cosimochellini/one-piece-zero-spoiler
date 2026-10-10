@@ -2,8 +2,11 @@ import type { Translate } from '~/i18n/types'
 import { type BookmarkMode, episodeValue } from '~/lib/progress/episode'
 import type {
   Countdown,
+  CoveredFillerRow,
   FillerKind,
   FillerPlace,
+  FillerRowView,
+  FillerSlot,
   SkipRange,
 } from '~/lib/view/filler'
 
@@ -80,6 +83,16 @@ export function cellName(
   ]
     .filter((part) => part !== null)
     .join('. ')
+}
+
+/** The handle a slot is known by, open or covered. */
+export function handleOf(slot: FillerSlot): string {
+  return slot.open ? slot.record.handle : slot.covered.handle
+}
+
+/** What a slot says about itself, open or covered. */
+export function entryOf(slot: FillerSlot): CoveredFillerRow | FillerRowView {
+  return slot.open ? slot.record : slot.covered
 }
 
 /**

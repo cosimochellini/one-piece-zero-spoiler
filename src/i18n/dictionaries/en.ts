@@ -249,6 +249,7 @@ export const enDictionary = {
   'filler.countdown.span': 'Next run to skip: {span}.',
   'filler.countdown.label': 'Your episode and the five after it',
   'filler.countdown.here': 'your bookmark',
+  'filler.cell.here': 'Now',
   'filler.cell.filler': 'Filler',
   'filler.cell.mixed': 'Mixed',
   'filler.cell.recap': 'Recap',

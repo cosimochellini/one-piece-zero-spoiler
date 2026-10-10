@@ -250,6 +250,7 @@ export const itDictionary: Dictionary = {
   'filler.countdown.span': 'Il prossimo gruppo da saltare: {span}.',
   'filler.countdown.label': 'Il tuo episodio e i cinque successivi',
   'filler.countdown.here': 'il tuo segnalibro',
+  'filler.cell.here': 'Ora',
   'filler.cell.filler': 'Filler',
   'filler.cell.mixed': 'Misto',
   'filler.cell.recap': 'Recap',

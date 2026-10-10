@@ -43,15 +43,16 @@ function marksBetween(
   last: number,
   look: Looker,
 ): CountdownMark[] {
-  return INDEXED.filter(
-    ({ entry }) =>
-      'after' in entry && here <= entry.after && entry.after < last,
-  ).map((item) => {
-    return {
-      after: 'after' in item.entry ? item.entry.after : here,
-      slot: slotOf(item, look),
+  const marks: CountdownMark[] = []
+
+  for (const item of INDEXED) {
+    const { entry } = item
+    if ('after' in entry && here <= entry.after && entry.after < last) {
+      marks.push({ after: entry.after, slot: slotOf(item, look) })
     }
-  })
+  }
+
+  return marks
 }
 
 /** The countdown at this bookmark, or `null` where there is none. */

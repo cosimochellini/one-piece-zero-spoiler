@@ -8,6 +8,7 @@ import {
   rule,
   space,
   text,
+  z,
 } from '~/styles/tokens.stylex'
 
 /**
@@ -16,7 +17,11 @@ import {
  * and a one-word kind and nothing else.
  */
 export const styles = stylex.create({
-  countdown: { gap: space.sm, display: 'grid' },
+  countdown: {
+    gap: space.sm,
+    display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr)',
+  },
   // The page's one display line: it is the answer the page exists for.
   sentence: {
     color: color.ink,
@@ -42,11 +47,26 @@ export const styles = stylex.create({
     alignItems: 'stretch',
     display: 'flex',
     listStyleType: 'none',
-    marginBlockStart: space.xs,
+    marginBlockStart: space.lg,
     paddingInlineStart: 0,
   },
-  day: { display: 'flex', flexBasis: 0, flexGrow: 1, minWidth: 0 },
-  markDay: { display: 'flex', flexShrink: 0 },
+  day: {
+    display: 'flex',
+    flexBasis: 0,
+    flexGrow: 1,
+    position: 'relative',
+    minWidth: 0,
+  },
+  // The film's diamond sits on the cell's trailing edge, over the gap.
+  marks: {
+    gap: space.xs3,
+    display: 'grid',
+    // Above the cell's top edge, so it never covers the number under it.
+    insetBlockStart: `calc(-1 * ${space.lg} + ${space.xs3})`,
+    insetInlineEnd: `calc(-1 * ${space.sm})`,
+    position: 'absolute',
+    zIndex: z.raised,
+  },
 
   cell: {
     font: 'inherit',
@@ -59,7 +79,7 @@ export const styles = stylex.create({
       'default': space.xs,
       '@media (min-width: 40rem)': space.sm,
     },
-    paddingInline: space.xs2,
+    paddingInline: { 'default': 0, '@media (min-width: 40rem)': space.xs2 },
     alignContent: 'space-between',
     backgroundColor: color.paper2,
     color: color.ink2,
@@ -120,7 +140,7 @@ export const styles = stylex.create({
     fontFamily: font.mono,
     fontSize: { 'default': text.xs2, '@media (min-width: 40rem)': text.xs },
     fontWeight: 700,
-    letterSpacing: '0.04em',
+    letterSpacing: { 'default': 0, '@media (min-width: 40rem)': '0.04em' },
     lineHeight: 1,
     textTransform: 'uppercase',
     whiteSpace: 'nowrap',
@@ -132,15 +152,17 @@ export const styles = stylex.create({
     font: 'inherit',
     borderColor: color.accent,
     borderRadius: radius.card,
-    borderStyle: 'dashed',
+    borderStyle: 'solid',
     borderWidth: rule.hair,
     gap: space.xs3,
+    paddingBlock: space.xs3,
     paddingInline: space.xs3,
     alignContent: 'center',
-    backgroundColor: 'transparent',
+    backgroundColor: color.paper,
     color: color.accent,
     display: 'grid',
     justifyItems: 'center',
+    minHeight: '1.5rem',
     minWidth: '1.5rem',
   },
   // On a phone the diamond alone: the panel names the film.

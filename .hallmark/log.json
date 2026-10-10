@@ -1,5 +1,16 @@
 [
   {
+    "date": "2026-10-10",
+    "macrostructure": "Map / Diagram, v2 led by a countdown (filler guide)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "Tier B hand-built SVG strip kept lower; countdown is HTML calendar cells",
+    "nav": "N9 edge-aligned (shared), page not linked from it",
+    "footer": "Ft4 dense colophon (shared)",
+    "sections": "count · countdown (sentence in display voice, 6 calendar cells from the bookmark, film/special diamonds on the cell edge, tap → panel under the veil) or the no-bookmark notice · runs to skip by saga with sticky saga headings · strip · catalogue as one <details> per saga (reader's saga open, sticky summary, count), runs under fog folded",
+    "brief": "Owner feedback on v1: mobile first; show how far the next filler is like a calendar; group the skip runs and the catalogue by saga with the saga sticky. Decisions: current + 5 cells, sentence + mixed/films in the row + tap for details, no countdown for chapter readers, two separate sections, only the bookmark's saga open, fog rows folded, grid kept lower."
+  },
+  {
     "date": "2026-10-09",
     "macrostructure": "Map / Diagram (filler guide: the whole series as a strip of cells, a hundred to a row)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",

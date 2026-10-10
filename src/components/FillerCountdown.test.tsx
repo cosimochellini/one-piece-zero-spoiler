@@ -3,8 +3,8 @@ import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
 import type { Countdown, FillerRowView } from '~/lib/view/filler'
-import { at, peekPending } from '~/test/fixtures'
-import { ep, renderWithProviders } from '~/test/providers'
+import { at, peekPending, peekTo } from '~/test/fixtures'
+import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { FillerCountdown } from './FillerCountdown'
 
@@ -110,5 +110,43 @@ describe('FillerCountdown', () => {
     expect(
       screen.getByRole('button', { name: 'EP 55. Filler' }),
     ).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('does not carry a lifted veil over to the next entry it shows', async () => {
+    const user = userEvent.setup()
+    const lifted: FillerRowView = {
+      ...opened,
+      episode: 55,
+      handle: '1',
+      title: 'Lifted',
+    }
+    const value = countdown()
+    value.cells.push({
+      episode: 56,
+      slot: {
+        open: false,
+        covered: { episode: 56, ...at(56), handle: '2', kind: 'filler' },
+      },
+    })
+    renderWithProviders(
+      <FillerCountdown
+        aired={1168}
+        countdown={value}
+        mode="episode"
+        peek={peekTo(lifted)}
+      />,
+      { bookmark: ep(52) },
+    )
+
+    await user.click(screen.getByRole('button', { name: 'EP 55. Filler' }))
+    await user.click(screen.getByRole('button', { name: /Show anyway/u }))
+    await settle()
+
+    expect(screen.getByText('Lifted')).toBeVisible()
+
+    await user.click(screen.getByRole('button', { name: 'EP 56. Filler' }))
+
+    expect(screen.queryByText('Lifted')).not.toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /Show anyway/u })).toBeVisible()
   })
 })

@@ -4,23 +4,24 @@ import { type ReactElement, type ReactNode, useState } from 'react'
 import { styles } from '~/components/FillerCountdown.styles'
 import {
   cellName,
+  entryOf,
   episodesLabel,
+  handleOf,
   placeLabel,
   sentenceOf,
 } from '~/components/fillerLabels'
-import { SpoilerVeil } from '~/components/SpoilerVeil'
+import { FILLER_PANEL_ID, FillerPanel } from '~/components/FillerPanel'
 import { useT } from '~/i18n/LocaleContext'
+import type { Translate } from '~/i18n/types'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
   Countdown,
   CountdownCell,
-  CoveredFillerRow,
+  CountdownMark,
   FillerKind,
   FillerRowView,
   FillerSlot,
 } from '~/lib/view/filler'
-
-const PANEL_ID = 'filler-countdown-panel'
 
 /** What the countdown draws, and how it lifts a covered entry. */
 export interface FillerCountdownProps {
@@ -34,16 +35,6 @@ export interface FillerCountdownProps {
 interface Choice {
   chosen: null | string
   onChoose: (slot: FillerSlot) => void
-}
-
-/** The handle a slot is known by, open or covered. */
-function handleOf(slot: FillerSlot): string {
-  return slot.open ? slot.record.handle : slot.covered.handle
-}
-
-/** What a slot says about itself, open or covered. */
-function entryOf(slot: FillerSlot): CoveredFillerRow | FillerRowView {
-  return slot.open ? slot.record : slot.covered
 }
 
 /**
@@ -99,7 +90,10 @@ export function FillerCountdown({
         mode={mode}
       />
       {shown !== undefined && (
-        <Panel
+        <FillerPanel
+          // Keyed by the entry, so a veil lifted on one is not still lifted
+          // when the panel shows another.
+          key={handleOf(shown)}
           mode={mode}
           peek={peek}
           slot={shown}
@@ -127,27 +121,18 @@ function Row({
       {...stylex.props(styles.row)}
     >
       {countdown.cells.map((cell) => {
-        return [
+        return (
           <Cell
             key={cell.episode}
             cell={cell}
             choice={choice}
             here={cell.episode === countdown.here}
+            marks={countdown.marks.filter(
+              (mark) => mark.after === cell.episode,
+            )}
             mode={mode}
-          />,
-          ...countdown.marks
-            .filter((mark) => mark.after === cell.episode)
-            .map((mark) => {
-              return (
-                <Mark
-                  key={handleOf(mark.slot)}
-                  choice={choice}
-                  mode={mode}
-                  slot={mark.slot}
-                />
-              )
-            }),
-        ]
+          />
+        )
       })}
     </ol>
   )
@@ -167,16 +152,35 @@ function looksOf(
   ]
 }
 
-/** One episode: a plain cell for canon, a button for anything else. */
+/** The word under a cell's number: its kind, or "now" for the reader's. */
+function kindLabel(
+  t: Translate,
+  kind: FillerKind | null,
+  here: boolean,
+): string {
+  if (kind !== null) {
+    return t(`filler.cell.${kind}`)
+  }
+
+  return here ? t('filler.cell.here') : ''
+}
+
+/**
+ * One episode: a plain cell for canon, a button for anything else. A film or
+ * special watched after it sits on its trailing edge, between this cell and
+ * the next, so the six cells keep the row's whole width.
+ */
 function Cell({
   cell,
   choice,
   here,
+  marks,
   mode,
 }: {
   cell: CountdownCell
   choice: Choice
   here: boolean
+  marks: CountdownMark[]
   mode: BookmarkMode
 }): ReactElement {
   const t = useT()
@@ -203,15 +207,27 @@ function Cell({
         >
           {mode === 'season' ? number : String(cell.episode)}
         </span>
-        <span {...stylex.props(styles.kind)}>
-          {kind === null ? '' : t(`filler.cell.${kind}`)}
-        </span>
+        <span {...stylex.props(styles.kind)}>{kindLabel(t, kind, here)}</span>
       </Pressable>
+      {marks.length > 0 && (
+        <div {...stylex.props(styles.marks)}>
+          {marks.map((mark) => {
+            return (
+              <Mark
+                key={handleOf(mark.slot)}
+                choice={choice}
+                mode={mode}
+                slot={mark.slot}
+              />
+            )
+          })}
+        </div>
+      )}
     </li>
   )
 }
 
-/** A film or special, as a diamond between two cells. */
+/** A film or special, as a diamond on the edge between two cells. */
 function Mark({
   choice,
   mode,
@@ -226,19 +242,17 @@ function Mark({
   const name = [placeLabel(t, mode, entry), t(`filler.kind.${entry.kind}`)]
 
   return (
-    <li {...stylex.props(styles.markDay)}>
-      <Pressable
-        choice={choice}
-        looks={[styles.mark]}
-        name={name.join('. ')}
-        slot={slot}
-      >
-        <span aria-hidden>◆</span>
-        <span {...stylex.props(styles.markKind)}>
-          {t(`filler.cell.${entry.kind}`)}
-        </span>
-      </Pressable>
-    </li>
+    <Pressable
+      choice={choice}
+      looks={[styles.mark]}
+      name={name.join('. ')}
+      slot={slot}
+    >
+      <span aria-hidden>◆</span>
+      <span {...stylex.props(styles.markKind)}>
+        {t(`filler.cell.${entry.kind}`)}
+      </span>
+    </Pressable>
   )
 }
 
@@ -270,7 +284,7 @@ function Pressable({
 
   return (
     <button
-      aria-controls={PANEL_ID}
+      aria-controls={FILLER_PANEL_ID}
       aria-expanded={choice.chosen === handleOf(slot)}
       aria-label={name}
       onClick={() => {
@@ -281,49 +295,5 @@ function Pressable({
     >
       {children}
     </button>
-  )
-}
-
-/** The entry a cell or mark opened, under the veil past the bookmark. */
-function Panel({
-  mode,
-  peek,
-  slot,
-}: {
-  mode: BookmarkMode
-  peek: (handle: string) => Promise<FillerRowView>
-  slot: FillerSlot
-}): ReactElement {
-  const t = useT()
-  const entry = entryOf(slot)
-  const at = placeLabel(t, mode, entry)
-
-  return (
-    <div
-      aria-label={at}
-      id={PANEL_ID}
-      role="region"
-      {...stylex.props(styles.panel)}
-    >
-      <p {...stylex.props(styles.panelMeta)}>
-        {[at, t(`filler.kind.${entry.kind}`)].join(' · ')}
-      </p>
-      <SpoilerVeil
-        peek={peek}
-        placeholder={
-          <p {...stylex.props(styles.panelTitle)}>{t('veil.placeholder')}</p>
-        }
-        slot={slot}
-      >
-        {(record) => {
-          return (
-            <div {...stylex.props(styles.panelWords)}>
-              <p {...stylex.props(styles.panelTitle)}>{record.title}</p>
-              <p {...stylex.props(styles.panelSummary)}>{record.summary}</p>
-            </div>
-          )
-        }}
-      </SpoilerVeil>
-    </div>
   )
 }
