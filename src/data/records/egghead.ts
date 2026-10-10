@@ -119,8 +119,8 @@ export const egghead: Saga = {
       revealedAtChapter: 1062,
       name: { it: 'Lilith', en: 'Lilith' },
       summary: {
-        it: 'Un Vegapunk che rappresenta il male, una donna alta con i capelli arruffati su un occhio e un casco da aviatore, che cavalca un robot gigante e scatena le sue bestie marine meccaniche contro ogni nave che si avvicina.',
-        en: 'A Vegapunk that stands for evil, a tall woman with wild hair over one eye and a flying helmet, who rides a giant robot and sets her mechanical sea beasts on any ship that comes near.',
+        it: 'Un Vegapunk che rappresenta il male, una donna alta con i capelli arruffati su un occhio, che cavalca un robot gigante e scatena le sue bestie marine meccaniche contro ogni nave che si avvicina.',
+        en: 'A Vegapunk that stands for evil, a tall woman with wild hair over one eye, who rides a giant robot and sets her mechanical sea beasts on any ship that comes near.',
       },
       visual: { art: 'lilith', tint: 'magenta' },
     },
