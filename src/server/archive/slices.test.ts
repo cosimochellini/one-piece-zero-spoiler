@@ -1334,6 +1334,38 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 650 })).toBe(braided?.value)
   })
 
+  it('arms Hody with his trident from episode 535, and takes his cap at 551', () => {
+    expect(
+      walkStages('hody-jones', [
+        [535, 616],
+        [551, 631],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('breaks Shyarly’s crystal ball only from episode 573', () => {
+    expect(walkStages('shyarly', [[573, 653]])).toHaveLength(1)
+  })
+
+  it('pulls Pekoms into his shell only from episode 572', () => {
+    const pekoms = filed('pekoms')
+    const boots = DRAWINGS.pekoms
+    const shell = REDRAWINGS['pekoms']?.[0]
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(pekoms, readerFor(bookmark, 'en')).visual.strokes
+
+    expect(shell?.episode).toBe(572)
+    // Chapter 652 is below his record's own chapter, so the entry has no pin.
+    expect(shell?.chapter).toBeUndefined()
+
+    expect(drawnAt(ep(571))).toBe(boots)
+    expect(drawnAt(ep(572))).toBe(shell?.value)
+    expect(drawnAt(null)).toBe(boots)
+    // Unpinned, chapter readers get it from chapter 654, after the manga's 652.
+    expect(drawnAt({ mode: 'chapter', chapter: 653 })).toBe(boots)
+    expect(drawnAt({ mode: 'chapter', chapter: 654 })).toBe(shell?.value)
+  })
+
   it('sets Bon Clay’s shoes at the Gate of Justice only from episode 451', () => {
     const bonClay = filed('bon-clay')
     const shoes = DRAWINGS['bon-clay']
