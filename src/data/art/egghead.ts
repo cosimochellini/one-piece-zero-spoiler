@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
 
-import type { Drawings, Stroke } from './stroke'
+import type { Drawings, Redrawings, Stroke } from './stroke'
 
 /**
  * The laboratory of Egghead, a giant egg cracked open along its top, seen in
@@ -910,3 +910,50 @@ export const eggheadArt = {
     shadow(80, 188, 52),
   ],
 } satisfies Drawings
+
+/** Saturn's hat, as his first drawing has it. */
+const SATURN_HAT = eggheadArt['jaygarcia-saturn'].slice(0, 5)
+
+/** The records of this stretch drawn again, from the episode the story changes them. */
+export const eggheadRedrawn: Redrawings = {
+  // The same small black hat, two great ox horns grown out from under its
+  // brim, sweeping out and down and then up to points that turn in, as the
+  // accent, their outer curves hatched because they are black. The cane in
+  // front has grown with him into a long twisted stick with a lumpy knot of
+  // root for a head. He is first seen in this human-beast form on Egghead at
+  // 1128 (ch. 1094), and Joy Boy's Haki forces him out of it at 1153
+  // (ch. 1122), where he is the first drawing again.
+  'jaygarcia-saturn': [
+    {
+      episode: 1128,
+      chapter: 1094,
+      value: [
+        ...SATURN_HAT,
+        {
+          d: 'M44 126 C20 134 0 116 6 88 C10 70 22 56 38 48 C26 64 18 84 24 100 C28 110 36 114 44 112',
+          role: 'accent',
+        },
+        {
+          d: 'M116 126 C140 134 160 116 154 88 C150 70 138 56 122 48 C134 64 142 84 136 100 C132 110 124 114 116 112',
+          role: 'accent',
+        },
+        {
+          d: 'M9 106 l9 -6 M18 120 l10 -7 M151 106 l-9 -6 M142 120 l-10 -7',
+          role: 'ambient',
+        },
+        { d: 'M14 182 C40 176 60 178 84 170 C102 164 116 162 130 155' },
+        { d: 'M15 187 C42 182 62 184 86 176 C104 170 118 168 134 161' },
+        { d: 'M14 182 L15 187' },
+        {
+          d: 'M40 180 q6 4 12 0 M74 174 q6 4 12 -1 M108 166 q6 3 11 -1',
+          role: 'soft',
+        },
+        {
+          d: 'M130 155 C130 147 136 140 144 141 C150 138 155 143 153 149 C155 155 149 160 143 158 C139 162 134 162 134 161',
+        },
+        ...eggheadArt['jaygarcia-saturn'].slice(-1),
+      ],
+    },
+    { episode: 1153, chapter: 1122, value: eggheadArt['jaygarcia-saturn'] },
+  ],
+}
