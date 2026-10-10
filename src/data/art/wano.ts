@@ -1,6 +1,6 @@
 import { cell, circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * One neck of Orochi's shadow behind the paper door, base at (0, 0), the head
@@ -314,7 +314,7 @@ export const wanoArt = {
   // The paper door in his castle with the shadow behind it: one body and
   // several necks rising, each a serpent's head with a horn, no eye and no
   // mouth. At 921 (ch. 927) the shogun is only this shadow; his face, crown
-  // and kimono come at 922.
+  // and kimono come at 922. His heads are cut at 1026, in `wanoRedrawn`.
   'kurozumi-orochi': [
     { d: 'M16 30 H144 V150 H16 Z' },
     { d: 'M16 30 L22 24 H150 L144 30 M144 150 L150 144 V24', role: 'soft' },
@@ -380,7 +380,8 @@ export const wanoArt = {
 
   // His blond braid hanging through its eight ties down to the stinger-shaped
   // tuft, and the cigar he always has, set down beside it, still lit. Both are
-  // his when he takes the stage at Udon (930).
+  // his when he takes the stage at Udon (930). His brachiosaurus waits for
+  // 944, in `wanoRedrawn`.
   'queen': [
     {
       d: 'M62.6 14 C47.6 16 54.6 28 69.6 30 M69.6 30 C55.2 32 63.4 44 77.8 46 M77.8 46 C64 48 69.4 60 83.2 62 M83.2 62 C70 64 70.2 76 83.4 78 M83.4 78 C70.8 80 65.6 92 78.2 94 M78.2 94 C66.2 96 58.1 108 70.1 110 M70.1 110 C58.7 112 51.5 124 62.9 126 M62.9 126 C52.1 128 49.2 140 60 142',
@@ -527,7 +528,8 @@ export const wanoArt = {
     shadow(80, 176, 64),
   ],
 
-  // A naginata on the bridge, the stolen swords piled at its foot.
+  // A naginata on the bridge, the stolen swords piled at its foot. The fox
+  // he really is waits for 954, in `wanoRedrawn`.
   'gyukimaru': [
     { d: 'M8 148 C40 106 120 106 152 148' },
     { d: 'M8 158 C40 118 120 118 152 158' },
@@ -577,7 +579,7 @@ export const wanoArt = {
 
   // The arched iron door of his cell at the back of the Udon jail, the dark
   // behind its bars, and the day's poisoned fish set down in front of it, as
-  // Udon is shown at 916.
+  // Udon is shown at 916. He is let out at 948, in `wanoRedrawn`.
   'kawamatsu': [
     { d: 'M30 150 V66 C30 30 110 30 110 66 V150' },
     { d: 'M40 150 V68 C40 42 100 42 100 68 V150', role: 'soft' },
@@ -727,7 +729,8 @@ export const wanoArt = {
 
   // His long katana in its pink scabbard with the white flowers on it, the
   // quatrefoil guard, and a cigarette left burning beside it: he walks into
-  // Onigashima with both at 982.
+  // Onigashima with both at 982. His saber-toothed tiger waits for 1013, in
+  // `wanoRedrawn`.
   'whos-who': [
     { d: 'M2 104 H38 V120 H2 Q-3 112 2 104 Z', transform: WHOS_WHO_LAY },
     {
@@ -757,7 +760,8 @@ export const wanoArt = {
   ],
 
   // Her long pipe, the bowl still smoking, laid on the two short swords she
-  // wears in her hair: how she walks into Onigashima at 982.
+  // wears in her hair: how she walks into Onigashima at 982. Her spider
+  // waits for 1013, in `wanoRedrawn`.
   'black-maria': [
     { d: MARIA_HAIR_SWORD, transform: 'translate(52 170)' },
     { d: MARIA_HAIR_SWORD, transform: 'translate(108 170) scale(-1 1)' },
@@ -795,7 +799,8 @@ export const wanoArt = {
 
   // His cap: the puffed white crown dented along the top, the black band with
   // its row of gold studs, the black visor, and the two slender golden horns
-  // curving up from the front, as he walks into Onigashima at 982.
+  // curving up from the front, as he walks into Onigashima at 982. His
+  // triceratops waits for 1012, in `wanoRedrawn`.
   'sasaki': [
     {
       d: 'M24 120 C14 96 26 66 58 66 C66 60 92 58 104 64 C134 62 150 92 138 118',
@@ -833,7 +838,8 @@ export const wanoArt = {
   ],
 
   // The studded kanabo he carries when he first fights at 990 (ch. 983),
-  // leaning on its grip, its far face dark.
+  // leaning on its grip, its far face dark. His wolf's tail waits for 1041,
+  // in `wanoRedrawn`.
   'yamato': [
     { d: 'M26 182 L50 150 M34 188 L58 156 M26 182 L34 188' },
     { d: 'M30 176 l7 5 M36 168 l7 5 M42 160 l7 5', role: 'soft' },
@@ -1028,6 +1034,7 @@ export const wanoArt = {
   ],
 
   // A scorpion's tail curled over two meal tickets, a stamp on the front one.
+  // His flintlocks come and go in `wanoRedrawn` (947 to 1019).
   'daifugo': [
     { d: 'M60 110 H122 V144 H60 Z', role: 'soft' },
     { d: 'M38 122 H100 V156 H38 Z' },
@@ -1058,7 +1065,7 @@ export const wanoArt = {
   // His open leather jacket over the yellow cape with its frill of feathers,
   // the dark leather hatched, and the two chains across the front in his
   // colour: what he wears when he spits on Luffy (929). His sabres come at
-  // 935.
+  // 935, in `wanoRedrawn`.
   'alpacaman': [
     {
       d: 'M48 40 C32 62 22 120 16 168 C24 164 26 176 34 170 C40 178 46 168 52 176 C58 168 64 180 70 172 L68 60 M112 40 C128 62 138 120 144 168 C136 164 134 176 126 170 C120 178 114 168 108 176 C102 168 96 180 90 172 L92 60',
@@ -1439,7 +1446,7 @@ export const wanoArt = {
   // hatched and its two iron hoops studded with rivets (accent). It is his
   // alone: in ch. 1030 (pp. 2-3) he lifts the whole barrel to drink while the
   // other two eat, and episode 1055 stands it at his feet. His horse's body
-  // is not shown before ch. 1032 (episode 1058).
+  // is not shown before ch. 1032 (episode 1058), in `wanoRedrawn`.
   'fuga': [
     { d: ellipse(80, 50, 34, 10) },
     { d: ellipse(80, 51, 28, 7), role: 'soft' },
@@ -1501,11 +1508,104 @@ export const wanoArt = {
   ],
 } satisfies Drawings
 
+/** Queen's braid, its two chains of links and the eight ties, without the twists or the tuft. */
+const QUEEN_BRAID = [...wanoArt.queen.slice(0, 2), ...wanoArt.queen.slice(3, 4)]
+
+/** Black Maria's pipe as her first drawing lays it: mouthpiece, stem, bowl, rim and smoke. */
+const MARIA_LAID_PIPE = [
+  ...wanoArt['black-maria'].slice(4, 8),
+  ...wanoArt['black-maria'].slice(9, 10),
+]
+
+/**
+ * One cut neck of Orochi's fallen shadow, base at (0, 0), leaning right: its
+ * two sides and the blunt end where it was cut.
+ */
+const OROCHI_STUB =
+  'M-6 0 C-8 -10 -4 -20 2 -26 M6 0 C6 -8 10 -14 14 -18 M2 -26 Q11 -26 14 -18 Q6 -16 2 -26'
+
+/**
+ * Onimaru, the fox Gyukimaru was, side on and facing left: the two tall
+ * ears with their dark edge, the long snout with no eye, the ruff down the
+ * chest, the legs dark from the elbow and the hock down, the far legs drawn
+ * light, and the flame he has for a tail in his colour.
+ */
+const ONIMARU: Stroke[] = [
+  { d: 'M40 62 L36 26 L54 54 M62 54 L74 26 L74 62' },
+  { d: 'M39 34 L42 56 M72 34 L71 54', role: 'ambient' },
+  {
+    d: 'M14 76 L34 66 C40 60 50 52 64 56 C70 64 74 74 82 78 C96 82 108 80 122 80 C132 80 138 88 138 98 C138 106 134 112 128 116',
+  },
+  {
+    d: 'M14 76 C22 80 32 82 40 83 C36 89 40 93 44 93 C38 99 42 105 48 103 C42 111 48 117 56 112',
+  },
+  { d: 'M64 58 q6 4 4 10 q7 3 3 10 q7 3 3 10', role: 'soft' },
+  { d: 'M56 112 C72 106 102 106 120 114', role: 'soft' },
+  {
+    d: 'M54 108 L52 172 H44 M62 110 L60 172 M118 112 L126 140 L120 172 H112 M128 114 L134 140 L127 172',
+  },
+  {
+    d: 'M53 140 l8 -4 M53 150 l7 -4 M53 160 l7 -4 M53 170 l7 -4 M126 148 l7 -4 M124 158 l7 -4 M122 168 l7 -4',
+    role: 'ambient',
+  },
+  { d: 'M70 110 L72 168 H66 M108 112 L104 168 H98', role: 'soft' },
+  {
+    d: 'M132 96 C150 92 158 74 150 56 C148 66 142 70 140 62 C146 48 142 36 132 24 C130 36 122 42 118 34 C112 50 116 66 124 80',
+    role: 'accent',
+  },
+  { d: 'M136 86 C144 76 144 64 138 52', role: 'accent' },
+]
+
+/**
+ * One of Alpacaman's cavalry sabres, level, edge down, the cross-guard at
+ * (0, 0): the slender blade curving up to its tip, the guard's lip and its
+ * knuckle-bow, the ribbed grip.
+ */
+const ALPACAMAN_SABRE: Stroke[] = [
+  { d: 'M0 -3 C40 -3 80 -6 112 -16 C84 -1 42 3 0 3' },
+  { d: 'M0 -7 V7 M2 6 C-2 18 -26 18 -32 4' },
+  { d: 'M0 -3 H-28 Q-34 0 -30 4 H0' },
+  { d: 'M-7 -3 v7 M-14 -3 v7 M-21 -3 v7', role: 'soft' },
+]
+
+/**
+ * One of Daifugo's small flintlocks, level, muzzle right, the lock at
+ * (0, 0): the stock under the barrel with its round butt, the barrel and
+ * the muzzle ring, the cock and the trigger guard.
+ */
+const DAIFUGO_FLINTLOCK: Stroke[] = [
+  {
+    d: 'M-6 -4 H34 V0 H6 C2 2 -2 8 -4 14 C-5 18 -10 20 -13 18 C-15 16 -15 13 -14 11 C-12 6 -10 0 -10 -2 Z',
+  },
+  { d: 'M34 -4 H52 M34 0 H52 M52 -5.5 V1.5' },
+  { d: 'M-4 -4 C-5 -8 -9 -10 -12 -8 M2 0 Q3 6 8 6 Q11 5 11 0', role: 'soft' },
+]
+
+/**
+ * Soto Muso in its scabbard, level, the butt of the hilt at (0, 0): the
+ * black hilt with its white diamonds and no guard, the pale collar, the long
+ * straight scabbard with the light wave along its edge.
+ */
+const SOTO_MUSO: Stroke[] = [
+  { d: 'M0 -4.5 H40 V4.5 H0 Z' },
+  {
+    d: 'M3 0 l3.5 -3 l3.5 3 l-3.5 3 Z M13 0 l3.5 -3 l3.5 3 l-3.5 3 Z M23 0 l3.5 -3 l3.5 3 l-3.5 3 Z',
+    role: 'soft',
+  },
+  { d: 'M11 -4 l-1 8 M21 -4 l-1 8 M31 -4 l-1 8', role: 'ambient' },
+  { d: 'M40 -5 H48 V5 H40 M44 -5 V5' },
+  { d: 'M48 -4 H150 Q153 0 150 4 H48' },
+  {
+    d: 'M54 2 q4 -2 8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0 t8 0',
+    role: 'soft',
+  },
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const wanoRedrawn: Redrawings = {
   // Her katana laid lower down, with fruit ripening beside it: she names
   // the Ripe-Ripe Enticement Jutsu at 916 (ch. 924, below her record's chapter).
-  shinobu: [
+  'shinobu': [
     {
       episode: 916,
       value: [
@@ -1525,7 +1625,7 @@ export const wanoRedrawn: Redrawings = {
   // the long finger running out to its tip and the membrane scalloped
   // between the bones: he is captioned with the fruit and flies at 924
   // (ch. 930, below his record's chapter).
-  king: [
+  'king': [
     {
       episode: 924,
       value: [
@@ -1547,7 +1647,7 @@ export const wanoRedrawn: Redrawings = {
   ],
   // A katana with a chrysanthemum for a guard: she draws a sword for the
   // first time at 901 (ch. 914), when Tama is taken from the tea house.
-  kiku: [
+  'kiku': [
     {
       episode: 901,
       chapter: 914,
@@ -1570,7 +1670,7 @@ export const wanoRedrawn: Redrawings = {
   // His two flintlocks, one laid across the other at another angle: barrel,
   // muzzle, ramrod, the dark wooden grip hatched, and the lock with its cock
   // in his colour. He disarms King with a single shot at 995 (ch. 986).
-  izo: [
+  'izo': [
     {
       episode: 995,
       chapter: 986,
@@ -1585,7 +1685,7 @@ export const wanoRedrawn: Redrawings = {
   // in her colour with the knobbed ridge along its base, the heavy body, the
   // belly hatched where it turns under, no eye. She shows the fruit when she
   // headbutts Luffy at 990 (ch. 983).
-  ulti: [
+  'ulti': [
     {
       episode: 990,
       chapter: 983,
@@ -1609,6 +1709,360 @@ export const wanoRedrawn: Redrawings = {
           role: 'ambient',
         },
         shadow(86, 192, 62),
+      ],
+    },
+  ],
+  // The brachiosaurus he turns into at the Sumo Inferno, side on: the long
+  // neck bent forward into a small blunt head with no eye, the two strands of
+  // his moustache, the heavy body and the tail curling up, the far legs and
+  // the belly hatched. His braid hangs from the back of the skull down the
+  // neck, ties in his colour. He shows the form at 944 (ch. 945).
+  'queen': [
+    {
+      episode: 944,
+      chapter: 945,
+      value: [
+        {
+          d: 'M14 30 C14 24 20 20 28 20 C38 18 48 18 54 24 C58 28 58 34 56 42 C54 66 64 90 84 104 C98 94 118 96 130 110 C136 118 140 126 142 134 C148 138 154 134 157 126 C159 120 157 114 152 113 C156 122 155 138 147 146 C142 150 138 152 134 152 C126 162 104 166 84 166 C62 166 46 160 42 148 C36 128 30 94 34 58 C35 50 34 44 30 42 C24 42 18 40 16 38 C14 36 14 34 14 30 Z',
+        },
+        ...moved(
+          QUEEN_BRAID,
+          'translate(60 28) rotate(-14) scale(0.42) translate(-62.6 -14)',
+        ),
+        {
+          d: 'M16 37 C8 44 8 56 14 62 C18 66 16 72 12 76 M22 40 C18 48 20 56 26 62',
+          role: 'soft',
+        },
+        {
+          d: 'M54 162 C56 170 56 176 54 184 H68 C68 176 68 170 70 166 M116 162 C118 170 118 176 116 184 H130 C130 176 130 164 130 154',
+        },
+        {
+          d: 'M46 158 C46 166 46 174 44 182 H52 M104 166 C104 172 104 178 102 182 H110',
+          role: 'soft',
+        },
+        { d: 'M80 118 C72 130 70 144 72 160', role: 'soft' },
+        {
+          d: 'M46 168 l4 4 M104 170 l4 4 M84 166 l4 4 M94 166 l4 4 M151 121 l4 -2 M150 129 l4 -2',
+          role: 'ambient',
+        },
+        shadow(88, 192, 62),
+      ],
+    },
+  ],
+  // The triceratops he turns into against Franky, side on: the frill with its
+  // pointed rim, the beak closed, a short horn on the nose, the heavy body on
+  // its pillar legs, the far legs and the flank hatched, no eye. His cap's
+  // studded band wraps the base of the frill and its two golden horns are the
+  // brow horns, as the manga draws them. He shows the form at 1012 (ch. 998).
+  'sasaki': [
+    {
+      episode: 1012,
+      chapter: 998,
+      value: [
+        {
+          d: 'M30 100 C24 104 18 108 14 114 C8 122 4 130 6 140 C10 137 14 137 18 139 C26 146 40 150 50 150 C54 154 56 156 58 158 C80 162 112 162 128 154 C134 150 138 148 142 146 L160 142 C154 130 148 120 140 110 C136 104 132 100 128 98',
+        },
+        {
+          d: 'M68 102 L57.7 103.7 L50 95.7 L54 85.1 L50.4 74.3 L58.5 66.6 L59.8 55.4 L70.3 52.1 L76.3 42.8 L87.1 44.6 L96.5 39.1 L105.2 45.7 L116.1 45 L121 55 L131.1 59.5 L131.3 70.8 L138.5 79.4 L133.8 89.7 L128 98',
+        },
+        {
+          d: 'M70 104 C70 120 64 136 56 146 M62 92 C60 76 70 62 88 60',
+          role: 'soft',
+        },
+        ...moved(
+          wanoArt.sasaki.slice(2, 4),
+          'translate(50 102) rotate(-8) scale(0.4) translate(-81 -131)',
+        ),
+        ...moved(
+          wanoArt.sasaki.slice(7, 9),
+          'translate(50 100) rotate(-32) scale(0.45) translate(-76 -130)',
+        ),
+        { d: 'M12 118 C12 110 14 104 18 98 C19 104 21 109 23 112' },
+        {
+          d: 'M62 158 C62 166 62 172 60 180 H74 C74 172 74 166 76 160 M118 158 C120 166 120 172 118 180 H132 C132 172 132 160 134 150',
+        },
+        {
+          d: 'M50 152 C50 162 48 170 48 178 H56 M106 160 C106 166 106 172 104 178 H112',
+          role: 'soft',
+        },
+        {
+          d: 'M84 160 l4 4 M94 160 l4 4 M140 148 l4 -2 M146 146 l4 -2',
+          role: 'ambient',
+        },
+        shadow(88, 188, 62),
+      ],
+    },
+  ],
+  // The spider she turns into, without the woman on it: the round body in
+  // front, the great abdomen behind, the eight legs of rounded segments, the
+  // far ones and the underside hatched, no eye. Her pipe lies in front of it,
+  // still smoking. She shows the form at 1013 (ch. 998).
+  'black-maria': [
+    {
+      episode: 1013,
+      chapter: 998,
+      value: [
+        {
+          d: 'M61 116 A14 6.5 93.7 1 1 51.3 113.8 M57.5 136.4 A12.1 5.5 97 1 1 51.2 135.9 M110.6 107.8 A14 6.5 20.4 0 1 109.4 115.5 M112.5 111 A14 6 78.7 1 1 108.6 130.6 M110.6 140.4 A12.1 5.5 87.9 0 1 112 136.4 M118.2 135.6 A12.1 5.5 87.9 1 1 110.3 148.5',
+          role: 'ambient',
+        },
+        {
+          d: 'M90 94.2 A44 34 0 0 1 82.7 91.7 M66.9 80.3 A44 34 0 1 1 123.6 92.4',
+        },
+        {
+          d: 'M85 88 l5 -5 M99 88 l5 -5 M113 88 l5 -5 M127 88 l5 -5',
+          role: 'ambient',
+        },
+        {
+          d: 'M71.1 114.4 A22 18 0 0 1 49.7 112.9 M45.4 86.2 A22 18 0 0 1 84 96.9',
+        },
+        {
+          d: 'M12.6 70.2 A20.1 9 -145.3 0 1 45.6 93.1 A20.1 9 -145.3 0 1 12.6 70.2 M19.4 85.5 A25.7 7.8 98.3 1 1 13.2 69.6 M10.5 118.8 A20.8 6.5 89.1 1 1 4.7 118.4 M26.9 92.7 A15.4 9 -143.1 0 1 51.6 111.2 A15.4 9 -143.1 0 1 26.9 92.7 M34.9 110 A19.4 7.8 94.8 1 1 27.4 92 M29.2 128.7 A15.8 6.5 85 1 1 22.5 128.7 M101.1 101.8 A16.4 9 -19.3 0 1 70.1 112.7 A16.4 9 -19.3 0 1 101.1 101.8 M100.5 100.6 A17.1 7.8 80 1 1 93.7 113.4 M107.7 132.1 A13.9 6.5 91.1 1 1 100.7 132.7 M127.1 96.3 A24.9 9 -9.3 0 1 78 104.3 A24.9 9 -9.3 0 1 127.1 96.3 M126.2 94.4 A20 7.8 55 1 1 122.8 102.7 M148.4 125.4 A17 6.5 85.7 1 1 142 127.7',
+        },
+        ...moved(
+          MARIA_LAID_PIPE,
+          'translate(5.4 78) rotate(11 80 120) scale(0.8)',
+        ),
+        shadow(78, 164, 72),
+      ],
+    },
+  ],
+  // The saber-toothed tiger he turns into, side on: the heavy head with the
+  // two long fangs in his colour, the shoulders, the fat forepaws, the tail
+  // curled up behind, the far legs drawn light, no eye. His cigarette lies
+  // in front of it, still smoking. He shows the form at 1013 (ch. 998).
+  'whos-who': [
+    {
+      episode: 1013,
+      chapter: 998,
+      value: [
+        {
+          d: 'M66 78 C62 66 50 60 38 62 C28 64 22 70 20 78 C14 82 10 88 10 93 C10 97 13 100 16 100 C20 102 24 104 26 106 C32 112 40 116 48 118 C52 120 54 122 54 126 C56 140 58 158 60 170 C54 172 54 180 62 180 H78 C84 180 88 178 84 172 C82 168 80 160 80 150 C90 152 104 152 116 150 C122 156 126 166 126 178 H140 C146 178 150 176 148 170 C144 160 142 142 144 126 C148 112 146 96 138 84 C130 66 118 48 98 46 C84 44 70 56 64 78 Z',
+        },
+        {
+          d: 'M16 100 C14 112 16 124 20 134 C21 122 21 111 22 102 M26 106 C25 116 26 126 30 134 C31 124 31 116 32 110',
+          role: 'accent',
+        },
+        { d: 'M32 64 C30 54 40 50 44 60 M50 61 C50 52 60 52 61 66' },
+        {
+          d: 'M136 80 C152 72 154 58 146 48 C138 38 140 24 152 22 C160 22 160 32 152 34 C146 36 148 42 154 50 C164 64 162 88 144 100',
+        },
+        { d: 'M84 58 l4 5 M98 54 l4 5 M112 58 l3 5', role: 'soft' },
+        {
+          d: 'M124 120 C130 130 132 140 130 150 M66 80 C70 94 72 108 68 126',
+          role: 'soft',
+        },
+        {
+          d: 'M74 150 C72 160 72 170 70 176 H64 M112 150 C112 160 112 170 110 176 H102',
+          role: 'soft',
+        },
+        { d: 'M86 152 l4 4 M94 152 l4 4 M102 152 l4 4', role: 'ambient' },
+        ...moved(wanoArt['whos-who'].slice(6, 8), 'translate(-90 8)'),
+        shadow(84, 188, 70),
+      ],
+    },
+  ],
+  // The same kanabo, set aside, and the great tail of his wolf form rising
+  // behind it, its edge in tongues like the cold flame of his mane, the side
+  // that turns away hatched. He fights Kaido in the form at 1041 (ch. 1019).
+  'yamato': [
+    {
+      episode: 1041,
+      chapter: 1019,
+      value: [
+        {
+          d: 'M93 92 C88 82 88 70 92 60 Q98 54 106 50 Q98 48 95 44 C94 36 96 28 100 20 Q102.9 23.4 90.7 24.1 Q78.1 20.5 58.7 25.8 Q67.9 31.6 63.7 41.6 Q44.7 39.4 30.5 53.4 Q39 53.5 38.8 64.9 Q24.2 73 18.4 93.1 Q27.5 89.2 33.1 100 Q21.6 113.9 25.2 134.9 Q28.1 129.4 36.4 138.2 Q37.8 152.6 54 169',
+        },
+        {
+          d: 'M66 140 C52 124 48 104 52 84 M80 104 C72 90 70 74 74 58 M48 150 C36 136 32 120 34 104',
+          role: 'soft',
+        },
+        { d: 'M82 66 l6 -3 M82 78 l7 -3 M84 90 l6 -3', role: 'ambient' },
+        ...moved(wanoArt.yamato.slice(0, 6), 'translate(18 0)'),
+        shadow(84, 192, 64),
+      ],
+    },
+  ],
+  // The same paper door, and behind it what the Scabbards leave of him: the
+  // serpent's body slumped on the floor, three of its four necks cut short
+  // to a blunt end and the fourth hanging limp over the side. They cut off
+  // all but one of his heads at 1026 (ch. 1009); the one left is not shown.
+  'kurozumi-orochi': [
+    {
+      episode: 1026,
+      chapter: 1009,
+      value: [
+        ...wanoArt['kurozumi-orochi'].slice(0, 4),
+        {
+          d: 'M20 150 C20 128 36 116 54 114 C66 102 98 100 112 110 C128 114 140 130 140 150',
+          role: 'accent',
+        },
+        {
+          d: 'M34 140 C56 128 100 126 128 136 M50 126 C70 118 92 118 108 124',
+          role: 'soft',
+        },
+        {
+          d: OROCHI_STUB,
+          role: 'accent',
+          transform: 'translate(40 126) rotate(-56) scale(1.1)',
+        },
+        {
+          d: OROCHI_STUB,
+          role: 'accent',
+          transform: 'translate(56 112) rotate(-30) scale(1.5)',
+        },
+        {
+          d: OROCHI_STUB,
+          role: 'accent',
+          transform: 'translate(80 104) rotate(-4) scale(1.1)',
+        },
+        {
+          d: 'M108 114 C118 98 136 100 138 116 C139 128 136 140 132 150 M114 118 C120 108 130 110 131 120 C132 130 128 142 124 150 M124 150 Q128 146 132 150',
+          role: 'accent',
+        },
+        ...wanoArt['kurozumi-orochi'].slice(9, 10),
+      ],
+    },
+  ],
+  // The same jacket and cape, set back, and his two cavalry sabres crossed
+  // beneath them, knuckle-bows and all: he fights Hyogoro and Luffy with
+  // them at 935 (ch. 939).
+  'alpacaman': [
+    {
+      episode: 935,
+      chapter: 939,
+      value: [
+        ...moved(
+          wanoArt.alpacaman.slice(0, -1),
+          'translate(18 -10) scale(0.78)',
+        ),
+        ...moved(ALPACAMAN_SABRE, 'translate(38 178) rotate(-12) scale(0.82)'),
+        ...moved(
+          ALPACAMAN_SABRE,
+          'translate(126 172) scale(-1 1) rotate(-22) scale(0.82)',
+        ),
+        shadow(80, 190, 62),
+      ],
+    },
+  ],
+  // The same tail and tickets, set higher, and two small flintlocks laid in
+  // front of them, muzzle to muzzle: he holds the prisoners with them from
+  // 947 (ch. 948). He has them no more when he is back at Onigashima, at
+  // 1019 (ch. 1004), and the drawing is his first one again.
+  'daifugo': [
+    {
+      episode: 947,
+      chapter: 948,
+      value: [
+        ...moved(wanoArt.daifugo.slice(0, -1), 'translate(0 -22)'),
+        ...moved(DAIFUGO_FLINTLOCK, 'translate(44 164) rotate(-6)'),
+        ...moved(
+          DAIFUGO_FLINTLOCK,
+          'translate(116 176) scale(-1 1) rotate(-6)',
+        ),
+        shadow(80, 192, 58),
+      ],
+    },
+    { episode: 1019, chapter: 1004, value: wanoArt.daifugo },
+  ],
+  // Out of the cell, with his sword back: Soto Muso laid in front in its
+  // scabbard, with no guard, and behind it the straw kasa he wears, the wide
+  // cone, its far side hatched and the frayed rim in his colour. Raizo throws
+  // him the key and the sword at 948 (ch. 948).
+  'kawamatsu': [
+    {
+      episode: 948,
+      chapter: 948,
+      value: [
+        {
+          d: 'M10 126 C30 108 58 84 78 70 C80 68 84 68 86 70 C106 84 134 108 154 126',
+        },
+        {
+          d: 'M30 112 C58 104 106 104 134 112 M52 92 C70 87 94 87 112 92',
+          role: 'soft',
+        },
+        {
+          d: 'M98 91 l6 -4 M110 101 l6 -4 M122 111 l6 -4 M134 121 l6 -4 M104 104 l6 -4 M118 114 l6 -4 M130 124 l6 -4',
+          role: 'ambient',
+        },
+        {
+          d: 'M10 126 L8 133 L16 132 L16 138 L26 136 L28 142 L38 139 L42 145 L52 142 L58 148 L66 144 L74 149 L82 145 L90 149 L98 144 L106 147 L112 141 L120 143 L126 137 L134 138 L138 132 L146 132 L148 127 L154 126',
+          role: 'accent',
+        },
+        ...wanoArt.kawamatsu.slice(5, 6),
+        ...moved(SOTO_MUSO, 'translate(14 184) rotate(-10) scale(0.88)'),
+        shadow(82, 192, 64),
+      ],
+    },
+  ],
+  // The fox he was all along, Onimaru, standing on the same bridge: he
+  // turns back into it at 954 (ch. 953). The naginata and the swords are
+  // gone with the monk.
+  'gyukimaru': [
+    {
+      episode: 954,
+      chapter: 953,
+      value: [
+        ...wanoArt.gyukimaru.slice(0, 4),
+        ...moved(ONIMARU, 'translate(16 -16) scale(0.78)'),
+        ...wanoArt.gyukimaru.slice(8, 9),
+      ],
+    },
+  ],
+  // His horse half, side on, with no man on it: the round barrel under the
+  // checked cloth, the band at the front where his waist sits, the four legs
+  // and hooves, the far ones light, the long dark tail hatched. His kanabo
+  // lies in front, the ring at its end in his colour. The barrel he drank
+  // from is gone. His body is first shown whole at 1058 (ch. 1032).
+  'fuga': [
+    {
+      episode: 1058,
+      chapter: 1032,
+      value: [
+        {
+          d: 'M140 80 C154 84 158 104 154 126 C152 142 148 154 142 164 C138 148 142 126 138 104',
+          role: 'ambient',
+        },
+        {
+          d: 'M144 98 l7 3 M145 112 l7 2 M145 126 l7 1 M143 140 l6 0 M142 152 l5 -1',
+          role: 'ambient',
+        },
+        {
+          d: 'M34 88 C18 96 18 124 36 132 M50 134 C68 144 98 144 114 134 M104 68 C112 68 118 66 124 66 C138 66 146 80 144 96 C143 108 138 118 132 124',
+        },
+        {
+          d: 'M112 92 C126 100 128 120 120 134 M36 132 C42 128 48 128 52 134',
+          role: 'soft',
+        },
+        {
+          d: 'M60 140 L61 152 L60 164 M106 140 L109 152 L108 164',
+          role: 'soft',
+        },
+        {
+          d: 'M38 130 L41 148 L40 162 M52 134 L50 148 L50 162 M38 162 L36 170 H54 L52 162 Z M120 134 L125 148 L120 162 M134 128 L138 142 L132 150 L130 162 M118 162 L116 170 H134 L132 162 Z',
+        },
+        {
+          d: 'M30 82 C38 66 60 58 80 62 M34 92 C44 76 62 70 82 72 M30 82 L34 92 M80 62 L82 72',
+        },
+        {
+          d: 'M44 82 L48 124 Q76 130 104 122 L106 68 Q92 62 80 64',
+          role: 'soft',
+        },
+        {
+          d: 'M62 76 L64 126 M78 72 L80 128 M92 66 L92 127 M46 96 L105 90 M47 110 L105 106',
+          role: 'soft',
+        },
+        {
+          d: 'M36 179 L140 184 M36 187 L140 192 M140 184 V192',
+          role: 'ambient',
+        },
+        {
+          d: 'M48 186 l4 -6 M60 187 l4 -6 M72 187 l4 -6 M84 188 l4 -6 M96 188 l4 -6 M108 189 l4 -6 M120 190 l4 -6',
+          role: 'ambient',
+        },
+        { d: circle(24, 183, 13), role: 'accent' },
+        { d: circle(24, 183, 4.5), role: 'accent' },
+        shadow(86, 174, 58),
       ],
     },
   ],

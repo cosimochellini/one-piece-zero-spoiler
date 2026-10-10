@@ -903,6 +903,56 @@ describe('a record drawn again later in the story', () => {
     expect(stages[1]?.value).toBe(DRAWINGS['jaygarcia-saturn'])
   })
 
+  it('turns Queen into his brachiosaurus only from episode 944', () => {
+    expect(walkStages('queen', [[944, 945]])).toHaveLength(1)
+  })
+
+  it('turns Sasaki into his triceratops only from episode 1012', () => {
+    expect(walkStages('sasaki', [[1012, 998]])).toHaveLength(1)
+  })
+
+  it('turns Black Maria into her spider only from episode 1013', () => {
+    expect(walkStages('black-maria', [[1013, 998]])).toHaveLength(1)
+  })
+
+  it('turns Who’s-Who into his saber-toothed tiger only from episode 1013', () => {
+    expect(walkStages('whos-who', [[1013, 998]])).toHaveLength(1)
+  })
+
+  it('grows the wolf’s tail behind Yamato’s kanabo only from episode 1041', () => {
+    expect(walkStages('yamato', [[1041, 1019]])).toHaveLength(1)
+  })
+
+  it('cuts the heads off Orochi’s shadow only from episode 1026', () => {
+    expect(walkStages('kurozumi-orochi', [[1026, 1009]])).toHaveLength(1)
+  })
+
+  it('hands Alpacaman his sabres only from episode 935', () => {
+    expect(walkStages('alpacaman', [[935, 939]])).toHaveLength(1)
+  })
+
+  it('arms Daifugo with his flintlocks from episode 947, and takes them back', () => {
+    const stages = walkStages('daifugo', [
+      [947, 948],
+      [1019, 1004],
+    ])
+
+    // Back at Onigashima without them is his first drawing itself.
+    expect(stages[1]?.value).toBe(DRAWINGS.daifugo)
+  })
+
+  it('lets Kawamatsu out of his cell only from episode 948', () => {
+    expect(walkStages('kawamatsu', [[948, 948]])).toHaveLength(1)
+  })
+
+  it('shows Gyukimaru as the fox Onimaru only from episode 954', () => {
+    expect(walkStages('gyukimaru', [[954, 953]])).toHaveLength(1)
+  })
+
+  it('stands Fuga on his horse’s legs only from episode 1058', () => {
+    expect(walkStages('fuga', [[1058, 1032]])).toHaveLength(1)
+  })
+
   it('hands Izo his flintlocks only from episode 995', () => {
     const izo = filed('izo')
     const fans = DRAWINGS.izo
