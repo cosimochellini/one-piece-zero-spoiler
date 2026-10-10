@@ -11,7 +11,7 @@ import { summitWarArt, summitWarRedrawn } from './summit-war'
 import { thrillerBarkArt, thrillerBarkRedrawn } from './thriller-bark'
 import { wanoArt, wanoRedrawn } from './wano'
 import { waterSevenArt, waterSevenRedrawn } from './water-seven'
-import { wholeCakeArt } from './whole-cake'
+import { wholeCakeArt, wholeCakeRedrawn } from './whole-cake'
 
 /**
  * Every line drawing, one per record, keyed by the record's id. The drawings
@@ -50,6 +50,7 @@ export const REDRAWINGS: Redrawings = {
   ...thrillerBarkRedrawn,
   ...summitWarRedrawn,
   ...dressrosaRedrawn,
+  ...wholeCakeRedrawn,
   ...wanoRedrawn,
   ...eggheadRedrawn,
   ...elbafRedrawn,

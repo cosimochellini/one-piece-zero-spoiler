@@ -893,6 +893,71 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
   })
 
+  it('sinks Jack’s Mammoth only from episode 774', () => {
+    expect(walkStages('jack', [[774, 821]])).toHaveLength(1)
+  })
+
+  it('stands Inuarashi on a blade for a leg only from episode 993', () => {
+    expect(walkStages('inuarashi', [[993, 985]])).toHaveLength(1)
+  })
+
+  it('follows Pedro from his disguise to the fedora of the suit days', () => {
+    expect(
+      walkStages('pedro', [
+        [786, 827],
+        [828, 858],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('gives Nekomamushi his gun hand only from episode 992', () => {
+    expect(walkStages('nekomamushi', [[992, 984]])).toHaveLength(1)
+  })
+
+  it('sets Stussy’s mask beside her hat, then swaps both for a jacket', () => {
+    expect(
+      walkStages('stussy', [
+        [1092, 1062],
+        [1106, 1074],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('follows Katakuri’s trident and his scarf, off and on again', () => {
+    const stages = walkStages('charlotte-katakuri', [
+      [832, 862],
+      [868, 893],
+      [1151, 1119],
+    ])
+
+    // The scarf back on is the trident's own drawing again.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+  })
+
+  it('runs a sword through Jarul’s helmet only from episode 1165', () => {
+    expect(walkStages('jarul', [[1165, 1135]])).toHaveLength(1)
+  })
+
+  it('gives the grown Gerd her axe only from episode 1160', () => {
+    expect(walkStages('gerd', [[1160, 1130]])).toHaveLength(1)
+  })
+
+  it('lays Jorul’s helmet on his grave only from episode 838', () => {
+    expect(walkStages('jorul', [[838, 868]])).toHaveLength(1)
+  })
+
+  it('follows Zeus into Nami’s staff, back to Big Mom and out again', () => {
+    const stages = walkStages('zeus', [
+      [878, 903],
+      [993, 985],
+      [1037, 1015],
+    ])
+
+    // Big Mom's cloud is his first drawing, and the staff is one drawing.
+    expect(stages[1]?.value).toBe(DRAWINGS.zeus)
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+  })
+
   it('grows Saturn’s horns from episode 1128, and takes them away at 1153', () => {
     const stages = walkStages('jaygarcia-saturn', [
       [1128, 1094],
