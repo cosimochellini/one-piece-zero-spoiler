@@ -111,7 +111,6 @@ Grade every drawing you make or review. Only A ships.
   no bookmark, chapter − 1, chapter); a record with many stages walks its
   timeline in one `it` instead, on Luffy's model. A saga's first redrawing is
   also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
-  Recount the "Line drawings" line in `docs/architecture.md`.
 - **Places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
