@@ -889,6 +889,49 @@ describe('a record drawn again later in the story', () => {
     expect(stages[1]?.value).toBe(DRAWINGS.funkfreed)
   })
 
+  it.each([
+    'paulie',
+    'kiwi-and-mozu',
+    'zambai',
+    'peepley-lulu',
+    'tilestone',
+    'sodom-and-gomorrah',
+    'oimo-and-kashi',
+    'yokozuna',
+  ])(
+    'sends %s over the edge at Enies Lobby from 307, and into the net from 310',
+    (id) => {
+      expect(
+        walkStages(id, [
+          [307, 425],
+          [310, 428],
+        ]),
+      ).toHaveLength(2)
+    },
+  )
+
+  it('rolls Tom’s blueprint shut only from episode 267', () => {
+    expect(walkStages('tom', [[267, 379]])).toHaveLength(1)
+  })
+
+  it('lays T-Bone’s sword on the newspaper only from episode 1116', () => {
+    expect(walkStages('t-bone', [[1116, 1082]])).toHaveLength(1)
+  })
+
+  it('sets the fire round Clover and Olvia only from episode 278', () => {
+    expect(walkStages('clover', [[278, 397]])).toHaveLength(1)
+    expect(walkStages('nico-olvia', [[278, 398]])).toHaveLength(1)
+  })
+
+  it('freezes Saul’s hat from episode 278, and sets it on the books from 1155', () => {
+    expect(
+      walkStages('jaguar-d-saul', [
+        [278, 397],
+        [1155, 1124],
+      ]),
+    ).toHaveLength(2)
+  })
+
   it('takes the chains off Loki’s tree only from episode 1171', () => {
     expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
   })

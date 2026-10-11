@@ -1482,6 +1482,98 @@ const KAKU_MASK: Stroke[] = [
 /** Hattori's top hat, drawn about its brim's centre, perched on his head. */
 const ON_HEAD = 'translate(76.4 36.8) rotate(8) scale(1.25)'
 
+/**
+ * Where a drawing is placed about its own centre: moved to (x, y), turned
+ * and made smaller.
+ */
+function placed(
+  [x, y]: [number, number],
+  [cx, cy]: [number, number],
+  [turn, size]: [number, number],
+): string {
+  return `translate(${String(x)} ${String(y)}) rotate(${String(turn)}) scale(${String(size)}) translate(${String(-cx)} ${String(-cy)})`
+}
+
+/**
+ * The brink of Enies Lobby over the ravine at the main gate: the ground
+ * running out to the edge, the cliff face dropping away on the left with its
+ * side hatched, the smoke of the warships' cannon rolling over the top, and
+ * streaks above whatever goes over.
+ */
+const OVER_THE_EDGE: Stroke[] = [
+  { d: 'M-4 62 H40 L48 70 L44 96 L52 124 L46 156 L54 204' },
+  {
+    d: 'M16 82 l10 -8 M20 108 l12 -10 M24 136 l12 -10 M26 164 l12 -10',
+    role: 'ambient',
+  },
+  {
+    d: 'M-4 50 C-8 36 6 26 18 32 C22 14 46 10 54 26 C66 16 86 26 80 42 C90 46 88 60 76 60',
+    role: 'ambient',
+    dashed: true,
+  },
+  { d: 'M96 24 v22 M112 16 v22 M128 24 v22', role: 'ambient', dashed: true },
+]
+
+/**
+ * A first drawing blasted over that edge, turned as it falls. The warships
+ * fire on the escapers at the main gate, and at 307 (ch. 425) the Marines
+ * report that no one on the main island survived.
+ */
+function overTheEdge(
+  strokes: Stroke[],
+  centre: [number, number],
+  turn: number,
+): Stroke[] {
+  return [
+    ...OVER_THE_EDGE,
+    ...moved(strokes, placed([106, 120], centre, [turn, 0.72])),
+  ]
+}
+
+/** The ravine's edge seen from below, and the net of rope hanging from it. */
+const NET_EDGE: Stroke[] = [
+  { d: 'M-4 34 C40 30 120 30 164 34' },
+  { d: 'M8 38 l6 8 M146 38 l6 8', role: 'ambient' },
+]
+
+/** The mesh of Paulie's net, the cords across and down its bag. */
+const NET_MESH =
+  'M28 72 Q80 86 132 72 M30 110 Q80 126 130 110 M46 146 Q80 160 114 146 M56 32 Q46 100 62 162 M104 32 Q114 100 98 162'
+
+/** The bag of the net, hung from two points on the edge. */
+const NET_BAG = 'M34 32 C22 86 34 150 80 168 C126 150 138 86 126 32'
+
+/**
+ * A first drawing caught in Paulie's net under the edge. At 310 (ch. 428)
+ * the whole group turns out to be hanging in the ropes he knotted into nets
+ * as they went over.
+ */
+function inTheNet(
+  strokes: Stroke[],
+  centre: [number, number],
+  [size, turn]: [number, number],
+): Stroke[] {
+  return [
+    ...NET_EDGE,
+    { d: NET_BAG },
+    { d: NET_MESH, role: 'soft' },
+    ...moved(strokes, placed([80, 104], centre, [turn, size])),
+  ]
+}
+
+/** Two tongues of the fire that takes the Tree of Knowledge, one each side. */
+const OHARA_FIRE: Stroke[] = [
+  {
+    d: 'M14 158 C6 136 20 126 16 104 C28 116 34 108 32 92 C44 110 48 130 40 158',
+  },
+  {
+    d: 'M124 158 C120 138 134 128 130 110 C142 122 148 114 148 98 C158 118 160 138 152 158',
+  },
+]
+
+/** Olvia's stack of the library's books, without her rifle. */
+const OHARA_BOOKS: Stroke[] = waterSevenArt['nico-olvia'].slice(0, 4)
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const waterSevenRedrawn: Redrawings = {
   // The forearm of the two years: a great box seen from its corner, the star
@@ -1727,5 +1819,296 @@ export const waterSevenRedrawn: Redrawings = {
       ],
     },
     { episode: 306, chapter: 423, value: waterSevenArt.funkfreed },
+  ],
+  // The rope coil blasted over the edge with the rest of the group at the
+  // main gate (307, ch. 425). Back at 310 (ch. 428): the coil set down on the
+  // edge, its rope run out over it, the accent, and knotted into the net that
+  // caught them all.
+  'paulie': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(waterSevenArt.paulie.slice(0, 7), [90, 125], 30),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: [
+        ...moved(
+          waterSevenArt.paulie.slice(0, 6),
+          placed([46, 22], [70, 120], [0, 0.42]),
+        ),
+        ...NET_EDGE,
+        { d: `M68 22 C90 20 100 26 104 34 ${NET_BAG}`, role: 'accent' },
+        { d: `${NET_MESH} M80 32 V168`, role: 'soft' },
+      ],
+    },
+  ],
+  // Their katanas over the edge at the main gate (307, ch. 425), then in
+  // Paulie's net (310, ch. 428).
+  'kiwi-and-mozu': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(
+        waterSevenArt['kiwi-and-mozu'].slice(0, 9),
+        [80, 115],
+        40,
+      ),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(
+        waterSevenArt['kiwi-and-mozu'].slice(0, 9),
+        [80, 115],
+        [0.6, 0],
+      ),
+    },
+  ],
+  // His bazooka over the edge at the main gate (307, ch. 425), then in
+  // Paulie's net (310, ch. 428).
+  'zambai': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(waterSevenArt.zambai.slice(0, 7), [84, 120], 50),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(waterSevenArt.zambai.slice(0, 7), [84, 120], [0.62, 0]),
+    },
+  ],
+  // His dark glasses, off the plank, over the edge at the main gate (307,
+  // ch. 425), then in Paulie's net (310, ch. 428).
+  'peepley-lulu': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(
+        waterSevenArt['peepley-lulu'].slice(2, 6),
+        [74, 108],
+        30,
+      ),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(
+        waterSevenArt['peepley-lulu'].slice(2, 6),
+        [74, 108],
+        [0.75, 0],
+      ),
+    },
+  ],
+  // His log over the edge at the main gate (307, ch. 425), then in Paulie's
+  // net (310, ch. 428).
+  'tilestone': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(waterSevenArt.tilestone.slice(0, 5), [100, 106], 60),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(
+        waterSevenArt.tilestone.slice(0, 5),
+        [100, 106],
+        [0.62, 0],
+      ),
+    },
+  ],
+  // The two King Bulls, out of the water and yoked together, going over the
+  // edge at the main gate (307, ch. 425), then in Paulie's net (310,
+  // ch. 428).
+  'sodom-and-gomorrah': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(
+        waterSevenArt['sodom-and-gomorrah'].slice(0, 8),
+        [80, 120],
+        30,
+      ),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(
+        waterSevenArt['sodom-and-gomorrah'].slice(0, 8),
+        [80, 120],
+        [0.62, 0],
+      ),
+    },
+  ],
+  // Oimo's club without the gate, going over the edge: the giants take the
+  // full brunt of the cannon at the main gate (307, ch. 425). In Paulie's net
+  // it hangs upside down, as the giants hang by their ankles (310, ch. 428).
+  'oimo-and-kashi': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(
+        waterSevenArt['oimo-and-kashi'].slice(4, 8),
+        [120, 100],
+        40,
+      ),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(
+        waterSevenArt['oimo-and-kashi'].slice(4, 8),
+        [120, 100],
+        [0.6, 180],
+      ),
+    },
+  ],
+  // The frog off the rail, going over the edge: the Straw Hats think he was
+  // with the group at the main gate (307, ch. 425). He croaks from Paulie's
+  // net (310, ch. 428). No face.
+  'yokozuna': [
+    {
+      episode: 307,
+      chapter: 425,
+      value: overTheEdge(waterSevenArt.yokozuna.slice(2, 8), [88, 100], 40),
+    },
+    {
+      episode: 310,
+      chapter: 428,
+      value: inTheNet(waterSevenArt.yokozuna.slice(2, 8), [88, 100], [0.62, 0]),
+    },
+  ],
+  // The same blueprint on the same rails, rolled shut now and tied round the
+  // middle, the tie the accent, and the sea train's smoke going away down
+  // the track: the train took him to Enies Lobby, and at 267 (ch. 379)
+  // Spandam says that killing such fools is right and good.
+  'tom': [
+    {
+      episode: 267,
+      chapter: 379,
+      value: [
+        ...waterSevenArt.tom.slice(0, 4),
+        { d: `${ellipse(31, 120, 6, 10)} ${ellipse(121, 106, 6, 10)}` },
+        {
+          d: 'M72 103.5 C68 110 68 118 74 123.5 M80 102.3 C76 108 76 117 82 122.3 M78 122.8 l-4 12 M78 122.8 l6 11',
+          role: 'accent',
+        },
+        ...waterSevenArt.tom.slice(7),
+        {
+          d: 'M164 60 C150 52 140 62 130 56 C120 50 110 58 100 54 C92 50 84 56 76 54',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+  ],
+  // The same sword without its right angle, lying across a folded newspaper:
+  // the columns ruled in, the photograph an empty frame, no lettering. The
+  // blade takes the accent. The paper reports his death at 1116 (ch. 1082).
+  't-bone': [
+    {
+      episode: 1116,
+      chapter: 1082,
+      value: [
+        { d: 'M14 128 L104 96 L152 150 L62 184 Z' },
+        { d: 'M58 112 L106 166', role: 'soft' },
+        { d: 'M24 130 L50 121 L68 141 L42 151 Z', role: 'soft' },
+        {
+          d: 'M66 109 L94 99 M70 114 L98 104 M74 119 L102 109 M50 160 L66 154 M56 166 L72 160 M110 136 L132 128 M116 143 L138 135',
+          role: 'ambient',
+        },
+        ...waterSevenArt['t-bone']
+          .slice(0, 1)
+          .map((stroke): Stroke => ({ ...stroke, role: 'accent' })),
+        ...waterSevenArt['t-bone'].slice(1, 6),
+      ],
+    },
+  ],
+  // The same globe, the books gone from its foot into the lake, the fire that
+  // takes the Tree of Knowledge rising on both sides and smoke above. The
+  // tree falls with him and the scholars inside at 278 (ch. 397).
+  'clover': [
+    {
+      episode: 278,
+      chapter: 397,
+      value: [
+        ...waterSevenArt.clover.slice(0, 9),
+        ...OHARA_FIRE,
+        {
+          d: 'M130 44 C122 34 134 26 126 14 C120 6 128 0 124 -6',
+          role: 'ambient',
+          dashed: true,
+        },
+        ...waterSevenArt.clover.slice(10),
+      ],
+    },
+  ],
+  // The same rifle on the same books, the same fire behind them, smoke
+  // rising: she stays in the Tree of Knowledge with the scholars, and at 278
+  // (ch. 398) no one is left on the island.
+  'nico-olvia': [
+    {
+      episode: 278,
+      chapter: 398,
+      value: [
+        ...moved(OHARA_FIRE, 'translate(0 12)'),
+        ...waterSevenArt['nico-olvia'].slice(0, 7),
+        {
+          d: 'M112 112 C108 104 114 98 110 90 M130 120 C124 110 134 102 128 90 C124 80 132 74 128 64',
+          role: 'ambient',
+          dashed: true,
+        },
+        ...SEA.slice(2),
+      ],
+    },
+  ],
+  'jaguar-d-saul': [
+    // The same raft and hat shut in a block of ice, the tree gone and smoke
+    // rising where it stood: Kuzan freezes him on the beach as Ohara burns,
+    // at 278 (ch. 397).
+    {
+      episode: 278,
+      chapter: 397,
+      value: [
+        ...waterSevenArt['jaguar-d-saul'].slice(0, 1),
+        ...waterSevenArt['jaguar-d-saul'].slice(5, 10),
+        {
+          d: 'M26 150 L30 108 L60 96 L100 104 L104 146 M30 108 L66 116 L100 104 M66 116 L68 152',
+        },
+        { d: 'M38 116 l6 -8 M76 112 l8 -6 M88 126 l6 -10', role: 'soft' },
+        {
+          d: 'M118 140 C110 120 126 106 118 86 C112 70 128 58 122 38 M136 142 C130 126 142 114 136 98 C132 86 142 78 138 64',
+          role: 'ambient',
+          dashed: true,
+        },
+        ...waterSevenArt['jaguar-d-saul'].slice(10),
+      ],
+    },
+    // His hat on the books of Ohara he took to Elbaph, a second, smaller
+    // stack beside them; the hat takes the accent the raft had. Robin is
+    // going to see him there, at 1155 (ch. 1124).
+    {
+      episode: 1155,
+      chapter: 1124,
+      value: [
+        ...moved(OHARA_BOOKS, 'translate(4 -6)'),
+        ...moved(
+          OHARA_BOOKS.slice(0, 3),
+          placed([122, 116], [80, 150], [0, 0.55]),
+        ),
+        ...moved(
+          waterSevenArt['jaguar-d-saul'].slice(8, 10).map((stroke): Stroke => {
+            return stroke.role === undefined ?
+                { ...stroke, role: 'accent' }
+              : stroke
+          }),
+          placed([70, 110], [66, 136], [0, 0.9]),
+        ),
+        shadow(80, 186, 66),
+      ],
+    },
   ],
 }

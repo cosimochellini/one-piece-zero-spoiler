@@ -870,7 +870,16 @@ export const waterSeven: Saga = {
         it: 'Nuota come un uomo più che come una rana, ed è per questo che la ciurma lo nota, e il primo pensiero di Rufy è la cena. Quando arriva il treno del mare non si sposta: si mette in guardia sui binari e incassa il colpo in pieno. Alla stazione dicono che non c’è verso di ucciderlo, e che è il guaio peggiore che abbiano.',
         en: 'He swims like a man rather than a frog, which is why the crew notices him at all, and Luffy’s first thought is dinner. When the sea train comes he does not move: he squares up on the rails and takes the full blow. At the station they say there is no killing him, and that he is the worst trouble they have.',
       },
-      status: [{ episode: 229, value: 'alive' }],
+      status: [
+        { episode: 229, value: 'alive' },
+        // Episode 307 adapts chapter 425: the Marines report no survivors on
+        // the main island, and the Straw Hats think he was with the group
+        // at the main gate.
+        { episode: 307, chapter: 425, value: 'presumed-dead' },
+        // Episode 310 adapts chapter 428: he croaks from Paulie’s nets
+        // under the cliff with the rest of them.
+        { episode: 310, chapter: 428, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 248,
