@@ -105,7 +105,7 @@ const FEATHER =
 
 /** One strip of sticking plaster, drawn about its centre: Igaram's, from 111. */
 const PLASTER =
-  'M-13 -4.5 H13 A4.5 4.5 0 0 1 13 4.5 H-13 A4.5 4.5 0 0 1 -13 -4.5 Z'
+  'M-16 -3.5 H16 A3.5 3.5 0 0 1 16 3.5 H-16 A3.5 3.5 0 0 1 -16 -3.5 Z'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
@@ -1582,9 +1582,9 @@ export const alabastaRedrawn: Redrawings = {
           'translate(-4 46) scale(0.66)',
         ),
         shadow(50, 172, 26),
-        { d: 'M2 120 H24 M74 120 H158', role: 'ambient' },
+        { d: 'M2 120 H32 M72 120 H158', role: 'ambient' },
         {
-          d: 'M86 120 C70 100 82 80 92 70 C102 58 92 40 104 26 C116 12 140 12 150 28 C160 44 150 64 134 62 C120 60 120 44 132 42 C140 41 142 50 136 52',
+          d: 'M98 120 C88 102 96 84 104 74 C112 62 104 44 114 30 C124 16 142 16 150 30 C158 44 150 62 136 60 C124 58 124 46 134 44 C141 43 143 51 137 53',
           role: 'ambient',
         },
         {
@@ -1592,7 +1592,7 @@ export const alabastaRedrawn: Redrawings = {
           role: 'ambient',
         },
         {
-          d: 'M134 120 C142 110 138 102 146 96 C152 92 158 98 156 104 M98 120 C92 110 96 102 104 98',
+          d: 'M134 120 C142 110 138 102 146 96 C152 92 158 98 156 104 M86 120 C82 112 86 104 92 100',
           role: 'ambient',
           dashed: true,
         },
@@ -1611,7 +1611,6 @@ export const alabastaRedrawn: Redrawings = {
         ...alabastaArt.igaram,
         { d: PLASTER, transform: 'translate(70 134) rotate(35) scale(0.8)' },
         { d: PLASTER, transform: 'translate(70 134) rotate(-35) scale(0.8)' },
-        { d: 'M68 134 h0.01 M72 134 h0.01', role: 'soft' },
       ],
     },
   ],
@@ -1704,7 +1703,7 @@ export const alabastaRedrawn: Redrawings = {
       chapter: 145,
       value: [
         {
-          d: 'M4 150 C40 140 70 146 100 142 C120 139 140 144 158 140',
+          d: 'M4 150 C12 149 18 148 24 148 M138 142 C146 141 152 141 158 140',
           role: 'ambient',
         },
         {
@@ -1803,8 +1802,8 @@ export const alabastaRedrawn: Redrawings = {
     },
   ],
 
-  // The same cup, dried out: no steam, and a dry ring low in it where the
-  // tea was. Crocodile dries him up and feeds him to the Bananawani at 104
+  // The same cup, dried out: no steam, and a dry ring on its bottom where
+  // the tea was. Crocodile dries him up and feeds him to the Bananawani at 104
   // (ch. 166).
   // At 109 (ch. 176) a Bananawani spits out the wax ball he sealed himself
   // in: the cup steams again beside the two halves of the shell.
@@ -1814,9 +1813,8 @@ export const alabastaRedrawn: Redrawings = {
       chapter: 166,
       value: [
         ...alabastaArt['mr-3'].slice(0, 1),
-        { d: 'M50 120 Q66 126 82 120', role: 'accent' },
+        { d: ellipse(66, 124, 12, 3), role: 'accent' },
         ...alabastaArt['mr-3'].slice(2, 7),
-        { d: 'M58 112 h0.01 M72 114 h0.01 M64 116 h0.01', role: 'soft' },
         ...alabastaArt['mr-3'].slice(8),
       ],
     },
