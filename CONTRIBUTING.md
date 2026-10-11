@@ -77,7 +77,7 @@ entry, which carries the episode it is learned in. The comment at the top of
 | `src/lib/`        | Code the client may import: bookmark logic, search, SVG helpers, views.            |
 | `src/i18n/`       | Locales and the English and Italian dictionaries.                                  |
 | `src/styles/`     | Global CSS and the StyleX design tokens.                                           |
-| `scripts/`        | Quality gates, the PR title validator and the wiki checks.                         |
+| `scripts/`        | Quality gates, the PR title validator, the wiki checks and the merge helper.       |
 | `docs/`           | [Architecture](docs/architecture.md), media and the chronicle verification report. |
 
 Components, routes and `src/lib` cannot import `~/data`. ESLint rejects the
@@ -245,3 +245,11 @@ through the same checks and the same review as anyone else's.
 
 [CODING_STANDARDS.md](CODING_STANDARDS.md) is what the reviewer reads: the
 judgement calls the tests do not hold, and where owner rulings live.
+
+Once a pull request is reviewed, `scripts/land-pr.sh <pr> <reviewed-head-sha>`
+lands it without going back to its author. It waits for CI `check`, merges on
+green, and refuses if the head is no longer the reviewed one. When the branch is
+behind `main` by more than `chore(release)` commits, it rebases the branch on
+GitHub, waits for `check` again and merges that. It exits with 2 and names the
+files only when the rebase conflicts, and that is the one case to rebase by
+hand. The other exit codes are listed at the top of the script.
