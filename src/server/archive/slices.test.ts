@@ -1311,21 +1311,14 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 75 })).toBe(shot?.value)
   })
 
-  it('lights Ace’s flame on Sabo’s pipe only from episode 678', () => {
-    const sabo = filed('sabo')
-    const pipe = DRAWINGS.sabo
-    const flame = REDRAWINGS['sabo']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sabo, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(flame?.episode).toBe(678)
-
-    expect(drawnAt(ep(677))).toBe(pipe)
-    expect(drawnAt(ep(678))).toBe(flame?.value)
-    expect(drawnAt(null)).toBe(pipe)
-    // The manga has him eat the fruit in chapter 744, so no chapter below it may.
-    expect(drawnAt({ mode: 'chapter', chapter: 743 })).toBe(pipe)
-    expect(drawnAt({ mode: 'chapter', chapter: 744 })).toBe(flame?.value)
+  it('sinks Sabo’s hat at 503, lifts it at 663 and lights his pipe at 678', () => {
+    expect(
+      walkStages('sabo', [
+        [503, 588],
+        [663, 731],
+        [678, 744],
+      ]),
+    ).toHaveLength(3)
   })
 
   it('sets Sengoku’s cap down only from episode 511', () => {
