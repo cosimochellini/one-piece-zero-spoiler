@@ -72,8 +72,8 @@ const PIPE: Stroke[] = [
   { d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0' },
 ]
 
-/** The same pipe held at a slant, as the grown Sabo carries it. */
-const PIPE_SLANTED = moved(PIPE, 'translate(-14 0) rotate(22 129 108)')
+/** A shallow sake cup on its foot, seen a little from above. */
+const SAKE_CUP = 'M0 0 q14 12 28 0 M10 7.5 l-2 4 h12 l-2 -4'
 
 /**
  * Sakazuki's Marine cap in three-quarters, set on his folded crimson suit,
@@ -1607,8 +1607,8 @@ export const summitWarArt = {
   ],
 
   // A top hat with goggles on the brim, and a pipe beside it. The hat floats
-  // by his sunk boat from 503, comes back with the pipe at 663, and the pipe
-  // burns with Ace's flame from 678, all in `summitWarRedrawn`.
+  // by his sunk boat from 503, stands behind three sake cups from 663, and
+  // the pipe burns with Ace's flame from 678, all in `summitWarRedrawn`.
   'sabo': [...TOP_HAT, ...PIPE, shadow(78, 170, 42)],
 
   // A hibiscus in three-quarters, five petals opening round the long stamen
@@ -2394,8 +2394,8 @@ export const summitWarRedrawn: Redrawings = {
 
   'sabo': [
     // The same top hat afloat, tipped on its side with the goggles still on
-    // the brim, in front of his boat going down: the broken hull, the mast
-    // leaning with its torn plain flag, and the smoke. Jalmack's ship sinks
+    // the brim, in front of his boat going down: the broken hull and its
+    // smoke. Jalmack's ship sinks
     // the boat at 503 (ch. 588), and Dogra brings the news up the mountain.
     {
       episode: 503,
@@ -2406,23 +2406,32 @@ export const summitWarRedrawn: Redrawings = {
           'translate(58 150) scale(0.9) rotate(-28) translate(-77 -106)',
         ),
         { d: 'M98 164 L104 146 Q126 138 152 132 L150 156' },
-        { d: 'M112 143 L136 72 M136 72 l20 8 l-6 5 l7 6 l-8 4 l5 6 l-14 -6' },
         { d: 'M118 150 L140 146 M126 158 l20 -4', role: 'soft' },
         {
-          d: 'M104 138 c-8 -8 4 -14 -2 -24 c-6 -10 6 -16 0 -28 M148 128 c-6 -6 4 -12 -2 -20 c-4 -6 4 -10 0 -18',
+          d: 'M128 136 c-8 -8 4 -14 -2 -24 c-6 -10 6 -16 0 -28 c-4 -8 4 -14 0 -22',
           role: 'ambient',
         },
         { d: 'M94 168 l10 -2 M12 166 l9 1', role: 'ambient' },
         ...SEA.slice(1),
       ],
     },
-    // The same top hat, up out of the sea and dry, and the same pipe taken
-    // up again at a slant. The masked man at the Colosseum is Sabo, alive,
-    // at 663 (ch. 731).
+    // The same top hat, up out of the sea and dry, set behind three
+    // shallow sake cups, the three of the oath that Luffy sees again when
+    // the masked man at the Colosseum turns out to be Sabo, alive, at 663
+    // (ch. 731).
     {
       episode: 663,
       chapter: 731,
-      value: [...TOP_HAT, ...PIPE_SLANTED, shadow(78, 170, 42)],
+      value: [
+        ...moved(TOP_HAT, 'translate(0 22)'),
+        ...[30, 66, 102].flatMap((x): Stroke[] => {
+          return [
+            { d: ellipse(x + 14, 154, 14, 4) },
+            { d: SAKE_CUP, transform: `translate(${String(x)} 154)` },
+          ]
+        }),
+        shadow(80, 176, 56),
+      ],
     },
     // The same top hat and slanted pipe, Ace's flame running up its top
     // third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
@@ -2431,7 +2440,7 @@ export const summitWarRedrawn: Redrawings = {
       chapter: 744,
       value: [
         ...TOP_HAT,
-        ...PIPE_SLANTED,
+        ...moved(PIPE, 'translate(-14 0) rotate(22 129 108)'),
         // Ace's flame, copied from his first drawing in `alabasta.ts`, and
         // lit three times along the pipe, smaller each time down.
         ...[
