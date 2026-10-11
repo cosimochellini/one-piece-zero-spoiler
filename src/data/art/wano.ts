@@ -1751,21 +1751,20 @@ export const wanoRedrawn: Redrawings = {
         shadow(80, 182, 60),
       ],
     },
-    // The same two flintlocks dropped flat on the floor, apart, smoke still
-    // rising from one muzzle: he and Maha bring each other down in the
-    // castle basement at 1068 (ch. 1041).
+    // One of his flintlocks dropped flat on the floor, smoke still rising
+    // from its muzzle: he and Maha bring each other down in the castle at
+    // 1068 (ch. 1041).
     {
       episode: 1068,
       chapter: 1041,
       value: [
-        ...placed(IZO_FLINTLOCK, 'translate(58 132) rotate(4)'),
-        ...placed(IZO_FLINTLOCK, 'translate(104 172) scale(-1 1) rotate(-6)'),
+        ...placed(IZO_FLINTLOCK, 'translate(72 150) rotate(4)'),
         {
-          d: 'M124 112 C118 104 128 98 122 88 C118 80 126 74 122 64',
+          d: 'M136 134 C130 126 140 120 134 110 C130 102 138 96 134 86',
           role: 'ambient',
           dashed: true,
         },
-        { d: 'M6 186 H154', role: 'ambient', dashed: true },
+        { d: 'M6 180 H154', role: 'ambient', dashed: true },
       ],
     },
   ],
@@ -2245,13 +2244,13 @@ export const wanoRedrawn: Redrawings = {
       episode: 928,
       chapter: 933,
       value: [
-        ...placed(KOMURASAKI_GETA, 'translate(54 112)'),
-        ...placed(KOMURASAKI_GETA, 'translate(132 132) rotate(-80)'),
-        { d: 'M41 122 l-4 6 M41 136 l-4 6', role: 'ambient' },
+        ...placed(KOMURASAKI_GETA, 'translate(46 112)'),
+        ...placed(KOMURASAKI_GETA, 'translate(108 132) rotate(-80)'),
+        { d: 'M33 122 l-4 6 M33 136 l-4 6', role: 'ambient' },
         shadow(84, 166, 64),
         ...moved(
           wanoArt.komurasaki.slice(10, 13),
-          'translate(0 4) rotate(10 70 184)',
+          'translate(0 -6) rotate(6 70 184)',
         ),
       ],
     },
@@ -2359,7 +2358,7 @@ export const wanoRedrawn: Redrawings = {
         ),
         ...moved(
           [...wanoArt.tsurujo.slice(7, 10), ...wanoArt.tsurujo.slice(11, 12)],
-          'translate(-4 32) rotate(80 128 140)',
+          'translate(-12 20) rotate(80 128 140)',
         ),
         shadow(84, 190, 66),
       ],
@@ -2403,7 +2402,7 @@ export const wanoRedrawn: Redrawings = {
       value: [
         ...moved(
           SUKIYAKI_SCROLL_SHUT,
-          'translate(0 46) scale(0.9) translate(8 0)',
+          'translate(0 36) scale(0.9) translate(8 0)',
         ),
         ...moved(
           wanoArt['tenguyama-hitetsu'].slice(0, 6),
