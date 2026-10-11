@@ -123,7 +123,9 @@ for round in 1 2 3 4; do
   echo "rebased onto main: $H"
 done
 
-gh pr merge "$PR" --squash --delete-branch --match-head-commit "$H" || exit 5
+# No --delete-branch: GitHub deletes the remote branch on merge, and the flag
+# would also delete local branches, worktrees of parallel sessions included.
+gh pr merge "$PR" --squash --match-head-commit "$H" || exit 5
 echo "merged $H"
 gh pr view "$PR" --json state,mergeCommit,closingIssuesReferences \
   -q '"\(.state) \(.mergeCommit.oid[:7]) closes: \([.closingIssuesReferences[].number])"' || true

@@ -250,6 +250,7 @@ Once a pull request is reviewed, `scripts/land-pr.sh <pr> <reviewed-head-sha>`
 lands it without going back to its author. It waits for CI `check`, merges on
 green, and refuses if the head is no longer the reviewed one. When the branch is
 behind `main` by more than `chore(release)` commits, it rebases the branch on
-GitHub, waits for `check` again and merges that. It exits with 2 and names the
-files only when the rebase conflicts, and that is the one case to rebase by
-hand. The other exit codes are listed at the top of the script.
+GitHub, waits for `check` again and merges that. The exit codes are listed at
+the top of the script. Only 2, a rebase conflict whose files it names, needs a
+rebase by hand. 4, the head changed, and 6, main kept moving, need a person to
+look.
