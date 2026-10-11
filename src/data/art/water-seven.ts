@@ -1945,7 +1945,8 @@ export const waterSevenRedrawn: Redrawings = {
   ],
   // Oimo's club without the gate, going over the edge: the giants take the
   // full brunt of the cannon at the main gate (307, ch. 425). In Paulie's net
-  // it hangs upside down, as the giants hang by their ankles (310, ch. 428).
+  // it hangs upside down, as Oimo hangs from the cliff by his ankles (310,
+  // ch. 428).
   'oimo-and-kashi': [
     {
       episode: 307,
@@ -2046,22 +2047,27 @@ export const waterSevenRedrawn: Redrawings = {
       ],
     },
   ],
-  // The same rifle on the same books, the same fire behind them, smoke
-  // rising: she stays in the Tree of Knowledge with the scholars, and at 278
-  // (ch. 398) no one is left on the island.
+  // The same rifle without the books, which the scholars threw into the
+  // lake, lying on the floor in the fire that takes the Tree of Knowledge,
+  // smoke rising:
+  // she stays in the tree with the scholars, and at 278 (ch. 398) no one is
+  // left on the island.
   'nico-olvia': [
     {
       episode: 278,
       chapter: 398,
       value: [
         ...moved(OHARA_FIRE, 'translate(0 12)'),
-        ...waterSevenArt['nico-olvia'].slice(0, 7),
+        ...moved(
+          waterSevenArt['nico-olvia'].slice(4, 7),
+          placed([80, 150], [78, 110], [14, 0.82]),
+        ),
+        { d: 'M-4 172 C40 168 120 168 164 172', role: 'ambient' },
         {
           d: 'M112 112 C108 104 114 98 110 90 M130 120 C124 110 134 102 128 90 C124 80 132 74 128 64',
           role: 'ambient',
           dashed: true,
         },
-        ...SEA.slice(2),
       ],
     },
   ],
