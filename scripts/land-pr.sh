@@ -52,10 +52,13 @@ fetch() {
 }
 
 # The patch id of each commit $1 adds to main, oldest first: a rebase keeps
-# them, an amend does not. A rebase that shifts a hunk's context lines changes
-# one too, which stops the script for a human instead of merging.
+# them, an amend does not. --binary puts binary content in the patch, so a
+# swapped image changes the id too. A rebase that shifts a hunk's context
+# lines changes one as well, which stops the script for a human instead of
+# merging.
 patch_ids() {
-  git log -p --reverse --format='commit %H' "origin/main..$1" |
+  set -o pipefail
+  git log -p --binary --reverse --format='commit %H' "origin/main..$1" |
     git patch-id --stable | cut -d' ' -f1
 }
 
@@ -105,7 +108,15 @@ for round in 1 2 3 4; do
   done
   # The new head must be the reviewed commits replayed, nothing pushed since.
   fetch
-  if [ "$H" = "$old" ] || [ "$(patch_ids "$H")" != "$(patch_ids "$old")" ]; then
+  # Empty ids on both sides would compare equal, so they stop the script.
+  if ! { new_ids=$(patch_ids "$H") && old_ids=$(patch_ids "$old") &&
+    [ -n "$new_ids" ] && [ -n "$old_ids" ]; }; then
+    echo "cannot read the patch ids of $old and $H"
+    exit 5
+  fi
+  # The count catches a merge or an empty commit, which have no patch id.
+  if [ "$H" = "$old" ] || [ "$new_ids" != "$old_ids" ] ||
+    [ "$(git rev-list --count "origin/main..$H")" != "$(git rev-list --count "origin/main..$old")" ]; then
     echo "head $H is not $old rebased"
     exit 4
   fi
@@ -113,5 +124,6 @@ for round in 1 2 3 4; do
 done
 
 gh pr merge "$PR" --squash --delete-branch --match-head-commit "$H" || exit 5
+echo "merged $H"
 gh pr view "$PR" --json state,mergeCommit,closingIssuesReferences \
-  -q '"\(.state) \(.mergeCommit.oid[:7]) closes: \([.closingIssuesReferences[].number])"'
+  -q '"\(.state) \(.mergeCommit.oid[:7]) closes: \([.closingIssuesReferences[].number])"' || true
