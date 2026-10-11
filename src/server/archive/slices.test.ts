@@ -1456,6 +1456,38 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 654 })).toBe(shell?.value)
   })
 
+  it('drops Pekoms’s shell into the sea at 795 and brings it ashore at 824', () => {
+    const pekoms = filed('pekoms')
+    const stages = REDRAWINGS['pekoms'] ?? []
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(pekoms, readerFor(bookmark, 'en')).visual.strokes
+
+    // His first stage has no pin, so `walkStages` cannot walk him: the two
+    // pinned stages after it are walked here by hand, on its model.
+    expect(
+      stages.map(({ episode, chapter }) => [episode, chapter]),
+    ).toStrictEqual([
+      [572, undefined],
+      [795, 834],
+      [824, 856],
+    ])
+
+    for (const [index, { chapter = 0, episode, value }] of stages
+      .slice(1)
+      .entries()) {
+      const before = stages[index]?.value
+
+      expect(drawnAt(ep(episode - 1))).toBe(before)
+      expect(drawnAt(ep(episode))).toBe(value)
+      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 })).toBe(before)
+      expect(drawnAt({ mode: 'chapter', chapter })).toBe(value)
+    }
+  })
+
+  it('lays Bobbin’s sword and hat in the street only from episode 824', () => {
+    expect(walkStages('bobbin', [[824, 856]])).toHaveLength(1)
+  })
+
   it('sets Bon Clay’s shoes at the Gate of Justice only from episode 451', () => {
     const bonClay = filed('bon-clay')
     const shoes = DRAWINGS['bon-clay']

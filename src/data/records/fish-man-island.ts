@@ -1240,8 +1240,11 @@ export const fishManIsland: Saga = {
       status: [
         { episode: 571, value: 'alive' },
         // Episode 824 adapts chapter 856: hunting Sanji through Sweet City at
-        // night, he collapses in a dark street. No one says if he died.
-        { episode: 824, chapter: 856, value: 'unknown' },
+        // night, he is shot and collapses in the street, his sword clattering
+        // away (p. 4). In chapter 857 (p. 16) Bege asks Vito "You got rid of
+        // Bobbin?" and Vito says "That's right". The manga never shows him
+        // again, so he is left for dead.
+        { episode: 824, chapter: 856, value: 'presumed-dead' },
       ],
       affiliation: [
         {

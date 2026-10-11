@@ -1,4 +1,12 @@
-import { circle, dots, ellipse, house, SEA, shadow } from '~/lib/svg/primitives'
+import {
+  circle,
+  dots,
+  ellipse,
+  house,
+  SEA,
+  shadow,
+  wave,
+} from '~/lib/svg/primitives'
 
 import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
@@ -940,7 +948,8 @@ export const fishManIslandArt = {
   // His sword, longer than he is tall, lying at a slant in its dark sheath,
   // hatched, with its wrapped grip and curled knuckle-guard, and his black
   // hat set down beside it with the big white tuft sticking out of it in his
-  // colour. He carries both when he comes home to Big Mom at 571.
+  // colour. He carries both when he comes home to Big Mom at 571. Both fall
+  // to the street at 824, in `fishManIslandRedrawn`.
   'bobbin': [
     { d: 'M73 66 V178 L80 190 L87 178 V66 Z', transform: BOBBIN_SLANT },
     { d: 'M73 166 h14', role: 'soft', transform: BOBBIN_SLANT },
@@ -1002,8 +1011,31 @@ const SHYARLY_TAIL = moved(
   'translate(158 182) scale(0.85) translate(-158 -182)',
 )
 
-/** Pekoms's two boots as his first drawing stands them, without the shadow. */
-const PEKOMS_BOOTS = fishManIslandArt.pekoms.slice(0, -1)
+/**
+ * Pekoms's turtle shell, a high dome of uneven plates with the far side
+ * hatched, as he pulls into it at 572.
+ */
+const PEKOMS_SHELL: Stroke[] = [
+  {
+    d: 'M102 160 C70 164 30 160 14 152 C6 116 18 64 58 50 C96 38 128 62 132 102 C133 108 133 114 132 120',
+  },
+  {
+    d: 'M12 116 L36 106 L56 118 L84 104 L106 116 L132 108 M36 106 L30 74 M56 118 L52 160 M84 104 L88 60 M30 74 L62 70 L88 60 L116 78 M62 70 L58 50 M106 116 L104 130',
+    role: 'soft',
+  },
+  { d: 'M116 70 l8 -4 M122 90 l8 -4 M124 112 l8 -4', role: 'ambient' },
+  { d: 'M24 140 l6 -4 M70 146 l6 -4', role: 'soft' },
+]
+
+/** Pekoms's two boots as his first drawing stands them, smaller, beside the shell. */
+const PEKOMS_SMALL_BOOTS = moved(
+  fishManIslandArt.pekoms.slice(0, -1),
+  'translate(104 120) scale(0.56) translate(-38 -58)',
+)
+
+/** Bobbin's sword in its sheath, and his hat with its tuft, as his first drawing has them. */
+const BOBBIN_SWORD = fishManIslandArt.bobbin.slice(0, 7)
+const BOBBIN_HAT = fishManIslandArt.bobbin.slice(7, 11)
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const fishManIslandRedrawn: Redrawings = {
@@ -1081,21 +1113,76 @@ export const fishManIslandRedrawn: Redrawings = {
   'pekoms': [
     {
       episode: 572,
+      value: [...PEKOMS_SHELL, ...PEKOMS_SMALL_BOOTS, shadow(84, 186, 70)],
+    },
+    // The shell and boots tipped over as they drop into the sea, two turns
+    // of chain wound round the shell, the fins of two sharks in the waves
+    // below. Bege shoots him, chained, off a cliff into water full of
+    // sharks at 795 (ch. 834).
+    {
+      episode: 795,
+      chapter: 834,
       value: [
-        {
-          d: 'M102 160 C70 164 30 160 14 152 C6 116 18 64 58 50 C96 38 128 62 132 102 C133 108 133 114 132 120',
-        },
-        {
-          d: 'M12 116 L36 106 L56 118 L84 104 L106 116 L132 108 M36 106 L30 74 M56 118 L52 160 M84 104 L88 60 M30 74 L62 70 L88 60 L116 78 M62 70 L58 50 M106 116 L104 130',
-          role: 'soft',
-        },
-        { d: 'M116 70 l8 -4 M122 90 l8 -4 M124 112 l8 -4', role: 'ambient' },
-        { d: 'M24 140 l6 -4 M70 146 l6 -4', role: 'soft' },
         ...moved(
-          PEKOMS_BOOTS,
-          'translate(104 120) scale(0.56) translate(-38 -58)',
+          [
+            ...PEKOMS_SHELL,
+            ...PEKOMS_SMALL_BOOTS,
+            {
+              d: 'M10 100 A6 3.4 25 1 0 20.9 105.1 A6 3.4 25 1 0 10 100 M18.8 104.3 L28.8 107.4 M26.5 106.8 A6 3.4 11.8 1 0 38.4 109.3 A6 3.4 11.8 1 0 26.5 106.8 M36 109 L46 110.2 M43.5 110 A6 3.4 3.2 1 0 56.6 110.7 A6 3.4 3.2 1 0 43.5 110 M53.9 110.7 L64.6 110.6 M62.6 110.7 A6 3.4 -4 1 0 74.7 109.8 A6 3.4 -4 1 0 62.6 110.7 M72.7 110 L82.8 108.7 M80.8 109.1 A6 3.4 -10.5 1 0 93 106.8 A6 3.4 -10.5 1 0 80.8 109.1 M90.7 107.3 L100.6 104.9 M98.1 105.5 A6 3.4 -17.4 1 0 110.4 101.7 A6 3.4 -17.4 1 0 98.1 105.5 M108 102.6 L118.3 98.5 M116.1 99.4 A6 3.4 -27.1 1 0 127.5 93.6 A6 3.4 -27.1 1 0 116.1 99.4',
+            },
+            {
+              d: 'M14 136 A6 3.4 23.1 1 0 25.7 141 A6 3.4 23.1 1 0 14 136 M23.6 140.3 L33.2 143.2 M31 142.6 A6 3.4 11.7 1 0 43.5 145.2 A6 3.4 11.7 1 0 31 142.6 M41.1 144.8 L51.8 146.1 M49.4 145.9 A6 3.4 2.9 1 0 61.6 146.5 A6 3.4 2.9 1 0 49.4 145.9 M59.1 146.5 L70.3 146.3 M67.8 146.4 A6 3.4 -5 1 0 80.2 145.3 A6 3.4 -5 1 0 67.8 146.4 M77.7 145.6 L87.6 144.1 M85.2 144.5 A6 3.4 -12.5 1 0 97.3 141.8 A6 3.4 -12.5 1 0 85.2 144.5 M94.9 142.5 L105.6 139.2 M103.3 140 A6 3.4 -21.5 1 0 114.6 135.6 A6 3.4 -21.5 1 0 103.3 140 M112.4 136.6 L122 131.7',
+            },
+          ],
+          'translate(84 92) rotate(-24) scale(0.82) translate(-80 -112)',
         ),
-        shadow(84, 186, 70),
+        {
+          d: 'M22 158 C26 150 30 144 38 140 C36 146 36 152 38 158 M118 172 C121 165 125 160 132 157 C130 162 130 167 132 172',
+        },
+        ...SEA,
+      ],
+    },
+    // Back on dry land: the shell and boots upright on the sand at the
+    // water's edge, and the chain lying slack in front of them, its shackle
+    // open. At 824 (ch. 856) Jinbe says he is fine: his crew pulled him out
+    // of the sea before the sharks got him. Nothing in that chapter shows
+    // him, so the open chain and the shore stand for the rescue.
+    {
+      episode: 824,
+      chapter: 856,
+      value: [
+        ...moved([...PEKOMS_SHELL, ...PEKOMS_SMALL_BOOTS], 'translate(0 -8)'),
+        {
+          d: 'M4 166 A6 3.4 30.9 1 0 15.2 172.7 A6 3.4 30.9 1 0 4 166 M13.3 171.9 L23.3 175.2 M21.2 174.7 A6 3.4 9.7 1 0 33.3 176.8 A6 3.4 9.7 1 0 21.2 174.7 M31 176.5 L41.5 177.1 M39.2 177.1 A6 3.4 -3.1 1 0 51.3 176.4 A6 3.4 -3.1 1 0 39.2 177.1 M49.3 176.6 L59.3 175.1 M57.3 175.5 A6 3.4 -14.1 1 0 69.3 172.5 A6 3.4 -14.1 1 0 57.3 175.5 M67.1 173.2 L76 170',
+        },
+        { d: 'M92 160 C82 156 74 162 76 170 C78 177 86 179 92 175' },
+        { d: 'M-4 182 H164', role: 'ambient', dashed: true },
+        { d: wave(194), role: 'ambient' },
+      ],
+    },
+  ],
+  // His sword fallen flat on the wet street, and his hat knocked off and
+  // tipped over against it, the tuft still in his colour, in the rain.
+  // Hunting Sanji through Sweet City at night, he is shot and collapses at
+  // 824 (ch. 856), and his sword clatters away.
+  'bobbin': [
+    {
+      episode: 824,
+      chapter: 856,
+      value: [
+        ...moved(
+          BOBBIN_HAT,
+          'translate(96 132) rotate(16) scale(0.8) translate(-100 -164)',
+        ),
+        ...moved(
+          BOBBIN_SWORD,
+          'translate(78 162) rotate(49) scale(0.84) translate(-80 -110)',
+        ),
+        { d: 'M-4 186 H164', role: 'ambient', dashed: true },
+        {
+          d: 'M20 20 l-4 10 M50 34 l-4 10 M118 18 l-4 10 M146 40 l-4 10 M24 84 l-4 10 M140 92 l-4 10',
+          role: 'ambient',
+        },
       ],
     },
   ],
