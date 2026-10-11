@@ -2291,6 +2291,38 @@ const KAIDO_FORELEG: Stroke[] = moved(
 /** The rest of Bastille's zanbato: the guard, the grip and its wrap. */
 const BASTILLE_HILT: Stroke[] = dressrosaArt.bastille.slice(4, 7)
 
+/** Monet's wing as first drawn: its outline, the coverts, the feathers and the hatching. */
+const MONET_WING: Stroke[] = dressrosaArt.monet.slice(0, 4)
+
+/** Vergo's bamboo stick as first drawn, with its cut top, nodes and hatching. */
+const VERGO_STICK: Stroke[] = dressrosaArt.vergo.slice(0, 5)
+
+/** The half-eaten patty, its side, the bites and its shadow. */
+const VERGO_PATTY: Stroke[] = dressrosaArt.vergo.slice(5, 9)
+
+/** Kanjuro's brush lying on the ground, with its tassel and the ink under its tip. */
+const KANJURO_LAID: Stroke[] = dressrosaArt.kanjuro.slice(0, 9)
+
+/** The straw kasa Kin'emon lays over him, on its side in the snow. */
+const KANJURO_KASA: Stroke[] = [
+  { d: 'M14 128 L46 106 L78 128 C66 136 26 136 14 128 Z', role: 'soft' },
+  { d: 'M46 106 L30 132 M46 106 L46 135 M46 106 L62 132', role: 'soft' },
+]
+
+/** Snow coming down. */
+const SNOWFALL: Stroke = {
+  d: dots([
+    [12, 40],
+    [40, 60],
+    [92, 30],
+    [130, 50],
+    [150, 96],
+    [108, 84],
+    [20, 92],
+  ]),
+  role: 'ambient',
+}
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const dressrosaRedrawn: Redrawings = {
   // Her flying goggles, a one-piece frame like a domino mask with rivets
@@ -2413,6 +2445,36 @@ export const dressrosaRedrawn: Redrawings = {
       ],
     },
   ],
+  // The same chest with its lid thrown back, open and empty, the hasp hanging
+  // loose and the bottle on its side. Doflamingo shoots him in the hideout
+  // and his family hauls the crew's treasure out at 706 (ch. 767).
+  'diez-barrels': [
+    {
+      episode: 706,
+      chapter: 767,
+      value: [
+        { d: 'M24 122 H96 V158 H24 Z M96 158 L120 144 V108 L96 122' },
+        { d: 'M24 122 L48 108 H120' },
+        { d: 'M48 108 C40 96 40 80 50 74 H122 C128 82 128 96 120 108' },
+        {
+          d: 'M62 74 C56 82 56 96 62 108 M96 74 C90 82 90 96 96 108',
+          role: 'soft',
+        },
+        {
+          d: 'M52 112 l6 -4 M66 114 l10 -6 M82 114 l10 -6 M98 114 l6 -4',
+          role: 'ambient',
+        },
+        ...dressrosaArt['diez-barrels'].slice(2, 3),
+        { d: 'M55 128 h10 v14 h-10 Z M58 128 v-6 q2 -4 6 -2', role: 'accent' },
+        ...dressrosaArt['diez-barrels'].slice(4, 5),
+        ...moved(
+          dressrosaArt['diez-barrels'].slice(5, 8),
+          'translate(4 22) rotate(-90 137 162)',
+        ),
+        shadow(72, 172, 54),
+      ],
+    },
+  ],
   // The Azure Dragon he turns into, with his band on its foreleg: the leg
   // reaching down out of a coil of the body, which crosses the top of the
   // picture with its belly plates and a mane of flame-shaped tufts, the
@@ -2447,6 +2509,62 @@ export const dressrosaRedrawn: Redrawings = {
         ],
         'translate(8 10) scale(0.9)',
       ),
+    },
+  ],
+  // His brush in the snow with no sparrow beside it, the tip of the bristles
+  // taking the accent, and the straw kasa Kin'emon lays over him dropped by
+  // it. Kikunojo cuts him down at the back gate at 994 (ch. 986). At 1024
+  // (ch. 1008) the Oden who walks in is his drawing, and he says he is
+  // deeply wounded: the brush is up off the snow again, ink running off its
+  // tip, and the kasa lies empty. At 1055 (ch. 1030) he paints Kazenbo with
+  // the last of his strength and collapses dead: the brush lies on broken
+  // floorboards and a tongue of flame rises off its bristles.
+  'kanjuro': [
+    {
+      episode: 994,
+      chapter: 986,
+      value: [
+        // The bristles, taking the accent from the sparrow.
+        {
+          d: 'M52 141 C38 139 22 142 12 151 C22 158 38 161 52 159',
+          role: 'accent',
+          transform: KANJURO_BRUSH,
+        },
+        ...KANJURO_LAID.slice(1),
+        ...moved(KANJURO_KASA, 'translate(4 14)'),
+        SNOWFALL,
+        ...dressrosaArt.kanjuro.slice(9, 10),
+      ],
+    },
+    {
+      episode: 1024,
+      chapter: 1008,
+      value: [
+        ...moved(KANJURO_LAID.slice(0, 8), 'rotate(28 142 150)'),
+        {
+          d: 'M20 114 q-3 6 0 8 q3 -2 0 -8 M23 130 q-3 6 0 8 q3 -2 0 -8 M18 148 q-3 6 0 8 q3 -2 0 -8 M12 174 C16 170 28 170 32 174 C28 178 16 178 12 174',
+          role: 'accent',
+        },
+        ...moved(KANJURO_KASA, 'translate(60 46)'),
+        SNOWFALL,
+        ...dressrosaArt.kanjuro.slice(9, 10),
+      ],
+    },
+    {
+      episode: 1055,
+      chapter: 1030,
+      value: [
+        ...KANJURO_LAID,
+        {
+          d: 'M20 146 C8 128 22 116 16 98 C28 106 34 96 32 80 C46 96 50 112 44 126 C50 120 54 114 54 106 C62 120 58 138 46 148',
+          role: 'accent',
+        },
+        { d: 'M28 140 C24 130 32 122 30 112', role: 'soft' },
+        {
+          d: 'M4 172 H60 L66 166 L70 174 H156 M10 184 H96 L100 178 L106 186 H156',
+          role: 'ambient',
+        },
+      ],
     },
   ],
   // His katana snapped by Kaido's club: the hilt and the guard as first
@@ -2658,6 +2776,27 @@ export const dressrosaRedrawn: Redrawings = {
       ],
     },
   ],
+  // The same wing laid flat on the ground among broken stones, the fallen
+  // feather beside it, and the snow still coming down. Caesar stabs her
+  // heart and she collapses with her wings spread at 620 (ch. 694).
+  'monet': [
+    {
+      episode: 620,
+      chapter: 694,
+      value: [
+        ...moved(
+          MONET_WING,
+          'translate(80 128) rotate(34) scale(0.82) translate(-88 -87)',
+        ),
+        {
+          d: 'M10 166 l8 -7 l10 3 l-2 7 Z M132 148 l7 -7 l10 2 l1 7 l-9 3 Z',
+          role: 'soft',
+        },
+        ...moved(dressrosaArt.monet.slice(4, 6), 'translate(0 10)'),
+        ...dressrosaArt.monet.slice(6),
+      ],
+    },
+  ],
   // The helmet and the braid without the shield, moved over to the middle.
   // She throws the shield down on her way into the D Block and fights with
   // the sword alone (651, ch. 721).
@@ -2668,6 +2807,58 @@ export const dressrosaRedrawn: Redrawings = {
       value: [
         ...moved(dressrosaArt.rebecca.slice(3, 10), 'translate(16 0)'),
         shadow(86, 188, 56),
+      ],
+    },
+  ],
+  // No slime any more: a low bank of gas where it lay, and in front of it on
+  // the snow the apple from the bag turned into a Devil Fruit, swirls all
+  // over its skin and its stalk curled. It swallows the candy, howls, and
+  // bursts into gas at 602 (ch. 676).
+  'smiley': [
+    {
+      episode: 602,
+      chapter: 676,
+      value: [
+        {
+          d: 'M10 150 C2 140 8 124 22 126 C20 108 42 100 54 112 C60 92 90 90 96 108 C106 96 130 100 128 116 C144 114 156 132 148 150',
+        },
+        {
+          d: 'M34 132 c4 -8 14 -8 16 0 M72 112 c4 -8 14 -8 16 0 M110 124 c4 -8 14 -8 16 0',
+          role: 'soft',
+        },
+        ...dressrosaArt.smiley.slice(7, 8),
+        { d: circle(80, 154, 20) },
+        {
+          d: 'M62 150 c1 -6 9 -6 9 0 c0 4 -5 4 -5 1 M80 141 c1 -6 9 -6 9 0 c0 4 -5 4 -5 1 M88 156 c1 -6 9 -6 9 0 c0 4 -5 4 -5 1 M68 163 c1 -6 9 -6 9 0 c0 4 -5 4 -5 1 M80 170 c1 -4 7 -4 7 0',
+          role: 'accent',
+        },
+        {
+          d: 'M80 134 C80 128 86 124 90 128 C92 132 86 134 86 130',
+          role: 'soft',
+        },
+        { d: 'M94 160 l-4 4 M97 152 l-4 4', role: 'ambient' },
+        shadow(80, 180, 40),
+      ],
+    },
+  ],
+  // The same stick fallen flat across the floor among the rubble, the
+  // half-eaten patty behind it. Doflamingo tells Smoker he is gone after the
+  // laboratory blows up at 624 (ch. 698).
+  'vergo': [
+    {
+      episode: 624,
+      chapter: 698,
+      value: [
+        ...moved(VERGO_PATTY, 'translate(-10 -30)'),
+        ...moved(
+          VERGO_STICK,
+          'translate(80 160) rotate(62) scale(0.8) translate(-77 -107)',
+        ),
+        {
+          d: 'M14 182 l8 -6 l9 2 l-1 6 Z M120 186 l6 -7 l10 2 l1 6 Z M36 140 l6 -4 l6 3 l-3 4 Z',
+          role: 'soft',
+        },
+        shadow(80, 182, 60),
       ],
     },
   ],
