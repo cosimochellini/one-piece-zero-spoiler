@@ -944,13 +944,14 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('inuarashi', [[993, 985]])).toHaveLength(1)
   })
 
-  it('follows Pedro from his disguise to the fedora of the suit days', () => {
+  it('follows Pedro from his disguise to the fedora of the suit days, knocked over at 850', () => {
     expect(
       walkStages('pedro', [
         [786, 827],
         [828, 858],
+        [850, 878],
       ]),
-    ).toHaveLength(2)
+    ).toHaveLength(3)
   })
 
   it('gives Nekomamushi his gun hand only from episode 992', () => {
@@ -985,8 +986,23 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('gerd', [[1160, 1130]])).toHaveLength(1)
   })
 
-  it('lays Jorul’s helmet on his grave only from episode 838', () => {
-    expect(walkStages('jorul', [[838, 868]])).toHaveLength(1)
+  it('snaps Jorul’s sword at 837, and lays his helmet on his grave at 838', () => {
+    expect(
+      walkStages('jorul', [
+        [837, 867],
+        [838, 868],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('leaves only a scrap of Carmel’s habit from episode 837', () => {
+    // Chapter 867 tells it, below her record's 872: pinned at 872, like her
+    // status, she is filed with the scrap.
+    expect(walkStages('carmel', [[837, 872]])).toHaveLength(1)
+  })
+
+  it('topples Mjosgard’s helmet only from episode 1120', () => {
+    expect(walkStages('donquixote-mjosgard', [[1120, 1086]])).toHaveLength(1)
   })
 
   it('follows Zeus into Nami’s staff, back to Big Mom and out again', () => {

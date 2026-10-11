@@ -2023,6 +2023,37 @@ const PEDRO_RINGS = [62, 70, 78, 86, 94, 102, 110, 118, 126, 134, 142]
   .map((y) => circle(88 + (y - 56) * 0.021, y, 3))
   .join(' ')
 
+/**
+ * Pedro's fedora from the suit days, dark, the crown pinched at the front
+ * and the brim turned down, a plain band round it.
+ */
+const PEDRO_FEDORA: Stroke[] = [
+  {
+    d: 'M20 118 C14 128 30 140 56 146 C66 148 74 150 80 150 C86 150 94 148 104 146 C130 140 146 128 140 118',
+  },
+  { d: 'M20 118 C36 106 124 106 140 118', role: 'soft' },
+  {
+    d: 'M47 122 C46 104 50 88 58 74 C62 68 70 66 80 71 C90 66 98 68 102 74 C110 88 114 104 113 122',
+  },
+  {
+    d: 'M80 71 C82 68 86 66 90 66 M64 76 C68 82 70 90 68 98 M96 76 C92 82 90 90 92 98',
+    role: 'soft',
+  },
+  {
+    d: 'M46 108 C60 116 100 116 114 108 M47 122 C60 130 100 130 113 122',
+    role: 'accent',
+  },
+  {
+    d: 'M52 96 l12 -14 M62 104 l16 -20 M80 108 l14 -18 M92 108 l14 -18 M104 104 l8 -10',
+    role: 'ambient',
+  },
+  {
+    d: 'M28 132 l10 -10 M40 138 l12 -10 M56 143 l12 -10 M106 143 l12 -10 M122 137 l10 -10',
+    role: 'ambient',
+  },
+  shadow(80, 168, 58),
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const wholeCakeRedrawn: Redrawings = {
   // The same bow broken off and going down, tipped nose first, its planks
@@ -2090,7 +2121,11 @@ export const wholeCakeRedrawn: Redrawings = {
   // on the same bough. A mink in the street knows him in it all the same
   // at 786 (ch. 827). Then his fedora from the suit days, dark, the
   // crown pinched at the front and the brim turned down, a plain band round
-  // it; he wears it with his suit to the meeting at 828 (ch. 858).
+  // it; he wears it with his suit to the meeting at 828 (ch. 858). Then the
+  // same fedora knocked over on the ground, two wisps of smoke rising behind
+  // it: he blows himself up to free the Sunny, and Nami says he gave his life
+  // for them at 850 (ch. 878). No hat is seen after the blast; it stands for
+  // him.
   'pedro': [
     {
       episode: 786,
@@ -2121,34 +2156,21 @@ export const wholeCakeRedrawn: Redrawings = {
         ...wholeCakeArt.pedro.slice(-1),
       ],
     },
+    { episode: 828, chapter: 858, value: PEDRO_FEDORA },
     {
-      episode: 828,
-      chapter: 858,
+      episode: 850,
+      chapter: 878,
       value: [
+        ...moved(
+          PEDRO_FEDORA.slice(0, -1),
+          'rotate(-14 80 150) translate(0 18)',
+        ),
         {
-          d: 'M20 118 C14 128 30 140 56 146 C66 148 74 150 80 150 C86 150 94 148 104 146 C130 140 146 128 140 118',
-        },
-        { d: 'M20 118 C36 106 124 106 140 118', role: 'soft' },
-        {
-          d: 'M47 122 C46 104 50 88 58 74 C62 68 70 66 80 71 C90 66 98 68 102 74 C110 88 114 104 113 122',
-        },
-        {
-          d: 'M80 71 C82 68 86 66 90 66 M64 76 C68 82 70 90 68 98 M96 76 C92 82 90 90 92 98',
-          role: 'soft',
-        },
-        {
-          d: 'M46 108 C60 116 100 116 114 108 M47 122 C60 130 100 130 113 122',
-          role: 'accent',
-        },
-        {
-          d: 'M52 96 l12 -14 M62 104 l16 -20 M80 108 l14 -18 M92 108 l14 -18 M104 104 l8 -10',
+          d: 'M74 92 C70 82 78 76 74 66 C71 58 77 52 75 44 M96 94 C100 84 92 78 98 68 C102 60 96 54 100 46',
           role: 'ambient',
+          dashed: true,
         },
-        {
-          d: 'M28 132 l10 -10 M40 138 l12 -10 M56 143 l12 -10 M106 143 l12 -10 M122 137 l10 -10',
-          role: 'ambient',
-        },
-        shadow(80, 168, 58),
+        shadow(80, 186, 62),
       ],
     },
   ],
@@ -2342,11 +2364,39 @@ export const wholeCakeRedrawn: Redrawings = {
     },
   ],
 
-  // His grave on a hillside: a block of stone with his horned helmet laid on
-  // top, the longsword of his first drawing planted upright beside it and
-  // shrubs at its foot. It stands on the hill above the wrecked village at
-  // 838 (ch. 868).
+  // His fur cape again, and the longsword across it snapped in two: the hilt
+  // and a stub of blade still on the cape, the rest lying on the ground in
+  // front. Little Linlin breaks it bare-handed and throws him down, and he
+  // dies of it at 837 (ch. 867). Then his grave on a hillside: a block of
+  // stone with his horned helmet laid on top, the longsword of his first
+  // drawing planted upright beside it and shrubs at its foot. It stands on
+  // the hill above the wrecked village at 838 (ch. 868).
   'jorul': [
+    {
+      episode: 837,
+      chapter: 867,
+      value: [
+        ...moved(
+          [
+            ...wholeCakeArt.jorul.slice(0, 5),
+            { d: 'M48 144 L79.5 110.7 L84 112 L81 115 L85.5 116.7 L54 150 Z' },
+            { d: 'M51 147 L81 115', role: 'soft' },
+            ...wholeCakeArt.jorul.slice(7, 10),
+          ],
+          'translate(0 -8)',
+        ),
+        ...moved(
+          [
+            {
+              d: 'M79.5 110.7 L84 112 L81 115 L85.5 116.7 L124 76 L128 64 L118 70 Z',
+            },
+            { d: 'M83 114 L121 73', role: 'soft' },
+          ],
+          'translate(-10 70) rotate(46 82 114)',
+        ),
+        shadow(80, 190, 72),
+      ],
+    },
     {
       episode: 838,
       chapter: 868,
@@ -2375,6 +2425,64 @@ export const wholeCakeRedrawn: Redrawings = {
           d: 'M4 154 A6 6 0 0 1 14 146 A6 6 0 0 1 24 144 A5 5 0 0 1 26 150 M100 150 A5 5 0 0 1 110 144 A6 6 0 0 1 122 144 A6 6 0 0 1 132 140 A6 6 0 0 1 144 140',
           role: 'soft',
         },
+      ],
+    },
+  ],
+
+  // A torn scrap of her dark habit lying on the grass, its hem edged with
+  // white scallops, the rest of it ragged where it tore. At Linlin's sixth
+  // birthday Carmel and the children simply vanish, and a scrap like this is
+  // all that is left at 837 (ch. 867). Chapter 867 is below her record's
+  // own, so the entry is pinned at 872 like her status: unpinned, chapter
+  // readers would wait for chapter 882, the first that reaches episode 837.
+  'carmel': [
+    {
+      episode: 837,
+      chapter: 872,
+      value: [
+        {
+          d: 'M24 132 L137 118 L130 130 L142 140 L128 146 L136 158 L120 160 L124 172 L106 166 L96 176 L88 164 L74 172 L66 160 L52 168 L46 156 L32 160 L30 148 L20 146 Z',
+        },
+        {
+          d: `M24 132 ${'a5 5 0 0 1 9.4 -1.2 '.repeat(12).trim()}`,
+          role: 'accent',
+        },
+        { d: 'M24 140 L134 126', role: 'soft' },
+        {
+          d: 'M36 152 l10 -12 M50 158 l14 -18 M66 156 l16 -20 M82 158 l16 -20 M98 154 l16 -20 M114 150 l14 -18',
+          role: 'ambient',
+        },
+        {
+          d: 'M8 172 l3 -8 l3 8 M144 168 l3 -8 l3 8 M130 180 l3 -7 l3 7 M26 178 l3 -6 l3 6',
+          role: 'ambient',
+        },
+        shadow(80, 188, 70),
+      ],
+    },
+  ],
+
+  // The same club in front, and the bubble helmet behind it toppled onto
+  // its side, empty, its collar ring turned up off the ground. Garling has
+  // him executed in Mary Geoise for standing up for the Ryugu royal family
+  // at 1120 (ch. 1086). Neither the helmet nor the club is in that panel;
+  // the fallen helmet stands for him.
+  'donquixote-mjosgard': [
+    {
+      episode: 1120,
+      chapter: 1086,
+      value: [
+        ...moved(
+          [
+            ...wholeCakeArt['donquixote-mjosgard'].slice(0, 1),
+            ...wholeCakeArt['donquixote-mjosgard'].slice(2, 4),
+          ],
+          'translate(64 88) rotate(80) translate(-56 -72)',
+        ),
+        ...moved(
+          wholeCakeArt['donquixote-mjosgard'].slice(1, 2),
+          'translate(8 16)',
+        ),
+        ...wholeCakeArt['donquixote-mjosgard'].slice(4),
       ],
     },
   ],
