@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, house, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * Sengoku's cap: the crown with its far side hatched, the braided band, the
@@ -116,6 +116,53 @@ const KUMA_BIBLE_PAGES: Stroke = {
   d: 'M108 64 l7 -5 M108 84 l7 -5 M108 104 l7 -5 M108 124 l7 -5 M108 144 l7 -5',
   role: 'ambient',
 }
+
+/**
+ * Whitebeard's bisento stood upright: the shaft with its wrapping hatched,
+ * the guard, and the blade as the accent. He dies holding it at 485, and it
+ * stands over his grave from 505.
+ */
+const WHITEBEARD_BISENTO: Stroke[] = [
+  { d: 'M80 164 V38' },
+  { d: 'M80 38 C100 32 110 18 104 2 C100 18 92 26 80 28z', role: 'accent' },
+  { d: 'M72 44 h16 M74 50 h12' },
+  {
+    d: 'M76 76 l8 -4 M76 94 l8 -4 M76 112 l8 -4 M76 130 l8 -4',
+    role: 'ambient',
+  },
+]
+
+/**
+ * Pagaya's Waver without the water under it: the hull, its deck line and
+ * hatched underside, the handlebars, the dial shell at the stern (the
+ * accent) and the box amidships.
+ */
+const PAGAYA_WAVER: Stroke[] = [
+  {
+    d: 'M14 122 H120 C134 122 146 116 154 104 C148 130 132 146 108 150 H36 C24 150 14 140 14 122 Z',
+  },
+  { d: 'M14 122 L22 112 H124 C136 112 146 108 154 104', role: 'soft' },
+  {
+    d: 'M30 130 l-6 10 M46 134 l-6 12 M62 134 l-6 14 M78 134 l-6 14 M94 134 l-6 14 M110 134 l-6 14',
+    role: 'ambient',
+  },
+  { d: 'M96 112 L104 74 M98 78 L112 70 M104 74 L90 70' },
+  {
+    d: 'M26 112 C20 100 22 88 32 82 C42 78 52 86 50 96 C48 104 40 106 36 100 C32 94 38 90 42 94',
+    role: 'accent',
+  },
+  { d: 'M50 96 L58 112 M22 112 L26 104', role: 'accent' },
+  { d: 'M60 112 V100 H84 V112', role: 'soft' },
+]
+
+/** The White Sea the Waver rides on: a wave either side, then two rows. */
+const PAGAYA_SEA: Stroke[] = [
+  {
+    d: 'M-4 156 q12 -8 24 0 q12 8 24 0 M120 156 q12 -8 24 0 q12 8 24 0',
+    role: 'ambient',
+  },
+  ...SEA.slice(1),
+]
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -344,7 +391,8 @@ export const skypieaArt = {
   // The small sake barrel he drinks from, its far side hatched, and the drip
   // stand beside his chair with its line running down as the accent: the
   // nurses keep him on IVs while he tears up Shanks's letter (151). His
-  // bisento stands over his grave from 505, in `skypieaRedrawn`.
+  // bisento stands on the broken plaza where he dies at 485, and over his
+  // grave from 505, in `skypieaRedrawn`.
   'edward-newgate': [
     { d: ellipse(60, 112, 34, 10) },
     {
@@ -621,29 +669,10 @@ export const skypieaArt = {
 
   // His Waver in 3/4, the handlebars up front and the dial shell at its stern
   // as the accent: he rides it up the beach to meet the crew (154). The hull's
-  // underside is hatched.
-  'pagaya': [
-    {
-      d: 'M14 122 H120 C134 122 146 116 154 104 C148 130 132 146 108 150 H36 C24 150 14 140 14 122 Z',
-    },
-    { d: 'M14 122 L22 112 H124 C136 112 146 108 154 104', role: 'soft' },
-    {
-      d: 'M30 130 l-6 10 M46 134 l-6 12 M62 134 l-6 14 M78 134 l-6 14 M94 134 l-6 14 M110 134 l-6 14',
-      role: 'ambient',
-    },
-    { d: 'M96 112 L104 74 M98 78 L112 70 M104 74 L90 70' },
-    {
-      d: 'M26 112 C20 100 22 88 32 82 C42 78 52 86 50 96 C48 104 40 106 36 100 C32 94 38 90 42 94',
-      role: 'accent',
-    },
-    { d: 'M50 96 L58 112 M22 112 L26 104', role: 'accent' },
-    { d: 'M60 112 V100 H84 V112', role: 'soft' },
-    {
-      d: 'M-4 156 q12 -8 24 0 q12 8 24 0 M120 156 q12 -8 24 0 q12 8 24 0',
-      role: 'ambient',
-    },
-    ...SEA.slice(1),
-  ],
+  // underside is hatched. The dial goes out when Enel's lightning takes him
+  // at 178, and the Waver climbs back up a cloud road at 193, in
+  // `skypieaRedrawn`.
+  'pagaya': [...PAGAYA_WAVER, ...PAGAYA_SEA],
 
   // His gold staff standing in front of the ring of four drums he wears on his
   // back, the drums side on with their lacing and no marks on their skins, as
@@ -1267,6 +1296,48 @@ function besideThePlate(strokes: Stroke[]): Stroke[] {
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const skypieaRedrawn: Redrawings = {
+  // Left for dead, the Ace way: the same Waver with the dial gone out, the
+  // hull taking his colour and a thin wisp of smoke rising off the stern.
+  // Enel's lightning lands on him after he pushes Conis clear at 178
+  // (ch. 272). The Waver is not in that scene: it stands for him, as Ace's
+  // hat does. Then the Waver lit again, climbing a cloud road up from below:
+  // he turns up alive at 193 (ch. 300), having fallen to the White Sea, as
+  // the people who went down come back up on Milky Dial roads.
+  'pagaya': [
+    {
+      episode: 178,
+      chapter: 272,
+      value: [
+        ...PAGAYA_WAVER.map((stroke, index): Stroke => {
+          // The hull takes the accent the dial shell had.
+          if (index === 0) {
+            return { ...stroke, role: 'accent' }
+          }
+
+          return stroke.role === 'accent' ? { d: stroke.d } : stroke
+        }),
+        ...PAGAYA_SEA,
+        {
+          d: 'M36 80 C32 72 40 66 36 58 C33 52 39 48 37 42',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+    {
+      episode: 193,
+      chapter: 300,
+      value: [
+        ...moved(PAGAYA_WAVER, 'translate(0 -7) rotate(-12 80 130)'),
+        { d: 'M-4 169.7 L164 134' },
+        { d: `M-4 181.7${' q8 8 16 -3.4'.repeat(11)}`, role: 'soft' },
+        {
+          d: 'M30 172 l4 -6 M62 165 l4 -6 M94 158 l4 -6 M126 151 l4 -6',
+          role: 'ambient',
+        },
+      ],
+    },
+  ],
   // A tricorne over a knotted bandana: the hat he wears from the Warlords'
   // table on (ch. 524, ep. 421), and never at Mock Town. The shade under the
   // brim and down the crown's far side is hatched, never filled. After the
@@ -1336,25 +1407,41 @@ export const skypieaRedrawn: Redrawings = {
       ],
     },
   ],
-  // The bisento planted upright in a mound of earth, the bottle at its
-  // foot: his naginata stands over his grave on a New World island, where
-  // Shanks and his crew bury him at 505 (ch. 590). The mound's far side is
-  // hatched, never filled.
+  // His bisento standing upright on a slab of Marineford's plaza, cracked
+  // open from its foot, with broken stone lying on it: he dies on his feet
+  // with the bisento in his hand at 485 (ch. 576), after the quakes have
+  // split the square. The slab's front edge is hatched, never filled. Then
+  // the bisento planted upright in a mound of earth, the bottle at its
+  // foot: it stands over his grave on a New World island, where Shanks and
+  // his crew bury him at 505 (ch. 590). The mound's far side is hatched,
+  // never filled.
   'edward-newgate': [
+    {
+      episode: 485,
+      chapter: 576,
+      value: [
+        ...WHITEBEARD_BISENTO,
+        { d: 'M12 172 L34 156 H126 L148 172 Z M12 172 V180 H148 V172' },
+        { d: 'M58 156 L50 172 M102 156 L110 172', role: 'soft' },
+        {
+          d: 'M80 164 L70 160 L62 161 M80 164 L72 168 L60 169 L54 172 M80 164 L92 168 L100 167 L106 172 M80 164 L90 159 L98 157',
+        },
+        {
+          d: 'M20 180 l4 -8 M36 180 l4 -8 M52 180 l4 -8 M68 180 l4 -8 M84 180 l4 -8 M100 180 l4 -8 M116 180 l4 -8 M132 180 l4 -8',
+          role: 'ambient',
+        },
+        {
+          d: 'M114 168 l3 -7 h9 l3 7 z M117 161 l2 -3 h6 l2 3 M36 166 l2 -5 h7 l2 5 z',
+          role: 'soft',
+        },
+        shadow(80, 188, 64),
+      ],
+    },
     {
       episode: 505,
       chapter: 590,
       value: [
-        { d: 'M80 164 V38' },
-        {
-          d: 'M80 38 C100 32 110 18 104 2 C100 18 92 26 80 28z',
-          role: 'accent',
-        },
-        { d: 'M72 44 h16 M74 50 h12' },
-        {
-          d: 'M76 76 l8 -4 M76 94 l8 -4 M76 112 l8 -4 M76 130 l8 -4',
-          role: 'ambient',
-        },
+        ...WHITEBEARD_BISENTO,
         { d: 'M44 180 Q80 148 112 180' },
         {
           d: 'M52 175 l-4 5 M59 170 l-6 9 M66 167 l-6 11 M73 165 l-6 12',

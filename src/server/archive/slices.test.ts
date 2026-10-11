@@ -1107,21 +1107,24 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 574 })).toBe(out?.value)
   })
 
-  it('plants Whitebeard’s bisento over his grave only from episode 505', () => {
-    const whitebeard = filed('edward-newgate')
-    const barrel = DRAWINGS['edward-newgate']
-    const grave = REDRAWINGS['edward-newgate']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(whitebeard, readerFor(bookmark, 'en')).visual.strokes
+  it('stands Whitebeard’s bisento on the plaza at 485, over his grave at 505', () => {
+    // He dies standing in chapter 576 and is buried in chapter 590.
+    expect(
+      walkStages('edward-newgate', [
+        [485, 576],
+        [505, 590],
+      ]),
+    ).toHaveLength(2)
+  })
 
-    expect(grave?.episode).toBe(505)
-
-    expect(drawnAt(ep(504))).toBe(barrel)
-    expect(drawnAt(ep(505))).toBe(grave?.value)
-    expect(drawnAt(null)).toBe(barrel)
-    // The manga buries him in chapter 590, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 589 })).toBe(barrel)
-    expect(drawnAt({ mode: 'chapter', chapter: 590 })).toBe(grave?.value)
+  it('puts out Pagaya’s dial at 178, and brings his Waver back up at 193', () => {
+    // Enel's lightning takes him in chapter 272; he is back in chapter 300.
+    expect(
+      walkStages('pagaya', [
+        [178, 272],
+        [193, 300],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('sets a crown on Buggy’s cannonball only from episode 1080', () => {
