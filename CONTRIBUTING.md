@@ -198,10 +198,12 @@ and the archive gate). Run it before you push.
 | `npm run gate:react-doctor`       | Blocking react-doctor health gate                |
 | `npm run gate:fallow`             | Blocking fallow codebase-intelligence gate       |
 | `npm run gate:archive`            | Blocking gate: the archive is not in the bundle  |
+| `npm run gate:docs`               | Blocking gate: the counts table is up to date    |
 | `npm run verify:chapters`         | Chapters against the One Piece Wiki (network)    |
 | `npm run verify:names`            | Italian names against the Italian wiki (network) |
 | `npm run verify:filler`           | The filler guide against its sources (network)   |
 | `npm run docs:chronicle`          | Regenerate `docs/chronicle-verification.md`      |
+| `npm run docs:counts`             | Regenerate the counts in `docs/architecture.md`  |
 
 - The gates run after the build and the tests because they need them:
   `gate:archive` reads `dist/` and `gate:fallow` reads `coverage/`.

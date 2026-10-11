@@ -110,6 +110,9 @@ jobs:
       - name: Format
         run: npm run format:check
 
+      - name: docs counts gate
+        run: npm run gate:docs
+
       - name: Test
         run: npm test
 
