@@ -9,7 +9,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /** The slant Saldeath's trident lies at, its butt resting on the net. */
 const SALDEATH_TRIDENT =
@@ -65,6 +65,15 @@ const TOP_HAT: Stroke[] = [
   { d: circle(90, 94, 11), role: 'accent' },
   { d: 'M75 94 h4 M53 92 q-6 2 -8 6 M101 92 q6 2 8 6', role: 'accent' },
 ]
+
+/** Sabo's iron pipe, standing beside the hat. */
+const PIPE: Stroke[] = [
+  { d: 'M124 44 V172 M134 44 V172' },
+  { d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0' },
+]
+
+/** The same pipe held at a slant, as the grown Sabo carries it. */
+const PIPE_SLANTED = moved(PIPE, 'translate(-14 0) rotate(22 129 108)')
 
 /**
  * Sakazuki's Marine cap in three-quarters, set on his folded crimson suit,
@@ -1597,14 +1606,10 @@ export const summitWarArt = {
     shadow(80, 182, 58),
   ],
 
-  // A top hat with goggles on the brim, and a pipe beside it. The pipe burns
-  // with Ace's flame from 678, in `summitWarRedrawn`.
-  'sabo': [
-    ...TOP_HAT,
-    { d: 'M124 44 V172 M134 44 V172' },
-    { d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0' },
-    shadow(78, 170, 42),
-  ],
+  // A top hat with goggles on the brim, and a pipe beside it. The hat floats
+  // by his sunk boat from 503, comes back with the pipe at 663, and the pipe
+  // burns with Ace's flame from 678, all in `summitWarRedrawn`.
+  'sabo': [...TOP_HAT, ...PIPE, shadow(78, 170, 42)],
 
   // A hibiscus in three-quarters, five petals opening round the long stamen
   // in her colour, a leaf on the stem. She wears one in her hair when she
@@ -2387,22 +2392,46 @@ export const summitWarRedrawn: Redrawings = {
     },
   ],
 
-  // The same top hat, and the same pipe held at a slant, Ace's flame
-  // running up its top third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
   'sabo': [
+    // The same top hat afloat, tipped on its side with the goggles still on
+    // the brim, in front of his boat going down: the broken hull, the mast
+    // leaning with its torn plain flag, and the smoke. Jalmack's ship sinks
+    // the boat at 503 (ch. 588), and Dogra brings the news up the mountain.
+    {
+      episode: 503,
+      chapter: 588,
+      value: [
+        ...moved(
+          TOP_HAT,
+          'translate(58 150) scale(0.9) rotate(-28) translate(-77 -106)',
+        ),
+        { d: 'M98 164 L104 146 Q126 138 152 132 L150 156' },
+        { d: 'M112 143 L136 72 M136 72 l20 8 l-6 5 l7 6 l-8 4 l5 6 l-14 -6' },
+        { d: 'M118 150 L140 146 M126 158 l20 -4', role: 'soft' },
+        {
+          d: 'M104 138 c-8 -8 4 -14 -2 -24 c-6 -10 6 -16 0 -28 M148 128 c-6 -6 4 -12 -2 -20 c-4 -6 4 -10 0 -18',
+          role: 'ambient',
+        },
+        { d: 'M94 168 l10 -2 M12 166 l9 1', role: 'ambient' },
+        ...SEA.slice(1),
+      ],
+    },
+    // The same top hat, up out of the sea and dry, and the same pipe taken
+    // up again at a slant. The masked man at the Colosseum is Sabo, alive,
+    // at 663 (ch. 731).
+    {
+      episode: 663,
+      chapter: 731,
+      value: [...TOP_HAT, ...PIPE_SLANTED, shadow(78, 170, 42)],
+    },
+    // The same top hat and slanted pipe, Ace's flame running up its top
+    // third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
     {
       episode: 678,
       chapter: 744,
       value: [
         ...TOP_HAT,
-        {
-          d: 'M124 44 V172 M134 44 V172',
-          transform: 'translate(-14 0) rotate(22 129 108)',
-        },
-        {
-          d: 'M124 44 q5 -4 10 0 M124 172 q5 4 10 0',
-          transform: 'translate(-14 0) rotate(22 129 108)',
-        },
+        ...PIPE_SLANTED,
         // Ace's flame, copied from his first drawing in `alabasta.ts`, and
         // lit three times along the pipe, smaller each time down.
         ...[
