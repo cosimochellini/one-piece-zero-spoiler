@@ -1539,6 +1539,19 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(2)
   })
 
+  it('lays Moria’s scissors on the news at 509 and opens them again at 917', () => {
+    expect(
+      walkStages('gecko-moria', [
+        [509, 592],
+        [917, 925],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('lays Absalom’s empty coat on the ground only from episode 917', () => {
+    expect(walkStages('absalom', [[917, 925]])).toHaveLength(1)
+  })
+
   it('presses Kuma’s paw into a steel plate only from episode 469', () => {
     const kuma = filed('bartholomew-kuma')
     const book = DRAWINGS['bartholomew-kuma']

@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, SEA, shadow } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /** The barrel tipped as the waves lift it. */
 const BARREL_BOB = 'rotate(-10 80 110)'
@@ -681,6 +681,20 @@ export const thrillerBarkArt = {
   ],
 } satisfies Drawings
 
+/**
+ * Moria's scissors in parts: the upper blade with its teeth, the lower blade
+ * with its hatching, the pivot and the two handles, and the strip of shadow.
+ */
+const MORIA_SCISSORS = thrillerBarkArt['gecko-moria']
+const UPPER_BLADE = MORIA_SCISSORS.slice(0, 2)
+const LOWER_BLADE = MORIA_SCISSORS.slice(2, 4)
+const HANDLES = MORIA_SCISSORS.slice(4, 8)
+const SHADOW_STRIP = MORIA_SCISSORS.slice(8)
+
+/** Absalom's coat without the shadow under it, laid on its side. */
+const COAT_FALLEN =
+  'translate(80 140) rotate(-86) scale(0.74) translate(-80 -91)'
+
 /** Brook's violin, moved up and right to make room for the guitar. */
 const VIOLIN_UP = 'translate(10 -6)'
 
@@ -708,6 +722,65 @@ export const thrillerBarkRedrawn: Redrawings = {
         { d: 'M136 132 V98 M136 118 l12 -13 M136 110 l-11 -14 M136 126 l10 8' },
         { d: circle(122, 30, 20), role: 'accent' },
         ...SEA.slice(1),
+      ],
+    },
+  ],
+
+  // The same scissors shut and lying on a newspaper, with no shadow to cut:
+  // the paper's edge passes under the handles, its columns are lines. Perona cries
+  // over the paper that says he was killed in the war at 509 (ch. 592). At
+  // 917 (ch. 925) the scissors stand open again over a smaller paper, a fresh
+  // strip of shadow in their jaws: the morning paper says he lives, and he
+  // raids Hachinosu with a new zombie army.
+  'gecko-moria': [
+    {
+      episode: 509,
+      chapter: 592,
+      value: [
+        { d: 'M21.5 129.3 L4 132 L26 188 L158 168 L132 112 L45.9 125.5' },
+        { d: 'M68 122 L71 128 M86 166 L92 178', role: 'soft' },
+        {
+          d: 'M98 162 l48 -7 M102 170 l46 -7 M104 178 l30 -4.5',
+          role: 'ambient',
+        },
+        ...moved(
+          [
+            ...moved(UPPER_BLADE, 'rotate(10 68 100)'),
+            ...moved(LOWER_BLADE, 'rotate(-10 68 100)'),
+            ...HANDLES,
+          ],
+          'translate(80 136) rotate(-6) scale(0.9) translate(-85 -100)',
+        ),
+      ],
+    },
+    {
+      episode: 917,
+      chapter: 925,
+      value: [
+        ...moved(UPPER_BLADE, 'rotate(-12 68 100)'),
+        ...moved(LOWER_BLADE, 'rotate(10 68 100)'),
+        ...HANDLES,
+        ...SHADOW_STRIP,
+        { d: 'M100 170 L146 160 L162 184 L114 194 Z' },
+        { d: 'M123 165 L138 189', role: 'soft' },
+        {
+          d: 'M108 174 l12 -2.6 M112 181 l12 -2.6 M131 170 l14 -3 M135 177 l14 -3 M139 184 l12 -2.6',
+          role: 'ambient',
+        },
+      ],
+    },
+  ],
+
+  // The same coat, empty, fallen on its side on the ground, the hem still in
+  // his colour. At 917 (ch. 925) Shiryu turns invisible with his fruit, and
+  // Devon says he was killed for it and that they still have his body.
+  'absalom': [
+    {
+      episode: 917,
+      chapter: 925,
+      value: [
+        ...moved(thrillerBarkArt.absalom.slice(0, -1), COAT_FALLEN),
+        shadow(80, 182, 64),
       ],
     },
   ],
