@@ -8,9 +8,11 @@
 #      2 rebase conflict (the files are printed): rebase by hand
 #      3 CI `check` did not pass
 #      4 the head is no longer the one expected
-#      5 gh or git failed, or the merge was refused
+#      5 bad arguments, a PR not open against main, gh or git failed, or the
+#        merge or the rebase was refused for another reason
 #      6 still behind main after 3 rebases
 set -u
+[ $# = 2 ] || { echo "usage: scripts/land-pr.sh <pr> <expected-head-sha>"; exit 5; }
 cd "$(dirname "$0")/.." || exit 5
 PR=$1
 H=$2
@@ -19,7 +21,7 @@ H=$2
 wait_check() {
   for _ in $(seq 80); do
     r=$(gh api "repos/{owner}/{repo}/commits/$1/check-runs?check_name=check" \
-      -q '.check_runs[0] | "\(.status) \(.conclusion)"' 2>/dev/null)
+      -q '.check_runs[0] | "\(.status) \(.conclusion)"') || return 1
     case $r in "completed "*) echo "${r#completed }"; return ;; esac
     sleep 30
   done
@@ -30,10 +32,13 @@ wait_check() {
 # release job pushes `chore(release)` touching package.json and its lockfile
 # after every merge, and those change nothing under test.
 behind_ok() {
-  for c in $(git rev-list "$1..origin/main"); do
+  list=$(git rev-list "$1..origin/main") || exit 5
+  for c in $list; do
     git log -1 --format=%s "$c" | grep -q '^chore(release):' || return 1
-    git diff-tree --no-commit-id --name-only -r "$c" |
-      grep -qvE '^package(-lock)?\.json$' && return 1
+    git rev-parse -q --verify "$c^2" >/dev/null && return 1 # a merge
+    files=$(git diff-tree --no-commit-id --name-only -r "$c") || exit 5
+    [ -n "$files" ] || return 1
+    echo "$files" | grep -qvE '^package(-lock)?\.json$' && return 1
   done
   return 0
 }
@@ -46,18 +51,33 @@ fetch() {
   fi
 }
 
-# Author, author date and subject of each commit $1 adds to main: a rebase
-# keeps all three.
-commits() { git log --format='%an %at %s' "origin/main..$1"; }
+# The patch id of each commit $1 adds to main, oldest first: a rebase keeps
+# them, an amend does not. A rebase that shifts a hunk's context lines changes
+# one too, which stops the script for a human instead of merging.
+patch_ids() {
+  git log -p --reverse --format='commit %H' "origin/main..$1" |
+    git patch-id --stable | cut -d' ' -f1
+}
+
+# The PR head. Callers exit 5 when gh fails.
+pr_head() { gh pr view "$PR" --json headRefOid -q .headRefOid; }
+
+pr=$(gh pr view "$PR" --json state,baseRefName -q '"\(.state) \(.baseRefName)"') || exit 5
+[ "$pr" = "OPEN main" ] || { echo "PR $PR is not open against main: $pr"; exit 5; }
 
 for round in 1 2 3 4; do
-  result=$(wait_check "$H")
-  [ "$(gh pr view "$PR" --json headRefOid -q .headRefOid)" = "$H" ] ||
-    { echo "head is no longer $H"; exit 4; }
+  result=$(wait_check "$H") || exit 5
+  cur=$(pr_head) || exit 5
+  [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
   [ "$result" = success ] || { echo "check on $H: $result"; exit 3; }
 
   fetch
-  behind_ok "$H" && break
+  if behind_ok "$H"; then
+    gh pr ready "$PR" 2>/dev/null
+    # Main may have moved meanwhile: never merge without a check against it.
+    fetch
+    behind_ok "$H" && break
+  fi
   [ "$round" = 4 ] && { echo "still behind main after 3 rebases"; exit 6; }
 
   # The mutation, not `gh pr update-branch`: that one reads the head itself,
@@ -69,29 +89,29 @@ for round in 1 2 3 4; do
     mutation($id: ID!, $sha: GitObjectID!) {
       updatePullRequestBranch(input: {pullRequestId: $id, expectedHeadOid: $sha, updateMethod: REBASE}) { clientMutationId }
     }' >/dev/null; then
-    [ "$(gh pr view "$PR" --json headRefOid -q .headRefOid)" = "$H" ] ||
-      { echo "head is no longer $H"; exit 4; }
+    cur=$(pr_head) || exit 5
+    [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
     files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
-    echo "rebase failed, rebase by hand. Conflicting files:"
-    echo "${files:-(none against main as a whole: one commit of the branch conflicts)}"
+    [ -n "$files" ] || { echo "rebase refused, and no file conflicts with main"; exit 5; }
+    echo "rebase conflict, rebase by hand. Conflicting files:"
+    echo "$files"
     exit 2
   fi
   old=$H
   for _ in $(seq 20); do
-    H=$(gh pr view "$PR" --json headRefOid -q .headRefOid)
+    H=$(pr_head) || exit 5
     [ "$H" != "$old" ] && break
     sleep 3
   done
   # The new head must be the reviewed commits replayed, nothing pushed since.
   fetch
-  if [ "$H" = "$old" ] || [ "$(commits "$H")" != "$(commits "$old")" ]; then
+  if [ "$H" = "$old" ] || [ "$(patch_ids "$H")" != "$(patch_ids "$old")" ]; then
     echo "head $H is not $old rebased"
     exit 4
   fi
   echo "rebased onto main: $H"
 done
 
-gh pr ready "$PR" 2>/dev/null
 gh pr merge "$PR" --squash --delete-branch --match-head-commit "$H" || exit 5
 gh pr view "$PR" --json state,mergeCommit,closingIssuesReferences \
   -q '"\(.state) \(.mergeCommit.oid[:7]) closes: \([.closingIssuesReferences[].number])"'
