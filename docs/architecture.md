@@ -77,7 +77,7 @@ reader gets no countdown, because the manga has no filler.
 | Devil fruits        | 128                                                    |
 | Arcs, places, ships | 34 · 39 · 2                                            |
 | Saga modules        | 12, plus one for the devil fruits                      |
-| Line drawings       | 737, one per record, plus 154 redrawings of 90 records |
+| Line drawings       | 737, one per record, plus 157 redrawings of 91 records |
 | Chronicle stories   | 755, for 185 characters                                |
 
 <!-- End of the generated counts. -->
