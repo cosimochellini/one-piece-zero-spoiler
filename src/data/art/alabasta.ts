@@ -9,7 +9,7 @@ import {
   wave,
 } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /** One of Vivi's Peacock Slashers, a pointed jewel, drawn about its centre. */
 const PEACOCK_SLASHER =
@@ -98,6 +98,14 @@ const CLAWED_SHELL: Stroke[] = [
 /** A vulture's left wing seen from below, spread. */
 const VULTURE_WING =
   'M80 46 C70 30 52 22 34 26 C24 28 14 34 8 42 L20 42 L12 50 L26 48 L20 56 L34 52 C50 54 66 54 80 56'
+
+/** A falcon's feather, drawn about its centre, quill down: Pell's, from 125. */
+const FEATHER =
+  'M0 -14 C7 -8 7 6 0 12 C-7 6 -7 -8 0 -14 M0 -10 V18 M0 -2 l-4 -4 M0 4 l4 -4'
+
+/** One strip of sticking plaster, drawn about its centre: Igaram's, from 111. */
+const PLASTER =
+  'M-13 -4.5 H13 A4.5 4.5 0 0 1 13 4.5 H-13 A4.5 4.5 0 0 1 -13 -4.5 Z'
 
 /** The drawings of the records filed in the alabasta stretch of the route. */
 export const alabastaArt = {
@@ -1555,6 +1563,278 @@ export const alabastaRedrawn: Redrawings = {
           ...stroke,
           transform: 'translate(30 30) scale(0.7)',
         })),
+      ],
+    },
+  ],
+
+  // The saxophone, smaller, before the sea off Whisky Peak: on the horizon
+  // the fire and smoke of his ship going up, a swirl taller than the town.
+  // Nothing of the ship or of him is seen. The crew watch it at 67 (ch. 113,
+  // below his record's chapter, so no pin).
+  // He walks into Nanohana at 111 (ch. 180) with a sticking plaster on his
+  // cheek: the same saxophone, whole, carries two strips of it crossed.
+  'igaram': [
+    {
+      episode: 67,
+      value: [
+        ...moved(
+          alabastaArt.igaram.slice(0, 10),
+          'translate(-4 46) scale(0.66)',
+        ),
+        shadow(50, 172, 26),
+        { d: 'M2 120 H24 M74 120 H158', role: 'ambient' },
+        {
+          d: 'M86 120 C70 100 82 80 92 70 C102 58 92 40 104 26 C116 12 140 12 150 28 C160 44 150 64 134 62 C120 60 120 44 132 42 C140 41 142 50 136 52',
+          role: 'ambient',
+        },
+        {
+          d: 'M110 120 C122 104 106 92 116 80 C124 70 142 74 144 86 C146 98 132 100 130 92',
+          role: 'ambient',
+        },
+        {
+          d: 'M134 120 C142 110 138 102 146 96 C152 92 158 98 156 104 M98 120 C92 110 96 102 104 98',
+          role: 'ambient',
+          dashed: true,
+        },
+        { d: 'M78 134 q10 -4 20 0 t20 0 t20 0 t20 0', role: 'ambient' },
+        {
+          d: 'M70 150 q10 -4 20 0 t20 0 t20 0 t20 0 t10 0',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+    {
+      episode: 111,
+      chapter: 180,
+      value: [
+        ...alabastaArt.igaram,
+        { d: PLASTER, transform: 'translate(70 134) rotate(35) scale(0.8)' },
+        { d: PLASTER, transform: 'translate(70 134) rotate(-35) scale(0.8)' },
+        { d: 'M68 134 h0.01 M72 134 h0.01', role: 'soft' },
+      ],
+    },
+  ],
+
+  // His shield fallen flat on the ground, seen almost edge on, and his sword
+  // lying across it, the green grip still in his colour. Brogy strikes him
+  // down at 73 (ch. 120).
+  // He wakes at 77 (ch. 127), and the two weapons cross again: his sword,
+  // whole and notched, and Brogy's axe, both worn out by a hundred years.
+  'dorry': [
+    {
+      episode: 73,
+      chapter: 120,
+      value: [
+        { d: ellipse(80, 150, 54, 16) },
+        { d: 'M26 150 C26 162 134 162 134 150', role: 'soft' },
+        {
+          d: 'M30 158 l-4 6 M50 164 l-3 6 M110 164 l3 6 M130 158 l4 6',
+          role: 'ambient',
+        },
+        { d: ellipse(80, 149, 14, 4.5) },
+        {
+          d: dots([
+            [80, 137],
+            [80, 162],
+            [44, 143],
+            [116, 143],
+            [44, 156],
+            [116, 156],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M44 128 L140 104 L154 104 L142 112 L46 136' },
+        { d: 'M48 132 L144 108', role: 'soft' },
+        { d: 'M38 118 L50 146' },
+        { d: 'M36 132 l-18 4 M37 136 l-18 4', role: 'accent' },
+        { d: circle(13, 137, 5), role: 'accent' },
+        { d: 'M4 172 H156', role: 'ambient' },
+        {
+          d: 'M24 186 q20 -4 40 0 M96 186 q20 -4 40 0',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+    {
+      episode: 77,
+      chapter: 127,
+      value: [
+        { d: 'M40 150 L112 30 L124 20 L122 36 L50 156' },
+        { d: 'M45 153 L117 33', role: 'soft' },
+        { d: 'M78 110 l5 0 l-2 -4 M96 80 l5 0 l-2 -4', role: 'soft' },
+        { d: 'M30 140 L60 162' },
+        { d: 'M43 157 L31 175 M37 153 L25 171', role: 'accent' },
+        { d: circle(24, 177, 5), role: 'accent' },
+        ...moved(
+          alabastaArt.brogy.slice(0, 6),
+          'translate(170 20) scale(-0.86 0.86) rotate(-12 90 110)',
+        ),
+        { d: 'M4 176 H156', role: 'ambient' },
+        shadow(80, 188, 52),
+      ],
+    },
+  ],
+
+  // The same mast and rope, and a wisp of gunsmoke drifting off the coils:
+  // a Billions agent shoots him where he is tied, off the page, at 95
+  // (ch. 159).
+  'mr-11': [
+    {
+      episode: 95,
+      chapter: 159,
+      value: [
+        ...alabastaArt['mr-11'],
+        {
+          d: 'M98 92 C110 88 108 78 118 72 C128 66 124 56 134 50 C142 46 140 38 148 34',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+  ],
+
+  // His top hat, all the blast leaves of him, landed upright in the snow,
+  // its far side hatched, the band in his colour. He drinks his own
+  // explosive medicine at 86 (ch. 145).
+  'hiluluk': [
+    {
+      episode: 86,
+      chapter: 145,
+      value: [
+        {
+          d: 'M4 150 C40 140 70 146 100 142 C120 139 140 144 158 140',
+          role: 'ambient',
+        },
+        {
+          d: 'M26 146 C40 132 120 126 136 138 C140 150 118 158 82 158 C46 158 22 154 26 146 Z',
+        },
+        { d: 'M48 140 C46 110 50 84 54 64' },
+        { d: 'M112 134 C114 104 112 80 108 60' },
+        { d: ellipse(81, 62, 27, 7) },
+        {
+          d: 'M50 120 C66 128 98 126 112 118 M50 128 C66 136 98 134 112 126',
+          role: 'accent',
+        },
+        {
+          d: 'M96 74 l10 -5 M96 88 l11 -5 M96 102 l12 -5 M98 114 l11 -4',
+          role: 'ambient',
+        },
+        { d: 'M58 74 C56 96 56 110 56 120', role: 'soft' },
+        {
+          d: 'M20 166 q14 -6 28 0 M104 166 q16 -6 32 0',
+          role: 'ambient',
+          dashed: true,
+        },
+        {
+          d: dots([
+            [24, 40],
+            [44, 24],
+            [128, 30],
+            [146, 52],
+            [140, 92],
+            [16, 90],
+          ]),
+          role: 'ambient',
+        },
+      ],
+    },
+  ],
+
+  // The same throne, a newspaper propped on its seat, folded open: the
+  // headline and the columns as lines, a box where the photographs are.
+  // The paper says he has been murdered at the Levely at 1081 (ch. 1054).
+  'nefertari-cobra': [
+    {
+      episode: 1081,
+      chapter: 1054,
+      value: [
+        ...alabastaArt['nefertari-cobra'],
+        { d: 'M64 104 L66 64 L104 66 L102 106' },
+        { d: 'M84 65 L83 105', role: 'soft' },
+        {
+          d: 'M70 72 h10 M70 78 h10 M70 84 h10 M88 74 h10 M88 80 h10 M88 86 h10 M88 92 h10',
+          role: 'ambient',
+        },
+        { d: 'M70 90 h10 v10 h-10 z', role: 'soft' },
+      ],
+    },
+  ],
+
+  // The same sword on the same robe, and his feathers drifting down onto
+  // them: he flies the bomb up out of the city at 125 (ch. 208).
+  // At 130 (ch. 217) he leaves a desert clinic on foot and forgets his
+  // headscarf: the white cloth alone, hanging, the stars of the robe on it.
+  'pell': [
+    {
+      episode: 125,
+      chapter: 208,
+      value: [
+        ...alabastaArt.pell,
+        { d: FEATHER, transform: 'translate(30 40) rotate(-35)' },
+        { d: FEATHER, transform: 'translate(64 18) rotate(20)' },
+        {
+          d: FEATHER,
+          transform: 'translate(128 104) rotate(60)',
+          role: 'soft',
+        },
+      ],
+    },
+    {
+      episode: 130,
+      chapter: 217,
+      value: [
+        {
+          d: 'M70 24 C58 30 50 60 46 96 C42 126 36 150 30 166 C40 160 46 170 56 164 C64 172 72 162 80 170 C88 162 98 172 106 164 C114 170 122 160 132 166 C124 140 118 110 114 80 C110 50 100 28 88 22 C82 20 76 20 70 24 Z',
+        },
+        { d: 'M70 24 C74 32 84 32 88 22', role: 'soft' },
+        {
+          d: 'M64 40 C60 80 58 120 56 162 M80 30 C80 80 80 120 80 168 M96 40 C100 80 104 120 106 162',
+          role: 'soft',
+        },
+        ...moved(alabastaArt.pell.slice(3, 4), 'translate(0 -50)'),
+        {
+          d: 'M112 70 l6 -4 M116 92 l6 -4 M120 114 l6 -4 M124 136 l6 -4',
+          role: 'ambient',
+        },
+        shadow(80, 186, 46),
+      ],
+    },
+  ],
+
+  // The same cup, dried out: no steam, and a dry ring low in it where the
+  // tea was. Crocodile dries him up and feeds him to the Bananawani at 104
+  // (ch. 166).
+  // At 109 (ch. 176) a Bananawani spits out the wax ball he sealed himself
+  // in: the cup steams again beside the two halves of the shell.
+  'mr-3': [
+    {
+      episode: 104,
+      chapter: 166,
+      value: [
+        ...alabastaArt['mr-3'].slice(0, 1),
+        { d: 'M50 120 Q66 126 82 120', role: 'accent' },
+        ...alabastaArt['mr-3'].slice(2, 7),
+        { d: 'M58 112 h0.01 M72 114 h0.01 M64 116 h0.01', role: 'soft' },
+        ...alabastaArt['mr-3'].slice(8),
+      ],
+    },
+    {
+      episode: 109,
+      chapter: 176,
+      value: [
+        ...moved(alabastaArt['mr-3'].slice(0, 8), 'translate(-16 0)'),
+        shadow(50, 186, 42),
+        {
+          d: 'M100 150 C100 176 150 176 150 150 L144 146 L138 152 L130 144 L122 151 L114 145 L106 152 Z',
+        },
+        { d: 'M104 158 C112 168 138 168 146 158', role: 'soft' },
+        {
+          d: 'M114 136 C108 116 124 100 140 104 C154 108 158 124 152 134 L146 130 L140 136 L132 128 L124 134 L118 128 Z',
+        },
+        { d: 'M138 152 l6 -4 M140 162 l6 -4', role: 'ambient' },
+        shadow(126, 186, 30),
       ],
     },
   ],

@@ -910,6 +910,12 @@ export const alabasta: Saga = {
       },
       status: [
         { episode: 70, value: 'alive' },
+        // Episode 104 adapts chapter 166: Crocodile dries him up and feeds
+        // him to the Bananawani.
+        { episode: 104, chapter: 166, value: 'presumed-dead' },
+        // Episode 109 adapts chapter 176: a Bananawani spits out the wax ball
+        // he sealed himself in.
+        { episode: 109, chapter: 176, value: 'alive' },
         // Episode 424 adapts chapter 527 (page 19), which shows him in a cell
         // on Level 2 of Impel Down.
         { episode: 424, chapter: 527, value: 'imprisoned' },

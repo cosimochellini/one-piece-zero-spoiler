@@ -1427,6 +1427,72 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 548 })).toBe(gate?.value)
   })
 
+  it('sends Igaram’s ship up in smoke at 67, and patches him up at 111', () => {
+    const igaram = filed('igaram')
+    const sax = DRAWINGS.igaram
+    const stages = REDRAWINGS['igaram'] ?? []
+    const [smoke, plaster] = stages.map(({ value }) => value)
+    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+      characterOf(igaram, readerFor(bookmark, 'en')).visual.strokes
+
+    // Chapter 113 is below his record's own chapter, so the first has no pin.
+    expect(
+      stages.map(({ episode, chapter }) => [episode, chapter]),
+    ).toStrictEqual([
+      [67, undefined],
+      [111, 180],
+    ])
+
+    expect(drawnAt(ep(66))).toBe(sax)
+    expect(drawnAt(ep(67))).toBe(smoke)
+    expect(drawnAt(ep(110))).toBe(smoke)
+    expect(drawnAt(ep(111))).toBe(plaster)
+    expect(drawnAt(null)).toBe(sax)
+    // Unpinned, chapter readers get the smoke with his record, at chapter 114.
+    expect(drawnAt({ mode: 'chapter', chapter: 114 })).toBe(smoke)
+    expect(drawnAt({ mode: 'chapter', chapter: 179 })).toBe(smoke)
+    expect(drawnAt({ mode: 'chapter', chapter: 180 })).toBe(plaster)
+  })
+
+  it('fells Dorry’s shield at 73 and crosses his sword with Brogy’s at 77', () => {
+    expect(
+      walkStages('dorry', [
+        [73, 120],
+        [77, 127],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('dries Mr. 3’s tea at 104 and cracks his wax ball open at 109', () => {
+    expect(
+      walkStages('mr-3', [
+        [104, 166],
+        [109, 176],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('drifts gunsmoke off Mr. 11’s rope only from episode 95', () => {
+    expect(walkStages('mr-11', [[95, 159]])).toHaveLength(1)
+  })
+
+  it('leaves only Hiluluk’s hat in the snow from episode 86', () => {
+    expect(walkStages('hiluluk', [[86, 145]])).toHaveLength(1)
+  })
+
+  it('props the news on Cobra’s throne only from episode 1081', () => {
+    expect(walkStages('nefertari-cobra', [[1081, 1054]])).toHaveLength(1)
+  })
+
+  it('drops Pell’s feathers at 125 and leaves his headscarf behind at 130', () => {
+    expect(
+      walkStages('pell', [
+        [125, 208],
+        [130, 217],
+      ]),
+    ).toHaveLength(2)
+  })
+
   it('presses Kuma’s paw into a steel plate only from episode 469', () => {
     const kuma = filed('bartholomew-kuma')
     const book = DRAWINGS['bartholomew-kuma']
