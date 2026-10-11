@@ -92,10 +92,11 @@ Grade every drawing you make or review. Only A ships.
 - **Redrawings** are for whenever the story gives the character a new
   visible feature, **for good or only for a while** (#74, #468). It counts
   when it changes the object or adds something readable at 56 px: headwear,
-  a new weapon, a scar that stands for something, a transformation, an
-  arc-long disguise. It does not count when it is an outfit that never
-  touches the object, a new technique, a one-scene moment, or anime filler
-  (no chapter to pair). As a rule it lasts two or three episodes or more,
+  a new weapon that becomes part of the object, a scar that stands for
+  something, a transformation, an arc-long disguise. It does not count when
+  it is an outfit that never touches the object, a one-scene moment, or
+  anime filler (no chapter to pair); see the rulings below for what else
+  does not count. As a rule it lasts two or three episodes or more,
   unless it is a story symbol. A temporary feature is **two entries**: the
   change, then the drawing before it again (the same `const`, so the return
   is the first drawing itself) from the episode it is gone. Luffy's hat is
@@ -106,11 +107,47 @@ Grade every drawing you make or review. Only A ships.
   is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
   drew the record: `{ episode, chapter, value }`, strictly after
   `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
-  that same scene is in, or chapter readers see it early. Add one `it` in
+  that same scene is in, or chapter readers see it early, unless the true
+  chapter is below the record's (see the rulings below). Add one `it` in
   `src/server/archive/slices.test.ts` on Franky's model (episode − 1, episode,
-  no bookmark, chapter − 1, chapter); a record with many stages walks its
-  timeline in one `it` instead, on Luffy's model. A saga's first redrawing is
+  no bookmark, chapter − 1, chapter), or by hand for a stage with no
+  `chapter:` pin; a record with many stages walks its timeline in one `it`
+  instead, on Luffy's model. A saga's first redrawing is
   also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
+  The owner's stage rulings (2026-10-10):
+  - **A death is a stage, almost always.** When the story kills a character
+    after their record opens, or leaves them for dead (`deceased`,
+    `presumed-dead` in the status timeline), the drawing changes from the
+    episode that tells it, with the most honest composition for that
+    character, chosen case by case: Ace's hat losing its flame at 483
+    (`alabastaRedrawn`), Jorul's grave at 838 (`wholeCakeRedrawn`). A death
+    told in a flashback dates from the episode that tells it. Records already
+    dead when they open, and the devil fruits, keep their drawing. An audit
+    that finds a death missing from the status timeline adds the status
+    entry (true pair) and the drawing in the same PR. The PR states which of
+    the two exceptions applies: the character dies in the episode their
+    record opens, or no true composition reads at 56 px.
+  - **Back from the dead is a new drawing** that shows what the return leaves
+    (Kanjuro at 1024, Orochi at 1051, Sabo at 663).
+  - **A destroyed or badly damaged place or ship is a stage**, even for a
+    while (the Going Merry burning, Enies Lobby after the Buster Call, Water
+    Seven after Aqua Laguna), and its rebuilding is a new drawing again.
+  - **A state of the body keeps the drawing as it is:** frozen, chained,
+    petrified, wounded, a lost limb.
+  - **A weapon held beside the object keeps the drawing as it is**, and so
+    does a one-fight weapon or technique.
+  - **A Zoan form is a permanent stage** with no exit entry (King, Ulti,
+    Queen), drawn as a part of the animal's body (a shell, a foreleg).
+  - **Canon is the manga and the episodes that adapt it.** A cover story
+    counts only where an episode adapts it as story; anime-only looks stay
+    out.
+  - **A stage whose true chapter is below its record's chapter goes without
+    a `chapter:` pin** (the Shinobu entry in `wano.ts`, Pekoms in
+    `fish-man-island.ts`): the gate falls back to the record's chapter, and
+    its `it` in `slices.test.ts` is written by hand instead of `walkStages`.
+  - **A frame check on manga pages decides** the start, the end, and what is
+    really on the object. The wiki's prose is a lead: Jack's sails, Leo's
+    goggles and Tamago's teacup were all wrong or missing in it.
 - **Places and arcs** are the place itself, seen from the sea: the landmark,
   the ground at y 150, `...SEA` (or `SEA.slice(1|2)`) below. **Ships** are the
   ship side on, with a figurehead but no flag mark.
@@ -162,7 +199,9 @@ A drawing is gated like any text, and it can spoil just as well.
   wiki's Appearance section, not memory or an issue's wording (Chopper's cap
   and Brook's guitar were both described wrong in their issues).
 - **Chapter readers too.** A redrawing reaches chapter readers through its
-  `chapter:`; check `chapterAtEpisode(episode)` against the manga debut.
+  `chapter:`, unless the true chapter is below the record's (see the rulings
+  in "Each kind of record"); check `chapterAtEpisode(episode)` against the
+  manga debut.
 
 ## Workflow
 
