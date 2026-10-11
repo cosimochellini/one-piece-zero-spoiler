@@ -1584,6 +1584,32 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('absalom', [[917, 925]])).toHaveLength(1)
   })
 
+  it('lays Monet’s wing on the ground only from episode 620', () => {
+    expect(walkStages('monet', [[620, 694]])).toHaveLength(1)
+  })
+
+  it('lays Vergo’s stick flat in the rubble only from episode 624', () => {
+    expect(walkStages('vergo', [[624, 698]])).toHaveLength(1)
+  })
+
+  it('turns Smiley into gas and a fruit only from episode 602', () => {
+    expect(walkStages('smiley', [[602, 676]])).toHaveLength(1)
+  })
+
+  it('opens Barrels’ chest empty only from episode 706', () => {
+    expect(walkStages('diez-barrels', [[706, 767]])).toHaveLength(1)
+  })
+
+  it('lays Kanjuro’s brush in the snow at 994, lifts it at 1024 and burns it at 1055', () => {
+    expect(
+      walkStages('kanjuro', [
+        [994, 986],
+        [1024, 1008],
+        [1055, 1030],
+      ]),
+    ).toHaveLength(3)
+  })
+
   it('presses Kuma’s paw into a steel plate only from episode 469', () => {
     const kuma = filed('bartholomew-kuma')
     const book = DRAWINGS['bartholomew-kuma']
