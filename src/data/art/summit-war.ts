@@ -2395,8 +2395,8 @@ export const summitWarRedrawn: Redrawings = {
   'sabo': [
     // The same top hat afloat, tipped on its side with the goggles still on
     // the brim, in front of his boat going down: the broken hull and its
-    // smoke. Jalmack's ship sinks
-    // the boat at 503 (ch. 588), and Dogra brings the news up the mountain.
+    // smoke. Jalmack's ship sinks the boat at 503 (ch. 588), and Dogra
+    // brings the news up the mountain.
     {
       episode: 503,
       chapter: 588,
@@ -2416,9 +2416,9 @@ export const summitWarRedrawn: Redrawings = {
       ],
     },
     // The same top hat, up out of the sea and dry, set behind three
-    // shallow sake cups, the three of the oath that Luffy sees again when
-    // the masked man at the Colosseum turns out to be Sabo, alive, at 663
-    // (ch. 731).
+    // shallow sake cups: the three cups at Ace's grave, shown in the
+    // flashback on ch. 731 p19. The masked man at the Colosseum turns out
+    // to be Sabo, alive, at 663 (ch. 731).
     {
       episode: 663,
       chapter: 731,
