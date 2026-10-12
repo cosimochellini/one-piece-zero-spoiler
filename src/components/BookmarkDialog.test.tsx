@@ -7,7 +7,7 @@ import {
 } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactElement } from 'react'
-import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
@@ -43,6 +43,7 @@ function renderMark(bookmark: Bookmark = null): RenderResult {
 // Two sagas and one run of filler: enough to read a label and its mark.
 const SAGAS: SagaTable = {
   episode: [
+    { from: 92, name: 'Alabasta Saga' },
     { from: 579, name: 'Punk Hazard' },
     { from: 629, name: 'Dressrosa' },
   ],
@@ -72,6 +73,12 @@ async function open(
 }
 
 describe('EpisodeMark', () => {
+  // The mark fetches the dialog's code on demand. Fetched once here, so the
+  // first test does not spend its wait on transforming the module.
+  beforeAll(async () => {
+    await import('./BookmarkDialog')
+  })
+
   beforeEach(() => {
     // The component writes the bookmark to `document.cookie`, and jsdom keeps
     // one document for the whole file, so a value left behind would let a
@@ -244,6 +251,12 @@ describe('EpisodeMark', () => {
     await user.type(field('Last episode you watched'), '750')
 
     expect(within(dialog()).getByText('Arc · Dressrosa · Filler')).toBeVisible()
+
+    // A name that already says what it is goes without the prefix.
+    await user.clear(field('Last episode you watched'))
+    await user.type(field('Last episode you watched'), '100')
+
+    expect(within(dialog()).getByText('Alabasta Saga')).toBeVisible()
   })
 
   it('says nothing about validity until the field has been left', async () => {

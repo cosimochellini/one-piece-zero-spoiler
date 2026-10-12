@@ -274,9 +274,9 @@ export function SagaLine({
   )
 }
 
-// Some sagas carry the word in their name ("Saga di Alabasta"); those are
-// shown as they are rather than as "Saga · Saga di Alabasta".
-const NAMED_SAGA = /\bsaga\b/iu
+// Some names already carry the word ("Saga di Alabasta", "Alabasta Saga");
+// those are shown as they are rather than as "Saga · Saga di Alabasta".
+const NAMED_SAGA = /\b(?:arc|saga)\b/iu
 
 function sagaText(t: Translate, saga: SagaAt): string {
   const name =
