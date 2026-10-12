@@ -107,11 +107,11 @@ Grade every drawing you make or review. Only A ships.
   is a whole drawing in the `<saga>Redrawn` timeline of the saga that first
   drew the record: `{ episode, chapter, value }`, strictly after
   `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
-  that same scene is in, or chapter readers see it early, unless the true
-  chapter is below the record's (see the rulings below). Add one `it` in
-  `src/server/archive/slices.test.ts` on Franky's model (episode − 1, episode,
-  no bookmark, chapter − 1, chapter), or by hand for a stage with no
-  `chapter:` pin; a record with many stages walks its timeline in one `it`
+  that same scene is in, or chapter readers see it early; when the true
+  chapter is below the record's, pin the record's (see the rulings below).
+  Add one `it` in `src/server/archive/slices.test.ts` on Franky's model
+  (episode − 1, episode, no bookmark, chapter − 1, chapter); a record with
+  many stages walks its timeline in one `it`
   instead, on Luffy's model. A saga's first redrawing is
   also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
   The owner's stage rulings (2026-10-10):
@@ -145,10 +145,13 @@ Grade every drawing you make or review. Only A ships.
   - **Canon is the manga and the episodes that adapt it.** A cover story
     counts only where an episode adapts it as story; anime-only looks stay
     out.
-  - **A stage whose true chapter is below its record's chapter goes without
-    a `chapter:` pin** (the Shinobu entry in `wano.ts`, Pekoms in
-    `fish-man-island.ts`): the gate falls back to the record's chapter, and
-    its `it` in `slices.test.ts` is written by hand instead of `walkStages`.
+  - **A stage whose true chapter is below its record's chapter is pinned at
+    the record's chapter**, as the status entries are (#459): the Shinobu
+    entry in `wano.ts`, Pekoms in `fish-man-island.ts`. The gate is the later
+    of the record's chapter and the entry's `chapter:`, or without one the
+    first chapter that reaches its episode, which can be many chapters late
+    (Carmel's stage would open at 882, her record at 872). The pin adds
+    nothing to the chapter table, and `walkStages` walks the stage.
   - **A frame check on manga pages decides** the start, the end, and what is
     really on the object. The wiki's prose is a lead: Jack's sails, Leo's
     goggles and Tamago's teacup were all wrong or missing in it.
@@ -203,7 +206,7 @@ A drawing is gated like any text, and it can spoil just as well.
   wiki's Appearance section, not memory or an issue's wording (Chopper's cap
   and Brook's guitar were both described wrong in their issues).
 - **Chapter readers too.** A redrawing reaches chapter readers through its
-  `chapter:`, unless the true chapter is below the record's (see the rulings
+  `chapter:`, the record's when the true chapter is below it (see the rulings
   in "Each kind of record"); check `chapterAtEpisode(episode)` against the
   manga debut.
 

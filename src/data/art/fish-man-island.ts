@@ -1109,10 +1109,12 @@ export const fishManIslandRedrawn: Redrawings = {
   // The shell he pulls into when the Marines open fire, a high dome of
   // uneven plates with the far side hatched, and his boots standing beside
   // it, smaller. No head and no paw: he is all inside. He shows the turtle
-  // at 572 (ch. 652, below his record's chapter, so no pin).
+  // at 572 (ch. 652, below his record's chapter, so pinned at 653 with his
+  // record).
   'pekoms': [
     {
       episode: 572,
+      chapter: 653,
       value: [...PEKOMS_SHELL, ...PEKOMS_SMALL_BOOTS, shadow(84, 186, 70)],
     },
     // The shell and boots tipped over as they drop into the sea, two turns

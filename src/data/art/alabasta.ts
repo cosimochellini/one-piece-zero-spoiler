@@ -1570,12 +1570,13 @@ export const alabastaRedrawn: Redrawings = {
   // The saxophone, smaller, before the sea off Whisky Peak: on the horizon
   // the fire and smoke of his ship going up, a swirl taller than the town.
   // Nothing of the ship or of him is seen. The crew watch it at 67 (ch. 113,
-  // below his record's chapter, so no pin).
+  // below his record's chapter, so pinned at 114 with his record).
   // He walks into Nanohana at 111 (ch. 180) with a sticking plaster on his
   // cheek: the same saxophone, whole, carries two strips of it crossed.
   'igaram': [
     {
       episode: 67,
+      chapter: 114,
       value: [
         ...moved(
           alabastaArt.igaram.slice(0, 10),
