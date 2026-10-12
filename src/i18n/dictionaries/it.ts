@@ -97,6 +97,10 @@ export const itDictionary: Dictionary = {
   'dialog.save': 'Salva',
   'dialog.forget': 'Cancella il segnalibro',
   'dialog.cancel': 'Annulla',
+  'dialog.loading': 'Caricamento…',
+  'dialog.loadFailed':
+    'Caricamento non riuscito. Controlla la connessione e riprova.',
+  'dialog.retry': 'Riprova',
 
   'veil.locked.episode': 'Nella nebbia fino all’episodio {threshold}',
   'veil.locked.season': 'Nella nebbia fino a {threshold}',

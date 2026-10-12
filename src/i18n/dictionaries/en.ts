@@ -101,6 +101,9 @@ export const enDictionary = {
   'dialog.save': 'Save',
   'dialog.forget': 'Clear bookmark',
   'dialog.cancel': 'Cancel',
+  'dialog.loading': 'Loading…',
+  'dialog.loadFailed': 'Loading failed. Check your connection and try again.',
+  'dialog.retry': 'Try again',
 
   'veil.locked.episode': 'Under fog until episode {threshold}',
   'veil.locked.season': 'Under fog until {threshold}',

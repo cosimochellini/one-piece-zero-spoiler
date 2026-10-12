@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
-import { lazy, type ReactElement, Suspense, useState } from 'react'
+import { type ReactElement, useState } from 'react'
 
-import type { BookmarkDialog as Dialog } from '~/components/BookmarkDialog'
+import { BookmarkDialog } from '~/components/BookmarkDialog'
+import { preloadBookmarkForm } from '~/components/bookmarkFormLoader'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
@@ -54,54 +55,9 @@ function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
   }
 }
 
-type DialogModule = Promise<{ BookmarkDialog: typeof Dialog }>
-
-// The request in flight or done. A failed one is dropped, so the next press
-// asks again rather than failing for good.
-const dialogRequests = new Map<'dialog', DialogModule>()
-
-/**
- * The dialog's code, fetched apart from the page: every page carries the
- * mark, few readers open it. Asked for as soon as the mark is pointed at or
- * focused, so the first opening rarely waits on the network.
- */
-async function loadDialog(): DialogModule {
-  const asked = dialogRequests.get('dialog')
-  if (asked !== undefined) {
-    return asked
-  }
-
-  const request = import('~/components/BookmarkDialog')
-  dialogRequests.set('dialog', request)
-  try {
-    return await request
-  } catch (error) {
-    dialogRequests.delete('dialog')
-    throw error
-  }
-}
-
-/** Whether the dialog's code is here, fetching it if it is not. */
-async function dialogReady(): Promise<boolean> {
-  try {
-    await loadDialog()
-    return true
-  } catch {
-    return false
-  }
-}
-
 function handlePreload(): void {
-  void dialogReady()
+  void preloadBookmarkForm()
 }
-
-// Rendered only once `dialogReady()` has said yes, so the lazy loader never
-// sees a failed fetch: React would cache that rejection and throw it into
-// the page. A failed fetch leaves the mark closed and pressable again.
-const BookmarkDialog = lazy(async () => {
-  const module = await loadDialog()
-  return { default: module.BookmarkDialog }
-})
 
 /**
  * The reader's bookmark, as one mark in the bar: `EP 650`, `S02E03` or
@@ -124,11 +80,6 @@ export function EpisodeMark({
   const t = useT()
   const { bookmark, pending } = useBookmark()
   const [open, setOpen] = useState(false)
-  const openDialog = async (): Promise<void> => {
-    if (await dialogReady()) {
-      setOpen(true)
-    }
-  }
 
   const inFold = placement === 'fold'
   const face = faceOf(t, bookmark, inFold)
@@ -144,7 +95,7 @@ export function EpisodeMark({
         aria-haspopup="dialog"
         aria-label={face.hint}
         onClick={() => {
-          void openDialog()
+          setOpen(true)
         }}
         onFocus={handlePreload}
         onPointerEnter={handlePreload}
@@ -157,13 +108,11 @@ export function EpisodeMark({
       </Button>
 
       {open && (
-        <Suspense fallback={null}>
-          <BookmarkDialog
-            onClose={() => {
-              setOpen(false)
-            }}
-          />
-        </Suspense>
+        <BookmarkDialog
+          onClose={() => {
+            setOpen(false)
+          }}
+        />
       )}
     </>
   )
