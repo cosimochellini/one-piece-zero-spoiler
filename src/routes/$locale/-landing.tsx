@@ -22,8 +22,9 @@ import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
 
 // The bands in DOM order. The fold settles in three steps of its own, so the
-// next band starts after them rather than landing on top of one.
-const BAND = { fold: 0, filler: 3, stories: 4, cast: 5, more: 6 } as const
+// next band starts after them rather than landing on top of one. The filler
+// warning, when there is one, takes the stories' step and moves the rest on.
+const BAND = { fold: 0, stories: 3, cast: 4, more: 5 } as const
 
 /** What the loader sent. */
 export interface LandingPageProps {
@@ -64,6 +65,9 @@ function Home({
   saga,
   stories,
 }: HomeView): ReactElement {
+  const shift = filler === null ? 0 : 1
+  const at = (band: number): number => band + shift
+
   return (
     <main
       id="content"
@@ -79,7 +83,7 @@ function Home({
         <HomeWelcome />
         {filler !== null && (
           <div
-            {...stylex.props(settleStyles.band, settleStyles.at(BAND.filler))}
+            {...stylex.props(settleStyles.band, settleStyles.at(BAND.stories))}
           >
             <HomeFillerAhead
               ahead={filler}
@@ -88,17 +92,24 @@ function Home({
           </div>
         )}
         <div
-          {...stylex.props(settleStyles.band, settleStyles.at(BAND.stories))}
+          {...stylex.props(
+            settleStyles.band,
+            settleStyles.at(at(BAND.stories)),
+          )}
         >
           <HomeStories
             before={before}
             stories={stories}
           />
         </div>
-        <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.cast))}>
+        <div
+          {...stylex.props(settleStyles.band, settleStyles.at(at(BAND.cast)))}
+        >
           <HomeCast cast={cast} />
         </div>
-        <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.more))}>
+        <div
+          {...stylex.props(settleStyles.band, settleStyles.at(at(BAND.more)))}
+        >
           <HomeMoreStories stories={stories} />
         </div>
       </div>

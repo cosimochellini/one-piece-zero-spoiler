@@ -2,7 +2,8 @@
 
 ## A cosa serve
 
-La homepage risponde a tre domande, nell’ordine:
+La homepage risponde a tre domande, nell’ordine (in più, solo quando serve,
+avvisa dei filler in arrivo: vedi “Occhio ai filler”):
 
 1. **Dove sono?** In quale saga e a che punto della storia.
 2. **Cosa è appena successo?** I fatti della saga in cui sei, i più recenti per
@@ -109,6 +110,9 @@ Il blocco contiene:
   dopo), colorate per tipo. Non si aprono;
 - il link “Vedi tutti i filler”, alla pagina Episodi filler.
 
+Film e speciali che cadono tra due caselle non sono segnati qui: li mostra solo
+la pagina Episodi filler.
+
 Non si chiude: sparisce da solo quando sposti il segnalibro fuori dalla
 finestra.
 
@@ -174,10 +178,13 @@ da mostrare, la sezione non compare.
   episodio, gli stessi che la pagina Episodi filler mostra a chiunque, e nessun
   titolo o nome.
 - **Con il segnalibro, in homepage non c’è nebbia.** Tutto quello che si vede è
-  già stato visto o letto, quindi non c’è niente da coprire né un tasto “Mostra
-  comunque”. La nebbia c’è solo nella pagina di chi non ha un segnalibro.
+  già stato visto o letto, salvo i numeri e i tipi di episodio di “Occhio ai
+  filler”, quindi non c’è niente da coprire né un tasto “Mostra comunque”. La
+  nebbia c’è solo nella pagina di chi non ha un segnalibro.
 - **Quello che viene dopo il segnalibro non arriva al browser.** Come nel resto
-  del sito: la pagina che ricevi contiene solo il passato.
+  del sito: la pagina che ricevi contiene solo il passato, più i numeri e i tipi
+  di episodio di “Occhio ai filler”, che la pagina Episodi filler manda a
+  chiunque.
 - **Senza segnalibro arriva East Blue, e niente oltre.** La pagina del cursore
   contiene East Blue fino all’episodio 61 e al capitolo 100, tutti e due. Oltre,
   solo sagome senza nome e un numero. Un test controlla che sia così.

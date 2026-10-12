@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, type ReactNode, useState } from 'react'
 
-import { CellFace } from '~/components/FillerCell'
+import { CellFace } from '~/components/CellFace'
 import { looksOf, styles } from '~/components/FillerCountdown.styles'
 import {
   cellName,
