@@ -1430,6 +1430,14 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('blue-gilly', [[744, 799]])).toHaveLength(1)
   })
 
+  it('lays Shinobu’s katana lower, by ripening fruit, only from episode 916', () => {
+    expect(walkStages('shinobu', [[916, 930]])).toHaveLength(1)
+  })
+
+  it('gives King a pteranodon’s wing only from episode 924', () => {
+    expect(walkStages('king', [[924, 935]])).toHaveLength(1)
+  })
+
   it('puts Kaido’s band on the Azure Dragon’s foreleg only from episode 912', () => {
     expect(walkStages('kaido', [[912, 921]])).toHaveLength(1)
   })
@@ -1486,51 +1494,14 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('shyarly', [[573, 653]])).toHaveLength(1)
   })
 
-  it('pulls Pekoms into his shell only from episode 572', () => {
-    const pekoms = filed('pekoms')
-    const boots = DRAWINGS.pekoms
-    const shell = REDRAWINGS['pekoms']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(pekoms, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(shell?.episode).toBe(572)
-    // Chapter 652 is below his record's own chapter, so the entry has no pin.
-    expect(shell?.chapter).toBeUndefined()
-
-    expect(drawnAt(ep(571))).toBe(boots)
-    expect(drawnAt(ep(572))).toBe(shell?.value)
-    expect(drawnAt(null)).toBe(boots)
-    // Unpinned, chapter readers get it from chapter 654, after the manga's 652.
-    expect(drawnAt({ mode: 'chapter', chapter: 653 })).toBe(boots)
-    expect(drawnAt({ mode: 'chapter', chapter: 654 })).toBe(shell?.value)
-  })
-
-  it('drops Pekoms’s shell into the sea at 795 and brings it ashore at 824', () => {
-    const pekoms = filed('pekoms')
-    const stages = REDRAWINGS['pekoms'] ?? []
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(pekoms, readerFor(bookmark, 'en')).visual.strokes
-
-    // His first stage has no pin, so `walkStages` cannot walk him: the two
-    // pinned stages after it are walked here by hand, on its model.
+  it('pulls Pekoms into his shell at 572, drops it into the sea at 795 and brings it ashore at 824', () => {
     expect(
-      stages.map(({ episode, chapter }) => [episode, chapter]),
-    ).toStrictEqual([
-      [572, undefined],
-      [795, 834],
-      [824, 856],
-    ])
-
-    for (const [index, { chapter = 0, episode, value }] of stages
-      .slice(1)
-      .entries()) {
-      const before = stages[index]?.value
-
-      expect(drawnAt(ep(episode - 1))).toBe(before)
-      expect(drawnAt(ep(episode))).toBe(value)
-      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 })).toBe(before)
-      expect(drawnAt({ mode: 'chapter', chapter })).toBe(value)
-    }
+      walkStages('pekoms', [
+        [572, 653],
+        [795, 834],
+        [824, 856],
+      ]),
+    ).toHaveLength(3)
   })
 
   it('lays Bobbin’s sword and hat in the street only from episode 824', () => {
@@ -1555,30 +1526,12 @@ describe('a record drawn again later in the story', () => {
   })
 
   it('sends Igaram’s ship up in smoke at 67, and patches him up at 111', () => {
-    const igaram = filed('igaram')
-    const sax = DRAWINGS.igaram
-    const stages = REDRAWINGS['igaram'] ?? []
-    const [smoke, plaster] = stages.map(({ value }) => value)
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(igaram, readerFor(bookmark, 'en')).visual.strokes
-
-    // Chapter 113 is below his record's own chapter, so the first has no pin.
     expect(
-      stages.map(({ episode, chapter }) => [episode, chapter]),
-    ).toStrictEqual([
-      [67, undefined],
-      [111, 180],
-    ])
-
-    expect(drawnAt(ep(66))).toBe(sax)
-    expect(drawnAt(ep(67))).toBe(smoke)
-    expect(drawnAt(ep(110))).toBe(smoke)
-    expect(drawnAt(ep(111))).toBe(plaster)
-    expect(drawnAt(null)).toBe(sax)
-    // Unpinned, chapter readers get the smoke with his record, at chapter 114.
-    expect(drawnAt({ mode: 'chapter', chapter: 114 })).toBe(smoke)
-    expect(drawnAt({ mode: 'chapter', chapter: 179 })).toBe(smoke)
-    expect(drawnAt({ mode: 'chapter', chapter: 180 })).toBe(plaster)
+      walkStages('igaram', [
+        [67, 114],
+        [111, 180],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('fells Dorry’s shield at 73 and crosses his sword with Brogy’s at 77', () => {

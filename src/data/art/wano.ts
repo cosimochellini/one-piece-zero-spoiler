@@ -1668,10 +1668,12 @@ const SOTO_MUSO: Stroke[] = [
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const wanoRedrawn: Redrawings = {
   // Her katana laid lower down, with fruit ripening beside it: she names
-  // the Ripe-Ripe Enticement Jutsu at 916 (ch. 924, below her record's chapter).
+  // the Ripe-Ripe Enticement Jutsu at 916 (ch. 924, below her record's
+  // chapter, so pinned at 930 with her record).
   'shinobu': [
     {
       episode: 916,
+      chapter: 930,
       value: [
         ...placed(SHINOBU_KATANA, 'translate(44 172) rotate(-12)'),
         {
@@ -1688,10 +1690,11 @@ export const wanoRedrawn: Redrawings = {
   // The same fire over a pteranodon's wing in place of the feathered one,
   // the long finger running out to its tip and the membrane scalloped
   // between the bones: he is captioned with the fruit and flies at 924
-  // (ch. 930, below his record's chapter).
+  // (ch. 930, below his record's chapter, so pinned at 935 with his record).
   'king': [
     {
       episode: 924,
+      chapter: 935,
       value: [
         {
           d: 'M24 116 C36 72 70 48 104 40 L150 26 C140 40 128 50 114 54 C116 64 104 72 92 72 C92 84 78 94 64 94 C62 106 46 116 24 116 Z',
