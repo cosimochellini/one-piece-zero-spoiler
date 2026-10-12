@@ -15,6 +15,7 @@ import {
 } from '~/lib/cookies'
 
 import { BookmarkContext, type BookmarkContextValue } from './BookmarkContext'
+import { TRIAL_COOKIE } from './bounds'
 import { type Bookmark, EPISODE_COOKIE, serialiseBookmark } from './episode'
 
 /**
@@ -34,6 +35,8 @@ export interface BookmarkProviderProps {
    * here can never open a record the reader has not reached.
    */
   initialBookmark: Bookmark
+  /** Whether `initialBookmark` is a trial point, as the server read it. */
+  initialTrial?: boolean
 }
 
 /**
@@ -48,11 +51,13 @@ export interface BookmarkProviderProps {
  */
 export function BookmarkProvider({
   initialBookmark,
+  initialTrial = false,
   children,
 }: BookmarkProviderProps): ReactElement {
   const router = useRouter()
   const [storedBookmark, setStoredBookmark] =
     useState<Bookmark>(initialBookmark)
+  const [trial, setTrial] = useState(initialTrial)
   const [pending, startTransition] = useTransition()
 
   const setBookmark = useCallback(
@@ -61,6 +66,8 @@ export function BookmarkProvider({
       // every loader, and the server functions they call read this cookie out
       // of the request the browser is about to send; written after, they would
       // answer for the bookmark the reader has just left.
+      // A saved bookmark, or none, ends a trial either way.
+      expireCookie(TRIAL_COOKIE)
       if (next === null) {
         expireCookie(EPISODE_COOKIE)
       } else {
@@ -79,16 +86,43 @@ export function BookmarkProvider({
       startTransition(async () => {
         // Before the await, so it lands in this transition with the records.
         setStoredBookmark(next)
+        setTrial(false)
         await router.invalidate()
       })
     },
     [router],
   )
 
-  const value = useMemo<BookmarkContextValue>(
-    () => ({ bookmark: storedBookmark, pending, setBookmark }),
-    [storedBookmark, pending, setBookmark],
-  )
+  // No re-read here: the card that calls it is a link, and the page it opens
+  // is loaded with the cookie this writes. Session-only, so a trial never
+  // outlives the browser.
+  const enterTrial = useCallback((point: NonNullable<Bookmark>) => {
+    writeCookie(TRIAL_COOKIE, serialiseBookmark(point))
+    startTransition(() => {
+      setStoredBookmark(point)
+      setTrial(true)
+    })
+  }, [])
+
+  const leaveTrial = useCallback(() => {
+    expireCookie(TRIAL_COOKIE)
+    startTransition(async () => {
+      setStoredBookmark(null)
+      setTrial(false)
+      await router.invalidate()
+    })
+  }, [router])
+
+  const value = useMemo<BookmarkContextValue>(() => {
+    return {
+      bookmark: storedBookmark,
+      enterTrial,
+      leaveTrial,
+      pending,
+      setBookmark,
+      trial,
+    }
+  }, [storedBookmark, enterTrial, leaveTrial, pending, setBookmark, trial])
 
   return <BookmarkContext value={value}>{children}</BookmarkContext>
 }

@@ -29,11 +29,35 @@ export const enDictionary = {
   'nav.label': 'Pages',
 
   'hero.headline': 'The One Piece wiki without spoilers',
-  'hero.lede':
-    'You have not set a bookmark yet, so every entry is under fog. Set one in the top bar: an anime episode, a season and episode, or a manga chapter. Entries up to that point open. The ones after it stay under fog, and you can still show any of them.',
   'hero.setBookmark': 'Set your bookmark',
   'hero.changeBookmark': 'Change bookmark · {threshold}',
-  'hero.explore': 'Browse characters',
+
+  'onboarding.lede':
+    'Move the dial through East Blue. Entries up to that point open, and the ones after it stay under fog. Once you set your bookmark, every page of the wiki works this way.',
+  'onboarding.dial': 'Point in the story',
+  'onboarding.unitEpisode': 'Episode',
+  'onboarding.unitChapter': 'Chapter',
+  'onboarding.here': 'I’m here',
+  'onboarding.further': 'I’m further on',
+  'onboarding.start': 'Starting now · EP 1',
+  'onboarding.arcs': 'Arcs',
+  'onboarding.cast': 'Characters',
+  'onboarding.places': 'Places and ships',
+  'onboarding.tryHint':
+    'Open an entry to see its page at this point. Your bookmark is not saved.',
+  'onboarding.tailTitle': 'After East Blue',
+  'onboarding.tail':
+    '{count} more entries stay under fog until your bookmark reaches them.',
+
+  'trial.episode': 'Trying episode {threshold}. Nothing is saved.',
+  'trial.chapter': 'Trying chapter {threshold}. Nothing is saved.',
+  'trial.save': 'Save this point',
+  'trial.leave': 'Leave the trial',
+
+  'welcome.title': 'What you can do now',
+  'welcome.lede':
+    'Your bookmark is saved. Every page shows what you have reached and keeps the rest under fog.',
+  'welcome.dismiss': 'Close',
 
   'home.point.episode': 'Episode {threshold}',
   'home.point.season': 'Season {season} · episode {episode}',
@@ -93,13 +117,6 @@ export const enDictionary = {
   'chart.hereSet.season': 'You are here · {threshold}',
   'chart.hereSet.chapter': 'You are here · chapter {threshold}',
   'chart.hereUnset': 'No bookmark set · everything is under fog',
-  'chart.title': 'The main entries, in story order',
-  'chart.foggedDescription.episode': 'An entry from episode {threshold}.',
-  'chart.foggedDescription.season': 'An entry from {threshold}.',
-  'chart.foggedDescription.chapter': 'An entry from chapter {threshold}.',
-  'legend.open': 'open',
-  'legend.covered': 'under fog',
-  'legend.filed': 'in total',
 
   'faq.animeQ': 'Anime or manga?',
   'faq.animeA':
