@@ -314,7 +314,8 @@ export const wanoArt = {
   // The paper door in his castle with the shadow behind it: one body and
   // several necks rising, each a serpent's head with a horn, no eye and no
   // mouth. At 921 (ch. 927) the shogun is only this shadow; his face, crown
-  // and kimono come at 922. His heads are cut at 1026, in `wanoRedrawn`.
+  // and kimono come at 922. His deaths and returns, from 994, are in
+  // `wanoRedrawn`.
   'kurozumi-orochi': [
     { d: 'M16 30 H144 V150 H16 Z' },
     { d: 'M16 30 L22 24 H150 L144 30 M144 150 L150 144 V24', role: 'soft' },
@@ -1525,6 +1526,69 @@ const OROCHI_STUB =
   'M-6 0 C-8 -10 -4 -20 2 -26 M6 0 C6 -8 10 -14 14 -18 M2 -26 Q11 -26 14 -18 Q6 -16 2 -26'
 
 /**
+ * Orochi's serpent body slumped on the floor behind his door, its far side
+ * in folds, and three of its four necks cut short.
+ */
+const OROCHI_SLUMPED: Stroke[] = [
+  {
+    d: 'M20 150 C20 128 36 116 54 114 C66 102 98 100 112 110 C128 114 140 130 140 150',
+    role: 'accent',
+  },
+  {
+    d: 'M34 140 C56 128 100 126 128 136 M50 126 C70 118 92 118 108 124',
+    role: 'soft',
+  },
+  {
+    d: OROCHI_STUB,
+    role: 'accent',
+    transform: 'translate(40 126) rotate(-56) scale(1.1)',
+  },
+  {
+    d: OROCHI_STUB,
+    role: 'accent',
+    transform: 'translate(56 112) rotate(-30) scale(1.5)',
+  },
+  {
+    d: OROCHI_STUB,
+    role: 'accent',
+    transform: 'translate(80 104) rotate(-4) scale(1.1)',
+  },
+]
+
+/**
+ * Sukiyaki's scroll rolled shut, lying on its side: the roll and its near
+ * end, the ends of the roller, the sheet's edges, and the cord it is tied
+ * with in his colour.
+ */
+const SUKIYAKI_SCROLL_SHUT: Stroke[] = [
+  { d: `${ellipse(28, 132, 8, 14)} M28 118 H132 A8 14 0 0 1 132 146 H28` },
+  { d: 'M20 128 h-6 v8 h6 M140 128 h6 v8 h-6' },
+  { d: 'M48 120 V144 M108 120 V144', role: 'soft' },
+  { d: 'M74 118 V146 M82 118 V146', role: 'accent' },
+  {
+    d: 'M78 146 C70 156 66 162 62 172 M78 146 C86 156 92 164 98 170',
+    role: 'accent',
+  },
+  {
+    d: 'M40 144 l4 -4 M60 145 l4 -4 M96 145 l4 -4 M116 145 l4 -4',
+    role: 'ambient',
+  },
+]
+
+/**
+ * Orochi's small spiked crown, side on: the band and its rim, and the
+ * points round the top.
+ */
+const OROCHI_CROWN: Stroke[] = [
+  { d: 'M54 174 Q80 182 106 174 L104 162 Q80 169 56 162 Z', role: 'accent' },
+  {
+    d: 'M56 162 L58 148 L66 160 L72 142 L80 161 L88 142 L94 160 L102 148 L104 162',
+    role: 'accent',
+  },
+  { d: 'M58 168 Q80 175 102 168', role: 'soft' },
+]
+
+/**
  * Onimaru, the fox Gyukimaru was, side on and facing left: the two tall
  * ears with their dark edge, the long snout with no eye, the ruff down the
  * chest, the legs dark from the elbow and the hock down, the far legs drawn
@@ -1685,6 +1749,22 @@ export const wanoRedrawn: Redrawings = {
         ...placed(IZO_FLINTLOCK, 'translate(74 98) rotate(-16)'),
         ...placed(IZO_FLINTLOCK, 'translate(86 150) rotate(8)'),
         shadow(80, 182, 60),
+      ],
+    },
+    // One of his flintlocks dropped flat on the floor, smoke still rising
+    // from its muzzle: he and Maha bring each other down in the castle at
+    // 1068 (ch. 1041).
+    {
+      episode: 1068,
+      chapter: 1041,
+      value: [
+        ...placed(IZO_FLINTLOCK, 'translate(72 150) rotate(4)'),
+        {
+          d: 'M136 134 C130 126 140 120 134 110 C130 102 138 96 134 86',
+          role: 'ambient',
+          dashed: true,
+        },
+        { d: 'M6 180 H154', role: 'ambient', dashed: true },
       ],
     },
   ],
@@ -1890,42 +1970,91 @@ export const wanoRedrawn: Redrawings = {
       ],
     },
   ],
-  // The same paper door, and behind it what the Scabbards leave of him: the
-  // serpent's body slumped on the floor, three of its four necks cut short
-  // to a blunt end and the fourth hanging limp over the side. They cut off
-  // all but one of his heads at 1026 (ch. 1009); the one left is not shown.
   'kurozumi-orochi': [
+    // The same paper door with no shadow behind it, and his small spiked
+    // crown fallen on its side in front of it. Kaido cuts off his head at
+    // the banquet at 994 (ch. 985).
+    {
+      episode: 994,
+      chapter: 985,
+      value: [
+        ...wanoArt['kurozumi-orochi'].slice(0, 4),
+        ...wanoArt['kurozumi-orochi'].slice(9, 10),
+        ...moved(OROCHI_CROWN, 'rotate(-12 80 170)'),
+        { d: 'M64 182 l4 4 M76 184 l4 4 M88 182 l4 4', role: 'ambient' },
+        shadow(80, 190, 44),
+      ],
+    },
+    // The shadow back behind the door, three necks up and the fourth a cut
+    // stub: he had eight heads and lost one. He is back, setting the castle
+    // alight, at 1025 (ch. 1008).
+    {
+      episode: 1025,
+      chapter: 1008,
+      value: [
+        ...wanoArt['kurozumi-orochi'].slice(0, 8),
+        {
+          d: OROCHI_STUB,
+          role: 'accent',
+          transform: 'translate(118 140) scale(1.3)',
+        },
+        ...wanoArt['kurozumi-orochi'].slice(9, 10),
+      ],
+    },
+    // The same door, and behind it what the Scabbards leave of him: the
+    // serpent's body slumped on the floor, three of its four necks cut short
+    // to a blunt end and the fourth hanging limp over the side. They cut off
+    // all but one of his heads at 1026 (ch. 1009); the one left is not shown.
     {
       episode: 1026,
       chapter: 1009,
       value: [
         ...wanoArt['kurozumi-orochi'].slice(0, 4),
-        {
-          d: 'M20 150 C20 128 36 116 54 114 C66 102 98 100 112 110 C128 114 140 130 140 150',
-          role: 'accent',
-        },
-        {
-          d: 'M34 140 C56 128 100 126 128 136 M50 126 C70 118 92 118 108 124',
-          role: 'soft',
-        },
-        {
-          d: OROCHI_STUB,
-          role: 'accent',
-          transform: 'translate(40 126) rotate(-56) scale(1.1)',
-        },
-        {
-          d: OROCHI_STUB,
-          role: 'accent',
-          transform: 'translate(56 112) rotate(-30) scale(1.5)',
-        },
-        {
-          d: OROCHI_STUB,
-          role: 'accent',
-          transform: 'translate(80 104) rotate(-4) scale(1.1)',
-        },
+        ...OROCHI_SLUMPED,
         {
           d: 'M108 114 C118 98 136 100 138 116 C139 128 136 140 132 150 M114 118 C120 108 130 110 131 120 C132 130 128 142 124 150 M124 150 Q128 146 132 150',
           role: 'accent',
+        },
+        ...wanoArt['kurozumi-orochi'].slice(9, 10),
+      ],
+    },
+    // The fourth neck raised again over the slumped body: one head is left,
+    // and he looks out of a castle window at 1051 (ch. 1026).
+    {
+      episode: 1051,
+      chapter: 1026,
+      value: [
+        ...wanoArt['kurozumi-orochi'].slice(0, 4),
+        ...OROCHI_SLUMPED,
+        {
+          d: OROCHI_NECK,
+          role: 'accent',
+          transform: 'translate(118 128) scale(0.92 0.9)',
+        },
+        ...wanoArt['kurozumi-orochi'].slice(9, 10),
+      ],
+    },
+    // The last neck cut short like the others, fire along the floor and
+    // smoke rising behind the door: Kazenbo sets him alight and Denjiro
+    // cuts off his last head at 1075 (ch. 1048).
+    {
+      episode: 1075,
+      chapter: 1048,
+      value: [
+        ...wanoArt['kurozumi-orochi'].slice(0, 4),
+        ...OROCHI_SLUMPED,
+        {
+          d: OROCHI_STUB,
+          role: 'accent',
+          transform: 'translate(112 116) rotate(24) scale(1.2)',
+        },
+        {
+          d: 'M18 150 C12 138 22 132 18 120 C26 128 30 134 28 142 C32 132 36 124 34 112 C44 124 48 138 42 150 M118 150 C112 136 122 128 118 114 C128 124 132 132 130 142 C134 134 138 128 136 118 C146 128 148 140 142 150 M66 150 C62 140 70 134 68 124 C76 132 80 140 76 150',
+        },
+        {
+          d: 'M30 104 C24 96 34 90 28 80 C24 72 32 66 28 56 M128 100 C122 92 132 86 126 76 C122 68 130 62 126 52',
+          role: 'ambient',
+          dashed: true,
         },
         ...wanoArt['kurozumi-orochi'].slice(9, 10),
       ],
@@ -2070,6 +2199,216 @@ export const wanoRedrawn: Redrawings = {
         { d: circle(24, 183, 13), role: 'accent' },
         { d: circle(24, 183, 4.5), role: 'accent' },
         shadow(86, 174, 58),
+      ],
+    },
+  ],
+  // The same kimono fallen across the rubble, and his long katana standing
+  // point down in it beside the smoke: he carries the false Oden through a
+  // window before its vest goes off, at 1025 (ch. 1008).
+  'ashura-doji': [
+    {
+      episode: 1025,
+      chapter: 1008,
+      value: [
+        {
+          d: 'M6 172 L18 158 L30 162 L42 152 L56 158 L70 150 L88 156 L104 150 L120 156 L136 150 L148 160 L156 174',
+        },
+        { d: 'M24 182 L62 162 L66 168 L28 188 Z' },
+        { d: 'M110 170 L150 182 L148 188 L108 176 Z' },
+        {
+          d: 'M30 164 l4 6 M58 158 l4 6 M90 160 l4 6 M126 158 l4 6',
+          role: 'ambient',
+        },
+        ...moved(
+          wanoArt['ashura-doji'].slice(0, 6),
+          'rotate(-6 70 140) translate(10 46) scale(0.72)',
+        ),
+        ...moved(
+          wanoArt['ashura-doji'].slice(6, 11),
+          'translate(118 40) rotate(126) scale(0.8) translate(-44 -164)',
+        ),
+        {
+          d: 'M136 140 C130 128 142 120 136 108 C132 100 140 94 136 86',
+          role: 'ambient',
+          dashed: true,
+        },
+        { d: 'M6 192 H154', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+  'komurasaki': [
+    // One geta still standing, the other knocked onto its side, and the
+    // hairpins scattered: Kyoshiro cuts her down in front of the shogun at
+    // 928 (ch. 933).
+    {
+      episode: 928,
+      chapter: 933,
+      value: [
+        ...placed(KOMURASAKI_GETA, 'translate(46 112)'),
+        ...placed(KOMURASAKI_GETA, 'translate(108 132) rotate(-80)'),
+        { d: 'M33 122 l-4 6 M33 136 l-4 6', role: 'ambient' },
+        shadow(84, 166, 64),
+        ...moved(
+          wanoArt.komurasaki.slice(10, 13),
+          'translate(0 -6) rotate(6 70 184)',
+        ),
+      ],
+    },
+    // A mortar with its pestle, the grooves inside the bowl, and one of her
+    // hairpins laid in front: alive, out of the oiran's dress, she grinds
+    // medicine in a hut by the graveyard at Ringo at 935 (ch. 938).
+    {
+      episode: 935,
+      chapter: 938,
+      value: [
+        { d: ellipse(70, 112, 48, 13) },
+        { d: 'M22 112 C24 146 46 164 70 164 C94 164 116 146 118 112' },
+        { d: 'M56 164 L58 172 H82 L84 164' },
+        {
+          d: 'M36 114 l6 7 M52 118 l4 7 M70 119 v7 M88 118 l-4 7 M104 114 l-6 7',
+          role: 'soft',
+        },
+        { d: 'M104 140 l6 -6 M96 152 l6 -6 M110 128 l5 -5', role: 'ambient' },
+        { d: 'M78 118 L124 46 Q130 40 135 45 Q138 50 134 56 L88 124' },
+        { d: 'M118 58 L128 64', role: 'soft' },
+        shadow(70, 180, 50),
+        { d: 'M74 190 L140 176', role: 'accent' },
+        { d: 'M140 176 L154 168 L156 180 Z', role: 'accent' },
+        { d: 'M153 172 v9', role: 'soft' },
+      ],
+    },
+  ],
+  // The cross he is shot on in Rasetsu Town, its far side hatched, and at
+  // its foot his polka-dot bandana untied and lying flat: he dies laughing
+  // at 940 (ch. 942, below his record's chapter, so pinned at 943 with his
+  // status).
+  'shimotsuki-yasuie': [
+    {
+      episode: 940,
+      chapter: 943,
+      value: [
+        {
+          d: 'M74 18 H86 V48 M74 18 V48 M74 60 V128 M86 60 V128 M74 138 V172 M86 138 V172',
+        },
+        { d: 'M30 48 H130 V60 H30 Z' },
+        { d: 'M48 128 H112 V138 H48 Z' },
+        {
+          d: 'M86 64 l-6 6 M86 78 l-6 6 M86 92 l-6 6 M86 106 l-6 6 M86 146 l-6 6 M86 160 l-6 6',
+          role: 'ambient',
+        },
+        { d: 'M58 172 Q80 164 102 172' },
+        {
+          d: 'M14 180 C34 172 56 188 80 180 C100 174 122 186 146 178 L150 186 C126 194 102 182 80 188 C56 196 34 182 16 188 Z',
+        },
+        {
+          d: 'M146 178 l8 -6 M150 186 l8 4 M14 180 l-8 -4 M16 188 l-8 6',
+          role: 'soft',
+        },
+        {
+          d: `${circle(30, 182, 2.5)} ${circle(50, 184, 2.5)} ${circle(70, 184, 2.5)} ${circle(92, 181, 2.5)} ${circle(114, 182, 2.5)} ${circle(134, 182, 2.5)}`,
+          role: 'accent',
+        },
+      ],
+    },
+  ],
+  // The same two candles on their headband, out, a wisp of smoke rising
+  // from each wick, and the band itself takes the accent the flames had:
+  // Kaido says he had her killed at 974 (ch. 972).
+  'kurozumi-higurashi': [
+    {
+      episode: 974,
+      chapter: 972,
+      value: [
+        ...wanoArt['kurozumi-higurashi'].slice(0, 2),
+        ...wanoArt['kurozumi-higurashi'].slice(3, 4),
+        ...wanoArt['kurozumi-higurashi']
+          .slice(4, 5)
+          .map((stroke): Stroke => ({ ...stroke, role: 'accent' })),
+        ...wanoArt['kurozumi-higurashi'].slice(5, 8),
+        {
+          d: 'M58 64 C52 56 62 50 56 40 C52 32 60 28 56 18 M102 64 C96 56 106 50 100 40 C96 32 104 28 100 18',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
+  ],
+  'tsurujo': [
+    // Her crane pin fallen among charred beams, smoke rising, and her pot
+    // tipped on its side: Okobore Town is burned to the ground with its
+    // people at 960 (ch. 959).
+    {
+      episode: 960,
+      chapter: 959,
+      value: [
+        { d: 'M60 120 L150 64 L154 72 L64 128 Z' },
+        { d: 'M84 58 L156 132 L150 136 L78 62 Z' },
+        {
+          d: 'M74 118 l4 6 M90 108 l4 6 M106 98 l4 6 M122 88 l4 6 M138 78 l4 6 M96 70 l5 -2 M110 84 l5 -2 M124 98 l5 -2 M138 112 l5 -2',
+          role: 'ambient',
+        },
+        {
+          d: 'M112 70 C106 62 116 56 110 46 C106 38 114 32 110 22 M140 64 C134 56 144 50 138 40',
+          role: 'ambient',
+          dashed: true,
+        },
+        ...moved(
+          wanoArt.tsurujo.slice(0, 7),
+          'translate(4 46) rotate(-14 72 104) scale(0.82)',
+        ),
+        ...moved(
+          [...wanoArt.tsurujo.slice(7, 10), ...wanoArt.tsurujo.slice(11, 12)],
+          'translate(-12 20) rotate(80 128 140)',
+        ),
+        shadow(84, 190, 66),
+      ],
+    },
+    // The crane pin as she wears it, her pot upright again, and a roll of
+    // bandage beside them, its end unwound: she is alive at the ruins of the
+    // town, a bandage across her burned brow, at 1083 (ch. 1056).
+    {
+      episode: 1083,
+      chapter: 1056,
+      value: [
+        ...wanoArt.tsurujo.slice(0, 10),
+        ...wanoArt.tsurujo.slice(11, 13),
+        { d: `${ellipse(26, 168, 8, 12)} M26 156 H52 M26 180 H52` },
+        { d: circle(26, 168, 3), role: 'soft' },
+        {
+          d: 'M52 156 A8 12 0 0 1 52 180 C66 184 80 180 96 188 L94 194 C78 188 64 190 50 186',
+          role: 'soft',
+        },
+      ],
+    },
+  ],
+  'kozuki-sukiyaki': [
+    // The scroll rolled shut and tied with its cord, and the brush laid
+    // across it: Orochi tells Wano that the shogun has died at 965 (ch. 965).
+    {
+      episode: 965,
+      chapter: 965,
+      value: [
+        ...SUKIYAKI_SCROLL_SHUT,
+        ...moved(wanoArt['kozuki-sukiyaki'].slice(5, 7), 'translate(-4 -6)'),
+        shadow(80, 188, 58),
+      ],
+    },
+    // The same shut scroll, lower, and the red tengu mask of the swordsmith
+    // Hitetsu laid behind it: Hitetsu says he is Kozuki Sukiyaki at 1080
+    // (ch. 1053).
+    {
+      episode: 1080,
+      chapter: 1053,
+      value: [
+        ...moved(
+          SUKIYAKI_SCROLL_SHUT,
+          'translate(0 36) scale(0.9) translate(8 0)',
+        ),
+        ...moved(
+          wanoArt['tenguyama-hitetsu'].slice(0, 6),
+          'translate(12 -8) scale(0.84)',
+        ),
+        shadow(80, 192, 62),
       ],
     },
   ],

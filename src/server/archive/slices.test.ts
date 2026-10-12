@@ -1047,8 +1047,65 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('yamato', [[1041, 1019]])).toHaveLength(1)
   })
 
-  it('cuts the heads off Orochi’s shadow only from episode 1026', () => {
-    expect(walkStages('kurozumi-orochi', [[1026, 1009]])).toHaveLength(1)
+  it('follows Orochi through his two beheadings and returns to his death', () => {
+    expect(
+      walkStages('kurozumi-orochi', [
+        [994, 985],
+        [1025, 1008],
+        [1026, 1009],
+        [1051, 1026],
+        [1075, 1048],
+      ]),
+    ).toHaveLength(5)
+  })
+
+  it('plants Ashura’s katana in the rubble only from episode 1025', () => {
+    expect(walkStages('ashura-doji', [[1025, 1008]])).toHaveLength(1)
+  })
+
+  it('knocks Komurasaki’s geta over at 928, and grinds medicine at 935', () => {
+    expect(
+      walkStages('komurasaki', [
+        [928, 933],
+        [935, 938],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('lays Yasuie’s bandana at the foot of the cross only from episode 940', () => {
+    // Ch 942 tells it, below his record's 943: pinned at 943 with his status.
+    expect(walkStages('shimotsuki-yasuie', [[940, 943]])).toHaveLength(1)
+  })
+
+  it('puts out Higurashi’s candles only from episode 974', () => {
+    expect(walkStages('kurozumi-higurashi', [[974, 972]])).toHaveLength(1)
+  })
+
+  it('hands Izo his flintlocks at 995, and drops them on the floor at 1068', () => {
+    expect(
+      walkStages('izo', [
+        [995, 986],
+        [1068, 1041],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('burns Tsuru’s town at 960, and bandages her at 1083', () => {
+    expect(
+      walkStages('tsurujo', [
+        [960, 959],
+        [1083, 1056],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('rolls Sukiyaki’s scroll shut at 965, and lays the tengu mask by it at 1080', () => {
+    expect(
+      walkStages('kozuki-sukiyaki', [
+        [965, 965],
+        [1080, 1053],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('hands Alpacaman his sabres only from episode 935', () => {
@@ -1075,23 +1132,6 @@ describe('a record drawn again later in the story', () => {
 
   it('stands Fuga on his horse’s legs only from episode 1058', () => {
     expect(walkStages('fuga', [[1058, 1032]])).toHaveLength(1)
-  })
-
-  it('hands Izo his flintlocks only from episode 995', () => {
-    const izo = filed('izo')
-    const fans = DRAWINGS.izo
-    const flintlocks = REDRAWINGS['izo']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(izo, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(flintlocks?.episode).toBe(995)
-
-    expect(drawnAt(ep(994))).toBe(fans)
-    expect(drawnAt(ep(995))).toBe(flintlocks?.value)
-    expect(drawnAt(null)).toBe(fans)
-    // The manga has him disarm King with one shot in chapter 986, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 985 })).toBe(fans)
-    expect(drawnAt({ mode: 'chapter', chapter: 986 })).toBe(flintlocks?.value)
   })
 
   it('turns Ulti into her pachycephalosaur only from episode 990', () => {
