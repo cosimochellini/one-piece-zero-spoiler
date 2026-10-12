@@ -70,6 +70,8 @@ export const enDictionary = {
   'home.storyAt.chapter': 'About chapter {threshold}',
   'home.more': 'More stories',
   'home.cast': 'Who matters now',
+  'home.filler.title': 'Watch out for filler',
+  'home.filler.link': 'See all filler',
 
   'mark.unset': 'Set episode',
   'mark.episode': 'EP {threshold}',

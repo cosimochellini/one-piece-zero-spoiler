@@ -10,6 +10,7 @@ import { markedIds } from '~/lib/prose/markers'
 import type { HomeStory, HomeView, LandingView } from '~/lib/view/records'
 
 import { segmentsOf } from './chronicle.server'
+import { fillerAheadOf } from './fillerCountdown.server'
 import { onboardingPage } from './onboarding.server'
 import { characterOf, waypointOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
@@ -51,6 +52,9 @@ export function landingPage(
  * by then (the data tests hold it), and a subject the reader has not met is
  * not on the page at all — Shiki's Impel Down
  * story is episode 425, but his chapter is 962.
+ *
+ * An episode or season reader with filler in their next few episodes is
+ * also warned of it (`./fillerCountdown.server`).
  */
 export function homePage(
   bookmark: NonNullable<Bookmark>,
@@ -85,6 +89,7 @@ export function homePage(
 
   return {
     before: before && shown.length > 0,
+    filler: fillerAheadOf(bookmark),
     point: bookmark,
     saga: waypointOf(saga, r),
     stories: shown.map((filed): HomeStory => {

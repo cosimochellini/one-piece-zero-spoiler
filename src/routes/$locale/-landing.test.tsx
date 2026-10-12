@@ -70,6 +70,7 @@ function cookies(): Map<string, string> {
 const home: HomeView = {
   before: false,
   cast: [],
+  filler: null,
   point: { mode: 'episode', episode: 650 },
   saga,
   stories: [],
@@ -180,5 +181,88 @@ describe('LandingPage', () => {
     ).toBeInTheDocument()
     expect(screen.getByText('Episode 650')).toBeInTheDocument()
     expect(screen.queryByRole('slider')).not.toBeInTheDocument()
+  })
+
+  it('warns of filler close ahead, with a link to the filler guide', () => {
+    renderWithProviders(
+      <LandingPage
+        landing={{
+          home: {
+            ...home,
+            filler: {
+              cells: [
+                { episode: 52, kind: null },
+                { episode: 53, kind: null },
+                { episode: 54, kind: 'filler' },
+              ],
+              here: 52,
+              inRun: null,
+              next: { first: 54, last: 60, distance: 2 },
+            },
+          },
+        }}
+      />,
+      { bookmark: { mode: 'episode', episode: 52 } },
+    )
+
+    expect(
+      screen.getByRole('heading', { name: 'Watch out for filler' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByText(
+        'The next filler is 2 episodes away. Next run to skip: EP 54–60.',
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'EP 54. Filler' }),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('link', { name: /See all filler/u }),
+    ).toHaveAttribute('href', '/en/filler')
+  })
+
+  it('says where the canon picks up inside a run, in season codes', () => {
+    renderWithProviders(
+      <LandingPage
+        landing={{
+          home: {
+            ...home,
+            point: { mode: 'season', season: 5, episode: 1 },
+            filler: {
+              cells: [
+                { episode: 131, kind: 'filler' },
+                { episode: 132, kind: 'filler' },
+              ],
+              here: 131,
+              inRun: { resume: 144, distance: 13 },
+              next: { first: 196, last: 206, distance: 65 },
+            },
+          },
+        }}
+      />,
+      { bookmark: { mode: 'season', season: 5, episode: 1 } },
+    )
+
+    expect(
+      screen.getByText(
+        'You are in a filler run. The canon picks up again at S06E01, 13 episodes away.',
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'S05E01. Filler. your bookmark' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('listitem', { current: 'step' })).toHaveTextContent(
+      'S05E01',
+    )
+  })
+
+  it('has no filler warning with none ahead', () => {
+    renderWithProviders(<LandingPage landing={{ home }} />, {
+      bookmark: { mode: 'episode', episode: 650 },
+    })
+
+    expect(
+      screen.queryByRole('heading', { name: 'Watch out for filler' }),
+    ).not.toBeInTheDocument()
   })
 })

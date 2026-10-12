@@ -1,7 +1,8 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, type ReactNode, useState } from 'react'
 
-import { styles } from '~/components/FillerCountdown.styles'
+import { CellFace } from '~/components/CellFace'
+import { looksOf, styles } from '~/components/FillerCountdown.styles'
 import {
   cellName,
   entryOf,
@@ -12,13 +13,11 @@ import {
 } from '~/components/fillerLabels'
 import { FILLER_PANEL_ID, FillerPanel } from '~/components/FillerPanel'
 import { useT } from '~/i18n/LocaleContext'
-import type { Translate } from '~/i18n/types'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type {
   Countdown,
   CountdownCell,
   CountdownMark,
-  FillerKind,
   FillerRowView,
   FillerSlot,
 } from '~/lib/view/filler'
@@ -138,33 +137,6 @@ function Row({
   )
 }
 
-/** How a cell is painted: by kind, and outlined when it is the reader's. */
-function looksOf(
-  kind: FillerKind | null,
-  here: boolean,
-): stylex.StyleXStyles[] {
-  return [
-    styles.cell,
-    kind === 'filler' && styles.cellSkip,
-    kind === 'recap' && styles.cellRecap,
-    kind === 'mixed' && styles.cellMixed,
-    here && styles.cellHere,
-  ]
-}
-
-/** The word under a cell's number: its kind, or "now" for the reader's. */
-function kindLabel(
-  t: Translate,
-  kind: FillerKind | null,
-  here: boolean,
-): string {
-  if (kind !== null) {
-    return t(`filler.cell.${kind}`)
-  }
-
-  return here ? t('filler.cell.here') : ''
-}
-
 /**
  * One episode: a plain cell for canon, a button for anything else. A film or
  * special watched after it sits on its trailing edge, between this cell and
@@ -186,10 +158,6 @@ function Cell({
   const t = useT()
   const { slot } = cell
   const kind = slot === null ? null : entryOf(slot).kind
-  const number = episodesLabel(t, mode, {
-    first: cell.episode,
-    last: cell.episode,
-  })
 
   return (
     <li
@@ -199,15 +167,22 @@ function Cell({
       <Pressable
         choice={choice}
         looks={looksOf(kind, here)}
-        name={cellName(t, { here, kind, number })}
+        name={cellName(t, {
+          here,
+          kind,
+          number: episodesLabel(t, mode, {
+            first: cell.episode,
+            last: cell.episode,
+          }),
+        })}
         slot={slot}
       >
-        <span
-          {...stylex.props(styles.number, mode === 'season' && styles.code)}
-        >
-          {mode === 'season' ? number : String(cell.episode)}
-        </span>
-        <span {...stylex.props(styles.kind)}>{kindLabel(t, kind, here)}</span>
+        <CellFace
+          episode={cell.episode}
+          here={here}
+          kind={kind}
+          mode={mode}
+        />
       </Pressable>
       {marks.length > 0 && (
         <div {...stylex.props(styles.marks)}>

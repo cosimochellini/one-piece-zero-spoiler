@@ -1,5 +1,6 @@
 import * as stylex from '@stylexjs/stylex'
 
+import type { FillerKind } from '~/lib/view/filler'
 import {
   color,
   font,
@@ -207,3 +208,17 @@ export const styles = stylex.create({
     maxWidth: '66ch',
   },
 })
+
+/** How a cell is painted: by kind, and outlined when it is the reader's. */
+export function looksOf(
+  kind: FillerKind | null,
+  here: boolean,
+): stylex.StyleXStyles[] {
+  return [
+    styles.cell,
+    kind === 'filler' && styles.cellSkip,
+    kind === 'recap' && styles.cellRecap,
+    kind === 'mixed' && styles.cellMixed,
+    here && styles.cellHere,
+  ]
+}

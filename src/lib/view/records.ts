@@ -17,6 +17,7 @@
  */
 
 import type { Bookmark } from '~/lib/progress/episode'
+import type { FillerAhead } from '~/lib/view/filler'
 
 /** The ink a stroke takes. Structurally `Role` from `~/data/art/stroke`. */
 export type StrokeRole = 'accent' | 'ambient' | 'soft'
@@ -397,6 +398,8 @@ export interface HomeView {
   before: boolean
   /** The arc's leads the stories name most, most named first, at most six. */
   cast: CharacterView[]
+  /** Filler in the reader's next few episodes, or `null` with none. */
+  filler: FillerAhead | null
   /** The arc the reader is in: the last one that opens at or before them. */
   saga: WaypointView
   /** The reader's bookmark, which the fold states in the reader's unit. */

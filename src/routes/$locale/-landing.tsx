@@ -11,16 +11,19 @@ import * as stylex from '@stylexjs/stylex'
 import type { ReactElement } from 'react'
 
 import { HomeCast } from '~/components/HomeCast'
+import { HomeFillerAhead } from '~/components/HomeFillerAhead'
 import { HomeFold } from '~/components/HomeFold'
 import { HomeMoreStories, HomeStories } from '~/components/HomeStories'
 import { HomeWelcome } from '~/components/HomeWelcome'
 import { OnboardingLanding } from '~/components/OnboardingLanding'
+import { modeOf } from '~/lib/progress/episode'
 import type { HomeView, LandingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
 
 // The bands in DOM order. The fold settles in three steps of its own, so the
-// next band starts after them rather than landing on top of one.
+// next band starts after them rather than landing on top of one. The filler
+// warning, when there is one, takes the stories' step and moves the rest on.
 const BAND = { fold: 0, stories: 3, cast: 4, more: 5 } as const
 
 /** What the loader sent. */
@@ -49,11 +52,22 @@ export function LandingPage({ landing }: LandingPageProps): ReactElement {
  * am I, what just happened, who matters now. The fold answers the first with
  * the arc's own drawing and nothing else; a thick rule ends it, and under it
  * the page becomes a ledger of the latest stories, a row of crests, and the
- * rest of the stories closed under their titles. A new
+ * rest of the stories closed under their titles. Filler close ahead of an
+ * episode reader is warned of first. A new
  * bookmark re-runs the loader, so saving one from the fold or the bar moves
  * the whole page to the new point.
  */
-function Home({ before, cast, point, saga, stories }: HomeView): ReactElement {
+function Home({
+  before,
+  cast,
+  filler,
+  point,
+  saga,
+  stories,
+}: HomeView): ReactElement {
+  const shift = filler === null ? 0 : 1
+  const at = (band: number): number => band + shift
+
   return (
     <main
       id="content"
@@ -67,18 +81,35 @@ function Home({ before, cast, point, saga, stories }: HomeView): ReactElement {
 
       <div {...stylex.props(styles.below)}>
         <HomeWelcome />
+        {filler !== null && (
+          <div
+            {...stylex.props(settleStyles.band, settleStyles.at(BAND.stories))}
+          >
+            <HomeFillerAhead
+              ahead={filler}
+              mode={modeOf(point)}
+            />
+          </div>
+        )}
         <div
-          {...stylex.props(settleStyles.band, settleStyles.at(BAND.stories))}
+          {...stylex.props(
+            settleStyles.band,
+            settleStyles.at(at(BAND.stories)),
+          )}
         >
           <HomeStories
             before={before}
             stories={stories}
           />
         </div>
-        <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.cast))}>
+        <div
+          {...stylex.props(settleStyles.band, settleStyles.at(at(BAND.cast)))}
+        >
           <HomeCast cast={cast} />
         </div>
-        <div {...stylex.props(settleStyles.band, settleStyles.at(BAND.more))}>
+        <div
+          {...stylex.props(settleStyles.band, settleStyles.at(at(BAND.more)))}
+        >
           <HomeMoreStories stories={stories} />
         </div>
       </div>

@@ -1,9 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
 import { FILLER, LAST_AIRED } from '~/data/filler'
+import { reveal } from '~/data/reveal'
 import type { Bookmark } from '~/lib/progress/episode'
 import type {
   FillerGroup,
+  FillerKind,
   FillerPageView,
   FillerRun,
   FillerSlot,
@@ -11,6 +13,7 @@ import type {
 } from '~/lib/view/filler'
 
 import { fillerPage, peekFiller } from './filler.server'
+import { countdownOf, fillerAheadOf } from './fillerCountdown.server'
 
 /** Every row of the page, in order. */
 function slots(page: FillerPageView): FillerSlot[] {
@@ -24,6 +27,11 @@ function entryOf(slot: FillerSlot): {
   revealedAtChapter: number
 } {
   return slot.open ? slot.record : slot.covered
+}
+
+/** A row's kind, open or covered. */
+function entryKind(slot: FillerSlot): FillerKind {
+  return slot.open ? slot.record.kind : slot.covered.kind
 }
 
 /** The episode a row sits at. */
@@ -209,6 +217,76 @@ describe('the countdown', () => {
     expect(film?.slot.open).toBe(false)
     expect(payload).not.toContain('Film: Red')
     expect(payload).not.toContain('A Faint Memory')
+  })
+})
+
+describe('the home page warning', () => {
+  it('warns once the next run starts within the row, and not a step before', () => {
+    // Episode 93 is mixed, which is not a run to skip.
+    expect(fillerAheadOf(ep(92))).toBeNull()
+
+    const ahead = fillerAheadOf(ep(93))
+
+    expect(ahead?.next).toStrictEqual({ first: 98, last: 99, distance: 5 })
+    expect(ahead?.cells).toStrictEqual([
+      { episode: 93, kind: 'mixed' },
+      { episode: 94, kind: null },
+      { episode: 95, kind: null },
+      { episode: 96, kind: null },
+      { episode: 97, kind: null },
+      { episode: 98, kind: 'filler' },
+    ])
+  })
+
+  it('warns inside a run to skip', () => {
+    expect(fillerAheadOf(ep(135))?.inRun).toStrictEqual({
+      resume: 144,
+      distance: 9,
+    })
+  })
+
+  it('is never there for a chapter reader, or with no bookmark', () => {
+    expect(fillerAheadOf(null)).toBeNull()
+    expect(fillerAheadOf({ mode: 'chapter', chapter: 50 })).toBeNull()
+    expect(fillerAheadOf(ep(LAST_AIRED))).toBeNull()
+  })
+
+  it('warns of a run of recaps alone, as the filler page skips it', () => {
+    const ahead = fillerAheadOf(ep(452))
+
+    expect(ahead?.next).toStrictEqual({ first: 457, last: 458, distance: 5 })
+    expect(ahead?.cells.at(-1)).toStrictEqual({ episode: 457, kind: 'recap' })
+  })
+
+  it('agrees with the filler page’s countdown at every aired episode', () => {
+    for (let episode = 1; episode <= LAST_AIRED; episode += 1) {
+      const bookmark = ep(episode)
+      const countdown = countdownOf(bookmark, {
+        locale: 'en',
+        sees: reveal(bookmark).sees,
+      })
+      const close =
+        countdown !== null
+        && (countdown.inRun !== null
+          || (countdown.next !== null && countdown.next.distance <= 5))
+
+      expect(
+        fillerAheadOf(bookmark),
+        `episode ${String(episode)}`,
+      ).toStrictEqual(
+        close ?
+          {
+            cells: countdown.cells.map((cell) => {
+              const kind = cell.slot === null ? null : entryKind(cell.slot)
+              return { episode: cell.episode, kind }
+            }),
+            here: countdown.here,
+            inRun: countdown.inRun,
+            next: countdown.next,
+          }
+        : null,
+      )
+    }
   })
 })
 

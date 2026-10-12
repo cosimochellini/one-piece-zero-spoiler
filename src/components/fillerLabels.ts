@@ -52,7 +52,20 @@ export function sentenceOf(
   countdown: Countdown,
   { aired, mode }: { aired: number; mode: BookmarkMode },
 ): string {
-  const { inRun, next } = countdown
+  return (
+    runSentenceOf(t, countdown, mode) ?? t('filler.countdown.none', { aired })
+  )
+}
+
+/**
+ * How far the next run to skip is, or how far the end of the one the reader
+ * is in: `null` when there is neither.
+ */
+export function runSentenceOf(
+  t: Translate,
+  { inRun, next }: Pick<Countdown, 'inRun' | 'next'>,
+  mode: BookmarkMode,
+): null | string {
   if (inRun !== null) {
     return inRun.distance === 1 ?
         t('filler.countdown.inRunOne')
@@ -66,7 +79,7 @@ export function sentenceOf(
   }
 
   if (next === null) {
-    return t('filler.countdown.none', { aired })
+    return null
   }
 
   return next.distance === 1 ?
