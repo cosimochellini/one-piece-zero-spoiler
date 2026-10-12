@@ -1633,6 +1633,31 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('absalom', [[917, 925]])).toHaveLength(1)
   })
 
+  it('topples Kumashi only from episode 360, when Sogeking salts him', () => {
+    expect(walkStages('kumashi', [[360, 465]])).toHaveLength(1)
+  })
+
+  it('lays Shusui across Ryuma’s ashes only from episode 362', () => {
+    expect(walkStages('ryuma', [[362, 467]])).toHaveLength(1)
+  })
+
+  it.each([
+    'victoria-cindry',
+    'oars',
+    'buhichuck',
+    'john',
+    'jigoro',
+    'hildon',
+    'cerberus-thriller-bark',
+  ])('stills %s only from episode 373, Shadow’s Asgard', (id) => {
+    expect(walkStages(id, [[373, 481]])).toHaveLength(1)
+  })
+
+  it('stills Gyoro, Nin and Bao at 373, pinned at their record’s chapter', () => {
+    // Chapter 481 is below the record's 486, so the stage is pinned at 486.
+    expect(walkStages('gyoro-nin-and-bao', [[373, 486]])).toHaveLength(1)
+  })
+
   it('lays Monet’s wing on the ground only from episode 620', () => {
     expect(walkStages('monet', [[620, 694]])).toHaveLength(1)
   })

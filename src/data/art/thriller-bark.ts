@@ -826,4 +826,204 @@ export const thrillerBarkRedrawn: Redrawings = {
       ],
     },
   ],
+
+  // The same bear toppled onto his side, cap, mask and all, with nothing left
+  // to stand him up: Sogeking shoves a ball of salt into his mouth at 360
+  // (ch. 465), and the borrowed shadow leaves him.
+  'kumashi': [
+    {
+      episode: 360,
+      chapter: 465,
+      value: [
+        ...moved(
+          thrillerBarkArt.kumashi.slice(0, -1),
+          'translate(84 140) rotate(-90) scale(0.8) translate(-80 -105)',
+        ),
+        shadow(84, 184, 64),
+      ],
+    },
+  ],
+
+  // Shusui laid flat across a low heap of ash, a wisp of smoke still rising
+  // from it. At 362 (ch. 467) he loses to Zoro and hands him the sword, Brook's
+  // shadow goes back to Brook, and the body burns to ash.
+  'ryuma': [
+    {
+      episode: 362,
+      chapter: 467,
+      value: [
+        { d: 'M18 156 Q40 136 80 134 Q120 136 142 156', role: 'ambient' },
+        {
+          d: 'M40 148 l4 -3 M62 142 l3 -3 M98 142 l3 -3 M118 148 l4 -3',
+          role: 'soft',
+        },
+        ...moved(
+          thrillerBarkArt.ryuma,
+          'translate(80 126) rotate(64) scale(0.82) translate(-72 -108)',
+        ),
+        { d: 'M84 112 C76 98 92 88 84 72 C78 60 90 50 86 38', role: 'soft' },
+        { d: 'M-4 156 H164', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+
+  // The same stack of plates, and nothing in the air any more: only the one
+  // already broken on the floor. Moria's Shadow's Asgard takes back her
+  // shadow at 373 (ch. 481), and she goes still.
+  'victoria-cindry': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...thrillerBarkArt['victoria-cindry'].slice(0, 5),
+        ...thrillerBarkArt['victoria-cindry'].slice(8, 9),
+        shadow(58, 166, 40),
+      ],
+    },
+  ],
+
+  // The same head and horns tipped over onto the roof he fell across. Moria's
+  // Shadow's Asgard pulls Luffy's shadow out of him at 373 (ch. 481), and he
+  // lies there lifeless.
+  'oars': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...moved(
+          thrillerBarkArt.oars.slice(0, 3),
+          'translate(74 108) rotate(-80) scale(0.8) translate(-80 -112)',
+        ),
+        ...thrillerBarkArt.oars.slice(3, 6),
+        ...thrillerBarkArt.oars.slice(7),
+      ],
+    },
+  ],
+
+  // The same trophy on its nail, its two sabres fallen to the floor beneath
+  // it: a hunting trophy again once Moria's Shadow's Asgard takes back its
+  // shadow at 373 (ch. 481).
+  'buhichuck': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...thrillerBarkArt.buhichuck.slice(0, 10),
+        ...moved(
+          thrillerBarkArt.buhichuck.slice(10),
+          'translate(80 172) scale(1 0.3) translate(-80 -158)',
+        ),
+        { d: 'M-4 182 H164', role: 'ambient', dashed: true },
+      ],
+    },
+  ],
+
+  // The same coat laid on its side with the swords still in it, and the
+  // bottle tipped over beside it. Moria's Shadow's Asgard takes back his
+  // shadow at 373 (ch. 481).
+  'john': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...moved(
+          thrillerBarkArt.john.slice(0, 9),
+          'translate(62 140) rotate(-86) scale(0.7) translate(-80 -100)',
+        ),
+        ...moved(
+          thrillerBarkArt.john.slice(9, 10),
+          'translate(132 176) rotate(-80) scale(0.6) translate(-137 -143)',
+        ),
+        shadow(80, 186, 66),
+      ],
+    },
+  ],
+
+  // Their things on the floor and nobody to wake: the bow lying flat with its
+  // arrow, Bao's bucket on its side in their colour and Gyoro's sword. Moria's
+  // Shadow's Asgard takes back their shadows at 373 (ch. 481); the record
+  // opens at chapter 486, so the stage is pinned there, like its status.
+  'gyoro-nin-and-bao': [
+    {
+      episode: 373,
+      chapter: 486,
+      value: [
+        ...moved(
+          thrillerBarkArt['gyoro-nin-and-bao'].slice(0, 4),
+          'translate(76 144) scale(0.85 0.4) rotate(-90) translate(-60 -95)',
+        ),
+        ...moved(
+          thrillerBarkArt['gyoro-nin-and-bao']
+            .slice(6, 8)
+            .map((stroke, index) =>
+              index === 0 ? { ...stroke, role: 'accent' } : stroke,
+            ),
+          'translate(-36 12) rotate(-90 76 156)',
+        ),
+        ...moved(
+          thrillerBarkArt['gyoro-nin-and-bao'].slice(9, 11),
+          'translate(-8 30) rotate(49 128 148)',
+        ),
+        shadow(80, 186, 66),
+      ],
+    },
+  ],
+
+  // The same three sabres lying flat on the ground, with no wind over them.
+  // Moria's Shadow's Asgard pulls Zoro's shadow out of him at 373 (ch. 481).
+  'jigoro': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...moved(
+          thrillerBarkArt.jigoro.slice(0, 2),
+          'translate(-20 6) rotate(120 54 154)',
+        ),
+        ...moved(
+          thrillerBarkArt.jigoro.slice(2, 4),
+          'translate(-70 -6) rotate(60 104 154)',
+        ),
+        ...moved(
+          thrillerBarkArt.jigoro.slice(4, 7),
+          'translate(-54 24) rotate(90 82 152)',
+        ),
+        shadow(80, 186, 66),
+      ],
+    },
+  ],
+
+  // The same cape fallen off the branch into a heap on the ground, the bottle
+  // still slung across it. Moria's Shadow's Asgard takes back his shadow at
+  // 373 (ch. 481).
+  'hildon': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...thrillerBarkArt.hildon.slice(0, 1),
+        ...moved(
+          thrillerBarkArt.hildon.slice(2),
+          'translate(80 156) rotate(-84) scale(0.78) translate(-80 -90)',
+        ),
+        shadow(80, 184, 66),
+      ],
+    },
+  ],
+
+  // The same dog on its side, legs out and its three heads down. Moria's
+  // Shadow's Asgard takes back its shadow at 373 (ch. 481).
+  'cerberus-thriller-bark': [
+    {
+      episode: 373,
+      chapter: 481,
+      value: [
+        ...moved(
+          thrillerBarkArt['cerberus-thriller-bark'].slice(0, -1),
+          'translate(80 150) rotate(90) scale(0.8) translate(-70 -110)',
+        ),
+        shadow(80, 186, 66),
+      ],
+    },
+  ],
 }
