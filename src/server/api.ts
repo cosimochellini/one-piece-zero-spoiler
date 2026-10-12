@@ -27,6 +27,7 @@ import {
   peekWaypoint,
 } from './archive/peek.server'
 import { placesPage } from './archive/places.server'
+import { sagaLabels } from './archive/sagaLabels.server'
 
 /**
  * The archive's only door.
@@ -162,6 +163,12 @@ export const loadPlaces = createServerFn()
 export const loadFiller = createServerFn()
   .validator(located)
   .handler(({ data }) => fillerPage(readBookmark(), data.locale))
+
+// The one function that does not read the bookmark: the dialog that sets it
+// names the saga of any number typed into it, past the bookmark too.
+export const loadSagaLabels = createServerFn()
+  .validator(located)
+  .handler(({ data }) => sagaLabels(data.locale))
 
 export const liftFiller = createServerFn()
   .validator(handled)

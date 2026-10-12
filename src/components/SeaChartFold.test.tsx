@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeAll, beforeEach, describe, expect, it } from 'vitest'
 
 import { ep, renderWithProviders } from '~/test/providers'
 
@@ -9,6 +9,12 @@ import { SeaChartFold } from './SeaChartFold'
 const FIRST_BAND = 0
 
 describe('SeaChartFold', () => {
+  // The mark fetches the dialog's code on demand. Fetched once here, so the
+  // first test does not spend its wait on transforming the module.
+  beforeAll(async () => {
+    await import('./BookmarkDialog')
+  })
+
   beforeEach(() => {
     // The dialog writes the bookmark to `document.cookie`, and jsdom keeps one
     // document for the whole file, so a value left behind would let a later
@@ -88,9 +94,12 @@ describe('SeaChartFold', () => {
 
     await user.click(cta)
 
-    expect(
-      screen.getByRole('dialog', { name: 'Where are you up to?' }),
-    ).toBeVisible()
+    // The dialog's code is loaded on demand, so it appears a tick later.
+    const shown = await screen.findByRole('dialog', {
+      name: 'Where are you up to?',
+    })
+
+    expect(shown).toBeVisible()
     expect(screen.getAllByRole('dialog')).toHaveLength(1)
     expect(cta).toHaveAttribute('aria-expanded', 'true')
 

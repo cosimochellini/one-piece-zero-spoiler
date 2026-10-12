@@ -81,7 +81,8 @@ export const color = stylex.defineVars({
   ink2: 'oklch(84% 0.015 250)',
   ink: 'oklch(95% 0.01 250)',
   // Lantern gold. It draws the sailed part of the route, the horizon line, the
-  // active locale, focus rings and one verb per veil. Never a large fill.
+  // active locale, focus rings and one verb per veil. Never a large fill, with
+  // one exception: the Save button of the bookmark dialog (owner, 2026-10-12).
   accent: 'oklch(84% 0.16 88)',
   // A hard contract. Any surface painted `accent` that carries text sets its
   // colour to this, never to a hardcoded dark.

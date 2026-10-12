@@ -5,8 +5,10 @@ import type { ReactElement } from 'react'
 import { SiteBar } from '~/components/SiteBar'
 import { SiteFooter } from '~/components/SiteFooter'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
-import { isLocale } from '~/i18n/locales'
+import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
+import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
+import { loadSagaLabels } from '~/server/api'
 import { color, font, rule, space, text, z } from '~/styles/tokens.stylex'
 
 /**
@@ -46,29 +48,53 @@ export const Route = createFileRoute('/$locale')({
   component: LocaleLayout,
 })
 
+// One request per locale for the life of the page: the table names sagas,
+// and those do not move with the bookmark.
+const sagaTables = new Map<Locale, Promise<SagaTable>>()
+
+/** The saga table for the bookmark dialog, asked for once per locale. */
+async function sagaTableIn(locale: Locale): Promise<SagaTable> {
+  const asked = sagaTables.get(locale)
+  if (asked !== undefined) {
+    return asked
+  }
+
+  const table = loadSagaLabels({ data: { locale } })
+  sagaTables.set(locale, table)
+  try {
+    return await table
+  } catch (error) {
+    // A failed request is not kept, so the next opening asks again.
+    sagaTables.delete(locale)
+    throw error
+  }
+}
+
 function LocaleLayout(): ReactElement {
   const { locale } = Route.useRouteContext()
   const dictionary = getDictionary(locale)
 
   return (
     <LocaleProvider locale={locale}>
-      {/*
+      <SagaTableContext value={sagaTableIn}>
+        {/*
         Visually hidden until focused, which is the only way a keyboard reader
         gets past the masthead without tabbing through the language switch on
         every page.
       */}
-      <a
-        href="#content"
-        {...stylex.props(styles.skip)}
-      >
-        {translate(dictionary, 'nav.skip')}
-      </a>
+        <a
+          href="#content"
+          {...stylex.props(styles.skip)}
+        >
+          {translate(dictionary, 'nav.skip')}
+        </a>
 
-      <div {...stylex.props(styles.shell)}>
-        <SiteBar />
-        <Outlet />
-        <SiteFooter />
-      </div>
+        <div {...stylex.props(styles.shell)}>
+          <SiteBar />
+          <Outlet />
+          <SiteFooter />
+        </div>
+      </SagaTableContext>
     </LocaleProvider>
   )
 }

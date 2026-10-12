@@ -47,9 +47,11 @@ const WORST_CHUNKS = 5
  * The ceiling on everything the browser downloads to run the site. Today's
  * build is ~449 KB, of which ~318 KB is React itself; the archive alone was
  * 599 KB of the 1,049 KB build this replaced. The headroom is for ordinary
- * growth, not for a saga.
+ * growth, not for a saga. Raised from 520 KB to 530 KB on 2026-10-12, when
+ * main stood at ~517 KB and the bookmark dialog redesign added ~4.5 KB of its
+ * own code.
  */
-export const MAX_CLIENT_BYTES = 520_000
+export const MAX_CLIENT_BYTES = 530_000
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'
