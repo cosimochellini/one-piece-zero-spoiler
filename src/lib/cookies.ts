@@ -50,17 +50,22 @@ export function parseCookieHeader(
  * latency. The one cookie the server does set, when a shared link names a
  * bookmark, carries the same attributes so the dialog can overwrite it.
  * `SameSite=Lax` still keeps them off cross-site requests.
+ *
+ * With no `maxAgeSeconds` the cookie has no `Max-Age` and ends with the
+ * browser session, which is what the onboarding's trial point wants.
  */
 export function serializeCookie(
   name: string,
   value: string,
-  maxAgeSeconds: number,
+  maxAgeSeconds?: number,
 ): string {
   return [
     `${name}=${encodeURIComponent(value)}`,
     'Path=/',
     'SameSite=Lax',
-    `Max-Age=${String(maxAgeSeconds)}`,
+    ...(maxAgeSeconds === undefined ?
+      []
+    : [`Max-Age=${String(maxAgeSeconds)}`]),
   ].join('; ')
 }
 
@@ -75,7 +80,7 @@ export function serializeCookie(
 export function writeCookie(
   name: string,
   value: string,
-  maxAgeSeconds: number,
+  maxAgeSeconds?: number,
 ): void {
   if (typeof document === 'undefined') {
     return

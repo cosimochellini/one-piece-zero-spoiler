@@ -4,6 +4,7 @@ import type { ReactElement } from 'react'
 
 import { SiteBar } from '~/components/SiteBar'
 import { SiteFooter } from '~/components/SiteFooter'
+import { TrialStrip } from '~/components/TrialStrip'
 import { LocaleProvider } from '~/i18n/LocaleProvider'
 import { isLocale, type Locale } from '~/i18n/locales'
 import { getDictionary, translate } from '~/i18n/translate'
@@ -90,7 +91,11 @@ function LocaleLayout(): ReactElement {
         </a>
 
         <div {...stylex.props(styles.shell)}>
-          <SiteBar />
+          {/* One row: the trial strip, when there is one, belongs to the bar. */}
+          <div>
+            <SiteBar />
+            <TrialStrip />
+          </div>
           <Outlet />
           <SiteFooter />
         </div>

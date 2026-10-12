@@ -19,19 +19,45 @@ viene dopo.
 
 Questa pagina descrive la homepage di chi **ha un segnalibro**.
 
-Chi **non ha un segnalibro** vede ancora la homepage di prima:
+Chi **non ha un segnalibro** vede un’altra pagina, pensata per far capire a cosa
+serve il sito provandolo. Vale per chi è a metà serie e per chi non ha ancora
+iniziato.
 
-- il disegno notturno in cima (mare, luna e Thousand Sunny), con il titolo e il
-  tasto per scegliere il segnalibro;
-- la mappa con tutte le voci principali della storia, tutte nella nebbia, e la
-  riga “Nessun segnalibro” in cima;
-- i contatori “visibili”, “nella nebbia” e “in totale”;
-- le tre domande in fondo (“Anime o manga?”, “Dove viene salvato il
+- In cima il titolo e una riga che spiega cosa fa il cursore.
+- Sotto, il **cursore**: va dall’episodio 1 al 61, cioè tutto East Blue. Mostra
+  il punto in grande e il nome della saga in cui cade. Resta fermo in alto
+  mentre scorri la pagina. Un interruttore lo fa contare per capitolo (da 1
+  a 100) invece che per episodio, restando allo stesso punto della storia.
+- Sotto il cursore, **East Blue che si sveglia**: le saghe, i loro protagonisti
+  (la stessa lista scritta a mano di “Chi conta adesso”), i luoghi e la Going
+  Merry. Quello che il cursore ha raggiunto è visibile, con il disegno e i fatti
+  di quel punto: epiteto, ruolo, affiliazione, taglia. Quello che viene dopo è
+  nella nebbia, con il solo punto in cui si apre.
+- Poi **“Dopo East Blue”**: qualche sagoma nella nebbia, senza nome, e il conto
+  delle voci che restano coperte.
+- In fondo le tre domande (“Anime o manga?”, “Dove viene salvato il
   segnalibro?”, “Posso vedere una voce nascosta?”).
 
-Ogni voce della mappa si può aprire con “Mostra comunque”. Appena scegli un
-segnalibro la pagina passa alla homepage descritta qui sotto. Se lo cancelli
-(“Cancella il segnalibro”) torna la mappa.
+Per salvare il punto ci sono tre modi:
+
+- **“Sono qui”**, accanto al cursore, salva il punto del cursore.
+- **“Sono più avanti”** apre nella pagina gli stessi campi della finestra del
+  segnalibro, per chi è oltre East Blue.
+- **“Inizio ora · EP 1”** salva l’episodio 1, per chi parte da zero.
+
+**La prova.** Toccare una scheda visibile apre la sua pagina al punto del
+cursore, senza salvarlo. Il punto resta in un cookie che di solito si cancella
+quando chiudi il browser, e una striscia sotto la barra dice “Stai provando
+l’episodio 12” con “Salva questo punto” ed “Esci dalla prova”. Durante la prova
+la homepage resta questa, con il cursore fermo sul punto di prova. Una prova
+vale solo dentro East Blue.
+
+**Il benvenuto.** Appena salvi il segnalibro da questa pagina, la homepage con
+il segnalibro mostra una volta sola il blocco “Cosa puoi fare ora”, con i link a
+Personaggi, Luoghi, Frutti del diavolo e Episodi filler. Non torna al reload.
+
+Chi ha già un segnalibro non vede più questa pagina. Se lo cancella (“Cancella
+il segnalibro”) torna il cursore.
 
 I motori di ricerca non hanno un segnalibro, ma il sito li tratta come se
 avessero visto tutto, quindi indicizzano la homepage con il segnalibro.
@@ -95,9 +121,9 @@ I protagonisti della saga citati nelle storie del blocco “Appena successo”.
 **Quando cambi il segnalibro**, la pagina si aggiorna subito sul nuovo punto:
 saga, storie e personaggi.
 
-**Chi arriva per la prima volta**, senza segnalibro, vede la mappa nella nebbia
-descritta sopra, non questa pagina. Il resto del sito resta nella nebbia finché
-il segnalibro non c’è.
+**Chi arriva per la prima volta**, senza segnalibro, vede il cursore su East
+Blue descritto sopra, non questa pagina. Il resto del sito resta nella nebbia
+finché il segnalibro non c’è.
 
 **Chi legge il manga** vede lo stesso contenuto. Le storie però sono datate per
 episodio dell’anime, quindi il capitolo va tradotto in un episodio. La
@@ -120,9 +146,12 @@ da mostrare, la sezione non compare.
   Non si dice nemmeno “la prossima saga inizia tra 5 episodi”.
 - **Con il segnalibro, in homepage non c’è nebbia.** Tutto quello che si vede è
   già stato visto o letto, quindi non c’è niente da coprire né un tasto “Mostra
-  comunque”. La nebbia c’è solo nella mappa di chi non ha un segnalibro.
+  comunque”. La nebbia c’è solo nella pagina di chi non ha un segnalibro.
 - **Quello che viene dopo il segnalibro non arriva al browser.** Come nel resto
   del sito: la pagina che ricevi contiene solo il passato.
+- **Senza segnalibro arriva East Blue, e niente oltre.** La pagina del cursore
+  contiene East Blue fino all’episodio 61 e al capitolo 100, tutti e due. Oltre,
+  solo sagome senza nome e un numero. Un test controlla che sia così.
 - **Due lingue.** Ogni testo nuovo va scritto in italiano e in inglese, seguendo
   le regole di scrittura del progetto (in italiano si dice “saga”, mai “arco”).
 

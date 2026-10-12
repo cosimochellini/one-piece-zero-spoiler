@@ -11,6 +11,7 @@ import { shipDossierOf } from '~/data/places'
 import { reveal } from '~/data/reveal'
 import type { Entity, Timeline } from '~/data/types'
 import { LOCALES } from '~/i18n/locales'
+import { DEMO_LAST_CHAPTER, DEMO_LAST_EPISODE } from '~/lib/progress/bounds'
 import {
   type Bookmark,
   CHAPTER_CEILING,
@@ -28,10 +29,10 @@ import type {
 
 import { handleOf } from './handle.server'
 import { homePage, landingPage } from './home.server'
+import { onboardingPage } from './onboarding.server'
 import {
   characterPage,
   charactersPage,
-  chartPage,
   nearbyPage,
   routePosition,
   shelvesPage,
@@ -247,38 +248,68 @@ describe('the slice of the archive a page is given', () => {
     saysNothing(page, null)
   })
 
-  it('lands a reader with no bookmark on the chart, and one with a bookmark home', () => {
-    const unset = landingPage(null, 'en')
-    const set = landingPage(ep(1), 'en')
+  it('lands a visitor with no bookmark, or on a trial, on the onboarding', () => {
+    const trial = ep(12)
 
-    expect(unset).toStrictEqual({ chart: chartPage(null, 'en') })
-    expect(set).toStrictEqual({ home: homePage(ep(1), 'en') })
+    expect(landingPage(null, null, 'en')).toStrictEqual({
+      onboarding: onboardingPage(null, 'en'),
+    })
+    expect(landingPage(trial, trial, 'en')).toStrictEqual({
+      onboarding: onboardingPage(trial, 'en'),
+    })
+    expect(landingPage(ep(1), null, 'en')).toStrictEqual({
+      home: homePage(ep(1), 'en'),
+    })
   })
 
-  it('splits the chart at the reader’s bookmark, open first', () => {
-    const chart = chartPage(ep(500), 'en')
+  it('tells the onboarding nothing past East Blue, in either unit', () => {
+    for (const locale of LOCALES) {
+      const page = onboardingPage(null, locale)
 
-    expect(chart.open.length).toBeGreaterThan(0)
-    expect(chart.covered.length).toBeGreaterThan(0)
-    expect(chart.open.length + chart.covered.length).toBe(chart.filed)
+      expect(page.cast.length).toBeGreaterThan(0)
 
-    for (const waypoint of chart.open) {
-      expect(waypoint.revealedAtEpisode).toBeLessThanOrEqual(500)
+      saysNothing(page, ep(DEMO_LAST_EPISODE))
+      saysNothing(page, { mode: 'chapter', chapter: DEMO_LAST_CHAPTER })
     }
-    for (const covered of chart.covered) {
-      expect(covered.revealedAtEpisode).toBeGreaterThan(500)
+  })
+
+  it('wakes East Blue up on the onboarding, and only covers past it', () => {
+    const page = onboardingPage(null, 'en')
+    const entries = [page.arcs, page.cast, page.places].flat()
+    const steps = entries.flatMap((entry) => {
+      return [
+        entry.drawings,
+        entry.affiliation,
+        entry.epithet,
+        entry.bounty,
+      ].flat()
+    })
+
+    expect(page.arcs.map((arc) => arc.id)).toContain('romance-dawn')
+    expect(page.arcs.map((arc) => arc.id)).toContain('loguetown')
+    expect(page.cast.map((entry) => entry.id)).toContain('roronoa-zoro')
+    expect(page.places.map((entry) => entry.id)).toContain('going-merry')
+    expect(page.chapterAt).toHaveLength(DEMO_LAST_EPISODE)
+
+    for (const gated of [entries, steps].flat()) {
+      expect(gated.revealedAtEpisode).toBeLessThanOrEqual(DEMO_LAST_EPISODE)
+      expect(gated.revealedAtChapter).toBeLessThanOrEqual(DEMO_LAST_CHAPTER)
+    }
+    for (const covered of page.tail) {
+      expect(Object.keys(covered)).toHaveLength(4)
       expect(covered).not.toHaveProperty('id')
       expect(covered).not.toHaveProperty('name')
+      expect(covered.revealedAtEpisode).toBeGreaterThan(DEMO_LAST_EPISODE)
     }
+
+    expect(page.fogged).toBeGreaterThan(page.tail.length)
   })
 
-  it('tells a reader with no bookmark nothing but the thresholds', () => {
-    const chart = chartPage(null, 'en')
+  it('ends East Blue where the next arc starts', () => {
+    const next = onFile('reverse-mountain')
 
-    expect(chart.open).toHaveLength(0)
-    expect(chart.covered).toHaveLength(chart.filed)
-
-    saysNothing(chart, null)
+    expect(next.revealedAtEpisode).toBe(DEMO_LAST_EPISODE + 1)
+    expect(next.revealedAtChapter).toBe(DEMO_LAST_CHAPTER + 1)
   })
 
   it('puts a reader at the first episode in the arc, not the saga', () => {
@@ -647,9 +678,10 @@ describe('the slice of the archive a page is given', () => {
   })
 
   it('never leaks a name through a handle', () => {
-    const covers = [placesPage, chartPage].flatMap(
-      (page) => page(null, 'en').covered,
-    )
+    const covers = [
+      ...placesPage(null, 'en').covered,
+      ...onboardingPage(null, 'en').tail,
+    ]
     for (const covered of covers) {
       expect(handleSpace.has(covered.handle)).toBe(false)
     }

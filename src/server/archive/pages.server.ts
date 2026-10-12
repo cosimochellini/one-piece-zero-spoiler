@@ -3,7 +3,6 @@ import {
   bookSections,
   dossierOf as characterDossierOf,
   characters,
-  chart,
   chartWith,
   featuredCharacters,
   getCharacter,
@@ -15,7 +14,6 @@ import type { Bookmark } from '~/lib/progress/episode'
 import type {
   CharacterDetail,
   CharacterView,
-  ChartView,
   CoveredRecord,
   DocumentHead,
   RecordView,
@@ -27,13 +25,7 @@ import type {
 
 import { chronicleOf } from './chronicle.server'
 import { headFor, type HeadKeys } from './head.server'
-import {
-  characterOf,
-  factsOf,
-  recordOf,
-  searchableOf,
-  waypointOf,
-} from './project.server'
+import { characterOf, factsOf, recordOf, searchableOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
@@ -51,16 +43,6 @@ import { type Reader, readerFor } from './reader.server'
  * Each makes one reader of it (`./reader.server`), which orders, splits and
  * covers in the reader's unit, so a page only says what it holds.
  */
-
-/** The landing chart: arcs, places, ships and the characters in evidence. */
-export function chartPage(bookmark: Bookmark, locale: Locale): ChartView {
-  const { covered, open, total } = readerFor(bookmark, locale).split(
-    chart,
-    waypointOf,
-  )
-
-  return { open, covered, filed: total }
-}
 
 /** The fold of the signal book: the crests, and how much is behind them. */
 export interface CharactersPage {

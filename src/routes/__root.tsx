@@ -10,7 +10,7 @@ import { type ReactElement, type ReactNode, useEffect } from 'react'
 
 import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
-import { readBookmark } from '~/lib/progress/readBookmark'
+import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
@@ -26,7 +26,12 @@ export const Route = createRootRoute({
   // Runs on the server for a document request and on the client for a
   // navigation, and `readBookmark` has a branch for each. Reading the bookmark
   // this early is what makes the first painted HTML already correct.
-  beforeLoad: () => ({ initialBookmark: readBookmark() }),
+  beforeLoad: () => {
+    return {
+      initialBookmark: readBookmark(),
+      initialTrial: readTrial() !== null,
+    }
+  },
   head: () => ({
     meta: [
       // eslint-disable-next-line unicorn/text-encoding-identifier-case -- HTML requires this attribute to be an ASCII case-insensitive match for "utf-8"; `utf8` is a valid encoding label everywhere else, but not here.
@@ -88,11 +93,14 @@ export const Route = createRootRoute({
 })
 
 function RootComponent(): ReactElement {
-  const { initialBookmark } = Route.useRouteContext()
+  const { initialBookmark, initialTrial } = Route.useRouteContext()
 
   return (
     <RootDocument>
-      <BookmarkProvider initialBookmark={initialBookmark}>
+      <BookmarkProvider
+        initialBookmark={initialBookmark}
+        initialTrial={initialTrial}
+      >
         <Outlet />
       </BookmarkProvider>
     </RootDocument>

@@ -36,6 +36,8 @@ export function ep(episode: number): Bookmark {
 export interface RenderOptions {
   bookmark?: Bookmark
   locale?: Locale
+  /** Whether `bookmark` is a trial point rather than a saved one. */
+  trial?: boolean
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   path?: string
 }
@@ -59,7 +61,7 @@ export interface RenderOptions {
  */
 export function renderWithProviders(
   ui: ReactElement,
-  { locale = 'en', bookmark = null, path }: RenderOptions = {},
+  { locale = 'en', bookmark = null, path, trial = false }: RenderOptions = {},
 ): RenderResult & { router: TestRouter } {
   const router = contextRouter([path ?? `/${locale}`])
 
@@ -68,7 +70,10 @@ export function renderWithProviders(
     ...render(
       <RouterContextProvider router={router}>
         <LocaleProvider locale={locale}>
-          <BookmarkProvider initialBookmark={bookmark}>
+          <BookmarkProvider
+            initialBookmark={bookmark}
+            initialTrial={trial}
+          >
             {/*
               A component that reads a streamed loader slot with `use()`
               suspends once even on a promise that has already resolved, so

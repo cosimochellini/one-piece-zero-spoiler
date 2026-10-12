@@ -23,11 +23,37 @@ export const itDictionary: Dictionary = {
   'nav.label': 'Pagine',
 
   'hero.headline': 'La wiki di One Piece senza spoiler',
-  'hero.lede':
-    'Non hai ancora impostato il segnalibro, quindi ogni voce è nella nebbia. Impostalo dalla barra in alto: un episodio dell’anime, una stagione con il suo episodio o un capitolo del manga. Le voci fino a quel punto diventano visibili. Quelle dopo restano nella nebbia, ma puoi comunque mostrarne una.',
   'hero.setBookmark': 'Imposta il segnalibro',
   'hero.changeBookmark': 'Cambia segnalibro · {threshold}',
-  'hero.explore': 'Vai ai personaggi',
+
+  'onboarding.lede':
+    'Sposta il cursore lungo East Blue. Le voci fino a quel punto sono visibili, quelle dopo restano nella nebbia. Quando imposti il segnalibro, ogni pagina della wiki funziona così.',
+  'onboarding.dial': 'Punto della storia',
+  'onboarding.unitEpisode': 'Episodio',
+  'onboarding.unitChapter': 'Capitolo',
+  'onboarding.here': 'Sono qui',
+  'onboarding.further': 'Sono più avanti',
+  'onboarding.start': 'Inizio ora · EP 1',
+  'onboarding.arcs': 'Saghe',
+  'onboarding.cast': 'Personaggi',
+  'onboarding.places': 'Luoghi e navi',
+  'onboarding.tryHint':
+    'Apri una voce per vederne la pagina a questo punto. Il segnalibro non viene salvato.',
+  'onboarding.tailTitle': 'Dopo East Blue',
+  'onboarding.tail':
+    'Altre {count} voci restano nella nebbia finché il segnalibro non le raggiunge.',
+
+  'trial.episode':
+    'Stai provando l’episodio {threshold}. Non viene salvato niente.',
+  'trial.chapter':
+    'Stai provando il capitolo {threshold}. Non viene salvato niente.',
+  'trial.save': 'Salva questo punto',
+  'trial.leave': 'Esci dalla prova',
+
+  'welcome.title': 'Cosa puoi fare ora',
+  'welcome.lede':
+    'Il segnalibro è salvato. Ogni pagina mostra quello che hai già raggiunto e tiene il resto nella nebbia.',
+  'welcome.dismiss': 'Chiudi',
 
   'home.point.episode': 'Episodio {threshold}',
   'home.point.season': 'Stagione {season} · episodio {episode}',
@@ -88,23 +114,16 @@ export const itDictionary: Dictionary = {
   'chart.hereSet.season': 'Sei qui · {threshold}',
   'chart.hereSet.chapter': 'Sei qui · capitolo {threshold}',
   'chart.hereUnset': 'Nessun segnalibro · è tutto nella nebbia',
-  'chart.title': 'Le voci principali, nell’ordine della storia',
-  'chart.foggedDescription.episode': 'Una voce dell’episodio {threshold}.',
-  'chart.foggedDescription.season': 'Una voce di {threshold}.',
-  'chart.foggedDescription.chapter': 'Una voce del capitolo {threshold}.',
-  'legend.open': 'visibili',
-  'legend.covered': 'nella nebbia',
-  'legend.filed': 'in totale',
 
   'faq.animeQ': 'Anime o manga?',
   'faq.animeA':
     'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
   'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
   'faq.bookmarkA':
-    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci nascoste non sono nella pagina che ricevi. Non serve un account e non c’è nessun tracciamento.',
+    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
-    'Sì, premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
+    'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',
