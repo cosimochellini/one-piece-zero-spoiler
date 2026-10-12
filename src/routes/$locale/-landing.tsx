@@ -1,6 +1,6 @@
 /**
- * The two landings: the chart for a reader with no bookmark, the home page
- * for one with a bookmark.
+ * The two landings: the onboarding for a visitor with no bookmark, the home
+ * page for a reader with one.
  *
  * A sibling of the route module rather than a shared component, because it
  * is only ever this page; the leading `-` keeps the file out of the
@@ -13,10 +13,8 @@ import type { ReactElement } from 'react'
 import { HomeCast } from '~/components/HomeCast'
 import { HomeFold } from '~/components/HomeFold'
 import { HomeMoreStories, HomeStories } from '~/components/HomeStories'
-import {
-  SeaChartLanding,
-  type SeaChartLandingProps,
-} from '~/components/SeaChartLanding'
+import { HomeWelcome } from '~/components/HomeWelcome'
+import { OnboardingLanding } from '~/components/OnboardingLanding'
 import type { HomeView, LandingView } from '~/lib/view/records'
 import { settleStyles } from '~/styles/settle'
 import { color, rule, space } from '~/styles/tokens.stylex'
@@ -25,21 +23,21 @@ import { color, rule, space } from '~/styles/tokens.stylex'
 // next band starts after them rather than landing on top of one.
 const BAND = { fold: 0, stories: 3, cast: 4, more: 5 } as const
 
-/** What the loader sent, and how to lift one waypoint on the chart. */
+/** What the loader sent. */
 export interface LandingPageProps {
   landing: LandingView
-  peek: SeaChartLandingProps['peek']
 }
 
 /**
  * The branch is the loader's, so it moves in the same transition as the data
  * when the bookmark is saved or cleared.
  */
-export function LandingPage({ landing, peek }: LandingPageProps): ReactElement {
-  return 'chart' in landing ?
-      <SeaChartLanding
-        {...landing.chart}
-        peek={peek}
+export function LandingPage({ landing }: LandingPageProps): ReactElement {
+  return 'onboarding' in landing ?
+      <OnboardingLanding
+        // A new start, as when a trial ends, sets the dial again.
+        key={JSON.stringify(landing.onboarding.start)}
+        {...landing.onboarding}
       />
     : <Home {...landing.home} />
 }
@@ -68,6 +66,7 @@ function Home({ before, cast, point, saga, stories }: HomeView): ReactElement {
       />
 
       <div {...stylex.props(styles.below)}>
+        <HomeWelcome />
         <div
           {...stylex.props(settleStyles.band, settleStyles.at(BAND.stories))}
         >

@@ -46,6 +46,17 @@ without one, and the link would redirect to itself. A value outside the dialog's
 ranges, a season without an episode, a chapter next to an episode or a repeated
 parameter leaves the cookie as it was and still drops the parameters.
 
+The landing page for a visitor with no bookmark is the one exception, and its
+limit is fixed. It sends East Blue (episodes 1–61, chapters 1–100) so a dial can
+open and cover those records in the browser as it moves, and nothing past it:
+every record and every dated fact it carries is inside both limits, and past
+them there are only covered records and a count. A test holds the payload to
+that, in both units. An open card on that page links to its record's page on a
+trial: an `opzs_try` cookie with no `Max-Age`, which normally ends when the
+browser closes and counts as the bookmark only while there is no `opzs_ep`. A
+trial past East Blue or in seasons is ignored, so it cannot be used to reach
+anything the dial could not.
+
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has
 already reached, so "Whitebeard" finds Edward Newgate from episode 151, where
@@ -251,10 +262,10 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 - The character shelves on the characters page, one tile with a drawing per
   character below the fold, come from the loader as a promise that is not
   awaited and stream into a `<Suspense>` boundary, so the search field and the
-  main characters load first. The landing page (the fogged chart for a reader
-  with no bookmark, the reader's arc and its stories for one with a bookmark),
-  the places list and a character page are awaited instead: they are the page,
-  and a reader with scripting off should get them in full.
+  main characters load first. The landing page (East Blue under the dial for a
+  visitor with no bookmark, the reader's arc and its stories for one with a
+  bookmark), the places list and a character page are awaited instead: they are
+  the page, and a reader with scripting off should get them in full.
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.

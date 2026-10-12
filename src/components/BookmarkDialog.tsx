@@ -2,11 +2,9 @@ import * as stylex from '@stylexjs/stylex'
 import {
   type ReactElement,
   type RefObject,
-  type SyntheticEvent,
   useEffect,
   useId,
   useRef,
-  useState,
 } from 'react'
 
 import { styles } from '~/components/BookmarkDialog.styles'
@@ -14,12 +12,8 @@ import { NumberField, UnitFields } from '~/components/BookmarkFields'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
-import {
-  type Bookmark,
-  type Draft,
-  draftOf,
-  gradeDraft,
-} from '~/lib/progress/episode'
+import type { Bookmark } from '~/lib/progress/episode'
+import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 
 /** The one thing the dialog owes whoever opened it. */
 export interface BookmarkDialogProps {
@@ -127,28 +121,18 @@ function BookmarkForm({
   onDone,
 }: BookmarkFormProps): ReactElement {
   const { bookmark, setBookmark } = useBookmark()
-  const [draft, setDraft] = useState<Draft>(() => draftOf(bookmark))
-  const [touched, setTouched] = useState(false)
-
-  const graded = gradeDraft(draft)
-  const problem = touched ? graded.problem : null
 
   const commit = (next: Bookmark): void => {
     // `setBookmark` writes the cookie and re-reads the pages, in that order.
     setBookmark(next)
     onDone()
   }
-
-  const save = (event: SyntheticEvent<HTMLFormElement>): void => {
-    event.preventDefault()
-    if (graded.bookmark !== null) {
-      commit(graded.bookmark)
-    }
-  }
+  const { canSave, draft, onBlur, onChange, onRestart, onSubmit, problem } =
+    useBookmarkDraft(bookmark, commit)
 
   return (
     <form
-      onSubmit={save}
+      onSubmit={onSubmit}
       {...stylex.props(styles.form)}
     >
       <DialogHead
@@ -158,26 +142,19 @@ function BookmarkForm({
 
       <UnitFields
         draft={draft}
-        onRestart={(next) => {
-          setDraft(next)
-          setTouched(false)
-        }}
+        onRestart={onRestart}
       />
 
       <NumberField
         draft={draft}
-        onBlur={() => {
-          setTouched(true)
-        }}
-        onChange={(number) => {
-          setDraft({ ...draft, number })
-        }}
+        onBlur={onBlur}
+        onChange={onChange}
         problem={problem}
       />
 
       <Actions
         canForget={bookmark !== null}
-        canSave={graded.bookmark !== null}
+        canSave={canSave}
         onForget={() => {
           commit(null)
         }}

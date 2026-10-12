@@ -1,7 +1,7 @@
 import { createServerFn } from '@tanstack/react-start'
 
 import { isLocale, type Locale } from '~/i18n/locales'
-import { readBookmark } from '~/lib/progress/readBookmark'
+import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 
 import { fillerPage, peekFiller } from './archive/filler.server'
 import {
@@ -24,7 +24,6 @@ import {
   peekFruit,
   peekPort,
   peekRecord,
-  peekWaypoint,
 } from './archive/peek.server'
 import { placesPage } from './archive/places.server'
 import { sagaLabels } from './archive/sagaLabels.server'
@@ -112,7 +111,7 @@ function handled(input: unknown): Handled {
 
 export const loadHome = createServerFn()
   .validator(located)
-  .handler(({ data }) => landingPage(readBookmark(), data.locale))
+  .handler(({ data }) => landingPage(readBookmark(), readTrial(), data.locale))
 
 export const loadCharacters = createServerFn()
   .validator(located)
@@ -173,13 +172,6 @@ export const loadSagaLabels = createServerFn()
 export const liftFiller = createServerFn()
   .validator(handled)
   .handler(({ data }) => peekFiller(data.handle, data.locale) ?? null)
-
-export const liftWaypoint = createServerFn()
-  .validator(handled)
-  .handler(
-    ({ data }) =>
-      peekWaypoint(data.handle, data.locale, readBookmark()) ?? null,
-  )
 
 export const liftCharacter = createServerFn()
   .validator(handled)

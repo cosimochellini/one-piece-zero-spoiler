@@ -8,10 +8,22 @@ import { describeThreshold, type ThresholdSentence } from './threshold'
 
 /** What the provider puts on the context: the bookmark, and how to move it. */
 export interface BookmarkContextValue {
+  /** The point the pages stand at: the saved bookmark, or a trial point. */
   bookmark: Bookmark
+  /**
+   * Stands at a point for this browser session without saving it. Writes the
+   * trial cookie and nothing else: the caller is about to navigate, and the
+   * page it lands on reads the cookie.
+   */
+  enterTrial: (point: NonNullable<Bookmark>) => void
+  /** Drops the trial point and re-reads the pages without it. */
+  leaveTrial: () => void
   /** True while the pages are being re-read for a bookmark that just moved. */
   pending: boolean
+  /** Saves a bookmark, or forgets it with `null`. Ends any trial. */
   setBookmark: (next: Bookmark) => void
+  /** True when `bookmark` is a trial point rather than a saved one. */
+  trial: boolean
 }
 
 export const BookmarkContext = createContext<BookmarkContextValue | null>(null)

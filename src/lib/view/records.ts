@@ -405,18 +405,65 @@ export interface HomeView {
   stories: HomeStory[]
 }
 
-/** The landing chart: the waypoints open to the reader, then the covered. */
-export interface ChartView {
-  covered: CoveredRecord[]
-  filed: number
-  open: WaypointView[]
+/**
+ * A value that holds from one point of the story on, gated like a record:
+ * the onboarding's dial picks the latest step it has reached.
+ */
+export interface Step<T> {
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  value: T
 }
 
 /**
- * The landing page: the chart for a reader with no bookmark, the home page
- * for one with a bookmark.
+ * One East Blue record as the onboarding's dial wakes it: its thresholds,
+ * and every dated fact about it up to the end of East Blue, so the browser
+ * can show it at any point the dial reaches without asking again.
  */
-export type LandingView = { chart: ChartView } | { home: HomeView }
+export interface DemoEntry {
+  /** Who the character is in the story's own words, on every step. */
+  affiliation: Step<string>[]
+  bounty: Step<number>[]
+  /** The record's own drawing first, then any redrawing, each from its step. */
+  drawings: Step<Drawing>[]
+  epithet: Step<string>[]
+  id: string
+  kind: EntityKind
+  name: string
+  revealedAtChapter: number
+  revealedAtEpisode: number
+  role?: string
+}
+
+/**
+ * The landing page for a visitor with no bookmark: East Blue, which the dial
+ * wakes up point by point, and a tail of covered records past it.
+ *
+ * Nothing in it is past the end of East Blue in either unit. The tail says
+ * only what a covered record may, and `fogged` is a count.
+ */
+export interface OnboardingView {
+  /** The arcs of East Blue, in route order. */
+  arcs: DemoEntry[]
+  /** Their leads, in the order they first appear. */
+  cast: DemoEntry[]
+  /** The chapter each East Blue episode reaches, index 0 for episode 1. */
+  chapterAt: number[]
+  /** How many entries of the wiki lie past East Blue. */
+  fogged: number
+  /** East Blue's places and its ship, in the order they first appear. */
+  places: DemoEntry[]
+  /** Where the dial starts: the trial point, if the visitor is on one. */
+  start: Bookmark
+  /** The first few covered records past East Blue, as silhouettes. */
+  tail: CoveredRecord[]
+}
+
+/**
+ * The landing page: the onboarding for a visitor with no bookmark, the home
+ * page for a reader with one.
+ */
+export type LandingView = { home: HomeView } | { onboarding: OnboardingView }
 
 /**
  * The document title and description, resolved on the server.

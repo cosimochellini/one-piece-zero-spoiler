@@ -1,6 +1,11 @@
 import { afterEach, describe, expect, it } from 'vitest'
 
-import { expireCookie, parseCookieHeader, writeCookie } from './cookies'
+import {
+  expireCookie,
+  parseCookieHeader,
+  serializeCookie,
+  writeCookie,
+} from './cookies'
 
 describe('parseCookieHeader', () => {
   it('returns an empty jar for nothing to parse', () => {
@@ -56,5 +61,15 @@ describe('writeCookie', () => {
     expireCookie('probe')
 
     expect(parseCookieHeader(document.cookie).has('probe')).toBe(false)
+  })
+})
+
+describe('serializeCookie', () => {
+  it('sets a Max-Age when given one', () => {
+    expect(serializeCookie('probe', 'kept', 60)).toContain('Max-Age=60')
+  })
+
+  it('leaves Max-Age out for a cookie that ends with the session', () => {
+    expect(serializeCookie('probe', 'kept')).not.toContain('Max-Age')
   })
 })

@@ -10,7 +10,7 @@ import { markedIds } from '~/lib/prose/markers'
 import type { HomeStory, HomeView, LandingView } from '~/lib/view/records'
 
 import { segmentsOf } from './chronicle.server'
-import { chartPage } from './pages.server'
+import { onboardingPage } from './onboarding.server'
 import { characterOf, waypointOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
@@ -24,13 +24,18 @@ import { type Reader, readerFor } from './reader.server'
 const CAST_COUNT = 6
 
 /**
- * The landing page. A reader with no bookmark gets the chart, every waypoint
- * under fog, and is asked to set one; a reader with a bookmark gets the home
- * page at their point.
+ * The landing page. A visitor with no bookmark gets the onboarding, and so
+ * does one on a trial point, with the dial standing at it: a trial is for
+ * opening other pages, and the landing is where it is saved. A reader with a
+ * bookmark gets the home page at their point.
  */
-export function landingPage(bookmark: Bookmark, locale: Locale): LandingView {
-  return bookmark === null ?
-      { chart: chartPage(bookmark, locale) }
+export function landingPage(
+  bookmark: Bookmark,
+  trial: Bookmark,
+  locale: Locale,
+): LandingView {
+  return bookmark === null || trial !== null ?
+      { onboarding: onboardingPage(trial, locale) }
     : { home: homePage(bookmark, locale) }
 }
 
