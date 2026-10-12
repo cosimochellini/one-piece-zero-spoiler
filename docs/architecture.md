@@ -63,19 +63,22 @@ already reached, so "Whitebeard" finds Edward Newgate from episode 151, where
 the epithet opens. Those epithets are checked on the server and sent already
 folded, so an epithet the reader has not reached is not in the browser at all.
 
-The filler guide at `/filler` follows the same rule. It is linked from no other
-page. Its entries live in `src/data/filler.ts` and reach the page as a covered
-row until the reader gets there: the episode number and the kind, never the
-title or the plot. An entry opens at its own episode, or at the one a film or
-special is watched after. A chapter reader has no episode, so an entry opens for
-them at the later of two chapters: the one its canon arc opens at, and the last
-one the anime had adapted when the entry aired. The skip ranges and the strip of
-the whole series are numbers and kinds only, so they are sent at every bookmark.
-So are the saga names, canon and filler, by the owner's choice: a reader finds
-their way by them, and the titles and plots under them still wait. The countdown
-at the top, the reader's episode and the five after it, is built from the same
-rows, so a cell past the bookmark is a covered row like any other. A chapter
-reader gets no countdown, because the manga has no filler.
+The filler guide at `/filler` follows the same rule. It is not in the bar: the
+home page links to it from the welcome card and the filler warning. Its entries
+live in `src/data/filler.ts` and reach the page as a covered row until the
+reader gets there: the episode number and the kind, never the title or the plot.
+An entry opens at its own episode, or at the one a film or special is watched
+after. A chapter reader has no episode, so an entry opens for them at the later
+of two chapters: the one its canon arc opens at, and the last one the anime had
+adapted when the entry aired. The skip ranges and the strip of the whole series
+are numbers and kinds only, so they are sent at every bookmark. So are the saga
+names, canon and filler, by the owner's choice: a reader finds their way by
+them, and the titles and plots under them still wait. The countdown at the top,
+the reader's episode and the five after it, is built from the same rows, so a
+cell past the bookmark is a covered row like any other. A chapter reader gets no
+countdown, because the manga has no filler. The home page's filler warning uses
+the same runs and cells, as an episode and a kind each, and shows only when the
+reader is inside a run or the next one starts within the six cells.
 
 ## The archive in numbers
 
