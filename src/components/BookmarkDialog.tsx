@@ -109,7 +109,8 @@ interface BookmarkFormProps {
 }
 
 /**
- * The draft from the unit down to the number, and the three ways out of it.
+ * The draft from the unit down to the number, and the three ways out of it:
+ * save, forget, or close.
  *
  * Nothing here reaches the cookie until Save, so a reader who opens the
  * dialog, tries a unit and leaves still has the bookmark they arrived with.
@@ -154,11 +155,12 @@ function BookmarkForm({
       <Actions
         canForget={bookmark !== null}
         canSave={canSave}
-        onCancel={onDone}
         onForget={() => {
           commit(null)
         }}
       />
+
+      <CloseButton onClose={onDone} />
     </form>
   )
 }
@@ -196,19 +198,18 @@ function DialogHead({
 }
 
 /**
- * Save, forget and cancel. Each of the first two is disabled until it would
- * do something — until the draft grades to a real bookmark, and until there
- * is a bookmark to drop — so neither can be pressed into a silent no-op.
+ * Save, and under it the way to drop the bookmark. Save is disabled until the
+ * draft grades to a real bookmark, so it cannot be pressed into a silent
+ * no-op; the forget line is absent rather than disabled when there is no
+ * bookmark to drop.
  */
 function Actions({
   canSave,
   canForget,
   onForget,
-  onCancel,
 }: {
   canForget: boolean
   canSave: boolean
-  onCancel: () => void
   onForget: () => void
 }): ReactElement {
   const t = useT()
@@ -217,22 +218,39 @@ function Actions({
     <div {...stylex.props(styles.actions)}>
       <Button
         disabled={!canSave}
+        sx={styles.save}
         type="submit"
       >
         {t('dialog.save')}
       </Button>
-      <Button
-        disabled={!canForget}
-        onClick={onForget}
-      >
-        {t('dialog.forget')}
-      </Button>
-      <Button
-        onClick={onCancel}
-        sx={styles.cancel}
-      >
-        {t('dialog.cancel')}
-      </Button>
+      {canForget && (
+        <Button
+          onClick={onForget}
+          sx={styles.forget}
+        >
+          {t('dialog.forget')}
+        </Button>
+      )}
     </div>
+  )
+}
+
+/**
+ * The way out that keeps the bookmark as it was, drawn as a cross in the top
+ * corner. It comes last in the form, so the keyboard meets the unit first;
+ * Escape and a click on the backdrop do the same thing.
+ */
+function CloseButton({ onClose }: { onClose: () => void }): ReactElement {
+  const t = useT()
+
+  return (
+    <Button
+      aria-label={t('dialog.cancel')}
+      onClick={onClose}
+      sx={styles.close}
+      variant="quiet"
+    >
+      <span aria-hidden="true">✕</span>
+    </Button>
   )
 }

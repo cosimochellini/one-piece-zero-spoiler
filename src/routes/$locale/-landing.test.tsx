@@ -164,7 +164,7 @@ describe('LandingPage', () => {
     renderWithProviders(<LandingPage landing={{ onboarding: onboarding() }} />)
 
     fireEvent.change(screen.getByRole('slider'), { target: { value: '2' } })
-    fireEvent.click(screen.getByRole('button', { name: 'Manga chapter' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Chapter' }))
 
     expect(screen.getByRole('slider')).toHaveValue('4')
     expect(screen.getByText('Roronoa Zoro')).toBeInTheDocument()

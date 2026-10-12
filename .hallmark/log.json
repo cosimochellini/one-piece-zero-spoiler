@@ -11,6 +11,16 @@
     "brief": "Issue #559: the no-bookmark landing becomes an onboarding with an aha moment. Decisions with the owner: audience midway + newcomers, dial over all East Blue with a chapter toggle, the whole page wakes up (arcs, leads, places, Merry), I'm here / I'm further on inline / Starting now, a tapped card opens its page on a session trial, fog tail with an honest count, the 111-entry chart and the moon fold removed, one-time welcome after saving, no replay."
   },
   {
+    "date": "2026-10-12",
+    "scope": "component",
+    "component": "modal (BookmarkDialog redesign)",
+    "macrostructure": "n/a (component scope)",
+    "theme": "custom (bespoke): Sea Chart — locked, not rotated",
+    "theme_axes": "dark / geometric-sans / chromatic-amber (88°)",
+    "enrichment": "none",
+    "brief": "Owner: the 'A che punto sei?' dialog works but looks unfinished. Decisions: bottom sheet on mobile, the number as the hero (mono display, round steppers, digit roll, hold to repeat), one segmented unit control with a sliding marker, native season select, full-width gold Save (the one gold fill), close as ✕, forget as a text line, saga label under the number always (filler marked), one-line lede."
+  },
+  {
     "date": "2026-10-10",
     "macrostructure": "Map / Diagram, v2 led by a countdown (filler guide)",
     "theme": "custom (bespoke): Sea Chart — locked, not rotated",
