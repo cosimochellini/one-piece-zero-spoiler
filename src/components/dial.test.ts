@@ -34,6 +34,10 @@ describe('the onboarding dial', () => {
     expect(switchUnit({ mode: 'chapter', value: 1 }, CHAPTER_AT)).toStrictEqual(
       { mode: 'episode', value: 1 },
     )
+    // Episodes 3 and 4 both reach chapter 7: a round trip from 3 stays at 3.
+    expect(switchUnit({ mode: 'chapter', value: 7 }, CHAPTER_AT)).toStrictEqual(
+      { mode: 'episode', value: 3 },
+    )
   })
 
   it('reads the latest step it has reached, in its own unit', () => {

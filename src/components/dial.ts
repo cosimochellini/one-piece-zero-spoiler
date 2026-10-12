@@ -42,15 +42,21 @@ export function dialLast(mode: DialPoint['mode']): number {
 
 /**
  * The same moment in the other unit. `chapterAt` is the chapter each episode
- * reaches; going back, the dial lands on the last episode that does not pass
- * the chapter, so a switch never moves the story forward.
+ * reaches. Going back, the dial lands on the first episode that reaches the
+ * chapter, so a round trip from episode 45 never comes back later than 45
+ * when several episodes share a chapter; with none reaching it exactly, on
+ * the last episode that does not pass it.
  */
 export function switchUnit(point: DialPoint, chapterAt: number[]): DialPoint {
   if (point.mode === 'episode') {
     return { mode: 'chapter', value: chapterAt[point.value - 1] ?? 1 }
   }
 
-  const reached = chapterAt.findLastIndex((chapter) => chapter <= point.value)
+  const exact = chapterAt.indexOf(point.value)
+  const reached =
+    exact === -1 ?
+      chapterAt.findLastIndex((chapter) => chapter <= point.value)
+    : exact
   return { mode: 'episode', value: Math.max(1, reached + 1) }
 }
 
