@@ -221,6 +221,41 @@ describe('LandingPage', () => {
     ).toHaveAttribute('href', '/en/filler')
   })
 
+  it('says where the canon picks up inside a run, in season codes', () => {
+    renderWithProviders(
+      <LandingPage
+        landing={{
+          home: {
+            ...home,
+            point: { mode: 'season', season: 5, episode: 1 },
+            filler: {
+              cells: [
+                { episode: 131, kind: 'filler' },
+                { episode: 132, kind: 'filler' },
+              ],
+              here: 131,
+              inRun: { resume: 144, distance: 13 },
+              next: { first: 196, last: 206, distance: 65 },
+            },
+          },
+        }}
+      />,
+      { bookmark: { mode: 'season', season: 5, episode: 1 } },
+    )
+
+    expect(
+      screen.getByText(
+        'You are in a filler run. The canon picks up again at S06E01, 13 episodes away.',
+      ),
+    ).toBeInTheDocument()
+    expect(
+      screen.getByRole('img', { name: 'S05E01. Filler. your bookmark' }),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('listitem', { current: 'step' })).toHaveTextContent(
+      'S05E01',
+    )
+  })
+
   it('has no filler warning with none ahead', () => {
     renderWithProviders(<LandingPage landing={{ home }} />, {
       bookmark: { mode: 'episode', episode: 650 },

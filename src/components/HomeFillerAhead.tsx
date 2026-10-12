@@ -6,7 +6,7 @@ import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
 import type { ReactElement } from 'react'
 
-import { CellFace } from '~/components/FillerCountdown'
+import { CellFace } from '~/components/FillerCell'
 import { styles as cells, looksOf } from '~/components/FillerCountdown.styles'
 import {
   cellName,

@@ -12,8 +12,9 @@ La homepage risponde a tre domande, nell’ordine:
 È pensata per chi riprende la serie dopo una pausa e vuole ricordare dove era
 rimasto. Vale allo stesso modo per chi guarda l’anime e per chi legge il manga.
 
-Parla solo di quello che hai già visto o letto. Non dice niente su quello che
-viene dopo.
+Parla solo di quello che hai già visto o letto. L’unica eccezione è l’avviso sui
+filler: a chi guarda l’anime dice se nei prossimi episodi c’è un filler da
+saltare, con i soli numeri e tipi di episodio (vedi “Occhio ai filler”).
 
 ## Due homepage, a seconda del segnalibro
 
@@ -86,7 +87,32 @@ La saga in cui sei è l’ultima iniziata prima del tuo punto. Si prende sempre 
 saga singola (“Isola di Drum”), non il grande raggruppamento che la contiene
 (“Saga di Alabasta”).
 
-### 2. Appena successo
+### 2. Occhio ai filler
+
+Solo per chi ha un segnalibro a episodio o a stagione: il manga non ha filler.
+Compare sotto il primo blocco quando:
+
+- il tuo episodio è dentro un gruppo da saltare, oppure
+- il prossimo gruppo da saltare inizia entro il tuo episodio e i cinque dopo.
+
+Un gruppo da saltare è quello della pagina Episodi filler: filler puri e
+riassunti consecutivi. Un episodio misto lo interrompe e da solo non fa
+comparire l’avviso. Film e speciali non lo fanno comparire.
+
+Il blocco contiene:
+
+- il titolo “Occhio ai filler”;
+- la stessa frase della pagina Episodi filler (“Il prossimo filler è tra 3
+  episodi.” oppure “Sei dentro un gruppo filler. Il canon riprende da EP 144,
+  tra 9 episodi.”), con il prossimo gruppo da saltare quando non ci sei dentro;
+- le stesse sei caselle della pagina Episodi filler (il tuo episodio e i cinque
+  dopo), colorate per tipo. Non si aprono;
+- il link “Vedi tutti i filler”, alla pagina Episodi filler.
+
+Non si chiude: sparisce da solo quando sposti il segnalibro fuori dalla
+finestra.
+
+### 3. Appena successo
 
 Le storie dei personaggi che si sono concluse dentro questa saga, fino al tuo
 punto.
@@ -100,7 +126,7 @@ punto.
 Non esistono riassunti episodio per episodio, e questa pagina non ne aggiunge.
 Usa solo le storie che il sito ha già.
 
-### 3. Chi conta adesso
+### 4. Chi conta adesso
 
 I protagonisti della saga citati nelle storie del blocco “Appena successo”.
 
@@ -119,7 +145,7 @@ I protagonisti della saga citati nelle storie del blocco “Appena successo”.
 ## Come si comporta
 
 **Quando cambi il segnalibro**, la pagina si aggiorna subito sul nuovo punto:
-saga, storie e personaggi.
+saga, storie, personaggi e avviso sui filler.
 
 **Chi arriva per la prima volta**, senza segnalibro, vede il cursore su East
 Blue descritto sopra, non questa pagina. Il resto del sito resta nella nebbia
@@ -143,7 +169,10 @@ da mostrare, la sezione non compare.
 ## Regole che non si toccano
 
 - **Niente sul futuro.** Nessun nome, nessun numero, nessun conto alla rovescia.
-  Non si dice nemmeno “la prossima saga inizia tra 5 episodi”.
+  Non si dice nemmeno “la prossima saga inizia tra 5 episodi”. L’unica
+  eccezione, decisa il 12 ottobre 2026, è “Occhio ai filler”: numeri e tipi di
+  episodio, gli stessi che la pagina Episodi filler mostra a chiunque, e nessun
+  titolo o nome.
 - **Con il segnalibro, in homepage non c’è nebbia.** Tutto quello che si vede è
   già stato visto o letto, quindi non c’è niente da coprire né un tasto “Mostra
   comunque”. La nebbia c’è solo nella pagina di chi non ha un segnalibro.
