@@ -5,7 +5,8 @@
 # usage: scripts/land-pr.sh <pr> <expected-head-sha>
 #
 # exit 0 merged
-#      2 rebase conflict (the files are printed): rebase by hand
+#      2 rebase conflict (the files are printed): rebase by hand. Checked
+#        before waiting for CI too, as GitHub starts no run on a conflicting PR
 #      3 CI `check` did not pass
 #      4 the head is no longer the one expected
 #      5 bad arguments, a PR not open against main, gh or git failed, or the
@@ -65,10 +66,41 @@ patch_ids() {
 # The PR head. Callers exit 5 when gh fails.
 pr_head() { gh pr view "$PR" --json headRefOid -q .headRefOid; }
 
+# What GitHub says about merging the PR into main: MERGEABLE, CONFLICTING, or
+# UNKNOWN while it is still computing, which is read again for up to 30s.
+# Callers exit 5 when gh fails.
+mergeable() {
+  for _ in $(seq 10); do
+    m=$(gh pr view "$PR" --json mergeable -q .mergeable) || return 1
+    [ "$m" = UNKNOWN ] || break
+    sleep 3
+  done
+  echo "$m"
+}
+
+# Exits 2 naming the files $H conflicts on with origin/main, or 5 with "$1"
+# when there are none.
+conflict() {
+  files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
+  [ -n "$files" ] || { echo "$1, and no file conflicts with main"; exit 5; }
+  echo "rebase conflict, rebase by hand. Conflicting files:"
+  echo "$files"
+  exit 2
+}
+
 pr=$(gh pr view "$PR" --json state,baseRefName -q '"\(.state) \(.baseRefName)"') || exit 5
 [ "$pr" = "OPEN main" ] || { echo "PR $PR is not open against main: $pr"; exit 5; }
 
 for round in 1 2 3 4; do
+  # GitHub starts no CI run on a head that conflicts with main, so waiting for
+  # `check` there would only run out the clock.
+  m=$(mergeable) || exit 5
+  if [ "$m" = CONFLICTING ]; then
+    cur=$(pr_head) || exit 5
+    [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
+    fetch
+    conflict "GitHub reports a conflict"
+  fi
   result=$(wait_check "$H") || exit 5
   cur=$(pr_head) || exit 5
   [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
@@ -94,11 +126,7 @@ for round in 1 2 3 4; do
     }' >/dev/null; then
     cur=$(pr_head) || exit 5
     [ "$cur" = "$H" ] || { echo "head is no longer $H"; exit 4; }
-    files=$(git merge-tree --write-tree --name-only --no-messages origin/main "$H" | tail -n +2)
-    [ -n "$files" ] || { echo "rebase refused, and no file conflicts with main"; exit 5; }
-    echo "rebase conflict, rebase by hand. Conflicting files:"
-    echo "$files"
-    exit 2
+    conflict "rebase refused"
   fi
   old=$H
   for _ in $(seq 20); do
