@@ -214,12 +214,15 @@ export const styles = stylex.create({
     height: '100%',
     minWidth: 0,
   },
+  // Room for the pinned dial, so a card reached with the keyboard scrolls
+  // into view below it rather than under it.
   cardLink: {
     borderColor: { 'default': color.rule2, ':hover': color.accent },
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
+    scrollMarginBlockStart: '18rem',
     transform: { 'default': 'none', ':active': 'translateY(1px)' },
     transitionDuration: dur.micro,
     transitionProperty: 'border-color, transform',

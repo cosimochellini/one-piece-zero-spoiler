@@ -127,7 +127,7 @@ export const enDictionary = {
     'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries East Blue for the dial and nothing past it. There is no account and no tracking.',
   'faq.peekQ': 'Can I see a hidden entry?',
   'faq.peekA':
-    'Yes. Press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
+    'Yes. On the other pages of the wiki, press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',
 
   'footer.lead': 'A One Piece wiki that hides what comes after your bookmark.',
   'footer.colophon':

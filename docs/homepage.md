@@ -46,11 +46,11 @@ Per salvare il punto ci sono tre modi:
 - **“Inizio ora · EP 1”** salva l’episodio 1, per chi parte da zero.
 
 **La prova.** Toccare una scheda visibile apre la sua pagina al punto del
-cursore, senza salvarlo. Il punto resta in un cookie che si cancella quando
-chiudi il browser, e una striscia sotto la barra dice “Stai provando l’episodio
-12” con “Salva questo punto” ed “Esci dalla prova”. Durante la prova la homepage
-resta questa, con il cursore fermo sul punto di prova. Una prova vale solo
-dentro East Blue.
+cursore, senza salvarlo. Il punto resta in un cookie che di solito si cancella
+quando chiudi il browser, e una striscia sotto la barra dice “Stai provando
+l’episodio 12” con “Salva questo punto” ed “Esci dalla prova”. Durante la prova
+la homepage resta questa, con il cursore fermo sul punto di prova. Una prova
+vale solo dentro East Blue.
 
 **Il benvenuto.** Appena salvi il segnalibro da questa pagina, la homepage con
 il segnalibro mostra una volta sola il blocco “Cosa puoi fare ora”, con i link a

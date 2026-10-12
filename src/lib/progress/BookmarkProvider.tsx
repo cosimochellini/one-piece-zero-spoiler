@@ -55,9 +55,11 @@ export function BookmarkProvider({
   children,
 }: BookmarkProviderProps): ReactElement {
   const router = useRouter()
-  const [storedBookmark, setStoredBookmark] =
-    useState<Bookmark>(initialBookmark)
-  const [trial, setTrial] = useState(initialTrial)
+  // The point and whether it is a trial move together, in one update.
+  const [stored, setStored] = useState<{ bookmark: Bookmark; trial: boolean }>({
+    bookmark: initialBookmark,
+    trial: initialTrial,
+  })
   const [pending, startTransition] = useTransition()
 
   const setBookmark = useCallback(
@@ -85,44 +87,38 @@ export function BookmarkProvider({
       // one thing this site is for.
       startTransition(async () => {
         // Before the await, so it lands in this transition with the records.
-        setStoredBookmark(next)
-        setTrial(false)
+        setStored({ bookmark: next, trial: false })
         await router.invalidate()
       })
     },
     [router],
   )
 
-  // No re-read here: the card that calls it is a link, and the page it opens
-  // is loaded with the cookie this writes. Session-only, so a trial never
-  // outlives the browser.
-  const enterTrial = useCallback((point: NonNullable<Bookmark>) => {
-    writeCookie(TRIAL_COOKIE, serialiseBookmark(point))
-    startTransition(() => {
-      setStoredBookmark(point)
-      setTrial(true)
-    })
-  }, [])
+  // The caller is a link, so the page it opens reads this cookie; the cache
+  // goes, since a page preloaded before the trial was read with no cookie.
+  const enterTrial = useCallback(
+    (point: NonNullable<Bookmark>) => {
+      writeCookie(TRIAL_COOKIE, serialiseBookmark(point))
+      router.clearCache()
+      startTransition(() => {
+        setStored({ bookmark: point, trial: true })
+      })
+    },
+    [router],
+  )
 
   const leaveTrial = useCallback(() => {
     expireCookie(TRIAL_COOKIE)
     startTransition(async () => {
-      setStoredBookmark(null)
-      setTrial(false)
+      setStored({ bookmark: null, trial: false })
       await router.invalidate()
     })
   }, [router])
 
-  const value = useMemo<BookmarkContextValue>(() => {
-    return {
-      bookmark: storedBookmark,
-      enterTrial,
-      leaveTrial,
-      pending,
-      setBookmark,
-      trial,
-    }
-  }, [storedBookmark, enterTrial, leaveTrial, pending, setBookmark, trial])
+  const value = useMemo<BookmarkContextValue>(
+    () => ({ ...stored, enterTrial, leaveTrial, pending, setBookmark }),
+    [stored, enterTrial, leaveTrial, pending, setBookmark],
+  )
 
   return <BookmarkContext value={value}>{children}</BookmarkContext>
 }

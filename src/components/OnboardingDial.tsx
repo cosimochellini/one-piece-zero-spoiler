@@ -11,6 +11,7 @@ import {
 import { styles } from '~/components/Onboarding.styles'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
+import type { Translate } from '~/i18n/types'
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import type { Bookmark } from '~/lib/progress/episode'
 import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
@@ -23,6 +24,15 @@ export interface OnboardingDialProps {
   chapterAt: number[]
   onPoint: (next: DialPoint) => void
   point: DialPoint
+}
+
+/** The dial's unit as a word: "Episode" or "Chapter". */
+function unitOf(t: Translate, point: DialPoint): string {
+  return t(
+    point.mode === 'chapter' ?
+      'onboarding.unitChapter'
+    : 'onboarding.unitEpisode',
+  )
 }
 
 /**
@@ -51,6 +61,7 @@ export function OnboardingDial({
         {t('onboarding.dial')}
       </label>
       <input
+        aria-valuetext={`${unitOf(t, point)} ${String(point.value)}`}
         id={id}
         max={dialLast(point.mode)}
         min={1}
@@ -82,11 +93,7 @@ function Readout({
 }: Pick<OnboardingDialProps, 'arc' | 'point'>): ReactElement {
   const t = useT()
   const save = useSave()
-  const unit = t(
-    point.mode === 'chapter' ?
-      'onboarding.unitChapter'
-    : 'onboarding.unitEpisode',
-  )
+  const unit = unitOf(t, point)
 
   return (
     <div {...stylex.props(styles.readout)}>

@@ -123,7 +123,7 @@ export const itDictionary: Dictionary = {
     'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
-    'Sì, premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
+    'Sì. Nelle altre pagine della wiki premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',
 
   'footer.lead':
     'Una wiki di One Piece che nasconde quello che viene dopo il tuo segnalibro.',

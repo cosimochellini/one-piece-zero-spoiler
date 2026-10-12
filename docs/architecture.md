@@ -52,10 +52,10 @@ open and cover those records in the browser as it moves, and nothing past it:
 every record and every dated fact it carries is inside both limits, and past
 them there are only covered records and a count. A test holds the payload to
 that, in both units. An open card on that page links to its record's page on a
-trial: an `opzs_try` cookie with no `Max-Age`, which ends with the browser
-session and counts as the bookmark only while there is no `opzs_ep`. A trial
-past East Blue or in seasons is ignored, so it cannot be used to reach anything
-the dial could not.
+trial: an `opzs_try` cookie with no `Max-Age`, which normally ends when the
+browser closes and counts as the bookmark only while there is no `opzs_ep`. A
+trial past East Blue or in seasons is ignored, so it cannot be used to reach
+anything the dial could not.
 
 Search follows the same rule, by construction: a covered character is not on the
 page, so it cannot be found. Search matches only the epithets the reader has
