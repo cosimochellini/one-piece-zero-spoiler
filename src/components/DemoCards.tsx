@@ -75,7 +75,8 @@ export function OpenCard({
 /**
  * A link to a record's own page that stands the reader at the dial's point
  * first, on a trial: the cookie is written on the click, before the router
- * loads the page that reads it.
+ * loads the page that reads it. Never preloaded: a hover would load the page
+ * with no trial cookie yet, and the click would reuse that covered page.
  */
 function TrialLink({
   children,
@@ -98,6 +99,7 @@ function TrialLink({
       <Link
         onClick={onClick}
         params={{ locale, id: entry.id }}
+        preload={false}
         to="/$locale/characters/$id"
         {...stylex.props(sx)}
       >
@@ -107,6 +109,7 @@ function TrialLink({
         hash={entry.id}
         onClick={onClick}
         params={{ locale }}
+        preload={false}
         to="/$locale/places"
         {...stylex.props(sx)}
       >
@@ -186,7 +189,8 @@ function Drawn({
 
 /**
  * A record under fog: the bare seal or the bare plate, the word "Spoiler",
- * and where it opens. The name and the drawing are not in the markup.
+ * and where it opens. The name and the drawing are not drawn, though for an
+ * East Blue record they are in the page's data for the dial.
  */
 export function FogCard({
   entry,

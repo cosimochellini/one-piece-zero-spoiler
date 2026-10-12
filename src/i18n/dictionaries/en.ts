@@ -123,7 +123,7 @@ export const enDictionary = {
     'Both. You can count by anime episode, by season and episode, or by manga chapter. Every entry has an episode number and a chapter number. When the exact point is uncertain, the later one is used, so an entry is more likely to open late than early.',
   'faq.bookmarkQ': 'Where is my bookmark stored?',
   'faq.bookmarkA':
-    'In a cookie on this device. The server reads it before it builds the page, so hidden entries are not in the page you receive. There is no account and no tracking.',
+    'In a cookie on this device. The server reads it before it builds the page, so entries past your bookmark are not in the page you receive. Without a bookmark, this page carries East Blue for the dial and nothing past it. There is no account and no tracking.',
   'faq.peekQ': 'Can I see a hidden entry?',
   'faq.peekA':
     'Yes. Press “Show anyway” on it. The choice is not saved, and every other entry stays under fog.',

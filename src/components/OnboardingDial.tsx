@@ -90,14 +90,16 @@ function Readout({
 
   return (
     <div {...stylex.props(styles.readout)}>
-      <div
-        aria-live="polite"
-        {...stylex.props(styles.point)}
-      >
+      <div {...stylex.props(styles.point)}>
         <span {...stylex.props(styles.unitLabel)}>{unit}</span>
         <span {...stylex.props(styles.numeral)}>{point.value}</span>
         {arc !== undefined && (
-          <span {...stylex.props(styles.arcName)}>{arc}</span>
+          <span
+            aria-live="polite"
+            {...stylex.props(styles.arcName)}
+          >
+            {arc}
+          </span>
         )}
       </div>
       <Button
@@ -138,7 +140,7 @@ export function OnboardingControls({
 
       <div {...stylex.props(styles.actions)}>
         <Button
-          aria-controls={formId}
+          aria-controls={further ? formId : undefined}
           aria-expanded={further}
           onClick={() => {
             setFurther(!further)

@@ -119,7 +119,7 @@ export const itDictionary: Dictionary = {
     'Tutti e due. Puoi contare per episodio dell’anime, per stagione ed episodio o per capitolo del manga. Ogni voce ha un numero di episodio e uno di capitolo. Quando il punto esatto è incerto si usa quello più avanti, così è più facile che una voce si apra tardi che presto.',
   'faq.bookmarkQ': 'Dove viene salvato il segnalibro?',
   'faq.bookmarkA':
-    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci nascoste non sono nella pagina che ricevi. Non serve un account e non c’è nessun tracciamento.',
+    'In un cookie su questo dispositivo. Il server lo legge prima di generare la pagina, quindi le voci dopo il segnalibro non sono nella pagina che ricevi. Senza segnalibro, questa pagina contiene East Blue per il cursore e niente dopo. Non serve un account e non c’è nessun tracciamento.',
   'faq.peekQ': 'Posso vedere una voce nascosta?',
   'faq.peekA':
     'Sì, premi “Mostra comunque”. La scelta non viene salvata e le altre voci restano nella nebbia.',

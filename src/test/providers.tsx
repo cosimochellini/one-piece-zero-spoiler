@@ -35,8 +35,8 @@ export function ep(episode: number): Bookmark {
 
 export interface RenderOptions {
   bookmark?: Bookmark
-  /** Whether `bookmark` is a trial point rather than a saved one. */
   locale?: Locale
+  /** Whether `bookmark` is a trial point rather than a saved one. */
   trial?: boolean
   /** The address the router believes the page is at. Defaults to `/<locale>`. */
   path?: string

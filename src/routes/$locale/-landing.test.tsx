@@ -1,7 +1,15 @@
 import { fireEvent, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 
-import type { DemoEntry, OnboardingView } from '~/lib/view/records'
+import { expireCookie, parseCookieHeader } from '~/lib/cookies'
+import { TRIAL_COOKIE } from '~/lib/progress/bounds'
+import { EPISODE_COOKIE } from '~/lib/progress/episode'
+import {
+  dismissWelcome,
+  markWelcome,
+  welcomeOwed,
+} from '~/lib/progress/welcome'
+import type { DemoEntry, HomeView, OnboardingView } from '~/lib/view/records'
 import { coveredRecord, drawing, waypoint } from '~/test/fixtures'
 import { renderWithProviders } from '~/test/providers'
 
@@ -55,7 +63,62 @@ function onboarding(over: Partial<OnboardingView> = {}): OnboardingView {
   }
 }
 
+function cookies(): Map<string, string> {
+  return parseCookieHeader(document.cookie)
+}
+
+const home: HomeView = {
+  before: false,
+  cast: [],
+  point: { mode: 'episode', episode: 650 },
+  saga,
+  stories: [],
+}
+
 describe('LandingPage', () => {
+  afterEach(() => {
+    expireCookie(EPISODE_COOKIE)
+    expireCookie(TRIAL_COOKIE)
+    dismissWelcome()
+  })
+
+  it('opens a card on a trial at the dial’s point, saving nothing', () => {
+    renderWithProviders(<LandingPage landing={{ onboarding: onboarding() }} />)
+
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '2' } })
+    fireEvent.click(screen.getByRole('link', { name: /Roronoa Zoro/u }))
+
+    expect(cookies().get(TRIAL_COOKIE)).toBe('2')
+    expect(cookies().has(EPISODE_COOKIE)).toBe(false)
+  })
+
+  it('saves the dial’s point and owes the welcome', () => {
+    renderWithProviders(<LandingPage landing={{ onboarding: onboarding() }} />)
+
+    fireEvent.change(screen.getByRole('slider'), { target: { value: '3' } })
+    fireEvent.click(screen.getByRole('button', { name: 'I’m here' }))
+
+    expect(cookies().get(EPISODE_COOKIE)).toBe('3')
+    expect(welcomeOwed()).toBe(true)
+  })
+
+  it('shows the welcome once on the home page, until it is closed', () => {
+    markWelcome()
+    renderWithProviders(<LandingPage landing={{ home }} />, {
+      bookmark: { mode: 'episode', episode: 650 },
+    })
+
+    expect(
+      screen.getByRole('heading', { name: 'What you can do now' }),
+    ).toBeInTheDocument()
+
+    fireEvent.click(screen.getByRole('button', { name: 'Close' }))
+
+    expect(
+      screen.queryByRole('heading', { name: 'What you can do now' }),
+    ).not.toBeInTheDocument()
+  })
+
   it('wakes East Blue up as the dial moves, for a visitor with no bookmark', () => {
     renderWithProviders(<LandingPage landing={{ onboarding: onboarding() }} />)
 
@@ -108,20 +171,9 @@ describe('LandingPage', () => {
   })
 
   it('draws the reader’s arc for a reader with a bookmark', () => {
-    renderWithProviders(
-      <LandingPage
-        landing={{
-          home: {
-            before: false,
-            cast: [],
-            point: { mode: 'episode', episode: 650 },
-            saga,
-            stories: [],
-          },
-        }}
-      />,
-      { bookmark: { mode: 'episode', episode: 650 } },
-    )
+    renderWithProviders(<LandingPage landing={{ home }} />, {
+      bookmark: { mode: 'episode', episode: 650 },
+    })
 
     expect(
       screen.getByRole('heading', { level: 1, name: 'Dressrosa' }),

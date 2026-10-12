@@ -70,6 +70,10 @@ flowchart LR
   E --> F
 ```
 
+The one exception is the landing page for a visitor with no bookmark. It carries
+East Blue (episodes 1–61, chapters 1–100) so its dial can open and cover those
+entries in the browser, and nothing past them.
+
 The archive is never compiled into the client bundle, and a build gate fails if
 any of it gets there. Search, drawings and links follow the same rule. The full
 design is in [docs/architecture.md](docs/architecture.md).

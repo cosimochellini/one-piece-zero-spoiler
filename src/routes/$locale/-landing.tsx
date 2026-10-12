@@ -34,7 +34,11 @@ export interface LandingPageProps {
  */
 export function LandingPage({ landing }: LandingPageProps): ReactElement {
   return 'onboarding' in landing ?
-      <OnboardingLanding {...landing.onboarding} />
+      <OnboardingLanding
+        // A new start, as when a trial ends, sets the dial again.
+        key={JSON.stringify(landing.onboarding.start)}
+        {...landing.onboarding}
+      />
     : <Home {...landing.home} />
 }
 

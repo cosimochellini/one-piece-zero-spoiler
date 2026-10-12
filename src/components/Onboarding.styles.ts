@@ -226,11 +226,9 @@ export const styles = stylex.create({
     transitionTimingFunction: ease.out,
   },
   here: { borderColor: color.accent, borderWidth: rule.fine },
-  fogged: {
-    borderStyle: 'dashed',
-    backgroundColor: 'transparent',
-    opacity: 0.6,
-  },
+  // Dimmed by the dashed border and the bare frame, not by opacity: the
+  // threshold under it is text the visitor needs to read.
+  fogged: { borderStyle: 'dashed', backgroundColor: 'transparent' },
   frame: { aspectRatio: '1', width: '100%' },
   arcFrame: { aspectRatio: '4 / 5', width: '100%' },
   name: {

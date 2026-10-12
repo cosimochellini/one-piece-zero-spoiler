@@ -66,8 +66,11 @@ function LocaleLayout(): ReactElement {
       </a>
 
       <div {...stylex.props(styles.shell)}>
-        <SiteBar />
-        <TrialStrip />
+        {/* One row: the trial strip, when there is one, belongs to the bar. */}
+        <div>
+          <SiteBar />
+          <TrialStrip />
+        </div>
         <Outlet />
         <SiteFooter />
       </div>
