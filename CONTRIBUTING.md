@@ -252,5 +252,6 @@ green, and refuses if the head is no longer the reviewed one. When the branch is
 behind `main` by more than `chore(release)` commits, it rebases the branch on
 GitHub, waits for `check` again and merges that. The exit codes are listed at
 the top of the script. Only 2, a rebase conflict whose files it names, needs a
-rebase by hand. 4, the head changed, and 6, main kept moving, need a person to
-look.
+rebase by hand. GitHub starts no CI run on a pull request that conflicts with
+`main`, so the script asks GitHub first and stops with 2 without waiting. 4, the
+head changed, and 6, main kept moving, need a person to look.
