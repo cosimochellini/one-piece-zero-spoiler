@@ -53,8 +53,11 @@ export function StepperRow({
   // One press, or one hold, counts from the draft it started on. Nothing
   // else moves the number while a stepper is held down, so the ticks carry
   // their own running value rather than reading the draft back each time.
+  // Only the first step of a press rolls the numeral: the repeat is faster
+  // than the roll, and restarting it on every tick would blink the number.
   const ticker = (delta: number) => {
     let current = draft
+    let rolled = false
     return (): boolean => {
       const next = stepperOf(current).stepped(delta)
       if (next === current.number) {
@@ -62,7 +65,10 @@ export function StepperRow({
       }
       current = { ...current, number: next }
       onChange(next)
-      setRoll((last) => ({ count: last.count + 1, delta }))
+      if (!rolled) {
+        rolled = true
+        setRoll((last) => ({ count: last.count + 1, delta }))
+      }
       return true
     }
   }

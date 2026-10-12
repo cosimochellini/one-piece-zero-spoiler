@@ -213,6 +213,9 @@ describe('EpisodeMark', () => {
     vi.useFakeTimers()
     try {
       fireEvent.pointerDown(button('One more'), { button: 0 })
+      // The press rolls the numeral in once; the repeat that follows changes
+      // the value in the same field rather than rebuilding it on every tick.
+      const numeral = field('Last episode you watched')
       // One step on the press, one when the hold starts repeating, and one
       // a shorter interval after that.
       act(() => {
@@ -225,6 +228,8 @@ describe('EpisodeMark', () => {
       act(() => {
         vi.advanceTimersByTime(1000)
       })
+
+      expect(field('Last episode you watched')).toBe(numeral)
     } finally {
       vi.useRealTimers()
     }
