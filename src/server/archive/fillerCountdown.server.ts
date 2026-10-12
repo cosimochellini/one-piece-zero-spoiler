@@ -1,8 +1,19 @@
 import { FILLER, LAST_AIRED } from '~/data/filler'
 import { absoluteEpisodeOf, type Bookmark } from '~/lib/progress/episode'
-import type { Countdown, CountdownCell, CountdownMark } from '~/lib/view/filler'
+import type {
+  Countdown,
+  CountdownCell,
+  CountdownMark,
+  FillerAhead,
+} from '~/lib/view/filler'
 
-import { INDEXED, type Looker, skipRangesOf, slotOf } from './fillerRows.server'
+import {
+  INDEXED,
+  type Indexed,
+  type Looker,
+  skipRangesOf,
+  slotOf,
+} from './fillerRows.server'
 
 /**
  * The reader's next few episodes: their own, and the five after it.
@@ -19,22 +30,39 @@ const AHEAD = 5
 /** Every run that can be skipped, across arcs: a run is one skip. */
 const RANGES = skipRangesOf(FILLER)
 
+/** The episodes from `here` to the end of the row. */
+function episodesFrom(here: number): number[] {
+  const last = Math.min(here + AHEAD, LAST_AIRED)
+  return Array.from({ length: last - here + 1 }, (_, at) => here + at)
+}
+
+/** The numbered entry at one episode, if it is not plain canon. */
+function itemAt(episode: number): Indexed | undefined {
+  return INDEXED.find(
+    ({ entry }) => 'episode' in entry && entry.episode === episode,
+  )
+}
+
 /** The episodes from `here` to the end of the row, each with its entry. */
 function cellsFrom(here: number, look: Looker): CountdownCell[] {
-  const last = Math.min(here + AHEAD, LAST_AIRED)
-  const cells: CountdownCell[] = []
+  return episodesFrom(here).map((episode) => {
+    const item = itemAt(episode)
+    return { episode, slot: item === undefined ? null : slotOf(item, look) }
+  })
+}
 
-  for (let episode = here; episode <= last; episode += 1) {
-    const item = INDEXED.find(
-      ({ entry }) => 'episode' in entry && entry.episode === episode,
-    )
-    cells.push({
-      episode,
-      slot: item === undefined ? null : slotOf(item, look),
-    })
+/** The run the reader is inside, and the next one after them. */
+function runsAround(here: number): Pick<Countdown, 'inRun' | 'next'> {
+  const run = RANGES.find((range) => range.first <= here && here <= range.last)
+  const next = RANGES.find((range) => range.first > here)
+
+  return {
+    inRun:
+      run === undefined ? null : (
+        { resume: run.last + 1, distance: run.last + 1 - here }
+      ),
+    next: next === undefined ? null : { ...next, distance: next.first - here },
   }
-
-  return cells
 }
 
 /** The films and specials watched between the row's first and last cell. */
@@ -80,17 +108,42 @@ export function countdownOf(
   }
 
   const cells = cellsFrom(here, look)
-  const run = RANGES.find((range) => range.first <= here && here <= range.last)
-  const next = RANGES.find((range) => range.first > here)
 
   return {
     cells,
     here,
-    inRun:
-      run === undefined ? null : (
-        { resume: run.last + 1, distance: run.last + 1 - here }
-      ),
+    ...runsAround(here),
     marks: marksBetween(here, cells.at(-1)?.episode ?? here, look),
-    next: next === undefined ? null : { ...next, distance: next.first - here },
+  }
+}
+
+/**
+ * The home page's warning, or `null` when it has nothing to warn of: the
+ * reader is inside a run to skip, or the next one starts within the row.
+ *
+ * The cells carry a kind and nothing else, which the strip on the filler
+ * page sends whatever the bookmark, so nothing here needs a gate.
+ */
+export function fillerAheadOf(bookmark: Bookmark): FillerAhead | null {
+  const here = airedEpisodeOf(bookmark)
+  if (here === null) {
+    return null
+  }
+
+  const runs = runsAround(here)
+  if (
+    runs.inRun === null
+    && (runs.next === null || runs.next.distance > AHEAD)
+  ) {
+    return null
+  }
+
+  return {
+    cells: episodesFrom(here).map((episode) => {
+      const kind = itemAt(episode)?.entry.kind ?? null
+      return { episode, kind }
+    }),
+    here,
+    ...runs,
   }
 }

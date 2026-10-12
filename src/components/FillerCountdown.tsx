@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, type ReactNode, useState } from 'react'
 
-import { styles } from '~/components/FillerCountdown.styles'
+import { looksOf, styles } from '~/components/FillerCountdown.styles'
 import {
   cellName,
   entryOf,
@@ -138,20 +138,6 @@ function Row({
   )
 }
 
-/** How a cell is painted: by kind, and outlined when it is the reader's. */
-function looksOf(
-  kind: FillerKind | null,
-  here: boolean,
-): stylex.StyleXStyles[] {
-  return [
-    styles.cell,
-    kind === 'filler' && styles.cellSkip,
-    kind === 'recap' && styles.cellRecap,
-    kind === 'mixed' && styles.cellMixed,
-    here && styles.cellHere,
-  ]
-}
-
 /** The word under a cell's number: its kind, or "now" for the reader's. */
 function kindLabel(
   t: Translate,
@@ -186,10 +172,6 @@ function Cell({
   const t = useT()
   const { slot } = cell
   const kind = slot === null ? null : entryOf(slot).kind
-  const number = episodesLabel(t, mode, {
-    first: cell.episode,
-    last: cell.episode,
-  })
 
   return (
     <li
@@ -199,15 +181,22 @@ function Cell({
       <Pressable
         choice={choice}
         looks={looksOf(kind, here)}
-        name={cellName(t, { here, kind, number })}
+        name={cellName(t, {
+          here,
+          kind,
+          number: episodesLabel(t, mode, {
+            first: cell.episode,
+            last: cell.episode,
+          }),
+        })}
         slot={slot}
       >
-        <span
-          {...stylex.props(styles.number, mode === 'season' && styles.code)}
-        >
-          {mode === 'season' ? number : String(cell.episode)}
-        </span>
-        <span {...stylex.props(styles.kind)}>{kindLabel(t, kind, here)}</span>
+        <CellFace
+          episode={cell.episode}
+          here={here}
+          kind={kind}
+          mode={mode}
+        />
       </Pressable>
       {marks.length > 0 && (
         <div {...stylex.props(styles.marks)}>
@@ -224,6 +213,32 @@ function Cell({
         </div>
       )}
     </li>
+  )
+}
+
+/** What a cell reads: its number, and the word under it. */
+export function CellFace({
+  episode,
+  here,
+  kind,
+  mode,
+}: {
+  episode: number
+  here: boolean
+  kind: FillerKind | null
+  mode: BookmarkMode
+}): ReactElement {
+  const t = useT()
+
+  return (
+    <>
+      <span {...stylex.props(styles.number, mode === 'season' && styles.code)}>
+        {mode === 'season' ?
+          episodesLabel(t, mode, { first: episode, last: episode })
+        : String(episode)}
+      </span>
+      <span {...stylex.props(styles.kind)}>{kindLabel(t, kind, here)}</span>
+    </>
   )
 }
 

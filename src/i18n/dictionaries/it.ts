@@ -66,6 +66,8 @@ export const itDictionary: Dictionary = {
   'home.storyAt.chapter': 'Circa capitolo {threshold}',
   'home.more': 'Altre storie',
   'home.cast': 'Chi conta adesso',
+  'home.filler.title': 'Occhio ai filler',
+  'home.filler.link': 'Vedi tutti i filler',
 
   'mark.unset': 'Imposta episodio',
   'mark.episode': 'EP {threshold}',

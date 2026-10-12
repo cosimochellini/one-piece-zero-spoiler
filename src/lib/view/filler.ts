@@ -101,6 +101,17 @@ export interface Countdown {
   next: null | (SkipRange & { distance: number })
 }
 
+/**
+ * The countdown as the home page warns with it: the same runs, and each cell
+ * as its episode and kind only, since the home page opens no entry.
+ */
+export interface FillerAhead extends Pick<
+  Countdown,
+  'here' | 'inRun' | 'next'
+> {
+  cells: { episode: number; kind: FillerKind | null }[]
+}
+
 /** One numbered episode that is not plain canon, for the strip. */
 export interface FillerMark {
   episode: number

@@ -11,6 +11,7 @@ import type {
 } from '~/lib/view/filler'
 
 import { fillerPage, peekFiller } from './filler.server'
+import { fillerAheadOf } from './fillerCountdown.server'
 
 /** Every row of the page, in order. */
 function slots(page: FillerPageView): FillerSlot[] {
@@ -209,6 +210,49 @@ describe('the countdown', () => {
     expect(film?.slot.open).toBe(false)
     expect(payload).not.toContain('Film: Red')
     expect(payload).not.toContain('A Faint Memory')
+  })
+})
+
+describe('the home page warning', () => {
+  it('warns once the next run starts within the row, and not a step before', () => {
+    // Episode 93 is mixed, which is not a run to skip.
+    expect(fillerAheadOf(ep(92))).toBeNull()
+
+    const ahead = fillerAheadOf(ep(93))
+
+    expect(ahead?.next).toStrictEqual({ first: 98, last: 99, distance: 5 })
+    expect(ahead?.cells).toStrictEqual([
+      { episode: 93, kind: 'mixed' },
+      { episode: 94, kind: null },
+      { episode: 95, kind: null },
+      { episode: 96, kind: null },
+      { episode: 97, kind: null },
+      { episode: 98, kind: 'filler' },
+    ])
+  })
+
+  it('warns inside a run to skip', () => {
+    expect(fillerAheadOf(ep(135))?.inRun).toStrictEqual({
+      resume: 144,
+      distance: 9,
+    })
+  })
+
+  it('is never there for a chapter reader, or with no bookmark', () => {
+    expect(fillerAheadOf(null)).toBeNull()
+    expect(fillerAheadOf({ mode: 'chapter', chapter: 50 })).toBeNull()
+    expect(fillerAheadOf(ep(LAST_AIRED))).toBeNull()
+  })
+
+  it('reads the same runs as the filler page', () => {
+    for (const episode of [52, 135, 1026]) {
+      const { inRun, next } = fillerPage(ep(episode), 'en').countdown ?? {}
+
+      expect(fillerAheadOf(ep(episode)) ?? { inRun, next }).toMatchObject({
+        inRun,
+        next,
+      })
+    }
   })
 })
 
