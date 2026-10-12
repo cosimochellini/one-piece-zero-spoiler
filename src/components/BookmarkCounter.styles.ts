@@ -63,11 +63,18 @@ export const counterStyles = stylex.create({
     borderBlockEndColor: {
       'default': color.rule2,
       ':hover': color.ink2,
-      ':focus': color.ink,
+      ':focus': color.focus,
     },
     borderBlockEndStyle: 'solid',
     borderBlockEndWidth: rule.fine,
     borderBlockStartWidth: 0,
+    // Focus is the underline, turned to the focus ink and doubled by a shadow
+    // that costs no layout. A ring round a display-size numeral reached
+    // over the label above it and the saga line below.
+    boxShadow: {
+      'default': 'none',
+      ':focus': `0 ${rule.fine} 0 0 ${color.focus}`,
+    },
     color: { 'default': color.ink, ':disabled': color.muted },
     cursor: { 'default': 'text', ':disabled': 'not-allowed' },
     fontFamily: font.mono,
@@ -76,13 +83,10 @@ export const counterStyles = stylex.create({
     fontWeight: 700,
     letterSpacing: '-0.03em',
     lineHeight: 1.1,
-    outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
-    outlineOffset: space.xs,
-    outlineStyle: 'solid',
-    outlineWidth: rule.fine,
+    outlineStyle: 'none',
     textAlign: 'center',
     transitionDuration: dur.micro,
-    transitionProperty: 'border-color',
+    transitionProperty: 'border-color, box-shadow',
     transitionTimingFunction: ease.out,
     // Four digits and a little air; the ceiling is 1300.
     width: '4.6ch',
