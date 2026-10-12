@@ -129,6 +129,10 @@ Grade every drawing you make or review. Only A ships.
     record opens, or no true composition reads at 56 px.
   - **Back from the dead is a new drawing** that shows what the return leaves
     (Kanjuro at 1024, Orochi at 1051, Sabo at 663).
+  - **A zombie's purification is a stage** (owner, 2026-10-12, #554): the
+    episode it loses its borrowed shadow, to salt or to the shadow going
+    home, and goes still (Kumashi at 360, the Shadow's Asgard at 373). Only
+    the first time counts, and the death exceptions apply.
   - **A destroyed or badly damaged place or ship is a stage**, even for a
     while (the Going Merry burning, Enies Lobby after the Buster Call, Water
     Seven after Aqua Laguna), and its rebuilding is a new drawing again.
