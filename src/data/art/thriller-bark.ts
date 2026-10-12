@@ -882,17 +882,25 @@ export const thrillerBarkRedrawn: Redrawings = {
     },
   ],
 
-  // The same head and horns tipped over onto the roof he fell across. Moria's
-  // Shadow's Asgard pulls Luffy's shadow out of him at 373 (ch. 481), and he
-  // lies there lifeless.
+  // The same head tipped over onto its side on the roof he crashed through,
+  // one horn up in his colour and the other under it. Moria's Shadow's Asgard
+  // pulls Luffy's shadow out of him at 373 (ch. 481), and he lies there
+  // lifeless.
   'oars': [
     {
       episode: 373,
       chapter: 481,
       value: [
         ...moved(
-          thrillerBarkArt.oars.slice(0, 3),
-          'translate(74 108) rotate(-80) scale(0.8) translate(-80 -112)',
+          [
+            ...thrillerBarkArt.oars.slice(0, 1),
+            {
+              d: 'M50 78 C34 70 24 52 26 22 C34 42 46 52 58 58',
+              role: 'accent',
+            },
+            ...thrillerBarkArt.oars.slice(2, 3),
+          ],
+          'translate(50 80) rotate(90) scale(0.8) translate(-80 -112)',
         ),
         ...thrillerBarkArt.oars.slice(3, 6),
         ...thrillerBarkArt.oars.slice(7),
@@ -969,7 +977,7 @@ export const thrillerBarkRedrawn: Redrawings = {
     },
   ],
 
-  // The same three sabres lying flat on the ground, with no wind over them.
+  // The same three sabres lying flat and apart, with no wind over them.
   // Moria's Shadow's Asgard pulls Zoro's shadow out of him at 373 (ch. 481).
   'jigoro': [
     {
@@ -978,7 +986,7 @@ export const thrillerBarkRedrawn: Redrawings = {
       value: [
         ...moved(
           thrillerBarkArt.jigoro.slice(0, 2),
-          'translate(-20 6) rotate(120 54 154)',
+          'translate(-20 -66) rotate(120 54 154)',
         ),
         ...moved(
           thrillerBarkArt.jigoro.slice(2, 4),
@@ -1011,18 +1019,43 @@ export const thrillerBarkRedrawn: Redrawings = {
     },
   ],
 
-  // The same dog on its side, legs out and its three heads down. Moria's
-  // Shadow's Asgard takes back its shadow at 373 (ch. 481).
+  // The same dog on its back with its legs in the air, its three heads
+  // drooping to the ground, collars still on. Moria's Shadow's Asgard takes
+  // back its shadow at 373 (ch. 481).
   'cerberus-thriller-bark': [
     {
       episode: 373,
       chapter: 481,
       value: [
         ...moved(
-          thrillerBarkArt['cerberus-thriller-bark'].slice(0, -1),
-          'translate(80 150) rotate(90) scale(0.8) translate(-70 -110)',
+          [
+            ...thrillerBarkArt['cerberus-thriller-bark'].slice(0, 1),
+            ...thrillerBarkArt['cerberus-thriller-bark'].slice(12, 14),
+          ],
+          'translate(-10 282) scale(1 -1)',
         ),
-        shadow(80, 186, 66),
+        {
+          d: 'M90 170 C100 176 104 180 108 182 M90 166 C100 156 106 148 113 143 M88 160 C94 130 102 110 112 100',
+          role: 'soft',
+        },
+        { d: DOG_HEAD, transform: 'translate(130 182)' },
+        { d: DOG_HEAD, transform: 'translate(134 150) rotate(24)' },
+        { d: DOG_HEAD, transform: 'translate(126 114) rotate(56)' },
+        { d: DOG_EARS, transform: 'translate(130 182)' },
+        { d: FOX_EARS, transform: 'translate(134 150) rotate(24)' },
+        { d: DOG_EARS, transform: 'translate(126 114) rotate(56)' },
+        { d: SPIKED_COLLAR, transform: 'translate(110 182)', role: 'accent' },
+        {
+          d: SPIKED_COLLAR,
+          transform: 'translate(115.7 141.9) rotate(24)',
+          role: 'accent',
+        },
+        {
+          d: SPIKED_COLLAR,
+          transform: 'translate(114.8 97.4) rotate(56)',
+          role: 'accent',
+        },
+        shadow(84, 188, 66),
       ],
     },
   ],
