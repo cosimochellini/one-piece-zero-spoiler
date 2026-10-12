@@ -1,8 +1,9 @@
 import * as stylex from '@stylexjs/stylex'
 import { type ReactElement, useId } from 'react'
 
+import { SagaLine, StepperRow } from '~/components/BookmarkCounter'
+import { counterStyles as counter } from '~/components/BookmarkCounter.styles'
 import { styles } from '~/components/BookmarkDialog.styles'
-import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import {
@@ -76,10 +77,17 @@ export function UnitFields({
   )
 }
 
+/** Where the marker sits under each unit's segment. */
+const MARKER_AT = {
+  episode: styles.markerAt0,
+  season: styles.markerAt1,
+  chapter: styles.markerAt2,
+} as const
+
 /**
  * The three units as a segmented control: three radios, each drawn by the
  * label beside it, so the keyboard and the screen reader get a real radio
- * group and the eye gets three cells with one of them marked.
+ * group and the eye gets one track with a marker that slides to the choice.
  */
 function ModeChooser({
   mode,
@@ -94,7 +102,11 @@ function ModeChooser({
   return (
     <fieldset {...stylex.props(styles.modes)}>
       <legend {...stylex.props(styles.label)}>{t('dialog.modeLabel')}</legend>
-      <div {...stylex.props(styles.modeRow)}>
+      <div {...stylex.props(styles.track)}>
+        <span
+          aria-hidden="true"
+          {...stylex.props(styles.marker, MARKER_AT[mode])}
+        />
         {MODES.map((candidate) => {
           return (
             <label
@@ -147,7 +159,7 @@ function SeasonPicker({
           onChoose(event.target.value)
         }}
         value={season}
-        {...stylex.props(styles.field, styles.select)}
+        {...stylex.props(styles.select)}
       >
         <option value="">{t('dialog.seasonPlaceholder')}</option>
         {SEASONS.map((candidate) => {
@@ -193,10 +205,11 @@ export interface NumberFieldProps {
 }
 
 /**
- * The number itself: a text field with `inputMode="numeric"` between two
- * steppers, and one line below for the hint or the error. `type="text"`
- * rather than `number` because a number input ships its own spinner, and
- * two sets of steppers on one field is worse than none.
+ * The number itself, as the dialog's centrepiece: a large text field with
+ * `inputMode="numeric"` between two round steppers, then the saga the number
+ * falls in, then one line for the hint or the error. `type="text"` rather
+ * than `number` because a number input ships its own spinner, and two sets
+ * of steppers on one field is worse than none.
  */
 export function NumberField({
   draft,
@@ -206,101 +219,35 @@ export function NumberField({
 }: NumberFieldProps): ReactElement {
   const t = useT()
   const id = useId()
+  const sagaId = useId()
   const messageId = useId()
   const error = problem === null ? null : ERROR_KEY[problem]
 
   return (
-    <div {...stylex.props(styles.group)}>
+    <div {...stylex.props(counter.counter)}>
       <label
         htmlFor={id}
-        {...stylex.props(styles.label)}
+        {...stylex.props(styles.label, counter.counterLabel)}
       >
         {t(FIELD_KEY[draft.mode])}
       </label>
       <StepperRow
-        describedBy={messageId}
+        describedBy={`${sagaId} ${messageId}`}
         draft={draft}
         fieldId={id}
         invalid={error !== null}
         onBlur={onBlur}
         onChange={onChange}
       />
+      <SagaLine
+        draft={draft}
+        id={sagaId}
+      />
       <FieldMessage
         draft={draft}
         error={error}
         id={messageId}
       />
-    </div>
-  )
-}
-
-interface StepperRowProps {
-  describedBy: string
-  draft: Draft
-  fieldId: string
-  invalid: boolean
-  onBlur: () => void
-  onChange: (number: string) => void
-}
-
-/**
- * The minus, the field and the plus. The stepper arithmetic is read here and
- * only here, so the three controls cannot disagree about the floor, the
- * ceiling or the step; with no ceiling to count up to, all three go dead.
- */
-function StepperRow({
-  draft,
-  fieldId,
-  describedBy,
-  invalid,
-  onChange,
-  onBlur,
-}: StepperRowProps): ReactElement {
-  const t = useT()
-  const { ceiling, atFloor, atCeiling, stepped } = stepperOf(draft)
-  const disabled = ceiling === null
-
-  return (
-    <div {...stylex.props(styles.row)}>
-      <Button
-        aria-label={t('dialog.decrease')}
-        disabled={disabled || atFloor}
-        onClick={() => {
-          onChange(stepped(-1))
-        }}
-        variant="quiet"
-      >
-        −
-      </Button>
-      <input
-        aria-describedby={describedBy}
-        aria-invalid={invalid}
-        autoComplete="off"
-        disabled={disabled}
-        id={fieldId}
-        inputMode="numeric"
-        onBlur={onBlur}
-        onChange={(event) => {
-          onChange(event.target.value)
-        }}
-        type="text"
-        value={draft.number}
-        {...stylex.props(
-          styles.field,
-          styles.number,
-          invalid && styles.fieldInvalid,
-        )}
-      />
-      <Button
-        aria-label={t('dialog.increase')}
-        disabled={disabled || atCeiling}
-        onClick={() => {
-          onChange(stepped(1))
-        }}
-        variant="quiet"
-      >
-        +
-      </Button>
     </div>
   )
 }

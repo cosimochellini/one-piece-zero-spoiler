@@ -1,7 +1,7 @@
 import * as stylex from '@stylexjs/stylex'
-import { type ReactElement, useState } from 'react'
+import { lazy, type ReactElement, Suspense, useState } from 'react'
 
-import { BookmarkDialog } from '~/components/BookmarkDialog'
+import type { BookmarkDialog as Dialog } from '~/components/BookmarkDialog'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
@@ -55,6 +55,24 @@ function faceOf(t: Translate, bookmark: Bookmark, inFold: boolean): MarkFace {
 }
 
 /**
+ * The dialog's code, fetched apart from the page: every page carries the
+ * mark, few readers open it. Asked for as soon as the mark is pointed at or
+ * focused, so the first opening rarely waits on the network.
+ */
+async function loadDialog(): Promise<{ BookmarkDialog: typeof Dialog }> {
+  return import('~/components/BookmarkDialog')
+}
+
+function handlePreload(): void {
+  void loadDialog()
+}
+
+const BookmarkDialog = lazy(async () => {
+  const module = await loadDialog()
+  return { default: module.BookmarkDialog }
+})
+
+/**
  * The reader's bookmark, as one mark in the bar: `EP 650`, `S02E03` or
  * `CH 1044`, or the invitation to set one. It is the one control the whole
  * site turns on, so it is the one gold thing in the bar. Pressing it opens
@@ -92,6 +110,8 @@ export function EpisodeMark({
         onClick={() => {
           setOpen(true)
         }}
+        onFocus={handlePreload}
+        onPointerEnter={handlePreload}
         sx={[
           inFold ? styles.invite : styles.mark,
           !inFold && bookmark === null && styles.markUnset,
@@ -101,11 +121,13 @@ export function EpisodeMark({
       </Button>
 
       {open && (
-        <BookmarkDialog
-          onClose={() => {
-            setOpen(false)
-          }}
-        />
+        <Suspense fallback={null}>
+          <BookmarkDialog
+            onClose={() => {
+              setOpen(false)
+            }}
+          />
+        </Suspense>
       )}
     </>
   )

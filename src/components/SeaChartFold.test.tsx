@@ -88,9 +88,12 @@ describe('SeaChartFold', () => {
 
     await user.click(cta)
 
-    expect(
-      screen.getByRole('dialog', { name: 'Where are you up to?' }),
-    ).toBeVisible()
+    // The dialog's code is loaded on demand, so it appears a tick later.
+    const shown = await screen.findByRole('dialog', {
+      name: 'Where are you up to?',
+    })
+
+    expect(shown).toBeVisible()
     expect(screen.getAllByRole('dialog')).toHaveLength(1)
     expect(cta).toHaveAttribute('aria-expanded', 'true')
 

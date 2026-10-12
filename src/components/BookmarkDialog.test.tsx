@@ -1,10 +1,17 @@
-import { type RenderResult, screen, within } from '@testing-library/react'
+import {
+  act,
+  fireEvent,
+  type RenderResult,
+  screen,
+  within,
+} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import type { ReactElement } from 'react'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { useBookmark } from '~/lib/progress/BookmarkContext'
 import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
+import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { EpisodeMark } from './EpisodeMark'
@@ -33,11 +40,26 @@ function renderMark(bookmark: Bookmark = null): RenderResult {
   )
 }
 
+// Two sagas and one run of filler: enough to read a label and its mark.
+const SAGAS: SagaTable = {
+  episode: [
+    { from: 579, name: 'Punk Hazard' },
+    { from: 629, name: 'Dressrosa' },
+  ],
+  chapter: [],
+  filler: [{ first: 747, last: 750 }],
+}
+
+const loadSagas = vi.fn<() => Promise<SagaTable>>().mockResolvedValue(SAGAS)
+
 const stored = (): null | string => screen.getByTestId('bookmark').textContent
 const dialog = (): HTMLElement =>
   screen.getByRole('dialog', { name: 'Where are you up to?' })
 const field = (name: string): HTMLElement =>
   within(dialog()).getByLabelText(name)
+// The unit radio is called Season too, so the select is found by its role.
+const seasonSelect = (): HTMLElement =>
+  within(dialog()).getByRole('combobox', { name: 'Season' })
 const button = (name: string): HTMLElement =>
   within(dialog()).getByRole('button', { name })
 
@@ -45,7 +67,8 @@ async function open(
   user: ReturnType<typeof userEvent.setup>,
 ): Promise<HTMLElement> {
   await user.click(screen.getByRole('button', { name: /Set episode|Change/u }))
-  return dialog()
+  // The dialog's code is loaded on demand, so it appears a tick later.
+  return screen.findByRole('dialog', { name: 'Where are you up to?' })
 }
 
 describe('EpisodeMark', () => {
@@ -72,10 +95,13 @@ describe('EpisodeMark', () => {
     await open(user)
 
     expect(dialog()).toBeVisible()
-    expect(screen.getByRole('radio', { name: 'Anime episode' })).toHaveFocus()
-    expect(screen.getByRole('radio', { name: 'Anime episode' })).toBeChecked()
+    expect(screen.getByRole('radio', { name: 'Episode' })).toHaveFocus()
+    expect(screen.getByRole('radio', { name: 'Episode' })).toBeChecked()
     expect(button('Save')).toBeDisabled()
-    expect(button('Clear bookmark')).toBeDisabled()
+    // There is nothing to clear, so the line is not there at all.
+    expect(
+      within(dialog()).queryByRole('button', { name: 'Clear bookmark' }),
+    ).not.toBeInTheDocument()
   })
 
   it('opens on the bookmark as it stands', async () => {
@@ -84,10 +110,8 @@ describe('EpisodeMark', () => {
 
     await open(user)
 
-    expect(
-      screen.getByRole('radio', { name: 'Season and episode' }),
-    ).toBeChecked()
-    expect(field('Season')).toHaveValue('2')
+    expect(screen.getByRole('radio', { name: 'Season' })).toBeChecked()
+    expect(seasonSelect()).toHaveValue('2')
     expect(field('Episode in that season')).toHaveValue('3')
     expect(button('Save')).toBeEnabled()
   })
@@ -116,13 +140,13 @@ describe('EpisodeMark', () => {
     renderMark()
 
     await open(user)
-    await user.click(screen.getByRole('radio', { name: 'Season and episode' }))
+    await user.click(screen.getByRole('radio', { name: 'Season' }))
 
     // No season yet: the field waits, and so does Save.
     expect(field('Episode in that season')).toBeDisabled()
     expect(dialog()).toHaveTextContent('Choose a season first.')
 
-    await user.selectOptions(field('Season'), '2')
+    await user.selectOptions(seasonSelect(), '2')
     await user.type(field('Episode in that season'), '3')
     await user.click(button('Save'))
     await settle()
@@ -137,7 +161,7 @@ describe('EpisodeMark', () => {
     renderMark()
 
     await open(user)
-    await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
+    await user.click(screen.getByRole('radio', { name: 'Chapter' }))
     await user.type(field('Last chapter you read'), '1044')
     await user.click(button('Save'))
     await settle()
@@ -154,7 +178,7 @@ describe('EpisodeMark', () => {
 
     expect(field('Last episode you watched')).toHaveValue('650')
 
-    await user.click(screen.getByRole('radio', { name: 'Manga chapter' }))
+    await user.click(screen.getByRole('radio', { name: 'Chapter' }))
 
     expect(field('Last chapter you read')).toHaveValue('')
     expect(button('Save')).toBeDisabled()
@@ -172,6 +196,54 @@ describe('EpisodeMark', () => {
     await user.click(button('One less'))
 
     expect(field('Last episode you watched')).toHaveValue('651')
+  })
+
+  it('keeps stepping while a stepper is held, and stops when let go', async () => {
+    const user = userEvent.setup()
+    renderMark(ep(650))
+    await open(user)
+
+    vi.useFakeTimers()
+    try {
+      fireEvent.pointerDown(button('One more'), { button: 0 })
+      // One step on the press, one when the hold starts repeating, and one
+      // a shorter interval after that.
+      act(() => {
+        vi.advanceTimersByTime(400)
+      })
+      act(() => {
+        vi.advanceTimersByTime(84)
+      })
+      fireEvent.pointerUp(button('One more'))
+      act(() => {
+        vi.advanceTimersByTime(1000)
+      })
+    } finally {
+      vi.useRealTimers()
+    }
+
+    expect(field('Last episode you watched')).toHaveValue('653')
+  })
+
+  it('names the saga the number falls in, filler included', async () => {
+    const user = userEvent.setup()
+    renderWithProviders(
+      <SagaTableContext value={loadSagas}>
+        <EpisodeMark />
+      </SagaTableContext>,
+      { bookmark: ep(650) },
+    )
+
+    await open(user)
+
+    const saga = await within(dialog()).findByText('Arc · Dressrosa')
+
+    expect(saga).toBeVisible()
+
+    await user.clear(field('Last episode you watched'))
+    await user.type(field('Last episode you watched'), '750')
+
+    expect(within(dialog()).getByText('Arc · Dressrosa · Filler')).toBeVisible()
   })
 
   it('says nothing about validity until the field has been left', async () => {
@@ -252,11 +324,11 @@ describe('EpisodeMark', () => {
 
     await user.click(screen.getByRole('button', { name: 'Imposta episodio' }))
 
-    expect(
-      screen.getByRole('dialog', { name: 'A che punto sei?' }),
-    ).toBeVisible()
-    expect(
-      screen.getByRole('radio', { name: 'Capitolo del manga' }),
-    ).toBeInTheDocument()
+    const shown = await screen.findByRole('dialog', {
+      name: 'A che punto sei?',
+    })
+
+    expect(shown).toBeVisible()
+    expect(screen.getByRole('radio', { name: 'Capitolo' })).toBeInTheDocument()
   })
 })

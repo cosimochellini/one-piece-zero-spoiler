@@ -143,6 +143,15 @@
   }
 
   /*
+   * A modal dialog is open: the page behind it is inert, so it does not
+   * scroll either. Without this the bookmark sheet's own scroll runs on into
+   * the page under it on a phone.
+   */
+  html:has(dialog:modal) {
+    overflow-y: hidden;
+  }
+
+  /*
    * Functional motion (a spinner, a progress bar) still runs under reduced
    * motion, just shorter. Spatial motion is collapsed to a crossfade by each
    * component's own reduced-motion branch; this is the blanket floor.

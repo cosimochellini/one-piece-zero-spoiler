@@ -1,3 +1,7 @@
+/* Hallmark · component: modal (bookmark dialog) · genre: atmospheric · theme: Sea Chart (locked)
+ * states: default · hover · focus · active · disabled · loading · error · success
+ * redesign 2026-10-12: the number as the hero, bottom sheet under 40rem, gold Save
+ */
 import * as stylex from '@stylexjs/stylex'
 
 import {
@@ -12,54 +16,76 @@ import {
   text,
 } from '~/styles/tokens.stylex'
 
-// The dialog surfaces rather than slides: a short fade and a small rise, both
-// compositor properties, and none of it under reduced motion.
+const SHEET = '@media (max-width: 39.99rem)'
+const MOTION = '@media (prefers-reduced-motion: no-preference)'
+const SHEET_MOTION =
+  '@media (max-width: 39.99rem) and (prefers-reduced-motion: no-preference)'
+
+// On a desktop the dialog surfaces: a short fade and a small rise. As a sheet
+// it rises from the bottom edge it is attached to. Both are compositor-only.
 const surface = stylex.keyframes({
   from: { opacity: 0, transform: 'translateY(8px)' },
   to: { opacity: 1, transform: 'none' },
+})
+const rise = stylex.keyframes({
+  from: { transform: 'translateY(100%)' },
+  to: { transform: 'none' },
 })
 
 /**
  * Every declaration the dialog paints with, kept beside the component rather
  * than inside it so neither file has to be read past the point a reviewer can
- * hold it. StyleX compiles a `create()` the same way wherever it is declared,
- * so the atomic classes and the rendered CSS are unchanged by the move.
+ * hold it.
  */
 export const styles = stylex.create({
   // Pinned by hand rather than left to the UA: `margin: auto` on a fixed,
   // inset-zero box centres it, and `height: fit-content` keeps it from
-  // stretching to the viewport. The top layer ignores `z-index`.
+  // stretching to the viewport. Under 40rem the top margin alone stays auto,
+  // which drops the box onto the bottom edge as a sheet.
   dialog: {
     'inset': 0,
-    'margin': 'auto',
+    'margin': { [SHEET]: 'auto 0 0', default: 'auto' },
     'padding': 0,
     'borderColor': color.rule2,
-    'borderRadius': radius.card,
+    'borderRadius': {
+      [SHEET]: `${radius.card} ${radius.card} 0 0`,
+      default: radius.card,
+    },
     'borderStyle': 'solid',
-    'borderWidth': rule.fine,
+    'borderWidth': { [SHEET]: `${rule.hair} 0 0`, default: rule.hair },
     'overflow': 'auto',
-    'animationDuration': dur.short,
+    'overscrollBehavior': 'contain',
+    'animationDuration': { [SHEET]: dur.long, default: dur.short },
     'animationName': {
-      'default': 'none',
-      '@media (prefers-reduced-motion: no-preference)': surface,
+      [MOTION]: surface,
+      [SHEET_MOTION]: rise,
+      default: 'none',
     },
     'animationTimingFunction': ease.out,
     'backgroundColor': color.paper2,
     'color': color.ink,
     'position': 'fixed',
     'height': 'fit-content',
-    'maxHeight': 'min(80dvh, 40rem)',
-    'width': 'min(calc(100% - 2rem), 28rem)',
+    'maxHeight': { [SHEET]: '92dvh', default: 'min(90dvh, 44rem)' },
+    'maxWidth': '100%',
+    'width': { [SHEET]: '100%', default: 'min(calc(100% - 2rem), 30rem)' },
     '::backdrop': { backgroundColor: color.scrim },
   },
-  // Tighter on a phone, where 80dvh is not much taller than the form: every
-  // rem of padding is a rem the actions lose before the box has to scroll.
+
   form: {
-    padding: { 'default': space.md, '@media (min-width: 40rem)': space.xl },
-    gap: { 'default': space.md, '@media (min-width: 40rem)': space.lg },
+    gap: space.lg,
+    paddingInline: { [SHEET]: space.md, default: space.xl },
     display: 'grid',
+    paddingBlockEnd: {
+      [SHEET]: `calc(${space.lg} + env(safe-area-inset-bottom))`,
+      default: space.xl,
+    },
+    paddingBlockStart: { [SHEET]: space.lg, default: space.xl },
+    position: 'relative',
   },
-  head: { gap: space.xs, display: 'grid' },
+
+  // The title clears the close button in the corner.
+  head: { gap: space.xs2, display: 'grid', paddingInlineEnd: space.xl },
   title: {
     color: color.ink,
     fontFamily: font.display,
@@ -69,7 +95,24 @@ export const styles = stylex.create({
     lineHeight: leading.heading,
   },
   lede: { color: color.muted, fontSize: text.base, lineHeight: leading.body },
+  close: {
+    padding: 0,
+    borderColor: {
+      'default': 'transparent',
+      ':hover:not(:disabled)': color.rule2,
+    },
+    borderRadius: radius.pill,
+    color: { 'default': color.muted, ':hover:not(:disabled)': color.ink },
+    fontSize: text.lg,
+    insetBlockStart: { [SHEET]: space.sm, default: space.md },
+    insetInlineEnd: { [SHEET]: space.sm, default: space.md },
+    position: 'absolute',
+    height: '44px',
+    width: '44px',
+  },
 
+  // The unit: a radio group drawn as one segmented track, with a marker that
+  // slides under the chosen segment.
   modes: {
     margin: 0,
     padding: 0,
@@ -78,14 +121,35 @@ export const styles = stylex.create({
     display: 'grid',
     minWidth: 0,
   },
-  modeRow: {
-    gap: space.xs2,
+  track: {
+    padding: space.xs3,
+    borderColor: color.rule2,
+    borderRadius: radius.card,
+    borderStyle: 'solid',
+    borderWidth: rule.hair,
+    backgroundColor: color.paper,
     display: 'grid',
-    gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
-      '@media (min-width: 40rem)': 'repeat(3, minmax(0, 1fr))',
-    },
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+    position: 'relative',
   },
+  marker: {
+    borderRadius: radius.input,
+    insetBlock: space.xs3,
+    backgroundColor: color.paper3,
+    borderBlockEndColor: color.accent,
+    borderBlockEndStyle: 'solid',
+    borderBlockEndWidth: rule.fine,
+    insetInlineStart: space.xs3,
+    pointerEvents: 'none',
+    position: 'absolute',
+    transitionDuration: dur.short,
+    transitionProperty: 'transform',
+    transitionTimingFunction: ease.out,
+    width: `calc((100% - 2 * ${space.xs3}) / 3)`,
+  },
+  markerAt0: { transform: 'none' },
+  markerAt1: { transform: 'translateX(100%)' },
+  markerAt2: { transform: 'translateX(200%)' },
   mode: { display: 'grid', position: 'relative' },
   // The input is present for the keyboard and the screen reader and drawn
   // by its sibling: the checked and focused states are read off it there.
@@ -98,19 +162,14 @@ export const styles = stylex.create({
     width: '1px',
   },
   modeLabel: {
-    borderColor: {
-      'default': color.rule2,
-      ':is(input:checked + &)': color.accent,
-      ':is(input:focus-visible + &)': color.accent,
+    borderRadius: radius.input,
+    paddingInline: space.xs,
+    alignItems: 'center',
+    color: {
+      'default': color.muted,
+      ':is(input:checked + &)': color.ink,
       ':is(label:hover > &)': color.ink,
     },
-    borderRadius: radius.input,
-    borderStyle: 'solid',
-    borderWidth: rule.fine,
-    paddingBlock: space.xs,
-    paddingInline: space.sm,
-    alignItems: 'center',
-    color: { 'default': color.ink2, ':is(input:checked + &)': color.ink },
     cursor: 'pointer',
     display: 'flex',
     fontSize: text.base,
@@ -121,17 +180,19 @@ export const styles = stylex.create({
       'default': 'transparent',
       ':is(input:focus-visible + &)': color.focus,
     },
-    outlineOffset: space.xs3,
+    outlineOffset: 0,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
+    position: 'relative',
     textAlign: 'center',
     transitionDuration: dur.micro,
-    transitionProperty: 'color, border-color',
+    transitionProperty: 'color',
     transitionTimingFunction: ease.out,
+    whiteSpace: 'nowrap',
     minHeight: '44px',
   },
 
-  group: { gap: space.xs, display: 'grid', justifyItems: 'start' },
+  group: { gap: space.xs, display: 'grid', justifyItems: 'stretch' },
   label: {
     padding: 0,
     color: color.ink2,
@@ -139,13 +200,7 @@ export const styles = stylex.create({
     fontSize: text.base,
     fontWeight: 600,
   },
-  row: {
-    gap: space.xs,
-    alignItems: 'center',
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  field: {
+  select: {
     borderColor: {
       'default': color.rule2,
       ':hover': color.ink2,
@@ -153,17 +208,15 @@ export const styles = stylex.create({
     },
     borderRadius: radius.input,
     borderStyle: 'solid',
-    borderWidth: rule.fine,
-    paddingBlock: space.xs2,
-    paddingInline: space.xs,
+    borderWidth: rule.hair,
+    paddingBlock: space.xs,
+    paddingInline: space.sm,
     backgroundColor: color.paper,
     color: color.ink,
-    cursor: { 'default': 'auto', ':disabled': 'not-allowed' },
-    fontFamily: font.mono,
-    fontSize: text.lg,
-    fontVariantNumeric: 'tabular-nums',
-    fontWeight: 700,
-    opacity: { 'default': 1, ':disabled': 0.55 },
+    cursor: 'pointer',
+    fontFamily: font.body,
+    fontSize: text.base,
+    fontWeight: 600,
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',
@@ -171,37 +224,54 @@ export const styles = stylex.create({
     transitionDuration: dur.micro,
     transitionProperty: 'border-color',
     transitionTimingFunction: ease.out,
-    // Matches the 44px button height exactly; a field shorter than the
-    // controls beside it reads as an afterthought.
-    minHeight: '44px',
-  },
-  select: {
-    fontFamily: font.body,
-    fontSize: text.base,
-    fontWeight: 600,
     maxWidth: '100%',
+    minHeight: '44px',
     width: '100%',
   },
-  number: {
-    textAlign: 'center',
-    // 5ch holds the ceiling plus a digit of headroom without the field
-    // stretching to fill the row. The padding and the border are added on
-    // top: the width is the border box, and '5ch' alone clipped '1100'.
-    width: `calc(5ch + ${space.md} + ${space.xs2})`,
-  },
-  fieldInvalid: { borderColor: color.accent },
+
   message: {
     color: color.muted,
     fontFamily: font.body,
     fontSize: text.base,
     lineHeight: leading.body,
+    textAlign: 'center',
     // Reserves the line whether or not there is a message in it.
     minHeight: '1lh',
   },
   messageError: { color: color.accent, fontWeight: 600 },
 
-  actions: { gap: space.xs, display: 'flex', flexWrap: 'wrap' },
-  cancel: {
-    marginInlineStart: { 'default': 0, '@media (min-width: 40rem)': 'auto' },
+  actions: { gap: space.xs, display: 'grid', justifyItems: 'center' },
+  // The one gold surface on the site (owner, 2026-10-12): the action the
+  // whole dialog exists for. Text on it is `accentInk`, by contract.
+  save: {
+    borderColor: { 'default': color.accent, ':disabled': color.rule },
+    backgroundColor: {
+      'default': color.accent,
+      ':active:not(:disabled)': `color-mix(in oklch, ${color.accent} 88%, ${color.accentInk})`,
+      ':hover:not(:disabled)': `color-mix(in oklch, ${color.accent} 80%, ${color.ink})`,
+      ':disabled': color.paper3,
+    },
+    color: {
+      'default': color.accentInk,
+      ':hover:not(:disabled)': color.accentInk,
+      ':disabled': color.muted,
+    },
+    fontSize: text.lg,
+    fontWeight: 700,
+    opacity: 1,
+    minHeight: '52px',
+    width: '100%',
+  },
+  // Clearing the bookmark is rare and final, so it is a quiet line of text
+  // under the action rather than a second button beside it.
+  forget: {
+    borderColor: 'transparent',
+    color: { 'default': color.muted, ':hover:not(:disabled)': color.ink },
+    fontSize: text.base,
+    fontWeight: 500,
+    textDecorationColor: { 'default': color.rule2, ':hover': color.ink },
+    textDecorationLine: 'underline',
+    textDecorationThickness: rule.hair,
+    textUnderlineOffset: '0.25em',
   },
 })
