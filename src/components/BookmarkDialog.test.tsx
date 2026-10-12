@@ -14,6 +14,7 @@ import { type Bookmark, serialiseBookmark } from '~/lib/progress/episode'
 import { type SagaTable, SagaTableContext } from '~/lib/progress/sagaLabel'
 import { ep, renderWithProviders, settle } from '~/test/providers'
 
+import { preloadBookmarkForm } from './bookmarkFormLoader'
 import { EpisodeMark } from './EpisodeMark'
 
 /**
@@ -68,15 +69,17 @@ async function open(
   user: ReturnType<typeof userEvent.setup>,
 ): Promise<HTMLElement> {
   await user.click(screen.getByRole('button', { name: /Set episode|Change/u }))
-  // The dialog's code is loaded on demand, so it appears a tick later.
-  return screen.findByRole('dialog', { name: 'Where are you up to?' })
+  // The form is loaded on demand, so it fills the dialog a tick later.
+  const shown = dialog()
+  await within(shown).findByRole('button', { name: 'Save' })
+  return shown
 }
 
 describe('EpisodeMark', () => {
-  // The mark fetches the dialog's code on demand. Fetched once here, so the
+  // The mark fetches the form's code on demand. Fetched once here, so the
   // first test does not spend its wait on transforming the module.
   beforeAll(async () => {
-    await import('./BookmarkDialog')
+    await preloadBookmarkForm()
   })
 
   beforeEach(() => {
@@ -347,6 +350,11 @@ describe('EpisodeMark', () => {
     })
 
     expect(shown).toBeVisible()
-    expect(screen.getByRole('radio', { name: 'Capitolo' })).toBeInTheDocument()
+
+    const chapter = await within(shown).findByRole('radio', {
+      name: 'Capitolo',
+    })
+
+    expect(chapter).toBeInTheDocument()
   })
 })

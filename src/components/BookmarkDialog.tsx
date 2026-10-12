@@ -2,18 +2,25 @@ import * as stylex from '@stylexjs/stylex'
 import {
   type ReactElement,
   type RefObject,
+  Suspense,
   useEffect,
   useId,
   useRef,
+  useState,
 } from 'react'
 
 import { styles } from '~/components/BookmarkDialog.styles'
-import { NumberField, UnitFields } from '~/components/BookmarkFields'
+import {
+  formHasLanded,
+  LazyBookmarkForm,
+  preloadBookmarkForm,
+} from '~/components/bookmarkFormLoader'
+import {
+  BookmarkLoadFailed,
+  BookmarkSkeleton,
+} from '~/components/BookmarkSkeleton'
 import { Button } from '~/components/ui/Button'
 import { useT } from '~/i18n/LocaleContext'
-import { useBookmark } from '~/lib/progress/BookmarkContext'
-import type { Bookmark } from '~/lib/progress/episode'
-import { useBookmarkDraft } from '~/lib/progress/useBookmarkDraft'
 
 /** The one thing the dialog owes whoever opened it. */
 export interface BookmarkDialogProps {
@@ -30,10 +37,9 @@ export interface BookmarkDialogProps {
  * that. A click on the backdrop closes it too, which is why the dialog
  * itself has no padding — a click on padding would count as a click inside.
  *
- * The draft is local until Save. Switching the unit empties the field
- * rather than converting: an episode is not a chapter, and a number carried
- * across would be a guess dressed as a fact. Validation follows the touched
- * pattern: silent until the field is blurred, then live on every keystroke.
+ * The dialog, its title and its close button are on the page; the form is
+ * fetched on demand, and a skeleton of it holds its place until it arrives,
+ * so the dialog opens on the press however slow the connection.
  */
 export function BookmarkDialog({ onClose }: BookmarkDialogProps): ReactElement {
   const { dialogRef, close } = useModal()
@@ -48,11 +54,14 @@ export function BookmarkDialog({ onClose }: BookmarkDialogProps): ReactElement {
       ref={dialogRef}
       {...stylex.props(styles.dialog)}
     >
-      <BookmarkForm
-        ledeId={ledeId}
-        onDone={close}
-        titleId={titleId}
-      />
+      <div {...stylex.props(styles.panel)}>
+        <DialogHead
+          ledeId={ledeId}
+          titleId={titleId}
+        />
+        <FormSlot onDone={close} />
+        <CloseButton onClose={close} />
+      </div>
     </dialog>
   )
 }
@@ -65,14 +74,17 @@ interface Modal {
 /**
  * The whole native lifecycle of the dialog in one place: it is opened modally
  * for as long as the component is mounted, and a click that lands on the
- * dialog element itself rather than on the form inside it closes it, which is
- * what a click on the backdrop is.
+ * dialog element itself rather than on the panel inside it closes it, which
+ * is what a click on the backdrop is.
  *
  * That listener is native rather than a React `onClick` on purpose. The
  * backdrop is not an element of its own and a `<dialog>` is not a control, so
  * a handler in the JSX would be a mouse listener on a non-interactive element
  * — and it would be owed a keyboard equivalent, which Escape already is and
  * which the browser already handles.
+ *
+ * The browser focuses the first control on opening, which is the first unit
+ * whichever one is chosen; the focus is moved to the chosen one.
  */
 function useModal(): Modal {
   const dialogRef = useRef<HTMLDialogElement>(null)
@@ -86,6 +98,7 @@ function useModal(): Modal {
     }
 
     dialog?.showModal()
+    dialog?.querySelector<HTMLInputElement>('input:checked')?.focus()
     dialog?.addEventListener('click', closeOnBackdrop)
 
     return () => {
@@ -101,67 +114,53 @@ function useModal(): Modal {
   }
 }
 
-interface BookmarkFormProps {
-  ledeId: string
-  /** Closes the dialog. Called on every way out, including a successful save. */
-  onDone: () => void
-  titleId: string
-}
+type FormStatus = 'failed' | 'loading' | 'ready'
 
 /**
- * The draft from the unit down to the number, and the three ways out of it:
- * save, forget, or close.
- *
- * Nothing here reaches the cookie until Save, so a reader who opens the
- * dialog, tries a unit and leaves still has the bookmark they arrived with.
+ * The form, or its skeleton while its code is on the way, or a way to ask
+ * again when the fetch failed.
  */
-function BookmarkForm({
-  titleId,
-  ledeId,
-  onDone,
-}: BookmarkFormProps): ReactElement {
-  const { bookmark, setBookmark } = useBookmark()
+function FormSlot({ onDone }: { onDone: () => void }): ReactElement {
+  const [status, setStatus] = useState<FormStatus>(() =>
+    formHasLanded() ? 'ready' : 'loading',
+  )
 
-  const commit = (next: Bookmark): void => {
-    // `setBookmark` writes the cookie and re-reads the pages, in that order.
-    setBookmark(next)
-    onDone()
-  }
-  const { canSave, draft, onBlur, onChange, onRestart, onSubmit, problem } =
-    useBookmarkDraft(bookmark, commit)
+  useEffect(() => {
+    if (status !== 'loading') {
+      return
+    }
 
-  return (
-    <form
-      onSubmit={onSubmit}
-      {...stylex.props(styles.form)}
-    >
-      <DialogHead
-        ledeId={ledeId}
-        titleId={titleId}
-      />
+    let live = true
+    const settle = async (): Promise<void> => {
+      const landed = await preloadBookmarkForm()
+      if (live) {
+        setStatus(landed ? 'ready' : 'failed')
+      }
+    }
+    void settle()
 
-      <UnitFields
-        draft={draft}
-        onRestart={onRestart}
-      />
+    return () => {
+      live = false
+    }
+  }, [status])
 
-      <NumberField
-        draft={draft}
-        onBlur={onBlur}
-        onChange={onChange}
-        problem={problem}
-      />
-
-      <Actions
-        canForget={bookmark !== null}
-        canSave={canSave}
-        onForget={() => {
-          commit(null)
+  if (status === 'failed') {
+    return (
+      <BookmarkLoadFailed
+        onRetry={() => {
+          setStatus('loading')
         }}
       />
+    )
+  }
+  if (status === 'loading') {
+    return <BookmarkSkeleton />
+  }
 
-      <CloseButton onClose={onDone} />
-    </form>
+  return (
+    <Suspense fallback={<BookmarkSkeleton />}>
+      <LazyBookmarkForm onDone={onDone} />
+    </Suspense>
   )
 }
 
@@ -198,46 +197,8 @@ function DialogHead({
 }
 
 /**
- * Save, and under it the way to drop the bookmark. Save is disabled until the
- * draft grades to a real bookmark, so it cannot be pressed into a silent
- * no-op; the forget line is absent rather than disabled when there is no
- * bookmark to drop.
- */
-function Actions({
-  canSave,
-  canForget,
-  onForget,
-}: {
-  canForget: boolean
-  canSave: boolean
-  onForget: () => void
-}): ReactElement {
-  const t = useT()
-
-  return (
-    <div {...stylex.props(styles.actions)}>
-      <Button
-        disabled={!canSave}
-        sx={styles.save}
-        type="submit"
-      >
-        {t('dialog.save')}
-      </Button>
-      {canForget && (
-        <Button
-          onClick={onForget}
-          sx={styles.forget}
-        >
-          {t('dialog.forget')}
-        </Button>
-      )}
-    </div>
-  )
-}
-
-/**
  * The way out that keeps the bookmark as it was, drawn as a cross in the top
- * corner. It comes last in the form, so the keyboard meets the unit first;
+ * corner. It comes last in the panel, so the keyboard meets the unit first;
  * Escape and a click on the backdrop do the same thing.
  */
 function CloseButton({ onClose }: { onClose: () => void }): ReactElement {

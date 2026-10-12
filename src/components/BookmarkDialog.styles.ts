@@ -72,7 +72,9 @@ export const styles = stylex.create({
     '::backdrop': { backgroundColor: color.scrim },
   },
 
-  form: {
+  // Everything inside the dialog: the head, the form or its skeleton, and
+  // the close button pinned in the corner.
+  panel: {
     gap: space.lg,
     paddingInline: { [SHEET]: space.md, default: space.xl },
     display: 'grid',
@@ -83,6 +85,8 @@ export const styles = stylex.create({
     paddingBlockStart: { [SHEET]: space.lg, default: space.xl },
     position: 'relative',
   },
+
+  body: { gap: space.lg, display: 'grid' },
 
   // The title clears the close button in the corner.
   head: { gap: space.xs2, display: 'grid', paddingInlineEnd: space.xl },
