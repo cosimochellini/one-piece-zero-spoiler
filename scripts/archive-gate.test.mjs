@@ -14,6 +14,7 @@ import {
   canaryFrom,
   judge,
   MAX_CLIENT_BYTES,
+  PROSE_EXTRA,
   slugsFrom,
 } from './archive-gate.mjs'
 
@@ -136,6 +137,29 @@ describe('the slugs the gate looks for', () => {
 })
 
 describe('the prose the gate looks for', () => {
+  it('covers every prose module outside the records and drawings', () => {
+    const dataDir = path.join(repositoryRoot, 'src/data')
+    const modules = readdirSync(dataDir, { recursive: true }).filter(
+      (name) =>
+        name.endsWith('.ts')
+        && !name.endsWith('.test.ts')
+        && !name.startsWith(`records${path.sep}`)
+        && !name.startsWith(`art${path.sep}`),
+    )
+
+    const prose = modules.filter((name) => {
+      const source = readFileSync(path.join(dataDir, name), 'utf8')
+
+      return canaryFrom(source) !== null
+    })
+
+    for (const name of prose) {
+      const file = `src/data/${name.split(path.sep).join('/')}`
+
+      expect(PROSE_EXTRA, file).toContain(file)
+    }
+  })
+
   it('names every saga the archive holds, and the log', () => {
     const recordsDir = path.join(repositoryRoot, 'src/data/records')
     const sagas = readdirSync(recordsDir).filter((name) => {
@@ -152,7 +176,7 @@ describe('the prose the gate looks for', () => {
 
       expect(phrase, name).not.toBeNull()
     }
-    for (const extra of ['src/data/places.ts', 'src/data/filler.ts']) {
+    for (const extra of PROSE_EXTRA) {
       const source = readFileSync(path.join(repositoryRoot, extra), 'utf8')
 
       expect(canaryFrom(source), extra).not.toBeNull()

@@ -55,7 +55,7 @@ export const MAX_CLIENT_BYTES = 530_000
 
 /** Where the prose lives: every saga, the ship's log and the filler guide. */
 const PROSE_DIR = 'src/data/records'
-const PROSE_EXTRA = ['src/data/places.ts', 'src/data/filler.ts']
+export const PROSE_EXTRA = ['src/data/places.ts', 'src/data/filler.ts']
 
 /** Where the drawings live, keyed by the id of the record each was drawn for. */
 const ART_DIR = 'src/data/art'

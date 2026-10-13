@@ -80,6 +80,10 @@ entry, which carries the episode it is learned in. The comment at the top of
 | `scripts/`        | Quality gates, the PR title validator, the wiki checks and the merge helper.       |
 | `docs/`           | [Architecture](docs/architecture.md), media and the chronicle verification report. |
 
+A new module with prose must go into `PROSE_EXTRA` in `scripts/archive-gate.mjs`
+and into `TEXTS` in `src/data/leaks.test.ts`, with the gate its page applies to
+it.
+
 Components, routes and `src/lib` cannot import `~/data`. ESLint rejects the
 import and `npm run gate:archive` rejects the build, because that import would
 put the whole archive in the browser.
