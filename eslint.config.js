@@ -247,6 +247,14 @@ const config = defineConfig(
       // Stylistic prefers `x!` over `x as T`. Both are banned here, so the
       // rule could only ever recommend one banned form over another.
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+      // Keep explicit guards such as chunkBy's `last !== undefined &&
+      // last.key === key`: optional chaining changes the result when both
+      // the missing object and the compared key are undefined. requireNullish
+      // also permits safe explicit guards; nullable operand chains stay checked.
+      '@typescript-eslint/prefer-optional-chain': [
+        'error',
+        { requireNullish: true },
+      ],
       '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
       // Inline specifiers are the style already written here
       // (`import { DRAWINGS, type Stroke }`). no-import-type-side-effects is
@@ -391,13 +399,15 @@ const config = defineConfig(
   },
 
   // -------------------------------------------------------------------------
-  // Unicorn, everything on. The four exceptions below are rules that
-  // contradict React, TanStack file routing or the DOM, not rules that are
-  // merely inconvenient.
+  // Unicorn, everything on except rules that contradict React, TanStack file
+  // routing, the DOM or the formatter.
   // -------------------------------------------------------------------------
   unicorn.configs.all,
   {
     rules: {
+      // Prettier owns line wrapping. This rule switches return styles by line
+      // count, so formatting can undo its fix; it has no option to ignore that.
+      'unicorn/consistent-arrow-return-style': 'off',
       // v74 renamed prevent-abbreviations to name-replacements. A `false`
       // exempts the word itself, so `dialogRef` and `ButtonProps` pass along
       // with the bare `ref` and `props`.
