@@ -12,6 +12,7 @@ import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type { FruitBandView, FruitForm, FruitView } from '~/lib/view/records'
+import { stickyStyles } from '~/styles/sticky'
 
 // The same delay the signal book announces its own count with.
 const ANNOUNCE_DELAY_MS = 250
@@ -226,23 +227,23 @@ function PlateHead({
   const t = useT()
 
   return (
-    <div {...stylex.props(styles.plateHead)}>
-      <p {...stylex.props(styles.plateNumber)}>
-        {t('fruits.plate', {
-          index: String(index + 1).padStart(NUMBER_WIDTH, '0'),
-        })}
-        {' · '}
-        {countOf(t, band.total)}
-      </p>
-      <div>
+    <>
+      <div {...stylex.props(stickyStyles.bar, styles.plateHead)}>
+        <p {...stylex.props(styles.plateNumber)}>
+          {t('fruits.plate', {
+            index: String(index + 1).padStart(NUMBER_WIDTH, '0'),
+          })}
+          {' · '}
+          {countOf(t, band.total)}
+        </p>
         <h2
           id={headingId}
           {...stylex.props(styles.plateTitle)}
         >
           {t(TITLE_KEY[band.form])}
         </h2>
-        <p {...stylex.props(styles.plateLede)}>{t(LEDE_KEY[band.form])}</p>
       </div>
-    </div>
+      <p {...stylex.props(styles.plateLede)}>{t(LEDE_KEY[band.form])}</p>
+    </>
   )
 }

@@ -9,7 +9,6 @@ import {
   rule,
   space,
   text,
-  z,
 } from '~/styles/tokens.stylex'
 
 /**
@@ -23,32 +22,26 @@ export const styles = stylex.create({
   // rows scroll under it, so a reader deep in a saga still sees which one.
   arc: {
     gap: space.xs,
-    paddingBlock: space.sm,
     alignItems: 'baseline',
-    backgroundColor: color.paper,
-    borderBlockEndColor: color.rule,
-    borderBlockEndStyle: 'solid',
-    borderBlockEndWidth: rule.hair,
     color: color.ink,
     cursor: 'pointer',
     display: 'flex',
-    insetBlockStart: 0,
     listStyleType: 'none',
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: `calc(-1 * ${rule.fine})`,
     outlineStyle: 'solid',
     outlineWidth: rule.fine,
-    position: { 'default': 'static', ':is([open] > *)': 'sticky' },
-    zIndex: z.sticky,
   },
   arcName: {
+    overflow: 'hidden',
     flexGrow: 1,
     fontFamily: font.display,
     fontSize: text.lg,
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
     minWidth: 0,
   },
   arcCount: {
@@ -126,7 +119,6 @@ export const styles = stylex.create({
       '@media (min-width: 40rem)': '9rem minmax(0, 1fr)',
     },
     rowGap: space.xs2,
-    scrollMarginBlockStart: space.xl,
   },
   meta: {
     margin: 0,

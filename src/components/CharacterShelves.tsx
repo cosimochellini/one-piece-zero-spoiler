@@ -16,6 +16,7 @@ import type {
   ShelfView,
   Slot,
 } from '~/lib/view/records'
+import { stickyStyles } from '~/styles/sticky'
 
 /**
  * The shelves, or the promise of them.
@@ -144,8 +145,7 @@ function useShelves(source: ShelvesSource): ShelfView[] {
 
 /**
  * The shelves' height before they arrive, so the page does not jump when they
- * do. The same `content-visibility` box as a real shelf, for the same reason:
- * the renderer skips what is far down the page.
+ * do. Once they arrive, their real height lets Back restore the long list.
  */
 function ShelvesPending({ count }: { count: number }): ReactElement {
   const t = useT()
@@ -161,7 +161,7 @@ function ShelvesPending({ count }: { count: number }): ReactElement {
           <div
             key={index}
             aria-hidden="true"
-            {...stylex.props(styles.shelf)}
+            {...stylex.props(styles.shelf, styles.shelfPlaceholder)}
           />
         )
       })}
@@ -239,45 +239,49 @@ function ShelfHead({
   const threshold = useThreshold()
 
   return (
-    <div {...stylex.props(styles.shelfHead)}>
-      <SpoilerVeil
-        density="inline"
-        peek={peek}
-        placeholder={
-          <h3
-            id={headingId}
-            {...stylex.props(styles.shelfTitle)}
+    <>
+      <div {...stylex.props(stickyStyles.bar, styles.shelfHead)}>
+        <div {...stylex.props(styles.shelfName)}>
+          <SpoilerVeil
+            density="inline"
+            peek={peek}
+            placeholder={
+              <h3
+                id={headingId}
+                {...stylex.props(styles.shelfTitle)}
+              >
+                {t('characters.sectionFogged')}
+              </h3>
+            }
+            slot={arc}
           >
-            {t('characters.sectionFogged')}
-          </h3>
-        }
-        slot={arc}
-      >
-        {(record) => {
-          return (
-            <h3
-              id={headingId}
-              {...stylex.props(styles.shelfTitle)}
-            >
-              {record.name}
-            </h3>
-          )
-        }}
-      </SpoilerVeil>
-      <p {...stylex.props(styles.shelfMeta)}>
-        <span {...stylex.props(styles.shelfEpisode)}>
-          {threshold(
-            'characters.sectionOpensAt',
-            arc.open ? arc.record : arc.covered,
-          )}
-        </span>
-        <span>
-          {count === 1 ?
-            t('characters.sectionCountOne')
-          : t('characters.sectionCount', { count })}
-        </span>
+            {(record) => {
+              return (
+                <h3
+                  id={headingId}
+                  {...stylex.props(styles.shelfTitle)}
+                >
+                  {record.name}
+                </h3>
+              )
+            }}
+          </SpoilerVeil>
+        </div>
+        <p {...stylex.props(styles.shelfMeta)}>
+          <span>
+            {count === 1 ?
+              t('characters.sectionCountOne')
+            : t('characters.sectionCount', { count })}
+          </span>
+        </p>
+      </div>
+      <p {...stylex.props(styles.shelfEpisode)}>
+        {threshold(
+          'characters.sectionOpensAt',
+          arc.open ? arc.record : arc.covered,
+        )}
       </p>
-    </div>
+    </>
   )
 }
 

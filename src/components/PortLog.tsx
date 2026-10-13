@@ -25,6 +25,7 @@ import type {
   RecordView,
   Slot,
 } from '~/lib/view/records'
+import { stickyStyles } from '~/styles/sticky'
 
 // Ports are numbered 01, 02, …: two digits so the markers on the spine are the
 // same width all the way down, and the rail never shifts under them.
@@ -120,7 +121,6 @@ function Port({
   peek,
   peekRecord,
 }: PortProps): ReactElement {
-  const { t } = useLocale()
   const threshold = useThreshold()
   const open = slot.open
   const entry = slot.open ? slot.record : slot.covered
@@ -138,18 +138,13 @@ function Port({
       />
 
       <div {...stylex.props(styles.body)}>
-        <p {...stylex.props(styles.stage)}>
-          <span
-            {...stylex.props(
-              styles.stageLabel,
-              open ? styles.stageOpen : styles.stageCovered,
-            )}
-          >
-            {t('places.stage', { index: index + 1, total })}
-          </span>
-          <span {...stylex.props(styles.stageEpisode)}>
-            {threshold('places.firstSeen', entry)}
-          </span>
+        <Stage
+          index={index}
+          slot={slot}
+          total={total}
+        />
+        <p {...stylex.props(styles.stageEpisode)}>
+          {threshold('places.firstSeen', entry)}
         </p>
 
         <SpoilerVeil
@@ -353,5 +348,34 @@ function Horizon({ bookmark }: { bookmark: Bookmark }): ReactElement {
         : describeBookmark(t, 'chart.hereSet', bookmark)}
       </p>
     </li>
+  )
+}
+
+/** The mobile stop line never reads a name from a covered slot. */
+function Stage({
+  index,
+  slot,
+  total,
+}: Pick<PortProps, 'index' | 'slot' | 'total'>): ReactElement {
+  const { t } = useLocale()
+  return (
+    <p {...stylex.props(stickyStyles.bar, styles.stage)}>
+      <span
+        {...stylex.props(
+          styles.stageLabel,
+          slot.open ? styles.stageOpen : styles.stageCovered,
+        )}
+      >
+        {t('places.stage', { index: index + 1, total })}
+      </span>
+      {slot.open ?
+        <span
+          aria-hidden="true"
+          {...stylex.props(styles.stageName)}
+        >
+          {slot.record.name}
+        </span>
+      : null}
+    </p>
   )
 }

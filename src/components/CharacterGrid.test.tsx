@@ -1,9 +1,10 @@
 import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi } from 'vitest'
 
 import type { Locale } from '~/i18n/locales'
 import type {
+  CharacterView,
   CoveredRecord,
   SearchableCharacter,
   ShelfView,
@@ -15,10 +16,11 @@ import {
   coveredSlot,
   openSlot,
   peekPending,
+  peekTo,
   record,
   searchable,
 } from '~/test/fixtures'
-import { renderWithProviders } from '~/test/providers'
+import { renderWithProviders, settle } from '~/test/providers'
 
 import { CharacterGrid } from './CharacterGrid'
 
@@ -79,6 +81,33 @@ function book({
       shelves={shelves}
     />,
     { locale },
+  )
+}
+
+const chapterArc = coveredRecord({
+  kind: 'arc',
+  revealedAtChapter: 100,
+  revealedAtEpisode: 92,
+})
+const revealedArc = { ...eastBlueArc, name: 'A later arc', role: '' }
+
+/** A manga reader can reach a character before the arc's own heading opens. */
+function chapterBook(peek: (handle: string) => Promise<CharacterView>): void {
+  renderWithProviders(
+    <CharacterGrid
+      featuredCovered={[]}
+      featuredOpen={[]}
+      peek={peek}
+      shelfCount={1}
+      shelves={[
+        aShelf({
+          arc: { open: false, covered: chapterArc },
+          total: 2,
+          open: [luffy, nami],
+        }),
+      ]}
+    />,
+    { bookmark: { mode: 'chapter', chapter: 50 } },
   )
 }
 
@@ -151,6 +180,70 @@ describe('CharacterGrid', () => {
     const covered = shelf(/Arc under fog/u)
 
     expect(covered.getAttribute('aria-labelledby')).not.toContain('alabasta')
+  })
+
+  it('keeps open chapter tiles and metadata when the covered shelf heading is revealed', async () => {
+    const user = userEvent.setup()
+    const peek = vi.fn<(handle: string) => Promise<CharacterView>>(
+      peekTo(revealedArc),
+    )
+    chapterBook(peek)
+
+    const section = shelf(/Arc under fog/u)
+    const threshold = within(section).getByText('From chapter 100')
+    const count = within(section).getByText('2 characters')
+    const control = within(section).getByRole('button', {
+      name: 'Under fog until chapter 100. Show anyway',
+    })
+
+    expect(within(section).getAllByRole('link')).toHaveLength(2)
+    expect(threshold).toBeVisible()
+    expect(count).toBeVisible()
+    expect(count.parentElement).not.toContainElement(threshold)
+    expect(control).toHaveTextContent('Show')
+    expect(screen.queryByText('A later arc')).not.toBeInTheDocument()
+
+    await user.click(control)
+    await settle()
+
+    expect(section).toHaveAccessibleName('A later arc')
+    expect(threshold).toBeVisible()
+    expect(count).toBeVisible()
+    expect(within(section).getAllByRole('link')).toHaveLength(2)
+    expect(peek).toHaveBeenCalledExactlyOnceWith(chapterArc.handle)
+  })
+
+  it('keeps the covered chapter shelf intact after failure and lets the reader retry', async () => {
+    const user = userEvent.setup()
+    const peek = vi
+      .fn<(handle: string) => Promise<CharacterView>>(peekTo(revealedArc))
+      .mockRejectedValueOnce(new Error('peek failed'))
+    chapterBook(peek)
+
+    const section = shelf(/Arc under fog/u)
+    const control = within(section).getByRole('button', {
+      name: 'Under fog until chapter 100. Show anyway',
+    })
+    await user.click(control)
+    await settle()
+
+    expect(control).toHaveTextContent('Try again')
+    expect(control).toHaveAccessibleName(
+      'Under fog until chapter 100. Show anyway',
+    )
+    expect(screen.queryByText('A later arc')).not.toBeInTheDocument()
+    expect(within(section).getByText('From chapter 100')).toBeVisible()
+    expect(within(section).getByText('2 characters')).toBeVisible()
+    expect(within(section).getAllByRole('link')).toHaveLength(2)
+
+    await user.click(control)
+    await settle()
+
+    expect(section).toHaveAccessibleName('A later arc')
+    expect(within(section).getByText('From chapter 100')).toBeVisible()
+    expect(within(section).getByText('2 characters')).toBeVisible()
+    expect(peek).toHaveBeenNthCalledWith(2, chapterArc.handle)
+    expect(peek).toHaveBeenCalledTimes(2)
   })
 
   it('filters the open characters as the reader types, and marks the match', async () => {

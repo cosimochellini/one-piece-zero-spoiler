@@ -13,6 +13,7 @@ import type {
   FillerRun,
   FillerSlot,
 } from '~/lib/view/filler'
+import { stickyStyles } from '~/styles/sticky'
 
 // `YYYY-MM-DD`: the year is all a row needs.
 const YEAR_LENGTH = 4
@@ -38,8 +39,6 @@ export function FillerCatalogue({
   mode,
   peek,
 }: FillerCatalogueProps): ReactElement {
-  const t = useT()
-
   // A row's saga may be folded, and the browser cannot scroll into a closed
   // `<details>`: open the way to `#ep-N` on arrival and on every hash change.
   useEffect(() => {
@@ -62,19 +61,17 @@ export function FillerCatalogue({
             open={group.current}
             {...stylex.props(styles.group)}
           >
-            <summary {...stylex.props(styles.arc)}>
-              <span
-                aria-hidden
-                {...stylex.props(styles.chevron)}
-              >
-                ▸
-              </span>
-              <span {...stylex.props(styles.arcName)}>{group.name}</span>
-              <span {...stylex.props(styles.arcCount)}>
-                {count === 1 ?
-                  t('filler.entriesOne')
-                : t('filler.entries', { count })}
-              </span>
+            <summary
+              {...stylex.props(
+                stickyStyles.bar,
+                stickyStyles.whileOpen,
+                styles.arc,
+              )}
+            >
+              <ArcLabel
+                count={count}
+                name={group.name}
+              />
             </summary>
             <div {...stylex.props(styles.groupBody)}>
               {group.runs.map((run) => {
@@ -269,4 +266,29 @@ function kindStyle(kind: FillerKind): stylex.StyleXStyles {
 /** A key that names no title: the entry's index, which is public. */
 function keyOf(slot: FillerSlot): string {
   return slot.open ? slot.record.handle : slot.covered.handle
+}
+
+/** The existing saga control, pinned only while its details are open. */
+function ArcLabel({
+  count,
+  name,
+}: {
+  count: number
+  name: string
+}): ReactElement {
+  const t = useT()
+  return (
+    <>
+      <span
+        aria-hidden
+        {...stylex.props(styles.chevron)}
+      >
+        ▸
+      </span>
+      <span {...stylex.props(styles.arcName)}>{name}</span>
+      <span {...stylex.props(styles.arcCount)}>
+        {count === 1 ? t('filler.entriesOne') : t('filler.entries', { count })}
+      </span>
+    </>
+  )
 }

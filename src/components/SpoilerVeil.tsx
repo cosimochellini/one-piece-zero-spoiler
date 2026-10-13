@@ -228,7 +228,10 @@ function Curtain({
       {verbOnly ? null : <span {...stylex.props(styles.notice)}>{notice}</span>}
       <span
         role="status"
-        {...stylex.props(styles.action)}
+        {...stylex.props(
+          styles.action,
+          density === 'inline' && styles.actionInline,
+        )}
       >
         {t(verbFor(state, verbOnly))}
       </span>
@@ -376,6 +379,7 @@ const styles = stylex.create({
     textTransform: 'uppercase',
     minWidth: 0,
   },
+  actionInline: { overflow: 'hidden', textOverflow: 'ellipsis', minWidth: 0 },
   action: {
     paddingInline: space.xs2,
     backgroundColor: color.paper,
