@@ -5,6 +5,9 @@ import type { Timeline } from '~/data/types'
 
 import { fruitArt, fruitRedrawn } from '.'
 import {
+  ARMS_ARMS,
+  ARTIFICIAL_DRAGON,
+  BARRIER_BARRIER,
   BIRD_FALCON,
   BOMB_BOMB,
   BRUSH_BRUSH,
@@ -13,19 +16,28 @@ import {
   DARK_DARK,
   FLAME_FLAME,
   FLOWER_FLOWER,
+  GLARE_GLARE,
   GUM_GUM,
+  HEAL_HEAL,
   ICE_ICE,
+  JACKET_JACKET,
   MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
   OX_OX_GIRAFFE,
+  PRESS_PRESS,
+  RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
   SLIP_SLIP,
   SMOKE_SMOKE,
+  SNOW_SNOW,
+  SPIN_SPIN,
   SPRING_SPRING,
   STRING_STRING,
+  SWIM_SWIM,
+  TON_TON,
   TREMOR_TREMOR,
 } from './bespoke'
 import { fruit, type FruitSeed } from './generate'
@@ -78,14 +90,26 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'arms-arms-fruit': ARMS_ARMS,
+  'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
+  'barrier-barrier-fruit': BARRIER_BARRIER,
   'bird-bird-fruit-model-falcon': BIRD_FALCON,
   'bomb-bomb-fruit': BOMB_BOMB,
+  'glare-glare-fruit': GLARE_GLARE,
+  'heal-heal-fruit': HEAL_HEAL,
   'ice-ice-fruit': ICE_ICE,
+  'jacket-jacket-fruit': JACKET_JACKET,
   'munch-munch-fruit': MUNCH_MUNCH,
   'ox-ox-fruit-model-bison': OX_OX_BISON,
+  'press-press-fruit': PRESS_PRESS,
+  'ripple-ripple-fruit': RIPPLE_RIPPLE,
   'slip-slip-fruit': SLIP_SLIP,
   'smoke-smoke-fruit': SMOKE_SMOKE,
+  'snow-snow-fruit': SNOW_SNOW,
+  'spin-spin-fruit': SPIN_SPIN,
   'spring-spring-fruit': SPRING_SPRING,
+  'swim-swim-fruit': SWIM_SWIM,
+  'ton-ton-fruit': TON_TON,
 }
 
 /** A kit fruit has volume, a skin, a stalk and its power: ten strokes or more. */
