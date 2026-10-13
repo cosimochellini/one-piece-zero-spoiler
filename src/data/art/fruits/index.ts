@@ -16,6 +16,7 @@ import {
   OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SLIP_SLIP,
   SMOKE_SMOKE,
   SPRING_SPRING,
   STRING_STRING,
@@ -36,19 +37,13 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Nineteen of them are drawn by hand and name their drawing; the rest name the
+ * Twenty of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
   'gum-gum-fruit': GUM_GUM,
   'chop-chop-fruit': CHOP_CHOP,
-  'slip-slip-fruit': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'slip-slip-fruit': SLIP_SLIP,
   'smoke-smoke-fruit': SMOKE_SMOKE,
   'bomb-bomb-fruit': BOMB_BOMB,
   'kilo-kilo-fruit': fruit({
