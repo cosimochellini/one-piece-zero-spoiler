@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last twenty-eight are drawn as fruit + power (#461), on the bodies of
+ * The last thirty-eight are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -1476,11 +1476,14 @@ function tip(x: number, y: number): string {
 }
 
 /**
- * A stroke of the swim fruit, tipped forward. A fruit path is absolute
- * points, a command letter before the first of each, so it turns a point at
- * a time.
+ * A stroke with every point moved, by default the swim fruit's tip forward.
+ * A fruit path is absolute points, a command letter before the first of
+ * each, so it moves a point at a time.
  */
-function tipped(stroke: Stroke): Stroke {
+function tipped(
+  stroke: Stroke,
+  move: (x: number, y: number) => string = tip,
+): Stroke {
   const tokens = stroke.d.split(' ')
   const turned: string[] = []
   let at = 0
@@ -1495,7 +1498,7 @@ function tipped(stroke: Stroke): Stroke {
     } else {
       const x = Number(token.slice(command.length))
 
-      turned.push(`${command}${tip(x, Number(tokens[at + 1]))}`)
+      turned.push(`${command}${move(x, Number(tokens[at + 1]))}`)
       at += 2
     }
   }
@@ -2005,4 +2008,510 @@ export const CALM_CALM: Stroke[] = [
       .join(' '),
   },
   shadowUnder(1),
+]
+
+/** The mammoth fruit: a gourd, tusks out of its sides at the waist. */
+const MAMMOTH_BODY: Body = { family: 'gourd', cy: 118 }
+
+/**
+ * One tusk out of the side, both ends on the rim: out and down past the
+ * lower bulb, the tip turned forward, and back up along its inside.
+ */
+const TUSK: Growth = {
+  from: 104,
+  to: 120,
+  through: [
+    [40, 104],
+    [54, 116],
+    [58, 134],
+    [61, 150],
+    [65, 160],
+    [72, 157],
+    [64, 156],
+    [54, 148],
+    [48, 136],
+    [43, 127],
+    [36, 121],
+  ],
+}
+
+/**
+ * The fruit with a mammoth's tusks: two long tusks out of its sides, down
+ * past the lower bulb, the tips turned forward and kept apart. In episode
+ * 759 Jack fights as a mammoth and Nekomamushi names his fruit an ancient
+ * Elephant-Elephant. The tusks and nothing else, never the trunk or the head.
+ */
+export const ELEPHANT_MAMMOTH: Stroke[] = [
+  ...kitBody(MAMMOTH_BODY, [140, 150, 160]),
+  waist(MAMMOTH_BODY, 114),
+  ...skin([
+    [70, 92, 6],
+    [64, 140, 8],
+    [94, 152, -6],
+  ]),
+  ...sprout(MAMMOTH_BODY, 4, 'left'),
+  {
+    d: `${grown(MAMMOTH_BODY, -1, TUSK)} ${grown(MAMMOTH_BODY, 1, TUSK)}`,
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The soul fruit: a round, its soul leaving the near shoulder. */
+const SOUL_BODY: Body = { family: 'round', cy: 118 }
+
+/** Where on the rim the soul leaves, as angles in degrees. */
+const SOUL_GAP = { from: 208, to: 238 }
+
+/** Where the soul leaves the fruit: the middle of the gap. */
+const SOUL_EXIT: Point = [
+  80 + 44 * Math.cos(223 * DEGREES),
+  SOUL_BODY.cy + 46 * Math.sin(223 * DEGREES),
+]
+
+/**
+ * One fragment of soul: a round head and a tail trailing back to where it
+ * came from.
+ */
+function wisp(cx: number, cy: number, r: number): string {
+  const way = Math.atan2(SOUL_EXIT[1] - cy, SOUL_EXIT[0] - cx)
+  const [cos, sin] = [Math.cos(way), Math.sin(way)]
+  const at = (x: number, y: number): string => {
+    return point(cx + (x * cos - y * sin) * r, cy + (x * sin + y * cos) * r)
+  }
+
+  return [
+    `M${at(-0.2, -1)}`,
+    `C${at(1, -1.1)} ${at(2, -0.4)} ${at(3, -0.6)}`,
+    `C${at(4, -0.8)} ${at(4.6, -0.2)} ${at(5.4, -0.7)}`,
+    `C${at(4.5, 0.3)} ${at(3.7, 0)} ${at(2.8, 0.4)}`,
+    `C${at(2, 0.8)} ${at(1, 1.1)} ${at(-0.2, 1)}`,
+    `C${at(-1.3, 0.9)} ${at(-1.3, -0.9)} ${at(-0.2, -1)}`,
+  ].join(' ')
+}
+
+/**
+ * The fruit losing its soul: small pale fragments lift off its near
+ * shoulder and drift away, the skin open where they left. In episode 796
+ * Pound tells how Big Mom takes lifespan as soul and puts it into things.
+ * No homie and no face.
+ */
+export const SOUL_SOUL: Stroke[] = [
+  ...kitBody(SOUL_BODY, [116, 128, 140], (x, y) => {
+    const angle = (Math.atan2(y - SOUL_BODY.cy, x - 80) / DEGREES + 360) % 360
+
+    return angle < SOUL_GAP.from || angle > SOUL_GAP.to
+  }),
+  ...skin([
+    [72, 124, 9],
+    [98, 146, -8],
+    [60, 150, -6],
+  ]),
+  ...sprout(SOUL_BODY, 4, 'right'),
+  {
+    d: [wisp(28, 62, 4.6), wisp(16, 38, 3.6), wisp(42, 34, 3)].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The book fruit: a round, held up over an open book. */
+const BOOK_BODY: Body = { family: 'round', cy: 96 }
+
+/** One page of the open book, out from the spine: its edges at a share across. */
+function page(way: number, along: number): string {
+  const back = 152
+  const front = 180
+  const y = back + (front - back) * along
+  const at = (dx: number, dy: number): string => point(80 + way * dx, y + dy)
+
+  return `M${at(0, 0)} C${at(16, -9)} ${at(44, -9)} ${at(58, 2 - along * 2)}`
+}
+
+/**
+ * The fruit over an open book that is drawing it in: the book hovers under
+ * it, near flat, its pages bowed down at the outer edges. In episode 811
+ * Mont-d'Or blocks Luffy with a book that seems to suck him in. The show
+ * holds the book over its target; it is drawn under the fruit here so it
+ * reads at tile size.
+ */
+export const BOOK_BOOK: Stroke[] = [
+  ...kitBody(BOOK_BODY, [94, 106, 118]),
+  ...skin([
+    [64, 96, 9],
+    [94, 116, -8],
+  ]),
+  ...sprout(BOOK_BODY, -4, 'left'),
+  {
+    d: [
+      ...[-1, 1].flatMap((way) => [
+        page(way, 0),
+        `L${point(80 + way * 56, 180)}`,
+        page(way, 1),
+      ]),
+      'M80 152 L80 180',
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [-1, 1]
+      .flatMap((way) => {
+        return [0.3, 0.55, 0.8].map((along) => {
+          const y = 152 + 28 * along
+
+          return `M${point(80 + way * 10, y - 4)} C${point(80 + way * 22, y - 8)} ${point(80 + way * 36, y - 8)} ${point(80 + way * 46, y - 4)}`
+        })
+      })
+      .join(' '),
+    role: 'soft',
+  },
+  { d: 'M34 190 C60 193 100 193 126 190', role: 'ambient', dashed: true },
+]
+
+/** The wring fruit: a gourd, wrung at its waist. */
+const WRING_BODY: Body = { family: 'gourd', cy: 120 }
+
+/** How far each bulb is turned, top one way and bottom the other. */
+function wrung(x: number, y: number): string {
+  return point(x + 5 * Math.tanh((116 - y) / 10), y)
+}
+
+/**
+ * The fruit wrung like a cloth: the top bulb turned one way and the bottom
+ * the other, three twist lines across the waist, and one drop squeezed out
+ * under them. In episode 812 Smoothie wrings a liquid out of a woman as if
+ * she were a cloth.
+ */
+export const WRING_WRING: Stroke[] = [
+  ...[
+    ...kitBody(WRING_BODY, [146, 156]),
+    ...skin([
+      [70, 94, 6],
+      [62, 148, -8],
+    ]),
+    ...sprout(WRING_BODY, 6, 'right'),
+  ].map((stroke) => tipped(stroke, wrung)),
+  {
+    d: [
+      ...[96, 106, 116].map((y) => {
+        return [
+          `M${wrung(...onRim(WRING_BODY, y, -1))}`,
+          `C${point(66, y + 2)} ${point(92, y + 26)}`,
+          wrung(...onRim(WRING_BODY, y + 22, 1)),
+        ].join(' ')
+      }),
+      teardrop(84, 150, 4),
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The egg fruit: an oblong, cracked open like an egg. */
+const EGG_BODY: Body = { family: 'oblong', cy: 118 }
+
+/** The break, from the near shoulder down to the far foot. */
+const BREAK = { from: onRim(EGG_BODY, 100, -1), to: onRim(EGG_BODY, 146, 1) }
+
+/** How high the break runs at a point across it. */
+function breakAt(x: number): number {
+  const [x0, y0] = BREAK.from
+  const [x1, y1] = BREAK.to
+
+  return y0 + ((y1 - y0) * (x - x0)) / (x1 - x0)
+}
+
+/** The zigzag of the break, as points from end to end. */
+function breakLine(): Point[] {
+  const [x0] = BREAK.from
+  const [x1] = BREAK.to
+  const teeth = 6
+
+  return Array.from({ length: teeth + 1 }, (_unused, at): Point => {
+    const x = x0 + ((x1 - x0) * at) / teeth
+    // The teeth alternate up and down; the two ends sit on the rim.
+    const off = at === 0 || at === teeth ? 0 : -5 * (-1) ** at
+
+    return [x, breakAt(x) + off]
+  })
+}
+
+/** The top of the shell, lifted off the break and tipped back. */
+function lifted(x: number, y: number): string {
+  const [hx, hy] = BREAK.from
+  const turn = -18 * DEGREES
+  const [dx, dy] = [x - hx, y - hy]
+
+  return point(
+    hx + dx * Math.cos(turn) - dy * Math.sin(turn) - 2,
+    hy + dx * Math.sin(turn) + dy * Math.cos(turn) - 12,
+  )
+}
+
+/**
+ * The fruit cracked open like an egg: a zigzag break on the diagonal, the
+ * top of the shell lifted off it and tipped back. In episode 820 Pedro cuts
+ * Baron Tamago in half and a yolk flies out of him. The fruit is a Zoan
+ * whose animal is the egg, so the shell is its attribute and the crack is
+ * drawn on it; no chick and no rooster.
+ */
+export const EGG_EGG: Stroke[] = [
+  { d: outline(EGG_BODY, (x, y) => y > breakAt(x) + 1) },
+  hatching(EGG_BODY, [152, 160]),
+  ...skin([[78, 150, -7]]),
+  ...[
+    { d: outline(EGG_BODY, (x, y) => y < breakAt(x) - 1) },
+    crown(EGG_BODY),
+    shine(EGG_BODY),
+    ...skin([[90, 100, 8]]),
+    ...sprout(EGG_BODY, 4, 'right'),
+  ].map((stroke) => tipped(stroke, lifted)),
+  {
+    d: [
+      polyline(breakLine().map(([x, y]) => point(x, y))),
+      polyline(breakLine().map(([x, y]) => lifted(x, y))),
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The heat fruit: a pear, its near side too hot to touch. */
+const HEAT_BODY: Body = { family: 'pear', cy: 118 }
+
+/** The band of heat: its top and bottom, and where it ends across the fruit. */
+const HEAT = { top: 132, bottom: 148, end: 84 }
+
+/** A wavering line across the band, from the rim to its end. */
+function shimmer(y: number): string {
+  const [x0] = onRim(HEAT_BODY, y, -1)
+
+  return polyline(
+    Array.from({ length: 25 }, (_unused, at) => {
+      const x = x0 - 2 + ((HEAT.end - x0 + 2) * at) / 24
+
+      return point(x, y + 1.8 * Math.sin(x / 2.4))
+    }),
+  )
+}
+
+/**
+ * The fruit with its near side made too hot to touch: a short band across
+ * it, its edges wavering as air over heat does, the outline wavering with
+ * it. In episode 834 Oven heats Pedro's sword until it is too hot to hold.
+ * Nothing rising off it and no sparks, so it is never fire or steam.
+ */
+export const HEAT_HEAT: Stroke[] = [
+  ...kitBody(
+    HEAT_BODY,
+    [132, 144, 154],
+    (x, y) => x > 70 || y < HEAT.top - 1 || y > HEAT.bottom + 1,
+  ),
+  ...skin([
+    [74, 108, 6],
+    [96, 154, -7],
+  ]),
+  ...sprout(HEAT_BODY, -4, 'left'),
+  {
+    d: [
+      shimmer(HEAT.top),
+      shimmer(HEAT.bottom),
+      polyline(
+        Array.from({ length: 9 }, (_unused, at) => {
+          const y = HEAT.top + ((HEAT.bottom - HEAT.top) * at) / 8
+          const [x] = onRim(HEAT_BODY, y, -1)
+
+          return point(x - 2 + 2 * Math.sin(at * 1.8), y)
+        }),
+      ),
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The puff fruit: a heart, a plume rising out of its belly. */
+const PUFF_BODY: Body = { family: 'heart', cy: 112 }
+
+/**
+ * The fruit with a plume rising out of its belly: narrow at a neck where it
+ * leaves the skin, up in an S beside the fruit and off in a flat swirl,
+ * like a lamp's genie with no figure. In episode 834 Daifuku rubs his belly
+ * and a genie comes out of it to fight Sanji.
+ */
+export const PUFF_PUFF: Stroke[] = [
+  ...kitBody(PUFF_BODY, [134, 144], (x, y) => x < 110 || y < 110 || y > 122),
+  ...skin([
+    [62, 104, 9],
+    [88, 132, -8],
+  ]),
+  ...sprout(PUFF_BODY, -4, 'left'),
+  {
+    d: [
+      `M${point(...onRim(PUFF_BODY, 110, 1))}`,
+      'C126 108 128 102 128 96 C128 88 120 82 120 72',
+      'C120 60 132 56 134 48 C135 42 128 40 126 44 C124 48 130 50 132 46',
+      `M${point(...onRim(PUFF_BODY, 120, 1))}`,
+      'C134 120 144 110 144 98 C144 88 134 84 136 74',
+      'C138 64 152 60 150 46 C148 34 132 30 122 38',
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The cook fruit: a round, its lower half turned to meat. */
+const COOK_BODY: Body = { family: 'round', cy: 116 }
+
+/** Where the skin stops and the meat starts. */
+const SEAM = 126
+
+/**
+ * The fruit turned to food from the seam down: above it the skin, below it
+ * a plain chunk of meat, soft and rounded, a hard step in the outline where
+ * the two meet. In episode 838 a young Streusen turns a log into meat and
+ * eats it. No bone and no cake.
+ */
+export const COOK_COOK: Stroke[] = [
+  ...kitBody(COOK_BODY, [96, 108, 118], (_x, y) => y < SEAM),
+  ...skin([
+    [64, 100, 8],
+    [96, 110, -7],
+  ]),
+  ...sprout(COOK_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(COOK_BODY, SEAM, -1))}`,
+      'L31 129 C26 138 26 148 34 154 C38 162 50 166 60 165',
+      'C70 171 90 171 100 165 C112 163 120 154 119 146',
+      'C123 141 123 137 121 133',
+      `L${point(...onRim(COOK_BODY, SEAM, 1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // Where the skin stops, across the front, and a shine on the meat.
+  {
+    d: [
+      `M${point(...onRim(COOK_BODY, SEAM, -1))}`,
+      'C58 134 102 134',
+      point(...onRim(COOK_BODY, SEAM, 1)),
+      'M40 142 C40 148 44 153 50 155',
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The pump fruit: a segmented one, sticks rising out of its rim. */
+const PUMP_BODY: Body = { family: 'segmented', cy: 120 }
+
+/** The sticks: the rim angle each leaves at, which way it points, how long. */
+const STICKS = [
+  { at: 206, way: 232, reach: 38 },
+  { at: 222, way: 246, reach: 44 },
+  { at: 238, way: 262, reach: 38 },
+]
+
+/** Where a stick leaves the rim. */
+function stickBase(at: number): Point {
+  return [
+    80 + 44 * Math.cos(at * DEGREES),
+    PUMP_BODY.cy + 46 * Math.sin(at * DEGREES),
+  ]
+}
+
+/**
+ * One stick out of the rim: a little crooked, a knot on one side, the end
+ * snapped off at a slant, and a twig off it partway up.
+ */
+function stick({ at, way, reach }: (typeof STICKS)[number]): string {
+  const [bx, by] = stickBase(at)
+  const [ux, uy] = [Math.cos(way * DEGREES), Math.sin(way * DEGREES)]
+  const [nx, ny] = [-uy, ux]
+  const at2 = (along: number, across: number): string => {
+    return point(bx + ux * along + nx * across, by + uy * along + ny * across)
+  }
+
+  return [
+    `M${at2(0, -2.2)} L${at2(reach * 0.45, -1.4)} L${at2(reach * 0.5, -2.6)}`,
+    `L${at2(reach * 0.56, -1.4)} L${at2(reach + 2, -1.4)} L${at2(reach - 2, 1.6)}`,
+    `L${at2(reach * 0.6, 1.8)} L${at2(0, 2.2)}`,
+    `M${at2(reach * 0.62, 1.8)} L${at2(reach * 0.8, 8)}`,
+  ].join(' ')
+}
+
+/**
+ * The fruit roused: three sticks raised out of its near rim, the skin open
+ * where they come out. In episode 880 Belo Betty waves her flag and the
+ * townspeople of Lulusia take up sticks and drive the pirates off. The
+ * power shows only in what it rouses, so the sticks are what is drawn; no
+ * flag, which is hers and not the fruit's.
+ */
+export const PUMP_PUMP: Stroke[] = [
+  ...kitBody(PUMP_BODY, [116, 128, 140], (x, y) => {
+    for (const { at } of STICKS) {
+      const [bx, by] = stickBase(at)
+
+      if (Math.hypot(x - bx, y - by) < 4) {
+        return false
+      }
+    }
+
+    return true
+  }),
+  ribs(PUMP_BODY),
+  ...skin([
+    [66, 132, 8],
+    [96, 150, -7],
+  ]),
+  ...sprout(PUMP_BODY, 8, 'right'),
+  { d: STICKS.map((one) => stick(one)).join(' '), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The push fruit: a pear, the ground pushed up over its foot. */
+const PUSH_BODY: Body = { family: 'pear', cy: 114 }
+
+/** The top of the bank, from the ground on the near side to the foot. */
+const BANK: Point[] = [
+  [8, 176],
+  [30, 150],
+  [52, 132],
+  [66, 129],
+  [77, 140],
+  [74, 152],
+  [80, 164],
+  [86, 176],
+]
+
+/**
+ * The ground pushed up like clay: a bank rises at the fruit's foot and
+ * rolls over the near side of it, the outline lost where the earth folds
+ * over. In episode 880 Morley comes up out of the ground and pushes it at
+ * the Peachbeard Pirates like clay.
+ */
+export const PUSH_PUSH: Stroke[] = [
+  ...kitBody(PUSH_BODY, [130, 142, 152], (x, y) => y < heightOn(BANK, x) - 2),
+  ...skin([
+    [74, 110, 6],
+    [96, 150, -7],
+  ]),
+  ...sprout(PUSH_BODY, 4, 'right'),
+  {
+    d: [
+      'M8 176 C20 162 36 140 52 132 C62 126 74 130 77 140',
+      'C79 148 75 153 68 151',
+      'M70 152 C76 158 82 168 86 176',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The clay, folded as it was pushed.
+  {
+    d: 'M22 168 C32 156 44 146 58 140 M40 172 C48 164 58 158 68 157',
+    role: 'soft',
+  },
+  {
+    d: 'M6 176 L154 176 M96 174 L100 169 L106 170 L108 174 Z M118 174 L121 171 L125 173 Z',
+    role: 'ambient',
+  },
 ]

@@ -5,17 +5,22 @@ import {
   BARRIER_BARRIER,
   BIRD_FALCON,
   BOMB_BOMB,
+  BOOK_BOOK,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CALM_CALM,
   CHOP_CHOP,
+  COOK_COOK,
   DARK_DARK,
+  EGG_EGG,
+  ELEPHANT_MAMMOTH,
   FLAME_FLAME,
   FLOWER_FLOWER,
   GAS_GAS,
   GLARE_GLARE,
   GUM_GUM,
   HEAL_HEAL,
+  HEAT_HEAT,
   HOBBY_HOBBY,
   ICE_ICE,
   JACKET_JACKET,
@@ -26,12 +31,16 @@ import {
   OX_OX_GIRAFFE,
   POP_POP,
   PRESS_PRESS,
+  PUFF_PUFF,
+  PUMP_PUMP,
+  PUSH_PUSH,
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
   SLIP_SLIP,
   SMOKE_SMOKE,
   SNOW_SNOW,
+  SOUL_SOUL,
   SPIN_SPIN,
   SPRING_SPRING,
   STICK_STICK,
@@ -41,6 +50,7 @@ import {
   SWIM_SWIM,
   TON_TON,
   TREMOR_TREMOR,
+  WRING_WRING,
 } from '~/data/art/fruits/bespoke'
 import { fruit } from '~/data/art/fruits/generate'
 import type { Drawings, Redrawings } from '~/data/art/stroke'
@@ -57,7 +67,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Forty of them are drawn by hand and name their drawing; the rest name the
+ * Fifty of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -337,13 +347,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'egg-egg-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'egg-egg-fruit': EGG_EGG,
   'turtle-turtle-fruit': fruit({
     body: 'heart',
     grain: 4,
@@ -373,13 +377,7 @@ export const fruitArt = {
   'heal-heal-fruit': HEAL_HEAL,
   'string-string-fruit': STRING_STRING,
   'calm-calm-fruit': CALM_CALM,
-  'elephant-elephant-fruit-ancient-model-mammoth': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'elephant-elephant-fruit-ancient-model-mammoth': ELEPHANT_MAMMOTH,
   'scroll-scroll-fruit': fruit({
     body: 'gourd',
     grain: 9,
@@ -401,13 +399,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'soul-soul-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'soul-soul-fruit': SOUL_SOUL,
   'lick-lick-fruit': fruit({
     body: 'pear',
     grain: 1,
@@ -443,41 +435,11 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'wring-wring-fruit': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'book-book-fruit': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'heat-heat-fruit': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'puff-puff-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'cook-cook-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
+  'wring-wring-fruit': WRING_WRING,
+  'book-book-fruit': BOOK_BOOK,
+  'heat-heat-fruit': HEAT_HEAT,
+  'puff-puff-fruit': PUFF_PUFF,
+  'cook-cook-fruit': COOK_COOK,
   'soot-soot-fruit': fruit({
     body: 'star',
     grain: 11,
@@ -485,20 +447,8 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'waves',
   }),
-  'pump-pump-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'push-push-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'pump-pump-fruit': PUMP_PUMP,
+  'push-push-fruit': PUSH_PUSH,
   'millet-millet-fruit': fruit({
     body: 'oblong',
     grain: 8,
