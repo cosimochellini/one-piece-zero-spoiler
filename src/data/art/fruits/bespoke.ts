@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last eight are drawn as fruit + power (#461), on the bodies of
+ * The last twenty are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -843,11 +843,11 @@ const SHARDS: Point[] = [
   [146, 178],
 ]
 
-/** How high the ice stands at a point across it, read off the shards. */
-function iceAt(x: number): number {
-  const right = SHARDS.findIndex(([at]) => at >= x)
-  const [x1, y1] = SHARDS[right] ?? [x, 178]
-  const [x0, y0] = SHARDS[right - 1] ?? [x1, y1]
+/** How high a profile stands at a point across it: the ice, the snow. */
+function heightOn(profile: Point[], x: number): number {
+  const right = profile.findIndex(([at]) => at >= x)
+  const [x1, y1] = profile[right] ?? [x, 178]
+  const [x0, y0] = profile[right - 1] ?? [x1, y1]
 
   return x1 === x0 ? y1 : y0 + ((y1 - y0) * (x - x0)) / (x1 - x0)
 }
@@ -859,7 +859,7 @@ function iceAt(x: number): number {
  * it, and the frozen sea stands up in points like these.
  */
 export const ICE_ICE: Stroke[] = [
-  { d: outline(ICE_BODY, (x, y) => y < iceAt(x) - 2) },
+  { d: outline(ICE_BODY, (x, y) => y < heightOn(SHARDS, x) - 2) },
   crown(ICE_BODY),
   shine(ICE_BODY),
   hatching(ICE_BODY, [80, 92, 104]),
@@ -888,6 +888,18 @@ export const ICE_ICE: Stroke[] = [
   { d: 'M20 186 C50 189 110 189 140 186', role: 'ambient', dashed: true },
 ]
 
+/** The waist of a gourd at a height, where its two bulbs meet. */
+function waist(body: Body, y: number): Stroke {
+  return {
+    d: [
+      `M${point(...onRim(body, y, -1))}`,
+      `C${point(70, y + 6)} ${point(90, y + 6)}`,
+      point(...onRim(body, y, 1)),
+    ].join(' '),
+    role: 'soft',
+  }
+}
+
 /** The spring fruit: a gourd, its stalk wound into a coil. */
 const SPRING_BODY: Body = { family: 'gourd', cy: 124 }
 
@@ -905,15 +917,7 @@ export const SPRING_SPRING: Stroke[] = [
   crown(SPRING_BODY),
   shine(SPRING_BODY),
   hatching(SPRING_BODY, [140, 152, 162]),
-  // The waist, where the two bulbs meet.
-  {
-    d: [
-      `M${point(...onRim(SPRING_BODY, 118, -1))}`,
-      `C${point(70, 124)} ${point(90, 124)}`,
-      point(...onRim(SPRING_BODY, 118, 1)),
-    ].join(' '),
-    role: 'soft',
-  },
+  waist(SPRING_BODY, 118),
   ...skin([
     [70, 98, 6],
     [62, 144, 9],
@@ -1097,5 +1101,537 @@ export const SLIP_SLIP: Stroke[] = [
   },
   // Which way it is going.
   { d: 'M26 140 L23 144 M32 144 L29 148', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** What every kit fruit is drawn with: its outline, crown, shine and hatching. */
+function kitBody(
+  body: Body,
+  hatches: number[],
+  keep?: (x: number, y: number) => boolean,
+): Stroke[] {
+  return [
+    { d: outline(body, keep) },
+    crown(body),
+    shine(body),
+    hatching(body, hatches),
+  ]
+}
+
+/** The snow fruit: a heart, the snow banked up its far side. */
+const SNOW_BODY: Body = { family: 'heart', cy: 108 }
+
+/** The top of the drift, from the ground on the near side up to the shoulder. */
+const DRIFT: Point[] = [
+  [38, 176],
+  [72, 162],
+  [98, 136],
+  [112, 108],
+  [124, 84],
+]
+
+/** A snowflake: three short strokes crossed. */
+function flake(x: number, y: number): string {
+  return [0, 60, 120]
+    .map((angle) => {
+      const dx = 3.5 * Math.cos(angle * DEGREES)
+      const dy = 3.5 * Math.sin(angle * DEGREES)
+
+      return `M${point(x - dx, y - dy)} L${point(x + dx, y + dy)}`
+    })
+    .join(' ')
+}
+
+/**
+ * The fruit snowed in: a drift banked up its far side as high as the
+ * shoulder, the lip of it hanging over, and snow still falling. In episode
+ * 608 Monet comes into the Biscuit Room in a blizzard, and by 611 she dives
+ * in and out of the snowfield it leaves.
+ */
+export const SNOW_SNOW: Stroke[] = [
+  ...kitBody(SNOW_BODY, [74, 84], (x, y) => y < heightOn(DRIFT, x) - 2),
+  ...skin([
+    [62, 102, 9],
+    [76, 132, -7],
+  ]),
+  ...sprout(SNOW_BODY, -4, 'right'),
+  {
+    d: [
+      billow(DRIFT),
+      // The lip, hanging over the shoulder.
+      'C122 74 110 70 100 76 L101 83',
+      'M124 84 C136 86 144 98 146 118 C148 140 152 160 152 176 L38 176',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The far face of the drift, turned away.
+  {
+    d: 'M144 118 L136 110 M148 134 L138 124 M148 150 L138 140 M148 166 L138 156',
+    role: 'ambient',
+  },
+  {
+    d: [flake(26, 56), flake(44, 30), flake(132, 36), flake(20, 96)].join(' '),
+    role: 'soft',
+  },
+  { d: 'M14 186 C40 189 120 189 146 186', role: 'ambient', dashed: true },
+]
+
+/** The artificial dragon fruit: an oblong, long in the body. */
+const DRAGON_BODY: Body = { family: 'oblong', cy: 120 }
+
+/**
+ * One horn out of the shoulder, both ends on the rim: swept back nearly
+ * level to its point, then home along the top in two tines.
+ */
+const DRAGON_HORN: Growth = {
+  from: 92,
+  to: 84,
+  through: [
+    [44, 90],
+    [58, 82],
+    [70, 72],
+    [66, 74],
+    [62, 76],
+    [58, 77],
+    [58, 70],
+    [57, 64],
+    [54, 58],
+    [53, 64],
+    [51, 70],
+    [50, 78],
+    [47, 79],
+    [45, 80],
+    [42, 80],
+    [42, 74],
+    [41, 70],
+    [38, 64],
+    [37, 70],
+    [36, 76],
+  ],
+}
+
+/**
+ * The fruit with a small dragon's horns: two horns out of its shoulders,
+ * swept back with tines along the top, the ones Luffy grabs in episode 611
+ * when he takes Momonosuke for an eel. The horns and nothing else, never
+ * the head.
+ */
+export const ARTIFICIAL_DRAGON: Stroke[] = [
+  ...kitBody(DRAGON_BODY, [124, 136, 148]),
+  ...skin([
+    [64, 122, 9],
+    [94, 146, -8],
+    [66, 152, -6],
+  ]),
+  ...sprout(DRAGON_BODY, 4, 'left'),
+  {
+    d: `${grown(DRAGON_BODY, -1, DRAGON_HORN)} ${grown(DRAGON_BODY, 1, DRAGON_HORN)}`,
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The spin fruit: a heart, lifted clear of its shadow. */
+const SPIN_BODY: Body = { family: 'heart', cy: 104 }
+
+/** Where the propeller turns: the top of the stalk. */
+const HUB: Point = [80, crownY(SPIN_BODY) - 16]
+
+/**
+ * The fruit flying on its own propeller: the two leaves at the top of the
+ * stalk flattened into blades, a spin swept round them, the fruit off the
+ * ground. In episode 618 Buffalo turns parts of himself into propellers and
+ * flies, Baby 5 riding on him.
+ */
+export const SPIN_SPIN: Stroke[] = [
+  ...kitBody(SPIN_BODY, [96, 108, 120]),
+  ...skin([
+    [64, 98, 9],
+    [92, 124, -8],
+    [72, 136, -6],
+  ]),
+  {
+    d: stemPath('straight', {
+      baseY: crownY(SPIN_BODY) + 6,
+      lean: 0,
+      rise: 22,
+    }),
+  },
+  {
+    d: [
+      `M${point(...HUB)} C70 34 54 32 44 36 C52 42 70 44 ${point(...HUB)}`,
+      `M${point(...HUB)} C90 36 106 38 116 44 C108 48 90 46 ${point(...HUB)}`,
+      polyline(trace(HUB, [44, 9], [196, 344, 18])),
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(0),
+]
+
+/** The arms fruit: a gourd, a blade out of its waist. */
+const ARMS_BODY: Body = { family: 'gourd', cy: 120 }
+
+/**
+ * The fruit turning into a weapon: a sickle blade breaks out of the gourd's
+ * waist, level, and curves up to its point, the skin open where it leaves.
+ * In episode 608 Baby 5 turns her arms into sickles to go at Doflamingo;
+ * the guns come later.
+ */
+export const ARMS_ARMS: Stroke[] = [
+  ...kitBody(
+    ARMS_BODY,
+    [140, 152, 162],
+    (x, y) => x < 90 || y < 110 || y > 123,
+  ),
+  waist(ARMS_BODY, 116),
+  ...skin([
+    [70, 96, 6],
+    [62, 144, 9],
+    [92, 154, -7],
+  ]),
+  ...sprout(ARMS_BODY, -4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(ARMS_BODY, 121, 1))}`,
+      'L112 121 C136 122 154 102 150 70 C146 92 132 108 112 112',
+      `L${point(...onRim(ARMS_BODY, 112, 1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The bevel along the cutting edge.
+  { d: 'M118 115 C134 112 144 100 148 82', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The press fruit: a round, sunk low in what it was pressed into. */
+const PRESS_BODY: Body = { family: 'round', cy: 126 }
+
+/** The crater about its foot, seen a little from above. */
+const CRATER = { cx: 80, cy: 158, rx: 62, ry: 14 }
+
+/** Where the near rim of the crater runs, at a point across it. */
+function nearRim(x: number): number {
+  const across = (x - CRATER.cx) / CRATER.rx
+
+  return CRATER.cy + CRATER.ry * Math.sqrt(Math.max(0, 1 - across ** 2))
+}
+
+/** A stretch of the crater's rim, set down a little when it has cracked. */
+function rim(from: number, to: number, drop = 0): string {
+  return polyline(
+    trace(
+      [CRATER.cx, CRATER.cy + drop],
+      [CRATER.rx - drop, CRATER.ry],
+      [from, to, Math.round((to - from) / 8)],
+    ),
+  )
+}
+
+/**
+ * The fruit pressed down into the ground, its foot sunk in a crater whose
+ * rim has cracked into pieces. In episode 631 Fujitora presses a crowd of
+ * Donquixote thugs into a crater. The anime draws the gravity as rings of
+ * light and the manga does not, so neither does this.
+ */
+export const PRESS_PRESS: Stroke[] = [
+  ...kitBody(PRESS_BODY, [120, 132, 144], (x, y) => y < nearRim(x) - 3),
+  ...skin([
+    [62, 112, 9],
+    [92, 132, -8],
+    [76, 96, -6],
+  ]),
+  ...sprout(PRESS_BODY, 4, 'left'),
+  {
+    d: [
+      rim(-36, 26),
+      rim(30, 76, 1.5),
+      rim(80, 124),
+      rim(128, 168, 1.5),
+      rim(172, 216),
+      'M34 178 L26 180 L20 178 L12 181',
+      'M126 178 L134 180 L140 178 L148 181',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The far wall of the crater, either side of the fruit.
+  {
+    d: 'M24 154 L30 160 M30 150 L34 156 M136 154 L130 160 M130 150 L126 156',
+    role: 'ambient',
+  },
+]
+
+/** The glare fruit: a pear, seen through. */
+const GLARE_BODY: Body = { family: 'pear', cy: 118 }
+
+/** The finger-and-thumb circle, half over the near side. */
+const LENS = { cx: 54, cy: 132, r: 19 }
+
+/**
+ * The fruit seen through: a finger-and-thumb circle held half over its near
+ * side, and inside it the skin is gone and the far side shows. In episode
+ * 640 Viola looks through clothes and skin this way. The circle is left open
+ * where the finger meets the thumb, so it is never an eye.
+ */
+export const GLARE_GLARE: Stroke[] = [
+  ...kitBody(
+    GLARE_BODY,
+    [130, 142, 154],
+    (x, y) => Math.hypot(x - LENS.cx, y - LENS.cy) > LENS.r + 1,
+  ),
+  ...skin([
+    [84, 112, 7],
+    [92, 146, -8],
+  ]),
+  ...sprout(GLARE_BODY, 4, 'left'),
+  {
+    d: polyline(trace([LENS.cx, LENS.cy], [LENS.r, LENS.r], [-50, 280, 30])),
+    role: 'accent',
+  },
+  // The far side, through the skin.
+  { d: polyline(trace([80, 136], [18, 26], [150, 214, 8])), role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The jacket fruit: an oblong, its skin worn like a coat. */
+const JACKET_BODY: Body = { family: 'oblong', cy: 116 }
+
+/**
+ * The fruit's skin opened down the front like a coat: the lapels folded
+ * back, one wider than the other, and the hem parting at the foot. In
+ * episode 646 Kelly Funk turns into a jacket and his brother Bobby puts
+ * him on.
+ */
+export const JACKET_JACKET: Stroke[] = [
+  ...kitBody(
+    JACKET_BODY,
+    [120, 132, 144],
+    (x, y) => y < 156 || x < 74 || x > 92,
+  ),
+  ...skin([
+    [58, 130, 7],
+    [100, 140, -6],
+  ]),
+  ...sprout(JACKET_BODY, 6, 'right'),
+  {
+    d: [
+      'M70 74 L54 94 L61 96 L57 102 L80 126',
+      'M90 74 L100 86 L95 88 L97 93 L80 126',
+      'M80 126 C81 136 82 144 82 150 L76 162 M82 150 L90 160',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The lining, where the lapels turn.
+  { d: 'M70 80 L78 116 M90 80 L82 116', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The barrier fruit: a round, flat on the side that meets the glass. */
+const BARRIER_BODY: Body = { family: 'round', cy: 114 }
+
+/** Where the fruit meets the pane. */
+const PANE_X = 114
+
+/**
+ * The fruit pressed flat against a pane of glass standing beside it, seen a
+ * little from the side so its edge shows. In episode 637 Bartolomeo puts up
+ * a barrier, and Hack's punch stops dead on it.
+ */
+export const BARRIER_BARRIER: Stroke[] = [
+  {
+    d: `${outline(BARRIER_BODY, (x) => x < PANE_X)} M${point(PANE_X, 86)} L${point(PANE_X, 145)}`,
+  },
+  crown(BARRIER_BODY),
+  shine(BARRIER_BODY),
+  hatching(BARRIER_BODY, [150, 158]),
+  ...skin([
+    [62, 112, 9],
+    [92, 134, -8],
+    [66, 146, -7],
+  ]),
+  ...sprout(BARRIER_BODY, -4, 'left'),
+  {
+    d: 'M116 44 L142 58 L142 166 L116 180 Z M116 44 L120 42 L146 56 L146 164 L142 166',
+    role: 'accent',
+  },
+  // Light on the glass.
+  { d: 'M124 78 L134 68 M124 90 L130 84', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The swim fruit: an oblong, coming up out of the ground. */
+const SWIM_BODY: Body = { family: 'oblong', cy: 110 }
+
+/** How far the swimmer is tipped forward, in degrees. */
+const SWIM_TIP = 22
+
+/** A point of the swim fruit, turned forward about the middle of its body. */
+function tip(x: number, y: number): string {
+  const [dx, dy] = [x - 80, y - SWIM_BODY.cy]
+  const [cos, sin] = [
+    Math.cos(SWIM_TIP * DEGREES),
+    Math.sin(SWIM_TIP * DEGREES),
+  ]
+
+  return point(80 + dx * cos - dy * sin, SWIM_BODY.cy + dx * sin + dy * cos)
+}
+
+/**
+ * A stroke of the swim fruit, tipped forward. A fruit path is absolute
+ * points, a command letter before the first of each, so it turns a point at
+ * a time.
+ */
+function tipped(stroke: Stroke): Stroke {
+  const tokens = stroke.d.split(' ')
+  const turned: string[] = []
+  let at = 0
+
+  while (at < tokens.length) {
+    const token = tokens[at] ?? ''
+    const command = /^[A-Z]/u.test(token) ? token.charAt(0) : ''
+
+    if (command === 'Z') {
+      turned.push(command)
+      at += 1
+    } else {
+      const x = Number(token.slice(command.length))
+
+      turned.push(`${command}${tip(x, Number(tokens[at + 1]))}`)
+      at += 2
+    }
+  }
+
+  return { ...stroke, d: turned.join(' ') }
+}
+
+/**
+ * The fruit surfacing from the ground as a swimmer does from water, tipped
+ * forward, one swell in the ground rolling behind it and flat again past
+ * it. In episode 664 Senor Pink swims through solid ground and comes up
+ * behind his opponent.
+ */
+export const SWIM_SWIM: Stroke[] = [
+  ...[
+    ...kitBody(SWIM_BODY, [114, 126, 138]),
+    ...skin([
+      [64, 112, 9],
+      [94, 138, -8],
+    ]),
+    ...sprout(SWIM_BODY, 4, 'right'),
+  ].map((stroke) => tipped(stroke)),
+  {
+    d: 'M8 170 C20 170 26 154 36 153 C46 152 50 166 60 170 L152 170',
+    role: 'accent',
+  },
+  // The ground, moving like water.
+  {
+    d: [
+      'M14 180 C18 177 22 177 26 180 C30 183 34 183 38 180',
+      'M102 180 C106 177 110 177 114 180 C118 183 122 183 126 180',
+    ].join(' '),
+    role: 'soft',
+  },
+]
+
+/** The ripple fruit: a pear, a cape off its shoulder. */
+const RIPPLE_BODY: Body = { family: 'pear', cy: 120 }
+
+/**
+ * The cape out of the shoulder, both ends on the rim: out along a wavy top
+ * edge, down a trailing edge in waves, and back along the bottom.
+ */
+const CAPE: Growth = {
+  from: 92,
+  to: 112,
+  through: [
+    [26, 86],
+    [38, 80],
+    [48, 84],
+    [56, 88],
+    [64, 86],
+    [72, 80],
+    [74, 90],
+    [66, 96],
+    [70, 103],
+    [74, 110],
+    [64, 116],
+    [72, 124],
+    [60, 120],
+    [52, 126],
+    [42, 120],
+    [34, 116],
+    [26, 118],
+  ],
+}
+
+/**
+ * The fruit with a steel cape streaming off its shoulder, level, like a
+ * flag in a breeze. In episode 668 Diamante's cape, a block of steel,
+ * flutters as if it were cloth.
+ */
+export const RIPPLE_RIPPLE: Stroke[] = [
+  ...kitBody(
+    RIPPLE_BODY,
+    [134, 146, 156],
+    (x, y) => x < 94 || y < 90 || y > 114,
+  ),
+  ...skin([
+    [66, 136, 9],
+    [92, 150, -7],
+  ]),
+  ...sprout(RIPPLE_BODY, -4, 'left'),
+  { d: grown(RIPPLE_BODY, 1, CAPE), role: 'accent' },
+  // The folds along it.
+  {
+    d: 'M104 98 C116 94 128 98 140 94 M104 106 C118 104 128 110 142 108',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The ton fruit: a gourd, coming down hard. */
+const TON_BODY: Body = { family: 'gourd', cy: 120 }
+
+/**
+ * The fruit coming down at its full weight: two drop lines above it, and
+ * the ground sagging under its foot. In episode 667 Machvise floats up over
+ * Franky and drops on him; in 682 Law calls him a Super-Weight Human.
+ */
+export const TON_TON: Stroke[] = [
+  ...kitBody(TON_BODY, [140, 152]),
+  waist(TON_BODY, 116),
+  ...skin([
+    [70, 96, 6],
+    [62, 144, 9],
+  ]),
+  ...sprout(TON_BODY, 0, 'left'),
+  {
+    d: [
+      'M54 20 L54 60 M106 28 L106 64',
+      'M8 160 C34 160 44 168 80 168 C116 168 126 160 152 160',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M24 176 C50 182 110 182 136 176', role: 'ambient', dashed: true },
+]
+
+/** The heal fruit: a pear, mending. */
+const HEAL_BODY: Body = { family: 'pear', cy: 118 }
+
+/**
+ * One tear on the fruit's lower half, resting on a split in the skin that is
+ * closing under it. Low and off to the side, so it never reads as an eye. In
+ * episode 714 Mansherry's tears heal whatever they touch.
+ */
+export const HEAL_HEAL: Stroke[] = [
+  ...kitBody(HEAL_BODY, [130, 142, 154]),
+  ...skin([
+    [70, 104, 6],
+    [66, 136, 8],
+    [96, 112, -5],
+  ]),
+  ...sprout(HEAL_BODY, 4, 'right'),
+  { d: teardrop(93, 140, 6), role: 'accent' },
+  // The split, closing.
+  { d: 'M86 152 C90 150 96 150 100 152 C96 154 90 154 86 152', role: 'soft' },
   shadowUnder(1),
 ]

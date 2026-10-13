@@ -1,4 +1,7 @@
 import {
+  ARMS_ARMS,
+  ARTIFICIAL_DRAGON,
+  BARRIER_BARRIER,
   BIRD_FALCON,
   BOMB_BOMB,
   BRUSH_BRUSH,
@@ -7,19 +10,28 @@ import {
   DARK_DARK,
   FLAME_FLAME,
   FLOWER_FLOWER,
+  GLARE_GLARE,
   GUM_GUM,
+  HEAL_HEAL,
   ICE_ICE,
+  JACKET_JACKET,
   MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
   OX_OX_GIRAFFE,
+  PRESS_PRESS,
+  RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
   SLIP_SLIP,
   SMOKE_SMOKE,
+  SNOW_SNOW,
+  SPIN_SPIN,
   SPRING_SPRING,
   STRING_STRING,
+  SWIM_SWIM,
+  TON_TON,
   TREMOR_TREMOR,
 } from '~/data/art/fruits/bespoke'
 import { fruit } from '~/data/art/fruits/generate'
@@ -37,7 +49,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Twenty of them are drawn by hand and name their drawing; the rest name the
+ * Thirty-two of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -338,42 +350,12 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'snow-snow-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'artificial-dragon-dragon-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'snow-snow-fruit': SNOW_SNOW,
+  'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
   'op-op-fruit': OP_OP,
-  'arms-arms-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'spin-spin-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'press-press-fruit': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'arms-arms-fruit': ARMS_ARMS,
+  'spin-spin-fruit': SPIN_SPIN,
+  'press-press-fruit': PRESS_PRESS,
   'stick-stick-fruit': fruit({
     body: 'round',
     grain: 0,
@@ -381,13 +363,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'waves',
   }),
-  'ripple-ripple-fruit': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
+  'ripple-ripple-fruit': RIPPLE_RIPPLE,
   'stone-stone-fruit': fruit({
     body: 'oblong',
     grain: 2,
@@ -402,27 +378,9 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'waves',
   }),
-  'swim-swim-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'ton-ton-fruit': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'glare-glare-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'swim-swim-fruit': SWIM_SWIM,
+  'ton-ton-fruit': TON_TON,
+  'glare-glare-fruit': GLARE_GLARE,
   'pop-pop-fruit': fruit({
     body: 'pear',
     grain: 1,
@@ -444,27 +402,9 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'scales',
   }),
-  'jacket-jacket-fruit': fruit({
-    body: 'pear',
-    grain: 2,
-    leaf: 'sprig',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
-  'barrier-barrier-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'heal-heal-fruit': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'jacket-jacket-fruit': JACKET_JACKET,
+  'barrier-barrier-fruit': BARRIER_BARRIER,
+  'heal-heal-fruit': HEAL_HEAL,
   'string-string-fruit': STRING_STRING,
   'calm-calm-fruit': fruit({
     body: 'pear',
