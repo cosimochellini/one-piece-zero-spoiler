@@ -2060,58 +2060,42 @@ export const ELEPHANT_MAMMOTH: Stroke[] = [
 /** The soul fruit: a round, its soul leaving the near shoulder. */
 const SOUL_BODY: Body = { family: 'round', cy: 118 }
 
-/** Where on the rim the soul leaves, as angles in degrees. */
-const SOUL_GAP = { from: 208, to: 238 }
-
-/** Where the soul leaves the fruit: the middle of the gap. */
-const SOUL_EXIT: Point = [
-  80 + 44 * Math.cos(223 * DEGREES),
-  SOUL_BODY.cy + 46 * Math.sin(223 * DEGREES),
-]
+/** Where on the near rim the soul is drawn out: the gap, top and bottom. */
+const SOUL_GAP = { top: 80, bottom: 96 }
 
 /**
- * One fragment of soul: a round head and a tail trailing back to where it
- * came from.
+ * The soul drawn out of the gap: a wavering neck up and away from the
+ * shoulder, and the soft, rounded billow of it at the end, still joined.
  */
-function wisp(cx: number, cy: number, r: number): string {
-  const way = Math.atan2(SOUL_EXIT[1] - cy, SOUL_EXIT[0] - cx)
-  const [cos, sin] = [Math.cos(way), Math.sin(way)]
-  const at = (x: number, y: number): string => {
-    return point(cx + (x * cos - y * sin) * r, cy + (x * sin + y * cos) * r)
-  }
-
+function soul(): string {
   return [
-    `M${at(-0.2, -1)}`,
-    `C${at(1, -1.1)} ${at(2, -0.4)} ${at(3, -0.6)}`,
-    `C${at(4, -0.8)} ${at(4.6, -0.2)} ${at(5.4, -0.7)}`,
-    `C${at(4.5, 0.3)} ${at(3.7, 0)} ${at(2.8, 0.4)}`,
-    `C${at(2, 0.8)} ${at(1, 1.1)} ${at(-0.2, 1)}`,
-    `C${at(-1.3, 0.9)} ${at(-1.3, -0.9)} ${at(-0.2, -1)}`,
+    `M${point(...onRim(SOUL_BODY, SOUL_GAP.bottom, -1))}`,
+    'C36 92 34 86 32 80 C30 74 24 72 22 66',
+    'C8 62 8 40 20 34 C24 22 42 20 48 30',
+    'C56 36 54 50 46 54 C40 58 44 64 42 68',
+    `C40 74 48 78 ${point(...onRim(SOUL_BODY, SOUL_GAP.top, -1))}`,
   ].join(' ')
 }
 
 /**
- * The fruit losing its soul: small pale fragments lift off its near
- * shoulder and drift away, the skin open where they left. In episode 796
- * Pound tells how Big Mom takes lifespan as soul and puts it into things.
- * No homie and no face.
+ * The fruit losing its soul: a pale, smoke-soft billow of it drawn up out
+ * of a gap in the near shoulder and still joined to it there. In episode
+ * 796 Pound tells how Big Mom takes lifespan as soul and puts it into
+ * things. No homie and no face.
  */
 export const SOUL_SOUL: Stroke[] = [
-  ...kitBody(SOUL_BODY, [116, 128, 140], (x, y) => {
-    const angle = (Math.atan2(y - SOUL_BODY.cy, x - 80) / DEGREES + 360) % 360
-
-    return angle < SOUL_GAP.from || angle > SOUL_GAP.to
-  }),
+  ...kitBody(
+    SOUL_BODY,
+    [116, 128, 140],
+    (x, y) => x > 80 || y < SOUL_GAP.top - 1 || y > SOUL_GAP.bottom + 1,
+  ),
   ...skin([
     [72, 124, 9],
     [98, 146, -8],
     [60, 150, -6],
   ]),
   ...sprout(SOUL_BODY, 4, 'right'),
-  {
-    d: [wisp(28, 62, 4.6), wisp(16, 38, 3.6), wisp(42, 34, 3)].join(' '),
-    role: 'accent',
-  },
+  { d: soul(), role: 'accent' },
   shadowUnder(1),
 ]
 
@@ -2375,8 +2359,8 @@ const SEAM = 126
 export const COOK_COOK: Stroke[] = [
   ...kitBody(COOK_BODY, [96, 108, 118], (_x, y) => y < SEAM),
   ...skin([
-    [64, 100, 8],
-    [96, 110, -7],
+    [66, 94, 7],
+    [80, 114, -7],
   ]),
   ...sprout(COOK_BODY, 4, 'right'),
   {
