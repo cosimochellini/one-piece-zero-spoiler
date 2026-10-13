@@ -87,7 +87,7 @@ export const styles = stylex.create({
     lineHeight: leading.body,
     marginInlineStart: {
       'default': 0,
-      '@media (min-width: 60rem)': `calc(25% + 0.25 * ${space.lg})`,
+      '@media (min-width: 60rem)': `calc(25% + 0.75 * ${space.lg})`,
     },
     maxWidth: '58ch',
   },
