@@ -140,19 +140,19 @@ which lets the test read the numbers in a path as coordinates.
 
 ## Stack
 
-| Layer     | Choice                                            |
-| --------- | ------------------------------------------------- |
-| UI        | React 19.3.0                                      |
-| Framework | TanStack Start 1.168.60 (SSR, file-based routes)  |
-| Router    | TanStack Router 1.170.41                          |
-| Styling   | StyleX 0.19.1, compiled to one same-origin sheet  |
-| Build     | Vite 8.3.2                                        |
-| Language  | TypeScript 6.0.3, `strict` plus nine extra flags  |
-| Tests     | Vitest 5.0.3, jsdom, Testing Library              |
-| Lint      | ESLint 10 flat config, 1,059 rules on, type-aware |
-| Gates     | react-doctor 0.9.17, fallow 3.31.0                |
-| Host      | Netlify, SSR function plus CDN assets             |
-| Runtime   | Node 24.21.0, npm 12.2.0                          |
+| Layer     | Choice                                                   |
+| --------- | -------------------------------------------------------- |
+| UI        | React 19.3.0                                             |
+| Framework | TanStack Start 1.168.60 (SSR, file-based routes)         |
+| Router    | TanStack Router 1.170.41                                 |
+| Styling   | StyleX 0.19.1, compiled to one same-origin sheet         |
+| Build     | Vite 8.3.2                                               |
+| Language  | TypeScript 6.0.3, `strict` plus nine extra flags         |
+| Tests     | Vitest 5.0.3, jsdom, Testing Library                     |
+| Lint      | ESLint 10 flat config, over a thousand rules, type-aware |
+| Gates     | react-doctor 0.9.17, fallow 3.31.0                       |
+| Host      | Netlify, SSR function plus CDN assets                    |
+| Runtime   | Node 24.21.0, npm 12.2.0                                 |
 
 Six runtime dependencies. Every version is pinned exactly, with no ranges and
 one documented `overrides` entry.
@@ -326,15 +326,17 @@ an upgrade of either tool ships a rule or a security category the configuration
 does not turn on. Both gates write a machine-readable report that CI uploads as
 an artifact on every run, passing or failing.
 
-**ESLint runs over a thousand rules.** `eslint --print-config` on a source file
-reports 1,059 rules switched on. Most of them come from unicorn (357) and
-sonarjs (228), followed by typescript-eslint's type-aware sets, `@eslint-react`,
-regexp, jsdoc and jsx-a11y-x. `eslint-config-prettier` is applied last, so the
-two tools never disagree about formatting. On top of these are explicit limits:
-complexity 8, cognitive complexity 10, 60 lines per function, 300 per file, 15
-statements, 3 parameters, 3 levels of nesting. They are sized for what a
-reviewer can hold in their head at once, not as a target to grow into. A
-suppression has to justify itself: `require-description` means an
+**ESLint runs over a thousand rules.** Most of them come from unicorn and
+sonarjs, followed by typescript-eslint's type-aware sets, `@eslint-react`,
+regexp, jsdoc and jsx-a11y-x. `eslint-config-prettier` is applied last, and
+Unicorn's arrow-return-style rule is explicitly off because its line-count
+preference conflicts with Prettier's wrapping. The optional-chain rule uses
+`requireNullish: true` to allow explicit guards for comparisons whose key can be
+undefined, as in `chunkBy`; nullable operand chains are still checked. On top of
+these are explicit limits: complexity 8, cognitive complexity 10, 60 lines per
+function, 300 per file, 15 statements, 3 parameters, 3 levels of nesting. They
+are sized for what a reviewer can hold in their head at once, not as a target to
+grow into. A suppression has to justify itself: `require-description` means an
 `eslint-disable` names its rule and gives a reason, and `no-unused-disable`
 fails it once the reason no longer applies.
 

@@ -42,13 +42,8 @@ export interface Chunk<K, T> {
   key: K
 }
 
-/** An entry with its index. A named function: `map` hands it both. */
-function indexed(entry: FillerEntry, index: number): Indexed {
-  return { entry, index }
-}
-
 /** Every entry with its index, in the order a viewer reaches them. */
-export const INDEXED = FILLER.map((entry, at) => indexed(entry, at))
+export const INDEXED = FILLER.map((entry, at) => ({ entry, index: at }))
 
 /** Splits a list where the key changes, keeping the order. */
 export function chunkBy<K, T>(
@@ -61,12 +56,7 @@ export function chunkBy<K, T>(
     const key = keyOf(item)
     const last = chunks.at(-1)
     // Not `last?.key === key`: the key can be `undefined`, and so can `last`.
-    if (last === undefined) {
-      chunks.push({ key, items: [item] })
-      continue
-    }
-
-    if (last.key === key) {
+    if (last !== undefined && last.key === key) {
       last.items.push(item)
     } else {
       chunks.push({ key, items: [item] })

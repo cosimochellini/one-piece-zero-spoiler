@@ -14,6 +14,7 @@ import type {
 
 import { fillerPage, peekFiller } from './filler.server'
 import { countdownOf, fillerAheadOf } from './fillerCountdown.server'
+import { chunkBy } from './fillerRows.server'
 
 /** Every row of the page, in order. */
 function slots(page: FillerPageView): FillerSlot[] {
@@ -60,6 +61,35 @@ function firstHandle(): string {
   const [first] = slots(fillerPage(null, 'it'))
   return first !== undefined && !first.open ? first.covered.handle : ''
 }
+
+describe('consecutive filler chunks', () => {
+  it('returns no chunks for an empty list', () => {
+    expect(chunkBy([], (item: string) => item)).toStrictEqual([])
+  })
+
+  it('starts a chunk when the first key is undefined', () => {
+    expect(chunkBy([undefined], (key) => key)).toStrictEqual([
+      { key: undefined, items: [undefined] },
+    ])
+  })
+
+  it('merges consecutive undefined keys', () => {
+    expect(chunkBy([undefined, undefined], (key) => key)).toStrictEqual([
+      { key: undefined, items: [undefined, undefined] },
+    ])
+  })
+
+  it('keeps transitions and nonadjacent repeated keys in input order', () => {
+    const keys = [undefined, undefined, 'arc', 'arc', undefined, 'arc']
+
+    expect(chunkBy(keys, (key) => key)).toStrictEqual([
+      { key: undefined, items: [undefined, undefined] },
+      { key: 'arc', items: ['arc', 'arc'] },
+      { key: undefined, items: [undefined] },
+      { key: 'arc', items: ['arc'] },
+    ])
+  })
+})
 
 describe('the filler page', () => {
   it('covers every row without a bookmark, and still names every saga', () => {
