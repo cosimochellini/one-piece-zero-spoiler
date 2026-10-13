@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last twenty are drawn as fruit + power (#461), on the bodies of
+ * The last twenty-eight are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -1633,5 +1633,376 @@ export const HEAL_HEAL: Stroke[] = [
   { d: teardrop(93, 140, 6), role: 'accent' },
   // The split, closing.
   { d: 'M86 152 C90 150 96 150 100 152 C96 154 90 154 86 152', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The gas fruit: a pear, its lower half gone to gas. */
+const GAS_BODY: Body = { family: 'pear', cy: 100 }
+
+/** Where the skin stops and the gas starts: the pear at its widest. */
+const GAS_LINE = 128
+
+/**
+ * The fruit with its lower half turned to gas: the skin stops at its
+ * widest, and below it two wisps twist down into one tail that curls off to
+ * nothing, so it floats with no foot and no shadow. From episode 582
+ * Caesar's lower body is always gas; in 594 Law names him a Logia.
+ */
+export const GAS_GAS: Stroke[] = [
+  ...kitBody(GAS_BODY, [108, 118], (_x, y) => y < GAS_LINE),
+  ...skin([
+    [70, 92, 6],
+    [92, 116, -7],
+  ]),
+  ...sprout(GAS_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(GAS_BODY, GAS_LINE, -1))}`,
+      'C36 146 56 152 78 156 C100 160 108 170 100 178 C96 182 90 180 92 175',
+      `M${point(...onRim(GAS_BODY, GAS_LINE, 1))}`,
+      'C124 142 112 148 96 150 C80 152 66 158 70 168',
+    ].join(' '),
+    role: 'accent',
+  },
+  // A last wisp, drifting off the tail.
+  {
+    d: 'M108 170 C112 166 116 168 120 166 C124 164 126 160 124 156',
+    role: 'soft',
+  },
+]
+
+/** The stitch fruit: an oblong, sewn to the ground. */
+const STITCH_BODY: Body = { family: 'oblong', cy: 112 }
+
+/** A cross stitch over the foot and the ground, at a point across it. */
+function crossStitch(x: number): string {
+  return `M${point(x - 5, 150)} L${point(x + 5, 170)} M${point(x + 5, 150)} L${point(x - 5, 170)}`
+}
+
+/**
+ * The fruit sewn to the ground: three cross stitches over its foot and the
+ * ground line, and the thread running off them to a loose knotted end. In
+ * episode 641 Leo sews Robin to the ground and unpicks her again. No
+ * needle: the show first puts one in his hand in episode 647.
+ */
+export const STITCH_STITCH: Stroke[] = [
+  ...kitBody(STITCH_BODY, [116, 128, 140]),
+  ...skin([
+    [62, 110, 9],
+    [94, 136, -8],
+  ]),
+  ...sprout(STITCH_BODY, -4, 'left'),
+  {
+    d: [
+      ...[67, 80, 93].map((x) => crossStitch(x)),
+      'M98 170 C110 176 122 174 130 168 C134 165 138 166 137 170 C136 173 132 172 133 169',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M14 162 L152 162', role: 'ambient' },
+  { d: 'M24 184 C50 187 110 187 136 184', role: 'ambient', dashed: true },
+]
+
+/** The art fruit: a gourd, its lower bulb pulled out of line. */
+const ART_BODY: Body = { family: 'gourd', cy: 118 }
+
+/** The bands of the lower bulb, top to bottom, and how far each has slid. */
+const ART_TOP = 118
+const ART_BANDS = [ART_TOP, 134, 150, 164]
+const ART_SLIDE = [7, -8, 4]
+
+/** One side of the lower bulb, every band slid its own way. */
+function artSide(way: number): string[] {
+  return ART_SLIDE.flatMap((dx, at) => {
+    const top = ART_BANDS[at] ?? 0
+    const bottom = ART_BANDS[at + 1] ?? 0
+
+    return Array.from({ length: (bottom - top) / 2 + 1 }, (_unused, step) => {
+      const y = top + step * 2
+
+      return point(onRim(ART_BODY, y, way)[0] + dx, y)
+    })
+  })
+}
+
+/**
+ * The fruit made a work of art: the upper bulb is still a fruit, the lower
+ * one is cut into bands that have slid apart and no longer line up. In
+ * episodes 644 to 648 Giolla turns the Sunny, Nami's Clima-Tact and the
+ * crew into abstract art that no longer works.
+ */
+export const ART_ART: Stroke[] = [
+  ...kitBody(ART_BODY, [84, 94], (_x, y) => y < ART_TOP),
+  waist(ART_BODY, 116),
+  ...skin([[70, 94, 6]]),
+  ...sprout(ART_BODY, -4, 'right'),
+  { d: polyline([...artSide(-1), ...artSide(1).toReversed()]), role: 'accent' },
+  // The planes the bands were cut along.
+  { d: 'M66 140 L78 150 M100 124 L108 132', role: 'soft' },
+  { d: 'M118 140 L124 146 M124 152 L130 158', role: 'ambient' },
+  shadowUnder(1),
+]
+
+/** The hobby fruit: a heart, its near side a doll's arm. */
+const HOBBY_BODY: Body = { family: 'heart', cy: 112 }
+
+/** The doll's joint at the shoulder, and the arm swung out from it. */
+const JOINT: Point = onRim(HOBBY_BODY, 92, -1)
+const ARM = { from: 98, to: 130, width: 10, swing: 24 * DEGREES }
+
+/** A point of the arm, swung out about the joint. */
+function swung([x, y]: Point): string {
+  const [dx, dy] = [x - JOINT[0], y - JOINT[1]]
+  const [cos, sin] = [Math.cos(ARM.swing), Math.sin(ARM.swing)]
+
+  return point(JOINT[0] + dx * cos - dy * sin, JOINT[1] + dx * sin + dy * cos)
+}
+
+/** One edge of the arm, as it lay along the rim before it swung. */
+function armEdge(inset: number): Point[] {
+  return Array.from({ length: (ARM.to - ARM.from) / 4 + 1 }, (_unused, at) => {
+    const y = ARM.from + at * 4
+
+    return [onRim(HOBBY_BODY, y, -1)[0] + inset, y]
+  })
+}
+
+const ARM_OUTER = armEdge(0)
+const ARM_INNER = armEdge(ARM.width)
+
+/**
+ * The fruit turned into a toy: its near side is a doll's arm, swung out at
+ * a round joint in the shoulder. In episode 663 Kyros explains that Sugar
+ * turns people into toys with a touch: soldiers, dolls, marionettes. No
+ * key: that is the real fruit's stalk, and it is not shown yet.
+ */
+export const HOBBY_HOBBY: Stroke[] = [
+  ...kitBody(
+    HOBBY_BODY,
+    [100, 112, 124],
+    (x, y) => x > 70 || y < 86 || y > ARM.to + 4,
+  ),
+  ...skin([
+    [78, 110, 8],
+    [96, 138, -7],
+  ]),
+  ...sprout(HOBBY_BODY, 4, 'left'),
+  { d: polyline(trace(JOINT, [6, 6], [0, 360, 16]), true), role: 'accent' },
+  {
+    // The arm: down its outside, round the end and back up its inside.
+    d: [
+      polyline(ARM_OUTER.map((at) => swung(at))),
+      `C${swung([ARM_OUTER.at(-1)?.[0] ?? 0, ARM.to + 8])}`,
+      swung([ARM_INNER.at(-1)?.[0] ?? 0, ARM.to + 8]),
+      ...ARM_INNER.toReversed().map((at, step) => {
+        return step === 0 ? swung(at) : `L${swung(at)}`
+      }),
+    ].join(' '),
+  },
+  // The body's own side, where the arm came away from it.
+  {
+    d: polyline(
+      [...ARM_INNER, onRim(HOBBY_BODY, ARM.to + 4, -1)].map(([x, y]) =>
+        point(x, y),
+      ),
+    ),
+  },
+  shadowUnder(1),
+]
+
+/** The stick fruit: a gourd, pulled up out of its own mucus. */
+const STICK_BODY: Body = { family: 'gourd', cy: 106 }
+
+/** Where the strands reach the puddle. */
+const PUDDLE_Y = 174
+
+/**
+ * One strand of mucus from the foot down to the puddle: wide where it holds
+ * on at either end, pulled thin at a neck partway down.
+ */
+function strand(x: number, neck: number): string {
+  const top = crownY(STICK_BODY) + 92 - Math.abs(x - 80) / 4
+  const mid = top + (PUDDLE_Y - top) * neck
+
+  return [-1, 1]
+    .map((way) => {
+      return [
+        `M${point(x + way * 5, top)}`,
+        `C${point(x + way, mid - 4)} ${point(x + way, mid + 2)}`,
+        point(x + way * 6, PUDDLE_Y),
+      ].join(' ')
+    })
+    .join(' ')
+}
+
+/**
+ * The fruit lifted off a sticky puddle, three strands of mucus still
+ * stretched between its foot and the ground, one sagging across to the
+ * next. In episode 629 Trebol hangs off a tower by it, in 658 he takes Sai
+ * with a chain of it, and in 669 the fruit is named.
+ */
+export const STICK_STICK: Stroke[] = [
+  ...kitBody(STICK_BODY, [126, 138]),
+  waist(STICK_BODY, 102),
+  ...skin([
+    [70, 82, 6],
+    [64, 130, 8],
+  ]),
+  ...sprout(STICK_BODY, 4, 'left'),
+  {
+    d: [
+      strand(64, 0.6),
+      strand(80, 0.4),
+      strand(96, 0.55),
+      'M69 160 C72 166 75 166 78 162',
+      'M30 176 C36 170 56 172 80 172 C104 172 124 170 130 176',
+      'C132 181 116 183 98 181 C84 183 66 182 52 183 C38 183 28 181 30 176 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The shine on the puddle.
+  { d: 'M104 177 L116 177', role: 'soft' },
+]
+
+/** The stone fruit: a segmented one, its foot gone into a course of stone. */
+const STONE_BODY: Body = { family: 'segmented', cy: 114 }
+
+/** The course of stone the fruit stands in, top and bottom. */
+const COURSE = { top: 148, bottom: 172 }
+
+/** Where a rib, or the rim (`at` 1), reaches the course, either side. */
+function intoCourse(at: number, way: number): number {
+  return 80 + way * at * halfWidth(STONE_BODY, COURSE.top)
+}
+
+/** One stone of the course, its corners knocked off. */
+function block(x0: number, x1: number): string {
+  const { top, bottom } = COURSE
+  const corners: Point[] = [
+    [x0 + 2, top],
+    [x1 - 2, top],
+    [x1, top + 2],
+    [x1, bottom - 2],
+    [x1 - 2, bottom],
+    [x0 + 2, bottom],
+    [x0, bottom - 2],
+    [x0, top + 2],
+  ]
+
+  return polyline(
+    corners.map(([x, y]) => point(x, y)),
+    true,
+  )
+}
+
+/**
+ * The fruit gone into the stone: a course of blocks runs along the ground
+ * and through its foot, and where it does, the skin stops at one seam and
+ * the ribs carry on down as the joints between the stones. In episode 669
+ * Pica merges with the palace and moves its walls; he never turns to stone
+ * himself.
+ */
+export const STONE_STONE: Stroke[] = [
+  ...kitBody(STONE_BODY, [106, 118, 130], (_x, y) => y < COURSE.top),
+  ribs(STONE_BODY, COURSE.top),
+  ...skin([
+    [94, 102, 6],
+    [104, 134, -6],
+  ]),
+  ...sprout(STONE_BODY, -4, 'right'),
+  {
+    d: [
+      `M${point(intoCourse(1, -1), COURSE.top)} L${point(intoCourse(1, 1), COURSE.top)}`,
+      ...[-1, 1].flatMap((way) =>
+        [1, 0.5].map((at) => {
+          const x = intoCourse(at, way)
+
+          return `M${point(x, COURSE.top)} L${point(x, COURSE.bottom)}`
+        }),
+      ),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      block(8, 24),
+      block(26, intoCourse(1, -1) - 2),
+      block(intoCourse(1, 1) + 2, 134),
+      block(136, 152),
+      `M${point(intoCourse(1, -1), COURSE.bottom)} L${point(intoCourse(1, 1), COURSE.bottom)}`,
+    ].join(' '),
+    role: 'soft',
+  },
+  { d: 'M13 154 L19 160 M126 154 L132 160 M68 160 L74 166', role: 'ambient' },
+]
+
+/** The pop fruit: a round, its shoulder swelling up. */
+const POP_BODY: Body = { family: 'round', cy: 118 }
+
+/** The stretch of the rim the swelling has, as angles in degrees. */
+const SWELL = { from: 196, to: 252 }
+
+/**
+ * The fruit swelling until it bursts: the near shoulder blown up past the
+ * rim in a tight bulge, its skin stretched, and split open at the top with
+ * three short bursts. On the left, clear of the daibutsu's arm. In episode
+ * 673 Gladius makes his arms and his helmet swell up and rupture.
+ */
+export const POP_POP: Stroke[] = [
+  ...kitBody(POP_BODY, [126, 138, 150], (x, y) => {
+    const angle = (Math.atan2(y - POP_BODY.cy, x - 80) / DEGREES + 360) % 360
+
+    return angle < SWELL.from || angle > SWELL.to
+  }),
+  ...skin([
+    [76, 128, 9],
+    [100, 150, -7],
+  ]),
+  ...sprout(POP_BODY, 6, 'right'),
+  {
+    d: [
+      'M38 104 C24 96 18 78 28 66 C31 62 34 60 38 60',
+      'M45 59 C52 57 60 62 66 70 C68 73 69 75 70 76',
+      'M40 56 L38 47 M44 56 L49 48 M36 59 L28 55',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The skin, stretched tight over the swelling.
+  { d: 'M32 80 C34 74 38 70 42 68 M36 92 C38 86 42 82 46 80', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The calm fruit: a heart, its sound kept in. */
+const CALM_BODY: Body = { family: 'heart', cy: 114 }
+
+/** Where the sound leaves the fruit, on its near side. */
+const SOUND: Point = onRim(CALM_BODY, 116, -1)
+
+/**
+ * The fruit's sound stopped dead: three broken sound arcs leave its near
+ * side and end where a short stretch of a soundproof field, close round
+ * the fruit, crosses them. Only that stretch is drawn, so it never reads as
+ * the Room of the op-op fruit. In episodes 703 and 704 Rosinante puts up
+ * his Silent field and breaks a vase without a sound.
+ */
+export const CALM_CALM: Stroke[] = [
+  ...kitBody(CALM_BODY, [100, 112, 124]),
+  ...skin([
+    [86, 108, 9],
+    [96, 136, -7],
+  ]),
+  ...sprout(CALM_BODY, 4, 'right'),
+  {
+    d: polyline(trace([80, CALM_BODY.cy], [62, 62], [146, 214, 12])),
+    role: 'accent',
+  },
+  {
+    d: [7, 13, 19]
+      .flatMap((r, at) => [
+        polyline(trace(SOUND, [r, r], [140 + at * 2, 172, 4])),
+        polyline(trace(SOUND, [r, r], [188, 220 - at * 2, 4])),
+      ])
+      .join(' '),
+  },
   shadowUnder(1),
 ]
