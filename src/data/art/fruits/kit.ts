@@ -211,13 +211,20 @@ export function hatching(body: Body, heights: number[]): Stroke {
   }
 }
 
-/** The ribs of the segmented body, following its outline down the front. */
-export function ribs(body: Body): Stroke {
+/**
+ * The ribs of the segmented body, following its outline down the front as
+ * far as `bottom`, which is near the foot unless something has the fruit
+ * lower down.
+ */
+export function ribs(
+  body: Body,
+  bottom = crownY(body) + KIT_RY * 2 - 6,
+): Stroke {
   const top = crownY(body) + 8
   const rib = (way: number): string => {
     return polyline(
       Array.from({ length: 13 }, (_unused, at) => {
-        const y = top + ((KIT_RY * 2 - 14) * at) / 12
+        const y = top + ((bottom - top) * at) / 12
 
         return point(BODY_CX + way * 0.5 * halfWidth(body, y), y)
       }),
