@@ -5,14 +5,15 @@ import { episodesLabel, openTo } from '~/components/fillerLabels'
 import { useT } from '~/i18n/LocaleContext'
 import type { BookmarkMode } from '~/lib/progress/episode'
 import type { SkipGroup } from '~/lib/view/filler'
+import { stickyStyles } from '~/styles/sticky'
 import {
   color,
   font,
+  leading,
   radius,
   rule,
   space,
   text,
-  z,
 } from '~/styles/tokens.stylex'
 
 /** Opens the saga a link points into, before the browser follows it. */
@@ -46,7 +47,7 @@ export function FillerRanges({
           >
             <h3
               id={`skip-${String(first)}`}
-              {...stylex.props(styles.saga)}
+              {...stylex.props(stickyStyles.bar, styles.saga)}
             >
               {group.name}
             </h3>
@@ -86,20 +87,15 @@ const styles = stylex.create({
   // Pinned under nothing: the bar scrolls away, so the saga takes the top.
   saga: {
     margin: 0,
-    paddingBlock: space.xs,
-    backgroundColor: color.paper,
-    borderBlockEndColor: color.rule,
-    borderBlockEndStyle: 'solid',
-    borderBlockEndWidth: rule.hair,
+    overflow: 'hidden',
     color: color.ink,
     fontFamily: font.display,
-    fontSize: text.base,
+    fontSize: text.lg,
     fontWeight: 800,
-    insetBlockStart: 0,
     letterSpacing: '-0.01em',
-    overflowWrap: 'anywhere',
-    position: 'sticky',
-    zIndex: z.sticky,
+    lineHeight: leading.heading,
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   ranges: {
     margin: 0,

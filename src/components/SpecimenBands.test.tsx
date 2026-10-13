@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react'
+import { screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
@@ -48,6 +48,21 @@ describe('SpecimenBands', () => {
     expect(screen.getByRole('region', { name: 'Zoan' })).toBeInTheDocument()
     expect(screen.getByRole('region', { name: 'Logia' })).toBeInTheDocument()
     expect(screen.getByText(/Group 01 · 3 fruits/u)).toBeInTheDocument()
+
+    for (const name of ['Paramecia', 'Zoan', 'Logia']) {
+      const plate = screen.getByRole('region', { name })
+      const headings = within(plate).getAllByRole('heading', { level: 2 })
+      const heading = within(plate).getByRole('heading', { level: 2, name })
+      const head = heading.parentElement
+
+      expect(headings).toHaveLength(1)
+      expect(plate).toHaveAttribute('aria-labelledby', heading.id)
+      expect(head?.parentElement).toBe(plate)
+      // The explanatory sentence must scroll with the specimens rather than
+      // increasing the pinned heading's height.
+      expect(head?.nextElementSibling?.tagName).toBe('P')
+      expect(head?.nextElementSibling).not.toHaveTextContent(/^$/u)
+    }
   })
 
   it('counts every open fruit across the three plates', async () => {

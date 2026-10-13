@@ -14,6 +14,7 @@ import {
 // figure that changes under the reader — a port number, an episode, the
 // horizon's own count — must not shift the glyphs beside it when it does.
 const TABULAR = 'tabular-nums'
+const ONE_COLUMN = 'minmax(0, 1fr)'
 
 /**
  * Every declaration the log paints with, kept beside the component rather than
@@ -33,7 +34,6 @@ export const styles = stylex.create({
       'default': '2.75rem minmax(0, 1fr)',
       '@media (min-width: 40rem)': '3.5rem minmax(0, 1fr)',
     },
-    scrollMarginBlockStart: space.xl,
   },
   // Three rows: a stretch of spine the height of the body's top padding, so
   // the marker sits level with the stage label, the marker, and the rest.
@@ -78,6 +78,7 @@ export const styles = stylex.create({
   body: {
     gap: space.md,
     display: 'grid',
+    gridTemplateColumns: ONE_COLUMN,
     paddingBlockEnd: space.xl2,
     paddingBlockStart: space.lg,
     minWidth: 0,
@@ -88,18 +89,29 @@ export const styles = stylex.create({
     alignItems: 'baseline',
     columnGap: space.md,
     display: 'flex',
-    flexWrap: 'wrap',
     lineHeight: leading.body,
-    rowGap: space.xs3,
-    minHeight: '2.75rem',
+    position: { 'default': 'sticky', '@media (min-width: 40rem)': 'static' },
+  },
+  stageName: {
+    overflow: 'hidden',
+    display: { 'default': 'block', '@media (min-width: 40rem)': 'none' },
+    fontFamily: font.display,
+    fontSize: text.lg,
+    fontWeight: 800,
+    lineHeight: leading.heading,
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    minWidth: 0,
   },
   stageLabel: {
+    flexShrink: 0,
     fontFamily: font.mono,
     fontSize: text.xs,
     fontVariantNumeric: TABULAR,
     fontWeight: 700,
     letterSpacing: '0.1em',
     textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
   },
   stageOpen: { color: color.accent },
   stageCovered: { color: color.muted },
@@ -111,7 +123,7 @@ export const styles = stylex.create({
     columnGap: space.xl,
     display: 'grid',
     gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
+      'default': ONE_COLUMN,
       '@media (min-width: 60rem)': 'minmax(0, 4fr) minmax(0, 8fr)',
     },
     rowGap: space.lg,
@@ -154,7 +166,7 @@ export const styles = stylex.create({
     columnGap: space.lg,
     display: 'grid',
     gridTemplateColumns: {
-      'default': 'minmax(0, 1fr)',
+      'default': ONE_COLUMN,
       '@media (min-width: 40rem)': 'repeat(2, minmax(0, 1fr))',
     },
     rowGap: space.sm,
@@ -215,7 +227,7 @@ export const styles = stylex.create({
     listStyleType: 'none',
     paddingInlineStart: 0,
   },
-  ship: { gap: space.md, display: 'grid', scrollMarginBlockStart: space.xl },
+  ship: { gap: space.md, display: 'grid' },
 
   // The horizon: a short row, the tick on the spine, the line across the
   // body and its label.

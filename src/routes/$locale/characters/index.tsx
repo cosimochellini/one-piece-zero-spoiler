@@ -18,14 +18,18 @@ import { usePeek } from '~/routes/$locale/-peek'
 import { liftCharacter, loadCharacters, loadShelves } from '~/server/api'
 
 export const Route = createFileRoute('/$locale/characters/')({
-  loader: async ({ context }) => ({
-    // The fold: the count, and the thirty-six crests.
-    page: await loadCharacters({ data: { locale: context.locale } }),
-    // Not awaited. Three hundred and twenty-six tiles with a drawing each
-    // are the heavy half of this page and the half below the fold, so they
-    // stream into a boundary of their own while the crests are already up.
-    shelves: loadShelves({ data: { locale: context.locale } }),
-  }),
+  loader: async ({ context }) => {
+    const page = await loadCharacters({ data: { locale: context.locale } })
+    const shelves = loadShelves({ data: { locale: context.locale } })
+
+    return {
+      page,
+      // Stream below the fold on the server. Client reloads keep the old
+      // shelves until the replacement is ready, so Back's restored position
+      // cannot be clamped by the shorter loading placeholders.
+      shelves: import.meta.env.SSR ? shelves : await shelves,
+    }
+  },
   head: ({ match, params }) => {
     return isLocale(params.locale) ?
         describeNamedPage({

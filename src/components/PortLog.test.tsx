@@ -1,4 +1,5 @@
 import { screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
 
 import type { RecordView } from '~/lib/view/records'
@@ -9,10 +10,11 @@ import {
   dossier,
   openSlot,
   peekPending,
+  peekTo,
   port,
   record,
 } from '~/test/fixtures'
-import { ep, renderWithProviders } from '~/test/providers'
+import { ep, renderWithProviders, settle } from '~/test/providers'
 
 import { PortLog } from './PortLog'
 
@@ -98,6 +100,18 @@ describe('PortLog', () => {
     const heading = screen.getByRole('heading', { level: 2, name: 'Baratie' })
 
     expect(rowOf(heading)).toHaveAttribute('id', 'baratie')
+
+    const baratieRow = rowOf(heading)
+    const names = within(baratieRow).getAllByText('Baratie')
+
+    expect(names).toHaveLength(2)
+    expect(
+      within(baratieRow).getAllByRole('heading', { level: 2 }),
+    ).toHaveLength(1)
+    expect(names.find((name) => name !== heading)).toHaveAttribute(
+      'aria-hidden',
+      'true',
+    )
     expect(
       screen.getByText('A restaurant that floats on the sea.'),
     ).toBeInTheDocument()
@@ -112,6 +126,39 @@ describe('PortLog', () => {
     expect(container.querySelector(':scope #jaya')).toBeNull()
     // Every drawing on the page belongs to an open port or an open record.
     expect(container.querySelectorAll(':scope svg svg')).toHaveLength(5)
+  })
+
+  it('keeps a manually revealed port’s name out of its pinned stage', async () => {
+    const user = userEvent.setup()
+    const later = port({ id: 'jaya', name: 'Jaya', ...at(144) })
+    renderWithProviders(
+      <PortLog
+        bookmark={ep(20)}
+        covered={[coveredRecord({ kind: 'place', ...at(144) })]}
+        open={[]}
+        peek={peekTo(later)}
+        peekRecord={peekPending()}
+      />,
+      { bookmark: ep(20) },
+    )
+
+    const stageLabel = screen.getByText('Stop 1 of 1')
+    const stage = stageLabel.parentElement
+    const row = rowOf(stageLabel)
+
+    expect(stage).not.toHaveTextContent('Jaya')
+    expect(screen.queryByText('Jaya')).not.toBeInTheDocument()
+
+    await user.click(within(row).getByRole('button'))
+    await settle()
+
+    expect(
+      within(row).getByRole('heading', { level: 2, name: 'Jaya' }),
+    ).toBeVisible()
+    expect(within(row).getAllByText('Jaya')).toHaveLength(1)
+    expect(stage).not.toHaveTextContent('Jaya')
+    expect(row).not.toHaveAttribute('id')
+    expect(within(row).getByText('First seen in episode 144')).toBeVisible()
   })
 
   it('files the records met at a port, each behind its own fog', () => {

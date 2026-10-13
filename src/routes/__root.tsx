@@ -12,6 +12,7 @@ import { DEFAULT_LOCALE, isLocale } from '~/i18n/locales'
 import { BookmarkProvider } from '~/lib/progress/BookmarkProvider'
 import { readBookmark, readTrial } from '~/lib/progress/readBookmark'
 import { createSecurityHeaders } from '~/security-headers'
+import { stickyStyles } from '~/styles/sticky'
 import { color, dur, ease, font, leading, text } from '~/styles/tokens.stylex'
 // A plain side-effect import, deliberately not `?url`. Vite folds it into the
 // client entry chunk's `viteMetadata.importedCss`, which is the only source
@@ -141,7 +142,7 @@ function RootDocument({ children }: { children: ReactNode }): ReactElement {
     <html
       lang={locale}
       suppressHydrationWarning
-      {...stylex.props(styles.document)}
+      {...stylex.props(stickyStyles.document, styles.document)}
     >
       <head>
         <HeadContent />

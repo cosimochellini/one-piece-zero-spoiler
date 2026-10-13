@@ -48,55 +48,59 @@ export const styles = stylex.create({
   },
 
   // A shelf: a hairline above, the arc's name and its two facts, then the
-  // tiles four across on a wide page and one across on a phone. Long shelves
-  // far down the page are skipped by the renderer until they scroll near.
+  // tiles four across on a wide page and one across on a phone. Shelves keep
+  // their real height so Back can restore a position inside the long list.
   shelvesPending: {
     color: color.muted,
     fontSize: text.base,
     lineHeight: leading.body,
   },
   shelf: {
-    containIntrinsicSize: 'auto 24rem',
     gap: space.md,
     borderBlockStartColor: color.rule,
     borderBlockStartStyle: 'solid',
     borderBlockStartWidth: rule.hair,
-    contentVisibility: 'auto',
     display: 'grid',
+    gridTemplateColumns: 'minmax(0, 1fr)',
     paddingBlockStart: space.md,
+    minWidth: 0,
   },
+  shelfPlaceholder: { minHeight: '24rem' },
   shelfHead: {
     alignItems: 'baseline',
-    columnGap: space.md,
+    columnGap: space.sm,
     display: 'flex',
-    flexWrap: 'wrap',
-    rowGap: space.xs2,
+    minWidth: 0,
   },
+  shelfName: { flexGrow: 1, minWidth: 0 },
   shelfTitle: {
+    overflow: 'hidden',
     color: color.ink,
     fontFamily: font.display,
     fontSize: text.lg,
     fontWeight: 800,
     letterSpacing: '-0.02em',
     lineHeight: leading.heading,
-    overflowWrap: 'anywhere',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
     minWidth: 0,
   },
   shelfMeta: {
     color: color.muted,
-    columnGap: space.sm,
-    display: 'flex',
-    flexWrap: 'wrap',
+    flexShrink: 0,
     fontSize: text.xs,
     letterSpacing: '0.08em',
     lineHeight: leading.body,
     textTransform: 'uppercase',
+    whiteSpace: 'nowrap',
   },
   shelfEpisode: {
     color: color.ink2,
     fontFamily: font.mono,
+    fontSize: text.xs,
     fontVariantNumeric: 'tabular-nums',
     fontWeight: 600,
+    lineHeight: leading.body,
   },
   tiles: {
     columnGap: space.lg,
