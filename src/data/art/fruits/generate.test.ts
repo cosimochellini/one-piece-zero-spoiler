@@ -22,6 +22,7 @@ import {
   OX_OX_GIRAFFE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SLIP_SLIP,
   SMOKE_SMOKE,
   SPRING_SPRING,
   STRING_STRING,
@@ -82,6 +83,7 @@ const KIT = {
   'ice-ice-fruit': ICE_ICE,
   'munch-munch-fruit': MUNCH_MUNCH,
   'ox-ox-fruit-model-bison': OX_OX_BISON,
+  'slip-slip-fruit': SLIP_SLIP,
   'smoke-smoke-fruit': SMOKE_SMOKE,
   'spring-spring-fruit': SPRING_SPRING,
 }

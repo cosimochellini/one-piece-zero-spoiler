@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last seven are drawn as fruit + power (#461), on the bodies of
+ * The last eight are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -1049,5 +1049,53 @@ export const BIRD_FALCON: Stroke[] = [
     ].join(' '),
     role: 'soft',
   },
+  shadowUnder(1),
+]
+
+/** The slip fruit: an oblong, glossy enough that what hits it slides off. */
+const SLIP_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** The rim heights the glide hugs, and how far off the skin it runs. */
+const GLIDE = { from: 72, to: 104, off: 5 }
+
+/** The glide: just off the near shoulder, down it, and away past the rim. */
+function glide(): string {
+  const hug = Array.from({ length: 11 }, (_unused, at) => {
+    const y = GLIDE.from + ((GLIDE.to - GLIDE.from) * at) / 10
+    const [x] = onRim(SLIP_BODY, y, -1)
+
+    return point(x - GLIDE.off, y)
+  })
+
+  return `${polyline(hug)} C32.6 117.4 30.1 129.7 30 134`
+}
+
+/**
+ * The fruit a stone has just slid off: one glide line hugs the near shoulder
+ * and flies off past the rim, and the chunk drops away at the end of it. In
+ * episode 52 Buggy blows up the fountain, a piece of it shoots at Alvida and
+ * slips right off her.
+ */
+export const SLIP_SLIP: Stroke[] = [
+  { d: outline(SLIP_BODY) },
+  crown(SLIP_BODY),
+  shine(SLIP_BODY),
+  hatching(SLIP_BODY, [120, 132, 144]),
+  ...skin([
+    [68, 120, 9],
+    [96, 142, -8],
+  ]),
+  ...sprout(SLIP_BODY, 6, 'right'),
+  { d: glide(), role: 'accent' },
+  // The chunk of the fountain, one face of it turned to the light.
+  {
+    d: [
+      'M11 155 L16 148 L25 147 L31 153 L29 162 L20 166 L12 163 Z',
+      'M25 147 L23 156 L29 162',
+    ].join(' '),
+    role: 'ambient',
+  },
+  // Which way it is going.
+  { d: 'M26 140 L23 144 M32 144 L29 148', role: 'soft' },
   shadowUnder(1),
 ]
