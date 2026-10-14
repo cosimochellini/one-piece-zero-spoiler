@@ -606,7 +606,7 @@ export const devilFruits: Saga = {
       id: 'bird-bird-fruit-model-phoenix',
       kind: 'fruit',
       revealedAtEpisode: 463,
-      revealedAtChapter: 553,
+      revealedAtChapter: 554,
       name: {
         it: 'Frutto Tori Tori, modello Fenice',
         en: 'Bird-Bird Fruit, Model: Phoenix',

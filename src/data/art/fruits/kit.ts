@@ -250,11 +250,12 @@ export function hatching(body: Body, heights: number[]): Stroke {
 /**
  * The ribs of the segmented body, following its outline down the front as
  * far as `bottom`, which is near the foot unless something has the fruit
- * lower down.
+ * lower down. `ways` picks the left rib (-1), the right one (1) or both.
  */
 export function ribs(
   body: Body,
   bottom = crownY(body) + KIT_RY * 2 - 6,
+  ways = [-1, 1],
 ): Stroke {
   const top = crownY(body) + 8
   const rib = (way: number): string => {
@@ -267,7 +268,7 @@ export function ribs(
     )
   }
 
-  return { d: `${rib(-1)} ${rib(1)}`, role: 'soft' }
+  return { d: ways.map((way) => rib(way)).join(' '), role: 'soft' }
 }
 
 /** The stalk out of the dimple, and its leaf. */

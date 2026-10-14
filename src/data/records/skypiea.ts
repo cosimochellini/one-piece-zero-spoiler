@@ -1054,7 +1054,7 @@ export const skypiea: Saga = {
       devilFruit: [
         {
           episode: 463,
-          chapter: 553,
+          chapter: 554,
           value: ['bird-bird-fruit-model-phoenix'],
         },
       ],
