@@ -8,7 +8,6 @@ import { LocaleSwitch } from './LocaleSwitch'
 describe('LocaleSwitch', () => {
   it('offers the same page in the other language, not the landing', async () => {
     await renderOnRoute(<LocaleSwitch />, {
-      locale: 'en',
       pattern: '/$locale/characters/$id',
       path: '/en/characters/nami',
     })
