@@ -14,6 +14,7 @@ import {
   CAGE_CAGE,
   CALM_CALM,
   CASTLE_CASTLE,
+  CAT_LEOPARD,
   CHOP_CHOP,
   CLONE_CLONE,
   COOK_COOK,
@@ -21,8 +22,11 @@ import {
   DICE_DICE,
   DOG_DACHSHUND,
   DOG_JACKAL,
+  DOG_WOLF,
+  DOOR_DOOR,
   DRAGON_KIRIN,
   EGG_EGG,
+  ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
@@ -58,6 +62,7 @@ import {
   RUMBLE_RUMBLE,
   SAND_SAND,
   SLIP_SLIP,
+  SLOW_SLOW,
   SMOKE_SMOKE,
   SNOW_SNOW,
   SOUL_SOUL,
@@ -91,7 +96,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Seventy-four of them are drawn by hand and name their drawing; the rest
+ * Seventy-nine of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -119,44 +124,14 @@ export const fruitArt = {
   'spring-spring-fruit': SPRING_SPRING,
   'horse-horse-fruit': HORSE_HORSE,
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
-  'slow-slow-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'slow-slow-fruit': SLOW_SLOW,
   'ice-ice-fruit': ICE_ICE,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
-  'cat-cat-fruit-model-leopard': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'dog-dog-fruit-model-wolf': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'door-door-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'cat-cat-fruit-model-leopard': CAT_LEOPARD,
+  'dog-dog-fruit-model-wolf': DOG_WOLF,
+  'door-door-fruit': DOOR_DOOR,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
-  'elephant-elephant-fruit': fruit({
-    body: 'oblong',
-    grain: 5,
-    leaf: 'sprig',
-    stem: 'nub',
-    swirl: 'whorls',
-  }),
+  'elephant-elephant-fruit': ELEPHANT_ELEPHANT,
   'revive-revive-fruit': fruit({
     body: 'star',
     grain: 11,
