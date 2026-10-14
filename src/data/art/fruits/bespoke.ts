@@ -3890,12 +3890,14 @@ export const HORSE_HORSE: Stroke[] = [
 /**
  * What a Zoan grows that is round in section, a trunk, a tail, a claw: the
  * line down its middle as a chain of cubics, and how far either edge stands
- * off that line at each point along it, 0 at the root and 1 at the end. The
- * line starts on the rim, so both edges leave the skin there.
+ * off that line at each point along it, 0 at the root and 1 at the end.
+ * With `rim`, both edges of the root are set on that body's rim, on its
+ * right (1) or left (-1) side, so they leave the skin there.
  */
 interface Limb {
   half: (along: number) => number
   line: Point[]
+  rim?: { body: Body; way: number }
 }
 
 /** A point of a limb, `along` its middle line and `across` it. */
@@ -3915,8 +3917,11 @@ function limbOutline(
   const edge = (way: number): Point[] => {
     return Array.from({ length: steps + 1 }, (_unused, step) => {
       const along = step / steps
+      const at = onLimb(limb, along, way * limb.half(along) * rough(step, way))
 
-      return onLimb(limb, along, way * limb.half(along) * rough(step, way))
+      return step === 0 && limb.rim !== undefined ?
+          onRim(limb.rim.body, at[1], limb.rim.way)
+        : at
     })
   }
   const end = limb.half(1)
@@ -3965,6 +3970,7 @@ const TRUNK: Limb = {
     [140, 152],
   ],
   half: (along) => 3.5 + 10.5 * (1 - along) ** 2,
+  rim: { body: ELEPHANT_BODY, way: 1 },
 }
 
 /**
@@ -4014,6 +4020,7 @@ const TAIL: Limb = {
         6 + 9 * Math.sin((Math.PI / 2) * (along / PLUME))
       : 2.5 + 12.5 * Math.cos((Math.PI / 2) * ((along - PLUME) / (1 - PLUME)))
   },
+  rim: { body: WOLF_BODY, way: 1 },
 }
 
 /** The fur notches: steps along the outer edge (1) and the inner one (-1). */
@@ -4097,7 +4104,7 @@ const DOOR_BODY: Body = { family: 'oblong', cy: 116 }
  * doorway.
  */
 export const DOOR_DOOR: Stroke[] = [
-  ...kitBody(DOOR_BODY, [120, 132, 144], (x, y) => x > 56 || y < 94 || y > 148),
+  ...kitBody(DOOR_BODY, [120, 132, 144], (x, y) => x > 56 || y < 97 || y > 142),
   ...skin([
     [96, 98, 8],
     [94, 146, -6],
@@ -4130,6 +4137,7 @@ const STUB: Limb = {
     [44, 137],
   ],
   half: () => 8,
+  rim: { body: LEOPARD_BODY, way: -1 },
 }
 
 /** Where each claw runs, out of the end of the stub and hooked down. */
@@ -4161,8 +4169,9 @@ function claw(line: Point[]): string {
 
 /**
  * The fruit with a leopard's claws: three curved, hooked claws out of a
- * short stub grown from its lower side. In episode 246 Lucci turns into his
- * half-leopard form, names his fruit and, with sharp nails, pierces Luffy.
+ * short stub grown from its lower side. In chapter 349 and episode 246
+ * Lucci turns into his half-leopard form, names his fruit and, with sharp
+ * nails, pierces Luffy.
  * Claws only, never a foreleg, a pad or a rosette, and curved, never
  * straight, so they are never the spike fruit's spikes.
  */
