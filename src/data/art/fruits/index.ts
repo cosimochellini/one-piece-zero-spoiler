@@ -34,6 +34,7 @@ import {
   HEAL_HEAL,
   HEAT_HEAT,
   HOBBY_HOBBY,
+  HORSE_HORSE,
   HUMAN_HUMAN,
   ICE_ICE,
   JACKET_JACKET,
@@ -90,7 +91,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Seventy-three of them are drawn by hand and name their drawing; the rest
+ * Seventy-four of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -116,13 +117,7 @@ export const fruitArt = {
   'cage-cage-fruit': CAGE_CAGE,
   'flower-flower-fruit': FLOWER_FLOWER,
   'spring-spring-fruit': SPRING_SPRING,
-  'horse-horse-fruit': fruit({
-    body: 'pear',
-    grain: 4,
-    leaf: 'right',
-    stem: 'nub',
-    swirl: 'waves',
-  }),
+  'horse-horse-fruit': HORSE_HORSE,
   'rumble-rumble-fruit': RUMBLE_RUMBLE,
   'slow-slow-fruit': fruit({
     body: 'heart',

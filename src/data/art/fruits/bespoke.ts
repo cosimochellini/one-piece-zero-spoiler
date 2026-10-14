@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last sixty-one are drawn as fruit + power (#461), on the bodies of
+ * The last sixty-two are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -3826,5 +3826,47 @@ export const DOG_JACKAL: Stroke[] = [
   { d: grown(JACKAL_BODY, -1, EAR), role: 'accent' },
   // The fold inside the ear.
   { d: 'M42 94 C40 78 40 62 43 46 C46 58 50 68 54 78', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The horse fruit: a pear, standing on one hoofed foreleg. */
+const HORSE_BODY: Body = { family: 'pear', cy: 88 }
+
+/** The rim heights the foreleg leaves the skin at, front and back. */
+const FORELEG = { front: 125.5, back: 129.7 }
+
+/**
+ * The fruit on a horse's foreleg: the foot of the fruit narrows into one
+ * leg, both edges of it out of the rim, the fetlock bent, the hoof
+ * planted, toe forward. In episode 153 Gan Fall shows the crew that Pierre
+ * ate the fruit and can turn into a Pegasus, and they find it ordinary. The
+ * leg and nothing else: no wings, which are the falcon's, no mane, never a
+ * head.
+ */
+export const HORSE_HORSE: Stroke[] = [
+  ...kitBody(
+    HORSE_BODY,
+    [100, 112, 124],
+    (x, y) => y < (x < 80 ? FORELEG.front : FORELEG.back) + 0.5,
+  ),
+  ...skin([
+    [68, 98, 8],
+    [88, 120, -7],
+  ]),
+  ...sprout(HORSE_BODY, 4, 'left'),
+  {
+    d: [
+      `M${point(...onRim(HORSE_BODY, FORELEG.front, -1))}`,
+      'C67 132 69 140 69 150 C69 155 68 158 66 160 L60 164',
+      'L54 176 L79 176 L76 165',
+      'C80 164 84 163 86 161 C88 158 88 154 83 152',
+      `C83 144 85 134 ${point(...onRim(HORSE_BODY, FORELEG.back, 1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The coronet, where the hoof starts.
+  { d: 'M60 164 C65 165 71 166 76 165', role: 'soft' },
+  // The horn of the hoof.
+  { d: 'M60 175 L65 168 M67 175 L72 168', role: 'ambient' },
   shadowUnder(1),
 ]
