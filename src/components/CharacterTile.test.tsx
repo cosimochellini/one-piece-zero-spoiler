@@ -131,6 +131,68 @@ describe('CharacterTile', () => {
     expect(load).toHaveBeenCalledExactlyOnceWith(['test-deferred'], 'en')
   })
 
+  it('asks again when a failed drawing comes near the screen again', async () => {
+    type Notify = (entries: { isIntersecting: boolean }[]) => void
+    // Observers still watching: a disconnected one hears nothing more.
+    const watching = new Set<Notify>()
+    vi.stubGlobal(
+      'IntersectionObserver',
+      class {
+        disconnect: () => void
+        observe = vi.fn<() => void>()
+
+        constructor(notify: Notify) {
+          watching.add(notify)
+          this.disconnect = () => {
+            watching.delete(notify)
+          }
+        }
+      },
+    )
+    const near = (): void => {
+      for (const notify of watching) {
+        notify([{ isIntersecting: true }])
+      }
+    }
+    const load = vi
+      .fn<(ids: string[]) => Promise<Record<string, Stroke[]>>>()
+      .mockRejectedValueOnce(new Error('offline'))
+      .mockResolvedValue({ 'test-retried': nami.visual.strokes })
+    const later = searchable({ id: 'test-retried', name: 'Later', ...at(5) })
+    const { container } = renderWithProviders(
+      <DrawingsContext value={load}>
+        <ul>
+          <CharacterTile
+            peek={peekPending()}
+            slot={openSlot({
+              ...later,
+              visual: { strokes: [], tint: later.visual.tint, deferred: true },
+            })}
+          />
+        </ul>
+      </DrawingsContext>,
+      { bookmark: ep(10) },
+    )
+
+    near()
+    await vi.waitFor(() => {
+      expect(load).toHaveBeenCalledExactlyOnceWith(['test-retried'], 'en')
+    })
+
+    expect(container.querySelectorAll('path')).toHaveLength(0)
+
+    near()
+    await vi.waitFor(() => {
+      expect(container.querySelectorAll('path')).toHaveLength(
+        nami.visual.strokes.length,
+      )
+    })
+
+    expect(load).toHaveBeenCalledTimes(2)
+
+    vi.unstubAllGlobals()
+  })
+
   it('puts no transition name on a covered tile, which would spell its id', () => {
     const { container } = renderWithProviders(
       <ul>

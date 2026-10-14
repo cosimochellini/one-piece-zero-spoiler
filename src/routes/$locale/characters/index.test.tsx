@@ -6,7 +6,7 @@ import { loadCharacters, loadShelves } from '~/server/api'
 import { shelf } from '~/test/fixtures'
 
 import { Route } from '.'
-import { shelvesShown } from './-seen'
+import { seen, shelvesShown } from './-seen'
 
 vi.mock(import('~/server/api'), async (importOriginal) => {
   const original = await importOriginal()
@@ -64,6 +64,7 @@ function delayedShelves(): {
 
 describe('characters route loader', () => {
   beforeEach(() => {
+    seen.shelves = false
     vi.mocked(loadCharacters).mockResolvedValue(page)
   })
 

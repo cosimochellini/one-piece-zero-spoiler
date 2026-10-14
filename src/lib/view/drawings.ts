@@ -133,9 +133,12 @@ export function useDrawing(
     () => (deferred ? undefined : visual.strokes),
   )
 
+  // Watched until the strokes are here, not only until the first ask: a
+  // batch that failed is asked again the next time the box comes near.
+  const waiting = deferred && here === undefined
   const ref = useCallback<RefCallback<Element>>(
     (box) => {
-      if (!deferred || load === null || box === null) {
+      if (!waiting || load === null || box === null) {
         return
       }
 
@@ -147,12 +150,9 @@ export function useDrawing(
 
       const observer = new IntersectionObserver(
         (entries) => {
-          if (entries.every((entry) => !entry.isIntersecting)) {
-            return
+          if (entries.some((entry) => entry.isIntersecting)) {
+            enqueue(next)
           }
-
-          observer.disconnect()
-          enqueue(next)
         },
         { rootMargin: AHEAD },
       )
@@ -161,7 +161,7 @@ export function useDrawing(
         observer.disconnect()
       }
     },
-    [deferred, id, load, locale, scope],
+    [id, load, locale, scope, waiting],
   )
 
   return { ref, strokes: here ?? [] }
