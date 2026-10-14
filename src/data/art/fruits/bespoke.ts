@@ -4169,9 +4169,9 @@ function claw(line: Point[]): string {
 
 /**
  * The fruit with a leopard's claws: three curved, hooked claws out of a
- * short stub grown from its lower side. In chapter 349 and episode 246
- * Lucci turns into his half-leopard form, names his fruit and, with sharp
- * nails, pierces Luffy.
+ * short stub grown from its lower side. In chapter 349 (episode 246) Lucci,
+ * in his half-leopard form, names his fruit and, with sharp nails, pierces
+ * Luffy.
  * Claws only, never a foreleg, a pad or a rosette, and curved, never
  * straight, so they are never the spike fruit's spikes.
  */
