@@ -4560,42 +4560,43 @@ export const SNAKE_KING_COBRA: Stroke[] = [
 /** The love fruit: a heart, its point turned to stone. */
 const LOVE_BODY: Body = { family: 'heart', cy: 112 }
 
-/** The seam where the skin stops and the stone starts, left to right. */
+/**
+ * The seam where the skin stops and the stone starts: down across the fruit
+ * on a steep slant from the near shoulder to the far side of the point, so
+ * it never lies level under the marks on the skin.
+ */
 const STONE_SEAM: Point[] = [
-  [44, 124],
-  [54, 131],
-  [61, 126],
-  [72, 135],
-  [82, 129],
-  [94, 138],
-  [103, 131],
-  [112, 135],
+  [40, 110],
+  [56, 119],
+  [61, 117],
+  [74, 130],
+  [81, 129],
+  [99, 146],
 ]
 
 /** The stone below the seam, cut in flat faces from one end of it round. */
 const STONE_FACES: Point[] = [
-  [44, 124],
-  [52, 140],
-  [68, 152],
+  [40, 110],
+  [44, 128],
+  [54, 144],
+  [68, 154],
   [80, 158],
-  [94, 150],
-  [106, 142],
-  [112, 135],
+  [90, 154],
+  [99, 146],
 ]
 
 /**
- * The fruit turned to stone from the point up: a jagged seam crosses it
- * below the middle, and under it the skin stops and the stone is plain and
- * whole, cut in flat faces. In episode 410 Hancock turns Momonga's Marines
- * to stone, and in 415 she tells Luffy how she came to eat the fruit.
+ * The fruit turned to stone from the point up: a seam slants down across
+ * it, and under it the skin stops and the stone is plain and whole, cut in
+ * flat faces. In episode 410 Hancock turns Momonga's Marines to stone, and
+ * in 415 she tells Luffy how she came to eat the fruit.
  */
 export const LOVE_LOVE: Stroke[] = [
-  ...kitBody(
-    LOVE_BODY,
-    [96, 108, 120],
-    (x, y) => y < heightOn(STONE_SEAM, x) - 1,
-  ),
-  ...skin([[64, 92, 9]]),
+  { d: outline(LOVE_BODY, (x, y) => y < heightOn(STONE_SEAM, x) - 1) },
+  crown(LOVE_BODY),
+  shine(LOVE_BODY),
+  hatching(LOVE_BODY, [112, 122, 132]),
+  ...skin([[74, 88, 8]]),
   ...sprout(LOVE_BODY, 4, 'right'),
   { d: polyline(STONE_SEAM.map(([x, y]) => point(x, y))), role: 'accent' },
   // The stone, cut in flat faces down to the point.
@@ -4769,14 +4770,17 @@ const SNIP_BODY: Body = { family: 'segmented', cy: 114 }
 /** How far down the far side the segment has been cut free. */
 const SNIP_HINGE = 142
 
-/** Where the cut runs: down the far rib, from the crown to the hinge. */
-function snipCut(): string {
+/**
+ * Where the cut runs: down the far rib, from the crown to the hinge, or
+ * `inset` in from it, where the cut face of the skin ends.
+ */
+function snipCut(inset = 0): string {
   return polyline(
     Array.from({ length: 13 }, (_unused, at) => {
       const y =
         crownY(SNIP_BODY) + 8 + ((SNIP_HINGE - 8 - crownY(SNIP_BODY)) * at) / 12
 
-      return point(80 + 0.5 * halfWidth(SNIP_BODY, y), y)
+      return point(80 + 0.5 * halfWidth(SNIP_BODY, y) - inset, y)
     }),
   )
 }
@@ -4802,9 +4806,9 @@ const STRIP: Limb = {
 
 /**
  * The fruit cut like paper: the segment on its far side cut free along the
- * rib and peeled away like a strip of paper, turning over once, two crossed
- * blades at the top of the cut where it began, and the outline open where
- * the strip came away. In episode 442 Inazuma turns his hands into scissors
+ * rib and peeled away like a strip of paper, turning over once, the cut
+ * face of the skin showing along the rib, and the outline open where the
+ * strip came away. In episode 442 Inazuma turns his hands into scissors
  * and cuts the stone floor into strips as if it were paper.
  */
 export const SNIP_SNIP: Stroke[] = [
@@ -4817,16 +4821,14 @@ export const SNIP_SNIP: Stroke[] = [
   crown(SNIP_BODY),
   shine(SNIP_BODY),
   { d: snipCut() },
+  { d: snipCut(5), role: 'soft' },
   ribs(SNIP_BODY, undefined, [-1]),
   ...skin([
     [62, 100, 8],
     [70, 140, -6],
   ]),
   ...sprout(SNIP_BODY, -4, 'left'),
-  {
-    d: [limbOutline(STRIP, 32), 'M96 62 L106 84 M104 62 L94 84'].join(' '),
-    role: 'accent',
-  },
+  { d: limbOutline(STRIP, 32), role: 'accent' },
   shadowUnder(1),
 ]
 
@@ -4954,17 +4956,17 @@ const WASH_BODY: Body = { family: 'oblong', cy: 104 }
 const WASH_WAIST = 108
 
 /**
- * The fruit washed and hung up: below the waist it has gone flat and limp as
- * cloth, hanging askew in folds to a wavy hem turned up at its corners, the
- * whole fruit hung from a hooked stalk. In episode 465 Tsuru turns the
- * pirates who attack her into laundry. No clothes peg.
+ * The fruit washed and hung up: below a crease at the waist it has gone flat
+ * and limp as cloth, narrower than the skin above it, hanging askew to an
+ * uneven hem with one corner folded over and a wrinkle across it, the whole
+ * fruit hung from a hooked stalk. In episode 465 Tsuru turns the pirates
+ * who attack her into laundry. No clothes peg and no line.
  */
 export const WASH_WASH: Stroke[] = [
-  ...kitBody(WASH_BODY, [80, 92, 104], (_x, y) => y < WASH_WAIST),
-  ...skin([
-    [64, 84, 8],
-    [94, 98, -6],
-  ]),
+  { d: outline(WASH_BODY, (_x, y) => y < WASH_WAIST) },
+  crown(WASH_BODY),
+  shine(WASH_BODY),
+  ...skin([[68, 90, 7]]),
   {
     d: stemPath('hooked', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }),
   },
@@ -4972,22 +4974,35 @@ export const WASH_WASH: Stroke[] = [
     d: leafPath('left', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }, 4),
     role: 'soft',
   },
+  // The crease where the skin turns to cloth.
   {
     d: [
       `M${point(...onRim(WASH_BODY, WASH_WAIST, -1))}`,
-      'C42 128 44 150 52 166 C62 160 70 168 82 166',
-      'C94 164 102 174 116 172 C122 171 128 174 132 176',
-      `C126 154 122 128 ${point(...onRim(WASH_BODY, WASH_WAIST, 1))}`,
+      'C60 118 100 118',
+      point(...onRim(WASH_BODY, WASH_WAIST, 1)),
+    ].join(' '),
+  },
+  {
+    d: [
+      'M50 114 C47 130 45 146 40 160 C52 164 62 160 74 166',
+      'C86 172 98 168 108 176 C114 180 120 178 124 180',
+      'C118 160 114 136 110 114',
     ].join(' '),
     role: 'accent',
   },
-  // The hem turned up, and the folds the cloth hangs in.
+  // The corner folded over, a wrinkle, and the fold the cloth hangs in.
   {
     d: [
-      'M52 166 C54 160 60 156 66 160 M116 172 C114 164 118 158 124 160',
-      'M60 112 C66 130 74 148 82 166 M100 112 C104 130 110 150 116 172',
+      'M40 160 L52 150 L56 163',
+      'M60 132 C64 129 68 135 72 132 C76 129 80 135 84 132',
+      'M80 120 C84 140 90 156 96 170',
     ].join(' '),
     role: 'soft',
+  },
+  // The far side of the cloth, turning away.
+  {
+    d: 'M108 134 L102 128 M110 148 L104 142 M113 162 L107 156',
+    role: 'ambient',
   },
   shadowUnder(1),
 ]
