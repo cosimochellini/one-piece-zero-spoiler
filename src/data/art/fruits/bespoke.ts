@@ -4873,8 +4873,8 @@ const FLAME_WING: Growth = {
 /**
  * The fruit with a phoenix's wings: two wings out of its shoulders, swept up
  * and out, their trailing edges breaking into hooked tongues of flame where
- * feathers would be. In episode 463 Marco, in his phoenix form and wrapped
- * in blue flame, takes Kizaru's light on his wings with no wound left. The
+ * feathers would be. In episode 463 and chapter 554 Marco, in his phoenix
+ * form and wrapped in blue flame, takes Kizaru's light with no wound left. The
  * wings and nothing else, never the head.
  */
 export const BIRD_PHOENIX: Stroke[] = [
@@ -4956,11 +4956,12 @@ const WASH_BODY: Body = { family: 'oblong', cy: 104 }
 const WASH_WAIST = 108
 
 /**
- * The fruit washed and hung up: below a crease at the waist it has gone flat
- * and limp as cloth, narrower than the skin above it, hanging askew to an
- * uneven hem with one corner folded over and a wrinkle across it, the whole
- * fruit hung from a hooked stalk. In episode 465 Tsuru turns the pirates
- * who attack her into laundry. No clothes peg and no line.
+ * The fruit gone limp as laundry: below a crease at the waist it has gone
+ * flat and limp as cloth, narrower than the skin above it, hanging askew to
+ * an uneven hem with one corner folded over and a wrinkle across it. In
+ * episode 465 Tsuru turns the pirates who attack her into laundry. No
+ * clothes peg, no line and no hook: hanging them out to dry is only said
+ * later, in an SBS.
  */
 export const WASH_WASH: Stroke[] = [
   { d: outline(WASH_BODY, (_x, y) => y < WASH_WAIST) },
@@ -4968,7 +4969,11 @@ export const WASH_WASH: Stroke[] = [
   shine(WASH_BODY),
   ...skin([[68, 90, 7]]),
   {
-    d: stemPath('hooked', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }),
+    d: stemPath('straight', {
+      baseY: crownY(WASH_BODY) + 6,
+      lean: 2,
+      rise: 22,
+    }),
   },
   {
     d: leafPath('left', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }, 4),
