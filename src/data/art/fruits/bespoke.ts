@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last fifty are drawn as fruit + power (#461), on the bodies of
+ * The last sixty-one are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -3230,5 +3230,598 @@ export const DRAGON_KIRIN: Stroke[] = [
   ]),
   ...sprout(KIRIN_BODY, -4, 'left'),
   { d: grown(KIRIN_BODY, 1, KIRIN_HORN), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The kilo fruit: a gourd, landed hard enough to dent the ground. */
+const KILO_BODY: Body = { family: 'gourd', cy: 128 }
+
+/** The dent the fruit has driven into the ground, seen a little from above. */
+const DENT = { cx: 80, cy: 160, rx: 42, ry: 7 }
+
+/** Where the near lip of the dent runs, at a point across it. */
+function dentLip(x: number): number {
+  const across = (x - DENT.cx) / DENT.rx
+
+  return DENT.cy + DENT.ry * Math.sqrt(Math.max(0, 1 - across ** 2))
+}
+
+/**
+ * The fruit landed like a dropped anvil: its heavy lower bulb pressed into a
+ * dent in the ground, the outline gone where it sinks in, and short cracks
+ * running out from under it either side. In episode 66 Miss Valentine floats
+ * out of reach on her umbrella, explains the fruit and slams down on Miss
+ * Monday at ten thousand kilos. No umbrella, which is hers and not the
+ * fruit's.
+ */
+export const KILO_KILO: Stroke[] = [
+  ...kitBody(KILO_BODY, [140, 150], (x, y) => y < dentLip(x) - 2),
+  waist(KILO_BODY, 122),
+  ...skin([
+    [70, 102, 6],
+    [64, 144, 8],
+  ]),
+  ...sprout(KILO_BODY, -4, 'left'),
+  {
+    d: [
+      polyline(trace([DENT.cx, DENT.cy], [DENT.rx, DENT.ry], [0, 180, 16])),
+      'M38 160 L31 164 L26 162 L12 169',
+      'M48 165 L44 171 L38 172 L32 179',
+      'M122 160 L130 165 L136 162 L150 168',
+      'M110 166 L116 172 L122 172 L128 180',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M6 160 L38 160 M122 160 L154 160', role: 'ambient' },
+]
+
+/** The wax fruit: a heart, its foot held fast in a lump of wax. */
+const WAX_BODY: Body = { family: 'heart', cy: 116 }
+
+/** The near edge of the wax's rolled top, where it holds the fruit. */
+const WAX_TOP: Point[] = [
+  [40, 152],
+  [54, 148],
+  [66, 154],
+  [80, 155],
+  [94, 151],
+  [108, 138],
+  [120, 136],
+]
+
+/**
+ * The fruit held in wax: a hardened lump bound round its foot like a
+ * shackle, piled higher on one side, its top edge rolled where the wax was
+ * pushed up, the outline gone where the wax holds it. In episode 73 Mr. 3
+ * binds Brogy's legs with a strange substance and Vivi names the fruit.
+ * Nothing dripping and nothing poured, and no candle.
+ */
+export const WAX_WAX: Stroke[] = [
+  ...kitBody(WAX_BODY, [92, 104, 116], (x, y) => y < heightOn(WAX_TOP, x) - 2),
+  ...skin([
+    [62, 100, 9],
+    [74, 128, -6],
+  ]),
+  ...sprout(WAX_BODY, 4, 'right'),
+  {
+    d: [
+      'M32 176 C24 168 30 156 42 154 C46 150 50 148 54 148',
+      'C66 158 94 156 108 138 C114 130 126 132 128 142',
+      'C136 150 140 166 134 176 C110 180 56 180 32 176 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The underside of the rolled edge, and where the wax set hard.
+  {
+    d: 'M58 158 C70 166 96 164 112 146 M124 154 C128 160 130 166 128 172',
+    role: 'soft',
+  },
+  { d: 'M14 184 C40 187 120 187 146 184', role: 'ambient', dashed: true },
+]
+
+/** The clone fruit: a segmented one, a patch of its skin printed twice. */
+const CLONE_BODY: Body = { family: 'segmented', cy: 116 }
+
+/** The patch of skin that is copied: one large curl. */
+const PATCH: [number, number, number][] = [[76, 98, 14]]
+
+/** How far the copy is set from the patch it was taken from. */
+const COPY = { dx: 6, dy: 27 }
+
+/**
+ * The fruit copied by touch: a patch of its own skin, two curls on the
+ * front, printed again right under itself, mirrored as a print is, on the
+ * same body and with no second outline. In episode 92 Mr. 2 shows the crew
+ * that he can copy anyone whose face he touches with his right hand. Never a
+ * face, and never the real fruit's two joined calabashes.
+ */
+export const CLONE_CLONE: Stroke[] = [
+  ...kitBody(CLONE_BODY, [98, 110, 122]),
+  ribs(CLONE_BODY),
+  ...skin(PATCH),
+  ...sprout(CLONE_BODY, -4, 'left'),
+  {
+    d: PATCH.map(([x, y, r]) => curl(x + COPY.dx, y + COPY.dy, r)).join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The flame fruit: a round, sunk to its waist in fire. */
+const FIRE_BODY: Body = { family: 'round', cy: 100 }
+
+/** The top of the fire, tip and hollow by turns, left to right. */
+const FIRE_TOPS: Point[] = [
+  [30, 178],
+  [26, 106],
+  [46, 140],
+  [57, 116],
+  [66, 144],
+  [83, 125],
+  [94, 144],
+  [109, 116],
+  [116, 142],
+  [134, 102],
+  [136, 178],
+]
+
+/**
+ * The fruit sunk in its own fire: a tall, narrow bed of flame where the
+ * shadow would be, every lick curving up and rounding off at its tip, the
+ * skin going down into it. In episode 94 Ace stops Smoker with a stream of
+ * fire and tells Luffy he ate the fruit; in 95 he drives his boat with his
+ * flames and sinks five ships with one fist of fire. The crown stays plain.
+ */
+export const FLAME_FLAME_FIRE: Stroke[] = [
+  ...kitBody(
+    FIRE_BODY,
+    [76, 88, 100],
+    (x, y) => y < heightOn(FIRE_TOPS, x) - 2,
+  ),
+  ...skin([
+    [60, 86, 8],
+    [70, 108, -6],
+  ]),
+  ...sprout(FIRE_BODY, 4, 'right'),
+  {
+    d: [
+      'M36 178 C24 166 24 148 32 136 C38 126 34 112 26 106',
+      'C30 104 36 106 38 112 C40 120 42 130 46 140',
+      'C46 130 48 122 54 118 C57 116 60 118 60 122 C60 130 62 138 66 144',
+      'C70 136 74 128 80 126 C84 125 86 128 86 132 C86 138 90 142 94 144',
+      'C96 134 100 122 106 118 C110 115 112 118 112 124 C112 132 112 138 116 142',
+      'C120 130 124 120 128 110 C130 104 134 102 136 104',
+      'C138 106 132 116 132 126 C132 140 138 150 134 162 C132 170 128 176 124 178',
+      'C100 182 60 182 36 178 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // Licks inside the fire, nearer than the rest.
+  {
+    d: 'M52 174 C46 166 56 160 50 148 M108 174 C114 166 104 160 110 148',
+    role: 'soft',
+  },
+  { d: 'M24 188 C50 191 110 191 136 188', role: 'ambient', dashed: true },
+]
+
+/** The mole fruit: a segmented one, a tunnel opened beside its foot. */
+const MOLE_BODY: Body = { family: 'segmented', cy: 120 }
+
+/** The mouth of the tunnel, seen a little from above. */
+const BURROW = { cx: 114, cy: 174, rx: 30, ry: 9 }
+
+/** The top of the heap dug out of it, from its long tail to the hole. */
+const SPOIL: Point[] = [
+  [38, 176],
+  [48, 160],
+  [58, 150],
+  [70, 142],
+  [78, 140],
+  [86, 148],
+  [90, 168],
+]
+
+/**
+ * The fruit beside its own tunnel: a hole opened in the ground at its foot,
+ * the mouth dark, and the earth dug out of it thrown to one side in a
+ * lopsided heap, steep at the hole and trailing off, that hides the foot.
+ * In episode 113 Chopper tells Usopp that Miss Merry Christmas ate the fruit
+ * and can go underground, and her partners use her tunnels. No claws: they
+ * are first shown in episode 114.
+ */
+export const MOLE_MOLE: Stroke[] = [
+  ...kitBody(MOLE_BODY, [96, 108, 120], (x, y) => y < heightOn(SPOIL, x) - 2),
+  ribs(MOLE_BODY),
+  ...skin([
+    [64, 100, 8],
+    [96, 128, -6],
+  ]),
+  ...sprout(MOLE_BODY, -4, 'left'),
+  {
+    d: [
+      polyline(
+        trace([BURROW.cx, BURROW.cy], [BURROW.rx, BURROW.ry], [0, 360, 24]),
+        true,
+      ),
+      'M38 176 C44 164 56 148 70 142 C78 138 84 142 88 152 C90 158 90 164 90 168',
+      'M26 173 L29 169 L34 170 L33 175 Z M16 176 L18 172 L22 174 Z M62 150 L65 146 L69 148 L67 152 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The dark of the tunnel.
+  {
+    d: 'M92 177 L98 170 M100 180 L110 167 M110 182 L122 166 M122 182 L132 168 M132 179 L138 172',
+    role: 'ambient',
+  },
+  // Clods of the heap.
+  {
+    d: 'M50 170 L52 170 M58 164 L60 164 M68 156 L70 156 M78 150 L80 150 M64 174 L66 174',
+    role: 'soft',
+  },
+  { d: 'M8 178 L38 178 M144 174 L152 174', role: 'ambient' },
+]
+
+/** The spike fruit: a heart, three spikes out of its far shoulder. */
+const SPIKE_BODY: Body = { family: 'heart', cy: 112 }
+
+/** The spikes: the rim height each leaves at and how long it runs. */
+const SPIKES = [
+  { at: 74, reach: 30 },
+  { at: 96, reach: 40 },
+  { at: 118, reach: 26 },
+]
+
+/** Which way every spike points: out and up, all of them parallel. */
+const SPIKE_WAY = -30 * DEGREES
+
+/** Half the width of a spike where it leaves the skin. */
+const SPIKE_HALF = 7
+
+/** A point on a spike, along it from where it leaves the rim and across it. */
+function onSpike(at: number, along: number, across: number): string {
+  const [bx, by] = onRim(SPIKE_BODY, at, 1)
+  const [ux, uy] = [Math.cos(SPIKE_WAY), Math.sin(SPIKE_WAY)]
+
+  return point(bx - 2 + ux * along - uy * across, by + uy * along + ux * across)
+}
+
+/** One spike: out of the rim to its point and back, as one line. */
+function stab({ at, reach }: (typeof SPIKES)[number]): string {
+  return polyline([
+    onSpike(at, 0, -SPIKE_HALF),
+    onSpike(at, reach, 0),
+    onSpike(at, 0, SPIKE_HALF),
+  ])
+}
+
+/**
+ * The fruit stabbing out: three long straight spikes driven out of its far
+ * shoulder, parallel and of three lengths, the skin open where each leaves.
+ * In episode 117 Miss Doublefinger explains her fruit and stabs Nami with
+ * spikes grown out of her body. Parallel, so they never read as a blast.
+ */
+export const SPIKE_SPIKE: Stroke[] = [
+  ...kitBody(SPIKE_BODY, [120, 132, 144], (x, y) => {
+    for (const { at } of SPIKES) {
+      const [bx, by] = onRim(SPIKE_BODY, at, 1)
+
+      if (Math.hypot(x - bx, y - by) < SPIKE_HALF + 1) {
+        return false
+      }
+    }
+
+    return true
+  }),
+  ...skin([
+    [62, 100, 9],
+    [86, 134, -7],
+  ]),
+  ...sprout(SPIKE_BODY, -4, 'left'),
+  { d: SPIKES.map((one) => stab(one)).join(' '), role: 'accent' },
+  // The near face of each spike, where it turns from the light.
+  {
+    d: SPIKES.map(({ at, reach }) => {
+      return `M${onSpike(at, 2, SPIKE_HALF * 0.4)} L${onSpike(at, reach * 0.7, 0.6)}`
+    }).join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The cage fruit: a gourd, an iron cuff closed round its waist. */
+const CAGE_BODY: Body = { family: 'gourd', cy: 120 }
+
+/** The cuff: how wide and deep its ring is seen from above, and how tall. */
+const CUFF = { cy: 109, rx: 23, ry: 6, tall: 11, rim: 3, tilt: 10 }
+
+/** A point on the cuff, in a frame tipped off level about the waist. */
+const onCuff = turnedAbout([80, CUFF.cy], -CUFF.tilt)
+
+/** Whether a point of the fruit is behind the near face of the cuff. */
+function behindCuff(x: number, y: number): boolean {
+  const [u, v] = turnedAbout([0, 0], CUFF.tilt)(x - 80, y - CUFF.cy)
+
+  return Math.abs(u) < CUFF.rx + 1 && v > -2 && v < CUFF.tall + CUFF.ry + 1
+}
+
+/** The near half of a ring of the cuff, dropped down its face. */
+function cuffArc(rx: number, ry: number, drop: number): string {
+  return polyline(
+    Array.from({ length: 13 }, (_unused, at) => {
+      const angle = (at * 15 * Math.PI) / 180
+
+      return point(...onCuff(rx * Math.cos(angle), ry * Math.sin(angle) + drop))
+    }),
+  )
+}
+
+/**
+ * The fruit caught in iron: a cuff closed round the gourd's waist, tipped
+ * off level, its near face thick with the edge of its top showing, the far
+ * side behind the fruit, the outline pinched in under it. In episode 130
+ * Hina lets a pirate pass through her and leaves him in a ring of iron.
+ */
+export const CAGE_CAGE: Stroke[] = [
+  ...kitBody(CAGE_BODY, [140, 152, 162], (x, y) => !behindCuff(x, y)),
+  ...skin([
+    [70, 92, 6],
+    [64, 146, 8],
+  ]),
+  ...sprout(CAGE_BODY, 4, 'right'),
+  {
+    d: [
+      cuffArc(CUFF.rx, CUFF.ry, 0),
+      cuffArc(CUFF.rx, CUFF.ry, CUFF.tall),
+      `M${point(...onCuff(CUFF.rx, 0))} L${point(...onCuff(CUFF.rx, CUFF.tall))}`,
+      `M${point(...onCuff(-CUFF.rx, 0))} L${point(...onCuff(-CUFF.rx, CUFF.tall))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The top of the ring, its inner edge seen from above.
+  { d: cuffArc(CUFF.rx - CUFF.rim, CUFF.ry - 1.5, -0.5), role: 'soft' },
+  // The iron turning away on the far side of its face.
+  {
+    d: [12, 17, 22]
+      .map((u) => {
+        const v = CUFF.ry * Math.sqrt(1 - (u / CUFF.rx) ** 2)
+
+        return `M${point(...onCuff(u, v + 3))} L${point(...onCuff(u - 3, v + CUFF.tall - 2))}`
+      })
+      .join(' '),
+    role: 'ambient',
+  },
+  shadowUnder(1),
+]
+
+/** The human fruit: a gourd, a human hand grown out of its shoulder. */
+const HUMAN_BODY: Body = { family: 'gourd', cy: 126 }
+
+/** A point on the hand, across its palm and up it, tipped to lean out. */
+const onHand = turnedAbout([46, 66], -35)
+
+/** The digits: where each leaves the palm, which way it points, how long. */
+const DIGITS = [
+  { u: 9.6, v: -11, angle: -66, length: 15 },
+  { u: 3.2, v: -11, angle: -82, length: 20 },
+  { u: -3.2, v: -11, angle: -98, length: 22 },
+  { u: -9.6, v: -11, angle: -114, length: 19 },
+  { u: -12, v: 2, angle: -160, length: 15 },
+]
+
+/** Half the width of a digit. */
+const DIGIT_HALF = 3.2
+
+/** One digit, out from the palm and round its tip, as points on the hand. */
+function digit({ u, v, angle, length }: (typeof DIGITS)[number]): Point[] {
+  const way = angle * DEGREES
+  const [dx, dy] = [Math.cos(way), Math.sin(way)]
+  const [nx, ny] = [-dy * DIGIT_HALF, dx * DIGIT_HALF]
+  const [tx, ty] = [u + dx * length, v + dy * length]
+  const cap = Array.from({ length: 5 }, (_unused, at): Point => {
+    const turn = way + Math.PI / 2 - (at * Math.PI) / 4
+
+    return [tx + DIGIT_HALF * Math.cos(turn), ty + DIGIT_HALF * Math.sin(turn)]
+  })
+
+  return [[u + nx, v + ny], ...cap, [u - nx, v - ny]]
+}
+
+/**
+ * The fruit with a human hand: one big open hand grown out of its near
+ * shoulder, the thumb and four fingers spread apart, both edges of the
+ * wrist on the rim. In episode 83 Chopper's human form grabs Luffy's hand,
+ * and in 84 Kureha tells Nami the reindeer ate the fruit and walks and
+ * speaks like a human. Open, never clawed.
+ */
+export const HUMAN_HUMAN: Stroke[] = [
+  ...kitBody(
+    HUMAN_BODY,
+    [142, 152, 162],
+    (x, y) => x > 70 || y < 88 || y > 104,
+  ),
+  waist(HUMAN_BODY, 120),
+  ...skin([
+    [92, 102, 6],
+    [64, 148, 8],
+  ]),
+  ...sprout(HUMAN_BODY, 4, 'right'),
+  {
+    d: polyline([
+      point(...onRim(HUMAN_BODY, 88, -1)),
+      ...[
+        [8, 18],
+        [12, 8],
+        ...DIGITS.flatMap((one) => digit(one)),
+        [-11, 10],
+        [-8, 18],
+      ].map(([u = 0, v = 0]) => point(...onHand(u, v))),
+      point(...onRim(HUMAN_BODY, 104, -1)),
+    ]),
+    role: 'accent',
+  },
+  // The crease across the palm.
+  {
+    d: polyline([
+      point(...onHand(-8, 4)),
+      point(...onHand(0, -2)),
+      point(...onHand(8, -2)),
+    ]),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The dachshund fruit: an oblong, standing on four short legs. */
+const DACHSHUND_BODY: Body = { family: 'oblong', cy: 114 }
+
+/** Where the underside of the fruit is, at a point across it. */
+function underside(x: number): number {
+  let y = crownY(DACHSHUND_BODY) + 92
+
+  while (
+    halfWidth(DACHSHUND_BODY, y) < Math.abs(x - 80)
+    && y > DACHSHUND_BODY.cy
+  ) {
+    y -= 0.5
+  }
+
+  return y
+}
+
+/** The paws stand on this line. */
+const PAWS_Y = 176
+
+/**
+ * One short leg out of the underside, both ends on the rim: down to a bend,
+ * on to a paw turned forward, and back up. `bend` sets the knee forward or
+ * the hock back; `down` lifts a far paw up the ground.
+ */
+function leg(x: number, bend: number, down = PAWS_Y): string {
+  const half = 5
+  const knee = (underside(x) + down) / 2
+
+  return [
+    `M${point(x - half, underside(x - half))}`,
+    `C${point(x - half + bend, knee - 4)} ${point(x - half + bend, knee + 4)}`,
+    point(x - half, down - 3),
+    `C${point(x - half - 6, down - 2)} ${point(x - half - 8, down)}`,
+    point(x - half - 6, down),
+    `L${point(x + half, down)}`,
+    `C${point(x + half + bend, knee + 4)} ${point(x + half + bend, knee - 4)}`,
+    point(x + half, underside(x + half)),
+  ].join(' ')
+}
+
+/**
+ * The fruit on a dachshund's legs: four short bent legs grown out of its
+ * underside, the near pair whole and the far pair showing behind them, the
+ * paws planted and turned forward. In episode 113 Mr. 4's bazooka Lassoo
+ * walks and barks as a dog, and Miss Merry Christmas tells Usopp the gun ate
+ * the fruit. Short legs and nothing else, never a head or a tail.
+ */
+export const DOG_DACHSHUND: Stroke[] = [
+  ...kitBody(DACHSHUND_BODY, [116, 128, 140]),
+  ...skin([
+    [64, 112, 9],
+    [92, 134, -8],
+  ]),
+  ...sprout(DACHSHUND_BODY, 4, 'left'),
+  {
+    d: [leg(60, -3), leg(104, 4), leg(70, -3, 172), leg(114, 4, 172)].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The dice fruit: an oblong, a blade out of its near side. */
+const DICE_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** Where the blade leaves the skin, top and bottom. */
+const BLADE_ROOT = { top: 96, bottom: 112 }
+
+/** A point on the blade, along it from the skin and across it. */
+const onBlade = turnedAbout([43, 104], -115)
+
+/** Half the width of the blade. */
+const BLADE_HALF = 8
+
+/**
+ * The fruit turned to steel along one side: a broad straight blade grown
+ * out of its near flank, the cutting edge outward and leaning out past its
+ * shoulder to a point, a bevel along the edge, the skin
+ * open where the blade leaves it. In episode 116 Mr. 1 explains that he can
+ * turn any part of his body into a blade. No banana shapes, which are the
+ * real fruit's.
+ */
+export const DICE_DICE: Stroke[] = [
+  ...kitBody(
+    DICE_BODY,
+    [120, 132, 144],
+    (x, y) => x > 70 || y < BLADE_ROOT.top - 1 || y > BLADE_ROOT.bottom + 1,
+  ),
+  ...skin([
+    [84, 100, 9],
+    [76, 140, -7],
+  ]),
+  ...sprout(DICE_BODY, 6, 'right'),
+  {
+    d: [
+      `M${point(...onRim(DICE_BODY, BLADE_ROOT.bottom, -1))}`,
+      `L${point(...onBlade(6, -BLADE_HALF))} L${point(...onBlade(48, -BLADE_HALF))}`,
+      `C${point(...onBlade(56, -BLADE_HALF))} ${point(...onBlade(62, 0))}`,
+      point(...onBlade(66, BLADE_HALF)),
+      `L${point(...onBlade(6, BLADE_HALF))}`,
+      `L${point(...onRim(DICE_BODY, BLADE_ROOT.top, -1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The bevel along the cutting edge, and up into the point.
+  {
+    d: [
+      `M${point(...onBlade(8, -2))} L${point(...onBlade(48, -2))}`,
+      `C${point(...onBlade(54, -2))} ${point(...onBlade(60, 2))}`,
+      point(...onBlade(63, 4.5)),
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The jackal fruit: a segmented one, a tall ear out of its near shoulder. */
+const JACKAL_BODY: Body = { family: 'segmented', cy: 118 }
+
+/**
+ * The ear, both ends on the rim: wide where it leaves the shoulder, up its
+ * back edge to a point, and down its front edge.
+ */
+const EAR: Growth = {
+  from: 102,
+  to: 76,
+  through: [
+    [46, 80],
+    [42, 56],
+    [36, 34],
+    [30, 50],
+    [22, 62],
+  ],
+}
+
+/**
+ * The fruit with a jackal's ear: one tall pointed ear grown straight up out
+ * of its near shoulder, wide where it leaves the skin, seen from the side,
+ * with the fold inside it. In episode 120 Chaka names his fruit and turns into
+ * a great black jackal to go at Crocodile. One ear and nothing else, never a pair, a muzzle or a head.
+ */
+export const DOG_JACKAL: Stroke[] = [
+  ...kitBody(JACKAL_BODY, [110, 122, 134]),
+  ribs(JACKAL_BODY),
+  ...skin([
+    [94, 104, 7],
+    [72, 140, -7],
+  ]),
+  ...sprout(JACKAL_BODY, 6, 'right'),
+  { d: grown(JACKAL_BODY, -1, EAR), role: 'accent' },
+  // The fold inside the ear.
+  { d: 'M42 94 C40 78 40 62 43 46 C46 58 50 68 54 78', role: 'soft' },
   shadowUnder(1),
 ]
