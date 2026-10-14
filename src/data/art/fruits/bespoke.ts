@@ -5068,3 +5068,67 @@ export const HUMAN_DAIBUTSU: Stroke[] = [
   },
   shadowUnder(1),
 ]
+
+/** The swamp fruit's segmented body, half swallowed by its own mud. */
+const SWAMP_BODY: Body = { family: 'segmented', cy: 100 }
+const SWAMP_WAIST = 112
+
+/**
+ * A fruit sinking into a bottomless swamp, the mud drawn down into a deep
+ * funnel beneath it. In episode 531 (chapter 612), Caribou explains that
+ * the mermaids he swallows remain inside his bottomless swamp.
+ */
+export const SWAMP_SWAMP: Stroke[] = [
+  ...kitBody(SWAMP_BODY, [82, 94, 106], (_x, y) => y < SWAMP_WAIST),
+  ribs(SWAMP_BODY, SWAMP_WAIST - 2),
+  ...skin([
+    [80, 82, 6],
+    [76, 105, -4],
+  ]),
+  ...sprout(SWAMP_BODY, 5, 'right'),
+  {
+    d: [
+      'M8 144 C18 142 26 126 37 112',
+      'C54 128 106 128 123 112 C134 126 142 142 152 144',
+      'M37 112 C40 138 60 162 80 180 C100 162 120 138 123 112',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The far wall of the mud, turning away inside the funnel.
+  { d: 'M44 133 L51 129 M51 147 L58 142 M61 161 L67 156', role: 'ambient' },
+]
+
+/** The mark fruit, with room above its shoulder for the incoming axe. */
+const MARK_BODY: Body = { family: 'round', cy: 124 }
+
+/**
+ * A thrown double-bladed axe biting into the fruit's left shoulder, one
+ * smooth incoming arc behind it. In episode 532 (chapter 613), Decken sends
+ * the axe towards his marked target. No returning or pursuing trajectory:
+ * the pursuit is demonstrated in episode 534 (chapter 615).
+ */
+export const MARK_MARK: Stroke[] = [
+  ...kitBody(MARK_BODY, [128, 140, 152], (x, y) => x > 80 || y < 98 || y > 124),
+  ...skin([
+    [74, 112, 8],
+    [90, 143, -7],
+  ]),
+  ...sprout(MARK_BODY, 4, 'right'),
+  {
+    d: [
+      'M8 24 C12 38 16 48 24 62',
+      'M24 62 L47 105 L43 108 L20 64 Z',
+      'M38 94 C29 96 22 94 16 88 C12 102 18 115 28 120',
+      'C29 110 34 106 43 108',
+      'C50 105 55 110 58 119 C68 108 68 96 61 87',
+      'C55 96 48 99 38 94 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The axe's bevel, without the rose embossed on Decken's weapon.
+  {
+    d: 'M17 98 C18 106 22 112 26 115 M63 98 C64 105 61 110 59 113',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]

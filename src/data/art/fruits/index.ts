@@ -52,6 +52,7 @@ import {
   LICK_LICK,
   LOVE_LOVE,
   MAGMA_MAGMA,
+  MARK_MARK,
   MEMO_MEMO,
   MIRROR_MIRROR,
   MOCHI_MOCHI,
@@ -87,6 +88,7 @@ import {
   STITCH_STITCH,
   STONE_STONE,
   STRING_STRING,
+  SWAMP_SWAMP,
   SWIM_SWIM,
   THORN_THORN,
   TON_TON,
@@ -112,7 +114,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Ninety-five of them are drawn by hand and name their drawing; the rest
+ * Ninety-seven of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -180,20 +182,8 @@ export const fruitArt = {
   'magma-magma-fruit': MAGMA_MAGMA,
   'tremor-tremor-fruit': TREMOR_TREMOR,
   'human-human-fruit-model-daibutsu': HUMAN_DAIBUTSU,
-  'swamp-swamp-fruit': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'mark-mark-fruit': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'swamp-swamp-fruit': SWAMP_SWAMP,
+  'mark-mark-fruit': MARK_MARK,
   'egg-egg-fruit': EGG_EGG,
   'turtle-turtle-fruit': TURTLE_TURTLE,
   'gas-gas-fruit': GAS_GAS,
