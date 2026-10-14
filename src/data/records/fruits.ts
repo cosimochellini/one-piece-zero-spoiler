@@ -711,8 +711,8 @@ export const devilFruits: Saga = {
       revealedAtChapter: 620,
       name: { it: 'Frutto Mato Mato', en: 'Mark-Mark Fruit' },
       summary: {
-        it: 'Segna una persona come bersaglio, e da quel momento ciò che viene lanciato la insegue, cambiando direzione e tornando indietro se serve.',
-        en: 'Marks a person as a target, and from then on whatever is thrown goes after them, veering and turning back if it has to.',
+        it: 'Segna una persona come bersaglio, e ciò che viene lanciato verso di lei la trova anche da lontano.',
+        en: 'Marks a person as a target, and whatever is thrown towards them finds them even from far away.',
       },
       visual: { art: 'mark-mark-fruit', tint: 'red' },
     },

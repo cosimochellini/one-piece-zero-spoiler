@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { MARK_MARK, SWAMP_SWAMP } from '~/data/art/fruits/bespoke'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
@@ -161,6 +162,50 @@ describe('a fruit’s own page', () => {
     expect(page?.head.title).toBe('Gum-Gum Fruit | Zero Spoiler')
     expect(page?.detail.slot.open).toBe(true)
   })
+
+  it.each([
+    {
+      id: 'swamp-swamp-fruit',
+      episode: 531,
+      chapter: 612,
+      drawing: SWAMP_SWAMP,
+    },
+    { id: 'mark-mark-fruit', episode: 532, chapter: 620, drawing: MARK_MARK },
+  ])(
+    'opens $id with its power only at its thresholds',
+    ({ id, episode, chapter, drawing }) => {
+      const fruit = fruits.find((record) => record.id === id)
+      for (const locale of ['en', 'it'] as const) {
+        for (const [before, at] of [
+          [ep(episode - 1), ep(episode)],
+          [
+            { mode: 'chapter', chapter: chapter - 1 },
+            { mode: 'chapter', chapter },
+          ],
+        ] as const) {
+          const covered = fruitPage(id, before, locale)
+
+          expect(covered).toMatchObject({ detail: { slot: { open: false } } })
+          expect(JSON.stringify(covered)).not.toContain(id)
+          expect(JSON.stringify(covered)).not.toContain('"strokes"')
+
+          saysNothing(covered, before)
+
+          expect(fruitPage(id, at, locale)).toMatchObject({
+            detail: {
+              slot: {
+                open: true,
+                record: {
+                  visual: { strokes: drawing },
+                  summary: fruit?.summary[locale],
+                },
+              },
+            },
+          })
+        }
+      }
+    },
+  )
 
   it('answers nothing for an id the archive does not file as a fruit', () => {
     expect(fruitPage('monkey-d-luffy', ep(1200), 'en')).toBeUndefined()
