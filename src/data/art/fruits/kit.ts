@@ -189,12 +189,16 @@ export function crown(body: Body, open?: [number, number]): Stroke {
       along.filter(([x]) => x >= open[1]),
     ]
 
-    return {
-      d: runs
-        .map((run) => polyline(run.map(([x, y]) => point(x, y))))
-        .join(' '),
-      role: 'soft',
+    const lines: string[] = []
+
+    // A stretch that clears one side of the rim leaves nothing there.
+    for (const run of runs) {
+      if (run.length > 1) {
+        lines.push(polyline(run.map(([x, y]) => point(x, y))))
+      }
     }
+
+    return { d: lines.join(' '), role: 'soft' }
   }
 
   return {

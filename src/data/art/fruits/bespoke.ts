@@ -4369,11 +4369,11 @@ const SHADOW_BODY: Body = { family: 'oblong', cy: 100 }
 
 /**
  * The fruit with its shadow cut off: its shadow on the ground, cut free at
- * the foot with a wide gap left, two blade marks at the cut, and the cut
- * end curled up off the ground. In episode 349 Moria picks Luffy's shadow up
- * off the floor and cuts it from his body with a giant pair of scissors,
- * and Brook explains that the fruit takes shadows and puts them into other
- * bodies. No scissors, and no second fruit.
+ * the foot with a wide gap left, and the cut end curled up off the ground.
+ * In episode 349 Moria picks Luffy's shadow up off the floor and cuts it
+ * from his body with a giant pair of scissors, and Brook explains that the
+ * fruit takes shadows and puts them into other bodies. No scissors, and no
+ * second fruit.
  */
 export const SHADOW_SHADOW: Stroke[] = [
   ...kitBody(SHADOW_BODY, [86, 98, 110, 122]),
@@ -4398,6 +4398,4 @@ export const SHADOW_SHADOW: Stroke[] = [
     ].join(' '),
     role: 'ambient',
   },
-  // The blades' marks at the cut.
-  { d: 'M48 156 L55 160 M48 166 L55 163', role: 'soft' },
 ]
