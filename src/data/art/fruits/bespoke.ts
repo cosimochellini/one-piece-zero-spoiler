@@ -3727,7 +3727,7 @@ export const DOG_DACHSHUND: Stroke[] = [
   ]),
   ...sprout(DACHSHUND_BODY, 4, 'left'),
   {
-    d: [leg(60, -3), leg(104, 4), leg(70, -3, 172), leg(114, 4, 172)].join(' '),
+    d: [leg(58, -3), leg(100, 4), leg(68, -3, 172), leg(109, 4, 172)].join(' '),
     role: 'accent',
   },
   shadowUnder(1),
