@@ -3893,7 +3893,8 @@ export const HORSE_HORSE: Stroke[] = [
  * off that line at each point along it, 0 at the root and 1 at the end.
  * With `rim`, both edges of the root are set on that body's rim, on its
  * right (1) or left (-1) side, so they leave the skin there. With `end`,
- * those points close the far end instead of a round cap: a fist.
+ * those points close the far end instead of a round cap: a fist, or with
+ * none at all a square end.
  */
 interface Limb {
   end?: Point[]
@@ -4957,8 +4958,8 @@ const WASH_WAIST = 108
 
 /**
  * The fruit gone limp as laundry: below a crease at the waist it has gone
- * flat and limp as cloth, narrower than the skin above it, hanging askew to
- * an uneven hem with one corner folded over and a wrinkle across it. In
+ * flat and limp as cloth, narrower than the skin at the crease, hanging
+ * askew to an uneven hem with one corner folded over and a wrinkle across it. In
  * episode 465 Tsuru turns the pirates who attack her into laundry. No
  * clothes peg, no line and no hook: hanging them out to dry is only said
  * later, in an SBS.
