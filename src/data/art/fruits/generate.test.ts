@@ -240,8 +240,11 @@ const HALF_PEN = 1
 const COMMAND = /[MLC][^MLCZ]*/gu
 
 /** A cubic from the pen through its next three points, read at even steps. */
-function bend(from: Point, [one, two, to]: Point[]): Point[] {
-  const ends = [from, one ?? from, two ?? from, to ?? from]
+function bend(
+  from: Point,
+  [one = from, two = from, to = from]: Point[],
+): Point[] {
+  const ends = [from, one, two, to]
 
   return Array.from({ length: CUBIC_STEPS }, (_unused, step) =>
     bezier(ends, (step + 1) / CUBIC_STEPS),

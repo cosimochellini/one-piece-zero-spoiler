@@ -13,7 +13,11 @@ import { serialiseBookmark } from '~/lib/progress/episode'
 
 import type { Drawing, Stroke } from './records'
 
-type Load = (ids: string[], locale: Locale) => Promise<Record<string, Stroke[]>>
+/** Fetches the strokes of `ids` in `locale`, keyed by id. */
+export type Load = (
+  ids: string[],
+  locale: Locale,
+) => Promise<Record<string, Stroke[]>>
 
 /**
  * How a page asks for the strokes a list left behind (`Drawing.deferred`).

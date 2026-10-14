@@ -41,10 +41,7 @@ const QUALITY_PARAM = /^q=(?<quality>.*)$/u
 export function parseAcceptLanguage(
   header: null | string | undefined,
 ): Locale | undefined {
-  if (header === null || header === undefined) {
-    return undefined
-  }
-  if (header === '') {
+  if (header === null || header === undefined || header.length === 0) {
     return undefined
   }
 

@@ -144,14 +144,14 @@ coordinates.
 | Layer     | Choice                                                   |
 | --------- | -------------------------------------------------------- |
 | UI        | React 19.3.0                                             |
-| Framework | TanStack Start 1.168.60 (SSR, file-based routes)         |
-| Router    | TanStack Router 1.170.41                                 |
+| Framework | TanStack Start 1.169.1 (SSR, file-based routes)          |
+| Router    | TanStack Router 1.170.44                                 |
 | Styling   | StyleX 0.19.1, compiled to one same-origin sheet         |
-| Build     | Vite 8.3.2                                               |
+| Build     | Vite 8.3.4                                               |
 | Language  | TypeScript 6.0.3, `strict` plus nine extra flags         |
-| Tests     | Vitest 5.0.3, jsdom, Testing Library                     |
+| Tests     | Vitest 5.0.4, jsdom, Testing Library                     |
 | Lint      | ESLint 10 flat config, over a thousand rules, type-aware |
-| Gates     | react-doctor 0.9.17, fallow 3.31.0                       |
+| Gates     | react-doctor 0.9.18, fallow 3.33.1                       |
 | Host      | Netlify, SSR function plus CDN assets                    |
 | Runtime   | Node 24.21.0, npm 12.2.0                                 |
 

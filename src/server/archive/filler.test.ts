@@ -59,7 +59,7 @@ function rangesOf(bookmark: Bookmark): SkipRange[] {
 /** The handle of the first row of a page with no bookmark. */
 function firstHandle(): string {
   const [first] = slots(fillerPage(null, 'it'))
-  return first !== undefined && !first.open ? first.covered.handle : ''
+  return first === undefined || first.open ? '' : first.covered.handle
 }
 
 describe('consecutive filler chunks', () => {

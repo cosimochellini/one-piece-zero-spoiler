@@ -17,10 +17,7 @@ export function parseCookieHeader(
   header: null | string | undefined,
 ): Map<string, string> {
   const jar = new Map<string, string>()
-  if (header === null || header === undefined) {
-    return jar
-  }
-  if (header === '') {
+  if (header === null || header === undefined || header.length === 0) {
     return jar
   }
 
