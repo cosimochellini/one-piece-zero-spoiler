@@ -1247,8 +1247,8 @@ export const devilFruits: Saga = {
     {
       id: 'straw-straw-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 895,
-      revealedAtChapter: 914,
+      revealedAtEpisode: 898,
+      revealedAtChapter: 913,
       name: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
       summary: {
         it: 'Tiene bambole di paglia che fanno le veci di altre persone, così una ferita destinata a chi l’ha mangiato finisce addosso a una di loro.',
