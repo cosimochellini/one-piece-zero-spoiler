@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last seventy-six are drawn as fruit + power (#461), on the bodies of
+ * The last eighty-three are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -4652,6 +4652,407 @@ export const MAGMA_MAGMA: Stroke[] = [
   // Which way the magma is flowing.
   {
     d: 'M74 148 C78 160 94 164 112 162 M96 152 C108 152 120 150 128 146',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The venom fruit: a gourd, breathing poison out of its shoulder. */
+const VENOM_BODY: Body = { family: 'gourd', cy: 122 }
+
+/** Where the breath leaves the near shoulder: the rim heights of the gap. */
+const BREATH = { top: 86, bottom: 96 }
+
+/**
+ * The fruit breathing poison: a small gap open in the near shoulder of its
+ * upper bulb, and out of it a plume that leaves level, wavers, and curls
+ * up into a loose knot above the shoulder. No drops. In episode 425 Magellan,
+ * who ate the fruit, knocks Hannyabal down with his poison breath.
+ */
+export const VENOM_VENOM: Stroke[] = [
+  ...kitBody(
+    VENOM_BODY,
+    [146, 156, 164],
+    (x, y) => x > 70 || y < BREATH.top || y > BREATH.bottom,
+  ),
+  waist(VENOM_BODY, 122),
+  ...skin([
+    [86, 100, 6],
+    [72, 148, 8],
+  ]),
+  ...sprout(VENOM_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(onRim(VENOM_BODY, 88, -1)[0] + 2, 88)}`,
+      'C46 88 38 84 34 76 C30 66 36 58 30 48 C26 40 30 30 40 28',
+      'C50 26 56 34 50 40 C46 44 40 40 42 36',
+      `M${point(onRim(VENOM_BODY, 95, -1)[0] + 2, 95)}`,
+      'C44 96 30 94 22 84 C14 74 22 62 16 52 C12 44 16 36 24 32',
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The horm fruit: a pear, a needle in its shoulder. */
+const HORM_BODY: Body = { family: 'pear', cy: 118 }
+
+/** Where the needle goes in, and which way it points. */
+const NEEDLE = { at: onRim(HORM_BODY, 94, 1), lean: -38 }
+
+/** A point on the needle: along it from the skin, and across it. */
+const onNeedle = turnedAbout(NEEDLE.at, NEEDLE.lean)
+
+/**
+ * The fruit being injected: a plain hollow needle driven in at a slant
+ * into its shoulder, the outline cut where it enters. In episode 439
+ * Ivankov injects a prisoner with hormones and turns him into a woman, and
+ * in 440 he says his fruit alters a body's hormones. The needle and
+ * nothing else, no finger and no hand.
+ */
+export const HORM_HORM: Stroke[] = [
+  ...kitBody(
+    HORM_BODY,
+    [130, 142, 154],
+    (x, y) => Math.hypot(x - NEEDLE.at[0], y - NEEDLE.at[1]) > 4,
+  ),
+  ...skin([
+    [70, 104, 6],
+    [72, 140, -8],
+  ]),
+  ...sprout(HORM_BODY, -4, 'left'),
+  {
+    d: [
+      polyline(
+        [
+          [44, 1.4],
+          [-5, 1.4],
+          [-1, -1.4],
+          [44, -1.4],
+        ].map(([u = 0, v = 0]) => point(...onNeedle(u, v))),
+      ),
+      polyline(
+        [
+          [44, 3.5],
+          [44, -3.5],
+          [56, -4.5],
+          [56, 4.5],
+        ].map(([u = 0, v = 0]) => point(...onNeedle(u, v))),
+        true,
+      ),
+      polyline(
+        [
+          [56, 7],
+          [56, -7],
+          [59, -7],
+          [59, 7],
+        ].map(([u = 0, v = 0]) => point(...onNeedle(u, v))),
+        true,
+      ),
+    ].join(' '),
+    role: 'accent',
+  },
+  // The skin drawn in about the point.
+  {
+    d: [
+      polyline([onNeedle(2, 6), onNeedle(-2, 8)].map((at) => point(...at))),
+      polyline([onNeedle(2, -6), onNeedle(-2, -8)].map((at) => point(...at))),
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The snip fruit: a segmented one, a segment cut free and peeled out. */
+const SNIP_BODY: Body = { family: 'segmented', cy: 114 }
+
+/** How far down the far side the segment has been cut free. */
+const SNIP_HINGE = 142
+
+/** Where the cut runs: down the far rib, from the crown to the hinge. */
+function snipCut(): string {
+  return polyline(
+    Array.from({ length: 13 }, (_unused, at) => {
+      const y =
+        crownY(SNIP_BODY) + 8 + ((SNIP_HINGE - 8 - crownY(SNIP_BODY)) * at) / 12
+
+      return point(80 + 0.5 * halfWidth(SNIP_BODY, y), y)
+    }),
+  )
+}
+
+/**
+ * The peeled strip: out of the far side, where it still holds at the
+ * hinge, up and away from the fruit, square at its cut end and turning over
+ * once on the way, as a strip of paper does.
+ */
+const STRIP: Limb = {
+  line: [
+    [108, SNIP_HINGE],
+    [128, 148],
+    [148, 134],
+    [146, 112],
+    [144, 92],
+    [150, 76],
+    [140, 60],
+  ],
+  half: (along) => 6 * Math.cos(Math.PI * along),
+  end: [],
+}
+
+/**
+ * The fruit cut like paper: the segment on its far side cut free along the
+ * rib and peeled away like a strip of paper, turning over once, two crossed
+ * blades at the top of the cut where it began, and the outline open where
+ * the strip came away. In episode 442 Inazuma turns his hands into scissors
+ * and cuts the stone floor into strips as if it were paper.
+ */
+export const SNIP_SNIP: Stroke[] = [
+  {
+    d: outline(
+      SNIP_BODY,
+      (x, y) => x < 80 + 0.5 * halfWidth(SNIP_BODY, y) || y > SNIP_HINGE,
+    ),
+  },
+  crown(SNIP_BODY),
+  shine(SNIP_BODY),
+  { d: snipCut() },
+  ribs(SNIP_BODY, undefined, [-1]),
+  ...skin([
+    [62, 100, 8],
+    [70, 140, -6],
+  ]),
+  ...sprout(SNIP_BODY, -4, 'left'),
+  {
+    d: [limbOutline(STRIP, 32), 'M96 62 L106 84 M104 62 L94 84'].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The phoenix fruit: a round, flame wings out of its shoulders. */
+const PHOENIX_BODY: Body = { family: 'round', cy: 122 }
+
+/**
+ * One wing out of the shoulder, both ends of it on the rim: up to the tip
+ * along its leading edge, then back down in three hooked tongues of flame
+ * where a wing's feathers would be.
+ */
+const FLAME_WING: Growth = {
+  from: 88,
+  to: 116,
+  through: [
+    [40, 70],
+    [50, 40],
+    [72, 30],
+    [70, 42],
+    [64, 50],
+    [60, 56],
+    [64, 66],
+    [72, 72],
+    [74, 62],
+    [72, 74],
+    [62, 76],
+    [54, 78],
+    [58, 88],
+    [66, 94],
+    [72, 86],
+    [68, 96],
+    [56, 98],
+    [48, 98],
+    [52, 106],
+    [58, 112],
+    [62, 106],
+    [58, 114],
+    [48, 116],
+  ],
+}
+
+/**
+ * The fruit with a phoenix's wings: two wings out of its shoulders, swept up
+ * and out, their trailing edges breaking into hooked tongues of flame where
+ * feathers would be. In episode 463 Marco, in his phoenix form and wrapped
+ * in blue flame, takes Kizaru's light on his wings with no wound left. The
+ * wings and nothing else, never the head.
+ */
+export const BIRD_PHOENIX: Stroke[] = [
+  ...kitBody(PHOENIX_BODY, [122, 134, 146]),
+  ...skin([[70, 140, 10]]),
+  ...sprout(PHOENIX_BODY, 0, 'right'),
+  {
+    d: [-1, 1].map((way) => grown(PHOENIX_BODY, way, FLAME_WING)).join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      `M${point(80 - 46, 100)} L${point(80 - 62, 52)}`,
+      `M${point(80 + 46, 100)} L${point(80 + 62, 52)}`,
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The sparkle fruit: a segmented one, its near half turned to diamond. */
+const SPARKLE_BODY: Body = { family: 'segmented', cy: 116 }
+
+/** The near half as a cut stone: its girdle, crown to foot, cut straight. */
+const GIRDLE: Point[] = [
+  [80, 70],
+  [58, 76],
+  [42, 92],
+  [36, 114],
+  [39, 136],
+  [50, 152],
+  [66, 160],
+  [80, 162],
+]
+
+/** The flat table on the shoulder, where the facets meet. */
+const TABLE: Point[] = [
+  [52, 90],
+  [64, 82],
+  [72, 94],
+  [60, 102],
+]
+
+/**
+ * The fruit turned half to diamond: on the near half the outline runs in
+ * straight cuts, and the rib straightens into facet edges that meet at a
+ * flat table on the shoulder. In episode 463 Jozu turns his body to diamond
+ * and blocks Mihawk's slash.
+ */
+export const SPARKLE_SPARKLE: Stroke[] = [
+  { d: outline(SPARKLE_BODY, (x) => x >= 80) },
+  crown(SPARKLE_BODY),
+  hatching(SPARKLE_BODY, [104, 116, 128]),
+  ribs(SPARKLE_BODY, undefined, [1]),
+  ...skin([
+    [96, 112, 7],
+    [92, 146, -6],
+  ]),
+  ...sprout(SPARKLE_BODY, 6, 'right'),
+  {
+    d: [
+      polyline(GIRDLE.map(([x, y]) => point(x, y))),
+      polyline(
+        TABLE.map(([x, y]) => point(x, y)),
+        true,
+      ),
+      'M52 90 L42 92 M64 82 L58 76 M64 82 L80 70 M72 94 L80 116',
+      'M60 102 L36 114 M60 102 L80 116 L66 160 M80 116 L39 136',
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The wash fruit: an oblong, its lower half gone limp as washed cloth. */
+const WASH_BODY: Body = { family: 'oblong', cy: 104 }
+
+/** Where the skin stops and the cloth starts. */
+const WASH_WAIST = 108
+
+/**
+ * The fruit washed and hung up: below the waist it has gone flat and limp as
+ * cloth, hanging askew in folds to a wavy hem turned up at its corners, the
+ * whole fruit hung from a hooked stalk. In episode 465 Tsuru turns the
+ * pirates who attack her into laundry. No clothes peg.
+ */
+export const WASH_WASH: Stroke[] = [
+  ...kitBody(WASH_BODY, [80, 92, 104], (_x, y) => y < WASH_WAIST),
+  ...skin([
+    [64, 84, 8],
+    [94, 98, -6],
+  ]),
+  {
+    d: stemPath('hooked', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }),
+  },
+  {
+    d: leafPath('left', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }, 4),
+    role: 'soft',
+  },
+  {
+    d: [
+      `M${point(...onRim(WASH_BODY, WASH_WAIST, -1))}`,
+      'C42 128 44 150 52 166 C62 160 70 168 82 166',
+      'C94 164 102 174 116 172 C122 171 128 174 132 176',
+      `C126 154 122 128 ${point(...onRim(WASH_BODY, WASH_WAIST, 1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The hem turned up, and the folds the cloth hangs in.
+  {
+    d: [
+      'M52 166 C54 160 60 156 66 160 M116 172 C114 164 118 158 124 160',
+      'M60 112 C66 130 74 148 82 166 M100 112 C104 130 110 150 116 172',
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The great buddha fruit: a round, a giant arm out of its shoulder. */
+const DAIBUTSU_BODY: Body = { family: 'round', cy: 124 }
+
+/** The fist, closed, as a ring of points from one side of the wrist round. */
+const FIST: Point[] = [
+  [149, 50],
+  [151, 34],
+  [147, 24],
+  [143, 16],
+  [137, 18],
+  [133, 12],
+  [127, 14],
+  [123, 10],
+  [117, 13],
+  [113, 10],
+  [107, 16],
+  [107, 28],
+  [111, 42],
+  [119, 50],
+]
+
+/**
+ * The arm: out of the far shoulder, swelling at the muscle and up beside the
+ * fruit, so the fist is raised above it.
+ */
+const GIANT_ARM: Limb = {
+  line: [
+    [118, 112],
+    [129, 106],
+    [141, 92],
+    [139, 76],
+    [137, 66],
+    [135, 58],
+    [134, 52],
+  ],
+  half: (along) => 12 + 3 * Math.sin(Math.PI * along) - 2 * along,
+  rim: { body: DAIBUTSU_BODY, way: 1 },
+  end: FIST,
+}
+
+/**
+ * The fruit with a giant's arm: one oversized arm grown out of its far
+ * shoulder, the fist closed and raised, bigger than half the fruit. In
+ * episode 480 Sengoku turns into a giant golden buddha and breaks the
+ * scaffold with one punch. A closed fist, never an open palm, and no rays
+ * of light.
+ */
+export const HUMAN_DAIBUTSU: Stroke[] = [
+  ...kitBody(DAIBUTSU_BODY, [140, 150, 158]),
+  ...skin([
+    [62, 116, 9],
+    [86, 144, -8],
+  ]),
+  ...sprout(DAIBUTSU_BODY, -6, 'left'),
+  { d: limbOutline(GIANT_ARM), role: 'accent' },
+  // The fingers folded into the palm.
+  {
+    d: [
+      'M119 14 L119 24 M129 14 L129 24 M139 18 L139 26',
+      'M109 30 C119 34 131 34 141 30',
+    ].join(' '),
     role: 'soft',
   },
   shadowUnder(1),

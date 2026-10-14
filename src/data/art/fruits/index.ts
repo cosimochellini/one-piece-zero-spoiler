@@ -6,6 +6,7 @@ import {
   BARRIER_BARRIER,
   BIRD_ALBATROSS,
   BIRD_FALCON,
+  BIRD_PHOENIX,
   BIS_BIS,
   BOMB_BOMB,
   BOOK_BOOK,
@@ -41,7 +42,9 @@ import {
   HEAT_HEAT,
   HOBBY_HOBBY,
   HOLLOW_HOLLOW,
+  HORM_HORM,
   HORSE_HORSE,
+  HUMAN_DAIBUTSU,
   HUMAN_HUMAN,
   ICE_ICE,
   JACKET_JACKET,
@@ -73,8 +76,10 @@ import {
   SMOKE_SMOKE,
   SNAKE_ANACONDA,
   SNAKE_KING_COBRA,
+  SNIP_SNIP,
   SNOW_SNOW,
   SOUL_SOUL,
+  SPARKLE_SPARKLE,
   SPIKE_SPIKE,
   SPIN_SPIN,
   SPRING_SPRING,
@@ -87,6 +92,8 @@ import {
   TON_TON,
   TREMOR_TREMOR,
   TURTLE_TURTLE,
+  VENOM_VENOM,
+  WASH_WASH,
   WAX_WAX,
   WRING_WRING,
 } from '~/data/art/fruits/bespoke'
@@ -105,7 +112,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Eighty-eight of them are drawn by hand and name their drawing; the rest
+ * Ninety-five of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -163,58 +170,16 @@ export const fruitArt = {
   'love-love-fruit': LOVE_LOVE,
   'snake-snake-fruit-model-anaconda': SNAKE_ANACONDA,
   'snake-snake-fruit-model-king-cobra': SNAKE_KING_COBRA,
-  'venom-venom-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'horm-horm-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'snip-snip-fruit': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'bird-bird-fruit-model-phoenix': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'sparkle-sparkle-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'wash-wash-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'venom-venom-fruit': VENOM_VENOM,
+  'horm-horm-fruit': HORM_HORM,
+  'snip-snip-fruit': SNIP_SNIP,
+  'bird-bird-fruit-model-phoenix': BIRD_PHOENIX,
+  'sparkle-sparkle-fruit': SPARKLE_SPARKLE,
+  'wash-wash-fruit': WASH_WASH,
   'dark-dark-fruit': DARK_DARK,
   'magma-magma-fruit': MAGMA_MAGMA,
   'tremor-tremor-fruit': TREMOR_TREMOR,
-  'human-human-fruit-model-daibutsu': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'human-human-fruit-model-daibutsu': HUMAN_DAIBUTSU,
   'swamp-swamp-fruit': fruit({
     body: 'pear',
     grain: 7,
