@@ -1,5 +1,6 @@
 import {
   ARMS_ARMS,
+  ARROW_ARROW,
   ART_ART,
   ARTIFICIAL_DRAGON,
   BARRIER_BARRIER,
@@ -15,12 +16,14 @@ import {
   CHOP_CHOP,
   COOK_COOK,
   DARK_DARK,
+  DRAGON_KIRIN,
   EGG_EGG,
   ELEPHANT_MAMMOTH,
   FLAME_FLAME,
   FLOWER_FLOWER,
   GAS_GAS,
   GLARE_GLARE,
+  GROW_GROW,
   GUM_GUM,
   HEAL_HEAL,
   HEAT_HEAT,
@@ -55,6 +58,7 @@ import {
   STONE_STONE,
   STRING_STRING,
   SWIM_SWIM,
+  THORN_THORN,
   TON_TON,
   TREMOR_TREMOR,
   TURTLE_TURTLE,
@@ -75,7 +79,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Fifty-eight of them are drawn by hand and name their drawing; the rest name the
+ * Sixty-two of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -599,34 +603,10 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'grow-grow-fruit': fruit({
-    body: 'round',
-    grain: 7,
-    leaf: 'sprig',
-    stem: 'nub',
-    swirl: 'whorls',
-  }),
-  'arrow-arrow-fruit': fruit({
-    body: 'star',
-    grain: 9,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'thorn-thorn-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'right',
-    stem: 'nub',
-    swirl: 'waves',
-  }),
-  'dragon-dragon-fruit-mythical-model-kirin': fruit({
-    body: 'pear',
-    grain: 11,
-    leaf: 'sprig',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
+  'grow-grow-fruit': GROW_GROW,
+  'arrow-arrow-fruit': ARROW_ARROW,
+  'thorn-thorn-fruit': THORN_THORN,
+  'dragon-dragon-fruit-mythical-model-kirin': DRAGON_KIRIN,
 } satisfies Drawings
 
 /**

@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last forty-six are drawn as fruit + power (#461), on the bodies of
+ * The last fifty are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -3010,5 +3010,225 @@ export const MOCHI_MOCHI: Stroke[] = [
   },
   // The mochi drawn thin where it stretched.
   { d: 'M30 128 C28 136 27 142 25 148', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The grow fruit: a gourd, a giant book leaning into its side. */
+const GROW_BODY: Body = { family: 'gourd', cy: 120 }
+
+/** The book: how wide and tall its cover is, and how its depth shows. */
+const TOME = { wide: 32, tall: 112, deep: [8, -5] }
+
+/** Where the foot of the book's spine stands, and how far it leans. */
+const SPINE = { x: 115, y: 178, lean: 16 }
+
+/** A point on the cover, across it and up it from the foot of its spine. */
+const onTome = turnedAbout([SPINE.x, SPINE.y], -SPINE.lean)
+
+/** Whether a point of the fruit is behind the book's cover. */
+function behindTome(x: number, y: number): boolean {
+  const [u, v] = turnedAbout([0, 0], SPINE.lean)(x - SPINE.x, y - SPINE.y)
+
+  return u > -1 && u < TOME.wide + 1 && v < 1 && v > -TOME.tall - 1
+}
+
+/** A corner of the book, pushed back by a share of its depth. */
+function tome(u: number, v: number, back = 0): string {
+  const [x, y] = onTome(u, v)
+  const [dx = 0, dy = 0] = TOME.deep
+
+  return point(x + dx * back, y + dy * back)
+}
+
+/**
+ * The fruit beside a book grown giant: one plain closed book, taller than
+ * the fruit, leaning on a slant into its side, the outline gone where the
+ * cover is in front of it. In episode 1165 Saul explains that Biblo makes
+ * any book that enters the Owl Library bigger, and that it gets smaller
+ * once it leaves. No title on the cover.
+ */
+export const GROW_GROW: Stroke[] = [
+  ...kitBody(GROW_BODY, [150, 156, 162], (x, y) => !behindTome(x, y)),
+  waist(GROW_BODY, 116),
+  ...skin([
+    [66, 96, 6],
+    [64, 144, -8],
+  ]),
+  ...sprout(GROW_BODY, -6, 'left'),
+  {
+    d: [
+      `M${tome(0, 0)} L${tome(TOME.wide, 0)}`,
+      `L${tome(TOME.wide, -TOME.tall)} L${tome(0, -TOME.tall)} Z`,
+      // The top and the fore-edge, where the book's depth shows.
+      `M${tome(0, -TOME.tall)} L${tome(0, -TOME.tall, 1)}`,
+      `L${tome(TOME.wide, -TOME.tall, 1)} L${tome(TOME.wide, 0, 1)}`,
+      `L${tome(TOME.wide, 0)}`,
+      `M${tome(TOME.wide, -TOME.tall)} L${tome(TOME.wide, -TOME.tall, 1)}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The hinge of the cover, and the pages along the fore-edge.
+  {
+    d: [
+      `M${tome(5, -3)} L${tome(5, 3 - TOME.tall)}`,
+      ...[0.35, 0.7].map((back) => {
+        return `M${tome(TOME.wide, 0, back)} L${tome(TOME.wide, -TOME.tall, back)}`
+      }),
+    ].join(' '),
+    role: 'soft',
+  },
+  { d: 'M44 184 C70 187 124 187 150 184', role: 'ambient', dashed: true },
+]
+
+/** The arrow fruit: an oblong, a strip out of a cut in its side. */
+const ARROW_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** The strip: where it leaves the cut, and how wide it runs. */
+const STRIP_OUT = { x: 84, y: 124, half: 6 }
+
+/**
+ * The fruit loosing an arrow: a flat strip out of a cut in its side, in one
+ * straight run out past the rim, its end shaped like an arrowhead. In
+ * episode 1165 Gunko strikes a giant guard with her arrows, strips with ends
+ * shaped like arrowheads, and episode 1167 names the fruit. Never wrapped
+ * round the fruit, never turned back on it.
+ */
+export const ARROW_ARROW: Stroke[] = [
+  ...kitBody(
+    ARROW_BODY,
+    [146, 154],
+    (x, y) => x < STRIP_OUT.x || Math.abs(y - STRIP_OUT.y) > STRIP_OUT.half + 1,
+  ),
+  ...skin([
+    [64, 96, 8],
+    [62, 144, -7],
+  ]),
+  ...sprout(ARROW_BODY, -4, 'left'),
+  {
+    d: 'M84 118 L134 118 L134 110 L152 124 L134 138 L134 130 L84 130',
+    role: 'accent',
+  },
+  // The cut in the skin the strip comes out of.
+  { d: 'M84 111 C79 118 79 130 84 137 C86 130 86 118 84 111', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The thorn fruit: a heart, a briar hovering round its waist. */
+const THORN_BODY: Body = { family: 'heart', cy: 108 }
+
+/** The hoop of briar: its middle and radii, its thorns and their reach. */
+const BRIAR = { cy: 114, rx: 60, ry: 14, thorns: 14, reach: 7 }
+
+/** A point on the hoop, at an angle in degrees. */
+function onBriar(degrees: number): Point {
+  const angle = degrees * DEGREES
+
+  return [
+    80 + BRIAR.rx * Math.cos(angle),
+    BRIAR.cy + BRIAR.ry * Math.sin(angle),
+  ]
+}
+
+/** Whether a point of the hoop is on its far side, behind the fruit. */
+function behindFruit(degrees: number): boolean {
+  const [x, y] = onBriar(degrees)
+
+  return (
+    Math.sin(degrees * DEGREES) < 0
+    && Math.abs(x - 80) < halfWidth(THORN_BODY, y) + 2
+  )
+}
+
+/** One thorn standing out of the hoop, leaning a little along it. */
+function thornAt(degrees: number): string {
+  const [x0, y0] = onBriar(degrees - 4)
+  const [x1, y1] = onBriar(degrees + 4)
+  const [x, y] = onBriar(degrees)
+  const angle = degrees * DEGREES
+  const [nx, ny] = [Math.cos(angle) / BRIAR.rx, Math.sin(angle) / BRIAR.ry]
+  const out = BRIAR.reach / Math.hypot(nx, ny)
+  const spike: Point = [
+    x + nx * out + (x1 - x0) * 0.4,
+    y + ny * out + (y1 - y0) * 0.4,
+  ]
+
+  return `M${point(x0, y0)} L${point(...spike)} L${point(x1, y1)}`
+}
+
+/** The hoop where it shows, from behind the fruit round the front and back. */
+function briar(): string {
+  const shown: string[] = []
+  const parts: string[] = []
+
+  for (let degrees = 270; degrees <= 630; degrees += 4) {
+    if (behindFruit(degrees)) {
+      continue
+    }
+    shown.push(point(...onBriar(degrees)))
+  }
+  parts.push(polyline(shown))
+
+  for (let at = 0; at < BRIAR.thorns; at += 1) {
+    const degrees = (360 * at) / BRIAR.thorns + 10
+
+    if (!behindFruit(degrees)) {
+      parts.push(thornAt(degrees))
+    }
+  }
+
+  return parts.join(' ')
+}
+
+/**
+ * The fruit in a hoop of briar: one thorny vine hovering round its waist,
+ * clear of the skin, its thorns pointing out, the far side of it hidden
+ * behind the fruit. In episode 1173 Saul cannot stop the sleepwalking
+ * children for the invisible vines around them, and the fruit is named.
+ * The show keeps the thorns invisible; they are drawn here so they show.
+ */
+export const THORN_THORN: Stroke[] = [
+  ...kitBody(THORN_BODY, [80, 92]),
+  ...skin([
+    [62, 96, 9],
+    [84, 146, -5],
+  ]),
+  ...sprout(THORN_BODY, 4, 'right'),
+  { d: briar(), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The kirin fruit: a pear, one horn out of its far shoulder. */
+const KIRIN_BODY: Body = { family: 'pear', cy: 118 }
+
+/**
+ * The horn, both ends on the rim: flared where it leaves the skin, then
+ * straight out and back to its point.
+ */
+const KIRIN_HORN: Growth = {
+  from: 102,
+  to: 84,
+  through: [
+    [23.2, 100.5],
+    [42.3, 65.7],
+    [62, 36],
+    [40.4, 57.6],
+    [19, 85],
+  ],
+}
+
+/**
+ * The fruit with a qilin's horn: one long straight horn out of its far
+ * shoulder, leaning back. In episode 1170 Killingham arrives transformed,
+ * with a single straight horn swept back; episode 1173 names the fruit. The
+ * horn and nothing else, never the head, the mane or the sleep beams.
+ */
+export const DRAGON_KIRIN: Stroke[] = [
+  ...kitBody(KIRIN_BODY, [132, 144]),
+  ...skin([
+    [66, 136, 9],
+    [82, 154, -6],
+  ]),
+  ...sprout(KIRIN_BODY, -4, 'left'),
+  { d: grown(KIRIN_BODY, 1, KIRIN_HORN), role: 'accent' },
   shadowUnder(1),
 ]
