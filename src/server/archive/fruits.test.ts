@@ -1,6 +1,15 @@
 import { describe, expect, it } from 'vitest'
 
-import { MARK_MARK, SWAMP_SWAMP } from '~/data/art/fruits/bespoke'
+import {
+  CAT_SABRE_TOOTH,
+  DRAGON_PACHYCEPHALOSAURUS,
+  DRAGON_PTERANODON,
+  MAGNET_MAGNET,
+  MARK_MARK,
+  SCROLL_SCROLL,
+  SWAMP_SWAMP,
+  WOODS_WOODS,
+} from '~/data/art/fruits/bespoke'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
@@ -164,6 +173,42 @@ describe('a fruit’s own page', () => {
   })
 
   it.each([
+    {
+      id: 'dragon-dragon-fruit-ancient-model-pteranodon',
+      episode: 924,
+      chapter: 935,
+      drawing: DRAGON_PTERANODON,
+    },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
+      episode: 990,
+      chapter: 983,
+      drawing: DRAGON_PACHYCEPHALOSAURUS,
+    },
+    {
+      id: 'scroll-scroll-fruit',
+      episode: 1004,
+      chapter: 992,
+      drawing: SCROLL_SCROLL,
+    },
+    {
+      id: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
+      episode: 1013,
+      chapter: 998,
+      drawing: CAT_SABRE_TOOTH,
+    },
+    {
+      id: 'magnet-magnet-fruit',
+      episode: 1058,
+      chapter: 1031,
+      drawing: MAGNET_MAGNET,
+    },
+    {
+      id: 'woods-woods-fruit',
+      episode: 1081,
+      chapter: 1061,
+      drawing: WOODS_WOODS,
+    },
     {
       id: 'swamp-swamp-fruit',
       episode: 531,

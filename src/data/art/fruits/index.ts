@@ -16,6 +16,7 @@ import {
   CALM_CALM,
   CASTLE_CASTLE,
   CAT_LEOPARD,
+  CAT_SABRE_TOOTH,
   CHOP_CHOP,
   CLEAR_CLEAR,
   CLONE_CLONE,
@@ -27,6 +28,8 @@ import {
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_KIRIN,
+  DRAGON_PACHYCEPHALOSAURUS,
+  DRAGON_PTERANODON,
   EGG_EGG,
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
@@ -52,6 +55,7 @@ import {
   LICK_LICK,
   LOVE_LOVE,
   MAGMA_MAGMA,
+  MAGNET_MAGNET,
   MARK_MARK,
   MEMO_MEMO,
   MIRROR_MIRROR,
@@ -71,6 +75,7 @@ import {
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SCROLL_SCROLL,
   SHADOW_SHADOW,
   SLIP_SLIP,
   SLOW_SLOW,
@@ -97,6 +102,7 @@ import {
   VENOM_VENOM,
   WASH_WASH,
   WAX_WAX,
+  WOODS_WOODS,
   WRING_WRING,
 } from '~/data/art/fruits/bespoke'
 import { fruit } from '~/data/art/fruits/generate'
@@ -114,7 +120,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Ninety-seven of them are drawn by hand and name their drawing; the rest
+ * One hundred and three of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -209,13 +215,7 @@ export const fruitArt = {
   'string-string-fruit': STRING_STRING,
   'calm-calm-fruit': CALM_CALM,
   'elephant-elephant-fruit-ancient-model-mammoth': ELEPHANT_MAMMOTH,
-  'scroll-scroll-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'scroll-scroll-fruit': SCROLL_SCROLL,
   'castle-castle-fruit': CASTLE_CASTLE,
   'memo-memo-fruit': MEMO_MEMO,
   'soul-soul-fruit': SOUL_SOUL,
@@ -280,13 +280,7 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'spiral',
   }),
-  'dragon-dragon-fruit-ancient-model-pteranodon': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
+  'dragon-dragon-fruit-ancient-model-pteranodon': DRAGON_PTERANODON,
   'dragon-dragon-fruit-ancient-model-brachiosaurus': fruit({
     body: 'gourd',
     grain: 9,
@@ -301,20 +295,9 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'spiral',
   }),
-  'cat-cat-fruit-ancient-model-sabre-tooth-tiger': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
-  'dragon-dragon-fruit-ancient-model-pachycephalosaurus': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
+  'cat-cat-fruit-ancient-model-sabre-tooth-tiger': CAT_SABRE_TOOTH,
+  'dragon-dragon-fruit-ancient-model-pachycephalosaurus':
+    DRAGON_PACHYCEPHALOSAURUS,
   'dragon-dragon-fruit-ancient-model-triceratops': fruit({
     body: 'pear',
     grain: 1,
@@ -337,20 +320,8 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'whorls',
   }),
-  'magnet-magnet-fruit': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
-  'woods-woods-fruit': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
+  'magnet-magnet-fruit': MAGNET_MAGNET,
+  'woods-woods-fruit': WOODS_WOODS,
   'brain-brain-fruit': fruit({
     body: 'oblong',
     grain: 2,

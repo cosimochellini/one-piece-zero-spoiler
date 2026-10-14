@@ -22,6 +22,7 @@ import {
   CALM_CALM,
   CASTLE_CASTLE,
   CAT_LEOPARD,
+  CAT_SABRE_TOOTH,
   CHOP_CHOP,
   CLEAR_CLEAR,
   CLONE_CLONE,
@@ -33,6 +34,8 @@ import {
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_KIRIN,
+  DRAGON_PACHYCEPHALOSAURUS,
+  DRAGON_PTERANODON,
   EGG_EGG,
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
@@ -58,6 +61,7 @@ import {
   LICK_LICK,
   LOVE_LOVE,
   MAGMA_MAGMA,
+  MAGNET_MAGNET,
   MARK_MARK,
   MEMO_MEMO,
   MIRROR_MIRROR,
@@ -77,6 +81,7 @@ import {
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SCROLL_SCROLL,
   SHADOW_SHADOW,
   SLIP_SLIP,
   SLOW_SLOW,
@@ -103,6 +108,7 @@ import {
   VENOM_VENOM,
   WASH_WASH,
   WAX_WAX,
+  WOODS_WOODS,
   WRING_WRING,
 } from './bespoke'
 import { fruit, type FruitSeed } from './generate'
@@ -155,6 +161,13 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'dragon-dragon-fruit-ancient-model-pachycephalosaurus':
+    DRAGON_PACHYCEPHALOSAURUS,
+  'woods-woods-fruit': WOODS_WOODS,
+  'magnet-magnet-fruit': MAGNET_MAGNET,
+  'cat-cat-fruit-ancient-model-sabre-tooth-tiger': CAT_SABRE_TOOTH,
+  'scroll-scroll-fruit': SCROLL_SCROLL,
+  'dragon-dragon-fruit-ancient-model-pteranodon': DRAGON_PTERANODON,
   'arms-arms-fruit': ARMS_ARMS,
   'arrow-arrow-fruit': ARROW_ARROW,
   'art-art-fruit': ART_ART,
