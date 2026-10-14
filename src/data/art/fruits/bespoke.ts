@@ -25,7 +25,7 @@ import {
   type StemForm,
   stemPath,
 } from '~/data/art/fruits/parts'
-import { lobed } from '~/data/art/fruits/shape'
+import { bezier, lobed } from '~/data/art/fruits/shape'
 import { ring } from '~/data/art/fruits/swirls'
 import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last thirty-eight are drawn as fruit + power (#461), on the bodies of
+ * The last forty-six are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -2498,4 +2498,517 @@ export const PUSH_PUSH: Stroke[] = [
     d: 'M6 176 L154 176 M96 174 L100 169 L106 170 L108 174 Z M118 174 L121 171 L125 173 Z',
     role: 'ambient',
   },
+]
+
+/** A frame turned about a centre: a point across it and down it, in the box. */
+function turnedAbout(
+  [cx, cy]: Point,
+  degrees: number,
+): (u: number, v: number) => Point {
+  const [cos, sin] = [Math.cos(degrees * DEGREES), Math.sin(degrees * DEGREES)]
+
+  return (u, v) => [cx + u * cos - v * sin, cy + u * sin + v * cos]
+}
+
+/** The turtle fruit: a round, a shell grown over its upper back. */
+const TURTLE_BODY: Body = { family: 'round', cy: 122 }
+
+/** The shell: its radii, how far its rim lips out, and how deep the rim is. */
+const SHELL = { rx: 48, ry: 44, lip: 53, rim: 12 }
+
+/** A point on the shell, in a frame tipped a little toward the near side. */
+const onShell = turnedAbout([80, 110], 8)
+
+/** Whether a point of the fruit is under the shell, above its rim. */
+function underShell(x: number, y: number): boolean {
+  const [u, v] = turnedAbout([0, 0], -8)(x - 80, y - 110)
+
+  return v < SHELL.rim * Math.sqrt(Math.max(0, 1 - (u / SHELL.lip) ** 2)) + 1
+}
+
+/** A stretch of an ellipse about the middle of the shell, as points. */
+function shellArc(
+  [rx, ry]: [number, number],
+  [from, to, steps]: [number, number, number],
+  drop = 0,
+): string[] {
+  return Array.from({ length: steps + 1 }, (_unused, at) => {
+    const angle = (from + ((to - from) * at) / steps) * DEGREES
+
+    return point(...onShell(rx * Math.cos(angle), ry * Math.sin(angle) + drop))
+  })
+}
+
+/** Points across the shell joined into one line. */
+function onShellLine(points: Point[], closed = false): string {
+  return polyline(
+    points.map(([u, v]) => point(...onShell(u, v))),
+    closed,
+  )
+}
+
+/** Where the stalk comes up through the top of the shell. */
+const SHELL_STALK = { baseY: 110 - SHELL.ry + 2, lean: 4, rise: 18 }
+
+/**
+ * The fruit with a turtle's shell: a domed shell grown over its upper back,
+ * its rim lipping out over both sides, the plates of it seamed, and the
+ * stalk coming up through the top. In episode 572 Caribou fires at Pekoms
+ * and finds him hidden inside a tortoise shell; episode 776 names the fruit.
+ * The shell and nothing else, never the head.
+ */
+export const TURTLE_TURTLE: Stroke[] = [
+  { d: outline(TURTLE_BODY, (x, y) => !underShell(x, y)) },
+  hatching(TURTLE_BODY, [136, 148]),
+  ...skin([
+    [62, 142, 8],
+    [92, 158, -6],
+  ]),
+  {
+    d: polyline([
+      ...shellArc([SHELL.lip, SHELL.rim], [0, 180, 24]),
+      point(...onShell(-SHELL.rx, -3)),
+      ...shellArc([SHELL.rx, SHELL.ry], [180, 360, 24]).slice(1),
+      point(...onShell(SHELL.lip, 0)),
+    ]),
+    role: 'accent',
+  },
+  // The plates: a row of them down the crown of the dome, the band of edge
+  // plates along the rim, and the seams between.
+  {
+    d: [
+      onShellLine(
+        [
+          [-10, -39],
+          [10, -39],
+          [15, -27],
+          [0, -22],
+          [-15, -27],
+        ],
+        true,
+      ),
+      onShellLine(
+        [
+          [-15, -27],
+          [0, -22],
+          [15, -27],
+          [17, -8],
+          [0, -2],
+          [-17, -8],
+        ],
+        true,
+      ),
+      polyline(shellArc([SHELL.rx - 2, 9], [180, 0, 20], -5).toReversed()),
+      ...[-1, 1].map((way) => {
+        return onShellLine([
+          [way * 17, -8],
+          [way * 34, -15],
+          [way * 34, -30],
+          [way * 15, -27],
+        ])
+      }),
+      ...[-1, 1].map((way) => {
+        return onShellLine([
+          [way * 34, -15],
+          [way * 44, -7],
+        ])
+      }),
+      onShellLine([
+        [0, -2],
+        [0, 3],
+      ]),
+    ].join(' '),
+    role: 'soft',
+  },
+  {
+    d: polyline(shellArc([SHELL.rx - 7, SHELL.ry - 7], [200, 232, 6])),
+    role: 'soft',
+  },
+  { d: stemPath('straight', SHELL_STALK) },
+  { d: leafPath('right', SHELL_STALK, 4), role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The castle fruit: a segmented one, a doorway open in its near flank. */
+const CASTLE_BODY: Body = { family: 'segmented', cy: 116 }
+
+/**
+ * The fruit as a fortress: an arched doorway open in its near flank, with
+ * no door in it, and a cannon barrel poking out of it, the skin open where
+ * the barrel leaves. The fortress is kept inside the body, as it is when
+ * Bege's crew fire from inside him; in episode 763 a door opens in his
+ * chest, his men run out of it, and the fruit is named. Nothing castle-like
+ * beyond the doorway.
+ */
+export const CASTLE_CASTLE: Stroke[] = [
+  ...kitBody(
+    CASTLE_BODY,
+    [96, 108, 120],
+    (x, y) => x > 44 || y < 121 || y > 134,
+  ),
+  ribs(CASTLE_BODY),
+  ...skin([
+    [100, 104, 7],
+    [92, 142, -6],
+  ]),
+  ...sprout(CASTLE_BODY, 6, 'right'),
+  {
+    d: [
+      // The doorway: its jambs, its arch and the sill.
+      'M42 140 L42 133 M42 123 L42 106 C42 95 58 95 58 106 L58 140 Z',
+      // The barrel out of it: the near edge, the muzzle, the far edge.
+      'M52 124 L22 122.5 C19.5 122.5 18 125 18 127.5 C18 130 19.5 132.5 22 132.5 L52 131',
+      'M22 122.5 C24 124 24 131 22 132.5',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The depth of the doorway, inside the arch.
+  { d: 'M58 140 L55 137 L55 106 C55 99 49 98 46 101', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The lick fruit: an oblong, its near flank turned to candy. */
+const LICK_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** The stretch of the near rim the candy has, top and bottom. */
+const CANDY = { top: 88, bottom: 158 }
+
+/**
+ * The fruit with its near flank turned to candy: the patch drawn on the
+ * rim, one clean edge across the skin, and a shine down it. No drip and
+ * nothing poured. In episode 795 Perospero threatens to turn Caesar into
+ * candy if the research is not done in two weeks.
+ */
+export const LICK_LICK: Stroke[] = [
+  ...kitBody(
+    LICK_BODY,
+    [112, 124, 136],
+    (x, y) => x > 64 || y < CANDY.top - 1 || y > CANDY.bottom + 1,
+  ),
+  ...skin([
+    [94, 98, 7],
+    [104, 140, -6],
+  ]),
+  ...sprout(LICK_BODY, 4, 'right'),
+  {
+    d: [
+      polyline(
+        Array.from({ length: 17 }, (_unused, at) => {
+          return point(
+            ...onRim(
+              LICK_BODY,
+              CANDY.top + ((CANDY.bottom - CANDY.top) * at) / 16,
+              -1,
+            ),
+          )
+        }),
+      ),
+      'C60 154 68 136 68 122',
+      `C68 106 60 92 ${point(...onRim(LICK_BODY, CANDY.top, -1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The candy's shine: a streak down it and a glint.
+  { d: 'M40 108 C37 118 37 132 41 142 M43 100 L45 97', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The mirror fruit: an oblong, its far half gone into a mirror. */
+const MIRROR_BODY: Body = { family: 'oblong', cy: 118 }
+
+/** The glass: its middle and radii. */
+const GLASS = { cx: 116, cy: 112, rx: 28, ry: 56 }
+
+/**
+ * The fruit going into a mirror: an oval of glass standing at its far side,
+ * the far half of the fruit gone into it, the outline stopping at the glass,
+ * and a glint across it. In episode 796 Nami tells how Brûlée made a larger
+ * mirror that sucked Carrot inside it.
+ */
+export const MIRROR_MIRROR: Stroke[] = [
+  ...kitBody(MIRROR_BODY, [124, 136], (x, y) => {
+    return (
+      ((x - GLASS.cx) / (GLASS.rx + 1)) ** 2
+        + ((y - GLASS.cy) / (GLASS.ry + 1)) ** 2
+      > 1
+    )
+  }),
+  ...skin([
+    [62, 112, 9],
+    [72, 148, -7],
+  ]),
+  ...sprout(MIRROR_BODY, -4, 'left'),
+  {
+    d: polyline(
+      trace([GLASS.cx, GLASS.cy], [GLASS.rx, GLASS.ry], [0, 360, 36]),
+      true,
+    ),
+    role: 'accent',
+  },
+  // A glint across the glass.
+  { d: 'M116 78 L132 64 M122 86 L136 74', role: 'soft' },
+  { d: 'M52 186 C76 189 118 189 140 186', role: 'ambient', dashed: true },
+]
+
+/** The bis fruit: a heart, a biscuit breaking out of its side. */
+const BIS_BODY: Body = { family: 'heart', cy: 112 }
+
+/** A point on the biscuit, which is turned a little as it pushes out. */
+const onBiscuit = turnedAbout([118, 112], -14)
+
+/** Half the side of the biscuit, and how thick it is. */
+const BISCUIT = { half: 17, thick: 7 }
+
+/** One side of the biscuit, its edge crimped in even bumps. */
+function crimp(from: Point, to: Point): string {
+  const bumps = 5
+  const parts: string[] = []
+
+  for (let at = 0; at < bumps; at += 1) {
+    const [ax, ay] = [
+      from[0] + ((to[0] - from[0]) * at) / bumps,
+      from[1] + ((to[1] - from[1]) * at) / bumps,
+    ]
+    const [dx, dy] = [(to[0] - from[0]) / bumps, (to[1] - from[1]) / bumps]
+
+    parts.push(
+      `C${point(ax + dy * 0.45, ay - dx * 0.45)}`,
+      point(ax + dx + dy * 0.45, ay + dy - dx * 0.45),
+      point(ax + dx, ay + dy),
+    )
+  }
+
+  return parts.join(' ')
+}
+
+/**
+ * The fruit making biscuit: a thick square biscuit pushing out of an open
+ * side, its edge crimped and plain, the skin broken round it. In episode
+ * 799 Cracker makes biscuits out of thin air and builds his soldiers from
+ * them.
+ */
+export const BIS_BIS: Stroke[] = [
+  ...kitBody(BIS_BODY, [138, 146], (x, y) => Math.hypot(x - 116, y - 112) > 22),
+  ...skin([
+    [62, 104, 9],
+    [80, 136, -7],
+  ]),
+  ...sprout(BIS_BODY, -4, 'left'),
+  {
+    d: [
+      `M${point(...onBiscuit(-BISCUIT.half, -BISCUIT.half))}`,
+      ...[
+        [-1, -1, 1, -1],
+        [1, -1, 1, 1],
+        [1, 1, -1, 1],
+        [-1, 1, -1, -1],
+      ].map(([u0 = 0, v0 = 0, u1 = 0, v1 = 0]) => {
+        return crimp(
+          onBiscuit(u0 * BISCUIT.half, v0 * BISCUIT.half),
+          onBiscuit(u1 * BISCUIT.half, v1 * BISCUIT.half),
+        )
+      }),
+      // Its thickness, along the top and the far side.
+      polyline(
+        [
+          [3 - BISCUIT.half, -3 - BISCUIT.half],
+          [7 - BISCUIT.half, -BISCUIT.thick - BISCUIT.half],
+          [BISCUIT.half + 6, -BISCUIT.thick - BISCUIT.half],
+          [BISCUIT.half + 6, BISCUIT.half - 4],
+          [BISCUIT.half + 3, BISCUIT.half - 1],
+        ].map(([u = 0, v = 0]) => point(...onBiscuit(u, v))),
+      ),
+    ].join(' '),
+    role: 'accent',
+  },
+  // Where the skin broke round it.
+  { d: 'M96 98 L92 94 M95 126 L90 130', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The memo fruit: a gourd, a strip of film drawn up out of its crown. */
+const MEMO_BODY: Body = { family: 'gourd', cy: 122 }
+
+/** The middle of the strip, as one cubic: up out of the crown and over. */
+const REEL: Point[] = [
+  [90, crownY(MEMO_BODY) + 4],
+  [94, 28],
+  [146, 16],
+  [140, 74],
+]
+
+/** Where along the strip the snipped frame was, and half its width. */
+const SNIP = { from: 0.62, to: 0.74, half: 7 }
+
+/** A point along the strip, set off its middle across it. */
+function film(along: number, across: number): Point {
+  const [x, y] = bezier(REEL, along)
+  const [x1, y1] = bezier(REEL, Math.min(1, along + 0.01))
+  const [x0, y0] = bezier(REEL, Math.max(0, along - 0.01))
+  const length = Math.hypot(x1 - x0, y1 - y0)
+
+  return [x - ((y1 - y0) / length) * across, y + ((x1 - x0) / length) * across]
+}
+
+/** One piece of the strip, from one cut to the other, as a closed outline. */
+function filmPiece(from: number, to: number): string {
+  const steps = Math.max(2, Math.round((to - from) * 40))
+  const edge = (across: number): string[] => {
+    return Array.from({ length: steps + 1 }, (_unused, at) => {
+      return point(...film(from + ((to - from) * at) / steps, across))
+    })
+  }
+
+  return polyline([...edge(SNIP.half), ...edge(-SNIP.half).toReversed()], true)
+}
+
+/** The sprocket ticks along both edges of a piece of the strip. */
+function sprockets(from: number, to: number): string[] {
+  const ticks: string[] = []
+
+  for (let along = from + 0.025; along < to - 0.01; along += 0.06) {
+    for (const way of [1, -1]) {
+      ticks.push(
+        `M${point(...film(along, way * SNIP.half))} L${point(...film(along, way * (SNIP.half - 2.5)))}`,
+      )
+    }
+  }
+
+  return ticks
+}
+
+/**
+ * The fruit with a memory pulled out of it: a strip of film drawn up out of
+ * its crown beside the stalk and curling over, sprocket ticks along its
+ * edges and one frame snipped out, two straight cut ends either side of the
+ * gap. In episode 818 Pudding pulls a roll of film out of Reiju's head and
+ * cuts out the memory of their meeting.
+ */
+export const MEMO_MEMO: Stroke[] = [
+  ...kitBody(MEMO_BODY, [146, 156, 164]),
+  waist(MEMO_BODY, 118),
+  ...skin([
+    [70, 96, 6],
+    [64, 146, 8],
+  ]),
+  ...sprout(MEMO_BODY, -8, 'left'),
+  {
+    d: [
+      filmPiece(0, SNIP.from),
+      filmPiece(SNIP.to, 1),
+      ...[0.2, 0.42, 0.88].map((along) => {
+        return `M${point(...film(along, SNIP.half))} L${point(...film(along, -SNIP.half))}`
+      }),
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [...sprockets(0, SNIP.from), ...sprockets(SNIP.to, 1)].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The albatross fruit: a segmented one, its wings hanging at its sides. */
+const ALBATROSS_BODY: Body = { family: 'segmented', cy: 108 }
+
+/**
+ * One wing out of the side, both ends on the rim: out over the shoulder,
+ * bent at the wrist, and down the long flight feathers, tip by tip, back
+ * up its inside.
+ */
+const HANGING_WING: Growth = {
+  from: 100,
+  to: 126,
+  through: [
+    [52, 96],
+    [60, 98],
+    [64, 108],
+    [68, 118],
+    [70, 130],
+    [68, 140],
+    [70, 156],
+    [70, 168],
+    [68, 180],
+    [64, 170],
+    [62, 166],
+    [60, 176],
+    [56, 166],
+    [54, 162],
+    [50, 172],
+    [48, 162],
+    [46, 156],
+    [42, 164],
+    [42, 154],
+    [44, 144],
+    [48, 136],
+    [48, 130],
+    [46, 128],
+  ],
+}
+
+/**
+ * The fruit with an albatross's wings: two long wings out of its sides,
+ * hanging down and bent at the wrist like arms, the flight feathers fanned
+ * at their ends, never spread. In episode 830 Morgans arrives at the Tea
+ * Party with wings that resemble human arms. The wings and nothing else,
+ * never the beak or the head.
+ */
+export const BIRD_ALBATROSS: Stroke[] = [
+  ...kitBody(ALBATROSS_BODY, [98, 110]),
+  ribs(ALBATROSS_BODY),
+  ...skin([
+    [94, 94, 7],
+    [72, 136, -7],
+  ]),
+  ...sprout(ALBATROSS_BODY, 4, 'right'),
+  {
+    d: `${grown(ALBATROSS_BODY, -1, HANGING_WING)} ${grown(ALBATROSS_BODY, 1, HANGING_WING)}`,
+    role: 'accent',
+  },
+  // The coverts, where the flight feathers start.
+  {
+    d: 'M10 140 C16 146 24 148 32 146 M150 140 C144 146 136 148 128 146',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The mochi fruit: an oblong, its near side drawn out in a strand. */
+const MOCHI_BODY: Body = { family: 'oblong', cy: 106 }
+
+/** Where on the near rim the strand leaves, top and bottom. */
+const STRAND = { top: 112, bottom: 142 }
+
+/**
+ * The fruit drawn out in mochi: a thick strand out of its near side,
+ * stretching out and down and sagging, its end free short of the ground,
+ * the outline open where it leaves. In episode 833 Katakuri's leg stretches
+ * out as a tendril of a sticky substance that Luffy cannot get out of, and
+ * Jinbe names the fruit. Nothing pooled on the ground.
+ */
+export const MOCHI_MOCHI: Stroke[] = [
+  ...kitBody(
+    MOCHI_BODY,
+    [100, 112, 124],
+    (x, y) => x > 60 || y < STRAND.top - 1 || y > STRAND.bottom + 1,
+  ),
+  ...skin([
+    [92, 88, 8],
+    [96, 130, -7],
+  ]),
+  ...sprout(MOCHI_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(MOCHI_BODY, STRAND.top, -1))}`,
+      'C30 120 26 136 22 146 C20 152 12 154 8 160',
+      'C6 165 9 174 16 172 C24 171 34 168 36 160',
+      'C37 156 32 154 32 150',
+      `C34 146 ${point(onRim(MOCHI_BODY, STRAND.bottom, -1)[0] - 3, STRAND.bottom + 2)} ${point(...onRim(MOCHI_BODY, STRAND.bottom, -1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  // The mochi drawn thin where it stretched.
+  { d: 'M30 128 C28 136 27 142 25 148', role: 'soft' },
+  shadowUnder(1),
 ]

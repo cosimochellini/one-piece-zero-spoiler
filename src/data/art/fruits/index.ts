@@ -3,12 +3,15 @@ import {
   ART_ART,
   ARTIFICIAL_DRAGON,
   BARRIER_BARRIER,
+  BIRD_ALBATROSS,
   BIRD_FALCON,
+  BIS_BIS,
   BOMB_BOMB,
   BOOK_BOOK,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CALM_CALM,
+  CASTLE_CASTLE,
   CHOP_CHOP,
   COOK_COOK,
   DARK_DARK,
@@ -24,6 +27,10 @@ import {
   HOBBY_HOBBY,
   ICE_ICE,
   JACKET_JACKET,
+  LICK_LICK,
+  MEMO_MEMO,
+  MIRROR_MIRROR,
+  MOCHI_MOCHI,
   MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
@@ -50,6 +57,7 @@ import {
   SWIM_SWIM,
   TON_TON,
   TREMOR_TREMOR,
+  TURTLE_TURTLE,
   WRING_WRING,
 } from '~/data/art/fruits/bespoke'
 import { fruit } from '~/data/art/fruits/generate'
@@ -67,7 +75,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Fifty of them are drawn by hand and name their drawing; the rest name the
+ * Fifty-eight of them are drawn by hand and name their drawing; the rest name the
  * seed they are grown from.
  */
 export const fruitArt = {
@@ -348,13 +356,7 @@ export const fruitArt = {
     swirl: 'spiral',
   }),
   'egg-egg-fruit': EGG_EGG,
-  'turtle-turtle-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'turtle-turtle-fruit': TURTLE_TURTLE,
   'gas-gas-fruit': GAS_GAS,
   'snow-snow-fruit': SNOW_SNOW,
   'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
@@ -385,56 +387,14 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'spiral',
   }),
-  'castle-castle-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'memo-memo-fruit': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'castle-castle-fruit': CASTLE_CASTLE,
+  'memo-memo-fruit': MEMO_MEMO,
   'soul-soul-fruit': SOUL_SOUL,
-  'lick-lick-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'bis-bis-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'mirror-mirror-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'bird-bird-fruit-model-albatross': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'mochi-mochi-fruit': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'lick-lick-fruit': LICK_LICK,
+  'bis-bis-fruit': BIS_BIS,
+  'mirror-mirror-fruit': MIRROR_MIRROR,
+  'bird-bird-fruit-model-albatross': BIRD_ALBATROSS,
+  'mochi-mochi-fruit': MOCHI_MOCHI,
   'wring-wring-fruit': WRING_WRING,
   'book-book-fruit': BOOK_BOOK,
   'heat-heat-fruit': HEAT_HEAT,
