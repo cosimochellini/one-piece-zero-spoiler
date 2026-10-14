@@ -4341,7 +4341,7 @@ function footprint(heel: Point, toe: Point): string {
  * a clean line across it nothing at all, only two footprints on the ground
  * where it stands. In episode 339 something unseen holds the crew on their
  * ship; in episode 359 Sanji names the fruit Absalom ate, and Absalom's
- * footsteps give him away. No shadow, no fading and no gaps.
+ * footsteps give him away. No shadow and no fading.
  */
 export const CLEAR_CLEAR: Stroke[] = [
   ...kitBody(CLEAR_BODY, [84, 96], (_x, y) => y < CLEAR_LINE),
