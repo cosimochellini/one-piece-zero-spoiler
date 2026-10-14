@@ -14,6 +14,7 @@ import { landingPage } from './archive/home.server'
 import {
   characterPage,
   charactersPage,
+  drawingsFor,
   nearbyPage,
   routePosition,
   shelvesPage,
@@ -104,6 +105,22 @@ function addressed(input: unknown): Addressed {
   return { locale: locale(input), id: text(input, 'id') }
 }
 
+// One screen of a long list asks at once; more than that is not a page.
+const MAX_IDS = 64
+
+/** The ids of the drawings a list left behind, as the page asks for them. */
+function listed(input: unknown): Located & { ids: string[] } {
+  const ids = field(input, 'ids')
+  if (!Array.isArray(ids) || ids.length === 0 || ids.length > MAX_IDS) {
+    throw new Error('Some ids are required')
+  }
+
+  return {
+    locale: locale(input),
+    ids: ids.map((id: unknown) => text({ id }, 'id')),
+  }
+}
+
 /** A record still under fog, which the reader can only name by its handle. */
 function handled(input: unknown): Handled {
   return { locale: locale(input), handle: text(input, 'handle') }
@@ -136,6 +153,10 @@ export const loadRoutePosition = createServerFn()
 export const loadNearby = createServerFn()
   .validator(addressed)
   .handler(({ data }) => nearbyPage(data.id, readBookmark(), data.locale))
+
+export const loadDrawings = createServerFn()
+  .validator(listed)
+  .handler(({ data }) => drawingsFor(data.ids, readBookmark(), data.locale))
 
 export const loadFruits = createServerFn()
   .validator(located)

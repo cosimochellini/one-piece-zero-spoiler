@@ -97,6 +97,12 @@ export type FruitForm = 'logia' | 'paramecia' | 'zoan'
 export interface Drawing {
   strokes: Stroke[]
   tint: TintId
+  /**
+   * Set when the strokes were left behind: a long list sends the tint alone
+   * for the records far down it, and the page asks for their strokes by id
+   * once they near the screen (`loadDrawings`). The strokes are then empty.
+   */
+  deferred?: true
 }
 
 /**

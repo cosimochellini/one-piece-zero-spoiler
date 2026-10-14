@@ -1,6 +1,9 @@
 import { screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 
+import { DrawingsContext } from '~/lib/view/drawings'
+import type { Stroke } from '~/lib/view/records'
 import {
   at,
   coveredSlot,
@@ -54,7 +57,8 @@ describe('CharacterTile', () => {
     expect(screen.getByText('Episode 5')).toBeVisible()
   })
 
-  it('names the drawing and the name that travel to the page', () => {
+  it('names the drawing and the name once clicked, and only then', async () => {
+    const user = userEvent.setup()
     const { container } = renderWithProviders(
       <ul>
         <CharacterTile
@@ -64,6 +68,12 @@ describe('CharacterTile', () => {
       </ul>,
       { bookmark: ep(10) },
     )
+
+    expect(
+      container.querySelector('[style*="character-test-navigator"]'),
+    ).not.toBeInTheDocument()
+
+    await user.click(screen.getByRole('link', { name: /Nami/u }))
 
     expect(
       container.querySelector('[style*="character-test-navigator-art"]'),
@@ -88,6 +98,37 @@ describe('CharacterTile', () => {
     expect(
       container.querySelector('[style*="character-test-navigator"]'),
     ).not.toBeInTheDocument()
+  })
+
+  it('asks for a deferred drawing by id and draws what comes back', async () => {
+    const load = vi
+      .fn<(ids: string[]) => Promise<Record<string, Stroke[]>>>()
+      .mockResolvedValue({ 'test-deferred': nami.visual.strokes })
+    const later = searchable({ id: 'test-deferred', name: 'Later', ...at(5) })
+    const { container } = renderWithProviders(
+      <DrawingsContext value={load}>
+        <ul>
+          <CharacterTile
+            peek={peekPending()}
+            slot={openSlot({
+              ...later,
+              visual: { strokes: [], tint: later.visual.tint, deferred: true },
+            })}
+          />
+        </ul>
+      </DrawingsContext>,
+      { bookmark: ep(10) },
+    )
+
+    expect(container.querySelectorAll('path')).toHaveLength(0)
+
+    await vi.waitFor(() => {
+      expect(container.querySelectorAll('path')).toHaveLength(
+        nami.visual.strokes.length,
+      )
+    })
+
+    expect(load).toHaveBeenCalledExactlyOnceWith(['test-deferred'], 'en')
   })
 
   it('puts no transition name on a covered tile, which would spell its id', () => {

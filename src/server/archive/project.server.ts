@@ -36,10 +36,21 @@ import type { Reader } from './reader.server'
  * reader who has reached no redrawing — none set, or no bookmark — is shown
  * the first drawing, which fails closed.
  */
-function drawingOf(entity: Entity, r: Reader): Drawing {
+export function drawingOf(entity: Entity, r: Reader): Drawing {
   return {
     strokes: latestOf(r, entity, 'redrawing') ?? DRAWINGS[entity.visual.art],
     tint: entity.visual.tint,
+  }
+}
+
+/**
+ * A record with its strokes left behind for the page to ask for later
+ * (`Drawing.deferred`), so a long list does not ship every drawing on it.
+ */
+export function deferredOf<T extends RecordView>(view: T): T {
+  return {
+    ...view,
+    visual: { strokes: [], tint: view.visual.tint, deferred: true },
   }
 }
 

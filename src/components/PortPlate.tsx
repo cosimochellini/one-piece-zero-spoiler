@@ -1,5 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
-import type { ReactElement } from 'react'
+import type { ReactElement, RefCallback } from 'react'
 
 import { ArtStrokes } from '~/components/ChartArt'
 import {
@@ -13,7 +13,8 @@ import {
 } from '~/components/chrome/plate'
 import { ART_VIEWBOX, tintOf } from '~/components/drawing'
 import { emblemStyles } from '~/components/emblem.styles'
-import type { Drawing } from '~/lib/view/records'
+import { useDrawing } from '~/lib/view/drawings'
+import type { Drawing, RecordView } from '~/lib/view/records'
 
 /**
  * The plate itself: the border, the dashed inner rule, the graticule, the
@@ -84,12 +85,19 @@ function Frame({ hue }: { hue: null | string }): ReactElement {
  * nothing in the middle. That is what stands in for a fogged place, so the
  * served HTML carries neither its drawing nor its colour.
  */
-export function PortPlate({ visual }: { visual?: Drawing }): ReactElement {
+export function PortPlate({
+  ref,
+  visual,
+}: {
+  ref?: RefCallback<Element>
+  visual?: Drawing
+}): ReactElement {
   const hue = visual === undefined ? null : tintOf(visual.tint)
 
   return (
     <svg
       aria-hidden="true"
+      ref={ref}
       viewBox={PLATE_VIEWBOX}
       {...stylex.props(emblemStyles.svg)}
     >
@@ -109,5 +117,17 @@ export function PortPlate({ visual }: { visual?: Drawing }): ReactElement {
         </svg>
       )}
     </svg>
+  )
+}
+
+/** An open place's plate, its strokes asked for once near the screen. */
+export function OpenPortPlate({ port }: { port: RecordView }): ReactElement {
+  const { ref, strokes } = useDrawing(port.id, port.visual)
+
+  return (
+    <PortPlate
+      ref={ref}
+      visual={{ ...port.visual, strokes }}
+    />
   )
 }

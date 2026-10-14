@@ -203,7 +203,6 @@ function NearbyCrests({
                 `open-${slot.record.id}`
               : `fog-${slot.covered.handle}`
             }
-            morph="onClick"
             peek={peek}
             slot={slot}
           />

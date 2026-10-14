@@ -33,6 +33,7 @@ import { onboardingPage } from './onboarding.server'
 import {
   characterPage,
   charactersPage,
+  drawingsFor,
   nearbyPage,
   routePosition,
   shelvesPage,
@@ -510,6 +511,37 @@ describe('the slice of the archive a page is given', () => {
     saysNothing(shelves, ep(200))
   })
 
+  it('leaves the drawings past the first shelf and the third port to be asked for', () => {
+    const shelves = shelvesPage(ep(1100), 'en')
+    const ports = placesPage(ep(1100), 'en').open
+    const later = [
+      ...shelves.slice(1).flatMap((shelf) => shelf.open),
+      ...shelves.flatMap((shelf) => (shelf.arc.open ? [shelf.arc.record] : [])),
+      ...ports.slice(3),
+      ...ports
+        .slice(3)
+        .flatMap((port) => port.dossier?.filedHere ?? [])
+        .flatMap((slot) => (slot.open ? [slot.record] : [])),
+    ]
+
+    expect(later.length).toBeGreaterThan(500)
+
+    for (const record of later) {
+      expect(record.visual, record.id).toStrictEqual({
+        strokes: [],
+        tint: record.visual.tint,
+        deferred: true,
+      })
+    }
+    const inline = [...ports.slice(0, 3), ...(shelves.at(0)?.open ?? [])]
+
+    expect(inline.length).toBeGreaterThan(3)
+
+    for (const record of inline) {
+      expect(record.visual.strokes.length, record.id).toBeGreaterThan(0)
+    }
+  })
+
   it('sends the crests the reader has reached and counts the rest', () => {
     const page = charactersPage(ep(200), 'en')
 
@@ -790,6 +822,22 @@ describe('a record drawn again later in the story', () => {
     expect(peekCharacter(handle, 'en', ep(421))?.visual.strokes).toBe(
       redrawn?.value,
     )
+  })
+
+  it('is asked for by id as the reader would see it, and not before', () => {
+    expect(drawingsFor(['marshall-d-teach'], ep(420), 'en')).toStrictEqual({
+      'marshall-d-teach': first,
+    })
+    expect(
+      drawingsFor(['marshall-d-teach'], ep(421), 'en')['marshall-d-teach'],
+    ).toBe(redrawn?.value)
+    expect(
+      drawingsFor(
+        ['marshall-d-teach', 'no-such-record', '__proto__'],
+        ep(teach.revealedAtEpisode - 1),
+        'en',
+      ),
+    ).toStrictEqual({})
   })
 
   it('follows Usopp to his slingshots, and behind Sogeking’s mask', () => {

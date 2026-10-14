@@ -11,7 +11,7 @@ import type { ReactElement } from 'react'
 
 import { PortFacts } from '~/components/PortFacts'
 import { styles } from '~/components/PortLog.styles'
-import { PortPlate } from '~/components/PortPlate'
+import { OpenPortPlate, PortPlate } from '~/components/PortPlate'
 import { RecordTile } from '~/components/RecordTile'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
@@ -243,7 +243,7 @@ function Spread({
   return (
     <div {...stylex.props(styles.spread)}>
       <div {...stylex.props(styles.plate)}>
-        <PortPlate visual={port.visual} />
+        <OpenPortPlate port={port} />
       </div>
 
       <div {...stylex.props(styles.dossier)}>

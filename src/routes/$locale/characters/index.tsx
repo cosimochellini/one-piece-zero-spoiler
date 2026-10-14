@@ -7,7 +7,7 @@
  * · differs from the previous build (Map / Diagram) on macrostructure; theme
  *   is the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect } from 'react'
 
 import { ArchivePage } from '~/components/ArchivePage'
 import { CharacterGrid } from '~/components/CharacterGrid'
@@ -17,18 +17,21 @@ import { describeNamedPage } from '~/routes/$locale/-head'
 import { usePeek } from '~/routes/$locale/-peek'
 import { liftCharacter, loadCharacters, loadShelves } from '~/server/api'
 
+import { seen, shelvesShown } from './-seen'
+
 export const Route = createFileRoute('/$locale/characters/')({
   loader: async ({ context }) => {
     const page = await loadCharacters({ data: { locale: context.locale } })
     const shelves = loadShelves({ data: { locale: context.locale } })
 
-    return {
-      page,
-      // Stream below the fold on the server. Client reloads keep the old
-      // shelves until the replacement is ready, so Back's restored position
-      // cannot be clamped by the shorter loading placeholders.
-      shelves: import.meta.env.SSR ? shelves : await shelves,
+    if (!seen.shelves || import.meta.env.SSR) {
+      return { page, shelves }
     }
+
+    // Back, or a re-read after the bookmark moved: keep the old shelves
+    // until the replacement is ready, so the restored position cannot be
+    // clamped by the shorter loading placeholders.
+    return { page, shelves: await shelves }
   },
   head: ({ match, params }) => {
     return isLocale(params.locale) ?
@@ -58,6 +61,8 @@ function CharactersPage(): ReactElement {
   const { page, shelves } = Route.useLoaderData()
 
   const peek = usePeek(liftCharacter)
+
+  useEffect(shelvesShown, [])
 
   return (
     <ArchivePage

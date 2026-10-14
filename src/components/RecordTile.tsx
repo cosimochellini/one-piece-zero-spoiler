@@ -7,6 +7,7 @@ import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useDrawing } from '~/lib/view/drawings'
 import type { EntityKind, RecordView, Slot } from '~/lib/view/records'
 import {
   color,
@@ -71,17 +72,29 @@ export function RecordTile({ slot, peek }: RecordTileProps): ReactElement {
         {(record) => {
           return (
             <span {...stylex.props(styles.card)}>
-              <span {...stylex.props(styles.frame)}>
-                <ChartArt
-                  strokes={record.visual.strokes}
-                  tint={record.visual.tint}
-                />
-              </span>
+              <Plate record={record} />
               <Name entry={record} />
             </span>
           )
         }}
       </SpoilerVeil>
+    </span>
+  )
+}
+
+/** The record's drawing in its frame, asked for once near the screen. */
+function Plate({ record }: { record: RecordView }): ReactElement {
+  const { ref, strokes } = useDrawing(record.id, record.visual)
+
+  return (
+    <span
+      ref={ref}
+      {...stylex.props(styles.frame)}
+    >
+      <ChartArt
+        strokes={strokes}
+        tint={record.visual.tint}
+      />
     </span>
   )
 }
