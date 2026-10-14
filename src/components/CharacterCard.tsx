@@ -1,13 +1,13 @@
 import * as stylex from '@stylexjs/stylex'
 import { Link } from '@tanstack/react-router'
-import { type ReactElement, type ReactNode, useState } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 
 import { CharacterCrest } from '~/components/CharacterCrest'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { CharacterView, Slot } from '~/lib/view/records'
-import { morphPart } from '~/styles/morph'
+import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
   color,
   dur,
@@ -26,14 +26,6 @@ export interface CharacterCardProps {
   slot: Slot<CharacterView>
   /** A span of the name to mark, from a search match. */
   highlight?: [number, number] | null
-  /**
-   * When the crest and the name take the names that travel to the page.
-   * `always` on the signal book, so the way back lands on the card too.
-   * `onClick` for the cards a record's own page lists: those are other pages'
-   * cards as well, and carrying the names from the start would pair them with
-   * the signal book's, flying in from wherever they sat on the page left.
-   */
-  morph?: 'always' | 'onClick'
 }
 
 /**
@@ -49,7 +41,6 @@ export function CharacterCard({
   slot,
   peek,
   highlight = null,
-  morph = 'always',
 }: CharacterCardProps): ReactElement {
   const { t } = useLocale()
   const threshold = useThreshold()
@@ -76,7 +67,6 @@ export function CharacterCard({
           return (
             <CardLink
               highlight={highlight}
-              morph={morph}
               record={record}
             />
           )
@@ -93,23 +83,19 @@ export function CharacterCard({
 function CardLink({
   record,
   highlight,
-  morph,
 }: {
   highlight: [number, number] | null
-  morph: 'always' | 'onClick'
   record: CharacterView
 }): ReactElement {
   const { locale } = useLocale()
-  // Set in the click, which renders before the router starts the transition,
-  // so the old page is captured with the names on. ponytail: a modified click
-  // that opens a tab also sets it; the card then pairs like a signal book one.
-  const [clicked, setClicked] = useState(false)
-  const travels = morph === 'always' || clicked
+  // ponytail: a modified click that opens a tab also sets it; harmless, the
+  // names pair only on this tab's next navigation.
+  const travels = useTravels('character', record.id)
 
   return (
     <Link
       onClick={() => {
-        setClicked(true)
+        travelWith('character', record.id)
       }}
       params={{ locale, id: record.id }}
       to="/$locale/characters/$id"

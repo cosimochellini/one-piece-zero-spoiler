@@ -18,7 +18,7 @@ import type {
   Slot,
 } from '~/lib/view/records'
 
-import { recordOf } from './project.server'
+import { deferredOf, recordOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
@@ -49,7 +49,11 @@ export function placesPage(
         : []
     }),
     filed: total,
-    open,
+    // The drawings are most of the log's bytes, and only the first ports are
+    // near the screen when it arrives: the rest come by id.
+    open: open.map((port, index) =>
+      index < INLINE_PORTS ? port : deferredPort(port),
+    ),
     covered,
   }
 }
@@ -81,6 +85,25 @@ export function portOf(entity: Entity, r: Reader): PortView {
           }),
         }
       ),
+  }
+}
+
+/** How many ports ship their drawings, and their crew's, with them. */
+const INLINE_PORTS = 3
+
+/** A port with its plate's strokes and its crew's left behind. */
+function deferredPort(port: PortView): PortView {
+  return {
+    ...deferredOf(port),
+    dossier:
+      port.dossier === null ?
+        null
+      : {
+          ...port.dossier,
+          filedHere: port.dossier.filedHere.map((slot) =>
+            slot.open ? { open: true, record: deferredOf(slot.record) } : slot,
+          ),
+        },
   }
 }
 

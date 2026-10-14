@@ -48,7 +48,6 @@ export function HomeCast({ cast }: HomeCastProps): null | ReactElement {
           return (
             <CharacterCard
               key={record.id}
-              morph="onClick"
               peek={neverPeeked}
               slot={{ open: true, record }}
             />

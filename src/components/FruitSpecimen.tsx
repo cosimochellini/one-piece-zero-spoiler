@@ -10,7 +10,7 @@ import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
 import type { FruitForm, FruitView, Slot } from '~/lib/view/records'
-import { morphPart } from '~/styles/morph'
+import { morphPart, travelWith, useTravels } from '~/styles/morph'
 
 /** How wide a specimen number is printed. `01`, never `1`. */
 const NUMBER_WIDTH = 2
@@ -138,11 +138,20 @@ function SpecimenWords({
   record: FruitView
 }): ReactElement {
   const { locale } = useLocale()
+  const travels = useTravels('fruit', record.id)
 
   return (
     <>
-      <p {...stylex.props(styles.name, morphPart('fruit', record.id, 'name'))}>
+      <p
+        {...stylex.props(
+          styles.name,
+          travels && morphPart('fruit', record.id, 'name'),
+        )}
+      >
         <Link
+          onClick={() => {
+            travelWith('fruit', record.id)
+          }}
           params={{ locale, id: record.id }}
           to="/$locale/fruits/$id"
           {...stylex.props(styles.link)}

@@ -8,6 +8,7 @@ import {
   getCharacter,
   routePositionOf,
 } from '~/data/characters'
+import { getEntity } from '~/data/entities'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
@@ -21,11 +22,19 @@ import type {
   SearchableCharacter,
   ShelfView,
   Slot,
+  Stroke,
 } from '~/lib/view/records'
 
 import { chronicleOf } from './chronicle.server'
 import { headFor, type HeadKeys } from './head.server'
-import { characterOf, factsOf, recordOf, searchableOf } from './project.server'
+import {
+  characterOf,
+  deferredOf,
+  drawingOf,
+  factsOf,
+  recordOf,
+  searchableOf,
+} from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
@@ -81,17 +90,60 @@ export function shelvesPage(bookmark: Bookmark, locale: Locale): ShelfView[] {
     bookSections.map((section) => [section.arc.id, section]),
   )
 
-  return r.order(bookSections.map((section) => section.arc)).flatMap((arc) => {
-    const section = byArc.get(arc.id)
+  return r
+    .order(bookSections.map((section) => section.arc))
+    .flatMap((arc, index) => {
+      const section = byArc.get(arc.id)
+      if (section === undefined) {
+        return []
+      }
 
-    return section === undefined ? [] : shelfViewOf(section, r)
-  })
+      // The drawings are most of the shelves' bytes, and the first shelf is
+      // the only one near the screen when they arrive: the rest come by id.
+      const shelf = shelfViewOf(section, r)
+      return [
+        index < INLINE_SHELVES ? shelf : (
+          { ...shelf, open: shelf.open.map((open) => deferredOf(open)) }
+        ),
+      ]
+    })
 }
 
-/** One shelf: its arc, and the records on it split into open and covered. */
+/**
+ * The strokes a list left behind (`Drawing.deferred`), by id, as they stand
+ * at the bookmark. An id the reader has not reached, or that names nothing,
+ * is left out: the ids come from the page, so this answers only what the
+ * page could already have been sent.
+ */
+export function drawingsFor(
+  ids: string[],
+  bookmark: Bookmark,
+  locale: Locale,
+): Record<string, Stroke[]> {
+  const r = readerFor(bookmark, locale)
+
+  return Object.fromEntries(
+    ids.flatMap((id) => {
+      const entity = getEntity(id)
+      return entity !== undefined && r.sees(entity) ?
+          [[id, drawingOf(entity, r).strokes]]
+        : []
+    }),
+  )
+}
+
+/** How many shelves ship their drawings with them. */
+const INLINE_SHELVES = 1
+
+/**
+ * One shelf: its arc, and the records on it split into open and covered. The
+ * arc's own drawing is never drawn on a shelf, so it is never sent.
+ */
 function shelfViewOf(section: BookSection, r: Reader): ShelfView {
   return {
-    arc: r.slot(section.arc, recordOf),
+    arc: r.slot(section.arc, (entity, reader) =>
+      deferredOf(recordOf(entity, reader)),
+    ),
     ...r.split(section.characters, searchableOf),
   }
 }

@@ -4,18 +4,21 @@ import type { ReactElement } from 'react'
 import { FruitFrame } from '~/components/FruitFrame'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import type { FruitView, Slot } from '~/lib/view/records'
-import { morphPart } from '~/styles/morph'
+import { morphPart, useTravels } from '~/styles/morph'
 
 /**
  * A fruit's drawing under its own fog: an empty frame while it is covered,
  * and once open the drawing that travels between the sheet and the fruit's
- * page.
+ * page. The fruit's own page names it always; the sheet only while it is the
+ * fruit travelling (`~/styles/morph`).
  */
 export function FruitArt({
+  always = false,
   density,
   peek,
   slot,
 }: {
+  always?: boolean
   density: 'block' | 'compact'
   peek: (handle: string) => Promise<FruitView>
   slot: Slot<FruitView>
@@ -30,11 +33,28 @@ export function FruitArt({
     >
       {(record) => {
         return (
-          <div {...stylex.props(morphPart('fruit', record.id, 'art'))}>
-            <FruitFrame visual={record.visual} />
-          </div>
+          <OpenArt
+            always={always}
+            record={record}
+          />
         )
       }}
     </SpoilerVeil>
+  )
+}
+
+function OpenArt({
+  always,
+  record,
+}: {
+  always: boolean
+  record: FruitView
+}): ReactElement {
+  const travels = useTravels('fruit', record.id) || always
+
+  return (
+    <div {...stylex.props(travels && morphPart('fruit', record.id, 'art'))}>
+      <FruitFrame visual={record.visual} />
+    </div>
   )
 }

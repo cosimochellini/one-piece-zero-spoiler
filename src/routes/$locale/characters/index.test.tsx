@@ -6,6 +6,7 @@ import { loadCharacters, loadShelves } from '~/server/api'
 import { shelf } from '~/test/fixtures'
 
 import { Route } from '.'
+import { seen, shelvesShown } from './-seen'
 
 vi.mock(import('~/server/api'), async (importOriginal) => {
   const original = await importOriginal()
@@ -63,6 +64,7 @@ function delayedShelves(): {
 
 describe('characters route loader', () => {
   beforeEach(() => {
+    seen.shelves = false
     vi.mocked(loadCharacters).mockResolvedValue(page)
   })
 
@@ -71,8 +73,20 @@ describe('characters route loader', () => {
     vi.clearAllMocks()
   })
 
+  it('streams the shelves on the first visit, so the page opens at once', async () => {
+    vi.stubEnv('SSR', false)
+    const response = delayedShelves()
+    vi.mocked(loadShelves).mockReturnValue(response.promise)
+
+    const data = await load()
+
+    expect(data.page).toBe(page)
+    expect(data.shelves).toBe(response.promise)
+  })
+
   it('keeps client loader data pending until replacement shelves have arrived', async () => {
     vi.stubEnv('SSR', false)
+    shelvesShown()
     const response = delayedShelves()
     vi.mocked(loadShelves).mockReturnValue(response.promise)
     const returned = vi.fn<(value: Awaited<ReturnType<Loader>>) => void>()

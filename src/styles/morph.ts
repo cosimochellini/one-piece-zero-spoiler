@@ -1,4 +1,5 @@
 import * as stylex from '@stylexjs/stylex'
+import { useSyncExternalStore } from 'react'
 
 import { dur, ease } from '~/styles/tokens.stylex'
 
@@ -48,4 +49,40 @@ export function morphPart(
   part: 'art' | 'name',
 ): ReturnType<typeof styles.part> {
   return styles.part(`${kind}-${id}-${part}`)
+}
+
+// The one record travelling right now: the one the reader clicked, and so
+// also the one Back returns to. A list names only that record. A view
+// transition captures every named element on both pages, and two names on
+// each of the signal book's few hundred tiles cost a phone seconds of style
+// work on every navigation in or out of it.
+const travel: { name: null | string } = { name: null }
+const listeners = new Set<() => void>()
+
+function subscribe(listener: () => void): () => void {
+  listeners.add(listener)
+  return () => {
+    listeners.delete(listener)
+  }
+}
+
+/**
+ * Marks a record as the one travelling. Called in the link's click, which
+ * renders before the router starts the transition, so the page left behind
+ * is captured with the names on.
+ */
+export function travelWith(kind: 'character' | 'fruit', id: string): void {
+  travel.name = `${kind}-${id}`
+  for (const listener of listeners) {
+    listener()
+  }
+}
+
+/** Whether this record is the travelling one, so a list may name it. */
+export function useTravels(kind: 'character' | 'fruit', id: string): boolean {
+  return useSyncExternalStore(
+    subscribe,
+    () => travel.name === `${kind}-${id}`,
+    () => false,
+  )
 }

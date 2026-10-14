@@ -7,8 +7,9 @@ import { ChartArt } from '~/components/ChartArt'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
 import { useLocale } from '~/i18n/LocaleContext'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
+import { useDrawing } from '~/lib/view/drawings'
 import type { CharacterView, Slot } from '~/lib/view/records'
-import { morphPart } from '~/styles/morph'
+import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
   color,
   dur,
@@ -28,16 +29,10 @@ export interface CharacterTileProps {
   /** A span of the name to mark, from a search match. */
   highlight?: [number, number] | null
   /**
-   * Whether the drawing and the name travel to the character's page. Off for
-   * a featured character, whose crest card higher up already carries the
-   * names: a name may be on one element of a page only.
-   *
-   * The way back from a character's page lands on the tile only when its
-   * shelf was already painted: a shelf is `content-visibility: auto`, and the
-   * browser still counts one that scroll restoration has just brought on
-   * screen as skipped in the frame it captures, so that return is the page's
-   * crossfade. Dropping the containment would fix it and make every layout
-   * of the book several times slower.
+   * Whether the drawing and the name may travel to the character's page, once
+   * clicked and on the way back. Off for a featured character, whose crest
+   * card higher up already carries the names: a name may be on one element
+   * of a page only.
    */
   morph?: boolean
 }
@@ -106,21 +101,29 @@ function TileLink({
   record: CharacterView
 }): ReactElement {
   const { locale } = useLocale()
+  const travels = useTravels('character', record.id) && morph
+  const { ref, strokes } = useDrawing(record.id, record.visual)
 
   return (
     <Link
+      onClick={() => {
+        if (morph) {
+          travelWith('character', record.id)
+        }
+      }}
       params={{ locale, id: record.id }}
       to="/$locale/characters/$id"
       {...stylex.props(styles.row, styles.link)}
     >
       <span
+        ref={ref}
         {...stylex.props(
           styles.frame,
-          morph && morphPart('character', record.id, 'art'),
+          travels && morphPart('character', record.id, 'art'),
         )}
       >
         <ChartArt
-          strokes={record.visual.strokes}
+          strokes={strokes}
           tint={record.visual.tint}
         />
       </span>
@@ -130,7 +133,7 @@ function TileLink({
           nameSx={styles.name}
           record={record}
           roleSx={styles.role}
-          travels={morph}
+          travels={travels}
         />
       </span>
     </Link>

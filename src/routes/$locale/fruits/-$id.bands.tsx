@@ -78,6 +78,7 @@ export function PlateBand({
     <section {...stylex.props(styles.plate)}>
       <div {...stylex.props(styles.drawing)}>
         <FruitArt
+          always
           density="block"
           peek={peek}
           slot={detail.slot}
@@ -190,7 +191,6 @@ function Eaters({
                 `open-${slot.record.id}`
               : `fog-${slot.covered.handle}`
             }
-            morph="onClick"
             peek={peek}
             slot={slot}
           />
