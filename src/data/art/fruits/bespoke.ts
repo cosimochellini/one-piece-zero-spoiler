@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last sixty-two are drawn as fruit + power (#461), on the bodies of
+ * The last sixty-seven are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -2840,14 +2840,30 @@ const REEL: Point[] = [
 /** Where along the strip the snipped frame was, and half its width. */
 const SNIP = { from: 0.62, to: 0.74, half: 7 }
 
-/** A point along the strip, set off its middle across it. */
-function film(along: number, across: number): Point {
-  const [x, y] = bezier(REEL, along)
-  const [x1, y1] = bezier(REEL, Math.min(1, along + 0.01))
-  const [x0, y0] = bezier(REEL, Math.max(0, along - 0.01))
+/** A point on a chain of cubics, `along` the whole of it from 0 to 1. */
+function onChain(line: Point[], along: number): Point {
+  const cubics = (line.length - 1) / 3
+  const at = Math.min(cubics - 1, Math.floor(along * cubics))
+
+  return bezier(line.slice(at * 3, at * 3 + 4), along * cubics - at)
+}
+
+/**
+ * A point `along` a chain of cubics, set off it `across` it, square to the
+ * way the chain runs there.
+ */
+function offChain(line: Point[], along: number, across: number): Point {
+  const [x, y] = onChain(line, along)
+  const [x1, y1] = onChain(line, Math.min(1, along + 0.01))
+  const [x0, y0] = onChain(line, Math.max(0, along - 0.01))
   const length = Math.hypot(x1 - x0, y1 - y0)
 
   return [x - ((y1 - y0) / length) * across, y + ((x1 - x0) / length) * across]
+}
+
+/** A point along the strip, set off its middle across it. */
+function film(along: number, across: number): Point {
+  return offChain(REEL, along, across)
 }
 
 /** One piece of the strip, from one cut to the other, as a closed outline. */
@@ -3868,5 +3884,296 @@ export const HORSE_HORSE: Stroke[] = [
   { d: 'M60 164 C65 165 71 166 76 165', role: 'soft' },
   // The horn of the hoof.
   { d: 'M60 175 L65 168 M67 175 L72 168', role: 'ambient' },
+  shadowUnder(1),
+]
+
+/**
+ * What a Zoan grows that is round in section, a trunk, a tail, a claw: the
+ * line down its middle as a chain of cubics, and how far either edge stands
+ * off that line at each point along it, 0 at the root and 1 at the end. The
+ * line starts on the rim, so both edges leave the skin there.
+ */
+interface Limb {
+  half: (along: number) => number
+  line: Point[]
+}
+
+/** A point of a limb, `along` its middle line and `across` it. */
+function onLimb({ line }: Limb, along: number, across: number): Point {
+  return offChain(line, along, across)
+}
+
+/**
+ * A limb's outline: out along one edge, round its end, and back along the
+ * other. `rough` scales the edges point by point, which is how fur bristles.
+ */
+function limbOutline(
+  limb: Limb,
+  steps = 16,
+  rough: (step: number, way: number) => number = () => 1,
+): string {
+  const edge = (way: number): Point[] => {
+    return Array.from({ length: steps + 1 }, (_unused, step) => {
+      const along = step / steps
+
+      return onLimb(limb, along, way * limb.half(along) * rough(step, way))
+    })
+  }
+  const end = limb.half(1)
+  const [x, y] = onChain(limb.line, 1)
+  const [x0, y0] = onChain(limb.line, 0.99)
+  const facing = Math.atan2(y - y0, x - x0)
+  const cap = Array.from({ length: end > 0 ? 5 : 0 }, (_unused, at): Point => {
+    const turn = facing + Math.PI / 2 - ((at + 1) * Math.PI) / 6
+
+    return [x + end * Math.cos(turn), y + end * Math.sin(turn)]
+  })
+
+  return polyline(
+    [...edge(1), ...cap, ...edge(-1).toReversed()].map(([px, py]) =>
+      point(px, py),
+    ),
+  )
+}
+
+/** A line across a limb, `along` it, as far out as `reach` of its edges. */
+function acrossLimb(limb: Limb, along: number, reach: number): string {
+  const half = limb.half(along) * reach
+
+  return polyline([
+    point(...onLimb(limb, along, -half)),
+    point(...onLimb(limb, along - 0.02, 0)),
+    point(...onLimb(limb, along, half)),
+  ])
+}
+
+/** The elephant fruit: a pear, a trunk out of its far shoulder. */
+const ELEPHANT_BODY: Body = { family: 'pear', cy: 118 }
+
+/**
+ * The trunk: out of the far shoulder, wide where it leaves the skin, down
+ * beside the fruit, narrowing to a tip curled out and up.
+ */
+const TRUNK: Limb = {
+  line: [
+    [94, 98],
+    [112, 98],
+    [124, 108],
+    [126, 124],
+    [128, 142],
+    [126, 162],
+    [140, 152],
+  ],
+  half: (along) => 3.5 + 10.5 * (1 - along) ** 2,
+}
+
+/**
+ * The fruit with an elephant's trunk: one short, thick trunk grown out of
+ * its far shoulder and hanging down beside it, the tip curled, two creases
+ * across it. In episode 285 Spandam calls Funkfreed, an elephant, which
+ * turns into a sword, and he tells Robin the sword was given the fruit. The
+ * trunk and nothing else, never ears, tusks or the head, and no blade: the
+ * trunk melding into the blade is the hybrid form, which comes later.
+ */
+export const ELEPHANT_ELEPHANT: Stroke[] = [
+  ...kitBody(ELEPHANT_BODY, [140, 150, 160]),
+  ...skin([
+    [68, 128, 7],
+    [86, 152, -6],
+  ]),
+  ...sprout(ELEPHANT_BODY, -4, 'left'),
+  { d: limbOutline(TRUNK, 20), role: 'accent' },
+  // The creases across it.
+  {
+    d: [0.5, 0.62].map((along) => acrossLimb(TRUNK, along, 0.7)).join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The wolf fruit: a round, a bushy tail out of its far side. */
+const WOLF_BODY: Body = { family: 'round', cy: 112 }
+
+/** Where along the tail it is fullest. */
+const PLUME = 0.45
+
+/**
+ * The tail: out of the lower side, sweeping out and down, then curling up
+ * at its tip; narrow at the root, a full plume in the middle, and tapering
+ * to a soft point.
+ */
+const TAIL: Limb = {
+  line: [
+    [107, 148],
+    [125, 166],
+    [148, 170],
+    [146, 146],
+  ],
+  half: (along) => {
+    return along < PLUME ?
+        6 + 9 * Math.sin((Math.PI / 2) * (along / PLUME))
+      : 2.5 + 12.5 * Math.cos((Math.PI / 2) * ((along - PLUME) / (1 - PLUME)))
+  },
+}
+
+/** The fur notches: steps along the outer edge (1) and the inner one (-1). */
+const FUR = { outer: [7, 12, 17], inner: [10, 15] }
+
+/**
+ * The fruit with a wolf's tail: one large, bushy tail grown out of its lower
+ * side, sweeping out and down with the tip curled up, soft notches of fur on
+ * both edges. In episode 286 Jabra transforms and names his fruit, and the
+ * wiki gives his half-wolf form an unusually large tail. The tail and
+ * nothing else, never the snout or the head.
+ */
+export const DOG_WOLF: Stroke[] = [
+  ...kitBody(WOLF_BODY, [84, 96, 108]),
+  ...skin([
+    [62, 104, 9],
+    [76, 140, -7],
+  ]),
+  ...sprout(WOLF_BODY, -4, 'left'),
+  {
+    d: limbOutline(TAIL, 24, (step, way) => {
+      if (way > 0) {
+        return FUR.outer.includes(step) ? 0.8 : 1
+      }
+
+      return FUR.inner.includes(step) ? 0.86 : 1
+    }),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The slow fruit: a segmented one, struck on the shoulder by a beam. */
+const SLOW_BODY: Body = { family: 'segmented', cy: 116 }
+
+/**
+ * The fruit struck by a beam: two parallel lines in from the upper left,
+ * landing on the near shoulder, the outline open where they land, and the
+ * struck shoulder trailing behind where it was. In episode 210 Foxy fires
+ * the beam at the Barrel Tiger to slow it in the race, and explains that he
+ * gives off particles that slow down what they hit. No cannonball and no
+ * mirror.
+ */
+export const SLOW_SLOW: Stroke[] = [
+  ...kitBody(SLOW_BODY, [104, 116, 128], (x, y) => x > 50 || y < 87 || y > 93),
+  ribs(SLOW_BODY),
+  ...skin([
+    [96, 104, 7],
+    [86, 146, -6],
+  ]),
+  ...sprout(SLOW_BODY, 6, 'right'),
+  // The beam, both edges ending on the rim.
+  { d: 'M7.3 54.9 L41.3 94.9 M13.8 45.2 L47.8 85.2', role: 'accent' },
+  // The struck shoulder, lagging behind where it was.
+  {
+    d: [5, 10]
+      .map((back) => {
+        return polyline(
+          Array.from({ length: 6 }, (_unused, at) => {
+            const y = 96 + at * 5
+
+            return point(onRim(SLOW_BODY, y, -1)[0] - back, y - back * 0.6)
+          }),
+        )
+      })
+      .join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** The door fruit: an oblong, a door open in its near side. */
+const DOOR_BODY: Body = { family: 'oblong', cy: 116 }
+
+/**
+ * The fruit with a door in it: a square door cut into its near side, the
+ * outline and skin open along it, the panel swung wide out on its hinge,
+ * and the dark inside of the fruit showing. In episode 242 Blueno makes a
+ * door in a wall into Iceburg's room and names the fruit. Square, with no
+ * arch and nothing coming out of it, so it is never the castle fruit's
+ * doorway.
+ */
+export const DOOR_DOOR: Stroke[] = [
+  ...kitBody(DOOR_BODY, [120, 132, 144], (x, y) => x > 56 || y < 94 || y > 148),
+  ...skin([
+    [96, 98, 8],
+    [94, 146, -6],
+  ]),
+  ...sprout(DOOR_BODY, 6, 'right'),
+  // The doorway cut in the skin.
+  { d: 'M54 96 L76 96 L76 140 L54 140 Z' },
+  // The panel, swung out on its hinge.
+  { d: 'M54 96 L34 102 L34 146 L54 140 Z', role: 'accent' },
+  // The dark inside.
+  {
+    d: [
+      'M58 104 L64 98 M58 114 L72 100 M58 124 L74 108',
+      'M58 134 L74 118 M64 138 L74 128',
+    ].join(' '),
+    role: 'ambient',
+  },
+  shadowUnder(1),
+]
+
+/** The leopard fruit: a heart, claws out of its lower side. */
+const LEOPARD_BODY: Body = { family: 'heart', cy: 112 }
+
+/** The short stub the claws grow from, both edges of it on the rim. */
+const STUB: Limb = {
+  line: [
+    [50, 134],
+    [48, 135],
+    [46, 136],
+    [44, 137],
+  ],
+  half: () => 8,
+}
+
+/** Where each claw runs, out of the end of the stub and hooked down. */
+const CLAW_LINES: Point[][] = [
+  [
+    [38, 132],
+    [26, 120],
+    [12, 122],
+    [10, 136],
+  ],
+  [
+    [38, 140],
+    [26, 134],
+    [16, 140],
+    [16, 154],
+  ],
+  [
+    [42, 147],
+    [34, 150],
+    [28, 158],
+    [30, 170],
+  ],
+]
+
+/** One claw: thick where it leaves the stub, curved to a sharp point. */
+function claw(line: Point[]): string {
+  return limbOutline({ line, half: (along) => 3.5 * (1 - along) }, 10)
+}
+
+/**
+ * The fruit with a leopard's claws: three curved, hooked claws out of a
+ * short stub grown from its lower side. In episode 246 Lucci turns into his
+ * half-leopard form, names his fruit and, with sharp nails, pierces Luffy.
+ * Claws only, never a foreleg, a pad or a rosette, and curved, never
+ * straight, so they are never the spike fruit's spikes.
+ */
+export const CAT_LEOPARD: Stroke[] = [
+  ...kitBody(LEOPARD_BODY, [100, 112, 124]),
+  ...skin([
+    [70, 94, 8],
+    [88, 128, -7],
+  ]),
+  ...sprout(LEOPARD_BODY, 4, 'right'),
+  { d: limbOutline(STUB, 8) },
+  { d: CLAW_LINES.map((line) => claw(line)).join(' '), role: 'accent' },
   shadowUnder(1),
 ]
