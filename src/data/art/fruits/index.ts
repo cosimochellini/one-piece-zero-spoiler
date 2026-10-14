@@ -27,9 +27,11 @@ import {
   DOG_JACKAL,
   DOG_WOLF,
   DOOR_DOOR,
+  DRAGON_ALLOSAURUS,
   DRAGON_KIRIN,
   DRAGON_PACHYCEPHALOSAURUS,
   DRAGON_PTERANODON,
+  DRAGON_SPINOSAURUS,
   EGG_EGG,
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
@@ -58,6 +60,7 @@ import {
   MAGNET_MAGNET,
   MARK_MARK,
   MEMO_MEMO,
+  MILLET_MILLET,
   MIRROR_MIRROR,
   MOCHI_MOCHI,
   MOLE_MOLE,
@@ -72,6 +75,7 @@ import {
   PUMP_PUMP,
   PUSH_PUSH,
   REVIVE_REVIVE,
+  RIPE_RIPE,
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
@@ -82,6 +86,7 @@ import {
   SMOKE_SMOKE,
   SNAKE_ANACONDA,
   SNAKE_KING_COBRA,
+  SNAKE_OROCHI,
   SNIP_SNIP,
   SNOW_SNOW,
   SOUL_SOUL,
@@ -92,6 +97,7 @@ import {
   STICK_STICK,
   STITCH_STITCH,
   STONE_STONE,
+  STRAW_STRAW,
   STRING_STRING,
   SWAMP_SWAMP,
   SWIM_SWIM,
@@ -120,7 +126,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and three of them are drawn by hand and name their drawing; the rest
+ * One hundred and nine of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -168,13 +174,7 @@ export const fruitArt = {
     swirl: 'whorls',
   }),
   'glint-glint-fruit': GLINT_GLINT,
-  'dragon-dragon-fruit-ancient-model-allosaurus': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'dragon-dragon-fruit-ancient-model-allosaurus': DRAGON_ALLOSAURUS,
   'love-love-fruit': LOVE_LOVE,
   'snake-snake-fruit-model-anaconda': SNAKE_ANACONDA,
   'snake-snake-fruit-model-king-cobra': SNAKE_KING_COBRA,
@@ -238,34 +238,10 @@ export const fruitArt = {
   }),
   'pump-pump-fruit': PUMP_PUMP,
   'push-push-fruit': PUSH_PUSH,
-  'millet-millet-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'straw-straw-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'dragon-dragon-fruit-ancient-model-spinosaurus': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
-  'snake-snake-fruit-mythical-model-yamata-no-orochi': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'millet-millet-fruit': MILLET_MILLET,
+  'straw-straw-fruit': STRAW_STRAW,
+  'dragon-dragon-fruit-ancient-model-spinosaurus': DRAGON_SPINOSAURUS,
+  'snake-snake-fruit-mythical-model-yamata-no-orochi': SNAKE_OROCHI,
   'fish-fish-fruit-mythical-model-azure-dragon': fruit({
     body: 'round',
     grain: 0,
@@ -273,13 +249,7 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'spiral',
   }),
-  'ripe-ripe-fruit': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
+  'ripe-ripe-fruit': RIPE_RIPE,
   'dragon-dragon-fruit-ancient-model-pteranodon': DRAGON_PTERANODON,
   'dragon-dragon-fruit-ancient-model-brachiosaurus': fruit({
     body: 'gourd',

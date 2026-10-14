@@ -5366,3 +5366,211 @@ export const DRAGON_PACHYCEPHALOSAURUS: Stroke[] = [
   },
   shadowUnder(1),
 ]
+
+/** Tama's fruit: a round, a dumpling pulled from its near flank. */
+const MILLET_BODY: Body = { family: 'round', cy: 116 }
+
+/**
+ * A dango pinched out on a short neck of dough, and one finished dumpling
+ * resting beside the fruit. Tama pulls a millet dumpling off her cheek and
+ * feeds Hihimaru in episode 893 (chapter 911), before the record opens.
+ */
+export const MILLET_MILLET: Stroke[] = [
+  ...kitBody(
+    MILLET_BODY,
+    [94, 102, 144, 154],
+    (x, y) => x < 80 || y < 110 || y > 132,
+  ),
+  ...skin([
+    [68, 101, 8],
+    [87, 145, -7],
+  ]),
+  ...sprout(MILLET_BODY, 3, 'left'),
+  {
+    d: [
+      `M${point(...onRim(MILLET_BODY, 110, 1))}`,
+      'C125 110 128 115 132 114 C140 108 150 114 150 122',
+      'C150 132 138 136 132 128',
+      `L${point(...onRim(MILLET_BODY, 132, 1))}`,
+      ring(135, 168, 8),
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M137 118 C141 115 145 118 146 121 M132 164 L137 163', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Hawkins's fruit: a segmented body split by a bursting tuft of straw. */
+const STRAW_BODY: Body = { family: 'segmented', cy: 116 }
+
+/**
+ * Straw bursting out of the near side, individual stiff stalks still
+ * separate at their tips. Hawkins draws straw from his body in episodes
+ * 401–402; no doll, wound or later straw weapon is drawn here.
+ */
+export const STRAW_STRAW: Stroke[] = [
+  ...kitBody(
+    STRAW_BODY,
+    [92, 104, 144, 154],
+    (x, y) => x > 80 || y < 106 || y > 136,
+  ),
+  ribs(STRAW_BODY),
+  ...skin([
+    [72, 96, 7],
+    [90, 145, -6],
+  ]),
+  ...sprout(STRAW_BODY, 5, 'right'),
+  {
+    d: [
+      'M42 108 L16 87 L12 81 M45 115 L18 101 L8 98',
+      'M48 121 L22 116 L8 116 M46 127 L20 134 L11 140',
+      'M43 135 L24 152 L21 162 M42 116 L26 94 L25 86',
+      'M45 126 L29 141 L27 154',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M21 104 L25 96 M20 120 L23 110 M22 139 L28 135', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Shinobu's fruit: a pear whose lower skin has gone past ripe. */
+const RIPE_BODY: Body = { family: 'pear', cy: 116 }
+
+/**
+ * The foot caved in and crumbling, crumbs falling into a pit below it.
+ * Shinobu decays the ground to escape Kaido's breath in episode 916
+ * (chapter 924). Curls stay high, away from the sagging lower edge.
+ */
+export const RIPE_RIPE: Stroke[] = [
+  ...kitBody(RIPE_BODY, [100, 112, 124], (_x, y) => y < 140),
+  ...skin([
+    [78, 95, 5],
+    [74, 119, -5],
+  ]),
+  ...sprout(RIPE_BODY, -3, 'left'),
+  {
+    d: [
+      `M${point(...onRim(RIPE_BODY, 140, -1))}`,
+      'L54 148 L62 146 L68 155 L74 153',
+      'M81 157 L90 151 L96 145',
+      point(...onRim(RIPE_BODY, 140, 1)),
+      'M68 164 L72 161 L75 166 Z M87 167 L90 164 L93 169 Z',
+      'M77 174 L80 171 L83 175 Z',
+      'M51 184 C65 175 99 175 113 184 C96 189 68 189 51 184 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M62 133 L65 141 L71 139 M86 132 L82 141 L86 146', role: 'soft' },
+  { d: 'M65 183 L70 179 M78 185 L83 179 M93 184 L98 180', role: 'ambient' },
+]
+
+/** Drake's fruit: a gourd with a plain, stiff reptilian counterweight tail. */
+const ALLOSAURUS_BODY: Body = { family: 'gourd', cy: 112 }
+const ALLOSAURUS_TAIL: Limb = {
+  line: [
+    [104, 137],
+    [121, 142],
+    [132, 133],
+    [146, 128],
+  ],
+  half: (along) => 10 * (1 - along),
+  rim: { body: ALLOSAURUS_BODY, way: 1 },
+}
+
+/**
+ * The bare tail grown from the lower side, held off the ground as a
+ * counterweight. Drake's allosaurus is already seen in episode 402
+ * (chapter 509), before Law names it at episode 923 (chapter 929).
+ * Anatomy only, without later spines or a tail attack.
+ */
+export const DRAGON_ALLOSAURUS: Stroke[] = [
+  ...kitBody(
+    ALLOSAURUS_BODY,
+    [90, 102, 118],
+    (x, y) => x < 80 || y < 126 || y > 149,
+  ),
+  ...skin([
+    [75, 85, 6],
+    [76, 140, -6],
+  ]),
+  ...sprout(ALLOSAURUS_BODY, -4, 'left'),
+  { d: limbOutline(ALLOSAURUS_TAIL), role: 'accent' },
+  { d: 'M111 143 C123 147 133 139 140 135', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Page One's fruit: an oblong in front of the tall spines of a dorsal sail. */
+const SPINOSAURUS_BODY: Body = { family: 'oblong', cy: 122 }
+
+/**
+ * The dorsal sail grown from the far rim, tall ribs inside a continuous
+ * rounded membrane. Page One walks the Flower Capital in beast form in
+ * episode 924 (chapters 929–930). No later tail redesign is included.
+ */
+export const DRAGON_SPINOSAURUS: Stroke[] = [
+  ...kitBody(
+    SPINOSAURUS_BODY,
+    [142, 154],
+    (x, y) => x < 80 || y < 82 || y > 136,
+  ),
+  ...skin([
+    [70, 112, 8],
+    [85, 148, -6],
+  ]),
+  ...sprout(SPINOSAURUS_BODY, -7, 'left'),
+  {
+    d: billow([
+      onRim(SPINOSAURUS_BODY, 82, 1),
+      [108, 56],
+      [117, 38],
+      [129, 40],
+      [139, 58],
+      [143, 82],
+      [140, 107],
+      [130, 124],
+      onRim(SPINOSAURUS_BODY, 136, 1),
+    ]),
+    role: 'accent',
+  },
+  {
+    d: 'M110 60 L111 103 M119 46 L121 114 M131 53 L130 121 M139 81 L136 125',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** Orochi's fruit: a segmented body below eight headless neck loops. */
+const OROCHI_BODY: Body = { family: 'segmented', cy: 128 }
+
+/** Four loops on each side, kept above the shoulders and clear of the stalk. */
+const OROCHI_LOOPS = [-1, 1]
+  .flatMap((way) => {
+    return [0, 1, 2, 3].map((at) => {
+      const dx = 68 - at * 16
+      const top = 26 + at * 9
+      const root = 104 + at * 4
+      return [
+        `M${point(...onRim(OROCHI_BODY, root, way))}`,
+        `C${point(80 + way * dx, 82)} ${point(80 + way * (dx + 5), top)} ${point(80 + way * dx, top)}`,
+        `C${point(80 + way * (dx - 5), top)} ${point(80 + way * (dx - 8), 82)} ${point(...onRim(OROCHI_BODY, root + 3, way))}`,
+      ].join(' ')
+    })
+  })
+  .join(' ')
+
+/**
+ * Eight necks looping up from the fruit's rim and back, four each side of
+ * the stalk. Orochi attacks the banquet in serpent form in episode 927
+ * (chapter 932). Never heads or faces, and no neck is cut from the count.
+ */
+export const SNAKE_OROCHI: Stroke[] = [
+  ...kitBody(OROCHI_BODY, [136, 148, 160], (_x, y) => y < 104 || y > 119),
+  ribs(OROCHI_BODY),
+  ...skin([
+    [72, 128, 7],
+    [88, 159, -6],
+  ]),
+  ...sprout(OROCHI_BODY, 0, 'right'),
+  { d: OROCHI_LOOPS, role: 'accent' },
+  shadowUnder(1),
+]
