@@ -5240,8 +5240,8 @@ export const MAGNET_MAGNET: Stroke[] = [
 const WOODS_BODY: Body = { family: 'heart', cy: 110 }
 
 /**
- * The fruit's foot turned to wood, spreading roots along the ground, two
- * tips curling up to grasp. In episodes 1080–1081 (chapters 1053–1054),
+ * The fruit's foot turned to wood, branching roots along the ground, two
+ * uneven tips curling up to grasp. In episodes 1080–1081 (chapters 1053–1054),
  * Ryokugyu's roots ensnare and drain his opponents. No later fireproofing,
  * regeneration or flower propeller.
  */
@@ -5255,23 +5255,22 @@ export const WOODS_WOODS: Stroke[] = [
   {
     d: [
       `M${point(...onRim(WOODS_BODY, 132, -1))}`,
-      'C59 146 50 154 35 160 C23 165 13 157 14 146',
-      'C6 158 12 173 26 175 C45 179 56 170 67 164',
-      'C63 175 50 184 38 188 C60 188 74 177 80 169',
-      'C89 179 104 187 122 188 C108 181 99 173 94 164',
-      'C108 175 127 179 141 169 C150 162 151 150 145 143',
-      'C148 158 134 165 121 160 C108 156 103 147',
+      'L60 147 L48 153 L28 151 C16 148 15 140 20 137',
+      'C9 137 9 151 20 158 L37 165 L18 176 L36 172 L51 164 L66 160',
+      'L60 171 L44 184 L64 178 L80 165 L90 174 L108 187 L104 174 L93 159',
+      'L112 166 L131 165 C145 164 152 152 147 144',
+      'C148 155 138 159 129 155 L112 157 L97 148 L',
       point(...onRim(WOODS_BODY, 132, 1)),
     ].join(' '),
     role: 'accent',
   },
   // Grain where the skin is becoming wood, and along the near roots.
   {
-    d: 'M68 132 C67 146 74 155 80 161 M88 134 C88 143 94 151 104 158 M53 162 L33 169',
+    d: 'M68 132 L68 147 L73 153 M85 134 L86 147 L92 152 M54 158 L33 157 M101 157 L116 162',
     role: 'soft',
   },
   {
-    d: 'M21 170 L25 166 M34 173 L38 168 M119 171 L123 166 M132 171 L135 166',
+    d: 'M53 177 L58 171 M61 174 L66 168 M99 176 L95 168 M122 162 L118 158',
     role: 'ambient',
   },
 ]
