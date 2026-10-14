@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last sixty-seven are drawn as fruit + power (#461), on the bodies of
+ * The last seventy-one are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -4185,4 +4185,219 @@ export const CAT_LEOPARD: Stroke[] = [
   { d: limbOutline(STUB, 8) },
   { d: CLAW_LINES.map((line) => claw(line)).join(' '), role: 'accent' },
   shadowUnder(1),
+]
+
+/** The revive fruit: a heart, its soul coming back in at the crown. */
+const REVIVE_BODY: Body = { family: 'heart', cy: 116 }
+
+/**
+ * The soul: nose first into the dimple at the crown, round where it goes
+ * in, and an S of tail behind it up in the air, thinning to a round end.
+ */
+const WISP: Limb = {
+  line: [
+    [90, 77],
+    [90, 63],
+    [96, 51],
+    [106, 45],
+    [118, 39],
+    [126, 29],
+    [120, 19],
+    [114, 14],
+    [118, 9],
+    [127, 10],
+  ],
+  half: (along) => {
+    return along < 0.18 ?
+        11 * Math.sqrt(1 - (1 - along / 0.18) ** 2)
+      : 1.4 + 9.6 * Math.max(0, 1 - (along - 0.18) / 0.82) ** 1.4
+  },
+}
+
+/**
+ * The fruit its soul comes back to: one soft wisp of soul diving nose first
+ * into the dimple at its crown, beside the stalk, the rim of the dimple open
+ * where it goes in. In episode 338 Brook tells the crew he ate the fruit,
+ * and that after he died his soul came back from the underworld and looked
+ * for his body. A wisp, never a flame or a ghost: no point, no dome and no
+ * face.
+ */
+export const REVIVE_REVIVE: Stroke[] = [
+  ...kitBody(REVIVE_BODY, [104, 116, 128]).with(
+    1,
+    crown(REVIVE_BODY, [80, 101]),
+  ),
+  ...skin([
+    [64, 104, 8],
+    [86, 134, -7],
+  ]),
+  ...sprout(REVIVE_BODY, -4, 'left'),
+  { d: limbOutline(WISP, 36), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The hollow fruit: a round, a ghost passing out through its far side. */
+const HOLLOW_BODY: Body = { family: 'round', cy: 118 }
+
+/** The centre of the ghost's dome. */
+const GHOST_AT: Point = [126, 80]
+
+/** How the ghost leans, its dome, how long it is and how far it flares. */
+const GHOST = { lean: 34, r: 16, hem: 30, flare: 5 }
+
+/** A point of the ghost, across it and down from the centre of its dome. */
+const onGhost = turnedAbout(GHOST_AT, GHOST.lean)
+
+/** Whether a point of the box is under the ghost. */
+function underGhost(x: number, y: number): boolean {
+  const [dx, dy] = [x - GHOST_AT[0], y - GHOST_AT[1]]
+  const turn = GHOST.lean * DEGREES
+  const u = dx * Math.cos(turn) + dy * Math.sin(turn)
+  const v = -dx * Math.sin(turn) + dy * Math.cos(turn)
+
+  return v < 0 ?
+      Math.hypot(u, v) < GHOST.r + 1
+    : Math.abs(u) < GHOST.r + GHOST.flare + 1 && v < GHOST.hem + 7
+}
+
+/**
+ * The ghost: a dome, straight sides falling a little apart, and a hem of
+ * three soft scallops.
+ */
+function ghost(): string {
+  const dome = Array.from({ length: 13 }, (_unused, at): Point => {
+    const turn = Math.PI + (at * Math.PI) / 12
+
+    return [GHOST.r * Math.cos(turn), GHOST.r * Math.sin(turn)]
+  })
+  const wide = GHOST.r + GHOST.flare
+  const side = (way: number): Point[] => {
+    return [0.3, 0.6].map((along) => [
+      way * (GHOST.r + GHOST.flare * along ** 2),
+      GHOST.hem * along,
+    ])
+  }
+  const hem = Array.from({ length: 25 }, (_unused, at): Point => {
+    const along = at / 24
+
+    return [
+      wide - along * wide * 2,
+      GHOST.hem + 4.5 * Math.abs(Math.sin(along * 3 * Math.PI)),
+    ]
+  })
+
+  return polyline(
+    [...dome, ...side(1), ...hem, ...side(-1).toReversed()].map(([u, v]) =>
+      point(...onGhost(u, v)),
+    ),
+    true,
+  )
+}
+
+/**
+ * The fruit a ghost passes through: a plain ghost, a dome over a scalloped
+ * hem, half out through its far side and its hem still inside, the outline
+ * open where it crosses. In episode 342 ghosts pass through Luffy's net and
+ * through Franky, Luffy and Zoro, who sink into despair; in episode 356
+ * Perona explains her fruit to the crew. No eyes, no mouth and no tongue.
+ */
+export const HOLLOW_HOLLOW: Stroke[] = [
+  ...kitBody(HOLLOW_BODY, [130, 142, 152], (x, y) => !underGhost(x, y)),
+  ...skin([
+    [64, 110, 9],
+    [84, 146, -7],
+  ]),
+  ...sprout(HOLLOW_BODY, -4, 'left'),
+  { d: ghost(), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** The clear fruit: a segmented one, gone from sight below its middle. */
+const CLEAR_BODY: Body = { family: 'segmented', cy: 104 }
+
+/** Where the fruit stops: the height of the clean line across it. */
+const CLEAR_LINE = 112
+
+/** One footprint on the ground: the sole, and the heel apart behind it. */
+function footprint(heel: Point, toe: Point): string {
+  const at = (along: number): Point => [
+    heel[0] + (toe[0] - heel[0]) * along,
+    heel[1] + (toe[1] - heel[1]) * along,
+  ]
+  const piece = (from: number, to: number, wide: number): string => {
+    const line = [at(from), at(from), at(to), at(to)]
+    const half = (along: number): number => {
+      return wide * (0.55 + 0.45 * Math.sin(along * Math.PI) ** 0.5)
+    }
+
+    return `${limbOutline({ line, half }, 8)} Z`
+  }
+
+  return `${piece(0.42, 0.88, 4.2)} ${piece(0, 0.26, 3.2)}`
+}
+
+/**
+ * The fruit gone invisible below its middle: the top half whole, and below
+ * a clean line across it nothing at all, only two footprints on the ground
+ * where it stands. In episode 339 something unseen holds the crew on their
+ * ship; in episode 359 Sanji names the fruit Absalom ate, and Absalom's
+ * footsteps give him away. No shadow, no fading and no gaps.
+ */
+export const CLEAR_CLEAR: Stroke[] = [
+  ...kitBody(CLEAR_BODY, [84, 96], (_x, y) => y < CLEAR_LINE),
+  ribs(CLEAR_BODY, CLEAR_LINE - 2),
+  ...skin([
+    [80, 98, 7],
+    [84, 78, -5],
+  ]),
+  ...sprout(CLEAR_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(CLEAR_BODY, CLEAR_LINE, -1))}`,
+      `C${point(60, CLEAR_LINE + 7)}`,
+      point(100, CLEAR_LINE + 7),
+      point(...onRim(CLEAR_BODY, CLEAR_LINE, 1)),
+      footprint([52, 180], [64, 160]),
+      footprint([86, 188], [98, 168]),
+    ].join(' '),
+    role: 'accent',
+  },
+]
+
+/** The shadow fruit: an oblong, its shadow cut away at its foot. */
+const SHADOW_BODY: Body = { family: 'oblong', cy: 100 }
+
+/**
+ * The fruit with its shadow cut off: its shadow on the ground, cut free at
+ * the foot with a wide gap left, two blade marks at the cut, and the cut
+ * end curled up off the ground. In episode 349 Moria picks Luffy's shadow up
+ * off the floor and cuts it from his body with a giant pair of scissors,
+ * and Brook explains that the fruit takes shadows and puts them into other
+ * bodies. No scissors, and no second fruit.
+ */
+export const SHADOW_SHADOW: Stroke[] = [
+  ...kitBody(SHADOW_BODY, [86, 98, 110, 122]),
+  ...skin([
+    [64, 94, 8],
+    [86, 128, -7],
+  ]),
+  ...sprout(SHADOW_BODY, 4, 'right'),
+  {
+    d: [
+      'M70 164 C90 158 118 158 132 163 C144 167 144 176 132 179',
+      'C116 184 88 184 72 180 C62 177 58 168 62 161',
+      'C65 156 72 156 72 161 C72 164 68 165 67 162',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The shadow is dark.
+  {
+    d: [
+      'M80 179 L88 166 M92 180 L100 165 M104 180 L112 165',
+      'M116 179 L124 165 M128 176 L134 167',
+    ].join(' '),
+    role: 'ambient',
+  },
+  // The blades' marks at the cut.
+  { d: 'M48 156 L55 160 M48 166 L55 163', role: 'soft' },
 ]

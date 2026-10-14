@@ -16,6 +16,7 @@ import {
   CASTLE_CASTLE,
   CAT_LEOPARD,
   CHOP_CHOP,
+  CLEAR_CLEAR,
   CLONE_CLONE,
   COOK_COOK,
   DARK_DARK,
@@ -38,6 +39,7 @@ import {
   HEAL_HEAL,
   HEAT_HEAT,
   HOBBY_HOBBY,
+  HOLLOW_HOLLOW,
   HORSE_HORSE,
   HUMAN_HUMAN,
   ICE_ICE,
@@ -58,9 +60,11 @@ import {
   PUFF_PUFF,
   PUMP_PUMP,
   PUSH_PUSH,
+  REVIVE_REVIVE,
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
   SAND_SAND,
+  SHADOW_SHADOW,
   SLIP_SLIP,
   SLOW_SLOW,
   SMOKE_SMOKE,
@@ -96,7 +100,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Seventy-nine of them are drawn by hand and name their drawing; the rest
+ * Eighty-three of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -132,34 +136,10 @@ export const fruitArt = {
   'door-door-fruit': DOOR_DOOR,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
   'elephant-elephant-fruit': ELEPHANT_ELEPHANT,
-  'revive-revive-fruit': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
-  'hollow-hollow-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'clear-clear-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'shadow-shadow-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'revive-revive-fruit': REVIVE_REVIVE,
+  'hollow-hollow-fruit': HOLLOW_HOLLOW,
+  'clear-clear-fruit': CLEAR_CLEAR,
+  'shadow-shadow-fruit': SHADOW_SHADOW,
   'paw-paw-fruit': fruit({
     body: 'gourd',
     grain: 3,
