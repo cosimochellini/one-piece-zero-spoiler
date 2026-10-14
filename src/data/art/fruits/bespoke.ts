@@ -4792,15 +4792,15 @@ function snipCut(inset = 0): string {
  */
 const STRIP: Limb = {
   line: [
-    [108, SNIP_HINGE],
-    [128, 148],
+    [107, SNIP_HINGE],
+    [107, 158],
     [148, 134],
     [146, 112],
     [144, 92],
     [150, 76],
     [140, 60],
   ],
-  half: (along) => 6 * Math.cos(Math.PI * along),
+  half: (along) => (9 - 3 * along) * Math.cos(Math.PI * along),
   end: [],
 }
 
