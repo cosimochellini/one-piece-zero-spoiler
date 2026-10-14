@@ -34,6 +34,7 @@ import {
   FLOWER_FLOWER,
   GAS_GAS,
   GLARE_GLARE,
+  GLINT_GLINT,
   GROW_GROW,
   GUM_GUM,
   HEAL_HEAL,
@@ -46,6 +47,8 @@ import {
   JACKET_JACKET,
   KILO_KILO,
   LICK_LICK,
+  LOVE_LOVE,
+  MAGMA_MAGMA,
   MEMO_MEMO,
   MIRROR_MIRROR,
   MOCHI_MOCHI,
@@ -68,6 +71,8 @@ import {
   SLIP_SLIP,
   SLOW_SLOW,
   SMOKE_SMOKE,
+  SNAKE_ANACONDA,
+  SNAKE_KING_COBRA,
   SNOW_SNOW,
   SOUL_SOUL,
   SPIKE_SPIKE,
@@ -100,7 +105,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Eighty-three of them are drawn by hand and name their drawing; the rest
+ * Eighty-eight of them are drawn by hand and name their drawing; the rest
  * name the seed they are grown from.
  */
 export const fruitArt = {
@@ -147,13 +152,7 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'glint-glint-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'glint-glint-fruit': GLINT_GLINT,
   'dragon-dragon-fruit-ancient-model-allosaurus': fruit({
     body: 'star',
     grain: 5,
@@ -161,27 +160,9 @@ export const fruitArt = {
     stem: 'straight',
     swirl: 'whorls',
   }),
-  'love-love-fruit': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'snake-snake-fruit-model-anaconda': fruit({
-    body: 'pear',
-    grain: 7,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
-  'snake-snake-fruit-model-king-cobra': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
+  'love-love-fruit': LOVE_LOVE,
+  'snake-snake-fruit-model-anaconda': SNAKE_ANACONDA,
+  'snake-snake-fruit-model-king-cobra': SNAKE_KING_COBRA,
   'venom-venom-fruit': fruit({
     body: 'gourd',
     grain: 9,
@@ -225,13 +206,7 @@ export const fruitArt = {
     swirl: 'scales',
   }),
   'dark-dark-fruit': DARK_DARK,
-  'magma-magma-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'scales',
-  }),
+  'magma-magma-fruit': MAGMA_MAGMA,
   'tremor-tremor-fruit': TREMOR_TREMOR,
   'human-human-fruit-model-daibutsu': fruit({
     body: 'round',

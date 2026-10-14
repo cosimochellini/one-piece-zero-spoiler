@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last seventy-one are drawn as fruit + power (#461), on the bodies of
+ * The last seventy-six are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -3892,9 +3892,11 @@ export const HORSE_HORSE: Stroke[] = [
  * line down its middle as a chain of cubics, and how far either edge stands
  * off that line at each point along it, 0 at the root and 1 at the end.
  * With `rim`, both edges of the root are set on that body's rim, on its
- * right (1) or left (-1) side, so they leave the skin there.
+ * right (1) or left (-1) side, so they leave the skin there. With `end`,
+ * those points close the far end instead of a round cap: a fist.
  */
 interface Limb {
+  end?: Point[]
   half: (along: number) => number
   line: Point[]
   rim?: { body: Body; way: number }
@@ -3935,8 +3937,8 @@ function limbOutline(
   })
 
   return polyline(
-    [...edge(1), ...cap, ...edge(-1).toReversed()].map(([px, py]) =>
-      point(px, py),
+    [...edge(1), ...(limb.end ?? cap), ...edge(-1).toReversed()].map(
+      ([px, py]) => point(px, py),
     ),
   )
 }
@@ -4398,4 +4400,259 @@ export const SHADOW_SHADOW: Stroke[] = [
     ].join(' '),
     role: 'ambient',
   },
+]
+
+/** The glint fruit: a pear, its near side gone at the speed of light. */
+const GLINT_BODY: Body = { family: 'pear', cy: 118 }
+
+/** Where the near side has gone: the rim heights the outline opens between. */
+const GLINT_GAP = { top: 98, bottom: 150 }
+
+/** The streaks of light: the rim height each leaves at, and how far it runs. */
+const STREAKS = [
+  { y: 106, reach: 30 },
+  { y: 117, reach: 46 },
+  { y: 128, reach: 48 },
+  { y: 139, reach: 32 },
+]
+
+/** How far a streak climbs for every step it runs back. */
+const STREAK_RISE = 0.28
+
+/**
+ * The fruit leaving at the speed of light: its near side is not there, the
+ * outline stopping at the shoulder and at the foot, and out of the gap four
+ * ruler-straight streaks run off back to the left, longest in the middle.
+ * In episode 401 Kizaru kicks with light at the speed of light, and in 404
+ * shots go straight through him and he names his fruit a Logia.
+ */
+export const GLINT_GLINT: Stroke[] = [
+  {
+    d: outline(
+      GLINT_BODY,
+      (x, y) => x > 80 || y < GLINT_GAP.top || y > GLINT_GAP.bottom,
+    ),
+  },
+  crown(GLINT_BODY),
+  hatching(GLINT_BODY, [130, 142, 154]),
+  ...skin([
+    [94, 110, 7],
+    [76, 128, -6],
+    [92, 148, 6],
+  ]),
+  ...sprout(GLINT_BODY, 4, 'right'),
+  {
+    d: STREAKS.map(({ y, reach }) => {
+      const x = onRim(GLINT_BODY, y, -1)[0] + 8
+
+      return `M${point(x, y)} L${point(x - reach, y - reach * STREAK_RISE)}`
+    }).join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** A snake's tail: thick at the root, narrowing to `end` at its point. */
+function taper(root: number, end: number): (along: number) => number {
+  return (along) => end + (root - end) * (1 - along)
+}
+
+/** A snake's tail, and the scale bands across it at points along it. */
+function snakeTail(limb: Limb, bands: number[]): [Stroke, Stroke] {
+  return [
+    { d: limbOutline(limb, 28), role: 'accent' },
+    {
+      d: bands.map((along) => acrossLimb(limb, along, 0.85)).join(' '),
+      role: 'soft',
+    },
+  ]
+}
+
+/** The anaconda fruit: a pear, a snake's tail wrapped round its waist. */
+const ANACONDA_BODY: Body = { family: 'pear', cy: 116 }
+
+/**
+ * The tail: out of the foot on the left, round and up the near side, and
+ * across the front of the waist, its tip tucked against the far rim.
+ */
+const COIL_TAIL: Limb = {
+  line: [
+    [62, 152],
+    [46, 160],
+    [36, 148],
+    [38, 132],
+    [40, 116],
+    [44, 104],
+    [58, 100],
+    [72, 96],
+    [88, 101],
+    [99, 95],
+  ],
+  half: taper(9, 3),
+  rim: { body: ANACONDA_BODY, way: -1 },
+}
+
+/**
+ * The fruit with an anaconda's tail: one thick tail grown out of its foot,
+ * wrapped once round the waist, its tapering tip tucked back against the
+ * far side. In episode 413 Sandersonia, in her half-snake form, catches
+ * Luffy with her tail and slams him. The tail and nothing else, never a
+ * head.
+ */
+export const SNAKE_ANACONDA: Stroke[] = [
+  ...kitBody(ANACONDA_BODY, [132, 144, 154], (x, y) =>
+    x < 80 ? y < 90 || y > 108 : y < 88 || y > 102,
+  ),
+  ...skin([
+    [76, 84, 5],
+    [76, 132, -8],
+  ]),
+  ...sprout(ANACONDA_BODY, 4, 'right'),
+  ...snakeTail(COIL_TAIL, [0.22, 0.42, 0.62]),
+  shadowUnder(1),
+]
+
+/** The king cobra fruit: an oblong, a snake's tail raised beside it. */
+const COBRA_BODY: Body = { family: 'oblong', cy: 118 }
+
+/**
+ * The tail: out of the foot on the right, up beside the fruit in one stiff
+ * S, and back over so its point is levelled at the shoulder, a stroke short
+ * of it: a point that touched the rim would close the tail into a handle.
+ */
+const STRIKE_TAIL: Limb = {
+  line: [
+    [114, 140],
+    [132, 150],
+    [150, 142],
+    [148, 122],
+    [146, 106],
+    [132, 100],
+    [134, 84],
+    [134, 64],
+    [146, 50],
+    [136, 46],
+    [126, 46],
+    [118, 64],
+    [109, 77],
+  ],
+  half: taper(7, 0),
+  rim: { body: COBRA_BODY, way: 1 },
+}
+
+/**
+ * The fruit with a king cobra's tail: a tail grown out of its foot and
+ * raised beside it in one stiff S, its hard point levelled at the shoulder
+ * like a spear about to stab. In episode 413 Marigold, in her half-snake
+ * form, stabs at Luffy with her tail. No hood and no head.
+ */
+export const SNAKE_KING_COBRA: Stroke[] = [
+  ...kitBody(COBRA_BODY, [112, 124, 136]),
+  ...skin([
+    [64, 108, 9],
+    [86, 140, -8],
+  ]),
+  ...sprout(COBRA_BODY, -4, 'left'),
+  ...snakeTail(STRIKE_TAIL, [0.2, 0.36, 0.52]),
+  shadowUnder(1),
+]
+
+/** The love fruit: a heart, its point turned to stone. */
+const LOVE_BODY: Body = { family: 'heart', cy: 112 }
+
+/** The seam where the skin stops and the stone starts, left to right. */
+const STONE_SEAM: Point[] = [
+  [44, 124],
+  [54, 131],
+  [61, 126],
+  [72, 135],
+  [82, 129],
+  [94, 138],
+  [103, 131],
+  [112, 135],
+]
+
+/** The stone below the seam, cut in flat faces from one end of it round. */
+const STONE_FACES: Point[] = [
+  [44, 124],
+  [52, 140],
+  [68, 152],
+  [80, 158],
+  [94, 150],
+  [106, 142],
+  [112, 135],
+]
+
+/**
+ * The fruit turned to stone from the point up: a jagged seam crosses it
+ * below the middle, and under it the skin stops and the stone is plain and
+ * whole, cut in flat faces. In episode 410 Hancock turns Momonga's Marines
+ * to stone, and in 415 she tells Luffy how she came to eat the fruit.
+ */
+export const LOVE_LOVE: Stroke[] = [
+  ...kitBody(
+    LOVE_BODY,
+    [96, 108, 120],
+    (x, y) => y < heightOn(STONE_SEAM, x) - 1,
+  ),
+  ...skin([[64, 92, 9]]),
+  ...sprout(LOVE_BODY, 4, 'right'),
+  { d: polyline(STONE_SEAM.map(([x, y]) => point(x, y))), role: 'accent' },
+  // The stone, cut in flat faces down to the point.
+  { d: polyline(STONE_FACES.map(([x, y]) => point(x, y))) },
+  shadowUnder(1),
+]
+
+/** The magma fruit: a heart, magma surging out of its point. */
+const MAGMA_BODY: Body = { family: 'heart', cy: 104 }
+
+/** How far down the heart the magma has it. */
+const MAGMA_LINE = 140
+
+/** A lump of rock: a few flat faces about a point. */
+function rock(cx: number, cy: number, r: number): string {
+  return polyline(
+    [0, 70, 150, 215, 290].map((degrees, at) => {
+      const reach = r * (at % 2 === 0 ? 1 : 0.8)
+
+      return point(
+        cx + reach * Math.cos(degrees * DEGREES),
+        cy + reach * Math.sin(degrees * DEGREES),
+      )
+    }),
+    true,
+  )
+}
+
+/**
+ * The fruit erupting: out of its point surges one swell of molten magma,
+ * shaped like a fist, the outline open where it leaves, and two lumps of
+ * rock flung up from it. In episode 463 Akainu melts Jozu's iceberg with a
+ * giant fist of magma and rains volcanic rock on the battlefield.
+ */
+export const MAGMA_MAGMA: Stroke[] = [
+  ...kitBody(MAGMA_BODY, [92, 104, 116], (_x, y) => y < MAGMA_LINE),
+  ...skin([
+    [62, 86, 8],
+    [86, 112, -7],
+  ]),
+  ...sprout(MAGMA_BODY, -4, 'left'),
+  {
+    d: [
+      `M${point(...onRim(MAGMA_BODY, MAGMA_LINE, -1))}`,
+      'C62 156 72 172 96 172 C112 172 126 172 136 168',
+      'C144 166 147 160 141 156 C148 154 149 147 142 144',
+      'C147 140 144 134 136 134 C124 132 110 132',
+      point(...onRim(MAGMA_BODY, MAGMA_LINE, 1)),
+      rock(132, 104, 6),
+      rock(146, 122, 4.5),
+    ].join(' '),
+    role: 'accent',
+  },
+  // Which way the magma is flowing.
+  {
+    d: 'M74 148 C78 160 94 164 112 162 M96 152 C108 152 120 150 128 146',
+    role: 'soft',
+  },
+  shadowUnder(1),
 ]
