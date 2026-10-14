@@ -3428,8 +3428,8 @@ const SPOIL: Point[] = [
  * lopsided heap, steep at the hole and trailing off, that hides the foot.
  * In episode 113 Chopper tells Usopp that Miss Merry Christmas ate the fruit
  * and can go underground, and her partners use her tunnels. A deliberate
- * exception to the Zoan rule: no claws, which are first shown in episode 114,
- * and no hybrid form by then, so the tunnel is the power.
+ * exception to the Zoan rule: the claws, first shown in episode 114, and the
+ * hybrid are not drawn, so the tunnel is the power.
  */
 export const MOLE_MOLE: Stroke[] = [
   ...kitBody(MOLE_BODY, [96, 108, 120], (x, y) => y < heightOn(SPOIL, x) - 2),
