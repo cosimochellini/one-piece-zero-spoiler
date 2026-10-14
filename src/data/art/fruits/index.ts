@@ -90,8 +90,8 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * Seventy-three of them are drawn by hand and name their drawing; the rest name the
- * seed they are grown from.
+ * Seventy-three of them are drawn by hand and name their drawing; the rest
+ * name the seed they are grown from.
  */
 export const fruitArt = {
   'gum-gum-fruit': GUM_GUM,

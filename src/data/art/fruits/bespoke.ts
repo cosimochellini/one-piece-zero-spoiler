@@ -3329,9 +3329,10 @@ const PATCH: [number, number, number][] = [[76, 98, 14]]
 const COPY = { dx: 6, dy: 27 }
 
 /**
- * The fruit copied by touch: a patch of its own skin, two curls on the
- * front, printed again right under itself, mirrored as a print is, on the
- * same body and with no second outline. In episode 92 Mr. 2 shows the crew
+ * The fruit copied by touch: one large curl of its own skin, copied once
+ * just below itself, the same size and winding and never mirrored (a mirrored
+ * pair reads as a face), on the same body and with no second outline. In
+ * episode 92 Mr. 2 shows the crew
  * that he can copy anyone whose face he touches with his right hand. Never a
  * face, and never the real fruit's two joined calabashes.
  */
@@ -3426,8 +3427,9 @@ const SPOIL: Point[] = [
  * the mouth dark, and the earth dug out of it thrown to one side in a
  * lopsided heap, steep at the hole and trailing off, that hides the foot.
  * In episode 113 Chopper tells Usopp that Miss Merry Christmas ate the fruit
- * and can go underground, and her partners use her tunnels. No claws: they
- * are first shown in episode 114.
+ * and can go underground, and her partners use her tunnels. A deliberate
+ * exception to the Zoan rule: no claws, which are first shown in episode 114,
+ * and no hybrid form by then, so the tunnel is the power.
  */
 export const MOLE_MOLE: Stroke[] = [
   ...kitBody(MOLE_BODY, [96, 108, 120], (x, y) => y < heightOn(SPOIL, x) - 2),
@@ -3715,9 +3717,9 @@ function leg(x: number, bend: number, down = PAWS_Y): string {
 /**
  * The fruit on a dachshund's legs: four short bent legs grown out of its
  * underside, the near pair whole and the far pair showing behind them, the
- * paws planted and turned forward. In episode 113 Mr. 4's bazooka Lassoo
- * walks and barks as a dog, and Miss Merry Christmas tells Usopp the gun ate
- * the fruit. Short legs and nothing else, never a head or a tail.
+ * paws planted and turned forward. In episode 113 Lassoo, Mr. 4's gun, walks
+ * and barks as a dog, and the fruit is named. Short legs and nothing else,
+ * never a head or a tail.
  */
 export const DOG_DACHSHUND: Stroke[] = [
   ...kitBody(DACHSHUND_BODY, [116, 128, 140]),
@@ -3810,7 +3812,8 @@ const EAR: Growth = {
  * The fruit with a jackal's ear: one tall pointed ear grown straight up out
  * of its near shoulder, wide where it leaves the skin, seen from the side,
  * with the fold inside it. In episode 120 Chaka names his fruit and turns into
- * a great black jackal to go at Crocodile. One ear and nothing else, never a pair, a muzzle or a head.
+ * a great black jackal to go at Crocodile. One ear and nothing else, never a
+ * pair, a muzzle or a head.
  */
 export const DOG_JACKAL: Stroke[] = [
   ...kitBody(JACKAL_BODY, [110, 122, 134]),
