@@ -4968,17 +4968,7 @@ export const WASH_WASH: Stroke[] = [
   crown(WASH_BODY),
   shine(WASH_BODY),
   ...skin([[68, 90, 7]]),
-  {
-    d: stemPath('straight', {
-      baseY: crownY(WASH_BODY) + 6,
-      lean: 2,
-      rise: 22,
-    }),
-  },
-  {
-    d: leafPath('left', { baseY: crownY(WASH_BODY) + 6, lean: 2, rise: 22 }, 4),
-    role: 'soft',
-  },
+  ...sprout(WASH_BODY, 2, 'left'),
   // The crease where the skin turns to cloth.
   {
     d: [
