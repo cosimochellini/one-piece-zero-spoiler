@@ -129,9 +129,9 @@ written by hand.
 The devil fruits are generated rather than drawn one by one. More than a hundred
 drawings of the same kind of object have to look like one set and still be told
 apart, so each is composed from a seed written next to its id: one of six
-silhouettes, one of four marks, a stalk and a leaf. Ninety-seven are drawn by
-hand and override their generated version: the twelve a reader already knows
-well, and eighty-five drawn as fruit + power on the body kit
+silhouettes, one of four marks, a stalk and a leaf. One hundred and nine are
+drawn by hand and override their generated version: the twelve a reader already
+knows well, and ninety-seven drawn as fruit + power on the body kit
 (`src/data/art/fruits/kit.ts`), the power acting on the fruit's own body (#461).
 Two more are drawn as the real fruit only from the episode that shows it. The
 sizing is guaranteed rather than hoped for: a seed cannot set a radius, so the

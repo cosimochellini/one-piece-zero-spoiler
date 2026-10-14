@@ -1462,7 +1462,10 @@ export const summitWar: Saga = {
       ],
       origin: [{ episode: 392, value: { it: 'North Blue', en: 'North Blue' } }],
       epithet: [{ episode: 392, value: { it: 'il Mago', en: 'the Magician' } }],
-      devilFruit: [{ episode: 895, value: ['straw-straw-fruit'] }],
+      // Hawkins names the straw dolls in episode 898 (chapter 913), after the Cidre filler.
+      devilFruit: [
+        { episode: 898, chapter: 913, value: ['straw-straw-fruit'] },
+      ],
       bounty: [
         { episode: 392, value: 249_000_000 },
         { episode: 603, value: 320_000_000 },

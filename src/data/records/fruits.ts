@@ -1032,8 +1032,8 @@ export const devilFruits: Saga = {
       revealedAtChapter: 992,
       name: { it: 'Frutto Maki Maki', en: 'Scroll-Scroll Fruit' },
       summary: {
-        it: 'Trasforma il corpo in carta che si arrotola e si srotola, e quello che viene arrotolato dentro viene portato via e lasciato uscire più tardi.',
-        en: 'Turns the body into paper that rolls up and unrolls, and whatever is rolled up inside it is carried off and let out later.',
+        it: 'Crea e controlla pergamene che catturano un attacco al loro interno e lo restituiscono dopo essersi avvolte attorno a chi lo ha lanciato.',
+        en: 'Creates and controls scrolls that capture an attack inside them and release it after wrapping around whoever launched it.',
       },
       visual: { art: 'scroll-scroll-fruit', tint: 'red' },
     },
@@ -1247,8 +1247,8 @@ export const devilFruits: Saga = {
     {
       id: 'straw-straw-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 895,
-      revealedAtChapter: 914,
+      revealedAtEpisode: 898,
+      revealedAtChapter: 913,
       name: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
       summary: {
         it: 'Tiene bambole di paglia che fanno le veci di altre persone, così una ferita destinata a chi l’ha mangiato finisce addosso a una di loro.',

@@ -1,6 +1,21 @@
 import { describe, expect, it } from 'vitest'
 
-import { MARK_MARK, SWAMP_SWAMP } from '~/data/art/fruits/bespoke'
+import {
+  CAT_SABRE_TOOTH,
+  DRAGON_ALLOSAURUS,
+  DRAGON_PACHYCEPHALOSAURUS,
+  DRAGON_PTERANODON,
+  DRAGON_SPINOSAURUS,
+  MAGNET_MAGNET,
+  MARK_MARK,
+  MILLET_MILLET,
+  RIPE_RIPE,
+  SCROLL_SCROLL,
+  SNAKE_OROCHI,
+  STRAW_STRAW,
+  SWAMP_SWAMP,
+  WOODS_WOODS,
+} from '~/data/art/fruits/bespoke'
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
@@ -165,6 +180,73 @@ describe('a fruit’s own page', () => {
 
   it.each([
     {
+      id: 'millet-millet-fruit',
+      episode: 894,
+      chapter: 913,
+      drawing: MILLET_MILLET,
+    },
+    {
+      id: 'straw-straw-fruit',
+      episode: 898,
+      chapter: 913,
+      drawing: STRAW_STRAW,
+    },
+    { id: 'ripe-ripe-fruit', episode: 916, chapter: 930, drawing: RIPE_RIPE },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-allosaurus',
+      episode: 923,
+      chapter: 929,
+      drawing: DRAGON_ALLOSAURUS,
+    },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
+      episode: 924,
+      chapter: 935,
+      drawing: DRAGON_SPINOSAURUS,
+    },
+    {
+      id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
+      episode: 927,
+      chapter: 933,
+      drawing: SNAKE_OROCHI,
+    },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-pteranodon',
+      episode: 924,
+      chapter: 935,
+      drawing: DRAGON_PTERANODON,
+    },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
+      episode: 990,
+      chapter: 983,
+      drawing: DRAGON_PACHYCEPHALOSAURUS,
+    },
+    {
+      id: 'scroll-scroll-fruit',
+      episode: 1004,
+      chapter: 992,
+      drawing: SCROLL_SCROLL,
+    },
+    {
+      id: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
+      episode: 1013,
+      chapter: 998,
+      drawing: CAT_SABRE_TOOTH,
+    },
+    {
+      id: 'magnet-magnet-fruit',
+      episode: 1058,
+      chapter: 1031,
+      drawing: MAGNET_MAGNET,
+    },
+    {
+      id: 'woods-woods-fruit',
+      episode: 1081,
+      chapter: 1061,
+      drawing: WOODS_WOODS,
+    },
+    {
       id: 'swamp-swamp-fruit',
       episode: 531,
       chapter: 612,
@@ -214,6 +296,14 @@ describe('a fruit’s own page', () => {
 })
 
 describe('who ate it', () => {
+  it('names Hawkins as the Straw-Straw eater only from episode 898', () => {
+    const before = fruitEaters('straw-straw-fruit', ep(897), 'en')
+    const after = fruitEaters('straw-straw-fruit', ep(898), 'en')
+
+    expect(eatersIn(before)).not.toContain('Basil Hawkins')
+    expect(eatersIn(after)).toContain('Basil Hawkins')
+  })
+
   it('waits for the episode that says so, not only for the character', () => {
     // Carmel is met at 836, two episodes before her dossier says she ate
     // the Soul-Soul Fruit, so a reader who has met her must still not read

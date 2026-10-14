@@ -5132,3 +5132,445 @@ export const MARK_MARK: Stroke[] = [
   },
   shadowUnder(1),
 ]
+
+/** The pteranodon's fruit, with its leathery wings spread out to either side. */
+const PTERANODON_BODY: Body = { family: 'oblong', cy: 126 }
+const LEATHER_WING: Growth = {
+  from: 104,
+  to: 148,
+  through: [
+    [44, 96],
+    [58, 84],
+    [72, 72],
+    [56, 100],
+    [48, 134],
+  ],
+}
+
+/**
+ * Two wings with straight bony leading edges and leathery membranes, grown
+ * from the shoulders. King flies into Big Mom's ship in episode 924
+ * (chapter 930). Leathery wings, never the falcon's feathers or a head.
+ */
+export const DRAGON_PTERANODON: Stroke[] = [
+  ...kitBody(PTERANODON_BODY, [152, 160], (_x, y) => y < 104 || y > 148),
+  ...skin([
+    [76, 118, 7],
+    [85, 151, -6],
+  ]),
+  ...sprout(PTERANODON_BODY, 0, 'right'),
+  {
+    d: `${grown(PTERANODON_BODY, -1, LEATHER_WING)} ${grown(PTERANODON_BODY, 1, LEATHER_WING)}`,
+    role: 'accent',
+  },
+  // The membrane stretched between the leading bone and the trailing rim.
+  { d: 'M12 76 L26 110 M148 76 L134 110', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** A scroll wound round an oblong fruit, coming out of its near side. */
+const SCROLL_BODY: Body = { family: 'oblong', cy: 114 }
+
+/**
+ * The scroll unrolled from an opening and wrapped round the fruit, its far
+ * end still rolled tight. In episode 1004 (chapter 992), Raizo catches
+ * Kaido's breath in a scroll, winds it round him and releases it back.
+ * Paper only: the power makes scrolls, it does not turn the body into paper.
+ */
+export const SCROLL_SCROLL: Stroke[] = [
+  ...kitBody(SCROLL_BODY, [92, 153], (_x, y) => y < 104 || y > 144),
+  ...skin([
+    [78, 88, 6],
+    [76, 152, -4],
+  ]),
+  ...sprout(SCROLL_BODY, -3, 'left'),
+  {
+    d: [
+      `M${point(...onRim(SCROLL_BODY, 104, -1))}`,
+      'C60 116 94 117 119 103',
+      'C129 96 141 100 144 110 L144 131',
+      'C142 141 131 143 126 135',
+      'C102 148 61 146 42 133',
+      `L${point(...onRim(SCROLL_BODY, 104, -1))}`,
+      'M119 103 L119 124 C125 119 137 119 142 126',
+      'M126 135 C123 127 128 123 134 126 C140 129 136 135 132 132',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The fold following the curve of the fruit, without writing on the paper.
+  { d: 'M49 120 C68 129 92 130 110 122', role: 'soft' },
+  { d: 'M139 112 L135 108 M140 120 L135 116', role: 'ambient' },
+  shadowUnder(1),
+]
+
+/** The magnet fruit: a gourd, scrap compacted onto its near shoulder. */
+const MAGNET_BODY: Body = { family: 'gourd', cy: 114 }
+
+/**
+ * Blades, barrels and bent plates packed together on the shoulder, swelling
+ * it out into a clump of iron. Kid gathers weapons into a metal arm in
+ * episodes 398–399 (chapters 504–505), long before the record's threshold
+ * at 1058. No flying scraps, magnetic lettering or awakened technique.
+ */
+export const MAGNET_MAGNET: Stroke[] = [
+  ...kitBody(MAGNET_BODY, [142, 154], (x, y) => x < 80 || y < 90 || y > 137),
+  ...skin([
+    [70, 87, 6],
+    [76, 145, -7],
+  ]),
+  ...sprout(MAGNET_BODY, -5, 'left'),
+  {
+    d: [
+      'M100 94 L114 80 L126 88 L139 82 L149 98 L143 112',
+      'L151 125 L137 140 L122 134 L109 140 L100 130',
+      'M114 80 L108 66 L113 63 L124 84',
+      'M125 90 L141 60 L144 90 L137 102 Z',
+      'M111 103 L138 113 L135 124 L108 114 Z',
+      'M135 124 L131 118 L134 113',
+      'M117 124 L124 135 L136 130 L129 119 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  // The far faces of the scraps, turned away from the light.
+  { d: 'M144 98 L139 94 M142 106 L137 102 M140 127 L136 123', role: 'ambient' },
+  shadowUnder(1),
+]
+
+/** The woods fruit: a heart whose foot is becoming wood and spreading roots. */
+const WOODS_BODY: Body = { family: 'heart', cy: 110 }
+
+/**
+ * The fruit's foot turned to wood, branching roots along the ground, two
+ * uneven tips curling up to grasp. In episodes 1080–1081 (chapters 1053–1054),
+ * Ryokugyu's roots ensnare and drain his opponents. No later fireproofing,
+ * regeneration or flower propeller.
+ */
+export const WOODS_WOODS: Stroke[] = [
+  ...kitBody(WOODS_BODY, [94, 106, 118], (_x, y) => y < 132),
+  ...skin([
+    [68, 91, 7],
+    [84, 117, -6],
+  ]),
+  ...sprout(WOODS_BODY, 3, 'right'),
+  {
+    d: [
+      `M${point(...onRim(WOODS_BODY, 132, -1))}`,
+      'L60 147 L48 153 L28 151 C16 148 15 140 20 137',
+      'C9 137 9 151 20 158 L37 165 L18 176 L36 172 L51 164 L66 160',
+      'L60 171 L44 184 L64 178 L80 165 L90 174 L108 187 L104 174 L93 159',
+      'L112 166 L131 165 C145 164 152 152 147 144',
+      'C148 155 138 159 129 155 L112 157 L97 148 L',
+      point(...onRim(WOODS_BODY, 132, 1)),
+    ].join(' '),
+    role: 'accent',
+  },
+  // Grain where the skin is becoming wood, and along the near roots.
+  {
+    d: 'M68 132 L68 147 L73 153 M85 134 L86 147 L92 152 M54 158 L33 157 M101 157 L116 162',
+    role: 'soft',
+  },
+  {
+    d: 'M53 177 L58 171 M61 174 L66 168 M99 176 L95 168 M122 162 L118 158',
+    role: 'ambient',
+  },
+]
+
+/** The sabre-toothed tiger's fruit: a segmented body above a resting forepaw. */
+const SABRE_BODY: Body = { family: 'segmented', cy: 108 }
+
+/**
+ * A heavy forepaw grown from the lower near side, resting with its claws
+ * sheathed. Who's-Who lounges in beast form in chapter 998 (episode 1012),
+ * before the record opens at 1013. A paw cannot name the model on its own;
+ * fangs would read as a mouth. The tail stays out of this composition.
+ */
+export const CAT_SABRE_TOOTH: Stroke[] = [
+  ...kitBody(
+    SABRE_BODY,
+    [94, 106, 118],
+    (x, y) => x > 80 || y < 126 || y > 151,
+  ),
+  ribs(SABRE_BODY, 142),
+  ...skin([
+    [71, 91, 7],
+    [88, 123, -6],
+  ]),
+  ...sprout(SABRE_BODY, 4, 'right'),
+  {
+    d: [
+      `M${point(...onRim(SABRE_BODY, 126, -1))}`,
+      'C30 134 27 145 28 155 C16 155 10 162 10 170',
+      'C10 176 18 177 23 174 C27 178 35 178 39 174',
+      'C43 177 51 176 53 171 C60 163 61 156',
+      point(...onRim(SABRE_BODY, 151, -1)),
+    ].join(' '),
+    role: 'accent',
+  },
+  // Toe creases on the resting paw, without exposed claws or pads.
+  {
+    d: 'M24 174 C26 168 24 164 22 162 M40 173 C41 168 39 164 36 162',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** Ulti's fruit, with short forelimbs cupped down over its sides. */
+const PACHY_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** A bent forelimb gripping inward; the other digits are hidden by the fruit. */
+const GRIPPING_ARM: Growth = {
+  from: 100,
+  to: 140,
+  through: [
+    [48, 98],
+    [58, 108],
+    [56, 121],
+    [55, 132],
+    [46, 142],
+    [34, 146],
+    [35, 140],
+    [38, 137],
+    [43, 132],
+    [38, 138],
+    [31, 139],
+    [32, 134],
+    [35, 130],
+    [43, 125],
+    [44, 118],
+    [44, 126],
+    [39, 134],
+  ],
+}
+
+/**
+ * Two short clawed forelimbs gripping the fruit, grown from its shoulders.
+ * Ulti pins Luffy in chapter 983, pages 14–15 (episode 990). The digits
+ * overlap what they grip, so only the near claw tips show here; no claim
+ * about the full claw count, and never the head's dome or a ring of knobs.
+ */
+export const DRAGON_PACHYCEPHALOSAURUS: Stroke[] = [
+  ...kitBody(PACHY_BODY, [148, 154], (_x, y) => y < 100 || y > 140),
+  ...skin([
+    [80, 108, 7],
+    [78, 143, -6],
+  ]),
+  ...sprout(PACHY_BODY, 3, 'right'),
+  {
+    d: `${grown(PACHY_BODY, -1, GRIPPING_ARM)} ${grown(PACHY_BODY, 1, GRIPPING_ARM)}`,
+    role: 'accent',
+  },
+  // The elbows and wrists, folded down rather than spread as wings.
+  {
+    d: 'M27 111 C23 122 31 132 38 133 M133 111 C137 122 129 132 122 133',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** Tama's fruit: a round, a dumpling pulled from its near flank. */
+const MILLET_BODY: Body = { family: 'round', cy: 116 }
+
+/**
+ * A dango pinched out on a short neck of dough, and one finished dumpling
+ * resting beside the fruit. Tama pulls a millet dumpling off her cheek and
+ * feeds Hihimaru in episode 893 (chapter 911), before the record opens.
+ */
+export const MILLET_MILLET: Stroke[] = [
+  ...kitBody(
+    MILLET_BODY,
+    [94, 102, 144, 154],
+    (x, y) => x < 80 || y < 110 || y > 132,
+  ),
+  ...skin([
+    [68, 101, 8],
+    [87, 145, -7],
+  ]),
+  ...sprout(MILLET_BODY, 3, 'left'),
+  {
+    d: [
+      `M${point(...onRim(MILLET_BODY, 110, 1))}`,
+      'C125 110 128 115 132 114 C140 108 150 114 150 122',
+      'C150 132 138 136 132 128',
+      `L${point(...onRim(MILLET_BODY, 132, 1))}`,
+      ring(135, 168, 8),
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M137 118 C141 115 145 118 146 121 M132 164 L137 163', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Hawkins's fruit: a segmented body split by a bursting tuft of straw. */
+const STRAW_BODY: Body = { family: 'segmented', cy: 116 }
+
+/**
+ * Straw bursting out of the near side, individual stiff stalks still
+ * separate at their tips. Hawkins draws straw from his body in episodes
+ * 401–402; no doll, wound or later straw weapon is drawn here.
+ */
+export const STRAW_STRAW: Stroke[] = [
+  ...kitBody(
+    STRAW_BODY,
+    [92, 104, 144, 154],
+    (x, y) => x > 80 || y < 106 || y > 136,
+  ),
+  ribs(STRAW_BODY),
+  ...skin([
+    [72, 96, 7],
+    [90, 145, -6],
+  ]),
+  ...sprout(STRAW_BODY, 5, 'right'),
+  {
+    d: [
+      'M42 108 L16 87 L12 81 M45 115 L18 101 L8 98',
+      'M48 121 L22 116 L8 116 M46 127 L20 134 L11 140',
+      'M43 135 L24 152 L21 162 M42 116 L26 94 L25 86',
+      'M45 126 L29 141 L27 154',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M21 104 L25 96 M20 120 L23 110 M22 139 L28 135', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Shinobu's fruit: a pear whose lower skin has gone past ripe. */
+const RIPE_BODY: Body = { family: 'pear', cy: 116 }
+
+/**
+ * The foot caved in and crumbling, crumbs falling into a pit below it.
+ * Shinobu decays the ground to escape Kaido's breath in episode 916
+ * (chapter 924). Curls stay high, away from the sagging lower edge.
+ */
+export const RIPE_RIPE: Stroke[] = [
+  ...kitBody(RIPE_BODY, [100, 112, 124], (_x, y) => y < 140),
+  ...skin([
+    [78, 95, 5],
+    [74, 119, -5],
+  ]),
+  ...sprout(RIPE_BODY, -3, 'left'),
+  {
+    d: [
+      `M${point(...onRim(RIPE_BODY, 140, -1))}`,
+      'L54 148 L62 146 L68 155 L74 153',
+      'M81 157 L90 151 L96 145',
+      point(...onRim(RIPE_BODY, 140, 1)),
+      'M68 164 L72 161 L75 166 Z M87 167 L90 164 L93 169 Z',
+      'M77 174 L80 171 L83 175 Z',
+      'M51 184 C65 175 99 175 113 184 C96 189 68 189 51 184 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M62 133 L65 141 L71 139 M86 132 L82 141 L86 146', role: 'soft' },
+  { d: 'M65 183 L70 179 M78 185 L83 179 M93 184 L98 180', role: 'ambient' },
+]
+
+/** Drake's fruit: a gourd with a plain, stiff reptilian counterweight tail. */
+const ALLOSAURUS_BODY: Body = { family: 'gourd', cy: 112 }
+const ALLOSAURUS_TAIL: Limb = {
+  line: [
+    [104, 137],
+    [121, 142],
+    [132, 133],
+    [146, 128],
+  ],
+  half: (along) => 10 * (1 - along),
+  rim: { body: ALLOSAURUS_BODY, way: 1 },
+}
+
+/**
+ * The bare tail grown from the lower side, held off the ground as a
+ * counterweight. Drake's allosaurus is already seen in episode 402
+ * (chapter 509), before Law names it at episode 923 (chapter 929).
+ * Anatomy only, without later spines or a tail attack.
+ */
+export const DRAGON_ALLOSAURUS: Stroke[] = [
+  ...kitBody(
+    ALLOSAURUS_BODY,
+    [90, 102, 118],
+    (x, y) => x < 80 || y < 126 || y > 149,
+  ),
+  ...skin([
+    [75, 85, 6],
+    [76, 140, -6],
+  ]),
+  ...sprout(ALLOSAURUS_BODY, -4, 'left'),
+  { d: limbOutline(ALLOSAURUS_TAIL), role: 'accent' },
+  { d: 'M111 143 C123 147 133 139 140 135', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Page One's fruit: an oblong in front of the tall spines of a dorsal sail. */
+const SPINOSAURUS_BODY: Body = { family: 'oblong', cy: 122 }
+
+/**
+ * The dorsal sail grown from the far rim, tall ribs inside a continuous
+ * rounded membrane. Page One walks the Flower Capital in beast form in
+ * episode 924 (chapters 929–930). No later tail redesign is included.
+ */
+export const DRAGON_SPINOSAURUS: Stroke[] = [
+  ...kitBody(
+    SPINOSAURUS_BODY,
+    [142, 154],
+    (x, y) => x < 80 || y < 82 || y > 136,
+  ),
+  ...skin([
+    [70, 112, 8],
+    [85, 148, -6],
+  ]),
+  ...sprout(SPINOSAURUS_BODY, -7, 'left'),
+  {
+    d: billow([
+      onRim(SPINOSAURUS_BODY, 82, 1),
+      [108, 56],
+      [117, 38],
+      [129, 40],
+      [139, 58],
+      [143, 82],
+      [140, 107],
+      [130, 124],
+      onRim(SPINOSAURUS_BODY, 136, 1),
+    ]),
+    role: 'accent',
+  },
+  {
+    d: 'M110 60 L111 103 M119 46 L121 114 M131 53 L130 121 M139 81 L136 125',
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** Orochi's fruit: a segmented body below eight headless neck loops. */
+const OROCHI_BODY: Body = { family: 'segmented', cy: 128 }
+
+/** Four loops on each side, kept above the shoulders and clear of the stalk. */
+const OROCHI_LOOPS = [-1, 1]
+  .flatMap((way) => {
+    return [0, 1, 2, 3].map((at) => {
+      const dx = 68 - at * 16
+      const top = 26 + at * 9
+      const root = 104 + at * 4
+      return [
+        `M${point(...onRim(OROCHI_BODY, root, way))}`,
+        `C${point(80 + way * dx, 82)} ${point(80 + way * (dx + 5), top)} ${point(80 + way * dx, top)}`,
+        `C${point(80 + way * (dx - 5), top)} ${point(80 + way * (dx - 8), 82)} ${point(...onRim(OROCHI_BODY, root + 3, way))}`,
+      ].join(' ')
+    })
+  })
+  .join(' ')
+
+/**
+ * Eight necks looping up from the fruit's rim and back, four each side of
+ * the stalk. Orochi attacks the banquet in serpent form in episode 927
+ * (chapter 932). Never heads or faces, and no neck is cut from the count.
+ */
+export const SNAKE_OROCHI: Stroke[] = [
+  ...kitBody(OROCHI_BODY, [136, 148, 160], (_x, y) => y < 104 || y > 119),
+  ribs(OROCHI_BODY),
+  ...skin([
+    [72, 128, 7],
+    [88, 159, -6],
+  ]),
+  ...sprout(OROCHI_BODY, 0, 'right'),
+  { d: OROCHI_LOOPS, role: 'accent' },
+  shadowUnder(1),
+]
