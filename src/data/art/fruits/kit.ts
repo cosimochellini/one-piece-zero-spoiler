@@ -1,5 +1,10 @@
 import { type LeafForm, leafPath, stemPath } from '~/data/art/fruits/parts'
-import { type BodyFamily, sideOf, widthAt } from '~/data/art/fruits/shape'
+import {
+  bezier,
+  type BodyFamily,
+  sideOf,
+  widthAt,
+} from '~/data/art/fruits/shape'
 import { BODY_CX, point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
@@ -160,10 +165,41 @@ export function outline(
   return lines.join(' ')
 }
 
-/** The rim of the dimple at the crown, which is what says "seen from above". */
-export function crown(body: Body): Stroke {
+/**
+ * The rim of the dimple at the crown, which is what says "seen from above".
+ * With `open`, the stretch of it between those two x is left out, where
+ * something goes into the fruit there.
+ */
+export function crown(body: Body, open?: [number, number]): Stroke {
   const top = crownY(body)
   const half = Math.min(13, halfWidth(body, top + 6) * 0.8)
+
+  if (open !== undefined) {
+    const rim: Point[] = [
+      [BODY_CX - half, top + 3],
+      [BODY_CX - half * 0.6, top + 9],
+      [BODY_CX + half * 0.6, top + 9],
+      [BODY_CX + half, top + 3],
+    ]
+    const along = Array.from({ length: 13 }, (_unused, at) => {
+      return bezier(rim, at / 12)
+    })
+    const runs = [
+      along.filter(([x]) => x <= open[0]),
+      along.filter(([x]) => x >= open[1]),
+    ]
+
+    const lines: string[] = []
+
+    // A stretch that clears one side of the rim leaves nothing there.
+    for (const run of runs) {
+      if (run.length > 1) {
+        lines.push(polyline(run.map(([x, y]) => point(x, y))))
+      }
+    }
+
+    return { d: lines.join(' '), role: 'soft' }
+  }
 
   return {
     d: [
