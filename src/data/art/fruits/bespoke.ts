@@ -17,15 +17,8 @@ import {
   skin,
   sprout,
 } from '~/data/art/fruits/kit'
-import {
-  type LeafForm,
-  leafPath,
-  shadowUnder,
-  stalkOf,
-  type StemForm,
-  stemPath,
-} from '~/data/art/fruits/parts'
-import { bezier, lobed } from '~/data/art/fruits/shape'
+import { leafPath, shadowUnder, stemPath } from '~/data/art/fruits/parts'
+import { bezier } from '~/data/art/fruits/shape'
 import { ring } from '~/data/art/fruits/swirls'
 import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
@@ -38,24 +31,6 @@ import type { Stroke } from '~/data/art/stroke'
  * All drawings use absolute commands, no fills, exactly one accent, and
  * stay inside the 160x200 box.
  */
-
-/** The body every hand-drawn fruit is set on, so the sheet stays one sheet. */
-const RX = 44
-const RY = 48
-
-const STALK = stalkOf(RY, 4)
-const HOOK = stalkOf(RY, 7)
-
-/** The stalk, leaf and ground shadow shared by the real-fruit drawings. */
-function furniture(stem: StemForm, leaf: LeafForm): [Stroke, Stroke, Stroke] {
-  const stalk = stem === 'hooked' ? HOOK : STALK
-
-  return [
-    { d: stemPath(stem, stalk) },
-    { d: leafPath(leaf, stalk, 4), role: 'soft' },
-    shadowUnder(1),
-  ]
-}
 
 /**
  * The classic: a sphere under a skin of curls, hung from a long stalk that
@@ -146,45 +121,73 @@ export const FLAME_FLAME: Stroke[] = [
   shadowUnder(1),
 ]
 
-/** Six petals turned about the middle: the mark as a rosette. */
+/** Robin sprouts arms from Pell in episode 106, before the fruit opens at 130. */
+const FLOWER_BODY: Body = { family: 'segmented', cy: 116 }
+
+/** Two open hands grow from the left waist; the ribs stay on the far side. */
 export const FLOWER_FLOWER: Stroke[] = [
-  { d: lobed('round', RX, RY) },
+  ...kitBody(
+    FLOWER_BODY,
+    [98, 118, 139],
+    (x, y) => x > 80 || y < 111 || y > 132,
+  ),
+  ribs(FLOWER_BODY, 154, [1]),
+  ...skin([
+    [81, 94, 6],
+    [94, 123, -6],
+  ]),
+  ...sprout(FLOWER_BODY, 4, 'right'),
   {
-    d: [
-      'M80 112 C68 104 68 86 80 82 C92 86 92 104 80 112',
-      'M80 112 C88 98 104 96 110 106 C104 116 88 120 80 112',
-      'M80 112 C88 122 84 138 72 140 C66 130 72 118 80 112',
-      'M80 112 C68 120 52 116 50 104 C60 96 74 102 80 112',
-      'M80 112 C92 116 100 130 92 138 C82 134 78 122 80 112',
-      'M80 112 C70 104 58 92 66 84 C76 88 82 102 80 112',
-    ].join(' '),
+    d: 'M39 112 L27 96 L22 82 L17 74 L14 76 L18 87 L12 79 L9 82 L15 92 L8 87 L6 90 L14 100 L23 104 L36 122 M36 122 L24 133 L14 135 L7 140 L8 144 L18 141 L9 148 L11 152 L22 146 L16 155 L20 157 L30 146 L33 137 L39 131',
     role: 'accent',
   },
-  ...furniture('straight', 'right'),
+  shadowUnder(1),
 ]
 
-/** A fault running the whole length of the fruit, with a coil either side. */
+/** Whitebeard strikes the air like glass in 461/552, before the 466 opening. */
+const TREMOR_BODY: Body = { family: 'oblong', cy: 116 }
+
+/** A struck pane on the far flank, with cracks ending in the air. */
 export const TREMOR_TREMOR: Stroke[] = [
-  { d: lobed('oblong', RX, RY) },
-  { d: 'M76 64 L88 88 L70 96 L90 120 L72 132 L84 160', role: 'accent' },
+  ...kitBody(
+    TREMOR_BODY,
+    [130, 144, 155],
+    (x, y) => x < 80 || y < 88 || y > 126,
+  ),
+  ...skin([
+    [65, 98, 7],
+    [73, 131, -6],
+    [87, 149, 5],
+  ]),
+  ...sprout(TREMOR_BODY, -4, 'left'),
   {
-    d: ['M62 88 C48 96 46 116 58 126', 'M104 128 C116 118 116 98 102 90'].join(
-      ' ',
-    ),
-    role: 'ambient',
-  },
-  ...furniture('hooked', 'left'),
-]
-
-/** The coil snapped: one bolt where the turns should have closed. */
-export const RUMBLE_RUMBLE: Stroke[] = [
-  { d: lobed('round', RX, RY) },
-  {
-    d: 'M96 78 L70 108 L86 110 L62 146 L88 118 L72 116 L96 78 Z',
+    d: 'M106 106 L94 92 L91 75 L84 63 M106 106 L121 94 L130 80 L143 73 M106 106 L126 109 L141 103 L153 105 M106 106 L120 123 L136 132 M106 106 L95 120 L91 135 M96 85 L107 82 L121 89 M130 96 L133 107 L127 121 M98 124 L106 128',
     role: 'accent',
   },
-  { d: ring(80, 112, 30), role: 'ambient' },
-  ...furniture('straight', 'right'),
+  shadowUnder(1),
+]
+
+/** Enel becomes lightning in 171–173, before the fruit is named in 175/266. */
+const RUMBLE_BODY: Body = { family: 'round', cy: 119 }
+
+/** A single bolt leaves the near shoulder, clear of the foot. */
+export const RUMBLE_RUMBLE: Stroke[] = [
+  ...kitBody(
+    RUMBLE_BODY,
+    [106, 128, 147],
+    (x, y) => x > 80 || y < 84 || y > 107,
+  ),
+  ...skin([
+    [83, 99, 6],
+    [98, 124, -7],
+    [72, 145, 6],
+  ]),
+  ...sprout(RUMBLE_BODY, 5, 'right'),
+  {
+    d: 'M49 104 L29 82 L42 81 L18 42 L30 68 L18 68 L39 95 M48 89 L42 82 M35 109 L26 111',
+    role: 'accent',
+  },
+  shadowUnder(1),
 ]
 
 const DEGREES = Math.PI / 180
@@ -214,140 +217,45 @@ function speck(x: number, y: number): string {
   return `M${point(x, y)} L${point(x, y)}`
 }
 
-/** The angle on the right of the shared body at which it reaches a height. */
-function angleAt(y: number): number {
-  return Math.asin((y - 112) / RY) / DEGREES
-}
+/** Buggy's pieces float separately in episode 5, chapter 11. */
+const CHOP_BODY: Body = { family: 'gourd', cy: 113 }
 
-/** Half the width of the shared body at a height. */
-function halfAt(y: number): number {
-  return RX * Math.sqrt(1 - ((y - 112) / RY) ** 2)
-}
-
-/** How far the middle band of the chopped fruit has slid, and dropped. */
-const SLID = 16
-const BAND_DROP = 4
-const FOOT_DROP = 8
-
-/** A whole ellipse lying flat, the face a cut leaves. */
-function face(cx: number, y: number, drop: number): string {
-  return polyline(trace([cx, y + drop], [halfAt(y), 6], [0, 360, 24]), true)
-}
-
-/**
- * The fruit cut in three, the middle band slid off to the right and the
- * pieces hanging apart, their cut faces showing. The power is the cut that
- * does not wound: the pieces stay whole, only out of line.
- */
+/** The upper bulb hangs over a grounded foot; the middle slice floats right. */
 export const CHOP_CHOP: Stroke[] = [
-  // The cap, with the front edge of its cut face.
+  { d: outline(CHOP_BODY, (_x, y) => y < 106 || y > 141) },
+  crown(CHOP_BODY),
+  shine(CHOP_BODY),
+  hatching(CHOP_BODY, [91, 150, 158]),
+  { d: 'M101 119 L101 127 C110 134 132 134 141 127 L141 119', role: 'soft' },
+  ...skin([
+    [73, 89, 6],
+    [78, 151, -6],
+  ]),
+  ...sprout(CHOP_BODY, -4, 'left'),
   {
-    d: polyline(
-      [
-        ...trace([80, 112], [RX, RY], [180 - angleAt(92), 360 + angleAt(92)]),
-        ...trace([80, 92], [halfAt(92), 6], [0, 180, 10]).slice(1),
-      ],
-      true,
-    ),
-  },
-  // The band: its two sides and the front of its lower face.
-  {
-    d: polyline([
-      ...trace(
-        [80 + SLID, 112 + BAND_DROP],
-        [RX, RY],
-        [angleAt(97), angleAt(125), 6],
-      ),
-      ...trace(
-        [80 + SLID, 125 + BAND_DROP],
-        [halfAt(125), 6],
-        [0, 180, 10],
-      ).slice(1),
-      ...trace(
-        [80 + SLID, 112 + BAND_DROP],
-        [RX, RY],
-        [180 - angleAt(125), 180 - angleAt(97), 6],
-      ).slice(1),
-    ]),
-  },
-  // The foot, dropped a little under the cap.
-  {
-    d: polyline(
-      trace(
-        [80, 112 + FOOT_DROP],
-        [RX, RY],
-        [angleAt(130), 180 - angleAt(130), 12],
-      ),
-    ),
-  },
-  // The two cut faces that show: the band's and the foot's.
-  {
-    d: [face(80 + SLID, 97, BAND_DROP), face(80, 130, FOOT_DROP)].join(' '),
+    d: 'M61 103 C61 98 99 98 99 103 C99 108 61 108 61 103 Z M101 119 C101 112 141 112 141 119 C141 126 101 126 101 119 Z M40 142 C40 134 120 134 120 142 C120 150 40 150 40 142 Z',
     role: 'accent',
   },
-  {
-    d: [
-      curl(66, 78, 8),
-      curl(95, 76, -7),
-      curl(80, 115, 8),
-      curl(114, 116, -8),
-      curl(64, 152, -8),
-      curl(96, 153, 8),
-    ].join(' '),
-    role: 'soft',
-  },
-  ...furniture('straight', 'right'),
+  shadowUnder(1),
 ]
 
-/** The Room around the fruit, and the floor it closes on. */
-const ROOM = { cx: 80, cy: 106, r: 72, floor: 166 }
+/** Law operates inside Room before the fruit's opening at episode 590/665. */
+const OP_BODY: Body = { family: 'segmented', cy: 116 }
 
-/** Half the width of the Room where it meets its floor. */
-const ROOM_FLOOR = Math.sqrt(ROOM.r ** 2 - (ROOM.floor - ROOM.cy) ** 2)
-
-/**
- * The fruit standing in a Room: the sphere its eater opens before any cut,
- * closing on the ground it stands on. The fruit itself is a plain one; the
- * real one is not seen until episode 704, where `fruitRedrawn` draws it.
- */
+/** Room's equator crosses the waist; the straight cut is the operation inside. */
 export const OP_OP: Stroke[] = [
-  { d: lobed('round', RX, RY) },
+  ...kitBody(OP_BODY, [95, 133, 146], (_x, y) => y < 112 || y > 122),
+  ribs(OP_BODY, 108),
+  ...skin([
+    [64, 98, 6],
+    [90, 142, -7],
+  ]),
+  ...sprout(OP_BODY, -4, 'left'),
   {
-    d: polyline(
-      trace(
-        [ROOM.cx, ROOM.cy],
-        [ROOM.r, ROOM.r],
-        [
-          180 - Math.asin((ROOM.floor - ROOM.cy) / ROOM.r) / DEGREES,
-          360 + Math.asin((ROOM.floor - ROOM.cy) / ROOM.r) / DEGREES,
-          40,
-        ],
-      ),
-    ),
+    d: 'M18 117 C18 99 142 99 142 117 C142 135 18 135 18 117 Z M36 112 L42 117 L118 117 L124 122',
     role: 'accent',
   },
-  {
-    d: [
-      curl(80, 112, 13),
-      curl(58, 96, -10),
-      curl(102, 98, 10),
-      curl(101, 136, -10),
-      curl(59, 136, 10),
-    ].join(' '),
-    role: 'soft',
-  },
-  // The floor of the Room: its front edge, and the back of it either side
-  // of the fruit.
-  {
-    d: [
-      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [0, 180, 16])),
-      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [180, 222, 5])),
-      polyline(trace([80, ROOM.floor], [ROOM_FLOOR, 8], [318, 360, 5])),
-    ].join(' '),
-    role: 'ambient',
-    dashed: true,
-  },
-  ...furniture('straight', 'right').slice(0, 2),
+  shadowUnder(1),
 ]
 
 /**
@@ -448,67 +356,41 @@ export const DARK_DARK: Stroke[] = [
   shadowUnder(1),
 ]
 
-/**
- * A fruit whose foot has already run out: the skin gives way into grains,
- * and the grains into a heap on the ground.
- */
+/** Crocodile dissolves into sand in 106, before the fruit opens at 112/184. */
+const SAND_BODY: Body = { family: 'pear', cy: 102 }
+
+/** An open foot feeds a thin stream into the cone below the pear. */
 export const SAND_SAND: Stroke[] = [
-  { d: polyline(trace([80, 112], [RX, RY], [128, 412, 32])) },
+  ...kitBody(SAND_BODY, [91, 112, 129], (_x, y) => y < 146),
+  ...skin([
+    [73, 84, 6],
+    [64, 110, -7],
+    [91, 119, 6],
+  ]),
+  ...sprout(SAND_BODY, 4, 'right'),
   {
-    d: [
-      ...[56, 66, 76, 104, 114, 124].map((angle) => {
-        return speck(
-          80 + RX * Math.cos(angle * DEGREES),
-          112 + RY * Math.sin(angle * DEGREES),
-        )
-      }),
-      speck(74, 150),
-      speck(86, 150),
-      speck(80, 156),
-      speck(78, 162),
-      speck(82, 167),
-      speck(70, 175),
-      speck(90, 175),
-      speck(80, 176),
-      'M44 182 C58 178 68 170 80 170 C92 170 102 178 116 182 Z',
-    ].join(' '),
+    d: 'M75 145 L79 151 L79 165 M85 145 L81 151 L81 165 M43 185 C60 181 71 170 80 165 C89 170 100 181 117 185 Z M66 181 L72 177 M88 178 L95 182',
     role: 'accent',
   },
-  {
-    d: [curl(80, 100, 12), curl(57, 122, -9), curl(103, 124, 9)].join(' '),
-    role: 'soft',
-  },
-  ...furniture('straight', 'right').slice(0, 2),
+  { d: 'M56 184 L61 181 M99 181 L105 184', role: 'ambient' },
 ]
 
-/** How far the string fruit's coil winds out before the thread leaves it. */
-const SPOOL = 26
+/** Doflamingo moves people like puppets in 207/303, before the 700 opening. */
+const STRING_BODY: Body = { family: 'oblong', cy: 111 }
 
-/**
- * The coil come loose: the mark wound on the skin like thread on a spool,
- * its end leaving the fruit and lying slack on the ground.
- */
+/** A lifted body leans in the pull of two taut threads pinched at its crown. */
 export const STRING_STRING: Stroke[] = [
-  { d: lobed('round', RX, RY) },
-  {
-    d: [
-      polyline(
-        Array.from({ length: 33 }, (_unused, at) => {
-          const angle = -2.2 * 2 * Math.PI * (1 - at / 32)
-          const reach = 2 + (SPOOL - 2) * (at / 32)
-
-          return point(
-            76 + reach * Math.cos(angle),
-            112 + reach * Math.sin(angle),
-          )
-        }),
-      ),
-      'C110 112 118 116 124 120 C134 126 144 138 140 150',
-      'C136 162 120 158 120 168 C120 176 134 178 146 174',
-    ].join(' '),
-    role: 'accent',
-  },
-  ...furniture('straight', 'right'),
+  ...[
+    ...kitBody(STRING_BODY, [91, 113, 137], (_x, y) => y > 68),
+    ...skin([
+      [65, 97, 7],
+      [86, 122, -7],
+      [72, 143, 5],
+    ]),
+    ...sprout(STRING_BODY, -4, 'left'),
+  ].map((stroke) => tipped(stroke, (x, y) => point(x + (y - 111) * 0.2, y))),
+  { d: 'M55 8 L71 68 L71 73 M99 8 L71 68', role: 'accent' },
+  shadowUnder(1),
 ]
 
 /**
@@ -1170,56 +1052,31 @@ export const SNOW_SNOW: Stroke[] = [
   { d: 'M14 186 C40 189 120 189 146 186', role: 'ambient', dashed: true },
 ]
 
-/** The artificial dragon fruit: an oblong, long in the body. */
-const DRAGON_BODY: Body = { family: 'oblong', cy: 120 }
+/** Vegapunk's artificial apple is eaten in episode 611, chapter 685. */
+const ARTIFICIAL_APPLE: Body = { family: 'round', cy: 118 }
 
-/**
- * One horn out of the shoulder, both ends on the rim: swept back nearly
- * level to its point, then home along the top in two tines.
- */
-const DRAGON_HORN: Growth = {
-  from: 92,
-  to: 84,
-  through: [
-    [44, 90],
-    [58, 82],
-    [70, 72],
-    [66, 74],
-    [62, 76],
-    [58, 77],
-    [58, 70],
-    [57, 64],
-    [54, 58],
-    [53, 64],
-    [51, 70],
-    [50, 78],
-    [47, 79],
-    [45, 80],
-    [42, 80],
-    [42, 74],
-    [41, 70],
-    [38, 64],
-    [37, 70],
-    [36, 76],
-  ],
-}
+/** Unequal ring pairs scattered over the apple, as seen in the flashback. */
+const APPLE_RINGS: [number, number, number][] = [
+  [61, 101, 10],
+  [95, 119, 12],
+  [65, 145, 8],
+  [99, 88, 6],
+]
 
-/**
- * The fruit with a small dragon's horns: two horns out of its shoulders,
- * swept back with tines along the top, the ones Luffy grabs in episode 611
- * when he takes Momonosuke for an eel. The horns and nothing else, never
- * the head.
- */
+/** The pure apple, with double rings staggered across its skin. No horns. */
 export const ARTIFICIAL_DRAGON: Stroke[] = [
-  ...kitBody(DRAGON_BODY, [124, 136, 148]),
-  ...skin([
-    [64, 122, 9],
-    [94, 146, -8],
-    [66, 152, -6],
-  ]),
-  ...sprout(DRAGON_BODY, 4, 'left'),
   {
-    d: `${grown(DRAGON_BODY, -1, DRAGON_HORN)} ${grown(DRAGON_BODY, 1, DRAGON_HORN)}`,
+    d: 'M80 77 C64 61 43 73 38 95 C27 124 42 157 65 163 C72 166 77 160 80 160 C85 160 89 166 97 163 C122 155 133 121 122 95 C116 72 96 62 80 77 Z',
+  },
+  crown(ARTIFICIAL_APPLE),
+  shine(ARTIFICIAL_APPLE),
+  hatching(ARTIFICIAL_APPLE, [103, 124, 145]),
+  ...sprout(ARTIFICIAL_APPLE, 4, 'left'),
+  {
+    d: APPLE_RINGS.flatMap(([x, y, r]) => [
+      polyline(trace([x, y], [r, r], [0, 360, 24]), true),
+      polyline(trace([x, y], [r * 0.55, r * 0.55], [0, 360, 24]), true),
+    ]).join(' '),
     role: 'accent',
   },
   shadowUnder(1),
@@ -6323,5 +6180,201 @@ export const ISLAND_ISLAND: Stroke[] = [
     role: 'soft',
   },
   { d: 'M34 171 L44 174 M78 170 L87 173 M116 171 L124 173', role: 'ambient' },
+  shadowUnder(1),
+]
+
+/** Buggy's real fruit in his flashback, episode 8, chapter 19. */
+const CHOP_LOBES: Point[] = [
+  [76, 84],
+  [55, 102],
+  [96, 104],
+  [76, 122],
+  [52, 143],
+  [99, 144],
+  [75, 160],
+]
+
+/** An oval bunch of round parts, a curl on each and a pointed leaf tuft. */
+export const CHOP_CHOP_REAL: Stroke[] = [
+  {
+    d: 'M64 72 C50 72 43 83 44 93 C28 99 26 117 34 127 C24 143 31 159 45 163 C48 179 68 183 79 174 C93 183 111 173 111 161 C128 155 131 137 120 125 C130 110 122 93 109 91 C109 76 92 67 80 73 C75 69 69 69 64 72 Z',
+  },
+  {
+    d: CHOP_LOBES.map(([x, y]) =>
+      polyline(trace([x, y], [16, 17], [0, 360, 24]), true),
+    ).join(' '),
+    role: 'soft',
+  },
+  {
+    d: CHOP_LOBES.map(([x, y], index) =>
+      curl(x, y, index % 2 === 0 ? 10 : -10),
+    ).join(' '),
+    role: 'accent',
+  },
+  {
+    d: 'M78 76 C70 55 53 48 43 47 C58 46 73 50 81 65 C76 43 78 31 82 23 C87 39 88 49 87 64 C100 44 112 40 126 42 C111 49 99 61 91 76 M84 68 C104 56 120 60 129 68 C113 65 103 71 94 80',
+  },
+  {
+    d: 'M105 101 L111 107 M113 135 L119 141 M100 162 L105 166',
+    role: 'ambient',
+  },
+  shadowUnder(1),
+]
+
+/** Trebol offers the real String-String fruit in episode 723, chapter 782. */
+const STRING_REAL_BODY: Body = { family: 'pear', cy: 119 }
+
+/** The curls cover the pear from its neck to its foot. */
+const STRING_REAL_CURLS: [number, number, number][] = [
+  [79, 88, 7],
+  [68, 110, -9],
+  [96, 125, 10],
+  [64, 141, 9],
+  [83, 153, -8],
+  [87, 106, -7],
+]
+
+/** A pear covered in curls, with its stem wound sideways at the crown. */
+export const STRING_STRING_REAL: Stroke[] = [
+  { d: outline(STRING_REAL_BODY) },
+  crown(STRING_REAL_BODY),
+  shine(STRING_REAL_BODY),
+  hatching(STRING_REAL_BODY, [103, 126, 146]),
+  {
+    d: STRING_REAL_CURLS.map(([x, y, r]) => curl(x, y, r)).join(' '),
+    role: 'accent',
+  },
+  {
+    d: 'M80 79 C82 65 88 58 94 57 C82 58 70 57 63 52 C56 47 58 38 65 38 C72 38 74 46 69 49 C65 51 62 47 65 45 M94 57 L109 56',
+  },
+  shadowUnder(1),
+]
+
+/** Katakuri turns the surroundings to mochi in episode 855, chapter 882. */
+export const MOCHI_MOCHI_AWAKENED: Stroke[] = MOCHI_MOCHI.slice(0, -1).map(
+  (stroke) =>
+    stroke.role === 'accent' ?
+      {
+        ...stroke,
+        d: `${stroke.d} M8 184 C24 180 24 153 42 157 C54 159 51 178 70 180 C85 182 90 163 105 164 C119 165 121 183 151 185 M10 191 C34 188 35 169 43 170 M86 188 C105 177 112 177 120 187 M41 157 C43 149 51 147 57 150`,
+      }
+    : stroke,
+)
+
+/** The swirled volume printing of Orochi's fruit, episode 965/chapter 965. */
+const OROCHI_SCALES: Point[] = [
+  [61, 98],
+  [91, 99],
+  [48, 124],
+  [77, 127],
+  [106, 125],
+  [61, 151],
+  [91, 152],
+]
+
+/** A scaled pineapple under seven bent leaves with rounded triangular ends. */
+export const SNAKE_OROCHI_REAL: Stroke[] = [
+  {
+    d: 'M79 77 C54 70 32 89 32 122 C31 153 48 175 78 176 C108 178 127 154 127 123 C127 92 105 72 79 77 Z',
+  },
+  {
+    d: OROCHI_SCALES.map(
+      ([x, y]) =>
+        `M${point(x - 14, y - 13)} C${point(x - 11, y + 2)} ${point(x - 5, y + 13)} ${point(x, y + 15)} C${point(x + 6, y + 11)} ${point(x + 12, y)} ${point(x + 14, y - 13)}`,
+    ).join(' '),
+    role: 'soft',
+  },
+  {
+    d: OROCHI_SCALES.map(([x, y], index) =>
+      curl(x, y, index % 2 === 0 ? 8 : -8),
+    ).join(' '),
+    role: 'accent',
+  },
+  {
+    d: 'M78 79 C65 44 47 49 46 86 C37 86 40 99 47 107 C53 98 58 88 50 86 C53 63 65 66 78 79 M80 78 C83 37 100 38 105 79 C96 78 99 90 106 100 C115 89 120 77 110 79 C106 42 87 28 80 78 M68 77 C44 51 23 66 20 104 C12 100 11 110 18 121 C27 115 32 105 25 104 C27 77 44 69 68 77 M92 78 C117 50 137 68 140 102 C132 100 132 111 141 121 C148 111 152 101 145 102 C140 61 119 54 92 78 M76 77 C65 52 58 43 53 47 C46 52 48 62 53 70 M83 75 C87 53 93 49 99 53 M89 78 C110 65 120 68 125 77',
+  },
+  {
+    d: 'M113 102 L119 110 M118 126 L123 132 M109 151 L115 156',
+    role: 'ambient',
+  },
+  { d: 'M41 98 C37 106 36 113 37 120', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Vegapunk's diagram shows the real Azure Dragon fruit in 1101/1070. */
+const AZURE_REAL_SCALES: Point[] = [
+  [60, 104],
+  [84, 100],
+  [107, 107],
+  [49, 127],
+  [73, 125],
+  [98, 130],
+  [64, 150],
+  [89, 153],
+]
+
+/** Overlapping pinecone scales, curls and two separate horn-shaped stems. */
+export const FISH_AZURE_DRAGON_REAL: Stroke[] = [
+  {
+    d: 'M79 78 C58 75 35 91 32 117 C28 144 48 173 72 177 C96 183 124 162 128 134 C134 104 109 80 91 80 Z',
+  },
+  {
+    d: AZURE_REAL_SCALES.map(
+      ([x, y]) =>
+        `M${point(x - 12, y - 12)} C${point(x - 13, y + 2)} ${point(x - 4, y + 15)} ${point(x + 1, y + 16)} C${point(x + 9, y + 8)} ${point(x + 13, y - 3)} ${point(x + 12, y - 12)}`,
+    ).join(' '),
+    role: 'soft',
+  },
+  {
+    d: AZURE_REAL_SCALES.map(([x, y], index) =>
+      curl(x, y, index % 2 === 0 ? 7 : -7),
+    ).join(' '),
+    role: 'accent',
+  },
+  {
+    d: 'M72 83 C62 71 47 71 43 79 C53 77 62 85 67 89 M79 80 C70 62 60 56 54 60 C60 66 63 75 68 83 M87 81 C96 63 110 58 116 64 C104 68 99 79 94 88 M89 86 C107 74 118 78 121 86 C109 82 100 90 96 94',
+  },
+  {
+    d: 'M73 79 C65 60 61 44 65 35 C58 41 55 50 58 59 C61 69 65 75 68 80 M89 79 C98 64 106 52 105 39 C111 46 111 58 104 68 C101 74 98 79 95 83',
+  },
+  {
+    d: 'M114 110 L121 116 M119 136 L124 141 M106 157 L112 161',
+    role: 'ambient',
+  },
+  { d: 'M46 98 C40 106 39 112 39 119', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** The real Bison fruit is among Vegapunk's Zoan examples in 1101/1070. */
+const BISON_REAL_CURLS: [number, number, number][] = [
+  [61, 102, 8],
+  [87, 119, -10],
+  [108, 105, 7],
+  [49, 129, -7],
+  [68, 143, 8],
+  [96, 147, -7],
+  [80, 162, 5],
+]
+
+/** A tapered strawberry, plain horn-like protrusions and a curled T stalk. */
+export const OX_OX_BISON_REAL: Stroke[] = [
+  {
+    d: 'M49 88 C35 94 31 115 35 131 C39 146 52 149 58 160 C64 173 66 182 80 183 C94 182 97 171 102 159 C108 147 123 143 127 129 C132 112 124 94 112 88',
+  },
+  {
+    d: 'M49 104 C34 102 30 79 16 67 C33 67 43 78 49 88 C58 96 58 103 49 104 Z M111 103 C125 101 130 78 145 67 C128 67 117 78 112 88 C103 96 102 103 111 103 Z',
+  },
+  {
+    d: 'M80 82 C66 69 56 71 50 78 C61 78 67 82 75 87 M80 82 C75 65 69 64 65 65 L72 79 M84 80 C90 66 100 66 106 67 C98 71 93 76 90 81 M85 83 C102 75 112 80 115 87 C103 83 96 87 89 90 M78 84 C66 85 63 96 64 100 C75 96 81 89 82 85 M86 84 C93 88 96 96 94 101 C86 96 84 90 84 86',
+  },
+  {
+    d: 'M78 83 L77 62 C61 64 55 55 58 48 C61 40 71 42 71 48 C71 52 67 54 65 51 M77 62 C88 52 98 47 110 48 M83 82 L83 61',
+  },
+  {
+    d: BISON_REAL_CURLS.map(([x, y, r]) => curl(x, y, r)).join(' '),
+    role: 'accent',
+  },
+  { d: 'M116 114 L123 121 M111 136 L117 142 M94 166 L99 171', role: 'ambient' },
+  { d: 'M41 109 C38 115 38 122 40 127', role: 'soft' },
   shadowUnder(1),
 ]

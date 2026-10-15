@@ -48,6 +48,8 @@ import { pagesOf } from './verify-chapters.mjs'
  * @type {Record<string, string>}
  */
 const REAL_FIRST = {
+  'artificial-dragon-dragon-fruit':
+    'ARTIFICIAL_DRAGON, eaten by Momonosuke in episode 611, chapter 685',
   'bubble-bubble-fruit': 'BUBBLE_BUBBLE, beside Kaku’s in episode 271',
   'brush-brush-fruit': 'BRUSH_BRUSH, the flashback of episode 976',
   'dark-dark-fruit': 'DARK_DARK, in Teach’s hand in episode 325',

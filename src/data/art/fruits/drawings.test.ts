@@ -26,6 +26,7 @@ import {
   CAT_LEOPARD,
   CAT_SABRE_TOOTH,
   CHOP_CHOP,
+  CHOP_CHOP_REAL,
   CLEAR_CLEAR,
   CLONE_CLONE,
   COOK_COOK,
@@ -48,6 +49,7 @@ import {
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
   FISH_AZURE_DRAGON,
+  FISH_AZURE_DRAGON_REAL,
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
@@ -79,11 +81,13 @@ import {
   MILLET_MILLET,
   MIRROR_MIRROR,
   MOCHI_MOCHI,
+  MOCHI_MOCHI_AWAKENED,
   MOLE_MOLE,
   MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
+  OX_OX_BISON_REAL,
   OX_OX_GIRAFFE,
   PAW_PAW,
   POP_POP,
@@ -106,6 +110,7 @@ import {
   SNAKE_ANACONDA,
   SNAKE_KING_COBRA,
   SNAKE_OROCHI,
+  SNAKE_OROCHI_REAL,
   SNIP_SNIP,
   SNOW_SNOW,
   SOOT_SOOT,
@@ -120,6 +125,7 @@ import {
   STONE_STONE,
   STRAW_STRAW,
   STRING_STRING,
+  STRING_STRING_REAL,
   STRONG_STRONG,
   SWAMP_SWAMP,
   SWIM_SWIM,
@@ -155,6 +161,14 @@ const BOX_H = 200
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'chop-chop-fruit': CHOP_CHOP,
+  'flower-flower-fruit': FLOWER_FLOWER,
+  'op-op-fruit': OP_OP,
+  'rumble-rumble-fruit': RUMBLE_RUMBLE,
+  'sand-sand-fruit': SAND_SAND,
+  'string-string-fruit': STRING_STRING,
+  'tremor-tremor-fruit': TREMOR_TREMOR,
+
   'paw-paw-fruit': PAW_PAW,
   'island-island-fruit': ISLAND_ISLAND,
   'strong-strong-fruit': STRONG_STRONG,
@@ -190,7 +204,6 @@ const KIT = {
   'arms-arms-fruit': ARMS_ARMS,
   'arrow-arrow-fruit': ARROW_ARROW,
   'art-art-fruit': ART_ART,
-  'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
   'barrier-barrier-fruit': BARRIER_BARRIER,
   'bird-bird-fruit-model-albatross': BIRD_ALBATROSS,
   'bird-bird-fruit-model-falcon': BIRD_FALCON,
@@ -279,18 +292,12 @@ const KIT_FLOOR = 10
 
 const HAND_DRAWN = {
   ...KIT,
+  'artificial-dragon-dragon-fruit': ARTIFICIAL_DRAGON,
   'brush-brush-fruit': BRUSH_BRUSH,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
-  'chop-chop-fruit': CHOP_CHOP,
   'dark-dark-fruit': DARK_DARK,
-  'flower-flower-fruit': FLOWER_FLOWER,
   'gum-gum-fruit': GUM_GUM,
-  'op-op-fruit': OP_OP,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
-  'rumble-rumble-fruit': RUMBLE_RUMBLE,
-  'sand-sand-fruit': SAND_SAND,
-  'string-string-fruit': STRING_STRING,
-  'tremor-tremor-fruit': TREMOR_TREMOR,
 }
 
 const NUMBER = /-?[\d.]+/gu
@@ -514,8 +521,21 @@ describe('the fruit sheet', () => {
 })
 
 describe('the fruits drawn again', () => {
-  it('draws the real fruit once the show has shown it', () => {
-    expect(fruitRedrawn['flame-flame-fruit']?.[0]?.value).toBe(FLAME_FLAME)
-    expect(fruitRedrawn['op-op-fruit']?.[0]?.value).toBe(OP_OP_HEART)
+  it.each([
+    ['chop-chop-fruit', CHOP_CHOP_REAL],
+    ['ox-ox-fruit-model-bison', OX_OX_BISON_REAL],
+    ['flame-flame-fruit', FLAME_FLAME],
+    ['op-op-fruit', OP_OP_HEART],
+    ['string-string-fruit', STRING_STRING_REAL],
+    ['snake-snake-fruit-mythical-model-yamata-no-orochi', SNAKE_OROCHI_REAL],
+    ['fish-fish-fruit-mythical-model-azure-dragon', FISH_AZURE_DRAGON_REAL],
+  ] as const)('draws the real %s once the show has shown it', (id, strokes) => {
+    expect(fruitRedrawn[id]?.[0]?.value).toBe(strokes)
+  })
+
+  it('redraws the power when Katakuri declares his awakening', () => {
+    expect(fruitRedrawn['mochi-mochi-fruit']?.[0]?.value).toBe(
+      MOCHI_MOCHI_AWAKENED,
+    )
   })
 })

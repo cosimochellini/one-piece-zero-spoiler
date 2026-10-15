@@ -959,6 +959,45 @@ describe('a record drawn again later in the story', () => {
     )
   })
 
+  it.each([
+    ['chop-chop-fruit', 8, 19],
+    ['string-string-fruit', 723, 782],
+    ['mochi-mochi-fruit', 855, 882],
+    ['snake-snake-fruit-mythical-model-yamata-no-orochi', 965, 965],
+    ['ox-ox-fruit-model-bison', 1101, 1070],
+    ['fish-fish-fruit-mythical-model-azure-dragon', 1101, 1070],
+  ] as const)(
+    'changes %s only from episode %i and chapter %i',
+    (id, episode, chapter) => {
+      const fruit = filed(id)
+      const initial = DRAWINGS[id]
+      const stage = REDRAWINGS[id]?.[0]
+      const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
+        recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
+
+      expect(stage?.episode).toBe(episode)
+      expect(stage?.chapter).toBe(chapter)
+      expect(drawnAt(ep(episode - 1))).toBe(initial)
+      expect(drawnAt(ep(episode))).toBe(stage?.value)
+      expect(drawnAt(null)).toBe(initial)
+      expect(drawnAt({ mode: 'chapter', chapter: chapter - 1 })).toBe(initial)
+      expect(drawnAt({ mode: 'chapter', chapter })).toBe(stage?.value)
+    },
+  )
+
+  it('keeps the real artificial fruit through its true-model reveal', () => {
+    const fruit = filed('artificial-dragon-dragon-fruit')
+    const initial = DRAWINGS['artificial-dragon-dragon-fruit']
+    const drawnAt = (bookmark: Bookmark): Stroke[] =>
+      recordOf(fruit, readerFor(bookmark, 'en')).visual.strokes
+
+    expect(REDRAWINGS['artificial-dragon-dragon-fruit']).toBeUndefined()
+    expect(drawnAt(ep(611))).toBe(initial)
+    expect(drawnAt({ mode: 'chapter', chapter: 692 })).toBe(initial)
+    expect(drawnAt(ep(1024))).toBe(initial)
+    expect(drawnAt({ mode: 'chapter', chapter: 1007 })).toBe(initial)
+  })
+
   it('shows the real Flame-Flame Fruit only from episode 629', () => {
     const fruit = filed('flame-flame-fruit')
     const grown = DRAWINGS['flame-flame-fruit']
