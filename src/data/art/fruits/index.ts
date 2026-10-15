@@ -26,6 +26,7 @@ import {
   DOG_DACHSHUND,
   DOG_JACKAL,
   DOG_MAKAMI,
+  DOG_NINE_TAILED_FOX,
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_ALLOSAURUS,
@@ -53,6 +54,7 @@ import {
   HOLLOW_HOLLOW,
   HORM_HORM,
   HORSE_HORSE,
+  HUGE_HUGE,
   HUMAN_DAIBUTSU,
   HUMAN_HUMAN,
   ICE_ICE,
@@ -93,6 +95,7 @@ import {
   SNAKE_OROCHI,
   SNIP_SNIP,
   SNOW_SNOW,
+  SOOT_SOOT,
   SOUL_SOUL,
   SPARKLE_SPARKLE,
   SPIDER_ROSAMYGALE,
@@ -114,6 +117,7 @@ import {
   VENOM_VENOM,
   WASH_WASH,
   WAX_WAX,
+  WHIP_WHIP,
   WOODS_WOODS,
   WRING_WRING,
 } from '~/data/art/fruits/bespoke'
@@ -132,7 +136,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and fifteen of them are drawn by hand and name their drawing;
+ * One hundred and nineteen of them are drawn by hand and name their drawing;
  * the rest name the seed they are grown from.
  */
 export const fruitArt = {
@@ -235,13 +239,7 @@ export const fruitArt = {
   'heat-heat-fruit': HEAT_HEAT,
   'puff-puff-fruit': PUFF_PUFF,
   'cook-cook-fruit': COOK_COOK,
-  'soot-soot-fruit': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'sprig',
-    stem: 'straight',
-    swirl: 'waves',
-  }),
+  'soot-soot-fruit': SOOT_SOOT,
   'pump-pump-fruit': PUMP_PUMP,
   'push-push-fruit': PUSH_PUSH,
   'millet-millet-fruit': MILLET_MILLET,
@@ -276,20 +274,8 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'waves',
   }),
-  'whip-whip-fruit': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'left',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
-  'dog-dog-fruit-mythical-model-nine-tailed-fox': fruit({
-    body: 'star',
-    grain: 11,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
+  'whip-whip-fruit': WHIP_WHIP,
+  'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
   'gabu-gabu-fruit': fruit({
     body: 'round',
     grain: 6,
@@ -297,13 +283,7 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'scales',
   }),
-  'huge-huge-fruit': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
+  'huge-huge-fruit': HUGE_HUGE,
   'island-island-fruit': fruit({
     body: 'oblong',
     grain: 8,
