@@ -86,6 +86,22 @@ const ACE_HAT_OUT: Stroke[] = ACE_HAT.map((stroke): Stroke => {
   return stroke.role === undefined ? { ...stroke, role: 'accent' } : stroke
 })
 
+/** Dorry's cross-guard, green grip and pommel: his 77 stage, and the broken sword at 78. */
+const DORRY_HILT: Stroke[] = [
+  { d: 'M30 140 L60 162' },
+  { d: 'M43 157 L31 175 M37 153 L25 171', role: 'accent' },
+  { d: circle(24, 177, 5), role: 'accent' },
+]
+
+/** A bat's wing, root at 0 0, spread up and to the left: the giants turned demon (1180). */
+const BAT_WING: Stroke[] = [
+  {
+    d: 'M0 0 Q-10 -30 -26 -66 l2 -8 M-26 -66 L-62 -60 Q-46 -46 -74 -30 Q-50 -18 -66 0 Q-40 -6 -40 14 Q-14 -2 0 0',
+  },
+  { d: 'M-26 -66 L-74 -30 M-26 -66 L-66 0 M-26 -66 L-40 14', role: 'soft' },
+  { d: 'M-44 -42 l-6 5 M-48 -30 l-6 5 M-50 -18 l-6 5', role: 'ambient' },
+]
+
 /** Mr. 13's left clam shell: its ribs, the claws on its lip, its hinge. */
 const CLAWED_SHELL: Stroke[] = [
   {
@@ -549,6 +565,8 @@ export const alabastaArt = {
 
   // A giant's round shield in 3/4, studded, its rim hatched where it turns
   // away, and the long sword behind it, whole, the green hilt below (71).
+  // Felled, crossed, broken, armed again and turned demon in
+  // `alabastaRedrawn`.
   'dorry': [
     { d: 'M92 58 L126 14 L140 6 L136 22 L108 70' },
     { d: 'M100 64 L131 18', role: 'soft' },
@@ -581,6 +599,7 @@ export const alabastaArt = {
 
   // A giant's battle-axe planted in the field: one crescent blade on a round
   // base, the haft bound in straps. His red horned helmet lies beside it (71).
+  // Broken, armed again and turned demon in `alabastaRedrawn`.
   'brogy': [
     { d: 'M80 176 L90 58 M88 177 L98 59' },
     { d: 'M81 160 l8 -7 M82 144 l8 -7 M83 128 l8 -7', role: 'soft' },
@@ -1506,6 +1525,15 @@ export const alabastaArt = {
   ],
 } satisfies Drawings
 
+/** The lower half of Brogy's haft, snapped off in splinters above the straps (78). */
+const BROGY_HAFT_STUB: Stroke[] = [
+  { d: 'M80 176 L85.5 112 M88 177 L93.6 112' },
+  {
+    d: 'M85.5 112 L83.8 101 L88 107.5 L89.6 95 L91.6 105.5 L96.8 99 L93.6 112',
+  },
+  ...alabastaArt.brogy.slice(1, 2),
+]
+
 /** Pell's headscarf, hanging empty, as he leaves it behind at 130. */
 const PELL_SCARF: Stroke[] = [
   {
@@ -1736,6 +1764,12 @@ export const alabastaRedrawn: Redrawings = {
   // down at 73 (ch. 120).
   // He wakes at 77 (ch. 127), and the two weapons cross again: his sword,
   // whole and notched, and Brogy's axe, both worn out by a hundred years.
+  // Both weapons break in the Hakoku that ends the duel at 78 (ch. 129):
+  // his hilt and green grip on a blade snapped short on a slant, beside the
+  // strapped stub of Brogy's haft.
+  // In Elbaf he is armed again, shield and sword, from 1112 (ch. 1079).
+  // Turned demon at 1180 (ch. 1150): the same shield and sword, and a bat
+  // wing spread behind the shield.
   'dorry': [
     {
       episode: 73,
@@ -1779,15 +1813,50 @@ export const alabastaRedrawn: Redrawings = {
         { d: 'M40 150 L112 30 L124 20 L122 36 L50 156' },
         { d: 'M45 153 L117 33', role: 'soft' },
         { d: 'M78 110 l5 0 l-2 -4 M96 80 l5 0 l-2 -4', role: 'soft' },
-        { d: 'M30 140 L60 162' },
-        { d: 'M43 157 L31 175 M37 153 L25 171', role: 'accent' },
-        { d: circle(24, 177, 5), role: 'accent' },
+        ...DORRY_HILT,
         ...moved(
           alabastaArt.brogy.slice(0, 6),
           'translate(170 20) scale(-0.86 0.86) rotate(-12 90 110)',
         ),
         { d: 'M4 176 H156', role: 'ambient' },
         shadow(80, 188, 52),
+      ],
+    },
+    {
+      episode: 78,
+      chapter: 129,
+      value: [
+        ...moved(
+          [
+            ...DORRY_HILT,
+            {
+              d: 'M40 150 L66 106.8 L66.8 113.6 L69.2 115 L70.2 122.4 L50 156',
+            },
+            { d: 'M45 153 L64 121.4', role: 'soft' },
+          ],
+          'translate(50 112) rotate(112) scale(1.5) translate(-50 -145)',
+        ),
+        ...moved(
+          [
+            ...BROGY_HAFT_STUB,
+            { d: ellipse(84, 176.6, 4.4, 1.6) },
+            {
+              d: 'M92.8 122 l3 2.5 M91.8 138 l3 2.5 M90.8 154 l3 2.5',
+              role: 'ambient',
+            },
+          ],
+          'translate(126 140) rotate(37) scale(1.25) translate(-88 -136)',
+        ),
+        shadow(84, 182, 56),
+      ],
+    },
+    { episode: 1112, chapter: 1079, value: alabastaArt.dorry },
+    {
+      episode: 1180,
+      chapter: 1150,
+      value: [
+        ...moved(BAT_WING, 'translate(45 84) rotate(20) scale(0.72)'),
+        ...alabastaArt.dorry,
       ],
     },
   ],
@@ -2032,6 +2101,56 @@ export const alabastaRedrawn: Redrawings = {
         ),
         ...DALTON_FORELEG,
         shadow(86, 186, 68),
+      ],
+    },
+  ],
+
+  // His axe snaps in the same Hakoku at 78 (ch. 129): the strapped lower
+  // haft still planted, splintered at the break, the chipped head fallen
+  // beside it on a short stub, his red horned helmet lying by.
+  // In Elbaf he is armed again, axe and helmet, from 1112 (ch. 1079).
+  // Turned demon at 1180 (ch. 1150): the same axe and helmet, the horns
+  // grown into curved demon horns that hook inward, and a bat wing spread
+  // behind the haft.
+  'brogy': [
+    {
+      episode: 78,
+      chapter: 129,
+      value: [
+        ...moved(BROGY_HAFT_STUB, 'translate(-22 0)'),
+        ...moved(
+          [
+            { d: circle(95, 50, 9) },
+            {
+              d: 'M103 46 L108 20 C120 21 130 27 136 34 L131 40 L141 45 C146 54 148 63 148 72 C146 94 132 106 116 112 L102 56',
+            },
+            ...alabastaArt.brogy.slice(4, 6),
+            {
+              d: 'M90.4 58.4 L89.4 70 L91.6 66 L93.6 74 L95.4 67 L98 72 L98.6 59.4',
+            },
+          ],
+          'translate(120 138) rotate(45) scale(0.85) translate(-118 -66)',
+        ),
+        ...moved(
+          alabastaArt.brogy.slice(6, 10),
+          'translate(32 176) scale(0.65) translate(-36 -176)',
+        ),
+        ...alabastaArt.brogy.slice(10, 11),
+        ...moved(alabastaArt.brogy.slice(11, 12), 'translate(-22 0)'),
+      ],
+    },
+    { episode: 1112, chapter: 1079, value: alabastaArt.brogy },
+    {
+      episode: 1180,
+      chapter: 1150,
+      value: [
+        ...moved(BAT_WING, 'translate(87 78) scale(0.85)'),
+        ...alabastaArt.brogy.slice(0, 7),
+        {
+          d: 'M14 160 C0 146 0 116 26 98 C14 116 16 136 26 149 M58 160 C72 146 72 116 46 98 C58 116 56 136 46 149',
+          role: 'accent',
+        },
+        ...alabastaArt.brogy.slice(8),
       ],
     },
   ],
