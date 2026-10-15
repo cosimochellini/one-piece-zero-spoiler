@@ -29,7 +29,7 @@ it as a defect. A B the owner accepted is P3 at most.
   design, not an invisible accent.
 - **Fruit drawings use `shadowUnder()`** (`src/data/art/fruits/parts.ts`), not
   `shadow()` from `~/lib/svg/primitives`. `shadow()` writes a relative `q`,
-  which the fruit alphabet test in `generate.test.ts` rejects. The two are not a
+  which the fruit alphabet test in `drawings.test.ts` rejects. The two are not a
   duplicate to merge.
 
 ## Drawings: what counts as P0–P2
@@ -53,7 +53,7 @@ you report something as missing.
 
 ## Already tested
 
-`src/data/art/index.test.ts` and `src/data/art/fruits/generate.test.ts` hold the
+`src/data/art/index.test.ts` and `src/data/art/fruits/drawings.test.ts` hold the
 mechanical rules: stroke counts, exactly one accent on a fruit, the path
 alphabet, one decimal, the box, no redrawing at the threshold. If CI is green,
 they hold.

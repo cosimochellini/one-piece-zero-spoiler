@@ -136,13 +136,10 @@ import {
   WOODS_WOODS,
   WRING_WRING,
 } from './bespoke'
-import { fruit, type FruitSeed } from './generate'
-import type { LeafForm, StemForm } from './parts'
-import { bezier, type BodyFamily } from './shape'
-import type { SwirlFamily } from './swirls'
+import { bezier } from './shape'
 
 /**
- * The generator's own tests.
+ * The drawing rules shared by every fruit and its later stages.
  *
  * The first one is the alphabet, and it is first on purpose: every other test
  * here reads the numbers in a path as coordinates, which is only true while
@@ -151,38 +148,10 @@ import type { SwirlFamily } from './swirls'
  * alphabet is asserted before anything depends on it.
  */
 
-const BODIES: BodyFamily[] = [
-  'gourd',
-  'heart',
-  'oblong',
-  'pear',
-  'round',
-  'star',
-]
-const SWIRLS: SwirlFamily[] = ['scales', 'spiral', 'waves', 'whorls']
-const STEMS: StemForm[] = ['hooked', 'nub', 'straight']
-const LEAVES: LeafForm[] = ['left', 'pair', 'right', 'sprig']
-const GRAINS = 12
-
 /** Half the stroke plus the round cap, which is the margin every drawing keeps. */
 const MARGIN = 6
 const BOX_W = 160
 const BOX_H = 200
-
-/** Every seed the generator can be handed, which is what the sweep covers. */
-const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
-  return SWIRLS.flatMap((swirl) => {
-    return Array.from({ length: GRAINS }, (_unused, grain) => {
-      return {
-        body,
-        grain,
-        leaf: LEAVES[grain % LEAVES.length] ?? 'right',
-        stem: STEMS[grain % STEMS.length] ?? 'straight',
-        swirl,
-      }
-    })
-  })
-})
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
@@ -342,9 +311,6 @@ type Point = [number, number]
 /** Points read along each cubic: enough that a sampled curve is its curve. */
 const CUBIC_STEPS = 20
 
-/** Half the 2px pen: a mark this far in only touches the skin. */
-const HALF_PEN = 1
-
 /** One `M`, `L` or `C` command with its numbers; a `Z` adds no point. */
 const COMMAND = /[MLC][^MLCZ]*/gu
 
@@ -415,7 +381,7 @@ function pathsOf(strokes: Stroke[]): string {
   return strokes.map((stroke) => stroke.d).join('|')
 }
 
-/** Every drawing on the sheet, hand-drawn and grown alike. */
+/** Every first drawing on the fruit sheet. */
 const SHEET = Object.entries(fruitArt)
 
 /** One fruit's drawings from later in the story, each labelled with its episode. */
@@ -551,37 +517,5 @@ describe('the fruits drawn again', () => {
   it('draws the real fruit once the show has shown it', () => {
     expect(fruitRedrawn['flame-flame-fruit']?.[0]?.value).toBe(FLAME_FLAME)
     expect(fruitRedrawn['op-op-fruit']?.[0]?.value).toBe(OP_OP_HEART)
-  })
-})
-
-describe('the generator', () => {
-  it('grows five strokes from every seed it can be handed', () => {
-    for (const seed of SEEDS) {
-      expect(fruit(seed)).toHaveLength(5)
-    }
-  })
-
-  it('closes every silhouette and opens it exactly once', () => {
-    for (const seed of SEEDS) {
-      const grown = fruit(seed)
-      const outline = grown[0].d
-
-      expect(outline.match(/M/gu) ?? []).toHaveLength(1)
-      expect(outline.endsWith('Z')).toBe(true)
-    }
-  })
-
-  it('never lets the mark break the skin of the fruit it is on', () => {
-    for (const seed of SEEDS) {
-      const [body, mark] = fruit(seed)
-      const skin = traced(body.d)
-
-      for (const at of traced(mark.d)) {
-        expect(
-          depth(skin, at),
-          `${seed.body}/${seed.swirl}/${String(seed.grain)}`,
-        ).toBeGreaterThanOrEqual(HALF_PEN)
-      }
-    }
   })
 })

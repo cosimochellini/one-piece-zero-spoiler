@@ -1,19 +1,13 @@
 import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
 
 /**
- * The six silhouettes a fruit can take, and the one function that writes one.
- *
- * Six families would have been six near-identical path writers, which is six
- * copies of the same eight lines and the thing fallow's duplicate detector
- * exists to refuse. So a family is a table of six control points down the
- * right side, as fractions of the body's radii, and `lobed` walks any of them.
- * Mirroring the same six points back up the left side is what makes every
- * fruit symmetrical without a second table.
+ * Five shared silhouettes, each a table of six control points down the
+ * right side as fractions of the body's radii. Mirroring them up the left
+ * side lets `lobed` draw a symmetrical outline from one profile.
  */
 
-/** Which of the six silhouettes a fruit takes. */
-export type BodyFamily =
-  'gourd' | 'heart' | 'oblong' | 'pear' | 'round' | 'star'
+/** Which of the five silhouettes a fruit takes. */
+export type BodyFamily = 'gourd' | 'heart' | 'oblong' | 'pear' | 'round'
 
 /**
  * Six points down the right side of a body, each as a fraction of `rx` and
@@ -67,15 +61,6 @@ const PROFILES: Record<BodyFamily, Profile> = {
     [0.92, 0],
     [0.7, 0.46],
     [0.36, 0.84],
-    [0, 1],
-  ],
-  // Lobed: the outline steps in and out on its way down.
-  star: [
-    [0.7, -0.86],
-    [0.52, -0.4],
-    [1, -0.18],
-    [0.6, 0.3],
-    [0.86, 0.8],
     [0, 1],
   ],
 }
