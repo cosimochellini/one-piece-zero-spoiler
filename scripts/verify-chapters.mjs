@@ -300,14 +300,24 @@ function numberAfter(pattern, text) {
  * @returns {Promise<Source>} The page(s) read and the chapter, or neither.
  */
 async function sourceOf(record, chapters) {
+  const pages = await pagesOf(record)
+
+  return pages === undefined ? {} : readingOf(record, pages, chapters)
+}
+
+/**
+ * The wiki pages of one record: the first alternative of `titlesOf` whose
+ * pages all exist.
+ * @param {{ id: string, kind: string, name: { en: string, it: string } }} record The record.
+ * @returns {Promise<Page[] | undefined>} The pages, or nothing when none resolves.
+ */
+export async function pagesOf(record) {
   for (const titles of titlesOf(record)) {
     const pages = await Promise.all(titles.map((title) => fetchPage(title)))
     if (pages.every((page) => page !== undefined)) {
-      return readingOf(record, pages, chapters)
+      return pages
     }
   }
-
-  return {}
 }
 
 /**

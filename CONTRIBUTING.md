@@ -154,6 +154,15 @@ of `npm run check` or CI. Run it when you change a chapter or an episode. A
 record kept below the wiki's episode after a hand check goes in `EPISODE_KEPT`
 in the script, with the reason.
 
+`npm run verify:fruits` checks where the One Piece Wiki shows each devil fruit
+as a real fruit (the infobox `fruit` field and the Appearance section) against
+its drawings: a fruit shown by its threshold needs the real fruit as its first
+drawing, and one shown later needs a redrawing at that episode and chapter. It
+also needs the network. Run it when you add a fruit or change a fruit's drawing
+or threshold. A real-fruit first drawing goes in `REAL_FIRST` in the script, a
+showing outside the story in `NOT_COUNTED`, and a failure checked by hand in
+`SHOWING_KEPT`, each with the reason.
+
 `npm run verify:names` checks every character's Italian name against the Italian
 One Piece Wiki: the page title, the dub's name in "Nome doppiaggio italiano", or
 an alias, or the bare part of one of them when the rest is a surname or a real
@@ -204,6 +213,7 @@ and the archive gate). Run it before you push.
 | `npm run gate:archive`            | Blocking gate: the archive is not in the bundle  |
 | `npm run gate:docs`               | Blocking gate: the counts table is up to date    |
 | `npm run verify:chapters`         | Chapters against the One Piece Wiki (network)    |
+| `npm run verify:fruits`           | Real fruits against the One Piece Wiki (network) |
 | `npm run verify:names`            | Italian names against the Italian wiki (network) |
 | `npm run verify:filler`           | The filler guide against its sources (network)   |
 | `npm run docs:chronicle`          | Regenerate `docs/chronicle-verification.md`      |
