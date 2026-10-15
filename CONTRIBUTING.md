@@ -129,8 +129,9 @@ A few rules that are easy to miss:
   strokes, at least one of them `accent`, no fills, no faces, no logos, no
   official artwork. The helpers are in `src/lib/svg/primitives.ts`. The
   `line-drawings` skill (`.claude/skills/line-drawings/SKILL.md`) sets the
-  standard every drawing is held to, and `npm run art:sheet -- <id>` renders a
-  drawing at crest and tile size to check it without the site.
+  standard every drawing is held to. `npm run art:sheet -- <id>` renders every
+  stage at crest and tile size without the site, including non-character
+  drawings. Use `art:shots` below to verify character stage gates on the site.
 - **Dated entries** (`{ episode, chapter?, value }`) are in ascending order and
   start no earlier than the record. Set `chapter` only when you checked it
   against a source. Without it, a manga reader reaches the entry at the first
@@ -177,6 +178,42 @@ settled by the Italian wiki's `tipo`. The titles are checked against both wikis,
 each entry's chapter against the chapters the anime had adapted by then, and
 where a film or special sits against the Episode Guide. It needs the network.
 Run it when a new filler, film or special airs, or when you edit the guide.
+
+## Archive and drawing verification
+
+`npm run --silent archive:table` prints every chapter mapping, episode mapping,
+and dated entry in archive order. Use `-- --dated-only` to print only dated
+entries. Save dumps from the PR base and head when changing archive data; the
+`--silent` flag keeps npm's command banner out of redirected output.
+
+Compare the chapter and episode mappings separately from dated entries. Report
+the actual mapping diff and the number of added and removed dated entries in the
+PR. Count each occurrence, including duplicate lines: sort the dated-only dumps
+and use `comm -13 base-dated.txt head-dated.txt` for additions and
+`comm -23 base-dated.txt head-dated.txt` for removals. Use the same locale for
+sorting and `comm` (for example `LC_ALL=C`).
+
+For characters with redrawings, capture the production site's stage gates:
+
+```sh
+npm run build
+npm run art:shots -- karoo
+npm run art:shots -- karoo franky
+```
+
+This needs installed Chrome; set `CHROME_PATH` to its executable when it is not
+found automatically. The command starts and closes its own preview server and
+browser. Each redrawing gets a row: four crest cells followed by four tile
+cells, at episode − 1, episode, chapter − 1 and chapter. Missing stage chapters
+use the app's derived opening threshold, including the record's gate, and are
+labelled “derived.” A record still covered at a bookmark gets a labelled
+placeholder. The initial drawing is not a row.
+
+Read the generated `.gate/shots/karoo.png` (or `.gate/shots/karoo+franky.png`
+for multiple IDs), and include the grid in the PR's verification evidence.
+`art:shots` accepts character IDs with redrawings; use `art:sheet` for first
+drawings, other record kinds and draft compositions. Generated screenshots stay
+out of the repository.
 
 ## Writing copy
 
