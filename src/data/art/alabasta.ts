@@ -6,6 +6,7 @@ import {
   house,
   SEA,
   shadow,
+  star,
   wave,
 } from '~/lib/svg/primitives'
 
@@ -80,6 +81,65 @@ const ACE_HAT: Stroke[] = [
   { d: 'M100 66 l6 -4 M104 80 l6 -4 M106 94 l6 -4', role: 'ambient' },
 ]
 
+/**
+ * The cap of the two years, from 517: every hat Chopper wears over it or
+ * swaps it for comes back to it.
+ */
+const CHOPPER_CAP: Stroke[] = [
+  { d: 'M36 124 C32 76 54 48 80 48 C106 48 128 76 124 124' },
+  {
+    d: (
+      [
+        [51, 104],
+        [55, 90],
+        [62, 78],
+        [70, 71],
+        [80, 68],
+        [90, 71],
+        [98, 78],
+        [105, 90],
+        [109, 104],
+      ] satisfies [number, number][]
+    )
+      .map(([x, y]) => circle(x, y, 1.6))
+      .join(' '),
+    role: 'soft',
+  },
+  { d: circle(80, 90, 17), role: 'accent' },
+  { d: 'M72 82 l16 16 M88 82 l-16 16', role: 'accent' },
+  { d: CHOPPER_BRIM, role: 'accent' },
+  { d: 'M40 130 C38 140 40 148 44 154 M118 130 C120 140 118 148 114 154' },
+  { d: 'M40 154 l8 -2 l2 8 l-8 2z M110 152 l8 2 l-2 8 l-8 -2z', role: 'soft' },
+  ...CHOPPER_ANTLERS,
+  {
+    d: 'M104 56 l-5 6 M113 64 l-6 7 M119 75 l-6 7 M122 88 l-5 7 M124 101 l-4 6',
+    role: 'ambient',
+  },
+  shadow(80, 176, 44),
+]
+
+/** Ace's hat without its flame, the outline in his colour: from 483 on. */
+const ACE_HAT_OUT: Stroke[] = ACE_HAT.map((stroke): Stroke => {
+  // The outline of the hat takes the accent the flame had.
+  return stroke.role === undefined ? { ...stroke, role: 'accent' } : stroke
+})
+
+/** Dorry's cross-guard, green grip and pommel: his 77 stage, and the broken sword at 78. */
+const DORRY_HILT: Stroke[] = [
+  { d: 'M30 140 L60 162' },
+  { d: 'M43 157 L31 175 M37 153 L25 171', role: 'accent' },
+  { d: circle(24, 177, 5), role: 'accent' },
+]
+
+/** A bat's wing, root at 0 0, spread up and to the left: the giants turned demon (1180). */
+const BAT_WING: Stroke[] = [
+  {
+    d: 'M0 0 Q-10 -30 -26 -66 l2 -8 M-26 -66 L-62 -60 Q-46 -46 -74 -30 Q-50 -18 -66 0 Q-40 -6 -40 14 Q-14 -2 0 0',
+  },
+  { d: 'M-26 -66 L-74 -30 M-26 -66 L-66 0 M-26 -66 L-40 14', role: 'soft' },
+  { d: 'M-44 -42 l-6 5 M-48 -30 l-6 5 M-50 -18 l-6 5', role: 'ambient' },
+]
+
 /** Mr. 13's left clam shell: its ribs, the claws on its lip, its hinge. */
 const CLAWED_SHELL: Stroke[] = [
   {
@@ -102,6 +162,56 @@ const VULTURE_WING =
 /** A falcon's feather, drawn about its centre, quill down: Pell's, from 125. */
 const FEATHER =
   'M0 -14 C7 -8 7 6 0 12 C-7 6 -7 -8 0 -14 M0 -10 V18 M0 -2 l-4 -4 M0 4 l4 -4'
+
+/** Dalton's bison foreleg in 3/4: the plated bracer round the upper forearm, the shaggy black fur running down to the fetlock tuft, and the cloven hoof. */
+const DALTON_FORELEG: Stroke[] = [
+  {
+    d: 'M100 34 Q124 41 148 34 M100 34 V37.5 Q124 44.5 148 37.5 V34 M100 37.5 V58 Q124 65 148 58 V37.5 M118 42.2 V62',
+  },
+  {
+    d: 'M102 -2 L100 6 L103 8 L101 18 L104 20 L102 33 M146 -2 L148 6 L145 8 L147 18 L144 20 L146 33 M103 63 L101 76 L103 78 L101 88 L104 90 L103 100 L106 102 L106 112 L109 114 L110 124 L112 126 L113 140 L108 150 L113 148 L116 158 L120 150 L124 159 L128 150 L132 158 L136 149 L143 151 L139 140 L140 126 L142 124 L142 114 L145 112 L144 102 L147 100 L146 90 L149 88 L147 78 L149 76 L145 63',
+  },
+  { d: 'M112 80 q-2 12 0 24 M120 78 q-1 14 1 28', role: 'soft' },
+  {
+    d: 'M134 84 l8 -4 M135 98 l7 -3.5 M134 112 l6 -3 M134 14 l7 -3.5',
+    role: 'ambient',
+  },
+  {
+    d: 'M114 154 C110 162 104 170 100 176 Q113 182 127.5 178.5 L129 174 L130.5 178.5 Q141 180 148 174 C145 166 142 160 139 154 M129 174 C129 168 128 162 127 157',
+  },
+  {
+    d: 'M101.5 172 Q114 177.5 127 174.5 M131 174.5 Q141 176 146.5 170.5',
+    role: 'soft',
+  },
+]
+
+/** The wrist wraps, the black-furred hand and the four claws of Chaka's jackal paw, closed in a fist. */
+const CHAKA_PAW: Stroke[] = [
+  { d: `${ellipse(120, 40, 18, 5)} M102 40 V66 A18 5 0 0 0 138 66 V40` },
+  {
+    d: 'M103 69 L99 78 L102 80 L97 92 L100 94 L95 106 L97 118 C92 128 92 142 96 150 Q101.5 158 107 150 Q112.5 158 118 150 Q123.5 158 129 150 Q134.5 158 140 150 C146 142 146 128 143 118 L145 106 L140 94 L143 92 L138 80 L141 78 L137 69 M99.5 154 C99 162 100.5 169 103.5 175 C104.5 168 104.5 161 103.5 155 M110.5 154 C110 162 111.5 169 114.5 175 C115.5 168 115.5 161 114.5 155 M121.5 154 C121 162 122.5 169 125.5 175 C126.5 168 126.5 161 125.5 155 M132.5 154 C132 162 133.5 169 136.5 175 C137.5 168 137.5 161 136.5 155',
+  },
+  {
+    d: 'M102 50 L138 43 M102 59 L138 52 M102 66 L138 61 M96 124 Q120 132 144 124 M107 150 V131 M118 150 V132.5 M129 150 V131',
+    role: 'soft',
+  },
+  {
+    d: 'M130 82 l7 -3 M132 96 l7 -3 M134 110 l7 -3 M136 134 l6 -3 M136 144 l5 -2.5',
+    role: 'ambient',
+  },
+]
+
+/** One of Pell's falcon wings, spread and seen from below: the pointed flight feathers barred dark and light. */
+const PELL_WING: Stroke[] = [
+  {
+    d: 'M30 106 C18 90 16 68 26 50 C36 32 60 18 96 8 L88 22 L98 26 L86 38 L96 44 L82 52 L90 60 L74 66 L80 74 L64 80 L66 88 L52 92 L50 100 L38 102 C35 105 33 106 30 106 Z',
+  },
+  { d: 'M38 100 C30 84 30 66 40 52 C50 40 66 28 88 20', role: 'soft' },
+  {
+    d: 'M84 32 l-3 5 M76 46 l-3 5 M68 58 l-3 5 M60 70 l-3 5 M50 82 l-3 5 M42 92 l-3 5 M76 28 l-3 5 M68 40 l-3 5 M60 52 l-3 5 M51 64 l-3 5 M43 76 l-3 5',
+    role: 'ambient',
+  },
+]
 
 /** One strip of sticking plaster, drawn about its centre: Igaram's, from 111. */
 const PLASTER =
@@ -300,7 +410,8 @@ export const alabastaArt = {
   ],
 
   // The duck himself, side on: the knitted cap, the saddle and its bag, and
-  // the barrel canteen with its straw hung at his chest (65).
+  // the barrel canteen with its straw hung at his chest (65). The crew's
+  // arm band goes round his wing from 92 to 129, in `alabastaRedrawn`.
   'karoo': [
     {
       d: 'M36 120 C36 98 58 90 82 94 C98 96 106 104 108 112 C112 134 94 148 70 148 C48 148 36 138 36 120 Z',
@@ -472,7 +583,8 @@ export const alabastaArt = {
 
   // Her wide-brimmed hat in 3/4, the crown standing on the brim and the
   // checked band round it: what she wears when she is first seen, on
-  // holiday with her partner (70).
+  // holiday with her partner (70). The apple beret of 1149 is in
+  // `alabastaRedrawn`.
   'miss-goldenweek': [
     { d: 'M8 122 C14 146 146 146 152 122' },
     { d: 'M8 122 C10 112 32 106 54 104 M106 104 C128 106 150 112 152 122' },
@@ -491,6 +603,8 @@ export const alabastaArt = {
 
   // A giant's round shield in 3/4, studded, its rim hatched where it turns
   // away, and the long sword behind it, whole, the green hilt below (71).
+  // Felled, crossed, broken, armed again and turned demon in
+  // `alabastaRedrawn`.
   'dorry': [
     { d: 'M92 58 L126 14 L140 6 L136 22 L108 70' },
     { d: 'M100 64 L131 18', role: 'soft' },
@@ -523,6 +637,7 @@ export const alabastaArt = {
 
   // A giant's battle-axe planted in the field: one crescent blade on a round
   // base, the haft bound in straps. His red horned helmet lies beside it (71).
+  // Broken, armed again and turned demon in `alabastaRedrawn`.
   'brogy': [
     { d: 'M80 176 L90 58 M88 177 L98 59' },
     { d: 'M81 160 l8 -7 M82 144 l8 -7 M83 128 l8 -7', role: 'soft' },
@@ -643,7 +758,8 @@ export const alabastaArt = {
 
   // His spade in its sheath, slung by its strap: the long round-tipped blade
   // he carries on his back when he turns the ship away at 80. The beast he
-  // becomes comes the next episode.
+  // becomes comes the next episode: its foreleg joins the spade from 81, in
+  // `alabastaRedrawn`.
   'dalton': [
     { d: circle(124, 24, 7) },
     { d: 'M117.8 27.1 L90.5 69 M123.7 30.9 L96.4 72.8' },
@@ -756,7 +872,7 @@ export const alabastaArt = {
   // His fuzzy top hat in 3/4, the cross turned on its side at the front and
   // the antlers out through the sides of the crown (83). The old brim and the
   // antlers are shared with the cap of the two years, from 517 in
-  // `alabastaRedrawn`.
+  // `alabastaRedrawn`, where every hat he wears after it follows.
   'tony-tony-chopper': [
     { d: 'M40 116 C36 92 38 66 44 52 Q80 40 116 52 C122 66 124 92 120 116' },
     { d: 'M44 52 Q80 64 116 52', role: 'soft' },
@@ -1027,7 +1143,8 @@ export const alabastaArt = {
 
   // His sword with its gold cross-guard, sheathed, laid across a fold of the
   // white robe of the royal guard, the four-pointed stars of its pattern
-  // on the cloth (91).
+  // on the cloth (91). The falcon's wing joins it from 106, in
+  // `alabastaRedrawn`.
   'pell': [
     { d: 'M14 150 L104 136 L148 156 L58 172 Z' },
     {
@@ -1050,6 +1167,7 @@ export const alabastaArt = {
   // His massive sword in 3/4, drawn a hand's breadth out of its sheath:
   // the broad blade with its ridge and its far face hatched, the wide
   // guard and the long grip he carries at his hip as a royal guard (91).
+  // The jackal's paw joins it from 120, in `alabastaRedrawn`.
   'chaka': [
     { d: 'M66 124 V176 Q66 190 80 192 Q94 190 94 176 V124' },
     { d: 'M62 116 H98 V126 H62 Z' },
@@ -1071,7 +1189,8 @@ export const alabastaArt = {
   // His cowboy hat in 3/4, the crown pinched at the top, the string of beads
   // round it and the stitching along the brim, and a flame standing up out
   // of it: he stops Smoker's smoke with fire at Nanohana (94). The flame
-  // goes out at his death, from 483, in `alabastaRedrawn`.
+  // goes out at his death, from 483, and the hat hangs over his grave from
+  // 505, in `alabastaRedrawn`.
   'portgas-d-ace': [
     ...ACE_HAT,
     {
@@ -1444,6 +1563,32 @@ export const alabastaArt = {
   ],
 } satisfies Drawings
 
+/** The lower half of Brogy's haft, snapped off in splinters above the straps (78). */
+const BROGY_HAFT_STUB: Stroke[] = [
+  { d: 'M80 176 L85.5 112 M88 177 L93.6 112' },
+  {
+    d: 'M85.5 112 L83.8 101 L88 107.5 L89.6 95 L91.6 105.5 L96.8 99 L93.6 112',
+  },
+  ...alabastaArt.brogy.slice(1, 2),
+]
+
+/** Pell's headscarf, hanging empty, as he leaves it behind at 130. */
+const PELL_SCARF: Stroke[] = [
+  {
+    d: 'M70 24 C58 30 50 60 46 96 C42 126 36 150 30 166 C40 160 46 170 56 164 C64 172 72 162 80 170 C88 162 98 172 106 164 C114 170 122 160 132 166 C124 140 118 110 114 80 C110 50 100 28 88 22 C82 20 76 20 70 24 Z',
+  },
+  { d: 'M70 24 C74 32 84 32 88 22', role: 'soft' },
+  {
+    d: 'M64 40 C60 80 58 120 56 162 M80 30 C80 80 80 120 80 168 M96 40 C100 80 104 120 106 162',
+    role: 'soft',
+  },
+  ...moved(alabastaArt.pell.slice(3, 4), 'translate(0 -50)'),
+  {
+    d: 'M112 70 l6 -4 M116 92 l6 -4 M120 114 l6 -4 M124 136 l6 -4',
+    role: 'ambient',
+  },
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const alabastaRedrawn: Redrawings = {
   // The cap of the two years, worn over the old hat: a round crown ringed
@@ -1451,45 +1596,242 @@ export const alabastaRedrawn: Redrawings = {
   // it, flaps buckled at the sides and the antlers out through them. The far
   // side is hatched. He walks Sabaody eating a Grand Bun at 517 (ch. 598).
   'tony-tony-chopper': [
+    { episode: 517, chapter: 598, value: CHOPPER_CAP },
+    // A football helmet in place of the cap, turned a little to his left: the
+    // wide stripe down the middle with a thin one each side, a star on the
+    // near side, the antlers out through holes in the shell and the face guard
+    // at the front. No cross is on it, so the stripe takes his colour. He
+    // lands on Zou in it at 739 (ch. 795).
     {
-      episode: 517,
-      chapter: 598,
+      episode: 739,
+      chapter: 795,
       value: [
-        { d: 'M36 124 C32 76 54 48 80 48 C106 48 128 76 124 124' },
         {
-          d: (
-            [
-              [51, 104],
-              [55, 90],
-              [62, 78],
-              [70, 71],
-              [80, 68],
-              [90, 71],
-              [98, 78],
-              [105, 90],
-              [109, 104],
-            ] satisfies [number, number][]
-          )
-            .map(([x, y]) => circle(x, y, 1.6))
-            .join(' '),
-          role: 'soft',
-        },
-        { d: circle(80, 90, 17), role: 'accent' },
-        { d: 'M72 82 l16 16 M88 82 l-16 16', role: 'accent' },
-        { d: CHOPPER_BRIM, role: 'accent' },
-        {
-          d: 'M40 130 C38 140 40 148 44 154 M118 130 C120 140 118 148 114 154',
+          d: 'M44 136 Q34 134 33 120 C28 74 54 40 82 40 C110 40 134 74 129 120 Q128 134 118 136',
         },
         {
-          d: 'M40 154 l8 -2 l2 8 l-8 2z M110 152 l8 2 l-2 8 l-8 -2z',
+          d: 'M44 136 C44 122 50 112 60 110 Q84 104 104 110 C114 112 118 122 118 136',
+        },
+        {
+          d: 'M77.6 106.6 C73.6 82 74 58 79 40.1 Q86 39.6 93 40.7 C98.4 58 98.6 82 94.6 106.8',
+          role: 'accent',
+        },
+        {
+          d: 'M70 107.8 C66 82 66.6 58 72.4 41.2 M102 108.6 C106.4 82 105.6 58 99.8 41.8',
+        },
+        { d: star(52, 84, 10.4, 4.6) },
+        {
+          d: `${ellipse(37.6, 103, 3.6, 5.4)} ${ellipse(124.2, 103, 3.4, 5.4)}`,
           role: 'soft',
         },
         ...CHOPPER_ANTLERS,
         {
-          d: 'M104 56 l-5 6 M113 64 l-6 7 M119 75 l-6 7 M122 88 l-5 7 M124 101 l-4 6',
+          d: 'M46 128 C52 148 66 154 82 154 C98 154 110 148 116 128 M48.4 138 Q82 150 113.8 138',
+        },
+        { d: 'M82 112 V154', role: 'soft' },
+        {
+          d: 'M110 52 l-5 6 M118 64 l-6 7 M124 78 l-6 7 M127 92 l-5 6',
           role: 'ambient',
         },
-        shadow(80, 176, 44),
+        shadow(80, 172, 46),
+      ],
+    },
+    // The cap of the two years with a small crown sat on top: a band set with
+    // jewels, ribs arched up to an orb. He wears it through his stay on Zou,
+    // from 755 (ch. 806), and the cap is bare again when the crew leave, at
+    // 776 (ch. 822).
+    {
+      episode: 755,
+      chapter: 806,
+      value: [
+        ...CHOPPER_CAP,
+        { d: 'M65.6 50.4 L64.6 42 Q80 37 95.4 42 L94.4 50.4' },
+        {
+          d: 'M64.6 42 C59 31 70 24.6 80 24.6 C90 24.6 101 31 95.4 42 M72 39.6 Q70.6 30 80 24.6 M88 39.6 Q89.4 30 80 24.6',
+        },
+        { d: circle(80, 21.2, 3.4) },
+        {
+          d: dots([
+            [69.6, 45.6],
+            [76.6, 44.2],
+            [83.4, 44.2],
+            [90.4, 45.6],
+          ]),
+          role: 'soft',
+        },
+      ],
+    },
+    { episode: 776, chapter: 822, value: CHOPPER_CAP },
+    // The same cap with a pink scarf wound thick round the middle of the
+    // crown, knotted at his left with two short ends hanging; the cross on its
+    // disc sits over the scarf at the front, the ring of dots below it. He
+    // comes ashore on Whole Cake Island in it at 786 (ch. 827). The scarf is
+    // gone when he bathes at Bege's at 827 (ch. 858), and the cap is his look
+    // again from there.
+    {
+      episode: 786,
+      chapter: 827,
+      value: [
+        ...CHOPPER_CAP.slice(0, 1),
+        {
+          d: 'M40.9 80 Q80 52 119.1 80 M35.6 108 Q49.2 98.2 62.8 94.4 M97.2 94.4 Q99.4 95 101.6 95.8 M121.4 105.9 Q122.9 106.9 124.4 108',
+        },
+        {
+          d: 'M37.1 94 Q50.8 84.5 64.6 81.1 M95.4 81.1 Q99.5 82.2 103.6 83.7 M116.8 90.2 Q119.9 92 122.9 94',
+          role: 'soft',
+        },
+        {
+          d: dots([
+            [44, 112],
+            [52, 107.6],
+            [60.4, 104.6],
+          ]),
+          role: 'soft',
+        },
+        ...CHOPPER_CAP.slice(2, 9),
+        {
+          d: 'M104 80 Q110 76.4 116 80 L116.6 91 Q110 94 104.6 91 Z M106.4 92.6 Q103.6 99 100.4 104.4 L104.8 107.2 Q108 101 109.4 93.6 M111.6 93.4 Q114.6 99.6 118.6 103.6 L114.8 106.8 Q111.4 101.6 109.8 93.8',
+        },
+        { d: 'M110 78 V92.4', role: 'soft' },
+        { d: 'M103 55 l-5 6 M112 61 l-6 7 M117.6 70 l-5 6', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
+      ],
+    },
+    { episode: 827, chapter: 858, value: CHOPPER_CAP },
+    // A ninja's hood of dark cloth wound over the cap for Wano, the cross
+    // large on its front, the antlers tucked into the puffed lobes at its
+    // sides and the cap's brim still under it. Kin'emon's Garb-Garb dresses
+    // him at 911 (ch. 921): "I'm a ninja!"
+    {
+      episode: 911,
+      chapter: 921,
+      value: [
+        {
+          d: 'M36 126 C16 126 10 96 28 84 C30 56 54 38 80 38 C106 38 130 56 132 84 C150 96 144 126 124 126',
+        },
+        { d: 'M30 86 Q42 104 38 124 M130 86 Q118 104 122 124', role: 'soft' },
+        { d: 'M67 72 l26 26 M93 72 l-26 26', role: 'accent' },
+        { d: CHOPPER_BRIM },
+        {
+          d: 'M38 132 C36 142 40 150 48 154 M122 132 C124 142 120 150 112 154',
+        },
+        { d: 'M54 54 q5 6 3 14 M80 40 q-3 10 0 18', role: 'soft' },
+        {
+          d: 'M108 50 l-5 6 M118 60 l-6 7 M124 72 l-6 7 M127 86 l-5 6',
+          role: 'ambient',
+        },
+        { d: 'M138 98 l-5 5 M140 110 l-5 5 M134 120 l-4 4', role: 'ambient' },
+        { d: 'M114 138 l-4 5 M118 146 l-4 4', role: 'ambient' },
+        shadow(80, 172, 44),
+      ],
+    },
+    // The samurai kabuto for Onigashima, worn in place of the cap: the ribbed
+    // bowl ringed with studs, the neck guard of lames, the turned-back flaps,
+    // the antlers out round it, and the forked crest at the front, the cross
+    // nowhere on it. From 959 (ch. 959) until the festival after the raid,
+    // where the cap is back, at 1080 (ch. 1053).
+    {
+      episode: 959,
+      chapter: 959,
+      value: [
+        { d: 'M46 112 C44 70 60 52 80 52 C100 52 116 70 114 112' },
+        { d: 'M64 56 Q56 82 59 110 M96 56 Q104 82 101 110', role: 'soft' },
+        {
+          d: dots([
+            [52, 104],
+            [62, 107],
+            [70, 108.5],
+            [90, 108.5],
+            [98, 107],
+            [108, 104],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M42 114 Q80 128 118 114' },
+        { d: 'M40 120 Q80 138 120 120 L126 134 Q80 154 34 134 Z' },
+        { d: 'M32 142 Q80 166 128 142', role: 'soft' },
+        {
+          d: 'M46 112 C34 104 24 108 24 120 C24 130 34 134 42 128 M114 112 C126 104 136 108 136 120 C136 130 126 134 118 128',
+        },
+        {
+          d: 'M80 112 V40 M80 66 C62 64 52 50 58 34 C60 28 68 28 68 34 M80 66 C98 64 108 50 102 34 C100 28 92 28 92 34',
+          role: 'accent',
+        },
+        ...moved(CHOPPER_ANTLERS, 'translate(0 -8)'),
+        { d: 'M104 62 l-4 6 M110 74 l-4 6 M113 88 l-4 6', role: 'ambient' },
+        { d: 'M118 128 l-4 6 M122 136 l-4 6', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
+      ],
+    },
+    { episode: 1080, chapter: 1053, value: CHOPPER_CAP },
+    // A space helmet for Egghead, a great round shell over the cap, turned a
+    // little to his right: the strap of its goggles across the upper front,
+    // the opening with its rim and the cap's brim standing out inside it, the
+    // antlers out high at the sides, a collar ring at the neck. From 1092
+    // (ch. 1063) until he leaves the island in the cap, at 1155 (ch. 1124).
+    {
+      episode: 1092,
+      chapter: 1063,
+      value: [
+        {
+          d: 'M44 146 C30 130 26 96 32 74 C40 48 62 36 84 36 C110 36 132 56 134 90 C136 116 128 136 116 146',
+        },
+        { d: 'M34 62 Q72 46 128 58 L130 68 Q72 56 32 72 Z' },
+        { d: 'M86 36.4 C80 40 76 46 74 52', role: 'soft' },
+        { d: ellipse(66, 108, 33, 36) },
+        { d: ellipse(62, 109, 25, 30), role: 'soft' },
+        {
+          d: 'M88 88 l5 -2 M90.5 100 l5 -1 M90.5 113 l5 0 M88 126 l5 1',
+          role: 'ambient',
+        },
+        ...moved(CHOPPER_CAP.slice(4, 5), 'translate(7 5) scale(0.7)'),
+        ...moved(CHOPPER_ANTLERS.slice(0, 1), 'translate(-4 -18)'),
+        ...moved(CHOPPER_ANTLERS.slice(1, 2), 'translate(8 -16)'),
+        {
+          d: 'M114 48 l-5 6 M124 60 l-6 7 M130 76 l-6 7 M133 94 l-5 6 M131 112 l-5 6',
+          role: 'ambient',
+        },
+        { d: 'M44 146 C42 160 118 160 116 146 M44 146 Q80 156 116 146' },
+        shadow(80, 174, 44),
+      ],
+    },
+    { episode: 1155, chapter: 1124, value: CHOPPER_CAP },
+    // A red Viking helmet of Elbaf worn over the cap: the round dome with a
+    // gold strap and its bosses over the top, the wide brim, the cap's brim
+    // showing under it, and gold caps on the antler tips. From 1158
+    // (ch. 1128).
+    {
+      episode: 1158,
+      chapter: 1128,
+      value: [
+        { d: 'M40 104 C36 60 56 42 80 42 C104 42 124 60 120 104' },
+        {
+          d: 'M72 43 C68 60 68 82 70 100 L90 100 C92 82 92 60 88 43',
+          role: 'accent',
+        },
+        { d: `${circle(80, 62, 3.5)} ${circle(80, 82, 3.5)}`, role: 'soft' },
+        {
+          d: dots([
+            [50, 72],
+            [54, 90],
+            [110, 72],
+            [106, 90],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M22 112 Q80 86 138 112 L142 120 Q80 96 18 120 Z' },
+        { d: 'M34 125 Q80 106 126 125 L127 131 Q80 112 33 131 Z' },
+        ...moved(CHOPPER_ANTLERS, 'translate(0 -10)'),
+        {
+          d: 'M13.2 48.1 L10.5 42.7 Q5.3 38.6 5.5 45.3 L8.2 50.6 M20.8 42.6 L23.5 37.3 Q23.7 30.6 18.5 34.7 L15.8 40.1 M151.8 50.6 L154.5 45.3 Q154.7 38.6 149.5 42.7 L146.8 48.1 M144.2 40.1 L141.5 34.7 Q136.3 30.6 136.5 37.3 L139.2 42.6',
+          role: 'soft',
+        },
+        {
+          d: 'M102 52 l-4 6 M110 62 l-5 6 M114 74 l-5 6 M117 88 l-4 6',
+          role: 'ambient',
+        },
+        { d: 'M120 112 l-3 4 M130 114 l-3 4', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
       ],
     },
   ],
@@ -1502,17 +1844,53 @@ export const alabastaRedrawn: Redrawings = {
       episode: 483,
       chapter: 574,
       value: [
-        ...ACE_HAT.map((stroke): Stroke => {
-          // The outline of the hat takes the accent the flame had.
-          return stroke.role === undefined ?
-              { ...stroke, role: 'accent' }
-            : stroke
-        }),
+        ...ACE_HAT_OUT,
         {
           d: 'M80 52 C76 44 84 38 80 30 C77 24 83 20 81 14',
           role: 'ambient',
           dashed: true,
         },
+      ],
+    },
+    // His grave in the New World: a plain block of stone with his knife
+    // stuck upright in its top, and the hat, the flame long gone, hung tilted
+    // on the hilt, the string of beads hanging from the brim. He is buried
+    // there at 505 (ch. 590).
+    {
+      episode: 505,
+      chapter: 590,
+      value: [
+        {
+          d: 'M0 142 C12 141 22 140 34 140 M116 134 C130 133 146 132 160 132',
+          role: 'ambient',
+        },
+        {
+          d: 'M34 150 V122 H104 V150 M34 122 L46 112 H116 L104 122 M116 112 V140 L104 150',
+        },
+        { d: 'M108 126 l6 -5 M108 137 l6 -5 M108 147 l4 -3', role: 'ambient' },
+        {
+          d: 'M72 117 V108 M60 108 C66 105 78 105 84 108 M71.5 104 C68.5 95 68 86 70 77.2',
+          role: 'soft',
+        },
+        {
+          d: 'M67 106 C64 97 63 87 65.5 77.6 M77 106 C73.5 97 73 87 74.5 76.6',
+        },
+        ...moved(
+          ACE_HAT_OUT,
+          'translate(78 54) rotate(-18) scale(0.56) translate(-80 -100)',
+        ),
+        {
+          d: dots([
+            [108, 66],
+            [109, 72],
+            [109, 78],
+            [108, 84],
+            [106, 89],
+            [103, 93],
+          ]),
+          role: 'soft',
+        },
+        shadow(74, 156, 50),
       ],
     },
   ],
@@ -1621,6 +1999,13 @@ export const alabastaRedrawn: Redrawings = {
   // down at 73 (ch. 120).
   // He wakes at 77 (ch. 127), and the two weapons cross again: his sword,
   // whole and notched, and Brogy's axe, both worn out by a hundred years.
+  // Both weapons break in the Hakoku that ends the duel at 78 (ch. 129):
+  // his hilt and green grip on a blade snapped short on a slant, beside the
+  // strapped stub of Brogy's haft.
+  // In Elbaf he is armed again, shield and sword, from 1112 (ch. 1079).
+  // Turned demon at 1180 (ch. 1150): the same shield, a bat wing spread
+  // behind it, and his sword made a trident, the old blade its long middle
+  // prong between two curved ones. The form's end has not aired (#612).
   'dorry': [
     {
       episode: 73,
@@ -1664,15 +2049,53 @@ export const alabastaRedrawn: Redrawings = {
         { d: 'M40 150 L112 30 L124 20 L122 36 L50 156' },
         { d: 'M45 153 L117 33', role: 'soft' },
         { d: 'M78 110 l5 0 l-2 -4 M96 80 l5 0 l-2 -4', role: 'soft' },
-        { d: 'M30 140 L60 162' },
-        { d: 'M43 157 L31 175 M37 153 L25 171', role: 'accent' },
-        { d: circle(24, 177, 5), role: 'accent' },
+        ...DORRY_HILT,
         ...moved(
           alabastaArt.brogy.slice(0, 6),
           'translate(170 20) scale(-0.86 0.86) rotate(-12 90 110)',
         ),
         { d: 'M4 176 H156', role: 'ambient' },
         shadow(80, 188, 52),
+      ],
+    },
+    {
+      episode: 78,
+      chapter: 129,
+      value: [
+        ...moved(
+          [
+            ...DORRY_HILT,
+            {
+              d: 'M40 150 L66 106.8 L66.8 113.6 L69.2 115 L70.2 122.4 L50 156',
+            },
+            { d: 'M45 153 L64 121.4', role: 'soft' },
+          ],
+          'translate(50 112) rotate(112) scale(1.5) translate(-50 -145)',
+        ),
+        ...moved(
+          [
+            ...BROGY_HAFT_STUB,
+            { d: ellipse(84, 176.6, 4.4, 1.6) },
+            {
+              d: 'M92.8 122 l3 2.5 M91.8 138 l3 2.5 M90.8 154 l3 2.5',
+              role: 'ambient',
+            },
+          ],
+          'translate(126 140) rotate(37) scale(1.25) translate(-88 -136)',
+        ),
+        shadow(84, 182, 56),
+      ],
+    },
+    { episode: 1112, chapter: 1079, value: alabastaArt.dorry },
+    {
+      episode: 1180,
+      chapter: 1150,
+      value: [
+        ...moved(BAT_WING, 'translate(45 84) rotate(20) scale(0.72)'),
+        ...alabastaArt.dorry,
+        {
+          d: 'M101.7 48.6 Q91.4 40.7 112.9 24.5 M114.3 58.4 Q124.6 66.3 135 41.5',
+        },
       ],
     },
   ],
@@ -1762,43 +2185,33 @@ export const alabastaRedrawn: Redrawings = {
     },
   ],
 
-  // The same sword on the same robe, and his feathers drifting down onto
-  // them: he flies the bomb up out of the city at 125 (ch. 208).
+  // The same sword on the same robe, and over them one of the falcon's wings
+  // he flies on, spread, its flight feathers barred dark and light. He shows
+  // the Zoan when he swoops on Vivi's captors at 106 (ch. 169).
+  // At 125 (ch. 208) his feathers drift down onto them as he flies the bomb
+  // up out of the city.
   // At 130 (ch. 217) he leaves a desert clinic on foot and forgets his
-  // headscarf: the white cloth alone, hanging, the stars of the robe on it.
+  // headscarf: the white cloth alone, hanging, the stars of the robe on it,
+  // and beside it the wing he still has.
   'pell': [
+    { episode: 106, chapter: 169, value: [...alabastaArt.pell, ...PELL_WING] },
     {
       episode: 125,
       chapter: 208,
       value: [
         ...alabastaArt.pell,
-        { d: FEATHER, transform: 'translate(30 40) rotate(-35)' },
-        { d: FEATHER, transform: 'translate(64 18) rotate(20)' },
-        {
-          d: FEATHER,
-          transform: 'translate(128 104) rotate(60)',
-          role: 'soft',
-        },
+        ...PELL_WING,
+        { d: FEATHER, transform: 'translate(60 124) rotate(70)' },
+        { d: FEATHER, transform: 'translate(128 24) rotate(20)' },
       ],
     },
     {
       episode: 130,
       chapter: 217,
       value: [
-        {
-          d: 'M70 24 C58 30 50 60 46 96 C42 126 36 150 30 166 C40 160 46 170 56 164 C64 172 72 162 80 170 C88 162 98 172 106 164 C114 170 122 160 132 166 C124 140 118 110 114 80 C110 50 100 28 88 22 C82 20 76 20 70 24 Z',
-        },
-        { d: 'M70 24 C74 32 84 32 88 22', role: 'soft' },
-        {
-          d: 'M64 40 C60 80 58 120 56 162 M80 30 C80 80 80 120 80 168 M96 40 C100 80 104 120 106 162',
-          role: 'soft',
-        },
-        ...moved(alabastaArt.pell.slice(3, 4), 'translate(0 -50)'),
-        {
-          d: 'M112 70 l6 -4 M116 92 l6 -4 M120 114 l6 -4 M124 136 l6 -4',
-          role: 'ambient',
-        },
-        shadow(80, 186, 46),
+        ...moved(PELL_SCARF, 'translate(44.4 38.4) scale(0.8)'),
+        ...moved(PELL_WING, 'translate(2 20) scale(0.8)'),
+        shadow(108, 188, 40),
       ],
     },
   ],
@@ -1834,6 +2247,149 @@ export const alabastaRedrawn: Redrawings = {
         },
         { d: 'M138 152 l6 -4 M140 162 l6 -4', role: 'ambient' },
         shadow(126, 186, 30),
+      ],
+    },
+  ],
+
+  // The same duck, a white band now tied round his near wing and knotted on
+  // top: the crew's arm bands, tied on at 92 (ch. 157). The X they hide is
+  // not drawn. The bands are off at the farewell, when the crew bare the
+  // mark, at 129 (ch. 216).
+  'karoo': [
+    {
+      episode: 92,
+      chapter: 157,
+      value: [
+        ...alabastaArt.karoo.slice(0, 9),
+        {
+          d: 'M70 112 C78 107 90 103 98 106 C103 110 102 120 96 123 C86 127 74 128 64 124',
+        },
+        { d: 'M78 108.8 Q81.5 118 79.5 127.6 M87 106.4 Q90.5 116 88.5 126.4' },
+        { d: 'M82 107.6 L76 101 M83.6 107.2 L86 99', role: 'soft' },
+        ...alabastaArt.karoo.slice(10),
+      ],
+    },
+    { episode: 129, chapter: 216, value: alabastaArt.karoo },
+  ],
+
+  // Her new beret in 3/4, puffed out into an apple: two round lobes with a
+  // dimple between them, a stalk and a leaf standing out of it, the rim
+  // band under the overhang, the far side hatched. She wears it in place of
+  // the brimmed hat when she is seen again at 1149 (ch. 1115).
+  'miss-goldenweek': [
+    {
+      episode: 1149,
+      chapter: 1115,
+      value: [
+        {
+          d: 'M40 118 C24 112 16 94 22 80 C28 66 42 60 56 62 C66 63 74 66 82 72 C90 64 100 60 112 60 C130 62 144 78 140 96 C138 108 132 116 122 118',
+        },
+        { d: 'M40 118 C56 126 104 126 122 118' },
+        { d: 'M48 122.5 V129 C58 138 104 138 114 129 V122.5' },
+        { d: 'M68 70 C74 78 90 78 96 66', role: 'soft' },
+        { d: 'M82 74 C82 64 84 56 88 50', role: 'accent' },
+        {
+          d: 'M84 58 C76 44 62 40 52 44 C58 58 72 62 84 58 Z M84 58 Q68 50 54 45',
+          role: 'accent',
+        },
+        {
+          d: 'M118 72 l6 -6 M126 84 l8 -6 M130 98 l8 -6 M126 110 l8 -6',
+          role: 'ambient',
+        },
+        {
+          d: 'M58 127 l4 -3 M70 128 l4 -3 M82 128 l4 -3 M94 128 l4 -3 M106 126 l3 -2',
+          role: 'ambient',
+        },
+        { d: 'M32 88 Q36 76 48 72', role: 'soft' },
+        shadow(80, 156, 48),
+      ],
+    },
+  ],
+
+  // His sword, smaller, and beside it the jackal's paw he fights Crocodile
+  // with: the white wraps at the wrist, the black-furred hand closed in a
+  // fist, four long curved claws below the knuckles. He shows the Zoan at
+  // 120 (ch. 196).
+  'chaka': [
+    {
+      episode: 120,
+      chapter: 196,
+      value: [
+        ...moved(
+          alabastaArt.chaka.slice(0, 11),
+          'translate(44 106) scale(0.82) translate(-80 -106)',
+        ),
+        ...CHAKA_PAW,
+        shadow(46, 184, 26),
+      ],
+    },
+  ],
+
+  // His spade in its sheath, smaller, and beside it the foreleg of the bison
+  // he becomes: the plated bracer he keeps on the forearm, the shaggy black
+  // fur hatched where it turns away, and the cloven hoof under the tuft.
+  // He shows the Zoan at 81 (ch. 135).
+  'dalton': [
+    {
+      episode: 81,
+      chapter: 135,
+      value: [
+        ...moved(
+          alabastaArt.dalton.slice(0, 9),
+          'translate(-12 22) scale(0.78)',
+        ),
+        ...DALTON_FORELEG,
+        shadow(86, 186, 68),
+      ],
+    },
+  ],
+
+  // His axe snaps in the same Hakoku at 78 (ch. 129): the strapped lower
+  // haft still planted, splintered at the break, the chipped head fallen
+  // beside it on a short stub, his red horned helmet lying by.
+  // In Elbaf he is armed again, axe and helmet, from 1112 (ch. 1079).
+  // Turned demon at 1180 (ch. 1150): the same axe and helmet, the horns
+  // grown into curved demon horns that hook inward, and a bat wing spread
+  // behind the haft. The form's end has not aired (#612).
+  'brogy': [
+    {
+      episode: 78,
+      chapter: 129,
+      value: [
+        ...moved(BROGY_HAFT_STUB, 'translate(-22 0)'),
+        ...moved(
+          [
+            { d: circle(95, 50, 9) },
+            {
+              d: 'M103 46 L108 20 C120 21 130 27 136 34 L131 40 L141 45 C146 54 148 63 148 72 C146 94 132 106 116 112 L102 56',
+            },
+            ...alabastaArt.brogy.slice(4, 6),
+            {
+              d: 'M90.4 58.4 L89.4 70 L91.6 66 L93.6 74 L95.4 67 L98 72 L98.6 59.4',
+            },
+          ],
+          'translate(120 138) rotate(45) scale(0.85) translate(-118 -66)',
+        ),
+        ...moved(
+          alabastaArt.brogy.slice(6, 10),
+          'translate(32 176) scale(0.65) translate(-36 -176)',
+        ),
+        ...alabastaArt.brogy.slice(10, 11),
+        ...moved(alabastaArt.brogy.slice(11, 12), 'translate(-22 0)'),
+      ],
+    },
+    { episode: 1112, chapter: 1079, value: alabastaArt.brogy },
+    {
+      episode: 1180,
+      chapter: 1150,
+      value: [
+        ...moved(BAT_WING, 'translate(87 78) scale(0.85)'),
+        ...alabastaArt.brogy.slice(0, 7),
+        {
+          d: 'M14 160 C0 146 0 116 26 98 C14 116 16 136 26 149 M58 160 C72 146 72 116 46 98 C58 116 56 136 46 149',
+          role: 'accent',
+        },
+        ...alabastaArt.brogy.slice(8),
       ],
     },
   ],
