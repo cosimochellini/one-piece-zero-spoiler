@@ -182,16 +182,14 @@ Grade every drawing you make or review. Only A ships.
     with a true chapter pair, and it is the pure real fruit with no power
     (`FLAME_FLAME`, `OP_OP_HEART`). The owner ruled that Gum-Gum is the real
     fruit from episode 1, with no redrawing.
-  - **10–14 strokes**; `generate.test.ts` fails a kit fruit under ten. Watch
+  - **10–14 strokes**; `drawings.test.ts` fails a kit fruit under ten. Watch
     for faces: two curls over a row of points reads as eyes and teeth, so
     keep curls off a level line and away from a jagged edge (the first ice
     drawing failed on this).
-  - Every fruit drawing, kit or not, obeys what `generate.test.ts` holds:
+  - Every fruit drawing, kit or not, obeys what `drawings.test.ts` holds:
     absolute commands only (so `shadowUnder()`, never `shadow()`, whose `q`
     is relative), one decimal, no `transform`, inside the box, **exactly
-    one** accent. Kit fruits go in `bespoke.ts`. A fruit still grown from a
-    seed (`fruit({ body, grain, leaf, stem, swirl })`) is at most B, and #464
-    files the rest onto the kit.
+    one** accent. Fruit compositions go in `bespoke.ts`.
 
 ## Spoilers in a drawing
 

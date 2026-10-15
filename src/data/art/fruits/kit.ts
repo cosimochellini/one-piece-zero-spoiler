@@ -11,16 +11,13 @@ import type { Stroke } from '~/data/art/stroke'
 /**
  * The body kit every fruit drawn as fruit + power is set on (#461).
  *
- * A grown fruit is a flat outline wearing a mark. A kit fruit is a solid one:
- * seen a little from above, so the rim of the dimple its stalk sits in shows,
- * with a highlight on the near shoulder, the far side turning away into
- * hatching and a skin of curls. The power is drawn on top of that, as the
- * only accent, acting on the fruit itself.
+ * Each body is seen a little from above: the rim of the dimple its stalk
+ * sits in, a highlight on the near shoulder, the far side turning away into
+ * hatching and a skin of curls. The power is the only accent, acting on the
+ * fruit itself.
  *
- * Six bodies, five of them the generator's own silhouettes, so a kit fruit
- * and a grown one keep the same shapes. The sixth, segmented, is the round
- * one with its ribs drawn in. Every body shares the same radii, so the sheet
- * stays one sheet.
+ * Five shared silhouettes and a segmented round body use the same radii,
+ * so the drawings keep their proportions across the set.
  */
 
 /** Which of the six bodies a kit fruit is set on. */
@@ -48,7 +45,7 @@ const SHINE_INSET = 0.78
 
 const DEGREES = Math.PI / 180
 
-/** The generator's silhouette a kit body is drawn with. */
+/** The shared silhouette a kit body is drawn with. */
 function silhouetteOf(family: KitFamily): BodyFamily {
   return family === 'segmented' ? 'round' : family
 }

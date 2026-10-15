@@ -31,28 +31,22 @@ import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
 /**
- * The fruits that are drawn rather than grown.
+ * Every fruit's hand-drawn composition. Fruit + power drawings use the body
+ * kit, with the accent on the power acting on the fruit. Real-fruit drawings
+ * show the fruit itself, without a power, from its showing in the story.
  *
- * The generator is what makes a hundred and twenty drawings one set, and it
- * is also what would make the most recognisable fruit on the sheet a sample
- * of a set. These are the ones a reader arrives already knowing: a fruit the
- * show has shown by its threshold is drawn as it looks, and the rest keep the
- * set's body, stalk and shadow and wear a mark written for their power.
- * One hundred and fifteen are drawn as fruit + power (#461), on the bodies of
- * `kit.ts`, the power acting on the fruit itself.
- *
- * Everything here obeys the rules the generator proves: absolute commands
- * only, no fills, one accent, and nothing outside the 160x200 box.
+ * All drawings use absolute commands, no fills, exactly one accent, and
+ * stay inside the 160x200 box.
  */
 
 /** The body every hand-drawn fruit is set on, so the sheet stays one sheet. */
 const RX = 44
 const RY = 48
 
-const STALK = stalkOf('straight', RY, 4)
-const HOOK = stalkOf('hooked', RY, 7)
+const STALK = stalkOf(RY, 4)
+const HOOK = stalkOf(RY, 7)
 
-/** The three strokes every hand-drawn fruit shares with a grown one. */
+/** The stalk, leaf and ground shadow shared by the real-fruit drawings. */
 function furniture(stem: StemForm, leaf: LeafForm): [Stroke, Stroke, Stroke] {
   const stalk = stem === 'hooked' ? HOOK : STALK
 
