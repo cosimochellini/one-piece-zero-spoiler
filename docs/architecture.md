@@ -285,53 +285,63 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
 
 ### Server time
 
-Measured on 2026-10-15 from Italy, on one reused connection, with the bookmark
-at episode 1150 (#610). Medians of five runs:
+Measured on 2026-10-15 from Italy with the `Server-Timing` header every response
+carries (`app;dur=…`, the time inside the function until the response exists,
+and `cold` on an instance's first request; `src/start.ts`). One reused
+connection, medians of six runs, before the fixes below (#621):
 
-| Request                                         | Raw body | Time to first byte |
-| ----------------------------------------------- | -------- | ------------------ |
-| `/icon.svg`, a static file                      | 1 KB     | 0.03 s             |
-| `/robots.txt?r=…`, a cache miss                 | 0.1 KB   | 0.20 s             |
-| `/en`                                           | 245 KB   | 0.38 s             |
-| `/en/places`                                    | 730 KB   | 0.72 s             |
-| `/en/fruits`, before its drawings were deferred | 988 KB   | 0.72 s             |
-| `/en/characters`                                | 1.19 MB  | 1.00 s             |
-
-The same pages render in 6–57 ms on a laptop once warm, and in about 360 ms on
-the first request after a start, which loads the archive. In production a first
-hit after a quiet spell took 1.4–2 s.
+| Request (episode 1150)          | Time to first byte | Inside the function | The rest |
+| ------------------------------- | ------------------ | ------------------- | -------- |
+| `/robots.txt?r=…`, a cache miss | 0.21 s             | 0.00 s              | 0.21 s   |
+| `/en`                           | 0.35 s             | 0.14 s              | 0.21 s   |
+| `/en/characters/nami`           | 0.30 s             | 0.08 s              | 0.21 s   |
+| `/en/fruits`                    | 0.62 s             | 0.38 s              | 0.23 s   |
+| `/en/characters`                | 0.70 s             | 0.48 s              | 0.22 s   |
+| `/en/places`                    | 0.87 s             | 0.59 s              | 0.26 s   |
 
 What this says:
 
-- **The hop to the function costs about 0.17 s.** That is the difference between
-  a static file and a function that does nothing. On Netlify Free the function
-  runs in the US and cannot be moved, so this is the floor.
-- **The rest grows with the raw body, not the render.** At episode 1 the same
-  pages are 7–29 KB gzip and come back in 0.29–0.66 s. The local render is a few
-  milliseconds either way, so the time goes into moving the uncompressed HTML
-  from the function to the edge, which compresses it. A smaller body is a faster
-  page.
-- **A cold start costs one to two seconds** on the first request an instance
-  serves.
-
-Every response now carries `Server-Timing: app;dur=…`, the time inside the
-function until the response exists, with `cold` on an instance's first request
-(`src/start.ts`). It splits the render from the hop without access to the
-function logs.
+- **The hop to the function costs about 0.21 s, whatever the page.** It is the
+  same for a 0.1 KB robots file and a 105 KB gzip list, so the size of the body
+  does not add to it. On Netlify Free the function runs in the US and cannot be
+  moved, so this is the floor. (#610 read the body size as the cost; with the
+  header in place, that turned out to be wrong.)
+- **The rest is the render, and it grows with the number of elements.** At
+  episode 1, with almost nothing open, `/en/characters` still took 0.39 s for
+  more than five hundred covered cards. A CPU profile puts most of a render in
+  React writing and encoding HTML, and the next largest share in serialising the
+  loader data.
+- **Production rendered with React's development build.** Netlify does not set
+  `NODE_ENV` inside a function, and the server build left React, TanStack and
+  StyleX as packages that choose their build from it at run time. The HTML is
+  identical either way, so it showed only as time: about twice the work of the
+  production build.
+- **A cold start** is rare on a busy instance (none in 84 requests) and cost
+  1.4–3 s when it happened.
 
 What was decided:
 
 - **No cache for HTML.** A cache key that misses one cookie or one parameter
   would serve another reader's later bookmark, which is a spoiler. Every HTML
   response is rendered per request.
-- **Bodies get smaller.** Deferring the fruit drawings cut the heaviest page by
-  60% raw. Moving the shared stroke classes from every `<path>` to one `<g>` was
-  measured and dropped: most drawings on a list are deferred, and an empty `<g>`
-  on each of them costs more than the classes it saves (`/en/characters` grew by
-  4 KB raw).
-- **No Edge Functions for now.** A warm `/en/characters` render already takes
-  about 50 ms on a laptop, which is the Edge CPU limit, and the archive would
-  have to ship in the edge bundle.
+- **The server build bundles its dependencies** (`ssr.noExternal` in
+  `vite.config.ts`), so the production branch is written in at build time.
+  Locally, with `NODE_ENV` unset as on Netlify, renders take about half as long
+  (`/en/characters` 62 → 31 ms, `/en/places` 36 → 18 ms) and a cold start's
+  first response comes in 0.26 s instead of 0.45 s.
+- **An open record has no curtain.** Every card the server sent open used to
+  carry the hidden "Show anyway" button that lifts the fog, kept only so a
+  reveal could fade. It was a fifth of each list page: `/en/characters` went
+  from 1,165 to 902 KB raw, `/en/places` from 713 to 555 KB, `/en/fruits` from
+  381 to 256 KB.
+- **Smaller pages first, then fewer elements.** Deferring the fruit drawings cut
+  that page by 60% raw (#610). Moving the shared stroke classes from every
+  `<path>` to one `<g>` was measured and dropped: most drawings on a list are
+  deferred, and an empty `<g>` on each of them costs more than the classes it
+  saves.
+- **No Edge Functions for now.** Production renders 5–20 times slower than a
+  laptop, so even a 31 ms local `/en/characters` would not fit the 50 ms Edge
+  CPU limit, and the archive would have to ship in the edge bundle.
 
 ## Localization
 

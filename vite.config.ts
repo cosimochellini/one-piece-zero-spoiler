@@ -11,8 +11,18 @@ import { defineConfig, type Plugin } from 'vite'
 // here keeps the rest of the file, and the array, checked.
 const stylexVite: (options?: Partial<UserOptions>) => Plugin = stylex.vite
 
-const config = defineConfig({
+const config = defineConfig(({ command }) => ({
   server: { port: 3000 },
+  // Bundle every dependency into the server build. Left external, React,
+  // TanStack and StyleX pick their development or production build at run
+  // time from `process.env.NODE_ENV`, which Netlify does not set inside a
+  // function, so production rendered with React's development build, about
+  // twice as slow (#621). Bundled, Vite writes the production branch in at
+  // build time, and the function loads one file instead of a node_modules
+  // tree: a cold start's first response came 40% sooner locally. Build only:
+  // the dev server's module runner cannot evaluate React's CommonJS, and
+  // there `NODE_ENV` is set anyway.
+  ...(command === 'build' && { ssr: { noExternal: true } }),
   resolve: {
     // Native Vite 8 option (ResolveOptions.tsconfigPaths).
     // vite-tsconfig-paths is not needed.
@@ -57,6 +67,6 @@ const config = defineConfig({
       dev: { blobs: { enabled: false }, database: { enabled: false } },
     }),
   ],
-})
+}))
 
 export default config
