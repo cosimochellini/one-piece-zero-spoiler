@@ -854,7 +854,7 @@ export const skypiea: Saga = {
       epithet: [
         { episode: 151, value: { it: 'Il Tiranno', en: 'the Tyrant' } },
       ],
-      devilFruit: [{ episode: 372, value: ['paw-paw-fruit'] }],
+      devilFruit: [{ episode: 376, chapter: 484, value: ['paw-paw-fruit'] }],
       bounty: [{ episode: 151, value: 296_000_000 }],
     },
     'sengoku': {

@@ -79,6 +79,7 @@ import {
   OP_OP_HEART,
   OX_OX_BISON,
   OX_OX_GIRAFFE,
+  PAW_PAW,
   POP_POP,
   PRESS_PRESS,
   PUFF_PUFF,
@@ -129,7 +130,6 @@ import {
   WOODS_WOODS,
   WRING_WRING,
 } from '~/data/art/fruits/bespoke'
-import { fruit } from '~/data/art/fruits/generate'
 import type { Drawings, Redrawings } from '~/data/art/stroke'
 
 /**
@@ -144,8 +144,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and twenty-seven of them are drawn by hand and name their drawing;
- * the rest name the seed they are grown from.
+ * Every entry names its hand-drawn composition.
  */
 export const fruitArt = {
   'gum-gum-fruit': GUM_GUM,
@@ -184,13 +183,7 @@ export const fruitArt = {
   'hollow-hollow-fruit': HOLLOW_HOLLOW,
   'clear-clear-fruit': CLEAR_CLEAR,
   'shadow-shadow-fruit': SHADOW_SHADOW,
-  'paw-paw-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'right',
-    stem: 'straight',
-    swirl: 'whorls',
-  }),
+  'paw-paw-fruit': PAW_PAW,
   'glint-glint-fruit': GLINT_GLINT,
   'dragon-dragon-fruit-ancient-model-allosaurus': DRAGON_ALLOSAURUS,
   'love-love-fruit': LOVE_LOVE,

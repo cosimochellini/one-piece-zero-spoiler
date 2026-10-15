@@ -85,6 +85,7 @@ import {
   OP_OP_HEART,
   OX_OX_BISON,
   OX_OX_GIRAFFE,
+  PAW_PAW,
   POP_POP,
   PRESS_PRESS,
   PUFF_PUFF,
@@ -185,6 +186,7 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'paw-paw-fruit': PAW_PAW,
   'island-island-fruit': ISLAND_ISLAND,
   'strong-strong-fruit': STRONG_STRONG,
   'sick-sick-fruit': SICK_SICK,

@@ -4434,6 +4434,43 @@ export const SHADOW_SHADOW: Stroke[] = [
   },
 ]
 
+/** The paw fruit: a gourd pressed inward on its near side. */
+const PAW_BODY: Body = { family: 'gourd', cy: 112 }
+
+/**
+ * A paw pressed into the fruit, its four toe pads in a slanted arc beside
+ * the palm pad. In episode 376, chapter 484, Kuma names the fruit and
+ * repels Zoro's attacks and the air with the pads on his hands.
+ */
+export const PAW_PAW: Stroke[] = [
+  ...kitBody(PAW_BODY, [78, 88], (x, y) => x < 80 || y < 102 || y > 150),
+  ...skin([
+    [75, 92, 6],
+    [76, 149, -6],
+  ]),
+  ...sprout(PAW_BODY, -4, 'left'),
+  {
+    d: [
+      ring(91, 120, 5),
+      ring(98, 107, 5),
+      ring(112, 104, 5),
+      ring(124, 113, 5),
+      'M101 130 C105 124 116 123 120 129',
+      'C125 135 121 145 114 145 C108 145 98 138 101 130 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      `M${point(...onRim(PAW_BODY, 102, 1))}`,
+      'C89 104 80 112 80 124 C80 139 91 149',
+      point(...onRim(PAW_BODY, 150, 1)),
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
 /** The glint fruit: a pear, its near side gone at the speed of light. */
 const GLINT_BODY: Body = { family: 'pear', cy: 118 }
 

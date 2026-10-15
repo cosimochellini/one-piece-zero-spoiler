@@ -485,12 +485,12 @@ export const devilFruits: Saga = {
     {
       id: 'paw-paw-fruit',
       kind: 'fruit',
-      revealedAtEpisode: 372,
-      revealedAtChapter: 486,
+      revealedAtEpisode: 376,
+      revealedAtChapter: 484,
       name: { it: 'Frutto Nikyu Nikyu', en: 'Paw-Paw Fruit' },
       summary: {
-        it: 'Mette su ogni mano un cuscinetto che respinge tutto ciò che tocca: una persona, una palla di cannone, perfino l’aria, spinti via più in fretta di quanto l’occhio segua.',
-        en: 'Puts a paw pad on each hand that repels whatever it touches: a person, a cannonball, even the air, pushed away faster than the eye can follow.',
+        it: 'I cuscinetti sulle mani respingono gli attacchi e l’aria, che viene scagliata via ad alta velocità.',
+        en: 'The paw pads on the hands repel attacks and air, sending the air flying at high speed.',
       },
       visual: { art: 'paw-paw-fruit', tint: 'orange' },
     },
