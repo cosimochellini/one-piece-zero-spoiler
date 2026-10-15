@@ -126,18 +126,14 @@ The frames work the same way. The seal behind each crest and the plate around
 each place are stroke geometry in `src/components/chrome/`, not SVG markup
 written by hand.
 
-The devil fruits share a generator and a body kit, so drawings of the same kind
-of object look like one set and can still be told apart. A generated fruit is
-composed from a seed written next to its id: one of six silhouettes, one of four
-marks, a stalk and a leaf. One hundred and twenty-seven are drawn by hand and
-override their generated version: the twelve a reader already knows well, and
-one hundred and fifteen drawn as fruit + power on the body kit
-(`src/data/art/fruits/kit.ts`), the power acting on the fruit's own body (#461).
-Two more are drawn as the real fruit only from the episode that shows it. The
-sizing is guaranteed rather than hoped for: a seed cannot set a radius, so the
-widest fruit the generator can produce is known in advance. Every path it writes
-uses absolute commands only, which lets the test read the numbers in a path as
-coordinates.
+Every devil fruit has a hand-drawn composition. Fruit + power drawings share
+five silhouettes and a segmented round body through the body kit
+(`src/data/art/fruits/kit.ts`), with a crown, a highlight, hatching and curls
+for volume. The power is the single accent and acts on the fruit's own body.
+Real-fruit drawings show the fruit itself without a power. Flame-Flame and Op-Op
+gain their real-fruit drawings only from the episode and chapter that show them.
+Every fruit path uses absolute commands, which lets the drawing tests read its
+numbers as coordinates and check the 160×200 bounds.
 
 ## Stack
 

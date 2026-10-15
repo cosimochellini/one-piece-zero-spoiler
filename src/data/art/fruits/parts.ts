@@ -1,28 +1,21 @@
 import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
-/**
- * Everything on a fruit that is not the body or the mark on it: the stalk it
- * hung by, the leaf still on the stalk, and the shadow it sits in.
- *
- * None of the three is ever left off. A part that could be missing would make
- * "at least four strokes" a thing to check rather than a thing that is true,
- * so a small fruit gets a short stalk and a sprig instead of a leaf.
- */
+/** Shared stalks, leaves and ground shadows for fruit drawings. */
 
 /** How the stalk leaves the fruit. */
-export type StemForm = 'hooked' | 'nub' | 'straight'
+export type StemForm = 'hooked' | 'straight'
 
 /** What is still on the stalk. */
-export type LeafForm = 'left' | 'pair' | 'right' | 'sprig'
+export type LeafForm = 'left' | 'right'
 
-/** How far the stalk rises. The shortest is a nub and is handled apart. */
+/** How far the stalk rises. */
 const RISE = [16, 22, 28]
 
 /** How far the stalk leans off the middle. */
 const LEAN = [-8, -4, 0, 4, 8]
 
-/** How long a leaf is. A sprig is half of one. */
+/** How long a leaf is. */
 const LEAF = [14, 18, 22]
 
 /** The stalk a fruit hangs by: where it starts, how far it rises, its lean. */
@@ -32,12 +25,12 @@ export interface Stalk {
   rise: number
 }
 
-/** The stalk one seed grows, measured from the top of its own body. */
-export function stalkOf(form: StemForm, ry: number, grain: number): Stalk {
+/** A stalk measured from the top of its fruit body. */
+export function stalkOf(ry: number, grain: number): Stalk {
   return {
     baseY: BODY_CY - ry,
     lean: LEAN[grain % LEAN.length] ?? 0,
-    rise: form === 'nub' ? 6 : (RISE[grain % RISE.length] ?? 22),
+    rise: RISE[grain % RISE.length] ?? 22,
   }
 }
 
@@ -85,20 +78,13 @@ function lens(base: Base, side: number, length: number): string {
   ].join(' ')
 }
 
-/** The leaf, or the two of them, or the sprig that stands in for one. */
+/** One leaf on either side of the stalk. */
 export function leafPath(form: LeafForm, stalk: Stalk, grain: number): string {
   const base: Base = {
     x: BODY_CX + stalk.lean * 0.6,
     y: stalk.baseY - stalk.rise * 0.6,
   }
   const length = LEAF[(grain * 5) % LEAF.length] ?? 18
-
-  if (form === 'pair') {
-    return `${lens(base, 1, length * 0.8)} ${lens(base, -1, length * 0.8)}`
-  }
-  if (form === 'sprig') {
-    return lens(base, 1, length * 0.5)
-  }
 
   return lens(base, form === 'left' ? -1 : 1, length)
 }

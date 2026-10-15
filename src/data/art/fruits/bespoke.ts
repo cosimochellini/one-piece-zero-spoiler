@@ -31,28 +31,22 @@ import { point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
 /**
- * The fruits that are drawn rather than grown.
+ * Every fruit's hand-drawn composition. Fruit + power drawings use the body
+ * kit, with the accent on the power acting on the fruit. Real-fruit drawings
+ * show the fruit itself, without a power, from its showing in the story.
  *
- * The generator is what makes a hundred and twenty drawings one set, and it
- * is also what would make the most recognisable fruit on the sheet a sample
- * of a set. These are the ones a reader arrives already knowing: a fruit the
- * show has shown by its threshold is drawn as it looks, and the rest keep the
- * set's body, stalk and shadow and wear a mark written for their power.
- * One hundred and fifteen are drawn as fruit + power (#461), on the bodies of
- * `kit.ts`, the power acting on the fruit itself.
- *
- * Everything here obeys the rules the generator proves: absolute commands
- * only, no fills, one accent, and nothing outside the 160x200 box.
+ * All drawings use absolute commands, no fills, exactly one accent, and
+ * stay inside the 160x200 box.
  */
 
 /** The body every hand-drawn fruit is set on, so the sheet stays one sheet. */
 const RX = 44
 const RY = 48
 
-const STALK = stalkOf('straight', RY, 4)
-const HOOK = stalkOf('hooked', RY, 7)
+const STALK = stalkOf(RY, 4)
+const HOOK = stalkOf(RY, 7)
 
-/** The three strokes every hand-drawn fruit shares with a grown one. */
+/** The stalk, leaf and ground shadow shared by the real-fruit drawings. */
 function furniture(stem: StemForm, leaf: LeafForm): [Stroke, Stroke, Stroke] {
   const stalk = stem === 'hooked' ? HOOK : STALK
 
@@ -4432,6 +4426,43 @@ export const SHADOW_SHADOW: Stroke[] = [
     ].join(' '),
     role: 'ambient',
   },
+]
+
+/** The paw fruit: a gourd pressed inward on its near side. */
+const PAW_BODY: Body = { family: 'gourd', cy: 112 }
+
+/**
+ * A paw pressed into the fruit, its four toe pads in a slanted arc beside
+ * the palm pad. In episode 376, chapter 484, Kuma names the fruit and
+ * repels Zoro's attacks and the air with the pads on his hands.
+ */
+export const PAW_PAW: Stroke[] = [
+  ...kitBody(PAW_BODY, [78, 88], (x, y) => x < 80 || y < 102 || y > 150),
+  ...skin([
+    [75, 92, 6],
+    [76, 149, -6],
+  ]),
+  ...sprout(PAW_BODY, -4, 'left'),
+  {
+    d: [
+      ring(91, 120, 5),
+      ring(98, 107, 5),
+      ring(112, 104, 5),
+      ring(124, 113, 5),
+      'M101 130 C105 124 116 123 120 129',
+      'C125 135 121 145 114 145 C108 145 98 138 101 130 Z',
+    ].join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      `M${point(...onRim(PAW_BODY, 102, 1))}`,
+      'C89 104 80 112 80 124 C80 139 91 149',
+      point(...onRim(PAW_BODY, 150, 1)),
+    ].join(' '),
+    role: 'soft',
+  },
+  shadowUnder(1),
 ]
 
 /** The glint fruit: a pear, its near side gone at the speed of light. */

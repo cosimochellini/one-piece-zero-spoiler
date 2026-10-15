@@ -14,6 +14,7 @@ import {
   MAGNET_MAGNET,
   MARK_MARK,
   MILLET_MILLET,
+  PAW_PAW,
   RIPE_RIPE,
   SCROLL_SCROLL,
   SNAKE_OROCHI,
@@ -26,6 +27,7 @@ import {
 import { entities } from '~/data/entities'
 import { fruits } from '~/data/fruits'
 import { reveal } from '~/data/reveal'
+import { LOCALES } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'
 import type { FruitEatersView, FruitView, Slot } from '~/lib/view/records'
 
@@ -36,7 +38,7 @@ import {
   fruitSiblings,
 } from './fruits.server'
 import { handleOf } from './handle.server'
-import { drawingsFor } from './pages.server'
+import { characterPage, drawingsFor } from './pages.server'
 import { peekFruit } from './peek.server'
 
 /**
@@ -336,6 +338,7 @@ describe('a fruit’s own page', () => {
       drawing: SWAMP_SWAMP,
     },
     { id: 'mark-mark-fruit', episode: 532, chapter: 620, drawing: MARK_MARK },
+    { id: 'paw-paw-fruit', episode: 376, chapter: 484, drawing: PAW_PAW },
   ])(
     'opens $id with its power only at its thresholds',
     ({ id, episode, chapter, drawing }) => {
@@ -376,6 +379,43 @@ describe('a fruit’s own page', () => {
     expect(fruitPage('monkey-d-luffy', ep(1200), 'en')).toBeUndefined()
     expect(fruitPage('not-a-fruit', ep(1200), 'en')).toBeUndefined()
   })
+})
+
+describe('Paw-Paw’s synchronized reveal', () => {
+  it.each([
+    { bookmark: null, open: false },
+    { bookmark: ep(375), open: false },
+    { bookmark: ep(376), open: true },
+    { bookmark: { mode: 'chapter', chapter: 483 }, open: false },
+    { bookmark: { mode: 'chapter', chapter: 484 }, open: true },
+  ] as const)(
+    'opens every surface together at $bookmark',
+    ({ bookmark, open }) => {
+      for (const locale of LOCALES) {
+        const page = fruitPage('paw-paw-fruit', bookmark, locale)
+        const sheet = fruitSheet(bookmark, locale)
+        const specimen = sheet.bands
+          .flatMap((band) => band.open)
+          .find((fruit) => fruit.id === 'paw-paw-fruit')
+        const covered = sheet.bands
+          .flatMap((band) => band.covered)
+          .find((fruit) => fruit.handle === handleOf('paw-paw-fruit'))
+        const dossier = characterPage('bartholomew-kuma', bookmark, locale)
+        const eaters = fruitEaters('paw-paw-fruit', bookmark, locale)
+        const links = dossier?.detail.facts.devilFruit ?? []
+
+        expect(page?.detail.slot.open).toBe(open)
+        expect(specimen !== undefined).toBe(open)
+        expect(covered !== undefined).toBe(!open)
+        expect(eaters.eaters[0]).toMatchObject({ open })
+        expect(links.some((link) => link.id === 'paw-paw-fruit')).toBe(open)
+        expect(JSON.stringify(page).includes('"strokes"')).toBe(open)
+
+        saysNothing(page, bookmark)
+        saysNothing(sheet, bookmark)
+      }
+    },
+  )
 })
 
 describe('who ate it', () => {
@@ -450,11 +490,11 @@ describe('the rail of the same kind', () => {
   })
 
   it('measures nearness in the unit the reader counts in', () => {
-    // Paw-Paw is filed at episode 372 and chapter 233, which is a different
-    // neighbourhood in each unit, so the two rails must not agree.
-    const byEpisode = fruitSiblings('paw-paw-fruit', ep(1200), 'en')
+    // Bomb-Bomb’s neighbours include Munch-Munch before Slip-Slip in
+    // episodes, but Slip-Slip before Munch-Munch in chapters.
+    const byEpisode = fruitSiblings('bomb-bomb-fruit', ep(1200), 'en')
     const byChapter = fruitSiblings(
-      'paw-paw-fruit',
+      'bomb-bomb-fruit',
       { mode: 'chapter', chapter: 1200 },
       'en',
     )
