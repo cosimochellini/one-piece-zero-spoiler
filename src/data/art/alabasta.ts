@@ -80,6 +80,43 @@ const ACE_HAT: Stroke[] = [
   { d: 'M100 66 l6 -4 M104 80 l6 -4 M106 94 l6 -4', role: 'ambient' },
 ]
 
+/**
+ * The cap of the two years, from 517: every hat Chopper wears over it or
+ * swaps it for comes back to it.
+ */
+const CHOPPER_CAP: Stroke[] = [
+  { d: 'M36 124 C32 76 54 48 80 48 C106 48 128 76 124 124' },
+  {
+    d: (
+      [
+        [51, 104],
+        [55, 90],
+        [62, 78],
+        [70, 71],
+        [80, 68],
+        [90, 71],
+        [98, 78],
+        [105, 90],
+        [109, 104],
+      ] satisfies [number, number][]
+    )
+      .map(([x, y]) => circle(x, y, 1.6))
+      .join(' '),
+    role: 'soft',
+  },
+  { d: circle(80, 90, 17), role: 'accent' },
+  { d: 'M72 82 l16 16 M88 82 l-16 16', role: 'accent' },
+  { d: CHOPPER_BRIM, role: 'accent' },
+  { d: 'M40 130 C38 140 40 148 44 154 M118 130 C120 140 118 148 114 154' },
+  { d: 'M40 154 l8 -2 l2 8 l-8 2z M110 152 l8 2 l-2 8 l-8 -2z', role: 'soft' },
+  ...CHOPPER_ANTLERS,
+  {
+    d: 'M104 56 l-5 6 M113 64 l-6 7 M119 75 l-6 7 M122 88 l-5 7 M124 101 l-4 6',
+    role: 'ambient',
+  },
+  shadow(80, 176, 44),
+]
+
 /** Ace's hat without its flame, the outline in his colour: from 483 on. */
 const ACE_HAT_OUT: Stroke[] = ACE_HAT.map((stroke): Stroke => {
   // The outline of the hat takes the accent the flame had.
@@ -1557,49 +1594,7 @@ export const alabastaRedrawn: Redrawings = {
   // with dots, the cross on a disc at the front, the old brim showing under
   // it, flaps buckled at the sides and the antlers out through them. The far
   // side is hatched. He walks Sabaody eating a Grand Bun at 517 (ch. 598).
-  'tony-tony-chopper': [
-    {
-      episode: 517,
-      chapter: 598,
-      value: [
-        { d: 'M36 124 C32 76 54 48 80 48 C106 48 128 76 124 124' },
-        {
-          d: (
-            [
-              [51, 104],
-              [55, 90],
-              [62, 78],
-              [70, 71],
-              [80, 68],
-              [90, 71],
-              [98, 78],
-              [105, 90],
-              [109, 104],
-            ] satisfies [number, number][]
-          )
-            .map(([x, y]) => circle(x, y, 1.6))
-            .join(' '),
-          role: 'soft',
-        },
-        { d: circle(80, 90, 17), role: 'accent' },
-        { d: 'M72 82 l16 16 M88 82 l-16 16', role: 'accent' },
-        { d: CHOPPER_BRIM, role: 'accent' },
-        {
-          d: 'M40 130 C38 140 40 148 44 154 M118 130 C120 140 118 148 114 154',
-        },
-        {
-          d: 'M40 154 l8 -2 l2 8 l-8 2z M110 152 l8 2 l-2 8 l-8 -2z',
-          role: 'soft',
-        },
-        ...CHOPPER_ANTLERS,
-        {
-          d: 'M104 56 l-5 6 M113 64 l-6 7 M119 75 l-6 7 M122 88 l-5 7 M124 101 l-4 6',
-          role: 'ambient',
-        },
-        shadow(80, 176, 44),
-      ],
-    },
-  ],
+  'tony-tony-chopper': [{ episode: 517, chapter: 598, value: CHOPPER_CAP }],
 
   // The same hat, the flame gone: the hat itself takes his colour, and a thin
   // wisp of smoke rises where the flame stood. He dies at Marineford at 483
