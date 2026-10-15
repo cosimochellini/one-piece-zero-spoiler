@@ -141,7 +141,22 @@ function TileLink({
 }
 
 const styles = stylex.create({
-  tile: { gap: space.xs2, display: 'grid', minWidth: 0 },
+  // Hundreds of tiles below the fold are most of the signal book's layout
+  // and paint, so the browser skips each one until it nears the screen
+  // (#621). The size it stands in for is the tile's own, which is the same at
+  // every width and in both locales: a 3.5rem plate at 4:5 sets the row, and
+  // the episode is one line under it. An exact size keeps the page's height,
+  // so Back restores the scroll position to the same tile. The clip margin
+  // lets the link's focus ring past the edge, which paint containment would
+  // otherwise cut off.
+  tile: {
+    containIntrinsicSize: 'auto 5.825rem',
+    gap: space.xs2,
+    contentVisibility: 'auto',
+    display: 'grid',
+    overflowClipMargin: space.xs,
+    minWidth: 0,
+  },
   row: {
     alignItems: 'center',
     columnGap: space.sm,
