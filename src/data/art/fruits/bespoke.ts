@@ -3891,16 +3891,18 @@ export const HORSE_HORSE: Stroke[] = [
  * What a Zoan grows that is round in section, a trunk, a tail, a claw: the
  * line down its middle as a chain of cubics, and how far either edge stands
  * off that line at each point along it, 0 at the root and 1 at the end.
- * With `rim`, both edges of the root are set on that body's rim, on its
- * right (1) or left (-1) side, so they leave the skin there. With `end`,
- * those points close the far end instead of a round cap: a fist, or with
- * none at all a square end.
+ * `rim` sets both edges of the root on that body's rim, on its right (1)
+ * or left (-1) side, so they leave the skin there; `'free'` leaves the root
+ * where the line and `half` put it, for a piece not grown from the rim.
+ * With `end`, those points close the far end instead of a round cap: a
+ * fist, or with none at all a square end.
  */
 interface Limb {
   end?: Point[]
   half: (along: number) => number
   line: Point[]
-  rim?: { body: Body; way: number }
+  /** Both root edges on this body's rim, or 'free' for a piece that is not grown from it. */
+  rim: 'free' | { body: Body; way: number }
 }
 
 /** A point of a limb, `along` its middle line and `across` it. */
@@ -3922,7 +3924,7 @@ function limbOutline(
       const along = step / steps
       const at = onLimb(limb, along, way * limb.half(along) * rough(step, way))
 
-      return step === 0 && limb.rim !== undefined ?
+      return step === 0 && limb.rim !== 'free' ?
           onRim(limb.rim.body, at[1], limb.rim.way)
         : at
     })
@@ -4185,7 +4187,15 @@ const CLAW_LINES: Point[][] = [
 
 /** One claw: thick where it leaves the stub, curved to a sharp point. */
 function claw(line: Point[]): string {
-  return limbOutline({ line, half: (along) => 3.5 * (1 - along) }, 10)
+  return limbOutline(
+    {
+      line,
+      half: (along) => 3.5 * (1 - along),
+      // Free: the claws grow out of the end of `STUB`, not the rim.
+      rim: 'free',
+    },
+    10,
+  )
 }
 
 /**
@@ -4233,6 +4243,8 @@ const WISP: Limb = {
         11 * Math.sqrt(1 - (1 - along / 0.18) ** 2)
       : 1.4 + 9.6 * Math.max(0, 1 - (along - 0.18) / 0.82) ** 1.4
   },
+  // Free: the wisp dives into the crown, it is not grown from the rim.
+  rim: 'free',
 }
 
 /**
@@ -4351,7 +4363,8 @@ function footprint(heel: Point, toe: Point): string {
       return wide * (0.55 + 0.45 * Math.sin(along * Math.PI) ** 0.5)
     }
 
-    return `${limbOutline({ line, half }, 8)} Z`
+    // Free: a footprint on the ground, nowhere near the fruit.
+    return `${limbOutline({ line, half, rim: 'free' }, 8)} Z`
   }
 
   return `${piece(0.42, 0.88, 4.2)} ${piece(0, 0.26, 3.2)}`
@@ -4821,6 +4834,8 @@ const STRIP: Limb = {
   ],
   half: (along) => (9 - 3 * along) * Math.cos(Math.PI * along),
   end: [],
+  // Free: a peeled segment hinged across the rib cut, not grown from the rim.
+  rim: 'free',
 }
 
 /**
