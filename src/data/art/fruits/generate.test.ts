@@ -5,6 +5,7 @@ import type { Timeline } from '~/data/types'
 
 import { fruitArt, fruitRedrawn } from '.'
 import {
+  AGE_AGE,
   ARMS_ARMS,
   ARROW_ARROW,
   ART_ART,
@@ -49,6 +50,7 @@ import {
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
+  GABU_GABU,
   GAS_GAS,
   GLARE_GLARE,
   GLINT_GLINT,
@@ -87,6 +89,7 @@ import {
   PUMP_PUMP,
   PUSH_PUSH,
   REVIVE_REVIVE,
+  RIDE_RIDE,
   RIPE_RIPE,
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
@@ -121,6 +124,7 @@ import {
   TREMOR_TREMOR,
   TURTLE_TURTLE,
   VENOM_VENOM,
+  WARP_WARP,
   WASH_WASH,
   WAX_WAX,
   WHIP_WHIP,
@@ -177,6 +181,10 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'age-age-fruit': AGE_AGE,
+  'ride-ride-fruit': RIDE_RIDE,
+  'gabu-gabu-fruit': GABU_GABU,
+  'warp-warp-fruit': WARP_WARP,
   'huge-huge-fruit': HUGE_HUGE,
   'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
   'soot-soot-fruit': SOOT_SOOT,
@@ -445,6 +453,20 @@ describe('the fruit path alphabet', () => {
 })
 
 describe('the fruit sheet', () => {
+  it('spits the liquor clear of the intact gourd', () => {
+    const shell = traced(GABU_GABU[0]?.d ?? '')
+
+    expect(shell).not.toHaveLength(0)
+
+    const stream = GABU_GABU.filter((stroke) => stroke.role === 'accent')
+
+    for (const stroke of stream) {
+      for (const at of traced(stroke.d)) {
+        expect(depth(shell, at)).toBeLessThan(0)
+      }
+    }
+  })
+
   it('keeps eight grounded spider legs, four rooted on each side', () => {
     const legs = SPIDER_ROSAMYGALE.filter((stroke) => stroke.role === 'accent')
       .flatMap(({ d }) => d.split(' M'))
