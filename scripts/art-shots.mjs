@@ -62,7 +62,7 @@ export async function shotRows(args) {
  * Locate an existing Chrome, without downloading a browser.
  * @returns {string} Executable path.
  */
-export function chromePath() {
+function chromePath() {
   const candidates =
     process.env.CHROME_PATH === undefined ?
       [
