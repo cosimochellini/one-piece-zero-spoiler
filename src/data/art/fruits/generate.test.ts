@@ -32,6 +32,7 @@ import {
   DOG_DACHSHUND,
   DOG_JACKAL,
   DOG_MAKAMI,
+  DOG_NINE_TAILED_FOX,
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_ALLOSAURUS,
@@ -59,6 +60,7 @@ import {
   HOLLOW_HOLLOW,
   HORM_HORM,
   HORSE_HORSE,
+  HUGE_HUGE,
   HUMAN_DAIBUTSU,
   HUMAN_HUMAN,
   ICE_ICE,
@@ -99,6 +101,7 @@ import {
   SNAKE_OROCHI,
   SNIP_SNIP,
   SNOW_SNOW,
+  SOOT_SOOT,
   SOUL_SOUL,
   SPARKLE_SPARKLE,
   SPIDER_ROSAMYGALE,
@@ -120,6 +123,7 @@ import {
   VENOM_VENOM,
   WASH_WASH,
   WAX_WAX,
+  WHIP_WHIP,
   WOODS_WOODS,
   WRING_WRING,
 } from './bespoke'
@@ -173,6 +177,10 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'huge-huge-fruit': HUGE_HUGE,
+  'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
+  'soot-soot-fruit': SOOT_SOOT,
+  'whip-whip-fruit': WHIP_WHIP,
   'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
   'fish-fish-fruit-mythical-model-azure-dragon': FISH_AZURE_DRAGON,
   'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': SPIDER_ROSAMYGALE,

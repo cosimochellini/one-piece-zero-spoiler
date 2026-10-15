@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * One hundred and three are drawn as fruit + power (#461), on the bodies of
+ * One hundred and seven are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -5966,6 +5966,120 @@ export const DOG_MAKAMI: Stroke[] = [
       return MAKAMI_FUR.inner.includes(step) ? 0.8 : 1
     }),
     role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** The pear leans under Kujaku's lash, which commands buildings in 1113/1080. */
+const WHIP_BODY: Body = { family: 'pear', cy: 118 }
+
+/** The skin leans with the blow; the ground stays level. */
+function whipped(x: number, y: number): string {
+  return point(x + (WHIP_BODY.cy - y) * 0.16, y)
+}
+
+/** A lash drives the pear sideways, as Kujaku commands objects in 1113/1080. */
+export const WHIP_WHIP: Stroke[] = [
+  ...[
+    ...kitBody(WHIP_BODY, [101, 113, 145], (_x, y) => y < 120 || y > 133),
+    ...skin([
+      [80, 104, 6],
+      [72, 144, -6],
+      [92, 144, 5],
+    ]),
+    ...sprout(WHIP_BODY, -4, 'left'),
+  ].map((stroke) => tipped(stroke, whipped)),
+  {
+    d: 'M12 110 C33 104 47 143 81 128 C108 116 128 137 142 115 L149 100 M143 98 L151 91 M149 108 L154 106',
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Karasu drives hard soot spikes up from the ground in episode 1117/1083. */
+const SOOT_BODY: Body = { family: 'gourd', cy: 112 }
+
+/** The gourd pierced by Obelisusu, shown in episode 1117, chapter 1083. */
+export const SOOT_SOOT: Stroke[] = [
+  ...kitBody(
+    SOOT_BODY,
+    [88, 99, 110],
+    (x, y) =>
+      (y < 135 && (x > 60 || y < 115)) || (y >= 135 && x > 60 && x < 97),
+  ),
+  ...skin([
+    [69, 98, 6],
+    [88, 117, -6],
+    [70, 128, 5],
+  ]),
+  ...sprout(SOOT_BODY, 5, 'right'),
+  {
+    d: 'M33 169 L39 119 L49 72 L59 166 Z M77 172 L96 125 L110 83 L115 169 Z M121 172 L132 131 L143 110 L149 172 Z',
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Devon reveals the fox's nine tails in episode 917, chapter 925. No face. */
+const FOX_BODY: Body = { family: 'oblong', cy: 110 }
+
+/** Leave room for the fan on the far flank. */
+function foxSide(x: number, y: number): string {
+  return point(x - 24, y)
+}
+
+/** Three low sweeps split into nine tips: Devon’s fox in episode 917/925. */
+export const DOG_NINE_TAILED_FOX: Stroke[] = [
+  ...[
+    ...kitBody(
+      FOX_BODY,
+      [92, 104, 116],
+      (x, y) => x < 80 || y < 129 || y > 151,
+    ),
+    ...skin([
+      [69, 101, 7],
+      [78, 127, -6],
+      [72, 143, 5],
+    ]),
+    ...sprout(FOX_BODY, -4, 'left'),
+  ].map((stroke) => tipped(stroke, foxSide)),
+  {
+    d: [
+      `M${foxSide(...onRim(FOX_BODY, 129, 1))} C100 116 119 111 136 105 L129 119 L149 113 L138 129 L153 127 C137 146 111 151 82 141`,
+      'M82 139 C105 136 122 140 147 145 L134 151 L153 158 L136 161 L149 173 C125 175 101 163 78 148',
+      `M78 147 C98 157 118 168 132 178 L116 177 L126 188 L108 182 L112 194 C93 183 80 166 ${foxSide(...onRim(FOX_BODY, 151, 1))}`,
+    ].join(' '),
+    role: 'accent',
+  },
+  tipped(shadowUnder(1), foxSide),
+]
+
+/** Wolf stands in the sea in 513/595; his fruit is named in 1113/1080. */
+const HUGE_BODY: Body = { family: 'oblong', cy: 110 }
+
+/** A tall body, still within the kit's drawing box. */
+function gigantic(x: number, y: number): string {
+  return point(73 + (x - 80) * 0.85, 108 + (y - HUGE_BODY.cy) * 1.4)
+}
+
+/** A giant beside an ordinary fruit, standing in the sea as Wolf does in 513/595. */
+export const HUGE_HUGE: Stroke[] = [
+  ...[
+    ...kitBody(HUGE_BODY, [95, 108, 123]),
+    ...skin([
+      [68, 91, 7],
+      [89, 123, -7],
+      [69, 142, 6],
+    ]),
+    ...sprout(HUGE_BODY, 5, 'right'),
+  ].map((stroke) => tipped(stroke, gigantic)),
+  {
+    d: 'M9 125 C26 117 43 132 63 125 C83 118 101 132 121 125 C133 120 143 122 151 125',
+    role: 'accent',
+  },
+  // A plain fruit, not another power: the comparison makes the scale visible.
+  {
+    d: `${tipped({ d: outline(HUGE_BODY) }, (x, y) => point(139 + (x - 80) * 0.23, 160 + (y - 110) * 0.3)).d} M139 147 L140 142`,
   },
   shadowUnder(1),
 ]
