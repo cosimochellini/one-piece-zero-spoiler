@@ -80,6 +80,12 @@ const ACE_HAT: Stroke[] = [
   { d: 'M100 66 l6 -4 M104 80 l6 -4 M106 94 l6 -4', role: 'ambient' },
 ]
 
+/** Ace's hat without its flame, the outline in his colour: from 483 on. */
+const ACE_HAT_OUT: Stroke[] = ACE_HAT.map((stroke): Stroke => {
+  // The outline of the hat takes the accent the flame had.
+  return stroke.role === undefined ? { ...stroke, role: 'accent' } : stroke
+})
+
 /** Mr. 13's left clam shell: its ribs, the claws on its lip, its hinge. */
 const CLAWED_SHELL: Stroke[] = [
   {
@@ -102,6 +108,34 @@ const VULTURE_WING =
 /** A falcon's feather, drawn about its centre, quill down: Pell's, from 125. */
 const FEATHER =
   'M0 -14 C7 -8 7 6 0 12 C-7 6 -7 -8 0 -14 M0 -10 V18 M0 -2 l-4 -4 M0 4 l4 -4'
+
+/** The wrist wraps, the black-furred hand and the four claws of Chaka's jackal paw, closed in a fist. */
+const CHAKA_PAW: Stroke[] = [
+  { d: `${ellipse(120, 40, 18, 5)} M102 40 V66 A18 5 0 0 0 138 66 V40` },
+  {
+    d: 'M103 69 L99 78 L102 80 L97 92 L100 94 L95 106 L97 118 C92 128 92 142 96 150 Q101.5 158 107 150 Q112.5 158 118 150 Q123.5 158 129 150 Q134.5 158 140 150 C146 142 146 128 143 118 L145 106 L140 94 L143 92 L138 80 L141 78 L137 69 M99.5 154 C99 162 100.5 169 103.5 175 C104.5 168 104.5 161 103.5 155 M110.5 154 C110 162 111.5 169 114.5 175 C115.5 168 115.5 161 114.5 155 M121.5 154 C121 162 122.5 169 125.5 175 C126.5 168 126.5 161 125.5 155 M132.5 154 C132 162 133.5 169 136.5 175 C137.5 168 137.5 161 136.5 155',
+  },
+  {
+    d: 'M102 50 L138 43 M102 59 L138 52 M102 66 L138 61 M96 124 Q120 132 144 124 M107 150 V131 M118 150 V132.5 M129 150 V131',
+    role: 'soft',
+  },
+  {
+    d: 'M130 82 l7 -3 M132 96 l7 -3 M134 110 l7 -3 M136 134 l6 -3 M136 144 l5 -2.5',
+    role: 'ambient',
+  },
+]
+
+/** One of Pell's falcon wings, spread and seen from below: the pointed flight feathers barred dark and light. */
+const PELL_WING: Stroke[] = [
+  {
+    d: 'M30 106 C18 90 16 68 26 50 C36 32 60 18 96 8 L88 22 L98 26 L86 38 L96 44 L82 52 L90 60 L74 66 L80 74 L64 80 L66 88 L52 92 L50 100 L38 102 C35 105 33 106 30 106 Z',
+  },
+  { d: 'M38 100 C30 84 30 66 40 52 C50 40 66 28 88 20', role: 'soft' },
+  {
+    d: 'M84 32 l-3 5 M76 46 l-3 5 M68 58 l-3 5 M60 70 l-3 5 M50 82 l-3 5 M42 92 l-3 5 M76 28 l-3 5 M68 40 l-3 5 M60 52 l-3 5 M51 64 l-3 5 M43 76 l-3 5',
+    role: 'ambient',
+  },
+]
 
 /** One strip of sticking plaster, drawn about its centre: Igaram's, from 111. */
 const PLASTER =
@@ -300,7 +334,8 @@ export const alabastaArt = {
   ],
 
   // The duck himself, side on: the knitted cap, the saddle and its bag, and
-  // the barrel canteen with its straw hung at his chest (65).
+  // the barrel canteen with its straw hung at his chest (65). The crew's
+  // arm band goes round his wing from 92 to 129, in `alabastaRedrawn`.
   'karoo': [
     {
       d: 'M36 120 C36 98 58 90 82 94 C98 96 106 104 108 112 C112 134 94 148 70 148 C48 148 36 138 36 120 Z',
@@ -472,7 +507,8 @@ export const alabastaArt = {
 
   // Her wide-brimmed hat in 3/4, the crown standing on the brim and the
   // checked band round it: what she wears when she is first seen, on
-  // holiday with her partner (70).
+  // holiday with her partner (70). The apple beret of 1149 is in
+  // `alabastaRedrawn`.
   'miss-goldenweek': [
     { d: 'M8 122 C14 146 146 146 152 122' },
     { d: 'M8 122 C10 112 32 106 54 104 M106 104 C128 106 150 112 152 122' },
@@ -1027,7 +1063,8 @@ export const alabastaArt = {
 
   // His sword with its gold cross-guard, sheathed, laid across a fold of the
   // white robe of the royal guard, the four-pointed stars of its pattern
-  // on the cloth (91).
+  // on the cloth (91). The falcon's wing joins it from 106, in
+  // `alabastaRedrawn`.
   'pell': [
     { d: 'M14 150 L104 136 L148 156 L58 172 Z' },
     {
@@ -1050,6 +1087,7 @@ export const alabastaArt = {
   // His massive sword in 3/4, drawn a hand's breadth out of its sheath:
   // the broad blade with its ridge and its far face hatched, the wide
   // guard and the long grip he carries at his hip as a royal guard (91).
+  // The jackal's paw joins it from 120, in `alabastaRedrawn`.
   'chaka': [
     { d: 'M66 124 V176 Q66 190 80 192 Q94 190 94 176 V124' },
     { d: 'M62 116 H98 V126 H62 Z' },
@@ -1071,7 +1109,8 @@ export const alabastaArt = {
   // His cowboy hat in 3/4, the crown pinched at the top, the string of beads
   // round it and the stitching along the brim, and a flame standing up out
   // of it: he stops Smoker's smoke with fire at Nanohana (94). The flame
-  // goes out at his death, from 483, in `alabastaRedrawn`.
+  // goes out at his death, from 483, and the hat hangs over his grave from
+  // 505, in `alabastaRedrawn`.
   'portgas-d-ace': [
     ...ACE_HAT,
     {
@@ -1444,6 +1483,23 @@ export const alabastaArt = {
   ],
 } satisfies Drawings
 
+/** Pell's headscarf, hanging empty, as he leaves it behind at 130. */
+const PELL_SCARF: Stroke[] = [
+  {
+    d: 'M70 24 C58 30 50 60 46 96 C42 126 36 150 30 166 C40 160 46 170 56 164 C64 172 72 162 80 170 C88 162 98 172 106 164 C114 170 122 160 132 166 C124 140 118 110 114 80 C110 50 100 28 88 22 C82 20 76 20 70 24 Z',
+  },
+  { d: 'M70 24 C74 32 84 32 88 22', role: 'soft' },
+  {
+    d: 'M64 40 C60 80 58 120 56 162 M80 30 C80 80 80 120 80 168 M96 40 C100 80 104 120 106 162',
+    role: 'soft',
+  },
+  ...moved(alabastaArt.pell.slice(3, 4), 'translate(0 -50)'),
+  {
+    d: 'M112 70 l6 -4 M116 92 l6 -4 M120 114 l6 -4 M124 136 l6 -4',
+    role: 'ambient',
+  },
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const alabastaRedrawn: Redrawings = {
   // The cap of the two years, worn over the old hat: a round crown ringed
@@ -1502,17 +1558,53 @@ export const alabastaRedrawn: Redrawings = {
       episode: 483,
       chapter: 574,
       value: [
-        ...ACE_HAT.map((stroke): Stroke => {
-          // The outline of the hat takes the accent the flame had.
-          return stroke.role === undefined ?
-              { ...stroke, role: 'accent' }
-            : stroke
-        }),
+        ...ACE_HAT_OUT,
         {
           d: 'M80 52 C76 44 84 38 80 30 C77 24 83 20 81 14',
           role: 'ambient',
           dashed: true,
         },
+      ],
+    },
+    // His grave in the New World: a plain block of stone with his knife
+    // stuck upright in its top, and the hat, the flame long gone, hung tilted
+    // on the hilt, the string of beads hanging from the brim. He is buried
+    // there at 505 (ch. 590).
+    {
+      episode: 505,
+      chapter: 590,
+      value: [
+        {
+          d: 'M0 142 C12 141 22 140 34 140 M116 134 C130 133 146 132 160 132',
+          role: 'ambient',
+        },
+        {
+          d: 'M34 150 V122 H104 V150 M34 122 L46 112 H116 L104 122 M116 112 V140 L104 150',
+        },
+        { d: 'M108 126 l6 -5 M108 137 l6 -5 M108 147 l4 -3', role: 'ambient' },
+        {
+          d: 'M72 117 V108 M60 108 C66 105 78 105 84 108 M71.5 104 C68.5 95 68 86 70 77.2',
+          role: 'soft',
+        },
+        {
+          d: 'M67 106 C64 97 63 87 65.5 77.6 M77 106 C73.5 97 73 87 74.5 76.6',
+        },
+        ...moved(
+          ACE_HAT_OUT,
+          'translate(78 54) rotate(-18) scale(0.56) translate(-80 -100)',
+        ),
+        {
+          d: dots([
+            [108, 66],
+            [109, 72],
+            [109, 78],
+            [108, 84],
+            [106, 89],
+            [103, 93],
+          ]),
+          role: 'soft',
+        },
+        shadow(74, 156, 50),
       ],
     },
   ],
@@ -1762,43 +1854,33 @@ export const alabastaRedrawn: Redrawings = {
     },
   ],
 
-  // The same sword on the same robe, and his feathers drifting down onto
-  // them: he flies the bomb up out of the city at 125 (ch. 208).
+  // The same sword on the same robe, and over them one of the falcon's wings
+  // he flies on, spread, its flight feathers barred dark and light. He shows
+  // the Zoan when he swoops on Vivi's captors at 106 (ch. 169).
+  // At 125 (ch. 208) his feathers drift down onto them as he flies the bomb
+  // up out of the city.
   // At 130 (ch. 217) he leaves a desert clinic on foot and forgets his
-  // headscarf: the white cloth alone, hanging, the stars of the robe on it.
+  // headscarf: the white cloth alone, hanging, the stars of the robe on it,
+  // and beside it the wing he still has.
   'pell': [
+    { episode: 106, chapter: 169, value: [...alabastaArt.pell, ...PELL_WING] },
     {
       episode: 125,
       chapter: 208,
       value: [
         ...alabastaArt.pell,
-        { d: FEATHER, transform: 'translate(30 40) rotate(-35)' },
-        { d: FEATHER, transform: 'translate(64 18) rotate(20)' },
-        {
-          d: FEATHER,
-          transform: 'translate(128 104) rotate(60)',
-          role: 'soft',
-        },
+        ...PELL_WING,
+        { d: FEATHER, transform: 'translate(60 124) rotate(70)' },
+        { d: FEATHER, transform: 'translate(128 24) rotate(20)' },
       ],
     },
     {
       episode: 130,
       chapter: 217,
       value: [
-        {
-          d: 'M70 24 C58 30 50 60 46 96 C42 126 36 150 30 166 C40 160 46 170 56 164 C64 172 72 162 80 170 C88 162 98 172 106 164 C114 170 122 160 132 166 C124 140 118 110 114 80 C110 50 100 28 88 22 C82 20 76 20 70 24 Z',
-        },
-        { d: 'M70 24 C74 32 84 32 88 22', role: 'soft' },
-        {
-          d: 'M64 40 C60 80 58 120 56 162 M80 30 C80 80 80 120 80 168 M96 40 C100 80 104 120 106 162',
-          role: 'soft',
-        },
-        ...moved(alabastaArt.pell.slice(3, 4), 'translate(0 -50)'),
-        {
-          d: 'M112 70 l6 -4 M116 92 l6 -4 M120 114 l6 -4 M124 136 l6 -4',
-          role: 'ambient',
-        },
-        shadow(80, 186, 46),
+        ...moved(PELL_SCARF, 'translate(44.4 38.4) scale(0.8)'),
+        ...moved(PELL_WING, 'translate(2 20) scale(0.8)'),
+        shadow(108, 188, 40),
       ],
     },
   ],
@@ -1834,6 +1916,80 @@ export const alabastaRedrawn: Redrawings = {
         },
         { d: 'M138 152 l6 -4 M140 162 l6 -4', role: 'ambient' },
         shadow(126, 186, 30),
+      ],
+    },
+  ],
+
+  // The same duck, a white band now tied round his near wing and knotted on
+  // top: the crew's arm bands, tied on at 92 (ch. 157). The X they hide is
+  // not drawn. The bands are off at the farewell, when the crew bare the
+  // mark, at 129 (ch. 216).
+  'karoo': [
+    {
+      episode: 92,
+      chapter: 157,
+      value: [
+        ...alabastaArt.karoo.slice(0, 9),
+        {
+          d: 'M70 112 C78 107 90 103 98 106 C103 110 102 120 96 123 C86 127 74 128 64 124',
+        },
+        { d: 'M78 108.8 Q81.5 118 79.5 127.6 M87 106.4 Q90.5 116 88.5 126.4' },
+        { d: 'M82 107.6 L76 101 M83.6 107.2 L86 99', role: 'soft' },
+        ...alabastaArt.karoo.slice(10),
+      ],
+    },
+    { episode: 129, chapter: 216, value: alabastaArt.karoo },
+  ],
+
+  // Her new beret in 3/4, puffed out into an apple: two round lobes with a
+  // dimple between them, a stalk and a leaf standing out of it, the rim
+  // band under the overhang, the far side hatched. She wears it in place of
+  // the brimmed hat when she is seen again at 1149 (ch. 1115).
+  'miss-goldenweek': [
+    {
+      episode: 1149,
+      chapter: 1115,
+      value: [
+        {
+          d: 'M40 118 C24 112 16 94 22 80 C28 66 42 60 56 62 C66 63 74 66 82 72 C90 64 100 60 112 60 C130 62 144 78 140 96 C138 108 132 116 122 118',
+        },
+        { d: 'M40 118 C56 126 104 126 122 118' },
+        { d: 'M48 122.5 V129 C58 138 104 138 114 129 V122.5' },
+        { d: 'M68 70 C74 78 90 78 96 66', role: 'soft' },
+        { d: 'M82 74 C82 64 84 56 88 50', role: 'accent' },
+        {
+          d: 'M84 58 C76 44 62 40 52 44 C58 58 72 62 84 58 Z M84 58 Q68 50 54 45',
+          role: 'accent',
+        },
+        {
+          d: 'M118 72 l6 -6 M126 84 l8 -6 M130 98 l8 -6 M126 110 l8 -6',
+          role: 'ambient',
+        },
+        {
+          d: 'M58 127 l4 -3 M70 128 l4 -3 M82 128 l4 -3 M94 128 l4 -3 M106 126 l3 -2',
+          role: 'ambient',
+        },
+        { d: 'M32 88 Q36 76 48 72', role: 'soft' },
+        shadow(80, 156, 48),
+      ],
+    },
+  ],
+
+  // His sword, smaller, and beside it the jackal's paw he fights Crocodile
+  // with: the white wraps at the wrist, the black-furred hand closed in a
+  // fist, four long curved claws below the knuckles. He shows the Zoan at
+  // 120 (ch. 196).
+  'chaka': [
+    {
+      episode: 120,
+      chapter: 196,
+      value: [
+        ...moved(
+          alabastaArt.chaka.slice(0, 11),
+          'translate(44 106) scale(0.82) translate(-80 -106)',
+        ),
+        ...CHAKA_PAW,
+        shadow(46, 184, 26),
       ],
     },
   ],
