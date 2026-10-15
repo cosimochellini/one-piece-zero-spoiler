@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * One hundred and eleven are drawn as fruit + power (#461), on the bodies of
+ * One hundred and fifteen are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -6185,5 +6185,112 @@ export const AGE_AGE: Stroke[] = [
       .join(' '),
     role: 'accent',
   },
+  shadowUnder(1),
+]
+
+/** Vegapunk's knowledge enlarges his brain in episode 1097, chapter 1067. */
+const BRAIN_BODY: Body = { family: 'gourd', cy: 125 }
+
+/** Widen the upper bulb while leaving the fruit's lower bulb small. */
+function brainBulb(x: number, y: number): string {
+  const upper = Math.max(0, Math.min(1, (BRAIN_BODY.cy - y) / 46))
+
+  return point(80 + (x - 80) * (0.8 + upper), y)
+}
+
+/** A swollen gourd and one winding fold, explained by Vegapunk in 1097/1067. */
+export const BRAIN_BRAIN: Stroke[] = [
+  ...[
+    ...kitBody(BRAIN_BODY, [92, 104, 140]),
+    ...skin([
+      [69, 139, 6],
+      [89, 149, -5],
+      [75, 159, 4],
+    ]),
+    ...sprout(BRAIN_BODY, -3, 'left'),
+  ].map((stroke) => tipped(stroke, brainBulb)),
+  {
+    d: 'M47 100 C53 88 68 88 72 98 C75 109 57 111 61 119 C65 126 84 121 86 111 C88 100 105 103 111 94 C114 88 109 84 104 84',
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Doc Q's contagious disease spreads among the Heart Pirates in 1093/1063. */
+const SICK_BODY: Body = { family: 'gourd', cy: 122 }
+
+/** Two unequal marks and a short link, without rot or an invented fever. */
+export const SICK_SICK: Stroke[] = [
+  ...kitBody(SICK_BODY, [94, 108, 145]),
+  ...skin([
+    [84, 96, 5],
+    [67, 140, -6],
+    [85, 156, 5],
+  ]),
+  ...sprout(SICK_BODY, 3, 'right'),
+  {
+    d: 'M72 108 C64 102 61 113 65 119 C60 125 69 133 75 128 C84 132 89 122 83 117 C87 110 79 103 72 108 Z M84 129 L90 140 M96 139 C91 134 86 140 89 145 C87 151 94 155 98 151 C104 153 107 146 102 143 C103 139 99 137 96 139 Z',
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Burgess lifts a mountain in episode 1093, chapter 1063. */
+const STRONG_BODY: Body = { family: 'heart', cy: 132 }
+
+/** The crown presses flat beneath the load. */
+function strongCrown(x: number, y: number): string {
+  return point(x, Math.max(94, y))
+}
+
+/** A mountain on the flattened crown, with the stalk clear on its left. */
+export const STRONG_STRONG: Stroke[] = [
+  ...kitBody(STRONG_BODY, [113, 127, 141]).map((stroke) =>
+    tipped(stroke, strongCrown),
+  ),
+  ...skin([
+    [65, 113, 6],
+    [88, 136, -7],
+    [75, 154, 5],
+  ]),
+  ...sprout(STRONG_BODY, -5, 'left').map((stroke) =>
+    tipped(stroke, (x, y) => point(x - 24, y + 4)),
+  ),
+  {
+    d: 'M64 91 L74 69 L84 74 L99 41 L113 66 L121 62 L135 89 L126 94 L116 91 L109 97 L99 94 L89 99 L80 94 L72 97 Z',
+    role: 'accent',
+  },
+  { d: 'M99 44 L97 71 L109 83 M84 76 L79 86 M119 69 L123 83', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Pizarro merges into the island and raises a stone hand in 1121/1087. */
+const ISLAND_BODY: Body = { family: 'heart', cy: 123 }
+
+/** Room for the island's hand beside the fruit, without a second hero. */
+function islandSide(x: number, y: number): string {
+  return point(x - 16, y)
+}
+
+/** The fruit's point joins the rock from which a curled hand rises. */
+export const ISLAND_ISLAND: Stroke[] = [
+  ...[
+    ...kitBody(ISLAND_BODY, [99, 113, 129], (_x, y) => y < 155),
+    ...skin([
+      [66, 103, 6],
+      [87, 123, -7],
+      [76, 144, 5],
+    ]),
+    ...sprout(ISLAND_BODY, -5, 'left'),
+  ].map((stroke) => tipped(stroke, islandSide)),
+  {
+    d: 'M19 171 L29 162 L48 166 L57 155 M71 155 L82 164 L105 163 L111 150 L107 138 L106 119 L111 114 L117 119 L117 106 L123 103 L128 111 L132 101 L138 104 L139 113 L146 112 L150 119 L147 139 L138 153 L136 166 L148 175 L125 178 L105 174 L86 180 L63 176 L43 181 L22 177',
+    role: 'accent',
+  },
+  {
+    d: 'M119 130 L127 124 L140 125 M128 124 L126 138 L135 143 M111 154 L122 158',
+    role: 'soft',
+  },
+  { d: 'M34 171 L44 174 M78 170 L87 173 M116 171 L124 173', role: 'ambient' },
   shadowUnder(1),
 ]
