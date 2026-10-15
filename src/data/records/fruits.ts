@@ -1350,8 +1350,8 @@ export const devilFruits: Saga = {
         en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
       },
       summary: {
-        it: 'Un modello ancestrale: il corpo diventa un brachiosauro, e il collo lungo viene fatto roteare come un martello contro quello che sta in piedi.',
-        en: 'An Ancient Model: the body becomes a brachiosaurus, and that long neck is swung like a hammer at whatever is still standing.',
+        it: 'Un modello ancestrale: il corpo diventa un brachiosauro, un dinosauro enorme dal collo lungo.',
+        en: 'An Ancient Model: the body becomes a brachiosaurus, an enormous dinosaur with a long neck.',
       },
       visual: {
         art: 'dragon-dragon-fruit-ancient-model-brachiosaurus',

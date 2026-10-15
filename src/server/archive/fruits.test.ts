@@ -2,18 +2,24 @@ import { describe, expect, it } from 'vitest'
 
 import {
   CAT_SABRE_TOOTH,
+  DOG_MAKAMI,
   DRAGON_ALLOSAURUS,
+  DRAGON_BRACHIOSAURUS,
   DRAGON_PACHYCEPHALOSAURUS,
   DRAGON_PTERANODON,
   DRAGON_SPINOSAURUS,
+  DRAGON_TRICERATOPS,
+  FISH_AZURE_DRAGON,
   MAGNET_MAGNET,
   MARK_MARK,
   MILLET_MILLET,
   RIPE_RIPE,
   SCROLL_SCROLL,
   SNAKE_OROCHI,
+  SPIDER_ROSAMYGALE,
   STRAW_STRAW,
   SWAMP_SWAMP,
+  TIME_TIME,
   WOODS_WOODS,
 } from '~/data/art/fruits/bespoke'
 import { entities } from '~/data/entities'
@@ -179,6 +185,37 @@ describe('a fruit’s own page', () => {
   })
 
   it.each([
+    {
+      id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
+      episode: 944,
+      chapter: 957,
+      drawing: DRAGON_BRACHIOSAURUS,
+    },
+    { id: 'time-time-fruit', episode: 963, chapter: 966, drawing: TIME_TIME },
+    {
+      id: 'dragon-dragon-fruit-ancient-model-triceratops',
+      episode: 1013,
+      chapter: 998,
+      drawing: DRAGON_TRICERATOPS,
+    },
+    {
+      id: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
+      episode: 1013,
+      chapter: 998,
+      drawing: SPIDER_ROSAMYGALE,
+    },
+    {
+      id: 'fish-fish-fruit-mythical-model-azure-dragon',
+      episode: 1014,
+      chapter: 999,
+      drawing: FISH_AZURE_DRAGON,
+    },
+    {
+      id: 'dog-dog-fruit-model-okuchi-no-makami',
+      episode: 1042,
+      chapter: 1020,
+      drawing: DOG_MAKAMI,
+    },
     {
       id: 'millet-millet-fruit',
       episode: 894,

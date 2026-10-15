@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * The last eighty-three are drawn as fruit + power (#461), on the bodies of
+ * One hundred and three are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -4006,6 +4006,28 @@ const WOLF_BODY: Body = { family: 'round', cy: 112 }
 /** Where along the tail it is fullest. */
 const PLUME = 0.45
 
+/** How a bushy tail swells and narrows: its half-width at three places. */
+interface Plume {
+  end: number
+  full: number
+  fullest: number
+  root: number
+}
+
+/**
+ * How wide a bushy tail is along it: `root` where it leaves the fruit,
+ * swelling to `full` at `fullest`, then narrowing to `end`.
+ */
+function plume({ end, full, fullest, root }: Plume): (along: number) => number {
+  return (along) => {
+    return along < fullest ?
+        root + (full - root) * Math.sin((Math.PI / 2) * (along / fullest))
+      : end
+          + (full - end)
+            * Math.cos((Math.PI / 2) * ((along - fullest) / (1 - fullest)))
+  }
+}
+
 /**
  * The tail: out of the lower side, sweeping out and down, then curling up
  * at its tip; narrow at the root, a full plume in the middle, and tapering
@@ -4018,11 +4040,7 @@ const TAIL: Limb = {
     [148, 170],
     [146, 146],
   ],
-  half: (along) => {
-    return along < PLUME ?
-        6 + 9 * Math.sin((Math.PI / 2) * (along / PLUME))
-      : 2.5 + 12.5 * Math.cos((Math.PI / 2) * ((along - PLUME) / (1 - PLUME)))
-  },
+  half: plume({ root: 6, full: 15, end: 2.5, fullest: PLUME }),
   rim: { body: WOLF_BODY, way: 1 },
 }
 
@@ -5572,5 +5590,367 @@ export const SNAKE_OROCHI: Stroke[] = [
   ]),
   ...sprout(OROCHI_BODY, 0, 'right'),
   { d: OROCHI_LOOPS, role: 'accent' },
+  shadowUnder(1),
+]
+
+/** Queen's fruit: a pear, one long neck rising from its near shoulder. */
+const BRACHIOSAURUS_BODY: Body = { family: 'pear', cy: 128 }
+
+/**
+ * The neck: out of the near shoulder and steeply up and away from the
+ * fruit, high above the crown, thick at the root and narrowing.
+ */
+const BRACHIOSAURUS_NECK: Limb = {
+  line: [
+    [66, 94],
+    [56, 92],
+    [46, 82],
+    [42, 66],
+    [40, 48],
+    [36, 30],
+    [28, 18],
+  ],
+  half: (along) => 11 - 4 * along,
+  rim: { body: BRACHIOSAURUS_BODY, way: -1 },
+}
+
+/**
+ * Queen becomes a brachiosaurus in episode 944 (chapter 945). The long neck
+ * and nothing else, never the head, and nothing it does later.
+ */
+export const DRAGON_BRACHIOSAURUS: Stroke[] = [
+  ...kitBody(
+    BRACHIOSAURUS_BODY,
+    [122, 136, 150],
+    (x, y) => x > 80 || y < 84 || y > 104,
+  ),
+  ...skin([
+    [88, 116, 7],
+    [72, 152, -6],
+  ]),
+  ...sprout(BRACHIOSAURUS_BODY, 6, 'right'),
+  { d: limbOutline(BRACHIOSAURUS_NECK, 24), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** Toki's fruit: a whole gourd, its far shoulder leaving the moment. */
+const TIME_BODY: Body = { family: 'gourd', cy: 121 }
+
+/**
+ * The pieces of the far shoulder, from the foot of it up: the stretch of
+ * rim each one was, and how far it has drifted up and away from it.
+ */
+const TIME_PIECES: [number, number, number, number][] = [
+  [97, 104, 2, -1],
+  [89, 94, 7, -6],
+  [84, 87, 15, -14],
+]
+
+/** The specks beyond them, the last of the shoulder, further and further. */
+const TIME_SPECKS: Point[] = [
+  [121, 58],
+  [130, 47],
+  [141, 36],
+  [116, 82],
+  [127, 74],
+  [140, 66],
+]
+
+/**
+ * The fruit whole, and its far shoulder going: the skin there comes away
+ * in pieces that drift up and off, smaller and further apart, to specks.
+ * Toki sends her son and four retainers forward in time in episode 910
+ * (chapter 920). Nothing missing below, and no second outline.
+ */
+export const TIME_TIME: Stroke[] = [
+  ...kitBody(TIME_BODY, [114, 132, 146], (x, y) => x < 80 || y < 83 || y > 105),
+  ...skin([
+    [72, 94, 6],
+    [74, 146, -6],
+  ]),
+  ...sprout(TIME_BODY, -4, 'left'),
+  {
+    d: [
+      ...TIME_PIECES.map(([from, to, dx, dy]) => {
+        return polyline(
+          [from, (from + to) / 2, to].map((y) => {
+            const [x] = onRim(TIME_BODY, y, 1)
+
+            return point(x + dx, y + dy)
+          }),
+        )
+      }),
+      ...TIME_SPECKS.map(([x, y]) => speck(x, y)),
+    ].join(' '),
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Sasaki's fruit: a heart, a bony frill fanned out behind its shoulder. */
+const TRICERATOPS_BODY: Body = { family: 'heart', cy: 123 }
+
+/** The frill: a fan round a point on the far shoulder, and its knobs. */
+const FRILL = { cx: 108, cy: 86, r: 40, from: -122, to: 38, knobs: 5 }
+
+/** A point of the frill, at an angle in degrees, `r` out from its middle. */
+function frillAt(angle: number, r: number): Point {
+  const turn = (angle * Math.PI) / 180
+
+  return [FRILL.cx + r * Math.cos(turn), FRILL.cy + r * Math.sin(turn)]
+}
+
+/** How far a knob stands proud of the rim, `along` it. */
+function knobAt(along: number): number {
+  const width = 0.045
+  const from = Math.abs(((along * FRILL.knobs) % 1) - 0.5) / FRILL.knobs
+
+  return from < width ? 3.5 * Math.cos((Math.PI / 2) * (from / width)) ** 2 : 0
+}
+
+/** The frill's rim, from the shoulder round to the side. */
+function frillRim(): string[] {
+  const steps = 90
+  const points: string[] = []
+
+  for (let at = 0; at <= steps; at += 1) {
+    const along = at / steps
+    const angle = FRILL.from + (FRILL.to - FRILL.from) * along
+
+    const [x, y] = frillAt(angle, FRILL.r + knobAt(along))
+
+    points.push(point(x, y))
+  }
+
+  return points
+}
+
+/**
+ * A solid bony frill, fanned out behind the far shoulder and off to one
+ * side, so the fruit is a body with a plate behind it and never a head in
+ * a ruff; a few low knobs on its rim. Sasaki turns into a triceratops in
+ * episode 1012 (chapter 998). No horns, and none of the later spinning.
+ */
+export const DRAGON_TRICERATOPS: Stroke[] = [
+  ...kitBody(
+    TRICERATOPS_BODY,
+    [137, 149],
+    (x, y) => x < 80 || y < 80 || y > 116,
+  ),
+  ...skin([
+    [66, 108, 8],
+    [78, 144, -6],
+  ]),
+  ...sprout(TRICERATOPS_BODY, -5, 'left'),
+  {
+    d: polyline([
+      point(...onRim(TRICERATOPS_BODY, 80, 1)),
+      ...frillRim(),
+      point(...onRim(TRICERATOPS_BODY, 116, 1)),
+    ]),
+    role: 'accent',
+  },
+  {
+    d: polyline(
+      [-114, -96, -78, -60, -42, -24, -6, 12, 26].map((angle) => {
+        return point(...frillAt(angle, FRILL.r - 9))
+      }),
+    ),
+    role: 'soft',
+  },
+  shadowUnder(1),
+]
+
+/** Black Maria's fruit: a round, carried by eight jointed spider legs. */
+const SPIDER_BODY: Body = { family: 'round', cy: 112 }
+
+/** Each leg: its root on the rim, its knee and its foot, on the right. */
+const SPIDER_LEG_POINTS: [number, number, number, number, number][] = [
+  [92, 56, 82, 64, 161],
+  [106, 66, 107, 72, 167],
+  [120, 68, 134, 61, 175],
+  [134, 55, 155, 44, 181],
+]
+
+/** Four grounded legs each side, each a thin jointed outline. */
+function spiderLegs(): string {
+  const legs: string[] = []
+
+  for (const way of [-1, 1]) {
+    for (const [root, kneeX, kneeY, footX, footY] of SPIDER_LEG_POINTS) {
+      legs.push(
+        [
+          `M${point(...onRim(SPIDER_BODY, root, way))}`,
+          `L${point(80 + way * kneeX, kneeY)}`,
+          `L${point(80 + way * footX, footY)}`,
+          `L${point(80 + way * (footX - 4), footY)}`,
+          `L${point(80 + way * (kneeX - 5), kneeY + 7)}`,
+          `L${point(...onRim(SPIDER_BODY, root + 5, way))}`,
+        ].join(' '),
+      )
+    }
+  }
+
+  return legs.join(' ')
+}
+
+/**
+ * Eight stout, bent legs grown from the rim and set on the ground, four
+ * each side. Black Maria's spider form appears in episode 1013 (chapter
+ * 998). No human torso, spider face, silk trap or later weapon.
+ */
+export const SPIDER_ROSAMYGALE: Stroke[] = [
+  ...kitBody(SPIDER_BODY, [144, 151], (_x, y) => y < 92 || y > 139),
+  ...skin([
+    [71, 101, 8],
+    [88, 136, -6],
+  ]),
+  ...sprout(SPIDER_BODY, -3, 'left'),
+  { d: spiderLegs(), role: 'accent' },
+  shadowUnder(1),
+]
+
+/** Kaido's fruit: an oblong, a long dragon body flying up out of it. */
+const AZURE_DRAGON_BODY: Body = { family: 'oblong', cy: 126 }
+
+/**
+ * The dragon's body: out of the far shoulder, up the far side and over in
+ * two long waves above the crown, narrowing to the tip of its tail beyond
+ * the near shoulder.
+ */
+const AZURE_DRAGON_LIMB: Limb = {
+  line: [
+    [114, 100],
+    [134, 96],
+    [148, 70],
+    [140, 46],
+    [132, 26],
+    [112, 26],
+    [100, 40],
+    [92, 50],
+    [78, 46],
+    [66, 32],
+    [56, 20],
+    [38, 22],
+    [28, 40],
+  ],
+  half: (along) => (along < 0.55 ? 7 : 0.8 + 6.2 * ((1 - along) / 0.45)),
+  rim: { body: AZURE_DRAGON_BODY, way: 1 },
+}
+
+/**
+ * The scales: small arcs in two staggered rows down the body, each bowed
+ * towards the tail, as a fish's are.
+ */
+function dragonScales(): string {
+  const scales: string[] = []
+
+  for (let at = 1; at < 26; at += 1) {
+    const along = at / 30
+    const half = AZURE_DRAGON_LIMB.half(along)
+    const row = at % 2 === 0 ? 0.42 : -0.42
+
+    scales.push(
+      polyline(
+        [
+          [0, row - 0.3],
+          [0.007, row - 0.15],
+          [0.009, row],
+          [0.007, row + 0.15],
+          [0, row + 0.3],
+        ].map(([shift = 0, across = 0]) => {
+          return point(
+            ...onLimb(AZURE_DRAGON_LIMB, along + shift, half * across),
+          )
+        }),
+      ),
+    )
+  }
+
+  return scales.join(' ')
+}
+
+/**
+ * A long scaled body grown from the far shoulder, up and over the fruit in
+ * two waves, clear of the crown, to the tip of its tail. Kaido flies to
+ * Okobore in his dragon form in episode 912 (chapter 921), before the
+ * fruit is named in episode 1014 (chapter 999). The body only, never the
+ * head, horns or whiskers.
+ */
+export const FISH_AZURE_DRAGON: Stroke[] = [
+  ...kitBody(
+    AZURE_DRAGON_BODY,
+    [146, 157],
+    (x, y) => x < 80 || y < 93 || y > 107,
+  ),
+  ...skin([
+    [66, 116, 8],
+    [82, 150, -6],
+  ]),
+  ...sprout(AZURE_DRAGON_BODY, -6, 'left'),
+  { d: limbOutline(AZURE_DRAGON_LIMB, 48), role: 'accent' },
+  { d: dragonScales(), role: 'soft' },
+  shadowUnder(1),
+]
+
+/** Yamato's fruit: a heart, a big bushy tail sweeping up behind it. */
+const MAKAMI_BODY: Body = { family: 'heart', cy: 123 }
+
+/** Where along the tail it is fullest. */
+const MAKAMI_PLUME = 0.65
+
+/**
+ * The tail: out of the far lower side, out and up past the far shoulder,
+ * narrow at the root, fullest past the middle, and tapering to a soft tip
+ * turned back over the shoulder.
+ */
+const MAKAMI_TAIL: Limb = {
+  line: [
+    [110, 150],
+    [126, 156],
+    [136, 144],
+    [136, 124],
+    [136, 104],
+    [138, 84],
+    [132, 66],
+    [126, 52],
+    [116, 44],
+    [106, 48],
+  ],
+  half: plume({ root: 4.5, full: 13.5, end: 2, fullest: MAKAMI_PLUME }),
+  rim: { body: MAKAMI_BODY, way: 1 },
+}
+
+/** The fur notches: steps along the outer edge (1) and the inner one (-1). */
+const MAKAMI_FUR = { outer: [16, 20, 24], inner: [21] }
+
+/**
+ * A big bushy tail, grown from the far lower side and swept up past the
+ * shoulder, soft notches of fur on both edges. Yamato takes his hybrid
+ * form in episode 1041 (chapter 1019), and the form grows a large tail,
+ * before Kaido names the fruit in episode 1042 (chapter 1020). The tail
+ * alone, without the ice, the horns or the breath.
+ */
+export const DOG_MAKAMI: Stroke[] = [
+  ...kitBody(
+    MAKAMI_BODY,
+    [93, 106, 119],
+    (x, y) => x < 80 || y < 145 || y > 155,
+  ),
+  ...skin([
+    [66, 108, 8],
+    [77, 145, -6],
+  ]),
+  ...sprout(MAKAMI_BODY, -5, 'left'),
+  {
+    d: limbOutline(MAKAMI_TAIL, 30, (step, way) => {
+      if (way > 0) {
+        return MAKAMI_FUR.outer.includes(step) ? 0.76 : 1
+      }
+
+      return MAKAMI_FUR.inner.includes(step) ? 0.8 : 1
+    }),
+    role: 'accent',
+  },
   shadowUnder(1),
 ]
