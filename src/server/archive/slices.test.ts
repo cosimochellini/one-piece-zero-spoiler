@@ -851,23 +851,26 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(4)
   })
 
-  it('puts Chopper in the cap of the two years only from episode 517', () => {
-    const chopper = filed('tony-tony-chopper')
-    const topHat = DRAWINGS['tony-tony-chopper']
-    const cap = REDRAWINGS['tony-tony-chopper']?.[0]
-    const atChapter = (chapter: number): Reader =>
-      readerFor({ mode: 'chapter', chapter }, 'en')
+  it('follows Chopper’s hats from the cap of the two years, back to it each time', () => {
+    const stages = walkStages('tony-tony-chopper', [
+      [517, 598],
+      [739, 795],
+      [755, 806],
+      [776, 822],
+      [786, 827],
+      [827, 858],
+      [911, 921],
+      [959, 959],
+      [1080, 1053],
+      [1092, 1063],
+      [1155, 1124],
+      [1158, 1128],
+    ])
+    const cap = stages[0]?.value
 
-    expect(cap?.episode).toBe(517)
-
-    expect(characterOf(chopper, seenAt(516)).visual.strokes).toBe(topHat)
-    expect(characterOf(chopper, seenAt(517)).visual.strokes).toBe(cap?.value)
-    expect(characterOf(chopper, readerFor(null, 'en')).visual.strokes).toBe(
-      topHat,
-    )
-    // The manga draws the cap in chapter 598, so no chapter below it may.
-    expect(characterOf(chopper, atChapter(597)).visual.strokes).toBe(topHat)
-    expect(characterOf(chopper, atChapter(598)).visual.strokes).toBe(cap?.value)
+    for (const back of [3, 5, 8, 10]) {
+      expect(stages[back]?.value).toBe(cap)
+    }
   })
 
   it('follows Zoro’s swords, lost, found and swapped, from episode 3', () => {

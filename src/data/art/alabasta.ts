@@ -6,6 +6,7 @@ import {
   house,
   SEA,
   shadow,
+  star,
   wave,
 } from '~/lib/svg/primitives'
 
@@ -871,7 +872,7 @@ export const alabastaArt = {
   // His fuzzy top hat in 3/4, the cross turned on its side at the front and
   // the antlers out through the sides of the crown (83). The old brim and the
   // antlers are shared with the cap of the two years, from 517 in
-  // `alabastaRedrawn`.
+  // `alabastaRedrawn`, where every hat he wears after it follows.
   'tony-tony-chopper': [
     { d: 'M40 116 C36 92 38 66 44 52 Q80 40 116 52 C122 66 124 92 120 116' },
     { d: 'M44 52 Q80 64 116 52', role: 'soft' },
@@ -1594,7 +1595,245 @@ export const alabastaRedrawn: Redrawings = {
   // with dots, the cross on a disc at the front, the old brim showing under
   // it, flaps buckled at the sides and the antlers out through them. The far
   // side is hatched. He walks Sabaody eating a Grand Bun at 517 (ch. 598).
-  'tony-tony-chopper': [{ episode: 517, chapter: 598, value: CHOPPER_CAP }],
+  'tony-tony-chopper': [
+    { episode: 517, chapter: 598, value: CHOPPER_CAP },
+    // A football helmet in place of the cap, turned a little to his left: the
+    // wide stripe down the middle with a thin one each side, a star on the
+    // near side, the antlers out through holes in the shell and the face guard
+    // at the front. No cross is on it, so the stripe takes his colour. He
+    // lands on Zou in it at 739 (ch. 795).
+    {
+      episode: 739,
+      chapter: 795,
+      value: [
+        {
+          d: 'M44 136 Q34 134 33 120 C28 74 54 40 82 40 C110 40 134 74 129 120 Q128 134 118 136',
+        },
+        {
+          d: 'M44 136 C44 122 50 112 60 110 Q84 104 104 110 C114 112 118 122 118 136',
+        },
+        {
+          d: 'M77.6 106.6 C73.6 82 74 58 79 40.1 Q86 39.6 93 40.7 C98.4 58 98.6 82 94.6 106.8',
+          role: 'accent',
+        },
+        {
+          d: 'M70 107.8 C66 82 66.6 58 72.4 41.2 M102 108.6 C106.4 82 105.6 58 99.8 41.8',
+        },
+        { d: star(52, 84, 10.4, 4.6) },
+        {
+          d: `${ellipse(37.6, 103, 3.6, 5.4)} ${ellipse(124.2, 103, 3.4, 5.4)}`,
+          role: 'soft',
+        },
+        ...CHOPPER_ANTLERS,
+        {
+          d: 'M46 128 C52 148 66 154 82 154 C98 154 110 148 116 128 M48.4 138 Q82 150 113.8 138',
+        },
+        { d: 'M82 112 V154', role: 'soft' },
+        {
+          d: 'M110 52 l-5 6 M118 64 l-6 7 M124 78 l-6 7 M127 92 l-5 6',
+          role: 'ambient',
+        },
+        shadow(80, 172, 46),
+      ],
+    },
+    // The cap of the two years with a small crown sat on top: a band set with
+    // jewels, ribs arched up to an orb. He wears it through his stay on Zou,
+    // from 755 (ch. 806), and the cap is bare again when the crew leave, at
+    // 776 (ch. 822).
+    {
+      episode: 755,
+      chapter: 806,
+      value: [
+        ...CHOPPER_CAP,
+        { d: 'M65.6 50.4 L64.6 42 Q80 37 95.4 42 L94.4 50.4' },
+        {
+          d: 'M64.6 42 C59 31 70 24.6 80 24.6 C90 24.6 101 31 95.4 42 M72 39.6 Q70.6 30 80 24.6 M88 39.6 Q89.4 30 80 24.6',
+        },
+        { d: circle(80, 21.2, 3.4) },
+        {
+          d: dots([
+            [69.6, 45.6],
+            [76.6, 44.2],
+            [83.4, 44.2],
+            [90.4, 45.6],
+          ]),
+          role: 'soft',
+        },
+      ],
+    },
+    { episode: 776, chapter: 822, value: CHOPPER_CAP },
+    // The same cap with a pink scarf wound thick round the middle of the
+    // crown, knotted at his left with two short ends hanging; the cross on its
+    // disc sits over the scarf at the front, the ring of dots below it. He
+    // comes ashore on Whole Cake Island in it at 786 (ch. 827), and is out of
+    // it, hat and all, when he bathes at Bege's at 827 (ch. 858).
+    {
+      episode: 786,
+      chapter: 827,
+      value: [
+        ...CHOPPER_CAP.slice(0, 1),
+        {
+          d: 'M40.9 80 Q80 52 119.1 80 M35.6 108 Q49.2 98.2 62.8 94.4 M97.2 94.4 Q99.4 95 101.6 95.8 M121.4 105.9 Q122.9 106.9 124.4 108',
+        },
+        {
+          d: 'M37.1 94 Q50.8 84.5 64.6 81.1 M95.4 81.1 Q99.5 82.2 103.6 83.7 M116.8 90.2 Q119.9 92 122.9 94',
+          role: 'soft',
+        },
+        {
+          d: dots([
+            [44, 112],
+            [52, 107.6],
+            [60.4, 104.6],
+          ]),
+          role: 'soft',
+        },
+        ...CHOPPER_CAP.slice(2, 9),
+        {
+          d: 'M104 80 Q110 76.4 116 80 L116.6 91 Q110 94 104.6 91 Z M106.4 92.6 Q103.6 99 100.4 104.4 L104.8 107.2 Q108 101 109.4 93.6 M111.6 93.4 Q114.6 99.6 118.6 103.6 L114.8 106.8 Q111.4 101.6 109.8 93.8',
+        },
+        { d: 'M110 78 V92.4', role: 'soft' },
+        { d: 'M103 55 l-5 6 M112 61 l-6 7 M117.6 70 l-5 6', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
+      ],
+    },
+    { episode: 827, chapter: 858, value: CHOPPER_CAP },
+    // A ninja's hood of dark cloth wound over the cap for Wano, the cross
+    // large on its front, the antlers tucked into the puffed lobes at its
+    // sides and the cap's brim still under it. Kin'emon's Garb-Garb dresses
+    // him at 911 (ch. 921): "I'm a ninja!"
+    {
+      episode: 911,
+      chapter: 921,
+      value: [
+        {
+          d: 'M36 126 C16 126 10 96 28 84 C30 56 54 38 80 38 C106 38 130 56 132 84 C150 96 144 126 124 126',
+        },
+        { d: 'M30 86 Q42 104 38 124 M130 86 Q118 104 122 124', role: 'soft' },
+        { d: 'M67 72 l26 26 M93 72 l-26 26', role: 'accent' },
+        { d: CHOPPER_BRIM },
+        {
+          d: 'M38 132 C36 142 40 150 48 154 M122 132 C124 142 120 150 112 154',
+        },
+        { d: 'M54 54 q5 6 3 14 M80 40 q-3 10 0 18', role: 'soft' },
+        {
+          d: 'M108 50 l-5 6 M118 60 l-6 7 M124 72 l-6 7 M127 86 l-5 6',
+          role: 'ambient',
+        },
+        { d: 'M138 98 l-5 5 M140 110 l-5 5 M134 120 l-4 4', role: 'ambient' },
+        { d: 'M114 138 l-4 5 M118 146 l-4 4', role: 'ambient' },
+        shadow(80, 172, 44),
+      ],
+    },
+    // The samurai kabuto for Onigashima, worn in place of the cap: the ribbed
+    // bowl ringed with studs, the neck guard of lames, the turned-back flaps,
+    // the antlers out round it, and the forked crest at the front, the cross
+    // nowhere on it. From 959 (ch. 959) until the festival after the raid,
+    // where the cap is back, at 1080 (ch. 1053).
+    {
+      episode: 959,
+      chapter: 959,
+      value: [
+        { d: 'M46 112 C44 70 60 52 80 52 C100 52 116 70 114 112' },
+        { d: 'M64 56 Q56 82 59 110 M96 56 Q104 82 101 110', role: 'soft' },
+        {
+          d: dots([
+            [52, 104],
+            [62, 107],
+            [70, 108.5],
+            [90, 108.5],
+            [98, 107],
+            [108, 104],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M42 114 Q80 128 118 114' },
+        { d: 'M40 120 Q80 138 120 120 L126 134 Q80 154 34 134 Z' },
+        { d: 'M32 142 Q80 166 128 142', role: 'soft' },
+        {
+          d: 'M46 112 C34 104 24 108 24 120 C24 130 34 134 42 128 M114 112 C126 104 136 108 136 120 C136 130 126 134 118 128',
+        },
+        {
+          d: 'M80 112 V40 M80 66 C62 64 52 50 58 34 C60 28 68 28 68 34 M80 66 C98 64 108 50 102 34 C100 28 92 28 92 34',
+          role: 'accent',
+        },
+        ...moved(CHOPPER_ANTLERS, 'translate(0 -8)'),
+        { d: 'M104 62 l-4 6 M110 74 l-4 6 M113 88 l-4 6', role: 'ambient' },
+        { d: 'M118 128 l-4 6 M122 136 l-4 6', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
+      ],
+    },
+    { episode: 1080, chapter: 1053, value: CHOPPER_CAP },
+    // A space helmet for Egghead, a great round shell over the cap, turned a
+    // little to his right: the strap of its goggles across the upper front,
+    // the opening with its rim and the cap's brim standing out inside it, the
+    // antlers out high at the sides, a collar ring at the neck. From 1092
+    // (ch. 1063) until he leaves the island in the cap, at 1155 (ch. 1124).
+    {
+      episode: 1092,
+      chapter: 1063,
+      value: [
+        {
+          d: 'M44 146 C30 130 26 96 32 74 C40 48 62 36 84 36 C110 36 132 56 134 90 C136 116 128 136 116 146',
+        },
+        { d: 'M34 62 Q72 46 128 58 L130 68 Q72 56 32 72 Z' },
+        { d: 'M86 36.4 C80 40 76 46 74 52', role: 'soft' },
+        { d: ellipse(66, 108, 33, 36) },
+        { d: ellipse(62, 109, 25, 30), role: 'soft' },
+        {
+          d: 'M88 88 l5 -2 M90.5 100 l5 -1 M90.5 113 l5 0 M88 126 l5 1',
+          role: 'ambient',
+        },
+        ...moved(CHOPPER_CAP.slice(4, 5), 'translate(7 5) scale(0.7)'),
+        ...moved(CHOPPER_ANTLERS.slice(0, 1), 'translate(-4 -18)'),
+        ...moved(CHOPPER_ANTLERS.slice(1, 2), 'translate(8 -16)'),
+        {
+          d: 'M114 48 l-5 6 M124 60 l-6 7 M130 76 l-6 7 M133 94 l-5 6 M131 112 l-5 6',
+          role: 'ambient',
+        },
+        { d: 'M44 146 C42 160 118 160 116 146 M44 146 Q80 156 116 146' },
+        shadow(80, 174, 44),
+      ],
+    },
+    { episode: 1155, chapter: 1124, value: CHOPPER_CAP },
+    // A red Viking helmet of Elbaf worn over the cap: the round dome with a
+    // gold strap and its bosses over the top, the wide brim, the cap's brim
+    // showing under it, and gold caps on the antler tips. From 1158
+    // (ch. 1128).
+    {
+      episode: 1158,
+      chapter: 1128,
+      value: [
+        { d: 'M40 104 C36 60 56 42 80 42 C104 42 124 60 120 104' },
+        {
+          d: 'M72 43 C68 60 68 82 70 100 L90 100 C92 82 92 60 88 43',
+          role: 'accent',
+        },
+        { d: `${circle(80, 62, 3.5)} ${circle(80, 82, 3.5)}`, role: 'soft' },
+        {
+          d: dots([
+            [50, 72],
+            [54, 90],
+            [110, 72],
+            [106, 90],
+          ]),
+          role: 'soft',
+        },
+        { d: 'M22 112 Q80 86 138 112 L142 120 Q80 96 18 120 Z' },
+        { d: 'M34 125 Q80 106 126 125 L127 131 Q80 112 33 131 Z' },
+        ...moved(CHOPPER_ANTLERS, 'translate(0 -10)'),
+        {
+          d: 'M13.2 48.1 L10.5 42.7 Q5.3 38.6 5.5 45.3 L8.2 50.6 M20.8 42.6 L23.5 37.3 Q23.7 30.6 18.5 34.7 L15.8 40.1 M151.8 50.6 L154.5 45.3 Q154.7 38.6 149.5 42.7 L146.8 48.1 M144.2 40.1 L141.5 34.7 Q136.3 30.6 136.5 37.3 L139.2 42.6',
+          role: 'soft',
+        },
+        {
+          d: 'M102 52 l-4 6 M110 62 l-5 6 M114 74 l-5 6 M117 88 l-4 6',
+          role: 'ambient',
+        },
+        { d: 'M120 112 l-3 4 M130 114 l-3 4', role: 'ambient' },
+        ...CHOPPER_CAP.slice(10),
+      ],
+    },
+  ],
 
   // The same hat, the flame gone: the hat itself takes his colour, and a thin
   // wisp of smoke rises where the flame stood. He dies at Marineford at 483
