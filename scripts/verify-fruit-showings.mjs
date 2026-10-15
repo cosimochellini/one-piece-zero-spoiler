@@ -385,17 +385,16 @@ function showingsText(showings) {
 /**
  * One fruit's rows: its verdict, and its showings that do not count.
  * @param {Fruit} record The record.
- * @param {Record<string, Dated[]>} fruitRedrawn Every fruit's redrawings.
- * @returns {Promise<Row[]>} The rows.
+ * @param {{ title: string, wikitext: string } | undefined} page Its wiki page, if one resolved.
+ * @param {Dated[]} redrawn Its `fruitRedrawn` entries.
+ * @returns {Row[]} The rows.
  */
-async function rowsOf(record, fruitRedrawn) {
+export function rowsOf(record, page, redrawn) {
   const threshold = {
     episode: record.revealedAtEpisode,
     chapter: record.revealedAtChapter,
   }
   const base = { id: record.id, threshold: pairText(threshold), first: '—' }
-  const pages = await pagesOf(record)
-  const page = pages?.[0]
   if (page === undefined) {
     return [{ ...base, page: '—', verdict: FAILS.unresolved, showings: '' }]
   }
@@ -404,7 +403,7 @@ async function rowsOf(record, fruitRedrawn) {
     record.id,
     threshold,
     showingsOf(page.wikitext),
-    fruitRedrawn[record.id] ?? [],
+    redrawn,
   )
   const row = {
     ...base,
@@ -437,15 +436,12 @@ async function verify() {
   const fruits = /** @type {Fruit[]} */ (entities).filter(
     (entry) => entry.kind === 'fruit',
   )
+  const redrawings = /** @type {Record<string, Dated[]>} */ (fruitRedrawn)
   /** @type {Row[]} */
   const rows = []
   for (const record of fruits) {
-    rows.push(
-      ...(await rowsOf(
-        record,
-        /** @type {Record<string, Dated[]>} */ (fruitRedrawn),
-      )),
-    )
+    const pages = await pagesOf(record)
+    rows.push(...rowsOf(record, pages?.[0], redrawings[record.id] ?? []))
   }
 
   return rows

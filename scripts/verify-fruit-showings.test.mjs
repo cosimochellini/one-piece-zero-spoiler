@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { qrefOf, showingsOf, verdictOf } from './verify-fruit-showings.mjs'
+import {
+  qrefOf,
+  rowsOf,
+  showingsOf,
+  verdictOf,
+} from './verify-fruit-showings.mjs'
 
 const box = (fruit, rest = '') =>
   `{{Devil Fruit Box\n|fruit        = ${fruit}\n|first        = [[Chapter 1]]\n}}\n${rest}`
@@ -134,5 +139,64 @@ describe('the verdict on a fruit', () => {
     )
     expect(verdict).toBe('never shown')
     expect(skipped).toHaveLength(1)
+  })
+})
+
+describe('the report rows of a fruit', () => {
+  const magnet = {
+    id: 'magnet-magnet-fruit',
+    kind: 'fruit',
+    name: { en: 'Magnet-Magnet Fruit', it: 'Frutto Jiki Jiki' },
+    revealedAtEpisode: 1058,
+    revealedAtChapter: 1031,
+  }
+
+  it('fails a fruit whose page does not resolve', () => {
+    expect(rowsOf(magnet, undefined, [])).toEqual([
+      {
+        id: 'magnet-magnet-fruit',
+        threshold: 'ep 1058 / ch 1031',
+        first: '—',
+        page: '—',
+        verdict: 'unresolved',
+        showings: '',
+      },
+    ])
+  })
+
+  it('lists apart a showing that does not count, with its reason', () => {
+    const page = {
+      title: 'Jiki Jiki no Mi',
+      wikitext: box('[[Episode 1103]];{{Qref|ep=1103|Bonus [[a|b]].}}'),
+    }
+    expect(
+      rowsOf(magnet, page, []).map(({ verdict, showings }) => [
+        verdict,
+        showings,
+      ]),
+    ).toEqual([
+      ['never shown', ''],
+      [
+        'not counted',
+        'ep 1103 / ch —: outside the story: the Anime Bonus Corner after the episode',
+      ],
+    ])
+  })
+
+  it('writes the first showing and its Qref text, pipes escaped', () => {
+    const page = {
+      title: 'Jiki Jiki no Mi',
+      wikitext: box('[[Episode 1110]];{{Qref|ep=1110|Seen [[a|b]].}}'),
+    }
+    expect(rowsOf(magnet, page, [])).toEqual([
+      {
+        id: 'magnet-magnet-fruit',
+        threshold: 'ep 1058 / ch 1031',
+        first: 'ep 1110 / ch —',
+        page: 'Jiki Jiki no Mi',
+        verdict: 'shown, not drawn',
+        showings: String.raw`ep 1110 / ch —: Seen [[a\|b]].`,
+      },
+    ])
   })
 })
