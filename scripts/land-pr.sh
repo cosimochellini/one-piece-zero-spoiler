@@ -160,8 +160,13 @@ done
 # No --delete-branch: GitHub deletes the remote branch on merge, and the flag
 # would also delete local branches, worktrees of parallel sessions included.
 if ! gh pr merge "$PR" --squash --match-head-commit "$H"; then
-  # GitHub may have merged it already ("Merge already in progress").
-  s=$(gh pr view "$PR" --json state,headRefOid -q '"\(.state) \(.headRefOid)"') || exit 5
+  # GitHub may be merging it already ("Merge already in progress"), and the
+  # state reads OPEN until that finishes.
+  for _ in $(seq 5); do
+    s=$(gh pr view "$PR" --json state,headRefOid -q '"\(.state) \(.headRefOid)"') || exit 5
+    [ "$s" = "MERGED $H" ] && break
+    sleep 3
+  done
   [ "$s" = "MERGED $H" ] || exit 5
 fi
 echo "merged $H"

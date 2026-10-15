@@ -20,7 +20,7 @@ const script = path.resolve(import.meta.dirname, 'land-pr.sh')
 const head = 'a'.repeat(40)
 
 // Check runs come one fixture line per `gh api` call, the last one repeated.
-// `gh pr merge` refuses when merged.json exists, after GitHub merged the PR.
+// `gh pr merge` refuses when refused.json exists, which is the PR after that.
 const fakeGh = `#!/bin/bash
 d=$(dirname "$0")
 echo "$*" >>"$d/calls.log"
@@ -37,8 +37,8 @@ case "$1 $2" in
   "pr view") jq -r "$q" "$d/pr.json" ;;
   "pr ready") ;;
   "pr merge")
-    [ -f "$d/merged.json" ] || exit 0
-    cp "$d/merged.json" "$d/pr.json"
+    [ -f "$d/refused.json" ] || exit 0
+    cp "$d/refused.json" "$d/pr.json"
     echo "GraphQL: Merge already in progress (mergePullRequest)" >&2
     exit 1 ;;
   *) exit 1 ;;
@@ -69,13 +69,12 @@ const pr = (state) => ({
 })
 
 /**
- * Runs land-pr.sh once in a fresh directory of fakes.
+ * Writes the fakes and the fixtures into the bin directory.
+ * @param {string} bin - The directory put first on the PATH.
  * @param {object[][]} runs - The check runs each `gh api` call returns.
- * @param {boolean} mergedFirst - Whether GitHub merged the PR before the script.
- * @returns {{ status: number | null, stdout: string, calls: string }} The exit status, output and the `gh` calls made.
+ * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
  */
-function land(runs, mergedFirst = false) {
-  const bin = mkdtempSync(path.join(tmpdir(), 'land-pr-'))
+function prepare(bin, runs, refusedThen) {
   /**
    * Writes an executable fake into the bin directory.
    * @param {string} name - The command it stands in for.
@@ -94,17 +93,37 @@ function land(runs, mergedFirst = false) {
     runs.map((list) => JSON.stringify({ check_runs: list })).join('\n'),
   )
   writeFileSync(path.join(bin, 'pr.json'), JSON.stringify(pr('OPEN')))
-  if (mergedFirst) {
-    writeFileSync(path.join(bin, 'merged.json'), JSON.stringify(pr('MERGED')))
+  if (refusedThen) {
+    writeFileSync(
+      path.join(bin, 'refused.json'),
+      JSON.stringify(pr(refusedThen)),
+    )
   }
   writeFileSync(path.join(bin, 'calls.log'), '')
-  const child = spawnSync('bash', [script, '42', head], {
-    encoding: 'utf8',
-    env: { ...process.env, PATH: `${bin}${path.delimiter}${process.env.PATH}` },
-  })
-  const calls = readFileSync(path.join(bin, 'calls.log'), 'utf8')
-  rmSync(bin, { recursive: true })
-  return { status: child.status, stdout: child.stdout, calls }
+}
+
+/**
+ * Runs land-pr.sh once in a fresh directory of fakes, removed afterwards.
+ * @param {object[][]} runs - The check runs each `gh api` call returns.
+ * @param {string} [refusedThen] - When set, `gh pr merge` is refused and the PR state reads this after.
+ * @returns {{ status: number | null, stdout: string, calls: string }} The exit status, output and the `gh` calls made.
+ */
+function land(runs, refusedThen) {
+  const bin = mkdtempSync(path.join(tmpdir(), 'land-pr-'))
+  try {
+    prepare(bin, runs, refusedThen)
+    const child = spawnSync('bash', [script, '42', head], {
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        PATH: `${bin}${path.delimiter}${process.env.PATH}`,
+      },
+    })
+    const calls = readFileSync(path.join(bin, 'calls.log'), 'utf8')
+    return { status: child.status, stdout: child.stdout, calls }
+  } finally {
+    rmSync(bin, { recursive: true })
+  }
 }
 
 describe('land-pr.sh', () => {
@@ -122,10 +141,20 @@ describe('land-pr.sh', () => {
   })
 
   it('exits 0 when GitHub had already merged the reviewed head', () => {
-    const { status, stdout } = land([[run(1, 'completed', 'success')]], true)
+    const { status, stdout } = land(
+      [[run(1, 'completed', 'success')]],
+      'MERGED',
+    )
 
     expect(stdout).toContain(`merged ${head}`)
     expect(status).toBe(0)
+  })
+
+  it('exits 5 when the merge is refused and the PR stays open', () => {
+    const { status, stdout } = land([[run(1, 'completed', 'success')]], 'OPEN')
+
+    expect(stdout).not.toContain('merged')
+    expect(status).toBe(5)
   })
 
   it('still exits 3 on a failed run', () => {
