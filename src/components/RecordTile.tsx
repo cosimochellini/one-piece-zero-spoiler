@@ -159,13 +159,14 @@ function Name({ entry }: { entry: RecordView }): ReactElement {
 const styles = stylex.create({
   // Skipped until near the screen, like a character tile (#621): the crew a
   // port files is most of the ship's log. 6.1375rem is the tile's height at
-  // every width; the clip margin keeps the focus ring whole.
+  // every width; the padding keeps the focus ring whole, as there.
   tile: {
+    margin: `calc(-1 * ${space.xs})`,
+    padding: space.xs,
     containIntrinsicSize: 'auto 6.1375rem',
     gap: space.xs,
     contentVisibility: 'auto',
     display: 'grid',
-    overflowClipMargin: space.xs,
     minWidth: 0,
   },
   meta: {

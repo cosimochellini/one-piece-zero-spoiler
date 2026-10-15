@@ -116,14 +116,15 @@ export const styles = stylex.create({
   // Skipped until near the screen, like a character tile (#621). Only the
   // margin: a row's height follows its sentence, but the margin is a 9rem
   // drawing at 4:5 under one line at every width, so its size is exact and
-  // the sheet keeps its height. The clip margin keeps the focus ring whole.
+  // the sheet keeps its height. The padding keeps the focus ring whole, as there.
   margin: {
+    margin: `calc(-1 * ${space.xs})`,
+    padding: space.xs,
     containIntrinsicSize: 'auto 12.95rem',
     gap: space.xs,
     contentVisibility: 'auto',
     display: 'grid',
     justifyItems: 'start',
-    overflowClipMargin: space.xs,
     minWidth: 0,
   },
   specimenNumber: {

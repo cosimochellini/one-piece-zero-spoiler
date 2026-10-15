@@ -146,15 +146,18 @@ const styles = stylex.create({
   // (#621). The size it stands in for is the tile's own, which is the same at
   // every width and in both locales: a 3.5rem plate at 4:5 sets the row, and
   // the episode is one line under it. An exact size keeps the page's height,
-  // so Back restores the scroll position to the same tile. The clip margin
-  // lets the link's focus ring past the edge, which paint containment would
-  // otherwise cut off.
+  // so Back restores the scroll position to the same tile. Paint containment
+  // clips at the tile's edge, so the tile carries a padding as wide as the
+  // link's focus ring reaches outside it, taken back by an equal negative
+  // margin: the ring is drawn whole and nothing moves. `overflow-clip-margin`
+  // would do the same in Chromium only.
   tile: {
+    margin: `calc(-1 * ${space.xs})`,
+    padding: space.xs,
     containIntrinsicSize: 'auto 5.825rem',
     gap: space.xs2,
     contentVisibility: 'auto',
     display: 'grid',
-    overflowClipMargin: space.xs,
     minWidth: 0,
   },
   row: {
