@@ -255,6 +255,7 @@ async function captureRows(browser, origin, rows, file) {
  */
 export async function artShots(args) {
   const rows = await shotRows(args)
+  // fallow-ignore-next-line security-sink -- ROOT is this script's repository; every remaining path component is a literal
   if (!existsSync(path.join(ROOT, 'dist', 'server', 'server.js'))) {
     throw new Error('Built site missing. Run npm run build before art:shots.')
   }
@@ -314,8 +315,10 @@ async function saveShots(browser, server, rows, ids) {
   if (address === null || typeof address === 'string') {
     throw new Error('Preview did not bind a TCP port')
   }
+  // fallow-ignore-next-line security-sink -- a constant directory under this script's repository
   const directory = path.join(ROOT, '.gate', 'shots')
   mkdirSync(directory, { recursive: true })
+  // fallow-ignore-next-line security-sink -- shotRows rejects every id not in the archive before capture starts
   const file = path.join(directory, `${ids.join('+')}.png`)
   await captureRows(browser, `http://127.0.0.1:${address.port}`, rows, file)
   return file
@@ -323,6 +326,7 @@ async function saveShots(browser, server, rows, ids) {
 
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   try {
+    // fallow-ignore-next-line security-sink -- prints only the local evidence path, formed from validated archive ids
     console.log(await artShots(process.argv.slice(2)))
   } catch (error) {
     console.error(Error.isError(error) ? error.message : String(error))
