@@ -224,8 +224,9 @@ and the archive gate). Run it before you push.
 - `gate:fallow` compares your branch with `origin/main`. On a shallow clone, run
   `git fetch --unshallow origin main` first.
 - The git hooks check part of this on the way: `pre-commit` formats, lints and
-  typechecks, `commit-msg` runs commitlint, `pre-push` runs the tests.
-  `LEFTHOOK=0` skips them for one command.
+  typechecks, `commit-msg` runs commitlint, `pre-push` runs the tests and checks
+  formatting and lint on the files being pushed. `LEFTHOOK=0` skips them for one
+  command.
 
 ## Commits and pull requests
 

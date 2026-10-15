@@ -37,7 +37,20 @@ commit-msg:
     - name: commitlint
       run: npx commitlint --edit {1}
 
+# A commit made with --no-verify skips everything above, so the push checks
+# formatting and lint again on the files it sends.
 pre-push:
   jobs:
     - name: test
       run: npx vitest run
+
+    - name: prettier
+      glob: '*.{ts,tsx,js,mjs,cjs,json,jsonc,yml,yaml,md,css,html}'
+      # --check, not --write: the files are already committed, and a push must
+      # not change them.
+      run: npx prettier --check --ignore-unknown {push_files}
+
+    - name: eslint
+      glob: '*.{ts,tsx,js,mjs,cjs}'
+      # The same flags as the pre-commit job, for the same reason.
+      run: npx eslint --max-warnings=0 --no-warn-ignored {push_files}
