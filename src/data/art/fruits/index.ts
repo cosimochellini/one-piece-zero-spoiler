@@ -1,4 +1,5 @@
 import {
+  AGE_AGE,
   ARMS_ARMS,
   ARROW_ARROW,
   ART_ART,
@@ -43,6 +44,7 @@ import {
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
+  GABU_GABU,
   GAS_GAS,
   GLARE_GLARE,
   GLINT_GLINT,
@@ -81,6 +83,7 @@ import {
   PUMP_PUMP,
   PUSH_PUSH,
   REVIVE_REVIVE,
+  RIDE_RIDE,
   RIPE_RIPE,
   RIPPLE_RIPPLE,
   RUMBLE_RUMBLE,
@@ -115,6 +118,7 @@ import {
   TREMOR_TREMOR,
   TURTLE_TURTLE,
   VENOM_VENOM,
+  WARP_WARP,
   WASH_WASH,
   WAX_WAX,
   WHIP_WHIP,
@@ -136,7 +140,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and nineteen of them are drawn by hand and name their drawing;
+ * One hundred and twenty-three of them are drawn by hand and name their drawing;
  * the rest name the seed they are grown from.
  */
 export const fruitArt = {
@@ -267,22 +271,10 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'waves',
   }),
-  'age-age-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
+  'age-age-fruit': AGE_AGE,
   'whip-whip-fruit': WHIP_WHIP,
   'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
-  'gabu-gabu-fruit': fruit({
-    body: 'round',
-    grain: 6,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
+  'gabu-gabu-fruit': GABU_GABU,
   'huge-huge-fruit': HUGE_HUGE,
   'island-island-fruit': fruit({
     body: 'oblong',
@@ -305,20 +297,8 @@ export const fruitArt = {
     stem: 'hooked',
     swirl: 'scales',
   }),
-  'warp-warp-fruit': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
-  'ride-ride-fruit': fruit({
-    body: 'oblong',
-    grain: 7,
-    leaf: 'pair',
-    stem: 'straight',
-    swirl: 'spiral',
-  }),
+  'warp-warp-fruit': WARP_WARP,
+  'ride-ride-fruit': RIDE_RIDE,
   'grow-grow-fruit': GROW_GROW,
   'arrow-arrow-fruit': ARROW_ARROW,
   'thorn-thorn-fruit': THORN_THORN,

@@ -38,7 +38,7 @@ import type { Stroke } from '~/data/art/stroke'
  * of a set. These are the ones a reader arrives already knowing: a fruit the
  * show has shown by its threshold is drawn as it looks, and the rest keep the
  * set's body, stalk and shadow and wear a mark written for their power.
- * One hundred and seven are drawn as fruit + power (#461), on the bodies of
+ * One hundred and eleven are drawn as fruit + power (#461), on the bodies of
  * `kit.ts`, the power acting on the fruit itself.
  *
  * Everything here obeys the rules the generator proves: absolute commands
@@ -6080,6 +6080,110 @@ export const HUGE_HUGE: Stroke[] = [
   // A plain fruit, not another power: the comparison makes the scale visible.
   {
     d: `${tipped({ d: outline(HUGE_BODY) }, (x, y) => point(139 + (x - 80) * 0.23, 160 + (y - 110) * 0.3)).d} M139 147 L140 142`,
+  },
+  shadowUnder(1),
+]
+
+/** A pear takes one step sideways: Augur warps in episode 1093/1063–1064. */
+const WARP_BODY: Body = { family: 'pear', cy: 114 }
+
+/** Two equal bodies fit side by side; only the arrived one has a shadow. */
+function arrived(x: number, y: number): string {
+  return point(106 + (x - 80) * 0.65, y)
+}
+
+/** The solid fruit and the broken trace of its old position, shown in 1093. */
+export const WARP_WARP: Stroke[] = [
+  ...[
+    ...kitBody(WARP_BODY, [104, 117, 137]),
+    ...skin([
+      [80, 103, 6],
+      [69, 136, -7],
+      [93, 144, 5],
+    ]),
+    ...sprout(WARP_BODY, 4, 'right'),
+    shadowUnder(1),
+  ].map((stroke) => tipped(stroke, arrived)),
+  {
+    d: tipped(
+      {
+        d: outline(
+          WARP_BODY,
+          (_x, y) =>
+            y < 81 || (y > 89 && y < 109) || (y > 122 && y < 140) || y > 150,
+        ),
+      },
+      (x, y) => point(44 + (x - 80) * 0.65, y),
+    ).d,
+    role: 'accent',
+  },
+]
+
+/** The flask body, kept whole beneath the drink spat in episode 1121/1087. */
+const GABU_BODY: Body = { family: 'gourd', cy: 126 }
+
+/** Shot spits a Gulp of liquor; the ignition in 1121 is deliberately omitted. */
+export const GABU_GABU: Stroke[] = [
+  ...kitBody(GABU_BODY, [106, 121, 148]),
+  ...skin([
+    [71, 116, 6],
+    [87, 143, -7],
+    [70, 157, 5],
+  ]),
+  ...sprout(GABU_BODY, -5, 'left'),
+  {
+    d: 'M85 83 C100 68 113 71 114 84 C115 91 113 97 110 101 M88 88 C99 77 105 77 107 84 C109 90 108 95 106 99 M105 109 L102 116 M116 108 L120 114 M122 98 L128 101',
+    role: 'accent',
+  },
+  shadowUnder(1),
+]
+
+/** Bluegrass controls a Pacifista she rides in episode 1128, chapter 1094. */
+const RIDE_BODY: Body = { family: 'segmented', cy: 106 }
+
+/** A tilted machine shoulder, with a command line from fruit to plate. */
+export const RIDE_RIDE: Stroke[] = [
+  ...kitBody(RIDE_BODY, [94, 107, 121], (_x, y) => y < 148),
+  ribs(RIDE_BODY, 147),
+  ...skin([
+    [65, 104, 6],
+    [95, 128, -6],
+  ]),
+  ...sprout(RIDE_BODY, 5, 'right'),
+  {
+    d: 'M22 157 L130 141 L144 154 L27 173 Z M22 157 L27 173 M130 141 L129 156 M35 158 L35 158 M124 147 L124 147',
+    role: 'soft',
+  },
+  { d: `M${point(...onRim(RIDE_BODY, 123, 1))} L132 146`, role: 'accent' },
+  shadowUnder(1),
+]
+
+/** Bonney shifts between young and grown in episode 1133, chapter 1099. */
+const AGE_BODY: Body = { family: 'segmented', cy: 113 }
+
+/** A younger whole fruit inside the same grown body; no decay marks. */
+export const AGE_AGE: Stroke[] = [
+  ...kitBody(AGE_BODY, [95, 108, 121]),
+  ribs(AGE_BODY, 148, [-1]),
+  ...skin([
+    [65, 101, 6],
+    [97, 102, -5],
+  ]),
+  ...sprout(AGE_BODY, -4, 'left'),
+  {
+    d: [
+      outline(AGE_BODY),
+      crown(AGE_BODY).d,
+      ...sprout(AGE_BODY, -4, 'left').map(({ d }) => d),
+    ]
+      .map(
+        (d) =>
+          tipped({ d }, (x, y) =>
+            point(88 + (x - 80) * 0.42, 133 + (y - AGE_BODY.cy) * 0.42),
+          ).d,
+      )
+      .join(' '),
+    role: 'accent',
   },
   shadowUnder(1),
 ]
