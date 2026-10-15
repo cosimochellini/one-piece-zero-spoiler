@@ -11,9 +11,18 @@
     "src/routes/**/*.tsx",
     "src/router.tsx",
     "src/start.ts",
-    "scripts/*.mjs",
     "doctor.config.ts",
     "commitlint.config.mjs",
+  ],
+  // These are developer commands, not production runtime roots: their browser
+  // and build dependencies belong in devDependencies.
+  "framework": [
+    {
+      "name": "developer-scripts",
+      "detection": { "type": "fileExists", "pattern": "scripts/*.mjs" },
+      "entryPoints": ["scripts/*.mjs"],
+      "entryPointRole": "support",
+    },
   ],
   // Entry files are not credited with their own exports: a route module, a
   // gate script or a config that exports something nothing reads is a finding

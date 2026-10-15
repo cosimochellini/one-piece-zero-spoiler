@@ -237,15 +237,27 @@ A drawing is gated like any text, and it can spoil just as well.
    Iterate until it is an A.
 5. **Write it in the saga file** as literal paths and helper calls, with the
    comment above it. Run `npm run art:sheet -- <id>` again.
-6. **Check it on the site.** `npm run build && npm start` (never `vite dev`:
-   its StyleX layer order differs). With puppeteer-core in the scratchpad,
-   set the bookmark cookie before navigating,
-   `page.setCookie({ name: 'opzs_ep', value: '516', domain: 'localhost', path: '/' })`
-   (`c598` for a chapter), and screenshot the character page (crest) and the
-   list (tile). `clip` takes page coordinates. Screenshots stay out of the repo.
-7. **Run `npm run check`.** A PR body follows the redraw PRs (#192): What
-   (where the entry goes, what each stroke is), Why (a table of the source,
-   quoting the wiki), How to verify (check, tests, the screenshots).
+6. **Verify mappings and stage gates.** Save
+   `npm run --silent archive:table` dumps from the PR base and head, plus
+   `npm run --silent archive:table -- --dated-only` dumps. Compare chapter and
+   episode mappings separately; count added and removed dated entries as
+   occurrences, preserving duplicate lines. Follow the duplicate-aware
+   comparison in `CONTRIBUTING.md` under “Archive and drawing verification.”
+   For characters with redrawings, run `npm run build` then
+   `npm run art:shots -- <id> [<id>…]`. It needs installed Chrome
+   (`CHROME_PATH` overrides its executable) and manages its own preview server.
+   Read `.gate/shots/<ids-joined-with-+>.png`: each redrawing has four crest
+   cells then four tile cells, at episode − 1, episode, chapter − 1 and chapter.
+   Missing chapters use the app's derived opening threshold, including the
+   record's gate, labelled “derived”; covered records have placeholders.
+   Confirm every boundary shows the intended drawing. For first drawings and
+   non-character records, keep `art:sheet` and check the crest and tile on
+   `npm run build && npm start`. Screenshots stay out of the repo.
+7. **Run `npm run check`.** The PR body states What (where the entry goes,
+   what each stroke is), Why (a table of sources with supporting quotations),
+   and How to verify (check, tests and the generated stage grid). Include the
+   actual chapter/episode mapping diff, including an explicit “no changes”
+   when empty, and separate counts of added and removed dated entries.
 
 ## Auditing the archive
 
