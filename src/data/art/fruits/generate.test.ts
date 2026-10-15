@@ -31,16 +31,20 @@ import {
   DICE_DICE,
   DOG_DACHSHUND,
   DOG_JACKAL,
+  DOG_MAKAMI,
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_ALLOSAURUS,
+  DRAGON_BRACHIOSAURUS,
   DRAGON_KIRIN,
   DRAGON_PACHYCEPHALOSAURUS,
   DRAGON_PTERANODON,
   DRAGON_SPINOSAURUS,
+  DRAGON_TRICERATOPS,
   EGG_EGG,
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
+  FISH_AZURE_DRAGON,
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
@@ -97,6 +101,7 @@ import {
   SNOW_SNOW,
   SOUL_SOUL,
   SPARKLE_SPARKLE,
+  SPIDER_ROSAMYGALE,
   SPIKE_SPIKE,
   SPIN_SPIN,
   SPRING_SPRING,
@@ -108,6 +113,7 @@ import {
   SWAMP_SWAMP,
   SWIM_SWIM,
   THORN_THORN,
+  TIME_TIME,
   TON_TON,
   TREMOR_TREMOR,
   TURTLE_TURTLE,
@@ -167,6 +173,12 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
+  'fish-fish-fruit-mythical-model-azure-dragon': FISH_AZURE_DRAGON,
+  'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': SPIDER_ROSAMYGALE,
+  'dragon-dragon-fruit-ancient-model-triceratops': DRAGON_TRICERATOPS,
+  'time-time-fruit': TIME_TIME,
+  'dragon-dragon-fruit-ancient-model-brachiosaurus': DRAGON_BRACHIOSAURUS,
   'snake-snake-fruit-mythical-model-yamata-no-orochi': SNAKE_OROCHI,
   'dragon-dragon-fruit-ancient-model-spinosaurus': DRAGON_SPINOSAURUS,
   'dragon-dragon-fruit-ancient-model-allosaurus': DRAGON_ALLOSAURUS,
@@ -425,6 +437,31 @@ describe('the fruit path alphabet', () => {
 })
 
 describe('the fruit sheet', () => {
+  it('keeps eight grounded spider legs, four rooted on each side', () => {
+    const legs = SPIDER_ROSAMYGALE.filter((stroke) => stroke.role === 'accent')
+      .flatMap(({ d }) => d.split(' M'))
+      .map((path) => coordinates(path))
+
+    expect(legs).toHaveLength(8)
+
+    const roots = legs.flatMap((points) => points.slice(0, 1))
+
+    expect(roots.map(([x]) => Math.sign(x - 80))).toStrictEqual([
+      -1, -1, -1, -1, 1, 1, 1, 1,
+    ])
+
+    for (const points of legs) {
+      const feet = points.slice(2, 4).map(([, y]) => y)
+
+      expect(points).toHaveLength(6)
+      expect(Math.min(...feet)).toBeGreaterThanOrEqual(161)
+
+      const heights = new Set(feet)
+
+      expect(heights.size).toBe(1)
+    }
+  })
+
   it('keeps every drawing inside the box', () => {
     for (const [id, strokes] of STAGES) {
       for (const stroke of strokes) {

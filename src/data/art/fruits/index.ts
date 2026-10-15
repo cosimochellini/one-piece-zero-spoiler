@@ -25,16 +25,20 @@ import {
   DICE_DICE,
   DOG_DACHSHUND,
   DOG_JACKAL,
+  DOG_MAKAMI,
   DOG_WOLF,
   DOOR_DOOR,
   DRAGON_ALLOSAURUS,
+  DRAGON_BRACHIOSAURUS,
   DRAGON_KIRIN,
   DRAGON_PACHYCEPHALOSAURUS,
   DRAGON_PTERANODON,
   DRAGON_SPINOSAURUS,
+  DRAGON_TRICERATOPS,
   EGG_EGG,
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
+  FISH_AZURE_DRAGON,
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
@@ -91,6 +95,7 @@ import {
   SNOW_SNOW,
   SOUL_SOUL,
   SPARKLE_SPARKLE,
+  SPIDER_ROSAMYGALE,
   SPIKE_SPIKE,
   SPIN_SPIN,
   SPRING_SPRING,
@@ -102,6 +107,7 @@ import {
   SWAMP_SWAMP,
   SWIM_SWIM,
   THORN_THORN,
+  TIME_TIME,
   TON_TON,
   TREMOR_TREMOR,
   TURTLE_TURTLE,
@@ -126,8 +132,8 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and nine of them are drawn by hand and name their drawing; the rest
- * name the seed they are grown from.
+ * One hundred and fifteen of them are drawn by hand and name their drawing;
+ * the rest name the seed they are grown from.
  */
 export const fruitArt = {
   'gum-gum-fruit': GUM_GUM,
@@ -242,54 +248,18 @@ export const fruitArt = {
   'straw-straw-fruit': STRAW_STRAW,
   'dragon-dragon-fruit-ancient-model-spinosaurus': DRAGON_SPINOSAURUS,
   'snake-snake-fruit-mythical-model-yamata-no-orochi': SNAKE_OROCHI,
-  'fish-fish-fruit-mythical-model-azure-dragon': fruit({
-    body: 'round',
-    grain: 0,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
+  'fish-fish-fruit-mythical-model-azure-dragon': FISH_AZURE_DRAGON,
   'ripe-ripe-fruit': RIPE_RIPE,
   'dragon-dragon-fruit-ancient-model-pteranodon': DRAGON_PTERANODON,
-  'dragon-dragon-fruit-ancient-model-brachiosaurus': fruit({
-    body: 'gourd',
-    grain: 9,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
-  'time-time-fruit': fruit({
-    body: 'heart',
-    grain: 4,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'spiral',
-  }),
+  'dragon-dragon-fruit-ancient-model-brachiosaurus': DRAGON_BRACHIOSAURUS,
+  'time-time-fruit': TIME_TIME,
   'cat-cat-fruit-ancient-model-sabre-tooth-tiger': CAT_SABRE_TOOTH,
   'dragon-dragon-fruit-ancient-model-pachycephalosaurus':
     DRAGON_PACHYCEPHALOSAURUS,
-  'dragon-dragon-fruit-ancient-model-triceratops': fruit({
-    body: 'pear',
-    grain: 1,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
-  'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
+  'dragon-dragon-fruit-ancient-model-triceratops': DRAGON_TRICERATOPS,
+  'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': SPIDER_ROSAMYGALE,
   'brush-brush-fruit': BRUSH_BRUSH,
-  'dog-dog-fruit-model-okuchi-no-makami': fruit({
-    body: 'star',
-    grain: 5,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'whorls',
-  }),
+  'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
   'magnet-magnet-fruit': MAGNET_MAGNET,
   'woods-woods-fruit': WOODS_WOODS,
   'brain-brain-fruit': fruit({
