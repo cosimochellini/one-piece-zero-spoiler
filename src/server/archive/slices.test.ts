@@ -27,6 +27,7 @@ import type {
   Stroke,
 } from '~/lib/view/records'
 
+import { fruitSheet } from './fruits.server'
 import { handleOf } from './handle.server'
 import { homePage, landingPage } from './home.server'
 import { onboardingPage } from './onboarding.server'
@@ -131,6 +132,33 @@ function named(payload: unknown, found = new Set<string>()): Set<string> {
 
   return found
 }
+
+/**
+ * The bytes of every drawing a payload carries inline, as the loader data
+ * serialises them; a deferred drawing counts only its empty brackets.
+ */
+function inlineStrokes(payload: unknown): number {
+  if (payload === null || typeof payload !== 'object') {
+    return 0
+  }
+
+  return Object.entries(payload).reduce(
+    (sum, [key, value]) =>
+      sum
+      + (key === 'strokes' ?
+        JSON.stringify(value).length
+      : inlineStrokes(value)),
+    0,
+  )
+}
+
+/**
+ * The most bytes of inline strokes a list page may carry at the latest
+ * bookmark. Set just above the largest, the places list's three ports and
+ * their crews at about 25 KB (#610): a new list page, or more drawings sent
+ * inline, fails here rather than slowly growing the page.
+ */
+const INLINE_STROKE_BUDGET = 26_000
 
 /** A record the archive must hold, or a failure naming the one it does not. */
 function onFile(id: string): Entity {
@@ -539,6 +567,35 @@ describe('the slice of the archive a page is given', () => {
 
     for (const record of inline) {
       expect(record.visual.strokes.length, record.id).toBeGreaterThan(0)
+    }
+  })
+
+  it('keeps every list page’s inline drawings under budget at the latest bookmark', () => {
+    const latest: NonNullable<Bookmark>[] = [
+      ep(EPISODE_CEILING),
+      { mode: 'chapter', chapter: CHAPTER_CEILING },
+    ]
+
+    for (const bookmark of latest) {
+      for (const locale of LOCALES) {
+        const pages = {
+          shelves: shelvesPage(bookmark, locale),
+          places: placesPage(bookmark, locale),
+          fruits: fruitSheet(bookmark, locale),
+        }
+
+        for (const [page, payload] of Object.entries(pages)) {
+          const bytes = inlineStrokes(payload)
+
+          expect(bytes, `${page} @ ${bookmark.mode} ${locale}`).toBeGreaterThan(
+            0,
+          )
+          expect(
+            bytes,
+            `${page} @ ${bookmark.mode} ${locale}`,
+          ).toBeLessThanOrEqual(INLINE_STROKE_BUDGET)
+        }
+      }
     }
   })
 
