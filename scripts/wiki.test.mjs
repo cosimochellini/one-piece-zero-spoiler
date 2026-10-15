@@ -223,6 +223,16 @@ describe('requested pair chapters', () => {
     ])
   })
 
+  it('rejects requests above 10000 unique chapters before fetching', () => {
+    expect(pairChapters(['1-10000', '1-10000'])).toHaveLength(10_000)
+    expect(() => pairChapters(['1-10001'])).toThrow(
+      'at most 10000 unique chapters',
+    )
+    expect(() => pairChapters(['1-9007199254740991'])).toThrow(
+      'at most 10000 unique chapters',
+    )
+  })
+
   it.each([
     [],
     ['0'],
@@ -299,6 +309,7 @@ describe('the pairs command', () => {
   it('validates all arguments before fetching any chapter', async () => {
     const fetch = answering(adaptation(129))
     await expect(printPairs(['129', 'invalid'], directory)).resolves.toBe(1)
+    await expect(printPairs(['1-10001'], directory)).resolves.toBe(1)
     expect(fetch).not.toHaveBeenCalled()
     expect(console.log).not.toHaveBeenCalled()
     expect(console.error).toHaveBeenCalledWith(

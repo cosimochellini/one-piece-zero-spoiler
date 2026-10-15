@@ -1,6 +1,9 @@
 // Pure parsing for the wiki:pairs CLI; HTML parsing keeps nested markup and entities intact.
 import { JSDOM } from 'jsdom'
 
+// Bounds eager range expansion and accidental network work, well above the manga's size.
+const MAX_PAIR_CHAPTERS = 10_000
+
 /**
  * Requested chapters, with ranges expanded and duplicates removed in input order.
  * @param {string[]} args Chapter numbers or inclusive ranges.
@@ -28,6 +31,11 @@ export function pairChapters(args) {
   for (const { first, last } of ranges) {
     for (let chapter = first; chapter <= last; chapter += 1) {
       chapters.add(chapter)
+      if (chapters.size > MAX_PAIR_CHAPTERS) {
+        throw new Error(
+          `request at most ${String(MAX_PAIR_CHAPTERS)} unique chapters`,
+        )
+      }
     }
   }
 
