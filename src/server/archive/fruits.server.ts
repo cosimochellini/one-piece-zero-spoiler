@@ -15,7 +15,7 @@ import type {
 } from '~/lib/view/records'
 
 import { headFor, type HeadKeys } from './head.server'
-import { characterOf, fruitOf } from './project.server'
+import { characterOf, deferredOf, fruitOf } from './project.server'
 import { type Reader, readerFor } from './reader.server'
 
 /**
@@ -35,11 +35,23 @@ const FRUIT_HEAD: HeadKeys = {
   pageTitle: 'fruit.pageTitle',
 }
 
-/** One row of fruits split at the reader's bookmark. */
-function bandOf(form: FruitForm, r: Reader): FruitBandView {
+/** How many rows of the first plate ship their drawings with them. */
+const INLINE_FRUITS = 3
+
+/**
+ * One row of fruits split at the reader's bookmark. The drawings are most of
+ * the sheet's bytes, and only the first rows of the first plate are near the
+ * screen when it arrives: the rest come by id.
+ */
+function bandOf(form: FruitForm, plate: number, r: Reader): FruitBandView {
+  const band = r.split(fruitsOfForm(form), (entity) => fruitOf(entity, form, r))
+
   return {
+    ...band,
     form,
-    ...r.split(fruitsOfForm(form), (entity) => fruitOf(entity, form, r)),
+    open: band.open.map((fruit, row) =>
+      plate === 0 && row < INLINE_FRUITS ? fruit : deferredOf(fruit),
+    ),
   }
 }
 
@@ -47,7 +59,10 @@ function bandOf(form: FruitForm, r: Reader): FruitBandView {
 export function fruitSheet(bookmark: Bookmark, locale: Locale): FruitSheetView {
   const r = readerFor(bookmark, locale)
 
-  return { bands: PLATES.map((form) => bandOf(form, r)), filed: fruits.length }
+  return {
+    bands: PLATES.map((form, plate) => bandOf(form, plate, r)),
+    filed: fruits.length,
+  }
 }
 
 /** A fruit's own page: what names it, and what it says. */
