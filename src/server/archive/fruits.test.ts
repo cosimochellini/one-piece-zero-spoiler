@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
+import { DRAWINGS, REDRAWINGS } from '~/data/art'
 import {
   CAT_SABRE_TOOTH,
   DOG_MAKAMI,
@@ -35,6 +36,7 @@ import {
   fruitSiblings,
 } from './fruits.server'
 import { handleOf } from './handle.server'
+import { drawingsFor } from './pages.server'
 import { peekFruit } from './peek.server'
 
 /**
@@ -154,6 +156,50 @@ describe('the specimen sheet', () => {
     expect(sheet.bands.flatMap((band) => band.open)).toStrictEqual([])
 
     saysNothing(sheet, null)
+  })
+
+  it('leaves the drawings past the third row of the first plate to be asked for', () => {
+    const [first, ...rest] = fruitSheet(ep(1150), 'en').bands
+    const inline = first?.open.slice(0, 3) ?? []
+    const later = [
+      ...(first?.open.slice(3) ?? []),
+      ...rest.flatMap((band) => band.open),
+    ]
+
+    expect(inline).toHaveLength(3)
+    expect(later.length).toBeGreaterThan(50)
+
+    for (const fruit of inline) {
+      expect(fruit.visual.strokes.length, fruit.id).toBeGreaterThan(0)
+    }
+    for (const fruit of later) {
+      expect(fruit.visual, fruit.id).toStrictEqual({
+        strokes: [],
+        tint: fruit.visual.tint,
+        deferred: true,
+      })
+    }
+  })
+
+  it('answers a fruit’s drawing by id as the reader would see it, and not before', () => {
+    const opOp = entities.find((record) => record.id === 'op-op-fruit')
+    const heart = REDRAWINGS['op-op-fruit']?.[0]
+
+    expect(heart?.episode).toBe(704)
+    expect(opOp).toBeDefined()
+    expect(
+      drawingsFor(
+        ['op-op-fruit'],
+        ep((opOp?.revealedAtEpisode ?? 0) - 1),
+        'en',
+      ),
+    ).toStrictEqual({})
+    expect(drawingsFor(['op-op-fruit'], ep(703), 'en')).toStrictEqual({
+      'op-op-fruit': DRAWINGS['op-op-fruit'],
+    })
+    expect(drawingsFor(['op-op-fruit'], ep(704), 'en')['op-op-fruit']).toBe(
+      heart?.value,
+    )
   })
 
   it('sets every fruit on the plate its kind names', () => {

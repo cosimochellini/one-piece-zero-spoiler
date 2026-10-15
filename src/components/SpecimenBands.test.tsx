@@ -148,4 +148,36 @@ describe('SpecimenBands', () => {
       screen.getAllByText('Nothing of this type is under fog.'),
     ).toHaveLength(2)
   })
+
+  it('draws an inline row at once, and keeps a left-behind one empty but searchable', async () => {
+    const later = fruit({
+      id: 'chop-chop-fruit',
+      name: 'Chop-Chop Fruit',
+      visual: { strokes: [], tint: 'red', deferred: true },
+    })
+    renderWithProviders(
+      <SpecimenBands
+        bands={[fruitBand({ form: 'paramecia', open: [GUM, later], total: 2 })]}
+        peek={peekTo(GUM)}
+      />,
+      { bookmark: ep(650) },
+    )
+
+    const [gum, chop] = screen.getAllByRole('listitem')
+
+    expect(gum?.querySelectorAll('path').length).toBeGreaterThan(0)
+    expect(chop?.querySelector('svg')).not.toBeNull()
+    expect(chop?.querySelectorAll('path')).toHaveLength(0)
+
+    await userEvent.type(screen.getByRole('searchbox'), 'chop')
+
+    const chopLink = await screen.findByRole('link', {
+      name: 'Chop-Chop Fruit',
+    })
+
+    expect(chopLink).toBeInTheDocument()
+    expect(
+      screen.queryByRole('link', { name: 'Gum-Gum Fruit' }),
+    ).not.toBeInTheDocument()
+  })
 })

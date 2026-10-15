@@ -3,6 +3,7 @@ import type { ReactElement } from 'react'
 
 import { FruitFrame } from '~/components/FruitFrame'
 import { SpoilerVeil } from '~/components/SpoilerVeil'
+import { useDrawing } from '~/lib/view/drawings'
 import type { FruitView, Slot } from '~/lib/view/records'
 import { morphPart, useTravels } from '~/styles/morph'
 
@@ -10,7 +11,8 @@ import { morphPart, useTravels } from '~/styles/morph'
  * A fruit's drawing under its own fog: an empty frame while it is covered,
  * and once open the drawing that travels between the sheet and the fruit's
  * page. The fruit's own page names it always; the sheet only while it is the
- * fruit travelling (`~/styles/morph`).
+ * fruit travelling (`~/styles/morph`). A drawing the sheet left behind is
+ * asked for once its frame nears the screen (`useDrawing`).
  */
 export function FruitArt({
   always = false,
@@ -51,10 +53,14 @@ function OpenArt({
   record: FruitView
 }): ReactElement {
   const travels = useTravels('fruit', record.id) || always
+  const { ref, strokes } = useDrawing(record.id, record.visual)
 
   return (
-    <div {...stylex.props(travels && morphPart('fruit', record.id, 'art'))}>
-      <FruitFrame visual={record.visual} />
+    <div
+      ref={ref}
+      {...stylex.props(travels && morphPart('fruit', record.id, 'art'))}
+    >
+      <FruitFrame visual={{ ...record.visual, strokes }} />
     </div>
   )
 }
