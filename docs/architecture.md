@@ -270,6 +270,14 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   visitor with no bookmark, the reader's arc and its stories for one with a
   bookmark), the places list and a character page are awaited instead: they are
   the page, and a reader with scripting off should get them in full.
+- The three list pages send only the first drawings inline: the first shelf of
+  characters, the first three places and the first three fruits. Every other
+  record carries its tint and `deferred: true`, and the page asks for its
+  strokes by id once it comes within a screen of the viewport (`useDrawing` in
+  `src/lib/view/drawings.ts`, `drawingsFor` on the server, which answers only
+  records the reader has reached). A test in `slices.test.ts` holds each list
+  page to 26 KB of inline strokes at the latest bookmark. Deferring the fruits
+  took `/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
@@ -278,6 +286,56 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   reflow the page.
 - Assets and fonts have immutable one-year cache headers. The archive's own
   responses vary by cookie and are never stored in a shared cache.
+
+### Server time
+
+Measured on 2026-10-15 from Italy, on one reused connection, with the bookmark
+at episode 1150 (#610). Medians of five runs:
+
+| Request                                         | Raw body | Time to first byte |
+| ----------------------------------------------- | -------- | ------------------ |
+| `/icon.svg`, a static file                      | 1 KB     | 0.03 s             |
+| `/robots.txt?r=…`, a cache miss                 | 0.1 KB   | 0.20 s             |
+| `/en`                                           | 245 KB   | 0.38 s             |
+| `/en/places`                                    | 730 KB   | 0.72 s             |
+| `/en/fruits`, before its drawings were deferred | 988 KB   | 0.72 s             |
+| `/en/characters`                                | 1.19 MB  | 1.00 s             |
+
+The same pages render in 6–57 ms on a laptop once warm, and in about 360 ms on
+the first request after a start, which loads the archive. In production a first
+hit after a quiet spell took 1.4–2 s.
+
+What this says:
+
+- **The hop to the function costs about 0.17 s.** That is the difference between
+  a static file and a function that does nothing. On Netlify Free the function
+  runs in the US and cannot be moved, so this is the floor.
+- **The rest grows with the raw body, not the render.** At episode 1 the same
+  pages are 7–29 KB gzip and come back in 0.29–0.66 s. The local render is a few
+  milliseconds either way, so the time goes into moving the uncompressed HTML
+  from the function to the edge, which compresses it. A smaller body is a faster
+  page.
+- **A cold start costs one to two seconds** on the first request an instance
+  serves.
+
+Every response now carries `Server-Timing: app;dur=…`, the time inside the
+function until the response exists, with `cold` on an instance's first request
+(`src/start.ts`). It splits the render from the hop without access to the
+function logs.
+
+What was decided:
+
+- **No cache for HTML.** A cache key that misses one cookie or one parameter
+  would serve another reader's later bookmark, which is a spoiler. Every HTML
+  response is rendered per request.
+- **Bodies get smaller.** Deferring the fruit drawings cut the heaviest page by
+  60% raw. Moving the shared stroke classes from every `<path>` to one `<g>` was
+  measured and dropped: most drawings on a list are deferred, and an empty `<g>`
+  on each of them costs more than the classes it saves (`/en/characters` grew by
+  4 KB raw).
+- **No Edge Functions for now.** A warm `/en/characters` render already takes
+  about 50 ms on a laptop, which is the Edge CPU limit, and the archive would
+  have to ship in the edge bundle.
 
 ## Localization
 
