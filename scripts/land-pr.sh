@@ -4,10 +4,11 @@
 #
 # usage: scripts/land-pr.sh <pr> <expected-head-sha>
 #
-# exit 0 merged
+# exit 0 merged, also when GitHub had merged it first
 #      2 rebase conflict (the files are printed): rebase by hand. Checked
 #        before waiting for CI too, as GitHub starts no run on a conflicting PR
-#      3 CI `check` did not pass
+#      3 CI `check` did not pass. A cancelled run is waited out, as a newer
+#        run on the same head cancels it; one never followed times out
 #      4 the head is no longer the one expected
 #      5 bad arguments, a PR not open against main, gh or git failed, or the
 #        merge or the rebase was refused for another reason
@@ -18,12 +19,17 @@ cd "$(dirname "$0")/.." || exit 5
 PR=$1
 H=$2
 
-# Prints the conclusion of the `check` run on commit $1, once it has finished.
+# Prints the conclusion of the newest `check` run on commit $1, once it has
+# finished. `gh pr ready`, a PR body edit or a re-run cancel the run in flight
+# and start a newer one, so a cancelled run is not final.
 wait_check() {
   for _ in $(seq 80); do
     r=$(gh api "repos/{owner}/{repo}/commits/$1/check-runs?check_name=check" \
-      -q '.check_runs[0] | "\(.status) \(.conclusion)"') || return 1
-    case $r in "completed "*) echo "${r#completed }"; return ;; esac
+      -q '.check_runs | max_by(.id) | "\(.status) \(.conclusion)"') || return 1
+    case $r in
+      "completed cancelled") ;;
+      "completed "*) echo "${r#completed }"; return ;;
+    esac
     sleep 30
   done
   echo timeout
@@ -153,7 +159,11 @@ done
 
 # No --delete-branch: GitHub deletes the remote branch on merge, and the flag
 # would also delete local branches, worktrees of parallel sessions included.
-gh pr merge "$PR" --squash --match-head-commit "$H" || exit 5
+if ! gh pr merge "$PR" --squash --match-head-commit "$H"; then
+  # GitHub may have merged it already ("Merge already in progress").
+  s=$(gh pr view "$PR" --json state,headRefOid -q '"\(.state) \(.headRefOid)"') || exit 5
+  [ "$s" = "MERGED $H" ] || exit 5
+fi
 echo "merged $H"
 gh pr view "$PR" --json state,mergeCommit,closingIssuesReferences \
   -q '"\(.state) \(.mergeCommit.oid[:7]) closes: \([.closingIssuesReferences[].number])"' || true
