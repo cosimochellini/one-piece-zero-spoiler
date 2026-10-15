@@ -5881,7 +5881,7 @@ export const FISH_AZURE_DRAGON: Stroke[] = [
   ...kitBody(
     AZURE_DRAGON_BODY,
     [146, 157],
-    (x, y) => x < 80 || y < 91 || y > 109,
+    (x, y) => x < 80 || y < 93 || y > 107,
   ),
   ...skin([
     [66, 116, 8],
@@ -5935,7 +5935,7 @@ export const DOG_MAKAMI: Stroke[] = [
   ...kitBody(
     MAKAMI_BODY,
     [93, 106, 119],
-    (x, y) => x < 80 || y < 140 || y > 160,
+    (x, y) => x < 80 || y < 145 || y > 155,
   ),
   ...skin([
     [66, 108, 8],
