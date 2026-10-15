@@ -2002,8 +2002,9 @@ export const alabastaRedrawn: Redrawings = {
   // his hilt and green grip on a blade snapped short on a slant, beside the
   // strapped stub of Brogy's haft.
   // In Elbaf he is armed again, shield and sword, from 1112 (ch. 1079).
-  // Turned demon at 1180 (ch. 1150): the same shield and sword, and a bat
-  // wing spread behind the shield.
+  // Turned demon at 1180 (ch. 1150): the same shield, a bat wing spread
+  // behind it, and his sword made a trident, the old blade its long middle
+  // prong between two curved ones.
   'dorry': [
     {
       episode: 73,
@@ -2091,6 +2092,7 @@ export const alabastaRedrawn: Redrawings = {
       value: [
         ...moved(BAT_WING, 'translate(45 84) rotate(20) scale(0.72)'),
         ...alabastaArt.dorry,
+        { d: 'M101.7 48.6 Q91.4 40.7 112.9 24.5 M114.3 58.4 Q124.6 66.3 135 41.5' },
       ],
     },
   ],
