@@ -1665,8 +1665,9 @@ export const alabastaRedrawn: Redrawings = {
     // The same cap with a pink scarf wound thick round the middle of the
     // crown, knotted at his left with two short ends hanging; the cross on its
     // disc sits over the scarf at the front, the ring of dots below it. He
-    // comes ashore on Whole Cake Island in it at 786 (ch. 827), and is out of
-    // it, hat and all, when he bathes at Bege's at 827 (ch. 858).
+    // comes ashore on Whole Cake Island in it at 786 (ch. 827). The scarf is
+    // gone when he bathes at Bege's at 827 (ch. 858), and the cap is his look
+    // again from there.
     {
       episode: 786,
       chapter: 827,
@@ -2004,7 +2005,7 @@ export const alabastaRedrawn: Redrawings = {
   // In Elbaf he is armed again, shield and sword, from 1112 (ch. 1079).
   // Turned demon at 1180 (ch. 1150): the same shield, a bat wing spread
   // behind it, and his sword made a trident, the old blade its long middle
-  // prong between two curved ones.
+  // prong between two curved ones. The form's end has not aired (#612).
   'dorry': [
     {
       episode: 73,
@@ -2349,7 +2350,7 @@ export const alabastaRedrawn: Redrawings = {
   // In Elbaf he is armed again, axe and helmet, from 1112 (ch. 1079).
   // Turned demon at 1180 (ch. 1150): the same axe and helmet, the horns
   // grown into curved demon horns that hook inward, and a bat wing spread
-  // behind the haft.
+  // behind the haft. The form's end has not aired (#612).
   'brogy': [
     {
       episode: 78,
