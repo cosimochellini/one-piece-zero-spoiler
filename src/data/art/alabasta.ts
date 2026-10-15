@@ -2092,7 +2092,9 @@ export const alabastaRedrawn: Redrawings = {
       value: [
         ...moved(BAT_WING, 'translate(45 84) rotate(20) scale(0.72)'),
         ...alabastaArt.dorry,
-        { d: 'M101.7 48.6 Q91.4 40.7 112.9 24.5 M114.3 58.4 Q124.6 66.3 135 41.5' },
+        {
+          d: 'M101.7 48.6 Q91.4 40.7 112.9 24.5 M114.3 58.4 Q124.6 66.3 135 41.5',
+        },
       ],
     },
   ],
