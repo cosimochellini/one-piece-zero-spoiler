@@ -18,8 +18,10 @@ import {
   CALM_CALM,
   CASTLE_CASTLE,
   CAT_LEOPARD,
+  CAT_LEOPARD_REAL,
   CAT_SABRE_TOOTH,
   CHOP_CHOP,
+  CHOP_CHOP_REAL,
   CLEAR_CLEAR,
   CLONE_CLONE,
   COOK_COOK,
@@ -42,6 +44,7 @@ import {
   ELEPHANT_ELEPHANT,
   ELEPHANT_MAMMOTH,
   FISH_AZURE_DRAGON,
+  FISH_AZURE_DRAGON_REAL,
   FLAME_FLAME,
   FLAME_FLAME_FIRE,
   FLOWER_FLOWER,
@@ -66,6 +69,7 @@ import {
   KILO_KILO,
   LICK_LICK,
   LOVE_LOVE,
+  LOVE_LOVE_REAL,
   MAGMA_MAGMA,
   MAGNET_MAGNET,
   MARK_MARK,
@@ -73,13 +77,16 @@ import {
   MILLET_MILLET,
   MIRROR_MIRROR,
   MOCHI_MOCHI,
+  MOCHI_MOCHI_AWAKENED,
   MOLE_MOLE,
   MUNCH_MUNCH,
   OP_OP,
   OP_OP_HEART,
   OX_OX_BISON,
+  OX_OX_BISON_REAL,
   OX_OX_GIRAFFE,
   PAW_PAW,
+  PAW_PAW_REAL,
   POP_POP,
   PRESS_PRESS,
   PUFF_PUFF,
@@ -100,6 +107,7 @@ import {
   SNAKE_ANACONDA,
   SNAKE_KING_COBRA,
   SNAKE_OROCHI,
+  SNAKE_OROCHI_REAL,
   SNIP_SNIP,
   SNOW_SNOW,
   SOOT_SOOT,
@@ -114,6 +122,7 @@ import {
   STONE_STONE,
   STRAW_STRAW,
   STRING_STRING,
+  STRING_STRING_REAL,
   STRONG_STRONG,
   SWAMP_SWAMP,
   SWIM_SWIM,
@@ -279,15 +288,47 @@ export const fruitArt = {
 } satisfies Drawings
 
 /**
- * The fruits drawn again once the show has shown the real one: until then a
- * reader is shown a fruit that looks like nothing in particular, because the
- * look of the real one is something the story has not shown yet.
+ * Real fruits replace fruit + power drawings once the story shows them.
+ * A declared awakening changes a power drawing only while its real fruit
+ * has not been shown; once drawn, a real fruit stays.
  */
 export const fruitRedrawn: Redrawings = {
+  // Buggy's flashback shows the real fruit in episode 8, chapter 19.
+  'chop-chop-fruit': [{ episode: 8, chapter: 19, value: CHOP_CHOP_REAL }],
+  // Vegapunk's Zoan explanation, episode 1101, chapter 1070.
+  'ox-ox-fruit-model-bison': [
+    { episode: 1101, chapter: 1070, value: OX_OX_BISON_REAL },
+  ],
   // The prize of the Corrida Colosseum, held up by Doflamingo in episode 629
   // and chapter 700.
   'flame-flame-fruit': [{ episode: 629, chapter: 700, value: FLAME_FLAME }],
   // The fruit Rosinante sets out to steal for Law, in episode 704 and
   // chapter 765.
   'op-op-fruit': [{ episode: 704, chapter: 765, value: OP_OP_HEART }],
+  // Trebol offers the fruit to Doflamingo in episode 723, chapter 782.
+  'string-string-fruit': [
+    { episode: 723, chapter: 782, value: STRING_STRING_REAL },
+  ],
+  // Katakuri turns the surroundings to mochi in episode 855, chapter 882.
+  'mochi-mochi-fruit': [
+    { episode: 855, chapter: 882, value: MOCHI_MOCHI_AWAKENED },
+  ],
+  // Higurashi offers the fruit in episode 965, chapter 965 (Volume 96).
+  'snake-snake-fruit-mythical-model-yamata-no-orochi': [
+    { episode: 965, chapter: 965, value: SNAKE_OROCHI_REAL },
+  ],
+  // Vegapunk's Zoan explanation, episode 1101, chapter 1070.
+  'fish-fish-fruit-mythical-model-azure-dragon': [
+    { episode: 1101, chapter: 1070, value: FISH_AZURE_DRAGON_REAL },
+  ],
+  // Vegapunk's Zoan explanation, episode 1101; anime only, paired with the
+  // chapter the episode adapts, 1070.
+  'cat-cat-fruit-model-leopard': [
+    { episode: 1101, chapter: 1070, value: CAT_LEOPARD_REAL },
+  ],
+  // Vegapunk names it among the Seraphim's powers, episode 1101; anime only,
+  // paired with the chapter the episode adapts, 1070.
+  'love-love-fruit': [{ episode: 1101, chapter: 1070, value: LOVE_LOVE_REAL }],
+  // The God Valley prize Kuma steals and eats, episode 1130, chapter 1096.
+  'paw-paw-fruit': [{ episode: 1130, chapter: 1096, value: PAW_PAW_REAL }],
 }

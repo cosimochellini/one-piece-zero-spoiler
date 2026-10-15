@@ -1,4 +1,4 @@
-import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
+import { BODY_CX, point } from '~/data/art/fruits/units'
 import type { Stroke } from '~/data/art/stroke'
 
 /** Shared stalks, leaves and ground shadows for fruit drawings. */
@@ -9,12 +9,6 @@ export type StemForm = 'hooked' | 'straight'
 /** What is still on the stalk. */
 export type LeafForm = 'left' | 'right'
 
-/** How far the stalk rises. */
-const RISE = [16, 22, 28]
-
-/** How far the stalk leans off the middle. */
-const LEAN = [-8, -4, 0, 4, 8]
-
 /** How long a leaf is. */
 const LEAF = [14, 18, 22]
 
@@ -23,15 +17,6 @@ export interface Stalk {
   baseY: number
   lean: number
   rise: number
-}
-
-/** A stalk measured from the top of its fruit body. */
-export function stalkOf(ry: number, grain: number): Stalk {
-  return {
-    baseY: BODY_CY - ry,
-    lean: LEAN[grain % LEAN.length] ?? 0,
-    rise: RISE[grain % RISE.length] ?? 22,
-  }
 }
 
 /** The stalk itself, and the curl at its tip when it has one. */

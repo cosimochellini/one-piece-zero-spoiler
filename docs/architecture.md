@@ -91,7 +91,7 @@ reader is inside a run or the next one starts within the six cells.
 | Devil fruits        | 128                                                     |
 | Arcs, places, ships | 34 · 39 · 2                                             |
 | Saga modules        | 12, plus one for the devil fruits                       |
-| Line drawings       | 737, one per record, plus 246 redrawings of 135 records |
+| Line drawings       | 737, one per record, plus 255 redrawings of 144 records |
 | Chronicle stories   | 755, for 185 characters                                 |
 
 <!-- End of the generated counts. -->
@@ -130,10 +130,11 @@ Every devil fruit has a hand-drawn composition. Fruit + power drawings share
 five silhouettes and a segmented round body through the body kit
 (`src/data/art/fruits/kit.ts`), with a crown, a highlight, hatching and curls
 for volume. The power is the single accent and acts on the fruit's own body.
-Real-fruit drawings show the fruit itself without a power. Flame-Flame and Op-Op
-gain their real-fruit drawings only from the episode and chapter that show them.
-Every fruit path uses absolute commands, which lets the drawing tests read its
-numbers as coordinates and check the 160×200 bounds.
+Real-fruit drawings show the fruit itself without a power, from the episode and
+chapter that show it. Until then a declared awakening can redraw the power. Once
+the real fruit is drawn, later identity turns keep that drawing. Every fruit
+path uses absolute commands, which lets the drawing tests read its numbers as
+coordinates and check the 160×200 bounds.
 
 ## Stack
 

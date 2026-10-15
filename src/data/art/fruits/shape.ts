@@ -1,9 +1,7 @@
-import { BODY_CX, BODY_CY, point } from '~/data/art/fruits/units'
-
 /**
  * Five shared silhouettes, each a table of six control points down the
- * right side as fractions of the body's radii. Mirroring them up the left
- * side lets `lobed` draw a symmetrical outline from one profile.
+ * right side as fractions of the body's radii. Mirrored up the left side,
+ * one profile gives a symmetrical outline.
  */
 
 /** Which of the five silhouettes a fruit takes. */
@@ -65,43 +63,6 @@ const PROFILES: Record<BodyFamily, Profile> = {
   ],
 }
 
-/** One profile point in the drawing box, optionally mirrored to the left. */
-function at(
-  fraction: [number, number],
-  radii: [number, number],
-  side: number,
-): string {
-  return point(
-    BODY_CX + side * fraction[0] * radii[0],
-    BODY_CY + fraction[1] * radii[1],
-  )
-}
-
-/**
- * The silhouette of one body: four cubics from the top, down the right side
- * to the foot, and back up the left side to where they started.
- *
- * Every coordinate is a control point or an end point inside the body's own
- * radii, and a cubic never leaves the hull of its control points, so the
- * whole outline is inside the box by construction and not by inspection.
- */
-export function lobed(family: BodyFamily, rx: number, ry: number): string {
-  const profile = PROFILES[family]
-  const radii: [number, number] = [rx, ry]
-  const on = (index: number, side: number): string =>
-    at(profile[index] ?? [0, 1], radii, side)
-  const top = point(BODY_CX, BODY_CY - ry)
-
-  return [
-    `M${top}`,
-    `C${on(0, 1)} ${on(1, 1)} ${on(2, 1)}`,
-    `C${on(3, 1)} ${on(4, 1)} ${on(5, 1)}`,
-    `C${on(4, -1)} ${on(3, -1)} ${on(2, -1)}`,
-    `C${on(1, -1)} ${on(0, -1)} ${top}`,
-    'Z',
-  ].join(' ')
-}
-
 /** Points read along each cubic of the right side when measuring a width. */
 const STEPS = 32
 
@@ -125,7 +86,7 @@ export function bezier(cubic: [number, number][], t: number): [number, number] {
 
 /**
  * The right side of a body as the points along it, from the crown down to the
- * foot, each as fractions of its radii: the outline `lobed` draws, read at
+ * foot, each as fractions of its radii: the profile's outline, read at
  * `steps` even points along each of its two cubics.
  */
 export function sideOf(family: BodyFamily, steps = STEPS): [number, number][] {
@@ -145,7 +106,7 @@ export function sideOf(family: BodyFamily, steps = STEPS): [number, number][] {
 
 /**
  * How far the right side of a body reaches at height `y`, both as fractions
- * of its radii. It is read off the outline `lobed` draws, which on a pear or
+ * of its radii. It is read off the profile's outline, which on a pear or
  * a gourd runs well inside the ellipse its radii describe. Above the top
  * or below the foot the side never crosses `y`, so the width there is 0.
  */

@@ -3,9 +3,6 @@
 /** The centre of every fruit body, in the 160x200 drawing box. */
 export const BODY_CX = 80
 
-/** How far down the box a fruit sits: low enough to leave room for the stem. */
-export const BODY_CY = 112
-
 /**
  * One decimal, like every other drawing in the archive. Written out rather
  * than imported from `~/lib/svg/primitives`, whose own rounder is private
