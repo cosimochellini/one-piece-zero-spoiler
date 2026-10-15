@@ -19,6 +19,7 @@
   "framework": [
     {
       "name": "developer-scripts",
+      "detection": { "type": "fileExists", "pattern": "scripts/*.mjs" },
       "entryPoints": ["scripts/*.mjs"],
       "entryPointRole": "support",
     },
