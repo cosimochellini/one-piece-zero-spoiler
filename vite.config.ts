@@ -40,6 +40,10 @@ const config = defineConfig(({ command }) => ({
       // layer underneath it. Unlayered CSS beats layered CSS, so the reset
       // has to be layered too -- see the comment in that file.
       useCSSLayers: true,
+      // StyleX appends its CSS after Vite has minified the stylesheet, so it
+      // has to be minified here or it ships indented, one declaration a line.
+      // Build only, so the dev stylesheet stays readable.
+      lightningcssOptions: { minify: command === 'build' },
       // Serve only /virtual:stylex.css in dev. 'full' would also install an
       // HTML-rewriting middleware, which has nothing to attach to here: the
       // root route renders the document itself, there is no index.html.
