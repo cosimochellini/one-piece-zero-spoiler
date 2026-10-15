@@ -275,6 +275,13 @@ tapped a link a friend sent. The list is in `src/lib/crawler.ts`.
   records the reader has reached). A test in `slices.test.ts` holds each list
   page to 26 KB of inline strokes at the latest bookmark. Deferring the fruits
   took `/en/fruits` at episode 1150 from 200 KB to 39 KB gzip (#610).
+- The browser skips the layout and paint of list items far from the screen
+  (`content-visibility: auto` on a character tile, a record tile and a fruit's
+  drawing margin). Each stands in at its own exact height, the same at every
+  width, so the page keeps its height and Back returns to the same tile. On a
+  phone with the CPU slowed four times, layout, style and paint took 503 → 159
+  ms on `/en/characters`, 376 → 193 ms on `/en/places` and 194 → 167 ms on
+  `/en/fruits` (#621).
 - Search runs on names folded once by the server, so a keystroke costs one
   folded query and a few hundred `indexOf` calls. The list below the field is
   deferred; the field itself never is.
