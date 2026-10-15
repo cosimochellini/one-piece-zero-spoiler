@@ -109,6 +109,28 @@ const VULTURE_WING =
 const FEATHER =
   'M0 -14 C7 -8 7 6 0 12 C-7 6 -7 -8 0 -14 M0 -10 V18 M0 -2 l-4 -4 M0 4 l4 -4'
 
+/** Dalton's bison foreleg in 3/4: the plated bracer round the upper forearm, the shaggy black fur running down to the fetlock tuft, and the cloven hoof. */
+const DALTON_FORELEG: Stroke[] = [
+  {
+    d: 'M100 34 Q124 41 148 34 M100 34 V37.5 Q124 44.5 148 37.5 V34 M100 37.5 V58 Q124 65 148 58 V37.5 M118 42.2 V62',
+  },
+  {
+    d: 'M102 -2 L100 6 L103 8 L101 18 L104 20 L102 33 M146 -2 L148 6 L145 8 L147 18 L144 20 L146 33 M103 63 L101 76 L103 78 L101 88 L104 90 L103 100 L106 102 L106 112 L109 114 L110 124 L112 126 L113 140 L108 150 L113 148 L116 158 L120 150 L124 159 L128 150 L132 158 L136 149 L143 151 L139 140 L140 126 L142 124 L142 114 L145 112 L144 102 L147 100 L146 90 L149 88 L147 78 L149 76 L145 63',
+  },
+  { d: 'M112 80 q-2 12 0 24 M120 78 q-1 14 1 28', role: 'soft' },
+  {
+    d: 'M134 84 l8 -4 M135 98 l7 -3.5 M134 112 l6 -3 M134 14 l7 -3.5',
+    role: 'ambient',
+  },
+  {
+    d: 'M114 154 C110 162 104 170 100 176 Q113 182 127.5 178.5 L129 174 L130.5 178.5 Q141 180 148 174 C145 166 142 160 139 154 M129 174 C129 168 128 162 127 157',
+  },
+  {
+    d: 'M101.5 172 Q114 177.5 127 174.5 M131 174.5 Q141 176 146.5 170.5',
+    role: 'soft',
+  },
+]
+
 /** The wrist wraps, the black-furred hand and the four claws of Chaka's jackal paw, closed in a fist. */
 const CHAKA_PAW: Stroke[] = [
   { d: `${ellipse(120, 40, 18, 5)} M102 40 V66 A18 5 0 0 0 138 66 V40` },
@@ -679,7 +701,8 @@ export const alabastaArt = {
 
   // His spade in its sheath, slung by its strap: the long round-tipped blade
   // he carries on his back when he turns the ship away at 80. The beast he
-  // becomes comes the next episode.
+  // becomes comes the next episode: its foreleg joins the spade from 81, in
+  // `alabastaRedrawn`.
   'dalton': [
     { d: circle(124, 24, 7) },
     { d: 'M117.8 27.1 L90.5 69 M123.7 30.9 L96.4 72.8' },
@@ -1990,6 +2013,25 @@ export const alabastaRedrawn: Redrawings = {
         ),
         ...CHAKA_PAW,
         shadow(46, 184, 26),
+      ],
+    },
+  ],
+
+  // His spade in its sheath, smaller, and beside it the foreleg of the bison
+  // he becomes: the plated bracer he keeps on the forearm, the shaggy black
+  // fur hatched where it turns away, and the cloven hoof under the tuft.
+  // He shows the Zoan at 81 (ch. 135).
+  'dalton': [
+    {
+      episode: 81,
+      chapter: 135,
+      value: [
+        ...moved(
+          alabastaArt.dalton.slice(0, 9),
+          'translate(-12 22) scale(0.78)',
+        ),
+        ...DALTON_FORELEG,
+        shadow(86, 186, 68),
       ],
     },
   ],
