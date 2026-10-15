@@ -5,7 +5,13 @@
 // challenge page, a throttling error or a truncated batch does not stick to
 // the next run. Nothing expires: delete the folder to read afresh.
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  rmSync,
+  writeFileSync,
+} from 'node:fs'
 import path from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
 import { pathToFileURL } from 'node:url'
@@ -318,20 +324,33 @@ export function pageOf(query, asked) {
  */
 async function chapterPairs(chapter, directory) {
   const title = `Chapter_${String(chapter)}`
+  // fallow-ignore-next-line security-sink -- directory is the repository cache or a test tempdir; chapter is a validated positive integer.
+  const file = path.join(directory, 'pairs', `${String(chapter)}.json`)
   const { parse } = await cached(
-    // fallow-ignore-next-line security-sink -- directory is the repository cache or a test tempdir; chapter is a validated positive integer.
-    path.join(directory, 'pairs', `${String(chapter)}.json`),
+    file,
     title,
     `https://onepiece.fandom.com/api.php?action=parse&redirects=1&prop=text&section=0&format=json&page=${title}`,
     (answer) =>
       typeof answer.parse?.text?.['*'] === 'string'
       || answer.error?.code === 'missingtitle',
   )
+  // Only an adapted chapter stays cached: a missing page, an unadapted
+  // chapter or unreadable markup is exactly what the wiki changes later.
   if (parse === undefined) {
+    rmSync(file, { force: true })
     throw new Error('chapter does not exist')
   }
 
-  return animePairs(parse.text['*'])
+  let pairs = []
+  try {
+    pairs = animePairs(parse.text['*'])
+  } finally {
+    if (pairs.length === 0) {
+      rmSync(file, { force: true })
+    }
+  }
+
+  return pairs
 }
 
 /**

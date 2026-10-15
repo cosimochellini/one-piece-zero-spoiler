@@ -317,7 +317,7 @@ describe('the pairs command', () => {
     )
   })
 
-  it('continues after missing and malformed chapters, caching missing titles too', async () => {
+  it('continues after missing and malformed chapters and caches only adapted ones', async () => {
     const fetch = answering(JSON.stringify({ error: { code: 'missingtitle' } }))
     fetch
       .mockResolvedValueOnce(
@@ -334,8 +334,12 @@ describe('the pairs command', () => {
       'ch 130: chapter does not exist',
     ])
     expect(fetch).toHaveBeenCalledTimes(3)
+    for (const chapter of [129, 130, 1190]) {
+      const file = path.join(directory, 'pairs', `${String(chapter)}.json`)
+      expect(existsSync(file)).toBe(false)
+    }
     await expect(printPairs(['130'], directory)).resolves.toBe(1)
-    expect(fetch).toHaveBeenCalledTimes(3)
+    expect(fetch).toHaveBeenCalledTimes(4)
   })
 
   it('does not cache an API error and still processes the next chapter', async () => {
