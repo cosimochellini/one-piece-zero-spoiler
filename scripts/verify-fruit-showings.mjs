@@ -84,7 +84,8 @@ const NOT_COUNTED = {
 }
 
 /**
- * Failures a person has checked and kept, with the reason.
+ * Failures a person has checked and kept, with the reason. An entry silences
+ * every failing verdict for that id.
  * @type {Record<string, string>}
  */
 const SHOWING_KEPT = {}
@@ -106,8 +107,8 @@ const LISTED = {
   never: 'never shown',
 }
 
-/** One `Qref` template, its body captured. */
-const QREF = /\{\{Qref\|(?<body>[^{}]*)\}\}/gu
+/** One `Qref` template, its body captured; some pages write it `qref`. */
+const QREF = /\{\{[Qq]ref\|(?<body>[^{}]*)\}\}/gu
 
 /**
  * One `Qref`'s parameters: `name`, `chap`, `ep` and the text. A part that is
@@ -124,7 +125,7 @@ export function qrefOf(body) {
   for (const part of body.split('|')) {
     const at = part.indexOf('=')
     const key = part.slice(0, Math.max(0, at)).trim()
-    if (/^[a-z]+$/u.test(key)) {
+    if (/^[a-z]+\d*$/u.test(key)) {
       named.set(key, part.slice(at + 1).trim())
     } else {
       text.push(part)

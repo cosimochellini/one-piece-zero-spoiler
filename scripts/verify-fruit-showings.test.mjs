@@ -78,6 +78,12 @@ describe('the showings of a page', () => {
     ])
   })
 
+  it('reads a lowercase qref, and keeps a numbered key out of the text', () => {
+    expect(
+      showingsOf(box('[[Chapter 782]]{{qref|chap=782|ep=723|ep2=724|Shown.}}')),
+    ).toEqual([{ chapter: 782, episode: 723, text: 'Shown.' }])
+  })
+
   it('reads no Qref outside the Appearance section', () => {
     expect(showingsOf('==Trivia==\n{{Qref|chap=5|ep=2|x}}')).toEqual([])
   })
