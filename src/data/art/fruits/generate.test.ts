@@ -17,6 +17,7 @@ import {
   BIS_BIS,
   BOMB_BOMB,
   BOOK_BOOK,
+  BRAIN_BRAIN,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CAGE_CAGE,
@@ -66,6 +67,7 @@ import {
   HUMAN_DAIBUTSU,
   HUMAN_HUMAN,
   ICE_ICE,
+  ISLAND_ISLAND,
   JACKET_JACKET,
   KILO_KILO,
   LICK_LICK,
@@ -96,6 +98,7 @@ import {
   SAND_SAND,
   SCROLL_SCROLL,
   SHADOW_SHADOW,
+  SICK_SICK,
   SLIP_SLIP,
   SLOW_SLOW,
   SMOKE_SMOKE,
@@ -116,6 +119,7 @@ import {
   STONE_STONE,
   STRAW_STRAW,
   STRING_STRING,
+  STRONG_STRONG,
   SWAMP_SWAMP,
   SWIM_SWIM,
   THORN_THORN,
@@ -181,6 +185,10 @@ const SEEDS: FruitSeed[] = BODIES.flatMap((body) => {
 
 /** The fruits drawn as fruit + power, on the body kit (#461). */
 const KIT = {
+  'island-island-fruit': ISLAND_ISLAND,
+  'strong-strong-fruit': STRONG_STRONG,
+  'sick-sick-fruit': SICK_SICK,
+  'brain-brain-fruit': BRAIN_BRAIN,
   'age-age-fruit': AGE_AGE,
   'ride-ride-fruit': RIDE_RIDE,
   'gabu-gabu-fruit': GABU_GABU,

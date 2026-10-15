@@ -11,6 +11,7 @@ import {
   BIS_BIS,
   BOMB_BOMB,
   BOOK_BOOK,
+  BRAIN_BRAIN,
   BRUSH_BRUSH,
   BUBBLE_BUBBLE,
   CAGE_CAGE,
@@ -60,6 +61,7 @@ import {
   HUMAN_DAIBUTSU,
   HUMAN_HUMAN,
   ICE_ICE,
+  ISLAND_ISLAND,
   JACKET_JACKET,
   KILO_KILO,
   LICK_LICK,
@@ -90,6 +92,7 @@ import {
   SAND_SAND,
   SCROLL_SCROLL,
   SHADOW_SHADOW,
+  SICK_SICK,
   SLIP_SLIP,
   SLOW_SLOW,
   SMOKE_SMOKE,
@@ -110,6 +113,7 @@ import {
   STONE_STONE,
   STRAW_STRAW,
   STRING_STRING,
+  STRONG_STRONG,
   SWAMP_SWAMP,
   SWIM_SWIM,
   THORN_THORN,
@@ -140,7 +144,7 @@ import type { Drawings, Redrawings } from '~/data/art/stroke'
  * that no record slug reached the browser, so a built table would be skipped
  * in silence.
  *
- * One hundred and twenty-three of them are drawn by hand and name their drawing;
+ * One hundred and twenty-seven of them are drawn by hand and name their drawing;
  * the rest name the seed they are grown from.
  */
 export const fruitArt = {
@@ -264,39 +268,15 @@ export const fruitArt = {
   'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
   'magnet-magnet-fruit': MAGNET_MAGNET,
   'woods-woods-fruit': WOODS_WOODS,
-  'brain-brain-fruit': fruit({
-    body: 'oblong',
-    grain: 2,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'waves',
-  }),
+  'brain-brain-fruit': BRAIN_BRAIN,
   'age-age-fruit': AGE_AGE,
   'whip-whip-fruit': WHIP_WHIP,
   'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
   'gabu-gabu-fruit': GABU_GABU,
   'huge-huge-fruit': HUGE_HUGE,
-  'island-island-fruit': fruit({
-    body: 'oblong',
-    grain: 8,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
-  'sick-sick-fruit': fruit({
-    body: 'gourd',
-    grain: 3,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
-  'strong-strong-fruit': fruit({
-    body: 'heart',
-    grain: 10,
-    leaf: 'left',
-    stem: 'hooked',
-    swirl: 'scales',
-  }),
+  'island-island-fruit': ISLAND_ISLAND,
+  'sick-sick-fruit': SICK_SICK,
+  'strong-strong-fruit': STRONG_STRONG,
   'warp-warp-fruit': WARP_WARP,
   'ride-ride-fruit': RIDE_RIDE,
   'grow-grow-fruit': GROW_GROW,
