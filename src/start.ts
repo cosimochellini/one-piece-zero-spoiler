@@ -7,15 +7,18 @@ import {
 import { SERVER_FN_BASE } from '~/lib/endpoints'
 import { linkRedirect } from '~/lib/progress/linkBookmark'
 
+// Whether this instance has answered a request yet.
+const instance = { warm: false }
+
 /**
  * The Start instance.
  *
- * It exists for two middlewares. The first turns a shared link such as
+ * It exists for its middlewares. One turns a shared link such as
  * `/?ep=650` into the bookmark cookie and redirects to the same address
  * without it, before routing, so even the bare `/` keeps the link's bookmark
  * through its locale redirect.
  *
- * The second is the CSRF check. Every record the reader has not reached now
+ * Another is the CSRF check. Every record the reader has not reached now
  * lives on the server and is fetched by a server function, so those endpoints
  * are the archive's front door: without this, any page anywhere could POST to
  * them from a reader's browser and read out what the fog is hiding.
@@ -23,10 +26,34 @@ import { linkRedirect } from '~/lib/progress/linkBookmark'
  * Scoped to the server-function routes on purpose. The same check on a
  * document request would reject an ordinary address-bar navigation, which
  * sends `Sec-Fetch-Site: none`.
+ *
+ * The outermost says how long the function took (#610). Production's
+ * first byte comes 0.4–1.4 s after the request against a few milliseconds
+ * of local render, and from outside the region hop, a cold start and the
+ * render all look alike. `Server-Timing: app;dur=` is the time from the
+ * request to the response object: the awaited loaders and the shell, not
+ * the streamed rest of the body. `cold` marks the first request an instance
+ * serves, which pays for loading the archive. Durations only, so it says
+ * nothing about the bookmark.
  */
 export const startInstance = createStart(() => {
   return {
     requestMiddleware: [
+      createMiddleware({ type: 'request' }).server(async ({ next }) => {
+        const started = performance.now()
+        const cold = !instance.warm
+        instance.warm = true
+        const { response } = await next()
+        // Copied rather than set in place: a response's headers may be
+        // immutable, and the copy keeps the body streaming.
+        const timed = new Response(response.body, response)
+        timed.headers.append(
+          'Server-Timing',
+          `app;dur=${(performance.now() - started).toFixed(1)}${cold ? ', cold' : ''}`,
+        )
+
+        return timed
+      }),
       createMiddleware({ type: 'request' }).server(
         async ({ next, request }) => linkRedirect(request) ?? next(),
       ),
