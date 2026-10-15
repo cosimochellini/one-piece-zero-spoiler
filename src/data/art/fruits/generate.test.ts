@@ -453,6 +453,20 @@ describe('the fruit path alphabet', () => {
 })
 
 describe('the fruit sheet', () => {
+  it('spits the liquor clear of the intact gourd', () => {
+    const shell = traced(GABU_GABU[0]?.d ?? '')
+
+    expect(shell).not.toHaveLength(0)
+
+    const stream = GABU_GABU.filter((stroke) => stroke.role === 'accent')
+
+    for (const stroke of stream) {
+      for (const at of traced(stroke.d)) {
+        expect(depth(shell, at)).toBeLessThan(0)
+      }
+    }
+  })
+
   it('keeps eight grounded spider legs, four rooted on each side', () => {
     const legs = SPIDER_ROSAMYGALE.filter((stroke) => stroke.role === 'accent')
       .flatMap(({ d }) => d.split(' M'))
