@@ -1269,21 +1269,14 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 976 })).toBe(helm?.value)
   })
 
-  it('puts out Ace’s flame only from episode 483', () => {
-    const ace = filed('portgas-d-ace')
-    const flame = DRAWINGS['portgas-d-ace']
-    const out = REDRAWINGS['portgas-d-ace']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(ace, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(out?.episode).toBe(483)
-
-    expect(drawnAt(ep(482))).toBe(flame)
-    expect(drawnAt(ep(483))).toBe(out?.value)
-    expect(drawnAt(null)).toBe(flame)
-    // The manga kills him in chapter 574, so no chapter below it may.
-    expect(drawnAt({ mode: 'chapter', chapter: 573 })).toBe(flame)
-    expect(drawnAt({ mode: 'chapter', chapter: 574 })).toBe(out?.value)
+  it('puts out Ace’s flame at 483 and hangs his hat over his grave at 505', () => {
+    // The manga kills him in chapter 574 and buries him in chapter 590.
+    expect(
+      walkStages('portgas-d-ace', [
+        [483, 574],
+        [505, 590],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('stands Whitebeard’s bisento on the plaza at 485, over his grave at 505', () => {
@@ -1614,13 +1607,26 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(2)
   })
 
-  it('fells Dorry’s shield at 73 and crosses his sword with Brogy’s at 77', () => {
-    expect(
-      walkStages('dorry', [
-        [73, 120],
-        [77, 127],
-      ]),
-    ).toHaveLength(2)
+  it('fells Dorry’s shield at 73, breaks his sword at 78, arms him again at 1112 and turns him demon at 1180', () => {
+    const stages = walkStages('dorry', [
+      [73, 120],
+      [77, 127],
+      [78, 129],
+      [1112, 1079],
+      [1180, 1150],
+    ])
+
+    expect(stages[3]?.value).toBe(DRAWINGS.dorry)
+  })
+
+  it('breaks Brogy’s axe at 78, arms him again at 1112 and turns him demon at 1180', () => {
+    const stages = walkStages('brogy', [
+      [78, 129],
+      [1112, 1079],
+      [1180, 1150],
+    ])
+
+    expect(stages[1]?.value).toBe(DRAWINGS.brogy)
   })
 
   it('dries Mr. 3’s tea at 104 and cracks his wax ball open at 109', () => {
@@ -1644,13 +1650,35 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('nefertari-cobra', [[1081, 1054]])).toHaveLength(1)
   })
 
-  it('drops Pell’s feathers at 125 and leaves his headscarf behind at 130', () => {
+  it('spreads Pell’s wing at 106, drops his feathers at 125 and leaves his headscarf behind at 130', () => {
     expect(
       walkStages('pell', [
+        [106, 169],
         [125, 208],
         [130, 217],
       ]),
-    ).toHaveLength(2)
+    ).toHaveLength(3)
+  })
+
+  it('stands Dalton’s spade beside the bison’s foreleg only from episode 81', () => {
+    expect(walkStages('dalton', [[81, 135]])).toHaveLength(1)
+  })
+
+  it('lays Chaka’s sword beside the jackal’s paw only from episode 120', () => {
+    expect(walkStages('chaka', [[120, 196]])).toHaveLength(1)
+  })
+
+  it('ties the crew’s band round Karoo’s wing at 92, and takes it off at 129', () => {
+    const stages = walkStages('karoo', [
+      [92, 157],
+      [129, 216],
+    ])
+
+    expect(stages[1]?.value).toBe(DRAWINGS.karoo)
+  })
+
+  it('swaps Miss Goldenweek’s hat for the apple beret only from episode 1149', () => {
+    expect(walkStages('miss-goldenweek', [[1149, 1115]])).toHaveLength(1)
   })
 
   it('lays Moria’s scissors on the news at 509 and opens them again at 917', () => {
