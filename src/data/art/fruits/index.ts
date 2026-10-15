@@ -18,6 +18,7 @@ import {
   CALM_CALM,
   CASTLE_CASTLE,
   CAT_LEOPARD,
+  CAT_LEOPARD_REAL,
   CAT_SABRE_TOOTH,
   CHOP_CHOP,
   CHOP_CHOP_REAL,
@@ -68,6 +69,7 @@ import {
   KILO_KILO,
   LICK_LICK,
   LOVE_LOVE,
+  LOVE_LOVE_REAL,
   MAGMA_MAGMA,
   MAGNET_MAGNET,
   MARK_MARK,
@@ -84,6 +86,7 @@ import {
   OX_OX_BISON_REAL,
   OX_OX_GIRAFFE,
   PAW_PAW,
+  PAW_PAW_REAL,
   POP_POP,
   PRESS_PRESS,
   PUFF_PUFF,
@@ -318,4 +321,14 @@ export const fruitRedrawn: Redrawings = {
   'fish-fish-fruit-mythical-model-azure-dragon': [
     { episode: 1101, chapter: 1070, value: FISH_AZURE_DRAGON_REAL },
   ],
+  // Vegapunk's Zoan explanation, episode 1101; anime only, paired with the
+  // chapter the episode adapts, 1070.
+  'cat-cat-fruit-model-leopard': [
+    { episode: 1101, chapter: 1070, value: CAT_LEOPARD_REAL },
+  ],
+  // Vegapunk names it among the Seraphim's powers, episode 1101; anime only,
+  // paired with the chapter the episode adapts, 1070.
+  'love-love-fruit': [{ episode: 1101, chapter: 1070, value: LOVE_LOVE_REAL }],
+  // The God Valley prize Kuma steals and eats, episode 1130, chapter 1096.
+  'paw-paw-fruit': [{ episode: 1130, chapter: 1096, value: PAW_PAW_REAL }],
 }

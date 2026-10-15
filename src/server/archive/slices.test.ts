@@ -966,6 +966,9 @@ describe('a record drawn again later in the story', () => {
     ['snake-snake-fruit-mythical-model-yamata-no-orochi', 965, 965],
     ['ox-ox-fruit-model-bison', 1101, 1070],
     ['fish-fish-fruit-mythical-model-azure-dragon', 1101, 1070],
+    ['cat-cat-fruit-model-leopard', 1101, 1070],
+    ['love-love-fruit', 1101, 1070],
+    ['paw-paw-fruit', 1130, 1096],
   ] as const)(
     'changes %s only from episode %i and chapter %i',
     (id, episode, chapter) => {

@@ -24,6 +24,7 @@ import {
   CALM_CALM,
   CASTLE_CASTLE,
   CAT_LEOPARD,
+  CAT_LEOPARD_REAL,
   CAT_SABRE_TOOTH,
   CHOP_CHOP,
   CHOP_CHOP_REAL,
@@ -74,6 +75,7 @@ import {
   KILO_KILO,
   LICK_LICK,
   LOVE_LOVE,
+  LOVE_LOVE_REAL,
   MAGMA_MAGMA,
   MAGNET_MAGNET,
   MARK_MARK,
@@ -90,6 +92,7 @@ import {
   OX_OX_BISON_REAL,
   OX_OX_GIRAFFE,
   PAW_PAW,
+  PAW_PAW_REAL,
   POP_POP,
   PRESS_PRESS,
   PUFF_PUFF,
@@ -182,7 +185,6 @@ const KIT = {
   'dog-dog-fruit-mythical-model-nine-tailed-fox': DOG_NINE_TAILED_FOX,
   'soot-soot-fruit': SOOT_SOOT,
   'whip-whip-fruit': WHIP_WHIP,
-  'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
   'fish-fish-fruit-mythical-model-azure-dragon': FISH_AZURE_DRAGON,
   'spider-spider-fruit-ancient-model-rosamygale-grauvogeli': SPIDER_ROSAMYGALE,
   'dragon-dragon-fruit-ancient-model-triceratops': DRAGON_TRICERATOPS,
@@ -296,6 +298,7 @@ const HAND_DRAWN = {
   'brush-brush-fruit': BRUSH_BRUSH,
   'bubble-bubble-fruit': BUBBLE_BUBBLE,
   'dark-dark-fruit': DARK_DARK,
+  'dog-dog-fruit-model-okuchi-no-makami': DOG_MAKAMI,
   'gum-gum-fruit': GUM_GUM,
   'ox-ox-fruit-model-giraffe': OX_OX_GIRAFFE,
 }
@@ -529,6 +532,9 @@ describe('the fruits drawn again', () => {
     ['string-string-fruit', STRING_STRING_REAL],
     ['snake-snake-fruit-mythical-model-yamata-no-orochi', SNAKE_OROCHI_REAL],
     ['fish-fish-fruit-mythical-model-azure-dragon', FISH_AZURE_DRAGON_REAL],
+    ['cat-cat-fruit-model-leopard', CAT_LEOPARD_REAL],
+    ['love-love-fruit', LOVE_LOVE_REAL],
+    ['paw-paw-fruit', PAW_PAW_REAL],
   ] as const)('draws the real %s once the show has shown it', (id, strokes) => {
     expect(fruitRedrawn[id]?.[0]?.value).toBe(strokes)
   })

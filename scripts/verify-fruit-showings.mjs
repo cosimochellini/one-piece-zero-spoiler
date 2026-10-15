@@ -53,6 +53,8 @@ const REAL_FIRST = {
   'bubble-bubble-fruit': 'BUBBLE_BUBBLE, beside Kaku’s in episode 271',
   'brush-brush-fruit': 'BRUSH_BRUSH, the flashback of episode 976',
   'dark-dark-fruit': 'DARK_DARK, in Teach’s hand in episode 325',
+  'dog-dog-fruit-model-okuchi-no-makami':
+    'DOG_MAKAMI, as Kaido and Yamato talk about it in episode 1041',
   'gum-gum-fruit': 'GUM_GUM, from episode 1 by the ruling of #463',
   'ox-ox-fruit-model-giraffe': 'OX_OX_GIRAFFE, handed to Kaku in episode 271',
 }

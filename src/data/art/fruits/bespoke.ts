@@ -5796,66 +5796,64 @@ export const FISH_AZURE_DRAGON: Stroke[] = [
   shadowUnder(1),
 ]
 
-/** Yamato's fruit: a heart, a big bushy tail sweeping up behind it. */
-const MAKAMI_BODY: Body = { family: 'heart', cy: 123 }
-
-/** Where along the tail it is fullest. */
-const MAKAMI_PLUME = 0.65
-
 /**
- * The tail: out of the far lower side, out and up past the far shoulder,
- * narrow at the root, fullest past the middle, and tapering to a soft tip
- * turned back over the shoulder.
+ * A fishhook curl: a curl wound in at `[x, y]`, its outer end running up to
+ * the calyx at `[tx, ty]`. Every curl winds out to its right-hand side,
+ * which is where the hook leaves it.
  */
-const MAKAMI_TAIL: Limb = {
-  line: [
-    [110, 150],
-    [126, 156],
-    [136, 144],
-    [136, 124],
-    [136, 104],
-    [138, 84],
-    [132, 66],
-    [126, 52],
-    [116, 44],
-    [106, 48],
-  ],
-  half: plume({ root: 4.5, full: 13.5, end: 2, fullest: MAKAMI_PLUME }),
-  rim: { body: MAKAMI_BODY, way: 1 },
+function hookCurl([x, y, r, tx, ty]: [
+  number,
+  number,
+  number,
+  number,
+  number,
+]): string {
+  return `${curl(x, y, -r)} C${point(x + r, y - 9)} ${point(tx, ty + 10)} ${point(tx, ty)}`
 }
 
-/** The fur notches: steps along the outer edge (1) and the inner one (-1). */
-const MAKAMI_FUR = { outer: [16, 20, 24], inner: [21] }
+/** The hooks hang from the calyx at two heights, all the way round. */
+const MAKAMI_HOOKS: [number, number, number, number, number][] = [
+  [38, 142, 5, 60, 112],
+  [52, 154, 7, 67, 116],
+  [68, 141, 6, 75, 117],
+  [86, 155, 7, 86, 117],
+  [104, 142, 6, 95, 116],
+  [119, 152, 5, 101, 112],
+]
+
+/** A calyx of five rounded leaves, seen from above at `[cx, cy]`. */
+function calyx(cx: number, cy: number): string {
+  const at = (angle: number, r: number): string =>
+    point(
+      cx + r * Math.cos(angle * DEGREES),
+      cy + r * 0.5 * Math.sin(angle * DEGREES),
+    )
+  const leaves = [-90, -18, 54, 126, 198].map(
+    (mid) =>
+      `C${at(mid - 30, 18)} ${at(mid - 12, 24)} ${at(mid, 22)} C${at(mid + 12, 24)} ${at(mid + 30, 18)} ${at(mid + 36, 7)}`,
+  )
+
+  return `M${at(-126, 7)} ${leaves.join(' ')} Z`
+}
 
 /**
- * A big bushy tail, grown from the far lower side and swept up past the
- * shoulder, soft notches of fur on both edges. Yamato takes his hybrid
- * form in episode 1041 (chapter 1019), and the form grows a large tail,
- * before Kaido names the fruit in episode 1042 (chapter 1020). The tail
- * alone, without the ice, the horns or the breath.
+ * The real fruit: round and flat like a persimmon, bare but for fishhook
+ * curls hanging from the calyx halfway down, a stalk swirling up on the
+ * left. The anime shows it in episode 1041, as Kaido and Yamato talk about
+ * why Yamato ate it (chapter 1019), one episode before the fruit is named.
  */
 export const DOG_MAKAMI: Stroke[] = [
-  ...kitBody(
-    MAKAMI_BODY,
-    [93, 106, 119],
-    (x, y) => x < 80 || y < 145 || y > 155,
-  ),
-  ...skin([
-    [66, 108, 8],
-    [77, 145, -6],
-  ]),
-  ...sprout(MAKAMI_BODY, -5, 'left'),
   {
-    d: limbOutline(MAKAMI_TAIL, 30, (step, way) => {
-      if (way > 0) {
-        return MAKAMI_FUR.outer.includes(step) ? 0.76 : 1
-      }
-
-      return MAKAMI_FUR.inner.includes(step) ? 0.8 : 1
-    }),
-    role: 'accent',
+    d: 'M80 106 C106 102 132 114 134 138 C136 162 112 176 80 176 C48 176 24 162 26 138 C28 114 54 102 80 106 Z',
   },
-  shadowUnder(1),
+  { d: calyx(80, 104) },
+  {
+    d: 'M80 102 C79 90 78 78 79 66 C90 58 102 56 114 57 M79 66 C68 60 57 61 50 56 C42 51 44 40 52 40 C59 40 61 48 56 51 C52 53 49 49 52 47',
+  },
+  { d: MAKAMI_HOOKS.map((hook) => hookCurl(hook)).join(' '), role: 'accent' },
+  { d: 'M122 140 L128 146 M116 156 L121 161', role: 'ambient' },
+  { d: 'M36 140 C36 147 39 153 44 158', role: 'soft' },
+  shadowUnder(2),
 ]
 
 /** The pear leans under Kujaku's lash, which commands buildings in 1113/1080. */
@@ -6377,4 +6375,158 @@ export const OX_OX_BISON_REAL: Stroke[] = [
   { d: 'M116 114 L123 121 M111 136 L117 142 M94 166 L99 171', role: 'ambient' },
   { d: 'M41 109 C38 115 38 122 40 127', role: 'soft' },
   shadowUnder(1),
+]
+
+/** A broken ring of three arcs: one leopard rosette. */
+function rosette([x, y, r, turn]: [number, number, number, number]): string {
+  return [0, 125, 245]
+    .map((from) =>
+      polyline(trace([x, y], [r, r * 0.8], [from + turn, from + turn + 80, 4])),
+    )
+    .join(' ')
+}
+
+/** Rosettes scattered at odd heights, so no two of them pair up. */
+const LEOPARD_SPOTS: [number, number, number, number][] = [
+  [69, 107, 6, 0],
+  [101, 114, 7, 40],
+  [51, 130, 6, 20],
+  [84, 132, 7, 70],
+  [113, 141, 5, 10],
+  [64, 153, 6, 50],
+  [94, 158, 5, 30],
+]
+
+/**
+ * The real fruit: a round fruit with two pointed ears, a curl in each, under
+ * a T stalk, spotted with rosettes. The anime shows it in episode 1101 as
+ * Vegapunk explains copying Zoan fruits (chapter 1070). Spots and ears only:
+ * no eyes, muzzle or mouth.
+ */
+export const CAT_LEOPARD_REAL: Stroke[] = [
+  {
+    d: 'M60 95 C70 91 90 91 100 95 C106 89 112 83 119 79 C123 89 125 100 124 110 C134 126 130 148 116 161 C106 170 94 175 80 175 C66 175 54 170 44 161 C30 148 26 126 36 110 C35 100 37 89 41 79 C48 83 54 89 60 95 Z',
+  },
+  { d: `${curl(46, 95, 6)} ${curl(114, 95, -6)}`, role: 'soft' },
+  { d: LEOPARD_SPOTS.map((spot) => rosette(spot)).join(' '), role: 'accent' },
+  {
+    d: 'M80 92 C80 82 80 72 80 64 C92 58 104 58 113 61 M80 64 C68 58 58 60 52 55 C44 49 47 39 55 40 C62 41 62 49 57 51 C54 52 51 49 53 47',
+  },
+  { d: 'M117 126 L123 132 M112 148 L118 153', role: 'ambient' },
+  { d: 'M38 124 C36 132 38 141 42 147', role: 'soft' },
+  shadowUnder(1),
+]
+
+/** A heart `w` wide and `h` tall about `[cx, cy]`, its point at the foot. */
+function heart([cx, cy]: Point, w: number, h: number): string {
+  const at = (dx: number, dy: number): string => point(cx + w * dx, cy + h * dy)
+
+  return `M${at(0, -0.3)} C${at(0, -0.62)} ${at(-0.5, -0.66)} ${at(-0.5, -0.22)} C${at(-0.5, 0.08)} ${at(-0.18, 0.3)} ${at(0, 0.5)} C${at(0.18, 0.3)} ${at(0.5, 0.08)} ${at(0.5, -0.22)} C${at(0.5, -0.66)} ${at(0, -0.62)} ${at(0, -0.3)} Z`
+}
+
+/**
+ * The real fruit: two heart-shaped fruits on stems joined like cherries,
+ * patterned with hearts, the stems meeting in a heart with a curl. The
+ * anime shows it in episode 1101, as Vegapunk names it among the powers of
+ * the Seraphim (chapter 1070); the manga never draws it.
+ */
+export const LOVE_LOVE_REAL: Stroke[] = [
+  { d: heart([54, 134], 50, 64) },
+  { d: heart([106, 140], 50, 64) },
+  {
+    d: `M54 115 C56 98 66 82 79 70 M106 121 C103 102 94 84 81 70 ${heart([80, 56], 26, 30)}`,
+  },
+  { d: curl(80, 54, 6), role: 'soft' },
+  {
+    d: [
+      heart([44, 128], 14, 14),
+      heart([64, 150], 12, 12),
+      heart([98, 136], 13, 13),
+      heart([116, 156], 12, 12),
+    ].join(' '),
+    role: 'accent',
+  },
+  { d: 'M124 134 L128 139 M118 156 L122 160', role: 'ambient' },
+  { d: 'M33 124 C33 130 35 136 38 140', role: 'soft' },
+  shadowUnder(2),
+]
+
+/** A circle as `[cx, cy, r]`. */
+type Circle = [number, number, number]
+
+/** The paw fruit's body and the three toes on top of it. */
+const PAW_REAL_BODY: Circle = [80, 136, 40]
+const PAW_REAL_TOES: Circle[] = [
+  [55, 100, 13],
+  [80, 91, 14],
+  [105, 100, 13],
+]
+
+/**
+ * The runs of a circle that no other circle covers, so that overlapping
+ * circles draw as one outline. It walks round from `from` degrees, which
+ * must be uncovered, so no run wraps past the start.
+ */
+function uncovered(circle: Circle, others: Circle[], from: number): string {
+  const [cx, cy, r] = circle
+  const runs: string[][] = [[]]
+
+  for (let step = 0; step <= 96; step++) {
+    const angle = (from + (360 * step) / 96) * DEGREES
+    const x = cx + r * Math.cos(angle)
+    const y = cy + r * Math.sin(angle)
+    const covered = others.some(
+      ([ox, oy, or]) => (x - ox) ** 2 + (y - oy) ** 2 < or ** 2,
+    )
+
+    if (covered) {
+      runs.push([])
+    } else {
+      runs.at(-1)?.push(point(x, y))
+    }
+  }
+
+  const paths: string[] = []
+
+  for (const run of runs) {
+    if (run.length > 1) {
+      paths.push(polyline(run))
+    }
+  }
+
+  return paths.join(' ')
+}
+
+/**
+ * The real fruit: round, covered in curls, with three rounded lumps on top
+ * like a three-toed paw and a T stalk out of the middle one, curled at its
+ * right end. The God Valley prize Kuma steals and eats, in episode 1130
+ * and chapter 1096.
+ */
+export const PAW_PAW_REAL: Stroke[] = [
+  { d: uncovered(PAW_REAL_BODY, PAW_REAL_TOES, 90) },
+  {
+    d: PAW_REAL_TOES.map((toe) =>
+      uncovered(
+        toe,
+        [PAW_REAL_BODY, ...PAW_REAL_TOES.filter((other) => other !== toe)],
+        270,
+      ),
+    ).join(' '),
+    role: 'accent',
+  },
+  {
+    d: [
+      curl(78, 132, 10),
+      curl(56, 154, -8),
+      curl(106, 143, 8),
+      curl(98, 116, -6),
+    ].join(' '),
+  },
+  {
+    d: 'M80 77 C80 70 80 64 80 58 C70 54 60 54 51 56 M80 58 C92 53 104 54 108 49 C113 43 108 35 102 37 C97 39 98 46 103 46',
+  },
+  { d: 'M114 132 L120 138 M110 152 L116 157', role: 'ambient' },
+  { d: 'M46 128 C45 136 47 144 51 150', role: 'soft' },
+  shadowUnder(0),
 ]
