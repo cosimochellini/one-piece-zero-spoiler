@@ -217,6 +217,10 @@ A drawing is gated like any text, and it can spoil just as well.
    `https://onepiece.fandom.com/api.php?action=parse&page=<Page>&prop=wikitext&format=json&redirects=1`.
    `{{Qref|chap=N|ep=M|…}}` gives the episode and chapter of a fact; the
    `Episode_N` page confirms it, and N − 1 should still show the old look.
+   Check chapter/episode pairs and their page ranges with
+   `npm run wiki:pairs -- 129 157` (ranges work too: `1050-1056`). The command
+   reads the rendered chapter infobox and caches it in `.gate/wiki/`; use its
+   page ranges to locate the scene, then check the manga pages themselves.
    For proportions, find a reference image: load
    `https://duckduckgo.com/?q=…&iax=images&ia=images` in puppeteer-core and
    curl the `tse*.mm.bing.net` thumbnails. Keep references in the scratchpad;

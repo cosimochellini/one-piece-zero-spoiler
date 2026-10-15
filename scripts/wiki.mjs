@@ -8,9 +8,12 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import path from 'node:path'
 import { setTimeout as sleep } from 'node:timers/promises'
+import { pathToFileURL } from 'node:url'
 
 import { ROOT } from './archive-loader.mjs'
+import { animePairs, pairChapters } from './wiki-pairs.mjs'
 
+// fallow-ignore-next-line security-sink -- ROOT is this repository's absolute path; both child segments are literals.
 const CACHE = path.join(ROOT, '.gate', 'wiki')
 
 const API =
@@ -45,6 +48,7 @@ const BATCH = 50
  */
 async function download(url, label, attempt = 1) {
   try {
+    // fallow-ignore-next-line security-sink -- The CLI builds a fixed wiki API URL from a validated chapter; no argument supplies a destination.
     return await request(url, label)
   } catch (error) {
     if (attempt >= 3) {
@@ -64,6 +68,7 @@ async function download(url, label, attempt = 1) {
  * @returns {Promise<string>} The response body.
  */
 async function request(url, label) {
+  // fallow-ignore-next-line security-sink -- Callers construct source API URLs; CLI input is only a validated chapter number, never a host or URL.
   const response = await fetch(url, {
     headers: { 'User-Agent': 'one-piece-zero-spoiler verify-chapters' },
   })
@@ -122,6 +127,7 @@ export async function cached(file, label, url, isAnswer) {
  */
 export async function fetchPage(title) {
   const { parse } = await cached(
+    // fallow-ignore-next-line security-sink -- The fixed cache root and URI-encoded filename cannot contain title path separators.
     path.join(CACHE, `${encodeURIComponent(title)}.json`),
     title,
     API + encodeURIComponent(title),
@@ -170,6 +176,7 @@ async function fetchChapters(from, to) {
     (_, index) => `Chapter ${String(from + index)}`,
   )
   const { query } = await fetchBatch(
+    // fallow-ignore-next-line security-sink -- The batch loop supplies numeric bounds under the fixed repository cache.
     path.join(CACHE, 'chapters', `${String(from)}-${String(to)}.json`),
     label,
     CHAPTERS_API + encodeURIComponent(titles.join('|')),
@@ -301,4 +308,67 @@ export function pageOf(query, asked) {
   }
 
   return Object.values(pages).find((page) => page.title === title)
+}
+
+/**
+ * One chapter's rendered introduction, separately cached from full pages.
+ * @param {number} chapter The chapter number.
+ * @param {string} directory The wiki cache root.
+ * @returns {Promise<string[]>} Its printable episode/page pairs.
+ */
+async function chapterPairs(chapter, directory) {
+  const title = `Chapter_${String(chapter)}`
+  const { parse } = await cached(
+    // fallow-ignore-next-line security-sink -- directory is the repository cache or a test tempdir; chapter is a validated positive integer.
+    path.join(directory, 'pairs', `${String(chapter)}.json`),
+    title,
+    `https://onepiece.fandom.com/api.php?action=parse&redirects=1&prop=text&section=0&format=json&page=${title}`,
+    (answer) =>
+      typeof answer.parse?.text?.['*'] === 'string'
+      || answer.error?.code === 'missingtitle',
+  )
+  if (parse === undefined) {
+    throw new Error('chapter does not exist')
+  }
+
+  return animePairs(parse.text['*'])
+}
+
+/**
+ * Prints all requested chapters, reporting errors without skipping later chapters.
+ * @param {string[]} args Chapter numbers and ranges.
+ * @param {string} directory The wiki cache root.
+ * @returns {Promise<number>} Zero on success, one when any input or chapter fails.
+ */
+export async function printPairs(args, directory = CACHE) {
+  let chapters
+  try {
+    chapters = pairChapters(args)
+  } catch (error) {
+    console.error(
+      `${error.message}\nUsage: npm run wiki:pairs -- <ch> [<ch> | <from>-<to> ...]`,
+    )
+    return 1
+  }
+
+  let exitCode = 0
+  for (const chapter of chapters) {
+    let pairs
+    try {
+      pairs = await chapterPairs(chapter, directory)
+    } catch (error) {
+      console.error(`ch ${String(chapter)}: ${error.message}`)
+      exitCode = 1
+      continue
+    }
+    console.log(
+      `ch ${String(chapter)}: ${pairs.length === 0 ? 'not adapted' : pairs.join(' · ')}`,
+    )
+  }
+
+  return exitCode
+}
+
+if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
+  process.exitCode = await printPairs(process.argv.slice(2))
 }
