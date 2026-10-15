@@ -171,6 +171,10 @@ describe('SpoilerVeil', () => {
     )
 
     expect(screen.getByTestId('secret')).toBeInTheDocument()
+    // Never covered, so there is no curtain to fade: not even a hidden one.
+    expect(
+      screen.queryByRole('button', { hidden: true }),
+    ).not.toBeInTheDocument()
   })
 
   it('keeps the curtain mounted after a reveal so the fade can run', async () => {

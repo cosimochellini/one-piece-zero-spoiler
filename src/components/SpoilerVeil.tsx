@@ -139,16 +139,15 @@ export function SpoilerVeil<T extends Gated>({
         {shown === null ? placeholder : children(shown)}
       </Covered>
 
-      <Curtain
-        density={density}
-        lifted={visible}
-        notice={threshold(
-          'veil.locked',
-          slot.open ? slot.record : slot.covered,
-        )}
-        onUncover={handleUncover}
-        state={state}
-      />
+      {slot.open ? null : (
+        <Curtain
+          density={density}
+          lifted={visible}
+          notice={threshold('veil.locked', slot.covered)}
+          onUncover={handleUncover}
+          state={state}
+        />
+      )}
     </div>
   )
 }
@@ -189,6 +188,10 @@ function Covered({
  * the lift instead of unmounting, because a node that disappears cannot fade;
  * `visibility: hidden` is what then takes it out of the tab order and the
  * accessibility tree once the fade is over.
+ *
+ * A record the server sent open gets no curtain at all: it was never covered,
+ * so there is nothing to fade, and a hidden button on every open card was a
+ * fifth of a list page's HTML and of the time spent rendering it (#621).
  */
 function Curtain({
   density,
