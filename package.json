@@ -30,7 +30,8 @@
     "verify:chapters": "node scripts/verify-chapters.mjs",
     "verify:filler": "node scripts/verify-filler.mjs",
     "verify:fruits": "node scripts/verify-fruit-showings.mjs",
-    "verify:names": "node scripts/verify-names.mjs"
+    "verify:names": "node scripts/verify-names.mjs",
+    "wiki:pairs": "node scripts/wiki.mjs"
   },
   "overrides": {
     "unplugin": "3.4.0"
