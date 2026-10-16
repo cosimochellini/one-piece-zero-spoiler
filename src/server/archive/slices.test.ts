@@ -1354,21 +1354,15 @@ describe('a record drawn again later in the story', () => {
     )
   })
 
-  it('puts Jinbe at the Sunny’s helm only from episode 980', () => {
-    const jinbe = filed('jinbe')
-    const wave = DRAWINGS.jinbe
-    const helm = REDRAWINGS['jinbe']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(jinbe, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(helm?.episode).toBe(980)
-
-    expect(drawnAt(ep(979))).toBe(wave)
-    expect(drawnAt(ep(980))).toBe(helm?.value)
-    expect(drawnAt(null)).toBe(wave)
-    // The manga makes him the crew's helmsman in chapter 976, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 975 })).toBe(wave)
-    expect(drawnAt({ mode: 'chapter', chapter: 976 })).toBe(helm?.value)
+  it('breaks Jinbe out of his cell at 451, and puts him at the Sunny’s helm at 980', () => {
+    // He breaks out of Impel Down in chapter 548, and the manga makes him the
+    // crew's helmsman in chapter 976, no earlier.
+    expect(
+      walkStages('jinbe', [
+        [451, 548],
+        [980, 976],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('puts out Ace’s flame at 483 and hangs his hat over his grave at 505', () => {
@@ -1533,14 +1527,15 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 75 })).toBe(shot?.value)
   })
 
-  it('sinks Sabo’s hat at 503, lifts it at 663 and lights his pipe at 678', () => {
+  it('sinks Sabo’s hat at 503, lifts it at 663, hides it under Lucy’s helmet at 667 and lights his pipe at 678', () => {
     expect(
       walkStages('sabo', [
         [503, 588],
         [663, 731],
+        [667, 735],
         [678, 744],
       ]),
-    ).toHaveLength(3)
+    ).toHaveLength(4)
   })
 
   it('raises the Buddha’s palm over Sengoku’s cap at 480, and sets the cap down at 511', () => {
@@ -1871,22 +1866,45 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(2)
   })
 
-  it('sets Kid’s metal arm beside the magnet only from episode 603', () => {
-    const kid = filed('eustass-kid')
-    const magnet = DRAWINGS['eustass-kid']
-    const armed = REDRAWINGS['eustass-kid']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(kid, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(armed?.episode).toBe(603)
-
-    expect(drawnAt(ep(602))).toBe(magnet)
-    expect(drawnAt(ep(603))).toBe(armed?.value)
-    expect(drawnAt(null)).toBe(magnet)
+  it('sets Kid’s metal arm beside the magnet at 603, takes it at 919, gives it back at 977, cuts it at 1054 and mends it at 1109', () => {
     // The manga shows him in clear view after the timeskip in chapter 677,
     // no earlier: chapter 674 has only his silhouette.
-    expect(drawnAt({ mode: 'chapter', chapter: 676 })).toBe(magnet)
-    expect(drawnAt({ mode: 'chapter', chapter: 677 })).toBe(armed?.value)
+    const stages = walkStages('eustass-kid', [
+      [603, 677],
+      [919, 926],
+      [977, 974],
+      [1054, 1029],
+      [1109, 1076],
+    ])
+
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+    expect(stages[3]?.value).toBe(stages[1]?.value)
+    expect(stages[4]?.value).toBe(stages[0]?.value)
+  })
+
+  it('trades Law’s fur rim for a thick bill at 584', () => {
+    expect(walkStages('trafalgar-law', [[584, 659]])).toHaveLength(1)
+  })
+
+  it('grows Drake’s allosaurus foreleg at 402, and trades his hat for the black band at 736', () => {
+    expect(
+      walkStages('x-drake', [
+        [402, 509],
+        [736, 793],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('takes the bars from round Shiryu’s sword at 484', () => {
+    expect(walkStages('shiryu', [[484, 575]])).toHaveLength(1)
+  })
+
+  it('fans Devon’s nine fox tails behind her pearls at 917', () => {
+    expect(walkStages('catarina-devon', [[917, 925]])).toHaveLength(1)
+  })
+
+  it('crowns Pizarro at 917', () => {
+    expect(walkStages('avalo-pizarro', [[917, 925]])).toHaveLength(1)
   })
 
   it('trades Yasopp’s pistol for his musket only from episode 151', () => {

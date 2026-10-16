@@ -2349,6 +2349,35 @@ const SLINGSHOT_ASIDE: Stroke[] = moved(
 const YASOPP_SMOKE: Stroke[] = eastBlueArt.yasopp.slice(8, 9)
 const YASOPP_BALL: Stroke[] = eastBlueArt.yasopp.slice(9)
 
+/**
+ * Lucy's gold Viking helmet and red cape: Luffy wears them over the hat at
+ * the Corrida Colosseum, then hands them on to Sabo.
+ */
+export const LUCY_HELMET: Stroke[] = [
+  { d: 'M50 112 C46 50 114 50 110 112 Q80 124 50 112 Z' },
+  { d: 'M62 58 Q58 84 60 116', role: 'soft' },
+  { d: 'M50 100 Q80 112 110 100', role: 'soft' },
+  {
+    d: dots([
+      [58, 104],
+      [70, 108],
+      [84, 109],
+      [98, 107],
+    ]),
+    role: 'soft',
+  },
+  { d: 'M60 116 L58 138 L66 120' },
+  {
+    d: 'M54 62 C40 52 38 36 44 26 C48 40 56 48 64 54 M106 62 C120 52 122 36 116 26 C112 40 104 48 96 54',
+  },
+  {
+    d: 'M44 120 C34 140 28 164 24 182 Q80 192 136 182 C132 164 126 140 116 120',
+    role: 'accent',
+  },
+  { d: 'M60 130 Q56 156 52 184 M100 130 Q104 156 108 184', role: 'soft' },
+  { d: 'M100 64 l-4 6 M106 76 l-4 6 M108 88 l-4 6', role: 'ambient' },
+]
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eastBlueRedrawn: Redrawings = {
   // The mop gone, the bucket still there: a patterned bandanna knotted into a
@@ -2911,34 +2940,7 @@ export const eastBlueRedrawn: Redrawings = {
     // In 3/4 and turned from the face guard: the ridge, a row of rivets, the
     // nose guard, the two horns of the ep 633 frame. From 633 (ch. 704) until
     // he hands the costume on in 663 (ch. 731).
-    {
-      episode: 633,
-      chapter: 704,
-      value: [
-        { d: 'M50 112 C46 50 114 50 110 112 Q80 124 50 112 Z' },
-        { d: 'M62 58 Q58 84 60 116', role: 'soft' },
-        { d: 'M50 100 Q80 112 110 100', role: 'soft' },
-        {
-          d: dots([
-            [58, 104],
-            [70, 108],
-            [84, 109],
-            [98, 107],
-          ]),
-          role: 'soft',
-        },
-        { d: 'M60 116 L58 138 L66 120' },
-        {
-          d: 'M54 62 C40 52 38 36 44 26 C48 40 56 48 64 54 M106 62 C120 52 122 36 116 26 C112 40 104 48 96 54',
-        },
-        {
-          d: 'M44 120 C34 140 28 164 24 182 Q80 192 136 182 C132 164 126 140 116 120',
-          role: 'accent',
-        },
-        { d: 'M60 130 Q56 156 52 184 M100 130 Q104 156 108 184', role: 'soft' },
-        { d: 'M100 64 l-4 6 M106 76 l-4 6 M108 88 l-4 6', role: 'ambient' },
-      ],
-    },
+    { episode: 633, chapter: 704, value: LUCY_HELMET },
     // The koi costume that follows Lucy (663 to 668) hides the hat
     // altogether, so it gets no drawing of its own: the hat stands for him.
     { episode: 663, chapter: 731, value: LUFFY_HAT },
