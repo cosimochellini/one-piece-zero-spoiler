@@ -3100,7 +3100,7 @@ export const eastBlueRedrawn: Redrawings = {
       episode: 1070,
       chapter: 1043,
       value: [
-        ...moved(LUFFY_HAT_ALONE, 'translate(-4 16) rotate(-62 80 128)'),
+        ...moved(LUFFY_HAT_ALONE, 'translate(6 0) rotate(-62 80 128)'),
         { d: 'M0 180 Q80 170 160 180', role: 'ambient' },
         {
           d: 'M66 174 L54 184 L58 194 M54 184 L40 190 M100 174 L110 183 L106 196 M110 183 L126 187',
