@@ -120,6 +120,43 @@ describe('the facts a bookmark reaches', () => {
     },
   )
 
+  it.each(['charlotte-linlin', 'kaido', 'prometheus', 'napoleon'])(
+    'keeps %s’s post-Wano fate behind its episode and chapter',
+    (id) => {
+      const character = onFile(id)
+
+      for (const locale of ['en', 'it'] as const) {
+        expect(factsOf(character, ep(1076, locale))).toMatchObject({
+          status: 'alive',
+        })
+        expect(factsOf(character, ep(1077, locale))).toMatchObject({
+          status: 'unknown',
+        })
+        expect(factsOf(character, ep(1100, locale))).toMatchObject({
+          status: 'unknown',
+        })
+        expect(
+          factsOf(
+            character,
+            readerFor({ mode: 'chapter', chapter: 1049 }, locale),
+          ),
+        ).toMatchObject({ status: 'alive' })
+        expect(
+          factsOf(
+            character,
+            readerFor({ mode: 'chapter', chapter: 1050 }, locale),
+          ),
+        ).toMatchObject({ status: 'unknown' })
+        expect(
+          factsOf(
+            character,
+            readerFor({ mode: 'chapter', chapter: 1100 }, locale),
+          ),
+        ).toMatchObject({ status: 'unknown' })
+      }
+    },
+  )
+
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({
       epithet: 'Cappello di Paglia',
