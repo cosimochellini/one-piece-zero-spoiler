@@ -744,7 +744,7 @@ export const elbafRedrawn: Redrawings = {
         ...moved(GABAN_AXE, 'translate(58 120) rotate(-62) scale(0.7)'),
         ...moved(GABAN_AXE, 'translate(54 169) rotate(-90) scale(0.62)'),
         ...moved(GUNKO_ARROW, 'translate(116 52) rotate(-28)'),
-        ...moved(GUNKO_ARROW, 'translate(142 62) rotate(-28)'),
+        ...moved(GUNKO_ARROW, 'translate(137 62) rotate(-28)'),
         ...moved(GUNKO_ARROW, 'translate(126 90) rotate(-28)'),
         { d: 'M142 128 Q154 160 148 198', role: 'ambient', dashed: true },
       ],
