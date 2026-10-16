@@ -718,6 +718,7 @@ export const thrillerBarkRedrawn: Redrawings = {
   'thriller-bark-arc': [
     {
       episode: 343,
+      chapter: 449,
       value: [
         { d: 'M10 132 L24 152 Q80 164 136 152 L150 132' },
         { d: 'M10 132 H150' },

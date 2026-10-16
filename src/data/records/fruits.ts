@@ -540,7 +540,7 @@ export const devilFruits: Saga = {
       id: 'snake-snake-fruit-model-anaconda',
       kind: 'fruit',
       revealedAtEpisode: 413,
-      revealedAtChapter: 524,
+      revealedAtChapter: 521,
       name: {
         it: 'Frutto Hebi Hebi, modello Anaconda',
         en: 'Snake-Snake Fruit, Model: Anaconda',
@@ -555,7 +555,7 @@ export const devilFruits: Saga = {
       id: 'snake-snake-fruit-model-king-cobra',
       kind: 'fruit',
       revealedAtEpisode: 413,
-      revealedAtChapter: 524,
+      revealedAtChapter: 521,
       name: {
         it: 'Frutto Hebi Hebi, modello Cobra Reale',
         en: 'Snake-Snake Fruit, Model: King Cobra',

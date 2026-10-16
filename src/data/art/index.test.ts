@@ -122,6 +122,18 @@ describe('the redrawings', () => {
     }
   })
 
+  it('pin every stage to the chapter that tells it', () => {
+    // Without a chapter a stage waits on the derived table, which can reach
+    // its episode chapters before or after the manga draws it.
+    for (const [id, timeline] of Object.entries(REDRAWINGS)) {
+      const unpinned = timeline
+        .filter((entry) => entry.chapter === undefined)
+        .map((entry) => entry.episode)
+
+      expect(unpinned, id).toStrictEqual([])
+    }
+  })
+
   it('are never filed at the threshold itself', () => {
     // Strictly after: a redrawing at the threshold would be the first
     // drawing, which belongs in `DRAWINGS`. The order and the dial are held

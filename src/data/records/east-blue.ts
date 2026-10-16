@@ -2090,8 +2090,8 @@ export const eastBlue: Saga = {
         },
         // He calls himself one of the crew's top officers in 33. The manga
         // says so in a caption in ch. 69, below his record's chapter, so the
-        // entry carries no pin.
-        { episode: 33, value: ARLONG_OFFICER },
+        // entry is pinned at his record's.
+        { episode: 33, chapter: 74, value: ARLONG_OFFICER },
         // No arrest entry: at 387 (chapter 492) he says the Marines took the
         // crew and he got away.
         {
