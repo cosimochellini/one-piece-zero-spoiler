@@ -24,6 +24,7 @@ function onFile(id: string): Entity {
 const LUFFY = onFile('monkey-d-luffy')
 // Alive at 100, presumed dead at 125, back at 130.
 const PELL = onFile('pell')
+const VIVI = onFile('nefertari-vivi')
 
 /**
  * Which fact the reader has reached. This is the half of the old
@@ -56,6 +57,26 @@ describe('the facts a bookmark reaches', () => {
     // promise of the field, since a death is the one fact a wiki gives away.
     expect(factsOf(PELL, ep(124))).toMatchObject({ status: 'alive' })
     expect(factsOf(PELL, ep(125))).toMatchObject({ status: 'presumed-dead' })
+  })
+
+  it.each([
+    [1080, 'alive'],
+    [1081, 'missing'],
+    [1105, 'missing'],
+    [1106, 'alive'],
+  ])('gives Vivi’s status at episode %i as %s', (episode, status) => {
+    expect(factsOf(VIVI, ep(episode))).toMatchObject({ status })
+  })
+
+  it.each([
+    [1053, 'alive'],
+    [1054, 'missing'],
+    [1073, 'missing'],
+    [1074, 'alive'],
+  ])('gives Vivi’s status at chapter %i as %s', (chapter, status) => {
+    const reader = readerFor({ mode: 'chapter', chapter }, 'en')
+
+    expect(factsOf(VIVI, reader)).toMatchObject({ status })
   })
 
   it('answers in the reader’s locale', () => {
