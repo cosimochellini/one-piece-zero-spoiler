@@ -6150,34 +6150,24 @@ export const STRONG_STRONG: Stroke[] = [
   shadowUnder(1),
 ]
 
-/** Pizarro merges into the island and raises a stone hand in 1121/1087. */
+/** Pizarro merges into Hachinosu in episode 1113, chapter 1080. */
 const ISLAND_BODY: Body = { family: 'heart', cy: 123 }
 
-/** Room for the island's hand beside the fruit, without a second hero. */
-function islandSide(x: number, y: number): string {
-  return point(x - 16, y)
-}
-
-/** The fruit's point joins the rock from which a curled hand rises. */
+/** The fruit's lower rim disappears into a solid slab of island rock. */
 export const ISLAND_ISLAND: Stroke[] = [
-  ...[
-    ...kitBody(ISLAND_BODY, [99, 113, 129], (_x, y) => y < 155),
-    ...skin([
-      [66, 103, 6],
-      [87, 123, -7],
-      [76, 144, 5],
-    ]),
-    ...sprout(ISLAND_BODY, -5, 'left'),
-  ].map((stroke) => tipped(stroke, islandSide)),
+  ...kitBody(ISLAND_BODY, [99, 113, 129], (_x, y) => y < 155),
+  ...skin([
+    [66, 103, 6],
+    [87, 123, -7],
+    [76, 144, 5],
+  ]),
+  ...sprout(ISLAND_BODY, -5, 'left'),
   {
-    d: 'M19 171 L29 162 L48 166 L57 155 M71 155 L82 164 L105 163 L111 150 L107 138 L106 119 L111 114 L117 119 L117 106 L123 103 L128 111 L132 101 L138 104 L139 113 L146 112 L150 119 L147 139 L138 153 L136 166 L148 175 L125 178 L105 174 L86 180 L63 176 L43 181 L22 177',
+    d: 'M73 155 L61 164 L39 158 L17 166 L29 181 L67 187 L104 182 L143 184 L151 168 L127 159 L110 164 L97 155 M17 166 L58 174 L103 169 L151 168 M58 174 L67 187 M103 169 L104 182',
     role: 'accent',
   },
-  {
-    d: 'M119 130 L127 124 L140 125 M128 124 L126 138 L135 143 M111 154 L122 158',
-    role: 'soft',
-  },
-  { d: 'M34 171 L44 174 M78 170 L87 173 M116 171 L124 173', role: 'ambient' },
+  { d: 'M45 163 L53 166 L47 169 M116 163 L121 166 L115 168', role: 'soft' },
+  { d: 'M32 175 L42 177 M76 178 L84 177 M124 175 L133 176', role: 'ambient' },
   shadowUnder(1),
 ]
 

@@ -1931,7 +1931,9 @@ export const summitWar: Saga = {
         },
       ],
       epithet: [{ episode: 151, value: { it: 'il Campione', en: 'Champion' } }],
-      devilFruit: [{ episode: 1120, value: ['strong-strong-fruit'] }],
+      devilFruit: [
+        { episode: 1093, chapter: 1063, value: ['strong-strong-fruit'] },
+      ],
     },
     'van-augur': {
       role: {
@@ -1955,7 +1957,9 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 151, value: { it: 'il Supersonico', en: 'the Supersonic' } },
       ],
-      devilFruit: [{ episode: 1120, value: ['warp-warp-fruit'] }],
+      devilFruit: [
+        { episode: 1093, chapter: 1063, value: ['warp-warp-fruit'] },
+      ],
     },
     'doc-q': {
       role: {
@@ -1979,7 +1983,9 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 151, value: { it: 'la Morte', en: 'the Grim Reaper' } },
       ],
-      devilFruit: [{ episode: 1120, value: ['sick-sick-fruit'] }],
+      devilFruit: [
+        { episode: 1093, chapter: 1063, value: ['sick-sick-fruit'] },
+      ],
     },
     'laffitte': {
       // Not "navigator": only the volume 46 character blurb says it.
@@ -2035,7 +2041,8 @@ export const summitWar: Saga = {
       ],
       devilFruit: [
         {
-          episode: 1120,
+          episode: 917,
+          chapter: 925,
           value: ['dog-dog-fruit-mythical-model-nine-tailed-fox'],
         },
       ],
@@ -2070,7 +2077,9 @@ export const summitWar: Saga = {
           value: { it: 'Nave da Guerra Colossale', en: 'Colossal Battleship' },
         },
       ],
-      devilFruit: [{ episode: 1120, value: ['huge-huge-fruit'] }],
+      devilFruit: [
+        { episode: 1113, chapter: 1080, value: ['huge-huge-fruit'] },
+      ],
     },
     'avalo-pizarro': {
       role: BLACKBEARD_ROLE,
@@ -2083,9 +2092,9 @@ export const summitWar: Saga = {
       epithet: [
         { episode: 484, value: { it: 'il Re Corrotto', en: 'Corrupt King' } },
       ],
-      // Pinned at 1087, where the island's rock first rises as a hand (1121).
+      // Ch 1080 / ep 1113: Pizarro merges with Hachinosu.
       devilFruit: [
-        { episode: 1121, chapter: 1087, value: ['island-island-fruit'] },
+        { episode: 1113, chapter: 1080, value: ['island-island-fruit'] },
       ],
     },
     'sakazuki': {
