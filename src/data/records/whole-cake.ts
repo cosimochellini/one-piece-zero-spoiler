@@ -817,8 +817,8 @@ export const wholeCake: Saga = {
       revealedAtChapter: 882,
       name: { it: 'Charlotte Nusstorte', en: 'Charlotte Nusstorte' },
       summary: {
-        it: 'Un figlio di Big Mom con un bicorno che ha una faccia tutta sua e soffia tornado sui nemici, all’assalto del Regno di Germa con i soldati della madre.',
-        en: 'A son of Big Mom in a bicorne with a face of its own that blows tornadoes at the enemy, storming the Germa Kingdom with his mother’s soldiers.',
+        it: 'Un figlio di Big Mom sconfitto dai Vinsmoke dopo aver guidato diecimila soldati all’assalto del Regno di Germa.',
+        en: 'A son of Big Mom defeated by the Vinsmokes after leading ten thousand soldiers to invade the Germa Kingdom.',
       },
       visual: { art: 'charlotte-nusstorte', tint: 'violet' },
     },
@@ -2053,8 +2053,8 @@ export const wholeCake: Saga = {
       chronicle: wholeCakeChronicles['charlotte-nusstorte'],
       role: { it: 'Figlio di Big Mom', en: 'A son of Big Mom' },
       log: {
-        it: 'È uno dei figli di Big Mom, con gli occhiali scuri, i baffi folti e un bicorno che ha la sua stessa faccia e gli stessi baffi. È tra i Pirati di Big Mom all’assalto del Regno di Germa e, quando uno dei Vinsmoke lo mette alle strette, il cappello soffia un tornado che solleva il nemico da terra: è il suo asso nella manica, e lo annuncia con il proprio nome. Chiude le frasi sempre con lo stesso intercalare impettito, anche in mezzo a uno scontro.',
-        en: 'He is one of Big Mom’s sons, with dark glasses, a thick moustache and a bicorne that wears the same face and the same moustache. He is among the Big Mom Pirates storming the Germa Kingdom, and when one of the Vinsmokes corners him the hat blows a tornado that lifts the enemy off the ground: it is his trump card, and he announces it by his own name. He ends his sentences with the same stiff turn of phrase, even in the middle of a fight.',
+        it: 'Guida diecimila soldati contro il Regno di Germa, ma i Vinsmoke sconfiggono il suo esercito. Niji lo tiene per il collo e ne imita la voce al lumacofono per far credere a Mont d’Or che l’invasione sia riuscita.',
+        en: 'He leads ten thousand soldiers against the Germa Kingdom, but the Vinsmokes defeat his army. Niji holds him by the neck and imitates his voice over the transponder snail to convince Mont-d’Or that the invasion succeeded.',
       },
       status: [{ episode: 855, value: 'unknown' }],
       affiliation: [
