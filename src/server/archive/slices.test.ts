@@ -1899,6 +1899,10 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('shiryu', [[484, 575]])).toHaveLength(1)
   })
 
+  it('fans Devon’s nine fox tails behind her pearls at 917', () => {
+    expect(walkStages('catarina-devon', [[917, 925]])).toHaveLength(1)
+  })
+
   it('crowns Pizarro at 917', () => {
     expect(walkStages('avalo-pizarro', [[917, 925]])).toHaveLength(1)
   })
