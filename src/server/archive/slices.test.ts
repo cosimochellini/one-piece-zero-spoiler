@@ -900,15 +900,17 @@ describe('a record drawn again later in the story', () => {
     ).toStrictEqual({})
   })
 
-  it('follows Usopp to his slingshots, and behind Sogeking’s mask', () => {
+  it('follows Usopp to his slingshots, into the sea and out, and behind Sogeking’s mask', () => {
     expect(
       walkStages('usopp', [
         [11, 27],
+        [33, 74],
+        [34, 76],
         [257, 367],
         [274, 390],
         [517, 598],
       ]),
-    ).toHaveLength(4)
+    ).toHaveLength(6)
   })
 
   it('follows Chopper’s hats from the cap of the two years, back to it each time', () => {
@@ -1458,7 +1460,8 @@ describe('a record drawn again later in the story', () => {
       characterOf(luffy, readerFor(bookmark, 'en')).visual.strokes
 
     // Each costume, then the hat alone again; Punk Hazard's kabuto runs
-    // straight into the Dressrosa bowler and that into Lucy's helmet.
+    // straight into the Dressrosa bowler and that into Lucy's helmet. The hat
+    // knocked over at 1070 gives way to Gear 5, a new drawing for the return.
     expect(
       stages.map(({ episode, chapter }) => [episode, chapter]),
     ).toStrictEqual([
@@ -1476,6 +1479,7 @@ describe('a record drawn again later in the story', () => {
       [871, 896],
       [959, 959],
       [978, 975],
+      [1070, 1043],
       [1071, 1044],
       [1076, 1049],
       [1157, 1127],
@@ -1926,8 +1930,14 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('arlong', [[42, 92]])).toHaveLength(1)
   })
 
-  it('arms Gin with his tonfa only from episode 27', () => {
-    expect(walkStages('gin', [[27, 59]])).toHaveLength(1)
+  it('arms Gin with his tonfa from 27, leaves him for dead at 29 and back at 1150', () => {
+    expect(
+      walkStages('gin', [
+        [27, 59],
+        [29, 67],
+        [1150, 1117],
+      ]),
+    ).toHaveLength(3)
   })
 
   it('follows Smoker’s jitte, broken twice and mended once', () => {

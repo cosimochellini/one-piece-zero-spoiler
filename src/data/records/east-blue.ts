@@ -894,7 +894,16 @@ export const eastBlue: Saga = {
         it: 'Diciassette anni, un sorriso che non si spegne e nessuna nave: prende il mare da solo su una barchetta. Da bambino ha mangiato un frutto del diavolo e da allora è di gomma, il che vuol dire che il mare lo respinge e che non sa nuotare. Salpa lo stesso.',
         en: 'Seventeen, a grin that does not switch off, and no ship: he sets out to sea alone in a small boat. He ate a devil fruit as a child and has been rubber ever since, which means the sea rejects him and he cannot swim. He sails anyway.',
       },
-      status: [{ episode: 1, chapter: 1, value: 'alive' }],
+      status: [
+        { episode: 1, chapter: 1, value: 'alive' },
+        // Episode 1070 adapts chapter 1043: Kaido's last blow drops him on
+        // the roof of the Skull Dome, and Kaido announces to the island that
+        // Straw Hat Luffy is dead (p. 8–10).
+        { episode: 1070, chapter: 1043, value: 'presumed-dead' },
+        // Episode 1071 adapts chapter 1044: his heart beats again and he gets
+        // back up, laughing (p. 3).
+        { episode: 1071, chapter: 1044, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1,
@@ -1541,7 +1550,15 @@ export const eastBlue: Saga = {
         it: 'Comanda una ciurma pirata di tre bambini con una bandiera. Quando avvistano dei pirati veri cerca una scusa per non andare, finché non sente che sono soltanto tre. Si vanta di un esercito di seguaci che non esiste, e si tradisce da solo. Agli stranieri consiglia di chiedere una nave alla villa sulla collina, dove vive una ragazza malata con il patrimonio lasciato dai genitori. Il coraggio è ancora in lavorazione.',
         en: 'He captains a pirate crew of three children with a flag. When real pirates are sighted he looks for an excuse to stay away, until he hears there are only three of them. He boasts of an army of followers that does not exist, and gives the lie away himself. He tells the strangers to ask the mansion on the hill for a ship: a sick girl lives there with the fortune her parents left her. The bravery is still a work in progress.',
       },
-      status: [{ episode: 9, value: 'alive' }],
+      status: [
+        { episode: 9, value: 'alive' },
+        // Episode 33 adapts chapter 74: Nami stabs him in Arlong Park and he
+        // is thrown into the sea to die (p. 13–15), with Johnny watching.
+        { episode: 33, chapter: 74, value: 'presumed-dead' },
+        // Episode 34 adapts chapter 76: he walks back into Cocoyasi soaked,
+        // and she had stabbed her own hand instead (p. 10).
+        { episode: 34, chapter: 76, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 9,
@@ -1872,10 +1889,11 @@ export const eastBlue: Saga = {
       },
       status: [
         { episode: 21, value: 'alive' },
-        // Episode 29 adapts chapter 67: still poisoned by the MH5 gas, said
-        // to kill within the hour, he sails off with Krieg and the story
-        // leaves him there.
-        { episode: 29, chapter: 67, value: 'unknown' },
+        // Episode 29 adapts chapter 67: still poisoned by the MH5 gas, he
+        // coughs up blood, says he may have only a few hours left to live
+        // (p. 4), and sails off with Krieg. The story does not show him again
+        // for more than a thousand chapters, so he is left for dead.
+        { episode: 29, chapter: 67, value: 'presumed-dead' },
         // Episode 1150 adapts chapter 1117, where he is on Hachinosu with
         // Krieg and Pearl, listening to Vegapunk's broadcast.
         { episode: 1150, chapter: 1117, value: 'alive' },

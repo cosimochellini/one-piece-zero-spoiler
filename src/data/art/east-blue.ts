@@ -948,8 +948,8 @@ export const eastBlueArt = {
   // accent) with its two knobs standing on top of the bar, rings at the
   // hinges, the side panel turned away and hatched. Chapter 23 shows it on
   // him from his first panel; it shows no slingshot until chapter 27, so the
-  // slingshot follows in `eastBlueRedrawn`, then Kabuto from 274 and Kuro
-  // Kabuto from 517.
+  // slingshot follows in `eastBlueRedrawn`, into the sea at 33 and back out
+  // of it at 34, then Kabuto from 274 and Kuro Kabuto from 517.
   'usopp': [
     { d: 'M60 112 C46 128 42 154 52 170 C60 182 104 184 116 174' },
     { d: 'M116 174 C130 164 136 140 128 120 C125 114 122 110 118 108' },
@@ -1417,7 +1417,8 @@ export const eastBlueArt = {
   // The plate of rice Sanji brings him outside at 21 (a pilaf in the manga, a
   // risotto in the show), heaped in his colour with its far side hatched, a
   // spoon standing in it and the steam still rising. His tonfa join the plate
-  // from 27, in `eastBlueRedrawn`.
+  // from 27, in `eastBlueRedrawn`; the plate goes cold at 29 and steams again
+  // at 1150.
   'gin': [
     { d: ellipse(80, 140, 62, 18) },
     {
@@ -2204,6 +2205,39 @@ const GIN_RICE_SET_BACK: Stroke[] = eastBlueArt.gin
   .slice(0, -1)
   .map((stroke) => ({ ...stroke, transform: 'translate(0 -26)' }))
 
+/**
+ * Gin's pair of tonfa laid side by side, the near one over the far: each a
+ * long bar with a short handle across its end and an iron ball weighting the
+ * other, the balls hatched dark.
+ */
+const GIN_TONFA: Stroke[] = [
+  {
+    d: 'M135.3 150 L29.7 159.3 C27 159.5 25.8 160.7 26 163 C26.2 165.3 27.6 166.3 30.3 166 L135.9 156.8 M37.7 158.6 L36.6 147 C36.5 145 37.4 143.9 39.4 143.8 C41.4 143.6 42.4 144.5 42.6 146.5 L43.6 158',
+  },
+  {
+    d: 'M157.5 151.5 C158 157.5 153.6 162.9 147.5 163.4 C141.4 163.9 136.1 159.5 135.6 153.4 C135.1 147.4 139.5 142 145.6 141.5 C151.6 141 157 145.4 157.5 151.5',
+  },
+  {
+    d: 'M113.3 174 L7.7 183.3 C5 183.5 3.8 184.7 4 187 C4.2 189.3 5.6 190.3 8.3 190 L113.9 180.8 M15.7 182.6 L14.6 171 C14.5 169 15.4 167.9 17.4 167.8 C19.4 167.6 20.4 168.5 20.6 170.5 L21.6 182',
+  },
+  {
+    d: 'M135.5 175.5 C136 181.5 131.6 186.9 125.5 187.4 C119.4 187.9 114.1 183.5 113.6 177.4 C113.1 171.4 117.5 166 123.6 165.5 C129.6 165 135 169.4 135.5 175.5',
+  },
+  { d: 'M133.2 149 L134 158.2 M111.2 173 L112 182.2', role: 'soft' },
+  {
+    d: 'M141.3 161.9 L145.4 156.6 M147 163.5 L152 157 M152.8 161.4 L156 157.1 M119.3 185.9 L123.4 180.6 M125 187.5 L130 181 M130.8 185.4 L134 181.1',
+    role: 'ambient',
+  },
+]
+
+/** The drops of blood he coughs up on the Baratie's deck, and where they land. */
+const GIN_BLOOD: Stroke[] = [
+  {
+    d: 'M14 86 q-3.4 6.1 0 7.5 q3.4 -1.4 0 -7.5 M10 104 q-3.4 6.1 0 7.5 q3.4 -1.4 0 -7.5 M15 120 q-3 5.4 0 6.6 q3 -1.2 0 -6.6',
+  },
+  { d: 'M2 140 q4 -5 10 -3 q5 -5 10 -1 q5 3 0 5 q-8 3 -16 1 q-6 0 -4 -2 Z' },
+]
+
 /** Hatchan's six swords held out, from 39. */
 const HATCHAN_SWORDS: Stroke[] = [
   {
@@ -2587,6 +2621,54 @@ export const eastBlueRedrawn: Redrawings = {
     // first shows it in chapter 27, when he knocks out the mansion's guards
     // with it; episode 11 adapts that scene.
     { episode: 11, chapter: 27, value: USOPP_SLINGSHOT },
+    // The slingshot going under in the splash, tipped over, its band slack
+    // with nothing in the pouch. Nami stabs him in Arlong Park and he is
+    // thrown into the sea to die, in 33 (ch. 74 p. 13–15).
+    {
+      episode: 33,
+      chapter: 74,
+      value: [
+        ...moved(
+          [
+            ...USOPP_SLINGSHOT.slice(0, 1),
+            { d: 'M54 70 Q80 116 106 70', role: 'accent' },
+          ],
+          'translate(4 23) rotate(-16 80 134)',
+        ),
+        {
+          d: 'M58 158 C52 146 46 140 36 138 M64 156 C62 144 60 136 56 128 M106 156 C112 146 118 142 128 140 M100 156 C104 146 108 140 114 132',
+        },
+        {
+          d: dots([
+            [30, 132],
+            [50, 120],
+            [120, 124],
+            [136, 134],
+          ]),
+          role: 'soft',
+        },
+        ...SEA,
+      ],
+    },
+    // The slingshot of episode 11 standing again, still dripping, a puddle
+    // spreading round its foot. He walks back into Cocoyasi soaked through,
+    // and the blood was from the hand she stabbed instead, in 34 (ch. 76
+    // p. 10).
+    {
+      episode: 34,
+      chapter: 76,
+      value: [
+        ...USOPP_SLINGSHOT.slice(0, -1),
+        {
+          d: 'M48 80 q-2.6 4.7 0 5.7 q2.6 -1 0 -5.7 M46 96 q-2.2 4 0 4.8 q2.2 -0.9 0 -4.8 M115 82 q-2.6 4.7 0 5.7 q2.6 -1 0 -5.7 M117 98 q-2.2 4 0 4.8 q2.2 -0.9 0 -4.8 M80 182 q-2.4 4.3 0 5.3 q2.4 -1 0 -5.3',
+        },
+        {
+          d: 'M44 188 q36 8 72 0 q-36 -7 -72 0',
+          role: 'ambient',
+          dashed: true,
+        },
+      ],
+    },
     // Sogeking's sun mask stood on its chin beside the slingshot: the egg of
     // the plate in his colour with its three wavy blades standing out behind
     // it, a soft edge down each blade, the band across the brow, the far
@@ -3010,9 +3092,29 @@ export const eastBlueRedrawn: Redrawings = {
       ],
     },
     { episode: 978, chapter: 975, value: LUFFY_HAT },
+    // The hat knocked over onto its brim on the cracked roof of the Skull
+    // Dome, among the broken stone. Kaido's last blow drops him there, and
+    // Kaido tells the island that Straw Hat Luffy is dead, in 1070 (ch. 1043
+    // p. 4–10).
+    {
+      episode: 1070,
+      chapter: 1043,
+      value: [
+        ...moved(LUFFY_HAT_ALONE, 'translate(-4 16) rotate(-62 80 128)'),
+        { d: 'M0 180 Q80 170 160 180', role: 'ambient' },
+        {
+          d: 'M66 174 L54 184 L58 194 M54 184 L40 190 M100 174 L110 183 L106 196 M110 183 L126 187',
+          role: 'soft',
+        },
+        {
+          d: 'M22 186 l6 -3 l3 4 Z M136 190 l5 -4 l4 3 Z M128 178 l4 -3 l3 3 Z',
+        },
+      ],
+    },
     // The hat as it always is, over the white hair of Gear 5: five great
-    // locks behind the crown, each winding into its curl. From 1071
-    // (ch. 1044) until Kaido falls in 1076 (ch. 1049).
+    // locks behind the crown, each winding into its curl. His heart beats
+    // again and he gets up in 1071 (ch. 1044), back from the dead, until
+    // Kaido falls in 1076 (ch. 1049).
     {
       episode: 1071,
       chapter: 1044,
@@ -3150,23 +3252,39 @@ export const eastBlueRedrawn: Redrawings = {
     {
       episode: 27,
       chapter: 59,
+      value: [...GIN_RICE_SET_BACK, ...GIN_TONFA, shadow(80, 194, 62)],
+    },
+    // The same plate gone cold, its steam stopped, the tonfa where they lay,
+    // and to one side the blood he coughs up falling onto the deck. Poisoned
+    // by the MH5 gas, he says he may have a few hours left to live and sails
+    // off with Krieg in 29 (ch. 67 p. 4).
+    {
+      episode: 29,
+      chapter: 67,
       value: [
-        ...GIN_RICE_SET_BACK,
+        ...GIN_RICE_SET_BACK.slice(0, -1),
+        ...GIN_TONFA,
+        ...GIN_BLOOD,
+        shadow(80, 194, 62),
+      ],
+    },
+    // The plate steaming again, the near tonfa laid where it was, and the
+    // far one picked up off the table and stood on its iron ball beside it.
+    // He is on Hachinosu with Krieg and Pearl when Vegapunk's broadcast
+    // begins, in 1150 (ch. 1117 p. 2).
+    {
+      episode: 1150,
+      chapter: 1117,
+      value: [
+        ...moved(GIN_RICE_SET_BACK, 'translate(8 0)'),
+        ...moved(
+          GIN_TONFA.slice(0, 2),
+          'translate(-124 2) rotate(90 146.5 152.5)',
+        ),
+        ...GIN_TONFA.slice(2, 4),
+        { d: 'M111.2 173 L112 182.2', role: 'soft' },
         {
-          d: 'M135.3 150 L29.7 159.3 C27 159.5 25.8 160.7 26 163 C26.2 165.3 27.6 166.3 30.3 166 L135.9 156.8 M37.7 158.6 L36.6 147 C36.5 145 37.4 143.9 39.4 143.8 C41.4 143.6 42.4 144.5 42.6 146.5 L43.6 158',
-        },
-        {
-          d: 'M157.5 151.5 C158 157.5 153.6 162.9 147.5 163.4 C141.4 163.9 136.1 159.5 135.6 153.4 C135.1 147.4 139.5 142 145.6 141.5 C151.6 141 157 145.4 157.5 151.5',
-        },
-        {
-          d: 'M113.3 174 L7.7 183.3 C5 183.5 3.8 184.7 4 187 C4.2 189.3 5.6 190.3 8.3 190 L113.9 180.8 M15.7 182.6 L14.6 171 C14.5 169 15.4 167.9 17.4 167.8 C19.4 167.6 20.4 168.5 20.6 170.5 L21.6 182',
-        },
-        {
-          d: 'M135.5 175.5 C136 181.5 131.6 186.9 125.5 187.4 C119.4 187.9 114.1 183.5 113.6 177.4 C113.1 171.4 117.5 166 123.6 165.5 C129.6 165 135 169.4 135.5 175.5',
-        },
-        { d: 'M133.2 149 L134 158.2 M111.2 173 L112 182.2', role: 'soft' },
-        {
-          d: 'M141.3 161.9 L145.4 156.6 M147 163.5 L152 157 M152.8 161.4 L156 157.1 M119.3 185.9 L123.4 180.6 M125 187.5 L130 181 M130.8 185.4 L134 181.1',
+          d: 'M119.3 185.9 L123.4 180.6 M125 187.5 L130 181 M130.8 185.4 L134 181.1',
           role: 'ambient',
         },
         shadow(80, 194, 62),
