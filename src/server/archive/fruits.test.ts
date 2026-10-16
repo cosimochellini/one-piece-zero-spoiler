@@ -440,9 +440,10 @@ describe('the corrected naming scenes', () => {
             open,
           })
           expect(links.some((link) => link.id === id)).toBe(open)
-          expect(drawingsFor([id], bookmark, locale)[id]).toEqual(
+          expect(drawingsFor([id], bookmark, locale)[id]).toStrictEqual(
             open ? DRAWINGS[id] : undefined,
           )
+
           saysNothing(page, bookmark)
           saysNothing(sheet, bookmark)
         }
