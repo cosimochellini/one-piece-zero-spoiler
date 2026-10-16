@@ -2438,13 +2438,14 @@ const ALLOSAURUS_FORELEG: Stroke[] = [
 /** Drake's sword and axe, made smaller and moved left to leave room for it. */
 const DRAKE_WEAPONS: Stroke[] = moved(
   summitWarArt['x-drake'].slice(6, 11),
-  'translate(-2 46) scale(0.7)',
+  'translate(-8 46) scale(0.7)',
 )
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const summitWarRedrawn: Redrawings = {
   // The great wave alone over the open sea, the cell wall and its chain
-  // gone: the cuff lies broken open on the water in front of it. Jinbe breaks out of Impel Down with Luffy at 451 (ch. 548).
+  // gone: the cuff lies broken open on the water in front of it. Jinbe
+  // breaks out of Impel Down with Luffy at 451 (ch. 548).
   'jinbe': [
     {
       episode: 451,
@@ -2546,11 +2547,7 @@ export const summitWarRedrawn: Redrawings = {
     {
       episode: 667,
       chapter: 735,
-      value: [
-        ...moved(LUCY_HELMET, 'translate(-14 0)'),
-        ...PIPE,
-        shadow(80, 182, 60),
-      ],
+      value: [...moved(LUCY_HELMET, 'translate(-14 0)'), ...PIPE],
     },
     // The same top hat and slanted pipe, Ace's flame running up its top
     // third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
