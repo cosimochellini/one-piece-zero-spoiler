@@ -1441,6 +1441,7 @@ export const skypieaRedrawn: Redrawings = {
   'marshall-d-teach': [
     {
       episode: 421,
+      chapter: 524,
       value: [
         { d: 'M52 110 C54 64 106 64 108 110' },
         {

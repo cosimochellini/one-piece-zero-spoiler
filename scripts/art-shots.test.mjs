@@ -96,7 +96,7 @@ describe('stage planning from the real archive', () => {
     ])
   })
 
-  it('retains argument order and uses the app’s derived gate for Teach', async () => {
+  it('retains argument order and uses Teach’s pinned chapter gate', async () => {
     const { getEntity } = await importArchive('data/entities.ts')
     const { datedOf } = await importArchive('data/dated.ts')
     const teach = getEntity('marshall-d-teach')
@@ -108,16 +108,10 @@ describe('stage planning from the real archive', () => {
       'karoo',
       'karoo',
     ])
-    const derived = stages.findIndex(({ chapter }) => chapter === undefined)
-    expect(derived).toBeGreaterThanOrEqual(0)
-    const chapter = stages[derived].gate.revealedAtChapter
-    expect(rows[derived].label).toContain('(derived)')
-    expect(rows[derived].bookmarks.slice(2)).toEqual([
-      {
-        value: `c${chapter - 1}`,
-        open: chapter - 1 >= teach.revealedAtChapter,
-      },
-      { value: `c${chapter}`, open: chapter >= teach.revealedAtChapter },
+    expect(rows[0].label).toBe('marshall-d-teach · ep 421 / c524')
+    expect(rows[0].bookmarks.slice(2)).toEqual([
+      { value: 'c523', open: true },
+      { value: 'c524', open: true },
     ])
   })
 

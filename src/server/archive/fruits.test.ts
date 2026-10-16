@@ -401,6 +401,18 @@ describe('the corrected naming scenes', () => {
       episode: 1113,
       chapter: 1080,
     },
+    {
+      id: 'snake-snake-fruit-model-anaconda',
+      eater: 'boa-sandersonia',
+      episode: 413,
+      chapter: 521,
+    },
+    {
+      id: 'snake-snake-fruit-model-king-cobra',
+      eater: 'boa-marigold',
+      episode: 413,
+      chapter: 521,
+    },
     { id: 'sick-sick-fruit', eater: 'doc-q', episode: 1093, chapter: 1063 },
     {
       id: 'strong-strong-fruit',
