@@ -1804,6 +1804,18 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('ryuma', [[362, 467]])).toHaveLength(1)
   })
 
+  it('returns the Risky Brothers’ shadows only from episode 375', () => {
+    const stages = walkStages('risky-brothers', [[375, 483]])
+
+    expect(stages[0]?.value.slice(0, -1)).toStrictEqual(
+      DRAWINGS['risky-brothers'],
+    )
+    expect(stages[0]?.value.at(-1)).toMatchObject({
+      role: 'ambient',
+      dashed: true,
+    })
+  })
+
   it.each([
     'victoria-cindry',
     'oars',

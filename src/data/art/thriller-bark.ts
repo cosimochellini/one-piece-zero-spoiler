@@ -703,6 +703,15 @@ const GUITAR = 'translate(-6 6) rotate(-50 80 110)'
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const thrillerBarkRedrawn: Redrawings = {
+  // The same sword and shirt with a shadow beneath them again. The stolen
+  // shadows return to their owners at 375 (ch. 483), after Moria's defeat.
+  'risky-brothers': [
+    {
+      episode: 375,
+      chapter: 483,
+      value: [...thrillerBarkArt['risky-brothers'], shadow(88, 184, 62)],
+    },
+  ],
   // A hull the size of an island, a mansion and two dead trees on the deck,
   // the moon hung over all of it: Spoil's line at 343 says the island is the
   // largest pirate ship in the world (ch. 449).
