@@ -1,6 +1,6 @@
 import { circle, dots, ellipse, SEA, shadow, wave } from '~/lib/svg/primitives'
 
-import type { Drawings, Redrawings, Stroke } from './stroke'
+import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /**
  * The laboratory of Egghead, a giant egg cracked open along its top, seen in
@@ -943,15 +943,218 @@ export const eggheadArt = {
 /** Saturn's hat, as his first drawing has it. */
 const SATURN_HAT = eggheadArt['jaygarcia-saturn'].slice(0, 5)
 
+/** Vegapunk's apple core on its shaft, without the shadow under it. */
+const VEGAPUNK_APPLE = eggheadArt.vegapunk.slice(0, -1)
+
+/** Edison's plug, without its cord and its shadow. */
+const EDISON_PLUG = eggheadArt.edison.slice(0, -2)
+
+/** Pythagoras's key, without its shadow. */
+const PYTHAGORAS_KEY_ALONE = eggheadArt.pythagoras.slice(0, -1)
+
+/**
+ * Atlas's gloved fist and its sleeve, without the hologram it breaks. With
+ * the pane gone the accent moves to the glove, on the line of her knuckles.
+ */
+const ATLAS_GLOVE: Stroke[] = eggheadArt.atlas
+  .slice(0, 7)
+  .map((stroke, index) =>
+    index === 2 ? { ...stroke, role: 'accent' } : stroke,
+  )
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const eggheadRedrawn: Redrawings = {
+  // The apple core of his first drawing toppled over onto its side, the
+  // shaft sticking out along the ground, and above it the line of a heart
+  // monitor that peaks once and runs flat. Kizaru runs him through with a
+  // sword of light as Sanji carries him off (ch. 1108 p. 12), and the
+  // monitor in his laboratory beeps on as his recorded message starts
+  // (p. 13). Episode 1142 adapts it.
+  'vegapunk': [
+    {
+      episode: 1142,
+      chapter: 1108,
+      value: [
+        ...moved(VEGAPUNK_APPLE, 'translate(6 26) rotate(-78 80 110)'),
+        { d: 'M6 40 H50 L56 26 L62 52 L68 34 L72 40 H154', role: 'ambient' },
+        shadow(84, 176, 62),
+      ],
+    },
+  ],
+  // His helmet with the side blown open where the gold drum was: the hole
+  // as the accent, cracks running out of it, splinters flying off and the
+  // antenna snapped to a stub, its far end lying on the ground. He is shot
+  // in the head from behind while trying to free Vegapunk (ch. 1077 p. 17,
+  // ep. 1110). Then the body Edison builds from spare parts at 1155
+  // (ch. 1125 p. 15): Shaka's tall black coat, its circuit stripe as the
+  // accent, an empty socket on top for Edison's head and one at each
+  // shoulder for the arms of the others, and the legs under its hem. He
+  // speaks from it; the helmet is gone.
+  'shaka': [
+    {
+      episode: 1110,
+      chapter: 1077,
+      value: [
+        ...eggheadArt.shaka.slice(0, 4),
+        {
+          d: 'M94 98 L100 94 L103 101 L110 96 L111 105 L117 110 L110 115 L113 124 L104 122 L100 129 L96 122 L91 117 L95 110 Z',
+          role: 'accent',
+        },
+        { d: 'M108 96 L112 84 L108 78' },
+        {
+          d: 'M94 98 L86 88 M91 117 L82 124 M100 129 L98 140 M111 105 L118 98',
+          role: 'soft',
+        },
+        {
+          d: 'M124 92 l7 -5 l-1 7 z M130 110 l8 1 l-5 6 z M120 74 l5 -6 l2 7 z M136 126 l6 3 l-6 3 z',
+          role: 'soft',
+        },
+        { d: 'M104 172 L146 158' },
+        ...eggheadArt.shaka.slice(8),
+      ],
+    },
+    {
+      episode: 1155,
+      chapter: 1125,
+      value: [
+        { d: ellipse(80, 40, 16, 5) },
+        {
+          d: 'M64 41 C50 44 40 50 38 60 V150 M96 41 C110 44 120 50 122 60 V150',
+        },
+        { d: 'M38 150 Q80 158 122 150' },
+        { d: 'M84 46 V78 H90 V96 H84 V124 H92 V152', role: 'accent' },
+        {
+          d: 'M42 70 l10 -8 M42 86 l12 -10 M42 102 l12 -10 M42 118 l12 -10 M42 134 l12 -10 M100 70 l10 -8 M100 86 l12 -10 M100 102 l12 -10 M100 118 l12 -10 M100 134 l12 -10',
+          role: 'ambient',
+        },
+        { d: circle(38, 64, 7), role: 'soft' },
+        { d: circle(122, 64, 7), role: 'soft' },
+        { d: 'M54 154 V178 H72 V156 M88 156 V178 H106 V154' },
+        shadow(80, 186, 40),
+      ],
+    },
+  ],
+  // His plug knocked over onto its side, the prongs pointing off, the
+  // cord gone slack along the ground. He was last seen flying into the
+  // Frontier Dome at 1148, and when York asks Punk Records how many
+  // Vegapunks are still alive the answer is two, Lilith and Atlas (ch. 1118
+  // p. 5, ep. 1151). Then the plug upright again on the collar of a new
+  // body, its shoulders falling away on either side: "It's Edison!! He was
+  // supposed to be dead" (ch. 1125 p. 7), and it is his head on the body he
+  // builds from spare parts (p. 15).
+  'edison': [
+    {
+      episode: 1151,
+      chapter: 1118,
+      value: [
+        ...moved(EDISON_PLUG, 'translate(-6 30) rotate(-90 78 120)'),
+        { d: 'M118 150 C130 162 104 168 100 176 C96 184 130 186 154 178' },
+        shadow(64, 182, 56),
+      ],
+    },
+    {
+      episode: 1155,
+      chapter: 1125,
+      value: [
+        ...EDISON_PLUG,
+        { d: ellipse(78, 156, 24, 6) },
+        { d: 'M54 156 V164 A24 6 0 0 0 102 164 V156' },
+        {
+          d: 'M54 164 C40 166 26 172 20 184 M102 164 C116 166 130 172 136 184',
+        },
+      ],
+    },
+  ],
+  // His wind-up key, laid down on a heap of rubble with chips flying: S-Snake
+  // stamps on his head and crushes it in a blast (ch. 1078 p. 5, ep. 1111).
+  // Then his right arm on the body Edison builds at 1155 (ch. 1125 p. 15),
+  // the only part of him on it: the ball of the shoulder as the accent, the
+  // ringed tubes bent at a round elbow, and the black hand, its fingers in
+  // soft and its far side hatched. The key is gone.
+  'pythagoras': [
+    {
+      episode: 1111,
+      chapter: 1078,
+      value: [
+        ...moved(PYTHAGORAS_KEY_ALONE, 'translate(4 26) rotate(-36 80 100)'),
+        {
+          d: 'M6 176 L18 158 L34 162 L42 148 L58 154 L68 142 L84 150 L96 140 L110 148 L124 144 L136 156 L148 160 L154 176',
+        },
+        {
+          d: 'M34 162 l6 12 M68 142 l4 14 M110 148 l-4 12 M124 144 l8 14',
+          role: 'soft',
+        },
+        {
+          d: 'M28 128 l6 -4 l2 6 z M132 118 l7 -2 l-2 7 z M54 114 l5 -5 l2 6 z',
+          role: 'soft',
+        },
+      ],
+    },
+    {
+      episode: 1155,
+      chapter: 1125,
+      value: [
+        { d: circle(50, 48, 14), role: 'accent' },
+        { d: 'M60.5 56 L90.5 90 M51.5 64 L81.5 98' },
+        { d: 'M62 74 l9 -8 M72 86 l9 -8', role: 'soft' },
+        { d: circle(90, 100, 10) },
+        { d: 'M84 109 L88 140 M96 108 L100 140' },
+        { d: 'M86 120 h12 M87 130 h12', role: 'soft' },
+        {
+          d: 'M82 140 H108 Q114 140 114 148 V158 Q114 168 102 168 H90 Q78 168 78 158 V148 Q78 140 82 140 Z',
+        },
+        { d: 'M90 146 V166 M96 146 V167 M102 146 V166', role: 'soft' },
+        { d: 'M106 146 l6 -4 M106 156 l6 -4', role: 'ambient' },
+        { d: 'M40 40 l6 -6 M38 52 l8 -8', role: 'ambient' },
+        shadow(96, 184, 30),
+      ],
+    },
+  ],
+  // Her glove and sleeve without the hologram, the accent moved to the line
+  // of her knuckles. First tumbling away from a burst of smoke: Nusjuro cuts
+  // off her arm and she blows herself up holding him back, so the Sunny can
+  // fly off (ch. 1120 p. 17, ep. 1152). Then the same glove hanging at rest
+  // from a ball joint: it is the left arm of the body Edison builds at 1155
+  // (ch. 1125 p. 15).
+  'atlas': [
+    {
+      episode: 1152,
+      chapter: 1120,
+      value: [
+        ...moved(ATLAS_GLOVE, 'translate(-6 40) rotate(28 70 104)'),
+        {
+          d: 'M98 64 C90 44 112 30 126 42 C132 26 158 30 156 50 C168 58 162 82 146 82 C140 96 116 96 110 84 C96 88 88 74 98 64 Z',
+          transform: 'translate(-12 4)',
+        },
+        {
+          d: 'M84 40 l6 -4 l-1 7 z M70 66 l7 1 l-4 6 z M150 100 l6 3 l-6 3 z',
+          role: 'soft',
+        },
+        shadow(66, 186, 50),
+      ],
+    },
+    {
+      episode: 1155,
+      chapter: 1125,
+      value: [
+        ...moved(ATLAS_GLOVE, 'translate(4 26) rotate(64 80 104)'),
+        { d: circle(56, 74, 12) },
+        { d: circle(56, 74, 4), role: 'soft' },
+        { d: 'M48 66 l6 -6 M46 78 l8 -8', role: 'ambient' },
+        shadow(88, 186, 40),
+      ],
+    },
+  ],
   // The same small black hat, two great ox horns grown out from under its
   // brim, sweeping out and down and then up to points that turn in, as the
   // accent, their outer curves hatched because they are black. The cane in
   // front has grown with him into a long twisted stick with a lumpy knot of
   // root for a head. He is first seen in this human-beast form on Egghead at
   // 1128 (ch. 1094), and Joy Boy's Haki forces him out of it at 1153
-  // (ch. 1122), where he is the first drawing again.
+  // (ch. 1122), where he is the first drawing again. At 1155 (ch. 1125
+  // p. 14) Imu kills him in front of the vice admirals and leaves only his
+  // bones: his hat knocked over onto its side, the cane fallen in front, a
+  // bone beside them and smoke rising. No skull, which would be a face.
   'jaygarcia-saturn': [
     {
       episode: 1128,
@@ -984,5 +1187,58 @@ export const eggheadRedrawn: Redrawings = {
       ],
     },
     { episode: 1153, chapter: 1122, value: eggheadArt['jaygarcia-saturn'] },
+    {
+      episode: 1155,
+      chapter: 1125,
+      value: [
+        ...moved(SATURN_HAT, 'translate(-14 34) rotate(-74 80 110)'),
+        ...eggheadArt['jaygarcia-saturn'].slice(5, 8),
+        {
+          d: 'M96 140 q-5 -4 -2 -8 q4 -2 6 2 L124 126 q2 -5 6 -3 q3 4 -2 7 q4 3 1 6 q-4 2 -6 -2 L104 144 q-1 5 -6 3 q-3 -3 2 -7',
+        },
+        {
+          d: 'M110 100 c-8 -10 8 -18 0 -28 c-8 -10 8 -18 0 -28',
+          role: 'ambient',
+        },
+        {
+          d: 'M128 106 c-6 -8 6 -14 0 -22 c-6 -8 6 -14 0 -22',
+          role: 'ambient',
+        },
+        shadow(80, 190, 60),
+      ],
+    },
+  ],
+  // Her grave in the churchyard in Sorbet: a wooden cross in 3/4, its post
+  // and its crossbar each showing their thickness, a low mound, flowers at
+  // its foot as the accent and two smaller crosses behind. Her name on the
+  // crossbar is left off. Kuma buries her there (ch. 1098 p. 8, ep. 1132)
+  // after she dies of the Sapphire Scales.
+  'ginny': [
+    {
+      episode: 1132,
+      chapter: 1098,
+      value: [
+        { d: 'M0 158 C50 154 110 154 160 158', role: 'ambient' },
+        { d: 'M74 40 V64 M86 40 V64 M74 40 H86 M74 80 V156 M86 80 V156' },
+        { d: 'M74 40 L80 34 H92 L86 40 M92 34 V58 M86 80 L92 76 V152' },
+        { d: 'M46 64 H114 V80 H46 Z' },
+        { d: 'M46 64 L52 58 H120 L114 64 M120 58 V74 L114 80' },
+        {
+          d: 'M88 90 l4 -3 M88 104 l4 -3 M88 118 l4 -3 M88 132 l4 -3 M88 146 l4 -3',
+          role: 'ambient',
+        },
+        { d: 'M54 72 H106', role: 'soft' },
+        { d: 'M40 160 C52 146 108 146 120 160', role: 'soft' },
+        {
+          d: `${circle(60, 150, 4)} ${circle(68, 146, 4)} ${circle(98, 148, 4)} ${circle(106, 152, 4)}`,
+          role: 'accent',
+        },
+        { d: 'M60 154 v6 M68 150 v8 M98 152 v6 M106 156 v4', role: 'soft' },
+        {
+          d: 'M18 124 V156 M10 134 H26 M140 130 V156 M133 138 H147',
+          role: 'ambient',
+        },
+      ],
+    },
   ],
 }
