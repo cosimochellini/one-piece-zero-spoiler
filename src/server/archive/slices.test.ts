@@ -1204,14 +1204,59 @@ describe('a record drawn again later in the story', () => {
     expect(stages[2]?.value).toBe(stages[0]?.value)
   })
 
-  it('grows Saturn’s horns from episode 1128, and takes them away at 1153', () => {
+  it('grows Saturn’s horns from episode 1128, takes them away at 1153, and leaves his hat on its side at 1155', () => {
     const stages = walkStages('jaygarcia-saturn', [
       [1128, 1094],
       [1153, 1122],
+      [1155, 1125],
     ])
 
     // Out of the hybrid form he is his first drawing itself.
     expect(stages[1]?.value).toBe(DRAWINGS['jaygarcia-saturn'])
+  })
+
+  it('topples Vegapunk’s apple from episode 1142', () => {
+    expect(walkStages('vegapunk', [[1142, 1108]])).toHaveLength(1)
+  })
+
+  it('puts Ginny’s grave in place of her joint of meat from episode 1132', () => {
+    expect(walkStages('ginny', [[1132, 1098]])).toHaveLength(1)
+  })
+
+  it('leaves Shaka for dead from episode 1110, and brings him back as the body at 1155', () => {
+    expect(
+      walkStages('shaka', [
+        [1110, 1077],
+        [1155, 1125],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('leaves Edison for dead from episode 1151, and brings him back as the head at 1155', () => {
+    expect(
+      walkStages('edison', [
+        [1151, 1118],
+        [1155, 1125],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('leaves Pythagoras for dead from episode 1111, and brings him back as an arm at 1155', () => {
+    expect(
+      walkStages('pythagoras', [
+        [1111, 1078],
+        [1155, 1125],
+      ]),
+    ).toHaveLength(2)
+  })
+
+  it('leaves Atlas for dead from episode 1152, and brings her back as an arm at 1155', () => {
+    expect(
+      walkStages('atlas', [
+        [1152, 1120],
+        [1155, 1125],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('turns Queen into his brachiosaurus only from episode 944', () => {

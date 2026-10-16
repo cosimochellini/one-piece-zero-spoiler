@@ -19,6 +19,16 @@ const SERAPHIM = {
 
 const SERAPHIM_ROLE = { it: 'Serafino', en: 'Seraphim' }
 
+const SHAKA_SATELLITE = {
+  it: 'Satellite di Vegapunk, Punk-01 Good',
+  en: 'Vegapunk satellite, Punk-01 Good',
+}
+
+const PYTHAGORAS_SATELLITE = {
+  it: 'Satellite di Vegapunk, Punk-04 Wisdom',
+  en: 'Vegapunk satellite, Punk-04 Wisdom',
+}
+
 const ELDER_ROLE = {
   it: 'Uno dei Cinque Astri di Saggezza',
   en: 'One of the Five Elders',
@@ -569,14 +579,12 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [
-        {
-          episode: 1092,
-          value: {
-            it: 'Satellite di Vegapunk, Punk-01 Good',
-            en: 'Vegapunk satellite, Punk-01 Good',
-          },
-        },
-        { episode: 1111, value: DESTROYED },
+        { episode: 1092, value: SHAKA_SATELLITE },
+        // Episode 1110 adapts chapter 1077, where he is shot in the head.
+        { episode: 1110, chapter: 1077, value: DESTROYED },
+        // Episode 1155 adapts chapter 1125, where Edison rebuilds a body
+        // from spare parts and Shaka speaks from it.
+        { episode: 1155, chapter: 1125, value: SHAKA_SATELLITE },
       ],
       origin: [{ episode: 1091, value: EGGHEAD }],
       epithet: [{ episode: 1091, value: { it: 'Good', en: 'Good' } }],
@@ -697,9 +705,20 @@ export const egghead: Saga = {
         it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È un piccolo robot, non più alto di un bambino, e le idee gli vengono così spesso che dice di non riuscire a fermarle. Guida i nuovi arrivati nel laboratorio dagli altoparlanti, poi abbandona il test che dovrebbe seguire per andare a disegnare progetti, e fa mangiare York al posto suo per non doversi fermare.',
         en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He is a small robot, no taller than a child, and ideas come to him so often that he says he cannot stop them. He guides newcomers through the laboratory over the speakers, then walks out of the test he is meant to be watching to draw blueprints, and has York eat for him so he does not have to stop.',
       },
-      // Only the anime has the crew grieve for him (1153), and he is seen
-      // after the dome at 1146-1149, so he is filed alive throughout.
-      status: [{ episode: 1095, value: 'alive' }],
+      // He flies through the Frontier Dome badly hurt at 1148 (ch. 1114) and
+      // is last heard at 1149 (ch. 1115), telling Stussy to run. The anime
+      // adds the crew grieving for him at 1153; the manga leaves him for dead
+      // earlier, through York's count.
+      status: [
+        { episode: 1095, value: 'alive' },
+        // Episode 1151 adapts chapter 1118, where York asks Punk Records how
+        // many Vegapunks are still alive and is told two, Lilith and Atlas
+        // (p. 5).
+        { episode: 1151, chapter: 1118, value: 'presumed-dead' },
+        // Episode 1155 adapts chapter 1125: "It's Edison!! He was supposed
+        // to be dead" (p. 7), and he rebuilds a body for the three others.
+        { episode: 1155, chapter: 1125, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 1095,
@@ -731,14 +750,12 @@ export const egghead: Saga = {
         { episode: 1155, chapter: 1125, value: 'alive' },
       ],
       affiliation: [
-        {
-          episode: 1095,
-          value: {
-            it: 'Satellite di Vegapunk, Punk-04 Wisdom',
-            en: 'Vegapunk satellite, Punk-04 Wisdom',
-          },
-        },
-        { episode: 1111, value: DESTROYED },
+        { episode: 1095, value: PYTHAGORAS_SATELLITE },
+        // Episode 1111 adapts chapter 1078, where S-Snake crushes his head.
+        { episode: 1111, chapter: 1078, value: DESTROYED },
+        // Episode 1155 adapts chapter 1125, where Edison rebuilds a body
+        // from spare parts and Pythagoras speaks from it.
+        { episode: 1155, chapter: 1125, value: PYTHAGORAS_SATELLITE },
       ],
       origin: [{ episode: 1095, value: EGGHEAD }],
       epithet: [{ episode: 1095, value: { it: 'Wisdom', en: 'Wisdom' } }],
