@@ -25,6 +25,7 @@ const LUFFY = onFile('monkey-d-luffy')
 // Alive at 100, presumed dead at 125, back at 130.
 const PELL = onFile('pell')
 const VIVI = onFile('nefertari-vivi')
+const GAN_FALL = onFile('gan-fall')
 
 /**
  * Which fact the reader has reached. This is the half of the old
@@ -78,6 +79,46 @@ describe('the facts a bookmark reaches', () => {
 
     expect(factsOf(VIVI, reader)).toMatchObject({ status })
   })
+
+  it.each([
+    [177, 'Knight of the Sky'],
+    [178, 'Knight of the Sky'],
+    [194, 'Knight of the Sky'],
+    [195, 'God of Skypiea, restored'],
+  ])(
+    'gives Gan Fall’s affiliation at episode %i as %s',
+    (episode, affiliation) => {
+      expect(factsOf(GAN_FALL, ep(episode))).toMatchObject({ affiliation })
+    },
+  )
+
+  it.each([
+    [301, 'Knight of the Sky'],
+    [302, 'God of Skypiea, restored'],
+  ])(
+    'gives Gan Fall’s affiliation at chapter %i as %s',
+    (chapter, affiliation) => {
+      const reader = readerFor({ mode: 'chapter', chapter }, 'en')
+
+      expect(factsOf(GAN_FALL, reader)).toMatchObject({ affiliation })
+    },
+  )
+
+  it.each(['holy', 'yama'])(
+    'keeps %s’s fate behind the exile episode and chapter',
+    (id) => {
+      const character = onFile(id)
+
+      expect(factsOf(character, ep(192))).toMatchObject({ status: 'alive' })
+      expect(factsOf(character, ep(193))).toMatchObject({ status: 'unknown' })
+      expect(
+        factsOf(character, readerFor({ mode: 'chapter', chapter: 299 }, 'en')),
+      ).toMatchObject({ status: 'alive' })
+      expect(
+        factsOf(character, readerFor({ mode: 'chapter', chapter: 300 }, 'en')),
+      ).toMatchObject({ status: 'unknown' })
+    },
+  )
 
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({

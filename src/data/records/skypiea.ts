@@ -1072,7 +1072,8 @@ export const skypiea: Saga = {
           value: { it: 'Cavaliere del Cielo', en: 'Knight of the Sky' },
         },
         {
-          episode: 178,
+          episode: 195,
+          chapter: 302,
           value: {
             it: 'Dio di Skypiea, restituito al trono',
             en: 'God of Skypiea, restored',
@@ -1390,7 +1391,11 @@ export const skypiea: Saga = {
         it: 'Sta accanto al trono di Ener e rimprovera i sacerdoti che litigano davanti al dio. Si offende se lo si chiama un semplice membro dell’esercito del dio: lui è il capo dei guerrieri sacri. Per la sua mole salta e calcia come un acrobata, e intende schiacciare gli stranieri di Upper Yard insieme a qualunque cosa si trovi in mezzo.',
         en: 'He stands beside Enel’s throne and scolds the priests for squabbling in God’s presence. He takes offence at being called just one of God’s army: he leads the Divine Soldiers. For a man his size he jumps and kicks like an acrobat, and he means to flatten the strangers in Upper Yard along with whatever else is in the way.',
       },
-      status: [{ episode: 172, value: 'alive' }],
+      status: [
+        { episode: 172, value: 'alive' },
+        // Ch 300 / ep 193: exiled to Cloud Drifting with the priests.
+        { episode: 193, chapter: 300, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 172,
@@ -1410,7 +1415,11 @@ export const skypiea: Saga = {
         it: 'Quando i sacerdoti inseguono un intruso per l’Upper Yard, il cane esce ululando dalla foresta e si lancia dietro di lui, e l’uomo per poco non finisce fra le sue fauci prima che un altro sacerdote allontani il cane con un calcio. Al tramonto del giorno in cui gli shandia attaccano la foresta, siede ansimando accanto al suo padrone, che lo chiama Holy, gli chiede se sente le voci dei caduti e dice che gli assalitori non vedranno l’alba.',
         en: 'When the priests chase a trespasser across Upper Yard, the dog comes howling out of the forest after him, and the man very nearly ends up in his jaws before another priest kicks the dog aside. As the sun goes down on the day the Shandia raid the forest, he sits panting beside his master, who calls him Holy, asks him whether he can hear the voices of the fallen and says the raiders will not see the dawn.',
       },
-      status: [{ episode: 164, value: 'alive' }],
+      status: [
+        { episode: 164, value: 'alive' },
+        // Ch 300 / ep 193: his fate is unknown after Ohm’s exile.
+        { episode: 193, chapter: 300, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 164,
