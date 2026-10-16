@@ -1151,7 +1151,11 @@ export const wholeCake: Saga = {
         it: 'Regna su un arcipelago di isole di zucchero e su una famiglia sterminata di figli, e i suoi capricci decidono il tempo che fa. Quando le viene voglia di un dolce che non ha, perde la testa e travolge tutto finché non glielo portano.',
         en: 'She rules an archipelago of sugar islands and an enormous family of children, and her whims decide the weather. When she wants a sweet she does not have, she loses her head and flattens whatever is in the way until it is brought to her.',
       },
-      status: [{ episode: 786, value: 'alive' }],
+      status: [
+        { episode: 786, value: 'alive' },
+        // Ch 1050 / ep 1077: fate unresolved after the magma chamber eruption.
+        { episode: 1077, chapter: 1050, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 786,
@@ -2161,7 +2165,11 @@ export const wholeCake: Saga = {
         it: 'È un sole vivo, una palla di fuoco con un volto, una delle cose a cui Big Mom ha dato voce, e non risponde a nessun altro. Quando uno dei suoi Sweet Commander fu sconfitto, si racconta, la sua tempesta affondò in pochi istanti le navi nemiche, con la nuvola del tuono Zeus sulla mano sinistra e lui sulla destra. Durante la sua furia in città la supplica di fermarsi insieme agli altri, avvertendola che potrebbe buttare giù perfino il castello.',
         en: 'He is a living sun, a ball of fire with a face, one of the things Big Mom has given a voice to, and he answers to nobody else. When a Sweet Commander of hers was beaten, the story goes, her storm sank the enemy’s ships in moments, with Zeus the thundercloud on her left hand and him on her right. During her rampage through the city he begs her to stop along with the others, warning that she could bring down even the castle.',
       },
-      status: [{ episode: 806, value: 'alive' }],
+      status: [
+        { episode: 806, value: 'alive' },
+        // Owner ruling (#549): fate unknown after Big Mom’s fall, 1050/1077.
+        { episode: 1077, chapter: 1050, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 806,
@@ -2179,7 +2187,11 @@ export const wholeCake: Saga = {
         it: 'È il bicorno rosa che Big Mom porta in testa, un cappello con occhi e bocca, e parla come tutti gli altri suoi homie. Durante la sua furia in città la supplicava insieme agli altri, avvertendola che quella città era nei guai. Quando nella Stanza del Tesoro lei affronta un intruso, lo chiama per nome insieme alla sua nuvola e al suo sole, e lui risponde subito: “Sì, mamma.”',
         en: 'He is the pink bicorne Big Mom wears on her head, a hat with eyes and a mouth, and he talks like the rest of her homies. During her rampage through the city he pleaded with her along with the others, warning that the town was in trouble. When she faces an intruder in the Room of Treasure she calls him by name alongside her thundercloud and her sun, and he answers at once: “Yes, Mama.”',
       },
-      status: [{ episode: 816, value: 'alive' }],
+      status: [
+        { episode: 816, value: 'alive' },
+        // Owner ruling (#549): fate unknown after Big Mom’s fall, 1050/1077.
+        { episode: 1077, chapter: 1050, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 816,

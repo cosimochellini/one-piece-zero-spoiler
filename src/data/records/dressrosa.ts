@@ -2138,7 +2138,11 @@ export const dressrosa: Saga = {
         it: 'Si butta da un’isola del cielo in cerca di un posto dove morire, cade sul rifugio dei Pirati di Kidd aprendo una buca nel terreno e ne risale imprecando perché è ancora vivo. È uno dei quattro Imperatori che si dividono il Nuovo Mondo, e ha una ciurma che prende il nome dalle bestie. È stato sconfitto, catturato e condannato a morte molte volte, ma ogni esecuzione è fallita, e nessuno è mai riuscito a ucciderlo, nemmeno lui stesso.',
         en: 'He jumps off a sky island looking for a place to die, lands on the Kid Pirates’ hideout, leaving a hole in the ground, and climbs out of it cursing that he is still alive. He is one of the four Emperors who divide the New World between them, and his crew takes its name from beasts. He has been defeated, captured and sentenced to death many times, but every execution failed, and nobody has managed to kill him, not even himself.',
       },
-      status: [{ episode: 739, value: 'alive' }],
+      status: [
+        { episode: 739, value: 'alive' },
+        // Ch 1050 / ep 1077: fate unresolved after the magma chamber eruption.
+        { episode: 1077, chapter: 1050, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 739,
