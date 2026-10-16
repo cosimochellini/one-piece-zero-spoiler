@@ -69,27 +69,27 @@ const DOFLAMINGO_BAR: Stroke[] = [
 ]
 
 /**
- * Doflamingo's sunglasses in 3/4: the rims with their depth, the bridge, one
- * temple folded, the dark lenses hatched. Drawn upright here, they appear
- * only from 733, tipped onto the ground by `fallenOff()` and cracked.
+ * Doflamingo's sunglasses from the front: thin white rims round lenses that
+ * sweep out and up into points at the temples, the bridge, the temples
+ * folded back behind them, the red lenses hatched. Drawn upright here, they
+ * appear only from 733, tipped onto the ground by `fallenOff()` and cracked.
  */
 const DOFLAMINGO_GLASSES: Stroke[] = [
   {
-    d: 'M24 100 L74 94 C78 94 80 98 80 102 L78 120 C78 124 74 126 70 126 L30 130 C24 130 22 126 22 122 L22 104 C22 102 22 100 24 100 Z',
+    d: 'M70 118 C58 130 26 124 6 74 C30 86 54 90 68 94 C78 98 78 114 70 118 Z M90 118 C102 130 134 124 154 74 C130 86 106 90 92 94 C82 98 82 114 90 118 Z',
+  },
+  {
+    d: 'M67 113 C56 122 32 118 13 83 C32 92 52 96 65 99 C71 101 71 110 67 113 Z',
     role: 'accent',
   },
   {
-    d: 'M92 93 L128 89 C132 89 134 92 134 95 L134 112 C134 116 132 118 128 118 L98 121 C94 121 92 118 92 115 Z',
+    d: 'M93 113 C104 122 128 118 147 83 C128 92 108 96 95 99 C89 101 89 110 93 113 Z',
     role: 'accent',
   },
+  { d: 'M70 100 C76 95 84 95 90 100' },
+  { d: 'M154 74 L158 92 L152 112 M6 74 L2 92 L8 112', role: 'soft' },
   {
-    d: 'M24 100 L30 94 L78 89 C82 89 86 93 86 97 L80 102 M92 93 L96 89 L130 85 C134 85 138 88 138 92 L134 95',
-  },
-  { d: 'M86 97 V112 L78 120 M138 92 V108 L134 112' },
-  { d: 'M80 106 C84 102 88 102 92 104' },
-  { d: 'M134 100 L148 112 L152 126 M134 108 L144 118 L146 128' },
-  {
-    d: 'M30 112 l10 -10 M30 124 l18 -18 M44 124 l18 -18 M58 122 l16 -16 M98 110 l10 -10 M98 116 l16 -16 M110 116 l16 -16',
+    d: 'M60 109 l-5 -6 M49 111 l-7 -8 M36 108 l-6 -7 M100 109 l5 -6 M111 111 l7 -8 M124 108 l6 -7',
     role: 'ambient',
   },
 ]
@@ -1561,7 +1561,7 @@ export const skypieaRedrawn: Redrawings = {
         ...DOFLAMINGO_STRINGS_CUT,
         ...fallenOff(DOFLAMINGO_GLASSES),
         {
-          d: 'M40 100 l6 10 l-5 7 l8 12 M46 110 l13 2 M41 117 l-12 4 M124 118 l-5 -10 l6 -6 l-6 -12 M119 108 l-13 3 M125 102 l7 3',
+          d: 'M44 106 l-6 -8 M44 106 l10 2 M44 106 l-2 9 M44 106 l-11 3 M118 106 l6 -8 M118 106 l-10 2 M118 106 l2 9 M118 106 l11 2',
           role: 'soft',
           transform: FALLEN,
         },
