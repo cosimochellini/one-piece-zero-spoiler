@@ -381,6 +381,76 @@ describe('a fruit’s own page', () => {
   })
 })
 
+describe('the corrected naming scenes', () => {
+  it.each([
+    {
+      id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
+      eater: 'catarina-devon',
+      episode: 917,
+      chapter: 925,
+    },
+    {
+      id: 'huge-huge-fruit',
+      eater: 'san-juan-wolf',
+      episode: 1113,
+      chapter: 1080,
+    },
+    {
+      id: 'island-island-fruit',
+      eater: 'avalo-pizarro',
+      episode: 1113,
+      chapter: 1080,
+    },
+    { id: 'sick-sick-fruit', eater: 'doc-q', episode: 1093, chapter: 1063 },
+    {
+      id: 'strong-strong-fruit',
+      eater: 'jesus-burgess',
+      episode: 1093,
+      chapter: 1063,
+    },
+    { id: 'warp-warp-fruit', eater: 'van-augur', episode: 1093, chapter: 1063 },
+  ] as const)(
+    'opens $id and its eater together in both locales',
+    ({ id, eater, episode, chapter }) => {
+      const marks = [
+        { bookmark: ep(episode - 1), open: false },
+        { bookmark: ep(episode), open: true },
+        { bookmark: { mode: 'chapter', chapter: chapter - 1 }, open: false },
+        { bookmark: { mode: 'chapter', chapter }, open: true },
+      ] as const
+
+      for (const locale of LOCALES) {
+        for (const { bookmark, open } of marks) {
+          const page = fruitPage(id, bookmark, locale)
+          const sheet = fruitSheet(bookmark, locale)
+          const specimen = sheet.bands
+            .flatMap((band) => band.open)
+            .find((fruit) => fruit.id === id)
+          const covered = sheet.bands
+            .flatMap((band) => band.covered)
+            .find((fruit) => fruit.handle === handleOf(id))
+          const links =
+            characterPage(eater, bookmark, locale)?.detail.facts.devilFruit
+            ?? []
+
+          expect(page?.detail.slot.open).toBe(open)
+          expect(specimen !== undefined).toBe(open)
+          expect(covered !== undefined).toBe(!open)
+          expect(fruitEaters(id, bookmark, locale).eaters[0]).toMatchObject({
+            open,
+          })
+          expect(links.some((link) => link.id === id)).toBe(open)
+          expect(drawingsFor([id], bookmark, locale)[id]).toEqual(
+            open ? DRAWINGS[id] : undefined,
+          )
+          saysNothing(page, bookmark)
+          saysNothing(sheet, bookmark)
+        }
+      }
+    },
+  )
+})
+
 describe('Paw-Paw’s synchronized reveal', () => {
   it.each([
     { bookmark: null, open: false },
