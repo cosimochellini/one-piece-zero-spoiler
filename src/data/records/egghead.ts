@@ -751,7 +751,8 @@ export const egghead: Saga = {
       ],
       affiliation: [
         { episode: 1095, value: PYTHAGORAS_SATELLITE },
-        { episode: 1111, value: DESTROYED },
+        // Episode 1111 adapts chapter 1078, where S-Snake crushes his head.
+        { episode: 1111, chapter: 1078, value: DESTROYED },
         // Episode 1155 adapts chapter 1125, where Edison rebuilds a body
         // from spare parts and Pythagoras speaks from it.
         { episode: 1155, chapter: 1125, value: PYTHAGORAS_SATELLITE },
