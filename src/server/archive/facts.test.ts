@@ -33,6 +33,31 @@ const GAN_FALL = onFile('gan-fall')
  * reader's episode used not to be in the DOM, and is now not in the payload.
  */
 describe('the facts a bookmark reaches', () => {
+  it('opens Hatchan’s officer caption at his record’s chapter', () => {
+    const hatchan = onFile('hatchan')
+
+    for (const locale of ['en', 'it'] as const) {
+      const officer =
+        locale === 'en' ?
+          'Arlong Pirates, officer'
+        : 'Pirati di Arlong, ufficiale'
+      const crewman = locale === 'en' ? 'Arlong Pirates' : 'Pirati di Arlong'
+
+      expect(factsOf(hatchan, ep(32, locale))).toMatchObject({
+        affiliation: crewman,
+      })
+      expect(factsOf(hatchan, ep(33, locale))).toMatchObject({
+        affiliation: officer,
+      })
+      expect(
+        factsOf(hatchan, readerFor({ mode: 'chapter', chapter: 73 }, locale)),
+      ).not.toHaveProperty('affiliation')
+      expect(
+        factsOf(hatchan, readerFor({ mode: 'chapter', chapter: 74 }, locale)),
+      ).toMatchObject({ affiliation: officer })
+    }
+  })
+
   it('gives each fact as the reader knows it, and no fact not yet learned', () => {
     const found = factsOf(LUFFY, ep(3))
 

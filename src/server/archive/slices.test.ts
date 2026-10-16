@@ -820,7 +820,7 @@ function filed(id: string): Entity {
 }
 
 /**
- * Walks a character's redrawings in order, on Luffy's model: each stage from
+ * Walks a record's redrawings in order, on Luffy's model: each stage from
  * its own episode and its own chapter, the drawing before it one short of
  * either, and the first drawing for a reader the timelines cannot place. The
  * stages come back so a test can say which of them is an earlier drawing
@@ -857,15 +857,18 @@ describe('a record drawn again later in the story', () => {
   const teach = filed('marshall-d-teach')
   const first = DRAWINGS['marshall-d-teach']
   const redrawn = REDRAWINGS['marshall-d-teach']?.[0]
-  const teachAt = (bookmark: Bookmark | null): Stroke[] =>
-    characterOf(teach, readerFor(bookmark, 'en')).visual.strokes
 
-  it('is drawn again only from the episode it is redrawn at', () => {
-    expect(redrawn?.episode).toBe(421)
+  it('puts each tricorne on Teach from its episode and chapter', () => {
+    expect(
+      walkStages('marshall-d-teach', [
+        [421, 524],
+        [917, 925],
+      ]),
+    ).toHaveLength(2)
+  })
 
-    expect(characterOf(teach, seenAt(420)).visual.strokes).toBe(first)
-    expect(characterOf(teach, seenAt(421)).visual.strokes).toBe(redrawn?.value)
-    expect(characterOf(teach, seenAt(916)).visual.strokes).toBe(redrawn?.value)
+  it('shows Thriller Bark as a ship from episode 343 and chapter 449', () => {
+    expect(walkStages('thriller-bark-arc', [[343, 449]])).toHaveLength(1)
   })
 
   it('keeps the first drawing for a reader the timelines cannot place', () => {
@@ -1998,20 +2001,6 @@ describe('a record drawn again later in the story', () => {
     // no earlier.
     expect(drawnAt({ mode: 'chapter', chapter: 792 })).toBe(bicycle)
     expect(drawnAt({ mode: 'chapter', chapter: 793 })).toBe(flagged?.value)
-  })
-
-  it('puts the plumed tricorne on Teach only from episode 917', () => {
-    const [tricorne, plumed] = REDRAWINGS['marshall-d-teach'] ?? []
-
-    expect(plumed?.episode).toBe(917)
-
-    expect(teachAt(ep(916))).toBe(tricorne?.value)
-    expect(teachAt(ep(917))).toBe(plumed?.value)
-    expect(teachAt(null)).toBe(DRAWINGS['marshall-d-teach'])
-    // The manga shows him clearly after the timeskip in chapter 925, no
-    // earlier: chapter 903 has only his silhouette.
-    expect(teachAt({ mode: 'chapter', chapter: 924 })).toBe(tricorne?.value)
-    expect(teachAt({ mode: 'chapter', chapter: 925 })).toBe(plumed?.value)
   })
 
   describe('three times, following Sanji’s knife through the Raid Suit', () => {
