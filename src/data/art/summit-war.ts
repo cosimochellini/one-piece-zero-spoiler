@@ -9,6 +9,7 @@ import {
   star,
 } from '~/lib/svg/primitives'
 
+import { LUCY_HELMET } from './east-blue'
 import { type Drawings, moved, type Redrawings, type Stroke } from './stroke'
 
 /** The slant Saldeath's trident lies at, its butt resting on the net. */
@@ -2349,13 +2350,118 @@ export const summitWarArt = {
   ],
 } satisfies Drawings
 
+/**
+ * Kid's magnet beside the metal arm he wears after the timeskip, first drawn
+ * at 603 and drawn again whenever the arm comes back.
+ */
+const KID_ARM: Stroke[] = [
+  ...MAGNET.map((stroke) => ({
+    // Smaller and to the left, to leave the right half to the arm.
+    ...stroke,
+    transform: 'translate(-10 22) scale(0.75)',
+  })),
+  {
+    d: `${ellipse(122, 40, 18, 6)} M104 40 V52 M140 40 V52 M104 52 q18 8 36 0`,
+  },
+  {
+    d: 'M114 35 c-6 -6 4 -10 -2 -18 M130 35 c6 -6 -4 -10 2 -18',
+    role: 'ambient',
+  },
+  { d: 'M110 57 V114 M134 57 V114' },
+  {
+    d: 'M118 60 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 V114 M126 108 V114',
+  },
+  {
+    d: 'M127 62 l6 -3 M127 74 l6 -3 M127 86 l6 -3 M127 98 l6 -3 M127 110 l6 -3',
+    role: 'ambient',
+  },
+  { d: 'M100 114 h44 v24 h-44z' },
+  { d: 'M100 128 h44', role: 'ambient' },
+  {
+    d: dots([
+      [105, 119],
+      [139, 119],
+      [105, 133],
+      [139, 133],
+    ]),
+  },
+  { d: 'M100 124 l-10 8 l3 7 l9 -5' },
+  // Four fingers, each in two joints, fanned a little from the wrist.
+  ...[
+    [104, 14],
+    [116, 5],
+    [128, -5],
+    [140, -14],
+  ].map(([x = 0, angle = 0]): Stroke => {
+    return {
+      d: `M${String(x - 4)} 141 h8 v14 h-8z M${String(x - 4)} 158 h8 v11 l-4 5 l-4 -5z`,
+      transform: `rotate(${String(angle)} ${String(x)} 138)`,
+    }
+  }),
+  { d: polygon(34, 172, 7, 6) },
+  { d: polygon(66, 180, 7, 6) },
+  { d: polygon(84, 160, 6, 6) },
+]
+
+/**
+ * The same magnet beside the empty socket: the arm is gone, its cut wires
+ * hanging where the forearm was, the scraps still on the ground.
+ */
+const KID_SOCKET: Stroke[] = [
+  ...KID_ARM.slice(0, 6),
+  {
+    d: 'M112 56 c-3 6 2 10 -1 16 l2 4 M122 58 c3 7 -2 12 1 18 l-3 3 M132 56 c-2 6 2 9 0 14 l3 3',
+    role: 'soft',
+  },
+  ...KID_ARM.slice(-3),
+]
+
+/** Drake's allosaurus foreleg, scaly, standing on three hooked claws. */
+const ALLOSAURUS_FORELEG: Stroke[] = [
+  {
+    d: 'M128 18 C138 36 142 58 140 80 C138 100 142 114 148 126 M112 24 C118 42 120 60 118 80 C116 98 114 112 116 124',
+  },
+  {
+    d: 'M116 124 C108 132 104 144 106 156 C110 148 114 144 118 142 M126 138 C122 148 122 160 126 168 C128 160 132 154 136 150 M140 136 C142 146 146 154 152 158 C152 150 152 144 150 138',
+  },
+  { d: 'M116 124 C124 132 136 136 148 126' },
+  {
+    d: 'M122 36 q3 -3 6 0 q3 -3 6 0 M120 52 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 M121 68 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 M120 84 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 M119 100 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0 M121 114 q3 -3 6 0 q3 -3 6 0 q3 -3 6 0',
+    role: 'soft',
+  },
+  {
+    d: 'M136 30 l-4 6 M140 46 l-5 6 M141 62 l-5 6 M140 78 l-5 6 M142 94 l-5 6',
+    role: 'ambient',
+  },
+]
+
+/** Drake's sword and axe, made smaller and moved left to leave room for it. */
+const DRAKE_WEAPONS: Stroke[] = moved(
+  summitWarArt['x-drake'].slice(6, 11),
+  'translate(-2 46) scale(0.7)',
+)
+
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const summitWarRedrawn: Redrawings = {
-  // The Sunny's helm, the helmsman's: a spoked wheel with eight turned
-  // handles, the rim hatched on its shaded side, carried on the crest of the
-  // same great wave; the cell wall and its chain are gone. Jinbe joins the
-  // crew as its helmsman at 980 (ch. 976).
+  // The great wave alone over the open sea, the cell wall and its chain
+  // gone: the cuff lies broken open on the water in front of it. Jinbe breaks out of Impel Down with Luffy at 451 (ch. 548).
   'jinbe': [
+    {
+      episode: 451,
+      chapter: 548,
+      value: [
+        ...moved(GREAT_WAVE, 'translate(16 44) scale(0.8)'),
+        {
+          d: 'M131 160 A13 4.5 0 1 0 122 164.3 M105 162 v4 C105 172 131 172 131 166 V160',
+        },
+        { d: 'M122 164.3 l3 -3 l1 4 M131 160 l-3 -2', role: 'soft' },
+        ...SEA.slice(1),
+      ],
+    },
+    // The Sunny's helm, the helmsman's: a spoked wheel with eight turned
+    // handles, the rim hatched on its shaded side, carried on the crest of the
+    // same great wave; the cell wall and its chain are gone. Jinbe joins the
+    // crew as its helmsman at 980 (ch. 976).
     {
       episode: 980,
       chapter: 976,
@@ -2433,6 +2539,19 @@ export const summitWarRedrawn: Redrawings = {
         shadow(80, 176, 56),
       ],
     },
+    // Lucy's gold helmet and red cape, the ones Luffy hands on to him, in
+    // place of the top hat, his pipe stood beside them. Sabo fights the
+    // Colosseum final as Lucy from 667 (ch. 735), and the helmet comes off
+    // when he eats the fruit at 678.
+    {
+      episode: 667,
+      chapter: 735,
+      value: [
+        ...moved(LUCY_HELMET, 'translate(-14 0)'),
+        ...PIPE,
+        shadow(80, 182, 60),
+      ],
+    },
     // The same top hat and slanted pipe, Ace's flame running up its top
     // third. Sabo eats the Flame-Flame Fruit at 678 (ch. 744).
     {
@@ -2494,56 +2613,128 @@ export const summitWarRedrawn: Redrawings = {
   // hatched on its shaded side, a riveted wrist block and jointed fingers.
   // First seen clearly at 603 (ch. 677); a silhouette only at 600.
   'eustass-kid': [
+    { episode: 603, chapter: 677, value: KID_ARM },
+    // The arm is stripped from him as a prisoner of the Beasts Pirates, and
+    // he comes to Udon without it at 919 (ch. 926).
+    { episode: 919, chapter: 926, value: KID_SOCKET },
+    // A new metal arm, put together for the raid on Onigashima: 977 (ch. 974).
+    { episode: 977, chapter: 974, value: KID_ARM },
+    // Cut off again when Hawkins turns his own wounds on Kid: 1054 (ch. 1029).
+    { episode: 1054, chapter: 1029, value: KID_SOCKET },
+    // Mended, and on again as he sails for Elbaph: 1109 (ch. 1076).
+    { episode: 1109, chapter: 1076, value: KID_ARM },
+  ],
+
+  // The same white hat after the timeskip: the fur rim gone and a thick bill
+  // in its place, the dome rounder, the spots along its bottom and across the
+  // bill; Kikoku unchanged in front. Back from the timeskip at 584 (ch. 659).
+  'trafalgar-law': [
     {
-      episode: 603,
-      chapter: 677,
+      episode: 584,
+      chapter: 659,
       value: [
-        ...MAGNET.map((stroke) => ({
-          // Smaller and to the left, to leave the right half to the arm.
-          ...stroke,
-          transform: 'translate(-10 22) scale(0.75)',
-        })),
+        { d: 'M40 120 C36 80 56 58 80 58 C104 58 124 80 120 120' },
         {
-          d: `${ellipse(122, 40, 18, 6)} M104 40 V52 M140 40 V52 M104 52 q18 8 36 0`,
+          d: 'M40 120 Q80 132 120 120 C122 130 112 142 80 146 C48 142 38 130 40 120 Z',
+        },
+        { d: 'M46 128 Q80 138 114 128', role: 'soft' },
+        {
+          d: `${circle(48, 106, 2.3)} ${circle(63, 112, 2.3)} ${circle(80, 114, 2.3)} ${circle(97, 112, 2.3)} ${circle(112, 106, 2.3)} ${circle(56, 134, 2.6)} ${circle(72, 138, 2.6)} ${circle(88, 138, 2.6)} ${circle(104, 134, 2.6)}`,
+          role: 'accent',
         },
         {
-          d: 'M114 35 c-6 -6 4 -10 -2 -18 M130 35 c6 -6 -4 -10 2 -18',
+          d: 'M106 72 l-6 5 M113 84 l-6 5 M117 96 l-6 5 M119 107 l-5 4',
           role: 'ambient',
         },
-        { d: 'M110 57 V114 M134 57 V114' },
+        ...summitWarArt['trafalgar-law'].slice(5),
+      ],
+    },
+  ],
+
+  'x-drake': [
+    // A foreleg of the allosaurus he turns into stands on the right, scaly,
+    // on three hooked claws; the cocked hat and the crossed sword and axe are
+    // made smaller to the left of it. He turns on Kizaru at 402 (ch. 509).
+    {
+      episode: 402,
+      chapter: 509,
+      value: [
+        ...moved(
+          summitWarArt['x-drake'].slice(0, 6),
+          'translate(-2 22) scale(0.7)',
+        ),
+        ...DRAKE_WEAPONS,
+        ...ALLOSAURUS_FORELEG,
+        ...summitWarArt['x-drake'].slice(11),
+      ],
+    },
+    // After the timeskip the cocked hat is gone: in its place the black band
+    // he wears across his eyes, lying in 3/4 with its knot tails in his
+    // colour, beside the same sword, axe and foreleg. Seen at 736 (ch. 793).
+    {
+      episode: 736,
+      chapter: 793,
+      value: [
+        { d: 'M10 70 C10 56 98 54 98 70 C98 84 10 84 10 70 Z' },
+        { d: 'M18 70 C18 62 90 61 90 70', role: 'soft' },
+        { d: 'M10 70 V82 C10 98 98 98 98 82 V70' },
         {
-          d: 'M118 60 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 l8 4 l-8 4 V114 M126 108 V114',
-        },
-        {
-          d: 'M127 62 l6 -3 M127 74 l6 -3 M127 86 l6 -3 M127 98 l6 -3 M127 110 l6 -3',
+          d: 'M18 86 l6 -10 M30 90 l7 -11 M44 92 l7 -12 M58 92 l7 -12 M72 90 l7 -11 M86 86 l6 -10',
           role: 'ambient',
         },
-        { d: 'M100 114 h44 v24 h-44z' },
-        { d: 'M100 128 h44', role: 'ambient' },
+        {
+          d: 'M96 80 C106 84 112 94 112 106 C108 100 104 96 98 94 M94 88 C100 96 100 106 96 114',
+          role: 'accent',
+        },
+        ...DRAKE_WEAPONS,
+        ...ALLOSAURUS_FORELEG,
+        ...summitWarArt['x-drake'].slice(11),
+      ],
+    },
+  ],
+
+  // Raiu on its own, the cell bars gone and the floor kept, his cigar on the
+  // floor beside it: out of Impel Down with Blackbeard, he is on the
+  // Marineford scaffold at 484 (ch. 575).
+  'shiryu': [
+    {
+      episode: 484,
+      chapter: 575,
+      value: [
+        { d: 'M8 162 H156', role: 'ambient' },
+        ...summitWarArt.shiryu.slice(1),
+      ],
+    },
+  ],
+
+  // The same collar, beads and horns, with his crown standing in the ring
+  // between the horns: a band of points, a jewel on two of them and studs
+  // round its base, no mark on it. He is first seen clearly in it at 917
+  // (ch. 925).
+  'avalo-pizarro': [
+    {
+      episode: 917,
+      chapter: 925,
+      value: [
+        ...summitWarArt['avalo-pizarro'].slice(0, 9),
+        {
+          d: 'M58 140 V114 L64 122 L71 108 L80 120 L89 108 L96 122 L102 114 V140',
+        },
+        { d: 'M58 140 Q80 148 102 140 M58 128 Q80 136 102 128', role: 'soft' },
         {
           d: dots([
-            [105, 119],
-            [139, 119],
-            [105, 133],
-            [139, 133],
+            [64, 134],
+            [72, 136],
+            [80, 137],
+            [88, 136],
+            [96, 134],
           ]),
+          role: 'soft',
         },
-        { d: 'M100 124 l-10 8 l3 7 l9 -5' },
-        // Four fingers, each in two joints, fanned a little from the wrist.
-        ...[
-          [104, 14],
-          [116, 5],
-          [128, -5],
-          [140, -14],
-        ].map(([x = 0, angle = 0]): Stroke => {
-          return {
-            d: `M${String(x - 4)} 141 h8 v14 h-8z M${String(x - 4)} 158 h8 v11 l-4 5 l-4 -5z`,
-            transform: `rotate(${String(angle)} ${String(x)} 138)`,
-          }
-        }),
-        { d: polygon(34, 172, 7, 6) },
-        { d: polygon(66, 180, 7, 6) },
-        { d: polygon(84, 160, 6, 6) },
+        {
+          d: `${circle(71, 106, 2)} ${circle(89, 106, 2)} ${circle(64, 120, 1.6)} ${circle(96, 120, 1.6)}`,
+        },
+        ...summitWarArt['avalo-pizarro'].slice(9),
       ],
     },
   ],
