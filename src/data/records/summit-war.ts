@@ -2334,6 +2334,10 @@ export const summitWar: Saga = {
         // Episode 663 adapts chapter 731: the masked man at the Colosseum is
         // Sabo, the brother thought long dead.
         { episode: 663, chapter: 731, value: 'alive' },
+        // Lulusia's destruction cuts off his call; his fate is unresolved.
+        { episode: 1089, chapter: 1060, value: 'unknown' },
+        // He returns to Momoiro alive with refugees from Lulusia.
+        { episode: 1116, chapter: 1082, value: 'alive' },
       ],
       affiliation: [
         {
@@ -2434,7 +2438,11 @@ export const summitWar: Saga = {
         it: 'Era un capitano pirata, poi è finito nella collezione di capitani di un Nobile Mondiale, costretto a camminare a quattro zampe dietro il padrone. Davanti alla casa d’aste resta incatenato a un palo, e non si muove nemmeno quando tutti gli altri scappano. Quando Law gli apre il collare e lo chiama per nome, dice che era da tanto che nessuno lo chiamava così, e accetta di seguirlo pur di non tornare dai Draghi Celesti.',
         en: 'He was a pirate captain before he ended up in a World Noble’s collection of captains, made to walk on all fours behind his master. Outside the auction house he stays chained to a stake, and does not move even when everyone else runs. When Law opens his collar and calls him by name, he says it has been a long time since anyone did, and agrees to follow him rather than go back to the Celestial Dragons.',
       },
-      status: [{ episode: 399, value: 'alive' }],
+      status: [
+        { episode: 399, value: 'alive' },
+        // He sinks with the Polar Tang; the chapter does not confirm survival.
+        { episode: 1115, chapter: 1081, value: 'unknown' },
+      ],
       affiliation: [
         {
           episode: 399,
