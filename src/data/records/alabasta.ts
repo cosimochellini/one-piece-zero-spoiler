@@ -883,7 +883,13 @@ export const alabasta: Saga = {
         it: 'Per due anni è stata Miss Wednesday, un’agente dell’organizzazione di cui voleva scoprire il capo. Ora che lo conosce, quel nome la condanna a morte e l’unico modo per tornare a casa è una nave di pirati che ha appena incontrato. Ha un’anatra da corsa che risponde al nome di Karl.',
         en: 'For two years she was Miss Wednesday, an agent of the organisation whose leader she set out to unmask. Now that she knows him, that name marks her for death and the only way home is a pirate ship she has just met. She has a racing duck who answers to Carue.',
       },
-      status: [{ episode: 67, value: 'alive' }],
+      status: [
+        { episode: 67, value: 'alive' },
+        // Ch 1054 / ep 1081: reported missing after the Levely.
+        { episode: 1081, chapter: 1054, value: 'missing' },
+        // Ch 1074 / ep 1106: seen aboard Morgans’s airship.
+        { episode: 1106, chapter: 1074, value: 'alive' },
+      ],
       affiliation: [
         {
           episode: 67,
