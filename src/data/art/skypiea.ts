@@ -71,9 +71,9 @@ const DOFLAMINGO_BAR: Stroke[] = [
 /**
  * Doflamingo's sunglasses from the front: thin white rims round lenses that
  * sweep out and up into points at the temples, the bridge, the temples
- * folded back behind them, the red lenses hatched. They appear only from
- * 733, tipped onto the ground by `fallenOff()` and cracked, and stand upright
- * and whole from 746.
+ * folded back behind them, the red lenses hatched. Worn over the coat's
+ * collar in the first drawing, tipped onto the ground by `fallenOff()` and
+ * cracked from 733, and stood upright and whole from 746.
  */
 const DOFLAMINGO_GLASSES: Stroke[] = [
   {
@@ -499,9 +499,11 @@ export const skypieaArt = {
   // His pink feather coat on its own, open and turned 3/4, the way he wears
   // it when he arrives for the Warlords' meeting (233, ep. 151): the feathered
   // lapels in his colour, plumes along the sleeves and the hem, the inside of
-  // the back hatched. No strings: they are not named or explained before
-  // chapter 724 (ep. 655). The strings cut and his glasses fallen and cracked
-  // from 733, and a new pair stood upright from 746, in `skypieaRedrawn`.
+  // the back hatched, and his sunglasses over the collar, where he wears
+  // them, at half size and without the hatching on their lenses. No strings:
+  // they are not named or explained before chapter 724 (ep. 655). The strings
+  // cut and his glasses fallen and cracked from 733, and a new pair stood
+  // upright from 746, in `skypieaRedrawn`.
   'donquixote-doflamingo': [
     {
       d: 'M68 52 Q88 46 106 50 M68 52 Q62 50.2 57.1 64.2 L64.7 63.3 Q58.6 61.6 53.8 75.5 L61.3 74.7 Q55.3 72.9 50.5 86.9 L58 86 Q51.7 86.4 51.8 100.6 L58.7 97.3 Q52.4 97.7 52.5 111.9 L59.3 108.7 Q53 109 53.2 123.2 L60 120 M106 50 Q111.3 51 109.4 64.4 L104 60.7 Q109.3 61.7 107.4 75.1 L102 71.3 Q107.3 72.3 105.4 85.8 L100 82 Q105.4 81.8 106.4 94.3 L100.3 92 Q105.7 91.8 106.7 104.3 L100.7 102 Q106.1 101.8 107.1 114.3 L101 112',
@@ -534,6 +536,7 @@ export const skypieaArt = {
       role: 'ambient',
     },
     { d: 'M46 128 l4 7 M30 98 l4 7 M114 140 l4 6 M42 164 l4 6', role: 'soft' },
+    ...moved(DOFLAMINGO_GLASSES.slice(0, 4), 'translate(46 -18) scale(0.5)'),
     shadow(82, 192, 56),
   ],
 
