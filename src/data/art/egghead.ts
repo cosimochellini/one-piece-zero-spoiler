@@ -1048,7 +1048,7 @@ export const eggheadRedrawn: Redrawings = {
       chapter: 1118,
       value: [
         ...moved(EDISON_PLUG, 'translate(-6 30) rotate(-90 78 120)'),
-        { d: 'M118 150 C130 162 104 168 100 176 C96 184 130 186 154 178' },
+        { d: 'M102 150 C108 166 104 170 100 176 C96 184 130 186 154 178' },
         shadow(64, 182, 56),
       ],
     },
