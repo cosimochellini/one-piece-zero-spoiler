@@ -26,6 +26,20 @@ const SENGOKU_CAP: Stroke[] = [
 ]
 
 /**
+ * The Buddha's open palm, raised with the fingers up, the heel of the hand
+ * over the cap and the shock of the push ringing round it: the giant golden
+ * form he takes at Marineford from 480, and keeps after he retires.
+ */
+const SENGOKU_PALM: Stroke[] = [
+  {
+    d: 'M34 66 L32 44 C26 40 20 32 16 24 C14 19 19 16 23 20 C27 25 31 30 35 33 L36 10 C36 5 43 5 43 10 L44 30 L45 6 C45 1 52 1 52 6 L53 30 L54 9 C54 4 61 4 61 9 L62 32 L63 17 C63 12 69 12 69 17 L70 40 C70 52 68 60 66 66',
+  },
+  { d: 'M34 66 C44 70 56 70 66 66' },
+  { d: 'M44 30 V38 M53 30 V38 M62 32 V40', role: 'soft' },
+  { d: 'M8 60 C2 44 4 24 14 10 M80 62 C88 46 88 26 78 10', role: 'ambient' },
+]
+
+/**
  * Sengoku's goat side on with no eye drawn, chewing a sheet of paperwork, and
  * the ground it stands on, beside the cap worn or set down.
  */
@@ -133,6 +147,26 @@ const WHITEBEARD_BISENTO: Stroke[] = [
 ]
 
 /**
+ * Whitebeard's coat hung over the bisento below the guard, blowing out to
+ * one side, its sleeves hanging empty and the far side hatched: it stands
+ * over his grave with the bisento from 505.
+ */
+const WHITEBEARD_COAT: Stroke[] = [
+  {
+    d: 'M80 56 C66 56 54 60 48 66 C40 84 34 108 20 132 C34 130 42 136 52 132 C60 136 68 134 76 132 H86 C94 134 100 134 108 128 C104 104 104 80 110 66 C104 60 94 56 80 56 Z',
+  },
+  { d: 'M48 66 C38 72 28 80 14 88 C16 94 22 96 28 92 C34 88 40 84 46 82' },
+  {
+    d: 'M80 56 L72 72 M80 56 L88 72 M60 70 C54 92 46 110 36 126',
+    role: 'soft',
+  },
+  {
+    d: 'M96 78 l8 -5 M95 94 l9 -5 M95 110 l9 -5 M96 126 l8 -5',
+    role: 'ambient',
+  },
+]
+
+/**
  * Pagaya's Waver without the water under it: the hull, its deck line and
  * hatched underside, the handlebars, the dial shell at the stern (the
  * accent) and the box amidships.
@@ -163,6 +197,45 @@ const PAGAYA_SEA: Stroke[] = [
   },
   ...SEA.slice(1),
 ]
+
+/**
+ * Marco's open jacket with the sash knotted at the waist, the inside of the
+ * back hatched: the first drawing, and the jacket the phoenix wing rises
+ * behind from 463.
+ */
+const MARCO_JACKET: Stroke[] = [
+  { d: 'M56 40 L30 70 L22 112 L36 116 L44 84 L48 168 H74 L70 54 Z' },
+  { d: 'M96 44 L120 64 L132 108 L120 112 L110 84 L108 164 H84 L88 52 Z' },
+  { d: 'M56 40 Q76 52 96 44 L88 52 Q78 58 70 54 Z', role: 'soft' },
+  { d: 'M70 54 L74 168 M88 52 L84 164' },
+  {
+    d: 'M74 70 l10 -4 M74 86 l10 -4 M74 102 l10 -4 M75 118 l9 -4 M75 134 l9 -4 M75 150 l9 -4',
+    role: 'ambient',
+  },
+  { d: 'M48 124 Q78 132 108 122 V136 Q78 146 48 138 Z', role: 'accent' },
+  { d: `${circle(96, 132, 6)} M93 138 l-6 26 M99 138 l5 24`, role: 'accent' },
+  { d: 'M30 70 L40 74 L44 84 M120 64 L114 72 L110 84', role: 'soft' },
+  shadow(78, 182, 46),
+]
+
+/**
+ * The phoenix wing rising behind Marco's right shoulder, its trailing edge
+ * breaking into tongues of flame: the Zoan form he first shows at Marineford
+ * (463), behind the jacket or the doctor's shirt.
+ */
+const MARCO_WING: Stroke[] = [
+  {
+    d: 'M100 48 C108 30 124 14 152 6 C150 16 154 24 158 32 C150 28 146 32 144 36 C148 40 150 46 150 50 C142 46 138 48 136 52 C138 56 138 60 138 66 C132 60 128 60 126 62 C126 66 126 70 126 76 C120 68 114 62 108 56',
+  },
+  { d: 'M106 50 C116 34 130 22 148 12', role: 'soft' },
+  { d: 'M140 18 L144 36 M130 28 L136 52 M120 38 L126 62', role: 'soft' },
+  {
+    d: 'M110 36 C104 28 108 20 114 16 C112 22 114 26 118 28 M124 24 C120 16 124 10 130 6 C128 12 130 16 134 17 M138 14 C136 8 140 4 146 2 C144 6 146 8 148 9',
+  },
+]
+
+/** Marco as a phoenix: the jacket and the wing, from 463 and again from 988. */
+const MARCO_PHOENIX: Stroke[] = [...MARCO_JACKET, ...MARCO_WING]
 
 /** The drawings of the records filed in the skypiea stretch of the route. */
 export const skypieaArt = {
@@ -370,8 +443,8 @@ export const skypieaArt = {
 
   // The Bible he holds through the Warlords' meeting (151), closed and stood
   // on end: the rays on its cover, the page block on the far side hatched.
-  // The paw pressed into a steel plate beside it from 469, in
-  // `skypieaRedrawn`.
+  // The paw pressed into a steel plate beside it from 469, and the plate
+  // alone from 888, in `skypieaRedrawn`.
   'bartholomew-kuma': [
     ...KUMA_BIBLE_BODY,
     KUMA_BIBLE_PAGES,
@@ -385,7 +458,8 @@ export const skypieaArt = {
   // His Marine cap in 3/4, the braided band as the accent and the peak
   // turned toward the reader, and the goat at his side chewing a sheet of
   // paperwork: he chairs the Warlords' meeting with it beside him (151). The
-  // cap is set down at his retirement, from 511, in `skypieaRedrawn`.
+  // Buddha's palm rises over it from 480, and the cap is set down at his
+  // retirement from 511, in `skypieaRedrawn`.
   'sengoku': [...SENGOKU_CAP, ...SENGOKU_GOAT],
 
   // The small sake barrel he drinks from, its far side hatched, and the drip
@@ -426,7 +500,7 @@ export const skypieaArt = {
   // lapels in his colour, plumes along the sleeves and the hem, the inside of
   // the back hatched. No strings: they are not named or explained before
   // chapter 724 (ep. 655). The strings cut and his glasses fallen and cracked
-  // from 733, in `skypieaRedrawn`.
+  // from 733, and a new pair stood upright from 746, in `skypieaRedrawn`.
   'donquixote-doflamingo': [
     {
       d: 'M68 52 Q88 46 106 50 M68 52 Q62 50.2 57.1 64.2 L64.7 63.3 Q58.6 61.6 53.8 75.5 L61.3 74.7 Q55.3 72.9 50.5 86.9 L58 86 Q51.7 86.4 51.8 100.6 L58.7 97.3 Q52.4 97.7 52.5 111.9 L59.3 108.7 Q53 109 53.2 123.2 L60 120 M106 50 Q111.3 51 109.4 64.4 L104 60.7 Q109.3 61.7 107.4 75.1 L102 71.3 Q107.3 72.3 105.4 85.8 L100 82 Q105.4 81.8 106.4 94.3 L100.3 92 Q105.7 91.8 106.7 104.3 L100.7 102 Q106.1 101.8 107.1 114.3 L101 112',
@@ -464,21 +538,8 @@ export const skypieaArt = {
 
   // His open jacket with the sash knotted at the waist, the way he stands on
   // Whitebeard's deck when Shanks comes aboard (316). The inside of the back is
-  // hatched.
-  'marco': [
-    { d: 'M56 40 L30 70 L22 112 L36 116 L44 84 L48 168 H74 L70 54 Z' },
-    { d: 'M96 44 L120 64 L132 108 L120 112 L110 84 L108 164 H84 L88 52 Z' },
-    { d: 'M56 40 Q76 52 96 44 L88 52 Q78 58 70 54 Z', role: 'soft' },
-    { d: 'M70 54 L74 168 M88 52 L84 164' },
-    {
-      d: 'M74 70 l10 -4 M74 86 l10 -4 M74 102 l10 -4 M75 118 l9 -4 M75 134 l9 -4 M75 150 l9 -4',
-      role: 'ambient',
-    },
-    { d: 'M48 124 Q78 132 108 122 V136 Q78 146 48 138 Z', role: 'accent' },
-    { d: `${circle(96, 132, 6)} M93 138 l-6 26 M99 138 l5 24`, role: 'accent' },
-    { d: 'M30 70 L40 74 L44 84 M120 64 L114 72 L110 84', role: 'soft' },
-    shadow(78, 182, 46),
-  ],
+  // hatched. The phoenix wing rises behind it from 463, in `skypieaRedrawn`.
+  'marco': MARCO_JACKET,
 
   // His helmet in 3/4 with the visor raised and a spike on the crown, the dark
   // inside hatched, beside the lance he jousts with when he rides in to save
@@ -1269,6 +1330,15 @@ function underTheBiggerHat(strokes: Stroke[]): Stroke[] {
   return strokes.map((stroke) => ({ ...stroke, transform: lower }))
 }
 
+/** The strings cut short under Doflamingo's bar, frayed at the ends, from 733. */
+const DOFLAMINGO_STRINGS_CUT: Stroke[] = [
+  { d: 'M50 41 L44 60 M110 33 L115 52 M62 40 L67 59 M98 35 L97 54' },
+  {
+    d: 'M44 60 l-5 2 M44 60 l0 6 M44 60 l4 4 M115 52 l5 2 M115 52 l0 6 M115 52 l-4 4 M67 59 l-4 4 M67 59 l4 3 M97 54 l-4 4 M97 54 l4 3',
+    role: 'soft',
+  },
+]
+
 /** Doflamingo's glasses, fallen to the ground and tipped onto one lens. */
 const FALLEN = 'translate(0 40) rotate(-7 80 115)'
 
@@ -1286,6 +1356,28 @@ function setDown(strokes: Stroke[]): Stroke[] {
 
   return strokes.map((stroke) => ({ ...stroke, transform: down }))
 }
+
+/**
+ * The riveted steel plate Kuma's paw is pressed into, its edge hatched: the
+ * weapon he is made into, beside the small Bible from 469 and alone from
+ * 888.
+ */
+const KUMA_PLATE: Stroke[] = [
+  { d: 'M14 70 H100 V166 H14z' },
+  { d: 'M100 70 l6 6 V172 H20 l-6 -6' },
+  {
+    d: 'M101 92 l4 4 M101 112 l4 4 M101 132 l4 4 M101 152 l4 4',
+    role: 'ambient',
+  },
+  {
+    d: `${circle(22, 78, 3)} ${circle(92, 78, 3)} ${circle(22, 158, 3)} ${circle(92, 158, 3)}`,
+  },
+  { d: ellipse(57, 134, 20, 15), role: 'accent' },
+  {
+    d: `${circle(35, 110, 7)} ${circle(49, 100, 7)} ${circle(67, 100, 7)} ${circle(81, 110, 7)}`,
+    role: 'accent',
+  },
+]
 
 /** Kuma's Bible, smaller, stood on the same ground as the steel plate. */
 function besideThePlate(strokes: Stroke[]): Stroke[] {
@@ -1411,10 +1503,11 @@ export const skypieaRedrawn: Redrawings = {
   // open from its foot, with broken stone lying on it: he dies on his feet
   // with the bisento in his hand at 485 (ch. 576), after the quakes have
   // split the square. The slab's front edge is hatched, never filled. Then
-  // the bisento planted upright in a mound of earth, the bottle at its
-  // foot: it stands over his grave on a New World island, where Shanks and
-  // his crew bury him at 505 (ch. 590). The mound's far side is hatched,
-  // never filled.
+  // the bisento planted upright in a mound of earth, his coat hung over it
+  // below the guard and the bottle at its foot: it stands over his grave on
+  // a New World island, where Shanks and his crew bury him at 505 (ch. 590),
+  // the coat blowing out from the shaft. The mound's far side and the coat's
+  // are hatched, never filled.
   'edward-newgate': [
     {
       episode: 485,
@@ -1441,7 +1534,9 @@ export const skypieaRedrawn: Redrawings = {
       episode: 505,
       chapter: 590,
       value: [
-        ...WHITEBEARD_BISENTO,
+        ...WHITEBEARD_BISENTO.slice(1, 3),
+        { d: 'M80 56 V38 M80 164 V132' },
+        ...WHITEBEARD_COAT,
         { d: 'M44 180 Q80 148 112 180' },
         {
           d: 'M52 175 l-4 5 M59 170 l-6 9 M66 167 l-6 11 M73 165 l-6 12',
@@ -1463,11 +1558,7 @@ export const skypieaRedrawn: Redrawings = {
       chapter: 790,
       value: [
         ...DOFLAMINGO_BAR,
-        { d: 'M50 41 L44 60 M110 33 L115 52 M62 40 L67 59 M98 35 L97 54' },
-        {
-          d: 'M44 60 l-5 2 M44 60 l0 6 M44 60 l4 4 M115 52 l5 2 M115 52 l0 6 M115 52 l-4 4 M67 59 l-4 4 M67 59 l4 3 M97 54 l-4 4 M97 54 l4 3',
-          role: 'soft',
-        },
+        ...DOFLAMINGO_STRINGS_CUT,
         ...fallenOff(DOFLAMINGO_GLASSES),
         {
           d: 'M40 100 l6 10 l-5 7 l8 12 M46 110 l13 2 M41 117 l-12 4 M124 118 l-5 -10 l6 -6 l-6 -12 M119 108 l-13 3 M125 102 l7 3',
@@ -1486,16 +1577,41 @@ export const skypieaRedrawn: Redrawings = {
         shadow(80, 182, 64),
       ],
     },
+    // The same cut strings over a new pair of glasses, whole and stood
+    // upright on the ground: he is given new sunglasses in his cell on the
+    // Marine ship at 746 (ch. 801), and wears them from then on.
+    {
+      episode: 746,
+      chapter: 801,
+      value: [
+        ...DOFLAMINGO_BAR,
+        ...DOFLAMINGO_STRINGS_CUT,
+        ...moved(DOFLAMINGO_GLASSES, 'translate(0 40)'),
+        shadow(80, 182, 64),
+      ],
+    },
   ],
 
-  // The same cap set down on the ground, the goat beside it: he steps down
-  // as fleet admiral before Kong at 511 (ch. 594), and after the two years he
-  // goes bareheaded. The crown's far side is hatched, never filled.
+  // The Buddha's open palm raised over the cap, the goat beside it: he takes
+  // his giant golden form on the plaza at Marineford when Luffy reaches the
+  // scaffold at 480 (ch. 571). Then the same cap set down on the ground, the
+  // palm still over it: he steps down as fleet admiral before Kong at 511
+  // (ch. 594), and after the two years he goes bareheaded, the fruit still
+  // his. The crown's far side is hatched, never filled.
   'sengoku': [
+    {
+      episode: 480,
+      chapter: 571,
+      value: [...SENGOKU_CAP, ...SENGOKU_GOAT, ...SENGOKU_PALM],
+    },
     {
       episode: 511,
       chapter: 594,
-      value: [...setDown(SENGOKU_CAP), ...SENGOKU_GOAT],
+      value: [
+        ...setDown(SENGOKU_CAP),
+        ...SENGOKU_GOAT,
+        ...setDown(SENGOKU_PALM),
+      ],
     },
   ],
 
@@ -1509,23 +1625,61 @@ export const skypieaRedrawn: Redrawings = {
       episode: 469,
       chapter: 560,
       value: [
-        { d: 'M14 70 H100 V166 H14z' },
-        { d: 'M100 70 l6 6 V172 H20 l-6 -6' },
-        {
-          d: 'M101 92 l4 4 M101 112 l4 4 M101 132 l4 4 M101 152 l4 4',
-          role: 'ambient',
-        },
-        {
-          d: `${circle(22, 78, 3)} ${circle(92, 78, 3)} ${circle(22, 158, 3)} ${circle(92, 158, 3)}`,
-        },
-        { d: ellipse(57, 134, 20, 15), role: 'accent' },
-        {
-          d: `${circle(35, 110, 7)} ${circle(49, 100, 7)} ${circle(67, 100, 7)} ${circle(81, 110, 7)}`,
-          role: 'accent',
-        },
+        ...KUMA_PLATE,
         ...besideThePlate(KUMA_BIBLE_BODY),
         shadow(82, 180, 72),
       ],
     },
+    // The same plate on its own, stood in the middle, and no Bible: he is
+    // led through Mary Geoise as a rented slave at 888 (ch. 908), and he
+    // no longer holds his Bible. It does not come back on Egghead.
+    {
+      episode: 888,
+      chapter: 908,
+      value: [...moved(KUMA_PLATE, 'translate(20 0)'), shadow(80, 180, 56)],
+    },
+  ],
+
+  // The jacket with the phoenix wing rising behind it: he first shows the
+  // Zoan at Marineford, the blue flames taking an admiral's kick at 463
+  // (ch. 554, the chapter his fruit is pinned at). Then the doctor's shirt
+  // under the same wing, sleeves down and open at the neck, no sash, the
+  // flame taking his colour in its place: he patches up the villagers of
+  // Sphinx at 890 (ch. 909). And the jacket again, sash and wing, when he
+  // flies in to Onigashima at 988 (ch. 981).
+  'marco': [
+    { episode: 463, chapter: 554, value: MARCO_PHOENIX },
+    {
+      episode: 890,
+      chapter: 909,
+      value: [
+        {
+          d: 'M62 42 L36 60 L24 118 L38 122 L46 82 L46 150 H108 L108 82 L116 122 L130 118 L118 60 L92 42',
+        },
+        { d: 'M62 42 L70 40 L77 60 L84 40 L92 42' },
+        { d: 'M62 42 L68 56 L77 60 L86 56 L92 42', role: 'soft' },
+        { d: 'M77 60 V150 M26 110 L39 114 M115 114 L128 110', role: 'soft' },
+        {
+          d: dots([
+            [80, 76],
+            [80, 94],
+            [80, 112],
+            [80, 130],
+          ]),
+        },
+        { d: 'M46 96 l6 4 M108 96 l-6 4', role: 'soft' },
+        {
+          d: 'M96 78 l8 -5 M96 98 l8 -5 M96 118 l8 -5 M96 138 l8 -5',
+          role: 'ambient',
+        },
+        ...MARCO_WING.map((stroke, index): Stroke => {
+          return index === 0 || index === 3 ?
+              { ...stroke, role: 'accent' }
+            : stroke
+        }),
+        shadow(78, 170, 46),
+      ],
+    },
+    { episode: 988, chapter: 981, value: MARCO_PHOENIX },
   ],
 }

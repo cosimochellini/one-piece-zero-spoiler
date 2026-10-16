@@ -1391,6 +1391,19 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(2)
   })
 
+  it('spreads Marco’s phoenix wing at 463, over the doctor’s shirt at 890, and the jacket again at 988', () => {
+    // Blue flames in chapter 554, the Sphinx clinic in chapter 909, and
+    // Onigashima in chapter 981.
+    const stages = walkStages('marco', [
+      [463, 554],
+      [890, 909],
+      [988, 981],
+    ])
+
+    // Back in the jacket is the phoenix of 463 itself.
+    expect(stages[2]?.value).toBe(stages[0]?.value)
+  })
+
   it('puts out Pagaya’s dial at 178, and brings his Waver back up at 193', () => {
     // Enel's lightning takes him in chapter 272; he is back in chapter 300.
     expect(
@@ -1418,21 +1431,15 @@ describe('a record drawn again later in the story', () => {
     expect(drawnAt({ mode: 'chapter', chapter: 1053 })).toBe(crowned?.value)
   })
 
-  it('cuts Doflamingo’s strings and cracks his glasses only from episode 733', () => {
-    const doflamingo = filed('donquixote-doflamingo')
-    const coat = DRAWINGS['donquixote-doflamingo']
-    const fallen = REDRAWINGS['donquixote-doflamingo']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(doflamingo, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(fallen?.episode).toBe(733)
-
-    expect(drawnAt(ep(732))).toBe(coat)
-    expect(drawnAt(ep(733))).toBe(fallen?.value)
-    expect(drawnAt(null)).toBe(coat)
-    // The manga shatters his glasses in chapter 790, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 789 })).toBe(coat)
-    expect(drawnAt({ mode: 'chapter', chapter: 790 })).toBe(fallen?.value)
+  it('cuts Doflamingo’s strings at 733, and stands a new pair of glasses at 746', () => {
+    // King Kong Gun shatters his glasses in chapter 790; the Marines hand
+    // him a new pair in his cell in chapter 801.
+    expect(
+      walkStages('donquixote-doflamingo', [
+        [733, 790],
+        [746, 801],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('trades Koby’s mop for his bandanna, and chains him on Hachinosu', () => {
@@ -1536,21 +1543,15 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(3)
   })
 
-  it('sets Sengoku’s cap down only from episode 511', () => {
-    const sengoku = filed('sengoku')
-    const cap = DRAWINGS.sengoku
-    const retired = REDRAWINGS['sengoku']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(sengoku, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(retired?.episode).toBe(511)
-
-    expect(drawnAt(ep(510))).toBe(cap)
-    expect(drawnAt(ep(511))).toBe(retired?.value)
-    expect(drawnAt(null)).toBe(cap)
-    // The manga has him resign before Kong in chapter 594, no earlier.
-    expect(drawnAt({ mode: 'chapter', chapter: 593 })).toBe(cap)
-    expect(drawnAt({ mode: 'chapter', chapter: 594 })).toBe(retired?.value)
+  it('raises the Buddha’s palm over Sengoku’s cap at 480, and sets the cap down at 511', () => {
+    // He turns giant when Luffy reaches the scaffold in chapter 571, and
+    // resigns before Kong in chapter 594.
+    expect(
+      walkStages('sengoku', [
+        [480, 571],
+        [511, 594],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('sets the CP0 mask beside Lucci’s hat only from episode 746', () => {
@@ -1859,21 +1860,15 @@ describe('a record drawn again later in the story', () => {
     ).toHaveLength(3)
   })
 
-  it('presses Kuma’s paw into a steel plate only from episode 469', () => {
-    const kuma = filed('bartholomew-kuma')
-    const book = DRAWINGS['bartholomew-kuma']
-    const plate = REDRAWINGS['bartholomew-kuma']?.[0]
-    const drawnAt = (bookmark: Bookmark | null): Stroke[] =>
-      characterOf(kuma, readerFor(bookmark, 'en')).visual.strokes
-
-    expect(plate?.episode).toBe(469)
-
-    expect(drawnAt(ep(468))).toBe(book)
-    expect(drawnAt(ep(469))).toBe(plate?.value)
-    expect(drawnAt(null)).toBe(book)
-    // The manga has Doflamingo tell Ivankov what he has become in chapter 560.
-    expect(drawnAt({ mode: 'chapter', chapter: 559 })).toBe(book)
-    expect(drawnAt({ mode: 'chapter', chapter: 560 })).toBe(plate?.value)
+  it('presses Kuma’s paw into a steel plate at 469, and takes his Bible at 888', () => {
+    // Doflamingo tells Ivankov what he has become in chapter 560; he is led
+    // through Mary Geoise as a slave, with no Bible, in chapter 908.
+    expect(
+      walkStages('bartholomew-kuma', [
+        [469, 560],
+        [888, 908],
+      ]),
+    ).toHaveLength(2)
   })
 
   it('sets Kid’s metal arm beside the magnet only from episode 603', () => {
