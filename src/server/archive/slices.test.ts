@@ -1123,6 +1123,10 @@ describe('a record drawn again later in the story', () => {
     expect(walkStages('loki', [[1171, 1141]])).toHaveLength(1)
   })
 
+  it('leaves Gaban for dead from episode 1179', () => {
+    expect(walkStages('scopper-gaban', [[1179, 1149]])).toHaveLength(1)
+  })
+
   it('sinks Jack’s Mammoth only from episode 774', () => {
     expect(walkStages('jack', [[774, 821]])).toHaveLength(1)
   })
