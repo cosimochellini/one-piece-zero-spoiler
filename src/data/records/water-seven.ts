@@ -1639,14 +1639,21 @@ export const waterSeven: Saga = {
         it: 'A Water Seven riconoscono la sua nave e il suo nome: è il leggendario marine che mise più volte alle strette Gold Roger. Viene a cercare i Cappello di Paglia, lascia due dei suoi uomini fuori ed entra sfondando il muro. Il suo pugno dell’amore, come lo chiama lui, fa male anche a un corpo di gomma, e Rufy, svegliato così, lo chiama nonno.',
         en: 'Water Seven knows his ship and his name: he is the legendary Marine who cornered Gold Roger time and again. He comes looking for the Straw Hats, leaves two of his men outside and comes in through the wall. His fist of love, as he calls it, hurts even a rubber body, and Luffy, woken by it, calls him Grandpa.',
       },
-      status: [{ episode: 313, value: 'alive' }],
+      status: [
+        { episode: 313, value: 'alive' },
+        // The Hachinosu rescue ends with his disappearance, not a confirmed death.
+        { episode: 1122, chapter: 1088, value: 'unknown' },
+        // Kuzan confirms he survived; he is shown held by the Blackbeard Pirates.
+        { episode: 1156, chapter: 1126, value: 'captured' },
+      ],
       affiliation: [
         {
           episode: 313,
           value: { it: 'Marina, viceammiraglio', en: 'Marines, vice admiral' },
         },
         {
-          episode: 1122,
+          episode: 1156,
+          chapter: 1126,
           value: {
             it: 'Marina, viceammiraglio, catturato dai Pirati di Barbanera',
             en: 'Marines, vice admiral, captured by the Blackbeard Pirates',

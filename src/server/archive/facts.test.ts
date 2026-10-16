@@ -229,6 +229,37 @@ describe('the facts a bookmark reaches', () => {
     },
   )
 
+  it.each(['en', 'it'] as const)(
+    'waits for Garp’s confirmed capture in both units (%s)',
+    (locale) => {
+      const garp = onFile('monkey-d-garp')
+      const marks = [
+        { bookmark: { mode: 'episode', episode: 1121 }, status: 'alive' },
+        { bookmark: { mode: 'episode', episode: 1122 }, status: 'unknown' },
+        { bookmark: { mode: 'episode', episode: 1155 }, status: 'unknown' },
+        { bookmark: { mode: 'episode', episode: 1156 }, status: 'captured' },
+        { bookmark: { mode: 'chapter', chapter: 1087 }, status: 'alive' },
+        { bookmark: { mode: 'chapter', chapter: 1088 }, status: 'unknown' },
+        { bookmark: { mode: 'chapter', chapter: 1125 }, status: 'unknown' },
+        { bookmark: { mode: 'chapter', chapter: 1126 }, status: 'captured' },
+      ] as const
+
+      for (const { bookmark, status } of marks) {
+        const affiliation =
+          locale === 'en' ? 'Marines, vice admiral' : 'Marina, viceammiraglio'
+        const captor =
+          locale === 'en' ?
+            ', captured by the Blackbeard Pirates'
+          : ', catturato dai Pirati di Barbanera'
+
+        expect(factsOf(garp, readerFor(bookmark, locale))).toMatchObject({
+          status,
+          affiliation: affiliation + (status === 'captured' ? captor : ''),
+        })
+      }
+    },
+  )
+
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({
       epithet: 'Cappello di Paglia',
