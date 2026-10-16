@@ -182,6 +182,53 @@ describe('the facts a bookmark reaches', () => {
     },
   )
 
+  it.each([
+    {
+      id: 'sabo',
+      episodes: [
+        [1088, 'alive'],
+        [1089, 'unknown'],
+        [1115, 'unknown'],
+        [1116, 'alive'],
+      ],
+      chapters: [
+        [1059, 'alive'],
+        [1060, 'unknown'],
+        [1081, 'unknown'],
+        [1082, 'alive'],
+      ],
+    },
+    {
+      id: 'jean-bart',
+      episodes: [
+        [1114, 'alive'],
+        [1115, 'unknown'],
+      ],
+      chapters: [
+        [1080, 'alive'],
+        [1081, 'unknown'],
+      ],
+    },
+  ] as const)(
+    'follows $id’s uncertain fate in both units and locales',
+    ({ id, episodes, chapters }) => {
+      const character = onFile(id)
+
+      for (const locale of ['en', 'it'] as const) {
+        for (const [episode, status] of episodes) {
+          expect(factsOf(character, ep(episode, locale))).toMatchObject({
+            status,
+          })
+        }
+        for (const [chapter, status] of chapters) {
+          expect(
+            factsOf(character, readerFor({ mode: 'chapter', chapter }, locale)),
+          ).toMatchObject({ status })
+        }
+      }
+    },
+  )
+
   it('answers in the reader’s locale', () => {
     expect(factsOf(LUFFY, ep(45, 'it'))).toMatchObject({
       epithet: 'Cappello di Paglia',
