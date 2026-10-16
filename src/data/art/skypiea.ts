@@ -71,8 +71,9 @@ const DOFLAMINGO_BAR: Stroke[] = [
 /**
  * Doflamingo's sunglasses from the front: thin white rims round lenses that
  * sweep out and up into points at the temples, the bridge, the temples
- * folded back behind them, the red lenses hatched. Drawn upright here, they
- * appear only from 733, tipped onto the ground by `fallenOff()` and cracked.
+ * folded back behind them, the red lenses hatched. They appear only from
+ * 733, tipped onto the ground by `fallenOff()` and cracked, and stand upright
+ * and whole from 746.
  */
 const DOFLAMINGO_GLASSES: Stroke[] = [
   {
