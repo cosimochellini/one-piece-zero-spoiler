@@ -732,8 +732,8 @@ export const elbafRedrawn: Redrawings = {
   ],
   // He drops his axes to yield, one already on the branch, the other still
   // tumbling from his hand, and Gunko's arrows send him over its edge: the
-  // dashed line is his fall into the Underworld, with Chopper diving after
-  // him. The page leaves his fate open, from 1179 (ch. 1149).
+  // dashed line is his fall into the Underworld. The page leaves his fate
+  // open, from 1179 (ch. 1149).
   'scopper-gaban': [
     {
       episode: 1179,

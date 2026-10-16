@@ -565,9 +565,9 @@ export const elbaf: Saga = {
         it: 'Su Elbaf viveva da anni come Mr. Ya, un vecchio umano con due asce, ex pirata, che i giganti chiamavano con rispetto Ya-san. Poi si rivela Scopper Gabin, il Mangiamontagne, la Mano Sinistra del Re dei Pirati, che navigò con Roger fino alla fine. È il marito di Ripley e il padre di Collon.',
         en: 'For years he lived on Elbaph as Mr. Ya, an old human with two axes, a former pirate the giants respectfully called Ya-san. Then he is revealed as Scopper Gaban, the Mountain-Eater, the Left Hand of the Pirate King, who sailed with Roger to the end. He is Ripley’s husband and Colon’s father.',
       },
-      // Gunko's arrows send him off the branch into the Underworld in ch. 1149,
-      // which 1179 tells, and 1180 leaves him there. Chopper catches him in
-      // ch. 1151, past the episodes aired.
+      // Gunko's arrows send him off the branch into the Underworld in chapter
+      // 1149, which episode 1179 adapts, and episode 1180 leaves him there.
+      // Chopper catches him in chapter 1151, which no episode adapts yet.
       status: [
         { episode: 1169, value: 'alive' },
         { episode: 1179, chapter: 1149, value: 'presumed-dead' },
