@@ -1035,10 +1035,10 @@ export const eggheadRedrawn: Redrawings = {
     },
   ],
   // His plug knocked over onto its side, the prongs pointing off, the
-  // cord gone slack along the ground. He was last seen flying into the
-  // Frontier Dome at 1148, and when York asks Punk Records how many
-  // Vegapunks are still alive the answer is two, Lilith and Atlas (ch. 1118
-  // p. 5, ep. 1151). Then the plug upright again on the collar of a new
+  // cord gone slack along the ground. He is last heard at 1149, badly hurt
+  // after flying through the Frontier Dome, and when York asks Punk Records
+  // how many Vegapunks are still alive the answer is two, Lilith and Atlas
+  // (ch. 1118 p. 5, ep. 1151). Then the plug upright again on the collar of a new
   // body, its shoulders falling away on either side: "It's Edison!! He was
   // supposed to be dead" (ch. 1125 p. 7), and it is his head on the body he
   // builds from spare parts (p. 15).

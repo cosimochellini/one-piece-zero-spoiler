@@ -705,9 +705,10 @@ export const egghead: Saga = {
         it: 'La terza delle sei parti di Vegapunk è quella incaricata di avere le idee. È un piccolo robot, non più alto di un bambino, e le idee gli vengono così spesso che dice di non riuscire a fermarle. Guida i nuovi arrivati nel laboratorio dagli altoparlanti, poi abbandona il test che dovrebbe seguire per andare a disegnare progetti, e fa mangiare York al posto suo per non doversi fermare.',
         en: 'The third of Vegapunk’s six parts is the one whose job is having ideas. He is a small robot, no taller than a child, and ideas come to him so often that he says he cannot stop them. He guides newcomers through the laboratory over the speakers, then walks out of the test he is meant to be watching to draw blueprints, and has York eat for him so he does not have to stop.',
       },
-      // He is last seen flying into the Frontier Dome at 1148 (ch. 1114).
-      // The anime adds the crew grieving for him at 1153; the manga leaves
-      // him for dead earlier, through York's count.
+      // He flies through the Frontier Dome badly hurt at 1148 (ch. 1114) and
+      // is last heard at 1149 (ch. 1115), telling Stussy to run. The anime
+      // adds the crew grieving for him at 1153; the manga leaves him for dead
+      // earlier, through York's count.
       status: [
         { episode: 1095, value: 'alive' },
         // Episode 1151 adapts chapter 1118, where York asks Punk Records how
