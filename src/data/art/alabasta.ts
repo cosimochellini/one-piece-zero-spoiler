@@ -131,8 +131,11 @@ const DORRY_HILT: Stroke[] = [
   { d: circle(24, 177, 5), role: 'accent' },
 ]
 
-/** A bat's wing, root at 0 0, spread up and to the left: the giants turned demon (1180). */
-const BAT_WING: Stroke[] = [
+/**
+ * A bat's wing, root at 0 0, spread up and to the left: the giants turned
+ * demon (1180), and Gunko while Imu possesses her (`elbafRedrawn`).
+ */
+export const BAT_WING: Stroke[] = [
   {
     d: 'M0 0 Q-10 -30 -26 -66 l2 -8 M-26 -66 L-62 -60 Q-46 -46 -74 -30 Q-50 -18 -66 0 Q-40 -6 -40 14 Q-14 -2 0 0',
   },
