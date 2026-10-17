@@ -22,9 +22,10 @@ import type { Entity, LocalizedText, Story } from './types'
  * The one scan for a name said too early, over every text the archive
  * prints: the summaries, roles, logs, landmarks and builders frozen at a
  * record's threshold, and the affiliations with their faction labels,
- * origins, epithets, chronicles and ship fates dated after it. A text at episode 1 that wrote "Kaido" or
- * "Marineford" in passing would be a leak the walker in `slices.test.ts`
- * cannot see, because it only reads ids and names.
+ * origins, epithets, chronicles and ship fates dated after it. A text at
+ * episode 1 that wrote "Kaido" or "Marineford" in passing would be a leak
+ * the walker in `slices.test.ts` cannot see, because it only reads ids and
+ * names.
  *
  * What a text may say is decided by the records themselves: `nameSaidAt`
  * opens a name before its record, `commonWord` takes a name out of the scan
