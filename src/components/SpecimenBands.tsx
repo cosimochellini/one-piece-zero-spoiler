@@ -6,14 +6,20 @@ import {
   type AlbumControlsProps,
 } from '~/components/AlbumControls'
 import { FogBand, type FogTitles } from '~/components/FogBand'
-import { FruitTile } from '~/components/FruitTile'
-import { eaterMatch, matchesIn } from '~/components/recordMatches'
+import { FruitTile, OpenTiles } from '~/components/FruitTile'
+import { matchesIn } from '~/components/recordMatches'
+import { SagaGroups } from '~/components/SagaGroups'
 import { styles } from '~/components/SpecimenBands.styles'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate, TranslationKey } from '~/i18n/types'
 import { foldName } from '~/lib/search/fold'
 import type { FruitParams } from '~/lib/search/fruitParams'
-import type { FruitBandView, FruitForm, FruitView } from '~/lib/view/records'
+import type {
+  FruitBandView,
+  FruitForm,
+  FruitSagaView,
+  FruitView,
+} from '~/lib/view/records'
 import { stickyStyles } from '~/styles/sticky'
 
 /** How wide a plate number is printed. `01`, never `1`. */
@@ -46,17 +52,24 @@ const LEDE_KEY: Record<FruitForm, TranslationKey> = {
   zoan: 'fruits.lede.zoan',
 }
 
-/** What the sheet is built from: the plates, the picks, and the peek. */
+/** What the sheet is built from: the plates, the sagas, the picks, the peek. */
 export interface SpecimenBandsProps {
   bands: FruitBandView[]
+  /** The covered fruits of the sagas past the bookmark, by handle. */
+  later: string[]
   onParams: AlbumControlsProps['onParams']
   params: FruitParams
   peek: (handle: string) => Promise<FruitView>
+  /** The sagas the bookmark has reached, for the saga view. */
+  sagas: FruitSagaView[]
 }
 
 /**
  * The album: the control bar, then the plates down the page, each a numbered
- * label, a heading, and the fruits of that kind as a grid of tiles.
+ * label, a heading, and the fruits of that kind as a grid of tiles. In the
+ * saga view the sagas take the plates' place (`SagaGroups`), under the same
+ * bar, which stays its container's first child so a pick of either view
+ * scrolls back to where it pins.
  *
  * The search rule is the signal book's, applied to a different list: a
  * covered fruit is not on the page to be searched, so typing filters the open
@@ -66,9 +79,11 @@ export interface SpecimenBandsProps {
  */
 export function SpecimenBands({
   bands,
+  later,
   onParams,
   params,
   peek,
+  sagas,
 }: SpecimenBandsProps): ReactElement {
   const fieldId = useId()
   // The field is never deferred; the plates behind it are.
@@ -93,18 +108,29 @@ export function SpecimenBands({
         params={params}
       />
 
-      {shown.map((band) => {
-        return (
-          <Plate
-            key={band.form}
-            band={band}
-            fieldId={fieldId}
-            index={bands.indexOf(band)}
-            needle={needle}
-            peek={peek}
-          />
-        )
-      })}
+      {params.view === 'saga' ?
+        <SagaGroups
+          bands={bands}
+          fieldId={fieldId}
+          form={params.form}
+          later={later}
+          needle={needle}
+          peek={peek}
+          sagas={sagas}
+        />
+      : shown.map((band) => {
+          return (
+            <Plate
+              key={band.form}
+              band={band}
+              fieldId={fieldId}
+              index={bands.indexOf(band)}
+              needle={needle}
+              peek={peek}
+            />
+          )
+        })
+      }
     </div>
   )
 }
@@ -125,11 +151,6 @@ export function Plate({
 }): ReactElement {
   const headingId = `${fieldId}-${band.form}`
   const matches = matchesIn(band.open, needle)
-  // Where each open fruit sits on its plate, which is not where it sits in
-  // the search results: a fruit keeps its place while the reader types, and
-  // the covered tiles carry on from the last open one rather than starting
-  // again, so no two tiles on a plate are fruit 01.
-  const numbered = new Map(band.open.map((entry, at) => [entry.id, at]))
 
   return (
     <section
@@ -144,20 +165,11 @@ export function Plate({
 
       {matches.length === 0 ? null : (
         <ul {...stylex.props(styles.grid)}>
-          {matches.map(({ entry, match }) => {
-            return (
-              <FruitTile
-                key={`open-${entry.id}`}
-                eater={eaterMatch(entry, needle)}
-                eaters={entry.eaters}
-                form={band.form}
-                highlight={match.highlight}
-                index={numbered.get(entry.id) ?? 0}
-                peek={peek}
-                slot={{ open: true, record: entry }}
-              />
-            )
-          })}
+          <OpenTiles
+            matches={matches}
+            needle={needle}
+            peek={peek}
+          />
         </ul>
       )}
 

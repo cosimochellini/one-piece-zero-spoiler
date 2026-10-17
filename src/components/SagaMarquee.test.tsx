@@ -23,6 +23,8 @@ const BUBBLE = specimen({
   ...at(293),
 })
 
+const LINK = { hash: 'saga-4', search: { view: 'saga' as const } }
+
 const BANDS = [
   fruitBand({ form: 'paramecia', open: [DOOR, BUBBLE], total: 2 }),
   fruitBand({ form: 'zoan', open: [LEOPARD], total: 1 }),
@@ -33,6 +35,7 @@ describe('SagaMarquee', () => {
     renderWithProviders(
       <SagaMarquee
         bands={BANDS}
+        link={LINK}
         marquee={{
           saga: 'Water Seven Saga',
           fruits: [{ id: DOOR.id }, { id: LEOPARD.id }, { id: BUBBLE.id }],
@@ -51,14 +54,32 @@ describe('SagaMarquee', () => {
       'Bubble-Bubble FruitEpisode 293',
       'Door-Door FruitEpisode 243',
       'Cat-Cat Fruit, Model: LeopardEpisode 246',
+      'See the whole saga→',
     ])
     expect(links[0]).toHaveAttribute('href', '/en/fruits/bubble-bubble-fruit')
+  })
+
+  it('goes on to its group in the saga view, the picks kept, in both states', () => {
+    const search = { view: 'saga' as const, form: 'zoan' as const, q: 'cat' }
+    renderWithProviders(
+      <SagaMarquee
+        bands={BANDS}
+        link={{ hash: 'saga-4', search }}
+        marquee={{ saga: 'Water Seven Saga', fruits: [], last: null }}
+      />,
+      { bookmark: ep(210) },
+    )
+
+    expect(
+      screen.getByRole('link', { name: 'See the whole saga' }),
+    ).toHaveAttribute('href', '/en/fruits?view=saga&form=zoan&q=cat#saga-4')
   })
 
   it('says one fruit in the singular', () => {
     renderWithProviders(
       <SagaMarquee
         bands={BANDS}
+        link={LINK}
         marquee={{
           saga: 'Water Seven Saga',
           fruits: [{ id: DOOR.id }],
@@ -77,6 +98,7 @@ describe('SagaMarquee', () => {
     renderWithProviders(
       <SagaMarquee
         bands={BANDS}
+        link={LINK}
         marquee={{
           saga: 'Thriller Bark Saga',
           fruits: [],
@@ -105,6 +127,7 @@ describe('SagaMarquee', () => {
     const view = renderWithProviders(
       <SagaMarquee
         bands={BANDS}
+        link={LINK}
         marquee={null}
       />,
       { bookmark: ep(1) },

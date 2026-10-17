@@ -9,13 +9,21 @@ describe('parseFruitParams', () => {
     ).toStrictEqual({ form: 'zoan', q: 'gum' })
   })
 
+  it('keeps the saga view, and drops the type view as the default', () => {
+    expect(parseFruitParams({ view: 'saga', form: 'logia' })).toStrictEqual({
+      view: 'saga',
+      form: 'logia',
+    })
+    expect(parseFruitParams({ view: 'type' })).toStrictEqual({})
+  })
+
   it('leaves out the defaults and anything it does not know', () => {
     expect(parseFruitParams({})).toStrictEqual({})
     expect(
       parseFruitParams({ view: 'type', form: 'all', q: '  ' }),
     ).toStrictEqual({})
     expect(
-      parseFruitParams({ view: 'saga', form: 'fish', q: ['a', 'b'] }),
+      parseFruitParams({ view: 'faction', form: 'fish', q: ['a', 'b'] }),
     ).toStrictEqual({})
   })
 

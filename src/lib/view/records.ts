@@ -359,12 +359,30 @@ export interface FruitMarqueeView {
   saga: string
 }
 
+/**
+ * One saga the bookmark has reached, as the saga view groups it: its name,
+ * its open fruits by id and its covered ones by handle, each in the reader's
+ * order. The records themselves are the plates'.
+ */
+export interface FruitSagaView {
+  covered: string[]
+  open: FruitRef[]
+  saga: string
+}
+
 /** The specimen sheet: the three plates, and how many fruits are filed. */
 export interface FruitSheetView {
   bands: FruitBandView[]
   filed: number
+  /**
+   * The handles of the covered fruits in sagas past the bookmark, in the
+   * reader's order: one band in the saga view, never split by saga.
+   */
+  later: string[]
   /** `null` with no bookmark, and with no fruit open at all. */
   marquee: FruitMarqueeView | null
+  /** The sagas the bookmark has reached, in route order. Empty with none. */
+  sagas: FruitSagaView[]
 }
 
 /** A devil fruit's own page. */

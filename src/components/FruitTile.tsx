@@ -6,11 +6,21 @@ import { Marked } from '~/components/CharacterCard'
 import { FogTile } from '~/components/FogTile'
 import { OpenArt } from '~/components/FruitArt'
 import { FruitEater } from '~/components/FruitEater'
-import type { EaterMatch } from '~/components/recordMatches'
+import {
+  type EaterMatch,
+  eaterMatch,
+  type Match,
+} from '~/components/recordMatches'
 import { useLocale } from '~/i18n/LocaleContext'
 import type { TranslationKey } from '~/i18n/types'
 import { useThreshold } from '~/lib/progress/BookmarkContext'
-import type { EaterView, FruitForm, FruitView, Slot } from '~/lib/view/records'
+import type {
+  EaterView,
+  FruitForm,
+  FruitView,
+  Slot,
+  SpecimenView,
+} from '~/lib/view/records'
 import { morphPart, travelWith, useTravels } from '~/styles/morph'
 import {
   color,
@@ -113,6 +123,39 @@ export function FruitTile({
         }}
       </FogTile>
     </li>
+  )
+}
+
+/**
+ * The open tiles a search found, in order, each showing the eater the search
+ * matched. An open tile prints no number, so none is passed.
+ */
+export function OpenTiles({
+  matches,
+  needle,
+  peek,
+}: {
+  matches: Match<SpecimenView>[]
+  needle: string
+  peek: (handle: string) => Promise<FruitView>
+}): ReactElement {
+  return (
+    <>
+      {matches.map(({ entry, match }) => {
+        return (
+          <FruitTile
+            key={`open-${entry.id}`}
+            eater={eaterMatch(entry, needle)}
+            eaters={entry.eaters}
+            form={entry.form}
+            highlight={match.highlight}
+            index={0}
+            peek={peek}
+            slot={{ open: true, record: entry }}
+          />
+        )
+      })}
+    </>
   )
 }
 

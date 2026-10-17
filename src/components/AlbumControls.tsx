@@ -9,7 +9,11 @@ import { styles } from '~/components/SpecimenBands.styles'
 import { useSettled } from '~/components/useSettled'
 import { useT } from '~/i18n/LocaleContext'
 import type { Translate } from '~/i18n/types'
-import { type FruitParams, fruitParams } from '~/lib/search/fruitParams'
+import {
+  type AlbumView,
+  type FruitParams,
+  fruitParams,
+} from '~/lib/search/fruitParams'
 import type { FruitBandView, FruitForm } from '~/lib/view/records'
 
 // The same delay the signal book announces its own count with.
@@ -49,6 +53,7 @@ export function AlbumControls({
   const query = params.q ?? ''
   const trimmed = query.trim()
   const pick: FormPick = params.form ?? 'all'
+  const view: AlbumView = params.view ?? 'type'
   const choices = formChoices(t, bands)
   const empty = trimmed !== '' && count === 0
   const status = useSettled(
@@ -59,7 +64,7 @@ export function AlbumControls({
   return (
     <ControlBar
       searchLabel={t('fruits.searchOpen')}
-      summary={summaryOf(t, pick, trimmed)}
+      summary={summaryOf(t, { pick, query: trimmed, view })}
       toggleLabel={t('fruits.controls')}
     >
       <SearchField
@@ -67,7 +72,7 @@ export function AlbumControls({
         fieldId={fieldId}
         label={t('fruits.searchLabel')}
         onQuery={(next) => {
-          onParams(fruitParams(pick, next), true)
+          onParams(fruitParams({ view, form: pick, query: next }), true)
         }}
         placeholder={t('fruits.searchPlaceholder')}
         query={query}
@@ -87,9 +92,13 @@ export function AlbumControls({
         choices={choices}
         fieldId={fieldId}
         onPick={(next) => {
-          onParams(fruitParams(next, query), false)
+          onParams(fruitParams({ view, form: next, query }), false)
+        }}
+        onView={(next) => {
+          onParams(fruitParams({ view: next, form: pick, query }), false)
         }}
         pick={pick}
+        view={view}
       />
     </ControlBar>
   )
@@ -122,43 +131,51 @@ function statusOf(
 }
 
 /** The folded bar's words: "Type · Zoan · “gum”". */
-function summaryOf(t: Translate, pick: FormPick, query: string): string {
+function summaryOf(
+  t: Translate,
+  { pick, query, view }: { pick: FormPick; query: string; view: AlbumView },
+): string {
   return [
-    t('fruits.view.type'),
+    t(`fruits.view.${view}`),
     t(pick === 'all' ? 'fruits.form.all' : `fruitForm.${pick}`),
     ...(query === '' ? [] : [`“${query}”`]),
   ].join(' · ')
 }
 
-/** The one view's radio is always picked, so it never changes anything. */
-function keepView(): void {
-  // #665 replaces this with the switch to the saga view.
-}
-
-/** The view switch and the kind chips, side by side while they fit. */
+/**
+ * The view switch and the kind chips, side by side while they fit. A pick in
+ * either is a radio change in the bar, so it scrolls back to where the bar
+ * pins as a chip does (`controlBarFold`).
+ */
 function AlbumChoices({
   choices,
   fieldId,
   onPick,
+  onView,
   pick,
+  view,
 }: {
   choices: Choice<FormPick>[]
   fieldId: string
   onPick: (next: FormPick) => void
+  onView: (next: AlbumView) => void
   pick: FormPick
+  view: AlbumView
 }): ReactElement {
   const t = useT()
 
   return (
     <div {...stylex.props(styles.choices)}>
-      {/* One view until the saga (#665) and faction (#667) views join. */}
       <ChoiceGroup
-        choices={[{ label: t('fruits.view.type'), value: 'type' }]}
+        choices={[
+          { label: t('fruits.view.type'), value: 'type' },
+          { label: t('fruits.view.saga'), value: 'saga' },
+        ]}
         legend={t('fruits.view.legend')}
         look="segments"
         name={`${fieldId}-view`}
-        onChoose={keepView}
-        value="type"
+        onChoose={onView}
+        value={view}
       />
       <ChoiceGroup
         choices={choices}
