@@ -1,1687 +1,1427 @@
-import type { Saga } from './saga'
+import type { FruitRecord } from '~/data/types'
 
 /**
  * The devil fruits.
  *
- * A thirteenth module beside the twelve sagas, because a fruit belongs to no one
- * stretch of the route: it is filed at the episode a dossier first names it
- * in, whoever names it and wherever they are standing. It carries no
+ * A module of their own beside the twelve sagas, because a fruit belongs to
+ * no one stretch of the route: it opens at the episode a dossier first names
+ * it in, whoever names it and wherever they are standing. It carries no
  * dossiers of its own — who ate a fruit is written on the character, once,
- * and `~/data/dated` reads it back — so the map below is empty and stays
- * empty.
+ * and `~/data/dated` reads it back.
  *
- * `revealedAtEpisode` is the earliest episode any dossier names the fruit in,
- * which is the episode a viewer learns it exists.
- *
- * `revealedAtChapter` is the earliest chapter at which any of those entries
- * opens (`~/data/dated`): the chapter the entry declares, or
- * else the first chapter that reaches its episode, and never before the
- * eater's own. So a fruit named long after its eater's debut waits for the
- * chapter that names it rather than the one that met the eater, and the
- * fruit page opens to a manga reader together with the dossier entry.
- * `fruits.test.ts` holds the rule; the fruits are left out of the chapter
- * table (`~/data/chapters`) because their chapters are read off it.
+ * Nor does it carry its thresholds: `~/data/entities` reads them off the
+ * eaters when it adds the fruits to the archive. `revealedAtEpisode` is the
+ * earliest episode any dossier names the fruit in, which is the episode a
+ * viewer learns it exists. `revealedAtChapter` is the earliest chapter at
+ * which any of those entries opens (`gateOf` in `~/data/chapter-table`): the
+ * chapter the entry declares, or else the first chapter that reaches its
+ * episode, and never before the eater's own. So a fruit named long after its
+ * eater's debut waits for the chapter that names it rather than the one that
+ * met the eater, and the fruit page opens to a manga reader together with
+ * the dossier entry. To move a fruit, move or pin the `devilFruit` entry
+ * that names it.
  *
  * Names are the Italian dub’s in `it` and the English edition’s in `en`, moved
  * here from the dossiers that used to carry them as free text. Each sentence
  * says what the power does as a viewer at the threshold episode has already
  * seen it do, and nothing later.
  */
-export const devilFruits: Saga = {
-  entries: [
-    {
-      id: 'gum-gum-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1,
-      revealedAtChapter: 1,
-      name: { it: 'Frutto Gom Gom', en: 'Gum-Gum Fruit' },
-      summary: {
-        it: 'Rende di gomma il corpo di chi l’ha mangiato: si allunga, torna indietro di scatto, e un pugno tirato da abbastanza lontano arriva con tutta la lunghezza del braccio dietro.',
-        en: 'Turns the body of whoever ate it to rubber: it stretches, it bounces back, and a fist thrown from far enough away arrives with the whole length of the arm behind it.',
-      },
-      visual: { art: 'gum-gum-fruit', tint: 'red' },
-    },
-    {
-      id: 'chop-chop-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 5,
-      revealedAtChapter: 11,
-      name: { it: 'Frutto Puzzle Puzzle', en: 'Chop-Chop Fruit' },
-      summary: {
-        it: 'Divide il corpo in pezzi lungo qualsiasi taglio: una lama lo separa senza ferirlo e i pezzi continuano a muoversi, sospesi a mezz’aria.',
-        en: 'Splits the body into pieces along any cut, so a blade divides it without wounding it and the parts go on moving, hanging in the air.',
-      },
-      visual: { art: 'chop-chop-fruit', tint: 'orange' },
-    },
-    {
-      id: 'slip-slip-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 52,
-      revealedAtChapter: 98,
-      name: { it: 'Frutto Slip Slip', en: 'Slip-Slip Fruit' },
-      summary: {
-        it: 'Rende la pelle così liscia che niente fa presa: i pugni scivolano via, le corde non stringono, e un braccio afferrato sguscia fuori da solo.',
-        en: 'Makes the skin so smooth that nothing holds on it: fists slide off, ropes will not tighten, and an arm someone has grabbed squirts free on its own.',
-      },
-      visual: { art: 'slip-slip-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'smoke-smoke-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 53,
-      revealedAtChapter: 100,
-      name: { it: 'Frutto Fumo Fumo', en: 'Smoke-Smoke Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in fumo, così una lama lo attraversa e una presa si chiude sul nulla; il fumo stesso si versa su una strada e si stringe attorno a chi ci sta scappando.',
-        en: 'Turns the body to smoke, so a blade passes through it and a grip closes on nothing; the smoke itself can be poured over a street and pinned around whoever is running down it.',
-      },
-      visual: { art: 'smoke-smoke-fruit', tint: 'lavender' },
-    },
-    {
-      id: 'bomb-bomb-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 66,
-      revealedAtChapter: 114,
-      name: { it: 'Frutto Bomb Bomb', en: 'Bomb-Bomb Fruit' },
-      summary: {
-        it: 'Rende esplosiva ogni parte del corpo: un pezzetto di naso, un respiro, la punta di un dito scoppiano come una granata, e lo scoppio lascia illeso chi l’ha provocato.',
-        en: 'Makes every part of the body explosive: a flicked piece of nose, a breath, a fingertip goes off like a shell, and the blast leaves the one who set it unhurt.',
-      },
-      visual: { art: 'bomb-bomb-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'kilo-kilo-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 66,
-      revealedAtChapter: 114,
-      name: { it: 'Frutto Kilo Kilo', en: 'Kilo-Kilo Fruit' },
-      summary: {
-        it: 'Fissa il peso del corpo fra un chilo e diecimila, così la stessa persona scende in volo appesa a un ombrello e atterra come un’incudine.',
-        en: 'Sets the weight of the body anywhere between one kilo and ten thousand, so the same person drifts down under an umbrella and lands like a dropped anvil.',
-      },
-      visual: { art: 'kilo-kilo-fruit', tint: 'sand' },
-    },
-    {
-      id: 'wax-wax-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 73,
-      revealedAtChapter: 120,
-      name: { it: 'Frutto Wax Wax', en: 'Wax-Wax Fruit' },
-      summary: {
-        it: 'Fa uscire cera dal corpo, e chi l’ha mangiato le dà la forma che vuole.',
-        en: 'Makes wax come out of the body, and the one who ate it shapes the wax at will.',
-      },
-      visual: { art: 'wax-wax-fruit', tint: 'wine' },
-    },
-    {
-      id: 'clone-clone-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 92,
-      revealedAtChapter: 156,
-      name: { it: 'Frutto Clone Clone', en: 'Clone-Clone Fruit' },
-      summary: {
-        it: 'Un volto toccato con la mano destra resta impresso e può essere indossato in seguito, voce compresa, finché la mano sinistra non lo restituisce.',
-        en: 'A face touched with the right hand is kept and can be worn afterwards, voice and all, until the left hand gives it back.',
-      },
-      visual: { art: 'clone-clone-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'munch-munch-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 79,
-      revealedAtChapter: 133,
-      name: { it: 'Frutto Munch Munch', en: 'Munch-Munch Fruit' },
-      summary: {
-        it: 'Dà una bocca che si spalanca abbastanza da mordere il ferro, un cannone o un tetto, e inghiotte tutto quello su cui si chiude.',
-        en: 'Gives a mouth that opens wide enough to bite through iron, a cannon or a roof, and swallows whatever it closes on.',
-      },
-      visual: { art: 'munch-munch-fruit', tint: 'pink' },
-    },
-    {
-      id: 'ox-ox-fruit-model-bison',
-      kind: 'fruit',
-      revealedAtEpisode: 82,
-      revealedAtChapter: 136,
-      name: {
-        it: 'Frutto Ushi Ushi, modello Bisonte',
-        en: 'Ox-Ox Fruit, Model: Bison',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un bisonte, corna in avanti e spalle larghe, e una sua carica passa attraverso un muro di uomini armati.',
-        en: 'Turns the body into a bison, horns forward and shoulders wide, and a charge from it goes straight through a wall of armed men.',
-      },
-      visual: { art: 'ox-ox-fruit-model-bison', tint: 'acid' },
-    },
-    {
-      id: 'human-human-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 84,
-      revealedAtChapter: 140,
-      name: { it: 'Frutto Homo Homo', en: 'Human-Human Fruit' },
-      summary: {
-        it: 'Dà a un animale forma e mente umane: si regge su due zampe, parla, e può fermarsi a metà strada fra le due forme.',
-        en: 'Gives an animal a human shape and a human mind: it stands on two legs, it speaks, and it can stop halfway between the two forms.',
-      },
-      visual: { art: 'human-human-fruit', tint: 'orange' },
-    },
-    {
-      id: 'bird-bird-fruit-model-falcon',
-      kind: 'fruit',
-      revealedAtEpisode: 106,
-      revealedAtChapter: 169,
-      name: {
-        it: 'Frutto Tori Tori, modello Falco',
-        en: 'Bird-Bird Fruit, Model: Falcon',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un falco: il deserto si attraversa dall’alto e una picchiata arriva più veloce di qualsiasi cosa si muova a terra.',
-        en: 'Turns the body into a falcon, so the desert is crossed from above and a dive comes down faster than anything on the ground can move.',
-      },
-      visual: { art: 'bird-bird-fruit-model-falcon', tint: 'teal' },
-    },
-    {
-      id: 'dog-dog-fruit-model-jackal',
-      kind: 'fruit',
-      revealedAtEpisode: 120,
-      revealedAtChapter: 196,
-      name: {
-        it: 'Frutto Inu Inu, modello Sciacallo',
-        en: 'Dog-Dog Fruit, Model: Jackal',
-      },
-      summary: {
-        it: 'Trasforma il corpo in uno sciacallo, conservando la statura di un uomo e aggiungendo le fauci e il fiuto della bestia.',
-        en: 'Turns the body into a jackal, keeping the height and reach of a man and adding the jaws and the nose of the animal.',
-      },
-      visual: { art: 'dog-dog-fruit-model-jackal', tint: 'ocher' },
-    },
-    {
-      id: 'flame-flame-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 95,
-      revealedAtChapter: 161,
-      name: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in fiamma: i colpi lo attraversano senza toccarlo, e il fuoco che lascia dietro di sé si porta via una nave intera.',
-        en: 'Turns the body to flame: blows pass through without touching it, and the fire it leaves behind carries off an entire ship.',
-      },
-      visual: { art: 'flame-flame-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'dice-dice-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 116,
-      revealedAtChapter: 190,
-      name: { it: 'Frutto Dice Dice', en: 'Dice-Dice Fruit' },
-      summary: {
-        it: 'Trasforma qualunque parte del corpo in una lama d’acciaio: un braccio diventa una spada e la pelle stessa smussa la spada che la colpisce.',
-        en: 'Turns any part of the body into a blade of steel: an arm becomes a sword, and the skin itself blunts the sword that strikes it.',
-      },
-      visual: { art: 'dice-dice-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'mole-mole-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 113,
-      revealedAtChapter: 184,
-      name: { it: 'Frutto Mole Mole', en: 'Mole-Mole Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in una talpa con artigli che bucano la roccia, scavando una galleria alla stessa velocità con cui si corre in superficie.',
-        en: 'Turns the body into a mole with claws that go through rock, digging a tunnel as fast as a person can run above it.',
-      },
-      visual: { art: 'mole-mole-fruit', tint: 'red' },
-    },
-    {
-      id: 'spike-spike-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 117,
-      revealedAtChapter: 190,
-      name: { it: 'Frutto Spike Spike', en: 'Spike-Spike Fruit' },
-      summary: {
-        it: 'Fa spuntare spine d’acciaio da qualsiasi punto del corpo, abbastanza lunghe da trapassare un muro e colpire chi ci si nasconde dietro.',
-        en: 'Grows steel spikes from anywhere on the body, long enough to go through a wall and into whoever is hiding behind it.',
-      },
-      visual: { art: 'spike-spike-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'sand-sand-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 112,
-      revealedAtChapter: 184,
-      name: { it: 'Frutto Sand Sand', en: 'Sand-Sand Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in sabbia: un pugno lo attraversa e si chiude sul vuoto, e anche il terreno sotto i piedi diventa sabbia e inghiotte chi ci sta sopra.',
-        en: 'Turns the body to sand, so a fist goes through it and closes on nothing, and the ground underfoot turns to sand as well and swallows whoever stands on it.',
-      },
-      visual: { art: 'sand-sand-fruit', tint: 'sand' },
-    },
-    {
-      id: 'dog-dog-fruit-model-dachshund',
-      kind: 'fruit',
-      revealedAtEpisode: 113,
-      revealedAtChapter: 184,
-      name: {
-        it: 'Frutto Inu Inu, modello Bassotto',
-        en: 'Dog-Dog Fruit, Model: Dachshund',
-      },
-      summary: {
-        it: 'Trasforma in un bassotto chi lo mangia, persino un oggetto: un bazooka che ne ha mangiato uno è diventato un cane vivo che continua a sparare i suoi colpi, uno starnuto alla volta.',
-        en: 'Turns whatever eats it into a dachshund, even an object: a bazooka fed one became a living dog that still fires its shells, one sneeze at a time.',
-      },
-      visual: { art: 'dog-dog-fruit-model-dachshund', tint: 'sand' },
-    },
-    {
-      id: 'cage-cage-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 130,
-      revealedAtChapter: 217,
-      name: { it: 'Frutto Cage Cage', en: 'Cage-Cage Fruit' },
-      summary: {
-        it: 'Lascia passare qualsiasi cosa attraverso il corpo, e ciò che passa esce dall’altra parte chiuso dentro anelli di ferro che non si spezzano.',
-        en: 'Lets anything pass through the body, and whatever passes comes out the other side closed inside iron rings it cannot break.',
-      },
-      visual: { art: 'cage-cage-fruit', tint: 'orange' },
-    },
-    {
-      id: 'flower-flower-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 130,
-      revealedAtChapter: 218,
-      name: { it: 'Frutto Fior Fior', en: 'Flower-Flower Fruit' },
-      summary: {
-        it: 'Fa spuntare braccia e mani sulle superfici e sul corpo di altre persone.',
-        en: 'Makes arms and hands sprout on surfaces and other people’s bodies.',
-      },
-      visual: { art: 'flower-flower-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'spring-spring-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 151,
-      revealedAtChapter: 232,
-      name: { it: 'Frutto Bane Bane', en: 'Spring-Spring Fruit' },
-      summary: {
-        it: 'Trasforma gambe e braccia in molle: si caricano contro un muro e rilanciano in avanti tutto il corpo con la forza che hanno accumulato.',
-        en: 'Turns the legs and arms into springs: they coil against a wall and throw the whole body forward with the force they stored.',
-      },
-      visual: { art: 'spring-spring-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'horse-horse-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 153,
-      revealedAtChapter: 241,
-      name: { it: 'Frutto Ippo Ippo', en: 'Horse-Horse Fruit' },
-      summary: {
-        it: 'Trasforma in un cavallo chi lo mangia: un uccello che ne ha mangiato uno diventa un cavallo con le ali, anche se chi se lo aspettava leggendario resta deluso da quanto sembra normale.',
-        en: 'Turns whatever eats it into a horse: a bird fed one becomes a horse with wings, though anyone expecting a creature of legend is let down by how ordinary it looks.',
-      },
-      visual: { art: 'horse-horse-fruit', tint: 'pink' },
-    },
-    {
-      id: 'rumble-rumble-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 175,
-      revealedAtChapter: 266,
-      name: { it: 'Frutto Goro Goro', en: 'Rumble-Rumble Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in fulmine: i colpi lo attraversano, e la folgore parte in scariche che corrono ovunque ci sia metallo.',
-        en: 'Turns the body to lightning, so blows pass through it, and sends that lightning out in bolts that run wherever metal leads them.',
-      },
-      visual: { art: 'rumble-rumble-fruit', tint: 'acid' },
-    },
-    {
-      id: 'slow-slow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 210,
-      revealedAtChapter: 309,
-      name: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
-      summary: {
-        it: 'Emette un raggio che rallenta per trenta secondi ciò che colpisce, facendo restare indietro una barca durante una gara.',
-        en: 'Emits a beam that slows whatever it hits for thirty seconds, making a boat fall behind during a race.',
-      },
-      visual: { art: 'slow-slow-fruit', tint: 'sand' },
-    },
-    {
-      id: 'ice-ice-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 227,
-      revealedAtChapter: 321,
-      name: { it: 'Frutto Gelo Gelo', en: 'Ice-Ice Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in ghiaccio, i colpi lo attraversano, e congela solido tutto ciò che tocca, acqua di mare compresa.',
-        en: 'Turns the body to ice, so blows pass through it, and freezes solid whatever it touches, sea water included.',
-      },
-      visual: { art: 'ice-ice-fruit', tint: 'ice' },
-    },
-    {
-      id: 'bubble-bubble-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 293,
-      revealedAtChapter: 431,
-      name: { it: 'Frutto Bolla Bolla', en: 'Bubble-Bubble Fruit' },
-      summary: {
-        it: 'Produce sapone dal corpo: una bolla che si posa su qualcuno gli lava via la forza e lo lascia troppo scivoloso per restare in piedi.',
-        en: 'Makes soap from the body: a bubble that settles on someone washes the strength out of them and leaves them too slippery to stay upright.',
-      },
-      visual: { art: 'bubble-bubble-fruit', tint: 'wine' },
-    },
-    {
-      id: 'cat-cat-fruit-model-leopard',
-      kind: 'fruit',
-      revealedAtEpisode: 246,
-      revealedAtChapter: 357,
-      name: {
-        it: 'Frutto Neko Neko, modello Leopardo',
-        en: 'Cat-Cat Fruit, Model: Leopard',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un leopardo che conserva l’altezza di un uomo: la portata di un pugno più gli artigli, e un balzo che attraversa una stanza in una volta sola.',
-        en: 'Turns the body into a leopard that keeps a man’s height: the reach of a fist plus claws, and a spring that crosses a room in one movement.',
-      },
-      visual: { art: 'cat-cat-fruit-model-leopard', tint: 'sand' },
-    },
-    {
-      id: 'dog-dog-fruit-model-wolf',
-      kind: 'fruit',
-      revealedAtEpisode: 286,
-      revealedAtChapter: 431,
-      name: {
-        it: 'Frutto Inu Inu, modello Lupo',
-        en: 'Dog-Dog Fruit, Model: Wolf',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un lupo che sta ritto sulle zampe posteriori, con fauci che si chiudono su un braccio e un olfatto che trova chi si nasconde.',
-        en: 'Turns the body into a wolf standing upright, with jaws that close around an arm and a nose that finds whoever is hiding.',
-      },
-      visual: { art: 'dog-dog-fruit-model-wolf', tint: 'yellow' },
-    },
-    {
-      id: 'door-door-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 243,
-      revealedAtChapter: 357,
-      name: { it: 'Frutto Porta Porta', en: 'Door-Door Fruit' },
-      summary: {
-        it: 'Disegna una porta su qualsiasi superficie, anche un muro pieno, la apre ed esce dall’altra parte.',
-        en: 'Draws a door on any surface, even a solid wall, opens it and steps through to the other side.',
-      },
-      visual: { art: 'door-door-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'ox-ox-fruit-model-giraffe',
-      kind: 'fruit',
-      revealedAtEpisode: 286,
-      revealedAtChapter: 431,
-      name: {
-        it: 'Frutto Ushi Ushi, modello Giraffa',
-        en: 'Ox-Ox Fruit, Model: Giraffe',
-      },
-      summary: {
-        it: 'Trasforma il corpo in una giraffa: collo e gambe si allungano tanto che un calcio arriva da una distanza che nessuno aveva calcolato.',
-        en: 'Turns the body into a giraffe: the neck and legs stretch so far that a kick lands from a distance nobody had measured.',
-      },
-      visual: { art: 'ox-ox-fruit-model-giraffe', tint: 'acid' },
-    },
-    {
-      id: 'elephant-elephant-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 285,
-      revealedAtChapter: 400,
-      name: { it: 'Frutto Zou Zou', en: 'Elephant-Elephant Fruit' },
-      summary: {
-        it: 'Trasforma in un elefante chi lo mangia, anche se non è vivo: una spada che ne ha mangiato uno diventa un elefante che obbedisce al padrone, e torna lama quando serve.',
-        en: 'Turns whatever eats it into an elephant, even a thing that is not alive: a sword fed one becomes an elephant that obeys its owner, and turns back into a blade when needed.',
-      },
-      visual: { art: 'elephant-elephant-fruit', tint: 'ivory' },
-    },
-    {
-      id: 'revive-revive-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 339,
-      revealedAtChapter: 444,
-      name: { it: 'Frutto Yomi Yomi', en: 'Revive-Revive Fruit' },
-      summary: {
-        it: 'Restituisce una vita dopo la morte: l’anima torna nel corpo che aveva lasciato, per quanto tempo quel corpo sia rimasto lì.',
-        en: 'Gives back one life after death: the soul returns to the body it left, however long that body has been lying there.',
-      },
-      visual: { art: 'revive-revive-fruit', tint: 'ivory' },
-    },
-    {
-      id: 'hollow-hollow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 356,
-      revealedAtChapter: 461,
-      name: { it: 'Frutto Horo Horo', en: 'Hollow-Hollow Fruit' },
-      summary: {
-        it: 'Manda in giro fantasmi che attraversano i muri e le persone, e chi ne viene attraversato cade in ginocchio a chiedere scusa di essere nato.',
-        en: 'Sends out ghosts that drift through walls and through people, and whoever one passes through drops to their knees apologising for being born.',
-      },
-      visual: { art: 'hollow-hollow-fruit', tint: 'lavender' },
-    },
-    {
-      id: 'clear-clear-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 359,
-      revealedAtChapter: 464,
-      name: { it: 'Frutto Suke Suke', en: 'Clear-Clear Fruit' },
-      summary: {
-        it: 'Rende invisibile il corpo, vestiti compresi: una stanza si attraversa allo scoperto e solo i passi lo tradiscono.',
-        en: 'Makes the body invisible, clothes and all, so a room is crossed in the open and only the footsteps give it away.',
-      },
-      visual: { art: 'clear-clear-fruit', tint: 'red' },
-    },
-    {
-      id: 'shadow-shadow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 349,
-      revealedAtChapter: 455,
-      name: { it: 'Frutto Kage Kage', en: 'Shadow-Shadow Fruit' },
-      summary: {
-        it: 'Ritaglia l’ombra di chi la proietta e la pianta in un altro corpo, che si alza in piedi e combatte con la forza di chi l’ha persa.',
-        en: 'Cuts a shadow away from the one casting it and plants it in another body, which then stands up and fights with the strength of whoever lost it.',
-      },
-      visual: { art: 'shadow-shadow-fruit', tint: 'violet' },
-    },
-    {
-      id: 'paw-paw-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 376,
-      revealedAtChapter: 484,
-      name: { it: 'Frutto Nikyu Nikyu', en: 'Paw-Paw Fruit' },
-      summary: {
-        it: 'I cuscinetti sulle mani respingono gli attacchi e l’aria, che viene scagliata via ad alta velocità.',
-        en: 'The paw pads on the hands repel attacks and air, sending the air flying at high speed.',
-      },
-      visual: { art: 'paw-paw-fruit', tint: 'orange' },
-    },
-    {
-      id: 'glint-glint-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 404,
-      revealedAtChapter: 511,
-      name: { it: 'Frutto Pika Pika', en: 'Glint-Glint Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in luce: i colpi lo attraversano, e sia gli spostamenti sia i colpi vanno alla velocità a cui viaggia la luce.',
-        en: 'Turns the body to light, so blows pass through it, and lets it move and strike at the speed light travels.',
-      },
-      visual: { art: 'glint-glint-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-allosaurus',
-      kind: 'fruit',
-      revealedAtEpisode: 923,
-      revealedAtChapter: 929,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Allosauro',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Allosaurus',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo prende la forma di un allosauro, una mascella lunga quanto un uomo e un morso che si chiude sull’armatura.',
-        en: 'An Ancient Model: the body takes the shape of an allosaurus, a jaw as long as a man is tall and a bite that closes on armour.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-allosaurus',
-        tint: 'green',
-      },
-    },
-    {
-      id: 'love-love-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 415,
-      revealedAtChapter: 521,
-      name: { it: 'Frutto Mero Mero', en: 'Love-Love Fruit' },
-      summary: {
-        it: 'Trasforma in pietra chiunque guardi con desiderio chi l’ha mangiato, e quella pietra si spezza come qualsiasi altra.',
-        en: 'Turns to stone anyone who looks with desire at whoever ate it, and that stone breaks like any other stone.',
-      },
-      visual: { art: 'love-love-fruit', tint: 'pink' },
-    },
-    {
-      id: 'snake-snake-fruit-model-anaconda',
-      kind: 'fruit',
-      revealedAtEpisode: 413,
-      revealedAtChapter: 521,
-      name: {
-        it: 'Frutto Hebi Hebi, modello Anaconda',
-        en: 'Snake-Snake Fruit, Model: Anaconda',
-      },
-      summary: {
-        it: 'Trasforma chi l’ha mangiato in un mezzo serpente, anaconda dalla vita in giù, che con la coda afferra una persona e la stringe.',
-        en: 'Turns whoever ate it into a half snake, an anaconda from the waist down, whose tail grabs a person and squeezes.',
-      },
-      visual: { art: 'snake-snake-fruit-model-anaconda', tint: 'teal' },
-    },
-    {
-      id: 'snake-snake-fruit-model-king-cobra',
-      kind: 'fruit',
-      revealedAtEpisode: 413,
-      revealedAtChapter: 521,
-      name: {
-        it: 'Frutto Hebi Hebi, modello Cobra Reale',
-        en: 'Snake-Snake Fruit, Model: King Cobra',
-      },
-      summary: {
-        it: 'Trasforma chi l’ha mangiato in un mezzo serpente, cobra reale dalla vita in giù, che sputa veleno e colpisce con la coda.',
-        en: 'Turns whoever ate it into a half snake, a king cobra from the waist down, who spits poison and strikes with the tail.',
-      },
-      visual: { art: 'snake-snake-fruit-model-king-cobra', tint: 'ocher' },
-    },
-    {
-      id: 'venom-venom-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 425,
-      revealedAtChapter: 530,
-      name: { it: 'Frutto Doku Doku', en: 'Venom-Venom Fruit' },
-      summary: {
-        it: 'Produce veleno dal corpo: basta un alito per mettere a terra un uomo, e chi l’ha mangiato si nutre di veleno.',
-        en: 'Makes poison from the body: one breath of it floors a grown man, and the one who ate it eats poison for breakfast.',
-      },
-      visual: { art: 'venom-venom-fruit', tint: 'acid' },
-    },
-    {
-      id: 'horm-horm-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 440,
-      revealedAtChapter: 543,
-      name: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
-      summary: {
-        it: 'Fa spuntare dalle dita aghi che iniettano ormoni, e un’iniezione basta a trasformare un uomo in una donna.',
-        en: 'Grows needles from the fingers that inject hormones, and one injection is enough to turn a man into a woman.',
-      },
-      visual: { art: 'horm-horm-fruit', tint: 'sand' },
-    },
-    {
-      id: 'snip-snip-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 442,
-      revealedAtChapter: 543,
-      name: { it: 'Frutto Choki Choki', en: 'Snip-Snip Fruit' },
-      summary: {
-        it: 'Trasforma le mani in forbici che tagliano pietra e ferro come carta, e ciò che è stato tagliato si può poi piegare e portare via.',
-        en: 'Turns the hands into scissors that cut stone and iron like paper, and what has been cut can then be folded and carried away.',
-      },
-      visual: { art: 'snip-snip-fruit', tint: 'wine' },
-    },
-    {
-      id: 'bird-bird-fruit-model-phoenix',
-      kind: 'fruit',
-      revealedAtEpisode: 463,
-      revealedAtChapter: 554,
-      name: {
-        it: 'Frutto Tori Tori, modello Fenice',
-        en: 'Bird-Bird Fruit, Model: Phoenix',
-      },
-      summary: {
-        it: 'Trasforma il corpo in una fenice avvolta di fiamma azzurra, e quella fiamma richiude le ferite alla stessa velocità con cui vengono aperte.',
-        en: 'Turns the body into a phoenix wrapped in blue flame, and that flame closes wounds as fast as they are opened.',
-      },
-      visual: { art: 'bird-bird-fruit-model-phoenix', tint: 'flamingo' },
-    },
-    {
-      id: 'sparkle-sparkle-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 463,
-      revealedAtChapter: 558,
-      name: { it: 'Frutto Kira Kira', en: 'Sparkle-Sparkle Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in diamante, e una lama ci si ferma sopra.',
-        en: 'Turns the body to diamond, and a blade stops dead on it.',
-      },
-      visual: { art: 'sparkle-sparkle-fruit', tint: 'ivory' },
-    },
-    {
-      id: 'wash-wash-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 465,
-      revealedAtChapter: 556,
-      name: { it: 'Frutto Woshu Woshu', en: 'Wash-Wash Fruit' },
-      summary: {
-        it: 'Lava una persona come un panno: ne esce strizzata e piatta, un lenzuolo da stendere al filo, e tranquilla.',
-        en: 'Washes a person the way laundry is washed: they come out wrung flat, a sheet of cloth to be pegged on a line, and quiet.',
-      },
-      visual: { art: 'wash-wash-fruit', tint: 'pink' },
-    },
-    {
-      id: 'dark-dark-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 462,
-      revealedAtChapter: 558,
-      name: { it: 'Frutto Yami Yami', en: 'Dark-Dark Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in tenebra che risucchia dentro di sé tutto quello che ha intorno, e una mano posata su un altro mangiatore gli toglie il potere finché la presa regge.',
-        en: 'Turns the body to darkness that drags everything near it inside, and a hand laid on another eater takes that eater’s power away for as long as the grip holds.',
-      },
-      visual: { art: 'dark-dark-fruit', tint: 'violet' },
-    },
-    {
-      id: 'magma-magma-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 463,
-      revealedAtChapter: 558,
-      name: { it: 'Frutto Magu Magu', en: 'Magma-Magma Fruit' },
-      summary: {
-        it: 'Trasforma un pugno in magma e lo scaglia in avanti, sciogliendo un enorme blocco di ghiaccio.',
-        en: 'Turns a fist into magma and sends it forward, melting a huge block of ice.',
-      },
-      visual: { art: 'magma-magma-fruit', tint: 'red' },
-    },
-    {
-      id: 'tremor-tremor-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 466,
-      revealedAtChapter: 560,
-      name: { it: 'Frutto Gura Gura', en: 'Tremor-Tremor Fruit' },
-      summary: {
-        it: 'Permette di afferrare l’aria e incrinarla come vetro, e quella crepa prosegue nella terra e nel mare e li scuote entrambi.',
-        en: 'Lets the air itself be gripped and cracked like glass, and the crack runs on into the ground and the sea and shakes both.',
-      },
-      visual: { art: 'tremor-tremor-fruit', tint: 'blue' },
-    },
-    {
-      id: 'human-human-fruit-model-daibutsu',
-      kind: 'fruit',
-      revealedAtEpisode: 480,
-      revealedAtChapter: 571,
-      name: {
-        it: 'Frutto Hito Hito, modello Daibutsu',
-        en: 'Human-Human Fruit, Model: Daibutsu',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un grande buddha d’oro alto molte volte tanto, e un suo colpo spacca un patibolo.',
-        en: 'Turns the body into a golden great buddha many times its own height, and one blow from it smashes a scaffold.',
-      },
-      visual: { art: 'human-human-fruit-model-daibutsu', tint: 'yellow' },
-    },
-    {
-      id: 'swamp-swamp-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 531,
-      revealedAtChapter: 612,
-      name: { it: 'Frutto Numa Numa', en: 'Swamp-Swamp Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in una palude senza fondo: i colpi ci affondano senza arrivare, e quello che viene inghiottito resta dentro finché non viene lasciato uscire.',
-        en: 'Turns the body into a swamp with no bottom: blows sink into it without landing, and whatever is swallowed stays inside until it is let out.',
-      },
-      visual: { art: 'swamp-swamp-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'mark-mark-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 532,
-      revealedAtChapter: 620,
-      name: { it: 'Frutto Mato Mato', en: 'Mark-Mark Fruit' },
-      summary: {
-        it: 'Segna una persona come bersaglio, e ciò che viene lanciato verso di lei la trova anche da lontano.',
-        en: 'Marks a person as a target, and whatever is thrown towards them finds them even from far away.',
-      },
-      visual: { art: 'mark-mark-fruit', tint: 'red' },
-    },
-    {
-      id: 'egg-egg-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 820,
-      revealedAtChapter: 853,
-      name: { it: 'Frutto Tama Tama', en: 'Egg-Egg Fruit' },
-      summary: {
-        it: 'Fa del corpo un uovo: rotto il guscio non è finita, e quello che ne esce si trova a uno stadio diverso della propria crescita.',
-        en: 'Makes an egg of the body: broken open, it does not end there, and what steps out of the shell is at a different stage of its growth.',
-      },
-      visual: { art: 'egg-egg-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'turtle-turtle-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 776,
-      revealedAtChapter: 822,
-      name: { it: 'Frutto Kame Kame', en: 'Turtle-Turtle Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in una tartaruga, con un guscio che lo protegge dai proiettili.',
-        en: 'Turns the body into a turtle, with a shell that protects it from bullets.',
-      },
-      visual: { art: 'turtle-turtle-fruit', tint: 'acid' },
-    },
-    {
-      id: 'gas-gas-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 594,
-      revealedAtChapter: 664,
-      name: { it: 'Frutto Gasu Gasu', en: 'Gas-Gas Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in gas.',
-        en: 'Turns the body into gas.',
-      },
-      visual: { art: 'gas-gas-fruit', tint: 'green' },
-    },
-    {
-      id: 'snow-snow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 611,
-      revealedAtChapter: 685,
-      name: { it: 'Frutto Yuki Yuki', en: 'Snow-Snow Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in neve: una lama lo attraversa e la neve si richiude, e quello che sta intorno viene sepolto da un freddo che blocca i movimenti.',
-        en: 'Turns the body to snow, which closes again behind a blade, and buries what is around it under a cold that stops a body moving.',
-      },
-      visual: { art: 'snow-snow-fruit', tint: 'ivory' },
-    },
-    {
-      id: 'artificial-dragon-dragon-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 611,
-      revealedAtChapter: 692,
-      name: {
-        it: 'Frutto Ryu Ryu artificiale',
-        en: 'Artificial Dragon-Dragon Fruit',
-      },
-      summary: {
-        it: 'Un frutto artificiale che trasforma in drago chi l’ha mangiato, e lo fa male: quello che ne esce è rosa e non più grande di un bambino.',
-        en: 'An artificial fruit that turns whoever ate it into a dragon, and does it badly: what comes out is pink and no bigger than a child.',
-      },
-      visual: { art: 'artificial-dragon-dragon-fruit', tint: 'green' },
-    },
-    {
-      id: 'op-op-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 590,
-      revealedAtChapter: 665,
-      name: { it: 'Frutto Ope Ope', en: 'Op-Op Fruit' },
-      summary: {
-        it: 'Apre una sfera d’aria dentro cui tutto si può tagliare, sollevare e rimettere in un altro ordine, e ciò che viene tagliato lì dentro non sanguina.',
-        en: 'Opens a sphere of air inside which anything can be cut, lifted and put back in a different order, and nothing cut in there bleeds.',
-      },
-      visual: { art: 'op-op-fruit', tint: 'cyan' },
-    },
-    {
-      id: 'arms-arms-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 620,
-      revealedAtChapter: 692,
-      name: { it: 'Frutto Buki Buki', en: 'Arms-Arms Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in un’arma: il braccio diventa un cannone e spara.',
-        en: 'Turns the body into a weapon: an arm becomes a cannon and fires.',
-      },
-      visual: { art: 'arms-arms-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'spin-spin-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 618,
-      revealedAtChapter: 692,
-      name: { it: 'Frutto Guru Guru', en: 'Spin-Spin Fruit' },
-      summary: {
-        it: 'Mette a girare come eliche parti del corpo, abbastanza in fretta da sollevarlo da terra e da portare in volo qualcun altro.',
-        en: 'Sets parts of the body spinning like propellers, fast enough to lift it off the ground and carry someone else along.',
-      },
-      visual: { art: 'spin-spin-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'press-press-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 634,
-      revealedAtChapter: 709,
-      name: { it: 'Frutto Zushi Zushi', en: 'Press-Press Fruit' },
-      summary: {
-        it: 'Piega il peso delle cose: chi sta in piedi viene schiacciato a terra così forte da lasciare un buco nel pavimento.',
-        en: 'Bends the weight of things: whoever is standing is pressed flat into the floor, hard enough to leave a hole.',
-      },
-      visual: { art: 'press-press-fruit', tint: 'sand' },
-    },
-    {
-      id: 'stick-stick-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 669,
-      revealedAtChapter: 742,
-      name: { it: 'Frutto Beta Beta', en: 'Stick-Stick Fruit' },
-      summary: {
-        it: 'Fa colare dal corpo un muco appiccicoso, sufficiente a tenere ferma una persona.',
-        en: 'Pours sticky mucus out of the body, enough to hold a person in place.',
-      },
-      visual: { art: 'stick-stick-fruit', tint: 'wine' },
-    },
-    {
-      id: 'ripple-ripple-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 668,
-      revealedAtChapter: 736,
-      name: { it: 'Frutto Hira Hira', en: 'Ripple-Ripple Fruit' },
-      summary: {
-        it: 'Rende gli oggetti solidi flessibili come stoffa: un mantello d’acciaio continua a fermare le lame e una spada si piega a forma di toro.',
-        en: 'Makes solid objects flexible like cloth: a steel cape still blocks blades, while a sword folds into the shape of a bull.',
-      },
-      visual: { art: 'ripple-ripple-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'stone-stone-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 669,
-      revealedAtChapter: 737,
-      name: { it: 'Frutto Ishi Ishi', en: 'Stone-Stone Fruit' },
-      summary: {
-        it: 'Permette al corpo di entrare nella pietra e di muoverla da dentro, così un muro o un pavimento si alzano in una forma con le braccia.',
-        en: 'Lets the body pass into stone and move it from the inside, so a wall or a floor can stand up as a shape with arms.',
-      },
-      visual: { art: 'stone-stone-fruit', tint: 'sand' },
-    },
-    {
-      id: 'art-art-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 648,
-      revealedAtChapter: 718,
-      name: { it: 'Frutto Ato Ato', en: 'Art-Art Fruit' },
-      summary: {
-        it: 'Trasforma in opera d’arte tutto quello che tocca: una nave, un’arma, una persona, storti in forme che non funzionano più.',
-        en: 'Turns whatever it touches into a work of art: a ship, a weapon, a person, twisted into shapes that no longer work.',
-      },
-      visual: { art: 'art-art-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'swim-swim-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 667,
-      revealedAtChapter: 735,
-      name: { it: 'Frutto Sui Sui', en: 'Swim-Swim Fruit' },
-      summary: {
-        it: 'Permette al corpo di nuotare nel terreno solido come nell’acqua: si tuffa in una strada e riemerge alle spalle di chi lo stava guardando.',
-        en: 'Lets the body swim through solid ground the way it would through water: it dives into a street and surfaces behind whoever was watching it.',
-      },
-      visual: { art: 'swim-swim-fruit', tint: 'red' },
-    },
-    {
-      id: 'ton-ton-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 682,
-      revealedAtChapter: 747,
-      name: { it: 'Frutto Ton Ton', en: 'Ton-Ton Fruit' },
-      summary: {
-        it: 'Porta il peso del corpo a dieci tonnellate per colpire un avversario cadendo dall’alto.',
-        en: 'Increases the body’s weight to ten tons to strike an opponent by dropping from above.',
-      },
-      visual: { art: 'ton-ton-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'glare-glare-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 640,
-      revealedAtChapter: 716,
-      name: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
-      summary: {
-        it: 'Dà occhi che guardano attraverso un muro e per tutta una città, e leggono quello che passa per la testa di chi inquadrano.',
-        en: 'Gives eyes that look through a wall and across an entire town, and read what is going on in the head of whoever they are pointed at.',
-      },
-      visual: { art: 'glare-glare-fruit', tint: 'orange' },
-    },
-    {
-      id: 'pop-pop-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 673,
-      revealedAtChapter: 740,
-      name: { it: 'Frutto Pamu Pamu', en: 'Pop-Pop Fruit' },
-      summary: {
-        it: 'Fa gonfiare fino a scoppiare tutto quello che ha toccato: un sasso, un muro, un pezzo di metallo, un cappello.',
-        en: 'Makes anything it has touched swell up until it bursts: a stone, a wall, a piece of metal, a hat.',
-      },
-      visual: { art: 'pop-pop-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'stitch-stitch-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 641,
-      revealedAtChapter: 716,
-      name: { it: 'Frutto Nui Nui', en: 'Stitch-Stitch Fruit' },
-      summary: {
-        it: 'Cuce con un ago, e un uomo cucito al terreno su cui sta non riesce più a muoversi.',
-        en: 'Sews with a needle, and a man stitched to the ground he is standing on can no longer move.',
-      },
-      visual: { art: 'stitch-stitch-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'hobby-hobby-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 663,
-      revealedAtChapter: 731,
-      name: { it: 'Frutto Hobi Hobi', en: 'Hobby-Hobby Fruit' },
-      summary: {
-        it: 'Un tocco trasforma una persona in un giocattolo, e quel giocattolo deve fare quello che gli ordina chi l’ha creato.',
-        en: 'One touch turns a person into a toy, and the toy has to do what it is told by the one who made it.',
-      },
-      visual: { art: 'hobby-hobby-fruit', tint: 'sand' },
-    },
-    {
-      id: 'jacket-jacket-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 646,
-      revealedAtChapter: 716,
-      name: { it: 'Frutto Giacca Giacca', en: 'Jacket-Jacket Fruit' },
-      summary: {
-        it: 'Trasforma chi lo mangia in una giacca che un altro può indossare: una volta addosso, prende il controllo del corpo che lo porta e combatte con la sua forza.',
-        en: 'Turns whoever eats it into a jacket that someone else can put on: once worn, the eater takes control of the body wearing it and fights with its strength.',
-      },
-      visual: { art: 'jacket-jacket-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'barrier-barrier-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 660,
-      revealedAtChapter: 742,
-      name: { it: 'Frutto Bari Bari', en: 'Barrier-Barrier Fruit' },
-      summary: {
-        it: 'Alza in aria un muro invisibile che niente attraversa: una cannonata, una spada, un pugno, tutti si fermano di netto contro di esso.',
-        en: 'Raises an invisible wall in mid-air that nothing gets past: a cannonball, a sword, a fist, all of them stop flat against it.',
-      },
-      visual: { art: 'barrier-barrier-fruit', tint: 'wine' },
-    },
-    {
-      id: 'heal-heal-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 714,
-      revealedAtChapter: 774,
-      name: { it: 'Frutto Chiyu Chiyu', en: 'Heal-Heal Fruit' },
-      summary: {
-        it: 'Trasforma le lacrime in cura: una ferita si richiude e l’osso torna al suo posto, al prezzo delle forze di chi sta piangendo.',
-        en: 'Turns tears into a cure: a wound closes and bone goes back where it belongs, paid for out of the strength of whoever is crying.',
-      },
-      visual: { art: 'heal-heal-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'string-string-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 700,
-      revealedAtChapter: 762,
-      name: { it: 'Frutto Ito Ito', en: 'String-String Fruit' },
-      summary: {
-        it: 'Fa uscire fili dalle dita, sottili abbastanza da tagliare la pietra e resistenti abbastanza da appendere una persona e muoverle le braccia al posto suo.',
-        en: 'Draws strings out of the fingers, thin enough to cut through stone and strong enough to hang a person from and move their arms for them.',
-      },
-      visual: { art: 'string-string-fruit', tint: 'pink' },
-    },
-    {
-      id: 'calm-calm-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 704,
-      revealedAtChapter: 768,
-      name: { it: 'Frutto Nagi Nagi', en: 'Calm-Calm Fruit' },
-      summary: {
-        it: 'Mette una bolla di silenzio attorno a quello che ci sta dentro: urla, spari e passi avvengono e da fuori non se ne sente niente.',
-        en: 'Puts a bubble of silence around whatever is inside it: shouting, gunfire and footsteps all happen, and outside not one of them is heard.',
-      },
-      visual: { art: 'calm-calm-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'elephant-elephant-fruit-ancient-model-mammoth',
-      kind: 'fruit',
-      revealedAtEpisode: 759,
-      revealedAtChapter: 813,
-      name: {
-        it: 'Frutto Zou Zou, modello Mammut',
-        en: 'Elephant-Elephant Fruit, Ancient Model: Mammoth',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa un mammut, zanne lunghe come un albero di nave, che attraversa una casa senza rallentare.',
-        en: 'An Ancient Model: the body becomes a mammoth, tusks the length of a ship’s mast, and it walks through a house without slowing down.',
-      },
-      visual: {
-        art: 'elephant-elephant-fruit-ancient-model-mammoth',
-        tint: 'teal',
-      },
-    },
-    {
-      id: 'scroll-scroll-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1004,
-      revealedAtChapter: 992,
-      name: { it: 'Frutto Maki Maki', en: 'Scroll-Scroll Fruit' },
-      summary: {
-        it: 'Crea e controlla pergamene che catturano un attacco al loro interno e lo restituiscono dopo essersi avvolte attorno a chi lo ha lanciato.',
-        en: 'Creates and controls scrolls that capture an attack inside them and release it after wrapping around whoever launched it.',
-      },
-      visual: { art: 'scroll-scroll-fruit', tint: 'red' },
-    },
-    {
-      id: 'castle-castle-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 785,
-      revealedAtChapter: 830,
-      name: { it: 'Frutto Shiro Shiro', en: 'Castle-Castle Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in una fortezza in cui gli altri possono entrare: uomini e cannoni ci vivono dentro, e quello che sparano esce dalle mura.',
-        en: 'Turns the body into a fortress others can walk into: men and cannon live inside it, and what they fire comes out through the walls.',
-      },
-      visual: { art: 'castle-castle-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'memo-memo-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 818,
-      revealedAtChapter: 851,
-      name: { it: 'Frutto Memo Memo', en: 'Memo-Memo Fruit' },
-      summary: {
-        it: 'Estrae un ricordo da una testa come una striscia di pellicola, ne taglia via un pezzo e rimette dentro il resto, e la testa non se ne accorge.',
-        en: 'Pulls a memory out of a head like a strip of film, cuts a piece away and puts the rest back, and the head never notices.',
-      },
-      visual: { art: 'memo-memo-fruit', tint: 'orange' },
-    },
-    {
-      id: 'soul-soul-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 796,
-      revealedAtChapter: 837,
-      name: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
-      summary: {
-        it: 'Toglie un pezzo di anima a chi si spaventa e lo mette dentro un oggetto, che apre occhi e bocca e comincia a prendere ordini.',
-        en: 'Takes a piece of the soul out of whoever is frightened and puts it into a thing, which opens eyes and a mouth and starts taking orders.',
-      },
-      visual: { art: 'soul-soul-fruit', tint: 'wine' },
-    },
-    {
-      id: 'lick-lick-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 795,
-      revealedAtChapter: 834,
-      name: { it: 'Frutto Pero Pero', en: 'Lick-Lick Fruit' },
-      summary: {
-        it: 'Crea e modella caramella, fino a costruire la replica di un intero laboratorio.',
-        en: 'Creates and shapes candy, enough to build a replica of an entire laboratory.',
-      },
-      visual: { art: 'lick-lick-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'bis-bis-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 799,
-      revealedAtChapter: 838,
-      name: { it: 'Frutto Bisu Bisu', en: 'Bis-Bis Fruit' },
-      summary: {
-        it: 'Produce biscotto dal corpo e lo cuoce in soldati con spada e scudo, tanti quanti l’impasto ne consente.',
-        en: 'Makes biscuit from the body and bakes it into soldiers with swords and shields, as many of them as there is dough for.',
-      },
-      visual: { art: 'bis-bis-fruit', tint: 'sand' },
-    },
-    {
-      id: 'mirror-mirror-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 796,
-      revealedAtChapter: 835,
-      name: { it: 'Frutto Mira Mira', en: 'Mirror-Mirror Fruit' },
-      summary: {
-        it: 'Fa di ogni specchio una porta: chi ci entra esce da un altro specchio da un’altra parte, oppure resta nel mondo dietro il vetro.',
-        en: 'Makes any mirror a door: whoever steps in comes out of another mirror somewhere else, or stays in the world behind the glass.',
-      },
-      visual: { art: 'mirror-mirror-fruit', tint: 'wine' },
-    },
-    {
-      id: 'bird-bird-fruit-model-albatross',
-      kind: 'fruit',
-      revealedAtEpisode: 830,
-      revealedAtChapter: 867,
-      name: {
-        it: 'Frutto Tori Tori, modello Albatro',
-        en: 'Bird-Bird Fruit, Model: Albatross',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un albatro, con becco e ali.',
-        en: 'Turns the body into an albatross, with a beak and wings.',
-      },
-      visual: { art: 'bird-bird-fruit-model-albatross', tint: 'ocher' },
-    },
-    {
-      id: 'mochi-mochi-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 833,
-      revealedAtChapter: 863,
-      name: { it: 'Frutto Mochi Mochi', en: 'Mochi-Mochi Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in mochi: si allunga e incassa un colpo senza strapparsi, e la stessa pasta si rapprende attorno a chi la tocca e lo tiene fermo.',
-        en: 'Turns the body to mochi: it stretches and takes a blow without tearing, and the same paste sets around whoever touches it and holds them there.',
-      },
-      visual: { art: 'mochi-mochi-fruit', tint: 'ivory' },
-    },
-    {
-      id: 'wring-wring-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 812,
-      revealedAtChapter: 855,
-      name: { it: 'Frutto Shibo Shibo', en: 'Wring-Wring Fruit' },
-      summary: {
-        it: 'Strizza una persona come un panno, finché resta un corpo rinsecchito e il suo succo si può bere.',
-        en: 'Wrings a person out like a cloth, until what is left is a shrivelled body and a juice that can be drunk.',
-      },
-      visual: { art: 'wring-wring-fruit', tint: 'pink' },
-    },
-    {
-      id: 'book-book-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 811,
-      revealedAtChapter: 855,
-      name: { it: 'Frutto Buku Buku', en: 'Book-Book Fruit' },
-      summary: {
-        it: 'Chiude una persona dentro un libro, dove resta ferma sulla pagina, e permette di spostarsi da un libro aperto all’altro.',
-        en: 'Shuts a person inside a book, where they stay flat on the page, and lets whoever ate it move from one open book to another.',
-      },
-      visual: { art: 'book-book-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'heat-heat-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 834,
-      revealedAtChapter: 864,
-      name: { it: 'Frutto Netsu Netsu', en: 'Heat-Heat Fruit' },
-      summary: {
-        it: 'Scalda gli oggetti che tocca, rendendo una spada troppo calda da impugnare.',
-        en: 'Heats objects by touch, making a sword too hot to hold.',
-      },
-      visual: { art: 'heat-heat-fruit', tint: 'orange' },
-    },
-    {
-      id: 'puff-puff-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 834,
-      revealedAtChapter: 864,
-      name: { it: 'Frutto Hoya Hoya', en: 'Puff-Puff Fruit' },
-      summary: {
-        it: 'Strofinandosi la pancia se ne fa uscire un gigante armato, che mena colpi e combatte mentre chi l’ha chiamato resta fermo dietro.',
-        en: 'Rubbing the belly brings an armed giant out of it, swinging and fighting while whoever called it stands still behind.',
-      },
-      visual: { art: 'puff-puff-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'cook-cook-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 838,
-      revealedAtChapter: 868,
-      name: { it: 'Frutto Kuku Kuku', en: 'Cook-Cook Fruit' },
-      summary: {
-        it: 'Trasforma gli oggetti in cibo: un tronco tagliato diventa carne pronta da mangiare.',
-        en: 'Turns objects into food: a cut log becomes meat ready to eat.',
-      },
-      visual: { art: 'cook-cook-fruit', tint: 'orange' },
-    },
-    {
-      id: 'soot-soot-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1117,
-      revealedAtChapter: 1083,
-      name: { it: 'Frutto Susu Susu', en: 'Soot-Soot Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in fuliggine, così i proiettili lo attraversano, e la fuliggine prende la forma che le si dà: corvi che si staccano dal corpo e beccano l’avversario, o punte sottili che schizzano su dal terreno.',
-        en: 'Turns the body to soot, so bullets pass through it, and the soot takes whatever shape it is given: crows that break off the body and peck at an opponent, or thin spikes that shoot up out of the ground.',
-      },
-      visual: { art: 'soot-soot-fruit', tint: 'sand' },
-    },
-    {
-      id: 'pump-pump-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 880,
-      revealedAtChapter: 905,
-      name: { it: 'Frutto Kobu Kobu', en: 'Pump-Pump Fruit' },
-      summary: {
-        it: 'Sventolando una bandiera tira fuori dalla gente comune la forza che non sapeva di avere, e la manda avanti con quello che ha in mano.',
-        en: 'A wave of a flag pulls out of ordinary people the strength they did not know they had, and sends them forward with whatever they are holding.',
-      },
-      visual: { art: 'pump-pump-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'push-push-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 880,
-      revealedAtChapter: 905,
-      name: { it: 'Frutto Oshi Oshi', en: 'Push-Push Fruit' },
-      summary: {
-        it: 'Spinge il terreno come fosse argilla, e la roccia cede sotto le mani.',
-        en: 'Pushes the ground as though it were clay, and rock gives way under the hands.',
-      },
-      visual: { art: 'push-push-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'millet-millet-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 894,
-      revealedAtChapter: 913,
-      name: { it: 'Frutto Kibi Kibi', en: 'Millet-Millet Fruit' },
-      summary: {
-        it: 'Ricava gnocchi di miglio dalle guance, e l’animale che ne mangia uno diventa fedele all’istante.',
-        en: 'Makes millet dumplings out of the cheeks, and any animal that eats one turns loyal on the spot.',
-      },
-      visual: { art: 'millet-millet-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'straw-straw-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 898,
-      revealedAtChapter: 913,
-      name: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
-      summary: {
-        it: 'Tiene bambole di paglia che fanno le veci di altre persone, così una ferita destinata a chi l’ha mangiato finisce addosso a una di loro.',
-        en: 'Keeps straw dolls that stand in for other people, so a wound meant for whoever ate it lands on one of them instead.',
-      },
-      visual: { art: 'straw-straw-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
-      kind: 'fruit',
-      revealedAtEpisode: 924,
-      revealedAtChapter: 935,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Spinosauro',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Spinosaurus',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa uno spinosauro, una vela lungo la schiena e un muso abbastanza lungo da raccogliere un uomo dalla strada.',
-        en: 'An Ancient Model: the body becomes a spinosaurus, a sail along the back and a snout long enough to pick a man up off the street.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-spinosaurus',
-        tint: 'yellow',
-      },
-    },
-    {
-      id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
-      kind: 'fruit',
-      revealedAtEpisode: 927,
-      revealedAtChapter: 933,
-      name: {
-        it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
-        en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
-      },
-      summary: {
-        it: 'Un modello mitologico: il corpo diventa un serpente con otto teste su otto colli, ognuna con le proprie fauci, che colpiscono da otto direzioni insieme.',
-        en: 'A Mythical Model: the body becomes a serpent with eight heads on eight necks, each with its own jaws, striking from eight directions at once.',
-      },
-      visual: {
-        art: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
-        tint: 'acid',
-      },
-    },
-    {
-      id: 'fish-fish-fruit-mythical-model-azure-dragon',
-      kind: 'fruit',
-      revealedAtEpisode: 1014,
-      revealedAtChapter: 999,
-      name: {
-        it: 'Frutto Uo Uo, modello Drago Azzurro',
-        en: 'Fish-Fish Fruit, Mythical Model: Azure Dragon',
-      },
-      summary: {
-        it: 'Un modello mitologico: il corpo diventa un drago orientale lungo come una strada, che si tiene in cielo e travolge quello che ha sotto.',
-        en: 'A Mythical Model: the body becomes an eastern dragon as long as a street, which holds itself up in the sky and blasts whatever is under it.',
-      },
-      visual: {
-        art: 'fish-fish-fruit-mythical-model-azure-dragon',
-        tint: 'azure',
-      },
-    },
-    {
-      id: 'ripe-ripe-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 916,
-      revealedAtChapter: 930,
-      name: { it: 'Frutto Juku Juku', en: 'Ripe-Ripe Fruit' },
-      summary: {
-        it: 'Fa maturare quello che tocca e poi lo spinge oltre, finché marcisce: il terreno toccato si sfalda e si apre in una voragine.',
-        en: 'Ripens what it touches and then carries it past ripe until it rots, so the ground under a hand crumbles and opens into a pit.',
-      },
-      visual: { art: 'ripe-ripe-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-pteranodon',
-      kind: 'fruit',
-      revealedAtEpisode: 924,
-      revealedAtChapter: 935,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Pteranodonte',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Pteranodon',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa uno pteranodonte, abbastanza forte in volo da respingere una nave giù da una cascata.',
-        en: 'An Ancient Model: the body becomes a pteranodon, strong enough in flight to drive a ship back down a waterfall.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-pteranodon',
-        tint: 'teal',
-      },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
-      kind: 'fruit',
-      revealedAtEpisode: 944,
-      revealedAtChapter: 957,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Brachiosauro',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa un brachiosauro, un dinosauro enorme dal collo lungo.',
-        en: 'An Ancient Model: the body becomes a brachiosaurus, an enormous dinosaur with a long neck.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
-        tint: 'ocher',
-      },
-    },
-    {
-      id: 'time-time-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 963,
-      revealedAtChapter: 966,
-      name: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
-      summary: {
-        it: 'Manda una persona avanti nel tempo, di anni o di secoli, e mai indietro: parte da un giorno e arriva in un altro senza che le sia cambiato niente.',
-        en: 'Sends a person forward in time, by years or by centuries, and never back: they leave one day and arrive on another with nothing about them changed.',
-      },
-      visual: { art: 'time-time-fruit', tint: 'ice' },
-    },
-    {
-      id: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
-      kind: 'fruit',
-      revealedAtEpisode: 1013,
-      revealedAtChapter: 998,
-      name: {
-        it: 'Frutto Neko Neko, modello Tigre dai denti a sciabola',
-        en: 'Cat-Cat Fruit, Ancient Model: Sabre-Tooth Tiger',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa una tigre dai denti a sciabola, due zanne oltre la mascella e tutto il peso dietro ogni zampata.',
-        en: 'An Ancient Model: the body becomes a sabre-toothed tiger, two teeth hanging past the jaw and the whole weight behind every swipe.',
-      },
-      visual: {
-        art: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
-        tint: 'sand',
-      },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
-      kind: 'fruit',
-      revealedAtEpisode: 990,
-      revealedAtChapter: 983,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Pachicefalosauro',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Pachycephalosaurus',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa un pachicefalosauro, il cui senso è tutto in un cranio di osso pieno da mandare di testa addosso a qualcuno.',
-        en: 'An Ancient Model: the body becomes a pachycephalosaurus, whose whole point is a skull of solid bone driven head first into somebody.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
-        tint: 'yellow',
-      },
-    },
-    {
-      id: 'dragon-dragon-fruit-ancient-model-triceratops',
-      kind: 'fruit',
-      revealedAtEpisode: 1013,
-      revealedAtChapter: 998,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Triceratopo',
-        en: 'Dragon-Dragon Fruit, Ancient Model: Triceratops',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa un triceratopo, tre corna davanti a un collare d’osso, e la carica non si ferma davanti a un muro.',
-        en: 'An Ancient Model: the body becomes a triceratops, three horns in front of a collar of bone, and the charge does not stop for a wall.',
-      },
-      visual: {
-        art: 'dragon-dragon-fruit-ancient-model-triceratops',
-        tint: 'acid',
-      },
-    },
-    {
-      id: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
-      kind: 'fruit',
-      revealedAtEpisode: 1013,
-      revealedAtChapter: 998,
-      name: {
-        it: 'Frutto Kumo Kumo, modello Rosamygale Grauvogeli',
-        en: 'Spider-Spider Fruit, Ancient Model: Rosamygale Grauvogeli',
-      },
-      summary: {
-        it: 'Un modello ancestrale: il corpo diventa un ragno grande come una stanza, che tesse la tela dall’alto e aspetta al centro.',
-        en: 'An Ancient Model: the body becomes a spider the size of a room, which spins its web from above and waits in the middle of it.',
-      },
-      visual: {
-        art: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
-        tint: 'green',
-      },
-    },
-    {
-      id: 'brush-brush-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 985,
-      revealedAtChapter: 980,
-      name: { it: 'Frutto Fude Fude', en: 'Brush-Brush Fruit' },
-      summary: {
-        it: 'Quello che viene dipinto col pennello esce dalla carta e si muove: un uccello, un cavallo, un muro di fuoco, disegnati male come solo quella mano sa fare.',
-        en: 'Whatever is painted with the brush comes off the paper and moves: a bird, a horse, a wall of fire, all drawn as badly as the hand can draw.',
-      },
-      visual: { art: 'brush-brush-fruit', tint: 'wine' },
-    },
-    {
-      id: 'dog-dog-fruit-model-okuchi-no-makami',
-      kind: 'fruit',
-      revealedAtEpisode: 1042,
-      revealedAtChapter: 1020,
-      name: {
-        it: 'Frutto Inu Inu, modello Okuchi no Makami',
-        en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
-      },
-      summary: {
-        it: 'Trasforma il corpo in un lupo bianco, la divinità che protegge Wano, con un soffio abbastanza forte da tenere testa a quello di Kaido.',
-        en: 'Turns the body into a white wolf, the guardian deity of Wano, with a blast of breath strong enough to meet Kaido’s own.',
-      },
-      visual: { art: 'dog-dog-fruit-model-okuchi-no-makami', tint: 'ocher' },
-    },
-    {
-      id: 'magnet-magnet-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1058,
-      revealedAtChapter: 1031,
-      name: { it: 'Frutto Jiki Jiki', en: 'Magnet-Magnet Fruit' },
-      summary: {
-        it: 'Richiama il metallo nell’aria da qualsiasi distanza e lo compatta, così una mano tesa si ritrova a reggere una massa di ferro grande come una casa.',
-        en: 'Pulls metal through the air from any distance and packs it together, so an open hand ends up holding a mass of iron the size of a house.',
-      },
-      visual: { art: 'magnet-magnet-fruit', tint: 'vermilion' },
-    },
-    {
-      id: 'woods-woods-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1081,
-      revealedAtChapter: 1061,
-      name: { it: 'Frutto Mori Mori', en: 'Woods-Woods Fruit' },
-      summary: {
-        it: 'Trasforma il corpo in legno e vegetazione, e mette fuori radici che si allargano sul terreno e afferrano chi ci sta sopra.',
-        en: 'Turns the body to wood and growing plant, and puts out roots that spread over the ground and take hold of whoever stands on it.',
-      },
-      visual: { art: 'woods-woods-fruit', tint: 'teal' },
-    },
-    {
-      id: 'brain-brain-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1097,
-      revealedAtChapter: 1067,
-      name: { it: 'Frutto Nomi Nomi', en: 'Brain-Brain Fruit' },
-      summary: {
-        it: 'Permette alla testa di contenere qualsiasi cosa senza riempirsi mai: niente di quello che è stato letto o capito va perduto, al prezzo di un cranio che deve crescere per starci dietro.',
-        en: 'Lets the head hold anything put into it and never fill up, so nothing read or worked out is ever lost, at the price of a skull that has to keep growing.',
-      },
-      visual: { art: 'brain-brain-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'age-age-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1133,
-      revealedAtChapter: 1099,
-      name: { it: 'Frutto Toshi Toshi', en: 'Age-Age Fruit' },
-      summary: {
-        it: 'Cambia l’età di una persona: un uomo fatto prosegue da bambino, un bambino si rialza adulto, il corpo spostato lungo i propri anni.',
-        en: 'Changes how old a person is: a grown man walks on as a child, a child stands up grown, the body shifted along its own years.',
-      },
-      visual: { art: 'age-age-fruit', tint: 'orange' },
-    },
-    {
-      id: 'whip-whip-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1113,
-      revealedAtChapter: 1080,
-      name: { it: 'Frutto Muchi Muchi', en: 'Whip-Whip Fruit' },
-      summary: {
-        it: 'Chi l’ha mangiato fa obbedire alla frusta anche le cose: un edificio colpito si sposta dove gli viene ordinato.',
-        en: 'Makes even things obey its eater’s whip: a building that is struck moves wherever it is told.',
-      },
-      visual: { art: 'whip-whip-fruit', tint: 'magenta' },
-    },
-    {
-      id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
-      kind: 'fruit',
-      revealedAtEpisode: 917,
-      revealedAtChapter: 925,
-      name: {
-        it: 'Frutto Inu Inu, modello Volpe a Nove Code',
-        en: 'Dog-Dog Fruit, Mythical Model: Nine-Tailed Fox',
-      },
-      summary: {
-        it: 'Un modello mitologico che permette di trasformarsi in una volpe a nove code e di assumere l’aspetto di un’altra persona.',
-        en: 'A Mythical Model that allows transformation into a nine-tailed fox and impersonation of another person.',
-      },
-      visual: {
-        art: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
-        tint: 'sand',
-      },
-    },
-    {
-      id: 'gabu-gabu-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1121,
-      revealedAtChapter: 1087,
-      name: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
-      summary: {
-        it: 'Trasforma in liquore il corpo di chi l’ha mangiato: viene ingoiato a fiaschi interi e risputato fuori in un getto che prende fuoco.',
-        en: 'Turns the body of whoever ate it to liquor: it goes down by the flaskful and comes back out in a stream that catches fire.',
-      },
-      visual: { art: 'gabu-gabu-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'huge-huge-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1113,
-      revealedAtChapter: 1080,
-      name: { it: 'Frutto Deka Deka', en: 'Huge-Huge Fruit' },
-      summary: {
-        it: 'Aumenta le dimensioni del corpo: un gigante diventa tanto alto da stare in piedi sul fondo del mare con la testa fuori dall’acqua.',
-        en: 'Enlarges the body: a giant grows tall enough to stand on the seabed with his head above the water.',
-      },
-      visual: { art: 'huge-huge-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'island-island-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1113,
-      revealedAtChapter: 1080,
-      name: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
-      summary: {
-        it: 'Permette di fondersi con un’isola e di percepire ciò che accade sul suo territorio.',
-        en: 'Allows the user to merge with an island and sense what happens across it.',
-      },
-      visual: { art: 'island-island-fruit', tint: 'sand' },
-    },
-    {
-      id: 'sick-sick-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1093,
-      revealedAtChapter: 1063,
-      name: { it: 'Frutto Shiku Shiku', en: 'Sick-Sick Fruit' },
-      summary: {
-        it: 'Crea malattie contagiose: una trasforma gli uomini in donne e si diffonde tra i membri di una ciurma.',
-        en: 'Creates contagious diseases: one turns men into women and spreads among a crew.',
-      },
-      visual: { art: 'sick-sick-fruit', tint: 'wine' },
-    },
-    {
-      id: 'strong-strong-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1093,
-      revealedAtChapter: 1063,
-      name: { it: 'Frutto Riki Riki', en: 'Strong-Strong Fruit' },
-      summary: {
-        it: 'Conferisce una forza sufficiente a strappare una montagna dal terreno, sollevarla e scagliarla.',
-        en: 'Grants enough strength to tear a mountain out of the ground, lift it and throw it.',
-      },
-      visual: { art: 'strong-strong-fruit', tint: 'flamingo' },
-    },
-    {
-      id: 'warp-warp-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1093,
-      revealedAtChapter: 1063,
-      name: { it: 'Frutto Wapu Wapu', en: 'Warp-Warp Fruit' },
-      summary: {
-        it: 'Sposta un corpo da un punto a un altro senza attraversare lo spazio in mezzo: sparisce da dov’era ed è già altrove.',
-        en: 'Moves a body from one place to another without crossing the ground in between: it is gone from where it stood and already somewhere else.',
-      },
-      visual: { art: 'warp-warp-fruit', tint: 'pink' },
-    },
-    {
-      id: 'ride-ride-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1128,
-      revealedAtChapter: 1094,
-      name: { it: 'Frutto Nori Nori', en: 'Ride-Ride Fruit' },
-      summary: {
-        it: 'Chi l’ha mangiato prende il comando di qualunque cosa cavalchi, anche di una macchina che si è rivoltata contro la sua parte.',
-        en: 'Puts whatever its eater rides under their command, even a machine that has turned against its own side.',
-      },
-      visual: { art: 'ride-ride-fruit', tint: 'yellow' },
-    },
-    {
-      id: 'grow-grow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1165,
-      revealedAtChapter: 1135,
-      name: { it: 'Frutto Iku Iku', en: 'Grow-Grow Fruit' },
-      summary: {
-        it: 'Fa diventare giganti i libri che entrano in biblioteca, così un volume minuscolo si legge alla misura di un gigante, e torna piccolo appena ne esce.',
-        en: 'Makes every book that enters the library giant-sized, so a tiny volume reads at a giant’s scale, and it shrinks back as soon as it leaves.',
-      },
-      visual: { art: 'grow-grow-fruit', tint: 'ocher' },
-    },
-    {
-      id: 'arrow-arrow-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1167,
-      revealedAtChapter: 1137,
-      name: { it: 'Frutto Aro Aro', en: 'Arrow-Arrow Fruit' },
-      summary: {
-        it: 'Scocca frecce che nascono dai vestiti, e quelle che girano attorno al bersaglio segnano in anticipo il punto dove colpirà.',
-        en: 'Looses arrows spun out of her clothes, and those circling a target mark in advance the spot where her blow will land.',
-      },
-      visual: { art: 'arrow-arrow-fruit', tint: 'lavender' },
-    },
-    {
-      id: 'thorn-thorn-fruit',
-      kind: 'fruit',
-      revealedAtEpisode: 1173,
-      revealedAtChapter: 1143,
-      name: { it: 'Frutto Iba Iba', en: 'Thorn-Thorn Fruit' },
-      summary: {
-        it: 'Avvolge chi vuole in rovi di spine invisibili, e chi prova a toccarlo si ritrova trafitto senza aver visto niente.',
-        en: 'Wraps whoever it chooses in invisible thorns, and anyone who reaches out to touch them is run through without having seen a thing.',
-      },
-      visual: { art: 'thorn-thorn-fruit', tint: 'green' },
-    },
-    {
-      id: 'dragon-dragon-fruit-mythical-model-kirin',
-      kind: 'fruit',
-      revealedAtEpisode: 1173,
-      revealedAtChapter: 1143,
-      name: {
-        it: 'Frutto Ryu Ryu, modello Kirin',
-        en: 'Dragon-Dragon Fruit, Mythical Model: Kirin',
-      },
-      summary: {
-        it: 'Un modello mitologico: il corpo diventa un qilin, e chi ne subisce il potere cade addormentato mentre i suoi incubi prendono corpo come mostri veri.',
-        en: 'A Mythical Model: the body becomes a qilin, and whoever falls under its power drops asleep while their nightmares take shape as real monsters.',
-      },
-      visual: { art: 'dragon-dragon-fruit-mythical-model-kirin', tint: 'ice' },
-    },
-  ],
-  dossiers: {},
-}
+export const devilFruits: FruitRecord[] = [
+  {
+    id: 'gum-gum-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Gom Gom', en: 'Gum-Gum Fruit' },
+    summary: {
+      it: 'Rende di gomma il corpo di chi l’ha mangiato: si allunga, torna indietro di scatto, e un pugno tirato da abbastanza lontano arriva con tutta la lunghezza del braccio dietro.',
+      en: 'Turns the body of whoever ate it to rubber: it stretches, it bounces back, and a fist thrown from far enough away arrives with the whole length of the arm behind it.',
+    },
+    visual: { art: 'gum-gum-fruit', tint: 'red' },
+  },
+  {
+    id: 'chop-chop-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Puzzle Puzzle', en: 'Chop-Chop Fruit' },
+    summary: {
+      it: 'Divide il corpo in pezzi lungo qualsiasi taglio: una lama lo separa senza ferirlo e i pezzi continuano a muoversi, sospesi a mezz’aria.',
+      en: 'Splits the body into pieces along any cut, so a blade divides it without wounding it and the parts go on moving, hanging in the air.',
+    },
+    visual: { art: 'chop-chop-fruit', tint: 'orange' },
+  },
+  {
+    id: 'slip-slip-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Slip Slip', en: 'Slip-Slip Fruit' },
+    summary: {
+      it: 'Rende la pelle così liscia che niente fa presa: i pugni scivolano via, le corde non stringono, e un braccio afferrato sguscia fuori da solo.',
+      en: 'Makes the skin so smooth that nothing holds on it: fists slide off, ropes will not tighten, and an arm someone has grabbed squirts free on its own.',
+    },
+    visual: { art: 'slip-slip-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'smoke-smoke-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Fumo Fumo', en: 'Smoke-Smoke Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in fumo, così una lama lo attraversa e una presa si chiude sul nulla; il fumo stesso si versa su una strada e si stringe attorno a chi ci sta scappando.',
+      en: 'Turns the body to smoke, so a blade passes through it and a grip closes on nothing; the smoke itself can be poured over a street and pinned around whoever is running down it.',
+    },
+    visual: { art: 'smoke-smoke-fruit', tint: 'lavender' },
+  },
+  {
+    id: 'bomb-bomb-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Bomb Bomb', en: 'Bomb-Bomb Fruit' },
+    summary: {
+      it: 'Rende esplosiva ogni parte del corpo: un pezzetto di naso, un respiro, la punta di un dito scoppiano come una granata, e lo scoppio lascia illeso chi l’ha provocato.',
+      en: 'Makes every part of the body explosive: a flicked piece of nose, a breath, a fingertip goes off like a shell, and the blast leaves the one who set it unhurt.',
+    },
+    visual: { art: 'bomb-bomb-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'kilo-kilo-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kilo Kilo', en: 'Kilo-Kilo Fruit' },
+    summary: {
+      it: 'Fissa il peso del corpo fra un chilo e diecimila, così la stessa persona scende in volo appesa a un ombrello e atterra come un’incudine.',
+      en: 'Sets the weight of the body anywhere between one kilo and ten thousand, so the same person drifts down under an umbrella and lands like a dropped anvil.',
+    },
+    visual: { art: 'kilo-kilo-fruit', tint: 'sand' },
+  },
+  {
+    id: 'wax-wax-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Wax Wax', en: 'Wax-Wax Fruit' },
+    summary: {
+      it: 'Fa uscire cera dal corpo, e chi l’ha mangiato le dà la forma che vuole.',
+      en: 'Makes wax come out of the body, and the one who ate it shapes the wax at will.',
+    },
+    visual: { art: 'wax-wax-fruit', tint: 'wine' },
+  },
+  {
+    id: 'clone-clone-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Clone Clone', en: 'Clone-Clone Fruit' },
+    summary: {
+      it: 'Un volto toccato con la mano destra resta impresso e può essere indossato in seguito, voce compresa, finché la mano sinistra non lo restituisce.',
+      en: 'A face touched with the right hand is kept and can be worn afterwards, voice and all, until the left hand gives it back.',
+    },
+    visual: { art: 'clone-clone-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'munch-munch-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Munch Munch', en: 'Munch-Munch Fruit' },
+    summary: {
+      it: 'Dà una bocca che si spalanca abbastanza da mordere il ferro, un cannone o un tetto, e inghiotte tutto quello su cui si chiude.',
+      en: 'Gives a mouth that opens wide enough to bite through iron, a cannon or a roof, and swallows whatever it closes on.',
+    },
+    visual: { art: 'munch-munch-fruit', tint: 'pink' },
+  },
+  {
+    id: 'ox-ox-fruit-model-bison',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ushi Ushi, modello Bisonte',
+      en: 'Ox-Ox Fruit, Model: Bison',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un bisonte, corna in avanti e spalle larghe, e una sua carica passa attraverso un muro di uomini armati.',
+      en: 'Turns the body into a bison, horns forward and shoulders wide, and a charge from it goes straight through a wall of armed men.',
+    },
+    visual: { art: 'ox-ox-fruit-model-bison', tint: 'acid' },
+  },
+  {
+    id: 'human-human-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Homo Homo', en: 'Human-Human Fruit' },
+    summary: {
+      it: 'Dà a un animale forma e mente umane: si regge su due zampe, parla, e può fermarsi a metà strada fra le due forme.',
+      en: 'Gives an animal a human shape and a human mind: it stands on two legs, it speaks, and it can stop halfway between the two forms.',
+    },
+    visual: { art: 'human-human-fruit', tint: 'orange' },
+  },
+  {
+    id: 'bird-bird-fruit-model-falcon',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Tori Tori, modello Falco',
+      en: 'Bird-Bird Fruit, Model: Falcon',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un falco: il deserto si attraversa dall’alto e una picchiata arriva più veloce di qualsiasi cosa si muova a terra.',
+      en: 'Turns the body into a falcon, so the desert is crossed from above and a dive comes down faster than anything on the ground can move.',
+    },
+    visual: { art: 'bird-bird-fruit-model-falcon', tint: 'teal' },
+  },
+  {
+    id: 'dog-dog-fruit-model-jackal',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Inu Inu, modello Sciacallo',
+      en: 'Dog-Dog Fruit, Model: Jackal',
+    },
+    summary: {
+      it: 'Trasforma il corpo in uno sciacallo, conservando la statura di un uomo e aggiungendo le fauci e il fiuto della bestia.',
+      en: 'Turns the body into a jackal, keeping the height and reach of a man and adding the jaws and the nose of the animal.',
+    },
+    visual: { art: 'dog-dog-fruit-model-jackal', tint: 'ocher' },
+  },
+  {
+    id: 'flame-flame-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Foco Foco', en: 'Flame-Flame Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in fiamma: i colpi lo attraversano senza toccarlo, e il fuoco che lascia dietro di sé si porta via una nave intera.',
+      en: 'Turns the body to flame: blows pass through without touching it, and the fire it leaves behind carries off an entire ship.',
+    },
+    visual: { art: 'flame-flame-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'dice-dice-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Dice Dice', en: 'Dice-Dice Fruit' },
+    summary: {
+      it: 'Trasforma qualunque parte del corpo in una lama d’acciaio: un braccio diventa una spada e la pelle stessa smussa la spada che la colpisce.',
+      en: 'Turns any part of the body into a blade of steel: an arm becomes a sword, and the skin itself blunts the sword that strikes it.',
+    },
+    visual: { art: 'dice-dice-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'mole-mole-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mole Mole', en: 'Mole-Mole Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in una talpa con artigli che bucano la roccia, scavando una galleria alla stessa velocità con cui si corre in superficie.',
+      en: 'Turns the body into a mole with claws that go through rock, digging a tunnel as fast as a person can run above it.',
+    },
+    visual: { art: 'mole-mole-fruit', tint: 'red' },
+  },
+  {
+    id: 'spike-spike-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Spike Spike', en: 'Spike-Spike Fruit' },
+    summary: {
+      it: 'Fa spuntare spine d’acciaio da qualsiasi punto del corpo, abbastanza lunghe da trapassare un muro e colpire chi ci si nasconde dietro.',
+      en: 'Grows steel spikes from anywhere on the body, long enough to go through a wall and into whoever is hiding behind it.',
+    },
+    visual: { art: 'spike-spike-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'sand-sand-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Sand Sand', en: 'Sand-Sand Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in sabbia: un pugno lo attraversa e si chiude sul vuoto, e anche il terreno sotto i piedi diventa sabbia e inghiotte chi ci sta sopra.',
+      en: 'Turns the body to sand, so a fist goes through it and closes on nothing, and the ground underfoot turns to sand as well and swallows whoever stands on it.',
+    },
+    visual: { art: 'sand-sand-fruit', tint: 'sand' },
+  },
+  {
+    id: 'dog-dog-fruit-model-dachshund',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Inu Inu, modello Bassotto',
+      en: 'Dog-Dog Fruit, Model: Dachshund',
+    },
+    summary: {
+      it: 'Trasforma in un bassotto chi lo mangia, persino un oggetto: un bazooka che ne ha mangiato uno è diventato un cane vivo che continua a sparare i suoi colpi, uno starnuto alla volta.',
+      en: 'Turns whatever eats it into a dachshund, even an object: a bazooka fed one became a living dog that still fires its shells, one sneeze at a time.',
+    },
+    visual: { art: 'dog-dog-fruit-model-dachshund', tint: 'sand' },
+  },
+  {
+    id: 'cage-cage-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Cage Cage', en: 'Cage-Cage Fruit' },
+    summary: {
+      it: 'Lascia passare qualsiasi cosa attraverso il corpo, e ciò che passa esce dall’altra parte chiuso dentro anelli di ferro che non si spezzano.',
+      en: 'Lets anything pass through the body, and whatever passes comes out the other side closed inside iron rings it cannot break.',
+    },
+    visual: { art: 'cage-cage-fruit', tint: 'orange' },
+  },
+  {
+    id: 'flower-flower-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Fior Fior', en: 'Flower-Flower Fruit' },
+    summary: {
+      it: 'Fa spuntare braccia e mani sulle superfici e sul corpo di altre persone.',
+      en: 'Makes arms and hands sprout on surfaces and other people’s bodies.',
+    },
+    visual: { art: 'flower-flower-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'spring-spring-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Bane Bane', en: 'Spring-Spring Fruit' },
+    summary: {
+      it: 'Trasforma gambe e braccia in molle: si caricano contro un muro e rilanciano in avanti tutto il corpo con la forza che hanno accumulato.',
+      en: 'Turns the legs and arms into springs: they coil against a wall and throw the whole body forward with the force they stored.',
+    },
+    visual: { art: 'spring-spring-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'horse-horse-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ippo Ippo', en: 'Horse-Horse Fruit' },
+    summary: {
+      it: 'Trasforma in un cavallo chi lo mangia: un uccello che ne ha mangiato uno diventa un cavallo con le ali, anche se chi se lo aspettava leggendario resta deluso da quanto sembra normale.',
+      en: 'Turns whatever eats it into a horse: a bird fed one becomes a horse with wings, though anyone expecting a creature of legend is let down by how ordinary it looks.',
+    },
+    visual: { art: 'horse-horse-fruit', tint: 'pink' },
+  },
+  {
+    id: 'rumble-rumble-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Goro Goro', en: 'Rumble-Rumble Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in fulmine: i colpi lo attraversano, e la folgore parte in scariche che corrono ovunque ci sia metallo.',
+      en: 'Turns the body to lightning, so blows pass through it, and sends that lightning out in bolts that run wherever metal leads them.',
+    },
+    visual: { art: 'rumble-rumble-fruit', tint: 'acid' },
+  },
+  {
+    id: 'slow-slow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Lento Lento', en: 'Slow-Slow Fruit' },
+    summary: {
+      it: 'Emette un raggio che rallenta per trenta secondi ciò che colpisce, facendo restare indietro una barca durante una gara.',
+      en: 'Emits a beam that slows whatever it hits for thirty seconds, making a boat fall behind during a race.',
+    },
+    visual: { art: 'slow-slow-fruit', tint: 'sand' },
+  },
+  {
+    id: 'ice-ice-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Gelo Gelo', en: 'Ice-Ice Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in ghiaccio, i colpi lo attraversano, e congela solido tutto ciò che tocca, acqua di mare compresa.',
+      en: 'Turns the body to ice, so blows pass through it, and freezes solid whatever it touches, sea water included.',
+    },
+    visual: { art: 'ice-ice-fruit', tint: 'ice' },
+  },
+  {
+    id: 'bubble-bubble-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Bolla Bolla', en: 'Bubble-Bubble Fruit' },
+    summary: {
+      it: 'Produce sapone dal corpo: una bolla che si posa su qualcuno gli lava via la forza e lo lascia troppo scivoloso per restare in piedi.',
+      en: 'Makes soap from the body: a bubble that settles on someone washes the strength out of them and leaves them too slippery to stay upright.',
+    },
+    visual: { art: 'bubble-bubble-fruit', tint: 'wine' },
+  },
+  {
+    id: 'cat-cat-fruit-model-leopard',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Neko Neko, modello Leopardo',
+      en: 'Cat-Cat Fruit, Model: Leopard',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un leopardo che conserva l’altezza di un uomo: la portata di un pugno più gli artigli, e un balzo che attraversa una stanza in una volta sola.',
+      en: 'Turns the body into a leopard that keeps a man’s height: the reach of a fist plus claws, and a spring that crosses a room in one movement.',
+    },
+    visual: { art: 'cat-cat-fruit-model-leopard', tint: 'sand' },
+  },
+  {
+    id: 'dog-dog-fruit-model-wolf',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Inu Inu, modello Lupo',
+      en: 'Dog-Dog Fruit, Model: Wolf',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un lupo che sta ritto sulle zampe posteriori, con fauci che si chiudono su un braccio e un olfatto che trova chi si nasconde.',
+      en: 'Turns the body into a wolf standing upright, with jaws that close around an arm and a nose that finds whoever is hiding.',
+    },
+    visual: { art: 'dog-dog-fruit-model-wolf', tint: 'yellow' },
+  },
+  {
+    id: 'door-door-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Porta Porta', en: 'Door-Door Fruit' },
+    summary: {
+      it: 'Disegna una porta su qualsiasi superficie, anche un muro pieno, la apre ed esce dall’altra parte.',
+      en: 'Draws a door on any surface, even a solid wall, opens it and steps through to the other side.',
+    },
+    visual: { art: 'door-door-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'ox-ox-fruit-model-giraffe',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ushi Ushi, modello Giraffa',
+      en: 'Ox-Ox Fruit, Model: Giraffe',
+    },
+    summary: {
+      it: 'Trasforma il corpo in una giraffa: collo e gambe si allungano tanto che un calcio arriva da una distanza che nessuno aveva calcolato.',
+      en: 'Turns the body into a giraffe: the neck and legs stretch so far that a kick lands from a distance nobody had measured.',
+    },
+    visual: { art: 'ox-ox-fruit-model-giraffe', tint: 'acid' },
+  },
+  {
+    id: 'elephant-elephant-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Zou Zou', en: 'Elephant-Elephant Fruit' },
+    summary: {
+      it: 'Trasforma in un elefante chi lo mangia, anche se non è vivo: una spada che ne ha mangiato uno diventa un elefante che obbedisce al padrone, e torna lama quando serve.',
+      en: 'Turns whatever eats it into an elephant, even a thing that is not alive: a sword fed one becomes an elephant that obeys its owner, and turns back into a blade when needed.',
+    },
+    visual: { art: 'elephant-elephant-fruit', tint: 'ivory' },
+  },
+  {
+    id: 'revive-revive-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Yomi Yomi', en: 'Revive-Revive Fruit' },
+    summary: {
+      it: 'Restituisce una vita dopo la morte: l’anima torna nel corpo che aveva lasciato, per quanto tempo quel corpo sia rimasto lì.',
+      en: 'Gives back one life after death: the soul returns to the body it left, however long that body has been lying there.',
+    },
+    visual: { art: 'revive-revive-fruit', tint: 'ivory' },
+  },
+  {
+    id: 'hollow-hollow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Horo Horo', en: 'Hollow-Hollow Fruit' },
+    summary: {
+      it: 'Manda in giro fantasmi che attraversano i muri e le persone, e chi ne viene attraversato cade in ginocchio a chiedere scusa di essere nato.',
+      en: 'Sends out ghosts that drift through walls and through people, and whoever one passes through drops to their knees apologising for being born.',
+    },
+    visual: { art: 'hollow-hollow-fruit', tint: 'lavender' },
+  },
+  {
+    id: 'clear-clear-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Suke Suke', en: 'Clear-Clear Fruit' },
+    summary: {
+      it: 'Rende invisibile il corpo, vestiti compresi: una stanza si attraversa allo scoperto e solo i passi lo tradiscono.',
+      en: 'Makes the body invisible, clothes and all, so a room is crossed in the open and only the footsteps give it away.',
+    },
+    visual: { art: 'clear-clear-fruit', tint: 'red' },
+  },
+  {
+    id: 'shadow-shadow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kage Kage', en: 'Shadow-Shadow Fruit' },
+    summary: {
+      it: 'Ritaglia l’ombra di chi la proietta e la pianta in un altro corpo, che si alza in piedi e combatte con la forza di chi l’ha persa.',
+      en: 'Cuts a shadow away from the one casting it and plants it in another body, which then stands up and fights with the strength of whoever lost it.',
+    },
+    visual: { art: 'shadow-shadow-fruit', tint: 'violet' },
+  },
+  {
+    id: 'paw-paw-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Nikyu Nikyu', en: 'Paw-Paw Fruit' },
+    summary: {
+      it: 'I cuscinetti sulle mani respingono gli attacchi e l’aria, che viene scagliata via ad alta velocità.',
+      en: 'The paw pads on the hands repel attacks and air, sending the air flying at high speed.',
+    },
+    visual: { art: 'paw-paw-fruit', tint: 'orange' },
+  },
+  {
+    id: 'glint-glint-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Pika Pika', en: 'Glint-Glint Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in luce: i colpi lo attraversano, e sia gli spostamenti sia i colpi vanno alla velocità a cui viaggia la luce.',
+      en: 'Turns the body to light, so blows pass through it, and lets it move and strike at the speed light travels.',
+    },
+    visual: { art: 'glint-glint-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-allosaurus',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Allosauro',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Allosaurus',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo prende la forma di un allosauro, una mascella lunga quanto un uomo e un morso che si chiude sull’armatura.',
+      en: 'An Ancient Model: the body takes the shape of an allosaurus, a jaw as long as a man is tall and a bite that closes on armour.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-allosaurus',
+      tint: 'green',
+    },
+  },
+  {
+    id: 'love-love-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mero Mero', en: 'Love-Love Fruit' },
+    summary: {
+      it: 'Trasforma in pietra chiunque guardi con desiderio chi l’ha mangiato, e quella pietra si spezza come qualsiasi altra.',
+      en: 'Turns to stone anyone who looks with desire at whoever ate it, and that stone breaks like any other stone.',
+    },
+    visual: { art: 'love-love-fruit', tint: 'pink' },
+  },
+  {
+    id: 'snake-snake-fruit-model-anaconda',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Hebi Hebi, modello Anaconda',
+      en: 'Snake-Snake Fruit, Model: Anaconda',
+    },
+    summary: {
+      it: 'Trasforma chi l’ha mangiato in un mezzo serpente, anaconda dalla vita in giù, che con la coda afferra una persona e la stringe.',
+      en: 'Turns whoever ate it into a half snake, an anaconda from the waist down, whose tail grabs a person and squeezes.',
+    },
+    visual: { art: 'snake-snake-fruit-model-anaconda', tint: 'teal' },
+  },
+  {
+    id: 'snake-snake-fruit-model-king-cobra',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Hebi Hebi, modello Cobra Reale',
+      en: 'Snake-Snake Fruit, Model: King Cobra',
+    },
+    summary: {
+      it: 'Trasforma chi l’ha mangiato in un mezzo serpente, cobra reale dalla vita in giù, che sputa veleno e colpisce con la coda.',
+      en: 'Turns whoever ate it into a half snake, a king cobra from the waist down, who spits poison and strikes with the tail.',
+    },
+    visual: { art: 'snake-snake-fruit-model-king-cobra', tint: 'ocher' },
+  },
+  {
+    id: 'venom-venom-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Doku Doku', en: 'Venom-Venom Fruit' },
+    summary: {
+      it: 'Produce veleno dal corpo: basta un alito per mettere a terra un uomo, e chi l’ha mangiato si nutre di veleno.',
+      en: 'Makes poison from the body: one breath of it floors a grown man, and the one who ate it eats poison for breakfast.',
+    },
+    visual: { art: 'venom-venom-fruit', tint: 'acid' },
+  },
+  {
+    id: 'horm-horm-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Horu Horu', en: 'Horm-Horm Fruit' },
+    summary: {
+      it: 'Fa spuntare dalle dita aghi che iniettano ormoni, e un’iniezione basta a trasformare un uomo in una donna.',
+      en: 'Grows needles from the fingers that inject hormones, and one injection is enough to turn a man into a woman.',
+    },
+    visual: { art: 'horm-horm-fruit', tint: 'sand' },
+  },
+  {
+    id: 'snip-snip-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Choki Choki', en: 'Snip-Snip Fruit' },
+    summary: {
+      it: 'Trasforma le mani in forbici che tagliano pietra e ferro come carta, e ciò che è stato tagliato si può poi piegare e portare via.',
+      en: 'Turns the hands into scissors that cut stone and iron like paper, and what has been cut can then be folded and carried away.',
+    },
+    visual: { art: 'snip-snip-fruit', tint: 'wine' },
+  },
+  {
+    id: 'bird-bird-fruit-model-phoenix',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Tori Tori, modello Fenice',
+      en: 'Bird-Bird Fruit, Model: Phoenix',
+    },
+    summary: {
+      it: 'Trasforma il corpo in una fenice avvolta di fiamma azzurra, e quella fiamma richiude le ferite alla stessa velocità con cui vengono aperte.',
+      en: 'Turns the body into a phoenix wrapped in blue flame, and that flame closes wounds as fast as they are opened.',
+    },
+    visual: { art: 'bird-bird-fruit-model-phoenix', tint: 'flamingo' },
+  },
+  {
+    id: 'sparkle-sparkle-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kira Kira', en: 'Sparkle-Sparkle Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in diamante, e una lama ci si ferma sopra.',
+      en: 'Turns the body to diamond, and a blade stops dead on it.',
+    },
+    visual: { art: 'sparkle-sparkle-fruit', tint: 'ivory' },
+  },
+  {
+    id: 'wash-wash-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Woshu Woshu', en: 'Wash-Wash Fruit' },
+    summary: {
+      it: 'Lava una persona come un panno: ne esce strizzata e piatta, un lenzuolo da stendere al filo, e tranquilla.',
+      en: 'Washes a person the way laundry is washed: they come out wrung flat, a sheet of cloth to be pegged on a line, and quiet.',
+    },
+    visual: { art: 'wash-wash-fruit', tint: 'pink' },
+  },
+  {
+    id: 'dark-dark-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Yami Yami', en: 'Dark-Dark Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in tenebra che risucchia dentro di sé tutto quello che ha intorno, e una mano posata su un altro mangiatore gli toglie il potere finché la presa regge.',
+      en: 'Turns the body to darkness that drags everything near it inside, and a hand laid on another eater takes that eater’s power away for as long as the grip holds.',
+    },
+    visual: { art: 'dark-dark-fruit', tint: 'violet' },
+  },
+  {
+    id: 'magma-magma-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Magu Magu', en: 'Magma-Magma Fruit' },
+    summary: {
+      it: 'Trasforma un pugno in magma e lo scaglia in avanti, sciogliendo un enorme blocco di ghiaccio.',
+      en: 'Turns a fist into magma and sends it forward, melting a huge block of ice.',
+    },
+    visual: { art: 'magma-magma-fruit', tint: 'red' },
+  },
+  {
+    id: 'tremor-tremor-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Gura Gura', en: 'Tremor-Tremor Fruit' },
+    summary: {
+      it: 'Permette di afferrare l’aria e incrinarla come vetro, e quella crepa prosegue nella terra e nel mare e li scuote entrambi.',
+      en: 'Lets the air itself be gripped and cracked like glass, and the crack runs on into the ground and the sea and shakes both.',
+    },
+    visual: { art: 'tremor-tremor-fruit', tint: 'blue' },
+  },
+  {
+    id: 'human-human-fruit-model-daibutsu',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Hito Hito, modello Daibutsu',
+      en: 'Human-Human Fruit, Model: Daibutsu',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un grande buddha d’oro alto molte volte tanto, e un suo colpo spacca un patibolo.',
+      en: 'Turns the body into a golden great buddha many times its own height, and one blow from it smashes a scaffold.',
+    },
+    visual: { art: 'human-human-fruit-model-daibutsu', tint: 'yellow' },
+  },
+  {
+    id: 'swamp-swamp-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Numa Numa', en: 'Swamp-Swamp Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in una palude senza fondo: i colpi ci affondano senza arrivare, e quello che viene inghiottito resta dentro finché non viene lasciato uscire.',
+      en: 'Turns the body into a swamp with no bottom: blows sink into it without landing, and whatever is swallowed stays inside until it is let out.',
+    },
+    visual: { art: 'swamp-swamp-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'mark-mark-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mato Mato', en: 'Mark-Mark Fruit' },
+    summary: {
+      it: 'Segna una persona come bersaglio, e ciò che viene lanciato verso di lei la trova anche da lontano.',
+      en: 'Marks a person as a target, and whatever is thrown towards them finds them even from far away.',
+    },
+    visual: { art: 'mark-mark-fruit', tint: 'red' },
+  },
+  {
+    id: 'egg-egg-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Tama Tama', en: 'Egg-Egg Fruit' },
+    summary: {
+      it: 'Fa del corpo un uovo: rotto il guscio non è finita, e quello che ne esce si trova a uno stadio diverso della propria crescita.',
+      en: 'Makes an egg of the body: broken open, it does not end there, and what steps out of the shell is at a different stage of its growth.',
+    },
+    visual: { art: 'egg-egg-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'turtle-turtle-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kame Kame', en: 'Turtle-Turtle Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in una tartaruga, con un guscio che lo protegge dai proiettili.',
+      en: 'Turns the body into a turtle, with a shell that protects it from bullets.',
+    },
+    visual: { art: 'turtle-turtle-fruit', tint: 'acid' },
+  },
+  {
+    id: 'gas-gas-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Gasu Gasu', en: 'Gas-Gas Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in gas.',
+      en: 'Turns the body into gas.',
+    },
+    visual: { art: 'gas-gas-fruit', tint: 'green' },
+  },
+  {
+    id: 'snow-snow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Yuki Yuki', en: 'Snow-Snow Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in neve: una lama lo attraversa e la neve si richiude, e quello che sta intorno viene sepolto da un freddo che blocca i movimenti.',
+      en: 'Turns the body to snow, which closes again behind a blade, and buries what is around it under a cold that stops a body moving.',
+    },
+    visual: { art: 'snow-snow-fruit', tint: 'ivory' },
+  },
+  {
+    id: 'artificial-dragon-dragon-fruit',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu artificiale',
+      en: 'Artificial Dragon-Dragon Fruit',
+    },
+    summary: {
+      it: 'Un frutto artificiale che trasforma in drago chi l’ha mangiato, e lo fa male: quello che ne esce è rosa e non più grande di un bambino.',
+      en: 'An artificial fruit that turns whoever ate it into a dragon, and does it badly: what comes out is pink and no bigger than a child.',
+    },
+    visual: { art: 'artificial-dragon-dragon-fruit', tint: 'green' },
+  },
+  {
+    id: 'op-op-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ope Ope', en: 'Op-Op Fruit' },
+    summary: {
+      it: 'Apre una sfera d’aria dentro cui tutto si può tagliare, sollevare e rimettere in un altro ordine, e ciò che viene tagliato lì dentro non sanguina.',
+      en: 'Opens a sphere of air inside which anything can be cut, lifted and put back in a different order, and nothing cut in there bleeds.',
+    },
+    visual: { art: 'op-op-fruit', tint: 'cyan' },
+  },
+  {
+    id: 'arms-arms-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Buki Buki', en: 'Arms-Arms Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in un’arma: il braccio diventa un cannone e spara.',
+      en: 'Turns the body into a weapon: an arm becomes a cannon and fires.',
+    },
+    visual: { art: 'arms-arms-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'spin-spin-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Guru Guru', en: 'Spin-Spin Fruit' },
+    summary: {
+      it: 'Mette a girare come eliche parti del corpo, abbastanza in fretta da sollevarlo da terra e da portare in volo qualcun altro.',
+      en: 'Sets parts of the body spinning like propellers, fast enough to lift it off the ground and carry someone else along.',
+    },
+    visual: { art: 'spin-spin-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'press-press-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Zushi Zushi', en: 'Press-Press Fruit' },
+    summary: {
+      it: 'Piega il peso delle cose: chi sta in piedi viene schiacciato a terra così forte da lasciare un buco nel pavimento.',
+      en: 'Bends the weight of things: whoever is standing is pressed flat into the floor, hard enough to leave a hole.',
+    },
+    visual: { art: 'press-press-fruit', tint: 'sand' },
+  },
+  {
+    id: 'stick-stick-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Beta Beta', en: 'Stick-Stick Fruit' },
+    summary: {
+      it: 'Fa colare dal corpo un muco appiccicoso, sufficiente a tenere ferma una persona.',
+      en: 'Pours sticky mucus out of the body, enough to hold a person in place.',
+    },
+    visual: { art: 'stick-stick-fruit', tint: 'wine' },
+  },
+  {
+    id: 'ripple-ripple-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Hira Hira', en: 'Ripple-Ripple Fruit' },
+    summary: {
+      it: 'Rende gli oggetti solidi flessibili come stoffa: un mantello d’acciaio continua a fermare le lame e una spada si piega a forma di toro.',
+      en: 'Makes solid objects flexible like cloth: a steel cape still blocks blades, while a sword folds into the shape of a bull.',
+    },
+    visual: { art: 'ripple-ripple-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'stone-stone-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ishi Ishi', en: 'Stone-Stone Fruit' },
+    summary: {
+      it: 'Permette al corpo di entrare nella pietra e di muoverla da dentro, così un muro o un pavimento si alzano in una forma con le braccia.',
+      en: 'Lets the body pass into stone and move it from the inside, so a wall or a floor can stand up as a shape with arms.',
+    },
+    visual: { art: 'stone-stone-fruit', tint: 'sand' },
+  },
+  {
+    id: 'art-art-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ato Ato', en: 'Art-Art Fruit' },
+    summary: {
+      it: 'Trasforma in opera d’arte tutto quello che tocca: una nave, un’arma, una persona, storti in forme che non funzionano più.',
+      en: 'Turns whatever it touches into a work of art: a ship, a weapon, a person, twisted into shapes that no longer work.',
+    },
+    visual: { art: 'art-art-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'swim-swim-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Sui Sui', en: 'Swim-Swim Fruit' },
+    summary: {
+      it: 'Permette al corpo di nuotare nel terreno solido come nell’acqua: si tuffa in una strada e riemerge alle spalle di chi lo stava guardando.',
+      en: 'Lets the body swim through solid ground the way it would through water: it dives into a street and surfaces behind whoever was watching it.',
+    },
+    visual: { art: 'swim-swim-fruit', tint: 'red' },
+  },
+  {
+    id: 'ton-ton-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ton Ton', en: 'Ton-Ton Fruit' },
+    summary: {
+      it: 'Porta il peso del corpo a dieci tonnellate per colpire un avversario cadendo dall’alto.',
+      en: 'Increases the body’s weight to ten tons to strike an opponent by dropping from above.',
+    },
+    visual: { art: 'ton-ton-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'glare-glare-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Giro Giro', en: 'Glare-Glare Fruit' },
+    summary: {
+      it: 'Dà occhi che guardano attraverso un muro e per tutta una città, e leggono quello che passa per la testa di chi inquadrano.',
+      en: 'Gives eyes that look through a wall and across an entire town, and read what is going on in the head of whoever they are pointed at.',
+    },
+    visual: { art: 'glare-glare-fruit', tint: 'orange' },
+  },
+  {
+    id: 'pop-pop-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Pamu Pamu', en: 'Pop-Pop Fruit' },
+    summary: {
+      it: 'Fa gonfiare fino a scoppiare tutto quello che ha toccato: un sasso, un muro, un pezzo di metallo, un cappello.',
+      en: 'Makes anything it has touched swell up until it bursts: a stone, a wall, a piece of metal, a hat.',
+    },
+    visual: { art: 'pop-pop-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'stitch-stitch-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Nui Nui', en: 'Stitch-Stitch Fruit' },
+    summary: {
+      it: 'Cuce con un ago, e un uomo cucito al terreno su cui sta non riesce più a muoversi.',
+      en: 'Sews with a needle, and a man stitched to the ground he is standing on can no longer move.',
+    },
+    visual: { art: 'stitch-stitch-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'hobby-hobby-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Hobi Hobi', en: 'Hobby-Hobby Fruit' },
+    summary: {
+      it: 'Un tocco trasforma una persona in un giocattolo, e quel giocattolo deve fare quello che gli ordina chi l’ha creato.',
+      en: 'One touch turns a person into a toy, and the toy has to do what it is told by the one who made it.',
+    },
+    visual: { art: 'hobby-hobby-fruit', tint: 'sand' },
+  },
+  {
+    id: 'jacket-jacket-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Giacca Giacca', en: 'Jacket-Jacket Fruit' },
+    summary: {
+      it: 'Trasforma chi lo mangia in una giacca che un altro può indossare: una volta addosso, prende il controllo del corpo che lo porta e combatte con la sua forza.',
+      en: 'Turns whoever eats it into a jacket that someone else can put on: once worn, the eater takes control of the body wearing it and fights with its strength.',
+    },
+    visual: { art: 'jacket-jacket-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'barrier-barrier-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Bari Bari', en: 'Barrier-Barrier Fruit' },
+    summary: {
+      it: 'Alza in aria un muro invisibile che niente attraversa: una cannonata, una spada, un pugno, tutti si fermano di netto contro di esso.',
+      en: 'Raises an invisible wall in mid-air that nothing gets past: a cannonball, a sword, a fist, all of them stop flat against it.',
+    },
+    visual: { art: 'barrier-barrier-fruit', tint: 'wine' },
+  },
+  {
+    id: 'heal-heal-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Chiyu Chiyu', en: 'Heal-Heal Fruit' },
+    summary: {
+      it: 'Trasforma le lacrime in cura: una ferita si richiude e l’osso torna al suo posto, al prezzo delle forze di chi sta piangendo.',
+      en: 'Turns tears into a cure: a wound closes and bone goes back where it belongs, paid for out of the strength of whoever is crying.',
+    },
+    visual: { art: 'heal-heal-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'string-string-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Ito Ito', en: 'String-String Fruit' },
+    summary: {
+      it: 'Fa uscire fili dalle dita, sottili abbastanza da tagliare la pietra e resistenti abbastanza da appendere una persona e muoverle le braccia al posto suo.',
+      en: 'Draws strings out of the fingers, thin enough to cut through stone and strong enough to hang a person from and move their arms for them.',
+    },
+    visual: { art: 'string-string-fruit', tint: 'pink' },
+  },
+  {
+    id: 'calm-calm-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Nagi Nagi', en: 'Calm-Calm Fruit' },
+    summary: {
+      it: 'Mette una bolla di silenzio attorno a quello che ci sta dentro: urla, spari e passi avvengono e da fuori non se ne sente niente.',
+      en: 'Puts a bubble of silence around whatever is inside it: shouting, gunfire and footsteps all happen, and outside not one of them is heard.',
+    },
+    visual: { art: 'calm-calm-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'elephant-elephant-fruit-ancient-model-mammoth',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Zou Zou, modello Mammut',
+      en: 'Elephant-Elephant Fruit, Ancient Model: Mammoth',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa un mammut, zanne lunghe come un albero di nave, che attraversa una casa senza rallentare.',
+      en: 'An Ancient Model: the body becomes a mammoth, tusks the length of a ship’s mast, and it walks through a house without slowing down.',
+    },
+    visual: {
+      art: 'elephant-elephant-fruit-ancient-model-mammoth',
+      tint: 'teal',
+    },
+  },
+  {
+    id: 'scroll-scroll-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Maki Maki', en: 'Scroll-Scroll Fruit' },
+    summary: {
+      it: 'Crea e controlla pergamene che catturano un attacco al loro interno e lo restituiscono dopo essersi avvolte attorno a chi lo ha lanciato.',
+      en: 'Creates and controls scrolls that capture an attack inside them and release it after wrapping around whoever launched it.',
+    },
+    visual: { art: 'scroll-scroll-fruit', tint: 'red' },
+  },
+  {
+    id: 'castle-castle-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Shiro Shiro', en: 'Castle-Castle Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in una fortezza in cui gli altri possono entrare: uomini e cannoni ci vivono dentro, e quello che sparano esce dalle mura.',
+      en: 'Turns the body into a fortress others can walk into: men and cannon live inside it, and what they fire comes out through the walls.',
+    },
+    visual: { art: 'castle-castle-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'memo-memo-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Memo Memo', en: 'Memo-Memo Fruit' },
+    summary: {
+      it: 'Estrae un ricordo da una testa come una striscia di pellicola, ne taglia via un pezzo e rimette dentro il resto, e la testa non se ne accorge.',
+      en: 'Pulls a memory out of a head like a strip of film, cuts a piece away and puts the rest back, and the head never notices.',
+    },
+    visual: { art: 'memo-memo-fruit', tint: 'orange' },
+  },
+  {
+    id: 'soul-soul-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Soru Soru', en: 'Soul-Soul Fruit' },
+    summary: {
+      it: 'Toglie un pezzo di anima a chi si spaventa e lo mette dentro un oggetto, che apre occhi e bocca e comincia a prendere ordini.',
+      en: 'Takes a piece of the soul out of whoever is frightened and puts it into a thing, which opens eyes and a mouth and starts taking orders.',
+    },
+    visual: { art: 'soul-soul-fruit', tint: 'wine' },
+  },
+  {
+    id: 'lick-lick-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Pero Pero', en: 'Lick-Lick Fruit' },
+    summary: {
+      it: 'Crea e modella caramella, fino a costruire la replica di un intero laboratorio.',
+      en: 'Creates and shapes candy, enough to build a replica of an entire laboratory.',
+    },
+    visual: { art: 'lick-lick-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'bis-bis-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Bisu Bisu', en: 'Bis-Bis Fruit' },
+    summary: {
+      it: 'Produce biscotto dal corpo e lo cuoce in soldati con spada e scudo, tanti quanti l’impasto ne consente.',
+      en: 'Makes biscuit from the body and bakes it into soldiers with swords and shields, as many of them as there is dough for.',
+    },
+    visual: { art: 'bis-bis-fruit', tint: 'sand' },
+  },
+  {
+    id: 'mirror-mirror-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mira Mira', en: 'Mirror-Mirror Fruit' },
+    summary: {
+      it: 'Fa di ogni specchio una porta: chi ci entra esce da un altro specchio da un’altra parte, oppure resta nel mondo dietro il vetro.',
+      en: 'Makes any mirror a door: whoever steps in comes out of another mirror somewhere else, or stays in the world behind the glass.',
+    },
+    visual: { art: 'mirror-mirror-fruit', tint: 'wine' },
+  },
+  {
+    id: 'bird-bird-fruit-model-albatross',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Tori Tori, modello Albatro',
+      en: 'Bird-Bird Fruit, Model: Albatross',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un albatro, con becco e ali.',
+      en: 'Turns the body into an albatross, with a beak and wings.',
+    },
+    visual: { art: 'bird-bird-fruit-model-albatross', tint: 'ocher' },
+  },
+  {
+    id: 'mochi-mochi-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mochi Mochi', en: 'Mochi-Mochi Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in mochi: si allunga e incassa un colpo senza strapparsi, e la stessa pasta si rapprende attorno a chi la tocca e lo tiene fermo.',
+      en: 'Turns the body to mochi: it stretches and takes a blow without tearing, and the same paste sets around whoever touches it and holds them there.',
+    },
+    visual: { art: 'mochi-mochi-fruit', tint: 'ivory' },
+  },
+  {
+    id: 'wring-wring-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Shibo Shibo', en: 'Wring-Wring Fruit' },
+    summary: {
+      it: 'Strizza una persona come un panno, finché resta un corpo rinsecchito e il suo succo si può bere.',
+      en: 'Wrings a person out like a cloth, until what is left is a shrivelled body and a juice that can be drunk.',
+    },
+    visual: { art: 'wring-wring-fruit', tint: 'pink' },
+  },
+  {
+    id: 'book-book-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Buku Buku', en: 'Book-Book Fruit' },
+    summary: {
+      it: 'Chiude una persona dentro un libro, dove resta ferma sulla pagina, e permette di spostarsi da un libro aperto all’altro.',
+      en: 'Shuts a person inside a book, where they stay flat on the page, and lets whoever ate it move from one open book to another.',
+    },
+    visual: { art: 'book-book-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'heat-heat-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Netsu Netsu', en: 'Heat-Heat Fruit' },
+    summary: {
+      it: 'Scalda gli oggetti che tocca, rendendo una spada troppo calda da impugnare.',
+      en: 'Heats objects by touch, making a sword too hot to hold.',
+    },
+    visual: { art: 'heat-heat-fruit', tint: 'orange' },
+  },
+  {
+    id: 'puff-puff-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Hoya Hoya', en: 'Puff-Puff Fruit' },
+    summary: {
+      it: 'Strofinandosi la pancia se ne fa uscire un gigante armato, che mena colpi e combatte mentre chi l’ha chiamato resta fermo dietro.',
+      en: 'Rubbing the belly brings an armed giant out of it, swinging and fighting while whoever called it stands still behind.',
+    },
+    visual: { art: 'puff-puff-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'cook-cook-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kuku Kuku', en: 'Cook-Cook Fruit' },
+    summary: {
+      it: 'Trasforma gli oggetti in cibo: un tronco tagliato diventa carne pronta da mangiare.',
+      en: 'Turns objects into food: a cut log becomes meat ready to eat.',
+    },
+    visual: { art: 'cook-cook-fruit', tint: 'orange' },
+  },
+  {
+    id: 'soot-soot-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Susu Susu', en: 'Soot-Soot Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in fuliggine, così i proiettili lo attraversano, e la fuliggine prende la forma che le si dà: corvi che si staccano dal corpo e beccano l’avversario, o punte sottili che schizzano su dal terreno.',
+      en: 'Turns the body to soot, so bullets pass through it, and the soot takes whatever shape it is given: crows that break off the body and peck at an opponent, or thin spikes that shoot up out of the ground.',
+    },
+    visual: { art: 'soot-soot-fruit', tint: 'sand' },
+  },
+  {
+    id: 'pump-pump-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kobu Kobu', en: 'Pump-Pump Fruit' },
+    summary: {
+      it: 'Sventolando una bandiera tira fuori dalla gente comune la forza che non sapeva di avere, e la manda avanti con quello che ha in mano.',
+      en: 'A wave of a flag pulls out of ordinary people the strength they did not know they had, and sends them forward with whatever they are holding.',
+    },
+    visual: { art: 'pump-pump-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'push-push-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Oshi Oshi', en: 'Push-Push Fruit' },
+    summary: {
+      it: 'Spinge il terreno come fosse argilla, e la roccia cede sotto le mani.',
+      en: 'Pushes the ground as though it were clay, and rock gives way under the hands.',
+    },
+    visual: { art: 'push-push-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'millet-millet-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Kibi Kibi', en: 'Millet-Millet Fruit' },
+    summary: {
+      it: 'Ricava gnocchi di miglio dalle guance, e l’animale che ne mangia uno diventa fedele all’istante.',
+      en: 'Makes millet dumplings out of the cheeks, and any animal that eats one turns loyal on the spot.',
+    },
+    visual: { art: 'millet-millet-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'straw-straw-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Wara Wara', en: 'Straw-Straw Fruit' },
+    summary: {
+      it: 'Tiene bambole di paglia che fanno le veci di altre persone, così una ferita destinata a chi l’ha mangiato finisce addosso a una di loro.',
+      en: 'Keeps straw dolls that stand in for other people, so a wound meant for whoever ate it lands on one of them instead.',
+    },
+    visual: { art: 'straw-straw-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-spinosaurus',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Spinosauro',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Spinosaurus',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa uno spinosauro, una vela lungo la schiena e un muso abbastanza lungo da raccogliere un uomo dalla strada.',
+      en: 'An Ancient Model: the body becomes a spinosaurus, a sail along the back and a snout long enough to pick a man up off the street.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-spinosaurus',
+      tint: 'yellow',
+    },
+  },
+  {
+    id: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Hebi Hebi, modello Yamata no Orochi',
+      en: 'Snake-Snake Fruit, Mythical Model: Yamata no Orochi',
+    },
+    summary: {
+      it: 'Un modello mitologico: il corpo diventa un serpente con otto teste su otto colli, ognuna con le proprie fauci, che colpiscono da otto direzioni insieme.',
+      en: 'A Mythical Model: the body becomes a serpent with eight heads on eight necks, each with its own jaws, striking from eight directions at once.',
+    },
+    visual: {
+      art: 'snake-snake-fruit-mythical-model-yamata-no-orochi',
+      tint: 'acid',
+    },
+  },
+  {
+    id: 'fish-fish-fruit-mythical-model-azure-dragon',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Uo Uo, modello Drago Azzurro',
+      en: 'Fish-Fish Fruit, Mythical Model: Azure Dragon',
+    },
+    summary: {
+      it: 'Un modello mitologico: il corpo diventa un drago orientale lungo come una strada, che si tiene in cielo e travolge quello che ha sotto.',
+      en: 'A Mythical Model: the body becomes an eastern dragon as long as a street, which holds itself up in the sky and blasts whatever is under it.',
+    },
+    visual: {
+      art: 'fish-fish-fruit-mythical-model-azure-dragon',
+      tint: 'azure',
+    },
+  },
+  {
+    id: 'ripe-ripe-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Juku Juku', en: 'Ripe-Ripe Fruit' },
+    summary: {
+      it: 'Fa maturare quello che tocca e poi lo spinge oltre, finché marcisce: il terreno toccato si sfalda e si apre in una voragine.',
+      en: 'Ripens what it touches and then carries it past ripe until it rots, so the ground under a hand crumbles and opens into a pit.',
+    },
+    visual: { art: 'ripe-ripe-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-pteranodon',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Pteranodonte',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Pteranodon',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa uno pteranodonte, abbastanza forte in volo da respingere una nave giù da una cascata.',
+      en: 'An Ancient Model: the body becomes a pteranodon, strong enough in flight to drive a ship back down a waterfall.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-pteranodon',
+      tint: 'teal',
+    },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Brachiosauro',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Brachiosaurus',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa un brachiosauro, un dinosauro enorme dal collo lungo.',
+      en: 'An Ancient Model: the body becomes a brachiosaurus, an enormous dinosaur with a long neck.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-brachiosaurus',
+      tint: 'ocher',
+    },
+  },
+  {
+    id: 'time-time-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Toki Toki', en: 'Time-Time Fruit' },
+    summary: {
+      it: 'Manda una persona avanti nel tempo, di anni o di secoli, e mai indietro: parte da un giorno e arriva in un altro senza che le sia cambiato niente.',
+      en: 'Sends a person forward in time, by years or by centuries, and never back: they leave one day and arrive on another with nothing about them changed.',
+    },
+    visual: { art: 'time-time-fruit', tint: 'ice' },
+  },
+  {
+    id: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Neko Neko, modello Tigre dai denti a sciabola',
+      en: 'Cat-Cat Fruit, Ancient Model: Sabre-Tooth Tiger',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa una tigre dai denti a sciabola, due zanne oltre la mascella e tutto il peso dietro ogni zampata.',
+      en: 'An Ancient Model: the body becomes a sabre-toothed tiger, two teeth hanging past the jaw and the whole weight behind every swipe.',
+    },
+    visual: {
+      art: 'cat-cat-fruit-ancient-model-sabre-tooth-tiger',
+      tint: 'sand',
+    },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Pachicefalosauro',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Pachycephalosaurus',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa un pachicefalosauro, il cui senso è tutto in un cranio di osso pieno da mandare di testa addosso a qualcuno.',
+      en: 'An Ancient Model: the body becomes a pachycephalosaurus, whose whole point is a skull of solid bone driven head first into somebody.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-pachycephalosaurus',
+      tint: 'yellow',
+    },
+  },
+  {
+    id: 'dragon-dragon-fruit-ancient-model-triceratops',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Triceratopo',
+      en: 'Dragon-Dragon Fruit, Ancient Model: Triceratops',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa un triceratopo, tre corna davanti a un collare d’osso, e la carica non si ferma davanti a un muro.',
+      en: 'An Ancient Model: the body becomes a triceratops, three horns in front of a collar of bone, and the charge does not stop for a wall.',
+    },
+    visual: {
+      art: 'dragon-dragon-fruit-ancient-model-triceratops',
+      tint: 'acid',
+    },
+  },
+  {
+    id: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Kumo Kumo, modello Rosamygale Grauvogeli',
+      en: 'Spider-Spider Fruit, Ancient Model: Rosamygale Grauvogeli',
+    },
+    summary: {
+      it: 'Un modello ancestrale: il corpo diventa un ragno grande come una stanza, che tesse la tela dall’alto e aspetta al centro.',
+      en: 'An Ancient Model: the body becomes a spider the size of a room, which spins its web from above and waits in the middle of it.',
+    },
+    visual: {
+      art: 'spider-spider-fruit-ancient-model-rosamygale-grauvogeli',
+      tint: 'green',
+    },
+  },
+  {
+    id: 'brush-brush-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Fude Fude', en: 'Brush-Brush Fruit' },
+    summary: {
+      it: 'Quello che viene dipinto col pennello esce dalla carta e si muove: un uccello, un cavallo, un muro di fuoco, disegnati male come solo quella mano sa fare.',
+      en: 'Whatever is painted with the brush comes off the paper and moves: a bird, a horse, a wall of fire, all drawn as badly as the hand can draw.',
+    },
+    visual: { art: 'brush-brush-fruit', tint: 'wine' },
+  },
+  {
+    id: 'dog-dog-fruit-model-okuchi-no-makami',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Inu Inu, modello Okuchi no Makami',
+      en: 'Dog-Dog Fruit, Model: Okuchi no Makami',
+    },
+    summary: {
+      it: 'Trasforma il corpo in un lupo bianco, la divinità che protegge Wano, con un soffio abbastanza forte da tenere testa a quello di Kaido.',
+      en: 'Turns the body into a white wolf, the guardian deity of Wano, with a blast of breath strong enough to meet Kaido’s own.',
+    },
+    visual: { art: 'dog-dog-fruit-model-okuchi-no-makami', tint: 'ocher' },
+  },
+  {
+    id: 'magnet-magnet-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Jiki Jiki', en: 'Magnet-Magnet Fruit' },
+    summary: {
+      it: 'Richiama il metallo nell’aria da qualsiasi distanza e lo compatta, così una mano tesa si ritrova a reggere una massa di ferro grande come una casa.',
+      en: 'Pulls metal through the air from any distance and packs it together, so an open hand ends up holding a mass of iron the size of a house.',
+    },
+    visual: { art: 'magnet-magnet-fruit', tint: 'vermilion' },
+  },
+  {
+    id: 'woods-woods-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Mori Mori', en: 'Woods-Woods Fruit' },
+    summary: {
+      it: 'Trasforma il corpo in legno e vegetazione, e mette fuori radici che si allargano sul terreno e afferrano chi ci sta sopra.',
+      en: 'Turns the body to wood and growing plant, and puts out roots that spread over the ground and take hold of whoever stands on it.',
+    },
+    visual: { art: 'woods-woods-fruit', tint: 'teal' },
+  },
+  {
+    id: 'brain-brain-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Nomi Nomi', en: 'Brain-Brain Fruit' },
+    summary: {
+      it: 'Permette alla testa di contenere qualsiasi cosa senza riempirsi mai: niente di quello che è stato letto o capito va perduto, al prezzo di un cranio che deve crescere per starci dietro.',
+      en: 'Lets the head hold anything put into it and never fill up, so nothing read or worked out is ever lost, at the price of a skull that has to keep growing.',
+    },
+    visual: { art: 'brain-brain-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'age-age-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Toshi Toshi', en: 'Age-Age Fruit' },
+    summary: {
+      it: 'Cambia l’età di una persona: un uomo fatto prosegue da bambino, un bambino si rialza adulto, il corpo spostato lungo i propri anni.',
+      en: 'Changes how old a person is: a grown man walks on as a child, a child stands up grown, the body shifted along its own years.',
+    },
+    visual: { art: 'age-age-fruit', tint: 'orange' },
+  },
+  {
+    id: 'whip-whip-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Muchi Muchi', en: 'Whip-Whip Fruit' },
+    summary: {
+      it: 'Chi l’ha mangiato fa obbedire alla frusta anche le cose: un edificio colpito si sposta dove gli viene ordinato.',
+      en: 'Makes even things obey its eater’s whip: a building that is struck moves wherever it is told.',
+    },
+    visual: { art: 'whip-whip-fruit', tint: 'magenta' },
+  },
+  {
+    id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Inu Inu, modello Volpe a Nove Code',
+      en: 'Dog-Dog Fruit, Mythical Model: Nine-Tailed Fox',
+    },
+    summary: {
+      it: 'Un modello mitologico che permette di trasformarsi in una volpe a nove code e di assumere l’aspetto di un’altra persona.',
+      en: 'A Mythical Model that allows transformation into a nine-tailed fox and impersonation of another person.',
+    },
+    visual: {
+      art: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
+      tint: 'sand',
+    },
+  },
+  {
+    id: 'gabu-gabu-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Gabu Gabu', en: 'Gabu-Gabu Fruit' },
+    summary: {
+      it: 'Trasforma in liquore il corpo di chi l’ha mangiato: viene ingoiato a fiaschi interi e risputato fuori in un getto che prende fuoco.',
+      en: 'Turns the body of whoever ate it to liquor: it goes down by the flaskful and comes back out in a stream that catches fire.',
+    },
+    visual: { art: 'gabu-gabu-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'huge-huge-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Deka Deka', en: 'Huge-Huge Fruit' },
+    summary: {
+      it: 'Aumenta le dimensioni del corpo: un gigante diventa tanto alto da stare in piedi sul fondo del mare con la testa fuori dall’acqua.',
+      en: 'Enlarges the body: a giant grows tall enough to stand on the seabed with his head above the water.',
+    },
+    visual: { art: 'huge-huge-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'island-island-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Shima Shima', en: 'Island-Island Fruit' },
+    summary: {
+      it: 'Permette di fondersi con un’isola e di percepire ciò che accade sul suo territorio.',
+      en: 'Allows the user to merge with an island and sense what happens across it.',
+    },
+    visual: { art: 'island-island-fruit', tint: 'sand' },
+  },
+  {
+    id: 'sick-sick-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Shiku Shiku', en: 'Sick-Sick Fruit' },
+    summary: {
+      it: 'Crea malattie contagiose: una trasforma gli uomini in donne e si diffonde tra i membri di una ciurma.',
+      en: 'Creates contagious diseases: one turns men into women and spreads among a crew.',
+    },
+    visual: { art: 'sick-sick-fruit', tint: 'wine' },
+  },
+  {
+    id: 'strong-strong-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Riki Riki', en: 'Strong-Strong Fruit' },
+    summary: {
+      it: 'Conferisce una forza sufficiente a strappare una montagna dal terreno, sollevarla e scagliarla.',
+      en: 'Grants enough strength to tear a mountain out of the ground, lift it and throw it.',
+    },
+    visual: { art: 'strong-strong-fruit', tint: 'flamingo' },
+  },
+  {
+    id: 'warp-warp-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Wapu Wapu', en: 'Warp-Warp Fruit' },
+    summary: {
+      it: 'Sposta un corpo da un punto a un altro senza attraversare lo spazio in mezzo: sparisce da dov’era ed è già altrove.',
+      en: 'Moves a body from one place to another without crossing the ground in between: it is gone from where it stood and already somewhere else.',
+    },
+    visual: { art: 'warp-warp-fruit', tint: 'pink' },
+  },
+  {
+    id: 'ride-ride-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Nori Nori', en: 'Ride-Ride Fruit' },
+    summary: {
+      it: 'Chi l’ha mangiato prende il comando di qualunque cosa cavalchi, anche di una macchina che si è rivoltata contro la sua parte.',
+      en: 'Puts whatever its eater rides under their command, even a machine that has turned against its own side.',
+    },
+    visual: { art: 'ride-ride-fruit', tint: 'yellow' },
+  },
+  {
+    id: 'grow-grow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Iku Iku', en: 'Grow-Grow Fruit' },
+    summary: {
+      it: 'Fa diventare giganti i libri che entrano in biblioteca, così un volume minuscolo si legge alla misura di un gigante, e torna piccolo appena ne esce.',
+      en: 'Makes every book that enters the library giant-sized, so a tiny volume reads at a giant’s scale, and it shrinks back as soon as it leaves.',
+    },
+    visual: { art: 'grow-grow-fruit', tint: 'ocher' },
+  },
+  {
+    id: 'arrow-arrow-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Aro Aro', en: 'Arrow-Arrow Fruit' },
+    summary: {
+      it: 'Scocca frecce che nascono dai vestiti, e quelle che girano attorno al bersaglio segnano in anticipo il punto dove colpirà.',
+      en: 'Looses arrows spun out of her clothes, and those circling a target mark in advance the spot where her blow will land.',
+    },
+    visual: { art: 'arrow-arrow-fruit', tint: 'lavender' },
+  },
+  {
+    id: 'thorn-thorn-fruit',
+    kind: 'fruit',
+    name: { it: 'Frutto Iba Iba', en: 'Thorn-Thorn Fruit' },
+    summary: {
+      it: 'Avvolge chi vuole in rovi di spine invisibili, e chi prova a toccarlo si ritrova trafitto senza aver visto niente.',
+      en: 'Wraps whoever it chooses in invisible thorns, and anyone who reaches out to touch them is run through without having seen a thing.',
+    },
+    visual: { art: 'thorn-thorn-fruit', tint: 'green' },
+  },
+  {
+    id: 'dragon-dragon-fruit-mythical-model-kirin',
+    kind: 'fruit',
+    name: {
+      it: 'Frutto Ryu Ryu, modello Kirin',
+      en: 'Dragon-Dragon Fruit, Mythical Model: Kirin',
+    },
+    summary: {
+      it: 'Un modello mitologico: il corpo diventa un qilin, e chi ne subisce il potere cade addormentato mentre i suoi incubi prendono corpo come mostri veri.',
+      en: 'A Mythical Model: the body becomes a qilin, and whoever falls under its power drops asleep while their nightmares take shape as real monsters.',
+    },
+    visual: { art: 'dragon-dragon-fruit-mythical-model-kirin', tint: 'ice' },
+  },
+]

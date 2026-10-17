@@ -1,4 +1,4 @@
-import { byNumber, byString, byValues } from 'sort-es'
+import { byString } from 'sort-es'
 import { describe, expect, it } from 'vitest'
 
 import { LOCALES } from '~/i18n/locales'
@@ -10,11 +10,12 @@ import {
 } from '~/lib/progress/episode'
 
 import { DRAWINGS } from './art'
-import { CHARACTER_DOSSIERS, dossierOf, getCharacter } from './characters'
+import { dossierOf, getCharacter } from './characters'
 import { datedOf, eatersOf } from './dated'
 import { entities } from './entities'
 import { FRUIT_FORMS } from './fruit-forms'
 import { fruitFormOf, fruits, fruitsOfForm, getFruit } from './fruits'
+import { CHARACTER_DOSSIERS } from './sagas'
 import type { Entity } from './types'
 
 /**
@@ -25,7 +26,10 @@ import type { Entity } from './types'
  * character's page print its fruit as a link without checking anything: the
  * row is only built from an entry the reader has reached. The second is that
  * it opens no sooner either, in both units: a fruit page open before any
- * entry that names it would tell a reader what the story has not.
+ * entry that names it would tell a reader what the story has not. Both hold
+ * by construction, since `~/data/entities` reads a fruit's thresholds off
+ * those entries; `~/server/archive/fruits.test.ts` checks every fruit's
+ * pages open with its eater's at both thresholds.
  */
 
 /** One dossier entry that names a fruit: who, when, and which fruits. */
@@ -33,8 +37,6 @@ interface Mention {
   character: Entity
   episode: number
   fruitIds: string[]
-  /** The chapter a reader reaches the entry at (its gate in `~/data/dated`). */
-  opens: number
 }
 
 /** Every dossier entry that names a fruit, flattened out of the archive. */
@@ -48,12 +50,7 @@ function readMentions(): Mention[] {
     }
 
     for (const entry of datedOf(character, 'devilFruit')) {
-      found.push({
-        character,
-        episode: entry.episode,
-        fruitIds: entry.value,
-        opens: entry.gate.revealedAtChapter,
-      })
+      found.push({ character, episode: entry.episode, fruitIds: entry.value })
     }
   }
 
@@ -62,30 +59,9 @@ function readMentions(): Mention[] {
 
 const MENTIONS = readMentions()
 
-/**
- * Every mention of one fruit, in the order the archive files a fruit's
- * thresholds from: the earliest episode, then the earliest chapter among the
- * characters that name it there, then the id, so the rule is the same whatever
- * order the dossiers are read in.
- */
+/** Every mention of one fruit. */
 function mentionsOf(id: string): Mention[] {
-  return MENTIONS.filter((mention) => mention.fruitIds.includes(id)).toSorted(
-    byValues([
-      [(mention) => mention.episode, byNumber()],
-      [(mention) => mention.character.revealedAtChapter, byNumber()],
-      [(mention) => mention.character.id, byString()],
-    ]),
-  )
-}
-
-/** The mention a fruit's thresholds are filed from, or a failure naming it. */
-function firstMentionOf(id: string): Mention {
-  const first = mentionsOf(id).at(0)
-  if (first === undefined) {
-    throw new Error(`No dossier names ${id}`)
-  }
-
-  return first
+  return MENTIONS.filter((mention) => mention.fruitIds.includes(id))
 }
 
 /**
@@ -230,25 +206,33 @@ describe('the relation between a character and a fruit', () => {
   })
 })
 
-describe('the fruit thresholds', () => {
-  it('files every fruit at the episode its earliest dossier entry names it', () => {
-    for (const fruit of fruits) {
-      expect(fruit.revealedAtEpisode, fruit.id).toBe(
-        firstMentionOf(fruit.id).episode,
-      )
-    }
-  })
-
-  it('files every fruit at the earliest chapter an entry naming it opens at', () => {
-    // An entry with no chapter of its own opens at the first chapter that
-    // reaches its episode, so a fruit named long after its eater's debut
-    // waits for the chapter that names it, not the one that met the eater.
-    for (const fruit of fruits) {
-      const opens = mentionsOf(fruit.id).map((mention) => mention.opens)
-
-      expect(fruit.revealedAtChapter, fruit.id).toBe(Math.min(...opens))
-    }
-  })
+describe('the corrected naming scenes', () => {
+  // The thresholds are read off the eaters' entries, so these pin the ones
+  // corrected against the wiki: a later edit to one of those entries that
+  // moves the fruit fails here rather than opening it early.
+  it.each([
+    {
+      id: 'dog-dog-fruit-mythical-model-nine-tailed-fox',
+      episode: 917,
+      chapter: 925,
+    },
+    { id: 'huge-huge-fruit', episode: 1113, chapter: 1080 },
+    { id: 'island-island-fruit', episode: 1113, chapter: 1080 },
+    { id: 'snake-snake-fruit-model-anaconda', episode: 413, chapter: 521 },
+    { id: 'snake-snake-fruit-model-king-cobra', episode: 413, chapter: 521 },
+    { id: 'sick-sick-fruit', episode: 1093, chapter: 1063 },
+    { id: 'strong-strong-fruit', episode: 1093, chapter: 1063 },
+    { id: 'warp-warp-fruit', episode: 1093, chapter: 1063 },
+    { id: 'paw-paw-fruit', episode: 376, chapter: 484 },
+  ])(
+    'files $id at episode $episode and chapter $chapter',
+    ({ id, episode, chapter }) => {
+      expect(getFruit(id)).toMatchObject({
+        revealedAtEpisode: episode,
+        revealedAtChapter: chapter,
+      })
+    },
+  )
 })
 
 describe('getFruit', () => {

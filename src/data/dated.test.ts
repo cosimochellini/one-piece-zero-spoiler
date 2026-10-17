@@ -2,7 +2,8 @@ import { describe, expect, it } from 'vitest'
 
 import { type Bookmark, CHAPTER_CEILING } from '~/lib/progress/episode'
 
-import { episodeAtChapter, TIMELINES } from './chapters'
+import { episodeAtChapter } from './chapter-table'
+import { TIMELINES } from './chapters'
 import { datedOf, eatersOf, latestOf, reachedOf } from './dated'
 import { fruits } from './fruits'
 import { reveal } from './reveal'

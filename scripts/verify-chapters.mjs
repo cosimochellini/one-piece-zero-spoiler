@@ -13,7 +13,7 @@
 // what it is (`namingChapterOf`, or `NAMED_AT` where that was checked by
 // hand), because a fruit is filed where it is named, not where it is first
 // used. A fruit's chapter is derived from the dossier
-// entry that names it (`src/data/records/fruits.ts`), so a too-low fruit is
+// entry that names it (`src/data/entities.ts`), so a too-low fruit is
 // fixed by pinning `chapter:` on that entry, not here.
 //
 // Episodes are read from the same line and fail the same way: a record

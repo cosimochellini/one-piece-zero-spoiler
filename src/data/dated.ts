@@ -2,14 +2,10 @@ import { byNumber, byValue, byValues } from 'sort-es'
 
 import type { Gated } from '~/lib/progress/spoiler'
 
-import {
-  chapterAtEpisode,
-  type Field,
-  type Fields,
-  timelineOf,
-} from './chapters'
-import { CHARACTER_DOSSIERS, characters, getCharacter } from './characters'
+import { type Field, type Fields, gateOf, timelineOf } from './chapter-table'
+import { characters, getCharacter } from './characters'
 import type { Reveal } from './reveal'
+import { CHARACTER_DOSSIERS } from './sagas'
 import type { Dated, Entity, Story } from './types'
 
 /**
@@ -27,23 +23,6 @@ import type { Dated, Entity, Story } from './types'
 /** One dated entry, with the gate a reader must pass to see it. */
 export interface Opened<T> extends Dated<T> {
   gate: Gated
-}
-
-/**
- * When a dated entry may be shown: from its episode, and from the chapter it
- * declares or, without one, the first chapter that reaches its episode — and
- * never before its record, whichever is later in each unit.
- */
-function gateOf(entry: Dated<unknown>, owner: Gated): Gated {
-  const revealedAtEpisode = Math.max(owner.revealedAtEpisode, entry.episode)
-
-  return {
-    revealedAtEpisode,
-    revealedAtChapter: Math.max(
-      owner.revealedAtChapter,
-      entry.chapter ?? chapterAtEpisode(revealedAtEpisode),
-    ),
-  }
 }
 
 /**

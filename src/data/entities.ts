@@ -1,17 +1,8 @@
-import { alabasta } from './records/alabasta'
-import { dressrosa } from './records/dressrosa'
-import { eastBlue } from './records/east-blue'
-import { egghead } from './records/egghead'
-import { elbaf } from './records/elbaf'
-import { fishManIsland } from './records/fish-man-island'
+import type { Gated } from '~/lib/progress/spoiler'
+
+import { gateOf } from './chapter-table'
 import { devilFruits } from './records/fruits'
-import type { Saga } from './records/saga'
-import { skypiea } from './records/skypiea'
-import { summitWar } from './records/summit-war'
-import { thrillerBark } from './records/thriller-bark'
-import { wano } from './records/wano'
-import { waterSeven } from './records/water-seven'
-import { wholeCake } from './records/whole-cake'
+import { CHARACTER_DOSSIERS, sagas } from './sagas'
 import type { Entity } from './types'
 
 /**
@@ -21,7 +12,10 @@ import type { Entity } from './types'
  * record at build time and the compiler inlines the data, so there is no parse
  * step and no schema library to keep in sync. The records are filed by saga in
  * `./records`, one module per stretch of the route, each with the dossiers of
- * the characters it files; this module is the concatenation.
+ * the characters it files. This module is their concatenation (`./sagas`),
+ * then the devil fruits, in two steps because a fruit's thresholds are not
+ * written on it but read off its eaters, through the chapter table that the
+ * first step builds (`./chapter-table`).
  *
  * Every record carries two thresholds: `revealedAtEpisode`, the first
  * canonical anime episode from which the viewer knows the record by name and
@@ -79,7 +73,9 @@ import type { Entity } from './types'
  * Kibi, Raizo's Maki Maki, Jack's Model: Mammoth). A fruit nobody has named
  * is not a record and no name is made up for it; the eater's dossier says
  * what the power does instead (Bao Huang's flying-squirrel SMILE, issue
- * #174).
+ * #174). The scene that names a fruit is dated on the eater's `devilFruit`
+ * entry, and the fruit opens with the earliest such entry (`revealOf`
+ * below), so the fruit and its eater cannot open apart.
  *
  * Arc thresholds are the episode and the chapter the arc opens on, checked
  * against the wiki's chapter range by the same script.
@@ -94,33 +90,54 @@ import type { Entity } from './types'
  * episode: the sea, what kind of place it is, the arc, and who is met there.
  */
 
-/**
- * The sagas in the order the anime reaches them, and the devil fruits after
- * them.
- *
- * The fruits are a thirteenth module rather than a kind scattered through
- * the twelve, because a fruit belongs to no one stretch of the route:
- * it is filed at the episode a dossier first names it in, whoever names it.
- * They are last in this list and nowhere in it: the archive is sorted by
- * threshold everywhere it is drawn, so the order here decides nothing.
- */
-export const sagas: Saga[] = [
-  eastBlue,
-  alabasta,
-  skypiea,
-  waterSeven,
-  thrillerBark,
-  summitWar,
-  fishManIsland,
-  dressrosa,
-  wholeCake,
-  wano,
-  egghead,
-  elbaf,
-  devilFruits,
-]
+/** Every record as it is filed, before the fruits are added to it. */
+const FILED: Entity[] = sagas.flatMap((saga) => saga.entries)
 
-export const entities: Entity[] = sagas.flatMap((saga) => saga.entries)
+const FILED_BY_ID = new Map(FILED.map((entity) => [entity.id, entity]))
+
+/** Every dossier entry that names a fruit, with the gate it opens at. */
+const NAMINGS = Object.entries(CHARACTER_DOSSIERS).flatMap(([id, dossier]) => {
+  const eater = FILED_BY_ID.get(id)
+
+  return eater === undefined ?
+      []
+    : (dossier.devilFruit ?? []).map((entry) => ({
+        fruitIds: new Set<string>(entry.value),
+        gate: gateOf(entry, eater),
+      }))
+})
+
+/**
+ * When a fruit opens, read off the dossier entries that name it: the
+ * earliest episode and the earliest chapter any of them opens at (`gateOf`),
+ * never before the eater's own in either unit. A fruit no entry names has no
+ * threshold and never opens; `fruits.test.ts` holds that every fruit has an
+ * eater and opens within the dial, and `characters.test.ts` that every
+ * dossier belongs to a filed character.
+ */
+function revealOf(id: string): Gated {
+  const named = NAMINGS.filter((naming) => naming.fruitIds.has(id))
+
+  return {
+    revealedAtEpisode: Math.min(
+      ...named.map((naming) => naming.gate.revealedAtEpisode),
+    ),
+    revealedAtChapter: Math.min(
+      ...named.map((naming) => naming.gate.revealedAtChapter),
+    ),
+  }
+}
+
+/**
+ * The archive: every record as it is filed, saga by saga, and the devil
+ * fruits after them with the thresholds their eaters give them. The fruits
+ * are last and nowhere in particular: the archive is sorted by threshold
+ * everywhere it is drawn, so the order here decides nothing.
+ */
+export const entities: Entity[] = [
+  ...FILED,
+  ...devilFruits.map((fruit) => ({ ...fruit, ...revealOf(fruit.id) })),
+]
 
 const BY_ID = new Map(entities.map((entity) => [entity.id, entity]))
 

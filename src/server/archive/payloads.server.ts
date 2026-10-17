@@ -1,7 +1,8 @@
 import { characters } from '~/data/characters'
-import { entities, sagas } from '~/data/entities'
+import { entities } from '~/data/entities'
 import { FILLER } from '~/data/filler'
 import { fruits } from '~/data/fruits'
+import { sagas } from '~/data/sagas'
 import type { Entity } from '~/data/types'
 import type { Locale } from '~/i18n/locales'
 import {

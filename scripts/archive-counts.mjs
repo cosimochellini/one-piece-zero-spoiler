@@ -46,7 +46,8 @@ export function withTable(document, table) {
  * @returns {Promise<string>} The markdown table, not yet padded.
  */
 async function countTable() {
-  const { entities, sagas } = await importArchive('data/entities.ts')
+  const { entities } = await importArchive('data/entities.ts')
+  const { sagas } = await importArchive('data/sagas.ts')
   const { DRAWINGS, REDRAWINGS } = await importArchive('data/art/index.ts')
   const { characters, dossierOf } = await importArchive('data/characters.ts')
 
@@ -65,8 +66,7 @@ async function countTable() {
       'Arcs, places, ships',
       `${ofKind('arc')} · ${ofKind('place')} · ${ofKind('ship')}`,
     ],
-    // The devil fruits are the last module of `sagas`, not a saga.
-    ['Saga modules', `${sagas.length - 1}, plus one for the devil fruits`],
+    ['Saga modules', `${sagas.length}, plus one for the devil fruits`],
     [
       'Line drawings',
       `${Object.keys(DRAWINGS).length}, one per record, plus ${redrawings} redrawings of ${Object.keys(REDRAWINGS).length} records`,

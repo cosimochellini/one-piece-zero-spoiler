@@ -418,7 +418,7 @@ export const summitWar: Saga = {
       revealedAtEpisode: 425,
       revealedAtChapter: 962,
       // The anime names him at Impel Down, the manga only in Roger's past:
-      // too far apart to anchor the chapter table (`~/data/chapters`).
+      // too far apart to anchor the chapter table (`~/data/chapter-table`).
       unanchored: true,
       name: { it: 'Shiki', en: 'Shiki' },
       summary: {

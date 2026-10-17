@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { chapterAtEpisode } from '~/data/chapters'
+import { chapterAtEpisode } from '~/data/chapter-table'
 import { getCharacter } from '~/data/characters'
 import type { Locale } from '~/i18n/locales'
 import type { Bookmark } from '~/lib/progress/episode'

@@ -55,8 +55,10 @@ export function archiveTable(archive, onlyDated = false) {
 if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   try {
     const onlyDated = datedOnly(process.argv.slice(2))
-    const { DATED, chapterAtEpisode, episodeAtChapter } =
-      await importArchive('data/chapters.ts')
+    const { DATED } = await importArchive('data/chapters.ts')
+    const { chapterAtEpisode, episodeAtChapter } = await importArchive(
+      'data/chapter-table.ts',
+    )
     const { CHAPTER_CEILING } = await importArchive('lib/progress/bounds.ts')
     const { LAST_AIRED } = await importArchive('data/filler.ts')
 

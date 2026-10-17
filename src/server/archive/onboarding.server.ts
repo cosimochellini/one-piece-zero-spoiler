@@ -1,5 +1,5 @@
 import { DRAWINGS } from '~/data/art'
-import { chapterAtEpisode } from '~/data/chapters'
+import { chapterAtEpisode } from '~/data/chapter-table'
 import { arcs, chart, getCharacter, roleOf } from '~/data/characters'
 import { datedOf } from '~/data/dated'
 import { entities } from '~/data/entities'

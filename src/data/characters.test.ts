@@ -8,7 +8,6 @@ import type { CharacterStatus } from '~/lib/view/records'
 import {
   arcs,
   bookSections,
-  CHARACTER_DOSSIERS,
   characters,
   chart,
   chartWith,
@@ -19,8 +18,9 @@ import {
   routePositionOf,
 } from './characters'
 import { datedOf, stories } from './dated'
-import { entities, sagas } from './entities'
+import { entities } from './entities'
 import { orderByMode } from './order'
+import { CHARACTER_DOSSIERS, sagas } from './sagas'
 import type { Entity, LocalizedText, Story, Timeline } from './types'
 
 function must(id: string): Entity {
