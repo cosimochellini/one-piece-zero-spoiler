@@ -63,7 +63,8 @@ export const eggheadArt = {
 
   // The island from the sea, as it first shows at 1090: a low island dotted
   // with trees, and high over it the cloud with the cracked egg of the
-  // laboratory on top, the egg of the arc drawn small.
+  // laboratory on top, the egg of the arc drawn small. Bombarded by the
+  // Buster Call from 1139, in `eggheadRedrawn`.
   'egghead-island': [
     ...EGGHEAD_EGG.map((stroke) => ({ ...stroke, transform: EGG_OVER_ISLAND })),
     {
@@ -1239,6 +1240,31 @@ export const eggheadRedrawn: Redrawings = {
           d: 'M18 124 V156 M10 134 H26 M140 130 V156 M133 138 H147',
           role: 'ambient',
         },
+      ],
+    },
+  ],
+  // The island under the Buster Call: the warships open fire on it
+  // (ch. 1105 p. 8-9, "BEGIN BOMBARDMENT!!", ep. 1139), and it is still
+  // smoking when the arc ends (ch. 1125 p. 3). The egg on its cloud stands
+  // whole above, as the first drawing has it; below, two of the trees are
+  // gone to flames, a blast goes up between them and the smoke rises off
+  // the fires towards the cloud.
+  'egghead-island': [
+    {
+      episode: 1139,
+      chapter: 1105,
+      value: [
+        ...eggheadArt['egghead-island'].slice(0, 8),
+        { d: 'M38 137 q4 -10 8 0 M120 134 q4 -10 8 0', role: 'soft' },
+        {
+          d: 'M58 129 q-3 -6 1 -11 q1 4 4 4 q0 -6 4 -9 q3 8 -1 15 M100 126 q-3 -6 1 -11 q1 4 4 4 q0 -6 4 -9 q3 8 -1 15',
+        },
+        {
+          d: 'M62 116 q-8 -8 0 -14 q8 -6 2 -14 q-4 -6 4 -10 M68 114 q-6 -8 2 -12 q8 -6 4 -12 M104 113 q-8 -8 0 -14 q8 -6 2 -14 q-4 -6 4 -10 M110 111 q-6 -8 2 -12 q8 -6 4 -12',
+          role: 'ambient',
+        },
+        { d: 'M78 128 L74 116 L80 120 L83 108 L86 120 L93 116 L89 128' },
+        ...eggheadArt['egghead-island'].slice(9),
       ],
     },
   ],
