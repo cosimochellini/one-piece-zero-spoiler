@@ -26,6 +26,11 @@ By taking part you agree to the [code of conduct](CODE_OF_CONDUCT.md).
 show up in notifications. Write "Wrong episode for a character", not the fact
 itself. Details go in the body.
 
+Every issue carries one label from each group in
+[`.github/labels.json`](.github/labels.json): `type:`, `area:`, `status:`,
+`priority:` and `size:`. The forms set `status:triage`, and the issue gets the
+rest when someone triages it.
+
 ## Setup
 
 You need Node 24.21 and npm 12.2, as set in `.nvmrc` and in the `packageManager`

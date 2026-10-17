@@ -23,6 +23,8 @@
     "gate:docs": "node scripts/archive-counts.mjs --check",
     "gate:fallow": "node scripts/fallow-gate.mjs",
     "gate:react-doctor": "node scripts/react-doctor-gate.mjs",
+    "issues:unblock": "node scripts/issues-unblock.mjs",
+    "labels:sync": "node scripts/labels-sync.mjs",
     "lint": "eslint . --max-warnings=0",
     "lint:fix": "eslint . --fix",
     "prepare": "lefthook install",

@@ -1,6 +1,6 @@
 name: Feature request
 description: An idea for the site or the codebase.
-labels: [enhancement]
+labels: [type:feature, status:triage]
 body:
   - type: textarea
     id: problem
