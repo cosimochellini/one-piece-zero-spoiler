@@ -109,10 +109,10 @@ Grade every drawing you make or review. Only A ships.
   `revealedAtEpisode`, ascending. The `chapter:` must be a true pair with the episode, the chapter
   that same scene is in, or chapter readers see it early; when the true
   chapter is below the record's, pin the record's (see the rulings below).
-  Add one `it` in `src/server/archive/slices.test.ts` on Franky's model
-  (episode − 1, episode, no bookmark, chapter − 1, chapter); a record with
-  many stages walks its timeline in one `it`
-  instead, on Luffy's model. A saga's first redrawing is
+  `src/server/archive/slices.test.ts` walks every stage from the data
+  (episode − 1, episode, no bookmark, chapter − 1, chapter), so a stage needs
+  no test of its own; a stage that is an earlier drawing again gets a row in
+  the "redraws %s at stage %i" table there. A saga's first redrawing is
   also spread into `REDRAWINGS` and added to `src/data/art/index.test.ts`.
   The owner's stage rulings (2026-10-10):
   - **A death is a stage, almost always.** When the story kills a character
@@ -151,7 +151,8 @@ Grade every drawing you make or review. Only A ships.
     of the record's chapter and the entry's `chapter:`, or without one the
     first chapter that reaches its episode, which can be many chapters late
     (Carmel's stage would open at 882, her record at 872). The pin adds
-    nothing to the chapter table, and `walkStages` walks the stage.
+    nothing to the chapter table, and the stage walk in
+    `slices.test.ts` walks it.
   - **A frame check on manga pages decides** the start, the end, and what is
     really on the object. The wiki's prose is a lead: Jack's sails, Leo's
     goggles and Tamago's teacup were all wrong or missing in it.
