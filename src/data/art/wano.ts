@@ -1298,6 +1298,7 @@ export const wanoArt = {
   ],
 
   // A mine entrance cut into a rock face, framed in timber and shut with iron bars, rails running out of it.
+  // Overgrown by Ryokugyu's tree at 1080, in `wanoRedrawn`.
   'udon': [
     {
       d: 'M-4 150 L10 96 L34 72 L58 54 L92 50 L120 62 L146 84 L164 110',
@@ -1317,6 +1318,8 @@ export const wanoArt = {
   ],
 
   // An island off the coast whose peak is a great rock dome with two horns, crags around its foot.
+  // Sent aloft at 1011, a horn cut off at 1017, set down by the Flower
+  // Capital at 1076, in `wanoRedrawn`.
   'onigashima': [
     {
       d: 'M8 150 L22 128 L34 132 L44 116 H116 L126 132 L138 128 L152 150',
@@ -1664,6 +1667,47 @@ const SOTO_MUSO: Stroke[] = [
     role: 'soft',
   },
 ]
+
+/** Onigashima without its horns: the crags at its foot, the dome and the cracks in it. */
+const ONIGASHIMA_HULL = [
+  ...wanoArt.onigashima.slice(0, 2),
+  ...wanoArt.onigashima.slice(3, 4),
+]
+
+/** The horn on the right as the first drawing has it. */
+const ONIGASHIMA_RIGHT_HORN =
+  'M108 62 C120 50 124 34 120 18 C112 34 102 44 96 50'
+
+/** The horn on the left cut short by Zoro's missed slash, the cut flat. */
+const ONIGASHIMA_CUT_HORN =
+  'M52 62 C42 52 38 42 38 34 L46 37 C50 43 58 47 64 50'
+
+/** The island raised into the sky and drawn a little smaller. */
+const ONIGASHIMA_ALOFT = 'translate(16 -12) scale(0.8)'
+
+/**
+ * What lifting the island off the sea leaves: the band of flame-cloud round
+ * its waist and, under it, the torn rock of its underside with its drips.
+ */
+const ONIGASHIMA_TORN: Stroke[] = [
+  {
+    d: 'M-6 152 C-8 142 4 140 8 146 C12 140 22 142 22 150 C34 144 46 146 50 154 C62 148 74 148 80 156 C88 148 100 148 110 154 C116 146 128 144 138 150 C138 142 148 140 152 146 C156 140 168 142 166 152 C168 160 156 164 150 160 C144 166 132 166 128 160 C118 166 104 166 96 162 C88 168 72 168 64 162 C54 168 40 166 34 160 C26 166 14 166 10 160 C2 164 -6 160 -6 152',
+    role: 'soft',
+  },
+  {
+    d: 'M12 162 L20 174 L28 168 L38 186 L50 176 L62 194 L74 182 L86 196 L98 184 L110 192 L120 178 L132 184 L140 170 L148 162',
+  },
+  {
+    d: 'M30 170 v8 M54 178 v12 M78 184 v8 M104 182 v6 M126 176 v8',
+    role: 'ambient',
+  },
+]
+
+/** The spray the sea throws up under the island while it hangs over it. */
+const ONIGASHIMA_SPRAY: Stroke = {
+  d: 'M30 158 l-4 -10 M36 156 l0 -12 M42 158 l4 -10 M118 158 l-4 -10 M124 156 l0 -12 M130 158 l4 -10',
+  role: 'ambient',
+}
 
 /** The records of this stretch drawn again, from the episode the story changes them. */
 export const wanoRedrawn: Redrawings = {
@@ -2412,6 +2456,150 @@ export const wanoRedrawn: Redrawings = {
           'translate(12 -8) scale(0.84)',
         ),
         shadow(80, 192, 62),
+      ],
+    },
+  ],
+  // Onigashima torn off the sea and hanging over it: Kaido sends the whole
+  // island aloft (ch. 997 p. 16, ep. 1011), its underside ripped and
+  // dripping, a band of flame-cloud round its waist, rocks falling into the
+  // spray. Zoro's missed slash then cuts the horn on the left short
+  // (ch. 1002 p. 13, ep. 1017), still aloft. Then the island set down on
+  // land beside the Flower Capital (ch. 1049 p. 17, ep. 1076), sunk in
+  // cloud, the cut horn on the left and the one on the right melted to a
+  // stub by Kaido's flame (ch. 1048), the edge of the capital's plateau on
+  // the left.
+  'onigashima': [
+    {
+      episode: 1011,
+      chapter: 997,
+      value: [
+        ...moved(
+          [
+            ...ONIGASHIMA_HULL,
+            ...wanoArt.onigashima.slice(2, 3),
+            ...ONIGASHIMA_TORN,
+          ],
+          ONIGASHIMA_ALOFT,
+        ),
+        {
+          d: 'M38 144 l7 -3 l4 5 l-3 7 l-7 -2 Z M110 148 l8 -2 l2 8 l-8 2 Z M76 142 l5 -1 l1 5 l-5 1 Z',
+          role: 'soft',
+        },
+        { d: 'M43 132 V140 M115 136 V144', role: 'ambient' },
+        ONIGASHIMA_SPRAY,
+        ...SEA,
+      ],
+    },
+    {
+      episode: 1017,
+      chapter: 1002,
+      value: [
+        ...moved(
+          [
+            ...ONIGASHIMA_HULL,
+            {
+              d: `${ONIGASHIMA_CUT_HORN} ${ONIGASHIMA_RIGHT_HORN}`,
+              role: 'accent',
+            },
+            ...ONIGASHIMA_TORN,
+          ],
+          ONIGASHIMA_ALOFT,
+        ),
+        ONIGASHIMA_SPRAY,
+        ...SEA,
+      ],
+    },
+    {
+      episode: 1076,
+      chapter: 1049,
+      value: [
+        ...moved(
+          [
+            ...wanoArt.onigashima.slice(1, 2),
+            {
+              d: `${ONIGASHIMA_CUT_HORN} M108 62 C114 58 118 52 117 46 C114 43 110 45 110 49 C106 50 100 50 96 50 M115 50 V55`,
+              role: 'accent',
+            },
+            ...wanoArt.onigashima.slice(3, 4),
+          ],
+          'translate(26 4) scale(0.82)',
+        ),
+        { d: 'M-4 116 H24 C30 116 32 120 32 126 L34 150' },
+        {
+          d: 'M-4 122 H22 M4 128 V150 M14 128 V150 M24 128 V150',
+          role: 'ambient',
+        },
+        {
+          d: 'M30 150 C20 146 22 132 34 134 C32 120 46 114 54 122 C56 110 64 102 72 106 M118 100 C128 92 142 98 140 110 C152 108 160 122 152 130 C162 136 160 150 150 150',
+        },
+        {
+          d: 'M50 150 C46 140 56 132 64 136 C68 126 80 124 86 132 C92 124 106 126 108 136 C118 132 128 140 122 150',
+          role: 'soft',
+        },
+        { d: 'M44 128 q6 -4 10 2 M134 120 q6 -2 8 4', role: 'soft' },
+        { d: 'M-4 150 H164', role: 'ambient' },
+        {
+          d: 'M10 160 l8 -6 M40 164 l8 -6 M72 162 l8 -6 M104 164 l8 -6 M136 160 l8 -6',
+          role: 'ambient',
+        },
+      ],
+    },
+  ],
+  // The former Prisoner Mine overgrown: Ryokugyu blows the camp apart and
+  // grows a giant tree over its rock (ch. 1053 p. 10, "FORMER EXCAVATION
+  // CAMP, UDON", ep. 1080). The rock of the first drawing set lower, a notch
+  // broken out of its top on the left with chunks flying off it, the tree's
+  // trunk and limbs over it holding up three clumps of leaves, two thick
+  // roots draped down its sides past the barred gate, and the forest round
+  // its foot.
+  'udon': [
+    {
+      episode: 1080,
+      chapter: 1053,
+      value: [
+        ...moved(
+          [
+            {
+              d: 'M-4 150 L10 96 L34 72 L40 66 L38 58 L46 60 L50 52 L58 54 L92 50 L120 62 L146 84 L164 110',
+              role: 'ambient',
+            },
+            ...wanoArt.udon.slice(1, 8),
+          ],
+          'translate(16 30) scale(0.8)',
+        ),
+        { d: 'M-4 150 H51 M109 150 H164', role: 'ambient' },
+        {
+          d: 'M80 70 C84 60 80 50 70 44 C62 40 54 38 46 38 M104 70 C100 60 104 50 114 44 C122 40 128 38 136 38',
+        },
+        {
+          d: 'M64 42 C76 46 84 46 90 40 C96 46 106 46 118 42 M90 40 V22',
+          role: 'soft',
+        },
+        {
+          d: 'M34 40 C24 38 24 26 34 24 C34 14 48 12 54 18 C60 12 72 16 70 26 C78 28 76 40 66 40 C60 44 42 44 34 40 M74 22 C68 18 70 8 80 10 C84 2 98 2 100 10 C108 8 112 16 106 22 M108 38 C100 36 102 24 112 24 C112 14 126 12 130 18 C136 14 148 18 146 28 C154 30 152 40 144 40 C138 44 116 44 108 38',
+        },
+        {
+          d: 'M42 32 q4 -4 8 0 M84 12 q4 -4 8 0 M128 28 q4 -4 8 0',
+          role: 'soft',
+        },
+        {
+          d: 'M80 70 C62 70 50 78 42 92 C34 106 30 128 30 150 M88 74 C74 78 62 88 54 100 C46 114 40 132 36 150',
+        },
+        {
+          d: 'M104 70 C122 70 134 78 140 92 C146 106 146 128 146 150 M96 74 C110 78 120 88 126 100 C132 114 138 132 140 150',
+        },
+        {
+          d: 'M70 76 C64 84 58 92 54 104 M112 84 C114 92 114 100 112 106',
+          role: 'soft',
+        },
+        {
+          d: 'M-4 122 C-2 110 10 106 16 114 C22 108 30 116 26 126 M146 116 C148 106 160 104 164 110',
+          role: 'soft',
+        },
+        {
+          d: 'M14 56 l6 -4 l4 4 l-2 6 l-6 0 Z M30 50 l4 -2 l3 3 l-3 4 l-4 -1 Z M6 78 l5 -2 l2 5 l-5 2 Z',
+        },
+        { d: 'M44 70 L34 60 M48 66 L44 54 M40 76 L24 72', role: 'ambient' },
       ],
     },
   ],
