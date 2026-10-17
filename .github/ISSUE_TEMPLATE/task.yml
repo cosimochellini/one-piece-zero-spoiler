@@ -1,0 +1,63 @@
+name: Agent task
+description:
+  A piece of work for an agent or a contributor to pick up, with what done looks
+  like.
+labels: [status:triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep the spoiler out of the title. Whoever triages this sets the `type:`, `area:`, `priority:` and `size:` labels from the fields below, and turns "Unblocks at" into an `Unblocks at:` line in the body.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - art
+        - records
+        - chronicle
+        - i18n
+        - ui
+        - server
+        - tooling
+        - ci
+    validations:
+      required: true
+  - type: dropdown
+    id: size
+    attributes:
+      label: Size
+      description: An l is too big for one pull request; split it first.
+      options:
+        - s (one file or one rule)
+        - m (one pull request, several files, with tests)
+        - l (needs an epic and sub-issues)
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What
+      description: The change, with the files and records it touches.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: How to verify
+      description: The commands or checks that show it is done.
+    validations:
+      required: true
+  - type: input
+    id: unblocks
+    attributes:
+      label: Unblocks at
+      description:
+        Only when the work has to wait. A chapter that must air (`ch. 1178`, or
+        `ch. 1151 p. 9` for one page), or an issue that must close (`#656`).

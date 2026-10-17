@@ -1,0 +1,164 @@
+[
+  {
+    "name": "type:bug",
+    "color": "d73a4a",
+    "description": "Something on the site or in the tooling does not work"
+  },
+  {
+    "name": "type:feature",
+    "color": "1d76db",
+    "description": "A new feature or a change to an existing one"
+  },
+  {
+    "name": "type:content",
+    "color": "1d76db",
+    "description": "Archive records, drawings and prose: what the site shows"
+  },
+  {
+    "name": "type:docs",
+    "color": "1d76db",
+    "description": "README, CONTRIBUTING, docs/ and skills"
+  },
+  {
+    "name": "type:chore",
+    "color": "1d76db",
+    "description": "Tooling, dependencies and housekeeping"
+  },
+  {
+    "name": "type:epic",
+    "color": "5319e7",
+    "description": "A parent issue; the work lives in its sub-issues"
+  },
+  {
+    "name": "area:art",
+    "color": "c5def5",
+    "description": "Line drawings in src/data/art"
+  },
+  {
+    "name": "area:records",
+    "color": "c5def5",
+    "description": "Dossiers, statuses, fruits and places in src/data/records"
+  },
+  {
+    "name": "area:chronicle",
+    "color": "c5def5",
+    "description": "A character's dated stories"
+  },
+  {
+    "name": "area:i18n",
+    "color": "c5def5",
+    "description": "Dictionaries and Italian names"
+  },
+  {
+    "name": "area:ui",
+    "color": "c5def5",
+    "description": "Components, styles and routes"
+  },
+  {
+    "name": "area:server",
+    "color": "c5def5",
+    "description": "SSR, server functions and the archive slices"
+  },
+  {
+    "name": "area:tooling",
+    "color": "c5def5",
+    "description": "Scripts, gates, verify:* and wiki tools"
+  },
+  {
+    "name": "area:ci",
+    "color": "c5def5",
+    "description": "GitHub Actions, release and Netlify"
+  },
+  {
+    "name": "status:triage",
+    "color": "ededed",
+    "description": "Not yet labelled or checked"
+  },
+  {
+    "name": "status:ready",
+    "color": "0e8a16",
+    "description": "An agent can take it now"
+  },
+  {
+    "name": "status:blocked",
+    "color": "e99695",
+    "description": "Waits for the line 'Unblocks at:' in the body"
+  },
+  {
+    "name": "status:needs-decision",
+    "color": "fbca04",
+    "description": "Waits for a ruling from the owner"
+  },
+  {
+    "name": "status:in-progress",
+    "color": "bfd4f2",
+    "description": "An agent or a person is on it"
+  },
+  {
+    "name": "priority:p0",
+    "color": "b60205",
+    "description": "A spoiler is live, or the site or CI is down"
+  },
+  {
+    "name": "priority:p1",
+    "color": "d93f0b",
+    "description": "Wrong content or a broken feature, no spoiler"
+  },
+  { "name": "priority:p2", "color": "f9d0c4", "description": "Normal work" },
+  { "name": "priority:p3", "color": "fef2c0", "description": "Nice to have" },
+  {
+    "name": "size:s",
+    "color": "d4c5f9",
+    "description": "One file or one rule, a short session"
+  },
+  {
+    "name": "size:m",
+    "color": "d4c5f9",
+    "description": "One normal PR, several files, with tests"
+  },
+  {
+    "name": "size:l",
+    "color": "d4c5f9",
+    "description": "Too big for one PR: split it into an epic first"
+  },
+  {
+    "name": "accessibility",
+    "color": "f143ab",
+    "description": "Barrier affecting people with disabilities"
+  },
+  {
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Good for newcomers"
+  },
+  {
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Extra attention is needed"
+  },
+  {
+    "name": "released",
+    "color": "ededed",
+    "description": "Shipped in a release (semantic-release adds it)"
+  },
+  {
+    "name": "duplicate",
+    "color": "cfd3d7",
+    "description": "This issue or pull request already exists"
+  },
+  {
+    "name": "invalid",
+    "color": "e4e669",
+    "description": "This doesn't seem right"
+  },
+  {
+    "name": "question",
+    "color": "d876e3",
+    "description": "Further information is requested"
+  },
+  {
+    "name": "wontfix",
+    "color": "ffffff",
+    "description": "This will not be worked on"
+  }
+]

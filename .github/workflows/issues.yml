@@ -1,0 +1,24 @@
+name: Issues
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  issues: write
+
+jobs:
+  # The backstop for issues opened without the label groups (by Codex, on the
+  # web, by a contributor): `status:triage` marks them for someone to label.
+  # The Claude Code hook (scripts/issue-hook.mjs) stops most of them earlier.
+  triage:
+    if: ${{ !contains(join(github.event.issue.labels.*.name, ' '), 'status:') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - run:
+          gh issue edit "$NUMBER" --repo "$GITHUB_REPOSITORY" --add-label
+          status:triage
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.issue.number }}

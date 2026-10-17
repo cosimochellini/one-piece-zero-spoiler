@@ -1,6 +1,6 @@
 name: Bug report
 description: Something on the site or in the tooling does not work.
-labels: [bug]
+labels: [type:bug, status:triage]
 body:
   - type: textarea
     id: what

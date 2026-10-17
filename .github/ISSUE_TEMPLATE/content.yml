@@ -2,7 +2,7 @@ name: Wrong or missing content
 description:
   An entry that opens at the wrong episode or chapter, a wrong name or fact, or
   a spoiler on a page.
-labels: [content]
+labels: [type:content, status:triage]
 body:
   - type: markdown
     attributes:

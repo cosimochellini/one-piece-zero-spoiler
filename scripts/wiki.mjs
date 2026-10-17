@@ -319,10 +319,10 @@ export function pageOf(query, asked) {
 /**
  * One chapter's rendered introduction, separately cached from full pages.
  * @param {number} chapter The chapter number.
- * @param {string} directory The wiki cache root.
+ * @param {string} [directory] The wiki cache root.
  * @returns {Promise<string[]>} Its printable episode/page pairs.
  */
-async function chapterPairs(chapter, directory) {
+export async function chapterPairs(chapter, directory = CACHE) {
   const title = `Chapter_${String(chapter)}`
   // fallow-ignore-next-line security-sink -- directory is the repository cache or a test tempdir; chapter is a validated positive integer.
   const file = path.join(directory, 'pairs', `${String(chapter)}.json`)
