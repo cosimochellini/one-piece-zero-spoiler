@@ -24,6 +24,11 @@ import {
  * "+N" for the other eaters the reader has reached. A screen reader hears the
  * count as a sentence. Covered eaters are never sent, so they add nothing:
  * no crest, no number and no height.
+ *
+ * A crest the list left behind is drawn, seal and all, once its strokes
+ * arrive. Until then the box keeps its size and holds nothing: the seal is
+ * 1.5 KB of markup, and sixty of them would undo what deferring the strokes
+ * saves.
  */
 export function FruitEater({
   eater,
@@ -36,6 +41,7 @@ export function FruitEater({
 }): ReactElement {
   const { locale, t } = useLocale()
   const { ref, strokes } = useDrawing(eater.id, eater.visual)
+  const drawn = eater.visual.deferred !== true || strokes.length > 0
 
   return (
     <div {...stylex.props(styles.eaters)}>
@@ -48,7 +54,9 @@ export function FruitEater({
           ref={ref}
           {...stylex.props(styles.crest)}
         >
-          <CharacterCrest visual={{ ...eater.visual, strokes }} />
+          {drawn ?
+            <CharacterCrest visual={{ ...eater.visual, strokes }} />
+          : null}
         </span>
         <span {...stylex.props(styles.eaterName)}>
           <Marked
@@ -85,7 +93,6 @@ const styles = stylex.create({
     color: { 'default': color.ink2, ':hover': color.accent },
     columnGap: space.xs,
     display: 'flex',
-    flexGrow: 1,
     outlineColor: { 'default': 'transparent', ':focus-visible': color.focus },
     outlineOffset: space.xs3,
     outlineStyle: 'solid',

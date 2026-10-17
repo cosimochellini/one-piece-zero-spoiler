@@ -68,6 +68,25 @@ describe('FruitTile', () => {
     expect(container).not.toHaveTextContent('Sabo')
   })
 
+  it('draws a left-behind crest only once its strokes arrive', () => {
+    renderWithProviders(
+      <FruitTile
+        eaters={[
+          { ...SABO, visual: { strokes: [], tint: 'blue', deferred: true } },
+        ]}
+        form="logia"
+        index={0}
+        peek={peekTo(fruit())}
+        slot={openSlot(fruit())}
+      />,
+      { bookmark: ep(700) },
+    )
+
+    const eaterLink = screen.getByRole('link', { name: 'Sabo' })
+
+    expect(eaterLink.querySelector('svg')).toBeNull()
+  })
+
   it('shows the eater a search matched, with their name marked', () => {
     renderWithProviders(
       <FruitTile

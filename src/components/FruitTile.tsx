@@ -150,7 +150,7 @@ function OpenTile({
   const shown = eaters[eater.at]
 
   return (
-    <li {...stylex.props(styles.tile)}>
+    <li {...stylex.props(styles.tile, styles.openTile)}>
       <TileLink
         highlight={highlight}
         record={record}
@@ -162,7 +162,7 @@ function OpenTile({
           more={eaters.length - 1}
         />
       )}
-      <p {...stylex.props(styles.kind)}>{t(FORM_KEY[form])}</p>
+      <p {...stylex.props(styles.kind, styles.foot)}>{t(FORM_KEY[form])}</p>
     </li>
   )
 }
@@ -217,6 +217,10 @@ const META_TRACKING = '0.08em'
 
 const styles = stylex.create({
   tile: { gap: space.xs2, alignContent: 'start', display: 'grid', minWidth: 0 },
+  // The kind sits at the foot of the row, so it lines up across a row whose
+  // names and eaters wrap to different heights.
+  openTile: { gridTemplateRows: 'auto auto 1fr' },
+  foot: { alignSelf: 'end', gridRowStart: 3 },
   face: { gap: space.xs, display: 'grid', minWidth: 0 },
   link: {
     borderRadius: radius.card,

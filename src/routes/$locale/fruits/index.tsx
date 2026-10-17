@@ -3,8 +3,9 @@
  *   Chart (locked) · enrichment: Tier B hand-built SVG (a grown drawing for
  *   every fruit, eleven of them drawn by hand) · nav: N9 edge-aligned (shared)
  * · footer: Ft4 colophon (shared)
- * · idea: "an album — three plates of tiles, the drawing big, two across on a
- *   phone, and the fog keeps its place at the foot of each plate"
+ * · idea: "an album — three plates of tiles, the drawing big, who ate it
+ *   under the name, two across on a phone, and the fog keeps its place at
+ *   the foot of each plate"
  * · differs from the previous build (Specimen) on macrostructure; theme is
  *   the project's locked system and does not rotate */
 import { createFileRoute } from '@tanstack/react-router'
@@ -43,8 +44,9 @@ export const Route = createFileRoute('/$locale/fruits/')({
  *
  * An album: the brand line and a count, then three plates — Paramecia, Zoan,
  * Logia — each a pinned head over a grid of tiles. A tile is the drawing,
- * large, the name and the kind, and the whole of it is a link; two across on
- * a phone, up to six on a wide page. The sentence is the fruit page's.
+ * large, and the name, as one link; under them the eater the reader has
+ * reached, as a link of their own, and the kind. Two across on a phone, up
+ * to six on a wide page. The sentence is the fruit page's.
  *
  * The search filters the open tiles only, and the covered ones keep their own
  * band at the foot of every plate, which is the spoiler rule applied to a
